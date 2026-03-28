@@ -1,6 +1,6 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiorii-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust (AppImage)"
 arch=('x86_64')
@@ -27,8 +27,8 @@ conflicts=(
     'shiori-ebook'
     'shiori-ebook-bin'
 )
-source=("Shiori_${pkgver}_amd64.AppImage::https://github.com/vinayydv3695/Shiori/releases/download/v${pkgver}/Shiori_${pkgver}_amd64.AppImage")
-sha256sums=('SKIP')
+source=("Shiori_${pkgver}_amd64.AppImage::${url}/releases/download/v${pkgver}/Shiori_${pkgver}_amd64.AppImage")
+sha256sums=('95dd0abea8d1ef15bb7ac269c2c0808a758ceab33190288ccc907abed37aef05')
 
 package() {
     cd "${srcdir}"
