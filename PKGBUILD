@@ -9,10 +9,10 @@
 # -------------------------------------------------------------------
 pkgname=zai-chat-desktop
 _appname=ZaiChatDesktop
-_binaryname=zai-chat
+_binaryname=zaichat
 _github=delta-whiplash
 pkgver=3.11.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Z.ai Desktop - AI Chatbot & Agent powered by GLM-5 & GLM-4.7"
 arch=('x86_64')
 url="https://chat.z.ai"
