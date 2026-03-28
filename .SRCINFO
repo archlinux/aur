@@ -1,0 +1,22 @@
+pkgbase = ron-mod-manager-bin
+	pkgdesc = A mod manager for Ready or Not
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/EvilNick2/ron-mod-manager
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = pango
+	depends = webkit2gtk-4.1
+	provides = ron-mod-manager
+	conflicts = ron-mod-manager
+	source = ron-mod-manager-bin-0.2.0.deb::https://github.com/EvilNick2/ron-mod-manager/releases/download/v0.2.0/RoN.Mod.Manager_0.2.0_amd64.deb
+	sha256sums = SKIP
+
+pkgname = ron-mod-manager-bin
