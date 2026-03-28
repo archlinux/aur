@@ -1,0 +1,16 @@
+pkgbase = vulpidl-bin
+	pkgdesc = sample grabber and modification tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/d-ord/vulpidl
+	arch = x86_64
+	license = MIT
+	depends = electron
+	depends = yt-dlp
+	depends = ffmpeg
+	provides = vulpidl
+	conflicts = vulpidl
+	source = vulpidl-bin-1.0.0.tar.gz::https://github.com/d-ord/vulpidl/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 5631fda12fecc1ad6e84238747eb9e853bc592c782f30478f82c12b4c1ee3c84
+
+pkgname = vulpidl-bin
