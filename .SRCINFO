@@ -1,0 +1,22 @@
+pkgbase = xmodits-cli-bin
+	pkgdesc = A tool to bulk extract samples from various tracker modules with ease. CLI version
+	pkgver = 0.11.5
+	pkgrel = 1
+	url = https://github.com/B0ney/xmodits-cli/
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	provides = xmodits
+	provides = xmodits-cli
+	conflicts = xmodits-cli
+	options = !strip
+	source = xmodits-license::https://raw.githubusercontent.com/B0ney/xmodits-cli/refs/heads/main/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = xmodits-cli-bin-0.11.5-x86_64.tar.gz::https://github.com/B0ney/xmodits-cli/releases/download/v0.11.5/xmodits-cli-linux-x86_64-gnu.tar.gz
+	sha256sums_x86_64 = dfc65460bd37ea12bc579859078be2eabf186df8e23da5641c9264f7bc4029dd
+	source_aarch64 = xmodits-cli-bin-0.11.5-aarch64.tar.gz::https://github.com/B0ney/xmodits-cli/releases/download/v0.11.5/xmodits-gli-linux-aarch64-gnu.tar.gz
+	sha256sums_aarch64 = c0ada9e13750008558ff54df0099399d870bf307270ee3684c4776b0d484d004
+
+pkgname = xmodits-cli-bin
