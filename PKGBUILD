@@ -2,7 +2,7 @@
 
 pkgname='python-flashinfer-rocm'
 _pkgname='flashinfer'
-pkgver=0.3.1
+pkgver=0.5.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc='ROCm port of FlashInfer'
@@ -17,9 +17,12 @@ depends=(
 makedepends=(
 	git
 	ninja
+	python-build
+	python-setuptools-scm
 	python-scikit-build-core
 	cmake
 	rocm-hip-sdk
+	python-installer
 )
 optdepends=(
 	python-click
@@ -30,7 +33,7 @@ source=(
 	"${url}/archive/refs/tags/v${pkgver}+amd.1.tar.gz"
 )
 sha256sums=(
-	'ebc477110fac045d088b69bd64ceaf63cb28585af579548c60d23ee61048fe61'
+	'c6b72c9e37627bcb3f34b3d7f488f5754320c99d081bfc53e457df9aac39cc7f'
 )
 
 prepare() {
