@@ -1,8 +1,9 @@
 # Maintainer: Roman Mia <mail.romanmia@gmail.com>
 pkgname=quasar-mips-ide-git
-_pkgname=quasar
+_pkgname=Quasar
+_pkgname_lower=quasar
 pkgver=1.0.0.r0.g3c2c8d2
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, high-performance IDE for MIPS32 R2000 assembly (Source build)"
 arch=('x86_64')
 url="https://github.com/rmia46/quasar"
@@ -28,23 +29,23 @@ build() {
 package() {
   cd "$srcdir/quasar"
   
-  # Install binary
-  install -Dm755 "src-tauri/target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  # Install binary (Tauri uses the exact productName case)
+  install -Dm755 "src-tauri/target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname_lower"
   
   # Install icons
-  install -Dm644 "src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png"
-  install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
+  install -Dm644 "src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname_lower.png"
+  install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname_lower.png"
   
   # Create and install .desktop file
   mkdir -p "$pkgdir/usr/share/applications"
-  echo "[Desktop Entry]" > "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  echo "Name=Quasar" >> "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  echo "Comment=MIPS32 R2000 IDE" >> "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  echo "Exec=$_pkgname" >> "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  echo "Icon=$_pkgname" >> "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  echo "Terminal=false" >> "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  echo "Type=Application" >> "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  echo "Categories=Development;IDE;" >> "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  echo "[Desktop Entry]" > "$pkgdir/usr/share/applications/$_pkgname_lower.desktop"
+  echo "Name=Quasar" >> "$pkgdir/usr/share/applications/$_pkgname_lower.desktop"
+  echo "Comment=MIPS32 R2000 IDE" >> "$pkgdir/usr/share/applications/$_pkgname_lower.desktop"
+  echo "Exec=$_pkgname_lower" >> "$pkgdir/usr/share/applications/$_pkgname_lower.desktop"
+  echo "Icon=$_pkgname_lower" >> "$pkgdir/usr/share/applications/$_pkgname_lower.desktop"
+  echo "Terminal=false" >> "$pkgdir/usr/share/applications/$_pkgname_lower.desktop"
+  echo "Type=Application" >> "$pkgdir/usr/share/applications/$_pkgname_lower.desktop"
+  echo "Categories=Development;IDE;" >> "$pkgdir/usr/share/applications/$_pkgname_lower.desktop"
 
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
