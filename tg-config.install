@@ -1,0 +1,57 @@
+#!/bin/bash
+
+_setup_telegram_wrapper() {
+    # Check if telegram-desktop is installed
+    if [ -f /usr/bin/Telegram ]; then
+        # Skip if already wrapped (symlink to our wrapper)
+        if [ -L /usr/bin/Telegram ] && [ "$(readlink -f /usr/bin/Telegram)" = "/usr/bin/tg-config-telegram-wrapper" ]; then
+            return 0
+        fi
+        
+        # Skip if original already backed up (shouldn't happen, but safety check)
+        if [ -f /usr/bin/Telegram.original ]; then
+            echo "Warning: /usr/bin/Telegram.original already exists"
+            return 1
+        fi
+        
+        echo "Setting up tg-config wrapper for Telegram Desktop..."
+        
+        # Backup original Telegram binary
+        mv /usr/bin/Telegram /usr/bin/Telegram.original
+        
+        # Create symlink to our wrapper
+        ln -s /usr/bin/tg-config-telegram-wrapper /usr/bin/Telegram
+        
+        echo "✓ Telegram will now apply tg-config settings on startup"
+    fi
+}
+
+_restore_telegram_original() {
+    # Only restore if our wrapper is active
+    if [ -L /usr/bin/Telegram ] && [ "$(readlink /usr/bin/Telegram)" = "/usr/bin/tg-config-telegram-wrapper" ]; then
+        echo "Restoring original Telegram binary..."
+        
+        # Remove our symlink
+        rm -f /usr/bin/Telegram
+        
+        # Restore original binary
+        if [ -f /usr/bin/Telegram.original ]; then
+            mv /usr/bin/Telegram.original /usr/bin/Telegram
+            echo "✓ Original Telegram binary restored"
+        else
+            echo "Warning: /usr/bin/Telegram.original not found, cannot restore"
+        fi
+    fi
+}
+
+post_install() {
+    _setup_telegram_wrapper
+}
+
+post_upgrade() {
+    _setup_telegram_wrapper
+}
+
+pre_remove() {
+    _restore_telegram_original
+}
