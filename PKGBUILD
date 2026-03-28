@@ -41,13 +41,17 @@ conflicts=(
 _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
+  "${pkgname}_python3.12_syntax_warning.patch::${_url}/pull/55.patch?full_index=1"
 )
-b2sums=('e6e849e822ce75e2720647db8b7d903fb532cf1cfb010ff61e91006aae25d915bbe0ec495ed0c56951064befd65c5c5b396362edb70fd36703eda1f0f530258a')
+b2sums=('e6e849e822ce75e2720647db8b7d903fb532cf1cfb010ff61e91006aae25d915bbe0ec495ed0c56951064befd65c5c5b396362edb70fd36703eda1f0f530258a'
+        'cd5b04e6b6216728ff91151d41444b294bbe5ca22feadd2bf0ed3acd32fb2428416d3685ccf50b9cb875230740479358b0347da16eb6a0c3a0e64f4b109ea670')
 
 prepare() {
   local python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
 
   cd "${srcdir}/${_pkgsrc}"
+  patch -Np1 -i "${srcdir}/${pkgname}_python3.12_syntax_warning.patch"
+
   sed -e "s|3.12|${python_version}|g" \
       -e "s|/usr/local|${MAKEPKG_MATLAB_PREFIX}|g" \
       -i 'setup.py'

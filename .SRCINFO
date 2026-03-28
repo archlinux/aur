@@ -15,6 +15,8 @@ pkgbase = python-matlabengine
 	provides = python-matlabengine-r2025b=25.2.2
 	conflicts = python-matlabengine-r2025b
 	source = https://github.com/mathworks/matlab-engine-for-python/archive/refs/tags/25.2.2/matlab-engine-for-python-25.2.2.tar.gz
+	source = python-matlabengine_python3.12_syntax_warning.patch::https://github.com/mathworks/matlab-engine-for-python/pull/55.patch?full_index=1
 	b2sums = e6e849e822ce75e2720647db8b7d903fb532cf1cfb010ff61e91006aae25d915bbe0ec495ed0c56951064befd65c5c5b396362edb70fd36703eda1f0f530258a
+	b2sums = cd5b04e6b6216728ff91151d41444b294bbe5ca22feadd2bf0ed3acd32fb2428416d3685ccf50b9cb875230740479358b0347da16eb6a0c3a0e64f4b109ea670
 
 pkgname = python-matlabengine
