@@ -1,0 +1,14 @@
+pkgbase = magicmaze-git
+	pkgdesc = Simple low-tech monster-bashing maze game inspired by Gauntlet II (Ruby/SDL2 port). Requires AUR version of sdl2
+	pkgver = preliminary_release_1_5_1_alpha2.r21.g705ef99
+	pkgrel = 1
+	url = https://github.com/kentdahl/magic_maze
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = ruby-sdl2
+	depends = ruby-getoptlong
+	source = magicmaze-git::git+https://github.com/kentdahl/magic_maze.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = magicmaze-git
