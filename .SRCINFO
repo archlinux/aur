@@ -1,0 +1,12 @@
+pkgbase = adp-desktop-sdk
+	pkgdesc = ADP Desktop SDK
+	pkgver = 6.3.34
+	pkgrel = 1
+	url = https://www.autodesk.com/
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = manual://adp-desktop-sdk.zip
+	b2sums = 390bcffbca2c16f4bc8ba85844405f45c13b58c1efa1a5652431f4fb3919fef8e2812132d2ea172d918f3fb0e5be4c3a7b52bacb3f9241970b146d13a19e793d
+
+pkgname = adp-desktop-sdk
