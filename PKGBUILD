@@ -1,6 +1,6 @@
 pkgname=larpmodeactive
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fake terminal process simulator"
 arch=('any')
 depends=('python')
