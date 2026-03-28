@@ -1,6 +1,6 @@
 pkgbase = pypy3-build
 	pkgdesc = A simple, correct PEP 517 build frontend
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://build.pypa.io
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = pypy3-build
 	makedepends = pypy3-flit-core
 	depends = pypy3-packaging
 	depends = pypy3-pyproject-hooks
-	source = build-1.4.1.tar.gz::https://github.com/pypa/build/archive/1.4.1.tar.gz
-	sha512sums = ed6e6329ee07c547a8cd7568d4f769b50e117a684c1d087380f896183db4bd6c4d921d75913525b301f994ff865d5acbe44290d8a1aa7c13c169979b942ceedc
+	source = build-1.4.2.tar.gz::https://github.com/pypa/build/archive/1.4.2.tar.gz
+	sha512sums = f404a97391497a21c401976ec95cc9544602c6d8c81443b011ecffe8785a42a9f7b8e4f1d2fdd7eba0f74e4ca74aae1c19f66dfe7dd53eb08c0a0efa8934b67d
 
 pkgname = pypy3-build
