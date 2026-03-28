@@ -23,6 +23,7 @@ makedepends=('git'
              'vulkan-headers'
              'wayland-protocols')
 provides=('jellyfin-desktop-libmpv')
+replaces=('jellyfin-desktop-cef-libmpv-git')
 options=('!emptydirs')
 source=('git+https://github.com/andrewrabert/mpv#branch=libmpv-vulkan-gpu-next'
         'find-deps.py')
