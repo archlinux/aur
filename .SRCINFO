@@ -1,0 +1,25 @@
+pkgbase = claudes-c-compiler
+	pkgdesc = Claude's C Compiler — GCC-compatible C compiler targeting x86-64, i686, AArch64, and RISC-V 64
+	pkgver = 0.1.0.r6f1b99a
+	pkgrel = 1
+	url = git+https://github.com/anthropics/claudes-c-compiler
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = cargo
+	depends = glibc
+	optdepends = gcc: Enable optional cargo features gcc_assembler,gcc_linker,gcc_m16 (build with --features gcc_assembler,gcc_linker,gcc_m16)
+	optdepends = aarch64-linux-gnu-gcc: Cross-compile toolchain for AArch64 (optional, for building ccc-arm)
+	optdepends = riscv64-linux-gnu-gcc: Cross-compile toolchain for RISC-V 64 (optional, for building ccc-riscv)
+	optdepends = i686-linux-gnu-gcc: Cross-compile toolchain for i686 (optional, for building ccc-i686)
+	optdepends = qemu: Useful for running cross-compiled binaries (optional)
+	optdepends = rust: Rust toolchain providing cargo and rustc (optional; cargo is the build tool required — install rust if cargo not available)
+	optdepends = rustup: Optional alternative toolchain manager (AUR) — only if users prefer rustup-managed toolchains (optional)
+	options = !emptydirs
+	source = git+https://github.com/anthropics/claudes-c-compiler.git#commit=6f1b99acb2f4ec2414592136c2009fe7713deec3
+	sha512sums = SKIP
+
+pkgname = claudes-c-compiler
+
+pkgname = claudes-c-compiler-doc
+
+pkgname = claudes-c-compiler-src
