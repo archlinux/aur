@@ -1,13 +1,12 @@
 pkgbase = speech-dispatcher-mimo
 	pkgdesc = speech-dispatcher output module that uses Xiaomi MiMo API for high-quality Chinese/English neural TTS
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://platform.xiaomimimo.com
 	install = speech-dispatcher-mimo.install
 	arch = any
 	license = MIT
 	depends = python
-	depends = python-openai
 	depends = speech-dispatcher
 	depends = mpv
 	source = sd_mimo.py

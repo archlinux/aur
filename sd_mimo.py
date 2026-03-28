@@ -13,8 +13,9 @@ import html
 import signal
 import subprocess
 import base64
-
-from openai import OpenAI
+import json
+import urllib.request
+import urllib.error
 
 MODULE_NAME = "mimo"
 
@@ -45,16 +46,35 @@ def strip_ssml(text: str) -> str:
 
 
 def call_tts(text: str) -> bytes:
-    client = OpenAI(api_key=API_KEY, base_url=BASE_URL)
-    completion = client.chat.completions.create(
-        model="mimo-v2-tts",
-        messages=[{"role": "assistant", "content": text}],
-        audio={"format": FORMAT, "voice": VOICE},
+    url = f"{BASE_URL}/chat/completions"
+
+    payload = {
+        "model": "mimo-v2-tts",
+        "messages": [{"role": "assistant", "content": text}],
+        "audio": {"format": FORMAT, "voice": VOICE},
+    }
+
+    data = json.dumps(payload).encode("utf-8")
+
+    req = urllib.request.Request(
+        url,
+        data=data,
+        headers={"api-key": API_KEY, "Content-Type": "application/json"},
+        method="POST",
     )
-    message = completion.choices[0].message
-    if not hasattr(message, "audio") or not message.audio:
-        raise ValueError("No audio in API response")
-    return base64.b64decode(message.audio.data)
+
+    try:
+        with urllib.request.urlopen(req) as response:
+            result = json.loads(response.read().decode("utf-8"))
+    except urllib.error.URLError as e:
+        raise RuntimeError(f"HTTP request failed: {e}") from e
+    except json.JSONDecodeError as e:
+        raise RuntimeError(f"Failed to parse API response: {e}") from e
+
+    # Extract base64 audio data from response
+    message = result["choices"][0]["message"]
+    audio_data = message["audio"]["data"]
+    return base64.b64decode(audio_data)
 
 
 def play_audio(audio_bytes: bytes):
