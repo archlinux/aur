@@ -1,6 +1,6 @@
 pkgbase = gsdb-bin
 pkgdesc = A database management tool for PostgreSQL, MySQL, and SQLite (pre-built binary)
-pkgver = 0.1.1
+pkgver = 0.2.0
 pkgrel = 1
 url = https://github.com/ginkcode/gsdb
 arch = x86_64
@@ -12,7 +12,7 @@ depends = openssl
 depends = libssh2
 provides = gsdb
 conflicts = gsdb
-source = https://github.com/ginkcode/gsdb/releases/download/v0.1.0/GSDB-x86_64.AppImage
+source = https://github.com/ginkcode/gsdb/releases/download/v0.1.1/GSDB_0.1.1_amd64.AppImage
 sha256sums = SKIP
 
 pkgname = gsdb-bin

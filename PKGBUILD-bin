@@ -1,6 +1,6 @@
 # Maintainer: Gink <ginkcode@gmail.com>
 pkgname=gsdb-bin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A database management tool for PostgreSQL, MySQL, and SQLite (pre-built binary)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3' 'openssl' 'libssh2')
 provides=('gsdb')
 conflicts=('gsdb')
 source=(
-    "https://github.com/ginkcode/gsdb/releases/download/v$pkgver/GSDB-x86_64.AppImage"
+    "https://github.com/ginkcode/gsdb/releases/download/v$pkgver/GSDB_${pkgver}_amd64.AppImage"
     "https://raw.githubusercontent.com/ginkcode/gsdb/v$pkgver/src-tauri/icons/32x32.png"
     "https://raw.githubusercontent.com/ginkcode/gsdb/v$pkgver/src-tauri/icons/128x128.png"
     "https://raw.githubusercontent.com/ginkcode/gsdb/v$pkgver/src-tauri/icons/128x128@2x.png"
@@ -20,7 +20,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     # Install the AppImage
-    install -Dm755 "GSDB-x86_64.AppImage" "$pkgdir/usr/bin/gsdb"
+    install -Dm755 "GSDB_${pkgver}_amd64.AppImage" "$pkgdir/usr/bin/gsdb"
     
     # Install desktop entry
     install -Dm644 "/dev/stdin" "$pkgdir/usr/share/applications/gsdb.desktop" <<EOF

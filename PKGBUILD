@@ -1,6 +1,6 @@
 # Maintainer: Gink <ginkcode@gmail.com>
 pkgname=gsdb
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A database management tool for PostgreSQL, MySQL, and SQLite"
 arch=('x86_64')
@@ -15,7 +15,8 @@ build() {
     cd "$pkgname-$pkgver"
     npm install
     cd src-tauri
-    cargo build --release
+    # Explicitly set target dir to avoid issues with CARGO_TARGET_DIR env var
+    cargo build --release --target-dir target
 }
 
 package() {
