@@ -1,0 +1,4 @@
+[gnome-shell]
+source = "archpkg"
+archpkg = "gnome-shell"
+strip_release = true

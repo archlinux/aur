@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=New GNOME Release Checker
+Exec=bash -c "sleep 5m && notify-gnome-shell-update.sh"
