@@ -6,6 +6,8 @@ pkgbase = otf-monaspice-huhanme-nerd-font-bin
 	arch = any
 	license = OFL-1.1-RFN
 	provides = ttf-font-nerd
+	provides = otf-monaspice-huhanme-nerd-font=1.400
+	conflicts = otf-monaspice-huhanme-nerd-font
 	replaces = ttf-monaspice-huhanme-nerd-font-bin
 	source = https://github.com/aaronliu0130/monaspice/releases/download/v1.400/otf-monaspice-huhanme-nerd-font-1.400-1-any.pkg.tar.zst
 	sha256sums = cacce183f186c74d03b531d7d40d121ee9edce8647072f3f3654fe4b3aa8563f
