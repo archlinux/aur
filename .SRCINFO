@@ -14,7 +14,7 @@ pkgbase = quasar-mips-ide-bin
 	conflicts = quasar-mips-ide-git
 	source = https://github.com/rmia46/quasar/releases/download/v1.0.0/quasar_1.0.0_amd64.deb
 	source = https://raw.githubusercontent.com/rmia46/quasar/main/LICENSE
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 6cb1524d1081a471d1c64eebd32fabfba553938ff262394b72bc8a58ac9ce560
+	sha256sums = 2c685bb9160a30c7c88334530378ae1dfd3c393af72efe3e48a322ee5fe53e28
 
 pkgname = quasar-mips-ide-bin
