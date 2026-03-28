@@ -1,61 +1,76 @@
 # Maintainer: jprjr <john@jrjrtech.com>
 
-pkgname=('lua-luaogg' 'lua51-luaogg' 'lua52-luaogg' 'lua53-luaogg')
+pkgname=('lua-luaogg' 'lua51-luaogg' 'lua52-luaogg' 'lua53-luaogg' 'lua54-luaogg')
 _pkgbase='luaogg'
 pkgver=1.2.1
-pkgrel=1
-arch=('x86_64' 'i686')
+pkgrel=2
+arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/jprjr/luaogg'
 license=('MIT')
 depends=('libogg')
-makedepends=('cmake' 'lua' 'lua51' 'lua52' 'lua53')
-source=("https://github.com/jprjr/luaogg/releases/download/v${pkgver}/luaogg-${pkgver}.tar.gz")
+_lua_cur=5.5
+_lua_next=5.6
+makedepends=('cmake' "lua>=${_lua_cur}" "lua<${_lua_next}" 'lua51' 'lua52' 'lua53' 'lua54')
+source=("$url/releases/download/v${pkgver}/luaogg-${pkgver}.tar.gz")
 
-md5sums=('1869b6a28246e1a0ae166601cdf43e5b')
+_build() {
+    LUA_V=$1
+    V=${LUA_V//./}
+
+    cmake -B build-lua$V-${pkgver}-${pkgrel} -DCMAKE_POLICY_VERSION_MINIMUM=3.10 -DLUA_VERSION=$LUA_V -DCMAKE_BUILD_TYPE=None -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
+    make -C build-lua$V-${pkgver}-${pkgrel}
+}
 
 build() {
+    for v in 5.1 5.2 5.3 5.4 5.5 ; do
+        _build $v
+    done
+}
 
-    cmake -B build-lua-${pkgver}-${pkgrel}                     -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
-    cmake -B build-lua51-${pkgver}-${pkgrel} -DLUA_VERSION=5.1 -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
-    cmake -B build-lua52-${pkgver}-${pkgrel} -DLUA_VERSION=5.2 -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
-    cmake -B build-lua53-${pkgver}-${pkgrel} -DLUA_VERSION=5.3 -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
+_package() {
+    LUA_V=$1
+    V=${LUA_V//./}
 
-    make -C build-lua-${pkgver}-${pkgrel}
-    make -C build-lua51-${pkgver}-${pkgrel}
-    make -C build-lua52-${pkgver}-${pkgrel}
-    make -C build-lua53-${pkgver}-${pkgrel}
-
+    make -C build-lua$V-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
+    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_lua-luaogg() {
-    pkgdesc="Lua bindings for libogg"
+    pkgdesc="Lua ${_lua_cur} bindings for libogg"
     depends+=('lua')
 
-    make -C build-lua-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
+    _package ${_lua_cur}
 }
 
-package_lua51-luaogg() {
-    pkgdesc="Lua bindings for libogg for Lua 5.1"
-    depends+=('lua51')
+package_lua54-luaogg() {
+    pkgdesc="Lua 5.4 bindings for libogg"
+    depends+=('lua54')
 
-    make -C build-lua51-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_lua52-luaogg() {
-    pkgdesc="Lua bindings for libogg for Lua 5.2"
-    depends+=('lua52')
-
-    make -C build-lua52-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    _package 5.4
 }
 
 package_lua53-luaogg() {
-    pkgdesc="Lua bindings for libogg for Lua 5.3"
+    pkgdesc="Lua 5.3 bindings for libogg"
     depends+=('lua53')
 
-    make -C build-lua53-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    _package 5.3
 }
+
+package_lua52-luaogg() {
+    pkgdesc="Lua 5.2 bindings for libogg"
+    depends+=('lua52')
+
+    _package 5.2
+}
+
+package_lua51-luaogg() {
+    pkgdesc="Lua 5.1 bindings for libogg"
+    depends+=('lua51')
+
+    _package 5.1
+}
+
+
+sha512sums=(
+'8c97a95064bd2dab610e34debcaee9360c65125ab08a452274bf52effc60555418d097eb13ff441a3f91c26c1c6204870e7def8d4de9ff10255062bba356f2e2'
+)
