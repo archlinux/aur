@@ -1,0 +1,5 @@
+[parsync-bin]
+source = "github"
+github = "AlpinDale/parsync"
+use_latest_release = true
+prefix = "v"
