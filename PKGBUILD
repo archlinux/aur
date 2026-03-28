@@ -1,42 +1,52 @@
 # Maintainer: Hexhu <i at hexhu.net>
 # Contributor : Thermi <noel [at] familie-kuntze dot de>
 
+_pkgname=ndppd
 pkgname=ndppd-git
-pkgver=r116.e01d67a
-pkgrel=3
+pkgver=0.2.6.r14.g0b78ff2
+pkgrel=1
 pkgdesc="NDP Proxy Daemon, version 0.x (git version)"
 arch=('x86_64')
 url="https://github.com/DanielAdolfsson/ndppd"
-license=('GPL3')
-depends=()
+license=('GPL-3.0-or-later')
+depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 backup=('etc/ndppd.conf')
-source=('git+https://github.com/DanielAdolfsson/ndppd'
-        'ndppd.service')
-md5sums=('SKIP'
-         '4658734163b92421e4e4fea4cbb4f7d9')
+source=('git+https://github.com/DanielAdolfsson/ndppd#branch=0.2.7-devel')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname%-git}"
+	cd "${_pkgname}"
+	git describe --long --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
+}
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+prepare() {
+	cd "${_pkgname}"
+
+	sed -r \
+		-e 's|/var/run|/run|g' \
+		-e 's|/usr/sbin|/usr/bin|g' \
+		-i ndppd.service
 }
 
 build() {
-	cd "${srcdir}/${pkgname%-git}"
+	cd "${_pkgname}"
 
-    # Fix versioning, though dozens of commits have been added to the master branch
-    # after v0.2.5, which was released at August 2016.
-    sed -i 's/\"0.2.4\"/\"0.2.5\"/' src/ndppd.h
+	# Fix versioning, though dozens of commits have been added to the master branch
+	# after v0.2.5, which was released at August 2016.
+	sed -r \
+		-e 's/^(#define NDPPD_VERSION +).*/\1"'"$pkgver"'"/' \
+		-i src/ndppd.h
 
-    make DEBUG=1 PREFIX=/usr all
+	make PREFIX=/usr all
 }
 
 package() {
-    cd "${srcdir}/${pkgname%-git}"
-    make PREFIX=/usr SBINDIR=/${pkgdir}/usr/bin DESTDIR=${pkgdir} install
-    install -D -m 644 "${srcdir}/ndppd.service" "${pkgdir}/usr/lib/systemd/system/ndppd.service"
-    install -D -m 644 "ndppd.conf-dist" "${pkgdir}/etc/ndppd.conf"
+	cd "${_pkgname}"
+
+	make PREFIX=/usr SBINDIR="${pkgdir}/usr/bin" DESTDIR="${pkgdir}" install
+	install -D -m 644 "ndppd.service" -t "${pkgdir}/usr/lib/systemd/system"
+	install -D -m 644 "ndppd.conf-dist" "${pkgdir}/etc/ndppd.conf"
 }
