@@ -3,7 +3,7 @@
 _pkgauthor=pkgxdev
 _pkgname=pkgx
 pkgname=${_pkgname}-bin
-pkgver=2.10.1
+pkgver=2.10.2
 pkgrel=1
 pkgdesc='Run Anything'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -20,8 +20,8 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}+linux+
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}+linux+${arch[1]}.tar.xz")
 sha256sums=('f9e73cf0b1182acbe4d2c623f9970c131c0be0d955bb0609cd98551eabf9f118'
             '1b429e0a14843b1d8377a04aa15180df320027c493baa9c625604cb5706c5ef6')
-sha256sums_x86_64=('6580fbe9e8dc79fdfc402502515fc8b4d377961c1b1a50b8d8e775ac96148afb')
-sha256sums_aarch64=('6936c2498fcea212ab05d57ac1bd5de79464051e405c882ac059bc00c5218bde')
+sha256sums_x86_64=('780e1a1b2c15cd927640ab9fb73e00c2806189a60f84c5965407ff1f4e7066d6')
+sha256sums_aarch64=('0aa1be5c66e69ef7f40370c26215200703f9381482f8001309b5be9c50878862')
 
 package() {
   cd "${srcdir}/" || exit

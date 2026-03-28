@@ -1,6 +1,6 @@
 pkgbase = pkgx-bin
 	pkgdesc = Run Anything
-	pkgver = 2.10.1
+	pkgver = 2.10.2
 	pkgrel = 1
 	url = https://github.com/pkgxdev/pkgx
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = pkgx-bin
 	provides = pkgx
 	conflicts = pkgx
 	options = !strip
-	source = LICENSE-2.10.1::https://raw.githubusercontent.com/pkgxdev/pkgx/v2.10.1/LICENSE.txt
-	source = README-2.10.1.md::https://raw.githubusercontent.com/pkgxdev/pkgx/v2.10.1/README.md
+	source = LICENSE-2.10.2::https://raw.githubusercontent.com/pkgxdev/pkgx/v2.10.2/LICENSE.txt
+	source = README-2.10.2.md::https://raw.githubusercontent.com/pkgxdev/pkgx/v2.10.2/README.md
 	sha256sums = f9e73cf0b1182acbe4d2c623f9970c131c0be0d955bb0609cd98551eabf9f118
 	sha256sums = 1b429e0a14843b1d8377a04aa15180df320027c493baa9c625604cb5706c5ef6
-	source_x86_64 = https://github.com/pkgxdev/pkgx/releases/download/v2.10.1/pkgx-2.10.1+linux+x86-64.tar.xz
-	sha256sums_x86_64 = 6580fbe9e8dc79fdfc402502515fc8b4d377961c1b1a50b8d8e775ac96148afb
-	source_aarch64 = https://github.com/pkgxdev/pkgx/releases/download/v2.10.1/pkgx-2.10.1+linux+aarch64.tar.xz
-	sha256sums_aarch64 = 6936c2498fcea212ab05d57ac1bd5de79464051e405c882ac059bc00c5218bde
+	source_x86_64 = https://github.com/pkgxdev/pkgx/releases/download/v2.10.2/pkgx-2.10.2+linux+x86-64.tar.xz
+	sha256sums_x86_64 = 780e1a1b2c15cd927640ab9fb73e00c2806189a60f84c5965407ff1f4e7066d6
+	source_aarch64 = https://github.com/pkgxdev/pkgx/releases/download/v2.10.2/pkgx-2.10.2+linux+aarch64.tar.xz
+	sha256sums_aarch64 = 0aa1be5c66e69ef7f40370c26215200703f9381482f8001309b5be9c50878862
 
 pkgname = pkgx-bin
