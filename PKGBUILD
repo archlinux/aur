@@ -1,7 +1,7 @@
 # Maintainer: Zane Schepke <support@wgtunnel.com>
 pkgname=wgtunnel-bin
 # Update on release
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 install=wgtunnel-bin.install
 pkgdesc="WireGuard and AmneziaWG VPN client with auto-tunneling, lockdown and proxying"
@@ -20,6 +20,7 @@ optdepends=(
   'libnotify: desktop notifications'
   'gnome-keyring: GNOME keyring backend'
   'kwallet: KDE keyring backend'
+  'libayatana-appindicator: improved system tray support'
 )
 
 provides=("wgtunnel=${pkgver}")
@@ -31,7 +32,7 @@ source=(
 )
 
 # Update on release
-sha256sums=('6bec2d70cb2f6e25f513242d8e82b986ecb9757869c94f295ddab99c873f9028')
+sha256sums=('03b0809fba60121d34f012d943406ce02b1f76d3ba2a0e9b5bf81fbfed755145')
 
 package() {
   cd "$srcdir"
