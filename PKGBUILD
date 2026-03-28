@@ -1,44 +1,46 @@
-# Maintainer: iveahugeship <iveahugeship@gmail.com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: iveahugeship <iveahugeship@gmail.com>
 # Contributor: sparklespdx <josh.farwell@gmail.com>
-
-pkgname="gpu-burn-git"
-pkgver=r76.5f0a86c
+pkgname=gpu-burn-git
+pkgver=r90.671f4be
 pkgrel=1
 pkgdesc="Multi-GPU CUDA stress test"
-arch=("x86_64")
+arch=('x86_64')
 url="https://github.com/wilicc/gpu-burn"
-license=("BSD")
-makedepends=("git")
-depends=("nvidia-utils" "cuda")
-provides=("gpu-burn")
-conflicts=("gpu_burn-git" "gpu-burn")
-replaces=("gpu_burn-git")
-source=("${pkgname}::git+https://github.com/wilicc/gpu-burn.git")
-sha256sums=("SKIP")
+license=('BSD-2-Clause')
+makedepends=('git')
+depends=(
+  'cuda'
+  'nvidia-utils'
+)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'gpu_burn-git')
+source=('git+https://github.com/wilicc/gpu-burn.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare () {
-  sed -i "s|/usr/local/cuda|/opt/cuda|g" "${pkgname}"/Makefile
+  cd "${pkgname%-git}"
 
-  # Hax to make the program pick up compare.ptx in /usr/lib
-  sed -i 's|"compare.ptx"|"/usr/lib/gpu_burn/compare.ptx"|g' "${pkgname}"/gpu_burn-drv.cpp
+  # Set compare.ptx path
+  sed -i "s|compare.ptx|/usr/share/${pkgname%-git}/compare.ptx|g" gpu_burn-drv.cpp
 }
 
 build () {
-  cd "${pkgname}"
-  make
+  cd "${pkgname%-git}"
+  CUDAPATH=/opt/cuda make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  install -Dm755 gpu_burn "${pkgdir}"/usr/bin/gpu_burn
-  install -Dm644 compare.ptx "${pkgdir}"/usr/lib/gpu_burn/compare.ptx
+  cd "${pkgname%-git}"
+  install -Dm755 gpu_burn -t "$pkgdir/usr/bin/"
+  install -Dm644 compare.ptx -t "$pkgdir/usr/share/${pkgname%-git}/"
+  install -Dm644 "${pkgname%-git}.8" -t "$pkgdir/usr/share/man/man8/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
