@@ -1,6 +1,6 @@
 pkgbase = python-docling-parse
 	pkgdesc = Simple package to extract text with coordinates from programmatic PDFs
-	pkgver = 5.2.0
+	pkgver = 5.6.1
 	pkgrel = 1
 	url = https://github.com/docling-project/docling-parse
 	arch = any
@@ -11,12 +11,9 @@ pkgbase = python-docling-parse
 	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python-docling-core
-	depends = python-tabulate
-	depends = python-pillow
-	depends = python-pydantic
-	source = python-docling-parse-5.2.0.tar.gz::https://github.com/docling-project/docling-parse/archive/refs/tags/v5.2.0.tar.gz
+	source = python-docling-parse-5.6.1.tar.gz::https://github.com/docling-project/docling-parse/archive/refs/tags/v5.6.1.tar.gz
 	source = pyproject_toml_dep.patch
-	sha256sums = 13be8a0d2089d0b8104de96b0b6b4affb8fc87d6004f53b4dc24cb18be839111
-	sha256sums = SKIP
+	sha256sums = d976535236dce21938e48c0d52ea1e863b149894362c531fa1438878ad9ad36a
+	sha256sums = 6aa1dbab5fce06713bdc6a4ba81edc167f7e6913563391207b13317816854336
 
 pkgname = python-docling-parse

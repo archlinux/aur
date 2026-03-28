@@ -3,21 +3,26 @@
 _pkgname=docling-parse
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=5.2.0
+pkgver=5.6.1
 pkgrel=1
 pkgdesc="Simple package to extract text with coordinates from programmatic PDFs"
 arch=('any')
 url="https://github.com/docling-project/docling-parse"
 license=('MIT')
-depends=(python-docling-core python-tabulate python-pillow python-pydantic)
+depends=(python-docling-core
+         # python-tabulate # already required by python-docling-core
+         # python-pillow # already required by python-docling-core
+         # python-pydantic # already required by python-docling-core
+)
 makedepends=('python-build' 'python-installer' 'python-pdm-backend' 'python-wheel' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/docling-project/docling-parse/archive/refs/tags/v${pkgver}.tar.gz"
         "pyproject_toml_dep.patch")
-sha256sums=('13be8a0d2089d0b8104de96b0b6b4affb8fc87d6004f53b4dc24cb18be839111'
-            'SKIP')
+sha256sums=('d976535236dce21938e48c0d52ea1e863b149894362c531fa1438878ad9ad36a'
+            '6aa1dbab5fce06713bdc6a4ba81edc167f7e6913563391207b13317816854336')
 
 prepare() {
-    patch -Np0 < pyproject_toml_dep.patch
+    cd "${_pkgname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/pyproject_toml_dep.patch"
 }
 
 build() {
@@ -27,5 +32,5 @@ build() {
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+    python -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
 }

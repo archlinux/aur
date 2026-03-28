@@ -1,5 +1,5 @@
---- docling-parse-5.2.0/pyproject.toml	2026-01-30 08:39:50.000000000 +0100
-+++ docling-parse-5.2.0/pyproject.toml	2026-02-03 13:59:00.608860645 +0100
+--- a/pyproject.toml
++++ b/pyproject.toml
 @@ -44,10 +44,10 @@
      "setuptools>=77.0.3",
      "pybind11>=2.13.6",
@@ -13,4 +13,3 @@
 +#    "cmake>=3.27.0"
  ]
  build-backend = "setuptools.build_meta"
-
