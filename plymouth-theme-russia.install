@@ -1,41 +1,92 @@
 # Set theme name
-
-name="russia"
+_name="russia"
 
 post_install() {
     echo
-    echo "Установить тему $name для Plymouth"
+    echo ":: Установка темы Plymouth: $_name"
     echo
 
-    # Смена названия темы в plymouthd.conf
-    sed -i -e "s,.*Theme=.*,Theme=$name," /etc/plymouth/plymouthd.conf
+    # Проверка, установлен ли Plymouth
+    if ! command -v plymouth-set-default-theme >/dev/null 2>&1; then
+        echo "ОШИБКА: Plymouth не установлен или отсутствует в переменной PATH"
+        echo "Пожалуйста, сначала установите пакет Plymouth"
+        return 1
+    fi
 
-    plymouth-set-default-theme -R $name
+    # Сохранение текущей темы на случай отката
+    current_theme=$(plymouth-set-default-theme 2>/dev/null || echo "none")
+    if [[ "$current_theme" != "none" && "$current_theme" != "$_name" ]]; then
+        echo "Current theme: $current_theme"
+        echo "Switching to: $_name"
+    fi
 
-    echo
-    echo "Сделано"
-    echo
+    # Установка темы (без -R, чтобы не пересобирать initrd сразу)
+    if plymouth-set-default-theme -R "$_name"; then
+        echo "✓ Тема $_name установлена по умолчанию"
+        echo "перезагрузите систему"
+        echo
+    else
+        echo "ОШИБКА: не удалось задать тему $_name"
+        return 1
+    fi
+
+    # Сохранение информация, что тема была установлена через этот пакет
+    echo "$_name" > "$(dirname "$(plymouth-set-default-theme --help 2>/dev/null | grep -o '/[^ ]*plymouthd.conf' | head -1)")/.theme-$_name.installed" 2>/dev/null || true
 }
 
 post_upgrade() {
-    grep "Theme=$name" /etc/plymouth/plymouthd.conf
+    # Проверка, использования этой темы
+    current_theme=$(plymouth-set-default-theme 2>/dev/null || echo "")
 
-    if [ $? -eq 0 ] ; then
-        plymouth-set-default-theme -R $name
+    if [[ "$current_theme" == "$_name" ]]; then
+        echo ":: Обновление темы Plymouth: $_name"
+
+        # Переустановка темы (не пересобираем initrd, только обновляем ссылки)
+        if plymouth-set-default-theme -R "$_name"; then
+            echo "✓ Тема $_name обновлена"
+            echo
+        else
+            echo "ВНИМАНИЕ: не удалось обновить конфигурацию темы"
+        fi
+    else
+        echo ":: Тема $_name в данный момент неактивна (активна: $current_theme)"
+        echo "   Автоматическое обновление не выполняется"
     fi
 }
 
 pre_remove() {
-    grep "Theme=$name" /etc/plymouth/plymouthd.conf
+    current_theme=$(plymouth-set-default-theme 2>/dev/null || echo "")
 
-    if [ $? -eq 0 ] ; then
-        cat << _EOF 
-  
-==> WARNING: You have removed your current plymouth-theme.
-==> Set a different theme with:
-==> sudo plymouth-set-default-theme -R <theme-name>
-==> or remove Plymouth properly!
+    if [[ "$current_theme" == "$_name" ]]; then
+        echo
+        echo "╔══════════════════════════════════════════════════════════╗"
+        echo "║      ВНИМАНИЕ: вы удаляете активную тему Plymouth!       ║"
+        echo "╚══════════════════════════════════════════════════════════╝"
+        echo
+        echo "Во время загрузки система может показывать пустой экран."
+        echo
+        echo "Пожалуйста, выберите другую тему, прежде чем удалять этот пакет."
+        echo "or after removal run:"
+        echo "  sudo plymouth-set-default-theme -R <theme-name>"
+        echo
+        echo "Доступные темы:"
+        plymouth-set-default-theme --list 2>/dev/null | sed 's/^/  - /'
+        echo
 
-_EOF
-  fi
+        # 5 секунд на чтение
+        sleep 5
+    fi
+}
+
+# Функция полного удаления
+post_remove() {
+    current_theme=$(plymouth-set-default-theme 2>/dev/null || echo "")
+
+    if [[ -z "$current_theme" || "$current_theme" == "none" ]]; then
+        echo
+        echo "⚠️  Тема в Plymouth в данный момент не установлена!"
+        echo "Пожалуйста, установите и настройте тему оформления:"
+        echo "  sudo plymouth-set-default-theme -R <theme-name>"
+        echo
+    fi
 }

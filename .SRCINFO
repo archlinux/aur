@@ -1,14 +1,14 @@
 pkgbase = plymouth-theme-russia
-	pkgdesc = Russia coat of arms splash screen for plymouth
-	pkgver = 1.0.1
+	pkgdesc = Russia coat of arms splash screen for Plymouth
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://notabug.org/Thr0TT1e/russia-theme-plymouth
+	url = https://codeberg.org/Thr0TT1e/russia-theme-plymouth
 	install = plymouth-theme-russia.install
 	arch = any
-	license = LGPLv3
+	license = LGPL-3.0-only
 	makedepends = git
 	depends = plymouth
-	source = git+https://notabug.org/Thr0TT1e/russia-theme-plymouth.git
+	source = plymouth-theme-russia::git+https://codeberg.org/Thr0TT1e/russia-theme-plymouth.git
 	sha512sums = SKIP
 
 pkgname = plymouth-theme-russia

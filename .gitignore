@@ -1,0 +1,7 @@
+pkg/
+src/
+plymouth-theme-russia/
+*.pkg.tar.*
+*.tar.gz
+*.tar.zst
+*.log
