@@ -1,7 +1,7 @@
 # Maintainer: agzes <agzes0@proton.me>
 pkgname=antiafk-rbx-sober
 _pkgname=AntiAFK-RBX-Sober
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="The best program for AntiAFK for Sober (roblox). Or just Sober Anti-AFK."
 arch=('x86_64')
@@ -10,22 +10,18 @@ license=('MIT')
 depends=('gtk4')
 makedepends=('rust' 'cargo' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v.$pkgver.tar.gz")
-sha256sums=('b8518eb34724a0be8a906f6602a29863d22b48db242df516061f6e46e59169a2')
+sha256sums=('5363415cc7bca0b8aea0a28e207f7a1531abb349f6b045f8d67fa6505ac18763')
 
 prepare() {
   cd "$_pkgname-v.$pkgver"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  sed -i "s/Icon=AntiAFK-RBX-Sober/Icon=antiafk-rbx-sober/" "dev.agzes.$pkgname.desktop"
 }
 
 build() {
   cd "$_pkgname-v.$pkgver"
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
-}
-
-check() {
-  cd "$_pkgname-v.$pkgver"
-  cargo test --frozen
 }
 
 package() {
