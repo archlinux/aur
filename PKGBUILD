@@ -2,7 +2,7 @@
 
 pkgname=srwm-bin
 _pkgver=$(curl -s "https://api.github.com/repos/infraflakes/srwm/releases/latest" | jq -r '.tag_name' | sed 's/^v//')
-pkgver=0.2.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='A fully statically linked dynamic X11 window manager written in Go, C and Lua'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("$url/releases/download/v${_pkgver}/srwm-v${_pkgver}-linux-amd64"{,.sha2
 sha256sums=('SKIP'
             'SKIP'
             'f3bf35d06e585093fd5413dc8e7e33754e301ee15ac4a31fc27c8af14d5c4e4a'
-            '8bbe268a549563fb2895eefd3c43869ca436eda0ba826474334270ad84a7c98d')
+            '074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff')
 
 pkgver() {
    echo $_pkgver
