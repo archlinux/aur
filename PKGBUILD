@@ -1,10 +1,10 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor: Alexandros McCray <alexandros dot mc at proton dot me>
+# Contributor: Alexandros McCray <alexandros at amccray dot com>
 
 pkgname=runa-bin
 _name=runa
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast and lightweight console file browser written in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alexm-dev/runa"
