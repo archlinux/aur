@@ -6,37 +6,36 @@
 # We grab koreader.png and koreader.desktop from the AppImage, patch the koreader.desktop,
 # and install them as we would other apps, for convenience sake.
 pkgname=koreader-appimage
-pkgver=2025.10
+pkgver=2026.03
 pkgrel=1
 
 pkgdesc="An ebook reader supporting PDF, DjVu, EPUB, FB2 and many more formats."
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'armhf')
 depends=('zlib')
-makedepends=('p7zip')
+makedepends=()
 url="https://koreader.rocks/"
 license=('AGPL3')
-_filename="koreader-appimage-$arch-v$pkgver.AppImage"
+_filename="koreader-v${pkgver}-${CARCH}.AppImage"
 noextract=("$_filename")
 options=('!strip')
-install=${pkgname}.install
 source=("https://github.com/koreader/koreader/releases/download/v$pkgver/$_filename")
-sha512sums=('1d8e9dd84e8d82ddd2dd3e23e90e4944c67741da3f08a436df70bbc8607ec27a1e1da1a4c2f8555ff0d7183bb613104878709807c562574d7dee3307323b57e9')
+sha512sums=('7b915d66cb6f830c96f9c775c284b3b831ceab9a451c8b499d51744b3d674ae8ec73628d22b62d528b309af312dbc6d4e57445115bc91d67c48adf3b97cc68c7')
 
 prepare() {
     cd "${srcdir}"
     mv "$_filename" "koreader.AppImage"
-    7z x "${srcdir}/koreader.AppImage" koreader.png
-    7z x "${srcdir}/koreader.AppImage" koreader.desktop
-    mkdir -p usr/share/pixmaps usr/share/applications opt/appimages
-    mv koreader.png usr/share/pixmaps
-    sed -i 's@Exec=.*@Exec=/opt/appimages/koreader.AppImage %u@' koreader.desktop
-    mv koreader.desktop usr/share/applications
-    cp koreader.AppImage opt/appimages/
+    chmod +x koreader.AppImage
+    ./koreader.AppImage --appimage-extract usr/share/applications/rocks.koreader.koreader.desktop
+    ./koreader.AppImage --appimage-extract usr/share/icons/hicolor/512x512/apps/koreader.png
+    sed -i 's@Exec=.*@Exec=/opt/appimages/koreader.AppImage %u@' \
+        squashfs-root/usr/share/applications/rocks.koreader.koreader.desktop
 }
 
 package() {
     cd "${srcdir}"
-    cp -rp usr "${pkgdir}/usr"
-    cp -rp opt "${pkgdir}/opt"
-    chmod +x "${pkgdir}/opt/appimages/koreader.AppImage"
+    install -Dm755 koreader.AppImage "${pkgdir}/opt/appimages/koreader.AppImage"
+    install -Dm644 squashfs-root/usr/share/applications/rocks.koreader.koreader.desktop \
+        "${pkgdir}/usr/share/applications/rocks.koreader.koreader.desktop"
+    install -Dm644 squashfs-root/usr/share/icons/hicolor/512x512/apps/koreader.png \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/koreader.png"
 }
