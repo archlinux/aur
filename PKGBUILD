@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-plugin-filesearch
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="File search plugin for Owlry — find files using fd or mlocate"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
     'mlocate: locate-based file search'
 )
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry-plugins/archive/$pkgname-v$pkgver.tar.gz")
-b2sums=('3d9a096485d5dea487a69fd48019eb5cddf2781bda5acce0503ecc5f19412f274b3a6f60a1922c35bd7855e4f72eaacb131d8affd0ee21d00e213345134a1b98')
+b2sums=('ce86d6ca5cfb8ce6b57bd998fe2e6c242d2e09f147f3d97bd2de5eedbfd4d081f7bb196d930da8d7158a07771b5b3b6e3e29fe79726c248d30c5a494e1bf63dd')
 
 _cratename=owlry-plugin-filesearch
 
