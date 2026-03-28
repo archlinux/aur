@@ -27,11 +27,6 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    #patch --directory="$_pkgname" --forward --strip=1 --input="${srcdir}/gpsd-version.patch"
-    true
-}
-
 build() {
     cd "$_pkgname"
     mkdir -p build
