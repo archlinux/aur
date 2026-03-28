@@ -4,7 +4,7 @@
 pkgname=java-openjdk-ea-bin
 
 _majorver=27
-_buildver=14
+_buildver=15
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 
@@ -37,9 +37,9 @@ source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver
 
 
 if [[ $_JARCH == "x64" ]]; then
-sha256sums=('64b478b9973d8d04e1680cdfaf11a8e93f8a17f962af3ddb1c61b76a62c0d699')
+sha256sums=('5cfe1cf2f5d5ebbcdd826c7298fbabc42d656edbe9544c74b1ee84df6e5326a7')
 else
-sha256sums=('c99686ed0406f05a113b6467b6a57699864922c476481609a703c6dd91534f45')
+sha256sums=('ab3f14d81c06590facec1138b71b55a7f64d47c0e0845113c9a8ecd4be6751bb')
 fi
 
 
