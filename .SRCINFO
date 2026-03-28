@@ -1,0 +1,21 @@
+pkgbase = kiro-generator
+	pkgdesc = Kiro agent configuration generator
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/kiro-generator/kiro-generator
+	install = kiro-generator.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = binutils
+	provides = kiro-generator
+	conflicts = kiro-generator-bin
+	conflicts = kiro-generator-git
+	options = !lto
+	backup = etc/kg/global.env
+	backup = etc/kg/home.env
+	source = kiro-generator::git+https://github.com/kiro-generator/kiro-generator.git#tag=v0.2.1
+	sha256sums = e9896d228bf8c2ca2d74e22b440364db2b28c4c4d944b248af3480eb0019c1c5
+
+pkgname = kiro-generator
