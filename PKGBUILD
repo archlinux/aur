@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=soapy-malahit-rr-git
 _pkgname=SoapyMalahitRR
-pkgver=r27.c65c122
+pkgver=r61.cb3d93b
 pkgrel=1
 pkgdesc="SoapySDR module for Malahit RR SDR receiver"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -34,13 +34,13 @@ package() {
     DESTDIR="${pkgdir}" cmake --install build
 
     # Install firmware file
-    install -Dm644 malahit-r1-fw-102.bin "${pkgdir}/usr/share/malahit/malahit-r1-fw-102.bin"
+    install -Dm644 malahit-fw/malahit-r1-fw-102.bin "${pkgdir}/usr/share/malahit/malahit-r1-fw-102.bin"
 
     # Install systemd service
-    install -Dm644 malahit-id.service "${pkgdir}/usr/lib/systemd/system/malahit-id.service"
+    install -Dm644 malahit-id/malahit-id.service "${pkgdir}/usr/lib/systemd/system/malahit-id.service"
 
     # Install systemd service helper script
-    install -Dm755 malahit-id.sh "${pkgdir}/usr/share/malahit/malahit-id.sh"
+    install -Dm755 malahit-id/malahit-id.sh "${pkgdir}/usr/share/malahit/malahit-id.sh"
 
     # Install license
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
