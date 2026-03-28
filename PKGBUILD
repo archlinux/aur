@@ -1,7 +1,7 @@
-# Maintainer: robinpie <redacted@fake.email>
+# Maintainer: robinpie <robin413@protonmail.com>
 pkgname=dinky
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A terminal text editor for those who just want to edit some text'
 arch=('x86_64')
 url='https://github.com/sedwards2009/dinky'
