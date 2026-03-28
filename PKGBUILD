@@ -8,7 +8,6 @@ arch=('x86_64')
 url="https://github.com/kajano-source/rufus-linux"
 license=('GPL3')
 depends=(
-    'electron33'
     'util-linux'     # provides lsblk, umount
     'parted'
     'dosfstools'     # mkfs.vfat
@@ -38,17 +37,13 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    # Install app files
+    # Install the full bundled app directory
     install -dm755 "$pkgdir/usr/lib/$pkgname"
-    cp -r dist/linux-unpacked/resources "$pkgdir/usr/lib/$pkgname/"
+    cp -r dist/linux-unpacked/* "$pkgdir/usr/lib/$pkgname/"
 
-    # Create launcher script
+    # Create shortcut executable
     install -dm755 "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/$pkgname" << EOF
-#!/bin/sh
-exec electron33 /usr/lib/$pkgname/resources/app "$@"
-EOF
-    chmod +x "$pkgdir/usr/bin/$pkgname"
+    ln -s "/usr/lib/$pkgname/rufus-linux" "$pkgdir/usr/bin/$pkgname"
 
     # Install desktop entry
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" << EOF

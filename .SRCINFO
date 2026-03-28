@@ -7,7 +7,6 @@ pkgbase = rufus-linux
 	license = GPL3
 	makedepends = npm
 	makedepends = nodejs
-	depends = electron33
 	depends = util-linux
 	depends = parted
 	depends = dosfstools
