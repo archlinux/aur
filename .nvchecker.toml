@@ -1,0 +1,5 @@
+[pulse-bin]
+source = "github"
+github = "ArpNova/pulse"
+use_latest_release = true
+prefix = "v"
