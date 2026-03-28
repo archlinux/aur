@@ -1,11 +1,12 @@
 # Maintainer: lemonxah <lemonxah@gmail.com>
 pkgname=zestbay
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A PipeWire patchbay and audio routing manager with LV2 plugin hosting"
 arch=('x86_64')
 url="https://github.com/lemonxah/zestbay"
 license=('MIT')
+options=('!lto' '!debug')
 depends=(
   'pipewire'
   'qt6-base'
