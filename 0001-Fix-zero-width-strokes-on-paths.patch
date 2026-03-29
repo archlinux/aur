@@ -1,0 +1,208 @@
+From daafc05e8f34fe430211c583d377bd62135ba23f Mon Sep 17 00:00:00 2001
+From: Hatem ElKharashy <hatem.elkharashy@qt.io>
+Date: Mon, 23 Feb 2026 10:18:27 +0200
+Subject: [PATCH] Fix zero width strokes on paths
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This commit 2b3f18092316e49bb0f122375fbeca935219166f made a change to
+draw a path element in one pass instead of two. As a side effect, a path
+drawn in one pass and has a stroke width of 0 will end up with a stroke.
+This is because a stroke width of 0 in QPainter means cosmetic pen. This
+was not an issue for the fillThenStroke function because it checks for
+zero width strokes. If the stroke width is set to zero, let
+fillThenStroke handle it.
+
+Fixes: QTBUG-144383
+Change-Id: I8b56908d20a3c662a5a4d34db9d4fe1a7d0c4210
+Reviewed-by: Robert Löhning <robert.loehning@qt.io>
+(cherry picked from commit c649e5d88a0c9c5a82944f6609834c0c86283388)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ src/svg/qsvggraphics.cpp                        | 17 +++++++++--------
+ src/svg/qsvggraphics_p.h                        | 12 ++++++------
+ src/svg/qsvgnode.cpp                            |  4 ++--
+ src/svg/qsvgnode_p.h                            |  2 +-
+ .../baseline/data/bugs/zeroStrokeWidthPath.svg  |  4 ++++
+ 5 files changed, 22 insertions(+), 17 deletions(-)
+ create mode 100644 tests/baseline/data/bugs/zeroStrokeWidthPath.svg
+
+diff --git a/src/svg/qsvggraphics.cpp b/src/svg/qsvggraphics.cpp
+index 4d6c1058..a163fe8f 100644
+--- a/src/svg/qsvggraphics.cpp
++++ b/src/svg/qsvggraphics.cpp
+@@ -68,7 +68,7 @@ void QSvgEllipse::drawCommand(QPainter *p, QSvgExtraStates &)
+     p->drawEllipse(m_bounds);
+ }
+ 
+-bool QSvgEllipse::separateFillStroke(const QSvgExtraStates &) const
++bool QSvgEllipse::separateFillStroke(const QPainter *, const QSvgExtraStates &) const
+ {
+     return true;
+ }
+@@ -120,7 +120,7 @@ QSvgPath::QSvgPath(QSvgNode *parent, const QPainterPath &qpath)
+ void QSvgPath::drawCommand(QPainter *p, QSvgExtraStates &states)
+ {
+     const qreal oldOpacity = p->opacity();
+-    const bool drawingInOnePass = !separateFillStroke(states);
++    const bool drawingInOnePass = !separateFillStroke(p, states);
+     if (drawingInOnePass)
+         p->setOpacity(oldOpacity * states.fillOpacity);
+     m_path.setFillRule(states.fillRule);
+@@ -134,9 +134,10 @@ void QSvgPath::drawCommand(QPainter *p, QSvgExtraStates &states)
+         p->setOpacity(oldOpacity);
+ }
+ 
+-bool QSvgPath::separateFillStroke(const QSvgExtraStates &s) const
++bool QSvgPath::separateFillStroke(const QPainter *p, const QSvgExtraStates &s) const
+ {
+-    return !qFuzzyCompare(s.fillOpacity, s.strokeOpacity);
++    return !qFuzzyCompare(s.fillOpacity, s.strokeOpacity)
++            || qFuzzyIsNull(p->pen().widthF());
+ }
+ 
+ QRectF QSvgPath::internalFastBounds(QPainter *p, QSvgExtraStates &) const
+@@ -213,7 +214,7 @@ void QSvgPolygon::drawCommand(QPainter *p, QSvgExtraStates &states)
+     QSvgMarker::drawMarkersForNode(this, p, states);
+ }
+ 
+-bool QSvgPolygon::separateFillStroke(const QSvgExtraStates &) const
++bool QSvgPolygon::separateFillStroke(const QPainter *, const QSvgExtraStates &) const
+ {
+     return true;
+ }
+@@ -237,7 +238,7 @@ void QSvgPolyline::drawCommand(QPainter *p, QSvgExtraStates &states)
+     }
+ }
+ 
+-bool QSvgPolyline::separateFillStroke(const QSvgExtraStates &) const
++bool QSvgPolyline::separateFillStroke(const QPainter *, const QSvgExtraStates &) const
+ {
+     return true;
+ }
+@@ -283,7 +284,7 @@ void QSvgRect::drawCommand(QPainter *p, QSvgExtraStates &)
+         p->drawRect(m_rect);
+ }
+ 
+-bool QSvgRect::separateFillStroke(const QSvgExtraStates &) const
++bool QSvgRect::separateFillStroke(const QPainter *, const QSvgExtraStates &) const
+ {
+     return true;
+ }
+@@ -376,7 +377,7 @@ bool QSvgText::shouldDrawNode(QPainter *p, QSvgExtraStates &) const
+     return true;
+ }
+ 
+-bool QSvgText::separateFillStroke(const QSvgExtraStates &) const
++bool QSvgText::separateFillStroke(const QPainter *, const QSvgExtraStates &) const
+ {
+     return true;
+ }
+diff --git a/src/svg/qsvggraphics_p.h b/src/svg/qsvggraphics_p.h
+index 30cfd17a..f007380a 100644
+--- a/src/svg/qsvggraphics_p.h
++++ b/src/svg/qsvggraphics_p.h
+@@ -44,7 +44,7 @@ class Q_SVG_EXPORT QSvgEllipse : public QSvgNode
+ {
+ public:
+     QSvgEllipse(QSvgNode *parent, const QRectF &rect);
+-    bool separateFillStroke(const QSvgExtraStates &) const override;
++    bool separateFillStroke(const QPainter *, const QSvgExtraStates &) const override;
+     void drawCommand(QPainter *p, QSvgExtraStates &states) override;
+     Type type() const override;
+     QRectF internalFastBounds(QPainter *p, QSvgExtraStates &states) const override;
+@@ -102,7 +102,7 @@ class Q_SVG_EXPORT QSvgPath : public QSvgNode
+ {
+ public:
+     QSvgPath(QSvgNode *parent, const QPainterPath &qpath);
+-    bool separateFillStroke(const QSvgExtraStates &) const override;
++    bool separateFillStroke(const QPainter *, const QSvgExtraStates &) const override;
+     void drawCommand(QPainter *p, QSvgExtraStates &states) override;
+     Type type() const override;
+     QRectF internalFastBounds(QPainter *p, QSvgExtraStates &states) const override;
+@@ -118,7 +118,7 @@ class Q_SVG_EXPORT QSvgPolygon : public QSvgNode
+ {
+ public:
+     QSvgPolygon(QSvgNode *parent, const QPolygonF &poly);
+-    bool separateFillStroke(const QSvgExtraStates &) const override;
++    bool separateFillStroke(const QPainter *, const QSvgExtraStates &) const override;
+     void drawCommand(QPainter *p, QSvgExtraStates &states) override;
+     Type type() const override;
+     QRectF internalFastBounds(QPainter *p, QSvgExtraStates &states) const override;
+@@ -135,7 +135,7 @@ class Q_SVG_EXPORT QSvgPolyline : public QSvgNode
+ {
+ public:
+     QSvgPolyline(QSvgNode *parent, const QPolygonF &poly);
+-    bool separateFillStroke(const QSvgExtraStates &) const override;
++    bool separateFillStroke(const QPainter *, const QSvgExtraStates &) const override;
+     void drawCommand(QPainter *p, QSvgExtraStates &states) override;
+     Type type() const override;
+     QRectF internalFastBounds(QPainter *p, QSvgExtraStates &states) const override;
+@@ -153,7 +153,7 @@ class Q_SVG_EXPORT QSvgRect : public QSvgNode
+ public:
+     QSvgRect(QSvgNode *paren, const QRectF &rect, qreal rx=0, qreal ry=0);
+     Type type() const override;
+-    bool separateFillStroke(const QSvgExtraStates &) const override;
++    bool separateFillStroke(const QPainter *, const QSvgExtraStates &) const override;
+     void drawCommand(QPainter *p, QSvgExtraStates &states) override;
+     QRectF internalFastBounds(QPainter *p, QSvgExtraStates &states) const override;
+     QRectF internalBounds(QPainter *p, QSvgExtraStates &states) const override;
+@@ -184,7 +184,7 @@ public:
+     void drawCommand(QPainter *p, QSvgExtraStates &states) override;
+     bool shouldDrawNode(QPainter *p, QSvgExtraStates &states) const override;
+     Type type() const override;
+-    bool separateFillStroke(const QSvgExtraStates &) const override;
++    bool separateFillStroke(const QPainter *, const QSvgExtraStates &) const override;
+ 
+     void addTspan(QSvgTspan *tspan) {m_tspans.append(tspan);}
+     const QList<QSvgTspan *> tspans() const { return m_tspans; }
+diff --git a/src/svg/qsvgnode.cpp b/src/svg/qsvgnode.cpp
+index 0193f414..15d0340c 100644
+--- a/src/svg/qsvgnode.cpp
++++ b/src/svg/qsvgnode.cpp
+@@ -85,7 +85,7 @@ void QSvgNode::draw(QPainter *p, QSvgExtraStates &states)
+             QImage proxy = drawIntoBuffer(p, states, boundsRect.toAlignedRect());
+             applyBufferToCanvas(p, proxy);
+         } else {
+-            if (separateFillStroke(states))
++            if (separateFillStroke(p, states))
+                 fillThenStroke(p, states);
+             else
+                 drawCommand(p, states);
+@@ -154,7 +154,7 @@ QImage QSvgNode::drawIntoBuffer(QPainter *p, QSvgExtraStates &states, const QRec
+     proxyPainter.translate(-boundsRect.topLeft());
+     proxyPainter.setTransform(p->transform(), true);
+     proxyPainter.setRenderHints(p->renderHints());
+-    if (separateFillStroke(states))
++    if (separateFillStroke(p, states))
+         fillThenStroke(&proxyPainter, states);
+     else
+         drawCommand(&proxyPainter, states);
+diff --git a/src/svg/qsvgnode_p.h b/src/svg/qsvgnode_p.h
+index 72010639..ae651382 100644
+--- a/src/svg/qsvgnode_p.h
++++ b/src/svg/qsvgnode_p.h
+@@ -89,7 +89,7 @@ public:
+     QSvgNode(QSvgNode *parent=0);
+     virtual ~QSvgNode();
+     void draw(QPainter *p, QSvgExtraStates &states);
+-    virtual bool separateFillStroke(const QSvgExtraStates &) const {return false;}
++    virtual bool separateFillStroke(const QPainter *, const QSvgExtraStates &) const {return false;}
+     virtual void drawCommand(QPainter *p, QSvgExtraStates &states) = 0;
+     void fillThenStroke(QPainter *p, QSvgExtraStates &states);
+     QImage drawIntoBuffer(QPainter *p, QSvgExtraStates &states, const QRect &boundsRect);
+diff --git a/tests/baseline/data/bugs/zeroStrokeWidthPath.svg b/tests/baseline/data/bugs/zeroStrokeWidthPath.svg
+new file mode 100644
+index 00000000..0c63238f
+--- /dev/null
++++ b/tests/baseline/data/bugs/zeroStrokeWidthPath.svg
+@@ -0,0 +1,4 @@
++<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400">
++<text x="20" y="30" fill="black"> Strokes with zero width are not rendered </text>
++<path d="M50 50 H350 V350 H50 V50" stroke-width="0" fill="none" stroke="black"/>
++</svg>
+\ No newline at end of file
+-- 
+2.53.0
+
