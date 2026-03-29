@@ -24,7 +24,6 @@ post_install() {
         sysctl -p /usr/lib/sysctl.d/apm.conf 2>/dev/null || true
     fi
 
-    /var/lib/apm/apm/files/feedback.sh &
     ln -sv / /host
 	amber-pm-dstore-patch
 

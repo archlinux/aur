@@ -3,7 +3,7 @@
 # Maintainer: shenmo <shenmo@spark-app.store>
 
 pkgname=amber-package-manager
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="bwrap wrapper for install and running debs inside a Amber-PM container"
 arch=('x86_64')
@@ -15,17 +15,31 @@ conflicts=('ace-host-integration')
 # provides=('amber-package-manager')
 
 source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-ce/amber-pm/repository/archive/${pkgver}.tar.gz")
-sha256sums=('4290380359302edaa9bd276be2ab13aff2cc1118fd6e7aa7bfecddcbc8b9a01c')
+sha256sums=('4c3c158a341a873737d829a37952cb694759915ac7b7b653970bff8065810c6d')
 
 install=amber-package-manager.install
-
+build() {
+    cd "$srcdir/amber-pm-${pkgver}"
+    
+    # 执行构建脚本，并传递src目录路径
+    bash build.sh "$srcdir/amber-pm-${pkgver}/src"
+    
+    # 如果build.sh没有正确执行，可以尝试以下替代方案：
+    # bash build.sh
+    # 或者直接执行构建命令
+}
 package() {
+
     cd "$srcdir/amber-pm-${pkgver}/src"
     
     install -d "$pkgdir/var/lib/apm"
     cp -r etc "$pkgdir/"
     cp -r usr "$pkgdir/"
     cp -r var "$pkgdir/"
+
+    cd "$pkgdir/"
+    chmod 755 -R .
+    
     
     find "$pkgdir" -type d -exec chmod 755 {} \;
     
