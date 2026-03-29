@@ -1,7 +1,6 @@
 /fsnotifier*
 *.tar.gz
 *.kate-swp
-.SRCINFO
 src/
 pkg/
 *.pkg.tar.zst
