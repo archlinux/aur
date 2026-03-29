@@ -1,0 +1,5 @@
+[sitegen-bin]
+source = "github"
+github = "altlimit/sitegen"
+use_latest_release = true
+prefix = "v"

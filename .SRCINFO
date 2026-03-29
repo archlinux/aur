@@ -1,0 +1,21 @@
+pkgbase = sitegen-bin
+	pkgdesc = Sitegen is a simple but flexible static site generator.
+	pkgver = 1.0.35
+	pkgrel = 1
+	url = https://github.com/altlimit/sitegen
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = sitegen
+	conflicts = sitegen
+	source = README-1.0.35.md::https://raw.githubusercontent.com/altlimit/sitegen/v1.0.35/README.md
+	source = LICENSE-1.0.35::https://raw.githubusercontent.com/altlimit/sitegen/v1.0.35/LICENSE.txt
+	sha256sums = 662d6dfea4b6d6b94c82ce29bdb937f8f149f214e7f04e61626f47263b9c9165
+	sha256sums = 1d9ea865074fbbf9c4fd61ee0b36ad684b69f8ed7c2d083464484ada5cac243c
+	source_x86_64 = sitegen-x86_64-1.0.35::https://github.com/altlimit/sitegen/releases/download/v1.0.35/sitegen_linux_amd64
+	sha256sums_x86_64 = 69101e0b4d2da721436d5057ac70671a9574f02aa422eab3725379458c645255
+	source_aarch64 = sitegen-aarch64-1.0.35::https://github.com/altlimit/sitegen/releases/download/v1.0.35/sitegen_linux_arm64
+	sha256sums_aarch64 = c98e3ad043316fe608679594023e038c13efb4e284e37adb726aac6905337230
+
+pkgname = sitegen-bin
