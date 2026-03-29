@@ -17,8 +17,8 @@ license=('Apache')
 provides=("${pkgname}")
 conflicts=("${pkgname}"{-git,-bin})
 
-makedepends=('git' 'cmake')
-depends=('python' 'perl' 'llvm' 'clang')
+makedepends=('git' 'cmake' 'clang')
+depends=('glibc' 'libstdc++' 'bash' 'ncurses' 'llvm-libs' 'lldb' 'perl' 'python' 'python-overrides' 'python-sphinx_rtd_theme')
 
 options=('!debug' '!lto')
 
