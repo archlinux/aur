@@ -1,3 +1,5 @@
+# Maintainer: taskie <t at skie dot jp>
+
 pkgname=xstow
 pkgver=1.1.1
 pkgrel=1
