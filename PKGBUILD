@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r75513.245eb7d91d7
+pkgver=r76521.fd46ade2a25
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -22,6 +22,7 @@ depends=(
   libgl
   libjpeg-turbo
   libjxl
+  libpng
   libtiff
   libtommath
   libwebp
@@ -35,12 +36,11 @@ depends=(
   ttf-liberation
   woff2
   
-  libpng-apng # AUR
   angle # AUR
   simdutf-git # 'simdutf' is v6, we need v7.
   cpptrace # AUR
 )
-makedepends=(autoconf-archive automake cmake git nasm ninja patchelf skia-static tar unzip zip)
+makedepends=(autoconf-archive automake cargo cmake git nasm ninja patchelf skia-static tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
   "git+$url"
@@ -49,19 +49,14 @@ sha256sums=(
   'SKIP'
 )
 
-
-#ENABLE_RUST=YES # Uncomment to build rust components
-if [ "${ENABLE_RUST:-NO}" = "YES" ]; then
-  makedepends+=(cargo)
-fi
-
 pkgver() {
   cd ladybird
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  sed -e '/march=/d' -i ladybird/Meta/CMake/common_compile_options.cmake
+  sed -e '/march=/d' -i ladybird/Meta/CMake/compile_options.cmake
+  sed -e 's/78\.2 EXACT/78.2/' -i ladybird/Libraries/LibUnicode/CMakeLists.txt
 }
 
 build() {
@@ -72,7 +67,7 @@ build() {
   cmake \
     -B build \
     -S ladybird \
-    -DENABLE_RUST="${ENABLE_RUST}" \
+    -DENABLE_RUST=YES \
     -DBUILD_SHARED_LIBS=OFF \
     -DLADYBIRD_CACHE_DIR=Build/caches \
     -DCMAKE_BUILD_TYPE=Release \
