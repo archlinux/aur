@@ -1,0 +1,134 @@
+diff --git a/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj b/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj
+index 524ae37..ce9c9f3 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj
++++ b/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj
+@@ -19,21 +19,26 @@
+     <Nullable>enable</Nullable>
+     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+     <GenerateDocumentationFile>True</GenerateDocumentationFile>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Development|AnyCPU' ">
+     <Optimize>True</Optimize>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+     <Optimize>True</Optimize>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+     <DebugSymbols>true</DebugSymbols>
+     <DebugType>full</DebugType>
+     <DebugType Condition="'$(IsWindows)' == 'true' And '$(IsArm64)' == 'true'">portable</DebugType>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Analyze|AnyCPU' ">
+     <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
+     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <ItemGroup>
+     <Reference Include="Ionic.Zip.Reduced">
+diff --git a/Engine/Source/Programs/Shared/EpicGames.ScriptBuild/EpicGames.ScriptBuild.csproj b/Engine/Source/Programs/Shared/EpicGames.ScriptBuild/EpicGames.ScriptBuild.csproj
+index 4e1f26e..cf00bfb 100644
+--- a/Engine/Source/Programs/Shared/EpicGames.ScriptBuild/EpicGames.ScriptBuild.csproj
++++ b/Engine/Source/Programs/Shared/EpicGames.ScriptBuild/EpicGames.ScriptBuild.csproj
+@@ -14,17 +14,21 @@
+     <DebugType>full</DebugType>
+     <DebugType>pdbonly</DebugType>
+     <DebugType Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true' And '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'Arm64'">portable</DebugType>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+     <DocumentationFile></DocumentationFile>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Development|AnyCPU'">
+     <DocumentationFile></DocumentationFile>
+     <Optimize>true</Optimize>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+     <DocumentationFile></DocumentationFile>
+     <Optimize>true</Optimize>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Analyze|AnyCPU' ">
+     <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
+@@ -32,6 +36,7 @@
+     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+     <DocumentationFile></DocumentationFile>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <ItemGroup>
+     <Compile Include="..\..\Shared\MetaData.cs">
+diff --git a/Engine/Source/Programs/AutomationTool/Gauntlet/Gauntlet.Automation.csproj b/Engine/Source/Programs/AutomationTool/Gauntlet/Gauntlet.Automation.csproj
+index 2238f72..d85c044 100644
+--- a/Engine/Source/Programs/AutomationTool/Gauntlet/Gauntlet.Automation.csproj
++++ b/Engine/Source/Programs/AutomationTool/Gauntlet/Gauntlet.Automation.csproj
+@@ -17,19 +17,23 @@
+     <DebugType>pdbonly</DebugType>
+     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>    <!-- remove non english resource languages -->
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Development|AnyCPU' ">
+     <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+     <Optimize>true</Optimize>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+     <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+     <Optimize>true</Optimize>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+     <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
+     <DebugSymbols>true</DebugSymbols>
+     <DebugType>full</DebugType>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <ItemGroup>
+     <Reference Include="fastJSON">
+diff --git a/Engine/Source/Programs/AutomationTool/AutomationUtils/AutomationUtils.Automation.csproj b/Engine/Source/Programs/AutomationTool/AutomationUtils/AutomationUtils.Automation.csproj
+index de5c00e..35baf90 100644
+--- a/Engine/Source/Programs/AutomationTool/AutomationUtils/AutomationUtils.Automation.csproj
++++ b/Engine/Source/Programs/AutomationTool/AutomationUtils/AutomationUtils.Automation.csproj
+@@ -14,9 +14,11 @@
+     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+     <DebugType>pdbonly</DebugType>
+     <DebugType Condition="'$(IsWindows)' == 'true' And '$(IsArm64)' == 'true'">portable</DebugType>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(EpicGamesMsBuild)' == 'true'">
+     <OutputPath>..\..\..\..\Binaries\DotNET\AutomationTool\AutomationUtils</OutputPath>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <ItemGroup>
+     <Reference Include="fastJSON">
+@@ -32,14 +34,17 @@
+     <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+     <DebugSymbols>true</DebugSymbols>
+     <DebugType>full</DebugType>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Development|AnyCPU'">
+     <Optimize>true</Optimize>
+     <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+     <Optimize>true</Optimize>
+     <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
++    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+   </PropertyGroup>
+ 
+   <!-- The following will glob all platform extensions' AutomationUtils source
+@@ -76,4 +81,4 @@
+     <PackageReference Include="Google.Apis.Sheets.v4" Version="1.33.1.1229" PrivateAssets="all" />
+     <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+   </ItemGroup>
+-</Project>
+\ No newline at end of file
++</Project>

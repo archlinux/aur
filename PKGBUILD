@@ -8,7 +8,7 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
-pkgver=5.7.4
+pkgver=5.6.1
 pkgrel=1
 ## Check unreal-engine/Engine/Config/Linux/Linux_SDK.json (MainVersion value) for what the below should be set to
 UE_SDK_VERSION="native-linux-v26_clang-20.1.8-rockylinux8"
@@ -34,12 +34,14 @@ source=("${UE_SDK_VERSION}.tar.gz::https://cdn.unrealengine.com/Toolchain_Linux/
         'unreal-engine.sh'
         'com.unrealengine.UE5Editor.desktop'
         '0001-override-shared-target-build.patch'
+        '0002-suppress-scriptbuild-warnings-for-5-6.patch'
         'unreal-engine-5-pacman-cache.hook'
         'ue5editor.svg')
 sha256sums=('6eef42679b744cdcb50276f2d7cff0a51f7ddd632960e06bfbc3f6b9508ef615'
             '55a8ad79c2e502bc5919249b9d1804ad405795b36630ab2f23aeb99dd218e5f4'
             'aa09746f9db93713f470ef19390a89b279fd5a335835ad95eab6cdaafa1b9e99'
             'cd512e3fc08aaaa783e8df4a6dcb567a35502c32a6cedf8d4d71ebfa75272735'
+            'e01efe8559076f977c44ab656432a3c8e793e4c7f2b42855f736a08b6f551cf1'
             '9386160a91594abeeaf4fe02fea562e7a4ead4c6f9a258c2a37b2e5f10e7deca'
             'b00c398b63f15084c46f3963f62a45284ecd8dae9ba6f38a2c4af370bbfdab8d')
 # Not sure if compiling Unreal with LTO is legal? Lot's of different proprietary software goes into Unreal
