@@ -1,27 +1,39 @@
 # Maintainer: Gink <ginkcode@gmail.com>
 pkgname=gsdb-bin
-pkgver=0.2.16
+pkgver=0.2.19
 pkgrel=1
 pkgdesc="A database management tool for PostgreSQL, MySQL, and SQLite (pre-built binary)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/ginkcode/gsdb"
 license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3' 'openssl' 'libssh2' 'libsecret')
 provides=('gsdb')
 conflicts=('gsdb')
-source=(
+source_x86_64=(
     "GSDB_${pkgver}_amd64.AppImage::https://github.com/ginkcode/gsdb/releases/download/v$pkgver/GSDB_${pkgver}_amd64.AppImage"
+)
+source_aarch64=(
+    "GSDB_${pkgver}_aarch64.AppImage::https://github.com/ginkcode/gsdb/releases/download/v$pkgver/GSDB_${pkgver}_aarch64.AppImage"
+)
+source=(
     "https://raw.githubusercontent.com/ginkcode/gsdb/v$pkgver/src-tauri/icons/32x32.png"
     "https://raw.githubusercontent.com/ginkcode/gsdb/v$pkgver/src-tauri/icons/64x64.png"
     "https://raw.githubusercontent.com/ginkcode/gsdb/v$pkgver/src-tauri/icons/128x128.png"
     "https://raw.githubusercontent.com/ginkcode/gsdb/v$pkgver/src-tauri/icons/128x128@2x.png"
     "https://raw.githubusercontent.com/ginkcode/gsdb/v$pkgver/src-tauri/icons/icon.png"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
-    chmod +x "GSDB_${pkgver}_amd64.AppImage"
-    ./"GSDB_${pkgver}_amd64.AppImage" --appimage-extract
+    if [ "$CARCH" = "aarch64" ]; then
+        chmod +x "GSDB_${pkgver}_aarch64.AppImage"
+        ./"GSDB_${pkgver}_aarch64.AppImage" --appimage-extract
+    else
+        chmod +x "GSDB_${pkgver}_amd64.AppImage"
+        ./"GSDB_${pkgver}_amd64.AppImage" --appimage-extract
+    fi
 }
 
 package() {
