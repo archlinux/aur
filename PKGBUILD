@@ -6,9 +6,9 @@ _pkgname=gitchangelog
 pkgname=python-gitchangelog
 pkgver=3.2.2
 pkgrel=1
-pkgdesc="Creates a changelog from git log history."
-url="https://github.com/sarnold/gitchangelog"
-license=("BSD-3-Clause AND MIT")
+pkgdesc='Creates a changelog from git log history.'
+url='https://github.com/sarnold/gitchangelog'
+license=('BSD-3-Clause AND MIT')
 depends=('python')
 optdepends=('python-pystache' 'python-mako')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
@@ -17,12 +17,12 @@ source=("https://github.com/sarnold/gitchangelog/releases/download/${pkgver}/${_
 sha256sums=('08c863fd91447ab58e64e50e787ee7f0f3d2f2184369fe4f7ae3d8fda8ce1632')
 
 build() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
+    cd "${_pkgname}-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
+    cd "${_pkgname}-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
