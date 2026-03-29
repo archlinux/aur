@@ -1,6 +1,6 @@
 pkgbase = dropout-bin
 	pkgdesc = A modern, reproducible, and developer-grade Minecraft launcher
-	pkgver = 0.2.0_alpha.5
+	pkgver = 0.2.0_alpha.6
 	pkgrel = 1
 	url = https://github.com/HydroRoll-Team/DropOut
 	install = dropout-bin.install
@@ -18,9 +18,9 @@ pkgbase = dropout-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/HydroRoll-Team/DropOut/releases/download/dropout-v0.2.0-alpha.5/Dropout_0.2.0-alpha.5_amd64.deb
-	sha256sums_x86_64 = 3fd2d7a99a1eaeee554fdafb63ae94306f81840ab9597009ca68b1cd60132bb2
-	source_aarch64 = https://github.com/HydroRoll-Team/DropOut/releases/download/dropout-v0.2.0-alpha.5/Dropout_0.2.0-alpha.5_arm64.deb
-	sha256sums_aarch64 = f38c9bea877a51ae0d86ddf3e48045d6acacf29ac20a0af2f62300d12d92fae0
+	source_x86_64 = https://github.com/HydroRoll-Team/DropOut/releases/download/dropout-v0.2.0-alpha.6/Dropout_0.2.0-alpha.6_amd64.deb
+	sha256sums_x86_64 = 12d587ec548983f480a945b96f91e9f7db3b059647fb09e3cb13fba729a038ac
+	source_aarch64 = https://github.com/HydroRoll-Team/DropOut/releases/download/dropout-v0.2.0-alpha.6/Dropout_0.2.0-alpha.6_arm64.deb
+	sha256sums_aarch64 = 64dca2d2e02e1af723983807eae55190ec6dbaee224a1e2e3ba7b2fd30f6b667
 
 pkgname = dropout-bin
