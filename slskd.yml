@@ -12,6 +12,8 @@ directories:
 
 web:
   port: 5030
+  https:
+    disabled: true
   # Uncomment to set authentication
   # authentication:
   #   username: admin
