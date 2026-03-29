@@ -13,13 +13,13 @@ source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/54
 sha256sums=('ba6fab3c80ddbe3fd31d3e579861fd3124513708271180a5f81846da8c7e2a51')
 
 build(){
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
     python -m build --wheel --no-isolation
 }
 
 package(){
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
     install -D -m 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m 644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
