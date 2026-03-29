@@ -7,8 +7,7 @@ url="https://takashialpha.github.io/audium"
 license=('Apache-2.0')
 depends=('alsa-lib')
 makedepends=('cargo' 'alsa-lib')
-source=("$pkgname-$pkgver.tar.gz:https://github.com/takashialpha/audium/archive/refs/tags/v$pkgver.tar.gz")
-
+source=("$pkgname-$pkgver.tar.gz::https://github.com/takashialpha/audium/archive/refs/tags/v$pkgver.tar.gz")
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   cargo build --release
