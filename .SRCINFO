@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-ro
 	pkgdesc = Romanian language pack for Firefox Nightly
-	pkgver = 151.0a1.20260328.200338
+	pkgver = 151.0a1.20260329.093051
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-ro
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-ro-151.0a1.20260328.200338.xpi
-	source = firefox-nightly-i18n-ro-151.0a1.20260328.200338.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-151.0a1.ro.langpack.xpi
-	sha256sums = a896d7976b6e0e5fc86001b439446bc246d1ef10e6dcf2ff87c2a2acc9388c7a
+	noextract = firefox-nightly-i18n-ro-151.0a1.20260329.093051.xpi
+	source = firefox-nightly-i18n-ro-151.0a1.20260329.093051.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-151.0a1.ro.langpack.xpi
+	sha256sums = ff1cf5f5899c188ce5df8a1b17ebefdec5a036714c5bc3fbc51d598d7d254c81
 
 pkgname = firefox-nightly-i18n-ro
