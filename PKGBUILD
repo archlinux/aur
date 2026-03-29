@@ -2,7 +2,7 @@
 _pkgname=sui
 _env=testnet
 pkgname=${_pkgname}-${_env}-bin
-pkgver=1.67.1
+pkgver=1.68.1
 pkgrel=1
 pkgdesc="Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language"
 arch=("x86_64" "aarch64")
@@ -14,8 +14,8 @@ provides=("$_pkgname")
 source_x86_64=("$url/releases/download/${_env}-v${pkgver}/${_pkgname}-${_env}-v${pkgver}-ubuntu-x86_64.tgz")
 source_aarch64=("$url/releases/download/${_env}-v${pkgver}/${_pkgname}-${_env}-v${pkgver}-ubuntu-aarch64.tgz")
 
-sha256sums_x86_64=('6cbcadc22eac0d22dee3984cbc409002e1a7ad8ef3344c95190944c4e6dd8aac')
-sha256sums_aarch64=('878804e6450b72bb1238ec3e23e0fc3173268c29f1d2643747e0b28c60548489')
+sha256sums_x86_64=('d2e4f3431ca3da13ebacfa91f69828c765352d1af608fb1cfa602d17625dbe7b')
+sha256sums_aarch64=('96d649dcc7e0af3245cb8d151ac3e4bceb81c10dd51c66f61beb1cee4295ba48')
 
 package() {
     binaries=(
