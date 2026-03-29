@@ -1,7 +1,7 @@
 pkgbase = fauxdacious-git
 	pkgdesc = Audacious Audioplayer fork, adds DVD & video play, and much more (git version)
-	pkgver = 4.5.r665
-	pkgrel = 2
+	pkgver = 4.6.r709
+	pkgrel = 1
 	url = https://wildstar84.wordpress.com/fauxdacious/
 	arch = x86_64
 	license = BSD

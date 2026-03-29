@@ -1,9 +1,9 @@
 # Maintainer: Elia Nitsche <nitscheelia at gmail.com>
 
 pkgname=fauxdacious-git
-_pkgname=fauxdacious
-pkgver=4.5.r665
-pkgrel=2
+_pkgname=${pkgname%-git}
+pkgver=4.6.r709
+pkgrel=1
 pkgdesc="Audacious Audioplayer fork, adds DVD & video play, and much more (git version)"
 arch=('x86_64')
 url="https://wildstar84.wordpress.com/fauxdacious/"
