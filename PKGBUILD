@@ -1,17 +1,17 @@
 # Maintainer: a821
 
 pkgname=python-hnswlib
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="Header-only C++/python library for fast approximate nearest neighbors"
 url="https://github.com/nmslib/hnswlib"
 arch=('x86_64')
 license=('Apache-2.0')
-depends=('python-numpy')
+depends=('glibc' 'libgcc' 'libstdc++' 'python-numpy')
 makedepends=('python-setuptools' 'pybind11'
              'python-build' 'python-installer' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cf61d7dd8dc9bfba7f4abe0ed26698e90ac9f49a0badb2e1b0f3ba89b72cf3bb')
+sha256sums=('65dfb6639cb7d1acbdaeec1429b978fb657a9bf368ebb8353109167394537823')
 
 build() {
     cd "${pkgname#python-}-${pkgver}"
