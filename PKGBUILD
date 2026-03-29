@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=mstream-git
-pkgver=5.13.1.r0.g81a931c
+pkgver=5.14.3.r12.g4ea0f0e
 pkgrel=1
 pkgdesc='Music streaming server'
 arch=(any)
@@ -44,7 +44,7 @@ prepare() {
 
   # Exclude built-in binaries from the bin folder, etc.
   tar cfz $pkgname.tgz \
-    --exclude="$pkgname/.git*" \
+    --exclude=$pkgname/".git*" \
     --exclude=$pkgname/bin \
     --exclude=$pkgname/image-cache \
     --exclude=$pkgname/save \
@@ -62,25 +62,26 @@ package() {
   chown -R root:root "$pkgdir"
 
   install -Dm644 mstream.service -t "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 mstream.sysusers   "$pkgdir/usr/lib/sysusers.d/mstream.conf"
-  install -Dm644 mstream.tmpfiles   "$pkgdir/usr/lib/tmpfiles.d/mstream.conf"
+  install -Dm644 mstream.sysusers "$pkgdir/usr/lib/sysusers.d/mstream.conf"
+  install -Dm644 mstream.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/mstream.conf"
 
   install -D mstream.json -t "$pkgdir/etc"
 
   #
 
-  install -d                        "$pkgdir/usr/lib/node_modules/mstream/"{bin,save}
+  install -d "$pkgdir/usr/lib/node_modules/mstream/"{bin,save}
 
   # Avoid message "warning: directory permissions differ on /var/lib/mstream/"
   # by matching the permissions to the ones set in mstream.tmpfiles
   install -dm750 "$pkgdir/var/lib/mstream"
 
-  install -d     "$pkgdir/var/lib/mstream/"{album-art,bin/ffmpeg,conf,db,media,sync}
-  ln -s /var/lib/mstream/bin/ffmpeg "$pkgdir/usr/lib/node_modules/mstream/bin/ffmpeg"
-  ln -s /var/lib/mstream/conf       "$pkgdir/usr/lib/node_modules/mstream/save/conf"
-  ln -s /var/lib/mstream/db         "$pkgdir/usr/lib/node_modules/mstream/save/db"
-  ln -s /var/lib/mstream/sync       "$pkgdir/usr/lib/node_modules/mstream/save/sync"
+  install -d "$pkgdir/var/lib/mstream/"{album-art,bin/ffmpeg,conf,db,media,sync}
 
-  ln -s /var/cache/mstream          "$pkgdir/usr/lib/node_modules/mstream/image-cache"
-  ln -s /var/log/mstream            "$pkgdir/usr/lib/node_modules/mstream/save/logs"
+  ln -s /var/lib/mstream/bin/ffmpeg "$pkgdir/usr/lib/node_modules/mstream/bin/ffmpeg"
+  ln -s /var/lib/mstream/conf "$pkgdir/usr/lib/node_modules/mstream/save/conf"
+  ln -s /var/lib/mstream/db "$pkgdir/usr/lib/node_modules/mstream/save/db"
+  ln -s /var/lib/mstream/sync "$pkgdir/usr/lib/node_modules/mstream/save/sync"
+
+  ln -s /var/cache/mstream "$pkgdir/usr/lib/node_modules/mstream/image-cache"
+  ln -s /var/log/mstream "$pkgdir/usr/lib/node_modules/mstream/save/logs"
 }

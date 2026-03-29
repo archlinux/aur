@@ -1,6 +1,6 @@
 pkgbase = mstream-git
 	pkgdesc = Music streaming server
-	pkgver = 5.13.1.r0.g81a931c
+	pkgver = 5.14.3.r12.g4ea0f0e
 	pkgrel = 1
 	url = https://mstream.io
 	arch = any
