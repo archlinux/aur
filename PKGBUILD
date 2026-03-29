@@ -7,7 +7,7 @@
 pkgbase=postgresql-devel
 pkgver=19devel
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -62,6 +62,9 @@ build() {
     --with-libxslt
     --with-lz4
     --with-zstd
+    --with-libcurl
+    --with-libnuma
+    --with-liburing
     --enable-nls
     --enable-thread-safety
     --disable-rpath
