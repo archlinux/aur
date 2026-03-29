@@ -1,7 +1,7 @@
 pkgbase = claude-desktop-hardened-bin
 	pkgdesc = Claude Desktop for Linux (hardened) — bubblewrap sandboxing, credential redaction, permission-gated Computer Use
 	pkgver = 1.1.9493
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/techtoboggan/claude-desktop-hardened-linux
 	arch = x86_64
 	license = MIT
@@ -32,7 +32,7 @@ pkgbase = claude-desktop-hardened-bin
 	conflicts = claude-desktop
 	conflicts = claude-desktop-bin
 	options = !strip
-	source = claude-desktop-hardened-1.1.9493.tar.gz::https://github.com/techtoboggan/claude-desktop-hardened-linux/archive/refs/tags/v1.1.9493-10.tar.gz
+	source = claude-desktop-hardened-1.1.9493.tar.gz::https://github.com/techtoboggan/claude-desktop-hardened-linux/archive/refs/tags/v1.1.9493-11.tar.gz
 	sha256sums = SKIP
 
 pkgname = claude-desktop-hardened-bin
