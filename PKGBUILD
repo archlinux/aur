@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$_reponame"
-  make
+  make -j$(nproc)
 }
 
 package() {
