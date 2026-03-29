@@ -1,0 +1,22 @@
+pkgbase = asus-tuf-keyboard-rgb-manager-git
+	pkgdesc = Desktop control and system service for ASUS TUF keyboard RGB based on standard asus-wmi kernel interfaces
+	pkgver = r10.77d42e5
+	pkgrel = 1
+	url = https://gitlab.com/matdal55/asus-tuf-keyboard-rgb-manager
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = qt6-tools
+	depends = polkit
+	depends = qt6-base
+	depends = qt6-declarative
+	provides = asus-tuf-keyboard-rgb-manager
+	conflicts = asus-tuf-keyboard-rgb-manager
+	options = !debug
+	source = git+https://gitlab.com/matdal55/asus-tuf-keyboard-rgb-manager.git
+	sha256sums = SKIP
+
+pkgname = asus-tuf-keyboard-rgb-manager-git
