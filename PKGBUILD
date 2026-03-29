@@ -4,7 +4,7 @@
 
 pkgname="handy-bin"
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, open source, and extensible speech-to-text application that works completely offline"
 url="https://handy.computer/"
 license=("MIT")
@@ -38,4 +38,8 @@ package(){
     install -D -m 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
     sed -i 's/Categories=/Categories=Utility;/g' "${pkgdir}/usr/share/applications/Handy.desktop"
+
+    # upstream .deb ships duplicate copies instead of proper symlinks
+    ln -sf "libonnxruntime.so.1.24.2" "${pkgdir}/usr/lib/libonnxruntime.so.1"
+    ln -sf "libonnxruntime.so.1.24.2" "${pkgdir}/usr/lib/libonnxruntime.so"
 }
