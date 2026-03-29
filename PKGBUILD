@@ -11,7 +11,7 @@ makedepends=('gcc' 'pkg-config' 'git')
 
 # KRİTİK DEĞİŞİKLİK: Yerel dosya yerine GITHUB reponu ekledik
 # PKGBUILD içindeki source satırı tam olarak bu olmalı:
-source=("s-console::git+https://github.com")
+source=("s-console::git+https://github.com/yusufprompt/s-console.git")
 sha256sums=('SKIP')
 
 build() {
