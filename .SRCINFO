@@ -1,6 +1,6 @@
 pkgbase = cliamp-bin
 	pkgdesc = A retro terminal music player inspired by Winamp 2.x
-	pkgver = 1.28.0
+	pkgver = 1.28.1
 	pkgrel = 1
 	url = https://github.com/bjarneo/cliamp
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = cliamp-bin
 	depends = libogg
 	provides = cliamp
 	conflicts = cliamp
-	source = README-1.28.0.md::https://raw.githubusercontent.com/bjarneo/cliamp/v1.28.0/README.md
-	source = LICENSE-1.28.0::https://raw.githubusercontent.com/bjarneo/cliamp/v1.28.0/LICENSE
+	source = README-1.28.1.md::https://raw.githubusercontent.com/bjarneo/cliamp/v1.28.1/README.md
+	source = LICENSE-1.28.1::https://raw.githubusercontent.com/bjarneo/cliamp/v1.28.1/LICENSE
 	sha256sums = 8bcee3386960567d56842ef7efd1bd7d3784bb01092482c86277a8df76d0745a
 	sha256sums = 57764ebae827c1c96dc5c1b74e2579ff34d3abcaabb54f5e5498fb2f612330cc
-	source_x86_64 = cliamp-x86_64-1.28.0::https://github.com/bjarneo/cliamp/releases/download/v1.28.0/cliamp-linux-amd64
-	sha256sums_x86_64 = 838db28b6f0bc8d7dcdc85b05235d9bc09c4e59e0bb96bc941d53ca5e23a60df
-	source_aarch64 = cliamp-aarch64-1.28.0::https://github.com/bjarneo/cliamp/releases/download/v1.28.0/cliamp-linux-arm64
-	sha256sums_aarch64 = 63092711a17efc960ce1f807494f78cedb44e33b5c65ecd2e5949cb7353ccc76
+	source_x86_64 = cliamp-x86_64-1.28.1::https://github.com/bjarneo/cliamp/releases/download/v1.28.1/cliamp-linux-amd64
+	sha256sums_x86_64 = 2ceed0b4c9d5661d5083b5479979e0bbfe6e3d590115e299cca773803e791354
+	source_aarch64 = cliamp-aarch64-1.28.1::https://github.com/bjarneo/cliamp/releases/download/v1.28.1/cliamp-linux-arm64
+	sha256sums_aarch64 = 360dd1a31778a2b4a1877ce3e6e7c47e7c325d21e488163e2347ba15247044cb
 
 pkgname = cliamp-bin
