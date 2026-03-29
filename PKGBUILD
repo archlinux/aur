@@ -4,7 +4,7 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.1.9310
-pkgrel=4
+pkgrel=5
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -12,7 +12,7 @@ license=('custom:Claude')
 depends=('electron')
 optdepends=('nodejs: System Node.js for MCP extensions that require specific versions (Electron bundles Node.js as fallback)'
             'claude-code: Claude Code CLI for agentic coding features (npm i -g @anthropic-ai/claude-code)'
-            'claude-cowork-service: Enables Cowork VM features on Linux (experimental)'
+            'claude-cowork-service: Enables Cowork VM features on Linux'
             'xdotool: Computer Use input + Quick Entry positioning (X11/XWayland)'
             'scrot: Computer Use screenshots (X11)'
             'xclip: Computer Use clipboard access (X11)'
@@ -27,8 +27,8 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'socat: Cowork socket health check in launcher (fallback: age-based check)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.9310-4/claude-desktop-1.1.9310-linux.tar.gz")
-sha256sums_x86_64=('395e64bb20d8c24546968e514f3f1e40a132229ba2dc928f83f822cf433a37fe')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.9310-5/claude-desktop-1.1.9310-linux.tar.gz")
+sha256sums_x86_64=('12688944f03287f18792dad45108dd7fcaaace3829382d8d5c5fce8418c5204c')
 options=('!strip')
 
 package() {
