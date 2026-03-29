@@ -2,17 +2,17 @@
 # Contributor: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=oolite
-pkgver=1.92.0.2
+pkgver=1.92.1.r0.dd117d31c
 pkgrel=1
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
 url="https://oolite.space/"
 license=('GPL-2.0-or-later')
 groups=('game')
-depends=(bash gcc-libs libglvnd glibc zlib gnustep-base
-          espeak-ng glu nspr openal sdl12-compat libvorbis libpng)
-makedepends=(gnustep-make gcc-objc git)
-source=("oolite-$pkgver::git+https://github.com/OoliteProject/oolite#commit=ebb6b0a6217149a6986f030094956fd339816cec"
+depends=(bash libglvnd glibc zlib gnustep-base libobjc libstdc++ libgcc hicolor-icon-theme
+          espeak-ng glu nspr openal sdl12-compat sdl2-compat libvorbis libpng)
+makedepends=(gnustep-make git gcc-objc)
+source=("oolite::git+https://github.com/OoliteProject/oolite#commit=dd117d31c2f0e756d478e64584120d3d5cbf64d8"
         git+https://github.com/OoliteProject/oolite-binary-resources.git
         git+https://github.com/OoliteProject/oolite-mac-components
         git+https://github.com/OoliteProject/oolite-linux-dependencies.git
@@ -22,10 +22,10 @@ source=("oolite-$pkgver::git+https://github.com/OoliteProject/oolite#commit=ebb6
         git+https://github.com/OoliteProject/libogg-1.3.0.git
         git+https://github.com/OoliteProject/libvorbis-1.3.3.git
         git+https://github.com/OoliteProject/oolite-windows-dependencies.git
-        oolite
+        oolite.sh
 )
 
-sha512sums=('754a705c61523dad26155c70c3ee0bbc03ed76d9b77f601848a73f3e9111a77e716959f8a51e4c83eb70149c7bf152b15834631ac83c9eeca467b0a2b0739523'
+sha512sums=('421fa8e046c59a4a0cc6ada0b33873f1ace241a7d8b1275b9ca8029c04ce2aed93fc7939a8ad6840f70a4231bf5d0c124f90fa2bad0649c4a628c3e3f42abf20'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -35,12 +35,12 @@ sha512sums=('754a705c61523dad26155c70c3ee0bbc03ed76d9b77f601848a73f3e9111a77e716
             'SKIP'
             'SKIP'
             'SKIP'
-            'a2ac7e4aef605c67bf311a0a915bea72af96e510e22fb212419fc37b7881990e270a30b96b63e1825d85249c3708b6324c31b105419d26b7804488640da54ffe')
+            '2d89e92c781dd826f914f0faf2a0eebd71b09a7171fc243548ea204fc49b2a3c27fc0d1fd5a2d0ca684cfba6844bde9cc7b2db2f0ff841eb48c4cf9c564636b7')
 
 prepare() {
   # png.h & pngconf.h in the oolite-linux-dependencies submodule screw up the use of libpng 1.6.x at runtime , remove them
   rm oolite-linux-dependencies/include/png.h oolite-linux-dependencies/include/pngconf.h
-  pushd oolite-$pkgver
+  pushd oolite
   git submodule init
   git config submodule.Resources/Binary.url "$srcdir"/oolite-binary-resources
   git config submodule.Mac-specific.url "$srcdir"/oolite-mac-components
@@ -57,20 +57,24 @@ prepare() {
 
 
 build() {
-  cd oolite-$pkgver
+  cd oolite
   source /usr/share/GNUstep/Makefiles/GNUstep.sh
   make -f Makefile release
 }
 
 package() {
-  cd oolite-$pkgver
+  cd oolite
 
   mkdir -p "$pkgdir"/usr/bin
-  mkdir -p "$pkgdir"/usr/share/{oolite,applications,pixmaps,doc/oolite}
+  mkdir -p "$pkgdir"/usr/share/{oolite,applications,doc/oolite,icons/hicolor/256x256/apps/}
   cp -r oolite.app/* "$pkgdir"/usr/share/oolite/
   
-  install -D -m755 "$srcdir"/oolite "$pkgdir"/usr/bin/oolite
-  install -D -m644 installers/FreeDesktop/oolite-icon.png "$pkgdir"/usr/share/pixmaps/oolite-icon.png
-  install -D -m644 installers/FreeDesktop/oolite.desktop "$pkgdir"/usr/share/applications/oolite.desktop
+  install -D -m755 "$srcdir"/oolite.sh "$pkgdir"/usr/bin/oolite.sh
+  install -D -m644 Resources/Binary/Textures/oolite-logo1.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/space.oolite.Oolite.png
+  sed -e 's:Exec=run_oolite.sh:Exec=/usr/bin/oolite.sh:' \
+    <installers/FreeDesktop/space.oolite.Oolite.desktop \
+    >"$pkgdir"/usr/share/applications/space.oolite.Oolite.desktop
+  chmod 644 "$pkgdir"/usr/share/applications/space.oolite.Oolite.desktop
+    
   install -D -m644 Doc/AdviceForNewCommanders.pdf Doc/OoliteReadMe.pdf Doc/OoliteRS.pdf "$pkgdir"/usr/share/doc/oolite/
 }
