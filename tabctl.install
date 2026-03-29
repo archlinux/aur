@@ -11,8 +11,8 @@ post_install() {
     echo "==> After loading the extension, restart the browser for native messaging to work"
     echo "==> "
     echo "==> Rofi integration scripts are available in /usr/share/tabctl/scripts/"
-    echo "==>   rofi-wmctrl.sh - For X11 with wmctrl"
-    echo "==>   rofi-hyprctl.sh - For Hyprland/Wayland"
+    echo "==>   rofi-tabctl-wmctrl.sh - For X11 with wmctrl"
+    echo "==>   rofi-tabctl-niri.sh - For Niri/Wayland"
     echo "==> You can symlink them to your PATH or use them directly"
 }
 
