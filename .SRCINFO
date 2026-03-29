@@ -1,0 +1,14 @@
+pkgbase = hyprtasking
+	pkgdesc = Hyprland plugin for workspace overview and management
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/douglas/hyprtasking
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = meson
+	makedepends = ninja
+	depends = hyprland
+	source = hyprtasking-0.4.tar.gz::https://github.com/douglas/hyprtasking/archive/v0.4.tar.gz
+	sha256sums = 4fa8e3208fddcf5c59dafe6f8ba2bf36f725042444208a4c2074858651ceac7b
+
+pkgname = hyprtasking
