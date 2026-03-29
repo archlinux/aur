@@ -29,11 +29,11 @@ _mirror='https://mirrors.edge.kernel.org'
 _mirrorpath="${_mirror}/pub/linux/daemons/${pkgname}/v5"
 source=(${_mirrorpath}/${pkgname}-${pkgver}.tar.{xz,sign}
         ${_mirrorpath}/patches-5.2.0/autofs-5.1.9-Fix-incompatible-function-pointer-types-in-cyrus-sasl-module.patch{,.sign})
-# gpg key for Ian Kent <raven@themaw.net>, the maintainer of autofs
 sha256sums=('87e6af6a03794b9462ea519781e50e7d23b5f7c92cd59e1142c85d2493b3c24b'
             'SKIP'
             '0cf9d836765d3df70994c281278b2f068f15914b03a36c7b897f8fbcd82bd27e'
             'SKIP')
+# gpg key for Ian Kent <raven@themaw.net>, the maintainer of autofs
 validpgpkeys=('CD0A6E3CBB6768800B0736A8E7677380F54FD8A9')
 
 prepare() {
