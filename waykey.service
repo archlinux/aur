@@ -1,10 +1,15 @@
 [Unit]
 Description=WayKey Automation Engine (AutoHotkey alternative for Wayland)
-PartOf=graphical-session.target
 After=graphical-session.target
+PartOf=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=uwsm app -- /usr/bin/node /opt/waykey/run.js
+ExecStart=uwsm app -- /usr/bin/node /home/gokhanc/Development/Waykey/run.js
 Restart=on-failure
-RestartSec=5
+RestartSec=3
+Environment=NODE_ENV=production
+Environment=UV_THREADPOOL_SIZE=128
+
+[Install]
+WantedBy=default.target

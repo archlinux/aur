@@ -1,4 +1,5 @@
-pkg/
-src/
-*.pkg.tar.zst
-*.tar.gz
+node_modules/
+build/
+coverage/
+.env
+.DS_Store
