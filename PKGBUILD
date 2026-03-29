@@ -1,13 +1,13 @@
 pkgname=xstow
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="XStow is a replacement of GNU Stow written in C++. It supports all features of Stow with some extensions."
 arch=('i686' 'x86_64')
-url="https://xstow.sourceforge.net"
+url='https://github.com/majorkingleo/xstow'
 license=('GPL')
 depends=('ncurses')
-source=(https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2)
-md5sums=('a568f7e64fc0c39829348942a8dfd343')
+source=("https://github.com/majorkingleo/xstow/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('8eef4d92d297c7c0b64d17bff46ee9ff8e413b4779b5600c97b94883c9c17f07')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
