@@ -3,7 +3,7 @@
 
 
 pkgname=noteey-bin
-pkgver=1.27.1
+pkgver=1.53.0
 pkgrel=1
 pkgdesc="Noteey - A powerful note-taking application"
 arch=('x86_64')

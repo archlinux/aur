@@ -1,6 +1,6 @@
 pkgbase = noteey-bin
 	pkgdesc = Noteey - A powerful note-taking application
-	pkgver = 1.27.1
+	pkgver = 1.53.0
 	pkgrel = 1
 	url = https://github.com/andyyoungm/muenzo
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = noteey-bin
 	depends = gconf
 	depends = nss
 	depends = alsa-lib
-	noextract = noteey-1.27.1.exe
-	source = noteey-1.27.1.exe::https://noteey.oss-cn-beijing.aliyuncs.com/Noteey-Setup-1.27.1.exe
+	noextract = noteey-1.53.0.exe
+	source = noteey-1.53.0.exe::https://github.com/andyyoungm/muenzo/releases/download/v1.53.0/Noteey-Setup-1.53.0.exe
 	sha256sums = SKIP
 
 pkgname = noteey-bin
