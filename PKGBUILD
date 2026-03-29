@@ -2,8 +2,8 @@
 
 _plugin=fftspectrum
 pkgname=vsview-${_plugin}
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.3.post1
+pkgrel=1
 pkgdesc="A vsview plugin displaying the Fast Fourier transform spectrum of a video clip"
 arch=("x86_64")
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
@@ -22,7 +22,7 @@ makedepends=(
     "python-versioningit"
 )
 source=("${pkgname}::git+${url}.git#tag=${_plugin}/v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('8c1864a0f22f5bdb29f1ed515a83aaaee693061d3ceda448c6d95dbd14753e63')
 
 package() {
 	cd "${pkgname}/src/plugins/${_plugin}" || exit
