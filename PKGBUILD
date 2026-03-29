@@ -44,7 +44,11 @@ prepare() {
 
     for line in "${PLUGIN_LIST[@]}"
     do
-        if [[ -z "${line}" || "${line}" =~ ^[[:space:]]*# ]]
+        line="${line%$'\r'}"
+        line="${line#"${line%%[![:space:]]*}"}"
+        line="${line%"${line##*[![:space:]]}"}"
+
+        if [[ -z "${line}" || "${line}" =~ ^# ]]
         then
             continue
         fi
@@ -68,7 +72,7 @@ prepare() {
                 fi
             elif [[ -n "${version}" ]]
             then
-                go mod edit -require="${module}@${version}"
+                go get "${module}@${version}"
             fi
         else
             echo "Invalid plugin format: ${line}"
