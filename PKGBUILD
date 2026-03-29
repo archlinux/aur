@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/PerryTS/perry"
 license=('MIT')
 source=("https://github.com/PerryTS/perry/releases/download/v${pkgver}/perry-linux-x86_64.tar.gz")
-sha256sums=('f3e254a285fbf4a6b1c44005547e51e2c0116c67854b40d44109be8b032cff77')
+sha256sums=('66d735ca0ba3e1c79a7378480be55aab0ce7707a56c4ba40b620c80c70ca64f0')
 
 package() {
   cd "${srcdir}"
