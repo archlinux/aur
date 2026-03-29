@@ -29,6 +29,15 @@ package() {
     install -d "$pkgdir/opt/$pkgname"
     cp -a "$srcdir/venv"/* "$pkgdir/opt/$pkgname/"
 
+    # Fix shebangs: replace build-time venv path with install-time path
+    local _old_shebang="#!$srcdir/venv/bin/python"
+    local _new_shebang="#!/opt/$pkgname/bin/python"
+    find "$pkgdir/opt/$pkgname/bin" -type f -exec \
+        sed -i "1s|${_old_shebang}|${_new_shebang}|" {} \;
+
+    # Fix venv home path
+    sed -i "s|$srcdir/venv|/opt/$pkgname|g" "$pkgdir/opt/$pkgname/pyvenv.cfg"
+
     # Create wrapper script
     install -d "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/tapeback" << 'WRAPPER'
