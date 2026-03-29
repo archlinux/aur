@@ -1,10 +1,10 @@
-# Maintainer: zt <zt@zt64.dev>
-# Maintainer: cookie <kyliepc@proton.me>
+# Contributor: zt <zt@zt64.dev>
+# Contributor: cookie <kyliepc@proton.me>
 _pkgname=Vesktop
 name=vesktop
 pkgname=vesktop-electron
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided electron. Unsupported"
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 
 arch=("x86_64" "aarch64")
@@ -23,7 +23,7 @@ conflicts=('vesktop')
 
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Vencord/Vesktop/archive/v${pkgver}.tar.gz" "vesktop.desktop" "vesktop.sh")
 
-sha256sums=('afd5837f884b29db08285a0167ca16a2ebe86747a7496d7590423c575dac6569'
+sha256sums=('4bb9b5e1acaf17a5f145931008fe4015f9b8c1116b769e1a55a68d5483f238fc'
             '455c00b862aa0a7e18ca8e23d65d5c5ee4506cdfb15f1bf6f622cce39827de46'
             'a2da313031cfaa892f0f2e51fd0ffafbc14001d4efb0523bb8bfaeb7f4ddc3fa')
 
