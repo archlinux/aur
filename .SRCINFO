@@ -1,0 +1,17 @@
+pkgbase = bste-git
+	pkgdesc = Basic and Simple Text Editor - A rock-solid Qt6 text editor
+	pkgver = r1.544cbec
+	pkgrel = 1
+	url = https://github.com/soyhyak/BSTE
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = qt6-base
+	provides = bste
+	conflicts = bste
+	source = BSTE::git+https://github.com/soyhyak/BSTE.git
+	sha256sums = SKIP
+
+pkgname = bste-git
