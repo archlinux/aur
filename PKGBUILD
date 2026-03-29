@@ -9,7 +9,7 @@ license=('MIT')
 provides=('tofu')
 conflicts=('tofu' 'tofu-git')
 source=("tofu-${pkgver}::$url/releases/download/v${pkgver}/tofu-linux-x64")
-sha256sums=('e9f8e53579230f56aaa72a3518034d66d15f357d0fb05cb05ef098344b66249f')
+sha256sums=('f8c3ff43f99b297424d484f75e06d461228d134541c745cba1b816f4bc56b3ba')
 
 package() {
     install -Dm755 "$srcdir/tofu-${pkgver}" "$pkgdir/usr/bin/tofu"
