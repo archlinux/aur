@@ -1,0 +1,16 @@
+pkgbase = lstf-bin
+	pkgdesc = The aggregated TCP flows printer in Linux
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/yuuki/lstf
+	arch = x86_64
+	arch = i686
+	license = Apache-2.0
+	provides = lstf
+	conflicts = lstf
+	source_x86_64 = lstf-x86_64-0.7.2.tgz::https://github.com/yuuki/lstf/releases/download/v0.7.2/lstf_v0.7.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = d314fa91d7b39ea6871f18dea8bc214d4e5874286040a315b5ebaafec6c9f4c0
+	source_i686 = lstf-i686-0.7.2.tgz::https://github.com/yuuki/lstf/releases/download/v0.7.2/lstf_v0.7.2_linux_386.tar.gz
+	sha256sums_i686 = 24471752a26c8ffc39ba214b0776e921f23e3ede5ee1aa5bd3ad45e0dd235bb6
+
+pkgname = lstf-bin

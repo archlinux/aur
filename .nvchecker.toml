@@ -1,0 +1,5 @@
+[lstf-bin]
+source = "github"
+github = "yuuki/lstf"
+use_latest_release = true
+prefix = "v"
