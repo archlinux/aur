@@ -1,10 +1,10 @@
 pkgbase = mgccli-bin
 	pkgdesc = Magalu cloud CLI
-	pkgver = 0.31.1
+	pkgver = 0.53.0
 	pkgrel = 1
 	url = https://github.com/MagaluCloud/mgccli
 	arch = x86_64
-	source = https://github.com/MagaluCloud/mgccli/releases/download/v0.31.1/mgccli_0.31.1_linux_amd64.tar.gz
-	sha256sums = 3dbcc713933d5b65cbfd10400d165fcb0b72e94b82f92b73b874e998c6a24a27
+	source = https://github.com/MagaluCloud/mgccli/releases/download/v0.53.0/mgccli_0.53.0_linux_amd64.tar.gz
+	sha256sums = fdb88ae099923e56eb02c033a5695041b5f029b15aafc74b77f44f4f8cfcd48e
 
 pkgname = mgccli-bin
