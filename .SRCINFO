@@ -10,7 +10,7 @@ pkgbase = claugrep-git
 	makedepends = cargo
 	provides = claugrep
 	conflicts = claugrep
-	source = claugrep-git::git+ssh://git@github.com/futpib-bot/claugrep.git
+	source = claugrep-git::git+https://github.com/futpib-bot/claugrep.git
 	sha256sums = SKIP
 
 pkgname = claugrep-git

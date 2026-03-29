@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('rust' 'cargo')
 provides=('claugrep')
 conflicts=('claugrep')
-source=("$pkgname::git+ssh://git@github.com/futpib-bot/claugrep.git")
+source=("$pkgname::git+https://github.com/futpib-bot/claugrep.git")
 sha256sums=('SKIP')
 
 pkgver() {
