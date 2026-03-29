@@ -7,7 +7,7 @@
 
 _pkgname=neovim
 pkgname=neovim-nightly-bin
-pkgver=0.12.0+dev+2720+gf027f41e2c
+pkgver=0.12.0+dev+2727+gad4bc2d90c
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs (nightly build)'
 arch=('x86_64' 'aarch64')
@@ -39,9 +39,9 @@ esac
 source=("$_pkgname-$_date.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-${architecture}.tar.gz"
 	"$pkgname-archlinux.vim"
 	"$pkgname-sysinit.vim")
-b2sums=('SKIP'
-	'd0871e240bd9c7de7d898e1fba95364f4c4a12dbb3ac40892bbf93a49eb0e8cc2c8bc1ccae9ea5b700581a185a4df56bd28427d42a7d4b288560207b3951a15d'
-	'6ed647c3a4c0907a60060fa61117d484aa091c69c73dda1f0a99aa4e67870ae2092a2c1057a15ced9fc56b08374ce8a8b86dbe531df777f9ad49302c7a9d3da0')
+b2sums=('92109f2d442090898e0706ffe659a368d5c1b64c9bed4f2acddc8f0c532048b8b6ef22a87efac6454c06c242a438497731b2270eef04b10b7e150704c22a569a'
+        'd0871e240bd9c7de7d898e1fba95364f4c4a12dbb3ac40892bbf93a49eb0e8cc2c8bc1ccae9ea5b700581a185a4df56bd28427d42a7d4b288560207b3951a15d'
+        '6ed647c3a4c0907a60060fa61117d484aa091c69c73dda1f0a99aa4e67870ae2092a2c1057a15ced9fc56b08374ce8a8b86dbe531df777f9ad49302c7a9d3da0')
 install=$pkgname.install
 
 pkgver() {
