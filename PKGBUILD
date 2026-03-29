@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bouncer
-pkgver=49.3.0
+pkgver=50.0.0
 pkgrel=1
 pkgdesc="An application to help you choose the correct firewall zone for wireless connections."
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=('meson')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('0e6095d8167a4b5fd572881b3469269cbe3a911f5f5afa43b640ec2b410e19d0')
+sha256sums=('0f431e8f234f044ab606809f1123b67e639dffca36ae80264f8e08d2ea201960')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
