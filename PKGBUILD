@@ -11,8 +11,8 @@
 
 declare srcdir pkgdir
 pkgname=neovim-zig-git
-_nvim_version=0.12.0
-pkgver=0.12.0.r3329.g4747975754
+_nvim_version=0.13.0
+pkgver=0.13.0.r69.gb346b87fb2
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h aarch64)
@@ -77,12 +77,13 @@ b2sums=(
     'SKIP'
     '65e10c2d4ca2c661b666629a4ff793b41454eaee5b6f2789526294b3a9903b682dd7fffe4f5de21a8a96069324e6e5ffacba97cf1c74a2b72fb0349abee13fb1'
 )
-_zig_options=(--system zig_deps -Doptimize=ReleaseFast -Dcpu=native -Dinstall-path=/usr)
+_zig_options=(--system zig_deps -Doptimize=ReleaseFast -Dcpu=native -Dinstall-path=/usr --seed 1 --build-id=0x01)
 
 pkgver() {
     local nvim_version_git
     cd "${srcdir}/neovim" || exit 1
-    _nvim_version="$(awk -F'"' '/\.version = "/ {print $2}' build.zig.zon)"
+    # keep commented until build.zig.zon is updated
+    # _nvim_version="$(awk -F'"' '/\.version = "/ {print $2}' build.zig.zon)"
     nvim_version_git="$(git describe --always --dirty --match 'v*.*.*' | sed -E 's/^v[0-9]+.[0-9]+.[0-9]+-//; s/^([0-9]+)-([a-z0-9]+)/\1\.\2/')"
     printf "%s.r%s\n" "$_nvim_version" "$nvim_version_git"
 }
@@ -119,11 +120,14 @@ prepare() {
     tar xf "${srcdir}/tree-sitter-query.tar.gz" -C $ts_query_hash
 
     mkdir -p "${srcdir}/zig-global-cache"
+    mkdir -p "${srcdir}/zig-local-cache"
 }
 
 build() {
     cd "${srcdir}/neovim" || exit 1
-    zig build "${_zig_options[@]}" --global-cache-dir "${srcdir}/zig-global-cache"
+    zig build "${_zig_options[@]}" \
+        --global-cache-dir "${srcdir}/zig-global-cache" \
+        --cache-dir "${srcdir}/zig-local-cache"
 }
 
 check() {
@@ -138,7 +142,10 @@ package() {
 
     pushd . >/dev/null
     cd "${srcdir}/neovim" || exit 1
-    zig build install "${_zig_options[@]}" --prefix "${pkgdir}/usr" --global-cache-dir "${srcdir}/zig-global-cache"
+    zig build install "${_zig_options[@]}" \
+        --prefix "${pkgdir}/usr" \
+        --global-cache-dir "${srcdir}/zig-global-cache" \
+        --cache-dir "${srcdir}/zig-local-cache"
     rm "${pkgdir}/usr/bin/nlua0"
     rm -r "${pkgdir}/usr/runtime"
 
