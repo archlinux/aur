@@ -26,6 +26,7 @@ pkgver() {
 
 prepare() {
   cmake -B build -S ${pkgname} \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DSCIPLOT_BUILD_EXAMPLES:BOOL=OFF \
         -DSCIPLOT_BUILD_DOCS:BOOL=OFF \
         -DCMAKE_BUILD_TYPE:STRING='None' \
