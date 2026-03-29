@@ -30,10 +30,8 @@ package() {
     cp -a "$srcdir/venv"/* "$pkgdir/opt/$pkgname/"
 
     # Fix shebangs: replace build-time venv path with install-time path
-    local _old_shebang="#!$srcdir/venv/bin/python"
-    local _new_shebang="#!/opt/$pkgname/bin/python"
     find "$pkgdir/opt/$pkgname/bin" -type f -exec \
-        sed -i "1s|${_old_shebang}|${_new_shebang}|" {} \;
+        sed -i "1s|#!.*$srcdir/venv/bin/python[^ ]*|#!/opt/$pkgname/bin/python|" {} \;
 
     # Fix venv home path
     sed -i "s|$srcdir/venv|/opt/$pkgname|g" "$pkgdir/opt/$pkgname/pyvenv.cfg"
