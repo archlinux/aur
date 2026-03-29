@@ -1,7 +1,7 @@
 # Maintainer: i am piou <i.am.piou@gmail.com>
 
 pkgname=fairywren-icon-theme-git
-pkgver=r226.07bcdd4
+pkgver=r239.f52d12a
 pkgrel=1
 pkgdesc="Free and open source SVG icon theme for Linux, based on the Papirus Icon Set, with a modernized gradient-inspired material feel"
 arch=('any')
