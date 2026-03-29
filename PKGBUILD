@@ -181,10 +181,10 @@
 
 
 # Kernel version
-_kernel_major=6.18
-_kernel_minor=1
+_kernel_major=6.19
+_kernel_minor=6
 # Clear Linux patches version
-_clr=6.17.6-1594
+_clr=6.19.6-1597
 # kernel_compiler_patch version
 _kernelcompilerpatch="20250818.2"
 # kernel_compiler_patch name
@@ -209,8 +209,8 @@ source=(
     "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
     "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git"
     "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
-    "git+https://github.com/openzfs/zfs.git#tag=zfs-2.4.0"
-    "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.17.8.patch"
+    "git+https://github.com/openzfs/zfs.git#tag=zfs-2.4.1"
+    "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.19.patch"
     "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
 
@@ -219,9 +219,9 @@ source=(
 # -> SHA-256 checksums of the package's sources
 #    These need to be updated each release; see the 'source' array
 sha256sums=(
-    "9106a4605da9e31ff17659d958782b815f9591ab308d03b0ee21aad6c7dced4b"
+    "303079a8250b8f381f82b03f90463d12ac98d4f6b149b761ea75af1323521357"
     "SKIP"
-    "d998cc20acf4d450d765423b4d6ba603f351e4b1ab1b929b678b8bb23d410f0e"
+    "cb25f2161e2eed431e4d91eab65747cb1e626da6c2c1e6aa054025086d32da42"
     "SKIP"
     "326701c512295d50b7ee5b281287959b0e318bba8fed7abe746099e5b658849a"
     'SKIP'
@@ -308,14 +308,18 @@ _get_patches() {
     # Get the list of patches from the file, ignore the comments
     grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list.txt
     # Experimental patches
-    [[ "${_additionalpatches,,}" == *"+experimental"* ]] && grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list_exp.txt
+    if [[ "${_additionalpatches,,}" == *"+experimental"* ]]; then
+        grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list_exp.txt
+        grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list_exp_mm.txt
+        grep -Ev '^\s*#' ${srcdir}/tachyon/patch_list_exp_sched.txt
+    fi
 }
 
 
 ## Invokes '_get_patches' and applies them as well as KCC
 _apply_patches() {
     _info "Applying patches"
-    
+
     # Patch with kernel update patch
     _info "Applying kernel update patch"
     patch -sNp1 -i ../patch-${_kernel_major}.${_kernel_minor} || true
@@ -639,6 +643,12 @@ _update_defconfig() {
     scripts/config -e EDAC_AMD64 \
                    -e EDAC_IGEN6
 
+    # Google's BBRv3 TCP algo
+    scripts/config -e TCP_CONG_BBR \
+                   -e NET_SCH_FQ \
+                   --set-str DEFAULT_TCP_CONG bbr \
+                   --set-str DEFAULT_NET_SCH fq
+
     # Enable LLVM compilation
     [ -n "${_use_llvm_lto}" ] && scripts/config -d LTO_NONE \
                                                 -e LTO \
@@ -675,7 +685,7 @@ _update_defconfig() {
     case ${_subarch} in
         "")
             # Ask for subarch if none provided
-            make "${BUILD_FLAGS[@]}" oldconfig
+            timeout -fk 45 30 make "${BUILD_FLAGS[@]}" oldconfig
             ;;
         "1" | "GENERIC_CPU")
             # Set x86-64 microarch
@@ -790,13 +800,13 @@ _package() {
 
     # Install modules
     # We specify DEPMOD=/doesnt/exist here to suppress depmod
-    ZSTD_CLEVEL=19 make ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}/usr" \
+    # Silence this make call as it's just a compress + move operation
+    ZSTD_CLEVEL=3 make -s ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}/usr" \
         INSTALL_MOD_STRIP=1 DEPMOD=/doesnt/exist modules_install
 
     # Remove build directory
     rm -vrf "${__modulesdir}"/build
 }
-
 
 ## makepkg method; see https://wiki.archlinux.org/title/Creating_packages#package()
 _package-headers() {
@@ -877,7 +887,6 @@ _package-headers() {
     mkdir -p "${pkgdir}/usr/src"
     ln -sr "${__builddir}" "${pkgdir}/usr/src/${pkgbase}"
 }
-
 
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 for _package in "${pkgname[@]}"; do
