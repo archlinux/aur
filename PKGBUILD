@@ -4,7 +4,7 @@
 # Contributor: crasm <crasm@firebase-tools.aur.yooz4sio.vczf.io>
 
 pkgname=firebase-tools
-pkgver=15.11.0
+pkgver=15.12.0
 pkgrel=1
 pkgdesc='The Firebase Command Line Tools'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('jq' 'npm' 'node-gyp' 'python')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('d494c747c638f33f258640ea7aff5069652b2fc58537483b9980e0c79e86d1d8')
+sha256sums=('b8dc7f6424ec632087e9c1756ce3ee4714a8527b54aabbf3596cb050552f6756')
 
 prepare() {
   # devendor node-gyp
