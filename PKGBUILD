@@ -11,7 +11,7 @@ url="https://git.carlh.net/gitweb/?p=leqm-nrt.git;a=summary"
 license=(GPL2)
 makedepends=(git python)
 source=(
-  "leqm-nrt::git+git://git.carlh.net/git/leqm-nrt.git#commit=${_commit}"
+  "leqm-nrt::git+https://git.carlh.net/git/leqm-nrt.git#commit=${_commit}"
 )
 sha256sums=('SKIP')
 
