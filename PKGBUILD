@@ -7,7 +7,7 @@ _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-svg
 _qtver=6.11.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://www.qt.io'
 license=(GPL-3.0-only
@@ -20,8 +20,20 @@ makedepends=('android-cmake' 'qt6-base' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtsvg-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('dfa8d653be07087d9407ed4a4ebae847f8953e0b7abd829f089803ab652a30e6')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
+        '0001-Fix-zero-width-strokes-on-paths.patch')
+sha256sums=('dfa8d653be07087d9407ed4a4ebae847f8953e0b7abd829f089803ab652a30e6'
+            '145ba50fdee6cf5deabc31f5cfff968effa6c97b31b6c1daf20957d352b457b6')
+
+prepare () {
+  cd $_pkgfqn
+
+  # apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    msg2 "Applying patch $patch"
+    patch -p1 -i "$patch"
+  done
+}
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
