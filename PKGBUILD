@@ -45,9 +45,6 @@ sha256sums=(
   'SKIP'
 )
 
-source+=("${_patch_list[@]}")
-sha256sums+=("${_patch_list_sha256sums[@]}")
-
 case "$CARCH" in
   'x86_64')
     build_flag="ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc)"
@@ -70,7 +67,7 @@ prepare() {
     git clone --depth=1 $url -b linux-$pkgver $_srcname
     cd $_srcname
     # Not using git am to avoid setting git identity
-    git apply $srcdir/linux-gaokun/patch\ sets/recommended/*
+    git apply $srcdir/linux-gaokun/patch\ sets/recommended/* || :
     # I just don't like scm version string
     sed -i 's/\${scm_version}//' scripts/setlocalversion
     cp $srcdir/linux-gaokun/dts/sc8280xp-huawei-gaokun3*.dts* arch/arm64/boot/dts/qcom/
