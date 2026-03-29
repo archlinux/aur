@@ -1,17 +1,17 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=crosvm-git
-pkgver=r11156.cacedc9636
+pkgver=r11310.db857337c1
 pkgrel=1
 pkgdesc="The Chrome OS Virtual Machine Monitor"
 url="https://chromium.googlesource.com/crosvm/crosvm"
-depends=('gcc-libs' 'libcap' 'dtc')
-makedepends=('git' 'rustup' 'rust-bindgen' 'wayland' 'wayland-protocols')
+depends=('glibc' 'libgcc' 'libcap' 'wayland')
+makedepends=('git' 'rustup' 'rust-bindgen' 'wayland-protocols' 'dtc' 'python')
 conflicts=('crosvm')
 provides=('crosvm')
 options=(!lto !debug)
 arch=('x86_64')
-license=('custom:chromiumos')
+license=('LicenseRef-chromiumos')
 source=("git+https://chromium.googlesource.com/crosvm/crosvm"
         "git+https://chromium.googlesource.com/chromiumos/platform/minijail"
         "git+https://chromium.googlesource.com/chromium/tools/depot_tools"
@@ -26,6 +26,7 @@ prepare() {
   git config submodule."third_party/depot_tools".url "$srcdir/depot_tools"
   git config submodule."third_party/perfetto".url "$srcdir/perfetto"
   git -c protocol.file.allow=always submodule update
+  git -C third_party/minijail/ switch -d 42600f2
 }
 
 pkgver() {
