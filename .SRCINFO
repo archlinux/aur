@@ -1,0 +1,23 @@
+pkgbase = smplayer-qt4x
+	pkgdesc = Media player with built-in codecs that can play virtually all video and audio formats
+	pkgver = 23.6.0
+	pkgrel = 1
+	url = https://www.smplayer.info/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = qt4
+	depends = mpv
+	depends = libx11
+	depends = zlib
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	optdepends = smplayer-themes: icon themes collection
+	optdepends = smplayer-skins: skin themes collection
+	optdepends = youtube-dl: youtube videos and streaming
+	optdepends = yt-dlp: youtube videos and streaming
+	optdepends = mplayer: alternative multimedia engine
+	source = https://github.com/smplayer-dev/smplayer/archive/refs/tags/v23.6.0.tar.gz
+	sha256sums = 407cecc3ec94536b739d21286d1e4c45adc5a151c935f8ee4ca999c89c121887
+
+pkgname = smplayer-qt4x
