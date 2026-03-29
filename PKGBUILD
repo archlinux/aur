@@ -3,7 +3,7 @@
 # Contributor: Thomas Heinemann <thomas@nipha.de>
 # Contributor: Jean Lucas < jean at 4ray dot co>
 pkgname='parsedmarc'
-pkgver='9.2.1'
+pkgver='9.5.5'
 pkgrel='1'
 pkgdesc='Python package and CLI for parsing aggregate and forensic DMARC reports'
 arch=('any')
@@ -19,18 +19,18 @@ optdepends=(
 )
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-	'run-tests-offline.diff'
+	'remove-requires-python.diff'
 )
-b2sums=('bd3035eca8184759cc27468364334b3c1cadd479a89b07c02732eb8151ea834a9ba6d1c05abdfc31cae114e96e1cf950ee0fd2300ca24735ea6ddd641ab34dac'
-        'ab75ba1048a73305aede8bb9c490a1c63d666a03cd808d32b7ffc92be39ef70e7f47ab26f34e5ce499b9b425376ca3eb801175f8c80c7ae296e643aee05f84c9')
+b2sums=('0b2a194efbcf5a7fc82a56a58b6989a6f4c9a3cfbcd636868bcee0aa1db0b5f0960e4736b90da1bd21cc71bdfea9507eda285e72091ee63b409df67a3cd84863'
+        '21af6499b5f3dd4c3d293d879fba3465270a4fc5d85918513e0b32c5b0e18e886f35773ab41ec9f89ab028408eb3fcd4d59ae1787794eea87285706fd2f70b67')
 
 _sourcedirectory="$pkgname-$pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	# Force tests to run offline
-	patch --forward -p1 < '../run-tests-offline.diff'
+	# Fix pyproject.toml
+	patch --forward -p1 < "$srcdir/remove-requires-python.diff"
 }
 
 build() {
@@ -41,8 +41,8 @@ build() {
 check() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	# Run unit tests
-	pytest 'tests.py' --full-trace
+	# Run unit tests (with GITHUB_ACTIONS set to true to skip DNS lookups)
+	GITHUB_ACTIONS='true' pytest 'tests.py' --full-trace
 
 	# Create a config file for testing
 	cat << EOF > 'test.ini'
