@@ -1,0 +1,5 @@
+[chibi-scheme]
+source = 'htmlparser'
+url = 'https://synthcode.com/wiki/chibi-scheme'
+xpath = "/html/body//a[starts-with(@href, 'http://synthcode.com/scheme/chibi/chibi-scheme-') and contains(@href, '.tgz')]"
+prefix = 'version '
