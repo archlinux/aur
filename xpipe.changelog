@@ -1,8 +1,6 @@
-- Add setting to hide connection names from git vault when the entire vault encryption was enabled
-- Add new MCP server endpoint call_api to send requests to the HTTP API via MCP
-- Fix various incus/LXD actions being broken when using multiple projects
-- Fix choco update check being broken on Windows
-- Fix bitwarden sync button staying disabled after sync failure
-- Fix NullPointer for PsSessions when no gateway was set
-- Fix zellij being launched with wrong TERM environment variable
+- Rework workspaces settings category to be more intuitive
+- Update documentation for v22 changes to password managers and identities
+- Fix SSH connections failing when a custom SSH executable was added to the PATH from a directory with spaces
+- Fix connection filter sometimes jumping to wrong category when only one entry matched
+- Fix selected category being reset on restart
 - Fix various NullPointers
