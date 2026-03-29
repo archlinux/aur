@@ -19,6 +19,6 @@ pkgver() {
 package() {
   cd "$srcdir/iostem"
   install -Dm644 iostem.hpp "$pkgdir/usr/include/iostem.hpp"
-  install -Dm644 iostem "$pkgdir/usr/include/iostem"
+  cp -r iostem "$pkgdir/usr/include/"
   install -Dm644 iostem98.hpp "$pkgdir/usr/include/iostem98.hpp"
 }
