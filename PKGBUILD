@@ -1,7 +1,7 @@
 # Maintainer: Xuruh <xuruh@tuta.io>
 pkgname=fluxer-world-bin
 pkgver=1.0.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Fluxer World desktop client — open-source chat, voice, and community platform"
 arch=('x86_64')
 url="https://fluxer.world"
@@ -49,7 +49,7 @@ Icon=org.fluxer.World
 Terminal=false
 Type=Application
 Categories=Network;InstantMessaging;Chat;
-StartupWMClass=fluxer-world
+StartupWMClass=org.fluxer.World
 MimeType=x-scheme-handler/fluxerworld;
 EOF
 
