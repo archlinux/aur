@@ -1,0 +1,4 @@
+[grfcodec]
+source = 'github'
+github = 'OpenTTD/grfcodec'
+use_latest_release = true
