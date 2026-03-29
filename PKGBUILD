@@ -9,8 +9,9 @@ url="https://github.com/qr243vbi/nekobox"
 license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost')
 makedepends+=('cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs' 'acl')
-source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("2d1e76ba283f7bd7e7085330123ed54cda3174c2f865272b90c8208251c22be6")
+makedepends+=('pkgconf')
+source=()
+sha256sums=()
 
 nekobox_source_directory="nekobox-unified-source-${pkgver}"
 
