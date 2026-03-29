@@ -3,7 +3,7 @@
 pkgbase=zrok2
 pkgname=(zrok2 zrok2-agent zrok2-controller zrok2-frontend zrok2-metrics-bridge)
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='zrok is a next-generation sharing platform, designed to make sharing network and file resources simple and secure.'
 arch=('x86_64')
 url='https://zrok.io'
@@ -71,7 +71,7 @@ package_zrok2-controller() {
 }
 
 package_zrok2-frontend() {
-    pkgdesc='This package provides zrok-share.service.'
+    pkgdesc='This package provides zrok-frontend.service.'
     depends=('zrok2' 'bash')
 
     cd "zrok-$pkgver"
@@ -81,7 +81,7 @@ package_zrok2-frontend() {
 }
 
 package_zrok2-metrics-bridge() {
-    pkgdesc='This package provides zrok-share.service.'
+    pkgdesc='This package provides zrok-metrics-bridge.service.'
     depends=('zrok2' 'zrok2-controller' 'bash')
 
     cd "zrok-$pkgver"
