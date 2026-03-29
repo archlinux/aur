@@ -2,7 +2,7 @@
 
 pkgname=satysfi-git
 _pkgname=SATySFi
-pkgver=r2148.e1e0270
+pkgver=r2678.c2cbc482
 pkgrel=1
 pkgdesc='A statically-typed, functional typesetting system'
 arch=('x86_64')
@@ -29,9 +29,9 @@ build() {
   sed -ie 's/lib-satysfi/${srcdir}\/${_pkgname}\/lib-satysfi/' install-libs.sh
   export OPAMROOT="${srcdir}/.opam"
   export OPAMYES=1
-  opam init --no-setup
-  eval "$(opam config env)"
-  opam repository add satysfi-external https://github.com/gfngfn/satysfi-external-repo.git
+  opam init --no-setup --bare
+  opam switch create ocaml4-satysfi --repos=satysfi-external=https://github.com/gfngfn/satysfi-external-repo.git,default 4.14.2
+  eval "$(opam env --switch=ocaml4-satysfi)"
   opam pin add --no-action satysfi .
   # bypass "ERROR: Preinstalled ocamlbuild detected at ..."
   export CHECK_IF_PREINSTALLED=false
