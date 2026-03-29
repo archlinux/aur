@@ -72,6 +72,7 @@ package() {
     # The install script will create a symlink.
     install -m644 -D "${srcdir}/config" "${pkgdir}/etc/selinux/config.${_policyname}"
 }
+
 sha256sums=('SKIP'
             '15f0b63af5790cc70b442648f6e30df57f4f91d95c7ca541e0b1bc1f59236020'
             '61babf996035dac53f5b74882a506537c2a6b0e3ee4df9dc24ac053bcd641109')
