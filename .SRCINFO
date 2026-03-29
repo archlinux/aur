@@ -1,0 +1,14 @@
+pkgbase = haskell-btrfs
+	pkgdesc = Bindings to the btrfs API
+	pkgver = 0.2.1.0
+	pkgrel = 1
+	url = https://github.com/redneb/hs-btrfs
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = ghc
+	makedepends = haskell-hsc2hs
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/btrfs/0.2.1.0/btrfs-0.2.1.0.tar.gz
+	sha256sums = f81e2893092497dbd74e3671ede543300e136e1e9f206217b35f232a8a13869b
+
+pkgname = haskell-btrfs
