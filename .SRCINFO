@@ -1,7 +1,7 @@
 pkgbase = konform-browser
 	pkgdesc = Firefox ESR fork with increased security, privacy, and customizability
 	pkgver = 140.9.0.100
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://codeberg.org/konform-browser/source
 	install = konform.install
@@ -75,7 +75,7 @@ pkgbase = konform-browser
 	depends = sh
 	depends = zlib
 	optdepends = hunspell-dictionary: Spell checking
-	optdepends = ffmpeg4.4: additional video and audio codec support
+	optdepends = ffmpeg: additional video and audio codec support
 	optdepends = openh264: H264 video decoding support
 	optdepends = libnotify: Notification integration
 	optdepends = networkmanager: Location detection via available WiFi networks
@@ -101,6 +101,7 @@ pkgbase = konform-browser
 	source = 0002-Use-wasm32-wasip1-target.patch
 	source = 0003-update-rust-bindgen-to-fix-clang22-build.patch.xz
 	source = 0004-skia-m142-update.patch.xz
+	source = 0005-ffmpeg8compat.patch::https://bug1962139.bmoattachments.org/attachment.cgi?id=9525881
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha256sums = eecdec0e09c70942b3adac1fd9a7200dd281f7adf1e198c1e9f5f0c717188356
 	sha256sums = b972b2a4c17244d51c10123cbd6c936e2cf26ebc29eb724570d285c283e9e92c
@@ -112,5 +113,6 @@ pkgbase = konform-browser
 	sha256sums = baad79216200df4ea05a0e5ca26e0c56c4d4a3cd2149d32f15dc8b7c724376ba
 	sha256sums = 8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d
 	sha256sums = e11aba9839824096f07ca5dc17c9fd5bfa09209f8261ab09f7e473f350a82760
+	sha256sums = 40f742d71de764ede77d4d09ecfd2a581c88600282f37c8acab5266677bc0bb3
 
 pkgname = konform-browser
