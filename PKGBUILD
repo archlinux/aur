@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/binspam"
-  g++ main.cpp -o binspam
+  g++ -I/usr/include main.cpp -o binspam
 }
 
 package() {
