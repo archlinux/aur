@@ -28,7 +28,7 @@ pkgbase = nekobox
 	makedepends = boost-libs
 	makedepends = acl
 	source = https://github.com/qr243vbi/nekobox/releases/download/5.10.28/nekobox-unified-source-5.10.28.tar.xz
-	sha256sums = 58c55394c103feab5b88c7a738eb0c1c9a67dc25fe655b43ebf7aeaf84f3d1fa
+	sha256sums = a7b10ad45d0ddf19bba9efbeb27376b46519956884d2bb89dfd331355f975c0d
 
 pkgname = nekobox
 
