@@ -1,0 +1,5 @@
+[lsconntrack-bin]
+source = "github"
+github = "yuuki/lsconntrack"
+use_latest_release = true
+prefix = "v"

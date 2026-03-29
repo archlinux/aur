@@ -1,0 +1,16 @@
+pkgbase = lsconntrack-bin
+	pkgdesc = The Linux netfilter conntrack-based connection flows pretty printer
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/yuuki/lsconntrack
+	arch = x86_64
+	arch = i686
+	license = Apache-2.0
+	provides = lsconntrack
+	conflicts = lsconntrack
+	source_x86_64 = lsconntrack-x86_64-0.3.0.tgz::https://github.com/yuuki/lsconntrack/releases/download/v0.3.0/lsconntrack_v0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8f32c880fbe2b054fdf70da5f71f075c329092614fed8669d2dd97e2b79325c0
+	source_i686 = lsconntrack-i686-0.3.0.tgz::https://github.com/yuuki/lsconntrack/releases/download/v0.3.0/lsconntrack_v0.3.0_linux_386.tar.gz
+	sha256sums_i686 = c1f9f7fcb14026b5d3d515ccd773e62794c30bda6f3b08eea7577204f4ed7afb
+
+pkgname = lsconntrack-bin
