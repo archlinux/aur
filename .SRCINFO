@@ -1,0 +1,20 @@
+pkgbase = tfm-git
+	pkgdesc = TUI file manager
+	pkgver = r1.g0000000
+	pkgrel = 1
+	url = https://github.com/braniik/tfm
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = taglib
+	provides = tfm
+	conflicts = tfm
+	source = tfm-git::git+https://github.com/braniik/tfm.git
+	source = ftxui::git+https://github.com/ArthurSonzogni/FTXUI.git#tag=v6.1.9
+	source = tomlplusplus::git+https://github.com/marzer/tomlplusplus.git#tag=v3.4.0
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tfm-git
