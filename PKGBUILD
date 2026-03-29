@@ -2,8 +2,8 @@
 pkgname=claude-desktop-hardened-bin
 _pkgname=claude-desktop-hardened
 pkgver=1.1.9493
-_buildnum=13
-pkgrel=13
+_buildnum=14
+pkgrel=14
 pkgdesc="Claude Desktop for Linux (hardened) — bubblewrap sandboxing, credential redaction, permission-gated Computer Use"
 arch=('x86_64')
 url="https://github.com/techtoboggan/claude-desktop-hardened-linux"
