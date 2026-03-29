@@ -1,6 +1,6 @@
 pkgbase = beekeeper-studio
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more
-	pkgver = 5.6.2
+	pkgver = 5.6.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/beekeeper-studio/beekeeper-studio
@@ -14,16 +14,16 @@ pkgbase = beekeeper-studio
 	makedepends = python
 	makedepends = yarn
 	depends = electron39
-	provides = beekeeper-studio-ultimate=5.6.2
+	provides = beekeeper-studio-ultimate=5.6.3
 	conflicts = beekeeper-studio-ultimate
-	source = beekeeper-studio-5.6.2.tar.gz::https://github.com/beekeeper-studio/beekeeper-studio/archive/v5.6.2.tar.gz
+	source = beekeeper-studio-5.6.3.tar.gz::https://github.com/beekeeper-studio/beekeeper-studio/archive/v5.6.3.tar.gz
 	source = electron-launcher.sh
 	source = electron-builder-config.diff
 	source = fix-argv.diff
 	source = disable-update-checking.diff
 	source = missing-log-app-name.diff
 	source = LICENSE.md
-	b2sums = 66b85f66876794e53df1f9aa628c41f502e2eb6b2919ae736225668ac033ff6cf98236db1f6eb89e5ee7046685bcd5e7eb88d2e7efdc250266450119d5fe0283
+	b2sums = dfcc81d0a9aaf259f41e4ffcc2c81167e2f028a2dc6d43d8fa5ec25ca603adf079c1718d542bda98c56a2ed687b854088b5fc5c6098cfbd2d36e9577fc3f33b7
 	b2sums = 54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0
 	b2sums = 20b600b5b223ab99ff9a0d984eeef659d88a6d85f1456c8fdbfc3c72ba646569faf29699ecaa87e800b6d13a3474698569e7faae086b31fe98f5778528b410db
 	b2sums = 248cf727e04a6aced66d6b51cbecc1d4ed9472f0ba7e096ddcb0cb7160b98c3b396d74b5eadc249d1425d404ab825599335a2aaec0917706e8d317d4d0c5babd
