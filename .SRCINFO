@@ -1,6 +1,6 @@
 pkgbase = cyan-skillfish-governor-smu
 	pkgdesc = GPU governor for the AMD Cyan Skillfish APU
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/filippor/cyan-skillfish-governor/tree/smu
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cyan-skillfish-governor-smu
 	makedepends = cargo
 	depends = libdrm
 	backup = etc/cyan-skillfish-governor-smu/config.toml
-	source = https://github.com/filippor/cyan-skillfish-governor/archive/refs/tags/v0.3.5.tar.gz
-	b2sums = 651c0dd03fbb621bcfe2fe892fed058c7b1b6556995aeb39f9c7c423975b557223d9aab9f73135717fa9443485537dd737d54331968a9ef22305ce5f191faef0
+	source = https://github.com/filippor/cyan-skillfish-governor/archive/refs/tags/v0.4.0.tar.gz
+	b2sums = 7d1eee92ea08ce62261b623ac921fae7cd6b8bde304c5e51bcf867aaf92eeede69d49bf8fa00c8a7e8792ec4b7af4109a1ee61eaf0f1232073408acf5ffc3175
 
 pkgname = cyan-skillfish-governor-smu
