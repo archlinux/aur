@@ -5,7 +5,7 @@
 
 pkgname=aurivo-bin
 pkgver=2.0.15
-pkgrel=3
+pkgrel=4
 pkgdesc="Aurivo Media Player (prebuilt AppImage)"
 arch=('x86_64')
 url="https://aurivo.app"
@@ -25,7 +25,7 @@ source=(
   "com.aurivo.mediaplayer.png::https://raw.githubusercontent.com/${_owner}/${_repo}/main/icons/aurivo_512.png"
 )
 
-sha256sums=('1e41970528d80bb52aecc23ae175276ff7c6b870880c6e70230bd78e49e59a3f'
+sha256sums=('d960e09014905a6072ae0769aaf1d98f61404755370638972ffa810b80fe8b40'
             'da02e29b849870a9852e9020c0df9532a84ae81c53d3f073fa633d679d80b43f')
 
 package() {
