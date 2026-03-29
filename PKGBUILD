@@ -9,7 +9,7 @@
 
 pkgname=botan2.19
 pkgver=2.19.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Crypto library written in C++ (legacy version 2.19)'
 arch=(x86_64)
 url='https://botan.randombit.net/'
@@ -17,7 +17,6 @@ license=(BSD)
 depends=(xz sqlite)
 makedepends=(python python-sphinx python-setuptools boost)
 optdepends=('python: for using botan2.py')
-provides=('botan2')
 conflicts=('botan2')
 source=(https://botan.randombit.net/releases/Botan-${pkgver}.tar.xz{,.asc}
         boost-fixes.patch)
