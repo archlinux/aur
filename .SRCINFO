@@ -1,10 +1,10 @@
 pkgbase = local-arch-wiki
 	pkgdesc = A convenient wrapper for arch-wiki-docs, enabling effortless searching and access to the offline Arch Wiki.
 	pkgver = 2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/whoisyoges/local-arch-wiki
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = arch-wiki-docs
 	depends = bash

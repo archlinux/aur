@@ -1,3 +1,5 @@
 local-arch-wiki*
 pkg
 src
+Dockerfile*
+docker-compose*
