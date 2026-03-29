@@ -1,6 +1,6 @@
 pkgbase = lean-ctx
 	pkgdesc = Context Intelligence Engine with CEP + CCP — 24 MCP tools, 90+ shell patterns, persistent AI memory, multi-agent sharing, tree-sitter AST (14 languages). Reduces LLM token consumption by up to 99%.
-	pkgver = 2.7.1
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://leanctx.com
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lean-ctx
 	makedepends = cargo
 	makedepends = gcc
 	depends = gcc-libs
-	source = lean-ctx-2.7.1.crate::https://static.crates.io/crates/lean-ctx/lean-ctx-2.7.1.crate
-	sha256sums = 2e18a296eb2fcb59273c06376f3d6338a46dce7f448660d3deb70ccfbe4f44d6
+	source = lean-ctx-2.8.0.crate::https://static.crates.io/crates/lean-ctx/lean-ctx-2.8.0.crate
+	sha256sums = 011f757c4e695bc1d70962b08d91962a29446e128edc1716b07f3164475cf505
 
 pkgname = lean-ctx
