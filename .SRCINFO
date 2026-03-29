@@ -1,6 +1,6 @@
 pkgbase = rsm
 	pkgdesc = A safe, fast, and modular symlink manager written in Rust
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/hunde32/rsm
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rsm
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = rsm-0.1.1.tar.gz::https://github.com/hunde32/rsm/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 254a0d586460c62fdb13b542888bf8497438891f54fa00c99b819f0dfe891ffe
+	source = rsm-0.2.0.tar.gz::https://github.com/hunde32/rsm/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 6dc3307f052d568b661011bb55e1bb1c182445e7a5f25708d93c1321110fbb61
 
 pkgname = rsm

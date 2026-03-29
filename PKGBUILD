@@ -1,6 +1,6 @@
 # Maintainer: Hundaol Dejen <hundaoldejen1@gmail.com>
 pkgname=rsm
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A safe, fast, and modular symlink manager written in Rust"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('254a0d586460c62fdb13b542888bf8497438891f54fa00c99b819f0dfe891ffe')
+sha256sums=('6dc3307f052d568b661011bb55e1bb1c182445e7a5f25708d93c1321110fbb61')
 
 build() {
   cd "rsm-$pkgver"
