@@ -1,0 +1,5 @@
+[es]
+source = 'github'
+github = 'wryun/es-shell'
+use_latest_release = true
+prefix = 'v'
