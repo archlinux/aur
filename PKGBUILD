@@ -3,23 +3,21 @@
 
 pkgname=astroterm-bin
 _name=${pkgname%-bin}
-pkgver=1.0.10
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A planetarium for your terminal'
 arch=(x86_64)
 url='https://github.com/da-luce/astroterm'
 license=(MIT)
 depends=(glibc)
-provides=("$_name")
-conflicts=("$_name")
-source=(
-    "LICENSE-$pkgver::https://raw.githubusercontent.com/da-luce/$_name/refs/tags/v$pkgver/LICENSE"
-    "README-$pkgver.md::https://raw.githubusercontent.com/da-luce/$_name/refs/tags/v$pkgver/README.md"
-)
-source_x86_64=("$_name-$pkgver::https://github.com/da-luce/$_name/releases/download/v$pkgver/$_name-linux-x86_64")
+provides=($_name)
+conflicts=($_name)
+source=(LICENSE-$pkgver::https://raw.githubusercontent.com/da-luce/$_name/refs/tags/v$pkgver/LICENSE
+        README-$pkgver.md::https://raw.githubusercontent.com/da-luce/$_name/refs/tags/v$pkgver/README.md)
+source_x86_64=("$_name-$pkgver::$url/releases/download/v$pkgver/$_name-linux-x86_64")
 sha256sums=('dcf125d76a777af20283b8cc797ded8d3eeb7d57a1ad1f642493a13764c60a29'
-            'e2c694d890af48965c251519f6dd7c4c96aa314c8f2bf3ddd265ec6100acd874')
-sha256sums_x86_64=('0e3738aa85d83e58c7316e2d0713c6f1b6056337f243a227d9b012f03c4dd678')
+            'ffeab0dd661b4a258f1df40fe046931003fc8baeca868b2ab2749896757ee1bc')
+sha256sums_x86_64=('6001caa417b9a818a44c9b2242314dc411a5b5f65debdad578af9b894685ef73')
 
 package() {
     install -Dm755 $_name-$pkgver "$pkgdir/usr/bin/$_name"
