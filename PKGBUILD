@@ -2,7 +2,7 @@
 # 🔋 slskdn - The batteries-included Soulseek web client (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=0.24.5.slskdn.105
+pkgver=0.24.5.slskdn.107
 pkgrel=1
 pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
 arch=('x86_64' 'aarch64')
@@ -12,6 +12,9 @@ depends=('dotnet-runtime-8.0' 'aspnet-runtime-8.0' 'yt-dlp')
 makedepends=('dotnet-sdk-8.0' 'dotnet-runtime-8.0' 'aspnet-runtime-8.0' 'nodejs' 'npm')
 optdepends=(
     'docker: for containerized deployment'
+    'ffmpeg: for audio decoding and SongID media handling'
+    'python: for SongID Python tooling'
+    'python-torchaudio: optional enhancement for advanced Python-based fingerprint and analysis workflows in SongID'
 )
 provides=('slskd' 'slskd-bin')
 conflicts=('slskd' 'slskd-bin' 'slskdN-bin')
