@@ -1,0 +1,16 @@
+pkgbase = gitcredits-bin
+	pkgdesc = Git log doesn't do them justice. Turn your contributors into movie stars.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Higangssh/gitcredits
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gitcredits
+	conflicts = gitcredits
+	source_x86_64 = gitcredits-x86_64-0.1.2.tgz::https://github.com/Higangssh/gitcredits/releases/download/v0.1.2/gitcredits_0.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7d66d9ba89a60a296e1ee3e92e85b3b5b144a2ffb706d7134e8b4fff891d572f
+	source_aarch64 = gitcredits-aarch64-0.1.2.tgz::https://github.com/Higangssh/gitcredits/releases/download/v0.1.2/gitcredits_0.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = b4cc40d266af369c0590f0b2a56dfed8e24b7f15ce35001c1957fe3b1d7aa219
+
+pkgname = gitcredits-bin

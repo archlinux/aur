@@ -1,0 +1,5 @@
+[gitcredits-bin]
+source = "github"
+github = "Higangssh/gitcredits"
+use_latest_release = true
+prefix = "v"
