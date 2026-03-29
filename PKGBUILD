@@ -9,8 +9,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=dolphin-git
-_pkgname=dolphin
-pkgver=25.04.0.r76.gd7d3838
+_pkgname=${pkgname%-git}
+pkgver=26.03.90.r53.g61b6e17
 pkgrel=1
 pkgdesc='KDE File Manager (git)'
 arch=(x86_64)
