@@ -2,7 +2,7 @@
 # Contributor: Nayrosk
 
 pkgname=claude-cowork-service
-pkgver=1.0.23
+pkgver=1.0.24
 pkgrel=1
 pkgdesc="Native Linux backend for Claude Desktop Cowork"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ makedepends=('go')
 install="${pkgname}.install"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8e50930eabbf1a802d2b737a51eb8cd74b2efb1b215497e88f58efcc1ae2c381')
+sha256sums=('980dc3ce4baaecd3f54826984d7baaa3c0a8a44514fafb8312b486765d06b7c2')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -30,7 +30,7 @@ package() {
     install -Dm755 cowork-svc-linux \
         "${pkgdir}/usr/bin/cowork-svc-linux"
 
-    install -Dm644 dist/claude-cowork.service \
+    install -Dm644 claude-cowork.service \
         "${pkgdir}/usr/lib/systemd/user/claude-cowork.service"
 
     install -Dm644 LICENSE \
