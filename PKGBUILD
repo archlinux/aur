@@ -55,6 +55,7 @@ build() {
 }
 
 package_matlab-support() {
+  pkgdesc+=" (support)"
   depends=(
     "${_name}-meta>=${_release}"
     'gnutls3.8.9'
@@ -123,6 +124,7 @@ package_matlab-support() {
 }
 
 package_matlab-gcc-support() {
+  pkgdesc+=" (GCC, support)"
   depends=(
     "${pkgbase}>=${epoch}:${pkgver}-${pkgrel}"
     "${_name}-gcc-meta>=${_release}"
@@ -140,6 +142,7 @@ package_matlab-gcc-support() {
 }
 
 package_matlab-gcc-fortran-support() {
+  pkgdesc+=" (GCC Fortran, support)"
   depends=(
     "${pkgbase}>=${epoch}:${pkgver}-${pkgrel}"
     "${_name}-gcc-fortran-meta>=${_release}"

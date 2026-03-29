@@ -10,6 +10,7 @@ pkgbase = matlab-support
 	makedepends = gnutls3.8.9
 
 pkgname = matlab-support
+	pkgdesc = A high-level language for numerical computation and visualization (support)
 	depends = matlab-meta>=R2025b
 	depends = gnutls3.8.9
 	optdepends = matlab-meta-all: all runtime dependencies
@@ -30,6 +31,7 @@ pkgname = matlab-support
 	conflicts = java-matlab-r2025b
 
 pkgname = matlab-gcc-support
+	pkgdesc = A high-level language for numerical computation and visualization (GCC, support)
 	depends = matlab-support>=1:R2025b+25.2.9.9999999-1
 	depends = matlab-gcc-meta>=R2025b
 	provides = matlab-gcc=R2025b+25.2.9.9999999
@@ -40,6 +42,7 @@ pkgname = matlab-gcc-support
 	conflicts = matlab-r2025b-gcc
 
 pkgname = matlab-gcc-fortran-support
+	pkgdesc = A high-level language for numerical computation and visualization (GCC Fortran, support)
 	depends = matlab-support>=1:R2025b+25.2.9.9999999-1
 	depends = matlab-gcc-fortran-meta>=R2025b
 	provides = matlab-gcc-fortran=R2025b+25.2.9.9999999
