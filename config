@@ -5,5 +5,5 @@
 #       disabled - No SELinux policy is loaded.
 SELINUX=permissive
 # SELINUXTYPE= takes the name of SELinux policy to be used.
-# Use "refpolicy-arch" to use reference policy with Arch Linux patches
-SELINUXTYPE=refpolicy-arch
+# Use "refpolicy-arch-git" to use reference policy with Arch Linux patches
+SELINUXTYPE=refpolicy-arch-git

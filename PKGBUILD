@@ -5,7 +5,7 @@ _reponame=refpolicy
 _policyname=${_reponame}-arch-git
 pkgname=selinux-${_policyname}
 pkgver=RELEASE_2_20260312.r2.g3e316c1c5
-pkgrel=1
+pkgrel=2
 pkgdesc="Modular SELinux reference policy including headers and docs with Arch Linux patches (latest commit)"
 arch=('any')
 url="https://github.com/SELinuxProject/${_reponame}/wiki"
@@ -74,13 +74,13 @@ package() {
 }
 sha256sums=('SKIP'
             '15f0b63af5790cc70b442648f6e30df57f4f91d95c7ca541e0b1bc1f59236020'
-            'c9f7cce9a06fd0595b3dd47d4fdde9d9c7457120c42c5f08bfdc5e89eb9a61df')
+            '61babf996035dac53f5b74882a506537c2a6b0e3ee4df9dc24ac053bcd641109')
 sha384sums=('SKIP'
             '6a4d84ef069f290831f5b0a394ef844f881059857505377f4046d5c088f16fb786501654ec33329e0444599d2fea3417'
-            'd6c75e130f6daea5895e431f0ecd2c407f494f39c78d391b1c352bef171235ec1226b38b6385ada25735b767c4ec31b5')
+            '37d4a9e6b65219ac6f1bd1b286b81faf27e89c6162ffec6d434627a66b229541adf5527e62ae263ca1856682dfd121d7')
 sha512sums=('SKIP'
             '8fe8aff6b5e0c3b2c1998626762f604a66eb95e0ae7125a7c7796253541448469117b4a4b29be38517f7bd0dc62f5a9face271ce99367f3ceb856c341bf520a0'
-            'e7ef71a4bfea54902c6777da64044d82126e12385dfa5be3bce98f5180cea96f79732f88d7a1a4e9d65867a63b9ee49ee94334e2e18cb857956dc87999c5a26b')
+            'd6d168fdce5eef1fc843559f0883909ecd9b0a625277c3e93c2a4ede9360af830992bb1c66cbfd3f968ecbf54aeba035790017e7711dd91b32ba06582a69d0e8')
 b2sums=('SKIP'
         '4a26123f522ae0c953ea35740f7d5f588d46aed0ac502f7c67133f3556cf98d088c69947bc8ea45536e06ea600a3ce4a16265746301fcc98d837eb3563b2ea66'
-        '1d74e079522b001756b0d219dcf20b0f1913c83252c9376a25f95920a7c0675b055154c7ccc560eded2ddc4b75d16d83c4af20abcec80977556b6a3d0dbff2cf')
+        'ccf20940db9665842a7c5f714d56c35710b289aca8f92084d31cc105ffb578e429b279eff0b17943516febde1558a136fe127011f268f9d394e79591de61bf61')
