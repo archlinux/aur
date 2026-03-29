@@ -6,28 +6,26 @@ pkgver=0.82.2
 pkgrel=1
 epoch=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/dosbox-staging/dosbox-staging"
 license=('GPL-2.0-or-later')
-depends=('sdl2' 'sdl2_net' 'opusfile'  'alsa-lib' 'libpng' 'iir1' 'sdl2_image' 'hicolor-icon-theme' 'speexdsp' 'libslirp' 'fluidsynth' 'munt' 'zlib-ng' 'libglvnd')
+depends=('sdl2-compat' 'sdl2_net' 'opusfile'  'alsa-lib' 'libpng' 'iir1' 'hicolor-icon-theme' 'speexdsp' 'libslirp' 'fluidsynth' 'munt' 'zlib-ng' 'libglvnd')
 optdepends=('ncurses')
-makedepends=('meson' 'ninja' 'gcc' 'gzip' 'git')
+makedepends=('meson' 'ninja' 'cmake')
 provides=("dosbox")
 conflicts=("dosbox")
-source=("git+https://github.com/dosbox-staging/dosbox-staging#tag=v${pkgver}")
+source=("https://github.com/dosbox-staging/dosbox-staging/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/${pkgname}"
-  meson setup --prefix "/usr" build
-  meson compile -C build
+  arch-meson \
+  -Dunit_tests=disabled \
+  build "${pkgname}-${pkgver}"
 }
 
 package() {
-  cd "$srcdir/${pkgname}"
-
   meson install -C build --destdir "$pkgdir" --skip-subprojects libpng
 
-  install -Dm 644 "docs/README.video" "$pkgdir/usr/share/doc/${pkgname}/video.txt"
-  install -Dm 644 "README" "$pkgdir/usr/share/doc/${pkgname}/manual.txt"
+  install -Dm 644 "${pkgname}-${pkgver}/docs/README.video" "$pkgdir/usr/share/doc/${pkgname}/video.txt"
+  install -Dm 644 "${pkgname}-${pkgver}/README" "$pkgdir/usr/share/doc/${pkgname}/manual.txt"
 }
