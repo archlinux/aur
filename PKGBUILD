@@ -1,13 +1,13 @@
 # Maintainer: 2-4601 <AUR@othermemory.org>
 pkgname=atostekid
 pkgver=4.4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="New desktop application for Finnish electronic ID cards"
 arch=("x86_64")
 url="https://dvv.fi/en/linux-versions"
 license=("LicenseRef-Atostek")
 depends=(
-    "botan2.19"
+    "botan2"
     "ccid"
     "libqpdf29"
     "minizip"

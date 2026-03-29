@@ -1,12 +1,12 @@
 pkgbase = atostekid
 	pkgdesc = New desktop application for Finnish electronic ID cards
 	pkgver = 4.4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dvv.fi/en/linux-versions
 	install = atostekid.install
 	arch = x86_64
 	license = LicenseRef-Atostek
-	depends = botan2.19
+	depends = botan2
 	depends = ccid
 	depends = libqpdf29
 	depends = minizip
