@@ -1,6 +1,6 @@
 pkgbase = anyzig
 	pkgdesc = One zig to rule them all
-	pkgver = 2025_10_15
+	pkgver = 2026_03_26
 	pkgrel = 1
 	url = https://github.com/marler8997/anyzig
 	arch = aarch64
@@ -10,8 +10,8 @@ pkgbase = anyzig
 	arch = riscv64
 	arch = x86_64
 	license = MIT
-	makedepends = zig0.14-bin
-	source = anyzig-2025_10_15.tar.gz::https://github.com/marler8997/anyzig/archive/refs/tags/v2025_10_15.tar.gz
-	b2sums = 546e6399bd6c5be81935c599599c59f23d846bd651cee4a39471e3dfe11fe6745d67a81ed0c30bd58d83d576819d1d9502182de56225c06e69d265a84ba419af
+	makedepends = zig0.14
+	source = anyzig-2026_03_26.tar.gz::https://github.com/marler8997/anyzig/archive/refs/tags/v2026_03_26.tar.gz
+	b2sums = a13ee594fa0b1c280676e88be73b2f382eeab826e5d107fe60116f552de9bd4cea50a4ffe7059d232b893368f4bcbe5b4db981aa05696f2fd3f718495cab8382
 
 pkgname = anyzig

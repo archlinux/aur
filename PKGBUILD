@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="anyzig"
-pkgver=2025_10_15
+pkgver=2026_03_26
 _zig=0.14.0
 pkgrel=1
 pkgdesc="One zig to rule them all"
@@ -14,10 +14,12 @@ arch=(
   'x86_64'
 )
 url="https://github.com/marler8997/${pkgname}"
-license=('MIT')
+license=(
+  'MIT'
+)
 makedepends=(
   # "zig>=${_zig}"
-  "zig${_zig%.*}-bin" # extra/zig0.14 has some weird packaging choices
+  "zig${_zig%.*}"
 )
 _zigdepends=(
   # anyzig
@@ -25,11 +27,15 @@ _zigdepends=(
   "zipcmdline-3dfca786a489d117e4b72ea10ffb4bbd9fc2dd72.tar.gz::https://github.com/marler8997/zipcmdline/archive/3dfca786a489d117e4b72ea10ffb4bbd9fc2dd72.tar.gz"
 )
 _pkgsrc="${url##*/}-${pkgver}"
-# noextract=("${_zigdepends[@]%%::*}")
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-        # "${pkgname}_zig_zon_hash.patch"
-        # "${_zigdepends[@]}")
-b2sums=('546e6399bd6c5be81935c599599c59f23d846bd651cee4a39471e3dfe11fe6745d67a81ed0c30bd58d83d576819d1d9502182de56225c06e69d265a84ba419af')
+source=(
+  "${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  # "${pkgname}_zig_zon_hash.patch"
+  # "${_zigdepends[@]}"
+)
+# noextract=(
+#   "${_zigdepends[@]%%::*}"
+# )
+b2sums=('a13ee594fa0b1c280676e88be73b2f382eeab826e5d107fe60116f552de9bd4cea50a4ffe7059d232b893368f4bcbe5b4db981aa05696f2fd3f718495cab8382')
            
 # prepare() {
 #   cd "${srcdir}/${_pkgsrc}"
