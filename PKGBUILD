@@ -1,4 +1,5 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=python-apscheduler
 _name=apscheduler
