@@ -1,6 +1,6 @@
 # Maintainer: Meliodas8 <marticolelmolina@gmail.com>
 pkgname=gametracker
-pkgver=1.0.23
+pkgver=1.0.24
 pkgrel=1
 pkgdesc="GameTracker - Gestiona y sigue tu colección de videojuegos"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/Meliodas8/GameTracker"
 license=('MIT')
 depends=('fuse2' 'java-runtime>=21')
 source=("GameTracker-${pkgver}-x86_64.AppImage::https://github.com/Meliodas8/GameTracker/releases/download/v${pkgver}/GameTracker-x86_64.AppImage")
-sha256sums=('10492542ddabfa557b2a18f4e01788e8bf884d5d7cd5b5a8491ad5d101349e83')
+sha256sums=('bbea73afa74bb205b19ef8bcd3bfb05aa42ea3d37de61c599ea75c7c66d1a7f8')
 options=('!strip')
 
 prepare() {
