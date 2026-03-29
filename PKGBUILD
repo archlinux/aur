@@ -9,7 +9,7 @@ arch=('any')
 url='https://github.com/Gaugeforever/iio-sensor-proxy-openrc'
 license=('GPL-3.0-or-later')
 depends=('iio-sensor-proxy' 'openrc')
-source=('git+https://github.com/Gaugeforever/iio-sensor-proxy-openrc.git')
+source=('git+https://codeberg.org/Gaugeforever/iio-sensor-proxy-openrc.git')
 
 package_iio-sensor-proxy-openrc() {
   pkgdesc="OpenRC init script for iio-sensor-proxy."
