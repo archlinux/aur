@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-sk
-_srctag=v2.3.1
+_srctag=v2.4.0
 pkgver=${_srctag#v}
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
