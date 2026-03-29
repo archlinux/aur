@@ -13,7 +13,7 @@ install='bangla-typer.install'
 
 _pkgname="${pkgname%-bin}"
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('68bb65579fc0c4e5ed5d9518e103ecb4bee652edbd265929f0a6ce3af46399a8')
+sha256sums=('dba5f7a9a376a01bbb3f7db168616c2064e3d9ef2ff945c0906f464def0a297a')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}" \
