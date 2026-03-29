@@ -8,7 +8,7 @@ pkgver=3.2.2
 pkgrel=1
 pkgdesc="Creates a changelog from git log history."
 url="https://github.com/sarnold/gitchangelog"
-license=("BSD")
+license=("BSD-3-Clause AND MIT")
 depends=('python')
 optdepends=('python-pystache' 'python-mako')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
@@ -27,4 +27,3 @@ package() {
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
-
