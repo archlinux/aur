@@ -1,0 +1,15 @@
+diff --git a/test_elasticsearch/test_async/test_transport.py b/test_elasticsearch/test_async/test_transport.py
+index c7ea0c34..0f5cff61 100644
+--- a/test_elasticsearch/test_async/test_transport.py
++++ b/test_elasticsearch/test_async/test_transport.py
+@@ -426,7 +426,9 @@ class TestTransport:
+         assert 1 == len(conn_err.calls)
+         assert 1 == len(conn_data.calls)
+ 
+-    async def test_sniff_after_n_seconds(self, event_loop):
++    async def test_sniff_after_n_seconds(self):
++        event_loop = asyncio.get_event_loop()
++
+         t = AsyncTransport(
+             [{"data": CLUSTER_NODES}],
+             connection_class=DummyConnection,
