@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Fleet IDE
+Comment=More Than a Code Editor
+Exec=fleet-ide %u
+Icon=fleet-ide
+Terminal=false
+StartupWMClass=fleet
+Type=Application
+Categories=Development;IDE;
