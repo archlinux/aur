@@ -5,7 +5,7 @@ _pkgname=ctxgraph
 pkgname=${_pkgname}-bin
 pkgdesc="Local-first context graph engine for AI agents and human teams"
 
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
-sha256sums=('2eabe383c8d84b6565c69065deea49ca4ac6d212c462cb94384b110bae759f04'
+sha256sums=('7cd19abba290f73a1f3fafa05a8e07cbf5040d2388e7d87ed3fc267bad677206'
             '047b1a7727f767dd38b9f5af025d1f9c1cc0ebfdf01ecd27c1ed5614434ac82a')
-sha256sums_x86_64=('9b90836490951e9b8f7a34026d8ea424e7452c46b1f4238722e913130fc26692')
-sha256sums_aarch64=('6ada62185b47913d4b4473d4495f549f6d3ebb961bf853df3403c94aa7edc8d5')
+sha256sums_x86_64=('abc467ed75031ce1c7581449a140df1eee9b96f4c55e08cfd87918c058a6c593')
+sha256sums_aarch64=('f323b87d2e02e8c3eddc96315dd649816fdfb3e7acb56fe9db2dfeafa7b2f75e')
 
 
 package() {
