@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
 
 pkgname=zapret2
-pkgver=0.9.4.5
+pkgver=0.9.4.6
 pkgrel=1
 pkgdesc="Anti-DPI software"
 arch=('x86_64')
@@ -28,12 +28,9 @@ backup=(
 )
 install=$pkgname.install
 source=($pkgname::git+$url.git#tag=v$pkgver)
-sha256sums=('5b4b64ac29b27fc147e5980362926799b7f5a9ed476c0ca0faa16ec8c18e5c52')
+sha256sums=('f9ffa48e6ab8a5abf54d45be861147eaf5467a21055ec1873e060e9174e0f57e')
 
 prepare() {
-  # 'KillMode=none' is a deprecated option and is not recommended for use.
-  sed -i 's/KillMode=none/KillMode=mixed/g' "$srcdir"/$pkgname/init.d/systemd/zapret2.service
-
   cd $pkgname/ipset
   mv -f zapret-hosts-user-exclude.txt.default zapret-hosts-user-exclude.txt
   #touch zapret-hosts-user.txt
