@@ -1,7 +1,7 @@
 pkgbase = dms-shell
 	pkgdesc = A Quickshell-based desktop shell with Material 3 design principles
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -15,11 +15,15 @@ pkgbase = dms-shell
 	optdepends = brightnessctl: Laptop display brightness control
 	optdepends = cava: Audio visualizer
 	optdepends = cliphist: Clipboard history functionality
+	optdepends = i2c-tools: External monitor brightness control
 	optdepends = matugen: Dynamic wallpaper-based theming
 	optdepends = networkmanager: Required for network management
-	optdepends = qt5ct: Qt5 application theming
+	optdepends = power-profiles-daemon: Set power profile
+	optdepends = qt6-multimedia: Sound effect support
 	optdepends = qt6ct: Qt6 application theming
+	optdepends = wtype: Paste from clipboard history and plugins
 	optdepends = wl-clipboard: Copy functionality for PIDs and other elements
+	optdepends = cups-pk-helper: Printer Management
 	source = https://github.com/AvengeMedia/DankMaterialShell/archive/v1.4.4/DankMaterialShell-1.4.4.tar.gz
 	sha256sums = 9a23a717eef088da3d25b355d4f13feff7499bbafe5e93c9fa379ee15e962709
 
