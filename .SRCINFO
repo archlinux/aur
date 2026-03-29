@@ -1,0 +1,14 @@
+pkgbase = tofu-bin
+	pkgdesc = Offline, encrypted TOTP manager for the terminal. Trust On First Use.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/Thecloudff7/tofu
+	arch = x86_64
+	license = MIT
+	provides = tofu
+	conflicts = tofu
+	conflicts = tofu-git
+	source = tofu-0.0.2::https://github.com/Thecloudff7/tofu/releases/download/v0.0.2/tofu-linux-x64
+	sha256sums = e9f8e53579230f56aaa72a3518034d66d15f357d0fb05cb05ef098344b66249f
+
+pkgname = tofu-bin
