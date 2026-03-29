@@ -2,7 +2,7 @@
 \
 _qtver=6.11.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://www.qt.io'
 license=(GPL-3.0-only
