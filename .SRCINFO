@@ -1,0 +1,17 @@
+pkgbase = wewa-bin
+	pkgdesc = Display web content as desktop wallpaper
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ownself/wewa
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = gtk-layer-shell
+	provides = wewa
+	conflicts = wewa
+	options = !strip
+	source = wewa-bin-0.3.0.tar.gz::https://github.com/ownself/wewa/releases/download/v0.3.0/wewa-linux-x64.tar.gz
+	sha256sums = 88a3cb98f80630f0684a4b7bd21ac2ae41a8a1f1ba7c798b908fc243226ded72
+
+pkgname = wewa-bin
