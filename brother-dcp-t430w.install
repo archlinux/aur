@@ -1,0 +1,12 @@
+post_install() {
+	post_upgrade;
+}
+
+post_upgrade() {
+	/opt/brother/Printers/dcpt430w/cupswrapper/cupswrapperdcpt430w >/dev/null
+	if [ "$?" -eq 0 ]; then
+		printf "Printer enabled. If it is a network printer, change ip address in CUPS interface (localhost:631).\n"
+	else
+		printf "Could not enable the printer in the CUPS service.\n"
+	fi
+}
