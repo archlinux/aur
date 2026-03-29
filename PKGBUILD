@@ -99,6 +99,7 @@ package_nekobox-git() {
     packageapp 'nekobox-core-git'
 }
 prepare() {
+    local REPO=qr243vbi/nekobox
     if [[ -d nekobox ]]
     then
         pushd nekobox
