@@ -1,6 +1,6 @@
 pkgbase = qbtctl-bin
 	pkgdesc = Minimal CLI for qBittorrent (prebuilt static binary)
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/creptic/qbtctl
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = qbtctl-bin
 	conflicts = qbtctl-git
 	noextract = qbtctl
 	options = !debug
-	source = https://github.com/creptic/qbtctl/releases/download/1.5.0/qbtctl
-	sha256sums = 12fb2a51db92f4afb359b9ce030c52b79da08b47b5b8d329c6226fe5f473139b
+	source = https://github.com/creptic/qbtctl/releases/download/1.5.1/qbtctl
+	sha256sums = 7ca9790df1b1f146069b1740f0e1dcb3a312ce7d723ee8b06904b5caef21c318
 
 pkgname = qbtctl-bin
