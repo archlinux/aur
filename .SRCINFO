@@ -1,0 +1,15 @@
+pkgbase = procomp
+	pkgdesc = Small multi-target C subset compiler with Linux and Windows x86_64 backends
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/yusufprompt/procomp
+	arch = x86_64
+	license = MIT
+	checkdepends = python
+	makedepends = make
+	depends = gcc
+	options = !debug
+	source = procomp-0.2.0.tar.gz::https://github.com/yusufprompt/procomp/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 0715386e0edfc2cb4b6c1058bc7450bcc652be39f5b9e63c11afdc9aca82894b
+
+pkgname = procomp
