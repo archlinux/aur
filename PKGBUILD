@@ -3,7 +3,7 @@
 
 pkgname=picplanner
 pkgver=0.5.4
-pkgrel=3
+pkgrel=1
 pkgdesc="Plan your next photo locations"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Zwarf/picplanner"
