@@ -24,9 +24,6 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  sed -ie '/^LIBDIR=/d' install-libs.sh
-  sed -ie '2iLIBDIR=${pkgdir}/usr/share/satysfi' install-libs.sh
-  sed -ie 's/lib-satysfi/${srcdir}\/${_pkgname}\/lib-satysfi/' install-libs.sh
   export OPAMROOT="${srcdir}/.opam"
   export OPAMYES=1
   opam init --no-setup --bare
@@ -36,13 +33,13 @@ build() {
   # bypass "ERROR: Preinstalled ocamlbuild detected at ..."
   export CHECK_IF_PREINSTALLED=false
   opam install --deps-only satysfi
-  make -j 1 PREFIX=/usr
+  make PREFIX=/usr
   ./download-fonts.sh
 }
 
 package() {
   cd "${_pkgname}"
   make install PREFIX="${pkgdir}/usr"
-  env srcdir="$srcdir" pkgdir="$pkgdir" _pkgname="$_pkgname" ./install-libs.sh
+  ./install-libs.sh "${pkgdir}/usr/share/satysfi"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
