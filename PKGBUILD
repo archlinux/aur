@@ -2,13 +2,13 @@
 # 🔋 slskdn - The batteries-included Soulseek web client (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=0.24.5.slskdn.102
+pkgver=0.24.5.slskdn.103
 pkgrel=1
 pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
 arch=('x86_64' 'aarch64')
 url="https://github.com/snapetech/slskdn"
 license=('AGPL-3.0-or-later')
-depends=('dotnet-runtime-8.0' 'aspnet-runtime-8.0')
+depends=('dotnet-runtime-8.0' 'aspnet-runtime-8.0' 'yt-dlp')
 makedepends=('dotnet-sdk-8.0' 'dotnet-runtime-8.0' 'aspnet-runtime-8.0' 'nodejs' 'npm')
 optdepends=(
     'docker: for containerized deployment'
@@ -25,7 +25,7 @@ source=(
     "slskd.sysusers"
 )
 # Note: First hash is SKIP (tarball changes each release), others are static file hashes
-sha256sums=('SKIP' 'e86287085cd17a5db39c6498b6d25ebdc194bca552f678aa8c749b7c25293249' 'a170afada9ec8673ab696506756e1b5d971ee4f67560af795f359c9bd53645df' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056')
+sha256sums=('SKIP' 'd2146ef5879e73f488074072505389c895f4483f8f024077e1f62f676e22730a' '6d60a8a8ec79b1df0f5839e9a5ba8a77a021cc457fa138a62b58f4321b3a16df' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056')
 
 build() {
     cd "${srcdir}/slskdn-${pkgver//.slskdn/-slskdn}"
