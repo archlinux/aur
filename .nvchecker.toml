@@ -1,3 +1,4 @@
 [wasmedge]
 source = "git"
 git = "https://github.com/WasmEdge/WasmEdge.git"
+include_regex = "^[0-9]+\\.[0-9]+\\.[0-9]+$"
