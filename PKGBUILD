@@ -5,20 +5,20 @@
 _pkgname='pat-aur'
 pkgbase=${_pkgname}-git
 pkgname=(${_pkgname}-client-git ${_pkgname}-client-firmware-git ${_pkgname}-host-git)
-pkgver=r534.5c0faf2
+pkgver=r542.9b72a20
 pkgrel=1
 pkgdesc='AUR helper and tool to build Arch Linux packages in clean containers.'
 url="https://gitlab.com/patlefort/${_pkgname}"
 license=('GPL-3.0-only')
 depends=()
-makedepends=('git' 'libxslt' 'docbook-xsl' 'cmake')
+makedepends=('git' 'libxslt' 'docbook-xsl' 'cmake' 'ninja')
 arch=('x86_64')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 if ((_enable_flatpak)); then
 	pkgname+=(${_pkgname}-client-flatpak-git)
-	makedepends+=('boost' 'flatpak')
+	makedepends+=('boost' 'boost-libs' 'flatpak')
 fi
 
 _srcdir="${_pkgname}"
@@ -32,7 +32,7 @@ pkgver() {
 }
 
 build() {
-	cmake -S ${_srcdir} -B build -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr \
+	cmake -G Ninja -S ${_srcdir} -B build -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr \
 		-DPATAUR_VERSION="$pkgver" \
 		-DPATAUR_FLATPAK="$_enable_flatpak"
 	cmake --build build
