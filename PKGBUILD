@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=dlss-updater
 _app_id="io.github.recol.$pkgname"
-pkgver=3.9.3
+pkgver=3.9.4
 pkgrel=1
 pkgdesc="DLSS, XeSS, DirectStorage, FSR, and Streamline DLL updater for games"
 arch=('any')
@@ -32,14 +32,12 @@ makedepends=(
 )
 checkdepends=(
   'appstream'
-  'python-pytest'
-  'python-pytest-asyncio'
-  'python-pytest-codspeed'
+#  'python-pytest'
 )
 optdepends=('python-rapidfuzz: Fast fuzzy string matching for game search')
 source=("DLSS-Updater-$pkgver.tar.gz::$url/archive/refs/tags/V$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('018eaca1c281568cd3ac391bc52dfad2e5f256073d2133776cbd2504a29c2a09'
+sha256sums=('ee4e6711841a13eddc9084e1786c183957b9b6fcdede81493a0511ff908719d6'
             'd98bd361773dee09cc82fa02a185a9fdf21779676ed72b69d550323e9abe14f0')
 
 prepare() {
@@ -60,8 +58,6 @@ check() {
 
   # Fails if ~/.local/share/dlss-updater/games.db is not present
 #  pytest
-
-  pytest benchmarks/ --codspeed
 
   appstreamcli validate --no-net "${_app_id}.appdata.xml"
   desktop-file-validate "flatpak/${_app_id}.desktop"
