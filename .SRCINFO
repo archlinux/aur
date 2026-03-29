@@ -1,0 +1,20 @@
+pkgbase = 3utools-desktop-bin
+	pkgdesc = Apple Device Management Tool, converts 3utools.deb to a arch package
+	pkgver = 3.01.005
+	pkgrel = 1
+	url = https://www.3u.com/
+	arch = x86_64
+	license = custom
+	depends = libx11
+	depends = libxcb
+	depends = libxkbcommon-x11
+	depends = fontconfig
+	depends = freetype2
+	provides = 3utools
+	conflicts = 3utools-bin
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://dl.3u.com/update/v900/dl/linux/com.3u.3utools_3.01.005_amd64.deb
+	sha512sums_x86_64 = 2e36616cdf27c44977ed92e97b28e6fa0a882163be74bdaca76c76129a774e083a5e90d0fc82fe44bc6c85a21c783f840597285da97e39627ae9356ab6296cf9
+
+pkgname = 3utools-desktop-bin
