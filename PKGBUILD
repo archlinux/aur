@@ -1,8 +1,8 @@
 # Maintainer: Yves Gugger <yves@pounce.ch>
 pkgname=lean-ctx-bin
-pkgver=2.8.2
+pkgver=2.9.0
 pkgrel=1
-pkgdesc="Context Intelligence Engine with CEP + CCP — 24 MCP tools, 90+ shell patterns, persistent AI memory, multi-agent sharing, tree-sitter AST (14 languages). Reduces LLM token consumption by up to 99%. (pre-built binary)"
+pkgdesc="The Intelligence Layer for AI Coding — 24 intelligent tools, 90+ shell patterns, persistent AI memory, multi-agent sharing, tree-sitter AST (14 languages). Reduces AI costs by up to 99%. (pre-built binary)"
 arch=('x86_64')
 url="https://leanctx.com"
 license=('MIT')
