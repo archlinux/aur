@@ -1,0 +1,5 @@
+post_install() {
+    echo "==> To install keycli-load and keycli-unload commands, run:"
+    echo "==> keycli alias bash >> ~/.bashrc # bash"
+    echo "==> keycli alias zsh >> ~/.zshrc # zsh"
+}
