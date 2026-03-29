@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgbase=azahar
 pkgname=({,libretro-}"$_pkgbase-git")
-pkgver=2125.0.rc1.r11.gab39df3
+pkgver=2125.0.1.r11.g3066887
 pkgrel=1
 arch=('x86_64')
 url="https://azahar-emu.org/"
@@ -14,6 +14,7 @@ depends=(
 )
 makedepends=(
 	'boost'
+	'boost-libs'
 	'cmake'
 	'cpp-jwt'
 	'cubeb'
