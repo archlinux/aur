@@ -15,7 +15,7 @@ _l10n_commit=e4f894a4eef5c492c83a860a4ff16c8ed361445c
 _moz_build_id=20260106170501
 _lwrelver=100
 pkgver="${_ffsrcver}.${_lwrelver}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -287,8 +287,8 @@ fi
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
   patch -B .patchorigin -Np1 -i ../../0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
   patch -B .patchorigin -Np1 -i ../../0002-Use-wasm32-wasip1-target.patch
-  xzcat ../../0003-update-rust-bindgen-to-fix-clang22-build.patch | patch -B .patchorigin -Np1
-  xzcat ../../0004-skia-m142-update.patch | patch -B .patchorigin -Np1
+  xzcat ../../0003-update-rust-bindgen-to-fix-clang22-build.patch.xz | patch -B .patchorigin -Np1
+  xzcat ../../0004-skia-m142-update.patch.xz | patch -B .patchorigin -Np1
 }
 
 
