@@ -1,6 +1,6 @@
 # Maintainer: futpib-bot <futpib-bot@users.noreply.github.com>
 pkgname=claugrep-git
-pkgver=r2.142d77a
+pkgver=r52.f2ea62a
 pkgrel=1
 pkgdesc='Browse, search, and export Claude Code conversation transcripts'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('rust' 'cargo')
 provides=('claugrep')
 conflicts=('claugrep')
-source=("$pkgname::git+https://github.com/futpib-bot/claugrep.git")
+source=("$pkgname::git+ssh://git@github.com/futpib-bot/claugrep.git")
 sha256sums=('SKIP')
 
 pkgver() {
