@@ -1,7 +1,7 @@
 pkgbase = python-nemo-toolkit
 	pkgdesc = NeMo - a toolkit for Conversational AI and Speech/NLP processing by NVIDIA
-	pkgver = 2.7.1
-	pkgrel = 1
+	pkgver = 2.7.2
+	pkgrel = 7
 	url = https://github.com/nvidia/nemo
 	arch = any
 	license = Apache-2.0
@@ -44,7 +44,7 @@ pkgbase = python-nemo-toolkit
 	optdepends = python-omegaconf: structured config (core extra)
 	optdepends = python-torchmetrics: metrics tracking (AUR: python-torchmetrics)
 	optdepends = python-webdataset: streaming dataset support (AUR: python-webdataset)
-	source = https://files.pythonhosted.org/packages/00/f5/bf9f27a390a0fcfb7b3c932ca692ddeb22881962c846a9226d693f21dc02/nemo_toolkit-2.7.1.tar.gz
-	sha256sums = 8c9a1a4ca4b8fbb0f03d1a3e5f577d6c68d7f424a35bc148cbe3feb7d8890dcd
+	source = https://files.pythonhosted.org/packages/cc/5f/55420bbf8ce4336992296ba75ffc934156bf0027eb212794f8ff01a1bb4a/nemo_toolkit-2.7.2.tar.gz
+	sha256sums = 7846ac04f52d71c8b4d3e9b3b96395cb753d324870500ba74c9942cacb928685
 
 pkgname = python-nemo-toolkit
