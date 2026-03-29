@@ -1,12 +1,12 @@
 pkgname=swagsh
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A really small shell that aims to be fast and posix-compatible"
 arch=('x86_64')
 url="https://github.com/takashialpha/swagsh"
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/takashialpha/swagsh/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/takashialpha/swagsh/archive/refs/tags/v$pkgver.tar.gz")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
