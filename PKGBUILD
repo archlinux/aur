@@ -18,7 +18,7 @@ conflicts=("${pkgname}"{-git,-bin})
 makedepends=('cargo')
 depends=('glibc' 'libgcc')
 
-options=('!debug')
+options=('!debug' '!strip')
 
 source=("${_pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('d9c413f302ee59b7fc831180429aabb8f9f62992b1905af5908a12cd7b808974')
