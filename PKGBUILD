@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=loki-bin
 pkgver=3.7.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Loki: like Prometheus, but for logs."
 arch=('x86_64')
 url='https://github.com/grafana/loki'
