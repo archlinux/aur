@@ -1,0 +1,5 @@
+[noteey-bin]
+source = "github"
+github = "andyyoungm/muenzo"
+use_latest_release = true
+prefix = "v"
