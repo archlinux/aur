@@ -1,6 +1,6 @@
 pkgbase = framework-control
 	pkgdesc = Lightweight control surface for Framework laptops (Fan, Battery, Power, LEDs)
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/ozturkkl/framework-control
 	install = framework-control.install
@@ -12,8 +12,8 @@ pkgbase = framework-control
 	makedepends = npm
 	depends = xdg-utils
 	depends = hicolor-icon-theme
-	optdepends = framework-system: system-installed framework_tool (auto-downloaded if missing)
-	source = framework-control-0.5.1.tar.gz::https://github.com/ozturkkl/framework-control/archive/refs/tags/0.5.1.tar.gz
-	sha256sums = SKIP
+	depends = framework-system
+	source = framework-control-0.5.2.tar.gz::https://github.com/ozturkkl/framework-control/archive/refs/tags/0.5.2.tar.gz
+	sha256sums = 7934c06a2dbcaf2af1ebf1e1e544de3e7377a71fe8b3fa7293cd6bdbca30f84b
 
 pkgname = framework-control
