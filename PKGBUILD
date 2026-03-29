@@ -11,7 +11,7 @@ url="https://carlh.net/asdcplib"
 license=('GPL-2.0-or-later')
 depends=('libxml++2.6' 'boost-libs>=1.89.0' 'openssl')
 makedepends=('git' 'python' 'pkg-config' 'boost')
-source=("${pkgname}::git+git://git.carlh.net/git/asdcplib.git#tag=v${pkgver}")
+source=("${pkgname}::git+https://git.carlh.net/git/asdcplib.git#tag=v${pkgver}")
 sha256sums=('21e6b1a6b7363092df525a850a81f8123e42b5b9522e9cdabb3235289658b864')
 conflicts=('asdcplib')
 provides=('libasdcp-cth')
