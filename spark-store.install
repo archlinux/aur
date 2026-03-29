@@ -1,0 +1,42 @@
+# spark-store.install
+post_install() {
+    # ln -sf /opt/durapps/spark-store/bin/spark-dstore-patch "/usr/bin/spark-dstore-patch"
+    # ln -sf /opt/durapps/spark-store/bin/spark-store "/usr/bin/spark-store"
+    # ln -sf /opt/durapps/spark-store/bin/aptss "/usr/bin/aptss"
+
+   	# Start upgrade detect service
+	systemctl daemon-reload
+	systemctl enable spark-update-notifier
+	systemctl start spark-update-notifier
+
+    # Update certain caches
+	# cp -fv /opt/spark-store/extras/store.spark-app.spark-store.policy /usr/share/polkit-1/actions/store.spark-app.spark-store.policy
+	xdg-mime default spark-store.desktop x-scheme-handler/spk
+	update-mime-database /usr/share/mime || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    # rm -f /usr/bin/spark-store
+    # rm -f /usr/bin/spark-dstore-patch
+    # rm -f /usr/bin/aptss
+
+    # for home in /home/*; do
+    #     rm -rf "$home/.config/spark-union/spark-store"
+    # done
+
+    # Shutdown services
+	systemctl stop spark-update-notifier
+	# Stop update detect service
+	systemctl disable spark-update-notifier
+}
+
+post_remove() {
+    # Update certain caches
+    update-icon-caches /usr/share/icons/hicolor || true
+    update-desktop-database /usr/share/applications || true
+    update-mime-database /usr/share/mime || true
+}
