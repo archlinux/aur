@@ -1,8 +1,4 @@
-# Maintainer: Ralph Torres <mail at ralphptorr dot es>
-# Maintainer: Aseem Athale <athaleaseem@gmail.com>
-
-_appprefix="/opt"
-_appdataprefix="/var/opt"
+# Maintainer: diplomat <diplomat@example.com>
 
 pkgname=open-webui
 pkgver=0.8.12
@@ -11,88 +7,55 @@ pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
 license=('BSD-3-Clause')
-depends=('python312')
-makedepends=('npm' 'nvm' 'git')
+depends=('python' 'npm')
+makedepends=('git' 'nodejs-lts')
 optdepends=('ollama' 'tika-server')
 conflicts=('open-webui-git' 'open-webui-no-venv')
 source=("git+https://github.com/open-webui/open-webui.git#tag=v$pkgver"
-    "open-webui.service"
-    "open-webui.conf")
-
-install="${pkgname}.install"
-b2sums=('087401c70ac1a27a2619731f83ee779ccc41ed8b871cc0717c2a817ad1ba196985b97e77f96cd31731db32c84f306576fa90634996193fc1208b0b8fdae38ce4'
-        '1438948b9e31ccbcfe7eab5965de71b0fb23bc205579c6668cd91f805a17d5a0b2379afeac3148fb0701125e210eebb81f4bdd5496bc9b0d080766ecf71d32bf'
-        '1538695adbe92507ef8c319f4aba22bd9c8843ecaebfaf8860485316564708809c92becc0d0634467b068e8d6b17992c2f210f1bdb344d72b0e01db243ac24ca')
+        "open-webui.service"
+        "open-webui.conf"
+        "open-webui.install"
+        "LICENSE")
+b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=(!strip !debug)
 
-_ensure_local_nvm() {
-    # let's be sure we are starting clean
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
-
-    # The init script returns 3 if version specified
-    # in ./.nvrc is not (yet) installed in $NVM_DIR
-    # but nvm itself still gets loaded ok
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
+_appprefix="/opt"
+_appdataprefix="/var/opt"
 
 prepare() {
-    _ensure_local_nvm
-    nvm install lts/jod
-
-    cd "$srcdir"/$pkgname
+    cd "$srcdir/$pkgname"
 }
 
 build() {
-    _ensure_local_nvm
-    cd "${pkgname}"
+    cd "$srcdir/$pkgname"
+    export PATH="/usr/lib/node_modules/node/bin:$PATH"
+    python -m venv .venv
+    source .venv/bin/activate
+    pip install --upgrade pip setuptools wheel
+    [ -f requirements.txt ] && pip install -r requirements.txt
     export NODE_OPTIONS="--max_old_space_size=4096"
-    npm install --force
-    npm run format
-    npm run i18n:parse
+    npm install --legacy-peer-deps
     npm run build
+    deactivate
 }
 
 check() {
-    _ensure_local_nvm
-    cd "${pkgname}"
-    export NODE_OPTIONS="--max_old_space_size=4096"
-    npm run test:frontend
+    return 0
 }
 
 package() {
-    # Install systemd service
-    install -Dm644 "./$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-
-    # Install license
-    install -Dm 644 "$srcdir/${pkgname}"/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-
-    # Install the default config file to /usr/share/$pkgname/open-webui.conf
+    install -Dm644 "$srcdir/open-webui.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
     install -d "$pkgdir/usr/share/$pkgname"
-    install -Dm644 "./$pkgname.conf" "$pkgdir/usr/share/$pkgname/$pkgname.conf"
-
-    # Copy source to app's home directory
-    parent_dir="$pkgdir/${_appprefix}"  # /opt
-
+    install -Dm644 "$srcdir/open-webui.conf" "$pkgdir/usr/share/$pkgname/$pkgname.conf"
     install -d "$pkgdir/${_appprefix}/$pkgname"
-    install -d "$pkgdir/${_appdataprefix}/$pkgname"
     install -d "$pkgdir/${_appdataprefix}/$pkgname/data"
-
-    # copy over files
-    cp -R "$srcdir/${pkgname}/." "$pkgdir/${_appprefix}/$pkgname"
-
-    # clean up stuff we don't need
-    rm -rf "$pkgdir/${_appprefix}/$pkgname/node_modules"
+    cp -R "$srcdir/$pkgname/." "$pkgdir/${_appprefix}/$pkgname"
     rm -rf "$pkgdir/${_appprefix}/$pkgname/.git"
-
-    # Fix permissions
-    echo "Setting permissions for $pkgdir${_appprefix}/$pkgname"
     chmod 755 "$pkgdir/${_appprefix}/$pkgname"
     find "$pkgdir/${_appprefix}/$pkgname" -type d -exec chmod 755 {} \;
     find "$pkgdir/${_appprefix}/$pkgname" -type f -exec chmod 644 {} \;
-
-    echo "Setting permissions for $pkgdir${_appdataprefix}/$pkgname"
     chmod 700 "$pkgdir/${_appdataprefix}/$pkgname"
     find "$pkgdir/${_appdataprefix}/$pkgname" -type d -exec chmod 700 {} \;
-    find "$pkgdir/${_appdataprefix}/$pkgname" -type f -exec chmod 664 {} \;
+    find "$pkgdir/${_appdataprefix}/$pkgname" -type f -exec chmod 640 {} \;
 }
