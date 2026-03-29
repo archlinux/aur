@@ -3,15 +3,15 @@
 
 pkgbase=dictype
 pkgname=(dictype dictype-fcitx)
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='real-time voice-to-text input on Linux'
 arch=('x86_64')
 url='https://github.com/Xinkai/dictype'
 license=('MIT')
 _depends_common=(
-  libprotobuf.so=33.1.0-64
-  libgrpc++.so=1.78-64
+  libprotobuf.so=34.1.0-64
+  libgrpc++.so=1.80-64
 )
 makedepends=(
   cargo
@@ -21,7 +21,7 @@ makedepends=(
   grpc
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('9ce95d217930dba6a1201d82af073adecf9c968cf31f12b33b4ae01bd3f2b6dae57f6f8fd79c85635a4179ef9060a8ed937fdc7a43bb1f0d1df3a6b70af0d852')
+sha512sums=('9fcc89ed813844c550e3c8701710904944c53db197ff73cc573238777ee43ea9322c2d2040ef23542df1367a9d5cfed76206ceeb6e7a9f96157be93a6d53430b')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
