@@ -12,7 +12,7 @@ pkgbase = libcxml
 	makedepends = boost
 	depends = libxml++2.6
 	depends = boost-libs>=1.89.0
-	source = libcxml-0.17.15::git+git://git.carlh.net/git/libcxml.git#tag=v0.17.15
+	source = libcxml-0.17.15::git+https://git.carlh.net/git/libcxml.git#tag=v0.17.15
 	sha256sums = e0d158b72f4003e0f1ec62b3e6bf1c8196b1a62dc361b208aa7cebb6f9f425be
 
 pkgname = libcxml

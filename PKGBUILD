@@ -10,7 +10,7 @@ url="https://carlh.net/libcxml"
 license=('GPL')
 depends=('libxml++2.6' 'boost-libs>=1.89.0' )
 makedepends=('git' 'python' 'pkg-config' 'boost')
-source=("$pkgname-$pkgver::git+git://git.carlh.net/git/libcxml.git#tag=v$pkgver")
+source=("$pkgname-$pkgver::git+https://git.carlh.net/git/libcxml.git#tag=v$pkgver")
 sha256sums=('e0d158b72f4003e0f1ec62b3e6bf1c8196b1a62dc361b208aa7cebb6f9f425be')
 
 build() {
