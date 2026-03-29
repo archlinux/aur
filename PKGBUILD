@@ -1,13 +1,13 @@
 pkgname=audium
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Terminal music app built in Rust"
 arch=('x86_64')
 url="https://github.com/takashialpha/audium"
-license=('Apache')
+license=('Apache-2.0')
 depends=('alsa-lib')
 makedepends=('cargo' 'alsa-lib')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/takashialpha/audium/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz:https://github.com/takashialpha/audium/archive/refs/tags/v$pkgver.tar.gz")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
