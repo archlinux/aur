@@ -21,7 +21,6 @@ build(){
 package(){
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    install -D -m 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m 644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
