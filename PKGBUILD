@@ -24,9 +24,9 @@ depends=(
 
 # Binary + license + readme
 source=(
-  "riftbar::https://github.com/${_pkgauthor}/${_pkgname}/releases/download/${_pkgvername}/riftbar-x86_64"
-  "LICENSE::https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}/LICENSE"
-  "README.md::https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}/README.md"
+  "riftbar::https://codeberg.org/${_pkgauthor}/${_pkgname}/releases/download/${_pkgvername}/riftbar-x86_64"
+  "LICENSE::https://codeberg.org/${_pkgauthor}/${_pkgname}/raw/tag/${_pkgvername}/LICENSE"
+  "README.md::https://codeberg.org/${_pkgauthor}/${_pkgname}/raw/tag/${_pkgvername}/README.md"
 )
 
 
