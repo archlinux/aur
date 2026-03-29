@@ -1,0 +1,49 @@
+From cd40b23b30276021cb0307c0bb4266d11964256c Mon Sep 17 00:00:00 2001
+From: David MacMillan <dcm-github2@capital-ideas.com>
+Date: Fri, 25 Apr 2025 00:55:45 -0700
+Subject: [PATCH 1/2] Update main.c
+
+allow 'ts -S 0' to gracefully end active jobs & not start new jobs
+---
+ main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/main.c b/main.c
+index 1195e63..1958ccd 100755
+--- a/main.c
++++ b/main.c
+@@ -290,8 +290,8 @@ void parse_opts(int argc, char **argv) {
+             case 'S':
+                 command_line.request = c_SET_MAX_SLOTS;
+                 command_line.max_slots = atoi(optarg);
+-                if (command_line.max_slots < 1) {
+-                    fprintf(stderr, "You should set at minimum 1 slot.\n");
++                if (command_line.max_slots < 0) { /* -S 0 lets active jobs end without starting new ones. */
++                    fprintf(stderr, "You should set to 0 or more slots.\n"); /* was: You should set at minimum 1 slot.\n */
+                     exit(-1);
+                 }
+                 break;
+
+From 1c19faf4b5456ac146ec158a1ed4925ef303db25 Mon Sep 17 00:00:00 2001
+From: David MacMillan <dcm-github2@capital-ideas.com>
+Date: Fri, 25 Apr 2025 00:57:46 -0700
+Subject: [PATCH 2/2] Update jobs.c
+
+allow 'ts -S 0' to gracefully end active jobs & not start new jobs
+---
+ jobs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/jobs.c b/jobs.c
+index 86f78b9..a6c6dd0 100755
+--- a/jobs.c
++++ b/jobs.c
+@@ -1585,7 +1585,7 @@ void s_wait_running_job(int s, int jobid) {
+ }
+ 
+ void s_set_max_slots(int new_max_slots) {
+-    if (new_max_slots > 0)
++    if (new_max_slots >= 0)  /* -S 0 lets active jobs end without starting new ones. */
+         max_slots = new_max_slots;
+     else
+         warning("Received new_max_slots=%i", new_max_slots);

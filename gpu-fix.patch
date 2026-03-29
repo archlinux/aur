@@ -1,0 +1,69 @@
+From e9ad6b2e9fb35b107d6b1462ddc7101b94122d3c Mon Sep 17 00:00:00 2001
+From: Anton <anton.j.15.le@gmail.com>
+Date: Mon, 15 Sep 2025 19:08:30 +1200
+Subject: [PATCH] respect GPU in exclusive process compute mode
+
+---
+ gpu.c | 30 ++++++++++++++++++++++++++++--
+ 1 file changed, 28 insertions(+), 2 deletions(-)
+
+diff --git a/gpu.c b/gpu.c
+index fb277a9..01913e8 100755
+--- a/gpu.c
++++ b/gpu.c
+@@ -3,11 +3,11 @@
+ //
+ 
+ #include <stdlib.h>
++#include <stdbool.h>
+ #include <nvml.h>
+ #include <string.h>
+ 
+ #include "main.h"
+-
+ #define TS_VISIBLE_DEVICES "TS_VISIBLE_DEVICES"
+ 
+ static int free_percentage = 90;
+@@ -90,6 +90,7 @@ int * getGpuList(int *num) {
+ 
+         nvmlMemory_t mem;
+         nvmlDevice_t dev;
++        nvmlComputeMode_t computeMode;
+         result = nvmlDeviceGetHandleByIndex_v2(visible[i], &dev);
+         if (result != 0) {
+             warning("Failed to get GPU handle for GPU %d: %s", visible[i], nvmlErrorString(result));
+@@ -101,8 +102,33 @@ int * getGpuList(int *num) {
+             warning("Failed to get GPU memory for GPU %d: %s", visible[i], nvmlErrorString(result));
+             goto Error;
+         }
++        
++        result = nvmlDeviceGetComputeMode(dev, &computeMode);
++        if (result != 0) {
++            warning("Failed to get GPU compute mode for GPU %d: %s", visible[i], nvmlErrorString(result));
++            goto Error;
++        }
++
++        // Check if there are any running processes on the GPU
++        bool anyRunningProcesses = false;
++        unsigned int infoCount = 0;
++        result = nvmlDeviceGetComputeRunningProcesses(dev, &infoCount, NULL);
++        if (result == NVML_ERROR_INSUFFICIENT_SIZE){
++            anyRunningProcesses = true;
++        } else if (result != 0) {
++            warning("Failed to get GPU compute processes for GPU %d: %s", visible[i], nvmlErrorString(result));
++            goto Error;
++        }
++
++        // Check if the GPU memory is free enough
++        bool isMemFree = mem.free > free_percentage / 100. * mem.total;
++        // When the compute mode is prohibited or in exclusive process mode with a
++        // running processes, the GPU is not free to use.
++        bool blockedByComputeMode = (computeMode == NVML_COMPUTEMODE_PROHIBITED) ||
++                                    (computeMode == NVML_COMPUTEMODE_EXCLUSIVE_PROCESS && anyRunningProcesses);
+ 
+-        if (mem.free > free_percentage / 100. * mem.total)
++        bool isFree = isMemFree && !blockedByComputeMode;
++        if (isFree)
+             gpuList[count++] = visible[i];
+     }
+     free(visible);
