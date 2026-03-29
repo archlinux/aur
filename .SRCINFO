@@ -1,7 +1,7 @@
 pkgbase = plasma-workspace-povd
 	pkgdesc = KDE Plasma Workspace (patched for per-output virtual desktops)
 	pkgver = 6.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
@@ -119,7 +119,7 @@ pkgbase = plasma-workspace-povd
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
 	sha256sums = 18001465a01ee29292a3c37e62205106ee9f79f18aaa42ae9654d160abf11790
 	sha256sums = SKIP
-	sha256sums = 6e859f0dc31c6b92ac10ff0b4af164ab2bfdd53d0eefbedf5811d65940730142
+	sha256sums = 57c0f043b2a9ae25dfd0978acdf03073e88ea9a1d7845557485539a0642db6ba
 
 pkgname = plasma-workspace-povd
 	depends = accountsservice
