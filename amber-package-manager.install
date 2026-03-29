@@ -25,6 +25,7 @@ post_install() {
     fi
 
     /var/lib/apm/apm/files/feedback.sh &
+    ln -sv / /host
 	amber-pm-dstore-patch
 
 

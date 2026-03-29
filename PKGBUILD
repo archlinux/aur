@@ -3,19 +3,19 @@
 # Maintainer: shenmo <shenmo@spark-app.store>
 
 pkgname=amber-package-manager
-pkgver=1.1.8
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="bwrap wrapper for install and running debs inside a Amber-PM container"
 arch=('x86_64')
 url="https://gitee.com/amber-ce/amber-pm/"
-license=('custom')
+license=('AGPL-3.0')
 depends=('bubblewrap' 'flatpak' 'polkit' 'systemd' 'procps-ng' 'coreutils' 'fuse-overlayfs')
-optdepends=('dpkg: Enable amber-pm-convert (A tool to convert Debian packages for Amber-PM)')
+optdepends=('dpkg: Enable amber-pm-convert (A tool to convert Debian packages to Amber-PM packages)')
 conflicts=('ace-host-integration')
 # provides=('amber-package-manager')
 
 source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-ce/amber-pm/repository/archive/${pkgver}.tar.gz")
-sha256sums=('424a0a13026b46bbcbbf1f797b8eafa76b3e7f05aaff96e2bd2e8052591af6e0')
+sha256sums=('4290380359302edaa9bd276be2ab13aff2cc1118fd6e7aa7bfecddcbc8b9a01c')
 
 install=amber-package-manager.install
 
