@@ -1,20 +1,21 @@
 # Maintainer: Integral <integral@member.fsf.org>
 
 pkgname=live-server
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Launch a local network server with live reload feature for static pages"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lomirus/${pkgname}"
 license=('MIT')
 makedepends=('cargo')
+checkdepends=('chromium')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b673f6e3cef28d48c5c74803c7e40f92cf9919a45bd0965f8d12cdb5c0b42826')
+sha256sums=('0501e8b5c2f3819033fd645b5011554b88a6ff96e5bd02ab17922dbee8c88bd1')
 
 prepare() {
 	cd "${pkgname}-${pkgver}/"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -27,6 +28,7 @@ build() {
 check() {
 	cd "${pkgname}-${pkgver}/"
 	export RUSTUP_TOOLCHAIN=stable
+	export CFLAGS+=" -ffat-lto-objects"
 	cargo test --frozen --all-features
 }
 
