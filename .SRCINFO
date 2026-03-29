@@ -1,0 +1,13 @@
+pkgbase = ttf-monocraft-nerd
+	pkgdesc = A monospaced programming font inspired by the Minecraft typeface
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = https://github.com/IdreesInc/Monocraft
+	arch = any
+	license = custom:OFL
+	source = ttf-monocraft-nerd-4.2.1.ttc::https://github.com/IdreesInc/Monocraft/releases/download/v4.2.1/Monocraft-nerd-fonts-patched.ttc
+	source = LICENSE-4.2.1::https://raw.githubusercontent.com/IdreesInc/Monocraft/v4.2.1/LICENSE
+	sha256sums = 67f88ff9e7c6560f6cf60fb062fd353a72f62dc2654462950c65b63ed53d9754
+	sha256sums = f69c147003e052dbc9d96c40a9f73647e72766cfda95a597b94ed827fe25acb1
+
+pkgname = ttf-monocraft-nerd
