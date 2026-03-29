@@ -1,0 +1,33 @@
+diff -Naur pardf-1.8.2.orig/word_sys_pdf_editor/welcome_view.py pardf-1.8.2/word_sys_pdf_editor/welcome_view.py
+--- pardf-1.8.2.orig/word_sys_pdf_editor/welcome_view.py	2026-03-20 12:06:42.000000000 +0100
++++ pardf-1.8.2/word_sys_pdf_editor/welcome_view.py	2026-03-29 01:19:38.352728515 +0100
+@@ -30,7 +30,7 @@
+         main_box.set_margin_bottom(40)
+ 
+         try:
+-            icon_path = Path(__file__).resolve().parent / "img" / "f-pv1.png"
++            icon_path = Path("/usr/share/icons/hicolor/scalable/apps/pardf.svg")
+             app_icon = Gtk.Picture.new_for_filename(str(icon_path))
+             app_icon.set_size_request(200, 200)
+             app_icon.set_valign(Gtk.Align.END)
+diff -Naur pardf-1.8.2.orig/word_sys_pdf_editor/window.py pardf-1.8.2/word_sys_pdf_editor/window.py
+--- pardf-1.8.2.orig/word_sys_pdf_editor/window.py	2026-03-20 12:06:42.000000000 +0100
++++ pardf-1.8.2/word_sys_pdf_editor/window.py	2026-03-29 01:17:22.596686043 +0100
+@@ -28,7 +28,7 @@
+         super().__init__(*args, **kwargs)
+         self.set_title("Word-Sys's PDF Editor")
+         self.set_default_size(1200, 800)
+-        self.set_icon_name("f-pv1")
++        self.set_icon_name("pardf")
+ 
+         self.current_file_path = None
+         self.original_file_path = None
+@@ -648,7 +648,7 @@
+         about_dialog.set_comments(comments_text)
+ 
+         try:
+-            app_icon_path = Path(__file__).resolve().parent / "img" / "f-pv1.svg"
++            app_icon_path = Path("/usr/share/icons/hicolor/scalable/apps/pardf.svg")
+             if app_icon_path.exists():
+                 texture = Gdk.Texture.new_from_filename(str(app_icon_path))
+                 about_dialog.set_logo(texture)

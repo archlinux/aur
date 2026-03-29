@@ -1,0 +1,12 @@
+diff -Naur pardf-1.8.2.orig/word_sys_pdf_editor/window.py pardf-1.8.2/word_sys_pdf_editor/window.py
+--- pardf-1.8.2.orig/word_sys_pdf_editor/window.py	2026-03-20 12:06:42.000000000 +0100
++++ pardf-1.8.2/word_sys_pdf_editor/window.py	2026-03-29 01:07:11.128928363 +0100
+@@ -627,7 +627,7 @@
+         try:
+             license_path = Path(__file__).resolve().parent.parent / "LICENSE"
+             if not license_path.exists():
+-                license_path = Path("/usr/share/common-licenses/GPL-3")
++                license_path = Path("/usr/share/licenses/spdx/GPL-3.0-or-later.txt")
+ 
+             if license_path.exists():
+                 with open(license_path, 'r', encoding='utf-8') as f:
