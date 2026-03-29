@@ -1,0 +1,21 @@
+pkgbase = alt-bin
+	pkgdesc = A stateless, zero-config CLI distribution proxy. Install any tool from GitHub Releases with a single command.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/altlimit/alt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = alt
+	conflicts = alt
+	source = README-1.0.4.md::https://raw.githubusercontent.com/altlimit/alt/v1.0.4/README.md
+	source = LICENSE-1.0.4::https://raw.githubusercontent.com/altlimit/alt/v1.0.4/LICENSE
+	sha256sums = 6d9521550504ac5a299749c018e3b9596bbda280729099f34f8368e17ee6c1fb
+	sha256sums = d8c7ce09908dd71397fb36e3d14eab399becd2848a5d83cb63030160cdf274ab
+	source_x86_64 = alt-x86_64-1.0.4::https://github.com/altlimit/alt/releases/download/v1.0.4/alt_linux_amd64
+	sha256sums_x86_64 = 660ea4f4f75a1bcf172497a5203bfff502307b00b0d8650d4aa48bcdc55785ac
+	source_aarch64 = alt-aarch64-1.0.4::https://github.com/altlimit/alt/releases/download/v1.0.4/alt_linux_arm64
+	sha256sums_aarch64 = 8744087e246b41e6d6e448dc49a740788516a1e06503135ab656927170ce1f97
+
+pkgname = alt-bin
