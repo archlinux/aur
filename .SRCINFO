@@ -1,6 +1,6 @@
 pkgbase = gametracker
 	pkgdesc = GameTracker - Gestiona y sigue tu colección de videojuegos
-	pkgver = 1.0.17
+	pkgver = 1.0.18
 	pkgrel = 1
 	url = https://github.com/Meliodas8/GameTracker
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gametracker
 	depends = fuse2
 	depends = java-runtime>=21
 	options = !strip
-	source = GameTracker-1.0.17-x86_64.AppImage::https://github.com/Meliodas8/GameTracker/releases/download/v1.0.17/GameTracker-x86_64.AppImage
-	sha256sums = f0cc5e72ccb8bbe0cd907ffafd5f1eddb7142e1825793e629efdd9fe5a5ca69a
+	source = GameTracker-1.0.18-x86_64.AppImage::https://github.com/Meliodas8/GameTracker/releases/download/v1.0.18/GameTracker-x86_64.AppImage
+	sha256sums = 5059f9fc3ffe038c9f3b055b5e3e81605762cc1f7405fbc2fd82cef23cd2de02
 
 pkgname = gametracker
