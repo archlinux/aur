@@ -1,4 +1,4 @@
-# Maintainer: Elia Nitsche <nitscheelia at gmail.com>
+# Maintainer: Elia Nitsche <nitscheelia at gmail dot com>
 # Contributor: Yigid BALABAN <fyb at fybx.dev>
 pkgname=ianny-bin
 pkgver=2.1.3
