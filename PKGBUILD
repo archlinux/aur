@@ -14,7 +14,7 @@ pkgdesc='A fancy custom distribution of Valves Proton with various patches'
 pkgname=proton-ge-custom-rtsp-bin
 pkgver=GE_Proton10_33_rtsp22
 pkgrel=4
-epoch=1
+epoch=2
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog.md
@@ -73,7 +73,7 @@ backup=("$_protoncfg")
 
 ## sources
 url='https://github.com/SpookySkeletons/proton-ge-rtsp'
-source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
+source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}-${pkgrel}.tar.gz"
   'user_settings.py'
   'launcher.sh'
   'proton-ge-custom-rtsp-bin.conf'
