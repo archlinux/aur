@@ -1,35 +1,49 @@
 pkgbase = matlab-support
-	pkgdesc = Provides dependencies desktop file and common fixes for MATLAB.
-	pkgver = 9.14.0
+	pkgdesc = A high-level language for numerical computation and visualization
+	pkgver = R2025b+25.2.9.9999999
 	pkgrel = 1
-	url = http://www.mathworks.com
-	arch = x86_64
-	license = custom
+	epoch = 1
+	url = https://www.mathworks.com/products/matlab.html
+	arch = any
+	license = 0BSD
 	makedepends = gendesk
-	depends = gst-plugins-base-libs
-	depends = gtk3
-	depends = libsndfile
-	depends = libxcrypt-compat
-	depends = libxt
-	depends = lsb-release
-	depends = make
-	depends = net-tools
-	depends = nss
-	depends = procps
-	depends = python
-	depends = sudo
-	depends = unixodbc
-	depends = unzip
-	depends = wget
-	optdepends = gcc6: For MEX support
-	optdepends = gcc7: For MEX support
-	optdepends = gcc8: For MEX support
-	optdepends = gcc9: For MEX support
-	optdepends = gcc: For MEX support
-	optdepends = libselinux: for Addon manager support
-	optdepends = python-pip: for setting up Python engine
-	optdepends = gconf: may be needed for Live Scripts
-	provides = matlab=$pkgver
-	conflicts = matlab
+	makedepends = gnutls3.8.9
 
 pkgname = matlab-support
+	depends = matlab-meta>=R2025b
+	depends = gnutls3.8.9
+	optdepends = matlab-meta-all: all runtime dependencies
+	optdepends = matlab-jre-meta: JRE runtime dependency
+	optdepends = matlab-gcc-support: GCC runtime dependency
+	optdepends = matlab-gcc-fortran-support: GCC Fortran runtime dependency
+	provides = matlab=R2025b+25.2.9.9999999
+	provides = matlab-release=R2025b
+	provides = matlab-version=25.2.9.9999999
+	provides = matlab-r2025b=25.2.9.9999999
+	provides = java-matlab=R2025b+25.2.9.9999999
+	provides = java-matlab-release=R2025b
+	provides = java-matlab-version=25.2.9.9999999
+	provides = java-matlab-r2025b=25.2.9.9999999
+	conflicts = matlab
+	conflicts = matlab-r2025b
+	conflicts = java-matlab
+	conflicts = java-matlab-r2025b
+
+pkgname = matlab-gcc-support
+	depends = matlab-support>=1:R2025b+25.2.9.9999999-1
+	depends = matlab-gcc-meta>=R2025b
+	provides = matlab-gcc=R2025b+25.2.9.9999999
+	provides = matlab-gcc-release=R2025b
+	provides = matlab-gcc-version=25.2.9.9999999
+	provides = matlab-r2025b-gcc=25.2.9.9999999
+	conflicts = matlab-gcc
+	conflicts = matlab-r2025b-gcc
+
+pkgname = matlab-gcc-fortran-support
+	depends = matlab-support>=1:R2025b+25.2.9.9999999-1
+	depends = matlab-gcc-fortran-meta>=R2025b
+	provides = matlab-gcc-fortran=R2025b+25.2.9.9999999
+	provides = matlab-gcc-fortran-release=R2025b
+	provides = matlab-gcc-fortran-version=25.2.9.9999999
+	provides = matlab-r2025b-gcc-fortran=25.2.9.9999999
+	conflicts = matlab-r2025b-gcc

@@ -1,0 +1,7 @@
+[matlab-support]
+source = 'jq'
+url = 'https://api.github.com/repos/mathworks-ref-arch/container-images/contents/matlab-deps'
+filter = '.[].name'
+include_regex = 'r20\d{2}[ab]'
+from_pattern = 'r20(\d{2}[ab])'
+to_pattern = 'R20\1+autoupdated'
