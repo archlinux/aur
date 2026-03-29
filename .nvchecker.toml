@@ -1,0 +1,5 @@
+[hex2bin]
+source = 'github'
+github = 'Keidan/hex2bin'
+use_latest_release = true
+prefix = 'v'
