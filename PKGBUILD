@@ -1,7 +1,7 @@
 # Maintainer: c0m4r <https://github.com/c0m4r>
 pkgname=kula
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, self-contained monitoring tool"
 arch=('x86_64')
 url="https://github.com/c0m4r/kula"
