@@ -1,7 +1,7 @@
 pkgbase = linux-gaokun3
 	pkgdesc = Linux for HUAWEI MateBook E Go (sc8280xp)
 	pkgver = 6.19.y
-	pkgrel = 3
+	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 	arch = any
 	license = GPL-2.0-only
@@ -27,7 +27,7 @@ pkgbase = linux-gaokun3
 	sha256sums = a6069bdaeeb49261aeb4cbb1682c2870d1272eec15dc1656e82765adafceab8f
 	sha256sums = 53b52ebe0de167308134725740651371f90b34a290cbe7dc1727adf2a1fcb62d
 	sha256sums = c69349a951e0003294c74c0a3d7a75447e5e131b82c8698d83cc91c1e9dd32db
-	sha256sums = 3bb0d75940d7ff605f412608bc4d83c08938d0c52c705ed2bc5b265f084bea29
+	sha256sums = 8c9400e8b07441bbc26ca8fbb1eb7058a76843052aab519d8c6197c1b3d89495
 	sha256sums = SKIP
 
 pkgname = linux-gaokun3

@@ -5,7 +5,7 @@
 _variant=gaokun3
 pkgbase=linux-$_variant
 pkgver=6.19.y
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux for HUAWEI MateBook E Go (sc8280xp)'
 url='https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 arch=('any')
@@ -41,7 +41,7 @@ sha256sums=(
   'a6069bdaeeb49261aeb4cbb1682c2870d1272eec15dc1656e82765adafceab8f'
   '53b52ebe0de167308134725740651371f90b34a290cbe7dc1727adf2a1fcb62d'
   'c69349a951e0003294c74c0a3d7a75447e5e131b82c8698d83cc91c1e9dd32db'
-  '1072d554f3f62ac12eeab12836935b29577e34dcdaa39834fd3fe2f7f31dc146'
+  '8c9400e8b07441bbc26ca8fbb1eb7058a76843052aab519d8c6197c1b3d89495'
   'SKIP'
 )
 
@@ -67,7 +67,9 @@ prepare() {
     git clone --depth=1 $url -b linux-$pkgver $_srcname
     cd $_srcname
     # Not using git am to avoid setting git identity
-    git apply $srcdir/linux-gaokun/patch\ sets/recommended/* || :
+    for p in "$srcdir/linux-gaokun/patch sets/recommended/"*; do
+      git apply "$p" || echo "WARN: failed to apply $p"
+    done
     # I just don't like scm version string
     sed -i 's/\${scm_version}//' scripts/setlocalversion
     cp $srcdir/linux-gaokun/dts/sc8280xp-huawei-gaokun3*.dts* arch/arm64/boot/dts/qcom/
