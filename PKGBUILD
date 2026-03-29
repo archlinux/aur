@@ -3,7 +3,7 @@
 _pkgname="azahar"
 pkgname="$_pkgname-appimage"
 
-pkgver=2125.0
+pkgver=2125.0.1
 
 pkgrel=1
 epoch=1
@@ -23,7 +23,7 @@ depends=("ffmpeg"
 _source_main() {
   _appimage="$_pkgname"_"$pkgver.AppImage"
   source=($_appimage::"https://github.com/azahar-emu/azahar/releases/download/$pkgver/$_pkgname.AppImage")
-  sha256sums=('5e2bc7e7c6c31c6cdd85e9ebf6348ac047b7b15de7fe666bdc8b1b65a6ddcf4b')
+  sha256sums=('86c0ac10908305e76313bd6537a8aea21a88342a67722e2a8158a69c12ec48c2')
 }
 
 options=("!strip")
