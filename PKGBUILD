@@ -1,7 +1,7 @@
 # Maintainer: SummerElement <Dapugongying@foxmail.com>
 pkgname=scholaread-bin
-pkgver=1.1.36
-pkgrel=2
+pkgver=1.1.66
+pkgrel=3
 pkgdesc="A helpful AI driven software that helps you do research."
 arch=('x86_64')
 url="https://scholaread.com"
