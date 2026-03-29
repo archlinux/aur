@@ -36,7 +36,7 @@ pkgbase = dcpomatic
 	depends = cairomm
 	provides = dcpomatic
 	conflicts = dcpomatic
-	source = dcpomatic::git+git://git.carlh.net/git/dcpomatic.git#tag=v2.18.37
+	source = dcpomatic::git+https://git.carlh.net/git/dcpomatic.git#tag=v2.18.37
 	sha256sums = f788e9519867362fb3af3eadd992876f1a155c67611004173a4c59917882ff76
 
 pkgname = dcpomatic

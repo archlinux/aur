@@ -14,7 +14,7 @@ url="https://dcpomatic.com/"
 license=('GPL-2.0-or-later')
 depends=('libsub>=1.6.59' 'libcxml>=0.17.15' 'libdcp>=1.10.48' 'ffmpeg>=7.0' 'glib2' 'glu' 'icu' 'imagemagick' 'libssh'  'wxwidgets-gtk3' 'wxwidgets-common' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264' 'openssl' 'leqm-nrt>=0.0.2.r12.g30dcaea' 'xerces-c' 'libxml++2.6' 'gtkmm3' 'cairomm')
 makedepends=('python' 'which' 'boost>=1.89.0' 'git' )
-source=("${pkgname}::git+git://git.carlh.net/git/${pkgbase}.git#tag=v${pkgver}")
+source=("${pkgname}::git+https://git.carlh.net/git/${pkgbase}.git#tag=v${pkgver}")
 
 sha256sums=('f788e9519867362fb3af3eadd992876f1a155c67611004173a4c59917882ff76')
 
