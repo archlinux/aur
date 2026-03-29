@@ -6,7 +6,7 @@ pkgbase = env-modules
 	install = env-modules.install
 	arch = i686
 	arch = x86_64
-	license = GPL-2.0
+	license = GPL-2.0-or-later
 	checkdepends = dejagnu
 	makedepends = less
 	depends = tcl>=8.5

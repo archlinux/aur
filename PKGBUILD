@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
 url="https://envmodules.io/"
-license=('GPL-2.0')
+license=('GPL-2.0-or-later')
 depends=('tcl>=8.5' 'procps')
 makedepends=('less')
 checkdepends=('dejagnu')
