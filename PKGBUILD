@@ -2,8 +2,8 @@
 # Maintainer: Benjamin Radel <aur@radel.tk>
 
 pkgname=leqm-nrt
-_commit=30dcaea1373ac62fba050e02ce5b0c1085797a23
-pkgver=0.0.2.r12.g30dcaea
+_commit=d75d0af984d9c14bfefca8f1bdbc215c3bf3a388
+pkgver=0.0.2.r13.gd75d0af
 pkgrel=1
 pkgdesc="An open source implementation of Leq(M) measurement with patches from Carl"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=(git python)
 source=(
   "leqm-nrt::git+https://git.carlh.net/git/leqm-nrt.git#commit=${_commit}"
 )
-sha256sums=('SKIP')
+sha256sums=('3309a21bcfcfc3df2be663d45310307e14a09221002b72ccb0685d2c9e07b288')
 
 pkgver() {
   cd "$pkgname"
