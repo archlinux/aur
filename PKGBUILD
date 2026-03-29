@@ -4,7 +4,7 @@
 
 pkgname=wasi-sdk-bin
 pkgver=32.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WASI-enabled WebAssembly C/C++ toolchain"
 arch=('x86_64')
 url="https://github.com/WebAssembly/${pkgname%%-bin}"
@@ -13,7 +13,7 @@ options=(staticlibs !strip)
 source=(
     "https://github.com/WebAssembly/${pkgname%%-bin}/releases/download/${pkgname%%-bin}-${pkgver%%.*}/${pkgname%%-bin}-${pkgver}-x86_64-linux.tar.gz"
 )
-b2sums=('5b013db22bd277675e16fd36c72c1fb41a96437e3b01d24278e100c209e659ef9b9d30baad2f8123c8e36d196aecedd89448d3cda4e63732e409ccc16f5d7cdf')
+b2sums=('62b83e2db70b24361962b392551c604b21c59535b8d34a5e652447d7b722b033327334f0e17381d28eaa6dcb31fb02aad9978c66b761fb592b6de502012aeb57')
 
 package() {
     install -d -m 755 "${pkgname%%-bin}-$pkgver-x86_64-linux" "$pkgdir/opt"
