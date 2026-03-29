@@ -1,9 +1,9 @@
 --- a/src/graphics.cpp
 +++ b/src/graphics.cpp
 @@ -562,11 +562,11 @@ INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE, _In_ PSTR, _In_
- 
+
  #elif defined(__linux__)||defined(__APPLE__)
- 
+
 -#include "X11/include/X11/Xlib.h" // sources: libx11-dev, x11proto-dev, libxrandr-dev, libxrender-dev
 +#include "X11/Xlib.h" // sources: libx11-dev, x11proto-dev, libxrandr-dev, libxrender-dev
  #define register // to avoid compiler warning in XKBlib.h
@@ -12,23 +12,6 @@
  #undef register // to avoid compiler warning in XKBlib.h
 -#include "X11/include/X11/extensions/Xrandr.h" // for multi-monitor
 +#include "X11/extensions/Xrandr.h" // for multi-monitor
- 
+
  Display* x11_display;
  Window x11_window;
-@@ -689,7 +689,15 @@ int main(int argc, char* argv[]) {
- 
- 	Window x11_root_window = DefaultRootWindow(x11_display);
- 	XRRScreenResources* x11_screen_resources = XRRGetScreenResources(x11_display, x11_root_window);
--	XRROutputInfo* x11_output_info = XRRGetOutputInfo(x11_display, x11_screen_resources, XRRGetOutputPrimary(x11_display, x11_root_window));
-+	// Find first connected output
-+	XRROutputInfo* x11_output_info = NULL;
-+	for (int i = 0; i < x11_screen_resources->noutput; i++) {
-+		x11_output_info = XRRGetOutputInfo(x11_display, x11_screen_resources, x11_screen_resources->outputs[i]);
-+		if (x11_output_info->connection == RR_Connected && x11_output_info->crtc != None) {
-+			break;
-+		}
-+		XRRFreeOutputInfo(x11_output_info);
-+	};
- 	XRRCrtcInfo* x11_crtc_info = XRRGetCrtcInfo(x11_display, x11_screen_resources, x11_output_info->crtc);
- 	XRRScreenConfiguration* x11_screen_configuration = XRRGetScreenInfo(x11_display, x11_root_window);
- 	const uint width  = (uint)x11_crtc_info->width; // width and height of primary monitor

@@ -1,7 +1,7 @@
 # Maintainer: krant <aleksey.vasilenko@gmail.com>
 
 pkgname=fluidx3d
-pkgver=3.5
+pkgver=3.6
 pkgrel=1
 pkgdesc="The fastest and most memory efficient lattice Boltzmann CFD software, using OpenCL"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source=("https://github.com/ProjectPhysX/FluidX3D/archive/refs/tags/v$pkgver.tar
 	"https://cdn.thingiverse.com/assets/b8/99/d7/5d/2c/StarShipV2.stl"
 )
 
-sha256sums=('259584c4d4f62240696122e27bf7998fe90ced5be72973cd8ce336ae6aed1055'
-	'64ec55932632b3c37bda58e4bef350f6649611cb0041dcba9797c69c6164170a'
+sha256sums=('d56238e171b8f42eb83735267e288f41b395fb9ac28bd92690675923b95325f0'
+	'450081778df90be72d8a2c040a03cffbdc4ad89c1b285d51c6815710814ce783'
 	'db5605f435973c556302124e98ce45dc411ca6a3f71131df37f44ee61f28c9bb'
 	'e8fe5827330bc2adfd5161e42c9d5fd6850d909f7581e0d252e30e3dd623f93d'
 	'47c1c261e0db21faa300574247b646e1886ad4b69932b6e066cd7bf9911da33a'
