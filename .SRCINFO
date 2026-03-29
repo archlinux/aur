@@ -1,6 +1,6 @@
 pkgbase = chatty-twitch
 	pkgdesc = A modern Twitch chat client for desktop — inspired by Chatterino
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/KevinEightSeven/Chatty
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = chatty-twitch
 	depends = at-spi2-core
 	depends = util-linux-libs
 	depends = fuse2
-	noextract = Chatty-1.6.0.AppImage
+	noextract = Chatty-1.6.1.AppImage
 	options = !strip
-	source = Chatty-1.6.0.AppImage::https://github.com/KevinEightSeven/Chatty/releases/download/v1.6.0/Chatty.AppImage
-	source = chatty-twitch.png::https://raw.githubusercontent.com/KevinEightSeven/Chatty/v1.6.0/client/assets/icon.png
-	sha256sums = 462f36c48d969f1896289ffce1e1603d6edcc8d42c203b4a3c75488f6c88ef0b
+	source = Chatty-1.6.1.AppImage::https://github.com/KevinEightSeven/Chatty/releases/download/v1.6.1/Chatty.AppImage
+	source = chatty-twitch.png::https://raw.githubusercontent.com/KevinEightSeven/Chatty/v1.6.1/client/assets/icon.png
+	sha256sums = 6187e3e41a1f959a1682546ed80883d270c558c0b6ee9bdbe701883ca8ad45d1
 	sha256sums = SKIP
 
 pkgname = chatty-twitch
