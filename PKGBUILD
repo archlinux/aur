@@ -1,6 +1,6 @@
 # Maintainer: Yves Gugger <yves@pounce.ch>
 pkgname=lean-ctx
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="The Intelligence Layer for AI Coding — 24 intelligent tools, 90+ shell patterns, persistent AI memory, multi-agent sharing, tree-sitter AST (14 languages). Supports 18+ AI tools. Reduces AI costs by up to 99%."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cargo' 'gcc')
 depends=('gcc-libs')
 source=("$pkgname-$pkgver.crate::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('14de7d01d27e97df8785cb79896ecc081c4f88bd9489d0a36f5e2b64bf28636e')
+sha256sums=('ed0181188e2d55730b1f9a3fa61a3d32655424038fcc49d653efbf2f25978253')
 
 prepare() {
   cd "$pkgname-$pkgver"
