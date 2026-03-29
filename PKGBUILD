@@ -13,7 +13,7 @@ b2sums=('2bdf3f47dd5abfdb83c8bdcf1a3ca49dea3248313ef780c76cf490a0a185d82cc7ac1f2
 
 build() {
   cd "$pkgname-$pkgver"
-  make
+  make -j$(nproc)
 }
 
 package() {
