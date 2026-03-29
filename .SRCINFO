@@ -1,6 +1,6 @@
 pkgbase = iostem-git
 	pkgdesc = Header-only iostem C++ library
-	pkgver = 1.0.r0.g0000000
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/Szerwigi1410/iostem
 	arch = any

@@ -1,5 +1,5 @@
 pkgname=iostem-git
-pkgver=1.0.r0.g0000000
+pkgver=1.0
 pkgrel=1
 pkgdesc="Header-only iostem C++ library"
 arch=('any')
@@ -10,11 +10,6 @@ makedepends=('git')
 
 source=("git+https://github.com/Szerwigi1410/iostem.git")
 md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/iostem"
-  git describe --long --tags 2>/dev/null || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
   cd "$srcdir/iostem"
