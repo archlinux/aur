@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc="Environment modules system based on Lua that handles MODULEPATH hierarchical problem. Supports also legacy TCL modules"
 arch=('x86_64')
 url="https://github.com/TACC/Lmod"
-license=('custom')
+license=('MIT')
 depends=('bash' 'lua54' 'lua54-filesystem' 'lua54-posix' 'procps-ng' 'tcl' 'bc')
 optdepends=('tcsh: supported shell'
             'zsh: supported shell')
