@@ -12,7 +12,7 @@ license=('BSD-3-Clause AND MIT')
 depends=('python')
 optdepends=('python-pystache' 'python-mako')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
-arch=("x86_64")
+arch=('any')
 source=("https://github.com/sarnold/gitchangelog/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('08c863fd91447ab58e64e50e787ee7f0f3d2f2184369fe4f7ae3d8fda8ce1632')
 
