@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gpu-t
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A lightweight GPU-Z clone for Linux"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   'opencl-driver: packaged OpenCL driver'
 )
 source=("GPU-T-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d4353dd15c28e6d01f9ff8f58d728b32c3ba3e2d0103fd6f965fc7525d9159a3')
+sha256sums=('eef389e0c0fe833d41493c798dc41aefca1f25d158cfdbb185d8ed63192e7a9f')
 
 prepare() {
   cd "GPU-T-$pkgver"
