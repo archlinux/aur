@@ -1,4 +1,4 @@
-# Maintainer: Julian Houba <craftingdragon007 at outlook dot com>
+# Maintainer: Julian Houba <info at craftingdragon dot ch>
 pkgname='caqtdm'
 pkgver=4.5.0
 pkgrel=2
