@@ -1,6 +1,6 @@
 pkgbase = binspam-git
 	pkgdesc = Spam random 1s and 0s
-	pkgver = 1.0.r0.g0000000
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/Szerwigi1410/binspam
 	arch = x86_64
