@@ -2,7 +2,7 @@ pkgbase = claugrep-git
 	pkgdesc = Browse, search, and export Claude Code conversation transcripts
 	pkgver = r52.f2ea62a
 	pkgrel = 1
-	url = https://github.com/futpib-bot/claugrep
+	url = https://github.com/futpib/claugrep
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = claugrep-git
 	makedepends = cargo
 	provides = claugrep
 	conflicts = claugrep
-	source = claugrep-git::git+https://github.com/futpib-bot/claugrep.git
+	source = claugrep-git::git+https://github.com/futpib/claugrep.git
 	sha256sums = SKIP
 
 pkgname = claugrep-git

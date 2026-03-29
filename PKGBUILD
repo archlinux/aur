@@ -4,12 +4,12 @@ pkgver=r52.f2ea62a
 pkgrel=1
 pkgdesc='Browse, search, and export Claude Code conversation transcripts'
 arch=('x86_64' 'aarch64')
-url='https://github.com/futpib-bot/claugrep'
+url='https://github.com/futpib/claugrep'
 license=('MIT')
 makedepends=('rust' 'cargo')
 provides=('claugrep')
 conflicts=('claugrep')
-source=("$pkgname::git+https://github.com/futpib-bot/claugrep.git")
+source=("$pkgname::git+https://github.com/futpib/claugrep.git")
 sha256sums=('SKIP')
 
 pkgver() {
