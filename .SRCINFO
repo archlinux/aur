@@ -7,6 +7,8 @@ pkgbase = cpuinfo-git
 	license = MIT
 	depends = bash
 	depends = util-linux
+	provides = cpuinfo
+	conflicts = cpuinfo
 	source = cpuinfo-git::git+https://github.com/Szerwigi1410/cpuinfo
 	sha256sums = SKIP
 

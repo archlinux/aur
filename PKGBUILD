@@ -10,6 +10,9 @@ depends=('bash' 'util-linux')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
+provides=("cpuinfo")
+conflicts=("cpuinfo")
+
 pkgver() {
     cd "$srcdir/$pkgname"
     local hash date
