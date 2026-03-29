@@ -9,6 +9,5 @@ pkgbase = audium
 	makedepends = alsa-lib
 	depends = alsa-lib
 	source = audium-0.8.0.tar.gz::https://github.com/takashialpha/audium/archive/refs/tags/0.8.0.tar.gz
-	sha256sums = 71382b5301e1b72671ab219bff2aae4fad6296d364a0cc747051cf70b30fd1d8
 
 pkgname = audium
