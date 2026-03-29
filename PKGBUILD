@@ -2,8 +2,8 @@
 # Contributor: Stephen Smith <stephen304@gmail.com>
 
 _rockname=copas
-pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
-pkgver=4.9.0
+pkgname=("lua-$_rockname" "lua54-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgver=4.10.0
 _rockrel=1
 pkgrel=1
 pkgdesc='A dispatcher based on coroutines that can be used by TCP/IP servers'
@@ -15,6 +15,7 @@ _luadeps=(binaryheap
           socket
           timerwheel)
 makedepends=(lua
+             lua54
              lua53
              lua52
              lua51
@@ -22,7 +23,7 @@ makedepends=(lua
 _archive="$_rockname-$pkgver"
 _rockspec="rockspec/$_archive-$_rockrel.rockspec"
 source=("$_url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('d5d3517a9ba313c746d4e4de04fceb3a88d364817f3948b6697463068093aa8a')
+sha256sums=('23b4abd01b3ab773c20b32ccdccd458703011d48de2c61224cc93aac704a8050')
 
 _package() {
 	cd "$_archive"
@@ -34,6 +35,12 @@ _package() {
 }
 
 package_lua-copas() {
+	depends+=("${pkgname%%-*}" "${_luadeps[@]/#/${pkgname%%-*}-}")
+	optdepends+=("${pkgname%%-*}-sec: secure sockets support")
+	_package 5.5
+}
+
+package_lua54-copas() {
 	depends+=("${pkgname%%-*}" "${_luadeps[@]/#/${pkgname%%-*}-}")
 	optdepends+=("${pkgname%%-*}-sec: secure sockets support")
 	_package 5.4
