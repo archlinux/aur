@@ -12,20 +12,14 @@ conflicts=('bangla-typer')
 install='bangla-typer.install'
 
 _pkgname="${pkgname%-bin}"
-source=(
-    "${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-    "${_pkgname}.svg::${url}/raw/main/src-tauri/icons/icon.svg"
-)
-sha256sums=('68bb65579fc0c4e5ed5d9518e103ecb4bee652edbd265929f0a6ce3af46399a8'
-            '5a7a173a21b038d147f3838701b27786894b3c21e9d7972aff5faa0fb0f91534')
+source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('68bb65579fc0c4e5ed5d9518e103ecb4bee652edbd265929f0a6ce3af46399a8')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}" \
         "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}-server" \
         "${pkgdir}/usr/bin/${_pkgname}-server"
-    install -Dm644 "${srcdir}/${_pkgname}.svg" \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" <<-'DESKTOP'
 	[Desktop Entry]
@@ -36,4 +30,11 @@ package() {
 	Type=Application
 	Categories=Utility;
 	DESKTOP
+
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg" <<-'SVG'
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+	  <rect width="512" height="512" rx="64" fill="#2563eb"/>
+	  <text x="256" y="320" font-family="sans-serif" font-size="280" font-weight="bold" fill="white" text-anchor="middle">ব</text>
+	</svg>
+	SVG
 }
