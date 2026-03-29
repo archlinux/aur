@@ -16,7 +16,7 @@ optdepends=(
     'npm: install Electron dependencies'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yuukidach/wayper/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8732df0dd0406e525859125099a8d89f9402536dc53902e4d84414acf0bf2638')
+sha256sums=('f1bc9b4a1ae0977511513214c2ad35af36f71f3b012d0fb4f6274ac04730b685')
 
 build() {
     cd "$pkgname-$pkgver"
