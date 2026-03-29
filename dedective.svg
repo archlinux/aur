@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <!-- Dark background gradient -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f1a2e"/>
+      <stop offset="100%" stop-color="#162035"/>
+    </linearGradient>
+    <!-- Signal glow -->
+    <radialGradient id="glow" cx="44%" cy="46%" r="38%">
+      <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Lens glass gradient -->
+    <radialGradient id="lens" cx="38%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#1e3a5f" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0a1628" stop-opacity="0.95"/>
+    </radialGradient>
+    <!-- Accent cyan glow filter -->
+    <filter id="cyanGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="roundedRect">
+      <rect width="256" height="256" rx="52" ry="52"/>
+    </clipPath>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect width="256" height="256" rx="52" ry="52" fill="url(#bg)"/>
+  <!-- Subtle radial glow behind lens -->
+  <rect width="256" height="256" rx="52" ry="52" fill="url(#glow)"/>
+
+  <!-- === RADIO WAVES (left of lens, arc style, cyan) === -->
+  <!-- Outermost arc -->
+  <path d="M 62 108 A 52 52 0 0 1 62 148" fill="none" stroke="#00d4ff" stroke-width="4.5" stroke-linecap="round" opacity="0.30" filter="url(#softGlow)"/>
+  <!-- Middle arc -->
+  <path d="M 74 115 A 36 36 0 0 1 74 141" fill="none" stroke="#00d4ff" stroke-width="4.5" stroke-linecap="round" opacity="0.60" filter="url(#softGlow)"/>
+  <!-- Inner arc -->
+  <path d="M 86 122 A 20 20 0 0 1 86 134" fill="none" stroke="#00d4ff" stroke-width="4.5" stroke-linecap="round" opacity="1.0" filter="url(#cyanGlow)"/>
+  <!-- Dot at wave origin -->
+  <circle cx="93" cy="128" r="4" fill="#00d4ff" opacity="0.9" filter="url(#cyanGlow)"/>
+
+  <!-- === MAGNIFYING GLASS === -->
+  <!-- Lens body fill -->
+  <circle cx="122" cy="118" r="52" fill="url(#lens)"/>
+  <!-- Lens ring (cyan accent, thinner) -->
+  <circle cx="122" cy="118" r="52" fill="none" stroke="#00d4ff" stroke-width="2.5" opacity="0.7" filter="url(#cyanGlow)"/>
+
+  <!-- Inner specular highlight on lens -->
+  <ellipse cx="108" cy="103" rx="14" ry="9" fill="white" opacity="0.06" transform="rotate(-20,108,103)"/>
+
+  <!-- === CORDLESS PHONE SILHOUETTE inside lens === -->
+  <!-- 2000s era cordless handset: tall body, curved earpiece top, antenna stub top-right, keypad bump, slightly angled -->
+  <g transform="translate(122,116) rotate(-12)" opacity="0.92">
+    <!-- Main handset body -->
+    <path d="
+      M -13,-46
+      C -14,-50 -10,-58 -3,-60
+      C  4,-62  10,-58  12,-52
+      L  14, 28
+      C  15, 36  10, 44   2, 46
+      C -6, 48 -14, 44 -16, 36
+      Z
+    " fill="#00d4ff" filter="url(#cyanGlow)"/>
+
+    <!-- Earpiece grille cutout (dark) -->
+    <rect x="-8" y="-52" width="16" height="7" rx="3" fill="#0a1628" opacity="0.7"/>
+
+    <!-- Screen area (slightly lighter rect) -->
+    <rect x="-9" y="-38" width="18" height="14" rx="2" fill="#0f2a45" opacity="0.8"/>
+
+    <!-- Keypad dots (3x4 grid) -->
+    <g fill="#0a1628" opacity="0.65">
+      <!-- Row 1 -->
+      <circle cx="-6" cy="-16" r="2"/>
+      <circle cx=" 0" cy="-16" r="2"/>
+      <circle cx=" 6" cy="-16" r="2"/>
+      <!-- Row 2 -->
+      <circle cx="-6" cy="-8"  r="2"/>
+      <circle cx=" 0" cy="-8"  r="2"/>
+      <circle cx=" 6" cy="-8"  r="2"/>
+      <!-- Row 3 -->
+      <circle cx="-6" cy="0"   r="2"/>
+      <circle cx=" 0" cy="0"   r="2"/>
+      <circle cx=" 6" cy="0"   r="2"/>
+      <!-- Row 4 -->
+      <circle cx="-6" cy="8"   r="2"/>
+      <circle cx=" 0" cy="8"   r="2"/>
+      <circle cx=" 6" cy="8"   r="2"/>
+    </g>
+
+    <!-- Speaker/mic grille at bottom -->
+    <rect x="-8" y="32" width="16" height="6" rx="3" fill="#0a1628" opacity="0.6"/>
+
+    <!-- Antenna stub (top right of handset) -->
+    <rect x="10" y="-70" width="5" height="22" rx="2.5" fill="#00d4ff" filter="url(#cyanGlow)"/>
+  </g>
+
+
+
+  <!-- === HANDLE === -->
+  <!-- Handle shadow/depth -->
+  <line x1="162" y1="158" x2="203" y2="199" stroke="#0a1628" stroke-width="13" stroke-linecap="round"/>
+  <!-- Handle body -->
+  <line x1="161" y1="157" x2="202" y2="198" stroke="#1a3a5c" stroke-width="10" stroke-linecap="round"/>
+  <!-- Handle cyan edge highlight -->
+  <line x1="160" y1="156" x2="201" y2="197" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+
+</svg>

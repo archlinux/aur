@@ -1,0 +1,20 @@
+post_install() {
+    # Refresh the desktop application database so the launcher appears
+    # in KDE, GNOME, XFCE, etc. immediately without a logout/reboot.
+    update-desktop-database -q
+
+    echo ""
+    echo "==> DeDECTive: HackRF USB access"
+    echo "    The 'hackrf' package installs udev rules at:"
+    echo "      /usr/lib/udev/rules.d/52-hackrf.rules"
+    echo "    To access the HackRF One without root, ensure your user is in"
+    echo "    the 'plugdev' group:"
+    echo "      sudo usermod -aG plugdev \$USER"
+    echo "    Then reload udev rules (or reboot):"
+    echo "      sudo udevadm control --reload-rules && sudo udevadm trigger"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
