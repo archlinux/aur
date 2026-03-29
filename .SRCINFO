@@ -1,6 +1,6 @@
 pkgbase = hnefatafl-copenhagen
 	pkgdesc = Copenhagen Hnefatafl client. Discord: https://discord.gg/h56CAHEBXd
-	pkgver = 5.5.0
+	pkgver = 5.5.1
 	pkgrel = 1
 	url = https://hnefatafl.org
 	arch = x86_64

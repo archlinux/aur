@@ -17,7 +17,7 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=hnefatafl-copenhagen
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 real_pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client. Discord: https://discord.gg/h56CAHEBXd"
@@ -28,7 +28,7 @@ provides=("hnefatafl-copenhagen")
 conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib" "openssl")
 makedepends=("base-devel" "clang" "llvm" "mold" "rustup")
-source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v$pkgver-$real_pkgrel.tar.gz")
+source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v5.5.0-$real_pkgrel.tar.gz")
 sha256sums=("228ac1b31ddb9f890f3a1869ee85dea29e9c4655ec03d9e357d510b66a6325da")
 build() {
     tar -xvzf v$pkgver-$real_pkgrel.tar.gz
@@ -63,7 +63,7 @@ package() {
     install -Dm644 "packages/hnefatafl.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "packages/hnefatafl-ai-attacker.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "packages/hnefatafl-ai-defender.service" -t "$pkgdir/usr/lib/systemd/system"
-    install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
     install -Dm644 "assets/helmet.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.hnefatafl.hnefatafl_client.svg"
     install -Dm644 "hnefatafl-ai.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-ai.1.gz"
     install -Dm644 "hnefatafl-client.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-client.1.gz"
