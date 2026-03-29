@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=mousam
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Weather at a Glance'
 url="https://github.com/amit9838/mousam"
@@ -11,7 +11,7 @@ depends=('python-gobject' 'libadwaita' 'python-cairo' 'python-requests')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5ad5884d7ff85f6d79d7e518607cfdd5e56b1851c6c33f0d93b38f372f3cbb3f')
+sha256sums=('7a244483cd22d2c609bab7578761e02a0f35bd3caa24a09d236f69fa48bc3b44')
 
 build() {
   arch-meson mousam-$pkgver build
