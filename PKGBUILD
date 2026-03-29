@@ -1,11 +1,11 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-zen
-_pkgver=6.19.9.zen1
-_kernver=6.19.9
+_pkgver=6.19.10.zen1
+_kernver=6.19.10
 _zenver=zen1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=6.19.9-zen1-1-zen
+_KERNNAME=6.19.10-zen1-1-zen
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-zen"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -21,9 +21,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-zen-6.19.9.zen1-1-x86_64.pkg.tar.zst
-_headerspkg=linux-zen-headers-6.19.9.zen1-1-x86_64.pkg.tar.zst
-_docspkg=linux-zen-docs-6.19.9.zen1-1-x86_64.pkg.tar.zst
+_kernpkg=linux-zen-6.19.10.zen1-1-x86_64.pkg.tar.zst
+_headerspkg=linux-zen-headers-6.19.10.zen1-1-x86_64.pkg.tar.zst
+_docspkg=linux-zen-docs-6.19.10.zen1-1-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -31,9 +31,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('69c66b3e7d06a23d7b66072bdc6650fdfc7f0318b61f64cefd0e451bcef376a0'
-            '06566ed365b9915396e3920261211e9bd4ac2572a6c5ce33f57605909d753b0e'
-            'f8d8ceffca2676016b68b0d691d2637396f26edf559b8cae34c64b2223353436')
+sha256sums=('a96cd7acf0c110460cd8a0fdb4843467b0320a12e4bf4c644f1d5d6e40954679'
+            'f5b3c9b8930a0b20b93305e7054ba44f349c7541565af2f0caaf371952806884'
+            '9de7a6da36d8b90fdfada109c54f57942799219a7c9de8d2fefb891d8a313d1d')
 
 package_linux-zen-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -51,7 +51,7 @@ package_linux-zen-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.19.9.zen1-1-zen-bin() {
+package_linux6.19.10.zen1-1-zen-bin() {
   pkgdesc="The Linux ZEN kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -71,7 +71,7 @@ package_linux6.19.9.zen1-1-zen-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.19.9.zen1-1-zen-headers-bin() {
+package_linux6.19.10.zen1-1-zen-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux ZEN kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -81,7 +81,7 @@ package_linux6.19.9.zen1-1-zen-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.19.9.zen1-1-zen-docs-bin() {
+package_linux6.19.10.zen1-1-zen-docs-bin() {
   pkgdesc="Documentation for the Linux ZEN kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
