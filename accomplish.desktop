@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Accomplish
+Comment=Open source AI desktop agent
+Exec=accomplish %U
+Icon=accomplish
+Terminal=false
+Categories=Utility;
+StartupNotify=true
