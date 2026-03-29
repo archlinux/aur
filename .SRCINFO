@@ -1,13 +1,12 @@
 pkgbase = sph-sc-git
 	pkgdesc = compiles scheme-like s-expressions to c
-	pkgver = 260
+	pkgver = 276
 	pkgrel = 1
 	url = https://github.com/sph-mn/sph-sc
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = guile
-	depends = sph-lib
 	provides = sph-sc
 	conflicts = sph-sc
 	source = sph-sc::git+https://github.com/sph-mn/sph-sc.git

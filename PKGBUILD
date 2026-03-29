@@ -1,12 +1,12 @@
 pkgname=sph-sc-git
 _pkgname=sph-sc
-pkgver=260
+pkgver=276
 pkgrel=1
 pkgdesc="compiles scheme-like s-expressions to c"
 arch=(any)
 url="https://github.com/sph-mn/sph-sc"
 license=(GPL3)
-depends=(guile sph-lib)
+depends=(guile)
 makedepends=(git)
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -20,6 +20,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/${_pkgname}"
-  echo "$pkgdir"
-  ./exe/install --target-prefix="$pkgdir"
+  ./exe/install "$pkgdir"
 }
