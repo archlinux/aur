@@ -1,6 +1,6 @@
 # Maintainer: gogamlg3
 pkgname=tg-ws-proxy-git
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Local SOCKS5 proxy server for partial bypassing of Telegram loading"
 arch=("x86_64")
@@ -36,8 +36,8 @@ package() {
 
   install -Dm755 "dist/TgWsProxy" "$pkgdir/usr/bin/$_binname"
 
-  install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-  magick "icon.ico[6]" -background none -alpha on "$pkgdir/usr/share/icons/hicolor/256x256/apps/tg-ws-proxy.png"
+  install -d "$pkgdir/usr/share/icons/hicolor/64x64/apps"
+  magick "icon.ico" -background none -alpha on "$pkgdir/usr/share/icons/hicolor/64x64/apps/tg-ws-proxy.png"
 
   install -Dm644 ../tg-ws-proxy.desktop "$pkgdir/usr/share/applications/tg-ws-proxy.desktop"
   install -Dm644 ../tg-ws-proxy.service "$pkgdir/usr/lib/systemd/system/tg-ws-proxy.service"
