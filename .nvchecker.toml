@@ -1,0 +1,5 @@
+[homecomputer-fonts]
+source = 'github'
+github = 'jenskutilek/homecomputer-fonts'
+use_latest_release = true
+prefix = 'v'
