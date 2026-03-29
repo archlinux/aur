@@ -1,5 +1,5 @@
 pkgname=binspam-git
-pkgver=0
+pkgver=1.0.r0.g0000000
 pkgrel=1
 pkgdesc="Spam random 1s and 0s"
 arch=('x86_64')
@@ -13,12 +13,12 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/binspam"
-  git describe --long --tags --always
+  git describe --long --tags 2>/dev/null || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "$srcdir/binspam"
-  g++ -I/usr/include main.cpp -o binspam
+  g++ -std=c++98 main.cpp -o binspam
 }
 
 package() {
