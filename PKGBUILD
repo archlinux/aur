@@ -1,4 +1,4 @@
-# Maintainer: Elia Nitsche <nitscheelia at gmail.com>
+# Maintainer: Elia Nitsche <nitscheelia at gmail dot com>
 pkgname="v-editor-git"
 _pkgname=${pkgname%-git}
 pkgver=1.1.r0.g9d2ed26
