@@ -62,16 +62,16 @@ depends=(
 makedepends=(
   binutils
   cbindgen
-  'clang<22'
+  clang
   diffutils
   git
   imake
   inetutils
   jack
   jq
-  'lld<22'
-  'llvm<22'
-  'llvm-libs<22'
+  lld
+  llvm
+  llvm-libs
   mesa
   nasm
   nodejs
@@ -82,10 +82,11 @@ makedepends=(
   rust
   sccache
   unzip
-  'wasi-compiler-rt<22'
-  'wasi-libc++<22'
-  'wasi-libc++abi<22'
-  'wasi-libc<1:0+571'
+  wasi-compiler-rt
+  wasi-libc++
+  wasi-libc++abi
+  wasi-libc
+  xz
   yasm
   zip
 
@@ -142,6 +143,7 @@ source=(
   "default192x192.png"
   "0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
   "0002-Use-wasm32-wasip1-target.patch"
+  "0003-update-rust-bindgen-to-fix-clang22-build.patch.xz"
 )
 sha256sums=('eecdec0e09c70942b3adac1fd9a7200dd281f7adf1e198c1e9f5f0c717188356'
             'b972b2a4c17244d51c10123cbd6c936e2cf26ebc29eb724570d285c283e9e92c'
@@ -150,7 +152,8 @@ sha256sums=('eecdec0e09c70942b3adac1fd9a7200dd281f7adf1e198c1e9f5f0c717188356'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
             '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
-            'baad79216200df4ea05a0e5ca26e0c56c4d4a3cd2149d32f15dc8b7c724376ba')
+            'baad79216200df4ea05a0e5ca26e0c56c4d4a3cd2149d32f15dc8b7c724376ba'
+            '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d')
 
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -280,8 +283,9 @@ fi
 
   # Fix build with glibc 2.43
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
-  patch -Np1 -i ../../0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
-  patch -Np1 -i ../../0002-Use-wasm32-wasip1-target.patch
+  patch -B .patchorigin -Np1 -i ../../0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  patch -B .patchorigin -Np1 -i ../../0002-Use-wasm32-wasip1-target.patch
+  xzcat ../../0003-update-rust-bindgen-to-fix-clang22-build.patch | patch -B .patchorigin -Np1
 }
 
 
