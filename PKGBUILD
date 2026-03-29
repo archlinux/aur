@@ -1,16 +1,16 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=gasm80
-pkgver=0.0.20260110
+pkgver=0.0.20260329
 pkgrel=1
 pkgdesc='Small, generic Z80/6502 assembler'
 url=https://github.com/nanochess/gasm80
-_commit=287ff19ed12c236f3224f983cd7e4c822cf56b3f
+_commit=3f736b0a9d20f4773e8acbbb6b83517a378d2443
 arch=(x86_64)
 depends=(glibc)
 makedepends=(git)
 license=(BSD-2-Clause)
 source=("$pkgname::git+$url#commit=$_commit")
-b2sums=('4a5dac120a5507ef6155ce693c5572edbc223389500da621a31e9d5629077d01156d9a8262707f3e2a8e0191a3fec7d767734abea9c65d31674e60b52b5b7f14')
+b2sums=('3009f9a1d06d97938bf9e7e7aa74d28e0e89f53842ccfa4d29936dc022340933a80dc9f7cae36628b079dcb02e8ca3b7a478eb459edb8d0a4b1605140cbcdfb4')
 
 build () {
 	cd "$pkgname"

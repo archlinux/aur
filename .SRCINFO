@@ -1,13 +1,13 @@
 pkgbase = gasm80
 	pkgdesc = Small, generic Z80/6502 assembler
-	pkgver = 0.0.20260110
+	pkgver = 0.0.20260329
 	pkgrel = 1
 	url = https://github.com/nanochess/gasm80
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = git
 	depends = glibc
-	source = gasm80::git+https://github.com/nanochess/gasm80#commit=287ff19ed12c236f3224f983cd7e4c822cf56b3f
-	b2sums = ed7b668d3930ef91f7aa2983e1f660beca4e12e3ecdba5a2b6c7e91a23102bfd8cdfa16c615c8db346b0a475e281f5b3c35982c8507d125f7c7e0ebed4dfbf2c
+	source = gasm80::git+https://github.com/nanochess/gasm80#commit=3f736b0a9d20f4773e8acbbb6b83517a378d2443
+	b2sums = 3009f9a1d06d97938bf9e7e7aa74d28e0e89f53842ccfa4d29936dc022340933a80dc9f7cae36628b079dcb02e8ca3b7a478eb459edb8d0a4b1605140cbcdfb4
 
 pkgname = gasm80
