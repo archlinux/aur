@@ -1,7 +1,7 @@
 # Maintainer: Xuruh <xuruh@tuta.io>
 pkgname=fluxer-world-bin
-pkgver=1.0.25
-pkgrel=2
+pkgver=1.0.26
+pkgrel=1
 pkgdesc="Fluxer World desktop client — open-source chat, voice, and community platform"
 arch=('x86_64')
 url="https://fluxer.world"
@@ -15,7 +15,7 @@ provides=('fluxer-world')
 conflicts=('fluxer-world')
 options=('!strip' '!debug')
 source=("fluxer-world-${pkgver}-linux-x64.tar.gz::https://github.com/fluxerworld/fluxerworld/releases/download/v${pkgver}/Fluxer.World-1.0.0-linux-x64.tar.gz")
-sha256sums=('97b630d996253e61fe8046668d8a77b379b4e3de5b7035e36f36f60c192211c1')
+sha256sums=('fbffa217f1b74c6c71d373a7c5184a84eca82f2d9132ce5e85a2de477e6886f8')
 
 package() {
     # Install app files (tar.gz extracts to "Fluxer World-1.0.0-linux-x64/")
@@ -23,7 +23,7 @@ package() {
     cp -r "${srcdir}/Fluxer World-1.0.0-linux-x64/"* "${pkgdir}/opt/fluxer-world/"
 
     # Make the main binary executable
-    chmod 755 "${pkgdir}/opt/fluxer-world/fluxer-desktop"
+    chmod 755 "${pkgdir}/opt/fluxer-world/fluxer-world"
     # Chrome sandbox not needed with --no-sandbox
     chmod 4755 "${pkgdir}/opt/fluxer-world/chrome-sandbox" 2>/dev/null || true
 
@@ -31,10 +31,13 @@ package() {
     install -dm 755 "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/fluxer-world" <<'EOF'
 #!/bin/sh
-exec /opt/fluxer-world/fluxer-desktop \
+export GDK_BACKEND=wayland,x11
+exec /opt/fluxer-world/fluxer-world \
   --no-sandbox \
   --enable-features=UseOzonePlatform,WaylandWindowDecorations \
   --ozone-platform-hint=auto \
+  --class=org.fluxer.World \
+  --wayland-app-id=org.fluxer.World \
   "$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/fluxer-world"
