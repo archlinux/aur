@@ -1,6 +1,6 @@
 pkgbase = cedilla
 	pkgdesc = A markdown text editor for the COSMIC™ desktop
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/mariinkys/cedilla
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = cedilla
 	depends = fontconfig
 	depends = hicolor-icon-theme
 	depends = libxkbcommon
-	source = cedilla-0.1.4.tar.gz::https://github.com/mariinkys/cedilla/archive/refs/tags/0.1.4.tar.gz
-	sha256sums = 511eeb75693d50afd1e52f0c2b583386f6c57001d2b4061f0fbd43c7cf04b244
+	source = cedilla-0.1.5.tar.gz::https://github.com/mariinkys/cedilla/archive/refs/tags/0.1.5.tar.gz
+	sha256sums = 12715ac1f3124cf34a582df751522be497e3074b0911d414a4213b41f79cc80c
 
 pkgname = cedilla
