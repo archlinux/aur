@@ -2,7 +2,7 @@
 # Contributor: Gabriel Fagundez <gabrielfagundeznievas@gmail.com>
 
 pkgname=gentle-ai
-pkgver=1.7.5
+pkgver=1.14.2
 pkgrel=1
 pkgdesc="AI Gentle Stack - Ecosystem configurator for AI coding agents"
 arch=('x86_64' 'aarch64')
@@ -12,12 +12,12 @@ provides=('gentle-ai')
 conflicts=('gentle-ai')
 
 source=("LICENSE")
-source_x86_64=("gentle-ai_1.7.5_linux_amd64.tar.gz::https://github.com/Gentleman-Programming/gentle-ai/releases/download/v1.7.5/gentle-ai_1.7.5_linux_amd64.tar.gz")
-source_aarch64=("gentle-ai_1.7.5_linux_arm64.tar.gz::https://github.com/Gentleman-Programming/gentle-ai/releases/download/v1.7.5/gentle-ai_1.7.5_linux_arm64.tar.gz")
+source_x86_64=("gentle-ai_1.14.2_linux_amd64.tar.gz::https://github.com/Gentleman-Programming/gentle-ai/releases/download/v1.14.2/gentle-ai_1.14.2_linux_amd64.tar.gz")
+source_aarch64=("gentle-ai_1.14.2_linux_arm64.tar.gz::https://github.com/Gentleman-Programming/gentle-ai/releases/download/v1.14.2/gentle-ai_1.14.2_linux_arm64.tar.gz")
 
 sha256sums=('19b104292ae35263824a05a795fe9f7cf04b408bf9a77603e9a165802434d4a4')
-sha256sums_x86_64=('d323e5e6797c35abb27e052ad6f1534b8f415cf36a952f453aad9242ab9deca7')
-sha256sums_aarch64=('d7acd47b7cca845f97bde4bd8d771abe377f85e1b1a27493b2cfe6f54e49a6e6')
+sha256sums_x86_64=('2eb619f4d001bb49a71ddb53f3cbca22592cdf47b4eece189ce1237cbe52b426')
+sha256sums_aarch64=('74c036d64e104c57f3dd6808f1e831f370211480a575b3d451ebc94b9e30db58')
 
 package() {
   install -Dm755 gentle-ai "${pkgdir}/usr/bin/gentle-ai"
