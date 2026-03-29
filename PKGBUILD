@@ -18,7 +18,7 @@
 
 pkgname=hnefatafl-copenhagen
 pkgver=5.5.1
-pkgrel=1
+pkgrel=2
 real_pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client. Discord: https://discord.gg/h56CAHEBXd"
 url="https://hnefatafl.org"
@@ -31,8 +31,8 @@ makedepends=("base-devel" "clang" "llvm" "mold" "rustup")
 source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v5.5.0-$real_pkgrel.tar.gz")
 sha256sums=("228ac1b31ddb9f890f3a1869ee85dea29e9c4655ec03d9e357d510b66a6325da")
 build() {
-    tar -xvzf v$pkgver-$real_pkgrel.tar.gz
-    cd "hnefatafl-$pkgver-$real_pkgrel"
+    tar -xvzf v5.5.0-$real_pkgrel.tar.gz
+    cd "hnefatafl-5.5.0-$real_pkgrel"
 
     cargo build --release
 
@@ -54,7 +54,7 @@ build() {
 }
 
 package() {
-    cd "hnefatafl-$pkgver-$real_pkgrel"
+    cd "hnefatafl-5.5.0-$real_pkgrel"
     install -Dm755 "target/release/hnefatafl-ai" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-client" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-server" -t "$pkgdir/usr/bin"
