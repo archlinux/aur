@@ -1,6 +1,6 @@
 pkgbase = hex2bin
 	pkgdesc = Hex to binary converter
-	pkgver = 1.12
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/Keidan/hex2bin
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hex2bin
 	makedepends = cmake
 	makedepends = python
 	depends = glibc
-	source = hex2bin-1.12.tar.gz::https://github.com/Keidan/hex2bin/archive/refs/tags/v1.12.tar.gz
-	sha256sums = cc9e4ee6791cdbbb9b24725a61258b90331888f3b7e33517e88bb84df411906f
+	source = hex2bin-1.13.0.tar.gz::https://github.com/Keidan/hex2bin/archive/refs/tags/v1.13.0.tar.gz
+	sha256sums = 7497316916da9b48b5d86be07be50549720422fa74f7db5975817ac445d82f9a
 
 pkgname = hex2bin

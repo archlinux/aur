@@ -2,7 +2,7 @@
 
 pkgname=hex2bin
 pkgdesc='Hex to binary converter'
-pkgver=1.12
+pkgver=1.13.0
 pkgrel=1
 arch=(x86_64)
 license=(GPL-3.0-only)
@@ -10,7 +10,7 @@ url=https://github.com/Keidan/hex2bin
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 makedepends=(cmake python)
 depends=(glibc)
-sha256sums=('cc9e4ee6791cdbbb9b24725a61258b90331888f3b7e33517e88bb84df411906f')
+sha256sums=('7497316916da9b48b5d86be07be50549720422fa74f7db5975817ac445d82f9a')
 
 build () {
 	rm -rf _build
