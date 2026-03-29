@@ -6,19 +6,26 @@ arch=('x86_64')
 url="https://github.com/takashialpha/swagsh"
 license=('Apache-2.0')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/takashialpha/swagsh/archive/refs/tags/v$pkgver.tar.gz")
+
+source=("git+https://github.com/takashialpha/swagsh.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  cargo build --release
+  cd "$srcdir/swagsh"
+
+  # Use --locked for reproducible builds
+  cargo build --release # --locked
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/swagsh"
 
-  install -Dm755 target/release/swagsh \
-    "$pkgdir/usr/bin/swagsh"
+  # Install the binary
+  install -Dm755 target/release/swagsh "$pkgdir/usr/bin/swagsh"
 
-  install -Dm644 LICENSE \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # Install license
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Optional: install README if useful
+  # install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
