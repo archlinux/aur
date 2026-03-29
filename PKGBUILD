@@ -37,7 +37,7 @@ sha256sums=('87e6af6a03794b9462ea519781e50e7d23b5f7c92cd59e1142c85d2493b3c24b'
 validpgpkeys=('CD0A6E3CBB6768800B0736A8E7677380F54FD8A9')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   patch --forward --strip=1 --input=../autofs-5.1.9-Fix-incompatible-function-pointer-types-in-cyrus-sasl-module.patch
 
@@ -46,7 +46,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr \
         --sysconfdir=/etc/autofs \
@@ -61,9 +61,9 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   make INSTALLROOT="${pkgdir}" install install_samples
 
-  install -dm755 "$pkgdir/etc/autofs/auto.master.d"
+  install -dm755 "${pkgdir}/etc/autofs/auto.master.d"
 }
