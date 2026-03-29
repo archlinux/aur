@@ -2,7 +2,7 @@
 # Contributor: Chris Sutcliff <chris@sutcliff.me>
 pkgname=music-assistant-desktop-git
 pkgver=0.3.4.r12.g32166f8
-pkgrel=1
+pkgrel=2
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
 url="https://github.com/music-assistant/desktop-app"
@@ -20,6 +20,7 @@ depends=(
     'libpulse'
     'libsoup3'
     'openssl'
+    'libayatana-appindicator'
     'webkit2gtk-4.1'
 )
 makedepends=(
@@ -28,15 +29,12 @@ makedepends=(
     'curl'
     'file'
     'git'
-    'libappindicator-gtk3'
+    'libayatana-appindicator'
     'librsvg'
     'nodejs'
     'rust'
     'wget'
     'yarn'
-)
-optdepends=(
-    'libappindicator-gtk3: system tray support'
 )
 conflicts=('music-assistant-desktop' 'music-assistant-desktop-bin' 'music-assistant-companion-git' 'music-assistant-app-git' 'music-assistant-desktop-app-git')
 source=("${pkgname}::git+${url}.git")
