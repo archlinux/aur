@@ -9,7 +9,6 @@ url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
 license=('EUPL-1.2')
 depends=(
     'vapoursynth'
-    'vapoursynth-plugin-vsjetpack'
     'python-jetpytools'
     'python-vsjetengine'
     'python-vspackrgb'
@@ -42,7 +41,7 @@ optdepends=(
     'vsview-plugins-essential: Meta package for essential plugins'
 )
 source=("${pkgname}::git+${url}.git#tag=vsview/v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('adb01e6b2f08a4b121e4284c80d602f9c942031a2a4c09b811c46a0f0c7a4378')
 
 build() {
     cd "${pkgname}"

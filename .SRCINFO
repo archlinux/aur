@@ -13,7 +13,6 @@ pkgbase = vsview
 	makedepends = python-versioningit
 	makedepends = python-wheel
 	depends = vapoursynth
-	depends = vapoursynth-plugin-vsjetpack
 	depends = python-jetpytools
 	depends = python-vsjetengine
 	depends = python-vspackrgb
@@ -34,6 +33,6 @@ pkgbase = vsview
 	optdepends = vsview-plugins-all: Meta package for all plugins
 	optdepends = vsview-plugins-essential: Meta package for essential plugins
 	source = vsview::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=vsview/v0.2.0
-	sha256sums = SKIP
+	sha256sums = adb01e6b2f08a4b121e4284c80d602f9c942031a2a4c09b811c46a0f0c7a4378
 
 pkgname = vsview
