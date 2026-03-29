@@ -9,7 +9,6 @@ license=('GPL3')
 depends=('curl' 'zlib' 'libsodium')       # runtime deps for dynamic binary
 makedepends=('gcc' 'make' 'git')          # needed for building
 source=("https://github.com/creptic/qbtctl/archive/refs/tags/1.5.1.tar.gz")
-sha256sums=('cb738f3def48d4f4220447288b21ca2ec21ef00e15da08a8aeedf02c0f3cd1d5')
 options=('!debug')
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -34,5 +33,4 @@ package() {
     install -Dm644 INSTALL.txt "$pkgdir/usr/share/doc/$pkgname/INSTALL.txt"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
-sha256sums=('cb738f3def48d4f4220447288b21ca2ec21ef00e15da08a8aeedf02c0f3cd1d5')
-sha256sums=('496094b9d528c3fc038b7fd89c07e9458bec7d3dfbfb8a4ea40cbb62c71fba76')
+sha256sums=('d4ebfece544b7c47841b7efb7ae8f366cfe0a916b87ab741fc83b06979bbfbe3')

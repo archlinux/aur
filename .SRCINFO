@@ -12,7 +12,7 @@ pkgbase = qbtctl
 	depends = zlib
 	depends = libsodium
 	options = !debug
-	source = https://github.com/creptic/qbtctl/archive/refs/tags/1.5.0.tar.gz
-	sha256sums = cb738f3def48d4f4220447288b21ca2ec21ef00e15da08a8aeedf02c0f3cd1d5
+	source = https://github.com/creptic/qbtctl/archive/refs/tags/1.5.1.tar.gz
+	sha256sums = d4ebfece544b7c47841b7efb7ae8f366cfe0a916b87ab741fc83b06979bbfbe3
 
 pkgname = qbtctl
