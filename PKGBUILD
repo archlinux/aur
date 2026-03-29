@@ -1,8 +1,8 @@
 # Maintainer: aisuneko icecat <iceneko@protonmail.ch>
 pkgname=kelivo-bin
-pkgver=1.1.8
-pkgrel=26.1
-pkgrel_ver=$(echo "$pkgrel" | cut -d '.' -f 1)
+pkgver=1.1.9
+pkgrel=27.1
+pkgrel_ver=27
 pkgdesc="A Flutter LLM Chat Client"
 arch=("x86_64")
 url="https://github.com/Chevey339/kelivo"
