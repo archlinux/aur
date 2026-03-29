@@ -1,0 +1,15 @@
+pkgbase = processor-info
+	pkgdesc = A small GUI app showing CPU frequencies, model names, temperature, etc.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://codeberg.org/veer66/processor_info
+	arch = any
+	license = GPL-3.0-or-later
+	depends = lm_sensors
+	depends = procps-ng
+	depends = tk
+	depends = util-linux
+	source = https://codeberg.org/veer66/processor_info/archive/v0.0.1.tar.gz
+	sha256sums = 427ab70859551b72a594f2896cfdfd74cd1d08acffd3f09038a34c2e8f448a22
+
+pkgname = processor-info
