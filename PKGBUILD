@@ -1,9 +1,10 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Mark Collins
 
 pkgname="handy-bin"
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open source, and extensible speech-to-text application that works completely offline"
 url="https://handy.computer/"
 license=("MIT")
@@ -18,6 +19,7 @@ depends=(
     "glib2"
     "glibc"
     "gtk3"
+    "gtk-layer-shell"
     "hicolor-icon-theme"
     "libappindicator-gtk3"
     "libsoup3"
