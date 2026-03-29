@@ -1,5 +1,5 @@
 pkgname=binspam-git
-pkgver=1.0
+pkgver=0
 pkgrel=1
 pkgdesc="Spam random 1s and 0s"
 arch=('x86_64')
@@ -10,6 +10,11 @@ makedepends=('git' 'gcc')
 
 source=("git+https://github.com/Szerwigi1410/binspam.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/binspam"
+  git describe --long --tags --always
+}
 
 build() {
   cd "$srcdir/binspam"
