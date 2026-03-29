@@ -2,7 +2,7 @@
 # Contributor: Václav Kubernát <sir.venceslas@gmail.com> (maintainer of qt5 version)
 
 pkgname=qt6-opcua
-pkgver=6.10.2
+pkgver=6.11.0
 pkgrel=1
 pkgdesc='Qt 6 wrapper for existing OPC UA stacks'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('git' 'cmake' 'ninja' 'qt6-declarative')
 groups=('qt6')
 _pkgfqn=qtopcua
 source=("https://github.com/qt/$_pkgfqn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('375b1b13c28753a14f7c6360fd6dc5790f63ec34a37355694618530268ec2c2a')
+sha256sums=('0d676bd8428b5a8157b713672a14c91fa0e0420bac70980e3f268e6f6008cbd6')
 
 build() {
   cmake -B build -S "$_pkgfqn-$pkgver" -G Ninja \
