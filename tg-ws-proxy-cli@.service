@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/tg-ws-proxy-cli --port %i
+ExecStart=/usr/bin/tg-ws-proxy-wrapper %i
 Restart=on-failure
 RestartSec=5s
 

@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+
+case "$1" in
+  *:*)
+    PORT="${1%%:*}"
+    SECRET="${1#*:}"
+    ;;
+  *)
+    echo "Invalid instance format, expected PORT:SECRET" >&2
+    exit 2
+    ;;
+esac
+
+exec /usr/bin/tg-ws-proxy-cli --port "$PORT" --secret "$SECRET"
