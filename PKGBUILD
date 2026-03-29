@@ -2,7 +2,7 @@
 
 pkgname=elephant-all-git
 pkgver=r405.bfd423d
-pkgrel=12
+pkgrel=13
 pkgdesc='elephant + all official elephant providers'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
