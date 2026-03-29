@@ -1,4 +1,4 @@
-qbtctl 1.5.0 - Installation Instructions
+qbtctl 1.5.1 - Installation Instructions
 -----------------------------------------
 
 Requirements:
@@ -11,9 +11,9 @@ Build Instructions:
 
 1. Download and extract the source code:
 
-   $ wget https://github.com/creptic/qbtctl/archive/refs/tags/v1.5.0.tar.gz
-   $ tar xvf v1.5.0.tar.gz
-   $ cd qbtctl-1.5.0
+   $ wget https://github.com/creptic/qbtctl/archive/refs/tags/v1.5.1.tar.gz
+   $ tar xvf v1.5.1.tar.gz
+   $ cd qbtctl-1.5.1
 
 2. Build dynamic binary:
 

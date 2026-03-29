@@ -1,18 +1,16 @@
 # Maintainer: Creptic <creptics@gmail.com>
 pkgname=qbtctl
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
-pkgdesc="Minimal CLI for qBittorrent (build from source)"
+pkgdesc="Minimal CLI for qBittorrent (built from source)"
 arch=('x86_64')
 url="https://github.com/creptic/qbtctl"
-license=('MIT')
+license=('GPL3')
 depends=('curl' 'zlib' 'libsodium')       # runtime deps for dynamic binary
 makedepends=('gcc' 'make' 'git')          # needed for building
-source=("https://github.com/creptic/qbtctl/archive/refs/tags/1.5.0.tar.gz")
+source=("https://github.com/creptic/qbtctl/archive/refs/tags/1.5.1.tar.gz")
 sha256sums=('cb738f3def48d4f4220447288b21ca2ec21ef00e15da08a8aeedf02c0f3cd1d5')
 options=('!debug')
-conflicts=('qbtctl-bin' 'qbtctl-git')
-provides=('qbtctl')
 build() {
     cd "$srcdir/$pkgname-$pkgver"
 
@@ -36,3 +34,5 @@ package() {
     install -Dm644 INSTALL.txt "$pkgdir/usr/share/doc/$pkgname/INSTALL.txt"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+sha256sums=('cb738f3def48d4f4220447288b21ca2ec21ef00e15da08a8aeedf02c0f3cd1d5')
+sha256sums=('496094b9d528c3fc038b7fd89c07e9458bec7d3dfbfb8a4ea40cbb62c71fba76')
