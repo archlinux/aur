@@ -9,7 +9,7 @@
 
 _pkgname=autofs
 pkgname=autofs-git
-pkgver=5.1.9.84.g326ba347
+pkgver=5.1.9.92.gf46eaaa3
 pkgrel=1
 pkgdesc='A kernel-based automounter for Linux'
 arch=('x86_64')
@@ -32,20 +32,20 @@ source=(git+https://git.kernel.org/pub/scm/linux/storage/autofs/autofs.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "${_pkgname}"
 
   git describe --tags --long | sed 's/^release_//;s/[-_]/./g'
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
 
   sed -i -e 's|/etc/auto.misc|/etc/autofs/auto.misc|' \
          -e 's|/etc/auto.master.d|/etc/autofs/auto.master.d|' samples/auto.master
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
 
   ./configure --prefix=/usr \
         --sysconfdir=/etc/autofs \
@@ -60,9 +60,9 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
 
   make INSTALLROOT="${pkgdir}" install install_samples
 
-  install -dm755 "$pkgdir/etc/autofs/auto.master.d"
+  install -dm755 "${pkgdir}/etc/autofs/auto.master.d"
 }

@@ -1,6 +1,6 @@
 pkgbase = autofs-git
 	pkgdesc = A kernel-based automounter for Linux
-	pkgver = 5.1.9.84.g326ba347
+	pkgver = 5.1.9.92.gf46eaaa3
 	pkgrel = 1
 	url = https://www.kernel.org/pub/linux/daemons/autofs/
 	arch = x86_64
