@@ -1,0 +1,26 @@
+pkgbase = localquens
+	pkgdesc = Local lorem ipsum text generator (fork of KDE Eloquens)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/robinpie/localquens
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = LGPL-2.1-or-later
+	license = BSD-2-Clause
+	license = CC0-1.0
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kdbusaddons
+	depends = ki18n
+	depends = kirigami
+	depends = qt6-base
+	depends = qt6-declarative
+	source = localquens-1.0.0.tar.gz::https://github.com/robinpie/Localquens/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 10bc40e57c293606b7d020a3578d18887a95742b15984e46084c2ea9cd2db0a7
+
+pkgname = localquens
