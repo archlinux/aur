@@ -13,7 +13,6 @@ pkgbase = rustycat-android
 	depends = gcc-libs
 	depends = libgit2
 	provides = rcat
-	conflicts = rcat
 	conflicts = rustycat
 	source = rustycat-0.2.0.crate::https://crates.io/api/v1/crates/rustycat-android/0.2.0/download
 	sha256sums = 1137ec2aeaee51599d13877ce8710f0d5ea77c6b3091a435554dee75f337630c
