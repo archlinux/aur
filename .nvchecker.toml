@@ -1,0 +1,5 @@
+[taskr-bin]
+source = "github"
+github = "altlimit/taskr"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,21 @@
+pkgbase = taskr-bin
+	pkgdesc = A terminal-native task runner that reads your existing .vscode/tasks.json and gives you concurrent execution, colored labeled logs, an interactive TUI, smart file watching, and more...
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/altlimit/taskr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = taskr
+	conflicts = taskr
+	source = README-0.1.7.md::https://raw.githubusercontent.com/altlimit/taskr/v0.1.7/README.md
+	source = LICENSE-0.1.7::https://raw.githubusercontent.com/altlimit/taskr/v0.1.7/LICENSE
+	sha256sums = 2409dbf99c02616416b2029e4fc46655d63dbfebca7246dd30842053f70cfc39
+	sha256sums = f6e09a7cbeb53d1a2028751b614b7bb17205b28065c52682c9157d91a292bef5
+	source_x86_64 = taskr-x86_64-0.1.7::https://github.com/altlimit/taskr/releases/download/v0.1.7/taskr_linux_amd64
+	sha256sums_x86_64 = 9d743e555adb533ec4919883da77eb1fa76f9a1ce80f05ba490e55139c7813c2
+	source_aarch64 = taskr-aarch64-0.1.7::https://github.com/altlimit/taskr/releases/download/v0.1.7/taskr_linux_arm64
+	sha256sums_aarch64 = 29a37fc2b9741e9bf35fc4a055c6024a6df341a6f77777e1a5e7d0bf574900e3
+
+pkgname = taskr-bin
