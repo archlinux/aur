@@ -40,7 +40,7 @@ pkgver() {
 }
 
 build() {
-  local cmake_options=(
+  local _cmake_options=(
     -S "$_reponame"
     -B build
     -G Ninja
@@ -54,7 +54,7 @@ build() {
     -D MOLD_USE_MOLD=ON
   )
 
-  cmake ${cmake_options[@]}
+  cmake ${_cmake_options[@]}
 
   cmake --build build
 }
