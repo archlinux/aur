@@ -1,0 +1,5 @@
+[simutil-bin]
+source = "github"
+github = "dungngminh/simutil"
+use_latest_release = true
+prefix = "v"
