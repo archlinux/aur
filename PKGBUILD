@@ -1,16 +1,19 @@
 # Maintainer: Jeremy MountainJohnson <jay@jskier.com>
 # Maintainer: Amish <contact at via dot aur>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+#
+# NOTE: This package conflicts with hyperscan. If hyperscan is installed,
+# remove it first with: pacman -Rdd hyperscan
 
 pkgname=suricata
 pkgver=8.0.4
-pkgrel=1
-pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine"
+pkgrel=2
+pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine, Vectorscan instead of hyperscan"
 arch=('x86_64')
 url="https://suricata.io/"
 license=('GPL2')
 makedepends=('rust' 'clang' 'cbindgen' 'llvm' 'pkgconf')
-depends=('hyperscan' 'jansson' 'libcap-ng' 'libmagic.so' 'libmaxminddb' 'libnet' 'libpcap' 'libyaml' 'pcre' 'python-yaml' 'libunwind' 'libbpf')
+depends=('vectorscan' 'jansson' 'libcap-ng' 'libmagic.so' 'libmaxminddb' 'libnet' 'libpcap' 'libyaml' 'pcre' 'python-yaml' 'libunwind' 'libbpf')
 optdepends=('geoipupdate: GeoIP2 databases')
 conflicts=('suricata-nfqueue')
 install=suricata.install
@@ -36,7 +39,9 @@ build() {
               --with-clang=/usr/bin/clang --without-docs \
               --enable-ebpf --enable-ebpf-build \
               --disable-gccmarch-native \
-              --enable-geoip
+              --enable-geoip \
+              --with-libhs-includes=/usr/include/vectorscan \
+              --with-libhs-libraries=/usr/lib
 
   # Build the Rust crate first so cargo compiles the vendored liblua.a
   make -C rust
