@@ -10,6 +10,7 @@ pkgbase = nekobox
 	arch = i686
 	arch = armv7h
 	license = GPL-3.0-or-later
+	makedepends = pkgconf
 	makedepends = bash
 	makedepends = gcc-libs
 	makedepends = glibc
