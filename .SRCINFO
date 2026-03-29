@@ -1,0 +1,19 @@
+pkgbase = xl-converter
+	pkgdesc = Easy-to-use image converter for modern formats (JPEG XL, AVIF, JPEGLI, WebP)
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/JacobDev1/xl-converter
+	arch = any
+	license = GPL-3.0-only
+	depends = python
+	depends = python-pyqt6
+	depends = libjxl
+	depends = libavif
+	depends = imagemagick
+	depends = oxipng
+	depends = perl-image-exiftool
+	options = !debug
+	source = xl-converter-1.2.3.tar.gz::https://github.com/JacobDev1/xl-converter/archive/refs/tags/v1.2.3.tar.gz
+	sha256sums = b9718b55f1a065a7b0894899334d5c517e4aca35cb7ad7c57db92adace19c7b3
+
+pkgname = xl-converter
