@@ -1,6 +1,6 @@
 pkgbase = hexora
 	pkgdesc = Statically analyze potentially malicious Python code
-	pkgver = 0.2.2
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/rushter/hexora
 	arch = x86_64
@@ -13,9 +13,7 @@ pkgbase = hexora
 	depends = libgcc
 	depends = python
 	options = !lto
-	source = hexora-0.2.2.tar.gz::https://github.com/rushter/hexora/archive/v0.2.2.tar.gz
-	source = github-pr-4.patch
-	sha512sums = 320be329dc394f447b9ed1012f7317465e89fc57bb040e28e870205e57bca3ebdf04b375ca3dd932fb9db25a4d19f7aa81402c0d2160446a7e0ab6900f24bf49
-	sha512sums = c801ce31c3e91f9fa3065b3fd1b3f4409f8d85f73cb905a59140913f8d3389494bf58c36f3c458865b980847dc88847e4b9ace056cce3121426fcec444608b09
+	source = hexora-0.2.4.tar.gz::https://github.com/rushter/hexora/archive/v0.2.4.tar.gz
+	sha512sums = 687a7b86fe67c730fa4b5dac73ae7382aa667b27137b3fa89ba1cf64a646ed53f0c8784b0d82101b73dfab186833a37e07d437f0cbf7a105a9071625e263f872
 
 pkgname = hexora

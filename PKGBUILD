@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=hexora
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Statically analyze potentially malicious Python code'
 arch=('x86_64')
@@ -18,25 +18,18 @@ options=('!lto')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/rushter/hexora/archive/v${pkgver}.tar.gz"
-  'github-pr-4.patch'
 )
 
-sha512sums=(
-  '320be329dc394f447b9ed1012f7317465e89fc57bb040e28e870205e57bca3ebdf04b375ca3dd932fb9db25a4d19f7aa81402c0d2160446a7e0ab6900f24bf49'
-  'c801ce31c3e91f9fa3065b3fd1b3f4409f8d85f73cb905a59140913f8d3389494bf58c36f3c458865b980847dc88847e4b9ace056cce3121426fcec444608b09'
-)
+sha512sums=('687a7b86fe67c730fa4b5dac73ae7382aa667b27137b3fa89ba1cf64a646ed53f0c8784b0d82101b73dfab186833a37e07d437f0cbf7a105a9071625e263f872')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
   export RUSTUP_TOOLCHAIN=stable
+  # Bump the versions of the workspace crates in the lock file
+  # (upstream’s release CI workflow does not do it)
+  cargo update --workspace
   cargo fetch --locked --target host-tuple
-
-  # Remove this patch once the upstream author has cut a new stable
-  # release.
-  # See also: https://github.com/rushter/hexora/pull/4
-  echo >&2 'Applying patch to fix unit test'
-  patch -p1 < ../github-pr-4.patch
 }
 
 build() {

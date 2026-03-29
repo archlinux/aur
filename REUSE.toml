@@ -24,11 +24,3 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
-
-[[annotations]]
-path = ["github-pr-4.patch"]
-SPDX-FileCopyrightText = [
-    "2025–2026 Artem Golubin",
-    "2026 Arch Linux contributors",
-]
-SPDX-License-Identifier = "MIT"
