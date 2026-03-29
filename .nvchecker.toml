@@ -1,0 +1,3 @@
+[python-apscheduler]
+source = "pypi"
+pypi = "apscheduler"
