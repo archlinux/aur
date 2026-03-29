@@ -3,8 +3,8 @@
 
 pkgname=runa-bin
 _name=runa
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="A fast and lightweight console file browser written in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alexm-dev/runa"
@@ -15,8 +15,8 @@ conflicts=('runa')
 changelog=CHANGELOG.md
 source_x86_64=("$pkgname-$pkgver-x86_64-gnu.tar.gz::$url/releases/download/v$pkgver/runa-linux-x86_64-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64-gnu.tar.gz::$url/releases/download/v$pkgver/runa-linux-aarch64-gnu.tar.gz")
-sha256sums_x86_64=('da733457b590e9d746afdd6f89c1e68e79339518314fb0eb41ad3856252687f2')
-sha256sums_aarch64=('293bafb5a817564ce626ebf95cca63aa32cb2b4baf59becfd6ce0039e05f4fa9')
+sha256sums_x86_64=('f184db9a04fbf0f1630afc51afb62e00fc567534836bafa1d1737aa530aa3762')
+sha256sums_aarch64=('3c29ccb76c1b675d29591834353d2bfcffe63c2b0438048b55c246d6d1085ed0')
 
 package() {
     cd "runa-linux-$CARCH-gnu"
