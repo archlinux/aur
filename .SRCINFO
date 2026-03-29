@@ -1,7 +1,7 @@
 pkgbase = amitools
 	pkgdesc = Various tools for using AmigaOS programs on other platforms
-	pkgver = 0.8.0
-	pkgrel = 3
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = https://github.com/cnvogelg/amitools
 	arch = any
 	license = GPL-2.0-only
@@ -13,7 +13,7 @@ pkgbase = amitools
 	depends = python
 	depends = python-lhafile
 	optdepends = python-machine68k: cpu emulator for vamos
-	source = amitools-0.8.0.tar.gz::https://files.pythonhosted.org/packages/source/a/amitools/amitools-0.8.0.tar.gz
-	sha256sums = 3ddf1e145ae28990fa59d4e27728d877446cfc45b02c4807ddad31dcdb6bc4b7
+	source = amitools-0.8.1.tar.gz::https://files.pythonhosted.org/packages/source/a/amitools/amitools-0.8.1.tar.gz
+	sha256sums = f622c0725c15737e7d4820ed147f930f4cfb7b80b04c786c2bc3943b799faf7e
 
 pkgname = amitools
