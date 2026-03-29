@@ -12,7 +12,7 @@ depends=('boost-libs>=1.89.0')
 makedepends=('python' 'boost>=1.89.0' 'openssl')
 provides=('libsub')
 conflicts=('libsub')
-source=("${pkgname}-${pkgver}::git+git://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")
+source=("${pkgname}-${pkgver}::git+https://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('4328c8cc5c72bc5308f4dd16ef9596d79b63de09efc0fe2101268facd1ee269a')
 
 build() {
