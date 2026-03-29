@@ -1,0 +1,20 @@
+pkgbase = pearpass-bin
+	pkgdesc = PearPass is a distributed password manager powered by Pear Runtime. It allows secure storage of passwords, credit card details, and secure notes, with peer-to-peer syncing and end-to-end encryption.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://pass.pears.com/
+	arch = x86_64
+	license = custom
+	depends = webkitgtk-6.0
+	provides = pearpass
+	noextract = PearPass-Desktop-Linux-x64-v1.5.0.AppImage
+	options = !strip
+	options = !debug
+	source = PearPass-Desktop-Linux-x64-v1.5.0.AppImage::https://github.com/tetherto/pearpass-app-desktop/releases/download/v1.5.0/PearPass-Desktop-Linux-x64-v1.5.0.AppImage
+	source = pearpass.desktop
+	source = pearpass.png
+	sha256sums = f5b610be1d3ffa5d11a0db032fd5598923c73c0802a8e1ffaa9cf93e913ac1bd
+	sha256sums = f8c3f747b72779e0c287a43fe91bf2b80019d5f25b2d919ed9c35352b1fde2c2
+	sha256sums = 015273cf3a7402c34d37e49b16c7ed933298065e379a5dbcb484eb960f690bae
+
+pkgname = pearpass-bin

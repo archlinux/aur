@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=PearPass
+GenericName=Password Manager
+Comment=A secure, peer-to-peer and local password manager
+Exec=pearpass %U
+Terminal=false
+Type=Application
+Icon=pearpass
+StartupWMClass=PearPass
+X-AppImage-Version=1.5.0
+Categories=Utility;Security;
+MimeType=x-scheme-handler/pearpass;
+Keywords=password;manager;vault;credentials;security;encryption;sync;
