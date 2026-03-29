@@ -7,6 +7,9 @@ arch=('x86_64')
 url="https://scholaread.com"
 license=('custom')
 depends=('gtk3' 'nss' 'libxss' 'libxtst')
+optdepends=('libnotify: desktop notifications support'
+            'xdg-utils: open URLs in browser'
+            'libsecret: password storage support')
 source=("${pkgname}-${pkgver}.deb::https://cdn.scholaread.com/assets/pc-releases/${pkgver}/com/Scholaread-linux-amd64-${pkgver}.deb")
 sha256sums=('SKIP')
 

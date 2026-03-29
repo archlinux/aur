@@ -9,6 +9,9 @@ pkgbase = scholaread-bin
 	depends = nss
 	depends = libxss
 	depends = libxtst
+	optdepends = libnotify: desktop notifications support
+	optdepends = xdg-utils: open URLs in browser
+	optdepends = libsecret: password storage support
 	source = scholaread-bin-1.1.66.deb::https://cdn.scholaread.com/assets/pc-releases/1.1.66/com/Scholaread-linux-amd64-1.1.66.deb
 	sha256sums = SKIP
 
