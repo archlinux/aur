@@ -1,10 +1,14 @@
 pkgbase = jupyter-matlab_kernel
 	pkgdesc = A Jupyter kernel for Matlab
 	pkgver = 0.17.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Calysto/matlab_kernel
 	arch = any
 	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-wurlitzer>=1.0.2
 	depends = ipython>=4.0.0
 	depends = jupyter-metakernel>=0.23.0

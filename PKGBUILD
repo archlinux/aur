@@ -4,7 +4,7 @@
 _pypiname="matlab_kernel"
 pkgname="jupyter-${_pypiname}"
 pkgver=0.17.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Jupyter kernel for Matlab"
 arch=(
   'any'
@@ -21,6 +21,10 @@ depends=(
   'python-matlabengine'
 )
 makedepends=(
+  'python-build'
+  'python-setuptools'
+  'python-installer'
+  'python-wheel'
   'python-wurlitzer>=1.0.2'
 )
 # checkdepends=(
