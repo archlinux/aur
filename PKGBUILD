@@ -1,10 +1,10 @@
 # Maintainer: Erich Eckner <arch at eckner dot net>
 
-_nginxver=1.28.2
+_nginxver=1.28.3
 
 pkgname=nginx-mod-ipscrub
 pkgver=1.0.1
-pkgrel=30
+pkgrel=31
 pkgdesc='IP address anonymizer for nginx log files'
 
 arch=('i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h')
