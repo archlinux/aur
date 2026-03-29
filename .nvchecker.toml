@@ -1,0 +1,5 @@
+[gtg]
+source = 'github'
+github = 'getting-things-gnome/gtg'
+use_latest_release = true
+prefix = 'v'
