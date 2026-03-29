@@ -1,0 +1,11 @@
+pkgbase = ktop-bin
+	pkgdesc = A top-like tool for your Kubernetes cluster metrics
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/vladimirvivien/ktop
+	arch = x86_64
+	license = Apache-20
+	source = https://github.com/vladimirvivien/ktop/releases/download/v0.5.3/ktop_v0.5.3_linux_amd64.tar.gz
+	sha256sums = f8104e5d09bb764da014ba87e5f75c73f55a26b907e9699f43176848a33dbea6
+
+pkgname = ktop-bin
