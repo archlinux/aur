@@ -17,7 +17,7 @@ def fake_line():
     irq = random.randint(0, 255)
     ms = random.randint(1, 9999)
     us = random.randint(1, 999)
-    service = random.choice(['NetworkManager', 'systemd', 'UPower', 'polkit', 'bluetooth', 'avahi-daemon', 'cups', 'sshd', 'crond', 'dbus'])
+    service = random.choice(['NetworkManager', 'systemd', 'UPower', 'polkit', 'bluetooth', 'avahi-daemon', 'cups', 'sshd', 'crond', 'dbus', 'iwd'])
     device = random.choice(['/dev/sda', '/dev/nvme0n1', '/dev/mem', '/dev/null', '/dev/urandom', '/dev/tty0', '/dev/input/event0'])
     path = random.choice(['/proc/self/maps', '/sys/kernel/debug', '/var/log/journal', '/etc/ld.so.cache', '/run/systemd/private', '/sys/bus/pci/devices', '/etc/passwd', '/var/cache/pacman'])
     flags = random.choice(['O_RDONLY|O_CLOEXEC', 'O_RDWR|O_NONBLOCK', 'O_WRONLY|O_CREAT|O_TRUNC', 'O_RDONLY|O_NOFOLLOW'])
