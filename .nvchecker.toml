@@ -1,0 +1,4 @@
+[dq]
+source = 'github'
+github = 'janmojzis/dq'
+use_max_tag = true
