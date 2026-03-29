@@ -4,7 +4,7 @@
 # Service Author: Stefan Zipproth
 
 pkgname=ditana-koboldcpp
-pkgver=1.103
+pkgver=1.110
 pkgrel=1
 pkgdesc="A systemd service that runs KoboldCpp with the gemma language model locally, giving you AI chat privately on your PC."
 arch=('x86_64')
@@ -13,9 +13,6 @@ license=('AGPL-3.0-only')
 install=ditana-koboldcpp.install
 depends=(
     'blas-openblas'
-    'clblast'
-    'ocl-icd'
-    'intel-compute-runtime' # optional dependency of ocl-icd, providing opencl-driver'
     'python'
     'systemd'
     'vulkan-icd-loader'
@@ -24,9 +21,7 @@ depends=(
 )
 makedepends=(
     'blas-openblas'
-    'clblast'
     'coreutils'
-    'ocl-icd'
     'python'
     'vulkan-icd-loader'
     'gzip'
@@ -44,7 +39,7 @@ source=(
     'LICENSE'
 )
 sha256sums=(
-    '2c46e8cfd3a9855a711f0b792a7c4eb0469474a0289c6066b61ffd3d040d6436'
+    '9ce110cdb40027d5e4d150f8cfbbb6aaf3fc3fc64ba2bb5ae5181689489ac1f0'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -55,7 +50,7 @@ sha256sums=(
 
 build() {
     cd "$srcdir/koboldcpp-$pkgver"
-    make -j$(nproc) LLAMA_OPENBLAS=1 LLAMA_CLBLAST=1 LLAMA_VULKAN=1 LLAMA_PORTABLE=1
+    make -j$(nproc) LLAMA_OPENBLAS=1 LLAMA_VULKAN=1 LLAMA_PORTABLE=1
 }
 
 package() {

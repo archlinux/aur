@@ -4,5 +4,5 @@ Type=Link
 Name=KoboldCpp AI
 Comment=Start KoboldCpp AI
 Icon=koboldcpp
-URL=http://localhost:5001
+URL=https://lite.koboldai.net/?local=1&port=5001
 Categories=Office;
