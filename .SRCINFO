@@ -12,6 +12,9 @@ pkgbase = scholaread-bin
 	optdepends = libnotify: desktop notifications support
 	optdepends = xdg-utils: open URLs in browser
 	optdepends = libsecret: password storage support
+	optdepends = at-spi2-core: accessibility support
+	optdepends = util-linux-libs: UUID generation support
+	optdepends = libappindicator: system tray icon support
 	source = scholaread-bin-1.1.66.deb::https://cdn.scholaread.com/assets/pc-releases/1.1.66/com/Scholaread-linux-amd64-1.1.66.deb
 	sha256sums = SKIP
 

@@ -9,7 +9,10 @@ license=('custom')
 depends=('gtk3' 'nss' 'libxss' 'libxtst')
 optdepends=('libnotify: desktop notifications support'
             'xdg-utils: open URLs in browser'
-            'libsecret: password storage support')
+            'libsecret: password storage support'
+            'at-spi2-core: accessibility support'
+            'util-linux-libs: UUID generation support'
+            'libappindicator: system tray icon support')
 source=("${pkgname}-${pkgver}.deb::https://cdn.scholaread.com/assets/pc-releases/${pkgver}/com/Scholaread-linux-amd64-${pkgver}.deb")
 sha256sums=('SKIP')
 
