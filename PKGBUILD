@@ -90,7 +90,7 @@ source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$_pkgver
         qt6-base-cflags.patch
         qt6-base-nostrip.patch
         0005-low-timer.patch)
-sha256sums=('568e53ff276e8abe051c62269679886bb9efb56b6ac7949889ebe335e22e760f'
+sha256sums=('SKIP'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094'
             '12d836fdfafc221a93c2877d0537651e4cf8c200e4b2fdc1390165e2f3587109')
