@@ -1,0 +1,5 @@
+[volt-bin]
+source = "github"
+github = "frypan05/Volt"
+use_latest_release = true
+prefix = "v"
