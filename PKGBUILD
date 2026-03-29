@@ -1,11 +1,10 @@
 # Maintainer: miawgogo <aur@miawgogo.me>
-# PKGBUILD based on the pixelorama-git pkgbuild
 # snekstudio.sh and snekstudio.desktop from copygirl's snekstudio-bin
 
 pkgname=snekstudio-git
 _pkgname=snekstudio
-pkgver=369.ed4f624
-pkgrel=2
+pkgver=nightly.r0.ged4f624
+pkgrel=1
 pkgdesc="Open-source VTuber software using Godot Engine! "
 arch=('x86_64')
 url="https://snekstudio.com/"
@@ -28,26 +27,15 @@ sha512sums=(
   "b13efcef463599f7442c13609129bb1f85d792ff29474407b4edfba5898d0f3738226151c76920378356f6fc1eb6528f83efbf86c8e9d8d62d9fc9c4bd640ae2"
 )
 
-pkgver()
-{
-    cd "${_pkgname}"
-    echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  # Get Godot Engine version
-  _godot_version_full_string=$(godot --version | sed 's/.arch_linux.*//' )
-
-  _template_dir=~/.local/share/godot/export_templates/${_godot_version_full_string}
-
-  sed -i "s/enable_file_logging=true/enable_file_logging=false/" \
-         "${srcdir}/${_pkgname}/project.godot"
-  if [ ! -d "$_template_dir" ]; then
-    mkdir -p "$_template_dir"
-    cp -r /usr/share/godot/export_templates/"${_godot_version_full_string}"/* "$_template_dir"
-  fi
   cd "${srcdir}/${_pkgname}" 
-  # update the sub module for kiri's twitch addon
+
+  # update the sub module for kiri's twitch integration for godot
   git submodule init
   git config submodule.addons/TwitchGD4.url "$srcdir/TwitchGD4"
   git -c protocol.file.allow=always submodule update
@@ -57,7 +45,8 @@ build() {
   cd "${srcdir}/${_pkgname}"
   godot --headless --path . --import
   godot --headless --path . --script Build/DownloadPythonRequirements.gd # grabs all the python dependacies for build
-  godot --headless --path . --export-release "Linux-x86_$(getconf LONG_BIT)" build/${_pkgname}
+  # gaslight, gatekeep, girlboss about where the templates are so i can avoid copying stuff into the users home dir
+  XDG_DATA_HOME="/usr/share" godot --headless --path . --export-release "Linux-x86_$(getconf LONG_BIT)" build/${_pkgname}
 }
 
 package() {
@@ -67,6 +56,7 @@ package() {
   install -Dm644 "${srcdir}/${_pkgname}/LICENSE" \
                  "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
+  # These files are from the -bin verision of this package by copygirl
   install -Dm644 "$_pkgname".desktop "$pkgdir"/usr/share/applications/"$_pkgname".desktop
   install -Dm755 "$_pkgname".sh "$pkgdir"/usr/bin/"$_pkgname"
   
