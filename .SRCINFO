@@ -1,8 +1,9 @@
 pkgbase = stelliberty-bin
 	pkgdesc = Modern Clash/Mihomo 客户端的二进制发行版
 	pkgver = 1.2.272
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kindness-Kismet/Stelliberty
+	install = stelliberty-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = LicenseRef-Stelliberty
@@ -16,6 +17,7 @@ pkgbase = stelliberty-bin
 	depends = libdbusmenu-gtk3
 	depends = rsync
 	optdepends = xdg-utils: for xdg-open support
+	optdepends = polkit: for pkexec-based service installation from the UI
 	provides = stelliberty=1.2.272
 	conflicts = stelliberty
 	noextract = Stelliberty-v1.2.272-linux-x64.zip

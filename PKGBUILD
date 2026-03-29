@@ -2,14 +2,18 @@
 
 pkgname=stelliberty-bin
 pkgver=1.2.272
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern Clash/Mihomo 客户端的二进制发行版"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Kindness-Kismet/Stelliberty"
 license=('LicenseRef-Stelliberty')
+install=stelliberty-bin.install
 depends=('gtk3' 'libkeybinder3' 'nss' 'openssl' 'libappindicator-gtk3' 'libdbusmenu-gtk3' 'rsync')
 makedepends=('libarchive' 'patchelf')
-optdepends=('xdg-utils: for xdg-open support')
+optdepends=(
+  'xdg-utils: for xdg-open support'
+  'polkit: for pkexec-based service installation from the UI'
+)
 provides=("stelliberty=${pkgver}")
 conflicts=('stelliberty')
 options=('!strip')
@@ -45,6 +49,8 @@ package() {
 
   install -d "${_install_dir}"
   bsdtar -xf "${srcdir}/${_archive}" -C "${_install_dir}"
+  rm -f "${_install_dir}/data/.portable"
+  printf '%s\n' "${pkgver}-${pkgrel}" > "${_install_dir}/data/.package-sync-revision"
 
   while IFS= read -r -d '' _file; do
     _rpath="$(/usr/bin/patchelf --print-rpath "${_file}" 2>/dev/null || true)"
@@ -59,8 +65,13 @@ package() {
 
   chmod +x "${_install_dir}/stelliberty"
   chmod +x "${_install_dir}/data/flutter_assets/assets/service/stelliberty-service"
-  if [[ -f "${_install_dir}/data/flutter_assets/assets/clash-core/clash-core" ]]; then
-    chmod 755 "${_install_dir}/data/flutter_assets/assets/clash-core/clash-core"
+
+  local _clash_core="${_install_dir}/data/flutter_assets/assets/clash/clash-core"
+  if [[ -f "${_clash_core}" ]]; then
+    chmod 755 "${_clash_core}"
+  else
+    echo "Missing clash core: ${_clash_core}" >&2
+    return 1
   fi
 
   install -d "${pkgdir}/usr/bin"
@@ -69,12 +80,17 @@ package() {
 set -euo pipefail
 
 system_dir="/usr/lib/stelliberty"
-data_root="${XDG_DATA_HOME:-${HOME}/.local/share}/stelliberty"
+# Allow overriding the app data root when HOME/XDG_DATA_HOME contains unsupported characters.
+data_root="${STELLIBERTY_DATA_ROOT:-${XDG_DATA_HOME:-${HOME}/.local/share}/stelliberty}"
 user_dir="${data_root}/app"
 
 ensure_exec() {
   local file="$1"
-  if [[ -f "${file}" && ! -x "${file}" ]]; then
+  if [[ ! -f "${file}" ]]; then
+    printf 'stelliberty: required file not found: %s\n' "${file}" >&2
+    exit 1
+  fi
+  if [[ ! -x "${file}" ]]; then
     chmod 755 "${file}"
   fi
 }
@@ -86,25 +102,53 @@ version_of() {
   fi
 }
 
+token_of() {
+  local file="$1"
+  if [[ -r "$file" ]]; then
+    head -n1 "$file"
+  fi
+}
+
 sync_app() {
   install -d "${user_dir}"
-  rsync -a --delete \
-    --exclude 'data/subscriptions' \
-    --exclude 'data/subscriptions/***' \
-    --exclude 'data/overrides' \
-    --exclude 'data/overrides/***' \
-    --exclude 'data/running.logs*' \
-    "${system_dir}/" "${user_dir}/"
+
+  local -a preserve_patterns=(
+    'data/subscriptions'
+    'data/subscriptions/***'
+    'data/subscriptions_list.json'
+    'data/overrides'
+    'data/overrides/***'
+    'data/overrides_list.json'
+    'data/image_cache'
+    'data/image_cache/***'
+    'data/dns_config.yaml'
+    'data/stelliberty_proxy.pac'
+    'data/settings_preferences.json'
+    'data/settings_preferences_dev.json'
+    'data/running.logs*'
+    'data/runtime'
+    'data/runtime/***'
+  )
+
+  local -a rsync_args=(-a --delete)
+  local pattern
+  for pattern in "${preserve_patterns[@]}"; do
+    rsync_args+=(--exclude "${pattern}")
+  done
+
+  rsync "${rsync_args[@]}" "${system_dir}/" "${user_dir}/"
 }
 
 sys_ver="$(version_of "${system_dir}/data/flutter_assets/version.json")"
 usr_ver="$(version_of "${user_dir}/data/flutter_assets/version.json")"
+sys_sync_revision="$(token_of "${system_dir}/data/.package-sync-revision")"
+usr_sync_revision="$(token_of "${user_dir}/data/.package-sync-revision")"
 
-if [[ "${usr_ver:-}" != "${sys_ver:-}" ]]; then
+if [[ "${usr_ver:-}" != "${sys_ver:-}" || "${usr_sync_revision:-}" != "${sys_sync_revision:-}" ]]; then
   sync_app
 fi
 ensure_exec "${user_dir}/stelliberty"
-ensure_exec "${user_dir}/data/flutter_assets/assets/clash-core/clash-core"
+ensure_exec "${user_dir}/data/flutter_assets/assets/clash/clash-core"
 ensure_exec "${user_dir}/data/flutter_assets/assets/service/stelliberty-service"
 
 backend="${GDK_BACKEND:-}"

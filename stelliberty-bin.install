@@ -1,0 +1,19 @@
+post_install() {
+  cat <<'EOM'
+stelliberty-bin 已安装。
+
+- 如需在应用 UI 中安装 Stelliberty service，请先安装 polkit。
+- 如果 HOME 或 XDG_DATA_HOME 路径包含中文或其他非 ASCII 字符，可设置 STELLIBERTY_DATA_ROOT 到纯 ASCII 目录后再启动。
+EOM
+}
+
+post_upgrade() {
+  cat <<'EOM'
+stelliberty-bin 已升级。
+
+- 本版本起不再保留 upstream ZIP 的 .portable 标记，避免被应用误判为便携版。
+- 如需让新的包同步策略生效，请重启 Stelliberty。
+- 如需在应用 UI 中安装 Stelliberty service，请先安装 polkit。
+- 如果 HOME 或 XDG_DATA_HOME 路径包含中文或其他非 ASCII 字符，可设置 STELLIBERTY_DATA_ROOT 到纯 ASCII 目录后再启动。
+EOM
+}
