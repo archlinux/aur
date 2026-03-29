@@ -1,6 +1,6 @@
 pkgbase = gridix-appimage
 	pkgdesc = 简洁、快速、安全的跨平台数据库管理工具，Helix/Vim 风格键位 (AppImage)
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/MCB-SMART-BOY/Gridix
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = gridix-appimage
 	conflicts = gridix
 	conflicts = gridix-bin
 	options = !strip
-	source = gridix-3.3.0.AppImage::https://github.com/MCB-SMART-BOY/Gridix/releases/download/v3.3.0/gridix.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/v3.3.0/LICENSE
-	sha256sums = 9c9362500798df7637b307e8542341fd7761daeefaa69a7128ecea5d78cb38fe
+	source = gridix-3.3.1.AppImage::https://github.com/MCB-SMART-BOY/Gridix/releases/download/v3.3.1/gridix.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/v3.3.1/LICENSE
+	sha256sums = 25cfba1eabd2213d8ea3610e02bb13f6dcc03c786eb249f718110399bb1f7eaf
 	sha256sums = 01132d0ac431cc5a8f34ea8ba055deb6f68d7034d8ed6f821b827f4b9195aae4
 
 pkgname = gridix-appimage
