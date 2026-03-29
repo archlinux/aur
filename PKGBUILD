@@ -8,8 +8,8 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.10.0
-pkgrel=4
+pkgver=2.11.0
+pkgrel=1
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 arch=('x86_64')
 url="https://pytorch.org"
@@ -121,7 +121,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         pyproject.patch
         fix_pybind11.patch
         )
-b2sums=('d292c6f62caf0076be25eda28311fe7a7f93fe3e7e2a2ea5f0f794818d2012fd0fba45fa4094e03d1640797ecc1c1a5487349f788db0f74e50e7561754ba8988'
+b2sums=('995a6fb3164db61d67e877c1b38a3786b75066943f1b9d01b458796124f0183b023548f9839abef5a272a229b6d9969933bdf19072ab50b9eb656e2aebfbb471'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -166,7 +166,7 @@ b2sums=('d292c6f62caf0076be25eda28311fe7a7f93fe3e7e2a2ea5f0f794818d2012fd0fba45f
         'eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980'
         '007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
-        '32ae3f8b7602bad8b76e418857e843e700134b93832d6166dfead944cf8c3225a8d254cdf8ba9cc2807b08c53c27d6d72f738ef285f280ab87e0f246bf45e8f5'
+        'd90497368441b9148977fa093ac81251d0ed9583ccf8a4e0e4457f471e8b15c53bc98bd47c44878c24932e8f60791e9b2d77cd7694949ba0b5d912ea7274f694'
         '1fcd8326343b3318eb6475fbd11cd3d28a826627206d55ac95dc13af78946b2bcadc3b0f5be965a33f24c7bb1de62706f256894449fa93604d064c90158ce1e1')
 options=('!lto' '!debug')
 
@@ -238,15 +238,6 @@ prepare() {
   # If using prebuilt aotriton, pytorch attempts to copy /usr/lib and /user/include
   # into the torch folder. Disable this behavior.
   patch -p1 -i "${srcdir}/aotriton_disable_install.patch"
-
-  # Fix build with CUDA 13 (CCCL headers path changed)
-  sed -i 's|${CUDA_TOOLKIT_INCLUDE}|${CUDA_TOOLKIT_INCLUDE}/cccl|' cmake/Modules/FindCUB.cmake
-
-  # Update flash-attention module for CUDA 13
-  # https://github.com/Dao-AILab/flash-attention/commit/dfb664994c1e5056961c90d5e4f70bf7acc8af10
-  cd third_party/flash-attention
-  git checkout dfb664994c1e5056961c90d5e4f70bf7acc8af10
-  cd ../..
 
   # Fix building with pybind11 3.0.2
   # (https://github.com/pybind/pybind11/pull/5881 added typing for py::make_tuple
@@ -332,8 +323,9 @@ _prepare() {
   # Fix build issues for onnx with cmake 4.0
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
-  # Fix ROCm build with glog (these macros are defined in /usr/lib/cmake/glog/glog-targets.cmake but for some reason
-  # this target is not applied when building some *.hip files)
+  # Fix CUDA and ROCm builds with glog (these macros are defined in /usr/lib/cmake/glog/glog-targets.cmake
+  # but for some reason this target is not applied when building some *.cu and *.hip files)
+  export NVCC_APPEND_FLAGS="-DGLOG_USE_GLOG_EXPORT -DGLOG_USE_GFLAGS"
   HIPCC_COMPILE_FLAGS_APPEND+=" -DGLOG_USE_GLOG_EXPORT -DGLOG_USE_GFLAGS"
 }
 
