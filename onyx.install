@@ -1,0 +1,31 @@
+post_install() {
+    # Create system user if it doesn't exist
+    if ! id -u onyx &>/dev/null; then
+        useradd --system --no-create-home --shell /usr/bin/nologin onyx
+    fi
+    install -dm750 -o onyx -g onyx /etc/onyx
+
+    systemd-sysusers 2>/dev/null || true
+    systemctl daemon-reload
+
+    echo ""
+    echo "  Onyx installed. Run 'onyx setup' then 'systemctl enable --now onyx'."
+    echo ""
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    if systemctl is-active --quiet onyx; then
+        systemctl restart onyx
+        echo "  Onyx service restarted."
+    fi
+}
+
+pre_remove() {
+    if systemctl is-active --quiet onyx; then
+        systemctl stop onyx
+    fi
+    if systemctl is-enabled --quiet onyx; then
+        systemctl disable onyx
+    fi
+}

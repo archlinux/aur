@@ -1,28 +1,43 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Elchi-dev <https://github.com/Elchi-dev>
+# AUR package for Onyx — modular reverse proxy with a live dashboard
+# https://aur.archlinux.org/packages/onyx
 
 pkgname=onyx
-pkgver=0.4.2
-pkgrel=3
-pkgdesc='Decentralized messaging application based on PSS'
-arch=(any)
-url='https://mainframe.com'
-license=(MIT)
-depends=(yarn)
-makedepends=(libicns)
-conflicts=(onyx-bin)
-options=(!strip)
-source=(https://github.com/MainframeHQ/onyx/archive/v$pkgver.zip)
-sha512sums=(0c169df9d0e29677dc7621b5ffeee78d9ba41243e0122d4116bec93245f04be498208752e2432779f62f3c9ff551019cb436247cc34e9ea078cea1992f72e194)
+pkgver=0.1.1
+pkgrel=1
+pkgdesc="Modular reverse proxy with a live WebSocket dashboard"
+arch=('x86_64' 'aarch64')
+url="https://github.com/Elchi-dev/onyx"
+license=('MIT')
+depends=()
+makedepends=('go')
+backup=('etc/onyx/onyx.toml')
+install=onyx.install
+
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Elchi-dev/onyx/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-  cd $srcdir/onyx-$pkgver
-  yarn
-  yarn build:binaries
-  yarn dist
+    cd "${pkgname}-${pkgver}"
+    export CGO_ENABLED=0
+    go build -ldflags "-s -w -X main.version=v${pkgver}" -o onyx ./cmd/onyx
 }
 
 package() {
-  cd $srcdir/onyx-$pkgver
-  install -Dm 755 dist/Mainframe\ Alpha.AppImage $pkgdir/usr/bin/onyx
-  install -Dm 644 LICENSE $pkgdir/usr/share/licenses/onyx/LICENSE
+    cd "${pkgname}-${pkgver}"
+
+    # Binary
+    install -Dm755 onyx "${pkgdir}/usr/bin/onyx"
+
+    # Systemd service
+    install -Dm644 onyx.service "${pkgdir}/usr/lib/systemd/system/onyx.service"
+
+    # Example config
+    install -Dm644 onyx.example.toml "${pkgdir}/etc/onyx/onyx.example.toml"
+
+    # License
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # Docs
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
