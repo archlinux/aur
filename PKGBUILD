@@ -1,6 +1,6 @@
 # Maintainer: Xuruh <xuruh@tuta.io>
 pkgname=fluxer-world-bin
-pkgver=1.0.26
+pkgver=1.0.27
 pkgrel=1
 pkgdesc="Fluxer World desktop client — open-source chat, voice, and community platform"
 arch=('x86_64')
@@ -14,13 +14,13 @@ optdepends=(
 provides=('fluxer-world')
 conflicts=('fluxer-world')
 options=('!strip' '!debug')
-source=("fluxer-world-${pkgver}-linux-x64.tar.gz::https://github.com/fluxerworld/fluxerworld/releases/download/v${pkgver}/Fluxer.World-1.0.0-linux-x64.tar.gz")
-sha256sums=('fbffa217f1b74c6c71d373a7c5184a84eca82f2d9132ce5e85a2de477e6886f8')
+source=("fluxer-world-${pkgver}-linux-x64.tar.gz::https://github.com/fluxerworld/fluxerworld/releases/download/v${pkgver}/Fluxer.World-${pkgver}-linux-x64.tar.gz")
+sha256sums=('e4effb29a82f3983b40463dd1b889a11d9ef7155bdf0ed70f37c811a507785f4')
 
 package() {
-    # Install app files (tar.gz extracts to "Fluxer World-1.0.0-linux-x64/")
+    # Install app files (tar.gz extracts to "Fluxer World-${pkgver}-linux-x64/")
     install -dm 755 "${pkgdir}/opt/fluxer-world"
-    cp -r "${srcdir}/Fluxer World-1.0.0-linux-x64/"* "${pkgdir}/opt/fluxer-world/"
+    cp -r "${srcdir}/Fluxer World-${pkgver}-linux-x64/"* "${pkgdir}/opt/fluxer-world/"
 
     # Make the main binary executable
     chmod 755 "${pkgdir}/opt/fluxer-world/fluxer-world"
@@ -52,9 +52,11 @@ Icon=org.fluxer.World
 Terminal=false
 Type=Application
 Categories=Network;InstantMessaging;Chat;
-StartupWMClass=org.fluxer.World
+StartupWMClass=Fluxer World
 MimeType=x-scheme-handler/fluxerworld;
 EOF
+    # KDE Wayland uses the window's app_id ("Fluxer World") to find the desktop file
+    ln -s org.fluxer.World.desktop "${pkgdir}/usr/share/applications/Fluxer World.desktop"
 
     # Icons
     local icon_src="${pkgdir}/opt/fluxer-world/resources/assets/icons"
