@@ -1,0 +1,17 @@
+pkgbase = pindock-bin
+	pkgdesc = Pin and update Docker image digests in Dockerfiles and compose files
+	pkgver = 1.0.0_alpha.6
+	pkgrel = 1
+	url = https://github.com/deadnews/pindock
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pindock
+	conflicts = pindock
+	options = !strip
+	source_x86_64 = pindock_1.0.0-alpha.6_linux_amd64.tar.gz::https://github.com/deadnews/pindock/releases/download/v1.0.0-alpha.6/pindock_1.0.0-alpha.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 12b3dcce92682478763d34368cf0b2b4962efc1ebdef25e77b301a1f7696ddd0
+	source_aarch64 = pindock_1.0.0-alpha.6_linux_arm64.tar.gz::https://github.com/deadnews/pindock/releases/download/v1.0.0-alpha.6/pindock_1.0.0-alpha.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7ead875a0e6cda898e8cfe56b90b3ff42312e731e85d4e45ee481a7d7567072f
+
+pkgname = pindock-bin
