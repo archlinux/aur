@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r76521.fd46ade2a25
+pkgver=r76522.fd3a09a8ce9
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -16,6 +16,7 @@ depends=(
   curl
   fast_float
   ffmpeg
+  fmt
   harfbuzz
   icu
   libavif
@@ -62,7 +63,9 @@ prepare() {
 build() {
   cd "${srcdir}"
 
-  export PKG_CONFIG_PATH=$(realpath .)
+  export PKG_CONFIG_PATH="$(realpath .)"
+  unset CARGO_TARGET_DIR
+  export RUSTUP_TOOLCHAIN=stable
 
   cmake \
     -B build \
