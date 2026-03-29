@@ -1,6 +1,6 @@
 # Maintainer: Daniël Nazarkin <aur.danicatgames@pm.me>
 pkgname=wifitui
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Fast featureful friendly wifi terminal UI"
 arch=("aarch64" "x86_64")
@@ -9,7 +9,7 @@ license=("MIT")
 depends=("glibc")
 makedepends=("go")
 source=("$pkgname-$pkgver::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f3fb64564fd5cd896a16aa36b8214733c88344e6154a63d37357dd9ecbeebece')
+sha256sums=('9d049ddba951d226648ae5778b8609102298aec085eb85aa60f712ef37cb1116')
 
 build() {
   cd "$pkgname-$pkgver"
