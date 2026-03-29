@@ -1,12 +1,12 @@
 # Maintainer: Julian Houba <info at craftingdragon dot ch>
 pkgname='caqtdm-git'
-pkgver=4.6.0+3196eeb0
+pkgver=4.6.0+866ba31c
 pkgrel=1
 pkgdesc="caQtDM is a popular Epics framework for developing panels"
 arch=('any')
 url="http://caqtdm.github.io/"
 license=('GPL-3.0-or-later')
-depends=('qt6-base' 'qt6-tools' 'qwt-qt6' 'epics-base' 'zeromq' 'python' 'bash' 'glibc' 'gcc-libs')
+depends=('qt6-base' 'qt6-tools' 'qwt' 'epics-base' 'zeromq' 'python' 'bash' 'glibc' 'gcc-libs')
 makedepends=('patch' 'make' 'gcc' 'git' 'qt6-5compat')
 conflicts=('caqtdm')
 provides=('caqtdm')
@@ -26,8 +26,8 @@ pkgver() {
 prepare() {
     # Write environment variables to env_config.sh
     cat > "${srcdir}/env_config.sh" << 'EOF'
-export QWTLIBNAME=qwt-qt6
-export QWTINCLUDE=/usr/include/qwt-qt6
+export QWTLIBNAME=qwt
+export QWTINCLUDE=/usr/include/qwt
 export EPICS_BASE=/usr/lib/epics
 export PYTHONVERSION=$(python --version 2>&1 | cut -d ' ' -f 2 | cut -d '.' -f 1-2)
 export ZMQ=/usr
