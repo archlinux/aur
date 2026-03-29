@@ -1,0 +1,14 @@
+pkgbase = tofu
+	pkgdesc = Offline, encrypted TOTP manager for the terminal. Trust On First Use.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/Thecloudff7/tofu
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	depends = dotnet-runtime-10.0
+	conflicts = tofu-bin
+	source = tofu-0.0.3.tar.gz::https://github.com/Thecloudff7/tofu/archive/refs/tags/v0.0.3.tar.gz
+	sha256sums = 7ad24f587619f0c7627753535cb89ac9088aa07b2b3ebf968bfeceaa6e685744
+
+pkgname = tofu
