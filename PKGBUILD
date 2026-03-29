@@ -1,4 +1,4 @@
-# Maintainer: diplomat <diplomat@example.com>
+# Maintainer: diplomat
 
 pkgname=open-webui
 pkgver=0.8.12
