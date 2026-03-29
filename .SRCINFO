@@ -1,0 +1,21 @@
+pkgbase = icey-server
+	pkgdesc = Self-hosted source-to-browser server built on icey
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/nilstate/icey-cli
+	arch = x86_64
+	license = AGPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pkgconf
+	depends = ffmpeg
+	depends = openssl
+	source = icey-cli-0.1.1.tar.gz::https://github.com/nilstate/icey-cli/releases/download/v0.1.1/icey-cli-0.1.1-source.tar.gz
+	source = icey-2.4.0.tar.gz::https://github.com/nilstate/icey-cli/releases/download/v0.1.1/icey-2.4.0-source.tar.gz
+	sha256sums = dd21750dfec9f0304477f3f0124d6cf2ec018b3c701b931439f5ef1acfc21cdd
+	sha256sums = 3fb3be6fe83685a22c7bf92a193fbe3416af9822cfa0f061cba571f4de620848
+
+pkgname = icey-server
