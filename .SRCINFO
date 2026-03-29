@@ -1,6 +1,6 @@
 pkgbase = pacpak-git
 	pkgdesc = manage your flatpaks with this pacman wrapper
-	pkgver = 0.1.0.r0.g9b8dabc
+	pkgver = 0.1.0.r3.g26d0be7
 	pkgrel = 1
 	url = https://github.com/egnrse/pacpak
 	arch = x86_64

@@ -1,7 +1,7 @@
-# Maintainer: Elia Nitsche <nitscheelia at gmail.com>
+# Maintainer: Elia Nitsche <nitscheelia at gmail dot com>
 pkgname="pacpak-git"
 _pkgname=${pkgname%-git}
-pkgver=0.1.0.r1.g7bf9fbd
+pkgver=0.1.0.r3.g26d0be7
 pkgrel=1
 pkgdesc="manage your flatpaks with this pacman wrapper"
 arch=("x86_64")
