@@ -5,32 +5,10 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
-# Export the variable matching your GPU, then run makepkg:
-#   CUDA_ARCH=sm_120 makepkg -si
-#
-# Architecture      Compute Cap.  GPUs
-# ─────────────────────────────────────────────────────────────────────────────
-# sm_121            12.1          GB10 (DGX Spark)
-# sm_120            12.0          GeForce RTX 5090/5080/5070/5060/5050,
-#                                 RTX PRO 6000/5000/4500/4000/2000 Blackwell
-# sm_103            10.3          GB300, B300 (data center)
-# sm_100            10.0          GB200, B200 (data center)
-# sm_90             9.0           H100, H200, GH200 (data center)
-# sm_89             8.9           GeForce RTX 4090/4080/4070/4060/4050,
-#                                 RTX 6000/5000/4500/4000 Ada, L4, L40, L40S
-# sm_87             8.7           Jetson AGX Orin, Orin NX, Orin Nano
-# sm_86             8.6           GeForce RTX 3090/3080/3070/3060/3050,
-#                                 RTX A6000/A5000/A4000/A3000/A2000, A40, A10
-# sm_80             8.0           A100, A30 (data center)
-# sm_75             7.5           GeForce RTX 2080/2070/2060, GTX 1650 Ti, T4
-#
-# Reference: https://developer.nvidia.com/cuda-gpus
-_cuda_arch="${CUDA_ARCH:-}"
-
 pkgname=ffmpeg-whisper
 pkgver=8.1
-pkgrel=2
-pkgdesc='Complete solution to record, convert and stream audio and video, with CUDA whipser'
+pkgrel=3
+pkgdesc='Complete solution to record, convert and stream audio and video, with vulkan whisper'
 arch=(x86_64)
 url=https://ffmpeg.org
 license=(GPL-3.0-only)
@@ -107,13 +85,12 @@ depends=(
   zeromq
   zimg
   zlib
-  whisper.cpp-cuda
+  whisper.cpp
 )
 makedepends=(
   amf-headers
   avisynthplus
   clang
-  ffnvcodec-headers
   frei0r-plugins
   git
   ladspa
@@ -121,14 +98,13 @@ makedepends=(
   nasm
   opencl-headers
   vulkan-headers
-  whisper.cpp-cuda
+  whisper.cpp
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
   'frei0r-plugins: Frei0r video effects support'
   'intel-media-sdk: Intel QuickSync support (legacy)'
   'ladspa: LADSPA filters'
-  'nvidia-utils: Nvidia NVDEC/NVENC support'
   'onevpl-intel-gpu: Intel QuickSync support'
 )
 provides=(
@@ -154,31 +130,6 @@ validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <m
 prepare() {
   cd ffmpeg
 
-  if [[ -z "$_cuda_arch" ]]; then
-    cat <<EOF
-
-ERROR: CUDA_ARCH is not set. You must specify your GPU architecture.
-       Set it before running makepkg, for example:
-
-       CUDA_ARCH=sm_120 makepkg -si
-
-  sm_121  → GB10 (DGX Spark)
-  sm_120  → GeForce RTX 5090/5080/5070/5060/5050, RTX PRO Blackwell
-  sm_103  → GB300, B300 (data center)
-  sm_100  → GB200, B200 (data center)
-  sm_90   → H100, H200, GH200
-  sm_89   → GeForce RTX 4090/4080/4070/4060/4050, Ada, L4, L40S
-  sm_87   → Jetson AGX Orin, Orin NX, Orin Nano
-  sm_86   → GeForce RTX 3090/3080/3070/3060/3050, RTX A-series, A40
-  sm_80   → A100, A30 (data center)
-  sm_75   → GeForce RTX 2080/2070/2060, GTX 1650 Ti, T4
-
-  See: https://developer.nvidia.com/cuda-gpus
-
-EOF
-    return 1
-  fi
-
   # https://crbug.com/1251779
   git apply -3 ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
 }
@@ -189,31 +140,7 @@ pkgver() {
 }
 
 build() {
-  if [[ -z "$_cuda_arch" ]]; then
-    echo ""
-    echo "ERROR: CUDA_ARCH is not set. You must specify your GPU architecture."
-    echo "       Set it before running makepkg, for example:"
-    echo ""
-    echo "         CUDA_ARCH=sm_120 makepkg -si"
-    echo ""
-    echo "  sm_121  → GB10 (DGX Spark)"
-    echo "  sm_120  → GeForce RTX 5090/5080/5070/5060/5050, RTX PRO Blackwell"
-    echo "  sm_103  → GB300, B300 (data center)"
-    echo "  sm_100  → GB200, B200 (data center)"
-    echo "  sm_90   → H100, H200, GH200"
-    echo "  sm_89   → GeForce RTX 4090/4080/4070/4060/4050, Ada, L4, L40S"
-    echo "  sm_87   → Jetson AGX Orin, Orin NX, Orin Nano"
-    echo "  sm_86   → GeForce RTX 3090/3080/3070/3060/3050, RTX A-series, A40"
-    echo "  sm_80   → A100, A30 (data center)"
-    echo "  sm_75   → GeForce RTX 2080/2070/2060, GTX 1650 Ti, T4"
-    echo ""
-    echo "  See: https://developer.nvidia.com/cuda-gpus"
-    echo ""
-    return 1
-  fi
-
   export PKG_CONFIG_PATH='/usr/lib/mbedtls2/pkgconfig:/usr/lib/pkgconfig'
-  export LIBRARY_PATH="/opt/cuda/lib64${LIBRARY_PATH:+:${LIBRARY_PATH}}"
   cd ffmpeg
   ./configure \
     --prefix=/usr \
@@ -222,7 +149,6 @@ build() {
     --disable-stripping \
     --enable-amf \
     --enable-avisynth \
-    --enable-cuda-llvm \
     --enable-lto \
     --enable-fontconfig \
     --enable-frei0r \
@@ -280,17 +206,13 @@ build() {
     --enable-libxvid \
     --enable-libzimg \
     --enable-libzmq \
-    --enable-nvdec \
-    --enable-nvenc \
-    --enable-cuvid \
     --enable-opencl \
     --enable-opengl \
     --enable-shared \
     --enable-vapoursynth \
     --enable-version3 \
     --enable-vulkan \
-    --enable-whisper \
-    --nvccflags="--cuda-gpu-arch=${_cuda_arch} -O3"
+    --enable-whisper
   make
   make tools/qt-faststart
   make doc/ff{mpeg,play}.1
