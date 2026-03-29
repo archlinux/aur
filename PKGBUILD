@@ -11,13 +11,14 @@
 pkgname='omnetpp'
 pkgver=6.3.0
 _pkgver=6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Component-based simulation package designed for modeling communication networks'
 arch=('x86_64')
 url='http://www.omnetpp.org'
 license=('Academic Public License')
 depends=('libxml2'
-         'qt5-base'
+         'qt6-base'
+         'qt6-svg'
          'tcl'
          'jdk-openjdk'
          'openmpi'
