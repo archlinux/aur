@@ -11,6 +11,6 @@ pkgbase = qbtctl-bin
 	noextract = qbtctl
 	options = !debug
 	source = https://github.com/creptic/qbtctl/releases/download/1.5.1/qbtctl
-	sha256sums = 7ca9790df1b1f146069b1740f0e1dcb3a312ce7d723ee8b06904b5caef21c318
+	sha256sums = fe90c64a7778db56c16162319dbea9ce790d9e7f9eea9571cd05e6170810c8e7
 
 pkgname = qbtctl-bin
