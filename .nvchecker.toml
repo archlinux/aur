@@ -1,0 +1,5 @@
+[tcpulse-bin]
+source = "github"
+github = "yuuki/tcpulse"
+use_latest_release = true
+prefix = "v"
