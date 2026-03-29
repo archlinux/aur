@@ -11,7 +11,7 @@ pkgbase = s-console
 	depends = gtk3
 	depends = vte3
 	depends = fastfetch
-	source = git+https://github.com.git
+	source = s-console::git+https://github.com
 	sha256sums = SKIP
 
 pkgname = s-console

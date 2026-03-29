@@ -10,7 +10,8 @@ depends=('gtk3' 'vte3' 'fastfetch')
 makedepends=('gcc' 'pkg-config' 'git')
 
 # KRİTİK DEĞİŞİKLİK: Yerel dosya yerine GITHUB reponu ekledik
-source=("git+https://github.com.git")
+# PKGBUILD içindeki source satırı tam olarak bu olmalı:
+source=("s-console::git+https://github.com")
 sha256sums=('SKIP')
 
 build() {
