@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 depends=('libxml++2.6' 'xmlsec' 'imagemagick' 'libharu>=2.4.5'  'openjpeg2>=2.5' 'libcxml>=0.17.15' 'libsigc++>=2.0' 'boost-libs>=1.89.0' 'xerces-c'  'libasdcp-cth>=1.0.8')
 makedepends=('git' 'python' 'boost>=1.89.0' 'gcc' 'pkg-config' 'fast_float>=7.0')
 _cherrypicks=()
-source=("${pkgname}-${pkgver}::git+git://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")
+source=("${pkgname}-${pkgver}::git+https://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('c34ab45474aa814e0503c2f56ae6e5134a97c546290184976dc628029c93ec81')
 
 prepare() {

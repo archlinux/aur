@@ -22,7 +22,7 @@ pkgbase = libdcp
 	depends = boost-libs>=1.89.0
 	depends = xerces-c
 	depends = libasdcp-cth>=1.0.8
-	source = libdcp-1.10.48::git+git://git.carlh.net/git/libdcp.git#tag=v1.10.48
+	source = libdcp-1.10.48::git+https://git.carlh.net/git/libdcp.git#tag=v1.10.48
 	sha256sums = c34ab45474aa814e0503c2f56ae6e5134a97c546290184976dc628029c93ec81
 
 pkgname = libdcp
