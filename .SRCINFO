@@ -1,0 +1,35 @@
+pkgbase = zrok2
+	pkgdesc = zrok is a next-generation sharing platform, designed to make sharing network and file resources simple and secure.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://zrok.io
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = npm
+	makedepends = go
+	depends = glibc
+	source = zrok2-2.0.0.tar.gz::https://github.com/openziti/zrok/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = a13fc6febd1e51a8947b3bef84ddfa653cc42eb6b5c435ef5f7e78a548d7c1bd
+
+pkgname = zrok2
+
+pkgname = zrok2-agent
+	pkgdesc = This package provides zrok2-agent.service.
+	depends = zrok2
+	depends = bash
+
+pkgname = zrok2-controller
+	pkgdesc = This package provides zrok2-controller.service.
+	depends = zrok2
+	depends = bash
+
+pkgname = zrok2-frontend
+	pkgdesc = This package provides zrok-share.service.
+	depends = zrok2
+	depends = bash
+
+pkgname = zrok2-metrics-bridge
+	pkgdesc = This package provides zrok-share.service.
+	depends = zrok2
+	depends = zrok2-controller
+	depends = bash
