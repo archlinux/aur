@@ -131,6 +131,15 @@ package() {
     # Install include files and docs
     cp $srcdir/caqtdm/caQtDM_QtControls/src/*.h     $pkgdir/usr/include/caqtdm
 
+    # find caQtDM_QtControls/src/ -type f ! -name "*.*" ! -name "mdaLICENSE" -printf "    cp \$srcdir/caqtdm/caQtDM_QtControls/src/%P   \$pkgdir/usr/include/caqtdm\n"
+    cp $srcdir/caqtdm/caQtDM_QtControls/src/EApplyButton   $pkgdir/usr/include/caqtdm
+    cp $srcdir/caqtdm/caQtDM_QtControls/src/EArrow   $pkgdir/usr/include/caqtdm
+    cp $srcdir/caqtdm/caQtDM_QtControls/src/EFlag   $pkgdir/usr/include/caqtdm
+    cp $srcdir/caqtdm/caQtDM_QtControls/src/EGauge   $pkgdir/usr/include/caqtdm
+    cp $srcdir/caqtdm/caQtDM_QtControls/src/ELabel   $pkgdir/usr/include/caqtdm
+    cp $srcdir/caqtdm/caQtDM_QtControls/src/ESimpleLabel   $pkgdir/usr/include/caqtdm
+    cp $srcdir/caqtdm/caQtDM_QtControls/src/EStyleLoader   $pkgdir/usr/include/caqtdm
+    cp $srcdir/caqtdm/caQtDM_QtControls/src/EWidget   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caApplyNumeric   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caBitnames   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caByte   $pkgdir/usr/include/caqtdm
@@ -150,6 +159,10 @@ package() {
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caMimeDisplay   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caMultiLineString   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caNumeric   $pkgdir/usr/include/caqtdm
+    cp $srcdir/caqtdm/caQtDM_QtControls/src/caRelatedDisplay   $pkgdir/usr/include/caqtdm
+    cp $srcdir/caqtdm/caQtDM_QtControls/src/caReplaceMacro   $pkgdir/usr/include/caqtdm
+    cp $srcdir/caqtdm/caQtDM_QtControls/src/caScan2D   $pkgdir/usr/include/caqtdm
+    cp $srcdir/caqtdm/caQtDM_QtControls/src/caShellCommand   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caSlider   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caSpinbox   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caStripPlot   $pkgdir/usr/include/caqtdm
@@ -157,14 +170,8 @@ package() {
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caThermo   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caToggleButton   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/caWaterfallPlot   $pkgdir/usr/include/caqtdm
-    cp $srcdir/caqtdm/caQtDM_QtControls/src/EApplyButton   $pkgdir/usr/include/caqtdm
-    cp $srcdir/caqtdm/caQtDM_QtControls/src/EArrow   $pkgdir/usr/include/caqtdm
-    cp $srcdir/caqtdm/caQtDM_QtControls/src/EFlag   $pkgdir/usr/include/caqtdm
-    cp $srcdir/caqtdm/caQtDM_QtControls/src/EGauge   $pkgdir/usr/include/caqtdm
-    cp $srcdir/caqtdm/caQtDM_QtControls/src/ELabel   $pkgdir/usr/include/caqtdm
-    cp $srcdir/caqtdm/caQtDM_QtControls/src/ESimpleLabel   $pkgdir/usr/include/caqtdm
-    cp $srcdir/caqtdm/caQtDM_QtControls/src/EWidget   $pkgdir/usr/include/caqtdm
     cp $srcdir/caqtdm/caQtDM_QtControls/src/QtControls   $pkgdir/usr/include/caqtdm
+
 
     cp $srcdir/caqtdm/caQtDM_QtControls/plugins/*.h  $pkgdir/usr/include/caqtdm/plugins
 
