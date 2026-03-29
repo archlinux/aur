@@ -1,4 +1,4 @@
-# Maintainer: Elia Nitsche <nitscheelia at gmail.com>
+# Maintainer: Elia Nitsche <nitscheelia at gmail dot com>
 # Contributor: Yigid BALABAN <fyb at fybx.dev> 
 pkgname=ianny
 pkgver=2.1.3
@@ -30,4 +30,3 @@ package() {
 	cd "$pkgname-$pkgver"
 	meson install -C build --destdir "${pkgdir}"
 }
-
