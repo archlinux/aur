@@ -1,0 +1,23 @@
+pkgbase = quantframe-git
+	pkgdesc = algorithmic trading program for Warframe
+	pkgver = 1.6.17.r0.g5786a65
+	pkgrel = 1
+	url = https://github.com/Kenya-DK/quantframe-react
+	arch = x86_64
+	license = custom:MIT-modified
+	makedepends = git
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = rust
+	makedepends = cargo
+	makedepends = jq
+	depends = webkit2gtk-4.1
+	depends = appmenu-gtk-module
+	depends = libappindicator-gtk3
+	provides = quantframe
+	conflicts = quantframe
+	options = !lto
+	source = quantframe-git::git+https://github.com/Kenya-DK/quantframe-react#branch=better-backend
+	sha512sums = SKIP
+
+pkgname = quantframe-git
