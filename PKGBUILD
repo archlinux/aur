@@ -2,7 +2,7 @@
 
 pkgname=python-apscheduler
 _name=apscheduler
-pkgver=3.11.1
+pkgver=3.11.2
 pkgrel=1
 pkgdesc="In-process task scheduler with Cron-like capabilities"
 url="https://github.com/agronholm/apscheduler"
@@ -12,7 +12,7 @@ depends=('python-setuptools' 'python-six' 'python-pytz' 'python-tzlocal')
 makedepends=("python-build" "python-packaging" "python-wheel" "python-installer")
 # python-kazoo, python-pymongo removed due to lack of running service
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('d36901dce5875e7b2bd0788e855e50f601467a28a0156862305f9b69959f64df4c65821d81635fb177580e7f3a91f24e3921509a607c1a46e6e40940767a447b')
+b2sums=('4278a2630acfcfd504134c8783610ac532ec4beae17c84c726c32fbb4b5d82886fd2bfd4f79939cd04ebbaa3da27e1a6e6b2ed0ede79750c9d8827e5be7c942f')
 
 build(){
  cd "$_name-$pkgver"
