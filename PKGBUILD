@@ -11,8 +11,8 @@ pkgdesc="Programming language designed for productive parallel computing at scal
 
 _github="https://github.com/${_pkgauthor}/${_pkgname}"
 url="https://chapel-lang.org/"
-arch=('x86_64' 'arm')
-license=('Apache')
+license=('Apache-2.0')
+arch=('x86_64')
 
 provides=("${pkgname}")
 conflicts=("${pkgname}"{-git,-bin})
