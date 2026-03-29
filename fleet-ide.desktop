@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Fleet IDE
 Comment=More Than a Code Editor
-Exec=fleet-ide %u
-Icon=fleet-ide
+Exec=qt-sudo fleet-ide %u
+Icon=/opt/fleet-ide/lib/Fleet.png
 Terminal=false
-StartupWMClass=fleet
+StartupWMClass=jetbrains-fleet
 Type=Application
 Categories=Development;IDE;
