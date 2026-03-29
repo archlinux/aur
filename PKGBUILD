@@ -1,7 +1,7 @@
 # Maintainer: PandaDEV <contact at pandadev dot net>
 
 pkgname=sbb-tui
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='TUI client for Swiss public transport timetables'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url='https://github.com/Necrom4/sbb-tui'
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1cd35f79231dc04df01dd3f13a375f86f90754d2d8a1126f5714629274ac3686')
+sha256sums=('f4f3b1903ffc83c5ebc476ee68a0e77f1ef4bc06d2a444601fa568c138755375')
 
 build() {
   cd "${pkgname}-${pkgver}"
