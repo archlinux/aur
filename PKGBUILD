@@ -5,7 +5,7 @@
 
 pkgname=slack-electron
 pkgver=4.47.69
-pkgrel=1
+pkgrel=2
 pkgdesc="Slack Desktop (Beta) for Linux, using the system Electron package"
 arch=(x86_64)
 url="https://slack.com/downloads/linux"
@@ -13,8 +13,8 @@ license=(LicenseRef-SlackProprietary)
 _electronver=39
 depends=(
   "electron$_electronver"
-  gcc-libs
   glibc
+  libstdc++
   libx11
   libxkbfile
 )
