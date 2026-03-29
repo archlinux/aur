@@ -330,7 +330,10 @@ prepare() {
 
   for patch_file in ../*.patch; do
     msg "Applying ${patch_file}" 
-    patch -p1 -i "${patch_file}"
+
+    if ! patch -p1 -i "${patch_file}"; then
+      msg "Some or all of the patch at ${patch_file} failed to apply. Will still try to build."
+    fi
   done
 
   # Qt Creator source code access
