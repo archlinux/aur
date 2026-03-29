@@ -1,4 +1,5 @@
-# Maintainer: taskie <t@skie.jp>
+# Maintainer: taskie <t at skie dot jp>
+# Contributor: yozu <yasuo at ozu dot email>
 
 pkgname=satysfi-git
 _pkgname=SATySFi
@@ -7,10 +8,10 @@ pkgrel=1
 pkgdesc='A statically-typed, functional typesetting system'
 arch=('x86_64')
 url='https://github.com/gfngfn/SATySFi'
-license=('LGPL3')
+license=('LGPL-3.0-only')
 depends=('glibc')
 optdepends=()
-makedepends=('git' 'libx11' 'ocaml-findlib' 'opam' 'rsync' 'wget')
+makedepends=('git' 'opam' 'wget')
 conflicts=('satysfi')
 provides=('satysfi')
 options=()
