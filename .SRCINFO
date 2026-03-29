@@ -1,0 +1,17 @@
+pkgbase = s-console
+	pkgdesc = A super fast GTK3/VTE terminal emulator for Arch Linux
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = pkg-config
+	makedepends = git
+	depends = gtk3
+	depends = vte3
+	depends = fastfetch
+	source = git+https://github.com.git
+	sha256sums = SKIP
+
+pkgname = s-console
