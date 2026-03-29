@@ -1,0 +1,5 @@
+[chapel]
+source = "github"
+github = "chapel-lang/chapel"
+use_latest_release = true
+prefix = "v"

@@ -1,6 +1,6 @@
 pkgbase = chapel
 	pkgdesc = Programming language designed for productive parallel computing at scale
-	pkgver = 2.4.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://chapel-lang.org/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = chapel
 	conflicts = chapel-git
 	options = !debug
 	options = !lto
-	source = https://github.com/chapel-lang/chapel/releases/download/2.4.0/chapel-2.4.0.tar.gz
-	sha256sums = a51a472488290df12d1657db2e7118ab519743094f33650f910d92b54c56f315
+	source = chapel-2.8.0.tgz::https://github.com/chapel-lang/chapel/releases/download/2.8.0/chapel-2.8.0.tar.gz
+	sha256sums = 80e8c3018e33e49674c7a2542e062547ea41d64d6595edb3b799e90c88f963f8
 
 pkgname = chapel
