@@ -13,6 +13,7 @@ license=('GPL-3.0-only')
 depends=(
     'python'
     'python-pyqt6'
+    'python-send2trash'
     'libjxl'
     'libavif'
     'imagemagick'
