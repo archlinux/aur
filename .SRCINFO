@@ -1,6 +1,6 @@
 pkgbase = tg-ws-proxy-bin
 	pkgdesc = Local SOCKS5 proxy server for partial bypassing of Telegram loading
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/Flowseal/tg-ws-proxy
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = tg-ws-proxy-bin
 	optdepends = xclip
 	optdepends = xsel
 	conflicts = tg-ws-proxy-git
-	source = https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.3.0/TgWsProxy_linux_amd64
-	source = https://raw.githubusercontent.com/Flowseal/tg-ws-proxy/refs/heads/main/icon.ico
+	source = https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.4.0/TgWsProxy_linux_amd64
+	source = https://raw.githubusercontent.com/Flowseal/tg-ws-proxy/refs/tags/v1.4.0/icon.ico
 	source = tg-ws-proxy.desktop
 	source = tg-ws-proxy.service
-	sha256sums = 58db0bc0e6af22ac1e30723cf1c373656483a78653ee20bed4bfdc380a3f9422
-	sha256sums = 676f8e0f00c70266352769c3abac806b1b7a18db3cf7cd8091a3b91913450260
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 4e53772b21e2f93d991e85609e74abcc9c4536e1c04874f60e3d537a4fc96c2b
+	sha256sums = 0e228430885976ede0853c1cb22b93b21b4d0228acfdef31506161dba14fcf55
+	sha256sums = b2fba8ff3ba48b447ff709c94cebcaa6be33cf8fd3e24b06f658b9156efe24db
+	sha256sums = 5a7b0faec2bfca5435ea31649a7f7bf8558ffb87b743ec1cf030c9f669e071d4
 
 pkgname = tg-ws-proxy-bin
