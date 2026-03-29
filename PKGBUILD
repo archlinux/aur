@@ -6,7 +6,7 @@
 # shellcheck disable=SC1090,SC2207
 pkgname=pince
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
@@ -45,7 +45,7 @@ build() {
 
 package() {
 	install -Dm755 pince.sh "$pkgdir/usr/bin/pince"
-	install -Dm644 pince.desktop -t "$pkgdir/usr/share/applications/io.github.korcankaraokcu.PINCE.desktop"
+	install -Dm644 pince.desktop "$pkgdir/usr/share/applications/io.github.korcankaraokcu.PINCE.desktop"
 
 	pushd "$pkgname" || exit 1
 
