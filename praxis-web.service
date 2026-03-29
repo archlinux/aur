@@ -1,0 +1,16 @@
+[Unit]
+Description=Praxis Web
+PartOf=praxis.service
+After=praxis-service.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/praxis_web
+EnvironmentFile=/etc/praxis/env
+User=praxis
+Group=praxis
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=praxis.service

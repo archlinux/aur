@@ -1,0 +1,15 @@
+[Unit]
+Description=Praxis
+After=rabbitmq.service
+Requires=rabbitmq.service
+Wants=praxis-service.service praxis-web.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/true
+User=praxis
+Group=praxis
+
+[Install]
+WantedBy=multi-user.target

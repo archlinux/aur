@@ -1,0 +1,23 @@
+post_install() {
+    echo ":: Enable and start RabbitMQ if not already running:"
+    echo "     sudo systemctl enable --now rabbitmq"
+    echo ""
+    echo ":: Enable and start Praxis:"
+    echo "     sudo systemctl enable --now praxis"
+    echo ""
+    echo ":: Web UI: http://localhost:8080"
+    echo ":: Config: /etc/praxis/env"
+    echo ""
+    echo ":: Node binary for deployment to targets:"
+    echo "     /usr/share/praxis/nodes/praxis_node_linux"
+}
+
+post_upgrade() {
+    echo ":: Restart Praxis to apply changes:"
+    echo "     sudo systemctl restart praxis"
+}
+
+pre_remove() {
+    systemctl stop praxis.service 2>/dev/null || true
+    systemctl disable praxis.service 2>/dev/null || true
+}
