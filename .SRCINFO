@@ -1,6 +1,6 @@
 pkgbase = docker-mcp
 	pkgdesc = Docker CLI plugin for MCP Gateway - manage and run MCP servers in containers
-	pkgver = 0.40.3
+	pkgver = 0.41.0
 	pkgrel = 1
 	url = https://github.com/docker/mcp-gateway
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = docker-mcp
 	makedepends = go>=2:1.24
 	depends = glibc
 	optdepends = docker: for Docker Engine container operations
-	source = docker-mcp-0.40.3.tar.gz::https://github.com/docker/mcp-gateway/archive/v0.40.3.tar.gz
-	sha256sums = 1f5a44190520978979ba3542d36534901f9be63b610d34b6d82fa6ff0fdf422d
+	source = docker-mcp-0.41.0.tar.gz::https://github.com/docker/mcp-gateway/archive/v0.41.0.tar.gz
+	sha256sums = a6f0bb903f03714ec35138b495657ba3ccd7c179c37f947ba972aafe99ecf669
 
 pkgname = docker-mcp

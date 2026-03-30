@@ -2,4 +2,7 @@
 !PKGBUILD
 !.gitignore
 !.SRCINFO
+!AGENTS.md
 !*.patch
+!scripts/
+!scripts/*.sh
