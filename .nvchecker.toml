@@ -1,0 +1,6 @@
+[wsjtx-beta]
+source = "regex"
+url = "https://sourceforge.net/projects/wsjt/files/"
+regex = '>wsjtx-([\.0-9]+(?:-rc[0-9]+)?)<'
+from_pattern = "-"
+to_pattern = ""
