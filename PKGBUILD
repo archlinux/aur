@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=wiso-steuer-2026
-pkgver=33.4.3010
+pkgver=33.5.3220
 pkgrel=1
 pkgdesc='File your German tax return for the tax year 2025'
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=(
   'wiso-steuer-2026.desktop'
 )
 
-sha512sums=('23f5421a060efc6c1bdbcbc92bd466ebf96918b7e4e804bc7f229b12a36aeb5297c4264fab89f5c6225e5615257d637bf737796bc7cc40d1ec9e2f19e48ee5eb'
+sha512sums=('fe64ed02ec64677768e338cddf766c93a6d53c062ef13c32d06d5ca645db831907e6ec1bdf0c60ec0f1937655fa41c6a5c97367571b7c6a8ea899fc28e81e662'
             'SKIP'
             'a5c60dcf26a22cf151caf32ad293ea1ac9ddac0e5c93cc14f25b5aa1fd886d4c4f149654d8498e3a0335c30ff178c7ad5b936141f0a01c3bd853836790997480'
             'f49b6c1d54c907253d2ad378c248f21da0ee98053b4bd090a9b92363c574902eb8364b0b8e2e759bdd09fcab315672c8d22fc06d9915207fb91170d9a7ef04ba')
