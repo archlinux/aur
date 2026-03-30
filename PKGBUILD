@@ -4,23 +4,33 @@ _pkgname=qwen-code
 pkgname=${_pkgname}-bin
 _name=qwen
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source AI agent based on Gemini CLI by QwenLM"
 arch=('any')
 url="https://github.com/QwenLM/${_pkgname}"
 license=('Apache-2.0')
-depends=('nodejs')
+depends=('nodejs' 'ripgrep')
+optdepends=('xdg-utils: open links and launch browser integration')
 provides=("$_pkgname" "${_name}")
 conflicts=("$_pkgname" "${_name}")
-source=("${_pkgname}-${pkgver}.js::${url}/releases/download/v${pkgver}/cli.js"
-        "LICENSE::https://raw.githubusercontent.com/QwenLM/${_pkgname}/v${pkgver}/LICENSE"
+source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/@qwen-code/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"
         "system-defaults.json")
-sha256sums=('2905e7351610f7e27019d5a572276ca9fc4e0e5ea6a82c444806fa30eeeb81e6'
-            '55367b61ccd2a016a0159ad886bd66a3ee6cb5e873d0c75c803c897dd245b075'
+sha256sums=('64ddd6df824c39cd89ee91e2b3cbde607ed89f47984fdffdb96e81c3364381d0'
             '729be4baa7cd839aa383910df26d15111d2af1e4c5415f5bb01ff949881fe8cb')
 
 package() {
-  install -Dm755 "${_pkgname}-${pkgver}.js" "${pkgdir}/usr/bin/${_name}"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  local appdir="${pkgdir}/usr/lib/${_pkgname}"
+  install -d "${appdir}" "${pkgdir}/usr/bin"
+
+  cp -a "${srcdir}/package/." "${appdir}/"
+  rm -rf "${appdir}/vendor/ripgrep"
+  chmod 755 "${appdir}/cli.js"
+  ln -s "../lib/${_pkgname}/cli.js" "${pkgdir}/usr/bin/${_name}"
+
+  rm -f "${appdir}/LICENSE"
+  rm -f "${appdir}/README.md"
+  install -Dm644 "${srcdir}/package/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/package/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
   install -Dm644 "system-defaults.json" "${pkgdir}/etc/qwen-code/system-defaults.json"
 }
