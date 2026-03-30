@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=eagle-animation-bin
 _pkgname='Eagle Animation'
-pkgver=2.12.4
-_electronversion=40
+pkgver=2.12.5
+_electronversion=41
 pkgrel=1
 pkgdesc="An awesome, free and open-source animation software.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e697e48e7ae60627b9cc2c5e253fd0d445f6f6c1d729e1efc2b21fdc7caea007'
+sha256sums=('45b87e8f7d3ed3612b1cdf1c1b610d4a449ada41d555f2948b5d435a1be27712'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
