@@ -9,7 +9,9 @@ makedepends=('gettext')
 source=("acnfctl.bash"
         "handler.bash"
         "locales.tar.gz")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('bffc622f10427afcd86627843f1563a06ddf36f07eb99b41e243cdba1cd17645'
+            '3cba12c7b973fdfd89867262243c23d08ee309ff1ae11307148ff1a92d4ae43a'
+            '9a11f995d58016896dca15562b98071b4b2eb2100a0cc8038941d91529c0699c')
 
 prepare() {
     tar -xzf "$srcdir/locales.tar.gz" -C "$srcdir"
