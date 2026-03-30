@@ -3,7 +3,7 @@
 # Contributor: Hezekiah Michael <spiritomb at protonmail dot com>
 
 pkgname=librewolf-extension-keepassxc-browser
-pkgver=1.9.11
+pkgver=1.10.0.1
 pkgrel=1
 _filename=keepassxc-browser-$pkgver-fx.xpi
 pkgdesc="Official browser plugin for the KeePassXC password manager."
@@ -12,8 +12,8 @@ arch=("any")
 license=("GPL-3.0-only")
 source=($_filename::"https://github.com/keepassxreboot/keepassxc-browser/releases/download/${pkgver}/keepassxc-browser_${pkgver}_firefox.zip")
 noextract=("$_filename")
-sha256sums=('05f26060fc6fdf2b30beefd18534353b8d86ad809d08f8b0cf529016d79b238b')
-b2sums=('f50ef56dda0af939f56fd03eab09529902325253cc3804c2538677ed7b01ef727c68e26150fbb06df321df9d7e45de4540add3b971963360bb6b1d67d68f6a55')
+sha256sums=('293036de673ea455ee74add54979eb92cccdebca4cf5c7a70fc7a30d9e443db8')
+b2sums=('2072a935dbaa4c26c6836f124aaf6558220df34e449fbc021a049d363e4b31f2c5fa9c7e8ea8e5fdb8d66349bd8fddd8008dd82965e95027b9c03af64fbd1bb5')
 
 package() {
     install -Dm644 "$_filename" "${pkgdir}/usr/lib/librewolf/browser/extensions/keepassxc-browser@keepassxc.org.xpi"
