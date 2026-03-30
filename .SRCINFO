@@ -1,0 +1,18 @@
+pkgbase = pulp-glue-deb
+	pkgdesc = Version agnostic glue library to talk to pulpcore's REST API. (deb plugin)
+	pkgver = 0.4.3
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/pulp/pulp-cli-deb
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pulp-glue
+	provides = python-pulp-glue-deb
+	source = https://github.com/pulp/pulp-cli-deb/archive/0.4.3/pulp-cli-deb-0.4.3.tar.gz
+	sha256sums = 322f938e7d13e2512a41c502fbc59ff1fbca366c719ead392349dd09029a6197
+
+pkgname = pulp-glue-deb
