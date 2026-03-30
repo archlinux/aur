@@ -5,8 +5,8 @@ _pkgname=console2svg
 pkgname=${_pkgname}-bin
 pkgdesc="Easily convert terminal output into SVG images"
 
-pkgver=0.6.4
-pkgrel=2
+pkgver=0.6.5
+pkgrel=1
 _pkgvername=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}")
-sha256sums=('813859788a813ad0b48713aa64aafc3848ab7f467b5b53e8841e03e7900a6a2e'
+sha256sums=('8523070b6792ebe6ed0d38fad9c5e489aac6175da8d57b9c52de2ba35214ce99'
             '98777468c101698f56a7e16011578e44db2c1fb6c5b70f614f1fc3be6d551d36')
-sha256sums_x86_64=('5792d4252de7a5866b0c339ef7f8e110c199c0533be3756368bcffe5edb6e617')
-sha256sums_aarch64=('6e465d96bb55988e53b3513a7fb0974f2fa3e3d5f4b850bc6b5792267a876dfe')
+sha256sums_x86_64=('5455a4556771d64ca8fd9665e7a764e97921bcc5a5cd2ede2bbd11fe81c18b33')
+sha256sums_aarch64=('d29a1ab3d091f8fd1ed386b3524f271f401604df4b96a6bf0539e15086a5a2ae')
 
 
 package() {
