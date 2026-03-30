@@ -1,0 +1,3 @@
+[robin-cli-tool]
+source = "cratesio"
+cratesio = "robin_cli_tool"

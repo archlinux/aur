@@ -1,0 +1,20 @@
+pkgbase = robin-cli-tool
+	pkgdesc = A CLI tool to run scripts for any project
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/cesarferreira/robin
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = openssl
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	provides = robin
+	conflicts = robin
+	source = robin-1.0.2.crate::https://crates.io/api/v1/crates/robin_cli_tool/1.0.2/download
+	sha256sums = b9ea61b972a4f28f77d0b4cd90bbe635c1d91a5fe6e42a1ecbe819e243eb1162
+
+pkgname = robin-cli-tool
