@@ -1,13 +1,13 @@
 basename=libsurvive
-pkgname=$basename-git
-pkgver=2380.32cf62c
+pkgname=$basename-usehidapi-git
+pkgver=2386.2f4303c
 pkgrel=1
-pkgdesc="Open-Source tool for working with lighthouse-based tracking data, including support for the HTC Vive, Vive Pro and Valve Index."
+pkgdesc="Open-Source tool for working with lighthouse-based tracking data, including support for the HTC Vive, Vive Pro and Valve Index. Built with USE_HIDAPI=1."
 arch=(x86_64 i686)
 url="https://github.com/cntools/libsurvive"
 license=(MIT)
 depends=("hidapi" "xr-hardware" "libpcap" "zlib" "libusb" "eigen") # "lapacke" "cblas" "blas"
-conflicts=($basename)
+conflicts=($basename $basename-git)
 provides=($basename)
 makedepends=("git" "cmake" "ninja")
 source=($basename::"git+https://github.com/collabora/libsurvive.git")
@@ -37,7 +37,7 @@ build() {
   # This will probably require slightly more cpu power than a tuned blas implementation.
   # If running on a weak CPU, consider installing a blas implementation and using -DUSE_EIGEN=OFF.
 
-  cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_EIGEN=ON -DCMAKE_BUILD_TYPE=Release
+  cmake -B build -G Ninja -DUSE_HIDAPI=1 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_EIGEN=ON -DCMAKE_BUILD_TYPE=Release
   ninja -C build
 }
 
