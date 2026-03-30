@@ -11,10 +11,15 @@ license=('GPL-3.0-or-later')
 depends=(
     'python'
     'mpv'
+    'python-textual'
+    'python-textual-image'
+    'yt-dlp'
+    'python-requests'
+    'python-pillow'
 )
 makedepends=(
     'python-build'
-    'python-installer'
+    'python-pip'
     'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hakimshifat/ytui_music/archive/refs/tags/v$pkgver.tar.gz")
@@ -27,11 +32,8 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    
-    # Install the Python package with all dependencies via pip
-    pip install --root="$pkgdir" --ignore-installed --no-build-isolation \
-        --no-warn-script-location dist/*.whl 2>/dev/null
-    
-    # Ensure the script is executable
-    install -Dm755 yt.py "$pkgdir/usr/bin/ytui_music"
+
+    # Install ONLY the package itself, NOT its dependencies (handled by pacman)
+    pip install --root="$pkgdir" --prefix=/usr --no-deps --no-build-isolation \
+        dist/*.whl
 }
