@@ -1,0 +1,6 @@
+[noiz2sa]
+source = 'htmlparser'
+url = 'https://www.asahi-net.or.jp/~cs8k-cyu/windows/noiz2sa_e.html'
+xpath = "/html/body//a[contains(@href, '/windows/noiz2sa') and contains(@href, '.zip')]"
+from_pattern = 'noiz2sa(\d+)_(\d+)\.zip'
+to_pattern = '\1.\2'
