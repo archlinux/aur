@@ -1,0 +1,24 @@
+pkgbase = vshypr-theme-manager
+	pkgdesc = Unified theming system for Arch Linux + Hyprland — 44 themes, 16 apps, GTK3 GUI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/victorsosaMX/vshypr-theme-manager
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	optdepends = rofi-wayland: selector visual de temas desde terminal
+	optdepends = matugen: temas dinámicos generados desde wallpaper
+	optdepends = awww: transiciones de wallpaper con awww-daemon
+	optdepends = jq: procesamiento JSON en rofi-picker.sh
+	optdepends = swaync: theming del centro de notificaciones
+	optdepends = qt5ct: theming de aplicaciones Qt5
+	optdepends = qt6ct: theming de aplicaciones Qt6
+	optdepends = kvantum: motor de estilos SVG para Qt
+	optdepends = nautilus: gestor de archivos GTK4 (auto-reinicio tras aplicar tema)
+	optdepends = dolphin: gestor de archivos Qt (auto-reinicio tras aplicar tema)
+	source = vshypr-theme-manager-1.0.0.tar.gz::https://github.com/victorsosaMX/vshypr-theme-manager/archive/v1.0.0.tar.gz
+	sha256sums = f9abd0af28758529b7dc1fc89c9ba4d22490e4480d1e616ea9020a9ca9760598
+
+pkgname = vshypr-theme-manager
