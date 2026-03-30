@@ -1,19 +1,19 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname="gearboy"
-pkgver=3.7.5
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="Game Boy / Gameboy Color emulator"
 url="https://github.com/drhelius/Gearboy"
 arch=("x86_64")
 license=("GPL3")
-depends=('gtk3' 'sdl2')
+depends=('sdl3')
 source=(
     "${url}/archive/refs/tags/${pkgver}.tar.gz"
     "gearboy.desktop"
 )
 sha256sums=(
-    "380f036105e5896405f9eb932ce6571add4d89c46063c7094b6f2df4833b4f7f"
+    "5e84633315a50653613cb6a7349b06023c1eb5dc9ed8b7b198bebee8247645b8"
     "14488a013717c4d59eabd11dd852c167fc7d9eff702a2691f1089317faaf0f24"
 )
 
@@ -23,11 +23,11 @@ build() {
 }
 
 package() {
-    cd $srcdir/Gearboy-${pkgver}/platforms
-    mkdir -p $pkgdir/opt/gearboy
-    install -Dm755 linux/gearboy $pkgdir/opt/gearboy
-    install -Dm644 gamecontrollerdb.txt $pkgdir/opt/gearboy
+    cd $srcdir/Gearboy-$pkgver/platforms
+    mkdir -p $pkgdir/opt/$pkgname
+    install -Dm755 linux/gearboy $pkgdir/opt/$pkgname
+    install -Dm644 shared/gamecontrollerdb.txt $pkgdir/opt/$pkgname
     mkdir -p $pkgdir/usr/bin
-    ln -s /opt/gearboy/gearboy $pkgdir/usr/bin/gearboy
+    ln -s /opt/$pkgname/gearboy $pkgdir/usr/bin/$pkgname
     install -Dm644 $srcdir/gearboy.desktop $pkgdir/usr/share/applications/gearboy.desktop
 }
