@@ -1,6 +1,6 @@
 pkgbase = woterm-bin
 	pkgdesc = Easy to Use / Practical / Powerful / Modern (Prebuilt version)一款易用、实用、强大、现代的跨平台终端
-	pkgver = 10.5.2
+	pkgver = 10.5.4
 	pkgrel = 1
 	url = http://woterm.com/
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = woterm-bin
 	depends = qt6-charts
 	depends = qt6-declarative
 	depends = libssh
-	provides = woterm=10.5.2
+	provides = woterm=10.5.4
 	conflicts = woterm
 	options = !strip
-	source = woterm-10.5.2.tar.gz::https://github.com/aoyiduo/woterm/releases/download/v10.5.2/woterm-linux-x86_64-portable-v10.5.2-202603160618.tar.gz
+	source = woterm-10.5.4.tar.gz::https://github.com/aoyiduo/woterm/releases/download/v10.5.4/woterm-linux-x86_64-portable-v10.5.4-202603242000.tar.gz
 	source = woterm.sh
-	sha256sums = f84c93cec65e78dd3e9e7aa91efe8a6030f7619eca8236043200798c0c933200
+	sha256sums = 79ed26d7d8cf65723438c4300328fd4b9dae4d720afdb6ca6c10478f5203ed7d
 	sha256sums = 2c72a969289598f9c407cb36a9720ad3b6a85173551252369515a0422cc53077
 
 pkgname = woterm-bin
