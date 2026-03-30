@@ -6,8 +6,8 @@ pkgdesc="GPU-accelerated terminal multiplexer"
 arch=('x86_64')
 url="https://github.com/patcito/prettymux"
 license=('GPL-3.0-only')
-depends=('qt6-base' 'qt6-webengine' 'libgl')
-makedepends=('cmake' 'gcc' 'zig' 'git')
+depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'json-glib')
+makedepends=('meson' 'ninja' 'gcc' 'zig' 'git')
 source=(
   "prettymux::git+https://github.com/patcito/prettymux.git"
   "ghostty::git+https://github.com/patcito/ghostty.git#branch=linux-embedded-platform"
@@ -20,17 +20,14 @@ build() {
   zig build -Dapp-runtime=none -Doptimize=ReleaseFast
 
   # Build prettymux
-  cd "$srcdir/prettymux/src/qt"
-  mkdir -p build && cd build
-  cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DGHOSTTY_DIR="$srcdir/ghostty"
-  make -j$(nproc)
+  cd "$srcdir/prettymux/src/gtk"
+  meson setup builddir --buildtype=release -Dghostty_dir="$srcdir/ghostty"
+  ninja -C builddir
 }
 
 package() {
   # Binary
-  install -Dm755 "$srcdir/prettymux/src/qt/build/prettymux" \
+  install -Dm755 "$srcdir/prettymux/src/gtk/builddir/prettymux" \
     "$pkgdir/usr/bin/prettymux"
 
   # Shared library
@@ -38,9 +35,9 @@ package() {
     "$pkgdir/usr/lib/prettymux/libghostty.so"
 
   # Data files
-  install -Dm644 "$srcdir/prettymux/src/qt/welcome.html" \
+  install -Dm644 "$srcdir/prettymux/src/gtk/welcome.html" \
     "$pkgdir/usr/share/prettymux/welcome.html"
-  install -Dm644 "$srcdir/prettymux/src/qt/prettymux-shell-integration.sh" \
+  install -Dm644 "$srcdir/prettymux/src/gtk/prettymux-shell-integration.sh" \
     "$pkgdir/usr/share/prettymux/shell-integration.sh"
 
   # Desktop entry
