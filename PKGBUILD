@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=kmcp
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='CLI tool and Kubernetes controller for building, testing and deploying MCP servers'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go')
 provides=('kmcp')
 conflicts=('kmcp-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2a09f9f138eca6e9eee663edfedfe94b0186ce77c345076593c9a969eee0e553')
+sha256sums=('8c19df2ffdafd440c3104aa2a41b2164b4e6fd8599d5931c8572c5adf5db5a4f')
 
 build() {
     cd "${pkgname}-${pkgver}"
