@@ -1,6 +1,6 @@
 pkgbase = standardnotes-bin
 	pkgdesc = Free, open-source encrypted notes app.
-	pkgver = 3.201.19
+	pkgver = 3.201.21
 	pkgrel = 1
 	url = https://github.com/standardnotes/app
 	install = standardnotes.install
@@ -13,9 +13,9 @@ pkgbase = standardnotes-bin
 	options = !strip
 	source = standard-notes.sh
 	sha256sums = 71f0811526d428b541ef39ee804b257ed60b1b9b5d620436c79ed77e17eb4d16
-	source_x86_64 = standardnotes-bin-3.201.19-amd64.deb::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.201.19/standard-notes-3.201.19-linux-amd64.deb
-	sha256sums_x86_64 = 39db606b12ad9fa592ec118f981b9f478c6da8bac0814009974af02faf13da78
-	source_aarch64 = standardnotes-bin-3.201.19-aarch64.deb::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.201.19/standard-notes-3.201.19-linux-arm64.deb
-	sha256sums_aarch64 = 34d4046275de1ad407c51307df8b223753917b55cba66c9fa8293c8379edba73
+	source_x86_64 = standardnotes-bin-3.201.21-amd64.deb::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.201.21/standard-notes-3.201.21-linux-amd64.deb
+	sha256sums_x86_64 = c994538e05aee29daf2e6dcebafb5a5d36d7b7a0ad746fd49abd75586e791959
+	source_aarch64 = standardnotes-bin-3.201.21-aarch64.deb::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.201.21/standard-notes-3.201.21-linux-arm64.deb
+	sha256sums_aarch64 = 6e0f10300b603a1daa5211b24af11762473c74a08c9c57684f24611f04f1f11f
 
 pkgname = standardnotes-bin
