@@ -1,5 +1,5 @@
 pkgbase = 2fa-unix
-	pkgdesc = The utility adds 2fa authorizations in the local network using a password, which is stored in a file. A numerical PIN is usually used. Suuport a console and GUI.
+	pkgdesc = The utility adds 2fa authorizations in the local network using a password, which is stored in a file. A numerical PIN is usually used. Support a console and GUI.
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/oditynet/2fa-unix
