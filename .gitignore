@@ -13,5 +13,7 @@ pkg/
 src/
 
 *.AppImage
+pearpass-bin-*.pkg.tar.zst
+pearpass-bin-*.log
 
 *.code-workspace
