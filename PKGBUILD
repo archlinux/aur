@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=numara-bin
 _pkgname=Numara
-pkgver=6.8.1
+pkgver=6.8.3
 _electronversion=41
 pkgrel=1
 pkgdesc="Simple notepad calculator built on Electron, powered by Math.js.(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
 sha256sums=('b944c7642b6a0ccf0c24e98d199d8bf4c8d556ebc7d87ddb9af98cab67b378b5'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('3263c15c35052f932ca70f247272aa446b8330a945b0b69773b99a26b89b6a44')
-sha256sums_x86_64=('55ad97d27b3846374c559cfe29d8168420ad7d0281c24ff77f97ce0fad1bd98b')
+sha256sums_aarch64=('5c58a4517a4f9f3574de9ced76521b7482f39dafae7cac94b57d9c2708e44cea')
+sha256sums_x86_64=('39ed8db9f9b63290040a2b526be90ec729cafae9b77bd5ab5548bc79e09821d3')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
