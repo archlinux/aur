@@ -1,0 +1,18 @@
+pkgbase = aethertune-bin
+	pkgdesc = A terminal-based internet radio player with real-time audio visualization, built in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nevermore23274/AetherTune
+	arch = x86_64
+	license = MIT
+	depends = mpv
+	depends = libpulse
+	optdepends = pipewire-pulse: PipeWire-based audio capture for visualizer
+	optdepends = pulseaudio: PulseAudio-based audio capture for visualizer
+	provides = aethertune
+	conflicts = aethertune
+	conflicts = aethertune-git
+	source = aethertune-bin-0.1.0.tar.gz::https://github.com/nevermore23274/AetherTune/releases/download/v0.1.0/AetherTune-v0.1.0-linux-x86_64.tar.gz
+	sha256sums = 11d67b21eaec5d3617d7ecc7012f163f1a2105ff027b5a4989676ba4d00dd3ca
+
+pkgname = aethertune-bin
