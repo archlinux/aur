@@ -1,0 +1,15 @@
+pkgbase = gga
+	pkgdesc = Provider-agnostic code review using AI - Validate code against your AGENTS.md
+	pkgver = 2.8.1
+	pkgrel = 1
+	url = https://github.com/Gentleman-Programming/gentleman-guardian-angel
+	arch = any
+	license = MIT
+	depends = bash
+	depends = git
+	depends = curl
+	optdepends = shellspec: for running test suite
+	source = gga-2.8.1.tar.gz::https://github.com/Gentleman-Programming/gentleman-guardian-angel/archive/refs/tags/v2.8.1.tar.gz
+	sha256sums = e1be109ba7e60cecbf47cb4142717aca7bb7b3b651ef0d3d42c0b9d923e71ae2
+
+pkgname = gga
