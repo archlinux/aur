@@ -6,7 +6,7 @@ arch=('x86_64' 'aarch64')
 url="https://jonasled.dev/jonasled/sfp-tool"
 license=('GPL3')
 depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
-makedepends=('cargo' 'cmake' 'conan' 'desktop-file-utils' 'emscripten' 'fmt' 'git' 'ninja' 'nlohmann-json' 'nodejs' 'patchelf' 'pkgconf' 'python' 'rust' 'libsoup3' 'webkit2gtk-4.1' 'yarn')
+makedepends=('binutils' 'cargo' 'cmake' 'conan' 'desktop-file-utils' 'emscripten' 'fmt' 'git' 'ninja' 'nlohmann-json' 'nodejs' 'patchelf' 'pkgconf' 'python' 'rust' 'libsoup3' 'webkit2gtk-4.1' 'yarn')
 provides=('sfptool')
 conflicts=('sfptool-bin')
 source=(
@@ -53,6 +53,6 @@ package() {
     *) echo "Unsupported architecture: $CARCH" >&2; return 1 ;;
   esac
   local deb_file="sfp-tool_${pkgver}_${deb_arch}.deb"
-  data_archive="$(bsdtar -tf "$deb_file" | grep '^data.tar\.' | head -n1)"
-  bsdtar -xOf "$deb_file" "$data_archive" | bsdtar -xf - -C "$pkgdir"
+  ar x "sfp-tool_{version}_amd64.deb"
+  tar -xvf data.tar.* -C "$pkgdir/"
 }
