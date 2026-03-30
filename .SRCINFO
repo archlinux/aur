@@ -1,0 +1,9 @@
+pkgbase = ramdump-49xx
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bhmsgame06/ramdump-49xx
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+
+pkgname = ramdump-49xx
