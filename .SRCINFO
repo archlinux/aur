@@ -16,6 +16,6 @@ pkgbase = vswaybar-studio
 	optdepends = pavucontrol: audio control (pulseaudio module on-click)
 	optdepends = network-manager-applet: network settings (network module on-click)
 	source = vswaybar-studio-1.2.0.tar.gz::https://github.com/victorsosaMx/vsWaybar-Studio/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = e103a6f3a0c88b5105953ee99b8024a78610fb69c6a59e7887cb55adcab72f43
+	sha256sums = b528c918ffefc015801098b06856f8f928a208a5028da27bebc85030fd2c4acf
 
 pkgname = vswaybar-studio
