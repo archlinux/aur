@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'gtk3' 'alsa-lib' 'desktop-file-utils')
 options=('!strip' '!debug' '!zipman' '!emptydirs')
 _pkgfile="next-music_${pkgver}_x64.pkg.tar.zst"
-source=("${_pkgfile}::https://github.com/Web-Next-Music/Next-Music-Client/releases/download/next-music_${pkgver}/${_pkgfile}")
+source=("${_pkgfile}::https://github.com/Web-Next-Music/Next-Music-Client/releases/download/${pkgver}/${_pkgfile}")
 sha256sums=('SKIP')
 noextract=("${_pkgfile}")
 
