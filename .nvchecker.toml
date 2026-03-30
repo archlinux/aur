@@ -1,0 +1,4 @@
+[shaka-packager-bin]
+source = "git"
+git = "https://github.com/shaka-project/shaka-packager.git"
+prefix = "v"
