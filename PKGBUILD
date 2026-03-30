@@ -2,7 +2,7 @@
 pkgname=fooyin-bin
 _pkgname=Fooyin
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
-pkgver=0.9.2
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A customisable music player.Binary version."
 arch=('x86_64')
@@ -14,15 +14,18 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'qt6-base'
     'qt6-svg'
-    'qt6-tools'
     'alsa-lib'
     'taglib'
     'ffmpeg'
     'kdsingleapplication'
     'libgme'
     'libarchive'
-    'libvgm-player-git'
+    'libvgm-git'
     'taglib1'
+    'libgme'
+    'libarchive'
+    'qcoro'
+    'soundtouch'
 )
 optdepends=(
     'sdl2: For the SDL2 audio output plugin'
@@ -34,22 +37,30 @@ optdepends=(
     'libebur128: For the ReplayGain scanner plugin'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.fc43.${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-trixie_amd64.deb"
 )
-sha256sums=('52a43c1d02fc59af28ee04a980abc51f1b84f39c8afa53493695a7b5b472d2cc')
+sha256sums=('388a0dbcdf154466427915ba5fefcc7383f79bd0e26a1f7a4c55d0fe7a43b0b2')
 prepare() {
-    #bsdtar -xf "${srcdir}/data."*
+    bsdtar -xf "${srcdir}/data."*
     sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/"*.so* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/plugins/"*.so -t "${pkgdir}/usr/lib/${pkgname%-bin}/plugins"
+    install -Dm644 "${srcdir}/usr/lib64/${pkgname%-bin}/"*.so* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/lib64/${pkgname%-bin}/plugins/"*.so -t "${pkgdir}/usr/lib/${pkgname%-bin}/plugins"
     _icon_sizes=(16x16 22x22 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
+    #ln -sf "/usr/lib/libkdsingleapplication-qt6.so" "${pkgdir}/usr/lib/${pkgname%-bin}/libkdsingleapplication-qt6.so.1.1"
+    #ln -sf "/usr/lib/libavcodec.so.62" "${pkgdir}/usr/lib/${pkgname%-bin}/libavcodec.so.61"
+    #ln -sf "/usr/lib/libavformat.so.62" "${pkgdir}/usr/lib/${pkgname%-bin}/libavformat.so.61"
+    #ln -sf "/usr/lib/libavfilter.so.11" "${pkgdir}/usr/lib/${pkgname%-bin}/libavfilter.so.10"
+    #ln -sf "/usr/lib/libavutil.so.60" "${pkgdir}/usr/lib/${pkgname%-bin}/libavutil.so.59"
+    #ln -sf "/usr/lib/libswresample.so.6" "${pkgdir}/usr/lib/${pkgname%-bin}/libswresample.so.5"
+    #ln -sf "/usr/lib/libicuuc.so.78" "${pkgdir}/usr/lib/${pkgname%-bin}/libicuuc.so.77"
+    #ln -sf "/usr/lib/libicui18n.so.78" "${pkgdir}/usr/lib/${pkgname%-bin}/libicui18n.so.77"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/scalable/apps/${_appname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
     install -Dm644 "${srcdir}/usr/share/${pkgname%-bin}/translations/"*.qm -t "${pkgdir}/usr/share/${pkgname%-bin}/translations"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
