@@ -2,7 +2,7 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname='Cherry Studio'
-pkgver=1.8.2
+pkgver=1.8.4
 _electronversion=40
 pkgrel=1
 pkgdesc="🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)"
@@ -20,6 +20,7 @@ provides=("${_appname}=${pkgver}")
 conflicts=("${_appname}")
 depends=(
     "electron${_electronversion}"
+    'libevdev'
 )
 optdepends=(
     'ollama: Use your local LLM'
@@ -32,8 +33,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-x86_64.rpm")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('16018ab2b15e1dc364bdc9e59c643766b3a96552d20cbe4578dc8152d5c14f5d')
-sha256sums_x86_64=('e1786b6d9f3d1e8331a6aa694bfc0954d90e377679c62d9c9a345b5cab3c133e')
+sha256sums_aarch64=('22d2380b54b923423480aa127f78d09cf4d635ca42bbfd223565fe804c0a9618')
+sha256sums_x86_64=('bfde37cbf32a40b97571898a3a79f2a54293fbc55ba4be5115b92b0fd3487ea0')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname// /}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -52,6 +53,18 @@ prepare() {
         s/Icon=${_pkgname// /}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname// /}.desktop"
     find "${srcdir}/opt/${_pkgname}/resources" -type d \( -name "darwin" -o -name "win32" \) -exec rm -rf {} +
+    case "${CARCH}" in
+        aarch64)
+            find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules" -type d \
+                \( -name "x64-*" -o -name "*-darwin" -o -name "*-win32" \) \
+                -exec rm -rf {} +
+            ;;
+        x86_64)
+            find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules" -type d \
+                \( -name "arm64-*" -o -name "*-darwin" -o -name "*-win32" \) \
+                -exec rm -rf {} +
+            ;;
+    esac
     find "${srcdir}/opt/${_pkgname}/resources" -type d -exec chmod 755 {} +
 }
 package() {
