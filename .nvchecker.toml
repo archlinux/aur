@@ -1,0 +1,6 @@
+[naken_asm]
+source = 'htmlparser'
+url = 'https://www.mikekohn.net/micro/naken_asm.php'
+xpath = "/html/body//a[starts-with(@href, '/downloads/naken_asm/naken_asm-') and contains(@href, '.tar.gz') and contains(text(), '(Source)')]"
+from_pattern = 'naken_asm-(\d+)-(\d+)-(\d+)\.tar\.gz\s+\(Source\)'
+to_pattern = '\1.\2.\3'
