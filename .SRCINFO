@@ -1,6 +1,6 @@
 pkgbase = lean-ctx
-	pkgdesc = The Intelligence Layer for AI Coding — 24 intelligent tools, 90+ shell patterns, persistent AI memory, multi-agent sharing, tree-sitter AST (14 languages). Supports 18+ AI tools. Reduces AI costs by up to 99%.
-	pkgver = 2.9.5
+	pkgdesc = The Context Engineering Layer for AI Coding — 24 intelligent tools, 90+ shell patterns, persistent AI memory, multi-agent sharing, tree-sitter AST (14 languages). Supports 18+ AI tools. Reduces AI costs by 60-99%.
+	pkgver = 2.9.6
 	pkgrel = 1
 	url = https://leanctx.com
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lean-ctx
 	makedepends = cargo
 	makedepends = gcc
 	depends = gcc-libs
-	source = lean-ctx-2.9.5.crate::https://static.crates.io/crates/lean-ctx/lean-ctx-2.9.5.crate
-	sha256sums = d9bf9f8581c6c6710157f6fffc28192ea32b3913527809a206e4f93709bf240b
+	source = lean-ctx-2.9.6.crate::https://static.crates.io/crates/lean-ctx/lean-ctx-2.9.6.crate
+	sha256sums = 7410b15607e1da15556f6db8b45de5f3070de43cdb3dc99e20451e47fa7b7617
 
 pkgname = lean-ctx
