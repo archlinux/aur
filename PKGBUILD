@@ -1,8 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=mangojuice-bin
-pkgver=0.8.8
-pkgrel=2
+pkgver=0.8.9
+pkgrel=1
 pkgdesc="A convenient alternative for setting up Mangohud (binary release)"
 url="https://github.com/radiolamp/mangojuice"
 license=('GPL-3.0-or-later')
@@ -11,13 +11,12 @@ depends=('libadwaita' 'libgee' 'mangohud')
 makedepends=('fuse2')
 provides=("mangojuice")
 conflicts=("mangojuice")
-_appimage="MangoJuice-$pkgver-x86_64.AppImage"
-source=("$url/releases/download/$pkgver/$_appimage")
-sha256sums=('b484a87b85e4a35353d12362993d9d84b517d5e6edd810d3edff78b3ce2d7048')
+source=("MangoJuice-$pkgver.zip::$url/releases/download/$pkgver/MangoJuice-AppImagename-x86_64.zip")
+sha256sums=('bf68d8fc2577edfe84138f18b7f9a6fe7fcc6b514fa1214d134729e14104ddcd')
 
 prepare() {
-  chmod +x "./$_appimage"
-  "./$_appimage" --appimage-extract
+  chmod +x ./MangoJuice-*-x86_64.AppImage
+  ./MangoJuice-*-x86_64.AppImage --appimage-extract
 }
 
 package() {
