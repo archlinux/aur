@@ -1,0 +1,61 @@
+# Maintainer: Benjamim Gois <benjamimgois@gmail.com>
+pkgname=opengrid-git
+pkgver=r1.g0000000
+pkgrel=1
+pkgdesc="Modern graphical interface for network management with Serial, SSH, TFTP, IP Scanner, SNMP, Traceroute, VulnScan and Speed Test (iPerf3 / fast.com)"
+arch=('any')
+url="https://github.com/benjamimgois/opengrid"
+license=('GPL-3.0-or-later')
+depends=('python' 'python-pyqt6' 'python-pyte' 'python-paramiko' 'python-pysnmp' 'python-standard-telnetlib' 'qt6-serialport' 'picocom' 'sudo' 'openssh' 'samba' 'iperf3' 'traceroute' 'mtr' 'networkmanager' 'nmap')
+optdepends=('python-speedtest-cli: Speed Test via speedtest.net'
+            'python-pyftpdlib: built-in FTP server support'
+            'tigervnc: VNC remote desktop viewer'
+            'freerdp: RDP remote desktop client (provides wlfreerdp for Wayland)')
+makedepends=('git' 'imagemagick')
+provides=('opengrid')
+conflicts=('opengrid')
+install=opengrid.install
+source=("${pkgname}::git+https://github.com/benjamimgois/opengrid.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    cd "${srcdir}/${pkgname}"
+
+    # Install main script
+    install -Dm755 opengrid "${pkgdir}/usr/bin/opengrid"
+
+    # Install icon in hicolor theme (FreeDesktop.org standard)
+    install -Dm644 assets/icons/opengrid_icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/opengrid.svg"
+    install -Dm644 assets/opengrid.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/opengrid.png"
+
+    # Create scaled versions for better compatibility
+    for size in 256 128 64 48 32 16; do
+        install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
+        magick assets/opengrid.png -resize ${size}x${size} "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/opengrid.png"
+    done
+
+    # Install UI icons (sidebar and misc) — all SVGs
+    for icon in assets/icons/*.svg; do
+        install -Dm644 "${icon}" "${pkgdir}/usr/share/opengrid/icons/$(basename ${icon})"
+    done
+
+    # Install vendor icons
+    for vendor in default cisco huawei juniper fortinet d-link h3c brocade datacom aruba linux mikrotik; do
+        install -Dm644 "assets/vendors/${vendor}.svg" "${pkgdir}/usr/share/opengrid/vendors/${vendor}.svg"
+    done
+
+    # Install desktop file
+    install -Dm644 opengrid.desktop "${pkgdir}/usr/share/applications/opengrid.desktop"
+
+    # Install documentation
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/opengrid/README.md"
+    install -Dm644 docs/INTERFACE.md "${pkgdir}/usr/share/doc/opengrid/INTERFACE.md"
+
+    # Install license
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
