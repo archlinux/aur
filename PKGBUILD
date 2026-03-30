@@ -1,10 +1,9 @@
 # Maintainer: Corsinvest Srl <corsinvest@corsinvest.it>
-# Contributor: franklupo <franklupog@gmail.com>
 # Project : https://github.com/Corsinvest/cv4pve-cli
 # Part of : CV4PVE Suite - https://www.corsinvest.it/cv4pve
 
 pkgname=cv4pve-cli
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Command-line interface for Proxmox VE — manage API calls, contexts and aliases"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -19,9 +18,9 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://github.com/Corsinvest/c
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://github.com/Corsinvest/cv4pve-cli/releases/download/v${pkgver}/cv4pve-cli-linux-arm64.zip")
 source_armv7h=("${pkgname}-${pkgver}-armv7h.zip::https://github.com/Corsinvest/cv4pve-cli/releases/download/v${pkgver}/cv4pve-cli-linux-arm.zip")
 
-sha256sums_x86_64=('1ff059f5010d9c8323df0a2972bb70386e91c88d615d381e34545424a7319596')
-sha256sums_aarch64=('4b2bedb3cc516dfb28f5fb74411f3cc190cd12f32e89aee7d1ceaf45db2cf255')
-sha256sums_armv7h=('48cc166a3d1d86a0ec7cf668cd733bad796e584a7a21dfd14618d5c94c1fa63b')
+sha256sums_x86_64=('21bdedad878132eb24cd9ccb8519f2ec0bb6828c7db85057713b9022cd560b67')
+sha256sums_aarch64=('97e2188e88e094a8293b97a036a6e783bfd8b0070cfaf6602ae89b456582f88e')
+sha256sums_armv7h=('6b45e246c1037a7d5851973bcc54dc1c4422a712e3b29bc07270a94e165ac69d')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
