@@ -1,5 +1,5 @@
 pkgname=verge-tui
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Standalone Rust TUI for Mihomo/Clash core management"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=(
   'libcap: provide getcap/setcap for TUN capability management'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1d1e03936052bdc3489a1bacf0ae4a93d144e5d289f4ae4204ec3b1fa3e6df3b')
+sha256sums=('18074e7fd5faa76b1f56f621d91e8efcb6387751e75fe066fa32a5810024eef0')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
