@@ -1,6 +1,6 @@
 pkgname=sfptool
 pkgver=0.9.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Desktop utility for reading and programming SFP and QSFP transceivers"
 arch=('x86_64' 'aarch64')
 url="https://jonasled.dev/jonasled/sfp-tool"
