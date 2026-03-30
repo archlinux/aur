@@ -1,19 +1,19 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname="geargrafx"
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="PC Engine / TurboGrafx-16 emulator and debugger"
 url="https://github.com/drhelius/Geargrafx"
 arch=("x86_64")
 license=("GPL3")
-depends=('gtk3' 'sdl3')
+depends=('sdl3')
 source=(
     "${url}/archive/refs/tags/${pkgver}.tar.gz"
     "geargrafx.desktop"
 )
 sha256sums=(
-    "7a81ef62aff68ac38c684045f1b6926ae0143bae1236318dd8b29baf58ffe9f4"
+    "5be580137a66ddad5d897460486b1c5f66468e741e9956db2a125f367666e22e"
     "14e9061980e38d4fb8d42b559a640f4a65352269f56751c55eeff1fa1e8fd3bd"
 )
 
