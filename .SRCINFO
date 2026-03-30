@@ -1,0 +1,14 @@
+pkgbase = python-compoundfiles
+	pkgdesc = Python module for reading Compound File Binary Format files
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/waveform-computing/compoundfiles
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = python-compoundfiles-0.3.tar.gz::https://files.pythonhosted.org/packages/source/c/compoundfiles/compoundfiles-0.3.tar.gz
+	sha256sums = a435c1053786850a78b74b9ba6a317aab2ae97442d48f3ec5392dc2c51c161e9
+
+pkgname = python-compoundfiles
