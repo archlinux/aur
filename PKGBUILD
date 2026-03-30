@@ -3,7 +3,7 @@
 _name="spm"
 pkgname="octave-${_name}"
 pkgver=25.01.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Suite of Octave functions, scripts, and data files, implementing Statistical Parametric Mapping"
 arch=(
   'x86_64'
@@ -37,13 +37,22 @@ prepare() {
   mkdir -p "${_pkgsrc}"
   bsdtar -xf "${_pkgsrc}.zip" --strip-components=1 -C "${_pkgsrc}"
 
-  cd "${_pkgsrc}/src"
+  cd "${_pkgsrc}"
+  # ?
+  find . -type f -name '*.mex*' ! -name '*.mex' -delete
+
+  cd "src"
   sed -e "s^largeArrayDims$^& CFLAGS=\"${CFLAGS} -fPIC\" CXXFLAGS=\"${CXXFLAGS} -fPIC\" LDFLAGS=\"${LDFLAGS}\"^g" \
       -i 'Makefile.var'
 }
 
 build() {
   cd "${srcdir}/${_pkgsrc}/src"
+  # make clean
+  make PLATFORM="octave"
+  make PLATFORM="octave" install
+
+  cd "${srcdir}/${_pkgsrc}/external"
   # make clean
   make PLATFORM="octave"
   make PLATFORM="octave" install
