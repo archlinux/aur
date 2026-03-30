@@ -1,0 +1,31 @@
+pkgbase = kdominate-git
+	pkgdesc = Tactical board domination game for one or two players
+	pkgver = r108.a940a50
+	pkgrel = 1
+	url = https://apps.kde.org/kdominate/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kcoreaddons
+	depends = kcrash
+	depends = kdbusaddons
+	depends = ki18n
+	depends = kiconthemes
+	depends = kwidgetsaddons
+	depends = kxmlgui
+	depends = libkdegames
+	depends = qt6-base
+	depends = qt6-svg
+	provides = kdominate=r108.a940a50
+	conflicts = kdominate
+	source = kdominate::git+https://invent.kde.org/games/kdominate
+	sha256sums = SKIP
+
+pkgname = kdominate-git
