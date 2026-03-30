@@ -3,12 +3,14 @@
 _Name="CrealityPrint"
 _pkgname="creality-print"
 pkgname="${_pkgname}-bin"
-pkgver=7.0.0.4127
+pkgver=7.0.1.4212
 _pkgver="${pkgver%.*}"
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="3D slicer for Creality printers"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://www.creality.com"
 _url="https://github.com/CrealityOfficial/${_Name}"
 license=(
@@ -21,7 +23,6 @@ depends=(
   'dbus'
   'expat'
   'fontconfig'
-  'gcc-libs'
   'gdk-pixbuf2'
   'glib2'
   'glibc'
@@ -29,12 +30,15 @@ depends=(
   'gstreamer'
   'gtk3'
   'harfbuzz'
+  'libatomic'
   'libdeflate'
+  'libgcc'
   'libgl'
   'libice'
   'libsecret'
   'libsm'
   'libsoup3'
+  'libstdc++'
   'libx11'
   'libxext'
   'nspr'
@@ -50,7 +54,7 @@ makedepends=(
   'patchelf'
 )
 optdepends=(
-  'python'
+  # 'python'
   'slicer-udev: 3D printer connection rules'
 )
 provides=(
@@ -59,28 +63,32 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-_pkgsrc="${_pkgname}-${pkgver}"
+_pkgsrc="${_pkgname}-${_pkgver}"
 source=(
   "${_pkgname}.sh"
-  "${_pkgname}-${_pkgver}-README.md::${_url}/raw/refs/tags/v${_pkgver}/README.md"
-  "${_pkgname}-${_pkgver}-LICENSE.txt::${_url}/raw/refs/tags/v${_pkgver}/LICENSE.txt"
+  "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${_pkgver}/README.md"
+  "${_pkgsrc}-LICENSE.txt::${_url}/raw/refs/tags/v${_pkgver}/LICENSE.txt"
 )
 source_x86_64=(
-  "${_pkgsrc}-x86_64.AppImage::${_url}/releases/download/v${_pkgver}/${_Name}-V${pkgver}-x86_64-Release.AppImage"
+  "${_url}/releases/download/v${_pkgver}/${_Name}_Ubuntu2404-V${pkgver}-x86_64-Release.AppImage"
 )
 sha256sums=('11c4dc922dfc686a051c2169549d8934ae1a0477fdf5c225860db08eb51a8fc1'
             'a087787e8a3239bfbc0dc051565236dad4ff34ead1a3396c9cd17984fe898884'
             '5537d2d539c94627446bf7eb30d30fda28d1de8aa9a41c25b83012db52ff6f8b')
-sha256sums_x86_64=('277a154a9ea6479aa69bdccd705413a8af80d170094a6558cc2de129640e8ebe')
+sha256sums_x86_64=('33eba684c5c5ca9c35fac8d33ead6daf5597a960521692c3dc3b1a45de5ed782')
 
 prepare() {
-  cd "${srcdir}"
-  chmod +x "${_pkgsrc}-${CARCH}.AppImage"
-  ./"${_pkgsrc}-${CARCH}.AppImage" --appimage-extract > /dev/null
-  rm -rf "${_pkgsrc}-${CARCH}"
-  mv -f "squashfs-root" "${_pkgsrc}-${CARCH}"
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
 
-  cd "${_pkgsrc}-${CARCH}"
+  cd "${srcdir}"
+  chmod +x "${source_artifact}"
+  ./"${source_artifact}" --appimage-extract > /dev/null
+  rm -rf "${source_artifact%.AppImage}"
+  mv -f "squashfs-root" "${source_artifact%.AppImage}"
+
+  cd "${source_artifact%.AppImage}"
   sed -i "s/AppRun/${_Name}/g" "${_Name}.desktop"
 
   patchelf --remove-rpath "bin/${_Name}"
@@ -88,12 +96,16 @@ prepare() {
 }
 
 package() {
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
   cd "${srcdir}"
   install -vDm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_Name}"
-  install -vDm644 "${_pkgname}-${_pkgver}-README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "${_pkgname}-${_pkgver}-LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.txt"
+  install -vDm644 "${_pkgsrc}-README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "${_pkgsrc}-LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.txt"
 
-  cd "${_pkgsrc}-${CARCH}"
+  cd "${source_artifact%.AppImage}"
   install -vDm644 "${_Name}.desktop" "${pkgdir}/usr/share/applications/${_Name}.desktop"
   install -vDm644 "${_Name}.png" "${pkgdir}/usr/share/pixmaps/${_Name}.png"
 
