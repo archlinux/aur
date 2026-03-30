@@ -2,7 +2,6 @@
 Type = Package
 Operation = Install
 Operation = Upgrade
-Operation = Remove
 Target = vesktop vesktop-bin vesktop-git vesktop-electron vesktop-electron-git
 
 [Action]
