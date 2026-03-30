@@ -1,6 +1,6 @@
 # Maintainer: Yves Gugger <yves@pounce.ch>
 pkgname=lean-ctx-bin
-pkgver=2.9.4
+pkgver=2.9.5
 pkgrel=1
 pkgdesc="The Intelligence Layer for AI Coding — 24 intelligent tools, 90+ shell patterns, persistent AI memory, multi-agent sharing, tree-sitter AST (14 languages). Reduces AI costs by up to 99%. (pre-built binary)"
 arch=('x86_64')
