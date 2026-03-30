@@ -4,7 +4,7 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.14.3
+pkgver=0.14.4
 _electronversion=40
 _nodeversion=22
 pkgrel=1
@@ -94,7 +94,7 @@ prepare() {
         export GOPROXY=https://goproxy.cn,direct
         # 设置Ruby使用国内镜像
         gem sources --add https://mirrors.tuna.tsinghua.edu.cn/rubygems/ --remove https://rubygems.org/
-	    bundle config mirror.https://rubygems.org https://mirrors.tuna.tsinghua.edu.cn/rubygems
+        bundle config mirror.https://rubygems.org https://mirrors.tuna.tsinghua.edu.cn/rubygems
         # 设置npm使用国内镜像
         {
             echo 'registry=https://registry.npmmirror.com'
