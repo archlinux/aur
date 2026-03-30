@@ -1,2 +1,1 @@
-.gitlab-ci.yml @people/ops-team
-CODEOWNERS @people/ops-team
+* @people/build-release
