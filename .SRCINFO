@@ -1,0 +1,15 @@
+pkgbase = binance-desktop
+	pkgdesc = Official Binance desktop application
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://www.binance.com
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxtst
+	source = binance-2.2.1.deb::https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux.deb
+	sha256sums = 25cf4c8b76a56cbf879479bf2844e674078dea9cca3f0c72789f8c18bcb59a08
+
+pkgname = binance-desktop
