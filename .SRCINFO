@@ -1,0 +1,10 @@
+pkgbase = asc
+	pkgdesc = Make a single shell script from images.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bhmsgame06/asc
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+
+pkgname = asc
