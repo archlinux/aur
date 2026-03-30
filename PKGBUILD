@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jm-desktop-bin
-pkgver=2.1.2
+pkgver=2.1.3
 _electronversion=41
-pkgrel=2
+pkgrel=1
 pkgdesc="A jm comic desktop app by react + electron.(Prebuilt version).一个禁漫的第三方客户端"
 arch=('x86_64')
 url="https://github.com/Dedicatus546/jm-desktop"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-${pkgver}.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d39dbdf863bdd4e1021fb0bc48a44d26e48c1b35ad38c2b8776e8b7b1fb9102e'
+sha256sums=('3b013eb61d8c1def2aa9b105e16d8bfa6da4496db1509877a951fd2551ebfab2'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
