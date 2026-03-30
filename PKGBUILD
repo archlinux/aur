@@ -12,7 +12,7 @@ depends=(
 )
 optdepends=('vulkan-icd-loader: 启用 Vulkan 加速')
 provides=('trae-cn')
-conflicts=('trae-cn')
+conflicts=('trae-cn' 'trae-cn-desktop-bin' 'trae-bin')
 source=("Trae%20CN-linux-x64-${pkgver}.deb::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/Trae%20CN-linux-x64.deb")
 sha256sums=('7f42a2aad4bef92e2a697c9d8962cb7f8b4bf0aa0efe0c2bbb9b49b43558daea')
 
