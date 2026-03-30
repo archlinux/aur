@@ -1,10 +1,10 @@
 # Maintainer: fuddlesworth <fuddlesworth at users dot noreply dot github dot com>
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
-# Requires Plasma 6.6+ (KF6 6.6, Qt 6.6, LayerShellQt 6.6, KWin 6.6).
+# Requires Plasma 6.6+ (KF6 6.6, Qt 6.6, KWin 6.6).
 
 pkgname=plasmazones
-pkgver=2.4.7
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Window tiling and autotiling for KDE Plasma'
 arch=('x86_64')
@@ -15,10 +15,12 @@ depends=(
     'qt6-declarative'
     'qt6-shadertools'
     'qt6-svg'
+    'kconfig'
+    'kconfigwidgets'
     'kirigami'
     'kcmutils'
     'kglobalaccel'
-    'layer-shell-qt'
+    'qt6-wayland'
 )
 makedepends=(
     'cmake'
@@ -26,13 +28,16 @@ makedepends=(
     'ninja'
     'qt6-tools'
     'kwin'
+    'wayland'
+    'vulkan-headers'
+    'vulkan-icd-loader'
 )
 optdepends=(
     'plasma-activities: activity-based layouts'
 )
 conflicts=('plasmazones-bin' 'plasmazones-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1f18d6524629113321608188b65bd35422934792bbf5245ab4558cfc63349be5')
+sha256sums=('612b94703923327cc391097df921af76d2a7fb6f987025c573b05169405a9bad')
 install=plasmazones.install
 
 build() {
@@ -47,4 +52,10 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
+
+    # Install pacman hook to auto-refresh sycoca cache
+    install -Dm644 kbuildsycoca.hook \
+        "$pkgdir/usr/share/libalpm/hooks/plasmazones-kbuildsycoca.hook"
+    install -Dm755 plasmazones-refresh-sycoca \
+        "$pkgdir/usr/share/libalpm/scripts/plasmazones-refresh-sycoca"
 }
