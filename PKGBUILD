@@ -67,19 +67,4 @@ EOF
                 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/org.fluxer.World.png"
         done
     fi
-
-    # Systemd user service for autostart
-    install -Dm 644 /dev/stdin "${pkgdir}/usr/lib/systemd/user/fluxer.service" <<EOF
-[Unit]
-Description=Fluxer World
-After=graphical-session.target
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/fluxer-world
-Restart=on-failure
-
-[Install]
-WantedBy=graphical-session.target
-EOF
 }
