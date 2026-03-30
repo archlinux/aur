@@ -1,7 +1,7 @@
 pkgbase = wsjtx
 	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)
 	pkgver = 2.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sourceforge.net/projects/wsjt/
 	arch = i686
 	arch = x86_64

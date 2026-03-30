@@ -3,7 +3,7 @@
 _pkgname="wsjtx"
 pkgname="$_pkgname"
 pkgver=2.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)"
 url="https://sourceforge.net/projects/wsjt/"
 license=('GPL-3.0-or-later')
@@ -41,6 +41,8 @@ prepare() {
   for i in "$_pkgsrc/src"/*.{tgz,tar.gz}; do
     [ -f "$i" ] && bsdtar -xf "$i"
   done
+
+  sed -e '/Werror/d' -i wsjtx/CMakeLists.txt
 }
 
 build() {
