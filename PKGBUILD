@@ -1,6 +1,6 @@
 # Maintainer: tuanlyphong <tuanphong366@email.com>
 pkgname=hyprdict
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Auto dictionary popup for Hyprland — select a word, get a definition (EN + JP)"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/tuanlyphong/hyprdict"
 license=('MIT')
 depends=('rofi-wayland' 'wl-clipboard' 'curl' 'python' 'libnotify' 'bash')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tuanlyphong/hyprdict/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0ca3ff817190fa2d71c59a5d3daabd8ddaf8d688e8c4a887ec3540fb36edb482')
+sha256sums=('bc4c0dd486268d7b71b6973ad7e93a8cc033fdbd1d6d3452fcde690fe60a6d67')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"

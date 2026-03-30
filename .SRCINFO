@@ -1,6 +1,6 @@
 pkgbase = hyprdict
 	pkgdesc = Auto dictionary popup for Hyprland — select a word, get a definition (EN + JP)
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/tuanlyphong/hyprdict
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = hyprdict
 	depends = python
 	depends = libnotify
 	depends = bash
-	source = hyprdict-1.0.2.tar.gz::https://github.com/tuanlyphong/hyprdict/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 0ca3ff817190fa2d71c59a5d3daabd8ddaf8d688e8c4a887ec3540fb36edb482
+	source = hyprdict-1.0.3.tar.gz::https://github.com/tuanlyphong/hyprdict/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = bc4c0dd486268d7b71b6973ad7e93a8cc033fdbd1d6d3452fcde690fe60a6d67
 
 pkgname = hyprdict
