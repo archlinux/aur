@@ -1,0 +1,16 @@
+pkgbase = arch-script-gen
+	pkgdesc = A PyQt6 GUI app that generates Arch Linux configuration bash scripts using the Groq API
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/ChitranshSingh-ind/ArchScriptGen
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-pyqt6
+	depends = python-requests
+	depends = qt6-base
+	source = arch-script-gen-1.1.1.tar.gz::https://github.com/ChitranshSingh-ind/ArchScriptGen/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = f4c1a9a76848d09ec04815cd2b2a1c468be7fd256d9e8ff99aa8fc9cd9dcfb13
+
+pkgname = arch-script-gen
