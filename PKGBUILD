@@ -1,7 +1,7 @@
 # Maintainer: Marc <marc1326@users.noreply.github.com>
 
 pkgname=anvil-organizer
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Native Linux Mod Manager inspired by Mod Organizer 2"
 arch=('x86_64')
