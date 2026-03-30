@@ -1,7 +1,7 @@
 pkgbase = wl_shimeji-git
 	pkgdesc = Shimeji reimplementation for Wayland in C
-	pkgver = 0.0.2.r95.g11f5269
-	pkgrel = 2
+	pkgver = 0.0.2.r99.g8ae15cf
+	pkgrel = 1
 	url = https://github.com/CluelessCatBurger/wl_shimeji
 	arch = x86_64
 	license = GPL-2.0
