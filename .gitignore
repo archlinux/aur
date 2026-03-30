@@ -1,0 +1,9 @@
+# Private notes
+PROJECT_NOTES.md
+
+# Arch makepkg artifacts
+*.tar.gz
+*.pkg.tar.zst
+src/
+pkg/
+Antigravity/
