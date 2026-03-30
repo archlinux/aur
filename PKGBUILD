@@ -7,7 +7,7 @@ pkgdesc="Time Series Data Browser"
 arch=("x86_64")
 url="https://binjr.eu/"
 license=("Apache")
-source=("https://github.com/binjr/binjr/releases/download/v${pkgver}/binjr-${pkgver}_linux-amd64.tar.gz" "https://github.com/binjr/binjr/releases/download/v${pkgver}/binjr-${pkgver}_linux-amd64.tar.gz.asc")
+source=("https://github.com/binjr/binjr/releases/download/v${pkgver}/binjr-${pkgver}_linux-x86_64.tar.gz" "https://github.com/binjr/binjr/releases/download/v${pkgver}/binjr-${pkgver}_linux-x86_64.tar.gz.asc")
 sha512sums=('SKIP' 'SKIP')
 validpgpkeys=("20CAEC83151CCC7CE12DF29EAF45EEEFB23702CB")
 
