@@ -1,0 +1,16 @@
+pkgbase = chagg-bin
+	pkgdesc = A modern release-note workflow tool
+	pkgver = 0.14.7
+	pkgrel = 1
+	url = https://chagg.dev
+	license = MIT
+	conflicts = chagg
+	provides = chagg
+	arch = aarch64
+	source_aarch64 = https://github.com/codested/chagg/releases/download/0.14.7/chagg-linux-arm64
+	sha256sums_aarch64 = 2335ed8081d201a120657a08a195a894a8970da2facd2a80bf752169d2b6840d
+	arch = x86_64
+	source_x86_64 = https://github.com/codested/chagg/releases/download/0.14.7/chagg-linux-amd64
+	sha256sums_x86_64 = 81ff556b645e872e71100b4d3491c95b0d3026e4f9647c9b48c4fad9c52989e7
+	
+pkgname = chagg-bin
