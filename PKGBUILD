@@ -25,5 +25,5 @@ package() {
     chmod +x "${pkgdir}/usr/bin/pearpass"
 
     install -Dm644 "pearpass.desktop"                    "${pkgdir}/usr/share/applications/pearpass.desktop"
-    install -Dm644 "pearpass.png"                        "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/pearpass.png"
+    install -Dm644 "pearpass.png"                        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/pearpass.png"
 }
