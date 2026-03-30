@@ -1,12 +1,12 @@
 pkgbase = leveldb-cli
 	pkgdesc = A command-line interface for LevelDB
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/cions/leveldb-cli
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = leveldb-cli-1.5.1::https://github.com/cions/leveldb-cli/archive/v1.5.1.tar.gz
-	sha256sums = d1b8c8ac6bd6a63a9dceebc116b9df2e27692b7c73aae9cf6c3fa60f0ce0146d
+	source = leveldb-cli-1.5.2::https://github.com/cions/leveldb-cli/archive/v1.5.2.tar.gz
+	sha256sums = a8d2ff5ce2a7f6962137a2069b1a823bca4f9958cc1cd2f3c2f84856e8042fbd
 
 pkgname = leveldb-cli
