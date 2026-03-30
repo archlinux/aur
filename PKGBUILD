@@ -6,10 +6,13 @@ pkgname=${_pkgname}diff-bin
 pkgver=3.6.1
 pkgrel=1
 pkgdesc='A diff filter highlighting which line parts have changed'
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${pkgver}"
+
 arch=('x86_64' 'aarch64')
 _barch=('x86_64' 'aarch64')
+
 license=('MIT')
 
 conflicts=("${_pkgname}" "${_pkgname}-bin" "${pkgname%%-bin}")

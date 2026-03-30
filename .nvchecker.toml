@@ -1,4 +1,4 @@
-["riffdiff-bin"]
+[riffdiff-bin]
 source = "github"
 github = "walles/riff"
 use_latest_release = true
