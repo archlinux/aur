@@ -1,7 +1,7 @@
 pkgname=ripple
 pkgver=1.0
 pkgrel=1
-pkgdesc="Ripple habit tracker desktop app"
+pkgdesc="A simple, usable habit tracker"
 arch=('x86_64')
 url="https://zepyx.home.kg/ripple/"
 license=('MIT')
@@ -12,4 +12,8 @@ sha256sums=('SKIP' 'SKIP')
 package() {
     install -Dm755 ripple.py "$pkgdir/usr/bin/ripple"
     install -Dm644 ripple.desktop "$pkgdir/usr/share/applications/ripple.desktop"
+    for size in 16 32 48 64 128 256; do
+        install -Dm644 "${size}.png" \
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/ripple.png"
+    done
 }

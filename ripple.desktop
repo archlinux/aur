@@ -1,9 +1,10 @@
 [Desktop Entry]
 Name=Ripple
-Comment=Ripple Habit Tracker
+Comment=A simple, usable habit tracker
 Exec=ripple
-Icon=applications-internet
+TryExec=ripple
+Icon=ripple
 Terminal=false
 Type=Application
-Categories=Utility;
+Categories=Office;Productivity;
 StartupNotify=true

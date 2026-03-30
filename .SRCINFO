@@ -1,5 +1,5 @@
 pkgbase = ripple
-	pkgdesc = Ripple habit tracker desktop app
+	pkgdesc = A simple, usable habit tracker
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://zepyx.home.kg/ripple/
