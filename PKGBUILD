@@ -20,7 +20,7 @@ replaces=("${_pkgname}-bin")
 provides=("${_pkgname}")
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
-        "README-${pkgver}::${_urlraw}/README.md")
+        "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-${_barch[0]}-linux")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-${_barch[1]}-linux")
 sha256sums=('8fe11bd57802035aa8be7cb7382edd1e5f7e53cc6d2ca078271b59b1f94bde26'
@@ -34,6 +34,7 @@ package() {
 
   install -Dm755 "${_pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "README-${pkgver}" "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
