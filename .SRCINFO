@@ -1,6 +1,6 @@
 pkgbase = lidarr-develop-bin
 	pkgdesc = Music collection manager for newsgroup and torrent users (develop branch)
-	pkgver = 3.1.2.4902
+	pkgver = 3.1.2.4938
 	pkgrel = 1
 	url = https://lidarr.audio
 	install = lidarr.install
@@ -40,11 +40,11 @@ pkgbase = lidarr-develop-bin
 	sha256sums = 85098d47734e8087480f8a29eafec50faa453487221ef01173888155d2b06e42
 	sha256sums = d71e37213ac65722e42f6f2c5772d4515c2d28a77b9f7608dc05c787d86ebaa5
 	sha256sums = 1d246459491c9e2c9b21f61ec039f0ed4268ef467285cf806080e3f82c4c7077
-	source_x86_64 = Lidarr.develop.3.1.2.4902.linux-core-x64.tar.gz::https://lidarr.servarr.com/v1/update/develop/updatefile?version=3.1.2.4902&os=linux&runtime=netcore&arch=x64
-	sha256sums_x86_64 = d6848526d43dfc8080085045829da43f37cfd1d2a2b4c83bbea00dee24f42930
-	source_aarch64 = Lidarr.develop.3.1.2.4902.linux-core-arm64.tar.gz::https://lidarr.servarr.com/v1/update/develop/updatefile?version=3.1.2.4902&os=linux&runtime=netcore&arch=arm64
-	sha256sums_aarch64 = 6fc80e2e9477b8ba717051fb702e8a756d224a07ce9c50779e336764c26b37f1
-	source_armv7h = Lidarr.develop.3.1.2.4902.linux-core-arm.tar.gz::https://lidarr.servarr.com/v1/update/develop/updatefile?version=3.1.2.4902&os=linux&runtime=netcore&arch=arm
-	sha256sums_armv7h = f74a840b27a3d3e21b9255ac9cf671608b5aa1fd5e0134a92864dac8e8f8bcf2
+	source_x86_64 = Lidarr.develop.3.1.2.4938.linux-core-x64.tar.gz::https://lidarr.servarr.com/v1/update/develop/updatefile?version=3.1.2.4938&os=linux&runtime=netcore&arch=x64
+	sha256sums_x86_64 = 90d3ae4d7456af04abf097a8524907688e3c2695f864b6f636da965673b88da6
+	source_aarch64 = Lidarr.develop.3.1.2.4938.linux-core-arm64.tar.gz::https://lidarr.servarr.com/v1/update/develop/updatefile?version=3.1.2.4938&os=linux&runtime=netcore&arch=arm64
+	sha256sums_aarch64 = 361e9dae4a661b0330712f5664ba88194eba9bf0a691d8e0eae8e6303a33683e
+	source_armv7h = Lidarr.develop.3.1.2.4938.linux-core-arm.tar.gz::https://lidarr.servarr.com/v1/update/develop/updatefile?version=3.1.2.4938&os=linux&runtime=netcore&arch=arm
+	sha256sums_armv7h = 331c0a3b4c6d1b679f693f8547dd9ed8ac4d4216a285ae0cf7a4f411e118702c
 
 pkgname = lidarr-develop-bin
