@@ -2,8 +2,8 @@
 # Maintainer: raininja < dandenkijin at gmail dot com >
 
 pkgname=clipse
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="A configurable TUI clipboard manager for Unix, built for wayland."
 arch=('any')
 url="https://github.com/savedra1/clipse"
@@ -15,7 +15,7 @@ optdepends=(
   'wl-clipboard'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1a812f702380a835526356871c3efb2e23a76d5407b2ca3e2e23afc1adb7ee94')
+sha256sums=('ec906744103a611cc1045a9d65f20b13b454ee046fd979abf1341a1b78fe553e')
 
 build() {
   export GOPATH="$srcdir"/gopath
