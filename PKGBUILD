@@ -1,24 +1,24 @@
 # Maintainer: c2h5oh
 
 pkgname="orca-slicer"
-pkgver=2.3.1
-pkgrel=3
+pkgver=2.3.2
+pkgrel=1
 epoch=1
-pkgdesc="Orca Slicer is a fork of Bambu Studio. It was previously known as BambuStudio-SoftFever"
+pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
-license=('AGPL3')
-depends=('bash' 'cairo' 'dbus' 'expat' 'fontconfig' 'freetype2' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libglvnd' 'libjpeg-turbo' 'libspnav' 'libx11' 'mesa' 'mesa-utils' 'pango' 'python' 'ttf-nanum' 'wayland' 'webkit2gtk-4.1' 'zlib' 'zstd')
+license=('AGPL-3.0-only')
+depends=('bash' 'cairo' 'dbus' 'expat' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'glibc' 'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libgcc' 'libglvnd' 'libjpeg-turbo' 'libsecret' 'libspnav' 'libstdc++' 'libtiff' 'libx11' 'mesa' 'mesa-utils' 'pango' 'python'  'wayland' 'webkit2gtk-4.1' 'zlib')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'm4' 'ninja' 'pkgconf' 'wayland-protocols' 'wget')
 optdepends=('nvidia-utils: for querying driver version')
 options=('!debug' '!emptydirs')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
 source=(
-  "https://github.com/SoftFever/OrcaSlicer/archive/refs/heads/release/v${pkgver}.tar.gz"
+  "OrcaSlicer-v${pkgver}.tar.gz::https://github.com/OrcaSlicer/OrcaSlicer/archive/refs/tags/v${pkgver}.tar.gz"
   "orca-slicer.sh"
   )
-sha256sums=('b1b104076395ce14b6b95a9d6a4f952d0f7d14023afe0ee43293fc6af2a93914'
+sha256sums=('2c7eea7b1e3757011f2c9520dc1712d789b9182b5c276aba271bf814172b0a52'
             'c1ca1fadba5f5c088af80f076f911c74fa594e8200cee7be65e4330f43909e7d')
 
 
@@ -26,7 +26,7 @@ build() {
   # cmake 4.x compatibility workaround
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
-  cd "$srcdir/OrcaSlicer-release-v${pkgver}"
+  cd "$srcdir/OrcaSlicer-${pkgver}"
 
   # deps
   cmake -S deps \
@@ -61,12 +61,11 @@ build() {
 }
 
 package() {
-  cd "$srcdir/OrcaSlicer-release-v${pkgver}"
+  cd "$srcdir/OrcaSlicer-${pkgver}"
   DESTDIR="$pkgdir" ninja -C build install
   install -d "$pkgdir/usr/lib/OrcaSlicer/"
   mv "$pkgdir/usr/bin/orca-slicer" "$pkgdir/usr/lib/OrcaSlicer/"
   install -Dm755 ../orca-slicer.sh "$pkgdir/usr/bin/orca-slicer"
-  install -Dm644 doc/*.md -t "$pkgdir/usr/share/doc/OrcaSlicer/"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/OrcaSlicer/LICENSE"
   rm -rf "$pkgdir/usr/LICENSE.txt"
 }
