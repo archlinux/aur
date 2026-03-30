@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=rtk-bin
-pkgver=0.34.1
+pkgver=0.34.2
 pkgrel=1
 pkgdesc='CLI proxy that reduces LLM token consumption by 60-90% on common dev commands'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('rtk')
 conflicts=('rtk')
 source_x86_64=("${url}/releases/download/v${pkgver}/rtk-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/rtk-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('78bd7aed073c9d79c4f62fb111cbf8358e33c0c30e7eea301fbb8b5fd8656ff7')
-sha256sums_aarch64=('e43c5d490661be94063078f5e938700450afe6f8925be0bad466fc2d933df5d0')
+sha256sums_x86_64=('419b38216c8b1249cc72386d4bbcfe9e7808bde0af63159c826438da534f9e59')
+sha256sums_aarch64=('fc168635cf65715dae5cb4f11cd76044b4c824702d50c328070b78ab31fb6c51')
 
 package() {
     install -Dm755 rtk -t "${pkgdir}/usr/bin/"
