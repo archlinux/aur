@@ -1,20 +1,24 @@
 pkgbase = gmat-bin
 	pkgdesc = An open-source space mission analysis tool
-	pkgver = 2018a
+	pkgver = 2025a
 	pkgrel = 1
-	url = http://gmatcentral.org/
+	url = https://gmat.atlassian.net/wiki/spaces/GW/overview
 	arch = x86_64
-	groups = 
 	license = Apache
-	depends = cspice
-	depends = libpng12
-	depends = tcsh
-	depends = gtk2
+	depends = gtk3
+	depends = curl
+	depends = glu
+	depends = glycin
+	depends = libsm
+	depends = libxxf86vm
+	depends = libxtst
+	depends = libtiff5
 	conflicts = gmat
 	options = !strip
-	options = !emptydirs
-	source = https://downloads.sourceforge.net/project/gmat/GMAT/GMAT-R2018a/gmat-ubuntu-x64-R2018a.tar.gz
-	sha512sums = 9b1edbf8e9a692a2a6f5410b1165ae4b0e2085dbb05f7acbef2c4145f22d54b9525657ae900acfe8e73088a42f2f3829a3b5ffe277244cfc1d7eb0a9a1085414
+	options = emptydirs
+	source = https://downloads.sourceforge.net/project/gmat/GMAT/GMAT-R2025a/gmat-ubuntu-x64-R2025a.tar.gz
+	source = gmat.desktop
+	sha512sums = 5b8e36b85e3c1b409971114b601d049fc5c6341fdafe06e35d57b4d0c13739a602ae9be61d3e47b7ed919ebc94c21f33d045a3d90c8daaea5aae477f9236bcf2
+	sha512sums = SKIP
 
 pkgname = gmat-bin
-
