@@ -1,6 +1,6 @@
 pkgname=swagsh
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A really small shell that aims to be fast and posix-compatible"
 arch=('x86_64')
 url="https://github.com/takashialpha/swagsh"
