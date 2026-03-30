@@ -7,7 +7,7 @@
 # Contributor: Joshua Stiefer <facedelajunk@gmail.com>
 
 pkgname=exaile
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="A full-featured Amarok-style media player for GTK+"
 arch=('any')
@@ -54,7 +54,7 @@ optdepends=('udisks2: device detection'
 	'python-beautifulsoup4: lyrics from lyrics.wikia.com (lyricwiki)'
 	'ipython: ipconsole plugin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/exaile/exaile/archive/$pkgver.tar.gz")
-sha512sums=('a43b49ecadc55973320676b7b6945edda0aa25ecd99026893f9de21c8952ff0d80ad460e9fc0ededebec1fcf50a330990c2a35a6a295926af4ae684309fe1232')
+sha512sums=('2cfb3e75155e6f6bcf02244b74857444cc62c00d14105a2ecd7f9148d3d1c6e3abf3b45c8b8b14676b3dc18179d8e7cb5dbdc902634fddeb5b6e839624800c66')
 
 # prepare() {
 # 	cd "$srcdir/$pkgname-$pkgver"
