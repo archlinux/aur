@@ -1,0 +1,18 @@
+pkgbase = polybarman
+	pkgdesc = Plugin manager for Polybar
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://codeberg.org/mohterbaord/polybarman
+	install = polybarman.install
+	arch = any
+	license = MIT
+	depends = coreutils
+	depends = findutils
+	depends = git
+	depends = jq
+	depends = sed
+	depends = zsh
+	source = polybarman-0.4.0.tar.gz::https://codeberg.org/mohterbaord/polybarman/archive/0.4.0.tar.gz
+	sha256sums = b174c37d0077d807453ce37c6a07c252923d55019eaeaaf1d24fb91dba8e9f53
+
+pkgname = polybarman
