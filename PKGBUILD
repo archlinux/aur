@@ -9,8 +9,9 @@ url="https://github.com/KyleKing/mdformat-front-matters"
 license=('MIT')
 depends=(
     mdformat
-    python-toml
+    python-mdit_py_plugins
     python-ruamel-yaml
+    python-toml
 )
 makedepends=(
     python-build
