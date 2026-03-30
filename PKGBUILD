@@ -3,8 +3,8 @@
 # AUR Package Repository: https://github.com/patrickjaja/claude-desktop-bin
 
 pkgname=claude-desktop-bin
-pkgver=1.1.9493
-pkgrel=2
+pkgver=1.1.9669
+pkgrel=1
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -27,8 +27,8 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'socat: Cowork socket health check in launcher (fallback: age-based check)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.9493-2/claude-desktop-1.1.9493-linux.tar.gz")
-sha256sums_x86_64=('dc8af010dfbd0526c9930fbc8e146dc86d49c1fe92f9710f324ae402ac53d8c4')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.9669/claude-desktop-1.1.9669-linux.tar.gz")
+sha256sums_x86_64=('169f821107555731b04987146ba934f633e5165db734daa7634ca89e0efb8174')
 options=('!strip')
 
 package() {
