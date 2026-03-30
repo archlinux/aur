@@ -1,0 +1,11 @@
+post_install() {
+  systemctl --user enable --now chevren-server 2>/dev/null || true
+}
+
+post_upgrade() {
+  systemctl --user restart chevren-server 2>/dev/null || true
+}
+
+post_remove() {
+  systemctl --user disable --now chevren-server 2>/dev/null || true
+}
