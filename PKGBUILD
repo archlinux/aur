@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=meru-bin
 _pkgname=Meru
-pkgver=3.38.1
+pkgver=3.39.0
 _electronversion=41
 pkgrel=1
 pkgdesc="📮 Nifty Gmail desktop app.(previously Gmail Desktop).(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('96c1d04d710fd54233ab3a7a799ebb23926c683300f1e0cee2a54ff9a18ed791'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('e4b3903f987246b4f357c3e1fb95ff4dc5da0fdef3aeeed220a51d7c20bff117')
-sha256sums_x86_64=('8ebfc17a34570a82d9392167e65d015af11ee505c852f8d8f74673a8c675fcb3')
+sha256sums_aarch64=('994652d6a6c6bbba06d62ca69330f1ec3fd20aef1de02b70aea604240e847a7c')
+sha256sums_x86_64=('701c1f86445793216b71f91150072a4c2485e5e9fda550c1ac7adabc6fe9a40a')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
