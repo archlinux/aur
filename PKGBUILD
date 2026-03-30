@@ -15,7 +15,7 @@ provides=('fluxer-world')
 conflicts=('fluxer-world')
 options=('!strip' '!debug')
 source=("fluxer-world-${pkgver}-linux-x64.tar.gz::https://github.com/fluxerworld/fluxerworld/releases/download/v${pkgver}/Fluxer.World-${pkgver}-linux-x64.tar.gz")
-sha256sums=('275d5730d9b64418fa89c5c14ceeca0883fe644b459d582e5688df9dc00bb926')
+sha256sums=('cdc81629fc6b2362598d6bb3e5ce63c42e58972c0d8e351181b4d480b9a947f8')
 
 package() {
     # Install app files (tar.gz extracts to "Fluxer World-${pkgver}-linux-x64/")
