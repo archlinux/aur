@@ -3,7 +3,7 @@
 
 pkgname=chromium-snapshot-bin
 _pkgname=${pkgname/chromium/chromedriver}
-pkgver=147.0.7683.0.r1583537
+pkgver=148.0.7763.0.r1606844
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Latest Snapshot)"
 arch=('x86_64')
@@ -56,7 +56,7 @@ package() {
   find -type d -exec chmod 755 {} ';'
   find -type f -exec chmod +r {} ';'
   cd chrome-linux
-  chmod 755 chrome chrome-wrapper xdg-*
+  chmod 755 chrome chrome-wrapper
   chmod 4755 chrome_sandbox
   mv ../chromedriver_linux64/chromedriver .
   cd ..
