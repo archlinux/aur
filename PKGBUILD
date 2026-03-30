@@ -4,14 +4,12 @@ declare -Ag _arch=(
   ['aarch64']='arm64'
   ['x86_64']='amd64'
 )
-declare -Ag _backends=(
-  ['x11']='glibc libx11 libxfixes libxtst'
-  ['wayland']='wl-clipboard'
-)
 
 _pkgbase="clipse"
 _pkgname=(
   "${_pkgbase}-common"
+  "${_pkgbase}-x11"
+  "${_pkgbase}-wayland"
 )
 pkgbase="${_pkgbase}-bin"
 pkgname=(
@@ -27,17 +25,17 @@ url="https://github.com/savedra1/${_pkgbase}"
 license=(
   'MIT'
 )
+_pkgsrc="${_pkgbase}-${pkgver}"
 source=(
-  "${_pkgbase}-${pkgver}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
-  "${_pkgbase}-${pkgver}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
+  "${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
+  "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
 )
 for _carch in "${!_arch[@]}"; do
-  for _backend in "${!_backends[@]}"; do
-    eval "
+  eval "
 source_${_carch}+=(
-  '${url}/releases/download/v${pkgver}/${_pkgbase}_v${pkgver}_linux_${_backend}_${_arch[${_carch}]}.tar.gz'
+  '${url}/releases/download/v${pkgver}/${_pkgbase}_v${pkgver}_linux_x11_${_arch[${_carch}]}.tar.gz'
+  '${url}/releases/download/v${pkgver}/${_pkgbase}_v${pkgver}_linux_wayland_${_arch[${_carch}]}.tar.gz'
 )"
-  done
 done
 sha256sums=('4639cde7079d4d2c00bf215e47428c014e24f8f86d7e4a79d9d0532ff20998a8'
             '7a2e32b86e825be38f8d6582261c0d60617e1cc2b8171ff6e5fed1e03a788638')
@@ -59,31 +57,45 @@ package_clipse-common-bin() {
   )
 
   cd "${srcdir}"
-  install -vDm644 "${_pkgbase}-${pkgver}-README.md" "${pkgdir}/usr/share/doc/${_pkgbase}/README.md"
-  install -vDm644 "${_pkgbase}-${pkgver}-LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE"
+  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgbase}/README.md"
+  install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE"
 }
 
-for _backend in "${!_backends[@]}"; do
-  pkgname+=(
-    "${_pkgbase}-${_backend}-bin"
-  )
-
-  eval "
-package_${_pkgbase}-${_backend}-bin() {
-  pkgdesc+=' (${_backend} backend)'
+package_clipse-x11-bin() {
+  pkgdesc+=" (X11 backend)"
   depends=(
-    '${_pkgbase}-common-bin>=${pkgver}-${pkgrel}'
-    ${_backends[${_backend}]}
+    "${_pkgbase}-common-bin>=${pkgver}-${pkgrel}"
+    'glibc'
+    'libx11'
+    'libxfixes'
+    'libxtst'
   )
   provides=(
-    '${_pkgbase}-${_backend}=${pkgver}'
-    '${_pkgbase}=${pkgver}'
+    "${pkgname%%-*}=${pkgver}"
+    "${pkgname%-*}=${pkgver}"
   )
   conflicts=(
-    '${_pkgbase}'
+    "${pkgname%%-*}"
   )
 
-  cd \"\${srcdir}\"
-  install -vDm755 '${_pkgbase}-linux-${_backend}-${_arch[${CARCH}]}' \"\${pkgdir}/usr/bin/${_pkgbase}\"
-}"
-done
+  cd "${srcdir}"
+  install -vDm755 "${_pkgbase}-linux-x11-${_arch[${CARCH}]}" "${pkgdir}/usr/bin/${_pkgbase}"
+}
+
+package_clipse-wayland-bin() {
+  pkgdesc+=" (Wayland backend)"
+  depends=(
+    "${_pkgbase}-common-bin>=${pkgver}-${pkgrel}"
+    'wl-clipboard'
+  )
+  provides=(
+    "${pkgname%%-*}=${pkgver}"
+    "${pkgname%-*}=${pkgver}"
+  )
+  conflicts=(
+    "${pkgname%%-*}"
+  )
+
+  cd "${srcdir}"
+  install -vDm755 "${_pkgbase}-linux-wayland-${_arch[${CARCH}]}" "${pkgdir}/usr/bin/${_pkgbase}"
+}

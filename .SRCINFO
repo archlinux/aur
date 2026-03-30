@@ -26,20 +26,20 @@ pkgname = clipse-common-bin
 	conflicts = clipse-common
 
 pkgname = clipse-x11-bin
-	pkgdesc = A configurable TUI clipboard manager for Unix (x11 backend)
+	pkgdesc = A configurable TUI clipboard manager for Unix (X11 backend)
 	depends = clipse-common-bin>=1.2.1-1
 	depends = glibc
 	depends = libx11
 	depends = libxfixes
 	depends = libxtst
-	provides = clipse-x11=1.2.1
 	provides = clipse=1.2.1
+	provides = clipse-x11=1.2.1
 	conflicts = clipse
 
 pkgname = clipse-wayland-bin
-	pkgdesc = A configurable TUI clipboard manager for Unix (wayland backend)
+	pkgdesc = A configurable TUI clipboard manager for Unix (Wayland backend)
 	depends = clipse-common-bin>=1.2.1-1
 	depends = wl-clipboard
-	provides = clipse-wayland=1.2.1
 	provides = clipse=1.2.1
+	provides = clipse-wayland=1.2.1
 	conflicts = clipse
