@@ -1,0 +1,32 @@
+pkgbase = hash-o-matic-git
+	pkgdesc = Simple hash validator for comparing files, generating checksums, and verifying hashes
+	pkgver = 1.0.1.r128.g6917ded
+	pkgrel = 1
+	url = https://apps.kde.org/hashomatic/
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = gpgmepp
+	depends = hicolor-icon-theme
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kdbusaddons
+	depends = ki18n
+	depends = kwindowsystem
+	depends = kirigami
+	depends = kirigami-addons
+	depends = libkleo
+	depends = qgpgme
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	provides = hash-o-matic=1.0.1.r128.g6917ded
+	conflicts = hash-o-matic
+	source = hash-o-matic::git+https://invent.kde.org/utilities/hash-o-matic.git
+	sha256sums = SKIP
+
+pkgname = hash-o-matic-git
