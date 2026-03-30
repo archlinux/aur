@@ -1,0 +1,20 @@
+pkgbase = tusk-gnome-bin
+	pkgdesc = PostgreSQL client for GNOME
+	pkgver = 2026.03.30.00
+	pkgrel = 1
+	url = https://github.com/Shape-Machine/tusk-gnome
+	arch = any
+	license = custom
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-keyring
+	depends = gtksourceview5
+	depends = python-paramiko
+	provides = tusk-gnome
+	conflicts = tusk-gnome
+	source = tusk-gnome-bin-2026.03.30-00.pkg.tar.zst::https://github.com/Shape-Machine/tusk-gnome/releases/download/v2026.03.30-00/tusk-gnome-2026.03.30-00-any.pkg.tar.zst
+	sha256sums = 985a845cef307c38bdc469925ca600e033d5246555980974534a492b1d149586
+
+pkgname = tusk-gnome-bin
