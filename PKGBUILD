@@ -21,5 +21,5 @@ build() {
 
 package() {
     install -Dm755 "build/bin/certamen" "${pkgdir}/usr/bin/certamen"
-    install -Dm644 "${pkgname}-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
