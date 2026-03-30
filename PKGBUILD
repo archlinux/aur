@@ -12,7 +12,7 @@ depends=()        # No external JRE needed — bundled inside the deb
 conflicts=('connectlnx')
 provides=('connectlnx')
 
-source=("connectlnx-${pkgver}.deb::https://github.com/3DBarath/ConnectLnxKMP/releases/download/v${pkgver}/connectlnx_${pkgver}_amd64.deb")
+source=("connectlnx-${pkgver}.deb::https://github.com/3DBarath/3DBarath.github.io/releases/download/v${pkgver}/connectlnx_${pkgver}_amd64.deb")
 sha256sums=('2ac9fa59be9f063d0f4e408d3c6262cab5ce6b021f9a5f422120ce15094af394')  # ← Replace with: sha256sum connectlnx_1.0.0_amd64.deb
 
 package() {
