@@ -1,6 +1,6 @@
 pkgbase = cecup-git
 	pkgdesc = A backup tool inspired by FreeFileSync and rsync
-	pkgver = r2529.dc30e1e
+	pkgver = r2533.4868979
 	pkgrel = 1
 	url = https://github.com/lucas-mior/cecup
 	arch = x86_64
