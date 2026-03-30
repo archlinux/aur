@@ -21,7 +21,7 @@ source=(
     'praxis.env'
 )
 sha256sums=(
-    '6ad089c9cd57191181fe848cfe206822fdf9ec355d4172927f11a3dd8761eb00'
+    '19ac93ac6cf620303c6c5dbe92300f28a5dd63c0b0d1cc27d4e55608c52f02dd'
     'SKIP'
     'SKIP'
     'SKIP'
