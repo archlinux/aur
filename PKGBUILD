@@ -42,6 +42,7 @@ provides=("$_name")
 conflicts=("$_name" "${_name}-bin")
 optdepends=(
     'apparmor: Mandatory Access Control (MAC) security framework'
+    'appmenu-gtk-module: Global menu support for KDE/GNOME'
 )
 options=('!debug' '!strip')
 _baseurl=https://git.maiwald.work/markus/AUR/releases/download/${_name}-v${pkgver}

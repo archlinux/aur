@@ -33,6 +33,7 @@ pkgbase = minimax-bin-hardened
 	depends = systemd-libs
 	depends = xdg-utils
 	optdepends = apparmor: Mandatory Access Control (MAC) security framework
+	optdepends = appmenu-gtk-module: Global menu support for KDE/GNOME
 	provides = minimax
 	conflicts = minimax
 	conflicts = minimax-bin
