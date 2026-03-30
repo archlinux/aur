@@ -7,15 +7,47 @@
 pkgbase=postgresql-devel
 pkgver=19devel
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=2
+pkgrel=3
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 # provides=("postgresql")
 license=('custom:PostgreSQL')
-depends=('bash' 'gcc-libs' 'glibc' 'icu' 'krb5' 'libldap' 'libxml2' 'libxslt' 'llvm-libs'
-    'openssl' 'pam' 'readline' 'systemd-libs' 'util-linux-libs' 'lz4' 'zlib' 'zstd')
-makedepends=('python' 'perl' 'tcl' 'systemd' 'llvm' 'clang' 'libxslt' 'docbook-xml' 'docbook-xsl')
+depends=(
+  bash
+  glibc
+  icu libicui18n.so libicuuc.so
+  krb5 libgssapi_krb5.so
+  libgcc libgcc_s.so
+  libldap
+  libstdc++ libstdc++.so
+  liburing liburing.so
+  libxml2 libxml2.so
+  libxslt
+  llvm-libs
+  lz4 liblz4.so
+  numactl libnuma.so
+  openssl libcrypto.so libssl.so
+  pam libpam.so
+  systemd-libs libsystemd.so
+  util-linux-libs
+  zlib libz.so
+  zstd libzstd.so
+)
+makedepends=(
+  clang
+  curl
+  docbook-xml
+  docbook-xsl
+  llvm
+  perl
+  perl-ipc-run
+  python
+  readline
+  systemd
+  tcl
+  util-linux
+)
 source=(https://ftp.postgresql.org/pub/snapshot/dev/postgresql-snapshot.tar.bz2
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
@@ -28,7 +60,7 @@ sha256sums=('SKIP'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'f579fe03f93418855f597e8f437fda7e3520e08296709c6c8d7102ab90f8451f'
             'cfb3bee0f7fc98c8c81aa3a73398bc0446822af86479b5a8ee0c67faae46ec1c'
-            '55c7282fdb116741a5de1c572a1b727b6c53a38b8c13d7c4b5d7a62e654084b2'
+            '122f8cec676d9594634a156ddd693597d3ddcd4421a90b223b97ab49d788c7f3'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             '3e13800ae807ee3c40b7e947770c58d5bf04d6427afd2bb8d2e7ecf839802b07'
             '804e76418eb16edd2a3ac458d01d94a4a496e529064eeb115c28c6532ff8e5a5')
