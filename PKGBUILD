@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=tanuki3ds
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="3DS Emulator"
 url="https://github.com/burhanr13/Tanuki3DS"
@@ -15,7 +15,7 @@ source=(
     "Makefile.patch"
 )
 sha256sums=(
-    "e4900458024502bebba2b946cc73bc7f5c8f869171cc8407c7d70f2d35e7404d"
+    "fac479fe860515d19e2d4a90a210cd97bdda29b422ef84e6f6cdb40b1540f954"
     "1e15778ca01e327a0dc4f51a13111b590afac1aeb23102f109e7b8733460abcb"
     "525b3b90dd1bfb2e851c8483c42bd33f133a62a4bf8ac80bf3b017da8e132132"
 )

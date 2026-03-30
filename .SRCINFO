@@ -1,6 +1,6 @@
 pkgbase = tanuki3ds
 	pkgdesc = 3DS Emulator
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/burhanr13/Tanuki3DS
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = tanuki3ds
 	depends = libfdk-aac
 	depends = xbyak
 	depends = xxhash
-	source = https://github.com/burhanr13/Tanuki3DS/archive/refs/tags/v0.4.1.tar.gz
+	source = https://github.com/burhanr13/Tanuki3DS/archive/refs/tags/v0.5.0.tar.gz
 	source = Tanuki3DS.desktop
 	source = Makefile.patch
-	sha256sums = e4900458024502bebba2b946cc73bc7f5c8f869171cc8407c7d70f2d35e7404d
+	sha256sums = fac479fe860515d19e2d4a90a210cd97bdda29b422ef84e6f6cdb40b1540f954
 	sha256sums = 1e15778ca01e327a0dc4f51a13111b590afac1aeb23102f109e7b8733460abcb
 	sha256sums = 525b3b90dd1bfb2e851c8483c42bd33f133a62a4bf8ac80bf3b017da8e132132
 
