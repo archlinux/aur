@@ -49,7 +49,7 @@ build() {
 
   cd "${srcdir}"
   cmake "${cmake_options[@]}"
-  cmake --build "${cmake_options[1]#-B}"
+  cmake --build "${cmake_options[1]}"
 }
 
 package() {
