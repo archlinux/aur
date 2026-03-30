@@ -1,6 +1,6 @@
 pkgbase = readany-bin
 	pkgdesc = An AI-powered e-book reader with semantic search, intelligent chat, and knowledge management
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/codedogQBY/ReadAny
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = readany-bin
 	conflicts = readany
 	options = !strip
 	options = !debug
-	source_x86_64 = readany-bin-1.1.5.deb::https://github.com/codedogQBY/ReadAny/releases/download/v1.1.5/ReadAny_1.1.5_amd64.deb
-	sha256sums_x86_64 = 674b3d537f2dda3687cb5114f3b009bf752692012244f7c013f5b70bbe2bf44f
+	source_x86_64 = readany-bin-1.1.6.deb::https://github.com/codedogQBY/ReadAny/releases/download/v1.1.6/ReadAny_1.1.6_amd64.deb
+	sha256sums_x86_64 = 0ab2386bb9d46c544a3557716699313c45c6507b71158e5ed4eea4a7cd422423
 
 pkgname = readany-bin

@@ -1,6 +1,6 @@
 # Maintainer: Icarus-Alpha <your-email@example.com>
 pkgname=readany-bin
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="An AI-powered e-book reader with semantic search, intelligent chat, and knowledge management"
 arch=('x86_64')
@@ -21,8 +21,8 @@ makedepends=('binutils')
 options=('!strip' '!debug')
 provides=('readany')
 conflicts=('readany')
-source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/codedogQBY/ReadAny/releases/download/v${pkgver}/ReadAny_${pkgver}_amd64.deb")
-sha256sums_x86_64=('674b3d537f2dda3687cb5114f3b009bf752692012244f7c013f5b70bbe2bf44f')
+source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/codedogQBY/ReadAny/releases/download/v1.1.6/ReadAny_1.1.6_amd64.deb")
+sha256sums_x86_64=('0ab2386bb9d46c544a3557716699313c45c6507b71158e5ed4eea4a7cd422423')
 
 prepare() {
     ar x "${pkgname}-${pkgver}.deb"
