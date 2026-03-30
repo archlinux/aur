@@ -2,14 +2,15 @@
 
 pkgname=jman
 pkgver=4.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line utility designed to manage WordPress sites hosted on SpinupWP."
 url="https://github.com/JCO-Digital/${pkgname}"
 license=("GPL-3.0-only")
 arch=("x86_64")
 provides=("jman")
 conflicts=("jman")
-makedepends=('go')
+depends=("wp-cli")
+makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=(!debug !lto)
 sha256sums=('7aa6bf0f2cb534f663e51e880a4e2c0fa41a3cb06d2bd7844c237dba321c912d')
