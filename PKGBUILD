@@ -1,10 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=dedao
 pkgname="${_pkgname}-dl-bin"
-pkgver=1.2.16
+pkgver=1.2.17
 pkgrel=1
 pkgdesc="Get app course download tool, you can view article content in terminal, generate PDF, audio file, markdown manuscript, download e-book from DeDao.com.(Written in GO.Prebuilt version)得到APP课程下载工具,可在终端查看文章内容,可生成PDF,音频文件,markdown文稿,可下载电子书。"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/yann0917/dedao-dl"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
@@ -17,13 +20,26 @@ optdepends=(
 options=(
     '!strip'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/yann0917/dedao-dl/v${pkgver}/LICENSE"
-)
-sha256sums=('1ce00e8929d336b1c79fc06e6114a7ce82a528407ef3525894dcd5afe6089e68'
-            '1ba8379d33340e518c32fe24046f7cb0530250ec193e7e3d0ea72fd558a1e926')
+noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz")
+source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/yann0917/dedao-dl/v${pkgver}/LICENSE")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64.tar.gz")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64.tar.gz")
+sha256sums=('1ba8379d33340e518c32fe24046f7cb0530250ec193e7e3d0ea72fd558a1e926')
+sha256sums_aarch64=('0323a488d709fe3f37ee9080a499b06ad482888589b716814dda66952047bc1e')
+sha256sums_x86_64=('a7f46ed03b10d6d230af3a76ff108bab169e00d36485910ee032ec9edbd2d249')
+prepare() {
+    cd "${srcdir}"
+    bsdtar -xf "${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz"
+    case "${CARCH}" in
+        aarch64)
+            mv "${pkgname%-bin}-linux-arm64" "${pkgname%-bin}"
+            ;;
+        x86_64)
+            mv "${pkgname%-bin}-linux-amd64" "${pkgname%-bin}"
+            ;;
+    esac
+}
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
