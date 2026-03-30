@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aionui
 _pkgname=AionUi
-pkgver=1.8.33
+pkgver=1.9.3
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -16,11 +16,11 @@ license=('Apache-2.0')
 conflicts=("${pkgname}-bin")
 depends=(
     "electron${_electronversion}"
-    'bun'
     'python'
     'libsecret'
 )
 makedepends=(
+    'bun'
     'nvm'
     'gendesk'
     'curl'
@@ -31,7 +31,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('866c60250ac1c35736e6574e4a43919dd6b441c0dad45b63dc3011ea8f2ffbca'
+sha256sums=('6af75a648ceb9443ca15c6378b33e60c51adc892d207191c3e904d2e2b184836'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -83,15 +83,15 @@ prepare() {
             sed -i "s/x64, arm64/x64/g" electron-builder.yml
             ;;
     esac
-    #bun run postinstall || true
-    #bunx electron-builder install-app-deps
+    bun run postinstall || true
+    bunx electron-builder install-app-deps
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     _ensure_local_nvm
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     local electronDist="/usr/lib/electron${_electronversion}"
-    #bun run dist:linux
+    bun run dist:linux
     case "${CARCH}" in
         aarch64)
             ln -sf "/usr/bin/bun" "out/linux-arm64-unpacked/resources/bundled-bun/linux-arm64/bun"
