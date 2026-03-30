@@ -1,10 +1,10 @@
-# Maintainer: axpdev <aeroftp@axpdev.it>
+# Maintainer: axpnet <aeroftp@axpdev.it>
 # https://github.com/axpdev-lab/aeroftp
 
 pkgname=aeroftp-bin
-pkgver=3.1.7
+pkgver=3.2.1
 pkgrel=1
-pkgdesc="Modern multi-protocol file client with AI, encryption and cloud storage (FTP, SFTP, WebDAV, S3, 23 protocols)"
+pkgdesc="Modern multi-protocol file client with AI, encryption and cloud storage (FTP, SFTP, WebDAV, S3, 25 protocols)"
 arch=('x86_64')
 url="https://aeroftp.app"
 license=('GPL-3.0-or-later')
@@ -32,7 +32,7 @@ options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::https://github.com/axpdev-lab/aeroftp/releases/download/v${pkgver}/AeroFTP_${pkgver}_amd64.deb"
         "aeroftp.desktop"
         "aeroftp.png::https://raw.githubusercontent.com/axpdev-lab/aeroftp/main/src-tauri/icons/128x128.png")
-sha256sums=('fb12a7944930b550415f2db2bb985a5e2675026c1b168e955c466724052317a5'
+sha256sums=('0a7cdd6a4716e3eba907cf6b4cb6497ea56fed1182a335b7546cc7feabd48be5'
             'cb8a1a0ad00c587fba5ab64e3c8d50ea8391b7a170ae83172a9dddcc6dd829a0'
             '2ccf82e6bfdf22ec5a8d0735acf1e02bd00c44cb4ffab3895d46dc941c4a7cb6')
 
