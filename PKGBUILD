@@ -1,12 +1,12 @@
 # Maintainer:
 
-: ${_date:=251212}
+: ${_date:=260306}
 : ${_pkgs=AL:widescreen}
 
 _pkgname="wsjtx"
 pkgbase="$_pkgname-improved-qt6"
 pkgname=("$_pkgname-improved-qt6")
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB"
 url="https://sourceforge.net/projects/wsjt-x-improved/"
@@ -43,12 +43,9 @@ options=('!lto')
 
 _dl_url_base="https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v$pkgver/Source%20code/Qt6"
 
-noextract=(
-  "$_pkgname-improved-qt6-$pkgver.tar.gz"
-)
-
+noextract=("$_pkgname-improved-qt6-$pkgver.tar.gz")
 source=("$_pkgname-improved-qt6-$pkgver.tar.gz"::"$_dl_url_base/wsjtx-${pkgver}_improved_PLUS_${_date}_qt6.tgz")
-sha256sums=('46d9645e585e929ba1e3e9eb8e5e737419be1719d8db261120bca6868ac8a18a')
+sha256sums=('171bbc79b236baf441a3aaa180815e1c8a6fd85b5a257e4287a9b3e7441d0b72')
 
 for i in ${_pkgs//:/ }; do
   pkgname+=("$_pkgname-improved-${i,,}-qt6")
@@ -77,6 +74,7 @@ build() {
       -G Ninja
       -DCMAKE_BUILD_TYPE=None
       -DCMAKE_INSTALL_PREFIX='/usr'
+      -DCMAKE_INSTALL_BINDIR="lib/$_pkgname"
       -Wno-dev
     )
 
@@ -89,6 +87,9 @@ build() {
 _package() {
   printf "\nPackaging %s...\n" "$pkgname"
   DESTDIR="$pkgdir" cmake --install "$pkgname-$pkgver"/build
+
+  mkdir -pm755 "$pkgdir/usr/bin"
+  ln -sf "/usr/lib/$_pkgname/wsjtx" "$pkgdir/usr/bin/wsjtx"
 }
 
 for _p in "${pkgname[@]}"; do
