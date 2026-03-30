@@ -5,13 +5,13 @@ pkgver=0
 pkgrel=1
 pkgdesc='Desktop wrapper for neurokaraoke.com with media controls and tray support'
 arch=('x86_64' 'aarch64')
-url="https://github.com/AverseMoon/$_pkgname"
+url="https://github.com/AferilVT/$_pkgname"
 license=('MIT')
 depends=('electron')
 makedepends=('git' 'yarn')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+$url.git#branch=test-all-patches")
+source=("git+$url.git")
 sha256sums=('SKIP')
 options=(!strip)
 
