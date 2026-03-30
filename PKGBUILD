@@ -2,7 +2,7 @@
 
 pkgname=(nekobox nekobox-core)
 pkgver=5.10.29
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64' 'pentium4' 'i686' 'armv7h')
 url="https://github.com/qr243vbi/nekobox"
@@ -98,6 +98,7 @@ package_nekobox-git() {
     packageapp 'nekobox-core-git'
 }
 prepare() {
+    local BRANCH="${NEKOBOX_BRANCH:-main}"
     if [[ -d nekobox ]]
     then
         pushd nekobox
