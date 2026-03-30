@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trufos-bin
 _pkgname=Trufos
-pkgver=0.5.0
-_electronversion=40
+pkgver=0.6.0
+_electronversion=41
 pkgrel=1
 pkgdesc="A modern, open source REST client app.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/EXXETA/trufos/v${pkgver}/images/logo-512.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('119c8f1eb2b99dce6287542c6733ff3d6a9ca16b5af7386a1740127ca663b771'
+sha256sums=('f1e35efc38091cc5ec951a65548debcd22c9d8fd93485b20fd2606177c6f0ce9'
             'df7d9be0dcc412122eecd47fbc0e083a45dfda3953c97c5b22fe7a737258cc70'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
