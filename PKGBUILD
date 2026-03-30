@@ -14,7 +14,7 @@
 
 pkgname=openvsp
 pkgdesc='A parametric aircraft geometry tool'
-pkgver=3.45.3
+pkgver=3.45.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://openvsp.org'
@@ -41,8 +41,7 @@ conflicts=('openvsp-bin')
 _name=OpenVSP-OpenVSP_${pkgver}
 
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz")
-#sha256sums=('4e3ff1349c858bd6866706024f8ce5578e5165e9019858f30fe5ba4e5b38b09c')
-sha256sums=('19582ba99f88aa74b9f0776f6edbae831f1e9b240d21b8b29424e55b8d1cd555')
+sha256sums=('98adc32540da03cf5493b87d656a3b387d04fd9e3bb9f7b8d08a0ad6315c8b4e')
 
 prepare() {
   cd "${srcdir}/${_name}"
