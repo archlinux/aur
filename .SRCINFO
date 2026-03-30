@@ -1,7 +1,7 @@
 pkgbase = sfptool
 	pkgdesc = Desktop utility for reading and programming SFP and QSFP transceivers
 	pkgver = 0.9.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://jonasled.dev/jonasled/sfp-tool
 	arch = x86_64
 	arch = aarch64

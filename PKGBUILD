@@ -1,6 +1,6 @@
 pkgname=sfptool
 pkgver=0.9.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop utility for reading and programming SFP and QSFP transceivers"
 arch=('x86_64' 'aarch64')
 url="https://jonasled.dev/jonasled/sfp-tool"
@@ -36,7 +36,7 @@ from pathlib import Path
 config_path = Path("src-tauri/tauri.conf.json")
 config = json.loads(config_path.read_text())
 config.setdefault("bundle", {})["createUpdaterArtifacts"] = False
-config_path.write_text(json.dumps(config, indent=2) + "\\n")
+config_path.write_text(json.dumps(config, indent=2))
 PY
   yarn install --frozen-lockfile --cache-folder "$npm_config_cache"
   bash scripts/build-transceiver-wasm.sh
