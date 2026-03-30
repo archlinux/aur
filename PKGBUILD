@@ -4,15 +4,47 @@ pkgbase=postgresql18
 pkgver=18.3
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 provides=("postgresql")
 license=('custom:PostgreSQL')
-depends=('bash' 'gcc-libs' 'glibc' 'icu' 'krb5' 'libldap' 'libxml2' 'libxslt' 'llvm-libs'
-    'openssl' 'pam' 'readline' 'systemd-libs' 'util-linux-libs' 'lz4' 'zlib' 'zstd')
-makedepends=('python' 'perl' 'tcl' 'systemd' 'llvm' 'clang' 'libxslt' 'docbook-xml' 'docbook-xsl')
+depends=(
+  bash
+  glibc
+  icu libicui18n.so libicuuc.so
+  krb5 libgssapi_krb5.so
+  libgcc libgcc_s.so
+  libldap
+  libstdc++ libstdc++.so
+  liburing liburing.so
+  libxml2 libxml2.so
+  libxslt
+  llvm-libs
+  lz4 liblz4.so
+  numactl libnuma.so
+  openssl libcrypto.so libssl.so
+  pam libpam.so
+  systemd-libs libsystemd.so
+  util-linux-libs
+  zlib libz.so
+  zstd libzstd.so
+)
+makedepends=(
+  clang
+  curl
+  docbook-xml
+  docbook-xsl
+  llvm
+  perl
+  perl-ipc-run
+  python
+  readline
+  systemd
+  tcl
+  util-linux
+)
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql.service
         postgresql-check-db-dir
@@ -61,6 +93,9 @@ build() {
     --with-libxslt
     --with-lz4
     --with-zstd
+    --with-libnuma
+    --with-liburing
+    --with-libcurl
     --enable-nls
     --enable-thread-safety
     --disable-rpath
