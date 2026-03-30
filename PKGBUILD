@@ -1,6 +1,6 @@
 # Maintainer: Nils Amiet <amietn@foobar>
 pkgname=vcsi
-pkgver=7.0.16
+pkgver=7.0.17
 pkgrel=1
 pkgdesc="Create video contact sheets, thumbnails"
 arch=(any)
@@ -8,7 +8,7 @@ url="https://github.com/amietn/vcsi"
 license=('MIT')
 groups=()
 depends=(python ffmpeg python-numpy python-pillow python-jinja python-texttable ttf-dejavu python-parsedatetime python-setuptools)
-makedepends=(git python-installer python-poetry)
+makedepends=(git python-installer uv)
 provides=()
 conflicts=()
 replaces=()
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd "${pkgname}"
-  poetry build
+  uv build
 }
 
 package() {
