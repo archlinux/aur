@@ -1,7 +1,7 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=agent-browser
 pkgver=0.22.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Headless browser automation CLI for AI agents"
 arch=('any')
 url="https://github.com/vercel-labs/agent-browser"
@@ -17,6 +17,15 @@ package() {
 
     # Fix permissions
     find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+
+    # Fix symlinks that point into pkgdir
+    find "${pkgdir}/usr/bin" -type l | while read -r link; do
+        local target
+        target="$(readlink "$link")"
+        if [[ "$target" == "${pkgdir}"* ]]; then
+            ln -sfr "${pkgdir}/${target#"${pkgdir}"}" "$link"
+        fi
+    done
 
     # Remove references to pkgdir/srcdir from package.json
     local tmppackage="$(mktemp)"
