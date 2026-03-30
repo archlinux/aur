@@ -1,0 +1,17 @@
+pkgbase = libmakepkg-srcaudit
+	pkgdesc = Unofficial framework for source code audit hooks that plugs into makepkg
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/auerhuhn/libmakepkg-srcaudit
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = python-myst-parser
+	makedepends = python-sphinx
+	depends = bash
+	depends = pacman
+	options = !debug
+	options = !strip
+	source = libmakepkg-srcaudit-0.1.0.tar.gz::https://gitlab.archlinux.org/auerhuhn/libmakepkg-srcaudit/-/archive/v0.1.0/libmakepkg-srcaudit-v0.1.0.tar.gz
+	sha512sums = 171ab4264887fef42a84b70f86fd21cbc56a56fd60b58b8574fb01d5a75b8a1ebe6d00eb6a5cd83b9f08af9154289439f7c47b11c07c60b3a1ed8bfd994bf16c
+
+pkgname = libmakepkg-srcaudit

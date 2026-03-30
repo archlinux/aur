@@ -1,0 +1,6 @@
+[libmakepkg-srcaudit]
+source = "gitlab"
+gitlab = "auerhuhn/libmakepkg-srcaudit"
+host = "gitlab.archlinux.org"
+prefix = "v"
+use_max_tag = true
