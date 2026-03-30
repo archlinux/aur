@@ -3,7 +3,7 @@
 # Contributor: Alexey Yakovenko <waker@users.sourceforge.net>
 
 pkgname=deadbeef
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Modular GTK audio player for GNU/Linux"
 arch=(x86_64 i686 pentium4 armv7h aarch64)
@@ -42,7 +42,7 @@ optdepends=('alsa-oss: for OSS output plugin'
 conflicts=(deadbeef-pipewire-plugin-git)
 source=(#"https://sourceforge.net/projects/deadbeef/files/travis/linux/${pkgver}/deadbeef-${pkgver}.tar.bz2"
         "https://sourceforge.net/projects/deadbeef/files/Builds/${pkgver}/linux/deadbeef-${pkgver}.tar.bz2")
-sha512sums=('533f413d26ed0fff3515c68a04a69db8225e67bb01d2f33794a378b398209ca2a8ceb71c24eab43fa4232c90405bccac57b3c46bd72849fec428d6b18f041251')
+sha512sums=('682cfee8839d55160c742f0bec2e870c8ad6ca0e119701766909017113d25d7c9d45f6e209861a35adcbc3c281209a9fc543d06da9d21808c26052141838afe8')
 
 build () {
   cd "${pkgname}-${pkgver}"

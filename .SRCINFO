@@ -1,6 +1,6 @@
 pkgbase = deadbeef
 	pkgdesc = Modular GTK audio player for GNU/Linux
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://deadbeef.sourceforge.io/
 	arch = x86_64
@@ -65,7 +65,7 @@ pkgbase = deadbeef
 	optdepends = yasm: required to build assembly portions of ffap plugin
 	optdepends = zlib: for Audio Overload plugin (psf, psf2, etc), GME (for vgz)
 	conflicts = deadbeef-pipewire-plugin-git
-	source = https://sourceforge.net/projects/deadbeef/files/Builds/1.10.1/linux/deadbeef-1.10.1.tar.bz2
-	sha512sums = 533f413d26ed0fff3515c68a04a69db8225e67bb01d2f33794a378b398209ca2a8ceb71c24eab43fa4232c90405bccac57b3c46bd72849fec428d6b18f041251
+	source = https://sourceforge.net/projects/deadbeef/files/Builds/1.10.2/linux/deadbeef-1.10.2.tar.bz2
+	sha512sums = 682cfee8839d55160c742f0bec2e870c8ad6ca0e119701766909017113d25d7c9d45f6e209861a35adcbc3c281209a9fc543d06da9d21808c26052141838afe8
 
 pkgname = deadbeef
