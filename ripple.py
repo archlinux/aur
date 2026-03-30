@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 import gi
+import time
+
 gi.require_version('Gtk', '3.0')
 gi.require_version('WebKit2', '4.0')
 
@@ -16,33 +18,44 @@ class RippleApp(Gtk.Window):
 
         settings = self.webview.get_settings()
 
-        # ✅ Critical fixes
+        # Safer UA (unchanged but stable)
         settings.set_user_agent(
             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36"
         )
 
         settings.set_enable_javascript(True)
 
-        # Load
+        # 🔧 Stability fixes
+        settings.set_enable_page_cache(False)
+        settings.set_enable_offline_web_application_cache(False)
+
+        # Load initial page
         self.webview.load_uri(URL)
 
-        # Retry once on failure (kills the TLS glitch)
-        self.webview.connect("load-failed", self.retry_once)
-
+        # Retry logic
         self.retried = False
+        self.webview.connect("load-failed", self.on_load_failed)
 
         self.add(self.webview)
 
-    def retry_once(self, webview, load_event, uri, error):
-        print(f"[WARN] Load failed: {error}")
+    def on_load_failed(self, webview, load_event, failing_uri, error):
+        print(f"[WARN] Load failed: {failing_uri} -> {error.message}")
 
-        if not self.retried:
-            self.retried = True
-            print("[INFO] Retrying...")
-            webview.load_uri(URL)
-            return True  # handled
+        if self.retried:
+            return False
 
-        return False
+        self.retried = True
+
+        print("[INFO] Retrying with backoff...")
+
+        def retry():
+            time.sleep(0.5)
+            webview.load_uri(failing_uri or URL)
+            return False
+
+        retry()
+        return True
+
 
 win = RippleApp()
 win.connect("destroy", Gtk.main_quit)
