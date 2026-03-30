@@ -1,19 +1,40 @@
 # Maintainer: Krister Bäckman <ixevix@gmail.com>
 # Contributor: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
-pkgname=slack-cli
-pkgver=3.9.0
-pkgrel=0
-pkgdesc="The Slack CLI is a set of tools critical to building workflow apps for Slack. Requires Deno."
-arch=('any')
-url="https://api.slack.com/automation/quickstart"
-license=('MIT')
-depends=('git' 'deno')
-source=(
-	"https://downloads.slack-edge.com/slack-cli/slack_cli_""$pkgver""_linux_64-bit.tar.gz"
-	)
 
-package() {
-	install -Dm755 "$srcdir/bin/slack" "$pkgdir/usr/bin/slack-cli"
+pkgname=slack-cli
+pkgver=3.15.0
+pkgrel=1
+pkgdesc="Command-line interface for building apps on the Slack Platform."
+arch=('x86_64')
+url="https://github.com/slackapi/slack-cli/"
+license=('Apache-2.0')
+depends=('glibc')
+makedepends=('go' 'git')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/slackapi/slack-cli/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('ed4fb64e93c7fe1966c5e4060408e316fe9dac9909624c81889fdf8dd845ff3d20163e25a7cd48336880f8d51393cf629fd2a72e8a6a936d9236fadc270c7d72')
+
+prepare(){
+  cd "$pkgname-$pkgver"
+  mkdir -p build/
 }
 
-md5sums=('eda4afbbf2a3fa022b4e6f1008b72eb7')
+build() {
+  cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  RELEASE_VERSION="v$pkgver" go build -o build .
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  go test ./...
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
