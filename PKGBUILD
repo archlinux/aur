@@ -6,7 +6,7 @@
 
 pkgname=android-ndk
 pkgver=r29
-pkgrel=2
+pkgrel=3
 pkgdesc='Android C/C++ developer kit'
 arch=('x86_64')
 url='https://developer.android.com/ndk/'
@@ -25,12 +25,15 @@ optdepends=(
   'libc++: for some LLVM components'
   'android-sdk: for sdkmanager and gradle integration'
 )
-source=("$pkgname.sh")
+source=("$pkgname.sh"
+		package.xml)
 source_x86_64=("https://dl.google.com/android/repository/$pkgname-$pkgver-linux.zip")
 # SHA1 sums are kept to follow upstream releases https://github.com/android-ndk/ndk/issues/673
-sha1sums=('38c46b7b1a1c54a0845d027a8eaf37ed0447d3b2')
+sha1sums=('38c46b7b1a1c54a0845d027a8eaf37ed0447d3b2'
+          '16ec24701b7b22fd2ffaec85bee867b68ae08f8f')
 sha1sums_x86_64=('87e2bb7e9be5d6a1c6cdf5ec40dd4e0c6d07c30b')
-sha256sums=('2050ff500443f6cfa4567c02248cb3ec6ccbc67ce81b32d8dda79383c5103db2')
+sha256sums=('2050ff500443f6cfa4567c02248cb3ec6ccbc67ce81b32d8dda79383c5103db2'
+            'a55858ecc309963d081775b919754589a672fb59c207f920cc1d082aaf4e3237')
 sha256sums_x86_64=('4abbbcdc842f3d4879206e9695d52709603e52dd68d3c1fff04b3b5e7a308ecf')
 
 package() {
@@ -41,6 +44,7 @@ package() {
   mv "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname"
 
   install -Dm644 "$pkgname.sh" -t "$pkgdir/etc/profile.d/"
+  install -Dm644 package.xml "$pkgdir/opt/$pkgname"
 
   # Create versioned symlink for sdkmanager and gradle compatibility
   install -dm755 "$pkgdir/opt/android-sdk/ndk"
