@@ -1,6 +1,6 @@
 pkgbase = pragtical
 	pkgdesc = The practical and pragmatic code editor.
-	pkgver = 3.8.2
+	pkgver = 3.8.3
 	pkgrel = 1
 	url = https://github.com/pragtical/pragtical
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = pragtical
 	depends = libgit2
 	depends = libzip
 	depends = xz
-	source = https://github.com/pragtical/pragtical/archive/refs/tags/v3.8.2.tar.gz
-	sha256sums = e000bcd1cdc43d7b305096c9055026f6ddaa0d7fbbe2cfcb6792a427e079b51d
+	source = https://github.com/pragtical/pragtical/archive/refs/tags/v3.8.3.tar.gz
+	sha256sums = c8ca0bace6c2c08d6663192991988851483fc9256c49c749af0d62657794fbd0
 
 pkgname = pragtical
