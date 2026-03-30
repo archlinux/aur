@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mindwtr
 pkgver=0.7.8
-pkgrel=1
+pkgrel=2
 _nodeversion=20
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 depends=(
   'alsa-lib'
   'gtk3'
-  'libappindicator'
+  'libayatana-appindicator'
   'libsoup3'
   'webkit2gtk-4.1'
 )
