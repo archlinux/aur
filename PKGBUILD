@@ -3,7 +3,7 @@
 _binname=xenia_canary
 _branchname=canary_experimental
 pkgname=xenia-canary-git
-pkgver=r8354.3b8debcf5
+pkgver=r8478.904c6c8b1
 pkgrel=1
 pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
@@ -96,21 +96,22 @@ prepare() {
   # Use System Dependencies
   git -C "${pkgname}" apply --verbose "${srcdir}"/0001-Use-system-dependencies.patch
 
+  CFLAGS="${CFLAGS} -Wno-incompatible-pointer-types"
   CXXFLAGS="${CXXFLAGS} -Wno-unused-result"
-  export CXXFLAGS CFLAGS LDFLAGS
+  export CFLAGS CXXFLAGS LDFLAGS
   cmake \
     -B "${pkgname}"-build \
     -D CMAKE_BUILD_TYPE:STRING=Release \
     -D CMAKE_CXX_COMPILER:STRING=clang++ \
     -D CMAKE_C_COMPILER:STRING=clang \
     -S "${pkgname}"
-  echo "#ifndef GENERATED_VERSION_H_" > "${pkgname}"/build/version.h
-  echo "#define GENERATED_VERSION_H_" >> "${pkgname}"/build/version.h
-  echo "#define XE_BUILD_BRANCH \"${_branchname}\"" >> "${pkgname}"/build/version.h
-  echo "#define XE_BUILD_COMMIT \"$(git -C ${pkgname} rev-parse HEAD)\"" >> "${pkgname}"/build/version.h
-  echo "#define XE_BUILD_COMMIT_SHORT \"$(git -C ${pkgname} rev-parse --short HEAD)\"" >> "${pkgname}"/build/version.h
-  echo "#define XE_BUILD_DATE __DATE__" >> "${pkgname}"/build/version.h
-  echo "#endif" >> "${pkgname}"/build/version.h
+  echo "#ifndef GENERATED_VERSION_H_" > "${pkgname}"-build/version.h
+  echo "#define GENERATED_VERSION_H_" >> "${pkgname}"-build/version.h
+  echo "#define XE_BUILD_BRANCH \"${_branchname}\"" >> "${pkgname}"-build/version.h
+  echo "#define XE_BUILD_COMMIT \"$(git -C ${pkgname} rev-parse HEAD)\"" >> "${pkgname}"-build/version.h
+  echo "#define XE_BUILD_COMMIT_SHORT \"$(git -C ${pkgname} rev-parse --short HEAD)\"" >> "${pkgname}"-build/version.h
+  echo "#define XE_BUILD_DATE __DATE__" >> "${pkgname}"-build/version.h
+  echo "#endif" >> "${pkgname}"-build/version.h
 }
 
 build() {
@@ -132,12 +133,12 @@ check() {
     --build "${pkgname}"-build \
     --target xenia-base-tests
 
-  "${pkgname}"/build/bin/Linux/xenia-base-tests \
+  "${pkgname}"-build/bin/Linux/xenia-base-tests \
     'exclude:Test Suspending Thread'
 }
 
 package() {
-  install -Dm755 "${pkgname}"/build/bin/Linux/"${_binname}" "${pkgdir}"/usr/bin/xenia
+  install -Dm755 "${pkgname}"-build/bin/Linux/"${_binname}" "${pkgdir}"/usr/bin/xenia
   install -Dm644 "${pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   # Desktop file
