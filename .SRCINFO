@@ -1,6 +1,6 @@
 pkgbase = specter
 	pkgdesc = Subdomain enumeration and TCP port scanning toolkit
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/x3r0day/x3r0day-specter
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = specter
 	depends = python
 	depends = python-rich
 	optdepends = nmap: aggressive service detection (-S) and sudo nmap mode (-U)
-	source = specter-0.1.0.tar.gz::https://github.com/x3r0day/x3r0day-specter/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 7c9935ffa1d4585f9f29504b0ba312505e7eda3638932831e1875131f5952c6e
+	source = specter-0.1.1.tar.gz::https://github.com/x3r0day/x3r0day-specter/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 751a53ddbd6870499ab0acc775c3a739e842cc1edde0590eeba0c55faa0b5f16
 
 pkgname = specter

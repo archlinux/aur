@@ -1,7 +1,7 @@
 # Maintainer: X3r0Day
 
 pkgname=specter
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Subdomain enumeration and TCP port scanning toolkit"
 arch=("any")
@@ -13,7 +13,7 @@ optdepends=(
   "nmap: aggressive service detection (-S) and sudo nmap mode (-U)"
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("SKIP")
+sha256sums=('751a53ddbd6870499ab0acc775c3a739e842cc1edde0590eeba0c55faa0b5f16')
 _pybin="/usr/bin/python"
 
 build() {
