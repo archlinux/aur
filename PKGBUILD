@@ -2,7 +2,7 @@
 
 pkgname=minimax-bin-hardened
 _name="minimax"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='MiniMax AI Agent - Desktop wrapper for Linux (Hardened for High-Security Environments)'
 arch=('x86_64')
@@ -54,7 +54,7 @@ source=(
     "$_name.png::$_baseurl/${_name}.png"
     "SECURITY.md"
 )
-b2sums=('97808d917add5251f08972123ac2745052e55c6246b92faf2d965c71912f59d1b83cbf221db96b7344c82ca4d4e5c4b0d2d5228ec6ee41456d7504106f9cff2f'
+b2sums=('1e0cb4c3f7ff1d43c152016205c62d44f3ddc3a0f598bb7a818f91ad4c7de768377f90449cfe1ff163979bcec82fe4d1516bfb6c3e97de846319440c2b00109a'
         '876ce74a3f11d6d830d70d42a0a71c54e1493c61f1477ccd4d65c7f91965ba8863ad660f0724c574c60c02b99ba186236e5916e0c644a6e662f9a655d8fa92e0'
         'c69beb235d71f4e6b8282b8e76756808d8226c2f03e43fcf9f35d9eb6f1ce83d7b2eb6611fad430b51186075ddd5faccb48f76d7a1ed73e67a58cf61a3f17e6f'
         '025d3b51f45158c17ab0586f1e2a8379b194903f488b8b035943685079121b793eadbf47bd9ed08209b9e83887278cb24a56c2a1166f0c2a7c041a6c1af25c98'
