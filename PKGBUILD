@@ -1,6 +1,6 @@
 # Maintainer: Karl Essinger <xkaess22@gmail.com>
 pkgname=scpdiscord-git
-pkgver=3.3.1.36.gitc795125
+pkgver=3.3.1.37.git72300b4
 pkgrel=1
 pkgdesc="A very customisable Discord bot + SCP:SL plugin combo. Dev build."
 arch=("x86_64")
