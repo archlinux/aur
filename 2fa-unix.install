@@ -1,0 +1,34 @@
+post_install() {
+echo "╔═══════════════════════════════════════════════════════════════╗"
+echo "║                    CONFIG  2FA-UNIX                           ║"
+echo "╚═══════════════════════════════════════════════════════════════╝"
+echo "1. Start service:"
+echo "   sudo systemctl enable --now aserver.service"
+echo "   sudo systemctl restart --now aserver.service"
+echo ""
+echo "2. Genarate your token for access:"
+echo "  curl -X POST http://localhost:13031/api/v1/register -H \"Content-Type: application/json\" -d '{\"username\":\"<user>\",\"password\":\"<pass>\"}'"
+echo ""
+echo "3. Config a PAM:"
+echo "   Add to  /etc/pam.d/system-auth new line:  'auth required pam_2fact.so username=<login> token=<token>'"
+}
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl restart aserver.service
+    echo "2fa-unix service restarted after upgrade."
+}
+
+pre_remove() {
+    echo "Stopping and disabling aserver service..."
+    systemctl stop aserver.service 2>/dev/null || true
+    systemctl disable aserver.service 2>/dev/null || true
+}
+
+post_remove() {
+    echo ""
+    echo "2fa-unix has been removed."
+    echo "Don't forget to manually remove:"
+    echo "  - PAM lines from /etc/pam.d/system-auth"
+    echo "  - Configuration files from /etc/2fa-unix/"
+    echo ""
+}
