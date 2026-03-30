@@ -1,12 +1,15 @@
 pkgbase = atch
 	pkgdesc = Lets you attach and detach terminal sessions
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/mobydeck/atch
 	arch = x86_64
 	license = GPL-2.0-only
+	makedepends = bash
+	makedepends = lowdown
+	depends = glibc
 	options = !debug
-	source = https://github.com/mobydeck/atch/archive/0.4/atch-0.4.tar.gz
-	b2sums = 71abd29923724355425fb4537eb71cf04f5d3e1f0191b33802a1a5b3a6f942d3d44bf5eabed2bb47611c57ab922f85a04a86b78af4026a8d873647853da23bed
+	source = https://github.com/mobydeck/atch/archive/0.5/atch-0.5.tar.gz
+	b2sums = 14b65911c9ddcdb53458a6e980cecf13446d5181623f707907726af3dd8ed75066f1906652921dd3f5c454f9dfbb33461ca4036dc1b81f0b4bb04ed6b2a99db2
 
 pkgname = atch
