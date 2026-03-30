@@ -13,7 +13,7 @@ depends=()
 makedepends=('git')
 
 prepare() {
-	git clone "$url" "$srcdir"
+	git clone --depth 1 "$url" "$srcdir"
 }
 
 build() {
