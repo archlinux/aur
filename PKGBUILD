@@ -1,7 +1,7 @@
 # Maintainer: fa5e4658010be730
 
 pkgname=transformers_ocr-git
-pkgver=r111.9d12573
+pkgver=0.20.0.r0.gc49b920
 pkgrel=1
 pkgdesc="An OCR tool for manga using Transformers (maintained fork)"
 arch=(any)
@@ -28,7 +28,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
