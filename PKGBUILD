@@ -1,6 +1,6 @@
 # Maintainer: Xuruh <xuruh@fluxer.world>
 pkgname=fluxer-world-bin
-pkgver=1.0.32
+pkgver=1.0.33
 pkgrel=1
 pkgdesc="Fluxer World desktop client — open-source chat, voice, and community platform"
 arch=('x86_64')
@@ -10,12 +10,13 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'libdrm' 'mesa')
 optdepends=(
     'libappindicator-gtk3: system tray support'
     'xdg-utils: protocol handler registration'
+    'vulkan-driver: improved GPU rendering on Wayland'
 )
 provides=('fluxer-world')
 conflicts=('fluxer-world')
 options=('!strip' '!debug')
 source=("fluxer-world-${pkgver}-linux-x64.tar.gz::https://github.com/fluxerworld/fluxerworld/releases/download/v${pkgver}/Fluxer.World-${pkgver}-linux-x64.tar.gz")
-sha256sums=('cdc81629fc6b2362598d6bb3e5ce63c42e58972c0d8e351181b4d480b9a947f8')
+sha256sums=('a4b72a317ea922bad05f6d1c7cbe25696b8b8f56c91e3d4b4281c1be51771139')
 
 package() {
     # Install app files (tar.gz extracts to "Fluxer World-${pkgver}-linux-x64/")
@@ -29,7 +30,7 @@ package() {
 
     # Create wrapper script
     install -dm 755 "${pkgdir}/usr/bin"
-    cat > "${pkgdir}/usr/bin/fluxer-world" <<'EOF'
+    cat > "${pkgdir}/usr/bin/fluxer-world" <<'WRAPPER'
 #!/bin/sh
 export GDK_BACKEND=wayland,x11
 exec /opt/fluxer-world/fluxer-world \
@@ -39,7 +40,7 @@ exec /opt/fluxer-world/fluxer-world \
   --class=org.fluxer.World \
   --wayland-app-id=org.fluxer.World \
   "$@"
-EOF
+WRAPPER
     chmod 755 "${pkgdir}/usr/bin/fluxer-world"
 
     # Desktop entry
@@ -66,4 +67,19 @@ EOF
                 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/org.fluxer.World.png"
         done
     fi
+
+    # Systemd user service for autostart
+    install -Dm 644 /dev/stdin "${pkgdir}/usr/lib/systemd/user/fluxer.service" <<EOF
+[Unit]
+Description=Fluxer World
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/fluxer-world
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
+EOF
 }

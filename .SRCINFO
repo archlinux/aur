@@ -1,6 +1,6 @@
 pkgbase = fluxer-world-bin
 	pkgdesc = Fluxer World desktop client — open-source chat, voice, and community platform
-	pkgver = 1.0.32
+	pkgver = 1.0.33
 	pkgrel = 1
 	url = https://fluxer.world
 	arch = x86_64
@@ -14,11 +14,12 @@ pkgbase = fluxer-world-bin
 	depends = mesa
 	optdepends = libappindicator-gtk3: system tray support
 	optdepends = xdg-utils: protocol handler registration
+	optdepends = vulkan-driver: improved GPU rendering on Wayland
 	provides = fluxer-world
 	conflicts = fluxer-world
 	options = !strip
 	options = !debug
-	source = fluxer-world-1.0.32-linux-x64.tar.gz::https://github.com/fluxerworld/fluxerworld/releases/download/v1.0.32/Fluxer.World-1.0.32-linux-x64.tar.gz
-	sha256sums = cdc81629fc6b2362598d6bb3e5ce63c42e58972c0d8e351181b4d480b9a947f8
+	source = fluxer-world-1.0.33-linux-x64.tar.gz::https://github.com/fluxerworld/fluxerworld/releases/download/v1.0.33/Fluxer.World-1.0.33-linux-x64.tar.gz
+	sha256sums = a4b72a317ea922bad05f6d1c7cbe25696b8b8f56c91e3d4b4281c1be51771139
 
 pkgname = fluxer-world-bin
