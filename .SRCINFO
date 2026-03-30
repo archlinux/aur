@@ -10,8 +10,8 @@ pkgbase = acnf
 	source = acnfctl.bash
 	source = handler.bash
 	source = locales.tar.gz
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = bffc622f10427afcd86627843f1563a06ddf36f07eb99b41e243cdba1cd17645
+	sha256sums = 3cba12c7b973fdfd89867262243c23d08ee309ff1ae11307148ff1a92d4ae43a
+	sha256sums = 9a11f995d58016896dca15562b98071b4b2eb2100a0cc8038941d91529c0699c
 
 pkgname = acnf
