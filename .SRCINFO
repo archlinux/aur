@@ -1,18 +1,18 @@
 pkgbase = wallet-recovery-wizard-bin
 	pkgdesc = Electron-based home for all BitGo recovery tools ⛓️🔮.(Prebuilt version.Use system-wide electron)
-	pkgver = 5.6.1
+	pkgver = 5.7.0
 	pkgrel = 1
 	url = https://github.com/BitGo/wallet-recovery-wizard
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron22
 	depends = python
-	provides = wallet-recovery-wizard=5.6.1
+	provides = wallet-recovery-wizard=5.7.0
 	conflicts = wallet-recovery-wizard
 	options = !emptydirs
-	source = wallet-recovery-wizard-5.6.1.deb::https://github.com/BitGo/wallet-recovery-wizard/releases/download/v5.6.1/Wallet.Recovery.Wizard-Linux-5.6.1.deb
+	source = wallet-recovery-wizard-5.7.0.deb::https://github.com/BitGo/wallet-recovery-wizard/releases/download/v5.7.0/Wallet.Recovery.Wizard-Linux-5.7.0.deb
 	source = wallet-recovery-wizard.sh
-	sha256sums = 929d2a49dab79f3af8c6342eee62f48ff6011bc73603b3b07275f2adba47750d
+	sha256sums = f7e6ca4f92b1fb6b6608c001d37af7f2be6806f412767952d7d6b318e8fdf582
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = wallet-recovery-wizard-bin
