@@ -2,13 +2,14 @@
 
 pkgname=chiaki-git
 _gitname=chiaki
-pkgver=2.2.0.r2.g94fcdc3
+pkgver=2.2.0.r12.gab55cf4
 pkgrel=1
 pkgdesc="Unofficial PlayStation 4 remote play client"
 arch=(i686 x86_64)
 url="https://git.sr.ht/~thestr4ng3r/chiaki"
-license=('AGPL3')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'sdl2' 'opus' 'ffmpeg' 'openssl' 'gcc-libs')
+license=('LicenseRef-AGPL-3.0-only-OpenSSL')
+depends=('ffmpeg' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++'
+         'openssl' 'opus' 'qt5-base' 'qt5-multimedia' 'qt5-svg' 'sdl2')
 makedepends=('git' 'cmake' 'python-protobuf' 'libva' 'python-setuptools')
 optdepends=(
             'intel-media-driver: vaapi backend for Intel GPUs [>= Broadwell]'
@@ -18,10 +19,8 @@ optdepends=(
            ) # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
 provides=('chiaki')
 conflicts=('chiaki')
-source=(git+"${url}"
-        nanopb.patch)
-md5sums=('SKIP'
-         '5bcd50044b226a1a96401e6d63fcaf54')
+source=(git+"${url}")
+md5sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
@@ -32,8 +31,6 @@ prepare() {
   cd ${_gitname}
   mkdir build
   git submodule update --init
-
-  patch -p1 -i "${srcdir}/nanopb.patch"
 }
 
 build() {

@@ -1,24 +1,27 @@
 pkgbase = chiaki-git
 	pkgdesc = Unofficial PlayStation 4 remote play client
-	pkgver = 2.2.0.r2.g94fcdc3
+	pkgver = 2.2.0.r12.gab55cf4
 	pkgrel = 1
 	url = https://git.sr.ht/~thestr4ng3r/chiaki
 	arch = i686
 	arch = x86_64
-	license = AGPL3
+	license = LicenseRef-AGPL-3.0-only-OpenSSL
 	makedepends = git
 	makedepends = cmake
 	makedepends = python-protobuf
 	makedepends = libva
 	makedepends = python-setuptools
+	depends = ffmpeg
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libstdc++
+	depends = openssl
+	depends = opus
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-svg
 	depends = sdl2
-	depends = opus
-	depends = ffmpeg
-	depends = openssl
-	depends = gcc-libs
 	optdepends = intel-media-driver: vaapi backend for Intel GPUs [>= Broadwell]
 	optdepends = libva-intel-driver: vaapi backend for Intel GPUs [<= Haswell]
 	optdepends = libva-vdpau-driver: vaapi backend for Nvidia and AMD GPUs
@@ -26,8 +29,6 @@ pkgbase = chiaki-git
 	provides = chiaki
 	conflicts = chiaki
 	source = git+https://git.sr.ht/~thestr4ng3r/chiaki
-	source = nanopb.patch
 	md5sums = SKIP
-	md5sums = 5bcd50044b226a1a96401e6d63fcaf54
 
 pkgname = chiaki-git
