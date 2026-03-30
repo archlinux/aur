@@ -1,6 +1,6 @@
 pkgbase = anvil-organizer
 	pkgdesc = Native Linux Mod Manager inspired by Mod Organizer 2
-	pkgver = 1.2.0
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/Marc1326/Anvil-Organizer
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = anvil-organizer
 	depends = python-lz4
 	depends = qt6-base
 	depends = hicolor-icon-theme
-	source = anvil-organizer-1.2.0.tar.gz::https://github.com/Marc1326/Anvil-Organizer/archive/refs/tags/v1.2.0.tar.gz
+	source = anvil-organizer-1.2.4.tar.gz::https://github.com/Marc1326/Anvil-Organizer/archive/refs/tags/v1.2.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = anvil-organizer
