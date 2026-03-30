@@ -6,6 +6,6 @@ pkgbase = asc
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = libpng
+	depends = libpng
 
 pkgname = asc
