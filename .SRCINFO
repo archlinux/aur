@@ -1,4 +1,4 @@
-pkgbase = binance-desktop
+pkgbase = binance-app
 	pkgdesc = Official Binance desktop application
 	pkgver = 2.2.1
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = binance-desktop
 	source = binance-2.2.1.deb::https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux.deb
 	sha256sums = 25cf4c8b76a56cbf879479bf2844e674078dea9cca3f0c72789f8c18bcb59a08
 
-pkgname = binance-desktop
+pkgname = binance-app

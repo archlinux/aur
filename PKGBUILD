@@ -3,7 +3,7 @@
 # NOTE: Binance does not provide versioned download URLs.
 # Version is verified via sha256sum against the official release.
 
-pkgname=binance-desktop
+pkgname=binance-app
 pkgver=2.2.1
 pkgrel=1
 pkgdesc="Official Binance desktop application"
