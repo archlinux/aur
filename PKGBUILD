@@ -22,7 +22,7 @@ sha256sums=('689083036a945db8dd2a744760432082a39568b6fc8cbbde66f00996323ee2d5'
             '747d5f4b6f82e28fbd50e192ee6e977159e4848cb55e0cc6ee04219832932d7c')
 
 prepare() {
-# fix only if installed
+# Fix only if installed
 if pacman -Qq firejail &>/dev/null; then
   echo "# Creating two symlinks under the HOME directory" && sleep 1
   echo "# to fix the firejail issue, see:" && sleep 1
