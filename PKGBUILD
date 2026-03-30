@@ -1,7 +1,7 @@
 # Maintainer: Victor Sosa <victorsosadev@gmail.com>
 
 pkgname=vshyprland-manager
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Visual configuration editor for Hyprland — edit window manager settings with live preview"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
     'hyprfocus: focus animation plugin configuration support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/victorsosaMx/vsHyprland-Manager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4ee0a48912553f65c9abd740e4e0083829aac7d03156e01943d8272bd63d9a1f')
+sha256sums=('83fdb020fd4fd1e79ea3034c8ceb31ca34adebe6e881185bdc98584bd9048cea')
 
 package() {
     cd "vsHyprland-Manager-$pkgver"
