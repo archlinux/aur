@@ -1,0 +1,32 @@
+diff '--color=auto' -aur src.orig/performous-git/game/CMakeLists.txt src/performous-git/game/CMakeLists.txt
+--- src.orig/performous-git/game/CMakeLists.txt	2026-03-30 22:51:17.068314000 +0200
++++ src/performous-git/game/CMakeLists.txt	2026-03-30 22:51:51.394067920 +0200
+@@ -85,11 +85,11 @@
+ add_executable(performous ${SUBSYSTEM_WIN32} ${SOURCES})
+ # Libraries
+ 
+-find_package(Boost 1.55 CONFIG QUIET COMPONENTS program_options iostreams system locale)
++find_package(Boost 1.55 CONFIG QUIET COMPONENTS program_options iostreams locale)
+ if(NOT Boost_FOUND)
+-  find_package(Boost 1.55 REQUIRED COMPONENTS program_options iostreams system locale)
++  find_package(Boost 1.55 REQUIRED COMPONENTS program_options iostreams locale)
+ endif()
+-target_link_libraries(performous PRIVATE Boost::boost Boost::program_options Boost::iostreams Boost::system Boost::locale)
++target_link_libraries(performous PRIVATE Boost::boost Boost::program_options Boost::iostreams Boost::locale)
+ 
+ find_package(ICU 65 REQUIRED uc data i18n io)
+ target_link_libraries(performous PRIVATE ICU::uc ICU::data ICU::i18n ICU::io)
+diff '--color=auto' -aur src.orig/performous-git/testing/CMakeLists.txt src/performous-git/testing/CMakeLists.txt
+--- src.orig/performous-git/testing/CMakeLists.txt	2026-03-30 22:51:17.076424046 +0200
++++ src/performous-git/testing/CMakeLists.txt	2026-03-30 22:51:41.564750682 +0200
+@@ -50,8 +50,8 @@
+ 	
+ 	add_executable(performous_test ${SOURCES})
+ 
+-	find_package(Boost 1.55 REQUIRED COMPONENTS program_options iostreams system locale)
+-	target_link_libraries(performous_test PRIVATE Boost::boost Boost::iostreams Boost::program_options Boost::system Boost::locale)
++	find_package(Boost 1.55 REQUIRED COMPONENTS program_options iostreams locale)
++	target_link_libraries(performous_test PRIVATE Boost::boost Boost::iostreams Boost::program_options Boost::locale)
+ 
+ 	find_package(fmt 8.1 REQUIRED CONFIG)
+ 	target_link_libraries(performous_test PRIVATE fmt::fmt)

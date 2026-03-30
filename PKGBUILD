@@ -5,7 +5,7 @@
 # Contributor: dos1
 
 pkgname=performous-git
-pkgver=1.2.0.r388.g288f14a39
+pkgver=1.3.1.r284.gcf4006f2c
 pkgrel=1
 pkgdesc='A free game like "Singstar", "Rockband" or "Stepmania" (version from git)'
 arch=('i686' 'x86_64')
@@ -18,14 +18,22 @@ provides=(performous)
 conflicts=(performous)
 source=($pkgname::"git+https://github.com/performous/performous.git"
         "git+https://github.com/performous/compact_enc_det.git"
-        "git+https://github.com/performous/aubio.git")
+        "git+https://github.com/performous/aubio.git"
+        boost-1.90.patch)
 md5sums=('SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+         '780f04205829f5b11008ebbd5bdce96c')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
+  sed -e '/-Werror/d' -i */CMakeLists.txt
+  patch -p2 -i ../boost-1.90.patch
 }
 
 build() {

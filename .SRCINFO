@@ -1,6 +1,6 @@
 pkgbase = performous-git
 	pkgdesc = A free game like "Singstar", "Rockband" or "Stepmania" (version from git)
-	pkgver = 1.2.0.r388.g288f14a39
+	pkgver = 1.3.1.r284.gcf4006f2c
 	pkgrel = 1
 	url = http://performous.org
 	arch = i686
@@ -41,8 +41,10 @@ pkgbase = performous-git
 	source = performous-git::git+https://github.com/performous/performous.git
 	source = git+https://github.com/performous/compact_enc_det.git
 	source = git+https://github.com/performous/aubio.git
+	source = boost-1.90.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = 780f04205829f5b11008ebbd5bdce96c
 
 pkgname = performous-git
