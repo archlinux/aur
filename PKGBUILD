@@ -1,10 +1,10 @@
 pkgname=halflife-xash3d-fwgs
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Half Life powered by the xash3d-fwgs engine. NOTE: You will need to own the game so it can import the game files from your Half Life game file. "
 arch=('x86_64' 'aarch64')
 license=('GPL')
-depends=('xash3d-fwgs-bin' 'wget' 'unzip' 'yad' 'zenity')
+depends=('xash3d-fwgs-bin' 'wget' 'unzip' 'yad' 'zenity' 'sdl2-compat' 'lib32-sdl2-compat')
 replaces=('halflife')
 conflicts=('halflife')
 makedepends=('unzip')
