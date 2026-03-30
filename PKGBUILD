@@ -1,6 +1,6 @@
 # Maintainer: Tenchirox <tenchirox@github.com>
 pkgname=all4laser-git
-pkgver=0.1.0
+pkgver=0.1
 pkgrel=1
 pkgdesc="Open-source laser engraver controller built with Rust and egui"
 arch=('x86_64' 'aarch64')
@@ -68,7 +68,7 @@ package() {
     install -Dm644 "assets/all4laser.desktop" "${pkgdir}/usr/share/applications/all4laser.desktop"
 
     # Icon
-    install -Dm644 "A4L.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/all4laser.png"
+    install -Dm644 "A4L.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/all4laser.png"
 
     # License
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
