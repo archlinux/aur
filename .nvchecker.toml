@@ -1,0 +1,6 @@
+[mercury]
+source = 'htmlparser'
+url = 'https://dl.mercurylang.org/'
+xpath = "/html/body//a[starts-with(@href, 'release/mercury-srcdist-') and contains(@href, '.tar.gz') and not(contains(@href, '.tar.gz.sha512'))]"
+from_pattern = 'mercury-srcdist-([\d.]+)\.tar\.gz'
+to_pattern = '\1'
