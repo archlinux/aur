@@ -1,6 +1,6 @@
 pkgbase = localquens
 	pkgdesc = Local lorem ipsum text generator (fork of KDE Eloquens)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/robinpie/localquens
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = localquens
 	depends = kirigami
 	depends = qt6-base
 	depends = qt6-declarative
-	source = localquens-1.0.0.tar.gz::https://github.com/robinpie/Localquens/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 10bc40e57c293606b7d020a3578d18887a95742b15984e46084c2ea9cd2db0a7
+	source = localquens-1.0.1.tar.gz::https://github.com/robinpie/Localquens/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 56bec2f55004a285ce205c0cf9a15d02a3ce275ed85659e6f265d9225e17179b
 
 pkgname = localquens

@@ -1,6 +1,6 @@
 # Maintainer: robinpie <robin413@protonmail.com>
 pkgname=localquens
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Local lorem ipsum text generator (fork of KDE Eloquens)'
 arch=(x86_64)
@@ -17,7 +17,6 @@ depends=(
     'kirigami'
     'qt6-base'
     'qt6-declarative'
-    'qt6-svg'
 )
 makedepends=(
     'cmake'
@@ -25,7 +24,7 @@ makedepends=(
 )
 _srcname=Localquens
 source=("$pkgname-$pkgver.tar.gz::https://github.com/robinpie/$_srcname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('10bc40e57c293606b7d020a3578d18887a95742b15984e46084c2ea9cd2db0a7')
+sha256sums=('56bec2f55004a285ce205c0cf9a15d02a3ce275ed85659e6f265d9225e17179b')
 
 build() {
     cmake -B build -S "$_srcname-$pkgver" \
