@@ -17,5 +17,4 @@ package() {
   install -Dm755 dict_watch.sh "$pkgdir/usr/lib/$pkgname/dict_watch.sh"
   install -Dm755 dict_popup.sh "$pkgdir/usr/lib/$pkgname/dict_popup.sh"
   install -Dm644 dict.rasi "$pkgdir/usr/share/$pkgname/dict.rasi"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
