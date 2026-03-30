@@ -2,7 +2,7 @@
 
 pkgname=mpeghdec
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Fraunhofer MPEG-H audio decoder'
 arch=('x86_64')
 url='https://mpegh.com/'
@@ -33,4 +33,7 @@ package() {
     install -D -m755 build/bin/* -t "${pkgdir}/usr/bin"
     install -D -m644 "mpeghdec-r${pkgver}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     mv "${pkgdir}/usr/share/pkgconfig" "${pkgdir}/usr/lib"
+    rm -r "${pkgdir}/usr/include"/{ilo,mmtisobmff}
+    rm "${pkgdir}/usr/lib"/lib{ilo,mmtisobmff}.a
+    rm "${pkgdir}/usr/lib/pkgconfig"/{ilo,mmtisobmff}.pc
 }

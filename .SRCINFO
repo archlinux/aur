@@ -1,7 +1,7 @@
 pkgbase = mpeghdec
 	pkgdesc = Fraunhofer MPEG-H audio decoder
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mpegh.com/
 	arch = x86_64
 	license = LicenseRef-Custom
