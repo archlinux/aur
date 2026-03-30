@@ -1,6 +1,6 @@
 pkgbase = trae-cn-bin
 	pkgdesc = TRAE CN 桌面客户端（预编译二进制包）
-	pkgver = 2.3.13343
+	pkgver = 2.3.17110
 	pkgrel = 1
 	url = https://trae.ai/
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = trae-cn-bin
 	conflicts = trae-cn
 	conflicts = trae-cn-desktop-bin
 	conflicts = trae-bin
-	source = Trae%20CN-linux-x64-2.3.13343.deb::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.13343/linux/Trae%20CN-linux-x64.deb
-	sha256sums = 7f42a2aad4bef92e2a697c9d8962cb7f8b4bf0aa0efe0c2bbb9b49b43558daea
+	source = Trae%20CN-linux-x64-2.3.17110.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.17110/linux/Trae%20CN-linux-x64.tar.gz
+	sha256sums = 12673204f639ef50f4d2034273be8caac558638ff874c00810e50c00fdd99f2c
 
 pkgname = trae-cn-bin

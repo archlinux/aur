@@ -1,6 +1,6 @@
 pkgname=trae-cn-bin
 _pkgname=trae-cn
-pkgver=2.3.13343
+pkgver=2.3.17110
 pkgrel=1
 pkgdesc="TRAE CN 桌面客户端（预编译二进制包）"
 arch=('x86_64')
@@ -13,17 +13,15 @@ depends=(
 optdepends=('vulkan-icd-loader: 启用 Vulkan 加速')
 provides=('trae-cn')
 conflicts=('trae-cn' 'trae-cn-desktop-bin' 'trae-bin')
-source=("Trae%20CN-linux-x64-${pkgver}.deb::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/Trae%20CN-linux-x64.deb")
-sha256sums=('7f42a2aad4bef92e2a697c9d8962cb7f8b4bf0aa0efe0c2bbb9b49b43558daea')
+source=("Trae%20CN-linux-x64-${pkgver}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/Trae%20CN-linux-x64.tar.gz")
+sha256sums=('12673204f639ef50f4d2034273be8caac558638ff874c00810e50c00fdd99f2c')
 
 package() {
   cd "$srcdir"
 
-  # 解包 deb -> data.tar.* -> $pkgdir
-  ar x "Trae%20CN-linux-x64-${pkgver}.deb"
-  local _data_tar
-  _data_tar=$(ls data.tar.*)
-  bsdtar -xf "${_data_tar}" -C "$pkgdir"
+  # 解包 tar.gz -> /usr/share/${_pkgname}
+  install -d "$pkgdir/usr/share/${_pkgname}"
+  bsdtar -xf "Trae%20CN-linux-x64-${pkgver}.tar.gz" -C "$pkgdir/usr/share/${_pkgname}"
 
   # 创建可执行入口
   install -d "$pkgdir/usr/bin"
