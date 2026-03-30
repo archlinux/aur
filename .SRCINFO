@@ -1,0 +1,16 @@
+pkgbase = pacforge
+	pkgdesc = A C++ TUI wizard for building .deb and .rpm packages
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Vniverse77/byte-knight
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = glibc
+	depends = gcc-libs
+	optdepends = dpkg: Required for building .deb packages
+	optdepends = rpm-tools: Required for building .rpm packages
+	source = pacforge-1.0.0.tar.gz::https://github.com/Vniverse77/byte-knight/archive/v1.0.0.tar.gz
+	sha256sums = de758b5fc9ad118a588e094b9879c88b58afb5a68498e4aeb9e22d60687f45b9
+
+pkgname = pacforge
