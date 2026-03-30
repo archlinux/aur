@@ -5,7 +5,7 @@ _pkgname=ftop
 pkgname=${_pkgname}-bin
 pkgver=0.0.15
 pkgrel=1
-pkgdesc="Finformative top for finding fiery processes."
+pkgdesc="Finformative top for finding fiery processes"
 
 arch=('x86_64' 'i686' 'aarch64')
 _barch=('386' '386' 'arm')

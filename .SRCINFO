@@ -1,5 +1,5 @@
 pkgbase = ftop-bin
-	pkgdesc = Finformative top for finding fiery processes.
+	pkgdesc = Finformative top for finding fiery processes
 	pkgver = 0.0.15
 	pkgrel = 1
 	url = https://github.com/walles/ftop
