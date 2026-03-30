@@ -1,0 +1,5 @@
+[otf-inconsolata-lgc]
+source = 'github'
+github = 'MihailJP/Inconsolata-LGC'
+use_latest_release = true
+prefix = 'LGC-'
