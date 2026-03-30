@@ -1,19 +1,19 @@
 # Maintainer: Network Jack <Network_Jack@null.net>
 
 pkgname=bloodhound
-_pkgname=BloodHound
+_pkgname=BloodHound-Legacy
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Use graph theory to reveal the hidden and often unintended relationships within an Active Directory"
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/BloodHoundAD/BloodHound"
+url="https://github.com/SpecterOps/BloodHound-Legacy"
 license=('GPL3')
 depends=('neo4j-community' 'java-runtime>=11')
 makedepends=('electron' 'npm' 'python-sphinx' 'python-sphinx_rtd_theme')
 optdepends=('python-bloodhound: Python injest tool that runs on natively on Linux')
-source=("https://github.com/BloodHoundAD/BloodHound/archive/refs/tags/v${pkgver}.tar.gz"
+source=("https://github.com/SpecterOps/BloodHound-Legacy/archive/refs/tags/v${pkgver}.zip"
 	"bloodhound.desktop")
-sha256sums=('a0c98140059b25dc1cb1e31f7a809d62b855b5947ee39bbc77c0867819d2d993'
+sha256sums=('71172c661f6755ae6ceea7d33d72830cdfaf1580cfc507e88653a15dcedf8995'
             '8a64de7e9fc4857fadd890cc8966a641a896077eb2c869a7eb0987074dcd02c2')
 build() {
   cd "${_pkgname}-${pkgver}"
