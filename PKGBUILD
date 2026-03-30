@@ -15,10 +15,10 @@ makedepends=('unzip')
 #   "htTps://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux-${pkgver}.zip.asc")
 source_x86_64=("https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux64-${pkgver}.zip"
     "https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux64-${pkgver}.zip.asc"
-    "swt-4.36-x86_64.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.39-202602260420/swt-4.39-gtk-linux-x86_64.zip")
+    "swt-4.39-x86_64.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.39-202602260420/swt-4.39-gtk-linux-x86_64.zip")
 source_aarch64=("https://willuhn.de/products/jameica/releases/current/jameica/jameica-linuxarm64-${pkgver}.zip"
     "https://willuhn.de/products/jameica/releases/current/jameica/jameica-linuxarm64-${pkgver}.zip.asc"
-    "swt-4.36-aarch64.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.39-202602260420/swt-4.39-win32-win32-aarch64.zip")
+    "swt-4.39-aarch64.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.39-202602260420/swt-4.39-win32-win32-aarch64.zip")
 validpgpkeys=("7314FBDE7D38EE5610D291B65A8ED9CFC0DB6C70") # Olaf Willuhn <info@willuhn.de>
 source=("jameica-start-script.patch" "jameicaserver-start-script.patch"
         "jameica.desktop")
