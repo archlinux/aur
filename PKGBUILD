@@ -25,7 +25,7 @@ _enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-0}
 _reponame=syncthingtray
 pkgname=syncthingtray
 pkgver=2.0.9
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
 license=(GPL-2.0-or-later)
@@ -75,7 +75,7 @@ build() {
 check() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   # https://github.com/syncthing/syncthing/issues/8785
-  HOME="$(mktemp -p . -d testhome.XXX)" QT_QPA_PLATFORM=offscreen SYNCTHING_PORT=$(ephemeral_port) SYNCTHING_TEST_TIMEOUT_FACTOR=3 ninja check
+  HOME="$(mktemp -p "$PWD" -d testhome.XXX)" QT_QPA_PLATFORM=offscreen SYNCTHING_PORT=$(ephemeral_port) SYNCTHING_TEST_TIMEOUT_FACTOR=3 ninja check
 }
 
 package() {
