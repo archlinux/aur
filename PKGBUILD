@@ -3,7 +3,7 @@
 _name="spm"
 pkgname="matlab-${_name}"
 pkgver=25.01.02
-pkgrel=2
+pkgrel=3
 pkgdesc="Suite of MATLAB functions, scripts, and data files, implementing Statistical Parametric Mapping"
 arch=(
   'x86_64'
@@ -37,13 +37,21 @@ prepare() {
   mkdir -p "${_pkgsrc}"
   bsdtar -xf "${_pkgsrc}.zip" --strip-components=1 -C "${_pkgsrc}"
 
-  cd "${_pkgsrc}/src"
+  cd "${_pkgsrc}"
+  find . -type f -name '*.mex*' ! -name '*.mexa64' -delete
+
+  cd "src"
   sed -e "s^largeArrayDims$^& CFLAGS=\"${CFLAGS} -fPIC\" CXXFLAGS=\"${CXXFLAGS} -fPIC\" LDFLAGS=\"${LDFLAGS}\"^g" \
       -i 'Makefile.var'
 }
 
 build() {
   cd "${srcdir}/${_pkgsrc}/src"
+  # make clean
+  make MEXBIN="matlab-mex"
+  make install
+
+  cd "${srcdir}/${_pkgsrc}/external"
   # make clean
   make MEXBIN="matlab-mex"
   make install
