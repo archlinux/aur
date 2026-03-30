@@ -34,6 +34,7 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
 
     # Install ONLY the package itself, NOT its dependencies (handled by pacman)
+    # Use --force-reinstall to ensure installation in fakeroot
     pip install --root="$pkgdir" --prefix=/usr --no-deps --no-build-isolation \
-        dist/*.whl
+        --ignore-installed dist/*.whl
 }
