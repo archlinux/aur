@@ -1,15 +1,16 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpeghdec-git
-pkgver=3.0.2.r0.g335a258
+pkgver=3.0.3.r0.gc08b803
 pkgrel=1
 pkgdesc='Fraunhofer MPEG-H audio decoder (git version)'
 arch=('x86_64')
 url='https://mpegh.com/'
 license=('LicenseRef-Custom')
 depends=(
-    'gcc-libs'
-    'glibc')
+    'glibc'
+    'libgcc'
+    'libstdc++')
 makedepends=(
     'cmake'
     'git')
