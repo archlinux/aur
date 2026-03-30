@@ -1,8 +1,8 @@
 # Maintainer: Niklas Schönberg <niklas@foonly.dev>
 
 pkgname=jman
-pkgver=4.16.0
-pkgrel=2
+pkgver=4.17.1
+pkgrel=1
 pkgdesc="A command-line utility designed to manage WordPress sites hosted on SpinupWP."
 url="https://github.com/JCO-Digital/${pkgname}"
 license=("GPL-3.0-only")
@@ -12,12 +12,12 @@ conflicts=("jman")
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=(!debug !lto)
-sha256sums=('3a57be460a9697802d21a6c71c62d13639c0ef50a20de3ca5bbce0445dd9036d')
+sha256sums=('7aa6bf0f2cb534f663e51e880a4e2c0fa41a3cb06d2bd7844c237dba321c912d')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	go build -v -tags noupdate -ldflags="-s -w -X github.com/JCO-Digital/jman/internal/config.AppVersion=${pkgver}" ./cmd/jman
+	go build -tags noupdate -ldflags="-s -w -X github.com/JCO-Digital/jman/internal/config.AppVersion=${pkgver}" ./cmd/jman
 
 	export XDG_CONFIG_HOME="${srcdir}/config"
 	export XDG_DATA_HOME="${srcdir}/data"
