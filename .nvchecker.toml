@@ -1,0 +1,6 @@
+[libmakepkg-hexora]
+source = "gitlab"
+gitlab = "auerhuhn/libmakepkg-hexora"
+host = "gitlab.archlinux.org"
+prefix = "v"
+use_max_tag = true
