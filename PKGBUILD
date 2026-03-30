@@ -8,7 +8,7 @@
 # `conflicts` directives. Neither scenario is ideal, so just use the old name.
 pkgname=adduser-deb
 _pkgname=adduser-debian
-pkgver=3.154
+pkgver=3.155
 pkgrel=1
 pkgdesc="Debian's 'adduser' and 'deluser' commands for creating and removing users"
 arch=("any")
@@ -43,9 +43,9 @@ backup=("etc/adduser.conf" "etc/deluser.conf")
 source=("https://salsa.debian.org/debian/adduser/-/archive/debian/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "arch-license-path.patch"
         "arch-policy.patch")
-sha256sums=('3cdf47e17c5e64d4e020a48338dec957ed6da36929f6e8373c46a66c0c124cd1'
+sha256sums=('6ada7f113ff0c43efcf621c07fe22a7b2de9023cd735d738c66562430854ce9c'
             'fa6590b6d8d6dfab1b4da3230115c3d69fd70c7dea84e5308369819c0a5734f4'
-            '0919b4dd832f49782119622159f36bfff42677aace5ec2c2dc232fe7e8705649')
+            '0298fd67a2b313f44d83024c737fbf0408871c29e28324223abe8d3269391ec9')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -116,7 +116,7 @@ package() {
   # Binaries and helper scripts
   install -d "${pkgdir}/usr/bin" "${pkgdir}/usr/share/perl5/vendor_perl/Debian"
   install -m755 {add,del}user "${pkgdir}/usr/bin"
-  install -m755 Adduser{Common,Logging,Retvalues}.pm \
+  install -m755 Adduser{Common,CreateHomedir,Logging,Retvalues,Statefile}.pm \
           "${pkgdir}/usr/share/perl5/vendor_perl/Debian"
   ln -s adduser "${pkgdir}/usr/bin/addgroup"
   ln -s deluser "${pkgdir}/usr/bin/delgroup"

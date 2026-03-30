@@ -1,6 +1,6 @@
 pkgbase = adduser-deb
 	pkgdesc = Debian's 'adduser' and 'deluser' commands for creating and removing users
-	pkgver = 3.154
+	pkgver = 3.155
 	pkgrel = 1
 	url = https://salsa.debian.org/debian/adduser
 	arch = any
@@ -17,11 +17,11 @@ pkgbase = adduser-deb
 	conflicts = adduser
 	backup = etc/adduser.conf
 	backup = etc/deluser.conf
-	source = https://salsa.debian.org/debian/adduser/-/archive/debian/3.154/adduser-debian-3.154.tar.gz
+	source = https://salsa.debian.org/debian/adduser/-/archive/debian/3.155/adduser-debian-3.155.tar.gz
 	source = arch-license-path.patch
 	source = arch-policy.patch
-	sha256sums = 3cdf47e17c5e64d4e020a48338dec957ed6da36929f6e8373c46a66c0c124cd1
+	sha256sums = 6ada7f113ff0c43efcf621c07fe22a7b2de9023cd735d738c66562430854ce9c
 	sha256sums = fa6590b6d8d6dfab1b4da3230115c3d69fd70c7dea84e5308369819c0a5734f4
-	sha256sums = 0919b4dd832f49782119622159f36bfff42677aace5ec2c2dc232fe7e8705649
+	sha256sums = 0298fd67a2b313f44d83024c737fbf0408871c29e28324223abe8d3269391ec9
 
 pkgname = adduser-deb

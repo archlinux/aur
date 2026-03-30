@@ -1,8 +1,8 @@
 diff --git a/AdduserCommon.pm b/AdduserCommon.pm
-index 46ff6de..0a31847 100644
+index c2bf900..3dede30 100644
 --- a/AdduserCommon.pm
 +++ b/AdduserCommon.pm
-@@ -88,8 +88,8 @@ use constant {
+@@ -89,8 +89,8 @@ use constant {
      numberre => qr/[0-9]+/,
      namere => qr/^([^-+~:,\s\/][^:,\s\/]*)$/aa,
      anynamere => qr/^([^-+~:,\s\/][^:,\s\/]*)$/aa,
@@ -13,32 +13,32 @@ index 46ff6de..0a31847 100644
      def_ieee_name_regex => qr/^[a-zA-Z0-9_.][a-zA-Z0-9_.-]*\$?$/aa,
      def_min_regex => qr(^[^-+~:,\s/][^:,\s/]*$)aa,
  };
-@@ -485,18 +485,18 @@ sub preseed_config {
-         backup => 0,
-         backup_to => ".",
-         dshell => "/bin/bash",
+@@ -502,18 +502,18 @@ sub read_config {
+         backup           => 0,
+         backup_to        => ".",
+         dshell           => "/bin/bash",
 -        first_system_uid => 100,
 +        first_system_uid => 500,
-         last_system_uid => 999,
-         first_uid => 1000,
--        last_uid => 59999,
+         last_system_uid  => 999,
+         first_uid        => 1000,
+-        last_uid         => 59999,
 -        first_system_gid => 100,
-+        last_uid => 60000,
++        last_uid         => 60000,
 +        first_system_gid => 500,
-         last_system_gid => 999,
-         first_gid => 1000,
--        last_gid => 59999,
-+        last_gid => 60000,
-         dhome => "/home",
-         skel => "/etc/skel",
-         usergroups => "yes",
--        users_gid => undef,
-+        users_gid => -1,
-         users_group => undef,
-         grouphomes => "no",
-         letterhomes => "no",
+         last_system_gid  => 999,
+         first_gid        => 1000,
+-        last_gid         => 59999,
++        last_gid         => 60000,
+         dhome            => "/home",
+         skel             => "/etc/skel",
+         usergroups       => "yes",
+-        users_gid        => undef,
++        users_gid        => -1,
+         users_group      => undef,
+         dir_mode         => "0700",
+         sys_dir_mode     => "0755",
 diff --git a/adduser.conf b/adduser.conf
-index ff82f9e..ee9eb85 100644
+index b7bbada..e861ae5 100644
 --- a/adduser.conf
 +++ b/adduser.conf
 @@ -31,21 +31,21 @@
@@ -81,7 +81,7 @@ index ff82f9e..ee9eb85 100644
  #USERS_GID=100
  #USERS_GROUP=users
  
-@@ -89,14 +90,14 @@
+@@ -84,14 +85,14 @@
  # scripts. Therefore, the default is more restrictive than RFC8265 would
  # allow. Local administrators might relax this regexp as far as useradd
  # will allow.
@@ -101,7 +101,7 @@ index ff82f9e..ee9eb85 100644
  # When populating the newly created home directory of a non-system user,
  # files in SKEL matching this regex are not copied.
 diff --git a/doc/adduser.conf.5 b/doc/adduser.conf.5
-index 2e61b63..d8c62b9 100644
+index 881386f..ea82dff 100644
 --- a/doc/adduser.conf.5
 +++ b/doc/adduser.conf.5
 @@ -68,17 +68,17 @@ Defaults to \fIusers\fP.
@@ -134,7 +134,7 @@ index 2e61b63..d8c62b9 100644
  .TP
  .B GID_POOL
  See \fBUID_POOL\fP.
-@@ -119,7 +119,7 @@ user and group creation in \fBadduser\fR(8) is refused
+@@ -107,7 +107,7 @@ user and group creation in \fBadduser\fR(8) is refused
  unless \fB\-\-allow\-bad\-names\fR is set.
  With \fB\-\-allow\-bad\-names\fR set,
  weaker checks are performed.
@@ -143,7 +143,7 @@ index 2e61b63..d8c62b9 100644
  See \fBSYS_NAME_REGEX\fP and \fBValid names\fP,
  below, for more information.
  .TP
-@@ -173,7 +173,7 @@ system user and group creation in adduser is refused
+@@ -145,7 +145,7 @@ system user and group creation in adduser is refused
  unless \fB\-\-allow\-bad\-names\fP is set.
  With \fB\-\-allow\-bad\-names\fP set,
  weaker checks are performed.
