@@ -2,8 +2,8 @@
 # Contributor: Łukasz Mariański <lmarianski at protonmail dot com>
 
 pkgname=itch-bin
-pkgver=26.1.9
-pkgrel=4
+pkgver=26.9.0
+pkgrel=1
 pkgdesc="The itch.io desktop app (binary release)"
 url="https://itchio.itch.io/itch"
 license=('MIT')
@@ -18,18 +18,21 @@ optdepends=('firejail: sandbox preference'
             'wine: Windows games')
 source=("itch-linux-amd64-$pkgver.zip::https://broth.itch.zone/itch/linux-amd64/$pkgver/archive/default"
         "https://github.com/itchio/itch/raw/31d8d2f5646f9c6ab93cdd3a8bd1be6f59c687af/LICENSE")
-sha256sums=('9324777a2edf37d3afaa39b073050c2a5d3a07fec45d21171813af9e6b3fd6a3'
+sha256sums=('689083036a945db8dd2a744760432082a39568b6fc8cbbde66f00996323ee2d5'
             '747d5f4b6f82e28fbd50e192ee6e977159e4848cb55e0cc6ee04219832932d7c')
 
 prepare() {
+# fix only if installed
+if pacman -Qq firejail &>/dev/null; then
   echo "# Creating two symlinks under the HOME directory" && sleep 1
   echo "# to fix the firejail issue, see:" && sleep 1
   echo "# https://github.com/itchio/itch/issues/2732" && sleep 4
   _DIR="$HOME/.config/itch/prereqs/firejail-amd64"
   _DIR2="$HOME/.config/itch/prereqs/firejail-386"
-  mkdir -p $_DIR $_DIR2
-  ln -sf /usr/bin/firejail $_DIR
-  ln -sf /usr/bin/firejail $_DIR2
+  mkdir -p "$_DIR" "$_DIR2"
+  ln -sf /usr/bin/firejail "$_DIR"
+  ln -sf /usr/bin/firejail "$_DIR2"
+fi
 
 # Create a shortcut
   echo -e "[Desktop Entry]\n\
