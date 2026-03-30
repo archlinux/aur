@@ -2,16 +2,16 @@
 pkgname=opengrid-git
 pkgver=r1.g0000000
 pkgrel=1
-pkgdesc="Modern graphical interface for network management with Serial, SSH, TFTP, IP Scanner, SNMP, Traceroute, VulnScan and Speed Test (iPerf3 / fast.com)"
+pkgdesc="Modern graphical interface for network management with Serial, SSH, TFTP, IP Scanner, SNMP, Traceroute, VulnScan and Speed Test (iPerf3 / speedtest.net)"
 arch=('any')
 url="https://github.com/benjamimgois/opengrid"
 license=('GPL-3.0-or-later')
 depends=('python' 'python-pyqt6' 'python-pyte' 'python-paramiko' 'python-pysnmp' 'python-standard-telnetlib' 'qt6-serialport' 'picocom' 'sudo' 'openssh' 'samba' 'iperf3' 'traceroute' 'mtr' 'networkmanager' 'nmap')
-optdepends=('nodejs: required for fast-cli (npm install -g fast-cli) — Speed Test via fast.com'
+optdepends=('python-speedtest-cli: Speed Test via speedtest.net'
             'python-pyftpdlib: built-in FTP server support'
             'tigervnc: VNC remote desktop viewer'
             'freerdp: RDP remote desktop client (provides wlfreerdp for Wayland)')
-makedepends=('git' 'imagemagick')
+makedepends=('git' 'inkscape')
 provides=('opengrid')
 conflicts=('opengrid')
 install=opengrid.install
@@ -29,14 +29,16 @@ package() {
     # Install main script
     install -Dm755 opengrid "${pkgdir}/usr/bin/opengrid"
 
-    # Install icon in hicolor theme (FreeDesktop.org standard)
+    # Install SVG icon (scalable — source of truth)
     install -Dm644 assets/icons/opengrid_icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/opengrid.svg"
-    install -Dm644 assets/icons/opengrid.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/opengrid.png"
 
-    # Create scaled versions for better compatibility
-    for size in 256 128 64 48 32 16; do
+    # Generate PNG sizes from SVG at install time
+    for size in 16 32 48 64 128 256 512; do
         install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-        magick assets/icons/opengrid.png -resize ${size}x${size} "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/opengrid.png"
+        inkscape --export-type=png \
+            --export-filename="${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/opengrid.png" \
+            --export-width=${size} --export-height=${size} \
+            assets/icons/opengrid_icon.svg
     done
 
     # Install UI icons (sidebar and misc) — all SVGs

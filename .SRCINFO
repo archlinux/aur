@@ -6,7 +6,7 @@ pkgbase = opengrid-git
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = imagemagick
+	makedepends = inkscape
 	install = opengrid.install
 	source = opengrid-git::git+https://github.com/benjamimgois/opengrid.git
 	sha256sums = SKIP
@@ -29,7 +29,7 @@ pkgbase = opengrid-git
 	optdepends = python-speedtest-cli: Speed Test via speedtest.net
 	optdepends = python-pyftpdlib: built-in FTP server support
 	optdepends = tigervnc: VNC remote desktop viewer
-	optdepends = freerdp: RDP remote desktop client
+	optdepends = freerdp: RDP remote desktop client (provides wlfreerdp for Wayland)
 	provides = opengrid
 	conflicts = opengrid
 
