@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://github.com/ThiagoAVicente/hyprexpose'
 license=('MIT')
 depends=('wayland' 'cairo' 'pango' 'hyprland')
-makedepends=('git' 'wayland-protocols')
+makedepends=('git' 'rust' 'cargo')
 provides=('hyprexpose')
 conflicts=('hyprexpose')
 source=("git+${url}.git")
@@ -20,12 +20,12 @@ pkgver() {
 
 build() {
     cd hyprexpose
-    make
+    cargo build --release --locked
 }
 
 package() {
     cd hyprexpose
-    install -Dm755 hyprexpose "$pkgdir/usr/bin/hyprexpose"
+    install -Dm755 target/release/hyprexpose "$pkgdir/usr/bin/hyprexpose"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
