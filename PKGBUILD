@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fooyin
 _pkgname=Fooyin
-pkgver=0.9.2
-pkgrel=4
+pkgver=0.10.1
+pkgrel=1
 pkgdesc="A customisable music player."
 arch=('x86_64')
 url="https://www.fooyin.org/"
@@ -41,19 +41,9 @@ optdepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('a3b0e880047790d169223983d4f9a26a2196499275d57321b15e9578dd716a94')
+sha256sums=('32f3ff627612cd2d2d3ed8cb3d8a128f05079bdf5aa906b5c8bb5941707bd833')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    sed -i "36i\#include <QElapsedTimer>" src/plugins/vumeter/vumeterwidget.cpp
-    sed -i -e "
-        136i\    const QString baseName = info.completeBaseName();
-        145i\    for(const QString& file : files) {
-        145i\        if(QFileInfo{file}.completeBaseName().compare(baseName, Qt::CaseInsensitive) == 0) {
-        145i\            return dir.absoluteFilePath(file);
-        145i\        }
-        145i\    }
-    " src/core/playlist/parsers/cueparser.cpp
-    sed -i "s/\.arg(alignment)/.arg(static_cast<int>(alignment))/g" src/utils/starrating.cpp
     cmake -S . -B build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_PCH=ON \
