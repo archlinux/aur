@@ -2,15 +2,15 @@
 pkgdesc='Python module for the HiPack serialization format'
 pkgname=python-hipack
 _pkgname=hipack
-pkgver=14
+pkgver=15
 pkgrel=1
 url='http://hipack.org'
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 license=(GPL-3.0-only MIT)
 arch=(any)
-source=("https://github.com/aperezdc/hipack-python/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-b2sums=('88183f38f8fb7a97fb9870a8b742bdfbe648cc8a2ad9cfa785f2438e6376236608c544fb2887255153f05f4c30b55b374dfa3a237400768d8a34589a4fe30714')
+source=("https://github.com/aperezdc/hipack-python/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.lz")
+b2sums=('574eef41fd76337bd8a11f4326bcd7f61c9c4c26c872b21d8a22e1cbd2a87aad5d4090807c2e1ad7e0f197486e3284567f174d3010e14e18dc28d73f40f60f67')
 
 build () {
 	cd "${_pkgname}-${pkgver}"
