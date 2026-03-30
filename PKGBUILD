@@ -2,7 +2,7 @@
 # NERF: AI Security Engineering Platform
 
 pkgname=nerf-pi
-pkgver=1.0.0
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="AI security engineering platform: 1,563 skills, 9 modes, 39 compliance frameworks, engagement engine"
 arch=('any')

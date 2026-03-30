@@ -1,6 +1,6 @@
 pkgbase = nerf-pi
 	pkgdesc = AI security engineering platform: 1,563 skills, 9 modes, 39 compliance frameworks, engagement engine
-	pkgver = 1.0.0
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/defconxt/NERF
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = nerf-pi
 	optdepends = katana: web crawling and attack surface discovery
 	optdepends = docker: benchmark sandbox and container security testing
 	optdepends = ollama: local LLM inference
-	source = git+https://github.com/defconxt/NERF.git#tag=v1.0.0
+	source = git+https://github.com/defconxt/NERF.git#tag=v1.0.9
 	sha256sums = SKIP
 
 pkgname = nerf-pi
