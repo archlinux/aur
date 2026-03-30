@@ -1,6 +1,6 @@
 # Maintainer: Vniverse77 <vniverse77@porotonmail.com>
 pkgname=pacforge
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A C++ TUI wizard for building .deb and .rpm packages"
 arch=(x86_64)
@@ -13,7 +13,7 @@ optdepends=(
   "rpm-tools: Required for building .rpm packages"
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Vniverse77/byte-knight/archive/v$pkgver.tar.gz")
-sha256sums=('de758b5fc9ad118a588e094b9879c88b58afb5a68498e4aeb9e22d60687f45b9')
+sha256sums=('a19be56dcd3949b66219cfb51ec8ad8aeb894cb6044a2bd2b05dec219481ab1a')
 
 build() {
   cd "byte-knight-$pkgver"
