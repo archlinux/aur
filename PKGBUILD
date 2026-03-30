@@ -19,7 +19,7 @@ optdepends=(
     'hyprfocus: focus animation plugin configuration support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/victorsosaMx/vsHyprland-Manager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('4ee0a48912553f65c9abd740e4e0083829aac7d03156e01943d8272bd63d9a1f')
 
 package() {
     cd "vsHyprland-Manager-$pkgver"
