@@ -1,0 +1,5 @@
+[python-hipack]
+source = 'github'
+github = 'aperezdc/hipack-python'
+use_latest_release = true
+prefix = 'v'
