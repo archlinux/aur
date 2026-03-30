@@ -19,7 +19,7 @@ pkgbase = serial-studio-bin
 	options = !debug
 	source_x86_64 = serial-studio-pro-x86_64-3.2.6-1.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.2.6/Serial-Studio-Pro-3.2.6-Linux-x64.AppImage
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = serial-studio-pro-x86_64-3.2.6-1.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.2.6/Serial-Studio-Pro-3.2.6-Linux-arm64.AppImage
+	source_aarch64 = serial-studio-pro-aarch64-3.2.6-1.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.2.6/Serial-Studio-Pro-3.2.6-Linux-arm64.AppImage
 	sha256sums_aarch64 = SKIP
 
 pkgname = serial-studio-bin
