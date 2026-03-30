@@ -5,7 +5,7 @@ pkgname=(
   minijinja-cli
   python-minijinja
 )
-pkgver=2.15.1
+pkgver=2.18.0
 pkgrel=1
 pkgdesc="A powerful but minimal dependency template engine for Rust compatible with Jinja/Jinja2"
 url="https://github.com/mitsuhiko/minijinja"
@@ -55,8 +55,8 @@ check() {
 package_minijinja-cli() {
   pkgdesc+=" (CLI utility)"
   depends=(
-    gcc-libs
     glibc
+    libgcc
   )
 
   cd $pkgbase
@@ -67,8 +67,8 @@ package_minijinja-cli() {
 package_python-minijinja() {
   pkgdesc+=" (Python bindings)"
   depends=(
-    gcc-libs
     glibc
+    libgcc
     python
     python-markupsafe
   )
@@ -77,4 +77,4 @@ package_python-minijinja() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('cb6b9aaec91319d1ab559e3d83ddddcec060a0a122d751959afe7fb103f81d06')
+sha256sums=('81a205c020b41503725a2ed72c41c07842381765da9d39ebc4e8402241958037')
