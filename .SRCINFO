@@ -1,6 +1,6 @@
 pkgbase = neuro-karaoke-wrapper-git
 	pkgdesc = Desktop wrapper for neurokaraoke.com with media controls and tray support
-	pkgver = 1.5.0.r11.2122beb
+	pkgver = 1.5.1.r0.cfc6434
 	pkgrel = 1
 	url = https://github.com/AferilVT/neuro-karaoke-wrapper
 	arch = x86_64
