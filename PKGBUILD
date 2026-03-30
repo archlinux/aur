@@ -2,7 +2,7 @@
 
 pkgname=game-icon-fixer-git
 pkgver=0 # Will be auto-updated by pkgver()
-pkgrel=1
+pkgrel=2
 pkgdesc="A clever GTK4/Libadwaita application to fix and manage Steam and Faugus Launcher desktop shortcut icons on Wayland."
 arch=('any')
 url="https://github.com/AdityaHebballe/Game-Icon-Fixer"
