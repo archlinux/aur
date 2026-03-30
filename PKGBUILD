@@ -4,7 +4,7 @@ _rockname=resilient.sile
 pkgname=("sile-${_rockname%.sile}")
 pkgver=4.1.0
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced book classes and packages for the SILE typesetting system'
 arch=(any)
 url="https://github.com/Omikhleia/$_rockname"
@@ -17,10 +17,10 @@ _siledeps=(barcodes
            ptable
            qrcode
            textsubsuper)
-conflicts=(sile-fancytoc
-           sile-printoptions)
 replaces=(sile-fancytoc
-          sile-printoptions)
+           sile-printoptions
+           sile-markdown)
+conflicts=(${replaces[@]})
 depends=(sile
          "${_siledeps[@]/#/sile-}")
 makedepends=(lua51

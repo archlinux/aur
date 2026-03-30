@@ -1,7 +1,7 @@
 pkgbase = sile-resilient
 	pkgdesc = Advanced book classes and packages for the SILE typesetting system
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Omikhleia/resilient.sile
 	arch = any
 	license = MIT
@@ -18,8 +18,10 @@ pkgbase = sile-resilient
 	depends = sile-textsubsuper
 	conflicts = sile-fancytoc
 	conflicts = sile-printoptions
+	conflicts = sile-markdown
 	replaces = sile-fancytoc
 	replaces = sile-printoptions
+	replaces = sile-markdown
 	source = https://github.com/Omikhleia/resilient.sile/archive/v4.1.0/resilient.sile-4.1.0.tar.gz
 	sha256sums = 8e4c95fca10bc82e9be66b8aa3dddd587d9bc7e639cfeef6143b58d0f7f2a5ff
 
