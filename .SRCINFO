@@ -1,7 +1,7 @@
 pkgbase = python-apollo-fpga
 	pkgdesc = Microcontroller-based FPGA/JTAG programmer
 	pkgver = 1.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/greatscottgadgets/apollo
 	arch = any
 	license = BSD-3-Clause
@@ -17,6 +17,7 @@ pkgbase = python-apollo-fpga
 	depends = python-pyusb
 	depends = python-pyvcd
 	depends = python-pyxdg
+	optdepends = gtkwave: to display ILA results interactively
 	optdepends = python-amaranth: for flashing
 	optdepends = python-luna-usb: to use the flash-fast subcommand
 	optdepends = python-pyserial: to connect to an integrated logic analyzer
