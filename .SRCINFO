@@ -1,6 +1,6 @@
 pkgbase = snapraid
 	pkgdesc = tool for Snapshot RAID: generate parity files, maintain checksums on data, restore lost data
-	pkgver = 13.0
+	pkgver = 14.0
 	pkgrel = 1
 	url = http://www.snapraid.it/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = snapraid
 	depends = libutil-linux
 	depends = glibc
 	optdepends = smartmontools: needed for snapraid smart
-	source = https://github.com/amadvance/snapraid/releases/download/v13.0/snapraid-13.0.tar.gz
-	sha256sums = 0282a9eec3301cd608dc45d9182b6d207f9fd4d25828c9deb329a015c77cb4e2
+	source = https://github.com/amadvance/snapraid/releases/download/v14.0/snapraid-14.0.tar.gz
+	sha256sums = 59e10835c0397193cb27969852a51059f0b0b9abb6cec2353f3052f6bd18e85d
 
 pkgname = snapraid
