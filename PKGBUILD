@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xresconv-gui-bin
-pkgver=2.5.5
-_electronversion=39
+pkgver=2.6.0
+_electronversion=41
 pkgrel=1
 pkgdesc="批量转表工具的GUI版本,依赖electron.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -30,9 +30,9 @@ source=(
 sha256sums=('3383900bc8b96fe4f9fcd7c851f925bc995aa3db9c054e5838c1e2703bf57898'
             '04855dd97336c31e617fba43527ab81b7745f7057641a05eaef99824ec564fb1'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('23f65db75ff32f7f1f95ca04bc76c7521c695be0aca098406b51aaecf7f1f126')
-sha256sums_armv7h=('26286a53d16aa737fff9bd8131edeb42e8ceabc0954b7ad5af2bdf0328e20390')
-sha256sums_x86_64=('f5fad8229faad9bcd4fcaed0bcda5a40c791ae66e2e9d9578b9789afabf94f59')
+sha256sums_aarch64=('15007cff1f6c859e3982ffc8bcc72dfc751282598bfc6c4b706195993bf86fe2')
+sha256sums_armv7h=('cf94244f93ef372fd9464a462d04faed9272eba495a418f6ba24eb93d8d9b12a')
+sha256sums_x86_64=('dfd9cce15f810bc058f72b2ee8d23930e4ef01f0b9553db0b387bc716bb64702')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/${pkgname%-bin}-linux-"*/"${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -55,7 +55,15 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/${pkgname%-bin}-linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/${pkgname%-bin}-linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${pkgname%-bin}-linux-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
