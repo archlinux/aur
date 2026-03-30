@@ -1,7 +1,7 @@
 pkgbase = kwm
 	pkgdesc = Kewuaa's window manager for the River compositor
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kewuaa/kwm
 	install = kwm.install
 	arch = x86_64
