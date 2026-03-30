@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postybirb-bin
 _pkgname=PostyBirb
-pkgver=4.0.21
+pkgver=4.0.23
 _electronversion=35
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-rpm-x86_64.rpm")
 sha256sums=('f549ac630b1a4e0e8a80ae21c37d1c7d63f00e1cd155d5f747a5315b54ae2e31'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('08b1c713fd2026484410c8348d5848a900c5370f64bc7c41556ba2fd1fd8c7e6')
-sha256sums_x86_64=('83857cabaf62e101ef5faf1488c250322a1feeeb04ea763a4c5ec3cbbc949e89')
+sha256sums_aarch64=('16cefa6bcfa09ed1c8476056bdb8fc76b7c1ebdebf51b7a65f5542ea77b3c366')
+sha256sums_x86_64=('06249fdf5b88ca912c316a0cdd1e779b1c455fb26bb713656d4dbc606e1a556f')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
