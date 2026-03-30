@@ -1,0 +1,16 @@
+pkgbase = hakoniwa
+	pkgdesc = Process isolation for Linux using namespaces, resource limits, cgroups, landlock and seccomp
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/souk4711/hakoniwa
+	arch = x86_64
+	license = GPL-3.0-only
+	license = LGPL-3.0-only
+	makedepends = cargo
+	depends = libgcc
+	depends = libseccomp
+	depends = passt
+	source = hakoniwa-1.3.2.tar.gz::https://github.com/souk4711/hakoniwa/archive/refs/tags/v1.3.2.tar.gz
+	sha256sums = 1d1820905e23dd490be0e2369c6cec965bb07741dc45f3de77841b7a384a4177
+
+pkgname = hakoniwa
