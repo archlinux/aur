@@ -1,0 +1,17 @@
+pkgbase = acnf
+	pkgdesc = Advanced command-not-found handler with hook support and gettext translations
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = gettext
+	depends = bash
+	depends = gettext
+	source = acnfctl.bash
+	source = handler.bash
+	source = locales.tar.gz
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = acnf
