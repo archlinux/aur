@@ -1,6 +1,6 @@
-# Maintainer: Xuruh <xuruh@tuta.io>
+# Maintainer: Xuruh <xuruh@fluxer.world>
 pkgname=fluxer-world-bin
-pkgver=1.0.31
+pkgver=1.0.32
 pkgrel=1
 pkgdesc="Fluxer World desktop client — open-source chat, voice, and community platform"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('fluxer-world')
 conflicts=('fluxer-world')
 options=('!strip' '!debug')
 source=("fluxer-world-${pkgver}-linux-x64.tar.gz::https://github.com/fluxerworld/fluxerworld/releases/download/v${pkgver}/Fluxer.World-${pkgver}-linux-x64.tar.gz")
-sha256sums=('29f388d140964d8e6e25398f3fbaf70079eff8bebdf20ab70de570fc03b0abc8')
+sha256sums=('275d5730d9b64418fa89c5c14ceeca0883fe644b459d582e5688df9dc00bb926')
 
 package() {
     # Install app files (tar.gz extracts to "Fluxer World-${pkgver}-linux-x64/")
