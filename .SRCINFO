@@ -1,0 +1,25 @@
+pkgbase = antigravity-tarball
+	pkgdesc = Agentic development platform from Google
+	pkgver = 1.21.6
+	pkgrel = 1
+	url = https://antigravity.google/
+	install = antigravity.install
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = alsa-lib
+	depends = gtk3
+	depends = libsecret
+	depends = nss
+	depends = libx11
+	depends = libxkbfile
+	depends = libgl
+	depends = libxss
+	depends = libxcb
+	optdepends = libdbusmenu-gtk3: Global menu support
+	provides = antigravity
+	conflicts = antigravity-bin
+	noextract = Antigravity.tar.gz
+	source = Antigravity.tar.gz::https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/1.21.6-5723021441368064/linux-x64/Antigravity.tar.gz
+	sha256sums = 36fb3b270067c9654c0157a8f8b1ccf5986579f7f2f8e367cfb1616515f9eb14
+
+pkgname = antigravity-tarball
