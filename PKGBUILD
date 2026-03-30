@@ -1,7 +1,7 @@
 # Maintainer: Byunghyun Yoo <bhyoo@bhyoo.com>
 pkgname=posthog-cli
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line interface for PostHog"
 arch=('x86_64' 'aarch64')
 url="https://github.com/PostHog/posthog"
