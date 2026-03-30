@@ -1,6 +1,6 @@
 pkgbase = apollo-cuda-git
 	pkgdesc = A self-hosted game stream server
-	pkgver = 0.4.8.r10.ga40b179
+	pkgver = 0.4.8.r14.g41bacbd
 	pkgrel = 1
 	url = https://github.com/ClassicOldSong/Apollo
 	install = apollo.install
@@ -15,6 +15,7 @@ pkgbase = apollo-cuda-git
 	makedepends = ninja
 	makedepends = npm
 	makedepends = cuda
+	depends = boost-libs
 	depends = cuda
 	depends = gtk3
 	depends = icu
@@ -44,6 +45,7 @@ pkgbase = apollo-cuda-git
 	sha256sums = SKIP
 
 pkgname = apollo-cuda-git
+	depends = boost-libs
 	depends = cuda
 	depends = gtk3
 	depends = icu

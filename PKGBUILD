@@ -1,4 +1,6 @@
-# Maintainer:
+# Maintainer: Jesus Alvarez <jesus@ironandcode.com>
+
+# Modified to include CUDA for nvenc from apollo-git
 
 ## options
 : ${_use_sodeps:=false}
@@ -10,7 +12,7 @@
 
 _pkgname="apollo"
 pkgname="$_pkgname-cuda-git"
-pkgver=0.4.8.r10.ga40b179
+pkgver=0.4.8.r14.g41bacbd
 pkgrel=1
 pkgdesc="A self-hosted game stream server"
 url="https://github.com/ClassicOldSong/Apollo"
@@ -18,6 +20,7 @@ license=('GPL-3.0-only')
 arch=('x86_64')
 
 depends=(
+  'boost-libs'
   'cuda'
   'gtk3'
   'icu'
