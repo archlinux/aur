@@ -1,13 +1,13 @@
 pkgbase = pkgx
 	pkgdesc = Run Anything
 	pkgver = 2.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pkgx.sh
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	depends = xz
 	options = !lto
 	source = pkgx-2.10.3.tar.gz::https://github.com/pkgxdev/pkgx/archive/v2.10.3.tar.gz

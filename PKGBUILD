@@ -2,12 +2,12 @@
 
 pkgname=pkgx
 pkgver=2.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Run Anything'
 arch=('x86_64')
 url='https://pkgx.sh'
 license=('Apache-2.0')
-depends=('gcc-libs' 'glibc' 'xz')
+depends=('glibc' 'libgcc' 'xz')
 makedepends=('cargo')
 options=('!lto')
 
