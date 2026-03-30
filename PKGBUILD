@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 
 pkgname=keyfinder-cli
-pkgver=1.1.5
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Estimate the musical key of many different audio file formats'
 arch=(x86_64 aarch64 armv7h)
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=(ffmpeg libkeyfinder fftw)
 makedepends=('cmake')
 source=("https://github.com/evanpurkhiser/keyfinder-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('14ec8f453e0873d1504ba517ae0950722ec30c451e694261d6c138810b1d1468')
+sha256sums=('aa69e7fd8991e92898aa660768a448e47995ef25bcca6600474d768cd174d0a9')
 
 
 _basename="${pkgname}"
