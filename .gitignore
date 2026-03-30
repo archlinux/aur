@@ -1,0 +1,14 @@
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.tar.gz
+*.tar.xz
+*.deb
+*.rpm
+*.pem
+*.bin
+*.log
+src/
+pkg/
+*.swp
+*~
+.idea/

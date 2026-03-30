@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=MiniMax
+Comment=MiniMax AI Agent - Minimize Effort, Maximize Intelligence
+GenericName=AI Assistant
+Exec=/usr/bin/minimax %U
+Icon=minimax
+Type=Application
+Terminal=false
+StartupNotify=false
+StartupWMClass=minimax
+Categories=Network;Chat;ArtificialIntelligence;
+Keywords=AI;Chat;Agent;MiniMax;
