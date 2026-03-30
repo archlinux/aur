@@ -5,7 +5,7 @@ launcher_rel='launcher-releases/releases/download'
 lore_rel='lore-releases/releases/download'
 tome_rel='tome-releases/releases/download'
 
-launcherVer=1.9.1
+launcherVer=1.9.2
 loreVer=1.10.2
 tomeVer=1.10.2
 
@@ -31,7 +31,7 @@ source=(
 )
 
 sha256sums=(
-  '8b00de79c6fe69e900aaf433b8eb7b81b73e131dc65d67e87045ca90d006cf9a'
+  'a57e69bc726864be834b4d17efd7b6d796022ff4a15d46b9ffe118a9ff0ccab1'
   'e1b76bb753c3348344260285a4933e7ac4e25550d8e4f6255f53d3c8c0cf6dd7'
   '112c3917718f51c25364259e199dca2e203e60675aeb90a5b1cfa45ce79eefee'
   '122c11f8213a170291184d011670c2ef6c2cc8375bc3fc4a7b933a9e46162978'
