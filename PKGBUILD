@@ -1,14 +1,14 @@
-# Maintainer: Mete ÇİFTÇ <e.meteciftci@gmail.com>
+# Maintainer: Mete ÇİFTÇİ <e.meteciftci@gmail.com>
 pkgname=arksigner-pub
 pkgver=2.3.13
-pkgrel=1
+pkgrel=2
 pkgdesc="ArkSigner e-Imza ve AKİS Akıllı Kart Uygulaması"
 arch=('x86_64')
 url="https://www.arksigner.com"
 license=('custom')
 
 depends=('pcsclite' 'ccid' 'openssl-1.0' 'qt5-base' 'qt5-websockets' 'nss')
-
+install="arksigner-pub.install"
 
 source=("https://downloads.arksigner.com/files/arksigner-pub-${pkgver}.deb"
         "arksigner.service")
@@ -18,19 +18,19 @@ sha256sums=('SKIP'
 package() {
     msg2 "Ubuntu paketinin iç organları Arch'a aktarılıyor..."
     tar -xf data.tar.* -C "${pkgdir}"
-    
+
     # 1. macOS çöplerini kökünden kazı
     msg2 "Gereksiz macOS artıkları temizleniyor..."
     find "${pkgdir}" -name ".DS_Store" -type f -delete
-    
+
     # 2. Linux Dosya Sistemi Hiyerarşisi (FHS) Düzeltmesi (Her şeyi /opt içine taşı)
     msg2 "Klasör mimarisi Arch standartlarına (/opt dizinine) çekiliyor..."
     install -d "${pkgdir}/opt"
     mv "${pkgdir}/usr/bin/arksigner" "${pkgdir}/opt/arksigner"
-    
+
     # 3. Ubuntu'nun init çöpünü sil
     rm -rf "${pkgdir}/etc"
-    
+
     # 4. Frankenstein kütüphaneleri çöpe at (Arch'ın kendi liblerini kullanması için)
     msg2 "Eski ve bozuk kütüphaneler imha ediliyor..."
     rm -f "${pkgdir}/opt/arksigner/libs"/libQt5*.so*
@@ -39,7 +39,7 @@ package() {
 
     # 5. Kalan yerel kütüphaneler için wrapper betikler oluştur
     msg2 "Sisteme entegre edici sarmalayıcı betikler yazılıyor..."
-    
+
     # Servis Kısayolu (/usr/bin/arksigner-service)
     echo '#!/bin/bash' > "${pkgdir}/usr/bin/arksigner-service"
     echo 'export LD_LIBRARY_PATH="/opt/arksigner/libs:$LD_LIBRARY_PATH"' >> "${pkgdir}/usr/bin/arksigner-service"

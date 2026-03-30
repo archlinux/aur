@@ -1,8 +1,9 @@
 pkgbase = arksigner-pub
 	pkgdesc = ArkSigner e-Imza ve AKİS Akıllı Kart Uygulaması
 	pkgver = 2.3.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.arksigner.com
+	install = arksigner-pub.install
 	arch = x86_64
 	license = custom
 	depends = pcsclite
