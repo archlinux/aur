@@ -1,6 +1,6 @@
 pkgbase = gog-hollow-knight-silksong
 	pkgdesc = Action-adventure set in a kingdom ruled by silk and song. GOG version.
-	pkgver = 1.0.29980
+	pkgver = 1.0.30000
 	pkgrel = 1
 	url = https://www.gog.com/en/game/hollow_knight_silksong
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = gog-hollow-knight-silksong
 	depends = zlib
 	options = !debug
 	options = !strip
-	source = hollow-knight-silksong_1_0_29980.sh::gogdownloader://hollow_knight_silksong/en3installer0
+	source = hollow-knight-silksong_1_0_30000.sh::gogdownloader://hollow_knight_silksong/en3installer0
 	source = gog-hollow-knight-silksong.desktop
 	source = hollow-knight-silksong.bash
-	sha512sums = 48e7336a93f5f7b065ac7c27f56217311551f6c391d3cee3ef1fc80022ddbc435f7b13719dfb6957d88b20d763c3ca79a215e96865fa2024a91ede84ee5b5ab0
+	sha512sums = 96cda16a2e0e3c093a1a8a8333b31025284f1ba6ec1a2f7ce8637a414ca23bf768440a05ac28c69c6cd23f33a0adde4a7a62d73fc4b5d1177cd687c2152585d6
 	sha512sums = c6791651a2d8e7ac9d5009f411def4554afce0701f917d3a79f64efd429f7dea07b22bea7caa265255c71ffb30f899ace2bf984aab6ab0c7b5a4fa9d86f625e4
 	sha512sums = 6e7e6ac1c0e141c8d681dc881472aa8b45379c250fd969b3475dcf19e8ddcceccc0cc64fdb80c6d584b00fa1069c89786d8a3784dba7448ed546aecf0c83ab2d
 
