@@ -32,7 +32,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 pkgname=cctag
 pkgver=1.0.4
 _src_dir="CCTag-${pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Detection of CCTag markers made up of concentric circles."
 arch=('x86_64')
 url="https://github.com/alicevision/CCTag"
@@ -69,6 +69,7 @@ build() {
 		-DCUDA_HOST_COMPILER=${NVCC_CCBIN} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_SHARED_LIBS=ON \
+		-DCCTAG_EIGEN_MEMORY_ALIGNMENT=ON \
 		-DCCTAG_WITH_CUDA="$_with_cuda" \
 		-DCCTAG_BUILD_APPS="$_build_apps" \
 		-DCCTAG_BUILD_DOC="$_build_doc" \
