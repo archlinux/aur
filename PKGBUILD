@@ -2,7 +2,7 @@
 
 pkgname=(nekobox nekobox-core)
 pkgver=5.10.28
-pkgrel=7
+pkgrel=8
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64' 'pentium4' 'i686' 'armv7h')
 url="https://github.com/qr243vbi/nekobox"
@@ -37,7 +37,7 @@ build() {
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D SKIP_UPDATE_BUTTON=ON \
         -D "NKR_DEFAULT_VERSION=${pkgver}" \
-        -W no-dev
+        -W no-dev -j `nproc`
     cmake --build "${DEST}"
     popd
 }
