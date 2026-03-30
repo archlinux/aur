@@ -3,7 +3,7 @@
 pkgname=python-contact
 _name=${pkgname#python-}
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPLv3')
 pkgdesc="A Console UI for Meshtastic"
