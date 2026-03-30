@@ -12,6 +12,7 @@ pkgbase = nekobox-git
 	license = GPL-3.0-or-later
 	makedepends = bash
 	makedepends = ccache
+	makedepends = ninja
 	makedepends = gcc-libs
 	makedepends = glibc
 	makedepends = libx11
