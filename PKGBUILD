@@ -3,13 +3,13 @@
 pkgname=avp
 pkgver=20170505_a1
 _dirname=20170505
-pkgrel=4
+pkgrel=5
 pkgdesc="Alien Versus Predator Gold engine"
 arch=(i686 x86_64)
 url="https://www.icculus.org/avp"
 license=('LicenseRef-custom')
-depends=('sdl12-compat' 'libgl' 'openal')
-makedepends=('cmake' 'glu' 'mesa' 'gcc14')
+depends=('bash' 'glibc' 'libgcc' 'libgl' 'libstdc++' 'openal' 'sdl12-compat')
+makedepends=('cmake' 'glu' 'mesa')
 optdepends=('avp-data')
 install='avp.install'
 source=("${url}/files/${pkgname}-${pkgver/_/-}.tar.gz"
@@ -28,9 +28,6 @@ prepare() {
 build() {
   cd ${pkgname}-${_dirname}/build
 
-  export CC=gcc-14
-  export CXX=c++-14
-  CFLAGS+=" -Wno-error=incompatible-pointer-types"
   cmake \
         -DCMAKE_BUILD_TYPE="Release" \
         -DCMAKE_CXX_STANDARD=14 \
@@ -38,8 +35,9 @@ build() {
         -DCMAKE_CXX_EXTENSIONS='OFF' \
         -DOpenGL_GL_PREFERENCE="GLVND" \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-        -DSDL_TYPE="SDL" ..
-  make
+        -DSDL_TYPE="SDL" \
+        -DCMAKE_C_FLAGS="-std=gnu17 -Wno-error=incompatible-pointer-types" ..
+  make -j1
 }
 
 package() {
