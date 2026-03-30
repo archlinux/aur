@@ -1,0 +1,67 @@
+diff --git a/libkineto/test/CuptiActivityProfilerTest.cpp b/libkineto/test/CuptiActivityProfilerTest.cpp
+index 27657e1c..77cbccf4 100644
+--- a/libkineto/test/CuptiActivityProfilerTest.cpp
++++ b/libkineto/test/CuptiActivityProfilerTest.cpp
+@@ -306,7 +306,7 @@ TEST(CuptiActivityProfiler, AsyncTrace) {
+   CuptiActivityProfiler profiler(activities, /*cpu only*/ true);
+ 
+   char filename[] = "/tmp/libkineto_testXXXXXX.json";
+-  mkstemps(filename, 5);
++  { int tmpfd = mkstemps(filename, 5); if (tmpfd >= 0) close(tmpfd); }
+ 
+   Config cfg;
+ 
+@@ -399,7 +399,7 @@ TEST(CuptiActivityProfiler, AsyncTraceUsingIter) {
+     CuptiActivityProfiler profiler(activities, /*cpu only*/ true);
+ 
+     char filename[] = "/tmp/libkineto_testXXXXXX.json";
+-    mkstemps(filename, 5);
++    { int tmpfd = mkstemps(filename, 5); if (tmpfd >= 0) close(tmpfd); }
+ 
+     Config cfg;
+ 
+@@ -620,7 +620,7 @@ TEST_F(CuptiActivityProfilerTest, SyncTrace) {
+ 
+ #ifdef __linux__
+   char filename[] = "/tmp/libkineto_testXXXXXX.json";
+-  mkstemps(filename, 5);
++  { int tmpfd = mkstemps(filename, 5); if (tmpfd >= 0) close(tmpfd); }
+   trace.save(filename);
+   // Check that the expected file was written and that it has some content
+   int fd = open(filename, O_RDONLY);
+@@ -764,7 +764,7 @@ TEST_F(CuptiActivityProfilerTest, GpuNCCLCollectiveTest) {
+ #ifdef __linux__
+   // Test saved output can be loaded as JSON
+   char filename[] = "/tmp/libkineto_testXXXXXX.json";
+-  mkstemps(filename, 5);
++  { int tmpfd = mkstemps(filename, 5); if (tmpfd >= 0) close(tmpfd); }
+   LOG(INFO) << "Logging to tmp file: " << filename;
+   trace.save(filename);
+ 
+@@ -923,7 +923,7 @@ TEST_F(CuptiActivityProfilerTest, SubActivityProfilers) {
+   EXPECT_TRUE(profiler.isActive());
+ 
+   char filename[] = "/tmp/libkineto_testXXXXXX.json";
+-  mkstemps(filename, 5);
++  { int tmpfd = mkstemps(filename, 5); if (tmpfd >= 0) close(tmpfd); }
+   LOG(INFO) << "Logging to tmp file " << filename;
+ 
+   // process trace
+@@ -1009,7 +1009,7 @@ TEST(CuptiActivityProfiler, MetadataJsonFormatingTest) {
+   CuptiActivityProfiler profiler(activities, /*cpu only*/ true);
+ 
+   char filename[] = "/tmp/libkineto_testXXXXXX.json";
+-  mkstemps(filename, 5);
++  { int tmpfd = mkstemps(filename, 5); if (tmpfd >= 0) close(tmpfd); }
+ 
+   Config cfg;
+ 
+@@ -1149,7 +1149,7 @@ TEST_F(CuptiActivityProfilerTest, JsonGPUIDSortTest) {
+ #ifdef __linux__
+   // Test saved output can be loaded as JSON
+   char filename[] = "/tmp/libkineto_testXXXXXX.json";
+-  mkstemps(filename, 5);
++  { int tmpfd = mkstemps(filename, 5); if (tmpfd >= 0) close(tmpfd); }
+   LOG(INFO) << "Logging to tmp file: " << filename;
+   trace.save(filename);
+ 
