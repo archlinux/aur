@@ -8,7 +8,7 @@ pkgbase = minimalist-mp3-player
 	makedepends = cmake
 	makedepends = gcc
 	depends = sdl2
-	source = minimalist-mp3-player-1.0.3::git+https://github.com/ardet696/MinimalistMP3Player.git
-	sha256sums = SKIP
+	source = minimalist-mp3-player-1.0.3::git+https://github.com/ardet696/MinimalistMP3Player.git#tag=v1.0.3
+	sha256sums = ddbc8ac237a95c8f5b661194ae4a5b943273de8e7553c57f1e4969e3df2f8849
 
 pkgname = minimalist-mp3-player

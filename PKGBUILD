@@ -8,8 +8,8 @@ url="https://github.com/ardet696/MinimalistMP3Player"
 license=('MIT')
 depends=('sdl2')
 makedepends=('cmake' 'gcc')
-source=("$pkgname-$pkgver::git+https://github.com/ardet696/MinimalistMP3Player.git")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver::git+https://github.com/ardet696/MinimalistMP3Player.git#tag=v$pkgver")
+sha256sums=('ddbc8ac237a95c8f5b661194ae4a5b943273de8e7553c57f1e4969e3df2f8849')
 
 prepare() {
     cd "$pkgname-$pkgver"
