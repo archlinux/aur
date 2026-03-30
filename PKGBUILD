@@ -2,13 +2,13 @@
 
 pkgname=(nekobox nekobox-core)
 pkgver=5.10.29
-pkgrel=3
+pkgrel=10
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64' 'pentium4' 'i686' 'armv7h')
 url="https://github.com/qr243vbi/nekobox"
 license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost')
-makedepends+=('pkgconfig')
+makedepends+=('pkgconfig' 'ccache' 'ninja')
 makedepends+=('cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs' 'acl')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
 sha256sums=("2d1e76ba283f7bd7e7085330123ed54cda3174c2f865272b90c8208251c22be6")
@@ -25,7 +25,10 @@ build() {
     export GOARCH=""
     export GOOS=linux
     export SKIP_UPDATER=y
-    export GOFLAGS='-mod=vendor'
+    if [[ "${nekobox_source_directory}" != "nekobox-git" ]]
+    then
+      export GOFLAGS='-mod=vendor'
+    fi
     export VERSION_SINGBOX="$(cat SingBox.Version)"
     ( bash -x script/build_go.sh ; )
     
@@ -34,8 +37,8 @@ build() {
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D SKIP_UPDATE_BUTTON=ON \
         -D "NKR_DEFAULT_VERSION=${pkgver}" \
-        -W no-dev
-    cmake --build "${DEST}"
+        -W no-dev -GNinja
+    cmake --build "${DEST}" -j "$(nproc)" -v
     popd
 }
 
@@ -98,13 +101,16 @@ package_nekobox-git() {
     packageapp 'nekobox-core-git'
 }
 prepare() {
-    if [[ -d nekobox ]]
+    local BRANCH="${NEKOBOX_BRANCH:-main}"
+    local REPO="qr243vbi/nekobox"
+
+    if [[ -d "${nekobox_source_directory}" ]]
     then
-        pushd nekobox
+        pushd "${nekobox_source_directory}"
         git pull
         popd
     else
-        git clone --recurse-submodules --single-branch --branch "${NEKOBOX_BRANCH}" https://github.com/qr243vbi/nekobox "${nekobox_source_directory}"
+        git clone --recurse-submodules --depth 1 --single-branch --branch "${BRANCH}" https://github.com/"${REPO}" "${nekobox_source_directory}"
     fi
 }
 pkgver(){
