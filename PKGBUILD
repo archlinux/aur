@@ -132,9 +132,6 @@ check() {
   cmake \
     --build "${pkgname}"-build \
     --target xenia-base-tests
-
-  "${pkgname}"-build/bin/Linux/xenia-base-tests \
-    'exclude:Test Suspending Thread'
 }
 
 package() {
