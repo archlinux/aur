@@ -1,5 +1,5 @@
 pkgbase = apollo-cuda-git
-	pkgdesc = A self-hosted game stream server
+	pkgdesc = A self-hosted game stream server with CUDA support (nvenc) for best performance
 	pkgver = 0.4.8.r14.g41bacbd
 	pkgrel = 1
 	url = https://github.com/ClassicOldSong/Apollo
