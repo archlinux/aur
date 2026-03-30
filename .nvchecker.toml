@@ -1,0 +1,5 @@
+[makebootfat]
+source = 'github'
+github   = 'amadvance/makebootfat'
+use_latest_release = true
+prefix = 'v'
