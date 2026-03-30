@@ -2,7 +2,7 @@
 # contributor: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=nextai-translator-bin
 _pkgname=NextAI.Translator
-pkgver=0.6.9
+pkgver=0.6.13
 pkgrel=1
 pkgdesc="Browser extension and cross-platform desktop application for translation based on ChatGPT API.(Prebuilt version)基于 ChatGPT API 的划词翻译浏览器插件和跨平台桌面端应用"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=(
 source=(
 	"${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 )
-sha256sums=('af0f484dda19496ae61b5e0970262171dfa0872dc2a99735a7fe5e0761960c74')
+sha256sums=('396195a3a6f58633f6c0d67ba11b9853820950e7948ed21eee77f4f661602c8b')
 prepare() {
 	bsdtar -xf "${srcdir}/data."*
 	sed -i -e "
