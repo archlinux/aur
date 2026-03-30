@@ -1,0 +1,4 @@
+*.pkg.*
+flathub-repro-checker
+pkg
+src

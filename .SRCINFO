@@ -1,0 +1,17 @@
+pkgbase = flathub-repro-checker
+	pkgdesc = A tool to rebuild Flatpak apps published on Flathub and compare reproducibility using diffoscope
+	pkgver = v0.2.1.r3.g5319960
+	pkgrel = 1
+	url = https://github.com/flathub-infra/flathub-repro-checker
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pytest
+	depends = flatpak-builder
+	depends = diffoscope
+	depends = python-boto3
+	source = flathub-repro-checker::git+https://github.com/flathub-infra/flathub-repro-checker.git#branch=main
+	sha256sums = SKIP
+
+pkgname = flathub-repro-checker
