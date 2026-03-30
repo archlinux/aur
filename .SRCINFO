@@ -1,0 +1,18 @@
+pkgbase = posthog-cli-bin
+	pkgdesc = PostHog CLI tool for feature flags, experiments, and analytics
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/PostHog/posthog
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = posthog-cli
+	conflicts = posthog-cli
+	source_x86_64 = posthog-cli-bin-0.7.4-x86_64.tar.gz::https://github.com/PostHog/posthog/releases/download/posthog-cli/v0.7.4/posthog-cli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f429706fdb3b80214afbeaf9f41c76d9e32dd44186896b20af7241973b179c38
+	source_aarch64 = posthog-cli-bin-0.7.4-aarch64.tar.gz::https://github.com/PostHog/posthog/releases/download/posthog-cli/v0.7.4/posthog-cli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 37fe9051eb51a93cae542cffa0bf55f38b6682a0143894f354e0eaf5e3c89728
+
+pkgname = posthog-cli-bin
