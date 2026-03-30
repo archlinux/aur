@@ -1,7 +1,7 @@
 pkgbase = matlab-spm
 	pkgdesc = Suite of MATLAB functions, scripts, and data files, implementing Statistical Parametric Mapping
 	pkgver = 25.01.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fil.ion.ucl.ac.uk/spm/
 	arch = x86_64
 	license = GPL-2.0-only

@@ -3,7 +3,7 @@
 _name="spm"
 pkgname="matlab-${_name}"
 pkgver=25.01.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Suite of MATLAB functions, scripts, and data files, implementing Statistical Parametric Mapping"
 arch=(
   'x86_64'
@@ -60,6 +60,6 @@ package() {
          -type f -exec cp -a --parents -t "${pkgdir}/usr/lib/${pkgname}" {} +
 
   install -vd "${pkgdir}/usr/bin"
-  ln -vsf "/usr/lib/${pkgname}/bin/spm" "${pkgdir}/usr/bin/spm"
+  # ln -vsf "/usr/lib/${pkgname}/bin/spm" "${pkgdir}/usr/bin/spm"
   ln -vsf "/usr/lib/${pkgname}/bin/spm-matlab" "${pkgdir}/usr/bin/spm-matlab"
 }
