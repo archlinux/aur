@@ -1,6 +1,6 @@
 pkgbase = libtins-git
 	pkgdesc = High-level, multiplatform C++ network packet sniffing and crafting library
-	pkgver = v4.0.r124.gfe22186
+	pkgver = v4.0.r125.g67c8119
 	pkgrel = 1
 	url = https://libtins.github.io/
 	arch = x86_64
@@ -13,8 +13,6 @@ pkgbase = libtins-git
 	provides = libtins
 	conflicts = libtins
 	source = git+https://github.com/mfontanini/libtins.git
-	source = git+https://github.com/google/googletest.git
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = libtins-git
