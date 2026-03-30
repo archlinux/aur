@@ -1,0 +1,20 @@
+pkgbase = ircdog
+	pkgdesc = Tool for sending and receiving raw IRC protocol lines
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/ergochat/ircdog
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = LicenseRef-ISC
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/ergochat/ircdog#tag=v0.5.5
+	sha256sums = 8299fb27db93fbd4ebee34dcd85152d953f4d10aed3cd29c795664dae8794351
+
+pkgname = ircdog
