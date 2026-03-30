@@ -1,45 +1,59 @@
-# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Contributor: George Rawlinson <george@rawlinson.net.nz>
 # Contributor: Brokenpip3 <brokenpip3[at]gmail[dot]com>
 # Contributor: Jens John <dev@2ion.de>
 
+pkgbase=python-pylxd
 pkgname=python-pylxd
-_name="${pkgname#python-}"
-pkgver=2.3.5
-pkgrel=3
 pkgdesc="A library for interacting with the LXD REST API"
+pkgver=2.4.0
+pkgrel=1
+url="https://github.com/canonical/pylxd"
 arch=('any')
-url='https://github.com/lxc/pylxd'
-license=('Apache')
+license=('Apache-2.0')
+
 depends=(
-  'python'
-  'python-pbr'
-  'python-six'
-  'python-ws4py'
-  'python-requests'
-  'python-requests-unixsocket'
-  'python-requests-toolbelt'
+  'python>=3.10'
   'python-cryptography'
-  'python-pyopenssl'
+  'python-dateutil'
+  'python-requests'
+  'python-requests-toolbelt'
+  'python-ws4py'
 )
-makedepends=('python-setuptools')
-optdepends=('lxd: to use a local LXD server')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('c16cf891a59df74d8c0415c0fae4225fa6499677dcdd63dab31dac8c6425b410eacf09bef3fd7dafa7e2be90de784ff66bcfbfdb7f47e72cccd0638ae19a6086')
-b2sums=('47bfcf086a7caace72fa1a727fed482cc460ac7e22ce702a9007cbd5e589a5fc2d44f21b2817eed5ea77870e0a65f86b2d2aa15ddf6b6326e6e59ed303d747b2')
+
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+
+checkdepends=(
+  'python-pytest'
+  'python-pytest-cov'
+  'python-ddt'
+  'python-requests-mock'
+)
+
+optdepends=(
+  'lxd: to use a local LXD server'
+)
+
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/canonical/pylxd/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('f119a6739f7bd0b519aed5430253495092e70a225b31e7f23b876010aa48f63d8d09c8424c903439b87c64a981d6f85bf3a34e631e7e22b3b9c0f88e50b8191a')
 
 build() {
-  cd "$_name-$pkgver"
-  python setup.py build
+  cd "pylxd-${pkgver}"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "pylxd-${pkgver}"
+  export PYLXD_WARNINGS="none"
+  PYTHONPATH="$PWD" pytest --doctest-modules pylxd
 }
 
 package() {
-  cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-  # obtain site packages directory
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-
-  # remove unnecessary files/folders
-  cd "$pkgdir$site_packages"
-  rm -rf integration migration "$_name/tests"
+  cd "pylxd-${pkgver}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
