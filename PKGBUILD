@@ -1,11 +1,11 @@
 pkgname=argus-bin
 _pkgname=argus
 pkgver=0.29.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight monitor to notify of new software releases via Gotify/Slack/other messages and/or WebHooks.'
 arch=('x86_64' 'aarch64')
 url='https://release-argus.io/'
-licence=('Apache License 2.0')
+license=('Apache-2.0')
 provides=("$_pkgname")
 source=('config.yml'
 		'argus.service'
