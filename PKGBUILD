@@ -6,6 +6,7 @@ pkgdesc="Turkish subtitle generator for YouTube videos and local files"
 arch=('x86_64')
 url="https://github.com/yeggis/chevren"
 license=('MIT')
+install=chevren.install
 depends=(
   'python'
   'python-pytorch-cuda'
@@ -13,9 +14,14 @@ depends=(
   'yt-dlp'
   'mpv'
 )
-makedepends=('python-pip' 'python-virtualenv')
+makedepends=('python-pip' 'python-virtualenv' 'rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yeggis/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('b8d7af46ef9c2e7ba9a440f60d83bc1ea7d35c1f17142aef87ea3f4307dc62ec')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver/server"
+  cargo build --release
+}
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -49,6 +55,13 @@ package() {
   # PATH'e sembolik link
   install -dm755 "$pkgdir/usr/bin"
   ln -sf "/usr/share/$pkgname/chevren" "$pkgdir/usr/bin/chevren"
+
+  # Server binary
+  install -Dm755 "server/target/release/chevren-server" "$pkgdir/usr/bin/chevren-server"
+
+  # Systemd user service
+  install -Dm644 "server/systemd/chevren-server.service" \
+    "$pkgdir/usr/lib/systemd/user/chevren-server.service"
 
   # Lisans
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
