@@ -2,13 +2,13 @@
 
 pkgname=(nekobox nekobox-core)
 pkgver=5.10.28
-pkgrel=8
+pkgrel=9
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64' 'pentium4' 'i686' 'armv7h')
 url="https://github.com/qr243vbi/nekobox"
 license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost')
-makedepends+=('pkgconfig')
+makedepends+=('pkgconfig' 'ccache' 'ninja')
 makedepends+=('cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs' 'acl')
 source=()
 sha256sums=()
@@ -37,8 +37,8 @@ build() {
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D SKIP_UPDATE_BUTTON=ON \
         -D "NKR_DEFAULT_VERSION=${pkgver}" \
-        -W no-dev -j `nproc`
-    cmake --build "${DEST}"
+        -W no-dev -GNinja
+    cmake --build "${DEST}" -j "$(nproc)"
     popd
 }
 
