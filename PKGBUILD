@@ -56,3 +56,21 @@ post_install() {
 EOF
 }
 
+post_upgrade() {
+    # При обновлении перезапускаем службу
+    systemctl daemon-reload
+    systemctl restart aserver.service
+}
+
+pre_remove() {
+    # ПЕРЕД УДАЛЕНИЕМ: останавливаем и отключаем службу
+    echo "Stopping and disabling 2fa-aserver service..."
+    systemctl stop aserver.service
+    systemctl disable aserver.service
+}
+
+post_remove() {
+    # ПОСЛЕ УДАЛЕНИЯ: очистка
+    echo "2fa-unix has been removed."
+    echo "Don't forget to remove PAM configuration lines from /etc/pam.d/"
+}
