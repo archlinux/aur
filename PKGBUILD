@@ -3,7 +3,7 @@
 
 pkgname=suricata-nfqueue
 _pkgname=suricata
-pkgver=8.0.2
+pkgver=8.0.4
 pkgrel=1
 pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('suricata')
 conflicts=('suricata')
 replaces=('suricata')
 makedepends=('rust' 'clang' 'cbindgen' 'llvm' 'pkgconf')
-depends=('hyperscan' 'jansson' 'libcap-ng' 'libmagic.so' 'libmaxminddb' 'libnet' 'libnetfilter_queue' 'libpcap' 'libyaml' 'lua' 'lz4' 'pcre2' 'python-yaml' 'libunwind' 'libbpf')
+depends=('hyperscan' 'jansson' 'libcap-ng' 'libmagic.so' 'libmaxminddb' 'libnet' 'libnetfilter_queue' 'libpcap' 'libyaml' 'lz4' 'pcre2' 'python-yaml' 'libunwind' 'libbpf')
 optdepends=('geoipupdate: GeoIP2 databases')
 install=suricata.install
 backup=('etc/suricata/suricata.yaml'
@@ -23,38 +23,36 @@ backup=('etc/suricata/suricata.yaml'
         'etc/suricata/threshold.config')
 source=(https://www.openinfosecfoundation.org/download/${_pkgname}-${pkgver}.tar.gz{,.sig}
         suricata-update.{service,timer})
-sha256sums=('9d450ca2cadbe101993e99033a62349d2bda9dfd90a6acc1bcb6cc6db76eb551'
+sha256sums=('81cee7bae69848a9751b2ce0867620eefa52b192e79c20b5eac897600b28b191'
             'SKIP'
             '57505c464d30623c9d6611ca4b5d08a580c0116b20a4280f39c3720a3f369a92'
             '330c93e72a02f4f80972ab1641ee550b32cfdc2f40c78331294bcc009af06d71')
 validpgpkeys=('B36FDAF2607E10E8FFA89E5E2BA9C98CCDF1E93A') # Open Information Security Foundation
 
-prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  # Ensure upstream respects Arch flags and allows appending LIBS
-  sed -i 's/^$CFLAGS\|CPPFLAGS\|LDFLAGS\|LIBS$ = /\1 += /' \
-    Makefile.am Makefile.in 2>/dev/null || true
-  autoreconf -fi 2>/dev/null || true
-}
-
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  # Use system Lua 5.4 via pkg-config. Prevent accidental LuaJIT selection.
-  export LUA_CFLAGS="$(pkg-config --cflags lua)"
-  export LUA_LIBS="$(pkg-config --libs lua)"
-
-  # Help link order: add Lua libs to LIBS so final link line includes them
-  export LIBS+=" ${LUA_LIBS}"
 
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
               --with-clang=/usr/bin/clang --without-docs \
               --enable-ebpf --enable-ebpf-build \
               --disable-gccmarch-native \
-              --enable-lua --disable-luajit \
               --enable-geoip \
-              --enable-nfqueue \
-              LUA_CFLAGS="${LUA_CFLAGS}" LUA_LIBS="${LUA_LIBS}"
+              --enable-nfqueue
+
+  # Build the Rust crate first so cargo compiles the vendored liblua.a
+  make -C rust
+
+  # Locate the static liblua.a produced by the suricata-lua-sys crate.
+  # Static libs are unaffected by -Wl,--as-needed so this reliably links.
+  local _lua_a
+  _lua_a=$(find "$(pwd)/rust/target/release/build" -path '*/suricata-lua-sys-*/out/lua/liblua.a' 2>/dev/null | head -1)
+  [[ -n "${_lua_a}" ]] || { echo "ERROR: vendored liblua.a not found"; return 1; }
+
+  # Patch src/Makefile in-place so that every subsequent make call
+  # (build and install) sees liblua.a in LIBS.  Patching here is
+  # necessary because the path is only known after cargo has run.
+  sed -i "s|^LIBS = |LIBS = ${_lua_a} |" src/Makefile
+
   make
 }
 
