@@ -2,7 +2,7 @@
 # Maintainer: Mrinmoy <mrinmoym@duck.com>
 pkgname=serial-studio-bin
 _pkgname=serial-studio-pro
-pkgver=3.2.6
+pkgver=3.2.7
 pkgrel=1
 epoch=
 pkgdesc="Open-source telemetry dashboard. Supports UART, BLE, MQTT, Modbus, CAN Bus and more."

@@ -1,6 +1,6 @@
 pkgbase = serial-studio-bin
 	pkgdesc = Open-source telemetry dashboard. Supports UART, BLE, MQTT, Modbus, CAN Bus and more.
-	pkgver = 3.2.6
+	pkgver = 3.2.7
 	pkgrel = 1
 	url = https://serial-studio.com
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = serial-studio-bin
 	provides = serial-studio-pro
 	conflicts = serial-studio-pro
 	options = !debug
-	source_x86_64 = serial-studio-pro-x86_64-3.2.6-1.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.2.6/Serial-Studio-Pro-3.2.6-Linux-x64.AppImage
+	source_x86_64 = serial-studio-pro-x86_64-3.2.7-1.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.2.7/Serial-Studio-Pro-3.2.7-Linux-x64.AppImage
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = serial-studio-pro-aarch64-3.2.6-1.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.2.6/Serial-Studio-Pro-3.2.6-Linux-arm64.AppImage
+	source_aarch64 = serial-studio-pro-aarch64-3.2.7-1.AppImage::https://github.com/Serial-Studio/Serial-Studio/releases/download/v3.2.7/Serial-Studio-Pro-3.2.7-Linux-arm64.AppImage
 	sha256sums_aarch64 = SKIP
 
 pkgname = serial-studio-bin
