@@ -21,5 +21,6 @@ build() {
 }
 
 package() {
-	install -Dm755 "$srcdir/bin/ramdump-49xx" "$pkgdir/usr/bin/ramdump-49xx"
+	mkdir -p "$pkgdir/usr/bin"
+	make -C "$srcdir" install PREFIX="$pkgdir/usr"
 }
