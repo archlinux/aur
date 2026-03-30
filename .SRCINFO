@@ -1,13 +1,13 @@
 pkgbase = sbb-tui
 	pkgdesc = TUI client for Swiss public transport timetables
-	pkgver = 1.11.2
+	pkgver = 1.11.3
 	pkgrel = 1
 	url = https://github.com/Necrom4/sbb-tui
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = sbb-tui-1.11.2.tar.gz::https://github.com/Necrom4/sbb-tui/archive/refs/tags/v1.11.2.tar.gz
-	sha256sums = 99f5deaf176fd2114970e12a609cd827f8aba7a83fa19afcf604a61309836dc4
+	source = sbb-tui-1.11.3.tar.gz::https://github.com/Necrom4/sbb-tui/archive/refs/tags/v1.11.3.tar.gz
+	sha256sums = f4f7df5a0d9d02aeff287ab7a3ae0ae8f277143a3cd3c047ab079368fcf13ef3
 
 pkgname = sbb-tui
