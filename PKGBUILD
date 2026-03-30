@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=brioche
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='a package manager and build tool for building and running complex software projects'
 arch=(x86_64)
@@ -14,11 +14,11 @@ makedepends=(cargo)
 options=(!lto)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('cb19ae4b4ca3cc404f7e2672c5b2dfedfe35c5684e9f2ba6b68f48f0dd15e9ad')
+sha256sums=('14220f676f9d1816262c4438dbcb7c554714e20bbb2c452308514c7679c64573')
 
 prepare() {
 	cd "$_archive"
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
+	cargo fetch --locked --target host-tuple
 }
 
 _srcenv() {
