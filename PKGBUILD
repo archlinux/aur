@@ -1,7 +1,7 @@
 # Maintainer: Niladri Adhikary <nil_adhikary at outlook dot com>
 pkgname=certamen
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI quiz game engine with SSH multiplayer support written in CPP with FTXUI'
 arch=('x86_64')
 url='https://github.com/trintlermint/certamen'
