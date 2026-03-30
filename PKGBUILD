@@ -3,7 +3,7 @@
 
 _gemname=color
 pkgname=ruby-$_gemname
-pkgver=1.8
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Color is a Ruby library to provide basic RGB, CMYK, HSL, and other colourspace manipulation support to applications that require it'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('39e1f5b10f1356e7c22e9faffed5e19fe5ec5293')
+sha256sums=('19b710e59d3985e85bc1292a3c60d63695b4f6aa5248c406fb00c46fec003280')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
