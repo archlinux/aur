@@ -1,0 +1,4 @@
+[matlab-spm]
+source = "git"
+git = "https://github.com/spm/spm.git"
+exclude_regex = ".*(pre|a|alpha|b|beta|rc).*"
