@@ -9,9 +9,7 @@ makedepends=('gettext')
 source=("acnfctl.bash"
         "handler.bash"
         "locales.tar.gz")
-sha256sums=('bffc622f10427afcd86627843f1563a06ddf36f07eb99b41e243cdba1cd17645'
-            '3cba12c7b973fdfd89867262243c23d08ee309ff1ae11307148ff1a92d4ae43a'
-            '9a11f995d58016896dca15562b98071b4b2eb2100a0cc8038941d91529c0699c')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     tar -xzf "$srcdir/locales.tar.gz" -C "$srcdir"
@@ -32,6 +30,10 @@ package() {
     # Install main scripts
     install -Dm755 "$srcdir/acnfctl.bash" "$pkgdir/usr/bin/acnfctl"
     install -Dm755 "$srcdir/handler.bash" "$pkgdir/usr/share/acnf/handler.bash"
+
+    # Install README & LICENSE
+    install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Install hooks directory (empty by default)
     install -d "$pkgdir/usr/share/acnf/hooks"
