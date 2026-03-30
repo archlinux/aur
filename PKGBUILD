@@ -5,7 +5,7 @@ _pkgname=alt
 pkgname=${_pkgname}-bin
 pkgdesc="A stateless, zero-config CLI distribution proxy. Install any tool from GitHub Releases with a single command."
 
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}")
-sha256sums=('6d9521550504ac5a299749c018e3b9596bbda280729099f34f8368e17ee6c1fb'
+sha256sums=('7180e921d1580556481f4de4936cde8c1c14f8d0d5374987cd59b4513cb4ca59'
             'd8c7ce09908dd71397fb36e3d14eab399becd2848a5d83cb63030160cdf274ab')
-sha256sums_x86_64=('660ea4f4f75a1bcf172497a5203bfff502307b00b0d8650d4aa48bcdc55785ac')
-sha256sums_aarch64=('8744087e246b41e6d6e448dc49a740788516a1e06503135ab656927170ce1f97')
+sha256sums_x86_64=('d47a0e8c7821b5272bb6d04271f1adb10a4478c7a444b79d62b7b903a551c8cb')
+sha256sums_aarch64=('8c7a23978c36f810ae8e5e041df16b7b1c0492b42f58a11b986803e6bcfce103')
 
 
 package() {
