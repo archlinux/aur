@@ -1,0 +1,17 @@
+pkgbase = tuidoro-bin
+	pkgdesc = TUIdoro - minimal pomodoro timer that runs in your terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/b12o/tuidoro
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	depends = libpulse
+	provides = tuidoro
+	conflicts = tuidoro
+	conflicts = tuidoro-git
+	options = !strip
+	source = tuidoro.zip::https://github.com/b12o/tuidoro/releases/download/v0.1.0/tuidoro.zip
+	sha256sums = 3e48b8867a9e286b9c6f4e7eef0e716c396b525240f2a98275b51e8f2a8ab7b9
+
+pkgname = tuidoro-bin
