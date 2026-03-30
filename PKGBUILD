@@ -24,7 +24,7 @@ optdepends=(
     'dolphin: gestor de archivos Qt (auto-reinicio tras aplicar tema)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f9abd0af28758529b7dc1fc89c9ba4d22490e4480d1e616ea9020a9ca9760598')
+sha256sums=('435fb0f66f2a3cb3e3a3aad55298a139974f90fb10b2c387990b6c4cd732f576')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
