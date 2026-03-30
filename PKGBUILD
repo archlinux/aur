@@ -5,8 +5,8 @@
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
 pkgver=6.6.4
-_td_commit=af0cb1d30a1e5cb1a10cd83b48998ca9ea9ce249
-pkgrel=1
+_td_commit=0ae923c493bceb75433de2682ba8ae29cc7bf88d
+pkgrel=2
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -18,25 +18,25 @@ provides=('telegram-desktop')
 depends=(
   'abseil-cpp'
   'ada'
+  'boost-libs'
   'ffmpeg'
   'glib2'
+  'glibc'
   'hicolor-icon-theme'
   'hunspell'
   'kcoreaddons'
   'libavif'
   'libdispatch'
+  'libgcc'
   'libheif'
   'libjxl'
+  'libstdc++'
   'libxcomposite'
   'libxdamage'
   'libxrandr'
   'libxtst'
   'lz4'
-  'minizip-ng'
-  'zlib'
-  'libstdc++'
-  'glibc'
-  'libgcc'
+  'minizip'
   'openal'
   'openh264'
   'openssl'
@@ -47,6 +47,7 @@ depends=(
   'qt6-wayland'
   'rnnoise'
   'xxhash'
+  'zlib'
 )
 makedepends=(
   'boost'
@@ -64,7 +65,7 @@ makedepends=(
 )
 optdepends=(
   'geoclue: geoinformation support'
-  'geocode-glib-2: geocoding support'
+  'crow-translate: translation provider'
   'webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1'
   'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (Wayland only)'
   'xdg-desktop-portal: desktop integration'
@@ -73,14 +74,17 @@ source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
   "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
   0001-kde-theme-injection-fix.patch
+  tdesktop-fix-minizip-includes.patch
 )
 sha512sums=('2665473471c694b4116b8f5e3aa663ab1da0606ddd658f5f637bb9845b27f1090fe559442a9841580cfe81739554f3e2d254e6d9ba754dca35ed7357f50c6862'
-            '9b5a0af914b9d8f9aaa44117531a268caf89665728d75ff2b6380320826b2fd5f2197d663e5230553119d0b539ebca98e20dd165bc8bafe3bd23f0a209ccfa5a'
-            '6544086fd4946384509c053edd447a59e9ae405af65f9a7fa632ae5734099ef57b7211b7dbebf7a0c38665e05dd7c4d2414fa5d2cb5c6ee718cc5e824f5f509a')
+            'bd299ce4cc85fac7567cefca9392820d97d9663560ebc990ba5d1b73f92f01ef43b1fe29c89082105679223b8a3bfb40c364266b9a6021ec001ab91452e810e1'
+            '6544086fd4946384509c053edd447a59e9ae405af65f9a7fa632ae5734099ef57b7211b7dbebf7a0c38665e05dd7c4d2414fa5d2cb5c6ee718cc5e824f5f509a'
+            'd9765588e92f154d83b95dc2840207bf22b26b6ca37b4d5cdfdb5e27a00c9e1ebcc9cd475a96bbcc5b02c24f6892320e009f843aa6b172a1820814b952a772eb')
 
 prepare() {
   # Fix tray unread counter in KDE
   patch -d "tdesktop-$pkgver-full" -Np1 -i ../0001-kde-theme-injection-fix.patch
+  patch -Np1 -d tdesktop-$pkgver-full/Telegram/lib_base -i "$srcdir"/tdesktop-fix-minizip-includes.patch
 }
 
 build() {
@@ -98,7 +102,6 @@ build() {
   # Thanks @primeos!
   cmake -B build -S tdesktop-$pkgver-full -G Ninja \
     -DCMAKE_VERBOSE_MAKEFILE=ON \
-    -DCMAKE_CXX_FLAGS=-I/usr/include/minizip-ng \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -Dtde2e_DIR="$PWD/td/install/lib/cmake/tde2e" \
     -DCMAKE_BUILD_TYPE=Release \
