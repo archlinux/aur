@@ -4,28 +4,25 @@ pkgbase=dms-shell
 _pkg1=DankMaterialShell
 pkgname=($pkgbase $pkgbase-hyprland $pkgbase-niri)
 pkgver=1.4.4
-pkgrel=4
+pkgrel=5
 pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
 license=(GPL-3.0-only)
 depends=(dgop
-         inter-font
-         quickshell
-         ttf-fira-code
-         ttf-material-symbols-variable)
-optdepends=('brightnessctl: Laptop display brightness control'
-            'cava: Audio visualizer'
-            'cliphist: Clipboard history functionality'
+         accountsservice
+         quickshell)
+optdepends=('cava: Audio visualizer'
+            'cups-pk-helper: Printer Management'
             'i2c-tools: External monitor brightness control'
+            'iwd: Required for network managementa via iwd'
             'matugen: Dynamic wallpaper-based theming'
-            'networkmanager: Required for network management'
+            'networkmanager: Required for network managementa via networkmanager'
             'power-profiles-daemon: Set power profile'
             'qt6-multimedia: Sound effect support'
             'qt6ct: Qt6 application theming'
-            'wtype: Paste from clipboard history and plugins'
-            'wl-clipboard: Copy functionality for PIDs and other elements'
-            'cups-pk-helper: Printer Management')
+            'systemd-networkd: Required for network managementa via systemd-networkd'
+            'wtype: Paste from clipboard history and plugins')
 makedepends=(go)
 _archive="$_pkg1-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
