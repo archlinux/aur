@@ -1,6 +1,6 @@
 # Maintainer: Origin Security <support@originhq.com>
 pkgname=praxis
-pkgver=0.9.12
+pkgver=0.9.14
 pkgrel=1
 pkgdesc='Praxis - Semantic Command & Control Framework for Agents'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     'praxis.env'
 )
 sha256sums=(
-    '22650763349362be5cbf7bb0ec5fbed9e735e5ae6236222c0601d87f317cdb63'
+    '6ad089c9cd57191181fe848cfe206822fdf9ec355d4172927f11a3dd8761eb00'
     'SKIP'
     'SKIP'
     'SKIP'
