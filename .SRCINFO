@@ -1,0 +1,16 @@
+pkgbase = niri-ws-label
+	pkgdesc = Floating pill labels for niri workspaces
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/kerranm/niri-ws-label
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk4-layer-shell
+	depends = niri
+	optdepends = rofi: for the interactive prompt command
+	source = niri-ws-label-0.2.0.tar.gz::https://github.com/kerranm/niri-ws-label/archive/v0.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = niri-ws-label
