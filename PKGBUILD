@@ -2,7 +2,7 @@
 
 pkgname=(nekobox nekobox-core)
 pkgver=5.10.28
-pkgrel=6
+pkgrel=7
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64' 'pentium4' 'i686' 'armv7h')
 url="https://github.com/qr243vbi/nekobox"
@@ -25,7 +25,10 @@ build() {
     export GOARCH=""
     export GOOS=linux
     export SKIP_UPDATER=y
-    export GOFLAGS='-mod=vendor'
+    if [[ "${nekobox_source_directory}" != "nekobox-git" ]]
+    then
+      export GOFLAGS='-mod=vendor'
+    fi
     export VERSION_SINGBOX="$(cat SingBox.Version)"
     ( bash -x script/build_go.sh ; )
     
@@ -109,14 +112,6 @@ prepare() {
     else
         git clone --recurse-submodules --depth 1 --single-branch --branch "${BRANCH}" https://github.com/"${REPO}" "${nekobox_source_directory}"
     fi
-
-    pushd "${nekobox_source_directory}/core/server"
-     pushd gen
-      bash update_libs.sh
-     popd
-     go mod tidy
-     go mod vendor 
-    popd
 }
 pkgver(){
     local BRANCH="${NEKOBOX_BRANCH:-main}"
