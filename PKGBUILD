@@ -26,7 +26,7 @@ _reponame=syncthingtray
 pkgname=syncthingtray-git
 _name=${pkgname%-git}
 pkgver=1714.7846301
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
 license=(GPL-2.0-or-later)
@@ -39,7 +39,7 @@ optdepends=('gnome-shell-extension-appindicator: tray icon support for GNOME She
 [[ $_js_provider == qml ]] && depends+=('qt6-declarative')
 [[ $_enable_kio_plugin ]] && optdepends+=('kio: KIO plugin for Syncthing actions in Dolphin')
 [[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 6 desktop')
-makedepends=('cmake' 'ninja' 'qt6-tools' 'git' 'boost' 'clang')
+makedepends=('cmake' 'ninja' 'qt6-tools' 'git' 'boost' 'clang' 'python-myst-parser')
 checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
 [[ $_enable_plasmoid ]] && makedepends+=('libplasma' 'extra-cmake-modules')
@@ -89,17 +89,18 @@ build() {
     $additional_args \
     .
   ninja
+  ninja sphinxdoc
 }
 
 check() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
   # https://github.com/syncthing/syncthing/issues/8785
-  HOME="$(mktemp -p . -d testhome.XXX)" QT_QPA_PLATFORM=offscreen SYNCTHING_PORT=$(ephemeral_port) SYNCTHING_TEST_TIMEOUT_FACTOR=3 ninja check
+  HOME="$(mktemp -p "$PWD" -d testhome.XXX)" QT_QPA_PLATFORM=offscreen SYNCTHING_PORT=$(ephemeral_port) SYNCTHING_TEST_TIMEOUT_FACTOR=3 ninja check
 }
 
 package() {
   depends+=('libqtutilities-git.so' 'libqtforkawesome-git.so' 'libc++utilities-git.so' 'libboost_filesystem.so')
 
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja install install-doc
 }
