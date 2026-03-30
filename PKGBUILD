@@ -1,20 +1,20 @@
 pkgname=sfptool
-pkgver=0.9.4
-pkgrel=6
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Desktop utility for reading and programming SFP and QSFP transceivers"
 arch=('x86_64' 'aarch64')
 url="https://jonasled.dev/jonasled/sfp-tool"
 license=('GPL3')
 depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
-makedepends=('binutils' 'cargo' 'cmake' 'conan' 'desktop-file-utils' 'emscripten' 'fmt' 'git' 'ninja' 'nlohmann-json' 'nodejs' 'patchelf' 'pkgconf' 'python' 'rust' 'libsoup3' 'webkit2gtk-4.1' 'yarn')
+makedepends=('cargo' 'cmake' 'conan' 'desktop-file-utils' 'emscripten' 'fmt' 'git' 'ninja' 'nlohmann-json' 'nodejs' 'patchelf' 'pkgconf' 'python' 'rust' 'libsoup3' 'webkit2gtk-4.1' 'yarn')
 provides=('sfptool')
 conflicts=('sfptool-bin')
 source=(
-  "sfp-tool-v${pkgver}.tar.gz::https://jonasled.dev/jonasled/sfp-tool/-/archive/v0.9.4/sfp-tool-v0.9.4.tar.gz"
+  "sfp-tool-v${pkgver}.tar.gz::https://jonasled.dev/jonasled/sfp-tool/-/archive/v1.0.0/sfp-tool-v1.0.0.tar.gz"
   "transceivertool-ae0163efc991402f1e0231078e69379471613ee4.tar.gz::https://github.com/robinchrist/TransceiverTool/archive/ae0163efc991402f1e0231078e69379471613ee4.tar.gz"
   "cppcodec-v0.2.tar.gz::https://github.com/tplgy/cppcodec/archive/refs/tags/v0.2.tar.gz"
 )
-sha256sums=('ab3adaa1dd86f0bb03cd53cfc698aa7909532568825391d28aeeceeecded5719' '77b030fc853dbd3f94d31d99c66e3e2a7c81c7c1654ba5cae01581b0959018ac' '0edaea2a9d9709d456aa99a1c3e17812ed130f9ef2b5c2d152c230a5cbc5c482')
+sha256sums=('17b2ff7772b367f3ddd32a93279ee7c15c47101b0f49bdf1b6031670f847c342' '77b030fc853dbd3f94d31d99c66e3e2a7c81c7c1654ba5cae01581b0959018ac' '0edaea2a9d9709d456aa99a1c3e17812ed130f9ef2b5c2d152c230a5cbc5c482')
 
 prepare() {
   cd "$srcdir/sfp-tool-v${pkgver}"
@@ -29,6 +29,8 @@ build() {
   export CPP_CODEC_DIR="$srcdir/sfp-tool-v${pkgver}/external/cppcodec"
   export CARGO_TARGET_DIR="$srcdir/target"
   export npm_config_cache="$srcdir/npm-cache"
+  yarn install --frozen-lockfile --cache-folder "$npm_config_cache"
+  bash scripts/build-transceiver-wasm.sh
   python - <<'PY'
 import json
 from pathlib import Path
@@ -38,8 +40,6 @@ config = json.loads(config_path.read_text())
 config.setdefault("bundle", {})["createUpdaterArtifacts"] = False
 config_path.write_text(json.dumps(config, indent=2))
 PY
-  yarn install --frozen-lockfile --cache-folder "$npm_config_cache"
-  bash scripts/build-transceiver-wasm.sh
   yarn tauri build --bundles deb
 }
 
@@ -53,6 +53,6 @@ package() {
     *) echo "Unsupported architecture: $CARCH" >&2; return 1 ;;
   esac
   local deb_file="sfp-tool_${pkgver}_${deb_arch}.deb"
-  ar x "sfp-tool_{version}_amd64.deb"
-  tar -xvf data.tar.* -C "$pkgdir/"
+  data_archive="$(bsdtar -tf "$deb_file" | grep '^data.tar\.' | head -n1)"
+  bsdtar -xOf "$deb_file" "$data_archive" | bsdtar -xf - -C "$pkgdir"
 }
