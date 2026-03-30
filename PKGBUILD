@@ -1,6 +1,6 @@
 pkgname=sfptool
 pkgver=0.9.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Desktop utility for reading and programming SFP and QSFP transceivers"
 arch=('x86_64' 'aarch64')
 url="https://jonasled.dev/jonasled/sfp-tool"
@@ -44,7 +44,7 @@ PY
 }
 
 package() {
-  cd "$srcdir/sfp-tool-v${pkgver}/software/App/SFP-Tool/src-tauri/target/release/bundle/deb"
+  cd "$srcdir/target/release/bundle/deb"
   local deb_arch
   local data_archive
   case "$CARCH" in
