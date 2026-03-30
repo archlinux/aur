@@ -3,7 +3,7 @@
 _binname="gsa"
 _pkgname="go-size-analyzer"
 pkgname="${_pkgname}-bin"
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="A tool for analyzing the dependencies in compiled Golang binaries"
 arch=(
@@ -27,8 +27,8 @@ source_aarch64=(
 source_x86_64=(
   "${_url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz"
 )
-sha256sums_aarch64=('112344eda0b930611b3ce6cf815f55ddf0b19629521566cc05d70d3628c0f16d')
-sha256sums_x86_64=('c12830836463292a40c4d407e23da96421c7777bb2b7e9c515c3771122681498')
+sha256sums_aarch64=('fef2e266360373b444f30370297d8d0ba620ea25ce134917ec9ee77e427d82f3')
+sha256sums_x86_64=('cb252bcd62243e2842fee8083f842908899b99439841dcad58f919086c7c16e3')
 
 package() {
   cd "${srcdir}"
