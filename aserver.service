@@ -1,0 +1,25 @@
+[Unit]
+Description=Auth Server for PAM 2FA
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/usr/local/bin
+ExecStart=/usr/local/bin/aserver
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# Безопасность
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/etc/2fact
+
+[Install]
+WantedBy=multi-user.target
