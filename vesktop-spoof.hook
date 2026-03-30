@@ -1,0 +1,12 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = vesktop vesktop-bin vesktop-git vesktop-electron vesktop-electron-git
+
+[Action]
+Description = Updating vesktop launch to spoof Windows (VPN patch)...
+Depends = sed
+When = PostTransaction
+Exec = /usr/bin/sed -i 's|Exec=/usr/bin/vesktop\s*%U|Exec=/usr/bin/vesktop --user-agent-os windows %U|' /usr/share/applications/vesktop.desktop
