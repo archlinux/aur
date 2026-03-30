@@ -6,7 +6,7 @@
 _pkgname=arnis
 pkgname=arnis-bin
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Generate any location from the real world in Minecraft (binary version)'
 arch=('x86_64')
 url="https://github.com/louis-e/${_pkgname}"
@@ -15,19 +15,19 @@ depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme'
          'libgcc' 'libsoup3' 'wayland' 'webkit2gtk-4.1')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}-linux-v${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux"
+source=("${_pkgname}-linux-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux.tar.gz"
         "README-v${pkgver}::${url}/raw/v${pkgver}/README.md"
         "${_pkgname}-512x-v${pkgver}.png::${url}/raw/v${pkgver}/assets/icons/icon.png"
         "${_pkgname}-128x-v${pkgver}.png::${url}/raw/v${pkgver}/assets/icons/128x128.png"
         "${_pkgname}.desktop")
-sha256sums=('9f2b09787f85a6439b69d7f23f3b3b36e7b1a693edb115481737ee510fd12f6e'
-            'fabad25f65efa4af7f2083d6b918b8fdcc28a7d60e12befff82b66dc45812d0d'
+sha256sums=('02fa6b9ada10283ad7ca56d0d8b07a4665f22e78739f8229fb6affeb59aade96'
+            'f8b93234d8b98c4deaae2678ebf755edbafb46377989bfaede55a513bd740e9f'
             '04e4f85dbd53dc824e93811b05a2fe567f53c66df5f473bc4b0b0fa16970b483'
             '2bb9a2312ff258bc762d435840c12daf2bdc5c95e0c179d2356b17dd9536de5b'
             '70eb77205fb1f39588a8296903919b05af7e77cfe2ab9c42849d81e7580fd231')
 
 package() {
-    install -Dm755 "${_pkgname}-linux-v${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${_pkgname}-linux" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "README-v${pkgver}" "$pkgdir/usr/share/doc/${pkgname}/README.md"
 
     # Desktop integration files
