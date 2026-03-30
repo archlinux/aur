@@ -1,7 +1,7 @@
 pkgbase = vykar
 	pkgdesc = Fast, encrypted, deduplicated backups in Rust
 	pkgver = 0.12.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/borgbase/vykar
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = vykar
 	makedepends = atk
 	depends = glibc
 	depends = libgcc
+	depends = libstdc++
+	depends = freetype2
 	depends = gtk3
 	depends = fontconfig
 	depends = gdk-pixbuf2
