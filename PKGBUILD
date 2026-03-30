@@ -2,7 +2,7 @@
 pkgname=moekoemusic
 _pkgname='MoeKoe Music'
 _zhsname='萌音'
-pkgver=1.6.0
+pkgver=1.6.1
 _electronversion=39
 _nodeversion=22
 pkgrel=1
