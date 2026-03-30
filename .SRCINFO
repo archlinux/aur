@@ -1,0 +1,22 @@
+pkgbase = veneer
+	pkgdesc = A widget manager for Eww (Veneer)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/usoy410/Veneer
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = npm
+	makedepends = git
+	makedepends = zstd
+	makedepends = openssl
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = openssl
+	depends = zstd
+	source = veneer::git+https://github.com/usoy410/Veneer.git#tag=v0.1.1
+	md5sums = SKIP
+
+pkgname = veneer
