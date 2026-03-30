@@ -1,0 +1,30 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 366cc80..09aaaed 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -65,11 +65,11 @@ option(PACKAGE_BUILDER_DEB   "Enable DEB package builder (make deb)"    OFF)
+ 
+ ## -----------------------------------------------------------------------------
+ # Hard coded definitions
+-set(CMAKE_C_FLAGS            "${CMAKE_C_FLAGS} -fvisibility=hidden -std=gnu11")
++set(CMAKE_C_FLAGS            "${CMAKE_C_FLAGS} -fvisibility=hidden -std=gnu11 -D_DEFAULT_SOURCE")
+ set(CMAKE_C_FLAGS_RELEASE    "-O2 -DNDEBUG")
+ set(CMAKE_C_FLAGS_DEBUG      "-g -O0 -Wall -Wextra -pedantic")
+ set(CMAKE_CXX_FLAGS          "${CMAKE_CXX_FLAGS} -fvisibility=hidden -std=gnu++11")
+-set(CMAKE_CXX_FLAGS_RELEASE  "-O2 -DNDEBUG")
++set(CMAKE_CXX_FLAGS_RELEASE  "-O2 -DNDEBUG -D_DEFAULT_SOURCE")
+ set(CMAKE_CXX_FLAGS_DEBUG    "-g -O0 -Wall -Wextra -pedantic")
+ 
+ if (ENABLE_TESTS AND ENABLE_TESTS_COVERAGE)
+diff --git a/src/tools/fdsdump/src/aggregator/stdAllocator.hpp b/src/tools/fdsdump/src/aggregator/stdAllocator.hpp
+index 3414f10..f1c03a4 100644
+--- a/src/tools/fdsdump/src/aggregator/stdAllocator.hpp
++++ b/src/tools/fdsdump/src/aggregator/stdAllocator.hpp
+@@ -11,6 +11,7 @@
+ 
+ #include <memory>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace fdsdump {
+ namespace aggregator {

@@ -1,0 +1,23 @@
+pkgbase = ipfixcol2-git
+	pkgdesc = High-performance NetFlow v5/v9 and IPFIX collector (RFC7011)
+	pkgver = v2.8.0
+	pkgrel = 1
+	url = https://github.com/CESNET/ipfixcol2
+	arch = any
+	license = LicenseRef-CESNET
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkg-config
+	makedepends = python-docutils
+	depends = librdkafka
+	depends = zlib
+	depends = libfds
+	provides = ipfixcol2-git
+	conflicts = ipfixcol2-git
+	source = git+https://github.com/CESNET/ipfixcol2#tag=v2.8.0
+	source = hotfix.patch
+	sha256sums = 3eed06e539dc56466e1be7cc1a00e84c66f803565e1a762b22233396a7451105
+	sha256sums = 44599c6272292e3c87b0de1132d9a555bfdb5a662bdfa0a4d4abfba7e34aef73
+
+pkgname = ipfixcol2-git
