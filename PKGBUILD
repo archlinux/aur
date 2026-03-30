@@ -1,14 +1,13 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.6.r85.g492116a
+pkgver=2.6.r171.g2913a8c
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
 url="https://cemu.info/"
 license=('MPL-2.0')
 depends=(
-	'gcc-libs'
 	'glibc'
 	'glslang>=14'
 	'hicolor-icon-theme'
@@ -20,6 +19,7 @@ depends=(
 makedepends=(
 	'bluez-libs'
 	'boost'
+	'boost-libs'
 	'cmake>=3.21.1'
 	'cubeb'
 	'curl'
@@ -30,8 +30,10 @@ makedepends=(
 	'glu'
 	'gtk3'
 	'hidapi'
+	'libgcc'
 	'libgl'
 	'libpng'
+	'libstdc++'
 	'libusb'
 	'libzip'
 	'nasm'
@@ -43,6 +45,7 @@ makedepends=(
 	'zarchive>=0.1.2'
 	'zlib'
 	'zstd'
+	'gspell' 'libwebp' 'gst-plugins-bad-libs' # needed by wxwidgets-gtk3-git?
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -50,10 +53,7 @@ source=(
 	"$_pkgname::git+https://github.com/cemu-project/Cemu.git"
 	'imgui::git+https://github.com/ocornut/imgui.git'
 )
-b2sums=(
-	'SKIP'
-	'SKIP'
-)
+b2sums=('SKIP'{,})
 
 pkgver() {
 	cd $_pkgname
@@ -66,18 +66,20 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	sed -i '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
+	sed -i '/ZLIB::ZLIB/a zstd::zstd' src/Cafe/CMakeLists.txt
 }
 
 build() {
 	local options=(
+		-B build
 		-D ALLOW_PORTABLE=OFF
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
 		-D ENABLE_VCPKG=OFF
-		-Wno-dev
+		-W no-dev
 	)
-	cmake "${options[@]}" -B build -S $_pkgname
+	cmake "${options[@]}" $_pkgname
 	cmake --build build
 }
 
@@ -89,11 +91,13 @@ package() {
 		'libcubeb.so'
 		'libcurl.so'
 		'libfmt.so'
+		'libgcc_s.so'
 		'libgdk-3.so'
 		'libgobject-2.0.so'
 		'libgtk-3.so'
 		'libhidapi-hidraw.so'
 		'libssl.so'
+		'libstdc++.so'
 		'libusb-1.0.so'
 		'libwayland-client.so'
 		'libz.so'
@@ -101,6 +105,7 @@ package() {
 		'libzip.so'
 		'libzstd.so'
 	)
+
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	install -d "$pkgdir"/usr/{bin,share/Cemu}

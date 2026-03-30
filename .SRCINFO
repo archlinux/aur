@@ -1,12 +1,13 @@
 pkgbase = cemu-git
 	pkgdesc = Nintendo Wii U emulator
-	pkgver = 2.6.r85.g492116a
+	pkgver = 2.6.r171.g2913a8c
 	pkgrel = 1
 	url = https://cemu.info/
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = bluez-libs
 	makedepends = boost
+	makedepends = boost-libs
 	makedepends = cmake>=3.21.1
 	makedepends = cubeb
 	makedepends = curl
@@ -17,8 +18,10 @@ pkgbase = cemu-git
 	makedepends = glu
 	makedepends = gtk3
 	makedepends = hidapi
+	makedepends = libgcc
 	makedepends = libgl
 	makedepends = libpng
+	makedepends = libstdc++
 	makedepends = libusb
 	makedepends = libzip
 	makedepends = nasm
@@ -30,7 +33,9 @@ pkgbase = cemu-git
 	makedepends = zarchive>=0.1.2
 	makedepends = zlib
 	makedepends = zstd
-	depends = gcc-libs
+	makedepends = gspell
+	makedepends = libwebp
+	makedepends = gst-plugins-bad-libs
 	depends = glibc
 	depends = glslang>=14
 	depends = hicolor-icon-theme
@@ -46,7 +51,6 @@ pkgbase = cemu-git
 	b2sums = SKIP
 
 pkgname = cemu-git
-	depends = gcc-libs
 	depends = glibc
 	depends = glslang>=14
 	depends = hicolor-icon-theme
@@ -60,11 +64,13 @@ pkgname = cemu-git
 	depends = libcubeb.so
 	depends = libcurl.so
 	depends = libfmt.so
+	depends = libgcc_s.so
 	depends = libgdk-3.so
 	depends = libgobject-2.0.so
 	depends = libgtk-3.so
 	depends = libhidapi-hidraw.so
 	depends = libssl.so
+	depends = libstdc++.so
 	depends = libusb-1.0.so
 	depends = libwayland-client.so
 	depends = libz.so
