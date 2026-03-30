@@ -7,7 +7,10 @@ pkgdesc="mdformat plugin for MkDocs"
 arch=(any)
 url="https://github.com/KyleKing/mdformat-mkdocs"
 license=('MIT')
-depends=(mdformat)
+depends=(
+    mdformat
+    python-mdit_py_plugins
+)
 makedepends=(
     python-build
     python-installer

@@ -9,6 +9,7 @@ pkgbase = mdformat-mkdocs-git
 	makedepends = python-installer
 	makedepends = python-uv-build
 	depends = mdformat
+	depends = python-mdit_py_plugins
 	provides = mdformat-mkdocs
 	conflicts = mdformat-mkdocs
 	source = mdformat-mkdocs::git+https://github.com/KyleKing/mdformat-mkdocs.git
