@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # ex: nowrap
 pkgname=portage
-pkgver=3.0.75
+pkgver=3.0.77
 pkgrel=1
 pkgdesc="package management and distribution system for Gentoo"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-installer)
 license=(GPL2)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('61e0d7bdfc955455aec8a030ada20f54a400a83b7c810df958dfd2872bb7a01b')
+sha256sums=('8e21cd1fd93ebfd713859217e17df0fd5e50872fda76bb3bd4c37eebc1e16f14')
 
 package() {
 	cd "$srcdir" || return 1
