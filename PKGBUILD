@@ -1,8 +1,8 @@
 # Maintainer: qr243vbi
 
 pkgname=(nekobox nekobox-core)
-pkgver=5.10.29
-pkgrel=4
+pkgver=5.10.28
+pkgrel=5
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64' 'pentium4' 'i686' 'armv7h')
 url="https://github.com/qr243vbi/nekobox"
@@ -99,14 +99,24 @@ package_nekobox-git() {
 }
 prepare() {
     local BRANCH="${NEKOBOX_BRANCH:-main}"
-    if [[ -d nekobox ]]
+    local REPO="qr243vbi/nekobox"
+
+    if [[ -d "${nekobox_source_directory}" ]]
     then
-        pushd nekobox
+        pushd "${nekobox_source_directory}"
         git pull
         popd
     else
-        git clone --recurse-submodules --single-branch --branch "${NEKOBOX_BRANCH}" https://github.com/qr243vbi/nekobox "${nekobox_source_directory}"
+        git clone --recurse-submodules --depth 1 --single-branch --branch "${NEKOBOX_BRANCH}" https://github.com/"${REPO}" "${nekobox_source_directory}"
     fi
+
+    pushd "${nekobox_source_directory}/core/server"
+     pushd gen
+      bash update_libs.sh
+     popd
+     go mod tidy
+     go mod vendor 
+    popd
 }
 pkgver(){
     local BRANCH="${NEKOBOX_BRANCH:-main}"
