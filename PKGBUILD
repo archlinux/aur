@@ -1,7 +1,7 @@
 # Maintainer: phil-gru <goldencat@tutamail.com>                                     
 pkgname=pearpass-bin
 pkgver=1.5.0
-pkgrel=2
+pkgrel=1
 pkgdesc="PearPass is a distributed password manager powered by Pear Runtime. It allows secure storage of passwords, credit card details, and secure notes, with peer-to-peer syncing and end-to-end encryption."
 arch=('x86_64')
 url="https://pass.pears.com/"
