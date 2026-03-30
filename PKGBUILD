@@ -3,11 +3,11 @@
 pkgname=cs-firewall-bouncer
 _altpkgname=crowdsec-firewall-bouncer
 pkgver=0.0.34
-pkgrel=1
+pkgrel=2
 _gitpkgrel=0.0.34
 pkgdesc="Use the CrowdSec API to create a dynamic blocklist used by supported firewalls."
 arch=('any')
-url="https://hub.crowdsec.net/author/crowdsecurity/bouncers/cs-firewall-bouncer"
+url="https://github.com/crowdsecurity/cs-firewall-bouncer"
 license=('MIT')
 install=${pkgname}.install
 source=(

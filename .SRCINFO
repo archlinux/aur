@@ -1,8 +1,8 @@
 pkgbase = cs-firewall-bouncer
 	pkgdesc = Use the CrowdSec API to create a dynamic blocklist used by supported firewalls.
 	pkgver = 0.0.34
-	pkgrel = 1
-	url = https://hub.crowdsec.net/author/crowdsecurity/bouncers/cs-firewall-bouncer
+	pkgrel = 2
+	url = https://github.com/crowdsecurity/cs-firewall-bouncer
 	install = cs-firewall-bouncer.install
 	arch = any
 	license = MIT
