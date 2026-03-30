@@ -1,12 +1,13 @@
 pkgbase = letta-code-git
 	pkgdesc = The memory-first coding agent
-	pkgver = r1286.g28ba2e7e
+	pkgver = r1584.g970c1178
 	pkgrel = 1
 	url = https://github.com/letta-ai/letta-code
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	depends = nodejs
+	depends = bun
 	depends = org.freedesktop.secrets
 	depends = imagemagick>=7
 	conflicts = letta-code
@@ -14,7 +15,9 @@ pkgbase = letta-code-git
 	options = !strip
 	source = git+https://github.com/letta-ai/letta-code.git
 	source = letta
+	source = https://patch-diff.githubusercontent.com/raw/letta-ai/letta-code/pull/1247.patch
 	sha256sums = SKIP
 	sha256sums = c9350b744337f0a0b0c51e1a8661e8c7bc757fcc753bddaef872b0ef626228e8
+	sha256sums = a28460805ff6c7f2e38b4238b3974f45838f1c174ba1e0d2ef3d24e13b7da526
 
 pkgname = letta-code-git
