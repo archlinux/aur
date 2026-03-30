@@ -1,8 +1,8 @@
 # Maintainer: ramisotti13-eng
 pkgname=basecamp-linux
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
-pkgdesc="Unofficial Linux companion app for Mountain peripherals (Everest Max keyboard, Makalu 67 mouse, DisplayPad)"
+pkgdesc="Unofficial Linux companion app for Mountain peripherals (Everest Max, Everest 60, Makalu 67, Makalu Max, DisplayPad)"
 arch=('x86_64')
 url="https://github.com/ramisotti13-eng/BaseCamp-Linux"
 license=('GPL3')
@@ -11,7 +11,7 @@ source=("${pkgname}-${pkgver}.AppImage::https://github.com/ramisotti13-eng/BaseC
         "99-mountain.rules::https://github.com/ramisotti13-eng/BaseCamp-Linux/releases/download/v${pkgver}/99-mountain.rules"
         "app_icon_256.png::https://raw.githubusercontent.com/ramisotti13-eng/BaseCamp-Linux/main/resources/app_icon_256.png"
         "basecamp-linux.desktop")
-sha256sums=('f10a9f19a0f2ea1fc7c9ca845abb04497f314ee3918cafc60b7d7225c95bd395'
+sha256sums=('b0652e95ca42962b10feacabe9d7ef05c7252c5572a8590b749505700fed1f0f'
             'SKIP'
             'SKIP'
             'SKIP')
