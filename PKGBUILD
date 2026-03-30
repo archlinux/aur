@@ -1,6 +1,6 @@
 pkgname="cuppajoe"
 pkgver="0.9.2.2"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A hot cuppa joe"
 url=https://github.com/Miroaja/cuppa
 arch=("x86_64" "arm")
