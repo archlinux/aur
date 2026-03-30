@@ -1,7 +1,7 @@
 pkgbase = gopher64
 	pkgdesc = A Nintendo64 emulator
 	pkgver = 1.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gopher64/gopher64/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -38,6 +38,7 @@ pkgbase = gopher64
 	makedepends = lld
 	makedepends = llvm
 	makedepends = mesa
+	makedepends = patchutils
 	makedepends = sndio
 	makedepends = systemd-libs
 	makedepends = vulkan-headers
@@ -50,10 +51,12 @@ pkgbase = gopher64
 	depends = libstdc++
 	depends = vulkan-icd-loader
 	source = git+https://github.com/gopher64/gopher64.git#tag=v1.1.15
-	source = git+https://github.com/gopher64/parallel-rdp-standalone.git
+	source = git+https://github.com/Themaister/parallel-rdp-standalone.git
 	source = gopher64.desktop
+	source = 010-gopher64-update-parallel-rdp.patch::https://github.com/gopher64/gopher64/commit/9b8040873d73f3fe5a8fbaad0bbd7c51542e65b6.patch
 	sha256sums = e027b2debd451c4cae611654d847cef8f1d2d3b1b7ba55de81a6305870dec0e8
 	sha256sums = SKIP
 	sha256sums = 9a3c01d2064095b83261bf931aad101bddc94ae66d621e7233f7337d44a01f10
+	sha256sums = 3a7fd1a63047dd908dd457eb98fed9a70391c37390ab8f3069b918a799884021
 
 pkgname = gopher64

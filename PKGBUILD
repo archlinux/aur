@@ -2,7 +2,7 @@
 
 pkgname=gopher64
 pkgver=1.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc='A Nintendo64 emulator'
 arch=('x86_64')
 url='https://github.com/gopher64/gopher64/'
@@ -49,24 +49,33 @@ makedepends=(
     'lld'
     'llvm'
     'mesa'
+    'patchutils'
     'sndio'
     'systemd-libs'
     'vulkan-headers'
     'wayland-protocols')
 source=("git+https://github.com/gopher64/gopher64.git#tag=v${pkgver}"
-        'git+https://github.com/gopher64/parallel-rdp-standalone.git'
-        'gopher64.desktop')
+        'git+https://github.com/Themaister/parallel-rdp-standalone.git'
+        'gopher64.desktop'
+        '010-gopher64-update-parallel-rdp.patch'::'https://github.com/gopher64/gopher64/commit/9b8040873d73f3fe5a8fbaad0bbd7c51542e65b6.patch')
 sha256sums=('e027b2debd451c4cae611654d847cef8f1d2d3b1b7ba55de81a6305870dec0e8'
             'SKIP'
-            '9a3c01d2064095b83261bf931aad101bddc94ae66d621e7233f7337d44a01f10')
+            '9a3c01d2064095b83261bf931aad101bddc94ae66d621e7233f7337d44a01f10'
+            '3a7fd1a63047dd908dd457eb98fed9a70391c37390ab8f3069b918a799884021')
 
 prepare() {
-    git -C gopher64 submodule init
-    git -C gopher64 config --local submodule.parallel-rdp/parallel-rdp-standalone.url "${srcdir}/parallel-rdp-standalone"
-    git -C gopher64 config --local submodule.src/compat/sse2neon.update none
-    git -C gopher64 -c protocol.file.allow='always' submodule update
+    #git -C gopher64 submodule init
+    #git -C gopher64 config --local submodule.parallel-rdp/parallel-rdp-standalone.url "${srcdir}/parallel-rdp-standalone"
+    #git -C gopher64 config --local submodule.src/compat/sse2neon.update none
+    #git -C gopher64 -c protocol.file.allow='always' submodule update
+    git -C parallel-rdp-standalone config --local advice.detachedHead false
+    git -C parallel-rdp-standalone checkout 388d70f5835b352d841d9d9e5a08c5de01470f41
+    rm -r gopher64/parallel-rdp/parallel-rdp-standalone
+    ln -sf ../../parallel-rdp-standalone gopher64/parallel-rdp/parallel-rdp-standalone
     
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path='gopher64/Cargo.toml'
+    
+    patch -d gopher64 -Np1 -i <(filterdiff -p1 -x parallel-rdp/parallel-rdp-standalone 010-gopher64-update-parallel-rdp.patch)
 }
 
 build() {
