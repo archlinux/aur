@@ -1,6 +1,6 @@
 # Maintainer: Víctor Hugo Sosa Esquivel <arch@victorsosa.com>
 pkgname=vsfetch
-pkgver=2.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Graphical GTK3 system info panel for Linux — themes, animations, multi-distro"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
     'ttf-jetbrains-mono-nerd'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/victorsosaMx/vsFetch/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('37b179dbf3627c87367942f7ad014467c24be54283385811e16ad7b711afaded')
+sha256sums=('dd3ca30743da14e74265681f0b300674bf5c5198af6abf0260ecf7afebbcf6d5')
 
 package() {
     cd "vsFetch-${pkgver}"

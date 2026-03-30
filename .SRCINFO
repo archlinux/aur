@@ -1,6 +1,6 @@
 pkgbase = vsfetch
 	pkgdesc = Graphical GTK3 system info panel for Linux — themes, animations, multi-distro
-	pkgver = 2.0
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/victorsosaMx/vsFetch
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = vsfetch
 	depends = gtk3
 	depends = papirus-icon-theme
 	depends = ttf-jetbrains-mono-nerd
-	source = vsfetch-2.0.tar.gz::https://github.com/victorsosaMx/vsFetch/archive/refs/tags/v2.0.tar.gz
-	sha256sums = 37b179dbf3627c87367942f7ad014467c24be54283385811e16ad7b711afaded
+	source = vsfetch-2.0.2.tar.gz::https://github.com/victorsosaMx/vsFetch/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = dd3ca30743da14e74265681f0b300674bf5c5198af6abf0260ecf7afebbcf6d5
 
 pkgname = vsfetch
