@@ -9,8 +9,17 @@ arch=('any')
 url="https://github.com/hakimshifat/ytui_music"
 license=('GPL-3.0-or-later')
 depends=(
+    # Arch Linux official packages
     'python'
     'mpv'
+    'python-yt-dlp'
+    'python-requests'
+    'python-pillow'
+    'python-rich'
+    # AUR-only packages (installed via pip below)
+    'python-textual'
+    'python-textual-image'
+    'python-mpv'
 )
 makedepends=(
     'python-build'
@@ -28,8 +37,8 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     
-    # Install the Python package with dependencies
-    pip install --root="$pkgdir" --ignore-installed --no-build-isolation \
+    # Install only the main package (dependencies from Arch/AUR)
+    pip install --root="$pkgdir" --ignore-installed --no-deps --no-build-isolation \
         --no-warn-script-location dist/*.whl 2>/dev/null
     
     # Ensure the script is executable
