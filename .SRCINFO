@@ -1,0 +1,16 @@
+pkgbase = kreuzberg-bin
+	pkgdesc = High-performance text extraction library - CLI binary
+	pkgver = 4.6.3
+	pkgrel = 1
+	url = https://github.com/kreuzberg-dev/kreuzberg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kreuzberg
+	conflicts = kreuzberg
+	source_x86_64 = kreuzberg-4.6.3-x86_64.tar.gz::https://github.com/kreuzberg-dev/kreuzberg/releases/download/v4.6.3/kreuzberg-cli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 47c6ef444734e104fb9fab52dfd4e12f7f7682702c4950e274d9947e50f0d1da
+	source_aarch64 = kreuzberg-4.6.3-aarch64.tar.gz::https://github.com/kreuzberg-dev/kreuzberg/releases/download/v4.6.3/kreuzberg-cli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 473164669ed2a437801986da42a38931d4b9cb6bf16db2f697eb2a285efaf933
+
+pkgname = kreuzberg-bin
