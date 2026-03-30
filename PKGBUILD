@@ -5,7 +5,7 @@ _pkgname=mdterm
 pkgname=${_pkgname}-bin
 pkgdesc="A terminal-based Markdown viewer written in Rust"
 
-pkgver=1.5.0
+pkgver=2.0.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
-sha256sums=('d162a0a07161e588c95af24d99b6f3468599914623f8d0f7e5746e3c4dac4918'
+sha256sums=('36adecff10b4ae4c6b5666a39b02e50b7b46befde5bef9a2f7bcab1ec6bf0d21'
             'e2d8bb4e653bd3868b02a3265b104952401722d688adedac5e4c1d4d1f2794ec')
-sha256sums_x86_64=('2927624525bdf8586dc936fa3bd5a145a949b340d82644b1612e44d943822d81')
-sha256sums_aarch64=('4ac6b84ef2930873921f06ad5fe1c36a59351c098ef3b6c0442ecd8c9d92bb9e')
+sha256sums_x86_64=('5c35a335f0a75343602372f1c6170727d000d8840016df5a036cd6957698315d')
+sha256sums_aarch64=('a4856ba5e9a2ba17dd5f0b227cac20c78448e6b540ef03c903b4fa1abfa3787c')
 
 
 package() {
