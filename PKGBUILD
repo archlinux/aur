@@ -10,7 +10,7 @@ url='https://github.com/bhmsgame06/asc'
 license=('GPL-3.0-or-later')
 
 depends=()
-makedepends=('git')
+makedepends=('git' 'libpng')
 
 prepare() {
 	git clone --depth 1 "$url" "$srcdir"
