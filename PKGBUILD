@@ -7,8 +7,8 @@
 # Contributor: Jakub Schmidtke
 
 pkgname=android-platform
-_apilevel=36
-_rev=r02
+_apilevel=37.0
+_rev=r01
 pkgver=${_apilevel}_${_rev}
 pkgrel=1
 pkgdesc="Android SDK Platform, latest API"
@@ -20,8 +20,8 @@ conflicts=("${pkgname}-${_apilevel}")
 options=('!strip' '!debug')
 source=("https://dl.google.com/android/repository/platform-${_apilevel}_${_rev}.zip"
          "package.xml")
-sha256sums=('37607369a28c5b640b3a7998868d45898ebcb777565a0e85f9acf36f29631d2e'
-            '9c54aa15c2f4680941a780ad238bc9cdf6e2a9a72cfd15d5ba24d8dc0d33495d')
+sha256sums=('19bdcf42de0cb0e9500a27da6833fc30cdd49a7ec690aa5cabaa0ef893af9ebe'
+            '40cb5852ef96e55df36ec07769efe4367734a2b44679c3854e81b406bc4e43cf')
 
 package() {
   depends=('android-sdk' 'android-sdk-platform-tools')
