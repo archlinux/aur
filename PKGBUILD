@@ -1,5 +1,5 @@
 pkgname=illogical-impulse-bibata-modern-classic-bin
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="Material Based Cursor Theme, installed for illogical-impulse dotfiles"
 arch=('any')

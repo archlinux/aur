@@ -1,6 +1,6 @@
 pkgbase = illogical-impulse-bibata-modern-classic-bin
 	pkgdesc = Material Based Cursor Theme, installed for illogical-impulse dotfiles
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/ful1e5/Bibata_Cursor
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = illogical-impulse-bibata-modern-classic-bin
 	conflicts = bibata-cursor-theme
 	conflicts = bibata-cursor-theme-bin
 	options = !strip
-	source = illogical-impulse-bibata-modern-classic-2.0.6.tar.xz::https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.6/Bibata-Modern-Classic.tar.xz
+	source = illogical-impulse-bibata-modern-classic-2.0.7.tar.xz::https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.7/Bibata-Modern-Classic.tar.xz
 	sha256sums = SKIP
 
 pkgname = illogical-impulse-bibata-modern-classic-bin
