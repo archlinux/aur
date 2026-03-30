@@ -1,0 +1,5 @@
+[nanotodon]
+source = 'github'
+github = 'taka-tuos/nanotodon'
+use_latest_release = true
+prefix = 'v'
