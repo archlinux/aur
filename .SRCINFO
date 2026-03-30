@@ -1,0 +1,17 @@
+pkgbase = hyprdict
+	pkgdesc = Auto dictionary popup for Hyprland — select a word, get a definition (EN + JP)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/tuanlyphong/hyprdict
+	arch = any
+	license = MIT
+	depends = rofi-wayland
+	depends = wl-clipboard
+	depends = curl
+	depends = python
+	depends = libnotify
+	depends = bash
+	source = hyprdict-1.0.1.tar.gz::https://github.com/tuanlyphong/hyprdict/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 58704caed4d142b03b5db2bc33ac86d661d91fa48c4298f36e3732f9f5c5ce4e
+
+pkgname = hyprdict
