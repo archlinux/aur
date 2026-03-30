@@ -1,7 +1,7 @@
 # Maintainer: Brokenpip3 <brokenpip3[at]gmail[dot]com>
 
 pkgname=bash-bats-detik
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=3
 pkgdesc="A library to ease e2e tests of applications in K8s environments with bats"
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=('bats')
 install=bash-bats-detik.install
 source=("https://github.com/bats-core/bats-detik/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('4834d9724776b4bf7adab44285bbc335bab2de9114feac3e4dac478e5ddbcc43eab927d340be6b5f09b0bffaa7dfdae337eca0095353213fa28eac8669fcb8d8')
+sha512sums=('c59c7e5fa0635940b2491e2dca28d52d7d2f22d0a463bd88eb478fbe5e979c8e5ee17deeeb9b31926202c6f2fcc397f99f9f9676f9e3ee802645066c143d388f')
 
 check() {
    cd "${srcdir}/bats-detik-${pkgver}"
