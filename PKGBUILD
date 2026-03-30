@@ -18,7 +18,7 @@ source=(
 noextract=("${_appimage}")
 sha256sums=('f5b610be1d3ffa5d11a0db032fd5598923c73c0802a8e1ffaa9cf93e913ac1bd'
             'f8c3f747b72779e0c287a43fe91bf2b80019d5f25b2d919ed9c35352b1fde2c2'
-            '015273cf3a7402c34d37e49b16c7ed933298065e379a5dbcb484eb960f690bae')
+            '7a4cffe7da360a2212f85b16e07d3c65a7ee4a0d130c27ee99db7c90eed245a4')
 
 package() {
     install -Dm755 $_appimage "$pkgdir"/usr/bin/pearpass
