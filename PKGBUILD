@@ -3,7 +3,7 @@
 _name=pytr
 pkgname="python-${_name}"
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc='This is a library for the private API of the Trade Republic online brokerage.'
 arch=('any')
 url="https://github.com/pytr-org/pytr"
@@ -14,6 +14,7 @@ conflicts=("python-${_name}")
 depends=(
   'python' 'python-shtab' 'python-babel' 'python-websockets' 'python-requests-futures' 'python-pygments' 'python-pathvalidate'
   'python-packaging' 'python-ecdsa' 'python-coloredlogs' 'python-certifi'
+  'python-cryptography' 'python-curl_cffi'
   )
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=(
