@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
@@ -5,15 +6,15 @@
 pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.5.2.r0.gb3ccc90
+pkgver=1.7.1.r0.gafd189c
 pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (development version)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
 license=('BSD-3-Clause')  # SPDX-License-Identifier: BSD-3-Clause
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
   'python'
 )
 makedepends=(
@@ -22,7 +23,6 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-maturin'
-  'python-setuptools'
   'python-wheel'
 )
 optdepends=(
@@ -57,11 +57,16 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
     LICENSE
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     {CHANGELOG,README}.rst SECURITY.md
-  cp -vfa examples "$pkgdir/usr/share/doc/$pkgname/"
+  cp -fa examples "$pkgdir/usr/share/doc/$pkgname/"
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" || continue
+    ln -srf "$pkgname" "$_pkgname"
+  done
 }
 
 # eof
