@@ -9,7 +9,7 @@
 _pkgname="forkgram"
 pkgname="$_pkgname"
 pkgver=6.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL-3.0-or-later')
@@ -47,6 +47,7 @@ depends=(
 )
 makedepends=(
   boost
+  boost-libs # static link
   cmake
   extra-cmake-modules
   fmt
@@ -67,7 +68,7 @@ optdepends=(
 
 conflicts=("forkgram-bin")
 
-options=('!debug' '!emptydirs' '!lto')
+options=('!lto')
 
 _pkgsrc="frk-v$pkgver-full"
 _pkgsrc_tdlib="telegram-tdlib"
