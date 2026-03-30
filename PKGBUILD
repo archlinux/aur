@@ -3,7 +3,7 @@
 pkgbase=python-stcal
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="STScI tools and algorithms used in calibration pipelines"
 arch=('i686' 'x86_64')
@@ -25,13 +25,12 @@ makedepends=('python-setuptools-scm>=3.4'
              'python-astropy-healpix'
              'graphviz')  # wheel required by new setuptools; gwcs, spherical_geometry, stsci.. <- tweakwcs
 #checkdepends=('python-pytest'
-##            'python-pytest-doctestplus'
-#             'python-pytest-xdist'
+##             'python-pytest-doctestplus'
 #             'python-pytest-timeout'
-##            'python-opencv'
+###            'python-opencv'
 #            )   # gwcs(requests <- .. <- scipy), imagestat, spherical_geometry <- tweakwcs drizzle skimage(requests) shapely pyarrow healpix already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('4365c0541e7630ab1a43fb34bd6268c6')
+md5sums=('b41a48356a0aea2e53a8ad8601577fbd')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -49,7 +48,8 @@ build() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #    # Cost long time
 #    mv src/{,_}${_pyname}
-#    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 --timeout 300 #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+#    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest -vv -l -ra --color=yes -o console_output_style=count --timeout 300 \
+#        --deselect=tests/test_tweakreg.py::test_get_catalog[GAIADR3_S3-None-2469] #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
 #}
 
 package_python-stcal() {
@@ -60,7 +60,7 @@ package_python-stcal() {
              'python-scipy>=1.14.1'
              'python-scikit-image>=0.21.0'
              'python-tweakwcs>=0.8.8'
-             'python-spherical_geometry>=1.2.22'
+             'python-spherical_geometry>=1.3'
              'python-stsci.imagestats>=1.8.3'
              'python-shapely>=2.1.1'
              'python-pyarrow>=10.0.1'
