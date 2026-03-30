@@ -1,7 +1,7 @@
 pkgbase = megacmd
 	pkgdesc = MEGA Command Line Interactive and Scriptable Application
-	pkgver = 2.5.0
-	pkgrel = 3
+	pkgver = 2.5.1
+	pkgrel = 1
 	url = https://github.com/meganz/MEGAcmd
 	arch = x86_64
 	license = LicenseRef-megacmd
@@ -18,11 +18,11 @@ pkgbase = megacmd
 	depends = sqlite
 	depends = zlib
 	depends = fuse2
-	source = megacmd-2.5.0-3.tar.gz::https://github.com/meganz/MEGAcmd/archive/2.5.0_Linux.tar.gz
-	source = mega-sdk-5ed7296be8a7cd5920095b928d6696aed41289c6.tar.gz::https://github.com/meganz/sdk/archive/5ed7296be8a7cd5920095b928d6696aed41289c6.tar.gz
+	source = megacmd-2.5.1-1.tar.gz::https://github.com/meganz/MEGAcmd/archive/2.5.1_Linux.tar.gz
+	source = mega-sdk-acfdf8d3a73d3f636cb4bb4b183845f4feb5af9a.tar.gz::https://github.com/meganz/sdk/archive/acfdf8d3a73d3f636cb4bb4b183845f4feb5af9a.tar.gz
 	source = fix-icu-linking.patch::https://github.com/meganz/sdk/pull/2768.patch
-	sha512sums = e0474aefa00b9d03a5327089d08334f580287731959b9279c581a34c907db5cc36ce2e889921c4fc2b2f4b60cf4e3409e1eedabe52dd3b40fb3cb2a872cc5ccb
-	sha512sums = 61df5b803c3f5e705eb07667934b35368c0eb66ba0dd08d62f459eac04cf9336e132b5bf58d9a86ab97ef2d44e46a12d86b921d94b9d6a4dd7f7b8887254de34
+	sha512sums = bc0248c7c2656466042cc817f00aac77d60a08d85e2876acc8246bcaaf3b8fc6ecd71a3595b8fc23c54c29629086691fb8c049f60d6c8bb3a0e13e83870040ba
+	sha512sums = 6eb0fa3d1620bf864dcb4f2e5062e4a56e228ce65e9c00b9855cc14c57ee7c0b16c72e2d697b6b574e627b55e90a0ad172de218e0085b01be98d29d53f1e903d
 	sha512sums = 2d720030596a9721a2e6ad9d426d3de9a1f2a625438e2b7df0e7363ffb0178097c87d9ee7b4e36ef0277ced78b754564517fd73ca4502a8723fa8132a1b37810
 
 pkgname = megacmd
