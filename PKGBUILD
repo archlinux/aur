@@ -1,5 +1,5 @@
 pkgname=proton-vpn-qt-app
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A Qt GUI frontend for the ProtonVPN CLI"
 arch=('x86_64')
@@ -9,10 +9,8 @@ depends=(
     'qt6-base'
     'qt6-svg'
     'proton-vpn-cli'
-    'iproute2'
 )
 optdepends=(
-    'networkmanager: display active server name'
     'curl: display public IP address'
     'systemd: have the app auto-start'
 )
