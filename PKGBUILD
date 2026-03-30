@@ -1,6 +1,7 @@
 # Maintainer: bhmsgame06 <bhmsgamexbox2010@gmail.com>
 
 pkgname='ramdump-49xx'
+pkgdesc='A tool for dumping RAM from Samsung Swift devices running on the PNX49xx chipset.'
 pkgver=1.0
 pkgrel=1
 
