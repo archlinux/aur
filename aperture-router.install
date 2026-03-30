@@ -1,14 +1,30 @@
 post_install() {
   # Create config directory if not exists
   mkdir -p /etc/aperture-router
+
+  # Ensure aperture-router user exists (should be created by sysusers.d)
+  # but create if not (fallback for manual installs)
+  if ! getent passwd aperture-router >/dev/null 2>&1; then
+    useradd -r -s /bin/false -d /var/lib/aperture-router aperture-router 2>/dev/null || true
+  fi
+
+  # Set correct ownership for config directory
+  chown aperture-router:aperture-router /etc/aperture-router 2>/dev/null || true
   chmod 755 /etc/aperture-router
+
+  # Create empty config file with correct ownership (service can read immediately)
+  if [ ! -f /etc/aperture-router/config.toml ]; then
+    touch /etc/aperture-router/config.toml
+    chown aperture-router:aperture-router /etc/aperture-router/config.toml 2>/dev/null || true
+    chmod 600 /etc/aperture-router/config.toml
+  fi
 
   # Create sysconfig directory
   mkdir -p /etc/sysconfig
 
   cat <<EOF
 
-==> aperture-router v0.2.1 installed!
+==> aperture-router v0.2.2 installed!
 
 ╔══════════════════════════════════════════════════════════════╗
 ║                    QUICK START OPTIONS                       ║
@@ -44,9 +60,18 @@ post_upgrade() {
   mkdir -p /etc/aperture-router
   mkdir -p /etc/sysconfig
 
+  # Fix ownership if needed (upgrade from older versions)
+  if getent passwd aperture-router >/dev/null 2>&1; then
+    chown aperture-router:aperture-router /etc/aperture-router 2>/dev/null || true
+    if [ -f /etc/aperture-router/config.toml ]; then
+      chown aperture-router:aperture-router /etc/aperture-router/config.toml 2>/dev/null || true
+      chmod 600 /etc/aperture-router/config.toml 2>/dev/null || true
+    fi
+  fi
+
   cat <<EOF
 
-==> aperture-router upgraded to v0.2.1!
+==> aperture-router upgraded to v0.2.2!
 
 NEW FEATURES:
   • Environment-only mode (no config file needed)
@@ -61,11 +86,33 @@ EOF
 }
 
 pre_remove() {
+  # Stop and disable the service if running
+  if systemctl is-active aperture-router >/dev/null 2>&1; then
+    systemctl stop aperture-router 2>/dev/null || true
+  fi
+  if systemctl is-enabled aperture-router >/dev/null 2>&1; then
+    systemctl disable aperture-router 2>/dev/null || true
+  fi
+
   cat <<EOF
 
-==> Stopping aperture-router service...
-  $ sudo systemctl stop aperture-router
-  $ sudo systemctl disable aperture-router
+==> aperture-router service stopped and disabled.
+
+EOF
+}
+
+post_remove() {
+  cat <<EOF
+
+==> aperture-router removed.
+
+  Config files preserved at:
+    /etc/aperture-router/config.toml
+    /etc/sysconfig/aperture-router
+
+  To remove completely:
+    $ sudo rm -rf /etc/aperture-router
+    $ sudo rm /etc/sysconfig/aperture-router
 
 EOF
 }
