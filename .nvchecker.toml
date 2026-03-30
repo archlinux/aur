@@ -1,4 +1,4 @@
-[asmxs-bin]
+[asmsx-bin]
 source = "github"
 github = "Fubukimaru/asMSX"
 use_latest_release = true
