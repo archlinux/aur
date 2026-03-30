@@ -19,7 +19,7 @@ url="https://github.com/${_pkgauthor}/${_pkgname}"
 
 license=('MIT')
 
-makedepends=('rust' 'pkgconf' 'openssl')
+makedepends=('rust' 'pkgconf' 'openssl' 'libgit2')
 depends=('glibc' 'gcc-libs' 'libgit2')
 
 provides=("${_appname}" "${_slinkname}")

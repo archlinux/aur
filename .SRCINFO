@@ -9,6 +9,7 @@ pkgbase = stax
 	makedepends = rust
 	makedepends = pkgconf
 	makedepends = openssl
+	makedepends = libgit2
 	depends = glibc
 	depends = gcc-libs
 	depends = libgit2
