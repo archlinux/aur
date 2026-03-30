@@ -1,6 +1,6 @@
 # Maintainer: ardet696 <https://github.com/ardet696>
 pkgname=minimalist-mp3-player
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A minimalist TUI MP3 player with FFT spectrum visualizer and BPM detection"
 arch=('x86_64')
