@@ -1,6 +1,6 @@
 pkgbase = frpc-desktop-bin
 	pkgdesc = frp cross-platform desktop client, visual configuration, easily achieve internal network penetration! Supports all frp versions.(Prebuilt version.Use system-wide electron)frp跨平台桌面客户端,可视化配置,轻松实现内网穿透!支持所有frp版本.
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/luckjiawei/frpc-desktop
 	arch = aarch64
@@ -8,16 +8,16 @@ pkgbase = frpc-desktop-bin
 	license = MIT
 	depends = electron39
 	depends = frpc
-	provides = frpc-desktop=1.2.4
+	provides = frpc-desktop=1.2.5
 	conflicts = frpc-desktop
 	options = !emptydirs
-	source = LICENSE-1.2.4::https://raw.githubusercontent.com/luckjiawei/frpc-desktop/v1.2.4/LICENSE
+	source = LICENSE-1.2.5::https://raw.githubusercontent.com/luckjiawei/frpc-desktop/v1.2.5/LICENSE
 	source = frpc-desktop.sh
 	sha256sums = 11e11a6ea4db42a2465df8f3a30f90fcf0835facb26823c4d2ce0c12a00acf8c
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = frpc-desktop-1.2.4-aarch64.deb::https://github.com/luckjiawei/frpc-desktop/releases/download/v1.2.4/Frpc-Desktop_1.2.4_arm64.deb
-	sha256sums_aarch64 = baf6c11749296c0cbdd33b443d7ed151cdc3501a77f82ea5a529899b609a870d
-	source_x86_64 = frpc-desktop-1.2.4-x86_64.deb::https://github.com/luckjiawei/frpc-desktop/releases/download/v1.2.4/Frpc-Desktop_1.2.4_amd64.deb
-	sha256sums_x86_64 = 5aa3b0296c58349c48bb1817e15d6ee29a4cedf18e622565b7462838b50e5bf8
+	source_aarch64 = frpc-desktop-1.2.5-aarch64.deb::https://github.com/luckjiawei/frpc-desktop/releases/download/v1.2.5/Frpc-Desktop_1.2.5_arm64.deb
+	sha256sums_aarch64 = 14f0fe2fe7913c6626299162fe9d68eec46cfab37fd6ded1b788cbb623d0f7f7
+	source_x86_64 = frpc-desktop-1.2.5-x86_64.deb::https://github.com/luckjiawei/frpc-desktop/releases/download/v1.2.5/Frpc-Desktop_1.2.5_amd64.deb
+	sha256sums_x86_64 = 018d4a1342655079d126a73d053c8a1453f021fe620abc4c06efce3c17fa60a3
 
 pkgname = frpc-desktop-bin
