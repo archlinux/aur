@@ -1,27 +1,27 @@
 pkgbase = sniprun
 	pkgdesc = A neovim plugin to run lines/blocs of code (independently of the rest of the file), supporting multiples languages
-	pkgver = 1.3.21
+	pkgver = 1.3.22
 	pkgrel = 1
 	url = https://github.com/michaelb/sniprun
 	changelog = CHANGELOG.md
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	makedepends = gcc-libs
+	makedepends = libgcc
 	options = !lto
-	source = sniprun-1.3.21.tar.gz::https://github.com/michaelb/sniprun/archive/v1.3.21.tar.gz
-	sha256sums = 7f42bfd9bbcd87c4c317be6eb2d0e24913b8033fe538237aae73222e46e2c272
+	source = sniprun-1.3.22.tar.gz::https://github.com/michaelb/sniprun/archive/v1.3.22.tar.gz
+	sha256sums = 4e35fc9ae482dc198b8bde084cd0beab7fd1a6838a8cdcb6d3533f43e4ab4a53
 
 pkgname = sniprun
 	pkgdesc = Compiled binary core for neovim-sniprun
-	depends = gcc-libs
+	depends = libgcc
 	replaces = sniprun-legacy
 
 pkgname = neovim-sniprun
 	install = neovim-sniprun.install
 	arch = any
 	depends = neovim
-	depends = sniprun=1.3.21
+	depends = sniprun=1.3.22
 	optdepends = bash: Bash snippets support
 	optdepends = coffeescript: CoffeeScript snippets support
 	optdepends = gcc-ada: Limited Ada snippets support

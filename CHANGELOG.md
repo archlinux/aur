@@ -1,3 +1,132 @@
+## v1.3.22
+- Wrap long lines in FloatingWindow display mode
+
+## v1.3.21
+- Settable current working directory
+- Fix window/terminal close bug
+
+## v1.3.20
+- PHP repl, Rust repl fixes
+- Python3_original import indentation fix
+
+## v1.3.19
+- PHP (incl. REPL) support, courtesy of @be-west
+- CI fixes & improvements
+
+## v1.3.18
+- Swift support (incl. REPL)
+- Configurable REPL timeout
+- Rust_original now repl capable (based on evcxr)
+- REPL limitation 'please re-run your snippet' removed
+
+## v1.3.17
+- Better fallback messages
+- Terminal display mode fixes (courtesy of @dbeecham)
+- VirtualLine display mode
+
+## v1.3.16
+- Fix nvim-notify timeout and add render style option
+- Filter ANSI escape code by default
+
+## v1.3.15
+- Add PlantUML support (ascii output)
+- Basic user input support
+- SQL support
+
+## v1.3.14
+- Improve Lua\_nvim's handling of 'local' requires in REPL mode
+
+## v1.3.13
+- Support Python import list syntax
+
+## v1.3.12
+- More universally-working shebang in scripts
+- Use Lua api to set highlights in a more extensible way (courtesy of @pwnalone)
+
+## v1.3.11
+- Support compiler flags for C++ (courtesy of @jonathanffon) and all other languages
+- Scripts use \cat instead of /bin/cat (courtesy of @GaetanLepage)
+
+## v1.3.10
+- Fix missing documentation in the online wiki
+- Fix interpreters broken when they were not explicitely the default for their filetype
+- Remove buggy terminal_persistence option
+
+## v1.3.9
+- Support of "interpreter" and "compiler" key for every interpreter
+- Bun-based JS/TS intepreter (with REPL)
+
+## v1.3.8
+- Fix Python3_jupyter
+- Allow opening terminal in horizontal split
+- Compiles locally by default (when on dev branch)
+
+## v1.3.7
+- Fix issue in multiple languages when last line is a comment
+- Install instructions for lazy.nvim/Lunarvim
+- MSRV increase to 1.65
+- Bash interpreter fix + REPL feature removal
+- API's run_string function can display virtual text at current cursor position
+- HTTP support (using ureq)
+
+## v1.3.6
+- Ruby documentation
+- Fix deprecating checkhealth
+- Fix install script breaking under certain conditions
+
+## v1.3.5
+- MSRV increase to 1.60
+- Improve MacOS detection
+
+## v1.3.4
+- SnipInfo fixes
+
+## v1.3.3
+- POSIX-compliant install script
+- Install script does not hide stdout/err anymore
+
+## v1.3.2
+- Quality-of-life fixes courtesy of @zhengpd
+- Keep terminal display open by default
+
+## v1.3.1
+- Fix SnipInfo on some Mac
+- Fix :help sniprun
+
+## v1.3.0
+- Compatibility with virtually **any** language through a revamped generic interpreter
+- OCaml official support (bloc-level, REPL)
+- Misc coding style improvements
+
+## v1.2.13
+- Fix broken snipinfo on NixOS
+- Document install on NixOS
+
+## v1.2.12
+- Fix (broken) SnipLive
+
+## v1.2.11
+- Fix python3_fifo issue with try/catch
+- Fix deno's REPL ANSI color code appearing in result
+
+## v1.2.10
+- Neorg support
+- Support for named code blocs (neorg, orgmode)
+- Allow setting custom locations for the sniprun binary
+
+## v1.2.9
+- Elixir support (with REPL capabilities)
+- C# support
+- "--project"-aware Julia interpreter
+- Fixed Julia REPL capabilities (fifo in Julia_original, in addition to Julia_jupyter)
+
+## v1.2.8
+- Remove SnipTerminate
+- Python_fifo3 fixes for indentation issues
+- HTML doc deployed from github pages
+- Composable/filterable display options
+- Different display modes for live mode
+
 ## v1.2.7
 - Fix bug where the display configuration was overwritten by live mode activation
 - Fix bug where REPL interpreter would get instantly stopped on MacOS

@@ -3,22 +3,22 @@
 
 pkgbase=sniprun
 pkgname=('sniprun' 'neovim-sniprun')
-pkgver=1.3.21
+pkgver=1.3.22
 pkgrel=1
 pkgdesc='A neovim plugin to run lines/blocs of code (independently of the rest of the file), supporting multiples languages'
 arch=('x86_64')
 url="https://github.com/michaelb/sniprun"
 license=('MIT')
-makedepends=('cargo' 'gcc-libs')
+makedepends=('cargo' 'libgcc')
 options=(!lto)
 changelog=CHANGELOG.md
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7f42bfd9bbcd87c4c317be6eb2d0e24913b8033fe538237aae73222e46e2c272')
+sha256sums=('4e35fc9ae482dc198b8bde084cd0beab7fd1a6838a8cdcb6d3533f43e4ab4a53')
 
 prepare() {
 	cd "$pkgbase-$pkgver"
-	cargo update
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	# cargo update
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -36,7 +36,7 @@ build() {
 
 package_sniprun() {
 	pkgdesc='Compiled binary core for neovim-sniprun'
-	depends=('gcc-libs')
+	depends=('libgcc')
 	replaces=('sniprun-legacy')
 
 	cd "$pkgbase-$pkgver"
