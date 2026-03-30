@@ -1,0 +1,19 @@
+pkgbase = nuphyctl-bin
+	pkgdesc = Rust CLI for sending NuPhy keyboard HID commands
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/fldc/nuphyctl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = hidapi
+	provides = nuphyctl
+	conflicts = nuphyctl
+	source = LICENSE-0.5.1::https://raw.githubusercontent.com/fldc/nuphyctl/v0.5.1/LICENSE
+	sha256sums = f68933e05b2f9076808b495f9157ff473c98e07c584662e2a058cc7218d149cb
+	source_x86_64 = nuphyctl-bin-0.5.1-linux-x86_64.tar.gz::https://github.com/fldc/nuphyctl/releases/download/v0.5.1/nuphyctl-v0.5.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 72f10053bc3063e55964ec589a92a5590993e487e746e6063e6d04952e2f7ad9
+	source_aarch64 = nuphyctl-bin-0.5.1-linux-aarch64.tar.gz::https://github.com/fldc/nuphyctl/releases/download/v0.5.1/nuphyctl-v0.5.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 2d2737af624e544ffb87d6abe2d24bba454eead0db71479df1622d5f8be78edb
+
+pkgname = nuphyctl-bin
