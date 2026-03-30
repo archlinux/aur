@@ -104,7 +104,7 @@ prepare() {
         git pull
         popd
     else
-        git clone --recurse-submodules --single-branch --branch "${NEKOBOX_BRANCH}" https://github.com/"${REPO}" "${nekobox_source_directory}"
+        git clone --recurse-submodules --single-branch --branch "${NEKOBOX_BRANCH}" https://github.com/qr243vbi/nekobox "${nekobox_source_directory}"
     fi
 }
 pkgver(){
