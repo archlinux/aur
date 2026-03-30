@@ -9,7 +9,7 @@ license=('MIT')
 depends=('sdl2')
 makedepends=('cmake' 'gcc')
 source=("$pkgname-$pkgver::git+https://github.com/ardet696/MinimalistMP3Player.git#tag=v$pkgver")
-sha256sums=('ddbc8ac237a95c8f5b661194ae4a5b943273de8e7553c57f1e4969e3df2f8849')
+sha256sums=('9441b715ddf2382bd8253bfeb960ec0ffeeff1460d50e715fb584d8c6885cb06')
 
 prepare() {
     cd "$pkgname-$pkgver"
