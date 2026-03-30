@@ -1,5 +1,5 @@
 pkgname=mkdev
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="Save your boilerplate instead of writing it."
 arch=('x86_64')
@@ -25,5 +25,9 @@ package() {
     MANPAGE=true target/release/mk
     for manfile in mkdev-man/*.1; do
         install -Dm644 "$manfile" "$pkgdir/usr/share/man/man1/$(basename "$manfile")"
+    done
+
+    for manfile in mkdev-man/*.5; do
+        install -Dm644 "$manfile" "$pkgdir/usr/share/man/man5/$(basename "$manfile")"
     done
 }
