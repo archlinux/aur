@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=draw.io
 pkgname="${_pkgname//./}-desktop-git"
-pkgver=29.5.1.r21.gd2cfc84
-_electronversion=39
+pkgver=29.6.6.r0.gd9aabeb
+_electronversion=40
 _nodeversion=24
 pkgrel=1
 pkgdesc="A diagramming and whiteboarding desktop app based on Electron that wraps the core draw.io editor.(Use system-wide electron)"
