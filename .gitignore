@@ -1,0 +1,7 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!keys/
+!keys/**

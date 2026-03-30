@@ -1,0 +1,18 @@
+pkgbase = octave-spm
+	pkgdesc = Suite of Octave functions, scripts, and data files, implementing Statistical Parametric Mapping
+	pkgver = 25.01.02
+	pkgrel = 1
+	url = https://www.fil.ion.ucl.ac.uk/spm/
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = bash
+	depends = glibc
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
+	depends = octave
+	noextract = spm_25.01.02.zip
+	source = https://github.com/spm/spm/releases/download/25.01.02/spm_25.01.02.zip
+	sha256sums = 562c8036aa11c0d2cfe0fbff123f482c3ec8cb5ef56be521af26caae5481db2a
+
+pkgname = octave-spm

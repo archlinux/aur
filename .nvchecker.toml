@@ -1,0 +1,3 @@
+[octave-spm]
+source = "git"
+git = "https://github.com/spm/spm.git"
