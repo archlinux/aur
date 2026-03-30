@@ -1,7 +1,7 @@
 # Maintainer: CELESTIFYX Team <celestifyx@gmail.com>
 
 pkgname="lynxfetch"
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Super fast, versatile, and customizable command-line fetcher."
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=("glibc"
     "dbus")
 
 source=("https://gitlab.com/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=("6bfa340b4ef8f3f404863a9c0a7fadceb1dd6acc77b30771c551d5671a8d49253ef67877b1ffb1ed031f83aee6845ecdd3da81ecfe3a4c512ca9acac950b1ba6")
+sha512sums=("1bc09348d8f4f74f914299d08ee9a42a549d06ef03813bd9ab9d7fe572fa367cd8754fbe43a03d3886230032b239b14623bf5eedb21785f563e4c0d495f8bc8c")
 
 package() {
     cd "${pkgname}-${pkgver}"
