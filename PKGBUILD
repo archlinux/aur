@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=go-mmproxy
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Faster and stable implementation of mmproxy"
 arch=(aarch64 x86_64)
@@ -11,13 +11,13 @@ depends=(glibc)
 makedepends=(go)
 options=(!debug)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('6a167ec622eeb087047330255420045c5e8a375cc3a9becd4c032ab5a30e6c341fdb657b4407297b32086fa4f43d3decd3f671228cda16aa68bfe30e90ae618f')
+b2sums=('c7c9e18adff4253957e292baf8ae664bd9fc9958268aa2e83a73522c51b34813ea43277a4a0c15386fff20abd84de4e0f4cd5c2f58928e248d15e8b15b624756')
 
 prepare() {
   cd $pkgname-$pkgver
-  sed -i 's|DynamicUser=yes|User=root|'                           $pkgname.service.example
-  sed -i 's|:1000|:22|g'                                          $pkgname.service.example
-  sed -i 's| -allowed-subnets /etc/go-mmproxy/net-prefixes.txt||' $pkgname.service.example
+  sed -i 's|DynamicUser=yes|User=root|'                           examples/$pkgname.service
+  sed -i 's|:1000|:22|g'                                          examples/$pkgname.service
+  sed -i 's| -allowed-subnets /etc/go-mmproxy/net-prefixes.txt||' examples/$pkgname.service
 }
 
 build() {
@@ -34,7 +34,7 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  install -vDm 755 build/$pkgname             -t "$pkgdir"/usr/bin/
-  install -vDm 644 $pkgname.service.example      "$pkgdir"/usr/lib/systemd/system/$pkgname.service
-  install -vDm 644 LICENSE                    -t "$pkgdir"/usr/share/licenses/$pkgname/
+  install -vDm 755 build/$pkgname            -t "$pkgdir"/usr/bin/
+  install -vDm 644 examples/$pkgname.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -vDm 644 LICENSE                   -t "$pkgdir"/usr/share/licenses/$pkgname/
 }

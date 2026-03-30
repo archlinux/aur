@@ -1,6 +1,6 @@
 pkgbase = go-mmproxy
 	pkgdesc = Faster and stable implementation of mmproxy
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/kzemek/go-mmproxy
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = go-mmproxy
 	makedepends = go
 	depends = glibc
 	options = !debug
-	source = https://github.com/kzemek/go-mmproxy/archive/v2.3.0/go-mmproxy-2.3.0.tar.gz
-	b2sums = 6a167ec622eeb087047330255420045c5e8a375cc3a9becd4c032ab5a30e6c341fdb657b4407297b32086fa4f43d3decd3f671228cda16aa68bfe30e90ae618f
+	source = https://github.com/kzemek/go-mmproxy/archive/v2.3.1/go-mmproxy-2.3.1.tar.gz
+	b2sums = c7c9e18adff4253957e292baf8ae664bd9fc9958268aa2e83a73522c51b34813ea43277a4a0c15386fff20abd84de4e0f4cd5c2f58928e248d15e8b15b624756
 
 pkgname = go-mmproxy
