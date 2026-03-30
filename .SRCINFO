@@ -1,0 +1,16 @@
+pkgbase = crosspipe
+	pkgdesc = Visual PipeWire graph manager
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dp0sk/crosspipe
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = vala
+	makedepends = meson
+	depends = libadwaita
+	depends = libgee
+	depends = libpipewire
+	source = crosspipe-0.1.1.tar.gz::https://github.com/dp0sk/crosspipe/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = fc5ea6fbf18816e92c39a93dd5ee25b6bf7128b2b7df957c5336412817dd5c61
+
+pkgname = crosspipe

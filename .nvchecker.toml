@@ -1,0 +1,5 @@
+[crosspipe]
+source = 'github'
+github = 'dp0sk/Crosspipe'
+use_latest_release = true
+prefix = 'v'
