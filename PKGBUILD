@@ -131,7 +131,13 @@ check() {
     -S "${pkgname}"
   cmake \
     --build "${pkgname}"-build \
-    --target xenia-base-tests
+    --target xenia-base-tests \
+    --target xenia-cpu-ppc-tests
+
+  pushd "${srcdir}"/"${pkgname}"
+  "${srcdir}"/"${pkgname}"-build/bin/Linux/xenia-base-tests
+  "${srcdir}"/"${pkgname}"-build/bin/Linux/xenia-cpu-ppc-tests
+  popd
 }
 
 package() {
