@@ -3,7 +3,7 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=mingw-w64-doctest
-pkgver=2.4.12
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='The lightest feature rich C++ single header testing framework'
 arch=('any')
@@ -11,7 +11,7 @@ url='https://github.com/onqtam/doctest'
 license=('MIT')
 makedepends=('cmake')
 source=("doctest-${pkgver}.tar.gz::https://github.com/doctest/doctest/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('73381c7aa4dee704bd935609668cf41880ea7f19fa0504a200e13b74999c2d70')
+sha256sums=('eb917c80bef7aceb9eca59d9328142351facdcdabe90b5242632b93c34b9e345')
 # Build fails with `buildflags` because ld.exe doesn't recognize `-z`
 options=(!buildflags !strip)
 
