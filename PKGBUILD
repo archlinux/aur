@@ -1,10 +1,10 @@
 # Maintainer: Evans Jahja <evansjahja13 gmail>
 pkgname=rm-improved
-pkgver=0.13.1
-pkgrel=1
+pkgver=0.14.0
+pkgrel=2
 pkgdesc="Rm ImProved (rip) is a command-line deletion tool focused on safety, ergonomics, and performance. Use it as a safer alternative to rm."
 arch=('x86_64')
-url="https://github.com/nivekuil/rip"
+url="https://github.com/StandingPadAnimations/rip"
 license=('GPL')
 groups=()
 depends=('gcc-libs')
@@ -17,9 +17,9 @@ replaces=()
 backup=()
 options=()
 # changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nivekuil/rip/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/StandingPadAnimations/rip/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('73acdc72386242dced117afae43429b6870aa176e8cc81e11350e0aaa95e6421')
+sha256sums=('a00ddc86dc86b15302a6d1660dd1d7058a9e2cc5c24ac6c0cfd3345a0aad4854')
 # validpgpkeys=()
 
 #prepare() {
