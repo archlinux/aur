@@ -4,7 +4,7 @@ pkgbase=dms-shell
 _pkg1=DankMaterialShell
 pkgname=($pkgbase $pkgbase-hyprland $pkgbase-niri)
 pkgver=1.4.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
@@ -46,6 +46,11 @@ build() {
 		-o dms ./cmd/dms
 }
 
+_completion() {
+	cd "$_archive"
+	core/dms completion $1
+}
+
 package_dms-shell() {
 	cd "$_archive"
 	depends+=(dms-shell-compositor)
@@ -59,9 +64,9 @@ package_dms-shell() {
 	install -Dm0644 -t "$pkgdir/usr/lib/systemd/user/" assets/systemd/dms.service
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" assets/dms-open.desktop
 	install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/" assets/danklogo.svg
-	# install -Dm0644 completions.bash "$pkgdir/usr/share/bash-completion/completions/dms"
-	# install -Dm0644 completions.zsh "$pkgdir/usr/share/zsh/site-functions/_dms"
-	# install -Dm0644 completions.fish "$pkgdir/usr/share/fish/vendor_completions.d/dms.fish"
+	install -Dm0644 <(_completion bash) "$pkgdir/usr/share/bash-completion/completions/dms"
+	install -Dm0644 <(_completion zsh) "$pkgdir/usr/share/zsh/site-functions/_dms"
+	install -Dm0644 <(_completion fish) "$pkgdir/usr/share/fish/vendor_completions.d/dms.fish"
 }
 
 package_dms-shell-hyprland() {
