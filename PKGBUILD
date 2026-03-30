@@ -2,8 +2,8 @@
 pkgname=turbowarp-desktop-git
 _pkgname=TurboWarp
 _appname="org.turbowarp.${_pkgname}"
-pkgver=1.15.2.r5.gef66b98
-_electronversion=40
+pkgver=1.15.3.r0.gbfb4c15
+_electronversion=41
 _nodeversion=24
 pkgrel=1
 pkgdesc="Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more.(Use system-wide electron)"
