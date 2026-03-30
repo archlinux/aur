@@ -35,7 +35,7 @@ from pathlib import Path
 
 config_path = Path("src-tauri/tauri.conf.json")
 config = json.loads(config_path.read_text())
-config.setdefault("bundle", {{}})["createUpdaterArtifacts"] = False
+config.setdefault("bundle", {})["createUpdaterArtifacts"] = False
 config_path.write_text(json.dumps(config, indent=2) + "\\n")
 PY
   yarn install --frozen-lockfile --cache-folder "$npm_config_cache"
