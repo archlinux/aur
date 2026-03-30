@@ -10,6 +10,7 @@ pkgbase = debtap-git
 	depends = binutils
 	depends = pkgfile
 	depends = fakeroot
+	depends = namcap
 	provides = debtap
 	conflicts = debtap
 	source = git+https://github.com/helixarch/debtap.git
