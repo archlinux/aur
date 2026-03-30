@@ -1,0 +1,39 @@
+diff --git a/kernel/os-interface.c b/kernel/os-interface.c
+index f67abd4..05fb97e 100644
+--- a/kernel/os-interface.c
++++ b/kernel/os-interface.c
+@@ -14,6 +14,7 @@
+ #include "os-interface.h"
+ #include "nv-linux.h"
+ #include "nv-time.h"
++#include <linux/hardirq.h>
+ 
+ RM_STATUS NV_API_CALL os_disable_console_access(void)
+ {
+@@ -219,7 +220,7 @@ BOOL NV_API_CALL os_semaphore_may_sleep(void)
+ 
+ BOOL NV_API_CALL os_is_isr(void)
+ {
+-    return (in_irq());
++    return (in_hardirq());
+ }
+ 
+ // return TRUE if the caller is the super-user
+@@ -479,7 +480,7 @@ RM_STATUS NV_API_CALL os_delay_us(NvU32 MicroSeconds)
+     nv_gettimeofday(&tm1);
+ #endif
+ 
+-    if (in_irq() && (MicroSeconds > NV_MAX_ISR_DELAY_US))
++    if (in_hardirq() && (MicroSeconds > NV_MAX_ISR_DELAY_US))
+         return RM_ERROR;
+     
+     mdelay_safe_msec = MicroSeconds / 1000;
+@@ -524,7 +525,7 @@ RM_STATUS NV_API_CALL os_delay(NvU32 MilliSeconds)
+     tm_start = tm_aux;
+ #endif
+ 
+-    if (in_irq() && (MilliSeconds > NV_MAX_ISR_DELAY_MS))
++    if (in_hardirq() && (MilliSeconds > NV_MAX_ISR_DELAY_MS))
+         return RM_ERROR;
+ 
+     if (!NV_MAY_SLEEP()) 
