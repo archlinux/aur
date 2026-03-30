@@ -6,21 +6,21 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=freefilesync
-pkgver=14.8
-pkgrel=3
+pkgver=14.9
+pkgrel=1
 pkgdesc="Folder comparison and synchronization software"
 arch=(x86_64)
 url="https://freefilesync.org"
 license=(custom)
 depends=(wxwidgets-gtk3)
 source=(
-    "FreeFileSync_${pkgver}-2_Source.zip.1::${url}/download/FreeFileSync_${pkgver}_Source.zip"
-    "FreeFileSync_${pkgver}-2_Source.zip::${url}/download/FreeFileSync_${pkgver}_Source.zip"
+    "FreeFileSync_${pkgver}_Source.zip.1::${url}/download/FreeFileSync_${pkgver}_Source.zip"
+    "FreeFileSync_${pkgver}_Source.zip::${url}/download/FreeFileSync_${pkgver}_Source.zip"
     FreeFileSync.desktop RealTimeSync.desktop gui.patch
 )
-noextract=("FreeFileSync_${pkgver}-2_Source.zip.1")
+noextract=("FreeFileSync_${pkgver}_Source.zip.1")
 sha256sums=('SKIP'
-            'bc8bccea3e200d072c46381ccd0ab16d5e17bc34040822efb937e591e6cc154f'
+            '4d8e350c922fa7b08d47c535daad985218b21d9b8bf4571f2d35434164c87d00'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830'
             'f63ae8deba10a8f7ed8f907e355d0cfecf458263fea8ebc2612cb29b41124187')
@@ -32,10 +32,12 @@ prepare() {
     sed -i '/animalImg/s|^|//|' FreeFileSync/Source/ui/small_dlgs.cpp
     sed -i 's|const override|const|' FreeFileSync/Source/ui/small_dlgs.cpp
     sed -i 's|::g_free|g_free|' FreeFileSync/Source/{base/icon_loader.cpp,afs/ftp.cpp} zen/zstring.cpp
+    sed -i '/DisableAutomaticBoundingBoxUpdates/s|^|//|' wx+/dc.h
 }
 
 build() {
-    CXXFLAGS="$CXXFLAGS -DMAX_SFTP_READ_SIZE=30000 -DMAX_SFTP_OUTGOING_SIZE=30000 -DwxInfoDC=wxClientDC -DwxReadOnlyDC=wxDC"
+    CXXFLAGS="$CXXFLAGS -DMAX_SFTP_READ_SIZE=30000 -DMAX_SFTP_OUTGOING_SIZE=30000 \
+        -DwxInfoDC=wxClientDC -DwxReadOnlyDC=wxDC -DwxSYS_COLOUR_GRIDLINES=wxSYS_COLOUR_BTNFACE"
     LDFLAGS="$LDFLAGS `pkg-config --libs gtk+-3.0`"
     MAKEFLAGS="-s -j`nproc` $MAKEFLAGS"
 
