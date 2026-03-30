@@ -1,0 +1,30 @@
+pkgbase = ipfixprobe-git
+	pkgdesc = IPFIX flow exporter with DPDK support capable of bi-directional flows, per-packet-information statistics, and extensibility via processing plugins (e.g., for application layer parsers).
+	pkgver = v5.5.0
+	pkgrel = 1
+	url = https://github.com/CESNET/ipfixprobe
+	arch = any
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkg-config
+	makedepends = libpcap
+	makedepends = libunwind
+	makedepends = lz4
+	makedepends = openssl
+	makedepends = fuse3
+	makedepends = libatomic
+	makedepends = libpcap
+	depends = libunwind
+	depends = lz4
+	depends = openssl
+	depends = fuse3
+	depends = libatomic
+	depends = libpcap
+	provides = ipfixprobe-git
+	conflicts = ipfixprobe-git
+	source = git+https://github.com/CESNET/ipfixprobe#tag=v5.5.0
+	sha256sums = 4cf71748012ac6976159f963eebef36a3cc487af668a3d0e5a5f61dc7248f77b
+
+pkgname = ipfixprobe-git
