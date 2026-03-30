@@ -4,6 +4,7 @@ pkgname=keylight-controller
 pkgver=1.3.0
 pkgrel=1
 pkgdesc="Standalone Linux alternative to Elgato's Control Center for Controlling Key Light devices."
+url=https://github.com/sandwichfarm/keylight-control
 arch=('x86_64')
 license=('GPL-3.0-only')
 options=('!debug')
