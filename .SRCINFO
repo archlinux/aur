@@ -6,7 +6,6 @@ pkgbase = opengrid-git
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = inkscape
 	install = opengrid.install
 	source = opengrid-git::git+https://github.com/benjamimgois/opengrid.git
 	sha256sums = SKIP

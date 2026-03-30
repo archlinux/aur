@@ -11,7 +11,7 @@ optdepends=('python-speedtest-cli: Speed Test via speedtest.net'
             'python-pyftpdlib: built-in FTP server support'
             'tigervnc: VNC remote desktop viewer'
             'freerdp: RDP remote desktop client (provides wlfreerdp for Wayland)')
-makedepends=('git' 'inkscape')
+makedepends=('git')
 provides=('opengrid')
 conflicts=('opengrid')
 install=opengrid.install
@@ -29,16 +29,13 @@ package() {
     # Install main script
     install -Dm755 opengrid "${pkgdir}/usr/bin/opengrid"
 
-    # Install SVG icon (scalable — source of truth)
+    # Install SVG icon (scalable)
     install -Dm644 assets/icons/opengrid_icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/opengrid.svg"
 
-    # Generate PNG sizes from SVG at install time
+    # Install pre-built PNG sizes
     for size in 16 32 48 64 128 256 512; do
-        install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-        inkscape --export-type=png \
-            --export-filename="${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/opengrid.png" \
-            --export-width=${size} --export-height=${size} \
-            assets/icons/opengrid_icon.svg
+        install -Dm644 "assets/icons/opengrid-${size}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/opengrid.png"
     done
 
     # Install UI icons (sidebar and misc) — all SVGs
