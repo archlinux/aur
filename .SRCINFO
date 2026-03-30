@@ -1,0 +1,22 @@
+pkgbase = didder-bin
+	pkgdesc = An extensive, fast, and accurate command-line image dithering tool. (binary release)
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/makew0rld/didder
+	arch = x86_64
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-only
+	source = didder_1.3.0.1::https://github.com/makew0rld/didder/raw/409cfa6ce70d15a9c70ce3783e0d362e1cafdf4e/didder.1
+	sha512sums = 9146e633b22cb1c567b512cf3874e4da0fdcbd4f194b580689bf38de637a418d26daa615ac559c26e3d7b3ab0a94f7a534aef3a084a86a8300ef3103fd9b070f
+	source_x86_64 = https://github.com/makew0rld/didder/releases/download/v1.3.0/didder_1.3.0_linux_64-bit
+	sha512sums_x86_64 = 01dbd50dbe7ac1c1eed495a13366946a122597e3f7ca12191c0cfd14916ae95600cc6e50cc0c9cf77576cc95366061a7a25890049ae51a267ea1ea98b487d72f
+	source_pentium4 = https://github.com/makew0rld/didder/releases/download/v1.3.0/didder_1.3.0_linux_32-bit
+	sha512sums_pentium4 = 8ad17aeca583595a9327f73bceedecff7dbb1e7818727cf838971528c5f6e966edf2f3f018e23868e46efc0ec1ac3c85309f63b71293c890ceaeef1fbcca14dc
+	source_armv7h = https://github.com/makew0rld/didder/releases/download/v1.3.0/didder_1.3.0_linux_armv7
+	sha512sums_armv7h = 854b6a6a0572a21302d7c26aa9534e85b7fff640a0330b6b273b4bdc8d9955d01ad1fde3697fc1ce4a694918e6fcfd72fe54f6eea9b6f43d3f9a153c9dd0a3f1
+	source_aarch64 = https://github.com/makew0rld/didder/releases/download/v1.3.0/didder_1.3.0_linux_arm64
+	sha512sums_aarch64 = b2d8757c075143691f1e816a935fa160e4f2e83883b8dd5a9c18f3e85fd5970291ff4ad8bdb34211d6d589d41b979872db23cfbce7c09b1dba0676c9d86c1c7e
+
+pkgname = didder-bin
