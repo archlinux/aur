@@ -2,7 +2,7 @@
 
 _pkgname=converternow
 pkgname=$_pkgname-bin
-pkgver=4.5.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="The Unit Converter app: easy, immediate and multi-platform (binary release)"
 url="https://github.com/ferraridamiano/ConverterNOW"
@@ -11,8 +11,10 @@ arch=('x86_64')
 depends=('gtk3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=($_pkgname-linux-x64-$pkgver.tar.gz::"$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
-sha256sums=('3a2a7ce0b787838df968ab90bda93f5c9673e302c98a5de88ab6db88940e5a55')
+source=($_pkgname-linux-x64-$pkgver.tar.gz::"$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz"
+        logo.png::"$url/blob/v4.6.0/assets/logo.png?raw=true")
+sha256sums=('491f48449bbb7ffcbd47484d75474f8528af190fc8e944b5abf701c704843dc2'
+            'e90c2c6ed0020191173eb18bbb3d42d42977570da787941b2b6bc7cb18fdea57')
 
 prepare() {
 # Create a shortcut
@@ -30,8 +32,8 @@ package() {
 # Create directories
   mkdir -p "$pkgdir/opt/ConverterNOW" "$pkgdir/usr/bin"
 # Install
+  install -Dm644 logo.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
   install -Dm644 io.github.ferraridamiano.ConverterNOW.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm644 data/flutter_assets/assets/logo.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
   mv data lib $_pkgname "$pkgdir/opt/ConverterNOW"
   ln -s /opt/ConverterNOW/$_pkgname "$pkgdir/usr/bin"
 }
