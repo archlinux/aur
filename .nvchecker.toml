@@ -1,0 +1,5 @@
+[python-extra-platforms]
+source = "github"
+github = "kdeldycke/extra-platforms"
+use_max_tag = true
+prefix = "v"
