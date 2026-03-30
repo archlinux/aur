@@ -1,6 +1,6 @@
 pkgbase = zen-browser-compat-bin
 	pkgdesc = Performance oriented Firefox-based web browser
-	pkgver = 1.14.7b
+	pkgver = 1.19.5b
 	pkgrel = 1
 	url = https://github.com/zen-browser/desktop
 	arch = x86_64
@@ -13,13 +13,14 @@ pkgbase = zen-browser-compat-bin
 	depends = nss
 	depends = ttf-font
 	depends = systemd
+	depends = ffmpeg4.4
 	optdepends = ffmpeg: H264/AAC/MP3 decoding
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = libnotify: Notification integration
 	optdepends = pulse-native-provider: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = zen-browser=1.14.7b
+	provides = zen-browser=1.19.5b
 	conflicts = zen-browser
 	options = !strip
 	source = zen-browser.sh
@@ -28,9 +29,9 @@ pkgbase = zen-browser-compat-bin
 	sha256sums = c1a4ad7fd56600947b17733684aea6dec2e4cc42396b1be628def8d4be47ac6b
 	sha256sums = aa44bc42f783074c9510ec1253df43b5e0191da1f08b63277bc8eb5cbd56b83f
 	sha256sums = 7c9fc215ed5f7fb608e07b05c0b9c6e1ea80a9801b5fecacae35fb3287d4e619
-	source_x86_64 = zen-browser-1.14.7b-1-x86_64.tar.xz::https://github.com/zen-browser/desktop/releases/download/1.14.7b/zen.linux-x86_64.tar.xz
-	sha256sums_x86_64 = 9ec98f3925f045c9f2776ab57d2639a193e1acd0cb9e1692747786f9a815a98d
-	source_aarch64 = zen-browser-1.14.7b-1-aarch64.tar.xz::https://github.com/zen-browser/desktop/releases/download/1.14.7b/zen.linux-aarch64.tar.xz
-	sha256sums_aarch64 = 23c084b8a7d05bd6adb87c81f79a1b1d3929025c49b87729024f3b6bfbbd98df
+	source_x86_64 = zen-browser-1.19.5b-1-x86_64.tar.xz::https://github.com/zen-browser/desktop/releases/download/1.19.5b/zen.linux-x86_64.tar.xz
+	sha256sums_x86_64 = 82f08286a5d3101f9b10366f5c5763b685dcf9457923a2ca43126c0d8e10cb81
+	source_aarch64 = zen-browser-1.19.5b-1-aarch64.tar.xz::https://github.com/zen-browser/desktop/releases/download/1.19.5b/zen.linux-aarch64.tar.xz
+	sha256sums_aarch64 = d60991fbcedc455ee04595135100f17100cf716c3c965a3627c4cbacbb89ba5a
 
 pkgname = zen-browser-compat-bin
