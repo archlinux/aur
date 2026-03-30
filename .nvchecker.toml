@@ -1,0 +1,5 @@
+[ftop-bin]
+source = "github"
+github = "walles/ftop"
+use_latest_release = true
+prefix = "v"
