@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
@@ -5,13 +6,17 @@
 pkgname='python-deltachat-rpc-client-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=2.33.0.r9.g5902fe2cb
-pkgrel=2
 pkgdesc='Python client for Delta Chat core JSON-RPC interface (development version)'
-arch=('any')
-url='https://github.com/chatmail/core/tree/main/deltachat-rpc-client'
+pkgver=2.48.0.r0.g24b21c058
+pkgrel=1
 _url='https://github.com/chatmail/core'
+url="$_url/tree/main/deltachat-rpc-client"
+arch=('any')
 license=('MPL-2.0')  # SPDX-License-Identifier: MPL-2.0
+checkdepends=(
+  'python-execnet'
+  'python-pytest'
+)
 makedepends=(
   'git'
   'python-build'
@@ -19,14 +24,11 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-depends=(
-  'python'
-  'python-execnet'
-  'python-pytest'
-)
-source=("git+$_url.git")
-provides=("$_pkgname" "$_srcname")
+depends=('python')
+provides=("$_pkgname")
 conflicts=("${provides[@]}")
+options=('!strip')
+source=("git+$_url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -52,12 +54,12 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     README.md
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/examples" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/examples" \
     examples/*.py
 
-  cd "$pkgdir/usr/share/doc" && ln -vsr "$pkgname" "$_pkgname"
+  cd "$pkgdir/usr/share/doc" && ln -fsr "$pkgname" "$_pkgname"
 }
 
 # eof
