@@ -1,0 +1,5 @@
+[lwan]
+source = 'github'
+github = 'lpereira/lwan'
+use_latest_release = true
+prefix = 'v'
