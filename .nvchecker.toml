@@ -1,0 +1,5 @@
+[go-sponge-bin]
+source = "github"
+github = "go-dev-frame/sponge"
+use_latest_release = true
+prefix = "v"

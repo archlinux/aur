@@ -1,0 +1,14 @@
+pkgbase = go-sponge-bin
+	pkgdesc = Effortlessly build stable, reliable, and high-performance backend services with a "low-code" approach
+	pkgver = 1.16.1
+	pkgrel = 1
+	url = https://go-sponge.com
+	arch = x86_64
+	license = MIT
+	provides = go-sponge
+	conflicts = go-sponge
+	replaces = sponge-bin<=1.16.1-1
+	source_x86_64 = go-sponge_1.16.1_linux_amd64.zip::https://github.com/go-dev-frame/sponge/releases/download/v1.16.1/sponge_1.16.1_linux_amd64.zip
+	sha256sums_x86_64 = 8f544c9cf24c7c572205a1d79552bfa4e42e49ee1ab24a0859d9536571530c62
+
+pkgname = go-sponge-bin
