@@ -3,8 +3,8 @@
 pkgname=rill-git
 _pkgname=rill
 pkgdesc="A minimalist scrolling window manager for River"
-pkgver=9d992b7
-pkgrel=4
+pkgver=09f5267
+pkgrel=5
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/lzj15/rill"
 license=('MIT')
@@ -15,7 +15,15 @@ source=(git+$url.git
        	zig-wayland.zip::https://codeberg.org/ifreund/zig-wayland/archive/v0.5.0.zip)
 sha256sums=('SKIP'
             '816d6d9fffeb596244e5467b60f5b21575ba779e441a27dcc63ce5f6a5a09841')
+
 noextract=("${source[@]:1}")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+optdepends=('alacritty: Default terminal emulator'
+	    'wireplumber: Default audio manager'
+	    'awww: Default wallpaper manager'
+	    'wl-clip-persist: Used in default configuration')
+
 
 pkgver() {
   cd "$srcdir/$_pkgname"
