@@ -1,6 +1,6 @@
 pkgbase = pomodoro-fyne-bin
 	pkgdesc = Desktop pomodoro timer built with Go and Fyne (prebuilt binary)
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/lyj404/pomodoro
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = pomodoro-fyne-bin
 	depends = hicolor-icon-theme
 	provides = pomodoro
 	conflicts = pomodoro
-	source = pomodoro-0.0.1-linux-amd64.tar.gz::https://github.com/lyj404/pomodoro/releases/download/v0.0.1/pomodoro-0.0.1-linux-amd64.tar.gz
-	source = pomodoro.desktop::https://raw.githubusercontent.com/lyj404/pomodoro/v0.0.1/packaging/pomodoro.desktop
-	source = LICENSE::https://raw.githubusercontent.com/lyj404/pomodoro/v0.0.1/LICENSE
-	sha256sums = 07e29a4ca3fb5a74f21d258eda5eda7b2e860ae48337804aa648e7f27eda4db6
-	sha256sums = 42026a3665779923f6d3a8c3681043dffc487a0cbb21f06f399088714488607b
-	sha256sums = 3f17da507245c7f0429efdfe686cb9c6c399031bb71dd8261ae2e17fd27cecc0
+	source = pomodoro-0.0.2-linux-amd64.tar.gz::https://github.com/lyj404/pomodoro/releases/download/v0.0.2/pomodoro-0.0.2-linux-amd64.tar.gz
+	source = pomodoro.desktop::https://raw.githubusercontent.com/lyj404/pomodoro/v0.0.2/packaging/pomodoro.desktop
+	source = LICENSE::https://raw.githubusercontent.com/lyj404/pomodoro/v0.0.2/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = pomodoro-fyne-bin
