@@ -3,6 +3,7 @@ pkgbase = trae-cn-bin
 	pkgver = 2.3.17110
 	pkgrel = 1
 	url = https://trae.ai/
+	install = trae-cn-bin.install
 	arch = x86_64
 	license = custom
 	depends = gtk3
