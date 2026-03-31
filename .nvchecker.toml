@@ -1,0 +1,3 @@
+[perl-task-kensho-scalability]
+source = "cpan"
+cpan = "Task-Kensho-Scalability"

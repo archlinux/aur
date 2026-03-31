@@ -1,0 +1,22 @@
+pkgbase = perl-task-kensho-scalability
+	pkgdesc = A Glimpse at an Enlightened Perl: Scalability
+	pkgver = 0.41
+	pkgrel = 1
+	url = https://metacpan.org/release/ETHER/Task-Kensho-Scalability-0.41
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker
+	depends = perl-chi
+	depends = perl-redis
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
+	optdepends = perl-json-pp
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Task-Kensho-Scalability-0.41.tar.gz
+	sha256sums = a318774d06c04cc6a0980d59910dcced4cc1f74008bc909e7073965e19323911
+
+pkgname = perl-task-kensho-scalability
