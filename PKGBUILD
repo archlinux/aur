@@ -9,12 +9,13 @@ license=('MIT')
 depends=('qt6-base' 'kstatusnotifieritem' 'kcoreaddons' 'kconfig' 'ki18n' 'kwindowsystem')
 makedepends=('cmake' 'extra-cmake-modules' 'qt6-tools' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/rursache/KDECodexBar/tar.gz/v${pkgver}")
-sha256sums=('0452b927d34f8c4b76a6ee92ce873ae384dfdb4dece47a390a6cd7217b9f9b4a')
+sha256sums=('4a0737daba35da47a248e0e1742a06ebaadf310e17a1e25f5af84af7bd789997')
 
 build() {
     cmake -B build -S "${srcdir}/KDECodexBar-${pkgver}" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DAPP_VERSION="v${pkgver}"
     cmake --build build
 }
 

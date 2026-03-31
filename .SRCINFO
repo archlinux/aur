@@ -16,6 +16,6 @@ pkgbase = kdecodexbar
 	depends = ki18n
 	depends = kwindowsystem
 	source = kdecodexbar-1.0.4.tar.gz::https://codeload.github.com/rursache/KDECodexBar/tar.gz/v1.0.4
-	sha256sums = 0452b927d34f8c4b76a6ee92ce873ae384dfdb4dece47a390a6cd7217b9f9b4a
+	sha256sums = 4a0737daba35da47a248e0e1742a06ebaadf310e17a1e25f5af84af7bd789997
 
 pkgname = kdecodexbar
