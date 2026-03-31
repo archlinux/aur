@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitv
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='a terminal-based viewer for GitHub issues'
 url="https://github.com/JayanAXHF/$pkgname"
@@ -13,7 +13,7 @@ makedepends=(cargo)
 checkdepends=(git)
 _archive="$pkgname-tui-v$pkgver"
 source=("$url/archive/$_archive/$_archive.tar.gz")
-sha256sums=('d3b25900bd3a81ae5d2fb62b85f848018c25362bde00e328094bbbfc09c5274a')
+sha256sums=('d1f0c826e56c8595ecfc6e7c8be8461ea9a9cced3ad1b0abd61ae60a565a0398')
 
 prepare() {
 	cd "$pkgname-$_archive"
