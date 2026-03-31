@@ -93,8 +93,8 @@ package_cyrus-imapd() {
   depends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
            'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'zstd'
            'shapelib' 'libldap' 'libcap' 'xapian-core' 'perl' 'libchardet'
-           'pcre2' 'libwslay' 'libcom_err.so' 'libuuid.so' 'glibc' 'gcc-libs'
-           'zlib' 'openssl')
+           'pcre2' 'libwslay' 'libcom_err.so' 'libuuid.so' 'glibc' 'libgcc'
+           'libstdc++' 'zlib' 'openssl')
   optdepends=('cyrus-imapd-docs: documentation'
               'clamav: for cyr_virusscan'
               'rsync: for compacting Xapian databases'
