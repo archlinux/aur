@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=dove
-pkgver=202602241
+pkgver=202603301
 pkgrel=1
 pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://dove.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/6fba159cefbc288f1799c4ba64561bc41c9e1b31/archives/dove-linux.zip")
-sha512sums=('608c0c42840ba8d184e39e58fd1693a3edfee073316e2800b45d927d051cbb8c8a9a6a195ce512d677e1a1a3208d7deae81caa38145232e70731f2195df49a3a')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/6d50246ed065efefd350c9ace160e3e4ea030c81/archives/dove-linux.zip")
+sha512sums=('79745c75c6f62bbb7ac98e1d7bb693b81109bc5bcfa7dd6047a8817e67f1e8eb3b06d4f39cbf861b70b1fc1ebdbea25a4475024f4b362bd38e3ebe1d737fce25')
 makedepends=('unzip')
 
 pkgver() {
@@ -617,6 +617,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/newyork.usa.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/newyork.usa.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/nicemail.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/nicemail.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/nifty.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/nifty.com"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/nili.ca" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/nili.ca"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/nn.iij4u.or.jp" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/nn.iij4u.or.jp"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/nospam.dk" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/nospam.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/nsat.jp" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/nsat.jp"
