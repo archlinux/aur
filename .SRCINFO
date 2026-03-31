@@ -1,6 +1,6 @@
 pkgbase = darktable-nas
 	pkgdesc = Launch darktable with NAS-based photo library - optimized for performance
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/nefarias-bredd/darktable-nas
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = darktable-nas
 	depends = rsync
 	optdepends = tailscale: Remote access via Tailscale VPN
 	backup = etc/darktable-nas/darktable-nas.conf.example
-	source = darktable-nas-1.0.0.tar.gz::https://github.com/nefarias-bredd/darktable-nas/archive/v1.0.0.tar.gz
-	sha256sums = SKIP
+	source = darktable-nas-1.1.0.tar.gz::https://github.com/nefarias-bredd/darktable-nas/archive/v1.1.0.tar.gz
+	sha256sums = e6fac604f4cf36bd6ae6c8adaa9965043c33b2c3bfb112d0724989e9415f182b
 
 pkgname = darktable-nas
