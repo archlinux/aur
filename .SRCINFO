@@ -1,0 +1,24 @@
+pkgbase = mail-deduplicate-bin
+	pkgdesc = CLI to deduplicate mails from mail boxes
+	pkgver = 8.1.2
+	pkgrel = 1
+	url = https://github.com/kdeldycke/mail-deduplicate
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	depends = glibc
+	provides = mdedup
+	conflicts = mail-deduplicate
+	options = !strip
+	source = LICENSE-8.1.2::https://raw.githubusercontent.com/kdeldycke/mail-deduplicate/v8.1.2/license
+	source = README-8.1.2.md::https://raw.githubusercontent.com/kdeldycke/mail-deduplicate/v8.1.2/readme.md
+	source = CHANGELOG-8.1.2.md::https://raw.githubusercontent.com/kdeldycke/mail-deduplicate/v8.1.2/changelog.md
+	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
+	sha256sums = f9c68daddc0d0a55638335c9c9aedda6f1d6bfe3a2552e334b034d1d8f812fa9
+	sha256sums = f8cb7ce3d951c6b785aca085e9de36d59bdd5b0cefe5edf46a4331d0b9e5d3a4
+	source_x86_64 = mdedup-8.1.2::https://github.com/kdeldycke/mail-deduplicate/releases/download/v8.1.2/mdedup-linux-x64.bin
+	sha256sums_x86_64 = e3307dc280e1ea6b1fdd750d708164200f409c8b9809c853b8433bb2abf1f648
+	source_aarch64 = mdedup-8.1.2::https://github.com/kdeldycke/mail-deduplicate/releases/download/v8.1.2/mdedup-linux-arm64.bin
+	sha256sums_aarch64 = e3307dc280e1ea6b1fdd750d708164200f409c8b9809c853b8433bb2abf1f648
+
+pkgname = mail-deduplicate-bin

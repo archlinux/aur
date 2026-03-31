@@ -1,0 +1,5 @@
+[mail-deduplicate-bin]
+source = "github"
+github = "kdeldycke/mail-deduplicate"
+use_latest_release = true
+prefix = "v"
