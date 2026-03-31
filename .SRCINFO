@@ -16,6 +16,6 @@ pkgbase = amber-package-manager
 	optdepends = dpkg: Enable amber-pm-convert (A tool to convert Debian packages to Amber-PM packages)
 	conflicts = ace-host-integration
 	source = amber-package-manager-1.2.3.tar.gz::https://gitee.com/amber-ce/amber-pm/repository/archive/1.2.3.tar.gz
-	sha256sums = 4c3c158a341a873737d829a37952cb694759915ac7b7b653970bff8065810c6d
+	sha256sums = a0d08dac3dfb02ca2c745757d500f067dd4ff523fb848aaf989f343e12987fcb
 
 pkgname = amber-package-manager

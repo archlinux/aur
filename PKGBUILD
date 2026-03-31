@@ -11,22 +11,16 @@ url="https://gitee.com/amber-ce/amber-pm/"
 license=('AGPL-3.0')
 depends=('bubblewrap' 'flatpak' 'polkit' 'systemd' 'procps-ng' 'coreutils' 'fuse-overlayfs')
 optdepends=('dpkg: Enable amber-pm-convert (A tool to convert Debian packages to Amber-PM packages)')
-conflicts=('ace-host-integration')
+conflicts=('ace-host-integration' 'amber-pm-store')
 # provides=('amber-package-manager')
 
 source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-ce/amber-pm/repository/archive/${pkgver}.tar.gz")
-sha256sums=('4c3c158a341a873737d829a37952cb694759915ac7b7b653970bff8065810c6d')
+sha256sums=('a0d08dac3dfb02ca2c745757d500f067dd4ff523fb848aaf989f343e12987fcb')
 
 install=amber-package-manager.install
 build() {
     cd "$srcdir/amber-pm-${pkgver}"
-    
-    # 执行构建脚本，并传递src目录路径
     bash build.sh "$srcdir/amber-pm-${pkgver}/src"
-    
-    # 如果build.sh没有正确执行，可以尝试以下替代方案：
-    # bash build.sh
-    # 或者直接执行构建命令
 }
 package() {
 
