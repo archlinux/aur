@@ -11,7 +11,7 @@ depends=(
 
     # core
     'xdg-desktop-portal-gnome' 'niri' 'xwayland-satellite' 'satty' 'slurp' 'libnotify' 
-    'imv' 'mpv'
+    'imv' 'mpv' 'firefox'
 
     # fonts
     'noto-fonts' 'noto-fonts-cjk' 'noto-fonts-emoji' 
@@ -38,6 +38,9 @@ depends=(
     
     # input method
     'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'fcitx5-rime' 'rime-ice-git' 'rime-wubi'
+
+    # extra
+    
 )
 
 package() {
