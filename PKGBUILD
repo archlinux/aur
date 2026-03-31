@@ -1,12 +1,14 @@
 pkgname=atha
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
-pkgdesc="Simple package manager wrapper for Arch Linux"
+pkgdesc="Lightweight package manager wrapper for Arch Linux"
 arch=('any')
 url="https://github.com/Bangkah/Atha"
 license=('MIT')
+conflicts=('atha')
+replaces=('atha')
 
-depends=('bash' 'pacman')
+depends=('bash' 'pacman' 'sudo' 'git' 'base-devel')
 
 source=("https://github.com/Bangkah/Atha/archive/refs/heads/main.tar.gz")
 
