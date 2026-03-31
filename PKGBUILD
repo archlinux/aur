@@ -1,5 +1,5 @@
 pkgname=oranglauncher-bin
-pkgver=5.2
+pkgver=5.3
 pkgrel=1
 pkgdesc="Orange Launcher for Arch Linux"
 arch=(x86_64)
@@ -8,7 +8,7 @@ license=('MIT')
 depends=(glibc webkit2gtk-4.1)
 provides=(oranglauncher)
 conflicts=(oranglauncher)
-source=("https://github.com/Orang-Studio/OrangLaunch/releases/download/5.2-Linux/launcher_x64_linux_5.2.tar.gz"
+source=("https://github.com/Orang-Studio/OrangLaunch/releases/download/5.3-Linux/launcher_x64_linux_5.3.tar.gz"
         "oranglauncher.desktop"
         "orange.png"
         "LICENSE")
@@ -25,7 +25,6 @@ package() {
     install -d "$pkgdir/usr/share/applications"
     install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
     tar -xzf "$srcdir/launcher_x64_linux_${pkgver}.tar.gz" -C "$pkgdir/usr/lib/oranglauncher"
-    # Normalize permissions: directories 755, regular files 644, preserve executables
     chmod -R a+rX "$pkgdir/usr/lib/oranglauncher"
     find "$pkgdir/usr/lib/oranglauncher" -type d -exec chmod 0755 {} +
     find "$pkgdir/usr/lib/oranglauncher" -type f -perm /111 -exec chmod 0755 {} +

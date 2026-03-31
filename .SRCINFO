@@ -1,6 +1,6 @@
 pkgbase = oranglauncher-bin
 	pkgdesc = Orange Launcher for Arch Linux
-	pkgver = 5.2
+	pkgver = 5.3
 	pkgrel = 1
 	url = https://oranges.lt
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = oranglauncher-bin
 	provides = oranglauncher
 	conflicts = oranglauncher
 	options = !debug
-	source = https://github.com/Orang-Studio/OrangLaunch/releases/download/5.2-Linux/launcher_x64_linux_5.2.tar.gz
+	source = https://github.com/Orang-Studio/OrangLaunch/releases/download/5.3-Linux/launcher_x64_linux_5.3.tar.gz
 	source = oranglauncher.desktop
 	source = orange.png
 	source = LICENSE
