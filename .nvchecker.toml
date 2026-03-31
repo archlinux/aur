@@ -1,0 +1,5 @@
+[okapi-bin]
+source = "github"
+github = "nk9/okapi"
+use_latest_release = true
+prefix = "v"
