@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=venn
-_pkgver=1.12
+_pkgver=1.13
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Draw Venn Diagrams"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-qca
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('29b0e3dd951c8626b126705d88f8303a')
-b2sums=('09b3727890b2b2447a076c94e8449e20e39c4cf2eaaf9c8ff9573dd1ede01ae6ea8f10f3a0342910e717bf49b6079329fcf66184c30ea215198d24c514ec9102')
+md5sums=('44c5bd5c273f64b7f9884a02582f23b7')
+b2sums=('46114ec506aa9cd48592e86960f8142468505fd3e678eeed0b359a7bb541cf73378bfce14718f796b9fe7de77ec49d9dad763bfcacb5d1df9ffcb724b551d455')
 
 build() {
   mkdir build
