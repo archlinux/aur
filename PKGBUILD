@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiny-rdm
 _pkgname='Tiny RDM'
-pkgver=1.2.6
-_nodeversion=20
+pkgver=1.2.7
+_nodeversion=22
 pkgrel=1
 pkgdesc="A modern lightweight cross-platform Redis desktop manager"
 arch=('any')
@@ -28,7 +28,7 @@ options=(
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
 )
-sha256sums=('8dd8173ee07947e66ffd801ae3f8292ebcbb2e36b034cdb79a275c7e2b8c789a')
+sha256sums=('0711a9dd830cd177fb85f92a53a7c0c26c622f399ca4dec2c08d41d4d38018e0')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -38,23 +38,16 @@ _ensure_local_nvm() {
 build() {
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}.git"
-    HOME="${srcdir}/.electron-gyp"
+    local HOME="${srcdir}/.electron-gyp"
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-        echo "maxsockets=32"
-    } >> frontend/.npmrc
+    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+    export NPM_CONFIG_MAXSOCKETS=32
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-        } >> frontend/.npmrc
+        export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
         export GOPROXY=https://goproxy.cn,direct
     fi
     export NODE_ENV=development
