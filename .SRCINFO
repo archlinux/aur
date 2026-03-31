@@ -1,6 +1,6 @@
 pkgbase = atha
 	pkgdesc = Simple and fast Arch Linux package manager wrapper built on top of pacman
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/Bangkah/Atha
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = atha
 	depends = base-devel
 	conflicts = atha
 	replaces = atha
-	source = https://github.com/Bangkah/Atha/archive/refs/tags/v2.2.2.tar.gz
+	source = https://github.com/Bangkah/Atha/archive/refs/tags/v2.2.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = atha
