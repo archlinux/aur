@@ -1,12 +1,12 @@
 pkgbase = hn-rename-python-bin
 	pkgdesc = 一个极简的使用python写的批量重命名工具
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/hnchengzong/hn-rename-python
 	arch = any
 	license = MIT
 	depends = python
-	source = hn-rename-python-bin-0.1.0-1.pkg.tar.zst::https://github.com/hnchengzong/hn-rename-python/releases/download/v0.1.0/hn-rename-python-0.1.0-1.pkg.tar.zst
-	sha256sums = ec1ba6569ec7547d32ed7f3b5fd5b1334f9398a9d51edbf27eedcd7cc8e8e5f6
+	source = https://github.com/hnchengzong/hn-rename-python/releases/download/v0.1.1/hn-rename-python-0.1.1-1-any.pkg.tar.zst
+	sha256sums = 869b83837adf3964c3a0fa95d31b1c82915185d0827cabcc5affb6d7d1cbc8a9
 
 pkgname = hn-rename-python-bin
