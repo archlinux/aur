@@ -25,7 +25,7 @@ provides=('subterm')
 conflicts=('subterm')
 options=('!strip' '!debug')
 source=("subterm-bin-${pkgver}.pkg.tar.zst::https://github.com/kofany/subterm-releases/releases/download/v${pkgver}/subterm-bin-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('1ba61f4eb3a73092de120d3c64ffe1cd5e0feef2a36a1a2a694567a67cd31fd9')
+sha256sums=('f52b0c3ff48ef8e02727560d6791fc1df0a3f27b3a9319a9a671b35a1ca454f5')
 noextract=("subterm-bin-${pkgver}.pkg.tar.zst")
 
 package() {
