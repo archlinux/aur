@@ -46,9 +46,9 @@ prepare() {
   _ensure_local_nvm
   nvm install "${_nodeversion}"
 
-  cd apps/desktop/src-tauri
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc --print host-tuple)"
+  cargo fetch --manifest-path apps/desktop/src-tauri/Cargo.toml \
+    --locked --target host-tuple
 }
 
 build() {
@@ -62,7 +62,7 @@ build() {
   bun install
 
   cd apps/desktop
-  cargo tauri build --no-bundle
+  cargo tauri build --no-bundle -- --frozen
 }
 
 check() {
