@@ -9,25 +9,26 @@ url="https://github.com/DiegoMagdaleno/BSDCoreUtils"
 license=('ISC')
 depends=('glibc' 'openssl')
 makedepends=('git' 'cmake' 'make' 'byacc')
-provides=('coreutils')
-conflicts=('coreutils')
-replaces=('coreutils')
+#provides=('coreutils')
+#conflicts=('coreutils')
+#replaces=('coreutils')
 source=("git+https://github.com/DiegoMagdaleno/BSDCoreUtils.git")
 sha256sums=('SKIP')
 
 prepare() {
-	cd "$srcdir/BSDCoreUtils"
+	cd "$srcdir/$_pkgname"
 	mkdir -p build
 }
 
 build() {
-	cd "$srcdir/BSDCoreUtils/build"
+	cd "$srcdir/$_pkgname/build"
 	cmake ..
 	make
 }
 
 package() {
 	cd "$srcdir/BSDCoreUtils/build"
-	make install -DCMAKE_INSTALL_PREFIX=/opt/BSDuserland
+	make install /opt/BSDuserland
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	export PATH="/opt/BSD/userland:$PATH"
 }

@@ -11,9 +11,6 @@ pkgbase = bsdcoreutils-git
 	makedepends = byacc
 	depends = glibc
 	depends = openssl
-	provides = coreutils
-	conflicts = coreutils
-	replaces = coreutils
 	source = git+https://github.com/DiegoMagdaleno/BSDCoreUtils.git
 	sha256sums = SKIP
 
