@@ -1,6 +1,6 @@
 # Maintainer: cbxcvl <cbxcvl@github>
 pkgname=btk-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Burp Token Killer — token-efficient MCP proxy between Claude Code and Burp Suite"
 arch=('x86_64' 'aarch64')
@@ -12,12 +12,12 @@ conflicts=('btk')
 source_x86_64=("btk-linux-x86_64::${url}/releases/download/v${pkgver}/btk-linux-x86_64")
 source_aarch64=("btk-linux-aarch64::${url}/releases/download/v${pkgver}/btk-linux-aarch64")
 
-sha256sums_x86_64=('d53cfe8edcc631cf84be0425b98c25282342a2e9d2ad279d2cbb598dc8356067')
-sha256sums_aarch64=('14c19217c568ffd80a16e74ce44cff9eedd63972ae2e165344a6a3a181d61278')
+sha256sums_x86_64=('834e9fe21910feabd434cc548cc3d0410cf83a544b71ae518f390a180937c69d')
+sha256sums_aarch64=('1248bc179cccfc8a1fb679195166aa36aecb1c1bc9301ae3e10fed6f0f39d245')
 
 package() {
-    install -Dm755 "btk-linux-${CARCH}" "${pkgdir}/usr/bin/btk"
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" << 'LICENSE'
+  install -Dm755 "btk-linux-${CARCH}" "${pkgdir}/usr/bin/btk"
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<'LICENSE'
 MIT License
 
 Copyright (c) 2026 cbxcvl

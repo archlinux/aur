@@ -1,6 +1,6 @@
 pkgbase = btk-bin
 	pkgdesc = Burp Token Killer — token-efficient MCP proxy between Claude Code and Burp Suite
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/cbxcvl/BTK
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = btk-bin
 	license = MIT
 	provides = btk
 	conflicts = btk
-	source_x86_64 = btk-linux-x86_64::https://github.com/cbxcvl/BTK/releases/download/v0.1.0/btk-linux-x86_64
+	source_x86_64 = btk-linux-x86_64::https://github.com/cbxcvl/BTK/releases/download/v0.1.1/btk-linux-x86_64
 	sha256sums_x86_64 = d53cfe8edcc631cf84be0425b98c25282342a2e9d2ad279d2cbb598dc8356067
-	source_aarch64 = btk-linux-aarch64::https://github.com/cbxcvl/BTK/releases/download/v0.1.0/btk-linux-aarch64
+	source_aarch64 = btk-linux-aarch64::https://github.com/cbxcvl/BTK/releases/download/v0.1.1/btk-linux-aarch64
 	sha256sums_aarch64 = 14c19217c568ffd80a16e74ce44cff9eedd63972ae2e165344a6a3a181d61278
 
 pkgname = btk-bin
