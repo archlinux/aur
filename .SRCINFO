@@ -1,0 +1,20 @@
+pkgbase = wayvy-applet-git
+	pkgdesc = A quick and dirty ksni applet for the Wayvy wallpaper manager.
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://codeberg.org/J_S_Barkely-Griggs/Wayvy-applet
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = make
+	makedepends = git
+	depends = mpvpaper
+	depends = wayvy
+	provides = wayvy-applet
+	conflicts = wayvy-applet
+	replaces = wayvy-applet
+	source = wayvy-applet::git+https://codeberg.org/J_S_Barkely-Griggs/Wayvy-applet.git
+	sha256sums = SKIP
+
+pkgname = wayvy-applet-git
