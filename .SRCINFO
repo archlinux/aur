@@ -5,7 +5,7 @@ pkgbase = nvidia-340xx-macbook
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
-	makedepends = nvidia-340xx-utils=340.108
+	makedepends = nvidia-340xx-utils-macbook=340.108
 	makedepends = linux-lts
 	makedepends = linux-lts-headers
 	conflicts = nvidia
@@ -59,14 +59,14 @@ pkgname = nvidia-340xx-macbook
 	pkgdesc = NVIDIA 340xx legacy drivers for MacBook 6,1 - Patched for kernel 6.18-LTS
 	install = nvidia-340xx.install
 	depends = linux-lts>=5.3.6
-	depends = nvidia-340xx-utils=340.108
+	depends = nvidia-340xx-utils-macbook=340.108
 	depends = libgl
 
 pkgname = nvidia-340xx-dkms-macbook
 	pkgdesc = NVIDIA 340xx legacy driver sources for MacBook 6,1 - Patched for kernel 6.18-LTS
 	install = nvidia-340xx.install
 	depends = dkms
-	depends = nvidia-340xx-utils=340.108
+	depends = nvidia-340xx-utils-macbook=340.108
 	depends = libgl
 	optdepends = linux-lts-headers: Build the module for Arch kernel
 	provides = nvidia-340xx=340.108
