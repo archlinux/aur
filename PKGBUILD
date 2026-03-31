@@ -1,4 +1,4 @@
-# Maintainer: dunky <braxtinmoss13@gmail.com>
+# Maintainer: Dunky <braxtinmoss13@gmail.com>
 # Previous Maintainer: Maël GUERIN <mael dot guerin at murena dot io>
 pkgname=rofi-power-menu
 pkgver=3.1.0
