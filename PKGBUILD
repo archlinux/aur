@@ -2,7 +2,7 @@
 pkgname=atrust-bin
 _pkgname=aTrust
 _debname="cn.com.sangfor.${pkgname%-bin}"
-pkgver=2.5.16.20
+pkgver=2.5.16.30
 _electronversion=9
 pkgrel=1
 pkgdesc="Sangfor ssl sdp client.(Prebuilt version.Use system-wide electron)"
@@ -16,6 +16,13 @@ depends=(
     'qt5-base'
     'openssl-1.1'
     'java-runtime'
+    'gtk3'
+    'libxrandr'
+    'cairo'
+    'libxcomposite'
+    'at-spi2-core'
+    'alsa-lib'
+    'libxtst'
 )
 options=(
     '!strip'
@@ -26,9 +33,13 @@ source=(
     "bsod_checker.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fea38f63297e2c9bf853f33c566130a2f62f406926f60cf4e87f6d24a8e397d9'
+sha256sums=('aa8ba93532ae250dcab3d75d3b103fb01a93b97b49cbc6d9066c5ed1f70b75a6'
             'ae82a7e0575d2ed8778134fc7d5c9c85001c955a7d26710a13101ff2363c53e6'
             '28e008479e0ddba50ab98baa97c9e27c22cfe8aaac3812f7d4552a75453068da')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/usr/share/sangfor/${_pkgname}/${_pkgname}Tray" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@appname@/sangfor/g
@@ -36,6 +47,7 @@ prepare() {
         s/@runname@/${_pkgname}Tray/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\/usr\/share\/sangfor\/${_pkgname}\/${_pkgname}Tray/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
