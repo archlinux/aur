@@ -1,0 +1,27 @@
+pkgbase = perl-task-kensho-webcrawling
+	pkgdesc = A Glimpse at an Enlightened Perl: Web Crawling
+	pkgver = 0.41
+	pkgrel = 1
+	url = https://metacpan.org/release/ETHER/Task-Kensho-WebCrawling-0.41
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker
+	depends = perl-http-thin
+	depends = perl-http-tiny
+	depends = perl-libwww
+	depends = perl-mojolicious
+	depends = perl-test-www-selenium
+	depends = perl-www-mechanize
+	depends = perl-www-mechanize-treebuilder
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
+	optdepends = perl-json-pp
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Task-Kensho-WebCrawling-0.41.tar.gz
+	sha256sums = e6dcee9f897b69c6eb64a46634ef6336a36c6818023cc51f39acb501534645ef
+
+pkgname = perl-task-kensho-webcrawling
