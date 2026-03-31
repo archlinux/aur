@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://trae.ai/"
 license=('custom')
 install=${pkgname}.install
+makedepends=('librsvg')
 depends=(
   'gtk3' 'nss' 'libxss' 'libxkbfile' 'libsecret' 'xdg-utils' 'alsa-lib' 'libnotify'
   'libxtst' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxrandr' 'pango' 'cairo' 'at-spi2-core' 'glib2' 'cups' 'expat' 'nspr' 'util-linux' 'dbus' 'gcc-libs' 'libxkbcommon' 'mesa'
@@ -132,7 +133,19 @@ StartupWMClass=trae-cn
 StartupNotify=true
 EOF
 
-  if [[ -f "$pkgdir/usr/share/${_pkgname}/resources/app/resources/linux/code.png" ]]; then
+  icon_svg="$pkgdir/usr/share/${_pkgname}/resources/app/out/media/trae-logo.svg"
+  if [[ -f "$icon_svg" ]]; then
+    install -Dm644 "$icon_svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+
+    if command -v rsvg-convert >/dev/null 2>&1; then
+      for size in 256 128 64 48 32 16; do
+        install -d "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
+        rsvg-convert -w "$size" -h "$size" "$icon_svg" \
+          -o "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/${_pkgname}.png"
+      done
+    fi
+  elif [[ -f "$pkgdir/usr/share/${_pkgname}/resources/app/resources/linux/code.png" ]]; then
+    # 兜底：上游未提供 trae-logo.svg 时沿用旧图标
     for size in 1024x1024 512x512 256x256 128x128; do
       install -Dm644 "$pkgdir/usr/share/${_pkgname}/resources/app/resources/linux/code.png" \
         "$pkgdir/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"

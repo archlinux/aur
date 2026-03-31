@@ -6,6 +6,7 @@ pkgbase = trae-cn-bin
 	install = trae-cn-bin.install
 	arch = x86_64
 	license = custom
+	makedepends = librsvg
 	depends = gtk3
 	depends = nss
 	depends = libxss
