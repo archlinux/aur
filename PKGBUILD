@@ -62,4 +62,14 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     find resources/icons/hicolor -type f -name "*.svg" -exec install -Dm644 {} "${pkgdir}/usr/share/wayle/icons/{}" \;
+
+    target/release/${_pkgname} completions bash > wayle.bash
+    target/release/${_pkgname} completions zsh > _wayle
+    target/release/${_pkgname} completions fish > wayle.fish
+
+    install -Dm644 wayle.bash "${pkgdir}/usr/share/bash-completion/completions/wayle"
+    install -Dm644 _wayle "${pkgdir}/usr/share/zsh/site-functions/_wayle"
+    install -Dm644 wayle.fish "${pkgdir}/usr/share/fish/vendor_completions.d/wayle.fish"
+
+    install -Dm644 resources/wayle.service "${pkgdir}/usr/lib/systemd/user/wayle.service"
 }
