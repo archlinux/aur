@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=pacmate
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive terminal UI wrapper for pacman"
 arch=('x86_64')
 url="https://gitlab.com/nathanchere/pacmate"

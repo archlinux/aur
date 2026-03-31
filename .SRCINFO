@@ -1,7 +1,7 @@
 pkgbase = pacmate
 	pkgdesc = Interactive terminal UI wrapper for pacman
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/nathanchere/pacmate
 	arch = x86_64
 	license = Apache-2.0
