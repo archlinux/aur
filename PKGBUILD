@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-git
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
 arch=('x86_64')
 url="https://github.com/ZoeyErinBauer/Shelly-ALPM"
@@ -58,7 +58,7 @@ package() {
   install -Dm755 out-cli/shelly "$pkgdir/usr/bin/shelly"
 
   # Install desktop entry
-  cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/shelly.desktop"
+  cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.shellyorg.shelly.desktop"
 [Desktop Entry]
 Name=Shelly
 Comment=A Modern Arch Package Manager
