@@ -1,7 +1,7 @@
 pkgbase = shorin-dms-niri-dotfiles-git
 	pkgdesc = dotfiles for Shorin DMS Niri
 	pkgver = r1.1234567
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/shorin-dms-niri
 	arch = any
 	license = GPL

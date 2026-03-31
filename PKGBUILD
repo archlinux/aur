@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-dotfiles-git
 pkgver=r1.1234567
-pkgrel=1
+pkgrel=2
 pkgdesc="dotfiles for Shorin DMS Niri"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -22,19 +22,16 @@ pkgver() {
 package() {
     cd "$srcdir/shorin-dms-niri"
 
-    # 1. 安装 Dotfiles 模板到系统共享目录
     local target_dir="$pkgdir/usr/share/shorin-dms-niri-dotfiles"
     install -dm755 "$target_dir"
-    
     if [[ -d "dotfiles" ]]; then
-        cp -a dotfiles/* "$target_dir/"
-        cp -a dotfiles/.* "$target_dir/" 2>/dev/null || true # 处理隐藏文件
-        rm -rf "$target_dir/." "$target_dir/.." 2>/dev/null || true
+        cp -a dotfiles/. "$target_dir/"
     else
         echo "Error: 'dotfiles' directory not found in the git repository."
         exit 1
     fi
 
+    # 2. 安装 Firefox 策略 (系统级)
     local pol_dir="$pkgdir/etc/firefox/policies"
     install -dm755 "$pol_dir"
     cat << 'EOF' > "$pol_dir/policies.json"
