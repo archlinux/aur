@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=r-air
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="An R language server and formatter"
 url="https://github.com/r-lib/rig"
@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}/air-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('3c578924cee3baf2c0b0d61eac5ecf08f0940adbedb347a107f7cb758ed1ecaf8ea5e662f0a9715a5898672bc3e1d0e537824f701c6248cbe3351e30a439c597')
+sha512sums=('dd9da6b1e3afc907380e7df95fe2873571adb155f13821c9b64ba2bd6742a595c14a3eaea3b8204ce88baa33790445cfad28ca1bb5e2abaddaf62ab4f35b7842')
