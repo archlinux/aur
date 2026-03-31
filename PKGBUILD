@@ -1,6 +1,6 @@
 # Maintainer: vcup <me@vcup.moe>
 pkgname=shoko-server-bin
-pkgver=5.3.2
+pkgver=5.3.3
 pkgrel=1
 pkgdesc='An anime cataloging program designed to automate the cataloging of your anime collection regardless of the size and number of files in your collection.'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
   'shoko-server.service'
   'LICENSE'
 )
-sha512sums=('88a682e3438054a8abcedf54b9573417df233790bc6c5bd719391b1946d325f1c97a967da86ecb29bf1797d10d39a432fa831d9c93e4203714f366a296aae967'
+sha512sums=('e35803dfdc4def72df0ba313f8768caf4e5789c4aaa0d005068b40a728f822b0cfaee580fbe9b37c44d3f24e0ab0a6b28bee2977d7661569be74362da2c8a261'
             'e9089dafa54773a0d63e76071b16f774cbeff6d9defe9763f3283471d801fb36fa209c9eb507a504712f0b82751191c5bcde4cffa3cb32a4f52a673ab6856ef6'
             'c323e1561eea9fba6e6248cfb07fb0e4c4621ffa8f17e1f0b856405cd1505b04c56b395afffeda651475c259d94cc1f88a77f97573b293154d90ef2eaf0ef0b2')
 
