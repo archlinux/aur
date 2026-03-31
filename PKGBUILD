@@ -10,14 +10,14 @@ license=('GPL')
 depends=(
 
     # core
-    'xdg-desktop-portal-gnome' 'niri' 'xwayland-satellite' 'satty' 'slurp' 'libnotify' 
+    'quickshell-git' 'xdg-desktop-portal-gnome' 'niri' 'xwayland-satellite' 'satty' 'slurp' 'libnotify' 
     'imv' 'mpv' 'firefox'
 
     # fonts
     'noto-fonts' 'noto-fonts-cjk' 'noto-fonts-emoji' 
     
     # shell
-    'quickshell-git' 'dms-shell-bin' 'cups-pk-helper' 'kimageformats'
+    'dms-shell-bin' 'cups-pk-helper' 'kimageformats'
     'niri-sidebar-git'  'cava' 'cliphist'
     'wl-clipboard' 'dgop' 'dsearch-bin' 'qt5-multimedia'
     
