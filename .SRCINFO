@@ -1,0 +1,26 @@
+pkgbase = perl-task-kensho-async
+	pkgdesc = A Glimpse at an Enlightened Perl: Async Programming
+	pkgver = 0.41
+	pkgrel = 1
+	url = https://metacpan.org/release/ETHER/Task-Kensho-Async-0.41
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker
+	depends = perl-future
+	depends = perl-io-async
+	depends = perl-mce
+	depends = perl-mojolicious
+	depends = perl-parallel-forkmanager
+	depends = perl-poe
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
+	optdepends = perl-json-pp
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Task-Kensho-Async-0.41.tar.gz
+	sha256sums = ba912823b15c22e0b59b93c5d631ade37344f660d69c1226aecdd7828a40aeae
+
+pkgname = perl-task-kensho-async
