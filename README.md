@@ -1,32 +1,10 @@
-# Voix - The Keeper of Realms (Arch User Repository)
+# Voix - The Keeper of Realms
 
 ## Prophecy
 
 Born from the ancient runes of OpenDoas, Voix is a secure, mystical invocation designed to govern the ascension of privileges across your systems. Through the pact of Pluggable Authentication Modules (PAM) and immutable rules, only the worthy are granted the power to traverse higher planes of execution.
 
 "Where `sudo` scatters trust, Voix binds it."
-
-## Arch Linux Ascension (AUR)
-
-This repository contains the sacred PKGBUILD for the Arch Linux planes.
-
-### Installation via AUR Helper
-
-The easiest path to ascension is through your favorite AUR helper:
-
-```bash
-yay -S voix
-```
-
-### Manual Forge
-
-For those who prefer to build by hand:
-
-```bash
-git clone https://aur.archlinux.org/voix.git
-cd voix
-makepkg -si
-```
 
 ## The Arcane Arts (Features)
 
@@ -35,6 +13,45 @@ makepkg -si
 - **Runes of Clarity**: Configuration is ordained in unmistakable syntax within the `/etc/voix.conf` sanctuary.
 - **Seamless Transmutation**: Properly spawns the user's shell environment upon successful ascent.
 - **Sanctified Tokens**: Optional time-gated persistence of power, mimicking familiar boons.
+
+## Forging the Artifact
+
+### Prerequisites for the Forge
+
+The Elders command strict adherence to modern crafting:
+
+- **LLVM Clang Toolchain** (Only Clang 21+ is accepted by the forge)
+- A **C++26** compliant arcane environment
+- **CMake** (v3.18+) and **Ninja**
+- Core dependencies: PAM libraries (`libpam0g-dev` / `pam-devel`), `pkg-config`.
+
+### Bringing Forth the Binary
+
+1. **Obtain the Scrolls**:
+
+   ```bash
+   git clone https://github.com/Veridian-Zenith/Voix.git && cd Voix
+   ```
+
+2. **Ignite the Forge**:
+
+   ```bash
+   cmake -B build -G Ninja -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+   ```
+
+3. **Shape the Artifact**:
+
+   ```bash
+   cmake --build build
+   ```
+
+4. **Commend it to the System**:
+
+   ```bash
+   sudo cmake --install build
+   ```
+
+   *Arch Linux users may seek the `voix` package directly from the AUR Archives.*
 
 ## The Runes of Law (Configuration)
 
@@ -67,6 +84,14 @@ voix <incantation> [args...]
 - `-n, --non-interactive`: Fail the cast immediately if blood (password) is required.
 - `-C, --clear`: Forsake any lingering tokens of power instantly.
 
+## The Architect's Code
+
+Every function, every design, everything is modular, has a use, and is well put-together. If you seek to alter the artifact:
+
+1. Speak exclusively in C++26.
+2. Honor the Clang compiler constraints.
+3. Bind your work with `clang-tidy` to cleanse any lingering chaos.
+
 ## The Final Vow (License)
 
-Voix is sealed and distributed under the Open Software License v3.0 (OSL-3.0). See the core `LICENSE` scroll for eternal details.
+Voix is sealed and distributed under the Open Software License v3.0 (OSL-3.0). See the `LICENSE` scroll for eternal details.
