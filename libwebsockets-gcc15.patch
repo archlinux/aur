@@ -1,0 +1,10 @@
+--- a/third_party/libwebsockets/repo/lib/plat/unix/unix-caps.c
++++ b/third_party/libwebsockets/repo/lib/plat/unix/unix-caps.c
+@@ -51,7 +51,7 @@ int
+ lws_plat_user_colon_group_to_ids(const char *u_colon_g, uid_t *puid, gid_t *pgid)
+ {
+-	char *colon = strchr(u_colon_g, ':'), u[33];
++	const char *colon = strchr(u_colon_g, ':'), u[33];
+ 	struct group *g;
+ 	struct passwd *p;
+ 	size_t ulen;
