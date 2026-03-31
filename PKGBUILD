@@ -1,7 +1,7 @@
 # Maintainer: Keon Cachia <keonfarrugia@gmail.com>
 pkgname=rill
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A minimalist scrolling window manager for River"
 arch=('x86_64')
 url="https://codeberg.org/lzj15/rill"
@@ -9,10 +9,14 @@ license=('MIT')
 depends=('wayland' 'river')
 makedepends=('wayland-protocols' 'zig')
 install=rill.install
-source=(https://codeberg.org/lzj15/rill/archive/v"$pkgver".tar.gz
+source=(https://codeberg.org/lzj15/rill/archive/"$pkgver".tar.gz
 	zig-wayland.zip::https://codeberg.org/ifreund/zig-wayland/archive/v0.5.0.zip)
-sha256sums=('56ff76abb108943eb4da06bcdd31be2f1628eb2ad3896a616558958ab67be31e'
+sha256sums=('e11a26eef4c1254a634edc12414bc541c583784a286b0a0b1e8e3626ab3e7797'
             '816d6d9fffeb596244e5467b60f5b21575ba779e441a27dcc63ce5f6a5a09841')
+optdepends=('alacritty: Default terminal emulator'
+	    'wireplumber: Default audio manager'
+	    'awww: Default wallpaper manager'
+	    'wl-clip-persist: Used in default configuration')
 noextract=("${source[@]:1}")
 
 prepare() {
