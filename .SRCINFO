@@ -1,17 +1,17 @@
 pkgbase = xuanxuan-bin
 	pkgdesc = A self-hosted enterprise IM solution.(Prebuilt version.Use system-wide electron)一款功能齐全的企业聊天软件
-	pkgver = 10.1
+	pkgver = 10.2
 	pkgrel = 1
 	url = https://xuanim.com/index.html
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = asar
 	depends = electron31
-	provides = xuanxuan=10.1
+	provides = xuanxuan=10.2
 	conflicts = xuanxuan
-	source = xuanxuan-10.1.deb::https://xuanim.com/dl/xuanxuan/10.1/xuanxuan.10.1.linux.amd64.deb
+	source = xuanxuan-10.2.deb::https://xuanim.com/dl/xuanxuan/10.2/xuanxuan.10.2.linux.amd64.deb
 	source = xuanxuan.sh
-	sha256sums = ba175ba62d135cd8445f1a2db50b029df3bc2afe9f63eca92a7e4caab4af2a49
+	sha256sums = 923e45499a43c513d6c33a1c7ccb45c18e98299749c78a779f53daeb88a388f8
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = xuanxuan-bin

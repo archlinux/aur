@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xuanxuan-bin
-pkgver=10.1
+pkgver=10.2
 _electronversion=31
 pkgrel=1
 pkgdesc="A self-hosted enterprise IM solution.(Prebuilt version.Use system-wide electron)一款功能齐全的企业聊天软件"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::https://xuanim.com/dl/${pkgname%-bin}/${pkgver}/${pkgname%-bin}.${pkgver}.linux.amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ba175ba62d135cd8445f1a2db50b029df3bc2afe9f63eca92a7e4caab4af2a49'
+sha256sums=('923e45499a43c513d6c33a1c7ccb45c18e98299749c78a779f53daeb88a388f8'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}.bin" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
