@@ -1,6 +1,6 @@
 pkgbase = transmission-remote-slint-bin
 	pkgdesc = Lightweight Transmission BitTorrent GUI built with Slint (no GTK) — prebuilt binary
-	pkgver = 0.5.0
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/guglovich/Transmission-Remote-Slint
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = transmission-remote-slint-bin
 	provides = transmission-remote-slint
 	conflicts = transmission-remote-slint
 	options = !debug
-	source = transmission-remote-slint::https://github.com/guglovich/Transmission-Remote-Slint/releases/download/v0.5.0/transmission-remote-slint
-	source = app-icon.png::https://github.com/guglovich/Transmission-Remote-Slint/raw/v0.5.0/ui/app-icon.png
+	source = transmission-remote-slint::https://github.com/guglovich/Transmission-Remote-Slint/releases/download/v0.5/transmission-remote-slint
+	source = app-icon.png::https://github.com/guglovich/Transmission-Remote-Slint/raw/v0.5/ui/app-icon.png
 	sha256sums = e027e3c3d04fd4a85d7bf65915d93e6bb4cb1683360dd5c175af250a47262521
 	sha256sums = SKIP
 
