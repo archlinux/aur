@@ -2,13 +2,13 @@
 
 pkgname=shorin-contrib-git
 _pkgname=shorin-contrib
-pkgver=r9.0be4a29
+pkgver=r35.338da1c
 pkgrel=2
 pkgdesc="Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-contrib"
 license=('GPL3')
-depends=('bash')
+depends=('bash' 'fzf')
 makedepends=('git')
 install='shorin-contrib.install'
 
@@ -19,7 +19,6 @@ optdepends=(
     'fuzzel: for GUI menus in Wayland'
     'libnotify: for desktop notifications'
     'ffmpeg: for video2gif utility'
-    'fzf: for pacman TUI'
     'timg: for lsi image preview'
 )
 
