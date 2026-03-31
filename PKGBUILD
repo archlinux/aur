@@ -1,6 +1,6 @@
 pkgname=sfptool
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop utility for reading and programming SFP and QSFP transceivers"
 arch=('x86_64' 'aarch64')
 url="https://jonasled.dev/jonasled/sfp-tool"
@@ -52,7 +52,6 @@ package() {
     aarch64) deb_arch="arm64" ;;
     *) echo "Unsupported architecture: $CARCH" >&2; return 1 ;;
   esac
-  local deb_file="sfp-tool_${pkgver}_${deb_arch}.deb"
-  data_archive="$(bsdtar -tf "$deb_file" | grep '^data.tar\.' | head -n1)"
-  bsdtar -xOf "$deb_file" "$data_archive" | bsdtar -xf - -C "$pkgdir"
+  ar x sfp-tool_*.deb
+  tar -xvf data.tar.* -C "$pkgdir/"
 }
