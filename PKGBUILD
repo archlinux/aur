@@ -4,7 +4,7 @@
 pkgbase=nvidia-340xx-utils-macbook
 pkgname=('nvidia-340xx-utils-macbook' 'opencl-nvidia-340xx-macbook')
 pkgver=340.108
-pkgrel=40
+pkgrel=41 # Subí el rel para que AUR detecte el cambio
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -13,7 +13,6 @@ install=nvidia-340xx-utils.install
 source=(nvidia-drm-outputclass.conf
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
         nvidia-340xx-utils.sysusers)
-# 3 fuentes = 3 sumas de control
 sha512sums=('SKIP'
             '9f636aab5ffee36c951bd450bd56db397e6eb127ac6ef2b93eade3850892966195602c2d894548c7b19da38f40a144f4d98f835d8c695038ff6c65249129e739'
             'SKIP')
@@ -38,48 +37,55 @@ prepare() {
 package_opencl-nvidia-340xx-macbook() {
     pkgdesc="OpenCL implementation for NVIDIA - MacBook 6,1"
     depends=('zlib')
+    optdepends=('opencl-headers: headers necessary for OpenCL development')
     conflicts=('opencl-nvidia' 'opencl-nvidia-340xx')
     provides=('opencl-nvidia' 'opencl-driver' 'opencl-nvidia-340xx')
+    
     cd "${_pkg}"
-
     install -D -m644 nvidia.icd "${pkgdir}/etc/OpenCL/vendors/nvidia.icd"
     install -D -m755 "libnvidia-compiler.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-compiler.so.${pkgver}"
     install -D -m755 "libnvidia-opencl.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-opencl.so.${pkgver}"
 
     create_links
-    mkdir -p "${pkgdir}/usr/share/licenses"
-    ln -s nvidia "${pkgdir}/usr/share/licenses/opencl-nvidia-macbook"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/opencl-nvidia-macbook/LICENSE"
 }
 
 package_nvidia-340xx-utils-macbook() {
-    pkgdesc="NVIDIA drivers utilities for MacBook 6,1 (Matches rel-40 driver)"
-    depends=('xorg-server' 'libglvnd')
-    conflicts=('nvidia-340xx-libgl' 'nvidia-libgl' 'nvidia-utils' 'nvidia-340xx-utils')
-    provides=('libgl' 'libgles' 'libegl' 'nvidia-340xx-libgl' 'nvidia-libgl' 'nvidia-utils' 'nvidia-340xx-utils')
+    pkgdesc="NVIDIA drivers utilities for MacBook 6,1"
+    # Las dependencias de X11 van ACÁ, no arriba, para no ensuciar a OpenCL
+    depends=('xorg-server' 'libglvnd' 'egl-wayland') 
+    conflicts=('nvidia-340xx-utils' 'nvidia-utils' 'nvidia-340xx-libgl')
+    provides=('nvidia-340xx-utils' 'nvidia-utils' 'libgl' 'libgles' 'libegl')
     
     cd "${_pkg}"
-
+    # Driver de Xorg
     install -D -m755 nvidia_drv.so "${pkgdir}/usr/lib/xorg/modules/drivers/nvidia_drv.so"
+    
+    # GLX extension
     install -D -m755 "libglx.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglx.so.${pkgver}"
     ln -s "libglx.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglx.so.1"
     ln -s "libglx.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/xorg/libglx.so"
 
+    # Librerías
     for lib in libGL libEGL libGLESv1_CM libGLESv2 libnvidia-glcore libnvidia-eglcore libnvidia-glsi libnvidia-ifr libnvidia-fbc libnvidia-encode libnvidia-cfg libnvidia-ml libcuda libnvcuvid; do
         install -D -m755 "${lib}.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/${lib}.so.${pkgver}"
     done
+    
     install -D -m755 "libvdpau_nvidia.so.${pkgver}" "${pkgdir}/usr/lib/vdpau/libvdpau_nvidia.so.${pkgver}"
     install -D -m755 "tls/libnvidia-tls.so.${pkgver}" "${pkgdir}/usr/lib/nvidia/libnvidia-tls.so.${pkgver}"
 
+    # Binarios
     for bin in nvidia-debugdump nvidia-xconfig nvidia-bug-report.sh nvidia-smi nvidia-cuda-mps-server nvidia-cuda-mps-control nvidia-persistenced; do
         install -D -m755 "${bin}" "${pkgdir}/usr/bin/${bin}"
     done
     install -D -m4755 nvidia-modprobe "${pkgdir}/usr/bin/nvidia-modprobe"
 
+    # Configuración
     install -D -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
-    
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/nvidia/LICENSE"
+    
     install -dm 755 "${pkgdir}"/etc/ld.so.conf.d
-    echo -e '/usr/lib/nvidia/' > "${pkgdir}"/etc/ld.so.conf.d/00-nvidia-macbook.conf
+    echo '/usr/lib/nvidia/' > "${pkgdir}"/etc/ld.so.conf.d/00-nvidia-macbook.conf
     
     install -Dm644 "${srcdir}/nvidia-340xx-utils.sysusers" "${pkgdir}/usr/lib/sysusers.d/nvidia-340xx-utils-macbook.conf"
 
