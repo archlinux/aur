@@ -1,0 +1,16 @@
+pkgbase = rofi-kaomoji
+	pkgdesc = Browse and copy kaomojis using rofi
+	pkgver = r17.e3bbf20
+	pkgrel = 1
+	url = https://github.com/Seme4eg/rofi-kaomoji
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = rofi
+	depends = wl-clipboard
+	provides = rofi-kaomoji
+	conflicts = rofi-kaomoji
+	source = git+https://github.com/Seme4eg/rofi-kaomoji.git
+	sha256sums = SKIP
+
+pkgname = rofi-kaomoji
