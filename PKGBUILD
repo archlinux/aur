@@ -1,7 +1,7 @@
 # Maintainer: Jas Singh <singh.jaskir@outlook.com>
 
 pkgname=wayle
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A configurable desktop shell for Wayland compositors"
 arch=('x86_64')
@@ -31,7 +31,7 @@ optdepends=(
 )
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e8744f011e841396456267e600fbc370de82567f4b99d6da04118eb638d132be')
+sha256sums=('bf2cc9294b0f7a85bd9a9514452db692b251fa5588528c391cc5137e78ac3bee')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -53,4 +53,14 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     find resources/icons/hicolor -type f -name "*.svg" -exec install -Dm644 {} "${pkgdir}/usr/share/wayle/icons/{}" \;
+
+    target/release/wayle completions bash > wayle.bash
+    target/release/wayle completions zsh > _wayle
+    target/release/wayle completions fish > wayle.fish
+
+    install -Dm644 wayle.bash "${pkgdir}/usr/share/bash-completion/completions/wayle"
+    install -Dm644 _wayle "${pkgdir}/usr/share/zsh/site-functions/_wayle"
+    install -Dm644 wayle.fish "${pkgdir}/usr/share/fish/vendor_completions.d/wayle.fish"
+
+    install -Dm644 resources/wayle.service "${pkgdir}/usr/lib/systemd/user/wayle.service"
 }
