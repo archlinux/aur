@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-meta
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Meta package for Shorin DMS Niri dependencies"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -35,7 +35,7 @@ depends=(
     'flatpak' 'bazaar' 'matugen' 'adw-gtk-theme' 'python-pywalfox'  'nwg-look'
     
     # input method
-    'fcitx5-im' 'fcitx5-rime' 'rime-ice-git' 'rime-wubi'
+    'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'fcitx5-rime' 'rime-ice-git' 'rime-wubi'
 )
 
 package() {
