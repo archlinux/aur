@@ -1,6 +1,6 @@
 pkgbase = khushu
 	pkgdesc = An all-in-one Muslim app for Linux.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/sniper1720/khushu
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = khushu
 	depends = ttf-amiri
 	optdepends = xdg-desktop-portal: autostart portal support
 	options = !debug
-	source = khushu-1.0.2.tar.gz::https://github.com/sniper1720/khushu/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = b6be4249058e29523aaae7fef6de7ce3e261bc21120683afa7d94f3036786d3d
+	source = khushu-1.0.3.tar.gz::https://github.com/sniper1720/khushu/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 125ec645d25968ff383dbe05c093e155bd252a91afcbbe61ccb3dc16bd999606
 
 pkgname = khushu
