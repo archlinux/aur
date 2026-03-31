@@ -1,7 +1,7 @@
 # Maintainer:  Marin Moulinier <https://github.com/p1-mmr>
 
 pkgname="hermes-dec"
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A reverse engineering tool for decompiling and disassembling the React Native Hermes bytecode"
 arch=(
@@ -32,7 +32,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('b504316abc22b26fd24ad7e293a13283d4d66708e8ac11f0e0a16a285afcf7eb')
+sha256sums=('7895bffbd037d5794a7eb8274d891539f1f390de0cac9e165d0bf83663fce887')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
