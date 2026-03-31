@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=huge
-_pkgver=1.5
+_pkgver=1.5.1
 pkgname=r-${_pkgname,,}
-pkgver=1.5
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='High-Dimensional Undirected Graph Estimation'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
   r-rcppeigen
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('21d077c925c9c05a19e0cb0dcffad16f7557c1fe55ffbea82773fd4b73e05416')
+sha256sums=('83e7a1f67d30848fbf794240dc980154b238e1a9042178043803c5bec259ad88')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
