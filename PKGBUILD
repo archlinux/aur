@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
 pkgname=stapxs-qq-lite-bin
 _pkgname='Stapxs QQ Lite'
-pkgver=3.3.6
+pkgver=3.3.7
 pkgrel=1
 epoch=
 pkgdesc="A compatible OneBot protocol unofficial version of the web QQ client, electron client.(Prebuilt version)一个兼容 oicq-http 的非官方网页版 QQ 客户端, 使用 Vue 重制的全新版本."
@@ -20,8 +20,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}_${pkgver}_amd64.deb")
-sha256sums_aarch64=('5cb184b0aaa79ecff9227776c4f174dc8909226c45b8b86b74ba3b705a7c91fa')
-sha256sums_x86_64=('e4b67db06d6d28b57be36ae5f735a0058b531ba6245ade6a476cbd785cad26dd')
+sha256sums_aarch64=('3b5b23153ad2b777cd5bc68d0ab0ee7847eb213f90bc3daeb7840d82bd0cf522')
+sha256sums_x86_64=('05eb43fd984b9938f20b4f0ede0db6d667a2d6e54526eb0c12fa64c3e99ad14d')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
 }
