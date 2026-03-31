@@ -8,7 +8,7 @@ url="https://github.com/NousResearch/hermes-agent"
 license=('MIT')
 groups=()
 depends=('python' 'ripgrep' 'ffmpeg')
-makedepends=('git' 'uv' 'nodejs' 'npm')optdepends=(
+makedepends=('git' 'nodejs')
     'nodejs: Browser automation and WhatsApp bridge'
     'python-telegram-bot: Telegram gateway support'
     'python-discord-py: Discord gateway support'
