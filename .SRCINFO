@@ -1,7 +1,7 @@
 pkgbase = upscayl
 	pkgdesc = Free and Open Source AI Image Upscaler.(Use system-wide electron)
 	pkgver = 2.15.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://upscayl.org/
 	arch = x86_64
 	license = AGPL-3.0-only
