@@ -1,7 +1,7 @@
 # Maintainer: Lucas Mior <lucas.bmior@gmail.com>
 
 pkgname=cecup-git
-pkgver=r2550.ef24d94
+pkgver=r2584.51fb932
 pkgrel=1
 pkgdesc="A backup tool inspired by FreeFileSync and rsync"
 arch=('x86_64')
