@@ -1,0 +1,18 @@
+pkgbase = python-plotille
+	pkgdesc = Plot in the terminal using braille dots.
+	pkgver = 6.0.5
+	pkgrel = 1
+	url = https://github.com/tammoippen/plotille
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-numpy
+	depends = python-typing_extensions
+	source = https://files.pythonhosted.org/packages/source/p/plotille/plotille-6.0.5.tar.gz
+	sha256sums = 26d2cef5d4feb8632c9710442ad49fc57f9d5b20881c21ac7954c76208b5600b
+
+pkgname = python-plotille
