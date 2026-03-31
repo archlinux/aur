@@ -1,7 +1,7 @@
 pkgbase = sway-desktop-env-hook
 	pkgdesc = Adds XDG_CURRENT_DESKTOP, XDG_SESSION_DESKTOP and XDG_SESSION_TYPE definitions to sway.desktop!
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL-3.0
 	depends = sed

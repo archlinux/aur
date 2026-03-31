@@ -3,7 +3,7 @@
 
 pkgname="sway-desktop-env-hook"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds XDG_CURRENT_DESKTOP, XDG_SESSION_DESKTOP and XDG_SESSION_TYPE definitions to sway.desktop!"
 arch=('any')
 url=""
@@ -19,7 +19,7 @@ source=(
 package() {
     cd              "${srcdir}"
 
-    install -Dm755  'sway-desktop-env.hook'  "${pkgdir}/usr/share/libalpm/hooks/sway-desktop-env.hook"
+    install -Dm644  'sway-desktop-env.hook'  "${pkgdir}/usr/share/libalpm/hooks/sway-desktop-env.hook"
 }
 sha256sums=('a5aab6545517d80249b10ce104d9d64df7e3b348994aec5d7789fe1b13b3fab6')
 sha384sums=('1f7d32dd841fc990fd9f98c9f8fc69d2d7dce2495b9b2ae058b18a9dc6f34dab2f78f4993fa8159ca97a90b0d7858d39')
