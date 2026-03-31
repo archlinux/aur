@@ -1,6 +1,6 @@
 pkgbase = atha
 	pkgdesc = Lightweight package manager wrapper for Arch Linux
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/Bangkah/Atha
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = atha
 	depends = sudo
 	depends = git
 	depends = base-devel
-	source = https://github.com/Bangkah/Atha/archive/refs/tags/v2.0.1.tar.gz
+	source = https://github.com/Bangkah/Atha/archive/refs/tags/v2.0.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = atha
