@@ -1,7 +1,7 @@
 # Maintainer: Lukas Grumlik - Rakosn1cek
 pkgname=xc-manager-git
 _pkgname=xc-manager
-pkgver=v0.7.0.r4.g957c58e
+pkgver=v0.7.0.r6.gd0be61e
 pkgrel=1
 pkgdesc="Command vaulting and a Zsh logic engine for command templating and $BUFFER injection"
 arch=('any')
