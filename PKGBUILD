@@ -18,6 +18,7 @@ depends=(
 makedepends=(
 	7zip
 	asar
+	python
 )
 provides=('notion-calendar-electron')
 conflicts=('notion-calendar-electron')
@@ -46,20 +47,52 @@ prepare() {
 	# extracting resources from app.asar
 	asar e "$srcdir/resources/app.asar" "$srcdir/asar_patched"
 
-	# disabling auto updates (only works on win32/macOS in original)
-	sed -i 's#win32"===process.platform&&!c.default().wasBuiltByUs&&s.existsSync(d.join(a.app.getAppPath(),"../Update.exe"))#!1#g' "$srcdir/asar_patched/build/main/main.js"
-	# fix single instance lock for linux (only enforced on win32 in original)
-	sed -i 's#win32"!==process.platform||kl||ft().app.quit()#kl||ft().app.quit()#g' "$srcdir/asar_patched/build/main/main.js"
-	# fix second-instance event to handle linux
-	sed -i 's#win32"===process.platform&&(fl(),jl(t))#fl(),jl(t)#g' "$srcdir/asar_patched/build/main/main.js"
-	# fix argv protocol handler for linux
-	sed -i 's#win32"===process.platform&&jl(process.argv)#jl(process.argv)#g' "$srcdir/asar_patched/build/main/main.js"
-	# fix protocol registration for linux
-	sed -i 's#tl&&"win32"===process.platform#tl#g' "$srcdir/asar_patched/build/main/main.js"
-	# fix app user model id (not needed on linux)
-	sed -i 's#win32"===process.platform&&ft().app.setAppUserModelId("com.cron.electron");#true#g' "$srcdir/asar_patched/build/main/main.js"
-	# fix tray popup menu for linux (use win32 pattern instead of darwin)
-	sed -i 's#Xl)if("darwin"===process.platform)Xl.popUpContextMenu();else{#Xl)if(false)Xl.popUpContextMenu();else{#g' "$srcdir/asar_patched/build/main/main.js"
+	# Use Python for patching to avoid sed issues with minified JS
+	python3 << 'PYEOF'
+import sys
+import os
+
+main_js = os.environ.get('SRC_DIR', '') + '/asar_patched/build/main/main.js'
+if not os.path.exists(main_js):
+    # Try to find it
+    for root, dirs, files in os.walk(os.environ.get('srcdir', '.')):
+        for f in files:
+            if f == 'main.js':
+                main_js = os.path.join(root, f)
+                break
+
+with open(main_js, 'r', encoding='utf-8') as f:
+    content = f.read()
+
+patches = [
+    # Patch 1: disable auto updates (Windows-only Squirrel)
+    ('if("win32"===process.platform&&!c.default().wasBuiltByUs&&s.existsSync(d.join(a.app.getAppPath(),"../Update.exe")))', 'if(!1)'),
+    # Patch 2: fix single instance lock for linux
+    ('"win32"!==process.platform||kl||ft().app.quit()', 'kl||ft().app.quit()'),
+    # Patch 3: fix second-instance event to handle linux
+    ('"win32"===process.platform&&(fl(),jl(t))', 'fl(),jl(t)'),
+    # Patch 4: fix argv protocol handler for linux
+    ('"win32"===process.platform&&jl(process.argv)', 'jl(process.argv)'),
+    # Patch 5: fix protocol registration for linux
+    (',tl&&"win32"===process.platform', ',tl'),
+    # Patch 6: fix app user model id (not needed on linux)
+    ('"win32"===process.platform&&ft().app.setAppUserModelId("com.cron.electron");', 'true;'),
+    # Patch 7: fix tray popup menu for linux (use win32 pattern instead of darwin)
+    ('Xl)if("darwin"===process.platform)Xl.popUpContextMenu();else{', 'Xl)if(false)Xl.popUpContextMenu();else{'),
+]
+
+for old, new in patches:
+    if old in content:
+        content = content.replace(old, new)
+        print(f'Applied: {old[:60]}...')
+    else:
+        print(f'WARNING: Not found: {old[:60]}...', file=sys.stderr)
+
+with open(main_js, 'w', encoding='utf-8') as f:
+    f.write(content)
+
+print('All patches applied successfully')
+PYEOF
 
 	# repacking asar with all the patches
 	asar p "$srcdir/asar_patched" "$srcdir/app.asar" --unpack *.node
