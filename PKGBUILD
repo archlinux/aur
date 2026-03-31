@@ -6,21 +6,27 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/project-chip/connectedhomeip"
 license=('Apache')
 depends=('dbus' 'openssl' 'avahi' 'zlib')
-makedepends=('git' glib2-devel 'gcc' 'make' 'pkgconf' 'python' 'python-virtualenv' 'ninja' 'gn')
-source=("https://github.com/project-chip/connectedhomeip/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a381f8eedc0411d3699890a3c961b7e3bbe6f751c26224ab80d84059c05d9196')
+makedepends=('git' 'glib2-devel' 'gcc' 'make' 'pkgconf' 'python' 'python-virtualenv' 'ninja' 'gn')
+source=()
+sha256sums=()
+
+prepare() {
+  cd "$srcdir"
+  rm -rf connectedhomeip
+  git clone \
+    --branch "v${pkgver}" \
+    --depth=1 \
+    https://github.com/project-chip/connectedhomeip.git \
+    connectedhomeip
+}
 
 build() {
   cd "$srcdir/connectedhomeip"
-
-  # fetch needed submodules
   ./scripts/checkout_submodules.py --shallow --platform linux
-
-  # prepare env
   source scripts/bootstrap.sh
 
-  # build only chip-tool
   mkdir -p out/host
+  export MAKEFLAGS="${MAKEFLAGS:--j2}"
   ./scripts/examples/gn_build_example.sh examples/chip-tool out/host
 }
 
