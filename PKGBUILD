@@ -10,7 +10,6 @@ arch=('x86_64')
 url='https://github.com/mbevc1/tdns'
 license=('MPL-2.0')
 makedepends=('go' 'upx')
-provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${url}#tag=v${pkgver}")
 sha256sums=('420eb7c8a7c10b04d45bb0ce7f57c2eb259b6b14641309a70d00edb98ff9da73')
