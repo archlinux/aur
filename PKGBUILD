@@ -1,6 +1,6 @@
 # Maintainer: Bram <bram+sway@pescheck.io>
 pkgname=sway-displays
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Display manager for Sway window manager"
 arch=('any')
@@ -8,8 +8,13 @@ url="https://github.com/pescheckit/sway-displays"
 license=('MIT')
 depends=('bash' 'jq' 'bc' 'sway')
 optdepends=('sway-mirror: for display mirroring support')
-source=("sway-displays-1.2.3.tar.gz::https://github.com/pescheckit/sway-displays/archive/refs/tags/1.2.3.tar.gz")
+source=("sway-displays-1.2.4.tar.gz::https://github.com/pescheckit/sway-displays/archive/refs/tags/1.2.4.tar.gz")
 sha256sums=('SKIP')
+
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    sed -i "s/^VERSION=\".*\"/VERSION=\"$pkgver\"/" sway-displays
+}
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
