@@ -2,7 +2,7 @@
 # Contributor: spider-mario <spidermario@free.fr>
 pkgname=moarvm
 _pkgname=MoarVM
-pkgver=2026.01
+pkgver=2026.03
 pkgrel=1
 pkgdesc="A VM with adaptive optimization and JIT compilation, built for Rakudo"
 arch=(i686 x86_64 aarch64)
@@ -12,7 +12,7 @@ depends=('zstd')
 makedepends=('perl>=5.8')
 options=('!makeflags')
 source=("http://moarvm.com/releases/$_pkgname-$pkgver.tar.gz")
-b2sums=('e8e900da0d7ba22dec518515accbb1b36e314cd6d30391e489a5230e83640ba82373ba857ff45258976638ef4efa86578bded14089771ec10c7ec51a2320e6ff')
+b2sums=('11f64ab422a8e04a00a1637a29ab2204393b116d5b574e270873a57520f7ea0c926bbf8a912e2c98fc744e523dd2265b4367f199d9606390b214087a4fb52c31')
 
 build() {
 	if echo $LDFLAGS | grep -sq nodlopen
