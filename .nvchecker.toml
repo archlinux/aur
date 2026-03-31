@@ -1,0 +1,3 @@
+[perl-task-kensho-dates]
+source = "cpan"
+cpan = "Task-Kensho-Dates"
