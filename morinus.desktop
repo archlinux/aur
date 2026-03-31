@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Morinus
+GenericName=Astrology Software
+Comment=Classical astrology software
+Exec=morinus
+Icon=morinus
+Terminal=false
+Categories=Education;
+Keywords=astrology;horoscope;chart;

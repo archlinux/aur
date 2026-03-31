@@ -1,0 +1,18 @@
+pkgbase = morinus-astrology-git
+	pkgdesc = An easy to use, highly accurate astrology program
+	pkgver = 8.2.0
+	pkgrel = 1
+	url = https://github.com/Uthopik/morinus-astrology
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-wxpython
+	depends = python-pillow
+	depends = pyswisseph
+	source = git+https://github.com/Uthopik/morinus-astrology.git
+	source = morinus.desktop
+	sha256sums = SKIP
+	sha256sums = 525efa8b767513dc4cfb04efc9f28ae61e89e21c46b11b8daaf6b76fa3ed6f5d
+
+pkgname = morinus-astrology-git
