@@ -2,8 +2,8 @@
 # Contributor: George Woodall <georgewoodall82@gmail.com>
 # Contributor: goll <adrian.goll+aur[at]gmail>
 pkgname=bambustudio-nvidia-bin
-pkgver=02.05.00.66
-pkgrel=2
+pkgver=02.05.02.51
+pkgrel=1
 pkgdesc="PC Software for BambuLab's 3D printers with a fix for nVidia cards"
 arch=("x86_64")
 url="https://github.com/bambulab/BambuStudio"
@@ -11,12 +11,12 @@ license=('AGPL3')
 conflicts=('bambustudio' 'bambustudio-git' 'bambustudio-bin')
 depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'gst-libav' 'webkit2gtk-4.1')
 makedepends=('fuse2')
-source=("bambustudio-${pkgver}.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v02.05.00.67/Bambu_Studio_linux_fedora-v02.05.00.66.AppImage"
+source=("bambustudio-${pkgver}.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v02.05.02.51/BambuStudio_ubuntu-24.04_v02.05.02.51-20260327222803.AppImage"
 	"BambuStudio.desktop"
 	"bambu-studio"
     "mesa.tar.zst::https://archive.archlinux.org/packages/m/mesa/mesa-1%3A24.3.4-1-x86_64.pkg.tar.zst"
     "llvm.tar.zst::https://archive.archlinux.org/packages/l/llvm-libs/llvm-libs-19.1.7-2-x86_64.pkg.tar.zst")
-md5sums=('7014b4e39be1498898703039e808a465'
+md5sums=('1c065c16feaa45a9f50193bd082c5f8c'
          'c2729c29cbd01844507e1f0562762191'
          '7870efc1c2644441705f8a4316455c5a'
          'e2e9476b8e0924cfc752cce1501b3ea3'
