@@ -1,7 +1,7 @@
 pkgbase = python-pysr
 	pkgdesc = Simple and efficient symbolic regression
-	pkgver = 1.5.9
-	pkgrel = 3
+	pkgver = 1.5.10
+	pkgrel = 1
 	url = https://github.com/MilesCranmer/PySR
 	arch = x86_64
 	license = Apache-2.0
@@ -16,7 +16,7 @@ pkgbase = python-pysr
 	depends = python-juliacall
 	depends = python-click
 	depends = python-typing_extensions
-	source = PySR-1.5.9.tar.gz::https://github.com/MilesCranmer/PySR/archive/v1.5.9.tar.gz
-	sha512sums = 18792454fd5201d6afd5fd19050ebd86f655661bf5716ffa50795ee136b436bc76cfb89fc9b757bcddbce5d4616887e4d859213642dacfcb05ba004493635b0c
+	source = PySR-1.5.10.tar.gz::https://github.com/MilesCranmer/PySR/archive/v1.5.10.tar.gz
+	sha512sums = 4c46b733f4ca1fab1ca58de568814b8a9febfa62f414a21f7c51f621e084501fc5b6809f786e477f69b8ee54297025e680f3e6d6c2df3d395199d27d5d4adfd1
 
 pkgname = python-pysr
