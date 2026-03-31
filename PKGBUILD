@@ -1,7 +1,7 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 pkgname=binsec
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='Open-source toolset to help improve software security at the binary level'
 arch=('x86_64')
@@ -23,7 +23,6 @@ depends=(
     'gmp'
     'ocaml-curses'
     'ocaml-grain_dypgen'
-    'ocaml-ocamlformat'
     'ocaml-ocamlgraph>=1.8.5'
     'ocaml-toml>=6'
     'ocaml-unionfind'
@@ -37,17 +36,8 @@ optdepends=(
     'cvc4: CVC4 SMT solver'
     'yices: Yices 2 SMT Solver'
 )
-source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/binsec/binsec/archive/refs/tags/${pkgver}.tar.gz"
-    "0000-fix-ocaml54-build.patch::https://github.com/binsec/binsec/commit/04eb163540abd8cf48da279e3945d5d7f22151a4.patch"
-)
-b2sums=('c86fe5b772662ce2ed6b891f11b907367f54bb8a7e6fa65ab37e7e30c7ad6831b02b130dd7180c74abd727435daf37f9519cf2bad7f1cb3c03d8f4c4f06b82b0'
-        '9bf6433880473ca9a74914f8720a4b2b14e8a7da563a2a3cd4f225901419ae3ecc49f33647eee7b8eb6694ee920c45e9c627c5917cbae4f7eec10c431329d9e9')
-
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    patch --forward --strip=1 --input=../0000-fix-ocaml54-build.patch
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/binsec/binsec/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('1afec6e5061c5381abcc6360cc5b5c0921a12429be7bbf240d6d2fd642920d71b28898a64f837cfdd1b52b50fa14a4d9024609578b371b8b64f6b87f14eec989')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
