@@ -1,7 +1,7 @@
 # Maintainer: Jaeho Cho <jaehho@github>
 pkgname=hypr-desktop-git
 _pkgname=hypr-desktop
-pkgver=r3.ee531a0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Virtual desktop manager and TUI for Hyprland'
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
