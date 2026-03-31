@@ -1,7 +1,7 @@
 pkgbase = pulsesync-bin
 	pkgdesc = Приложение для модификации Yandex Music
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com
 	arch = x86_64
 	license = GPL

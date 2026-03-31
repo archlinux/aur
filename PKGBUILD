@@ -1,7 +1,7 @@
 # Maintainer: ethermawe <ethermawe@yandex.com>
 pkgname=pulsesync-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Приложение для модификации Yandex Music"
 arch=('x86_64')
 url="https://github.com"
@@ -15,4 +15,6 @@ sha256sums=('0b717d8c43107467fb854628a1b12ec6bd16d68af6ce3214591c9449a83c7c94')
 package() {
     cp -rp "${srcdir}/usr" "${pkgdir}/"
     cp -rp "${srcdir}/opt" "${pkgdir}/"
+
+    chmod +x "${pkgdir}/opt/PulseSync/pulsesync"
 }
