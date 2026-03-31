@@ -1,16 +1,16 @@
 pkgbase = cosmic-ext-applet-per-app-layout-bin
 	pkgdesc = COSMIC panel applet that remembers keyboard layout for each application
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/utrumo/cosmic-ext-applet-per-app-layout
 	install = cosmic-ext-applet-per-app-layout-bin.install
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = libxkbcommon
+	options = !debug
 	provides = cosmic-ext-applet-per-app-layout
 	conflicts = cosmic-ext-applet-per-app-layout
-	options = !debug
-	source = https://github.com/utrumo/cosmic-ext-applet-per-app-layout/releases/download/v0.2.0/cosmic-ext-applet-per-app-layout-v0.2.0-x86_64-linux.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/utrumo/cosmic-ext-applet-per-app-layout/releases/download/v0.2.1/cosmic-ext-applet-per-app-layout-v0.2.1-x86_64-linux.tar.gz
+	sha256sums = d2c2125635c8e3408c9e2314b1474b064fd6e1dbb6bbc6ae258f3860ae6ba920
 
 pkgname = cosmic-ext-applet-per-app-layout-bin

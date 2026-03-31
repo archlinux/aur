@@ -1,5 +1,5 @@
 pkgname=cosmic-ext-applet-per-app-layout-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="COSMIC panel applet that remembers keyboard layout for each application"
 arch=('x86_64')
@@ -13,7 +13,7 @@ install="${pkgname}.install"
 
 _archive="${pkgname%-bin}-v${pkgver}-x86_64-linux.tar.gz"
 source=("${url}/releases/download/v${pkgver}/${_archive}")
-sha256sums=('SKIP')
+sha256sums=('d2c2125635c8e3408c9e2314b1474b064fd6e1dbb6bbc6ae258f3860ae6ba920')
 
 package() {
     install -Dm0755 "${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
