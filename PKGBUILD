@@ -8,7 +8,7 @@ _pkgname=code
 pkgname=${_pkgauthor//-/}-${_pkgname}-bin
 pkgdesc="Community-driven fork of the Codex CLI for local terminal coding assistance"
 
-pkgver=0.6.88
+pkgver=0.6.89
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -29,8 +29,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.zst::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.zst::${url}/releases/download/${_pkgvername}/code-${_barch[1]}-unknown-linux-musl.zst")
 sha256sums=('d17f227e4df5da1600391338865ce0f3055211760a36688f816941d58232d8dc'
             '5684c4bec45c7398d1d88424cee3f71087668e4663f8d1d985cb85606569d8d4')
-sha256sums_x86_64=('0c42f4b4e5471019b5399c4faffee4d481187a6e2392c5ca22333d858e9ce5d9')
-sha256sums_aarch64=('ff6ddc04448fdd86672e6cd4ce87bc81e466f2a10144969b6ea83fee5bab1259')
+sha256sums_x86_64=('e295eb3405113d823b02a85b5ada233d8ba2799c8c11a19c5b49ed121e1e95ad')
+sha256sums_aarch64=('d6c1eadfb0f99efa16820055c7fc269a097424f88fa23300d497057cf05aaf06')
 
 
 package() {
