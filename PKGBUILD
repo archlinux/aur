@@ -1,6 +1,6 @@
 # Maintainer: Alex Macocian <amacocian@yahoo.com>
 pkgname=hyprchat
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Lightweight AI chat panel for Hyprland built with QuickShell"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
     'github-cli: for GitHub Copilot device flow login'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AlexMacocian/hyprchat/archive/v${pkgver}.tar.gz")
-sha256sums=('958f36b569911e997c1f07fbc35f07aa6f834b0664d4f7b4a063737708b3afec')
+sha256sums=('1c7f3d8de37be68db4bbf8eb92567b411ddc493565c7c4bafb16b62c9f26cd95')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/src/hyprchat-backend"
