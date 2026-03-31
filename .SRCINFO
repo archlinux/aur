@@ -9,10 +9,12 @@ pkgbase = python-materialyoucolor
 	makedepends = python-setuptools
 	makedepends = python-installer
 	makedepends = python-wheel
+        makedepents = pybind11
 	depends = glibc
 	depends = gcc-libs
 	depends = python
 	depends = python-pillow
+        depends = pybind11
 	source = python-materialyoucolor-3.0.2.tar.gz::https://github.com/T-Dynamos/materialyoucolor-python/archive/v3.0.2.tar.gz
 	sha256sums = aa013f0faea26b87b65f35d7b67f7850c7ed4b926cf1628617d088fe9ddaa9ec
 
