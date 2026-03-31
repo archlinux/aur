@@ -2,7 +2,7 @@
 
 pkgname='asc'
 pkgdesc='Make a single shell script from images.'
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 
 arch=('any')
