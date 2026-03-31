@@ -1,0 +1,26 @@
+pkgbase = esphome-desktop-bin
+	pkgdesc = Desktop application for ESPHome (pre-built binary)
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/esphome/esphome-desktop
+	arch = x86_64
+	license = Apache-2.0
+	depends = alsa-lib
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libpulse
+	depends = libsoup3
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	conflicts = esphome-desktop
+	options = !strip
+	source = esphome-desktop-bin-0.5.1.deb::https://github.com/esphome/esphome-desktop/releases/download/v0.5.1/ESPHome.Builder_0.5.1_amd64.deb
+	sha256sums = f887c728f8d1124aa8bfef82032afa8d41394951e11c9a0001b31835957bfdea
+
+pkgname = esphome-desktop-bin
