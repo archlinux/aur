@@ -1,5 +1,5 @@
 pkgname=atha
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Lightweight package manager wrapper for Arch Linux"
 arch=('any')
@@ -10,12 +10,12 @@ replaces=('atha')
 
 depends=('bash' 'pacman' 'sudo' 'git' 'base-devel')
 
-source=("https://github.com/Bangkah/Atha/archive/refs/heads/main.tar.gz")
+source=("https://github.com/Bangkah/Atha/archive/refs/tags/v${pkgver}.tar.gz")
 
 sha256sums=('SKIP')
 
 package() {
-    cd "$srcdir/Atha-main"
+    cd "$srcdir/Atha-${pkgver}"
 
     install -Dm755 atha "$pkgdir/usr/bin/atha"
 
