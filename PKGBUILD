@@ -1,7 +1,7 @@
 # Maintainer: Jaeho Cho <jaehho@github>
 pkgname=hypr-wallpaper-git
 _pkgname=hypr-wallpaper
-pkgver=r3.f51c0e7
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='SQLite-backed, quality-gated, time-aware wallpaper manager and TUI for Hyprland'
 arch=('any')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
