@@ -1,0 +1,3 @@
+[perl-specio-library-path-tiny]
+source = "cpan"
+cpan = "Specio-Library-Path-Tiny"

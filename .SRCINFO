@@ -1,0 +1,26 @@
+pkgbase = perl-specio-library-path-tiny
+	pkgdesc = Path::Tiny types and coercions for Specio
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/DROLSKY/Specio-Library-Path-Tiny-0.05
+	arch = any
+	license = Apache-2.0
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-file-pushd
+	checkdepends = perl-file-temp>=0.18
+	checkdepends = perl-pathtools
+	checkdepends = perl-specio
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-parent
+	depends = perl-path-tiny>=0.087
+	depends = perl-scalar-list-utils
+	depends = perl-specio
+	optdepends = perl-cpan-meta
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-Library-Path-Tiny-0.05.tar.gz
+	sha256sums = 60df0bb9bcdaeb2c66a078bf6df9954ea4f9433d6cb680889942e542c7c27a51
+
+pkgname = perl-specio-library-path-tiny
