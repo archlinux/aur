@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mudlet-bin
 _pkgname=Mudlet
-pkgver=4.19.1
+pkgver=4.20.1
 pkgrel=1
 pkgdesc="⚔️ A cross-platform, open source, and super fast MUD client with scripting in Lua.(Prebuilt version)"
 arch=('x86_64')
@@ -27,9 +27,6 @@ depends=(
     'qtkeychain-qt5'
     'lua51-lcf'
 )
-makedepends=(
-    'fuse2'
-)
 optdepends=(
     'ttf-bitstream-vera: default font'
     'ttf-ubuntu-font-family: default font'
@@ -42,7 +39,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar::${url}/wp-content/files/${_pkgname}-${pkgver}-linux-x64.AppImage.tar"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f2946b2b03c9d4ad3b0943313c211160909f8723216d33927efadb89aa18463f'
+sha256sums=('7c07ed62def0bb545b6508e3a62594e21f017005bcb5a410c98cc28aabcb3948'
             'e002b010a25f31d5659799cbcbcecfc25a23e8b16dedf184726d3a7aa812bd79')
 prepare() {
     sed -i -e "
