@@ -2,7 +2,7 @@
 
 pkgname=zerochan-downloader-bin
 _pkgname=ZerochanDownloader
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=2  # Bumped the release number since we are fixing the package
 pkgdesc="A clean, native desktop client for browsing and downloading from Zerochan"
 arch=('x86_64')
