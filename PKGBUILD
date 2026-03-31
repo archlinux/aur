@@ -1,8 +1,8 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: Voxan <admin at hessfr dot fr>
 
 pkgname=pinapp
-_pkgname=PinApp
-pkgver=1.2.0
+_pkgname=Pins
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="Create your own application shortcuts"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('libadwaita' 'python-gobject')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=($url/archive/v$pkgver.tar.gz)
-b2sums=('28cc7f058a34e6d8d67f074892527eb2594cb15e09ff8d998d57042f2dbd9bc35113ba11d5cc537e021cc03e688dda5216d25f947896ce9e3589a010423c92ad')
+b2sums=('8a0cd6f2a8edbe194e3163209718e95c655aa44d735a2e2ea71aae62083f4389fad3d4a14d57b7368651bf63b6d9341e2a365e2d6ac6b25a3a33aed27ae50c8d')
 
 build() {
   arch-meson "${_pkgname%-git}-$pkgver" build
