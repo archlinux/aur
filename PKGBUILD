@@ -44,6 +44,5 @@ depends=(
 )
 
 package() {
-    # 这是一个元包，不需要安装任何实体文件
     echo "Installing Shorin DMS Niri Meta Dependencies..."
 }
