@@ -1,0 +1,3 @@
+[perl-task-kensho-email]
+source = "cpan"
+cpan = "Task-Kensho-Email"
