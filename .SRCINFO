@@ -1,0 +1,18 @@
+pkgbase = claude-code-bridge-git
+	pkgdesc = Claude Code Bridge (CCB): unified multi-provider terminal bridge for Claude/Codex/Gemini and more
+	pkgver = 5.2.9.r1.g8e4d63b
+	pkgrel = 1
+	url = https://github.com/bfly123/claude_code_bridge
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = git
+	depends = python>=3.10
+	optdepends = python-watchdog: file system watch support (fallback to polling if absent)
+	optdepends = tmux: terminal backend (recommended on Linux/macOS/WSL)
+	optdepends = wezterm: alternative terminal backend
+	provides = claude-code-bridge
+	conflicts = claude-code-bridge
+	source = git+https://github.com/bfly123/claude_code_bridge.git
+	sha256sums = SKIP
+
+pkgname = claude-code-bridge-git
