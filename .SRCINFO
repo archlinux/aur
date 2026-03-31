@@ -1,0 +1,26 @@
+pkgbase = ffmpeg-quality-metrics
+	pkgdesc = Calculate quality metrics with FFmpeg (SSIM, PSNR, VMAF, VIF)
+	pkgver = 3.11.3
+	pkgrel = 1
+	url = https://github.com/slhck/ffmpeg-quality-metrics
+	arch = any
+	license = MIT
+	checkdepends = git
+	checkdepends = python-pytest
+	checkdepends = uv
+	makedepends = git
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = uv
+	depends = ffmpeg
+	depends = python-colorlog
+	depends = python-mutagen
+	depends = python-click
+	depends = python-dash
+	depends = python-tqdm
+	depends = python-plotly
+	depends = python-ffmpeg-progress-yield
+	source = ffmpeg-quality-metrics-3.11.3.tar.gz::https://github.com/slhck/ffmpeg-quality-metrics/archive/v3.11.3.tar.gz
+	sha512sums = 7a08bcce782c86799978220a73f9a0462f2f57558e81798a08c64593c8a97c8ea7b0efcfbfa3288b3adcbd8120825aad602f740967a3af841f8818a1b7b9036f
+
+pkgname = ffmpeg-quality-metrics
