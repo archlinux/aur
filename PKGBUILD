@@ -11,8 +11,8 @@ _CUDA_ARCH_LIST_CMAKE="75;80;86;87;89;90;100;103;110;120;121;121-virtual"
 _pkgname=vision
 pkgbase=torchvision
 pkgname=(torchvision torchvision-cuda python-torchvision python-torchvision-cuda)
-pkgver=0.25.0
-pkgrel=3
+pkgver=0.26.0
+pkgrel=1
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=(x86_64)
 url='https://github.com/pytorch/vision'
@@ -37,18 +37,18 @@ makedepends=(
   python-wheel
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive/v${pkgver}.tar.gz"
-        "torchvision-0_17_1-fix-build.patch"
+        "fix-build.patch"
         "0001-Fix-setup.py-breaks-with-setuptools-82-9386.patch"
 )
-b2sums=('030dfea9d216ddc82f40d1efff79e132dd4da117214c8d638cb26a7ed26e85c6fba85806fe8db486d83d5091544b325d30387090ac73d6b467a6be5b474a05d6'
-        'b2036b9f4102c50cbcf6813e4a5c46d2899c11ab8d20236eadb5ac1f88d927ee0fb809c880ca3ad9194efa8df665a47d05085b5352b804dabe8925836ecfd0f7'
+b2sums=('27c38e5876ec8ef1b80abbb9b650761cb91924b7cbdd4007f5a801851f7030c35d594351eefa17a3757b846781601d7135986ed394af25c6cdf7a9f81f8b5809'
+        '30d09ff1511178e25c31c6ecee789c141179bb3cc34f37299d74891973a80a357a9f51a93cfa36834e29a0ba2a366b0974ee5cd88cb5f6a92f7553cd2cd80e98'
         '2532345be1043f7406bc0ec63ff758d11c1ab2f70b51392dfd26a23d15765f7993f8d140721951ec1ccd9a9e963e7bfb522f4df393908929adfe1104c6293dc8')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # https://github.com/pytorch/vision/issues/8307
-  patch -N -i "${srcdir}"/torchvision-0_17_1-fix-build.patch
+  patch -p1 -i "${srcdir}"/fix-build.patch
   # Remove pkg_resources use
   patch -Np1 -i "${srcdir}"/0001-Fix-setup.py-breaks-with-setuptools-82-9386.patch
 
@@ -116,7 +116,6 @@ package_python-torchvision() {
     python-pytorch
   )
   optdepends+=(
-    'python-av: for video decoding'
     'python-pycocotools: support for MS-COCO dataset'
     'python-scipy: for specific datasets'
   )
@@ -135,7 +134,6 @@ package_python-torchvision-cuda() {
     python-pytorch-cuda
   )
   optdepends+=(
-    'python-av: for video decoding'
     'python-pycocotools: support for MS-COCO dataset'
     'python-scipy: for specific datasets'
   )
