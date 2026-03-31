@@ -2,13 +2,13 @@
 pkgname=hermes-agent-git
 pkgver=r0.0.0
 pkgrel=1
-pkgdesc="An open-source, locally-run AI agent that can use tools, browse the web, and automate tasks."
+pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
 license=('MIT')
 groups=()
-depends=('python' 'nodejs' 'git' 'uv' 'ripgrep' 'ffmpeg')
-makedepends=('git' 'nodejs' 'npm' 'uv')
+depends=('python' 'nodejs' 'git' 'ripgrep' 'ffmpeg')
+makedepends=('git' 'uv')
 checkdepends=()
 optdepends=(
     'python-telegram-bot: Telegram gateway support'
@@ -26,13 +26,9 @@ optdepends=(
 )
 provides=('hermes-agent')
 conflicts=('hermes-agent')
-replaces=()
-backup=()
 options=('!strip')
 install=hermes-agent-git.install
-changelog=
 source=("git+https://github.com/NousResearch/hermes-agent.git#branch=main")
-noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
