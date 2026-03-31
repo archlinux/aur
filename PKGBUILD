@@ -61,7 +61,8 @@ package() {
     install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    find resources/icons/hicolor -type f -name "*.svg" -exec install -Dm644 {} "${pkgdir}/usr/share/wayle/icons/{}" \;
+    install -dm755 "${pkgdir}/usr/share/wayle/icons"
+    cp -r resources/icons/hicolor "${pkgdir}/usr/share/wayle/icons/"
 
     target/release/${_pkgname} completions bash > wayle.bash
     target/release/${_pkgname} completions zsh > _wayle
