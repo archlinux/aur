@@ -1,7 +1,7 @@
 pkgbase = solana-bin
 	pkgdesc = A fast, secure, and censorship resistant blockchain.
 	pkgver = 3.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://solana.com
 	arch = x86_64
 	license = Apache-2.0
