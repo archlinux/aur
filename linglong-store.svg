@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>LOGO-svg2</title>
+  <g id="LOGO-svg2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="编组-3">
+      <rect id="矩形" fill="#025BFF" x="0" y="0" width="128" height="128" rx="32"></rect>
+      <g id="编组" transform="translate(24.000000, 17.000000)">
+        <polygon id="路径-10" fill="#8BAFF5" points="80 25.0811618 60 34 60 58 40 67.2940338 40 92 80 74"></polygon>
+        <polygon id="路径-11" fill="#FFFFFF" points="60 58 40 49 40 25.0811618 60 34"></polygon>
+        <polygon id="路径-12" fill="#467FEF" points="80 25.0811618 60 15 40 25.0811618 60 34"></polygon>
+        <polygon id="路径-13" fill="#FFFFFF" points="40 92 20 82 20 58 40 67.2940338"></polygon>
+        <polygon id="路径-14" fill="#467FEF" points="20 58 40 49 60 58 40 67.2940338"></polygon>
+        <polygon id="矩形" fill="#FFFFFF" points="0 19 20 28 20 77 0 67"></polygon>
+        <polygon id="路径-8" fill="#467FEF" points="20 28 60 9 40 0 0 19"></polygon>
+        <polygon id="路径-9" fill="#8BAFF5" points="20 28 20 77 40 67.2940338 40 43 60 34 60 9"></polygon>
+      </g>
+    </g>
+  </g>
+</svg>
