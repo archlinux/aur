@@ -9,6 +9,8 @@ path = [
     ".nvchecker.toml",
     "disable-self-upgrades.patch",
     "disable-telemetry.patch",
+    "remove-dependency-constraints.patch",
+    "starlette-1-port.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
