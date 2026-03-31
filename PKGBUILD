@@ -1,17 +1,16 @@
 # Maintainer:
 # Contributor: bjin <bjin@ctrl-d.org>
 
-## options
-: ${_install_path:=opt}
-
 : ${CARGO_HOME:=$SRCDEST/cargo-home}
 : ${CARGO_TARGET_DIR=target}
 : ${RUSTUP_TOOLCHAIN=stable}
 export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
+: ${_install_path:=usr/lib}
+
 _pkgname="gyroflow"
 pkgname="$_pkgname-git"
-pkgver=1.6.3.r50.gdc3b589
+pkgver=1.6.3.r53.g7403b3c
 pkgrel=1
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
