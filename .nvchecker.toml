@@ -1,0 +1,3 @@
+[perl-moosex-types-stringlike]
+source = "cpan"
+cpan = "MooseX-Types-Stringlike"

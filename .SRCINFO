@@ -1,0 +1,23 @@
+pkgbase = perl-moosex-types-stringlike
+	pkgdesc = Moose type constraints for strings or string-like objects
+	pkgver = 0.003
+	pkgrel = 1
+	url = https://metacpan.org/release/DAGOLDEN/MooseX-Types-Stringlike-0.003
+	arch = any
+	license = Apache-2.0
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-moose
+	checkdepends = perl-pathtools
+	checkdepends = perl-scalar-list-utils
+	checkdepends = perl-test-simple
+	checkdepends = perl-version
+	makedepends = perl-extutils-makemaker>=6.17
+	depends = perl-moosex-types
+	depends = perl>=5.8.1
+	optdepends = perl-cpan-meta
+	optdepends = perl-cpan-meta-requirements
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/MooseX-Types-Stringlike-0.003.tar.gz
+	sha256sums = 2ee349ec5c529a6f347f42ff640e47b245564b93cca305df63c7821f5b55cf19
+
+pkgname = perl-moosex-types-stringlike
