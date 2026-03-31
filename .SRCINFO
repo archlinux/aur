@@ -1,0 +1,18 @@
+pkgbase = python-pyargument
+	pkgdesc = A lightweight Python command-line argument parser that provides basic support for flags and options
+	pkgver = 0.60
+	pkgrel = 1
+	url = https://github.com/ankushbhagats/pyargument
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	provides = pyargument
+	conflicts = python-python-pyargument
+	source = https://files.pythonhosted.org/packages/source/p/pyargument/pyargument-0.60.tar.gz
+	sha256sums = 9d58883d41c2e77619d20e6c788b8fe1a5e9868483c21b12af550d5ab050f9d8
+
+pkgname = python-pyargument
