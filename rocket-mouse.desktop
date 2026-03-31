@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Rocket Mouse
+Comment=Space-themed activity manager and mouse jiggler
+Exec=rocket-mouse
+Icon=rocket-mouse
+Terminal=false
+Categories=Utility;
+Keywords=activity;idle;mouse;jiggler;
+StartupNotify=true
