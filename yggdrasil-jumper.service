@@ -1,0 +1,15 @@
+[Unit]
+Description=Automatic peer-to-peer NAT traversal for Yggdrasil
+Documentation=https://github.com/one-d-wide/yggdrasil-jumper
+After=yggdrasil.service
+PartOf=yggdrasil.service
+
+[Service]
+ExecStart=/usr/bin/yggdrasil-jumper --reconnect
+Restart=on-failure
+RestartSec=5
+DynamicUser=true
+SupplementaryGroups=yggdrasil
+
+[Install]
+WantedBy=multi-user.target

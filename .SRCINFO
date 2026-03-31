@@ -1,0 +1,23 @@
+pkgbase = yggdrasil-jumper-bin
+	pkgdesc = Automatic peer-to-peer NAT traversal for Yggdrasil overlay network
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/one-d-wide/yggdrasil-jumper
+	install = yggdrasil-jumper-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = yggdrasil
+	optdepends = wireguard-tools: WireGuard bridge mode (no relay, kernel-level forwarding)
+	optdepends = conntrack-tools: required for WireGuard bridge mode
+	provides = yggdrasil-jumper
+	conflicts = yggdrasil-jumper
+	options = !debug
+	source = yggdrasil-jumper.service
+	sha256sums = 860389725f4fc50dadec595ccef95496837b6397fb3214af10f393c24aa6cbf9
+	source_x86_64 = yggdrasil-jumper-bin-0.4.2-x86_64::https://github.com/one-d-wide/yggdrasil-jumper/releases/download/v0.4.2/yggdrasil-jumper-linux-x86_64
+	sha256sums_x86_64 = bd5a6f30a3b1f2e9076fbb2343492ea373a793c7398fd823324eb1d9e12bc3c9
+	source_aarch64 = yggdrasil-jumper-bin-0.4.2-aarch64::https://github.com/one-d-wide/yggdrasil-jumper/releases/download/v0.4.2/yggdrasil-jumper-linux-aarch64
+	sha256sums_aarch64 = cde8b598d27ff1daad8c569b08829b1f4ffc800c6268df3cdb8076d70afcbe00
+
+pkgname = yggdrasil-jumper-bin

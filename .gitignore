@@ -1,0 +1,6 @@
+*.pkg.tar*
+*.log
+pkg/
+src/
+yggdrasil-jumper-bin-*-x86_64
+yggdrasil-jumper-bin-*-aarch64

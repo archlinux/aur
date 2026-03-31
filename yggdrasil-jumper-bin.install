@@ -1,0 +1,19 @@
+post_install() {
+    echo ":: Enable and start yggdrasil-jumper.service to run automatically"
+}
+
+post_upgrade() {
+    if systemctl is-active --quiet yggdrasil-jumper.service; then
+        systemctl daemon-reload
+        systemctl restart yggdrasil-jumper.service
+    fi
+}
+
+pre_remove() {
+    if systemctl is-active --quiet yggdrasil-jumper.service; then
+        systemctl stop yggdrasil-jumper.service
+    fi
+    if systemctl is-enabled --quiet yggdrasil-jumper.service 2>/dev/null; then
+        systemctl disable yggdrasil-jumper.service
+    fi
+}
