@@ -1,0 +1,15 @@
+pkgbase = python-hyprland-config
+	pkgdesc = Round-trip parser and editor for Hyprland configuration files
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = None
+	arch = any
+	license = custom:MIT License
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/d5/aa/f9e93927c6c7c77b3878e9180835322c800200e87ee0fd5979d47c815145/hyprland_config-0.3.0.tar.gz
+	sha256sums = 47bde208c6246db934b3812f74a1a13dadb3e6b52e27e3950f2fddeef0e098d8
+
+pkgname = python-hyprland-config
