@@ -9,7 +9,7 @@ license=('MIT')
 groups=()
 depends=('python' 'ripgrep' 'ffmpeg')
 makedepends=('git' 'nodejs')
-    'nodejs: Browser automation and WhatsApp bridge'
+optdepends=(
     'python-telegram-bot: Telegram gateway support'
     'python-discord-py: Discord gateway support'
     'python-croniter: Cron expression parsing'
