@@ -8,6 +8,7 @@ pkgbase = python-num2words
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python-docopt
 	source = https://github.com/savoirfairelinux/num2words/archive/2b4d0bbef8354aa6fbdee8ff4b7da95a35922a9a.tar.gz
 	sha256sums = 965f1320cb28fed5c12da95e55f75cbda46e9c95da858831cf2234a5339a6b02

@@ -10,7 +10,7 @@ arch=('any')
 url='https://github.com/savoirfairelinux/num2words'
 license=('LGPL')
 depends=('python-docopt')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://github.com/savoirfairelinux/num2words/archive/${_commit}.tar.gz")
 sha256sums=('965f1320cb28fed5c12da95e55f75cbda46e9c95da858831cf2234a5339a6b02')
 
