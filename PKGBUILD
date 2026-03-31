@@ -1,6 +1,6 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: Andersmmg <andersmmg at duck dot com>
 pkgname=leanify-git
-pkgver=0.4.3.r193.ge3cedec
+pkgver=0.4.3.r211.gd2ba167
 pkgrel=1
 epoch=
 pkgdesc="A lightweight lossless file minifier/optimizer."
@@ -39,4 +39,3 @@ package() {
   install -Dm644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
-
