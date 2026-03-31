@@ -5,7 +5,7 @@
 
 _pkgname=tailscale
 pkgname=derper-ipcert
-pkgver=1.94.2
+pkgver=1.96.4
 pkgrel=1
 pkgdesc="A tool that runs a custom Tailscale DERP server (IP certs version)"
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "derper.service"
         "openssl-cert-gen.sh"
         "openssl.cnf")
-sha256sums=('c45975beb4cb7bab8047cfba77ec8b170570d184f3c806258844f3e49c60d7aa'
+sha256sums=('57b70731af7ae0ed167519924905fd032ddd8559a65bc8a3329d9da495f0feb2'
             '8593d6c048f4174206cbac5d82810903eab8f0afef36c50be66a2c6018c9f988'
             'cda0c4e9b6e3be7ca4950ae43bd29588447eba7233e52ea067eb0215ee8eed18'
             '8473e7dde4617d2899f97e0f1716e2bfa780837486b3c8fe1f5a9f57c9c440d9'
