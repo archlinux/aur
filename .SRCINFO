@@ -18,7 +18,7 @@ pkgbase = wayle-bin
 	optdepends = matugen: Material You color extraction
 	optdepends = wallust: color extraction
 	optdepends = python-pywal: color extraction
-	provides = wayle
+	provides = wayle=0.1.0
 	conflicts = wayle
 	conflicts = wayle-git
 	source_x86_64 = wayle-0.1.0.tar.gz::https://github.com/wayle-rs/wayle/releases/download/v0.1.0/wayle-0.1.0-x86_64-linux.tar.gz

@@ -8,7 +8,7 @@ pkgdesc="A configurable desktop shell for Wayland compositors"
 arch=('x86_64')
 url="https://github.com/wayle-rs/wayle"
 license=('MIT')
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 depends=(
     'gtk4'
@@ -37,6 +37,5 @@ package() {
     install -Dm755 "${_staging}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${_staging}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    install -dm755 "${pkgdir}/usr/share/wayle/icons"
-    cp -r "${_staging}/icons/hicolor" "${pkgdir}/usr/share/wayle/icons/"
+    find "${_staging}/icons/hicolor" -type f -name "*.svg" -exec install -Dm644 {} "${pkgdir}/usr/share/wayle/icons/{}" \;
 }
