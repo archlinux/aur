@@ -10,7 +10,7 @@ depends=('alsa-lib' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxi' 'sys
 makedepends=('cmake')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('a9b14df7f723be31cd9e73c50d263683c2ac99f3309a3b18c214f6607422110f')
 
 build() {
   cd "$pkgname-$pkgver"
