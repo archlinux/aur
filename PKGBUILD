@@ -1,8 +1,8 @@
 # Maintainer: Parsiad Azimzadeh <parsiad.azimzadeh at gmail dot com>
 
 pkgname=openai-codex-desktop
-pkgver=26.305.950
-pkgrel=2
+pkgver=26.325.31654
+pkgrel=1
 pkgdesc="OpenAI Codex desktop app"
 arch=('x86_64')
 url="https://developers.openai.com/codex/app/"
