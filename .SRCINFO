@@ -1,7 +1,7 @@
 pkgbase = gopass-secret-service
 	pkgdesc = D-Bus Secret Service provider using GoPass as backend
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/nikicat/gopass-secret-service
 	arch = x86_64
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = gopass-secret-service
 	provides = org.freedesktop.secrets
 	conflicts = gnome-keyring
 	backup = etc/gopass-secret-service/config.yaml
-	source = gopass-secret-service-0.2.0.tar.gz::https://github.com/nikicat/gopass-secret-service/archive/v0.2.0.tar.gz
-	sha256sums = 99fe5da77ee5a999473fcd60e10e9d48e9fb616a03ba94d4f4e01d21b33e0b51
+	source = gopass-secret-service-0.3.0.tar.gz::https://github.com/nikicat/gopass-secret-service/archive/v0.3.0.tar.gz
+	sha256sums = 06f77154795508298bbfa18b9cb27d459f78fb6cc3ab92062e3dc28586e65201
 
 pkgname = gopass-secret-service

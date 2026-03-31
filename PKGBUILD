@@ -1,7 +1,7 @@
 # Maintainer: Nikolay Bryskin <nbryskin@gmail.com>
 pkgname=gopass-secret-service
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="D-Bus Secret Service provider using GoPass as backend"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nikicat/gopass-secret-service"
@@ -16,7 +16,7 @@ provides=('secret-service' 'org.freedesktop.secrets')
 conflicts=('gnome-keyring')
 backup=('etc/gopass-secret-service/config.yaml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nikicat/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('99fe5da77ee5a999473fcd60e10e9d48e9fb616a03ba94d4f4e01d21b33e0b51')
+sha256sums=('06f77154795508298bbfa18b9cb27d459f78fb6cc3ab92062e3dc28586e65201')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -25,14 +25,14 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -o ${pkgname} ./cmd/gopass-secret-service
+    go build -o gopass-secret ./cmd/gopass-secret
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
 
     # Install binary
-    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 gopass-secret "${pkgdir}/usr/bin/gopass-secret"
 
     # Install systemd user service
     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/user/${pkgname}.service" <<EOF
@@ -42,7 +42,7 @@ Documentation=https://github.com/nikicat/gopass-secret-service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/gopass-secret-service
+ExecStart=/usr/bin/gopass-secret service
 Restart=on-failure
 
 [Install]
@@ -53,7 +53,7 @@ EOF
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/dbus-1/services/org.freedesktop.secrets.service" <<EOF
 [D-BUS Service]
 Name=org.freedesktop.secrets
-Exec=/usr/bin/gopass-secret-service
+Exec=/usr/bin/gopass-secret service
 EOF
 
     # Install default config
