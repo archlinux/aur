@@ -1,0 +1,3 @@
+[perl-carton]
+source = "cpan"
+cpan = "Carton"
