@@ -1,0 +1,29 @@
+pkgbase = perl-email-mime-kit
+	pkgdesc = build messages from templates
+	pkgver = 3.000008
+	pkgrel = 1
+	url = https://metacpan.org/release/RJBS/Email-MIME-Kit-3.000008
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-lib
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-deep
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.78
+	depends = perl-email-messageid>=1.400
+	depends = perl-email-mime
+	depends = perl-encode
+	depends = perl-json>=2
+	depends = perl-module-runtime
+	depends = perl-moose
+	depends = perl-pathtools
+	depends = perl-string-rewriteprefix
+	depends = perl-yaml-libyaml
+	depends = perl>=5.20.0
+	optdepends = perl-cpan-meta
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Email-MIME-Kit-3.000008.tar.gz
+	sha256sums = 39373e092a52f0bd75c216006f48567a141aeb51cfce3e26321d0c55fb72718c
+
+pkgname = perl-email-mime-kit

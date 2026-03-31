@@ -1,0 +1,3 @@
+[perl-email-mime-kit]
+source = "cpan"
+cpan = "Email-MIME-Kit"
