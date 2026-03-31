@@ -1,4 +1,8 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: T.J. Townsend <blakkheim@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Evangelos Foutras <foutrelis@archlinux.org>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 
 _author=YVES
