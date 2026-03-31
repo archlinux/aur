@@ -1,7 +1,7 @@
 # Maintainer: The SP <ammarsyamil057@gmail.com>
 pkgname=anifetch-cli
 pkgver=1.0.2
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc="Animated terminal fetch with video and audio support"
 arch=('any')
 url="https://github.com/Notenlish/anifetch"
