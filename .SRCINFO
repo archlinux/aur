@@ -1,7 +1,7 @@
 pkgbase = linux-fireface-mixer
 	pkgdesc = GUI mixer application for RME Fireface 400 on Linux
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/oudeis01/linux-fireface-mixer
 	arch = x86_64
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = linux-fireface-mixer
 	depends = libxi
 	depends = systemd-libs
 	depends = snd-firewire-ctl-services
-	source = linux-fireface-mixer-0.1.0.tar.gz::https://github.com/oudeis01/linux-fireface-mixer/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = a9b14df7f723be31cd9e73c50d263683c2ac99f3309a3b18c214f6607422110f
+	source = linux-fireface-mixer-0.1.1.tar.gz::https://github.com/oudeis01/linux-fireface-mixer/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = bfebdbff854cecc5a780025fbcd5686421b834e0c8519d49fc3243b9ff237b44
 
 pkgname = linux-fireface-mixer
