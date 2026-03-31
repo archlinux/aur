@@ -1,5 +1,5 @@
 # Maintainer: aurel1510 <aurel1510+aur at gmail dot com>
-
+# Contributor: Latif Sulistyo <latipun@aur.archlinux.org>
 # shellcheck disable=2034,2154
 # shellcheck shell=bash
 
