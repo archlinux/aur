@@ -1,0 +1,24 @@
+pkgbase = perl-task-kensho-excelcsv
+	pkgdesc = A Glimpse at an Enlightened Perl: Excel/CSV
+	pkgver = 0.41
+	pkgrel = 1
+	url = https://metacpan.org/release/ETHER/Task-Kensho-ExcelCSV-0.41
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker
+	depends = perl-excel-writer-xlsx
+	depends = perl-spreadsheet-read
+	depends = perl-spreadsheet-writeexcel-simple
+	depends = perl-text-csv-xs
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
+	optdepends = perl-json-pp
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Task-Kensho-ExcelCSV-0.41.tar.gz
+	sha256sums = ae182588b3d7b43b5d2aa4822d6b4d5d3960453eac89976b7d63b8e9130611a2
+
+pkgname = perl-task-kensho-excelcsv

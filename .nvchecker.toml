@@ -1,0 +1,3 @@
+[perl-task-kensho-excelcsv]
+source = "cpan"
+cpan = "Task-Kensho-ExcelCSV"
