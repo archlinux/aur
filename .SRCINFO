@@ -12,6 +12,6 @@ pkgbase = iso-commander
 	depends = readline
 	depends = util-linux
 	source = iso-commander-6.3.2.tar.gz::https://github.com/siyia2/iso-commander/archive/v6.3.2.tar.gz
-	md5sums = a55b39cafa61117614652167dbf667dd
+	md5sums = 47d6b633f963a56467340eefa4022cdb
 
 pkgname = iso-commander
