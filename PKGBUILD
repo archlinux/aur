@@ -3,7 +3,7 @@
 
 pkgname="vesktop-spoof-pacman-hook"
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds '--user-agent-os windows' to the desktop file after vesktop updates, for those using VPNs being blocked by Discord's recent Linux VPN bans!"
 arch=('any')
 url=""
@@ -19,7 +19,7 @@ source=(
 package() {
     cd              "${srcdir}"
 
-    install -Dm755  vesktop-spoof.hook  "${pkgdir}/usr/share/libalpm/hooks/vesktop-spoof.hook"
+    install -Dm644  vesktop-spoof.hook  "${pkgdir}/usr/share/libalpm/hooks/vesktop-spoof.hook"
 }
 sha256sums=('7e23ccd698af1bcad3774106567c6242c0ab69941c042d9e6e055e89e2673f1c')
 sha384sums=('31f8cf7edceca1ffcd3679c8c2648c19c46037651110c2a3b29b274ae484bcf0c20de32cb47553f236e32bf394333486')
