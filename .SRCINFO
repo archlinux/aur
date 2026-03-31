@@ -1,0 +1,26 @@
+pkgbase = perl-moosex-simpleconfig
+	pkgdesc = A Moose role for setting attributes from a simple configuration file
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://metacpan.org/release/ETHER/MooseX-SimpleConfig-0.11
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-file-temp
+	checkdepends = perl-lib
+	checkdepends = perl-moose
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-module-build-tiny>=0.039
+	depends = perl-config-any>=0.13
+	depends = perl-moose
+	depends = perl-moosex-configfromfile
+	depends = perl>=5.4.0
+	optdepends = perl-cpan-meta
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-SimpleConfig-0.11.tar.gz
+	sha256sums = 42c83f4b92ef2785fa8dbcfae69d5d28d5be10141d171472ccf37288682c79ad
+
+pkgname = perl-moosex-simpleconfig

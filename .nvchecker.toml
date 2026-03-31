@@ -1,0 +1,3 @@
+[perl-moosex-simpleconfig]
+source = "cpan"
+cpan = "MooseX-SimpleConfig"
