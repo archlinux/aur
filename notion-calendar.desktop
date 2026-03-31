@@ -1,9 +1,10 @@
 [Desktop Entry]
 Name=Notion Calendar
-Exec=/usr/bin/notion-calendar
+Exec=/usr/bin/notion-calendar %U
 Terminal=false
 Type=Application
 Icon=notion-calendar.png
 StartupWMClass=Cron
 Comment=Notion Calendar Desktop Client
 Categories=Office;Calendar;Utility;
+MimeType=x-scheme-handler/cron;x-scheme-handler/notion;x-scheme-handler/notiondev;x-scheme-handler/notionlocal;x-scheme-handler/notionmail;x-scheme-handler/notionmaildev;x-scheme-handler/notionmaillocal;

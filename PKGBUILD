@@ -79,6 +79,10 @@ patches = [
     ('"win32"===process.platform&&ft().app.setAppUserModelId("com.cron.electron");', 'true;'),
     # Patch 7: fix tray popup menu for linux (use win32 pattern instead of darwin)
     ('Xl)if("darwin"===process.platform)Xl.popUpContextMenu();else{', 'Xl)if(false)Xl.popUpContextMenu();else{'),
+    # Patch 8: fix jl function to work on linux (remove win32-only check)
+    ('function jl(e){if("win32"!==process.platform)return;', 'function jl(e){'),
+    # Patch 9: prevent URLs from being treated as file paths in jl function
+    ('const n=e.slice(1).find((e=>A().existsSync(e)));', 'const n=e.slice(1).find((e=>!e.includes("://")&&A().existsSync(e)));'),
 ]
 
 for old, new in patches:
