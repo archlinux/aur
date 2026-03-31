@@ -1,6 +1,6 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=nuclei-templates
-pkgver=10.4.0
+pkgver=10.4.1
 pkgrel=1
 pkgdesc="Templates for the nuclei engine to find security vulnerabilities"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/projectdiscovery/nuclei-templates"
 license=('MIT')
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ea7bfafe40f9db0c470c126b39fe36053079a4e103c32bd31beee2b64db9c5dc')
+sha256sums=('4022705d86b57b64b22d582bb97f514426d0d427ee4c7e0cb77c960d77ba7ade')
 
 package() {
   cd "$pkgname-$pkgver"
