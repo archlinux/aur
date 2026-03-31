@@ -1,7 +1,7 @@
 # Maintainer: Hundaol Dejen <hundaoldejen1@gmail.com>
 pkgname=rsm
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A safe, fast, and modular symlink manager written in Rust"
 arch=('x86_64')
 url="https://github.com/hunde32/rsm"
