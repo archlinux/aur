@@ -1,23 +1,25 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-meta
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Meta package for Shorin DMS Niri dependencies"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
 license=('GPL')
 
 depends=(
-    # Core Components
-    'xdg-desktop-portal-gnome'
 
     # core
-    'niri' 'xwayland-satellite' 'kitty' 'firefox'
+    'xdg-desktop-portal-gnome' 'niri' 'xwayland-satellite' 'satty' 'slurp' 'libnotify' 
+    'imv' 'mpv'
 
+    # fonts
+    'noto-fonts' 'noto-fonts-cjk' 'noto-fonts-emoji' 
+    
     # shell
     'quickshell-git' 'dms-shell-bin' 'cups-pk-helper' 'kimageformats'
     'niri-sidebar-git'  'cava' 'cliphist'
-    'wl-clipboard' 'dgop' 'dsearch-bin' 'qt5-multimedia' 'satty' 'mpv'
+    'wl-clipboard' 'dgop' 'dsearch-bin' 'qt5-multimedia'
     
     # File Manager
     'ffmpegthumbnailer' 'gvfs-smb' 'nautilus-open-any-terminal' 'file-roller'
@@ -27,9 +29,9 @@ depends=(
     'webp-pixbuf-loader' 'libgsf'
 
     # Terminal Setup
-    'xdg-terminal-exec' 'bat' 'fuzzel' 'wf-recorder' 'wl-screenrec-git'
+    'kitty' 'xdg-terminal-exec' 'bat' 'fuzzel' 
     'ttf-jetbrains-maple-mono-nf-xx-xx' 'eza' 'zoxide' 'starship' 'jq' 'fish'
-    'libnotify' 'timg' 'imv' 'imagemagick' 'shorin-contrib-git' 'slurp'
+    'timg' 'imagemagick' 'shorin-contrib-git'  'fastfetch'
 
     # Flatpak & Theme
     'flatpak' 'bazaar' 'matugen' 'adw-gtk-theme' 'python-pywalfox'  'nwg-look'
