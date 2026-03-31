@@ -1,7 +1,7 @@
 # Maintainer: yeah <yeah_yaojiu@163.com>
 
 pkgname=piliplus-bin
-pkgver=2.0.1.1
+pkgver=2.0.2
 pkgrel=1
 url="https://github.com/bggRGjQaUbCoE/PiliPlus"
 pkgdesc="A Bilibili third-party client built with Flutter. | 使用Flutter开发的BiliBili第三方客户端"
@@ -10,11 +10,11 @@ license=('GPL-3.0-or-later')
 depends=('gtk3' 'mpv' 'libayatana-appindicator')
 provides=('piliplus')
 conflicts=('piliplus' 'piliplus-git')
-source_x86_64=("https://github.com/bggRGjQaUbCoE/PiliPlus/releases/download/2.0.1.1/PiliPlus_linux_2.0.1%2B4775_amd64.tar.gz")
+source_x86_64=("https://github.com/bggRGjQaUbCoE/PiliPlus/releases/download/2.0.2/PiliPlus_linux_2.0.2%2B4814_amd64.tar.gz")
 
 options=('!debug' '!strip')
 
-sha256sums_x86_64=('847d3549292a8b275837823ea65e448e6a63b861ad776c28c1d6fedf00456c1c')
+sha256sums_x86_64=('e485a068ddfe045dd606b95b43382d6a85c7aaf65dc776617e9af4e34471f731')
 
 
 package() {
