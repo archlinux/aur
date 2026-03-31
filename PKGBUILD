@@ -25,7 +25,8 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  RELEASE_VERSION="v$pkgver" go build -o build .
+
+  go build -o build/$pkgname -ldflags="-X github.com/slackapi/slack-cli/internal/pkg/version.Version=v${pkgver}"
 }
 
 check() {
