@@ -1,7 +1,7 @@
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 
 pkgname=gimp-plugin-xsanecli-git
-pkgver=0.0.0.r5.d4fa7e8
+pkgver=0.0.0.r12.a7ca451
 pkgrel=1
 pkgdesc='GIMP 3.0 plug-in for scanning via XSane'
 arch=('any')
