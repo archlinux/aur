@@ -14,7 +14,7 @@ conflicts=('zerochan-downloader')
 depends=('glibc' 'hicolor-icon-theme' 'libx11' 'libxrender' 'libxtst' 'libxi' 'alsa-lib')
 
 source=("${url}/releases/download/v${pkgver}/zerochan-downloader_${pkgver}_amd64.deb")
-sha256sums=('91b10ff473743390dfe80c9b6775f3bccedfbab798f79b0032cda26b4447e81e')
+sha256sums=('7f1ad1d3580bb68cfac3ae31db6468d14e07bcd246e7900288371ad413439668')
 
 package() {
     msg2 "Extracting application data..."
