@@ -37,7 +37,8 @@ package() {
     install -Dm755 "${_staging}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${_staging}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    find "${_staging}/icons/hicolor" -type f -name "*.svg" -exec install -Dm644 {} "${pkgdir}/usr/share/wayle/icons/{}" \;
+    install -dm755 "${pkgdir}/usr/share/wayle/icons"
+    cp -r "${_staging}/icons/hicolor" "${pkgdir}/usr/share/wayle/icons/"
 
     install -Dm644 "${_staging}/completions/completions.bash" "${pkgdir}/usr/share/bash-completion/completions/wayle"
     install -Dm644 "${_staging}/completions/_wayle" "${pkgdir}/usr/share/zsh/site-functions/_wayle"
