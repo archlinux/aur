@@ -1,8 +1,8 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname="azaharplus-appimage"
-pkgver=2124_3_A
-_pkgver=2124.3-A
+pkgver=2125_0_A
+_pkgver=2125.0-A
 pkgrel=1
 pkgdesc="A fork of the Azahar 3DS emulator that restores some features"
 arch=("x86_64")
@@ -17,7 +17,7 @@ source=(
     "azahar.svg"
 )
 sha256sums=(
-    '0ee1acb297da438ba2a3be469b522e1dcb859d5e4ae3b272694598cf85e86775'
+    '92002e8bb2313492d2570cd4329960f863a88ba31a3dcf60161aab4cde06536f'
     'ce8ab3a29aac5244a002793b41f7f45ce940894f42be71c0e47ec50d0e264634'
     'b7941099d70483350c3f1af82bdf55cda68203f12f2e8a9b09b23749de3a5caf'
 )
