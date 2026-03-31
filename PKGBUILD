@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r76522.fd3a09a8ce9
+pkgver=r76578.e47cdc6b63e
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -23,7 +23,6 @@ depends=(
   libgl
   libjpeg-turbo
   libjxl
-  libpng
   libtiff
   libtommath
   libwebp
@@ -40,6 +39,7 @@ depends=(
   angle # AUR
   simdutf-git # 'simdutf' is v6, we need v7.
   cpptrace # AUR
+  libpng-apng # AUR, extra/libpng doesn't provide APNG.
 )
 makedepends=(autoconf-archive automake cargo cmake git nasm ninja patchelf skia-static tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
