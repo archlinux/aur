@@ -1,0 +1,11 @@
+[Unit]
+Description=Vivobook RGB default color
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/vrgb color 00ffff
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

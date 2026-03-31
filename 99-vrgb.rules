@@ -1,0 +1,4 @@
+# udev rules for ASUS Vivobook RGB keyboard (ITE5570)
+# This rule allows users to access the RGB keyboard controller without sudo
+
+SUBSYSTEM=="hidraw", KERNELS=="i2c-ITE5570*", MODE="0660", GROUP="users", TAG+="uaccess"
