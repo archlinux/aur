@@ -2,12 +2,12 @@
 pkgname=squidservers-bin
 _pkgname=squidservers
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to easily self-host Minecraft servers without port forwarding"
 arch=('x86_64')
 url="https://squidservers.com"
 license=('custom:All Rights Reserved')
-# Added alsa-lib, at-spi2-core, and libxtst for Electron runtime stability
+# Added alsa-lib, at-spi2-core, and libxtst for full Electron support
 depends=('hicolor-icon-theme' 'nss' 'libxss' 'gtk3' 'libnotify' 'alsa-lib' 'at-spi2-core' 'libxtst')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -20,7 +20,7 @@ package() {
     msg2 "Extracting data from .deb..."
     bsdtar -xf data.tar.* -C "${pkgdir}/"
 
-    # Remove Debian-specific metadata files often left in the root
+    # Clean up Debian artifacts
     rm -f "${pkgdir}/"{control,md5sums,conffiles,debian-binary} 2>/dev/null || true
 
     msg2 "Creating executable symlink..."
@@ -44,7 +44,6 @@ MimeType=x-scheme-handler/squidservers;
 EOF
 
     msg2 "Installing icons..."
-    # Simplified to 512x512; DEs will scale this down as needed
     install -Dm644 "${pkgdir}/opt/SquidServers/resources/app.asar.unpacked/resources/icon.png" \
         "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
 
