@@ -1,4 +1,5 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=meta-package-manager
