@@ -1,4 +1,4 @@
-# Maintainer: rish <rishshah421@gmail.com>
+# Maintainer: rishdot <your@email.com>
 pkgname=ruby-rails-metro
 pkgver=0.1.0
 pkgrel=1
