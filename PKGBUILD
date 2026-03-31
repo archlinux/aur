@@ -25,4 +25,8 @@ package() {
     cd "${pkgname}-${pkgver}"
 
     make DESTDIR="${pkgdir}" install-strip
+
+    install -vdm0755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    mv -vf "${pkgdir}/usr/share/doc/${pkgname}/LICENSE" \
+           "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
