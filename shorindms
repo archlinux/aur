@@ -4,7 +4,8 @@ TEMPLATE_DIR="/usr/share/shorin-dms-niri-dotfiles"
 BASE_BACKUP_DIR="$HOME/.cache/shorin-dms-niri-dotfiles-backup"
 BACKUP_DIR="$BASE_BACKUP_DIR/$(date +%Y%m%d_%H%M%S)"
 
-# 核心功能：备份并复制指定的目标（目录或文件）
+# --- 文件同步与备份逻辑 ---
+
 backup_and_copy() {
     local rel_path="$1"
     local src_path="$TEMPLATE_DIR/$rel_path"
@@ -12,43 +13,33 @@ backup_and_copy() {
     local dest_dir
     dest_dir="$(dirname "$dest_path")"
 
-    # 1. 备份 (如果目标已存在)
     if [[ -e "$dest_path" || -L "$dest_path" ]]; then
         local backup_path="$BACKUP_DIR/$rel_path"
         mkdir -p "$(dirname "$backup_path")"
         cp -a "$dest_path" "$backup_path"
         echo "已备份: ~/$rel_path"
-        # 移除旧配置以防止文件残留冲突
         rm -rf "$dest_path"
     fi
 
-    # 2. 复制新配置
     mkdir -p "$dest_dir"
     cp -a "$src_path" "$dest_path"
     echo "已同步: ~/$rel_path"
 }
 
-# 按照指定层级处理目录，确保不会直接覆盖整个 .config 或 .local
 process_dir_level() {
     local target_dir="$1"
     if [[ -d "$target_dir" ]]; then
-        # 遍历该目录下的子项 (例如 .config/kitty, .local/bin/script.sh)
         find "$target_dir" -mindepth 1 -maxdepth 1 -print0 | while IFS= read -r -d '' item; do
-            backup_and_copy "${item#./}" # 移除前导的 ./
+            backup_and_copy "${item#./}"
         done
     fi
 }
 
-# 清理旧备份，仅保留最近的 2 份
 cleanup_old_backups() {
     if [[ -d "$BASE_BACKUP_DIR" ]]; then
-        # 获取所有备份目录并按名称（时间戳）排序
         local backups=( "$BASE_BACKUP_DIR"/* )
-        
-        # 确保数组不为空
         if [[ -e "${backups[0]}" ]]; then
             local count=${#backups[@]}
-            # 如果备份数量大于 2，则删除多余的最旧备份
             if (( count > 2 )); then
                 local remove_count=$(( count - 2 ))
                 for (( i=0; i<remove_count; i++ )); do
@@ -60,7 +51,6 @@ cleanup_old_backups() {
     fi
 }
 
-# 更新配置的核心逻辑
 sync_dotfiles() {
     if [[ ! -d "$TEMPLATE_DIR" ]]; then
         echo "错误: 找不到模板目录 $TEMPLATE_DIR"
@@ -70,22 +60,18 @@ sync_dotfiles() {
     mkdir -p "$BACKUP_DIR"
     cd "$TEMPLATE_DIR" || exit 1
 
-    # 1. 处理家目录下的根文件 (如 .vimrc)
     find . -maxdepth 1 -type f -print0 | while IFS= read -r -d '' f; do
         backup_and_copy "${f#./}"
     done
 
-    # 2. 处理 .config 下的子目录/文件
     process_dir_level ".config"
 
-    # 3. 处理 .local 下的二级目录
     if [[ -d ".local" ]]; then
         find .local -mindepth 1 -maxdepth 1 -type d -print0 | while IFS= read -r -d '' local_sub; do
             process_dir_level "${local_sub#./}"
         done
     fi
 
-    # 清理旧备份
     cleanup_old_backups
 
     echo "----------------------------------------"
@@ -95,33 +81,92 @@ sync_dotfiles() {
     echo "----------------------------------------"
 }
 
-# 仅在首次 init 时执行的一次性环境配置
-apply_user_configs() {
-    echo "正在应用首次初始化的用户环境设置 (gsettings, flatpak, templates)..."
+# --- 隐藏桌面图标逻辑 ---
+
+hide_desktop_file() {
+    local source_file="$1"
+    local filename=$(basename "$source_file")
+    local user_dir="$HOME/.local/share/applications"
+    local target_file="$user_dir/$filename"
     
-    # xdg-terminals.list
+    if [[ -f "$source_file" ]]; then
+        mkdir -p "$user_dir"
+        cp -f "$source_file" "$target_file"
+        if grep -q "^NoDisplay=" "$target_file"; then
+            sed -i 's/^NoDisplay=.*/NoDisplay=true/' "$target_file"
+        else
+            echo "NoDisplay=true" >> "$target_file"
+        fi
+    fi
+}
+
+run_hide_desktop_file() {
+    local apps_to_hide=(
+        "avahi-discover.desktop"
+        "qv4l2.desktop"
+        "qvidcap.desktop"
+        "bssh.desktop"
+        "org.fcitx.Fcitx5.desktop"
+        "org.fcitx.fcitx5-migrator.desktop"
+        "xgps.desktop"
+        "xgpsspeed.desktop"
+        "gvim.desktop"
+        "kbd-layout-viewer5.desktop"
+        "bvnc.desktop"
+        "yazi.desktop"
+        "btop.desktop"
+        "vim.desktop"
+        "nvim.desktop"
+        "nvtop.desktop"
+        "mpv.desktop"
+        "org.gnome.Settings.desktop"
+        "thunar-settings.desktop"
+        "thunar-bulk-rename.desktop"
+        "thunar-volman-settings.desktop"
+        "clipse-gui.desktop"
+        "waypaper.desktop"
+        "xfce4-about.desktop"
+        "cmake-gui.desktop"
+        "assistant.desktop"
+        "qdbusviewer.desktop"
+        "linguist.desktop"
+        "designer.desktop"
+        "org.kde.drkonqi.coredump.gui.desktop"
+        "org.kde.kwrite.desktop"
+        "org.freedesktop.MalcontentControl.desktop"
+        "org.gnome.Nautilus.desktop"
+    )
+    
+    echo "正在隐藏不需要的桌面图标..."
+    for app in "${apps_to_hide[@]}"; do
+        hide_desktop_file "/usr/share/applications/$app"
+    done
+    echo "图标隐藏完成！"
+}
+
+# --- 用户环境配置 ---
+
+apply_user_configs() {
+    echo "正在应用首次初始化的用户环境设置..."
+    
     mkdir -p "$HOME/.config"
     if ! grep -q "kitty.desktop" "$HOME/.config/xdg-terminals.list" 2>/dev/null; then
         echo 'kitty.desktop' >> "$HOME/.config/xdg-terminals.list"
     fi
 
-    # Nautilus Terminal
     if command -v gsettings &>/dev/null; then
         gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
     fi
 
-    # Nautilus Bookmarks (替换用户名)
     if [[ -f "$HOME/.config/gtk-3.0/bookmarks" ]]; then
         sed -i "s/shorin/$USER/g" "$HOME/.config/gtk-3.0/bookmarks"
     fi
 
-    # Templates
     mkdir -p "$HOME/Templates"
     touch "$HOME/Templates/new"
     echo '#!/usr/bin/env bash' > "$HOME/Templates/new.sh"
     chmod +x "$HOME/Templates/new.sh"
 
-    # Flatpak Overrides
     if command -v flatpak &>/dev/null; then
         flatpak override --user --filesystem=xdg-data/themes
         flatpak override --user --filesystem="$HOME/.themes"
@@ -130,19 +175,23 @@ apply_user_configs() {
         flatpak override --user --env=GTK_THEME=adw-gtk3-dark
         flatpak override --user --filesystem=xdg-config/fontconfig
     fi
+    
     mkdir -p "$HOME/.local/share"
     ln -sfn /usr/share/themes "$HOME/.local/share/themes"
 
-    # xterm symlink
     mkdir -p "$HOME/.local/bin"
     if command -v kitty &>/dev/null; then
         ln -sfn /usr/bin/kitty "$HOME/.local/bin/xterm"
     fi
 
+    # 执行隐藏桌面图标的功能
+    run_hide_desktop_file
+
     echo "初始化环境配置完成！"
 }
 
-# 命令路由
+# --- 命令路由 ---
+
 case "$1" in
     init)
         echo "开始初始化 Shorin DMS Niri 环境..."
@@ -153,10 +202,15 @@ case "$1" in
         echo "开始更新 Shorin DMS Niri 配置文件..."
         sync_dotfiles
         ;;
+    hide-icons)
+        # 允许用户单独运行隐藏图标功能
+        run_hide_desktop_file
+        ;;
     *)
-        echo "用法: shorindms {init|update}"
-        echo "  init   - 首次安装时运行，包含配置文件同步和环境初始化(如 Flatpak 越权)"
-        echo "  update - 日常更新使用，仅拉取最新的配置文件覆盖到家目录"
+        echo "用法: shorindms {init|update|hide-icons}"
+        echo "  init       - 首次安装时运行，包含配置文件同步和环境初始化"
+        echo "  update     - 日常更新使用，仅拉取最新的配置文件覆盖到家目录"
+        echo "  hide-icons - 仅执行隐藏不需要的桌面图标的操作"
         exit 1
         ;;
 esac
