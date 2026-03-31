@@ -16,7 +16,7 @@ provides=('imagecompare')
 conflicts=('imagecompare')
 source=("$pkgname-$pkgver-x86_64.zip::$url/releases/download/$pkgver/imagecompare-linux-$pkgver.zip")
 noextract=("$pkgname-$pkgver-x86_64.zip")
-sha256sums=('5961db4971ee37dd4fd5676fae4182fab38f62f3491ce34c8f0155f7a8a13ad4')
+sha256sums=('81cd1eaf0774c9377314bf55611534dcdb8093386305088b99e3db72d2caf6ad')
 
 package() {
   local _archive="$srcdir/$pkgname-$pkgver-x86_64.zip"
