@@ -1,0 +1,19 @@
+pkgbase = pi-bin
+	pkgdesc = AI coding agent for the terminal — minimal, extensible and optimized for tool-use (binary package, pi-mono)
+	pkgver = 0.64.0
+	pkgrel = 1
+	url = https://github.com/badlogic/pi-mono
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	optdepends = tmux: for background bash capabilities
+	provides = pi
+	conflicts = pi
+	options = !strip
+	source_x86_64 = pi-linux-x64-0.64.0-1.tar.gz::https://github.com/badlogic/pi-mono/releases/download/v0.64.0/pi-linux-x64.tar.gz
+	sha256sums_x86_64 = 65ff76b5f96bf6c7eea49f47b036fcf5e3a1de0c0d43735d7669e904833c3fc2
+	source_aarch64 = pi-linux-arm64-0.64.0-1.tar.gz::https://github.com/badlogic/pi-mono/releases/download/v0.64.0/pi-linux-arm64.tar.gz
+	sha256sums_aarch64 = ca5c9269a7a3ca5d0d677b45338b163c5fba8f07ad11765b946b0e7b0e1c0d96
+
+pkgname = pi-bin
