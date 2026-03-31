@@ -1,6 +1,6 @@
 pkgbase = hyprshell-bin
 	pkgdesc = A modern GTK4-based window switcher and application launcher for Hyprland (binary release)
-	pkgver = 4.9.4
+	pkgver = 4.9.5
 	pkgrel = 1
 	url = https://github.com/h3rmt/hyprshell/
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = hyprshell-bin
 	depends = zstd
 	provides = hyprshell
 	conflicts = hyprshell
-	source_x86_64 = https://github.com/H3rmt/hyprshell/releases/download/v4.9.4/hyprshell-4.9.4-x86_64.tar.zst
-	sha256sums_x86_64 = 66fb54bcc540db667d6ffc544ff36058e9f73c31d7dfe5f7c9dd90da702a272e
-	source_aarch64 = https://github.com/H3rmt/hyprshell/releases/download/v4.9.4/hyprshell-4.9.4-aarch64.tar.zst
-	sha256sums_aarch64 = bd83b337f95392a9cdcf0182a12d7b1d546c5d6c74af79e4a7d81f0d4fdefa99
+	source_x86_64 = https://github.com/H3rmt/hyprshell/releases/download/v4.9.5/hyprshell-4.9.5-x86_64.tar.zst
+	sha256sums_x86_64 = bf5262efad35c4283ce0d996be702e1fb904eb7f45e930676f50b888a1fa6104
+	source_aarch64 = https://github.com/H3rmt/hyprshell/releases/download/v4.9.5/hyprshell-4.9.5-aarch64.tar.zst
+	sha256sums_aarch64 = 890d19c2d51914df81eb195c98cc6975258ee8a56b3f2e1a8b879c9ea3dafe78
 
 pkgname = hyprshell-bin
