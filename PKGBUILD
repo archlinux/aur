@@ -1,13 +1,13 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 pkgname=voix
 _pkgname=Voix # The case-sensitive name of the repository from git
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication"
 arch=('x86_64')
 url="https://github.com/Veridian-Zenith/Voix"
 license=('OSL-3.0')
-depends=('pam')
+depends=('pam' 'libcap')
 makedepends=('cmake>=4.2' 'clang' 'ninja' 'pkgconf' 'git')
 backup=('etc/pam.d/voix' 'etc/voix.conf')
 source=("git+https://github.com/Veridian-Zenith/Voix.git")
@@ -26,8 +26,7 @@ build() {
 package() {
     cd "$_pkgname"
     DESTDIR="$pkgdir" cmake --install build
-    # Explicitly ensure SUID for Arch Linux packaging
-    chmod 4755 "$pkgdir/usr/bin/voix"
     # Ensure restrictive config permissions
-    chmod 0600 "$pkgdir/etc/voix.conf"
+    install -o root -g root -m 0600 "$pkgdir/etc/voix.conf"
+    setcap 'CAP_AUDIT_WRITE,CAP_DAC_READ_SEARCH+eip' "$pkgdir/usr/bin/voix"
 }
