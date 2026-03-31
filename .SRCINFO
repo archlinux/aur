@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-hsb
 	pkgdesc = Upper Sorbian language pack for Firefox Nightly
-	pkgver = 151.0a1.20260328.200338
+	pkgver = 151.0a1.20260330.213624
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-hsb
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-hsb-151.0a1.20260328.200338.xpi
-	source = firefox-nightly-i18n-hsb-151.0a1.20260328.200338.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-151.0a1.hsb.langpack.xpi
-	sha256sums = ca5935e3300d7fc20b324b51842767a8d14b024cb0fdb7fcf2d8c0c9620fe875
+	noextract = firefox-nightly-i18n-hsb-151.0a1.20260330.213624.xpi
+	source = firefox-nightly-i18n-hsb-151.0a1.20260330.213624.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-151.0a1.hsb.langpack.xpi
+	sha256sums = 1e4abdd4c3cf059b9e58bee749dfd9081d1309d8a08fee534f4f34a464394d8d
 
 pkgname = firefox-nightly-i18n-hsb
