@@ -1,6 +1,6 @@
 pkgbase = nfpm
 	pkgdesc = nFPM is a simple, 0-dependencies, deb, rpm and apk packager.
-	pkgver = 2.45.2
+	pkgver = 2.46.0
 	pkgrel = 1
 	url = https://nfpm.goreleaser.com
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = nfpm
 	conflicts = nfpm
 	provides = nfpm
 	
-	source = https://github.com/goreleaser/nfpm/releases/download/v2.45.2/nfpm_2.45.2_source.tar.gz
-	sha256sums = 89b97feafc87f2e73e4510a20a4f35b3cf3ac4ddee27114ea071c06b979e8c00
+	source = https://github.com/goreleaser/nfpm/releases/download/v2.46.0/nfpm_2.46.0_source.tar.gz
+	sha256sums = 106816f7c069a6035f93d08d41b10b122af9f6897acecc904e2da30d6159fa33
 	
 pkgname = nfpm
