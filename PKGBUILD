@@ -6,7 +6,7 @@ _pkgname=solana
 pkgbase="$_pkgname-bin"
 pkgname=(solana-bin solana-dev-bin)
 pkgver=3.1.11
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast, secure, and censorship resistant blockchain.'
 arch=(x86_64)
 url='https://solana.com'
@@ -54,6 +54,7 @@ package_solana-bin() {
 package_solana-dev-bin() {
   pkgdesc='Solana developer tools: SBF compiler toolchain, test validator, and ledger tool'
   depends=(bash glibc libgcc libstdc++)
+  conflicts=("$_pkgname")
   optdepends=(
     'cargo: required for cargo-build-sbf and cargo-test-sbf'
     "solana-bin=$pkgver: CLI tools for interacting with clusters"

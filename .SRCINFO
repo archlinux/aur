@@ -1,7 +1,7 @@
 pkgbase = solana-bin
 	pkgdesc = A fast, secure, and censorship resistant blockchain.
 	pkgver = 3.1.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://solana.com
 	arch = x86_64
 	license = Apache-2.0
@@ -37,3 +37,4 @@ pkgname = solana-dev-bin
 	depends = libstdc++
 	optdepends = cargo: required for cargo-build-sbf and cargo-test-sbf
 	optdepends = solana-bin=3.1.11: CLI tools for interacting with clusters
+	conflicts = solana
