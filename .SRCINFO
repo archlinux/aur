@@ -1,0 +1,16 @@
+pkgbase = vistathemeplasma-sounds-git
+	pkgdesc = Collection of sound themes designed for VistaThemePlasma
+	pkgver = 1.rdabc6bf
+	pkgrel = 1
+	url = https://gitgud.io/aeroshell/vtp/vistathemeplasma-sounds
+	arch = any
+	groups = vistathemeplasma
+	license = AGPL-3.0-or-later
+	makedepends = git
+	provides = vistathemeplasma-sounds
+	conflicts = vistathemeplasma-sounds
+	options = !debug
+	source = vistathemeplasma-sounds-git::git+https://gitgud.io/aeroshell/vtp/vistathemeplasma-sounds.git
+	sha256sums = SKIP
+
+pkgname = vistathemeplasma-sounds-git
