@@ -27,3 +27,16 @@ index 925742b4c33..1a97ec77faf 100644
      "numpy",
      "packaging",
      "pyyaml",
+diff --git a/setup.py b/setup.py
+index 0decaf6..f0cf951 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1703,7 +1703,7 @@ def main() -> None:
+     install_requires = [
+         "filelock",
+         "typing-extensions>=4.10.0",
+-        "setuptools<82",
++        "setuptools",
+         "sympy>=1.13.3",
+         "networkx>=2.5.1",
+         "jinja2",

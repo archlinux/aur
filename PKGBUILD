@@ -9,7 +9,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 arch=('x86_64')
 url="https://pytorch.org"
@@ -166,7 +166,7 @@ b2sums=('995a6fb3164db61d67e877c1b38a3786b75066943f1b9d01b458796124f0183b023548f
         'eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980'
         '007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
-        'd90497368441b9148977fa093ac81251d0ed9583ccf8a4e0e4457f471e8b15c53bc98bd47c44878c24932e8f60791e9b2d77cd7694949ba0b5d912ea7274f694'
+        '21234592e20b5ff1bf43f926bdda72b089cc2b32b92d4287e5aa6b20dc8ebbb2e30135ba8b881d64c35d98be457366bcfd9982cf2e38fd3fc13901955fa571da'
         '1fcd8326343b3318eb6475fbd11cd3d28a826627206d55ac95dc13af78946b2bcadc3b0f5be965a33f24c7bb1de62706f256894449fa93604d064c90158ce1e1')
 options=('!lto' '!debug')
 
