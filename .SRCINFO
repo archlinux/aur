@@ -24,7 +24,6 @@ pkgname = solana-bin
 	install = solana-bin.install
 	depends = glibc
 	depends = libgcc
-	depends = libstdc++
 	depends = systemd-libs
 	provides = solana=3.1.11
 	provides = spl-token
@@ -32,9 +31,9 @@ pkgname = solana-bin
 
 pkgname = solana-dev-bin
 	pkgdesc = Solana developer tools: SBF compiler toolchain, test validator, and ledger tool
+	depends = bash
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	depends = systemd-libs
-	depends = solana-bin=3.1.11
 	optdepends = cargo: required for cargo-build-sbf and cargo-test-sbf
+	optdepends = solana-bin=3.1.11: CLI tools for interacting with clusters

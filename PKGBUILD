@@ -14,7 +14,7 @@ license=(Apache-2.0)
 options=(!strip)
 makedepends=(bash glibc libgcc systemd-libs)
 source=(
-  "$_pkgname-$pkgver.tar.bz2::https://github.com/anza-xyz/agave/releases/download/v$pkgver/solana-release-x86_64-unknown-linux-gnu.tar.bz2"
+  "$_pkgname-$pkgver.tar.bz2::https://github.com/anza-xyz/agave/releases/download/v$pkgver/solana-release-$CARCH-unknown-linux-gnu.tar.bz2"
   "$_pkgname.sysusers"
   "$_pkgname.tmpfiles"
   "$pkgbase.install"
@@ -27,7 +27,7 @@ sha256sums=('5978d621fe2582fc2403fa13f3c06502020bcb42e806ddd4612150049d1a3fbb'
 # CLI tools for interacting with the Solana network.
 package_solana-bin() {
   pkgdesc='Solana CLI tools for wallets, staking, and token management'
-  depends=(glibc libgcc libstdc++ systemd-libs)
+  depends=(glibc libgcc systemd-libs)
   provides=("$_pkgname=$pkgver" spl-token)
   conflicts=("$_pkgname")
   install="$pkgbase.install"
@@ -53,8 +53,11 @@ package_solana-bin() {
 # Developer tools for building and testing Solana programs.
 package_solana-dev-bin() {
   pkgdesc='Solana developer tools: SBF compiler toolchain, test validator, and ledger tool'
-  depends=(glibc libgcc libstdc++ systemd-libs "solana-bin=$pkgver")
-  optdepends=('cargo: required for cargo-build-sbf and cargo-test-sbf')
+  depends=(bash glibc libgcc libstdc++)
+  optdepends=(
+    'cargo: required for cargo-build-sbf and cargo-test-sbf'
+    "solana-bin=$pkgver: CLI tools for interacting with clusters"
+  )
 
   cd "$srcdir/solana-release"
 
