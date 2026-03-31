@@ -1,8 +1,9 @@
-# Maintainer: Bernardo Kuri <aur@bkuri.com>
+# Maintainer: Dunky <braxtinmoss13@gmail.com>
+# Previous Maintainer: Bernardo Kuri <aur@bkuri.com>
 # Contributor: Rasmus Steinke <rasi at xssn dot at>
 
 pkgname=rofi-surfraw-git
-pkgver=81.8c5717e
+pkgver=95.8890565
 pkgrel=1
 pkgdesc="Universal tool to search the internet"
 arch=('any')
