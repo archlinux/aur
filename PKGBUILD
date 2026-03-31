@@ -65,6 +65,8 @@ EOF
         fi
     done
 
+    rm -f "$pkgdir/usr/share/applications/adspower_global.desktop"
+
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/adspower-global.desktop" << 'EOF'
 [Desktop Entry]
 Name=AdsPower Global
