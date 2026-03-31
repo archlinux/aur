@@ -1,5 +1,5 @@
 pkgbase = bsdcoreutils-git
-	pkgdesc = Port of OpenBSD & NetBSD coreutils to Linux.
+	pkgdesc = Port of OpenBSD & NetBSD coreutils to Linux from DiegoMagdaleno. [PLEASE NOTE THIS PACKAGE IN WIP]
 	pkgver = v6.7.r2
 	pkgrel = 1
 	url = https://github.com/DiegoMagdaleno/BSDCoreUtils
