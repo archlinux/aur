@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-meta
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Meta package for Shorin DMS Niri dependencies"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -10,12 +10,15 @@ license=('GPL')
 depends=(
     # Core Components
     'xdg-desktop-portal-gnome'
-    
-    'quickshell-git' 'dms-shell-bin' 'niri' 'xwayland-satellite' 'kitty'
-     'niri-sidebar-git' 'nwg-look' 'cava' 'cliphist'
-    'wl-clipboard' 'dgop' 'dsearch-bin' 'qt5-multimedia' 'satty' 'mpv'
-    'cups-pk-helper' 'kimageformats'
 
+    # core
+    'niri' 'xwayland-satellite' 'kitty' 'firefox'
+
+    # shell
+    'quickshell-git' 'dms-shell-bin' 'cups-pk-helper' 'kimageformats'
+    'niri-sidebar-git'  'cava' 'cliphist'
+    'wl-clipboard' 'dgop' 'dsearch-bin' 'qt5-multimedia' 'satty' 'mpv'
+    
     # File Manager
     'ffmpegthumbnailer' 'gvfs-smb' 'nautilus-open-any-terminal' 'file-roller'
     'gnome-keyring' 'gst-plugins-base' 'gst-plugins-good' 'gst-libav' 'nautilus'
@@ -29,7 +32,10 @@ depends=(
     'libnotify' 'timg' 'imv' 'imagemagick' 'shorin-contrib-git' 'slurp'
 
     # Flatpak & Theme
-    'bazaar' 'matugen' 'adw-gtk-theme' 'python-pywalfox' 'firefox'
+    'flatpak' 'bazaar' 'matugen' 'adw-gtk-theme' 'python-pywalfox'  'nwg-look'
+    
+    # input method
+    'fcitx5-im' 'fcitx5-rime' 'rime-ice-git' 'rime-wubi'
 )
 
 package() {
