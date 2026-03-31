@@ -20,9 +20,9 @@ arch=('x86_64')
 prepare() {
     unzip -ou v${pkgver}.zip
     cp open-supaplex-${pkgver}/* $srcdir -r
-    desktop-file-validate ../open-supaplex.desktop && cp ../open-supaplex.desktop $srcdir/
     cd $srcdir/linux
     sed "s/^CFLAGS.*\$/& -DFILE_FHS_XDG_DIRS -DFILE_DATA_PATH=\/usr\/share\/OpenSupaplex\//" Makefile -i # Compile with data dir in /usr/share
+    sed "s/Path=/Path=\/usr\/bin/" assets/io.github.sergiou87.${pkgname}.desktop -i
 }
 build() {
     cd $srcdir/linux/
@@ -33,11 +33,18 @@ package() {
     cd $srcdir/
     mkdir -p $pkgdir/usr/bin
     mkdir -p $pkgdir/usr/share/OpenSupaplex
-    mkdir -p $pkgdir/usr/share/icons/hicolor/256x256/apps
+    mkdir -p $pkgdir/usr/share/metainfo
+    mkdir -p $pkgdir/usr/share/icons/hicolor/scalable/apps
+
     install -m 0755	$srcdir/linux/opensupaplex			$pkgdir/usr/bin/opensupaplex
-    install -m 0644	$srcdir/switch/resources/launcher-icon.jpg	$pkgdir/usr/share/icons/hicolor/256x256/apps/open-supaplex.png
     cp		-r	$srcdir/resources/*				$pkgdir/usr/share/OpenSupaplex/
-    desktop-file-install $srcdir/open-supaplex.desktop		  --dir=$pkgdir/usr/share/applications/
+    install -m 0644	$srcdir/linux/assets/io.github.sergiou87.${pkgname}.svg \
+	    $pkgdir/usr/share/icons/hicolor/scalable/apps/
+    install -m 0644	$srcdir/linux/assets/io.github.sergiou87.${pkgname}.metainfo.xml \
+	    $pkgdir/usr/share/metainfo/
+    desktop-file-install $srcdir/linux/assets/io.github.sergiou87.${pkgname}.desktop \
+	    --dir=$pkgdir/usr/share/applications/
+
 }
 
 #vim: syntax=sh
