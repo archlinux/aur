@@ -31,6 +31,6 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname/build"
 	make DESTDIR="$pkgdir" install
-	find src -name "*.1" install -Dm644 "{}" "$pkgdir/usr/share/man/man1/{}"
+	find src -name "*.1" -exec install -Dm644 "{}" "$pkgdir/usr/share/man/man1/{}"\;
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
