@@ -1,6 +1,6 @@
 # Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
 pkgname=deadbranch
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Clean up stale git branches safely."
 arch=('x86_64')
@@ -12,7 +12,7 @@ checkdepends=(git)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b773f176a26179c928f48c58c5299c6cc000f9e5d9ea71d258dcac3df19ef715')
+sha256sums=('6a4b45018f3daae0302469d6a305a7c143bc207284210310ca5532c2ee6536f3')
 options=('!lto' '!debug')
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = deadbranch
 	pkgdesc = Clean up stale git branches safely.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/armgabrielyan/deadbranch
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = deadbranch
 	conflicts = deadbranch
 	options = !lto
 	options = !debug
-	source = deadbranch-0.3.0.tar.gz::https://github.com/armgabrielyan/deadbranch/archive/v0.3.0.tar.gz
-	sha256sums = b773f176a26179c928f48c58c5299c6cc000f9e5d9ea71d258dcac3df19ef715
+	source = deadbranch-0.4.0.tar.gz::https://github.com/armgabrielyan/deadbranch/archive/v0.4.0.tar.gz
+	sha256sums = 6a4b45018f3daae0302469d6a305a7c143bc207284210310ca5532c2ee6536f3
 
 pkgname = deadbranch
