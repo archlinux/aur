@@ -1,6 +1,6 @@
 # Maintainer: Florian <eaquo@protonmail.com>
 pkgname=quickshell-games-launchers-git
-pkgver=r70.c2de544
+pkgver=r70.c2de545
 pkgrel=1
 pkgdesc="Quickshell game launcher for Hyprland with pywal/wallust integration"
 arch=('any')
