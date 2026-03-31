@@ -1,107 +1,101 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
-// ===================== 配置项（从环境变量读取，适配AUR）=====================
-// 优先从PKGBUILD的环境变量读取srcdir，适配AUR打包
 const SRC_DIR = process.env.SRC_DIR || process.cwd();
-// 自动拼接asar文件路径（基于srcdir）
 const ASAR_FILE_PATH = path.join(SRC_DIR, 'squashfs-root/resources/app.asar');
-// 自动拼接输出目录（基于srcdir）
 const OUTPUT_DIR = path.join(SRC_DIR, 'app.asar.unpacked');
-// 排除所有导致报错的文件规则
+
+// Exclude non-Linux prebuilds
 const EXCLUDE_PATTERNS = [
-  /node_modules\/@serialport\/bindings-cpp\/prebuilds\/android-.*/,
-  /node_modules\/@serialport\/bindings-cpp\/prebuilds\/darwin-.*/,
-  /node_modules\/@serialport\/bindings-cpp\/prebuilds\/win32-.*/,
-  /node_modules\/@stoprocent\/bluetooth-hci-socket\/prebuilds\/android-.*/,
-  /node_modules\/@stoprocent\/bluetooth-hci-socket\/prebuilds\/darwin-.*/,
-  /node_modules\/@stoprocent\/bluetooth-hci-socket\/prebuilds\/win32-.*/,
-  /node_modules\/@stoprocent\/noble\/prebuilds\/android-.*/,
-  /node_modules\/@stoprocent\/noble\/prebuilds\/darwin-.*/,
-  /node_modules\/@stoprocent\/noble\/prebuilds\/win32-.*/,
-  /node_modules\/usb\/prebuilds\/android-.*/,
-  /node_modules\/usb\/prebuilds\/darwin-.*/,
-  /node_modules\/usb\/prebuilds\/win32-.*/,
+  /\/prebuilds\/android-/,
+  /\/prebuilds\/darwin-/,
+  /\/prebuilds\/win32-/
 ];
-// ================================================================
 
-// 核心：安全解压（过滤报错文件）
-function safeExtractAsar() {
+async function nativeExtract() {
   try {
-    // 1. 创建输出目录
-    if (!fs.existsSync(OUTPUT_DIR)) {
-      fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-      console.log(`📂 创建输出目录：${OUTPUT_DIR}`);
+    // Clean up previous extraction to avoid ENOTDIR conflicts from cached builds
+    if (fs.existsSync(OUTPUT_DIR)) {
+      fs.rmSync(OUTPUT_DIR, { recursive: true, force: true });
     }
+    fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
-    // 2. 获取asar包所有文件列表（用全局asar命令）
-    console.log('🔍 读取asar包文件列表...');
-    let fileListOutput = '';
+    console.log('=> Loading system-level @electron/asar module...');
+    let asar;
     try {
-      // 执行asar list命令，获取所有文件
-      fileListOutput = execSync(`asar list "${ASAR_FILE_PATH}"`, { 
-        encoding: 'utf8',
-        stdio: ['ignore', 'pipe', 'ignore'] // 屏蔽无关输出
-      });
+      const asarModule = await import('file:///usr/lib/node_modules/@electron/asar/lib/asar.js');
+      asar = asarModule.default || asarModule;
     } catch (e) {
-      throw new Error(`读取文件列表失败：${e.message}`);
+      console.error(`Error: Failed to load asar module. ${e.message}`);
+      process.exit(1);
     }
-    // 处理文件列表（去空行）
-    const fileList = fileListOutput.split('\n').filter(file => file.trim() !== '');
-    if (fileList.length === 0) {
-      throw new Error('asar包内无文件，可能包损坏');
-    }
-    console.log(`📄 检测到 ${fileList.length} 个文件，开始过滤解压...`);
 
-    // 3. 逐个解压文件（跳过排除/缺失文件）
+    console.log('=> Reading flat file index...');
+    const rawFileList = asar.listPackage(ASAR_FILE_PATH);
+
+    // Normalize paths and filter out empty ones
+    const fileList = rawFileList
+      .map(f => f.startsWith('/') ? f.substring(1) : f)
+      .filter(f => f && f !== '.');
+
+    // Build a set of all directories to prevent file/directory name collisions
+    const dirSet = new Set();
+    for (const file of fileList) {
+      let currentDir = path.dirname(file);
+      while (currentDir !== '.' && currentDir !== '') {
+        dirSet.add(currentDir);
+        currentDir = path.dirname(currentDir);
+      }
+    }
+
+    console.log('=> Extracting files to memory and writing to disk...');
     let extractedCount = 0;
     let skippedCount = 0;
+
     for (const file of fileList) {
-      // 跳过排除规则的文件
-      if (EXCLUDE_PATTERNS.some(pattern => pattern.test(file))) {
+      // Skip directories
+      if (dirSet.has(file)) {
+        continue;
+      }
+
+      // Skip cross-platform prebuilds
+      if (EXCLUDE_PATTERNS.some(regex => regex.test(file))) {
         skippedCount++;
-        // console.log(`🚫 跳过排除文件：${file}`); // 可选：取消注释查看跳过的文件
         continue;
       }
 
       try {
-        // 拼接输出文件路径
-        const outputFilePath = path.join(OUTPUT_DIR, file);
-        const outputFileDir = path.dirname(outputFilePath);
-        
-        // 创建文件所在目录
-        if (!fs.existsSync(outputFileDir)) {
-          fs.mkdirSync(outputFileDir, { recursive: true });
+        // extractFile throws if the file is a directory or physically missing
+        const buffer = asar.extractFile(ASAR_FILE_PATH, file);
+
+        const destPath = path.join(OUTPUT_DIR, file);
+        const destDir = path.dirname(destPath);
+
+        if (!fs.existsSync(destDir)) {
+          fs.mkdirSync(destDir, { recursive: true });
         }
 
-        // 关键：用asar ef提取单个文件到指定路径
-        execSync(
-          `asar ef "${ASAR_FILE_PATH}" "${file}" -o "${outputFilePath}"`,
-          { stdio: 'ignore' } // 屏蔽所有输出，只关注是否成功
-        );
+        fs.writeFileSync(destPath, buffer);
         extractedCount++;
-      } catch (e) {
+      } catch (err) {
+        // Silently ignore directories and ghost files
         skippedCount++;
-        // console.log(`⚠️  跳过缺失文件：${file}`); // 可选：取消注释查看缺失文件
       }
     }
 
-    // 4. 输出结果
-    console.log(`\n🎉 解压完成！`);
-    console.log(`   ✅ 成功解压：${extractedCount} 个文件`);
-    console.log(`   🚫 跳过/排除：${skippedCount} 个文件`);
-    console.log(`   📂 解压目录：${path.resolve(OUTPUT_DIR)}`);
-
-  } catch (mainError) {
-    console.error(`❌ 解压失败：${mainError.message}`);
-    // 清理临时目录
-    if (fs.existsSync(OUTPUT_DIR)) {
-      fs.rmSync(OUTPUT_DIR, { recursive: true, force: true });
+    if (extractedCount === 0) {
+      console.error('Error: No files were extracted. Check safe_extract_asar.js!');
+      process.exit(1);
     }
+
+    console.log('=> Extraction complete.');
+    console.log(`   Successfully extracted: ${extractedCount} files`);
+    console.log(`   Skipped (dirs/missing/ignored): ${skippedCount} items`);
+
+  } catch (err) {
+    console.error(`Fatal error during extraction: ${err.message}`);
     process.exit(1);
   }
 }
 
-// 执行主函数
-safeExtractAsar();
+nativeExtract();

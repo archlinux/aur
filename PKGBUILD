@@ -3,7 +3,7 @@ pkgname=onekey-wallet-bin
 _pkgname=OneKey-Wallet
 pkgver=6.1.0
 _electronversion=39
-pkgrel=2
+pkgrel=3
 pkgdesc="Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -31,7 +31,7 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
-sha256sums=('c6e3da82de1c1721f045c7dff41fb8f2e917e64e7af3ecf7d714a5deb888ded6'
+sha256sums=('97ff33f11c405f38a6f53311eb2bac193d9de4ed84fdbd52bbb4eddec63744d6'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 sha256sums_aarch64=('0346f099bd4830e092c60feb35f02c81c2996b877bf2d91f1d0e68cec06787a6')
 sha256sums_x86_64=('fab7e29e37261625bd63eda4834456b1cec03cb363afa5fc09cbf2f4b699c51f')
