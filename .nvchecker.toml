@@ -1,0 +1,4 @@
+[hnswlib]
+source = "git"
+git = "https://github.com/nmslib/hnswlib.git"
+prefix = "v"
