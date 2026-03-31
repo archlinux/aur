@@ -4,18 +4,18 @@
 
 pkgname=pdfsam
 _pkgname=pdfsam-basic
-pkgver=5.4.5
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="A free open source tool to split and merge pdf documents"
 arch=('any')
 url="https://www.pdfsam.org/"
 license=('AGPL3')
-depends=('hicolor-icon-theme' 'java-runtime=21' 'sh' 'archlinux-java-run')
+depends=('hicolor-icon-theme' 'java-runtime=25' 'sh' 'archlinux-java-run')
 makedepends=('desktop-file-utils' 'gendesk')
 source=("https://github.com/torakiki/${pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.gz"
         "pdfsam")
-sha512sums=('a1e72e9b83217c9fb5611cf525c541b3391ea097414a3ff8d352d3cac5a0a7516435993184e2779810cca2708a3437ff914a132916476c44b160e0c1181d5318'
-            '700700b8ad4fb44f6eb1aaff35ede7ac53729c0dce39f23467159b14aadd28705cf5c547c6b8871ecd4afebc1fb479eafdbdad68b95c0114e26438961abf8209')
+sha512sums=('6888c672beb1f0518224621fcd940b46c2087bf816f024b28c861efa4b3ec911e3566a40afdca11aab45725dc17ee0da2ae16f5f14bf4f64c2025b6cd3f7ba3f'
+            'edfd2f1a529eab675dea7e17c149eb3a97ef5ea83ec6c8e8d26ffe988a29352f9f7c013dfff789785b37ca6cb4da30ae7b337536209c6a69976840355eb9cd3f')
 noextract=("${pkgname}-${_pkgver}-linux-x64.tar.gz")
 
 prepare() {
