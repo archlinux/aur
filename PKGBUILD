@@ -3,22 +3,22 @@
 
 _pkgname="joyshockmapper"
 pkgname="$_pkgname-git"
-pkgver=3.6.1.r10.gbb69784
+pkgver=3.6.1.r14.g416502e
 pkgrel=1
 pkgdesc="Game controller remapper with gyro aiming and flick stick support"
-url="https://github.com/Electronicks/JoyShockMapper"
+url="https://github.com/CoderMaximus/JoyShockMapper-linux"
 license=('MIT')
 arch=('x86_64')
 
 depends=(
-  'libevdev'
   'gtk3'
   'libappindicator'
+  'libevdev'
   'sdl3'
 )
 makedepends=(
-  'cmake'
   'clang'
+  'cmake'
   'git'
   'ninja'
 )
@@ -26,32 +26,34 @@ makedepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-options=('debug' '!lto' '!strip')
+options=('!lto')
 
-_pkgsrc="$_pkgname"
+_pkgsrc="$_pkgname-linux"
 source=(
   "$_pkgsrc"::"git+$url.git"
   '0001-use-system-sdl3.patch'
-  '0002-fix-status-notifier-segfault.patch'
 )
 sha256sums=(
   'SKIP'
   '8c11b618974407aebd54fc7c84cd1cdc18ba77811e92afc69883cae2a58af510'
-  'ad89986cc51f5d52b970d1979d0f6a9da659a22bab47daccb7f9ba95ad349b92'
 )
 
 prepare() {
-  cd "$_pkgsrc"
-
-  patch -Np1 -F100 -i ../0001-use-system-sdl3.patch
-  patch -Np1 -F100 -i ../0002-fix-status-notifier-segfault.patch
-
-  sed -e '1i #include <algorithm>' -i JoyShockMapper/src/TriggerEffectGenerator.cpp
-  sed -e '1i #include <chrono>' -i JoyShockMapper/include/Gamepad.h
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]]; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -d "$_pkgsrc" -Np1 -F100 -i "${srcdir:?}/$src"
+    fi
+  done
 }
 
 pkgver() {
   cd "$_pkgsrc"
+  git tag -f v3.6.1 b36a72be051a43a48165580d6d18cf92d301a02a
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
