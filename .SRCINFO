@@ -1,6 +1,6 @@
 pkgbase = dwarfs
 	pkgdesc = A fast high compression read-only file system
-	pkgver = 0.15.1
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://github.com/mhx/dwarfs
 	arch = x86_64
@@ -27,8 +27,8 @@ pkgbase = dwarfs
 	depends = brotli
 	depends = libarchive
 	depends = flac
-	source = dwarfs-0.15.1.tar.xz::https://github.com/mhx/dwarfs/releases/download/v0.15.1/dwarfs-0.15.1.tar.xz
-	sha256sums = a180086f9a898b4b52a5217e336c0134d63a10b395b493f2e19f231d575a87ec
-	b2sums = 3924454f8eab168f1dfe1978e8ced3541c7eac091d55a13d331d4fd5fd1b18c09ccd28cc87fb59e1977dbde05a2b99e18f984744a2798178e3a9222267476e21
+	source = dwarfs-0.15.2.tar.xz::https://github.com/mhx/dwarfs/releases/download/v0.15.2/dwarfs-0.15.2.tar.xz
+	sha256sums = 6b7edcb2121347e273753d949f72913f006ec12477248384b24c48989ec34995
+	b2sums = d5ba725889b98516976a663850c9cc04ee58ac4047d16b5aec771870a93d70c84583f3488b61f31368dd6b989b0c157d6471317d55f715c3dec88e2a12623c0b
 
 pkgname = dwarfs
