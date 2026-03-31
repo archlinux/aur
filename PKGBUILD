@@ -3,7 +3,7 @@
 # Template: update-aur.ts overwrites pkgver and the # AppImage / # Upstream AGPL lines in sha256sums.
 
 pkgname=recordly-bin
-pkgver=1.1.8
+pkgver=1.1.10
 pkgrel=1
 pkgdesc="Open-source screen recorder and editor with auto-zoom, cursor effects, and polished video export"
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=(
 	"LICENSE-${pkgver}::https://raw.githubusercontent.com/webadderall/Recordly/v${pkgver}/LICENSE.md"
 )
 sha256sums=(
-	'a6edb30faeb0c63431265f9cb7546bcb770c8ae738d89bcd00fe56fe9edb8ff0' # AppImage v${pkgver}
+	'831621a54204a8bd77fa1895b0039bd60e13794bc7eb6d05459b600741bda480' # AppImage v${pkgver}
 	'bf499305b338b29beaf6423a7a046e867a3c8bf7262e8d8fecc736fe452e6e66' # recordly.desktop
 	'42541ae775aa9eef582d9d00219a83d00909ceeca8a703f46c470c3f93abbb5e' # Upstream AGPL LICENSE
 )
