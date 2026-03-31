@@ -6,13 +6,14 @@ arch=('x86_64')
 url="https://github.com/utrumo/cosmic-ext-applet-per-app-layout"
 license=('GPL-3.0-only')
 depends=('libxkbcommon')
+options=(!debug)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 install="${pkgname}.install"
 
 _archive="${pkgname%-bin}-v${pkgver}-x86_64-linux.tar.gz"
 source=("${url}/releases/download/v${pkgver}/${_archive}")
-sha256sums=('ce996a56ab5ca29beaea1ef5781b7cc09bbae1d168d41dd0a24726e8c703be4f')
+sha256sums=('SKIP')
 
 package() {
     install -Dm0755 "${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"

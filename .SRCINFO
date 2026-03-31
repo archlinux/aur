@@ -9,7 +9,8 @@ pkgbase = cosmic-ext-applet-per-app-layout-bin
 	depends = libxkbcommon
 	provides = cosmic-ext-applet-per-app-layout
 	conflicts = cosmic-ext-applet-per-app-layout
+	options = !debug
 	source = https://github.com/utrumo/cosmic-ext-applet-per-app-layout/releases/download/v0.2.0/cosmic-ext-applet-per-app-layout-v0.2.0-x86_64-linux.tar.gz
-	sha256sums = ce996a56ab5ca29beaea1ef5781b7cc09bbae1d168d41dd0a24726e8c703be4f
+	sha256sums = SKIP
 
 pkgname = cosmic-ext-applet-per-app-layout-bin
