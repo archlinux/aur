@@ -1,6 +1,6 @@
 pkgname=atha
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and fast Arch Linux package manager wrapper built on top of pacman"
 arch=('any')
 url="https://github.com/Bangkah/Atha"

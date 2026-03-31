@@ -1,7 +1,7 @@
 pkgbase = atha
 	pkgdesc = Simple and fast Arch Linux package manager wrapper built on top of pacman
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bangkah/Atha
 	arch = any
 	license = MIT
