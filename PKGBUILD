@@ -1,7 +1,7 @@
 # Maintainer: Jonah Barkley-Griggs <jbarkleygriggs@gmail.com>
 _pkgname=wayvy-applet
 pkgname="${_pkgname}-git"
-pkgver=r0.0000000
+pkgver=r3.0000000
 pkgrel=1
 pkgdesc="A quick and dirty ksni applet for the Wayvy wallpaper manager."
 url="https://codeberg.org/J_S_Barkely-Griggs/Wayvy-applet"

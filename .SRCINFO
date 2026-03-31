@@ -1,6 +1,6 @@
 pkgbase = wayvy-applet-git
 	pkgdesc = A quick and dirty ksni applet for the Wayvy wallpaper manager.
-	pkgver = r0.0000000
+	pkgver = r3.0000000
 	pkgrel = 1
 	url = https://codeberg.org/J_S_Barkely-Griggs/Wayvy-applet
 	arch = x86_64
