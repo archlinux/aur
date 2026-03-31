@@ -1,4 +1,7 @@
 # Maintainer: Andy Alt <arch_stanton5995 at proton.me>
+# Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
+# Contributor: Darwin Bautista <djclue917@gmail.com>
+# Contributor: Jakub Luzny <limoto94@gmail.com>
 
 pkgname=netpanzer
 pkgver=0.9.1
