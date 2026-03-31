@@ -1,17 +1,24 @@
 pkgbase = perl-cpan-checksums
 	pkgdesc = Write a CHECKSUMS file for a directory as on CPAN
-	pkgver = 2.08
+	pkgver = 2.14
 	pkgrel = 1
-	url = http://search.cpan.org/dist/CPAN-Checksums
+	url = https://metacpan.org/release/ANDK/CPAN-Checksums-2.14
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker
+	depends = perl
 	depends = perl-compress-bzip2
 	depends = perl-data-compare
+	depends = perl-data-dumper
+	depends = perl-digest-md5>=2.36
+	depends = perl-digest-sha
+	depends = perl-file-temp
+	depends = perl-io-compress
+	depends = perl-io>=1.14
+	depends = perl-module-signature
+	depends = perl-pathtools
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANDK/CPAN-Checksums-2.08.tar.gz
-	md5sums = 058679056ade8ee885b8538fe195d84a
-	sha512sums = 4da547d37b2ca919d7459607bb780b93d78429de88fe0749e23a2e8930ae97cbbd0350e0951fa0facf10ec595bac2bc25ef8da487f81f4e736cc3bd2c0e47f4d
+	source = https://cpan.metacpan.org/authors/id/A/AN/ANDK/CPAN-Checksums-2.14.tar.gz
+	sha256sums = 4080716c5da7e03b504e3cc0ea1fd5ef9ed6915f6fb737564e9e13d355a89e39
 
 pkgname = perl-cpan-checksums
-
