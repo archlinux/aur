@@ -1,16 +1,20 @@
 pkgbase = perl-smart-comments
 	pkgdesc = Comments that do more than just sit there
-	pkgver = 1.000005
+	pkgver = 1.06
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Smart-Comments
-	arch = i686
-	arch = x86_64
-	license = PerlArtistic
-	license = GPL
-	depends = perl
+	url = https://metacpan.org/release/NEILB/Smart-Comments-1.06
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-carp
+	depends = perl-data-dumper
+	depends = perl-filter-simple
+	depends = perl-scalar-list-utils
+	depends = perl-text-balanced
+	depends = perl>=5.8.0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/Smart-Comments-1.000005.tar.gz
-	md5sums = 17f7fb5d43c9b8295e89344be4c40826
+	source = https://cpan.metacpan.org/authors/id/N/NE/NEILB/Smart-Comments-1.06.tar.gz
+	sha256sums = dcf8a312134a7c6b82926a0115d93b692472a662d28cdc3a9bdf28984ada9ee3
 
 pkgname = perl-smart-comments
-

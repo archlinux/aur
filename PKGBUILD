@@ -1,29 +1,54 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Archer777 <NAME at gmx dot com>
 
-pkgname=perl-smart-comments
-pkgver=1.000005
+_author=NEILB
+_dist=Smart-Comments
+pkgname=perl-${_dist@L}
+pkgver=1.06
 pkgrel=1
-pkgdesc="Comments that do more than just sit there"
-arch=('i686' 'x86_64')
-url='http://search.cpan.org/dist/Smart-Comments'
-license=('PerlArtistic' 'GPL')
-depends=('perl')
+pkgdesc='Comments that do more than just sit there'
+arch=('any')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-carp'
+    'perl-data-dumper'
+    'perl-filter-simple'
+    'perl-scalar-list-utils'
+    'perl-text-balanced'
+    'perl>=5.8.0'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=('perl-test-simple')
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/Smart-Comments-${pkgver}.tar.gz")
-md5sums=('17f7fb5d43c9b8295e89344be4c40826')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('dcf8a312134a7c6b82926a0115d93b692472a662d28cdc3a9bdf28984ada9ee3')
 
-build() {
-  cd Smart-Comments-${pkgver}
-  perl Makefile.PL INSTALLDIRS=vendor
-  make
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-check() {
-  cd Smart-Comments-${pkgver}
-  make test
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-package() {
-  cd Smart-Comments-${pkgver}
-  make DESTDIR="$pkgdir" install
+package()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
