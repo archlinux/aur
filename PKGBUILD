@@ -5,7 +5,7 @@ _boot_dir=${boot_dir:-/boot}
 _efi_dir=${efi_dir:-/boot/EFI}
 
 pkgname=netbootxyz-systemd-boot
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='netboot.xyz as systemd-boot loader entry'
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!debug')
 backup=("boot/loader/entries/netbootxyz.conf")
 source=("https://github.com/netbootxyz/netboot.xyz/releases/download/${pkgver}/netboot.xyz.efi"
         "netbootxyz.conf")
-b2sums=('3eb9b43fc7aa56561c981fd4519aec4b1571de672c4758142cd418109b4ebd94ac8f6abb8408bc70ede33116d75553b63c0f489f3f5c21f354b0955016ae9d4a'
+b2sums=('48437f7eb8876243e7b057aa93826e76ddc7e4ffb5192ebe9bcdbab83fba47aeeac68f3624baebb14443c2282f7359c2dc3fe960688f2cd457b21e6932dc7795'
         '0d75be01199f04deae3a6bd0d40198b888ed6b60820fd81de26ed84730c033323a5694edf6e86e87e678f573204b209a6a3da690af303256661dedccbf50180b')
 
 package() {
