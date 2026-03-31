@@ -1,6 +1,6 @@
 pkgname=nf
 _pkgname=ndpspoof
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="A tool to perform RA/RDNSS/NA spoofing"
 arch=('any')
