@@ -1,0 +1,20 @@
+pkgbase = bsdcoreutils-git
+	pkgdesc = Port of OpenBSD & NetBSD coreutils to Linux.
+	pkgver = v6.7.r2
+	pkgrel = 1
+	url = https://github.com/DiegoMagdaleno/BSDCoreUtils
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = byacc
+	depends = glibc
+	depends = openssl
+	provides = coreutils
+	conflicts = coreutils
+	replaces = coreutils
+	source = git+https://github.com/DiegoMagdaleno/BSDCoreUtils.git
+	sha256sums = SKIP
+
+pkgname = bsdcoreutils-git
