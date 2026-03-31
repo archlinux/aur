@@ -1,0 +1,3 @@
+[perl-task-kensho-toolchain]
+source = "cpan"
+cpan = "Task-Kensho-Toolchain"

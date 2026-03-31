@@ -1,0 +1,29 @@
+pkgbase = perl-task-kensho-toolchain
+	pkgdesc = A Glimpse at an Enlightened Perl: Basic Toolchain
+	pkgver = 0.41
+	pkgrel = 1
+	url = https://metacpan.org/release/ETHER/Task-Kensho-Toolchain-0.41
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker
+	depends = cpanminus
+	depends = perl-app-cpm
+	depends = perl-app-fatpacker
+	depends = perl-carton
+	depends = perl-cpan-mini
+	depends = perl-local-lib
+	depends = perl-pinto
+	depends = perl-version
+	depends = perl>=5.6.0
+	depends = perlbrew
+	optdepends = perl-cpan-meta
+	optdepends = perl-json-pp
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Task-Kensho-Toolchain-0.41.tar.gz
+	sha256sums = c224bf43dbd9c1b5555265b2b4453c81994b604a995c7923aa339e1e46f45dc4
+
+pkgname = perl-task-kensho-toolchain
