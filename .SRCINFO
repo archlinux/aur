@@ -1,6 +1,6 @@
 pkgbase = lightpanda-nightly-bin
 	pkgdesc = The headless browser designed for AI and data scripting (Nightly Build)
-	pkgver = 20260318.bd2406f8
+	pkgver = 1.0.0+nightly.5301+a6a87527
 	pkgrel = 1
 	url = https://github.com/lightpanda-io/browser
 	arch = x86_64

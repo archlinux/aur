@@ -1,6 +1,6 @@
 # Maintainer: Adria <adria@lightpanda.io>
 pkgname=lightpanda-nightly-bin
-pkgver=20260318.bd2406f8
+pkgver=1.0.0+nightly.5301+a6a87527
 pkgrel=1
 pkgdesc="The headless browser designed for AI and data scripting (Nightly Build)"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ sha256sums_aarch64=('SKIP')
 pkgver() {
     local _bin="${srcdir}/${pkgname}-${CARCH}"
     chmod +x "$_bin"
-    echo "$(date +%Y%m%d).$($_bin version 2>&1)"
+    "$_bin" version | sed 's/-/+/g'
 }
 
 package() {
