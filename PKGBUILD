@@ -3,7 +3,7 @@
 
 pkgname=vibe-kanban-bin
 _pkgname=vibe-kanban
-pkgver=0.1.38
+pkgver=0.1.39
 _binary_tag=v0.0.148-20260109183532
 pkgrel=1
 pkgdesc="Vibe Kanban - AI-powered Kanban board (Binary)"
