@@ -48,14 +48,15 @@ push:
     [[ -d .git ]] || { git -c init.defaultBranch=master init; git remote add origin ssh://aur@aur.archlinux.org/pi-bin.git; git remote add github git@github.com:skorotkiewicz/pi-mono-arch.git; }
 
     # GitHub (All)
-    git checkout -B main 2>/dev/null
+    git checkout -B dev 2>/dev/null
     git add . && git commit -m "update: $(grep -oP '^pkgver=\K.*' PKGBUILD)" || true
-    git push -u github main
+    git push -u github dev
 
     # AUR (Subset)
     git checkout -B master 2>/dev/null
-    git checkout main -- PKGBUILD .SRCINFO
+    git checkout dev -- PKGBUILD .SRCINFO
     git add PKGBUILD .SRCINFO
+    git rm Justfile
     
     if ! git diff-index --quiet HEAD --; then
         git commit -m "aur: $(grep -oP '^pkgver=\K.*' PKGBUILD)"
@@ -64,8 +65,8 @@ push:
         echo "AUR up to date."
     fi
 
-    git checkout main
-    
+    git checkout dev
+
 # Clean build artifacts
 clean:
     rm -rf src/ pkg/ *.tar.gz *.tar.zst
