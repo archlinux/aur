@@ -1,0 +1,25 @@
+pkgbase = vk-turn-proxy-client-git
+	pkgdesc = VK TURN Proxy - Client component (git version)
+	pkgver = r1.1234567
+	pkgrel = 1
+	url = https://github.com/cacggghp/vk-turn-proxy
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = iproute2
+	provides = vk-turn-proxy-client
+	conflicts = vk-turn-proxy-client-bin
+	conflicts = vk-turn-proxy-git
+	source = vk-turn-proxy::git+https://github.com/cacggghp/vk-turn-proxy.git
+	source = vk-turn-proxy-client.service
+	source = vk-turn-proxy-client.env
+	sha256sums = SKIP
+	sha256sums = 37bf69ee1cdde6ec2c172f3b08c993e544bec62a79273d342f3b69715d2c4907
+	sha256sums = 205aa129e0ee2837ffd5b102a5b2c1771bc51d5ffcc1cf4fb31e51110882063c
+
+pkgname = vk-turn-proxy-client-git
