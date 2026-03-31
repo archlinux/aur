@@ -1,4 +1,4 @@
-# Maintainer: Jan64X <jan.petrlik@protonmail.com>
+# Maintainer: Jan64X <jan.petrlik01@gmail.com>
 
 # Thanks to Davide Depau for his fork of libprintd which this is based on!
 
