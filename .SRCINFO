@@ -1,0 +1,14 @@
+pkgbase = qmentat
+	pkgdesc = Mental arithmetic practice application
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/RealGrep/QMentat
+	arch = x86_64
+	license = GPL3
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = gmp
+	source = git+https://github.com/RealGrep/QMentat.git#tag=v1.0.1
+	sha256sums = SKIP
+
+pkgname = qmentat
