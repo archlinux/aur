@@ -23,15 +23,13 @@ DLAGENTS=('https::/usr/bin/curl --user-agent Firefox -qgb "" -fLC - --retry 3 --
 
 
 prepare() {
-  cd $srcdir
-
-  tar xzf $pkgname-$pkgver-1.tar.gz
-  cd $pkgname-$pkgver
+  tar xzf "${pkgname}-${pkgver}-1.tar.gz"
+  cd "${pkgname}-${pkgver}"
   autoreconf -vif
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
   CFLAGS="${CFLAGS} -Wno-implicit-function-declaration"
 
@@ -44,7 +42,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 }
