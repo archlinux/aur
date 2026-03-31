@@ -3,8 +3,8 @@
 
 pkgname=daed-git
 _pkgname=${pkgname%-git}
-pkgver=1.21.1.r4.gf41f589
-pkgrel=2
+pkgver=1.25.0.r2.g564487b
+pkgrel=1
 pkgdesc="A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core)."
 arch=('x86_64' 'aarch64')
 url="https://github.com/daeuniverse/${_pkgname}"
@@ -28,7 +28,7 @@ options=(!debug)
 
 pkgver() {
 	cd "${_pkgname}/"
-	git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags --long --match="v[0-9]*" --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
