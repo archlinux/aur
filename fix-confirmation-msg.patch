@@ -1,0 +1,25 @@
+From d9a2bcac1154744036c069ade1832830cb4bb632 Mon Sep 17 00:00:00 2001
+From: Wolf <wolffreije@innius.com>
+Date: Thu, 13 Mar 2025 22:40:54 +0100
+Subject: [PATCH] fix [rofi-power-menu]: confirmation- and regular message name
+ collision with --no-text option enabled
+
+---
+ rofi-power-menu | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/rofi-power-menu b/rofi-power-menu
+index 13e17e3..9484f68 100755
+--- a/rofi-power-menu
++++ b/rofi-power-menu
+@@ -208,7 +208,9 @@ do
+ done
+ for entry in "${all[@]}"
+ do
+-    confirmationMessages[$entry]=$(write_message "${icons[$entry]}" "Yes, ${texts[$entry]}")
++    # Add zero-width space character (\u200b) to icon to ensure confirmation-
++    # and regular messages never collide.
++    confirmationMessages[$entry]=$(write_message "${icons[$entry]}\u200b" "Yes, ${texts[$entry]}")
+ done
+ confirmationMessages[cancel]=$(write_message "${icons[cancel]}" "No, cancel")
+ 
