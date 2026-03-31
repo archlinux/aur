@@ -10,7 +10,7 @@
 
 _pkgname="apollo"
 pkgname="$_pkgname-git"
-pkgver=0.4.8.r4.g08757dc
+pkgver=0.4.8.r14.g41bacbd
 pkgrel=2
 pkgdesc="A self-hosted game stream server"
 url="https://github.com/ClassicOldSong/Apollo"
@@ -18,6 +18,7 @@ license=('GPL-3.0-only')
 arch=('x86_64')
 
 depends=(
+  'boost-libs'
   'gtk3'
   'icu'
   'libayatana-appindicator'
@@ -175,6 +176,9 @@ package() {
       'libboost_log.so'
       'libboost_program_options.so'
       'libboost_thread.so'
+      'libcap.so'
+      'libcrypto.so'
+      'libcurl.so'
       'libevdev.so'
       'libglib-2.0.so'
       'libgobject-2.0.so'
