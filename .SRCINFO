@@ -1,8 +1,8 @@
 pkgbase = subterm-bin
 	pkgdesc = Cross-platform SSH and SFTP client with GPU-accelerated terminal rendering
-	pkgver = 0.2.22
+	pkgver = 0.2.23
 	pkgrel = 1
-	url = https://github.com/OutrageLabs/Subterm
+	url = https://github.com/kofany/subterm-releases
 	arch = x86_64
 	license = custom:proprietary
 	depends = webkit2gtk-4.1
@@ -20,8 +20,8 @@ pkgbase = subterm-bin
 	conflicts = subterm
 	options = !strip
 	options = !debug
-	noextract = subterm-bin-0.2.22.pkg.tar.zst
-	source = subterm-bin-0.2.22.pkg.tar.zst::https://github.com/OutrageLabs/Subterm/releases/download/v0.2.22/subterm-bin-0.2.22-1-x86_64.pkg.tar.zst
-	sha256sums = SKIP
+	noextract = subterm-bin-0.2.23.pkg.tar.zst
+	source = subterm-bin-0.2.23.pkg.tar.zst::https://github.com/kofany/subterm-releases/releases/download/v0.2.23/subterm-bin-0.2.23-1-x86_64.pkg.tar.zst
+	sha256sums = 1ba61f4eb3a73092de120d3c64ffe1cd5e0feef2a36a1a2a694567a67cd31fd9
 
 pkgname = subterm-bin
