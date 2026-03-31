@@ -29,7 +29,7 @@ depends=(
     'webp-pixbuf-loader' 'libgsf'
 
     # Terminal Setup
-    'kitty' 'xdg-terminal-exec' 'bat' 'fuzzel' 
+    'kitty' 'xdg-terminal-exec' 'bat' 'fuzzel' 'wf-recorder' 'wl-screenrec-git' 
     'ttf-jetbrains-maple-mono-nf-xx-xx' 'eza' 'zoxide' 'starship' 'jq' 'fish'
     'timg' 'imagemagick' 'shorin-contrib-git'  'fastfetch'
 
