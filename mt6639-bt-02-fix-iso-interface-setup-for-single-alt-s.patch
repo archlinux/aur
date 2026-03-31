@@ -15,7 +15,7 @@ Signed-off-by: Javier Tia <floss@jetm.me>
 Reported-by: Ryan Gilbert <xelnaga@gmail.com>
 Tested-by: Ryan Gilbert <xelnaga@gmail.com>
 
-01ad4794e76e226a8dee6bbf744194e83ab67bae
+5f992c4afab53d77bad942ac49a258227adc308e
 diff --git a/btmtk.c b/btmtk.c
 index 9bcbd48..2d5e38c 100644
 --- a/btmtk.c

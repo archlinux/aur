@@ -4,10 +4,11 @@ Add USB device ID 13d3:3588 (IMC Networks/Azurewave) for the MediaTek
 MT7927 (Filogic 380) Bluetooth interface found on the ASUS ROG STRIX
 X870E-E GAMING WIFI and ASUS ProArt X870E-Creator WiFi motherboards.
 
-Note: boards with this USB ID report only one ISO alternate setting
-(alt 0), causing a non-fatal "setting interface failed (22)" during
-setup. Bluetooth still functions but initialization takes ~19 seconds
-instead of ~2.6 seconds.
+Note: boards with this USB ID expose only one ISO alternate setting
+(alt 0). Without the fix in patch 2/8 ("btmtk: fix ISO interface
+setup for single alt setting"), this caused ~19 second initialization
+delays. With the fix applied, initialization completes in ~2.6
+seconds.
 
 The information in /sys/kernel/debug/usb/devices about the Bluetooth
 device is listed as the below.
@@ -37,7 +38,7 @@ Signed-off-by: Javier Tia <floss@jetm.me>
 Tested-by: Jose Tiburcio Ribeiro Netto <jnetto@mineiro.io>
 Tested-by: Ivan Lubnin <lubnin.ivan@gmail.com>
 
-5991feda1ba3ddf403578590973ad398a72beb1c
+f44b66c20067c84b91de62957ced7901eb53c5b5
 diff --git a/btusb.c b/btusb.c
 index de9c3bf..e15695f 100644
 --- a/btusb.c
