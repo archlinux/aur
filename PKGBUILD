@@ -83,6 +83,10 @@ patches = [
     ('function jl(e){if("win32"!==process.platform)return;', 'function jl(e){'),
     # Patch 9: prevent URLs from being treated as file paths in jl function
     ('const n=e.slice(1).find((e=>A().existsSync(e)));', 'const n=e.slice(1).find((e=>!e.includes("://")&&A().existsSync(e)));'),
+    # Patch 10: disable crash reporter on linux (provide fake DSN to skip throw)
+    ('if(!(e=this._options.dsn))throw new g("Attempted to enable Electron native crash reporter but no DSN was supplied");', 'e=this._options.dsn||"https://fake@sentry.io/0";'),
+    # Patch 11: disable autoUpdater on linux (el.autoUpdater is undefined)
+    ('Bd=async()=>{el.autoUpdater.on("before-quit-for-update",', 'Bd=async()=>{if("linux"===process.platform)return;el.autoUpdater.on("before-quit-for-update",'),
 ]
 
 for old, new in patches:
