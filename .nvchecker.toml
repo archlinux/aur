@@ -1,0 +1,3 @@
+[terminal-widgets]
+source = "pypi"
+pypi = "terminal-widgets"

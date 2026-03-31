@@ -1,0 +1,24 @@
+pkgbase = terminal-widgets
+	pkgdesc = A fully functional program for Terminal to show information about system, display, shell, package and many more
+	pkgver = 1.25
+	pkgrel = 1
+	url = https://github.com/ankushbhagats/terminal-widgets
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = bash
+	depends = python
+	depends = python-requests
+	depends = python-py-cpuinfo
+	depends = python-psutil
+	depends = python-rich
+	depends = python-rich-argparse
+	provides = twidgets
+	conflicts = python-terminal-widgets
+	source = https://files.pythonhosted.org/packages/source/t/terminal_widgets/terminal_widgets-1.25.tar.gz
+	sha256sums = 9cb91c1541c3f79bad09d199e192ec240869e1368043004991749b6658fa5314
+
+pkgname = terminal-widgets
