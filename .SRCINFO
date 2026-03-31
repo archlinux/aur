@@ -1,6 +1,6 @@
 pkgbase = joy-browser
 	pkgdesc = A custom Electron-based web browser for Linux
-	pkgver = 0.0.13
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/drpt78/joy-browser
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = joy-browser
 	makedepends = npm
 	makedepends = nodejs
 	depends = electron
-	source = joy-browser-0.0.13.tar.gz::https://github.com/drpt78/joy-browser/archive/refs/tags/v0.0.13.tar.gz
-	sha256sums = 0ae8f458e5be578c7e00f5a2b2cd7c72827f97398cc6398e4b324efdbbfbb435
+	source = joy-browser-0.1.0.tar.gz::https://github.com/drpt78/joy-browser/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = fd9bf2e1fb221a929964e6920f72346d4f2874d9025e4d907f803edff88073fc
 
 pkgname = joy-browser

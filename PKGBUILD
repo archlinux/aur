@@ -1,6 +1,6 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: drpt78 <drpt78@github>
 pkgname=joy-browser
-pkgver=0.0.13
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A custom Electron-based web browser for Linux"
 arch=('x86_64')
@@ -9,30 +9,30 @@ license=('MIT')
 depends=('electron')
 makedepends=('npm' 'nodejs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/drpt78/joy-browser/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("0ae8f458e5be578c7e00f5a2b2cd7c72827f97398cc6398e4b324efdbbfbb435")
+sha256sums=('fd9bf2e1fb221a929964e6920f72346d4f2874d9025e4d907f803edff88073fc')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   npm install --ignore-scripts
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   # Install app files
   install -dm755 "$pkgdir/usr/lib/$pkgname"
-  cp -r src/index.html src/icon.png src/main.js src/preload.js package.json node_modules \
+  cp -r src package.json node_modules \
     "$pkgdir/usr/lib/$pkgname/"
 
   # Launcher script
   install -dm755 "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/bin/bash
-exec electron /usr/lib/$pkgname/main.js "\$@"
+exec electron /usr/lib/$pkgname "\$@"
 EOF
   chmod +x "$pkgdir/usr/bin/$pkgname"
 
-  # Desktop entry (shows in app menus)
+  # Desktop entry
   install -dm755 "$pkgdir/usr/share/applications"
   cat > "$pkgdir/usr/share/applications/$pkgname.desktop" << EOF
 [Desktop Entry]
