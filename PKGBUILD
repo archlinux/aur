@@ -28,34 +28,29 @@ sha256sums=('31f5e8e2ca7f85d40bb18ef518bf1a105a6f602918a0755bc649f3f407b75d70'
             '58e7a080756eb81ae8ca479d909bcd375e40a359b43e6b70a0177f2c28ace938')
 
 prepare() {
-  set -u
+  local -; set -u
   cd "ht-${pkgver}"
   # https://stackoverflow.com/questions/1100090/looking-for-an-efficient-integer-square-root-algorithm-for-arm-thumb2
   #diff -pNau5 htapp.cc{.orig,} > '../0000-abs-uint-ambiguous.patch'
   patch -Nbup0 -i "${srcdir}/0000-abs-uint-ambiguous.patch"
-  set +u
 }
 
 build() {
-  set -u
+  local -; set -u
   cd "${_pkgname}-${pkgver}"
   if [ ! -s 'Makefile' ]; then
     ./configure --disable-x11-textmode --enable-release --prefix='/usr'
   fi
 
-  local _mflags=()
-  _mflags+='CXXFLAGS=-Wno-narrowing'
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  if [ -z "${MAKEFLAGS:=}" ] || [ "${MAKEFLAGS//-j/}" = "${MAKEFLAGS}" ]; then
-    _mflags+=('-j' "${_nproc}")
-  fi
-
+  local _mflags=(
+    'CFLAGS=-std=gnu99'
+    'CXXFLAGS=-Wno-narrowing -std=gnu++98'
+  )
   nice make -s "${_mflags[@]}"
-  set +u
 }
 
 package() {
-  set -u
+  local -; set -u
   cd "${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   # avoid TeX conflict
@@ -63,6 +58,5 @@ package() {
   # doc
   install -Dpm0644 doc/*.info -t "${pkgdir}/usr/share/info/"
   install -Dpm0644 doc/{README,*.html} -t "${pkgdir}/usr/share/doc/ht/"
-  set +u
 }
 set +u
