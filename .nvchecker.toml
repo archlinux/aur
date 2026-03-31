@@ -1,0 +1,5 @@
+[q-bin]
+source = "github"
+github = "harelba/q"
+use_latest_release = true
+prefix = "v"

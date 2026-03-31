@@ -1,0 +1,20 @@
+pkgbase = q-bin
+	pkgdesc = SQL-like queries on tabular text data, including joins and subqueries
+	pkgver = 3.1.6
+	pkgrel = 1
+	url = https://github.com/harelba/q
+	arch = x86_64
+	license = GPL-3.0
+	depends = libgcc
+	depends = glibc
+	depends = python
+	provides = q
+	conflicts = q
+	source = README-3.1.6.md::https://raw.githubusercontent.com/harelba/q/v3.1.6/README.markdown
+	source = LICENSE-3.1.6::https://raw.githubusercontent.com/harelba/q/v3.1.6/LICENSE
+	sha256sums = 94b326c34fbbd96e240bf79bdb230e598bef3e0141edd580ce0aae84ddc27bd9
+	sha256sums = 589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2
+	source_x86_64 = q-x86_64-3.1.6::https://github.com/harelba/q/releases/download/v3.1.6/linux-q
+	sha256sums_x86_64 = 2e6a69fcb91a4043a936c2e70d11199298a0f3b925e21358aebda630920f4998
+
+pkgname = q-bin
