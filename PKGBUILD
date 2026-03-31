@@ -9,7 +9,7 @@
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 
 pkgname=mozillavpn
-pkgver=2.34.1
+pkgver=2.35.0
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 arch=('x86_64')
@@ -59,8 +59,10 @@ _dl_url="https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefi
 _pkgsrc="$pkgname-$pkgver"
 source=(
   "$_dl_url/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz"
+  https://patch-diff.githubusercontent.com/raw/mozilla-mobile/mozilla-vpn-client/pull/11152.patch
 )
-sha256sums=('2ebbd6d532245e08733b3188802c00d58e9d2473a30bb542f3dbc1762eec315f')
+sha256sums=('8723ce71b7efc182bd74b4c0381f44d21d5b6939ecc9e2840d0d96a9db716ecb'
+            'dba8ab318f0b43e9be6cc99e7fee74955ca9b90be200fdbd5cbc7fb7d46d09fc')
 
 _cargo_env() {
   : ${CARGO_HOME:=$SRCDEST/cargo-home}
@@ -76,6 +78,8 @@ prepare() {
 
   cd "$_pkgsrc"
   cargo update
+
+  patch -p1 < ../11152.patch
 }
 
 build() {
