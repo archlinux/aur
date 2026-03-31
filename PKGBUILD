@@ -1,7 +1,7 @@
 # Maintainer: Victor Sosa <victorsosadev@gmail.com>
 
 pkgname=vswaybar-studio
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A visual configuration editor for Waybar — build, style and preview your bar in real time"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
     'network-manager-applet: network settings (network module on-click)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/victorsosaMx/vsWaybar-Studio/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b528c918ffefc015801098b06856f8f928a208a5028da27bebc85030fd2c4acf')
+sha256sums=('3e8474232b103bc5343d72bb6bdbe0c3d928ba133016c5b19934f8cf1e5918cd')
 
 package() {
     cd "vsWaybar-Studio-$pkgver"
