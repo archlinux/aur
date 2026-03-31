@@ -1,31 +1,31 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Dunky <braxtinmoss13@gmail.com>
+# Contributor: Petrov Vladislav <ejiek@mail.ru>
 
-# Maintainer: Petrov Vladislav <ejiek@mail.ru>
 pkgname=rofi-wifi-menu-git
 _pkgname=rofi-wifi-menu
-pkgver=25.30e42e6
+pkgver=r32.bd5f34f
 pkgrel=1
-pkgdesc="bash script providing WiFi menu for rofi"
+pkgdesc="Bash script providing a WiFi menu using rofi and nmcli"
 arch=('any')
 url='https://github.com/zbaylin/rofi-wifi-menu'
 license=('unknown')
 install=rofi-wifi-menu.install
-depends=('rofi' 'networkmanager' 'bc' 'wireless_tools')
+# wireless_tools removed: iwconfig is unused since commit bd5f34f (2019)
+depends=('rofi' 'networkmanager' 'bc')
 makedepends=('git')
-source=('git+https://github.com/zbaylin/rofi-wifi-menu')
+source=("git+https://github.com/zbaylin/rofi-wifi-menu.git")
 sha256sums=('SKIP')
 provides=('rofi-wifi-menu')
 conflicts=('rofi-wifi-menu')
 
 pkgver() {
-	cd ${_pkgname}
-	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	install -Dm755 "$srcdir/$_pkgname/rofi-wifi-menu.sh" "$pkgdir/usr/bin/rofi-wifi-menu"
-	install -Dm555 "$srcdir/$_pkgname/config.example" "$pkgdir/usr/share/rofi/wifi.example"
+    cd "$_pkgname"
+    install -Dm755 rofi-wifi-menu.sh "$pkgdir/usr/bin/rofi-wifi-menu"
+    install -Dm644 config.example "$pkgdir/usr/share/rofi-wifi-menu/config.example"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
