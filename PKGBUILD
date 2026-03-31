@@ -5,7 +5,7 @@ _pkgname=piperig
 pkgname=${_pkgname}-bin
 pkgdesc="Declarative pipeline runner for shell scripts. Define steps, params, and loops in YAML — piperig expands and executes."
 
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('806d4e61c59bc04f6dff09098ce70ea94a7d29d94c7ae5b7e186f68ca8a977e6')
-sha256sums_aarch64=('67026db9ac309fbf163f20c6566b0bd350ab06bb44d24a9275f51d029fa8467b')
+sha256sums_x86_64=('71d30655305e7fa2fc306697576508c5356b7f055ab1585f8757d64479f4d4c6')
+sha256sums_aarch64=('d02d560bdabd7a60db69c6839678b7254c2eb9d027f83905c28968bafe6f5304')
 
 
 package() {
