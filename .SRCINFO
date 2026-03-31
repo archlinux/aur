@@ -1,6 +1,6 @@
 pkgbase = vagrant-git
 	pkgdesc = Build and distribute virtualized development environments
-	pkgver = 2.4.2.dev+000013.26a1ff10.69.g71150ee3d
+	pkgver = 2.4.10.dev+000759.0b7d460a.0.g0b7d460a4
 	pkgrel = 1
 	url = https://vagrantup.com
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = vagrant-git
 	depends = xz
 	depends = perl
 	optdepends = dnsmasq: if using libvirt
+	optdepends = cdrtools: to create cloud-init media
 	provides = vagrant
 	conflicts = vagrant-substrate
 	conflicts = vagrant-substrate-git
