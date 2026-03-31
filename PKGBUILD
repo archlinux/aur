@@ -4,11 +4,11 @@ pkgbase=dms-shell
 _pkg1=DankMaterialShell
 pkgname=($pkgbase $pkgbase-hyprland $pkgbase-niri)
 pkgver=1.4.4
-pkgrel=5
+pkgrel=6
 pkgdesc='A Quickshell-based desktop shell with Material 3 design principles'
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
-license=(GPL-3.0-only)
+license=(MIT)
 depends=(dgop
          accountsservice
          quickshell)
@@ -21,7 +21,7 @@ optdepends=('cava: Audio visualizer'
             'power-profiles-daemon: Set power profile'
             'qt6-multimedia: Sound effect support'
             'qt6ct: Qt6 application theming'
-            'systemd-networkd: Required for network managementa via systemd-networkd'
+            'systemd: Required for network managementa via systemd-networkd'
             'wtype: Paste from clipboard history and plugins')
 makedepends=(go)
 _archive="$_pkg1-$pkgver"
