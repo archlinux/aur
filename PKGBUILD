@@ -3,7 +3,7 @@
 
 pkgname=python-spdx-tools
 _name=tools-python
-pkgver=0.8.3
+pkgver=0.8.5
 pkgrel=1
 pkgdesc='A Python library to parse, validate and create SPDX documents.'
 url='https://github.com/spdx/tools-python'
@@ -13,7 +13,7 @@ checkdepends=(python-pytest python-pyshacl python-tzdata)
 license=('Apache-2.0')
 arch=('any')
 source=("git+https://github.com/spdx/tools-python.git#tag=v${pkgver}")
-sha512sums=('SKIP')
+sha256sums=('52ef179e05f2219af2b59fa752c85bbad436451951ea09aab0056af7ffb9a4b2')
 
 build() {
     cd "$srcdir/$_name"
