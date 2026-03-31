@@ -1,44 +1,51 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 
-pkgname=perl-carp-assert
+_author=YVES
+_dist=Carp-Assert
+pkgname=perl-${_dist@L}
 pkgver=0.22
-pkgrel=4
+pkgrel=5
 pkgdesc='executable comments'
-arch=(any)
-license=(PerlArtistic GPL)
-options=(!emptydirs)
-depends=('perl>=5.6')
-url=https://metacpan.org/release/Carp-Assert
-source=("https://cpan.metacpan.org/authors/id/Y/YV/YVES/Carp-Assert-$pkgver.tar.gz")
-md5sums=(34df5befd63bcf66eb881e6c981c7d53)
-sha512sums=(a757dd7bd5799ba98bf30fd2b55add05532af354e21e166ae1164acde71585a1b7783e28341dd8871dcc222de4bf6b78f05163e06d9f22681b7bbd547edc9c0a)
-_ddir="Carp-Assert-$pkgver"
+arch=('any')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-carp'
+    'perl-exporter'
+    'perl>=5.6.0'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=('perl-test-simple')
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('807ea97c6bed76ac2e4969efba7dae48fefeb9f28797f112671b3ac8a49355f7')
 
 build()
-(
-  cd "$srcdir/$_ddir"
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-  unset PERL5LIB PERL_MM_OPT
-  /usr/bin/perl Makefile.PL
-  make
-)
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
+}
 
 check()
-(
-  cd "$srcdir/$_ddir"
-  export PERL_MM_USE_DEFAULT=1
-  unset PERL5LIB
-  make test
-)
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
+}
 
 package()
-(
-  cd "$srcdir/$_ddir"
-  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-)
+{
+    cd "$_dist-$pkgver"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
