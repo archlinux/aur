@@ -2,18 +2,18 @@
 
 pkgname=darknet-hankai
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source neural network framework written in C, C++, and CUDA"
 arch=('x86_64')
 url="https://github.com/hank-ai/darknet"
 license=('Apache-2.0')
-depends=('cmake' 'opencv' 'protobuf' 'openblas')
+depends=('cmake' 'opencv' 'protobuf' 'openblas' 'vtk' 'hdf5')
 # Note: 'clang' and 'lld' are strictly required if building for ROCm/HIP
 optdepends=('cuda: For NVIDIA GPU support'
             'rocm-hip-sdk: For AMD GPU support'
             'clang: Required for ROCm/HIP builds'
             'lld: Required for ROCm/HIP builds')
-makedepends=('git')
+makedepends=('git' 'clang21')
 source=("git+https://codeberg.org/CCodeRun/darknet.git#tag=v${pkgver}")
 sha256sums=('b637e20e2290557d5007b09732efed7680104f19de153d7d16581ceb5b6e488d')
 provides=("${pkgname}")
@@ -90,7 +90,10 @@ if [[ "${build_mode}" == "rocm" ]]; then
 
   elif [[ "${build_mode}" == "cuda" ]]; then
     msg "Configuring for NVIDIA GPU (CUDA)..."
-
+    cmake_args+=(
+        -DCMAKE_CUDA_COMPILER="${cuda_compiler}"
+        -DCMAKE_CUDA_HOST_COMPILER=/usr/lib/llvm21/bin/clang
+    )
     local cuda_compiler=""
     if [[ -x "/opt/cuda/bin/nvcc" ]]; then
         cuda_compiler="/opt/cuda/bin/nvcc"
