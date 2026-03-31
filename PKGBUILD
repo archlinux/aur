@@ -28,7 +28,7 @@ build() {
 
 package() {
 	cd "$srcdir/BSDCoreUtils/build"
-	make install /opt/BSDuserland
+	make install -DCMAKE_INSTALL_PREFIX=/opt/BSDuserland
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	export PATH="/opt/BSD/userland:$PATH"
+	export PATH="/opt/BSDuserland:$PATH"
 }
