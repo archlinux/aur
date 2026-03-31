@@ -1,0 +1,68 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ryutaroh Matsumoto <ryutaroh.matsumoto@nagoya-u.jp>
+Date: Mon, 8 Jul 2019 00:25:48 +0900
+Subject: [PATCH] Add reload support to the systemd unit files
+
+When wifi password is written in /etc/wpa_supplicant/wpa_supplicant-if.conf,
+wpa_supplicant@if.service is started by systemd.
+When one adds a new pair of SSID and its password in the above config
+file, wpa_supplicant has to reload the changed config file.
+But "systemctl reload" was not accepted because "ExecReload" was missing
+from wpa_supplicant@.service.
+
+Bug-Debian: https://bugs.debian.org/931554
+---
+ wpa_supplicant/systemd/wpa_supplicant-nl80211.service.arg.in | 1 +
+ wpa_supplicant/systemd/wpa_supplicant-wired.service.arg.in   | 1 +
+ wpa_supplicant/systemd/wpa_supplicant.service.arg.in         | 1 +
+ wpa_supplicant/systemd/wpa_supplicant.service.in             | 1 +
+ 4 files changed, 4 insertions(+)
+
+diff --git a/wpa_supplicant/systemd/wpa_supplicant-nl80211.service.arg.in b/wpa_supplicant/systemd/wpa_supplicant-nl80211.service.arg.in
+index 4eab33526bba..577e550477f0 100644
+--- a/wpa_supplicant/systemd/wpa_supplicant-nl80211.service.arg.in
++++ b/wpa_supplicant/systemd/wpa_supplicant-nl80211.service.arg.in
+@@ -10,6 +10,7 @@ Wants=network.target
+ [Service]
+ Type=simple
+ ExecStart=@BINDIR@/wpa_supplicant -c/etc/wpa_supplicant/wpa_supplicant-nl80211-%I.conf -Dnl80211 -i%I
++ExecReload=/bin/kill -HUP $MAINPID
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/wpa_supplicant/systemd/wpa_supplicant-wired.service.arg.in b/wpa_supplicant/systemd/wpa_supplicant-wired.service.arg.in
+index ca3054bc6d55..c0855babd4d1 100644
+--- a/wpa_supplicant/systemd/wpa_supplicant-wired.service.arg.in
++++ b/wpa_supplicant/systemd/wpa_supplicant-wired.service.arg.in
+@@ -10,6 +10,7 @@ Wants=network.target
+ [Service]
+ Type=simple
+ ExecStart=@BINDIR@/wpa_supplicant -c/etc/wpa_supplicant/wpa_supplicant-wired-%I.conf -Dwired -i%I
++ExecReload=/bin/kill -HUP $MAINPID
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/wpa_supplicant/systemd/wpa_supplicant.service.arg.in b/wpa_supplicant/systemd/wpa_supplicant.service.arg.in
+index b0d610fa8efb..57f6f51ce4cf 100644
+--- a/wpa_supplicant/systemd/wpa_supplicant.service.arg.in
++++ b/wpa_supplicant/systemd/wpa_supplicant.service.arg.in
+@@ -10,6 +10,7 @@ Wants=network.target
+ [Service]
+ Type=simple
+ ExecStart=@BINDIR@/wpa_supplicant -c/etc/wpa_supplicant/wpa_supplicant-%I.conf -i%I
++ExecReload=/bin/kill -HUP $MAINPID
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/wpa_supplicant/systemd/wpa_supplicant.service.in b/wpa_supplicant/systemd/wpa_supplicant.service.in
+index 561ae8f827ab..18cbc1108597 100644
+--- a/wpa_supplicant/systemd/wpa_supplicant.service.in
++++ b/wpa_supplicant/systemd/wpa_supplicant.service.in
+@@ -9,6 +9,7 @@ IgnoreOnIsolate=true
+ Type=dbus
+ BusName=fi.w1.wpa_supplicant1
+ ExecStart=@BINDIR@/wpa_supplicant -u -s -O /run/wpa_supplicant
++ExecReload=/bin/kill -HUP $MAINPID
+ 
+ [Install]
+ WantedBy=multi-user.target

@@ -1,0 +1,23 @@
+diff --git a/wpa_supplicant/events.c b/wpa_supplicant/events.c
+index 5a1bc6d58..00109a0cd 100644
+--- a/wpa_supplicant/events.c
++++ b/wpa_supplicant/events.c
+@@ -6766,12 +6766,12 @@ void wpa_supplicant_event(void *ctx, enum wpa_event_type event,
+ 					data->eapol_rx.encrypted);
+ 		break;
+ 	case EVENT_SIGNAL_CHANGE:
+-		wpa_msg(wpa_s, MSG_INFO, WPA_EVENT_SIGNAL_CHANGE
+-			"above=%d signal=%d noise=%d txrate=%lu",
+-			data->signal_change.above_threshold,
+-			data->signal_change.data.signal,
+-			data->signal_change.current_noise,
+-			data->signal_change.data.current_tx_rate);
++		wpa_msg_ctrl(wpa_s, MSG_INFO, WPA_EVENT_SIGNAL_CHANGE
++			     "above=%d signal=%d noise=%d txrate=%lu",
++			     data->signal_change.above_threshold,
++			     data->signal_change.data.signal,
++			     data->signal_change.current_noise,
++			     data->signal_change.data.current_tx_rate);
+ 		wpa_bss_update_level(wpa_s->current_bss,
+ 				     data->signal_change.data.signal);
+ 		bgscan_notify_signal_change(
