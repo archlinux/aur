@@ -2,7 +2,7 @@
 pkgname=fooyin
 _pkgname=Fooyin
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A customisable music player."
 arch=('x86_64')
 url="https://www.fooyin.org/"
@@ -15,6 +15,7 @@ depends=(
     'ffmpeg'
     'kdsingleapplication'
     'libvgm-git'
+    'qcoro'
 )
 makedepends=(
     'qt6-svg'
@@ -28,6 +29,8 @@ makedepends=(
     'libebur128'
     'libarchive'
     'libgme'
+    'soundtouch'
+    'git'
 )
 optdepends=(
     'sdl2: For the SDL2 audio output plugin'
@@ -37,6 +40,7 @@ optdepends=(
     'libsndfile: For the GME audio input plugin'
     'libarchive: For the libarchive archive plugin'
     'libebur128: For the ReplayGain scanner plugin'
+    'soundtouch: Enable building a dsp plugin based on soundtouch.'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
