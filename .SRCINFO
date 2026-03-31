@@ -1,0 +1,25 @@
+pkgbase = vpn-shroud
+	pkgdesc = A provider-agnostic VPN connection manager for Linux with kill switch, auto-reconnect, and system tray integration
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/loujr/shroud
+	install = shroud.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	depends = networkmanager
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	optdepends = networkmanager-openvpn: OpenVPN support
+	optdepends = networkmanager-wireguard: WireGuard support
+	optdepends = iptables: kill switch (iptables backend)
+	optdepends = nftables: kill switch (nftables backend, preferred)
+	provides = shroud
+	conflicts = shroud
+	options = !lto
+	backup = etc/sudoers.d/shroud
+	source = vpn-shroud-2.0.2.tar.gz::https://github.com/loujr/shroud/archive/v2.0.2.tar.gz
+	sha256sums = c736b7eddea62cd0366ef9cf83d1a87de5d39ce8e8004fa2e75463e46891ecbf
+
+pkgname = vpn-shroud

@@ -1,0 +1,57 @@
+post_install() {
+    echo ":: Shroud VPN Manager installed successfully"
+    echo "::"
+    echo ":: Quick start (desktop mode):"
+    echo "::   shroud                        Start daemon with system tray"
+    echo "::   shroud connect <vpn-name>     Connect to a VPN"
+    echo "::   shroud status                 Check connection status"
+    echo "::   shroud list                   List available VPN connections"
+    echo "::"
+    echo ":: Kill switch setup:"
+    echo "::   A sudoers rule was installed at /etc/sudoers.d/shroud"
+    echo "::   This allows passwordless iptables/nftables for the kill switch."
+    echo "::   Review it with: sudo cat /etc/sudoers.d/shroud"
+    echo "::"
+    echo ":: Headless/server mode:"
+    echo "::   sudo systemctl enable --now shroud"
+    echo "::   Example config: /usr/share/doc/vpn-shroud/shroud-headless.conf.example"
+    echo "::"
+    echo ":: Autostart on login:"
+    echo "::   shroud autostart on"
+    echo "::"
+    echo ":: Documentation: https://github.com/loujr/shroud/tree/main/docs"
+}
+
+post_upgrade() {
+    echo ":: Shroud upgraded to $1"
+    echo ":: Restart the daemon: shroud restart"
+    echo ":: Or if running headless: sudo systemctl restart shroud"
+}
+
+pre_remove() {
+    # Stop systemd service if running
+    if systemctl is-active --quiet shroud 2>/dev/null; then
+        echo ":: Stopping shroud systemd service..."
+        systemctl stop shroud 2>/dev/null || true
+    fi
+    if systemctl is-enabled --quiet shroud 2>/dev/null; then
+        echo ":: Disabling shroud systemd service..."
+        systemctl disable shroud 2>/dev/null || true
+    fi
+}
+
+post_remove() {
+    echo ":: Shroud removed"
+    echo "::"
+    echo ":: If the kill switch was active, firewall rules may persist."
+    echo ":: Clean up manually if needed:"
+    echo "::   sudo iptables -F SHROUD_KILLSWITCH 2>/dev/null"
+    echo "::   sudo iptables -X SHROUD_KILLSWITCH 2>/dev/null"
+    echo "::   sudo iptables -D OUTPUT -j SHROUD_KILLSWITCH 2>/dev/null"
+    echo "::   sudo ip6tables -F SHROUD_KILLSWITCH 2>/dev/null"
+    echo "::   sudo ip6tables -X SHROUD_KILLSWITCH 2>/dev/null"
+    echo "::   sudo ip6tables -D OUTPUT -j SHROUD_KILLSWITCH 2>/dev/null"
+    echo "::"
+    echo ":: User config remains at ~/.config/shroud/"
+    echo ":: Remove it manually if desired."
+}
