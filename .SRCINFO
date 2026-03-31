@@ -1,6 +1,6 @@
 pkgbase = zashboard-bin
 	pkgdesc = A dashboard using clash api
-	pkgver = 2.10.0
+	pkgver = 2.10.1
 	pkgrel = 1
 	url = https://github.com/Zephyruso/zashboard
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = zashboard-bin
 	optdepends = mihomo: Another Clash Kernel
 	provides = zashboard
 	conflicts = zashboard
-	source = zashboard-bin-2.10.0.zip::https://github.com/Zephyruso/zashboard/releases/download/v2.10.0/dist.zip
-	source = https://raw.githubusercontent.com/Zephyruso/zashboard/refs/tags/v2.10.0/LICENSE
-	sha256sums = 2d7818cbe4e6b8127563c0735e17c5eab8dc8e3fb9ff5812cb05c11b07b6a697
+	source = zashboard-bin-2.10.1.zip::https://github.com/Zephyruso/zashboard/releases/download/v2.10.1/dist.zip
+	source = https://raw.githubusercontent.com/Zephyruso/zashboard/refs/tags/v2.10.1/LICENSE
+	sha256sums = bbd3e45cb41871b3e157e47fb286ce88116d99bac36536fb82aba93b0d423f1a
 	sha256sums = ffc390eec51f16b58506b1a42c99fe0cd9ffea1e3081aab443100fd8c20182d9
 
 pkgname = zashboard-bin
