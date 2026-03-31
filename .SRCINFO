@@ -1,0 +1,18 @@
+pkgbase = hypr-desktop-git
+	pkgdesc = Virtual desktop manager and TUI for Hyprland
+	pkgver = r3.ee531a0
+	pkgrel = 1
+	url = https://github.com/jaehho/hypr-desktop
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = hyprland
+	depends = python
+	depends = jq
+	depends = socat
+	provides = hypr-desktop
+	conflicts = hypr-desktop
+	source = git+https://github.com/jaehho/hypr-desktop.git
+	sha256sums = SKIP
+
+pkgname = hypr-desktop-git
