@@ -1,5 +1,5 @@
 pkgname=atha
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Lightweight package manager wrapper for Arch Linux"
 arch=('any')
