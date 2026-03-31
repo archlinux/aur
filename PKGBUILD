@@ -1,17 +1,18 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner-git
-pkgver=4.14.5.r2
+pkgver=4.14.5.r6
 pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
   'x86_64'
 )
 url="https://github.com/Emiliopg91/RogPerfTuner"
+packager="Emiliopg91 <ojosdeserbio@gmail.com>"
 license=(
   'GPL2'
 )
 source=(
-  "git+$url.git#commit=26f8c106"
+  "git+$url.git#commit=e66f7593"
 )
 sha256sums=(
   'SKIP'
