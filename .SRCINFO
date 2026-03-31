@@ -9,6 +9,6 @@ pkgbase = rsm
 	makedepends = cargo
 	depends = gcc-libs
 	source = rsm-0.2.1.tar.gz::https://github.com/hunde32/rsm/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = c7300d1ec9f4cc51ac140c77d75c99d06f245cc4932dc8aeccca2bc276ee06f2
+	sha256sums = 57eafc65a5ca4f4208cd3ab84ce36157b05419d3c0912920b649816d2cc53d11
 
 pkgname = rsm

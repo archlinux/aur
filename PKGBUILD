@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c7300d1ec9f4cc51ac140c77d75c99d06f245cc4932dc8aeccca2bc276ee06f2')
+sha256sums=('57eafc65a5ca4f4208cd3ab84ce36157b05419d3c0912920b649816d2cc53d11')
 
 build() {
   cd "rsm-$pkgver"
