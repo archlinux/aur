@@ -9,12 +9,12 @@ pkgdesc='IP network calculator - Simplified clone of sipcalc with ipcalc looks'
 arch=('aarch64' 'x86_64')
 url='https://github.com/troglobit/netcalc'
 license=('BSD-3-Clause')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('57e40571cea9061f4c42fe500345d6715e9b35fdaa135ef23c42c6ca4a58e3ef')
 conflicts=(ipcalc)
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "${pkgname}-${pkgver}"
 
     ./autogen.sh
     ./configure --prefix=/usr
@@ -22,8 +22,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "${pkgname}-${pkgver}"
 
-    make DESTDIR="$pkgdir" install-strip
-
+    make DESTDIR="${pkgdir}" install-strip
 }
