@@ -7,7 +7,7 @@ _reponame=lossless-cut
 pkgver=3.68.0
 _electronversion=38
 _nodeversion=22
-pkgrel=1
+pkgrel=4
 pkgdesc="The swiss army knife of lossless video/audio editing.Using system-wide ffmpeg.(Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/mifi/${_reponame}"
@@ -47,7 +47,7 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
-    cd "${_reponame}-${pkgver}"
+    cd "${srcdir}/${_reponame}-${pkgver}"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -73,8 +73,10 @@ prepare() {
     NODE_ENV=development    yarn install
 }
 build() {
-    cd "${_reponame}-${pkgver}"
+    cd "${srcdir}/${_reponame}-${pkgver}"
     _ensure_local_nvm
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export HOME="${srcdir}/.electron-gyp"
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
