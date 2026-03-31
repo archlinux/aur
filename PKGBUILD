@@ -5,55 +5,75 @@
 pkgname=adspower-global
 pkgver=7.12.29
 pkgrel=1
-pkgdesc="AdsPower - Most Secure Antidetect Browser for Multi-Accounts"
-arch=(x86_64)
+pkgdesc="AdsPower - Antidetect Browser for Multi-Account Management"
+arch=('x86_64')
 url="https://www.adspower.com"
-license=('custom')
+license=('LicenseRef-AdsPower-EULA')
+makedepends=('binutils')
 depends=(
-    gcc-libs
-    glibc
-    bash
-    electron
-    hicolor-icon-theme
+    'alsa-lib'
+    'at-spi2-core'
+    'cairo'
+    'dbus'
+    'expat'
+    'gcc-libs'
+    'glib2'
+    'glibc'
+    'gtk3'
+    'libcups'
+    'libdrm'
+    'libx11'
+    'libxcb'
+    'libxcomposite'
+    'libxdamage'
+    'libxext'
+    'libxfixes'
+    'libxkbcommon'
+    'libxrandr'
+    'mesa'
+    'nspr'
+    'nss'
+    'pango'
 )
+optdepends=(
+    'libnotify: desktop notifications'
+    'libsecret: credential storage'
+    'libappindicator-gtk3: tray icon support'
+    'xdg-utils: open URLs in default browser'
+)
+options=('!strip')
 source=(
-    "https://version.adspower.net/software/linux-x64-global/$pkgver/AdsPower-Global-$pkgver-x64.deb"
+    "AdsPower-Global-${pkgver}-x64.deb::https://version.adspower.net/software/linux-x64-global/${pkgver}/AdsPower-Global-${pkgver}-x64.deb"
 )
-sha256sums=(
-    '6e8dcd0f746549817b60460197103cd0af98d92d122f6e17a48af8a12be27595'
-)
+noextract=("AdsPower-Global-${pkgver}-x64.deb")
+sha256sums=('6e8dcd0f746549817b60460197103cd0af98d92d122f6e17a48af8a12be27595')
 
 package() {
-    # Extract files from the .deb
-    bsdtar -xf data.tar.* -C "$pkgdir"
+    cd "$srcdir"
+    ar x "AdsPower-Global-${pkgver}-x64.deb"
+    bsdtar -xf data.tar.xz -C "$pkgdir"
 
-    # Remove unnecessary files (except the resources/ folder)
-    find "$pkgdir/opt" -not -path "*/resources/*" -type f -delete -print
-    # Remove files for other architectures (e.g., armv8)
-    find "$pkgdir" -name "*armv8*" -delete -print
-    # Remove empty directories
-    find "$pkgdir" -type d -empty -delete
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/adspower-global" << 'EOF'
+#!/bin/sh
+exec "/opt/AdsPower Global/adspower_global" "$@"
+EOF
 
-    # Create the binary launcher
-    printf "#!/bin/sh
-exec electron /opt/AdsPower\\ Global/resources/app.asar \"\$@\"
-" | install -Dm755 /dev/stdin "$pkgdir/usr/bin/adspower-global"
-
-    # Rename and install icons with the new name (adspower-global)
-    for size in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024; do
-        install -Dm644 \
-            "$pkgdir/usr/share/icons/hicolor/${size}/apps/adspower_global.png" \
-            "$pkgdir/usr/share/icons/hicolor/${size}/apps/adspower-global.png"
+    for size in 16 32 48 64 128 256 512 1024; do
+        if [[ -f "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/adspower_global.png" ]]; then
+            mv "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/adspower_global.png" \
+               "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/adspower-global.png"
+        fi
     done
 
-    # Create the .desktop shortcut
-    mkdir -p "$pkgdir/usr/share/applications"
-    printf "[Desktop Entry]
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/adspower-global.desktop" << 'EOF'
+[Desktop Entry]
 Name=AdsPower Global
-Exec=adspower-global
+Comment=Antidetect Browser for Multi-Account Management
+Exec=adspower-global %U
 Icon=adspower-global
 Terminal=false
 Type=Application
-Categories=Network;Utility;
-" > "$pkgdir/usr/share/applications/adspower-global.desktop"
+Categories=Network;WebBrowser;
+StartupWMClass=AdsPower Global
+EOF
 }
