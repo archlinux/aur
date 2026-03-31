@@ -3,20 +3,20 @@
 
 _pkgname=openvpn3-linux
 pkgname=openvpn3-git
-pkgver=22_dev.r5.ga3de5e2
-pkgrel=2
+pkgver=27.r0.gf0c5ff7
+pkgrel=1
 pkgdesc='OpenVPN 3 Linux client'
 arch=('x86_64' 'aarch64')
 provides=("openvpn3=${pkgver}")
 conflicts=('openvpn3')
 url="https://codeberg.org/OpenVPN/$_pkgname"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=(
-  'jsoncpp>=0.10.5' 'libcap-ng>=0.7.5' 'lz4>=1.8.4' 'util-linux-libs>=2.23.2' 'protobuf>=2.4.0'
+  'jsoncpp>=0.10.5' 'libcap-ng>=0.7.5' 'lz4>=1.8.4' 'util-linux-libs>=2.23.2' 'openssl>=1.0.2'
   'python-dbus' 'python-gobject' 'python-systemd' 'tinyxml2>=2.1.0' 'libnl>=3.2.29' 'gdbuspp'
 )
 optdepends=(
-  'openssl: OpenSSL version' 'mbedtls: mbed TLS version' 'polkit>=0.105: for systemd-resolved integration'
+  'polkit>=0.105: for systemd-resolved integration'
   'repkg: Automatically rebuild the package on dependency updates'
 )
 makedepends=(
@@ -53,8 +53,7 @@ prepare() {
 }
 
 build() {
-  env CXXFLAGS="$CXXFLAGS -Wno-error=non-virtual-dtor" \
-    arch-meson \
+  arch-meson \
     --auto-features auto \
       "${_pkgname}" \
       _builddir \
@@ -64,8 +63,7 @@ build() {
 }
 
 check() {
-  env CXXFLAGS="$CXXFLAGS -Wno-error=non-virtual-dtor" \
-    arch-meson \
+  arch-meson \
     --auto-features auto \
       "${_pkgname}" \
       _builddir \
