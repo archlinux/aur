@@ -1,5 +1,8 @@
-# Maintainer: Krister Bäckman <ixevix@gmail.com>
+# Maintainer: Matt Harrison <matt@harrison.us.com>
+# Contributor: Krister Bäckman <ixevix@gmail.com>
 # Contributor: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
+
+# Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=slack-cli
 pkgver=3.15.0
