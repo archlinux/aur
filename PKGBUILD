@@ -7,10 +7,9 @@ arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
 license=('MIT')
 groups=()
-depends=('python' 'nodejs' 'git' 'ripgrep' 'ffmpeg')
-makedepends=('git' 'uv')
-checkdepends=()
-optdepends=(
+depends=('python' 'ripgrep' 'ffmpeg')
+makedepends=('git' 'uv' 'nodejs' 'npm')optdepends=(
+    'nodejs: Browser automation and WhatsApp bridge'
     'python-telegram-bot: Telegram gateway support'
     'python-discord-py: Discord gateway support'
     'python-croniter: Cron expression parsing'
@@ -45,16 +44,6 @@ prepare() {
 build() {
     cd hermes-agent
     
-    # Create virtual environment with Python 3.11
-    uv venv venv --python 3.14
-    export VIRTUAL_ENV="$(pwd)/venv"
-    
-    # Install Python dependencies with all extras
-    uv pip install ".[all]"
-    
-    # Install optional RL training backend
-    [ -d "tinker-atropos" ] && uv pip install "./tinker-atropos"
-    
     # Install Node.js dependencies
     [ -f "package.json" ] && npm install
 }
@@ -63,7 +52,6 @@ package() {
     cd hermes-agent
     
     # Install Python package to /usr
-    # Using pip for reliable --root/--prefix support in PKGBUILD package()
     python -m pip install --root="$pkgdir" --prefix=/usr --no-deps --ignore-installed ".[all]"
     
     # Install optional submodule if present
