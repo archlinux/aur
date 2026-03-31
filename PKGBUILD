@@ -3,7 +3,7 @@
 
 pkgname=dasel-bin
 _pkgname=${pkgname%-bin}
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 
 pkgdesc="Query and update data structures from the command line."
@@ -19,7 +19,7 @@ source=(
 	"https://raw.githubusercontent.com/TomWright/dasel/master/README.md"
 )
 
-b2sums=('896b0edb6a002a126d34c612d1cc9c3ac4a375e0b58c3c87fa9d4540a7f23df5ac2f561906719fc3f8dbb89bf5cd90fd797cec55c4552dff2f325e07f40557c5'
+b2sums=('0136f4963495008328de77a31aa85ed611b3ffad7551d257ca25eedc5daa824bd9e3fcdf0ade74a09a370481d98bbd67c892fd62c8021d28b791d81e8565707d'
 	'fc06e1db2cd7753e9188087833b4fad2bdcb78165bef8dd26bab3760c6a76287e8a582e6dcfd61f09f2051e4bcff71361ffd28d0024445ac5243075a86daed69'
 	'80943a2792c184e83bf2ac994a44fb7aaef961c5268691997f47ead4d2420bc6451b9203b684fcd706999c641801e91a7380ead0f1383e42897fe1a18d165a24')
 
