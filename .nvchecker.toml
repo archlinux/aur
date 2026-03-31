@@ -1,0 +1,3 @@
+[git-user-manager]
+source = "pypi"
+pypi = "git-user-manager"
