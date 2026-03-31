@@ -1,4 +1,5 @@
-# Maintainer: samedamci <samedamci@disroot.org>
+# Maintainer: Dunky <braxtinmoss13@gmail.com>
+# Previous Maintainer: samedamci <samedamci@disroot.org>
 
 pkgname=rofi-mpd
 pkgver=1.0

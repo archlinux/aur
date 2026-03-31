@@ -13,4 +13,3 @@ pkgbase = rofi-mpd
 	sha256sums = 90c6079e636cbbf0ed93d017c9c4011f4121b653b113f38289e7682005803809
 
 pkgname = rofi-mpd
-
