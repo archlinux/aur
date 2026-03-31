@@ -7,11 +7,9 @@ pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64' 'pentium4' 'i686' 'armv7h')
 url="https://github.com/qr243vbi/nekobox"
 license=('GPL-3.0-or-later')
-makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost')
-makedepends+=('pkgconfig' 'ccache' 'ninja')
-makedepends+=('cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs' 'acl')
+makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost' 'pkgconfig' 'ccache' 'ninja' 'jq' 'curl' 'coreutils' 'git' 'cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs' 'acl')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("SKIP")
+sha256sums=("350cafa7f5448153f851565ba3496eeae9b5084e836cbad5f8a2da103f6027ca")
 
 nekobox_source_directory="nekobox-unified-source-${pkgver}"
 
@@ -76,7 +74,7 @@ packageapp() {
     cd "${nekobox_source_directory}"
     install -Dm644 srslist.json -t "${pkgdir}/usr/lib/Iblis"
     cp -RfvT "res/public" "${pkgdir}/usr/lib/Iblis/public"
-    cp *.js "$DEST"/*.qm "res/languages.txt" "${pkgdir}/usr/lib/Iblis/public"
+    cp "$DEST"/*.qm "res/languages.txt" "${pkgdir}/usr/lib/Iblis/public"
     install -Dm644 res/public/icon.png "${pkgdir}/usr/share/pixmaps/nekobox.png"
 }
 
@@ -89,7 +87,6 @@ clearsources(){
 
 if [[ "${#source[@]}" == "0" || "${#source[0]}" == "" || "${NEKOBOX_BRANCH}" != "" ]]
 then
-makedepends+=('jq' 'curl' 'coreutils' 'git')
 nekobox_source_directory="nekobox-git"
 pkgname=(nekobox-git nekobox-core-git)
 clearsources
