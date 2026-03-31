@@ -2,8 +2,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tvtower-bin
 _pkgname=TVTower
-pkgver=0.8.3.2
-_subver=20250207
+pkgver=0.8.4
+_subver=20260330
 pkgrel=1
 pkgdesc="A tribute to Mad TV. Written in BlitzMax, Lua and a bit of C.(Prebuilt version)"
 arch=(
@@ -29,7 +29,7 @@ source=(
 	"${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_${_subver}.zip"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('bd39972e1851994174d35693d20c46d274a0ead465e2ba94527760e5137b0108'
+sha256sums=('58ff38f9e6ec9acb59c53596d80459fd72682ba6718dd7439de9f46ab266d3b6'
             '66ba0a42698a2815cfec1c2a5a2b459e4ea9c054481c859acf5dd4aa84d49ce8')
 prepare() {
 	case "${CARCH}" in
@@ -44,7 +44,12 @@ prepare() {
 		s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_RUNNAME}/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-	gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Game" --name="${_pkgname}" --exec="${pkgname%-bin}"
+	gendesk -q -f -n \
+		--pkgname="${pkgname%-bin}" \
+		--pkgdesc="${pkgdesc}" \
+		--categories="Game" \
+		--name="${_pkgname}" \
+		--exec="${pkgname%-bin}"
 	install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}/logfiles"
 	bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
 	rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/"*.{bat,exe}

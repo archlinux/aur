@@ -1,6 +1,6 @@
 pkgbase = tvtower-bin
 	pkgdesc = A tribute to Mad TV. Written in BlitzMax, Lua and a bit of C.(Prebuilt version)
-	pkgver = 0.8.3.2
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://www.tvtower.org/
 	arch = i686
@@ -11,12 +11,12 @@ pkgbase = tvtower-bin
 	depends = libglvnd
 	depends = freetype2
 	depends = libxcb
-	provides = tvtower=0.8.3.2
+	provides = tvtower=0.8.4
 	conflicts = tvtower
-	noextract = tvtower-0.8.3.2.zip
-	source = tvtower-0.8.3.2.zip::https://github.com/TVTower/TVTower/releases/download/v0.8.3.2/TVTower_v0.8.3.2_20250207.zip
+	noextract = tvtower-0.8.4.zip
+	source = tvtower-0.8.4.zip::https://github.com/TVTower/TVTower/releases/download/v0.8.4/TVTower_v0.8.4_20260330.zip
 	source = tvtower.sh
-	sha256sums = bd39972e1851994174d35693d20c46d274a0ead465e2ba94527760e5137b0108
+	sha256sums = 58ff38f9e6ec9acb59c53596d80459fd72682ba6718dd7439de9f46ab266d3b6
 	sha256sums = 66ba0a42698a2815cfec1c2a5a2b459e4ea9c054481c859acf5dd4aa84d49ce8
 
 pkgname = tvtower-bin
