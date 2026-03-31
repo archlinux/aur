@@ -1,5 +1,5 @@
 [beats]
 source = "apt"
 pkg = "filebeat"
-mirror = "https://artifacts.elastic.co/packages/8.x/apt"
+mirror = "https://artifacts.elastic.co/packages/9.x/apt"
 suite = "stable"
