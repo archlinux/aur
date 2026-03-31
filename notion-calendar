@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+
+# Allow users to override command-line options
+if [[ -f $XDG_CONFIG_HOME/notion-calendar-flags.conf ]]; then
+    NOTION_CALENDAR_USER_FLAGS="$(grep -v '^#' $XDG_CONFIG_HOME/notion-calendar-flags.conf)"
+fi
+
+# Launch
+APP_DIR=/usr/lib/notion-calendar
+cd "$APP_DIR" || exit 1
+exec electron39 "$APP_DIR/app.asar" $NOTION_CALENDAR_USER_FLAGS "$@"

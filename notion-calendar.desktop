@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Notion Calendar
+Exec=/usr/bin/notion-calendar
+Terminal=false
+Type=Application
+Icon=notion-calendar.png
+StartupWMClass=Cron
+Comment=Notion Calendar Desktop Client
+Categories=Office;Calendar;Utility;
