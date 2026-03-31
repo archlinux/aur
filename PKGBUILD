@@ -9,9 +9,6 @@ url="https://github.com/DiegoMagdaleno/BSDCoreUtils"
 license=('ISC')
 depends=('glibc' 'openssl' 'libbsd' 'man-db')
 makedepends=('git' 'cmake' 'make' 'byacc')
-#provides=('coreutils')
-#conflicts=('coreutils')
-#replaces=('coreutils')
 source=("git+https://github.com/DiegoMagdaleno/BSDCoreUtils.git")
 sha256sums=('SKIP')
 
@@ -31,6 +28,14 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname/build"
 	make DESTDIR="$pkgdir" install
-	find src -name "*.1" -exec install -Dm644 "{}" "$pkgdir/usr/share/man/man1/{}" \;
+	find src -name "*.1" -exec install -Dm644 "{}" "$pkgdir/usr/local/share/man/BSD/{}" \;
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	echo ""
+    	echo "=================================================================="
+    	echo "To finish installation, add these lines to your shell config:"
+    	echo "export PATH=\"/opt/BSDuserland/bin:\$PATH\""
+    	echo "export MANPATH=\"/usr/share/man/bsd:\$MANPATH\""
+    	echo "=================================================================="
+
 }
