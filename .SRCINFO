@@ -1,7 +1,7 @@
 pkgbase = pacmate
 	pkgdesc = Interactive terminal UI wrapper for pacman
-	pkgver = 1.0.3
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://gitlab.com/nathanchere/pacmate
 	arch = x86_64
 	license = Apache-2.0
@@ -10,7 +10,7 @@ pkgbase = pacmate
 	makedepends = make
 	depends = pacman
 	optdepends = sudo: default privilege escalation helper
-	source = pacmate::git+https://gitlab.com/nathanchere/pacmate.git#tag=v1.0.3
-	sha256sums = d7f6d5ca5a38c1c5310576e8a813d3a0d1c57c3362661e154fd682bd495b4b82
+	source = pacmate::git+https://gitlab.com/nathanchere/pacmate.git#tag=v1.2.0
+	sha256sums = b1955a56b0966c7820cfb2c0767a215ef2715bb320a1964e9c180a69afa19bfd
 
 pkgname = pacmate
