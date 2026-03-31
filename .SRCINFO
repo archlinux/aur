@@ -1,0 +1,27 @@
+pkgbase = perl-data-fake
+	pkgdesc = Declaratively generate fake structured data for testing
+	pkgver = 0.006
+	pkgrel = 1
+	url = https://metacpan.org/release/DAGOLDEN/Data-Fake-0.006
+	arch = any
+	license = Apache-2.0
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-deep
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.8.1
+	makedepends = perl-extutils-makemaker>=6.17
+	depends = perl-carp
+	depends = perl-exporter>=5.57
+	depends = perl-import-into>=1.002005
+	depends = perl-scalar-list-utils
+	depends = perl-text-lorem
+	depends = perl-time-piece>=1.27
+	depends = perl>=5.8.1
+	optdepends = perl-cpan-meta
+	optdepends = perl-json-pp
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Data-Fake-0.006.tar.gz
+	sha256sums = 930960e04a417fb19e14ce1e739e3e4aefbddd101eae68bfa25ba7674fe7c2a1
+
+pkgname = perl-data-fake

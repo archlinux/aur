@@ -1,0 +1,3 @@
+[perl-data-fake]
+source = "cpan"
+cpan = "Data-Fake"
