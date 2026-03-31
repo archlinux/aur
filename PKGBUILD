@@ -1,8 +1,8 @@
-# Contributor: ordoban <dirk.langer@vvovgonik.de>
+# Contributor: Ordoban <gabba.head@gmx.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-devel-size'
-pkgver='0.86'
+pkgver='0.87'
 pkgrel='1'
 pkgdesc="Perl extension for finding the memory usage of Perl variables"
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ options=('!emptydirs')
 depends=('perl>=5.005')
 makedepends=()
 url='https://metacpan.org/release/Devel-Size'
-source=("https://cpan.metacpan.org/authors/id/N/NW/NWCLARK/Devel-Size-$pkgver.tar.gz")
-md5sums=('5ae6d50693e0b0af9974e9a089a71ca0')
-sha512sums=('a11b890d7f264ff5fad5fc3ba2935bdba6460e13caa41b12dc6e60e9d84bd2afbba0bab46d0e63eb9b8b3ec04374086a40583312cb48d550aa5591e393ced4b5')
+source=("http://search.cpan.org/CPAN/authors/id/N/NW/NWCLARK/Devel-Size-$pkgver.tar.gz")
+md5sums=('ee4589a77f854fc582380063dd3d2d0a')
+sha512sums=('505d32f513e22be3bd1b4e70aadeb7661d17baf520ff977ccd6bf0570995857c2c435a12d7711c0bdd799216b959b0858ab023834ad81ecd70e657fe05201af5')
 _distdir="Devel-Size-$pkgver"
 
 build() {
@@ -37,8 +37,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
-  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
 
 # Local Variables:
