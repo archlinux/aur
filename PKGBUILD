@@ -2,7 +2,7 @@
 # Contributor: Evert Vorster <superchief@evertvorster.com>
 
 pkgname=oolite-git
-pkgver=1.93.0.7772.260209.316b37b.r0.316b37b68
+pkgver=1.93.0.7786.260331.9dd66af.r0.9dd66af62
 pkgrel=1
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
@@ -35,7 +35,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '07e3a9303ce2fd71ae89e1f0085ca070559a7d40271d5ea31ff965588f01b9259cc7337e734680077dd673343db7f8ad620698a2abd1d6178e15abba6d551ec8')
+            '96831dbea0fc5133881a65b5304a7d90a5ae72d23a976d0caa9b851fc79a2a00267a44a4248466268fe9daa65432c9d62ff076101bfa1f449bcbddea78463c41')
 
 pkgver() {
   git -C oolite-git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
@@ -62,26 +62,24 @@ prepare() {
 
 
 build() {
-  cd oolite-git
+  cd $pkgname
   source /usr/share/GNUstep/Makefiles/GNUstep.sh
   make -f Makefile release
 }
 
 package() {
-  cd oolite-git
+  cd $pkgname
 
   mkdir -p "$pkgdir"/usr/bin
-  mkdir -p "$pkgdir"/usr/share/{oolite-git,applications,pixmaps,doc/oolite-git}
+  mkdir -p "$pkgdir"/usr/share/{oolite-git,applications,icons/hicolor/256x256/apps,doc/oolite-git}
   cp -r oolite.app/* "$pkgdir"/usr/share/oolite-git/
   install -D -m755 "$srcdir"/oolite-git.sh "$pkgdir"/usr/bin/oolite-git.sh
-  install -D -m644 installers/FreeDesktop/oolite-icon.png "$pkgdir"/usr/share/pixmaps/oolite-icon-git.png
+  install -D -m644 Resources/Binary/Textures/oolite-logo1.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/space.oolite.Oolite.png
   
-      sed -e 's:Name=Oolite:Name=oolite--git:' \
-        -e 's:Exec=oolite:Exec=/usr/bin/oolite-git.sh:' \
-        -e 's:Icon=oolite-icon:Icon=/usr/share/pixmaps/oolite-icon-git.png:' \
-        -e 's:StartupWMClass=oolite:StartupWMClass=oolite-git:' \
-        <installers/FreeDesktop/oolite.desktop \
-        >oolite-git.desktop
-
-  install -D -m644 oolite-git.desktop "$pkgdir"/usr/share/applications/oolite-git.desktop
+  sed -e 's:Name=oolite:Name=oolite--git:' \
+      -e 's:Exec=run_oolite.sh:Exec=/usr/bin/oolite-git.sh:' \
+      -e 's:StartupWMClass=oolite:StartupWMClass=oolite-git:' \
+      <installers/FreeDesktop/space.oolite.Oolite.desktop \
+      >"$pkgdir"/usr/share/applications/space.oolite.Oolite-git.desktop
+  chmod 644 "$pkgdir"/usr/share/applications/space.oolite.Oolite-git.desktop
 }

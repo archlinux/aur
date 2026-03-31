@@ -5,4 +5,4 @@ fi
 if [ ! -d ~/~/GNUstep/Library/ApplicationSupport/Oolite/ManagedAddOns ]; then
     mkdir -p ~/GNUstep/Library/ApplicationSupport/Oolite/ManagedAddOns
 fi
-ESPEAK_DATA_PATH=/usr/share/espeak-ng-data/ /usr/share/oolite-git/oolite "$@"
+exec /usr/share/oolite-git/oolite "$@"
