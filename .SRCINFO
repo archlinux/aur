@@ -1,0 +1,56 @@
+pkgbase = perl-code-tidyall
+	pkgdesc = Engine for tidyall, your all-in-one code tidier and validator
+	pkgver = 0.85
+	pkgrel = 1
+	url = https://metacpan.org/release/DROLSKY/Code-TidyAll-0.85
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-autodie
+	checkdepends = perl-encode
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-findbin
+	checkdepends = perl-lib-relative
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-class-most
+	checkdepends = perl-test-differences
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-simple
+	checkdepends = perl-test-warnings
+	makedepends = perl-extutils-makemaker
+	depends = perl-base
+	depends = perl-capture-tiny
+	depends = perl-config-ini
+	depends = perl-constant
+	depends = perl-data-dumper
+	depends = perl-digest-sha
+	depends = perl-exporter
+	depends = perl-file-pushd
+	depends = perl-file-which
+	depends = perl-getopt-long
+	depends = perl-ipc-run3
+	depends = perl-ipc-system-simple
+	depends = perl-list-compare
+	depends = perl-list-someutils
+	depends = perl-log-any
+	depends = perl-module-runtime
+	depends = perl-moo
+	depends = perl-path-tiny>=0.098
+	depends = perl-pathtools
+	depends = perl-scalar-list-utils
+	depends = perl-scope-guard
+	depends = perl-specio
+	depends = perl-specio-library-path-tiny>=0.04
+	depends = perl-test-simple
+	depends = perl-text-diff
+	depends = perl-text-parsewords
+	depends = perl-time-duration-parse
+	depends = perl-timedate
+	depends = perl-try-tiny
+	depends = perl>=5.8.8
+	optdepends = perl-cpan-meta
+	optdepends = perl-parallel-forkmanager
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Code-TidyAll-0.85.tar.gz
+	sha256sums = b902d6cd3ba30426d53c5bb7844f7860ffc57849bea25f24fd7af87a80eb63c1
+
+pkgname = perl-code-tidyall

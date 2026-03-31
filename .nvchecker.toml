@@ -1,0 +1,3 @@
+[perl-code-tidyall]
+source = "cpan"
+cpan = "Code-TidyAll"
