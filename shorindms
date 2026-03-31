@@ -12,7 +12,7 @@ backup_and_copy() {
     local dest_path="$HOME/$rel_path"
     local dest_dir
     dest_dir="$(dirname "$dest_path")"
-
+    
     if [[ -e "$dest_path" || -L "$dest_path" ]]; then
         local backup_path="$BACKUP_DIR/$rel_path"
         mkdir -p "$(dirname "$backup_path")"
@@ -20,7 +20,7 @@ backup_and_copy() {
         echo "已备份: ~/$rel_path"
         rm -rf "$dest_path"
     fi
-
+    
     mkdir -p "$dest_dir"
     cp -a "$src_path" "$dest_path"
     echo "已同步: ~/$rel_path"
@@ -56,24 +56,24 @@ sync_dotfiles() {
         echo "错误: 找不到模板目录 $TEMPLATE_DIR"
         exit 1
     fi
-
+    
     mkdir -p "$BACKUP_DIR"
     cd "$TEMPLATE_DIR" || exit 1
-
+    
     find . -maxdepth 1 -type f -print0 | while IFS= read -r -d '' f; do
         backup_and_copy "${f#./}"
     done
-
+    
     process_dir_level ".config"
-
+    
     if [[ -d ".local" ]]; then
         find .local -mindepth 1 -maxdepth 1 -type d -print0 | while IFS= read -r -d '' local_sub; do
             process_dir_level "${local_sub#./}"
         done
     fi
-
+    
     cleanup_old_backups
-
+    
     echo "----------------------------------------"
     echo "配置文件同步完成！"
     echo "你的旧配置已备份至: $BACKUP_DIR"
@@ -153,20 +153,20 @@ apply_user_configs() {
     if ! grep -q "kitty.desktop" "$HOME/.config/xdg-terminals.list" 2>/dev/null; then
         echo 'kitty.desktop' >> "$HOME/.config/xdg-terminals.list"
     fi
-
+    
     if command -v gsettings &>/dev/null; then
         gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
     fi
-
+    
     if [[ -f "$HOME/.config/gtk-3.0/bookmarks" ]]; then
         sed -i "s/shorin/$USER/g" "$HOME/.config/gtk-3.0/bookmarks"
     fi
-
+    
     mkdir -p "$HOME/Templates"
     touch "$HOME/Templates/new"
     echo '#!/usr/bin/env bash' > "$HOME/Templates/new.sh"
     chmod +x "$HOME/Templates/new.sh"
-
+    
     if command -v flatpak &>/dev/null; then
         flatpak override --user --filesystem=xdg-data/themes
         flatpak override --user --filesystem="$HOME/.themes"
@@ -178,16 +178,21 @@ apply_user_configs() {
     
     mkdir -p "$HOME/.local/share"
     ln -sfn /usr/share/themes "$HOME/.local/share/themes"
-
+    
     mkdir -p "$HOME/.local/bin"
     if command -v kitty &>/dev/null; then
         ln -sfn /usr/bin/kitty "$HOME/.local/bin/xterm"
     fi
-
+    
     # 执行隐藏桌面图标的功能
     run_hide_desktop_file
-
+    
     echo "初始化环境配置完成！"
+}
+
+# --- shorin conrtib init ---
+shorin_contrib_init() {
+    shorin link
 }
 
 # --- 命令路由 ---
@@ -197,20 +202,20 @@ case "$1" in
         echo "开始初始化 Shorin DMS Niri 环境..."
         sync_dotfiles
         apply_user_configs
-        ;;
+    ;;
     update)
         echo "开始更新 Shorin DMS Niri 配置文件..."
         sync_dotfiles
-        ;;
+    ;;
     hide-icons)
         # 允许用户单独运行隐藏图标功能
         run_hide_desktop_file
-        ;;
+    ;;
     *)
         echo "用法: shorindms {init|update|hide-icons}"
         echo "  init       - 首次安装时运行，包含配置文件同步和环境初始化"
         echo "  update     - 日常更新使用，仅拉取最新的配置文件覆盖到家目录"
         echo "  hide-icons - 仅执行隐藏不需要的桌面图标的操作"
         exit 1
-        ;;
+    ;;
 esac
