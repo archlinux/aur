@@ -22,13 +22,15 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_pkgname/build"
-	cmake ..
+	cmake .. \
+    	-DCMAKE_INSTALL_PREFIX=/opt/BSDuserland \
+    	-DCMAKE_BUILD_TYPE=Release
 	make
 }
 
 package() {
 	cd "$srcdir/BSDCoreUtils/build"
-	make install -DCMAKE_INSTALL_PREFIX=/opt/BSDuserland
+	make install
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	export PATH="/opt/BSDuserland:$PATH"
 }
