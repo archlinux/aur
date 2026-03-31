@@ -1,4 +1,5 @@
-# Maintainer: Sam L. Yes <samlukeyes123 at gmail dot com>
+# Maintainer: Dunky <braxtinmoss13@gmail.com>
+# Previous Maintainer: Sam L. Yes <samlukeyes123 at gmail dot com>
 
 pkgname=profile-sync-daemon-edge
 pkgver=2021.5.1

@@ -12,4 +12,3 @@ pkgbase = profile-sync-daemon-edge
 	md5sums = 19f1f55d59e55334b9c61f12b94f35ee
 
 pkgname = profile-sync-daemon-edge
-
