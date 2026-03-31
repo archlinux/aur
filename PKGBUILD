@@ -20,7 +20,8 @@ url="${_url_github}"
 
 provides=("${_pypi_package}")
 conflicts=("python-${pkgname}")
-depends=('bash' 'ffmpeg' 'python' 'python-jsonpath-ng')
+
+depends=('bash' 'ffmpeg' 'python' 'python-jsonpath-ng' 'python-pyargument')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")

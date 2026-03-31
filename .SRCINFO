@@ -13,6 +13,7 @@ pkgbase = ffmpegp
 	depends = ffmpeg
 	depends = python
 	depends = python-jsonpath-ng
+	depends = python-pyargument
 	provides = ffmpegp
 	conflicts = python-ffmpegp
 	source = https://files.pythonhosted.org/packages/source/f/ffmpegp/ffmpegp-1.30.tar.gz
