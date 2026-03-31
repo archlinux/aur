@@ -1,0 +1,16 @@
+pkgbase = shorin-dms-niri-dotfiles-git
+	pkgdesc = dotfiles for Shorin DMS Niri
+	pkgver = r1.1234567
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/shorin-dms-niri
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = shorin-dms-niri-meta
+	source = git+https://github.com/SHORiN-KiWATA/shorin-dms-niri.git
+	source = shorindms
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = shorin-dms-niri-dotfiles-git
