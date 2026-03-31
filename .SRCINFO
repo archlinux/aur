@@ -1,14 +1,14 @@
 pkgbase = ruby-rails-metro
 	pkgdesc = Rails app generator with CLI, TUI, and template output
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://railsmetro.com
 	arch = any
 	license = MIT
 	makedepends = rubygems
 	depends = ruby
-	source = https://rubygems.org/downloads/rails-metro-0.1.0.gem
-	sha256sums = 44604c7dc34aa9b28db7e4ae8db883593bcc8b7fa4998636d969992dca1a6f16
-	noextract = rails-metro-0.1.0.gem
+	source = https://rubygems.org/downloads/rails-metro-0.2.0.gem
+	sha256sums = 16d925b78500646fb89db4e5b271d4d3feb21477f89bf562eb8cf01f40e0e3a4
+	noextract = rails-metro-0.2.0.gem
 
 pkgname = ruby-rails-metro
