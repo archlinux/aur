@@ -3,7 +3,7 @@
 pkgname='vim-classic-git'
 _pkgname='vim-classic'
 pkgver=r11223.156c7e4
-pkgrel=1
+pkgrel=2
 pkgdesc='Vim Classic is a fork of Vim 8.2 for long-term maintenance.'
 arch=('x86_64' 'i686' 'aarch64')
 conflicts=('vim' 'gvim' 'vim-runtime')
@@ -22,11 +22,13 @@ makedepends=(
   'gawk'
   'git'
   'lua'
+  'perl'
   'python'
   'tcl'
 )
 optdepends=(
   'lua: Lua language support'
+  'perl: Perl language support'
   'python: Python language support'
   'tcl: Tcl language support'
 )
@@ -55,6 +57,7 @@ build() {
     --enable-cscope \
     --enable-netbeans \
     --enable-luainterp=dynamic \
+    --enable-perlinterp=dynamic \
     --enable-python3interp=dynamic \
     --enable-tclinterp=dynamic \
     --enable-year2038 \
