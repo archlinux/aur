@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('jmeter>=3.0')
 options=(!strip)
 source=(${pkgname}-${pkgver}.jar::https://jmeter-plugins.org/get/)
-md5sums=('d2ba2926b8addc2cb570ab57172f6298')
+sha256sums=('bc0551fca04ed3d8b57794c93c815101a93ac0c3849dae3f3241ae290da06aec')
 
 package() {
   install -Dm644 "${pkgname}-${pkgver}.jar" "${pkgdir}/opt/jmeter/lib/ext/${pkgname}-${pkgver}.jar"

@@ -8,6 +8,6 @@ pkgbase = jmeter-plugins-manager
 	depends = jmeter>=3.0
 	options = !strip
 	source = jmeter-plugins-manager-1.12.jar::https://jmeter-plugins.org/get/
-	md5sums = d2ba2926b8addc2cb570ab57172f6298
+	sha256sums = bc0551fca04ed3d8b57794c93c815101a93ac0c3849dae3f3241ae290da06aec
 
 pkgname = jmeter-plugins-manager
