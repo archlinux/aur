@@ -1,0 +1,3 @@
+[perl-pinto]
+source = "cpan"
+cpan = "Pinto"
