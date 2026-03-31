@@ -1,6 +1,6 @@
 pkgbase = memoa-bin
 	pkgdesc = The best for Markdown Editing
-	pkgver = 0.1.353
+	pkgver = 0.1.375
 	pkgrel = 1
 	url = https://example.com/memoa
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = memoa-bin
 	provides = memoa
 	conflicts = memoa
 	options = !strip
-	source = https://repository.hellonico.info/repository/arch/memoa/0.1.353/memoa_aarch64
+	source = https://repository.hellonico.info/repository/arch/memoa/0.1.375/memoa_aarch64
 	source = memoa.png
 	source = memoa.desktop
 	sha256sums = 58e70e90a5e08a623d920e6614b38d66e1970b270a77b1ecd605d97628f01ac6

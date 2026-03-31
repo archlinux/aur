@@ -1,6 +1,6 @@
 # Maintainer: nico <nico@example.com>
 pkgname=memoa-bin
-pkgver=0.1.353
+pkgver=0.1.375
 pkgrel=1
 pkgdesc="The best for Markdown Editing"
 arch=('aarch64')
