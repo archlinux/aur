@@ -1,18 +1,18 @@
 pkgbase = via-desktop-bin
 	pkgdesc = An Electron application designed to provide an offline experience for VIA.(Prebuilt version.Use system-wide electron)
-	pkgver = 2026.3.9
+	pkgver = 2026.3.30
 	pkgrel = 1
 	url = https://github.com/cebby2420/via-desktop
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = asar
 	depends = electron33
-	provides = via-desktop=2026.3.9
+	provides = via-desktop=2026.3.30
 	conflicts = via-desktop
 	options = !emptydirs
-	source = via-desktop-2026.3.9.rpm::https://github.com/cebby2420/via-desktop/releases/download/v2026.3.9/via-desktop-2026.3.9-1.x86_64.rpm
+	source = via-desktop-2026.3.30.rpm::https://github.com/cebby2420/via-desktop/releases/download/v2026.3.30/via-desktop-2026.3.30-1.x86_64.rpm
 	source = via-desktop.sh
-	sha256sums = bee082c4b0a342800c89dd06da58994ed61198cceafddb960c1568d95e88b5c5
+	sha256sums = 9eadd1ba66e35a0389a2a5249e3991cc59a13e1cfbd0c9add3681f8d0e3b7065
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = via-desktop-bin
