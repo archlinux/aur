@@ -4,7 +4,7 @@
 # Requires Plasma 6.6+ (KF6 6.6, Qt 6.6, KWin 6.6).
 
 pkgname=plasmazones
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='Window tiling and autotiling for KDE Plasma'
 arch=('x86_64')
@@ -37,7 +37,7 @@ optdepends=(
 )
 conflicts=('plasmazones-bin' 'plasmazones-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('612b94703923327cc391097df921af76d2a7fb6f987025c573b05169405a9bad')
+sha256sums=('2946cb0a3eafdaa34b9d2e23a85468172cab95cea7b398c1b4be5c58bb16fddc')
 install=plasmazones.install
 
 build() {
@@ -54,8 +54,8 @@ package() {
     DESTDIR="$pkgdir" cmake --install build
 
     # Install pacman hook to auto-refresh sycoca cache
-    install -Dm644 kbuildsycoca.hook \
+    install -Dm644 "PlasmaZones-$pkgver/packaging/arch/kbuildsycoca.hook" \
         "$pkgdir/usr/share/libalpm/hooks/plasmazones-kbuildsycoca.hook"
-    install -Dm755 plasmazones-refresh-sycoca \
+    install -Dm755 "PlasmaZones-$pkgver/packaging/arch/plasmazones-refresh-sycoca" \
         "$pkgdir/usr/share/libalpm/scripts/plasmazones-refresh-sycoca"
 }
