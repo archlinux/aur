@@ -1,0 +1,39 @@
+pkgbase = perl-module-faker
+	pkgdesc = build fake dists for testing CPAN tools
+	pkgver = 0.027
+	pkgrel = 1
+	url = https://metacpan.org/release/RJBS/Module-Faker-0.027
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-json-pp
+	checkdepends = perl-path-class>=0.06
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.78
+	depends = perl-archive-any-create
+	depends = perl-carp
+	depends = perl-cpan-distnameinfo
+	depends = perl-cpan-meta
+	depends = perl-cpan-meta-requirements
+	depends = perl-data-fake
+	depends = perl-data-optlist
+	depends = perl-encode
+	depends = perl-experimental
+	depends = perl-file-next
+	depends = perl-file-path
+	depends = perl-file-temp
+	depends = perl-getopt-long-descriptive
+	depends = perl-moose
+	depends = perl-parent
+	depends = perl-path-class>=0.06
+	depends = perl-scalar-list-utils
+	depends = perl-storable
+	depends = perl-sub-exporter
+	depends = perl-text-template
+	depends = perl>=5.20.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Module-Faker-0.027.tar.gz
+	sha256sums = bba533d06c197608087f03d0b1e7e327d74165e7b49a46a372a7af2c1f1883dc
+
+pkgname = perl-module-faker

@@ -1,0 +1,3 @@
+[perl-module-faker]
+source = "cpan"
+cpan = "Module-Faker"
