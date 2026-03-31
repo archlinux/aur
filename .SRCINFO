@@ -1,6 +1,6 @@
 pkgbase = claude-cowork-service
 	pkgdesc = Native Linux backend for Claude Desktop Cowork
-	pkgver = 1.0.26
+	pkgver = 1.0.35
 	pkgrel = 1
 	url = https://github.com/patrickjaja/claude-cowork-service
 	install = claude-cowork-service.install
@@ -12,7 +12,7 @@ pkgbase = claude-cowork-service
 	depends = util-linux
 	optdepends = claude-desktop-bin: Unofficial Linux frontend for Claude Desktop Cowork
 	optdepends = claude-code: An agentic coding tool that lives in your terminal (you can also install via native installer)
-	source = claude-cowork-service-1.0.26.tar.gz::https://github.com/patrickjaja/claude-cowork-service/archive/v1.0.26.tar.gz
-	sha256sums = 30356abedccbdc9b5550583e28b83038d3e213c6d27cb1b35012d1b971d1373b
+	source = claude-cowork-service-1.0.35.tar.gz::https://github.com/patrickjaja/claude-cowork-service/archive/v1.0.35.tar.gz
+	sha256sums = a17fd5ce45b1f1a3cda327cb6d03ba1f37d93c30d1770792dbd038f783d6cbee
 
 pkgname = claude-cowork-service
