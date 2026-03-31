@@ -1,0 +1,13 @@
+[Unit]
+Description=Beszel Hub Service
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/beszel-hub
+ExecStart=/usr/bin/beszel serve --dir /var/lib/beszel --http "${LISTEN_HOST}:${LISTEN_PORT}"
+User=beszel
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
