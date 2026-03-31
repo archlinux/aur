@@ -1,32 +1,31 @@
-# Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
-# Contributor: Darwin Bautista <djclue917@gmail.com>
-# Contributor: Jakub Luzny <limoto94@gmail.com>
+# Maintainer: Andy Alt <arch_stanton5995 at proton.me>
+
 pkgname=netpanzer
-pkgver=0.8.7
+pkgver=0.9.1
 pkgrel=1
-pkgdesc="An online multiplayer tactical warfare game"
-arch=('i686' 'x86_64')
-url="http://www.netpanzer.info/"
-license=('GPL')
-depends=('sdl_mixer')
-makedepends=('scons')
-changelog=netpanzer.changelog
-source=(http://www.netpanzer.info/Download/NetPanzer/Releases/0.8.7/netpanzer-0.8.7-source.zip)
-md5sums=('712327f3a1aef40c174a507019b01ad7')
+pkgdesc="An online multiplayer tactical warfare game designed for fast action combat"
+url="https://github.com/netpanzer/netpanzer"
+arch=('x86_64' 'aarch64')
+license=('GPL-2.0-or-later')
+depends=('lua51' 'physfs' 'sdl2' 'sdl2_ttf' 'sdl2_mixer' 'hicolor-icon-theme')
+makedepends=('meson')
+conflicts=('netpanzer-appimage')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('7556c1c3f69934380d6e6a8be5e11e4b881bd67399896db416b27329d6d21b81')
 
 build() {
-  cd "$srcdir"
-  scons datadir=/usr/share/netpanzer
+    arch-meson "${pkgname}-${pkgver}" build \
+        -Db_sanitize=none \
+        -Dbuild_tests=false \
+        -Ddocdir="share/doc/${pkgname}"
+    meson compile -C build
 }
 
 package() {
-  cd "$srcdir"
-  mkdir -p "$pkgdir"/usr/share/netpanzer
-  cp -pR cache maps pics powerups scripts sound units wads "$pkgdir"/usr/share/netpanzer
-  chmod -R o+r "$pkgdir"/usr/share/netpanzer/
-  find "$pkgdir"/usr/share/netpanzer/ -type d -exec chmod o+x {} \;
+    meson install -C build --destdir "${pkgdir}"
 
-  install -Dm755 netpanzer "$pkgdir"/usr/bin/netpanzer
-  install -Dm644 support/win32/netpanzer.desktop "$pkgdir"/usr/share/applications/netpanzer.desktop
-  install -Dm644 netpanzer.png "$pkgdir"/usr/share/pixmaps/netpanzer.png
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/support/win32/${pkgname}.desktop" \
+        -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.png" \
+        -t "${pkgdir}/usr/share/icons/hicolor/48x48/apps"
 }
