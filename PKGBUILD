@@ -1,24 +1,22 @@
 # Maintainer: fa5e4658010be730
 
 pkgname=transformers_ocr-git
-pkgver=0.20.0.r0.gc49b920
+pkgver=0.21.0.r0.g148d2b4
 pkgrel=1
 pkgdesc="An OCR tool for manga using Transformers (maintained fork)"
 arch=(any)
 url="https://gitlab.com/fkzys/transformers_ocr"
 license=('GPL-3.0-or-later')
-depends=('python' 'python-pip' 'libnotify')
+depends=('python')
 optdepends=(
-    'maim: taking screenshots on Xorg'
-    'xclip: copying to the clipboard on Xorg'
-
-    'grim: taking screenshots on Wayland'
-    'slurp: selecting a region on Wayland'
-    'wl-clipboard: copying to the clipboard on Wayland'
-
-    'gnome-screenshot: taking screenshots on GNOME'
-    'spectacle: taking screenshots on KDE'
-    'xfce4-screenshooter: taking screenshots on XFCE'
+    'libx11: screen capture on X11'
+    'sdl2-compat: crop/preview overlay and PNG saving'
+    'sdl2_image: crop/preview overlay and PNG saving'
+    'dbus: screen capture on Wayland via xdg-desktop-portal'
+    'xdg-desktop-portal: screen capture on Wayland'
+    'xclip: clipboard on X11'
+    'wl-clipboard: clipboard on Wayland'
+    'libnotify: desktop notifications'
 )
 makedepends=('git')
 provides=("${pkgname%-git}")
