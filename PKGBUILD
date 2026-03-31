@@ -2,7 +2,7 @@
 
 _pkgname="protoc-gen-go-grpc"
 pkgname="${_pkgname}-bin"
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="gRPC bindings generator for Go language"
 arch=(
@@ -23,19 +23,18 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-_pkgsrc="${_pkgname}-${pkgver}"
 source_aarch64=(
-  "${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/cmd%2F${_pkgname}%2Fv${pkgver}/${_pkgname}.v${pkgver}.linux.arm64.tar.gz"
+  "${url}/releases/download/cmd%2F${_pkgname}%2Fv${pkgver}/${_pkgname}.v${pkgver}.linux.arm64.tar.gz"
 )
 source_i686=(
-  "${_pkgsrc}-i686.tar.gz::${url}/releases/download/cmd%2F${_pkgname}%2Fv${pkgver}/${_pkgname}.v${pkgver}.linux.386.tar.gz"
+  "${url}/releases/download/cmd%2F${_pkgname}%2Fv${pkgver}/${_pkgname}.v${pkgver}.linux.386.tar.gz"
 )
 source_x86_64=(
-  "${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/cmd%2F${_pkgname}%2Fv${pkgver}/${_pkgname}.v${pkgver}.linux.amd64.tar.gz"
+  "${url}/releases/download/cmd%2F${_pkgname}%2Fv${pkgver}/${_pkgname}.v${pkgver}.linux.amd64.tar.gz"
 )
-sha256sums_aarch64=('a5168a1a83489e1b138a1116c09f429a3dd18f9ad1a74565d811a2d29d8528c3')
-sha256sums_i686=('c1595939163a5dfb04650af3349fea12a33fed26251951eb3968e6cca6dfc456')
-sha256sums_x86_64=('acb6144a1a00f688d108bc06a8cbe3b88b4d9f7aad59f7e3e7c91f93b92a1df3')
+sha256sums_aarch64=('71f64c5448fe57425002e77a3b85a317dc1ffb276c094ca19f9be3cf3dba066d')
+sha256sums_i686=('2cc5415d9d574a4b24b87ffaba8fda37307c538675f3f98f1c309369eceaeba4')
+sha256sums_x86_64=('d422c203a0f4f050d647c58a11b8854535956b6c9aa655dd8a50b976a2b552f9')
 
 package() {
   cd "${srcdir}"
