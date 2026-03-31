@@ -1,0 +1,22 @@
+_bin=/usr/bin/cosmic-ext-applet-per-app-layout
+
+post_install() {
+    if [ -n "$SUDO_USER" ]; then
+        su "$SUDO_USER" -c "$_bin --register" 2>/dev/null || true
+        su "$SUDO_USER" -c "killall cosmic-panel 2>/dev/null || true"
+    else
+        echo "Run 'cosmic-ext-applet-per-app-layout --register && killall cosmic-panel' to activate."
+    fi
+}
+
+post_upgrade() {
+    killall cosmic-panel 2>/dev/null || true
+}
+
+pre_remove() {
+    if [ -n "$SUDO_USER" ]; then
+        su "$SUDO_USER" -c "$_bin --unregister" 2>/dev/null || true
+        STATE_DIR=$(su "$SUDO_USER" -c 'echo ${XDG_STATE_HOME:-$HOME/.local/state}')/cosmic/io.github.utrumo.CosmicExtAppletPerAppLayout
+        rm -rf "$STATE_DIR" 2>/dev/null || true
+    fi
+}
