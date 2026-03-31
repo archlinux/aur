@@ -1,0 +1,32 @@
+pkgbase = perl-moosex-configfromfile
+	pkgdesc = An abstract Moose role for setting attributes from a configfile
+	pkgver = 0.14
+	pkgrel = 1
+	url = https://metacpan.org/release/ETHER/MooseX-ConfigFromFile-0.14
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-if
+	checkdepends = perl-moose
+	checkdepends = perl-pathtools
+	checkdepends = perl-scalar-list-utils
+	checkdepends = perl-test-deep
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-requires
+	checkdepends = perl-test-simple
+	checkdepends = perl-test-without-module
+	checkdepends = perl>=5.6.0
+	makedepends = perl-module-build-tiny>=0.007
+	depends = perl-carp
+	depends = perl-moose
+	depends = perl-moosex-types
+	depends = perl-moosex-types-path-tiny>=0.005
+	depends = perl-namespace-autoclean
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
+	optdepends = perl-moosex-getopt
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-ConfigFromFile-0.14.tar.gz
+	sha256sums = 9ad343cd9f86d714be9b54b9c68a443d8acc6501b6ad6b15e9ca0130b2e96f08
+
+pkgname = perl-moosex-configfromfile
