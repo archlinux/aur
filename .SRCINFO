@@ -1,0 +1,24 @@
+pkgbase = pacmate-bin
+	pkgdesc = Interactive terminal UI wrapper for pacman
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://gitlab.com/nathanchere/pacmate
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = Apache-2.0
+	depends = pacman
+	optdepends = sudo: default privilege escalation helper
+	provides = pacmate
+	conflicts = pacmate
+	source_x86_64 = https://gitlab.com/api/v4/projects/76014792/packages/generic/pacmate/v1.2.0/pacmate_v1_2_0_amd64.tar.gz
+	sha256sums_x86_64 = 5628e4143a653d0454aa4f2e51d79e1f964e2a6b6621b38e534df9b5e6db4b23
+	source_i686 = https://gitlab.com/api/v4/projects/76014792/packages/generic/pacmate/v1.2.0/pacmate_v1_2_0_386.tar.gz
+	sha256sums_i686 = c95a50d6b1d993513eda2c53d6c2524ecb8566714a3953b0178eeebf06c0d40e
+	source_aarch64 = https://gitlab.com/api/v4/projects/76014792/packages/generic/pacmate/v1.2.0/pacmate_v1_2_0_arm64.tar.gz
+	sha256sums_aarch64 = 5ddeab63863af56f6571354f0ccc6b768d5e2e3720b18f60b88ec51fa5896db5
+	source_armv7h = https://gitlab.com/api/v4/projects/76014792/packages/generic/pacmate/v1.2.0/pacmate_v1_2_0_arm.tar.gz
+	sha256sums_armv7h = 3e018d523703f56e5fdc955e4884640f6d9943d3277e656199443774b758352c
+
+pkgname = pacmate-bin
