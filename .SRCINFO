@@ -1,0 +1,16 @@
+pkgbase = vistathemeplasma-icons-git
+	pkgdesc = Icon theme designed for VistaThemePlasma
+	pkgver = 5.rcbe92a7
+	pkgrel = 1
+	url = https://gitgud.io/aeroshell/vtp/vistathemeplasma-icons
+	arch = any
+	groups = vistathemeplasma
+	license = AGPL-3.0-or-later
+	makedepends = git
+	provides = vistathemeplasma-icons
+	conflicts = vistathemeplasma-icons
+	options = !debug
+	source = vistathemeplasma-icons-git::git+https://gitgud.io/aeroshell/vtp/vistathemeplasma-icons.git
+	sha256sums = SKIP
+
+pkgname = vistathemeplasma-icons-git
