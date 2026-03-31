@@ -50,7 +50,7 @@ build() {
     cd hermes-agent
     
     # Create virtual environment with Python 3.11
-    uv venv venv --python 3.11
+    uv venv venv --python 3.14
     export VIRTUAL_ENV="$(pwd)/venv"
     
     # Install Python dependencies with all extras
