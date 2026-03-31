@@ -4,7 +4,7 @@
 # - https://aur.archlinux.org/packages/element-desktop-nightly-bin
 
 pkgname=scalar-desktop-bin
-pkgver=0.1.238
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Scalar on Desktop"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('scalar-desktop')
 source=(
   "scalar_v${pkgver}.deb::https://download.scalar.com/versions/${pkgver}/linux/deb"
 )
-sha256sums=('1bea29bd9e8021e146692451acd4304f220aaaf20d8614ea9ac5721b841071ad')
+sha256sums=('0ca98c87a1a11c6126d08cce5e76ae3a7c76cdf1263230e88e69d2eb5de96170')
 
 package() {
   echo "Extracting the data.tar.xz..."
