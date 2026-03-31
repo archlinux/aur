@@ -3,11 +3,11 @@ pkgname=bsdcoreutils-git
 _pkgname=BSDCoreUtils
 pkgver=v6.7.r2
 pkgrel=1
-pkgdesc="Port of OpenBSD & NetBSD coreutils to Linux by DiegoMagdaleno. [PLEASE NOTE THIS PACKAGE IN WIP]"
+pkgdesc="Port of OpenBSD & NetBSD coreutils to Linux by DiegoMagdaleno."
 arch=('x86_64')
 url="https://github.com/DiegoMagdaleno/BSDCoreUtils"
 license=('ISC')
-depends=('glibc' 'openssl' 'libbsd')
+depends=('glibc' 'openssl' 'libbsd' 'man-db')
 makedepends=('git' 'cmake' 'make' 'byacc')
 #provides=('coreutils')
 #conflicts=('coreutils')
@@ -31,5 +31,6 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname/build"
 	make DESTDIR="$pkgdir" install
+	find src -name "*.1" -exec install -Dm644 "{}" "$pkgdir/usr/share/man/man1/{}"
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
