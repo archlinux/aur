@@ -1,7 +1,7 @@
 pkgbase = pinta-appimage
 	pkgdesc = Simple GTK Paint Program (Unofficial AppImage)
 	pkgver = 3.1.1_2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pkgforge-dev/Pinta-AppImage
 	arch = x86_64
 	license = MIT

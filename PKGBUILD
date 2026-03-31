@@ -1,7 +1,7 @@
 # Maintainer: Diego Garcia <diego.garcia.cr at gmail dot com>
 pkgname=pinta-appimage
 pkgver=3.1.1_2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GTK Paint Program (Unofficial AppImage)"
 arch=('x86_64')
 url='https://github.com/pkgforge-dev/Pinta-AppImage'
@@ -32,5 +32,5 @@ package() {
   install -Dm644 com.github.PintaProject.Pinta.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.github.PintaProject.Pinta.png"
 
   install -dm755 "$pkgdir/usr/bin"
-  ln -s "$pkgdir/opt/pinta/bin/pinta" "$pkgdir/usr/bin/pinta"
+  ln -s "/opt/pinta/bin/pinta" "$pkgdir/usr/bin/pinta"
 }
