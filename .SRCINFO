@@ -1,0 +1,22 @@
+pkgbase = cornelsen-offline-lernen-bin
+	pkgdesc = Cornelsen Offline Lernen Electron App
+	pkgver = 37.10.2
+	pkgrel = 1
+	url = https://www.cornelsen.de
+	arch = x86_64
+	license = custom
+	depends = electron
+	source = cornelsen-offline-lernen-bin-37.10.2.zip::https://ebook.cornelsen.de/uma20/public/v2/uma/offline/win
+	source = cornelsen-offline-lernen-bin.sh
+	source = cornelsen-offline-lernen-bin.desktop
+	source = icon16.png
+	source = icon32.png
+	source = icon96.png
+	b2sums = 2801cc40ad4c023451bd2a2713e6d69ae036d32c450bc2ef5a920dd3c8b8bc3bddb7c5a22cb9b16fad3dad9b217ff3026be73a17410082c87d9ebdd90418cfad
+	b2sums = d9c12908c1da0a8098764287fa839dda5a61c30665cdda0fb4eed99674e6380113de6af1e2577e99f931d1c5a10dd1d37bd5a4c168016f51e3d58b28c5eb1197
+	b2sums = b184acf41642973e9941a80916b37b3d0eef17a49f120e472a14a773e92309b3da3e7a8123bc4114f6970fb6f8e3dec46eb6be0f913021c220163fc3188d95e4
+	b2sums = 8dd68d9cd90347b954da9280d2133bc45706eec1e74261bdf19f53b61150ee5168db20a0f217643230c4dc66fb840f9ef61fce5f6aff5853b1bebae4bc9f4c65
+	b2sums = b326c7f468c3cecb0e2618bae56092b7c6c5fa7e8f43f499645df01c2b468e74052bef51d48b36a8a7ade2fa12f9612591eaf38819998868271ec23abd366ad5
+	b2sums = 302bef8514b991cb6903d2def32abf348329a1cf104009b3c50c0e83e44b15103b89f669fb2012894df0c7d6ab926151f09e0cf61aff4102296be7071f66f794
+
+pkgname = cornelsen-offline-lernen-bin

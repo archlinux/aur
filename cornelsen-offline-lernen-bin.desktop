@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Cornelsen Offline Lernen
+Exec=cornelsen-offline-lernen
+Icon=cornelsen-offline-lernen
+Terminal=false
+Type=Application
+Categories=Education;
+MimeType=x-scheme-handler/uma-offline;
+Comment=Cornelsen Offline Lernen Electron Application
