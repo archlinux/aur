@@ -3,8 +3,8 @@
 
 pkgname='mstflint'
 pkgver='4.35.0.1'
-_pkgver='4.35.0-1.4'
-pkgrel='4'
+_pkgver='4.35.0-1'
+pkgrel='1'
 pkgdesc='Open source version of MFT (Mellanox Firmware Tools)'
 arch=('x86_64' 'aarch64')
 _uri="Mellanox/${pkgname}"
@@ -15,7 +15,7 @@ depends=('python' 'iniparser' 'openssl' 'libxml2' 'libidn2' 'libpsl'
 	 'libxml2' 'jsoncpp' 'curl' 'libnghttp2')
 makedepends=('rdma-core')
 source=("${pkgname}-${_pkgver}.tar.gz::https://codeload.github.com/${_uri}/tar.gz/refs/tags/v${_pkgver}")
-sha256sums=('719eff338d4942e31c0c5267eb9837a803c9096794335fab9cdc852c3e58f222')
+sha256sums=('5088e35035490abc875f84337a01991aa5c6d11c3910cde49bc5c435b156f852')
 
 prepare() {
   cd "${pkgname}-${_pkgver}"
