@@ -1,7 +1,7 @@
 # Maintainer: ThePirate42 <aur@thepirate42.org>
 
 pkgname=keepass-it
-pkgver=2.57.1
+pkgver=2.61
 pkgrel=1
 pkgdesc="Italian locale for keepass"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://keepass.info/translations.html"
 license=('GPL-2.0-or-later')
 depends=('keepass')
 source=("https://downloads.sourceforge.net/keepass/KeePass-${pkgver}-Italian.zip")
-sha256sums=('533de6aec9e11f872a9908e8579161970dd93d5f9fedd9a2f3cb49fbbbfbb682')
+sha256sums=('94ea9efa7c23742d291945f3446dce3ba0aef30be93f998b3edccd58abbcb7a8')
 
 package(){
 	
