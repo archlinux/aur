@@ -3,7 +3,7 @@
 pkgname=pi-bin
 pkgver=0.64.0
 pkgrel=1
-pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool-use (binary package, pi-mono)"
+pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool-use (pi-mono)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/badlogic/pi-mono"
 license=('MIT')
