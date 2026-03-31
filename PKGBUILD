@@ -3,8 +3,8 @@
 pkgname='vim-classic-git'
 _pkgname='vim-classic'
 pkgver=r11223.156c7e4
-pkgrel=2
-pkgdesc='Vim Classic is a fork of Vim 8.2 for long-term maintenance.'
+pkgrel=3
+pkgdesc='Vim Classic is a fork of Vim 8.x for long-term maintenance.'
 arch=('x86_64' 'i686' 'aarch64')
 conflicts=('vim' 'gvim' 'vim-runtime')
 provides=('vim' 'xxd')
@@ -24,12 +24,14 @@ makedepends=(
   'lua'
   'perl'
   'python'
+  'ruby'
   'tcl'
 )
 optdepends=(
   'lua: Lua language support'
   'perl: Perl language support'
   'python: Python language support'
+  'ruby: Ruby language support'
   'tcl: Tcl language support'
 )
 source=("git+${url}")
@@ -39,9 +41,6 @@ pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-
-# TODO
-# fix ruby, perl
 
 build() {
   cd "$_pkgname"
@@ -59,6 +58,7 @@ build() {
     --enable-luainterp=dynamic \
     --enable-perlinterp=dynamic \
     --enable-python3interp=dynamic \
+    --enable-rubyinterp=dynamic \
     --enable-tclinterp=dynamic \
     --enable-year2038 \
     --disable-canberra
