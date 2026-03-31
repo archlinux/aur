@@ -10,14 +10,14 @@ audio support.
 Check the number of available alternate settings before selecting one.
 If only alt 0 exists, use it; otherwise request alt 1 as before.
 
-Link: https://github.com/jetm/mediatek-mt7927-dkms/pull/39
+Closes: https://github.com/jetm/mediatek-mt7927-dkms/pull/39
 Signed-off-by: Javier Tia <floss@jetm.me>
 Reported-by: Ryan Gilbert <xelnaga@gmail.com>
 Tested-by: Ryan Gilbert <xelnaga@gmail.com>
 
-5d7f0fce6c25f7a82ebf62528cb249dac874ffde
+01ad4794e76e226a8dee6bbf744194e83ab67bae
 diff --git a/btmtk.c b/btmtk.c
-index 4df28a2..32e0636 100644
+index 9bcbd48..2d5e38c 100644
 --- a/btmtk.c
 +++ b/btmtk.c
 @@ -1019,3 +1019,4 @@ static int __set_mtk_intr_interface(struct hci_dev *hdev)

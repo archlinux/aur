@@ -131,9 +131,9 @@ for i in "${!commits[@]}"; do
 	git -C "$KERNEL_TREE" checkout "$commit" --quiet 2>/dev/null
 
 	# Build
+	build_rc=0
 	build_out=$(make -C "$KDIR" M="$KERNEL_TREE/$module_dir" modules \
-		$_llvm -j"$_nproc" 2>&1) || true
-	build_rc=$?
+		$_llvm -j"$_nproc" 2>&1) || build_rc=$?
 
 	# Check for actual compilation errors (ignore modpost/symbol warnings)
 	has_error=false

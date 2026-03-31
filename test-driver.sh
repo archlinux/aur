@@ -188,7 +188,7 @@ dmesg_out="$(dmesg 2>/dev/null || true)"
 }
 
 # ---------------------------------------------------------------------------
-# 7b. ASPM status (MT7927 needs ASPM disabled)
+# 8. ASPM status (MT7927 needs ASPM disabled)
 # ---------------------------------------------------------------------------
 check_aspm() {
 	local dmesg_out=""
@@ -222,7 +222,7 @@ dmesg_out="$(dmesg 2>/dev/null || true)"
 }
 
 # ---------------------------------------------------------------------------
-# 8. Bluetooth USB device presence
+# 9. Bluetooth USB device presence
 # ---------------------------------------------------------------------------
 check_bt_usb() {
 	# Known MT6639 BT USB vendor:product pairs
@@ -246,7 +246,7 @@ check_bt_usb() {
 }
 
 # ---------------------------------------------------------------------------
-# 9. Bluetooth firmware loading from dmesg
+# 10. Bluetooth firmware loading from dmesg
 # ---------------------------------------------------------------------------
 check_bt_firmware() {
 	local dmesg_out=""
@@ -291,7 +291,7 @@ dmesg_out="$(dmesg 2>/dev/null || true)"
 }
 
 # ---------------------------------------------------------------------------
-# 10. Bluetooth rfkill status
+# 11. Bluetooth rfkill status
 # ---------------------------------------------------------------------------
 check_bt_rfkill() {
 	if ! command -v rfkill &>/dev/null; then
@@ -315,7 +315,7 @@ check_bt_rfkill() {
 }
 
 # ---------------------------------------------------------------------------
-# 9. Interface detection (auto via sysfs)
+# 12. Interface detection (auto via sysfs)
 # ---------------------------------------------------------------------------
 detect_interface() {
 	local iface=""
@@ -347,7 +347,7 @@ detect_interface() {
 }
 
 # ---------------------------------------------------------------------------
-# EHT / 320MHz / MLO capability
+# 13. EHT / 320MHz / MLO capability
 # ---------------------------------------------------------------------------
 check_eht_caps() {
 	local iface="$1"
@@ -407,7 +407,7 @@ check_eht_caps() {
 }
 
 # ---------------------------------------------------------------------------
-# 13. Device readiness (nmcli)
+# 14. Device readiness (nmcli)
 # ---------------------------------------------------------------------------
 check_device_ready() {
 	local iface="$1"
@@ -450,7 +450,7 @@ check_device_ready() {
 }
 
 # ---------------------------------------------------------------------------
-# 14. Regulatory / 6GHz NO_IR status
+# 15. Regulatory / 6GHz NO_IR status
 # ---------------------------------------------------------------------------
 check_regulatory() {
 	local iface="$1"
@@ -504,7 +504,7 @@ check_regulatory() {
 }
 
 # ---------------------------------------------------------------------------
-# 15. WiFi scan - report available bands
+# 16. WiFi scan - report available bands
 # ---------------------------------------------------------------------------
 check_scan() {
 	local iface="$1"
@@ -546,7 +546,7 @@ check_scan() {
 }
 
 # ---------------------------------------------------------------------------
-# 11. Connection status
+# 17. Connection status
 # ---------------------------------------------------------------------------
 check_connection() {
 	local iface="$1"
@@ -604,7 +604,7 @@ check_connection() {
 }
 
 # ---------------------------------------------------------------------------
-# 12. Quick data path test (3 pings to gateway)
+# 18. Quick data path test (3 pings to gateway)
 # ---------------------------------------------------------------------------
 check_data_path() {
 	local iface="$1"
@@ -659,7 +659,7 @@ check_data_path() {
 }
 
 # ---------------------------------------------------------------------------
-# 13. Error pattern check in dmesg
+# 19. Error pattern check in dmesg
 # ---------------------------------------------------------------------------
 check_errors() {
 	local dmesg_out=""

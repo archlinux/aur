@@ -1,6 +1,6 @@
 pkgbase = mediatek-mt7927-dkms
 	pkgdesc = DKMS Bluetooth (MT6639) and WiFi (MT7925e/MT7902) modules for MediaTek MT7927 Filogic 380
-	pkgver = 2.9
+	pkgver = 2.10
 	pkgrel = 1
 	url = https://github.com/jetm/mediatek-mt7927-dkms
 	install = mediatek-mt7927-dkms.install

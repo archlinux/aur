@@ -29,9 +29,9 @@ download:
 
 # ── version check ────────────────────────────────────────────────────
 check-version:
-	@if [ "$(VERSION)" != "$(PKGBUILD_VER)" ]; then \
+	@if [ -f "$(TOPDIR)PKGBUILD" ] && [ "$(VERSION)" != "$(PKGBUILD_VER)" ]; then \
 		echo >&2 "ERROR: Version mismatch: dkms.conf=$(VERSION) PKGBUILD=$(PKGBUILD_VER)"; \
-		echo >&2 "Update PACKAGE_VERSION in dkms.conf or pkgver in PKGBUILD"; \
+		echo >&2 "Run makepkg or update PACKAGE_VERSION in dkms.conf"; \
 		exit 1; \
 	fi
 

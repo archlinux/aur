@@ -55,10 +55,12 @@ dkms remove -m %{dkms_name} -v %{version} --rpm_safe_upgrade --all || :
 
 %files
 %{_usrsrc}/%{dkms_name}-%{version}
-%dir /usr/lib/firmware/mediatek/mt7927
+%dir /usr/lib/firmware/mediatek
 %dir /usr/lib/firmware/mediatek/mt7927
 /usr/lib/firmware/mediatek/mt7927/BT_RAM_CODE_MT6639_2_1_hdr.bin
 /usr/lib/firmware/mediatek/mt7927/WIFI_MT6639_PATCH_MCU_2_1_hdr.bin
 /usr/lib/firmware/mediatek/mt7927/WIFI_RAM_CODE_MT6639_2_1.bin
 
 %changelog
+* Sun Mar 29 2026 Eder Sánchez <eder.sanchez@pm.me> - 2.9-1
+- See CHANGELOG.md for detailed release notes

@@ -40,6 +40,12 @@ def extract_by_name(data, name, output_path):
     # Align to 4-byte boundary
     entry_pos = (entry_pos + 3) & ~3
 
+    if entry_pos + 8 > len(data):
+        raise RuntimeError(
+            f"Unexpected end of data while parsing entry '{name}' "
+            f"(need 8 bytes at offset {entry_pos}, but data is {len(data)} bytes)"
+        )
+
     data_offset = struct.unpack_from("<I", data, entry_pos)[0]
     data_size = struct.unpack_from("<I", data, entry_pos + 4)[0]
 
@@ -66,7 +72,7 @@ def extract_all(input_path, output_dir):
     input_path can be a .zip file (reads mtkwlan.dat from it) or a raw
     mtkwlan.dat file.
     """
-    if input_path.endswith(".zip"):
+    if input_path.lower().endswith(".zip"):
         with zipfile.ZipFile(input_path) as zf:
             data = zf.read("mtkwlan.dat")
     else:

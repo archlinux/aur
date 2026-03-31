@@ -33,7 +33,7 @@ Link: https://github.com/openwrt/mt76/issues/927
 Signed-off-by: Javier Tia <floss@jetm.me>
 Tested-by: Jose Tiburcio Ribeiro Netto <jnetto@mineiro.io>
 
-dce5b6b1963aed382878ab0ac1e826faba5272c1
+706d012d2bf8debf73958a0fddcbaff57679ab00
 diff --git a/btusb.c b/btusb.c
 index a41bb1e..336d6e0 100644
 --- a/btusb.c
