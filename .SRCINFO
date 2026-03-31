@@ -1,0 +1,13 @@
+pkgbase = port-checker-git
+	pkgdesc = Application to check if a TCP port works with a Golang HTTP server
+	pkgver = v0.4.0.r0.d6c661d
+	pkgrel = 1
+	url = https://github.com/qdm12/port-checker/
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = MIT
+	source = git+https://github.com/qdm12/port-checker/
+	sha256sums = SKIP
+
+pkgname = port-checker-git
