@@ -1,12 +1,9 @@
 post_install() {
   echo ""
-  echo "==> WARNING: As of Agave v3.0.0, the agave-validator binary is no"
-  echo "    longer distributed in prebuilt releases."
-  echo "    If you need to run a validator, build agave from source:"
-  echo "    https://docs.anza.xyz/cli/install#build-from-source"
-  echo ""
-  echo "==> An agave-validator AUR package (built from source) is being"
-  echo "    worked on and will be available shortly."
+  echo "==> NOTE: Validator and node operation binaries (agave-validator,"
+  echo "    agave-watchtower, solana-gossip, etc.) are not included in"
+  echo "    prebuilt releases. For these, install the 'solana' package"
+  echo "    which builds from source."
   echo ""
 }
 
