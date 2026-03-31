@@ -1,5 +1,4 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
-
 pkgname=pi-bin
 pkgver=0.64.0
 pkgrel=1
