@@ -1,6 +1,6 @@
 # Maintainer: Mohannad Ahmed <mohannadabdo21@hotmail.com>
 pkgname=cpumon
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Real-time CPU monitoring for Linux — temperatures, frequencies, throttling, and fan status'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go')
 optdepends=('lm_sensors: improved thermal data via sensors')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Mohabdo21/cpumon/archive/v$pkgver.tar.gz")
-sha256sums=('e932d95b29092cb161c3641f80d87c72121ab41a6e700a0adaa378c7ace2be03')
+sha256sums=('a8893f7a5dbd129cef1368eb312e134be9a8028b0aacbce36b2116746221d597')
 
 build() {
 	cd "$pkgname-$pkgver"
