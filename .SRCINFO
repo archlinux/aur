@@ -1,0 +1,24 @@
+pkgbase = hypr-wallpaper-git
+	pkgdesc = SQLite-backed, quality-gated, time-aware wallpaper manager and TUI for Hyprland
+	pkgver = r3.f51c0e7
+	pkgrel = 1
+	url = https://github.com/jaehho/hypr-wallpaper
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = hyprland
+	depends = python
+	depends = jq
+	depends = sqlite
+	depends = curl
+	depends = socat
+	depends = libnotify
+	depends = xdg-utils
+	optdepends = swww: wallpaper setter daemon
+	optdepends = rofi: GUI menu mode
+	provides = hypr-wallpaper
+	conflicts = hypr-wallpaper
+	source = git+https://github.com/jaehho/hypr-wallpaper.git
+	sha256sums = SKIP
+
+pkgname = hypr-wallpaper-git
