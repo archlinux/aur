@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=servo
-pkgver=0.0.4
-pkgrel=2
+pkgver=0.0.6
+pkgrel=1
 pkgdesc='Parallel Browser Project: web browser written in Rust'
 arch=(x86_64 i686)
 url=https://github.com/servo/servo
@@ -26,6 +26,7 @@ makedepends=(clang
              cmake
              curl
              git
+             'glibc<2.43'
              gperf
              llvm
              python
@@ -36,13 +37,13 @@ makedepends=(clang
 options=('!lto') # lto breaks linking
 backup=("etc/profile.d/$pkgname".{csh,sh})
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('09acfa3a96c5aa93fa974cef20bd5a3e19d6bdaafd8156feee80ecdc926fcaca')
+sha256sums=('6bead4430b4760e92939bab95f323944346429ef6e90207f8ecbb8a0eecc7b73')
 
 prepare() {
 	cd "$pkgname"
 	echo 'export PATH=$PATH:/opt/servo' > "$pkgname.sh"
 	echo 'setenv PATH ${PATH}:/opt/servo' > "$pkgname.csh"
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
