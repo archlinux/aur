@@ -1,8 +1,9 @@
-# Maintainer: Daniel S. Palma <contato at danielspalma dot adm dot br>
+# Maintainer: MoonVlad
+# Contributor: Daniel S. Palma <contato at danielspalma dot adm dot br>
 # Contributor: Asuka Minato <i at asukaminato dot eu dot org>
 
 pkgname=adspower-global
-pkgver=7.3.26
+pkgver=7.12.29
 pkgrel=1
 pkgdesc="AdsPower - Most Secure Antidetect Browser for Multi-Accounts"
 arch=(x86_64)
@@ -16,10 +17,10 @@ depends=(
     hicolor-icon-theme
 )
 source=(
-    "https://version.adspower.net/software/linux-x64-global/AdsPower-Global-$pkgver-x64.deb"
+    "https://version.adspower.net/software/linux-x64-global/$pkgver/AdsPower-Global-$pkgver-x64.deb"
 )
 sha256sums=(
-    'a1d111654bdd9ded9d1a53e0795a3bbd7d683877837dc980761b0af79b93a870'
+    '6e8dcd0f746549817b60460197103cd0af98d92d122f6e17a48af8a12be27595'
 )
 
 package() {
