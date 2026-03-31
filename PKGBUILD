@@ -2,7 +2,7 @@
 
 pkgbase=open-supaplex
 pkgname=open-supaplex
-pkgver=7.2
+pkgver=7.2.2
 pkgrel=1
 pkgdesc="Supaplex is a game released in the early nineties. OpenSupaplex is a 1:1 reimplementation of the original game in C and SDL"
 url="https://www.github.com/sergiou87/open-supaplex"
@@ -13,7 +13,7 @@ source=(
 )
 noextract=("v${pkgver}.zip")
 sha1sums=(
-    "9540d4cc0889ea644ce7ac6c3f4d5c81dfa059a4"
+    "044c05de50f5ecd8537a212414398fd5d50586a9"
 )
 arch=('x86_64')
 
