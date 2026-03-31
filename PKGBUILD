@@ -1,6 +1,6 @@
 # Maintainer: rishdot <your@email.com>
 pkgname=ruby-rails-metro
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Rails app generator with CLI, TUI, and template output"
 arch=(any)
@@ -10,7 +10,7 @@ depends=(ruby)
 makedepends=(rubygems)
 source=("https://rubygems.org/downloads/rails-metro-$pkgver.gem")
 noextract=("rails-metro-$pkgver.gem")
-sha256sums=('16d925b78500646fb89db4e5b271d4d3feb21477f89bf562eb8cf01f40e0e3a4')
+sha256sums=('df9322556c2515cdded93791a6ca60573a9689f65af30f1d89543698224b4472')
 
 package() {
   local _gemdir
