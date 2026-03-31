@@ -1,6 +1,6 @@
 # Maintainer: Steve Holvoet <linux@steho.be>
 pkgname=ghidra-mcp
-pkgver=3.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Production-ready Model Context Protocol server for Ghidra reverse engineering platform"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('maven' 'jdk21-openjdk')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8d958510dab5511d97d443a4bbaec0e66509e6e7a2c03ad77fe95be1e7169f0d')
+sha256sums=('04fbcfec1ec7fa8a386278eb35de19493c63f506fe3fac6bc5f936f9971da54d')
 install=ghidra-mcp.install
 
 prepare() {
