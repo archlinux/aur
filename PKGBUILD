@@ -18,8 +18,11 @@ source=("LICENSE-$pkgver::${url}/raw/v${pkgver}/LICENSE"
         "README-$pkgver.md::${url}/raw/v${pkgver}/README.md"
         "README-kr-$pkgver.md::${url}/raw/v${pkgver}/README-kr.md")
 
-sha256sums=('SKIP' 'SKIP' 'SKIP')
-sha256sums_x86_64=('SKIP' 'SKIP')
+sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+            'cb28ba022a322a743c0b66184ee62303508085427d717f64237293598ceb0958'
+            '9383df6c98027194c5903466745c2568e034a75979b5eedcabebe7dd55ac69bc')
+sha256sums_x86_64=('21a6937053d20d1d2b91d347fdf16fe42b6acad1e6904bcceb583814d34a33b0'
+                   'ed479becdeb9caee09efc20f35557941f3daf6623215b1fc0eb90b3d61a4230a')
 
 package() {
   install -Dm755 "$srcdir/totalmixer_gui-x86_64-$pkgver" "$pkgdir/usr/bin/totalmixer_gui"
