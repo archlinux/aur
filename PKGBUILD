@@ -11,6 +11,7 @@ depends=()
 optdepends=()
 makedepends=(
   "cargo"
+  "clang"
   "cmake"
   "nodejs"
   "pnpm"
