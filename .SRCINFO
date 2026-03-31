@@ -1,0 +1,24 @@
+pkgbase = perl-task-kensho-cli
+	pkgdesc = A Glimpse at an Enlightened Perl: Useful Command-line Tools
+	pkgver = 0.41
+	pkgrel = 1
+	url = https://metacpan.org/release/ETHER/Task-Kensho-CLI-0.41
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker
+	depends = ack
+	depends = perl-app-nopaste
+	depends = perl-module-corelist
+	depends = perl-reply
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
+	optdepends = perl-json-pp
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Task-Kensho-CLI-0.41.tar.gz
+	sha256sums = ee6828959f12a95266aa40b31e2f90b9c28cb708c3d3012ccfd36ae71ced78f7
+
+pkgname = perl-task-kensho-cli
