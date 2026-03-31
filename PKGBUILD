@@ -24,6 +24,8 @@ depends=(
     'openimageio'
     'onetbb'
     'python'
+    'python-packaging'
+    'python-tomli'
     'sdl3'
     'spdlog'
 )
@@ -90,7 +92,6 @@ keep = {
     'python3',            # embedded interpreter, version-sensitive
     'nanobind',           # must match vcpkg python version
     'args',               # tiny, no Arch package
-    'nativefiledialog-extended',  # no Arch package
 }
 
 cfg['dependencies'] = [
