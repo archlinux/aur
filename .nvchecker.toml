@@ -1,0 +1,3 @@
+[perl-proc-fork]
+source = "cpan"
+cpan = "Proc-Fork"

@@ -1,0 +1,15 @@
+pkgbase = perl-proc-fork
+	pkgdesc = simple, intuitive interface to the fork() system call
+	pkgver = 0.808
+	pkgrel = 1
+	url = https://metacpan.org/release/ARISTOTLE/Proc-Fork-0.808
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	depends = perl-carp
+	depends = perl-exporter-tidy
+	depends = perl>=5.6.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/Proc-Fork-0.808.tar.gz
+	sha256sums = 3f68c1a2978f05df229a608e95e91f4aaf834e840d588215644d8f9669ff99ce
+
+pkgname = perl-proc-fork
