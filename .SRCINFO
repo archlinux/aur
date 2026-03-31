@@ -1,0 +1,16 @@
+pkgbase = zelta
+	pkgdesc = A safe and powerful ZFS backup and replication suite
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://zelta.space
+	arch = any
+	license = BSD-2-Clause
+	makedepends = git
+	depends = sh
+	depends = gawk
+	optdepends = zfs-utils: ZFS filesystem support
+	optdepends = openssh: remote backup operations
+	source = git+https://github.com/bell-tower/zelta.git#tag=v1.1.0
+	sha256sums = 76e3ee5e9db162e59e362ff6b2e13efcb4f99ed7c62cb52052a7bd086c2515a9
+
+pkgname = zelta

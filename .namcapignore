@@ -1,0 +1,3 @@
+# Suppress false positive: 'ssh' detected as library reference
+# but it's actually configuration examples in zelta.env files
+ssh
