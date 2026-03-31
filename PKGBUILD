@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-meta
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Meta package for Shorin DMS Niri dependencies"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"

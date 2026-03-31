@@ -1,7 +1,7 @@
 pkgbase = shorin-dms-niri-meta
 	pkgdesc = Meta package for Shorin DMS Niri dependencies
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/SHORiN-KiWATA/shorin-dms-niri
 	arch = any
 	license = GPL
