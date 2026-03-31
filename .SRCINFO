@@ -1,6 +1,6 @@
 pkgbase = solana-bin
 	pkgdesc = A fast, secure, and censorship resistant blockchain.
-	pkgver = 2.3.11
+	pkgver = 2.3.13
 	pkgrel = 1
 	url = https://www.solana.com
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = solana-bin
 	provides = spl-token
 	conflicts = solana
 	options = !strip
-	source = solana-2.3.11.tar.bz2::https://github.com/anza-xyz/agave/releases/download/v2.3.11/solana-release-x86_64-unknown-linux-gnu.tar.bz2
+	source = solana-2.3.13.tar.bz2::https://github.com/anza-xyz/agave/releases/download/v2.3.13/solana-release-x86_64-unknown-linux-gnu.tar.bz2
 	source = solana.sysusers
 	source = solana.tmpfiles
-	sha256sums = 3127d066a6b9e3e5e5558a2d34112434a60d0410800d94e6bb12714315dc5f26
+	sha256sums = c43539ebdf6942472e8b87635d6ea55f428a51e3d0219f7b6f720fc6b19fade0
 	sha256sums = bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0
 	sha256sums = a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b
 
