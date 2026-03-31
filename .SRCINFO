@@ -1,7 +1,7 @@
 pkgbase = ndppd-git
 	pkgdesc = NDP Proxy Daemon, version 0.x (git version)
 	pkgver = 0.2.6.r14.g0b78ff2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DanielAdolfsson/ndppd
 	arch = x86_64
 	license = GPL-3.0-or-later

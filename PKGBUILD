@@ -1,18 +1,19 @@
 # Maintainer: Hexhu <i at hexhu.net>
 # Contributor : Thermi <noel [at] familie-kuntze dot de>
+# Contributor : Ivan Shapovalov <intelfx [at] intelfx dot name>
 
 _pkgname=ndppd
 pkgname=ndppd-git
 pkgver=0.2.6.r14.g0b78ff2
-pkgrel=1
+pkgrel=2
 pkgdesc="NDP Proxy Daemon, version 0.x (git version)"
 arch=('x86_64')
 url="https://github.com/DanielAdolfsson/ndppd"
 license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('git')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname%-git}")
+conflicts=("${_pkgname%-git}")
 backup=('etc/ndppd.conf')
 source=('git+https://github.com/DanielAdolfsson/ndppd#branch=0.2.7-devel')
 sha256sums=('SKIP')
