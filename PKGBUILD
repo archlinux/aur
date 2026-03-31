@@ -29,4 +29,7 @@ package() {
 
   # fix putty pscp file conflict
   mv "${pkgdir}"/usr/bin/pscp "${pkgdir}"/usr/bin/psshscp
+
+  # license
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
