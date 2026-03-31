@@ -2,8 +2,8 @@
 # Maintainer: vcup
 # Contributor: vcup
 pkgname=peerbanhelper
-pkgver=9.3.9
-pkgrel=2
+pkgver=9.3.10
+pkgrel=1
 pkgdesc="PeerBanHelper is a tool to auto ban peers on the bitorrent network."
 arch=('any')
 url="https://github.com/PBH-BTN/PeerBanHelper"
@@ -12,7 +12,7 @@ depends=('java-runtime>=25')
 backup=('etc/peerbanhelper/config.yml' 'etc/peerbanhelper/profile.yml')
 install=${pkgname}.install
 source=("https://github.com/PBH-BTN/PeerBanHelper/releases/download/v${pkgver}/peerbanhelper_${pkgver}_all.deb")
-sha512sums=('5e635e52a11f26b1bda5a6e3be56100542205ee4f1ba90a06c3669cfc4ad75c3fc21fadbb2cdb0b6b20b83be432f2e62b2c3508d17b1a235c8d65d9b13c6c659')
+sha512sums=('8859ad421d1cbcd7b714eb4f1f74d9211070de73b2cc0e11e08dacc49c245a2321774101ef82535d948b580627ae7ff8a15c072053fbf2e6f13c0b3e2b523595')
 
 package() {
   # Extract package data
