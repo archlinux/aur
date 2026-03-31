@@ -1,13 +1,13 @@
-# Maintainer: gobinath <slgobinath@gmail.com>
-# Maintainer: yigits <yigit@yigitsever.com>
-# Maintainer: otuva <onralpakin@gmail.com>
-# Maintainer: PopeRigby <poperigby@mailbox.org>
-# Maintainer: ilario <iochesonome@gmail.com>
-# Maintainer: archisman <apandada1ATgmail.com>
+# Maintainer: gobinath <slgobinathATgmailDOTcom>
+# Contributor: yigits <yigitATyigitseverDOTcom>
+# Contributor: otuva <onralpakinATgmailDOTcom>
+# Contributor: PopeRigby <poperigbyATmailboxDOTorg>
+# Maintainer: ilario <iochesonomeATgmailDOTcom>
+# Maintainer: archisman <apandada1ATgmailDOTcom>
 
 pkgname=safeeyes
-pkgver=3.3.1
-pkgrel=3
+pkgver=3.3.2
+pkgrel=4
 pkgdesc="A Free and Open Source tool for Linux users to reduce and prevent repetitive strain injury (RSI)."
 arch=("any")
 url="https://github.com/slgobinath/safeeyes"
@@ -29,7 +29,7 @@ package() {
     # Use pip so pyproject.toml (PEP 517) is respected; ensure files declared
     # as data_files in pyproject are installed under /usr when using --prefix=/usr
     python -m pip install --root="$pkgdir" --prefix=/usr --no-deps --ignore-installed .
-    
+
         # Copy desktop file and icons from site-packages into /usr/share
         sitepkg_dir=$(find "$pkgdir/usr/lib" -maxdepth 3 -type d -name "site-packages" -print -quit)
         if [ -n "$sitepkg_dir" ]; then
