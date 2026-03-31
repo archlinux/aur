@@ -1,6 +1,5 @@
-- Rework workspaces settings category to be more intuitive
-- Update documentation for v22 changes to password managers and identities
-- Fix SSH connections failing when a custom SSH executable was added to the PATH from a directory with spaces
-- Fix connection filter sometimes jumping to wrong category when only one entry matched
-- Fix selected category being reset on restart
+- Add more documentation links and content
+- Fix bundled executables, e.g. hcloud, not taking priority over existing installed ones
+- Fix bitwarden sync button not showing proper error message when bw CLI was not installed
+- Fix terminal logging failing with generic error on Windows when powershell was unavailable
 - Fix various NullPointers
