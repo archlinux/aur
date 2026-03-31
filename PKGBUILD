@@ -5,7 +5,7 @@ _binname=junie
 provides=('junie')
 conflicts=('junie')
 
-pkgver=802.4
+pkgver=1231.2
 pkgrel=1
 pkgdesc="Junie command‑line client"
 arch=('x86_64' 'aarch64')
@@ -34,16 +34,71 @@ depends=(
   'giflib'
   'pcsclite'
 )
+makedepends=('git' 'unzip' 'curl' 'jq')
 optdepends=()
 
-source=('LICENSE')
+source=("$pkgname::git+https://github.com/jetbrains-junie/junie.git"
+        'LICENSE')
+sha512sums=('SKIP'
+            'SKIP')
 
-source_x86_64=("https://github.com/jetbrains-junie/junie/releases/download/${pkgver}/junie-eap-${pkgver}-linux-amd64.zip")
-source_aarch64=("https://github.com/jetbrains-junie/junie/releases/download/${pkgver}/junie-eap-${pkgver}-linux-aarch64.zip")
+_latest_eap_version() {
 
-sha512sums=('cb1277b44d0cf8fe650685013b5d4fa4ac01f4f7c42cc90c94990c9dfde71b7ff19210d0f9c766990d56058c0516ddd5b4ba9710da30ceed27cd11dbb1288c52')
-sha512sums_x86_64=('eebb13394f1384833d513435832e2d8abeea43786ebcfc0d96a1900832f0cadab9ed31509ce96c31bfa980304b984920f46d8254f9288789d3091967ab8eab41')
-sha512sums_aarch64=('1878e2a05efe24741d92eb3020a487f800936f2f45233ea26cac8a8dc84ee0a2209f97d69473c49ac48bf0069d16fec29ba6f5e4aa58565561ea938cadde0049')
+  jq -rs '
+    def blacklist: [];
+
+    map(
+      select(.version? != null)
+      | select(.version as $v | blacklist | index($v) | not)
+      | .version
+    )
+    | max_by(split(".") | map(tonumber))
+  ' "$srcdir/$pkgname/update-info-eap.jsonl"
+}
+
+_eap_download_url() {
+  local _version="$1"
+  local _platform="$2"
+
+  jq -rse --arg version "$_version" --arg platform "$_platform" '
+    map(select(.version == $version and .platform == $platform and .downloadUrl? != null))
+    | .[0].downloadUrl
+  ' "$srcdir/$pkgname/update-info-eap.jsonl"
+}
+
+pkgver() {
+  cd "$pkgname"
+  _latest_eap_version
+}
+
+prepare() {
+  cd "$srcdir"
+  local _version
+  local _platform
+  local _download_url
+  local _archive
+
+  _version="$(_latest_eap_version)"
+
+  case "$CARCH" in
+    x86_64) _platform="linux-amd64" ;;
+    aarch64) _platform="linux-aarch64" ;;
+    *)
+      printf 'Unsupported architecture: %s\n' "$CARCH" >&2
+      return 1
+      ;;
+  esac
+
+  if ! _download_url="$(_eap_download_url "$_version" "$_platform")"; then
+    printf 'No download URL found for version %s on %s\n' "$_version" "$_platform" >&2
+    return 1
+  fi
+
+  _archive="junie-eap-${_version}-${_platform}.zip"
+
+  curl -fLo "$_archive" "$_download_url"
+  unzip -o "$_archive"
+}
 
 package() {
     cd "${srcdir}"
@@ -69,5 +124,3 @@ EOF
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-
-# vim:set ts=2 sw=2 et:
