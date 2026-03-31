@@ -3,7 +3,7 @@
 pkgname=upscayl
 _pkgname=Upscayl
 pkgver=2.15.0
-pkgrel=2
+pkgrel=3
 _electronversion=39
 _nodeversion=20
 pkgdesc="Free and Open Source AI Image Upscaler.(Use system-wide electron)"
@@ -21,12 +21,8 @@ depends=(
     "vulkan-driver"
 )
 makedepends=(
-    'git'
     'npm'
     'nvm'
-    'elfutils'
-    'curl'
-    'gcc'
     'gendesk'
 )
 optdepends=(
@@ -35,7 +31,7 @@ optdepends=(
     'vulkan-nouveau: Open-source Vulkan driver for Nvidia GPUs'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v2.15.0.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
 sha256sums=('566a7882fb95a8722c00f00a248139e2426fa299ae7cae4fe3f0c35280f5e21e'
@@ -56,6 +52,7 @@ prepare() {
     " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Graphics" --name="${_pkgname}" --exec="${pkgname} %U"
+
     cd "${srcdir}/${pkgname}-${pkgver}"
     electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
