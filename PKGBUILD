@@ -1,7 +1,7 @@
 # Maintainer: Tomas Runz Jensen <tomasrj@outlook.dk>
 
 pkgname=pyrite64-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="N64 Game-Engine and Editor using libdragon & tiny3d"
 arch=('x86_64')
@@ -14,13 +14,13 @@ conflicts=('libdragon' 'libdragon-git' 'libdragon-tools-git' 'mips64-elf-gcc' 't
 source=(
     "https://github.com/DragonMinded/libdragon/releases/download/toolchain-continuous-prerelease/gcc-toolchain-mips64-x86_64.deb"
     "git+https://github.com/DragonMinded/libdragon.git#branch=preview"
-    "https://github.com/HailToDodongo/pyrite64/releases/download/v${pkgver}/pyrite64-${pkgver//./_}-linux.zip"
+    "https://github.com/HailToDodongo/pyrite64/releases/download/v${pkgver}/pyrite64-linux-${pkgver//./_}.zip"
     "git+https://github.com/HailToDodongo/tiny3d.git"
     "pyrite64.desktop"
 )
 sha512sums=('a548820c814d3ca10ad1f6c5b1a32c9006215cba5f8a21132392cbd831b0f7bc7e34b3c4d2f4568563e932e756fc418e457f682504e060101d89a2e9fcea4cae'
             'SKIP'
-            '7bdfdeb5395418020f409110abf90e957b01eae68f844b7326ed46599433ce78a7c0f2d2033cbd1ecec638a18f5ced4090a30b85f7179d115e517b1080b489a2'
+            '93ad15d8490fd331b400788bf8485d3f03f3c3b8c78b25df24e3f806ef632a6fb2545dc6333476184a13a19a7dd3c20e4ae999ddf577cb4110a068c7e91673e0'
             'SKIP'
             '7fa6cf338fe0c7d18122239a5dda749a3b08a18e64b76d6e042b005a89f01656641639d0d0584f91554d2a8c6c0614294dc7d6c013652f37b9efb1c70e37ce47')
 options=('!strip')
