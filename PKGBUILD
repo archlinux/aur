@@ -2,7 +2,7 @@
 
 pkgname='vim-classic-git'
 _pkgname='vim-classic'
-pkgver=r11182.9ca2846
+pkgver=r11223.156c7e4
 pkgrel=1
 pkgdesc='Vim Classic is a fork of Vim 8.2 for long-term maintenance.'
 arch=('x86_64' 'i686' 'aarch64')
@@ -10,7 +10,6 @@ conflicts=('vim' 'gvim' 'vim-runtime')
 provides=('vim' 'xxd')
 url='https://git.sr.ht/~sircmpwn/vim-classic'
 license=('custom:vim')
-options=(debug)
 depends=(
   'acl'
   'libgcrypt'
