@@ -60,8 +60,6 @@ prepare() {
 	sed -i 's#win32"===process.platform&&ft().app.setAppUserModelId("com.cron.electron");#true#g' "$srcdir/asar_patched/build/main/main.js"
 	# fix tray popup menu for linux (use win32 pattern instead of darwin)
 	sed -i 's#Xl)if("darwin"===process.platform)Xl.popUpContextMenu();else{#Xl)if(false)Xl.popUpContextMenu();else{#g' "$srcdir/asar_patched/build/main/main.js"
-	# open notion.so/notion.com page links in Notion app via notion:// protocol
-	sed -i 's#St.shell.openExternal(t)#St.shell.openExternal(t.replace(/^https:\\/\\/(?:www\\.)?notion\\.(so|com)/,"notion://www.notion.$1"))#g' "$srcdir/asar_patched/build/main/main.js"
 
 	# repacking asar with all the patches
 	asar p "$srcdir/asar_patched" "$srcdir/app.asar" --unpack *.node
