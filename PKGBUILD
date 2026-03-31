@@ -4,7 +4,7 @@
 
 _pkgname=solana
 pkgname="$_pkgname-bin"
-pkgver=2.3.13
+pkgver=3.0.7
 pkgrel=1
 pkgdesc='A fast, secure, and censorship resistant blockchain.'
 arch=(x86_64)
@@ -14,30 +14,26 @@ depends=(bash bzip2 cargo gcc-libs glibc systemd-libs)
 provides=("$_pkgname" spl-token)
 conflicts=("$_pkgname")
 options=(!strip)
+install="$pkgname.install"
 source=(
   "$_pkgname-$pkgver.tar.bz2::https://github.com/anza-xyz/agave/releases/download/v$pkgver/solana-release-x86_64-unknown-linux-gnu.tar.bz2"
   "$_pkgname.sysusers"
   "$_pkgname.tmpfiles"
+  "$pkgname.install"
 )
-sha256sums=('c43539ebdf6942472e8b87635d6ea55f428a51e3d0219f7b6f720fc6b19fade0'
+sha256sums=('62342988c01c0fb106a431c00a2179dcacb75c0f13c9151e3956268503a37100'
             'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
-            'a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b')
+            'a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b'
+            '2ebe9f425bb1833089de42bae0cafe8da6394eb964e3442370bcff1a9c5045a8')
 
+# The validator binaries are unavailable since 3.0.0, see solana-bin.install.
 _BINS=(
   agave-install
   agave-install-init
-  agave-validator
-  agave-watchtower
   cargo-build-sbf
   cargo-test-sbf
-  rbpf-cli
   solana
-  solana-faucet
-  solana-genesis
-  solana-gossip
   solana-keygen
-  solana-log-analyzer
-  solana-net-shaper
   solana-stake-accounts
   solana-test-validator
   solana-tokens
@@ -45,8 +41,6 @@ _BINS=(
   spl-token
   # DCOU bins
   agave-ledger-tool
-  solana-bench-tps
-  solana-dos
 )
 
 package() {
