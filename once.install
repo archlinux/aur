@@ -1,0 +1,15 @@
+post_install() {
+    echo ':: Enable the background service with: systemctl enable --now once-background.service'
+}
+
+post_upgrade() {
+    if systemctl is-active --quiet once-background.service; then
+        systemctl restart once-background.service
+    fi
+}
+
+pre_remove() {
+    if systemctl is-active --quiet once-background.service; then
+        systemctl disable --now once-background.service
+    fi
+}

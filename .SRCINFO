@@ -1,0 +1,23 @@
+pkgbase = once-bin
+	pkgdesc = CLI/TUI for installing and managing self-hosted web applications
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/basecamp/once
+	install = once.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = docker
+	provides = once
+	conflicts = once
+	options = !strip
+	source = MIT-LICENSE-0.1.6::https://raw.githubusercontent.com/basecamp/once/v0.1.6/MIT-LICENSE
+	source = once-background.service
+	sha256sums = fa0d1454375cbc7701bc13d916c3ae71e613b8ae718321641e678e09409393c4
+	sha256sums = aa314fe79677eb5f120fcc3d4c42007a93ff7b1ef917382c0c1fdca5633ad46a
+	source_x86_64 = once-0.1.6-x86_64::https://github.com/basecamp/once/releases/download/v0.1.6/once-linux-amd64
+	sha256sums_x86_64 = ca23426d7ebe374ba1051bde1e3e16593f9ef1722b528f1429eddd3d33ace0ba
+	source_aarch64 = once-0.1.6-aarch64::https://github.com/basecamp/once/releases/download/v0.1.6/once-linux-arm64
+	sha256sums_aarch64 = 4d2c6b9c1da8f73593c5b8c3076599e36c3c27fa3b7e424ccb0b75fc8876ba4f
+
+pkgname = once-bin

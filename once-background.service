@@ -1,0 +1,13 @@
+[Unit]
+Description=Once background tasks (once)
+After=network.target docker.service
+
+[Service]
+Type=simple
+Environment=ONCE_NO_SELF_UPDATE=1
+ExecStart=/usr/bin/once background run --namespace once
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
