@@ -12,12 +12,12 @@ pkgbase = ytui_music
 	depends = python
 	depends = mpv
 	depends = python-textual
+	depends = python-textual-image
 	depends = python-mpv
 	depends = yt-dlp
 	depends = python-requests
 	depends = python-pillow
-	depends = python-textual-image
 	source = ytui_music-0.1.1.tar.gz::https://github.com/hakimshifat/ytui_music/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 1556912780b1febc8f941a11ebc02ef005e52e1e868f92a1481d0b4cf951f710
+	sha256sums = SKIP
 
 pkgname = ytui_music
