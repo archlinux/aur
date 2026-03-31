@@ -1,0 +1,16 @@
+pkgbase = mailcowclient-bin
+	pkgdesc = A desktop email / calendar / contacts client for Mailcow servers (Unofficial).(Prebuilt version.Use system-wide electron)
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://github.com/JAWS-Developers-Opensource/MailcowClient
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = electron33
+	provides = mailcowclient=0.0.10
+	conflicts = mailcowclient
+	source = mailcowclient-0.0.10-x86_64.AppImage::https://github.com/JAWS-Developers-Opensource/MailcowClient/releases/download/v0.0.10/mailcowclient-0.0.10.AppImage
+	source = mailcowclient.sh
+	sha256sums = 769c254e6ab54df9ed01065ab5e9c744f7d2535ec9787b6aee312ca637618c34
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = mailcowclient-bin
