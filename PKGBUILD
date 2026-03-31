@@ -6,10 +6,10 @@
 
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
-pkgver=3.12.1
+pkgver=3.12.2
 pkgrel=1
 pkgdesc="An email, contacts and calendar server"
-arch=('x86_64' 'armv6h' 'armv7h')
+arch=('x86_64')
 url="https://www.cyrusimap.org/"
 license=('BSD-Attribution-HPND-disclaimer')
 makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
@@ -18,18 +18,19 @@ makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
              'libchardet' 'pcre2' 'xxd' 'libwslay' 'libcom_err.so' 'libuuid.so'
              'zlib' 'openssl')
 checkdepends=('cunit')
+# Cyrus does not support compiling with Link Time Optimization
+# See https://www.cyrusimap.org/imap/developer/compiling.html
+options=('!lto')
 source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-${pkgver}/${pkgbase}-${pkgver}.tar.gz"{,.sig}
-        "https://src.fedoraproject.org/rpms/cyrus-imapd/raw/4176c0e5983b3d19752f2db3860c33bafa7c259b/f/patch-cyrus-remove-always-inline-for-buf-len"
         "managesieve-libcap-dependency.patch"
         "libcyrus-imap-sieve-dependency.patch::https://github.com/cyrusimap/cyrus-imapd/pull/4996.diff"
         "imapd.conf.patch"
         "cyrus-imapd.service"
         "cyrus-imapd.sysusers.conf"
         "cyrus-imapd.tmpfiles.conf")
-validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
-sha512sums=('ec2727eb0567ebf978ff4db9e9086bc01fdc2739b6e06cad73cf74f9af990c30a70130aa2474d822d8ca078e1012a60179101de90845bf40f7a9b47a8b5e4d92'
+validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0') # ellie timoney <ellie@fastmail.com>
+sha512sums=('bcb57f8d0c0fa4a2e9e4d9f356b1abe647f568398705376cae0b4dd1081cc27681ab381201804131ee470cdba8f9dc41ad39489d00e8830af8977dab317a087e'
             'SKIP'
-            '575db085359af83605e89972ab20e2e1f62e67418242f954f4ed5e60d29acf66dfea07f41537327688857eddb0b310b5ee6361155a7588299d5adbaea487307a'
             '281110cc226b110cf9825cf8c3b213400a7e8a7754e40631240d3f5d424472b1e496c477c57333b94ede3b4b1acb8a99fb33fa334464aec548019849b4b2ac5c'
             '09f5a1c7710676c387509e6ad30dd83b9032febaa639a97b563dbdfcdd231aab3c0f88af9ffed8098908e3494bec5fbe4803c848e0e372bd555729b14d1bab65'
             '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
@@ -39,9 +40,6 @@ sha512sums=('ec2727eb0567ebf978ff4db9e9086bc01fdc2739b6e06cad73cf74f9af990c30a70
 
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
-
-  # https://bugzilla.redhat.com/show_bug.cgi?id=2223951
-  patch -Np1 < "${srcdir}/patch-cyrus-remove-always-inline-for-buf-len"
 
   # Fix managesieve not being linked against libcyrus_min dependency libcap
   patch -Np1 < "${srcdir}/managesieve-libcap-dependency.patch"
@@ -57,8 +55,6 @@ build() {
 
   # libchardet's pkgconf flags are broken, so we have to specify them manually
   export LIBCHARDET_CFLAGS="-I/usr/include/chardet"
-  # Work around Cyrus bug #3562
-  export CFLAGS="${CFLAGS} -fno-toplevel-reorder"
 
   ./configure \
     --prefix=/usr \
@@ -103,7 +99,7 @@ package_cyrus-imapd() {
               'clamav: for cyr_virusscan'
               'rsync: for compacting Xapian databases'
               'sh: for certain administrative tools')
-  provides=('imap-server' 'pop3-server')
+  provides=('imap-server' 'jmap-server' 'pop3-server')
   backup=('etc/cyrus/cyrus.conf' 'etc/cyrus/imapd.conf')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
