@@ -10,8 +10,6 @@ pkgbase = python-pyargument
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	provides = pyargument
-	conflicts = python-python-pyargument
 	source = https://files.pythonhosted.org/packages/source/p/pyargument/pyargument-0.60.tar.gz
 	sha256sums = 9d58883d41c2e77619d20e6c788b8fe1a5e9868483c21b12af550d5ab050f9d8
 

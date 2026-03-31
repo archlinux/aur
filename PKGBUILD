@@ -18,9 +18,6 @@ _url_pypi='https://pypi.org/project/pyargument/'
 _url_github='https://github.com/ankushbhagats/pyargument'
 url="${_url_github}"
 
-provides=("${_pypi_package}")
-conflicts=("python-${pkgname}")
-
 depends=('python')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
