@@ -2,7 +2,7 @@
 # This package is based on PKGBUILD from Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=postman-live-bin
-pkgver=12.4.0
+pkgver=12.4.2
 pkgrel=1
 pkgdesc="Build, test, and document your APIs faster (Live version)"
 provides=('postman')
@@ -32,5 +32,5 @@ package() {
 }
 
 sha256sums=('b6db7367b16338b10c93e22304bb06724b844389136ee542e1f28366010a279c')
-sha256sums_x86_64=('510c360c1cb1c90c2d220af2ba595185a131da7a401d36fb0dbf55b657cf6cd6')
-sha256sums_aarch64=('3671ec12af03011b60f9f1c0440594acd5fd84101cc392ae87d184137d6a7e97')
+sha256sums_x86_64=('90efd1b27c58b544cc3367484afd3e915f1afd2ced42ce4a3d75cbf872853398')
+sha256sums_aarch64=('0af21e7888199bb790403f8f02f4e3cb1d658e4713f9ace75c41fd52c9fdbac5')
