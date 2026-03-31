@@ -1,0 +1,17 @@
+pkgbase = rofi-radio
+	pkgdesc = A simple internet radio script for wofi/rofi
+	pkgver = r10.36ee02f
+	pkgrel = 1
+	url = https://github.com/prbhtkumr/rofi-radio
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = wofi
+	depends = mpv
+	depends = libnotify
+	provides = rofi-radio
+	conflicts = rofi-radio
+	source = git+https://github.com/prbhtkumr/rofi-radio.git
+	sha256sums = SKIP
+
+pkgname = rofi-radio
