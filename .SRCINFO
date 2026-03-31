@@ -1,9 +1,8 @@
 pkgbase = codex-app-beta-unofficial
 	pkgdesc = Unofficial Linux build of Codex Beta from OpenAI's Codex beta appcast feed.
-	pkgver = 26.325.21211_beta.1251.launcher.2
+	pkgver = 26.325.21211_beta.1251.launcher.3
 	pkgrel = 1
 	url = https://github.com/better-slop/codex-app-linux
-	install = codex-app-beta-unofficial.install
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
@@ -13,9 +12,13 @@ pkgbase = codex-app-beta-unofficial
 	depends = libxss
 	depends = nss
 	depends = xdg-utils
-	source = codex-app-linux-26.325.21211-beta.1251.launcher.2-x64-linux-unpacked.tar.gz::https://github.com/better-slop/codex-app-linux/releases/download/v26.325.21211-beta.1251.launcher.2/codex-app-linux-26.325.21211-beta.1251.launcher.2-x64-linux-unpacked.tar.gz
-	source = codex-app-linux-26.325.21211-beta.1251.launcher.2-x64.png::https://github.com/better-slop/codex-app-linux/releases/download/v26.325.21211-beta.1251.launcher.2/codex-app-linux-26.325.21211-beta.1251.launcher.2-x64.png
-	sha256sums = f5cf6805baf454c366d0da512e468498b807e7a9e8246c543b36974185383477
+	provides = codex-app-linux-beta-bin
+	conflicts = codex-app-linux-beta-bin
+	replaces = codex-app-linux-beta-bin
+	install = codex-app-beta-unofficial.install
+	source = codex-app-linux-26.325.21211-beta.1251.launcher.3-x64-linux-unpacked.tar.gz::https://github.com/better-slop/codex-app-linux/releases/download/v26.325.21211-beta.1251.launcher.3/codex-app-linux-26.325.21211-beta.1251.launcher.3-x64-linux-unpacked.tar.gz
+	source = codex-app-linux-26.325.21211-beta.1251.launcher.3-x64.png::https://github.com/better-slop/codex-app-linux/releases/download/v26.325.21211-beta.1251.launcher.3/codex-app-linux-26.325.21211-beta.1251.launcher.3-x64.png
+	sha256sums = 05e7d1b48406495d9f38de9052e9aede9ac8246d1728fbf451089ea0a80ab9df
 	sha256sums = 1c926e380bfe6a50f40648dd9bc5de88da7271546491adf99ec72172e17df6a0
 
 pkgname = codex-app-beta-unofficial
