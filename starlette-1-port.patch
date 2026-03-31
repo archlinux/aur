@@ -17,7 +17,7 @@
 +        # startup
 +        click.echo("PIO Home has been started. Press Ctrl+C to shutdown.")
 +
-+        if(no_open):
++        if(not no_open):
 +            click.launch(home_url)
 +
 +        yield
