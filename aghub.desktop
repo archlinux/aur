@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=AGHub
+Comment=One hub for every AI coding agent
+Exec=env GDK_BACKEND=x11 WEBKIT_DISABLE_DMABUF_RENDERER=1 aghub
+Icon=aghub
+Terminal=false
+Type=Application
+Categories=Development;Utility;
+StartupNotify=true
+StartupWMClass=aghub
