@@ -1,0 +1,23 @@
+pkgbase = typio
+	pkgdesc = Native Wayland input method daemon with GTK4 control panel
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/ming2k/typio
+	arch = x86_64
+	license = custom:unknown
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = wayland-protocols
+	depends = cairo
+	depends = dbus
+	depends = gtk4
+	depends = libxkbcommon
+	depends = librime
+	depends = pango
+	depends = wayland
+	install = typio.install
+	source = typio-2.5.0.tar.gz::https://github.com/ming2k/typio/archive/refs/tags/v2.5.0.tar.gz
+	sha256sums = 14f76cae21f568497752df8d1a22769ef6b92d26ea4992beb3af2eed58c4fb15
+
+pkgname = typio
