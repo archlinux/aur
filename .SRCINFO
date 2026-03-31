@@ -1,0 +1,20 @@
+pkgbase = sheld-bin
+	pkgdesc = Sandbox any shell command via YAML profiles using Bubblewrap
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pierrelegall/sheld
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = GPL-3.0-only
+	depends = bubblewrap
+	provides = sheld
+	conflicts = sheld
+	source_x86_64 = sheld-v0.1.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/pierremellet/sheld/releases/download/v0.1.0/sheld-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 79dae1382c340c2c6b6a653bf45dc4dc3ad923fb10172d0a78d13b1ac1ed113b
+	source_aarch64 = sheld-v0.1.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/pierremellet/sheld/releases/download/v0.1.0/sheld-v0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e347afe1f6e4e19df4067b4132b041f9153b3cbf594aed4feb264f5dd4982537
+	source_i686 = sheld-v0.1.0-i686-unknown-linux-gnu.tar.gz::https://github.com/pierremellet/sheld/releases/download/v0.1.0/sheld-v0.1.0-i686-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = 619a29496fc3648dbebe2a9e4e312706365327b7fcbc9fa32456b8af35657d89
+
+pkgname = sheld-bin
