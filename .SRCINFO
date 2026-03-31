@@ -1,6 +1,6 @@
 pkgbase = blogr-bin
 	pkgdesc = Write, edit and publish your blog without leaving the terminal
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/bahdotsh/blogr
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = blogr-bin
 	depends = gcc-libs
 	provides = blogr
 	conflicts = blogr
-	source = blogr-bin-0.4.1.tar.gz::https://github.com/bahdotsh/blogr/releases/download/v0.4.1/blogr-linux-x86_64.tar.gz
-	sha256sums = 7fa541ba7085c5399c985c68f2a5d60b6c1d6fac625b7b91575eda9814c0b7ff
+	source = blogr-bin-0.5.0.tar.gz::https://github.com/bahdotsh/blogr/releases/download/v0.5.0/blogr-linux-x86_64.tar.gz
+	sha256sums = 163a1ebe03fe7d51734d5b7d1b6cc795404b012bbe84f365587d46599106b742
 
 pkgname = blogr-bin
