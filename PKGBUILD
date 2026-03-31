@@ -6,7 +6,7 @@ _appname=${_pkgname,,}
 pkgname=${_appname}-bin
 pkgdesc="Terminal Based Binary for API Testing"
 
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,8 +26,8 @@ source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}.tar.gz")
 sha256sums=('3b7f0aa538f823c30b2e444949c12b49fd95fced698ea2ebf5cd85fe11a2f6de')
-sha256sums_x86_64=('72e182f93afde6dba2f903facb3c511ae5ace92b79446540d8215527e13838fb')
-sha256sums_aarch64=('8318e63a9c9324c49ac0c4ac62dce12a25dc5f5f51065fc6d80d61bda6b9dc79')
+sha256sums_x86_64=('d8da305b01d53ae3a216b88fad80f4a48676e8919f94e4c2a95f6b7a51a4658e')
+sha256sums_aarch64=('24a5f0e48b12ed43eb78c47e3f427b724b95f1211c949099d329d4b5dc3b3f36')
 
 
 package() {
