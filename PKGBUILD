@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=dove-flatpak
-pkgver=202602241
+pkgver=202603301
 pkgrel=1
 pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://dove.celenity.dev"
-source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/6fba159cefbc288f1799c4ba64561bc41c9e1b31/archives/dove-flatpak.zip")
-sha512sums=('d0c9a93e0e18899697ceb7e1fac1dfdc6aa2115901f7c2b3951f195b09735b50740d2e92483134fe2e38c4412a443e2ee378ce61860aa56f60a1cded1b786f4e')
+source=("${pkgname}-${pkgver}.zip::https://gitlab.com/celenityy/Dove/-/raw/6d50246ed065efefd350c9ace160e3e4ea030c81/archives/dove-flatpak.zip")
+sha512sums=('013b43b09c02d41f90da2fdef337971dbf5e7222ad255823d545af23a8cf46187275216850b6174a2fadf772592f60dd0239cdc841c882a52b827e37af27b72d')
 makedepends=('unzip')
 
 pkgver() {
@@ -616,6 +616,7 @@ package() {
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/newyork.usa.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/newyork.usa.com"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/nicemail.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/nicemail.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/nifty.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/nifty.com"
+    install -Dm644 "$tmpdir/assets/autoconfig/v1.1/nili.ca" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/nili.ca"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/nn.iij4u.or.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/nn.iij4u.or.jp"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/nospam.dk" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/nospam.dk"
     install -Dm644 "$tmpdir/assets/autoconfig/v1.1/nsat.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/nsat.jp"
