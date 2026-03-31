@@ -1,0 +1,3 @@
+[perl-proc-terminator]
+source = "cpan"
+cpan = "Proc-Terminator"

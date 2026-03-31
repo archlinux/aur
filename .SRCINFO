@@ -1,0 +1,17 @@
+pkgbase = perl-proc-terminator
+	pkgdesc = Conveniently terminate processes
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/MNUNBERG/Proc-Terminator-0.05
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-moo>=0.009014
+	depends = perl-test-simple
+	depends = perl-time-hires
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MN/MNUNBERG/Proc-Terminator-0.05.tar.gz
+	sha256sums = fd3c5773f1504cec2dc1e8f12638c87c9bcdb5d91231c83f8a9805cb231650fb
+
+pkgname = perl-proc-terminator
