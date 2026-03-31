@@ -1,7 +1,7 @@
 pkgbase = netpanzer
 	pkgdesc = An online multiplayer tactical warfare game designed for fast action combat
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/netpanzer/netpanzer
 	arch = x86_64
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = netpanzer
 	depends = sdl2_mixer
 	depends = hicolor-icon-theme
 	conflicts = netpanzer-appimage
-	source = netpanzer-0.9.1.tar.gz::https://github.com/netpanzer/netpanzer/releases/download/v0.9.1/netpanzer-0.9.1.tar.gz
+	source = netpanzer-0.9.1.tar.gz::https://github.com/netpanzer/netpanzer/archive/refs/tags/v0.9.1.tar.gz
 	sha256sums = 7556c1c3f69934380d6e6a8be5e11e4b881bd67399896db416b27329d6d21b81
 
 pkgname = netpanzer
