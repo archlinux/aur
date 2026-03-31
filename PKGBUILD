@@ -5,7 +5,7 @@
 pkgname=rclone-beta-bin
 _srcname=rclone
 pkgrel=1
-pkgver=1.74.0_beta.9545.e987d4f35
+pkgver=1.74.0_beta.9561.c49015552
 _upver=${pkgver//_/-}
 pkgdesc="Sync files to and from Google Drive, S3, Swift, Cloudfiles, Dropbox and Google Cloud Storage. (Beta version)"
 provides=('rclone')
@@ -26,18 +26,18 @@ source_armv6h=("rclone-v${_upver}-linux-arm.zip::https://beta.rclone.org/v${_upv
 source_armv7h=("rclone-v${_upver}-linux-arm-v7.zip::https://beta.rclone.org/v${_upver}/rclone-v${_upver}-linux-arm-v7.zip")
 source_aarch64=("rclone-v${_upver}-linux-arm64.zip::https://beta.rclone.org/v${_upver}/rclone-v${_upver}-linux-arm64.zip")
 
-b2sums_i686=('bb547bbc42202051ecc946aa4eb188acedc6ed04606a8655b11b2d128316529cec4ea6f2fdbbf5cba2b5bb8b2821d934b4711f645df1460fda1d1427ae29a5b0')
-b2sums_x86_64=('6fe721e870a872e5e1d24082ad7c66469624cc5b3e6b6371a1044cb296eb423674078981264ec562dba4e730a12203dd048a997bf0107e52ba57610c8994df8b')
-b2sums_armv6h=('00559b9d387759f5ec6d3f9ac4c9a2738dbfd99dd8b6534e33904a1ac14dee75c4bea396ce97e5a42bb47548c6ac85ac41c1f48ff45858c70cce1fabccf89c06')
-b2sums_armv7h=('2b9e008a1faceaab039ba0a858dc8eddd1e9a1ae41a21701d62f1904c5f2163efff375e1f618c54af1f4ed368195121239a5c9a418f4cd22f7b239427e699f1a')
-b2sums_aarch64=('ec6552f08f9add34a40642e86cbd42ce7f620d78fee3c04c43adbeec6d1c09c52df8b141e1cc3f0cd996e11ac1e49fc46b60a65f2bd7ac2b80f6774a9b65dfad')
+b2sums_i686=('6514e9c701744e1b74d6e746a7f52b337cdbbd3dd5af6f2ac99131136f32ce9f45c2fe05ff3f28151b7638b7f319378d4a47a112a190b8a90c626be981fef583')
+b2sums_x86_64=('3565e23c9509d484e930f7fcbef1a3dadb6e8bb6818634c8edf695b38d99ccd5588d967b2ef2a350926e9de4f46c4c3c6369181cfc2fa52a9b47dd7e7869497b')
+b2sums_armv6h=('e9530c43b50d8128fd4e88fa9f389f26b626713e2c7dfb8f0b7dd6672e4dc4a3e6ff06c79fc629e2db960927d2f21c6b29a893c517ade2c4c72605fa240f08c2')
+b2sums_armv7h=('044ac2161c540644bc061a37784fe4b1f0d9ba588a367143847dc8b6694f753c4446f78849313dabb8ef102dbc2816a1f50ab735565f6b3999564968ae600a5f')
+b2sums_aarch64=('2e43755a3599005fe3bb2a94eddde1d9396038905bbf85c7049239f2610d40afb9b41a761185b6349f6a072069c049d674547e15c146d40a04f3f57ef8320847')
 
 latestver() {
     local size ver
-    size=$(curl -fsSI "https://beta.rclone.org/rclone-beta-latest-linux-amd64.zip" |
+    size=$(curl -fsSI --http1.1 "https://beta.rclone.org/rclone-beta-latest-linux-amd64.zip" |
            sed -nE 's/^content-length: *([0-9]+).*/\1/Ip') || return 1
     [[ -n $size ]] || return 1
-    ver=$(curl -fsS -r "$((size - 4096))-${size}" \
+    ver=$(curl -fsS --http1.1 -r "$((size - 4096))-$((size - 1))" \
           "https://beta.rclone.org/rclone-beta-latest-linux-amd64.zip" |
           strings | grep -oP 'rclone-v\K[0-9]+\.[0-9]+\.[0-9]+-beta\.[0-9]+\.[0-9a-f]+' |
           head -1) || return 1
