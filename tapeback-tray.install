@@ -1,0 +1,16 @@
+_venv=/opt/tapeback
+
+post_install() {
+    echo "==> Installing tray dependencies into tapeback venv..."
+    "$_venv/bin/pip" install --no-cache-dir "pystray>=0.19.0" "Pillow>=10.0.0"
+    echo "==> Done. Run 'tapeback tray' to start the system tray icon."
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "==> Removing tray dependencies from tapeback venv..."
+    "$_venv/bin/pip" uninstall -y pystray Pillow 2>/dev/null || true
+}
