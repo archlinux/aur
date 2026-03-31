@@ -1,12 +1,12 @@
 pkgbase = python-pathy
 	pkgdesc = Logging utilities for spaCy
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/explosion/spacy-loggers
-	arch = x86_64
-	arch = aarch64
+	arch = any
 	license = Apache-2.0
 	makedepends = python-build
+	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel

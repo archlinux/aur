@@ -3,14 +3,15 @@
 _pkgname=pathy
 pkgname=python-${_pkgname}
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Logging utilities for spaCy"
-arch=(x86_64 aarch64)
+arch=(any)
 url="https://github.com/explosion/spacy-loggers"
 license=("Apache-2.0")
 depends=(python-smart_open python-typer python-pathlib-abc)
 makedepends=(
     python-build
+    python-hatchling
     python-installer
     python-setuptools
     python-wheel
