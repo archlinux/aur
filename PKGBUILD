@@ -2,13 +2,13 @@
 
 pkgname=aocl-libflame
 pkgver=5.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance object-based library for DLA computations, AOCL branding"
 arch=('x86_64')
 url="https://github.com/amd/libflame"
 license=('custom')
-depends=('gcc-libs' 'aocl-utils' "aocl-blis=${pkgver}")
-makedepends=('gcc-fortran' 'python' 'cmake' 'ninja')
+depends=('gcc-libs' 'aocl-utils' "aocl-blis")
+makedepends=('gcc-fortran' 'python' 'cmake' 'ninja' "aocl-blis=${pkgver}")
 provides=('lapack' 'lapacke')
 conflicts=('lapack' 'lapacke')
 _lapackver=3
