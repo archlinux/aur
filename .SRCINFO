@@ -1,17 +1,16 @@
 pkgbase = mcat-bin
-	pkgdesc = A powerful extended cat command, to cat all the things you couldn't before
-	pkgver = 0.4.6
+	pkgdesc = Terminal image, video, and Markdown viewer
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/Skardyy/mcat
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = gcc-libs
 	provides = mcat
 	conflicts = mcat
-	source_x86_64 = https://github.com/Skardyy/mcat/releases/download/v0.4.6/mcat-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = a572b5f2d790634840755ed3d876aa71711bb94ee2a268298e09c701495edd14
-	source_aarch64 = https://github.com/Skardyy/mcat/releases/download/v0.4.6/mcat-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 7e0ad88279e7c7baf1ce2997ff270daac25081fdd89e14fb78d0d77f11b56190
+	source_x86_64 = https://github.com/Skardyy/mcat/releases/download/v0.5.1/mcat-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = abba9d33aff85b7e2e3def4f1eab34a7f93cc18afceded532edf4b96b483ea47
+	source_aarch64 = https://github.com/Skardyy/mcat/releases/download/v0.5.1/mcat-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = b04a628da23cd07f30c188a48dfe4148737cb3481d256f8492d1bbf0883366ad
 
 pkgname = mcat-bin
