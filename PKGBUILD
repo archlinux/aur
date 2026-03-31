@@ -7,8 +7,29 @@ arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
 license=('MIT')
 groups=()
-depends=('python' 'ripgrep' 'ffmpeg')
-makedepends=('git' 'nodejs')
+depends=(
+    'python'
+    'python-openai'
+    'python-dotenv'
+    'python-fire'
+    'python-httpx'
+    'python-rich'
+    'python-tenacity'
+    'python-pyyaml'
+    'python-requests'
+    'python-jinja'
+    'python-pydantic'
+    'python-prompt_toolkit'
+    'python-pyjwt'
+    'python-anthropic'
+    'python-exa-py'
+    'python-firecrawl-py'
+    'python-fal-client'
+    'python-edge-tts'
+    'ripgrep'
+    'ffmpeg'
+)
+makedepends=('git' 'nodejs' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=(
     'python-telegram-bot: Telegram gateway support'
     #'python-discord-py: Discord gateway support' python-discord-git?
@@ -46,17 +67,33 @@ build() {
 
     # Install Node.js dependencies
     [ -f "package.json" ] && npm install
+
+    # Build Python wheel
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    local pytest_options=(
+        -vv
+    )
+    cd hermes-agent
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
 package() {
     cd hermes-agent
 
-    # Install Python package to /usr
-    python -m pip install --root="$pkgdir" --prefix=/usr --no-deps --ignore-installed ".[all]"
+    # Install Python package
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     # Install optional submodule if present
     if [ -d "tinker-atropos" ]; then
-        python -m pip install --root="$pkgdir" --prefix=/usr --no-deps --ignore-installed "./tinker-atropos"
+        cd tinker-atropos
+        python -m build --wheel --no-isolation
+        python -m installer --destdir="$pkgdir" dist/*.whl
+        cd ..
     fi
 
     # Install Node.js dependencies
