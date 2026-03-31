@@ -1,13 +1,13 @@
 pkgname=rocket-mouse-git
 _pkgname=rocket-mouse
 pkgver=r50.c4bcdb0
-pkgrel=2
+pkgrel=3
 pkgdesc='Space-themed activity manager and mouse jiggler'
 arch=('x86_64')
 url='https://github.com/willakins/rocket-mouse'
 license=('ISC')
 options=('!debug')
-depends=('electron39' 'libxtst')
+depends=('libxtst')
 makedepends=('cmake' 'git' 'npm' 'png++')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -19,7 +19,7 @@ source=(
 sha256sums=(
   'SKIP'
   'c3ab16e0459b5ca8e6af712cddad3295fcb6b344d7acc5429ae8c6dd831b1e21'
-  '7d8211d89f62271d5e510eb0a1ec24bbec7aecae8f1a91ef59163dc1f9279bc8'
+  '88a3b9069da7b7433e0d7244471dfa123f3d60acfa10fc081f81d9f0a382862c'
 )
 
 pkgver() {
