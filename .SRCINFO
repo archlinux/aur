@@ -1,0 +1,22 @@
+pkgbase = perl-file-spec-native
+	pkgdesc = Use native OS implementation of File::Spec from a subclass
+	pkgver = 1.004
+	pkgrel = 1
+	url = https://metacpan.org/release/RWSTAUNER/File-Spec-Native-1.004
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-file-temp
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker
+	depends = perl-pathtools
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RW/RWSTAUNER/File-Spec-Native-1.004.tar.gz
+	sha256sums = 41371dde1ee3b10142286d5e3fd67c2be3d6cdfadc297fc0666d227e8974ec3e
+
+pkgname = perl-file-spec-native

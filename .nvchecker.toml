@@ -1,0 +1,3 @@
+[perl-file-spec-native]
+source = "cpan"
+cpan = "File-Spec-Native"
