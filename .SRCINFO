@@ -1,0 +1,13 @@
+pkgbase = atha
+	pkgdesc = Simple package manager wrapper for Arch Linux
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Bangkah/Atha
+	arch = any
+	license = MIT
+	depends = bash
+	depends = pacman
+	source = https://github.com/Bangkah/Atha/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = atha
