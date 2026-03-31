@@ -1,3 +1,4 @@
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
 # Contributor: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=python-spdx-tools
@@ -9,7 +10,7 @@ url='https://github.com/spdx/tools-python'
 makedepends=(git python-build python-installer python-setuptools-scm)
 depends=(python python-click python-yaml python-xmltodict python-rdflib python-beartype python-uritools python-license-expression python-ply python-semantic-version)
 checkdepends=(python-pytest python-pyshacl python-tzdata)
-license=('GPL2')
+license=('Apache-2.0')
 arch=('any')
 source=("git+https://github.com/spdx/tools-python.git#tag=v${pkgver}")
 sha512sums=('SKIP')
