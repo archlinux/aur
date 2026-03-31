@@ -56,7 +56,6 @@ push:
     git checkout -B master 2>/dev/null
     git checkout dev -- PKGBUILD .SRCINFO
     git add PKGBUILD .SRCINFO
-    git rm Justfile
     
     if ! git diff-index --quiet HEAD --; then
         git commit -m "aur: $(grep -oP '^pkgver=\K.*' PKGBUILD)"
@@ -66,7 +65,7 @@ push:
     fi
 
     git checkout dev
-
+    
 # Clean build artifacts
 clean:
     rm -rf src/ pkg/ *.tar.gz *.tar.zst
