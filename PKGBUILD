@@ -1,6 +1,6 @@
 # Maintainer: Xuruh <xuruh@fluxer.world>
 pkgname=fluxer-world-bin
-pkgver=1.0.36
+pkgver=1.0.38
 pkgrel=1
 pkgdesc="Fluxer World desktop client — open-source chat, voice, and community platform"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('fluxer-world')
 conflicts=('fluxer-world')
 options=('!strip' '!debug')
 source=("fluxer-world-${pkgver}-linux-x64.tar.gz::https://github.com/fluxerworld/fluxerworld/releases/download/v${pkgver}/Fluxer.World-${pkgver}-linux-x64.tar.gz")
-sha256sums=('bc0580d3a8ab2e81113004a8979ab6e76d195eda4ee693cb3b3ca79e93e6fe1f')
+sha256sums=('29764753861d5ae1aa148b83be30559723e24386270766757b7860fd2318ad3f')
 
 package() {
     # Install app files (tar.gz extracts to "Fluxer World-${pkgver}-linux-x64/")
@@ -33,7 +33,16 @@ package() {
     cat > "${pkgdir}/usr/bin/fluxer-world" <<'WRAPPER'
 #!/bin/sh
 export GDK_BACKEND=wayland,x11
-exec /opt/fluxer-world/fluxer-world \
+
+# Prefer user-local updated copy over system install
+LOCAL_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/fluxer-world"
+if [ -x "$LOCAL_DIR/fluxer-world" ]; then
+  FLUXER_BIN="$LOCAL_DIR/fluxer-world"
+else
+  FLUXER_BIN="/opt/fluxer-world/fluxer-world"
+fi
+
+exec "$FLUXER_BIN" \
   --no-sandbox \
   --enable-features=UseOzonePlatform,WaylandWindowDecorations \
   --ozone-platform-hint=auto \
