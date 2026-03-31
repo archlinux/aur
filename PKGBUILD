@@ -12,7 +12,6 @@ license=('BSD-3-Clause')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('57e40571cea9061f4c42fe500345d6715e9b35fdaa135ef23c42c6ca4a58e3ef')
 conflicts=(ipcalc)
-depends=(glibc)
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
