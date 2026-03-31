@@ -1,7 +1,7 @@
 pkgbase = astronex-bin
-	pkgdesc = Appimage version in python2 of Astronex. A program for calculating and drawing astrological charts according to the API Method
+	pkgdesc = Appimage version in python2 of Astronex. An astrology program for calculating and drawing charts according to the API Method. Used in Huber method
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Uthopik/astronex-appimage
 	arch = x86_64
 	license = GPL-3.0-only

@@ -1,8 +1,8 @@
 # Maintainer: Uthopik <josearrillaga@ik.me>
 pkgname=astronex-bin
 pkgver=1.2.3
-pkgrel=1
-pkgdesc="Appimage version in python2 of Astronex. A program for calculating and drawing astrological charts according to the API Method"
+pkgrel=2
+pkgdesc="Appimage version in python2 of Astronex. An astrology program for calculating and drawing charts according to the API Method. Used in Huber method"
 arch=('x86_64')
 url="https://github.com/Uthopik/astronex-appimage"
 license=('GPL-3.0-only') 
