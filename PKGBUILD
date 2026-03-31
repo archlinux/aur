@@ -3,14 +3,14 @@
 
 pkgname=oolite-git
 pkgver=1.93.0.7786.260331.9dd66af.r0.9dd66af62
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source remake of Elite with many, many enhancements, git version"
 arch=('x86_64')
 url="https://oolite.space/"
 license=('GPL-2.0-or-later')
 groups=('game')
-depends=(bash gcc-libs libglvnd glibc zlib gnustep-base
-          espeak-ng glu nspr openal sdl12-compat libvorbis libpng)
+depends=(bash libglvnd glibc zlib gnustep-base hicolor-icon-theme libstdc++ libobjc libgcc 
+          espeak-ng glu nspr openal sdl12-compat sdl2-compat libvorbis libpng)
 makedepends=(gnustep-make gcc-objc git)
 source=(oolite-git::git+https://github.com/OoliteProject/oolite
         git+https://github.com/OoliteProject/oolite-binary-resources.git
