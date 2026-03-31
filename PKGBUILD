@@ -16,18 +16,18 @@ source=("git+https://github.com/DiegoMagdaleno/BSDCoreUtils.git")
 sha256sums=('SKIP')
 
 prepare() {
-	cd"$srcdir/$_pkgname"
+	cd"$srcdir/BSDCoreUtils"
 	mkdir -p build
 }
 
 build() {
-	cd"$srcdir/&_pkgname/build"
+	cd"$srcdir/BSDCoreUtils/build"
 	cmake ..
 	make
 }
 
 package() {
-	cd"$srcdir/_pkgname/build"
-	make DESTDIR="$pkgdir" install
+	cd"$srcdir/BSDCoreUtils/build"
+	make install -DCMAKE_INSTALL_PREFIX=/opt/BSDuserland
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
