@@ -1,6 +1,6 @@
 pkgbase = wayvy-git
 	pkgdesc = Wayvy is a wallpaper switcher and theming manager for wayland written in rust.
-	pkgver = r0.0000000
+	pkgver = r34.0000000
 	pkgrel = 1
 	url = https://codeberg.org/J_S_Barkely-Griggs/Wayvy
 	arch = x86_64
