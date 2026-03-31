@@ -4,7 +4,7 @@ _basename="sponge"
 _pkgname="go-${_basename}"
 pkgname="${_pkgname}-bin"
 pkgver=1.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Effortlessly build stable, reliable, and high-performance backend services with a \"low-code\" approach"
 arch=(
   'x86_64'
@@ -14,7 +14,7 @@ _url="https://github.com/go-dev-frame/${_basename}"
 license=(
   'MIT'
 )
-_depends=(
+depends=(
   'go'
   'protobuf'
   'protoc-gen-doc'
