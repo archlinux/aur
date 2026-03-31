@@ -1,0 +1,3 @@
+[perl-spreadsheet-writeexcel-simple]
+source = "cpan"
+cpan = "Spreadsheet-WriteExcel-Simple"

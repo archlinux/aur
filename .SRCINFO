@@ -1,0 +1,16 @@
+pkgbase = perl-spreadsheet-writeexcel-simple
+	pkgdesc = A simple single-sheet Excel document
+	pkgver = 1.04
+	pkgrel = 1
+	url = https://metacpan.org/release/TMTM/Spreadsheet-WriteExcel-Simple-1.04
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	depends = perl
+	depends = perl-io-stringy>=1.126
+	depends = perl-spreadsheet-writeexcel>=0.31
+	depends = perl-test-simple
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/T/TM/TMTM/Spreadsheet-WriteExcel-Simple-1.04.tar.gz
+	sha256sums = f7775aa437407f951a13d947c0e0accf4ac0f909397d8411c5fbba427858b7c3
+
+pkgname = perl-spreadsheet-writeexcel-simple
