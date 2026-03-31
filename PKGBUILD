@@ -3,7 +3,7 @@
 pkgname=python-calcephpy
 _name=${pkgname#python-}
 pkgdesc='Python interface for the CALCEPH Library'
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 url='https://www.imcce.fr/inpop/calceph'
 # license names from https://spdx.org/licenses/
@@ -21,7 +21,7 @@ makedepends=(
     'python-wheel'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('68753f112f4dd6ae4ce4ad1c7d620e6e38dcde518067883e9214cd4cfb3f52ef')
+sha256sums=('7412b394c92e6c2e2df2f218489f3cf46365f80dcc2c036d71054a2aa4c3c40c')
 
 build() {
     cd $_name-$pkgver
