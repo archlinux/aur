@@ -1,7 +1,7 @@
 # Maintainer: The SP <ammarsyamil057@gmail.com>
 pkgname=anifetch-cli
 pkgver=1.0.2
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="Animated terminal fetch with video and audio support"
 arch=('any')
 url="https://github.com/Notenlish/anifetch"
@@ -19,4 +19,7 @@ build() {
 package() {
   cd "$srcdir/anifetch-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  if [ -f "$pkgdir/usr/bin/anifetch-cli" ]; then
+    mv "$pkgdir/usr/bin/anifetch-cli" "$pkgdir/usr/bin/anifetch"
+  fi
 }
