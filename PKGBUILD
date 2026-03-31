@@ -3,7 +3,7 @@
 
 pkgname="sway-desktop-unsupportedgpu-hook"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds --unsupported-gpu to sway.desktop!"
 arch=('any')
 url=""
@@ -19,7 +19,7 @@ source=(
 package() {
     cd              "${srcdir}"
 
-    install -Dm755  'sway-desktop-unsupportedgpu.hook'  "${pkgdir}/usr/share/libalpm/hooks/sway-desktop-unsupportedgpu.hook"
+    install -Dm644  'sway-desktop-unsupportedgpu.hook'  "${pkgdir}/usr/share/libalpm/hooks/sway-desktop-unsupportedgpu.hook"
 }
 b2sums=('9df7fd2f0c063f82eef7af864991f3cd7802516e4eec26157ae4d6eb776609955c861388a901c38a1fb0cb0b7d6478d3e0e0e627ba554334ecaa9c83a8a9ba72')
 sha512sums=('6b4800159ea42845142a625c2326a03beba58588ee2839f657484d70b69c3ef0839bfd51997b844a103e6b756541547405cf463ded462fde1fee219807363849')

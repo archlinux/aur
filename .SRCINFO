@@ -1,7 +1,7 @@
 pkgbase = sway-desktop-unsupportedgpu-hook
 	pkgdesc = Adds --unsupported-gpu to sway.desktop!
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL-3.0
 	depends = sed
