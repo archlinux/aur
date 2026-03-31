@@ -1,6 +1,6 @@
 pkgbase = ocudu-git
 	pkgdesc = Open Centralized Unit Distributed Unit (OCUDU)
-	pkgver = r16703.g4615370
+	pkgver = 26.04.0.r18.g77512ff
 	pkgrel = 1
 	url = https://ocudu.org
 	arch = x86_64

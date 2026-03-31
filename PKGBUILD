@@ -3,7 +3,7 @@
 pkgbase=ocudu-git
 pkgname=$pkgbase
 _pkgname=ocudu
-pkgver=r16703.g4615370
+pkgver=26.04.0.r18.g77512ff
 pkgrel=1
 pkgdesc='Open Centralized Unit Distributed Unit (OCUDU)'
 arch=('x86_64' 'aarch64')
@@ -67,7 +67,7 @@ check() {
 }
 
 package() {
-  install -Dm644 ${_pkgname}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   cd build
   make DESTDIR="${pkgdir}" install
 }
