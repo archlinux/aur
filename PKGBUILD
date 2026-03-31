@@ -6,8 +6,8 @@ _pkgbase=r8152
 pkgname=${_pkgbase}-dkms
 pkgver=2.21.4
 pkgrel=1
-pkgdesc="A kernel module for Realtek RTL8152/RTL8153/RTL8154/RTL8156 Based USB Ethernet Adapters"
-url="http://www.realtek.com"
+pkgdesc='A kernel module for Realtek RTL8152/RTL8153/RTL8154/RTL8156 Based USB Ethernet Adapters'
+url='http://www.realtek.com'
 license=('GPL-2.0-only')
 arch=('i686' 'x86_64' 'aarch64')
 depends=('glibc' 'dkms')
@@ -15,7 +15,7 @@ conflicts=("${_pkgbase}")
 optdepends=('linux-headers: Build the module for Arch kernel'
             'linux-lts-headers: Build the module for LTS Arch kernel')
 source=(
-    "${_pkgbase}-${pkgver}.tar.gz"::"https://github.com/wget/realtek-r8152-linux/archive/v${pkgver}.tar.gz"
+    "${_pkgbase}-${pkgver}.tar.gz::https://github.com/wget/realtek-r8152-linux/archive/v${pkgver}.tar.gz"
     'dkms.conf'
 )
 sha512sums=('6617cf7cb50fd35b97b5e3f2e47118f30af06654a809bf6b35d24a039591ab960b5ce54696fd67ae57955a5184904fdc9ad4c06c332aa9ce26c7b33fb30a4a12'
