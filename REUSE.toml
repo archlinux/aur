@@ -34,6 +34,7 @@ path = [
     "add_gpu_targets_rocm.patch",
     "aotriton_disable_install.patch",
     "pyproject.patch",
+    "fix_pybind11.patch",
 ]
 SPDX-FileCopyrightText = "python-pytorch contributors"
 SPDX-License-Identifier = "BSD-3-Clause-Modification"

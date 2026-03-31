@@ -1,11 +1,21 @@
---- a/torch/utils/cpp_extension.py	2024-10-19 09:30:29.462048147 +0200
-+++ b/torch/utils/cpp_extension.py	2024-10-19 09:31:18.237982324 +0200
-@@ -2185,7 +2185,7 @@
+diff --git a/torch/utils/cpp_extension.py b/torch/utils/cpp_extension.py
+index f29c382..9493ebb 100644
+--- a/torch/utils/cpp_extension.py
++++ b/torch/utils/cpp_extension.py
+@@ -1571,7 +1571,6 @@ def include_paths(device_type: str = "cpu", torch_include_dirs=True) -> list[str
+     lib_include = os.path.join(_TORCH_PATH, 'include')
+     if torch_include_dirs:
+         paths.extend([
+-            lib_include,
+             # Remove this once torch/torch.h is officially no longer supported for C++ extensions.
+             os.path.join(lib_include, 'torch', 'csrc', 'api', 'include'),
+         ])
+@@ -2784,7 +2783,7 @@ def _write_ninja_file_to_build_library(path,
          common_cflags += [f'-I{include}' for include in user_includes + system_includes]
      else:
          common_cflags += [f'-I{shlex.quote(include)}' for include in user_includes]
 -        common_cflags += [f'-isystem {shlex.quote(include)}' for include in system_includes]
 +        common_cflags += [f'-I{shlex.quote(include)}' for include in system_includes]
  
-     common_cflags += [f"{x}" for x in _get_glibcxx_abi_build_flags()]
- 
+     if IS_WINDOWS:
+         COMMON_HIP_FLAGS.extend(['-fms-runtime-lib=dll'])

@@ -9,10 +9,9 @@ pkgbase="python-${_pkgname}-cuda12.9"
 pkgname=("${pkgbase}" "python-${_pkgname}-opt-cuda12.9")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=2
-_pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)'
-pkgdesc="${_pkgdesc}"
+pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)'
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD-3-Clause-Modification')
@@ -24,6 +23,9 @@ depends=(
   glibc
   google-glog
   intel-oneapi-mkl
+  libgcc
+  libgomp
+  libstdc++
   libuv
   numactl
   openmp
@@ -113,8 +115,9 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         add_gpu_targets_rocm.patch
         aotriton_disable_install.patch
         pyproject.patch
+        fix_pybind11.patch
         )
-b2sums=('d292c6f62caf0076be25eda28311fe7a7f93fe3e7e2a2ea5f0f794818d2012fd0fba45fa4094e03d1640797ecc1c1a5487349f788db0f74e50e7561754ba8988'
+b2sums=('995a6fb3164db61d67e877c1b38a3786b75066943f1b9d01b458796124f0183b023548f9839abef5a272a229b6d9969933bdf19072ab50b9eb656e2aebfbb471'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -152,14 +155,15 @@ b2sums=('d292c6f62caf0076be25eda28311fe7a7f93fe3e7e2a2ea5f0f794818d2012fd0fba45f
         'SKIP'
         'SKIP'
         'SKIP'
-        '400270990c63a248f9ad298580c9efe8c7757bcec111375ffeb8fbae79d1b855ab8bfd270b7efbccbf442bcdb2a9336e08de8a3e458533b3d7ccffbb6d1d43bc'
+        '8c91e931f34fcc1cc5d916572e9808435bbc4a853d80af92a5484b4bb1111ef3b2a1c58283b97c2c3071de3177a124669004855f7ebad0734b0941714e3baf4f'
         'af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147'
         '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
         '20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e'
         'eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980'
         '007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
-        '32ae3f8b7602bad8b76e418857e843e700134b93832d6166dfead944cf8c3225a8d254cdf8ba9cc2807b08c53c27d6d72f738ef285f280ab87e0f246bf45e8f5')
+        '21234592e20b5ff1bf43f926bdda72b089cc2b32b92d4287e5aa6b20dc8ebbb2e30135ba8b881d64c35d98be457366bcfd9982cf2e38fd3fc13901955fa571da'
+        '1fcd8326343b3318eb6475fbd11cd3d28a826627206d55ac95dc13af78946b2bcadc3b0f5be965a33f24c7bb1de62706f256894449fa93604d064c90158ce1e1')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -231,16 +235,14 @@ prepare() {
   # into the torch folder. Disable this behavior.
   patch -p1 -i "${srcdir}/aotriton_disable_install.patch"
 
-  # Fix build with CUDA 13 (CCCL headers path changed)
-  sed -i 's|${CUDA_TOOLKIT_INCLUDE}|${CUDA_TOOLKIT_INCLUDE}/cccl|' cmake/Modules/FindCUB.cmake
+  # Fix building with pybind11 3.0.2
+  # (https://github.com/pybind/pybind11/pull/5881 added typing for py::make_tuple
+  # and gcc complains when the ?: operator gets different types for each operand)
+  patch -p1 -i "${srcdir}/fix_pybind11.patch"
 
-  # Update flash-attention module for CUDA 13
-  # https://github.com/Dao-AILab/flash-attention/commit/dfb664994c1e5056961c90d5e4f70bf7acc8af10
-  cd third_party/flash-attention
-  git checkout dfb664994c1e5056961c90d5e4f70bf7acc8af10
-  cd ../..
-
+  # Avoid using /usr/include along with -isystem
   # https://bugs.archlinux.org/task/64981
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/python-pytorch/-/issues/37
   patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
 
   # patch python dependencies in pyproject.toml
@@ -314,8 +316,9 @@ _prepare() {
   # Fix build issues for onnx with cmake 4.0
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
-  # Fix ROCm build with glog (these macros are defined in /usr/lib/cmake/glog/glog-targets.cmake but for some reason
-  # this target is not applied when building some *.hip files)
+  # Fix CUDA and ROCm builds with glog (these macros are defined in /usr/lib/cmake/glog/glog-targets.cmake
+  # but for some reason this target is not applied when building some *.cu and *.hip files)
+  export NVCC_APPEND_FLAGS="-DGLOG_USE_GLOG_EXPORT -DGLOG_USE_GFLAGS"
   HIPCC_COMPILE_FLAGS_APPEND+=" -DGLOG_USE_GLOG_EXPORT -DGLOG_USE_GFLAGS"
 
   # Limit number of threads to avoid running out of memory
@@ -373,7 +376,7 @@ _package() {
 }
 
 package_python-pytorch-cuda12.9() {
-  pkgdesc="${_pkgdesc} (with CUDA 12.9)"
+  pkgdesc+=" (with CUDA 12.9)"
   depends+=(cuda-12.9 nccl-cuda12.9 cudnn9.10-cuda12.9 magma-cuda onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver} python-pytorch-cuda=${pkgver})
@@ -383,7 +386,7 @@ package_python-pytorch-cuda12.9() {
 }
 
 package_python-pytorch-opt-cuda12.9() {
-  pkgdesc="${_pkgdesc} (with CUDA 12.9 and AVX2 CPU optimizations)"
+  pkgdesc+=" (with CUDA 12.9 and AVX2 CPU optimizations)"
   depends+=(cuda-12.9 nccl-cuda12.9 cudnn9.10-cuda12.9 magma-cuda onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver} python-pytorch-cuda=${pkgver} python-pytorch-cuda12.9=${pkgver})
