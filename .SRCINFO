@@ -15,7 +15,7 @@ pkgbase = claude-desktop-appimage
 	options = !strip
 	source = https://github.com/aaddrick/claude-desktop-debian/releases/download/v1.3.25+claude1.1.9669/claude-desktop-1.1.9669-1.3.25-amd64.AppImage
 	source = claude-desktop.desktop
-	sha256sums = 7d13d53e93fd013bce05ffa797e69ec76dfb3f16abea3ded7cb57369cccb1859
+	sha256sums = bc681a8afccac676012b5826a25cacc771ec417181339697cea004368ecd017f
 	sha256sums = ab0469e2e127050193ca556f87af8914d93bbde8f31d673a2f279aedbc944f3d
 
 pkgname = claude-desktop-appimage
