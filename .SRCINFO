@@ -1,0 +1,37 @@
+pkgbase = perl-dist-metadata
+	pkgdesc = Information about a perl module distribution
+	pkgver = 0.927
+	pkgrel = 1
+	url = https://metacpan.org/release/RWSTAUNER/Dist-Metadata-0.927
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-file-temp>=0.19
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-mockobject>=1.09
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker
+	depends = perl-archive-tar>=1
+	depends = perl-archive-zip>=1.30
+	depends = perl-carp
+	depends = perl-cpan-distnameinfo>=0.12
+	depends = perl-cpan-meta>=2.1
+	depends = perl-digest-md5>=2
+	depends = perl-digest-sha>=5
+	depends = perl-digest>=1.03
+	depends = perl-file-spec-native>=1.002
+	depends = perl-file-temp>=0.19
+	depends = perl-module-metadata
+	depends = perl-parent
+	depends = perl-path-class>=0.24
+	depends = perl-scalar-list-utils
+	depends = perl-try-tiny>=0.09
+	depends = perl>=5.6.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/R/RW/RWSTAUNER/Dist-Metadata-0.927.tar.gz
+	sha256sums = ad24bc60cc6743148b6935e9ec55737d9380374c26571946ab9c3123964cd0be
+
+pkgname = perl-dist-metadata

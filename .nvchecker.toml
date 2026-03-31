@@ -1,0 +1,3 @@
+[perl-dist-metadata]
+source = "cpan"
+cpan = "Dist-Metadata"
