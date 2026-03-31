@@ -1,0 +1,17 @@
+pkgbase = perl-apache-htpasswd
+	pkgdesc = Manage Unix crypt-style password file.
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://metacpan.org/release/KMELTZ/Apache-Htpasswd-1.9
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-crypt-passwdmd5
+	depends = perl-digest-sha>=2
+	depends = perl-mime-base64
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/K/KM/KMELTZ/Apache-Htpasswd-1.9.tar.gz
+	sha256sums = 9358719be14799fc61e04989df7fdb9c0541402b0b8a7bdd181ff464f1cd2dfd
+
+pkgname = perl-apache-htpasswd
