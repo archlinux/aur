@@ -28,5 +28,7 @@ if [ -n "${GTK_MODULES-}" ]; then
 fi
 
 unset ELECTRON_RUN_AS_NODE
+export ELECTRON_IS_DEV=0
+export ELECTRON_FORCE_IS_PACKAGED=true
 
-exec /usr/bin/electron39 /usr/lib/rocket-mouse "$@"
+exec /usr/lib/rocket-mouse/electron/electron /usr/lib/rocket-mouse "$@"

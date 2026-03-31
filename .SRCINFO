@@ -1,7 +1,7 @@
 pkgbase = rocket-mouse-git
 	pkgdesc = Space-themed activity manager and mouse jiggler
 	pkgver = r50.c4bcdb0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/willakins/rocket-mouse
 	arch = x86_64
 	license = ISC
@@ -19,6 +19,6 @@ pkgbase = rocket-mouse-git
 	source = rocket-mouse.sh
 	sha256sums = SKIP
 	sha256sums = c3ab16e0459b5ca8e6af712cddad3295fcb6b344d7acc5429ae8c6dd831b1e21
-	sha256sums = 6877f5191fd4e46a56fc5b126f553e496ee87c0d14291b994cdec779589e2930
+	sha256sums = 7d8211d89f62271d5e510eb0a1ec24bbec7aecae8f1a91ef59163dc1f9279bc8
 
 pkgname = rocket-mouse-git
