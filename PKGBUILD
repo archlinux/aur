@@ -70,7 +70,7 @@ makedepends=(git
 options=('!debug')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-conflicts=(vistathemeplasma-desktop)
+conflicts=(vistathemeplasma-desktop aerothemeplasma-desktop)
 provides=(vistathemeplasma-desktop)
 groups=(vistathemeplasma)
 
@@ -87,4 +87,12 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
+
+    # aerothemeplasma-desktop provides the following two files as well, which
+    # causes file conflicts with this package. That's the reason why we listed
+    # AeroThemePlasma in conflicts array. If you would like to install both,
+    # Uncomment the following section, and remove aerothemeplasma-desktop from
+    # conflcits array.
+    # rm "$pkgdir/usr/lib/kf6/kauth/ootbcursor_authhelper"
+    # rm "$pkgdir/usr/share/color-schemes/Aero.colors"
 }

@@ -68,6 +68,7 @@ pkgbase = vistathemeplasma-desktop-git
 	optdepends = qrca
 	provides = vistathemeplasma-desktop
 	conflicts = vistathemeplasma-desktop
+	conflicts = aerothemeplasma-desktop
 	options = !debug
 	source = vistathemeplasma-desktop-git::git+https://github.com/aeroshell-desktop/vistathemeplasma.git
 	sha256sums = SKIP
