@@ -3,7 +3,7 @@
 pkgname=zerochan-downloader-bin
 _pkgname=ZerochanDownloader
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A clean, native desktop client for browsing and downloading from Zerochan"
 arch=('x86_64')
 url="https://github.com/jp319/ZerochanDownloader"
