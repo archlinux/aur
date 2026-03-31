@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = sway sway-git
+
+[Action]
+Description = Updating sway.desktop to set required systemd variables...
+Depends = sed
+When = PostTransaction
+Exec = sed -i 's|^\(Exec=.*\)sway\( --unsupported-gpu\)\?$|\1sway --unsupported-gpu|' /usr/share/wayland-sessions/sway.desktop
