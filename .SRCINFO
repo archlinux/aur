@@ -1,6 +1,6 @@
 pkgbase = alpine-make-vm-image
 	pkgdesc = Make customized Alpine Linux disk image for virtual machines
-	pkgver = 0.13.3
+	pkgver = 0.13.4
 	pkgrel = 1
 	url = https://github.com/alpinelinux/alpine-make-vm-image
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = alpine-make-vm-image
 	optdepends = btrfs-progs: for BTRFS
 	optdepends = xfsprogs: for XFS
 	optdepends = dosfstools: for --boot-mode UEFI
-	source = alpine-make-vm-image::git+https://github.com/alpinelinux/alpine-make-vm-image.git#tag=v0.13.3?signed
+	source = alpine-make-vm-image::git+https://github.com/alpinelinux/alpine-make-vm-image.git#tag=v0.13.4?signed
 	validpgpkeys = D7858912669D3A20F4F46BD2F95BD679104D3115
-	sha256sums = ddce7d65e4b44e7f8836b50a463c135c96637cf7bb94f63283398f83ee36a36e
+	sha256sums = 81a87a9a441d94b8e9433d37db1dc95473a19376d6052f830587df28f40f1e51
 
 pkgname = alpine-make-vm-image

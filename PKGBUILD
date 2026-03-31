@@ -1,12 +1,16 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="alpine-make-vm-image"
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="Make customized Alpine Linux disk image for virtual machines"
-arch=('any')
+arch=(
+  'any'
+)
 url="https://github.com/alpinelinux/${pkgname}"
-license=('MIT')
+license=(
+  'MIT'
+)
 depends=(
   'sh'
   'qemu-img'
@@ -23,9 +27,13 @@ optdepends=(
   'dosfstools: for --boot-mode UEFI'
 )
 _pkgsrc="${url##*/}"
-source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}?signed")
-sha256sums=('ddce7d65e4b44e7f8836b50a463c135c96637cf7bb94f63283398f83ee36a36e')
-validpgpkeys=('D7858912669D3A20F4F46BD2F95BD679104D3115') # Jakub Jirutka <jakub@jirutka.cz>
+source=(
+  "${_pkgsrc}::git+${url}.git#tag=v${pkgver}?signed"
+)
+sha256sums=('81a87a9a441d94b8e9433d37db1dc95473a19376d6052f830587df28f40f1e51')
+validpgpkeys=(
+  'D7858912669D3A20F4F46BD2F95BD679104D3115' # Jakub Jirutka <jakub@jirutka.cz>
+)
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
