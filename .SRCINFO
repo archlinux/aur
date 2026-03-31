@@ -1,0 +1,21 @@
+pkgbase = perl-lib-relative
+	pkgdesc = Add paths relative to the current file to @INC
+	pkgver = 1.002
+	pkgrel = 1
+	url = https://metacpan.org/release/DBOOK/lib-relative-1.002
+	arch = any
+	license = Artistic-2.0
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-file-temp>=0.19
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-lib
+	depends = perl-pathtools
+	depends = perl>=5.6.1
+	optdepends = perl-cpan-meta
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DB/DBOOK/lib-relative-1.002.tar.gz
+	sha256sums = e4470215167c406917603e78be4d93112cf6913cd342aeb800b412e011c8a78b
+
+pkgname = perl-lib-relative

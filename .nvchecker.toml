@@ -1,0 +1,3 @@
+[perl-lib-relative]
+source = "cpan"
+cpan = "lib-relative"
