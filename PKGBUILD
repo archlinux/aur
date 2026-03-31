@@ -12,11 +12,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Notenlish/anifetch/archive/
 sha256sums=('75e228a11c1d7816e30f0f0269de8f8c8f5c6e85c02be921791b0d6efb2fb546')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/anifetch-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/anifetch-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
