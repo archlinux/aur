@@ -1,0 +1,3 @@
+[perl-moosex-types-path-tiny]
+source = "cpan"
+cpan = "MooseX-Types-Path-Tiny"

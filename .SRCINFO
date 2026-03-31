@@ -1,0 +1,29 @@
+pkgbase = perl-moosex-types-path-tiny
+	pkgdesc = Path::Tiny types and coercions for Moose
+	pkgver = 0.012
+	pkgrel = 1
+	url = https://metacpan.org/release/ETHER/MooseX-Types-Path-Tiny-0.012
+	arch = any
+	license = Apache-2.0
+	checkdepends = perl-file-pushd
+	checkdepends = perl-file-temp>=0.18
+	checkdepends = perl-module-metadata
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-module-build-tiny>=0.034
+	depends = perl-if
+	depends = perl-moose>=2
+	depends = perl-moosex-getopt
+	depends = perl-moosex-types
+	depends = perl-moosex-types-stringlike
+	depends = perl-namespace-autoclean
+	depends = perl-path-tiny
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Types-Path-Tiny-0.012.tar.gz
+	sha256sums = 19eede02dd654e70f73e34cd7af0063765173bcaefeeff1bdbe21318ecfd9158
+
+pkgname = perl-moosex-types-path-tiny
