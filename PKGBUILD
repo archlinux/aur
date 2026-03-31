@@ -22,7 +22,7 @@ source=(
 sha256sums=('5978d621fe2582fc2403fa13f3c06502020bcb42e806ddd4612150049d1a3fbb'
             'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
             'a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b'
-            '5f24b05f2ede2acfdcd6bfee9c8ce98bb13d160cc234091f1f297e43387ec9be')
+            'e77902c49d76fb103b2e3b7c59925d6b43e3772204dc5e484c2375bffb421ac0')
 
 # CLI tools for interacting with the Solana network.
 package_solana-bin() {

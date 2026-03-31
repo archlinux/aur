@@ -6,7 +6,3 @@ post_install() {
   echo "    which builds from source."
   echo ""
 }
-
-post_upgrade() {
-  post_install
-}
