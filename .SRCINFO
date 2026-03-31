@@ -1,0 +1,20 @@
+pkgbase = perl-archive-any-create
+	pkgdesc = Abstract API to create archives (tar.gz and zip)
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/release/MIYAGAWA/Archive-Any-Create-0.03
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.30
+	depends = perl
+	depends = perl-archive-tar
+	depends = perl-archive-zip
+	depends = perl-exception-class
+	depends = perl-io-zlib
+	depends = perl-universal-require
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Archive-Any-Create-0.03.tar.gz
+	sha256sums = bdd18e6427559e489041c6e3d71cf91ff5b53d294264c232b1c58773c0f3c678
+
+pkgname = perl-archive-any-create
