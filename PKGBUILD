@@ -7,7 +7,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="A fast TUI and CLI for browsing AI models, benchmarks, and coding agents"
 
-pkgver=0.11.3
+pkgver=0.11.4
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,10 +27,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('97cfff9e48b8dd36c6de313ca21a6bc7affc88e9699b0d74cb155ef17a8dafa4'
+sha256sums=('7e11880f070d72aa13c2e02a7297a4dc6c53524104d4b7af239bbe6d95cdb17e'
   '515175e700aadba7b5436688d6daa0e06ea17bfb657e377e14138f65866082a3')
-sha256sums_x86_64=('6e8eb0a727e66b09fe81124ecdf53a0862ec6ea219f4dc1342cdc53c44950729')
-sha256sums_aarch64=('132f4c90766c63af186674f30c5957ab583f1199322c3b13943eef9f529e6af5')
+sha256sums_x86_64=('37cb2bd0c2708fe1971c371919b8274918ab1e49d05cd3de5f4f3c6d382b1649')
+sha256sums_aarch64=('9ae3f846c0f53e58cc119665fff07e64e1a58bfb5e937cb6a5cab165c28f8f6b')
 
 
 package() {
