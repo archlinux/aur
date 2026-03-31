@@ -3,18 +3,12 @@ pkgbase = solana-bin
 	pkgver = 3.1.11
 	pkgrel = 1
 	url = https://solana.com
-	install = solana-bin.install
 	arch = x86_64
 	license = Apache-2.0
-	depends = bash
-	depends = bzip2
-	depends = gcc-libs
-	depends = glibc
-	depends = systemd-libs
-	optdepends = cargo: required for cargo-build-sbf and cargo-test-sbf
-	provides = solana
-	provides = spl-token
-	conflicts = solana
+	makedepends = bash
+	makedepends = glibc
+	makedepends = libgcc
+	makedepends = systemd-libs
 	options = !strip
 	source = solana-3.1.11.tar.bz2::https://github.com/anza-xyz/agave/releases/download/v3.1.11/solana-release-x86_64-unknown-linux-gnu.tar.bz2
 	source = solana.sysusers
@@ -26,3 +20,21 @@ pkgbase = solana-bin
 	sha256sums = 2ebe9f425bb1833089de42bae0cafe8da6394eb964e3442370bcff1a9c5045a8
 
 pkgname = solana-bin
+	pkgdesc = Solana CLI tools for wallets, staking, and token management
+	install = solana-bin.install
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = systemd-libs
+	provides = solana=3.1.11
+	provides = spl-token
+	conflicts = solana
+
+pkgname = solana-dev-bin
+	pkgdesc = Solana developer tools: SBF compiler toolchain, test validator, and ledger tool
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = systemd-libs
+	depends = solana-bin=3.1.11
+	optdepends = cargo: required for cargo-build-sbf and cargo-test-sbf
