@@ -1,6 +1,6 @@
 pkgbase = rofi-games
 	pkgdesc = A rofi plugin which adds a mode to list available games for launch along with their box art
-	pkgver = 1.17.2
+	pkgver = 1.17.3
 	pkgrel = 1
 	url = https://github.com/rolv-apneseth/rofi-games
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = rofi-games
 	depends = sqlite
 	options = !debug
 	options = !lto
-	source = rofi-games-1.17.2.tar.gz::https://github.com/rolv-apneseth/rofi-games/archive/v1.17.2.tar.gz
-	sha512sums = 71eecdc68582cfb9d15d29993fc21201d43d2152c4cfc16a276285ed78efb84508d66d696404f2e9c1e7fc98d2c535d4cc386840c0726b5f6c3028b151b91b1b
+	source = rofi-games-1.17.3.tar.gz::https://github.com/rolv-apneseth/rofi-games/archive/v1.17.3.tar.gz
+	sha512sums = 8c25eec1fcd4240efe536f9bdc57637d9170b915e9b859002b86f2b3f6afcd64fe7d04e624cf8f33ed9f60869449709ed41d208d59e1abe303fb22e56888d2a6
 
 pkgname = rofi-games
