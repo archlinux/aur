@@ -1,7 +1,7 @@
 pkgbase = apollo
 	pkgdesc = A self-hosted game stream server
 	pkgver = 0.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ClassicOldSong/Apollo
 	install = apollo.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = apollo
 	makedepends = git
 	makedepends = ninja
 	makedepends = npm
+	depends = boost-libs
 	depends = gtk3
 	depends = icu
 	depends = libayatana-appindicator
@@ -32,6 +33,7 @@ pkgbase = apollo
 	sha256sums = f20e3c3df32efd8bcbf31e74fc822cedf923abb5ac6b3aeace9594432959aa9f
 
 pkgname = apollo
+	depends = boost-libs
 	depends = gtk3
 	depends = icu
 	depends = libayatana-appindicator
