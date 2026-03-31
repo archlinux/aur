@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=CipherDrop
+Comment=Ephemeral end-to-end encrypted chat
+Exec=/opt/CipherDrop/CipherDrop.AppImage
+Icon=cipherdrop
+Terminal=false
+Categories=Network;InstantMessaging;
+StartupNotify=true
+StartupWMClass=CipherDrop
