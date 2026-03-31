@@ -1,0 +1,18 @@
+pkgbase = pinta-appimage
+	pkgdesc = Simple GTK Paint Program (Unofficial AppImage)
+	pkgver = 3.1.1_2
+	pkgrel = 1
+	url = https://github.com/pkgforge-dev/Pinta-AppImage
+	arch = x86_64
+	license = MIT
+	depends = dotnet-runtime
+	depends = dotnet-host
+	depends = libadwaita
+	depends = hicolor-icon-theme
+	depends = webp-pixbuf-loader
+	provides = pinta
+	noextract = pinta-appimage-3.1.1_2.AppImage
+	source = pinta-appimage-3.1.1_2.AppImage::https://github.com/pkgforge-dev/Pinta-AppImage/releases/download/3.1.1-2%402026-03-22_1774172515/Pinta-3.1.1-2-anylinux-x86_64.AppImage
+	sha256sums = eb31e1c70c182d4813a1c4ed35912959fdd0f34e3ce76a1cc413ef4cd1678598
+
+pkgname = pinta-appimage
