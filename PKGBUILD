@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woterm-bin
 _pkgname=WoTerm
-pkgver=10.5.4
-_releasedate=202603242000
+pkgver=10.5.5
+_releasedate=202603260652
 pkgrel=1
 pkgdesc="Easy to Use / Practical / Powerful / Modern (Prebuilt version)一款易用、实用、强大、现代的跨平台终端"
 arch=('x86_64')
@@ -28,11 +28,11 @@ makedepends=(
     'gendesk'
 )
 source=(
-    #"${pkgname%-bin}-${pkgver}.tar.gz::https://down.woterm.com/linux/${pkgname%-bin}-linux-x86_64-portable-v${pkgver}-${_releasedate}.tar.gz"
-    "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${CARCH}-portable-v${pkgver}-${_releasedate}.tar.gz"
+    "${pkgname%-bin}-${pkgver}.tar.gz::https://down.woterm.com/linux/${pkgname%-bin}-linux-x86_64-portable-v${pkgver}-${_releasedate}.tar.gz"
+    #"${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${CARCH}-portable-v${pkgver}-${_releasedate}.tar.gz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('79ed26d7d8cf65723438c4300328fd4b9dae4d720afdb6ca6c10478f5203ed7d'
+sha256sums=('36a84cd245eafa04947ca02bb82a1ea0f14365fc48c96d654eb6804e8ec6d9c5'
             '2c72a969289598f9c407cb36a9720ad3b6a85173551252369515a0422cc53077')
 prepare() {
     sed -i -e "
