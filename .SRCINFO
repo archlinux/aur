@@ -1,16 +1,16 @@
 pkgbase = ktfmt
 	pkgdesc = A program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions
-	pkgver = 0.61
+	pkgver = 0.62
 	pkgrel = 1
 	url = https://github.com/facebook/ktfmt
 	arch = any
 	license = Apache-2.0
 	depends = java-runtime
 	depends = bash
-	source = https://repo1.maven.org/maven2/com/facebook/ktfmt/0.61/ktfmt-0.61-with-dependencies.jar
+	source = https://repo1.maven.org/maven2/com/facebook/ktfmt/0.62/ktfmt-0.62-with-dependencies.jar
 	source = ktfmt
-	source = https://raw.githubusercontent.com/facebook/ktfmt/refs/tags/v0.61/LICENSE
-	sha256sums = df83eccc0d72ed0eac0352509d792f6bb48f7db0cf0902a7edb56090a4804290
+	source = https://raw.githubusercontent.com/facebook/ktfmt/refs/tags/v0.62/LICENSE
+	sha256sums = 9c7e2408a03b3582f162449dbab2dfabcc8d09de1609a9831e4c683d1207de01
 	sha256sums = 62228af9300c9ee416aeef97fb589a91ddcd321e6b262e5e5c0924d26cb4ef52
 	sha256sums = 5f1521fb886be393d8afc4655ab7c6ffe84e1d4f15dfd321ceec3ce62968d058
 
