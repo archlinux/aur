@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stoat-desktop-git
 _pkgname=Stoat
-pkgver=1.3.0.r1.gb57faa2
+_debname="chat.stoat.${_pkgname}Desktop"
+pkgver=1.3.0.r3.gd1bf862
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -21,7 +22,6 @@ makedepends=(
     'nvm'
     'git'
     'curl'
-    'gendesk'
     'jq'
 )
 source=(
@@ -57,36 +57,29 @@ prepare() {
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
-    gendesk -q -f -n \
-        --pkgname="${pkgname%-git}" \
-        --pkgdesc="${pkgdesc}" \
-        --categories="Network" \
-        --name="${_pkgname}" \
-        --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
+    local HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo 'link-workspace-packages=true'
-        echo 'fetch-retry-maxtimeout=10000'
-        echo "cache-dir=${srcdir}/.pnpm_cache"
-        echo "store-dir=${srcdir}/.pnpm_store"
-        echo "virtual-store-dir=${srcdir}/.pnpm_store"
-        echo "shamefully-hoist=true"
-        echo "virtual-store-dir-max-length=80"
-        echo "node-linker=hoisted"
-        echo "network-concurrency=32"
-    } >> .npmrc
+        export PNPM_LINK_WORKSPACE_PACKAGES=true
+        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_SHAMEFULLY_HOIST=true
+        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+        export PNPM_NODE_LINKER=hoisted
+        export PNPM_NETWORK_CONCURRENCY=32
+    }
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-        echo 'registry=https://registry.npmmirror.com'
-        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
-        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
-        } >> .npmrc
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+        }
     fi
     _ensure_local_nvm
+    sed -i "s/Icon=${_debname}/Icon=${pkgname%-git}/g" "${_debname}.desktop"
+    sed -i "s/Icon=${_debname}/Icon=${pkgname%-git}/g" "${_debname}.metainfo.xml"
     git -c submodule."assets".update=checkout submodule update --init assets
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install --package-import-method=hardlink
@@ -118,6 +111,7 @@ package() {
         done
     fi
     install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/desktop/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${_debname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-git}.metainfo.xml"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/README.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
