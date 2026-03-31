@@ -2,7 +2,7 @@
 
 pkgname=ani2xcursor-bin
 _pkgname=ani2xcursor
-pkgver=1.4.9
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Convert Windows animated cursor themes to Linux Xcursor format (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,9 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-v${pkgver}-linux-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x86_64.AppImage")
-sha256sums_x86_64=('fed65fd7be0800ddd9ce326316f08945cc000d417dee40c633943b4e81bc3841')
+sha256sums_x86_64=('e4a495a68a7b028396c01d3e98905da4acced929859d77f3e0c204026f94dfdf')
 source_aarch64=("${_pkgname}-v${pkgver}-linux-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-aarch64.AppImage")
-sha256sums_aarch64=('65560a04063962d743fe14d08b43b415427e6ef97bce1700afea1ef0151d6f8e')
+sha256sums_aarch64=('e3085ff9896a59e587cb1ecea8cefe81840aaa2dffb0ee3508efd2626e73c6cc')
 
 prepare() {
   cd "$srcdir"
