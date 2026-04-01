@@ -1,7 +1,7 @@
 pkgbase = simutrans-pak128.cs
 	pkgdesc = High resolution graphics set for Simutrans, with a czech theme
 	pkgver = 2096
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.simutrans.com/
 	arch = any
 	license = custom:Artistic

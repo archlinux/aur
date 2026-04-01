@@ -2,7 +2,7 @@
 
 pkgname=simutrans-pak128.cs
 pkgver=2096
-pkgrel=1
+pkgrel=2
 pkgdesc="High resolution graphics set for Simutrans, with a czech theme"
 arch=('any')
 url="https://www.simutrans.com/"
@@ -12,6 +12,6 @@ sha256sums=('43338823d027fc6a2d330e77033f3be6f0f08916b5d97d89766d58879289efe4')
 
 package() {
   #data
-  mkdir -p "$pkgdir/usr/share/games/simutrans/pak128.cs"
-  cp -r pak128.CS/* "$pkgdir/usr/share/games/simutrans/pak128.cs"
+  mkdir -p "$pkgdir/usr/share/simutrans/pak128.cs"
+  cp -r pak128.CS/* "$pkgdir/usr/share/simutrans/pak128.cs"
 }
