@@ -1,14 +1,15 @@
-# Maintainer: DawfukFR <dawfukfr@gmail.com>
+# Maintainer: Dunky <braxtinmoss13@gmail.com>
+# Previous Maintainer: DawfukFR <dawfukfr@gmail.com>
 # Contact: (Telegram: @Dawfuk)
 
 pkgname=xwaylandvideobridge-git
 _pkgname=xwaylandvideobridge
 pkgver=0.4.0_r243.g1a8d5af
 pkgrel=1
-pkgdesc="A tool to make it easy to stream wayland windows and screens to Xwayland applicatons that don't have native pipewire support."
+pkgdesc="A tool to make it easy to stream Wayland windows and screens to Xwayland applications that don't have native pipewire support."
 arch=(x86_64)
 url='https://invent.kde.org/system/xwaylandvideobridge'
-license=(GPL2)
+license=('GPL-2.0-or-later')
 provides=(xwaylandvideobridge)
 depends=(
   glibc
