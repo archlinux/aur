@@ -75,12 +75,12 @@ The heart of Voix is defined in `/etc/voix.conf`.
 
 **Deconstructing the Runes:**
 
-*   `ordain|shun`: The primary incantation. `ordain` grants power, while `shun` denies it.
-*   `trust`: (Optional) A sacred boon that allows the user to execute incantations without re-authenticating for a time.
-*   `<ident>`: The user or group to apply the rule to. Groups must be prefixed with a colon (`:`), like `:wizards`.
-*   `mask <target>`: (Optional) The target user to execute the incantation as. Defaults to `root`, the highest of all.
-*   `rite <incantation>`: (Optional) The specific incantation to be executed. If not specified, the user can execute any incantation.
-*   `[args ...]`: (Optional) Arguments for the incantation.
+- `ordain|shun`: The primary incantation. `ordain` grants power, while `shun` denies it.
+- `trust`: (Optional) A sacred boon that allows the user to execute incantations without re-authenticating for a time.
+- `<ident>`: The user or group to apply the rule to. Groups must be prefixed with a colon (`:`), like `:wizards`.
+- `mask <target>`: (Optional) The target user to execute the incantation as. Defaults to `root`, the highest of all.
+- `rite <incantation>`: (Optional) The specific incantation to be executed. If not specified, the user can execute any incantation.
+- `[args ...]`: (Optional) Arguments for the incantation.
 
 **An Offering to the Config:**
 
