@@ -2,8 +2,8 @@
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 
 pkgname="sway-desktop-unsupportedgpu-hook"
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Adds --unsupported-gpu to sway.desktop!"
 arch=('any')
 url=""
