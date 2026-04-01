@@ -20,13 +20,13 @@ export CARGO_TARGET_DIR=target
 export CARGO_BUILD_TARGET="$CARCH-unknown-linux-gnu"
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
 
     cargo fetch --locked
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
 
     cargo build --frozen --release --bin topiary
 
@@ -40,13 +40,13 @@ build() {
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
 
     cargo test --frozen -- --skip "coverage_input_ocaml"
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
     
     install -Dm0755 -t "${pkgdir}/usr/bin/" "target/${CARGO_BUILD_TARGET}/release/${pkgname}"
     install -Dm0755 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
@@ -56,4 +56,3 @@ package() {
     install -Dm 644 -t "${pkgdir}/usr/share/fish/vendor_completions.d/" "completions/${pkgname}.fish"
     install -Dm 644 -t "${pkgdir}/usr/share/zsh/site-functions/" "completions/_${pkgname}"
 }
-
