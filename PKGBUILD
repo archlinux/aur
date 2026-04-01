@@ -1,15 +1,13 @@
 # Maintainer: Karl Essinger <xkaess22@gmail.com>
 pkgname=scpdiscord
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A very customisable Discord bot + SCP:SL plugin combo."
 arch=("x86_64")
 url="https://github.com/KarlOfDuty/SCPDiscord"
 license=('GPL-3.0-or-later')
 options=('!debug' '!strip')
-depends=(
-  "dotnet-runtime-9.0"
-)
+depends=()
 makedepends=(
   "dotnet-sdk-9.0"
 )
@@ -26,7 +24,7 @@ _srcdir="SCPDiscord"
 
 build() {
   cd "$_srcdir"
-  dotnet publish SCPDiscordBot/SCPDiscordBot.csproj -p:PublishSingleFile=true -r linux-x64 -c Release --self-contained false --output out
+  dotnet publish SCPDiscordBot/SCPDiscordBot.csproj -r linux-x64 -c Release --output out
 }
 
 package() {
