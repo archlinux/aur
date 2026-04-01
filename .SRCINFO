@@ -1,0 +1,12 @@
+pkgbase = impala-aur-helper
+	pkgdesc = Intelligent Manager for Packages, AUR, and Local Archives - A user-friendly AUR helper written in Python.
+	pkgver = 1.0.beta1
+	pkgrel = 1
+	arch = any
+	makedepends = python-pip
+	depends = git
+	depends = python
+	source = https://github.com/tildes1lly/IMPALA/archive/refs/tags/v1.0.beta1.tar.gz
+	sha256sums = 941c0477a5efc2ec61af44ce73c98adbe1490b292ddb7a260990157818dcf48d
+
+pkgname = impala-aur-helper
