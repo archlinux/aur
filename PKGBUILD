@@ -2,7 +2,7 @@
 pkgname=shorin-fcitx5-config-git
 pkgver=r1.0.0 
 pkgrel=1
-pkgdesc="Fcitx5 and Rime configurations for Shorin OS"
+pkgdesc="Fcitx5 and Rime configurations for Shorin"
 arch=('any')
 url="https://github.com/ShorinOS/shorin-fcitx5-config"
 license=('GPL')
