@@ -1,17 +1,15 @@
 pkgbase = perl-rdf-ns
-	pkgdesc = Just use popular RDF namespace prefixes from prefix.cc
-	pkgver = 20130402
+	pkgdesc = quickly get common URI namespaces
+	pkgver = 20230619
 	pkgrel = 1
-	url = http://search.cpan.org/dist/RDF-NS
+	url = https://metacpan.org/release/VOJ/RDF-NS-20230619
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	makedepends = perl-file-sharedir-install>=0.03
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-module-build-tiny>=0.035
 	depends = perl-file-sharedir>=1.00
+	depends = perl>=5.12.0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/V/VO/VOJ/RDF-NS-20130402.tar.gz
-	md5sums = 405ff1ba5484619bb3301ece110622f5
-	sha512sums = 1f375e3e777caa39a7a23a114438781989a6f41baa4f691c814ce546ae929dcc168bf2221dad59db0a71b035f459aa1806086100c72ecdda15f6a0b577684b7a
+	source = https://cpan.metacpan.org/authors/id/V/VO/VOJ/RDF-NS-20230619.tar.gz
+	sha256sums = 5856312dfda8852b10e9354b9565f506c1ff284e9c2349c9cb2d6d821bc66a5d
 
 pkgname = perl-rdf-ns
-

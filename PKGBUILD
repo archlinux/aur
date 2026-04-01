@@ -1,49 +1,48 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-rdf-ns'
-pkgver='20130402'
-pkgrel='1'
-pkgdesc="Just use popular RDF namespace prefixes from prefix.cc"
+_author=VOJ
+_dist=RDF-NS
+pkgname=perl-${_dist@L}
+pkgver=20230619
+pkgrel=1
+pkgdesc='quickly get common URI namespaces'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-file-sharedir>=1.00'
+    'perl>=5.12.0'
+)
+makedepends=('perl-module-build-tiny>=0.035')
 options=('!emptydirs')
-depends=('perl-file-sharedir>=1.00')
-makedepends=('perl-file-sharedir-install>=0.03')
-url='http://search.cpan.org/dist/RDF-NS'
-source=('http://search.cpan.org/CPAN/authors/id/V/VO/VOJ/RDF-NS-20130402.tar.gz')
-md5sums=('405ff1ba5484619bb3301ece110622f5')
-sha512sums=('1f375e3e777caa39a7a23a114438781989a6f41baa4f691c814ce546ae929dcc168bf2221dad59db0a71b035f459aa1806086100c72ecdda15f6a0b577684b7a')
-_distdir="RDF-NS-20130402"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('5856312dfda8852b10e9354b9565f506c1ff284e9c2349c9cb2d6d821bc66a5d')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+    unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    /usr/bin/perl Build.PL --create_packlist=0
+    ./Build
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build test
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
+}
