@@ -1,5 +1,5 @@
 pkgname=oranglauncher-bin
-pkgver=5.3
+pkgver=5.3.1
 pkgrel=1
 pkgdesc="Orange Launcher for Arch Linux"
 arch=(x86_64)
@@ -8,11 +8,11 @@ license=('MIT')
 depends=(glibc webkit2gtk-4.1)
 provides=(oranglauncher)
 conflicts=(oranglauncher)
-source=("https://github.com/Orang-Studio/OrangLaunch/releases/download/5.3-Linux/launcher_x64_linux_5.3.tar.gz"
+source=("https://github.com/Orang-Studio/OrangLaunch/releases/download/5.3.1-Linux/launcher_x64_linux_5.3.1.tar.gz"
         "oranglauncher.desktop"
         "orange.png"
         "LICENSE")
-sha256sums=('d2a9920d6ad2d182f7b45704633a99afab18be5109b987f94c1bbcf1463dcc6d'
+sha256sums=('99c416e0eb8a0e4062a8dd569b4f0a220914614fe71d8bfbaf51148bbb130372'
             '8ce3b336dbf9739d9bd5fc0278b19f10c7539e23f05f399e288b2d267ec4e78a'
             'ddbe0ca155b67fcfc1fecdba1cbc6a3aac5a2011316bbb4a222e1f48f8987968'
             '3c8133c78d2e468f22643e465f8abcf4404742dc1b80c5eb64742039d70c5afa')
