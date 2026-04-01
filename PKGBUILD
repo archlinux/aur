@@ -2,9 +2,9 @@
 
 pkgname=wl-vapi-gen
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Generate vala bindings for wayland protocols "
-url="https://github.com/kotontrion/wl-vapi-gen"
+url="https://codeberg.org/kotontrion/wl-vapi-gen"
 arch=(any)
 license=(MIT)
 depends=(
