@@ -3,7 +3,7 @@
 pkgname=podping-alpha-gossip-listener-git
 _pkgname=podping.alpha
 pkgver=r112.7facd0b
-pkgrel=2
+pkgrel=3
 pkgdesc="Decentralized podcast feed notification listener"
 arch=("x86_64" "aarch64")
 url="https://github.com/Podcastindex-org/podping.alpha"
@@ -78,4 +78,6 @@ package() {
 
     install -Dm644 "${srcdir}/podping-alpha-gossip-listener.sysusers" \
         "${pkgdir}/usr/lib/sysusers.d/podping-alpha-gossip-listener.conf"
+
+    install -dm750 -o podping -g podping "${pkgdir}/var/cache/podping"
 }
