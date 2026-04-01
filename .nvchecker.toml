@@ -1,0 +1,3 @@
+[perl-math-cartesian-product]
+source = "cpan"
+cpan = "Math-Cartesian-Product"
