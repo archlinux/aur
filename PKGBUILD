@@ -16,7 +16,7 @@ provides=('hubdev')
 conflicts=('hubdev')
 source=("hubdev-${pkgver}-linux-amd64::https://pub-51b22bf3fd5a4d73a4ed580105cfc09f.r2.dev/v${pkgver}/hubdev-linux-amd64"
         "hubdev.desktop"
-        "hubdev.png::https://raw.githubusercontent.com/hubdev-io/devhub-go/main/build/appicon.png")
+        "hubdev.png::https://apt.hubdev.io/assets/hubdev.png")
 sha256sums=('fb2faae78cb013c3afc6ec152fb8d8113a4afcd8c4c95796c324b95a2a381a73'
   'SKIP'
   'SKIP')
