@@ -19,10 +19,10 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kwallet: support for storing passwords in KWallet on Plasma'
             'upower: Battery Status API support'
             'qt6-base: QT UI support')
-source=("https://repo.secureblue.dev/Packages/trivalent-146.0.7680.164-443581.x86_64.rpm"
-        "https://repo.secureblue.dev/Packages/trivalent-qt6-ui-146.0.7680.164-443581.x86_64.rpm")
-sha256sums=('9b52ba48f6f2f685b497661ca488d5212d2e5caae8ada97aa7974616a1da09d3'
-            '24da26db0874dfefd69fa2e4724284a0559a784f66adfcf3316f3e103967e444')
+source=("https://repo.secureblue.dev/Packages/trivalent-146.0.7680.177-443748.x86_64.rpm"
+        "https://repo.secureblue.dev/Packages/trivalent-qt6-ui-146.0.7680.177-443748.x86_64.rpm")
+sha256sums=('8a5c682203c5a7b6aa7e7e2b7bde3b04f7108c92cfec8c2394e231020f0f4269'
+            '65c5ea8f0d859796a8ab23e9b53594d69652f0930903ed73462f0e02803e46fb')
 
 prepare() {
 	mv "${srcdir}/usr/lib64" "${srcdir}/usr/lib"
