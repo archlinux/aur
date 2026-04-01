@@ -2,7 +2,7 @@
 
 pkgname=binsec
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source toolset to help improve software security at the binary level'
 arch=('x86_64')
 url='https://binsec.github.io'
@@ -37,7 +37,7 @@ optdepends=(
     'yices: Yices 2 SMT Solver'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/binsec/binsec/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('1afec6e5061c5381abcc6360cc5b5c0921a12429be7bbf240d6d2fd642920d71b28898a64f837cfdd1b52b50fa14a4d9024609578b371b8b64f6b87f14eec989')
+b2sums=('e6687fa7fe6c6a508579cce041a7b0757e13dccc9790dad0c3d40b9d7d82111e1d30a9d67ed0bcff5450c919ccef58c46abb9b647a85f1a391a8fb740e76202e')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
