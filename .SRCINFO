@@ -6,5 +6,7 @@ pkgbase = sfiler
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
+	source = git+https://github.com/bhmsgame06/sfiler
+	sha256sums = SKIP
 
 pkgname = sfiler
