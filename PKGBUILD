@@ -20,7 +20,7 @@ export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
 
     # fix openssl build error
     cargo update openssl --precise 0.10.68
@@ -29,13 +29,13 @@ prepare() {
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
 
     cargo build --frozen --release --all-features --target-dir target
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
 
     install -Dm 755 -t "${pkgdir}/usr/bin" target/release/chr
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
