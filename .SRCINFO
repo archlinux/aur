@@ -1,0 +1,17 @@
+pkgbase = nekofs-git
+	pkgdesc = Virtual FUSE FileSystem with lots of automations
+	pkgver = r4.2d3b549
+	pkgrel = 1
+	url = https://github.com/NekoMimiOfficial/nekofs
+	arch = x86_64
+	license = custom:Nekocense
+	makedepends = cmake
+	makedepends = git
+	makedepends = nlohmann-json
+	makedepends = pkgconf
+	depends = fuse3
+	depends = libcurlpp-git
+	source = git+https://github.com/NekoMimiOfficial/nekofs.git
+	sha256sums = SKIP
+
+pkgname = nekofs-git
