@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio-git
-pkgver=0.5.1.r2.g7f60ccfb
-pkgrel=1
+pkgver=0.5.1.r9.g9d03790e
+pkgrel=2
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
 url="https://github.com/MrNeRF/LichtFeld-Studio"
@@ -14,12 +14,10 @@ depends=(
     'freetype2'
     'gcc-libs'
     'glibc'
-    'glm'
     'hicolor-icon-theme'
     'libarchive'
     'libglvnd'
     'libwebp'
-    'nlohmann-json'
     'dbus'
     'nvidia-utils'  # driver >= 570 required at runtime
     'openimageio'
@@ -36,15 +34,15 @@ makedepends=(
     'autoconf-archive'
     'automake'
     'cmake>=3.30'
-    'cuda'
     'curl'
     'git'
+    'glm'
     'libtool'
     'nasm'
     'ninja'
+    'nlohmann-json'
     'patchelf'
     'pkgconf'
-    'python'
     'tar'
     'unzip'
     'zip'
@@ -68,8 +66,12 @@ prepare() {
     cd "$pkgname"
     git submodule update --init --recursive
 
-    # Bootstrap vcpkg (makepkg manages clone/fetch via source array)
-    ln -sf "$srcdir/vcpkg" vcpkg
+    # Bootstrap vcpkg (makepkg manages clone/fetch via source array).
+    # Copy instead of symlink: bootstrap downloads binary to vcpkg/vcpkg
+    # which collides with the symlink target path.
+    rm -rf vcpkg
+    cp -a "$srcdir/vcpkg" vcpkg
+    rm -f vcpkg/vcpkg  # remove stale binary/symlink so bootstrap can write fresh
     ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
 
     # Remove $srcdir reference from binary (PROJECT_ROOT_PATH is a dev fallback;
