@@ -1,7 +1,7 @@
 pkgbase = pdfsam
 	pkgdesc = A free open source tool to split and merge pdf documents
 	pkgver = 6.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.pdfsam.org/
 	arch = any
 	license = AGPL3
@@ -11,7 +11,7 @@ pkgbase = pdfsam
 	depends = java-runtime=25
 	depends = sh
 	depends = archlinux-java-run
-	depends = java-openjfx
+	depends = java-openjfx=25
 	noextract = pdfsam--linux-x64.tar.gz
 	source = https://github.com/torakiki/pdfsam/releases/download/v6.0.0/pdfsam-basic-6.0.0-linux-x64.tar.gz
 	source = pdfsam
