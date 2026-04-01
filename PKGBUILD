@@ -1,49 +1,50 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-moosex-arrayref'
-pkgver='0.004'
-pkgrel='1'
-pkgdesc="blessed arrayrefs with Moose"
+_author=TOBYINK
+_dist=MooseX-ArrayRef
+pkgname=perl-${_dist@L}
+pkgver=0.005
+pkgrel=1
+pkgdesc='blessed arrayrefs with Moose'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-moose>=2.00'
+)
+makedepends=('perl-extutils-makemaker>=6.17')
+checkdepends=('perl-test-simple')
 options=('!emptydirs')
-depends=('perl>=5.008' 'perl-moose>=2.00')
-makedepends=()
-url='http://search.cpan.org/dist/MooseX-ArrayRef'
-source=('http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/MooseX-ArrayRef-0.004.tar.gz')
-md5sums=('94ac5d40acb1fc6992c70616bfead7b5')
-sha512sums=('1a9458f2461fef9eca374797b8166efcc49b5a2d3e84143f8d6870021fcebf969a49266ea0f411137c50a14631b2dbe5331c1e06e960f1d4ed9f45e73ddca4c8')
-_distdir="MooseX-ArrayRef-0.004"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('8f2180abcbc110bedd9182e4ea3e7852df15f39ae49dc3dadd020b081ffcea08')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
