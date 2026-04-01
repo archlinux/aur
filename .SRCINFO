@@ -1,0 +1,22 @@
+pkgbase = bindzwirn-git
+	pkgdesc = manage permissions for binding to IP ports
+	pkgver = r113.ace9877
+	pkgrel = 1
+	url = https://codeberg.org/bindzwirn/bindzwirn
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = meson
+	makedepends = linux-headers
+	makedepends = clang
+	makedepends = bpf
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = llvm
+	depends = libbpf
+	depends = glibc
+	provides = bindzwirn
+	conflicts = bindzwirn
+	source = git+https://codeberg.org/bindzwirn/bindzwirn.git#branch=next
+	sha256sums = SKIP
+
+pkgname = bindzwirn-git
