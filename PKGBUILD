@@ -1,6 +1,6 @@
 # Maintainer: phlx0 <https://github.com/phlx0>
 pkgname=drift-bin
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Terminal screensaver and idle visualizer with animated scenes"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('drift' 'drift-git')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/phlx0/drift/releases/download/v${pkgver}/drift_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/phlx0/drift/releases/download/v${pkgver}/drift_linux_arm64.tar.gz")
-sha256sums_x86_64=('e2028ebfe42bd9379ec6927467375f583be42f956b631c86720608e1f2d92326')
-sha256sums_aarch64=('b546fac43cf78f37d8f25e1decfae6ed1cd6d5a7f4ffae08985eef62f89834cf')
+sha256sums_x86_64=('3fa4edcadbcab26a324d8095f1aeb00f30860e6ffc3570e39e0696f2097f3534')
+sha256sums_aarch64=('41598a6cfd2a6f64e290b89bc654d45a22ecf0a14ecbd8cb916aa1733ff65dbe')
 
 package() {
     install -Dm755 drift "${pkgdir}/usr/bin/drift"
