@@ -6,7 +6,7 @@ arch=('any')
 url="https://github.com"
 license=('MIT')
 depends=('python' 'git')
-source=("git+https://github.com.git")
+source=("git+https://github.com")
 md5sums=('SKIP')
 
 package() {

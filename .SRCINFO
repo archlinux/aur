@@ -7,7 +7,7 @@ pkgbase = check-command-git
 	license = MIT
 	depends = python
 	depends = git
-	source = git+https://github.com.git
+	source = git+https://github.com
 	md5sums = SKIP
 
 pkgname = check-command-git
