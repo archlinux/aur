@@ -1,12 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=dmitui-git
-pkgver=r17.88b1e3a
-pkgrel=1
+pkgver=r18.81ce7a8
+pkgrel=2
 pkgdesc="TUI version of dmidecode tool"
 arch=('x86_64')
 url="https://github.com/pythops/dmitui"
 license=('GPL-3.0-or-later')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('cargo' 'git')
 provides=(${pkgname::-4})
 conflicts=(${pkgname::-4})
