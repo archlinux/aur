@@ -1,7 +1,3 @@
-pkg/
-src/
-*.pkg.tar
-*.log
-*.tar.gz
-*.tgz
-*.sh
+*
+!PKGBUILD
+!.SRCINFO
