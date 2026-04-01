@@ -2,7 +2,7 @@
 
 # --- 定义模板目录 ---
 TEMPLATE_DIR="/usr/share/shorin-dms-niri-dotfiles"
-FCITX5_TEMPLATE_DIR="/usr/share/shorin-fcitx5-config" # 新增 fcitx5 模板目录
+FCITX5_TEMPLATE_DIR="/usr/share/shorin-fcitx5-config"
 
 BASE_BACKUP_DIR="$HOME/.cache/shorin-dms-niri-dotfiles-backup"
 BACKUP_DIR="$BASE_BACKUP_DIR/$(date +%Y%m%d_%H%M%S)"
@@ -10,8 +10,8 @@ BACKUP_DIR="$BASE_BACKUP_DIR/$(date +%Y%m%d_%H%M%S)"
 # --- 文件同步与备份逻辑 ---
 
 backup_and_copy() {
-    local base_dir="$1"  # 新增参数：来源基础目录
-    local rel_path="$2"  # 相对路径
+    local base_dir="$1"
+    local rel_path="$2"
     local src_path="$base_dir/$rel_path"
     local dest_path="$HOME/$rel_path"
     local dest_dir
@@ -33,9 +33,21 @@ backup_and_copy() {
 process_dir_level() {
     local base_dir="$1"
     local target_dir="$2"
+    local mode="$3" # --- 新增参数：接收当前运行模式 ---
+    
     if [[ -d "$target_dir" ]]; then
         find "$target_dir" -mindepth 1 -maxdepth 1 -print0 | while IFS= read -r -d '' item; do
-            backup_and_copy "$base_dir" "${item#./}"
+            local rel_path="${item#./}"
+            
+            # --- 新增逻辑：如果是 update 模式，跳过 gtk 主题配置 ---
+            if [[ "$mode" == "update" ]]; then
+                if [[ "$rel_path" == ".config/gtk-3.0" || "$rel_path" == ".config/gtk-4.0" ]]; then
+                    echo ">> [跳过更新] 保持当前主题配置不变: ~/$rel_path"
+                    continue
+                fi
+            fi
+            
+            backup_and_copy "$base_dir" "$rel_path"
         done
     fi
 }
@@ -56,9 +68,9 @@ cleanup_old_backups() {
     fi
 }
 
-# 提取出的通用同步逻辑
 sync_from_dir() {
     local source_dir="$1"
+    local mode="$2" # --- 新增参数：接收运行模式 ---
     
     if [[ ! -d "$source_dir" ]]; then
         echo "提示: 找不到模板目录 $source_dir，跳过同步。"
@@ -68,32 +80,28 @@ sync_from_dir() {
     echo ">> 正在同步来源: $source_dir"
     cd "$source_dir" || return
     
-    # 同步根目录下的独立文件
     find . -maxdepth 1 -type f -print0 | while IFS= read -r -d '' f; do
         backup_and_copy "$source_dir" "${f#./}"
     done
     
-    # 同步 .config 下的文件夹
-    process_dir_level "$source_dir" ".config"
+    # 传递模式参数给子目录处理函数
+    process_dir_level "$source_dir" ".config" "$mode"
     
-    # 同步 .local 下的文件夹
     if [[ -d ".local" ]]; then
         find .local -mindepth 1 -maxdepth 1 -type d -print0 | while IFS= read -r -d '' local_sub; do
-            process_dir_level "$source_dir" "${local_sub#./}"
+            process_dir_level "$source_dir" "${local_sub#./}" "$mode"
         done
     fi
 }
 
 sync_dotfiles() {
+    local mode="$1" # --- 新增参数：接收 init 还是 update ---
     mkdir -p "$BACKUP_DIR"
     
-    # 1. 同步主桌面环境配置文件
-    sync_from_dir "$TEMPLATE_DIR"
-    
+    # 将模式参数继续往下传递
+    sync_from_dir "$TEMPLATE_DIR" "$mode"
     echo "----------------------------------------"
-    
-    # 2. 同步 Fcitx5 输入法配置文件
-    sync_from_dir "$FCITX5_TEMPLATE_DIR"
+    sync_from_dir "$FCITX5_TEMPLATE_DIR" "$mode"
     
     cleanup_old_backups
     
@@ -207,13 +215,12 @@ apply_user_configs() {
         ln -sfn /usr/bin/kitty "$HOME/.local/bin/xterm"
     fi
     
-    # 执行隐藏桌面图标的功能
     run_hide_desktop_file
     
     echo "初始化环境配置完成！"
 }
 
-# --- shorin conrtib init ---
+# --- shorin contrib init ---
 shorin_contrib_init() {
     shorin link
 }
@@ -223,21 +230,22 @@ shorin_contrib_init() {
 case "$1" in
     init)
         echo "开始初始化 Shorin DMS Niri 环境..."
-        sync_dotfiles
+        # 传入 init 模式
+        sync_dotfiles "init"
         apply_user_configs
     ;;
     update)
         echo "开始更新 Shorin DMS Niri 配置文件..."
-        sync_dotfiles
+        # 传入 update 模式
+        sync_dotfiles "update"
     ;;
     hide-icons)
-        # 允许用户单独运行隐藏图标功能
         run_hide_desktop_file
     ;;
     *)
         echo "用法: shorindms {init|update|hide-icons}"
         echo "  init       - 首次安装时运行，包含配置文件同步和环境初始化"
-        echo "  update     - 日常更新使用，仅拉取最新的配置文件覆盖到家目录"
+        echo "  update     - 日常更新使用，仅拉取最新的配置文件（跳过已设置的主题）"
         echo "  hide-icons - 仅执行隐藏不需要的桌面图标的操作"
         exit 1
     ;;
