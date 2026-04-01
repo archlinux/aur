@@ -1,0 +1,17 @@
+pkgbase = colossus
+	pkgdesc = Tool for converting ttf fonts into data, aimed at users of embedded systems
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/gavinlyonsrepo/Colossus_LTSM
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = tk
+	depends = python-pillow
+	source = https://github.com/gavinlyonsrepo/Colossus_LTSM/archive/1.0.2.tar.gz
+	sha256sums = 7e938e48c53ea472e840aae736bcde535fde9c53fbb8e40adf2ad9a7efa37cd7
+
+pkgname = colossus
