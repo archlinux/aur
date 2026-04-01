@@ -1,5 +1,5 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
-pkgname=nitrocid-28-lite-git
+pkgname=nitrocid-29-lite-git
 pkgver=v0.1.2.r26.bac0d5fd3
 pkgrel=1
 pkgdesc="Simulates our future-planned kernel"
