@@ -19,13 +19,13 @@ export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
 
 prepare() {
-    cd "$pkgname-cot-cli-v$pkgver"
+    cd "$pkgname-cot-cli-v$pkgver" || exit
 
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname-cot-cli-v$pkgver"
+    cd "$pkgname-cot-cli-v$pkgver" || exit
 
     cargo build --frozen --release --all-features --target-dir target --bin cot
 
@@ -39,12 +39,12 @@ build() {
 }
 
 check() {
-    cd "$pkgname-cot-cli-v$pkgver"
+    cd "$pkgname-cot-cli-v$pkgver" || exit
     cargo check --frozen --release
 }
 
 package() {
-    cd "$pkgname-cot-cli-v$pkgver"
+    cd "$pkgname-cot-cli-v$pkgver" || exit
 
     install -Dm 755 -t "${pkgdir}/usr/bin" target/release/cot
     install -Dm 644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
