@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio-git
-pkgver=0.5.0.r13.g79bba426
+pkgver=0.5.1.r2.g7f60ccfb
 pkgrel=1
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
@@ -20,9 +20,11 @@ depends=(
     'libglvnd'
     'libwebp'
     'nlohmann-json'
+    'dbus'
     'nvidia-utils'  # driver >= 570 required at runtime
     'openimageio'
     'onetbb'
+    'openssl'
     'python'
     'python-packaging'
     'python-tomli'
@@ -40,6 +42,7 @@ makedepends=(
     'libtool'
     'nasm'
     'ninja'
+    'patchelf'
     'pkgconf'
     'python'
     'tar'
@@ -50,8 +53,10 @@ provides=('lichtfeld-studio')
 conflicts=('lichtfeld-studio')
 options=(!lto !debug)  # !lto: CUDA gcc-14 can't link GCC 15 LTO; !debug: mixed vcpkg debug info unusable
 source=("${pkgname}::git+https://github.com/MrNeRF/LichtFeld-Studio.git"
+        'vcpkg::git+https://github.com/microsoft/vcpkg.git'
         'lichtfeld-studio.desktop')
 sha256sums=('SKIP'
+            'SKIP'
             'a07642f575ad454ef6783e0a49d03afc96cc7df14d82db7a9de2ccad045fde65')
 
 pkgver() {
@@ -63,14 +68,9 @@ prepare() {
     cd "$pkgname"
     git submodule update --init --recursive
 
-    # Bootstrap vcpkg for deps without system equivalents
-    if [[ ! -d vcpkg ]]; then
-        git clone https://github.com/microsoft/vcpkg.git
-    fi
+    # Bootstrap vcpkg (makepkg manages clone/fetch via source array)
+    ln -sf "$srcdir/vcpkg" vcpkg
     ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
-
-    # Fix vendored zep missing <cstdint> for GCC 15
-    sed -i '5i #include <cstdint>' external/zep/include/zep/glyph_iterator.h
 
     # Remove $srcdir reference from binary (PROJECT_ROOT_PATH is a dev fallback;
     # production path resolution uses exe/../share/LichtFeld-Studio/ which works with FHS)
@@ -92,6 +92,8 @@ keep = {
     'python3',            # embedded interpreter, version-sensitive
     'nanobind',           # must match vcpkg python version
     'args',               # tiny, no Arch package
+    'nativefiledialog-extended',  # no Arch package
+    'usd',                # OpenUSD, no Arch package
 }
 
 cfg['dependencies'] = [
@@ -139,6 +141,30 @@ package() {
 
     # liblfs_rmlui.so is built but not installed by cmake
     install -Dm755 build/liblfs_rmlui.so -t "$pkgdir/usr/lib/"
+
+    # OpenUSD shared libs (vcpkg-built, not installed by cmake but needed at runtime
+    # by liblfs_mcp.so). Exact transitive closure from readelf NEEDED walk.
+    local _vcpkg_lib="build/vcpkg_installed/x64-linux/lib"
+    local _usd_libs=(
+        libusd_ar libusd_arch libusd_gf libusd_js libusd_kind libusd_pcp
+        libusd_plug libusd_sdf libusd_tf libusd_trace libusd_ts libusd_usd
+        libusd_usdGeom libusd_usdVol libusd_vt libusd_work
+    )
+    for _lib in "${_usd_libs[@]}"; do
+        install -Dm755 "$_vcpkg_lib/$_lib.so" -t "$pkgdir/usr/lib/"
+    done
+
+    # Fix RUNPATH: replace vcpkg build paths with /usr/lib
+    for f in $(find "$pkgdir" -type f \( -name '*.so' -o -name '*.so.*' -o -executable \)); do
+        if readelf -d "$f" 2>/dev/null | grep -q RUNPATH; then
+            local _rpath
+            _rpath=$(patchelf --print-rpath "$f" 2>/dev/null) || continue
+            # Replace srcdir vcpkg paths, keep $ORIGIN and /opt/cuda
+            _rpath=$(echo "$_rpath" | tr ':' '\n' | grep -v "$srcdir" | paste -sd:)
+            [[ -z "$_rpath" ]] && _rpath="/usr/lib"
+            patchelf --set-rpath "$_rpath" "$f"
+        fi
+    done
 
     # Remove bundled uv (users should use system uv)
     rm -f "$pkgdir/usr/bin/uv"
