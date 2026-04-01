@@ -3,7 +3,6 @@
 command_not_found_handle() {
     (
         export TEXTDOMAIN="acnf_arch_handler"
-        export TEXTDOMAINDIR="$(realpath ./locales)"
         . gettext.sh
 
         local RED="\e[31m"
