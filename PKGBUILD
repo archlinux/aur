@@ -1,7 +1,7 @@
 # Maintainer: Yigit Sever <yigit at yigitsever dot com>
 
 pkgname=vulnx
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Modern CLI for exploring vulnerability data with powerful search, filtering, and analysis capabilities"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/projectdiscovery/vulnx"
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('25cac6aeadcc8e5834831ec7a4addc26939c2ae0fab44f1e815b3c26b4e81492')
+sha256sums=('101dcbc93c412b1acfb4b8149660488f42d5c5e4d1b3ff1fd8be3f41c787a4dc')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"

@@ -1,12 +1,12 @@
 pkgbase = vulnx
 	pkgdesc = Modern CLI for exploring vulnerability data with powerful search, filtering, and analysis capabilities
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/vulnx
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = vulnx-2.0.0.tar.gz::https://github.com/projectdiscovery/vulnx/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 25cac6aeadcc8e5834831ec7a4addc26939c2ae0fab44f1e815b3c26b4e81492
+	source = vulnx-2.0.1.tar.gz::https://github.com/projectdiscovery/vulnx/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 101dcbc93c412b1acfb4b8149660488f42d5c5e4d1b3ff1fd8be3f41c787a4dc
 
 pkgname = vulnx
