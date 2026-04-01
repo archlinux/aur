@@ -1,5 +1,5 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
-# Contributor: Anonymous
+# Contributor: Milo Mirate <mmirate@gatech.edu>
 
 _author=GWILLIAMS
 _dist=RDF-Trine
