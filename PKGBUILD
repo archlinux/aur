@@ -3,7 +3,7 @@
 
 pkgname=telegraf-bin
 pkgver=1.38.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source agent for collecting metrics and data on the system; Binary release"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/influxdata/telegraf"
@@ -38,5 +38,6 @@ package() {
   install -Dm755 usr/bin/telegraf "$pkgdir/usr/bin/telegraf"
   install -Dm644 usr/lib/telegraf/scripts/telegraf.service "$pkgdir/usr/lib/systemd/system/telegraf.service"
   install -Dm644 etc/telegraf/telegraf.conf "$pkgdir/etc/telegraf/telegraf.conf"
+  install -Ddm755 etc/telegraf/telegraf.d "$pkgdir/etc/telegraf/telegraf.d"
   install -Dm644 etc/logrotate.d/telegraf "$pkgdir/etc/logrotate.d/telegraf"
 }
