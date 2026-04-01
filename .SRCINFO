@@ -1,0 +1,16 @@
+pkgbase = r3ctl-git
+	pkgdesc = A cmdline tool to control the r3 (for integration in any desktop environment)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/0xFEEDC0DE64/r3ctl
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = qt5-base
+	makedepends = qt5-websockets
+	depends = qt5-base
+	depends = qt5-websockets
+	source = git+https://github.com/0xFEEDC0DE64/r3ctl.git
+	sha256sums = SKIP
+
+pkgname = r3ctl-git
