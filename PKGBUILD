@@ -1,6 +1,6 @@
 # Maintainer: Zeus-Deus <codemux at codemux dot org>
 pkgname=codemux-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="The Agentic Development Environment for Builders"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
 provides=('codemux')
 conflicts=('codemux')
 source=("https://github.com/Zeus-Deus/codemux/releases/download/v${pkgver}/codemux_${pkgver}_amd64.AppImage")
-sha256sums=('845e8eacfb67d622357e5dd05c6ab30c5c2c6e58b15b53fc21d8866a5cb3bd70')
+sha256sums=('c4b74aae4492f89f33e5920442a3e7fa671a4c54d3e9c79358f7740e3801a9bf')
 options=('!strip')
 
 prepare() {
