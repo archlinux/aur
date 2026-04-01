@@ -29,7 +29,7 @@ depends=(
     'ripgrep'
     'ffmpeg'
 )
-makedepends=('git' 'nodejs' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+makedepends=('git' 'nodejs' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-pytest')
 optdepends=(
     'python-telegram-bot: Telegram gateway support'
     #'python-discord-py: Discord gateway support' python-discord-git?
