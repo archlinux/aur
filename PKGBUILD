@@ -3,29 +3,29 @@
 
 _pkgname=fernflower
 pkgname=$_pkgname-git
-pkgver=r812.7261c6b7
+pkgver=261.20362.25.r20.gd426f6e
 pkgrel=1
 pkgdesc='An analytical decompiler for Java'
 arch=('any')
 url='https://github.com/fesh0r/fernflower'
 license=('Apache-2.0')
 depends=('java-runtime>=8' 'bash')
-makedepends=('git' 'apache-ant' 'java-runtime<=17')
+makedepends=('git' 'apache-ant')
 source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $_pkgname || exit
+  git describe --long --tags --abbrev=7 | sed 's/^idea\///;s/^pycharm\///;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_pkgname
+  cd $_pkgname || exit
   ./gradlew jar
 }
 
 package() {
-  cd $_pkgname
+  cd $_pkgname || exit
   install -Dm644 "build/libs/$_pkgname.jar" "$pkgdir/usr/share/java/$_pkgname/$pkgname.jar"
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -d "$pkgdir/usr/bin"
