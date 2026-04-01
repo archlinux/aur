@@ -92,7 +92,7 @@ noextract=(
   "crossguid-$_crossguid_version.tar.gz"
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
-  "libudfread-$_libudfread_version.tar.gz"
+  "libudfread-$_libudfread_version.tar.bz2"
 )
 b2sums=('SKIP'
         '2f503d3ab767094958f7ec10b4ad11ffd02665deee571c8f3c739bef5fc7e2ff84babc5a3fdee638dc095f896b72fe3ce65e6b688674cb5f7b7b77190992688c'
@@ -178,7 +178,7 @@ build() {
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz"
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
-    -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
+    -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.bz2"
     -DAPP_RENDER_SYSTEM=$_renderer
   )
 

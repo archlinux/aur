@@ -68,7 +68,7 @@ pkgbase = kodi-git
 	noextract = crossguid-ca1bf4b810e2d188d04cb6286f957008ee1b7681.tar.gz
 	noextract = fstrcmp-0.7.D001.tar.gz
 	noextract = flatbuffers-23.3.3.tar.gz
-	noextract = libudfread-1.2.0.tar.gz
+	noextract = libudfread-1.2.0.tar.bz2
 	options = !lto
 	source = git+https://github.com/xbmc/xbmc.git#branch=master
 	source = libdvdcss-1.4.3-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.3-Next-Nexus-Alpha2-2.tar.gz
