@@ -1,6 +1,6 @@
 pkgbase = pda
 	pkgdesc = personal digital assistant! a key-value store with rich template support
-	pkgver = 2025.52_XMAS
+	pkgver = 2026.14
 	pkgrel = 1
 	url = https://github.com/llywelwyn/pda
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pda
 	makedepends = go
 	options = !debug
 	options = strip
-	source = pda-2025.52_XMAS.tar.gz::https://github.com/llywelwyn/pda/archive/refs/tags/2025.52_XMAS.tar.gz
-	sha256sums = dabb7c9a2b791f34f63bae84162e15231d74b65ed894ff21b1ab90321e5b956b
+	source = pda-2026.14.tar.gz::https://github.com/llywelwyn/pda/archive/refs/tags/2026.14.tar.gz
+	sha256sums = 22e4d893e3214ee85089281fb9cea5744d9d41bb2e1d2470ee960b93d65afab2
 
 pkgname = pda
