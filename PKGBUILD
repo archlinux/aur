@@ -1,9 +1,9 @@
-# Maintainer: guglovich <jinseoyeon@archlinux>
-# Created with assistance from Claude (Anthropic)
+# Maintainer: guglovich <guglovich164@gmail.com>
+# Created with assistance from Qwen 3.5 Plus (Alibaba).
 
 pkgname=pake-cli
-pkgver=3.10.0
-pkgrel=2
+pkgver=3.11.2
+pkgrel=1
 pkgdesc="Turn any webpage into a desktop app with one command (Tauri/Rust-based CLI)"
 arch=('any')
 url="https://github.com/tw93/Pake"
@@ -19,7 +19,7 @@ options=('!debug')
 _pkgname=pake-cli
 
 source=("https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
-b2sums=('dd276a06495287433ca4da483f7098b3367c76f825fe830c86f1342a16a7e3d9b69a80cab4d81f3f99ef4bfce11c6bff92aac91239054310fb8993abf53be3f0')
+b2sums=('c8c7bfcb4247108bcdf1e42395341ca03efb336f5579249ec2104d72b3b35142c0213756e3a3de452e44d60d959befe59bd7e5ea1192b6ccf8cc0eab76d21501')
 
 prepare() {
     bsdtar -xf "${_pkgname}-${pkgver}.tgz"
