@@ -1,0 +1,39 @@
+diff --git a/gui/abstractbytearrayview_p.cpp b/gui/abstractbytearrayview_p.cpp
+index df9f8f1ed..b82226298 100644
+--- a/gui/abstractbytearrayview_p.cpp
++++ b/gui/abstractbytearrayview_p.cpp
+@@ -1178,17 +1178,6 @@ bool AbstractByteArrayViewPrivate::event(QEvent* event)
+         controller()->handleShortcutOverrideEvent(keyEvent);
+         break;
+     }
+-    case QEvent::MouseMove:
+-    case QEvent::MouseButtonPress:
+-    case QEvent::MouseButtonRelease: {
+-        // discard any events synthesized from touch input
+-        auto* const mouseEvent = static_cast<QMouseEvent*>(event);
+-        if (mouseEvent->device()->type() != QInputDevice::DeviceType::Mouse) {
+-            event->accept();
+-            return true;
+-        }
+-        break;
+-    }
+     case QEvent::PaletteChange: {
+         if (mCursorVisible) {
+             updateCursors();
+@@ -1281,16 +1270,6 @@ bool AbstractByteArrayViewPrivate::viewportEvent(QEvent* event)
+ 
+         return true;
+     }
+-    case QEvent::MouseMove:
+-    case QEvent::MouseButtonPress:
+-    case QEvent::MouseButtonRelease: {
+-        // discard any events synthesized from touch input
+-        auto* const mouseEvent = static_cast<QMouseEvent*>(event);
+-        if (mouseEvent->device()->type() != QInputDevice::DeviceType::Mouse) {
+-            event->accept();
+-            return true;
+-        }
+-    }
+     default:
+         break;
+     }

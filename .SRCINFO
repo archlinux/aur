@@ -1,0 +1,32 @@
+pkgbase = okteta-qt6-git
+	pkgdesc = KDE hex editor for viewing and editing the raw data of files (Qt6 git version)
+	pkgver = 0.26.25.r1525.g910c779
+	pkgrel = 1
+	url = https://apps.kde.org/okteta/
+	arch = x86_64
+	license = GPL-2.0
+	license = GPL-3.0
+	makedepends = ninja
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-5compat
+	depends = kxmlgui
+	depends = kcolorscheme
+	depends = kcoreaddons
+	depends = kcrash
+	depends = kconfig
+	depends = kio
+	depends = kxmlgui
+	depends = kconfigwidgets
+	depends = ki18n
+	depends = kcompletion
+	depends = kdbusaddons
+	depends = kparts
+	depends = kwidgetsaddons
+	source = git+https://github.com/KDE/okteta.git#branch=work/kossebau/kf6
+	source = fix-mouse-on-wayland.diff
+	sha256sums = SKIP
+	sha256sums = 5bf6b20aed21bcfdba29949d6392e667d5001bb9b7c34dd94cdd58e5dd2ccd5c
+
+pkgname = okteta-qt6-git
