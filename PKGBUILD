@@ -2,7 +2,7 @@
 
 _pkgname=sidef
 pkgname=sidef-git
-pkgver=26.01.r60.g2de57497
+pkgver=26.04.r0.g734e970d
 pkgrel=1
 pkgdesc="A modern object-oriented programming language (-git version)."
 arch=('any')
@@ -16,8 +16,8 @@ options=('!emptydirs')
 makedepends=('git')
 depends=(
     'perl>=5.22.0' 'perl-data-dump' 'perl-math-gmpq>=0.45' 'perl-math-gmpz>=0.39' 'perl-math-mpfr>=3.36' 'perl-math-mpc'
-    'perl-math-prime-util-gmp>=0.52' 'perl-term-readline-gnu' 'perl-algorithm-combinatorics' 'perl-algorithm-loops'
-    'perl-math-prime-util>=0.73'
+    'perl-math-prime-util-gmp>=0.53' 'perl-term-readline-gnu' 'perl-algorithm-combinatorics' 'perl-algorithm-loops'
+    'perl-math-prime-util>=0.74'
 )
 optdepends=(
     'perl-forks: for better threading support'
