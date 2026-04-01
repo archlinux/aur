@@ -4,11 +4,11 @@
 
 pkgname=meta-package-manager
 pkgver=6.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A wrapper around all package managers'
 url='https://kdeldycke.github.io/meta-package-manager/'
 makedepends=(git uv)
-depends=(python python-boltons python-click-extra python-cyclonedx-lib python-more-itertools python-packageurl python-spdx-tools python-tomli-w python-xmltodict)
+depends=(python python-boltons python-click-extra python-extra-platforms python-cyclonedx-lib python-more-itertools python-packageurl python-spdx-tools python-tomli-w python-tomli python-xmltodict python-backports)
 checkdepends=(python-pytest python-pytest-cov python-pytest-randomly python-pytest-xdist)
 optdepends=('apt: support for apt packages'
             'rust: support for Rust packages'
