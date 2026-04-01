@@ -1,0 +1,14 @@
+pkgbase = stm32cubemx2
+	pkgdesc = STM32CubeMX2 - new flavor of STM32CubeMX tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.st.com/en/development-tools/stm32cubemx.html
+	arch = x86_64
+	license = custom:SLA0048
+	makedepends = gendesk
+	options = !strip
+	options = !debug
+	source = local://stm32cubemx2-1.0.0-X64-Linux-installer
+	sha256sums = 46d8133c28d4d0d1b4f09c384f5cfbcb2faabfa42aa99da7236409f4c3a7106e
+
+pkgname = stm32cubemx2
