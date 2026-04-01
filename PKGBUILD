@@ -1,4 +1,5 @@
 # Maintainer: Suletta Mercury <hazfen@proton.me>
+# hii suletta here uh i love my wife nekomimiofficial aka akiko <3
 
 pkgname=nekofs-git
 _pkgname=nekofs
