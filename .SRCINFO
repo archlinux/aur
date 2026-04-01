@@ -1,0 +1,18 @@
+pkgbase = psysonic-bin
+	pkgdesc = Desktop music player for Subsonic API-compatible servers (Navidrome, Gonic, etc.) (pre-built binary)
+	pkgver = 1.26.1
+	pkgrel = 1
+	url = https://github.com/Psychotoxical/psysonic
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = alsa-lib
+	depends = gtk3
+	depends = openssl
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	provides = psysonic
+	conflicts = psysonic
+	source_x86_64 = psysonic-bin-1.26.1.deb::https://github.com/Psychotoxical/psysonic/releases/download/app-v1.26.1/Psysonic_1.26.1_amd64.deb
+	sha256sums_x86_64 = 00d82ba74f9f209bf73c70e11ad373cb75e56b028c8c5b2df60ccb3c36ba0942
+
+pkgname = psysonic-bin
