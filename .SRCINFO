@@ -1,7 +1,7 @@
 pkgbase = ghost-chat
 	pkgdesc = A Standalone chat overlay for Twitch, Kick, YouTube and other streaming platforms.
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Enubia/ghost-chat
 	arch = any
 	license = LicenseRef-DBAD
@@ -17,6 +17,6 @@ pkgbase = ghost-chat
 	source = ghost-chat-4.1.0::git+https://github.com/Enubia/ghost-chat#tag=v4.1.0
 	source = modifiers_linux.go
 	sha256sums = ece5eadff67001fea02e098c271fe5d05dd911014e407f901fd8ea8b617aef80
-	sha256sums = b7f2400b0e956887b1e0d8cf4419c82726617503142b81b5c7ef3acbb1fc6798
+	sha256sums = 131035c2816a154359af542ff002e53f48419311e6ab083eb9f944a5e2f0d24c
 
 pkgname = ghost-chat

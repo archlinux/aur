@@ -3,7 +3,7 @@ pkgname=ghost-chat
 _pkgname=GhostChat
 pkgver=4.1.0
 _nodeversion=24
-pkgrel=1
+pkgrel=2
 pkgdesc="A Standalone chat overlay for Twitch, Kick, YouTube and other streaming platforms."
 arch=('any')
 url="https://github.com/Enubia/ghost-chat"
@@ -26,7 +26,7 @@ source=(
     "modifiers_linux.go"
 )
 sha256sums=('ece5eadff67001fea02e098c271fe5d05dd911014e407f901fd8ea8b617aef80'
-            'b7f2400b0e956887b1e0d8cf4419c82726617503142b81b5c7ef3acbb1fc6798')
+            '131035c2816a154359af542ff002e53f48419311e6ab083eb9f944a5e2f0d24c')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -82,7 +82,7 @@ build() {
     go build -tags production -trimpath -buildvcs=false -ldflags="-w -s -X main.version=v4.0.1" -o bin/ghost-chat
 }
 package() {
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
