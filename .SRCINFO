@@ -1,0 +1,24 @@
+pkgbase = tauri-wrap-git
+	pkgdesc = Wrap any URL as a Tauri desktop app on Arch Linux
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/egt-cs50/tauri-wrap
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = webkit2gtk
+	depends = gtk3
+	depends = librsvg
+	depends = openssl
+	depends = curl
+	depends = python
+	depends = python-pillow
+	depends = nodejs
+	depends = rust
+	provides = tauri-wrap
+	conflicts = tauri-wrap
+	source = tauri-wrap-git::git+https://github.com/egt-cs50/tauri-wrap.git
+	sha256sums = SKIP
+
+pkgname = tauri-wrap-git
