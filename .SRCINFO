@@ -1,0 +1,17 @@
+pkgbase = malign-dkms
+	pkgdesc = Kernel module providing aligned memory mappings
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ureeves/malign
+	arch = any
+	license = GPL-2.0-only
+	makedepends = linux-headers
+	depends = dkms
+	source = https://github.com/ureeves/malign/archive/refs/tags/v0.1.0.tar.gz
+	source = malign-dkms.conf
+	source = dkms.conf
+	sha256sums = 2c9ed427fabbea157ebf6e125c19c6dd615c2fa6e13195fc9ae7dfd6a724cb24
+	sha256sums = 39e6a7ee90462a23228b829cd7138444db5b88b35cbe23699f35882f4c4c29fb
+	sha256sums = 9da212125ec90af239371690cdc904d6dff6831cac1d09cc214e717d527a6325
+
+pkgname = malign-dkms
