@@ -1,0 +1,23 @@
+diff --git a/SConstruct b/SConstruct
+index e1a1a9d..dca7663 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -42,6 +42,9 @@ else:
+ 	#unix
+ 
+ 	env = Environment(CPPPATH=['#/globals','#gui','#.'],CPPFLAGS=['-DANSIC_LIBS_ENABLED'],ENV=os.environ);
++	env.Append(CFLAGS=os.environ['CFLAGS'])
++	env.Append(CXXFLAGS=os.environ['CXXFLAGS'])
++	env.Append(LINKFLAGS=os.environ['LDFLAGS'])
+ 	errorval=os.system("sdl-config --version");
+ 
+ 	if (errorval):
+@@ -65,7 +68,7 @@ else:
+ 
+ 	env["DEBUG_CXXFLAGS"]=['-g3','-Wall']
+ 	env["DEBUG_LINKFLAGS"]=[]
+-	env["RELEASE_CXXFLAGS"]=['-O2','-ffast-math']
++	env["RELEASE_CXXFLAGS"]=[]
+ 	env["RELEASE_LINKFLAGS"]=[]
+ 	env["PROFILE_CXXFLAGS"]=['-pg','-g3','-Wall']
+ 	env["PROFILE_LINKFLAGS"]=['-pg']
