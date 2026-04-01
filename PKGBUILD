@@ -3,7 +3,7 @@
 pkgname=browser-use-cli
 _pyname=browser_use
 pkgver=0.12.5
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for browser automation with AI agents'
 arch=(any)
 url='https://github.com/browser-use/browser-use'
@@ -25,6 +25,7 @@ depends=(
   python-pillow
   python-psutil
   python-pydantic
+  python-pydantic-settings
   python-pypdf
   python-pyotp
   python-reportlab

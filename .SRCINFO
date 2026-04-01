@@ -1,7 +1,7 @@
 pkgbase = browser-use-cli
 	pkgdesc = CLI for browser automation with AI agents
 	pkgver = 0.12.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/browser-use/browser-use
 	arch = any
 	license = MIT
@@ -25,6 +25,7 @@ pkgbase = browser-use-cli
 	depends = python-pillow
 	depends = python-psutil
 	depends = python-pydantic
+	depends = python-pydantic-settings
 	depends = python-pypdf
 	depends = python-pyotp
 	depends = python-reportlab
