@@ -1,12 +1,12 @@
 pkgbase = perl-task-catalyst
 	pkgdesc = All you need to start with Catalyst
 	pkgver = 4.02
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Task-Catalyst
+	pkgrel = 2
+	url = https://metacpan.org/release/BOBTFISH/Task-Catalyst-4.02
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	makedepends = perl-test-www-mechanize-catalyst
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker>=6.30
+	depends = perl
 	depends = perl-catalyst-action-rest
 	depends = perl-catalyst-actionrole-acl
 	depends = perl-catalyst-authentication-credential-http
@@ -39,9 +39,7 @@ pkgbase = perl-task-catalyst
 	depends = perl-local-lib
 	depends = perl-starman
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Task-Catalyst-4.02.tar.gz
-	md5sums = 34719bd8b82392e01bd06388241cd72f
-	sha512sums = 5874d2dffdec143482549196f0bae20d3cc2bd2344ff69ee9f1daf5cd9145addf94dcbaad3ca353d7025cbdff2b59bc1c8095a3c74e98a030f6a1c8ea4f40f13
+	source = https://cpan.metacpan.org/authors/id/B/BO/BOBTFISH/Task-Catalyst-4.02.tar.gz
+	sha256sums = 9acd7b65fe09c4874aa72145ad341e66f0cac49c656e1a62f18206c615d9706d
 
 pkgname = perl-task-catalyst
-
