@@ -1,0 +1,3 @@
+[perl-types-uri]
+source = "cpan"
+cpan = "Types-URI"
