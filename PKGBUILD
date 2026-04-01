@@ -2,7 +2,7 @@
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=aicommits
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='A CLI that writes your git commit messages for you with AI'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(nodejs)
 makedepends=(npm)
 checkdepends=(git)
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('90977f337e2bad54aaa1dc62dc8d0d3720571b0da7a2e43e2870d38140cf47b23e9f449b01995390bc8663f1406dccdbbefb0de51190a97b62d0813c06c8d28c')
+b2sums=('46ca16557688c6264e758d7bb364a5b30e73fffae14ced1ce46c4744f8fb681e4565d002ba783d7dd78ab51c4aae80bed318b9285e777ae1976beb16dcd45da6')
 
 prepare() {
     cd $pkgname-$pkgver
