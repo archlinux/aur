@@ -1,7 +1,7 @@
 pkgbase = simutrans-pak64.japan
 	pkgdesc = Low resolution graphics set for Simutrans, with a japan theme
 	pkgver = 123.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.simutrans.com/
 	arch = any
 	license = custom:Freeware

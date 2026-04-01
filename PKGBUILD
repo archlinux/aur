@@ -2,7 +2,7 @@
 
 pkgname=simutrans-pak64.japan
 pkgver=123.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Low resolution graphics set for Simutrans, with a japan theme"
 arch=('any')
 url="https://www.simutrans.com/"
