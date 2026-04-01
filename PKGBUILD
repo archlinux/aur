@@ -2,7 +2,7 @@
 
 pkgname=logcli-bin
 _pkgname=logcli
-pkgver=v3.3.0
+pkgver=v3.7.1
 pkgrel=1
 pkgdesc="LogCLI allows users to run LogQL queries against a Loki server"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=("logcli")
 url="https://github.com/grafana/loki"
 license=('AGPL')
 source=("https://github.com/grafana/loki/releases/download/${pkgver}/${_pkgname}-linux-amd64.zip")
-sha256sums=('ae4d854e06242cfd6f17fa8d059b869d3c643bb7e9b7c9aa4cf0513f447667c4')
+sha256sums=('26aee3878f09ec453df1a4bb84c34a8345072e6e36fdaff539f397c263cddf18')
 
 package() {
     install -Dm755 ${srcdir}/logcli-linux-amd64 ${pkgdir}/usr/bin/logcli
