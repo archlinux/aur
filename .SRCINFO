@@ -1,0 +1,16 @@
+pkgbase = clc-bin
+	pkgdesc = A command-line tool for converting between configuration file formats
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alchemy/clc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = clc
+	conflicts = clc
+	source_x86_64 = clc-bin-0.1.0-x86_64::https://github.com/alchemy/clc/releases/download/v0.1.0/clc-linux-amd64
+	sha256sums_x86_64 = 06dc48e400b32bf5c4ddfcfff5d6056a5c522d54cdc3889f01ffe60af75df6c7
+	source_aarch64 = clc-bin-0.1.0-aarch64::https://github.com/alchemy/clc/releases/download/v0.1.0/clc-linux-arm64
+	sha256sums_aarch64 = 575692781f263b37cc3b44704680e191b920de6ba31bd6d051355e1be91b5f33
+
+pkgname = clc-bin
