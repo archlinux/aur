@@ -1,50 +1,58 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-catalyst-plugin-session-state-cookie'
-pkgver='0.17'
-pkgrel='1'
-pkgdesc="Maintain session IDs using cookies."
+_author=HAARG
+_dist=Catalyst-Plugin-Session-State-Cookie
+pkgname=perl-${_dist@L}
+pkgver=0.18
+pkgrel=1
+pkgdesc='Maintain session IDs using cookies.'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-catalyst-plugin-session>=0.27'
+    'perl-catalyst-runtime>=5.80005'
+    'perl-moose'
+    'perl-mro-compat'
+    'perl-namespace-autoclean'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=(
+    'perl-catalyst-runtime'
+    'perl-http-cookies'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl-catalyst-plugin-session>=0.27' 'perl-catalyst-runtime' 'perl-mro-compat' 'perl-namespace-autoclean')
-makedepends=('perl-moose')
-url='http://search.cpan.org/dist/Catalyst-Plugin-Session-State-Cookie'
-source=('http://search.cpan.org/CPAN/authors/id/M/MS/MSTROUT/Catalyst-Plugin-Session-State-Cookie-0.17.tar.gz')
-md5sums=('f2a2d43d80777ceb2687b9e682cf5c76')
-sha512sums=('29040a1b6be47152b1604d20d5adcfc38e7b23ec4ab2fa8b8897e64ae294d4a220b0ab53bad69ecc5c0b7ac2982001a032f4fd93ca3f55e1588d4e5ab3721ddc')
-_distdir="Catalyst-Plugin-Session-State-Cookie-0.17"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('e9b1c7b2b96c194f87a5f77e1449717077c70ffc67a4bfc29f026c9ee2e07bea')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
