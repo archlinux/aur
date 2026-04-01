@@ -6,7 +6,7 @@ _shellextension='gnome-shell-extension'
 _uuid='gtk4-ding@smedius.gitlab.com'
 
 pkgname="${_shellextension}-${_extname}"
-pkgver=100.18
+pkgver=100.19
 pkgrel=1
 _pkgver="Gtk4-${pkgver}"
 pkgdesc="GTK4 desktop icons extension fork for GNOME Shell 49, 50, with Desktop Widget support"
@@ -23,7 +23,7 @@ optdepends=(
 conflicts=("${_shellextension}-${_basename}" "${_shellextension}-${_basename}-git" "${_shellextension}-desktop-icons")
 provides=("${_shellextension}-${_basename}" "${_shellextension}-${_basename}-git" "${_shellextension}-desktop-icons")
 
-_commit=687ad1ce6c62cb8d70eae4cc5454c9ddee381e67 # tags/Gtk4-100.18
+_commit=f0c0a9d6acd2fc7c936d574ad8a96e62c3369647 # tags/Gtk4-100.19
 source=("git+https://gitlab.com/smedius/desktop-icons-ng.git#commit=$_commit")
 sha256sums=('SKIP')
 
