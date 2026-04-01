@@ -5,7 +5,7 @@ pkgbase = agent-one-bin
 	url = https://github.com/The-Best-Codes/agent-one
 	install = agent-one-bin.install
 	arch = x86_64
-	license = MIT
+	license = LicenseRef-proprietary
 	depends = cairo
 	depends = desktop-file-utils
 	depends = gdk-pixbuf2
@@ -20,6 +20,6 @@ pkgbase = agent-one-bin
 	options = !strip
 	options = !debug
 	source_x86_64 = https://github.com/The-Best-Codes/agent-one/releases/download/agent-one-v0.0.9/AgentOne_0.0.9_amd64.deb
-	sha256sums_x86_64 = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	sha256sums_x86_64 = d3c9e244957416d31c1c0a390188c091112c78ec05115c1fed75313be16cdc48
 
 pkgname = agent-one-bin

@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="AgentOne is a powerful AI agent that gives you freedom to choose your models and control your data."
 arch=('x86_64')
 url="https://github.com/The-Best-Codes/agent-one"
-license=('MIT')
+license=('LicenseRef-proprietary')
 depends=(
   'cairo'
   'desktop-file-utils'
@@ -22,7 +22,7 @@ conflicts=('agent-one')
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/agent-one-v${pkgver}/AgentOne_${pkgver}_amd64.deb")
-sha256sums_x86_64=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums_x86_64=('d3c9e244957416d31c1c0a390188c091112c78ec05115c1fed75313be16cdc48')
 
 package() {
   tar -xf data.tar.gz -C "${pkgdir}"
