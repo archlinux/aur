@@ -1,0 +1,3 @@
+[perl-iri]
+source = "cpan"
+cpan = "IRI"

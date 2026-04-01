@@ -1,0 +1,20 @@
+pkgbase = perl-iri
+	pkgdesc = Internationalized Resource Identifiers
+	pkgver = 0.013
+	pkgrel = 1
+	url = https://metacpan.org/release/GWILLIAMS/IRI-0.013
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker>=6.59
+	makedepends = perl-test-simple
+	makedepends = perl-try-tiny
+	makedepends = perl-uri
+	depends = perl-moo
+	depends = perl-moox-handlesvia
+	depends = perl-type-tiny>=0.008
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/G/GW/GWILLIAMS/IRI-0.013.tar.gz
+	sha256sums = 5c024975f2a6c20b50fc2b31fe36cc276ffd53960dfbc9b0517552bc8866da00
+
+pkgname = perl-iri
