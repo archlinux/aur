@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=HubDev
+Comment=Hybrid Development Environment Manager
+Exec=/usr/bin/hubdev
+Icon=hubdev
+Type=Application
+Categories=Development;IDE;
+StartupWMClass=hubdev
+Keywords=development;php;laravel;docker;
