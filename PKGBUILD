@@ -2,7 +2,7 @@
 # Maintainer: kunchenguid <kun@kunchenguid.com>
 
 pkgname='gsh-bin'
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='A battery-included, POSIX-compatible, generative shell'
 url='https://github.com/kunchenguid/gsh'
@@ -12,13 +12,13 @@ provides=('gsh')
 conflicts=('gsh')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/kunchenguid/gsh/releases/download/v${pkgver}/gsh_Linux_arm64.tar.gz")
-sha256sums_aarch64=('f4f804eb0f8579b02e426fe064eaa98b1590daf4c3bd4db74884646bdd6432ad')
+sha256sums_aarch64=('78b243476d5fa22340117a81179808c2aa263540d4b8bbbcf02169c28ccf5bd4')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/kunchenguid/gsh/releases/download/v${pkgver}/gsh_Linux_i386.tar.gz")
-sha256sums_i686=('6d90001bfa3da647482ab596d2da7170d9de3f686b184b0ab7a57fdc7e090f1f')
+sha256sums_i686=('2275cd17038dc23117c3dd419b69e77ce9aaf3aa764dcd968bd96e56e24b5281')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/kunchenguid/gsh/releases/download/v${pkgver}/gsh_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('ec1641ead1e9468ed529a94c4893f502e5f49a0edab0aaa3ea4c58f261ab1402')
+sha256sums_x86_64=('225b384734bc392f8badf53fe5d7c3998d9bd3c0d07820e13d14b4d63a85c53e')
 
 package() {
   # bin
