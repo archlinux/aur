@@ -37,6 +37,6 @@ build() {
 package() {
     cd "${pkgname%%-*}-${pkgver}"
 
-    install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl17"
-    install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh17"
+    install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl-17"
+    install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh-17"
 }
