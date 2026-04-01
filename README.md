@@ -53,11 +53,34 @@ The Elders command strict adherence to modern crafting:
 
    *Arch Linux users may seek the `voix` package directly from the AUR Archives.*
 
+## First Invocation (Getting Started)
+
+To begin your journey with Voix, you must first configure the PAM pact. Create a new scroll at `/etc/pam.d/voix` and inscribe the following:
+
+```
+#%PAM-1.0
+auth       include      system-auth
+account    include      system-auth
+password   include      system-auth
+session    include      system-auth
+```
+
+With the pact sealed, you may now invoke Voix.
+
 ## The Runes of Law (Configuration)
 
 The heart of Voix is defined in `/etc/voix.conf`.
 
 `[ordain|shun] [trust] <ident> [mask <target>] [rite <incantation> [args ...]]`
+
+**Deconstructing the Runes:**
+
+*   `ordain|shun`: The primary incantation. `ordain` grants power, while `shun` denies it.
+*   `trust`: (Optional) A sacred boon that allows the user to execute incantations without re-authenticating for a time.
+*   `<ident>`: The user or group to apply the rule to. Groups must be prefixed with a colon (`:`), like `:wizards`.
+*   `mask <target>`: (Optional) The target user to execute the incantation as. Defaults to `root`, the highest of all.
+*   `rite <incantation>`: (Optional) The specific incantation to be executed. If not specified, the user can execute any incantation.
+*   `[args ...]`: (Optional) Arguments for the incantation.
 
 **An Offering to the Config:**
 
@@ -67,6 +90,9 @@ ordain trust :wheel
 
 # The Initiate may gaze into the system state without a token of proof
 ordain trust initiate mask root rite /usr/bin/systemctl
+
+# The apprentice may only restart the mystic server
+ordain apprentice mask root rite /usr/bin/systemctl restart magic.service
 
 # Exiled souls shall remain shunned
 shun exiled
@@ -83,6 +109,16 @@ voix <incantation> [args...]
 - `-u USER, --user USER`: Invoke as a specific entity.
 - `-n, --non-interactive`: Fail the cast immediately if blood (password) is required.
 - `-C, --clear`: Forsake any lingering tokens of power instantly.
+
+## Consulting the Oracle (Troubleshooting)
+
+**Problem:** "PAM authentication failed"
+
+**Solution:** The pact is broken. Ensure that the PAM scroll at `/etc/pam.d/voix` is correctly inscribed.
+
+**Problem:** "Permission denied"
+
+**Solution:** The runes of law are not in your favor. Consult the `/etc/voix.conf` scroll to ensure you are worthy of the incantation.
 
 ## The Architect's Code
 

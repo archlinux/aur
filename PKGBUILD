@@ -1,7 +1,7 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 pkgname=voix
 _pkgname=Voix # The case-sensitive name of the repository from git
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication"
 arch=('x86_64')
@@ -26,7 +26,11 @@ build() {
 package() {
     cd "$_pkgname"
     DESTDIR="$pkgdir" cmake --install build
-    # Ensure restrictive config permissions
-    install -o root -g root -m 0600 "$pkgdir/etc/voix.conf"
-    setcap 'CAP_AUDIT_WRITE,CAP_DAC_READ_SEARCH+eip' "$pkgdir/usr/bin/voix"
+
+    # The cmake install script sets capabilities, but we want setuid root.
+    # First, remove the capabilities.
+    setcap -r "$pkgdir/usr/bin/voix"
+    # Then, set the setuid bit. The permissions are already 755 from cmake. We will be safe and apply other expected items.
+    chown root:root "$pkgdir/usr/bin/voix"
+    chmod u+s "$pkgdir/usr/bin/voix"
 }
