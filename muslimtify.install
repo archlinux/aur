@@ -1,6 +1,9 @@
 post_install() {
-    echo "==> Run the following to enable the prayer time daemon:"
-    echo "      muslimtify daemon install"
+    echo "==> Installing.."
+    muslimtify daemon install
+
+    echo "==> Done!, Print the status with:"
+    echo "      muslimtify daemon status"
 }
 
 post_upgrade() {
