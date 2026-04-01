@@ -2,8 +2,8 @@
 
 pkgname=zerochan-downloader-bin
 _pkgname=ZerochanDownloader
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="A clean, native desktop client for browsing and downloading from Zerochan"
 arch=('x86_64')
 url="https://github.com/jp319/ZerochanDownloader"
@@ -14,7 +14,7 @@ conflicts=('zerochan-downloader')
 depends=('glibc' 'hicolor-icon-theme' 'libx11' 'libxrender' 'libxtst' 'libxi' 'alsa-lib')
 
 source=("${url}/releases/download/v${pkgver}/zerochan-downloader_${pkgver}_amd64.deb")
-sha256sums=('7f1ad1d3580bb68cfac3ae31db6468d14e07bcd246e7900288371ad413439668')
+sha256sums=('78de9bb3b46c6d17372f49c2fe312cb25def43232bfa283cce8e5f6c63c6a0d8')
 
 package() {
     msg2 "Extracting application data..."
@@ -52,3 +52,4 @@ Type=Application
 Categories=Network;Utility;
 EOF
 }
+
