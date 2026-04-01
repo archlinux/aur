@@ -1,0 +1,3 @@
+[perl-dbix-connector]
+source = "cpan"
+cpan = "DBIx-Connector"

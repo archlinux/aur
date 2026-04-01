@@ -1,0 +1,15 @@
+pkgbase = perl-dbix-connector
+	pkgdesc = Fast, safe DBI connection and transaction management
+	pkgver = 0.60
+	pkgrel = 1
+	url = https://metacpan.org/release/ARISTOTLE/DBIx-Connector-0.60
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-simple
+	depends = perl-dbi>=1.605
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/DBIx-Connector-0.60.tar.gz
+	sha256sums = ea783137c54b60ceac04ce5aa962427b21209e5593165ec7d1dde7cbe5d237b4
+
+pkgname = perl-dbix-connector
