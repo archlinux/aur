@@ -1,0 +1,3 @@
+[perl-catalyst-model-dbic-schema]
+source = "cpan"
+cpan = "Catalyst-Model-DBIC-Schema"
