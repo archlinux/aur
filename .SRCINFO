@@ -1,22 +1,33 @@
 pkgbase = perl-catalyst-controller-actionrole
-	pkgdesc = Apply roles to action instances (DEPRECATED)
-	pkgver = 0.16
+	pkgdesc = (DEPRECATED) Apply roles to action instances
+	pkgver = 0.17
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/Catalyst-Controller-ActionRole
+	url = https://metacpan.org/release/ETHER/Catalyst-Controller-ActionRole-0.17
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	depends = perl-catalyst-action-rest>=0.74
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-catalyst-action-rest>=0.74
+	checkdepends = perl-catalyst-runtime
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-findbin
+	checkdepends = perl-lib
+	checkdepends = perl-moose
+	checkdepends = perl-namespace-clean
+	checkdepends = perl-parent
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-module-build-tiny>=0.039
 	depends = perl-catalyst-runtime
 	depends = perl-class-load
 	depends = perl-moose
 	depends = perl-moosex-types
+	depends = perl-namespace-autoclean
+	depends = perl-scalar-list-utils
 	depends = perl-string-rewriteprefix>=0.004
-	depends = perl-namespace-clean
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/Catalyst-Controller-ActionRole-0.16.tar.gz
-	md5sums = d0b64f0a3720c9a738181c917f7bcc20
-	sha512sums = 270cc17e62a25e5c0ca0100a7f986610d7a452e95f571821f57adedf72681220b80e1278ed0978989cf2387b259ac790450142e8e6d2afacc0cf409cebf9f7b5
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Catalyst-Controller-ActionRole-0.17.tar.gz
+	sha256sums = 21f100392d5ff80d477a391786be28e26ab4ffa0ab3a2f6b74eee3e9803182b0
 
 pkgname = perl-catalyst-controller-actionrole
-
