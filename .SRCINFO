@@ -1,0 +1,31 @@
+pkgbase = perl-test-www-selenium
+	pkgdesc = Perl Client for the Selenium Remote Control test tool
+	pkgver = 1.36
+	pkgrel = 1
+	url = https://metacpan.org/release/MATTP/Test-WWW-Selenium-1.36
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-file-temp
+	checkdepends = perl-findbin
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-mock-lwp
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.30
+	depends = perl-base
+	depends = perl-carp
+	depends = perl-data-dumper
+	depends = perl-exporter
+	depends = perl-http-message
+	depends = perl-io
+	depends = perl-libwww
+	depends = perl-namespace-clean
+	depends = perl-test-simple
+	depends = perl-time-hires
+	depends = perl-uri
+	depends = perl>=5.8.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MA/MATTP/Test-WWW-Selenium-1.36.tar.gz
+	sha256sums = ea93d97f6c0be0232f8b07ac0584dc3cd13e7a191dd03cca639ade02f44b3b69
+
+pkgname = perl-test-www-selenium
