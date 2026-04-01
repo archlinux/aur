@@ -1,50 +1,61 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-web-simple'
-pkgver='0.031'
-pkgrel='1'
-pkgdesc="A quick and easy way to build simple web applications"
+_author=MSTROUT
+_dist=Web-Simple
+pkgname=perl-${_dist@L}
+pkgver=0.033
+pkgrel=1
+pkgdesc='A quick and easy way to build simple web applications'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-encode'
+    'perl-exporter>=5.57'
+    'perl-http-body>=1.22'
+    'perl-moo>=0.009014'
+    'perl-plack>=0.9968'
+    'perl-scalar-list-utils'
+    'perl-strictures>=1'
+    'perl-syntax-keyword-gather>=1.001'
+    'perl-warnings-illegalproto'
+    'perl>=5.6.0'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=(
+    'perl-data-dumper-concise>=2.020'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl-data-dumper-concise>=2.020' 'perl-moo>=0.009014' 'perl-plack>=0.9968' 'perl-syntax-keyword-gather>=1.001' 'perl>=5.006' 'perl-strictures>=1' 'perl-warnings-illegalproto')
-makedepends=()
-url='https://metacpan.org/release/Web-Simple'
-source=('http://search.cpan.org/CPAN/authors/id/M/MS/MSTROUT/Web-Simple-0.031.tar.gz')
-md5sums=('33768f6481fc08e8740c7a9f439a39af')
-sha512sums=('41bec4a8ef6a80ed65ac12a42504988c9546a180a8e74815c52066382989a2ce9cf3da2a593a83f63c783756f505a228247aabfc4b6e500c830d56ba01dd634f')
-_distdir="Web-Simple-0.031"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('dd9d610885579a1ad6eed02b9b2d590ae2c9614c92fd32aa3c7dc4ae0dd062d5')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
