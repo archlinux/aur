@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ai-browser-git
 _pkgname=AI-Browser
-pkgver=1.6.8.r1.g04ba726
-_electronversion=40
+pkgver=1.6.9.r0.g69ffdda
+_electronversion=41
 _nodeversion=24
 pkgrel=1
 pkgdesc='Client app for ChatGPT, Gemini, Claude, Phind, Perplexity, Genspark and Google AI Studio with Monaco Editor integration.(Use system-wide electron)'
@@ -63,24 +63,25 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-    } >> .npmrc
+    local HOME="${srcdir}/.electron-gyp"
+    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+    export NPM_CONFIG_MAXSOCKETS=32
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        } >> .npmrc
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+        }
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    # Remove existing node_modules and package-lock.json to ensure clean state
+    rm -rf node_modules package-lock.json
+    # Fix vite version in package.json for electron-vite@5.0.0 compatibility
+    sed -i 's/"vite": "\^8\.[0-9]*\.[0-9]*"/"vite": "^6.0.0"/g' package.json
+    sed -i 's/"@vitejs\/plugin-react": "\^6\.[0-9]*\.[0-9]*"/"@vitejs\/plugin-react": "^4.0.0"/g' package.json
     NODE_ENV=development    npm add -D node-gyp
     NODE_ENV=development    npm install --legacy-peer-deps
 }
