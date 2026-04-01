@@ -7,5 +7,7 @@ pkgbase = imaster-image-tool
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = libpng
+	source = git+https://github.com/bhmsgame06/Imaster-image-tool
+	sha256sums = SKIP
 
 pkgname = imaster-image-tool
