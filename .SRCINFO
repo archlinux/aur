@@ -1,17 +1,17 @@
 pkgbase = yts-streaming-bin
 	pkgdesc = An electronJS based desktop app to stream or play yts and torrent movies in desktop without downloading.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.0.0
-	pkgrel = 3
+	pkgver = 4.0.1
+	pkgrel = 1
 	url = https://www.yts-streaming.com/
 	arch = x86_64
 	license = LicenseRef-unknown
 	makedepends = fuse2
 	depends = electron29
-	provides = yts-streaming=4.0.0
+	provides = yts-streaming=4.0.1
 	conflicts = yts-streaming
-	source = yts-streaming-4.0.0.AppImage::https://github.com/iambpn/YTS-Streaming/releases/download/4.0.1/yts-streaming-4.0.0.AppImage
+	source = yts-streaming-4.0.1-x86_64.AppImage::https://github.com/iambpn/YTS-Streaming/releases/download/4.0.1/yts-streaming-4.0.0.AppImage
 	source = yts-streaming.sh
 	sha256sums = 5b413be87da4fcff4643cfaaf55c700f693d1ef0fad613456fb07078433aea49
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = yts-streaming-bin
