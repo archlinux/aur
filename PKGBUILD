@@ -5,7 +5,7 @@ _pkgname=roborev
 pkgname=${_pkgname}-bin
 pkgdesc="Continuous background code review database for agents, work faster and smarter with accountability for every line of generated code."
 
-pkgver=0.49.0
+pkgver=0.50.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -19,16 +19,15 @@ license=('MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glibc' 'libgcc')
 
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
 sha256sums=('c0992197c4fa1f2fc02050d67223edaddf88c1eef9d82c52ef2f33c06243d849'
-            '75486ea0af9309140ca6e2c401d7e67bea8f4892344e5707f6394dc5e83dfc44')
-sha256sums_x86_64=('9ea497d82bf1b82a75d37675001d070c40c3343227aee308cd044b5abec7691c')
-sha256sums_aarch64=('672bd666d1fc0e1266652af33ca9543bb103bf4a7d41030234fbb01a82caf27e')
+            'f7440e20d28e4a11ed8ede489f90405e038b4da4d9281bcb1540bf9cde5d9c71')
+sha256sums_x86_64=('7a16ff4165082fd3a2ceb6b7cbc60d380345960a26094558618da5d4d578da2b')
+sha256sums_aarch64=('d3f6e1cacaf6355e0b4e7d8b315c61d4f2a930ad1b52483b0bf491485d2f8cf6')
 
 
 package() {
