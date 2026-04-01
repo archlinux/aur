@@ -6,7 +6,7 @@ pkgname=xwaylandvideobridge-git
 _pkgname=xwaylandvideobridge
 pkgver=0.4.0_r243.g1a8d5af
 pkgrel=1
-pkgdesc="A tool to make it easy to stream Wayland windows and screens to Xwayland applications that don't have native pipewire support."
+pkgdesc="A tool to make it easy to stream Wayland windows and screens to Xwayland applications that don't have native pipewire support"
 arch=(x86_64)
 url='https://invent.kde.org/system/xwaylandvideobridge'
 license=('GPL-2.0-or-later')
@@ -51,4 +51,7 @@ build() {
 # Build Package
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  # Install license (LICENSES/ dir follows REUSE spec)
+  install -Dm644 "${pkgname%-git}/LICENSES/GPL-2.0-or-later.txt" \
+    "$pkgdir/usr/share/licenses/$pkgname/GPL-2.0-or-later.txt"
 }
