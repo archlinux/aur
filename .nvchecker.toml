@@ -1,0 +1,3 @@
+[perl-moosex-markasmethods]
+source = "cpan"
+cpan = "MooseX-MarkAsMethods"
