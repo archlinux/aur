@@ -1,6 +1,6 @@
 pkgbase = drata-agent
 	pkgdesc = The Drata Agent is a light-weight tray-application that runs in the background, reporting important read-only data to Drata about your machine’s state for compliance tracking.
-	pkgver = 3.8.0
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://github.com/drata/drata-agent
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = drata-agent
 	options = !emptydirs
 	source = drata-agent
 	sha512sums = 0f692de3645f30c9925a61e3a6044270f6ec662fb2ba654ed9902bd491b4ed7a54572b212bf4a3eee3f856c0ec1c28a59309a67652a1bb006c65c8ca70cd6bac
-	source_x86_64 = drata-agent-3.8.0.deb::https://github.com/drata/agent-releases/releases/download/3.8.0/Drata-Agent-linux.deb
-	sha512sums_x86_64 = 505eeb647821783f76049eba7c57d8ed61e576dbe0b5dec400a05e5b92a0ad854725ec7df1c1d6b0fc8f7d2d35938dd5917f7dba6438e04b9ffc96bb8ee8fb2a
+	source_x86_64 = drata-agent-3.9.0.deb::https://github.com/drata/agent-releases/releases/download/3.9.0/Drata-Agent-linux.deb
+	sha512sums_x86_64 = e9dd8971435110646f3e85c35921b5ad85cf50d1d493bc1e41ba1f2813d9bf6eba09273b9ef26f191e73f992319a0049c14c8df5a25835a703194b85c87f7299
 
 pkgname = drata-agent
