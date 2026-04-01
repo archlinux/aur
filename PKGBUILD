@@ -2,7 +2,7 @@
 
 pkgname=libastal-cava-git
 _pkgname=cava
-pkgver=r617.12fa0fb
+pkgver=r862.41b5029
 pkgrel=2
 provides=(astal-cava libastal-cava libastal-cava.so=0-64)
 pkgdesc="Audio visaulization library using cava."
