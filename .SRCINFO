@@ -1,0 +1,17 @@
+pkgbase = homelabcheck
+	pkgdesc = Fast CLI health check for self-hosted homelab infrastructure — Docker, disk, memory, and load
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Wtmartin8089/homelabcheck
+	arch = x86_64
+	license = MIT
+	depends = docker
+	optdepends = docker: container health checks
+	provides = homelabcheck
+	conflicts = homelabcheck-git
+	source = homelabcheck-0.1.0::https://github.com/Wtmartin8089/homelabcheck/releases/download/v0.1.0/homelabcheck
+	source = LICENSE::https://github.com/Wtmartin8089/homelabcheck/raw/main/LICENSE
+	sha256sums = f8cfa8a3aa2cce3abca2a91f8781a9d17b9c08db24585f68f0649faee98ca469
+	sha256sums = SKIP
+
+pkgname = homelabcheck
