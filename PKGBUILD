@@ -23,6 +23,11 @@ pkgver() {
     git describe --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
+prepare() {
+    cd "$_pkgname"
+    git submodule update --init --recursive
+}
+
 package() {
     cd "$_pkgname"
     make DESTDIR="$pkgdir" PREFIX=/usr install-bin
