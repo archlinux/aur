@@ -1,0 +1,21 @@
+pkgbase = zetapm
+	pkgdesc = Zeta Package Manager - 一个多功能包管理器，支持 AUR、Debian 包转换和 APT 源
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ZhongHongSoftware/zpm
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = curl
+	depends = jq
+	depends = git
+	depends = pacman
+	depends = tar
+	depends = gzip
+	depends = python3
+	optdepends = devtools: 用于在 clean chroot 中构建
+	optdepends = namcap: 用于检查 PKGBUILD
+	source = zpm-1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = zpm
