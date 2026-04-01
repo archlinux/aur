@@ -9,6 +9,7 @@ url="https://github.com/lazykern/mprisence"
 license=("MIT")
 depends=("gcc-libs")
 makedepends=("cargo")
+options=('!lto')
 conflicts=("mprisence-git")
 install=mprisence.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz"

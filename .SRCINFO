@@ -9,6 +9,7 @@ pkgbase = mprisence
 	makedepends = cargo
 	depends = gcc-libs
 	conflicts = mprisence-git
+	options = !lto
 	source = mprisence-1.5.1.tar.gz::https://github.com/lazykern/mprisence/archive/v1.5.1.tar.gz
 	source = mprisence.install
 	source = mprisence.service
