@@ -1,7 +1,7 @@
 # Maintainer: kvdxsn1k <kvdxsn1k@users.noreply.github.com>
 pkgname=lyrx
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Big pixel-art lyrics in your terminal, synced to Spotify"
 arch=('any')
 url="https://github.com/kvdxsn1k/lyrx"
