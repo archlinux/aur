@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-git
 pkgver=r4.0dabc1d
-pkgrel=2
+pkgrel=3
 pkgdesc="Shorin DMS Niri desktop environment (Dependencies & Dotfiles)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -57,7 +57,7 @@ pkgver() {
 package() {
     cd "$srcdir/shorin-dms-niri"
 
-    local target_dir="$pkgdir/usr/share/shorin-dms-niri-dotfiles"
+    local target_dir="$pkgdir/usr/share/shorin-dms-niri"
     install -dm755 "$target_dir"
     
     # 1. 拷贝 dotfiles
