@@ -21,7 +21,7 @@ export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
 
 prepare() {
-    cd "afl.rs"
+    cd "afl.rs" || exit
 
     git submodule init
     git config submodule.cargo-afl/AFLplusplus.url "$srcdir/AFLplusplus"
@@ -31,13 +31,13 @@ prepare() {
 }
 
 build() {
-    cd "afl.rs"
+    cd "afl.rs" || exit
 
     cargo build --frozen --release --all-features --target-dir target
 }
 
 package() {
-    cd "afl.rs"
+    cd "afl.rs" || exit
 
     install -Dm 755 -t "${pkgdir}/usr/bin" target/release/cargo-afl
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
