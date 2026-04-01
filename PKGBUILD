@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/benjamimgois/opengrid"
 license=('GPL-3.0-or-later')
 depends=('python' 'python-pyqt6' 'python-pyte' 'python-paramiko' 'python-pysnmp' 'python-standard-telnetlib' 'qt6-serialport' 'picocom' 'sudo' 'openssh' 'samba' 'iperf3' 'traceroute' 'mtr' 'networkmanager' 'nmap')
-optdepends=('python-speedtest-cli: Speed Test via speedtest.net'
+optdepends=('python-speedtest-cli: speedtest.net speed test support'
             'python-pyftpdlib: built-in FTP server support'
             'tigervnc: VNC remote desktop viewer'
             'freerdp: RDP remote desktop client (provides wlfreerdp for Wayland)')
@@ -29,14 +29,14 @@ package() {
     # Install main script
     install -Dm755 opengrid "${pkgdir}/usr/bin/opengrid"
 
-    # Install SVG icon (scalable)
-    install -Dm644 assets/icons/opengrid_icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/opengrid.svg"
-
     # Install pre-built PNG sizes
     for size in 16 32 48 64 128 256 512; do
         install -Dm644 "assets/icons/opengrid-${size}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/opengrid.png"
     done
+
+    # Install author photo for About dialog
+    install -Dm644 assets/photo.png "${pkgdir}/usr/share/opengrid/photo.png"
 
     # Install UI icons (sidebar and misc) — all SVGs
     for icon in assets/icons/*.svg; do
@@ -44,8 +44,8 @@ package() {
     done
 
     # Install vendor icons
-    for vendor in default cisco huawei juniper fortinet d-link h3c brocade datacom aruba linux mikrotik; do
-        install -Dm644 "assets/vendors/${vendor}.svg" "${pkgdir}/usr/share/opengrid/vendors/${vendor}.svg"
+    for vendor in assets/vendors/*.svg; do
+        install -Dm644 "${vendor}" "${pkgdir}/usr/share/opengrid/vendors/$(basename ${vendor})"
     done
 
     # Install desktop file
