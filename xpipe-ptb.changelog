@@ -1,2 +1,4 @@
-- Fix SSH connections failing when a custom SSH version was installed into the PATH from a directory with spaces
-- Fix selected category being reset on restart
+- Fix old incus/LXD entries not launching correctly
+- Fix rare shell init race condition
+- Fix Windows rendering performance
+- Fix various NullPointers
