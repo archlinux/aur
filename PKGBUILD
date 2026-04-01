@@ -14,8 +14,8 @@ makedepends=('git')
 source=("git+$url")
 sha256sums=('SKIP')
 replaces=('ananicy-rules-git')
-provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 backup=(etc/ananicy.d/ananicy.conf)
 
 pkgver() {
