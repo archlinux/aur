@@ -1,3 +1,431 @@
+# 1.24.1
+
+- Added `--context-max` CLI flag for setting the context limit from the command line, complementing the existing `/context-max` command and `NANOCODER_CONTEXT_LIMIT` env variable.
+
+- Removed time from the system prompt to keep the KV cache more stable across requests. Thanks to @initialxy. Closes #415.
+
+- Task tool results are no longer displayed as compacted results during ensuring task progress remains visible in the conversation.
+
+- User input now uses the same text wrapping as assistant messages for a more consistent chat appearance.
+
+- Improved `search_file_contents` tool robustness.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder.
+
+# 1.24.0
+
+- **BREAKING**: Removed legacy `~/.agents.config.json` config file support. Nanocoder no longer checks the home directory for a dot-prefixed config file. If you are still using this path, move your config to the platform-specific directory: `~/Library/Preferences/nanocoder/agents.config.json` (macOS), `~/.config/nanocoder/agents.config.json` (Linux), or `%APPDATA%\nanocoder\agents.config.json` (Windows).
+
+- **BREAKING**: Removed legacy `~/.nanocoder-preferences.json` preferences file support. Preferences are now only loaded from the platform-specific directory (e.g. `~/Library/Preferences/nanocoder/nanocoder-preferences.json` on macOS) or a project-level `nanocoder-preferences.json` in your working directory. To migrate, move your existing file: `mv ~/.nanocoder-preferences.json ~/Library/Preferences/nanocoder/nanocoder-preferences.json`
+
+- **BREAKING**: Removed deprecated array format for MCP server configuration. Only the object format is now supported: `{ "mcpServers": { "serverName": { ... } } }`. If you are using the array format in `.mcp.json`, convert each array entry to an object key using the server name.
+
+- **BREAKING**: Removed `agents.config.json` fallback for MCP server loading. Global MCP servers must now be configured in `~/.config/nanocoder/.mcp.json` (Linux), `~/Library/Preferences/nanocoder/.mcp.json` (macOS), or `%APPDATA%\nanocoder\.mcp.json` (Windows). Provider configuration still uses `agents.config.json`.
+
+- **BREAKING**: Removed `auth` and `reconnect` fields from MCP server configuration. The `auth` field was never functional (both HTTP and WebSocket transports logged warnings that it was unsupported). The `reconnect` field was never implemented. Use `headers` for HTTP authentication instead (e.g. `"headers": { "Authorization": "Bearer $TOKEN" }`).
+
+- Added `/resume` command for restoring previous chat sessions. Sessions are automatically saved and can be resumed from an interactive selector. Sessions are filtered by the current project directory by default, with an `--all` flag to show all sessions. Thanks to @yashksaini-coder.
+
+- Added `--provider` and `--model` CLI flags for non-interactive provider and model specification, allowing CI/CD scripts and automation to skip the setup wizard. Closes #394. Thanks to @james2doyle.
+
+- Added `NANOCODER_PROVIDERS` environment variable support for configuring providers without config files, useful for Docker containers and CI environments. Closes #307. Thanks to @kaustubha07.
+
+- Added GitHub Copilot as a provider template with OAuth device flow authentication and `/copilot-login` command. Thanks to @yashksaini-coder.
+
+- Added MLX Server provider template for local Apple Silicon inference. Closes #318.
+
+- Added parallel tool execution allowing the model to run multiple independent tool calls concurrently for faster task completion.
+
+- Added compact mode toggle via `Ctrl+L` in chat input to collapse the conversation view.
+
+- Added VS Code fork support for IDE integration (Cursor, Windsurf, VSCodium, etc.). Thanks to @kapsner.
+
+- Added Aurora Borealis theme.
+
+- Added notice when the model falls back to XML tool calls, informing users they can switch to a model with native tool calling support.
+
+- Adopted AI SDK human-in-the-loop pattern for tool approval. Tool confirmation now uses the SDK's built-in `tool-approval-request`/`tool-approval-response` flow instead of manual tool-call splitting, improving reliability and reducing code complexity.
+
+- Simplified tool processing by removing double XML parsing and the JSON tool call parser. Tool call parsing now happens in a single place and only on the XML fallback path for non-tool-calling models.
+
+- Restructured documentation into a Nextra-compatible `docs/` folder structure with nested sections for getting-started, configuration, and features. The README is now a concise landing page linking to the full docs.
+
+- Refactored app-utils into focused handler files, extracted shared utilities, unified mode state, and stubbed commands for cleaner architecture.
+
+- Fix: `alwaysAllow` field in MCP server configuration was silently dropped during config loading due to a missing field mapping. MCP tools configured with `alwaysAllow` now correctly skip confirmation prompts as documented.
+
+- Fix: Provider timeouts are now respected in non-interactive mode. Thanks to @kaustubha07. Closes #402.
+
+- Fix: Non-interactive mode no longer exits prematurely when the prompt or response contains the word "error".
+
+- Fix: Invalid CLI arguments no longer trigger the setup wizard. Thanks to @james2doyle.
+
+- Fix: Installation detector no longer falsely reports Homebrew on macOS when `HOMEBREW_PREFIX` is set but Nanocoder was installed via npm. Closes #392.
+
+- Fix: Preserve draft message when navigating through history with arrow keys.
+
+- Fix: `fetch_url` display now truncates to fit terminal width.
+
+- Fix: Validation failures no longer incorrectly prompt for tool confirmation.
+
+- Fix: Various error message and `execute_bash` formatter improvements.
+
+- Fix: Safe process metrics refactored into shared module to prevent duplicate declarations. Thanks to @cleyesode.
+
+- Security: Package audit failures resolved.
+
+- Dependency updates: `ai` 6.0.116, `@ai-sdk/anthropic` 3.0.58, `@ai-sdk/google` 3.0.33, `@ai-sdk/openai-compatible` 2.0.30, `@modelcontextprotocol/sdk` 1.27.1, `undici` 7.24.0, `cheerio` 1.2.0, `dotenv` 17.3.1, `wrap-ansi` 10.0.0.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder.
+
+# 1.23.0
+
+- Added `ask_user` tool for interactive question prompts. The LLM can now present the user with a question and selectable options during a conversation, returning their answer to guide the next step. Uses a global question-queue to bridge the tool's suspended Promise with the Ink UI component.
+
+- Added per-project cron scheduler for running AI tasks on a schedule. Schedule files live in `.nanocoder/schedules/` as markdown prompts with YAML frontmatter, managed via the `/schedule` command (`create`, `add`, `remove`, `list`, `logs`, `start`). Includes cron expression parsing, sequential job queue with deduplication, dedicated scheduler mode with auto-accept, and run history logging.
+
+- Added centralized graceful shutdown system. A `ShutdownManager` now coordinates cleanup of all services (VS Code server, MCP client, LSP manager, health monitor, logger) on exit, preventing orphaned child processes and dangling connections. Configurable via `NANOCODER_DEFAULT_SHUTDOWN_TIMEOUT` env variable. Closes #239.
+
+- Added file operation tools: `delete_file`, `move_file`, `create_directory`, and `copy_file`. Reorganized existing file tools into a `file-ops/` directory group.
+
+- Added readline keybind support to text input. Replaces `ink-text-input` with a custom `TextInput` component supporting Ctrl+W (delete word), Ctrl+U (kill to start), Ctrl+K (kill to end), Ctrl+A/E (jump to start/end), and Ctrl+B/F (move char). Closes #354.
+
+- Added `/context-max` command and `NANOCODER_CONTEXT_LIMIT` env variable for manual context length override on models not listed on models.dev. Resolution order: session override > env variable > models.dev > null. Closes #379.
+
+- Added `/ide` command matching the `--vscode` flag for toggling VS Code integration from within a session.
+
+- Added persistent context percentage display in the mode indicator, replacing the previous context checker component.
+
+- Added `include` and `path` parameters to `search_file_contents` tool for scoping searches to specific file patterns and directories.
+
+- Added Kanagawa theme.
+
+- Refactored the skills system into custom commands, eliminating redundant parsers, loaders, and test suites. Commands gain optional skill-like fields (`tags`, `triggers`, `estimated-tokens`, `resources`) for auto-injection and relevance scoring. The `/skills` command is removed and its functionality absorbed into `/commands` with new subcommands (`show`, `refresh`). Thanks to @yashksaini-coder for the initial skills implementation in PR #370.
+
+- V2 type-safe tool system overhaul with defensive parsing. Implements a three-tiered defense system for handling chaotic LLM outputs, preventing crashes from non-string responses and enabling robust self-correction. Includes universal type safety with `ensureString()`, response normalization, confidence system inversion, ghost echo deduplication, and AI SDK contract fixes. Local LLM experience is now significantly more stable. Thanks to @cleyesode. Closes #362.
+
+- Fix: XML parser now uses optimistic matching for consistency with the JSON parser. Thanks to @cleyesode.
+
+- Fix: Bash tool now emits progress immediately on stdout/stderr data instead of waiting for the 500ms timer, so fast-completing commands show streaming output.
+
+- Fix: Recognize `127.0.0.1` as a local server URL and tighten error classification. Ollama users configuring `127.0.0.1` instead of `localhost` no longer experience misleading connection errors. Replaced broad `connect` substring match with specific error codes to prevent misclassifying "disconnect"/"reconnect". Closes #366.
+
+- Fix: Skip loading git tools when not inside a git repository.
+
+- Fix: Strip ANSI escape codes before running regex matching in tool formatters.
+
+- Fix: Gap in layout during auto-compact.
+
+- Fix: Hardened `write_file` validation and MCP client type safety.
+
+- Fix: Use local `TextInput` component instead of the missing `ink-text-input` package.
+
+- Fix(mcp): Use Python-based `mcp-server-fetch` instead of non-existent npm package.
+
+- Security: Semgrep and audit fixes.
+
+- Dependency updates: `ai` 6.0.95, `@ai-sdk/anthropic` 3.0.46, `@ai-sdk/google` 3.0.30, `undici` 7.22.0, `sonic-boom` 4.2.1.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
+# 1.22.5
+
+- Added MiniMax Coding Plan and GLM-5 to provider templates in the configuration wizard.
+
+- Fix: Model context limit lookups now use models.dev as the primary source instead of the hardcoded fallback table. This prevents stale hardcoded values from overriding accurate upstream data. The hardcoded table remains as an offline-only fallback. Also fixes greedy key matching where shorter keys like `mixtral` would match before `mixtral:8x22b`, and replaces first-match name lookups with scored matching for more accurate results.
+
+- Fix: Binary and excessively large files tagged with `@` no longer pollute the LLM context window with unreadable content.
+
+- Fix: Diff preview panel no longer steals terminal focus from the active input.
+
+- Fix: Reduced verbosity of the `string_replace` error formatter output.
+
+- Fix: Reject null and non-object arguments in JSON tool calls, preventing formatter crashes from malformed tool call arguments. Thanks to @cleyesode.
+
+- Fix: Restored `formatError` usage for validation and execution errors.
+
+- Dependency updates: `ink-gradient` 4.0.0, `react` 19.2.4, `@nanocollective/get-md` 1.1.1, `@ai-sdk/anthropic` 3.0.43, `pino` 10.3.1, `@types/react` 19.2.14.
+
+# 1.22.4
+
+- Security: Tool validators now run inside the AI SDK's auto-execution loop. Previously, tools with `needsApproval: false` (like `read_file`) were auto-executed by the AI SDK's `generateText` without any path validation, allowing the model to read or write files outside the project directory using absolute or `~` paths. Validators are now wrapped into each tool's `execute` function at registration time, ensuring validation runs in all code paths.
+
+- Security: Reject home directory shorthand (`~`) in file path validation. Paths starting with `~` are not expanded by Node.js and could bypass project boundary checks.
+
+- Fix: Tab characters in code blocks within assistant messages now render at 2-space width instead of the terminal default of 8 spaces. This prevents long lines from wrapping prematurely and eliminates the blocky visual effect on messages containing indented code.
+
+- Fix: `normalizeIndentation` no longer short-circuits when the minimum indent is 0. Previously, if any line in the context window had zero indentation, raw tab characters passed through to the terminal unchanged, rendering at 8-space width in `string_replace` diff previews.
+
+# 1.22.3
+
+- Fix: Removed tool call deduplication from JSON parser that silently dropped duplicate tool calls, breaking the 1:1 pairing between tool calls and results expected by AI SDK. This caused "Tool result is missing for tool call" errors that would end the agent's turn prematurely. Consolidated three overlapping regex patterns into a single comprehensive pattern to prevent duplicate matches. Thanks to @cleyesode.
+
+- Fix: Added missing capture group for arguments in the consolidated JSON tool call regex pattern, which caused inline tool calls to have empty arguments instead of actual parsed values.
+
+- Fix: When the model batched read-only and write tools in a single response (e.g. `read_file` + `string_replace`), the auto-executed read tools would recurse into the next conversation turn, abandoning the confirmation-needed write tools. This left orphaned `tool_use` blocks without matching `tool_result` entries, triggering intermittent "Tool result is missing for tool call" errors with the Anthropic provider.
+
+- Dependency updates: `@ai-sdk/openai-compatible` 2.0.27, `undici` 7.21.0, `@biomejs/biome` 2.3.14, `@types/vscode` 1.109.0, `@types/node` 25.2.1.
+
+# 1.22.2
+
+- Fix: Markdown tables in assistant messages were rendered at full terminal width instead of accounting for the message box border and padding, causing broken box-drawing characters when lines wrapped.
+
+# 1.22.1
+
+- Added native Anthropic SDK support via `@ai-sdk/anthropic` package. The Anthropic Claude provider template now uses `sdkProvider: 'anthropic'` for direct API integration instead of the OpenAI-compatible wrapper.
+
+- Fixed Kimi Code provider template to use the native `@ai-sdk/anthropic` SDK with correct base URL and configuration passthrough.
+
+- Fix: User message token count now reflects the full assembled content including pasted content and tagged file contents, instead of only counting the placeholder text.
+
+- Fix: Removed aggressive tool call deduplication that silently dropped duplicate tool call IDs and identical function signatures. This could cause "Tool result is missing for tool call" errors with providers like Anthropic that strictly validate tool call/result pairing.
+
+# 1.22.0
+
+- Added `/explorer` command for interactive file browsing with tree view navigation, file preview with syntax highlighting, multi-file selection, search mode, and VS Code integration. Closes #298.
+
+- Added task management tools (`create_task`, `list_tasks`, `update_task`, `delete_task`) with `/tasks` slash command for models to track and manage progress on complex work. Tasks persist in `.nanocoder/tasks.json` and are automatically cleared on CLI boot and `/clear` command.
+
+- Added `/settings` command for interactive command menu to configure UI theme and shapes without editing config files directly.
+
+- Added `sdkProvider` configuration option for native Google Gemini support. This fixes the "missing thought_signature" error with Gemini 3 models by using the `@ai-sdk/google` package. Closes #302.
+
+- Added custom headers support in provider configuration. This enables authentication through tunnels like Cloudflare. Thanks to @nicolalamacchia.
+
+- Added Kimi Code provider template in configuration wizard.
+
+- Added new themes with updated user input and user message styling for better visual clarity and consistency.
+
+- Added token count display after messages and completion message to provide visibility into context usage throughout conversations.
+
+- Refactored git tools for better consistency, improved error handling, standardized parameter handling across all git operations, and enhanced user feedback messages.
+
+- Added line truncation in `write_file` and `string_replace` formatters to prevent excessive output from files with very long lines and neaten user experience on narrow terminals.
+
+- Fix: `/usage` command crash when context data is unavailable.
+
+- Fix: String replace error handling for edge cases.
+
+- Fix: Multiple security audit issues resolved.
+
+- Fix: Various styling improvements across components.
+
+- Fix: Dependency lockfile issues resolved.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
+# 1.21.0
+
+- Added `/compact` command for context compression with `--restore` flag support to restore messages from backup. The command now includes auto-compact functionality, consistent token counting, and improved compression for very long messages. Thanks to @Pahari47.
+
+- Added hierarchical configuration loading for both provider configs and MCP servers. Local project configurations now properly override global settings, and Claude Code's object-style MCP configuration format is now supported. Thanks to @Avtrkrb.
+
+- Added `alwaysAllow` configuration option for MCP servers to auto-approve trusted tools without confirmation prompts. Thanks to @namar0x0309.
+
+- Added automatic tool support error detection and retry mechanism. Models that don't support function calling are now detected and requests automatically retry without tools. Thanks to @ThomasBrugman.
+
+- Added `--version` and `--help` CLI command options for quick reference. Thanks to @Avtrkrb.
+
+- Added `/quit` command as an alternative way to exit Nanocoder. Thanks to @Avtrkrb.
+
+- Added `/nanocoder-shape` command for selecting branding font styles.
+
+- Added keyboard shortcuts documentation to README.
+
+- Renamed `/setup-config` to `/setup-providers` for clearer naming.
+
+- Improved `/mcp` command modal with better colors and title formatting. Thanks to @Avtrkrb.
+
+- Improved `/help` command title heading styling. Thanks to @Avtrkrb.
+
+- Added CLI test harness for non-interactive mode testing. Thanks to @akramcodez.
+
+- Added comprehensive test suite for tool error detection. Thanks to @ThomasBrugman.
+
+- Added `DisableToolModels` documentation to README. Thanks to @ThomasBrugman.
+
+- Fix: Resolved bash tool keeping processes alive after command completion.
+
+- Fix: Corrected log directory paths and enabled file logging in production.
+
+- Fix: Improved deprecation message for MCP config to display correct config directory instead of hardcoded Linux path. Thanks to @Avtrkrb.
+
+- Fix: Resolved shell command security scanning alerts built from environment values. Thanks to @Avtrkrb.
+
+- Fix: Security audit dependencies updated.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
+# 1.20.4
+
+- Fixed configuration wizard blocking users from entering HTTP URLs for remote Ollama servers. The wizard now allows any valid HTTP/HTTPS URL without requiring local network addresses.
+
+- Fixed `@modelcontextprotocol/sdk` dependency version to resolve npm audit security issue.
+
+- Fixed TLS certificate errors when using `uvx` MCP servers behind corporate proxies. Nanocoder now automatically adds `--native-tls` to uvx commands to use system certificates instead of rustls.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
+# 1.20.3
+
+- Fixed `search_file_contents` returning excessive tokens by truncating long matching lines to 300 characters. Previously, searching in files with long lines (minified JS, base64 data, etc.) could return ~100k tokens for just 30 matches.
+
+- Added validation to `read_file` to reject minified/binary files (lines >10,000 characters). These files consume excessive tokens without providing useful information to the model. Use `metadata_only=true` to still check file properties.
+
+- Fixed `web_search` result count display showing mismatched values (e.g., "10 / 5 results"). The formatter now correctly uses the same default as the search execution.
+
+- Improved `web_search` and `fetch_url` formatter layouts to match `execute_bash` style with consistent column alignment and spacing.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
+# 1.20.2
+
+- Added preview generation to git workflow tools (`git-status-enhanced`, `git-smart-commit`, `git-create-pr`) showing results before execution.
+
+- Fixed `string-replace` line number display in result mode - now correctly shows line numbers of new content after replacement.
+
+- Added hammer icon (⚒) to git tool formatters for visual consistency.
+
+- Improved formatting in `bash-progress`, `execute-bash`, and `read-file` tools with better spacing and layout.
+
+- Simplified `string-replace` validation logic and removed redundant success messages.
+
+- Fix: Running `/init --force` added duplication to `AGENTS.md`.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
+# 1.20.1
+
+Fix: React Context Error - useTitleShape must be used within a TitleShapeProvider
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
+# 1.20.0
+
+Happy New Year! We all hope you had a great holidays and are feeling refreshed ready for 2026 🌟
+
+- Added Catpuccin themes (Latte, Frappe, Macchiato, Mocha) with gradient color support. Thanks to @Avtrkrb.
+
+- Added VS Code context menu integration - you can now right-click selected code and ask Nanocoder about it directly.
+
+- Added comprehensive testing achieving 90%+ code coverage across components, hooks, tools, and utilities. Tests now include unit and integration coverage for critical paths.
+
+- Added automated PR checks workflow with format, type, lint, and test validation. Pull requests now get automatic quality checks. Thanks to @Avtrkrb.
+
+- Added LSP support for Deno, GraphQL, Docker/Docker Compose, and Markdown language servers with automatic project detection. Thanks to @yashksaini-coder.
+
+- Added auto-fetch models feature in setup wizard - providers can now automatically fetch available models during configuration. Thanks to @JimStenstrom.
+
+- Added git workflow integration tools including smart commit message generation, PR template creation, branch naming suggestions, and enhanced status reporting. Thanks to @JimStenstrom.
+
+- Added file content caching to reduce tool confirmation delays and improve performance. Thanks to @JimStenstrom.
+
+- Added path boundary validation to file manipulation tools to prevent directory traversal attacks.
+
+- Added granular debug logging with structured pino logger throughout catch blocks for better error tracking. Thanks to @JimStenstrom and @abhisek1221.
+
+- Added devcontainer support for streamlined development environments. Thanks to @Avtrkrb.
+
+- Added stylized title boxes with powerline-style shapes and real-time preview in custom commands. Thanks to @Avtrkrb.
+
+- Added real-time bash output progress with live updates during command execution.
+
+- Added inline word-level highlighting to string_replace diff display for clearer change visualization.
+
+- Improved code exploration tools with better tool calling prompts and descriptions and new `list_directories` tool. Thanks to @DenizOkcu.
+
+- Centralized token calculation in tools with consistent usage display in formatters. Thanks to @DenizOkcu.
+
+- Added AI SDK error types for better tool call error handling. Thanks to @DenizOkcu.
+
+- Centralized ignored file patterns usage throughout Nanocoder for consistency. Thanks to @DenizOkcu.
+
+- Refactored App component into focused modules (useAppState, useAppInitialization, useChatHandler, useToolHandler, useModeHandlers) for better maintainability.
+
+- Refactored message components to unify structure and fix memoization inconsistency. Thanks to @abhisek1221.
+
+- Refactored handleMessageSubmission into focused handler functions for better code organization. Thanks to @JimStenstrom.
+
+- Refactored health-monitor, log-query, and AISDKClient into smaller focused modules.
+
+- Renamed multiple files to kebab-case for consistency (AISDKClient.ts → ai-sdk-client.ts, appUtils.ts → app-util.ts, conversationState.ts → conversation-state.ts). Thanks to @JimStenstrom.
+
+- Replaced sync fs operations with async readFile for better performance. Thanks to @namar0x0309.
+
+- Improved tool formatter indentation for better readability.
+
+- Extracted magic numbers to named constants for better code clarity. Thanks to @JimStenstrom.
+
+- Enhanced validateRestorePath to check directory writability. Thanks to @yashksaini-coder.
+
+- Fix: Resolved "Interrupted by user" error appearing on empty model responses.
+
+- Fix: Command completion now prioritizes prefix matches over suffix matches for more intuitive autocomplete.
+
+- Fix: Resolved duplicate React keys issue by using useRef for component key counter. Thanks to @JimStenstrom.
+
+- Fix: Development mode context synchronization prevents autoaccept race conditions. Thanks to @JimStenstrom.
+
+- Fix: Bounded completedActions array to prevent memory growth during long sessions. Thanks to @JimStenstrom.
+
+- Fix: User input cycling now works correctly.
+
+- Fix: Slash + Tab now shows all available commands instead of subset.
+
+- Fix: Command injection vulnerabilities in shell commands resolved.
+
+- Fix: Large paste truncation in slow terminals resolved. Thanks to @Alvaro842DEV.
+
+- Fix: find_files tool now correctly recognizes all pattern types.
+
+- Fix: Tool over-fetching in find and search tools reduced for better performance. Thanks to @pulkitgarg04.
+
+- Fix: Prompt history handling improved with better state management.
+
+- Fix: Paragraphs now render correctly in user messages.
+
+- Fix: Added helpful error messages for missing MCP server commands. Thanks to @JimStenstrom.
+
+- Fix: Size limits added to unbounded caches to prevent memory issues.
+
+- Fix: Resolved several security scanning alerts for string escaping and encoding. Thanks to @Avtrkrb.
+
+- Fix: Switched to crypto.randomUUID and crypto.randomBytes for secure ID generation. Thanks to @JimStenstrom and @abhisek1221.
+
+- Fix: Broken pino logging documentation link in README.
+
+- Fix: Husky pre-commit hook configuration improved. Thanks to @Avtrkrb.
+
+- Fix: Silent configuration issues resolved. Thanks to @sanjeev55999999.
+
+- Fix: Added debug logging to empty catch blocks in LSP modules to improve error tracking and debugging. Thanks to @JimStenstrom.
+
+- Fix: Prevented process hang when exiting security disclaimer for better user experience. Thanks to @JimStenstrom.
+
+- Fix: Handled line wrap in read-file metadata test to ensure proper test reliability. Thanks to @JimStenstrom.
+
+- Fix: Use cmd.exe on Windows for command spawning to resolve cross-platform shell issues.
+
+- Fix: LSP diagnostics tool now properly handles non-existent files.
+
+- Fix: /clear command UI display restored.
+
+- Fix: Bun runtime detection added to LoggerProvider. Thanks to @JimStenstrom.
+
+- Fix: Resolved race conditions in singleton patterns and improved VS Code integration.
+
+- Fix: LoggerProvider async loading completion issues resolved.
+
+- Fix: Cleanup timeout leak in LSP client.
+
+- Fix: Duplicate SIGINT handler issues resolved.
+
+- Fix: High severity qs vulnerability patched via pnpm override. Thanks to @Pahari47.
+
+- Fix: Removed line numbers from tagging files and read_file tool as it confused models when pattern matching content changes.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
 # 1.19.2
 
 - Refactored file editing tools by replacing line-based tools with modern content-based editing for better reliability and context efficiency.
@@ -287,4 +715,3 @@ If there are any problems, feedback or thoughts please drop an issue or message 
 - Refactored `langgraph-client.ts` to removed old methods that are no longer needed. Rolled out this change to `useChatHandler.tsx`. This results in smaller, more tidy files.
 - Fix: LangGraph errors leaked through to UI display. This is now tidied to be from Nanocoder.
 - Fix: Pressing Escape to cancel model responses was not instant and sometimes didn't work.
-

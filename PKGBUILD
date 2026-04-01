@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=nanocoder
-pkgauthor=Mote-Software
+pkgauthor=Nano-Collective
 pkgver=1.24.1
 pkgrel=1
 
