@@ -2,7 +2,7 @@
 
 _name=grpc_google_iam_v1
 pkgname=python-grpc-google-iam-v1
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
 pkgdesc="gRPC Google IAM python"
 url="https://github.com/googleapis/google-cloud-python/tree/main/packages/grpc-google-iam-v1"
@@ -13,8 +13,8 @@ makedepends=(python-setuptools python-wheel python-installer python-build)
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         "fix-deprecations.patch")
-sha256sums=('879ac4ef33136c5491a6300e27575a9ec760f6cdf9a2518798c1b8977a5dc389'
-            'b706d64061435bbe91080101b0522b0b07b408d9a1f3e3268b512a7afe316e55')
+sha256sums=('392b3796947ed6334e61171d9ab06bf7eb357f554e5fc7556ad7aab6d0e17038'
+            '24c6ee7713ef1024df49503e61c241ad2d1c1ce23784112e35884d652b152b63')
 
 prepare() {
   cd "$_name-$pkgver"
