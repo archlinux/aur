@@ -1,0 +1,15 @@
+pkgbase = btest-rs
+	pkgdesc = MikroTik Bandwidth Test (btest) server and client with EC-SRP5 auth
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/manawenuz/btest-rs
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	source = btest-rs-0.6.0.tar.gz::https://github.com/manawenuz/btest-rs/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = btest-rs
