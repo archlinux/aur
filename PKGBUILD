@@ -2,7 +2,7 @@
 
 pkgname=simutrans-pak96.comic
 pkgver=0.4.10.extended
-pkgrel=1
+pkgrel=2
 pkgdesc="Medium resolution graphics set for Simutrans, with a comic style"
 arch=('any')
 url="https://www.simutrans.com/"
@@ -12,6 +12,6 @@ sha256sums=('9e24684d63440be04ea5031d40642332ff3b04a9145af685f62fe24932eebc5c')
 
 package() {
   #data
-  mkdir -p "$pkgdir/usr/share/games/simutrans/pak96.comic"
-  cp -r simutrans/pak96.comic/* "$pkgdir/usr/share/games/simutrans/pak96.comic"
+  mkdir -p "$pkgdir/usr/share/simutrans/pak96.comic"
+  cp -r simutrans/pak96.comic/* "$pkgdir/usr/share/simutrans/pak96.comic"
 }
