@@ -1,13 +1,13 @@
 pkgbase = pinniped-bin
 	pkgdesc = Pinniped provides identity services for Kubernetes clusters
-	pkgver = 0.44.0
+	pkgver = 0.45.0
 	pkgrel = 1
 	url = https://github.com/vmware-tanzu/pinniped
 	arch = x86_64
 	license = Apache-2.0
 	conflicts = pinniped
 	conflicts = pinniped-git
-	source = pinniped-0.44.0::https://github.com/vmware-tanzu/pinniped/releases/download/v0.44.0/pinniped-cli-linux-amd64
-	sha512sums = 43d1fddd346b5a86e3fde80c149cf743348c901c4ec7436a946a0632698363be16b77a002cde3db538fef72f185b2669afbdcc019e0f7dafc84c017e00100126
+	source = pinniped-0.45.0::https://github.com/vmware-tanzu/pinniped/releases/download/v0.45.0/pinniped-cli-linux-amd64
+	sha512sums = 03038931b5251a0d8027cefab008d163424a47c0ef812137860f8463e0fc3d6a8359e05f428aecafaf394f53d7e7c9217a39cf190272ab05d23c51763b0ee007
 
 pkgname = pinniped-bin
