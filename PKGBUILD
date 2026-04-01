@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-dotfiles-git
 pkgver=r4.0dabc1d
-pkgrel=1
+pkgrel=2
 pkgdesc="dotfiles for Shorin DMS Niri"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"

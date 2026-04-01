@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
 
+# --- 定义模板目录 ---
 TEMPLATE_DIR="/usr/share/shorin-dms-niri-dotfiles"
+FCITX5_TEMPLATE_DIR="/usr/share/shorin-fcitx5-config" # 新增 fcitx5 模板目录
+
 BASE_BACKUP_DIR="$HOME/.cache/shorin-dms-niri-dotfiles-backup"
 BACKUP_DIR="$BASE_BACKUP_DIR/$(date +%Y%m%d_%H%M%S)"
 
 # --- 文件同步与备份逻辑 ---
 
 backup_and_copy() {
-    local rel_path="$1"
-    local src_path="$TEMPLATE_DIR/$rel_path"
+    local base_dir="$1"  # 新增参数：来源基础目录
+    local rel_path="$2"  # 相对路径
+    local src_path="$base_dir/$rel_path"
     local dest_path="$HOME/$rel_path"
     local dest_dir
     dest_dir="$(dirname "$dest_path")"
@@ -27,10 +31,11 @@ backup_and_copy() {
 }
 
 process_dir_level() {
-    local target_dir="$1"
+    local base_dir="$1"
+    local target_dir="$2"
     if [[ -d "$target_dir" ]]; then
         find "$target_dir" -mindepth 1 -maxdepth 1 -print0 | while IFS= read -r -d '' item; do
-            backup_and_copy "${item#./}"
+            backup_and_copy "$base_dir" "${item#./}"
         done
     fi
 }
@@ -51,32 +56,50 @@ cleanup_old_backups() {
     fi
 }
 
-sync_dotfiles() {
-    if [[ ! -d "$TEMPLATE_DIR" ]]; then
-        echo "错误: 找不到模板目录 $TEMPLATE_DIR"
-        exit 1
+# 提取出的通用同步逻辑
+sync_from_dir() {
+    local source_dir="$1"
+    
+    if [[ ! -d "$source_dir" ]]; then
+        echo "提示: 找不到模板目录 $source_dir，跳过同步。"
+        return
     fi
     
-    mkdir -p "$BACKUP_DIR"
-    cd "$TEMPLATE_DIR" || exit 1
+    echo ">> 正在同步来源: $source_dir"
+    cd "$source_dir" || return
     
+    # 同步根目录下的独立文件
     find . -maxdepth 1 -type f -print0 | while IFS= read -r -d '' f; do
-        backup_and_copy "${f#./}"
+        backup_and_copy "$source_dir" "${f#./}"
     done
     
-    process_dir_level ".config"
+    # 同步 .config 下的文件夹
+    process_dir_level "$source_dir" ".config"
     
+    # 同步 .local 下的文件夹
     if [[ -d ".local" ]]; then
         find .local -mindepth 1 -maxdepth 1 -type d -print0 | while IFS= read -r -d '' local_sub; do
-            process_dir_level "${local_sub#./}"
+            process_dir_level "$source_dir" "${local_sub#./}"
         done
     fi
+}
+
+sync_dotfiles() {
+    mkdir -p "$BACKUP_DIR"
+    
+    # 1. 同步主桌面环境配置文件
+    sync_from_dir "$TEMPLATE_DIR"
+    
+    echo "----------------------------------------"
+    
+    # 2. 同步 Fcitx5 输入法配置文件
+    sync_from_dir "$FCITX5_TEMPLATE_DIR"
     
     cleanup_old_backups
     
     echo "----------------------------------------"
     echo "配置文件同步完成！"
-    echo "你的旧配置已备份至: $BACKUP_DIR"
+    echo "你的旧配置已统一备份至: $BACKUP_DIR"
     echo "如果需要恢复自己的修改，请前往上述目录查看。"
     echo "----------------------------------------"
 }
