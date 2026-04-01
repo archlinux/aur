@@ -1,6 +1,6 @@
 # Maintainer: Orion-zhen <https://github.com/Orion-zhen>
 pkgname=opencode-notifier
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="OpenCode plugin for desktop notifications and sounds on permission, completion, and error events."
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=("${pkgname}-debug")
 install=$pkgname.install
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bd1ce5e2ee87d48396f80993d7f303670ae7085dc56c6f4aef5cd1368d43655f')
+sha256sums=('11caced6c1a4546728d72ca53ffb29c22b1a1db536121f62f8d54a3423172dc0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
