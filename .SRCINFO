@@ -1,7 +1,7 @@
 pkgbase = clc-bin
 	pkgdesc = A command-line tool for converting between configuration file formats
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alchemy/clc
 	arch = x86_64
 	arch = aarch64
