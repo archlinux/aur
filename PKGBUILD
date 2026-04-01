@@ -1,6 +1,6 @@
 # Maintainer: Boof2015 <contact@novaml.ai>
 pkgname=astra-music-bin
-pkgver=0.5.0.beta
+pkgver=0.5.1.beta
 pkgrel=1
 pkgdesc="Audiophile music player with advanced visualization"
 arch=('x86_64')
@@ -8,11 +8,85 @@ url="https://github.com/Boof2015/astra"
 license=('GPL-3.0-only')
 provides=('astra')
 conflicts=('astra')
-source=("astra-0.5.0.beta.AppImage::https://github.com/Boof2015/astra/releases/download/v0.5.0-beta/Astra-0.5.0-beta-Linux.AppImage")
-sha256sums=('c19116eebe2fe485ad5d4264e58935b260c44b3ccccb423e9b7c978ec9945751')
+options=(!strip !debug)
+source=("astra-0.5.1.beta.AppImage::https://github.com/Boof2015/astra/releases/download/v0.5.1-beta/Astra-0.5.1-beta-Linux.AppImage")
+noextract=("astra-${pkgver}.AppImage")
+sha256sums=('f3cc609249e59d9a4890476d5d8e0814c33a8d626bcfe78ebc24878f950ae503')
+
+prepare() {
+  cd "${srcdir}"
+
+  chmod +x "astra-${pkgver}.AppImage"
+  rm -rf squashfs-root
+  "./astra-${pkgver}.AppImage" --appimage-extract >/dev/null
+}
 
 package() {
-  install -Dm755 "astra-${pkgver}.AppImage" "${pkgdir}/opt/astra/astra.AppImage"
+  local _appdir="${srcdir}/squashfs-root"
+  local _desktop_path="${pkgdir}/usr/share/applications/astra.desktop"
+  local _desktop_source
+  local _icon_source
+  local _icon_relative
+  local _icon_ext
+  local _icon_installed=0
+  local _root_icon
+
+  install -dm755 "${pkgdir}/opt/astra"
+  cp -a "${_appdir}/." "${pkgdir}/opt/astra/"
+
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s /opt/astra/astra.AppImage "${pkgdir}/usr/bin/astra"
+  printf '%s\n' '#!/bin/sh' 'exec /opt/astra/AppRun "$@"' > "${pkgdir}/usr/bin/astra"
+  chmod 755 "${pkgdir}/usr/bin/astra"
+
+  _desktop_source="$(find "${_appdir}" -type f -iname '*.desktop' | LC_ALL=C sort | head -n 1)"
+  if [[ -z "${_desktop_source}" ]]; then
+    echo "No desktop file found in extracted AppImage." >&2
+    return 1
+  fi
+
+  install -dm755 "${pkgdir}/usr/share/applications"
+  sed \
+    -e 's|^Exec=.*|Exec=astra %U|' \
+    -e 's|^TryExec=.*|TryExec=astra|' \
+    -e 's|^Icon=.*|Icon=astra|' \
+    "${_desktop_source}" > "${_desktop_path}"
+
+  if ! grep -q '^TryExec=' "${_desktop_path}"; then
+    sed -i '/^Exec=astra %U$/a TryExec=astra' "${_desktop_path}"
+  fi
+
+  if ! grep -q '^Icon=' "${_desktop_path}"; then
+    sed -i '/^\[Desktop Entry\]$/a Icon=astra' "${_desktop_path}"
+  fi
+
+  if [[ -d "${_appdir}/usr/share/icons/hicolor" ]]; then
+    while IFS= read -r -d '' _icon_source; do
+      _icon_relative="${_icon_source#${_appdir}/usr/share/icons/hicolor/}"
+      _icon_relative="${_icon_relative%/*}"
+      _icon_ext="${_icon_source##*.}"
+      install -Dm644 \
+        "${_icon_source}" \
+        "${pkgdir}/usr/share/icons/hicolor/${_icon_relative}/apps/astra.${_icon_ext}"
+      _icon_installed=1
+    done < <(
+      find "${_appdir}/usr/share/icons/hicolor" \
+        -type f \
+        \( -iname '*.png' -o -iname '*.svg' \) \
+        -path '*/apps/*' \
+        -print0
+    )
+  fi
+
+  if (( !_icon_installed )); then
+    _root_icon="$(find "${_appdir}" -maxdepth 1 -type f \( -iname '*.png' -o -iname '*.svg' \) | LC_ALL=C sort | head -n 1)"
+    if [[ -z "${_root_icon}" ]]; then
+      echo "No icon assets found in extracted AppImage." >&2
+      return 1
+    fi
+
+    _icon_ext="${_root_icon##*.}"
+    install -Dm644 \
+      "${_root_icon}" \
+      "${pkgdir}/usr/share/icons/hicolor/512x512/apps/astra.${_icon_ext}"
+  fi
 }
