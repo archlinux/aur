@@ -1,6 +1,6 @@
 pkgbase = slopd-git
 	pkgdesc = Claude agent session manager daemon
-	pkgver = r73.542df03
+	pkgver = r146.8bddbfa
 	pkgrel = 1
 	url = https://github.com/futpib/slopd
 	arch = x86_64
