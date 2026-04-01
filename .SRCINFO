@@ -1,13 +1,12 @@
 pkgbase = shorin-dms-niri-git
 	pkgdesc = Shorin DMS Niri desktop environment (Dependencies & Dotfiles)
 	pkgver = r4.0dabc1d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/shorin-dms-niri
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = bash
-	depends = quickshell-git
 	depends = dms-shell-bin
 	depends = xdg-desktop-portal-gnome
 	depends = niri
@@ -83,8 +82,6 @@ pkgbase = shorin-dms-niri-git
 	conflicts = shorin-dms-niri-meta
 	conflicts = shorin-dms-niri-dotfiles-git
 	source = git+https://github.com/SHORiN-KiWATA/shorin-dms-niri.git
-	source = shorindms
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = shorin-dms-niri-git
