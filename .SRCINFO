@@ -1,7 +1,7 @@
 pkgbase = cipherdrop-bin
 	pkgdesc = Desktop wrapper for CipherDrop ephemeral end-to-end encrypted chat
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/B3nixoff/cipherdrop
 	arch = x86_64
 	license = custom
