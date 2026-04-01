@@ -75,4 +75,8 @@ package() {
         echo "Error: 'shorindms' script not found in the git repository root."
         exit 1
     fi
+
+    if [[ -f "必看-Shorin-DMS-Niri使用方法.txt" ]]; then
+        install -Dm644 "必看-Shorin-DMS-Niri使用方法.txt" "$pkgdir/usr/share/doc/shorin-dms-niri/必看-Shorin-DMS-Niri使用方法.txt"
+    fi
 }
