@@ -5,7 +5,7 @@
 
 _pkgname="wttr"
 _rawpkgname="bash-script-wttr"
-pkgname="${_pkgname}-bin"
+pkgname="${_pkgname}"
 pkgver=1.55
 pkgrel=1
 pkgdesc="a simple script that checks the weather condition via http://wttr.in"
