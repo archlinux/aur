@@ -1,0 +1,21 @@
+pkgbase = gitty-cli
+	pkgdesc = Minimal Git CLI wrapper that speaks human
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Omibranch/gitty
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	optdepends = xclip: clipboard support (X11)
+	optdepends = xsel: clipboard support (X11 fallback)
+	optdepends = wl-clipboard: clipboard support (Wayland)
+	optdepends = github-cli: full GitHub integration (push --share, rename repo, state URL)
+	noextract = gitty-cli-2.0.0-x86_64
+	noextract = gitty-cli-2.0.0-aarch64
+	source_x86_64 = gitty-cli-2.0.0-x86_64::https://github.com/Omibranch/gitty/releases/download/v2.0.0/gitty-linux-amd64
+	sha256sums_x86_64 = 45373fd843088731db52479095f6220e7495cb59f251be8ba8a9b563f17f5eee
+	source_aarch64 = gitty-cli-2.0.0-aarch64::https://github.com/Omibranch/gitty/releases/download/v2.0.0/gitty-linux-arm64
+	sha256sums_aarch64 = 41c1f546f4b084304b22af57700aebfd710921a0f77761c64f31f9f84bd0262a
+
+pkgname = gitty-cli
