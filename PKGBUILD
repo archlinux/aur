@@ -9,7 +9,7 @@ url="https://github.com/futpib/slopd"
 license=('custom')
 depends=()
 makedepends=('rust' 'cargo')
-provides=('slopd' 'slopctl')
+provides=('slopd' 'slopctl' 'iroh-slopctl' 'iroh-slopd')
 conflicts=('slopd')
 source=("git+https://github.com/futpib/slopd.git")
 sha256sums=('SKIP')
@@ -36,8 +36,13 @@ build() {
 
 package() {
     cd "$srcdir/slopd"
+    # Main user-facing executables
     install -Dm755 "target/release/slopd" "$pkgdir/usr/bin/slopd"
     install -Dm755 "target/release/slopctl" "$pkgdir/usr/bin/slopctl"
+    install -Dm755 "target/release/iroh-slopd" "$pkgdir/usr/bin/iroh-slopd"
+    install -Dm755 "target/release/iroh-slopctl" "$pkgdir/usr/bin/iroh-slopctl"
+    # Test/helper executable (not in PATH)
+    install -Dm755 "target/release/mock_claude" "$pkgdir/usr/lib/slopd/mock_claude"
     # Install user systemd service with corrected ExecStart path
     sed 's|ExecStart=.*|ExecStart=/usr/bin/slopd|' slopd.service \
         | install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user/slopd.service"
