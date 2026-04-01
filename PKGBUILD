@@ -1,4 +1,4 @@
-# Maintainer: egt-cs50 <your@email.com>
+# Maintainer: egt-cs50 <lngcdang@gmail.com>
 pkgname=tauri-wrap-git
 pkgver=r1.0000000
 pkgrel=1
