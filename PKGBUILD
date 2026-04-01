@@ -20,7 +20,7 @@ conflicts=('cboard')
 optdepends=(
   'crafty: compatible chess engine'
   'stockfish: powerful engine (needs polyglot for xboard compatibility)'
-  'polyglot: engine adapter to connect UCI engines like stockfish'
+  'polyglot-winboard-git: engine adapter to connect UCI engines like stockfish'
 )
 
 pkgver() {
