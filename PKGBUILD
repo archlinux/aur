@@ -2,7 +2,7 @@
 pkgname=vellum
 _reponame=Vellum
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland wallpaper stack with daemon and TUI"
 arch=('x86_64')
 url="https://github.com/CPT-Dawn/Vellum"
