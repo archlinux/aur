@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/wttr/
+wttr-bin-*.pkg.tar*
+/*.tar.gz
