@@ -1,6 +1,6 @@
 pkgname=check-command-git
 pkgver=1.0
-pkgrel=11
+pkgrel=12
 pkgdesc="CLI tool to verify file existence with recursive search and color output"
 arch=('any')
 url="https://github.com"
