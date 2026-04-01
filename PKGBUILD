@@ -24,6 +24,8 @@ makedepends=(
 optdepends=(
     'wl-clipboard: clipboard support via wl-copy'
     'glib2: file operations via gio'
+    'ffmpeg: video file thumbnail previews'
+    'udisks2: mount/unmount devices from sidebar'
 )
 provides=('hyprfm')
 conflicts=('hyprfm')
