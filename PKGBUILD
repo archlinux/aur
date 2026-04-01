@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=needrestart-git
-pkgver=3.8.r43.g715366d
+pkgver=3.11.r0.g6d7a76b
 pkgrel=1
 pkgdesc="Restart daemons after library updates."
 arch=('any')
@@ -20,8 +20,10 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/${pkgname%-git}/${pkgname%-git}.conf"
         "etc/${pkgname%-git}/notify.conf")
-source=('git+https://github.com/liske/needrestart.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/liske/needrestart.git'
+        "${pkgname%-git}.hook")
+sha256sums=('SKIP'
+            'b2ba87c931950d5d0a089de0626e964ed3a95cc281a21e0dfdbc16e01ea1dec7')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -30,7 +32,8 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  find . -type f -exec sed -i 's/sbin/bin/g' {} \;
+  find . -type f -exec sed -i 's|usr/sbin|usr/bin|' {} \;
+  sed -i 's|sbin/init|bin/init|g' "${pkgname%-git}"
 }
 
 build() {
@@ -45,6 +48,6 @@ package() {
   unset PERL5LIB PERL_LOCAL_LIB_ROOT PERL_MB_OPT PERL_MM_OPT
   make DESTDIR="$pkgdir/" install
 
-  # remove empty dirs; '!emptydirs' doesn't remove them
-  rm -rf "$pkgdir/usr/lib/perl5/"
+  install -Dm644 "man/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 "$srcdir/${pkgname%-git}.hook" -t "$pkgdir/usr/share/lipalpm/hooks/"
 }
