@@ -1,5 +1,5 @@
 pkgname=oneclient
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Next-generation open source Minecraft launcher that downloads all the mods you would ever want'
 url='https://polyfrost.org/projects/oneclient'
@@ -13,7 +13,7 @@ depends=(
 )
 conflicts=('oneclient-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Polyfrost/OneLauncher/archive/refs/tags/oneclient-${pkgver}.tar.gz")
-sha256sums=('2d303053bccf8b9b1bad1fd0e0732c58ffca7d52286aebce2c77b13833e4d488')
+sha256sums=('0410872162e4e3c4ff77e094b76e702fa945759be3ad57663de6ae8a4d7807c7')
 options=('!lto')
 
 prepare() {
