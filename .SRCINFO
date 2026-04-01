@@ -1,7 +1,7 @@
 pkgbase = simutrans-pak48.excentrique
 	pkgdesc = Low resolution graphics set for Simutrans, with an eccentric theme
 	pkgver = 0.19.RC2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.simutrans.com/
 	arch = any
 	license = custom:Artistic

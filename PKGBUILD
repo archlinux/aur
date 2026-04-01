@@ -2,7 +2,7 @@
 
 pkgname=simutrans-pak48.excentrique
 pkgver=0.19.RC2
-pkgrel=1
+pkgrel=2
 pkgdesc="Low resolution graphics set for Simutrans, with an eccentric theme"
 arch=('any')
 url="https://www.simutrans.com/"
@@ -12,6 +12,6 @@ sha256sums=('a8030f49727359db382139bc6cc1e3afae8df9f9b6d56d6124f17921d866df26')
 
 package() {
   #data
-  mkdir -p "$pkgdir/usr/share/games/simutrans/pak48.excentrique"
-  cp -r pak48.Excentrique/* "$pkgdir/usr/share/games/simutrans/pak48.excentrique"
+  mkdir -p "$pkgdir/usr/share/simutrans/pak48.excentrique"
+  cp -r pak48.Excentrique/* "$pkgdir/usr/share/simutrans/pak48.excentrique"
 }
