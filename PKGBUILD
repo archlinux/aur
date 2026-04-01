@@ -1,8 +1,8 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=squidservers-bin
 _pkgname=squidservers
-pkgver=0.6.5
-pkgrel=2
+pkgver=0.6.6
+pkgrel=1
 pkgdesc="A tool to easily self-host Minecraft servers without port forwarding"
 arch=('x86_64')
 url="https://squidservers.com"
@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 options=('!strip')
 
 source=("https://cdn.squidservers.com/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('027193e4ce59dce332ae16711f3c7389615a7affc515b16728d12b124ad87501')
+sha256sums=('d82a40ebedda56d5ae9b4be5ac23b179e90d12534217648aa01eeeb9c7381812')
 
 package() {
     msg2 "Extracting data from .deb..."
