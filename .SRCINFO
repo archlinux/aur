@@ -1,0 +1,25 @@
+pkgbase = perl-task-kensho-xml
+	pkgdesc = A Glimpse at an Enlightened Perl: XML Development
+	pkgver = 0.41
+	pkgrel = 1
+	url = https://metacpan.org/release/ETHER/Task-Kensho-XML-0.41
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker
+	depends = perl-xml-generator-perldata
+	depends = perl-xml-libxml
+	depends = perl-xml-libxslt
+	depends = perl-xml-sax
+	depends = perl-xml-sax-writer
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
+	optdepends = perl-json-pp
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Task-Kensho-XML-0.41.tar.gz
+	sha256sums = 078330a7173060536d065c0feb99d64f5f2b94a95f3d87d08cdbb7d003d83e89
+
+pkgname = perl-task-kensho-xml
