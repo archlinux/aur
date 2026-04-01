@@ -8,19 +8,19 @@ pkgrel=1
 arch=('any')
 url='https://github.com/bhmsgame06/ramdump-49xx'
 license=('GPL-3.0-or-later')
+source=("git+$url")
+sha256sums=('SKIP')
 
 depends=()
 makedepends=('git')
 
-prepare() {
-	git clone --depth 1 "$url" "$srcdir"
-}
-
 build() {
-	make -C "$srcdir"
+	cd "ramdump-49xx"
+	make
 }
 
 package() {
+	cd "ramdump-49xx"
 	mkdir -p "$pkgdir/usr/bin"
-	make -C "$srcdir" install PREFIX="$pkgdir/usr"
+	make install PREFIX="$pkgdir/usr"
 }
