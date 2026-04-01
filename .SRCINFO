@@ -1,14 +1,14 @@
 pkgbase = repoforge-git
-	pkgdesc = A C++ TUI wizard for building .deb .rpm and aur packages in clicks
-	pkgver = 0.1.0
+	pkgdesc = A C++ TUI wizard for building .deb .rpm and aur repositories with few clicks
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Vniverse77/byte-knight
 	arch = x86_64
 	license = GPL
 	makedepends = gcc
-	depends = glibc
 	depends = gcc-libs
-	source = https://github.com/Vniverse77/repoForge/archive/refs/tags/0.1.0.tar.gz
-	sha256sums = 4e99ae4263c00aa0a78c182b1a98b852dcebc6623eeb522a19c1305460a6751e
+	depends = glibc
+	source = https://github.com/Vniverse77/repoForge/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = a0f736ff87fece17e45a3ce9665f48beac6bb11e5d689998b049d8fdae1ac29d
 
 pkgname = repoforge-git
