@@ -1,7 +1,7 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=openchamber
 _npmname=@openchamber/web
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Desktop and web interface for OpenCode AI agent"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/@openchamber/web/-/web-${pkgver}.tgz")
 noextract=("web-${pkgver}.tgz")
-sha256sums=('bfe74452cd9b32d982b683285ad369e8d067d7fc044bb1732bec845ea48338e9')
+sha256sums=('5475c6bd9f7aaf03bedbc4659d6566715057711126b15e0ba1b2cfc3a82d99ea')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
@@ -44,6 +44,11 @@ package() {
 
     rm -f "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/bun-pty/rust-pty/target/release/librust_pty_arm64.so"
     rm -f "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/node-pty/prebuilds/linux-arm64/pty.node"
+
+    # Remove empty prebuild directories left after removing arm64 artifacts
+    find "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules" -type d -path '*/prebuilds/*' -empty -delete || true
+    # Remove any other empty directories under node_modules to satisfy namcap
+    find "$pkgdir/usr/lib/node_modules" -type d -empty -delete || true
 
     if [ -f "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/node-pty/prebuilds/linux-x64/pty.node" ]; then
         if file "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/node-pty/prebuilds/linux-x64/pty.node" | grep -qi 'x86-64'; then
