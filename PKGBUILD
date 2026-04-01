@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-git
 pkgver=r4.0dabc1d
-pkgrel=6
+pkgrel=7
 pkgdesc="Shorin DMS Niri desktop environment (Dependencies & Dotfiles)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -35,7 +35,7 @@ depends=(
     # Terminal Setup
     'kitty' 'xdg-terminal-exec' 'bat' 'fuzzel' 'wf-recorder' 'wl-screenrec-git' 
     'ttf-jetbrains-maple-mono-nf-xx-xx' 'eza' 'zoxide' 'starship' 'jq' 'fish'
-    'timg' 'imagemagick' 'shorin-contrib-git' 'fastfetch'
+    'timg' 'imagemagick' 'shorin-contrib-git' 'fastfetch' 'gdu' 'btop'
 
     # Flatpak & Theme
     'flatpak' 'bazaar' 'matugen' 'adw-gtk-theme' 'python-pywalfox' 'nwg-look' 'breeze-cursors'
