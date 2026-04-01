@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=2.6.2
+pkgver=2.7.0
 _electronversion=33
-_nodeversion=22
-pkgrel=2
+_nodeversion=24
+pkgrel=1
 pkgdesc="📱Graphical Scrcpy to display and control Android devices powered by Electron(Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
 arch=(
     'aarch64'
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('4c2bcb1c14223dfdec07ccde99a299f3e6c118dbb0f445f6cdb5b5ab99036b71'
+sha256sums=('15efc4e1c535bfff3eb41f8935a238e7158cc3cedb9463fdf0bf438c5d45b72e'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -92,14 +92,17 @@ prepare() {
     ' desktop/electron-builder.config.js
     case "${CARCH}" in
         aarch64)
-            ln -sf "/usr/bin/scrcpy" desktop/electron/resources/extra/linux-x64/scrcpy/scrcpy
+            ln -sf "/usr/bin/adb" desktop/electron/resources/extra/linux-arm64/scrcpy/adb
+            ln -sf "/usr/bin/fastboot" desktop/electron/resources/extra/linux-arm64/scrcpy/fastboot
+            ln -sf "/usr/bin/scrcpy" desktop/electron/resources/extra/linux-arm64/scrcpy/scrcpy
             ln -sf "/usr/bin/adb" desktop/electron/resources/extra/linux-arm64/scrcpy/scrcpy
-            ln -sf "/usr/share/scrcpy/scrcpy-server" desktop/electron/resources/extra/linux-x64/scrcpy/scrcpy-server
+            ln -sf "/usr/share/scrcpy/scrcpy-server" desktop/electron/resources/extra/linux-arm64/scrcpy/scrcpy-server
         ;;
         x86_64)
+            ln -sf "/usr/bin/adb" desktop/electron/resources/extra/linux-x64/scrcpy/adb
+            ln -sf "/usr/bin/fastboot" desktop/electron/resources/extra/linux-x64/scrcpy/fastboot
             ln -sf "/usr/bin/gnirehtet" desktop/electron/resources/extra/linux-x64/gnirehtet/gnirehtet
             ln -sf "/usr/bin/scrcpy" desktop/electron/resources/extra/linux-x64/scrcpy/scrcpy
-            ln -sf "/usr/bin/adb" desktop/electron/resources/extra/linux-x64/scrcpy/adb
             ln -sf "/usr/share/scrcpy/scrcpy-server" desktop/electron/resources/extra/linux-x64/scrcpy/scrcpy-server
         ;;
     esac
