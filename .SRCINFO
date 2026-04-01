@@ -1,6 +1,6 @@
 pkgbase = downkyi-bin
 	pkgdesc = Bilibili download Ji,bilibili website video download tool,supports batch download, supports 8K,HDR,Dolby Vision,provides toolbox (audio & video extraction, watermarking, etc.)(Prebuilt version)
-	pkgver = 1.0.23
+	pkgver = 1.0.24
 	pkgrel = 1
 	url = https://github.com/yaobiao131/downkyicore
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = downkyi-bin
 	license = GPL-3.0-only
 	depends = aria2
 	depends = ffmpeg
-	provides = downkyi=1.0.23
+	provides = downkyi=1.0.24
 	conflicts = downkyi
 	options = !strip
 	options = staticlibs
 	source = downkyi.sh
 	sha256sums = 1cdf1c48c32ffec0f68a347a212d4ee91bb3dccb890cebc40a2b09e391efa0e3
-	source_aarch64 = downkyi-1.0.23-aarch64.deb::https://github.com/yaobiao131/downkyicore/releases/download/v1.0.23/downkyi_1.0.23_linux_self-contained_arm64.deb
-	sha256sums_aarch64 = bd1c12c32d6349e1f4a0ddd7bd8f6f897a3994c7fd101898eb7c9a87be4b8f64
-	source_x86_64 = downkyi-1.0.23-x86_64.deb::https://github.com/yaobiao131/downkyicore/releases/download/v1.0.23/downkyi_1.0.23_linux_self-contained_amd64.deb
-	sha256sums_x86_64 = 59914a9b3ee0ee6a7ff34794ad83b6b0edc2f024ce14ab5cc527993d082a6385
+	source_aarch64 = downkyi-1.0.24-aarch64.deb::https://github.com/yaobiao131/downkyicore/releases/download/v1.0.24/downkyi_1.0.24_linux_self-contained_arm64.deb
+	sha256sums_aarch64 = 33edd750875ffb463bff72838261e3a9e9cf4a556265bbf6d70c35808e2e0cd0
+	source_x86_64 = downkyi-1.0.24-x86_64.deb::https://github.com/yaobiao131/downkyicore/releases/download/v1.0.24/downkyi_1.0.24_linux_self-contained_amd64.deb
+	sha256sums_x86_64 = acf5c0b0f67508fd53ea743da626ace2c287504e3cff96b0975216b2a850fc2c
 
 pkgname = downkyi-bin

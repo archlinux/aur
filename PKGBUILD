@@ -2,7 +2,7 @@
 pkgname=downkyi-bin
 _pkgname=DownKyi
 _debname="cn.bzdrs.${pkgname%-bin}"
-pkgver=1.0.23
+pkgver=1.0.24
 pkgrel=1
 pkgdesc="Bilibili download Ji,bilibili website video download tool,supports batch download, supports 8K,HDR,Dolby Vision,provides toolbox (audio & video extraction, watermarking, etc.)(Prebuilt version)"
 arch=(
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_self-contained_amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('1cdf1c48c32ffec0f68a347a212d4ee91bb3dccb890cebc40a2b09e391efa0e3')
-sha256sums_aarch64=('bd1c12c32d6349e1f4a0ddd7bd8f6f897a3994c7fd101898eb7c9a87be4b8f64')
-sha256sums_x86_64=('59914a9b3ee0ee6a7ff34794ad83b6b0edc2f024ce14ab5cc527993d082a6385')
+sha256sums_aarch64=('33edd750875ffb463bff72838261e3a9e9cf4a556265bbf6d70c35808e2e0cd0')
+sha256sums_x86_64=('acf5c0b0f67508fd53ea743da626ace2c287504e3cff96b0975216b2a850fc2c')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
