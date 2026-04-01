@@ -1,6 +1,6 @@
 # Maintainer: Martin Etchebarne <martin@etchebarne.net>
 pkgname=kosmos-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A highly customizable and versatile tab-based code editor."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     "kosmos.desktop::https://raw.githubusercontent.com/etchebarne/kosmos/v${pkgver}/src-tauri/kosmos.desktop"
     "LICENSE::https://raw.githubusercontent.com/etchebarne/kosmos/v${pkgver}/LICENSE"
 )
-sha256sums=('2297b2a936fc08a532f45f2b9d383ae340ec09582c2185c7944a5b07c0040829' 'SKIP' 'SKIP')
+sha256sums=('9dff4c0a7904871a11220ac7fc340f991627df43e84274c8fe0e93a69d16bdb2' 'SKIP' 'SKIP')
 
 package() {
     bsdtar -xf data.tar.gz -C "$pkgdir/"
