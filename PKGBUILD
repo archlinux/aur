@@ -1,8 +1,8 @@
 # Maintainer: lemonxah <lemonxah@gmail.com>
 pkgname=zestbay
-pkgver=0.7.0
+pkgver=0.8.1
 pkgrel=1
-pkgdesc="A PipeWire patchbay and audio routing manager with LV2 plugin hosting"
+pkgdesc="A PipeWire patchbay and audio routing manager with LV2/CLAP/VST3 plugin hosting"
 arch=('x86_64')
 url="https://github.com/lemonxah/zestbay"
 license=('MIT')
@@ -13,7 +13,7 @@ depends=(
   'qt6-declarative'
   'lilv'
   'lv2'
-  'suil'
+  'libx11'
   'dbus'
 )
 makedepends=(
@@ -27,7 +27,10 @@ makedepends=(
   'pipewire'
   'lilv'
   'lv2'
-  'suil'
+  'libx11'
+)
+optdepends=(
+  'suil: LV2 UI toolkit wrapping for GTK-based plugin UIs'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
@@ -42,12 +45,13 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+  cargo build --workspace --frozen --release
 }
 
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "target/release/zestbay-ui-bridge" "$pkgdir/usr/lib/$pkgname/zestbay-ui-bridge"
   install -Dm644 "zestbay.desktop" "$pkgdir/usr/share/applications/zestbay.desktop"
   install -Dm644 "images/zesticon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/zestbay.png"
   install -Dm644 "images/zesttray.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/zestbay-tray.png"
