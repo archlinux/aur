@@ -8,8 +8,8 @@ url='https://github.com/42futures/firm'
 license=('AGPL-3.0-or-later')
 provides=('firm')
 conflicts=('firm')
-source_x86_64=("${url}/releases/download/${pkgver}/firm-linux-amd64.tar.gz")
-source_aarch64=("${url}/releases/download/${pkgver}/firm-linux-arm64.tar.gz")
+source_x86_64=("${pkgname}-x86_64-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/firm-linux-amd64.tar.gz")
+source_aarch64=("${pkgname}-aarch64-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/firm-linux-arm64.tar.gz")
 sha256sums_x86_64=('2ef50f7bcc16916feef2e16391a0d07ddf52e6664d79191ed5827a1db3fa8caa')
 sha256sums_aarch64=('59df8036fbefa2c033a60bdc55a732f30df3ff5cf77688b3195b5396702ea6ac')
 
