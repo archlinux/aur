@@ -178,6 +178,8 @@ apply_user_configs() {
     fi
     
     run_hide_desktop_file
+    echo "初始化shorin-contrib工具"
+    shorin link
     
     echo "初始化环境配置完成！"
 }
