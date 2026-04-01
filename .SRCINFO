@@ -1,0 +1,18 @@
+pkgbase = lyrx
+	pkgdesc = Big pixel-art lyrics in your terminal, synced to Spotify
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kvdxsn1k/lyrx
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pillow
+	depends = python-syncedlyrics
+	depends = playerctl
+	source = lyrx-0.1.0.tar.gz::https://github.com/kvdxsn1k/lyrx/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = lyrx
