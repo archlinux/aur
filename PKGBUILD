@@ -1,42 +1,16 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname='vgmtools-git'
-pkgver=r99.1f8a5eb
+pkgver=r184.19aa30e
 pkgrel=1
 pkgdesc="A collection of tools for the VGM file format"
-arch=(x86_64 i686)
+arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/vgmrips/vgmtools"
-license=('GPL')
-makedepends=('zlib' 'git' 'cmake')
+license=('GPL-2.0-or-later')
+depends=('libgcc' 'libstdc++' 'glibc' 'zlib')
+makedepends=('git' 'cmake')
 
 source=('git+https://github.com/vgmrips/vgmtools.git')
-md5sums=('SKIP')
-_progs=(
-'dro2vgm'
-'imf2vgm'
-'opl_23'
-'optvgmrf'
-'raw2vgm'
-'vgm2txt'
-'vgm_cmp'
-'vgm_cnt'
-'vgm_dbc'
-'vgm_dso'
-'vgm_facc'
-'vgmlpfnd'
-'vgmmerge'
-'vgm_mono'
-'vgm_ndlz'
-'vgm_ptch'
-'vgm_smp1'
-'vgm_sptd'
-'vgm_spts'
-'vgm_sro'
-'vgm_stat'
-'vgm_tag'
-'vgm_trim'
-'vgm_tt'
-'vgm_vol'
-)
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -56,19 +30,18 @@ build() {
     mkdir build
     cd build
     cmake \
-      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_BUILD_TYPE=None \
       -DCMAKE_SKIP_BUILD_RPATH=TRUE \
       -DCMAKE_INSTALL_PREFIX=/usr \
       ..
-	make
+	make all optdac optvgm32
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}/build"
-    for p in "${_progs[@]}" ; do
-        install -Dm755 ${p} "$pkgdir/usr/bin/${p}"
-    done
-	cd "$srcdir/${pkgname%-git}"
+	cd "${pkgname%-git}"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	cd "build"
+    make install DESTDIR="$pkgdir"
 }
 
