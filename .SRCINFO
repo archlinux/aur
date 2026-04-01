@@ -1,6 +1,6 @@
 pkgbase = hmon-bin
 	pkgdesc = Real-time system resource monitoring tool
-	pkgver = 0.1.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/sdk445/hmon
 	arch = x86_64
@@ -11,11 +11,7 @@ pkgbase = hmon-bin
 	depends = ncurses
 	provides = hmon
 	conflicts = hmon
-	source = README-0.1.0.md::https://raw.githubusercontent.com/sdk445/hmon/v0.1.0/README.md
-	source = LICENSE-0.1.0::https://raw.githubusercontent.com/sdk445/hmon/v0.1.0/LICENSE
-	sha256sums = 34720258187f1d34a47e2c8aabd53c991f65fe7e2e14cdef32f132c24038392a
-	sha256sums = 7fa8327d82cd72fcdd999764ef20115cd9e6c638b6992f535d55079b35baa062
-	source_x86_64 = hmon-x86_64-0.1.0::https://github.com/sdk445/hmon/releases/download/v0.1.0/hmon-linux-x86_64
-	sha256sums_x86_64 = 7ddda5b97028e21e0eceab6c764cee8ac136c77cdc8f77086a374dc168a78be6
+	source_x86_64 = hmon-x86_64-0.3.0.tgz::https://github.com/sdk445/hmon/releases/download/v0.3.0/hmon-0.3.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 443585670586e85f40d7246d943303d08e26b4337c6c8186966e5baa004a4f24
 
 pkgname = hmon-bin

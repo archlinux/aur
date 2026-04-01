@@ -5,7 +5,7 @@ _pkgname=hmon
 pkgname=${_pkgname}-bin
 pkgdesc="Real-time system resource monitoring tool"
 
-pkgver=0.1.0
+pkgver=0.3.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,20 +23,22 @@ depends=('glibc' 'libgcc' 'libstdc++' 'ncurses')
 
 option=(!strip)
 
-source=("README-${pkgver}.md::${_urlraw}/README.md"
-		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}")
-sha256sums=('34720258187f1d34a47e2c8aabd53c991f65fe7e2e14cdef32f132c24038392a'
-            '7fa8327d82cd72fcdd999764ef20115cd9e6c638b6992f535d55079b35baa062')
-sha256sums_x86_64=('7ddda5b97028e21e0eceab6c764cee8ac136c77cdc8f77086a374dc168a78be6')
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}.tar.gz")
+sha256sums_x86_64=('443585670586e85f40d7246d943303d08e26b4337c6c8186966e5baa004a4f24')
 
+
+case ${CARCH} in
+  ${arch[0]})
+    _CARCH=${_barch[0]}
+    ;;
+esac
 
 package() {
-	cd "${srcdir}/" || exit
+	cd "${srcdir}/${_pkgname}-${pkgver}-${_CARCH}/" || exit
 
-	install -Dm755 "${_pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
