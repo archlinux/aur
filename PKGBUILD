@@ -1,6 +1,6 @@
 # Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
 pkgname=tundra-git
-pkgver=0.4.0.f13b595
+pkgver=0.5.4.r26.gaf90cf7
 pkgrel=1
 epoch=
 pkgdesc="MyAnimeList scrobbler (git version)"
@@ -16,7 +16,7 @@ provides=('tundra')
 conflicts=('tundra')
 replaces=()
 backup=()
-options=()
+options=(!debug !lto)
 install=
 changelog=
 source=("git+https://github.com/m4tx/tundra.git"
@@ -26,13 +26,18 @@ md5sums=('SKIP'
          'SKIP')
 validpgpkeys=()
 
+pkgver() {
+    cd "tundra" || exit
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
-    cd "tundra"
+    cd "tundra" || exit
     cp "$srcdir/anime-relations.txt" "vendor/anime-relations/"
 }
 
 build() {
-    cd "tundra"
+    cd "tundra" || exit
     cargo build --release --locked --all-features --target-dir target
 }
 
@@ -41,7 +46,7 @@ check() {
 }
 
 package() {
-    cd "tundra"
+    cd "tundra" || exit
     install -Dm 755 target/release/tundra -t "${pkgdir}/usr/bin"
     install -Dm 755 data/moe.tundra.Tundra.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -Dm 755 data/moe.tundra.Tundra.desktop -t "${pkgdir}/usr/share/applications"
