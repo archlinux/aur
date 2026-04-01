@@ -1,0 +1,15 @@
+pkgbase = perl-xml-generator-perldata
+	pkgdesc = Perl extension for generating SAX2 events from nested Perl data structures.
+	pkgver = 0.95
+	pkgrel = 1
+	url = https://metacpan.org/release/KHAMPTON/XML-Generator-PerlData-0.95
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-xml-sax-base>=1.02
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/K/KH/KHAMPTON/XML-Generator-PerlData-0.95.tar.gz
+	sha256sums = 78560b638016ef047fd5937f2d35cca9536fe5b42a03974e173f16671bf5c397
+
+pkgname = perl-xml-generator-perldata

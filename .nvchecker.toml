@@ -1,0 +1,3 @@
+[perl-xml-generator-perldata]
+source = "cpan"
+cpan = "XML-Generator-PerlData"
