@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=grist-desktop
 _pkgname='Grist Desktop'
-pkgver=0.3.10
+pkgver=0.3.11
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('8bd1bb1ce47ad2add9c3d635834c358922082448b66a8300e5c1e1e4699eb11b'
+sha256sums=('d8938a8caad509f95e0cf5480d83acc00a86ab1b15239d1142f27c8a4b8a8931'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -62,26 +62,24 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
+    local HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo -e '\n'
-            echo 'registry "https://registry.npmmirror.com"'
-            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
-            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo "cacheFolder "${srcdir}"/.yarn/cache"
-            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
-            echo "globalFolder "${srcdir}"/.yarn/global"
-            echo 'useHardlinks true'
-            #echo 'buildFromSource true'
-            echo 'linkWorkspacePackages true'
-            echo 'fetchRetries 3'
-            echo 'fetchRetryTimeout 10000'
-        } >> .yarnrc
-        #sed -i "s/github.com/ghfast.top\/https:\/\/github.com/g" {.gitmodules,scripts/setup.sh}
+            export YARN_REGISTRY="https://registry.npmmirror.com"
+            export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
+            export YARN_PLUGINS_FOLDER="${srcdir}/.yarn/plugins"
+            export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
+            export YARN_USE_HARDLINKS=true
+            # export YARN_BUILD_FROM_SOURCE=true
+            export YARN_LINK_WORKSPACE_PACKAGES=true
+            export YARN_FETCH_RETRIES=3
+            export YARN_FETCH_RETRY_TIMEOUT=10000
+            export YARN_NETWORK_CONCURRENCY=32
+        }
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" ext/package.json
