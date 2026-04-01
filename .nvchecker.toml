@@ -1,0 +1,3 @@
+[perl-task-catalyst]
+source = "cpan"
+cpan = "Task-Catalyst"
