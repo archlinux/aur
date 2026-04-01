@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postybirb-bin
 _pkgname=PostyBirb
-pkgver=4.0.23
+pkgver=4.0.24
 _electronversion=35
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-rpm-x86_64.rpm")
 sha256sums=('f549ac630b1a4e0e8a80ae21c37d1c7d63f00e1cd155d5f747a5315b54ae2e31'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('16cefa6bcfa09ed1c8476056bdb8fc76b7c1ebdebf51b7a65f5542ea77b3c366')
-sha256sums_x86_64=('06249fdf5b88ca912c316a0cdd1e779b1c455fb26bb713656d4dbc606e1a556f')
+sha256sums_aarch64=('fb845e30aafd14e77f3e12f0b039f0b8186e3b1043d85ed3ac65dec1b0b17078')
+sha256sums_x86_64=('a320988d415514c55343efc7d6af0688852261146c6e88d2219266f90f8fba51')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -52,10 +52,10 @@ prepare() {
         "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/utf-8-validate/prebuilds/"{darwin-*,win32-*}
     case "${CARCH}" in
         aarch64)
-            find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules" -name "*-linux-x64" -exec rm -rf {} +
+            find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules" -type d -name "*x64*" -exec rm -rf {} +
             ;;
         x86_64)
-            find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules" -name "*-linux-arm64" -exec rm -rf {} +
+            find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules" -type d -name "*arm64*" -exec rm -rf {} +
             ;;
     esac
 }
