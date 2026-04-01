@@ -4,13 +4,11 @@ pkgbase = railwayapp-cli
 	pkgrel = 1
 	url = https://github.com/railwayapp/cli
 	arch = x86_64
-	arch = aarch64
-	arch = i686
 	license = MIT
-	makedepends = cargo
 	depends = gcc-libs
-	options = !lto
-	source = railwayapp-cli-4.36.0.tar.gz::https://github.com/railwayapp/cli/archive/v4.36.0.tar.gz
+	source = railway-v4.36.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/railwayapp/cli/releases/download/v4.36.0/railway-v4.36.0-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE-4.36.0::https://raw.githubusercontent.com/railwayapp/cli/v4.36.0/LICENSE
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = railwayapp-cli

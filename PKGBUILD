@@ -7,35 +7,16 @@ pkgname=railwayapp-cli
 pkgver=4.36.0
 pkgrel=1
 pkgdesc="Command Line Interface for Railway.app"
-arch=('x86_64' 'aarch64' 'i686')
+arch=('x86_64')
 url='https://github.com/railwayapp/cli'
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('cargo')
-options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
-
-prepare() {
-  cd "cli-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
-
-build() {
-  cd "cli-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --release --frozen --all-features
-}
-
-check() {
-  cd "cli-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
-}
+source=("railway-v$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/railway-v$pkgver-x86_64-unknown-linux-gnu.tar.gz"
+        "LICENSE-$pkgver::https://raw.githubusercontent.com/railwayapp/cli/v$pkgver/LICENSE")
+sha256sums=('SKIP'
+            'SKIP')
 
 package() {
-  cd "cli-$pkgver"
-  install -Dv "target/release/railway" -t "$pkgdir/usr/bin/"
-  install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dv "$srcdir/railway" -t "$pkgdir/usr/bin/"
+  install -Dvm644 "$srcdir/LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
