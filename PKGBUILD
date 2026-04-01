@@ -1,6 +1,6 @@
 # Maintainer: Paul Mourer <paul.mourer at gmail dot com>
 pkgname=openchamber-desktop
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="Desktop app for OpenChamber AI coding interface (Tauri)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
 makedepends=('rust' 'bun' 'base-devel' 'jq')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openchamber/openchamber/archive/refs/tags/v${pkgver}.tar.gz"
          "openchamber-desktop.desktop")
-sha256sums=('e162955280b4612d35b717774cfd063403b30f3d178835b3a5af3e6ffeefbe1a'
+sha256sums=('14465b853b4cd59c62eaf90ed99207bb1832d4820a726a9c2d08797bfa906933'
             '4ccadb9cb92fb28d9e5a7ca7e9a2c75a19e4cae2164fd6e43d7a7829fe6c9c43')
 prepare() {
     cd "openchamber-${pkgver}"
