@@ -1,19 +1,19 @@
 # Maintainer: Paul Mourer <paul.mourer at gmail dot com>
 pkgname=openchamber-desktop
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Desktop app for OpenChamber AI coding interface (Tauri)"
 arch=('x86_64')
-url="https://github.com/btriapitsyn/openchamber"
+url="https://github.com/openchamber/openchamber"
 license=('MIT')
 # Keep Bun-compiled sidecar intact: stripping breaks embedded payload and makes
 # openchamber-server exit immediately (desktop logs show sidecar terminated code=0).
 options=('!strip')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
 makedepends=('rust' 'bun' 'base-devel' 'jq')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/btriapitsyn/openchamber/archive/refs/tags/v${pkgver}.tar.gz"
-        "openchamber-desktop.desktop")
-sha256sums=('b7599fa120ca46e6d2bdaa0618344a9e1f0b9cd803b0ca57ecffef00bb4d9fd7'
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openchamber/openchamber/archive/refs/tags/v${pkgver}.tar.gz"
+         "openchamber-desktop.desktop")
+sha256sums=('e162955280b4612d35b717774cfd063403b30f3d178835b3a5af3e6ffeefbe1a'
             '4ccadb9cb92fb28d9e5a7ca7e9a2c75a19e4cae2164fd6e43d7a7829fe6c9c43')
 prepare() {
     cd "openchamber-${pkgver}"
