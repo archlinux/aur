@@ -3,7 +3,7 @@
 # Contributor: dianlujitao <dianlujitao at gmail dot com>
 
 pkgname=efm-langserver
-pkgver=0.0.55
+pkgver=0.0.56
 pkgrel=1
 pkgdesc='General purpose Language Server'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('go')
 optdepends=('ctags: for "go to definition" requests')
 source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('3e46b2e95725dc0e85816c6c6811cb81ab573147df0e888bb3354642e1286e9f')
+sha256sums=('6b2c44c904a0a3c54909688ccebc8ca32bba319abbd7f6a8a26590a6359e4950')
 
 build() {
   cd $pkgname-$pkgver
@@ -33,4 +33,5 @@ check() {
 package() {
   cd $pkgname-$pkgver
   install -Dt "$pkgdir"/usr/bin efm-langserver
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
