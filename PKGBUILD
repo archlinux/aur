@@ -1,21 +1,24 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 
+# Co-Maintainer: Harsh Vyapari <harshvy5094@proton.me>
+# https://github.com/harshv5094
+
 pkgname=linutil
-pkgver=2025.09.09
+pkgver=2026.01.22
 pkgrel=1
 pkgdesc="Distro-agnostic toolbox designed to simplify everyday Linux tasks"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ChrisTitusTech/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('537f333a726ec92dfd1993b375612a63f2e2150859e0f140eda3565de216dd38')
+sha256sums=('6864c7854fefff5a28237573cd64e6195bdf239ee8395a213f91dab24cbc4fc4')
 makedepends=('cargo')
 depends=('git' 'pacman' 'tree-sitter' 'tree-sitter-bash' 'gcc-libs' 'glibc')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
 
 prepare() {
-  echo "Version=$pkgver" >> "$pkgname.desktop"
+  echo "Version=$pkgver" >>"$pkgname.desktop"
   cd "$pkgname-$pkgver"
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
