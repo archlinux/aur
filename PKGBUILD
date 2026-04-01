@@ -1,7 +1,7 @@
 pkgname=oneclient
-pkgver=1.0.3
+pkgver=1.1.1
 pkgrel=1
-pkgdesc='Next-generation open source Minecraft launcher'
+pkgdesc='Next-generation open source Minecraft launcher that downloads all the mods you would ever want'
 url='https://polyfrost.org/projects/oneclient'
 arch=('x86_64')
 license=('GPL-3.0-only')
@@ -11,12 +11,9 @@ depends=(
     'openssl' 'dbus' 'gtk3' 'libayatana-appindicator' 'librsvg' 'webkit2gtk-4.1'
     'libgl' 'libpulse' 'libx11' 'libxcursor' 'libxext' 'libxxf86vm'
 )
-optdepends=(
-    'xorg-xrandr: very legacy minecraft versions'
-)
 conflicts=('oneclient-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Polyfrost/OneLauncher/archive/refs/tags/oneclient-${pkgver}.tar.gz")
-sha256sums=('c98c8db9b64d30080d70ee7e4d05ffb5d322d010f81f6c49ac834cfda9a9b78f')
+sha256sums=('7f476d308bfce6dfc59a0df22573316fc50621578f2146bfcf889aacda6e5cee')
 options=('!lto')
 
 prepare() {
@@ -24,6 +21,7 @@ prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
     pnpm install --frozen-lockfile
+    pnpm prep
 }
 
 build() {
