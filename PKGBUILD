@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=7.1.120
+pkgver=7.1.140
 pkgrel=1
 _mpris_ver=2.1.5
 # Commit hash for aunetx/deezer-linux for patches
@@ -36,7 +36,7 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     # Local patches
     "99-systray-icon.patch"
 )
-sha256sums=('8b7a1ae52cedce0c905e37e9fa4bed8927769c06ec0140ddaf17153b63f763b1'
+sha256sums=('1e3354674d3c429435a6a5139654d84c0e5a9937b3c941c07a0683e71e6de141'
             'c33b398d8ae279a620cf2914c806f7ee00c47519e4f404874cfd90a68fc8d80f'
             '3da0c64c3d9216286601e0a28714e37a4bfaf9f56f35856da75986dfa2eba8fb'
             '951c80c9dc4848b31a5fcc9655b005f3a218b1ff735396168c13922ac658c83b'
