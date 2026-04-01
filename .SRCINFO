@@ -1,8 +1,8 @@
 pkgbase = libkompass-git
 	pkgdesc = a gtk4 wayland desktop shell
-	pkgver = r120.2fbab99
+	pkgver = r122.d507477
 	pkgrel = 2
-	url = https://github.com/kotontrion/kompass
+	url = https://codeberg.org/kotontrion/kompass
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = meson

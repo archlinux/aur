@@ -2,12 +2,12 @@
 
 pkgbase=libkompass-git
 pkgname=(libkompass-git kompass-git)
-pkgver=r120.2fbab99
+pkgver=r122.d507477
 pkgrel=2
 pkgdesc="a gtk4 wayland desktop shell"
 arch=(x86_64)
 license=(GPL-3.0-only)
-url="https://github.com/kotontrion/kompass"
+url="https://codeberg.org/kotontrion/kompass"
 depends=(
   gtk4
   gtk4-layer-shell
