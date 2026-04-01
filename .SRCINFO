@@ -1,0 +1,15 @@
+pkgbase = arm-compiler-for-embedded
+	pkgdesc = Arm Compiler for Embedded (armclang) - C/C++ compiler for Arm Cortex-M and Cortex-R
+	pkgver = 6.24
+	pkgrel = 1
+	url = https://developer.arm.com/Tools%20and%20Software/Arm%20Compiler%20for%20Embedded
+	install = arm-compiler-for-embedded.install
+	arch = x86_64
+	license = custom:Commercial
+	depends = glibc
+	options = !strip
+	options = !debug
+	source = https://artifacts.keil.arm.com/arm-compiler/6.24/19/standalone-linux-x86_64-rel.tar.gz
+	sha256sums = 55cdfa20b2588ea52222d9f836258b0e01c220251ddf46d39605939ce07e9117
+
+pkgname = arm-compiler-for-embedded
