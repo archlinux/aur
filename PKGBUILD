@@ -32,7 +32,7 @@ _ffsum="b972b2a4c17244d51c10123cbd6c936e2cf26ebc29eb724570d285c283e9e92c"
 _pkgname="icecat"
 pkgname="$_pkgname"
 pkgver="$_icver"
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git"
 license=('MPL-2.0')
@@ -51,7 +51,7 @@ depends=(
   libxt
   mime-types
   nspr
-  #nss
+  nss
   ttf-font
   zlib
 )
@@ -133,6 +133,9 @@ source=(
   dbf9702ed87ea5c88c2a1ee615998532ac8f10cc.patch
   0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
   0002-Fix-sandbox-to-build-with-glibc-2.43.patch
+  0003-Use-wasm32-wasip1-target.patch
+  0004-update-rust-bindgen-to-fix-clang22-build.patch.xz
+  0005-skia-m142-update.patch.xz
 )
 sha256sums=(
   'SKIP'
@@ -144,6 +147,9 @@ sha256sums=(
   '37dbe762d88613d8d556dad53988fc45c7b3aa8947b4322e92ee5c9a763cbc2c'
   '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
   '404e780b1488625989c6dd8e2234e50ed01401b7cb1e99e79dee87f4f4f584f8'
+  '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
+  '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
+  'e11aba9839824096f07ca5dc17c9fd5bfa09209f8261ab09f7e473f350a82760'
 )
 
 _make_icecat() (
@@ -313,7 +319,7 @@ ac_add_options --with-system-jpeg
 ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
-#ac_add_options --with-system-nss
+ac_add_options --with-system-nss
 ac_add_options --with-system-webp
 ac_add_options --with-system-zlib
 END
@@ -339,9 +345,6 @@ END
 mk_add_options MOZ_PARALLEL_BUILD=${_cores:-4}
 END
   fi
-
-  # fix wasm triplet
-  sed -E -e '/split_triplet/s&"wasm32-wasi"&"wasm32-wasip1"&' -i build/moz.configure/toolchain.configure
 )
 
 build() (
@@ -356,9 +359,14 @@ build() (
   patch -Np1 -i ../d4b3eb4f76e81f18c53863b1d55ee146d6ec7d10.patch
   patch -Np1 -i ../dbf9702ed87ea5c88c2a1ee615998532ac8f10cc.patch
 
-  # Fix build with glibc 2.43
+  # Fix for glibc 2.43
   patch -Np1 -i ../0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
   patch -Np1 -i ../0002-Fix-sandbox-to-build-with-glibc-2.43.patch
+
+  # Fix for clang 22
+  patch -Np1 -i ../0003-Use-wasm32-wasip1-target.patch
+  xzcat ../0004-update-rust-bindgen-to-fix-clang22-build.patch.xz | patch -B .patchorigin -Np1 -F100
+  xzcat ../0005-skia-m142-update.patch.xz | patch -B .patchorigin -Np1
 
   export RUSTUP_TOOLCHAIN=stable
 
