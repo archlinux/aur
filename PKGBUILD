@@ -1,32 +1,32 @@
-# Maintainer: Lucy Ada Randall <lucybrown@vivaldi.net>
+# Maintainer: Lucy Randall <lucybrown@vivaldi.net>
 pkgname=are
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Another Rust Editor - A port of the aee terminal-based text editor to Rust"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/anoraktrend/are"
-license=('custom:Artistic-2.0')
-depends=('glibc' 'gcc-libs')
+license=('Artistic-2.0')
+depends=()
 makedepends=('cargo')
 provides=('are')
-conflicts=('are-git')
-source=("https://github.com/anoraktrend/are/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5b01e20db53bf03837e67af55022ed4fdaa7b21bb7dbecc17b705ee64205605e')
+conflicts=('are')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/anoraktrend/are/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('43464067def348f5a56d9e2afe90aee4e5f2dbd0825b5ab3f5fbd612e6644377')
 
 build() {
-    cd "$srcdir/are-${pkgver}"
-    cargo build --release
+    cd "${pkgname}-${pkgver}"
+    cargo build --release --locked
 }
 
 package() {
-    cd "$srcdir/are-${pkgver}"
-
+    cd "${pkgname}-${pkgver}"
     # Install the binary
     install -Dm755 "target/release/are" "$pkgdir/usr/bin/are"
 
     # Install license
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "LICENSE.MD" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.MD"
 
     # Install documentation
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "Changes" "$pkgdir/usr/share/doc/$pkgname/Changes"
 }
