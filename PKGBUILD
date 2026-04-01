@@ -2,7 +2,7 @@
 
 _pkgname=lutris-gamepad-ui
 pkgname=$_pkgname-git
-pkgver=v0.1.31.r31.g13b7861
+pkgver=v0.1.32.r25.g01a0205
 pkgrel=1
 pkgdesc="A simple, TV-friendly, gamepad-navigable frontend for Lutris"
 arch=('x86_64')
@@ -42,6 +42,8 @@ package() {
     install -vDm644 "$_pkgname/lutris_wrapper.py" "$pkgdir/usr/lib/$_pkgname/lutris_wrapper.py"
     install -vDm644 "$_pkgname/lutris_wrapper.sh" "$pkgdir/usr/lib/$_pkgname/lutris_wrapper.sh"
     install -vDm644 "$_pkgname/package.json" "$pkgdir/usr/lib/$_pkgname/package.json"
+
+    find "$_pkgname/node_modules/koffi/build/koffi/" -type f -name "koffi.node" ! -path "*linux_x64*" -delete
 
     cp -rp "$_pkgname/dist" "$pkgdir/usr/lib/$_pkgname/dist"
     cp -rp "$_pkgname/node_modules" "$pkgdir/usr/lib/$_pkgname/node_modules"
