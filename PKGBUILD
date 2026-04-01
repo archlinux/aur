@@ -1,10 +1,10 @@
-# Maintainer: germanua <tony.avramnco@icloud.com>
+# Maintainer: germanua
 
 pkgname=linux-soundboard-git
 _pkgname=linux-soundboard
-pkgver=1.0.0.r4.gf1d87b2
-pkgrel=2
-pkgdesc="Native Linux soundboard with GTK4/libadwaita and virtual microphone support"
+pkgver=1.1.2.r59.gec2f225
+pkgrel=1
+pkgdesc="Native Linux soundboard with full Wayland/X11 support and virtual microphone support"
 arch=('x86_64')
 url="https://github.com/germanua/Linux-SoundBoard"
 license=('custom:PolyForm-Noncommercial-1.0.0')
@@ -12,20 +12,30 @@ depends=(
   'gtk4'
   'libadwaita'
   'libpulse'
+  'libx11'
+  'libxi'
+  'libxtst'
+  'libxkbcommon'
   'hicolor-icon-theme'
+  'pipewire'
+  'pipewire-pulse'
+  'wireplumber'
 )
 makedepends=(
   'cargo'
   'git'
   'imagemagick'
+  'clang'
+  'pkgconf'
 )
 optdepends=(
-  'pipewire-pulse: PipeWire-backed PulseAudio server for virtual microphone routing'
-  'pulseaudio: PulseAudio server for virtual microphone routing'
-  'wireplumber: recommended PipeWire session manager'
+  'swhkd-bin: native Wayland global hotkeys from the AUR'
+  'swhkd-git: development build of the native Wayland hotkey daemon'
+  'xorg-xwayland: enables the native X11 backend inside Wayland sessions'
 )
 provides=('linux-soundboard')
 conflicts=('linux-soundboard')
+install="${pkgname}.install"
 source=(
   "${_pkgname}::git+${url}.git#branch=main"
 )
@@ -45,7 +55,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  bash packaging/linux/generate-icons.sh icon.png
+  bash packaging/linux/generate-icons.sh assets/icons/icon.png
   export CARGO_HOME="${srcdir}/cargo-home"
   cargo fetch --locked --manifest-path src/Cargo.toml
 }
@@ -66,11 +76,14 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   local icon_root="src/resources/icons"
-  local icon_name="com.linuxsoundboard.app.png"
+  local icon_names=("com.linuxsoundboard.app.png" "linux-soundboard.png")
   local size
   for size in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512; do
-    install -Dm644 "${icon_root}/${size}/apps/${icon_name}" \
-      "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${icon_name}"
+    local icon_name
+    for icon_name in "${icon_names[@]}"; do
+      install -Dm644 "${icon_root}/${size}/apps/${icon_name}" \
+        "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${icon_name}"
+    done
   done
 
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/com.linuxsoundboard.app.desktop" <<'EOF'
@@ -80,7 +93,7 @@ Type=Application
 Name=Linux Soundboard
 Comment=A Linux soundboard with PipeWire virtual mic support
 Exec=linux-soundboard
-Icon=com.linuxsoundboard.app
+Icon=linux-soundboard
 Terminal=false
 Categories=AudioVideo;Audio;
 Keywords=soundboard;audio;pipewire;microphone;
