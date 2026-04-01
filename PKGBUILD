@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-git
 pkgver=r4.0dabc1d
-pkgrel=3
+pkgrel=4
 pkgdesc="Shorin DMS Niri desktop environment (Dependencies & Dotfiles)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -38,7 +38,7 @@ depends=(
     'timg' 'imagemagick' 'shorin-contrib-git' 'fastfetch'
 
     # Flatpak & Theme
-    'flatpak' 'bazaar' 'matugen' 'adw-gtk-theme' 'python-pywalfox' 'nwg-look'
+    'flatpak' 'bazaar' 'matugen' 'adw-gtk-theme' 'python-pywalfox' 'nwg-look' 'breeze-cursors'
     
     # input method (把输入法依赖直接写在这里)
     'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'fcitx5-rime' 'rime-ice-git' 'rime-wubi'

@@ -1,7 +1,7 @@
 pkgbase = shorin-dms-niri-git
 	pkgdesc = Shorin DMS Niri desktop environment (Dependencies & Dotfiles)
 	pkgver = r4.0dabc1d
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/SHORiN-KiWATA/shorin-dms-niri
 	arch = any
 	license = GPL
@@ -70,6 +70,7 @@ pkgbase = shorin-dms-niri-git
 	depends = adw-gtk-theme
 	depends = python-pywalfox
 	depends = nwg-look
+	depends = breeze-cursors
 	depends = fcitx5
 	depends = fcitx5-configtool
 	depends = fcitx5-gtk
