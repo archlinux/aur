@@ -1,0 +1,34 @@
+pkgbase = perl-uri-namespacemap
+	pkgdesc = Namespace manipulation and prefix mapping for XML, RDF, etc.
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://metacpan.org/release/KJETILK/URI-NamespaceMap-1.12
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-deep
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-requires
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.17
+	depends = perl-carp
+	depends = perl-iri>=0.004
+	depends = perl-module-load-conditional
+	depends = perl-moo>=1.006000
+	depends = perl-namespace-autoclean>=0.20
+	depends = perl-sub-quote
+	depends = perl-try-tiny
+	depends = perl-type-tiny>=1.000000
+	depends = perl-types-uri>=0.004
+	depends = perl-uri>=1.52
+	depends = perl>=5.8.1
+	optdepends = perl-attean
+	optdepends = perl-rdf-ns
+	optdepends = perl-rdf-ns-curated
+	optdepends = perl-rdf-prefixes
+	optdepends = perl-rdf-trine
+	optdepends = perl-xml-commonns
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/K/KJ/KJETILK/URI-NamespaceMap-1.12.tar.gz
+	sha256sums = b05c3fb3cbcec9db925c039a0814ac4bcc2962e6b367d32fc339d79e9510e6b8
+
+pkgname = perl-uri-namespacemap

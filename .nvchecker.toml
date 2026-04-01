@@ -1,0 +1,3 @@
+[perl-uri-namespacemap]
+source = "cpan"
+cpan = "URI-NamespaceMap"
