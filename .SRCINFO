@@ -1,0 +1,22 @@
+pkgbase = blockcheckw-bin
+	pkgdesc = Parallel DPI bypass strategy scanner (prebuilt binary)
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = https://github.com/rcd27/blockcheckw
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = zapret2
+	depends = nftables
+	provides = blockcheckw
+	conflicts = blockcheckw
+	options = !strip
+	options = !debug
+	source = LICENSE-0.8.5::https://raw.githubusercontent.com/rcd27/blockcheckw/v0.8.5/LICENSE
+	sha256sums = 368255ced66b701e18bb502017f0eab8864c99c68dfa242e77b48ebe1fecb938
+	source_x86_64 = blockcheckw-0.8.5-x86_64.tar.gz::https://github.com/rcd27/blockcheckw/releases/download/v0.8.5/blockcheckw-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9efd11bfeae46eaaca9d7b5525d5e4482aa8662ca481ded1981778b15a709707
+	source_aarch64 = blockcheckw-0.8.5-aarch64.tar.gz::https://github.com/rcd27/blockcheckw/releases/download/v0.8.5/blockcheckw-linux-arm64.tar.gz
+	sha256sums_aarch64 = cf7d15c99b241dec3f1cd6a480a25ea28bbc9ca91e92e659ec83034c3c9eaad6
+
+pkgname = blockcheckw-bin
