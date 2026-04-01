@@ -1,12 +1,12 @@
 # Maintainer: BonnyAD9 (Bonny4)
 pkgname=makemake
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.2.2
+pkgrel=1
 pkgdesc="Program for creating and using folder templates, written in rust"
 arch=(x86_64)
 url="https://github.com/BonnyAD9/makemake-rs"
 license=('MIT')
-depends=(glibc gcc-libs)
+depends=(glibc libgcc)
 makedepends=(git cargo)
 optdepends=()
 provides=(makemake)
