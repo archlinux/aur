@@ -1,7 +1,7 @@
 # Maintainer: futpib-bot <futpib-bot@users.noreply.github.com>
 
 pkgname=slopd-git
-pkgver=r73.542df03
+pkgver=r146.8bddbfa
 pkgrel=1
 pkgdesc="Claude agent session manager daemon"
 arch=('x86_64')
@@ -29,6 +29,8 @@ build() {
     cd "$srcdir/slopd"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    CFLAGS+=" -ffat-lto-objects"
+    CXXFLAGS+=" -ffat-lto-objects"
     cargo build --frozen --release --workspace
 }
 
