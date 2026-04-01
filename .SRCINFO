@@ -1,0 +1,35 @@
+pkgbase = claude-code-api-git
+	pkgdesc = OpenAI-compatible API gateway for Claude Code CLI
+	pkgver = r30.b0cc14c
+	pkgrel = 1
+	url = https://github.com/codingworkflow/claude-code-api
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = python-fastapi
+	depends = uvicorn
+	depends = python-pydantic
+	depends = python-pydantic-settings
+	depends = python-httpx
+	depends = python-aiofiles
+	depends = python-structlog
+	depends = python-multipart
+	depends = python-sqlalchemy
+	depends = python-greenlet
+	depends = python-aiosqlite
+	depends = python-alembic
+	depends = python-passlib
+	depends = python-jose
+	depends = python-dotenv
+	depends = python-openai
+	provides = claude-code-api
+	conflicts = claude-code-api
+	source = claude-code-api::git+https://github.com/codingworkflow/claude-code-api.git
+	sha256sums = SKIP
+
+pkgname = claude-code-api-git
