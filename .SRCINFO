@@ -1,0 +1,20 @@
+pkgbase = rofi-file-browser-extended
+	pkgdesc = Use rofi to quickly open files
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/marvinkreis/rofi-file-browser-extended
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = glib2
+	makedepends = cairo
+	depends = rofi
+	provides = rofi-file-browser-extended
+	conflicts = rofi-file-browser-extended-git
+	replaces = rofi-file_browser-extended
+	source = rofi-file-browser-extended-1.3.1.tar.gz::https://github.com/marvinkreis/rofi-file-browser-extended/archive/refs/tags/1.3.1.tar.gz
+	source = fix-icon-fn-ptr.patch::https://github.com/marvinkreis/rofi-file-browser-extended/pull/49.patch
+	sha256sums = 9e010e671533dd747e6e7ae4ed290b6e2829e758ca073381fa8a8fe53e004660
+	sha256sums = 71ed730523afbc16cc5b7f47098100596591f50b3118b0f61e315dca45cf9ea5
+
+pkgname = rofi-file-browser-extended
