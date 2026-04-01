@@ -7,36 +7,47 @@ pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64' 'pentium4' 'i686' 'armv7h')
 url="https://github.com/qr243vbi/nekobox"
 license=('GPL-3.0-or-later')
-makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost' 'pkgconfig' 'ccache' 'ninja' 'jq' 'curl' 'coreutils' 'git' 'cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs' 'acl')
+makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost' 'pkgconfig' 'ccache' 'ninja' 'jq' 'curl' 'coreutils' 'git' 'cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'boost-libs' 'acl' 'patchelf' 'ccache')
 source=()
 sha256sums=()
 
 nekobox_source_directory="nekobox-unified-source-${pkgver}"
 
 build() {
-    export DEST=$PWD/build
+    export NEKOBOX_QT_BUILD=$PWD/build
+    export NEKOBOX_CORE_BUILD=$PWD/build_go
     pushd "${nekobox_source_directory}"
+
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOARCH=""
     export GOOS=linux
-    export SKIP_UPDATER=y
-    if [[ "${nekobox_source_directory}" != "nekobox-git" ]]
+
+    if [[ -d "core/server/vendor" ]]
     then
-      export GOFLAGS='-mod=vendor'
+      export GO_MOD_TIDY=OFF
+    else
+      export GO_MOD_TIDY=ON
     fi
-    export VERSION_SINGBOX="$(cat SingBox.Version)"
-    ( bash -x script/build_go.sh ; )
+
+
+    cmake -B "${NEKOBOX_CORE_BUILD}" -S ./core \
+        -D SKIP_UPDATER=ON \
+        -D GO_MOD_TIDY="${GO_MOD_TIDY}"
     
-    cmake -B "${DEST}" -S . \
-        -D CMAKE_BUILD_TYPE=Release \
-        -D CMAKE_INSTALL_PREFIX=/usr \
-        -D SKIP_UPDATE_BUTTON=ON \
+    cmake -B "${NEKOBOX_QT_BUILD}" -S . \
+        -D BUILD_GO_PARTS=OFF \
+        -D SKIP_UPDATER=ON \
         -D "NKR_DEFAULT_VERSION=${pkgver}" \
         -W no-dev -GNinja
-    cmake --build "${DEST}" -j "$(nproc)" -v
+
+    for i in "${NEKOBOX_CORE_BUILD}" "${NEKOBOX_QT_BUILD}"
+    do
+        cmake --build "${i}" -j "$(nproc)" -v
+    done
+
     popd
 }
 
@@ -44,38 +55,14 @@ packagecore() {
     depends=('gcc-libs' 'glibc')
     provides=('sing-box')
     conflicts=('sing-box')
-    install -Dm755 "$DEST"/nekobox_core -t "${pkgdir}/usr/lib/Iblis"
-    upx "${pkgdir}/usr/lib/Iblis/nekobox_core"
+    DESTDIR="${pkgdir}" cmake --install "${NEKOBOX_CORE_BUILD}"
 }
 
 packageapp() {
     depends=('acl' 'bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' "$1" 'thrift' 'boost-libs')
     provides=('nekoray')
     conflicts=('nekoray')
-
-    gendesk -f -n \
-        --pkgname "${pkgname}" \
-        --pkgdesc "${pkgdesc}" \
-        --name "${pkgname^}" \
-        --categories 'Network'
-
-    install -Dm755 "$DEST"/nekobox -t "${pkgdir}/usr/lib/Iblis"
-    upx "${pkgdir}/usr/lib/Iblis/nekobox"
-
-    echo '#!/bin/bash -x' > "nekobox.sh"
-    echo 'exec /usr/lib/Iblis/nekobox -appdata "$@"' >> "nekobox.sh"
-
-    echo '#!/bin/bash -x' > "sing-box.sh"
-    echo 'exec /usr/lib/Iblis/nekobox_core sing-box "$@"' >> "sing-box.sh"
-    install -Dm755 "nekobox.sh" "${pkgdir}/usr/bin/nekobox"
-    install -Dm755 "sing-box.sh" "${pkgdir}/usr/bin/sing-box"
-    install -Dm644 "nekobox.desktop" -t "${pkgdir}/usr/share/applications"
-
-    cd "${nekobox_source_directory}"
-    install -Dm644 srslist.json -t "${pkgdir}/usr/lib/Iblis"
-    cp -RfvT "res/public" "${pkgdir}/usr/lib/Iblis/public"
-    cp "$DEST"/*.qm "res/languages.txt" "${pkgdir}/usr/lib/Iblis/public"
-    install -Dm644 res/public/icon.png "${pkgdir}/usr/share/pixmaps/nekobox.png"
+    DESTDIR="${pkgdir}" cmake --install "${NEKOBOX_QT_BUILD}"
 }
 
 clearsources(){

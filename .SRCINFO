@@ -31,9 +31,10 @@ pkgbase = nekobox-git
 	makedepends = qt6-tools
 	makedepends = vulkan-headers
 	makedepends = cpio
-	makedepends = upx
 	makedepends = boost-libs
 	makedepends = acl
+	makedepends = patchelf
+	makedepends = ccache
 
 pkgname = nekobox-git
 
