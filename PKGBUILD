@@ -1,51 +1,50 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
 
-pkgname='perl-cache-lru'
-pkgver='0.04'
-pkgrel='1'
-pkgdesc="a simple, fast implementation of LRU cache in pure perl"
+_author=KAZUHO
+_dist=Cache-LRU
+pkgname=perl-${_dist@L}
+pkgver=0.04
+pkgrel=2
+pkgdesc='a simple, fast implementation of LRU cache in pure perl'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=('perl>=5.8.1')
+makedepends=(
+    'perl-extutils-makemaker>=6.42'
+    'perl-test-requires'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl')
-makedepends=()
-checkdepends=('perl-test-requires')
-url='http://search.mcpan.org/dist/Cache-LRU'
-source=('http://search.mcpan.org/CPAN/authors/id/K/KA/KAZUHO/Cache-LRU-0.04.tar.gz')
-md5sums=('e7b3768fdae203bec7a9bd9b8a6b7a90')
-sha512sums=('9fd4f56da78e4b8e291c4291ccb2e34bc50f7294fc8ff1d942d21fb116a5613c96f8e55ef9bb95a7ae3e810e791d3edf2f9f15063fd0fb85414a8e8964e88118')
-_distdir="Cache-LRU-0.04"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('1a38d62365ded89315568a80c31f5bf77f1330bf20463ce11a35a6489a6abdc4')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
