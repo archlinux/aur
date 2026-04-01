@@ -31,11 +31,12 @@ pkgbase = nekobox
 	makedepends = qt6-tools
 	makedepends = vulkan-headers
 	makedepends = cpio
-	makedepends = upx
 	makedepends = boost-libs
 	makedepends = acl
+	makedepends = patchelf
+	makedepends = ccache
 	source = https://github.com/qr243vbi/nekobox/releases/download/5.10.29/nekobox-unified-source-5.10.29.tar.xz
-	sha256sums = 3d60f52956a5f19fe1d96094ece74bbb96267f1df262ad6ea2c33da5ed3ff377
+	sha256sums = 2973ed68494b584b9ff5a2443ccef0e22266f8867b6e6a6f2c033e471c2904d0
 
 pkgname = nekobox
 
