@@ -1,7 +1,7 @@
 pkgbase = wsjtcb
 	pkgdesc = CB-oriented fork of WSJT-X for weak-signal digital communications on 27 MHz
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vash909/WSJT-CB
 	arch = x86_64
 	license = GPL-3.0-only
@@ -24,8 +24,6 @@ pkgbase = wsjtcb
 	provides = wsjtcb
 	conflicts = wsjtcb-git
 	source = WSJT-CB-WSJT-CB-1.1.0::git+https://github.com/vash909/WSJT-CB.git#tag=WSJT-CB-1.1.0
-	source = fix-equalizationtoolsdialog-pimpl-dtor.patch
 	sha256sums = SKIP
-	sha256sums = 6cbddf5f92408931666575ad09d1ac6ea4208aec5a0e5bd1a53155d561eee925
 
 pkgname = wsjtcb

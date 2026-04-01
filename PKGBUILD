@@ -2,7 +2,7 @@
 
 pkgname=wsjtcb
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CB-oriented fork of WSJT-X for weak-signal digital communications on 27 MHz'
 arch=('x86_64')
 url='https://github.com/vash909/WSJT-CB'
@@ -35,16 +35,21 @@ _tag="WSJT-CB-${pkgver}"
 _srcdir="${_srcname}-${_tag}"
 source=(
   "${_srcdir}::git+${url}.git#tag=${_tag}"
-  'fix-equalizationtoolsdialog-pimpl-dtor.patch'
 )
 sha256sums=(
   'SKIP'
-  '6cbddf5f92408931666575ad09d1ac6ea4208aec5a0e5bd1a53155d561eee925'
 )
 
 prepare() {
   cd "${_srcdir}"
-  patch -Np1 -i "${srcdir}/fix-equalizationtoolsdialog-pimpl-dtor.patch"
+
+  # Add the out-of-line destructor required by the pimpl helper, regardless of
+  # whether the upstream checkout uses LF or CRLF line endings.
+  perl -0pi -e 's/(, QWidget \* = nullptr\);)(\r?\n)/$1$2  ~EqualizationToolsDialog ();$2/' \
+    EqualizationToolsDialog.hpp
+
+  perl -0pi -e 's/(void EqualizationToolsDialog::show \(\))/EqualizationToolsDialog::~EqualizationToolsDialog () = default;\n\n$1/' \
+    EqualizationToolsDialog.cpp
 }
 
 build() {
