@@ -1,0 +1,24 @@
+pkgbase = perl-http-thin
+	pkgdesc = A Thin Wrapper around HTTP::Tiny to play nice with HTTP::Message
+	pkgver = 0.006
+	pkgrel = 1
+	url = https://metacpan.org/release/PERIGRIN/HTTP-Thin-0.006
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker>=6.30
+	depends = perl
+	depends = perl-class-method-modifiers
+	depends = perl-hash-multivalue
+	depends = perl-http-message
+	depends = perl-http-tiny
+	depends = perl-parent
+	depends = perl-safe-isa
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERIGRIN/HTTP-Thin-0.006.tar.gz
+	sha256sums = c4a78588c194603222b0a6b426e61692189def0ce4a0581791873b8720f79e9e
+
+pkgname = perl-http-thin

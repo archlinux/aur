@@ -1,0 +1,3 @@
+[perl-http-thin]
+source = "cpan"
+cpan = "HTTP-Thin"
