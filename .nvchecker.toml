@@ -1,0 +1,3 @@
+[perl-uri-fromhash]
+source = "cpan"
+cpan = "URI-FromHash"
