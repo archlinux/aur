@@ -2,7 +2,7 @@
 # https://github.com/stiermid/aur-pkgbuilds
 
 pkgname="nob.h"
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="Header only library for writing build recipes in C"
 arch=('any')
@@ -17,7 +17,7 @@ options=()
 install=
 changelog=
 source=("nob.h-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('250b20f43941863405860d095de1fdbfafc3cc5e9910118e875a9127f4723a10')
+sha256sums=('7133b1cf34bf432088b9a9959ca07cae7da63eac134cf25bb08d49796b88f09f')
 
 package() {
 	cd "$pkgname-$pkgver"
