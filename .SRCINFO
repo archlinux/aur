@@ -1,6 +1,6 @@
 pkgbase = hubdev-bin
 	pkgdesc = Hybrid Development Environment Manager — manage local dev services with a native GUI
-	pkgver = 1.9.13
+	pkgver = 1.9.17
 	pkgrel = 1
 	url = https://hubdev.io
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = hubdev-bin
 	optdepends = composer: PHP dependency manager
 	provides = hubdev
 	conflicts = hubdev
-	source = hubdev-1.9.13-linux-amd64::https://pub-51b22bf3fd5a4d73a4ed580105cfc09f.r2.dev/v1.9.13/hubdev-linux-amd64
+	source = hubdev-1.9.17-linux-amd64::https://pub-51b22bf3fd5a4d73a4ed580105cfc09f.r2.dev/v1.9.17/hubdev-linux-amd64
 	source = hubdev.desktop
 	source = hubdev.png::https://apt.hubdev.io/assets/hubdev.png
-	sha256sums = 98018f63a305cd9186d2e905fe22c91be9ba3e2c286cea58ce983ef484a0f4c8
+	sha256sums = 22e4024e5f7f30a157929e5090c918a0233404185ecea3405473478c748dcb04
 	sha256sums = SKIP
 	sha256sums = SKIP
 
