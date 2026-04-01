@@ -1,0 +1,3 @@
+[perl-catalyst-plugin-session-state-cookie]
+source = "cpan"
+cpan = "Catalyst-Plugin-Session-State-Cookie"
