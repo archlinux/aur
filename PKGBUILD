@@ -1,7 +1,7 @@
 # Maintainer: yeggis <yeggis@users.noreply.github.com>
 pkgname=chevren
 pkgver=1.0.19
-pkgrel=2
+pkgrel=3
 pkgdesc="Turkish subtitle generator for YouTube videos and local files"
 arch=('x86_64')
 url="https://github.com/yeggis/chevren"
@@ -28,11 +28,8 @@ package() {
 
   # venv'i srcdir'de oluştur
   python -m venv "$srcdir/venv"
-  "$srcdir/venv/bin/pip" install --upgrade pip --quiet
   "$srcdir/venv/bin/pip" install \
-    faster-whisper google-genai \
-    "urllib3>=2.0" \
-    "charset-normalizer>=3.0" \
+    -r "$srcdir/$pkgname-$pkgver/requirements.txt" \
     --no-compile \
     --quiet
 
