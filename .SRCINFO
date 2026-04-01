@@ -1,6 +1,6 @@
 pkgbase = hops-git
 	pkgdesc = TUI for managing /etc/hosts profiles
-	pkgver = 0.1.0.r0.gc4f3efd
+	pkgver = 0.1.0.r0.g6cfea3d
 	pkgrel = 1
 	url = https://github.com/houz42/hops
 	arch = x86_64
