@@ -2,8 +2,8 @@
 # Based on: https://archlinux.org/packages/extra/x86_64/zeal/
 
 pkgname=zeal-i3-shortcuts
-pkgver=0.7.2
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='Offline API documentation browser, with X11/i3 shortcut patches'
 arch=('x86_64')
 url='https://zealdocs.org'

@@ -1,7 +1,7 @@
 pkgbase = zeal-i3-shortcuts
 	pkgdesc = Offline API documentation browser, with X11/i3 shortcut patches
-	pkgver = 0.7.2
-	pkgrel = 3
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = https://zealdocs.org
 	arch = x86_64
 	license = GPL-3.0-or-later
