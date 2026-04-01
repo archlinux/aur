@@ -3,7 +3,7 @@ pkgname=stremio-enhanced-bin
 _pkgname=Stremio.Enhanced
 pkgver=1.1.1
 _electronversion=41
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron-based Stremio client with plugins and themes support. It runs the Stremio Service automatically and loads the web version of Stremio.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -48,7 +48,11 @@ prepare() {
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _get_electron_version
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    # Only replace the Exec command, keep original StartupWMClass and other fields
+    sed -i -e "
+        s/^Exec=.*/Exec=${pkgname%-bin} %U/g
+        s/StartupWMClass=${_pkgname//./ }/StartupWMClass=${pkgname%-bin}/g
+    " "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

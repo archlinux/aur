@@ -1,7 +1,7 @@
 pkgbase = stremio-enhanced-bin
 	pkgdesc = An Electron-based Stremio client with plugins and themes support. It runs the Stremio Service automatically and loads the web version of Stremio.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://discord.gg/jDsgcehrp7
 	arch = aarch64
 	arch = x86_64
