@@ -1,6 +1,6 @@
 pkgbase = phasor
 	pkgdesc = Phasor Programming Language Toolchain
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/DanielLMcGuire/Phasor
 	install = phasor.install
@@ -14,7 +14,7 @@ pkgbase = phasor
 	conflicts = phasor-dev
 	options = strip
 	options = !debug
-	source = https://github.com/DanielLMcGuire/Phasor/archive/refs/tags/3.1.0.tar.gz
-	sha256sums = ec2417e74dcc7c84fc695899ac7974869f192b88aded4adffb717dc76e2a5dc4
+	source = https://github.com/DanielLMcGuire/Phasor/archive/refs/tags/3.1.1.tar.gz
+	sha256sums = 02f8d2764f1438b2b45d4e58db6d724ccda934d024b1a1ede2e30915cd13c43a
 
 pkgname = phasor
