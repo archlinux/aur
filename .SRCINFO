@@ -1,0 +1,14 @@
+pkgbase = stone-paper-scissors
+	pkgdesc = A classic command-line Stone-Paper-Scissors game against a computer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Rithwik-7274/Stone-Paper-Scissors-Game
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	depends = figlet
+	source = stone-paper-scissors-1.0.0.tar.gz::https://github.com/Rithwik-7274/Stone-Paper-Scissors-Game/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 1ccc1316dded2f0dac179b412775c22aefa138f4e75a57ebae0e5bc23de1c78c
+
+pkgname = stone-paper-scissors
