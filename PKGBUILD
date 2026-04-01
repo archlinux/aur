@@ -1,12 +1,12 @@
 # Maintainer: BonnyAD9 (Bonny4)
 pkgname=mproc
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Small CLI utitlity to measure process runtime and memory usage."
 arch=(x86_64)
 url="https://github.com/BonnyAD9/mproc/"
 license=('GPL-3.0-or-later')
-depends=(gcc-libs glibc)
+depends=(glibc libgcc)
 makedepends=(cargo)
 optdepends=()
 provides=()
