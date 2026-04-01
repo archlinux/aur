@@ -1,0 +1,3 @@
+[perl-attean]
+source = "cpan"
+cpan = "Attean"
