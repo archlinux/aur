@@ -1,0 +1,16 @@
+pkgbase = repocheck
+	pkgdesc = Fast CLI tool to scan git repos for health problems — missing files, hardcoded secrets, stale branches, and more
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Wtmartin8089/repocheck
+	arch = x86_64
+	license = MIT
+	depends = git
+	provides = repocheck
+	conflicts = repocheck-git
+	source = repocheck-0.1.0::https://github.com/Wtmartin8089/repocheck/releases/download/v0.1.0/repocheck
+	source = LICENSE::https://github.com/Wtmartin8089/repocheck/raw/master/LICENSE
+	sha256sums = fc550af08450e438c09cacbca3dd2aa1b9b614f1e0df8777b00402528fda1bc3
+	sha256sums = SKIP
+
+pkgname = repocheck
