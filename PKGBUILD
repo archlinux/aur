@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.7.20
+pkgver=5.7.31
 pkgrel=1
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
@@ -16,15 +16,13 @@ sha256sums=('SKIP'
             'd2b4ab803ca9df63052b4c3ae85c469271abd1257ce6d463ac280b7363e1dec3'
             '5fab0cfadc8366ebd2be9d06ff36dbd3a84b18f679ea3babb3c739e7e13acefd'
             '50e65fe5407024a71c2fa27d379901ece965e0fb788070665cf3a194b402d901'
-            '23ac94f40a185dcd829bd71220056c0591cf50e640b787ec26bb832c3de6f055'
             '9b7be4cb912290ed1164dbc3c5f6714c5a9525cc41a4d7ba3115cdbe312a9320'
             'a6b504ce331ef5953f38db6f2b3c18c3d5ed796eed29381bbe76a931cf3f9fa5')
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=d17839c04bfe9704c15e628a6c3110e2b1285ffe
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=4699999cc69dc5275750238579046a30588bd55c
 		https://pub.cellframe.net/python/python-cellframe/pycfhelpers/master/pycfhelpers-1.0.11-py3-none-any.whl
 		https://pub.cellframe.net/python/python-cellframe/pycftools/master/pycftools-1.0.0-py3-none-any.whl
 		cellframe-node.logrotate
 		cellframe-node.service
-		cellframe-node-asan.service
 		cellframe-node-tmpfiles.conf
 		cellframe-node-sysusers.conf)
 options=(!debug !strip)
@@ -37,63 +35,20 @@ prepare() {
 	sed -i 's|url = \.\./\.\./|url = https://gitlab.demlabs.net/|g' "$srcdir/$pkgname/.gitmodules"
 	sed -i 's|url = \.\./|url = https://gitlab.demlabs.net/cellframe/|g' "$srcdir/$pkgname/.gitmodules"
 	cd "$pkgname" && git submodule update --init --recursive --progress
+	find "$srcdir/$pkgname" -name 'OS_Detection.cmake' -exec \
+		sed -i '/add_compile_options(-Werror)/d' {} +
 }
 
 build() {
-	if [ -n "$CELLFRAME_ASAN" ]; then
-		cp "$srcdir/$pkgname-asan.service" "$srcdir/$pkgname/dist.linux/share/$pkgname.service"
-	else
-		cp "$srcdir/$pkgname.service" "$srcdir/$pkgname/dist.linux/share/$pkgname.service"
-	fi
-
+	cp "$srcdir/$pkgname.service" "$srcdir/$pkgname/dist.linux/share/$pkgname.service"
 	cd "$pkgname"
 
-	if [ -n "$CELLFRAME_DEBUG" ]; then
-		BUILD_TYPE="Debug"
-	else
-		BUILD_TYPE="RelWithDebInfo"
-	fi
-
-	if [ -n "$CELLFRAME_NO_OPTIMIZATION" ]; then
-		if [ -n "$CELLFRAME_ASAN" ]; then
-			echo ":: Building with Address Sanitizer (ASAN) enabled, without optimization..."
-			cmake -B build \
-				-DDAP_CRYPTO_XKCP_PLAINC=ON \
-				-DCMAKE_BUILD_TYPE=Debug \
-				-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-				-DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types -fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
-				-DCMAKE_LINKER_FLAGS="-fsanitize=address" \
-				-Wno-dev
-		else
-			echo ":: Building without optimization..."
-			cmake -B build \
-				-DDAP_CRYPTO_XKCP_PLAINC=ON \
-				-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
-				-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-				-DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types" \
-				-DCELLFRAME_NO_OPTIMIZATION=OFF \
-				-Wno-dev
-		fi
-	elif [ -n "$CELLFRAME_ASAN" ]; then
-		echo ":: Building with Address Sanitizer (ASAN) enabled..."
-		cmake -B build \
-			-DCMAKE_BUILD_TYPE=Debug \
-			-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-			-DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types -fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
-			-DCMAKE_LINKER_FLAGS="-fsanitize=address" \
-			-DCELLFRAME_NO_OPTIMIZATION=OFF \
-			-Wno-dev \
-			-Wno-error=incompatible-pointer-types
-	else
-		echo ":: Building with normal optimization..."
-		cmake -B build \
-			-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
-			-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-			-DCELLFRAME_NO_OPTIMIZATION=OFF \
-			-DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types" \
-			-Wno-dev \
-			-Wno-error=incompatible-pointer-types
-	fi
+	cmake -B build \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+		-DDAP_MANAGE_CFLAGS=OFF \
+		-DCELLFRAME_NO_OPTIMIZATION=OFF \
+		-Wno-dev
 
 	cmake --build build --clean-first
 }
