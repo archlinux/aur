@@ -29,5 +29,5 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     install -Dm644 misc/openmeters.desktop "$pkgdir/usr/share/applications/openmeters.desktop"
-    install -Dm644 misc/openmeters.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/openmeters.png"
+    install -Dm644 misc/openmeters.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/openmeters.svg"
 }
