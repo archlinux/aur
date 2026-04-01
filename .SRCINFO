@@ -1,0 +1,20 @@
+pkgbase = gaur-bin
+	pkgdesc = A beautiful, interactive TUI for Arch Linux package management (prebuilt binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/prbhtkumr/gaur
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = fzf
+	depends = pacman-contrib
+	optdepends = paru: AUR helper (recommended)
+	optdepends = yay: AUR helper (alternative)
+	optdepends = reflector: mirror list updates
+	provides = gaur
+	conflicts = gaur
+	source = gaur-1.0.0::https://github.com/prbhtkumr/gaur/releases/download/v1.0.0/gaur-linux-x86_64
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/prbhtkumr/gaur/v1.0.0/LICENSE
+	sha256sums = adaf4b81a2663ed20d361e8df11294d905fc73871e09206fa71148ea3351b515
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = gaur-bin
