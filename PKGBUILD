@@ -4,7 +4,7 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.1.9669
-pkgrel=7
+pkgrel=8
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -18,17 +18,18 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'xclip: Computer Use clipboard access (X11)'
             'wmctrl: Computer Use running app detection (X11)'
             'xorg-xrandr: Computer Use display enumeration (X11)'
-            'ydotool: Computer Use input automation (Wayland)'
-            'grim: Computer Use screenshots (Wayland/wlroots)'
+            'ydotool: Computer Use input automation (Wayland — requires ydotoold daemon running)'
+            'grim: Computer Use screenshots (Wayland/wlroots — Sway, Hyprland)'
             'slurp: Computer Use region selection (Wayland/wlroots)'
             'wl-clipboard: Computer Use clipboard access (Wayland)'
             'wlr-randr: Computer Use display enumeration (Wayland/wlroots)'
+            'spectacle: Computer Use screenshots on KDE Plasma Wayland (pre-installed on KDE)'
             'hyprland: Quick Entry cursor positioning on Hyprland Wayland (hyprctl)'
             'socat: Cowork socket health check in launcher (fallback: age-based check)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.9669-7/claude-desktop-1.1.9669-linux.tar.gz")
-sha256sums_x86_64=('d4cddc0e74da8554e8c46dc301e7d24e21847083934612fbc644d10dd0a76cdb')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.9669-8/claude-desktop-1.1.9669-linux.tar.gz")
+sha256sums_x86_64=('2f9d595f210f09db13963ca50662745ef90138fda7ec6d8ef519e9c17b6ec7fd')
 options=('!strip')
 
 package() {
