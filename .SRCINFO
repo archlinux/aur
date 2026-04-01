@@ -1,6 +1,6 @@
 pkgbase = ffvship-git
 	pkgdesc = A Library for GPU-accelerated visual fidelity metrics, featuring SSIMULACRA2, Butteraugli and CVVDP.
-	pkgver = 4.0.2.r16.gae43ead
+	pkgver = 4.0.2.r31.g401a78e
 	pkgrel = 1
 	url = https://github.com/Line-fr/Vship
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = ffvship-git
 	makedepends = git
 	depends = glibc
 	depends = ffms2
-	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
 	optdepends = cuda: For FFVship-nvidia
 	optdepends = hip-runtime-amd: For FFVship-amd
 	provides = ffvship

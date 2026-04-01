@@ -1,12 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=ffvship-git
-pkgver=4.0.2.r16.gae43ead
+pkgver=4.0.2.r31.g401a78e
 pkgrel=1
 pkgdesc=" A Library for GPU-accelerated visual fidelity metrics, featuring SSIMULACRA2, Butteraugli and CVVDP. "
 arch=('x86_64')
 url="https://github.com/Line-fr/Vship"
 license=('MIT')
-depends=('glibc' 'ffms2' 'gcc-libs')
+depends=('glibc' 'ffms2' 'libgcc' 'libstdc++')
 makedepends=('cuda' 'hip-runtime-amd' 'patchelf' 'clang' 'git')
 provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}")
