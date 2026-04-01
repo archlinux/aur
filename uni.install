@@ -3,8 +3,8 @@
 
 post_install() {
   cat <<__EOT__
-»  NB: Vim users can find a uni.vim script in
-»      	/usr/share/doc/uni/uni.vim
+»  NB: dmenu and vim users can find relevant scripts in
+»      	/usr/share/doc/uni/
 __EOT__
 }
 

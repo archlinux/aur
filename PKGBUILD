@@ -6,7 +6,7 @@
 
 pkgname=uni
 pkgver=2.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Query the Unicode database from the commandline, with good support for emojis'
 url='https://github.com/arp242/uni'
 arch=('aarch64' 'x86_64')
@@ -56,7 +56,7 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/bin" "$pkgname"
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
-    CHANGELOG.md README.md uni.vim
+    CHANGELOG.md README.md dmenu-uni uni.vim
 }
 
 # eof
