@@ -13,7 +13,7 @@ b2sums=('7a543c7867ebe1e4c94e52d0f5e480cf6255534be48d3f00e0514cd7e2c37ae9b9f877b
 license=('Apache-2.0')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -26,9 +26,9 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
   install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  cd "${srcdir}/bin"
+  cd "${srcdir}/bin" || exit
   install -Dm 755 'multi-gitter' "${pkgdir}/usr/bin/multi-gitter"
 }
