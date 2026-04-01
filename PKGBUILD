@@ -1,7 +1,7 @@
 # Maintainer: Xerxes_2 <dspxue@gmail.com>
 pkgname=helix-steel-git
 _pkgname=helix
-pkgver=r0.00000000
+pkgver=20260401.7bb30467
 pkgrel=1
 pkgdesc="Helix fork with Steel event system support (git, replaces helix)"
 url="https://github.com/mattwparas/helix"
@@ -23,7 +23,7 @@ _rt_path="${_lib_path}/runtime"
 
 pkgver() {
     cd "${_pkgname}"
-    printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short=8 HEAD)"
+    printf "%s.%s" "$(git log -1 --format=%cd --date=format:%Y%m%d)" "$(git rev-parse --short=8 HEAD)"
 }
 
 prepare() {
