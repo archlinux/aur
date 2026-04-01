@@ -1,10 +1,10 @@
 # Maintainer: Paul Mourer <paul.mourer at gmail dot com>
 pkgname=openchamber-desktop-git
-pkgver=1.9.1.r10.g9aadda2
+pkgver=1.9.2.r13.g00963e3
 pkgrel=1
 pkgdesc="Desktop app for OpenChamber AI coding interface (Tauri)"
 arch=('x86_64')
-url="https://github.com/btriapitsyn/openchamber"
+url="https://github.com/openchamber/openchamber"
 license=('MIT')
 provides=('openchamber-desktop')
 conflicts=('openchamber-desktop')
@@ -13,7 +13,7 @@ conflicts=('openchamber-desktop')
 options=('!strip')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
 makedepends=('git' 'rust' 'bun' 'base-devel' 'jq')
-source=("git+https://github.com/btriapitsyn/openchamber.git"
+source=("git+https://github.com/openchamber/openchamber.git"
         "openchamber-desktop.desktop")
 sha256sums=('SKIP'
             '4ccadb9cb92fb28d9e5a7ca7e9a2c75a19e4cae2164fd6e43d7a7829fe6c9c43')

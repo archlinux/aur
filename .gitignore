@@ -4,3 +4,5 @@ openchamber/
 *.tar.gz
 *.tar.xz
 *.tar.zst
+bump-version.sh
+
