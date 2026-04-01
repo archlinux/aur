@@ -1,7 +1,7 @@
 # Maintainer: Phusit Somboonyingsuk
 
 pkgname=mprisence-git
-pkgver=1.4.5
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Discord Rich Presence for MPRIS media players (git version)"
 arch=('x86_64')
@@ -9,6 +9,7 @@ url="https://github.com/lazykern/mprisence"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
+options=('!lto')
 provides=('mprisence')
 conflicts=('mprisence')
 install=mprisence-git.install
