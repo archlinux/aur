@@ -1,0 +1,26 @@
+pkgbase = apidog2-bin
+	pkgdesc = Design. Debug. Test. Document. Mock.Build APIs Faster & Together.
+	pkgver = 2.8.23
+	pkgrel = 1
+	url = https://apidog.com
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = nss
+	depends = libx11
+	depends = gtk3
+	depends = libxcb
+	depends = java-runtime
+	depends = alsa-lib
+	depends = lib32-glibc
+	depends = nodejs
+	depends = lib32-gcc-libs
+	depends = libdbusmenu-glib
+	provides = apidog
+	options = !strip
+	source_x86_64 = Apidog-2.8.23.zip::https://file-assets.apidog.com/download/Apidog-linux-latest.zip
+	source_x86_64 = apidog.desktop
+	sha256sums_x86_64 = db02a5b4f3633b1255ade2877fdf5633034bf0e4c575ac914b7b3807cdeaef9a
+	sha256sums_x86_64 = df7ead28acf1b9ed171b08c4db34efbe0d1689bce594ccc68408e75af9cb8bc5
+
+pkgname = apidog2-bin
