@@ -8,6 +8,7 @@ url='https://github.com/alchemy/clc'
 license=('MIT')
 provides=('clc')
 conflicts=('clc')
+options=(!debug)
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/clc-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/clc-linux-arm64")
