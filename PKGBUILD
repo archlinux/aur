@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=2.6.2
+pkgver=2.7.0
 _electronversion=33
 pkgrel=1
 pkgdesc="📱Graphical Scrcpy to display and control Android devices powered by Electron(Prebuilt version.Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
@@ -27,8 +27,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('b018b005aa16c087fbb532fb81a27f31d0847450eb1c7b9c8c59c9f5a20e270a')
-sha256sums_x86_64=('434ccec40bb358cef64baa1d046457885cda8080a17e0d71486e812517e8073b')
+sha256sums_aarch64=('bd045962469d36c632207650bf8269f715da1da1d26dfba202e646dd29006085')
+sha256sums_x86_64=('664ad3171cd1e5aa3f5bf2a26f7700536bda6140bc98ae8723c8b07be38ee206')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -51,12 +51,19 @@ prepare() {
     case "${CARCH}" in
         aarch64)
             ln -sf "/usr/bin/adb" "${srcdir}/opt/${_pkgname}/resources/extra/linux-arm64/scrcpy/adb"
+            ln -sf "/usr/bin/fastboot" "${srcdir}/opt/${_pkgname}/resources/extra/linux-arm64/scrcpy/fastboot"
+            ln -sf "/usr/bin/scrcpy" "${srcdir}/opt/${_pkgname}/resources/extra/linux-arm64/scrcpy/scrcpy"
+            ln -sf "/usr/share/scrcpy/scrcpy-server" "${srcdir}/opt/${_pkgname}/resources/extra/linux-arm64/scrcpy/scrcpy-server"
+            ln -sf "/usr/share/scrcpy/scrcpy-server" "${srcdir}/opt/${_pkgname}/resources/common/extra/wscrcpy/scrcpy-server"
             ;;
         x86_64)
+            ln -sf "/usr/bin/adb" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/scrcpy/adb"
+            ln -sf "/usr/bin/fastboot" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/scrcpy/fastboot"
             ln -sf "/usr/bin/gnirehtet" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/gnirehtet/gnirehtet"
             ln -sf "/usr/bin/scrcpy" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/scrcpy/scrcpy"
             ln -sf "/usr/share/scrcpy/scrcpy-server" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/scrcpy/scrcpy-server"
-            ln -sf "/usr/bin/adb" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/scrcpy/adb"
+            ln -sf "/usr/share/scrcpy/scrcpy-server" "${srcdir}/opt/${_pkgname}/resources/extra/common/wscrcpy/scrcpy-server"
+
             ;;
     esac
 }
