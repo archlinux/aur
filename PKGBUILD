@@ -1,12 +1,12 @@
 # Maintainer: BonnyAD9 (Bonny4)
 pkgname=clipr
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Small CLI utitlity reading/writing system clipboard."
 arch=(x86_64)
 url="https://github.com/BonnyAD9/clipr/"
 license=('GPL-3.0-or-later')
-depends=(gcc-libs glibc)
+depends=(glibc libgcc)
 makedepends=(cargo)
 optdepends=()
 provides=()
