@@ -1,7 +1,7 @@
 # Maintainer: futpib-bot <futpib-bot@users.noreply.github.com>
 
 pkgname=slopd-git
-pkgver=r146.8bddbfa
+pkgver=r147.d5f84dd
 pkgrel=1
 pkgdesc="Claude agent session manager daemon"
 arch=('x86_64')
