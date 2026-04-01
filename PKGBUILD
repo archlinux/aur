@@ -1,49 +1,86 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-rdf-trine'
-pkgver='1.006'
-pkgrel='1'
-pkgdesc="An RDF Framework for Perl"
+_author=GWILLIAMS
+_dist=RDF-Trine
+pkgname=perl-${_dist@L}
+pkgver=1.019
+pkgrel=1
+pkgdesc='An RDF Framework for Perl'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-algorithm-combinatorics'
+    'perl-cache-lru'
+    'perl-data-uuid'
+    'perl-dbd-sqlite>=1.14'
+    'perl-dbi'
+    'perl-dbix-connector'
+    'perl-digest-md5'
+    'perl-digest-sha'
+    'perl-error'
+    'perl-http-negotiate'
+    'perl-iri'
+    'perl-json>=2'
+    'perl-libwww'
+    'perl-log-log4perl'
+    'perl-math-bigint'
+    'perl-module-load-conditional>=0.38'
+    'perl-moose>=2'
+    'perl-moosex-arrayref'
+    'perl-scalar-list-utils>=1.24'
+    'perl-set-scalar'
+    'perl-storable'
+    'perl-text-csv-xs'
+    'perl-text-table'
+    'perl-time-hires'
+    'perl-uri>=1.52'
+    'perl-xml-commonns>=0.04'
+    'perl-xml-namespace'
+    'perl-xml-sax>=0.96'
+    'perl>=5.10.0'
+)
+makedepends=(
+    'perl-extutils-makemaker>=6.59'
+    'perl-test-deep'
+    'perl-test-exception'
+    'perl-test-json'
+    'perl-test-simple'
+)
+optdepends=(
+    'perl-term-ansicolor'
+    'perl-xml-libxml'
+)
 options=('!emptydirs')
-depends=('perl>=5.010' 'perl-algorithm-combinatorics' 'perl-data-uuid' 'perl-dbd-sqlite>=1.14' 'perl-dbi' 'perl-dbix-connector' 'perl-error' 'perl-http-negotiate' 'perl-json>=2' 'perl-libwww' 'perl-log-log4perl' 'perl-moose>=2' 'perl-moosex-arrayref' 'perl-set-scalar' 'perl-text-csv' 'perl-text-table' 'perl-uri>=1.52' 'perl-xml-commonns>=0.04' 'perl-xml-namespace' 'perl-xml-sax>=0.96')
-makedepends=('perl-test-exception' 'perl-test-json' 'perl-trycatch')
-url='http://search.cpan.org/dist/RDF-Trine'
-source=('http://search.cpan.org/CPAN/authors/id/G/GW/GWILLIAMS/RDF-Trine-1.006.tar.gz')
-md5sums=('0268d65aa0d3261384619e0348597db2')
-sha512sums=('b0be91884c2ec9b8381f021bed0779ee04c50c9274cb8a131051b9305602edc236da547090ac6572162f1d94134205698b67ed9abef31501f048b667a1e9dce6')
-_distdir="RDF-Trine-1.006"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('1bb07daa10781738aeedd8e70156868c9a70fbd310f05f2ec1f6ea02d8697060')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}

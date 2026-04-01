@@ -1,38 +1,48 @@
 pkgbase = perl-rdf-trine
 	pkgdesc = An RDF Framework for Perl
-	pkgver = 1.006
+	pkgver = 1.019
 	pkgrel = 1
-	url = http://search.cpan.org/dist/RDF-Trine
+	url = https://metacpan.org/release/GWILLIAMS/RDF-Trine-1.019
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker>=6.59
+	makedepends = perl-test-deep
 	makedepends = perl-test-exception
 	makedepends = perl-test-json
-	makedepends = perl-trycatch
-	depends = perl>=5.010
+	makedepends = perl-test-simple
 	depends = perl-algorithm-combinatorics
+	depends = perl-cache-lru
 	depends = perl-data-uuid
 	depends = perl-dbd-sqlite>=1.14
 	depends = perl-dbi
 	depends = perl-dbix-connector
+	depends = perl-digest-md5
+	depends = perl-digest-sha
 	depends = perl-error
 	depends = perl-http-negotiate
+	depends = perl-iri
 	depends = perl-json>=2
 	depends = perl-libwww
 	depends = perl-log-log4perl
+	depends = perl-math-bigint
+	depends = perl-module-load-conditional>=0.38
 	depends = perl-moose>=2
 	depends = perl-moosex-arrayref
+	depends = perl-scalar-list-utils>=1.24
 	depends = perl-set-scalar
-	depends = perl-text-csv
+	depends = perl-storable
+	depends = perl-text-csv-xs
 	depends = perl-text-table
+	depends = perl-time-hires
 	depends = perl-uri>=1.52
 	depends = perl-xml-commonns>=0.04
 	depends = perl-xml-namespace
 	depends = perl-xml-sax>=0.96
+	depends = perl>=5.10.0
+	optdepends = perl-term-ansicolor
+	optdepends = perl-xml-libxml
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/G/GW/GWILLIAMS/RDF-Trine-1.006.tar.gz
-	md5sums = 0268d65aa0d3261384619e0348597db2
-	sha512sums = b0be91884c2ec9b8381f021bed0779ee04c50c9274cb8a131051b9305602edc236da547090ac6572162f1d94134205698b67ed9abef31501f048b667a1e9dce6
+	source = https://cpan.metacpan.org/authors/id/G/GW/GWILLIAMS/RDF-Trine-1.019.tar.gz
+	sha256sums = 1bb07daa10781738aeedd8e70156868c9a70fbd310f05f2ec1f6ea02d8697060
 
 pkgname = perl-rdf-trine
-
