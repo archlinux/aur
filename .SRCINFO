@@ -1,13 +1,13 @@
 pkgbase = hextazy
 	pkgdesc = A coloful hexadecimal editor
-	pkgver = 0.8.5
+	pkgver = 0.8.6
 	pkgrel = 1
 	url = https://github.com/0xfalafel/hextazy
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = hextazy-0.8.5.tar.gz::https://github.com/0xfalafel/hextazy/archive/0.8.5.tar.gz
-	sha512sums = 0157cf356b6e950129e75d9387ca9f87819ac8e69cb808b2ca724211325d6fd3d15e84115cebd38f84b783aff6e517fb869291671d7253fcb053b315900eb343
+	source = hextazy-0.8.6.tar.gz::https://github.com/0xfalafel/hextazy/archive/0.8.6.tar.gz
+	sha512sums = abb16ebc3c07ec97cd05c674c18fac56dd61d463ab98eeebee58a82f8a5165ba510ef1641776951b9b30199c908403e9f33a571996857a51e41fe7b43f78f18e
 
 pkgname = hextazy
