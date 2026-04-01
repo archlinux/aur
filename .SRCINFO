@@ -1,0 +1,26 @@
+pkgbase = cliprithm
+	pkgdesc = Smart desktop video silence remover and clip editor built with Tauri and FFmpeg
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/BOTOOM/Cliprithm
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = patchelf
+	makedepends = rust
+	depends = ffmpeg
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	optdepends = xdg-desktop-portal: improved desktop integration for file dialogs and portals
+	provides = cliprithm
+	conflicts = cliprithm-bin
+	options = !lto
+	source = cliprithm-1.1.0.tar.gz::https://github.com/BOTOOM/Cliprithm/archive/refs/tags/cliprithm-v1.1.0.tar.gz
+	sha256sums = 6b43c049ae1b4dd345d77ee809487de0dece2d37c2c6f4b566e470887cf0722a
+
+pkgname = cliprithm
