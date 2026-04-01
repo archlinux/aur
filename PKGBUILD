@@ -3,7 +3,7 @@
 # Contributor: Eric Cheng <ericcheng@hey.com>
 
 pkgname=jellyfin-server-bin
-pkgver=10.11.6
+pkgver=10.11.7
 _pkgver="${pkgver}+deb12"
 pkgrel=1
 pkgdesc='Jellyfin server backend'
@@ -24,8 +24,8 @@ sha256sums=('d28c4219f2ab87ca7b7e9dd53710fb689d604baffd9acb3fef6b663d537944ec'
             '0f8511673816daf528625366b6c27bc7e6182e4ac789191c87474667398376e2'
             '9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228'
             'b7faa4b0c756cdb361ef5b04fddfdc416b00f1246bb3a19a34bf4d185a6a7e5a')
-sha256sums_x86_64=('bdf37bb8118ad37c0d7b2609c7697c1a10dd0c7267444c1fd81c3dc138a4d360')
-sha256sums_aarch64=('af9ded4622f228436f2ab28b0dc05b0b15f30fe13098844e93ed489d5a524cc4')
+sha256sums_x86_64=('2d01decd4be43819b5484010a1bec7fc82f009a1961f359f288d5aa458538781')
+sha256sums_aarch64=('34e0b19b07fafb80bda1d6d4f65251ce46c1d6900002c1f67a55939cbb083045')
 backup=('etc/conf.d/jellyfin')
 options=('staticlibs')
 
