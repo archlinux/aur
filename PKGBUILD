@@ -2,23 +2,24 @@
 
 pkgname=python-pyroomacoustics
 _pyname=pyroomacoustics
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Package for audio signal processing for indoor applications and beamforming algorithms'
 arch=('x86_64')
 url="https://github.com/LCAV/pyroomacoustics"
 license=('MIT')
 depends=('python-numpy' 'python-scipy')
-makedepends=('python-setuptools' 'cython' 'pybind11' 'eigen')
+makedepends=('python-setuptools' 'cython' 'pybind11' 'eigen' 'nanoflann')
 optdepends=('libsamplerate: for resampling signals'
+    'python-soxr: for resampling signals'
     'python-matplotlib: to create graphs and plots'
     'python-sounddevice: to play sound samples')
 source=(${_pyname}-${pkgver}.tar.gz::"https://github.com/LCAV/pyroomacoustics/archive/v${pkgver}.tar.gz")
-sha256sums=('5e7e1783cf4ded55d16306c990b1d1462472718762aa32695f82dbef909a37e0')
+sha256sums=('402699f55a8c410a586638991196057ba57445ba81bd66ef8fb34207cde0f3d8')
 
 build() {
   cd "$srcdir/$_pyname-$pkgver"
-  python setup.py build_ext --inplace --include-dirs="/usr/include/eigen3"
+  python setup.py build_ext --inplace --include-dirs="/usr/include/eigen3:/usr/include"
   python setup.py build
 }
 
