@@ -4,7 +4,7 @@
 
 _pkgname='solvespace'
 pkgname="${_pkgname}-git"
-pkgver=r1792.bb193890
+pkgver=r2194.3e5873e6
 pkgrel=1
 pkgdesc='Parametric 2D/3D CAD'
 arch=('x86_64')
