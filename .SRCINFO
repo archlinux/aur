@@ -1,6 +1,6 @@
 pkgbase = linutil-git
 	pkgdesc = Distro-agnostic toolbox designed to simplify everyday Linux tasks
-	pkgver = 2026.01.22+6f97c34
+	pkgver = 2026.03.06+r91b13987
 	pkgrel = 1
 	url = https://github.com/ChrisTitusTech/linutil
 	arch = x86_64
