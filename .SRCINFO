@@ -1,7 +1,7 @@
 pkgbase = check-command-git
 	pkgdesc = CLI tool to verify file existence with recursive search and color output
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 5
 	url = https://github.com
 	arch = any
 	license = MIT
