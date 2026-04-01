@@ -1,18 +1,16 @@
 pkgbase = perl-test-json
 	pkgdesc = Test JSON data
 	pkgver = 0.11
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Test-JSON
+	pkgrel = 2
+	url = https://metacpan.org/release/OVID/Test-JSON-0.11
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	depends = perl
 	depends = perl-json-any>=1.2
 	depends = perl-test-differences>=0.47
-	depends = perl-test-tester>=0.107
+	depends = perl-test-simple
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/O/OV/OVID/Test-JSON-0.11.tar.gz
-	md5sums = 408a9bcc1adc171e832950a4e0bba6c8
-	sha512sums = 81c10485a73428f11c2275fa6788045e0299d160806c6947d7022e415dd81a4e7e49478ddf077732617e707c9c8bd181d50e984c483cf12e93fe61ec3c8aee47
+	source = https://cpan.metacpan.org/authors/id/O/OV/OVID/Test-JSON-0.11.tar.gz
+	sha256sums = 07c08ab2fcc12850d1ad54fcf6afe9ad1a25a098310c3e7142af1d3cb821d7b3
 
 pkgname = perl-test-json
-
