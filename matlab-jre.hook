@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Path
+Target = opt/MATLAB/*/VersionInfo.xml
+Target = opt/MATLAB/*/sys/java/jre/glnxa64/jre/bin/java
+
+[Action]
+Description = Configuring MATLAB JRE...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/matlab-jre
