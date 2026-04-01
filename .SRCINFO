@@ -1,7 +1,7 @@
 pkgbase = wirecontrol-git
 	pkgdesc = An audio control center for pipewire
 	pkgver = r13.b9262ae
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codeberg.org/kotontrion/wirecontrol
 	arch = x86_64
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = wirecontrol-git
 	depends = libadwaita
 	depends = libastal-wireplumber
 	provides = wirecontrol
-	source = git+https://github.com/kotontrion/wirecontrol.git
+	source = git+https://codeberg.org/kotontrion/wirecontrol.git
 	sha256sums = SKIP
 
 pkgname = wirecontrol-git

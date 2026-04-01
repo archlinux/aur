@@ -3,7 +3,7 @@
 pkgname=wirecontrol-git
 _pkgname=wirecontrol
 pkgver=r13.b9262ae
-pkgrel=3
+pkgrel=4
 provides=(wirecontrol)
 pkgdesc="An audio control center for pipewire"
 arch=(x86_64)
@@ -21,7 +21,7 @@ makedepends=(
   gobject-introspection
   vala
 )
-source=("git+https://github.com/kotontrion/wirecontrol.git")
+source=("git+https://codeberg.org/kotontrion/wirecontrol.git")
 sha256sums=('SKIP')
 
 pkgver() {
