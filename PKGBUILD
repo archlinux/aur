@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-meta
 pkgver=1.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Meta package for Shorin DMS Niri dependencies"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -10,14 +10,14 @@ license=('GPL')
 depends=(
 
     # core
-    'quickshell-git' 'dms-shell-bin' 'xdg-desktop-portal-gnome' 'niri' 'xwayland-satellite' 'satty' 'slurp' 'libnotify' 
+    'dms-shell-bin' 'xdg-desktop-portal-gnome' 'niri' 'xwayland-satellite' 'satty' 'slurp' 'libnotify' 
     'imv' 'mpv' 'firefox'
 
     # fonts
     'noto-fonts' 'noto-fonts-cjk' 'noto-fonts-emoji' 
     
     # shell tool
-     'cups-pk-helper' 'kimageformats'
+    'cups-pk-helper' 'kimageformats'
     'niri-sidebar-git'  'cava' 'cliphist'
     'wl-clipboard' 'dgop' 'dsearch-bin' 'qt5-multimedia'
     
@@ -37,10 +37,8 @@ depends=(
     'flatpak' 'bazaar' 'matugen' 'adw-gtk-theme' 'python-pywalfox'  'nwg-look'
     
     # input method
-    'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'fcitx5-rime' 'rime-ice-git' 'rime-wubi'
+    'shorin-fcitx5-config-git'
 
-    # extra
-    
 )
 
 package() {
