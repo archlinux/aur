@@ -8,7 +8,7 @@
 
 _pkgname="obs-studio"
 pkgname="$_pkgname-git"
-pkgver=32.0.4.r25.g407944a
+pkgver=32.1.0.r13.g1159bc8
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 url="https://github.com/obsproject/obs-studio"
@@ -30,6 +30,7 @@ depends=(
   'qrcodegencpp-cmake'
   'qt6-svg'
   'rnnoise'
+  'simde' # referenced in headers
   'speexdsp'
 )
 makedepends=(
@@ -44,7 +45,6 @@ makedepends=(
   'nlohmann-json'
   'python'
   'qt6-wayland'
-  'simde'
   'sndio'
   'swig'
   'uthash'
