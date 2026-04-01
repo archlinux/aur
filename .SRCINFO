@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-ca-valencia
 	pkgdesc = Catalan (Valencian) language pack for Firefox Nightly
-	pkgver = 151.0a1.20260331.210827
+	pkgver = 151.0a1.20260401.094341
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-ca-valencia
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-ca-valencia-151.0a1.20260331.210827.xpi
-	source = firefox-nightly-i18n-ca-valencia-151.0a1.20260331.210827.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-151.0a1.ca-valencia.langpack.xpi
-	sha256sums = 3ae9337d5cba2be1946b703e71a18868a03fda7c9f5aa1860727f5492e14473d
+	noextract = firefox-nightly-i18n-ca-valencia-151.0a1.20260401.094341.xpi
+	source = firefox-nightly-i18n-ca-valencia-151.0a1.20260401.094341.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-151.0a1.ca-valencia.langpack.xpi
+	sha256sums = 86be7f1f452c48a99c5213e1da816dec08bec12a69f3c7301ac3fd90af09ccf6
 
 pkgname = firefox-nightly-i18n-ca-valencia
