@@ -2,7 +2,7 @@
 
 pkgname=simutrans-pak64.scifi
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Low resolution graphics set for Simutrans, with a SciFi theme"
 arch=('any')
 url="https://www.simutrans.com/"
@@ -12,6 +12,6 @@ sha256sums=('d07a7b496d944579ecf918e2204c8a9f827d896f68260630b2ad304e812e357a')
 
 package() {
   #data
-  mkdir -p "$pkgdir/usr/share/games/simutrans/pak64.scifi"
-  cp -r simutrans/pak64.scifi/* "$pkgdir/usr/share/games/simutrans/pak64.scifi"
+  mkdir -p "$pkgdir/usr/share/simutrans/pak64.scifi"
+  cp -r simutrans/pak64.scifi/* "$pkgdir/usr/share/simutrans/pak64.scifi"
 }

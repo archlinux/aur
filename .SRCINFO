@@ -1,7 +1,7 @@
 pkgbase = simutrans-pak64.scifi
 	pkgdesc = Low resolution graphics set for Simutrans, with a SciFi theme
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.simutrans.com/
 	arch = any
 	license = Unknown
@@ -9,4 +9,3 @@ pkgbase = simutrans-pak64.scifi
 	sha256sums = d07a7b496d944579ecf918e2204c8a9f827d896f68260630b2ad304e812e357a
 
 pkgname = simutrans-pak64.scifi
-
