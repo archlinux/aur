@@ -13,6 +13,11 @@ optdepends=()
 source=("vastai-${pkgver}.tar.gz::https://pypi.io/packages/source/v/vastai/vastai-${pkgver}.tar.gz")
 sha256sums=('4da2e86064a5b81aa5e96f1f41ff3a416b4c3b1e4b4b9062330c220fe02c5c2a')
 
+prepare() {
+  cd "${srcdir}/vastai-${pkgver}"
+  # Remove utils from packages list in pyproject.toml to prevent site-packages conflict
+  sed -i 's/\[{ include = "utils" }, { include = "vast.py" }\]/[{ include = "vast.py" }]/' pyproject.toml
+}
 build() {
   cd "${srcdir}/vastai-${pkgver}"
   python -m build --wheel --no-isolation
