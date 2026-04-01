@@ -9,7 +9,6 @@ pkgbase = dealers-choice
 	makedepends = cmake
 	makedepends = meson
 	makedepends = ninja
-	depends = canfigger
 	depends = libsodium
 	depends = sdl2
 	depends = sdl2_ttf
@@ -17,6 +16,7 @@ pkgbase = dealers-choice
 	depends = sdl2_net
 	depends = protobuf-c
 	depends = hicolor-icon-theme
+	optdepends = canfigger: use system-installed version
 	source = https://github.com/Dealer-s-Choice/dealers_choice/releases/download/v0.0.11/dealers-choice-0.0.11.tar.xz
 	sha256sums = 9919a30a0dfa1de924688118d64a425c101674f96b733f8385965f6babe50889
 
