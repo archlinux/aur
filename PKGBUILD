@@ -26,4 +26,6 @@ build() {
 package() {
   cd "${pkgname}"
   install -Dm755 kewt "${pkgdir}/usr/bin/kewt"
+  install -d "${pkgdir}/usr/share/zsh/site-functions"
+  "${pkgdir}/usr/bin/kewt" --dump-zsh-completions > "${pkgdir}/usr/share/zsh/site-functions/_kewt"
 }
