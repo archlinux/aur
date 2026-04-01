@@ -1,0 +1,6 @@
+src
+pkg
+managedssh-*
+Dockerfile
+docker-compose*
+

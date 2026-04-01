@@ -1,0 +1,14 @@
+pkgbase = managedssh
+	pkgdesc = Terminal-first SSH connection manager with encrypted credential storage.
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/mylovelytools/managedssh
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = go>=1.26
+	depends = openssh
+	source = managedssh-1.1.3.tar.gz::https://github.com/mylovelytools/managedssh/archive/refs/tags/v1.1.3.tar.gz
+	sha256sums = 5007dee43b9f9570c6365ed5cd82b1c5e104a6dafb7949a86fd62eb7ab688048
+
+pkgname = managedssh
