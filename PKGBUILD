@@ -1,6 +1,6 @@
 # Maintainer: Lucy Randall <lucybrown@vivaldi.net>
 pkgname=are
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Another Rust Editor - A port of the aee terminal-based text editor to Rust"
 arch=('x86_64' 'i686' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 provides=('are')
 conflicts=('are')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/anoraktrend/are/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('43464067def348f5a56d9e2afe90aee4e5f2dbd0825b5ab3f5fbd612e6644377')
+sha256sums=('d60045b48b3c5dc2e94781de5f03061927faf1b7f7daa22217a4de9a32ce2259')
 
 build() {
     cd "${pkgname}-${pkgver}"
