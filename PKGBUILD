@@ -6,9 +6,9 @@ export LANG=C.UTF-8
 export LC_ALL=C.UTF-8
 
 pkgname=layaair-ide
-pkgver=3.4.0_beta.1
-_upstream_ver=3.4.0-beta.1
-_url=https://ldc-1251285021.file.myqcloud.com/layaair3/layaair-3.4/linux/LayaAirIDE-linux-x86_64-3.4.0-beta.1.AppImage
+pkgver=3.4.0_beta.2
+_upstream_ver=3.4.0-beta.2
+_url=https://ldc-1251285021.file.myqcloud.com/layaair3/layaair-3.4/linux/LayaAirIDE-linux-x86_64-3.4.0-beta.2.AppImage
 pkgrel=1
 pkgdesc='LayaAir IDE (repacked from official AppImage)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ url='https://layaair.com/'
 license=('custom')
 install="${pkgname}.install"
 source=("LayaAirIDE.AppImage::$_url")
-sha256sums=('c3a5ecb7668814aed4939b0bf8f3a0472d976f8c308b6de384d1b181488db8a4')
+sha256sums=('176f506e5600fcb97f406672c35fc243db795fc6150037327c80a7859a77726e')
 
 prepare() {
   cd "$srcdir"
