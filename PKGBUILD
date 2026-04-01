@@ -1,5 +1,6 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
+# Contributor: Harley Pig <archlinux@harleypig.com>
 
 _author=RSRCHBOY
 _dist=MooseX-MarkAsMethods
