@@ -10,8 +10,8 @@ depends=()
 makedepends=('cargo')
 provides=('are')
 conflicts=('are')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/anoraktrend/are/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d60045b48b3c5dc2e94781de5f03061927faf1b7f7daa22217a4de9a32ce2259')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/anoraktrend/are/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('15756cd35b8c2395e0853a1bdb24bb67b2a99da00545521336a7c628798ad430')
 
 build() {
     cd "${pkgname}-${pkgver}"
