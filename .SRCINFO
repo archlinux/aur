@@ -1,6 +1,6 @@
 pkgbase = kilocode-cli-bin
 	pkgdesc = The all-in-one agentic engineering platform.
-	pkgver = 7.1.11
+	pkgver = 7.1.12
 	pkgrel = 1
 	url = https://kilo.ai/cli
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = kilocode-cli-bin
 	depends = glibc
 	provides = kilo
 	options = !strip
-	source = LICENSE-7.1.11::https://github.com/Kilo-Org/kilocode/raw/refs/tags/v7.1.11/LICENSE
+	source = LICENSE-7.1.12::https://github.com/Kilo-Org/kilocode/raw/refs/tags/v7.1.12/LICENSE
 	sha256sums = 0d23876a7b5c9a875091466d03091524ebc2b3f48f9f5725cbb9eee9d6c6c2af
-	source_aarch64 = kilocode-aarch64-7.1.11.tar.gz::https://github.com/Kilo-Org/kilocode/releases/download/v7.1.11/kilo-linux-arm64.tar.gz
-	sha256sums_aarch64 = d50dee7d7d9a47898932773bf3c87e038fc316c501472bd9046d6aa83959cdd6
-	source_x86_64 = kilocode-x86_64-7.1.11.tar.gz::https://github.com/Kilo-Org/kilocode/releases/download/v7.1.11/kilo-linux-x64-baseline.tar.gz
-	sha256sums_x86_64 = 867629edf6e85f6f93423e5f52a45fdbbbf81967ec5b4ad768d34562ea68e905
+	source_aarch64 = kilocode-aarch64-7.1.12.tar.gz::https://github.com/Kilo-Org/kilocode/releases/download/v7.1.12/kilo-linux-arm64.tar.gz
+	sha256sums_aarch64 = 842b3ea2f6f220dde089f32d5449c4bb63796124651831b1700cb4d364ba2c7b
+	source_x86_64 = kilocode-x86_64-7.1.12.tar.gz::https://github.com/Kilo-Org/kilocode/releases/download/v7.1.12/kilo-linux-x64-baseline.tar.gz
+	sha256sums_x86_64 = c8053f47fba2869673a2eca02e25d7a598a95b16a393497ce9d51761528a049c
 
 pkgname = kilocode-cli-bin

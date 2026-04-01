@@ -1,7 +1,7 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=kilocode-cli-bin
-pkgver=7.1.11 # datasource=github-releases depName=Kilo-Org/kilocode
+pkgver=7.1.12 # datasource=github-releases depName=Kilo-Org/kilocode
 pkgrel=1
 pkgdesc='The all-in-one agentic engineering platform.'
 arch=('aarch64' 'x86_64')
@@ -18,8 +18,8 @@ source_x86_64=("kilocode-x86_64-${pkgver}.tar.gz::${_url}/releases/download/v${p
 source=("LICENSE-${pkgver}::${_url}/raw/refs/tags/v${pkgver}/LICENSE")
 
 sha256sums=('0d23876a7b5c9a875091466d03091524ebc2b3f48f9f5725cbb9eee9d6c6c2af')
-sha256sums_aarch64=('d50dee7d7d9a47898932773bf3c87e038fc316c501472bd9046d6aa83959cdd6')
-sha256sums_x86_64=('867629edf6e85f6f93423e5f52a45fdbbbf81967ec5b4ad768d34562ea68e905')
+sha256sums_aarch64=('842b3ea2f6f220dde089f32d5449c4bb63796124651831b1700cb4d364ba2c7b')
+sha256sums_x86_64=('c8053f47fba2869673a2eca02e25d7a598a95b16a393497ce9d51761528a049c')
 
 package() {
 	install -Dm755 "${srcdir}/kilo" "${pkgdir}/usr/bin/kilo"
