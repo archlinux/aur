@@ -16,8 +16,8 @@ source=(
     "swaypwd.1::https://gitlab.com/api/v4/projects/80488692/packages/generic/swaypwd/${pkgver}/swaypwd.1"
     "LICENSE::https://gitlab.com/bullbytes/swaypwd/-/raw/v${pkgver}/LICENSE"
 )
-b2sums=('ac9f82d0f133e2c52bb61e6db6b565fb7de0ad85fbdfeb7110be4a412197e1550d70c32a52428be4d3a8ff42a4594799dc0dfe4b7616e43c9ee07d245761eff5'
-        '31e883a435d495f38df96303ffb2d3b7ae20803a58e60a6d03e588f217dee6fafbd419e93eb082dfee0ef4c18d59f9d295e92979d218ccbba2b5b085fc586852'
+b2sums=('d56b9a8e2468cdb1ff95c5310e7f9b8ebd30f12b0b6d39df89a078ef51d2f84c1ca9afe7ab9b3f0a7efc130636c52db95d71dbcfccd0855a79000e1ca78f25a8'
+        'f1850822065a05a6c2e53dd92ad70f5676201f99248393f0237dad43c7f561839f4042bc32c3f0a6b804083696ccc50853fcceb1e7ee96caf4cef813862565e9'
         'b6829320f725e3e45c4807ef5deb4738a691fb3ab146d8531b81fdbccd8376a826c8ec76165985cdf37d534f68e395652c96841ba7636c4bd34c49b7c7b3a9ec')
 
 package() {
