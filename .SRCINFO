@@ -1,6 +1,6 @@
 pkgbase = linuxy
 	pkgdesc = One-click Linux Application Manager with Firejail sandboxing
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/swadhinbiswas/linuxy
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = linuxy
 	makedepends = cargo
 	makedepends = nodejs
 	makedepends = npm
-	source = linuxy-1.1.0.tar.gz::https://github.com/swadhinbiswas/linuxy/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 14ec94d5c68c770849b945eb793a5ff638a4ceb682d65aa69b64068dc5d30d27
+	source = linuxy-1.2.0.tar.gz::https://github.com/swadhinbiswas/linuxy/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = linuxy

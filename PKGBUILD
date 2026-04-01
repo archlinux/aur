@@ -2,7 +2,7 @@
 # AUR Package for Linuxy - One-click Linux Application Manager
 
 pkgname=linuxy
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="One-click Linux Application Manager with Firejail sandboxing"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('firejail' 'xdg-utils' 'webkit2gtk' 'gtk3' 'libappindicator-gtk3' 'xdo'
 makedepends=('cargo' 'nodejs' 'npm')
 install=linuxy.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/swadhinbiswas/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('14ec94d5c68c770849b945eb793a5ff638a4ceb682d65aa69b64068dc5d30d27')
+sha256sums=('76b293fb2b2517248f0259dc3bd0602655f45730724290dbf405ad1fe0e23f02')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
