@@ -1,0 +1,3 @@
+[perl-test-mock-lwp]
+source = "cpan"
+cpan = "Test-Mock-LWP"

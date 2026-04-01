@@ -1,0 +1,16 @@
+pkgbase = perl-test-mock-lwp
+	pkgdesc = Easy mocking of LWP packages
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://metacpan.org/release/LUKEC/Test-Mock-LWP-0.08
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-test-mockobject>=1.08
+	depends = perl-test-simple
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/L/LU/LUKEC/Test-Mock-LWP-0.08.tar.gz
+	sha256sums = b72921b747458fd1648677158dac90d1f2360dc7bddc277639c2fa390f9780fc
+
+pkgname = perl-test-mock-lwp
