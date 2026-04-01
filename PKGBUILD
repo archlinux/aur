@@ -1,14 +1,14 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=spectre-meltdown-checker
-pkgver=0.46
+pkgver=26.21.0401891
 pkgrel=1
-pkgdesc="Spectre, Meltdown, Foreshadow, Fallout, RIDL, ZombieLoad vulnerability/mitigation checker"
+pkgdesc="Reptar, Downfall, Zenbleed, ZombieLoad, RIDL, Fallout, Foreshadow, Spectre, Meltdown vulnerability/mitigation checker"
 arch=('any')
 url="https://github.com/speed47/spectre-meltdown-checker"
-license=('GPL3')
+license=(GPL-3.0-only)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/speed47/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('355469c2176fffa8fb40695b47174959c9112e66cd870545ed424ef7b6ef4c10a5aa94bfbc6912510c979e16b0f8a18c0b822200eb69e9ded8300305d779fa79')
+b2sums=('f7222690b7d1a58bfd0938d4780c1fe0788f763ac27e4873a275298a1a85254cc2db14e4826d18cc8c9040554aa48ced6304ad6215e96c62396bb0d28272bc60')
 
 package() {
     cd "$pkgname-$pkgver"
