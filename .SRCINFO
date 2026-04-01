@@ -11,9 +11,9 @@ pkgbase = agent-of-empires-bin
 	depends = tmux
 	provides = agent-of-empires
 	conflicts = agent-of-empires
-	source_x86_64 = https://github.com/njbrake/agent-of-empires/releases/download/v1.0.1/aoe-linux-amd64.tar.gz
+	source_x86_64 = agent-of-empires-bin-x86_64-1.0.1.tar.gz::https://github.com/njbrake/agent-of-empires/releases/download/v1.0.1/aoe-linux-amd64.tar.gz
 	sha256sums_x86_64 = 25185abaa278fd4420dde2dc6f87fcf07b889fa45873988261e9c1640d55d96d
-	source_aarch64 = https://github.com/njbrake/agent-of-empires/releases/download/v1.0.1/aoe-linux-arm64.tar.gz
+	source_aarch64 = agent-of-empires-bin-aarch64-1.0.1.tar.gz::https://github.com/njbrake/agent-of-empires/releases/download/v1.0.1/aoe-linux-arm64.tar.gz
 	sha256sums_aarch64 = 0ca19a0d16f7c892b0532b6af0a7bf6231bfe2984f50103e204c1f537cb05685
 
 pkgname = agent-of-empires-bin
