@@ -1,0 +1,21 @@
+pkgbase = lazypub-bin
+	pkgdesc = AI-powered lightweight EPUB translation and layout normalization workbench (Binary release)
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/x1nx3r/Lazypub
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk
+	depends = libsoup3
+	depends = libappindicator-gtk3
+	depends = librsvg
+	provides = lazypub
+	conflicts = lazypub
+	options = !strip
+	source = https://github.com/x1nx3r/Lazypub/releases/download/v0.1.7/lazypub_0.1.7_amd64.deb
+	source = https://raw.githubusercontent.com/x1nx3r/Lazypub/main/LICENSE
+	sha256sums = da11714aca1fa4030eccef8963b134725e077497628fd19b19d22915d050761b
+	sha256sums = a8927160a24c2ffeeb13bbd3333a930a836d130729ea12e8cf79163b153eb753
+
+pkgname = lazypub-bin
