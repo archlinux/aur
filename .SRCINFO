@@ -7,5 +7,7 @@ pkgbase = asc
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = libpng
+	source = git+https://github.com/bhmsgame06/asc
+	sha256sums = SKIP
 
 pkgname = asc
