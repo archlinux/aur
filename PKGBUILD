@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=eqy-nightly
-pkgver=20260331_v0.63_3_g3b20c1c
+pkgver=20260401_v0.63_4_geff96db
 pkgrel=1
 epoch=1
 pkgdesc="Equivalence Checking with Yosys"
@@ -17,7 +17,7 @@ provides=("eqy")
 conflicts=()
 replaces=()
 source=(
-	"eqy::git+https://github.com/YosysHQ/eqy.git#commit=3b20c1c"
+	"eqy::git+https://github.com/YosysHQ/eqy.git#commit=eff96db"
 )
 sha256sums=(
 	"SKIP"
