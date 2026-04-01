@@ -1,0 +1,19 @@
+pkgbase = shorin-fcitx5-config-git
+	pkgdesc = Fcitx5 and Rime configurations for Shorin OS
+	pkgver = r1.0.0
+	pkgrel = 1
+	url = https://github.com/ShorinOS/shorin-fcitx5-config
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = fcitx5
+	depends = fcitx5-configtool
+	depends = fcitx5-gtk
+	depends = fcitx5-qt
+	depends = fcitx5-rime
+	depends = rime-ice-git
+	depends = rime-wubi
+	source = git+https://github.com/ShorinOS/shorin-fcitx5-config.git
+	sha256sums = SKIP
+
+pkgname = shorin-fcitx5-config-git
