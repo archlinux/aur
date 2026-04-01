@@ -3,16 +3,16 @@ appname=mit8_30
 pkgname=$appname-bin
 orgname=Iztech
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Программа для управления измерителями температуры серии МИТ 8.30 производства ООО ИзТех"
 url="https://www.iztech.ru"
 license=(custom)
-depends=("qt5-base" "qt5-multimedia" "qt5-svg" "qt5-serialport" "qwt" "sqlite")
+depends=("qt5-base" "qt5-multimedia" "qt5-svg" "qt5-serialport" "qwt-qt5" "sqlite")
 arch=("x86_64")
 options=("strip" "!debug")
 replaces=("mit8_30")
 source=("$url/content/files/app/$pkgname-linux-x86_64.tar.gz")
-md5sums=("d9a810479ee3827af77b64c5d6dbe11d")
+md5sums=("b8e1b54cc63e72b77cb1f760b3a9acfb")
 
 package() {
 	install -Dm755 "$srcdir/mit8_30" "$pkgdir/usr/bin/$appname"
