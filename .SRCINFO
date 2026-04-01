@@ -1,0 +1,30 @@
+pkgbase = perl-moosex-types-loadableclass
+	pkgdesc = ClassName type constraint with coercion to load the class.
+	pkgver = 0.016
+	pkgrel = 1
+	url = https://metacpan.org/release/ETHER/MooseX-Types-LoadableClass-0.016
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-class-load
+	checkdepends = perl-lib
+	checkdepends = perl-module-metadata
+	checkdepends = perl-moose
+	checkdepends = perl-namespace-clean>=0.19
+	checkdepends = perl-pathtools
+	checkdepends = perl-term-ansicolor
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-module-build-tiny>=0.034
+	depends = perl-if
+	depends = perl-module-runtime
+	depends = perl-moosex-types
+	depends = perl-namespace-autoclean
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
+	optdepends = perl-json-pp
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Types-LoadableClass-0.016.tar.gz
+	sha256sums = f105b69bcb44cd9856edfd62753ff58c35519ffa96e17cfc9ef30bdb98994ccc
+
+pkgname = perl-moosex-types-loadableclass

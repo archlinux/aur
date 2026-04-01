@@ -1,0 +1,3 @@
+[perl-moosex-types-loadableclass]
+source = "cpan"
+cpan = "MooseX-Types-LoadableClass"
