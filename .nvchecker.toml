@@ -1,0 +1,3 @@
+[perl-www-mechanize-treebuilder]
+source = "cpan"
+cpan = "WWW-Mechanize-TreeBuilder"
