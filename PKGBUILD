@@ -2,8 +2,8 @@
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 
 pkgname="vesktop-spoof-pacman-hook"
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="Adds '--user-agent-os windows' to the desktop file after vesktop updates, for those using VPNs being blocked by Discord's recent Linux VPN bans!"
 arch=('any')
 url=""
@@ -15,6 +15,7 @@ provides=("${pkgname}=${pkgver}")
 source=(
     "vesktop-spoof.hook"
 )
+install=${pkgname}.install
 
 package() {
     cd              "${srcdir}"

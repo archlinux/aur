@@ -1,11 +1,12 @@
 pkgbase = vesktop-spoof-pacman-hook
 	pkgdesc = Adds '--user-agent-os windows' to the desktop file after vesktop updates, for those using VPNs being blocked by Discord's recent Linux VPN bans!
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
+	install = vesktop-spoof-pacman-hook.install
 	arch = any
 	license = GPL-3.0
 	depends = sed
-	provides = vesktop-spoof-pacman-hook=1.1
+	provides = vesktop-spoof-pacman-hook=1.2
 	source = vesktop-spoof.hook
 	sha256sums = 7e23ccd698af1bcad3774106567c6242c0ab69941c042d9e6e055e89e2673f1c
 	sha384sums = 31f8cf7edceca1ffcd3679c8c2648c19c46037651110c2a3b29b274ae484bcf0c20de32cb47553f236e32bf394333486
