@@ -7,7 +7,7 @@
 pkgname=libfprint-cs9711-git
 _pkgname=libfprint
 pkgver=1.94.10+8.r1846.20260220.66b1ada0
-pkgrel=1
+pkgrel=2
 pkgdesc="libfprint with proprietary FPC match on host device CS9711Fingprint driver"
 url="https://fprint.freedesktop.org/"
 arch=(x86_64)
@@ -114,6 +114,11 @@ prepare() {
   for patch in $srcdir/*.patch; do
     git apply $patch
   done
+
+  sed -i \
+    "s|doctest = dependency('doctest', required: true)|doctest = declare_dependency(include_directories: include_directories('/usr/include'))|g" \
+    libfprint/sigfm/meson.build
+
   popd
 }
 
