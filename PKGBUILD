@@ -8,10 +8,14 @@ depends=('bash' 'gettext')
 makedepends=('gettext')
 source=("acnfctl.bash"
         "handler.bash"
-        "locales.tar.gz")
+        "locales.tar.gz"
+	"README.md"
+	"LICENSE")
 sha256sums=('bffc622f10427afcd86627843f1563a06ddf36f07eb99b41e243cdba1cd17645'
-            '3cba12c7b973fdfd89867262243c23d08ee309ff1ae11307148ff1a92d4ae43a'
-            '9a11f995d58016896dca15562b98071b4b2eb2100a0cc8038941d91529c0699c')
+            '0274ada8ea4bf74570d21af975e60eda48808ead91d8a8879ba4cbede5be3d36'
+            '9a11f995d58016896dca15562b98071b4b2eb2100a0cc8038941d91529c0699c'
+            '4f7a4b9b02a3c46390f1020e4a3bbfa06b535fb5b76d8fa544c313b376eed9b8'
+            'ccb3be7fed18d0972a9ced5968c5bb686d0c779505483831aa72d28e2a434848')
 
 prepare() {
     tar -xzf "$srcdir/locales.tar.gz" -C "$srcdir"
