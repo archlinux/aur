@@ -6,7 +6,7 @@
 pkgname=mixxx-beta
 _mixxxver=2.6
 pkgver="${_mixxxver}.beta"
-pkgrel=0
+pkgrel=1
 pkgdesc="Digital DJ mixing software (beta branch)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mixxx.org/"
@@ -64,33 +64,23 @@ depends=(
 )
 makedepends=(
   'benchmark'
-  'chromaprint'
   'cmake'
   #'faad2' #Added
   #'ffmpeg'
-  'flac'
   #'glib2'
   #'glu'
   #'gperftools'
   'gtest'
-  'libid3tag'
   #'libogg'
-  'libsndfile'
-  'libusb'
   #'libvorbis'
-  'lilv'
   'lv2'
   'microsoft-gsl'
   #'qt6-shadertools'
   'qt6-tools'
-  'portaudio'
-  'portmidi'
-  'protobuf'
-  'rubberband'
 )
 provides=('mixxx')
 conflicts=('mixxx')
-source=("https://github.com/mixxxdj/mixxx/archive/refs/tags/${_mixxxver}-beta.tar.gz")
+source=("mixxx-${_mixxxver}-beta.tar.gz::https://github.com/mixxxdj/mixxx/archive/refs/tags/${_mixxxver}-beta.tar.gz")
 sha256sums=('3683cf0570e2f9dbeb1d76a5d617f8c2bf2acb6d15fe9d2337b8f49a20887a38')
 
 prepare() {
