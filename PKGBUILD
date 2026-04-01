@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=5
+pkgrel=6
 pkgdesc="Shorin Niri Desktop Environment (Dependencies & Dotfiles)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -11,7 +11,7 @@ depends=(
     'bash' 'curl'
     
     # --- Desktop Core ---
-    'niri' 'mako' 'polkit-gnome' 'xdg-desktop-portal-gnome' 'xwayland-satellite' 'swayidle' 'breeze_cursors'
+    'niri' 'mako' 'polkit-gnome' 'xdg-desktop-portal-gnome' 'xwayland-satellite' 'swayidle' 'breeze-cursors'
     'fuzzel' 'libnotify' 'mpv'
     
     # --- File Manager & Core Utils ---
