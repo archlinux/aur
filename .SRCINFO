@@ -1,24 +1,31 @@
 pkgbase = perl-test-modern
 	pkgdesc = precision testing for modern perl
 	pkgver = 0.013
-	pkgrel = 1
-	url = https://metacpan.org/release/Test-Modern
+	pkgrel = 2
+	url = https://metacpan.org/release/TOBYINK/Test-Modern-0.013
 	arch = any
-	license = PerlArtistic
-	depends = perl>5.6.1
-	depends = perl-test-warnings>=0.009
-	depends = perl-test-api>=0.004
-	depends = perl-try-tiny>=0.15
-	depends = perl-test-deep>=0.111
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker>=6.17
 	depends = perl-exporter-tiny>=0.030
 	depends = perl-import-into>=1.002000
-	depends = perl-test-simple>=0.96
-	depends = perl-test-fatal>=0.007
 	depends = perl-module-runtime>=0.012
+	depends = perl-test-api>=0.004
+	depends = perl-test-deep>=0.111
+	depends = perl-test-fatal>=0.007
+	depends = perl-test-simple
+	depends = perl-test-warnings>=0.009
+	depends = perl-try-tiny>=0.15
+	depends = perl>=5.6.1
+	optdepends = perl-cpan-meta-requirements
+	optdepends = perl-libwww
+	optdepends = perl-moose
+	optdepends = perl-namespace-clean
+	optdepends = perl-test-longstring
+	optdepends = perl-test-pod
+	optdepends = perl-test-pod-coverage
+	optdepends = perl-test-version
 	options = !emptydirs
-	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/Test-Modern-0.013.tar.gz
+	source = https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Test-Modern-0.013.tar.gz
 	sha256sums = 63ebc04b761c5748a121006d0e2672a6836d39cfb9e0b42dda80c8161f7a1246
 
 pkgname = perl-test-modern
-
