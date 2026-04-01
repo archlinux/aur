@@ -4,7 +4,7 @@
 
 _pkgname=flet
 pkgname=python-${_pkgname}
-pkgver=0.83.1
+pkgver=0.84.0
 pkgrel=1
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
@@ -40,7 +40,7 @@ arch=('x86_64')
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	'flet-linux.patch')
-sha256sums=('0180aeb56d54808086e59981df77eff536ce357d31f67d5f31d20a2b69c8afb6'
+sha256sums=('a592fa0f08ba2558812ac25b0c1efda633755ffe8c88c2ed1b5612b864059e71'
             'e252e4eec325886d76dfc54c90604ea81ec0d6791b7e22bb93f63cec6378c50c')
 
 _srcdir="${_pkgname}-${pkgver}"
