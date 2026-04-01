@@ -1,22 +1,28 @@
 # Maintainer: Windblows2000 <Xs1244@protonmail.com>
 pkgname=nexa-bin
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="High-performance, Rust-based MPRIS controller and daemon"
 arch=('x86_64')
 url="https://github.com/Windblows2000/Nexa"
 license=('GPL3-or-later')
-provides=('nexa')
-conflicts=('nexa')
+provides=('nexa' 'nexad')
+conflicts=('nexa' 'nexa-git')
 install=nexa.install
 source=("https://github.com/Windblows2000/Nexa/releases/download/v$pkgver/nexa-v$pkgver-x86_64-linux.tar.gz")
-sha256sums=('6e30a830d5ff64b529c77b000e781570422f6ac9a7d721e3aea24f76c614acac')
+sha256sums=('e3b87ad349d2284e54813890d924905b582605498960383767851b5196f043eb')
 
 package() {
   cd "$srcdir/nexa-v$pkgver-x86_64-linux"
   install -Dm755 nexa "$pkgdir/usr/bin/nexa"
   install -Dm755 nexad "$pkgdir/usr/bin/nexad"
   install -Dm644 nexad.service "$pkgdir/usr/lib/systemd/user/nexad.service"
+  mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+  mkdir -p "$pkgdir/usr/share/zsh/site-functions"
+  mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d"
+  ./nexa completions bash > "$pkgdir/usr/share/bash-completion/completions/nexa"
+  ./nexa completions zsh > "$pkgdir/usr/share/zsh/site-functions/_nexa"
+  ./nexa completions fish > "$pkgdir/usr/share/fish/vendor_completions.d/nexa.fish"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
