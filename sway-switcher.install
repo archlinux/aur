@@ -1,0 +1,17 @@
+post_install() {
+    echo ''
+    echo '==> sway-switcher: copy the example files to start customising:'
+    echo ''
+    echo '    mkdir -p ~/.config/sway-switcher'
+    echo '    cp /usr/share/sway-switcher/style.css.example ~/.config/sway-switcher/style.css'
+    echo '    cp /usr/share/sway-switcher/sway-switcher.conf.example ~/.config/sway-switcher/sway-switcher.conf'
+    echo ''
+    echo '==> Then add the keybinds to ~/.config/sway/config:'
+    echo '    bindsym Alt+Tab    exec sway-switcher'
+    echo '    bindsym $mod+Tab   exec sway-switcher --overview'
+    echo ''
+}
+
+post_upgrade() {
+    post_install
+}
