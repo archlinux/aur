@@ -1,6 +1,6 @@
-# Maintainer: mb <mb@example.com>
+# Maintainer: Matthias Braun <me@matthiasbraun.eu>
 pkgname=swaypwd-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Print the working directory of the foreground process in the focused Sway window"
 arch=(x86_64)
