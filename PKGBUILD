@@ -1,7 +1,7 @@
 # Maintainer: Karl Essinger <xkaess22@gmail.com>
 pkgname=scpdiscord
 pkgver=3.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A very customisable Discord bot + SCP:SL plugin combo."
 arch=("x86_64")
 url="https://github.com/KarlOfDuty/SCPDiscord"
