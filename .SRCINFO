@@ -1,6 +1,6 @@
 pkgbase = labwc-hdr-git
 	pkgdesc = stacking wayland compositor with look and feel from openbox (git version) (experimental HDR branch and other patches applied)
-	pkgver = 0.9.5.r52.g3128f50a
+	pkgver = 0.9.5.r65.g7be58fba
 	pkgrel = 1
 	url = https://github.com/labwc/labwc
 	arch = x86_64
@@ -23,15 +23,9 @@ pkgbase = labwc-hdr-git
 	conflicts = labwc
 	source = git+https://github.com/labwc/labwc.git
 	source = https://github.com/labwc/labwc/pull/2968.patch
-	source = 0001-chase-wlroots-Add-support-for-HDR10-output.patch::https://github.com/kode54/labwc/commit/8f9561ced9a196a5769528db1dd6e9438b2a6798.patch
-	source = 0002-chase-wlroots-Add-support-for-color-management-v1.patch::https://github.com/kode54/labwc/commit/60eee9674215160a1a5222ff66fa618a8cec524f.patch
-	source = 0003-chase-wlroots-Add-support-for-color-representation-v.patch::https://github.com/kode54/labwc/commit/9ad576b1d0219e2e88d59d92f4e9941bcf294a95.patch
-	source = 0004-Document-the-new-HDR-option.patch::https://github.com/kode54/labwc/commit/598242c021cf77580e871ba51a48a7a5311bed73.patch
+	source = https://github.com/labwc/labwc/pull/3424.patch
 	md5sums = SKIP
 	md5sums = a6ef1d9232f93e4d7f7299b409b20893
-	md5sums = 07679bb8ddb72653d7204888362acbaf
-	md5sums = c7a025ee729f584429ef3e80275ffc9b
-	md5sums = a1c29704d2e16193370156a9c82c4be8
-	md5sums = 65104057093a25f0e398ee4365d78621
+	md5sums = 26fc2e36092e7a0c7d7ecf3308553eaa
 
 pkgname = labwc-hdr-git
