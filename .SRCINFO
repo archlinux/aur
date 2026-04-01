@@ -12,6 +12,6 @@ pkgbase = tirith
 	depends = gcc-libs
 	options = !lto
 	source = tirith-0.2.12.tar.gz::https://github.com/sheeki03/tirith/archive/refs/tags/v0.2.12.tar.gz
-	sha256sums = c3d009ac71fbed36a42cab411c82c1999090f499b70ed0c66fe98019a000fd8e
+	sha256sums = 5c4fb4dc909582a9858e7dde7692a650e3afe08cd92456d1eb02e110ede378c9
 
 pkgname = tirith
