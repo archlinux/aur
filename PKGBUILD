@@ -3,7 +3,7 @@
 
 pkgname=improve-imgsli
 _reponame=Improve-ImgSLI
-pkgver=8.1.0
+pkgver=8.1.1
 pkgrel=1
 pkgdesc="Image comparison tool with magnifying glass feature"
 arch=(any)
@@ -27,7 +27,7 @@ optdepends=(
 )
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-b2sums=('bb17bd2e2841066e6a398a99080ac25d26cc373e8a2ab8b7c2a24d7bb2db79d8262be0fde36a950beaa6f0f356f9c7782b979bb43010abd2977a0a6daae7fe7c')
+b2sums=('767c1d7329b3cb38395f27c9a1057a1b5f0152c7d28386efd3f8b952ac2ffeb35be66680d607fdd6f3c20b5492670a67480ceba74aac830e57fc54781872e3c2')
 
 prepare() {
   cd "$_reponame-$pkgver"
