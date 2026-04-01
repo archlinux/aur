@@ -9,7 +9,7 @@ pkgbase = rofi-surfraw-git
 	makedepends = git
 	depends = rofi
 	depends = surfraw
-	source = git+http://github.com/carnager/rofi-scripts
+	source = git+https://github.com/carnager/rofi-scripts
 	md5sums = SKIP
 
 pkgname = rofi-surfraw-git

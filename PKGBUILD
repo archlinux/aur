@@ -13,7 +13,7 @@ depends=('rofi' 'surfraw')
 
 install=rofi-surfraw.install
 makedepends=('git')
-source=('git+http://github.com/carnager/rofi-scripts')
+source=('git+https://github.com/carnager/rofi-scripts')
 
 pkgver() {
 	cd rofi-scripts
