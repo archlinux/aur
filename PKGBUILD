@@ -1,0 +1,42 @@
+# Maintainer: Julien Virey <julien.virey@gmail.com>
+
+pkgname=teleport-client-17
+pkgver=17.7.20
+pkgrel=1
+pkgdesc="Modern SSH server for teams managing distributed infrastructure - Client-only 17.X branch (tsh, tctl)"
+arch=('x86_64' 'armv7h' 'aarch64')
+url="https://github.com/gravitational/teleport"
+license=('AGPL-3.0-only')
+depends=('glibc' 'libfido2')
+makedepends=('go>=1.16.0', 'git')
+provides=('teleport-client-17' 'tctl-17' 'tsh-17')
+source=("${pkgname%-*}-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('29961aa0b789306e0927ffa83f45a952deb1d07a315406beda77f8299eb31eaf')
+
+prepare() {
+    cd "${pkgname%%-*}-${pkgver}"
+    export GOPATH="${srcdir}/go"
+    go mod download -modcacherw
+}
+
+build() {
+    cd "${pkgname%%-*}-${pkgver}"
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export ADDFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+    make build/tsh build/tctl
+
+    # Make sure go path is writable so it can be cleaned up
+    chmod -R u+w "${srcdir}/go"
+}
+
+package() {
+    cd "${pkgname%%-*}-${pkgver}"
+
+    install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl17"
+    install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh17"
+}
