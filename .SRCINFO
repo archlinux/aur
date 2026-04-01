@@ -1,6 +1,6 @@
 pkgbase = trivalent-bin
 	pkgdesc = A hardened chromium for desktop Linux inspired by Vanadium.
-	pkgver = 146.0.7680.164
+	pkgver = 146.0.7680.177
 	pkgrel = 1
 	url = https://github.com/secureblue/Trivalent
 	arch = x86_64
