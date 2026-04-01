@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio
-pkgver=0.5.0
-pkgrel=1
+pkgver=0.5.1
+pkgrel=2
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
 url="https://github.com/MrNeRF/LichtFeld-Studio"
@@ -10,19 +10,19 @@ depends=(
     'assimp'
     'boost'
     'cuda'
+    'dbus'
     'ffmpeg'
     'freetype2'
     'gcc-libs'
     'glibc'
-    'glm'
     'hicolor-icon-theme'
     'libarchive'
     'libglvnd'
     'libwebp'
-    'nlohmann-json'
     'nvidia-utils'  # driver >= 570 required at runtime
     'openimageio'
     'onetbb'
+    'openssl'
     'python'
     'python-packaging'
     'python-tomli'
@@ -34,13 +34,14 @@ makedepends=(
     'autoconf-archive'
     'automake'
     'cmake>=3.30'
-    'cuda'
     'curl'
+    'glm'
     'libtool'
     'nasm'
     'ninja'
+    'nlohmann-json'
+    'patchelf'
     'pkgconf'
-    'python'
     'tar'
     'unzip'
     'zip'
@@ -52,7 +53,7 @@ _libvtermcommit=934bc2fbf21800ac3458a499df8820ca5fb45fd3
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MrNeRF/LichtFeld-Studio/archive/refs/tags/v${pkgver}.tar.gz"
         "libvterm-${_libvtermcommit}.tar.gz::https://github.com/neovim/libvterm/archive/${_libvtermcommit}.tar.gz"
         'lichtfeld-studio.desktop')
-sha256sums=('12573ab391f932d882f67c9109a9ab8cc3f33b667194b78744edddfe9222601e'
+sha256sums=('8d1c23ea67262f2b0dca5edb0cffc93de69069c51b089986a01370a0468e1b4a'
             'f09525eb2a02679be0eb50bc1c294569e8cbaa4b59fb867d606236de2830045f'
             'a07642f575ad454ef6783e0a49d03afc96cc7df14d82db7a9de2ccad045fde65')
 
@@ -98,6 +99,8 @@ keep = {
     'python3',            # embedded interpreter, version-sensitive
     'nanobind',           # must match vcpkg python version
     'args',               # tiny, no Arch package
+    'nativefiledialog-extended',  # no Arch package
+    'usd',                # OpenUSD, no Arch package
 }
 
 cfg['dependencies'] = [
@@ -145,6 +148,30 @@ package() {
 
     # liblfs_rmlui.so is built but not installed by cmake
     install -Dm755 build/liblfs_rmlui.so -t "$pkgdir/usr/lib/"
+
+    # OpenUSD shared libs (vcpkg-built, not installed by cmake but needed at runtime
+    # by liblfs_mcp.so). Exact transitive closure from readelf NEEDED walk.
+    local _vcpkg_lib="build/vcpkg_installed/x64-linux/lib"
+    local _usd_libs=(
+        libusd_ar libusd_arch libusd_gf libusd_js libusd_kind libusd_pcp
+        libusd_plug libusd_sdf libusd_tf libusd_trace libusd_ts libusd_usd
+        libusd_usdGeom libusd_usdVol libusd_vt libusd_work
+    )
+    for _lib in "${_usd_libs[@]}"; do
+        install -Dm755 "$_vcpkg_lib/$_lib.so" -t "$pkgdir/usr/lib/"
+    done
+
+    # Fix RUNPATH: replace vcpkg build paths with /usr/lib
+    for f in $(find "$pkgdir" -type f \( -name '*.so' -o -name '*.so.*' -o -executable \)); do
+        if readelf -d "$f" 2>/dev/null | grep -q RUNPATH; then
+            local _rpath
+            _rpath=$(patchelf --print-rpath "$f" 2>/dev/null) || continue
+            # Replace srcdir vcpkg paths, keep $ORIGIN and /opt/cuda
+            _rpath=$(echo "$_rpath" | tr ':' '\n' | grep -v "$srcdir" | paste -sd:)
+            [[ -z "$_rpath" ]] && _rpath="/usr/lib"
+            patchelf --set-rpath "$_rpath" "$f"
+        fi
+    done
 
     # Remove bundled uv (users should use system uv)
     rm -f "$pkgdir/usr/bin/uv"
