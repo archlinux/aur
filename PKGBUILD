@@ -10,7 +10,7 @@ depends=('libappindicator-gtk3' 'webkit2gtk-4.1' 'gtk3')
 provides=('clippy-rs')
 conflicts=('clippy-rs')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/clippy_${pkgver}_amd64.deb")
-sha256sums=('61799d154ecca8a3875689cdba294eda96b46f5b8d94067ce83a5510c2e413b3')
+sha256sums=('52cbe34a9c1dcc113a1e9c6229b06b088008ff22aa875e1ec9407df4e7f0e293')
 
 package() {
     bsdtar -xf data.tar.* -C "${pkgdir}/"
