@@ -1,13 +1,11 @@
 # Maintainer: Lars Sjostrom <lars at radicore dot se>
 pkgname=iptvnator-git
-pkgver=r1336.4330301
+pkgver=r1915.f87a261
 pkgrel=1
 pkgdesc="Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more."
 arch=('x86_64')
 url="https://github.com/4gray/iptvnator"
 license=('MIT')
-depends=('nodejs')
-makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
 depends=(
   'cairo'
   'gcc-libs'
@@ -21,6 +19,12 @@ depends=(
   'openssl'
   'pango'
   'sqlite'
+)
+makedepends=(
+  'git'
+  'nodejs'
+  'pnpm'
+  'python'
 )
 optdepends=(
   'ffmpeg: audio and video libraries'
@@ -39,25 +43,53 @@ pkgver() {
 }
 
 prepare() {
-  pushd "$srcdir/$pkgname"
-  npm install
+  cd "$srcdir/$pkgname"
+  corepack enable
+  pnpm install --frozen-lockfile
 }
 
 build() {
-  pushd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname"
+  corepack enable
 
-  # generate dummy signing key
-  pnpm tauri signer generate -p dummy -w signing.key
-  export TAURI_SIGNING_PRIVATE_KEY=$(cat signing.key)
-  export TAURI_SIGNING_PRIVATE_KEY_PASSWORD="dummy"
-  rm -f signing.key
+  python - <<'PY'
+import json
+from pathlib import Path
 
-  # build
-  CFLAGS="$CFLAGS -ffat-lto-objects" pnpm tauri build -b deb
+p = Path("electron-builder.json")
+data = json.loads(p.read_text())
+
+data["linux"]["target"] = [
+    {
+        "target": "pacman",
+        "arch": ["x64"]
+    }
+]
+
+p.write_text(json.dumps(data, indent=2) + "\n")
+PY
+
+  pnpm run make:app
 }
 
 package() {
-  pushd "$srcdir/$pkgname"
-  cp -a src-tauri/target/release/bundle/deb/iptvnator_*/data/* "${pkgdir}"
+  cd "$srcdir/$pkgname"
+
+  local pacpkg
+  pacpkg=$(find dist/executables -maxdepth 1 -type f -name '*.pacman' | head -n1)
+
+  if [[ -z "$pacpkg" ]]; then
+    echo "Could not find generated pacman package in dist/executables" >&2
+    return 1
+  fi
+
+  bsdtar \
+    --exclude '.BUILDINFO' \
+    --exclude '.INSTALL' \
+    --exclude '.MTREE' \
+    --exclude '.PKGINFO' \
+    -xpf "$pacpkg" -C "$pkgdir"
+
+  install -d "$pkgdir/usr/bin"
+  ln -sf /opt/IPTVnator/iptvnator "$pkgdir/usr/bin/iptvnator"
 }
-# vim:set ts=2 sw=2 et:
