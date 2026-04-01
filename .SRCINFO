@@ -1,7 +1,7 @@
 pkgbase = simutrans-pak64.nippon
 	pkgdesc = An alternative japanese low resolution graphics set for Simutrans
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.simutrans.com/
 	arch = any
 	license = MIT
