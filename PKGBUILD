@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
-pkgver=1.7.21
-_electronversion=38
+pkgver=1.7.22
+_electronversion=41
 pkgrel=1
 pkgdesc="Desktop app for ente Photos.(Prebuilt version)"
 arch=(
@@ -19,8 +19,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.pacman")
-sha256sums_aarch64=('4656938816759de007f611d00d16ef5228fd17c7af21f40fb0a4b7a0c455e24f')
-sha256sums_x86_64=('bb6a7bb0dce57dc06dbba0e41f569832b4a4b32b6f9723309122fa634e36e653')
+sha256sums_aarch64=('92cfe87b8229151c3e87fdfdf7b8726295c1eb17dc8bb99b76d3c7571fee1460')
+sha256sums_x86_64=('099d7b3b77f25b9425b5900ef8b8a35fc0a4396c61bfc9f2012c08dd32859e2e')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
