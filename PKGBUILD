@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ecubus-pro
-pkgver=0.8.62
+pkgver=0.8.63
 pkgrel=1
 pkgdesc="A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support"
 arch=(x86_64)
@@ -13,8 +13,10 @@ replaces=()
 depends=(
     sh
     electron
-    gcc-libs
     glibc
+    libgcc
+    libstdc++
+    java-runtime
     python
 )
 makedepends=(
@@ -27,13 +29,14 @@ makedepends=(
 )
 optdepends=(
     "python-doipclient: A Diagnostic over IP (DoIP) client implementing ISO-13400-2."
+    "python-odxtools: Utilities to work with the ODX standard for automotive diagnostics"
     "python-udsoncan: Implementation of the Unified Diagnostic Service (UDS) protocol (ISO-14229) used in the automotive industry."
 )
 backup=()
 options=(!debug !strip)
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('1355d81e06497b9c43383c8641c590551c7755b631e90188151f60194a947026')
+sha256sums=('7da174c45b05566a3a026d7d0c56de1f9639ff1b04c96d46c5b983fd7ffc3139')
 # noextract=("${pkgname}-${pkgver}.tar.gz")
 
 _pkgname=EcuBus-Pro
