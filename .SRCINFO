@@ -1,0 +1,31 @@
+pkgbase = obsidian-headless-bin
+	pkgdesc = Headless client for Obsidian services
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://www.npmjs.com/package/obsidian-headless
+	arch = x86_64
+	arch = aarch64
+	license = custom:UNLICENSED
+	makedepends = node-gyp
+	makedepends = python
+	depends = gcc-libs
+	depends = nodejs>=22
+	provides = obsidian-headless
+	conflicts = obsidian-headless
+	noextract = obsidian-headless-0.0.8.tgz
+	noextract = better-sqlite3-12.6.2.tgz
+	noextract = commander-14.0.3.tgz
+	noextract = bindings-1.5.0.tgz
+	noextract = file-uri-to-path-1.0.0.tgz
+	source = obsidian-headless-0.0.8.tgz::https://registry.npmjs.org/obsidian-headless/-/obsidian-headless-0.0.8.tgz
+	source = better-sqlite3-12.6.2.tgz::https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-12.6.2.tgz
+	source = commander-14.0.3.tgz::https://registry.npmjs.org/commander/-/commander-14.0.3.tgz
+	source = bindings-1.5.0.tgz::https://registry.npmjs.org/bindings/-/bindings-1.5.0.tgz
+	source = file-uri-to-path-1.0.0.tgz::https://registry.npmjs.org/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz
+	sha256sums = f9f83ab6bebdffb9fbdca86527101be2e8cc3af1fae212f022dffa31e02236d5
+	sha256sums = ac3bfaa50b31d1fc878f84b64b3fa7ec1b5b6603b9be089b0501f8f5900ac7e7
+	sha256sums = 5849703c500e0f324eb01340d8bda1f9ec48fc37bb7be9712eb0dd52aad92f6c
+	sha256sums = d77781178c5bd89a91b1f6c5556acd511b1b5927eb13e2ad8189cac29eeb0907
+	sha256sums = 5440cdf67e75ab96f36a6be63c1d4c3d54255b1d0970273710fecfebfab06fb3
+
+pkgname = obsidian-headless-bin
