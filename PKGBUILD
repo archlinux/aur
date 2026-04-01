@@ -2,7 +2,7 @@
 # Contributor: Hao Long <aur@esd.cc> from vigil-bin
 
 pkgname=vigil
-pkgver=1.28.6
+pkgver=1.29.0
 pkgrel=1
 pkgdesc="Microservices Status Page. Monitors a distributed infrastructure and sends alerts"
 arch=("x86_64" "armv7h")
@@ -18,7 +18,7 @@ source=('vigil.service'
         "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha512sums=('a437e0a11d0b4fed3d1d2fe78180811e9dec1145bf0fb7920c666c167c5d956fbf4b72ee874184c531c9eca2250c127a2c3082b0d9d0eb6d0d866e8bfb745a8a'
             '98634e670f732777184212a50b9a1d41e2669b04cb02b3d62c882eba1c306e5d2ed71ec0ba860541a72702b36b964c3875af5db8f6e87e825ddf8708439606a2'
-            'c97d447b391e4f1b9c119cb2092a5bca175c442c7d59ea7f10bf88db6b88314b7b05beaea23a411328f7569323f99872656888692ceb0a7280bedf0553cadd39')
+            'a56faa05b43bd9d8e1c68b8b48990bca15407856dfaca29e1edb726f9efd1d6e4475093838e37999d30c4d1cf3df498aee4e290af3f92cd7de6a78c3659f676d')
 
 prepare() {
   cd "$pkgname-$pkgver"
