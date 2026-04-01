@@ -1,6 +1,6 @@
 pkgname=tuidoro-bin
 _pkgname=tuidoro
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="TUIdoro - minimal pomodoro timer that runs in your terminal"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("$_pkgname" "$_pkgname-git")
 source=(
   "$_pkgname.zip::https://github.com/b12o/tuidoro/releases/download/v${pkgver}/${_pkgname}.zip"
 )
-sha256sums=("3e48b8867a9e286b9c6f4e7eef0e716c396b525240f2a98275b51e8f2a8ab7b9")
+sha256sums=("e12188b619e0384773804168a5b8c39083219ad662caff3dd98552db00e172f3")
 options=("!strip")
 
 package() {
