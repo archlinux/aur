@@ -14,7 +14,7 @@
          # .so that we'll package.
          os.chdir( 'Source' )
 -        os.system( sys.executable + ' setup.py configure' )
-+        os.system( sys.executable + ' setup.py configure --verbose --fixed-module-name --norpath' )
++        os.system( sys.executable + ' setup.py configure --verbose --fixed-module-name --norpath --pycxx-dir=.' )
          os.system( 'make clean' )
          os.system( 'make' )
  
