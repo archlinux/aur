@@ -4,7 +4,7 @@
 _name=llvmlite
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-bin"
-pkgver=0.46.0
+pkgver=0.47.0
 pkgrel=1
 epoch=
 pkgdesc="A lightweight LLVM python binding for writing JIT compilers (with SVML support!)"
@@ -22,9 +22,9 @@ makedepends=(
 # https://pypi.org/project/llvmlite/#files
 _wheel="llvmlite-$pkgver-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
 source=(
-	"https://files.pythonhosted.org/packages/c9/19/5018e5352019be753b7b07f7759cdabb69ca5779fea2494be8839270df4c/${_wheel}"
+	"https://files.pythonhosted.org/packages/64/1d/a760e993e0c0ba6db38d46b9f48f6c7dceb8ac838824997fb9e25f97bc04/${_wheel}"
 )
-sha256sums=('379fdd1c59badeff8982cb47e4694a6143bec3bb49aa10a466e095410522064d')
+sha256sums=('ddbccff2aeaff8670368340a158abefc032fe9b3ccf7d9c496639263d00151aa')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 
