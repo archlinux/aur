@@ -1,9 +1,12 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 
+# Co-Maintainer: Harsh Vyapari <harshvy5094@proton.me>
+# https://github.com/harshv5094
+
 _pkgname=linutil
 pkgname="$_pkgname-git"
-pkgver=2025.01.10+rd91a44ef
+pkgver=2026.03.06+r6f97c344
 pkgrel=1
 pkgdesc="Distro-agnostic toolbox designed to simplify everyday Linux tasks"
 arch=('x86_64' 'aarch64')
@@ -24,7 +27,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  echo "Version=$pkgver" >> "$_pkgname.desktop"
+  echo "Version=$pkgver" >>"$_pkgname.desktop"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
