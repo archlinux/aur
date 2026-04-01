@@ -6,5 +6,7 @@ pkgbase = ramdump-49xx
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
+	source = git+https://github.com/bhmsgame06/ramdump-49xx
+	sha256sums = SKIP
 
 pkgname = ramdump-49xx
