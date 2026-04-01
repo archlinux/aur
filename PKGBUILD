@@ -1,4 +1,4 @@
-# Maintainer: Swadhin Biswas <swadhin.biswas@example.com>
+# Maintainer: Swadhin Biswas <swadhinbiswas.cse@gmail.com>
 # AUR Package for Linuxy - One-click Linux Application Manager
 
 pkgname=linuxy
