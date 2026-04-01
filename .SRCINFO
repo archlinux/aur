@@ -1,7 +1,7 @@
 pkgbase = podping-alpha-gossip-listener-git
 	pkgdesc = Decentralized podcast feed notification listener
 	pkgver = r112.7facd0b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Podcastindex-org/podping.alpha
 	install = podping-alpha-gossip-listener.install
 	arch = x86_64
