@@ -1,12 +1,12 @@
 # Maintainer: BonnyAD9 (Bonny4)
 pkgname=uamp
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Universal Advanced Music Player written in rust."
 arch=(x86_64)
 url="https://bonnyad9.github.io/uamp/"
 license=('GPL-3.0-or-later')
-depends=(gcc-libs alsa-lib glibc hicolor-icon-theme)
+depends=(alsa-lib glibc hicolor-icon-theme libgcc)
 makedepends=(cargo)
 optdepends=()
 provides=()
