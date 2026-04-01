@@ -1,0 +1,25 @@
+pkgbase = agent-one-bin
+	pkgdesc = AgentOne is a powerful AI agent that gives you freedom to choose your models and control your data.
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/The-Best-Codes/agent-one
+	install = agent-one-bin.install
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	provides = agent-one
+	conflicts = agent-one
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/The-Best-Codes/agent-one/releases/download/agent-one-v0.0.9/AgentOne_0.0.9_amd64.deb
+	sha256sums_x86_64 = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+
+pkgname = agent-one-bin
