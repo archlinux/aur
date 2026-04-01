@@ -1,6 +1,6 @@
 pkgbase = rgx-cli-bin
 	pkgdesc = A terminal regex tester with real-time matching and multi-engine support
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/brevity1swos/rgx
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = rgx-cli-bin
 	depends = pcre2
 	provides = rgx
 	conflicts = rgx-cli
-	source_x86_64 = rgx-x86_64-0.8.1.txz::https://github.com/brevity1swos/rgx/releases/download/v0.8.1/rgx-cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 1e0df17231ce179900d50f2829e017cfcf336f05d44eee4b69209fb6c59e787b
-	source_aarch64 = rgx-aarch64-0.8.1.txz::https://github.com/brevity1swos/rgx/releases/download/v0.8.1/rgx-cli-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 1d1211e1b663f307e590b3d3a0f528869b82e9642922660e6dce2d8cd001cc7b
+	source_x86_64 = rgx-x86_64-0.9.0.txz::https://github.com/brevity1swos/rgx/releases/download/v0.9.0/rgx-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 0addb2ff0f3ab13f973dc7846ce8cd90205023a55355b102c226fcbd9312484d
+	source_aarch64 = rgx-aarch64-0.9.0.txz::https://github.com/brevity1swos/rgx/releases/download/v0.9.0/rgx-cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 95441b251814110dd6bc6564107eac972f61bd9a56f0f4d383e557bd2100ca66
 
 pkgname = rgx-cli-bin
