@@ -13,7 +13,7 @@ options=('!strip')
 source=("https://repository.hellonico.info/repository/arch/memoa/${pkgver}/memoa_aarch64"
         "memoa.png"
         "memoa.desktop")
-sha256sums=('58e70e90a5e08a623d920e6614b38d66e1970b270a77b1ecd605d97628f01ac6'
+sha256sums=('445019c7d43088c1f7b4cfc0c391882b4da1e2e34193fdec7d7422e6d9f71b0c'
             '72efe0d27e0fb81dd20b151c240ce99dddea08afcb1c6b2deb7556ed2b2690e5'
             '8bbe11862d09b4d2fa9820b530c16ac6681e52bfe64fb3d8e20cebc9bdb8c2a2')
 
