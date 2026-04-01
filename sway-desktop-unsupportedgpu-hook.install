@@ -1,0 +1,13 @@
+#!/bin/bash
+
+post_install() {
+    sed -i 's|^\(Exec=.*\)sway\( --unsupported-gpu\)\?$|\1sway --unsupported-gpu|' /usr/share/wayland-sessions/sway.desktop
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    sed -i 's|\1sway --unsupported-gpu|^\(Exec=.*\)sway\( --unsupported-gpu\)\?$|' /usr/share/wayland-sessions/sway.desktop
+}
