@@ -3,12 +3,12 @@
 pkgname=wirecontrol-git
 _pkgname=wirecontrol
 pkgver=r13.b9262ae
-pkgrel=2
+pkgrel=3
 provides=(wirecontrol)
 pkgdesc="An audio control center for pipewire"
 arch=(x86_64)
 license=(GPL3)
-url="https://github.com/kotontrion/wirecontrol"
+url="https://codeberg.org/kotontrion/wirecontrol"
 depends=(
   gtk4
   libadwaita

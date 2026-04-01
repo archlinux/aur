@@ -1,8 +1,8 @@
 pkgbase = wirecontrol-git
 	pkgdesc = An audio control center for pipewire
 	pkgver = r13.b9262ae
-	pkgrel = 2
-	url = https://github.com/kotontrion/wirecontrol
+	pkgrel = 3
+	url = https://codeberg.org/kotontrion/wirecontrol
 	arch = x86_64
 	license = GPL3
 	makedepends = blueprint-compiler
