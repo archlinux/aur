@@ -1,6 +1,6 @@
 pkgbase = cboard-chess-git
 	pkgdesc = Interfaz TUI de ajedrez (Fork Avanzado): Plugins en C, Multimotor, Análisis Multivariación y Motor vs Motor. (Ruta a v1.0)
-	pkgver = 0.8.6.r3.g2256376
+	pkgver = 0.8.7.r2.g7c33ec3
 	pkgrel = 1
 	url = https://gitlab.com/ntlatempa/cboard-chess
 	arch = x86_64
@@ -14,6 +14,9 @@ pkgbase = cboard-chess-git
 	depends = ncurses
 	depends = glibc
 	depends = perl
+	optdepends = crafty: compatible chess engine
+	optdepends = stockfish: powerful engine (needs polyglot for xboard compatibility)
+	optdepends = polyglot: engine adapter to connect UCI engines like stockfish
 	provides = cboard-chess-tui
 	conflicts = cboard
 	source = git+https://gitlab.com/ntlatempa/cboard-chess.git

@@ -1,8 +1,8 @@
-# Maintainer: Noel Tlatempa G <ntlatempag@gmail.com>
+# Maintainer: Noel Tlatempa G <ntlatempag AT gmail DOT com>
 
 _pkgname=cboard-chess
 pkgname=cboard-chess-git
-pkgver=0.8.6.r3.g2256376
+pkgver=0.8.7.r2.g7c33ec3
 pkgrel=1
 #pkgdesc="Interfaz de ajedrez cboard (Versión Portátil Auto-detectable)"
 pkgdesc="Interfaz TUI de ajedrez (Fork Avanzado): Plugins en C, Multimotor, Análisis Multivariación y Motor vs Motor. (Ruta a v1.0)"
@@ -16,6 +16,12 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 provides=('cboard-chess-tui')
 conflicts=('cboard')
+
+optdepends=(
+  'crafty: compatible chess engine'
+  'stockfish: powerful engine (needs polyglot for xboard compatibility)'
+  'polyglot: engine adapter to connect UCI engines like stockfish'
+)
 
 pkgver() {
   cd "$srcdir/$_pkgname"
