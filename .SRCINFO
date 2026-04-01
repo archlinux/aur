@@ -1,15 +1,25 @@
 pkgbase = vmlinux-to-elf-git
 	pkgdesc = This tool allows to obtain a fully analyzable .ELF file from a vmlinux/vmlinuz/bzImage/zImage kernel image, with recovered function and variable symbols.
-	pkgver = r88.b407a46
+	pkgver = r326.f9e1b8b
 	pkgrel = 1
 	url = https://github.com/marin-m/vmlinux-to-elf
 	arch = x86_64
-	license = GNU
+	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = python-setuptools
-	depends = python
-	depends = python-lz4
-	depends = python-zstandard
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=69
+	makedepends = python-setuptools-scm>=8
+	depends = python>=3.9
+	depends = python-lz4>=4.4.5
+	depends = python-minilzo>=1.2
+	depends = python-peewee>=3.17
+	depends = python-zstandard>=0.25.0
+	optdepends = python-gobject: GUI
+	optdepends = libadwaita: GUI
+	provides = python-vmlinux-to-elf=r326.f9e1b8b
+	conflicts = python-vmlinux-to-elf
+	options = !strip
 	source = vmlinux-to-elf::git+https://github.com/marin-m/vmlinux-to-elf.git
 	sha256sums = SKIP
 
