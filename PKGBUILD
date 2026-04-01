@@ -1,7 +1,7 @@
 # Maintainer: Mattia Moffa <mattia [at] moffa [dot] xyz>
 # Previous maintainer: Wasabi <wasabithumbs@gmail.com>
 pkgname=open-goal-launcher-bin
-pkgver="2.8.16"
+pkgver="2.8.17"
 pkgrel=1
 pkgdesc="A launcher for the OpenGOAL Project to simplify usage and installation"
 arch=("x86_64")
@@ -10,8 +10,8 @@ license=('ISC')
 depends=('fuse')
 conflicts=('open-goal-launcher')
 _image="OpenGOAL-Launcher_${pkgver}_amd64.AppImage"
-source_x86_64=("https://github.com/open-goal/launcher/releases/download/v2.8.16/${_image}")
-md5sums_x86_64=("8b732e2174c4588301330c3ba0c0c7f9")
+source_x86_64=("https://github.com/open-goal/launcher/releases/download/v2.8.17/${_image}")
+md5sums_x86_64=("600b21b8630f8df3dedfaecc34877ebf")
 options=(!strip)
 
 prepare() {
