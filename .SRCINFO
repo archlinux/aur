@@ -1,6 +1,6 @@
 pkgbase = alt-bin
 	pkgdesc = A stateless, zero-config CLI distribution proxy. Install any tool from GitHub Releases with a single command.
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/altlimit/alt
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = alt-bin
 	depends = glibc
 	provides = alt
 	conflicts = alt
-	source = README-1.0.5.md::https://raw.githubusercontent.com/altlimit/alt/v1.0.5/README.md
-	source = LICENSE-1.0.5::https://raw.githubusercontent.com/altlimit/alt/v1.0.5/LICENSE
+	source = README-1.0.6.md::https://raw.githubusercontent.com/altlimit/alt/v1.0.6/README.md
+	source = LICENSE-1.0.6::https://raw.githubusercontent.com/altlimit/alt/v1.0.6/LICENSE
 	sha256sums = 7180e921d1580556481f4de4936cde8c1c14f8d0d5374987cd59b4513cb4ca59
 	sha256sums = d8c7ce09908dd71397fb36e3d14eab399becd2848a5d83cb63030160cdf274ab
-	source_x86_64 = alt-x86_64-1.0.5::https://github.com/altlimit/alt/releases/download/v1.0.5/alt_linux_amd64
-	sha256sums_x86_64 = d47a0e8c7821b5272bb6d04271f1adb10a4478c7a444b79d62b7b903a551c8cb
-	source_aarch64 = alt-aarch64-1.0.5::https://github.com/altlimit/alt/releases/download/v1.0.5/alt_linux_arm64
-	sha256sums_aarch64 = 8c7a23978c36f810ae8e5e041df16b7b1c0492b42f58a11b986803e6bcfce103
+	source_x86_64 = alt-x86_64-1.0.6::https://github.com/altlimit/alt/releases/download/v1.0.6/alt_linux_amd64
+	sha256sums_x86_64 = d77f9158a5bcf3743b19757ba1af84aa9a68a8dbaa4eb6829a287512e3388062
+	source_aarch64 = alt-aarch64-1.0.6::https://github.com/altlimit/alt/releases/download/v1.0.6/alt_linux_arm64
+	sha256sums_aarch64 = c55c8904f83358ef0003b101a3edcaa950328711a87ed316de921853b32c2595
 
 pkgname = alt-bin

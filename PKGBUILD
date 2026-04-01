@@ -5,7 +5,7 @@ _pkgname=alt
 pkgname=${_pkgname}-bin
 pkgdesc="A stateless, zero-config CLI distribution proxy. Install any tool from GitHub Releases with a single command."
 
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,8 +27,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pk
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}")
 sha256sums=('7180e921d1580556481f4de4936cde8c1c14f8d0d5374987cd59b4513cb4ca59'
             'd8c7ce09908dd71397fb36e3d14eab399becd2848a5d83cb63030160cdf274ab')
-sha256sums_x86_64=('d47a0e8c7821b5272bb6d04271f1adb10a4478c7a444b79d62b7b903a551c8cb')
-sha256sums_aarch64=('8c7a23978c36f810ae8e5e041df16b7b1c0492b42f58a11b986803e6bcfce103')
+sha256sums_x86_64=('d77f9158a5bcf3743b19757ba1af84aa9a68a8dbaa4eb6829a287512e3388062')
+sha256sums_aarch64=('c55c8904f83358ef0003b101a3edcaa950328711a87ed316de921853b32c2595')
 
 
 package() {
