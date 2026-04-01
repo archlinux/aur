@@ -1,0 +1,33 @@
+pkgbase = perl-task-kensho-webdev
+	pkgdesc = A Glimpse at an Enlightened Perl: Web Development
+	pkgver = 0.41
+	pkgrel = 1
+	url = https://metacpan.org/release/ETHER/Task-Kensho-WebDev-0.41
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker
+	depends = perl-attean
+	depends = perl-cgi-formbuilder-source-perl
+	depends = perl-dancer2
+	depends = perl-html-formhandler
+	depends = perl-http-browserdetect
+	depends = perl-mime-types
+	depends = perl-mojolicious
+	depends = perl-plack
+	depends = perl-task-catalyst
+	depends = perl-template-toolkit
+	depends = perl-web-simple
+	depends = perl-xml-atom
+	depends = perl-xml-rss
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
+	optdepends = perl-json-pp
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Task-Kensho-WebDev-0.41.tar.gz
+	sha256sums = 92ce1cc85a96f0ce18b57f21080b16b7aa40d819ae22a91f89a2265cb19e1980
+
+pkgname = perl-task-kensho-webdev
