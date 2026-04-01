@@ -1,6 +1,6 @@
 # Maintainer: noodle <silentnoodle@cock.li>
 pkgname=dwarfs-bin
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc='A fast high compression read-only file system (pre-compiled binaries)'
 url='https://github.com/mhx/dwarfs'
@@ -18,13 +18,13 @@ depends=(
 )
 conflicts=('dwarfs')
 provides=('dwarfs')
-sha256sums_x86_64=('ad9ef4edf2d124b5c8d4540b2298a9b520e15841c68b921192d9bcb83eb69455')
-sha256sums_aarch64=('f81290d5c4890a274a60a82b801e62110975ca466799e4408ad046bc70695aef')
-sha256sums_i386=('fd6ed59b7805539c6fc6e6e508344d10479f6587abe1040a1e86997f19b52fa0')
-sha256sums_loong64=('62f5f2bac65232184cb14e7bb7921a38b34440dcd688080eebdcdc512915d3ba')
-sha256sums_powerpc64=('1668eca05412c2bd848ad4aa606a61fb2bf48f3cf92aac556149778a713885f2')
-sha256sums_powerpc64le=('08e556adeb248a20aec04bf70886146f5e56bd0efc0bbe225aae69d20b25d33e')
-sha256sums_riscv64=('3110c8f630a4ae65fe16e4e3280f74d34b2c7a8224630e03361ed799819eeb9f')
+sha256sums_x86_64=('2dba61946786ec563c96783f719316199eeb55a4cbde1436e1b5796f28494fa8')
+sha256sums_aarch64=('70edc89104233aa8afe7548c4b83c97625baf44c34f625fa99deff4b4b01f89f')
+sha256sums_i386=('07eb788cfc9cee51e80f319a95591d92510211ac12fcc08e58231903f5e9d835')
+sha256sums_loong64=('10dd05063a8ae4732f49dbb61abb9dbd1ff9d759a9f8ff88a39ecd4251b12660')
+sha256sums_powerpc64=('e90b19f10fcb7b9c3f0951032f878ed1501d853b393f0cbf2c47f310c9221442')
+sha256sums_powerpc64le=('b975fa2e0388ccd81b586b766cf30d4c7550a740013394f1a3eb60b66d754036')
+sha256sums_riscv64=('bd53abaf33983401635fc1d1e27565b9dd7aa3f21aa1dd8168115608658fa951')
 
 package() {
   case "$CARCH" in
