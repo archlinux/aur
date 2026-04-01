@@ -1,11 +1,12 @@
 # shecllcheck shell=bash
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Damien Robert <damien {dot} olivier {dot} robert {plus} archlinux {at} gmail {dot} com>
 
 pkgname=uni
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Query the Unicode database from the commandline, with good support for emojis'
 url='https://github.com/arp242/uni'
 arch=('aarch64' 'x86_64')
