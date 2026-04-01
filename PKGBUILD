@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=11
+pkgrel=12
 pkgdesc="Shorin Niri Desktop Environment (Dependencies & Dotfiles)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -91,7 +91,7 @@ package() {
         exit 1
     fi
 
-    if [[ -f "必看-shoirn-Niri使用方法.txt" ]]; then
+    if [[ -f "README-Niri.txt" ]]; then
         install -Dm644 "README-Niri.txt" "$pkgdir/usr/share/doc/shorin-niri/README-Niri.txt"
     fi
 }
