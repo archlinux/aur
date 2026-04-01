@@ -1,7 +1,7 @@
 # Maintainer: Michael Asher <michael@wesolveeverything.com>
 
 pkgname=electerm-bin
-pkgver=3.0.18
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="An electron-based SSH/SFTP Connection manager and terminal"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://electerm.html5beta.com"
 license=('MIT')
 _pkgname="electerm"
 provides=("electerm")
-conflicts=("electerm" "electerm-git")
+conflicts=("electerm" "electerm-git"i "electerm-live-bin")
 source=(
         "https://github.com/electerm/electerm/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
         "https://raw.githubusercontent.com/electerm/electerm/master/LICENSE"
@@ -19,8 +19,9 @@ prepare() {
         ar -x ${_pkgname}-${pkgver}-linux-amd64.deb
         cd ${srcdir}
         tar -xf ./data.tar.xz  
-	## Remove ARM packages since I'm not packaging for that platform
-	find . -name "*arm*" -print0 | xargs -0 rm  -rf
+
+        ## Remove ARM related files on amd64
+        [ $CARCH == "x86_64" ] && find . -name "*arm*" -print0 | xargs -0 rm  -rf
 }
 
 package() {
@@ -29,6 +30,6 @@ package() {
         install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
-sha256sums=('99353e0a9bde17c9c1bdf4701ed8ec7495b265274c233e73b77fcdef34f2dd43'
+sha256sums=('ddd21e39707d4c5ea5d1b72a65ecd1bc28ec129a71a4dda455613705ceeeeb19'
             'a9b7ccf11bec7796b217a7575d3324c16613a46bfc899e72ec2c11da28d0991e')
 
