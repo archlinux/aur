@@ -1,7 +1,7 @@
 # Maintainer: Sergey Mezentsev <thebits@yandex.ru>
 
 pkgname=datafusion-cli
-pkgver=52.4.0
+pkgver=53.0.0
 pkgrel=1
 pkgdesc="The DataFusion CLI is a command-line interactive SQL utility for executing queries against any supported data files."
 url="https://github.com/apache/datafusion"
@@ -12,8 +12,17 @@ makedepends=(
   rustup
   cargo
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/apache/arrow-datafusion/archive/tags/$pkgver.tar.gz")
-b2sums=('2531642980c9ebad099c126ab25719b2937497ab1806567d770c442b10bbe44d997a986b09d2a709dfbcfecef86236703a39e47f8f5d9d26385e094514b9ca4e')
+source=(
+  "$pkgname-$pkgver.tar.gz::https://github.com/apache/arrow-datafusion/archive/tags/$pkgver.tar.gz"
+  "895d852.patch"
+)
+b2sums=('dabc271a2d0b18aed09709b18813ce1d1f16f1c1feae0098ac8382a5e946f281becb0a9ddeb7d3be7fcc610db67c144f6c889f148a315be36989e587fcffeb7e'
+        'b02cebe4848ee754f02150fcfed8ea35b370deb708720945fd4749b60c5dd39c6b8bb3358be40b315b1cd0de78424dd3a621466f54de27ac79b3fb87fa242e63')
+
+prepare() {
+  patch -d "datafusion-tags-$pkgver" -Np1 -i ../895d852.patch
+}
+
 
 build() {
   cd "datafusion-tags-$pkgver/"
