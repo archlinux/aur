@@ -8,19 +8,21 @@ pkgrel=1
 arch=('any')
 url='https://github.com/bhmsgame06/asc'
 license=('GPL-3.0-or-later')
+source=("git+$url")
+sha256sums=('SKIP')
 
 depends=('libpng')
 makedepends=('git')
 
-prepare() {
-	git clone --depth 1 "$url" "$srcdir"
-}
-
 build() {
-	make -C "$srcdir"
+	cd "asc"
+	pwd
+	make
 }
 
 package() {
+	cd "asc"
+	pwd
 	mkdir -p "$pkgdir/usr/bin"
-	make -C "$srcdir" install PREFIX="$pkgdir/usr"
+	make install PREFIX="$pkgdir/usr"
 }
