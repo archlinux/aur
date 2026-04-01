@@ -91,8 +91,7 @@ makedepends=(
 provides=('mixxx')
 conflicts=('mixxx')
 source=("https://github.com/mixxxdj/mixxx/archive/refs/tags/${_mixxxver}-beta.tar.gz")
-sha256sums=('3683cf0570e2f9dbeb1d76a5d617f8c2bf2acb6d15fe9d2337b8f49a20887a38'
-            '4894fc4a6624ff6073732a0f325ce5a0cafcf426dc9dfc00b1e56d2f155abcbf')
+sha256sums=('3683cf0570e2f9dbeb1d76a5d617f8c2bf2acb6d15fe9d2337b8f49a20887a38')
 
 prepare() {
     _basedir="$srcdir/${pkgname%-*}-${_mixxxver}-beta"
