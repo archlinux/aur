@@ -3,7 +3,7 @@
 pkgbase=libkompass-git
 pkgname=(libkompass-git kompass-git)
 pkgver=r122.d507477
-pkgrel=2
+pkgrel=3
 pkgdesc="a gtk4 wayland desktop shell"
 arch=(x86_64)
 license=(GPL-3.0-only)
@@ -28,7 +28,7 @@ makedepends=(
   gobject-introspection
   vala
 )
-source=("${pkgname}::git+https://github.com/kotontrion/kompass.git")
+source=("${pkgname}::git+https://codeberg.org/kotontrion/kompass.git")
 sha256sums=('SKIP')
 
 pkgver() {

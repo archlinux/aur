@@ -1,7 +1,7 @@
 pkgbase = libkompass-git
 	pkgdesc = a gtk4 wayland desktop shell
 	pkgver = r122.d507477
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/kotontrion/kompass
 	arch = x86_64
 	license = GPL-3.0-only
@@ -21,7 +21,7 @@ pkgbase = libkompass-git
 	depends = libportal
 	depends = slurp
 	depends = wf-recorder
-	source = libkompass-git::git+https://github.com/kotontrion/kompass.git
+	source = libkompass-git::git+https://codeberg.org/kotontrion/kompass.git
 	sha256sums = SKIP
 
 pkgname = libkompass-git
