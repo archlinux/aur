@@ -1,7 +1,7 @@
 # Maintainer: Filippo Veneri <filippo.veneri@gmail.com>
 pkgname=clc-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A command-line tool for converting between configuration file formats'
 arch=('x86_64' 'aarch64')
 url='https://github.com/alchemy/clc'
