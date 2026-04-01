@@ -3,7 +3,7 @@
 
 pkgname=astroterm-bin
 _name=${pkgname%-bin}
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A planetarium for your terminal'
 arch=(x86_64)
@@ -16,11 +16,17 @@ source=(LICENSE-$pkgver::https://raw.githubusercontent.com/da-luce/$_name/refs/t
         README-$pkgver.md::https://raw.githubusercontent.com/da-luce/$_name/refs/tags/v$pkgver/README.md)
 source_x86_64=("$_name-$pkgver::$url/releases/download/v$pkgver/$_name-linux-x86_64")
 sha256sums=('dcf125d76a777af20283b8cc797ded8d3eeb7d57a1ad1f642493a13764c60a29'
-            'ffeab0dd661b4a258f1df40fe046931003fc8baeca868b2ab2749896757ee1bc')
-sha256sums_x86_64=('6001caa417b9a818a44c9b2242314dc411a5b5f65debdad578af9b894685ef73')
+            '8046f8fcc9658218f3ba0ce8a3a143137b6170b4c9651ee0421f1453b6e698e7')
+sha256sums_x86_64=('57a542bd37d01337a5dfd8582015a76c9949c0a514e4b9335e0c1aa44445b3df')
+
+build() {
+    chmod +x $_name-$pkgver
+    ./$_name-$pkgver -B > $_name.bash
+}
 
 package() {
     install -Dm755 $_name-$pkgver "$pkgdir/usr/bin/$_name"
+    install -Dm644 $_name.bash "$pkgdir/usr/share/bash-completion/completions/$_name"
     install -Dm644 README-$pkgver.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 LICENSE-$pkgver "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
