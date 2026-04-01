@@ -1,9 +1,8 @@
-# Maintainer: guglovich <your@email.com>
-# Created with assistance from Claude (Anthropic)
-# options=('!debug')
+# Maintainer: guglovich <guglovich164@gmail.com>
+# Created with assistance from Qwen 3.5 Plus (Alibaba).
 
 pkgname=b4-bin
-pkgver=1.46.5
+pkgver=1.47.2
 pkgrel=1
 pkgdesc="Network packet processor with a friendly UI for circumventing Deep Packet Inspection (DPI) systems"
 arch=('x86_64' 'i686' 'aarch64' 'riscv64' 'loong64' 'ppc64' 'ppc64le' 's390x')
@@ -29,14 +28,14 @@ source_ppc64=("${pkgname}-${pkgver}-ppc64.tar.gz::${_baseurl}/b4-linux-ppc64.tar
 source_ppc64le=("${pkgname}-${pkgver}-ppc64le.tar.gz::${_baseurl}/b4-linux-ppc64le.tar.gz")
 source_s390x=("${pkgname}-${pkgver}-s390x.tar.gz::${_baseurl}/b4-linux-s390x.tar.gz")
 
-sha256sums_x86_64=('21c245b4b732dfbee93696cfc5793380de36b7cace1543c3bafc4862f08016f4')
-sha256sums_i686=('b9824682bac5079b44f88678184a3822e25bb20eadbd1a299c62ca57783720be')
-sha256sums_aarch64=('e52f91e63f29d19889c43dee3ca220dbdd2bcb991483a0086fa4a26fd34a652b')
-sha256sums_riscv64=('3c41342aebc64c45e21d6d9a2acce6f05db3f7641aac37f5285de84b51a8f8f6')
-sha256sums_loong64=('b471596d54dd4e698c12a6e4304f7ec8b6b379d21996f96a6b0deedfde28b3d0')
-sha256sums_ppc64=('d21f22530c4c5f1165fd34361ecc05be7af6c7d112c8b0ff8f5d1cebdd0d58f4')
-sha256sums_ppc64le=('8327ccaca95d3b815e5c61cc3944c2c14b788709dd6f8451d2f20849407035cd')
-sha256sums_s390x=('641b4a719732878f6c83ce9ab563b303c0ed2d3e5c77b35c45875ab7de6bc1aa')
+sha256sums_x86_64=('87858de77ce35a069c7597f31e9570a6ed569babe943815a620eac7c65c1f282')
+sha256sums_i686=('935be39a06c0fb4967f66cf4f9ff7383b763ae7e2e6f5f9a22d2b3e8849d8cbf')
+sha256sums_aarch64=('e60ad1b2af2ab63f398fee96b19c7ad2f329d36dfcd7dcd99b6aaf37d5d7a0d1')
+sha256sums_riscv64=('566de6fa804e15defc3b79f691b1f868f8be39324d780b97d8f34a40896804d5')
+sha256sums_loong64=('d458a415ec2e5e16fe5f1a259c3de759c891f4d6e067e0653e3a5e1ac641968b')
+sha256sums_ppc64=('06e308beefa373c2f6797a8418e7d7c3b3a455e2b794a37fe15f48ce6caa79db')
+sha256sums_ppc64le=('89bdf38fa3f9867afd446a776cf039c6fc94ed82f7147bb4acef869a328291c4')
+sha256sums_s390x=('7ed364397d9dd03a1367e06aa9147bf3f8e77253d87b1829a33df307c88b5b19')
 
 backup=('etc/b4/b4.json')
 
