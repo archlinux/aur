@@ -9,6 +9,7 @@ pkgbase = vistathemeplasma-icons-git
 	makedepends = git
 	provides = vistathemeplasma-icons
 	conflicts = vistathemeplasma-icons
+	conflicts = aerothemeplasma-icons
 	options = !debug
 	source = vistathemeplasma-icons-git::git+https://gitgud.io/aeroshell/vtp/vistathemeplasma-icons.git
 	sha256sums = SKIP
