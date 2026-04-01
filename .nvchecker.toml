@@ -1,0 +1,3 @@
+[perl-catalyst-actionrole-acl]
+source = "cpan"
+cpan = "Catalyst-ActionRole-ACL"
