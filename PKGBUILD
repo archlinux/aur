@@ -1,14 +1,14 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com>
 
 pkgname=simutrans-extended-git
-pkgver=r21635.734f8e345
+pkgver=r22983.4dab37b16
 pkgrel=1
 pkgdesc="Transportation simulation game - Extended Version - Nightly build from git"
 arch=('any')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
 provides=(simutrans-extended)
-depends=('gcc-libs' 'zstd' 'zlib' 'sdl2' 'hicolor-icon-theme' 'freetype2' 'miniupnpc' 'fluidsynth')
+depends=('gcc-libs' 'zstd' 'zlib' 'sdl2' 'hicolor-icon-theme' 'freetype2' 'fluidsynth')
 makedepends=('pkgconf' 'git' 'cmake' 'patch')
 optdepends=('soundfont-fluid: Default MIDI soundfont for music'
 			'soundfont-realfont: recommended MIDI soundfont'
@@ -39,7 +39,8 @@ prepare() {
 build() {
   cd $pkgname
   cmake -S . -B build 
-  cmake build -DCMAKE_BUILD_TYPE=Release
+  # TODO: Restore miniupnpc dependency if Extended updates the api
+  cmake build -DCMAKE_BUILD_TYPE=Release -DSIMUTRANS_USE_UPNP=0
   cmake --build build -j$(nproc) --target simutrans-extended
 }
 
