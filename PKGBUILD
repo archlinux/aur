@@ -88,4 +88,8 @@ package() {
         echo "Error: 'shorinniri' script not found in the git repository root."
         exit 1
     fi
+
+    if [[ -f "必看-shoirn-Niri使用方法.txt" ]]; then
+        install -Dm644 "必看-shoirn-Niri使用方法.txt" "$pkgdir/usr/share/doc/shorin-niri/必看-shoirn-Niri使用方法.txt"
+    fi
 }
