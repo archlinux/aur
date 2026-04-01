@@ -1,7 +1,7 @@
 # Maintainer: CPT-Dawn <dawnsp0456@gmail.com>
 pkgname=vellum
 _reponame=Vellum
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Wayland wallpaper stack with daemon and TUI"
 arch=('x86_64')
@@ -11,8 +11,8 @@ makedepends=('cargo' 'pkgconf')
 provides=("vellum")
 conflicts=("vellum-git")
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CPT-Dawn/Vellum/archive/refs/tags/v1.0.4.tar.gz")
-sha256sums=('41a2976f81d2e945175e3fde54533df80ff8b56863f99f1c9fe8be284fe0577b')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CPT-Dawn/Vellum/archive/refs/tags/v1.0.5.tar.gz")
+sha256sums=('fbd223cf96846a51eb808f4657573a31acb1e6a7f392a18f19b214a89cabba5a')
 
 prepare() {
   cd "${_reponame}-${pkgver}"
