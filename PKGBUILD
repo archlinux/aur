@@ -27,12 +27,12 @@ md5sums=('a0e506ddec3d62473fa42e7b54b424cc'
 validpgpkeys=()
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
     cp "$srcdir/anime-relations-$pkgver.txt" "vendor/anime-relations/anime-relations.txt"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
     cargo build --release --locked --all-features --target-dir target
 }
 
@@ -41,7 +41,7 @@ check() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
     install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
     install -Dm 755 data/moe.tundra.Tundra.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -Dm 755 data/moe.tundra.Tundra.desktop -t "${pkgdir}/usr/share/applications"
