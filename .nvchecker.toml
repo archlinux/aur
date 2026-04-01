@@ -1,0 +1,6 @@
+[teleport-client-17]
+source = "github"
+github = "gravitational/teleport"
+prefix = "v"
+include_regex = "^v17\\.\\d+\\.\\d+"
+use_max_release = true
