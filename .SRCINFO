@@ -1,7 +1,7 @@
 pkgbase = amber-package-manager
 	pkgdesc = bwrap wrapper for install and running debs inside a Amber-PM container
 	pkgver = 1.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitee.com/amber-ce/amber-pm/
 	install = amber-package-manager.install
 	arch = x86_64

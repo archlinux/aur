@@ -4,7 +4,7 @@
 
 pkgname=amber-package-manager
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="bwrap wrapper for install and running debs inside a Amber-PM container"
 arch=('x86_64')
 url="https://gitee.com/amber-ce/amber-pm/"
@@ -27,12 +27,14 @@ package() {
     cd "$srcdir/amber-pm-${pkgver}/src"
     
     install -d "$pkgdir/var/lib/apm"
-    cp -r etc "$pkgdir/"
-    cp -r usr "$pkgdir/"
-    cp -r var "$pkgdir/"
+    cp -a etc "$pkgdir/"
+    cp -a usr "$pkgdir/"
+    cp -a var "$pkgdir/"
 
-    cd "$pkgdir/"
-    chmod 755 -R .
+    rm -rf "${pkgdir}/usr/share/fish"
+
+    # cd "$pkgdir/"
+    # chmod 755 -R .
     
     
     find "$pkgdir" -type d -exec chmod 755 {} \;
