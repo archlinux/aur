@@ -3,7 +3,7 @@ pkgname=promtool
 pkgver=3.10.0
 pkgrel=1
 pkgdesc='Tooling for the Prometheus monitoring system'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/prometheus/prometheus'
 license=('Apache-2.0')
 depends=('glibc')
@@ -15,6 +15,11 @@ options=(!lto)
 
 build() {
     cd prometheus-$pkgver
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
 
     LDFLAGS="-extldflags '$LDFLAGS' \
         -X github.com/prometheus/common/version.Version=$pkgver \
