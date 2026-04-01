@@ -3,7 +3,7 @@
 # Maintainer: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.68.2
+pkgver=1.70.0
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
@@ -14,7 +14,7 @@ _license_files=(LICENSE-EPL LICENSE-GPL-2.0-ONLY-CLASSPATH-EXCEPTION LICENSE-MIT
 #_licenses="${_license_files[*]/#/LicenseRef-}"
 #license=("${_licenses//${IFS:0:1}/ AND }")
 license=("${_license_files[@]/#/LicenseRef-}")
-depends=('nodejs-lts-jod' 'nss' 'gtk3' 'libxss' 'libxkbfile' 'ripgrep')
+depends=('nodejs-lts-krypton' 'nss' 'gtk3' 'libxss' 'libxkbfile' 'ripgrep')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
              'gcc' 'git' 'make' 'node-gyp' 'npm' 'pkgconf' 'python-setuptools' 'yarn')
 optdepends=('git: git support' 'libsecret: keytar support')
@@ -58,7 +58,7 @@ prepare() {
   # Add postinstall script.
   bash make-package-json.sh "${pkgver/.next./-next.}" | \
   grep -vE "@theia/(ai-vercel-ai|getting-started|git|notebook|plugin[-0-9_a-z]*|preview|test)\b" | \
-  jq '.theiaPlugins."vscode-builtin-extensions" = "https://github.com/eclipse-theia/vscode-builtin-extensions/releases/download/1.104.0/vscode-builtin-extensions-1.104.0.tar.gz" |
+  jq '.theiaPlugins."vscode-builtin-extensions" = "https://github.com/eclipse-theia/vscode-builtin-extensions/releases/download/1.108.2/vscode-builtin-extensions-1.108.2.tar.gz" |
       .scripts.postinstall = "theia-patch"' >package.json
 }
 
