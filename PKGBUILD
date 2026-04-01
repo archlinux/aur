@@ -1,9 +1,12 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 
+# Co-Maintainer: Harsh Vyapari <harshvy5094@proton.me>
+# https://github.com/harshv5094
+
 _pkgname=linutil
 pkgname="$_pkgname-bin"
-pkgver=2025.09.09
+pkgver=2026.01.22
 pkgrel=1
 pkgdesc="Distro-agnostic toolbox designed to simplify everyday Linux tasks"
 arch=('x86_64' 'aarch64')
@@ -20,13 +23,13 @@ source_aarch64=("$_pkgname-$pkgver::$url/releases/download/$pkgver/$_pkgname-aar
   "$_pkgname-$pkgver.desktop::$_url_raw/refs/tags/$pkgver/$_pkgname.desktop"
   "LICENSE-$pkgver::$_url_raw/refs/tags/$pkgver/LICENSE"
   "README-$pkgver.md::$_url_raw/refs/tags/$pkgver/README.md")
-sha256sums_x86_64=('cdb0d47fff54edd11aab666256feaa5b5663bd76eac8b3a8c3b1296d8db5532e'
-                   '89633413d90a770e7174c3f560886e8fd5a06bcac6b72077ccb23830b28c2466'
+sha256sums_x86_64=('5be9d4059f53ff49a4fe793dd3ec88f31d32d256fa421d7744b32bf68e0582a3'
+                   '513b5df85842d709232c120b869f86ca8be9794a9144be5d54c7d8a9c95c2975'
                    'e62a5bed2b3a5f80421827168ff10ff35388b39cf313d0a00e1f8cff841902a9'
                    '8d353e5a8bc69b891e948bd02afc9c05c0aff00c69279ca32f7b654b387792d6'
                    '79b3eb560ee97ff2aff5f6e0d2c15956bb06990cadf9796bd208d91db6b69477')
-sha256sums_aarch64=('cdb0d47fff54edd11aab666256feaa5b5663bd76eac8b3a8c3b1296d8db5532e'
-                    '89633413d90a770e7174c3f560886e8fd5a06bcac6b72077ccb23830b28c2466'
+sha256sums_aarch64=('5be9d4059f53ff49a4fe793dd3ec88f31d32d256fa421d7744b32bf68e0582a3'
+                    '513b5df85842d709232c120b869f86ca8be9794a9144be5d54c7d8a9c95c2975'
                     'e62a5bed2b3a5f80421827168ff10ff35388b39cf313d0a00e1f8cff841902a9'
                     '8d353e5a8bc69b891e948bd02afc9c05c0aff00c69279ca32f7b654b387792d6'
                     '79b3eb560ee97ff2aff5f6e0d2c15956bb06990cadf9796bd208d91db6b69477')
@@ -36,7 +39,7 @@ conflicts=("$_pkgname")
 provides=("$_pkgname")
 
 prepare() {
-  echo "Version=$pkgver" >> "$_pkgname-$pkgver.desktop"
+  echo "Version=$pkgver" >>"$_pkgname-$pkgver.desktop"
 }
 
 package() {
