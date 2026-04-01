@@ -1,14 +1,14 @@
 pkgbase = angular-cli
 	pkgdesc = CLI tool for Angular
-	pkgver = 21.2.3
+	pkgver = 21.2.6
 	pkgrel = 1
 	url = https://github.com/angular/angular-cli
 	arch = any
 	license = MIT
 	depends = npm
-	noextract = angular-cli-21.2.3.tar.gz
+	noextract = angular-cli-21.2.6.tar.gz
 	options = !strip
-	source = angular-cli-21.2.3.tar.gz::https://registry.npmjs.org/@angular/cli/-/cli-21.2.3.tgz
-	sha1sums = 97300e86897bcff17213bd4de6291113d943dbcf
+	source = angular-cli-21.2.6.tar.gz::https://registry.npmjs.org/@angular/cli/-/cli-21.2.6.tgz
+	sha1sums = 8261108de3e61930a864d8972f1c621d935b4517
 
 pkgname = angular-cli
