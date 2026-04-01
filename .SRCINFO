@@ -20,11 +20,11 @@ pkgbase = atrust-bin
 	conflicts = atrust
 	options = !strip
 	options = !emptydirs
-	source = atrust-2.5.16.30.deb::https://atrustcdn.sangfor.com/standard/linux/2.5.16.30/uos/amd64/aTrustInstaller_amd64.deb
+	source = atrust-2.5.16.30.deb::https://atrustcdn.sangfor.com/standard/linux/2.5.16.30/ubuntu/amd64/aTrustInstaller_amd64.deb
 	source = bsod_checker.js
 	source = atrust.sh
-	sha256sums = aa8ba93532ae250dcab3d75d3b103fb01a93b97b49cbc6d9066c5ed1f70b75a6
+	sha256sums = 298c0bcf6aa923d53337f525affdbc99d61d07bb4119ee10a39eb697eefe32d5
 	sha256sums = ae82a7e0575d2ed8778134fc7d5c9c85001c955a7d26710a13101ff2363c53e6
-	sha256sums = 28e008479e0ddba50ab98baa97c9e27c22cfe8aaac3812f7d4552a75453068da
+	sha256sums = dcd83c90f18567cab33c5734d2b55e0a5331e58634ea224054f7a186fd8b17bd
 
 pkgname = atrust-bin
