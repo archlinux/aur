@@ -1,7 +1,7 @@
 pkgbase = adguard-tray
 	pkgdesc = System tray monitor and controller for adguard-cli (KDE Plasma & Hyprland)
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/RiDDiX/adguard-tray
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = adguard-tray
 	depends = libnotify
 	optdepends = adguard-cli-bin: AdGuard CLI via AUR (alternatively install upstream: curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardCLI/release/install.sh | sh -s -- -v)
 	optdepends = qt6-svg: SVG icon theme support
-	source = adguard-tray-1.1.0.tar.gz::https://github.com/RiDDiX/adguard-tray/archive/v1.1.0.tar.gz
+	source = adguard-tray-1.1.1.tar.gz::https://github.com/RiDDiX/adguard-tray/archive/v1.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = adguard-tray
