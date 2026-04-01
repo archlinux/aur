@@ -2,8 +2,8 @@
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 
 pkgname="sway-desktop-env-hook"
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Adds XDG_CURRENT_DESKTOP, XDG_SESSION_DESKTOP and XDG_SESSION_TYPE definitions to sway.desktop!"
 arch=('any')
 url=""
@@ -15,6 +15,7 @@ provides=("${pkgname}=${pkgver}")
 source=(
     "sway-desktop-env.hook"
 )
+install=${pkgname}.install
 
 package() {
     cd              "${srcdir}"
