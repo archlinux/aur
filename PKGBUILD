@@ -5,7 +5,7 @@
 _name=elmerfem
 pkgname=elmerfem-gui
 pkgver=26.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical user interface for the Elmer software suit"
 arch=('x86_64')
 url="https://www.elmerfem.org"
