@@ -1,0 +1,3 @@
+[perl-rdf-trine]
+source = "cpan"
+cpan = "RDF-Trine"
