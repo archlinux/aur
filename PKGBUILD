@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=7
+pkgrel=8
 pkgdesc="Shorin Niri Desktop Environment (Dependencies & Dotfiles)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -50,18 +50,15 @@ depends=(
 )
 makedepends=('git')
 
-# 修改为全新的仓库地址
 source=("git+https://github.com/SHORiN-KiWATA/shorin-niri.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    # 目录名变成了 shorin-niri
     cd "$srcdir/shorin-niri"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    # 目录名变成了 shorin-niri
     cd "$srcdir/shorin-niri"
 
     local target_dir="$pkgdir/usr/share/shorin-niri"
@@ -73,6 +70,15 @@ package() {
     else
         echo "Error: 'dotfiles' directory not found in the git repository."
         exit 1
+    fi
+
+    # [新增] 将 Wallpapers 拷贝到独立的共享目录，防止影响 dotfiles 同步逻辑
+    local wp_dir="$pkgdir/usr/share/shorin-niri-wallpapers"
+    install -dm755 "$wp_dir"
+    if [[ -d "Wallpapers" ]]; then
+        cp -a Wallpapers/. "$wp_dir/"
+    else
+        echo "Warning: 'Wallpapers' directory not found in the git repository, skipping..."
     fi
 
     # 安装配套的 CLI 脚本
