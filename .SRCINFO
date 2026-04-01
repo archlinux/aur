@@ -1,0 +1,25 @@
+pkgbase = codemux-bin
+	pkgdesc = The Agentic Development Environment for Builders
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Zeus-Deus/codemux
+	arch = x86_64
+	license = custom:Elastic-2.0
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = openssl
+	depends = git
+	depends = ydotool
+	depends = xdg-utils
+	depends = ripgrep
+	depends = fd
+	depends = github-cli
+	optdepends = chromium: browser panes (or google-chrome, brave)
+	provides = codemux
+	conflicts = codemux
+	options = !strip
+	source = https://github.com/Zeus-Deus/codemux/releases/download/v0.1.0/codemux_0.1.0_amd64.AppImage
+	sha256sums = 845e8eacfb67d622357e5dd05c6ab30c5c2c6e58b15b53fc21d8866a5cb3bd70
+
+pkgname = codemux-bin
