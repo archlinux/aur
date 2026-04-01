@@ -2,7 +2,7 @@
 
 pkgname=wl-vapi-gen
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate vala bindings for wayland protocols "
 url="https://github.com/kotontrion/wl-vapi-gen"
 arch=(any)
@@ -13,17 +13,17 @@ depends=(
 makedepends=(
   meson
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kotontrion/wl-vapi-gen/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6ad746dd13c454e2901da7aec14f744a76d3d022809197b04c5a6774b503a079')
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/kotontrion/wl-vapi-gen/archive/$pkgver.tar.gz")
+sha256sums=('470ae4fddaef9355346b97c5825e01e3044d20cefca830ac51654577d98caea1')
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   arch-meson build
   meson compile -C build
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   meson install -C build --destdir "$pkgdir"
 }
 
