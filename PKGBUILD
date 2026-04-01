@@ -1,7 +1,7 @@
 # Maintainer: Thorben Günther <admin@xenrox.net>
 
 pkgname=ntfy-alertmanager
-pkgver=0.5.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A bridge between ntfy and Alertmanager'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "ntfy-alertmanager.service"
     "sysusers.conf"
 )
-sha256sums=('4a7da13edd37a383e2d5663fddde685a1594b7cc7edcff21a0d3d2e7cb63d0ac'
+sha256sums=('4980f1c27488527d0655721c0fa9ed7f697516569ae1e6de4c37655e534febf3'
             'SKIP'
             '3c87f8d84854f04d362892b2a74660d0d48ca65030c0ab659827e9b32e532172'
             '7d9183eac94bedc9c82b4abcb6b50b262599f079d2d078cdafe5bb6019464da4')
