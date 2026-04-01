@@ -1,6 +1,6 @@
 pkgbase = meeting-recorder
 	pkgdesc = Record, transcribe and summarize meetings with AI
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/AJV009/meeting-recorder
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = meeting-recorder
 	depends = wireplumber
 	optdepends = gpu-screen-recorder: screen recording support
 	optdepends = ollama: local LLM summarization
-	source = meeting-recorder-2.0.0.tar.gz::https://github.com/AJV009/meeting-recorder/archive/v2.0.0.tar.gz
+	source = meeting-recorder-2.0.1.tar.gz::https://github.com/AJV009/meeting-recorder/archive/v2.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = meeting-recorder

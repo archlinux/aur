@@ -1,6 +1,6 @@
 # Maintainer: AJV009 <jaimonalphons@gmail.com>
 pkgname=meeting-recorder
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Record, transcribe and summarize meetings with AI"
 arch=('any')
