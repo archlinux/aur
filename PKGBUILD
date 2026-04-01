@@ -1,4 +1,4 @@
-# Maintainer: Filippo Vreneri <filippo.veneri@gmail.com>
+# Maintainer: Filippo Veneri <filippo.veneri@gmail.com>
 pkgname=clc-bin
 pkgver=0.1.0
 pkgrel=1
