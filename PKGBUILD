@@ -1,26 +1,24 @@
 pkgname=mingw-w64-hdf5
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 arch=('any')
 pkgdesc="General purpose library and file format for storing scientific data (mingw-w64)"
-url="http://www.hdfgroup.org/HDF5/"
-license=('custom')
+url="https://www.hdfgroup.org/hdf5"
+license=(BSD-3-Clause)
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libaec')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
-source=(https://github.com/HDFGroup/hdf5/archive/hdf5_$pkgver/hdf5-$pkgver.tar.gz)
-sha256sums=('ea5d2b7f1343d9da9e43546f389a8fc2698597fdd710f2843a605742e54edaa2')
+source=(https://github.com/HDFGroup/hdf5/releases/download/${pkgver}/hdf5-${pkgver}.tar.gz)
+sha256sums=('efff93b5a904d66e8f626d7da60b5eedc9faf544be27dbabbaa87967b8ad798b')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd "$srcdir/hdf5-hdf5_${pkgver}"
-  curl -L https://raw.githubusercontent.com/msys2/MINGW-packages/refs/heads/master/mingw-w64-hdf5/0005-fix-extracted-library-names.patch | patch -p1
-  curl -L https://github.com/HDFGroup/hdf5/pull/6108.patch | patch -p1
+  cd "$srcdir/hdf5-${pkgver}"
 }
 
 build() {
-  cd "$srcdir/hdf5-hdf5_${pkgver}"
+  cd "$srcdir/hdf5-${pkgver}"
   for _arch in $_architectures; do
     ${_arch}-cmake -B build-${_arch} \
       -DCMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE=ON \
@@ -42,7 +40,7 @@ build() {
 
 package() {
   for _arch in $_architectures; do
-    cd "$srcdir/hdf5-hdf5_${pkgver}/build-${_arch}"
+    cd "$srcdir/hdf5-${pkgver}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
     rm -r "$pkgdir"/usr/${_arch}/share/
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
