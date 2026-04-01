@@ -1,5 +1,5 @@
 pkgname=wewa-bin
-pkgver=0.3.0
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Display web content as desktop wallpaper"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('wewa')
 conflicts=('wewa')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/wewa-linux-x64.tar.gz")
-sha256sums=('88a3cb98f80630f0684a4b7bd21ac2ae41a8a1f1ba7c798b908fc243226ded72')
+sha256sums=('c05441c057a606c9706980d35f1dfae23c10f8adcbff861b5787253305ad7c73')
 
 package() {
   install -Dm755 "$srcdir/wewa" "$pkgdir/usr/bin/wewa"
