@@ -1,12 +1,12 @@
 pkgbase = vim-classic-git
 	pkgdesc = Vim Classic is a fork of Vim 8.x for long-term maintenance.
-	pkgver = r11223.156c7e4
-	pkgrel = 3
+	pkgver = r11228.c32fa01
+	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/vim-classic
 	arch = x86_64
 	arch = i686
 	arch = aarch64
-	license = custom:vim
+	license = LicenseRef-vim
 	makedepends = gawk
 	makedepends = git
 	makedepends = lua
