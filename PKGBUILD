@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('python-pip' 'python-virtualenv' 'rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yeggis/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5f9b6b8cfe461634b461db6e01c90256a3e74a243480d583f33c6afff1bed243')
+sha256sums=('428ba36f029137a2876fb8a7fa2eefe99996bd77e2688fcd4057e5205c8dbb30')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/server"
