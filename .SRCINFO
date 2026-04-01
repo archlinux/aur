@@ -1,6 +1,6 @@
 pkgbase = newrelic-infra
 	pkgdesc = New Relic Infrastructure Agent
-	pkgver = 1.72.9
+	pkgver = 1.74.0
 	pkgrel = 1
 	url = https://github.com/newrelic/infrastructure-agent/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = newrelic-infra
 	conflicts = newrelic-infra-bin
 	options = !buildflags
 	backup = etc/newrelic-infra/newrelic-infra.yml
-	source = newrelic-infra-1.72.9.tar.gz::https://github.com/newrelic/infrastructure-agent/archive/refs/tags/1.72.9.tar.gz
+	source = newrelic-infra-1.74.0.tar.gz::https://github.com/newrelic/infrastructure-agent/archive/refs/tags/1.74.0.tar.gz
 	source = newrelic-infra.yml::https://github.com/newrelic/infrastructure-agent/blob/master/assets/examples/infrastructure/newrelic-infra-template.yml.example
-	sha256sums = 5a098feedcac118c9cf802b8ddfb24b696bdf22a8655571e41d241e8419ffe7c
+	sha256sums = 0e5c2a21fda0c6ecdd7da2b3aa8957d224a8d6acb0afea22fc012d2a1c07b963
 	sha256sums = b5ef080a6345b737bc56bc594a8220a681d98ddd79c033fdf954b222aa076509
 
 pkgname = newrelic-infra

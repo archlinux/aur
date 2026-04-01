@@ -1,7 +1,7 @@
 # Maintainer: Trey Blancher $(base64 -d <<< dHJleUBibGFuY2hlci5uZXQK)
 pkgname=newrelic-infra
 _name='infrastructure-agent'
-pkgver=1.72.9
+pkgver=1.74.0
 pkgrel=1
 pkgdesc="New Relic Infrastructure Agent"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -56,5 +56,5 @@ package() {
         "${pkgdir}/usr/bin/"
     install -Dm u=rw,go=r "${srcdir}/${pkgname}.yml" "${pkgdir}/etc/${pkgname}/"
 }
-sha256sums=('5a098feedcac118c9cf802b8ddfb24b696bdf22a8655571e41d241e8419ffe7c'
+sha256sums=('0e5c2a21fda0c6ecdd7da2b3aa8957d224a8d6acb0afea22fc012d2a1c07b963'
             'b5ef080a6345b737bc56bc594a8220a681d98ddd79c033fdf954b222aa076509')
