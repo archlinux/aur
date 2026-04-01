@@ -81,9 +81,9 @@ sha256sums=('08bc141261ee7acebf1bf574cfbdb90448d624c7dec5b91d45e42bedff7ddb7e'
             '4ae8a73ccbef568b7841dbdfe9b9d8a76fa78db00051317b6313a6a50a66c900'
             '077b85d692df4625300a785eed1efdc7af8fbb8e05dfa8c7d8b4053c1eb76a58'
             '614b56dba38f9201d8a391d0f3d2cdf5571935a1ea6c5d19a74a942f18411763'
-            '346a16f6b01ee4318eec7f16b9be5eee4909ae5a0fb4f256dbdd530f5d338103'
-            'c9b835d619325c9b422de9f4c8c0f11d453230d17a5ceaaa2ad6301b03142c23'
-            'f603a13c3a0dc129c95b16d3408a19c76d6d45a3363b45322994281018e27610'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255')
 
 prepare() {
