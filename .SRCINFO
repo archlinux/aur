@@ -1,0 +1,22 @@
+pkgbase = f2p-evo-bin
+	pkgdesc = F2P Evo - unofficial Hytale launcher (Rust + Tauri 2 + Vue 3) with multiplayer, mods, chat, and auto-updates (binary version)
+	pkgver = 0.3.35
+	pkgrel = 1
+	url = https://git.sanhost.net/sanasol/f2p-evo
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = libappindicator
+	depends = webkit2gtk-4.1
+	optdepends = noto-fonts-cjk: Chinese/Japanese/Korean support
+	optdepends = noto-fonts-emoji: Emoji support
+	provides = f2p-evo
+	conflicts = f2p-evo
+	conflicts = f2p-evo-git
+	source = f2p-evo-0.3.35.deb::https://git.sanhost.net/sanasol/f2p-evo/releases/download/v0.3.35/F2P%20Evo_0.3.35_amd64.deb
+	source = f2p-evo.desktop
+	sha256sums = 33f49a4659e3b4935552a16ff1d83c1b7dad130306dac02064d806fcc3018753
+	sha256sums = 0afc72abdbdfeb59919ff3b18bb3b7933d6c86b0f416cb3e610753b6fce38199
+
+pkgname = f2p-evo-bin

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Game;Utility;
+Comment=F2P Evo - unofficial Hytale launcher (Rust + Tauri 2 + Vue 3) with multiplayer, mods, chat, and auto-updates
+Exec=/usr/bin/f2p-evo %U
+Icon=f2p-evo
+Keywords=hytale;gaming;launcher;mods;
+Name=F2P Evo
+StartupNotify=true
+StartupWMClass=f2p-evo
+Terminal=false
+Type=Application
