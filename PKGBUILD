@@ -2,10 +2,13 @@
 pkgname=avogadro2-bin
 _pkgname=Avogadro2
 _appname="org.openchemistry.${_pkgname}"
-pkgver=1.103.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas.(Prebuilt version)"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://two.avogadro.cc/"
 _ghurl="https://github.com/OpenChemistry/avogadroapp"
 license=('BSD-3-Clause')
@@ -21,13 +24,15 @@ depends=(
 )
 options=('!strip')
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${CARCH}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/OpenChemistry/avogadroapp/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('22ec4e67e04be6dcc57dcbd7173b515c6c3c876afc29b9e7c7d00e00ee2a68a1'
-            '3e6a55dc0da9bb56a7f232b1766da524c9d9c1dad61dfeea8424f1df7fb6f2f4'
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-aarch64.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-x86_64.AppImage")
+sha256sums=('3e6a55dc0da9bb56a7f232b1766da524c9d9c1dad61dfeea8424f1df7fb6f2f4'
             '0d625edc1abc14e5971788272ff95412cc4851274633c34b94144541609b92ac')
+sha256sums_aarch64=('f7cfac39aa8df5d2ff712b5178c90ef87a49972b919e38b003015e9b3dd3c518')
+sha256sums_x86_64=('9792b8a81069d3c7b855374ba580acd9950ca24c8c2173320c7841aa6c82452e')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
