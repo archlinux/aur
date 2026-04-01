@@ -4,7 +4,7 @@ _pkgbaseU='Zenbones'
 _type='TTF'
 pkgbase="ttf-zenbones"
 pkgname="ttf-zenbones"
-pkgver=2.400
+pkgver=2.500
 pkgrel=1
 extraver=
 pkgdesc='A custom Iosevka build drawing inspirations from various programming typefaces.'
@@ -23,11 +23,11 @@ source=("${_type}-${_pkgbaseU}-Proto-${pkgver}.zip::https://github.com/zenbones-
         "LICENSE.md::https://raw.githubusercontent.com/zenbones-theme/zenbones-mono/refs/tags/v${pkgver}/LICENSE.md")
 noextract=("LICENSE.md::https://raw.githubusercontent.com/zenbones-theme/zenbones-mono/refs/tags/v${pkgver}/LICENSE.md")
 
-b2sums=('e3250b8809e51094f07f5a68b1af896c5edae36f0136f9cdd1d172daba2a33b7d5eae6423baea206682a1e6f8887c45f5e6dfd8d73a6b15e3763a545a4d34435'
-        'afd4563d2392931ea15c3df80dbbd381ecb1035fad997a4969dd0527db34e10430a86c3dfa14c6e03a340e675f957dcbbcd4180d8add3c6daf1cff3a7ab979cc'
-        '182a93bd9b3dd3f114e26c6937158748b7b39debfaaa6ffa751178a3ca90d62bd7abd62964cec73a7b9d62151b5bd1acc35d5c3315405f674de2992dfec75433'
-        '673be6f5f1ed5a4e239b98d91b2e3a435ed177c4a27319b3a646d47b06ad5e74aec6f987dc46530defda36a5816793f9682a9929496195c663067f4e2701921c'
-        'da3885f4420291231acf9a4981dedf398fd59e1aa37aeb212ef3895dfcf2f8c6bc6860c9ddcdaf954541d56cf8e6bff566e2bc973e91bce5141a66a637b04c49'
+b2sums=('5154903e6db0e0b6a29b1b2934a4e1730fccc782f8503d7aa776b6059e5833358f437c5d708bffd3717a9e3fa6306f35ee0e36a6f033423a82c63b87e84b6983'
+        'ac39095df14767c6cb6d1b14f57cab964ffd339c6a898a376dca4862365bbc8bb9276985464d4c432805504790c8657f13271d6283c1ae3a71a9a8a27fee0346'
+        '743fd0903e7daaa03410297f8e6ddfaeb46cf9012e09e10635221ba7adc12ee358577c175ad9446fcd3392bbf7b8cd7633bc68cce22058fc3a43c0f3914bca03'
+        '7d874be6aae9e361e924c83cf979e15f121028b62d6f55eacd2e3d243982099cdba644a53ec5a7c294c62c05761ca13bdd391598374229b59e0e1235154008eb'
+        'a8b085bc7290b3bb69e2a37c676a63944abbbe6ce2d87adcca08ec29861bf40e1cfec6714c36e1658583d67dfe2b2d0fd61d116b071801e1e7830864f8c2422c'
         'c4444257db2f679583e9d904adbceab8f0d4d5ba6c7b8da430529683da919ee817ae29ab94ce35e62ea30a514700709ea9caffb9df432fec8103da14fa466e7b')
 
 # depends=('fontconfig')
