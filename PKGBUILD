@@ -4,12 +4,12 @@
 # Contributor: beatgammit
 
 pkgname=servo-git
-pkgver=0.0.1.r16.g76bb1c8
+pkgver=testing.0.0.0.0.2.r1154.g15cc268
 pkgrel=1
 pkgdesc='Parallel Browser Project: web browser written in Rust'
 arch=(x86_64 i686)
 url=https://github.com/servo/servo
-license=(MPL)
+license=(MPL-2.0)
 depends=(bzip2
          fontconfig
          freetype2
@@ -25,17 +25,18 @@ depends=(bzip2
          ttf-font
          xcb-util)
 install="$pkgname.install"
-makedepends=(rustup # doesn't work with system rust
-             clang
+makedepends=(clang
              cmake
              curl
              depot-tools-git
              git
+             'glibc<2.43'
              gperf
              llvm
              python
              python-distlib
              python-virtualenv
+             rustup # doesn't work with system rust
              uv)
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
@@ -54,6 +55,7 @@ prepare() {
 	cd "$pkgname"
 	echo 'export PATH=$PATH:/opt/servo' > "${pkgname%-git}.sh"
 	echo 'setenv PATH ${PATH}:/opt/servo' > "${pkgname%-git}.csh"
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -68,10 +70,9 @@ build() {
 }
 
 package() {
-	servopath=$pkgname/target/release
-	install -Dm0755 -t "$pkgdir/opt/servo/" "$servopath/servo"
-	install -d "$pkgdir/opt/servo/resources/"
-	cp -r $pkgname/resources/* "$pkgdir/opt/servo/resources"
 	cd "$pkgname"
+	install -Dm0755 -t "$pkgdir/opt/servo/" "target/release/servoshell"
+	install -d "$pkgdir/opt/servo/resources/"
+	cp -r resources/* "$pkgdir/opt/servo/resources"
 	install -Dm0755 -t "$pkgdir/etc/profile.d/" "${pkgname%-git}".{csh,sh}
 }
