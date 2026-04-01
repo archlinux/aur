@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('python' 'tcpdump' 'iw')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('4e5303f5cf6c0e5e7d400580e618953e7658896aec592f3e7232365c043813bd')
 
 build() {
     cd "$pkgname-$pkgver"
