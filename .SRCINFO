@@ -1,7 +1,7 @@
 pkgbase = matlab
 	pkgdesc = A high-level language for numerical computation and visualization
-	pkgver = R2025b+25.2.0.3150157
-	pkgrel = 2
+	pkgver = R2025b+25.2.0.3177638
+	pkgrel = 1
 	epoch = 1
 	url = https://www.mathworks.com/products/matlab.html
 	arch = x86_64
@@ -15,48 +15,55 @@ pkgbase = matlab
 	options = !zipman
 	options = staticlibs
 	options = libtool
-	source = matlab_jenv.hook
-	sha256sums = 396187ed4f1a516327fbce96140114983a17d6e64988f0c5d95d036353c0fe51
 
 pkgname = matlab
 	install = matlab.install
-	depends = matlab-meta
+	depends = matlab-meta>=R2025b
 	depends = sh
 	depends = gnutls3.8.9
+	optdepends = matlab-meta-all: all runtime dependencies
 	optdepends = java-matlab: required for certain products and features
 	optdepends = matlab-gcc: GCC runtime dependency
 	optdepends = matlab-gcc-fortran: GCC Fortran runtime dependency
 	provides = matlab-release=R2025b
-	provides = matlab-version=25.2.0.3150157
-	provides = matlab-r2025b=25.2.0.3150157
+	provides = matlab-version=25.2.0.3177638
+	provides = matlab-r2025b=25.2.0.3177638
 	conflicts = matlab-r2025b
 
 pkgname = java-matlab
 	pkgdesc = A high-level language for numerical computation and visualization (Java components)
-	install = java-matlab.install
-	depends = matlab>=1:R2025b+25.2.0.3150157-2
-	depends = matlab-jre
+	depends = matlab>=1:R2025b+25.2.0.3177638-1
+	depends = matlab-jre>=R2025b
 	provides = java-matlab-release=R2025b
-	provides = java-matlab-version=25.2.0.3150157
-	provides = java-matlab-r2025b=25.2.0.3150157
+	provides = java-matlab-version=25.2.0.3177638
+	provides = java-matlab-r2025b=25.2.0.3177638
 	conflicts = java-matlab-r2025b
+
+pkgname = matlab-jre-bundled
+	pkgdesc = A high-level language for numerical computation and visualization (JRE, bundled)
+	provides = matlab-jre-bundled-release=R2025b
+	provides = matlab-jre-bundled-version=25.2.0.3177638
+	provides = matlab-r2025b-jre-bundled=25.2.0.3177638
+	provides = matlab-jre=R2025b
+	provides = matlab-r2025b-jre=R2025b
+	conflicts = matlab-r2025b-jre-bundled
 
 pkgname = matlab-gcc
 	pkgdesc = A high-level language for numerical computation and visualization (GCC)
 	arch = any
-	depends = matlab>=1:R2025b+25.2.0.3150157-2
-	depends = matlab-gcc-meta
+	depends = matlab>=1:R2025b+25.2.0.3177638-1
+	depends = matlab-gcc-meta>=R2025b
 	provides = matlab-gcc-release=R2025b
-	provides = matlab-gcc-version=25.2.0.3150157
-	provides = matlab-r2025b-gcc=25.2.0.3150157
+	provides = matlab-gcc-version=25.2.0.3177638
+	provides = matlab-r2025b-gcc=25.2.0.3177638
 	conflicts = matlab-r2025b-gcc
 
 pkgname = matlab-gcc-fortran
 	pkgdesc = A high-level language for numerical computation and visualization (GCC Fortran)
 	arch = any
-	depends = matlab>=1:R2025b+25.2.0.3150157-2
-	depends = matlab-gcc-fortran-meta
+	depends = matlab>=1:R2025b+25.2.0.3177638-1
+	depends = matlab-gcc-fortran-meta>=R2025b
 	provides = matlab-gcc-fortran-release=R2025b
-	provides = matlab-gcc-fortran-version=25.2.0.3150157
-	provides = matlab-r2025b-gcc-fortran=25.2.0.3150157
+	provides = matlab-gcc-fortran-version=25.2.0.3177638
+	provides = matlab-r2025b-gcc-fortran=25.2.0.3177638
 	conflicts = matlab-r2025b-gcc-fortran

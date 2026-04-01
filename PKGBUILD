@@ -3,8 +3,11 @@
 # Contributor: sukanka <su975853527[AT]gmail.com>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
+: "${MAKEPKG_MATLAB_PREFIX:=/opt}"
+: "${MAKEPKG_MATLAB_ROOT:=${MAKEPKG_MATLAB_PREFIX}/MATLAB}"
+
 # disable package compression (optional but highly recommended)
-PKGEXT='.pkg.tar'
+# PKGEXT='.pkg.tar'
 # enable optional products
 declare -Ag _products=(
   # [5g_toolbox]="5G Toolbox"
@@ -131,13 +134,14 @@ pkgbase="matlab"
 pkgname=(
   "${pkgbase}"
   "java-${pkgbase}"
+  "${pkgbase}-jre-bundled"
   "${pkgbase}-gcc"
   "${pkgbase}-gcc-fortran"
 )
-pkgver=R2025b+25.2.0.3150157
+pkgver=R2025b+25.2.0.3177638
 _release="${pkgver%+*}"
 _version="${pkgver##*+}"
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=(
@@ -160,10 +164,6 @@ options=(
   'staticlibs'
   'libtool'
 )
-source=(
-  "matlab_jenv.hook" # TODO: move to matlab-jre-meta
-)
-sha256sums=('396187ed4f1a516327fbce96140114983a17d6e64988f0c5d95d036353c0fe51')
 
 for _product in "${!_products[@]}"; do
   provides+=(
@@ -178,17 +178,16 @@ done
 
 prepare() {
   cd "${srcdir}"
-  echo "  -> Cleaning old directories..."
-  rm -rf download install install-java tmp
-  mkdir -p download install install-java tmp # TODO: mktemp
-
   echo "  -> Starting log watcher..."
-  : > "tmp/mathworks_${USER}.log"
-  tail -n 0 -F "tmp/mathworks_${USER}.log" |
+  local tmpdir="$(mktemp -d)"
+  : > "${tmpdir}/mathworks_${USER}.log"
+  tail -n 0 -F "${tmpdir}/mathworks_${USER}.log" |
     sed --unbuffered 's/^[^)]*) *//; s/^/    -> /' &
   tail_pid=$!
 
   echo "  -> Starting download progress watcher..."
+  rm -rf "download"
+  mkdir -p "download"
   (
     inotifywait -mrq -e create --format '%w%f' download |
       while read -r f; do
@@ -198,6 +197,8 @@ prepare() {
   download_pid=$!
 
   echo "  -> Starting install progress watcher..."
+  rm -rf "install"
+  mkdir -p "install"
   (
     inotifywait -mrq -e create --format '%w%f' install |
       while read -r f; do
@@ -220,7 +221,7 @@ prepare() {
   _product_list="${_product_list% }"
 
   echo "  -> Downloading archives using MPM. This will take a while..."
-  TMPDIR="${srcdir}/tmp" matlab-mpm download \
+  TMPDIR="${tmpdir}" matlab-mpm download \
     --release="${_release}" \
     --destination="${srcdir}/download" \
     --products=${_product_list:+${_product_list} }MATLAB \
@@ -235,11 +236,10 @@ prepare() {
 
   echo "  -> Installing archives using MPM. This will take a while..."
   chmod +x ./download/mpm/glnxa64/mpm
-  TMPDIR="${srcdir}/tmp" ./download/mpm/glnxa64/mpm install \
+  TMPDIR="${tmpdir}" ./download/mpm/glnxa64/mpm install \
     --source="${srcdir}/download" \
     --destination="${srcdir}/install" \
-    --products=${_product_list:+${_product_list} }MATLAB \
-    --no-jre # TODO: move into a split package
+    --products=${_product_list:+${_product_list} }MATLAB
 
   if [[ ! -d install || -z $(ls -A install) ]]; then
     echo "  ==> ERROR: MPM install succeeded but install directory is empty!"
@@ -270,14 +270,21 @@ build() {
     --name "MATLAB" \
     --comment 'Programming and numeric computing platform' \
     --exec "${pkgbase} -desktop -useStartupFolderPref" \
-    --icon "/opt/MATLAB/${_release}/bin/glnxa64/cef_resources/matlab_icon.png" \
+    --icon "${MAKEPKG_MATLAB_ROOT}/${_release}/bin/glnxa64/cef_resources/matlab_icon.png" \
     --categories 'Development;Education;Science;Mathematics;IDE' \
     --mimetypes 'application/x-matlab-data;text/x-matlab'
 
-  cd "${srcdir}/install"
   echo "  -> Separating Java components..."
-  mv "java" "${srcdir}/install-java/java"
+  rm -rf "install-java"
+  mkdir -p "install-java"
+  mv "install/java" "install-java/java"
 
+  echo "  -> Separating bundled JRE..."
+  rm -rf "install-jre"
+  mkdir -p "install-jre/sys/java"
+  mv "install/sys/java/jre" "install-jre/sys/java/jre"
+
+  cd "install"
   echo "  -> Modifying GCC version used by MEX..."
   find "bin/glnxa64/mexopts" -type f -name '*.xml' -exec \
     sed -e "s|/usr/local|/usr|g" \
@@ -286,6 +293,7 @@ build() {
         -e "s|gfortran|gfortran-${pkgbase}|g" \
         -i "{}" +
 
+  # https://bbs.archlinux.org/viewtopic.php?id=305604
   echo "  -> Downgrading GnuTLS version..."
   find "/usr/lib/gnutls3.8.9" -maxdepth 1 -type f,l -name 'lib*.so*' -exec \
     ln -vsf {} bin/glnxa64/ \;
@@ -293,11 +301,12 @@ build() {
 
 package_matlab() {
   depends=(
-    "${pkgname}-meta"
+    "${pkgname}-meta>=${_release}"
     'sh'
     'gnutls3.8.9'
   )
   optdepends=(
+    "${pkgname}-meta-all: all runtime dependencies"
     "java-${pkgname}: required for certain products and features"
     "${pkgname}-gcc: GCC runtime dependency"
     "${pkgname}-gcc-fortran: GCC Fortran runtime dependency"
@@ -314,35 +323,35 @@ package_matlab() {
 
   cd "${srcdir}"
   echo "  -> Moving files from \$srcdir/ to \$pkgdir/ directly to save space..."
-  # install -vdm755 "${pkgdir}/opt/MATLAB/${_release}"
-  install -vdm755 "${pkgdir}/opt/MATLAB"
-  install -vdm777 "${pkgdir}/opt/MATLAB/${_release}" # :(
-  mv install/* "${pkgdir}/opt/MATLAB/${_release}"
+  # install -vdm755 "${pkgdir}${MAKEPKG_MATLAB_ROOT}/${_release}"
+  install -vdm755 "${pkgdir}${MAKEPKG_MATLAB_ROOT}"
+  install -vdm777 "${pkgdir}${MAKEPKG_MATLAB_ROOT}/${_release}"
+  mv install/* "${pkgdir}${MAKEPKG_MATLAB_ROOT}/${_release}"
 
   echo "  -> Installing desktop file..."
   install -vDm644 "${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
 
   echo "  -> Installing license..."
   install -vd "${pkgdir}/usr/share/licenses/${pkgbase}"
-  ln -vsf "/opt/MATLAB/${_release}/license_agreement.txt" \
+  ln -vsf "${MAKEPKG_MATLAB_ROOT}/${_release}/license_agreement.txt" \
     "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE.txt"
 
   echo "  -> Installing symlinks..."
   install -vd "${pkgdir}/usr/bin"
   cd "${pkgdir}/usr/bin"
   for bin in matlab matlab_jenv; do
-    ln -vsf "/opt/MATLAB/${_release}/bin/${bin}" "${bin}"
-    ln -vsf "/opt/MATLAB/${_release}/bin/${bin}" "${bin}-${_release}"
+    ln -vsf "${MAKEPKG_MATLAB_ROOT}/${_release}/bin/${bin}" "${bin}"
+    ln -vsf "${MAKEPKG_MATLAB_ROOT}/${_release}/bin/${bin}" "${bin}-${_release}"
   done
   # owned by miktex, ...
   for bin in mex mexext; do
-    ln -vsf "/opt/MATLAB/${_release}/bin/${bin}" "${pkgbase}-${bin}"
-    ln -vsf "/opt/MATLAB/${_release}/bin/${bin}" "${pkgbase}-${bin}-${_release}"
+    ln -vsf "${MAKEPKG_MATLAB_ROOT}/${_release}/bin/${bin}" "${pkgbase}-${bin}"
+    ln -vsf "${MAKEPKG_MATLAB_ROOT}/${_release}/bin/${bin}" "${pkgbase}-${bin}-${_release}"
   done
   for bin in MathWorksCrashReporter MathWorksLicenseDeactivation \
              MathWorksProductAuthorizer MathWorksProductUninstaller; do
-    ln -vsf "/opt/MATLAB/${_release}/bin/glnxa64/${bin}" "${bin}"
-    ln -vsf "/opt/MATLAB/${_release}/bin/glnxa64/${bin}" "${bin}-${_release}"
+    ln -vsf "${MAKEPKG_MATLAB_ROOT}/${_release}/bin/glnxa64/${bin}" "${bin}"
+    ln -vsf "${MAKEPKG_MATLAB_ROOT}/${_release}/bin/glnxa64/${bin}" "${bin}-${_release}"
   done
 }
 
@@ -350,7 +359,7 @@ package_java-matlab() {
   pkgdesc+=" (Java components)"
   depends=(
     "${pkgbase}>=${epoch}:${pkgver}-${pkgrel}"
-    "matlab-jre" # >=${_release}
+    "matlab-jre>=${_release}"
   )
   provides=(
     "${pkgname}-release=${_release}"
@@ -360,17 +369,39 @@ package_java-matlab() {
   conflicts=(
     "${pkgname}-${_release,,}"
   )
-  install="${pkgname}.install"
 
   cd "${srcdir}"
   echo "  -> Moving files from \$srcdir/ to \$pkgdir/ directly to save space..."
-  # install -vdm755 "${pkgdir}/opt/MATLAB/${_release}"
-  install -vdm755 "${pkgdir}/opt/MATLAB"
-  install -vdm777 "${pkgdir}/opt/MATLAB/${_release}"
-  mv install-java/* "${pkgdir}/opt/MATLAB/${_release}"
+  # install -vdm755 "${pkgdir}${MAKEPKG_MATLAB_ROOT}/${_release}"
+  install -vdm755 "${pkgdir}${MAKEPKG_MATLAB_ROOT}"
+  install -vdm777 "${pkgdir}${MAKEPKG_MATLAB_ROOT}/${_release}"
+  mv install-java/* "${pkgdir}${MAKEPKG_MATLAB_ROOT}/${_release}"
+}
 
-  echo "  -> Installing Java environment hook..."
-  install -vDm644 "matlab_jenv.hook" "${pkgdir}/usr/share/libalpm/hooks/matlab_jenv.hook"
+package_matlab-jre-bundled() {
+  pkgdesc+=" (JRE, bundled)"
+  # depends=(
+  #   "${pkgbase}>=${epoch}:${pkgver}-${pkgrel}"
+  #   "${pkgbase}-jre-common>=${_release}"
+  # )
+  provides=(
+    "${pkgname}-release=${_release}"
+    "${pkgname}-version=${_version}"
+    "${pkgname/"${pkgbase}"/"${pkgbase}-${_release,,}"}=${_version}"
+
+    "${pkgbase}-jre=${_release}"
+    "${pkgbase}-${_release,,}-jre=${_release}"
+  )
+  conflicts=(
+    "${pkgname/"${pkgbase}"/"${pkgbase}-${_release,,}"}"
+  )
+
+  cd "${srcdir}"
+  echo "  -> Moving files from \$srcdir/ to \$pkgdir/ directly to save space..."
+  # install -vdm755 "${pkgdir}${MAKEPKG_MATLAB_ROOT}/${_release}"
+  install -vdm755 "${pkgdir}${MAKEPKG_MATLAB_ROOT}"
+  install -vdm777 "${pkgdir}${MAKEPKG_MATLAB_ROOT}/${_release}"
+  mv install-jre/* "${pkgdir}${MAKEPKG_MATLAB_ROOT}/${_release}"
 }
 
 package_matlab-gcc() {
@@ -380,7 +411,7 @@ package_matlab-gcc() {
   )
   depends=(
     "${pkgbase}>=${epoch}:${pkgver}-${pkgrel}"
-    "${pkgname}-meta"
+    "${pkgname}-meta>=${_release}"
   )
   provides=(
     "${pkgname}-release=${_release}"
@@ -399,7 +430,7 @@ package_matlab-gcc-fortran() {
   )
   depends=(
     "${pkgbase}>=${epoch}:${pkgver}-${pkgrel}"
-    "${pkgname}-meta"
+    "${pkgname}-meta>=${_release}"
   )
   provides=(
     "${pkgname}-release=${_release}"
