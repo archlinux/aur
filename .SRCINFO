@@ -1,7 +1,7 @@
 pkgbase = simutrans-pak32.comic
 	pkgdesc = Lowest resolution graphics set for Simutrans
 	pkgver = 102.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.simutrans.com/
 	arch = any
 	license = Unknown
@@ -9,4 +9,3 @@ pkgbase = simutrans-pak32.comic
 	sha256sums = da937cb9e086095ee4c1b2529d0b6095be6ae1a28eb29db578caac53d5050e68
 
 pkgname = simutrans-pak32.comic
-
