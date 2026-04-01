@@ -14,8 +14,8 @@ sha256sums=('0d2998bda5e88e111a65ae94373e6363e05a18d3844da9bf74c33e1b8709c534'
 
 package() {
   #data
-  mkdir -p "$pkgdir/usr/share/games/simutrans/pak64.japan"
-  cp -r simutrans/pak.japan/* "$pkgdir/usr/share/games/simutrans/pak64.japan"
+  mkdir -p "$pkgdir/usr/share/simutrans/pak64.japan"
+  cp -r simutrans/pak.japan/* "$pkgdir/usr/share/simutrans/pak64.japan"
   
   #license
   install -Dm644 license.txt "$pkgdir/usr/share/licenses/simutrans-pak64.japan/license.txt"
