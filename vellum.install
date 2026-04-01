@@ -1,0 +1,22 @@
+post_install() {
+  cat <<'EOF'
+Vellum installed its binaries and the systemd user unit.
+
+Recommended startup path:
+  systemctl --user enable --now vellum-daemon.service
+
+If you do not use a systemd user session, copy the autostart example from:
+  /usr/share/doc/vellum/examples/vellum.desktop
+
+to one of these locations:
+  ~/.config/autostart/
+  /etc/xdg/autostart/
+
+Do not enable both startup paths at the same time. The autostart bootstrap path takes over daemon lifecycle when it runs without a TTY.
+Run `vellum` from a terminal for the interactive TUI.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
