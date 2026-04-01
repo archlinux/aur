@@ -1,6 +1,6 @@
 # Maintainer: Dunky <braxtinmoss13@gmail.com>
 pkgname=pacfzf
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="fzf-based interactive package manager for Arch Linux"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('fzf' 'pacman' 'yay' 'paru')
 makedepends=('scdoc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('b00580058f865464e44a7303811ecf239f2d33e84eb6338111bf89106ccaeb0ad5d1612959508f27727174179b31613de2ea86cb08122a816352eee575fe09b8')
+b2sums=('16ccc4cddd0d2a550372c241c983a67277c92f44c5e2496e1bc354050f425667477a8cf873d28cf79e3d5088f9c8f25c652ead56c1fa28df7230e00b3b323ff3')
 
 build() {
 cd "$pkgname-$pkgver"
