@@ -1,0 +1,3 @@
+[perl-cache-lru]
+source = "cpan"
+cpan = "Cache-LRU"
