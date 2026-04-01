@@ -1,0 +1,3 @@
+[perl-rdf-ns]
+source = "cpan"
+cpan = "RDF-NS"
