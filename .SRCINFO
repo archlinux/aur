@@ -1,20 +1,20 @@
 pkgbase = perl-catalyst-actionrole-acl
 	pkgdesc = User role-based authorization action class
 	pkgver = 0.07
-	pkgrel = 2
-	url = http://search.cpan.org/dist/Catalyst-ActionRole-ACL
+	pkgrel = 3
+	url = https://metacpan.org/release/BOBTFISH/Catalyst-ActionRole-ACL-0.07
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	checkdepends = perl-perlio-utf8-strict
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker>=6.36
 	makedepends = perl-module-install
+	makedepends = perl-test-simple
+	depends = perl
 	depends = perl-catalyst-controller-actionrole
 	depends = perl-catalyst-runtime>=5.90013
 	depends = perl-moose
 	depends = perl-namespace-autoclean
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-ActionRole-ACL-0.07.tar.gz
-	md5sums = e4296bf6ce02dcf07190cc8355a7b57c
-	sha512sums = e3ad3404ba3285df909fd4111812b36af4630a9d893300d25a5ed21f582550fa765a403eb27df513c360b889d79e4960872335c4538418be7d3cdffe8fc9098c
+	source = https://cpan.metacpan.org/authors/id/B/BO/BOBTFISH/Catalyst-ActionRole-ACL-0.07.tar.gz
+	sha256sums = 1af0fa5d6d38e8edf6b6c5349b69f03cc541b68d700aaf782196f4e3f2bbf816
 
 pkgname = perl-catalyst-actionrole-acl

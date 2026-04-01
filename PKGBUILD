@@ -1,44 +1,56 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
-pkgname='perl-catalyst-actionrole-acl'
-pkgver='0.07'
-pkgrel='2'
-pkgdesc="User role-based authorization action class"
+_author=BOBTFISH
+_dist=Catalyst-ActionRole-ACL
+pkgname=perl-${_dist@L}
+pkgver=0.07
+pkgrel=3
+pkgdesc='User role-based authorization action class'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-catalyst-controller-actionrole'
+    'perl-catalyst-runtime>=5.90013'
+    'perl-moose'
+    'perl-namespace-autoclean'
+)
+makedepends=(
+    'perl-extutils-makemaker>=6.36'
+    'perl-module-install'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl-catalyst-controller-actionrole' 'perl-catalyst-runtime>=5.90013' 'perl-moose' 'perl-namespace-autoclean')
-makedepends=('perl-module-install')
-checkdepends=('perl-perlio-utf8-strict')
-url='http://search.cpan.org/dist/Catalyst-ActionRole-ACL'
-source=('http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-ActionRole-ACL-0.07.tar.gz')
-md5sums=('e4296bf6ce02dcf07190cc8355a7b57c')
-sha512sums=('e3ad3404ba3285df909fd4111812b36af4630a9d893300d25a5ed21f582550fa765a403eb27df513c360b889d79e4960872335c4538418be7d3cdffe8fc9098c')
-_distdir="Catalyst-ActionRole-ACL-0.07"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('1af0fa5d6d38e8edf6b6c5349b69f03cc541b68d700aaf782196f4e3f2bbf816')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
