@@ -1,0 +1,3 @@
+[perl-moosex-arrayref]
+source = "cpan"
+cpan = "MooseX-ArrayRef"
