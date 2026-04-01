@@ -1,6 +1,6 @@
 pkgbase = opkssh-git
 	pkgdesc = opkssh (OpenPubkey SSH)
-	pkgver = r436.d8bdd33
+	pkgver = r453.0978f03
 	pkgrel = 1
 	url = https://github.com/openpubkey/opkssh
 	arch = x86_64
