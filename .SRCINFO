@@ -1,0 +1,29 @@
+pkgbase = perl-test-roo
+	pkgdesc = Composable, reusable tests with roles and Moo
+	pkgver = 1.004
+	pkgrel = 1
+	url = https://metacpan.org/release/DAGOLDEN/Test-Roo-1.004
+	arch = any
+	license = Apache-2.0
+	checkdepends = perl-capture-tiny>=0.12
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-file-temp
+	checkdepends = perl-lib
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.17
+	depends = perl-moo>=1.000008
+	depends = perl-moox-types-mooselike
+	depends = perl-strictures
+	depends = perl-sub-install
+	depends = perl-test-simple
+	depends = perl>=5.8.1
+	optdepends = perl-bareword-filehandles
+	optdepends = perl-cpan-meta
+	optdepends = perl-indirect
+	optdepends = perl-multidimensional
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Test-Roo-1.004.tar.gz
+	sha256sums = 21129a3cecb507b00948e16cf15fcde5dc4db235aba84afd7f47d22013a9ded6
+
+pkgname = perl-test-roo
