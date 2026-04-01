@@ -4,7 +4,7 @@
 # Contributor: Nicolas Storme <nicolas@atelier-web.com>
 
 pkgname=goaccess-legacy
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="An open source real-time web log analyzer and interactive viewer (lagacy)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
 )
 backup=('etc/goaccess/goaccess.conf')
 source=("${pkgname}::git+https://github.com/allinurl/goaccess.git#tag=v${pkgver}")
-sha512sums=('26e69f9078861889c0ef006f2e797d6267e09d04ef4ae531db510e0d72389e22e1e6216961aa0c8e7bcb54cc8cd6658c1eee90d56ba7dcd274ab960b4be377b4')
+sha512sums=('b69fdd0d6c0ca10cd1d89b1bc802b6076c218b06e858077ec0b63aa0851bbdc859561cf9ac41923475769ab91f1ba54ed310cebf7a9c314afee4fda0baaface6')
 
 prepare() {
 	cd $pkgname
