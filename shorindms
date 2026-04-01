@@ -1,0 +1,209 @@
+#!/usr/bin/env bash
+
+TEMPLATE_DIR="/usr/share/shorin-dms-niri"
+
+BASE_BACKUP_DIR="$HOME/.cache/shorin-dms-niri-backup"
+BACKUP_DIR="$BASE_BACKUP_DIR/$(date +%Y%m%d_%H%M%S)"
+
+# ==========================================
+# 更新时需要忽略的文件/目录名单 (仅 update 时生效)
+# ==========================================
+UPDATE_IGNORE=(
+    ".config/gtk-3.0"
+    ".config/gtk-4.0"
+    ".config/mimeapps.list"
+    ".config/fcitx5" 
+    ".local/share/fcitx5"
+)
+
+is_ignored() {
+    local target_path="$1"
+    for ignore_rule in "${UPDATE_IGNORE[@]}"; do
+        if [[ "$target_path" == "$ignore_rule" || "$target_path" == "$ignore_rule/"* ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+# --- 文件级同步与单文件备份 ---
+backup_and_copy() {
+    local base_dir="$1"
+    local rel_path="$2"
+    local src_file="$base_dir/$rel_path"
+    local dest_file="$HOME/$rel_path"
+    local dest_dir="$(dirname "$dest_file")"
+    
+    mkdir -p "$dest_dir"
+    
+    if [[ -e "$dest_file" || -L "$dest_file" ]]; then
+        local backup_file="$BACKUP_DIR/$rel_path"
+        mkdir -p "$(dirname "$backup_file")"
+        cp -a "$dest_file" "$backup_file"
+        rm -f "$dest_file"
+    fi
+    
+    cp -a "$src_file" "$dest_file"
+    echo "已同步: ~/$rel_path"
+}
+
+cleanup_old_backups() {
+    if [[ -d "$BASE_BACKUP_DIR" ]]; then
+        local backups=( $(ls -dt "$BASE_BACKUP_DIR"/* 2>/dev/null) )
+        local count=${#backups[@]}
+        if (( count > 2 )); then
+            for (( i=2; i<count; i++ )); do
+                rm -rf "${backups[i]}"
+                echo "已清理旧备份: ${backups[i]}"
+            done
+        fi
+    fi
+}
+
+sync_dotfiles() {
+    local mode="$1"
+    
+    echo "----------------------------------------"
+    if [[ "$mode" == "update" ]]; then
+        echo "正在执行更新 (黑名单内的文件将被保护不被覆盖)..."
+    else
+        echo "正在执行全量初始化安装..."
+    fi
+    echo "----------------------------------------"
+
+    if [[ ! -d "$TEMPLATE_DIR" ]]; then
+        echo "错误: 找不到模板目录 $TEMPLATE_DIR"
+        exit 1
+    fi
+
+    mkdir -p "$BACKUP_DIR"
+    cd "$TEMPLATE_DIR" || exit 1
+    
+    # 使用 find 递归查找所有文件
+    find . -type f -print0 | while IFS= read -r -d '' file; do
+        local rel_path="${file#./}"
+        
+        # 命中黑名单则跳过
+        if [[ "$mode" == "update" ]] && is_ignored "$rel_path"; then
+            continue
+        fi
+        
+        backup_and_copy "$TEMPLATE_DIR" "$rel_path"
+    done
+    
+    cleanup_old_backups
+    
+    echo "----------------------------------------"
+    echo "配置文件同步完成！"
+    echo "被覆盖的旧配置已统一备份至: $BACKUP_DIR"
+    echo "----------------------------------------"
+}
+
+# --- 隐藏桌面图标逻辑 ---
+hide_desktop_file() {
+    local source_file="$1"
+    local filename=$(basename "$source_file")
+    local user_dir="$HOME/.local/share/applications"
+    local target_file="$user_dir/$filename"
+    
+    if [[ -f "$source_file" ]]; then
+        mkdir -p "$user_dir"
+        cp -f "$source_file" "$target_file"
+        if grep -q "^NoDisplay=" "$target_file"; then
+            sed -i 's/^NoDisplay=.*/NoDisplay=true/' "$target_file"
+        else
+            echo "NoDisplay=true" >> "$target_file"
+        fi
+    fi
+}
+
+run_hide_desktop_file() {
+    local apps_to_hide=(
+        "avahi-discover.desktop" "qv4l2.desktop" "qvidcap.desktop" "bssh.desktop"
+        "org.fcitx.Fcitx5.desktop" "org.fcitx.fcitx5-migrator.desktop" "xgps.desktop"
+        "xgpsspeed.desktop" "gvim.desktop" "kbd-layout-viewer5.desktop" "bvnc.desktop"
+        "yazi.desktop" "btop.desktop" "vim.desktop" "nvim.desktop" "nvtop.desktop"
+        "mpv.desktop" "org.gnome.Settings.desktop" "thunar-settings.desktop"
+        "thunar-bulk-rename.desktop" "thunar-volman-settings.desktop" "clipse-gui.desktop"
+        "waypaper.desktop" "xfce4-about.desktop" "cmake-gui.desktop" "assistant.desktop"
+        "qdbusviewer.desktop" "linguist.desktop" "designer.desktop"
+        "org.kde.drkonqi.coredump.gui.desktop" "org.kde.kwrite.desktop"
+        "org.freedesktop.MalcontentControl.desktop" "org.gnome.Nautilus.desktop"
+    )
+    
+    echo "正在隐藏不需要的桌面图标..."
+    for app in "${apps_to_hide[@]}"; do
+        hide_desktop_file "/usr/share/applications/$app"
+    done
+    echo "图标隐藏完成！"
+}
+
+# --- 用户环境配置 ---
+apply_user_configs() {
+    echo "正在应用首次初始化的用户环境设置..."
+    
+    mkdir -p "$HOME/.config"
+    if ! grep -q "kitty.desktop" "$HOME/.config/xdg-terminals.list" 2>/dev/null; then
+        echo 'kitty.desktop' >> "$HOME/.config/xdg-terminals.list"
+    fi
+    
+    if command -v gsettings &>/dev/null; then
+        gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
+    fi
+    
+    if [[ -f "$HOME/.config/gtk-3.0/bookmarks" ]]; then
+        sed -i "s/shorin/$USER/g" "$HOME/.config/gtk-3.0/bookmarks"
+    fi
+    
+    mkdir -p "$HOME/Templates"
+    touch "$HOME/Templates/new"
+    echo '#!/usr/bin/env bash' > "$HOME/Templates/new.sh"
+    chmod +x "$HOME/Templates/new.sh"
+    
+    if command -v flatpak &>/dev/null; then
+        flatpak override --user --filesystem=xdg-data/themes
+        flatpak override --user --filesystem="$HOME/.themes"
+        flatpak override --user --filesystem=xdg-config/gtk-4.0
+        flatpak override --user --filesystem=xdg-config/gtk-3.0
+        flatpak override --user --env=GTK_THEME=adw-gtk3-dark
+        flatpak override --user --filesystem=xdg-config/fontconfig
+    fi
+    
+    mkdir -p "$HOME/.local/share"
+    ln -sfn /usr/share/themes "$HOME/.local/share/themes"
+    
+    mkdir -p "$HOME/.local/bin"
+    if command -v kitty &>/dev/null; then
+        ln -sfn /usr/bin/kitty "$HOME/.local/bin/xterm"
+    fi
+    
+    run_hide_desktop_file
+    
+    echo "初始化环境配置完成！"
+}
+
+# --- shorin contrib init ---
+shorin_contrib_init() {
+    shorin link
+}
+
+# --- 命令路由 ---
+case "$1" in
+    init)
+        sync_dotfiles "init"
+        apply_user_configs
+    ;;
+    update)
+        sync_dotfiles "update"
+    ;;
+    hide-icons)
+        run_hide_desktop_file
+    ;;
+    *)
+        echo "用法: shorindms {init|update|hide-icons}"
+        echo "  init       - 首次安装时运行 (全量覆盖并执行环境初始化)"
+        echo "  update     - 日常更新使用 (同步最新配置，但保护忽略名单中的文件)"
+        echo "  hide-icons - 仅执行隐藏不需要的桌面图标的操作"
+        exit 1
+    ;;
+esac
