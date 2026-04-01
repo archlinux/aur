@@ -1,0 +1,3 @@
+[perl-moox-log-any]
+source = "cpan"
+cpan = "MooX-Log-Any"
