@@ -1,17 +1,17 @@
 pkgbase = pyrefly-bin
 	pkgdesc = A faster Python type checker written in Rust
-	pkgver = 0.58.0
+	pkgver = 0.59.0
 	pkgrel = 1
 	url = https://pyrefly.org/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	source_aarch64 = https://open-vsx.org/api/meta/pyrefly/linux-arm64/0.58.0/file/meta.pyrefly-0.58.0@linux-arm64.vsix
-	sha256sums_aarch64 = a09e26965af1e9da020d393421ee648410cd719fdc1a96e938602ad8c8253917
-	source_armv7h = https://open-vsx.org/api/meta/pyrefly/linux-armhf/0.58.0/file/meta.pyrefly-0.58.0@linux-armhf.vsix
-	sha256sums_armv7h = 63d9c602439c1cb729166303365199f741c677ac93479fff5a9b2cb660147b9f
-	source_x86_64 = https://open-vsx.org/api/meta/pyrefly/linux-x64/0.58.0/file/meta.pyrefly-0.58.0@linux-x64.vsix
-	sha256sums_x86_64 = 31687f2c5d0560c8589229584a86be6004d07d106f53a403870926e5a8a4fc29
+	source_aarch64 = https://open-vsx.org/api/meta/pyrefly/linux-arm64/0.59.0/file/meta.pyrefly-0.59.0@linux-arm64.vsix
+	sha256sums_aarch64 = e1b4b71162ed60977249c2db51fd296977593a6b098989ff3618e736ff87573f
+	source_armv7h = https://open-vsx.org/api/meta/pyrefly/linux-armhf/0.59.0/file/meta.pyrefly-0.59.0@linux-armhf.vsix
+	sha256sums_armv7h = 0f9654e88799b9e05c400625e01ed8810863afd5e5b9169910ca26aac359bb3a
+	source_x86_64 = https://open-vsx.org/api/meta/pyrefly/linux-x64/0.59.0/file/meta.pyrefly-0.59.0@linux-x64.vsix
+	sha256sums_x86_64 = 97e3834a9b321c6859043a7f7a10d0756572968023ec8705fa2aea0aed09369a
 
 pkgname = pyrefly-bin
