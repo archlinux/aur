@@ -1,0 +1,15 @@
+pkgbase = promtool
+	pkgdesc = Tooling for the Prometheus monitoring system
+	pkgver = 3.10.0
+	pkgrel = 1
+	url = https://github.com/prometheus/prometheus
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	conflicts = prometheus
+	options = !lto
+	source = prometheus-v3.10.0.tar.gz::https://github.com/prometheus/prometheus/archive/v3.10.0.tar.gz
+	sha256sums = a3d01efaf82edfd074f9fc48399969bcf22f22b8fb4353dfbbcc79cb2a03e579
+
+pkgname = promtool

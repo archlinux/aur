@@ -1,0 +1,44 @@
+# Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
+pkgname=promtool
+pkgver=3.10.0
+pkgrel=1
+pkgdesc='Tooling for the Prometheus monitoring system'
+arch=('x86_64')
+url='https://github.com/prometheus/prometheus'
+license=('Apache-2.0')
+depends=('glibc')
+makedepends=('go')
+conflicts=('prometheus')
+source=("prometheus-v$pkgver.tar.gz::https://github.com/prometheus/prometheus/archive/v$pkgver.tar.gz")
+sha256sums=('a3d01efaf82edfd074f9fc48399969bcf22f22b8fb4353dfbbcc79cb2a03e579')
+options=(!lto)
+
+build() {
+    cd prometheus-$pkgver
+
+    LDFLAGS="-extldflags '$LDFLAGS' \
+        -X github.com/prometheus/common/version.Version=$pkgver \
+        -X github.com/prometheus/common/version.Revision=$pkgver \
+        -X github.com/prometheus/common/version.Branch=tarball \
+        -X github.com/prometheus/common/version.BuildUser=makepkg \
+        -X github.com/prometheus/common/version.BuildDate=$(date -u '+%Y%m%d-%H:%M:%S' --date=@${SOURCE_DATE_EPOCH})"
+
+    go build \
+        -buildmode=pie \
+        -trimpath \
+        -mod=readonly \
+        -modcacherw \
+        -ldflags "-compressdwarf=false -linkmode external $LDFLAGS" \
+        ./cmd/$pkgname
+}
+
+check() {
+    cd prometheus-$pkgver
+    ./$pkgname --version
+}
+
+package() {
+    cd prometheus-$pkgver
+    install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
