@@ -43,7 +43,7 @@ package() {
     install -vDm644 "$_pkgname/lutris_wrapper.sh" "$pkgdir/usr/lib/$_pkgname/lutris_wrapper.sh"
     install -vDm644 "$_pkgname/package.json" "$pkgdir/usr/lib/$_pkgname/package.json"
 
-    find "$_pkgname/node_modules/koffi/build/koffi/" -type f -name "koffi.node" ! -path "*linux_x64*" -delete
+    find "$_pkgname/node_modules/koffi/build/koffi/" -type f \( -name "koffi.node" -o -name "koffi.exp" -o -name "koffi.lib" \) ! -path "*linux_x64*" -delete
 
     cp -rp "$_pkgname/dist" "$pkgdir/usr/lib/$_pkgname/dist"
     cp -rp "$_pkgname/node_modules" "$pkgdir/usr/lib/$_pkgname/node_modules"
