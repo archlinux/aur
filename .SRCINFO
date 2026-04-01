@@ -1,7 +1,7 @@
 pkgbase = shorin-dms-niri-git
 	pkgdesc = Shorin DMS Niri desktop environment (Dependencies & Dotfiles)
 	pkgver = r4.0dabc1d
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/SHORiN-KiWATA/shorin-dms-niri
 	arch = any
 	license = GPL
@@ -17,6 +17,7 @@ pkgbase = shorin-dms-niri-git
 	depends = imv
 	depends = mpv
 	depends = firefox
+	depends = power-profiles-daemon
 	depends = noto-fonts
 	depends = noto-fonts-cjk
 	depends = noto-fonts-emoji
