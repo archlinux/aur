@@ -19,19 +19,19 @@ export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
 
 prepare() {
-    cd "$pkgname"
+    cd "$pkgname" || exit
 
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname"
+    cd "$pkgname" || exit
 
     cargo build --frozen --release --all-features --target-dir target
 }
 
 package() {
-    cd "$pkgname"
+    cd "$pkgname" || exit
 
     install -Dm 755 -t "${pkgdir}/usr/bin" target/release/cargo-loc
 }
