@@ -2,7 +2,7 @@
 
 pkgname=simutrans-pak192.comic
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='High resolution graphics set for Simutrans, with a comic style'
 arch=('any')
 url='https://www.simutrans.com/'
@@ -15,6 +15,6 @@ package() {
   cd "$srcdir"
 
   #data
-  mkdir -p "$pkgdir/usr/share/games/simutrans/pak192.comic"
-  cp -r pak192.comic*/* "$pkgdir/usr/share/games/simutrans/pak192.comic"
+  mkdir -p "$pkgdir/usr/share/simutrans/pak192.comic"
+  cp -r pak192.comic*/* "$pkgdir/usr/share/simutrans/pak192.comic"
 }
