@@ -3,7 +3,7 @@
 _appname=blog
 pkgauthor=kantord
 pkgname=blogtato
-pkgver=0.1.20
+pkgver=0.1.21
 _version=v${pkgver}
 pkgrel=1
 pkgdesc="A CLI RSS/Atom feed reader inspired by Taskwarrior"
@@ -19,7 +19,7 @@ optdepends=('jq')
 provides=("${_appname}")
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_version}.tar.gz")
-sha256sums=('5d77a4f2aa769ab6ce959ee9feb8747f371bb9fbcb582ad6260c1a0b9fd10822')
+sha256sums=('4cff5f788d1c4a9b31bbd819c948c72f6e30f0048ab60df6473f0d99e6a13860')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
