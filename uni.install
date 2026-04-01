@@ -1,0 +1,15 @@
+# shellcheck shell=bash
+# -*- sh -*-
+
+post_install() {
+  cat <<__EOT__
+»  NB: Vim users can find a uni.vim script in
+»      	/usr/share/doc/uni/uni.vim
+__EOT__
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+# eof

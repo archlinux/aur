@@ -6,7 +6,7 @@
 
 pkgname=uni
 pkgver=2.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Query the Unicode database from the commandline, with good support for emojis'
 url='https://github.com/arp242/uni'
 arch=('aarch64' 'x86_64')
@@ -15,6 +15,7 @@ makedepends=('go')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('dc595807a0ab875111dafd55be9f3de116cbea652216f9d0082d03dddb3d83be')
+install="$pkgname.install"
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -53,8 +54,9 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm0755 -t "$pkgdir/usr/bin" "$pkgname"
-  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    CHANGELOG.md README.md uni.vim
 }
 
 # eof
