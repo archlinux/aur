@@ -2,7 +2,7 @@
 pkgname=python-mnelab
 _name=${pkgname#python-}
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical user interface (GUI) for MNE, a Python package for EEG/MEG analysis"
 arch=('any')
 url="https://github.com/cbrnr/mnelab"
@@ -36,6 +36,12 @@ source=(
 sha256sums=('da21a2a72bbbe5e712fa3cc722d8fd61e4d1cd35a949a3c80878d0fe8b656136'
             '90465ed1dcd28013a24a9410d9ea7529e9a94e58325d54d57dacf7c0552ec3ae'
             '566cccf86be39eed374a3cfa3905945c9aa60e553b73c4758c2c66d46184c977')
+
+prepare() {
+    cd "$srcdir/$_name-$pkgver"
+    # Relax uv_build version constraint to allow Arch's current version
+    sed -i -E 's/(uv_build\s*>=?\s*0\.10\.9,\s*<\s*)0\.11\.0/\10.12.0/' pyproject.toml
+}
 
 build() {
     cd "$srcdir/$_name-$pkgver"
