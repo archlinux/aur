@@ -1,0 +1,5 @@
+[autocast-bin]
+source = "github"
+github = "k9withabone/autocast"
+use_latest_release = true
+prefix = "v"
