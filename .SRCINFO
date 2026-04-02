@@ -1,0 +1,13 @@
+pkgbase = seamonkey-i18n-el
+	pkgdesc = Greek language pack for SeaMonkey
+	pkgver = 2.53.23
+	pkgrel = 1
+	url = http://www.seamonkey-project.org/
+	arch = any
+	license = MPL
+	depends = seamonkey>=2.53.23
+	noextract = seamonkey-2.53.23.el.langpack.xpi
+	source = https://archive.seamonkey-project.org/releases/2.53.23/langpack/seamonkey-2.53.23.el.langpack.xpi
+	sha512sums = 9f26576e7fcfba6013e4370b12f65e20cf14712ccb6f7004f39ced0023b19f78b586264638281a2b7b46c3f1ee64e14b8e64cd2b848b289f0a3fc2faab4d6401
+
+pkgname = seamonkey-i18n-el
