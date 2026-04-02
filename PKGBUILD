@@ -2,7 +2,7 @@
 _pkgname="fireblocks recovery utility"
 pkgname="${_pkgname// /-}-bin"
 _appname='Fireblocks Recovery Utility'
-pkgver=1.6.0
+pkgver=1.7.0
 _fileversion="${pkgver}"
 _electronversion=21
 pkgrel=1
@@ -16,15 +16,16 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'fuse2'
-)
 source=(
     "${pkgname}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/Recovery.Utility.Ubuntu.${CARCH//_/-}.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('22aba657990089a6ba554d8d4849da7fc3cf9f4458d52d95dd55f859a210151f'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('29396b5972341306cb7f4ef08a35151080d87a758a5d36ac33e92bdd03d26152'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/squashfs-root/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -33,10 +34,14 @@ prepare() {
         s/@cfgdirname@/${_appname}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${_appname}-${_fileversion}.AppImage" ];then
+    if [ ! -x "${srcdir}/apps/recovery-utility/dist/${_appname}-${_fileversion}.AppImage" ];then
         chmod +x "${srcdir}/${_appname}-${_fileversion}.AppImage"
     fi
-    "${srcdir}/${_appname}-${_fileversion}.AppImage" --appimage-extract > /dev/null
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
+    fi
+    "${srcdir}/apps/recovery-utility/dist/${_appname}-${_fileversion}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     find "${srcdir}/squashfs-root" -type d -perm 700 -exec chmod 755 {} +
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
@@ -45,7 +50,15 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/squashfs-root/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/squashfs-root/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/squashfs-root/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do

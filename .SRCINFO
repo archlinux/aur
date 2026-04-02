@@ -1,17 +1,16 @@
 pkgbase = fireblocks-recovery-utility-bin
 	pkgdesc = Recover Fireblocks assets and keys in a disaster, verify a Recovery Kit, or generate keys to set up a new Recovery Kit.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://www.fireblocks.com/
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = fuse2
 	depends = electron21
-	provides = fireblocks-recovery-utility=1.6.0
+	provides = fireblocks-recovery-utility=1.7.0
 	conflicts = fireblocks-recovery-utility
-	source = fireblocks-recovery-utility-bin-1.6.0.zip::https://github.com/fireblocks/recovery/releases/download/v1.6.0/Recovery.Utility.Ubuntu.x86-64.zip
+	source = fireblocks-recovery-utility-bin-1.7.0.zip::https://github.com/fireblocks/recovery/releases/download/v1.7.0/Recovery.Utility.Ubuntu.x86-64.zip
 	source = fireblocks-recovery-utility.sh
-	sha256sums = 22aba657990089a6ba554d8d4849da7fc3cf9f4458d52d95dd55f859a210151f
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 29396b5972341306cb7f4ef08a35151080d87a758a5d36ac33e92bdd03d26152
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = fireblocks-recovery-utility-bin
