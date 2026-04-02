@@ -11,6 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Handle signals for better action response
 
+## [2.16.0] - 2026-04-02
+
+### Changed
+
+- Unit browser right click select the unit
+- Start Unit, Stop Unit, Restart Unit now check the action result (signal)
+- Reload now check the action result (signal)
+- Proxy have a better Hart Beat handling
+- Reload Unit can now goes trough Proxy
+
+### Fixed
+
+- Start Unit, Stop Unit, Restart Unit Modes are now taken care
+
 ## [2.15.0] - 2026-03-26
 
 ### Added
