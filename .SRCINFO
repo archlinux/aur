@@ -1,0 +1,23 @@
+pkgbase = cranky-bin
+	pkgdesc = A minimalist, performant, and modular bar for Hyprland (pre-built binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jaoppb/cranky
+	arch = x86_64
+	license = MIT
+	license = Apache
+	depends = wayland
+	depends = libxkbcommon
+	depends = fontconfig
+	depends = dbus
+	optdepends = uwsm: for systemd session management
+	provides = cranky
+	conflicts = cranky
+	source = cranky-bin-0.1.0.tar.gz::https://github.com/jaoppb/cranky/releases/download/v0.1.0/cranky-v0.1.0-x86_64.tar.gz
+	source = cranky.service::https://github.com/jaoppb/cranky/raw/main/contrib/systemd/cranky.service
+	source = cranky-uwsm.service::https://github.com/jaoppb/cranky/raw/main/contrib/systemd/cranky-uwsm.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cranky-bin
