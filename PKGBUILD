@@ -2,6 +2,7 @@
 # Contributor: pezcurrel <pezcurrel [at] tiscali.it>
 
 pkgname=x2vnc-bin
+pkgbase=x2vnc
 pkgver=1.7.2
 pkgrel=1
 pkgdesc='Lets you use a monitor on a different computer running a VNC server as if it was connected to the computer you are using.'
