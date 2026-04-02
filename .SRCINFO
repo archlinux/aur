@@ -50,7 +50,12 @@ pkgbase = imagemagick-essentials-git
 	provides = imagemagick
 	provides = libmagick
 	conflicts = imagemagick
+	conflicts = imagemagick-full
+	conflicts = imagemagick-full-doc
+	conflicts = imagemagick-full-debug
+	conflicts = imagemagick-full-git
 	replaces = imagemagick
+	options = !debug
 	source = imagemagick-essentials-git::git+https://github.com/ImageMagick/ImageMagick.git
 	sha256sums = SKIP
 

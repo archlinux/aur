@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/ImageMagick/ImageMagick"
 license=('ImageMagick')
 provides=('imagemagick' 'libmagick')
-conflicts=('imagemagick')
+conflicts=('imagemagick' 'imagemagick-full' 'imagemagick-full-doc' 'imagemagick-full-debug' 'imagemagick-full-git')
 replaces=('imagemagick')
 
 depends=(
@@ -60,6 +60,8 @@ optdepends=(
     'ttf-dejavu: DejaVu font family'
     'gsfonts: Ghostscript fonts'
 )
+
+options=('!debug')
 
 source=("${pkgname}::git+https://github.com/ImageMagick/ImageMagick.git")
 sha256sums=('SKIP')
@@ -113,7 +115,18 @@ package() {
     # Install license
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    # Fix perl module path - move from vendor-specific to site
+    # Remove docs to avoid conflicts with imagemagick-full-doc / other doc packages
+    rm -rf "${pkgdir}/usr/share/doc"
+
+    # Scrub $srcdir references from installed files
+    local _file
+    for _file in "${pkgdir}/usr/lib/ImageMagick-"*/config-Q16HDRI/configure.xml; do
+        [[ -f "$_file" ]] && sed -i "s|${srcdir}|/usr/src|g" "$_file"
+    done
+    find "${pkgdir}/usr/lib/perl5" -name '*.so' -exec \
+        strip --strip-unneeded {} + 2>/dev/null || true
+
+    # Clean up perl pod files and empty dirs
     local _perlver
     _perlver=$(perl -e 'print $^V' | sed 's/^v//')
 
