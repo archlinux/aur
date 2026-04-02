@@ -1,7 +1,7 @@
 pkgbase = psysonic-bin
 	pkgdesc = Desktop music player for Subsonic API-compatible servers (Navidrome, Gonic, etc.) (pre-built binary)
 	pkgver = 1.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Psychotoxical/psysonic
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,6 +10,8 @@ pkgbase = psysonic-bin
 	depends = openssl
 	depends = webkit2gtk-4.1
 	depends = libappindicator-gtk3
+	depends = nss
+	depends = at-spi2-core
 	provides = psysonic
 	conflicts = psysonic
 	source_x86_64 = psysonic-bin-1.29.0.deb::https://github.com/Psychotoxical/psysonic/releases/download/app-v1.29.0/Psysonic_1.29.0_amd64.deb
