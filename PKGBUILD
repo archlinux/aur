@@ -1,6 +1,6 @@
 # Maintainer: VoidWalker-00 <voidwalker@github.com>
 pkgname=litrpg-system-git
-pkgver=r8.f1f28dc
+pkgver=r9.ef79ea9
 pkgrel=1
 pkgdesc="Terminal-based LITRPG character progression system with TUI and CLI"
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --release
+    cargo build --release --bin LITRPG_System
 }
 
 package() {
