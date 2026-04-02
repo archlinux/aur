@@ -1,6 +1,6 @@
 pkgname=audium
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal music app built in Rust"
 arch=('x86_64')
 url="https://github.com/takashialpha/audium"
@@ -13,9 +13,9 @@ sha256sums=('SKIP')
 package() {
   cd "$srcdir"
 
-  # Install the binary (assuming it's just 'audium' inside the tarball)
+  # Install the binary
   install -Dm755 audium "$pkgdir/usr/bin/audium"
 
-  # Install license (adjust path if needed)
+  # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
