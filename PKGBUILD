@@ -6,12 +6,12 @@ pkgname=mdtext-bin
 pkgver=0.1.2
 pkgrel=1
 pkgdesc="A terminal-based Markdown editor with live preview"
-url="https://github.com/ultrasnake/mdtext"
+url="https://github.com/UltraSurge/mdtext"
 license=("MIT")
 arch=("x86_64")
 provides=("mdtext")
 conflicts=("mdtext")
-source=("https://github.com/ultrasnake/mdtext/releases/download/v$pkgver/mdtext-$pkgver-x86_64.tar.gz")
+source=("https://github.com/UltraSurge/mdtext/releases/download/v$pkgver/mdtext-$pkgver-x86_64.tar.gz")
 sha256sums=("694b9eecd9bf2faf2ac350ba53b2c0c1713b9a6bcfd54df36ba19be1a84c90ae")
 
 package() {
