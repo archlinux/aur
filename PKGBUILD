@@ -1,7 +1,8 @@
 # Maintainer: Everything2067 <anand shaurya at proton dot me>
 
+# Previous maintainer did not add their details here.
 pkgname=librewolf-extension-plasma-integration
-pkgver=2.1.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="KDE plasma browser integration extension for Librewolf"
 arch=("any")
@@ -11,11 +12,6 @@ depends=("plasma-browser-integration" "librewolf")
 makedepends=("web-ext")
 source=("$pkgname-$pkgver::git+https://invent.kde.org/plasma/plasma-browser-integration.git#tag=browser/$pkgver")
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver/extension"
-  patch -p1 -i ../../../fix-ext-version.patch manifest.json
-}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/extension"

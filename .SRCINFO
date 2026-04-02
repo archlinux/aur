@@ -1,6 +1,6 @@
 pkgbase = librewolf-extension-plasma-integration
 	pkgdesc = KDE plasma browser integration extension for Librewolf
-	pkgver = 2.1.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://community.kde.org/Plasma/Browser_Integration
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = librewolf-extension-plasma-integration
 	makedepends = web-ext
 	depends = plasma-browser-integration
 	depends = librewolf
-	source = librewolf-extension-plasma-integration-2.1.1::git+https://invent.kde.org/plasma/plasma-browser-integration.git#tag=browser/2.1.1
+	source = librewolf-extension-plasma-integration-2.2::git+https://invent.kde.org/plasma/plasma-browser-integration.git#tag=browser/2.2
 	sha256sums = SKIP
 
 pkgname = librewolf-extension-plasma-integration
