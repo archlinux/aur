@@ -1,0 +1,24 @@
+pkgbase = perl-task-kensho-logging
+	pkgdesc = A Glimpse at an Enlightened Perl: Logging
+	pkgver = 0.41
+	pkgrel = 1
+	url = https://metacpan.org/release/ETHER/Task-Kensho-Logging-0.41
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker
+	depends = perl-log-any
+	depends = perl-log-contextual
+	depends = perl-log-dispatch
+	depends = perl-log-log4perl
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
+	optdepends = perl-json-pp
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Task-Kensho-Logging-0.41.tar.gz
+	sha256sums = aa7b96eaeed3999899b2f6cbcca56e8d34380e76423c0dd795df18a831120c3d
+
+pkgname = perl-task-kensho-logging
