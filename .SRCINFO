@@ -1,0 +1,23 @@
+pkgbase = cranky-git
+	pkgdesc = A minimalist, performant, and modular bar for Hyprland (git version)
+	pkgver = 0.1.0.r0.g1234567
+	pkgrel = 1
+	url = https://github.com/jaoppb/cranky
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	makedepends = pkg-config
+	makedepends = git
+	depends = wayland
+	depends = libxkbcommon
+	depends = fontconfig
+	depends = dbus
+	optdepends = uwsm: for systemd session management
+	provides = cranky
+	conflicts = cranky
+	source = cranky-git::git+https://github.com/jaoppb/cranky.git
+	sha256sums = SKIP
+
+pkgname = cranky-git
