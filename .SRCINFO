@@ -1,0 +1,15 @@
+pkgbase = fzfocus
+	pkgdesc = fzf-based personal info manager — calendar, todos, and notes in the terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mossbraxtin/fzfocus
+	arch = any
+	license = MIT
+	depends = fzf
+	depends = neovim
+	depends = sqlite
+	depends = bat
+	source = fzfocus-0.1.0.tar.gz::https://github.com/mossbraxtin/fzfocus/archive/v0.1.0.tar.gz
+	b2sums = 39cf824140e3d4f4f5b9d2cdaf78eebe82ff97ba37cbfdf8e58327441f9ce1de20c659f13ecea955138c83050b3fee53078e969b56a53e5add3a5f5104908d60
+
+pkgname = fzfocus
