@@ -6,8 +6,8 @@ pkgbase = seamonkey-i18n-pt-br
 	arch = any
 	license = MPL
 	depends = seamonkey>=2.53.23
-	noextract = seamonkey-2.53.23.pt-br.langpack.xpi
-	source = https://archive.seamonkey-project.org/releases/2.53.23/langpack/seamonkey-2.53.23.pt-br.langpack.xpi
+	noextract = seamonkey-2.53.23.pt-BR.langpack.xpi
+	source = https://archive.seamonkey-project.org/releases/2.53.23/langpack/seamonkey-2.53.23.pt-BR.langpack.xpi
 	sha512sums = 28a779503eb61ef4d0171b763aca9c6b1a88e9713c572f6ef069f57940b85a45cd257661512ee1cfbf3220af39a4c8132155ff4f45b3367ac1a628521e6cfff3
 
 pkgname = seamonkey-i18n-pt-br

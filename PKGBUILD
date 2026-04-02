@@ -3,7 +3,7 @@
 pkgname=seamonkey-i18n-pt-br
 pkgver=2.53.23
 pkgrel=1
-_lang=pt-br
+_lang=pt-BR
 pkgdesc="Portuguese (Brazilian) language pack for SeaMonkey"
 arch=('any')
 license=('MPL')
