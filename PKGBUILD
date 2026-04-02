@@ -2,7 +2,7 @@
 
 pkgname=fate
 _pkgname=fate_casino
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Pull makes happy!'
 arch=(any)
@@ -23,5 +23,5 @@ package() {
   cd "$_pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
-sha256sums=('26ca893cb52e9ab6ffdc2ef805f2a89aa1244ec0fb28f883327b1fcd087439c3'
+sha256sums=('7249aa5c1f7d251d40246d6c61be669a240fa3b11d609bb143747f5291159279'
             '82af9d0f8e6e2acd6c36b1426eb1d70bc3e9b16a126ae20fcd4f8d1101e64c47')
