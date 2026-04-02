@@ -1,0 +1,16 @@
+pkgbase = iw4x-launcher-bin
+	pkgdesc = iw4x updater & launcher (binary release)
+	pkgver = 1.1.8b15
+	pkgrel = 1
+	url = https://github.com/iw4x/launcher
+	arch = x86_64
+	license = GPL3
+	provides = iw4x-launcher
+	conflicts = iw4x-launcher-git
+	options = !strip
+	source = https://github.com/iw4x/launcher/releases/download/v1.1.8-b.15/launcher-1.1.8-b.14-x86_64-linux-glibc.tar.xz
+	source = LICENSE::https://raw.githubusercontent.com/iw4x/launcher/refs/heads/main/LICENSE.md
+	sha256sums = 3df11b35ca993ae45567ad56a5e808073162390a5fdfc7ef084bcacb9242c518
+	sha256sums = cc5470feed66192387f06ae93aed0bd4fefae5a5fd7c1e54a4acf4ea64f1028b
+
+pkgname = iw4x-launcher-bin

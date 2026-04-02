@@ -1,0 +1,9 @@
+# ignore everything
+*
+
+# but packaging files
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!*.install
+!*.desktop
