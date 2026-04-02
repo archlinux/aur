@@ -1,7 +1,7 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 pkgname=voix
 _pkgname=Voix # The case-sensitive name of the repository from git
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication"
 arch=('x86_64')
@@ -19,7 +19,8 @@ build() {
     CC=clang CXX=clang++ cmake -B build -G Ninja -Wno-dev \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_SYSCONFDIR=/etc
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+        -DSET_PERMISSIONS=OFF
     cmake --build build
 }
 
@@ -27,10 +28,7 @@ package() {
     cd "$_pkgname"
     DESTDIR="$pkgdir" cmake --install build
 
-    # The cmake install script sets capabilities, but we want setuid root.
-    # First, remove the capabilities.
-    setcap -r "$pkgdir/usr/bin/voix"
-    # Then, set the setuid bit. The permissions are already 755 from cmake. We will be safe and apply other expected items.
+    # Apply permissions manually for AUR packaging
     chown root:root "$pkgdir/usr/bin/voix"
-    chmod u+s "$pkgdir/usr/bin/voix"
+    chmod 4755 "$pkgdir/usr/bin/voix"
 }
