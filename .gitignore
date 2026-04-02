@@ -1,4 +1,9 @@
+# Ignore everything
 /*
-!/.gitignore
-!/.SRCINFO
-!/PKGBUILD
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!LICENSE

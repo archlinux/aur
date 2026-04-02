@@ -1,0 +1,7 @@
+[bitwarden-cli-bin]
+source = "github"
+github = "bitwarden/clients"
+use_max_tag= true
+include_regex = 'cli.*'
+prefix = "cli-v"
+
