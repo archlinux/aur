@@ -46,7 +46,7 @@
 
 pkgname=mediatek-mt7927-dkms
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 # Keywords: MT7927 MT7925 MT6639 MT7902 Filogic 380 WiFi 7 Bluetooth btusb mt7925e mt7921e
 pkgdesc="DKMS Bluetooth (MT6639) and WiFi (MT7925e/MT7902) modules for MediaTek MT7927 Filogic 380"
 arch=('x86_64')
@@ -83,9 +83,6 @@ _download_driver_zip() {
 }
 
 prepare() {
-  # Sync dkms.conf version from PKGBUILD (single source of truth for Arch builds)
-  sed -i "s/^PACKAGE_VERSION=.*/PACKAGE_VERSION=\"${pkgver}\"/" "${startdir}/dkms.conf"
-
   local _zips=("${SRCDEST:-.}"/DRV_WiFi_MTK_MT7925_MT7927*.zip)
 
   # Auto-download if no ZIP found

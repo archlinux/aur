@@ -94,7 +94,10 @@ $(STAMP): check-version
 # ── install ─────────────────────────────────────────────────────────
 install: sources
 	@echo "==> Installing DKMS source tree to $(DESTDIR)$(DKMS_PREFIX)..."
-	install -Dm644 "$(TOPDIR)dkms.conf"          "$(DESTDIR)$(DKMS_PREFIX)/dkms.conf"
+	install -dm755 "$(DESTDIR)$(DKMS_PREFIX)"
+	sed "s/^PACKAGE_VERSION=.*/PACKAGE_VERSION=\"$(VERSION)\"/" \
+		"$(TOPDIR)dkms.conf" > "$(DESTDIR)$(DKMS_PREFIX)/dkms.conf"
+	chmod 644 "$(DESTDIR)$(DKMS_PREFIX)/dkms.conf"
 	install -Dm755 "$(TOPDIR)extract_firmware.py" "$(DESTDIR)$(DKMS_PREFIX)/extract_firmware.py"
 	# Bluetooth source for DKMS btusb builds
 	install -dm755 "$(DESTDIR)$(DKMS_PREFIX)/drivers/bluetooth"
