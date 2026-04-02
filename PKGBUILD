@@ -94,10 +94,6 @@ package() {
         python -m build --wheel --no-isolation
         python -m installer --destdir="$pkgdir" dist/*.whl
         cd ..
-        
-        # Remove conflicting top-level 'utils' package from tinker-atropos
-        # It shadows hermes-agent's utils.py module which contains atomic_json_write
-        rm -rf "$pkgdir"/usr/lib/python*/site-packages/utils
     fi
 
     # Install Node.js dependencies
