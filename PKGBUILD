@@ -12,7 +12,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/${_PKGNAME}/${_PKGNAME}/archive/v${pkgver}.tar.gz)
 sha256sums=('ae63b0098764803dd42b7b2a6487cbfb3c0ae7b22eb01a2570dbce49316ad279')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="x86_64-w64-mingw32"
 
 prepare(){
   cd "${srcdir}/${_PKGNAME}-${pkgver}"
@@ -22,7 +22,6 @@ build() {
   cd "${srcdir}/${_PKGNAME}-${pkgver}"
 
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
     if test "${_arch}" = "x86_64-w64-mingw32"
     then
       _64bits=ON
@@ -30,6 +29,7 @@ build() {
       _64bits=OFF
     fi
     ${_arch}-cmake \
+    -DCMAKE_UNITY_BUILD=OFF \
     -DCGNS_BUILD_CGNSTOOLS:BOOL=OFF \
     -DCGNS_ENABLE_64BIT:BOOL=${_64bits} \
     -DCGNS_ENABLE_FORTRAN:BOOL=OFF \
@@ -37,16 +37,15 @@ build() {
     -DCGNS_ENABLE_LEGACY:BOOL=ON \
     -DCGNS_ENABLE_SCOPING:BOOL=OFF \
     -DCGNS_ENABLE_TESTS:BOOL=OFF \
-    ..
-    make
-    popd
+    -B pushd build-${_arch} .
+    cmake --build build-${_arch}
   done
 }
 
 package() {
+  cd "$srcdir"/${_PKGNAME}-${pkgver}
   for _arch in ${_architectures}; do
-    cd "$srcdir"/${_PKGNAME}-${pkgver}/build-${_arch}
-    make install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" cmake --install build-${_arch}
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
     rm "$pkgdir"/usr/${_arch}/bin/*.bat
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
