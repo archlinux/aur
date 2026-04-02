@@ -13,6 +13,10 @@ source_aarch64=("rumus.deb::https://bucket.rumus.ai/rumus-releases/${pkgver}/lin
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 
+pkgver() {
+    curl -s "https://www.rumus.ai/community/posts/2" | grep -oP 'Rumus v\K[0-9]+\.[0-9]+\.[0-9]+' | head -1
+}
+
 package() {
     bsdtar -xf "${srcdir}/rumus.deb"
     bsdtar -xf data.tar.gz -C "${pkgdir}"
