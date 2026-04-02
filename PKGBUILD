@@ -28,7 +28,6 @@ build() {
   local cmake_options=(
     -B build
     -D CMAKE_BUILD_TYPE='Release'
-    -D BUILD64=ON
     -D USE_DEP=OFF
     -D CMAKE_SKIP_RPATH=ON
     -D CMAKE_BUILD_WITH_INSTALL_RPATH=OFF
