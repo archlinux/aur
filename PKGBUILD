@@ -11,7 +11,7 @@ options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/sandialabs/verdict/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('d12d1cd41c6568997df348a72cc2973a662fae1b3634a068ea2201b5f7383186')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="x86_64-w64-mingw32"
 
 build() {
   cd $srcdir/verdict-$pkgver
