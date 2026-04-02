@@ -156,6 +156,9 @@ build() {
     # makepkg can leak threads=<N> from MAKEFLAGS which breaks dependency checks.
     unset threads THREADS
 
+    # Ensure nvcc is on PATH for --enable-cuda-nvcc
+    export PATH="/opt/cuda/bin:$PATH"
+
     ./configure \
         --prefix=/usr \
         --disable-debug \
