@@ -21,7 +21,7 @@ sha256sums=('0c3ee7214e81c6ba506c1886a110d5406ee080d49a17c1e7e673b62b28b213d6'
             '199db07678e7b099f3ea5c4eb38d9aac199d7829ed832b042b7f4bcedef44e55')
 
 latestver() {
-    curl -fsSL 'https://api.github.com/repos/error27/smatch/tags?per_page=100' | jq -r '.[].name' |
+    gh api --paginate repos/error27/smatch/tags --jq '.[].name' |
         sed -nE '/^[0-9]+(\.[0-9]+)*$/p' | sort -V | tail -1
 }
 
