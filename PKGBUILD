@@ -2,8 +2,9 @@
 
 _pkgname=cursor-clip
 pkgname=${_pkgname}-git
-pkgver=0.r91.1f5f0b9
+pkgver=r103.d078343
 pkgrel=1
+epoch=1
 pkgdesc="GTK4/Libadwaita Wayland clipboard manager with dynamic cursor-positioned overlay"
 arch=("x86_64")
 url="https://github.com/Sirulex/cursor-clip"
@@ -21,7 +22,7 @@ pkgver() {
   local hash
   rev="$(git rev-list --count HEAD)"
   hash="$(git rev-parse --short HEAD)"
-  printf "0.r%s.%s" "${rev}" "${hash}"
+  printf "r%s.%s" "${rev}" "${hash}"
 }
 
 build() {
