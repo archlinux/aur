@@ -30,5 +30,8 @@ build() {
 package() {
     cd "$srcdir/$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+
+    mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
+    cp LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
 }
 
