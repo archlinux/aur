@@ -89,6 +89,7 @@ depends=(
 )
 makedepends=(
     'amf-headers'
+    'avisynthplus'
     'clang'
     'curl'
     'git'
@@ -101,7 +102,6 @@ makedepends=(
     'vulkan-headers'
 )
 optdepends=(
-    'avisynthplus: AviSynthPlus support'
     'frei0r-plugins: Frei0r video effects support'
     'intel-media-sdk: Intel QuickSync support (legacy)'
     'ladspa: LADSPA filters'
