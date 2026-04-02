@@ -1,28 +1,28 @@
 # Maintainer: attackuwu911 <daniil.baskakov13@gmail.com>
-# Former Maintainer: Dråfølin <derg@drafolin.ch>
 
 pkgname=python-discord_rpc
-_name=${pkgname#python-}
+_name=discord_rpc
 pkgver=5.5
 pkgrel=1
-pkgdesc='An Python wrapper for Discord RPC.'
+pkgdesc='A Python wrapper for Discord RPC (Updated 5.5)'
 arch=('any')
-url='https://github.com/Senophyx/discord-rpc'
+url='https://pypi.org/project/discord-rpc/'
 license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('SKIP') # Сейчас обновим одной командой
+
+source=("https://files.pythonhosted.org/packages/source/d/discord-rpc/${_name}-${pkgver}.tar.gz")
+sha256sums=('47c04478bd656f32a1f7d5189dcb85d8b25740bb0967264b97e84cc4b89e89a5')
 
 build() {
-	cd "$_name-$pkgver"
-	python -m build --wheel --no-isolation
+    cd "${_name}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "$_name-$pkgver"
-	python -m installer --destdir="${pkgdir}" dist/*.whl
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${_name}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    
+    # Установка лицензии из корня папки сборки
+    install -Dm644 "$startdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

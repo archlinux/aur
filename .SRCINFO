@@ -1,8 +1,8 @@
 pkgbase = python-discord_rpc
-	pkgdesc = An Python wrapper for Discord RPC.
+	pkgdesc = A Python wrapper for Discord RPC (Updated 5.5)
 	pkgver = 5.5
 	pkgrel = 1
-	url = https://github.com/Senophyx/discord-rpc
+	url = https://pypi.org/project/discord-rpc/
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -10,7 +10,7 @@ pkgbase = python-discord_rpc
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/d/discord_rpc/discord_rpc-5.5.tar.gz
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/d/discord-rpc/discord_rpc-5.5.tar.gz
+	sha256sums = 47c04478bd656f32a1f7d5189dcb85d8b25740bb0967264b97e84cc4b89e89a5
 
 pkgname = python-discord_rpc
