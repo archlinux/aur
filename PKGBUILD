@@ -1,49 +1,63 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: BluePeril "<blueperil@blueperil.de>"
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-test-www-mechanize-catalyst'
-pkgver='0.62'
-pkgrel='1'
-pkgdesc="Test::WWW::Mechanize for Catalyst"
+_author=MSTROUT
+_dist=Test-WWW-Mechanize-Catalyst
+pkgname=perl-${_dist@L}
+pkgver=0.62
+pkgrel=2
+pkgdesc='Test::WWW::Mechanize for Catalyst'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-catalyst-runtime>=5.90'
+    'perl-class-load>=0.19'
+    'perl-libwww>=5.816'
+    'perl-moose>=0.67'
+    'perl-namespace-clean>=0.09'
+    'perl-test-www-mechanize>=1.14'
+    'perl-www-mechanize>=1.54'
+    'perl>=5.8.4'
+)
+makedepends=(
+    'perl-catalyst-plugin-session'
+    'perl-catalyst-plugin-session-state-cookie'
+    'perl-extutils-makemaker>=6.59'
+    'perl-module-install'
+    'perl-test-exception'
+    'perl-test-simple'
+    'perl-test-utf8'
+)
 options=('!emptydirs')
-depends=('perl-catalyst-runtime>=0' 'perl-class-load>=0.19' 'perl-moose>=0.67' 'perl-test-www-mechanize>=1.14' 'perl-www-mechanize>=1.54' 'perl-libwww>=0' 'perl-namespace-clean>=0.09' 'perl>=5.8.4')
-makedepends=('perl-catalyst-plugin-session>=0' 'perl-catalyst-plugin-session-state-cookie>=0' 'perl-test-exception>=0' 'perl-test-utf8>=0')
-url='https://metacpan.org/release/Test-WWW-Mechanize-Catalyst'
-source=('http://search.cpan.org/CPAN/authors/id/M/MS/MSTROUT/Test-WWW-Mechanize-Catalyst-0.62.tar.gz')
-md5sums=('ca56e1c8cef26ef720e69350fd62b010')
-sha512sums=('06a44d7dd8d4fe9a7a8d793883ca539193785748756610f7db7f131bd6793d3acb7a0f1809c5b0fb91db205c1a5cb84ce4cc50057df5171667b5b699f638c392')
-_distdir="Test-WWW-Mechanize-Catalyst-0.62"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('183bde1ae7aba70dcb3ed777c5548237f42c3ed551fd5bc658cee86d0216acb1')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
