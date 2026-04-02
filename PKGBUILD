@@ -4,23 +4,26 @@
 pkgname='python-strictdoc'
 _name=${pkgname#python-}
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for technical documentation and requirements management."
 url="https://github.com/strictdoc-project/strictdoc"
 depends=(
+	'python'
+	'python-typing_extensions'
+	'python-lark-parser'
+	'python-pandas'
+	'python-coverage'
+	'python-markdown-it-py'
+	'python-markupsafe'
+	'python-starlette'
 	'python-beautifulsoup4'
 	'python-datauri'
 	'python-docutils'
 	'python-fastapi'
-	'python-html5lib'
 	'python-jinja'
 	'python-lxml'
-	'python-multipart'
-	'python-pybtex'
 	'python-pygments'
 	'python-reqif'
-	'python-requests'
-	'python-selenium'
 	'python-semantic-version'
 	'python-spdx-tools'
 	'python-textx'
