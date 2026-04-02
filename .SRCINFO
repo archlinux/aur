@@ -2,14 +2,14 @@ pkgbase = pins
 	pkgdesc = Create your own application shortcuts
 	pkgver = 2.4.5
 	pkgrel = 1
-	url = https://github.com/fabrialberio/PinApp
+	url = https://github.com/fabrialberio/Pins
 	arch = any
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = meson
 	depends = libadwaita
 	depends = python-gobject
-	source = https://github.com/fabrialberio/PinApp/archive/v2.4.5.tar.gz
+	source = https://github.com/fabrialberio/Pins/archive/v2.4.5.tar.gz
 	b2sums = 8a0cd6f2a8edbe194e3163209718e95c655aa44d735a2e2ea71aae62083f4389fad3d4a14d57b7368651bf63b6d9341e2a365e2d6ac6b25a3a33aed27ae50c8d
 
 pkgname = pins
