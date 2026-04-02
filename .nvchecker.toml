@@ -1,4 +1,5 @@
 [phylum-bin]
-source = "git"
-git = "https://github.com/phylum-dev/cli.git"
+source = "github"
+github = "phylum-dev/cli"
+use_latest_release = true
 prefix = "v"

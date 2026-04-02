@@ -3,24 +3,43 @@
 _pkgname="phylum"
 pkgname="${_pkgname}-bin"
 pkgver=7.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface for the Phylum API"
-arch=('aarch64' 'x86_64')
+arch=(
+  'aarch64'
+  'x86_64'
+)
 url="https://phylum.io"
 _url="https://github.com/phylum-dev/cli"
-license=('MIT')
-depends=('gcc-libs' 'glibc' 'zlib')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+license=(
+  'MIT'
+)
+depends=(
+  'glibc'
+  'libgcc'
+  'zlib'
+)
+provides=(
+  "${_pkgname}"
+)
+conflicts=(
+  "${_pkgname}"
+)
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
-        "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE")
-source_aarch64=("${_pkgsrc}-aarch64.zip::${_url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.zip")
-source_x86_64=("${_pkgsrc}-x86_64.zip::${_url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.zip")
-b2sums=('112db7a875f7ae8d5e4b5d1dad07e95c75607ca3fcb907d64e3f7b270734a8ffa6d403f1e82714f13847275c46c45473c29bda44ade8f4fbc4fe2948f7b20050'
-        'd23d56095390a883bd5c4a2fd321bfe027477e24222332936f15c2653614efe93322776f9c6011102fd33210079a01edaa22ffb2326ca5187a6bf9bc50d7ca7e')
-b2sums_aarch64=('b361676a3386bd57b7b7c2b243ddbc45e7948963f5612759db7713679170d0ac347f7cc31aebbfb5820fbaacc5ca10e7ae0c62acaa73466f46296e0625f89990')
-b2sums_x86_64=('e8f980e78e732e06872b93d5a2ff6a01b1a48897bc694e424af84a264cac7d5d5426b61ea1ef8471e24cf3f461224b4d0136b707b52f72cc9a7a2586382ef782')
+source=(
+  "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
+  "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE"
+)
+source_aarch64=(
+  "${_pkgsrc}-aarch64-unknown-linux-gnu.zip::${_url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.zip"
+)
+source_x86_64=(
+  "${_pkgsrc}-x86_64-unknown-linux-gnu.zip::${_url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.zip"
+)
+sha256sums=('d733d415524b70b6e2b3016b2d0e279a12dcfc77dc78d6fb7b852a324455d0e8'
+            'bf7bed83defddbaf30ff7c1a7d24a803170064ed729aed1e9686095e8f1f5ca7')
+sha256sums_aarch64=('e93af53417ed3c770261cf921de1830b6d38419e0f98a7adb70ba21556e364cf')
+sha256sums_x86_64=('678a1f4d58f00d07ea7b1c0465e501748db77b23a097ed43326b6744166ae0e8')
 
 package() {
   cd "${srcdir}"
