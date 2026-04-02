@@ -1,6 +1,6 @@
 pkgbase = omnictl-bin
 	pkgdesc = CLI for Omni - SaaS-simple Kubernetes management platform by Sidero Labs
-	pkgver = 1.6.2
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/siderolabs/omni
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = omnictl-bin
 	license = BUSL-1.1
 	provides = omnictl
 	conflicts = omnictl
-	source = omni-1.6.2.tar.gz::https://github.com/siderolabs/omni/archive/refs/tags/v1.6.2.tar.gz
-	sha256sums = 32e08364908e3ad40989ef651b37e567a79a6a27ec33bbd100e924be01189424
-	source_x86_64 = omnictl-1.6.2::https://github.com/siderolabs/omni/releases/download/v1.6.2/omnictl-linux-amd64
-	sha256sums_x86_64 = e63472ce086c394fef6c0c42c393b559a660232cbbc9bddec95023f3ef642290
-	source_aarch64 = omnictl-1.6.2::https://github.com/siderolabs/omni/releases/download/v1.6.2/omnictl-linux-arm64
-	sha256sums_aarch64 = e63472ce086c394fef6c0c42c393b559a660232cbbc9bddec95023f3ef642290
+	source = omni-1.6.4.tar.gz::https://github.com/siderolabs/omni/archive/refs/tags/v1.6.4.tar.gz
+	sha256sums = a9ccb6cd2fb489d2ec0b5f11bf2f830ebff58e86a548eff00f5f0027403afa82
+	source_x86_64 = omnictl-1.6.4::https://github.com/siderolabs/omni/releases/download/v1.6.4/omnictl-linux-amd64
+	sha256sums_x86_64 = f44e21b871208109228f701a6e04b80a54faea19206ee2cfa5d272052902f44b
+	source_aarch64 = omnictl-1.6.4::https://github.com/siderolabs/omni/releases/download/v1.6.4/omnictl-linux-arm64
+	sha256sums_aarch64 = f44e21b871208109228f701a6e04b80a54faea19206ee2cfa5d272052902f44b
 
 pkgname = omnictl-bin
