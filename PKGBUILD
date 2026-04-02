@@ -152,6 +152,10 @@ prepare() {
 build() {
     cd ffmpeg
 
+    # Upgrade from Arch default -O2 to -O3 for better encode/decode performance
+    CFLAGS="${CFLAGS/-O2/-O3}"
+    CXXFLAGS="${CXXFLAGS/-O2/-O3}"
+
     # FFmpeg's configure expects threads="yes"/"no" internally.
     # makepkg can leak threads=<N> from MAKEFLAGS which breaks dependency checks.
     unset threads THREADS
