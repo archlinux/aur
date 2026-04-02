@@ -1,0 +1,5 @@
+[bed-bin]
+source = "github"
+github = "itchyny/bed"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,18 @@
+pkgbase = bed-bin
+	pkgdesc = Binary editor written in Go
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = https://github.com/itchyny/bed
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = bed
+	conflicts = bed
+	source_x86_64 = bed-x86_64-0.2.8.tgz::https://github.com/itchyny/bed/releases/download/v0.2.8/bed_v0.2.8_linux_amd64.tar.gz
+	sha256sums_x86_64 = d4a38c9d1ee3d48bc83f1fa953a863b8f5fb73f05806f6ac5238fa6bbfc445ae
+	source_aarch64 = bed-aarch64-0.2.8.tgz::https://github.com/itchyny/bed/releases/download/v0.2.8/bed_v0.2.8_linux_arm64.tar.gz
+	sha256sums_aarch64 = e32a26750c9cc72b8155e70c9e3aceb83a5dc9b82eb86ce66e3ad718122f44c6
+
+pkgname = bed-bin
