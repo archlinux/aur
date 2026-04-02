@@ -19,7 +19,7 @@ makedepends=(
   'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xanderboy2001/mc-creative-clone/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f6fc70456c8032623c0b74ff72b61d324700222cebf4b3f5dcacc3701a349771')
+sha256sums=('494551aff7b13b7baa7d3adebe64ebc6db9d59dd2ecec55c1290de9b515ba962')
 
 build() {
   cd "$pkgname-$pkgver"
