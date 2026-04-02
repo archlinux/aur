@@ -16,17 +16,15 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 build() {
   cd "$srcdir/primesieve-${pkgver}"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DWITH_MULTIARCH=OFF -DBUILD_PRIMESIEVE=OFF ..
-    make
-    popd
+    ${_arch}-cmake -DWITH_MULTIARCH=OFF -DBUILD_PRIMESIEVE=OFF -B build-${_arch} .
+    cmake --build build-${_arch}
   done
 }
 
 package() {
+  cd "$srcdir/primesieve-${pkgver}"
   for _arch in ${_architectures}; do
-    cd "$srcdir/primesieve-${pkgver}/build-${_arch}"
-    make install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" cmake --install build-${_arch}
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
