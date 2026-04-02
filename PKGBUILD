@@ -24,8 +24,8 @@ sha256sums=('8afa8de0114ea2ec43863eff0ef4e17047e6d6def4095348f79217e6373cae47'
             '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
 
 latestver() {
-    curl -fsSL 'https://api.github.com/repos/CalebFenton/simplify/releases/latest' | jq -r '.assets[]?.name' |
-        sed -nE '/^simplify-[0-9.]+\.jar$/{s/^simplify-//; s/\.jar$//; p;}'
+    gh api --paginate repos/CalebFenton/simplify/releases --jq '.[] | select(.prerelease == false and .draft == false) | .assets[]?.name' |
+        sed -nE '/^simplify-[0-9.]+\.jar$/{s/^simplify-//; s/\.jar$//; p; q}'
 }
 
 package() {
