@@ -18,8 +18,8 @@ noextract=("${pkgname}-${pkgver}.jar")
 options=('!debug')
 
 latestver() {
-    curl -fsSL 'https://api.github.com/repos/MorpheApp/morphe-cli/releases/latest' | jq -r '.assets[]?.name' |
-    sed -nE '/^morphe-cli-[0-9.]+-all\.jar$/{s/^morphe-cli-//; s/-all\.jar$//; p;}'
+    gh api --paginate repos/MorpheApp/morphe-cli/releases --jq '.[] | select(.prerelease == false and .draft == false) | .assets[]?.name' |
+    sed -nE '/^morphe-cli-[0-9.]+-all\.jar$/{s/^morphe-cli-//; s/-all\.jar$//; p; q}'
 }
 
 package() {
