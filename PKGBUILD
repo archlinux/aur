@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="rayforge"
-pkgver=1.3.2
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A software for laser cutters and engravers"
 arch=(
@@ -19,6 +19,7 @@ depends=(
   'gtk4'
   'hicolor-icon-theme'
   'libadwaita'
+  'librsvg'
   'pango'
   'python>=3.10'
   'python-aiohttp>=3.13.3'
@@ -35,6 +36,7 @@ depends=(
   'python-platformdirs>=4.3.6'
   'python-pluggy>=1.6.0'
   'python-pyclipper>=1.3.0.post6'
+  'python-pymupdf'
   'python-pypdf>=6.7.0'
   'python-pyserial'
   'python-pyserial-asyncio>=0.6'
@@ -68,7 +70,7 @@ _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=${pkgver}"
 )
-sha256sums=('7e1f79802aceed81f4ffb2a83c2b22ab935edca1dff1d95c0681bed72f039212')
+sha256sums=('3e675d35d16021bf68692a9b9caffa1e0bcb21c9b2fc38b524ed285472a8d530')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
