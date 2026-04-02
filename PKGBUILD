@@ -1,50 +1,50 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-catalystx-repl'
-pkgver='0.04'
-pkgrel='1'
-pkgdesc="read-eval-print-loop for debugging your Catalyst application"
+_author=FLORA
+_dist=CatalystX-REPL
+pkgname=perl-${_dist@L}
+pkgver=0.04
+pkgrel=2
+pkgdesc='read-eval-print-loop for debugging your Catalyst application'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-carp-repl'
+    'perl-catalyst-runtime>=5.800006'
+    'perl-namespace-autoclean'
+)
 options=('!emptydirs')
-depends=('perl-carp-repl' 'perl-catalyst-runtime' 'perl-namespace-autoclean')
-makedepends=()
-url='http://search.cpan.org/dist/CatalystX-REPL'
-source=('http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/CatalystX-REPL-0.04.tar.gz')
-md5sums=('d1430f331366a491888b323f92413150')
-sha512sums=('0728fb5b97a51ecd7c7794da44b9186252ae9b6da328da7cc3b86704dd4759c40e49f6720f2006ffa27112bdd620aed2467eaf43ea17dba358c88f1bcfd870d4')
-_distdir="CatalystX-REPL-0.04"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('0bdc17a4bc16565ce353366b4ac81475ee8a843144305f44ee59b3ef01fb3af1')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
