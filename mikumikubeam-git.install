@@ -1,18 +1,26 @@
 #!/bin/bash
 
-BIN_DIR="/usr/bin"
 DATA_DIR="/var/lib/mikumikubeam"
 CONFIG_DIR="/etc/mikumikubeam"
+USER="mmb"
+GROUP="mmb"
 
 post_install() {
+    # Создаём пользователя и группу если не существуют
+    getent group "$GROUP" >/dev/null || groupadd -r "$GROUP"
+    getent passwd "$USER" >/dev/null || useradd -r -g "$GROUP" -d "$DATA_DIR" -s /sbin/nologin "$USER"
+
     # Создаём директорию для данных
     mkdir -p "$DATA_DIR"
     mkdir -p "$CONFIG_DIR"
-    
+    chown -R "$USER:$GROUP" "$DATA_DIR"
+    chown -R "$USER:$GROUP" "$CONFIG_DIR"
+
     # Создаём пустые файлы данных если не существуют
     touch "$DATA_DIR/proxies.txt" 2>/dev/null || true
     touch "$DATA_DIR/uas.txt" 2>/dev/null || true
-    
+    chown "$USER:$GROUP" "$DATA_DIR/proxies.txt" "$DATA_DIR/uas.txt" 2>/dev/null || true
+
     # Создаём пример конфига если не существует
     if [ ! -f "$CONFIG_DIR/config.toml" ]; then
         cat > "$CONFIG_DIR/config.toml" << 'EOF'
@@ -21,19 +29,25 @@ user_agents_file = "/var/lib/mikumikubeam/uas.txt"
 server_port = 3000
 allowed_origin = "http://localhost:5173"
 EOF
+        chown "$USER:$GROUP" "$CONFIG_DIR/config.toml"
     fi
     
-    # Создаём symlink /bin/web-client -> /usr/bin/bin/web-client
-    # чтобы сервер мог найти статику из любой директории
-    mkdir -p /bin
-    ln -sf /usr/bin/bin/web-client /bin/web-client 2>/dev/null || true
-    
-    echo "==> mikumikubeam installed."
-    echo "==> Data directory: $DATA_DIR"
-    echo "==> Config directory: $CONFIG_DIR"
-    echo "==> Edit config: $CONFIG_DIR/config.toml"
-    echo "==> Add proxies: echo 'http://proxy:8080' >> $DATA_DIR/proxies.txt"
-    echo "==> Start server: mmb-server"
+    echo ""
+    echo "==> mikumikubeam installed successfully."
+    echo ""
+    echo "  Data directory: $DATA_DIR"
+    echo "  Config directory: $CONFIG_DIR"
+    echo "  Edit config: $CONFIG_DIR/config.toml"
+    echo "  Add proxies: echo 'http://proxy:8080' >> $DATA_DIR/proxies.txt"
+    echo ""
+    echo "  To start the server:"
+    echo "    systemctl enable --now mmb-server"
+    echo ""
+    echo "  Or run manually from /:"
+    echo "    cd / && mmb-server"
+    echo ""
+    echo "  Then open http://localhost:3000 in your browser."
+    echo ""
 }
 
 post_upgrade() {
@@ -41,6 +55,6 @@ post_upgrade() {
 }
 
 post_remove() {
-    # Не удаляем данные при удалении пакета
+    # Не удаляем данные и пользователя при удалении пакета
     rm -f /bin/web-client 2>/dev/null || true
 }

@@ -1,0 +1,18 @@
+[Unit]
+Description=MikuMikuBeam Server
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Group=nobody
+WorkingDirectory=/
+ExecStart=/usr/bin/mmb-server --no-proxy
+Environment=ALLOW_NO_PROXY=true
+Restart=on-failure
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_NET_RAW
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_RAW
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
