@@ -4,7 +4,7 @@
 # Contributor: Mike Polvere <mic.tjs@gmail.com>
 _pkgname=libretro-mupen64plus-next
 pkgname=$_pkgname-git
-pkgver=r529.bc43bced
+pkgver=r536.58b9daf
 pkgrel=1
 pkgdesc="Nintendo 64 core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -32,16 +32,14 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
 	cd $_pkgname
 	# remove hardcoded optimization flags
 	sed -Ei 's/-O([0123s]|fast)//' Makefile
-	# add missing header
-	sed -i '3a #include <cstdint>' GLideN64/src/GLideNHQ/TxHiResLoader.h
-	# fix header path
+	# use system minizip
 	sed -Ei 's/(un)?zip\.h/minizip\/&/' mupen64plus-core/src/main/savestates.c
 }
 
