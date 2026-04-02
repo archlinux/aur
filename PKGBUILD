@@ -12,7 +12,7 @@ conflicts=("${pkgname}-debug")
 install=$pkgname.install
 
 latestver() {
-    curl -fsSL 'https://api.github.com/repos/jenslys/opencode-gemini-auth/tags?per_page=100' | jq -r '.[].name' |
+    gh api --paginate repos/jenslys/opencode-gemini-auth/tags --jq '.[].name' |
         sed -nE 's/^v([0-9]+(\.[0-9]+)*)$/\1/p' | sort -V | tail -1
 }
 
