@@ -1,6 +1,6 @@
 # Maintainer: Yast <yastcher@gmail.com>
 pkgname=tapeback
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="Local meeting recorder with transcription and speaker diarization for Obsidian"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
 )
 makedepends=('python-pip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yastcher/tapeback/archive/v$pkgver.tar.gz")
-sha256sums=('e8fa62e68f8d543053a2a8236cdb8815b6d3b417b715d87fd0e3d4c2f0922222')
+sha256sums=('cbcf43558c324d2ab10974ad3f3c1ca99305c5eee7f6b44db9e34ba6d2da97be')
 
 build() {
     cd "$pkgname-$pkgver"
