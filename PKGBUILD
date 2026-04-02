@@ -4,7 +4,7 @@
 pkgname=qoredb-bin
 _pkgname=qoredb
 pkgver=0.1.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Next gen database client — lightweight alternative to DBeaver/pgAdmin (binary release)"
 arch=('x86_64')
 url="https://github.com/QoreDB/QoreDB"
@@ -43,18 +43,23 @@ prepare() {
 }
 
 package() {
-    # Install the main application
+    # Install the full squashfs-root as-is to preserve internal paths
     install -d "${pkgdir}/opt/${_pkgname}"
-    cp -r "${srcdir}/squashfs-root/usr/." "${pkgdir}/opt/${_pkgname}/"
+    cp -a "${srcdir}/squashfs-root/." "${pkgdir}/opt/${_pkgname}/"
 
-    # Install binary
-    install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/${_pkgname}/bin/qoredb" "${pkgdir}/usr/bin/qoredb"
+    # Create launcher script that runs from the correct directory
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/qoredb" <<'LAUNCHER'
+#!/bin/bash
+cd /opt/qoredb
+exec ./AppRun "$@"
+LAUNCHER
 
     # Install desktop file
     install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/"*.desktop \
         "${pkgdir}/usr/share/applications/qoredb.desktop"
     sed -i "s|Exec=.*|Exec=/usr/bin/qoredb %U|g" \
+        "${pkgdir}/usr/share/applications/qoredb.desktop"
+    sed -i "s|Icon=.*|Icon=qoredb|g" \
         "${pkgdir}/usr/share/applications/qoredb.desktop"
 
     # Install icons

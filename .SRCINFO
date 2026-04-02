@@ -1,7 +1,7 @@
 pkgbase = qoredb-bin
 	pkgdesc = Next gen database client — lightweight alternative to DBeaver/pgAdmin (binary release)
 	pkgver = 0.1.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/QoreDB/QoreDB
 	arch = x86_64
 	license = Apache-2.0
