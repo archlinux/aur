@@ -1,0 +1,23 @@
+pkgbase = dcd-bin
+	pkgdesc = Duplicate code detector with fuzzy matching, gap tolerance, and interactive codebase visualization
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/boyter/dcd
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = AGPL-3.0
+	provides = dcd
+	conflicts = dcd
+	source = README-1.1.0.md::https://raw.githubusercontent.com/boyter/dcd/v1.1.0/README.md
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/boyter/dcd/v1.1.0/LICENSE
+	sha256sums = f8377ca1119a1606032c13984901ad2c8532f6d4486a613d34451f6d496c7ccb
+	sha256sums = 4df3c306dddaaf4baffdff5ca820cc679ac8cd6dc263c6a74517783e42fa7a3b
+	source_x86_64 = dcd-x86_64-1.1.0.zip::https://github.com/boyter/dcd/releases/download/v1.1.0/dcd-1.0.0-x86_64-unknown-linux.zip
+	sha256sums_x86_64 = 6bf9d60c59acf1bfc81d4d15a95b4d2ad742f54a886cc8d3065c3b0a9b3b9196
+	source_i686 = dcd-i686-1.1.0.zip::https://github.com/boyter/dcd/releases/download/v1.1.0/dcd-1.0.0-i386-unknown-linux.zip
+	sha256sums_i686 = b2926bb59ed998f724ee96bd8fafa3cc2b75b46ad41be0344172430e9c27a40b
+	source_aarch64 = dcd-aarch64-1.1.0.zip::https://github.com/boyter/dcd/releases/download/v1.1.0/dcd-1.0.0-arm64-unknown-linux.zip
+	sha256sums_aarch64 = c5c321d61894c442e177372f71b00612d08bca636a7a3b11c1a87614e6058e7c
+
+pkgname = dcd-bin

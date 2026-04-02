@@ -1,0 +1,5 @@
+[dcd-bin]
+source = "github"
+github = "boyter/dcd"
+use_latest_release = true
+prefix = "v"
