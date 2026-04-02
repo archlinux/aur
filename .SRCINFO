@@ -1,0 +1,32 @@
+pkgbase = pi-hole-ftl-bin
+	pkgdesc = The Pi-hole FTL engine
+	pkgver = 6.5
+	pkgrel = 1
+	url = https://github.com/pi-hole/FTL
+	install = pi-hole-ftl.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = EUPL-1.2
+	depends = nettle
+	depends = gmp
+	depends = mbedtls
+	depends = pi-hole-web
+	provides = dnsmasq
+	provides = pi-hole-ftl=6.5
+	conflicts = dnsmasq
+	conflicts = pi-hole-ftl
+	source = pi-hole-ftl-bin-x86_64-v6.5::https://github.com/pi-hole/FTL/releases/download/v6.5/pihole-FTL-amd64
+	source = LICENSE::https://raw.githubusercontent.com/pi-hole/FTL/v6.5/LICENSE
+	source = pi-hole-ftl.tmpfile
+	source = pi-hole-ftl.sysuser
+	source = pi-hole-ftl.service
+	sha256sums = 771bc4e23aec29eb95969272fbc13ca26a18a13285b9c4cd0078bfcc6f828c22
+	sha256sums = 4c0aa7f0a331d0497122246c74d97fb3501b1d3c9aed05fcb1957650a33f13ca
+	sha256sums = 0feb4597a4afd9054553505d305b0feb7e1f6e1705b092561648ff37d0a2893c
+	sha256sums = dd1d2a341e774d4e549373ae75604031b9af0ee44debcd71a89259d9110d2a77
+	sha256sums = 0998da040d038ddbad129ba8e1ea74741bc912813407b579cab1b3b3f206e721
+
+pkgname = pi-hole-ftl-bin

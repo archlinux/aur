@@ -1,0 +1,4 @@
+d /run/log/pihole 0755 pihole pihole - -
+f /run/log/pihole/FTL.log 0644 pihole pihole - -
+f /run/log/pihole/webserver.log 0644 pihole pihole - -
+f /run/pihole-FTL.pid 0644 pihole pihole - -
