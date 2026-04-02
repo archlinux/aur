@@ -12,7 +12,7 @@ conflicts=('gridix' 'gridix-bin')
 options=('!strip')
 source=("gridix-${pkgver}.AppImage::https://github.com/MCB-SMART-BOY/Gridix/releases/download/v${pkgver}/gridix.AppImage"
         "LICENSE::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/v${pkgver}/LICENSE")
-sha256sums=('65d300398a85da4dbd16dd0dbbc190acf2a8922db80784ed880fe79ffa295de9' '6850b0e5d07bed32b3613d4c7da50e0fc36542239a5ff5188b524494e9edda75')
+sha256sums=('65d300398a85da4dbd16dd0dbbc190acf2a8922db80784ed880fe79ffa295de9' '01132d0ac431cc5a8f34ea8ba055deb6f68d7034d8ed6f821b827f4b9195aae4')
 
 prepare() {
     chmod +x "gridix-${pkgver}.AppImage"
