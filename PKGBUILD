@@ -1,7 +1,7 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
 pkgname=leshade-bin
 _pkgname=leshade
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="An unofficial Reshade Installer for Linux."
 arch=('x86_64')
@@ -11,8 +11,8 @@ provides=("$_pkgname")
 depends=(
 'keyutils' 'libcap' 'bzip2' 'libgcrypt' 'xz' 'krb5' 'libstdc++'
 'libgpg-error' 'systemd-libs' 'util-linux-libs' 'brotli' 'lz4'
-'openssl' 'glib2' 'libffi' 'pcre2' 'libatomic' 'dbus' 'libgcc'
-'zlib' 'zstd' 'expat' 'e2fsprogs' 'glibc'
+'openssl' 'glib2' 'libffi' 'pcre2' 'dbus' 'libgcc' 'zlib' 
+'zstd' 'expat' 'e2fsprogs' 'glibc'
 )
 makedepends=('patchelf')
 options=('!strip' '!emptydirs' '!libtool')
@@ -22,7 +22,7 @@ source=(
 "https://github.com/Ishidawg/LeShade/releases/download/${pkgver}/${_appimage}"
 "LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE"
 )
-sha256sums=('6a96f054adfc1caf968ad492a1c9d6f1e5b0dbdf72816ff190d3163ab8ccde6c'
+sha256sums=('b96cb505d916fba1fffef97c9b5538be6b373f4d18cde3cc85dd8c68552e7627'
             'a7b8f406ed4e1a5311d51a1967f91e569a6c0ce815c2bf74956d926613dd61a3')
 
 prepare() {
