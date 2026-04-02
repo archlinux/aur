@@ -1,6 +1,6 @@
 pkgbase = insomnia
 	pkgdesc = Cross-platform HTTP and GraphQL Client
-	pkgver = 12.4.0
+	pkgver = 12.5.0
 	pkgrel = 1
 	url = https://github.com/Kong/insomnia
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = insomnia
 	makedepends = nvm
 	makedepends = fontconfig
 	makedepends = yarn
-	source = https://github.com/Kong/insomnia/archive/refs/tags/core@12.4.0.tar.gz
+	source = https://github.com/Kong/insomnia/archive/refs/tags/core@12.5.0.tar.gz
 	source = insomnia.desktop
-	b2sums = 07b4c570eb4c642ca7d297a67a2354222993dbc212dc550f559f4b0c802510dc0fba7e8c460067a5c217c77e7cf7f170f0f5ebd6e7de9da0da0a0226eb575f80
+	b2sums = fd8e0a405936e383a7513d7b2e8d620ba1bc7659445b848d34aabbad8a37729891ef5f69498b13e22bad2bc680532e8f3bbe38442f644b5a20a66fc3be166604
 	b2sums = 38c2edd681b012931e25498a4a65007cc2a2152c9bbc5505dbb7cf03e1143a7365c41e9ad7eb2318c8ea894dccad0e0b6601cf76f680ea4085d12b5059e61a6e
 
 pkgname = insomnia
