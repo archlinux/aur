@@ -16,8 +16,8 @@ source=("geosite-${pkgver}.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/
 sha256sums=('949409834f7aaddd95efead4ec7ebc86768f7722162c7543da818787c6f40e85')
 
 latestver() {
-    curl -fsSI 'https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat' | tr -d '\r' |
-    sed -nE 's#^location: .*/download/([^/]+)/.*$#\1#p'
+    gh api --paginate repos/Loyalsoldier/v2ray-rules-dat/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "geosite.dat")) | .tag_name' |
+    head -1
 }
 
 package() {
