@@ -248,9 +248,9 @@ build() {
         --extra-cflags="-I/opt/cuda/include" \
         --extra-ldflags="-L/opt/cuda/lib64"
 
-    make
-    make tools/qt-faststart
-    make doc/ff{mpeg,play,probe}.1
+    make -j"$(nproc)"
+    make -j"$(nproc)" tools/qt-faststart
+    make -j"$(nproc)" doc/ff{mpeg,play,probe}.1
 }
 
 package() {
