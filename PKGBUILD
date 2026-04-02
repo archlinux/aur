@@ -118,6 +118,7 @@ provides=(
     'libswscale.so=9-64'
 )
 conflicts=('ffmpeg')
+replaces=('ffmpeg')
 options=('!lto')
 source=("ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git")
 b2sums=('SKIP')
