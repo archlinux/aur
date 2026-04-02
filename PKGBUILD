@@ -4,8 +4,8 @@
 pkgname=x2vnc-bin
 pkgbase=x2vnc
 pkgver=1.7.2
-pkgrel=3
-pkgdesc='This program lets you use the monitor of a computer next to yours and running a VNC server as if it were connected to yours.'
+pkgrel=4
+pkgdesc='This program lets you use the input devices (mouse, keyboard, etc.) connected to the computer you are using on another computer running a VNC server, which is useful if you can see the other computer’s monitor.'
 arch=('x86_64')
 url='https://fredrik.hubbe.net/x2vnc.html'
 license=('GPL')
