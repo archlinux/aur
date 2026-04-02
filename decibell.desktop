@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Network;InstantMessaging;
+Comment=Decentralized text, voice chat, and streaming app
+Exec=decibell %U
+StartupWMClass=decibell
+Icon=decibell
+Name=Decibell
+Terminal=false
+Type=Application

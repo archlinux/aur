@@ -1,46 +1,49 @@
 # Maintainer: sunkhan
 pkgname=decibell
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Decentralized text, voice chat, and streaming app"
 arch=('x86_64')
 url="https://github.com/sunkhan/decibell"
 license=('MIT')
 depends=(
-    'webkit2gtk-4.1'
-    'libappindicator-gtk3'
-    'librsvg'
-    'pipewire'
-    'libpipewire'
-    'opus'
-    'ffmpeg'
-    'dbus'
+    'fuse2'
 )
 provides=('decibell')
 conflicts=('decibell-bin' 'decibell-git')
 options=('!strip')
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/sunkhan/decibell/releases/download/v${pkgver}/Decibell_${pkgver}_amd64.AppImage")
-sha256sums=('SKIP')
-
-prepare() {
-    chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname}-${pkgver}.AppImage" --appimage-extract
-}
+source=(
+    "${pkgname}-${pkgver}.AppImage::https://github.com/sunkhan/decibell/releases/download/v${pkgver}/Decibell_${pkgver}_amd64.AppImage"
+    "decibell.desktop"
+)
+sha256sums=('SKIP' 'SKIP')
 
 package() {
-    cd "${srcdir}/squashfs-root"
+    # Install AppImage as-is
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" \
+        "${pkgdir}/opt/decibell/decibell.AppImage"
 
-    # Binary
-    install -Dm755 "usr/bin/decibell" "${pkgdir}/usr/bin/decibell"
+    # Launcher script
+    install -d "${pkgdir}/usr/bin"
+    cat > "${pkgdir}/usr/bin/decibell" << 'LAUNCHER'
+#!/bin/sh
+exec /opt/decibell/decibell.AppImage --no-sandbox "$@"
+LAUNCHER
+    chmod 755 "${pkgdir}/usr/bin/decibell"
 
     # Desktop entry
-    install -Dm644 "usr/share/applications/Decibell.desktop" \
-        "${pkgdir}/usr/share/applications/Decibell.desktop"
+    install -Dm644 "${srcdir}/decibell.desktop" \
+        "${pkgdir}/usr/share/applications/decibell.desktop"
 
-    # Icons
-    for icon in usr/share/icons/hicolor/*/apps/decibell.png; do
-        size_dir="$(echo "$icon" | grep -oP 'hicolor/\K[^/]+')"
-        install -Dm644 "$icon" \
-            "${pkgdir}/usr/share/icons/hicolor/${size_dir}/apps/decibell.png"
-    done
+    # Extract icon from AppImage
+    cd "${srcdir}"
+    chmod +x "${pkgname}-${pkgver}.AppImage"
+    "./${pkgname}-${pkgver}.AppImage" --appimage-extract "usr/share/icons/*" 2>/dev/null || true
+    if [ -d squashfs-root/usr/share/icons ]; then
+        for icon in squashfs-root/usr/share/icons/hicolor/*/apps/decibell.png; do
+            size_dir="$(echo "$icon" | grep -oP 'hicolor/\K[^/]+')"
+            install -Dm644 "$icon" \
+                "${pkgdir}/usr/share/icons/hicolor/${size_dir}/apps/decibell.png"
+        done
+    fi
 }
