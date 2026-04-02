@@ -1,0 +1,15 @@
+pkgbase = flume
+	pkgdesc = Modern terminal IRC client with scripting and LLM support
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/FlumeIRC/flume
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = flume-1.2.3.tar.gz::https://github.com/FlumeIRC/flume/archive/v1.2.3.tar.gz
+	sha256sums = 20a8c0614245aba6300af57cd01fd1307430049daa20befd068b74e58418c559
+
+pkgname = flume
