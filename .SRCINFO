@@ -1,6 +1,6 @@
 pkgbase = schedrem
 	pkgdesc = A cross-platform task scheduler and reminder configured in YAML.
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/hikyae/schedrem
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = schedrem
 	depends = python-pydantic
 	depends = python-watchdog
 	depends = python-yaml
-	source = schedrem-1.6.1.tar.gz::https://github.com/hikyae/schedrem/archive/refs/tags/v1.6.1.tar.gz
-	sha256sums = a15fdef2048df87c8602b2cd6365cc8eee6d4339b7753c9ad5d0937bc4278b48
+	source = schedrem-1.6.2.tar.gz::https://github.com/hikyae/schedrem/archive/refs/tags/v1.6.2.tar.gz
+	sha256sums = 793c391ec9a55492e8aea24147bb3225655a5451eb236dc90be51c8eeb1c47f4
 
 pkgname = schedrem
