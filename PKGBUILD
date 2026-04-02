@@ -21,8 +21,8 @@ sha256sums_x86_64=('759b3468889b65d39c6a20ea1d7237afa2f79f68ee130602ceca4e16fb08
 sha256sums_aarch64=('d333678458a25143e0d794fa2d01830bff5b57d13422b4f40dacee749c9bd4d5')
 
 latestver() {
-    curl -fsSL 'https://api.github.com/repos/kraxarn/spotify-qt/releases/latest' | jq -r 'select(any(.assets[]?; .name | test("^spotify-qt-v[0-9.]+-x86_64\\.AppImage$")) and any(.assets[]?; .name | test("^spotify-qt-v[0-9.]+-aarch64\\.AppImage$"))) | .tag_name' |
-    sed -E 's/^v//'
+    gh api --paginate repos/kraxarn/spotify-qt/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name | test("^spotify-qt-v[0-9.]+-x86_64\\.AppImage$")) and any(.assets[]; .name | test("^spotify-qt-v[0-9.]+-aarch64\\.AppImage$"))) | .tag_name' |
+    head -1 | sed -E 's/^v//'
 }
 
 prepare() {
