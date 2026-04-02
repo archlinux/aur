@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.3.65'
+_upstreamver='0.3.67'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='memory-graph'
@@ -16,7 +16,7 @@ depends=('python' 'python-graphviz' 'python-numpy' 'python-pandas')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('a2ee0ff9451b50f3eacb370035774889ea843a826fbc257dfacb013a11005b74')
+sha256sums=('6cd6448be0db29afea1ec667ad5de63946e9d65d3ac641d01335a607ea5ecf77')
 
 
 build() {
