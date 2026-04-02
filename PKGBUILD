@@ -4,7 +4,7 @@
 pkgname=qoredb-bin
 _pkgname=qoredb
 pkgver=0.1.22
-pkgrel=2
+pkgrel=3
 pkgdesc="Next gen database client — lightweight alternative to DBeaver/pgAdmin (binary release)"
 arch=('x86_64')
 url="https://github.com/QoreDB/QoreDB"
@@ -31,47 +31,38 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 options=('!strip' '!debug')
 
-_appimage="QoreDB_${pkgver}_amd64.AppImage"
-source=("${_appimage}::${url}/releases/download/v${pkgver}/QoreDB_${pkgver}_amd64.AppImage")
+_deb="QoreDB_${pkgver}_amd64.deb"
+source=("${_deb}::${url}/releases/download/v${pkgver}/QoreDB_${pkgver}_amd64.deb")
 sha256sums=('SKIP')
 
-noextract=("${_appimage}")
+noextract=("${_deb}")
 
 prepare() {
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+    mkdir -p "${srcdir}/deb"
+    ar x "${_deb}" --output="${srcdir}/deb"
+    tar -xf "${srcdir}/deb/data.tar."* -C "${srcdir}/deb"
 }
 
 package() {
-    # Install the full squashfs-root as-is to preserve internal paths
-    install -d "${pkgdir}/opt/${_pkgname}"
-    cp -a "${srcdir}/squashfs-root/." "${pkgdir}/opt/${_pkgname}/"
+    # Install binary
+    install -Dm755 "${srcdir}/deb/usr/bin/qoredb" \
+        "${pkgdir}/usr/bin/qoredb"
 
-    # Create launcher script that runs from the correct directory
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/qoredb" <<'LAUNCHER'
-#!/bin/bash
-cd /opt/qoredb
-exec ./AppRun "$@"
-LAUNCHER
+    # Install shared libraries bundled by Tauri
+    if [ -d "${srcdir}/deb/usr/lib" ]; then
+        cp -a "${srcdir}/deb/usr/lib" "${pkgdir}/usr/lib"
+    fi
 
     # Install desktop file
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/"*.desktop \
-        "${pkgdir}/usr/share/applications/qoredb.desktop"
-    sed -i "s|Exec=.*|Exec=/usr/bin/qoredb %U|g" \
-        "${pkgdir}/usr/share/applications/qoredb.desktop"
-    sed -i "s|Icon=.*|Icon=qoredb|g" \
+    install -Dm644 "${srcdir}/deb/usr/share/applications/"*.desktop \
         "${pkgdir}/usr/share/applications/qoredb.desktop"
 
     # Install icons
-    for size in 32x32 64x64 128x128 256x256 512x512; do
-        icon="${srcdir}/squashfs-root/usr/share/icons/hicolor/${size}/apps/"*.png
-        if [ -f ${icon} ]; then
-            install -Dm644 ${icon} \
-                "${pkgdir}/usr/share/icons/hicolor/${size}/apps/qoredb.png"
-        fi
-    done
+    if [ -d "${srcdir}/deb/usr/share/icons" ]; then
+        cp -a "${srcdir}/deb/usr/share/icons" "${pkgdir}/usr/share/icons"
+    fi
 
     # Install license
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/doc/"*"/copyright" \
+    install -Dm644 "${srcdir}/deb/usr/share/doc/"*"/copyright" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 2>/dev/null || true
 }
