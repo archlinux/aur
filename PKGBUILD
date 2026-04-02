@@ -4,8 +4,8 @@
 # Contributor: franciscod <demartino.francisco@gmail.com>
 
 pkgname=simulide-stable-git
-pkgver=1.1.0_r260326
-pkgrel=2
+pkgver=1.1.0_r260402
+pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Stable v1.0 development branch"
 arch=("x86_64")
 url="https://github.com/Arcachofo/SimuliDE-1"
@@ -25,6 +25,10 @@ depends=(
   "qt5-serialport"
   "qt5-svg"
   "qt5-script"
+)
+
+makedepends=(
+  "git"
   "qt5-tools"
 )
 
