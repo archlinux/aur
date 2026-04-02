@@ -1,0 +1,17 @@
+pkgbase = opencli-rs-bin
+	pkgdesc = Blazing fast, memory-safe CLI tool to fetch information from websites with a single command
+	pkgver = 0.2.3
+	pkgrel = 3
+	url = https://github.com/nashsu/opencli-rs
+	install = opencli-rs-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = opencli-rs
+	conflicts = opencli-rs
+	source_x86_64 = opencli-rs-bin-0.2.3-x86_64.tar.gz::https://github.com/nashsu/opencli-rs/releases/download/v0.2.3/opencli-rs-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = f7f1c8dbbe77fcfa815a16285908e19b61b69cb293fca5fd4dd382cd7807d575
+	source_aarch64 = opencli-rs-bin-0.2.3-aarch64.tar.gz::https://github.com/nashsu/opencli-rs/releases/download/v0.2.3/opencli-rs-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = ddf2ec9e567646b8aa9456fdda490824603edec9536502910f63dc83e638320b
+
+pkgname = opencli-rs-bin
