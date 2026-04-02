@@ -1,0 +1,25 @@
+pkgbase = perl-catalyst-view-email
+	pkgdesc = Send Email from Catalyst
+	pkgver = 0.36
+	pkgrel = 1
+	url = https://metacpan.org/release/DHOSS/Catalyst-View-Email-0.36
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker>=6.36
+	makedepends = perl-module-install
+	makedepends = perl-test-requires
+	depends = perl
+	depends = perl-authen-sasl>=2.13
+	depends = perl-catalyst-runtime>=5.7
+	depends = perl-email-mime>=1.455
+	depends = perl-email-sender>=0.100110
+	depends = perl-mime-base64>=3.08
+	depends = perl-module-runtime>=0.014
+	depends = perl-moose>=0.93
+	depends = perl-parent>=0.223
+	depends = perl-test-simple
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DH/DHOSS/Catalyst-View-Email-0.36.tar.gz
+	sha256sums = 837211a96098cec16698ff09b135b8e30d2664db2e1b1dd205f5a07d13a8bd3c
+
+pkgname = perl-catalyst-view-email

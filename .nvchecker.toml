@@ -1,0 +1,3 @@
+[perl-catalyst-view-email]
+source = "cpan"
+cpan = "Catalyst-View-Email"
