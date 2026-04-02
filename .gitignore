@@ -2,3 +2,4 @@ pkg/
 src/
 chsrc*
 LICENSE-MIT.txt
+*.sh
