@@ -1,15 +1,15 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
-_pkgname=pipeweaver-app
-pkgname=${_pkgname}-git
-pkgver=r4.663dc3a
+_pkgname=pipeweaver
+pkgname=pipeweaver-app-git
+pkgver=r456.840024f
 pkgrel=1
 pkgdesc="An application wrapper for the Pipeweaver UI"
 arch=('x86_64')
-url="https://github.com/pipeweaver/pipeweaver-app"
+url="https://github.com/pipeweaver/pipeweaver"
 license=('MIT')
 depends=('pipeweaver-git' 'qt6-webengine')
 makedepends=('git' 'rust' 'cargo')
-conflicts=("${_pkgname}")
+conflicts=('pipeweaver-app')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 options=('!lto') # build fails with lto enabled
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  cargo build --release --locked
+  cargo build -p pipeweaver-app --release --locked
 }
 
 package() {
@@ -39,11 +39,10 @@ package() {
   # install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
   # install -m644 resources/pipeweaver.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pipeweaver.svg"
   install -d "${pkgdir}/usr/share/icons/hicolor/48x48/apps"
-  install -m644 resources/pipeweaver-icon.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/pipeweaver-icon.png"
+  install -m644 app/resources/pipeweaver-icon.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/pipeweaver-icon.png"
   install -d "${pkgdir}/usr/share/pixmaps"
-  install -m644 resources/pipeweaver-icon.png "${pkgdir}/usr/share/pixmaps/pipeweaver-icon.png"
+  install -m644 app/resources/pipeweaver-icon.png "${pkgdir}/usr/share/pixmaps/pipeweaver-icon.png"
   install -d "${pkgdir}/usr/share/applications"
-  install -m644 resources/pipeweaver-app.desktop "${pkgdir}/usr/share/applications/pipeweaver-app.desktop"
+  install -m644 app/resources/pipeweaver-app.desktop "${pkgdir}/usr/share/applications/pipeweaver-app.desktop"
 }
-
 
