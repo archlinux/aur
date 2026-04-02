@@ -1,6 +1,7 @@
 # Maintainer: Youcef <your.email@example.com>
 pkgname=hermes-agent
-pkgver=2026.3.30
+pkgver=0.6.0
+_tagver=2026.3.30
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
@@ -44,18 +45,12 @@ optdepends=(
   #'python-acp: ACP editor integration support'
   'python-slack-sdk: Slack messaging'
 )
-source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
+sha256sums=('6dab9c2773adec02a432847c42bd7285adaedbf189fdd11d1fb3f7b36e90b7de')
 validpgpkeys=()
 
-
-prepare() {
-  cd "hermes-agent-${pkgver}"
-  git submodule update --init --recursive
-}
-
 build() {
-  cd "hermes-agent-${pkgver}"
+  cd "${pkgname}-${_tagver}"
 
   # Install Node.js dependencies
   [ -f "package.json" ] && npm install
@@ -75,15 +70,14 @@ build() {
 #}
 
 package() {
-  cd "hermes-agent-${pkgver}"
+  cd "${pkgname}-${_tagver}"
 
   # Install Python package
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
 
   # Install optional submodule if present
-  if [ -d "tinker-atropos" ]; then
+if [ -f "tinker-atropos/pyproject.toml" ]; then
       cd tinker-atropos
       python -m build --wheel --no-isolation
       python -m installer --destdir="$pkgdir" dist/*.whl
