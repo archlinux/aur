@@ -1,51 +1,60 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
 
-pkgname='perl-catalyst-plugin-session-store-dbic'
-pkgver='0.14'
-pkgrel='1'
-pkgdesc="Store your sessions via DBIx::Class"
+_author=BOBTFISH
+_dist=Catalyst-Plugin-Session-Store-DBIC
+pkgname=perl-${_dist@L}
+pkgver=0.14
+pkgrel=2
+pkgdesc='Store your sessions via DBIx::Class'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-carp'
+    'perl-catalyst-plugin-session-store-delegate>=0.05'
+    'perl-catalyst-runtime'
+    'perl-class-accessor'
+    'perl-dbix-class>=0.07000'
+    'perl-findbin'
+    'perl-mime-base64'
+    'perl-mro-compat'
+    'perl-scalar-list-utils'
+    'perl-storable'
+    'perl-test-simple'
+    'perl-test-warn>=0.20'
+)
+makedepends=('perl-extutils-makemaker')
 options=('!emptydirs')
-depends=('perl-catalyst-plugin-session-store-delegate>=0.05' 'perl-catalyst-runtime>=0' 'perl-class-accessor>=0' 'perl-dbix-class>=0.07000' 'perl-mro-compat>=0')
-makedepends=()
-checkdepends=('perl-test-warn>=0.20')
-url='http://search.cpan.org/dist/Catalyst-Plugin-Session-Store-DBIC'
-source=('http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Session-Store-DBIC-0.14.tar.gz')
-md5sums=('8075626aa269768481f15eb2059014ff')
-sha512sums=('0cdbb8d8f1cacc931fd37432fab07f18e3d7edaa0d4305b50486df63ab799ffc977bae7144f83947a0ee72eca7ae3d195a64ee60f5293f96d2b46c0baad0b88a')
-_distdir="Catalyst-Plugin-Session-Store-DBIC-0.14"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('db8f4a139e31aed0b40d62a0ff44b1bdc57308d8f5f61f54a4caa4769301e5ac')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
