@@ -1,0 +1,16 @@
+pkgbase = stl-next-git
+	pkgdesc = A high-performance Steam game wrapper replacement for SteamTinkerLaunch
+	pkgver = c62bb62
+	pkgrel = 1
+	url = https://github.com/Distracted-E421/stl-next
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = zig
+	depends = glibc
+	provides = stl-next
+	conflicts = stl-next
+	source = stl-next-git::git+https://github.com/Distracted-E421/stl-next.git#branch=main
+	sha256sums = SKIP
+
+pkgname = stl-next-git
