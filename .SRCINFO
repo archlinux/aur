@@ -1,0 +1,14 @@
+pkgbase = pacmanfinder
+	pkgdesc = Умный помощник для pacman с алгоритмом Левенштейна и поддержкой AUR
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/timur/pacmanfinder
+	arch = x86_64
+	license = GPL
+	depends = pacman
+	depends = yay
+	depends = gcc
+	source = pacmanfinder.c
+	sha256sums = SKIP
+
+pkgname = pacmanfinder
