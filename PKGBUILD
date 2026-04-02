@@ -10,7 +10,7 @@ depends=('gtk3' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss' 'dbus' 'at-spi2
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gtinikita203/linux-unpacked-slav/releases/download/$pkgver/slavweb-electron-$pkgver-linux-unpacked.tar.gz"
         "icon.png")
 sha256sums=('7877b1de8972b86c7cc602c90be0f182da9078c44b6c398df880e017f1cdc36c'
-            'fb24f5b604277a89642122bf4d7931bcd90e4b4e9d0183995d3e9e27fd860382')
+            '13031f4a3948911cb6d7a3ee2e2003a9454a6a281d9d167f22f43071179ee6e2')
 
 package() {
     cd "$srcdir"
