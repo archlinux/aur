@@ -3,7 +3,7 @@
 pkgname="librepods"
 pkgver=0.2.0alpha2
 _pkgver="$(sed -E 's/([a-z]+)/-\1./g' <<< "$pkgver")"
-pkgrel=1
+pkgrel=2
 pkgdesc="AirPods liberated from Apple's ecosystem"
 arch=(
   'x86_64'
@@ -26,6 +26,7 @@ depends=(
 makedepends=(
   'cmake>=2.8.12'
   'git'
+  'qt6-tools'
 )
 _pkgsrc="${url##*/}"
 source=(
