@@ -1,6 +1,6 @@
 pkgbase = python-llama-index-instrumentation
 	pkgdesc = This project provides the instrumentation hooks for observability in LlamaIndex
-	pkgver = 0.4.3
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/run-llama/llama_index/tree/main/llama-index-instrumentation
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-llama-index-instrumentation
 	depends = python
 	depends = python-deprecated
 	depends = python-pydantic
-	source = https://files.pythonhosted.org/packages/source/l/llama_index_instrumentation/llama_index_instrumentation-0.4.3.tar.gz
-	sha256sums = 6a8bd34b0c2fb9485971f952f3e5d63341eb87f8c55c82f2819a37e174494eb9
+	source = https://files.pythonhosted.org/packages/source/l/llama_index_instrumentation/llama_index_instrumentation-0.5.0.tar.gz
+	sha256sums = eeb724648b25d149de882a5ac9e21c5acb1ce780da214bda2b075341af29ad8e
 
 pkgname = python-llama-index-instrumentation
