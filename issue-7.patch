@@ -1,0 +1,509 @@
+From 2f97bbec0317b05ba695a2851bf477c754422022 Mon Sep 17 00:00:00 2001
+From: Behnam M <58621210+ibehnam@users.noreply.github.com>
+Date: Thu, 5 Mar 2026 20:08:30 -0600
+Subject: [PATCH 1/8] feat: use Unicode placeholders for kitty graphics in tmux
+
+When running inside tmux, images displayed via the kitty graphics
+protocol appear as overlays on the entire terminal screen rather than
+being confined to the tmux pane. This is because tmux passthrough
+sends raw graphics escape sequences to the outer terminal, which
+renders images at absolute cursor positions without pane awareness.
+
+Fix this by implementing the kitty graphics protocol Unicode placeholder
+method (U+10EEEE). Image data is still transmitted via tmux passthrough,
+but display uses placeholder characters with diacritical marks encoding
+row/column positions and the image ID encoded in the foreground RGB
+color. tmux treats these as normal text, so images stay inside their
+panes, scroll correctly, and get clipped at pane boundaries.
+
+This approach works with both Ghostty and Kitty, which support Unicode
+placeholders natively. The existing direct display path (outside tmux)
+is unchanged.
+
+Requires `set -g allow-passthrough on` in tmux.conf.
+---
+ src/kitcat/backend.py | 128 +++++++++++++++++++++++++++++++++++++++++-
+ src/kitcat/utils.py   |  15 +++++
+ 2 files changed, 142 insertions(+), 1 deletion(-)
+
+diff --git a/src/kitcat/backend.py b/src/kitcat/backend.py
+index 23a1371..9240d62 100644
+--- a/src/kitcat/backend.py
++++ b/src/kitcat/backend.py
+@@ -8,7 +8,7 @@
+ from matplotlib.backend_bases import FigureManagerBase
+ from matplotlib.backends.backend_agg import FigureCanvasAgg
+ 
+-from .utils import num_required_lines
++from .utils import num_required_cols, num_required_lines
+ 
+ __all__ = ["FigureCanvas", "FigureManager"]
+ 
+@@ -93,6 +93,130 @@ def display_iterm2(img_buf):
+     sys.stdout.write(f"\033]1337;File=inline=1;size={len(pixel_data)}:{data}\a")
+ 
+ 
++# Diacritical marks for encoding row/column indices in Unicode placeholders.
++# Source: kitty/gen/rowcolumn-diacritics.txt (Unicode 6.0.0, combining class 230)
++DIACRITICS = [
++    0x0305, 0x030D, 0x030E, 0x0310, 0x0312, 0x033D, 0x033E, 0x033F,
++    0x0346, 0x034A, 0x034B, 0x034C, 0x0350, 0x0351, 0x0352, 0x0357,
++    0x035B, 0x0363, 0x0364, 0x0365, 0x0366, 0x0367, 0x0368, 0x0369,
++    0x036A, 0x036B, 0x036C, 0x036D, 0x036E, 0x036F, 0x0483, 0x0484,
++    0x0485, 0x0486, 0x0592, 0x0593, 0x0594, 0x0595, 0x0597, 0x0598,
++    0x0599, 0x059C, 0x059D, 0x059E, 0x059F, 0x05A0, 0x05A1, 0x05A8,
++    0x05A9, 0x05AB, 0x05AC, 0x05AF, 0x05C4, 0x0610, 0x0611, 0x0612,
++    0x0613, 0x0614, 0x0615, 0x0616, 0x0617, 0x0657, 0x0658, 0x0659,
++    0x065A, 0x065B, 0x065D, 0x065E, 0x06D6, 0x06D7, 0x06D8, 0x06D9,
++    0x06DA, 0x06DB, 0x06DC, 0x06DF, 0x06E0, 0x06E1, 0x06E2, 0x06E4,
++    0x06E7, 0x06E8, 0x06EB, 0x06EC, 0x0730, 0x0731, 0x0732, 0x0733,
++    0x0734, 0x0735, 0x0736, 0x0737, 0x0738, 0x0739, 0x073A, 0x073B,
++    0x073C, 0x073D, 0x073E, 0x073F, 0x0740, 0x0741, 0x0742, 0x0743,
++    0x0744, 0x0745, 0x0746, 0x0747, 0x0748, 0x0749, 0x074A, 0x07EB,
++    0x07EC, 0x07ED, 0x07EE, 0x07EF, 0x07F0, 0x07F1, 0x07F2, 0x07F3,
++    0x0816, 0x0817, 0x0818, 0x0819, 0x081B, 0x081C, 0x081D, 0x081E,
++    0x081F, 0x0820, 0x0821, 0x0822, 0x0823, 0x0825, 0x0826, 0x0827,
++    0x0829, 0x082A, 0x082B, 0x082C, 0x082D, 0x0951, 0x0953, 0x0954,
++    0x0F82, 0x0F83, 0x0F86, 0x0F87, 0x135D, 0x135E, 0x135F, 0x17DD,
++    0x193A, 0x1A17, 0x1A75, 0x1A76, 0x1A77, 0x1A78, 0x1A79, 0x1A7A,
++    0x1A7B, 0x1A7C, 0x1AB0, 0x1AB1, 0x1AB2, 0x1AB3, 0x1AB4, 0x1AB5,
++    0x1AB6, 0x1AB7, 0x1AB8, 0x1AB9, 0x1ABA, 0x1ABB, 0x1ABC, 0x1ABD,
++    0x1B6B, 0x1B6C, 0x1B6D, 0x1B6E, 0x1B6F, 0x1B70, 0x1B71, 0x1B72,
++    0x1B73, 0x1CD0, 0x1CD1, 0x1CD2, 0x1CDA, 0x1CDB, 0x1CE0, 0x1CF4,
++    0x1CF8, 0x1CF9, 0x1DC0, 0x1DC1, 0x1DC2, 0x1DC3, 0x1DC4, 0x1DC5,
++    0x1DC6, 0x1DC7, 0x1DC8, 0x1DC9, 0x1DCA, 0x1DCB, 0x1DCC, 0x1DCD,
++    0x1DCE, 0x1DCF, 0x1DD1, 0x1DD2, 0x1DD3, 0x1DD4, 0x1DD5, 0x1DD6,
++    0x1DD7, 0x1DD8, 0x1DD9, 0x1DDA, 0x1DDB, 0x1DDC, 0x1DDD, 0x1DDE,
++    0x1DDF, 0x1DE0, 0x1DE1, 0x1DE2, 0x1DE3, 0x1DE4, 0x1DE5, 0x1DE6,
++    0x1DFE, 0x20D0, 0x20D1, 0x20D4, 0x20D5, 0x20D6, 0x20D7, 0x20DB,
++    0x20DC, 0x20E1, 0x20E7, 0x20E9, 0x20F0, 0x2CEF, 0x2CF0, 0x2CF1,
++    0x2DE0, 0x2DE1, 0x2DE2, 0x2DE3, 0x2DE4, 0x2DE5, 0x2DE6, 0x2DE7,
++    0x2DE8, 0x2DE9, 0x2DEA, 0x2DEB, 0x2DEC, 0x2DED, 0x2DEE, 0x2DEF,
++    0x2DF0, 0x2DF1, 0x2DF2, 0x2DF3, 0x2DF4, 0x2DF5, 0x2DF6, 0x2DF7,
++    0x2DF8, 0x2DF9, 0x2DFA, 0x2DFB, 0x2DFC, 0x2DFD, 0x2DFE, 0x2DFF,
++    0xA66F, 0xA674, 0xA675, 0xA676, 0xA677, 0xA678, 0xA679, 0xA67A,
++    0xA67B, 0xA67C, 0xA67D, 0xA69E, 0xA69F, 0xA6F0, 0xA6F1, 0xA8E0,
++    0xA8E1, 0xA8E2, 0xA8E3, 0xA8E4, 0xA8E5, 0xA8E6, 0xA8E7, 0xA8E8,
++    0xA8E9, 0xA8EA, 0xA8EB, 0xA8EC, 0xA8ED, 0xA8EE, 0xA8EF, 0xA8F0,
++    0xA8F1, 0xAAB0, 0xAAB2, 0xAAB3, 0xAAB7, 0xAAB8, 0xAABE, 0xAABF,
++    0xAAC1, 0xFE20, 0xFE21, 0xFE22, 0xFE23, 0xFE24, 0xFE25, 0xFE26,
++    0xFE27, 0xFE28, 0xFE29, 0xFE2A, 0xFE2B, 0xFE2C, 0xFE2D, 0xFE2E,
++    0xFE2F, 0x10A0F, 0x10A38, 0x10AE5, 0x10AE6, 0x10D24, 0x10D25,
++    0x10D26, 0x10D27, 0x10F48, 0x10F49, 0x10F4A, 0x10F4B, 0x10F4C,
++    0x11100, 0x11101, 0x11102, 0x11366, 0x11367, 0x11368, 0x11369,
++    0x1136A, 0x1136B, 0x1136C, 0x11370, 0x11371, 0x11372, 0x11373,
++    0x11374, 0x16AF0, 0x16AF1, 0x16AF2, 0x16AF3, 0x16AF4, 0x1D165,
++    0x1D166, 0x1D167, 0x1D168, 0x1D169, 0x1D16D, 0x1D16E, 0x1D16F,
++    0x1D170, 0x1D171, 0x1D172, 0x1D17B, 0x1D17C, 0x1D17D, 0x1D17E,
++    0x1D17F, 0x1D180, 0x1D181, 0x1D182, 0x1D185, 0x1D186, 0x1D187,
++    0x1D188, 0x1D189, 0x1D18A, 0x1D18B, 0x1D1AA, 0x1D1AB, 0x1D1AC,
++    0x1D1AD, 0x1D242, 0x1D243, 0x1D244, 0x1E000, 0x1E001, 0x1E002,
++    0x1E003, 0x1E004, 0x1E005, 0x1E006, 0x1E008, 0x1E009, 0x1E00A,
++    0x1E00B, 0x1E00C, 0x1E00D, 0x1E00E, 0x1E00F, 0x1E010, 0x1E011,
++    0x1E012, 0x1E013, 0x1E014, 0x1E015, 0x1E016, 0x1E017, 0x1E018,
++    0x1E01B, 0x1E01C, 0x1E01D, 0x1E01E, 0x1E01F, 0x1E020, 0x1E021,
++    0x1E023, 0x1E024, 0x1E026, 0x1E027, 0x1E028, 0x1E029, 0x1E02A,
++    0x1E8D0, 0x1E8D1, 0x1E8D2, 0x1E8D3, 0x1E8D4, 0x1E8D5, 0x1E8D6,
++]
++
++PLACEHOLDER = "\U0010EEEE"
++
++_image_id_counter = 0
++
++
++def _next_image_id():
++    global _image_id_counter
++    _image_id_counter = (_image_id_counter + 1) % 0xFFFFFF
++    if _image_id_counter == 0:
++        _image_id_counter = 1
++    return _image_id_counter
++
++
++def _transmit_image_via_passthrough(data, image_id, rows, cols):
++    """Transmit image data to the terminal via tmux passthrough."""
++    first_chunk, more_data = data[:CHUNK_SIZE_KITTY], data[CHUNK_SIZE_KITTY:]
++
++    sys.stdout.write("\033Ptmux;")
++    m = "1" if more_data else "0"
++    sys.stdout.write(
++        f"\033\033_Gm={m},a=T,U=1,q=2,i={image_id},f=100,c={cols},r={rows}"
++        f";{first_chunk}\033\033\\"
++    )
++    while more_data:
++        chunk, more_data = more_data[:CHUNK_SIZE_KITTY], more_data[CHUNK_SIZE_KITTY:]
++        m = "1" if more_data else "0"
++        sys.stdout.write(f"\033\033_Gm={m},i={image_id};{chunk}\033\033\\")
++    sys.stdout.write("\033\\")
++
++
++def _output_placeholders(image_id, rows, cols):
++    """Output Unicode placeholder characters that tmux treats as normal text."""
++    r = (image_id >> 16) & 0xFF
++    g = (image_id >> 8) & 0xFF
++    b = image_id & 0xFF
++    fg = f"\033[38;2;{r};{g};{b}m"
++
++    for row in range(rows):
++        row_diac = chr(DIACRITICS[row])
++        sys.stdout.write(fg)
++        for col in range(cols):
++            col_diac = chr(DIACRITICS[col])
++            sys.stdout.write(f"{PLACEHOLDER}{row_diac}{col_diac}")
++        sys.stdout.write("\033[39m\n")
++
++
++def display_kitty_unicode_placeholder(img_buf):
++    """Display image using kitty graphics protocol with Unicode placeholders.
++    Works correctly inside tmux - images stay within pane boundaries."""
++    data = b64encode(img_buf.read()).decode("ascii")
++    img_buf.seek(0)
++    rows = num_required_lines(img_buf)
++    cols = num_required_cols(img_buf)
++    image_id = _next_image_id()
++
++    _transmit_image_via_passthrough(data, image_id, rows, cols)
++    _output_placeholders(image_id, rows, cols)
++
++    sys.stdout.flush()
++
++
+ class KitcatFigureManager(FigureManagerBase):
+     def show(self):
+         with BytesIO() as buf:
+@@ -101,6 +225,8 @@ def show(self):
+ 
+             if os.environ.get("TERM_PROGRAM") in ["iTerm.app", "vscode"]:
+                 display_iterm2(img_buf=buf)
++            elif "TMUX" in os.environ:
++                display_kitty_unicode_placeholder(img_buf=buf)
+             else:
+                 display_kitty(img_buf=buf)
+ 
+diff --git a/src/kitcat/utils.py b/src/kitcat/utils.py
+index c919c2b..cf98896 100644
+--- a/src/kitcat/utils.py
++++ b/src/kitcat/utils.py
+@@ -17,9 +17,24 @@ def get_char_cell_height() -> int:
+     return int(screen_height // num_rows)
+ 
+ 
++def get_char_cell_width() -> int:
++    buf = array.array("H", [0, 0, 0, 0])
++    fcntl.ioctl(sys.stdout, termios.TIOCGWINSZ, buf)
++    _, num_cols, screen_width, _ = buf
++    return int(screen_width // num_cols)
++
++
+ def num_required_lines(img_buf):
+     with Image.open(img_buf) as img:
+         _, img_height = img.size
+         img_buf.seek(0)
+ 
+     return math.ceil(img_height / get_char_cell_height())
++
++
++def num_required_cols(img_buf):
++    with Image.open(img_buf) as img:
++        img_width, _ = img.size
++        img_buf.seek(0)
++
++    return math.ceil(img_width / get_char_cell_width())
+
+From 291f348af983c2d561fcc1c1eeb6f681a33c2808 Mon Sep 17 00:00:00 2001
+From: Behnam M <58621210+ibehnam@users.noreply.github.com>
+Date: Thu, 5 Mar 2026 20:21:27 -0600
+Subject: [PATCH 2/8] fix: detect tmux over SSH via TERM variable
+
+When IPython runs on a remote machine over SSH from a tmux pane,
+the TMUX env var is not forwarded. Fall back to checking if TERM
+starts with "tmux" or "screen", which SSH does forward.
+---
+ src/kitcat/backend.py | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/kitcat/backend.py b/src/kitcat/backend.py
+index 9240d62..b932a98 100644
+--- a/src/kitcat/backend.py
++++ b/src/kitcat/backend.py
+@@ -217,6 +217,14 @@ def display_kitty_unicode_placeholder(img_buf):
+     sys.stdout.flush()
+ 
+ 
++def _is_tmux():
++    """Detect if running inside tmux, including over SSH where TMUX isn't set."""
++    if "TMUX" in os.environ:
++        return True
++    term = os.environ.get("TERM", "")
++    return term.startswith("tmux") or term.startswith("screen")
++
++
+ class KitcatFigureManager(FigureManagerBase):
+     def show(self):
+         with BytesIO() as buf:
+@@ -225,7 +233,7 @@ def show(self):
+ 
+             if os.environ.get("TERM_PROGRAM") in ["iTerm.app", "vscode"]:
+                 display_iterm2(img_buf=buf)
+-            elif "TMUX" in os.environ:
++            elif _is_tmux():
+                 display_kitty_unicode_placeholder(img_buf=buf)
+             else:
+                 display_kitty(img_buf=buf)
+
+From 364f63e0a1f890ba4e41aa8a679d25fed83b74ed Mon Sep 17 00:00:00 2001
+From: Behnam M <58621210+ibehnam@users.noreply.github.com>
+Date: Thu, 5 Mar 2026 20:28:15 -0600
+Subject: [PATCH 3/8] feat: add KITCAT_TMUX env var override for tmux detection
+ over SSH
+
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+---
+ src/kitcat/backend.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/kitcat/backend.py b/src/kitcat/backend.py
+index b932a98..9254d45 100644
+--- a/src/kitcat/backend.py
++++ b/src/kitcat/backend.py
+@@ -221,6 +221,8 @@ def _is_tmux():
+     """Detect if running inside tmux, including over SSH where TMUX isn't set."""
+     if "TMUX" in os.environ:
+         return True
++    if os.environ.get("KITCAT_TMUX") == "1":
++        return True
+     term = os.environ.get("TERM", "")
+     return term.startswith("tmux") or term.startswith("screen")
+ 
+
+From 4993da9c86acd2242688f2ddba90b6b82fec2093 Mon Sep 17 00:00:00 2001
+From: Behnam M <58621210+ibehnam@users.noreply.github.com>
+Date: Thu, 5 Mar 2026 20:29:56 -0600
+Subject: [PATCH 4/8] fix: fallback cell size when pixel dimensions unavailable
+ over SSH
+
+TIOCGWINSZ returns 0 for pixel dimensions over SSH, causing
+ZeroDivisionError. Fall back to 16x8 pixel cell size defaults.
+
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+---
+ src/kitcat/utils.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/kitcat/utils.py b/src/kitcat/utils.py
+index cf98896..e400e00 100644
+--- a/src/kitcat/utils.py
++++ b/src/kitcat/utils.py
+@@ -14,6 +14,8 @@ def get_char_cell_height() -> int:
+     fcntl.ioctl(sys.stdout, termios.TIOCGWINSZ, buf)
+     num_rows, _, _, screen_height = buf
+ 
++    if num_rows == 0 or screen_height == 0:
++        return 16  # fallback when pixel dimensions unavailable (e.g. SSH)
+     return int(screen_height // num_rows)
+ 
+ 
+@@ -21,6 +23,8 @@ def get_char_cell_width() -> int:
+     buf = array.array("H", [0, 0, 0, 0])
+     fcntl.ioctl(sys.stdout, termios.TIOCGWINSZ, buf)
+     _, num_cols, screen_width, _ = buf
++    if num_cols == 0 or screen_width == 0:
++        return 8  # fallback when pixel dimensions unavailable (e.g. SSH)
+     return int(screen_width // num_cols)
+ 
+ 
+
+From 6b68bf9396733f29bf43469a311a340831b8ba7f Mon Sep 17 00:00:00 2001
+From: Behnam M <58621210+ibehnam@users.noreply.github.com>
+Date: Thu, 5 Mar 2026 20:35:25 -0600
+Subject: [PATCH 5/8] fix: wrap each kitty chunk in its own tmux passthrough
+
+Large single-passthrough DCS sequences can be silently dropped over SSH.
+Wrapping each chunk separately is the standard pattern for kitty+tmux.
+Also flush between image transmission and placeholder output.
+
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+---
+ src/kitcat/backend.py | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/src/kitcat/backend.py b/src/kitcat/backend.py
+index 9254d45..6353619 100644
+--- a/src/kitcat/backend.py
++++ b/src/kitcat/backend.py
+@@ -169,21 +169,24 @@ def _next_image_id():
+     return _image_id_counter
+ 
+ 
++def _wrap_passthrough(payload):
++    """Wrap a single kitty graphics command in a tmux DCS passthrough."""
++    sys.stdout.write(f"\033Ptmux;{payload}\033\\")
++
++
+ def _transmit_image_via_passthrough(data, image_id, rows, cols):
+     """Transmit image data to the terminal via tmux passthrough."""
+     first_chunk, more_data = data[:CHUNK_SIZE_KITTY], data[CHUNK_SIZE_KITTY:]
+ 
+-    sys.stdout.write("\033Ptmux;")
+     m = "1" if more_data else "0"
+-    sys.stdout.write(
++    _wrap_passthrough(
+         f"\033\033_Gm={m},a=T,U=1,q=2,i={image_id},f=100,c={cols},r={rows}"
+         f";{first_chunk}\033\033\\"
+     )
+     while more_data:
+         chunk, more_data = more_data[:CHUNK_SIZE_KITTY], more_data[CHUNK_SIZE_KITTY:]
+         m = "1" if more_data else "0"
+-        sys.stdout.write(f"\033\033_Gm={m},i={image_id};{chunk}\033\033\\")
+-    sys.stdout.write("\033\\")
++        _wrap_passthrough(f"\033\033_Gm={m},i={image_id};{chunk}\033\033\\")
+ 
+ 
+ def _output_placeholders(image_id, rows, cols):
+@@ -212,8 +215,8 @@ def display_kitty_unicode_placeholder(img_buf):
+     image_id = _next_image_id()
+ 
+     _transmit_image_via_passthrough(data, image_id, rows, cols)
++    sys.stdout.flush()
+     _output_placeholders(image_id, rows, cols)
+-
+     sys.stdout.flush()
+ 
+ 
+
+From fd14fa6cfb83a27104adb8254d19aff7fd99edb0 Mon Sep 17 00:00:00 2001
+From: Behnam M <58621210+ibehnam@users.noreply.github.com>
+Date: Thu, 5 Mar 2026 20:41:10 -0600
+Subject: [PATCH 6/8] fix: suppress kitty responses on all chunks to prevent
+ SSH deadlock
+
+Without q=2 on continuation chunks, kitty sends a response for each,
+filling the pty input buffer and causing a deadlock over SSH.
+
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+---
+ src/kitcat/backend.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/kitcat/backend.py b/src/kitcat/backend.py
+index 6353619..0d6d483 100644
+--- a/src/kitcat/backend.py
++++ b/src/kitcat/backend.py
+@@ -186,7 +186,7 @@ def _transmit_image_via_passthrough(data, image_id, rows, cols):
+     while more_data:
+         chunk, more_data = more_data[:CHUNK_SIZE_KITTY], more_data[CHUNK_SIZE_KITTY:]
+         m = "1" if more_data else "0"
+-        _wrap_passthrough(f"\033\033_Gm={m},i={image_id};{chunk}\033\033\\")
++        _wrap_passthrough(f"\033\033_Gm={m},q=2,i={image_id};{chunk}\033\033\\")
+ 
+ 
+ def _output_placeholders(image_id, rows, cols):
+
+From 8ca20b34b7d66a8d3384e4ebcfa4cb7f483a449e Mon Sep 17 00:00:00 2001
+From: Behnam M <58621210+ibehnam@users.noreply.github.com>
+Date: Thu, 5 Mar 2026 20:48:13 -0600
+Subject: [PATCH 7/8] revert: restore single-passthrough structure, keep q=2 on
+ all chunks
+
+Per-chunk passthrough caused hangs. Revert to single DCS passthrough
+wrapping all kitty graphics chunks, which is the same structure that
+works locally.
+
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+---
+ src/kitcat/backend.py | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/src/kitcat/backend.py b/src/kitcat/backend.py
+index 0d6d483..28964d8 100644
+--- a/src/kitcat/backend.py
++++ b/src/kitcat/backend.py
+@@ -169,24 +169,21 @@ def _next_image_id():
+     return _image_id_counter
+ 
+ 
+-def _wrap_passthrough(payload):
+-    """Wrap a single kitty graphics command in a tmux DCS passthrough."""
+-    sys.stdout.write(f"\033Ptmux;{payload}\033\\")
+-
+-
+ def _transmit_image_via_passthrough(data, image_id, rows, cols):
+     """Transmit image data to the terminal via tmux passthrough."""
+     first_chunk, more_data = data[:CHUNK_SIZE_KITTY], data[CHUNK_SIZE_KITTY:]
+ 
++    sys.stdout.write("\033Ptmux;")
+     m = "1" if more_data else "0"
+-    _wrap_passthrough(
++    sys.stdout.write(
+         f"\033\033_Gm={m},a=T,U=1,q=2,i={image_id},f=100,c={cols},r={rows}"
+         f";{first_chunk}\033\033\\"
+     )
+     while more_data:
+         chunk, more_data = more_data[:CHUNK_SIZE_KITTY], more_data[CHUNK_SIZE_KITTY:]
+         m = "1" if more_data else "0"
+-        _wrap_passthrough(f"\033\033_Gm={m},q=2,i={image_id};{chunk}\033\033\\")
++        sys.stdout.write(f"\033\033_Gm={m},q=2,i={image_id};{chunk}\033\033\\")
++    sys.stdout.write("\033\\")
+ 
+ 
+ def _output_placeholders(image_id, rows, cols):
+
+From ceb64e1e40d236a1fc547d329aab1598f14228c7 Mon Sep 17 00:00:00 2001
+From: Behnam M <58621210+ibehnam@users.noreply.github.com>
+Date: Sat, 7 Mar 2026 00:21:06 -0600
+Subject: [PATCH 8/8] feat: add KITCAT_CELL_HEIGHT/WIDTH env var overrides for
+ SSH sizing
+
+Over SSH, TIOCGWINSZ returns 0 for pixel dimensions, causing the
+fallback cell sizes to overestimate placeholder grid rows/cols.
+Add env var overrides for precise control and improve fallbacks
+from 16/8 to 24/12 to better match modern terminal cell sizes.
+
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+---
+ src/kitcat/utils.py | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/src/kitcat/utils.py b/src/kitcat/utils.py
+index e400e00..03beec7 100644
+--- a/src/kitcat/utils.py
++++ b/src/kitcat/utils.py
+@@ -1,6 +1,7 @@
+ import array
+ import fcntl
+ import math
++import os
+ import sys
+ import termios
+ 
+@@ -10,21 +11,29 @@
+ def get_char_cell_height() -> int:
+     """Source https://sw.kovidgoyal.net/kitty/graphics-protocol/#getting-the-window-size"""
+ 
++    env_val = os.environ.get("KITCAT_CELL_HEIGHT")
++    if env_val:
++        return int(env_val)
++
+     buf = array.array("H", [0, 0, 0, 0])
+     fcntl.ioctl(sys.stdout, termios.TIOCGWINSZ, buf)
+     num_rows, _, _, screen_height = buf
+ 
+     if num_rows == 0 or screen_height == 0:
+-        return 16  # fallback when pixel dimensions unavailable (e.g. SSH)
++        return 24  # fallback when pixel dimensions unavailable (e.g. SSH)
+     return int(screen_height // num_rows)
+ 
+ 
+ def get_char_cell_width() -> int:
++    env_val = os.environ.get("KITCAT_CELL_WIDTH")
++    if env_val:
++        return int(env_val)
++
+     buf = array.array("H", [0, 0, 0, 0])
+     fcntl.ioctl(sys.stdout, termios.TIOCGWINSZ, buf)
+     _, num_cols, screen_width, _ = buf
+     if num_cols == 0 or screen_width == 0:
+-        return 8  # fallback when pixel dimensions unavailable (e.g. SSH)
++        return 12  # fallback when pixel dimensions unavailable (e.g. SSH)
+     return int(screen_width // num_cols)
+ 
+ 
