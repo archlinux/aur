@@ -1,0 +1,15 @@
+pkgbase = pacforge-git
+	pkgdesc = A C++ wizard to create packages for debian, RHEL and etc
+	pkgver = 0.1.1
+	pkgrel = 0
+	url = https://github.com/Vniverse77/byte-knight
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	depends = glibc
+	depends = gcc-libs
+	optdepends = dpkg: for .deb packages
+	source = pacforge-git-0.1.1.tar.gz::https://github.com/Vniverse77/byte-knight/archive/v0.1.1.tar.gz
+	sha256sums = efa3a40c690bfae0b6c41eb098b48a77ee55727a52b9fe85935e056551d409ea
+
+pkgname = pacforge-git
