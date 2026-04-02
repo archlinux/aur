@@ -1,6 +1,6 @@
 pkgbase = tapeback
 	pkgdesc = Local meeting recorder with transcription and speaker diarization for Obsidian
-	pkgver = 0.8.7
+	pkgver = 0.8.8
 	pkgrel = 1
 	url = https://github.com/yastcher/tapeback
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = tapeback
 	depends = ffmpeg
 	depends = pulse-native-provider
 	optdepends = cuda: GPU-accelerated transcription and diarization
-	source = tapeback-0.8.7.tar.gz::https://github.com/yastcher/tapeback/archive/v0.8.7.tar.gz
-	sha256sums = 233758aaf8891fb591224928f7676ce9be3936dc730ec3464f26e707d53bad84
+	source = tapeback-0.8.8.tar.gz::https://github.com/yastcher/tapeback/archive/v0.8.8.tar.gz
+	sha256sums = e8fa62e68f8d543053a2a8236cdb8815b6d3b417b715d87fd0e3d4c2f0922222
 
 pkgname = tapeback
