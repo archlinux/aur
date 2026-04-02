@@ -3,7 +3,7 @@
 
 pkgname=smartdns-webui-git
 pkgver=r54.c0d2411
-pkgrel=2
+pkgrel=3
 pkgdesc="Dashboard UI plugin assets for smartdns"
 arch=('any')
 license=('MIT')
@@ -39,5 +39,5 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/smartdns-webui-git/LICENSE"
 
 	cd out
-	find . -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/smartdns-webui/{}" \;
+	find . -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/smartdns/wwwroot/{}" \;
 }
