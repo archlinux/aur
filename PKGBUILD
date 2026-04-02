@@ -250,7 +250,9 @@ build() {
 
     make -j"$(nproc)"
     make -j"$(nproc)" tools/qt-faststart
-    make -j"$(nproc)" doc/ff{mpeg,play,probe}.1
+
+    # pod2man lives in /usr/bin/core_perl which may not be on PATH
+    PATH="/usr/bin/core_perl:$PATH" make -j"$(nproc)" doc/ff{mpeg,play,probe}.1
 }
 
 package() {
