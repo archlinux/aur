@@ -8,8 +8,8 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=6.6.2
-pkgrel=2
+pkgver=6.7.1
+pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL-3.0-or-later')
@@ -76,10 +76,12 @@ _pkgext="tar.gz"
 source=(
   "$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/v$pkgver/$_pkgsrc.$_pkgext"
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
+  '0001-calls_video_incoming.patch'
 )
 sha256sums=(
-  'e16769d004529ce7e658b3cb80d925615db8c5eebfce03eba9b91eaa9d43dc0a'
+  '2f11fda1af85e250c3ce37676b2755e04d70750c906be624c35fcf15bf9b8bf1'
   'SKIP'
+  'd421c0750b2bb6b3eb5a96d631efe6ed7b201d1c815a83a4159e22b276391fdc'
 )
 
 prepare() {
