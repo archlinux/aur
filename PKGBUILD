@@ -3,14 +3,14 @@
 name=happ-desktop
 pkgname=happ-desktop
 url="https://github.com/Happ-proxy/happ-desktop"
-pkgver=2.5.2
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Happ is a mobile application designed for convenient proxy server management, powered by the robust Xray core."
 arch=('x86_64')
 license=('custom')
 source=("https://github.com/Happ-proxy/happ-desktop/releases/download/${pkgver}/Happ.linux.x64.pkg.tar.zst")
 noextract=("Happ.linux.x64.pkg.tar.zst")
-sha256sums=('308e11b50cebb49fec5451597dd441a83f913885edfdb5675dd624e5e7f9a0dc')
+sha256sums=('677d2d772f1033571b35aa1081e76964806fe4217b2d558fed10cf34a6c922e3')
 
 
 makedepends=(
