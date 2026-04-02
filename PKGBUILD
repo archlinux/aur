@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.4.1'
+_upstreamver='0.4.2'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='kajson'
@@ -18,7 +18,7 @@ depends=('python' 'python-pydantic' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('0de2bc94153ab8cc7b3d72dd26701f7320f2dbbd6d19196b8ff2517ef6432265')
+sha256sums=('a8db97020d0e6c868eb4f2e999baeee477f410d8afc47fc91247745c725c271d')
 
 
 build() {
