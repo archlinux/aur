@@ -1,0 +1,3 @@
+[perl-log-contextual]
+source = "cpan"
+cpan = "Log-Contextual"

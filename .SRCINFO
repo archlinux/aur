@@ -1,0 +1,25 @@
+pkgbase = perl-log-contextual
+	pkgdesc = Simple logging interface with a contextual log
+	pkgver = 0.009001
+	pkgrel = 1
+	url = https://metacpan.org/release/HAARG/Log-Contextual-0.009001
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-needs
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-carp
+	depends = perl-data-dumper-concise
+	depends = perl-moo>=1.003000
+	depends = perl-scalar-list-utils
+	depends = perl>=5.8.1
+	optdepends = perl-cpan-meta
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/H/HA/HAARG/Log-Contextual-0.009001.tar.gz
+	sha256sums = e75687284bfe03b0e46bf9dc5306e65eed680708ec83e4a00fe29608b8fdcc91
+
+pkgname = perl-log-contextual
