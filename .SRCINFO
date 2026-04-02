@@ -1,0 +1,20 @@
+pkgbase = wxuieditor-git
+	pkgdesc = RAD tool used to create and maintain wxWidgets UI elements (C++, Python, Ruby, XRC)
+	pkgver = 1.2.1.r1009.g25d3a248
+	pkgrel = 1
+	url = https://github.com/KeyWorksRW/wxUiEditor
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	depends = wxwidgets-gtk3
+	depends = pugixml
+	depends = rapidjson
+	provides = wxuieditor
+	conflicts = wxuieditor
+	source = wxuieditor::git+https://github.com/KeyWorksRW/wxUiEditor.git
+	sha256sums = SKIP
+
+pkgname = wxuieditor-git
