@@ -1,7 +1,7 @@
 # --- META BİLGİLER ---
 pkgname=repoforge-git                                                               # Paketin adı (küçük harf, boşluk yok)
 pkgver=0.1.1                                                                        # Versiyon (GitHub tag'iyle AYNI olmalı)
-pkgrel=1                                                                            # Paket revizyonu (yeni versiyon = 1'e sıfırla)
+pkgrel=0                                                                            # Paket revizyonu (yeni versiyon = 1'e sıfırla)
 pkgdesc="A C++ wizard to create linux remote repositories for debian, RHEL and AUR" # Paketin ne yaptığı (80 karakter max)
 arch=('x86_64')                                                                     # Mimari (derlenen kod = x86_64, script = any)
 url="https://github.com/Vniverse77/byte-knight"                                     # Proje ana sayfası
