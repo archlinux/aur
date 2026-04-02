@@ -11,8 +11,8 @@ _appexe="${_pkgname}"
 pkgname="${_pkgname}-snapshot"
 _appid=uk.co.powdertoy.tpt
 _appvendor=powdertoy
-pkgver=391
-pkgrel=2
+pkgver=392
+pkgrel=1
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat! - Bleeding edge (snapshot) branch"
 arch=(x86_64 i686)
 provides=("$_pkgname")
@@ -23,7 +23,7 @@ url="https://powdertoy.co.uk/"
 license=('GPL3')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/The-Powder-Toy/The-Powder-Toy/archive/refs/tags/snapshot-${pkgver}.tar.gz")
-sha256sums=('fde4baa1394ecf0cfad69c7dce62d672cbc61c99d9d85a9c050bd85e216a2740')
+sha256sums=('500bf75ffeeea7dc717520ac94934a1f8e026bfcb69513c5691efbcfcc81cec7')
 
 build() {
   cd "The-Powder-Toy-snapshot-${pkgver}"
