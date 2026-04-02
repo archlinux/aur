@@ -1,0 +1,21 @@
+pkgbase = decibell-bin
+	pkgdesc = Decentralized text, voice chat, and streaming app
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/sunkhan/decibell
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = pipewire
+	depends = libpipewire
+	depends = opus
+	depends = ffmpeg
+	depends = dbus
+	provides = decibell
+	conflicts = decibell
+	options = !strip
+	source = decibell-bin-0.2.0.AppImage::https://github.com/sunkhan/decibell/releases/download/v0.2.0/Decibell_0.2.0_amd64.AppImage
+
+pkgname = decibell-bin
