@@ -1,0 +1,26 @@
+pkgbase = special-eureka-bin
+	pkgdesc = A desktop mangareader built in Tauri and Svelte
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/tonymushah/special-eureka
+	install = special-eureka-bin.install
+	arch = x86_64
+	license = GPL-3.0
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	provides = special-eureka-bin=0.2.3
+	conflicts = special-eureka-bin
+	noextract = special-eureka-bin_0.2.3_amd64.deb
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/tonymushah/special-eureka/releases/download/v0.2.3/Special.Eureka_0.2.3_amd64.deb
+	sha256sums_x86_64 = 2df2b201d20cfe8a733922f4d623acb04974e41dc8e1fdea1bc214ecc435c0ac
+
+pkgname = special-eureka-bin
