@@ -2,8 +2,8 @@
 _appname=himirage
 pkgname="photosir-${_appname}-bin"
 _pkgname="cn.photosir.${_appname}"
-_armver=2.0.6.40406
-_x86ver=2.0.4.40407
+_armver=5.0.6.51215
+_x86ver=2.0.4.51110
 case "${CARCH}" in
     aarch64)
         pkgver="${_armver}"
@@ -59,11 +59,11 @@ depends=(
 )
 options=('!strip')
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${_armver}-aarch64.deb::https://cdn.photosir.cn/package/uos/40408/${_pkgname}_${_armver}-arm64.deb")
-source_x86_64=("${pkgname%-bin}-${_x86ver}-x86_64.deb::https://cdn.photosir.cn/package/uos/40408/${_pkgname}_${_x86ver}-amd64.deb")
+source_aarch64=("${pkgname%-bin}-${_armver}-aarch64.deb::https://cdn.photosir.cn/package/uos/51215/${_pkgname}_${_armver}-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${_x86ver}-x86_64.deb::https://cdn.photosir.cn/package/uos/51110/${_pkgname}_${_x86ver}-amd64.deb")
 sha256sums=('7d749594f8e9bea1f10fd4be5e95a09ebdbb23bc19754ab22d3bb626d5deae64')
-sha256sums_aarch64=('73c4f21148d0231fdbadb8444f5373ea696e2e5201897aa915923e6b7ee91a80')
-sha256sums_x86_64=('c22b81b16da893fe67a2b8d366956f61604c3e7bd16b06bad974492a72626eb8')
+sha256sums_aarch64=('8dab56c8692ce94e806f6d33bc940842c9ce21d95067e852d17fbe0477e99250')
+sha256sums_x86_64=('d6a71c552c626c46c3deaf312ab7837faa4a50ee0918a4c394979d7b53b24c87')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
