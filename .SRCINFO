@@ -1,7 +1,7 @@
 pkgbase = python-sphinxcontrib-youtube
 	pkgdesc = Sphinx extension to embed videos from YouTube
-	pkgver = 1.4.1
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://github.com/sphinx-contrib/youtube
 	arch = any
 	license = BSD-3-Clause
@@ -13,7 +13,7 @@ pkgbase = python-sphinxcontrib-youtube
 	makedepends = python-wheel
 	depends = python-sphinx
 	depends = python-requests
-	source = youtube-1.4.1.tar.gz::https://github.com/sphinx-contrib/youtube/archive/v1.4.1.tar.gz
-	sha512sums = df449e23ca3df02d8a3d9ee4355155e9b0b93069b5c980c99683aff3f0e9104d10d38faf2e1a5181cceed28613c495423f33c477fe24cc00389fa1f7ea443f9a
+	source = youtube-1.5.0.tar.gz::https://github.com/sphinx-contrib/youtube/archive/v1.5.0.tar.gz
+	sha512sums = d7aa53429261e2e8d76a1f1d22badb11431f5c568b9d224a729a155eb84498e20f77dda91d34438dc1563286495e20afd7680da8f0822091b031d0d076a15380
 
 pkgname = python-sphinxcontrib-youtube
