@@ -1,3 +1,4 @@
+# Maintainer: Vniverse77 <vniverse77@gmail.com>
 pkgname=pacforge-git
 pkgver=0.1.1
 pkgrel=0
