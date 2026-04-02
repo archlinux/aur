@@ -1,7 +1,7 @@
 # Maintainer: Psychotoxic <psychotoxic@gmx.de>
 pkgname=psysonic
-pkgver=1.27.4
-pkgrel=2
+pkgver=1.28.0
+pkgrel=1
 pkgdesc="Desktop music player for Subsonic API-compatible servers (Navidrome, Gonic, etc.)"
 arch=('x86_64')
 url="https://github.com/Psychotoxical/psysonic"
