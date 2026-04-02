@@ -23,9 +23,10 @@ allowed_origin = "http://localhost:5173"
 EOF
     fi
     
-    # Создаём symlink bin/web-client для работы сервера из любой директории
-    mkdir -p "$BIN_DIR/bin"
-    ln -sf "$BIN_DIR/bin/web-client" "$BIN_DIR/bin/web-client" 2>/dev/null || true
+    # Создаём symlink /bin/web-client -> /usr/bin/bin/web-client
+    # чтобы сервер мог найти статику из любой директории
+    mkdir -p /bin
+    ln -sf /usr/bin/bin/web-client /bin/web-client 2>/dev/null || true
     
     echo "==> mikumikubeam installed."
     echo "==> Data directory: $DATA_DIR"
@@ -41,5 +42,5 @@ post_upgrade() {
 
 post_remove() {
     # Не удаляем данные при удалении пакета
-    rm -rf "$BIN_DIR/bin/web-client" 2>/dev/null || true
+    rm -f /bin/web-client 2>/dev/null || true
 }
