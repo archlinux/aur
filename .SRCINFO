@@ -1,0 +1,15 @@
+pkgbase = fast_obj
+	pkgdesc = Single-header C/C++ library for loading Wavefront .obj files
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/thisistherk/fast_obj
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.22
+	depends = glibc
+	source = https://github.com/thisistherk/fast_obj/archive/refs/tags/v1.3/fast_obj-1.3.tar.gz
+	source = fast_obj-61d43ee6f0cc440dc97983d36e0c85e80fe429d4-CMakeLists.txt::https://github.com/microsoft/vcpkg/raw/61d43ee6f0cc440dc97983d36e0c85e80fe429d4/ports/fast-obj/CMakeLists.txt
+	sha256sums = f0f175edbe60db2099b3d8266ff0085b21862a17d9a1dc00fd195258c5b622b1
+	sha256sums = b6373fdaa5ab0c8bba25d6377e6152282e5cda84feaff51c5ee046a0522390ae
+
+pkgname = fast_obj

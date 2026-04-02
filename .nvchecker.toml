@@ -1,0 +1,6 @@
+[fast_obj]
+source = "git"
+git = "https://github.com/thisistherk/fast_obj.git"
+prefix = "v"
+from_pattern = '^(.*)$'
+to_pattern = '\1updatevcpkgcommit'
