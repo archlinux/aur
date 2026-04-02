@@ -4,13 +4,13 @@
 _pkgname=valhalla
 pkgname=$_pkgname
 pkgver=3.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Routing engine for OpenStreetMap."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/valhalla/valhalla"
 license=('custom:MIT')
-depends=('prime_server' 'boost-libs' 'protobuf' 'python' 'libspatialite' 'luajit' 'chrono-date' 'gdal')
-makedepends=('cmake' 'git' 'vim' 'jq' 'boost')
+depends=('prime_server' 'boost-libs' 'protobuf' 'abseil-cpp' 'python' 'python-numpy' 'libspatialite' 'luajit' 'chrono-date' 'gdal')
+makedepends=('cmake' 'git' 'vim' 'jq' 'boost' 'cxxopts' 'libosmium' 'protozero' 'rapidjson')
 source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver"
         "fix-cxxopts-cstdint.patch"
         "fix-adminbuilder-empty-inner-rings.patch")
