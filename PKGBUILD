@@ -57,4 +57,9 @@ package() {
     install -Dm755 bin/mmb-server "$pkgdir/usr/bin/mmb-server"
     install -Dm755 bin/mmb-cli "$pkgdir/usr/bin/mmb-cli"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    
+    # Копирование web-client для работы веб-интерфейса
+    # Сервер ищет статику в bin/web-client относительно своего расположения
+    mkdir -p "$pkgdir/usr/bin/bin/web-client"
+    cp -r "$srcdir/bin/web-client"/* "$pkgdir/usr/bin/bin/web-client/"
 }
