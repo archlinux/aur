@@ -3,6 +3,7 @@ pkgbase = mikumikubeam-git
 	pkgver = r42.224d905
 	pkgrel = 1
 	url = https://github.com/sammwyy/MikuMikuBeam
+	install = mikumikubeam-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = go

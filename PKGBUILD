@@ -13,6 +13,7 @@ makedepends=('go' 'git' 'nodejs' 'npm')
 provides=('mikumikubeam')
 conflicts=('mikumikubeam')
 options=('!debug' '!strip')
+install=mikumikubeam-git.install
 
 _commit=224d905571342e1a2f223061f347766c5a52170c
 source=("$pkgname::git+https://github.com/sammwyy/MikuMikuBeam.git#commit=$_commit")
@@ -57,9 +58,21 @@ package() {
     install -Dm755 bin/mmb-server "$pkgdir/usr/bin/mmb-server"
     install -Dm755 bin/mmb-cli "$pkgdir/usr/bin/mmb-cli"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    
+
     # Копирование web-client для работы веб-интерфейса
     # Сервер ищет статику в bin/web-client относительно своего расположения
     mkdir -p "$pkgdir/usr/bin/bin/web-client"
     cp -r "$srcdir/bin/web-client"/* "$pkgdir/usr/bin/bin/web-client/"
+    
+    # Создаём директорию для данных и конфига (будут заполнены при установке)
+    install -dm755 "$pkgdir/var/lib/mikumikubeam"
+    install -dm755 "$pkgdir/etc/mikumikubeam"
+    
+    # Пример конфига
+    cat > "$pkgdir/etc/mikumikubeam/config.toml.example" << 'EOF'
+proxies_file = "/var/lib/mikumikubeam/proxies.txt"
+user_agents_file = "/var/lib/mikumikubeam/uas.txt"
+server_port = 3000
+allowed_origin = "http://localhost:5173"
+EOF
 }

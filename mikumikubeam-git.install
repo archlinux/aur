@@ -1,0 +1,45 @@
+#!/bin/bash
+
+BIN_DIR="/usr/bin"
+DATA_DIR="/var/lib/mikumikubeam"
+CONFIG_DIR="/etc/mikumikubeam"
+
+post_install() {
+    # Создаём директорию для данных
+    mkdir -p "$DATA_DIR"
+    mkdir -p "$CONFIG_DIR"
+    
+    # Создаём пустые файлы данных если не существуют
+    touch "$DATA_DIR/proxies.txt" 2>/dev/null || true
+    touch "$DATA_DIR/uas.txt" 2>/dev/null || true
+    
+    # Создаём пример конфига если не существует
+    if [ ! -f "$CONFIG_DIR/config.toml" ]; then
+        cat > "$CONFIG_DIR/config.toml" << 'EOF'
+proxies_file = "/var/lib/mikumikubeam/proxies.txt"
+user_agents_file = "/var/lib/mikumikubeam/uas.txt"
+server_port = 3000
+allowed_origin = "http://localhost:5173"
+EOF
+    fi
+    
+    # Создаём symlink bin/web-client для работы сервера из любой директории
+    mkdir -p "$BIN_DIR/bin"
+    ln -sf "$BIN_DIR/bin/web-client" "$BIN_DIR/bin/web-client" 2>/dev/null || true
+    
+    echo "==> mikumikubeam installed."
+    echo "==> Data directory: $DATA_DIR"
+    echo "==> Config directory: $CONFIG_DIR"
+    echo "==> Edit config: $CONFIG_DIR/config.toml"
+    echo "==> Add proxies: echo 'http://proxy:8080' >> $DATA_DIR/proxies.txt"
+    echo "==> Start server: mmb-server"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # Не удаляем данные при удалении пакета
+    rm -rf "$BIN_DIR/bin/web-client" 2>/dev/null || true
+}
