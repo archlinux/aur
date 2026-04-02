@@ -25,28 +25,28 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
-    export GOPATH="$srcdir/gopath"
-    export GOFLAGS="-mod=mod"
+    # Очистка кэша Go modules от предыдущей сборки
+    rm -rf "$srcdir/gopath/pkg/mod"
 }
 
 build() {
     cd "$pkgname"
-    
+
     # Сборка web-client
     cd web-client
     npm install --no-audit --no-fund
     npm run build
-    
+
     # Подготовка bin директории
     mkdir -p "$srcdir/bin"
     mv dist "$srcdir/bin/web-client"
     cd ..
-    
+
     # Go сборка
-    export GOPATH="$srcdir/gopath"
+    export GOMODCACHE="$srcdir/gopath/pkg/mod"
     export GOFLAGS="-mod=mod"
     go mod tidy
-    
+
     export CGO_ENABLED=0
     go build -v -trimpath -ldflags="-s -w" -o bin/mmb-server ./cmd/mmb-server
     go build -v -trimpath -ldflags="-s -w" -o bin/mmb-cli ./cmd/mmb-cli
