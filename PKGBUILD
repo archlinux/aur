@@ -7,13 +7,14 @@
 # Contributor: qubidt <qubidt at gmail dot com>
 
 pkgname=units
-pkgver=2.26
+pkgver=2.27
 pkgrel=1
 pkgdesc="converts between different units"
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 url="https://www.gnu.org/software/units/units.html"
 depends=('readline')
-optdepends=('less: pager for built-in documentation' # NOTE: set the PAGER env var to use own pager
+# NOTE: set the PAGER env var to use own pager
+optdepends=('less: default pager for built-in documentation'
             'python-requests: for live currency rates')
 makedepends=('python-requests')
 license=("GPL-3.0-or-later")
@@ -25,11 +26,11 @@ source=(https://ftp.gnu.org/gnu/units/$pkgname-$pkgver.tar.gz{,.sig}
         'units_currency.timer'
         'units_currency.service'
         '0000-pager.patch')
-sha256sums=('4c43f7a49fe2212ee433d3c0755a0a1935db35497c4a56bf9f68c5f718873c54'
+sha256sums=('e1bbdb09672e7c08eee986749e7a1629eb84a6bdf41f5a2a79d6804444abbe10'
             'SKIP'
             'c1cb48a6157c850a0b7ecbf4387b82820d6e42f4a2c7ff0eb9de293bad6b128f'
             '52e8cd68110e797e3ee3737f06200505225039b18f3f9b87ae38b6c539c9ccb2'
-            '35b8b8587e1303dca1070df460b167c074178b68a865cfdc2ea8ed158ef4e4e4')
+            'fb31ebf4735fdd443df72733b6f1cc08da8e4dbee422636d0d3486db6cff6eb1')
 
 prepare() {
   cd "$pkgname-$pkgver"
