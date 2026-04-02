@@ -1,7 +1,7 @@
 # Maintainer: sunkhan
 pkgname=decibell
 pkgver=0.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Decentralized text, voice chat, and streaming app"
 arch=('x86_64')
 url="https://github.com/sunkhan/decibell"
@@ -34,17 +34,24 @@ prepare() {
 }
 
 package() {
-    # Install extracted app to /opt
+    # Install extracted app to /opt preserving original layout
     install -d "${pkgdir}/opt/decibell"
-    cp -a "${srcdir}/squashfs-root/usr/bin" "${pkgdir}/opt/decibell/"
-    cp -a "${srcdir}/squashfs-root/usr/lib" "${pkgdir}/opt/decibell/"
+    cp -a "${srcdir}/squashfs-root/usr" "${pkgdir}/opt/decibell/"
+    cp -a "${srcdir}/squashfs-root/AppRun" "${pkgdir}/opt/decibell/" 2>/dev/null || true
+    cp -a "${srcdir}/squashfs-root/AppRun.wrapped" "${pkgdir}/opt/decibell/" 2>/dev/null || true
+    cp -a "${srcdir}/squashfs-root/apprun-hooks" "${pkgdir}/opt/decibell/" 2>/dev/null || true
 
     # Launcher script
     install -d "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/decibell" << 'LAUNCHER'
 #!/bin/sh
-export LD_LIBRARY_PATH="/opt/decibell/lib:${LD_LIBRARY_PATH}"
-exec /opt/decibell/bin/decibell "$@"
+export APPDIR="/opt/decibell"
+export LD_LIBRARY_PATH="/opt/decibell/usr/lib:/opt/decibell/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}"
+export GDK_PIXBUF_MODULE_FILE="/opt/decibell/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache"
+export GSETTINGS_SCHEMA_DIR="/opt/decibell/usr/share/glib-2.0/schemas:${GSETTINGS_SCHEMA_DIR}"
+export GDK_BACKEND=x11
+cd /opt/decibell
+exec /opt/decibell/usr/bin/decibell "$@"
 LAUNCHER
     chmod 755 "${pkgdir}/usr/bin/decibell"
 
