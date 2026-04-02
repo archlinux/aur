@@ -28,10 +28,11 @@ build() {
   export npm_config_cache="$srcdir/npm-cache"
 
   # ring (used by tauri-plugin-updater → rustls) ships C/asm objects whose
-  # symbols (ring_core_*) lld cannot resolve.  Arch's makepkg.conf bakes
-  # -fuse-ld=lld into RUSTFLAGS which overrides .cargo/config.toml.
-  # Swap lld → bfd (binutils, part of base-devel) so the link succeeds.
-  export RUSTFLAGS="${RUSTFLAGS//-fuse-ld=lld/-fuse-ld=bfd}"
+  # symbols (ring_core_*) lld cannot resolve.  On Arch/CachyOS, -fuse-ld=lld
+  # is hardcoded into rustc itself (not just makepkg.conf RUSTFLAGS), so a
+  # string substitution is a no-op.  Appending -C link-arg=-fuse-ld=bfd works
+  # because the last -fuse-ld=* flag passed to cc wins.
+  export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=bfd"
 
   npm install
   npm run tauri:build -- --no-bundle
