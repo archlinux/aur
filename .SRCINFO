@@ -1,0 +1,12 @@
+pkgbase = ninja-makeflags
+	pkgdesc = Ninja wrapper honoring MAKEFLAGS
+	pkgver = 1
+	pkgrel = 1
+	url = https://ninja-build.org/
+	arch = any
+	license = BSD-3-CLause
+	depends = ninja
+	source = ninja-makeflags.sh
+	sha256sums = SKIP
+
+pkgname = ninja-makeflags
