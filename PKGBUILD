@@ -2,12 +2,18 @@
 
 _name="openapi-pydantic"
 pkgname="python-${_name}"
-pkgver=0.5.1
+_commit_rel="82fd769f2820f6ff2acf650f551a97a7b8fbe189" # 0.5.1
+_commit="0766d599bbe9bccda12b6ede069647c7bef2299f" # r37
+pkgver="0.5.1+r37+g${_commit::7}"
 pkgrel=1
 pkgdesc="Modern, type-safe OpenAPI schemas in Python using Pydantic 1.8+ and 2.x"
-arch=('any')
+arch=(
+  'any'
+)
 url="https://github.com/mike-oakley/${_name}"
-license=('MIT')
+license=(
+  'MIT'
+)
 depends=(
   'python>=3.9'
   'python-pydantic>=1.8'
@@ -22,9 +28,11 @@ checkdepends=(
   'python-pytest>=8.3.5'
   'python-openapi-spec-validator'
 )
-_pkgsrc="${url##*/}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9a74bb7759592d2e5d9999b6e20fd67487dc135391f75fb1d78e5501b674cad7')
+_pkgsrc="${url##*/}-${_commit}"
+source=(
+  "${url}/archive/${_commit}/${_pkgsrc}.tar.gz"
+)
+sha256sums=('8b4091f4a2f1613a05aa88a66ad72e0b1c3da7781be1a207d0d7edff4483ffcf')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
@@ -37,7 +45,7 @@ check() {
 }
 
 package() {
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  local site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
 
   cd "${srcdir}/${_pkgsrc}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
@@ -45,6 +53,6 @@ package() {
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -vsf "${site_packages}/${_name//-/_}-${pkgver}.dist-info/LICENSE" \
+  ln -vsf "${site_packages}/${_name//-/_}-${pkgver%%.r*}.dist-info/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

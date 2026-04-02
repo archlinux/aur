@@ -1,6 +1,6 @@
 pkgbase = python-openapi-pydantic
 	pkgdesc = Modern, type-safe OpenAPI schemas in Python using Pydantic 1.8+ and 2.x
-	pkgver = 0.5.1
+	pkgver = 0.5.1+r37+g0766d59
 	pkgrel = 1
 	url = https://github.com/mike-oakley/openapi-pydantic
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-openapi-pydantic
 	depends = python>=3.9
 	depends = python-pydantic>=1.8
 	depends = python-pydantic-core
-	source = openapi-pydantic-0.5.1.tar.gz::https://github.com/mike-oakley/openapi-pydantic/archive/refs/tags/v0.5.1.tar.gz
-	sha256sums = 9a74bb7759592d2e5d9999b6e20fd67487dc135391f75fb1d78e5501b674cad7
+	source = https://github.com/mike-oakley/openapi-pydantic/archive/0766d599bbe9bccda12b6ede069647c7bef2299f/openapi-pydantic-0766d599bbe9bccda12b6ede069647c7bef2299f.tar.gz
+	sha256sums = 8b4091f4a2f1613a05aa88a66ad72e0b1c3da7781be1a207d0d7edff4483ffcf
 
 pkgname = python-openapi-pydantic
