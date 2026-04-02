@@ -1,6 +1,6 @@
 pkgbase = pigment
 	pkgdesc = Extract color palettes from your images
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/Jeffser/Pigment
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = pigment
 	depends = python-gobject
 	depends = python-pillow
 	depends = python-pydbus
-	source = Pigment-0.5.5.tar.gz::https://github.com/Jeffser/Pigment/archive/refs/tags/0.5.5.tar.gz
-	sha256sums = 4b709dddf892a7eb0565e0d9b25c76baa753e2d4cdba2a01cf24bbedb5eb59d7
+	source = Pigment-0.5.6.tar.gz::https://github.com/Jeffser/Pigment/archive/refs/tags/0.5.6.tar.gz
+	sha256sums = 7019e585692c8f8095771523e02c6a03efda942740cc05d79170512c50e3f369
 
 pkgname = pigment
