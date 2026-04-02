@@ -1,6 +1,6 @@
 pkgbase = kilo-bin
 	pkgdesc = The AI coding agent built for the terminal.
-	pkgver = 7.1.19
+	pkgver = 7.1.20
 	pkgrel = 1
 	url = https://github.com/Kilo-Org/kilocode
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = kilo-bin
 	conflicts = kilo
 	options = !debug
 	options = !strip
-	source_aarch64 = kilo-bin_7.1.19_aarch64.tar.gz::https://github.com/Kilo-Org/kilocode/releases/download/v7.1.19/kilo-linux-arm64.tar.gz
-	sha256sums_aarch64 = 1e87bd8036ede6d04089a01577cdd8f4e52ecbdec94ca35fedc6c94267defd14
-	source_x86_64 = kilo-bin_7.1.19_x86_64.tar.gz::https://github.com/Kilo-Org/kilocode/releases/download/v7.1.19/kilo-linux-x64.tar.gz
-	sha256sums_x86_64 = 18ae6a26b1f4aa14f5ce9c51fbfccc1534139114ddfdc983723ee9df012c96dc
+	source_aarch64 = kilo-bin_7.1.20_aarch64.tar.gz::https://github.com/Kilo-Org/kilocode/releases/download/v7.1.20/kilo-linux-arm64.tar.gz
+	sha256sums_aarch64 = 85be1d13e9ac4b3f7b03e798e3eee7c913b29ee8c3b7ca55ad300e146a333e78
+	source_x86_64 = kilo-bin_7.1.20_x86_64.tar.gz::https://github.com/Kilo-Org/kilocode/releases/download/v7.1.20/kilo-linux-x64.tar.gz
+	sha256sums_x86_64 = 66cbc590ce3b5f63518699c2c6dfda670fdc8c7537790f9f8400798b19360ec6
 
 pkgname = kilo-bin
