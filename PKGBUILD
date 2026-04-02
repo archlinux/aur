@@ -19,8 +19,8 @@ sha256sums_x86_64=('2d577640009cc881fca2a6b89dfe825332cc7925fc672f82fe86a2f5d314
 
 latestver() {
     gh api --paginate repos/Ataraxy-Labs/sem/releases \
-        --jq '[.[] | select(any(.assets[]; .name == "sem-linux-x86_64.tar.gz"))][0].tag_name' \
-    | sed 's/^v//'
+        --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "sem-linux-x86_64.tar.gz")) | .tag_name' \
+    | head -1 | sed 's/^v//'
 }
 
 package() {
