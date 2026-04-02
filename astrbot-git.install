@@ -32,55 +32,57 @@ _ensure_environment() {
 }
 
 # ─── App clone ────────────────────────────────────────────────────────────────
-# Clone or update /opt/astrbot from the git mirror.
-# The mirror lives in /var/cache/astrbot/astrbot-git to save bandwidth.
+# Download /opt/astrbot from GitHub tarball and write version file.
 _clone_app() {
-    local mirror="/var/cache/astrbot/astrbot-git"
-    local _stale=0
+    local tarball="/tmp/astrbot-install-$$.tar.gz"
+    local extract_dir="/tmp/astrbot-install-$$"
+    local url="https://github.com/AstrBotDevs/AstrBot/archive/refs/heads/${_ASTRBOT_BRANCH}.tar.gz"
 
-    # Skip clone if overlayfs is mounted on /opt/astrbot (astrbotctl update is running)
+    # Skip if overlayfs is mounted (astrbotctl update is running)
     if mount | grep -q ' /opt/astrbot '; then
-        echo ">>> Overlay mount detected on /opt/astrbot — skipping clone in pacman hook."
-        echo ">>> (astrbotctl update will handle the sync)"
+        echo ">>> Overlay mount detected — skipping clone in pacman hook."
         return 0
     fi
 
-    # Remove stale /opt/astrbot so pacman never sees it as a tracked file conflict.
-    # But only after confirming the new clone will succeed — don't leave /opt broken.
-    if [ -d "/opt/astrbot" ]; then
-        _stale=1
-    fi
-
-    # Ensure the mirror directory exists and mark it as safe for git.
-    install -dm755 -o root -g root "$(dirname "$mirror")"
-    git config --global --add safe.directory "$mirror" 2>/dev/null || true
-
-    if [ -d "$mirror" ]; then
-        echo ">>> Updating AstrBot from local mirror..."
-        git -C "$mirror" fetch --prune origin || {
-            echo "❌ Error: Failed to update mirror at $mirror" >&2
-            exit 1
-        }
-    else
-        echo ">>> Cloning AstrBot (this may take a moment)..."
-        git clone --bare --mirror "$_ASTRBOT_UPSTREAM" "$mirror" || {
-            echo "❌ Error: Failed to create mirror at $mirror" >&2
-            exit 1
-        }
-    fi
-
-    echo ">>> Checking out AstrBot (dev branch)..."
-    if [ "$_stale" -eq 1 ]; then
-        rm -rf /opt/astrbot
-    fi
-    git clone -b "$_ASTRBOT_BRANCH" --depth=500 "$_ASTRBOT_UPSTREAM" /opt/astrbot || {
-        # Critical failure: /opt/astrbot is gone. Restore or die loudly.
-        echo "❌ CRITICAL: Failed to clone AstrBot to /opt/astrbot!" >&2
-        echo "   Your bot cannot start without /opt/astrbot." >&2
-        echo "   Run 'sudo pacman -Syu' to retry installation." >&2
+    echo ">>> Downloading AstrBot from GitHub..."
+    mkdir -p "$extract_dir"
+    if ! curl -L --fail --silent --show-error -o "$tarball" "$url" 2>&1; then
+        echo "❌ Error: Failed to download AstrBot." >&2
+        rm -f "$tarball"; rm -rf "$extract_dir"
         exit 1
-    }
-    echo ">>> /opt/astrbot ready ($(git -C /opt/astrbot describe --tags 2>/dev/null || git -C /opt/astrbot rev-parse --short HEAD))"
+    fi
+
+    echo ">>> Extracting..."
+    if ! tar -xzf "$tarball" -C "$extract_dir" 2>&1; then
+        echo "❌ Error: Failed to extract tarball." >&2
+        rm -f "$tarball"; rm -rf "$extract_dir"
+        exit 1
+    fi
+
+    local extracted
+    extracted=$(find "$extract_dir" -mindepth 1 -maxdepth 1 -type d | head -1)
+    if [ -z "$extracted" ]; then
+        echo "❌ Error: Extraction produced no directory." >&2
+        rm -f "$tarball"; rm -rf "$extract_dir"
+        exit 1
+    fi
+
+    rm -rf /opt/astrbot
+    mv "$extracted" /opt/astrbot
+    rm -f "$tarball"; rm -rf "$extract_dir"
+
+    # Init git repo for version tracking
+    git -C /opt/astrbot init --quiet
+    git -C /opt/astrbot remote add origin "$_ASTRBOT_UPSTREAM"
+    git -C /opt/astrbot fetch --depth=1 origin "$_ASTRBOT_BRANCH" --quiet 2>/dev/null || true
+    git -C /opt/astrbot checkout "$_ASTRBOT_BRANCH" --quiet 2>/dev/null || true
+
+    # Write version file
+    local _ver
+    _ver=$(git -C /opt/astrbot describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g')
+    [ -z "$_ver" ] && _ver="4.22.2"
+    echo "$_ver" > /opt/astrbot/.version
+    echo ">>> /opt/astrbot ready ($_ver)"
 }
 
 # ─── Hooks ─────────────────────────────────────────────────────────────────────
@@ -99,6 +101,10 @@ post_install() {
     _ensure_root
     _ensure_environment
     systemctl daemon-reload
+    # Write version file for pkgver
+    if [ -f /opt/astrbot/.version ]; then
+        cp /opt/astrbot/.version /var/lib/astrbot/.version 2>/dev/null || true
+    fi
 
     echo "-------------------------------------------------------------------"
     echo "AstrBot 已安装（多实例支持）"
@@ -132,6 +138,10 @@ post_upgrade() {
     _ensure_root
     _ensure_environment
     systemctl daemon-reload
+    # Write version file for pkgver
+    if [ -f /opt/astrbot/.version ]; then
+        cp /opt/astrbot/.version /var/lib/astrbot/.version 2>/dev/null || true
+    fi
 
     echo "-------------------------------------------------------------------"
     echo "AstrBot 已更新"

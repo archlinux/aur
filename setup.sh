@@ -219,7 +219,12 @@ install_files() {
     git -C "${ASTRBOT_APP_DIR}" remote add origin "${ASTRBOT_UPSTREAM}"
     git -C "${ASTRBOT_APP_DIR}" fetch --depth=1 origin "${ASTRBOT_BRANCH}" --quiet
     git -C "${ASTRBOT_APP_DIR}" checkout "${ASTRBOT_BRANCH}" --quiet
-    ok "Installed: ${ASTRBOT_APP_DIR}"
+    # Write version file for AUR pkgver
+    local _ver
+    _ver=$(git -C "${ASTRBOT_APP_DIR}" describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g')
+    [ -z "$_ver" ] && _ver="4.22.2"
+    echo "$_ver" > "${ASTRBOT_APP_DIR}/.version"
+    ok "Installed: ${ASTRBOT_APP_DIR} (${_ver})"
   fi
 
   _log "Installing systemd service..."

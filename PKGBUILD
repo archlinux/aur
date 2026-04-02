@@ -30,11 +30,10 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 install=astrbot-git.install
 
 pkgver() {
-    # Use git ls-remote to get latest dev commit hash (git protocol, no API rate limit)
-    local _hash
-    _hash=$(git ls-remote --heads https://github.com/AstrBotDevs/AstrBot.git dev 2>/dev/null | cut -f1)
-    if [ -n "$_hash" ]; then
-        echo "4.22.2.r0.g${_hash:0:8}"
+    # Version is stored by install script at /var/lib/astrbot/.version
+    # This avoids any network dependency at package build time.
+    if [ -f /var/lib/astrbot/.version ]; then
+        cat /var/lib/astrbot/.version
         return
     fi
     echo "4.22.2"

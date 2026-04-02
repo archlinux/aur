@@ -482,8 +482,14 @@ _ensure_app_dir() {
     # Initialize a git repo so git describe works inside /opt/astrbot
     git -C "$APP_DIR" init --quiet
     git -C "$APP_DIR" remote add origin "$UPSTREAM_URL"
-    git -C "$APP_DIR" fetch --depth=1 origin "$UPSTREAM_BRANCH" --quiet
-    git -C "$APP_DIR" checkout "$UPSTREAM_BRANCH" --quiet
+    git -C "$APP_DIR" fetch --depth=1 origin "$UPSTREAM_BRANCH" --quiet 2>/dev/null || true
+    git -C "$APP_DIR" checkout "$UPSTREAM_BRANCH" --quiet 2>/dev/null || true
+
+    # Write version file
+    local _ver
+    _ver=$(git -C "$APP_DIR" describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g')
+    [ -z "$_ver" ] && _ver="4.22.2"
+    echo "$_ver" > "$APP_DIR/.version"
 
     echo ">>> Self-heal complete."
     return 0
@@ -553,10 +559,16 @@ update_app_git_checkout() {
     echo ">>> Setting up git repo in /opt/astrbot..."
     git -C "$APP_DIR" init --quiet
     git -C "$APP_DIR" remote add origin "$UPSTREAM_URL"
-    git -C "$APP_DIR" fetch --depth=1 origin "$UPSTREAM_BRANCH" --quiet
-    git -C "$APP_DIR" checkout "$UPSTREAM_BRANCH" --quiet
+    git -C "$APP_DIR" fetch --depth=1 origin "$UPSTREAM_BRANCH" --quiet 2>/dev/null || true
+    git -C "$APP_DIR" checkout "$UPSTREAM_BRANCH" --quiet 2>/dev/null || true
 
-    echo ">>> /opt/astrbot updated to ${remote_hash}"
+    # Write version file
+    local _ver
+    _ver=$(git -C "$APP_DIR" describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g')
+    [ -z "$_ver" ] && _ver="${remote_hash:0:8}"
+    echo "$_ver" > "$APP_DIR/.version"
+
+    echo ">>> /opt/astrbot updated to ${_ver}"
 }
 
 # ─── Overlay snapshot / rollback ────────────────────────────────────────────
