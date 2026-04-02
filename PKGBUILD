@@ -3,7 +3,7 @@
 pkgname=astrbot-git
 _pkgname=astrbot
 pkgver=4.22.2.r530.g2126002b
-pkgrel=1
+pkgrel=2
 pkgdesc="Agentic IM Chatbot infrastructure (multi-instance, astrbotctl only)"
 arch=('any')
 url="https://github.com/AstrBotDevs/AstrBot"
@@ -37,12 +37,6 @@ sha256sums=('SKIP'
     'SKIP')
 
 install=astrbot-git.install
-
-pkgver() {
-    # Since we are using a tarball without .git history, we rely on update.sh
-    # to bump the pkgver in this PKGBUILD file directly.
-    echo "$pkgver"
-}
 
 package() {
     install -dm755 "$pkgdir/opt/astrbot"
