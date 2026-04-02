@@ -1,6 +1,6 @@
 # Maintainer: Yves Gugger <yves@pounce.ch>
 pkgname=lean-ctx
-pkgver=2.13.1
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="The Context Engineering Layer for AI Coding — 24 intelligent tools, 90+ shell patterns, persistent AI memory, multi-agent sharing, tree-sitter AST (19 languages). Supports 21 AI tools. Reduces AI costs by 60-99%."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cargo' 'gcc')
 depends=('gcc-libs')
 source=("$pkgname-$pkgver.crate::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('1c15537e192980c1978fd3b3b2d3617e610ea03e3a57096564b6d05ed58db2f6')
+sha256sums=('9c0419b82feea219a73501e240089ecef10198f481914e717e2e3d87d3dee0a6')
 
 prepare() {
   cd "$pkgname-$pkgver"
