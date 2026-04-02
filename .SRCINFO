@@ -1,6 +1,6 @@
 pkgbase = yauri
 	pkgdesc = yauri, the gayest aur helper ever, all fitting into 1 file.
-	pkgver = 1.2.5
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://gitlab.com/PieyIsAPie/yauri
 	arch = any
@@ -11,6 +11,8 @@ pkgbase = yauri
 	depends = git
 	depends = python-colorama
 	depends = sudo
+	depends = fzf
+	depends = pacman
 	source = git+https://gitlab.com/PieyIsAPie/yauri.git
 	sha512sums = SKIP
 
