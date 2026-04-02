@@ -2,10 +2,10 @@
 
 pkgname=creamlinux-installer-bin
 pkgver=1.5.0
-pkgrel=1
-pkgdesc="DLC Fetcher and installer for Steam games on Linux"
+pkgrel=2
+pkgdesc="CreamLinux is a GUI application for Linux that simplifies the management of DLC IDs in Steam games. It provides a user-friendly interface to install and configure CreamAPI (for native Linux games) and SmokeAPI (for Windows games running through Proton)."
 arch=('x86_64')
-url="https://github.com/Novattz/creamlinux-installer"
+url="https://gitlab.com/tickbaze/creamlinux-installer"
 license=('MIT')
 
 # These dependencies are based on namcap analysis of the pre-compiled binary.
@@ -28,12 +28,12 @@ conflicts=("creamlinux")
 # !debug is used because this is a pre-compiled binary; we cannot generate debug symbols.
 options=('!debug')
 
-sha256sums=('4dd2f893d49c79cc9d5aa29acbbe6a3b93ebdb614d0866cebb288127776d546b'
+sha256sums=('7c3f2e9a54f370d56e18cdbdb35812740d896decdf6474934b4dfc656b251e72'
             '3acdaff189f797ae7b160a1e1d32081ba141599afc5a4210eba78ff182003977')
 
 source=(
-    "https://github.com/Novattz/creamlinux-installer/releases/download/v${pkgver}/Creamlinux_${pkgver}_amd64.deb"
-    "https://raw.githubusercontent.com/Novattz/creamlinux-installer/main/LICENSE.md"
+    "https://gitlab.com/api/v4/projects/80873044/packages/generic/creamlinux/${pkgver}/Creamlinux_${pkgver}_amd64.deb"
+    "https://gitlab.com/tickbaze/creamlinux-installer/-/raw/main/LICENSE.md"
 )
 
 package() {
