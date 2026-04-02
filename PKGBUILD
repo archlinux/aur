@@ -1,7 +1,7 @@
 pkgname=verde-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
-pkgdesc='Desktop chat app built in Zig with SDL3, OpenGL, and an embedded CEF browser pane'
+pkgdesc='Desktop GUI for coding agents like Codex and OpenCode'
 arch=('x86_64')
 url='https://github.com/JonathanRiche/verde'
 license=('MIT')
@@ -47,7 +47,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  'daa4a01f4dafb3820450ee2ebd096b591a9e26c4b1ae78b4dbdda75f667ede21'
+  'a36db310a7be65f05e6f8096428c4d91ca756a4d05757357493782ad24ae487f'
   '9952749c80ab34ca65ef1b4e8653dcf5760361aecc44dfd7dc398d991e7d9f3e'
 )
 

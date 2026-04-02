@@ -1,6 +1,6 @@
 pkgbase = verde-bin
-	pkgdesc = Desktop chat app built in Zig with SDL3, OpenGL, and an embedded CEF browser pane
-	pkgver = 0.1.4
+	pkgdesc = Desktop GUI for coding agents like Codex and OpenCode
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/JonathanRiche/verde
 	arch = x86_64
@@ -39,9 +39,9 @@ pkgbase = verde-bin
 	conflicts = verde
 	conflicts = verde-git
 	options = !strip
-	source = verde-bin-0.1.4.tar.gz::https://github.com/JonathanRiche/verde/releases/download/v0.1.4/verde-v0.1.4-linux-x86_64.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v0.1.4/LICENSE
-	sha256sums = daa4a01f4dafb3820450ee2ebd096b591a9e26c4b1ae78b4dbdda75f667ede21
+	source = verde-bin-0.1.5.tar.gz::https://github.com/JonathanRiche/verde/releases/download/v0.1.5/verde-v0.1.5-linux-x86_64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v0.1.5/LICENSE
+	sha256sums = a36db310a7be65f05e6f8096428c4d91ca756a4d05757357493782ad24ae487f
 	sha256sums = 9952749c80ab34ca65ef1b4e8653dcf5760361aecc44dfd7dc398d991e7d9f3e
 
 pkgname = verde-bin
