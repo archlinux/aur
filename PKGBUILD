@@ -1,0 +1,244 @@
+# Maintainer: Jay Man <jhollis.ga@gmail.com>
+
+pkgname=ffmpeg-cuda-full
+pkgver=8.1
+pkgrel=1
+pkgdesc='Latest FFmpeg with CUDA/NVENC and all codecs including nonfree (libfdk-aac) - dynamically tracks upstream releases'
+arch=('x86_64')
+url='https://ffmpeg.org/'
+license=('custom: nonfree and unredistributable')
+depends=(
+    'alsa-lib'
+    'aom'
+    'bzip2'
+    'cairo'
+    'cuda'
+    'dav1d'
+    'ffnvcodec-headers'
+    'fontconfig'
+    'freetype2'
+    'fribidi'
+    'glib2'
+    'glibc'
+    'glslang'
+    'gmp'
+    'gnutls'
+    'gsm'
+    'harfbuzz'
+    'jack'
+    'kvazaar'
+    'lame'
+    'lcms2'
+    'libass'
+    'libavc1394'
+    'libbluray'
+    'libbs2b'
+    'libdrm'
+    'libdvdnav'
+    'libdvdread'
+    'libfdk-aac'
+    'libgl'
+    'libiec61883'
+    'libjxl'
+    'libmodplug'
+    'libmysofa'
+    'libopenmpt'
+    'libplacebo'
+    'libpulse'
+    'libraw1394'
+    'librsvg'
+    'libsoxr'
+    'libssh'
+    'libtheora'
+    'libva'
+    'libvdpau'
+    'libvorbis'
+    'libvpx'
+    'libwebp'
+    'libx11'
+    'libxcb'
+    'libxext'
+    'libxml2'
+    'libxv'
+    'nvidia-utils'
+    'ocl-icd'
+    'onevpl'
+    'opencore-amr'
+    'openjpeg2'
+    'opus'
+    'rav1e'
+    'rubberband'
+    'sdl2'
+    'snappy'
+    'sndio'
+    'speex'
+    'srt'
+    'svt-av1'
+    'v4l-utils'
+    'vapoursynth'
+    'vid.stab'
+    'vmaf'
+    'vulkan-icd-loader'
+    'x264'
+    'x265'
+    'xvidcore'
+    'xz'
+    'zeromq'
+    'zimg'
+    'zlib'
+)
+makedepends=(
+    'amf-headers'
+    'clang'
+    'curl'
+    'git'
+    'ladspa'
+    'mesa'
+    'nasm'
+    'opencl-headers'
+    'perl'
+    'python'
+    'vulkan-headers'
+)
+optdepends=(
+    'avisynthplus: AviSynthPlus support'
+    'frei0r-plugins: Frei0r video effects support'
+    'intel-media-sdk: Intel QuickSync support (legacy)'
+    'ladspa: LADSPA filters'
+    'onevpl-intel-gpu: Intel QuickSync support'
+)
+provides=(
+    "ffmpeg=$pkgver"
+    'libavcodec.so'
+    'libavdevice.so'
+    'libavfilter.so'
+    'libavformat.so'
+    'libavutil.so'
+    'libswresample.so'
+    'libswscale.so'
+)
+conflicts=('ffmpeg')
+source=("ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git")
+sha256sums=('SKIP')
+
+# Dynamically resolve the latest stable release tag from upstream.
+# This runs at build time so the package always tracks the newest FFmpeg.
+pkgver() {
+    cd ffmpeg
+    git fetch --tags --force >/dev/null 2>&1
+    # List all release tags (n<major>.<minor>[.<patch>]), exclude RC/dev,
+    # sort by version, and pick the highest.
+    local _tag
+    _tag=$(git tag -l 'n[0-9]*' |
+           grep -E '^n[0-9]+\.[0-9]+(\.[0-9]+)*$' |
+           sed 's/^n//' |
+           sort -rV |
+           head -n1)
+    if [[ -z "$_tag" ]]; then
+        # Fallback: use git describe
+        git describe --tags --long 2>/dev/null | sed 's/^n//;s/-/.r/;s/-/./g'
+        return
+    fi
+    # Checkout the release so we build it
+    printf '%s' "$_tag"
+}
+
+prepare() {
+    cd ffmpeg
+    # Checkout the exact release tag determined by pkgver()
+    git checkout "n${pkgver}" 2>/dev/null || true
+}
+
+build() {
+    cd ffmpeg
+
+    ./configure \
+        --prefix=/usr \
+        --disable-debug \
+        --disable-static \
+        --disable-stripping \
+        --enable-amf \
+        --enable-avisynth \
+        --enable-cuda-nvcc \
+        --enable-cuda-llvm \
+        --enable-cuvid \
+        --enable-ffnvcodec \
+        --enable-gmp \
+        --enable-gnutls \
+        --enable-gpl \
+        --enable-ladspa \
+        --enable-libaom \
+        --enable-libass \
+        --enable-libbluray \
+        --enable-libbs2b \
+        --enable-libdav1d \
+        --enable-libdrm \
+        --enable-libfdk-aac \
+        --enable-libfontconfig \
+        --enable-libfreetype \
+        --enable-libfribidi \
+        --enable-libglslang \
+        --enable-libgsm \
+        --enable-libharfbuzz \
+        --enable-libiec61883 \
+        --enable-libjack \
+        --enable-libjxl \
+        --enable-libkvazaar \
+        --enable-libmodplug \
+        --enable-libmp3lame \
+        --enable-libmysofa \
+        --enable-libopencore-amrnb \
+        --enable-libopencore-amrwb \
+        --enable-libopenmpt \
+        --enable-libopenjpeg \
+        --enable-libopus \
+        --enable-libplacebo \
+        --enable-libpulse \
+        --enable-librav1e \
+        --enable-librsvg \
+        --enable-librubberband \
+        --enable-libsnappy \
+        --enable-libsoxr \
+        --enable-libspeex \
+        --enable-libsrt \
+        --enable-libssh \
+        --enable-libsvtav1 \
+        --enable-libtheora \
+        --enable-libv4l2 \
+        --enable-libvidstab \
+        --enable-libvmaf \
+        --enable-libvorbis \
+        --enable-libvpx \
+        --enable-libwebp \
+        --enable-libx264 \
+        --enable-libx265 \
+        --enable-libxcb \
+        --enable-libxml2 \
+        --enable-libxvid \
+        --enable-libzimg \
+        --enable-libzmq \
+        --enable-lv2 \
+        --enable-nonfree \
+        --enable-nvdec \
+        --enable-nvenc \
+        --enable-opencl \
+        --enable-opengl \
+        --enable-pthreads \
+        --enable-shared \
+        --enable-vapoursynth \
+        --enable-version3 \
+        --enable-vulkan \
+        --extra-cflags="-I/opt/cuda/include" \
+        --extra-ldflags="-L/opt/cuda/lib64"
+
+    make
+    make tools/qt-faststart
+    make doc/ff{mpeg,play,probe}.1
+}
+
+package() {
+    cd ffmpeg
+    make DESTDIR="${pkgdir}" install
+    install -Dm755 tools/qt-faststart "${pkgdir}/usr/bin/qt-faststart"
+    install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+}
