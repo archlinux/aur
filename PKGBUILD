@@ -3,7 +3,7 @@
 _pkgname="gltfpack"
 pkgname="${_pkgname}-bin"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically optimize glTF files to reduce the download size and improve loading and rendering speed"
 arch=(
   'x86_64'
@@ -14,8 +14,9 @@ license=(
   'MIT'
 )
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
+  'libstdc++'
 )
 provides=(
   "${_pkgname}"
