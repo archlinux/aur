@@ -3,7 +3,7 @@
 # Contributor: wangjiezhe <wangjiezhe AT yandex AT com>
 
 pkgname=librsb
-pkgver=1.3.0.2
+pkgver=1.3.0.3
 pkgrel=1
 pkgdesc="A shared memory parallel sparse matrix library including Sparse BLAS"
 arch=(x86_64)
@@ -15,8 +15,8 @@ optdepends=()
 options=()
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz"
   "https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz.asc")
-md5sums=('c55ae6dd29d03308d96b9beb63590673'
-  'SKIP')
+md5sums=('21ac9bdd325c83ec559074f0ab7f20ee'
+         'SKIP')
 validpgpkeys=('1DBB555AEA359B8AAF0C6B88E0E669C8EF1258B8') # Michele Martone <michele.martone@ipp.mpg.de>
 
 prepare() {
