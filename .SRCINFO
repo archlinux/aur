@@ -1,0 +1,13 @@
+pkgbase = seamonkey-i18n-en-us
+	pkgdesc = English (US) language pack for SeaMonkey
+	pkgver = 2.53.23
+	pkgrel = 1
+	url = http://www.seamonkey-project.org/
+	arch = any
+	license = MPL
+	depends = seamonkey>=2.53.23
+	noextract = seamonkey-2.53.23.en-US.langpack.xpi
+	source = https://archive.seamonkey-project.org/releases/2.53.23/langpack/seamonkey-2.53.23.en-US.langpack.xpi
+	sha512sums = a3950be761f9522126e649fd8a4bf1047b6b75787457ef83a4b18b4c12a0aa69a56921e0ef6d3410cc0ff7c4ab54a83ec94c7cfc170617fa89e470d39c4b98cb
+
+pkgname = seamonkey-i18n-en-us
