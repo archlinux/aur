@@ -1,7 +1,7 @@
 post_install() {
     if command -v claude &>/dev/null; then
         echo "==> Claude Code detected. Install optional dependencies for full support:"
-        echo "    yay -S python-anthropic"
+        echo "    yay -S python-anthropic python-claude-agent-sdk"
         echo ""
         echo "==> To set up Ouroboros integration, run:"
         echo "    ouroboros setup --runtime claude --non-interactive"
