@@ -1,6 +1,6 @@
 # Maintainer: Wallace Martins <wallacemartinss@gmail.com>
 pkgname=hubdev-bin
-pkgver=1.9.24
+pkgver=1.9.25
 pkgrel=1
 pkgdesc="Hybrid Development Environment Manager — manage local dev services with a native GUI"
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('hubdev')
 source=("hubdev-${pkgver}-linux-amd64::https://pub-51b22bf3fd5a4d73a4ed580105cfc09f.r2.dev/v${pkgver}/hubdev-linux-amd64"
         "hubdev.desktop"
         "hubdev.png::https://apt.hubdev.io/assets/hubdev.png")
-sha256sums=('ae4f552f44eca5eeebb3b2dd657663fa29ce019e1737b3a3e5d93d007d384444'
+sha256sums=('bd120fc60d3030e8ca61d7d6aa62be6894cd4aa17ec3b50241f68e9f2c9c2a54'
   'SKIP'
   'SKIP')
 
