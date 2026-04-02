@@ -17,8 +17,8 @@ source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/Ironclad/rivet/rele
 sha256sums_x86_64=('f631a75af5507fdb8c41efc288a8a7331d71cedda44bb086aec4b12f471bba45')
 
 latestver() {
-	curl -fsSL 'https://api.github.com/repos/Ironclad/rivet/releases/latest' | jq -r '.assets[]?.name' |
-	sed -nE '/^rivet_[0-9.]+_amd64\.deb$/{s/^rivet_//; s/_amd64\.deb$//; p;}'
+	gh api --paginate repos/Ironclad/rivet/releases --jq '.[] | select(.prerelease == false and .draft == false) | .assets[]?.name' |
+	sed -nE '/^rivet_[0-9.]+_amd64\.deb$/{s/^rivet_//; s/_amd64\.deb$//; p; q}'
 }
 
 package() {
