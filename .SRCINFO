@@ -1,6 +1,6 @@
 pkgbase = cursor-bin
 	pkgdesc = AI-first coding environment
-	pkgver = 2.6.22
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://www.cursor.com
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = cursor-bin
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	depends = libxkbfile
-	noextract = cursor_2.6.22_amd64.deb
+	noextract = cursor_3.0.4_amd64.deb
 	options = !strip
 	options = !debug
-	source = https://downloads.cursor.com/production/c6285feaba0ad62603f7c22e72f0a170dc8415a5/linux/x64/deb/amd64/deb/cursor_2.6.22_amd64.deb
+	source = https://downloads.cursor.com/production/63715ffc1807793ce209e935e5c3ab9b79fddc85/linux/x64/deb/amd64/deb/cursor_3.0.4_amd64.deb
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh
 	source = rg.sh
-	sha512sums = 9f51acf0c8bfbc674108387c04abf88eba34c30aaf28a5c36bbdd259368d295f82a1b0fce7226812d3eefa2df567a938b362329260dd0d1f9dcaad56328b916e
+	sha512sums = cf0cab04f4059fd5c0f514ee629f3199258a711e646acd4eb5513dbd97e7504be06e463ecd7ce29ae62dd038f16ed69b7f48644d49071d7301483303208f8e41
 	sha512sums = 937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37
 	sha512sums = e79fe7659f59d1ae02fc68816399bfd31587315df6cdb6ccf1d0ca76f7cdc692c2a42b30591c0091147bd97ef14b1c7745dc26bd7cb3ea6bba45698e5044fa2a
 
