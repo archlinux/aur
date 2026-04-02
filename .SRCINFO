@@ -1,0 +1,16 @@
+pkgbase = litrpg-system-git
+	pkgdesc = Terminal-based LITRPG character progression system with TUI and CLI
+	pkgver = r8.f1f28dc
+	pkgrel = 1
+	url = https://github.com/VoidWalker-00/LITRPG_System
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = litrpg-system-git::git+https://github.com/VoidWalker-00/LITRPG_System.git
+	sha256sums = SKIP
+
+pkgname = litrpg-system-git
