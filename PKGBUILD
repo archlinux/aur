@@ -1,6 +1,6 @@
 # Maintainer: The-Best-Codes <bestcodes dot official at gmail dot com>
 pkgname=agent-one-bin
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc="AgentOne is a powerful AI agent that gives you freedom to choose your models and control your data."
 arch=('x86_64')
@@ -22,7 +22,7 @@ conflicts=('agent-one')
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/agent-one-v${pkgver}/AgentOne_${pkgver}_amd64.deb")
-sha256sums_x86_64=('9c57cc0d6bf3aff07409a926f296c82d10f77299392b4a9c02d4671753bec0e3')
+sha256sums_x86_64=('1287a370f946bbb20b237909c752884c041b082ffd535ff59cc306c137662821')
 
 package() {
   tar -xf data.tar.gz -C "${pkgdir}"
