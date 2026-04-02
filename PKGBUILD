@@ -3,17 +3,17 @@
 
 pkgname=astrojs-language-server
 _pkgname=${pkgname#astrojs-}
-pkgver=2.16.3
+pkgver=2.16.6
 pkgrel=1
 pkgdesc="The Astro language server, powered by Volar"
-url="https://github.com/withastro/language-tools/tree/main/packages/language-server#readme"
+url="https://github.com/withastro/astro/blob/main/packages/language-tools/language-server#readme"
 license=("MIT")
 arch=("any")
 depends=("nodejs")
 makedepends=("npm")
 source=("https://registry.npmjs.org/@astrojs/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('339a48bbbb0166cd26bc9d35379725e989d51ed038e7ba4edbe3161a0a4a2ddc')
+sha256sums=('1318f45fad2e1e58beabf28957c502937b8f3ef647c22087b756e278f2c3db87')
 
 prepare() {
   tar xf "${_pkgname}-${pkgver}.tgz"
