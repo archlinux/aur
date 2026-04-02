@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://archive.seamonkey-project.org/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha512sums=('235986bbb7617663aec1e9f8b8317c5783a519dcd58b2d0ef6e6021bd6026ed50488ef241a2e53d0785e8af0effa611805a6554d33531b027d1326b6168fdf23')
+sha512sums=('ae7b9294d6860c937502aa86e45ef40e24ae1845264e891ba7cf8b4d2e2deb97d8b07f791edbebbb5e1ad094564f111e41e62de5977ea1b674aa493cc14f933f')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
