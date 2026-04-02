@@ -2,22 +2,18 @@
 
 pkgname=libdjinterop
 pkgver="0.27.1"
-pkgrel=0
+pkgrel=1
 pkgdesc="C++ library that allows accessing database formats used in DJ software."
 arch=('i686' 'x86_64' 'aarch64')
-url="https://mixxx.org/"
+url="https://github.com/xsco/libdjinterop"
 license=('LGPL-3.0-only')
 groups=('pro-audio')
-depends=(
-  'sqlite'
-)
 makedepends=(
   'sqlite3'
   'zlib'
   'boost'
 )
-provides=('mixxx')
-conflicts=('mixxx')
+provides=('libdjinterop')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xsco/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('4c7393ab70b7c92374557e72c86f650bea73ba50e59f6e5a683c69038cc7ea48')
 
