@@ -8,8 +8,8 @@ pkgdesc="Automatically optimize glTF files to reduce the download size and impro
 arch=(
   'x86_64'
 )
+url="https://meshoptimizer.org/gltf/"
 _url="https://github.com/zeux/meshoptimizer"
-url="${_url}/tree/master/gltf"
 license=(
   'MIT'
 )
