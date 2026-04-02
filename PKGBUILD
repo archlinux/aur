@@ -23,9 +23,11 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  # cbftp's Makefile breaks when receiving external flags;
-  # its build system concatenates commands incorrectly with them.
-  unset CFLAGS CXXFLAGS LDFLAGS
+  # cbftp's Makefile.inc only defines AR and RANLIB inside
+  # 'ifndef CFLAGS', so external CFLAGS cause ar to be undefined
+  # and the build to fail. CXXFLAGS has a similar conditional.
+  # LDFLAGS is safe to keep; the Makefile uses LINKFLAGS instead.
+  unset CFLAGS CXXFLAGS
   make -j"$(nproc)"
 }
 
