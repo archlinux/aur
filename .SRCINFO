@@ -1,0 +1,37 @@
+pkgbase = perl-task-kensho-all
+	pkgdesc = Install all of Task::Kensho
+	pkgver = 0.41
+	pkgrel = 1
+	url = https://metacpan.org/release/DBOOK/Task-Kensho-All-0.41
+	arch = any
+	license = Artistic-2.0
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl-task-kensho-async>=0.41
+	depends = perl-task-kensho-cli>=0.41
+	depends = perl-task-kensho-config>=0.41
+	depends = perl-task-kensho-dates>=0.41
+	depends = perl-task-kensho-dbdev>=0.41
+	depends = perl-task-kensho-email>=0.41
+	depends = perl-task-kensho-excelcsv>=0.41
+	depends = perl-task-kensho-exceptions>=0.41
+	depends = perl-task-kensho-hackery>=0.41
+	depends = perl-task-kensho-logging>=0.41
+	depends = perl-task-kensho-moduledev>=0.41
+	depends = perl-task-kensho-oop>=0.41
+	depends = perl-task-kensho-scalability>=0.41
+	depends = perl-task-kensho-testing>=0.41
+	depends = perl-task-kensho-toolchain>=0.41
+	depends = perl-task-kensho-webcrawling>=0.41
+	depends = perl-task-kensho-webdev>=0.41
+	depends = perl-task-kensho-xml>=0.41
+	depends = perl-task-kensho>=0.41
+	depends = perl>=5.10.1
+	optdepends = perl-cpan-meta
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DB/DBOOK/Task-Kensho-All-0.41.tar.gz
+	sha256sums = 4d21c31fc6c032056d2a51e3546d711be797efdba57d2e8ad4e539bec52c3750
+
+pkgname = perl-task-kensho-all
