@@ -3,7 +3,7 @@
 _pkgauthor=mikecsmith
 _pkgname=ihj
 pkgname=${_pkgname}
-pkgdesc="Instant High-speed Jira"
+pkgdesc="Instant High-Speed Jira"
 
 pkgver=1.2.0
 pkgrel=1
