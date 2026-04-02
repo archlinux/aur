@@ -1,0 +1,5 @@
+[lc-bin]
+source = "github"
+github = "boyter/lc"
+use_latest_release = true
+prefix = "v"
