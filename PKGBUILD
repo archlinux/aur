@@ -1,6 +1,6 @@
 # Maintainer: ResRipper <resripper at connective dot link>
 
-# shellcheck disable=SC2034,SC2148,SC2154
+# shellcheck disable=SC2034,SC2148,SC2154,SC2164
 
 # Note:
 # Enabling Mumps will cause some tests to timeout/failed.
@@ -8,7 +8,7 @@
 _name=elmerfem
 pkgname=elmerfem-base
 pkgver=26.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A finite element software for multiphysical problems (without GUI and Ice)"
 arch=('x86_64')
 url="https://www.elmerfem.org"
@@ -23,10 +23,9 @@ makedepends=(
 depends=(
     'arpack'
     'blas-openblas'
-    'glu'
+    'hypre'
     'openmp'
     'openmpi'
-    'hypre'
     # 'mumps'
     # 'parmetis-git'
 )
