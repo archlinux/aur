@@ -1,7 +1,7 @@
 # Maintainer: sunkhan
 pkgname=decibell
 pkgver=0.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Decentralized text, voice chat, and streaming app"
 arch=('x86_64')
 url="https://github.com/sunkhan/decibell"
@@ -40,6 +40,9 @@ package() {
     cp -a "${srcdir}/squashfs-root/AppRun" "${pkgdir}/opt/decibell/" 2>/dev/null || true
     cp -a "${srcdir}/squashfs-root/AppRun.wrapped" "${pkgdir}/opt/decibell/" 2>/dev/null || true
     cp -a "${srcdir}/squashfs-root/apprun-hooks" "${pkgdir}/opt/decibell/" 2>/dev/null || true
+
+    # Symlink lib at top level (binary uses relative path ././lib/...)
+    ln -s usr/lib "${pkgdir}/opt/decibell/lib"
 
     # Launcher script
     install -d "${pkgdir}/usr/bin"
