@@ -1,6 +1,6 @@
 # Maintainer: jo <matchless7198 at gmail dot com>
 pkgname=speech-dispatcher-mimo
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="speech-dispatcher output module that uses Xiaomi MiMo API for high-quality Chinese/English neural TTS"
 arch=('any')
@@ -9,8 +9,13 @@ license=('MIT')
 install="$pkgname.install"
 depends=(
     'python'
+    'python-redis'
+    'sox'
     'speech-dispatcher'
-    'mpv'
+)
+
+optdepends=(
+    'valkey: for TTS response caching'
 )
 source=(
     "sd_mimo.py"
