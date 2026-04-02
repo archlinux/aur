@@ -3,7 +3,7 @@
 # Contributor: kazu0617 <archlinux at kazu0617 dot net>
 srcname=VRCX
 pkgname=vrcx-git
-pkgver=v2021.03.08.r3262.g92ae1c5
+pkgver=2026.02.11.r463.g92ae1c5
 pkgrel=1
 pkgdesc="Friendship management tool for VRChat (git version built with Electron)"
 arch=('x86_64')
@@ -25,8 +25,9 @@ sha256sums=('SKIP'
             'db8f2ca37e76cc81ab15f91005882248cd68b97f59f3c8a5bf54674d190ca5df')
 
 pkgver() {
-  cd "$srcname"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/VRCX"
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
             
 prepare() {
