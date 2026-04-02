@@ -1,7 +1,7 @@
 # Maintainer: allddd <me (at) allddd (dot) onl>
 
 pkgname=tuptime
-pkgver=5.2.5
+pkgver=5.2.6
 pkgrel=1
 pkgdesc='Historical and statistical system uptime reporting'
 arch=('any')
@@ -11,21 +11,25 @@ depends=('python')
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('a4dfeac8221688be1452273458d69075c83a2ecad0dc8a27f973e8456737ec48'
+sha256sums=('e7a1b695f037f87e309856c6678d8ee74d20ba3f1e4d2c1311b9982d612ba725'
             '5a8c0a9c26df2f2a2356021784b03674b764d608ec4220138e4c5032bb74a3bb'
             '1364cd0e16b017b6d2cc19a873b63ee1ac07f56fbc4641b5ed9f07b5bf37be82')
 install=${pkgname}.install
+
+prepare() {
+    gzip -9 "${srcdir}/${pkgname}-${pkgver}/tuptime-manual.txt"
+}
 
 package() {
     install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    install -Dm755 src/tuptime -t "${pkgdir}/usr/bin/"
-    install -Dm644 src/systemd/tuptime.service -t "${pkgdir}/usr/lib/systemd/system/"
-    install -Dm644 src/systemd/tuptime-sync.timer -t "${pkgdir}/usr/lib/systemd/system/"
-    install -Dm644 src/systemd/tuptime-sync.service -t "${pkgdir}/usr/lib/systemd/system/"
-    install -Dm644 src/man/tuptime.1 -t "${pkgdir}/usr/share/man/man1/"
-    install -Dm644 tuptime-manual.txt -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -Dm755 ./src/tuptime -t "${pkgdir}/usr/bin/"
+    install -Dm644 ./src/systemd/tuptime.service -t "${pkgdir}/usr/lib/systemd/system/"
+    install -Dm644 ./src/systemd/tuptime-sync.timer -t "${pkgdir}/usr/lib/systemd/system/"
+    install -Dm644 ./src/systemd/tuptime-sync.service -t "${pkgdir}/usr/lib/systemd/system/"
+    install -Dm644 ./src/man/tuptime.1 -t "${pkgdir}/usr/share/man/man1/"
+    install -Dm644 ./tuptime-manual.txt.gz -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
 
 # vim: ts=4 sw=4 et:
