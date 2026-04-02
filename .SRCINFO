@@ -1,11 +1,11 @@
 pkgbase = bettercap-ui
 	pkgdesc = Official Bettercap's Web UI.
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/bettercap/ui
 	arch = any
 	license = GPL3
-	source = https://github.com/bettercap/ui/releases/download/v1.3.0/ui.zip
+	source = https://github.com/bettercap/ui/releases/download/v1.4.0/ui.zip
 	sha512sums = c1b61c3b2c0fbbc3a2328fef96608a128b2af3d8f2f947b56c12a2644c6b4dce022f95d2bb68144a3ff65c9c49460ca29ba443886d5e46ed492b4fe37b8c539d
 
 pkgname = bettercap-ui

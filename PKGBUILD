@@ -1,7 +1,7 @@
 # Maintainer Cookie Engineer <@cookiengineer>
 
 pkgname=bettercap-ui
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Official Bettercap's Web UI."
 arch=('any')
