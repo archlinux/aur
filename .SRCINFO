@@ -1,12 +1,12 @@
 pkgbase = omniwrap
         pkgdesc = A Package Manager wrapper
-        pkgver = 1.0
+        pkgver = 1.5
         pkgrel = 0
         url = https://github.com/voidVoy7/Omniwrap
         arch = x86_64
         license = GPL-3.0
         makedepends = go
-        source = https://github.com/voidVoy7/Omniwrap/archive/refs/tags/1.0.tar.gz
-        sha256sums = b9d10112702ec2ac79bc486e3c8f96f52429d6ac440a9dccec22f2f4bbf9d52a
+        source = https://github.com/voidVoy7/Omniwrap/archive/refs/tags/1.5.tar.gz
+        sha256sums = a028e7cc60009a868088f671b1f7b2907972397b7cd666d8ef2bf9ed3b74000d
 
 pkgname = omniwrap
