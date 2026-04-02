@@ -1,0 +1,18 @@
+pkgbase = fillin-bin
+	pkgdesc = Fill-in your command and execute
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/itchyny/fillin
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = fillin
+	conflicts = fillin
+	source_x86_64 = fillin-x86_64-0.3.3.tgz::https://github.com/itchyny/fillin/releases/download/v0.3.3/fillin_v0.3.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 36a8e39407bc0cadbcc155e07ed2dcb503c7d9df4c596f135c7f6a64a2c31d11
+	source_aarch64 = fillin-aarch64-0.3.3.tgz::https://github.com/itchyny/fillin/releases/download/v0.3.3/fillin_v0.3.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = c5c7e472fea2a8d47009d6d29c17ed35289e4c097fece018016f847191c425a0
+
+pkgname = fillin-bin

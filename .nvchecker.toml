@@ -1,0 +1,5 @@
+[fillin-bin]
+source = "github"
+github = "itchyny/fillin"
+use_latest_release = true
+prefix = "v"
