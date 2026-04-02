@@ -8,7 +8,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 _pkgname="rapidraw"
 pkgname="$_pkgname-git"
 pkgdesc="GPU-accelerated RAW image editor"
-pkgver=1.5.1.r0.g24e0e69+718400a
+pkgver=1.5.3.r0.gfe6809a
 pkgrel=1
 url="https://github.com/CyberTimon/RapidRAW"
 license=('AGPL-3.0-only')
@@ -34,26 +34,14 @@ _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
-prepare() {
+pkgver() {
   cd "$_pkgsrc"
-  git submodule update --init --recursive --depth=1
-
-  # ensure version is set
-  local _pkgver=$(pkgver)
-  sed -E -e 's&("version": ").*(",?)&\1'"${_pkgver%%.r*}\\2&" -i src-tauri/tauri.conf.json
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-pkgver() (
-  cd "$srcdir/$_pkgsrc"
-  local _gitver _libhash
-  _gitver=$(git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g')
-  _rawler_hash=$(git -C src-tauri/rawler rev-parse --short=7 HEAD)
-  printf '%s+%s' "$_gitver" "$_rawler_hash"
-)
-
 build() {
-  local _units=$(OMP_NUM_THREADS=16 nproc --all)
+  local _units=$(($(nproc) > 16 ? $(nproc) : 16))
   export RUSTFLAGS="-C opt-level=2 -C codegen-units=$_units -C lto=off"
 
   cd "$_pkgsrc"
