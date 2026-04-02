@@ -24,12 +24,6 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd "$pkgname"
-    # Очистка кэша Go modules от предыдущей сборки
-    rm -rf "$srcdir/gopath/pkg/mod"
-}
-
 build() {
     cd "$pkgname"
 
@@ -43,8 +37,9 @@ build() {
     mv dist "$srcdir/bin/web-client"
     cd ..
 
-    # Go сборка
-    export GOMODCACHE="$srcdir/gopath/pkg/mod"
+    # Go сборка - кэш вне srcdir для избежания проблем с правами
+    export GOMODCACHE="/tmp/mikumikubeam-gomod-cache"
+    mkdir -p "$GOMODCACHE"
     export GOFLAGS="-mod=mod"
     go mod tidy
 
