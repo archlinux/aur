@@ -1,0 +1,5 @@
+[whatweb]
+source = "github"
+github = "urbanadventurer/WhatWeb"
+use_latest_release = true
+prefix = "v"
