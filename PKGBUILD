@@ -1,7 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 pkgname=isso
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A commenting python server similar to Disqus"
 arch=('any')
 url="http://posativ.org/isso/"
