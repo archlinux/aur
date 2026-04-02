@@ -1,7 +1,7 @@
 # Maintainer: Georg Nagel <g.schlmm at gmail dot com>
 
 pkgname=simple-completion-language-server-git
-pkgver=r234.a75b382
+pkgver=r250.a94dd7f
 pkgrel=1
 pkgdesc="Allow to use common word completion and snippets for Helix editor"
 url="https://github.com/estin/simple-completion-language-server"
