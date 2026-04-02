@@ -1,0 +1,18 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 3cd8fe4..3bee63b 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -21,10 +21,10 @@ Issues = "https://github.com/mil-ad/kitcat/issues"
+ requires = ["hatchling"]
+ build-backend = "hatchling.build"
+ 
+-[tool.hatch.build]
+-include = [
++[tool.hatch.build.targets.wheel]
++packages = [
+     "src/kitcat",
+ ]
+ 
+ [project.entry-points."matplotlib.backend"]
+-kitcat = "src.kitcat.backend"
++kitcat = "kitcat.backend"
