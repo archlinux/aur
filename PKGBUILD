@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/sammwyy/MikuMikuBeam"
 license=('MIT')
 depends=('glibc')
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'nodejs' 'npm')
 provides=('mikumikubeam')
 conflicts=('mikumikubeam')
 options=('!debug' '!strip')
@@ -31,16 +31,30 @@ prepare() {
 
 build() {
     cd "$pkgname"
+    
+    # Сборка web-client
+    cd web-client
+    npm install --no-audit --no-fund
+    npm run build
+    
+    # Подготовка bin директории
+    mkdir -p "$srcdir/bin"
+    mv dist "$srcdir/bin/web-client"
+    cd ..
+    
+    # Go сборка
     export GOPATH="$srcdir/gopath"
     export GOFLAGS="-mod=mod"
+    go mod tidy
+    
     export CGO_ENABLED=0
-    go build -v -trimpath -ldflags="-s -w" -o mmb-server ./cmd/mmb-server
-    go build -v -trimpath -ldflags="-s -w" -o mmb-cli ./cmd/mmb-cli
+    go build -v -trimpath -ldflags="-s -w" -o bin/mmb-server ./cmd/mmb-server
+    go build -v -trimpath -ldflags="-s -w" -o bin/mmb-cli ./cmd/mmb-cli
 }
 
 package() {
     cd "$pkgname"
-    install -Dm755 mmb-server "$pkgdir/usr/bin/mmb-server"
-    install -Dm755 mmb-cli "$pkgdir/usr/bin/mmb-cli"
+    install -Dm755 bin/mmb-server "$pkgdir/usr/bin/mmb-server"
+    install -Dm755 bin/mmb-cli "$pkgdir/usr/bin/mmb-cli"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

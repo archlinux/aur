@@ -1,12 +1,14 @@
 pkgbase = mikumikubeam-git
 	pkgdesc = An open-source network stresser tool but it's Hatsune Miku (Git version)
-	pkgver = r167.224d905
+	pkgver = r42.224d905
 	pkgrel = 1
 	url = https://github.com/sammwyy/MikuMikuBeam
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
 	depends = glibc
 	provides = mikumikubeam
 	conflicts = mikumikubeam
