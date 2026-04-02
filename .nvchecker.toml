@@ -1,0 +1,3 @@
+[perl-moosex-types-common]
+source = "cpan"
+cpan = "MooseX-Types-Common"
