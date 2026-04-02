@@ -1,0 +1,13 @@
+pkgbase = seamonkey-i18n-zh-tw
+	pkgdesc = Chinese (Traditional) language pack for SeaMonkey
+	pkgver = 2.53.23
+	pkgrel = 1
+	url = http://www.seamonkey-project.org/
+	arch = any
+	license = MPL
+	depends = seamonkey>=2.53.23
+	noextract = seamonkey-2.53.23.zh-TW.langpack.xpi
+	source = https://archive.seamonkey-project.org/releases/2.53.23/langpack/seamonkey-2.53.23.zh-TW.langpack.xpi
+	sha512sums = 8152cb8f0982521a9d7cb595928afef6833d2576a88b61f156e45d77cf0f999d5e5452342198afdef838ccfea984fc2099c7cbf89b6bdd8f8eced9ffe31cceaf
+
+pkgname = seamonkey-i18n-zh-tw
