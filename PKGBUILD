@@ -13,42 +13,37 @@ url="https://mixxx.org/"
 license=('GPL-2.0-or-later')
 groups=('pro-audio')
 depends=(
-  # First set of depends was added in the package() step of the main PKGBUILD.
-  # Unsure why.
   'chromaprint'
-  'flac'
   'ffmpeg'
+  'flac'
   'glib2'
-  'libglvnd'
-  'libid3tag'
-  'libogg'
-  'libsndfile'
-  'libusb'
-  'libvorbis'
-  'lilv'
-  'portaudio'
-  'portmidi'
-  'protobuf'
-  'rubberband'
-  'zlib'
-
   'glibc'
   #'hicolor-icon-theme'
   'hidapi'
   'lame'
   'libebur128'
   #'libgcc'
+  'libglvnd'
+  'libid3tag'
   'libkeyfinder'
   'libmad'
   'libmodplug'
-  #'libstdc++'
-  #'libx11'
-  #'openssl'
   'libmp4v2' #?
+  'libogg'
   'libshout' #?
+  'libsndfile'
+  #'libstdc++'
   'libtheora' #?
+  'libusb'
+  'libvorbis'
+  #'libx11'
+  'lilv'
+  #'openssl'
   #'opus'
   'opusfile'
+  'portaudio'
+  'portmidi'
+  'protobuf'
   'qt6-5compat'
   #'qt6-base'
   'qt6-declarative'
@@ -56,13 +51,15 @@ depends=(
   'qt6-svg'
   'qt6-translations' #?
   'qtkeychain-qt6'
+  'rubberband'
   'soundtouch'
+  'sqlite'
   'taglib1'
   'ttf-opensans' #?
   'ttf-ubuntu-font-family' #?
   'upower'
   'wavpack'
-  'sqlite'
+  'zlib'
 )
 makedepends=(
   'benchmark'
