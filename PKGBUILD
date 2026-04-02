@@ -3,13 +3,13 @@
 
 pkgname=polymodloader-bin
 pkgver=0.6.0
-pkgrel=6
+pkgrel=3
 pkgdesc="A Mod Loader for PolyTrack"
 arch=('x86_64')
 url="https://codeberg.org/polytrackmods/PolyModLoader"
 license=('unknown')
 source=(
-  "https://codeberg.org/polytrackmods/PolyModLoader/releases/download/v$pkgver-2/linux.tar.gz"
+  "https://codeberg.org/polytrackmods/PolyModLoader/releases/download/v$pkgver-$pkgrel/linux.tar.gz"
   "pml.desktop"
   "icon.png"
 )
