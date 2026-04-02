@@ -1,16 +1,17 @@
 pkgbase = illogical-updots
-	pkgdesc = GTK based updater for end4 dotfiles
-	pkgver = 1.1.0
+	pkgdesc = GTK based updater for end4 dotfiles - TUI and Quickshell widget
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/FoxyIsCoding/illogical-updots
-	arch = any
+	arch = x86_64
 	license = custom
-	depends = python
+	makedepends = rust
+	makedepends = cargo
 	depends = git
 	depends = adwaita-icon-theme
 	depends = gdk-pixbuf2
 	depends = librsvg
-	optdepends = fish: required to run installer scripts (uses fish shell)
+	depends = quickshell
 	source = git+https://github.com/FoxyIsCoding/illogical-updots.git
 	source = illogical-updots.png::https://github.com/FoxyIsCoding/illogical-updots/blob/main/.github/assets/logo.png?raw=true
 	sha256sums = SKIP
