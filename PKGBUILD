@@ -5,8 +5,8 @@ pkgbase="${pkgname}"
 _upstreamname=OpenLinkHub
 _binlocation=/usr/bin/"${pkgname%-*}"
 _applocation=/var/lib/"${pkgname%-*}"
-_tag=0.8.0
-pkgver=0.8.0
+_tag=0.8.1
+pkgver=0.8.1
 pkgrel=3
 pkgdesc="Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs. [Latest Release - source]"
 arch=('x86_64')
@@ -14,7 +14,7 @@ url="https://github.com/jurkovic-nikola/OpenLinkHub"
 license=('GPL3')
 groups=()
 depends=('systemd' 'i2c-tools' 'libpipewire')
-makedepends=('go>=1.23.8' 'git' 'base-devel' 'systemd' 'libpipewire') 
+makedepends=('go>=1.25.0' 'git' 'base-devel' 'systemd' 'libpipewire') 
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 replaces=()
@@ -31,7 +31,7 @@ source=(
 	"${pkgname%-*}".tmpfiles
 )
 noextract=()			
-sha256sums=('f959865a5639b02ef0a2848960b09bda99ced18cc7dd8424660ae887899eb038'
+sha256sums=('ec6317cb757e5672b9bd399a201e300c9beb1b5c1ee04d23b5980b2cd50e4097'
             '7b6cc5e43cfe1dcb13683cbf9925c1d2f253c633513750b47fa04303128fcf52'
             '8c9f747bc6484290cb97b40e5904dc02cce2672e59e0f6ad720a1cd6a7b9d900'
             '858fd197e13a6bc2756e090f622adcac0d02d20007c366d0dff93258898e256e'
