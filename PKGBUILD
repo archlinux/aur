@@ -1,4 +1,5 @@
-# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Maintainer: attackuwu <daniil.baskakov13@gmail.com>
+# Contributor (was the parent of the package until April 2, 2026.): Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
