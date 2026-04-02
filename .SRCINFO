@@ -1,0 +1,25 @@
+pkgbase = raidrive
+	pkgdesc = Use cloud storage services as if they were USB drives on your computer
+	pkgver = 2025.12.0
+	pkgrel = 1
+	url = https://www.raidrive.com
+	install = raidrive.install
+	arch = aarch64
+	arch = x86_64
+	license = custom:Freemium
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = zlib
+	conflicts = raidrivecli<=2025.9.29-1
+	replaces = raidrivecli<=2025.9.29-1
+	noextract = raidrive_2025.12.0-linux_arm64.deb
+	noextract = raidrive_2025.12.0-linux_amd64.deb
+	options = !debug
+	options = !strip
+	source_aarch64 = https://app.raidrive.com/deb/pool/main/r/raidrive/raidrive_2025.12.0-linux_arm64.deb
+	sha256sums_aarch64 = 2146867f78f7f552c960c2da09236a401af8ab409d07f3fd540b0857b78cbcf2
+	source_x86_64 = https://app.raidrive.com/deb/pool/main/r/raidrive/raidrive_2025.12.0-linux_amd64.deb
+	sha256sums_x86_64 = 35d49dc8e96e67acd252b9f32e92f78471f54f62063cbd9a71174df9afc5bf00
+
+pkgname = raidrive
