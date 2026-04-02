@@ -1,4 +1,5 @@
-# Maintainer: Alex Hirzel <alex at hirzel period us>
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
+# Contributor: Alex Hirzel <alex at hirzel period us>
 
 pkgname='python-strictdoc'
 _name=${pkgname#python-}
