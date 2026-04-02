@@ -1,30 +1,40 @@
 pkgbase = libinput-three-finger-drag
 	pkgdesc = Input device management and event handling library
-	pkgver = 1.30.0
+	pkgver = 1.31.1
 	pkgrel = 1
-	url = https://gitlab.freedesktop.org/libinput/libinput
+	url = https://wayland.freedesktop.org/libinput/doc/latest/
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
-	makedepends = gtk4
-	makedepends = meson
-	makedepends = wayland-protocols
+	makedepends = cairo
 	makedepends = check
-	depends = mtdev
-	depends = libevdev
-	depends = libwacom
-	depends = systemd-libs
+	makedepends = git
+	makedepends = glib2
+	makedepends = gtk4
+	makedepends = libx11
+	makedepends = meson
+	makedepends = python
+	makedepends = python-libevdev
+	makedepends = python-pyudev
+	makedepends = python-yaml
+	makedepends = wayland
+	makedepends = wayland-protocols
 	depends = glibc
-	optdepends = gtk4: libinput debug-gui
-	optdepends = python-pyudev: libinput measure
-	optdepends = python-libevdev: libinput measure
-	optdepends = python-yaml: used by various tools
-	provides = libinput=1.30.0
+	depends = libevdev
+	depends = libgcc
+	depends = libwacom
+	depends = lua54
+	depends = mtdev
+	depends = systemd-libs
+	provides = libinput=1.31.1
+	provides = libinput-tools=1.31.1
+	provides = libinput.so
 	conflicts = libinput
-	source = git+https://gitlab.freedesktop.org/libinput/libinput.git?signed#tag=1.30.0
+	conflicts = libinput-tools
+	source = git+https://gitlab.freedesktop.org/libinput/libinput.git?signed#tag=1.31.1
 	source = 0001-enable-3fg-drag-by-default.patch
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
 	b2sums = SKIP
-	b2sums = e8c528be23793144d3f92d4c0eb98279c44595b4bd617e1ea642a0eb7ea555f1555f92b87ac8757f4553b09ff4d9473ec96a79560e1ddf30db71ff550e88af68
+	b2sums = c6750706f74ac6e83df1d0e0981446fa117af8d1b72256f26242ed2ed616ae037da6d5eefe7ad86d9b81e19f4e762fb5f217de2f09f800d7bcff772e587c8226
 
 pkgname = libinput-three-finger-drag
