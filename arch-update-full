@@ -1,0 +1,79 @@
+#!/bin/bash
+
+ASSINATURA_COR='\033[1;37m' # Branco Brilhante / Cinza Claro
+NEON_BLUE='\033[1;36m' 
+PINK_NEON='\033[1;35m'
+GREEN_NEON='\033[1;32m'
+YELLOW_NEON='\033[1;33m'
+GRAY_NEON='\033[1;30m'
+NC='\033[0m' # No Color
+
+# --- CABEÇALHO EXPANDIDO: ARCH UPDATE (EM AZUL NEON VIBRANTE) ---
+
+clear
+echo -e "${NEON_BLUE}"
+echo "  █████╗ ██████╗  ██████╗██╗  ██╗    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗"
+echo "  ██╔══██╗██╔══██╗██╔════╝██║  ██║    ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝"
+echo "  ███████║██████╔╝██║     ███████║    ██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗  "
+echo "  ██╔══██║██╔══██╗██║     ██╔══██║    ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝  "
+echo "  ██║  ██║██║  ██║╚██████╗██║  ██║    ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗"
+echo "  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝     ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝"
+echo -e "${PINK_NEON}  >> SYSTEM OPTIMIZATION & NEURAL LINK SYNCHRONIZATION v2.0 <<${NC}"
+echo -e "${NEON_BLUE}  --------------------------------------------------------------------------------------${NC}"
+sleep 1
+
+# --- FUNÇÃO DE STATUS HACKER ---
+status_msg() {
+    echo -e "\n${PINK_NEON}[#]${NC} ${NEON_BLUE}EXECUTING PROTOCOL:${NC} ${YELLOW_NEON}$1${NC}"
+    echo -e "${GRAY_NEON}------------------------------------------------------------${NC}"
+}
+
+# 1. Otimiza os espelhos (Mirrors)
+# sudo reflector --protocol https --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+
+
+# 1. REPOSITÓRIOS OFICIAIS
+status_msg "CORE_SYSTEM_SYNCHRONIZATION (PACMAN)"
+sudo pacman -Syyu --noconfirm
+
+# 2. ATUALIZAÇÃO DO AUR (MAIOR DESTAQUE COM CORES INVERTIDAS)
+echo -e "\n${NEON_BLUE}╔════════════════════════════════════════════════════════════╗${NC}"
+echo -e "${NEON_BLUE}║${NC} ${PINK_NEON}INJECTING AUR DATA STREAMS: UPDATING ${NC} ${NEON_BLUE}║${NC}"
+echo -e "${NEON_BLUE}╚════════════════════════════════════════════════════════════╝${NC}"
+yay -Syu --noconfirm
+
+# 3. ATUALIZAÇÃO DE FLATPAKS (MAIOR DESTAQUE COM CORES INVERTIDAS)
+echo -e "\n${PINK_NEON}╔════════════════════════════════════════════════════════════╗${NC}"
+echo -e "${PINK_NEON}║${NC} ${NEON_BLUE}SCANNING SANDBOX ENVIRONMENTS: UPDATING FLATPAK REPOSITORIES${NC} ${PINK_NEON}║${NC}"
+echo -e "${PINK_NEON}╚════════════════════════════════════════════════════════════╝${NC}"
+flatpak update -y
+
+# 4. LIMPEZA DE ÓRFÃOS
+status_msg "PURGING_RESIDUAL_FRAGMENTS (ORPHANS)"
+ORPHANS=$(pacman -Qdtq)
+if [ -n "$ORPHANS" ]; then
+    sudo pacman -Rns $ORPHANS --noconfirm
+    echo -e "${GREEN_NEON}[SUCCESS]${NC} Residual data erased."
+else
+    echo -e "${YELLOW_NEON}[INFO]${NC} No fragments found in sectors."
+fi
+
+# 5. LIMPEZA DO CACHE
+status_msg "STABILIZING_CACHE_RESERVES (PACCACHE)"
+sudo paccache -r
+
+# --- FINALIZAÇÃO ---
+echo -e "\n${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
+echo -e "${GREEN_NEON}   [!] ARCH UPDATE PROTOCOL COMPLETE: YOUR SYSTEM IS NOW REINFORCED [!]${NC}"
+echo -e "${PINK_NEON}   >> STATUS: SECURE | ENCRYPTED | OPTIMIZED <<${NC}"
+echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
+
+echo ""
+echo ""
+
+echo -e "      \033[1;37m© [2026] ARCH UPDATER PROTOCOL | by Gustavo Gianeli/Sétimo\033[0m"
+echo ""
+echo -ne "${CYAN}[SISTEMA]${NC} Pressione ${PINK_NEON}[ENTER]${NC} para encerrar a conexão..."
+read
+
+

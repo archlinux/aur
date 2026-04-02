@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Arch Update Full
+Comment=Protocolo de Manutenção Cyberpunk by Sétimo
+Exec=arch-update-full
+Icon=system-software-update
+Terminal=true
+Type=Application
+Categories=System;Settings;
