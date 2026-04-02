@@ -1,6 +1,6 @@
 pkgbase = pipelex
 	pkgdesc = Open-source language for AI Agents to create and run repeatable AI workflows
-	pkgver = 0.23.3
+	pkgver = 0.23.4
 	pkgrel = 1
 	url = https://github.com/Pipelex/pipelex
 	arch = any
@@ -47,7 +47,7 @@ pkgbase = pipelex
 	depends = python-mistralai
 	depends = python-networkx
 	provides = pipelex
-	source = pipelex-0.23.3.tar.gz::https://github.com/Pipelex/pipelex/archive/refs/tags/v0.23.3.tar.gz
-	sha256sums = bb02603b3c95133ce8ac31f0bc056bd14d09deb6c7cce2ac05ff5dff5c3c1bde
+	source = pipelex-0.23.4.tar.gz::https://github.com/Pipelex/pipelex/archive/refs/tags/v0.23.4.tar.gz
+	sha256sums = ec4019de0c9e84bb46969e1234d3f5c47cae6b162b1fd06cfc432a9a6ec7c560
 
 pkgname = pipelex
