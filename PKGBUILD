@@ -1,5 +1,5 @@
 pkgname=homepage
-pkgver=1.12.2
+pkgver=1.12.3
 pkgrel=1
 pkgdesc="A highly customizable homepage (or startpage / application dashboard) with Docker and service API integrations."
 arch=('any')
@@ -13,10 +13,20 @@ source=("https://github.com/gethomepage/homepage/archive/v${pkgver}.tar.gz"
         'homepage.service'
         'homepage.sysusers'
         'homepage.tmpfiles')
-sha256sums=('a488ccff36b66322c2e65a94f06ec57950e07acefa05653081b35f348071e393'
+sha256sums=('27b952a0175233530dacc71c380ab549ceee445f84daadacd2b7a282c703ff60'
             'ad7cf62a095823b9f7597d1c28c5ca6f6b424af1db0be0e813c5df87eab35dd6'
             'b35b3df75248f5dd1298cb1a13921cb40b66998608eae3a8bf0c36562d43d278'
             'e10cf0af4417326d32acffddd7104ce5e033dfbbf06f7f8f71bc92a1d6c37165')
+
+backup=('var/lib/homepage/config/custom.css'
+        'var/lib/homepage/config/custom.js'
+        'var/lib/homepage/config/proxmox.yaml'
+        'var/lib/homepage/config/bookmarks.yaml'
+        'var/lib/homepage/config/docker.yaml'
+        'var/lib/homepage/config/kubernetes.yaml'
+        'var/lib/homepage/config/services.yaml'
+        'var/lib/homepage/config/settings.yaml'
+        'var/lib/homepage/config/widgets.yaml')
 
 build() {
   export NEXT_PUBLIC_BUILDTIME="$(date --iso-8601=seconds)"
