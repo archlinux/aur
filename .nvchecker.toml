@@ -1,0 +1,5 @@
+[korb]
+source = "github"
+github = "yannick-cw/korb"
+prefix = "v"
+use_latest_release = true
