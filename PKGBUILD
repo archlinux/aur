@@ -1,7 +1,7 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 _pkgname=pipeweaver
 pkgname=${_pkgname}-git
-pkgver=r426.ae9c7b2
+pkgver=r456.840024f
 pkgrel=1
 pkgdesc="An audio management tool for Linux built on top of PipeWire, designed specifically with streaming and broadcasting in mind."
 arch=('x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  cargo build --release --locked
+  cargo build --workspace --exclude pipeweaver-app --release --locked
 }
 
 package() {
