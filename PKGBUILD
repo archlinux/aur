@@ -1,8 +1,8 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp-bin
-pkgver=v2023.12.14
-pkgrel=1
+pkgver=v2026.4.1
+pkgrel=2
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp"
@@ -27,12 +27,12 @@ source=(
   "iceshrimp.hook"
 )
 
-sha512sums=('317f21c2f36116f480771e9e01e748d8b4390729ae5fd351c2ae4dac2d7d22bed03ad5d9ac5cf4e7340d28c761cebb50334c60bb6b200e4986efffb48d788e7f'
+sha512sums=('85cac0ddc8ac2bc2460c10954d4077206b66751eaac64b446f3364cfd44b5e6db6b274495866c9ee1ca9f014ba6d130a28e430ff77ab3488cc162502c5217c6c'
             '91c456bda5c14b01cbf770a2e9e57425ac5e82226799d39e11cc6e83b219a0559eeed8693c5eb051fffb28cdd23d4682ee40f46372117880aeeddb00ecb8726f')
 
 package() {
   # Add runtime only dependencies
-  depends+=(nodejs redis postgresql)
+  depends+=(nodejs-lts-krypton redis postgresql)
 
   cp -dpTr --no-preserve=ownership "${srcdir}/" "${pkgdir}"
   rm -f "${pkgdir}"/.{BUILDINFO,INSTALL,MTREE,PKGINFO}
