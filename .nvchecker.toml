@@ -1,0 +1,5 @@
+[ihj]
+source = "github"
+github = "mikecsmith/ihj"
+use_latest_release = true
+prefix = "v"
