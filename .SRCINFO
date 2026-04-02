@@ -1,7 +1,7 @@
 pkgbase = alpaca-ai
 	pkgdesc = An Ollama client. Chat with local AI models or connect to third party AI providers like ChatGPT, Gemini and more
-	pkgver = 9.2.2
-	pkgrel = 2
+	pkgver = 9.2.3
+	pkgrel = 1
 	url = https://github.com/Jeffser/Alpaca
 	arch = any
 	license = GPL-3.0-or-later
@@ -44,7 +44,7 @@ pkgbase = alpaca-ai
 	optdepends = python-pyaudio: microphone input for Transcriber mode
 	optdepends = python-rembg: Background Remover tool
 	optdepends = python-openai: connect to OpenAI-compatible APIs
-	source = alpaca-ai-9.2.2.tar.gz::https://github.com/Jeffser/Alpaca/archive/refs/tags/9.2.2.tar.gz
-	b2sums = 13b73699c6223cb0a9231fa82a06d30c4ee7f02784b3614cef43c9b86191ac0780a97383dee9a46f9d8473fc326fb6994383f28701a0854e6b7b946c0f1f9ae5
+	source = alpaca-ai-9.2.3.tar.gz::https://github.com/Jeffser/Alpaca/archive/refs/tags/9.2.3.tar.gz
+	b2sums = 4aa5357bf621d04d93d60dd8c0eed4293f476358a5fcf9e54a6212642bf4d7eadbf38fa57a0df6fc930d8dc5854634539320cef523e478460bc1bae0257c5af7
 
 pkgname = alpaca-ai
