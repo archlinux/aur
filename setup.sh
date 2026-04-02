@@ -12,7 +12,14 @@
 # ──────────────────────────────────────────────────────────────────────────────
 set -euo pipefail
 
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# BASH_SOURCE[0] is empty when run via: curl ... | bash
+# Use PWD as fallback so the script still works
+if [[ -z "${BASH_SOURCE[0]:-}" ]]; then
+    _SCRIPT_DIR="$(pwd)"
+else
+    _SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+fi
+REPO_ROOT="${REPO_ROOT:-$_SCRIPT_DIR}"
 SKIP_ALLGREETING="${SKIP_ALLGREETING:-false}"
 SKIP_ALLDEPS="${SKIP_ALLDEPS:-false}"
 SKIP_ALLSETUPS="${SKIP_ALLSETUPS:-false}"
@@ -49,7 +56,9 @@ need_cmd() { command -v "$1" >/dev/null 2>&1 || err "Required command not found:
 
 ## ─── Privilege ────────────────────────────────────────────────────────────────
 prevent_root() {
-  [[ "${EUID}" -eq 0 ]] && err "Do NOT run as root. The installer asks for sudo when needed."
+  if [[ "${EUID}" -eq 0 ]]; then
+    err "Do NOT run as root. The installer asks for sudo when needed."
+  fi
 }
 require_root() { sudo -n true 2>/dev/null || err "Root required. Run with sudo or as root."; }
 
@@ -73,10 +82,11 @@ detect_distro() {
   else DIST_ID="unknown"; DIST_ID_LIKE=""
   fi
   case "${DIST_ID_LIKE}" in
-    *debian*|"") DIST_FAM="debian" ;;
+    *debian*) DIST_FAM="debian" ;;
     *rhel*|*fedora*) DIST_FAM="rhel" ;;
     *arch*) DIST_FAM="arch" ;;
     *suse*) DIST_FAM="suse" ;;
+    "") DIST_FAM="${DIST_ID}" ;;
     *) DIST_FAM="${DIST_ID}" ;;
   esac
   _log "Detected: ${DIST_ID} (${DIST_FAM}) ${DIST_VER}"
@@ -86,7 +96,12 @@ detect_distro() {
 _install_deps_arch() {
   need_cmd pacman
   _log "Installing via pacman..."
-  sudo pacman -Sy --needed --noconfirm python python-pip uv git certbot rust cargo
+  local pkgs=(python python-pip uv git certbot)
+  # rustup provides cargo; do not install rust/cargo from official repos if rustup exists
+  if ! command -v rustup >/dev/null 2>&1; then
+    pkgs+=(rust cargo)
+  fi
+  sudo pacman -Sy --needed --noconfirm "${pkgs[@]}"
 }
 
 _install_deps_debian() {
@@ -184,12 +199,27 @@ install_files() {
   fi
 
   if [[ ! -d "${ASTRBOT_APP_DIR}" ]]; then
-    git clone -b "${ASTRBOT_BRANCH}" "${ASTRBOT_UPSTREAM}" "${ASTRBOT_APP_DIR}" || \
-      err "Failed to clone AstrBot to ${ASTRBOT_APP_DIR}"
-    local ver
-    ver=$(git -C "${ASTRBOT_APP_DIR}" describe --tags 2>/dev/null || \
-          git -C "${ASTRBOT_APP_DIR}" rev-parse --short HEAD)
-    ok "Cloned: ${ver}"
+    _log "Downloading AstrBot (${ASTRBOT_BRANCH}) from GitHub..."
+    local tarball="/tmp/astrbot-install-$$.tar.gz"
+    local extract_dir="/tmp/astrbot-install-$$"
+    local url="https://github.com/AstrBotDevs/AstrBot/archive/refs/heads/${ASTRBOT_BRANCH}.tar.gz"
+    mkdir -p "$extract_dir"
+    if ! curl -L --fail --silent --show-error -o "$tarball" "$url" 2>&1; then
+      rm -f "$tarball"; rm -rf "$extract_dir"
+      err "Failed to download AstrBot from GitHub."
+    fi
+    tar -xzf "$tarball" -C "$extract_dir" || \
+      { rm -f "$tarball"; rm -rf "$extract_dir"; err "Failed to extract AstrBot tarball."; }
+    local extracted
+    extracted=$(find "$extract_dir" -mindepth 1 -maxdepth 1 -type d | head -1)
+    mv "$extracted" "${ASTRBOT_APP_DIR}"
+    rm -f "$tarball"; rm -rf "$extract_dir"
+    # Init git repo so git describe works inside /opt/astrbot
+    git -C "${ASTRBOT_APP_DIR}" init --quiet
+    git -C "${ASTRBOT_APP_DIR}" remote add origin "${ASTRBOT_UPSTREAM}"
+    git -C "${ASTRBOT_APP_DIR}" fetch --depth=1 origin "${ASTRBOT_BRANCH}" --quiet
+    git -C "${ASTRBOT_APP_DIR}" checkout "${ASTRBOT_BRANCH}" --quiet
+    ok "Installed: ${ASTRBOT_APP_DIR}"
   fi
 
   _log "Installing systemd service..."

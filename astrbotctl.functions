@@ -129,8 +129,8 @@ setup_runtime_env() {
     export UV_CACHE_DIR="$ASTRBOT_ROOT/.cache/uv"
     export UV_PROJECT_ENVIRONMENT="$ASTRBOT_ROOT/.venv"
     export UV_PYTHON_INSTALL_DIR="$CACHE_DIR/python"
-    export CARGO_HOME="$CACHE_DIR/cargo"
-    export RUSTUP_HOME="$CACHE_DIR/rustup"
+    export CARGO_HOME="/var/lib/astrbot/.cargo"
+    export RUSTUP_HOME="/var/lib/astrbot/.rustup"
     export CARGO_TARGET_DIR="$CACHE_DIR/cargo_target"
     export ASTRBOT_SYSTEMD=1
     export ASTRBOT_DESKTOP_CLIENT=0
@@ -239,8 +239,8 @@ ensure_instance_env_synced() {
         PATH="$UV_PROJECT_ENVIRONMENT/bin:$PATH" \
         UV_NO_CONFIG=1 \
         UV_PYTHON_INSTALL_DIR="$ASTRBOT_ROOT/.python" \
-        CARGO_HOME="$CACHE_DIR/cargo" \
-        RUSTUP_HOME="$CACHE_DIR/rustup" \
+        CARGO_HOME="/var/lib/astrbot/.cargo" \
+        RUSTUP_HOME="/var/lib/astrbot/.rustup" \
         CARGO_TARGET_DIR="$CACHE_DIR/cargo_target" \
         uv pip install "$APP_DIR"
 }
@@ -427,21 +427,8 @@ enable_certbot_renew_timer() {
 
 # ─── Git helpers ─────────────────────────────────────────────────────────────
 
-ensure_app_git_repo() {
-    local mirror="$CACHE_DIR/astrbot-git"
-    if [ ! -d "$mirror" ]; then
-        echo ">>> Creating local git mirror..."
-        install -d -m755 "$mirror"
-        git clone --bare --mirror "$UPSTREAM_URL" "$mirror" || {
-            echo "❌ Error: Failed to create git mirror at $mirror" >&2
-            return 1
-        }
-    fi
-    git -C "$mirror" fetch --prune origin
-}
-
-# Ensure /opt/astrbot exists.  If missing, attempt self-healing by cloning
-# from the git mirror.  Requires root privileges.
+# Ensure /opt/astrbot exists. If missing, attempt self-healing by downloading
+# the tarball from GitHub.
 _ensure_app_dir() {
     if [ -d "$APP_DIR" ] && [ -f "$APP_DIR/pyproject.toml" ]; then
         return 0
@@ -456,55 +443,120 @@ _ensure_app_dir() {
     echo "⚠️  /opt/astrbot is missing — attempting self-heal..." >&2
     echo "   (Run 'sudo pacman -Syu' for a proper fix)" >&2
 
-    local mirror="$CACHE_DIR/astrbot-git"
+    local tarball="/tmp/astrbot-selfheal-$$.tar.gz"
+    local extract_dir="/tmp/astrbot-selfheal-$$"
+    local url="https://github.com/AstrBotDevs/AstrBot/archive/refs/heads/${UPSTREAM_BRANCH}.tar.gz"
 
-    # Try the mirror first
-    if [ -d "$mirror" ]; then
-        echo ">>> Cloning from local mirror..."
-        git clone -b "$UPSTREAM_BRANCH" --depth=500 "file://$mirror" "$APP_DIR" 2>/dev/null && return 0
-        echo "⚠️  Mirror clone failed, trying direct..." >&2
-    fi
-
-    # Direct clone as last resort (requires network)
-    echo ">>> Cloning directly from GitHub..."
-    git clone -b "$UPSTREAM_BRANCH" --depth=500 "$UPSTREAM_URL" "$APP_DIR" && return 0
-
-    echo "❌ CRITICAL: /opt/astrbot is missing and self-heal failed." >&2
-    echo "   Run 'sudo pacman -Syu' or 'sudo git clone -b $UPSTREAM_BRANCH $UPSTREAM_URL $APP_DIR'" >&2
-    return 1
-}
-
-update_app_git_checkout() {
-    local mirror="$CACHE_DIR/astrbot-git"
-
-    # Recreate mirror if it's corrupted (e.g. overwritten with AUR repo clone)
-    if [ -d "$mirror" ]; then
-        if ! git -C "$mirror" rev-parse --verify "${UPSTREAM_BRANCH}" >/dev/null 2>&1; then
-            echo ">>> Mirror missing ${UPSTREAM_BRANCH} branch — rebuilding..."
-            rm -rf "$mirror"
-        fi
-    fi
-
-    if [ ! -d "$mirror" ]; then
-        echo ">>> Creating local git mirror..."
-        install -d -m755 "$mirror"
-        git clone --bare --mirror "$UPSTREAM_URL" "$mirror" || {
-            echo "❌ Error: Failed to create git mirror" >&2
-            return 1
-        }
-    fi
-
-    echo ">>> Syncing to latest AstrBot..."
-    git -C "$mirror" fetch --prune origin || {
-        # Fallback: direct clone if mirror fetch fails
-        echo "⚠️  Mirror fetch failed, cloning directly from GitHub..."
-        rm -rf "$APP_DIR"
-        git clone -b "$UPSTREAM_BRANCH" --depth=500 "$UPSTREAM_URL" "$APP_DIR" && return 0
+    mkdir -p "$extract_dir"
+    echo ">>> Downloading AstrBot from GitHub..."
+    if ! curl -L --fail --silent --show-error -o "$tarball" "$url" 2>&1; then
+        echo "❌ CRITICAL: Failed to download AstrBot." >&2
+        rm -f "$tarball"
+        rm -rf "$extract_dir"
         return 1
-    }
+    fi
+
+    echo ">>> Extracting..."
+    if ! tar -xzf "$tarball" -C "$extract_dir" 2>&1; then
+        echo "❌ CRITICAL: Failed to extract tarball." >&2
+        rm -f "$tarball"
+        rm -rf "$extract_dir"
+        return 1
+    fi
+
+    # Move extracted dir to /opt/astrbot
+    local extracted
+    extracted=$(find "$extract_dir" -mindepth 1 -maxdepth 1 -type d | head -1)
+    if [ -z "$extracted" ]; then
+        echo "❌ CRITICAL: Extraction produced no directory." >&2
+        rm -f "$tarball"
+        rm -rf "$extract_dir"
+        return 1
+    fi
 
     rm -rf "$APP_DIR"
-    git clone -b "$UPSTREAM_BRANCH" --depth=500 "file://$mirror" "$APP_DIR"
+    mv "$extracted" "$APP_DIR"
+    rm -f "$tarball"
+    rm -rf "$extract_dir"
+
+    # Initialize a git repo so git describe works inside /opt/astrbot
+    git -C "$APP_DIR" init --quiet
+    git -C "$APP_DIR" remote add origin "$UPSTREAM_URL"
+    git -C "$APP_DIR" fetch --depth=1 origin "$UPSTREAM_BRANCH" --quiet
+    git -C "$APP_DIR" checkout "$UPSTREAM_BRANCH" --quiet
+
+    echo ">>> Self-heal complete."
+    return 0
+}
+
+# Download latest AstrBot source from GitHub tarball and replace /opt/astrbot.
+# Only downloads if remote commit hash differs from local.
+update_app_git_checkout() {
+    local remote_hash local_hash
+    local tarball="/tmp/astrbot-update-$$.tar.gz"
+    local extract_dir="/tmp/astrbot-update-$$"
+    local url="https://github.com/AstrBotDevs/AstrBot/archive/refs/heads/${UPSTREAM_BRANCH}.tar.gz"
+
+    # Get remote HEAD commit hash
+    echo ">>> Checking for updates..."
+    remote_hash=$(git ls-remote --heads "$UPSTREAM_URL" "$UPSTREAM_BRANCH" 2>/dev/null | cut -f1)
+    if [ -z "$remote_hash" ]; then
+        echo "⚠️  Failed to fetch remote commit hash — cannot update." >&2
+        return 1
+    fi
+
+    # Get local HEAD commit hash
+    if [ -d "$APP_DIR/.git" ]; then
+        local_hash=$(git -C "$APP_DIR" rev-parse HEAD 2>/dev/null)
+    fi
+
+    if [ "$remote_hash" = "$local_hash" ]; then
+        echo ">>> Already up-to-date (${remote_hash}). No update needed."
+        return 0
+    fi
+
+    echo ">>> New commit detected: local=$local_hash remote=$remote_hash"
+    echo ">>> Downloading latest AstrBot (${UPSTREAM_BRANCH}) from GitHub..."
+    mkdir -p "$extract_dir"
+
+    if ! curl -L --fail --silent --show-error -o "$tarball" "$url" 2>&1; then
+        echo "⚠️  Download failed — check network and try again." >&2
+        rm -f "$tarball"
+        rm -rf "$extract_dir"
+        return 1
+    fi
+
+    echo ">>> Extracting..."
+    if ! tar -xzf "$tarball" -C "$extract_dir" 2>&1; then
+        echo "⚠️  Extract failed." >&2
+        rm -f "$tarball"
+        rm -rf "$extract_dir"
+        return 1
+    fi
+
+    # Find the extracted top-level directory
+    local extracted
+    extracted=$(find "$extract_dir" -mindepth 1 -maxdepth 1 -type d | head -1)
+    if [ -z "$extracted" ]; then
+        echo "⚠️  Extraction produced no directory." >&2
+        rm -f "$tarball"
+        rm -rf "$extract_dir"
+        return 1
+    fi
+
+    rm -rf "$APP_DIR"
+    mv "$extracted" "$APP_DIR"
+    rm -f "$tarball"
+    rm -rf "$extract_dir"
+
+    # Initialize a git repo so git describe works inside /opt/astrbot
+    echo ">>> Setting up git repo in /opt/astrbot..."
+    git -C "$APP_DIR" init --quiet
+    git -C "$APP_DIR" remote add origin "$UPSTREAM_URL"
+    git -C "$APP_DIR" fetch --depth=1 origin "$UPSTREAM_BRANCH" --quiet
+    git -C "$APP_DIR" checkout "$UPSTREAM_BRANCH" --quiet
+
+    echo ">>> /opt/astrbot updated to ${remote_hash}"
 }
 
 # ─── Overlay snapshot / rollback ────────────────────────────────────────────
@@ -648,8 +700,8 @@ run_astrbot() {
             uv venv "$UV_PROJECT_ENVIRONMENT" --python 3.12 --clear
         _runuser_with_env "$env_file" "$runtime_root" \
             env \
-                CARGO_HOME="$CACHE_DIR/cargo" \
-                RUSTUP_HOME="$CACHE_DIR/rustup" \
+                CARGO_HOME="/var/lib/astrbot/.cargo" \
+                RUSTUP_HOME="/var/lib/astrbot/.rustup" \
                 CARGO_TARGET_DIR="$CACHE_DIR/cargo_target" \
                 uv pip install "$APP_DIR"
     fi

@@ -2,8 +2,10 @@
 
 pkgname=astrbot-git
 _pkgname=astrbot
+# Version updated manually when upstream releases a new version.
+# The install script manages /opt/astrbot independently.
 pkgver=4.22.2.r521.g22606f35
-pkgrel=5
+pkgrel=6
 pkgdesc="Agentic IM Chatbot infrastructure (multi-instance, astrbotctl only)"
 arch=('any')
 url="https://github.com/AstrBotDevs/AstrBot"
@@ -29,22 +31,13 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 install=astrbot-git.install
 
-pkgver() {
-    # Version is determined at runtime by the install script, not at build time.
-    # Use a fixed fallback so pkgver() always succeeds.
-    echo "4.22.2.r521.g22606f35"
-}
-
 package() {
-    # /opt/astrbot is managed by the install script — do NOT install it here.
-    # Only copy the LICENSE from /opt/astrbot if it exists.
+    # /opt/astrbot is managed by install script — only install LICENSE here
     if [ -f /opt/astrbot/LICENSE ]; then
         install -Dm644 /opt/astrbot/LICENSE \
             "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     else
-        # Touch a placeholder license so pacman doesn't warn
-        install -Dm644 /dev/null \
-            "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        install -Dm644 /dev/null "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
 
     install -Dm644 "$srcdir/tmpl.conf"       "$pkgdir/etc/astrbot/tmpl.conf"

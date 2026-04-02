@@ -2,19 +2,9 @@
 set -e
 
 # ─── Locate script and load shared functions ──────────────────────────────────
-# Unset any stale ASTRBOTCTL_FUNCS from the environment (e.g. sudo preserving
-# the caller's env vars with a wrong path).
-unset ASTRBOTCTL_FUNCS
 SCRIPT_DIR="$(cd "$(dirname "$0")" >/dev/null 2>&1 && pwd || printf '%s' ".")"
-# Source from the same directory as the script (for packaging), falling back
-# to /usr/bin for the shared functions file.
-if [ -f "${SCRIPT_DIR}/astrbotctl.functions" ]; then
-    # shellcheck source=astrbotctl.functions
-    . "${SCRIPT_DIR}/astrbotctl.functions"
-else
-    # shellcheck source=/usr/bin/astrbotctl.functions
-    . /usr/bin/astrbotctl.functions
-fi
+# shellcheck source=astrbotctl.functions
+. "${SCRIPT_DIR}/astrbotctl.functions"
 
 # ─── Entry point ──────────────────────────────────────────────────────────────
 cmd="${1:-}"
@@ -109,7 +99,7 @@ init)
     echo "   systemctl start astrbot@$instance"
     ;;
 
-# ── cp ────────────────────────────────────────────────────────────────────────
+# ── cp ───────────────────────────────────────────────────────────────────────
 cp)
     require_root
     src="${2?Usage: astrbotctl cp <source_instance> <dest_instance>}"
@@ -309,7 +299,7 @@ paths)
     print_paths
     ;;
 
-# ── start / stop / restart / enable / disable / status ───────────────────────
+# ── start / stop / restart / enable / disable / status ────────────────────────
 start|stop|restart|enable|disable|status)
     [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ] && { echo "Usage: astrbotctl $cmd <name>"; exit 0; }
     instance="${1:-}"
@@ -428,73 +418,90 @@ ls)
     fi
     ;;
 
-# ── git ───────────────────────────────────────────────────────────────────────
-git)
+# ── clean ─────────────────────────────────────────────────────────────────────
+clean)
     require_root
 
-    [ -z "${1:-}" ] && { echo "Usage: sudo astrbotctl git pull [--sync] [--rebuild-venv] [instance|--all]"; exit 0; }
+    echo "=== AstrBot Clean ==="
+    echo ""
 
-    case "$1" in
-    pull) shift ;;
-    *)    echo "❌ Error: Unknown git subcommand: $1" >&2; exit 1 ;;
-    esac
+    # Update snapshots
+    if [ -d "$CACHE_DIR/update-snapshots" ]; then
+        echo "  [1] Update snapshots: $CACHE_DIR/update-snapshots ($(du -sh "$CACHE_DIR/update-snapshots" 2>/dev/null | cut -f1))"
+    fi
 
-    sync=0 rebuild_venv=0 target="" all=0
+    # Cargo cache
+    if [ -d "/var/lib/astrbot/.cargo" ]; then
+        echo "  [2] Cargo cache: /var/lib/astrbot/.cargo ($(du -sh /var/lib/astrbot/.cargo 2>/dev/null | cut -f1))"
+    fi
 
-    while [ "$#" -gt 0 ]; do
-        case "$1" in
-        --sync)         sync=1; rebuild_venv=0; shift ;;
-        --rebuild-venv) sync=1; rebuild_venv=1; shift ;;
-        --all)          all=1; shift ;;
-        -h|--help)      echo "Usage: sudo astrbotctl git pull [--sync] [--rebuild-venv] [instance|--all]"; exit 0 ;;
-        -*)              echo "❌ Error: Unknown option: $1" >&2; exit 1 ;;
-        *)               [ -n "$target" ] && { echo "❌ Error: Unexpected extra argument: $1" >&2; exit 1; }
-                         target="$1"; shift ;;
+    # Rustup cache
+    if [ -d "/var/lib/astrbot/.rustup" ]; then
+        echo "  [3] Rustup cache: /var/lib/astrbot/.rustup ($(du -sh /var/lib/astrbot/.rustup 2>/dev/null | cut -f1))"
+    fi
+
+    # Old venvs (exclude current active venvs)
+    total_venvs=0
+    for v in "$CACHE_DIR"/venv-*; do
+        [ -d "$v" ] && total_venvs=$((total_venvs + 1))
+    done
+    if [ "$total_venvs" -gt 0 ]; then
+        echo "  [4] Instance venvs: $CACHE_DIR/venv-* (total: $(du -sh "$CACHE_DIR"/venv-* 2>/dev/null | awk '{sum+=$1} END {print sum}'))"
+    fi
+
+    # UV cache
+    if [ -d "$CACHE_DIR/uv" ]; then
+        echo "  [5] UV cache: $CACHE_DIR/uv ($(du -sh "$CACHE_DIR/uv" 2>/dev/null | cut -f1))"
+    fi
+
+    echo ""
+    echo "  [a] All of the above"
+    echo "  [q] Quit (no action)"
+    echo ""
+    printf "Select items to clean (e.g. 1 3 5): "
+    read -r choices
+
+    [ "$choices" = "q" ] && exit 0
+
+    for choice in $choices; do
+        case "$choice" in
+            1)
+                echo ">>> Removing update snapshots..."
+                rm -rf "$CACHE_DIR/update-snapshots"
+                mkdir -p "$CACHE_DIR/update-snapshots"
+                ;;
+            2)
+                echo ">>> Removing cargo cache..."
+                rm -rf /var/lib/astrbot/.cargo
+                ;;
+            3)
+                echo ">>> Removing rustup cache..."
+                rm -rf /var/lib/astrbot/.rustup
+                ;;
+            4)
+                echo ">>> Removing all instance venvs..."
+                rm -rf "$CACHE_DIR"/venv-*
+                ;;
+            5)
+                echo ">>> Removing UV cache..."
+                rm -rf "$CACHE_DIR/uv"
+                ;;
+            a)
+                echo ">>> Removing all caches..."
+                rm -rf "$CACHE_DIR/update-snapshots"
+                mkdir -p "$CACHE_DIR/update-snapshots"
+                rm -rf /var/lib/astrbot/.cargo
+                rm -rf /var/lib/astrbot/.rustup
+                rm -rf "$CACHE_DIR/uv"
+                ;;
+            q) exit 0 ;;
         esac
     done
-
-    [ "$all" -eq 1 ] && [ -n "$target" ] && \
-        { echo "❌ Error: Use either an instance name or --all, not both." >&2; exit 1; }
-    [ "$rebuild_venv" -eq 1 ] && [ "$all" -eq 0 ] && [ -z "$target" ] && \
-        { echo "❌ Error: --rebuild-venv requires an instance name or --all." >&2; exit 1; }
-
-    command -v git >/dev/null 2>&1 || { echo "❌ Error: git is not installed." >&2; exit 1; }
-
-    update_app_git_checkout
-
-    if [ "$sync" -eq 1 ]; then
-        if [ "$all" -eq 1 ] || [ -z "$target" ]; then
-            targets=$(iter_instances)
-            [ -z "$targets" ] && { echo ">>> No instances found. Skipping environment sync."; exit 0; }
-        else
-            targets="$target"
-        fi
-
-        for instance in $targets; do
-            load_instance_config
-            [ ! -d "$ASTRBOT_ROOT" ] && { echo "❌ Error: Instance directory $ASTRBOT_ROOT does not exist." >&2; exit 1; }
-
-            if [ "$rebuild_venv" -eq 1 ]; then
-                echo ">>> Rebuilding venv for: $instance"
-                rm -rf "$CACHE_DIR/venv-$instance"
-            fi
-            ensure_instance_env_synced
-        done
-    fi
+    echo ""
+    echo "✅ Done. Note: venvs will be rebuilt on next run."
     ;;
 
 # ── update ───────────────────────────────────────────────────────────────────
-# Unified update with atomic rollback via overlayfs snapshot.
-#
-# Flow:
-#   1. Take git snapshot of current /opt/astrbot state
-#   2. Mount overlayfs snapshot (updates go to upper layer)
-#   3. Pull AUR package (new code via overlay)
-#   4. Rebuild instance venv
-#   5. Restart instance and monitor for STABILITY_SECS
-#   6. If stable: commit overlay changes, done
-#      If fails: automatic rollback (unmount overlay, original restored)
-#
 update)
     instance="" all=0 auto_rollback=1 stability_secs="${UPDATE_STABILITY_SECS:-60}"
 
@@ -515,11 +522,6 @@ Options:
   --no-rollback          Skip automatic rollback on failure
   --stability-secs N     Seconds to monitor for stability (default: 60)
   -h, --help             Show this help
-
-Examples:
-  sudo astrbotctl update light                  # Update light instance
-  sudo astrbotctl update --all                 # Update all instances
-  sudo astrbotctl update light --stability-secs 120   # Monitor 2 minutes
 USAGE
 exit 0 ;;
         -*) echo "❌ Error: Unknown option: $1" >&2; exit 1 ;;
@@ -541,63 +543,73 @@ exit 0 ;;
         echo ">>> Updating instance: $instance"
     fi
 
-    # ── Pre-flight checks ──────────────────────────────────────────────────
-
-    # rsync is optional (cp -a is used as fallback for committing overlay changes)
-
-    # ── Step 1: Mount overlay snapshot ─────────────────────────────────────────
-    # Mount overlay FIRST, before any git operations that modify /opt/astrbot.
-    # This ensures the original lower dir is preserved for atomic rollback.
+    echo ""
+    echo "[1/7] Taking git snapshot of current state..."
+    take_git_snapshot
+    SNAP_TAG="$_SNAP_TAG"
 
     echo ""
-    echo "[1/7] Mounting overlayfs snapshot..."
-    if ! mount_overlay_snapshot; then
-        echo "❌ Overlay mount failed. Cannot proceed safely."
-        echo "    Manual fix required before retrying update."
-        exit 1
-    fi
-
-    # ── Step 2: Sync fresh source into overlay mount ──────────────────────────
-    # With overlay mounted, git clone writes to upper layer — lower dir (original)
-    # remains untouched. On rollback: just unmount, lower is automatically restored.
-
-    echo ""
-    echo "[2/7] Syncing fresh source into overlay..."
-    if ! update_app_git_checkout 2>/dev/null; then
-        echo "⚠️  Git sync failed, rolling back..."
-        rollback_overlay
-        exit 1
-    fi
-
-    # Fix ownership so venv rebuild (step 4) can write as astrbot user.
-    # git clone above runs as root and creates root-owned files in upperdir.
-    chown -R astrbot:astrbot "$_OVERLAY_UPPER"
-
-    # ── Step 3: Pull AUR package ─────────────────────────────────────────────
-
-    echo ""
-    echo "[3/7] Pulling AUR package..."
+    echo "[2/7] Pulling AUR package..."
     UPDATE_OK=0
+
+    if is_overlay_mounted; then
+        echo ">>> Cleaning up stale overlay from previous run..."
+        commit_overlay_and_unmount
+    fi
+
     if command -v paru >/dev/null 2>&1; then
         if sudo -u lightjunction paru -Syu astrbot-git --noconfirm 2>&1; then
             UPDATE_OK=1
         else
-            echo "⚠️  paru update failed (continuing with git sync'd source)."
+            echo "⚠️  paru update failed."
         fi
     else
         echo "⚠️  paru not found, skipping AUR package update."
     fi
 
-    # ── Step 4: Rebuild venv and restart instance ─────────────────────────────
+    echo ">>> Syncing /opt/astrbot from GitHub tarball..."
+    update_app_git_checkout 2>/dev/null || true
 
     echo ""
-    echo "[4/7] Restarting instances (overlay makes new code live)..."
+    echo "[3/7] Mounting overlayfs snapshot..."
+    if ! mount_overlay_snapshot; then
+        echo "❌ Overlay mount failed. Falling back to git snapshot only."
+        auto_rollback=0
+    fi
+
+    echo ""
+    echo "[4/7] Fixing broken dashboard symlink in overlay..."
+    _fix_dashboard_symlink() {
+        local _dist_link="/opt/astrbot/astrbot/dashboard/dist"
+        if [ -L "$_dist_link" ] && [ ! -e "$_dist_link" ]; then
+            echo ">>> Removing broken dashboard dist symlink..."
+            rm -f "$_dist_link"
+            mkdir -p "$_dist_link"
+        fi
+    }
+    _fix_dashboard_symlink
+
+    echo ""
+    echo "[5/7] Rebuilding venv and restarting instances..."
     _update_instance() {
         local inst="$1"
         load_instance_config
         if [ ! -d "$ASTRBOT_ROOT" ]; then
             echo "⚠️  Instance $inst directory missing, skipping."
             return 0
+        fi
+
+        echo ">>> Rebuilding venv for: $inst"
+        rm -rf "$CACHE_DIR/venv-$inst"
+
+        if [ -L "/opt/astrbot/astrbot/dashboard/dist" ] && [ ! -e "/opt/astrbot/astrbot/dashboard/dist" ]; then
+            rm -f "/opt/astrbot/astrbot/dashboard/dist"
+            mkdir -p "/opt/astrbot/astrbot/dashboard/dist"
+        fi
+
+        if ! ensure_instance_env_synced 2>&1; then
+            echo "⚠️  Failed to sync environment for $inst"
+            return 1
         fi
 
         echo ">>> Stopping: $inst"
@@ -618,10 +630,8 @@ exit 0 ;;
         fi
     done
 
-    # ── Step 5: Stability monitoring ────────────────────────────────────────
-
     echo ""
-    echo "[5/7] Monitoring stability for ${stability_secs}s..."
+    echo "[6/7] Monitoring stability for ${stability_secs}s..."
 
     STABLE=1
     for inst in $instances; do
@@ -638,8 +648,6 @@ exit 0 ;;
         echo ""
     done
 
-    # ── Step 7: Commit or rollback ───────────────────────────────────────────
-
     echo ""
     if [ "$STABLE" -eq 1 ] && [ -z "$FAILED_INSTANCES" ]; then
         echo "[7/7] All instances stable. Committing overlay changes..."
@@ -648,13 +656,16 @@ exit 0 ;;
         fi
         echo ""
         echo "=== ✅ Update complete and committed ==="
+        echo "    Git snapshot preserved: $SNAP_TAG (for manual rollback if needed)"
+        echo "    To manually rollback: git -C /opt/astrbot reset --hard $SNAP_TAG"
     else
         echo "[7/7] Stability check FAILED. Initiating rollback..."
         if [ "$auto_rollback" -eq 1 ] && is_overlay_mounted; then
             rollback_overlay
+            rollback_git_snapshot
         else
-            echo "⚠️  Auto-rollback disabled. Overlay may still be mounted at $APP_DIR"
-            echo "    Manual cleanup required."
+            echo "⚠️  Auto-rollback disabled. Manual rollback required:"
+            echo "    git -C /opt/astrbot reset --hard $SNAP_TAG"
         fi
         echo ""
         echo "=== ❌ Update failed and rolled back ==="
