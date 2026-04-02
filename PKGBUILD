@@ -1,0 +1,61 @@
+# Maintainer: SergBrowns <https://github.com/SergBrowns>
+pkgname=phantom-browser-bin
+pkgver=153.0
+pkgrel=1
+pkgdesc="Privacy-focused Firefox fork with built-in DPI bypass, VPN (VLESS+REALITY), RKN blocklist sync and ad blocker"
+arch=('x86_64')
+url="https://github.com/SergBrowns/phantom-browser"
+license=('MPL-2.0')
+depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
+optdepends=(
+    'sing-box: built-in VPN support (VLESS+REALITY)'
+    'ffmpeg: H264/AAC media playback'
+    'hunspell: spell checking'
+    'libnotify: desktop notifications'
+    'pipewire: audio support'
+    'xdg-desktop-portal: screen sharing (Wayland)'
+)
+provides=('phantom-browser')
+conflicts=('phantom-browser')
+
+source_x86_64=("phantom-${pkgver}.tar.xz::https://github.com/SergBrowns/phantom-browser/releases/download/v${pkgver}/phantom-${pkgver}.tar.xz")
+sha256sums_x86_64=('SKIP')
+
+package() {
+    # Install browser files
+    install -d "${pkgdir}/opt/phantom"
+    cp -r phantom/* "${pkgdir}/opt/phantom/"
+    chmod +x "${pkgdir}/opt/phantom/phantom"
+
+    # Commands: `phantom` (primary) + `phantom-browser` (alias)
+    install -d "${pkgdir}/usr/bin"
+    ln -s /opt/phantom/phantom "${pkgdir}/usr/bin/phantom"
+    ln -s /opt/phantom/phantom "${pkgdir}/usr/bin/phantom-browser"
+
+    # Desktop entry
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/phantom-browser.desktop" <<'DESKTOP'
+[Desktop Entry]
+Name=Phantom Browser
+GenericName=Web Browser
+Comment=Privacy-focused browser with DPI bypass and built-in VPN
+Exec=phantom %u
+Icon=phantom-browser
+Terminal=false
+Type=Application
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
+Categories=Network;WebBrowser;
+Keywords=Internet;WWW;Browser;Web;Privacy;VPN;DPI;
+StartupNotify=true
+StartupWMClass=phantom-default
+X-KDE-Wayland-AppId=phantom-default
+DESKTOP
+
+    # Icons
+    for size in 16 32 48 64 128 256 512; do
+        local icon="phantom/browser/chrome/icons/default/default${size}.png"
+        if [ -f "$icon" ]; then
+            install -Dm644 "$icon" \
+                "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/phantom-browser.png"
+        fi
+    done
+}

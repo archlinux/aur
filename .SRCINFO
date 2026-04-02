@@ -1,0 +1,24 @@
+pkgbase = phantom-browser-bin
+	pkgdesc = Privacy-focused Firefox fork with built-in DPI bypass, VPN (VLESS+REALITY), RKN blocklist sync and ad blocker
+	pkgver = 153.0
+	pkgrel = 1
+	url = https://github.com/SergBrowns/phantom-browser
+	arch = x86_64
+	license = MPL-2.0
+	depends = dbus-glib
+	depends = gtk3
+	depends = libxt
+	depends = nss
+	depends = mime-types
+	optdepends = sing-box: built-in VPN support (VLESS+REALITY)
+	optdepends = ffmpeg: H264/AAC media playback
+	optdepends = hunspell: spell checking
+	optdepends = libnotify: desktop notifications
+	optdepends = pipewire: audio support
+	optdepends = xdg-desktop-portal: screen sharing (Wayland)
+	provides = phantom-browser
+	conflicts = phantom-browser
+	source_x86_64 = phantom-153.0.tar.xz::https://github.com/SergBrowns/phantom-browser/releases/download/v153.0/phantom-153.0.tar.xz
+	sha256sums_x86_64 = SKIP
+
+pkgname = phantom-browser-bin
