@@ -1,0 +1,13 @@
+pkgbase = seamonkey-i18n-ka
+	pkgdesc = Georgian language pack for SeaMonkey
+	pkgver = 2.53.23
+	pkgrel = 1
+	url = http://www.seamonkey-project.org/
+	arch = any
+	license = MPL
+	depends = seamonkey>=2.53.23
+	noextract = seamonkey-2.53.23.ka.langpack.xpi
+	source = https://archive.seamonkey-project.org/releases/2.53.23/langpack/seamonkey-2.53.23.ka.langpack.xpi
+	sha512sums = 30e13335f3fb0192965461f02ba2ce700b7ade5efe1b10f99d6907d87d135f02f93204132242d33cca971d42d1b9ae56dd59777aa8af45fa42af9692bad214c8
+
+pkgname = seamonkey-i18n-ka
