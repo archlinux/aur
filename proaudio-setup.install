@@ -1,0 +1,12 @@
+post_install() {
+  echo "proaudio-setup has been installed. Do not forget to:"
+  echo "  - Add your user to the 'realtime' group and re-login."
+  echo "  - Add 'nohz_full=all threadirqs preempt=full' to your kernel commandline."
+  echo " - Enable the 'proaudio-setup.service' (and 'irqbalance.service') unit(s)."
+}
+
+post_remove() {
+  echo "proaudio-setup has been removed. Reminder that:"
+  echo "  - 'nohz_full=all threadirqs preempt=full' were added to the kernel commandline and may no longer be needed."
+  echo "  - irqbalance may still be installed and its unit enabled."
+}
