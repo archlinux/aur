@@ -1,7 +1,7 @@
 # Maintainer: Georg Nagel <g.schlmm at gmail dot com>
 
 pkgname=livekit
-pkgver=1.9.12
+pkgver=1.10.1
 pkgrel=2
 pkgdesc='LiveKit: Real-time video, audio and data for developers'
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=(
   "${pkgname}.service"
 )
 sha256sums=(
-  '6e0d22cf782c2c91b731ec4a84f4ae7e63d59ea189bb41afc945fc124b753923'
+  '9570251c26b5936a7ab241cb2b99d8947290afa5eecab2c23df253979cc56f47'
   'c23c7576f6ab9e94cde3501581a5732e3678bd51321903cff3171906456c40bf'
 )
 
