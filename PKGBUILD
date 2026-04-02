@@ -1,6 +1,6 @@
 # Maintainer: Nathaniel van Diepen <eeems@eeems.codes>
 pkgname=python-oras
-pkgver=0.2.38
+pkgver=0.2.42
 pkgrel=1
 pkgdesc="OCI Registry As Storage (ORAS) Python client library"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
   'python-wheel'
 )
 source=("https://files.pythonhosted.org/packages/source/o/oras/oras-${pkgver}.tar.gz")
-sha256sums=('58482f78275cb5cc9fdf135248ca878a19204428a51bd3a1ca24c32714d35341')
+sha256sums=('51d17088e5dffdeb585dd930bdccb4329762bef4af3f18600392ebae525a9231')
 
 build() {
     cd "oras-${pkgver}"
