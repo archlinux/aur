@@ -1,0 +1,3 @@
+[perl-catalystx-repl]
+source = "cpan"
+cpan = "CatalystX-REPL"
