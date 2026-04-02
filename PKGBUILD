@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
 url="https://bitwarden.com"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'alsa-lib'
   'gtk3'
