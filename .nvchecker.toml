@@ -1,0 +1,3 @@
+[perl-catalyst-authentication-store-dbix-class]
+source = "cpan"
+cpan = "Catalyst-Authentication-Store-DBIx-Class"
