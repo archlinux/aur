@@ -1,7 +1,7 @@
 pkgbase = python-ghlang
 	pkgdesc = Generate pretty charts showing language statistics from GitHub repos or local code using Python
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/velox-sh/ghlang
 	arch = any
 	license = MIT
@@ -17,6 +17,7 @@ pkgbase = python-ghlang
 	depends = python-yaml
 	depends = python-rich
 	depends = python-typer
+	depends = python-bdfparser
 	optdepends = tokount: local directory analysis with ghlang local
 	source = https://files.pythonhosted.org/packages/source/g/ghlang/ghlang-2.5.0.tar.gz
 	sha256sums = fa84069f109c505b3a94a70efb81cd4ac5ad4ff33e4b8fbb69e277cee03e040f
