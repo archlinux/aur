@@ -5,7 +5,7 @@
 # Contributor: Michael Straube <straubem@gmx.de> (previous brewtarget-git package)
 
 pkgname=brewtarget-git
-pkgver=4.0.15.r12.g99385e2
+pkgver=5.0.4.r3.g0d6cb25
 pkgrel=1
 pkgdesc="Brewing recipe designer and calculator (Git version)"
 url='https://www.brewtarget.beer/'
@@ -30,6 +30,7 @@ optdepends=(
 )
 makedepends=(
   'boost'
+  'boost-libs'
   'clang'
   'cmake'
   'git'

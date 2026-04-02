@@ -1,11 +1,12 @@
 pkgbase = brewtarget-git
 	pkgdesc = Brewing recipe designer and calculator (Git version)
-	pkgver = 4.0.15.r12.g99385e2
+	pkgver = 5.0.4.r3.g0d6cb25
 	pkgrel = 1
 	url = https://www.brewtarget.beer/
 	arch = x86_64
 	license = GPL-3.0-or-later AND WTFPL AND (CC-BY-SA-3.0 OR LGPL-3.0-or-later) AND LGPL-2.1-only
 	makedepends = boost
+	makedepends = boost-libs
 	makedepends = clang
 	makedepends = cmake
 	makedepends = git
