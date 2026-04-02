@@ -36,7 +36,7 @@ pkgbase = nekobox
 	makedepends = patchelf
 	makedepends = ccache
 	source = https://github.com/qr243vbi/nekobox/releases/download/5.10.30/nekobox-unified-source-5.10.30.tar.xz
-	sha256sums = 2169e27f2f48d17aee2f46fa26a0fd627d14af88e13dba889c52b15455cf0177
+	sha256sums = e3d56bb966e16442c591a6f0d62698f5291591f80ecf986605417a7693c5e32b
 
 pkgname = nekobox
 
