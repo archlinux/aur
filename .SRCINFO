@@ -1,8 +1,8 @@
 pkgbase = python-accuralai-discord
-	pkgdesc = AI-powered Discord bot package integrating AccuralAI orchestration
+	pkgdesc = AI-powered Discord bot package using pypresence
 	pkgver = 0.2.1
-	pkgrel = 3
-	url = https://github.com/attackuwu911/accuralai
+	pkgrel = 4
+	url = https://aur.archlinux.org/packages/python-accuralai-discord
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -11,5 +11,8 @@ pkgbase = python-accuralai-discord
 	makedepends = python-wheel
 	depends = python
 	depends = python-aiohttp
+	depends = python-pypresence
+	source = accuralai-0.2.1.tar.gz
+	sha256sums = b7722c4c103d29464d98f92d7c88d46947e4a317266f9a6932bf2a078d54dbc0
 
 pkgname = python-accuralai-discord
