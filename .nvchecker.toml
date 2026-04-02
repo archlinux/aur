@@ -1,0 +1,3 @@
+[perl-catalystx-profile]
+source = "cpan"
+cpan = "CatalystX-Profile"
