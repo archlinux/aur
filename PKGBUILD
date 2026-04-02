@@ -25,7 +25,8 @@ source_x86_64=("$pkgname-$pkgver::https://github.com/Archeb/opentrace/releases/d
 source_aarch64=("$pkgname-$pkgver::https://github.com/Archeb/opentrace/releases/download/v$pkgver/linux-arm64.tar.gz")
 
 latestver() {
-  curl -fsSL 'https://api.github.com/repos/Archeb/opentrace/releases/latest' | jq -r 'select(any(.assets[]?; .name == "linux-x64.tar.gz") and any(.assets[]?; .name == "linux-arm64.tar.gz")) | .tag_name' | sed -E 's/^v//'
+  gh api --paginate repos/Archeb/opentrace/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "linux-x64.tar.gz") and any(.assets[]; .name == "linux-arm64.tar.gz")) | .tag_name' |
+  head -1 | sed -E 's/^v//'
 }
 
 package() {
