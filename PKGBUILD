@@ -13,8 +13,8 @@ provides=("bd=${pkgver}" "beads=${pkgver}")
 conflicts=('beads')
 
 latestver() {
-    curl -fsSL 'https://api.github.com/repos/steveyegge/beads/releases/latest' | jq -r '.assets[]?.name' |
-    sed -nE '/^beads_[0-9.]+_linux_amd64\.tar\.gz$/{s/^beads_//; s/_linux_amd64\.tar\.gz$//; p;}'
+    gh api --paginate repos/steveyegge/beads/releases --jq '.[] | select(.prerelease == false and .draft == false) | .assets[]?.name' |
+    sed -nE '/^beads_[0-9.]+_linux_amd64\.tar\.gz$/{s/^beads_//; s/_linux_amd64\.tar\.gz$//; p; q}'
 }
 
 source_x86_64=("beads-${pkgver}-linux-amd64.tar.gz::https://github.com/steveyegge/beads/releases/download/v${pkgver}/beads_${pkgver}_linux_amd64.tar.gz")
