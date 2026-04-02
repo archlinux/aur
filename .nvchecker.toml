@@ -1,0 +1,5 @@
+[gojq-bin]
+source = "github"
+github = "itchyny/gojq"
+use_latest_release = true
+prefix = "v"
