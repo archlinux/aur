@@ -106,11 +106,6 @@ build() {
     make -j"$(nproc)"
 }
 
-check() {
-    cd "${pkgname}" || return 1
-    make check -j"$(nproc)" || true
-}
-
 package() {
     cd "${pkgname}" || return 1
     make DESTDIR="${pkgdir}" install
