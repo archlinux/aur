@@ -1,4 +1,4 @@
-# Maintainer: Rubin Simons <me@rubin55.org>
+# Maintainer: Abubakar Omer <aur@aolabs.dev>
 
 pkgname=talanoa-bin
 pkgver=0.8.0
