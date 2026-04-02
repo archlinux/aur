@@ -1,14 +1,14 @@
 # Maintainer: Nikita <nikitamkrotov@gmail.com>
 pkgname=slavweb-electron
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Кроссплатформенное десктопное приложение на Electron для SlavWEB"
 arch=('x86_64')
 url="https://github.com/gtinikita203/linux-unpacked-slav"
 license=('MIT')
-depends=('gtk3' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss' 'dbus' 'at-spi2-atk')
+depends=('gtk3' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss' 'dbus' 'at-spi2-atk' 'pipewire' 'wireplumber' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gtinikita203/linux-unpacked-slav/releases/download/$pkgver/slavweb-electron-$pkgver-linux-unpacked.tar.gz")
-sha256sums=('732e5ef78e29239cefc4a11185aa85bc3ea85586e3715e63eb49983f4babb9db')
+sha256sums=('7877b1de8972b86c7cc602c90be0f182da9078c44b6c398df880e017f1cdc36c')
 
 package() {
     cd "$srcdir"
