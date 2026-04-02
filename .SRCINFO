@@ -1,0 +1,16 @@
+pkgbase = dinky-git
+	pkgdesc = A terminal text editor for those who just want to edit some text (VCS version)
+	pkgver = r169.3f5b2ff
+	pkgrel = 1
+	url = https://github.com/sedwards2009/dinky
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.24
+	makedepends = git
+	depends = glibc
+	provides = dinky=r169.3f5b2ff
+	conflicts = dinky
+	source = dinky::git+https://github.com/sedwards2009/dinky.git
+	sha256sums = SKIP
+
+pkgname = dinky-git
