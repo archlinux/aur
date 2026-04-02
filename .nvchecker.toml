@@ -1,0 +1,3 @@
+[perl-catalystx-injectcomponent]
+source = "cpan"
+cpan = "CatalystX-InjectComponent"
