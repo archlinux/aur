@@ -1,50 +1,53 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-devel-stacktrace-withlexicals'
-pkgver='2.01'
-pkgrel='1'
-pkgdesc="Devel::StackTrace + PadWalker"
+_author=SARTAK
+_dist=Devel-StackTrace-WithLexicals
+pkgname=perl-${_dist@L}
+pkgver=2.01
+pkgrel=2
+pkgdesc='Devel::StackTrace + PadWalker'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-devel-stacktrace>=2.00'
+    'perl-padwalker>=1.98'
+    'perl>=5.8.1'
+)
+makedepends=(
+    'perl-extutils-makemaker>=6.59'
+    'perl-module-install'
+)
 options=('!emptydirs')
-depends=('perl-devel-stacktrace>=2.00' 'perl-padwalker>=1.98' 'perl>=5.8.1')
-makedepends=()
-url='https://metacpan.org/release/Devel-StackTrace-WithLexicals'
-source=('http://search.cpan.org/CPAN/authors/id/S/SA/SARTAK/Devel-StackTrace-WithLexicals-2.01.tar.gz')
-md5sums=('bcf170645b1cbd120c4d9593f5c85fb1')
-sha512sums=('ccfd415af962ce876d658b0429d8ea3491261decf4cf46b357e8c7eccac0cbabf9b227b37d2aab38a304d6caac6a895cefb6a5e2e7bfb79c547c7f4a53ab2d76')
-_distdir="Devel-StackTrace-WithLexicals-2.01"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('693d6e7c7d77833b5288d2378555abd0127bb3f139201e7573e8780d3f6455c6')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:

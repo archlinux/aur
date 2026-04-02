@@ -1,18 +1,17 @@
 pkgbase = perl-devel-stacktrace-withlexicals
 	pkgdesc = Devel::StackTrace + PadWalker
 	pkgver = 2.01
-	pkgrel = 1
-	url = https://metacpan.org/release/Devel-StackTrace-WithLexicals
+	pkgrel = 2
+	url = https://metacpan.org/release/SARTAK/Devel-StackTrace-WithLexicals-2.01
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker>=6.59
+	makedepends = perl-module-install
 	depends = perl-devel-stacktrace>=2.00
 	depends = perl-padwalker>=1.98
 	depends = perl>=5.8.1
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SA/SARTAK/Devel-StackTrace-WithLexicals-2.01.tar.gz
-	md5sums = bcf170645b1cbd120c4d9593f5c85fb1
-	sha512sums = ccfd415af962ce876d658b0429d8ea3491261decf4cf46b357e8c7eccac0cbabf9b227b37d2aab38a304d6caac6a895cefb6a5e2e7bfb79c547c7f4a53ab2d76
+	source = https://cpan.metacpan.org/authors/id/S/SA/SARTAK/Devel-StackTrace-WithLexicals-2.01.tar.gz
+	sha256sums = 693d6e7c7d77833b5288d2378555abd0127bb3f139201e7573e8780d3f6455c6
 
 pkgname = perl-devel-stacktrace-withlexicals
-
