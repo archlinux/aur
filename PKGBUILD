@@ -2,7 +2,7 @@
 
 pkgname=kpa
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KevinCrrl Python AUR Helper"
 arch=('any')
 url="https://github.com/KevinCrrl/kpa"
@@ -14,7 +14,6 @@ depends=(
     'python'
     'python-pyxdg'
     'python-jsonschema'
-    'python-colorama'
     'python-pkgbuild-parser'
     'python-requests'
     'python-typer'
