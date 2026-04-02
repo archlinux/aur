@@ -1,0 +1,29 @@
+pkgbase = freebsd-coreutils-git
+	pkgdesc = Alternative to GNU coreutils using software from FreeBSD. Chocobo1's package with improved full source build.
+	pkgver = 13.2.r33.g6bec5e5
+	pkgrel = 1
+	url = https://codeberg.org/dcantrell/bsdutils.git
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = byacc
+	makedepends = meson
+	makedepends = flex
+	makedepends = ninja
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libedit
+	depends = libbsd
+	depends = libxo
+	depends = ncurses
+	depends = openssl
+	depends = unibilium
+	provides = bsdutils=13.2.r33.g6bec5e5
+	conflicts = bsdutils
+	conflicts = bsdcoreutils-git
+	source = git+https://codeberg.org/dcantrell/bsdutils.git
+	sha256sums = SKIP
+
+pkgname = freebsd-coreutils-git
