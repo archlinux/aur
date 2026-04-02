@@ -36,6 +36,10 @@ package() {
     cp -a "$pkgdir/opt/kittenspaceagency/linux-x64/." "$pkgdir/opt/kittenspaceagency/"
     rm -r "$pkgdir/opt/kittenspaceagency/linux-x64"
 
+    # Fix permissions
+    chmod 755 "$pkgdir/opt/kittenspaceagency/KSA"
+    chmod 755 "$pkgdir/opt/kittenspaceagency/Brutal.Monitor.Subprocess"
+
     # Launcher
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/kittenspaceagency" << 'EOF'
 #!/bin/bash
