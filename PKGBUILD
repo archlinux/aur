@@ -1,4 +1,6 @@
-# Maintainer: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
+# Contributor: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
+
 pkgname=python-datauri
 _name=${pkgname}
 pkgver=2.2.0
