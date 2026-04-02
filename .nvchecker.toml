@@ -1,0 +1,5 @@
+[hashit-bin]
+source = "github"
+github = "boyter/hashit"
+use_latest_release = true
+prefix = "v"

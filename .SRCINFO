@@ -1,0 +1,19 @@
+pkgbase = hashit-bin
+	pkgdesc = A cross platform tool to compute hashes of files quickly. Similar to hashdeep
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/boyter/hashit
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = hashit
+	conflicts = hashit
+	source_x86_64 = hashit-x86_64-1.4.0.tgz::https://github.com/boyter/hashit/releases/download/v1.4.0/hashit_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c9ea1a96adac7016dbbe7a96c9483ec4ba99e40b163b987bbe17f9e06f6a9afe
+	source_i686 = hashit-i686-1.4.0.tgz::https://github.com/boyter/hashit/releases/download/v1.4.0/hashit_Linux_i386.tar.gz
+	sha256sums_i686 = b79068a45070b539886dd6ba09831906ad2adb1a65eae53b15a74f832d52290f
+	source_aarch64 = hashit-aarch64-1.4.0.tgz::https://github.com/boyter/hashit/releases/download/v1.4.0/hashit_Linux_arm64.tar.gz
+	sha256sums_aarch64 = f9a77a8f823285515b1d675f4b8f641465d0e6f3b98169cdb98bc263d3220ce3
+
+pkgname = hashit-bin
