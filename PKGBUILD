@@ -4,9 +4,9 @@
 pkgname=astrojs-language-server
 _pkgname=${pkgname#astrojs-}
 pkgver=2.16.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The Astro language server, powered by Volar"
-url="https://github.com/withastro/astro/blob/main/packages/language-tools/language-server#readme"
+url="https://github.com/withastro/astro/tree/main/packages/language-tools/language-server#readme"
 license=("MIT")
 arch=("any")
 depends=("nodejs")
