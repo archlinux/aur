@@ -1,7 +1,7 @@
 # Maintainer: sunkhan
 pkgname=decibell
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Decentralized text, voice chat, and streaming app"
 arch=('x86_64')
 url="https://github.com/sunkhan/decibell"
@@ -27,6 +27,9 @@ package() {
     install -d "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/decibell" << 'LAUNCHER'
 #!/bin/sh
+# Use host ALSA plugins so PipeWire audio routing works
+export ALSA_PLUGIN_DIR=/usr/lib/alsa-lib
+export LD_PRELOAD=/usr/lib/libasound.so.2
 exec /opt/decibell/decibell.AppImage --no-sandbox "$@"
 LAUNCHER
     chmod 755 "${pkgdir}/usr/bin/decibell"
