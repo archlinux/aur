@@ -1,0 +1,5 @@
+[envm-bin]
+source = "github"
+github = "objz/envm"
+use_latest_release = true
+prefix = "v"
