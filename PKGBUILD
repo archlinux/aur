@@ -2,7 +2,7 @@
 
 pkgname=astrbot-git
 _pkgname=astrbot
-pkgver=4.22.2.r521.g22606f35
+pkgver=0.0.0.r.g
 pkgrel=2
 pkgdesc="Agentic IM Chatbot infrastructure (multi-instance, astrbotctl only)"
 arch=('any')
@@ -31,25 +31,39 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 install=astrbot-git.install
 
 prepare() {
-    rm -rf "$srcdir/$_pkgname"
+    rm -rf "$srcdir/$_pkgname" "$srcdir/astrbot.tar.gz"
 
-    local _retries=3 _count=0
-    while ((_count < _retries)); do
-        if git clone -b dev --depth=500 \
-            "https://github.com/AstrBotDevs/AstrBot.git" "$srcdir/$_pkgname"; then
-            break
-        fi
-        ((_count++))
-        if ((_count < _retries)); then
-            echo ">>> Clone failed, retrying ($_count/$_retries)..."
-            rm -rf "$srcdir/$_pkgname"
-        fi
-    done
-
-    if [ ! -d "$srcdir/$_pkgname" ]; then
-        error "Failed to clone AstrBot after $_retries attempts."
+    echo ">>> Downloading AstrBot source tarball..."
+    if ! curl -L --fail --silent --show-error \
+        "https://github.com/AstrBotDevs/AstrBot/archive/refs/heads/dev.tar.gz" \
+        -o "$srcdir/astrbot.tar.gz" 2>&1; then
+        echo "!!! Failed to download AstrBot tarball."
         return 1
     fi
+
+    echo ">>> Extracting..."
+    mkdir -p "$srcdir/$_pkgname"
+    if ! tar -xzf "$srcdir/astrbot.tar.gz" -C "$srcdir/$_pkgname"; then
+        echo "!!! Failed to extract tarball."
+        rm -f "$srcdir/astrbot.tar.gz"
+        return 1
+    fi
+    rm -f "$srcdir/astrbot.tar.gz"
+
+    # Flatten: move contents of AstrBot-dev/* into $srcdir/$_pkgname/
+    local _src="$srcdir/$_pkgname"
+    local _sub
+    _sub=$(find "$_src" -mindepth 1 -maxdepth 1 -type d | head -1)
+    if [ -n "$_sub" ] && [ "$_sub" != "$_src" ]; then
+        mv "$_sub"/* "$_src/" 2>/dev/null || true
+        rmdir "$_sub" 2>/dev/null || true
+    fi
+
+    # Init git repo so git describe works in pkgver
+    git -C "$_src" init --quiet
+    git -C "$_src" remote add origin "https://github.com/AstrBotDevs/AstrBot.git"
+    git -C "$_src" fetch --tags origin --quiet 2>/dev/null || true
+    git -C "$_src" checkout dev --quiet 2>/dev/null || true
 }
 
 pkgver() {
