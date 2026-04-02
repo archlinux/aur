@@ -1,7 +1,7 @@
 pkgbase = python-spdx-tools
 	pkgdesc = A Python library to parse, validate and create SPDX documents.
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spdx/tools-python
 	arch = any
 	license = Apache-2.0
@@ -22,6 +22,9 @@ pkgbase = python-spdx-tools
 	depends = python-license-expression
 	depends = python-ply
 	depends = python-semantic-version
+	depends = python-pyshacl
+	depends = python-networkx
+	optdepends = python-pygraphviz: for graph visualization support
 	source = git+https://github.com/spdx/tools-python.git#tag=v0.8.5
 	sha256sums = 52ef179e05f2219af2b59fa752c85bbad436451951ea09aab0056af7ffb9a4b2
 
