@@ -2,7 +2,7 @@
 
 _name=llama-index-embeddings-huggingface
 pkgname=python-${_name}
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="LlamaIndex Embeddings Integration: Huggingface"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-llama-index-core')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-asyncio')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('3b21ffeda22f8221ed55778bb3daed71664ab07b341f1dd2f408963bd20355b9')
+sha256sums=('da8a2a65df9404112c4430dfada09d4f846ba165197a25dbe77f734014c56a87')
 
 build() {
     cd "${srcdir}"/${_name//-/_}-${pkgver}

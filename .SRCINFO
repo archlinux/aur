@@ -1,6 +1,6 @@
 pkgbase = python-llama-index-embeddings-huggingface
 	pkgdesc = LlamaIndex Embeddings Integration: Huggingface
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://pypi.org/project/llama-index-embeddings-huggingface/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-llama-index-embeddings-huggingface
 	makedepends = python-wheel
 	depends = python
 	depends = python-llama-index-core
-	source = https://files.pythonhosted.org/packages/source/l/llama_index_embeddings_huggingface/llama_index_embeddings_huggingface-0.6.1.tar.gz
-	sha256sums = 3b21ffeda22f8221ed55778bb3daed71664ab07b341f1dd2f408963bd20355b9
+	source = https://files.pythonhosted.org/packages/source/l/llama_index_embeddings_huggingface/llama_index_embeddings_huggingface-0.7.0.tar.gz
+	sha256sums = da8a2a65df9404112c4430dfada09d4f846ba165197a25dbe77f734014c56a87
 
 pkgname = python-llama-index-embeddings-huggingface
