@@ -1,0 +1,39 @@
+pkgbase = perl-catalystx-simplelogin
+	pkgdesc = Provide a simple Login controller which can be reused
+	pkgver = 0.21
+	pkgrel = 1
+	url = https://metacpan.org/release/ABRAXXA/CatalystX-SimpleLogin-0.21
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-catalyst-action-renderview
+	makedepends = perl-catalyst-actionrole-acl
+	makedepends = perl-catalyst-plugin-session-state-cookie
+	makedepends = perl-class-load>=0.20
+	makedepends = perl-extutils-makemaker>=6.36
+	makedepends = perl-file-temp
+	makedepends = perl-http-message
+	makedepends = perl-module-install
+	makedepends = perl-sql-translator
+	makedepends = perl-test-exception
+	makedepends = perl-test-simple
+	depends = perl
+	depends = perl-catalyst-action-rest>=0.74
+	depends = perl-catalyst-plugin-authentication
+	depends = perl-catalyst-plugin-session>=0.35
+	depends = perl-catalyst-runtime>=5.80013
+	depends = perl-catalyst-view-tt
+	depends = perl-catalystx-component-traits>=0.13
+	depends = perl-catalystx-injectcomponent
+	depends = perl-html-formhandler>=0.28001
+	depends = perl-moose
+	depends = perl-moosex-methodattributes>=0.18
+	depends = perl-moosex-relatedclassroles>=0.004
+	depends = perl-moosex-types
+	depends = perl-moosex-types-common
+	depends = perl-namespace-autoclean
+	depends = perl-try-tiny>=0.24
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/A/AB/ABRAXXA/CatalystX-SimpleLogin-0.21.tar.gz
+	sha256sums = 6ccf97c824c7737572f535fd4a590bd3fe9ea5e12eaa6beffbef4b179b11b89d
+
+pkgname = perl-catalystx-simplelogin
