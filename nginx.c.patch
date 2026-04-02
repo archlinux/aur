@@ -1,0 +1,12 @@
+# diff -Nau freenginx-1.28.0/src/core/nginx.c freenginx-1.28.0_patched/src/core/nginx.c >freenginx/nginx.c.patch
+--- freenginx-1.28.0/src/core/nginx.c	2025-04-22 05:53:54.000000000 -0300
++++ freenginx-1.28.0_patched/src/core/nginx.c	2026-04-02 13:37:54.530966215 -0300
+@@ -399,7 +399,7 @@
+ static void
+ ngx_show_version_info(void)
+ {
+-    ngx_write_stderr("nginx version: " NGINX_VER_BUILD NGX_LINEFEED);
++    ngx_write_stderr(NGINX_NAME " version: " NGINX_VER_BUILD NGX_LINEFEED);
+ 
+     if (ngx_show_help) {
+         ngx_write_stderr(

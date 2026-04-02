@@ -1,9 +1,12 @@
+################################################################################
 # Maintainer: Fabiano Furtado < fusca14 _at_ gmail *dot* com >
-
+#
+# https://wiki.archlinux.org/title/AUR_submission_guidelines#Publishing_new_package_content
+################################################################################
 pkgbase=freenginx
 pkgname=($pkgbase $pkgbase'-src')
 pkgver=1.28.0
-pkgrel=1
+pkgrel=2
 _prefix_relative='etc/'$pkgbase
 _prefix_full='/'$_prefix_relative
 arch=(x86_64)
@@ -16,13 +19,15 @@ checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi
 source=($url/download/$pkgbase-$pkgver.tar.gz{,.asc}
         freenginx.service
         logrotate
+        nginx.c.patch
         ngx_setproctitle.c.patch)
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 sha512sums=('90694e0fc4d596bb9ff82c851b3b469e7cb350a719dfa68b5c32826727328895e9ae40e2115a707bc24eeb8faa91d7b0136a48b8bef9993bfdda436a09776b7b'
             'SKIP'
             '2fb3e090e0b44ed9dadf2dee11a045bf422ba80f427ff642e478c533cf756c9727a2bfafbb8e034ef45192699afb6e34fc662a7899e18808cb51ca02f3f30464'
             '24f5ee73b0e9d8775d36aa250d63401abd7c9d474babd6acc197a4e995eb6e668b15d08794145f3d5acd0a77b854be3e3d2cbc0e0f3e1b416b877baa95dc0f0f'
-            'b5fa03c48f31e6e1f0fe3033f1a18c1740d38699d130f43094b60d309c2e32359830417a8c48e9c2a1969047e3df7cd350276e8a4a3923a6626ccbcd0e1c1e96')
+            'd81854142080e0053fd0068d1042993265dc13d02dd69da9752f9ff293059e5b20f0082c356f264bc323da33accc24aa1a5bd105710e686d9ca83ae278e7c50c'
+            'abea88d2b425fd9ce2b3c56aa3156c54f28108ad64e16b277db0bd9c7a73886c3d5800d2f081f2a2e2d84bc83885b2c85e646daca2709aeba44940978492f428')
 
 _common_flags=(
   --with-compat
