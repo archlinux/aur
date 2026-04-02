@@ -1,19 +1,26 @@
 pkgbase = perl-moosex-types-common
 	pkgdesc = A library of commonly used type constraints
-	pkgver = 0.001013
+	pkgver = 0.001015
 	pkgrel = 1
-	url = https://metacpan.org/release/MooseX-Types-Common
+	url = https://metacpan.org/release/ETHER/MooseX-Types-Common-0.001015
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-module-metadata
+	checkdepends = perl-pathtools
+	checkdepends = perl-term-ansicolor
 	checkdepends = perl-test-deep
+	checkdepends = perl-test-simple
 	checkdepends = perl-test-warnings>=0.005
+	checkdepends = perl>=5.8.0
+	makedepends = perl-module-build-tiny>=0.034
+	depends = perl-carp
+	depends = perl-if
+	depends = perl-moose
 	depends = perl-moosex-types
-	depends = perl
+	depends = perl>=5.6.1
+	optdepends = perl-cpan-meta
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Types-Common-0.001013.tar.gz
-	md5sums = 0e737459277df34e646b101cc43e684b
-	sha512sums = 89712f5bb5653ad434480d2621991637aa5d8f9b349e6514a24937668835ad6ca154b03e8f4c09516c69f604ea465068e9676d8af27bca24e7b31159d5964bb8
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Types-Common-0.001015.tar.gz
+	sha256sums = 2b30e20b325133bbafe907a62b4c87f77ca61bbaa117022ac56af94e2835a313
 
 pkgname = perl-moosex-types-common
-
