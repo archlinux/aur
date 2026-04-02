@@ -3,5 +3,5 @@
 *.log
 pkg/
 src/
-cbftp/
+cbftp-svn/
 .idea

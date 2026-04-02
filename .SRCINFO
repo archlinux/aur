@@ -1,18 +1,18 @@
 pkgbase = cbftp-svn
-	pkgdesc = an advanced multi-purpose FTP/FXP client that focuses on efficient large-scale data spreading, while also supporting most regular FTP/FXP use cases in a modern way. It runs in a terminal and provides a semi-graphical user interface through ncurses.
-	pkgver = r1277
-	pkgrel = 3
+	pkgdesc = Advanced multi-purpose FTP/FXP client with ncurses interface focused on efficient large-scale data spreading.
+	pkgver = r1301
+	pkgrel = 1
 	url = https://cbftp.glftpd.io
 	arch = x86_64
 	license = MIT
 	makedepends = subversion
-	makedepends = gcc
+	makedepends = make
 	depends = openssl
 	depends = ncurses
+	depends = glibc
+	depends = gcc-libs
 	provides = cbftp
-	provides = cbftp-svn
 	conflicts = cbftp
-	replaces = cbftp
 	source = cbftp-svn::svn+https://cbftp.glftpd.io/svn/cbftp/
 	sha256sums = SKIP
 
