@@ -30,12 +30,8 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 install=astrbot-git.install
 
 pkgver() {
-    # Read version from installed /opt/astrbot (managed by this package's install script)
-    if [ -d "/opt/astrbot/.git" ]; then
-        cd /opt/astrbot
-        git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g' && return
-    fi
-    # Fallback: hardcoded version (matches last known upstream)
+    # Version is determined at runtime by the install script, not at build time.
+    # Use a fixed fallback so pkgver() always succeeds.
     echo "4.22.2.r521.g22606f35"
 }
 
