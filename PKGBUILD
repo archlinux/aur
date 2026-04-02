@@ -22,8 +22,8 @@ latestver() {
   local gv kv
   gv=$(pacman -Si ghidra 2>/dev/null | awk '/^Version/{print $3; exit}' | sed 's/-.*//')
   [ -z "$gv" ] && return 1
-  kv=$(gh api repos/CERTCC/kaiju/releases/latest --jq \
-    ".assets[] | select(.name | test(\"ghidra_${gv}_\")) | .name" |
+  kv=$(gh api --paginate repos/CERTCC/kaiju/releases --jq \
+    ".[] | select(.prerelease == false and .draft == false) | .assets[] | select(.name | test(\"ghidra_${gv}_\")) | .name" |
     head -1 | grep -oP '20\K[0-9]+(?=_kaiju)')
   [ -z "$kv" ] && return 1
   echo "${kv}_${gv}"
