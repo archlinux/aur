@@ -1,6 +1,6 @@
 pkgbase = raiderio-client
 	pkgdesc = raider.io desktop client for Linux
-	pkgver = 4.10.5
+	pkgver = 4.10.7
 	pkgrel = 1
 	url = https://raider.io/
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = raiderio-client
 	license = custom:chromium-licenses
 	depends = fuse2
 	options = !strip
-	source = raiderio-client-x86_64-v4.10.5.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v4.10.5/RaiderIO_Installer_Linux_x86_64.AppImage
-	source = raiderio-client-arm64-v4.10.5.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v4.10.5/RaiderIO_Installer_Linux_arm64.AppImage
+	source = raiderio-client-x86_64-v4.10.7.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v4.10.7/RaiderIO_Installer_Linux_x86_64.AppImage
+	source = raiderio-client-arm64-v4.10.7.AppImage::https://github.com/RaiderIO/raiderio-client-builds/releases/download/v4.10.7/RaiderIO_Installer_Linux_arm64.AppImage
 	source = start
-	sha512sums = 7ab492b91712dac6bfc97a1c996f6376f34eaff561d294d5ecfbdaf9d995142e0d380df2f503413a0c9059be4e57cc5b43a33477325dc291a37ade7958439c53
-	sha512sums = a730f69b33ffa372a7bec73a91b9f3b3be1125a9a5b5ccd91e92539bc6a44779badbc3bf525c1888482c2235fbdec53b3859051d370556e1d887a7a4bf1c823c
+	sha512sums = 96750a4b8aed1102846ae25791e5478a1e88b9b09ed09cce3548ff253384faeade512177b09f2eb9e50e85728b16348cc788f735a9024dfabf3516adafa76e78
+	sha512sums = 0fd61e53cb84aa62e4892ff2bf375c08522d899884141b735edc4199b9ff37a91c9e80a0fb0f69f6ac2a3fa52b7a0a06386d38050a4eb59e385f7b11f1a54f67
 	sha512sums = ee0cb07b4bf56ed43bf163f0141d5165889b051fe0aaf52f46789f67f6ab896f7d69c3527ab77bb1fd70e3c7c6a6611e691fd8ad91edd1db35a2252f10bef9a9
 
 pkgname = raiderio-client
