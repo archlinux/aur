@@ -10,7 +10,9 @@ arch=('x86_64')
 url=https://metacpan.org/release/$_author/$_dist-$pkgver
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
+    # Missing dep in perl-xs-parse-keyword package (bug).
     'perl-file-sharedir'
+
     'perl-xs-parse-keyword>=0.36'
     'perl>=5.16.0'
 )
