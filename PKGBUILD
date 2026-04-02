@@ -1,5 +1,6 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: BluePeril "<blueperil@blueperil.de>"
+# Contributor: Anton Komolov <anton.komolov@gmail.com>
 
 _author=MSTROUT
 _dist=Test-WWW-Mechanize-Catalyst
