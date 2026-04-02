@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Python Library that implements the endpoints of the Crossref API'
 arch=('x86_64')
 url='https://github.com/fabiobatalha/crossrefapi'
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('python-requests')
 makedepends=('python-poetry')
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
@@ -20,4 +20,6 @@ build() {
 package() {
     cd "$_name-$pkgver"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
+    cp LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
 }
