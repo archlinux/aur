@@ -13,7 +13,7 @@ pkgbase = gridix-appimage
 	conflicts = gridix-bin
 	options = !strip
 	source = gridix-3.6.0.AppImage::https://github.com/MCB-SMART-BOY/Gridix/releases/download/v3.6.0/gridix.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/v3.6.0/LICENSE
+	source = LICENSE-3.6.0::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/v3.6.0/LICENSE
 	sha256sums = c5c790c1da123c1d209002a478715d5ecda4f368eaa03e8f12300555197eb4ea
 	sha256sums = 01132d0ac431cc5a8f34ea8ba055deb6f68d7034d8ed6f821b827f4b9195aae4
 

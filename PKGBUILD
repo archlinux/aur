@@ -11,7 +11,7 @@ provides=('gridix')
 conflicts=('gridix' 'gridix-bin')
 options=('!strip')
 source=("gridix-${pkgver}.AppImage::https://github.com/MCB-SMART-BOY/Gridix/releases/download/v${pkgver}/gridix.AppImage"
-        "LICENSE::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/v${pkgver}/LICENSE")
+        "LICENSE-${pkgver}::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/v${pkgver}/LICENSE")
 sha256sums=('c5c790c1da123c1d209002a478715d5ecda4f368eaa03e8f12300555197eb4ea' '01132d0ac431cc5a8f34ea8ba055deb6f68d7034d8ed6f821b827f4b9195aae4')
 
 prepare() {
@@ -46,5 +46,5 @@ Keywords=database;sql;sqlite;postgresql;mysql;
 END
     
     # 安装许可证
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
