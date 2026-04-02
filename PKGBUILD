@@ -3,8 +3,8 @@
 # AUR Package Repository: https://github.com/patrickjaja/claude-desktop-bin
 
 pkgname=claude-desktop-bin
-pkgver=1.1.9669
-pkgrel=8
+pkgver=1.2.234
+pkgrel=1
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -13,23 +13,22 @@ depends=('electron')
 optdepends=('nodejs: System Node.js for MCP extensions that require specific versions (Electron bundles Node.js as fallback)'
             'claude-code: Claude Code CLI for agentic coding features (npm i -g @anthropic-ai/claude-code)'
             'claude-cowork-service: Enables Cowork VM features on Linux'
-            'xdotool: Computer Use input + Quick Entry positioning (X11/XWayland)'
+            'xdotool: Computer Use input (X11), cursor reading + XWayland fallback (Wayland), Quick Entry positioning'
             'scrot: Computer Use screenshots (X11)'
-            'xclip: Computer Use clipboard access (X11)'
+            'imagemagick: Computer Use screenshot fallback and crop (import/convert)'
             'wmctrl: Computer Use running app detection (X11)'
-            'xorg-xrandr: Computer Use display enumeration (X11)'
-            'ydotool: Computer Use input automation (Wayland — requires ydotoold daemon running)'
+            'ydotool: Computer Use input automation (all Wayland compositors — requires ydotoold daemon running, v1.0+)'
             'grim: Computer Use screenshots (Wayland/wlroots — Sway, Hyprland)'
-            'slurp: Computer Use region selection (Wayland/wlroots)'
-            'wl-clipboard: Computer Use clipboard access (Wayland)'
-            'wlr-randr: Computer Use display enumeration (Wayland/wlroots)'
-            'spectacle: Computer Use screenshots on KDE Plasma Wayland (pre-installed on KDE)'
+            'jq: Computer Use window queries on Sway (used with swaymsg)'
+            'spectacle: Computer Use screenshots (KDE Plasma Wayland)'
+            'glib2: Computer Use screenshots on GNOME Wayland (gdbus for D-Bus)'
+            'gnome-screenshot: Computer Use screenshot fallback (GNOME)'
             'hyprland: Quick Entry cursor positioning on Hyprland Wayland (hyprctl)'
             'socat: Cowork socket health check in launcher (fallback: age-based check)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.9669-8/claude-desktop-1.1.9669-linux.tar.gz")
-sha256sums_x86_64=('2f9d595f210f09db13963ca50662745ef90138fda7ec6d8ef519e9c17b6ec7fd')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.2.234/claude-desktop-1.2.234-linux.tar.gz")
+sha256sums_x86_64=('7ab7cfdbbdf4f23c3c2a86e78d0104f2e06a4130926f0f75886ae6b788a50239')
 options=('!strip')
 
 package() {
