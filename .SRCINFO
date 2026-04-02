@@ -1,0 +1,15 @@
+pkgbase = perl-cgi-formbuilder-source-perl
+	pkgdesc = read FormBuilder config from Perl syntax files
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://metacpan.org/release/EVDB/CGI-FormBuilder-Source-Perl-0.01
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	depends = perl
+	depends = perl-cgi-formbuilder
+	depends = perl-file-slurp
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/EV/EVDB/CGI-FormBuilder-Source-Perl-0.01.tar.gz
+	sha256sums = 3d1580f4f7ae9481e0754ad0c2f629026d1b4927f5e7631207bc95cad3d8ae67
+
+pkgname = perl-cgi-formbuilder-source-perl

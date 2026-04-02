@@ -1,0 +1,3 @@
+[perl-cgi-formbuilder-source-perl]
+source = "cpan"
+cpan = "CGI-FormBuilder-Source-Perl"
