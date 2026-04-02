@@ -35,6 +35,7 @@ makedepends=(
 )
 optdepends=(
   'python-anthropic: Claude integration (recommended if using Claude Code)'
+  'python-claude-agent-sdk: Claude agent SDK (recommended if using Claude Code)'
   'python-litellm: LiteLLM support'
   'python-streamlit: dashboard support'
   'python-plotly: dashboard support'

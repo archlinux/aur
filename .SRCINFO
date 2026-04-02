@@ -29,6 +29,7 @@ pkgbase = python-ouroboros-ai
 	depends = python-textual
 	depends = python-typer
 	optdepends = python-anthropic: Claude integration (recommended if using Claude Code)
+	optdepends = python-claude-agent-sdk: Claude agent SDK (recommended if using Claude Code)
 	optdepends = python-litellm: LiteLLM support
 	optdepends = python-streamlit: dashboard support
 	optdepends = python-plotly: dashboard support
