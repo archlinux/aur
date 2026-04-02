@@ -1,16 +1,17 @@
 pkgbase = dos2unix-git
 	pkgdesc = Convert text files with DOS or Mac line breaks to Unix line breaks and vice versa
-	pkgver = 7.4.4.r2.g15f9f9d
+	pkgver = 7.5.4.r5.g557e1c2
 	pkgrel = 1
 	url = https://waterlan.home.xs4all.nl/dos2unix.html
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = git
 	makedepends = perl
+	makedepends = perl-pod-parser
 	makedepends = po4a
 	depends = glibc
-	provides = dos2unix=7.4.4.r2.g15f9f9d
+	provides = dos2unix=7.5.4.r5.g557e1c2
 	conflicts = dos2unix
 	source = git+https://git.code.sf.net/p/dos2unix/dos2unix
 	sha256sums = SKIP
