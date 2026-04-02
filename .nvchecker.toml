@@ -1,0 +1,3 @@
+[perl-test-www-mechanize-catalyst]
+source = "cpan"
+cpan = "Test-WWW-Mechanize-Catalyst"
