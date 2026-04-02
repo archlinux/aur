@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/moazbuilds/${_pkgname}/arch
 sha256sums=('2ac13dacf669ff5001ef6101ffae5b4e2f66470b5f95ea5fefeaabd365b2704c')
 
 latestver() {
-    curl -fsSL "https://api.github.com/repos/moazbuilds/${_pkgname}/tags?per_page=100" | jq -r '.[].name' |
+    gh api --paginate "repos/moazbuilds/${_pkgname}/tags" --jq '.[].name' |
         sed -nE 's/^v([0-9]+(\.[0-9]+)*)$/\1/p' | sort -V | tail -1
 }
 
