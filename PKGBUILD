@@ -159,11 +159,21 @@ build() {
     # Ensure nvcc is on PATH for --enable-cuda-nvcc
     export PATH="/opt/cuda/bin:$PATH"
 
+    # Strip LTO from makepkg flags - FFmpeg's x86 asm objects don't support it
+    # and it causes PIC relocation errors in libswscale shared builds.
+    CFLAGS="${CFLAGS//-flto=auto/}"
+    CFLAGS="${CFLAGS//-flto/}"
+    CXXFLAGS="${CXXFLAGS//-flto=auto/}"
+    CXXFLAGS="${CXXFLAGS//-flto/}"
+    LDFLAGS="${LDFLAGS//-flto=auto/}"
+    LDFLAGS="${LDFLAGS//-flto/}"
+
     ./configure \
         --prefix=/usr \
         --disable-debug \
         --disable-static \
         --disable-stripping \
+        --enable-pic \
         --enable-amf \
         --enable-avisynth \
         --enable-cuda-nvcc \
