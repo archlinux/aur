@@ -1,7 +1,7 @@
 # Maintainer: werdxz
 
 pkgname=portty-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="XDG Desktop Portal backend for TTY environments (prebuilt binaries)"
 arch=('x86_64')
@@ -16,9 +16,9 @@ source=(
     "porttyd-bin-${pkgver}::https://github.com/WERDXZ/portty/releases/download/v${pkgver}/porttyd"
 )
 sha256sums=(
-    '9cd99857fe67b59ac9ae85da5c3aa5c18e74fd7fdfae856708fa94cc22580c17'
-    '67f54d9e195b0eccc11f77af2442602935949e3370417f51914c6f0a6315e4c1'
-    '85950999b667046d6ef48c11bb4303241c55075add6c79b60374e16e755e8fb8'
+    '67a34b76491e7eb6bb40309fb55af4f4fab2da3500e30bc98af8171220efdebf'
+    '7d2b2d39deaee8052be39e5b5534e06a3d8c52b389279b780a614fcacc4c3b97'
+    '3007fbff48bae9dbfb2d62b9fea772d9ca45284254389be96630679bccbc1fb3'
 )
 
 package() {
