@@ -6,7 +6,6 @@ pkgbase = dealers-choice
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = cmake
 	makedepends = meson
 	makedepends = ninja
 	depends = libsodium
