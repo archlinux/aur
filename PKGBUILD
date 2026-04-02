@@ -1,7 +1,7 @@
 # Maintainer: xanderboy2001 <alexanderechristian@gmail.com>
 
 pkgname=mc-creative-clone
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=2
 pkgdesc="Copies a Minecraft world and converts it to a creative mode backup"
 arch=('any')
