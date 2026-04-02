@@ -1,0 +1,16 @@
+pkgbase = python-bdfparser
+	pkgdesc = BDF bitmap font file parser in pure Python
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/tomchen/bdfparser
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/b/bdfparser/bdfparser-2.2.0.tar.gz
+	sha256sums = 75cebd7c2f1ed5e5d0985763b255726a9538c602c7c5ca8639707aec54a58683
+
+pkgname = python-bdfparser
