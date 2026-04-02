@@ -88,5 +88,5 @@ git push github "$BRANCH" 2>/dev/null || echo "⚠️ GitHub push failed (check 
 
 echo "=== ✅ 完成！版本: $NEW_VER-$NEW_PKGREL ==="
 echo ""
-echo "在远程服务器上执行以下命令更新:"
-echo "  ssh ArchDmit 'sudo -u lightjunction paru -Syu astrbot-git --noconfirm'"
+echo "在远程服务器上执行以下命令更新 (首次由旧版切换时需加 --overwrite 覆盖未追踪文件):"
+echo "  ssh ArchDmit 'sudo -u lightjunction paru -S astrbot-git --rebuild --overwrite \"*\" --noconfirm'"
