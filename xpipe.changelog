@@ -1,5 +1,7 @@
-- Add more documentation links and content
-- Fix bundled executables, e.g. hcloud, not taking priority over existing installed ones
-- Fix bitwarden sync button not showing proper error message when bw CLI was not installed
-- Fix terminal logging failing with generic error on Windows when powershell was unavailable
+- Fix issues with gateway configurations for SSH connections. Gateways were not handled properly and caused various issues with missing configuration options and services not tunneling correctly
+- Fix old incus/LXD entries not launching correctly
+- Fix displayed incus/LXD network information not updating correctly
+- Fix Windows rendering performance degradation
+- Fix rare shell init race condition
 - Fix various NullPointers
+- Add more documentation links
