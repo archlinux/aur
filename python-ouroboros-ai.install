@@ -1,0 +1,27 @@
+post_install() {
+    if command -v claude &>/dev/null; then
+        echo "==> Claude Code detected. Install optional dependencies for full support:"
+        echo "    yay -S python-anthropic"
+        echo ""
+        echo "==> To set up Ouroboros integration, run:"
+        echo "    ouroboros setup --runtime claude --non-interactive"
+        echo ""
+        echo "==> Then register the MCP server and install skills:"
+        echo "    claude mcp add ouroboros -- ouroboros mcp serve"
+        echo "    claude plugin marketplace add Q00/ouroboros"
+        echo "    claude plugin marketplace update ouroboros"
+        echo "    claude plugin install ouroboros@ouroboros"
+    elif command -v codex &>/dev/null; then
+        echo "==> Codex detected. To set up Ouroboros integration, run:"
+        echo "    ouroboros setup --runtime codex --non-interactive"
+    else
+        echo "==> No AI runtime (Claude Code, Codex) detected."
+        echo "    Install one first, then run: ouroboros setup"
+    fi
+    echo ""
+    echo "==> See https://github.com/Q00/ouroboros for details."
+}
+
+post_upgrade() {
+    post_install
+}
