@@ -71,5 +71,6 @@ EOF
 }
 
 latestver() {
-    gh api repos/audiohacking/acestep.cpp/releases/latest --jq '.tag_name' | sed 's/^v//'
+    gh api --paginate repos/audiohacking/acestep.cpp/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "acestep-linux-x64.tar.gz")) | .tag_name' |
+    head -1 | sed 's/^v//'
 }
