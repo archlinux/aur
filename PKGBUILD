@@ -8,8 +8,8 @@ url="https://github.com/canersin/lapse"
 license=('custom')
 depends=('gtk3' 'wayland')
 makedepends=('cargo' 'git')
-provides=("lapse")
-conflicts=("lapse")
+#provides=("lapse")
+#conflicts=("lapse")
 source=("git+https://github.com/canersin/lapse.git")
 md5sums=('SKIP')
 

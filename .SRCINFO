@@ -1,6 +1,6 @@
 pkgbase = lapse
 	pkgdesc = Native screen recording application in Rust for Wayland/X11
-	pkgver = 0.1.0
+	pkgver = 0.1.0.r15.g87a29af
 	pkgrel = 1
 	url = https://github.com/canersin/lapse
 	arch = x86_64
