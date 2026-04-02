@@ -7,11 +7,11 @@ pkgver=11.0.0
 pkgrel=1
 pkgdesc="Wine's built-in replacement for Microsoft's .NET Framework"
 arch=('i686' 'x86_64')
-url="http://wiki.winehq.org/Mono"
+url="https://gitlab.winehq.org/wine/wine/-/wikis/Wine-Mono"
 license=(GPL LGPL2 MPL)
 conflicts=('wine-mono')
 depends=('wine')
-makedepends=(wine mono bc)
+makedepends=(libgdiplus mono bc)
 options=(!lto)
 source=(git+https://github.com/wine-mono/wine-mono.git
         git+https://github.com/wine-mono/FNA.git
