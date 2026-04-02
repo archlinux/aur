@@ -16,8 +16,8 @@ sha256sums=('023695aed58c99047f56e4c4905367e893bab87ba732056f7e477753569f2e69'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
 
 latestver() {
-    curl -fsSL 'https://api.github.com/repos/iDescriptor/iDescriptor/releases/latest' | jq -r '.assets[]?.name' |
-    sed -nE '/^iDescriptor-v[0-9.]+-Linux_x86_64\.AppImage\.zip$/{s/^iDescriptor-v//; s/-Linux_x86_64\.AppImage\.zip$//; p;}'
+    gh api --paginate repos/iDescriptor/iDescriptor/releases --jq '.[] | select(.prerelease == false and .draft == false) | .assets[]?.name' |
+    sed -nE '/^iDescriptor-v[0-9.]+-Linux_x86_64\.AppImage\.zip$/{s/^iDescriptor-v//; s/-Linux_x86_64\.AppImage\.zip$//; p; q}'
 }
 
 package() {
