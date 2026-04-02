@@ -19,8 +19,8 @@ sha256sums_x86_64=('d105c5c26204d3f32c48b5d03ef3418ee379b5338e84aafa11accafe963b
 sha256sums_aarch64=('3696ef1140fd534e2614780ed239dd03604d6edfe77c675e429af8eb6b9b59a2')
 
 latestver() {
-    curl -fsSL 'https://api.github.com/repos/IvanIsCoding/celq/releases/latest' |
-    jq -r '.tag_name // empty' | sed 's/^v//'
+    gh api --paginate repos/IvanIsCoding/celq/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "celq-linux-x86_64-gnu.tar.gz") and any(.assets[]; .name == "celq-linux-aarch64-gnu.tar.gz")) | .tag_name' |
+    head -1 | sed 's/^v//'
 }
 
 package() {
