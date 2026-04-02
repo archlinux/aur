@@ -3,9 +3,8 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-shell'
-pkgver=1.5.1
-_pkgver=2.0.0
-pkgrel=2
+pkgver=1.5.2
+pkgrel=1
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64')
 url='https://github.com/caelestia-dots/shell'
@@ -16,13 +15,13 @@ depends=('caelestia-cli' 'quickshell-git' 'ddcutil' 'brightnessctl' 'app2unit' '
 makedepends=('cmake' 'ninja')
 provides=($pkgname)
 conflicts=($pkgname-git)
-source=("$url/releases/download/v$_pkgver/$pkgname-v$_pkgver.tar.gz")
-sha256sums=('b7e57a9a42da19a09e2e9811932c58836ea4a3e8b30b7ecdee47c8b2362ad326')
+source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha256sums=('856b9338e53c673ba3e399d365cf96c46fc25e424b92eb85e5e97839a5cf0401')
 
 build() {
     cd "${srcdir}/release"
 
-    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/ -DVERSION=$_pkgver -DDISTRIBUTOR="AUR (package: $pkgname)"
+    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/ -DVERSION=$pkgver -DDISTRIBUTOR="AUR (package: $pkgname)"
     cmake --build build
 }
 
@@ -30,5 +29,5 @@ package() {
     cd "${srcdir}/release"
 
     DESTDIR="$pkgdir" cmake --install build
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
