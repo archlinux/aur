@@ -5,7 +5,7 @@ pkgname="python-${_name}"
 _commit_rel="82fd769f2820f6ff2acf650f551a97a7b8fbe189" # 0.5.1
 _commit="0766d599bbe9bccda12b6ede069647c7bef2299f" # r37
 pkgver="0.5.1+r37+g${_commit::7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern, type-safe OpenAPI schemas in Python using Pydantic 1.8+ and 2.x"
 arch=(
   'any'
@@ -53,6 +53,6 @@ package() {
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -vsf "${site_packages}/${_name//-/_}-${pkgver%%.r*}.dist-info/LICENSE" \
+  ln -vsf "${site_packages}/${_name//-/_}-${pkgver%%+r*}.dist-info/licenses/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
