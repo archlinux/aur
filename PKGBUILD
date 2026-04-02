@@ -3,7 +3,7 @@
 pkgname=browser-use-cli
 _pyname=browser_use
 pkgver=0.12.5
-pkgrel=3
+pkgrel=4
 pkgdesc='CLI for browser automation with AI agents'
 arch=(any)
 url='https://github.com/browser-use/browser-use'
@@ -61,6 +61,7 @@ source=(
   "https://files.pythonhosted.org/packages/f5/54/23aae0681500a459fc4498b60754cb8ead8df964d8166e5915edb7e8136c/bubus-1.5.6-py3-none-any.whl"
   "https://files.pythonhosted.org/packages/56/12/386d8c6bf0448c43674e24d6194c3b57d62e5361e90bca3d58108819ad32/cdp_use-1.4.5-py3-none-any.whl"
   "https://files.pythonhosted.org/packages/8a/4e/6b72701ec9dddf63c405c0535f3268e24a6f949388cf962bca24aad7c119/browser_use_sdk-2.0.15-py3-none-any.whl"
+  fix-asyncio-python3.12.patch
 )
 noextract=(
   bubus-1.5.6-py3-none-any.whl
@@ -70,7 +71,13 @@ noextract=(
 sha256sums=('ba032884d3a2380149da4914c908db5080fd0e9062d05bc6af20ae3a8606aec5'
             '254ae37cd9299941f5e9d6afb11f8e3ce069f83e5b9476f88c6b2e32912f237d'
             '8f8e2435e3a20e4009d2974144192cf3c132f6c2971338e156198814d9b91ecb'
-            '5d8ba3836070c67a9774baac556b233e22f266823d3dee34295d98869bec7752')
+            '5d8ba3836070c67a9774baac556b233e22f266823d3dee34295d98869bec7752'
+            'b8f5274dac1605c5fc3961d06386cc904f89956bf3df344e491132189be82516')
+
+prepare() {
+  cd "$_pyname-$pkgver"
+  patch -Np1 -i "$srcdir/fix-asyncio-python3.12.patch"
+}
 
 build() {
   cd "$_pyname-$pkgver"
