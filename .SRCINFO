@@ -1,6 +1,6 @@
 pkgbase = forge-server-unstable
 	pkgdesc = Forge is a free, open-source modding API all of your favourite mods use!
-	pkgver = 61.1.5
+	pkgver = 63.0.0
 	pkgrel = 1
 	url = https://minecraftforge.net
 	install = forge-server-unstable.install
@@ -8,8 +8,8 @@ pkgbase = forge-server-unstable
 	license = custom
 	depends = jdk-openjdk
 	optdepends = tar: needed in order to create world backups
-	provides = forge-server-unstable=61.1.5
-	noextract = forge-1.21.11-61.1.5-installer.jar
+	provides = forge-server-unstable=63.0.0
+	noextract = forge-26.1.1-63.0.0-installer.jar
 	backup = opt/forge-server-unstable/banned-ips.json
 	backup = opt/forge-server-unstable/banned-players.json
 	backup = opt/forge-server-unstable/config
@@ -22,12 +22,12 @@ pkgbase = forge-server-unstable
 	backup = opt/forge-server-unstable/user_jvm_args.txt
 	backup = opt/forge-server-unstable/whitelist.json
 	backup = opt/forge-server-unstable/world
-	source = https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/1.21.11/LICENSE.txt
-	source = https://maven.minecraftforge.net/net/minecraftforge/forge/1.21.11-61.1.5/forge-1.21.11-61.1.5-installer.jar
+	source = https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/26.1.1/LICENSE.txt
+	source = https://maven.minecraftforge.net/net/minecraftforge/forge/26.1.1-63.0.0/forge-26.1.1-63.0.0-installer.jar
 	source = forge-server-unstable.service
 	source = eula.txt
 	sha512sums = ecee0462a1cad389def4cd1ce1f24f7b5cf0bb1552f45db0482ac0fa7badc54a251adb735977a1dce3412a09716ce44b0ddf81c37dcfad3a5ac5d8e3516be3c8
-	sha512sums = 4a1a233b31fa77e9909f4e84b4c26b87fc53b970635a1c60064b7bf9c7f468bbfcc994659a7c82a5cb6d19e9f41d1327c2d2dd77732a60e9bbd3c7680cc21dc8
+	sha512sums = 31d8f6be79a6c3c231a4d8c9a22783699dbce1a6b85742f73beb5e9a0ab8e68e3f5ab4af9849229ba8682741c3febf8bd6b9b06900897d9a4d5ed013be9b6c6f
 	sha512sums = bfda8a268b2fcb9877fe716d2d3f68b6bc11ba056d8890178c40e51995fa067b2b4f2e1865c0dcc7489dd037f22fe95ae8b5d50b9cb7000ce4854c48072c042d
 	sha512sums = 68205ffc60327c67a5ebe778598c3350d64b48aad9dacf52fcde435a535a074ba2056db30dff1b18e3c8e38510acd6ececa298b13cd4c4203636560fa4cf70cb
 
