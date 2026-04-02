@@ -1,7 +1,7 @@
 # Maintainer: sandwich <sandwich@archworks.co>
 
 pkgname=netbird-proxy
-pkgver=0.67.2
+pkgver=0.67.3
 pkgrel=1
 pkgdesc='WireGuard-based overlay network: reverse proxy service'
 arch=(x86_64 aarch64 armv7h armv6h)
@@ -16,7 +16,7 @@ source=(
   "netbird-proxy.service"
   "proxy.env"
 )
-sha256sums=('8eebb7eb2e3b55054bb403aec071814fd319daa2c52db28278a75963642552cf'
+sha256sums=('da4cf8851e6b6be6aba96fe42e6111a09c5560cd4fa4a7d457cd14f4586b1344'
             '912d342970f04c169ca2f832a4080cd0206b8721c54d11f35ade4b7b96e38a43'
             '5292c2354ab73a0b326649a2a592115546de0468ecaf046d47d9f3aa21252ce2')
 
