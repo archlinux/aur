@@ -1,0 +1,15 @@
+# Example pacman hook for rebuilding hyprsysteminfo after dependency updates.
+#
+# Copy this file to /etc/pacman.d/hooks/ and replace <USER> and <AUR_HELPER>
+# with values that match the local system before enabling it.
+
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = hyprtoolkit
+Target = hyprutils
+
+[Action]
+Description = Recompiling hyprsysteminfo from AUR...
+When = PostTransaction
+Exec = /usr/bin/sudo -u <USER> /usr/bin/<AUR_HELPER> -S --rebuild --noconfirm hyprsysteminfo
