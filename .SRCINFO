@@ -1,0 +1,22 @@
+pkgbase = perl-data-clone
+	pkgdesc = Polymorphic data cloning
+	pkgver = 0.006
+	pkgrel = 1
+	url = https://metacpan.org/release/ISHIGAKI/Data-Clone-0.006
+	arch = x86_64
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-devel-ppport>=3.19
+	makedepends = perl-extutils-makemaker>=6.59
+	makedepends = perl-extutils-parsexs>=3.18
+	makedepends = perl-module-build
+	makedepends = perl-module-build-xsutil
+	makedepends = perl-test-requires>=0.03
+	makedepends = perl-test-simple
+	depends = perl-parent
+	depends = perl-xsloader>=0.02
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/Data-Clone-0.006.tar.gz
+	sha256sums = b8745954f0eff61efb25589cc13b4f2b1b26ce5ac3617d7e8aa3981626579629
+
+pkgname = perl-data-clone

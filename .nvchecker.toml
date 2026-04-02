@@ -1,0 +1,3 @@
+[perl-data-clone]
+source = "cpan"
+cpan = "Data-Clone"
