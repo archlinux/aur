@@ -23,9 +23,8 @@ sha256sums_x86_64=('bd5a6f30a3b1f2e9076fbb2343492ea373a793c7398fd823324eb1d9e12b
 sha256sums_aarch64=('cde8b598d27ff1daad8c569b08829b1f4ffc800c6268df3cdb8076d70afcbe00')
 
 latestver() {
-    curl -fsSL 'https://api.github.com/repos/one-d-wide/yggdrasil-jumper/releases/latest' |
-    jq -r 'select(any(.assets[]?; .name == "yggdrasil-jumper-linux-x86_64")) | .tag_name' |
-    sed -E 's/^v//'
+    gh api --paginate repos/one-d-wide/yggdrasil-jumper/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "yggdrasil-jumper-linux-x86_64")) | .tag_name' |
+    head -1 | sed -E 's/^v//'
 }
 
 package() {
