@@ -57,7 +57,7 @@ The Elders command strict adherence to modern crafting:
 
 To begin your journey with Voix, you must first configure the PAM pact. Create a new scroll at `/etc/pam.d/voix` and inscribe the following:
 
-```
+```txt
 #%PAM-1.0
 auth       include      system-auth
 account    include      system-auth
@@ -126,7 +126,7 @@ Every function, every design, everything is modular, has a use, and is well put-
 
 1. Speak exclusively in C++26.
 2. Honor the Clang compiler constraints.
-3. Bind your work with `clang-tidy` to cleanse any lingering chaos.
+3. Bind your work with `clang-tidy` to cleanse any lingering chaos (see `CONTRIBUTING.md` for the exact ritual).
 
 ## The Final Vow (License)
 
