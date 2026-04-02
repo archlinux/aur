@@ -1,0 +1,11 @@
+pkgbase = ttf-hanazono
+	pkgdesc = A free Japanese kanji font, which contains about 78,685 characters (and 2 SPACEs) defined in ISO/IEC 10646 standard / the Unicode standard.
+	pkgver = 20170904
+	pkgrel = 5
+	url = https://glyphwiki.org/hanazono/
+	arch = any
+	license = custom
+	source = https://glyphwiki.org/hanazono/hanazono-20170904.zip
+	sha512sums = f9cc55ed5e6ed5756e1e04a00c59d32b18a0fd4448d2a8bb109b6a25ad8d5a4729ca8d1df076a84986fc4a4524875fc2781befcf000842f6829492f1f9d6d37f
+
+pkgname = ttf-hanazono
