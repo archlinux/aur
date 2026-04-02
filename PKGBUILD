@@ -38,6 +38,7 @@ prepare() {
 build() {
   cd ${_pkgname}-${pkgver}
   cmake -Wno-dev -GNinja \
+      -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_INSTALL_LIBDIR=/usr/lib \
       -DENABLE_BROWSER=off .
