@@ -1,12 +1,12 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 pkgname=hash-slinger-git
-pkgver=3.3+r1+g0bb0dba
-pkgrel=2
+pkgver=3.5+r1+gafc7b2f
+pkgrel=1
 pkgdesc="Tools to generate special DNS records (SSHFP, TLSA, OPENPGPKEY, IPSECKEY)"
 arch=(any)
 url="https://github.com/letoams/hash-slinger"
-license=('GPL2')
-depends=('python-dnspython' 'python-m2crypto' 'unbound')
+license=('GPL-2.0-or-later')
+depends=('python-dnspython' 'python-cryptography' 'unbound')
 makedepends=('xmlto')
 optdepends=('openssh: for sshfp'
             'python-gnupg: for openpgpkey'
