@@ -1,13 +1,13 @@
 pkgbase = seamonkey-i18n-es-ar
-	pkgdesc = Spanish (Argentina) language pack for SeaMonkey
-	pkgver = 2.53.12
+	pkgdesc = Slovak language pack for SeaMonkey
+	pkgver = 2.53.23
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.53.12
-	noextract = seamonkey-2.53.12.es-AR.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.12/langpack/seamonkey-2.53.12.es-AR.langpack.xpi
-	sha512sums = dd422abe47a54075f323076c2da58eea90c1fd5c3671e375269c1726e3e7abe4f182ad9666d4b33c29a2f6a7cf0def6d465b64f5af132927f463a96807e61df3
+	depends = seamonkey>=2.53.23
+	noextract = seamonkey-2.53.23.es-AR.langpack.xpi
+	source = https://archive.seamonkey-project.org/releases/2.53.23/langpack/seamonkey-2.53.23.es-AR.langpack.xpi
+	sha512sums = 235986bbb7617663aec1e9f8b8317c5783a519dcd58b2d0ef6e6021bd6026ed50488ef241a2e53d0785e8af0effa611805a6554d33531b027d1326b6168fdf23
 
 pkgname = seamonkey-i18n-es-ar
