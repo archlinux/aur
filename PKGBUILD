@@ -4,7 +4,7 @@ _author=DROLSKY
 _dist=Specio-Library-Path-Tiny
 pkgname=perl-${_dist@L}
 pkgver=0.05
-pkgrel=1
+pkgrel=2
 pkgdesc='Path::Tiny types and coercions for Specio'
 arch=('any')
 url=https://metacpan.org/release/$_author/$_dist-$pkgver
@@ -18,6 +18,10 @@ depends=(
 )
 makedepends=('perl-extutils-makemaker')
 checkdepends=(
+    # Missing deps in perl-specio package (bug).
+    'perl-module-implementation'
+    'perl-sub-quote'
+
     'perl-extutils-makemaker'
     'perl-file-pushd'
     'perl-file-temp>=0.18'
