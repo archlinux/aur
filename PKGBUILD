@@ -2,7 +2,7 @@
 # Maintainer: German Lashevich <german.lashevich at gmail dot com>
 
 pkgname='myks-bin'
-pkgver=5.11.2
+pkgver=5.12.0
 pkgrel=1
 pkgdesc='Configuration framework for Kubernetes applications'
 url='https://github.com/mykso/myks'
@@ -13,10 +13,10 @@ conflicts=('myks')
 optdepends=('vendir: for downloading from external sources' 'git: for smart detection of changes' 'helm: for rendering helm charts')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/mykso/myks/releases/download/v${pkgver}/myks_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('46575e63e878b7f5acfa938ead2db205e8ec1928077a7c20c6e12eaf9b92ffed')
+sha256sums_aarch64=('5e2feff27366b3fa88d55149da1515c08349d141ef2e93d4cfe415dd7ee2b1dc')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/mykso/myks/releases/download/v${pkgver}/myks_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('7c1607f700a308e1cf097dfe4000a80ec8e965d1e60dd3998f11bf3eb0c63eed')
+sha256sums_x86_64=('fe83c2a7eb664fa346826120f35535b4d2fb015011cd3b60b8328b850203a056')
 
 package() {
   BIN=myks
