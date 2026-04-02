@@ -4,8 +4,8 @@
 pkgname=x2vnc-bin
 pkgbase=x2vnc
 pkgver=1.7.2
-pkgrel=2
-pkgdesc='This program lets you use two screens on two different computers as if they were connected to the same computer.'
+pkgrel=3
+pkgdesc='This program lets you use the monitor of a computer next to yours and running a VNC server as if it were connected to yours.'
 arch=('x86_64')
 url='https://fredrik.hubbe.net/x2vnc.html'
 license=('GPL')
