@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc='Desktop chat app built in Zig with SDL3, OpenGL, and an embedded CEF browser pane'
 arch=('x86_64')
 url='https://github.com/JonathanRiche/verde'
-license=('custom:upstream-unlicensed')
+license=('MIT')
 depends=(
   'alsa-lib'
   'at-spi2-core'
@@ -44,9 +44,11 @@ conflicts=('verde' 'verde-git')
 options=('!strip')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/JonathanRiche/verde/releases/download/v${pkgver}/verde-v${pkgver}-linux-x86_64.tar.gz"
+  "LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v${pkgver}/LICENSE"
 )
 sha256sums=(
   'daa4a01f4dafb3820450ee2ebd096b591a9e26c4b1ae78b4dbdda75f667ede21'
+  '9952749c80ab34ca65ef1b4e8653dcf5760361aecc44dfd7dc398d991e7d9f3e'
 )
 
 package() {
@@ -68,4 +70,6 @@ EOF
     "${pkgdir}/usr/share/pixmaps/verde.png"
   install -Dm644 "${release_root}/README.md" \
     "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "${srcdir}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

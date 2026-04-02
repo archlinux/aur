@@ -4,7 +4,7 @@ pkgbase = verde-bin
 	pkgrel = 1
 	url = https://github.com/JonathanRiche/verde
 	arch = x86_64
-	license = custom:upstream-unlicensed
+	license = MIT
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = cairo
@@ -40,6 +40,8 @@ pkgbase = verde-bin
 	conflicts = verde-git
 	options = !strip
 	source = verde-bin-0.1.4.tar.gz::https://github.com/JonathanRiche/verde/releases/download/v0.1.4/verde-v0.1.4-linux-x86_64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v0.1.4/LICENSE
 	sha256sums = daa4a01f4dafb3820450ee2ebd096b591a9e26c4b1ae78b4dbdda75f667ede21
+	sha256sums = 9952749c80ab34ca65ef1b4e8653dcf5760361aecc44dfd7dc398d991e7d9f3e
 
 pkgname = verde-bin
