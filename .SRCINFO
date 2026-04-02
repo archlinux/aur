@@ -1,17 +1,19 @@
 pkgbase = s2argv-execs-git
-	pkgdesc = s2argv converts a command string into an argv array for execv*, execs is like execv taking a string instead of an argv
-	pkgver = r38.2f3f79c
+	pkgdesc = string 2 argv conversion. execs = execute a file taking its arguments from a string
+	pkgver = 1.4.r1.72ac0cd
 	pkgrel = 1
 	url = https://github.com/virtualsquare/s2argv-execs
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
 	groups = virtualsquare
-	license = LGPL
+	license = LGPL-2.1-only
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
-	provides = s2argv-execs
+	provides = s2argv-execs=1.4
 	conflicts = s2argv-execs
-	source = git+https://github.com/virtualsquare/s2argv-execs.git
+	source = git+https://github.com/virtualsquare/s2argv-execs
 	md5sums = SKIP
 
 pkgname = s2argv-execs-git
