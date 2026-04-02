@@ -1,7 +1,6 @@
 # Maintainer: Andersmmg <andersmmg at duck dot com>
-pkgname='python-hyprland-schema'
-_module='hyprland-schema'
-_src_folder='hyprland_schema-0.4.0'
+pkgname=python-hyprland-schema
+_module=${pkgname#python-}
 pkgver='0.4.0'
 pkgrel=1
 pkgdesc="Typed Python schema for every Hyprland configuration option"
@@ -10,16 +9,15 @@ depends=('python' 'hyprland')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/86/34/c2a2738268c5fc3e56743493b85f05fc8afe6a9cc3503554af9284e70379/hyprland_schema-0.4.0.tar.gz")
-sha256sums=('e40e2dd2b1e7c568e6eed7fb5993ec4fe88b51a68846c4a6702b47e26e31522e')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('8ccd7c79219ee52061aa2d4c77adb5efd0e1fb083a32b97e8805c25d7ebd848c')
 
 build() {
-    cd "${srcdir}/${_src_folder}"
-    python -m build --wheel --no-isolation
+  cd "$_module-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-
-    cd "${srcdir}/${_src_folder}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+  cd "$_module-$pkgver"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
