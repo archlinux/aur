@@ -3,7 +3,7 @@
 _sdk=10.0
 _Name="YoutubeDownloader"
 pkgname="${_Name,,}"
-pkgver=1.16
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="Downloads videos and playlists from YouTube"
 arch=(
@@ -30,10 +30,10 @@ options=(
 _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
-  "${pkgname}_xdg_settings.patch"
+  "${pkgname}.sh"
 )
-b2sums=('45ead7c75e81a7e5d7a9b1b5cc0f623e408d608efff46a174dbcff9ea64a81ced4175e31b497a40a927edf965742add4b318b2245d7572c18179a68d5abfb0db'
-        '422e82520465e646ddc1a0f2d0dbd0c624141df292a5e6a5ebd4cee9c4025769ae518e8c373d35632ee804148b68de109232d64ebd33c455eb81d6dbf3663817')
+b2sums=('61313644e52708e4442791fe314d17f87a4b534b5bb9fde9636a9fa33ce9b4cc9be475f7384c676c3c8582ca82d298f33e3197ae7922e04c4ab7ea5b8e720fa3'
+        '1790bd5de94e0c11027d516385f2a824a43aa6285f04a8256b320dc0d33437efd6f87ec3217e921f4c02257924978c7097e525a5fa936c2a2040f3a6eff5784a')
 
 if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
 elif [ "${CARCH}" = 'armv7h'  ]; then _msarch=arm;
@@ -55,8 +55,6 @@ prepare() {
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "${srcdir}/${pkgname}_xdg_settings.patch"
-
   find . -type f -name '*.csproj' -exec \
     sed -e '/CSharpier/d' \
         -e 's|<DownloadFFmpeg>true|<DownloadFFmpeg>false|g' \
@@ -97,12 +95,13 @@ build() {
 
 package() {
   cd "${srcdir}"
+  install -vDm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${_Name}"
   install -vDm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   cd "${_pkgsrc}"
   install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${pkgname}"
   cp -vaT --no-preserve=ownership "build" "${pkgdir}/usr/lib/${pkgname}"
-  ln -vsf "/usr/lib/${pkgname}/${_Name}" "${pkgdir}/usr/bin/${_Name}"
+  # ln -vsf "/usr/lib/${pkgname}/${_Name}" "${pkgdir}/usr/bin/${_Name}"
 
   install -vDm644 "Readme.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
