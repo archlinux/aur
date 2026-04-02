@@ -23,8 +23,8 @@ sha256sums_x86_64=('14e3ae51252c5b33d74665ee429f5212374a2a3fe63fbdb72351762fc68b
 sha256sums_aarch64=('34a0d0fed508f9805bf9700bf13c242ec3cae3e7b6f30e92a885e6e4729398ec')
 
 latestver() {
-    curl -fsSL 'https://api.github.com/repos/umputun/ralphex/releases/latest' | jq -r 'select(any(.assets[]?; .name | test("^ralphex_[0-9.]+_linux_amd64\\.tar\\.gz$")) and any(.assets[]?; .name | test("^ralphex_[0-9.]+_linux_arm64\\.tar\\.gz$"))) | .tag_name' |
-    sed -E 's/^v//'
+    gh api --paginate repos/umputun/ralphex/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name | test("^ralphex_[0-9.]+_linux_amd64\\.tar\\.gz$")) and any(.assets[]; .name | test("^ralphex_[0-9.]+_linux_arm64\\.tar\\.gz$"))) | .tag_name' |
+    head -1 | sed -E 's/^v//'
 }
 
 package() {
