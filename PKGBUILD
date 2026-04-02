@@ -1,6 +1,9 @@
+# Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
+# from: git
+
 pkgname=smartdns-webui-git
 pkgver=r54.c0d2411
-pkgrel=1
+pkgrel=2
 pkgdesc="Dashboard UI plugin assets for smartdns"
 arch=('any')
 license=('MIT')
@@ -8,6 +11,8 @@ url="https://github.com/pymumu/smartdns-webui"
 makedepends=('git' 'npm')
 source=("git+https://github.com/pymumu/smartdns-webui.git")
 sha512sums=('SKIP')
+provides=('smartdns-webui')
+conflicts=('smartdns-webui')
 
 pkgver()
 {
