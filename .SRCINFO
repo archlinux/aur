@@ -1,6 +1,6 @@
 pkgbase = slavweb-electron
 	pkgdesc = Кроссплатформенное десктопное приложение на Electron для SlavWEB
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/gtinikita203/linux-unpacked-slav
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = slavweb-electron
 	depends = wireplumber
 	depends = xdg-desktop-portal
 	depends = xdg-desktop-portal-gtk
-	source = slavweb-electron-1.0.1.tar.gz::https://github.com/gtinikita203/linux-unpacked-slav/releases/download/1.0.1/slavweb-electron-1.0.1-linux-unpacked.tar.gz
-	source = icon.webp
+	source = slavweb-electron-1.0.2.tar.gz::https://github.com/gtinikita203/linux-unpacked-slav/releases/download/1.0.2/slavweb-electron-1.0.2-linux-unpacked.tar.gz
+	source = icon.png
 	sha256sums = 7877b1de8972b86c7cc602c90be0f182da9078c44b6c398df880e017f1cdc36c
-	sha256sums = e403256660758710fd7545d29866336e02b274e3b953d188349ae86d657fde44
+	sha256sums = fb24f5b604277a89642122bf4d7931bcd90e4b4e9d0183995d3e9e27fd860382
 
 pkgname = slavweb-electron
