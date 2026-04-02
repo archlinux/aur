@@ -16,7 +16,7 @@ depends=(
     'libappindicator-gtk3'
 )
 source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/Psychotoxical/psysonic/releases/download/app-v${pkgver}/Psysonic_${pkgver}_amd64.deb")
-sha256sums_x86_64=('00d82ba74f9f209bf73c70e11ad373cb75e56b028c8c5b2df60ccb3c36ba0942')
+sha256sums_x86_64=('d739eea5cb054314ee38587c1462e3065e52c9f63175bd48b3ab27d7ea77f803')
 
 package() {
     cd "$srcdir"
