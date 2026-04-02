@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-	install -Dm755 bw -t "$pkgdir/usr/bin/"
-	install -Dm644 _bw -t "$pkgdir/usr/share/zsh/site-functions/"
+  install -Dm755 bw -t "$pkgdir/usr/bin/"
+  install -Dm644 _bw -t "$pkgdir/usr/share/zsh/site-functions/"
 }
