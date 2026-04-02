@@ -1,0 +1,3 @@
+[project-registry]
+source = "npm"
+npm = "project-registry"
