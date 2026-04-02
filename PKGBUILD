@@ -2,7 +2,7 @@
 
 pkgname=mc-creative-clone
 pkgver=0.1.2
-pkgrel=2
+pkgrel=1
 pkgdesc="Copies a Minecraft world and converts it to a creative mode backup"
 arch=('any')
 url="https://github.com/xanderboy2001/mc-creative-clone"

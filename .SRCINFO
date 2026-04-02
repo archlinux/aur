@@ -1,7 +1,7 @@
 pkgbase = mc-creative-clone
 	pkgdesc = Copies a Minecraft world and converts it to a creative mode backup
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/xanderboy2001/mc-creative-clone
 	arch = any
 	license = GPL-3.0-or-later
