@@ -3,18 +3,18 @@
 
 pkgname=python-datauri
 _name=${pkgname}
-pkgver=2.2.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A li'l class for data URI manipulation in Python"
 arch=(any)
 url="https://github.com/fcurella/python-datauri"
 license=('Unlicense')
-depends=(python python-pydantic-core python-typing_extensions)
+depends=(python python-pydantic-core python-typing_extensions python-cached-property)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pydantic python-pytest)
 options=(!strip)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a7c8033a432fe7ebed0030c734727267ddf524cae27aee222b6c9a717ed9fa60')
+sha256sums=('00b975a2c422f40e3ae24553001ef22490d87c197ae5c1003123d69f6887df45')
 
 build() {
   cd "$_name-$pkgver"
