@@ -1,4 +1,4 @@
-# Maintainer: 3ED <krzysztof1987 at gmail>
+# Maintainer: Voxan <admin at hessfr dot fr>
 
 pkgname=seamonkey-i18n-pl
 pkgver=2.53.12
