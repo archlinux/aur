@@ -1,5 +1,5 @@
 pkgbase = seamonkey-i18n-fi
-	pkgdesc = English (US) language pack for SeaMonkey
+	pkgdesc = Finnish language pack for SeaMonkey
 	pkgver = 2.53.23
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
