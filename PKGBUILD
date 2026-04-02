@@ -1,6 +1,6 @@
 pkgname=chip-tool
 pkgver=1.4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Matter CLI tool (chip-tool) from Project CHIP"
 arch=('x86_64' 'aarch64')
 url="https://github.com/project-chip/connectedhomeip"
@@ -26,7 +26,23 @@ prepare() {
 
 build() {
   cd "$srcdir/connectedhomeip"
-  source scripts/bootstrap.sh
+
+  local build_home="$srcdir/build-home"
+  local build_cache="$srcdir/build-cache"
+  install -d \
+    "$build_home/.config/pip" \
+    "$build_cache/pip" \
+    "$build_cache/pip-tools"
+
+  export HOME="$build_home"
+  export XDG_CACHE_HOME="$build_cache"
+  export PIP_CACHE_DIR="$build_cache/pip"
+  export PIP_TOOLS_CACHE_DIR="$build_cache/pip-tools"
+  export PIP_CONFIG_FILE="$build_home/.config/pip/pip.conf"
+
+  printf '[global]\ncache-dir = %s\n' "$PIP_CACHE_DIR" > "$PIP_CONFIG_FILE"
+
+  source scripts/bootstrap.sh -p none
 
   local toolchain_bin="$srcdir/toolchain-bin"
   mkdir -p "$toolchain_bin"
