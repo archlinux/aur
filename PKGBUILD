@@ -6,7 +6,7 @@
 pkgname=mixxx-beta
 _mixxxver=2.6
 pkgver="${_mixxxver}.beta"
-pkgrel=3
+pkgrel=4
 pkgdesc="Digital DJ mixing software (beta branch)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mixxx.org/"
@@ -85,10 +85,12 @@ build() {
     -B build
     -D CMAKE_BUILD_TYPE=Release
     -D CMAKE_INSTALL_PREFIX=/usr
+    -D OPTIMIZE=native
     -S mixxx-$_mixxxver-beta
     -W no-dev
   )
 
+  export QT_NO_PRIVATE_MODULE_WARNING=ON
   export PKG_CONFIG_PATH=/usr/lib/taglib1/pkgconfig
   cmake "${cmake_options[@]}"
   cmake --build build
