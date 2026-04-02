@@ -1,0 +1,10 @@
+Redistribution note for ircam-tifinagh-fonts
+
+The upstream IRCAM Tifinagh font archives do not ship a standard license file.
+This package redistributes the publicly downloadable archives from:
+
+http://www.ircam.ma/fr/alphabet-tifinaghe
+
+The packager obtained direct permission from IRCAM to redistribute these font
+files. No additional license terms were published alongside the upstream
+downloads at the time this package was prepared.
