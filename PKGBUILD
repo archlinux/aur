@@ -2,7 +2,7 @@
 
 pkgname=cookcli
 _pkgname=cook
-pkgver=0.27.0
+pkgver=0.27.2
 pkgrel=1
 pkgdesc="Suite of tools to create shopping lists and maintain recipes"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fd249eacf02588cf09098d5bd2267083b6f7331d5926bb6195bb08fb50717496978412748f3fdaf207e9fae89600c968a887f2a91d60f8b4c90f32f5573d627e')
+sha512sums=('2b9d54604f093ad2024bd67aa0a0b613605900909b273d99129b3861783fb3c91faff58b4bf852fc70c8a34faf1c28e1a927650994399fa27dd7c11d6152acdc')
 options=('!lto')
 
 prepare() {
