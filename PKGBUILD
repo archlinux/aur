@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=stringfish
-_pkgver=0.16.0
+_pkgver=0.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Alt String Implementation"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -20,23 +20,23 @@ depends=(
 optdepends=(
   r-dplyr
   r-knitr
-  r-qs
   r-rlang
   r-rmarkdown
   r-stringr
+  r-qs2
   r-usethis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-libs.patch")
-md5sums=('5ca337ca8e7eeed112eb342165a93684'
+md5sums=('37ed347b3ca5fd30f86b5d8178ef4366'
          '685b52efc1bfcd2574e559f9df64560e')
-b2sums=('b754f12ae5887ae25fade0c049653f15c61c63ce7b8cdd21323a44a95d59a16baca33cb27ad0b9df9e7d4de15f26b52647621ef79b42ef4b172cb2fea2641621'
+b2sums=('1cd0b274b0ca4eae65e9f9be9bda8096aedc0eec8ec07731f223f1a114648f388218a1b955879e567a24327cf8bc7e1267b1f1105607e4c5aeef6852006f9973'
         'a56459ada70af48192f87952f0bf3c7badf8f9f0159a9ef1cef6d0c9bb9d1faaaa61d82c4a91b4538cd37b3cbca657ddd744ce910379500a8ed8fca7f7a4fd35')
 
-prepare() {
-  # use system xxhash
-  patch -Np1 -i system-libs.patch
-}
+# prepare() {
+#   # use system xxhash
+#   patch -Np1 -i system-libs.patch
+# }
 
 build() {
   mkdir build
