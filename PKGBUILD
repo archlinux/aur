@@ -8,7 +8,7 @@
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=6.6.4.r2.gb4f7c0f
+pkgver=6.7.1.r0.g666e40f
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -47,6 +47,7 @@ depends=(
 )
 makedepends=(
   boost
+  boost-libs # static link
   cmake
   extra-cmake-modules
   fmt

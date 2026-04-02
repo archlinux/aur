@@ -1,11 +1,12 @@
 pkgbase = telegram-desktop-git
 	pkgdesc = Official Telegram Desktop client
-	pkgver = 6.6.4.r2.gb4f7c0f
+	pkgver = 6.7.1.r0.g666e40f
 	pkgrel = 1
 	url = https://github.com/telegramdesktop/tdesktop
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = boost
+	makedepends = boost-libs
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = fmt
