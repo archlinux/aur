@@ -1,0 +1,17 @@
+pkgbase = budget-planner
+	pkgdesc = CLI budget planner that projects your bank balance from YAML config
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/salehjg/BudgetPlanner
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyyaml
+	source = budget-planner-0.1.1.tar.gz::https://github.com/salehjg/BudgetPlanner/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 1852c98f6d6fd32338537556fe0c06921c6dd25404f8e66c4c88fe5873c8db1d
+
+pkgname = budget-planner
