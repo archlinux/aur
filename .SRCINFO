@@ -1,6 +1,6 @@
 pkgbase = dlss-updater
 	pkgdesc = DLSS, XeSS, DirectStorage, FSR, and Streamline DLL updater for games
-	pkgver = 3.9.9
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/Recol/DLSS-Updater
 	arch = any
@@ -26,9 +26,9 @@ pkgbase = dlss-updater
 	depends = python-requests
 	depends = python-uvloop
 	optdepends = python-rapidfuzz: Fast fuzzy string matching for game search
-	source = DLSS-Updater-3.9.9.tar.gz::https://github.com/Recol/DLSS-Updater/archive/refs/tags/V3.9.9.tar.gz
+	source = DLSS-Updater-4.0.0.tar.gz::https://github.com/Recol/DLSS-Updater/archive/refs/tags/V4.0.0.tar.gz
 	source = dlss-updater.sh
-	sha256sums = 0bb43af70b7742149fb9c8fc7e4b438ea4172cfc1857587b00bb960374023953
+	sha256sums = cbacb71c4420625935faba8c470e19222a2334746b74509b1c2804bcba06002d
 	sha256sums = d98bd361773dee09cc82fa02a185a9fdf21779676ed72b69d550323e9abe14f0
 
 pkgname = dlss-updater
