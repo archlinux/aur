@@ -4,7 +4,7 @@ _sdk=10.0
 _Name="YoutubeDownloader"
 pkgname="${_Name,,}"
 pkgver=1.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Downloads videos and playlists from YouTube"
 arch=(
   'aarch64'
@@ -18,6 +18,7 @@ license=(
 depends=(
   "dotnet-runtime-${_sdk}"
   'ffmpeg'
+  'sh'
 )
 makedepends=(
   "dotnet-sdk-${_sdk}"
