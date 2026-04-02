@@ -17,8 +17,8 @@ sha256sums_aarch64=('64bcc89b9b66ac46994c2fdbd6e9906d2030c9d4bba90bff4ba83a2b275
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/JordanCoin/codemap/releases/download/v${pkgver}/codemap_${pkgver}_linux_arm64.tar.gz")
 
 latestver() {
-    curl -fsSL 'https://api.github.com/repos/JordanCoin/codemap/releases/latest' | jq -r 'select(any(.assets[]?; .name | test("^codemap_[0-9.]+_linux_amd64\\.tar\\.gz$")) and any(.assets[]?; .name | test("^codemap_[0-9.]+_linux_arm64\\.tar\\.gz$"))) | .tag_name' |
-    sed -E 's/^v//'
+    gh api --paginate repos/JordanCoin/codemap/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name | test("^codemap_[0-9.]+_linux_amd64\\.tar\\.gz$")) and any(.assets[]; .name | test("^codemap_[0-9.]+_linux_arm64\\.tar\\.gz$"))) | .tag_name' |
+    head -1 | sed -E 's/^v//'
 }
 
 package() {
