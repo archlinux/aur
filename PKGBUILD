@@ -2,15 +2,15 @@
 
 pkgname=roadrunner
 epoch=1
-pkgver=2025.1.6
+pkgver=2025.1.12
 pkgrel=1
 pkgdesc="High-performance PHP application server, process manager written in Go and powered with plugins"
 arch=(x86_64)
 url="https://roadrunner.dev/"
 license=(MIT)
-makedepends=("go>=1.25.4")
+makedepends=("go>=1.26.1")
 source=("roadrunner-$pkgver.tar.gz::https://github.com/roadrunner-server/roadrunner/archive/v$pkgver.tar.gz")
-sha256sums=('1c825bce9a6818ace1c5d3b99e8502a826135da54416dcd710575f10ce05535a')
+sha256sums=('e74c7fcf0fc65e06d0640b9939d881e32f84af660e0204a6557dfbc648eadd2a')
 options=("!buildflags")
 
 prepare() {
