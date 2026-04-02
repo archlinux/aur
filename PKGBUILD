@@ -1,4 +1,4 @@
-# Maintainer: Youcef <your.email@example.com>
+# Maintainer: Youcef <youcef.nafa@gmail.com>
 pkgname=hermes-agent
 pkgver=0.6.0
 _tagver=2026.3.30
@@ -63,7 +63,7 @@ build() {
 #    local pytest_options=(
 #        -vv
 #    )
-#    cd hermes-agent
+#    cd "${pkgname}-${_tagver}"
 #    python -m venv --system-site-packages test-env
 #    test-env/bin/python -m installer dist/*.whl
 #    test-env/bin/python -m pytest "${pytest_options[@]}" tests
