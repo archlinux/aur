@@ -1,2 +1,5 @@
 .cecli*
 hermes-agent
+src*
+pkg*
+*.pkg.tar.zst

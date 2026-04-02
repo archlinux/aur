@@ -15,7 +15,7 @@ depends=(
     'python-httpx'
     'python-rich'
     'python-tenacity'
-    'python-pyyaml'
+    'python-yaml'
     'python-requests'
     'python-jinja'
     'python-pydantic'
@@ -31,45 +31,43 @@ depends=(
 )
 makedepends=('git' 'nodejs' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-pytest')
 optdepends=(
-    'python-telegram-bot: Telegram gateway support'
-    #'python-discord-py: Discord gateway support' python-discord-git?
-    'python-croniter: Cron expression parsing'
-    #'python-modal-client: Modal cloud execution backend'
-    'python-elevenlabs: ElevenLabs premium voices'
-    'python-pyaudio: CLI microphone input + audio playback'
-    #'python-honcho: AI-native memory'
-    'python-mcp: Model Context Protocol support'
-    #'python-homeassistant: Home Assistant integration' -cli?
-    #'python-acp: ACP editor integration support'
-    'python-slack-sdk: Slack messaging'
-    'python-pytest: Test utilities'
+  'python-litellm: multi-provider LLM support'
+  'python-telegram-bot: Telegram gateway support'
+  #'python-discord-py: Discord gateway support' python-discord-git?
+  'python-croniter: Cron expression parsing'
+  #'python-modal-client: Modal cloud execution backend'
+  'python-elevenlabs: ElevenLabs premium voices'
+  'python-pyaudio: CLI microphone input + audio playback'
+  #'python-honcho: AI-native memory'
+  'python-mcp: Model Context Protocol support'
+  #'python-homeassistant: Home Assistant integration' -cli?
+  #'python-acp: ACP editor integration support'
+  'python-slack-sdk: Slack messaging'
 )
 provides=('hermes-agent')
 conflicts=('hermes-agent')
-options=('!strip')
-install=hermes-agent-git.install
-source=("git+https://github.com/NousResearch/hermes-agent.git#branch=main")
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/NousResearch/hermes-agent.git")
+sha256sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-    cd hermes-agent
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd hermes-agent
-    git submodule update --init --recursive
+  cd "$pkgname"
+  git submodule update --init --recursive
 }
 
 build() {
-    cd hermes-agent
+  cd "$pkgname"
 
-    # Install Node.js dependencies
-    [ -f "package.json" ] && npm install
+  # Install Node.js dependencies
+  [ -f "package.json" ] && npm install
 
-    # Build Python wheel
-    python -m build --wheel --no-isolation
+  # Build Python wheel
+  python -m build --wheel --no-isolation
 }
 
 #check() {
@@ -83,26 +81,28 @@ build() {
 #}
 
 package() {
-    cd hermes-agent
+  cd "$pkgname"
 
-    # Install Python package
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  # Install Python package
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
 
-    # Install optional submodule if present
-    if [ -d "tinker-atropos" ]; then
-        cd tinker-atropos
-        python -m build --wheel --no-isolation
-        python -m installer --destdir="$pkgdir" dist/*.whl
-        cd ..
-    fi
+  # Install optional submodule if present
+  if [ -d "tinker-atropos" ]; then
+      cd tinker-atropos
+      python -m build --wheel --no-isolation
+      python -m installer --destdir="$pkgdir" dist/*.whl
+      cd ..
+  fi
 
-    # Install Node.js dependencies
-    if [ -d "node_modules" ]; then
-        install -d "$pkgdir/usr/share/hermes-agent"
-        cp -r node_modules "$pkgdir/usr/share/hermes-agent/"
-    fi
+  # Install Node.js dependencies
+  if [ -d "node_modules" ]; then
+      install -d "$pkgdir/usr/share/hermes-agent"
+      cp -r node_modules "$pkgdir/usr/share/hermes-agent/"
+  fi
 
-    # Install configuration examples
-    install -d "$pkgdir/usr/share/hermes-agent"
-    [ -f "cli-config.yaml.example" ] && install -Dm644 cli-config.yaml.example "$pkgdir/usr/share/hermes-agent/cli-config.yaml.example"
+  # Install configuration examples
+  install -d "$pkgdir/usr/share/hermes-agent"
+  [ -f "cli-config.yaml.example" ] && install -Dm644 cli-config.yaml.example "$pkgdir/usr/share/hermes-agent/cli-config.yaml.example"
 }
