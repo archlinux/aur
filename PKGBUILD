@@ -2,7 +2,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=oxlint-bin
-pkgver=1.57.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc="A high-performance linter for JavaScript and TypeScript built on the Oxc compiler stack"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ _binary_aarch64="oxlint-aarch64-unknown-linux-gnu"
 source_x86_64=("${_binary_x86_64}-$pkgver.tar.gz::${_github_url}/${_binary_x86_64}.tar.gz")
 source_aarch64=("${_binary_aarch64}-$pkgver.tar.gz::${_github_url}/${_binary_aarch64}.tar.gz")
 
-sha256sums_x86_64=('a24a21a3aecbe62d4163c5c8bfdd87fc258a175d920beec54d795ae28778024d')
-sha256sums_aarch64=('7b95070fa26fde371bfbb345507eec5bc0f931d68599f44d125649c80a7fbe73')
+sha256sums_x86_64=('15c00abe9dd9e1c2a278494ed0c1e70cc86de74fa16fb3a5f573f8ee702db934')
+sha256sums_aarch64=('d7e57bb36895b0763f75bd0d45183efab2042f1a03907dfebc37d30b80ea8434')
 
 package() {
     local _binary_var="_binary_${CARCH}"
