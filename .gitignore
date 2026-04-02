@@ -1,0 +1,4 @@
+mainsail-config-git
+pkg
+src
+*.pkg*

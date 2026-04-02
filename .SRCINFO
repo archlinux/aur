@@ -1,0 +1,14 @@
+pkgbase = mainsail-config-git
+	pkgdesc = Mainsail klipper macros and settings
+	pkgver = r26.ff3869a
+	pkgrel = 1
+	url = https://github.com/mainsail-crew/mainsail-config
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	provides = mainsail-config
+	conflicts = mainsail-config
+	source = mainsail-config-git::git+https://github.com/mainsail-crew/mainsail-config.git#branch=master
+	sha256sums = SKIP
+
+pkgname = mainsail-config-git
