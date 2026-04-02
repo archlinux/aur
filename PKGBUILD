@@ -3,7 +3,7 @@
 pkgname=astrbot-git
 _pkgname=astrbot
 pkgver=4.22.2.r521.g22606f35
-pkgrel=4
+pkgrel=5
 pkgdesc="Agentic IM Chatbot infrastructure (multi-instance, astrbotctl only)"
 arch=('any')
 url="https://github.com/AstrBotDevs/AstrBot"
@@ -30,13 +30,13 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 install=astrbot-git.install
 
 pkgver() {
-    # Read version from the installed /opt/astrbot (managed by this package's install script)
-    if [ -d "/opt/astrbot" ] && [ -d "/opt/astrbot/.git" ]; then
+    # Read version from installed /opt/astrbot (managed by this package's install script)
+    if [ -d "/opt/astrbot/.git" ]; then
         cd /opt/astrbot
         git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g' && return
     fi
-    # Fallback: echo current pkgver
-    echo "$pkgver"
+    # Fallback: hardcoded version (matches last known upstream)
+    echo "4.22.2.r521.g22606f35"
 }
 
 package() {
