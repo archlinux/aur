@@ -3,7 +3,7 @@
 pkgname=python-dynesty
 _name=${pkgname#python-}
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic nested sampling package for computing Bayesian posteriors and evidences."
 arch=(any)
 url="https://github.com/joshspeagle/dynesty"
