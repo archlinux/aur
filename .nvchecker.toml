@@ -1,0 +1,3 @@
+[perl-devel-stacktrace-withlexicals]
+source = "cpan"
+cpan = "Devel-StackTrace-WithLexicals"
