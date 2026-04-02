@@ -16,8 +16,8 @@ sha256sums=('e610615d8cf33d53a08106451345f29b6862e8d43e58690faa9407624bc147ca'
             'd368be6f632f8f928369c6f1923cf2f884a1ae42a5f0dd218acd96f9bcfa75b4')
 
 latestver() {
-    curl -fsSI 'https://github.com/danielpaulus/go-ios/releases/latest/download/go-ios-linux.zip' | tr -d '\r' |
-    sed -nE 's#^location: .*/download/v?([^/]+)/.*$#\1#p'
+    gh api --paginate repos/danielpaulus/go-ios/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "go-ios-linux.zip")) | .tag_name' |
+    head -1 | sed 's/^v//'
 }
 
 package() {
