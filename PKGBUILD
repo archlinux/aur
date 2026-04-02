@@ -152,8 +152,13 @@ prepare() {
 build() {
     cd ffmpeg
 
-    # Upgrade from Arch default -O2 to -O3 for better encode/decode performance
+    # Optimize for the build machine's CPU and use -O3 for better performance.
+    # Safe for AUR since every user compiles locally with their own -march=native.
+    CFLAGS="${CFLAGS/-march=x86-64/-march=native}"
+    CFLAGS="${CFLAGS/-mtune=generic/-mtune=native}"
     CFLAGS="${CFLAGS/-O2/-O3}"
+    CXXFLAGS="${CXXFLAGS/-march=x86-64/-march=native}"
+    CXXFLAGS="${CXXFLAGS/-mtune=generic/-mtune=native}"
     CXXFLAGS="${CXXFLAGS/-O2/-O3}"
 
     # FFmpeg's configure expects threads="yes"/"no" internally.
