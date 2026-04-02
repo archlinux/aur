@@ -1,3 +1,4 @@
+CONF_NEED_UPDATE=true
 _showmsg() {
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
@@ -62,6 +63,7 @@ post_upgrade() {
     echo ":: Executing systemctl daemon-reload..."
     systemctl daemon-reload
     systemctl is-active --quiet cellframe-node.service \
+    && cellframe-node-config -i /opt/cellframe-node/share/default.setup \
     && echo ":: Restarting cellframe-node.service..." \
     && systemctl restart cellframe-node.service \
     || echo ":: cellframe-node.service not enabled, skipping restart..."
