@@ -20,8 +20,8 @@ sha256sums_x86_64=('a83f9733624328f1f4545ae77bfc207dce92f92080a645c6bd95cbc287ae
 sha256sums_aarch64=('bd3147aff09ad4b7db6756d5c83154c9d1f8fbbf3c3d5bbb520d3162e84cc43c')
 
 latestver() {
-    curl -fsSL "https://api.github.com/repos/dmtrKovalenko/${_upstream}/releases/latest" |
-        jq -r 'select(.assets[].name == "fff-mcp-x86_64-unknown-linux-gnu") | .tag_name | ltrimstr("v")'
+    gh api --paginate "repos/dmtrKovalenko/${_upstream}/releases" --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "fff-mcp-x86_64-unknown-linux-gnu")) | .tag_name | ltrimstr("v")' |
+        head -1
 }
 
 package() {
