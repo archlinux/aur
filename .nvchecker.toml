@@ -1,0 +1,3 @@
+[perl-catalyst-plugin-session-store-dbic]
+source = "cpan"
+cpan = "Catalyst-Plugin-Session-Store-DBIC"
