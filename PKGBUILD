@@ -29,7 +29,7 @@ source=(
 	"${pkgname%-*}".tmpfiles
 )
 noextract=("${_upstreamname}_${pkgver}_amd64.tar.gz")
-sha256sums=('88c876ec5f028497b01c355b6f2a8182b833d4fc6bf4cc55f25caecc62502feb'
+sha256sums=('10b670f866cf6b697ca3fd9d545772d1d8e43a9c4e9519ec43fb791238ad36df'
             '1afd9225c8e9463c4e95359be59e91aeb06091f389aded00ee87e8d20859c3c2'
             '8c9f747bc6484290cb97b40e5904dc02cce2672e59e0f6ad720a1cd6a7b9d900'
             '858fd197e13a6bc2756e090f622adcac0d02d20007c366d0dff93258898e256e'
