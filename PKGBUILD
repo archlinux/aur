@@ -9,9 +9,9 @@ arch=('any')
 license=('MPL')
 url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
-source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
+source=(https://archive.seamonkey-project.org/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha512sums=('902a42fef27dbeb99867f4cb22faab9087c311feab08a7bcc55aece123a5c92caf33523310c6774a602cf965efc0dff2390fd76ca8c7bd39108e55e484ab29e7')
+sha512sums=('bcc18e2677d53f5c318b1ccc4caca83709740081c23241941f4c8534a2f36fd16a547cf77535355132e827895b1c4b4080a5c727d756e3950f2faa2d77c63479')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
