@@ -1,7 +1,7 @@
 pkgbase = pake-grok
 	pkgdesc = Grok wrapped as a desktop app using Pake
-	pkgver = 3.10.0
-	pkgrel = 2
+	pkgver = 3.11.0
+	pkgrel = 1
 	url = https://github.com/tw93/Pake
 	arch = x86_64
 	license = MIT
@@ -10,9 +10,9 @@ pkgbase = pake-grok
 	depends = libayatana-appindicator
 	options = !strip
 	options = !debug
-	source = Grok-3.10.0.deb::https://github.com/tw93/Pake/releases/download/V3.10.0/Grok_x86_64.deb
-	source = LICENSE-3.10.0::https://raw.githubusercontent.com/tw93/Pake/V3.10.0/LICENSE
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = Grok-3.11.0.deb::https://github.com/tw93/Pake/releases/download/V3.11.0/Grok_x86_64.deb
+	source = LICENSE-3.11.0::https://raw.githubusercontent.com/tw93/Pake/V3.11.0/LICENSE
+	sha256sums = e544c67eb8e721ef1ee1d7207d6ee2e8bec25e8c32355b19c29a8d08c4d4568a
+	sha256sums = 462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758
 
 pkgname = pake-grok
