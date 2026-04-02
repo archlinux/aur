@@ -14,8 +14,8 @@ depends=('gtk3' 'webkit2gtk-4.1' 'hicolor-icon-theme' 'gst-plugins-good')
 options=('!strip' '!debug')
 
 latestver() {
-  curl -fsSL 'https://api.github.com/repos/anomalyco/opencode/releases/latest' | jq -r 'select(any(.assets[]?; .name == "opencode-desktop-linux-amd64.deb") and any(.assets[]?; .name == "opencode-desktop-linux-arm64.deb")) | .tag_name' |
-    sed -E 's/^v//'
+  gh api --paginate repos/anomalyco/opencode/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "opencode-desktop-linux-amd64.deb") and any(.assets[]; .name == "opencode-desktop-linux-arm64.deb")) | .tag_name' |
+    head -1 | sed -E 's/^v//'
 }
 
 source=("LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver}/LICENSE")
