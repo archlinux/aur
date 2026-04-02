@@ -6,7 +6,7 @@
 
 _pkgname="libggml"
 pkgname="$_pkgname"
-pkgver=0.9.7
+pkgver=0.9.11
 pkgrel=1
 pkgdesc="Tensor library for machine learning"
 url="https://github.com/ggml-org/ggml"
@@ -25,13 +25,10 @@ makedepends=(
   'vulkan-headers'
 )
 
-provides=("$_pkgname-git")
-conflicts=("$_pkgname-git")
-
 _pkgsrc="ggml-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('7288285b194cbf7fd7b532628c5f9ae86dda2568ec2276a8bb49b9eef65cca00')
+sha256sums=('97b6f55df0e5d7c8f7528a443907752ff65c1c66bc0a3b71db2a0664e79c1982')
 
 prepare() {
   cd "$_pkgsrc"
