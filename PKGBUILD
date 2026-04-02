@@ -24,6 +24,12 @@ source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/a
 sha256sums=('87b70bb44d9ea6f1f291ae66f782963e9e02bc603530ac6999d34263713e24ab')
 
 
+prepare() {
+	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
+
+	go mod tidy
+}
+
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
 
