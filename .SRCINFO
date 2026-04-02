@@ -10,7 +10,6 @@ pkgbase = isso
 	makedepends = python
 	depends = python-itsdangerous
 	depends = python-jinja
-	depends = python-misaka
 	depends = python-mistune
 	depends = python-html5lib
 	depends = python-werkzeug

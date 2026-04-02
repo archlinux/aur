@@ -9,7 +9,6 @@ license=('MIT')
 depends=(
 	'python-itsdangerous'
 	'python-jinja'
-	'python-misaka'
 	'python-mistune'
 	'python-html5lib'
 	'python-werkzeug'
