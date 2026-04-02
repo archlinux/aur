@@ -1,8 +1,8 @@
 # Maintainer: Roland Kiraly <rolandgyulakiraly at outlook dot com>
 # https://github.com/raverecursion/nordlayer-latest/tree/master
 pkgname=nordlayer
-pkgver=3.4.3
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="Proprietary VPN client for Linux"
 arch=('x86_64')
 url="https://nordlayer.com"
@@ -13,7 +13,7 @@ depends=('bash' 'libgcrypt' 'libgpg-error' 'libcap' 'hicolor-icon-theme' 'gmp' '
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://downloads.nordlayer.com/linux/latest/debian/pool/main/nordlayer_${pkgver}_amd64.deb")
-sha512sums_x86_64=('578d43c80ab3fdb658faab6e538edfb136700fb10e6a355c41c6996f1ae4056ac8dd4fc5e660c9acd3e009f9290840e4772c572591b38c0f03a83a97ae2b3a4e')
+sha512sums_x86_64=('3096474b7079287f6fcda6bd4327709db7651eca211ae791150612cf6c018a6ba963443cee4d33f61b7ca0cec46fda6b13a89a0507422da1ed3003342b653b1e')
 
 package() {
     cd "${srcdir}"
