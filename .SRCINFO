@@ -1,0 +1,26 @@
+pkgbase = urdu-translator-git
+	pkgdesc = A screenshot-to-translation app using EasyOCR and Google Gemini
+	pkgver = v1.0.0.r1.g6e4d704
+	pkgrel = 1
+	url = https://github.com/AMVZEN/UrduLiveTranslator
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = python
+	depends = python-pip
+	depends = nss
+	depends = alsa-lib
+	depends = gtk3
+	depends = grim
+	depends = slurp
+	provides = urdu-translator
+	conflicts = urdu-translator
+	source = git+https://github.com/AMVZEN/UrduLiveTranslator.git
+	source = urdu-translator.sh
+	source = urdu-translator.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = urdu-translator-git

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Urdu Translator
+Comment=Screenshot to Urdu Translator Desktop App
+Exec=/usr/bin/urdu-translator
+Icon=preferences-desktop-locale
+Terminal=false
+Type=Application
+Categories=Utility;Translation;
+StartupWMClass=urdu-translator
