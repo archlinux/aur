@@ -9,4 +9,4 @@ pkgbase = omniwrap
         source = https://github.com/voidVoy7/Omniwrap/archive/refs/tags/1.0.tar.gz
         sha256sums = b9d10112702ec2ac79bc486e3c8f96f52429d6ac440a9dccec22f2f4bbf9d52a
 
-pkgname = Omniwrap
+pkgname = omniwrap
