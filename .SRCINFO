@@ -1,6 +1,6 @@
 pkgbase = openwork-bin
 	pkgdesc = Unofficial OpenWork binary package with Arch-specific launcher fixes
-	pkgver = 0.11.195
+	pkgver = 0.11.199
 	pkgrel = 2
 	url = https://github.com/different-ai/openwork
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = openwork-bin
 	depends = libsoup3
 	depends = openssl
 	depends = webkit2gtk-4.1
-	noextract = openwork-bin-0.11.195.deb
+	noextract = openwork-bin-0.11.199.deb
 	options = !strip
-	source = openwork-bin-0.11.195.deb::https://github.com/different-ai/openwork/releases/download/v0.11.195/openwork-desktop-linux-amd64.deb
-	sha256sums = 47e3d897496d7c70df188159a29c1970c0b642ee1014034733f359756b141e89
+	source = openwork-bin-0.11.199.deb::https://github.com/different-ai/openwork/releases/download/v0.11.199/openwork-desktop-linux-amd64.deb
+	sha256sums = 0aecbade756347ff161aefe8e8761330c4c1028be80a93d0f08f916a27c66ce3
 
 pkgname = openwork-bin
