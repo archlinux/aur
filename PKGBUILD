@@ -1,5 +1,5 @@
 pkgname=hyprmoncfg-git
-pkgver=r43.343eed6
+pkgver=r83.f77cdb8
 pkgrel=1
 pkgdesc="Terminal-first monitor configurator and auto-switching daemon for Hyprland"
 arch=('x86_64' 'aarch64')
