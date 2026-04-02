@@ -1,0 +1,12 @@
+pkgbase = php-var_representation
+	pkgdesc = A compact, more readable alternative to var_export
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://pecl.php.net/package/var_representation
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = php>=7.2
+	source = php-var_representation-0.1.5.tar.gz::http://pecl.php.net/get/var_representation-0.1.5.tgz
+	sha256sums = a43352b65a20a01c455fb3327fa99c4a03a9ca90fa92e937d8ad1b9e364dae41
+
+pkgname = php-var_representation
