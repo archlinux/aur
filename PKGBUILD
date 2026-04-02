@@ -1,13 +1,13 @@
 # Maintainer: Senan Kelly <senan@senan.xyz>
 # Maintainer: Nogweii <packages@nogweii.net>
 pkgname=nvim-treesitter-parsers-main-git
-pkgver=r6181.77362027f
+pkgver=r6382.c82bf96f0
 pkgrel=1
 pkgdesc="All of the registered tree sitter parsers used by Neovim; main branch of nvim-treesitter"
 arch=(x86_64)
 url="https://github.com/nvim-treesitter/nvim-treesitter"
 license=('Apache')
-depends=('tree-sitter' 'neovim')
+depends=('tree-sitter' 'neovim>=0.12')
 makedepends=('git' 'npm' 'tree-sitter-cli')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "nvim-treesitter-parsers" "nvim-treesitter-parsers-git")
