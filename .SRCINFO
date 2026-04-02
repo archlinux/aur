@@ -1,7 +1,7 @@
 pkgbase = repoforge-git
 	pkgdesc = A C++ wizard to create linux remote repositories for debian, RHEL and AUR
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 0
 	url = https://github.com/Vniverse77/byte-knight
 	arch = x86_64
 	license = GPL-3.0-or-later
