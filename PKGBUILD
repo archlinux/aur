@@ -81,18 +81,18 @@ prepare() {
 
 build() {
   cd "$_pyname-$pkgver"
-  python -m build --wheel --no-isolation
+  /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_pyname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Install bundled deps not available in official Arch repos or AUR
   for _whl in bubus-1.5.6-py3-none-any.whl \
               cdp_use-1.4.5-py3-none-any.whl \
               browser_use_sdk-2.0.15-py3-none-any.whl; do
-    python -m installer --destdir="$pkgdir" "$srcdir/$_whl"
+    /usr/bin/python -m installer --destdir="$pkgdir" "$srcdir/$_whl"
   done
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
