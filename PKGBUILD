@@ -1,22 +1,25 @@
 # Maintainer: attackuwu911 <daniil.baskakov13@gmail.com>
+
+_name=accuralai
 pkgname=python-accuralai-discord
 pkgver=0.2.1
-pkgrel=5
+pkgrel=1
 pkgdesc="AI-powered Discord bot package using pypresence"
 arch=('any')
-url="https://aur.archlinux.org/packages/python-accuralai-discord"
+url="https://pypi.org/project/accuralai/"
 license=('MIT')
 depends=('python' 'python-aiohttp' 'python-pypresence')
 makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-wheel')
-source=("accuralai-${pkgver}.tar.gz")
-sha256sums=('b3cd21a637883eb7262ef036681def5c092590b2d6b349ad84af9b5c4f27e2c0')
+
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('d9e29ac526960cc4fafa9d54c2a9a7f7835aacece4e44e91301af3428080f3a7')
 
 build() {
-    cd "$srcdir"
+    cd "$srcdir/$_name-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir"
+    cd "$srcdir/$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
