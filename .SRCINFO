@@ -1,4 +1,4 @@
-pkgbase = Omniwrap
+pkgbase = omniwrap
         pkgdesc = A Package Manager wrapper
         pkgver = 1.0
         pkgrel = 0
