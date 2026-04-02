@@ -2,17 +2,17 @@
 # Contributor: Anatol Pomozov
 
 pkgname=python-tarantool
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Python client library for Tarantool 1.6 Database'
 arch=('any')
 url='https://github.com/tarantool/tarantool-python'
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('python-msgpack' 'python-pytz')
 makedepends=('git' 'python-setuptools' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('tarantool' 'python-dbapi-compliance' 'python-yaml')
 source=("git+$url#tag=$pkgver")
-sha512sums=('770e0fc4fba28b34dfdfee9270eb4f280e09f378e87f5f1fb5641ef3791e77aaaf1b91a5e1bc5002132d90ee294acd790157f00ffe949d862568a583c01a275c')
+sha512sums=('ec5f4624ff9c3ed62992394bca1345f5f17ca04ba98e864ae87fc8ac25068368a5d3d341e99977ab72e2ec6c26a214b8d84c11937e0e2e351623fccb97dc63a5')
 
 prepare() {
   cd tarantool-python

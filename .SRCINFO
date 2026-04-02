@@ -1,10 +1,10 @@
 pkgbase = python-tarantool
 	pkgdesc = Python client library for Tarantool 1.6 Database
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/tarantool/tarantool-python
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
 	checkdepends = tarantool
 	checkdepends = python-dbapi-compliance
 	checkdepends = python-yaml
@@ -16,7 +16,7 @@ pkgbase = python-tarantool
 	makedepends = python-wheel
 	depends = python-msgpack
 	depends = python-pytz
-	source = git+https://github.com/tarantool/tarantool-python#tag=1.0.0
-	sha512sums = 770e0fc4fba28b34dfdfee9270eb4f280e09f378e87f5f1fb5641ef3791e77aaaf1b91a5e1bc5002132d90ee294acd790157f00ffe949d862568a583c01a275c
+	source = git+https://github.com/tarantool/tarantool-python#tag=1.1.0
+	sha512sums = ec5f4624ff9c3ed62992394bca1345f5f17ca04ba98e864ae87fc8ac25068368a5d3d341e99977ab72e2ec6c26a214b8d84c11937e0e2e351623fccb97dc63a5
 
 pkgname = python-tarantool
