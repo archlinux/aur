@@ -20,8 +20,8 @@ noextract=(
 )
 
 latestver() {
-  curl -fsSL 'https://api.github.com/repos/Vineflower/vineflower/releases/latest' | jq -r '.assets[]?.name' \
-    | sed -nE '/^vineflower-[0-9.]+\.jar$/{s/^vineflower-//; s/\.jar$//; p;}'
+  gh api --paginate repos/Vineflower/vineflower/releases --jq '.[] | select(.prerelease == false and .draft == false) | .assets[]?.name' \
+    | sed -nE '/^vineflower-[0-9.]+\.jar$/{s/^vineflower-//; s/\.jar$//; p; q}'
 }
 
 package() {
