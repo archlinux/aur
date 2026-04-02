@@ -1,0 +1,73 @@
+[project]
+name = "accuralai"
+version = "0.2.1"
+description = "Complete AccuralAI ecosystem - pragmatic tooling for LLM quality improvements"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "AccuralAI Maintainers" }]
+
+# Core dependencies - these will be installed by default
+# These reference PyPI packages, not local paths
+dependencies = [
+    "accuralai-core",
+    "accuralai-canonicalize", 
+    "accuralai-cache",
+    "accuralai-router",
+    "accuralai-validator",
+    "accuralai-rag",
+]
+
+[project.optional-dependencies]
+# Backend adapters
+backends = [
+    "accuralai-ollama",
+    "accuralai-google",
+]
+
+# Development dependencies
+dev = [
+    "accuralai-core[dev]",
+    "accuralai-canonicalize[dev]",
+    "accuralai-cache[dev]",
+    "accuralai-router[dev]",
+    "accuralai-validator[dev]",
+    "accuralai-rag[dev]",
+    "accuralai-ollama[dev]",
+    "accuralai-google[dev]",
+]
+
+# Complete installation
+all = [
+    "accuralai-core",
+    "accuralai-canonicalize",
+    "accuralai-cache",
+    "accuralai-router",
+    "accuralai-validator",
+    "accuralai-rag",
+    "accuralai-ollama",
+    "accuralai-google",
+]
+
+# Minimal installation (just core)
+minimal = [
+    "accuralai-core",
+]
+
+[project.urls]
+homepage = "https://accural-ai.web.app"
+repository = "https://github.com/orgs/AccuralAI/repositories"
+documentation = "https://accuralai.readthedocs.io/en/latest/"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/README.md",
+    "/pyproject.toml",
+]
