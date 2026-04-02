@@ -6,7 +6,7 @@
 pkgname=mixxx-beta
 _mixxxver=2.6
 pkgver="${_mixxxver}.beta"
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital DJ mixing software (beta branch)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mixxx.org/"
@@ -52,6 +52,7 @@ depends=(
   'qt6-5compat'
   #'qt6-base'
   'qt6-declarative'
+  'qt6-shadertools'
   'qt6-svg'
   'qt6-translations' #?
   'qtkeychain-qt6'
@@ -61,21 +62,17 @@ depends=(
   'ttf-ubuntu-font-family' #?
   'upower'
   'wavpack'
+  'sqlite'
 )
 makedepends=(
   'benchmark'
   'cmake'
-  #'faad2' #Added
-  #'ffmpeg'
-  #'glib2'
+  #'faad2'
   #'glu'
   #'gperftools'
   'gtest'
-  #'libogg'
-  #'libvorbis'
   'lv2'
   'microsoft-gsl'
-  #'qt6-shadertools'
   'qt6-tools'
 )
 provides=('mixxx')
@@ -121,3 +118,5 @@ package() {
     install -Dm644 "${_basedir}/res/linux/mixxx-usb-uaccess.rules" "$pkgdir/usr/lib/udev/rules.d/99-mixxx-usb-uaccess.rules"
     DESTDIR="$pkgdir" cmake --install "${_basedir}/build"
 }
+
+# vim:set ts=2 sw=2 et:
