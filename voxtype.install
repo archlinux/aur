@@ -70,15 +70,15 @@ post_install() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 0.6.3"
+    echo "==> Voxtype upgraded to 0.6.5"
     echo ""
 
     _detect_gpu
 
     echo ""
-    echo "    v0.6.3: Clipboard restoration, full config override, NixOS improvements."
-    echo "    Paste mode can now restore your clipboard after output."
-    echo "    All config options are now available as CLI flags and VOXTYPE_* env vars."
+    echo "    v0.6.5: Eager processing, multi-GPU device selection, Parakeet TDT models."
+    echo "    Transcription starts while you're still recording for lower latency."
+    echo "    Hybrid GPU users: set gpu_device in config.toml to pick the right GPU."
     echo ""
     # Check if ONNX engines were built
     if [ -f /usr/lib/voxtype/voxtype-onnx ] || [ -f /usr/lib/voxtype/voxtype-onnx-avx2 ]; then
