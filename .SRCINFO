@@ -1,6 +1,6 @@
 pkgbase = r-cftime
 	pkgdesc = Using CF-Compliant Calendars with Climate Projection Data
-	pkgver = 1.7.0
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=CFtime
 	arch = any
@@ -9,13 +9,11 @@ pkgbase = r-cftime
 	checkdepends = r-stringr
 	checkdepends = r-testthat
 	depends = r-r6
-	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-stringr
 	optdepends = r-testthat
-	optdepends = r-ncdfcf
-	source = https://cran.r-project.org/src/contrib/CFtime_1.7.0.tar.gz
-	md5sums = 4e64d34fe636771922cfc370f5f16e16
-	b2sums = 901e7f22fa3817acd522c8332785571891c8f7c28c4ff5c94d770a2abcfd3ab1b9c35a3d4edca7234159e08c73066b3c26d92845e1a208f27beff47ad691314a
+	source = https://cran.r-project.org/src/contrib/CFtime_1.7.3.tar.gz
+	md5sums = 6ff5952a5c3741031a3a1e52d4d24cf8
+	b2sums = 24a6bfa9a6064e49a3a98650ed2cce56a6b5772f7a7dfc3bf6508278c3f3accce5d56825c28bf565bc1c6b84edb6a64c24486214fb4f74714392e74ff99eb4bb
 
 pkgname = r-cftime
