@@ -1,7 +1,7 @@
-# Maintainer: 3ED <krzysztof1987 at gmail>
+# Maintainer: Voxan <admin at hessfr dot fr>
 
 pkgname=seamonkey-i18n-fr
-pkgver=2.53.12
+pkgver=2.53.23
 pkgrel=1
 _lang=fr
 pkgdesc="French language pack for SeaMonkey"
@@ -9,7 +9,7 @@ arch=('any')
 license=('MPL')
 url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
-source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
+source=(https://archive.seamonkey-project.org/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
 sha512sums=('928e76d57acfb5b7d58313283a39beb755472de283122000c0ff453eebccbdd9bac59d89778e195c13a787139670fb83b22977468edd8b83b780f3716df626cd')
 
