@@ -1,0 +1,20 @@
+pkgbase = swaybeam
+	pkgdesc = Miracast source implementation for wlroots-based compositors written in Rust
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/forkline/swaybeam
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	depends = glibc
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = pipewire
+	source = git+https://github.com/forkline/swaybeam.git#tag=v
+	sha256sums = SKIP
+
+pkgname = swaybeam
