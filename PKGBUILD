@@ -13,8 +13,8 @@ source=("https://github.com/MCB-SMART-BOY/Gridix/releases/download/v${pkgver}/gr
         "gridix.desktop"
         "LICENSE::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/v${pkgver}/LICENSE")
 sha256sums=('4dfc0f817876cc26972d740b0b5d1ceb989a2ea7920b270fc26283e49aebb3b3'
-            'e1f60a98424e119448c72fc03b725348355e1218457234e4576852bfebda557d'
-            '6850b0e5d07bed32b3613d4c7da50e0fc36542239a5ff5188b524494e9edda75')
+            '3a87bbb77f4a98ff45f21d3648fc5fe761352fdef4d2e82233bb96095a7b83cf'
+            '01132d0ac431cc5a8f34ea8ba055deb6f68d7034d8ed6f821b827f4b9195aae4')
 
 package() {
     cd "$srcdir"
