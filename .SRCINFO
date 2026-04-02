@@ -1,13 +1,13 @@
 pkgbase = seamonkey-i18n-fi
-	pkgdesc = Finnish language pack for SeaMonkey
-	pkgver = 2.53.12
+	pkgdesc = English (US) language pack for SeaMonkey
+	pkgver = 2.53.23
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.53.12
-	noextract = seamonkey-2.53.12.fi.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.12/langpack/seamonkey-2.53.12.fi.langpack.xpi
-	sha512sums = b3706af62eb3960c47476bd79c31b08980028d481043c7927d2f65c97b11dac829e3e10458c97388771b976d3414cf53212c8885a72cd1fd72e198221e0ea439
+	depends = seamonkey>=2.53.23
+	noextract = seamonkey-2.53.23.fi.langpack.xpi
+	source = https://archive.seamonkey-project.org/releases/2.53.23/langpack/seamonkey-2.53.23.fi.langpack.xpi
+	sha512sums = 0dbafe9163cf9d60133034659297e12772394b407941215131aade5ea6ccfb186cf3c8c90ca40f208d937c9f1acacc9b84c6bddce5d8d13d45544d9b77a9086d
 
 pkgname = seamonkey-i18n-fi
