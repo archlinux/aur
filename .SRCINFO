@@ -1,0 +1,37 @@
+pkgbase = perl-task-kensho
+	pkgdesc = A Glimpse at an Enlightened Perl
+	pkgver = 0.41
+	pkgrel = 1
+	url = https://metacpan.org/release/ETHER/Task-Kensho-0.41
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
+	optdepends = perl-task-kensho-async: Async Programming
+	optdepends = perl-task-kensho-cli: Useful Command-line Tools
+	optdepends = perl-task-kensho-config: Config Modules
+	optdepends = perl-task-kensho-dates: Date Modules
+	optdepends = perl-task-kensho-dbdev: Database Development
+	optdepends = perl-task-kensho-email: Email
+	optdepends = perl-task-kensho-excelcsv: Excel/CSV
+	optdepends = perl-task-kensho-exceptions: Exception Handling
+	optdepends = perl-task-kensho-hackery: Script Hackery
+	optdepends = perl-task-kensho-logging: Logging
+	optdepends = perl-task-kensho-moduledev: Module Development
+	optdepends = perl-task-kensho-oop: Object Oriented Programming
+	optdepends = perl-task-kensho-scalability: Scalability
+	optdepends = perl-task-kensho-testing: Testing
+	optdepends = perl-task-kensho-toolchain: Basic Toolchain
+	optdepends = perl-task-kensho-webcrawling: Web Crawling
+	optdepends = perl-task-kensho-webdev: Web Development
+	optdepends = perl-task-kensho-xml: XML Development
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Task-Kensho-0.41.tar.gz
+	sha256sums = 299b3c05abf0730609958c565d35e16b0601ea0f46c1992b93882706682b2fab
+
+pkgname = perl-task-kensho
