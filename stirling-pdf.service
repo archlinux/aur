@@ -1,28 +1,28 @@
 [Unit]
-Description = Stirling-PDF Service
-Documentation = https://docs.stirlingpdf.com
-Wants = network-online.target
-After = network-online.target
+Description=Stirling-PDF Service
+Documentation=https://docs.stirlingpdf.com
+Wants=network-online.target
+After=network-online.target
 
 [Service]
-User = stirling-pdf
-Group = stirling-pdf
-Restart = on-failure
-WorkingDirectory = /var/lib/stirling-pdf
-EnvironmentFile = -/etc/stirling-pdf/stirling-pdf.env
-Environment = JAVA_TOOL_OPTIONS="-XX:+ExitOnOutOfMemoryError -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/configs/heap_dumps -XX:+UnlockExperimentalVMOptions -XX:MaxRAMPercentage=75 -XX:InitiatingHeapOccupancyPercent=20 -XX:+G1PeriodicGCInvokesConcurrent -XX:G1PeriodicGCInterval=10000 -XX:+UseStringDeduplication -XX:G1PeriodicGCSystemLoadThreshold=70"
-Environment = UNO_PATH=/usr/lib/libreoffice/program
-Environment = URE_BOOTSTRAP=file:///usr/lib/libreoffice/program/fundamentalrc
-ExecStart = /usr/bin/stirling-pdf
-ExecStop = /usr/bin/killall -9 soffice.bin
-KillMode = control-group
-TimeoutStopSec = 10
-SuccessExitStatus = 0 143
-RestartForceExitStatus = 0 143
-ProtectSystem = yes
-ProtectHome = yes
-PrivateTmp = yes
-NoNewPrivileges = yes
+User=stirling-pdf
+Group=stirling-pdf
+Restart=on-failure
+WorkingDirectory=/var/lib/stirling-pdf
+EnvironmentFile=-/etc/stirling-pdf/stirling-pdf.env
+Environment=JAVA_TOOL_OPTIONS="-XX:+ExitOnOutOfMemoryError -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/configs/heap_dumps -XX:+UnlockExperimentalVMOptions -XX:MaxRAMPercentage=75 -XX:InitiatingHeapOccupancyPercent=20 -XX:+G1PeriodicGCInvokesConcurrent -XX:G1PeriodicGCInterval=10000 -XX:+UseStringDeduplication -XX:G1PeriodicGCSystemLoadThreshold=70"
+Environment=UNO_PATH=/usr/lib/libreoffice/program
+Environment=URE_BOOTSTRAP=file:///usr/lib/libreoffice/program/fundamentalrc
+ExecStart=/usr/bin/stirling-pdf
+ExecStop=/usr/bin/killall -9 soffice.bin
+KillMode=control-group
+TimeoutStopSec=10
+SuccessExitStatus=0 143
+RestartForceExitStatus=0 143
+ProtectSystem=yes
+ProtectHome=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
 
 [Install]
-WantedBy = multi-user.target
+WantedBy=multi-user.target
