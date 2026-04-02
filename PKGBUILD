@@ -4,8 +4,8 @@
 
 _name="mpm"
 pkgname="matlab-${_name}"
-_commit="9c0797e8124b674c37f464d9889ce15dcf8a6e47"
-pkgver=2026.2+r139.g9c0797e
+_commit="eee682f0ce437f76c4a9fef23e9873fecd8ed8e6"
+pkgver=2026.3+r142.geee682f
 _pkgver="${pkgver%+*}"
 pkgrel=1
 epoch=1
@@ -36,8 +36,16 @@ source=(
 source_x86_64=(
   "${pkgname}-${_pkgver}-x86_64::https://ssd.mathworks.com/supportfiles/downloads/${_name}/${_pkgver}/glnxa64/${_name}"
 )
-sha256sums=('0e56d3b20330fc0047e6ecfd65d193505ed6811bf28250d943387460b5e935c8')
-sha256sums_x86_64=('95bf86d6c6b800c8e6db68baa5c36b412c64d514f7a01a5ad9d42da864415f53')
+sha256sums=('363d78a8f8b253bee1e294483d9c5a9701e8b3e65e55fc475a64f0c5ccbec700')
+sha256sums_x86_64=('96c09adb14f4997506ba735cb363ec134e08b4e3b26f195086636e29afeab3a3')
+
+prepare() {
+  # comment out after updating _commit
+  if [[ "${pkgver}" == "${_pkgver}+r0.updateme" ]]; then
+    echo " -> ERROR: Maitainer, please update the git commit hash!"
+    exit 1
+  fi
+}
 
 pkgver() {
   cd "${srcdir}/${_pkgsrc}"
