@@ -6,7 +6,7 @@
 pkgname=mixxx-beta
 _mixxxver=2.6
 pkgver="${_mixxxver}.beta"
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital DJ mixing software (beta branch)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mixxx.org/"
@@ -80,43 +80,26 @@ conflicts=('mixxx')
 source=("mixxx-${_mixxxver}-beta.tar.gz::https://github.com/mixxxdj/mixxx/archive/refs/tags/${_mixxxver}-beta.tar.gz")
 sha256sums=('3683cf0570e2f9dbeb1d76a5d617f8c2bf2acb6d15fe9d2337b8f49a20887a38')
 
-prepare() {
-    _basedir="$srcdir/${pkgname%-*}-${_mixxxver}-beta"
-    mkdir -p "${_basedir}/build"
-    cmake -S ${_basedir} -B ${_basedir}/build \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DINSTALL_USER_UDEV_RULES=OFF \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DOPTIMIZE=native \
-    -DQT6=ON \
-    -DBULK=ON \
-    -DFAAD=ON \
-    -DLILV=ON \
-    -DFFMPEG=ON \
-    -DKEYFINDER=ON \
-    -DMAD=ON \
-    -DMODPLUG=ON \
-    -DOPUS=ON \
-    -DQTKEYCHAIN=ON \
-    -DWAVPACK=ON
-}
-
 build() {
-    _builddir="$srcdir/${pkgname%-*}-${_mixxxver}-beta/build"
-    cmake --build "${_builddir}" --parallel "$(nproc)" --target mixxx
+  local cmake_options=(
+    -B build
+    -D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -S mixxx-$_mixxxver-beta
+    -W no-dev
+  )
+
+  export PKG_CONFIG_PATH=/usr/lib/taglib1/pkgconfig
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 check() {
-    _builddir="$srcdir/${pkgname%-*}-${_mixxxver}-beta/build"
-    cmake --build "${_builddir}" --parallel "$(nproc)" --target mixxx-test
-    ctest --test-dir "${_builddir}" --parallel "$(nproc)" --output-on-failure
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-    _basedir="$srcdir/${pkgname%-*}-${_mixxxver}-beta"
-    mkdir -p "$pkgdir/usr/lib/udev/rules.d/"
-    install -Dm644 "${_basedir}/res/linux/mixxx-usb-uaccess.rules" "$pkgdir/usr/lib/udev/rules.d/99-mixxx-usb-uaccess.rules"
-    DESTDIR="$pkgdir" cmake --install "${_basedir}/build"
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 # vim:set ts=2 sw=2 et:
