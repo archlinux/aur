@@ -39,6 +39,7 @@ build() {
     -D USE_DEP=OFF
     -D CMAKE_SKIP_RPATH=ON
     -D CMAKE_BUILD_WITH_INSTALL_RPATH=OFF
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
   )
 
   cmake "${cmake_options[@]}"
