@@ -1,3 +1,4 @@
+# Maintainer: Vniverse77 <vniverse77@gmail.com>
 pkgname=warpcpp
 pkgver=0.1.1
 pkgrel=0
