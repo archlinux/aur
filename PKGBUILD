@@ -1,7 +1,7 @@
 # Maintainer: sunkhan
 pkgname=decibell
 pkgver=0.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Decentralized text, voice chat, and streaming app"
 arch=('x86_64')
 url="https://github.com/sunkhan/decibell"
@@ -12,8 +12,6 @@ depends=(
     'librsvg'
     'pipewire'
     'libpipewire'
-    'opus'
-    'ffmpeg'
     'dbus'
     'gtk3'
 )
@@ -30,12 +28,9 @@ prepare() {
     chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
     "${srcdir}/${pkgname}-${pkgver}.AppImage" --appimage-extract
 
-    # Remove bundled libs that conflict with host audio/video stack
+    # Remove bundled audio libs that conflict with host PipeWire/ALSA stack
     cd "${srcdir}/squashfs-root/usr/lib"
-    rm -f libpulse*.so* libpipewire*.so* libsndfile*.so*
-    rm -f libavcodec*.so* libavformat*.so* libavutil*.so* libavdevice*.so*
-    rm -f libavfilter*.so* libswresample*.so* libswscale*.so* libpostproc*.so*
-    rm -f libopus*.so* libasyncns*.so*
+    rm -f libpulse*.so* libpipewire*.so* libasyncns*.so*
 }
 
 package() {
