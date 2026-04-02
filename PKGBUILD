@@ -56,11 +56,10 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Копирование web-client для работы веб-интерфейса
-    # Сервер ищет статику в bin/web-client относительно своего расположения
-    # Копируем содержимое public/ прямо в bin/web-client/
-    rm -rf "$pkgdir/usr/bin/bin/web-client"
-    mkdir -p "$pkgdir/usr/bin/bin/web-client"
-    cp -r "$srcdir/bin/web-client/public/"* "$pkgdir/usr/bin/bin/web-client/"
+    # Сервер ищет статику в bin/web-client относительно текущей директории
+    # Устанавливаем в /usr/share и создаём symlink /bin/web-client
+    install -dm755 "$pkgdir/usr/share/mikumikubeam/web-client"
+    cp -r "$srcdir/bin/web-client/public/"* "$pkgdir/usr/share/mikumikubeam/web-client/"
 
     # Создаём директорию для данных и конфига (будут заполнены при установке)
     install -dm755 "$pkgdir/var/lib/mikumikubeam"

@@ -32,6 +32,11 @@ EOF
         chown "$USER:$GROUP" "$CONFIG_DIR/config.toml"
     fi
     
+    # Создаём symlink /bin/web-client -> /usr/share/mikumikubeam/web-client
+    # чтобы сервер мог найти статику из любой директории
+    mkdir -p /bin
+    ln -sf /usr/share/mikumikubeam/web-client /bin/web-client 2>/dev/null || true
+    
     echo ""
     echo "==> mikumikubeam installed successfully."
     echo ""
@@ -43,8 +48,8 @@ EOF
     echo "  To start the server:"
     echo "    systemctl enable --now mmb-server"
     echo ""
-    echo "  Or run manually from /:"
-    echo "    cd / && mmb-server"
+    echo "  Or run manually from any directory:"
+    echo "    mmb-server"
     echo ""
     echo "  Then open http://localhost:3000 in your browser."
     echo ""
@@ -57,4 +62,5 @@ post_upgrade() {
 post_remove() {
     # Не удаляем данные и пользователя при удалении пакета
     rm -f /bin/web-client 2>/dev/null || true
+    rm -rf /usr/share/mikumikubeam/web-client 2>/dev/null || true
 }
