@@ -1,0 +1,16 @@
+pkgbase = sheets-bin
+	pkgdesc = Terminal based spreadsheet tool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/maaslalani/sheets
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sheets
+	conflicts = sheets
+	source_x86_64 = https://github.com/maaslalani/sheets/releases/download/v0.1.0/sheets_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = f6a87faacea136a5c7ea53d760b5d8262cb533c9b91c060124404bee964b2aef
+	source_aarch64 = https://github.com/maaslalani/sheets/releases/download/v0.1.0/sheets_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 516ef9f6c562383d4f54cf4253206dfc8e6703c6652cf7c9c16637e8821e9da7
+
+pkgname = sheets-bin
