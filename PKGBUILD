@@ -23,8 +23,8 @@ source_aarch64=("odiff-linux-arm64::https://github.com/dmtrKovalenko/odiff/relea
 noextract=('odiff-linux-x64' 'odiff-linux-arm64')
 
 latestver() {
-	curl -fsSL 'https://api.github.com/repos/dmtrKovalenko/odiff/releases/latest' | jq -r 'select(any(.assets[]?; .name == "odiff-linux-x64") and any(.assets[]?; .name == "odiff-linux-arm64")) | .tag_name' |
-	sed -E 's/^v//'
+	gh api --paginate repos/dmtrKovalenko/odiff/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "odiff-linux-x64") and any(.assets[]; .name == "odiff-linux-arm64")) | .tag_name' |
+	head -1 | sed -E 's/^v//'
 }
 
 package() {
