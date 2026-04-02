@@ -3,9 +3,9 @@
 pkgname=pake-deepseek
 _appname=DeepSeek
 _appname_lower=deepseek
-_pkgver=3.10.0
+_pkgver=3.11.0
 pkgver=${_pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="${_appname} wrapped as a desktop app using Pake"
 arch=('x86_64')
 url="https://github.com/tw93/Pake"
@@ -17,7 +17,8 @@ source=(
     "${_appname}-${_pkgver}.deb::https://github.com/tw93/Pake/releases/download/V${_pkgver}/${_appname}_${CARCH}.deb"
     "LICENSE-${_pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${_pkgver}/LICENSE"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('779d9b03eb863a28e1116e7296900d05947b56380512a4a9682b9950dc3e4231'
+            '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
 
 prepare() {
     bsdtar -xf "${_appname}-${_pkgver}.deb" -C "${srcdir}"
