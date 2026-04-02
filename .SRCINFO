@@ -1,21 +1,21 @@
 pkgbase = perl-catalyst-plugin-session-store-delegate
 	pkgdesc = Delegate session storage to an
 	pkgver = 0.06
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Catalyst-Plugin-Session-Store-Delegate
+	pkgrel = 2
+	url = https://metacpan.org/release/BOBTFISH/Catalyst-Plugin-Session-Store-Delegate-0.06
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	makedepends = perl-test-use-ok
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker>=6.42
+	makedepends = perl-module-install
+	makedepends = perl-test-simple
+	depends = perl
 	depends = perl-catalyst-plugin-session>=0.27
 	depends = perl-moose
 	depends = perl-moosex-emulate-class-accessor-fast
 	depends = perl-mro-compat
 	depends = perl-namespace-clean
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Session-Store-Delegate-0.06.tar.gz
-	md5sums = daa73e910e3ec47fd7abc31642cc65aa
-	sha512sums = 915d632600149da20e6d976c4104567e6fc3edbc9d64675e1d1fbb13b00f0bda4cdbd161ffb3e349ccc4fc130d5c72345a512afb8f8fdfe1694c7646741ff382
+	source = https://cpan.metacpan.org/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Session-Store-Delegate-0.06.tar.gz
+	sha256sums = cdcbc2c1c93627fe9cbc2619a7a7b8e39db0c3cb41822c8ffba9b98cc09b9483
 
 pkgname = perl-catalyst-plugin-session-store-delegate
-
