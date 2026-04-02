@@ -1,0 +1,19 @@
+pkgbase = mmv-go-bin
+	pkgdesc = Rename multiple files with editor
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/itchyny/mmv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = mmv
+	conflicts = mmv
+	conflicts = mmv-go
+	source_x86_64 = mmv-x86_64-0.1.6.tgz::https://github.com/itchyny/mmv/releases/download/v0.1.6/mmv_v0.1.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4afb3b06f055f483212d718e46460d7a241698ed50bd45e092d1bc8c0c08852b
+	source_aarch64 = mmv-aarch64-0.1.6.tgz::https://github.com/itchyny/mmv/releases/download/v0.1.6/mmv_v0.1.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0ac808bf39763d09d1416a449c57fb052b7c6d4fd3ee1d678aad97b4bae179aa
+
+pkgname = mmv-go-bin

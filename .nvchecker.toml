@@ -1,0 +1,5 @@
+[mmv-go-bin]
+source = "github"
+github = "itchyny/mmv"
+use_latest_release = true
+prefix = "v"
