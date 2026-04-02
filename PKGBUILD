@@ -8,9 +8,9 @@ url="https://github.com/gtinikita203/linux-unpacked-slav"
 license=('MIT')
 depends=('gtk3' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss' 'dbus' 'at-spi2-atk' 'pipewire' 'wireplumber' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gtinikita203/linux-unpacked-slav/releases/download/$pkgver/slavweb-electron-$pkgver-linux-unpacked.tar.gz"
-        "icon.png")
+        "icon.webp")
 sha256sums=('7877b1de8972b86c7cc602c90be0f182da9078c44b6c398df880e017f1cdc36c'
-            '4a2c4ee25a983b1e3e7daab936eea5c558118d56ed51f34eda0e3e5c2906aefd')
+            'e403256660758710fd7545d29866336e02b274e3b953d188349ae86d657fde44')
 
 package() {
     cd "$srcdir"
@@ -22,7 +22,7 @@ package() {
     install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps"
     
     # Установка иконки
-    install -Dm644 "icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+    install -Dm644 "icon.webp" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.webp"
     
     # Копируем все файлы приложения
     cp -r "linux-unpacked/"* "$pkgdir/opt/$pkgname/"
@@ -36,7 +36,7 @@ package() {
 Name=SlavWEB Electron
 Comment=Кроссплатформенное десктопное приложение на Electron для SlavWEB
 Exec=/opt/$pkgname/$pkgname %U
-Icon=$pkgname
+Icon=$pkgname.webp
 Type=Application
 Categories=Network;WebBrowser;
 StartupNotify=true

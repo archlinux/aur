@@ -18,8 +18,8 @@ pkgbase = slavweb-electron
 	depends = xdg-desktop-portal
 	depends = xdg-desktop-portal-gtk
 	source = slavweb-electron-1.0.1.tar.gz::https://github.com/gtinikita203/linux-unpacked-slav/releases/download/1.0.1/slavweb-electron-1.0.1-linux-unpacked.tar.gz
-	source = icon.png
+	source = icon.webp
 	sha256sums = 7877b1de8972b86c7cc602c90be0f182da9078c44b6c398df880e017f1cdc36c
-	sha256sums = 4a2c4ee25a983b1e3e7daab936eea5c558118d56ed51f34eda0e3e5c2906aefd
+	sha256sums = e403256660758710fd7545d29866336e02b274e3b953d188349ae86d657fde44
 
 pkgname = slavweb-electron
