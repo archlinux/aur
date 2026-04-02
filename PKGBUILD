@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1996.d462de66
+pkgver=r2077.c85bb2e7
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -23,16 +23,6 @@ sha512sums=('SKIP'
 pkgver() {
 	cd "${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "${srcdir}/${_pkgname}"
-	# 'bin/package install' requires that the file(1) command be functional.
-	# The package() function in all PKGBUILD scripts is run in a fakeroot
-	# environment, which by default has seccomp restrictions that stop
-	# file from operating. To work around this, file is passed the --no-sandbox
-	# flag via an alias inserted into the bin/package script.
-	sed -i '1s/^/alias file="file --no-sandbox" /' bin/package
 }
 
 build() {
