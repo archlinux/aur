@@ -19,7 +19,7 @@ sha256sums_x86_64=('f898d59b533633c3258fbedd10789b0bcb90547b25fced8801bbcd7dd580
 sha256sums_aarch64=('6dcb96e062c57f9e325e2a281609de17c3bcc29b806a345048782580fcbafd16')
 
 latestver() {
-  curl -fsSL 'https://api.github.com/repos/argoproj/argo-workflows/releases?per_page=5' | jq -r '[.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "argo-linux-amd64.gz") and any(.assets[]; .name == "argo-linux-arm64.gz"))][0].tag_name' | sed -E 's/^v//'
+  gh api --paginate repos/argoproj/argo-workflows/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "argo-linux-amd64.gz") and any(.assets[]; .name == "argo-linux-arm64.gz")) | .tag_name' | head -1 | sed -E 's/^v//'
 }
 
 build() {
