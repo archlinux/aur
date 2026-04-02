@@ -1,7 +1,7 @@
 # Maintainer: Aloys23 <aloys23@duck.com>
 _pkgname=gonavi
 pkgname=${_pkgname}-bin
-pkgver=0.6.3
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="A Modern Lightweight Database Client built with Wails (Go) and React"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "https://github.com/Syngnat/GoNavi/releases/download/v${pkgver}/GoNavi-${pkgver}-Linux-Amd64-WebKit41.tar.gz"
     "${_pkgname}.svg::https://cdn.jsdelivr.net/gh/Syngnat/GoNavi@dev/logo.svg"
 )
-sha256sums=('6e231eb947cbf29fa39ee469a1abe1c36443d99c2dda5c76e484664d635c1147'
+sha256sums=('34f105a657ae6b971aafdf7960004a887cf77ca20e66173a01624361c57a12a8'
             'e3a90ddc5ebd2e43239206308f13452ea59c6bc89aa461a61c3c1d84d856d04d')
 
 package() {
