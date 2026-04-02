@@ -19,7 +19,10 @@ sha256sums=('b60de3b84dbb091f1301367ba9d2e8228735bf7a0ff125b738b8363c74b2ff32')
 
 build() {
   cd ${_pkgname}-${pkgver}
-  cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib -DUSE_WEBKIT=off -DENABLE_BROWSER=off .
+  cmake -Wno-dev -GNinja \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+      -DENABLE_BROWSER=off .
   ninja
 }
 
