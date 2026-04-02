@@ -1,4 +1,4 @@
-pkgbase = warpcpp
+pkgbase = pacforge-git
 	pkgdesc = A user-friendly C++ TUI for Cloudflare WARP.
 	pkgver = 0.1.1
 	pkgrel = 0
