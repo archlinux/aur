@@ -9,9 +9,9 @@ pkgname=palemoon-gtk3
 _pkgname=palemoon
 _repo=Pale-Moon
 epoch=1
-pkgver=33.9.1
+pkgver=34.1.0
 # Commit ID can be found at https://repo.palemoon.org/MoonchildProductions/Pale-Moon/tags
-_commit=f4b97ce0b7
+_commit=c76e36ebf51ec201f74228384f2bc6ea6cf24f6f
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ license=('MPL-2.0')
 provides=('palemoon')
 conflicts=('palemoon')
 depends=('gtk3' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'alsa-lib')
-makedepends=('python2' 'unzip' 'zip' 'yasm' 'libpulse' 'git' 'gtk2')
+makedepends=('python2' 'unzip' 'zip' 'yasm' 'libpulse' 'git' 'gtk3')
 optdepends=('libpulse: PulseAudio audio driver'
             'ffmpeg: various video and audio support'
 	    'gtk2: Required for NPAPI plugins')
@@ -28,10 +28,10 @@ source=(git+"https://repo.palemoon.org/MoonchildProductions/${_repo}?signed#comm
         git+"https://repo.palemoon.org/MoonchildProductions/UXP"
         mozconfig.in)
 validpgpkeys=('3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC')
-sha1sums=('d78344ac1c35c644b432e3342a83341222da4573'
+sha1sums=('40518e7956bf17c7301d6696387e135aaeb0d35b'
           'SKIP'
           'c44cbce39eac59a84757456676891a398c8d7508')
-sha256sums=('79cf4c4a9d416270159482a3753a2c7aefa7138cef70c3c11ec5c0b964a132b9'
+sha256sums=('928ee152404ffa712c9f5a5fd7a473297fcf470128b89e449c6f53e917b199a3'
             'SKIP'
             '97c11dd56388c7359fc1f7d6ad32bc68faaf00a634f6724a4562a3707eff3ca7')
 
@@ -61,7 +61,18 @@ package() {
   cd dist
   install -d "${pkgdir}"/usr/{bin,lib}
   cp -r palemoon/ "${pkgdir}/usr/lib/${_pkgname}"
-  ln -s "../lib/${_pkgname}/palemoon" "${pkgdir}/usr/bin/palemoon"
+  cat > "${pkgdir}/usr/bin/palemoon" << EOF
+#!/bin/bash
+
+# Override system env to avoid that unable to open app
+# SIGSEGV bug detail:
+# gdk_x11_window_get_xid:
+# assertion 'GDK_IS_X11_WINDOW (window)' failed
+export GDK_BACKEND=x11
+
+exec /lib/palemoon/palemoon "\${@}"
+EOF
+  chmod +x "${pkgdir}/usr/bin/palemoon"
 
   # icons
   install -Dm644 palemoon/browser/chrome/icons/default/default16.png \

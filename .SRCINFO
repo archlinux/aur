@@ -1,6 +1,6 @@
 pkgbase = palemoon-gtk3
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 33.9.1
+	pkgver = 34.1.0
 	pkgrel = 1
 	epoch = 1
 	url = https://www.palemoon.org/
@@ -13,7 +13,7 @@ pkgbase = palemoon-gtk3
 	makedepends = yasm
 	makedepends = libpulse
 	makedepends = git
-	makedepends = gtk2
+	makedepends = gtk3
 	depends = gtk3
 	depends = dbus-glib
 	depends = desktop-file-utils
@@ -25,14 +25,14 @@ pkgbase = palemoon-gtk3
 	optdepends = gtk2: Required for NPAPI plugins
 	provides = palemoon
 	conflicts = palemoon
-	source = git+https://repo.palemoon.org/MoonchildProductions/Pale-Moon?signed#commit=f4b97ce0b7
+	source = git+https://repo.palemoon.org/MoonchildProductions/Pale-Moon?signed#commit=c76e36ebf51ec201f74228384f2bc6ea6cf24f6f
 	source = git+https://repo.palemoon.org/MoonchildProductions/UXP
 	source = mozconfig.in
 	validpgpkeys = 3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC
-	sha1sums = d78344ac1c35c644b432e3342a83341222da4573
+	sha1sums = 40518e7956bf17c7301d6696387e135aaeb0d35b
 	sha1sums = SKIP
 	sha1sums = c44cbce39eac59a84757456676891a398c8d7508
-	sha256sums = 79cf4c4a9d416270159482a3753a2c7aefa7138cef70c3c11ec5c0b964a132b9
+	sha256sums = 928ee152404ffa712c9f5a5fd7a473297fcf470128b89e449c6f53e917b199a3
 	sha256sums = SKIP
 	sha256sums = 97c11dd56388c7359fc1f7d6ad32bc68faaf00a634f6724a4562a3707eff3ca7
 
