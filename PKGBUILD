@@ -17,6 +17,7 @@ makedepends=(
   'rust'
   'cargo'
   'clang'
+  'nasm'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Psychotoxical/psysonic/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
@@ -33,6 +34,13 @@ build() {
   # string substitution is a no-op.  Appending -C link-arg=-fuse-ld=bfd works
   # because the last -fuse-ld=* flag passed to cc wins.
   export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=bfd"
+
+  # CachyOS sets -flto=auto in CFLAGS.  ring compiles its C/asm objects via the
+  # cc crate and picks up CFLAGS, producing fat-LTO objects.  bfd cannot resolve
+  # symbols from fat-LTO objects when linking against non-LTO Rust rlibs, causing
+  # "undefined reference to ring_core_*" even though the symbols exist in the .a.
+  # Strip CFLAGS/CXXFLAGS entirely so ring builds plain ELF objects.
+  unset CFLAGS CXXFLAGS
 
   npm install
   npm run tauri:build -- --no-bundle
