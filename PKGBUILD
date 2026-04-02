@@ -1,17 +1,17 @@
-# Maintainer: 3ED <krzysztof1987 at gmail>
+# Maintainer: Voxan24 <admin at hessfr dot fr>
 
 pkgname=seamonkey-i18n-pt-br
-pkgver=2.53.12
+pkgver=2.53.23
 pkgrel=1
-_lang=pt-BR
-pkgdesc="Portuguese (Brazil) language pack for SeaMonkey"
+_lang=pt-br
+pkgdesc="Portuguese (Brazilian) language pack for SeaMonkey"
 arch=('any')
 license=('MPL')
 url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
-source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
+source=(https://archive.seamonkey-project.org/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha512sums=('b843c2cd5861e3fa34f56fdc7c30f820b5051bc1e18f1ea237b0f546fcd384d424d78618e9d15805a8af39d0b46502b696d0290708035665e696ee5d9bb1ae98')
+sha512sums=('28a779503eb61ef4d0171b763aca9c6b1a88e9713c572f6ef069f57940b85a45cd257661512ee1cfbf3220af39a4c8132155ff4f45b3367ac1a628521e6cfff3')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
