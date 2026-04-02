@@ -1,0 +1,20 @@
+pkgbase = cranky
+	pkgdesc = A minimalist, performant, and modular bar for Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jaoppb/cranky
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = wayland
+	depends = libxkbcommon
+	depends = fontconfig
+	depends = dbus
+	optdepends = uwsm: for systemd session management
+	source = cranky-0.1.0.tar.gz::https://github.com/jaoppb/cranky/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = cranky
