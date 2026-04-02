@@ -4,6 +4,7 @@ pkgbase = ffmpeg-cuda-full
 	pkgrel = 1
 	epoch = 2
 	url = https://ffmpeg.org/
+	install = ffmpeg-cuda-full.install
 	arch = x86_64
 	license = GPL-3.0-only
 	license = custom:nonfree

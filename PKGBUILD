@@ -119,6 +119,7 @@ provides=(
 )
 conflicts=('ffmpeg')
 replaces=('ffmpeg')
+install=ffmpeg-cuda-full.install
 options=('!lto')
 source=("ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git")
 b2sums=('SKIP')

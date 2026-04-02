@@ -1,0 +1,17 @@
+pre_install() {
+    echo "=============================================="
+    echo " ffmpeg-cuda-full replaces the stock ffmpeg"
+    echo "=============================================="
+    echo ""
+    echo " If installation fails due to conflicts, run:"
+    echo ""
+    echo "   sudo pacman -Rdd ffmpeg && makepkg -si"
+    echo ""
+    echo " Or use an AUR helper (yay/paru) which"
+    echo " handles this automatically."
+    echo "=============================================="
+}
+
+pre_upgrade() {
+    pre_install
+}
