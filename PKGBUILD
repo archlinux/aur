@@ -20,7 +20,6 @@ prepare(){
 
 build() {
   cd "${srcdir}/${_PKGNAME}-${pkgver}"
-
   for _arch in ${_architectures}; do
     if test "${_arch}" = "x86_64-w64-mingw32"
     then
@@ -37,7 +36,7 @@ build() {
     -DCGNS_ENABLE_LEGACY:BOOL=ON \
     -DCGNS_ENABLE_SCOPING:BOOL=OFF \
     -DCGNS_ENABLE_TESTS:BOOL=OFF \
-    -B pushd build-${_arch} .
+    -B build-${_arch} .
     cmake --build build-${_arch}
   done
 }
