@@ -1,0 +1,5 @@
+[viu-media-bin]
+source = "github"
+github = "viu-media/viu"
+use_latest_release = true
+prefix = "v"
