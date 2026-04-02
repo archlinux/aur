@@ -20,8 +20,8 @@ sha256sums=('6d4159605389368967ccdabdaac220a2dd271ba1594312499c00529b81f16920'
             'cf45e9c198648bea6eb041e696f468a985b5b6401cc5e1f2706ada5c5993ab03')
 
 latestver() {
-    curl -fsSL 'https://api.github.com/repos/AkiChase/scrcpy-mask/releases/latest' |
-    jq -r '.tag_name // empty' | sed 's/^v//'
+    gh api --paginate repos/AkiChase/scrcpy-mask/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "scrcpy-mask-linux-x64.zip")) | .tag_name' |
+    head -1 | sed 's/^v//'
 }
 
 package() {
