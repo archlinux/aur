@@ -21,7 +21,7 @@ md5sums=('9030df16eb2bbe616eadf9d1de477d90')
 backup=('etc/mbpfan.conf')
 
 latestver() {
-	curl -fsSL 'https://api.github.com/repos/linux-on-mac/mbpfan/tags?per_page=100' | jq -r '.[].name' |
+	gh api --paginate repos/linux-on-mac/mbpfan/tags --jq '.[].name' |
 	    sed -nE 's/^v([0-9]+(\.[0-9]+)*)$/\1/p' | sort -V | tail -1
 }
 
