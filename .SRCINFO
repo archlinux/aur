@@ -1,18 +1,19 @@
 pkgbase = perl-catalystx-injectcomponent
 	pkgdesc = Inject components into your Catalyst application
 	pkgver = 0.025
-	pkgrel = 1
-	url = http://search.cpan.org/dist/CatalystX-InjectComponent
+	pkgrel = 2
+	url = https://metacpan.org/release/ROKR/CatalystX-InjectComponent-0.025
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker>=6.30
 	makedepends = perl-test-most
+	depends = perl
 	depends = perl-catalyst-runtime>=5.8
 	depends = perl-class-inspector
+	depends = perl-module-pluggable
+	depends = perl-parent
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RO/ROKR/CatalystX-InjectComponent-0.025.tar.gz
-	md5sums = 90a89d4b1d41155e4dd3c0ec5e951f92
-	sha512sums = 0531f12c79e415e69e9933f25ad04e44a31d45482d5665ea59ed4782fe8d17c0182e224f5275eb88adc9a5a566ded6638c408d74dbc1d75a20f9c6f47b03e3b8
+	source = https://cpan.metacpan.org/authors/id/R/RO/ROKR/CatalystX-InjectComponent-0.025.tar.gz
+	sha256sums = 86729cce634cd057f9d2774d9b55912fe96ff2f68b029691e6807c7a9b397d71
 
 pkgname = perl-catalystx-injectcomponent
-
