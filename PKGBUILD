@@ -2,8 +2,8 @@
 pkgname=mubu-bin
 _pkgname=Mubu
 _zhsname='幕布'
-pkgver=5.4.1
-_electronversion=25
+pkgver=5.4.2
+_electronversion=32
 pkgrel=1
 pkgdesc="A mind management tool that combines outline notes and mind maps.(Prebuilt version.Use system-wide electron)一款结合了大纲笔记和思维导图的头脑管理工具(packed from origin exe)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     "LICENSE-${pkgver}.html::${url}/agreement"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8d0a7d5fe067d4f7af6b4d8a02fb4b82879f82bddf46848446b30fa4fd9d1ea7'
+sha256sums=('df6aa88dce081eadaa9dc272c6d6099841e64ba41f1b5a50379f30656ecc2f1a'
             'dbc572392757c2abbb6d6d7ca62337561b46b8f3b403963a3624fa5a4884c4ec'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -37,7 +37,7 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}\/${pkgname%-bin}_app_data/g
-        s/@options@//g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -f -n -q \
         --pkgname="${pkgname%-bin}" \
