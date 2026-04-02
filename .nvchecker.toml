@@ -1,0 +1,5 @@
+[youtubedownloader-bin]
+source = "github"
+github = "Tyrrrz/YoutubeDownloader"
+use_latest_release = true
+prefix = "v"
