@@ -1,7 +1,7 @@
 # Maintainer: Ted pheenty Lukin <fedorlukin2006@gmail.com>
 
 pkgname=lacy
-pkgver=v0.6.1
+pkgver=v0.7.0
 pkgrel=1
 pkgdesc="Fast magical cd alternative for lacy terminal navigators"
 arch=(any)
