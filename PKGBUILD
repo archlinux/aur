@@ -4,7 +4,7 @@ pkgname=openlinkhub-git
 _upstreamname=OpenLinkHub
 _binlocation=/usr/bin/"${pkgname%-*}"
 _applocation=/var/lib/"${pkgname%-*}"
-pkgver=0.8.0.r48.gc52331d
+pkgver=0.8.1.r0.gd472a47
 pkgrel=1
 pkgdesc="Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs. [Latest Commit - source]"
 arch=('x86_64')
@@ -47,7 +47,6 @@ _upstreamver() {
 		printf '0'
 	fi
 }
-
 
 build() {
 	cd "${pkgname%-*}"
