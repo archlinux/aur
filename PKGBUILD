@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Meleshko <qzlgeb.zryrfuxb@tznvy.pbz(rot13)>
 _pkgname=mindustry-server
 pkgname=${_pkgname}-bin
-pkgver=155.4
+pkgver=156
 pkgrel=1
 epoch=2
 pkgdesc="Server of a sandbox tower defense game written in Java"
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.jar::https://github.com/Anuken/Mindustry/releases/
         "${pkgname}.icns::https://github.com/Anuken/Mindustry/raw/v${pkgver}/core/assets/icons/icon.icns"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha256sums=('cb96a68d2a9badf58a0640062607f953b1ed551ed7b4af0c2bf393d8ce8d6643'
+sha256sums=('fd2ae888b27240f73f82408c251522f7f5eb6d55652c62da09f74b7eb70aebff'
             '16fcae782b13a8460e631d265c505f56393acd14700b016904744bd44aa290eb'
             '679727847ba70773cee4f902114345e095b27f425aa00c4d3860d247705ed1f0'
             '053030932334f40145e927f6c7e9ebf01bd28ddd1e7b9fba6234b51cc83ad241')
