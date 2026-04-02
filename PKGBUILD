@@ -5,12 +5,10 @@
 : ${RUSTUP_TOOLCHAIN:=stable}
 export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
-: ${_commit_rawler:=718400a1d84b53c7f12765094d2e4b75f64ca975}
-
 _pkgname="rapidraw"
 pkgname="$_pkgname"
 pkgdesc="GPU-accelerated RAW image editor"
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 url="https://github.com/CyberTimon/RapidRAW"
 license=('AGPL-3.0-only')
@@ -29,27 +27,12 @@ makedepends=(
 options=('!lto')
 
 _pkgsrc="RapidRAW-$pkgver"
-_pkgsrc_rawler="RapidRAW-DngLab-$_commit_rawler"
 _pkgext="tar.gz"
-source=(
-  "$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext"
-  "$_pkgname-rawler-${_commit_rawler::7}.$_pkgext"::"https://github.com/CyberTimon/RapidRAW-DngLab/archive/${_commit_rawler}.$_pkgext"
-)
-sha256sums=(
-  '59de45087a7fef440ada9061586b757b9c25b710dc80546e7d73f1b9c0415230'
-  '354318d3c1bbdf64b0d2e0f8afaefc304895937656f0d8b76b2e103e2a46dc93'
-)
-
-prepare() {
-  cd "$_pkgsrc"
-
-  # prepare rawler
-  rm -r "src-tauri/rawler"
-  ln -sf "$srcdir/$_pkgsrc_rawler" "src-tauri/rawler"
-}
+source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+sha256sums=('d62dce852f04060cc25a06b91a06e8e10454c05bf6a8e8504211020722c35059')
 
 build() {
-  local _units=$(OMP_NUM_THREADS=16 nproc --all)
+  local _units=$(($(nproc) > 16 ? $(nproc) : 16))
   export RUSTFLAGS="-C opt-level=2 -C codegen-units=$_units -C lto=off"
 
   cd "$_pkgsrc"
