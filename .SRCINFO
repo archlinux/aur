@@ -1,6 +1,6 @@
 pkgbase = jmc-adoptium
 	pkgdesc = Java Mission Control from Adoptium
-	pkgver = 9.1.1
+	pkgver = 9.1.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/adoptium/jmc-build
@@ -8,7 +8,7 @@ pkgbase = jmc-adoptium
 	license = Apache 2
 	provides = jmc-adoptium
 	options = !strip
-	source = org.openjdk.jmc-9.1.1-linux-1.gtk.x86_64.tar.gz::https://github.com/adoptium/jmc-build/releases/download/9.1.1/org.openjdk.jmc-9.1.1-linux.gtk.x86_64.tar.gz
+	source = org.openjdk.jmc-9.1.2-linux-1.gtk.x86_64.tar.gz::https://github.com/adoptium/jmc-build/releases/download/9.1.2/org.openjdk.jmc-9.1.2-linux.gtk.x86_64.tar.gz
 	sha512sums = SKIP
 
 pkgname = jmc-adoptium
