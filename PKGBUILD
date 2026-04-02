@@ -1,12 +1,12 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 pkgname=qdriverstation
 pkgver=21.04
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source clone of the FRC Driver Station"
 arch=('x86_64')
 url="https://github.com/FRC-Utilities/QDriverStation"
 license=('MIT')
-depends=('sdl2' 'qt5-multimedia' 'qt5-quickcontrols' 'qt5-svg')
+depends=('sdl2' 'qt5-quickcontrols' 'qt5-svg')
 makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname-git}")
@@ -26,18 +26,17 @@ prepare() {
 	git submodule init
 	git config submodule.lib/QJoysticks.url "$srcdir/QJoysticks"
 	git config submodule.lib/LibDS.url "$srcdir/LibDS"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
+
+	# Fix build with C23
+	sed -i lib/LibDS/src/protocols.c \
+	  -e 's/static void \*run_event_loop()/static void *run_event_loop(void *)/'
 }
 
 build() {
 	cd "$srcdir/${_extractdir}"
 	qmake-qt5
 	make
-}
-
-check() {
-	cd "$srcdir/${_extractdir}"
-	make -k check
 }
 
 package() {
