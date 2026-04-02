@@ -1,0 +1,3 @@
+[perl-html-formhandler]
+source = "cpan"
+cpan = "HTML-FormHandler"
