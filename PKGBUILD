@@ -1,6 +1,6 @@
 # Maintainer: Youcef <your.email@example.com>
-pkgname=hermes-agent-git
-pkgver=r2991.344239c2
+pkgname=hermes-agent
+pkgver=2026.3.30
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
@@ -29,7 +29,7 @@ depends=(
     'ripgrep'
     'ffmpeg'
 )
-makedepends=('git' 'nodejs' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-pytest')
+makedepends=('nodejs' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-pytest')
 optdepends=(
   'python-litellm: multi-provider LLM support'
   'python-telegram-bot: Telegram gateway support'
@@ -44,24 +44,18 @@ optdepends=(
   #'python-acp: ACP editor integration support'
   'python-slack-sdk: Slack messaging'
 )
-provides=('hermes-agent')
-conflicts=('hermes-agent')
-source=("$pkgname::git+https://github.com/NousResearch/hermes-agent.git")
+source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 validpgpkeys=()
 
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
-  cd "$pkgname"
+  cd "hermes-agent-${pkgver}"
   git submodule update --init --recursive
 }
 
 build() {
-  cd "$pkgname"
+  cd "hermes-agent-${pkgver}"
 
   # Install Node.js dependencies
   [ -f "package.json" ] && npm install
@@ -81,7 +75,7 @@ build() {
 #}
 
 package() {
-  cd "$pkgname"
+  cd "hermes-agent-${pkgver}"
 
   # Install Python package
   python -m installer --destdir="$pkgdir" dist/*.whl
