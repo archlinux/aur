@@ -1,7 +1,7 @@
 pkgbase = godot32
 	pkgdesc = Advanced cross-platform 2D and 3D game engine (32-bit)
 	pkgver = 4.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://godotengine.org/
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,6 @@ pkgbase = godot32
 	depends = lib32-libtheora
 	depends = lib32-libvorbis
 	depends = lib32-libwebp
-	depends = lib32-libwslay
 	depends = lib32-libxcursor
 	depends = lib32-libxi
 	depends = lib32-libxinerama

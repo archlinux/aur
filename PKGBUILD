@@ -4,7 +4,7 @@
 _reponame=godot
 pkgname=${_reponame}32
 pkgver=4.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced cross-platform 2D and 3D game engine (32-bit)'
 url='https://godotengine.org/'
 license=('MIT')
@@ -27,7 +27,6 @@ depends=(
     'lib32-libtheora'
     'lib32-libvorbis'
     'lib32-libwebp'
-    'lib32-libwslay' # AUR
     'lib32-libxcursor'
     'lib32-libxi'
     'lib32-libxinerama'
@@ -100,12 +99,12 @@ build() {
         builtin_rvo2_2d=yes
         builtin_rvo2_3d=yes
         builtin_squish=no
-        builtin_wslay=no
+        builtin_wslay=yes
         builtin_xatlas=yes
         builtin_zlib=no
         builtin_zstd=no
         colored=yes
-        debug_symbols=no # Disable debug_symbols for smaller binary.
+        debug_symbols=yes # Set to no for faster compilation & smaller binary.
         disable_exceptions=false
         platform=linuxbsd
         production=yes
