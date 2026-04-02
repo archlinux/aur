@@ -2,8 +2,8 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=oxfmt-bin
-pkgver=0.42.0
-oxlint_pkgver=1.57.0
+pkgver=0.43.0
+oxlint_pkgver=1.58.0
 pkgrel=1
 pkgdesc="Oxfmt is a high-performance formatter for the JavaScript ecosystem"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ _binary_aarch64="oxfmt-aarch64-unknown-linux-gnu"
 source_x86_64=("${_binary_x86_64}-$pkgver.tar.gz::${_github_url}/${_binary_x86_64}.tar.gz")
 source_aarch64=("${_binary_aarch64}-$pkgver.tar.gz::${_github_url}/${_binary_aarch64}.tar.gz")
 
-sha256sums_x86_64=('436a778eda4cc72d5da1f31b330a6a608cc0a3519481c10af01e1ac92cb053fb')
-sha256sums_aarch64=('37521641faa69bf55d6a00a80bf9706549d480d889fa07a9916a3db51f701253')
+sha256sums_x86_64=('1f27de498351d4ff154dcf06a427d75669bd07ebbaced62159859b5ce012ec32')
+sha256sums_aarch64=('99d894fc3720ea69b24e61dd3b480be62608b2ad96955a22053ae5a31e92a20f')
 
 package() {
     local _binary_var="_binary_${CARCH}"
