@@ -1,8 +1,8 @@
 pkgbase = python-kdl-py
 	pkgdesc = A parser for the KDL language
 	pkgver = 1.2.0
-	pkgrel = 1
-	url = https://github.com/daeken/kdl-py
+	pkgrel = 2
+	url = https://github.com/tabatkins/kdlpy/
 	arch = any
 	license = MIT
 	makedepends = python-build

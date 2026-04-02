@@ -1,10 +1,10 @@
 # Maintainer: Nathaniel van Diepen <eeems@eeems.email>
 pkgname=python-kdl-py
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A parser for the KDL language"
 arch=('any')
-url="https://github.com/daeken/kdl-py"
+url="https://github.com/tabatkins/kdlpy/"
 license=('MIT')
 depends=('python>=3.7' 'python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
