@@ -15,7 +15,7 @@ _barch=('x86_64-unknown-linux-gnu' 'aarch64-unknown-linux-gnu')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 
-license=('MIT')
+license=('GPL-3.0')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
