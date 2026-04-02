@@ -1,0 +1,12 @@
+pkgbase = ibus-vnkey-bin
+	pkgdesc = Vietnamese IME for Fcitx5
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/marixdev/vnkey
+	arch = x86_64
+	license = GPL
+	depends = ibus
+	source = ibus-vnkey-bin-1.0.3.pkg.tar.zst::https://github.com/marixdev/vnkey/releases/download/v1.0.3/vnkey-ibus-v1.0.3-1-x86_64.pkg.tar.zst
+	sha256sums = be331556295f22595f4bd2cb2048b048273558ed3be7b3b25c60fed5cb13afac
+
+pkgname = ibus-vnkey-bin
