@@ -23,7 +23,7 @@ API_KEY = ""
 BASE_URL = "https://api.xiaomimimo.com/v1"
 VOICE = "mimo_default"
 FORMAT = "wav"
-PLAY_CMD = "mpv --no-terminal --really-quiet"
+PLAY_CMD = "paplay"
 
 _stop_flag = False
 _player_proc = None
