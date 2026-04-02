@@ -8,7 +8,7 @@ declare -Ag _arch=(
 
 pkgname="cryptoplugin"
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="PrivatBank Crypto Plugin"
 arch=(
   "${!_arch[@]}"
@@ -22,11 +22,12 @@ depends=(
   'cairo'
   'fontconfig'
   'freetype2'
-  'gcc-libs'
   'gdk-pixbuf2'
   'glib2'
   'glibc'
   'gtk2'
+  'libgcc'
+  'libstdc++'
   'pango'
   'pcsclite'
 )
