@@ -1,0 +1,12 @@
+pkgbase = nosub-appimage
+	pkgdesc = Nosub是一个字幕软件，以字幕编辑，调整为核心，支持离线语音识别，已经全面接入LLM大模型做字幕处理。
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://github.com/patui/Nosub
+	arch = x86_64
+	depends = fuse2
+	options = !strip
+	source = https://github.com/patui/Nosub/releases/download/3.1.2/Nosub-v3.1.2-x86_64.AppImage
+	sha512sums = 52de155ee4324ff1106ba42f160f6b8ee8e5766ca38703f3779ffff99143acd0a80607f9a500b49843bad9decbf6c82f252205a75d65dae0db8528faf8cb8977
+
+pkgname = nosub-appimage
