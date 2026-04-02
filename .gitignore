@@ -6,3 +6,4 @@ src/
 *.pkg.tar.gz
 *.log
 *.deb
+*.part

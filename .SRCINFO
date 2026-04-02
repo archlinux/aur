@@ -1,6 +1,6 @@
 pkgbase = pdf-metadata-editor-bin
 	pkgdesc = A simple, cross-platform desktop application for viewing and editing PDF metadata
-	pkgver = 4.0.1
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/zaro/pdf-metadata-editor
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = pdf-metadata-editor-bin
 	depends = hicolor-icon-theme
 	provides = pdf-metadata-editor
 	conflicts = pdf-metadata-editor
-	source_x86_64 = https://github.com/zaro/pdf-metadata-editor/releases/download/v4.0.1/pdf-metadata-editor_4.0.1-1_amd64.deb
-	sha512sums_x86_64 = 647f9b9e632de6733b705c684347d3677c03921f7dbe57b9b4ef3270e4608cb8bc08b87082ee18c3c2891996f73eb7c25b548788776c10fb0f99524d06b62275
-	source_aarch64 = https://github.com/zaro/pdf-metadata-editor/releases/download/v4.0.1/pdf-metadata-editor_4.0.1-1_arm64.deb
-	sha512sums_aarch64 = 5cf7f6ef568e4454e2a27ce1c86e4e20799717b15553dc1b928ea18aaf8b0e83d75f6fd05a57ed201359251090d640fbd9b6cda36540c88bcf83d6d534acbdc7
+	source_x86_64 = https://github.com/zaro/pdf-metadata-editor/releases/download/v4.1.0/pdf-metadata-editor_4.1.0-1_amd64.deb
+	sha512sums_x86_64 = 0efd5386bb7df92f319c110d9b98e65e900cb48d3a7c82de28bd19747d36b0e9ed6b18277b2476ff52d74b5fa994ad0b59eb1ad77c509ba4ce3ab49dfebaaa5d
+	source_aarch64 = https://github.com/zaro/pdf-metadata-editor/releases/download/v4.1.0/pdf-metadata-editor_4.1.0-1_arm64.deb
+	sha512sums_aarch64 = 6e6350a91094ca6df5bc17224ea59ce922c6f73b1f33d15f7c426c4541042bf9a28f625799fe413457ba5067889bbb801371e435fb82b197341532f4af6fc777
 
 pkgname = pdf-metadata-editor-bin
