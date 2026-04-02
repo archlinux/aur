@@ -1,7 +1,7 @@
 # Maintainer: dougefresh dchimento@gmail.com
 pkgname=kiro-generator
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Kiro agent configuration generator"
 arch=('x86_64')
 url="https://github.com/kiro-generator/kiro-generator"
@@ -12,7 +12,7 @@ provides=('kiro-generator')
 backup=('etc/kg/global.env' 'etc/kg/home.env')
 install=kiro-generator.install
 source=("${pkgname}::git+https://github.com/kiro-generator/kiro-generator.git#tag=v${pkgver}")
-sha256sums=('e9896d228bf8c2ca2d74e22b440364db2b28c4c4d944b248af3480eb0019c1c5')
+sha256sums=('18f3346d287ba04e91e682d3ecfe90753f059d32e53f313f09cfdaec8e5f9f07')
 options=('!lto' '!debug')
 _target_dir='target'
 
