@@ -3,10 +3,11 @@
 pkgname=ffmpeg-cuda-full
 pkgver=8.1
 pkgrel=1
+epoch=2
 pkgdesc='Latest FFmpeg with CUDA/NVENC and all codecs including nonfree (libfdk-aac) - dynamically tracks upstream releases'
 arch=('x86_64')
 url='https://ffmpeg.org/'
-license=('custom: nonfree and unredistributable')
+license=('GPL-3.0-only' 'custom:nonfree')
 depends=(
     'alsa-lib'
     'aom'
@@ -14,7 +15,6 @@ depends=(
     'cairo'
     'cuda'
     'dav1d'
-    'ffnvcodec-headers'
     'fontconfig'
     'freetype2'
     'fribidi'
@@ -91,7 +91,7 @@ makedepends=(
     'amf-headers'
     'avisynthplus'
     'clang'
-    'curl'
+    'ffnvcodec-headers'
     'git'
     'ladspa'
     'mesa'
@@ -109,17 +109,18 @@ optdepends=(
 )
 provides=(
     "ffmpeg=$pkgver"
-    'libavcodec.so'
-    'libavdevice.so'
-    'libavfilter.so'
-    'libavformat.so'
-    'libavutil.so'
-    'libswresample.so'
-    'libswscale.so'
+    'libavcodec.so=62-64'
+    'libavdevice.so=62-64'
+    'libavfilter.so=11-64'
+    'libavformat.so=62-64'
+    'libavutil.so=60-64'
+    'libswresample.so=6-64'
+    'libswscale.so=9-64'
 )
 conflicts=('ffmpeg')
+options=('!lto')
 source=("ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 # Dynamically resolve the latest stable release tag from upstream.
 # This runs at build time so the package always tracks the newest FFmpeg.
@@ -139,7 +140,6 @@ pkgver() {
         git describe --tags --long 2>/dev/null | sed 's/^n//;s/-/.r/;s/-/./g'
         return
     fi
-    # Checkout the release so we build it
     printf '%s' "$_tag"
 }
 
@@ -158,15 +158,6 @@ build() {
 
     # Ensure nvcc is on PATH for --enable-cuda-nvcc
     export PATH="/opt/cuda/bin:$PATH"
-
-    # Strip LTO from makepkg flags - FFmpeg's x86 asm objects don't support it
-    # and it causes PIC relocation errors in libswscale shared builds.
-    CFLAGS="${CFLAGS//-flto=auto/}"
-    CFLAGS="${CFLAGS//-flto/}"
-    CXXFLAGS="${CXXFLAGS//-flto=auto/}"
-    CXXFLAGS="${CXXFLAGS//-flto/}"
-    LDFLAGS="${LDFLAGS//-flto=auto/}"
-    LDFLAGS="${LDFLAGS//-flto/}"
 
     ./configure \
         --prefix=/usr \
@@ -245,7 +236,7 @@ build() {
         --enable-vapoursynth \
         --enable-version3 \
         --enable-vulkan \
-        --extra-cflags="-fPIC -I/opt/cuda/include" \
+        --extra-cflags="-I/opt/cuda/include" \
         --extra-ldflags="-L/opt/cuda/lib64"
 
     make
