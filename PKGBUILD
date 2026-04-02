@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ignition-startup
 _app_id=io.github.flattool.Ignition
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Manage startup apps and scripts"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
 source=("git+https://github.com/flattool/ignition.git#tag=$pkgver"
         'git+https://github.com/flattool/gir-ts-types.git'
         'git+https://github.com/flattool/gobjectify.git')
-sha256sums=('7eb4894b43ce5b976c07b44e0ce54f24b7c92bae1b684fdaecfb164e1b9d7d8b'
+sha256sums=('536b135c0f376c2617847f2adc20edd0c916d537b59f8c305f993e2c96b4e354'
             'SKIP'
             'SKIP')
 
