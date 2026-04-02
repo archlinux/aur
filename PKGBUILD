@@ -13,8 +13,8 @@ sha256sums=('d27b604544e9e187caa3e556c8b0dd496cfdea093f1b82661224b37d50c0287e')
 options=('!debug')
 
 latestver() {
-    curl -fsSL 'https://api.github.com/repos/BeaconBay/ck/releases/latest' | jq -r '.assets[]?.name' |
-    sed -nE '/^ck-[0-9.]+-x86_64-unknown-linux-gnu\.tar\.gz$/{s/^ck-//; s/-x86_64-unknown-linux-gnu\.tar\.gz$//; p;}'
+    gh api --paginate repos/BeaconBay/ck/releases --jq '.[] | select(.prerelease == false and .draft == false) | .assets[]?.name' |
+    sed -nE '/^ck-[0-9.]+-x86_64-unknown-linux-gnu\.tar\.gz$/{s/^ck-//; s/-x86_64-unknown-linux-gnu\.tar\.gz$//; p; q}'
 }
 
 package() {
