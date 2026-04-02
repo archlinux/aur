@@ -1,6 +1,6 @@
 # Maintainer: Nikita <nikitamkrotov@gmail.com>
 pkgname=slavweb-electron
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Кроссплатформенное десктопное приложение на Electron для SlavWEB"
 arch=('x86_64')
