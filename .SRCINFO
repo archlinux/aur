@@ -15,6 +15,6 @@ pkgbase = brscan4
 	source = mk-udev-hwdb
 	md5sums = 54dec75887de091fde5fcd511d9a57c3
 	md5sums = ccffb9a6f6d436b21be25b0241068981
-	md5sums = 8966d38375d535028a63a6ef5f6104eb
+	md5sums = b4a328d229b1614774340695577b67af
 
 pkgname = brscan4
