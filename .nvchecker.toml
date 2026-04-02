@@ -1,0 +1,6 @@
+[evrouter-bin]
+source = 'apt'
+pkg = 'evrouter'
+mirror = 'https://files.bedroomlan.org/debian'
+suite = 'unstable'
+repo = 'main'
