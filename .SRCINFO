@@ -1,0 +1,33 @@
+pkgbase = amoxide-bin
+	pkgdesc = Like direnv, but for aliases. Define aliases per project, per toolchain, or globally — and load the right ones automatically.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/sassman/amoxide-rs
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	conflicts = amoxide-rs
+	source = COMPLETIONS-0.2.1.bash::https://raw.githubusercontent.com/sassman/amoxide-rs/v0.2.1/completions/bash/am.bash
+	source = COMPLETIONS-0.2.1.fish::https://raw.githubusercontent.com/sassman/amoxide-rs/v0.2.1/completions/fish/am.fish
+	source = COMPLETIONS-0.2.1.zsh::https://raw.githubusercontent.com/sassman/amoxide-rs/v0.2.1/completions/zsh/_am
+	sha256sums = 6bbac0ebe716461898cd38a03b7e22c15f33dc7849de54f3210a43e9c175d7c5
+	sha256sums = 2069496a3e34d3a3dc4d5001070ecec7ca7148223e4e611bddae480bc37b18c4
+	sha256sums = 048ad2ed6bec5a836b063becfa004a0a4818239189522dc4ef309e6aee26a95c
+	source_x86_64 = amoxide-rs-x86_64-0.2.1.txz::https://github.com/sassman/amoxide-rs/releases/download/v0.2.1/amoxide-x86_64-unknown-linux-gnu.tar.xz
+	source_x86_64 = amoxide-rs-tui-x86_64-0.2.1.txz::https://github.com/sassman/amoxide-rs/releases/download/v0.2.1/amoxide-tui-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 2a263a18e9d16815c7eba90524dbb59c5d6a90140ae3e8db920adfe2c8616b59
+	sha256sums_x86_64 = ac2e233305d1f9005fd4a607d2493db7eb240bbec96ff6bec764fbdcc27bc8cc
+	source_aarch64 = amoxide-rs-aarch64-0.2.1.txz::https://github.com/sassman/amoxide-rs/releases/download/v0.2.1/amoxide-aarch64-unknown-linux-gnu.tar.xz
+	source_aarch64 = amoxide-rs-tui-aarch64-0.2.1.txz::https://github.com/sassman/amoxide-rs/releases/download/v0.2.1/amoxide-tui-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = fe2468e08068b82bff0938f5747de9f748c6b232e549234edfdfcd50acc37fff
+	sha256sums_aarch64 = 7332a601e20a62a87f0a4f04e0ada8e2742aa8bff04095a7cc035aa418523a65
+
+pkgname = amoxide-bin
+	optdepends = am-tui
+	provides = am
+
+pkgname = amoxide-tui-bin
+	depends = am
+	provides = am-tui

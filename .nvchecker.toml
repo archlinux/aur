@@ -1,0 +1,5 @@
+[amoxide-bin]
+source = "github"
+github = "sassman/amoxide-rs"
+use_latest_release = true
+prefix = "v"
