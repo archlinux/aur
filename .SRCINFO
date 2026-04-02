@@ -1,6 +1,6 @@
 pkgbase = posting
 	pkgdesc = The modern API client that lives in your terminal
-	pkgver = 2.9.2
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://github.com/darrenburns/posting
 	arch = any
@@ -10,21 +10,21 @@ pkgbase = posting
 	makedepends = python-installer
 	depends = python>=3.11
 	depends = python-click>=8.1.7
-	depends = python-click-default-group>=1.2.4
-	depends = python-dotenv>=1.0.1
-	depends = python-httpx>=0.28.1
-	depends = python-openapi-pydantic>=0.5
-	depends = python-pydantic>=2.9.2
-	depends = python-pydantic-settings>=2.4
-	depends = python-pyperclip>=1.9
-	depends = python-rich
-	depends = python-textual>=6.1
-	depends = python-textual-autocomplete>=4.0.4
-	depends = python-typing_extensions
-	depends = python-watchfiles>=0.24
 	depends = python-xdg-base-dirs>=6.0.1
+	depends = python-click-default-group>=1.2.4
+	depends = python-httpx>=0.28.1
+	depends = python-openapi-pydantic>=0.5.0
+	depends = python-pyperclip>=1.9.0
+	depends = python-pydantic>=2.9.2
 	depends = python-yaml>=6.0.2
-	source = posting-2.9.2.tar.gz::https://github.com/darrenburns/posting/archive/refs/tags/2.9.2.tar.gz
-	sha256sums = 72f5931fae361ddd164a12a62f9678752e3c8f207b1d29070d00b8ff53eb79c1
+	depends = python-pydantic-settings>=2.4.0
+	depends = python-dotenv>=1.0.1
+	depends = python-watchfiles>=0.24.0
+	depends = python-textual>=6.1.0
+	depends = python-textual-autocomplete>=4.0.6
+	depends = python-rich
+	depends = python-typing_extensions
+	source = https://github.com/darrenburns/posting/archive/refs/tags/2.10.0/posting-2.10.0.tar.gz
+	sha256sums = 4dab923cc9bd374f5b3d54a9f4d4d9e712c3854df6be192d407e34b77da99653
 
 pkgname = posting
