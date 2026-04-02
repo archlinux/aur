@@ -2,9 +2,6 @@
 # shellcheck shell=bash
 set -e
 
-_ASTRBOT_UPSTREAM="https://github.com/AstrBotDevs/AstrBot.git"
-_ASTRBOT_BRANCH="dev"
-
 # ─── Guards ───────────────────────────────────────────────────────────────────
 _ensure_root() {
     if [ "$(id -u)" -ne 0 ]; then
@@ -25,76 +22,20 @@ _ensure_environment() {
     install -dm755 -o astrbot -g astrbot /var/cache/astrbot/cargo
     install -dm755 -o astrbot -g astrbot /var/cache/astrbot/rustup
     install -dm755 -o astrbot -g astrbot /var/cache/astrbot/cargo_target
-    install -dm755 -o root    -g root    /etc/astrbot
+    install -dm755 -o root -g root /etc/astrbot
 
     [ -d "/var/lib/astrbot" ] && chown -R astrbot:astrbot /var/lib/astrbot
     [ -d "/var/cache/astrbot" ] && chown -R astrbot:astrbot /var/cache/astrbot
-}
-
-# ─── App clone ────────────────────────────────────────────────────────────────
-# Download /opt/astrbot from GitHub tarball and write version file.
-_clone_app() {
-    local tarball="/tmp/astrbot-install-$$.tar.gz"
-    local extract_dir="/tmp/astrbot-install-$$"
-    local url="https://github.com/AstrBotDevs/AstrBot/archive/refs/heads/${_ASTRBOT_BRANCH}.tar.gz"
-
-    # Skip if overlayfs is mounted (astrbotctl update is running)
-    if mount | grep -q ' /opt/astrbot '; then
-        echo ">>> Overlay mount detected — skipping clone in pacman hook."
-        return 0
-    fi
-
-    echo ">>> Downloading AstrBot from GitHub..."
-    mkdir -p "$extract_dir"
-    if ! curl -L --fail --silent --show-error -o "$tarball" "$url" 2>&1; then
-        echo "❌ Error: Failed to download AstrBot." >&2
-        rm -f "$tarball"; rm -rf "$extract_dir"
-        exit 1
-    fi
-
-    echo ">>> Extracting..."
-    if ! tar -xzf "$tarball" -C "$extract_dir" 2>&1; then
-        echo "❌ Error: Failed to extract tarball." >&2
-        rm -f "$tarball"; rm -rf "$extract_dir"
-        exit 1
-    fi
-
-    local extracted
-    extracted=$(find "$extract_dir" -mindepth 1 -maxdepth 1 -type d | head -1)
-    if [ -z "$extracted" ]; then
-        echo "❌ Error: Extraction produced no directory." >&2
-        rm -f "$tarball"; rm -rf "$extract_dir"
-        exit 1
-    fi
-
-    rm -rf /opt/astrbot
-    mv "$extracted" /opt/astrbot
-    rm -f "$tarball"; rm -rf "$extract_dir"
-
-    # Init git repo for version tracking
-    git -C /opt/astrbot init --quiet
-    git -C /opt/astrbot remote add origin "$_ASTRBOT_UPSTREAM"
-    git -C /opt/astrbot fetch --depth=1 origin "$_ASTRBOT_BRANCH" --quiet 2>/dev/null || true
-    git -C /opt/astrbot checkout "$_ASTRBOT_BRANCH" --quiet 2>/dev/null || true
-
-    # Write version file
-    local _ver
-    _ver=$(git -C /opt/astrbot describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g')
-    [ -z "$_ver" ] && _ver="4.22.2"
-    echo "$_ver" > /opt/astrbot/.version
-    echo ">>> /opt/astrbot ready ($_ver)"
 }
 
 # ─── Hooks ─────────────────────────────────────────────────────────────────────
 
 pre_install() {
     _ensure_root
-    _clone_app
 }
 
 pre_upgrade() {
     _ensure_root
-    _clone_app
 }
 
 post_install() {
@@ -158,7 +99,7 @@ post_upgrade() {
     echo "  sudo astrbotctl update --all             # 更新所有实例"
     echo ""
     echo "【如遇异常】"
-    echo "  sudo astrbotctl git pull --sync --rebuild-venv <实例名>"
+    echo "  如果环境异常，可运行 sudo astrbotctl update <实例名> 重建"
     echo "-------------------------------------------------------------------"
 }
 

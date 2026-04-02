@@ -4,7 +4,7 @@
 #
 # This script handles the full update workflow:
 #   1. Pull latest from origin (AUR)
-#   2. Download and compute new pkgver from upstream repos
+#   2. Compute new pkgver using a lightweight partial clone (skipping large file history)
 #   3. Bump pkgrel (always, to force rebuild even on hotfix changes)
 #   4. Commit and push to both AUR and GitHub mirror
 #
@@ -43,23 +43,23 @@ else
     exit 1
 fi
 
-echo "[3/5] Downloading upstream sources and computing version..."
-rm -rf src/ pkg/ "$PKGNAME"*.pkg.tar.* 2>/dev/null || true
+echo "[3/5] Computing new version (lightweight clone)..."
 
-makepkg -od --noconfirm
+OLD_VER=$(awk -F= '/^pkgver=/{gsub(/"|'"'"'/, "", $2); print $2; exit}' PKGBUILD)
+OLD_PKGREL=$(awk -F= '/^pkgrel=/{gsub(/"|'"'"'/, "", $2); print $2; exit}' PKGBUILD)
 
-TMP_SRCINFO="$(mktemp)"
-trap 'rm -f "$TMP_SRCINFO"' EXIT
-makepkg --printsrcinfo >"$TMP_SRCINFO"
+# Use a bare, blob-filtered clone to get commit history without downloading file contents.
+# This is extremely fast and entirely avoids downloading large garbage files in the history.
+TMP_DIR=$(mktemp -d)
+git clone --bare --filter=blob:none --branch dev https://github.com/AstrBotDevs/AstrBot.git "$TMP_DIR" >/dev/null 2>&1
+git -C "$TMP_DIR" fetch --tags >/dev/null 2>&1
+NEW_VER=$(git -C "$TMP_DIR" describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g')
+rm -rf "$TMP_DIR"
 
-NEW_VER=$(awk '$1 == "pkgver" && $2 == "=" { print $3; exit }' "$TMP_SRCINFO")
 [ -n "$NEW_VER" ] || {
-    echo "❌ 无法从 .SRCINFO 解析 pkgver"
+    echo "❌ 无法获取最新 pkgver"
     exit 1
 }
-
-OLD_VER=$(awk -F= '/^pkgver=/{gsub(/'\''|"/, "", $2); print $2; exit}' PKGBUILD)
-OLD_PKGREL=$(awk -F= '/^pkgrel=/{gsub(/'\''|"/, "", $2); print $2; exit}' PKGBUILD)
 
 if [ "$NEW_VER" != "$OLD_VER" ]; then
     echo ">>> 版本变化: ${OLD_VER} → ${NEW_VER}，重置 pkgrel=1"
@@ -72,6 +72,8 @@ fi
 echo "[4/5] Updating PKGBUILD and .SRCINFO..."
 sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" PKGBUILD
 sed -i "s/^pkgrel=.*/pkgrel=${NEW_PKGREL}/" PKGBUILD
+
+rm -rf src/ pkg/ "$PKGNAME"*.pkg.tar.* 2>/dev/null || true
 makepkg --printsrcinfo >.SRCINFO
 
 echo "[5/5] Committing and pushing..."
