@@ -2,11 +2,11 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Eli Schwartz
 pkgname=smile
-pkgver=2.11.0
-pkgrel=2
+pkgver=2.12.0
+pkgrel=1
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
-url="https://mijorus.it/projects/smile/"
+url="https://smile.mijorus.it"
 license=('GPL-3.0-or-later')
 depends=(
   'emoji-font'
@@ -19,15 +19,15 @@ depends=(
 makedepends=('meson')
 checkdepends=('appstream-glib')
 optdepends=(
-  'dotool: For autopaste service'
-  'wl-clipboard: Automatically paste emojis (Wayland)'
+  'dotool: Automatically paste emojis (Wayland)'
+  'wl-clipboard: Backend for clipboard action (Wayland)'
   'xdotool: Automatically paste emojis (X11)'
 )
 conflicts=("$pkgname-emoji-picker")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/$pkgver.tar.gz"
         'autopaste'
         'autopaste.service')
-sha256sums=('a4e85c3af5783789498b1bf84211747a08299441305ac97d0210a754a55bd11e'
+sha256sums=('56365fc5b44f40462130627c1418f74d419f99c8e7b5e49b8a1212d6010f37c7'
             'bb7322edc8d03836f9d74db75406ea02de5642f22d01a47ef2c02dad768eae67'
             '7d5faaba3616c6d1d3534b878309a109a887c75191b675c2c0122362c6a39364')
 
