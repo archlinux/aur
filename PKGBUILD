@@ -1,12 +1,12 @@
 pkgname=mingw-w64-vtk-git
-pkgver=r97796.d369168b047
+pkgver=r98382.f92320ef190
 pkgrel=1
 pkgdesc='Software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
 url='https://www.vtk.org'
 license=('BSD')
 depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-jsoncpp' 'mingw-w64-expat' 'mingw-w64-netcdf' 'mingw-w64-libtiff' 'mingw-w64-libjpeg-turbo' 'mingw-w64-freetype2' 'mingw-w64-libpng' 'mingw-w64-libxml2' 'mingw-w64-hdf5' 'mingw-w64-freeglut' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-double-conversion' 'mingw-w64-pugixml' 'mingw-w64-libtheora' 'mingw-w64-gl2ps' 'mingw-w64-cgns' 'mingw-w64-libharu' 'mingw-w64-verdict' 'mingw-w64-scnlib')
-makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'git')
+makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'git' 'ninja-makeflags')
 provides=('mingw-w64-vtk')
 conflicts=('mingw-w64-vtk')
 options=('!buildflags' 'staticlibs' '!strip')
@@ -22,12 +22,14 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/13103.patch | patch -p1
 }
 
 build() {
   cd "${srcdir}/vtk"
   for _arch in ${_architectures}; do
-    ${_arch}-cmake \
+    ${_arch}-cmake -G Ninja \
+      -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja-makeflags \
       -DCMAKE_BUILD_TYPE=Release \
       -DVTK_USE_EXTERNAL=ON \
       -DVTK_BUILD_TESTING=OFF \
@@ -60,14 +62,14 @@ build() {
       -DVTK_MODULE_ENABLE_VTK_RenderingParallel=YES \
       -DVTK_MODULE_ENABLE_VTK_RenderingVolumeAMR=YES \
       -B build-${_arch} .
-    make -C build-${_arch}
+    cmake --build build-${_arch}
   done
 }
 
 package() {
+  cd "$srcdir/vtk"
   for _arch in ${_architectures}; do
-    cd "$srcdir/vtk/build-${_arch}"
-    make install/fast DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" cmake --install build-${_arch}
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a

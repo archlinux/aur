@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-vtk-git
 	pkgdesc = Software system for 3D computer graphics, image processing, and visualization (mingw-w64)
-	pkgver = r97796.d369168b047
+	pkgver = r98382.f92320ef190
 	pkgrel = 1
 	url = https://www.vtk.org
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = mingw-w64-vtk-git
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-wine
 	makedepends = git
+	makedepends = ninja-makeflags
 	depends = mingw-w64-crt
 	depends = mingw-w64-qt5-base
 	depends = mingw-w64-jsoncpp
