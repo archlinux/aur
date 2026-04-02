@@ -1,0 +1,6 @@
+[git-pages-cli]
+source = 'gitea'
+gitea = 'git-pages/git-pages-cli'
+host = 'codeberg.org'
+use_max_tag = true
+prefix = 'v'
