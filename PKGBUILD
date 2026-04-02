@@ -1,6 +1,6 @@
 # Maintainer: Omibranch <https://github.com/Omibranch>
 pkgname=gitty-cli
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Minimal Git CLI wrapper that speaks human"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ optdepends=(
 )
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/Omibranch/gitty/releases/download/v${pkgver}/gitty-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/Omibranch/gitty/releases/download/v${pkgver}/gitty-linux-arm64")
-sha256sums_x86_64=('45373fd843088731db52479095f6220e7495cb59f251be8ba8a9b563f17f5eee')
-sha256sums_aarch64=('41c1f546f4b084304b22af57700aebfd710921a0f77761c64f31f9f84bd0262a')
+sha256sums_x86_64=('834fcdfbed6dcf7c23a8576b5b6052e3594d5997716b6fc0cff60a1a4e182b2f')
+sha256sums_aarch64=('364bebce9cad3108bc1344b4c28bce017534dfbfd1c2e1b38653cfd7c378dc76')
 noextract=("${pkgname}-${pkgver}-x86_64" "${pkgname}-${pkgver}-aarch64")
 
 package() {
