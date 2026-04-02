@@ -1,2 +1,4 @@
 /src
 /pkg
+/hysteria-git
+*.pkg.tar.zst
