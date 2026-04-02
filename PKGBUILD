@@ -235,7 +235,7 @@ build() {
         --enable-vapoursynth \
         --enable-version3 \
         --enable-vulkan \
-        --extra-cflags="-I/opt/cuda/include" \
+        --extra-cflags="-fPIC -I/opt/cuda/include" \
         --extra-ldflags="-L/opt/cuda/lib64"
 
     make
