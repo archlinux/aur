@@ -152,6 +152,10 @@ prepare() {
 build() {
     cd ffmpeg
 
+    # FFmpeg's configure expects threads="yes"/"no" internally.
+    # makepkg can leak threads=<N> from MAKEFLAGS which breaks dependency checks.
+    unset threads THREADS
+
     ./configure \
         --prefix=/usr \
         --disable-debug \
