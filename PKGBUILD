@@ -1,4 +1,4 @@
-# Maintainer: wadledee <wadledee@pm.me>
+# Maintainer: khidarlamine hamdi <khidarlaminehamdi+aur@gmail.com>
 pkgname="hyprsysteminfo"
 pkgver=0.1.3
 pkgrel=5
