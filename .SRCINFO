@@ -1,16 +1,17 @@
 pkgbase = simulide
 	pkgdesc = Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers).
 	pkgver = 1.1.0_SR2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Arcachofo/SimuliDE-1
 	arch = x86_64
 	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = qt5-tools
 	depends = qt5-base>=5.15.1
 	depends = qt5-multimedia
 	depends = qt5-serialport
 	depends = qt5-svg
 	depends = qt5-script
-	depends = qt5-tools
 	provides = simulide
 	conflicts = simulide
 	source = simulide::git+https://github.com/Arcachofo/SimuliDE-1.git#commit=28965e3bd6dd118598db1f5639ce1cf2e3c56e36

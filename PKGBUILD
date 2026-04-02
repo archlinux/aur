@@ -8,7 +8,7 @@ pkgver=1.1.0_SR2
 _version_branch=1.1.0
 _realver=${pkgver//_/-}
 _commit=28965e3bd6dd118598db1f5639ce1cf2e3c56e36
-pkgrel=2
+pkgrel=3
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)."
 arch=("x86_64")
 url="https://github.com/Arcachofo/SimuliDE-1"
@@ -28,9 +28,12 @@ depends=(
   "qt5-serialport"
   "qt5-svg"
   "qt5-script"
-  "qt5-tools"
 )
 
+makedepends=(
+  "git"
+  "qt5-tools"
+)
 
 build() {
   cd "${srcdir}/${pkgname}/build_XX"
