@@ -1,6 +1,6 @@
 pkgbase = neodlp-arch-libs
 	pkgdesc = Modern video/audio downloader based on yt-dlp with browser integration. Modified to use external aria2c, deno and yt-dlp.
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/neosubhamoy/neodlp
 	install = neodlp-arch-libs.install
@@ -23,11 +23,13 @@ pkgbase = neodlp-arch-libs
 	depends = webkit2gtk-4.1
 	depends = libappindicator-gtk3
 	depends = ffmpeg
+	provides = neodlp
+	conflicts = neodlp
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = NeoDLP_0.4.3_amd64.deb::https://github.com/neosubhamoy/neodlp/releases/download/v0.4.3/NeoDLP_0.4.3_amd64.deb
-	sha256sums_x86_64 = c2953097dd87ca19acefd2bbc54ff59e395fd9df6b1329cb8375c9e2e9e05bac
-	source_aarch64 = NeoDLP_0.4.3_arm64.deb::https://github.com/neosubhamoy/neodlp/releases/download/v0.4.3/NeoDLP_0.4.3_arm64.deb
-	sha256sums_aarch64 = b12d5ca362482cdf4e7fab90ea8f89f227a45bf6c01d78bc5c70d3a6cd3d83a1
+	source_x86_64 = NeoDLP_0.4.4_amd64.deb::https://github.com/neosubhamoy/neodlp/releases/download/v0.4.4/NeoDLP_0.4.4_amd64.deb
+	sha256sums_x86_64 = ae9f10e3ee2211ce38d69f2f7ac5d211e017dd263aa344b86bd0a2f66bd5567f
+	source_aarch64 = NeoDLP_0.4.4_arm64.deb::https://github.com/neosubhamoy/neodlp/releases/download/v0.4.4/NeoDLP_0.4.4_arm64.deb
+	sha256sums_aarch64 = 0bb3b735ae89025279ee9c551c62e0ce21ac95d2278beface5c5d5cef866cfe3
 
 pkgname = neodlp-arch-libs

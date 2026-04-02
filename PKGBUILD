@@ -1,7 +1,7 @@
 # Maintainer: c0des1ayr <rplatinumedition+git@gmail.com>
 # Contributor: Subhamoy Biswas <hey@neosubhamoy.com>
 pkgname=neodlp-arch-libs
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Modern video/audio downloader based on yt-dlp with browser integration. Modified to use external aria2c, deno and yt-dlp."
 arch=('x86_64' 'aarch64')
@@ -9,6 +9,7 @@ url="https://github.com/neosubhamoy/neodlp"
 license=('MIT')
 depends=('aria2' 'deno' 'yt-dlp' 'cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'ffmpeg')
 makedepends=('curl' 'jq')
+provides=('neodlp')
 conflicts=('neodlp')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
@@ -45,6 +46,6 @@ package() {
 }
 
 source_x86_64=("NeoDLP_${pkgver}_amd64.deb::${url}/releases/download/v$pkgver/NeoDLP_${pkgver}_amd64.deb")
-sha256sums_x86_64=('c2953097dd87ca19acefd2bbc54ff59e395fd9df6b1329cb8375c9e2e9e05bac')
+sha256sums_x86_64=('ae9f10e3ee2211ce38d69f2f7ac5d211e017dd263aa344b86bd0a2f66bd5567f')
 source_aarch64=("NeoDLP_${pkgver}_arm64.deb::${url}/releases/download/v$pkgver/NeoDLP_${pkgver}_arm64.deb")
-sha256sums_aarch64=('b12d5ca362482cdf4e7fab90ea8f89f227a45bf6c01d78bc5c70d3a6cd3d83a1')
+sha256sums_aarch64=('0bb3b735ae89025279ee9c551c62e0ce21ac95d2278beface5c5d5cef866cfe3')
