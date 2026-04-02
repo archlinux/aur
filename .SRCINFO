@@ -1,0 +1,15 @@
+pkgbase = python-ida-pro-mcp-git
+	pkgdesc = Simple MCP Server to allow vibe reversing in IDA Pro.
+	pkgver = 1.4.0.r219.gf1aec3b
+	pkgrel = 1
+	url = https://github.com/mrexodia/ida-pro-mcp
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-mcp
+	provides = python-ida-pro-mcp
+	conflicts = python-ida-pro-mcp
+	source = python-ida-pro-mcp-git::git+https://github.com/mrexodia/ida-pro-mcp.git
+	sha256sums = SKIP
+
+pkgname = python-ida-pro-mcp-git
