@@ -24,8 +24,8 @@ source=(
 sha256sums=('dfde53c5f594815b69349e6b70cbb26fbf9ddb30938aa13352048967279ac501')
 
 latestver() {
-	curl -fsSI 'https://github.com/dyc3/steamguard-cli/releases/latest/download/steamguard' | tr -d '\r' |
-	sed -nE 's#^location: .*/download/v?([^/]+)/.*$#\1#p'
+	gh api --paginate repos/dyc3/steamguard-cli/releases --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "steamguard")) | .tag_name' |
+	head -1 | sed 's/^v//'
 }
 
 package() {
