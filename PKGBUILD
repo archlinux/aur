@@ -1,7 +1,7 @@
 # Maintainer: werdxz
 
 pkgname=portty-git
-pkgver=0.2.0.r0.gf3e17da
+pkgver=0.2.0.r1.geb7e375
 pkgrel=2
 pkgdesc="XDG Desktop Portal backend for TTY environments"
 arch=('x86_64')
@@ -42,6 +42,10 @@ package() {
 
     # Install systemd service
     install -Dm644 "misc/portty.service" "$pkgdir/usr/lib/systemd/user/portty.service"
+
+    # Install D-Bus activation service
+    install -Dm644 "misc/org.freedesktop.impl.portal.desktop.tty.service" \
+        "$pkgdir/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.tty.service"
 
     # Install license
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

@@ -1,7 +1,7 @@
 pkgbase = portty-git
 	pkgdesc = XDG Desktop Portal backend for TTY environments
 	pkgver = 0.2.0.r0.gf3e17da
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/werdxz/portty
 	arch = x86_64
 	license = MIT
