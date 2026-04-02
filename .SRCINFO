@@ -1,0 +1,32 @@
+pkgbase = python-transformers-git
+	pkgdesc = State-of-the-art pretrained models for inference and training
+	pkgver = r22511.3c307e380ad
+	pkgrel = 1
+	url = https://github.com/huggingface/transformers
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-huggingface-hub>=1:1.3.0
+	depends = python-numpy
+	depends = python-packaging
+	depends = python-regex
+	depends = python-safetensors
+	depends = python-tokenizers
+	depends = python-tqdm
+	depends = python-typer
+	depends = python-yaml
+	optdepends = python-bitsandbytes: 8-bit support for PyTorch
+	optdepends = python-flax: JAX support
+	optdepends = python-keras: Support for models in Keras 3
+	optdepends = python-pytorch: PyTorch support
+	optdepends = python-tensorflow: TensorFlow support
+	provides = python-transformers
+	conflicts = python-transformers
+	source = transformers::git+https://github.com/huggingface/transformers.git
+	sha256sums = SKIP
+
+pkgname = python-transformers-git
