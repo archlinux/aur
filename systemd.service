@@ -31,7 +31,7 @@ ProtectHome=true
 ProtectProc=invisible
 ProcSubset=pid
 SystemCallFilter=~@swap @resources @reboot @raw-io @privileged @obsolete @mount @module @debug @cpu-emulation @clock
-IPAddressDeny=localhost link-local multicast
+IPAddressDeny=link-local multicast
 UMask=0777
 
 [Install]
