@@ -1,0 +1,13 @@
+pkgbase = seamonkey-i18n-it
+	pkgdesc = Italian language pack for SeaMonkey
+	pkgver = 2.53.23
+	pkgrel = 1
+	url = http://www.seamonkey-project.org/
+	arch = any
+	license = MPL
+	depends = seamonkey>=2.53.23
+	noextract = seamonkey-2.53.23.it.langpack.xpi
+	source = https://archive.seamonkey-project.org/releases/2.53.23/langpack/seamonkey-2.53.23.it.langpack.xpi
+	sha512sums = f2ee576e02a4a52f9a639a0772e15bd487fb465289e40f077a16b112cbef3b4641b882d286df41868126cf26efb4e90c387af62ab792f3289b57d4cfeae6368a
+
+pkgname = seamonkey-i18n-it
