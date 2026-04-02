@@ -1,14 +1,15 @@
 pkgbase = repoforge-git
-	pkgdesc = A C++ TUI wizard for building .deb .rpm and aur repositories with few clicks
+	pkgdesc = A C++ wizard to create linux remote repositories for debian, RHEL and AUR
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Vniverse77/byte-knight
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = gcc
-	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/Vniverse77/repoForge/archive/refs/tags/0.1.1.tar.gz
-	sha256sums = a0f736ff87fece17e45a3ce9665f48beac6bb11e5d689998b049d8fdae1ac29d
+	depends = gcc-libs
+	optdepends = dpkg: for .deb packages
+	source = repoforge-git-0.1.1.tar.gz::https://github.com/Vniverse77/byte-knight/archive/v0.1.1.tar.gz
+	sha256sums = efa3a40c690bfae0b6c41eb098b48a77ee55727a52b9fe85935e056551d409ea
 
 pkgname = repoforge-git
