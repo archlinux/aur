@@ -1,6 +1,6 @@
 pkgbase = bindzwirn-git
 	pkgdesc = manage permissions for binding to IP ports
-	pkgver = r113.ace9877
+	pkgver = r113.e52d968
 	pkgrel = 1
 	url = https://codeberg.org/bindzwirn/bindzwirn
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = bindzwirn-git
 	depends = glibc
 	provides = bindzwirn
 	conflicts = bindzwirn
-	source = git+https://codeberg.org/bindzwirn/bindzwirn.git#branch=next
+	source = git+https://codeberg.org/bindzwirn/bindzwirn.git
 	sha256sums = SKIP
 
 pkgname = bindzwirn-git

@@ -2,7 +2,7 @@
 
 pkgname=bindzwirn-git
 _pkgname="${pkgname/-git/}"
-pkgver=r113.ace9877
+pkgver=r113.e52d968
 pkgrel=1
 pkgdesc="manage permissions for binding to IP ports"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://codeberg.org/bindzwirn/bindzwirn"
 license=('GPL-2.0-or-later')
 depends=('libbpf' 'glibc')
 makedepends=('meson' 'linux-headers' 'clang' 'bpf' 'pkg-config' 'git' 'llvm')
-source=("git+$url.git#branch=next")
+source=("git+$url.git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 sha256sums=('SKIP')
