@@ -1,0 +1,17 @@
+pkgbase = gnome-window-calls-git
+	pkgdesc = D-Bus client for manipulating windows in GNOME using the window-calls extension.
+	pkgver = r9.975f9c1
+	pkgrel = 1
+	url = https://github.com/vncsmyrnk/gnome-window-calls
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = zig
+	depends = glib2
+	depends = gnome-shell-extension-window-calls-git
+	provides = gnome-window-calls
+	conflicts = gnome-window-calls
+	source = git+https://github.com/vncsmyrnk/gnome-window-calls.git
+	sha256sums = SKIP
+
+pkgname = gnome-window-calls-git
