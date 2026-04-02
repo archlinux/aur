@@ -47,7 +47,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   local _app_src_cmd_pkg="github.com/apernet/hysteria/app/v2/cmd"
-  local _goldflags="-w -s -linkmode=external"
+  local _goldflags="-w -s"
   local _goldflags="$_goldflags -buildid="
   local _goldflags="$_goldflags -X '$_app_src_cmd_pkg.appVersion=$(git describe --tags --always --match 'app/v*' | grep -o "v.*")'"
   local _goldflags="$_goldflags -X '$_app_src_cmd_pkg.appDate=$(date -u '+%Y-%m-%dT%H:%M:%SZ')'"
