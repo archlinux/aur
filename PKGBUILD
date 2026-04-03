@@ -61,7 +61,7 @@
 ### Running with a 1000HZ, 750Hz, 600 Hz, 500Hz, 300Hz, 250Hz and 100Hz tick rate
 : "${_HZ_ticks:=1000}"
 
-## Choose between periodic, idle or full
+## Choose between perodic, idle or full
 ### Full tickless can give higher performances in various cases but, depending on hardware, lower consistency.
 : "${_tickrate:=full}"
 
@@ -186,7 +186,6 @@ pkgdesc='CachyOS Linux kernel with cjktty patches'
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
-: "${CARCH:=${arch[0]}}"
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL-2.0-only')
 options=('!strip' '!debug' '!lto')
@@ -194,8 +193,6 @@ makedepends=(
   bc
   cpio
   gettext
-  initramfs
-  kmod
   libelf
   pahole
   perl
@@ -212,7 +209,7 @@ _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${
 _cjktty_commit=6d8301e88ddf1f1c61623d6356c5fd10b860cd7e
 _cjktty_source="https://raw.githubusercontent.com/bigshans/cjktty-patches/${_cjktty_commit}"
 _nv_ver=595.58.03
-_nv_pkg="NVIDIA-Linux-${CARCH}-${_nv_ver}"
+_nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
     "https://github.com/CachyOS/linux/releases/download/${_srctag}/${_srctag}.tar.gz"
@@ -282,8 +279,7 @@ esac
 
 export KBUILD_BUILD_HOST=cachyos
 export KBUILD_BUILD_USER="$pkgbase"
-KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
-export KBUILD_BUILD_TIMESTAMP
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 _die() { error "$@" ; exit 1; }
 
@@ -487,9 +483,9 @@ prepare() {
             # modprobe configs
             zcat /proc/config.gz > ./.config
         else
-            printf 'warning: Your kernel was not compiled with IKPROC!\n' >&2
-            printf 'warning: You cannot read the current config!\n' >&2
-            printf 'warning: Aborting!\n' >&2
+            warning "Your kernel was not compiled with IKPROC!"
+            warning "You cannot read the current config!"
+            warning "Aborting!"
             exit
         fi
     fi
@@ -507,8 +503,8 @@ prepare() {
 
     ### Rewrite configuration
     echo "Rewrite configuration..."
-    make "${BUILD_FLAGS[@]}" olddefconfig
     make "${BUILD_FLAGS[@]}" prepare
+    yes "" | make "${BUILD_FLAGS[@]}" config >/dev/null
     diff -u ../config .config || :
 
     ### Prepared version
@@ -516,28 +512,26 @@ prepare() {
     echo "Prepared $pkgbase version $(<version)"
 
     ### Running make nconfig
-    if [ "$_makenconfig" = "yes" ]; then
-        make "${BUILD_FLAGS[@]}" nconfig
-    fi
+    [ "$_makenconfig" = "yes" ] && make "${BUILD_FLAGS[@]}" nconfig
 
     ### Running make xconfig
-    if [ "$_makexconfig" = "yes" ]; then
-        make "${BUILD_FLAGS[@]}" xconfig
-    fi
+    [ "$_makexconfig" = "yes" ] &&  make "${BUILD_FLAGS[@]}" xconfig
 
+    ### Save configuration for later reuse
+    echo "Save configuration for later reuse..."
+    local basedir="$(dirname "$(readlink "${srcdir}/config")")"
+    cat .config > "${basedir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 }
 
 _sign_modules() {
-    printf '  -> Signing modules in %s\n' "$1"
+    msg2 "Signing modules in $1"
     local sign_script="${srcdir}/${_srcname}/scripts/sign-file"
-    local sign_key
-    sign_key="$(grep -Po 'CONFIG_MODULE_SIG_KEY="\K[^"]*' "${srcdir}/${_srcname}/.config")"
+    local sign_key="$(grep -Po 'CONFIG_MODULE_SIG_KEY="\K[^"]*' "${srcdir}/${_srcname}/.config")"
     if [[ ! "$sign_key" =~ ^/ ]]; then
         sign_key="${srcdir}/${_srcname}/${sign_key}"
     fi
     local sign_cert="${srcdir}/${_srcname}/certs/signing_key.x509"
-    local hash_algo
-    hash_algo="$(grep -Po 'CONFIG_MODULE_SIG_HASH="\K[^"]*' "${srcdir}/${_srcname}/.config")"
+    local hash_algo="$(grep -Po 'CONFIG_MODULE_SIG_HASH="\K[^"]*' "${srcdir}/${_srcname}/.config")"
 
     if [ "$_use_llvm_lto" != "none" ]; then
         local strip_bin="llvm-strip"
@@ -568,11 +562,11 @@ build() {
     if [ "$_build_nvidia_open" = "yes" ]; then
         cd "${srcdir}/${_nv_open_pkg}"
         MODULE_FLAGS+=(IGNORE_CC_MISMATCH=yes)
-        CFLAGS='' CXXFLAGS='' LDFLAGS='' make "${BUILD_FLAGS[@]}" "${MODULE_FLAGS[@]}" -j"$(nproc)" modules
+        CFLAGS= CXXFLAGS= LDFLAGS= make "${BUILD_FLAGS[@]}" "${MODULE_FLAGS[@]}" -j"$(nproc)" modules
     fi
 
     if [ "$_build_zfs" = "yes" ]; then
-        cd "${srcdir}/zfs"
+        cd ${srcdir}/"zfs"
 
         local CONFIGURE_FLAGS=()
         [ "$_use_llvm_lto" != "none" ] && CONFIGURE_FLAGS+=("KERNEL_LLVM=1")
@@ -594,18 +588,22 @@ build() {
 }
 
 _package() {
-    pkgdesc="The $pkgbase kernel and modules"
+    pkgdesc="The $pkgdesc kernel and modules"
     depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
                 'scx-scheds: to use sched-ext schedulers')
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE V4L2LOOPBACK-MODULE NTSYNC-MODULE VHBA-MODULE ADIOS-MODULE)
+    # Replace LTO kernel with the default kernel
+    if _is_lto_kernel; then
+        provides+=(linux-cachyos-lto=$_kernver)
+        replaces=(linux-cachyos-lto)
+    fi
 
     cd "$_srcname"
 
-    local modulesdir
-    modulesdir="$pkgdir/usr/lib/modules/$(<version)"
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
     echo "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
@@ -624,15 +622,18 @@ _package() {
 }
 
 _package-headers() {
-    pkgdesc="Headers and scripts for building modules for the $pkgbase kernel"
+    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
     depends=('pahole' "${pkgbase}")
     provides=(LINUX-HEADERS)
 
-    _is_lto_kernel && depends+=(clang llvm lld)
+    if _is_lto_kernel; then
+        provides+=(linux-cachyos-lto-headers=$_kernver)
+        replaces=(linux-cachyos-lto-headers)
+        depends+=(clang llvm lld)
+    fi
 
     cd "${_srcname}"
-    local builddir
-    builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
     echo "Installing build files..."
     install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
@@ -713,18 +714,18 @@ _package-headers() {
     while read -rd '' file; do
         case "$(file -Sib "$file")" in
             application/x-sharedlib\;*)      # Libraries (.so)
-                strip -v "$STRIP_SHARED" "$file" ;;
+                strip -v $STRIP_SHARED "$file" ;;
             application/x-archive\;*)        # Libraries (.a)
-                strip -v "$STRIP_STATIC" "$file" ;;
+                strip -v $STRIP_STATIC "$file" ;;
             application/x-executable\;*)     # Binaries
-                strip -v "$STRIP_BINARIES" "$file" ;;
+                strip -v $STRIP_BINARIES "$file" ;;
             application/x-pie-executable\;*) # Relocatable binaries
-                strip -v "$STRIP_SHARED" "$file" ;;
+                strip -v $STRIP_SHARED "$file" ;;
         esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
     echo "Stripping vmlinux..."
-    strip -v "$STRIP_STATIC" "$builddir/vmlinux"
+    strip -v $STRIP_STATIC "$builddir/vmlinux"
 
     echo "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
@@ -732,7 +733,7 @@ _package-headers() {
 }
 
 _package-dbg(){
-    pkgdesc="Non-stripped vmlinux file for the $pkgbase kernel"
+    pkgdesc="Non-stripped vmlinux file for the $pkgdesc kernel"
     depends=("${pkgbase}-headers")
 
     cd "${_srcname}"
@@ -741,14 +742,13 @@ _package-dbg(){
 }
 
 _package-zfs(){
-    pkgdesc="zfs module for the $pkgbase kernel"
+    pkgdesc="zfs module for the $pkgdesc kernel"
     depends=('pahole' "${pkgbase}=${_kernver}")
     provides=('ZFS-MODULE')
     license=('CDDL')
 
     cd "$_srcname"
-    local modulesdir
-    modulesdir="$pkgdir/usr/lib/modules/$(<version)/extramodules"
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)/extramodules"
 
     cd "${srcdir}/zfs"
     install -dm755 "${modulesdir}"
@@ -756,6 +756,7 @@ _package-zfs(){
 
     _sign_modules "${modulesdir}"
     find "$pkgdir" -name '*.ko' -exec zstd --rm -19 -T0 {} +
+    #  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${pkgver}-${pkgbase}'/" "$startdir/zfs.install"
 }
 
 _package-nvidia-open(){
@@ -766,8 +767,7 @@ _package-nvidia-open(){
     license=('MIT AND GPL-2.0-only')
 
     cd "$_srcname"
-    local modulesdir
-    modulesdir="$pkgdir/usr/lib/modules/$(<version)/extramodules"
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)/extramodules"
 
     cd "${srcdir}/${_nv_open_pkg}"
     install -dm755 "${modulesdir}"
@@ -784,8 +784,7 @@ _package-r8125() {
     license=('GPL-2.0-only')
 
     cd "$_srcname"
-    local modulesdir
-    modulesdir="$pkgdir/usr/lib/modules/$(<version)/extramodules"
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)/extramodules"
 
     cd "${srcdir}/r8125"
     install -dm755 "${modulesdir}"
@@ -807,8 +806,8 @@ pkgname+=("$pkgbase-headers")
 [ "$_build_r8125" = "yes" ] && pkgname+=("$pkgbase-r8125")
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
-    $(declare -f "_package${_p#"$pkgbase"}")
-    _package${_p#"$pkgbase"}
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
     }"
 done
 
