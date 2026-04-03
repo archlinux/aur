@@ -1,9 +1,11 @@
 pkgbase = librcd
 	pkgdesc = Charset Detection Library
 	pkgver = 0.1.14
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rusxmms/librcd
+	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = LGPL-2.1-only
 	depends = glibc
 	provides = librcd.so=0.1.14
