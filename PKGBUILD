@@ -1,5 +1,5 @@
 pkgname=philips-hue-for-arch
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Desktop GUI for controlling Philips Hue lights on Linux"
 arch=("any")
@@ -34,4 +34,6 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 philips-hue-for-arch.desktop \
     "$pkgdir/usr/share/applications/philips-hue-for-arch.desktop"
+  install -Dm644 src/hue_remote/assets/philips-hue-for-arch.png \
+    "$pkgdir/usr/share/pixmaps/philips-hue-for-arch.png"
 }
