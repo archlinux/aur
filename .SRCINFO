@@ -1,0 +1,30 @@
+pkgbase = docmancer-git
+	pkgdesc = Fetch docs, embed locally, expose to AI agents via skills
+	pkgver = r26.408eda7
+	pkgrel = 1
+	url = https://github.com/docmancer/docmancer
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python>=3.11
+	depends = python-pydantic
+	depends = python-pydantic-settings
+	depends = python-qdrant-client
+	depends = python-fastembed
+	depends = python-httpx
+	depends = python-click
+	depends = python-yaml
+	depends = python-filelock
+	depends = python-markdownify
+	depends = python-w3lib
+	depends = python-ultimate-sitemap-parser
+	depends = python-beautifulsoup4
+	optdepends = python-trafilatura: web content extraction
+	provides = docmancer
+	conflicts = docmancer
+	source = docmancer::git+https://github.com/docmancer/docmancer.git
+	sha256sums = SKIP
+
+pkgname = docmancer-git
