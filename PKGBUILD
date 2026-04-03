@@ -1,5 +1,5 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Qwen 3.5 Plus (Alibaba).
+# Created with assistance from Qwen 3.6 (Alibaba).
 
 pkgname=mikumikubeam-git
 pkgver=r42.224d905
