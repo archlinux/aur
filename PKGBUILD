@@ -1,0 +1,31 @@
+# Maintainer: Boris Avdeev <kemper78@gmail.com>
+
+pkgname=hotfix-kvadra-touchpad-dkms
+_pkgname=hotfix-kvadra-touchpad
+pkgver=1.0
+pkgrel=1
+pkgdesc='Touchpad hotfix for KVADRA NAU LE14U and similar notebooks (DKMS version)'
+arch=('x86_64')
+url='https://github.com/apevzner/hotfix-kvadra-touchpad'
+license=('BSD-2-Clause')
+depends=('dkms' 'linux-headers')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+install=dkms.install
+
+source=("module.c" "Makefile" "LICENSE" "dkms.conf" "hotfix-kvadra-touchpad.conf")
+sha256sums=('80ab95a564ad378f2b6b041a81e48f1bdd84b3d8355c4d4753284cbdd6e748b4'
+            '056e87c6fc4009def42e61be023271d0af5a87709665f24a6a730e13934ffee0'
+            'b7cdd31976bfa2a6c94fb1d847b118b386436b77a68fe5515062b398d37349e0'
+            '05bbbc8a40c65a0e43c2a1ad1f59d832af6ffd0f9d2a4b3fbccefd082b11cfce'
+            '8bc23c91db168abad5e02bf46901ee9dc7c920366574b5e87c602cb1ba52503c')
+
+package() {
+  mkdir -p "$pkgdir/usr/src/$_pkgname-$pkgver"
+  cp module.c Makefile LICENSE dkms.conf "$pkgdir/usr/src/$_pkgname-$pkgver/"
+
+  install -Dm644 hotfix-kvadra-touchpad.conf "$pkgdir/usr/lib/modules-load.d/$_pkgname.conf"
+
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

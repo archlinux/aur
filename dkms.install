@@ -1,0 +1,30 @@
+post_install() {
+    echo "==> Adding module to DKMS..."
+    dkms add -m hotfix-kvadra-touchpad -v 1.0
+
+    echo "==> Building module with DKMS..."
+    dkms build -m hotfix-kvadra-touchpad -v 1.0
+
+    echo "==> Installing module with DKMS..."
+    dkms install -m hotfix-kvadra-touchpad -v 1.0
+
+    echo "==> Loading module..."
+    modprobe hotfix-kvadra-touchpad || true
+}
+
+pre_upgrade() {
+    echo "==> Removing previous DKMS module..."
+    dkms remove -m hotfix-kvadra-touchpad -v 1.0 --all 2>/dev/null || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "==> Unloading module..."
+    modprobe -r hotfix-kvadra-touchpad 2>/dev/null || true
+
+    echo "==> Removing module from DKMS..."
+    dkms remove -m hotfix-kvadra-touchpad -v 1.0 --all 2>/dev/null || true
+}
