@@ -1,5 +1,5 @@
 pkgbase = tlp-git
-	pkgver = 1.9.0.r3.380d1bb
+	pkgver = 1.10.0.b1.r10.33007a3
 	pkgrel = 1
 	url = https://linrunner.de/en/tlp/tlp.html
 	install = tlp.install
@@ -37,7 +37,6 @@ pkgname = tlp-pd-git
 	depends = glib2
 	depends = polkit
 	depends = python
-	depends = python-dbus
 	depends = python-gobject
 	depends = tlp
 	provides = power-profiles-daemon

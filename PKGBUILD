@@ -8,7 +8,7 @@ pkgname=(
   tlp-pd-git
   tlp-rdw-git
 )
-pkgver=1.9.0.r3.380d1bb
+pkgver=1.10.0.b1.r10.33007a3
 pkgrel=1
 arch=(any)
 url=https://linrunner.de/en/tlp/tlp.html
