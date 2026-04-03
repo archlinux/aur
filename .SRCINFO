@@ -1,0 +1,41 @@
+pkgbase = superslicer-nightly-git
+	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.) — nightly dev_27_62 branch
+	pkgver = 2.3.55.5.r11521.g9f76bc145b
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/supermerill/SuperSlicer
+	arch = x86_64
+	license = AGPL3
+	makedepends = boost
+	makedepends = cereal
+	makedepends = cmake
+	makedepends = eigen
+	makedepends = libigl
+	makedepends = ninja
+	makedepends = openvdb
+	depends = boost-libs
+	depends = cgal
+	depends = glew
+	depends = imath
+	depends = libspnav
+	depends = nlopt
+	depends = openvdb
+	depends = qhull
+	depends = slicer-udev
+	depends = wxwidgets-gtk3
+	optdepends = superslicer-profiles: Predefined printer profiles
+	provides = superslicer=1:2.3.55.5.r11521.g9f76bc145b
+	conflicts = superslicer
+	conflicts = superslicer-prerelease
+	conflicts = superslicer-git
+	options = !emptydirs
+	source = SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git#branch=dev_27_62
+	source = heatshrink-0.4.1.zip::https://github.com/atomicobject/heatshrink/archive/refs/tags/v0.4.1.zip
+	source = libbgcode-source.zip::https://github.com/prusa3d/libbgcode/archive/6f43cb004ef3d3bda37dde49f6235e24d2717629.zip
+	source = 0005-modern-deps.patch
+	sha512sums = SKIP
+	sha512sums = 910d1195536e41681dddf7468ad59f2343b530bed7b90cfb625a5b1c65c4e00cbf2c7ae28e9ef6a1e2895efe0a21fa2102017a773d238e86a8698b3cce1ffb96
+	sha512sums = ace75273fee17a0d5cee6f6b6ae51861f0c323c3365b9ced711e9c21c1dc64e391ee29709dbe54922600ef8d1d6e1d963276f3bf32d6a77f8a66972f9e03b54e
+	sha512sums = f6e699e942cd6cff558afeffe3a486122c84bb4fe9a5ee055b579d5c56e9de15b9e77af5787f9b8f59970ffa4bfbc56a5f77c0bf769d847333c74020475346c6
+
+pkgname = superslicer-nightly-git

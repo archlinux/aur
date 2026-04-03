@@ -1,0 +1,272 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 34fe44a2ef..375ae8e48c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -384,7 +384,7 @@ endif()
+ # boost::process was introduced first in version 1.64.0,
+ # boost::beast::detail::base64 was introduced first in version 1.66.0
+ set(MINIMUM_BOOST_VERSION "1.66.0")
+-set(_boost_components "system;filesystem;thread;log;locale;regex;chrono;atomic;date_time;iostreams")
++set(_boost_components "filesystem;thread;log;locale;regex;chrono;atomic;date_time;iostreams")
+ find_package(Boost ${MINIMUM_BOOST_VERSION} REQUIRED COMPONENTS ${_boost_components})
+ # boost compile only in release & debug. We have to force the release version for RELWITHDEBINFO compilation
+ if (MSVC)
+@@ -485,13 +485,15 @@ include_directories(BEFORE SYSTEM ${EIGEN3_INCLUDE_DIR})
+ # no matter what.
+ find_package(EXPAT REQUIRED)
+ 
+-add_library(libexpat INTERFACE)
++if(NOT TARGET libexpat)
++    add_library(libexpat INTERFACE)
+ 
+-if (TARGET EXPAT::EXPAT )
+-    target_link_libraries(libexpat INTERFACE EXPAT::EXPAT)
+-elseif(TARGET expat::expat)
+-    target_link_libraries(libexpat INTERFACE expat::expat)
+-endif ()
++    if (TARGET EXPAT::EXPAT )
++        target_link_libraries(libexpat INTERFACE EXPAT::EXPAT)
++    elseif(TARGET expat::expat)
++        target_link_libraries(libexpat INTERFACE expat::expat)
++    endif ()
++endif()
+ 
+ find_package(PNG REQUIRED)
+ 
+@@ -595,7 +597,7 @@ endif ()
+ 
+ find_package(OpenVDB 5.0 COMPONENTS openvdb)
+ if(OpenVDB_FOUND)
+-    slic3r_remap_configs(IlmBase::Half RelWithDebInfo Release)
++    slic3r_remap_configs(Imath::Imath RelWithDebInfo Release)
+     slic3r_remap_configs(Blosc::blosc RelWithDebInfo Release)
+ else ()
+     message(FATAL_ERROR "OpenVDB could not be found with the bundled find module. "
+diff --git a/cmake/modules/FindOpenVDB.cmake b/cmake/modules/FindOpenVDB.cmake
+index bcc8745709..cf1e0a4387 100644
+--- a/cmake/modules/FindOpenVDB.cmake
++++ b/cmake/modules/FindOpenVDB.cmake
+@@ -349,7 +349,8 @@ endmacro()
+ 
+ find_package(TBB ${_quiet} ${_required} COMPONENTS tbb)
+ find_package(ZLIB ${_quiet} ${_required})
+-find_package(Boost ${_quiet} ${_required} COMPONENTS iostreams system )
++find_package(Boost ${_quiet} ${_required} COMPONENTS iostreams)
++find_package(Imath CONFIG)
+ 
+ # Use GetPrerequisites to see which libraries this OpenVDB lib has linked to
+ # which we can query for optional deps. This basically runs ldd/otoll/objdump
+@@ -401,7 +402,8 @@ foreach(PREREQUISITE ${_OPENVDB_PREREQUISITE_LIST})
+   endif()
+ 
+   string(FIND ${PREREQUISITE} "IlmImf" _HAS_DEP)
+-  if(NOT ${_HAS_DEP} EQUAL -1)
++  string(FIND ${PREREQUISITE} "OpenEXR" _HAS_DEP_EXR)
++  if(NOT ${_HAS_DEP} EQUAL -1 OR NOT ${_HAS_DEP_EXR} EQUAL -1)
+     set(OpenVDB_USES_ILM ON)
+   endif()
+ endforeach()
+@@ -431,11 +433,7 @@ if(OpenVDB_USES_LOG4CPLUS)
+   find_package(Log4cplus ${_quiet} ${_required})
+ endif()
+ 
+-if(OpenVDB_USES_ILM)
+-  find_package(IlmBase ${_quiet} ${_required})
+-endif()
+-
+-if(OpenVDB_USES_EXR)
++if(OpenVDB_USES_ILM OR OpenVDB_USES_EXR)
+   find_package(OpenEXR ${_quiet} ${_required})
+ endif()
+ 
+@@ -451,9 +449,12 @@ endif()
+ 
+ set(_OPENVDB_VISIBLE_DEPENDENCIES
+   Boost::iostreams
+-  Boost::system
+ )
+ 
++if(TARGET Imath::Imath)
++  list(APPEND _OPENVDB_VISIBLE_DEPENDENCIES Imath::Imath)
++endif()
++
+ set(_OPENVDB_DEFINITIONS)
+ if(OpenVDB_ABI)
+   list(APPEND _OPENVDB_DEFINITIONS "-DOPENVDB_ABI_VERSION_NUMBER=${OpenVDB_ABI}")
+@@ -461,10 +462,7 @@ endif()
+ 
+ if(OpenVDB_USES_EXR)
+   list(APPEND _OPENVDB_VISIBLE_DEPENDENCIES
+-    IlmBase::IlmThread
+-    IlmBase::Iex
+-    IlmBase::Imath
+-    OpenEXR::IlmImf
++    OpenEXR::OpenEXR
+   )
+   list(APPEND _OPENVDB_DEFINITIONS "-DOPENVDB_TOOLS_RAYTRACER_USE_EXR")
+ endif()
+diff --git a/src/libslic3r/CutSurface.cpp b/src/libslic3r/CutSurface.cpp
+index c229ff246b..e50804625d 100644
+--- a/src/libslic3r/CutSurface.cpp
++++ b/src/libslic3r/CutSurface.cpp
+@@ -1429,8 +1429,8 @@ priv::CutAOIs priv::cut_from_model(CutMesh                &cgal_model,
+     // detect anomalities in visitor.
+     bool is_valid = true;
+     // NOTE: map are created when convert shapes to cgal model
+-    const EdgeShapeMap& edge_shape_map = cgal_shape.property_map<EI, IntersectingElement>(edge_shape_map_name).first;
+-    const FaceShapeMap& face_shape_map = cgal_shape.property_map<FI, IntersectingElement>(face_shape_map_name).first;
++    const EdgeShapeMap& edge_shape_map = cgal_shape.property_map<EI, IntersectingElement>(edge_shape_map_name).value();
++    const FaceShapeMap& face_shape_map = cgal_shape.property_map<FI, IntersectingElement>(face_shape_map_name).value();
+     Visitor visitor{cgal_model, cgal_shape, edge_shape_map, face_shape_map, vert_shape_map, &is_valid};
+ 
+     // a property map containing the constrained-or-not status of each edge
+@@ -1579,8 +1579,8 @@ void priv::collect_surface_data(std::queue<FI>  &process,
+ 
+ void priv::create_reduce_map(ReductionMap &reduction_map, const CutMesh &mesh)
+ {
+-    const VertexShapeMap &vert_shape_map = mesh.property_map<VI, const IntersectingElement*>(vert_shape_map_name).first;
+-    const EdgeBoolMap &ecm = mesh.property_map<EI, bool>(is_constrained_edge_name).first;
++    const VertexShapeMap &vert_shape_map = mesh.property_map<VI, const IntersectingElement*>(vert_shape_map_name).value();
++    const EdgeBoolMap &ecm = mesh.property_map<EI, bool>(is_constrained_edge_name).value();
+ 
+     // check if vertex was made by edge_2 which is diagonal of quad
+     auto is_reducible_vertex = [&vert_shape_map](VI reduction_from) -> bool {
+@@ -1764,11 +1764,11 @@ priv::VDistances priv::calc_distances(const SurfacePatches &patches,
+     priv::VDistances result(count_shapes_points);
+     for (const SurfacePatch &patch : patches) {
+         // map is created during intersection by corefine visitor
+-        const VertexShapeMap &vert_shape_map = 
+-            models[patch.model_id].property_map<VI, const IntersectingElement *>(vert_shape_map_name).first;
++        const VertexShapeMap &vert_shape_map =
++            models[patch.model_id].property_map<VI, const IntersectingElement *>(vert_shape_map_name).value();
+         uint32_t patch_index = &patch - &patches.front();
+         // map is created during patch creation / dividing
+-        const CvtVI2VI& cvt = patch.mesh.property_map<VI, VI>(patch_source_name).first;
++        const CvtVI2VI& cvt = patch.mesh.property_map<VI, VI>(patch_source_name).value();
+         // for each point on outline
+         for (const Loop &loop : patch.loops) 
+         for (const VI &vi_patch : loop) {
+@@ -2775,7 +2775,7 @@ using BBS = std::vector<BoundingBoxf3>;
+ BBS create_bbs(const VCutAOIs &cuts, const CutMeshes &cut_models);
+ 
+ using Primitive = CGAL::AABB_face_graph_triangle_primitive<CutMesh>;
+-using Traits    = CGAL::AABB_traits<EpicKernel, Primitive>;
++using Traits    = CGAL::AABB_traits_3<EpicKernel, Primitive>;
+ using Ray       = EpicKernel::Ray_3;
+ using Tree      = CGAL::AABB_tree<Traits>;
+ using Trees     = std::vector<Tree>;
+@@ -2929,7 +2929,7 @@ bool priv::is_patch_inside_of_model(const SurfacePatch &patch,
+ uint32_t priv::get_shape_point_index(const CutAOI &cut, const CutMesh &model)
+ {
+     // map is created during intersection by corefine visitor
+-    const VertexShapeMap &vert_shape_map = model.property_map<VI, const IntersectingElement *>(vert_shape_map_name).first;
++    const VertexShapeMap &vert_shape_map = model.property_map<VI, const IntersectingElement *>(vert_shape_map_name).value();
+     // for each half edge of outline
+     for (HI hi : cut.second) {
+         VI vi = model.source(hi);
+@@ -2954,7 +2954,7 @@ priv::SurfacePatch priv::separate_patch(const std::vector<FI>& fis,
+     patch_new.model_id     = patch.model_id;
+     patch_new.shape_id     = patch.shape_id;
+     // fix cvt
+-    CvtVI2VI cvt = patch_new.mesh.property_map<VI, VI>(patch_source_name).first;
++    CvtVI2VI cvt = patch_new.mesh.property_map<VI, VI>(patch_source_name).value();
+     for (VI &vi : cvt) {
+         if (!vi.is_valid()) continue;
+         vi = cvt_from[vi];
+@@ -2974,7 +2974,7 @@ void priv::divide_patch(size_t i, SurfacePatchesEx &patches)
+     std::string patch_number_name = "f:patch_number";
+     CutMesh::Property_map<FI,bool> is_processed = access_pmap(cm.add_property_map<FI, bool>(patch_number_name, false));
+     
+-    const CvtVI2VI& cvt_from = patch.mesh.property_map<VI, VI>(patch_source_name).first;
++    const CvtVI2VI& cvt_from = patch.mesh.property_map<VI, VI>(patch_source_name).value();
+ 
+     std::vector<FI> fis;
+     fis.reserve(cm.faces().size());
+@@ -3161,7 +3161,7 @@ bool priv::is_over_whole_expoly(const CutAOI    &cutAOI,
+                                 const CutMesh   &mesh)
+ {
+     // NonInterupted contour is without other point and contain all from shape    
+-    const VertexShapeMap &vert_shape_map = mesh.property_map<VI, const IntersectingElement*>(vert_shape_map_name).first;
++    const VertexShapeMap &vert_shape_map = mesh.property_map<VI, const IntersectingElement*>(vert_shape_map_name).value();
+     for (HI hi : cutAOI.second) { 
+         const IntersectingElement *ie_s = vert_shape_map[mesh.source(hi)];
+         const IntersectingElement *ie_t = vert_shape_map[mesh.target(hi)];
+diff --git a/src/libslic3r/GCode/PostProcessor.cpp b/src/libslic3r/GCode/PostProcessor.cpp
+index 8e0304ae95..3666b51fed 100644
+--- a/src/libslic3r/GCode/PostProcessor.cpp
++++ b/src/libslic3r/GCode/PostProcessor.cpp
+@@ -28,7 +28,7 @@
+ #else
+ // POSIX
+ #include <sstream>
+-#include <boost/process.hpp>
++#include <boost/process/v1.hpp>
+ #include <unistd.h>     //readlink
+ #endif
+ 
+diff --git a/src/libslic3r/utils.cpp b/src/libslic3r/utils.cpp
+index cb134e20a0..c365b6690f 100644
+--- a/src/libslic3r/utils.cpp
++++ b/src/libslic3r/utils.cpp
+@@ -89,7 +89,7 @@
+ #else
+ 	// POSIX
+ #include <sstream>
+-#include <boost/process.hpp>
++#include <boost/process/v1.hpp>
+ #include <unistd.h>     //readlink
+ #endif
+ 
+diff --git a/src/slic3r/GUI/FreeCADDialog.cpp b/src/slic3r/GUI/FreeCADDialog.cpp
+index 9f212cd7ae..0062b3128b 100644
+--- a/src/slic3r/GUI/FreeCADDialog.cpp
++++ b/src/slic3r/GUI/FreeCADDialog.cpp
+@@ -44,7 +44,7 @@
+ // and so boost/process has a line 'typedef int int'instead of 'typedef int pid_t' that makes it crash
+ // note: don't put it in a header, as it can create problems. Here it's safe enough to be used, as it's just applied for the process.hpp file and this source code.
+ #define pid_t pid_t
+-#include <boost/process.hpp>
++#include <boost/process/v1.hpp>
+ 
+ #include <cstdlib>   // getenv()
+ 
+diff --git a/src/slic3r/GUI/RemovableDriveManager.cpp b/src/slic3r/GUI/RemovableDriveManager.cpp
+index dfbd7c9faa..210b355c4f 100644
+--- a/src/slic3r/GUI/RemovableDriveManager.cpp
++++ b/src/slic3r/GUI/RemovableDriveManager.cpp
+@@ -35,7 +35,7 @@
+ #include <pwd.h>
+ #include <boost/filesystem.hpp>
+ #include <boost/system/error_code.hpp>
+-#include <boost/process.hpp>
++#include <boost/process/v1.hpp>
+ #endif
+ 
+ namespace Slic3r {
+diff --git a/src/slic3r/Utils/Bonjour.cpp b/src/slic3r/Utils/Bonjour.cpp
+index 0867c22b33..6c12aac5bc 100644
+--- a/src/slic3r/Utils/Bonjour.cpp
++++ b/src/slic3r/Utils/Bonjour.cpp
+@@ -13,6 +13,7 @@
+ #include <thread>
+ #include <boost/endian/conversion.hpp>
+ #include <boost/date_time/posix_time/posix_time_duration.hpp>
++#include <boost/asio/deadline_timer.hpp>
+ #include <boost/format.hpp>
+ #include <boost/log/trivial.hpp>
+ #include <boost/bind/bind.hpp>
+diff --git a/src/slic3r/Utils/Process.cpp b/src/slic3r/Utils/Process.cpp
+index cc37f478ea..fbff9e8331 100644
+--- a/src/slic3r/Utils/Process.cpp
++++ b/src/slic3r/Utils/Process.cpp
+@@ -22,8 +22,8 @@
+ // For starting another PrusaSlicer instance on OSX.
+ // Fails to compile on Windows on the build server.
+ #ifdef __APPLE__
+-    #include <boost/process/spawn.hpp>
+-    #include <boost/process/args.hpp>
++    #include <boost/process/v1/spawn.hpp>
++    #include <boost/process/v1/args.hpp>
+ #endif
+ 
+ #include <wx/stdpaths.h>
