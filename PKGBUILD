@@ -1,6 +1,6 @@
 # Maintainer: Florian <eaquo@protonmail.com>
 pkgname=quickshell-games-launchers-git
-pkgver=r70.c2de545
+pkgver=r70.c2de546
 pkgrel=1
 pkgdesc="Quickshell game launcher for Hyprland with pywal/wallust integration"
 arch=('any')
@@ -103,4 +103,5 @@ fi
 exec quickshell -p "$CONFIG_DIR/shell.qml" "$@"
 WRAPPER
     chmod 755 "$pkgdir/usr/bin/quickshell-game"
+    chmod +x "$CONFIG_DIR/toggle.sh"
 }
