@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Remove
+Target = upd72020x-fw
+
+[Action]
+Description = Updating linux initcpios...
+Depends = mkinitcpio
+When = PreTransaction
+Exec = /bin/sh -c "rm -f /usr/lib/firmware/renesas_usb_fw.mem && mkinitcpio -P"
