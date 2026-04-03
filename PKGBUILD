@@ -1,15 +1,16 @@
 # Maintainer: Donien <donien.96@hotmail.com>
 
 pkgname="icingaweb2-module-fileshipper"
-pkgver="1.2.0"
+pkgver="1.3.0"
 pkgrel=1
 epoch=0
 pkgdesc="Provide CSV, JSON, XML and YAML files as an Import Source for the Icinga Director"
 arch=("any")
 url="https://github.com/Icinga/icingaweb2-module-fileshipper"
-license=("GPL")
+license=("GPL-3.0-only")
 groups=()
 depends=(
+    "icingaweb2>=2.12.5"
     "icingaweb2-module-director>=1.1.0"
 )
 makedepends=()
@@ -31,7 +32,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    "1a8d59e4dc3164d5fb647a0253d24b35e3dda1f612a323648ca93d1033dbd9a7"
+    "3166cb4ba5329cd4d2b231ef3978aaf12b18b44e4e926e01dc58e61f504bfc72"
     "SKIP"
     "SKIP"
 )
@@ -47,5 +48,5 @@ package() {
     install -dm755 "${pkgdir}/usr/share/webapps/icingaweb2/modules/fileshipper/"
     cp -r "${srcdir}/${pkgname}-${pkgver}/"* "${pkgdir}/usr/share/webapps/icingaweb2/modules/fileshipper/"
 
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/icingaweb2-module-fileshipper/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" "$pkgdir/usr/share/licenses/icingaweb2-module-fileshipper/LICENSE"
 }
