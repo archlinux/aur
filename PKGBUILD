@@ -1,11 +1,11 @@
 # Maintainer: tinyopsec <anon@proton.me>
 
-pkgname=nwm
+pkgname=swm
 pkgver=0.2
 pkgrel=1
-pkgdesc="Nano Window Manager - minimalistic X11 tiling window manager"
+pkgdesc="Suckless Window Manager - minimalistic X11 tiling window manager"
 arch=('x86_64')
-url="https://github.com/tinyopsec/nwm"
+url="https://github.com/tinyopsec/swm"
 license=('MIT')
 depends=('libx11')
 makedepends=('make' 'gcc')
