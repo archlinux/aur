@@ -9,9 +9,9 @@
 _name=standardwebhooks
 pkgname=python-${_name}
 pkgver=1.0.1
-pkgrel=1
-pkgdesc="Svix webhooks API client and webhook verification library"
-url="https://github.com/svix/svix-webhooks/tree/main/python"
+pkgrel=2
+pkgdesc="Python library for Standard Webhooks"
+url="https://github.com/standard-webhooks/standard-webhooks/tree/main/libraries/python"
 license=('MIT')
 arch=('any')
 depends=(
@@ -33,7 +33,7 @@ source=(
     "https://raw.githubusercontent.com/standard-webhooks/standard-webhooks/refs/heads/main/LICENSE"
 )
 sha256sums=('b557bb2e4b16ada179a517ec0fe6cbec5acf976c5619922bf29c457f89a451bd'
-            '5962c28427cb0c49b4782932eeeb9dfd3fcd14002755a68155bd6bb306717ced')
+            'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 
 build() {
     cd $_name-$pkgver
