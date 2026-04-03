@@ -2,7 +2,7 @@
 
 pkgname=llama.cpp-gfx1151
 _pkgname=${pkgname%%-gfx1151}
-pkgver=b8643
+pkgver=b8645
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1151, ROCm + Vulkan)"
 arch=(x86_64 armv7h aarch64)
@@ -37,15 +37,20 @@ options=(lto !debug)
 backup=("etc/conf.d/llama.cpp")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
+  # 提升性能的妙妙工具
+  "llama-gfx1151-41ebffac.patch::https://gist.githubusercontent.com/pedapudi/183f337e687630a43eacb293e157c9bd/raw/41ebffac35c984b8a9431870f0041602d3217599/gistfile1.txt"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
-sha256sums=('5b02994160a12ba4797203807ebfd8f8f9f2346cb9d2b6159274d726c60ad8a2'
+sha256sums=('7f6976646a414714f66d9e8315b61cf32f6848545038d7198a4e73861a45efd3'
+            '66729416becca06aa006ab7cc4bd945888ff84ea49f273693c47fe69ac9965ee'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
 prepare() {
   ln -sf "${_pkgname}-${pkgver}" llama.cpp
+
+  patch -d "${srcdir}/llama.cpp" -Np1 -i "${srcdir}/llama-gfx1151-41ebffac.patch"
 }
 
 build() {
