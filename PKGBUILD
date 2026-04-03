@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=receiver
 _app_id=io.github.meehow.Receiver
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Discover 30,000+ verified radio stations from around the world"
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=(
   'vala'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('55925f3982802c320075a006d9aa8291ac723cc7eafd6fe8bd9f33fa607144af')
+sha256sums=('b08ac4f5c96a70a4041ea94a34a0206f1d7d189855622a02b232c2c0c58b4bd0')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
