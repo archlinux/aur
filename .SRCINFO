@@ -1,0 +1,21 @@
+pkgbase = python-can-damiao
+	pkgdesc = Python-can Damiao (达妙) USB-CAN adapter plugin
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gaoyichuan/python-can-damiao
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-can
+	depends = python-pyserial
+	provides = python-can-damiao
+	conflicts = python-can-damiao
+	source = can-damiao::git+https://github.com/gaoyichuan/python-can-damiao.git#tag=v0.1.0
+	sha256sums = a9518177bcfaeb8d37f1a2073989e6c9348f3d6f53a4c54418b4533cd60c08b3
+
+pkgname = python-can-damiao
