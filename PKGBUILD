@@ -2,35 +2,31 @@
 
 _pkgbase=android-xml-converter
 pkgname="$_pkgbase"
-pkgver=1
+pkgver=11
 pkgrel=1
 pkgdesc="Android Binary XML (ABX) conversion tools"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/rhythmcache/android-xml-converter"
 license=('Apache-2.0')
-depends=('clang')
-makedepends=('git')
+makedepends=('git' 'cargo')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
-source=("$_pkgbase::git+https://github.com/rhythmcache/android-xml-converter.git#tag=v$pkgver")
-sha256sums=('a8a6caefdd3cdde1c5d88b434ccc8659ac8cbdf38c7875fb8bf96458fad16421')
+source=("$_pkgbase::git+https://github.com/rhythmcache/android-xml-converter.git#tag=build-$pkgver")
+sha256sums=('30c1f07800c93703546d5ef6363f183e9e448f0b9b5f07a2a6d9bd6a3d4d0abc')
+
+prepare() {
+	cd "$_pkgbase"
+	meson setup build
+}
 
 build() {
 	cd "$_pkgbase"
-	rm -rf build
-	mkdir build
-
-	clang++ -Os -static -ffunction-sections -fdata-sections -fvisibility=hidden \
-		-flto -Wl,--gc-sections -o "build/abx2xml" "abx2xml.cpp"
-
-	clang++ -Os -static -ffunction-sections -fdata-sections -fvisibility=hidden \
-		-flto -Wl,--gc-sections -o "build/xml2abx" "xml2abx.cpp"
+	meson compile -C build
 }
 
 package() {
 	cd "$_pkgbase"
-
 	install -Dm755 "build/abx2xml" "$pkgdir/usr/bin/abx2xml"
 	install -Dm755 "build/xml2abx" "$pkgdir/usr/bin/xml2abx"
-	# install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 }
