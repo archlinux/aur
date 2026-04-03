@@ -1,0 +1,5 @@
+[diffcatcher-bin]
+source = "github"
+github = "Teycir/DiffCatcher"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,19 @@
+pkgbase = diffcatcher-bin
+	pkgdesc = Recursive Git State
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Teycir/DiffCatcher
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = diffcatcher
+	conflicts = diffcatcher
+	source = README-0.1.0.md::https://raw.githubusercontent.com/Teycir/DiffCatcher/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/Teycir/DiffCatcher/v0.1.0/LICENSE
+	sha256sums = fac33f7cb19e294de9f1bd2ca6ca0efaa8319f1eb0d3de677962c5fd218ca503
+	sha256sums = 6040f9e3ad547313fe8999f16a61df6eaaff1f348aab51428314e9c48c372d8a
+	source_x86_64 = DiffCatcher-x86_64-0.1.0.tgz::https://github.com/Teycir/DiffCatcher/releases/download/v0.1.0/DiffCatcher-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 881e6ffefafccac1e29ff3e919a331dc278000362bb41a6783adccaed7dd41c3
+
+pkgname = diffcatcher-bin
