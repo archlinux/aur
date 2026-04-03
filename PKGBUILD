@@ -1,4 +1,4 @@
-pkgname=Wolf_browser
+pkgname=wolfbrowser
 pkgver=0.3.01
 pkgrel=1
 pkgdesc="Web browser on python and PyQt6. With this browser you can save you data."
