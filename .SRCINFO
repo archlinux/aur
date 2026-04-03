@@ -1,0 +1,11 @@
+pkgbase = takeoff-bin
+	pkgdesc = Release automation for Zig projects
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/vmvarela/takeoff
+	arch = x86_64
+	license = MIT
+	provides = takeoff
+	conflicts = takeoff
+	options = !strip
+pkgname = takeoff-bin
