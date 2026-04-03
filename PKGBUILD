@@ -1,8 +1,8 @@
 # Maintainer: Yves Gugger <yves@pounce.ch>
 pkgname=lean-ctx-bin
-pkgver=2.14.5
+pkgver=2.15.0
 pkgrel=1
-pkgdesc="The Context Engineering Layer for AI Coding — 24 intelligent tools, 90+ shell patterns, persistent AI memory, multi-agent sharing, tree-sitter AST (19 languages). Reduces AI costs by 60-99%. (pre-built binary)"
+pkgdesc="The Context Engineering Layer for AI Coding — 25 intelligent tools, 90+ shell patterns, persistent AI memory, multi-agent sharing, tree-sitter AST (18 languages). Reduces AI costs by 60-99%. (pre-built binary)"
 arch=('x86_64')
 url="https://leanctx.com"
 license=('MIT')
