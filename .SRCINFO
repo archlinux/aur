@@ -1,0 +1,22 @@
+pkgbase = python-standardwebhooks
+	pkgdesc = Svix webhooks API client and webhook verification library
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/svix/svix-webhooks/tree/main/python
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-httpx
+	depends = python-deprecated
+	depends = python-attrs
+	depends = python-types-python-dateutil
+	source = https://files.pythonhosted.org/packages/source/s/standardwebhooks/standardwebhooks-1.0.1.tar.gz
+	source = https://raw.githubusercontent.com/standard-webhooks/standard-webhooks/refs/heads/main/LICENSE
+	sha256sums = b557bb2e4b16ada179a517ec0fe6cbec5acf976c5619922bf29c457f89a451bd
+	sha256sums = 5962c28427cb0c49b4782932eeeb9dfd3fcd14002755a68155bd6bb306717ced
+
+pkgname = python-standardwebhooks
