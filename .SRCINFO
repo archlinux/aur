@@ -9,7 +9,6 @@ pkgbase = llama.cpp-gfx1151
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	makedepends = rocm-hip-sdk
 	makedepends = shaderc
 	makedepends = vulkan-headers
 	depends = curl

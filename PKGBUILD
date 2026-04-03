@@ -20,7 +20,6 @@ depends=(
 makedepends=(
   cmake
   git
-  rocm-hip-sdk
   shaderc
   vulkan-headers
 )
