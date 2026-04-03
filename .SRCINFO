@@ -1,6 +1,6 @@
 pkgbase = claude-spaces
 	pkgdesc = tmux-based session picker for Claude Code
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/wired/claude-spaces
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = claude-spaces
 	depends = tmux
 	depends = jq
 	optdepends = claude-code: Claude Code CLI
-	source = claude-spaces-0.9.5.tar.gz::https://github.com/wired/claude-spaces/archive/refs/tags/v0.9.5.tar.gz
-	sha256sums = 732a7e6beae908a3c3d4743b9212d45fbc570169f34ddb6cb6a7fb6f53948bd2
+	source = claude-spaces-0.9.6.tar.gz::https://github.com/wired/claude-spaces/archive/refs/tags/v0.9.6.tar.gz
+	sha256sums = 77de05e35c9584f0dd7c30d6710f05a5b9614c313389d31f1ae8307fbfd2f97b
 
 pkgname = claude-spaces
