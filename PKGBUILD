@@ -42,7 +42,6 @@ options=(!strip)
 source=("$pkgname.sh"
         brave-origin-nightly.desktop
         "https://github.com/brave/brave-browser/releases/download/v${_pkgver}/brave-origin-nightly-${_pkgver}-linux-amd64.zip"{,.sha256})
-validpgpkeys=('3DCB1DA4732251B4')
 noextract=(${pkgname%-bin}-${_pkgver}-linux-amd64.zip)
 sha256sums=('f572bf9f3ea65f5223526b5df7806e4990435a543c3d33d4cc6d0cee9e22b227'
             '17fa0786cf4bb11ea42733f7acf642f7f86b23d17b2a98fbd9140ce0ab2972a6'

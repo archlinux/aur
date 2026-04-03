@@ -25,7 +25,6 @@ pkgbase = brave-origin-nightly-bin
 	source = brave-origin-nightly.desktop
 	source = https://github.com/brave/brave-browser/releases/download/v1.91.10/brave-origin-nightly-1.91.10-linux-amd64.zip
 	source = https://github.com/brave/brave-browser/releases/download/v1.91.10/brave-origin-nightly-1.91.10-linux-amd64.zip.sha256
-	validpgpkeys = 3DCB1DA4732251B4
 	sha256sums = f572bf9f3ea65f5223526b5df7806e4990435a543c3d33d4cc6d0cee9e22b227
 	sha256sums = 17fa0786cf4bb11ea42733f7acf642f7f86b23d17b2a98fbd9140ce0ab2972a6
 	sha256sums = SKIP
