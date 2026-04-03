@@ -1,0 +1,16 @@
+pkgbase = droidvalds-git
+	pkgdesc = SystemD Linus Droidvalds GCC Virus
+	pkgver = 1.0.r3.g4259875
+	pkgrel = 1
+	url = https://git.patchouliknowledge.com/tenshi/droidvalds
+	install = droidvalds.install
+	arch = any
+	license = GPL-1.0-or-later
+	makedepends = git
+	depends = mpv
+	depends = xorg-xrandr
+	depends = bash
+	source = droidvalds-git::git+https://git.patchouliknowledge.com/tenshi/droidvalds.git#branch=main
+	md5sums = SKIP
+
+pkgname = droidvalds-git

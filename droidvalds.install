@@ -1,0 +1,17 @@
+post_install() {
+    if [ -n "$SUDO_USER" ]; then
+        sudo -u "$SUDO_USER" XDG_RUNTIME_DIR="/run/user/$(id -u $SUDO_USER)" \
+            systemctl --user enable droidvalds.service
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    if [ -n "$SUDO_USER" ]; then
+        sudo -u "$SUDO_USER" XDG_RUNTIME_DIR="/run/user/$(id -u $SUDO_USER)" \
+            systemctl --user disable droidvalds.service
+    fi
+}
