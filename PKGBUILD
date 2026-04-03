@@ -12,7 +12,7 @@ optdepends=(
 )
 backup=('etc/darktable-nas/darktable-nas.conf.example')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('b65ae2dfabf9716500a94166f55fee3b49433fa7d93bf43fbe2b4b59158672b2')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
