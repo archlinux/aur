@@ -1,0 +1,17 @@
+pkgbase = larpshell-git
+	pkgdesc = Convert natural language to shell commands using an LLM
+	pkgver = r0.0
+	pkgrel = 1
+	url = https://github.com/uwuclxdy/larpshell
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	options = !debug
+	source = larpshell-git::git+https://github.com/uwuclxdy/larpshell.git#branch=mommy
+	sha256sums = SKIP
+
+pkgname = larpshell-git
