@@ -8,8 +8,6 @@ pkgbase = linux-cachyos-cjktty
 	makedepends = bc
 	makedepends = cpio
 	makedepends = gettext
-	makedepends = initramfs
-	makedepends = kmod
 	makedepends = libelf
 	makedepends = pahole
 	makedepends = perl
@@ -38,7 +36,7 @@ pkgbase = linux-cachyos-cjktty
 	b2sums = ea26c88950fc06b6ffab93b30e3beacc7d26571a70262334ca8b001dc7899bf96b47d703fbaa7f4e47765c3dafccc23c58a4d4da2169b8ee50012afcb7a1dd96
 
 pkgname = linux-cachyos-cjktty
-	pkgdesc = The linux-cachyos-cjktty kernel and modules
+	pkgdesc = The CachyOS Linux kernel with cjktty patches kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -53,9 +51,16 @@ pkgname = linux-cachyos-cjktty
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
+	provides = linux-cachyos-lto=6.19.11-1
+	replaces = linux-cachyos-lto
 
 pkgname = linux-cachyos-cjktty-headers
-	pkgdesc = Headers and scripts for building modules for the linux-cachyos-cjktty kernel
+	pkgdesc = Headers and scripts for building modules for the CachyOS Linux kernel with cjktty patches kernel
 	depends = pahole
 	depends = linux-cachyos-cjktty
+	depends = clang
+	depends = llvm
+	depends = lld
 	provides = LINUX-HEADERS
+	provides = linux-cachyos-lto-headers=6.19.11-1
+	replaces = linux-cachyos-lto-headers
