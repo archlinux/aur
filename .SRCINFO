@@ -1,0 +1,16 @@
+pkgbase = intuneme-bin
+	pkgdesc = Run Microsoft Intune on an immutable Linux host (Binary)
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/frostyard/intuneme
+	arch = x86_64
+	license = MIT
+	depends = systemd
+	depends = polkit
+	depends = dbus
+	provides = intuneme
+	conflicts = intuneme
+	source = intuneme-0.16.0-linux-amd64.tar.gz::https://github.com/frostyard/intuneme/releases/download/v0.16.0/intuneme_0.16.0_linux_amd64.tar.gz
+	sha256sums = be0c471ad027b6538d047f810bbfbd9928e215b0d87cb851f78d3f18fcf63b35
+
+pkgname = intuneme-bin
