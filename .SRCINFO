@@ -1,6 +1,6 @@
 pkgbase = python-hist
 	pkgdesc = Python bindings for Boost's Histogram library.
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://github.com/scikit-hep/hist
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = python-hist
 	optdepends = python-matplotlib: for mpl and plot support
 	optdepends = python-mplhep: for mpl and plot support
 	optdepends = python-scipy: for fit support
-	source = python-hist::git+https://github.com/scikit-hep/hist#tag=v2.9.0
-	sha256sums = dd16e75f883c5279e27e3673261e1897d034061f80c2f7ec7e677d6195322f7c
+	source = python-hist::git+https://github.com/scikit-hep/hist#tag=v2.9.1
+	sha256sums = 40d9142ceb182699a12764c0add26a0f9d65ab292b7832265d4dc02cc1be950d
 
 pkgname = python-hist
