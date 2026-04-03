@@ -1,0 +1,18 @@
+pkgbase = deskblob-git
+	pkgdesc = A cyberplasmic desktop toy
+	pkgver = r30.2e3ea21
+	pkgrel = 1
+	url = https://gitlab.com/Modanung/deskblob
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = CC0-1.0
+	makedepends = git
+	makedepends = qt5-base
+	depends = dry
+	depends = hicolor-icon-theme
+	provides = deskblob
+	conflicts = deskblob
+	source = deskblob-git::git+https://gitlab.com/Modanung/deskblob.git
+	sha512sums = SKIP
+
+pkgname = deskblob-git

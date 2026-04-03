@@ -1,0 +1,49 @@
+diff --git a/Deskblob.pro b/Deskblob.pro
+index 373ee94..054baa7 100644
+--- a/Deskblob.pro
++++ b/Deskblob.pro
+@@ -21,3 +21,22 @@ CONFIG -= app_bundle
+ 
+ DISTFILES += \
+     LICENSE_TEMPLATE
++
++unix
++{
++    isEmpty(DATADIR) DATADIR = $$(XDG_DATA_HOME)
++    isEmpty(DATADIR) DATADIR = $$(HOME)/.local/share
++
++    target.path = /usr/games/
++    INSTALLS += target
++
++    resources.path = $$DATADIR/deskblob/
++    resources.files = Resources/*
++    INSTALLS += resources
++
++    icon.path = $$DATADIR/icons/
++    icon.files = Resources/icon.png
++    INSTALLS += icon
++
++    DEFINES += RESOURCEPATH=\\\"$${resources.path}\\\"
++}
+diff --git a/src/weaver.cpp b/src/weaver.cpp
+index a95dc25..a15242a 100644
+--- a/src/weaver.cpp
++++ b/src/weaver.cpp
+@@ -45,7 +45,16 @@ void Weaver::Setup()
+     engineParameters_[EP_LOG_NAME] = FS->GetAppPreferencesDir("luckey", "logs") +
+                                      toString(applicationName().toLower()) + ".log";
+ 
+-    engineParameters_[EP_RESOURCE_PATHS] = "Resources";
++    FileSystem* fs{ GetSubsystem<FileSystem>() };
++    String resourcePath{ "Resources" };
++    if (!fs->DirExists(AddTrailingSlash(fs->GetProgramDir()) + resourcePath))
++    {
++        const String installedResources{ RemoveTrailingSlash(RESOURCEPATH) };
++        if (fs->DirExists(installedResources))
++            resourcePath = installedResources;
++    }
++
++    engineParameters_[EP_RESOURCE_PATHS] = resourcePath;
+     engineParameters_[EP_EXTERNAL_WINDOW] = (void*)(new QWidget{})->winId();
+     engineParameters_[EP_WORKER_THREADS] = true;
+ 

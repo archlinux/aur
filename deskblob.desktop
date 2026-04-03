@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Deskblob
+Comment=A cyberplasmic desktop toy
+GenericName=Blob desktop toy
+Exec=deskblob
+Icon=deskblob
+Terminal=false
+StartupNotify=false
+Categories=Game;
+Keywords=Modanung;
