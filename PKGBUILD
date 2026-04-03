@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python' 'python-pyyaml')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/salehjg/BudgetPlanner/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a58bd9f8aa2528669d1254aa0654fc5070cf816c974ebfaba6a71299822dd97d')
+sha256sums=('7364d617754b3ccd901257678523f68796a914d778ee5b952d95092f65e0bdec')
 
 build() {
   cd "BudgetPlanner-$pkgver"
