@@ -5,7 +5,7 @@ pkgname="python-${_name}"
 _commit_rel="82fd769f2820f6ff2acf650f551a97a7b8fbe189" # 0.5.1
 _commit="0766d599bbe9bccda12b6ede069647c7bef2299f" # r37
 pkgver="0.5.1+r37+g${_commit::7}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern, type-safe OpenAPI schemas in Python using Pydantic 1.8+ and 2.x"
 arch=(
   'any'
@@ -21,8 +21,9 @@ depends=(
 )
 makedepends=(
   'python-build'
-  'python-poetry-core'
+  'python-hatchling>=1.26'
   'python-installer'
+  'python-wheel'
 )
 checkdepends=(
   'python-pytest>=8.3.5'

@@ -1,15 +1,16 @@
 pkgbase = python-openapi-pydantic
 	pkgdesc = Modern, type-safe OpenAPI schemas in Python using Pydantic 1.8+ and 2.x
 	pkgver = 0.5.1+r37+g0766d59
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mike-oakley/openapi-pydantic
 	arch = any
 	license = MIT
 	checkdepends = python-pytest>=8.3.5
 	checkdepends = python-openapi-spec-validator
 	makedepends = python-build
-	makedepends = python-poetry-core
+	makedepends = python-hatchling>=1.26
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python>=3.9
 	depends = python-pydantic>=1.8
 	depends = python-pydantic-core
