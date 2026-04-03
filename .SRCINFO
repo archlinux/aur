@@ -1,0 +1,17 @@
+pkgbase = imgup-bin
+	pkgdesc = Upload images via APIs
+	pkgver = 4.0.0_alpha.5
+	pkgrel = 1
+	url = https://github.com/deadnews/imgup
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = imgup
+	conflicts = imgup
+	options = !strip
+	source_x86_64 = imgup-x86_64-unknown-linux-gnu.tar.gz::https://github.com/deadnews/imgup/releases/download/v4.0.0-alpha.5/imgup-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f0a6cee9d59ba637dd70103f525e3966af8e936c32e5f534bdd11e2dc8f96c0f
+	source_aarch64 = imgup-aarch64-unknown-linux-gnu.tar.gz::https://github.com/deadnews/imgup/releases/download/v4.0.0-alpha.5/imgup-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8486064f6894beab993693212f73d9cc8bbb21a8251fd82a50bf273e8305a6c8
+
+pkgname = imgup-bin
