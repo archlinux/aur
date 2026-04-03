@@ -1,0 +1,5 @@
+[dssh-bin]
+source = "github"
+github = "madLinux7/dssh"
+use_latest_release = true
+prefix = "v"

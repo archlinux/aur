@@ -1,0 +1,20 @@
+pkgbase = dssh-bin
+	pkgdesc = The only SSH connection manager you'll ever need, with a TUI & CLI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/madLinux7/dssh
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = dssh
+	conflicts = dssh
+	source = README-1.0.0.md::https://raw.githubusercontent.com/madLinux7/dssh/v1.0.0/README.md
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/madLinux7/dssh/v1.0.0/LICENSE
+	sha256sums = 6af68f18c4b7cf975df0f095a774d2f2f94158538c7a8748255169ae7a3b1154
+	sha256sums = eba23c7b8bc084aa2579be5323b2d2ad1b9efca7caeca3a8cd1c273fa478484d
+	source_x86_64 = dssh-x86_64-1.0.0::https://github.com/madLinux7/dssh/releases/download/v1.0.0/dssh-linux-amd64
+	sha256sums_x86_64 = 8809a35a3fb491f0eee931cebaba70f6778ad4ae5294d565db2cf343e5b2e1da
+	source_aarch64 = dssh-aarch64-1.0.0::https://github.com/madLinux7/dssh/releases/download/v1.0.0/dssh-linux-arm64
+	sha256sums_aarch64 = 06aa01a3740fde2a79bb2251ca5fe54b6da413f2ebc4c2b088724e800240c61c
+
+pkgname = dssh-bin
