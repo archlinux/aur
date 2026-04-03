@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=qt6-jpegxl-image-plugin
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='Qt6 plug-in to allow Qt6 and KDE based applications to read/write JXL images'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
 checkdepends=(
     'appstream')
 source=("https://github.com/novomesk/qt-jpegxl-image-plugin/archive/v${pkgver}/qt-jpegxl-image-plugin-${pkgver}.tar.gz")
-sha256sums=('a72ce87dba07ca5f3b8a6bd45d876b191779839729f156095bbe4d2e46e42961')
+sha256sums=('3727cfff220c10420804b5454df63aee90a55134a39c0ee17fe5a2e90d069f84')
 
 build() {
     cmake -B build -S "qt-jpegxl-image-plugin-${pkgver}" \
