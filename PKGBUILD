@@ -5,7 +5,7 @@ _pkgname=ihj
 pkgname=${_pkgname}
 pkgdesc="Instant High-Speed Jira"
 
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 epoch=1
 _pkgvername=v${pkgver}
@@ -22,7 +22,7 @@ makedepends=('go')
 depends=('glibc')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b9e681e042f18caaf61fb23e718748e5303402a25e9cf12863e5c13dfbc8502e')
+sha256sums=('6e5ca69b80ae3f7c3751fe1c3c9b7389886398c740eeb16942156f645a434e5a')
 
 
 prepare() {
