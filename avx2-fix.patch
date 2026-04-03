@@ -1,0 +1,32 @@
+diff -ruN vmaf-3.1.0/libvmaf/src/feature/integer_adm.c patched/libvmaf/src/feature/integer_adm.c
+--- vmaf-3.1.0/libvmaf/src/feature/integer_adm.c	2026-04-02 20:41:56.000000000 +0200
++++ patched/libvmaf/src/feature/integer_adm.c	2026-04-04 16:45:09.594810123 +0200
+@@ -2646,7 +2646,9 @@
+         s->i4_adm_csf = i4_adm_csf_avx2;
+         s->i4_adm_cm = i4_adm_cm_avx2;
+         s->adm_decouple = adm_decouple_avx2;
++#ifndef __MINGW32__
+         s->adm_decouple_s123 = adm_decouple_s123_avx2;
++#endif
+     }
+ #if HAVE_AVX512
+     if (flags & VMAF_X86_CPU_FLAG_AVX512) {
+diff -ruN vmaf-3.1.0/libvmaf/src/feature/x86/adm_avx2.c patched/libvmaf/src/feature/x86/adm_avx2.c
+--- vmaf-3.1.0/libvmaf/src/feature/x86/adm_avx2.c	2026-04-02 20:41:56.000000000 +0200
++++ patched/libvmaf/src/feature/x86/adm_avx2.c	2026-04-04 16:45:31.562188002 +0200
+@@ -1352,6 +1352,7 @@
+     return _mm256_or_si256(rl_shift, signmask);
+ }
+ 
++#ifndef __MINGW32__
+ // No lzcnt in avx2
+ void adm_decouple_s123_avx2(AdmBuffer *buf, int w, int h, int stride,
+                               double adm_enhn_gain_limit, int32_t* adm_div_lookup)
+@@ -1879,6 +1880,7 @@
+         }
+     }
+ }
++#endif
+ 
+ /*
+  * lambda = 0 (finest scale), 1, 2, 3 (coarsest scale);
