@@ -1,12 +1,12 @@
 pkgbase = swagsh
 	pkgdesc = A really small shell that aims to be fast and posix-compatible
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 2
 	url = https://github.com/takashialpha/swagsh
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = cargo
-	source = git+https://github.com/takashialpha/swagsh.git#tag=v0.5.1
+	source = https://github.com/takashialpha/swagsh/releases/download/v0.5.2/swagsh-v0.5.2-x86_64-linux.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/takashialpha/swagsh/v0.5.2/LICENSE
 	sha256sums = SKIP
 
 pkgname = swagsh
