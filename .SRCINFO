@@ -1,0 +1,18 @@
+pkgbase = coacd
+	pkgdesc = Approximate Convex Decomposition for 3D Meshes
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://colin97.github.io/CoACD/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = cdt
+	depends = glibc
+	depends = libstdc++
+	depends = libgomp
+	depends = libgcc
+	options = !lto
+	source = https://github.com/SarahWeiii/CoACD/archive/refs/tags/1.0.9.tar.gz
+	sha256sums = cb805bc667eaebb0e5444ad5248d14a1d79d8b982c1d40991e03aa0871f0aaf1
+
+pkgname = coacd
