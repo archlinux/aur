@@ -1,0 +1,16 @@
+pkgbase = gogofetch-git
+	pkgdesc = fetch made with C++ rewritten to go for no reason
+	pkgver = r14.ff1fcf9
+	pkgrel = 1
+	url = git+https://codeberg.org/nekohepott/goGoFetch.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = gogofetch
+	conflicts = gogofetch
+	source = git+https://codeberg.org/nekohepott/goGoFetch.git
+	sha256sums = SKIP
+
+pkgname = gogofetch-git
