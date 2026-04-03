@@ -1,0 +1,11 @@
+pkgbase = noted
+	pkgdesc = A terminal note-taking app with a built-in TUI
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = libsodium
+	source = https://github.com/Thalia-the-nerd/noted/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = noted
