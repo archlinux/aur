@@ -1,7 +1,7 @@
 pkgbase = decibell
 	pkgdesc = Decentralized text, voice chat, and streaming app
-	pkgver = 0.2.0
-	pkgrel = 7
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = https://github.com/sunkhan/decibell
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,9 @@ pkgbase = decibell
 	conflicts = decibell-bin
 	conflicts = decibell-git
 	options = !strip
-	source = decibell-0.2.0.AppImage::https://github.com/sunkhan/decibell/releases/download/v0.2.0/Decibell_0.2.0_amd64.AppImage
+	source = decibell-0.2.4.AppImage::https://github.com/sunkhan/decibell/releases/download/v0.2.4/Decibell_0.2.4_amd64.AppImage
 	source = decibell.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = decibell
