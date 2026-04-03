@@ -1,6 +1,6 @@
 # Maintainer: ralgar (me@ralgar.dev)
 pkgname='vkshade'
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='A ReShade-compatible Vulkan post-processing layer'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libinih' 'libx11' 'libxcb' 'libxkbcommon' 'spdlog' 'wayland')
 makedepends=('git' 'glm' 'meson' 'ninja' 'vulkan-headers' 'vulkan-utility-libraries')
 optdepends=('reshade-shaders-git')
 source=("vkshade-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ad8f3de3ec7eb2ac2c9f8ad8bcf283295e0d6b3f73797a0e26bba72f691baa53')
+sha256sums=('041649948693fecccb50f15b2a265b54752811c7217855e28b397efae44c322d')
 
 prepare() {
   cd ${srcdir}/vkShade-${pkgver}
