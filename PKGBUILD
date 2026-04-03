@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=darktable-nas
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Launch darktable with NAS-based photo library - optimized for performance"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
 )
 backup=('etc/darktable-nas/darktable-nas.conf.example')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e6fac604f4cf36bd6ae6c8adaa9965043c33b2c3bfb112d0724989e9415f182b')
+sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
