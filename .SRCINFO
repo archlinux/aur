@@ -11,9 +11,15 @@ pkgbase = heirloom-ex-vi
 	depends = bash
 	provides = vi
 	provides = ex
+	provides = edit
+	provides = ex
+	provides = vedit
+	provides = view
 	provides = heirloom-ex-vi
+	conflicts = vi
 	conflicts = heirloom-ex-vi
 	conflicts = heirloom-ex-vi-cvs
+	replaces = vi
 	source = https://github.com/n-t-roff/heirloom-ex-vi/archive/refs/tags/4.1.3.tar.gz
 	sha256sums = 7d3d38f94ce651b9521c0db2b824f85f2e587afab23951b51484f8f21d3614f3
 

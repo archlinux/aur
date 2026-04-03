@@ -7,8 +7,9 @@ arch=("i686" "x86_64")
 url="https://github.com/n-t-roff/heirloom-ex-vi"
 license=("0BSD")
 depends=("glibc" "ncurses" "bash")
-provides=("vi" "ex" "heirloom-ex-vi")
-conflicts=("${pkgname}" "heirloom-ex-vi-cvs")
+provides=("vi" "ex" "edit" "ex" "vedit" "view" "${pkgname}")
+replaces=("vi")
+conflicts=("vi" "${pkgname}" "heirloom-ex-vi-cvs")
 source=("https://github.com/n-t-roff/heirloom-ex-vi/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=("7d3d38f94ce651b9521c0db2b824f85f2e587afab23951b51484f8f21d3614f3")
 
