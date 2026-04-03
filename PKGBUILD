@@ -1,7 +1,7 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects-git"
 _pkgname="pay-respects"
-pkgver=0.7.6.r0.g60a168e
+pkgver=0.8.1.r0.g4118699
 pkgrel=1
 pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -11,7 +11,7 @@ provides=('pay-respects')
 install="$_pkgname.install"
 conflicts=('pay-respects')
 makedepends=('cargo' 'git')
-optdepends=()
+optdepends=('zoxide: zoxide integration')
 source=($pkgname::git+$url)
 
 sha1sums=('SKIP')
