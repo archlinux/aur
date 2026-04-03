@@ -1,6 +1,6 @@
 pkgbase = souko
 	pkgdesc = Provides an easy way to organize clones of remote git repositories
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/gifnksm/souko
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = souko
 	provides = souko
 	conflicts = souko-bin
 	options = !lto
-	source = souko-0.2.2.tar.gz::https://github.com/gifnksm/souko/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = ac927d86b2f4f9f3a2fc284e9bbd8162df3b4dac409fb7589cd1e5a405bb5bf6
+	source = souko-0.3.0.tar.gz::https://github.com/gifnksm/souko/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 771954783c565dffccae0b1353e3320b03f392f074840d7a81385994138710a4
 
 pkgname = souko
