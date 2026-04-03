@@ -1,6 +1,6 @@
 pkgbase = imgup-bin
 	pkgdesc = Upload images via APIs
-	pkgver = 4.0.0_alpha.5
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/deadnews/imgup
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = imgup-bin
 	provides = imgup
 	conflicts = imgup
 	options = !strip
-	source_x86_64 = imgup-x86_64-unknown-linux-gnu.tar.gz::https://github.com/deadnews/imgup/releases/download/v4.0.0-alpha.5/imgup-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = f0a6cee9d59ba637dd70103f525e3966af8e936c32e5f534bdd11e2dc8f96c0f
-	source_aarch64 = imgup-aarch64-unknown-linux-gnu.tar.gz::https://github.com/deadnews/imgup/releases/download/v4.0.0-alpha.5/imgup-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 8486064f6894beab993693212f73d9cc8bbb21a8251fd82a50bf273e8305a6c8
+	source_x86_64 = imgup-x86_64-unknown-linux-gnu.tar.gz::https://github.com/deadnews/imgup/releases/download/v4.0.0/imgup-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c15571534203d4f65abd58060261e33a92b485fb4b44c3bb1edd17e449e734bd
+	source_aarch64 = imgup-aarch64-unknown-linux-gnu.tar.gz::https://github.com/deadnews/imgup/releases/download/v4.0.0/imgup-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f6f423a2e67a4e10a8d2e92e61f2772cf98bda019c766bd6c037d96b915e8780
 
 pkgname = imgup-bin
