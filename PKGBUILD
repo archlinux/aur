@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('52f8a88972606e8dc917b984513f1bdafd208eb08933902d56f8ec13cfc6b180')
+sha256sums=('52723c9ac39a0e6c699d62f70c0e457b89af9385a2911f613573864bca8f0070')
 
 build() {
     cd "$pkgname-$pkgver"
