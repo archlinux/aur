@@ -1,0 +1,14 @@
+pkgbase = spout
+	pkgdesc = The missing link between your screenshot tool and the internet
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Gur0v/spout
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	options = !lto
+	source = spout-0.1.0.tar.gz::https://github.com/Gur0v/spout/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 6cc0620a51e023faa6b2dce0544535bfeea4ee0c257bdadf1af8b8cc5212d23c
+
+pkgname = spout
