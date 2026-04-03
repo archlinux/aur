@@ -1,0 +1,13 @@
+pkgbase = adot-bin
+	pkgdesc = A minimal dotfile manager
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Dimfred/adot
+	arch = x86_64
+	license = MIT
+	provides = adot
+	conflicts = adot
+	source = adot-bin-0.1.1::https://github.com/Dimfred/adot/releases/download/v0.1.1/linux-adot-v0.1.1-x86_64
+	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+
+pkgname = adot-bin
