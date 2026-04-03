@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Dirhamly
+Exec=/usr/bin/dirhamly
+Icon=dirhamly
+Type=Application
+Categories=Utility;Finance;
+Comment=Track expenses and income easily
+Terminal=false
+StartupWMClass=dirhamly
+
