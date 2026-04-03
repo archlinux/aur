@@ -1,6 +1,6 @@
 pkgbase = claude-agent-acp-bin
 	pkgdesc = Use Claude Agent from any ACP client such as Zed! (precompiled binary)
-	pkgver = 0.24.2
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/agentclientprotocol/claude-agent-acp
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = claude-agent-acp-bin
 	conflicts = claude-agent-acp
 	conflicts = claude-code-acp
 	options = !strip
-	source_x86_64 = claude-agent-acp-0.24.2-1-linux-x64.tar.gz::https://github.com/agentclientprotocol/claude-agent-acp/releases/download/v0.24.2/claude-agent-acp-linux-x64.tar.gz
-	sha256sums_x86_64 = a8611f547b14852e35963def6781be4b40aa180468186ef8213b656f7236ac74
-	source_aarch64 = claude-agent-acp-0.24.2-1-linux-arm64.tar.gz::https://github.com/agentclientprotocol/claude-agent-acp/releases/download/v0.24.2/claude-agent-acp-linux-arm64.tar.gz
-	sha256sums_aarch64 = 2f7f627764280474bd6beaf618a017fdf3cc1591cd3320086c4a9d6232dbaf7c
+	source_x86_64 = claude-agent-acp-0.25.0-1-linux-x64.tar.gz::https://github.com/agentclientprotocol/claude-agent-acp/releases/download/v0.25.0/claude-agent-acp-linux-x64.tar.gz
+	sha256sums_x86_64 = d32bcc70dea869179067565f6ba8eec6b1147891330c5b4efc48aa7955a7eb5b
+	source_aarch64 = claude-agent-acp-0.25.0-1-linux-arm64.tar.gz::https://github.com/agentclientprotocol/claude-agent-acp/releases/download/v0.25.0/claude-agent-acp-linux-arm64.tar.gz
+	sha256sums_aarch64 = 22b10cb14ed3f90863255234ced351e619ec4817ea2b4814a60dc0b53b61844f
 
 pkgname = claude-agent-acp-bin
