@@ -1,0 +1,18 @@
+pkgbase = arch-update-full
+	pkgdesc = Protocolo Cyberpunk: Automatizador de atualizações completas (Pacman, AUR, Flatpak)
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/GustavoGianeli/arch-update-full
+	arch = any
+	license = MIT
+	depends = pacman
+	depends = yay
+	depends = flatpak
+	source = arch-update-full
+	source = arch-update-full.desktop
+	source = logoarchupdatefull.jpeg
+	sha256sums = 66897d77aef2561ce772d0bf0c0a852688676ce362549396d50509df6a0484d8
+	sha256sums = 6b9b7911e0a6054eae02a20c371bfc8b81e4af0cd38aa3a9c4cb37174312c489
+	sha256sums = f3af0645ddf8e208095b768a11c22af3a621e30a9ffcc8e6d5f4a0aa3ba1a8eb
+
+pkgname = arch-update-full
