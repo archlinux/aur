@@ -1,0 +1,15 @@
+pkgbase = larpshell
+	pkgdesc = Convert natural language to shell commands using an LLM
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/uwuclxdy/larpshell
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	source = larpshell-0.1.1::https://github.com/uwuclxdy/larpshell/releases/download/v0.1.1/larpshell
+	source = LICENSE-0.1.1::https://raw.githubusercontent.com/uwuclxdy/larpshell/v0.1.1/LICENSE
+	sha256sums = PLACEHOLDER
+	sha256sums = PLACEHOLDER
+
+pkgname = larpshell
