@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-pano-git
 	pkgdesc = Next-gen Clipboard Manager for Gnome Shell
-	pkgver = 23.alpha5.r10.g7a27512
+	pkgver = 23.alpha5.r11.g1bb7d22
 	pkgrel = 1
 	url = https://github.com/oae/gnome-shell-pano
 	arch = any
@@ -13,6 +13,8 @@ pkgbase = gnome-shell-extension-pano-git
 	provides = gnome-shell-extension-pano
 	conflicts = gnome-shell-extension-pano
 	source = gnome-shell-extension-pano::git+https://github.com/oae/gnome-shell-pano.git
+	source = 0001-replace-validate-color-source.patch
 	sha256sums = SKIP
+	sha256sums = 19698b151b855c96ca52202bd5b0497d5cbf8511884e2b1494fe64096f11a010
 
 pkgname = gnome-shell-extension-pano-git

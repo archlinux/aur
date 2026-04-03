@@ -1,0 +1,13 @@
+diff --git a/package.json b/package.json
+index 2c4eb4d..f34f5a9 100644
+--- a/package.json
++++ b/package.json
+@@ -101,6 +101,6 @@
+     "is-url": "^1.2.4",
+     "pretty-bytes": "^6.1.1",
+     "prismjs": "^1.30.0",
+-    "validate-color": "https://gitpkg.now.sh/dreamyguy/validate-color/src/validate-color"
++    "validate-color": "^2.2.4"
+   },
+   "packageManager": "yarn@1.22.22"
+ }

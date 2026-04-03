@@ -3,7 +3,7 @@
 
 _pkgbase=gnome-shell-extension-pano
 pkgname=${_pkgbase}-git
-pkgver=23.alpha5.r10.g7a27512
+pkgver=23.alpha5.r11.g1bb7d22
 pkgrel=1
 pkgdesc="Next-gen Clipboard Manager for Gnome Shell"
 arch=('any')
@@ -20,8 +20,11 @@ makedepends=(
 )
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
-source=("$_pkgbase::git+https://github.com/oae/gnome-shell-pano.git")
-sha256sums=('SKIP')
+source=(
+	"$_pkgbase::git+https://github.com/oae/gnome-shell-pano.git"
+	"0001-replace-validate-color-source.patch")
+sha256sums=('SKIP'
+            '19698b151b855c96ca52202bd5b0497d5cbf8511884e2b1494fe64096f11a010')
 
 _ensure_local_nvm() {
 	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
@@ -36,6 +39,10 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgbase"
+
+	# Remove after https://github.com/oae/gnome-shell-pano/pull/379 is merged and released
+	patch -Np1 -i "$srcdir/0001-replace-validate-color-source.patch"
+
 	_ensure_local_nvm
 	nvm install 20
 	yarn install --cache-folder "$srcdir/yarn-cache"
