@@ -1,0 +1,5 @@
+[ansizalizer]
+source = "github"
+github = "Zebbeni/ansizalizer"
+use_max_tag = true
+prefix = "v"

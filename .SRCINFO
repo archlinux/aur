@@ -1,0 +1,14 @@
+pkgbase = ansizalizer
+	pkgdesc = A TUI to convert Images to ANSI strings using bubbletea
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Zebbeni/ansizalizer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = ansizalizer
+	source = ansizalizer-1.0.0.tgz::https://github.com/Zebbeni/ansizalizer/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 1bfbcf447713b184e444be00bca6552a838faf01f691b0097f15efe58c35706b
+
+pkgname = ansizalizer
