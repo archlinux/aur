@@ -3,12 +3,12 @@
 # Contributor: Liganic <liganic-aur@gmx.net>
 _pkgname='cpplint'
 pkgname="python-${_pkgname}"
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Command-line tool to check C/C++ files for style issues following Google's C++ style guide."
 arch=('any')
 url='https://github.com/cpplint/cpplint'
-license=('custom:BSD3')
+license=('BSD-3-Clause')
 depends=('python')
 makedepends=(
   'python-build'
@@ -27,16 +27,12 @@ provides=('cpplint' 'cpplint-py3')
 replaces=('cpplint-py3')
 conflicts=('cpplint')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-b2sums=('06fa1ce8d63bd7e9a0d724c4440862f70726b473a67bf64fa4fb19b0dd4187815318f81ff7b8b69ed62b35b524395ea07f22f313faa1a8aaa1b599564b194c05')
+b2sums=('ff7096c5b81be824ff6a79ad5ab5de070bf9da56d3bb9174b81d5a7684ab77669c4de250de902fc9adae90d57e79e9646922fa876e29d978a2307ff88cd11631')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-  # drop leagcy sre_compile: https://github.com/cpplint/cpplint/pull/214
-  sed -e '/import sre_compile/d; s/sre_compile/re/g' -i cpplint.py
   # we are not interested in coverage
-  sed '/addopts/d' -i setup.cfg
-  # pytest-runner is not needed to build
-  sed -e '/pytest-runner/d' -i setup.py
+  sed '/^addopts = /d' -i pyproject.toml
 }
 
 build() {
