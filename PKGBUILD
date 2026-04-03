@@ -1,7 +1,7 @@
 pkgname=radix
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="CLI program to convert numbers between binary, octal, decimal and hexadecimal."
+pkgdesc="CLI tool to convert numbers between binary, octal, decimal and hexadecimal."
 arch=('x86_64')
 url="https://github.com/zOrfeo/radix"
 license=('MIT')

@@ -1,5 +1,5 @@
 pkgbase = radix
-	pkgdesc = CLI program to convert numbers between binary, octal, decimal and hexadecimal.
+	pkgdesc = CLI tool to convert numbers between binary, octal, decimal and hexadecimal.
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/zOrfeo/radix
