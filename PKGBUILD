@@ -5,7 +5,7 @@ _pkgname=numr
 pkgname=${_pkgname}-bin
 pkgdesc="A text calculator for natural language expressions with a vim-style TUI"
 
-pkgver=0.5.2
+pkgver=0.5.5
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
-sha256sums=('5dacb26baa3e557233606c3f967deede263faf659b0943aa7ceeb23137d45daf'
+sha256sums=('5eab5034555d75cc608f675c61ed5fdd15166d9a8cc969c5962597327c6bcac9'
             'd606ed9e171d1b6c0fc38573e5509c4b70d9df40c8a736c78455382c7559ea2b')
-sha256sums_x86_64=('a9625fed3210aee56af81737d1d51a47eb3006b87c038bd52a65d644d610bd3f')
-sha256sums_aarch64=('24152fc86ae2690d72b4d99d219120a43eabadb8e5b393d25dc5becf951047ed')
+sha256sums_x86_64=('8dd5a41c85e69f97fe3afa8709d6332f2b3fcf65ec27249bcddf35c2f396080f')
+sha256sums_aarch64=('d093fe3e7804e50afef402fe4546ddb2762d87ed3f58a475426a689e0df7f301')
 
 
 package() {
