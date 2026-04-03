@@ -14,8 +14,10 @@ license=('Apache-2.0')
 conflicts=('butane')
 provides=('butane')
 
-source_aarch64=(https://github.com/coreos/butane/releases/download/v$pkgver/butane-aarch64-unknown-linux-gnu{,.asc})
-source_x86_64=(https://github.com/coreos/butane/releases/download/v$pkgver/butane-x86_64-unknown-linux-gnu{,.asc})
+source_aarch64=("${_pkgname}-${pkgver}-linux-aarch64::$url/releases/download/v$pkgver/butane-aarch64-unknown-linux-gnu"
+                "${_pkgname}-${pkgver}-linux-aarch64.asc::$url/releases/download/v$pkgver/butane-aarch64-unknown-linux-gnu.asc")
+source_x86_64=("${_pkgname}-${pkgver}-linux-x86_64::$url/releases/download/v$pkgver/butane-x86_64-unknown-linux-gnu"
+               "${_pkgname}-${pkgver}-linux-x86_64.asc::$url/releases/download/v$pkgver/butane-x86_64-unknown-linux-gnu.asc")
 
 sha256sums_aarch64=('6bd1a82d23ee2f4603601579d6e0eec5834d17ee92e4ac3de4dfdec778f12a0a'
                     'SKIP')

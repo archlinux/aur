@@ -9,12 +9,12 @@ pkgbase = butane-bin
 	provides = butane
 	conflicts = butane
 	validpgpkeys = C6E7F081CF80E13146676E88829B606631645531
-	source_aarch64 = https://github.com/coreos/butane/releases/download/v0.27.0/butane-aarch64-unknown-linux-gnu
-	source_aarch64 = https://github.com/coreos/butane/releases/download/v0.27.0/butane-aarch64-unknown-linux-gnu.asc
+	source_aarch64 = butane-0.27.0-linux-aarch64::https://github.com/coreos/butane/releases/download/v0.27.0/butane-aarch64-unknown-linux-gnu
+	source_aarch64 = butane-0.27.0-linux-aarch64.asc::https://github.com/coreos/butane/releases/download/v0.27.0/butane-aarch64-unknown-linux-gnu.asc
 	sha256sums_aarch64 = 6bd1a82d23ee2f4603601579d6e0eec5834d17ee92e4ac3de4dfdec778f12a0a
 	sha256sums_aarch64 = SKIP
-	source_x86_64 = https://github.com/coreos/butane/releases/download/v0.27.0/butane-x86_64-unknown-linux-gnu
-	source_x86_64 = https://github.com/coreos/butane/releases/download/v0.27.0/butane-x86_64-unknown-linux-gnu.asc
+	source_x86_64 = butane-0.27.0-linux-x86_64::https://github.com/coreos/butane/releases/download/v0.27.0/butane-x86_64-unknown-linux-gnu
+	source_x86_64 = butane-0.27.0-linux-x86_64.asc::https://github.com/coreos/butane/releases/download/v0.27.0/butane-x86_64-unknown-linux-gnu.asc
 	sha256sums_x86_64 = 4691b2618e94e67bb5ad2d8954bb2a414f670b83e8a39b76faae42f3c1a879fe
 	sha256sums_x86_64 = SKIP
 
