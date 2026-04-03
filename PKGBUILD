@@ -2,7 +2,7 @@
 
 pkgname=rudder-agent
 # pkgver=9.0.4
-pkgver="9.1.0~beta2~git202604020118"
+pkgver="9.1.0~rc2~git202604030118"
 pkgrel=1
 pkgdesc='Configuration management and audit tool - agent for Rudder managed systems'
 arch=('x86_64' 'aarch64')
