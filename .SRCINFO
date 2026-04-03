@@ -1,7 +1,7 @@
 pkgbase = perl-data-peek
 	pkgdesc = Modified and extended debugging facilities
 	pkgver = 0.54
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/HMBRAND/Data-Peek-0.54
 	arch = x86_64
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
@@ -13,7 +13,7 @@ pkgbase = perl-data-peek
 	depends = perl>=5.8.1
 	optdepends = perl-tidy
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/Data-Peek-0.54.tar.gz
+	source = https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/Data-Peek-0.54.tgz
 	sha256sums = 4dbf2205d43fb7d963ba29902cd563a5ea6c3c6bb49a9493c40ce8b0f8572980
 
 pkgname = perl-data-peek

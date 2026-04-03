@@ -4,7 +4,7 @@ _author=HMBRAND
 _dist=Data-Peek
 pkgname=perl-${_dist@L}
 pkgver=0.54
-pkgrel=1
+pkgrel=2
 pkgdesc='Modified and extended debugging facilities'
 arch=('x86_64')
 url=https://metacpan.org/release/$_author/$_dist-$pkgver
@@ -21,7 +21,7 @@ checkdepends=(
 )
 optdepends=('perl-tidy')
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tgz")
 sha256sums=('4dbf2205d43fb7d963ba29902cd563a5ea6c3c6bb49a9493c40ce8b0f8572980')
 
 build()
