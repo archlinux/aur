@@ -1,9 +1,11 @@
 pkgbase = librcc
 	pkgdesc = Charset Conversion Library
 	pkgver = 0.2.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rusxmms.sourceforge.net/
+	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = LGPL-2.1-only
 	depends = aspell
 	depends = enca
