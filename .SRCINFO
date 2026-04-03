@@ -1,12 +1,13 @@
 pkgbase = perl-starman
 	pkgdesc = High-performance preforking PSGI/Plack web server
 	pkgver = 0.4017
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Starman
 	arch = any
 	license = Artistic-1.0
 	checkdepends = perl-test-requires>=0
 	checkdepends = perl-test-tcp>=2.00
+	makedepends = perl-module-build-tiny
 	depends = perl-data-dump>=0
 	depends = perl-http-date>=0
 	depends = perl-http-message>=0

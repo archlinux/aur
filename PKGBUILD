@@ -3,13 +3,13 @@
 
 pkgname='perl-starman'
 pkgver='0.4017'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="High-performance preforking PSGI/Plack web server"
 arch=('any')
 license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl-data-dump>=0' 'perl-http-date>=0' 'perl-http-message>=0' 'perl-http-parser-xs>=0' 'perl-net-server>=2.007' 'perl-plack>=0.9971' 'perl-libwww>=0' 'perl>=5.8.1')
-makedepends=()
+makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-requires>=0' 'perl-test-tcp>=2.00')
 url='https://metacpan.org/release/Starman'
 source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Starman-$pkgver.tar.gz")
