@@ -1,5 +1,5 @@
 pkgname='python-dokuwikidumper'
-pkgver='0.2.4'
+pkgver=0.2.5
 _src_folder=${pkgname#python-}-$pkgver
 pkgrel=1
 pkgdesc="A tool for archiving DokuWiki"
@@ -24,7 +24,7 @@ makedepends=(
 license=('GPLv3')
 arch=('any')
 source=("https://pypi.io/packages/source/${_src_folder::1}/${pkgname#python-}/${_src_folder}.tar.gz")
-sha256sums=('7725450d3e917a09d0c6776124b5612386ea62221a5f25774a7f57eaec564026')
+sha256sums=('093f6f84506822cccde394d479dc1d5a07bf32a6b6be2ef457ac5e6212b30eb8')
 
 build() {
     cd "${srcdir}/${_src_folder}"
