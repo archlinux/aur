@@ -1,0 +1,12 @@
+post_install() {
+    echo "========================================================="
+    echo " To enable the shred-extension-rs in Thunar, you need to "
+    echo " restart the file manager. Run the following command:    "
+    echo "                                                         "
+    echo "                      thunar -q                          "
+    echo "========================================================="
+}
+
+post_upgrade() {
+    post_install
+}

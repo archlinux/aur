@@ -1,0 +1,13 @@
+# makepkg artifacts
+*.pkg.tar.*
+*.pkg.tar.*
+*.src.tar.*
+*.tar.gz
+*.log
+
+# build directories created during tests
+src/
+pkg/
+
+# temporary files
+*~

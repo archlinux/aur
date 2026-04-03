@@ -1,0 +1,33 @@
+pkgbase = shred-extension-rs
+	pkgdesc = Secure file shredder extension for Nautilus and Thunar
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/williamcanin/shred-extension-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = nautilus
+	makedepends = thunar
+	makedepends = glib2
+	source = shred-extension-rs-0.1.0.tar.gz::https://github.com/williamcanin/shred-extension-rs/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 964707023f48e43ce8afe5fcef61598c5d51f6ce2fb7b120e27d442449c29e8c
+
+pkgname = shred-extension-rs-nautilus
+	pkgdesc = Secure file shredder extension for Nautilus
+	install = nautilus.install
+	depends = nautilus
+	depends = coreutils
+	depends = zenity
+	depends = gcc-libs
+	depends = glibc
+	depends = glib2
+
+pkgname = shred-extension-rs-thunar
+	pkgdesc = Secure file shredder extension for Thunar
+	install = thunar.install
+	depends = thunar
+	depends = coreutils
+	depends = zenity
+	depends = gcc-libs
+	depends = glibc
+	depends = glib2
