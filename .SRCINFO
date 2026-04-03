@@ -1,0 +1,21 @@
+pkgbase = python-can-candle
+	pkgdesc = Full featured CAN driver for Geschwister Schneider USB/CAN devices
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/BIRLab/python-can-candle
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-can
+	depends = python-candle-api
+	provides = python-can-candle
+	conflicts = python-can-candle
+	source = can-candle::git+https://github.com/BIRLab/python-can-candle.git#tag=v1.2.3
+	sha256sums = 9de93f1d1aef61561f637372ea26e0a17ada0781bdf36da89f5967e1a9f829e4
+
+pkgname = python-can-candle
