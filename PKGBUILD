@@ -7,16 +7,18 @@ url="https://codeberg.org/int13h3/Wolf_browser/src/branch/main/Wolf_browser_0.3.
 license=('GPL3')
 depends=('bash' 'python')
 makedepends=('git')
-source=('https://codeberg.org/int13h3/Wolf_browser/src/branch/main/Wolf_browser_0.3.01.tar.xz')
+source=('Wolf_browser_0.3.01.tar.xz::https://codeberg.org/int13h3/Wolf_browser/raw/branch/main/Wolf_browser_0.3.01.tar.xz')
 sha256sums=('SKIP')
 package() {
   cd "$srcdir/Wolf_browser"
-  mkdir -p "$pkgdir/usr/lib/Wolf_browser"
-  cp browser.py "$pkgdir/usr/lib/Wolf_browser/"
+
+  mkdir -p "$pkgdir/usr/lib/$pkgname"
+  cp -r . "$pkgdir/usr/lib/$pkgname/"
+
   mkdir -p "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/Wolf_browser" << EOF
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/bin/bash
-python /usr/lib/$pkgname/browser.py
+cd /usr/lib/$pkgname && python browser.py
 EOF
   chmod 755 "$pkgdir/usr/bin/$pkgname"
 }

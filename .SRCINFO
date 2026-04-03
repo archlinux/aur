@@ -8,7 +8,7 @@ pkgbase = wolfbrowser
 	makedepends = git
 	depends = bash
 	depends = python
-	source = https://codeberg.org/int13h3/Wolf_browser/src/branch/main/Wolf_browser_0.3.01.tar.xz
+	source = Wolf_browser_0.3.01.tar.xz::https://codeberg.org/int13h3/Wolf_browser/raw/branch/main/Wolf_browser_0.3.01.tar.xz
 	sha256sums = SKIP
 
 pkgname = wolfbrowser
