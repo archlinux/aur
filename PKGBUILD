@@ -38,8 +38,8 @@ options=(lto !debug)
 backup=("etc/conf.d/llama.cpp")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
-  "llama.cpp.service"
-  "llama.cpp.conf"
+  "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
+  "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
 sha256sums=('5b02994160a12ba4797203807ebfd8f8f9f2346cb9d2b6159274d726c60ad8a2'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
