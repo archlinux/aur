@@ -1,7 +1,7 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer Ally Sawada:  <Ally Sawada>
 
 pkgname=tree-sitter-fish-git
-pkgver=r135.b0ca570
+pkgver=v3.7.0.b0ca570
 pkgrel=1
 pkgdesc="Fish shell grammar for tree-sitter"
 arch=('x86_64')
@@ -12,14 +12,13 @@ depends=('glibc')
 makedepends=('git' 'tree-sitter' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url")
+source=("https://github.com/allysawada/tree-sitter-fish-aur/archive/refs/heads/master.zip")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	( set -o pipefail
-	  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' ||
-	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	(set -o pipefail
+	printf "v3.7.0.%s" "$(git rev-parse --short HEAD)"
 	)
 }
 

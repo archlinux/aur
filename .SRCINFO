@@ -12,7 +12,7 @@ pkgbase = tree-sitter-fish-git
 	depends = glibc
 	provides = tree-sitter-fish
 	conflicts = tree-sitter-fish
-	source = tree-sitter-fish-git::git+https://github.com/allysawada/tree-sitter-fish-aur.git
+	source = tree-sitter-fish-aur::git+https://github.com/allysawada/tree-sitter-fish-aur.git
 	sha256sums = SKIP
 
 pkgname = tree-sitter-fish-git
