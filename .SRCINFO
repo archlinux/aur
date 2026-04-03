@@ -1,0 +1,16 @@
+pkgbase = python-ultimate-sitemap-parser
+	pkgdesc = A performant library for parsing and crawling sitemaps
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/GateNLP/ultimate-sitemap-parser
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-dateutil
+	depends = python-requests
+	source = ultimate-sitemap-parser-1.8.0.tar.gz::https://github.com/GateNLP/ultimate-sitemap-parser/archive/1.8.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-ultimate-sitemap-parser
