@@ -1,28 +1,30 @@
 pkgbase = perl-test-www-mechanize
 	pkgdesc = Testing-specific WWW::Mechanize subclass
 	pkgver = 1.60
-	pkgrel = 2
-	url = https://metacpan.org/release/Test-WWW-Mechanize
+	pkgrel = 3
+	url = https://metacpan.org/release/PETDANCE/Test-WWW-Mechanize-1.60
 	arch = any
-	license = Artistic2.0
-	checkdepends = perl-html-lint
-	checkdepends = perl-html-tree
-	checkdepends = perl-test-pod
-	checkdepends = perl-test-pod-coverage
+	license = Artistic-2.0
+	checkdepends = perl-http-server-simple
+	checkdepends = perl-test-simple
+	checkdepends = perl-uri
+	makedepends = perl-extutils-makemaker
+	depends = perl-html-tree
+	depends = perl-carp
 	depends = perl-carp-assert-more>=1.16
-	depends = perl-html-form>=0
-	depends = perl-html-parser>=0
+	depends = perl-html-form
+	depends = perl-html-parser
 	depends = perl-http-message>=6.29
-	depends = perl-http-server-simple>=0.42
+	depends = perl-libwww>=6.02
+	depends = perl-parent
 	depends = perl-test-longstring>=0.15
-	depends = perl-uri>=0
+	depends = perl-test-simple
 	depends = perl-www-mechanize>=1.68
-	depends = perl-libwww>=0
-	depends = perl>=5.010
+	depends = perl>=5.10.0
 	optdepends = perl-html-lint: autolinting
+	optdepends = perl-html-tidy5: autolinting
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Test-WWW-Mechanize-1.60.tar.gz
-	md5sums = f14a2b64c39ec2536456b85a295f9074
-	sha512sums = 86213bcbcd5d0f2565827ad692a190084552a5f6ddfd376729332ab67eb8cf54a622c23e4e3d5f21c29009ee2ed10036340499cff1e8c522c696d0a0bcfd65c1
+	source = https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Test-WWW-Mechanize-1.60.tar.gz
+	sha256sums = 23fd72e7ed1be79de1d02a2d15f0df093415e0eab6fc615ff6bb688741268677
 
 pkgname = perl-test-www-mechanize
