@@ -1,7 +1,7 @@
 # Maintainer: Laura Demkowicz-Duffy <dev@demkowiczduffy.co.uk>
 pkgname=jabba-bin
 _pkgname=jabba
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="(cross-platform) Java Version Manager"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 provides=('java-environment' 'jabba')
 conflicts=('jabba')
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-linux-amd64")
-sha256sums=('38cf095189aba3439cbd84e18b495f464111aa8b507189020b00494de89cce03')
+sha256sums=('86308126742eddeb7cca901212c9de56383944bc79fc44e0492c3fa85f5cdd62')
 
 package() {
 	cd "$srcdir"
