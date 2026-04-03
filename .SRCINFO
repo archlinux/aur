@@ -1,0 +1,13 @@
+pkgbase = extract-adf-git
+	pkgdesc = Extract files from (broken) Commodore Amiga OFS ADF/ADZ/DMS disk images
+	pkgver = r11.7762d71
+	pkgrel = 1
+	url = https://github.com/mist64/extract-adf
+	arch = x86_64
+	makedepends = git
+	depends = glibc
+	depends = zlib
+	source = git+https://github.com/mist64/extract-adf
+	sha256sums = SKIP
+
+pkgname = extract-adf-git
