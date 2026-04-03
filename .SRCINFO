@@ -1,0 +1,24 @@
+pkgbase = cpdb-backend-cups-git
+	pkgdesc = Common Print Dialog Backends - CUPS/IPP backend
+	pkgver = 2.0b7.r21.g56a1596
+	pkgrel = 1
+	url = https://openprinting.github.io/
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = pkg-config
+	makedepends = gettext
+	depends = cpdb-libs
+	depends = libcups
+	depends = libcupsfilters
+	depends = glib2
+	provides = cpdb-backend-cups
+	conflicts = cpdb-backend-cups
+	source = cpdb-backend-cups::git+https://github.com/OpenPrinting/cpdb-backend-cups.git#branch=master
+	sha256sums = SKIP
+
+pkgname = cpdb-backend-cups-git
