@@ -2,7 +2,7 @@
 # Maintainer: Christian Winther <dottie at jippi dot dev>
 
 pkgname='dottie-bin'
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Makes working with .env files easy'
 url='https://github.com/jippi/dottie'
@@ -12,16 +12,16 @@ provides=('dottie')
 conflicts=('dottie')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jippi/dottie/releases/download/v${pkgver}/dottie_Linux_arm64.tar.gz")
-sha256sums_aarch64=('1c8e594476a543e94df43c413b40d35c73ad4e3ebade7dbc27127c8eb2f50d0b')
+sha256sums_aarch64=('a0eb0f900a03ae8cf6ccad22c4270dd94901ba8aa48af270e06498c228d2c27d')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jippi/dottie/releases/download/v${pkgver}/dottie_Linux_armv7.tar.gz")
-sha256sums_armv7h=('4f4487c55f8f3384afa331a0aa10b9c440d4c04f9a4545419909f91d696e39e6')
+sha256sums_armv7h=('67dc7d293abde5e2ef20a9c518fdc858dae93debd16810ed2441b481f64d1030')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jippi/dottie/releases/download/v${pkgver}/dottie_Linux_i386.tar.gz")
-sha256sums_i686=('4528d1d7b18157b9e798ea5bae27049fba4e93c10144f02c9c180ec6ef95ae20')
+sha256sums_i686=('612cc3761519ad08b94af00c35b06bcaf8fed477316ab19e52933f338d7bee6d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jippi/dottie/releases/download/v${pkgver}/dottie_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('78eee66fdbc0ff4f20da449cbcc74f89601f90d7b526712764dc63665d248006')
+sha256sums_x86_64=('3f0089fdf3de4f8331635cff867012d8874da8afef56aca143815813f57a579f')
 
 package() {
   # bin
