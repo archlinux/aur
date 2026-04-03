@@ -1,7 +1,7 @@
 pkgbase = cheznav
 	pkgdesc = TUI for chezmoi
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/djetelina/cheznav
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = cheznav
 	depends = python-textual
 	depends = python-rich
 	depends = python-pygments
+	depends = chezmoi
 	source = cheznav-0.1.1.tar.gz::https://github.com/djetelina/cheznav/archive/refs/tags/v0.1.1.tar.gz
 	sha256sums = a583d1a461f05c37c6a6bf7e03d5aea44a88d219c3ed9c1432c47d4b24f1b2f5
 
