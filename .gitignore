@@ -8,3 +8,4 @@
 !warnings.patch
 !REUSE.toml
 !LICENSE
+!cpprestsdk.install

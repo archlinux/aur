@@ -3,6 +3,7 @@ pkgbase = cpprestsdk
 	pkgver = 2.10.19
 	pkgrel = 5
 	url = https://github.com/Microsoft/cpprestsdk/
+	install = cpprestsdk.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h

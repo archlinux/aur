@@ -22,6 +22,7 @@ sha256sums=('4b0d14e5bfe77ce419affd253366e861968ae6ef2c35ae293727c1415bd145c8'
             'e18a69384190983a31a39e82126e09ab6677496b910550c33ee1b20e3f1e81a0'
             '198b354d5fab857813d8db3fdb0a056cc1f717149b1488e18491957fa85910b3')
 options=(!lto)
+install=${pkgname}.install
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}/

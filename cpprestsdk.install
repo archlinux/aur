@@ -1,0 +1,13 @@
+_notice() {
+  echo -e "\e[1;33m$1\e[0m"
+}
+
+post_install() {
+  _notice 'The following warning is provided by Microsoft: '
+  _notice 'cpprestsdk is in maintenance mode and we do not recommend its use in new projects.'
+  _notice 'We will continue to fix critical bugs and address security issues.'
+}
+
+post_upgrade() {
+  post_install
+}
