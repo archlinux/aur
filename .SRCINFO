@@ -1,0 +1,25 @@
+pkgbase = cpdb-libs-git
+	pkgdesc = Common Print Dialog Backends - Frontend/Backend communication libraries (2nd generation)
+	pkgver = 2.0b8.r5.gf27fc8a
+	pkgrel = 1
+	url = https://openprinting.github.io/
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = pkg-config
+	makedepends = gettext
+	depends = glib2
+	depends = glib2-devel
+	depends = dbus
+	depends = libcups
+	depends = libcupsfilters
+	provides = cpdb-libs
+	source = cpdb-libs::git+https://github.com/OpenPrinting/cpdb-libs.git#branch=master
+	sha256sums = SKIP
+
+pkgname = cpdb-libs-git
