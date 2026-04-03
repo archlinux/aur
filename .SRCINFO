@@ -1,0 +1,22 @@
+pkgbase = resonance-bin
+	pkgdesc = A local-first, zero-account API client with excellent user experience
+	pkgver = 2.7.3
+	pkgrel = 1
+	url = https://github.com/db-mobile/resonance
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = gtk3
+	provides = resonance
+	conflicts = resonance
+	options = !strip
+	source = resonance-2.7.3-source.tar.gz::https://github.com/db-mobile/resonance/archive/refs/tags/v2.7.3.tar.gz
+	source_x86_64 = resonance-2.7.3-amd64.deb::https://github.com/db-mobile/resonance/releases/download/v2.7.3/resonance_2.7.3_amd64.deb
+	source_aarch64 = resonance-2.7.3-arm64.deb::https://github.com/db-mobile/resonance/releases/download/v2.7.3/resonance_2.7.3_arm64.deb
+	sha256sums = e7d6d684b09854f00d0b6ce42a3df798eab6debeae94f38f4aab468a92802e89
+	sha256sums_x86_64 = 9a6d634801681cc6033c7ebadd28f13f7111f95e9a31c42348682b3e10d6ad0e
+	sha256sums_aarch64 = b5ea79085cf1e11b21ed01a1275b3d0c09053dfaad008ee6ce20f2461ba33662
+
+pkgname = resonance-bin
