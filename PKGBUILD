@@ -1,10 +1,10 @@
 # Maintainer: lucial <bordiyan20035@gmail.com>
 pkgname=steampipe-gui
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A PyQt6 GUI for managing and uploading builds via SteamPipe (steamcmd)"
 arch=('any')
-url="https://github.com/7Lucia7Lokidottir7/SteamPipeGUI-Linux"
+url="https://github.com/Lucia7Lunadottir/SteamPipeGUI-Linux"
 license=('GPL-3.0-only')
 depends=('python' 'python-pyqt6')
 optdepends=(
