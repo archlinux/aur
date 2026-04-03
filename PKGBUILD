@@ -11,10 +11,10 @@ source=('https://codeberg.org/int13h3/Wolf_browser/src/branch/main/Wolf_browser_
 sha256sums=('SKIP')
 package() {
   cd "$srcdir/Wolf_browser"
-  mkdir -p "$pkgdir/usr/lib/$pkgname"
-  cp browser.py "$pkgdir/usr/lib/$pkgname/"
+  mkdir -p "$pkgdir/usr/lib/Wolf_browser"
+  cp browser.py "$pkgdir/usr/lib/Wolf_browser/"
   mkdir -p "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+  cat > "$pkgdir/usr/bin/Wolf_browser" << EOF
 #!/bin/bash
 python /usr/lib/$pkgname/browser.py
 EOF
