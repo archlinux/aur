@@ -11,13 +11,13 @@ license=("custom")
 provides=("${_pkgname}")
 install="${_pkgname}.install"
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/ventoy/PXE/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-free.tar.gz"
-        "${_pkgname}"
+        "${_pkgname}.sh"
         "${_pkgname}.service"
         "${_pkgname}.tmpfiles")
 sha256sums=('862007cbc28e442a257f71bb924ba5d264a8d4247c4ed1ab8d03ebcebab17e43'
             'ef27beecddc5a9650194e8b033ae0b3172f29a9bf352cfff079a61ece86a3263'
             '7d0c73aa37f35ec8b8ab2b32ba415b3efed0e1f1a677f64f64349f102d173562'
-            '84436ca3719486543f522ac771618b6c10d92c13be7e649776a631af87844e14')
+            '4f2180dc7afdeebf062bc6cbf8186c652394196cd264608a314a196c4ece809c')
 options=(!strip)
 
 prepare() {
@@ -25,7 +25,7 @@ prepare() {
 }
 
 package() {
-    install -Dm755 "${_pkgname}"          "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${_pkgname}.sh"       "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${_pkgname}.service"  "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
     install -Dm644 "${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 
@@ -39,5 +39,6 @@ package() {
 
     ln -s "/var/lib/${_pkgname}/config.dat" "${pkgdir}/opt/${_pkgname}/data/config.dat"
     ln -s "/var/lib/${_pkgname}/iso"        "${pkgdir}/opt/${_pkgname}/iso"
+    ln -s "/var/lib/${_pkgname}/user"       "${pkgdir}/opt/${_pkgname}/user"
     ln -s "/var/log/${_pkgname}"            "${pkgdir}/opt/${_pkgname}/log"
 }
