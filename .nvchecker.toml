@@ -1,0 +1,5 @@
+[meteor-bin]
+source = "github"
+github = "stefanlogue/meteor"
+use_latest_release = true
+prefix = "v"
