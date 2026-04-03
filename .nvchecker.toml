@@ -1,0 +1,5 @@
+[hextoggle-bin]
+source = "github"
+github = "printfn/hextoggle"
+use_latest_release = true
+prefix = "v"
