@@ -1,2 +1,3 @@
 # Forces all text files in the repository to use LF.
 * text=auto eol=lf
+PKGBUILD text=lf
