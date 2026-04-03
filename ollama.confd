@@ -1,0 +1,19 @@
+# /etc/conf.d/ollama - Ollama service configuration
+
+# User and group to run ollama as
+OLLAMA_USER="ollama"
+OLLAMA_GROUP="ollama"
+
+# Address and port to listen on (host:port)
+OLLAMA_HOST="127.0.0.1:11434"
+
+# Directory where models are stored
+OLLAMA_MODELS="/var/lib/ollama/models"
+
+# Path to log file
+OLLAMA_LOG="/var/log/ollama.log"
+
+# Additional environment variables can be set here, e.g.:
+# OLLAMA_NUM_PARALLEL=2
+# OLLAMA_MAX_LOADED_MODELS=1
+# CUDA_VISIBLE_DEVICES=0

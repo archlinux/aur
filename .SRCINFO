@@ -1,0 +1,20 @@
+pkgbase = ollama-openrc
+	pkgdesc = OpenRC init script for Ollama on Artix Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/ollama-openrc
+	arch = any
+	license = MIT
+	depends = openrc
+	depends = ollama
+	optdepends = ollama-cuda: CUDA GPU support
+	optdepends = ollama-rocm: ROCm GPU support
+	provides = ollama-openrc
+	conflicts = ollama-openrc
+	backup = etc/conf.d/ollama
+	source = ollama.initd
+	source = ollama.confd
+	sha256sums = 84a707c85172d50e9dd8a9e26b3994ea74594d7ba52a0592876160aafba61c37
+	sha256sums = ea2ff4e115b24c7c92767a79f1df9ec7a5e7df2e0b5667293112912096433f38
+
+pkgname = ollama-openrc
