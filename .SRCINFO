@@ -1,0 +1,13 @@
+pkgbase = tiktok-ttsk
+	pkgdesc = Python tool to automatically maintain TikTok conversation streaks.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Kameil/tiktok-ttsk
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = python
+	options = !strip
+	source = tiktok-ttsk.bin::https://github.com/Kameil/tiktok-ttsk/releases/download/1.0.0/tiktok-ttsk.bin
+	sha256sums = 3dcac68938055f630a3c41ec49c3c010c311f24c309a35c2f9d1a118e5f2c96a
+
+pkgname = tiktok-ttsk
