@@ -23,13 +23,13 @@ _srcdir_name="philips-hue-for-arch-$pkgver"
 
 build() {
   cd "$srcdir/$_srcdir_name"
-  python -m build --wheel --no-isolation
+  /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$_srcdir_name"
 
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 philips-hue-for-arch.desktop \
