@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Proton Meet
+Comment=Proton's official desktop application for Proton Meet
+GenericName=Proton Meet
+Exec=proton-meet %U
+Icon=proton-meet
+Type=Application
+StartupNotify=true
+Categories=Network;AudioVideo;VideoConference;
+MimeType=x-scheme-handler/proton-meet;

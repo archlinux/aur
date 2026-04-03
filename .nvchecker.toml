@@ -1,0 +1,4 @@
+[proton-meet]
+source = 'jq'
+url = 'https://proton.me/download/meet/linux/version.json'
+filter = '.Releases[] | .Version'
