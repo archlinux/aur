@@ -1,0 +1,16 @@
+pkgbase = landdown-git
+	pkgdesc = Simple shell script sandbox (development version)
+	pkgver = r27.g9161be8
+	pkgrel = 1
+	url = https://git.sr.ht/~marcc/landdown
+	arch = aarch64
+	arch = x86_64
+	license = EUPL-1.2
+	makedepends = git
+	makedepends = go
+	provides = landdown
+	conflicts = landdown
+	source = git+https://git.sr.ht/~marcc/landdown
+	sha256sums = SKIP
+
+pkgname = landdown-git
