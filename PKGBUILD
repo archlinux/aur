@@ -1,11 +1,11 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=tree-sitter-fish-git
-pkgver=r99.ff49d86
-pkgrel=2
+pkgver=r135.b0ca570
+pkgrel=1
 pkgdesc="Fish shell grammar for tree-sitter"
 arch=('x86_64')
-url="https://github.com/krnik/tree-sitter-fish"
+url="https://github.com/allysawada/tree-sitter-fish-aur"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
@@ -25,7 +25,8 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
-	tree-sitter generate
+	npm install
+	npm run build
 }
 
 build() {
