@@ -1,0 +1,15 @@
+pkgbase = capasm
+	pkgdesc = Assembler for the Hewlett Packard Capricorn CPU (Series 80, HP-75)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/bug400/capasm
+	arch = x86_64
+	license = GPLV2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://github.com/bug400/capasm/archive/refs/tags/v1.0.1.tar.gz
+	sha1sums = 1c4e68533f075e6e6aac17189822e96b75468cbe
+
+pkgname = capasm
