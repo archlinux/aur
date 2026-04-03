@@ -5,7 +5,7 @@
 # Contributor: SleepyDog
 
 pkgname=glew-git
-pkgver=2.3.1.r2.g16b9e06
+pkgver=2.3.1.r6.g79cd72e
 pkgrel=1
 pkgdesc="The OpenGL Extension Wrangler Library"
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ prepare() {
 
 build() {
   cd ${pkgname%-git}/auto
-  make REPO_OPENGL="$srcdir/OpenGL-Registry" REPO_EGL="$srcdir/EGL-Registry" \
+  make -j1 REPO_OPENGL="$srcdir/OpenGL-Registry" REPO_EGL="$srcdir/EGL-Registry" \
        REPO_GLFIXES="$srcdir/glfixes"
   cd ..
   make STRIP= GLEW_PREFIX=/usr GLEW_DEST=/usr LIBDIR=/usr/lib

@@ -1,6 +1,6 @@
 pkgbase = glew-git
 	pkgdesc = The OpenGL Extension Wrangler Library
-	pkgver = 2.3.1.r2.g16b9e06
+	pkgver = 2.3.1.r6.g79cd72e
 	pkgrel = 1
 	url = https://github.com/nigels-com/glew
 	arch = i686
