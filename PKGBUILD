@@ -1,6 +1,6 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects"
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -9,10 +9,10 @@ license=('AGPL-3.0-or-later ')
 provides=('pay-respects')
 install="$pkgname.install"
 makedepends=('cargo' 'git')
-optdepends=()
+optdepends=('zoxide: zoxide integration')
 source=($pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver)
 
-sha1sums=('da0eab31e825ef1b1b39ea212f669bed98020886')
+sha1sums=('2842c1de391715b60a257700ab497ff6abeb64fc')
 
 prepare() {
 	cd "$pkgname"
