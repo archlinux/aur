@@ -1,10 +1,10 @@
 # Maintainer: lucial <bordiyan20035@gmail.com>
 pkgname=imagefinish
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A PyQt6 image editor inspired by Photoshop"
 arch=('any')
-url="https://github.com/7Lucia7Lokidottir7/Linux-Photoshop"
+url="https://github.com/Lucia7Lunadottir/Linux-Photoshop"
 license=('MIT')
 depends=('python' 'python-pyqt6' 'python-numpy')
 #optdepends=('python-numpy: faster pixel operations')
