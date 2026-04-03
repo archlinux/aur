@@ -1,0 +1,15 @@
+pkgbase = intuneme
+	pkgdesc = Run Microsoft Intune on an immutable Linux host (systemd-nspawn container)
+	pkgver = 0.16.0
+	pkgrel = 2
+	url = https://github.com/frostyard/intuneme
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = systemd
+	depends = polkit
+	depends = dbus
+	source = intuneme-0.16.0.tar.gz::https://github.com/frostyard/intuneme/archive/refs/tags/v0.16.0.tar.gz
+	sha256sums = 99e3d02f52f22202c1b289ff40364c64b2dae0c76f8d9e6fe9567ca79812bac6
+
+pkgname = intuneme
