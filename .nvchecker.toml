@@ -1,0 +1,5 @@
+[dstimer-bin]
+source = "github"
+github = "madLinux7/dstimer"
+use_latest_release = true
+prefix = "v"

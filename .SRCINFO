@@ -1,0 +1,20 @@
+pkgbase = dstimer-bin
+	pkgdesc = The timer for CLI people
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/madLinux7/dstimer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = dstimer
+	conflicts = dstimer
+	source = README-1.0.5.md::https://raw.githubusercontent.com/madLinux7/dstimer/v1.0.5/README.md
+	source = LICENSE-1.0.5::https://raw.githubusercontent.com/madLinux7/dstimer/v1.0.5/LICENSE
+	sha256sums = a1276c75f9fd2eaf1613914cb275b3ae5bac7c1c0edbfae150f4a3436bab72e7
+	sha256sums = 43566c19ad25d5bad45a8e7f219f6accf95c0f4431774825c641d6494daef61e
+	source_x86_64 = dstimer-x86_64-1.0.5::https://github.com/madLinux7/dstimer/releases/download/v1.0.5/dstimer-linux-x86_64
+	sha256sums_x86_64 = a28ea979e5e980c029e0df633b0d88042ef3c89303ad0075237f2da86de3de03
+	source_aarch64 = dstimer-aarch64-1.0.5::https://github.com/madLinux7/dstimer/releases/download/v1.0.5/dstimer-linux-aarch64
+	sha256sums_aarch64 = acd8789cfea7d0a05ce09022371eba2cc5e0b688199a81151994afafa16fd039
+
+pkgname = dstimer-bin
