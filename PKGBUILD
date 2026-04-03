@@ -20,7 +20,7 @@ makedepends=("boost" "cmake" "doxygen")
 checkdepends=("cmake")
 # source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz") TODO
 source=("${pkgname}::git+${url}.git#tag=${_tag}")
-sha512sums=("bc640f868edde674e7859987976f1c590269001bb60167b589f37408ab4bb34907206e17892c7ff169dc12d3e9032ba999a9fc2015f4214a1ecb0234825c1cd3")
+sha512sums=("05caa05929a1927e0008144206273b1e5a638d02964db4e992050c7a5f6eff55348434d6450fafd5e6c5dc552885872ea5d15bee601a6062b8554af3278b5b43")
 
 _compile()
 {
