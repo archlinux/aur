@@ -1,0 +1,17 @@
+pkgbase = gwin-git
+	pkgdesc = A "Run or raise" CLI tool for Wayland GNOME, leveraging the window-calls extension D-Bus interface for opened windows.
+	pkgver = r21.7b24cbd
+	pkgrel = 1
+	url = https://github.com/vncsmyrnk/gwin
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = zig
+	depends = glib2
+	depends = gnome-shell-extension-window-calls-git
+	provides = gwin
+	conflicts = gwin
+	source = git+https://github.com/vncsmyrnk/gwin.git
+	sha256sums = SKIP
+
+pkgname = gwin-git
