@@ -295,7 +295,7 @@ _prepare() {
   # the list of supported archs is in torch/utils/cpp_extension.py
   # https://github.com/pytorch/pytorch/blob/f9074c7332c3dfd43fe39e8733ec98f7f29b3e61/torch/utils/cpp_extension.py#L2417-L2420
   # (note that 8.8 is not supported)
-  export TORCH_CUDA_ARCH_LIST="5.2 5.3 6.0 6.1 6.2 7.0 7.2 7.5 8.0 8.6 8.7 8.9 9.0 9.0a 10.0 10.3 12.0 12.1"
+  export TORCH_CUDA_ARCH_LIST="5.2 5.3 6.0 6.1 6.2 7.0 7.2"
 
   export ROCM_PATH=/opt/rocm
   export HIP_ROOT_DIR=/opt/rocm
