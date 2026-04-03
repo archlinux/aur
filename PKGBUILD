@@ -14,7 +14,7 @@ pkgdesc="Svix webhooks API client and webhook verification library"
 url="https://github.com/svix/svix-webhooks/tree/main/python"
 license=('MIT')
 arch=('any')
-depends=('python')
+depends=('python' 'python-deprecated')
 makedepends=(
 	'python-build'
 	'python-installer'

@@ -10,6 +10,7 @@ pkgbase = python-svix
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
+	depends = python-deprecated
 	source = https://files.pythonhosted.org/packages/source/s/svix/svix-1.90.0.tar.gz
 	source = LICENSE::https://github.com/svix/svix-webhooks/raw/refs/heads/main/LICENSE
 	sha256sums = 85c4bcd3145c392e148623b46e614b430463cfc2f008333fb3e50bb4a36ca443
