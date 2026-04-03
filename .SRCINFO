@@ -1,0 +1,17 @@
+pkgbase = dragonbox-git
+	pkgdesc = Reference implementation of Dragonbox in C++: a float-to-string conversion algorithm
+	pkgver = 1.1.3.r248.gbeeeef9
+	pkgrel = 1
+	url = https://github.com/jk-jeon/dragonbox
+	arch = any
+	license = Apache-2.0 WITH LLVM-exception
+	license = BSL-1.0
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	provides = dragonbox
+	conflicts = dragonbox
+	source = dragonbox::git+https://github.com/jk-jeon/dragonbox.git
+	sha256sums = SKIP
+
+pkgname = dragonbox-git
