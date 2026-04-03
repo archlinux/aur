@@ -27,6 +27,7 @@ pkgbase = rhythmgame-git
 	depends = magic_enum
 	depends = sqlitecpp
 	depends = qt6-interfaceframework
+	depends = zlib-ng
 	provides = rhythmgame
 	conflicts = rhythmgame
 	source = RhythmGame::git+https://github.com/Bobini1/RhythmGame.git

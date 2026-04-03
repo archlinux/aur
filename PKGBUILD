@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Kalisiak <tomasz.kalisiak@rhythmgame.eu>
 pkgname=rhythmgame-git
 _pkgname=RhythmGame
-pkgver=1.2.8.r180.g59f42f37
+pkgver=1.3.0.r28.gc873fa74
 pkgrel=1
 pkgdesc="A customizable BMS player for Windows and Linux – development git build"
 arch=(x86_64)
@@ -27,6 +27,7 @@ depends=(
   magic_enum
   sqlitecpp
   qt6-interfaceframework
+  zlib-ng
 )
 makedepends=(
   git
