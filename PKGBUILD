@@ -2,12 +2,13 @@
 
 pkgname=nzb-monkey-go-bin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NZBLNK-URI handler supporting SABnzbd, NZBGet & Synology DS (Go-based)"
 arch=('x86_64')
 url="https://github.com/Tensai75/nzb-monkey-go"
 license=('MIT')
 depends=('glibc')
+optdepends=('xdg-utils: register nzblink handler')
 provides=("nzb-monkey-go")
 conflicts=("nzb-monkey-go-git" "nzb-monkey-go")
 
