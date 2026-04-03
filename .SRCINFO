@@ -1,7 +1,7 @@
 pkgbase = quake4-data-gog
 	pkgdesc = Quake 4 data via GOG
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gog.com/game/quake_4
 	arch = any
 	license = custom
@@ -9,9 +9,9 @@ pkgbase = quake4-data-gog
 	makedepends = icoutils
 	provides = quake4-data
 	conflicts = quake4-data-steam
-	source = setup_quake_4_1.4.3_(13519).exe::gogdownloader://quake_4_game/en1installer0
-	source = setup_quake_4_1.4.3_(13519)-1.bin::gogdownloader://quake_4_game/en1installer1
-	sha256sums = 4d09d3d11fca9d5122fc9af9aa12b8701742940b393b9bf63a4d9cdd825c4135
-	sha256sums = 9d163dbf728f8e2c00d26ac8de29a8b8e3bf1111d45ab320dea6371aaedd32eb
+	source = setup_quake_iv_1.4.3_lang_update_(63131).exe::gogdownloader://quake_4_game/en1installer0
+	source = setup_quake_iv_1.4.3_lang_update_(63131)-1.bin::gogdownloader://quake_4_game/en1installer1
+	sha256sums = b0602978c112116377094c45aa26eb51753bcad4bda8fe3f1016118c154bc8f5
+	sha256sums = d3870c9dd56a5189acda1330b76d21897a5dcd515880a888586380f4ea2e5ea7
 
 pkgname = quake4-data-gog
