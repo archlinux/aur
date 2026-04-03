@@ -1,6 +1,6 @@
 # Maintainer: Arthur <aur@arthurjb.com>
 pkgname=telmi-sync-bin
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Cross-platform application to create and synchronize stories and audio with TelmiOS"
 arch=('x86_64')
