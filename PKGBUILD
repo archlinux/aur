@@ -1,7 +1,7 @@
 # Maintainer: Debba <debba@example.com>
 pkgname=storytel-player-bin
 _pkgname=storytel-player
-pkgver=1.2.12
+pkgver=1.2.13
 pkgrel=1
 pkgdesc="A cross-platform desktop application for playing Storytel audiobooks"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('2d7ff3719c8ff24269f179872a580de74af410775b2e965574a9653825f6ecff')
+sha256sums=('7b485b6a26fc9ebfed9544ad9ae3db2d8a78617022d521aed85bb6a048823fbf')
 
 package() {
     bsdtar -xf data.tar.* -C "${pkgdir}"
