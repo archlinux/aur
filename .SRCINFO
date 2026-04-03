@@ -1,6 +1,6 @@
 pkgbase = wayland-cedilla-fix
 	pkgdesc = Fix cedilla (ç) on Wayland compositors — makes ' + c produce ç instead of ć
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/robertogogoni/wayland-cedilla-fix
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = wayland-cedilla-fix
 	optdepends = fcitx5-gtk: GTK integration for fcitx5
 	optdepends = fcitx5-qt: Qt integration for fcitx5
 	optdepends = libxkbcommon: live Compose table verification (xkbcli)
-	source = wayland-cedilla-fix-1.0.0.tar.gz::https://github.com/robertogogoni/wayland-cedilla-fix/archive/v1.0.0.tar.gz
+	source = wayland-cedilla-fix-1.1.0.tar.gz::https://github.com/robertogogoni/wayland-cedilla-fix/archive/v1.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = wayland-cedilla-fix

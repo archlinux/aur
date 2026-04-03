@@ -1,6 +1,6 @@
-# Maintainer: Roberto Gogoni <robertogogoni@gmail.com>
+# Maintainer: Roberto Gogoni <robertogogoni@outlook.com>
 pkgname=wayland-cedilla-fix
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Fix cedilla (ç) on Wayland compositors — makes ' + c produce ç instead of ć"
 arch=('any')
