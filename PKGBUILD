@@ -38,6 +38,11 @@ prepare()
   # disabling tests is not enough, we need to remove them explicitly
   sed -i 's,add_subdirectory(test),,g' src/CMakeLists.txt
 
+  # set correct app name so the binary and data dir are named superslicer
+  sed -i 's/set(SLIC3R_APP_NAME .*/set(SLIC3R_APP_NAME "SuperSlicer")/' version.inc
+  sed -i 's/set(SLIC3R_APP_KEY .*/set(SLIC3R_APP_KEY "SuperSlicer")/' version.inc
+  sed -i 's/set(SLIC3R_APP_CMD .*/set(SLIC3R_APP_CMD "superslicer")/' version.inc
+
   # apply patches
   patch -Np1 -i "$srcdir/0005-modern-deps.patch"
 
@@ -86,7 +91,8 @@ build()
     -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
     -DSLIC3R_APP_NAME="SuperSlicer" \
     -DSLIC3R_APP_KEY="SuperSlicer" \
-    -DSLIC3R_APP_CMD="superslicer"
+    -DSLIC3R_APP_CMD="superslicer" \
+    -DGCODEVIEWER_APP_CMD="superslicer-gcodeviewer"
 
   ninja
 }
