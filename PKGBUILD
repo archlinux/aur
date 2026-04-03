@@ -1,9 +1,11 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
-pkgname=upd72020x-fw
-pkgver=1.0.0
+pkgname=upd72020x-fw-ng
+pkgver=2.0.2.6
 pkgrel=3
 epoch=1
+provides=('upd72020x-fw')
+conflicts=('upd72020x-fw')
 pkgdesc="Renesas uPD720201 / uPD720202 USB 3.0 chipsets firmware"
 arch=('any')
 url="https://github.com/nikolaizamega/uPD72020x-Firmware"
