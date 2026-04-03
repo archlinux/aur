@@ -1,0 +1,16 @@
+pkgbase = qemuconf
+	pkgdesc = Utility to use qemu configuration files for VM
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Gottox/qemuconf
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = make
+	depends = glibc
+	depends = qemu
+	replaces = qemuconf-git
+	source = https://github.com/Gottox/qemuconf/archive/tags/v0.2.1.tar.gz
+	sha256sums = e95c68de82af7624d8f5d15467c04828fc0f1b004efdf774923e7cdcea2a79e6
+
+pkgname = qemuconf
