@@ -1,0 +1,7 @@
+version = 1
+
+[[annotations]]
+path = ["PKGBUILD", ".SRCINFO"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "NONE"
+SPDX-License-Identifier = "0BSD"
