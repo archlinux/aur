@@ -1,10 +1,10 @@
 pkgbase = adb-gui-kit-bin
 	pkgdesc = A simple, modern GUI for ADB and Fastboot
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/Drenzzz/adb-gui-kit
 	arch = x86_64
-	license = custom
+	license = LicenseRef-adb-gui-kit
 	depends = gtk3
 	depends = glib2
 	depends = cairo
@@ -14,9 +14,9 @@ pkgbase = adb-gui-kit-bin
 	provides = adb-gui-kit
 	conflicts = adb-gui-kit
 	options = !strip
-	source_x86_64 = adb-gui-kit-bin-1.2.AppImage::https://github.com/Drenzzz/adb-gui-kit/releases/download/v1.2/ADBKit-x86_64.AppImage
+	source_x86_64 = adb-gui-kit-bin-1.3.AppImage::https://github.com/Drenzzz/adb-gui-kit/releases/download/v1.3/ADBKit-x86_64.AppImage
 	source_x86_64 = adb-gui-kit.desktop
-	sha256sums_x86_64 = fd1f8de4540a88d6f2efb78557f78a63065d1f37389e543d6db16666009fa68d
+	sha256sums_x86_64 = 13971ecca89771738b8c256220ee1ba2af3a911d685ba3e6cb4da265027130d1
 	sha256sums_x86_64 = dea69b0a76f5cfdf4d0dce7c9d0a8ce40e814d8dca257941114e987df4427cbf
 
 pkgname = adb-gui-kit-bin
