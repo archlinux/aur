@@ -1,7 +1,7 @@
 # Maintainer: Jason Go <jasongo@jasongo.net>
 
 pkgname=specify-cli
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Bootstrap and manage Spec Kit projects'
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ makedepends=(
 optdepends=(
   'claude-code: Supported Agent'
   'codebuddy-cli: Supported Agent'
-  'cursor-ide: Supported Agent, IDE-based'
+  'cursor-bin: Supported Agent, IDE-based'
   'gemini-cli: Supported Agent'
   'git-credential-manager-bin: For issues with Git authentication'
   'iflow-cli: Supported Agent'
@@ -51,7 +51,7 @@ optdepends=(
 )
 options=(!debug)
 source=("git+$url.git#tag=v$pkgver")
-b2sums=('cb2cb69f75ce57805e377d6741d2fee6cf4f289c7db71d7962e9690b83c7a3ef1413cdee1f43a7167357491e4506a47f2d28f03b7211ca17c91eb6d4ccfc6d89')
+b2sums=('9934ac497f703b8eceef42416c5065ba4a20723d3824eb36b85de893aae2cf28d135e9212a1727abf20ac5e95b2de3a8c8427c03d8999403ad0edf6e18f6f0f0')
 
 build() {
   cd spec-kit
@@ -62,5 +62,5 @@ package() {
   cd spec-kit
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/specify-cli/" LICENSE
-  install -Dm644 -t "$pkgdir/usr/share/doc/specify-cli/" {AGENTS.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,README.md,SECURITY.md,SUPPORT.md}
+  install -Dm644 -t "$pkgdir/usr/share/doc/specify-cli/" {AGENTS.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,DEVELOPMENT.md,README.md,SECURITY.md,SUPPORT.md,spec-driven.md}
 }

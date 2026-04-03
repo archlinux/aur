@@ -1,6 +1,6 @@
 pkgbase = specify-cli
 	pkgdesc = Bootstrap and manage Spec Kit projects
-	pkgver = 0.4.4
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/github/spec-kit
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = specify-cli
 	depends = python-typer
 	optdepends = claude-code: Supported Agent
 	optdepends = codebuddy-cli: Supported Agent
-	optdepends = cursor-ide: Supported Agent, IDE-based
+	optdepends = cursor-bin: Supported Agent, IDE-based
 	optdepends = gemini-cli: Supported Agent
 	optdepends = git-credential-manager-bin: For issues with Git authentication
 	optdepends = iflow-cli: Supported Agent
@@ -43,7 +43,7 @@ pkgbase = specify-cli
 	optdepends = visual-studio-code-bin: Visual Studio Code
 	optdepends = windsurf: Supported Agent, IDE-based
 	options = !debug
-	source = git+https://github.com/github/spec-kit.git#tag=v0.4.4
-	b2sums = cb2cb69f75ce57805e377d6741d2fee6cf4f289c7db71d7962e9690b83c7a3ef1413cdee1f43a7167357491e4506a47f2d28f03b7211ca17c91eb6d4ccfc6d89
+	source = git+https://github.com/github/spec-kit.git#tag=v0.5.0
+	b2sums = 9934ac497f703b8eceef42416c5065ba4a20723d3824eb36b85de893aae2cf28d135e9212a1727abf20ac5e95b2de3a8c8427c03d8999403ad0edf6e18f6f0f0
 
 pkgname = specify-cli
