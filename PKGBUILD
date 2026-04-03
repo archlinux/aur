@@ -2,7 +2,7 @@
 
 pkgname=python-zlgcan
 _name=zlgcan-driver
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Python wrapper for zlgcan driver"
 provides=(${pkgname} zlgcan)
@@ -28,7 +28,7 @@ makedepends=(
 license=('LGPL-3.0-or-later')
 options=('!strip' '!debug')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('6c4e35d06c03ae85c33dbe20f94cca99ce43dac7700586096d7d76f39916a888')
+sha256sums=('1f665b88a05324b896c5b91679e87f32cfe48d1a3b392608fc0493ce3fae8a00')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx

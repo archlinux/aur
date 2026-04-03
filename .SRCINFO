@@ -1,6 +1,6 @@
 pkgbase = python-zlgcan
 	pkgdesc = Python wrapper for zlgcan driver
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/jesses2025smith/zlgcan-driver
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = python-zlgcan
 	conflicts = zlgcan
 	options = !strip
 	options = !debug
-	source = zlgcan-driver::git+https://github.com/jesses2025smith/zlgcan-driver.git#tag=v0.2.6
-	sha256sums = 6c4e35d06c03ae85c33dbe20f94cca99ce43dac7700586096d7d76f39916a888
+	source = zlgcan-driver::git+https://github.com/jesses2025smith/zlgcan-driver.git#tag=v0.2.7
+	sha256sums = 1f665b88a05324b896c5b91679e87f32cfe48d1a3b392608fc0493ce3fae8a00
 
 pkgname = python-zlgcan
