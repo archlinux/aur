@@ -1,0 +1,17 @@
+pkgbase = libeot-git
+	pkgdesc = Library for parsing Embedded OpenType files
+	pkgver = v0.01.r23.g18ec31c
+	pkgrel = 1
+	url = https://github.com/umanwizard/libeot
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = pkgconf
+	depends = glibc
+	source = git+https://github.com/umanwizard/libeot.git
+	sha256sums = SKIP
+
+pkgname = libeot-git
