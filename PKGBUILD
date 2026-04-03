@@ -1,11 +1,11 @@
 # Maintainer:
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 
-: ${_commit:=020446129bb6d0cd5613096977b4e3bdcc651826} # 2.2.0.r32
+: ${_commit:=d7815f1f950f8d5ec933fa4f70208bf316bb13f8} # 2.3.0
 
 _pkgname="doctoc"
 pkgname="$_pkgname"
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 epoch=1
 pkgdesc="Generates table of contents for markdown files inside local git repository"
@@ -24,8 +24,8 @@ options=('!emptydirs')
 
 _pkgsrc="$_pkgname-$_commit"
 _pkgext="tar.gz"
-source=("$_pkgname-${_commit::7}.$_pkgext"::"$url/archive/$_commit.$_pkgext")
-sha256sums=('0ae80113a3ddc189540518e1c43b64437fbe4734b9081f72a11e0d0b2c134d3e')
+source=("$_pkgname-$pkgver-${_commit::7}.$_pkgext"::"$url/archive/$_commit.$_pkgext")
+sha256sums=('4376a71b32632e8884f3905e813903199a4ae2c8ee5a8f1a55995599bc794062')
 
 package() {
   cd "$_pkgsrc"
