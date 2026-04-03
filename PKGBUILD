@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/wired/claude-spaces"
 license=('MIT')
 depends=('bash' 'tmux' 'jq')
+optdepends=('claude-code: Claude Code CLI')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wired/claude-spaces/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('732a7e6beae908a3c3d4743b9212d45fbc570169f34ddb6cb6a7fb6f53948bd2')
 
