@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=kiro-ide
-pkgver=0.11.107
+pkgver=0.11.130
 pkgrel=1
 epoch=1
 pkgdesc='An agentic AI IDE with spec-driven development from prototype to production'
@@ -13,54 +13,52 @@ url='https://kiro.dev/'
 #   Service Terms: https://aws.amazon.com/service-terms/
 #   Privacy Notice: https://aws.amazon.com/privacy/
 license=(LicenseRef-Kiro)
-depends=(
-    alsa-lib
-    at-spi2-core
-    bash
-    cairo
-    curl
-    dbus
-    expat
-    glib2
-    glibc
-    gtk3
-    libcups
-    libgcc
-    libsecret
-    libsoup3
-    libstdc++
-    libx11
-    libxcb
-    libxcomposite
-    libxdamage
-    libxext
-    libxfixes
-    libxkbcommon
-    libxkbfile
-    libxrandr
-    mesa
-    nspr
-    nss
-    openssl
-    pango
-    systemd-libs
-    util-linux-libs
-)
+depends=(alsa-lib
+         at-spi2-core
+         bash
+         cairo
+         curl
+         dbus
+         expat
+         glib2
+         glibc
+         gtk3
+         libcups
+         libgcc
+         libsecret
+         libsoup3
+         libstdc++
+         libx11
+         libxcb
+         libxcomposite
+         libxdamage
+         libxext
+         libxfixes
+         libxkbcommon
+         libxkbfile
+         libxrandr
+         mesa
+         nspr
+         nss
+         openssl
+         pango
+         systemd-libs
+         util-linux-libs)
 conflicts=(kiro)
 options=(!debug !strip)
 _baseurl=https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/$pkgver/deb
 source=("$pkgname-$pkgver.deb::$_baseurl/$pkgname-$pkgver-stable-linux-x64.deb"
         "$pkgname-$pkgver-deb-signature.bin::$_baseurl/signature.bin"
-        "$pkgname-certificate.pem::$_baseurl/certificate.pem"
+        "$pkgname-$pkgver-certificate.pem::$_baseurl/certificate.pem"
         "Kiro-LICENSE.txt")
-b2sums=('3c908fc425a860f9e5fef1168b78bf21c58e35a8b30be3a0bc3f6689c9f8f7afa2841b42fa4137a2e6cc570aa2791b1fce544f72fa1731154564fc4cafd95e28'
-        '1f91f7a24845662d8799130b2265528fe058010b062a32bf6089ecc0c470e7042514f455330149f3be54152ca157a00d05a91ee60ff81d0f2709d601d85cac02'
-        '09676f21f9b2821f7fb789fde98f1825f53d1df64ab74932ec2117f6cf06985bc5795ea7a016d90e9318035b2dd7c2f9706dccf44eb4cd092e4268a5f4760a26'
+b2sums=('1a430091c1439fce9066bc3c45375bf0a96e59712278f7b1b8c171dd5db1408415a5a34f70ce0dd29b5366fc2c3a4f894e03aa675b4e6f6ef7343d22b3738876'
+        'fe4051ec1e3e8f2402fcc620ae6980b51c439e0b7cd18484550ba10778c377f27f3d8f79494b480a6e357ce949842ee184f38c750ca968b916f2e99f07d780c1'
+        '4cba4d51523a883653b28e04abc4a0e444d7672636153be9c99058b4469137ab2c591466d9452c5471e1577c6ce9a54edca28f14c01e6d66b36b72eb53f92bc8'
         '4fee11387ffa92e8fba85ca53dcd51906efb5aa0d581002510a66e63916e439c836539de374db5e5b5a4470a1790b6dc0348e7ceb555a8de4dd5210b6c0f7a01')
 
 verify() {
     cd "$SRCDEST"
-    openssl x509 -pubkey -noout -in $pkgname-certificate.pem > kiro-pubkey.pem
+    openssl x509 -pubkey -noout -in $pkgname-$pkgver-certificate.pem > kiro-pubkey.pem
     openssl dgst -sha256 -verify kiro-pubkey.pem -signature $pkgname-$pkgver-deb-signature.bin \
         $pkgname-$pkgver.deb
 }
