@@ -4,7 +4,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _pkgname=dplyr
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -52,9 +52,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('be36f14b8a7882831ecefd098c1fe4f6'
+md5sums=('1c6ba2499c7a08d081bdb530423ab22c'
          '386fe9fd45e30f6833f4c4f86b86b2ea')
-b2sums=('a13ac9510af766511b74041f547aecc49acfed78c9b68e42404fda9782a5aa46d853eea8293d0d4973946f9acf0598ec0053a9acbdbf5ab4007f575c8903e45c'
+b2sums=('79a37ce9cc46162f530602770b56a81091fef9a3180c72a57e92669b6a9beea86f03754a5a14615ef9741f7b88babf12ef6c7a96b4239cc631c4cbd1d2d62aac'
         '304013a86b786a05f53a57c124c73af4941c3a91ee9d2ef8facfb4d15d6b864c2b75fc3ace66c532dfdfd6c81fe01bb22bd2e3ecbf65b31c0992cc34ec507647')
 
 _prepare() {
