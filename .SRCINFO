@@ -1,10 +1,11 @@
 pkgbase = miniaudio-git
 	pkgdesc = Single file audio playback and capture library
-	pkgver = 3574.4a5b74b
+	pkgver = 3967.9634bedb
 	pkgrel = 1
 	url = https://github.com/mackron/miniaudio
 	arch = any
 	license = MIT
+	makedepends = cmake
 	makedepends = git
 	provides = mini_al
 	provides = miniaudio
