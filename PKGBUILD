@@ -57,6 +57,10 @@ prepare() {
 }
 
 build() {
+  # Use GCC 14 for CUDA 12.9
+  export CC=gcc-14
+  export CXX=g++-14
+
   # We have pass the cuda archs to all builds as cmake files included by
   # python-pytorch-cuda process them.
   local _common_cmake=(
