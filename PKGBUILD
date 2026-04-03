@@ -1,3 +1,5 @@
+# shellcheck disable=all
+
 # ======================================================================#
 #
 #
@@ -15,13 +17,13 @@
 _pkgname=sheets
 pkgname=${_pkgname}-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal based spreadsheet tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/maaslalani/sheets"
 license=('MIT')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-git")
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
