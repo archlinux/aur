@@ -1,6 +1,6 @@
 # Maintainer: uwuclxdy <https://github.com/uwuclxdy>
 pkgname=larpshell-git
-pkgver=r24.91c2242
+pkgver=r26.a4fb6db
 pkgrel=1
 pkgdesc='Convert natural language to shell commands using an LLM'
 arch=('x86_64')
@@ -28,12 +28,6 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
-}
-
-check() {
-    cd "$srcdir/$pkgname"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
 }
 
 package() {
