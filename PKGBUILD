@@ -2,7 +2,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=1.8.3
+pkgver=1.8.4
 _electron=electron39
 pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
@@ -14,6 +14,7 @@ depends=(
     "${_electron}"
     imagemagick
     ripgrep
+    libevdev
 )
 makedepends=(
     'gendesk'
@@ -32,8 +33,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('20efb1fce5ea3ed4c650469d8ee6b9aebb4604dad8e4ca837899acf5140482a0'
-            '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
+sha256sums=('bd3844ee4a8928a1a7398975cd91a7768eb3d8898fd3eab2ac09280d8aaef0a5'
+    '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
 
 prepare() {
     sed -e "s|__ELECTRON__|${_electron}|g" -i "${srcdir}/${pkgname}.sh"
