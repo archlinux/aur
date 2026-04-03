@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Beam
+Comment=A blazing-fast, open-source command launcher for Linux
+Exec=beam %U
+Icon=beam
+Terminal=false
+Categories=Utility;
+Keywords=launcher;command;productivity;
+MimeType=x-scheme-handler/beam;x-scheme-handler/raycast;
+StartupWMClass=beam
