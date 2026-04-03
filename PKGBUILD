@@ -1,14 +1,14 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=nix-user-chroot
-pkgver=1.2.2
-pkgrel=4
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Run and install nix as user without root permissions."
 url="https://github.com/nix-community/nix-user-chroot"
 arch=(x86_64)
 license=(MIT)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nix-community/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=(3dda9eac434d9f4cba29931046377822e39a26b596f70407f487eb7d58797da1c917e0eb3ce5b40cafe46679e6b2fe5e87a6f4c5f4e3b5545290cfb1625f201d)
+sha512sums=(217cc3c685374ab4172a8602f020e8bd07d90209a72847d63bab356a8d93047048416cfb30b7fbbaf94ca03cb5e96aad4aa8013c6860ccff328d4b56671a7d83)
 
 build() {
   cd $pkgname-$pkgver
