@@ -8,7 +8,7 @@ url="https://github.com/rursache/proton-run"
 license=('MIT')
 depends=('bash' 'steam' 'yq')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/rursache/proton-run/tar.gz/v${pkgver}")
-sha256sums=('17aea12f3af9923ba1a9ebd0ceeb0e5e85da39d59ef65abc60d24a67b31a897b')
+sha256sums=('e1cb0783e58ab6c4e7cc358f5b6cb54dd5be213ce3917b1bc4bba78084677fae')
 
 package() {
     cd "$srcdir/proton-run-${pkgver}"

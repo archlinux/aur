@@ -9,6 +9,6 @@ pkgbase = proton-run
 	depends = steam
 	depends = yq
 	source = proton-run-0.1.1.tar.gz::https://codeload.github.com/rursache/proton-run/tar.gz/v0.1.1
-	sha256sums = 17aea12f3af9923ba1a9ebd0ceeb0e5e85da39d59ef65abc60d24a67b31a897b
+	sha256sums = e1cb0783e58ab6c4e7cc358f5b6cb54dd5be213ce3917b1bc4bba78084677fae
 
 pkgname = proton-run
