@@ -1,11 +1,12 @@
 pkgbase = perl-test-mock-lwp
 	pkgdesc = Easy mocking of LWP packages
 	pkgver = 0.08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/LUKEC/Test-Mock-LWP-0.08
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	makedepends = perl-extutils-makemaker
+	makedepends = perl-module-install
 	depends = perl
 	depends = perl-test-mockobject>=1.08
 	depends = perl-test-simple
