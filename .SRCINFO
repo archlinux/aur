@@ -1,0 +1,27 @@
+pkgbase = python-zlgcan
+	pkgdesc = Python wrapper for zlgcan driver
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/jesses2025smith/zlgcan-driver
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-maturin
+	depends = glibc
+	depends = libgcc
+	depends = python
+	depends = python-can
+	provides = python-zlgcan
+	provides = zlgcan
+	conflicts = python-zlgcan
+	conflicts = zlgcan
+	options = !strip
+	options = !debug
+	source = zlgcan-driver::git+https://github.com/jesses2025smith/zlgcan-driver.git#tag=v0.2.6
+	sha256sums = 6c4e35d06c03ae85c33dbe20f94cca99ce43dac7700586096d7d76f39916a888
+
+pkgname = python-zlgcan
