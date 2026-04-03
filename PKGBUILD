@@ -4,7 +4,7 @@ _author=ASH
 _dist=WWW-Mechanize-TreeBuilder
 pkgname=perl-${_dist@L}
 pkgver=1.20000
-pkgrel=1
+pkgrel=2
 pkgdesc='combine WWW::Mechanize and HTML::TreeBuilder in nice ways'
 arch=('any')
 url=https://metacpan.org/release/$_author/$_dist-$pkgver
@@ -18,6 +18,7 @@ depends=(
 )
 makedepends=(
     'perl-extutils-makemaker>=6.59'
+    'perl-module-install'
     'perl-test-simple'
     'perl-test-www-mechanize'
 )
@@ -30,7 +31,7 @@ build()
     cd "$_dist-$pkgver"
 
     unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
-    export PERL_MM_USE_DEFAULT=1
+    export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
 
     /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make

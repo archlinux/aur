@@ -1,11 +1,12 @@
 pkgbase = perl-www-mechanize-treebuilder
 	pkgdesc = combine WWW::Mechanize and HTML::TreeBuilder in nice ways
 	pkgver = 1.20000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/ASH/WWW-Mechanize-TreeBuilder-1.20000
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	makedepends = perl-extutils-makemaker>=6.59
+	makedepends = perl-module-install
 	makedepends = perl-test-simple
 	makedepends = perl-test-www-mechanize
 	depends = perl-html-tree
