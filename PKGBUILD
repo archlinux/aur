@@ -1,15 +1,22 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=vmaf-git
-pkgver=3.0.0rc.r1.g97e50eae
+pkgver=3.1.0.r0.g6375a4be
 pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (git version)'
 arch=('x86_64')
 url='https://github.com/Netflix/vmaf/'
-license=('BSD')
-depends=('gcc-libs')
-makedepends=('git' 'meson' 'nasm')
-checkdepends=('vim')
+license=('BSD-2-Clause-Patent')
+depends=(
+    'glibc'
+    'libgcc'
+    'libstdc++')
+makedepends=(
+    'git'
+    'meson'
+    'nasm')
+checkdepends=(
+    'vim')
 provides=('vmaf' 'libvmaf-git')
 conflicts=('vmaf' 'libvmaf-git')
 replaces=('libvmaf-git')
@@ -21,8 +28,20 @@ pkgver() {
 }
 
 build() {
+    local _jobs
+    local _max_jobs='20'
+    
+    _jobs="$(nproc)"
+    
+    # may fail to compile on a high core count system
+    if [ "$_jobs" > "$_max_jobs" ]
+    then
+        local _jobs="$_max_jobs"
+        printf '%s\n' "limiting the compilation jobs to ${_jobs}"
+    fi
+    
     arch-meson -Denable_avx512='false' vmaf/libvmaf build
-    meson compile -C build
+    meson compile -C build --jobs "$_jobs"
 }
 
 check() {
