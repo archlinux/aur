@@ -1,6 +1,6 @@
 pkgbase = otomusic-bin
 	pkgdesc = OtoMusic - A cross-platform desktop music player
-	pkgver = 0.0.6
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Aloys233/OtoMusic
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = otomusic-bin
 	depends = libxtst
 	provides = otomusic
 	conflicts = otomusic
-	source = otomusic-bin-0.0.6.tar.gz::https://github.com/Aloys233/OtoMusic/releases/download/v0.0.6/OtoMusic-0.0.6-linux-x86_64.tar.gz
-	sha256sums = 0ce02c6460086965679fc9481a3481d400ad286da6d7bf0cb0ea1fef7ccbe3c5
+	source = otomusic-bin-1.0.0.tar.gz::https://github.com/Aloys233/OtoMusic/releases/download/v1.0.0/OtoMusic-1.0.0-linux-x86_64.tar.gz
+	sha256sums = df67ddae8a4cb36834c00ca72a15fc9422cefe25f78ea8bf8d840850c1f53fb0
 
 pkgname = otomusic-bin
