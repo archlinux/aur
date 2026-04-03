@@ -1,5 +1,5 @@
 pkgbase = swm
-	pkgdesc = Suckless Window Manager - minimalistic X11 tiling window manager
+	pkgdesc = Simple Window Manager - minimalistic X11 tiling window manager
 	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/tinyopsec/swm
