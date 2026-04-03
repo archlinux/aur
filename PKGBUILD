@@ -13,12 +13,11 @@ optdepends=(
 )
 # Steamworks SDK (требует аккаунт Steamworks Partner):
 # https://partner.steamgames.com/downloads/steamworks_sdk.zip
-_srcname="SteamPipeGUI-Linux"
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a6c8437771d4f2f54bbef6c0cfb627dc150fbc581d1b129d0188c81b8a49b973')
+source=("$pkgname::git+$url.git#tag=$pkgver")
+sha256sums=('SKIP')
 
 package() {
-    cd "$srcdir/$_srcname-$pkgver/steam-pipe-gui"
+    cd "$srcdir/$pkgname/steam-pipe-gui"
 
     # Директория приложения
     install -dm755 "$pkgdir/opt/$pkgname"

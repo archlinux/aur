@@ -9,7 +9,7 @@ pkgbase = steampipe-gui
 	depends = python-pyqt6
 	optdepends = steamcmd: standalone steamcmd (from AUR)
 	optdepends = steamworks-sdk: full Steamworks SDK with steamcmd included
-	source = steampipe-gui-1.1.0.tar.gz::https://github.com/7Lucia7Lokidottir7/SteamPipeGUI-Linux/archive/refs/tags/1.1.0.tar.gz
-	sha256sums = a6c8437771d4f2f54bbef6c0cfb627dc150fbc581d1b129d0188c81b8a49b973
+	source = steampipe-gui::git+https://github.com/7Lucia7Lokidottir7/SteamPipeGUI-Linux.git#tag=1.1.0
+	sha256sums = SKIP
 
 pkgname = steampipe-gui
