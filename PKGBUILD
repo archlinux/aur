@@ -15,4 +15,7 @@ sha256sums=('79bc59a1c3a28ec60362ec96e3f6e1e11cc095fbc9c38033c930eb794353d7d0')
 package() {
     # Paketi Arch sistem dizinine (pkgdir) açıyoruz
     tar -xf "${srcdir}/anizium-desktop-bin-1.0.0.pacman" -C "${pkgdir}/"
+    
+    # Yasaklı nokta dosyalarını (meta verileri) temizleyelim
+    rm -f "${pkgdir}/".{PKGINFO,MTREE,INSTALL}
 }
