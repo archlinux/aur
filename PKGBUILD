@@ -1,6 +1,6 @@
 # Maintainer: Isaías Rodríguez <isurwars@gmail.com>
 pkgname=correlation
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Analysis tool for liquid and amorphous solid structures"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('intel-oneapi-tbb' 'hdf5' 'fontconfig' 'freetype2' 'libxcb')
 makedepends=('cmake' 'ninja' 'rust' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('710c4545c035c658b7c7a8fc4c7060c1244cc00fd7a093ae2b55059b1e49a97e')
+sha256sums=('8a17579e1f5ef65c6207debf71aaa71ba9a2030233fbe1bf7504c450ecc6a93d')
 
 prepare() {
   cmake -B build -S "Correlation-${pkgver}" \
