@@ -1,11 +1,11 @@
 pkgname=audium
-pkgver=0.9.1
-pkgrel=3
+pkgver=0.9.2
+pkgrel=1
 pkgdesc="Terminal music app built in Rust"
 arch=('x86_64')
 url="https://github.com/takashialpha/audium"
 license=('Apache-2.0')
-depends=('alsa-lib')
+depends=('alsa-lib' 'alsa-utils')
 
 source=("https://github.com/takashialpha/audium/releases/download/v${pkgver}/audium-v${pkgver}-x86_64-linux.tar.gz"
 "LICENSE::https://raw.githubusercontent.com/takashialpha/audium/v${pkgver}/LICENSE")
