@@ -1,3 +1,14 @@
+2026.04.03, v10.1.0
+
+feature:
+- f8a84d2 client: terminal disconnected...: write on next line
+- bea8ef7 gritty: webpack-cli v7.0.2
+- 198d341 gritty: putout v42.4.2
+- 77f703e gritty: madrun v13.0.1
+- cde5ebd gritty: eslint-plugin-putout v31.1.2
+- cec19f4 gritty: css-minimizer-webpack-plugin v8.0.0
+- c987136 gritty: superc8 v12.3.1
+
 2026.02.12, v10.0.2
 
 fix:
