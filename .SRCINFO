@@ -10,7 +10,7 @@ pkgbase = darktable-nas
 	depends = rsync
 	optdepends = tailscale: Remote access via Tailscale VPN
 	backup = etc/darktable-nas/darktable-nas.conf.example
-	source = darktable-nas-1.1.0.tar.gz::https://github.com/nefarias-bredd/darktable-nas/archive/v1.1.0.tar.gz
+	source = darktable-nas-1.1.1.tar.gz::https://github.com/nefarias-bredd/darktable-nas/archive/v1.1.1.tar.gz
 	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
 
 pkgname = darktable-nas
