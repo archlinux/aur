@@ -49,7 +49,7 @@ build() {
     # requiring a live systemd-detect-virt call inside the build environment.
     python3 scripts/gen_servicefiles.py --out-dir ./platform/opensuse/ --assume-version 254
 
-    cargo build \
+    CC=clang CXX=clang++ cargo build \
         --release \
         --target "${CARCH}-unknown-linux-gnu"
 }
