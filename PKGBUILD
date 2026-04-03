@@ -5,7 +5,7 @@ pkgname=cxxtools
 pkgver=3.0
 pkgrel=4
 pkgdesc="Collection of general-purpose C++ classes"
-url="http://www.tntnet.org"
+url="https://github.com/maekitalo/cxxtools"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL-2.1-or-later')
 depends=('bash' 'gcc-libs' 'libnsl' 'openssl')
@@ -28,6 +28,11 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Workaround to build with newer gettext version
+  # https://github.com/VDR4Arch/vdr4arch/issues/267
+  # Delete older iconv.m4 to tell autoreconf that placing the system one is OK
+  rm "m4/iconv.m4"
 
   autoreconf -i
   ./configure --prefix=/usr \
