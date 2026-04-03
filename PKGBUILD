@@ -1,6 +1,6 @@
 # Maintainer: DeepChirp <DeepChirp@outlook.com>
 pkgname=aacs-keydb-daily
-pkgver=20260401002904
+pkgver=20260402002445
 pkgrel=1
 pkgdesc='Contains the Key Database for the AACS Library (Daily Updates)'
 arch=('any')
@@ -9,7 +9,7 @@ depends=('libaacs')
 provides=("${pkgname%-daily}")
 conflicts=("${pkgname%-daily}")
 source=("keydb_eng-${pkgver}.zip::https://web.archive.org/web/${pkgver}/http://fvonline-db.bplaced.net/export/keydb_eng.zip")
-sha256sums=('adec8905ace6d1d29463fd947c209908502891949fbf315e43b860f786a85824')
+sha256sums=('857577a2249e5feb23924d63dbbd9a9e63f48d0c01cc6ea2aaebf6e3db87b30e')
 
 package() {
     install -d "${pkgdir}/etc/xdg/aacs"
