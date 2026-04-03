@@ -1,4 +1,1 @@
-- Fix old incus/LXD entries not launching correctly
-- Fix rare shell init race condition
-- Fix Windows rendering performance
-- Fix various NullPointers
+- Add automatic fallback to disable hardware acceleration on Linux when the graphics driver had issues
