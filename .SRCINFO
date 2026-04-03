@@ -1,6 +1,6 @@
 pkgbase = brave-origin-nightly-bin
 	pkgdesc = Web browser that blocks ads and trackers by default (binary release)
-	pkgver = 1.91.7
+	pkgver = 1.91.10
 	pkgrel = 1
 	epoch = 1
 	url = https://brave.com
@@ -16,15 +16,15 @@ pkgbase = brave-origin-nightly-bin
 	optdepends = cups: Printer support
 	optdepends = libgnome-keyring: Enable GNOME keyring support
 	optdepends = libnotify: Native notification support
-	provides = brave-origin-nightly=1.91.7
+	provides = brave-origin-nightly=1.91.10
 	provides = brave-browser
 	conflicts = brave-origin-nightly
-	noextract = brave-origin-nightly-1.91.7-linux-amd64.zip
+	noextract = brave-origin-nightly-1.91.10-linux-amd64.zip
 	options = !strip
 	source = brave-origin-nightly-bin.sh
 	source = brave-origin-nightly.desktop
-	source = https://github.com/brave/brave-browser/releases/download/v1.91.7/brave-origin-nightly-1.91.7-linux-amd64.zip
-	source = https://github.com/brave/brave-browser/releases/download/v1.91.7/brave-origin-nightly-1.91.7-linux-amd64.zip.sha256
+	source = https://github.com/brave/brave-browser/releases/download/v1.91.10/brave-origin-nightly-1.91.10-linux-amd64.zip
+	source = https://github.com/brave/brave-browser/releases/download/v1.91.10/brave-origin-nightly-1.91.10-linux-amd64.zip.sha256
 	validpgpkeys = 3DCB1DA4732251B4
 	sha256sums = f572bf9f3ea65f5223526b5df7806e4990435a543c3d33d4cc6d0cee9e22b227
 	sha256sums = 17fa0786cf4bb11ea42733f7acf642f7f86b23d17b2a98fbd9140ce0ab2972a6
