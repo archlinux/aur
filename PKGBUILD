@@ -7,7 +7,7 @@ url='https://github.com/lainx86/oceandl'
 license=('MIT')
 depends=('curl' 'fmt' 'tomlplusplus')
 makedepends=('cmake' 'ninja')
-options=('!lto')
+options=('!debug' '!lto')
 
 _source_archive="oceandl-src-v${pkgver}.tar.gz"
 _source_url="${OCEANDL_SOURCE_URL:-https://github.com/lainx86/oceandl/releases/download/v${pkgver}/${_source_archive}}"

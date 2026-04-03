@@ -10,6 +10,7 @@ pkgbase = oceandl
 	depends = curl
 	depends = fmt
 	depends = tomlplusplus
+	options = !debug
 	options = !lto
 	source = oceandl-src-v0.2.5.tar.gz::https://github.com/lainx86/oceandl/releases/download/v0.2.5/oceandl-src-v0.2.5.tar.gz
 	sha256sums = 939509e732b4d56d31067a030fd0a4803c9064440c59bb2396406d50343001fd
