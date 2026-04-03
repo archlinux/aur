@@ -3,7 +3,7 @@
 # AUR Package Repository: https://github.com/patrickjaja/claude-desktop-bin
 
 pkgname=claude-desktop-bin
-pkgver=1.2.234
+pkgver=1.569.0
 pkgrel=1
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
@@ -27,8 +27,8 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'socat: Cowork socket health check in launcher (fallback: age-based check)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.2.234/claude-desktop-1.2.234-linux.tar.gz")
-sha256sums_x86_64=('7ab7cfdbbdf4f23c3c2a86e78d0104f2e06a4130926f0f75886ae6b788a50239')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.569.0/claude-desktop-1.569.0-linux.tar.gz")
+sha256sums_x86_64=('54b2abc7107dece56046323bc2d176674ad3d72304bce00228542b1019f92e31')
 options=('!strip')
 
 package() {
@@ -48,6 +48,7 @@ package() {
 Name=Claude
 Comment=Claude AI Desktop Application
 Exec=claude-desktop %u
+Path=%h
 Icon=claude-desktop
 Type=Application
 Terminal=false
