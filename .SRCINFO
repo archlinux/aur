@@ -1,0 +1,29 @@
+pkgbase = python-candle-api
+	pkgdesc = Full featured CAN driver for Geschwister Schneider API for USB/CAN devices
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://github.com/BIRLab/candle_api
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-cmake
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = systemd-libs
+	provides = python-candle-api
+	conflicts = python-candle-api
+	options = !strip
+	options = !debug
+	source = candle-api::git+https://github.com/BIRLab/candle_api.git#tag=v0.0.11
+	source = libusb-cmake::git+https://github.com/libusb/libusb-cmake.git
+	source = pybind11::git+https://github.com/pybind/pybind11.git
+	sha256sums = 2a3342b6a4170f23c51607b216db42e4466f22b1af39e74b28c6042defde29d3
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = python-candle-api
