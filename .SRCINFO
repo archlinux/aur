@@ -1,0 +1,17 @@
+pkgbase = essh
+	pkgdesc = Enhanced SSH client with TUI — manage connections, keys, and sessions
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/matthart1983/essh
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	provides = essh
+	conflicts = essh
+	source = essh-0.2.4.crate::https://crates.io/api/v1/crates/essh/0.2.4/download
+	sha256sums = 83c691c07d12a78d6f3a005738b36792798b6be4dc0dc634b0c98e14d96c476f
+
+pkgname = essh
