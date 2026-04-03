@@ -2,19 +2,20 @@
 
 pkgname=efistub-libre
 pkgver=260.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Systemd's EFI stubs collections without systemd"
 arch=('x86_64')
 url="https://github.com/systemd/systemd"
 license=('LGPL2.1')
 makedepends=(
+    'clang'
+    'git'
+    'gperf'
+    'lld'
     'meson'
     'ninja'
-    'clang'
-    'lld'
     'python'
-    'gperf'
-    'git'
+    'python-jinja'
 )
 provides=('systemd-efi-stub')
 conflicts=('systemd-efi-stub')
@@ -47,7 +48,7 @@ build() {
         -Dxkbcommon=disabled \
         -Dzstd=disabled
 
-    ninja -C build src/boot/linuxx64.efi.stub src/boot/linuxia32.efi.stub src/boot/addonx64.elf.stub src/boot/addonia32.elf.stub
+    ninja -C build src/boot/linuxx64.efi.stub src/boot/addonx64.elf.stub
 }
 
 package() {

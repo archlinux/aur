@@ -1,17 +1,18 @@
 pkgbase = efistub-libre
 	pkgdesc = Systemd's EFI stubs collections without systemd
 	pkgver = 260.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/systemd/systemd
 	arch = x86_64
 	license = LGPL2.1
+	makedepends = clang
+	makedepends = git
+	makedepends = gperf
+	makedepends = lld
 	makedepends = meson
 	makedepends = ninja
-	makedepends = clang
-	makedepends = lld
 	makedepends = python
-	makedepends = gperf
-	makedepends = git
+	makedepends = python-jinja
 	provides = systemd-efi-stub
 	conflicts = systemd-efi-stub
 	source = git+https://github.com/systemd/systemd.git?shallow=1#tag=v260.1
