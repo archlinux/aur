@@ -1,0 +1,18 @@
+pkgbase = spout-git
+	pkgdesc = The missing link between your screenshot tool and the internet (git version)
+	pkgver = r12.7cf4409
+	pkgrel = 1
+	url = https://github.com/Gur0v/spout
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	provides = spout
+	conflicts = spout
+	options = !lto
+	source = git+https://github.com/Gur0v/spout.git
+	sha256sums = SKIP
+
+pkgname = spout-git
