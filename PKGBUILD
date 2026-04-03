@@ -3,7 +3,7 @@
 _pkgname=openterfaceqt
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.5.16
+pkgver=0.5.20
 pkgrel=1
 pkgdesc="Openterface Mini-KVM Host Application (AppImage version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source_x86_64=("${_appimage}::https://github.com/TechxArtisanStudio/Openterface_
                "https://raw.githubusercontent.com/TechxArtisanStudio/Openterface_QT/${pkgver}/LICENSE"
                "51-openterface.rules")
 noextract=("${_appimage}")
-sha256sums_x86_64=('e325b7cb6f80bd43591866a58768ebc33dc79c0641bea0fdc62f750981c03a2c'
+sha256sums_x86_64=('660ece02bc401a0c72772f3669ca88c1aebcc381290420c8dc3f662be772ffdd'
                    '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
                    'c2b3f7e0ad8456d3e6f85931986f4b624687bf15309eaba0c6ab1685cf75d89d')
 
