@@ -1,20 +1,23 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fooyin
 _pkgname=Fooyin
-pkgver=0.10.2
-pkgrel=2
+pkgver=0.10.3
+pkgrel=1
 pkgdesc="A customisable music player."
 arch=('x86_64')
 url="https://www.fooyin.org/"
 _ghurl="https://github.com/ludouzi/fooyin"
 license=('GPL-3.0-only')
 depends=(
+    'icu'
+    'glibc'
+    'libstdc++'
+    'libgcc'
     'qt6-base'
     'alsa-lib'
     'taglib'
     'ffmpeg'
     'kdsingleapplication'
-    'libvgm-git'
     'qcoro'
 )
 makedepends=(
@@ -23,14 +26,12 @@ makedepends=(
     'ninja'
     'cmake'
     'libpipewire'
-    'icu'
     'libopenmpt'
     'libsndfile'
     'libebur128'
     'libarchive'
     'libgme'
     'soundtouch'
-    'git'
 )
 optdepends=(
     'sdl2: For the SDL2 audio output plugin'
@@ -40,12 +41,13 @@ optdepends=(
     'libsndfile: For the GME audio input plugin'
     'libarchive: For the libarchive archive plugin'
     'libebur128: For the ReplayGain scanner plugin'
-    'soundtouch: Enable building a dsp plugin based on soundtouch.'
+    'libsoxr: For the SoX-based DSP plugin'
+    'soundtouch: For the SoundTouch-based DSP plugin'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('5cdd33835679578c940ac5d3dfabaa94406a707d44f0b4b1f7fff11417c5457c')
+sha256sums=('3ba96386c12acacb7b73a637bf2a57690516814e862868e340505a3804551cda')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     cmake -S . -B build -G Ninja \
@@ -57,6 +59,8 @@ build() {
     cmake --build build
 }
 package() {
+    depends+=('hicolor-icon-theme')
+
     cd "${srcdir}/${pkgname}-${pkgver}"
     DESTDIR="${pkgdir}" cmake --install build
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/fooyin/LICENSE"
