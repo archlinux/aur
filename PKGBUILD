@@ -2,12 +2,12 @@
 
 _pkgname='boost-histogram'
 pkgname="python-${_pkgname}"
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Python bindings for Boost's Histogram library."
 arch=('x86_64')
 url='https://github.com/scikit-hep/boost-histogram'
-license=('custom:BSD3')
+license=('BSD-3-Clause' 'BSL-1.0')
 depends=('python-numpy')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-scikit-build-core' 'python-setuptools-scm' 'pybind11')
 checkdepends=('python-pytest' 'python-pytest-benchmark')
@@ -23,7 +23,7 @@ source=(
   "${pkgname}-variant2::git+https://github.com/boostorg/variant2.git"
 )
 
-sha256sums=('bb58ed2c4215f8bf71d70c6eacbe80ba23fe331a47cf26da6bbbc719fa0b31af'
+sha256sums=('1f753c46f3de31a5dbaf3316a6758a52aaeb4b2ceb21ab5dbd7014c5de38d540'
             'SKIP'
             'SKIP'
             'SKIP'
