@@ -1,6 +1,6 @@
 pkgbase = lazyjira-bin
 	pkgdesc = Terminal UI for Jira (prebuilt binary)
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://github.com/textfuel/lazyjira
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = lazyjira-bin
 	conflicts = lazyjira-git
 	provides = lazyjira
 	arch = aarch64
-	source_aarch64 = https://github.com/textfuel/lazyjira/releases/download/v2.7.1/lazyjira_linux_arm64.tar.gz
-	sha256sums_aarch64 = b6818fc4550791fdb8939983fba22878cd428a83bc6887f202abc0d8c04e1399
+	source_aarch64 = https://github.com/textfuel/lazyjira/releases/download/v2.7.2/lazyjira_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0d956f0ebbc1060ec6e4902a9ef72868c8b50ed485cc4b0782b4b6601bb646fc
 	arch = x86_64
-	source_x86_64 = https://github.com/textfuel/lazyjira/releases/download/v2.7.1/lazyjira_linux_amd64.tar.gz
-	sha256sums_x86_64 = c070455615b476988d6b6e0091515666eb12927c81663b7a92d0d56e77656960
+	source_x86_64 = https://github.com/textfuel/lazyjira/releases/download/v2.7.2/lazyjira_linux_amd64.tar.gz
+	sha256sums_x86_64 = fd1f1e1387f4808ee4c0098f2fff0bbd12e9dd2947bd41e45b19cbd146cb64df
 	
 pkgname = lazyjira-bin
