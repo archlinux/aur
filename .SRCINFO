@@ -1,7 +1,7 @@
 pkgbase = alfis
 	pkgdesc = Alternative Free Identity System using blockchain
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Revertron/Alfis
 	arch = x86_64
 	license = AGPL3
@@ -9,7 +9,7 @@ pkgbase = alfis
 	makedepends = rust
 	makedepends = atk
 	makedepends = pango
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = gtk3
 	options = !lto
 	source = alfis-0.8.8.tar.gz::https://github.com/Revertron/Alfis/archive/v0.8.8/alfis-0.8.8.tar.gz
