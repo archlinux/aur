@@ -1,4 +1,4 @@
-# Maintainer: tenshi (pwoertnehsi@gmail.com)
+# Maintainer: tenshi <pwoertnehsi@gmail.com>
 pkgname=droidvalds-git
 pkgver=1.0.r3.g4259875
 pkgrel=1
