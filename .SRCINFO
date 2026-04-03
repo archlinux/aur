@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-aio
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (All in one: CUDA + ROCm + Vulkan)
-	pkgver = b8641
+	pkgver = b8643
 	pkgrel = 1
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
@@ -40,10 +40,10 @@ pkgbase = llama.cpp-aio
 	options = lto
 	options = !debug
 	backup = etc/conf.d/llama.cpp
-	source = llama.cpp-aio-b8641.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b8641.tar.gz
+	source = llama.cpp-aio-b8643.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b8643.tar.gz
 	source = https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service
 	source = https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf
-	sha256sums = f253ae1ab8e860f5935317f24626c6fe7a79c0fef46cc2382068c122ecf1cbe0
+	sha256sums = 5b02994160a12ba4797203807ebfd8f8f9f2346cb9d2b6159274d726c60ad8a2
 	sha256sums = 0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d
 	sha256sums = e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec
 
