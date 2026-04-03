@@ -1,7 +1,7 @@
 pkgbase = perl-spreadsheet-read
 	pkgdesc = Meta-Wrapper for reading spreadsheet data
 	pkgver = 0.95
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/HMBRAND/Spreadsheet-Read-0.95
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
@@ -19,7 +19,7 @@ pkgbase = perl-spreadsheet-read
 	depends = perl>=5.8.1
 	optdepends = perl-io-stringy
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/Spreadsheet-Read-0.95.tar.gz
+	source = https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/Spreadsheet-Read-0.95.tgz
 	sha256sums = 99fe77002189b6b90d9a2d502b9c597ac0beb57b4ad8531a356a5912db72107e
 
 pkgname = perl-spreadsheet-read

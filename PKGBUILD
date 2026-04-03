@@ -4,7 +4,7 @@ _author=HMBRAND
 _dist=Spreadsheet-Read
 pkgname=perl-${_dist@L}
 pkgver=0.95
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta-Wrapper for reading spreadsheet data'
 arch=('any')
 url=https://metacpan.org/release/$_author/$_dist-$pkgver
@@ -27,7 +27,7 @@ checkdepends=(
 )
 optdepends=('perl-io-stringy')
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tgz")
 sha256sums=('99fe77002189b6b90d9a2d502b9c597ac0beb57b4ad8531a356a5912db72107e')
 
 build()
