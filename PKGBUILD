@@ -3,7 +3,7 @@
 _pkgname=3dslicer
 pkgname=3dslicer
 pkgver=5.10.0
-pkgrel=6
+pkgrel=7
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research'
 arch=('x86_64')
 url='https://www.slicer.org'
@@ -116,7 +116,7 @@ build() {
     -GNinja \
     -S "${srcdir}/${_pkgname}" \
     -Wno-dev
-  VERBOSE=1 cmake --build "${srcdir}/build"
+  cmake --build "${srcdir}/build"
 }
 
 package() {
