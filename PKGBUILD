@@ -2,17 +2,17 @@
 
 pkgname=ut2004-data-archiveorg
 pkgver=3369
-pkgrel=2
-pkgdesc="Unreal Tournament 2004 ECE data from Archive.org ISO"
+pkgrel=3
+pkgdesc="Unreal Tournament 2004 ECE data from OldUnreal/Archive.org ISO"
 arch=('any')
-url="https://archive.org/details/ut-2004"
+url="https://www.oldunreal.com/downloads/unreal-tournament-2004/full-game-installers/"
 license=('custom')
 depends=()
 makedepends=('p7zip' 'unshield')
 provides=('ut2004-data')
 conflicts=('ut2004-data' 'ut2004-steam' 'ut2004-gog')
-source=("UT2004.ISO::https://archive.org/download/ut-2004/UT2004.ISO")
-md5sums=('7841d8750e3f51aeac7bbb0448667670')
+source=("UT2004.ISO::https://files.oldunreal.net/UT2004.ISO")
+md5sums=('4ad34b16d757e0752809eb9bf5fb1fba')
 
 package() {
     install -d "$pkgdir/opt/ut2004"
