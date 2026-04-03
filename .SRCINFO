@@ -1,7 +1,7 @@
 pkgbase = shorin-niri-git
 	pkgdesc = Shorin Niri Desktop Environment (Dependencies & Dotfiles)
 	pkgver = r1.1234567
-	pkgrel = 12
+	pkgrel = 13
 	url = https://github.com/SHORiN-KiWATA/shorin-niri
 	arch = any
 	license = GPL
@@ -82,6 +82,7 @@ pkgbase = shorin-niri-git
 	depends = fastfetch
 	depends = btop
 	depends = gdu
+	depends = opencode
 	depends = shorin-contrib-git
 	depends = clipsync-git
 	depends = shorinclip-git

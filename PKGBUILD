@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=12
+pkgrel=13
 pkgdesc="Shorin Niri Desktop Environment (Dependencies & Dotfiles)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -31,7 +31,7 @@ depends=(
     'pacman-contrib' 'swayosd' 'awww' 'ttf-jetbrains-mono-nerd' 'waybar' 
     'wlsunset' 'pavucontrol' 'downgrade' 'strace' 'xdg-terminal-exec' 'kitty' 'firefox'
 
-    'fastfetch' 'btop' 'gdu'
+    'fastfetch' 'btop' 'gdu' 'opencode'
 
     # --- AUR Packages (From List) ---
     'shorin-contrib-git'
