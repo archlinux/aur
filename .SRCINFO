@@ -1,6 +1,6 @@
 pkgbase = proxmox-backup-client-bin
 	pkgdesc = Client for Proxmox Backup Server (binary release from Debian)
-	pkgver = 4.1.4_1
+	pkgver = 4.1.5_1
 	pkgrel = 1
 	url = https://pbs.proxmox.com
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = proxmox-backup-client-bin
 	conflicts = proxmox-backup-client
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = http://download.proxmox.com/debian/pbs-client/dists/trixie/main/binary-amd64/proxmox-backup-client_4.1.4-1_amd64.deb
-	sha512sums_x86_64 = 77dff295458478ed019def8a8f83921d5ecfa0dbaff7384add52943cb5bc4fc219cdf86831a778869029e84a2236f5415edeef4c358cc1d9dd3c2f5d89735f78
+	source_x86_64 = http://download.proxmox.com/debian/pbs-client/dists/trixie/test/binary-amd64/proxmox-backup-client_4.1.5-1_amd64.deb
+	sha512sums_x86_64 = e7d3eac22e82d093e8fcd46ee361154af2261a2245a7e63f1f370de1afd015b5fbd03f099ec38d43c69691027b5b3b99523d99b9617a37fe5b63b1999f871b00
 
 pkgname = proxmox-backup-client-bin
