@@ -1,6 +1,7 @@
-# Maintainer: Stefan Seemayer <mail@semicolonsoftware.de>
+# Maintainer: Devel <Denislav08@proton.me>
+# Contributor: Stefan Seemayer <mail@semicolonsoftware.de>
 pkgname=ries
-pkgver=20180812
+pkgver=20240422
 pkgrel=1
 pkgdesc="Find algebraic equations, given their solution"
 arch=(i686 x86_64)
@@ -11,9 +12,9 @@ source=('http://mrob.com/pub/ries/src/ries.c.txt'
         'http://mrob.com/pub/ries/src/msal_math64.c.txt'
         'http://mrob.com/pub/ries/doc/ries.1.txt')
 
-sha256sums=('73f77c1a91496056e5bf7629a848f002055554077793d323edf2c9f2c560152b'
-            '98a219b116a15a5ad4768001996823a306d238f84405e75a1e228d81bfabaf2b'
-            'b36684958adcad867e9be13c707d2f81280c3daf68ee3f0a5400f9ea040faf56')
+sha256sums=('5051931999b73285b0edb87c50e53315c44b783c87adb3594ed0c20d10bc4c1f'
+            'dfcbe7a9605ab65c81ff802eb48a8ca5453097c24b7f8825c1f59b8894080ed4'
+            '875b177a981652834f1fddfd651dff8a3f7e5b3013eef63f852ba97201a5b941')
 
 build() {
   cd "$srcdir/"

@@ -1,6 +1,6 @@
 pkgbase = ries
 	pkgdesc = Find algebraic equations, given their solution
-	pkgver = 20180812
+	pkgver = 20240422
 	pkgrel = 1
 	url = http://mrob.com/pub/ries/
 	arch = i686
@@ -9,9 +9,8 @@ pkgbase = ries
 	source = http://mrob.com/pub/ries/src/ries.c.txt
 	source = http://mrob.com/pub/ries/src/msal_math64.c.txt
 	source = http://mrob.com/pub/ries/doc/ries.1.txt
-	sha256sums = 73f77c1a91496056e5bf7629a848f002055554077793d323edf2c9f2c560152b
-	sha256sums = 98a219b116a15a5ad4768001996823a306d238f84405e75a1e228d81bfabaf2b
-	sha256sums = b36684958adcad867e9be13c707d2f81280c3daf68ee3f0a5400f9ea040faf56
+	sha256sums = 5051931999b73285b0edb87c50e53315c44b783c87adb3594ed0c20d10bc4c1f
+	sha256sums = dfcbe7a9605ab65c81ff802eb48a8ca5453097c24b7f8825c1f59b8894080ed4
+	sha256sums = 875b177a981652834f1fddfd651dff8a3f7e5b3013eef63f852ba97201a5b941
 
 pkgname = ries
-
