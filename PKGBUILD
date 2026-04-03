@@ -23,6 +23,7 @@ makedepends=(
     'gettext'
 )
 provides=("cpdb-libs")
+conflicts=("cpdb-libs")
 
 source=("cpdb-libs::git+https://github.com/OpenPrinting/cpdb-libs.git#branch=master")
 sha256sums=('SKIP')
