@@ -1,14 +1,14 @@
-#Maintainer: Walter Casanova - "Y29udGFjdG9Ad2FsdGVyY2FzYW5vdmEudGVjaAo=" - base64
+#Maintainer: Walter Casanova - "Y29udGFjdG9Ad2FsdGVyY2FzYW5vdmEudGVjaAo="
 
 #indent = tab
 #tab-size = 4
 
 pkgname=ripgrep-all-git
 _pkgname=ripgrep-all
-pkgver=1.0.0.alpha.5.359.g3ccf371
+pkgver=0.10.10.462.g0f10fb9
 pkgrel=1
 pkgdesc="rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/phiresky/ripgrep-all"
 license=('AGPL3')
 makedepends=('cargo' 'git')
@@ -26,9 +26,11 @@ pkgver() {
 }
 
 prepare() {
-	cd ${_pkgname}
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cd "$_pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target host-tuple
 }
+
 
 build() {
 	cd "$_pkgname"
