@@ -1,0 +1,37 @@
+From 39565a7dcf8f93ea22cedeaa20088b24ff6d2634 Mon Sep 17 00:00:00 2001
+From: Nicolas Hug <contact@nicolas-hug.com>
+Date: Fri, 27 Mar 2026 14:29:11 +0000
+Subject: [PATCH] Allow gcc 14 with CUDA 12.8 (#173366)
+
+https://github.com/pytorch/pytorch/pull/168237 broke local TorchVision builds that rely on `CUDAExtension` with CUDA 12.8 and gcc 14. CUDA 12.8 is compatible with gcc 14:
+
+File `/usr/local/cuda-12.8/include/crt/host_config.h`:
+```
+#if __GNUC__ > 14
+
+#error -- unsupported GNU version! gcc versions later than 14 are not supported! The nvcc flag '-allow-unsupported-compiler' can be used to override this version check; however, using an unsupported host compiler may cause compilation failure or incorrect run time execution. Use at your own risk.
+
+#endif /* __GNUC__ > 14 */
+
+```
+Pull Request resolved: https://github.com/pytorch/pytorch/pull/173366
+Approved by: https://github.com/malfet, https://github.com/atalman, https://github.com/mlazos
+---
+ torch/utils/cpp_extension.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/torch/utils/cpp_extension.py b/torch/utils/cpp_extension.py
+index a184eba0ce8a9..68cc261081e39 100644
+--- a/torch/utils/cpp_extension.py
++++ b/torch/utils/cpp_extension.py
+@@ -71,8 +71,8 @@
+     '12.5': ((6, 0, 0), (14, 0)),
+     '12.6': ((6, 0, 0), (14, 0)),
+     '12.7': ((6, 0, 0), (14, 0)),
+-    '12.8': ((6, 0, 0), (14, 0)),
+-    '12.9': ((6, 0, 0), (14, 0)),
++    '12.8': ((6, 0, 0), (15, 0)),
++    '12.9': ((6, 0, 0), (15, 0)),
+     '13.0': ((6, 0, 0), (16, 0)),
+ }
+ 
