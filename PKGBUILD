@@ -2,7 +2,7 @@
 pkgname=open-os-cli-bin
 pkgver=0.5.2
 pkgrel=1
-pkgdesc="Simple terminal with smart AI assistance powered by Ollama"
+pkgdesc="Terminal emulator with private, local AI powered by Ollama"
 arch=('x86_64')
 url="https://open-os.com"
 license=('MIT')

@@ -1,5 +1,5 @@
 pkgbase = open-os-cli-bin
-	pkgdesc = Simple terminal with smart AI assistance powered by Ollama
+	pkgdesc = Terminal emulator with private, local AI powered by Ollama
 	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://open-os.com
