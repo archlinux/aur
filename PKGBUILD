@@ -4,13 +4,13 @@
 
 pkgname=parallel-disk-usage-bin
 pkgver=0.22.0
-source=(pdu-ccf8c508ae23133e5b2ef3bc746de55aa24154ed::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.22.0/pdu-x86_64-unknown-linux-gnu completion.0.22.0.bash::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.22.0/completion.bash completion.0.22.0.fish::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.22.0/completion.fish completion.0.22.0.zsh::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.22.0/completion.zsh pdu.0.22.0.1::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.22.0/pdu.1 https://raw.githubusercontent.com/KSXGitHub/parallel-disk-usage/0.22.0/README.md https://raw.githubusercontent.com/KSXGitHub/parallel-disk-usage/0.22.0/LICENSE)
+source=(pdu-ccf8c508ae23133e5b2ef3bc746de55aa24154ed::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.22.0/pdu-x86_64-unknown-linux-gnu completion.0.22.0.bash::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.22.0/completion.bash completion.0.22.0.fish::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.22.0/completion.fish completion.0.22.0.zsh::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.22.0/completion.zsh pdu.0.22.0.1::https://github.com/KSXGitHub/parallel-disk-usage/releases/download/0.22.0/pdu.1 https://raw.githubusercontent.com/KSXGitHub/parallel-disk-usage/0.22.0/README.md https://raw.githubusercontent.com/KSXGitHub/parallel-disk-usage/0.22.0/USAGE.md https://raw.githubusercontent.com/KSXGitHub/parallel-disk-usage/0.22.0/LICENSE)
 _checksum=ccf8c508ae23133e5b2ef3bc746de55aa24154ed
 _completion_checksums=(SKIP SKIP SKIP)
 # This PKGBUILD is not a full PKGBUILD
 # pkgname, pkgver, source, and sha1sums are to be generated
 pkgdesc='Summarize disk usage of the set of files, recursively for directories.'
-pkgrel=1
+pkgrel=2 # <-- this is a manual modification, not part of the template
 arch=(x86_64)
 license=(Apache-2.0)
 url='https://github.com/KSXGitHub/parallel-disk-usage'
@@ -21,12 +21,14 @@ sha1sums=(
   "${_completion_checksums[@]}" # for the completion files
   SKIP                          # for the man page
   SKIP                          # for the readme file
+  SKIP                          # for the usage file
   SKIP                          # for the license file
 )
 
 package() {
   install -Dm755 "pdu-$_checksum" "$pkgdir/usr/bin/pdu"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 USAGE.md "$pkgdir/usr/share/doc/$pkgname/USAGE.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "completion.$pkgver.bash" "$pkgdir/usr/share/bash-completion/completions/pdu"
   install -Dm644 "completion.$pkgver.fish" "$pkgdir/usr/share/fish/completions/pdu.fish"
