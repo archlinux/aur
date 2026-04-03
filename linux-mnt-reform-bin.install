@@ -1,0 +1,79 @@
+# Maintainer: Stephano Cetola <stephanoc@gmail.com>
+
+_select_dtb_links() {
+    local pkgver="${1%-*}"
+    local model=""
+    local dtb_target=""
+
+    if [ ! -r /proc/device-tree/model ]; then
+        echo "Warning: /proc/device-tree/model not found"
+        echo "No DTB symlink will be created"
+        return 0
+    fi
+
+    model="$(tr -d '\0' < /proc/device-tree/model 2>/dev/null || true)"
+
+    case "$model" in
+        "MNT Pocket Reform with BPI-CM4 Module")
+            dtb_target="meson-g12b-bananapi-cm4-mnt-pocket-reform-${pkgver}.dtb"
+            ;;
+        "MNT Pocket Reform with i.MX8MP Module")
+            dtb_target="imx8mp-mnt-pocket-reform-${pkgver}.dtb"
+            ;;
+        "MNT Reform Next with RCORE RK3588 Module")
+            dtb_target="rk3588-mnt-reform-next-${pkgver}.dtb"
+            ;;
+        *)
+            echo "Warning: Unknown device model: $model"
+            echo "No DTB symlink will be created"
+            return 0
+            ;;
+    esac
+
+    if [ -f "/boot/dtbs/$dtb_target" ]; then
+        ln -sf "dtbs/$dtb_target" "/boot/mnt-reform-${pkgver}.dtb"
+        ln -sf "mnt-reform-${pkgver}.dtb" /boot/mnt-reform.dtb
+        echo "Created symlinks to $dtb_target for model: $model"
+    else
+        echo "Warning: Target DTB $dtb_target not found in /boot/dtbs"
+    fi
+}
+
+pre_upgrade() {
+    echo "==> Running pre-install backup for linux-mnt-reform..."
+
+    if [ -L /boot/Image ]; then
+        IMAGE_TARGET=$(readlink -f /boot/Image)
+        if [ -f "$IMAGE_TARGET" ]; then
+            cp "$IMAGE_TARGET" /boot/Image-old
+            echo "Backed up Image target: $IMAGE_TARGET -> /boot/Image-old"
+        fi
+    elif [ -f /boot/Image ]; then
+        cp /boot/Image /boot/Image-old
+        echo "Backed up Image -> /boot/Image-old"
+    fi
+
+    if [ -L /boot/mnt-reform.dtb ]; then
+        DTB_TARGET=$(readlink -f /boot/mnt-reform.dtb)
+        if [ -f "$DTB_TARGET" ]; then
+            cp "$DTB_TARGET" /boot/mnt-reform-old.dtb
+            echo "Backed up mnt-reform.dtb target: $DTB_TARGET -> /boot/mnt-reform-old.dtb"
+        fi
+    elif [ -f /boot/mnt-reform.dtb ]; then
+        cp /boot/mnt-reform.dtb /boot/mnt-reform-old.dtb
+        echo "Backed up mnt-reform.dtb -> /boot/mnt-reform-old.dtb"
+    fi
+
+    if [ -f /boot/initramfs-linux ]; then
+        cp /boot/initramfs-linux /boot/initramfs-linux-old
+        echo "Backed up initramfs-linux -> /boot/initramfs-linux-old"
+    fi
+}
+
+post_install() {
+    _select_dtb_links "$1"
+}
+
+post_upgrade() {
+    _select_dtb_links "$1"
+}

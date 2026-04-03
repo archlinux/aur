@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = linux-mnt-reform-bin
+
+[Action]
+Description = Updating module dependencies and building initramfs for linux-mnt-reform-bin
+When = PostTransaction
+Exec = /usr/lib/linux-mnt-reform-bin/mnt-reform-initramfs.sh

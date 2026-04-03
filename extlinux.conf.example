@@ -1,0 +1,21 @@
+default l0
+menu title U-Boot menu
+prompt 1
+timeout 1
+
+
+label l0
+        menu label Arch mnt-reform-arm64
+        linux /Image
+        initrd /initramfs-linux
+        fdt /mnt-reform.dtb
+
+        append   ro root=/dev/nvme0n1p1 no_console_suspend cryptomgr.notests ${bootargs} console=tty1 loglevel=3
+
+label l0r
+        menu label Arch mnt-reform-arm64 (rescue target)
+        linux /Image-old
+        initrd /initramfs-linux-old
+        fdt /mnt-reform-old.dtb
+        append   ro root=/dev/nvme0n1p1 no_console_suspend cryptomgr.notests ${bootargs} console=tty1 loglevel=3
+
