@@ -1,6 +1,6 @@
 pkgbase = cliamp
 	pkgdesc = A retro terminal music player inspired by Winamp 2.x
-	pkgver = 1.33.1
+	pkgver = 1.33.7
 	pkgrel = 1
 	url = https://github.com/bjarneo/cliamp
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = cliamp
 	depends = yt-dlp
 	optdepends = pipewire-alsa: audio output on PipeWire systems
 	optdepends = pulseaudio-alsa: audio output on PulseAudio systems
-	source = cliamp-1.33.1.tar.gz::https://github.com/bjarneo/cliamp/archive/refs/tags/v1.33.1.tar.gz
-	sha256sums = dc93679c8f94679d4dca0c22cc9e2d61d62e9ac013c11d9a274587fb98289781
+	source = cliamp-1.33.7.tar.gz::https://github.com/bjarneo/cliamp/archive/refs/tags/v1.33.7.tar.gz
+	sha256sums = 33ae9009a7a35cee1fcb2e0d3a2530f7a98cc77566bfe753c3f640d4202f0b70
 
 pkgname = cliamp
