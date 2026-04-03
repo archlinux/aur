@@ -11,6 +11,7 @@ depends=(
     'qt6-declarative'
     'qt6-svg'
     'qt6-wayland'
+    'fd'
     'rsync'
     'xdg-utils'
 )
@@ -22,10 +23,8 @@ makedepends=(
     'qt6-svg'
 )
 optdepends=(
-    'wl-clipboard: clipboard support via wl-copy'
+    'wl-clipboard: clipboard support via wl-copy and wl-paste'
     'glib2: file operations via gio'
-    'ffmpeg: video file thumbnail previews'
-    'udisks2: mount/unmount devices from sidebar'
 )
 provides=('hyprfm')
 conflicts=('hyprfm')
