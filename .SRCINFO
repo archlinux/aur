@@ -5,10 +5,9 @@ pkgbase = ttf-lxgw-wenkai-nerd
 	url = https://github.com/Yikai-Liao/LxgwWenKaiNerdFont
 	arch = any
 	license = OFL
-	makedepends = unzip
-	source = https://github.com/Yikai-Liao/LxgwWenKaiNerdFont/releases/download/v1.522/lxgw-wenkai-nerd.zip
+	source = ttf-lxgw-wenkai-nerd-1.522.zip::https://github.com/Yikai-Liao/LxgwWenKaiNerdFont/releases/download/v1.522/lxgw-wenkai-nerd-proportional-1.522.zip
 	source = OFL.txt::https://raw.githubusercontent.com/Yikai-Liao/LxgwWenKaiNerdFont/v1.522/OFL.txt
-	sha256sums = 892952fa2cf5597fabe8dbabbcfc31e49566a0c67c7b065a66825d7b4da9944b
+	sha256sums = 869ff25053761f63d0cb36ebcdc87e7dcbfc888a9e9c8c89a7ccf2bdfede9126
 	sha256sums = ef535bf1a3c546928f8e97570f2c72603185f88fa4d82a6df6708348ad4c7614
 
 pkgname = ttf-lxgw-wenkai-nerd
