@@ -6,7 +6,7 @@
 
 pkgname=ut2004-bin
 pkgver=3374
-pkgrel=5
+pkgrel=6
 pkgdesc="Unreal Tournament 2004 ECE native binaries (OldUnreal)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OldUnreal/UT2004Patches"
@@ -15,11 +15,12 @@ depends=('ut2004-data' 'sdl3' 'openal' 'openmp' 'gcc-libs' 'alsa-lib' 'libgl')
 makedepends=()
 provides=('ut2004')
 conflicts=('ut2004-gog' 'ut2004-steam')
-source=("https://github.com/OldUnreal/UT2004Patches/releases/download/${pkgver}-preview-9/OldUnreal-UT2004Patch${pkgver}-Linux-60bd31b3.tar.bz2"
+options=('!strip')
+source=("https://github.com/OldUnreal/UT2004Patches/releases/download/${pkgver}-preview-17/OldUnreal-UT2004Patch${pkgver}-Linux-6369f34c.tar.bz2"
         "ut2004.desktop"
         "ut2004.png"
         "ut2004.sh")
-sha256sums=('0d08e3114dd184e5404afbf751c071576f573f913b39818416559c33308aeaad'
+sha256sums=('fcf195e7c8157bf47797360b85e5df3164b8638297a7fa08cdf200a2b1b1433a'
             '23aaf1232a36a479fd3ab5ee0045ec00d6e52b5c6e27bcf33a2c7386d3251882'
             '9fd35b406dc32caa6a0700bda89ac72f561346b919c4764d943bf4198ec032fd'
             '348caa8129c581df2e8eeeda2c53b4aa376ba7b4007bb18695e98dc574a32b8d')
@@ -39,12 +40,8 @@ package() {
     if [ "$CARCH" == "aarch64" ]; then
         msg2 "Overwriting with ARM64 binaries..."
         for f in "$srcdir/SystemARM64/"*; do
+            # Skip symlinks that point back to the common System folder
             if [ -L "$f" ] && [[ "$(readlink "$f")" == ../System/* ]]; then
-                continue
-            fi
-
-            # https://github.com/OldUnreal/UT2004Patches/issues/250#issuecomment-3904913839
-            if [[ "$(basename "$f")" == "Default.ini" ]] || [[ "$(basename "$f")" == "DefUser.ini" ]]; then
                 continue
             fi
 
@@ -63,7 +60,7 @@ package() {
     # Copy other folders (Textures, etc) if present in patch root
     for folder in "$srcdir/"*; do
         foldername=$(basename "$folder")
-        if [ "$foldername" != "System" ] && [ "$foldername" != "SystemARM64" ] && [ -d "$folder" ]; then
+        if [ "$foldername" != "System" ] && [ "$foldername" != "SystemARM64" ] && [ "$foldername" != "SystemPPC64LE" ] && [ -d "$folder" ]; then
              cp -R "$folder" "$pkgdir/opt/ut2004/"
         fi
     done
