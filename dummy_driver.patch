@@ -1,0 +1,17 @@
+--- a/src/dummy_driver.c
++++ b/src/dummy_driver.c
+@@ -1016,10 +1016,10 @@ dummyDriverFunc(ScrnInfoPtr pScrn, xorgDriverFuncOp op, pointer ptr)
+     CARD32 *flag;
+ 
+     switch (op) {
+-        case GET_REQUIRED_HW_INTERFACES:
+-            flag = (CARD32*)ptr;
+-            (*flag) = HW_SKIP_CONSOLE;
+-            return TRUE;
++    case GET_REQUIRED_HW_INTERFACES:
++        flag = (CARD32*)ptr;
++        /* Allow the driver to allocate a VT instead of skipping the console. */
++        return TRUE;
+         default:
+             return FALSE;
+     }
