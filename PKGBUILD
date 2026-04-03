@@ -1,14 +1,14 @@
 # Maintainer: L Santos <hello@lsantos.dev>
 pkgname="gdlauncher-carbon-bin"
 pkgver="2.0.29"
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 pkgdesc="GDLauncher Carbon is the new version of the simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdlauncher.com"
 license=('ARR')
 # AppImages should not be stripped, as it breaks the AppImage
 options=(!strip)
-makedepends=('gendesk')
+makedepends=('gendesk' 'fuse2')
 conflicts=('gdlauncher' 'gdlauncher-beta' 'gdlauncher-beta-bin' 'gdlauncher-appimage' 'gdlauncher-git' 'gdlauncher-bin' 'gdlauncher-appimage')
 provides=('gdlauncher-carbon')
 source=("${pkgname}-${pkgver}.AppImage::https://cdn-raw.gdl.gg/launcher/GDLauncher__${pkgver}__linux__x64.AppImage"
