@@ -1,7 +1,7 @@
 # Maintainer: Donien <donien.96@hotmail.com>
 
 pkgname="icingadb-web"
-pkgver="1.3.1"
+pkgver="1.4.0"
 pkgrel=1
 epoch=0
 pkgdesc="Provides a graphical interface to your Icinga monitoring "
@@ -38,7 +38,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    "b7f4497bf29fe5823f631bc98ce3cbf7d51f426b19216ff61c2fd37c58c37f75"
+    "af8ff83c9f5b225712b8e1653bf5c702ec2ab4bc90443b92768986f55af90967"
     "SKIP"
     "SKIP"
     "SKIP"
@@ -54,7 +54,7 @@ package() {
         install -m660 "${config}" "${pkgdir}/etc/icingaweb2/modules/icingadb/${config}"
     done
 
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/icingadb-web/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/icingadb-web/LICENSE"
 
     install -dm755 "${pkgdir}/usr/share/webapps/icingaweb2/modules/icingadb/"
     for part in \
