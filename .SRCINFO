@@ -1,6 +1,6 @@
 pkgbase = reasonance-bin
 	pkgdesc = Lightweight IDE for vibecoders who work with LLMs (prebuilt binary)
-	pkgver = 1.1.0
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/TNASRLSB/reasonance
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = reasonance-bin
 	depends = libsoup3
 	provides = reasonance
 	conflicts = reasonance
-	source = reasonance-bin-1.1.0.deb::https://github.com/TNASRLSB/reasonance/releases/download/v1.1.0/reasonance_1.1.0_amd64.deb
+	source = reasonance-bin-3.0.2.deb::https://github.com/TNASRLSB/reasonance/releases/download/v3.0.2/reasonance_3.0.2_amd64.deb
 	sha256sums = SKIP
 
 pkgname = reasonance-bin

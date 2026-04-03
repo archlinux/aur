@@ -1,6 +1,6 @@
 # Maintainer: Reasonance team
 pkgname=reasonance-bin
-pkgver=1.1.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='Lightweight IDE for vibecoders who work with LLMs (prebuilt binary)'
 arch=('x86_64')
@@ -13,7 +13,9 @@ source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/reasonance_${pkgv
 sha256sums=('SKIP')
 
 package() {
-  bsdtar -xf data.tar.gz -C "$pkgdir/"
+  # .deb is an ar archive containing data.tar.* — extract it first
+  bsdtar -xf "$pkgname-$pkgver.deb"
+  bsdtar -xf data.tar.* -C "$pkgdir/"
 
   # License
   install -Dm644 /dev/null "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
