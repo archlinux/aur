@@ -2,7 +2,7 @@
 
 pkgname=python-lauterbach-trace32-pystart
 _name=${pkgname#python-}
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="start Lauterbach TRACE32"
 arch=(any)
@@ -22,8 +22,9 @@ optdepends=()
 provides=(${_name})
 conflicts=(${_name})
 replaces=(${_name})
+_name=${_name//-/_}
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('607cb189b8360f516860abafe2a6f2a0f9efaf1a3cd12dd525cd5b5bd4612860807871715ceaee6bf7c5b9c10a9c5d3617e833865909e42049487c2568288970')
+sha512sums=('4bc72635483fa9903b1ef2813ad93e5c155025f2c7bdf2abc8e47d03508e6d31c0d1752e1462eb0435c9a46ac2dc8bba489cf9598b0cb0e39f0f245d1976d0bd')
 
 build() {
   cd ${srcdir}/$_name-$pkgver
