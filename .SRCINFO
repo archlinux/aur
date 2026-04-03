@@ -1,7 +1,7 @@
 pkgbase = solar2d-git
 	pkgdesc = Solar2D (formerly Corona SDK) cross-platform game engine
-	pkgver = 3728.r0.ab736b71
-	pkgrel = 5
+	pkgver = 3729.r0.afb6ec98
+	pkgrel = 1
 	url = https://github.com/coronalabs/corona
 	install = solar2d-git.install
 	arch = x86_64
