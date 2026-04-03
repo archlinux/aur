@@ -2,20 +2,19 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=robotstxt
-# No released version yet, so versioned based on the number of commits.
+# 1.0.0 was tagged now, but it is not yet building, so keeping the pre-release versions so make sure we can still build it.
 # Zeros to preserve numbering for any future version available.
-# 1.0.0 was tagged now, but it is not yet building.
-pkgver=0.0.0.118
+pkgver=0.0.0.125
 pkgrel=1
 pkgdesc="Google's robots.txt parser and matcher as a C++ library (compliant to C++11)."
 arch=('x86_64')
 url="https://github.com/google/robotstxt"
-license=('Apache')
-depends=('abseil-cpp')
+license=('Apache-2.0')
+depends=('abseil-cpp' 'glibc' 'libgcc' 'libstdc++')
 makedepends=('cmake')
-_git_commit='ba8fa30e5be8b556e233782f91710919eb1f935f'
+_git_commit='22b355ff855419e6a3ff8ff09c0ad7fdb17116f9'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/robotstxt/archive/$_git_commit.tar.gz")
-b2sums=('70036ff8d9e08bd0b511438f571cc21d8fccd5a598eaa645c4f47e6373af73678e2f82c061094cfd561e7df80ba5d28e6bd7b5c395fc51dcd1a59fc659518ae8')
+b2sums=('a6a4084393fd211d25a5512b3f9a53cb6f75481e0afef2cb96445fb7bad35ed6c3658ed0bc1efaaf928846000281354733c4312e16e8e3ced3af726fa9f7d32c')
 
 build() {
   mkdir -p "$srcdir/robotstxt-$_git_commit/c-build"
@@ -32,6 +31,7 @@ build() {
 package() {
   install -dm0755 "$pkgdir/usr/bin"
   install -dm0755 "$pkgdir/usr/lib"
+  ls -lah "$srcdir/robotstxt-$_git_commit/c-build/"
 
   install -m0644 "$srcdir/robotstxt-$_git_commit/c-build/librobots.so" "$pkgdir/usr/lib/librobots.so"
   install -m0755 "$srcdir/robotstxt-$_git_commit/c-build/robots" "$pkgdir/usr/bin/robotstxt"
