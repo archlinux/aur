@@ -1,0 +1,20 @@
+pkgbase = open-os-cli-bin
+	pkgdesc = Simple terminal with smart AI assistance powered by Ollama
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://open-os.com
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = libnotify
+	provides = open-os-cli
+	conflicts = open-os-cli
+	noextract = open-os-cli-bin-0.5.2.pacman
+	options = !strip
+	options = !debug
+	source = open-os-cli-bin-0.5.2.pacman::https://github.com/luishg/open-os-cli/releases/download/v0.5.2/open-os-cli-0.5.2.pacman
+	sha256sums = f943ed331b3a00dce6c019e497f997962778262f619bb320593a182f5244cbf6
+
+pkgname = open-os-cli-bin
