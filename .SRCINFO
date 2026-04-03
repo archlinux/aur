@@ -1,6 +1,6 @@
 pkgbase = ensu-bin
 	pkgdesc = Ente's local LLM app - private, offline AI chat (Tauri)
-	pkgver = 0.1.5
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://ente.io/blog/ensu/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ensu-bin
 	depends = gtk3
 	provides = ensu
 	conflicts = ensu
-	source = ensu_0.1.5_amd64.deb::https://github.com/ente-io/ente/releases/download/ensu-v0.1.5/ensu_0.1.5_amd64.deb
-	sha256sums = 8a40b138ef977ddb1874277c34273a4900010f355d9d2b4b4b486ff3e67b41eb
+	source = ensu_0.1.15_amd64.deb::https://github.com/ente-io/ente/releases/download/ensu-v0.1.15/ensu_0.1.15_amd64.deb
+	sha256sums = 83cfcae9fc6907e68a174330c6a2ddf06c8fa31a2ab197d9d3e7e2f7f2fd9ae9
 
 pkgname = ensu-bin
