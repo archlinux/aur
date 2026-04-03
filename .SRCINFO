@@ -1,0 +1,14 @@
+pkgbase = takeoff
+	pkgdesc = Release automation for Zig projects
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/vmvarela/takeoff
+	arch = x86_64
+	license = MIT
+	provides = takeoff
+	conflicts = takeoff
+	options = !strip
+	source = https://github.com/vmvarela/takeoff/releases/download/v0.3.0/takeoff-v0.3.0-linux-x86_64.tar.gz
+	sha256sums = d473e1fa0289b47f29ff68d1ad4237e5a7ab2fc836be173d70e7073aa075ad57
+
+pkgname = takeoff
