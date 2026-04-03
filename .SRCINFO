@@ -1,7 +1,7 @@
 pkgbase = cursor
 	pkgdesc = The AI Code Editor
 	pkgver = 2.6.22
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.cursor.com
 	arch = x86_64
 	license = LicenseRef-Cursor_EULA

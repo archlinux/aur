@@ -2,7 +2,7 @@
 
 pkgname=cursor
 pkgver=2.6.22
-pkgrel=2
+pkgrel=3
 pkgdesc='The AI Code Editor'
 arch=('x86_64')
 url="https://www.cursor.com"
@@ -58,7 +58,7 @@ package() {
   # Rename pixmap icon and trim transparent padding to match other DE icons
   if [[ -f "$pkgdir/usr/share/pixmaps/co.anysphere.cursor.png" ]]; then
     magick "$pkgdir/usr/share/pixmaps/co.anysphere.cursor.png" \
-      -trim +repage -resize 950x950 -gravity center -extent 1024x1024 \
+      -trim +repage -resize 950x950 -background transparent -gravity center -extent 1024x1024 \
       "$pkgdir/usr/share/pixmaps/cursor.png"
     chmod 644 "$pkgdir/usr/share/pixmaps/cursor.png"
     rm "$pkgdir/usr/share/pixmaps/co.anysphere.cursor.png"
