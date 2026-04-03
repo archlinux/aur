@@ -1,6 +1,6 @@
 # Maintainer: Dmitrij Vinokour <vinokour.dmitrij@gmail.com>
 pkgname=adot-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A minimal dotfile manager"
 arch=('x86_64')
