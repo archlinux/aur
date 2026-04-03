@@ -3,7 +3,7 @@
 _pkgname=wb32-dfu-updater_cli
 pkgname="$_pkgname-git"
 pkgver=1.0.0.r18.g656f6a5
-pkgrel=1
+pkgrel=2
 pkgdesc="USB programmer for downloading and uploading firmware to/from USB devices."
 arch=(x86_64 aarch64)
 url="https://github.com/WestberryTech/wb32-dfu-updater"
@@ -24,7 +24,6 @@ pkgver() {
 
 build() {
   local _cmake_options=(
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -B build
     -S "$_pkgsrc"
     -G Ninja
