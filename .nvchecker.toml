@@ -1,0 +1,5 @@
+[mdc-bin]
+source = "github"
+github = "kooler/MiddayCommander"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,17 @@
+pkgbase = mdc-bin
+	pkgdesc = A TUI dual-panel terminal file manager written in Go, inspired by Midnight Commander.
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/kooler/MiddayCommander
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	provides = mdc
+	conflicts = mdc
+	source_x86_64 = mdc-x86_64-0.3.tgz::https://github.com/kooler/MiddayCommander/releases/download/v0.3/MiddayCommander_0.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 894b5a4472b86df4cd298a094d076a7c723c4e6b5df4ffcbe0b9a01ca78131b8
+	source_aarch64 = mdc-aarch64-0.3.tgz::https://github.com/kooler/MiddayCommander/releases/download/v0.3/MiddayCommander_0.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9b9213eda024a4ec6d0d8eb57c3d9d77184c823cb902a1acf4c0b6de63e37f71
+
+pkgname = mdc-bin
