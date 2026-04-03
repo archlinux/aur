@@ -3,7 +3,7 @@
 _pkgname=tuxedo-drivers
 _reponame=${_pkgname}-nocompatcheck
 pkgname=${_reponame}-dkms
-pkgver=4.15.2
+pkgver=4.21.3
 pkgrel=1
 pkgdesc="TUXEDO Computers kernel module drivers. Compatibility check disabled - works when using identical models from other brands, example being TUXEDO Pulse 14 Gen 4 and Schenker Via 14 Pro (M24)"
 url="https://gitlab.com/kronerm/${_reponame}"
@@ -29,35 +29,21 @@ provides=('tuxedo-drivers-dkms'
 	'ite_8297'
 	'ite_829x')
 conflicts=('tuxedo-drivers-dkms' 'tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
-source=($pkgname-$pkgver.tar.gz::https://gitlab.com/kronerm/${_reponame}/-/archive/v${pkgver}-patched.${pkgrel}/tuxedo-drivers-v${pkgver}-patched.${pkgrel}.tar.gz)
-sha256sums=('6b76fd02c4fed554011a6cc652e94d439e59c93e6400357d55d432638d16554d')
-sha512sums=('dd7a048dd90fb1a0b3f49fb8f7e1bfe516aba246876f9fae3b1eef495fe889d7211bb5b6e7676f214328efe235d15a71b62f16b9ad839e51a3a5d5edd1b2b9dc')
+source=($pkgname-$pkgver.tar.gz::https://gitlab.com/kronerm/${_reponame}/-/archive/v${pkgver}-patched.${pkgrel}/tuxedo-drivers-v${pkgver}-patched.${pkgrel}.tar.gz dkms.conf)
+sha256sums=('9cb75418c7473ed44e298ffd0777bc96b3a2471b3ab16804d79567075ec37480'
+            '0b1f2ceb729b1944504d1227e39b202159076846aaa38f8b6237b9535e543a21')
+sha512sums=('3b56757ec500a7dffa8a5ae6a6da6e83c7eb3c6f2e73e12156b56ea1b93d8d57a4b817ad96210e3daa24c8dab95584a5260161ebd54e638275ea4b15c2448127'
+            'dda443b5966221a355fecdae7a2eb23346666cbcf93707d2fff660a32ec75cee592ae211c8d22e55413d530f59e8667292a0346d8bf6b2d280b45f3bc09efafd')
 
 package() {
 	extracted_source_dir=("$_reponame"-v"$pkgver"-patched."$pkgrel"-*/)
 
-	target_dkms_dir="$pkgdir"/usr/src/"$_pkgname"-v"$pkgver"/
-	target_dkms_file="$target_dkms_dir"/dkms.conf
-
-	udev_rules_dir="$pkgdir"/etc/udev/rules.d/
-	udev_hwdb_dir="$pkgdir"/usr/lib/udev/hwdb.d/
-
-	modprobe_dir="$pkgdir"/usr/lib/modprobe.d/
-
-	install -Dm644 "$extracted_source_dir"/debian/tuxedo-drivers.dkms "$target_dkms_file"
-	sed "s/#MODULE_VERSION#/$pkgver/" "$target_dkms_file"
-
+	target_dkms_dir="$pkgdir"/usr/src/"$_pkgname"-v"$pkgver"
+	install -Dm644 "$srcdir"/dkms.conf "$target_dkms_dir"/dkms.conf
+	sed "s/#MODULE_VERSION#/$pkgver/" "$target_dkms_dir"/dkms.conf
 	cp -avr "$extracted_source_dir"/src/* "$target_dkms_dir"
 
-	install -Dm644 "$extracted_source_dir"/61-keyboard-tuxedo.hwdb -t "$udev_hwdb_dir"
-	install -Dm644 "$extracted_source_dir"/61-sensor-tuxedo.hwdb -t "$udev_hwdb_dir"
-
-	install -Dm644 "$extracted_source_dir"/99-tuxedo-fix-infinity-flex-touchpanel-toggle.rules -t "$udev_rules_dir"
-	install -Dm644 "$extracted_source_dir"/99-tuxedo-fix-intel-gen13-sleep-state.rules -t "$udev_rules_dir"
-	install -Dm644 "$extracted_source_dir"/99-tuxedo-fix-pulse-gen2-wakeup-through-nvme-controller.rules -t "$udev_rules_dir"
-	install -Dm644 "$extracted_source_dir"/99-tuxedo-fix-nb02-touchpad-mouse.rules -t "$udev_rules_dir"
-	install -Dm644 "$extracted_source_dir"/99-tuxedo-fix-realtek-rts522a-idle-behaviour.rules -t "$udev_rules_dir"
-	install -Dm644 "$extracted_source_dir"/99-tuxedo-fix-systemd-led-bootdelay.rules -t "$udev_rules_dir"
-
-	install -Dm644 "$extracted_source_dir"/tuxedo_keyboard.conf -t "$modprobe_dir"
+	install -Dm644 "$extracted_source_dir"/files/usr/lib/modprobe.d/*.conf -t "$pkgdir"/usr/lib/modprobe.d/
+	install -Dm644 "$extracted_source_dir"/files/usr/lib/udev/rules.d/*.rules -t "$pkgdir"/usr/lib/udev/rules.d/
+	install -Dm644 "$extracted_source_dir"/files/usr/lib/udev/hwdb.d/*.hwdb -t "$pkgdir"/usr/lib/udev/hwdb.d/
 }
