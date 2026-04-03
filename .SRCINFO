@@ -1,0 +1,21 @@
+pkgbase = babyobounce-git
+	pkgdesc = A 3D remake of a QBasic game called Baby
+	pkgver = r39.b444492
+	pkgrel = 1
+	url = https://gitlab.com/Modanung/babyobounce
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = CC0-1.0
+	license = CC-BY-3.0
+	license = CC-BY-4.0
+	license = CC-BY-SA-4.0
+	makedepends = git
+	makedepends = qt5-base
+	depends = dry
+	depends = hicolor-icon-theme
+	provides = babyobounce
+	conflicts = babyobounce
+	source = babyobounce-git::git+https://gitlab.com/Modanung/babyobounce.git
+	sha512sums = SKIP
+
+pkgname = babyobounce-git

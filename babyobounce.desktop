@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Baby-O-Bounce
+Comment=A 3D remake of a QBasic game called Baby
+GenericName=Bouncing baby game
+Exec=babyobounce
+Icon=babyobounce
+Terminal=false
+StartupNotify=false
+Categories=Game;
+Keywords=Modanung;

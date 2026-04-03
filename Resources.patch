@@ -1,0 +1,52 @@
+diff --git a/BabyOBounce.pro b/BabyOBounce.pro
+index 0dd496e..7249e2f 100755
+--- a/BabyOBounce.pro
++++ b/BabyOBounce.pro
+@@ -20,3 +20,21 @@ CONFIG -= qt
+ DISTFILES += \
+     LICENSE_TEMPLATE
+ 
++unix
++{
++    isEmpty(DATADIR) DATADIR = $$(XDG_DATA_HOME)
++    isEmpty(DATADIR) DATADIR = $$(HOME)/.local/share
++
++    target.path = /usr/games/
++    INSTALLS += target
++
++    resources.path = $$DATADIR/babyobounce/
++    resources.files = Resources/*
++    INSTALLS += resources
++
++    icon.path = $$DATADIR/icons/
++    icon.files = Resources/Textures/Baby.png
++    INSTALLS += icon
++
++    DEFINES += RESOURCEPATH=\\\"$${resources.path}\\\"
++}
+diff --git a/src/mastercontrol.cpp b/src/mastercontrol.cpp
+index 3513bf4..4d63594 100755
+--- a/src/mastercontrol.cpp
++++ b/src/mastercontrol.cpp
+@@ -41,11 +41,20 @@ void MasterControl::Setup()
+ {
+     SetRandomSeed(TIME->GetSystemTime());
+ 
++    FileSystem* fs{ GetSubsystem<FileSystem>() };
++    String resourcePath{ "Resources" };
++    if (!fs->DirExists(AddTrailingSlash(fs->GetProgramDir()) + resourcePath))
++    {
++        const String installedResources{ RemoveTrailingSlash(RESOURCEPATH) };
++        if (fs->DirExists(installedResources))
++            resourcePath = installedResources;
++    }
++
+     engineParameters_[EP_LOG_NAME] = GetSubsystem<FileSystem>()->GetAppPreferencesDir("luckey", "logs")+"BabyOBounce.log";
+     engineParameters_[EP_WINDOW_TITLE] = "Baby-O-Bounce";
+     engineParameters_[EP_WINDOW_ICON] = "Textures/Baby.png";
+     engineParameters_[EP_WORKER_THREADS] = false;
+-    engineParameters_[EP_RESOURCE_PATHS] = "Resources";
++    engineParameters_[EP_RESOURCE_PATHS] = resourcePath;
+ }
+ 
+ void MasterControl::Start()
