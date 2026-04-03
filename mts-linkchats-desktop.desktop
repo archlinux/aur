@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=MTS LinkChats
+Exec="/usr/bin/mts-linkchats-desktop" %U
+Terminal=false
+Type=Application
+Icon=mts-linkchats-desktop
+StartupWMClass=MTS LinkChats
+Encoding=UTF-8
+MimeType=x-scheme-handler/wbnr;
+Comment=MTS Linkchats desktop
+Categories=Office;VideoConference;
