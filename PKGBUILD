@@ -1,13 +1,15 @@
 pkgname=lua51-dbus_proxy
 _pkgname=lua-dbus_proxy
-_modname=dbus_proxy
+_rockname=dbus_proxy
+_rockrel=1
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple API around GLib's GIO:GDBusProxy built on top of lgi"
 arch=(any)
 license=(Apache-2.0)
 url=https://github.com/stefano-m/lua-dbus_proxy
 depends=(lua51-lgi)
+makedepends=(lua51 luarocks)
 optdepends=(
   "lua51: Lua 5.1 implementation"
   "luajit: Alternative Lua 5.1 implementation"
@@ -18,6 +20,8 @@ b2sums=('fe3445f53e0a53231a4671bc62afcbc68e095ea9b6f771437f4747a881359897bc16826
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
 
-  install -Dm644 -t "$pkgdir/usr/lib/lua/5.1/$_modname" src/$_modname/*
+  luarocks --lua-version=5.1 --tree="$pkgdir/usr/" \
+      make --deps-mode=none --no-manifest "rockspec/$_rockname-$pkgver-$_rockrel.rockspec"
+
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" CHANGELOG README.md
 }

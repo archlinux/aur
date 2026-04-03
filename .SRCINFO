@@ -1,10 +1,12 @@
 pkgbase = lua51-dbus_proxy
 	pkgdesc = Simple API around GLib's GIO:GDBusProxy built on top of lgi
 	pkgver = 0.10.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stefano-m/lua-dbus_proxy
 	arch = any
 	license = Apache-2.0
+	makedepends = lua51
+	makedepends = luarocks
 	depends = lua51-lgi
 	optdepends = lua51: Lua 5.1 implementation
 	optdepends = luajit: Alternative Lua 5.1 implementation
