@@ -66,7 +66,6 @@ package_tlp-pd-git() {
     glib2
     polkit
     python
-    python-dbus
     python-gobject
     tlp
   )
