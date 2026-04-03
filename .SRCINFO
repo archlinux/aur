@@ -9,5 +9,6 @@ pkgbase = audium
 	source = https://github.com/takashialpha/audium/releases/download/v0.9.1/audium-v0.9.1-x86_64-linux.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/takashialpha/audium/v0.9.1/LICENSE
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = audium

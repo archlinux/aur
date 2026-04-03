@@ -9,7 +9,7 @@ depends=('alsa-lib')
 
 source=("https://github.com/takashialpha/audium/releases/download/v${pkgver}/audium-v${pkgver}-x86_64-linux.tar.gz"
 "LICENSE::https://raw.githubusercontent.com/takashialpha/audium/v${pkgver}/LICENSE")
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 package() {
   cd "$srcdir"
