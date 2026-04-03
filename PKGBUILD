@@ -1,9 +1,10 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 # Maintainer: duzda <duzda@disroot.org>
 
-_electron=electron37
+_electronversion=40
+_electron=electron$_electronversion
 pkgname=deezer-enhanced
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='An unofficial application for Deezer with enhanced features'
 arch=(any)
@@ -13,18 +14,26 @@ depends=("$_electron")
 makedepends=(npm)
 options=('!debug')
 source=("$url/archive/v$pkgver.tar.gz"
-        "$pkgname.js"
-		"$pkgname.desktop")
-sha512sums=('bb268c5cc57a9e347dd56bcf74d8b581ef7947841e63c59ee3d0e1db9251d90e17b5ae984da022503b234bf28f0a214a35de22c54cbc3b24b935aaada026b712'
-            'e359569fbd9767a7276cb754010d8bf4dcd35fd958bbc3c50baa042bceebc132a10e302810821e77d730873efa5511bccbcf89d18f146a29e1e94a5a96a1ba0f'
-			'29a213a0c1e70861afb1ca6771b716803edc97334ac1f002ceda01db1dd11fdf22a33720c74ee1cd77ffb5e6c20dd2465269a00fabc71ae26f1f5e79398b122b')
+	"$pkgname.sh"
+	"$pkgname.desktop")
+sha512sums=('7e4dda22ad11066aceae708adf3e63bdc3f182abe4539e3d71ed727f20ce86847d31fd5b184e2fd2b6632289a2784008bb928e3e1fd97410bf21235bbfa55024'
+	'a1a21687ca383db424566c97a3cd2439e9ca8165982845edbb151957f2015efb0e9ba427a0269b4144dab4923fb65abe1ba91b9dd1434428b9d73a63f7fadb7d'
+	'1ece0a5434f13119ff834834a190b7a2de185b78370d07ba21b3019c8c3939e0e61a8ad96148fbf4e95bf401fa611dc7a0d8f5e86824fe812a4290dc7539d85a')
+
+prepare() {
+	sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%}/g
+        s/@cfgdirname@/${pkgname%}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%}.sh"
+}
 
 build() {
 	cd "$pkgname-$pkgver"
 
 	npm i && npm run package
 	rm -rf out
-	sed -i "s~@ELECTRON@~$_electron~" "$srcdir/$pkgname.js"
 }
 
 package() {
@@ -36,7 +45,7 @@ package() {
 
 	install -Dm644 build/icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
-	install -Dm755 "$srcdir/$pkgname.js" "$pkgdir/usr/bin/$pkgname.js"
+	install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname.sh"
 	install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
 	install -d "$pkgdir/usr/share/licenses/$pkgname"
@@ -44,8 +53,8 @@ package() {
 
 	find "$pkgdir$_appdir" \
 		-name "package.json" \
-			-exec sed -e "s|${srcdir}/${pkgname}|${appdir}|" \
-				-i {} \; \
+		-exec sed -e "s|${srcdir}/${pkgname}|${appdir}|" \
+		-i {} \; \
 		-or -name "bin" -prune -exec rm -r '{}' \; \
 		-or -name "example" -prune -exec rm -r '{}' \; \
 		-or -name "examples" -prune -exec rm -r '{}' \; \

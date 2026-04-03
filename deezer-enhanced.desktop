@@ -1,9 +1,10 @@
 [Desktop Entry]
 Name=Deezer Enhanced
-Exec=deezer-enhanced.js
+Exec=deezer-enhanced.sh %U
 Terminal=false
 Type=Application
 Icon=deezer-enhanced
 StartupWMClass=Deezer Enhanced
 Comment=An unofficial application for Deezer with enhanced features.
 Categories=Audio;AudioVideo;
+MimeType=x-scheme-handler/deezer
