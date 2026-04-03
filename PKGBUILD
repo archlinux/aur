@@ -1,5 +1,5 @@
 pkgname="kitchenowl"
-pkgver=0.6.9
+pkgver=0.7.7
 pkgrel=1
 pkgdesc="KitchenOwl is a self-hosted grocery list and recipe manager."
 arch=("x86_64")
@@ -11,12 +11,10 @@ source=(
   "launcher.sh"
   "${pkgname%}-${pkgver}.tar.gz::https://github.com/TomBursch/kitchenowl/releases/download/v${pkgver}/kitchenowl_Linux.tar.gz"
 )
-sha256sums=(
-  "06f7b7e317e1732feda0bce957af7bf7b8a797147d865951df21532cb949863b"
-  "8ec1df01450010aefb23728c69b8ff6eb2d9ceae9e1e1464374c6f0ae36a30c1"
-  "15c3bbe7db615abc3745c5d013e0c04b6e47ad48265ecdc077d59dadcdb1bffa"
-  "8c37cd507ad46cb99ed894e1c6ccdae114c5a5277712ea9ee4fcc6cb8672e35f"
-)
+sha256sums=('06f7b7e317e1732feda0bce957af7bf7b8a797147d865951df21532cb949863b'
+            '8ec1df01450010aefb23728c69b8ff6eb2d9ceae9e1e1464374c6f0ae36a30c1'
+            '15c3bbe7db615abc3745c5d013e0c04b6e47ad48265ecdc077d59dadcdb1bffa'
+            'dec80fa3ed03cc44ad250e8f5468677f8efec53e0474fa3aea61f2b313b624cf')
 
 package() {
   install -d "$pkgdir/opt/${pkgname}"
