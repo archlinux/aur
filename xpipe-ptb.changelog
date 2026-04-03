@@ -1,1 +1,2 @@
 - Add automatic fallback to disable hardware acceleration on Linux when the graphics driver had issues
+- Fix password manager agent option not showing key list when used for git SSH auth
