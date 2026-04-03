@@ -3,9 +3,9 @@
 pkgname=tarotcaster
 _pkgname=TarotCaster
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Tarot Casting Application with AI Interpretation of Spreads'
-arch=('x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/alamahant/${_pkgname}"
 license=('GPL-3.0-only')
 depends=('qt6-base' 'hicolor-icon-theme')
