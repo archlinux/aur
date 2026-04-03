@@ -1,0 +1,18 @@
+pkgbase = android-platform-36
+	pkgdesc = Android SDK Platform, latest API
+	pkgver = 36_r02
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	provides = android-platform=36
+	conflicts = android-platform=36
+	options = !strip
+	source = https://dl.google.com/android/repository/platform-36_r02.zip
+	source = package.xml
+	sha256sums = 37607369a28c5b640b3a7998868d45898ebcb777565a0e85f9acf36f29631d2e
+	sha256sums = 82d4bc7a6c70a6fb9f932e710e7339924029b05ef6a591bd9c63b6f05c195294
+
+pkgname = android-platform-36
+	depends = android-sdk
+	depends = android-sdk-platform-tools
