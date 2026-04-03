@@ -5,6 +5,7 @@ pkgbase = redis
 	url = https://redis.io/
 	install = redis.install
 	arch = x86_64
+	arch = aarch64
 	license = AGPL-3.0-only
 	makedepends = systemd
 	makedepends = openssl
