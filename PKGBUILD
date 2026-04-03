@@ -1,4 +1,5 @@
-# Maintainer: Songun Lee <leesongun@naver.com>
+# Maintainer: Nikolai Nechaev <nikolay_nechaev@mail.ru>
+# Contributor: Songun Lee <leesongun@naver.com>
 
 pkgname=wlhangul-git
 _pkgname=wlhangul
@@ -13,6 +14,7 @@ makedepends=('meson' 'git')
 provides=('wlhangul')
 source=('git+https://github.com/emersion/wlhangul.git')
 sha256sums=('SKIP')
+
 build() {
 	cd "$srcdir"/"$_pkgname"
 	meson build/
