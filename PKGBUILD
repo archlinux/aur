@@ -1,7 +1,7 @@
 pkgname=neuro-karaoke-wrapper-git
 _pkgname=neuro-karaoke-wrapper
 _execname=neuro-karaoke-player
-pkgver=1.5.1.r0.cfc6434
+pkgver=1.5.2.r1.f73fa63
 pkgrel=1
 pkgdesc='Desktop wrapper for neurokaraoke.com with media controls and tray support'
 arch=('x86_64' 'aarch64')
