@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
-pkgver='5.0.2.20260127'
+pkgver='5.0.3.20260129'
 libaddr2line_commit=2c580cba4764faf5605592ae201f892df937ef12
 pkgrel='2'
 arch=('x86_64')
@@ -10,12 +10,10 @@ license=('LGPL-2.1-or-later')
 depends=(openmpi libunwind papi libxml2 zlib python)
 source=("https://github.com/bsc-performance-tools/$pkgname/archive/${pkgver%.*}.tar.gz"
         "https://github.com/bsc-performance-tools/libaddr2line/archive/${libaddr2line_commit}.tar.gz"
-        0001-Completes-previous-commit-da23a83294f1163a376d7acc3e.patch
         extrae-Fix-make-DESTDIR-.-install-for-Extrae-4.0.2.patch
         extrae-Fix-references-to-the-build-directory.patch)
-sha512sums=(25b0385b595afeeff49a7ec600a8ec0d4e086dcb4b1c6039666b0027b6e41120dfe0d922dcf4a02695acf573b49c55ee0960da59879551a941b15c12a984f933
+sha512sums=(bf26ffbeaa785ad1cca25927c8ba12b8ea073dfffb603254483762d8031f573412deefa5dba27a6c98a81cfc902a8e10b52f51abc8aaded96e540766ef199f5a
             1fe33bd210ad770921ca5af6d3ee5b9f530448a79b17f52546a43ae4c8afbdc9fe81a1209af9526eb8690548ded44a3c5c0aa7e4ce6214723e191953bf591c32
-            c3be092a07e019fc8a78c96693e857146e13fe3d826967b876c82a3f4c35d15fc932603ff758e8b048e0a967e7b6d042f118338673afb6178f12d69fc8270ff2
             e90d108ac4531d68ba8bced44db71139cb7b4273f97ec994582150eb9d4f71960c525c1b3ad2fac95d678f91494b5299bfb00513a0a58cc5b6d916eb930af2d5
             a5085d4e974a98cb6266502e06bd2b5a45e213f7d322e8f6cffccbaf92a7f414641b6e6578f87f76dbbb3e4f89b3c268dc33e813c13ea5512e52d1b241317f2a)
 
@@ -25,7 +23,6 @@ prepare() {
 	rm -df libaddr2line
 	ln -s "../libaddr2line-${libaddr2line_commit}/" libaddr2line
 
-	patch -Np1 -i "$srcdir/0001-Completes-previous-commit-da23a83294f1163a376d7acc3e.patch"
 	patch -Np1 -i "$srcdir/extrae-Fix-make-DESTDIR-.-install-for-Extrae-4.0.2.patch"
 	patch -Np1 -i "$srcdir/extrae-Fix-references-to-the-build-directory.patch"
 
