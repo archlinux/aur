@@ -1,16 +1,13 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-git
 pkgver=r4.0dabc1d
-pkgrel=10
+pkgrel=11
 pkgdesc="Shorin DMS Niri desktop environment (Dependencies & Dotfiles)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
 license=('GPL')
 provides=('shorin-dms-niri-meta' 'shorin-dms-niri-dotfiles-git')
 conflicts=('shorin-dms-niri-meta' 'shorin-dms-niri-dotfiles-git')
-optdepends=(
-    'opencode: 开源 AI 助手'
-)
 depends=(
 
     'bash'
@@ -36,7 +33,7 @@ depends=(
     # Terminal Setup
     'kitty' 'xdg-terminal-exec' 'bat' 'fuzzel' 'wf-recorder' 'wl-screenrec-git' 
     'ttf-jetbrains-maple-mono-nf-xx-xx' 'eza' 'zoxide' 'starship' 'jq' 'fish'
-    'timg' 'imagemagick' 'shorin-contrib-git' 'fastfetch' 'gdu' 'btop'
+    'timg' 'imagemagick' 'shorin-contrib-git' 'fastfetch' 'gdu' 'btop' 'opencode'
 
     # Flatpak & Theme
     'flatpak' 'bazaar' 'matugen' 'adw-gtk-theme' 'python-pywalfox' 'nwg-look' 'breeze-cursors'
