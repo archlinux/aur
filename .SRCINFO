@@ -1,6 +1,6 @@
 pkgbase = opencode-dynamic-context-pruning
 	pkgdesc = Dynamic context pruning plugin for OpenCode - intelligently manages conversation context to optimize token usage .
-	pkgver = 3.1.5
+	pkgver = 3.1.6
 	pkgrel = 1
 	url = https://github.com/Opencode-DCP/opencode-dynamic-context-pruning
 	install = opencode-dynamic-context-pruning.install
@@ -11,7 +11,7 @@ pkgbase = opencode-dynamic-context-pruning
 	conflicts = opencode-dynamic-context-pruning-debug
 	options = !strip
 	options = !debug
-	source = opencode-dynamic-context-pruning-3.1.5.tar.gz::https://github.com/Opencode-DCP/opencode-dynamic-context-pruning/archive/refs/tags/v3.1.5.tar.gz
-	sha256sums = d90f223094be77df57aa43c6b04af439dab470da7a4af381b717541c51c388e7
+	source = opencode-dynamic-context-pruning-3.1.6.tar.gz::https://github.com/Opencode-DCP/opencode-dynamic-context-pruning/archive/refs/tags/v3.1.6.tar.gz
+	sha256sums = bf3bc54620b7352cd86d6e27d5bfe35962e786e1c342a397c91c5781bb38fe20
 
 pkgname = opencode-dynamic-context-pruning
