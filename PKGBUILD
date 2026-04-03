@@ -3,10 +3,10 @@
 : ${aur_llamacpp_build_universal:=false}
 
 pkgname=llama.cpp-clblast
-pkgver=b8586
+pkgver=b8644
 pkgrel=1
-_build_number=8586
-_commit_id=64ac9ab
+_build_number=8644
+_commit_id=39b27f0
 pkgdesc="Port of Facebook's LLaMA model in C/C++(with Unofficial CLBlast Backend support)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'

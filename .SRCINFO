@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-clblast
 	pkgdesc = Port of Facebook's LLaMA model in C/C++(with Unofficial CLBlast Backend support)
-	pkgver = b8586
+	pkgver = b8644
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = llama.cpp-clblast
 	conflicts = llama.cpp-cuda
 	conflicts = llama.cpp-opencl
 	conflicts = llama.cpp-openvino
-	source = llama.cpp-b8586.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b8586.tar.gz
+	source = llama.cpp-b8644.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b8644.tar.gz
 	source = llama.cpp.conf
 	source = llama.cpp.service
 	source = 0001-add-clblast-to-cmake.patch
