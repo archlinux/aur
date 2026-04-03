@@ -1,0 +1,20 @@
+pkgbase = heirloom-ex-vi
+	pkgdesc = The traditional vi (heirloom vi with many enhancements from Gunnar Ritter)
+	pkgver = 4.1.3
+	pkgrel = 1
+	url = https://github.com/n-t-roff/heirloom-ex-vi
+	arch = i686
+	arch = x86_64
+	license = 0BSD
+	depends = glibc
+	depends = ncurses
+	depends = bash
+	provides = vi
+	provides = ex
+	provides = heirloom-ex-vi
+	conflicts = heirloom-ex-vi
+	conflicts = heirloom-ex-vi-cvs
+	source = https://github.com/n-t-roff/heirloom-ex-vi/archive/refs/tags/4.1.3.tar.gz
+	sha256sums = 7d3d38f94ce651b9521c0db2b824f85f2e587afab23951b51484f8f21d3614f3
+
+pkgname = heirloom-ex-vi
