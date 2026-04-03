@@ -1,6 +1,6 @@
 pkgbase = anizium-desktop-bin
 	pkgdesc = Anizium için modern, sade ve Discord destekli Linux masaüstü uygulaması
-	pkgver = 1.5.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/P4ndaShi/Anizium-Desktop-Linux
 	arch = x86_64
@@ -11,11 +11,12 @@ pkgbase = anizium-desktop-bin
 	depends = alsa-lib
 	depends = libxss
 	depends = libxtst
+	depends = libsecret
 	provides = anizium-desktop
 	conflicts = anizium-desktop
 	options = !strip
 	options = !debug
-	source = anizium-desktop-bin-1.5.3.pacman::https://github.com/P4ndaShi/Anizium-Desktop-Linux/releases/download/v1.5.3/anizium-desktop-1.5.3.pacman
-	sha256sums = 150eb2a3c0eb6686d4b4ce08f085c50fc922617286a8db45e9c671702ccc0abd
+	source = ${pkgname}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/anizium-desktop-${pkgver}.pacman
+	sha256sums = 63fb6fcb832fbcd6f30adb1e1b65e3dc0d83f948df6cb203bd36872e5aba37ca
 
 pkgname = anizium-desktop-bin
