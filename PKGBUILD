@@ -1,9 +1,9 @@
-# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 # Contributor: Josef Miegl <josef@miegl.cz>
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=13.3.1.4
+pkgver=14.1.1.4
 pkgrel=1
 pkgdesc="A media relay for RTP sessions"
 arch=('x86_64')
@@ -22,6 +22,7 @@ depends=(
   'libconfig'
   'libcurl-gnutls'
   'libevent'
+  'libjwt2'
   'libmnl'
   'libnftnl'
   'libpcap'
@@ -36,9 +37,17 @@ depends=(
   'pcre2'
   'perl'
   'perl-bencode'
+  'perl-config-tiny'
+  'perl-crypt-openssl-rsa'
+  'perl-crypt-rijndael'
   'perl-data-dumper'
+  'perl-digest-crc'
+  'perl-digest-hmac'
+  'perl-io-multiplex'
   'perl-io-socket-ip'
   'perl-json'
+  'perl-libwww'
+  'perl-net-interface'
   'perl-socket6'
   'perl-xmlrpc-lite'
   'spandsp'
@@ -54,22 +63,17 @@ makedepends=(
 )
 checkdepends=(
   'bash'
-  'perl-crypt-openssl-rsa'
-  'perl-crypt-rijndael'
-  'perl-digest-crc'
-  'perl-digest-hmac'
   'perl-exporter-tidy'
-  'perl-io-multiplex'
-  'perl-net-interface'
   'python-websockets'
 )
 optdepends=('rtpengine-kernel-dkms: Kernel module support for RTPengine')
 options=(!emptydirs)
 backup=('etc/rtpengine/rtpengine.conf'
-        'etc/rtpengine/rtpengine-recording.conf')
+        'etc/rtpengine/rtpengine-recording.conf'
+        'etc/sysconfig/rtpengine')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr${pkgver}.tar.gz"
         "${pkgname}.sysusers")
-sha256sums=('b67f3589b9cf51df80908d80645f323a2bcaf35ee59326b4dc3660a721ed8250'
+sha256sums=('0c7684d1789f5a6fb862c8225f858752ea4c93ade6e6b1238f8e4edca9c34f38'
             '9ee6664c7368cc0466d813c199c997ac4889eb0e72f7f0b51149510cf0ae0b3e')
 
 build() {
@@ -89,6 +93,9 @@ package() {
   # Install configuration files
   install -Dm644 "etc/${pkgname}.conf" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
   install -Dm644 "etc/${pkgname}-recording.conf" "${pkgdir}/etc/${pkgname}/${pkgname}-recording.conf"
+
+  # Install sysconfig environment file for systemd service
+  install -Dm644 el/${pkgname}.sysconfig "${pkgdir}/etc/sysconfig/${pkgname}"
 
   # Install systemd service files from the el directory
   install -Dm644 el/${pkgname}.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
