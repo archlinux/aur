@@ -1,7 +1,7 @@
 pkgbase = rocm-nightly-gfx1151-bin
 	pkgdesc = AMD ROCm Nightly Release (gfx1151) - Monolithic Install
 	pkgver = 7.13.0a20260402
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocm.nightlies.amd.com
 	arch = x86_64
 	license = MIT
