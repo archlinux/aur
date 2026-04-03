@@ -7,7 +7,7 @@ _author=PETDANCE
 _dist=Test-WWW-Mechanize
 pkgname=perl-${_dist@L}
 pkgver=1.60
-pkgrel=3
+pkgrel=4
 pkgdesc='Testing-specific WWW::Mechanize subclass'
 arch=('any')
 url=https://metacpan.org/release/$_author/$_dist-$pkgver
@@ -34,10 +34,7 @@ checkdepends=(
     'perl-test-simple'
     'perl-uri'
 )
-optdepends=(
-    'perl-html-lint: autolinting'
-    'perl-html-tidy5: autolinting'
-)
+optdepends=('perl-html-lint: autolinting')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('23fd72e7ed1be79de1d02a2d15f0df093415e0eab6fc615ff6bb688741268677')

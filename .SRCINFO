@@ -1,7 +1,7 @@
 pkgbase = perl-test-www-mechanize
 	pkgdesc = Testing-specific WWW::Mechanize subclass
 	pkgver = 1.60
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/PETDANCE/Test-WWW-Mechanize-1.60
 	arch = any
 	license = Artistic-2.0
@@ -22,7 +22,6 @@ pkgbase = perl-test-www-mechanize
 	depends = perl-www-mechanize>=1.68
 	depends = perl>=5.10.0
 	optdepends = perl-html-lint: autolinting
-	optdepends = perl-html-tidy5: autolinting
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Test-WWW-Mechanize-1.60.tar.gz
 	sha256sums = 23fd72e7ed1be79de1d02a2d15f0df093415e0eab6fc615ff6bb688741268677
