@@ -1,7 +1,7 @@
 # Maintainer: Laura Demkowicz-Duffy <dev@demkowiczduffy.co.uk>
 pkgname=abra-bin
 _pkgname=abra
-pkgver=0.12.0_beta
+pkgver=0.13.0_beta
 _pkgver="${pkgver/_/-}"
 pkgrel=1
 pkgdesc="the flagship client & command-line for Co-op Cloud"
@@ -13,9 +13,9 @@ conflicts=('abra')
 source_x86_64=("https://git.coopcloud.tech/coop-cloud/abra/releases/download/$_pkgver/abra_${_pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://git.coopcloud.tech/coop-cloud/abra/releases/download/$_pkgver/abra_${_pkgver}_linux_arm64.tar.gz")
 source_armv7h=("https://git.coopcloud.tech/coop-cloud/abra/releases/download/$_pkgver/abra_${_pkgver}_linux_armv7.tar.gz")
-sha256sums_x86_64=('6ff3b36de07547ba29ae705fcc001ad17663572023e2505fb9576f38a608eeab')
-sha256sums_aarch64=('b90bbc18765c75e96c4b8ab014a89ba3cc4bda2062ad1f106842123c3399376e')
-sha256sums_armv7h=('1eb282c7ee47d1f48fdd7bcda9e64283b061bb4c0f8bc3ffdbdada9356db83ba')
+sha256sums_x86_64=('866d5cda85929e99787f0f385d0ab8e83759a051843afcaf6669de70b9999a89')
+sha256sums_aarch64=('f39971f50ec3a460009aaaa8e630ed4801627b26571ffb8fb06439390c05da8b')
+sha256sums_armv7h=('5f0ff68ca2481cfcbc95cdbb00b1ba9df27c14077568b0fb121bcc9c2534a523')
 
 package() {
 	install -Dm0755 abra "$pkgdir/usr/bin/abra"
