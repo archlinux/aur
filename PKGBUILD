@@ -1,7 +1,7 @@
 # Maintainer: Pavel Dobiáš <mail at paveldobias dot eu>
 
 pkgname=cubyz
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='An open-world adventure game where creativity knows no bounds!'
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ source=(
 sha256sums=(
   '4e09f9de852c3c3f8a7a5184515f82ed3da8b592130fb7cf07c64ec9456b8259'
   'ec3d1bc6c14c1d0c3cbfaf1a998301d81ad28ce1ead86186a49a67d0b8e5873b'
-  'b6378074bd11e3d08976b8b1be886f45b4ed196a5e604c5b423eb0f57c563ea9'
+  '879157516d0a4c33302b28717a5309888afc1408415bd49f7b2b5f0b9ccd74c7'
 )
 
 build() {

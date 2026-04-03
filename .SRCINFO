@@ -1,6 +1,6 @@
 pkgbase = cubyz
 	pkgdesc = An open-world adventure game where creativity knows no bounds!
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://www.cubyz.net/
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = cubyz
 	backup = etc/cubyz/launchConfig.zon
 	source = cubyz.sh
 	source = cubyz.desktop
-	source = cubyz-0.1.1.zip::https://github.com/PixelGuys/Cubyz/archive/refs/tags/0.1.1.zip
+	source = cubyz-0.2.0.zip::https://github.com/PixelGuys/Cubyz/archive/refs/tags/0.2.0.zip
 	sha256sums = 4e09f9de852c3c3f8a7a5184515f82ed3da8b592130fb7cf07c64ec9456b8259
 	sha256sums = ec3d1bc6c14c1d0c3cbfaf1a998301d81ad28ce1ead86186a49a67d0b8e5873b
-	sha256sums = b6378074bd11e3d08976b8b1be886f45b4ed196a5e604c5b423eb0f57c563ea9
+	sha256sums = 879157516d0a4c33302b28717a5309888afc1408415bd49f7b2b5f0b9ccd74c7
 
 pkgname = cubyz
