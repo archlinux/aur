@@ -1,9 +1,11 @@
 pkgbase = binauralplayer
 	pkgdesc = BinauralPlayer combines traditional media playback with brainwave audio generation
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alamahant/BinauralPlayer
+	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = ninja

@@ -3,9 +3,9 @@
 pkgname=binauralplayer
 _pkgname=BinauralPlayer
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='BinauralPlayer combines traditional media playback with brainwave audio generation'
-arch=('x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/alamahant/${_pkgname}"
 license=('GPL-3.0-only')
 depends=('qt6-base' 'qt6-multimedia' 'qt6-svg')
@@ -29,4 +29,12 @@ build(){
 package() {
   cd "$srcdir/${_pkgname}-${pkgver}"
   DESTDIR="$pkgdir" cmake --install ./build_dir/
+  
+  #warning about the program requiring PulseAudio:
+  echo ""
+  echo "Please note:" 
+  echo "BinauralPlayer requires PulseAudio for sound output."
+  echo "If you don't want to use PulseAudio, you can always use a PulseAudio emulation (such as apulse) without ever running PulseAudio server"
+  echo "(this is why PulseAudio wasn't specified as a dependency)."
+  echo ""
 }
