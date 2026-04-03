@@ -2,7 +2,7 @@
 
 _pkgbase=jan
 pkgname=${_pkgbase}-git
-pkgver=0.7.3.r43.g4957509
+pkgver=0.7.9.r170.g45ca3ef
 pkgrel=1
 pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer"
 url="https://jan.ai/"
@@ -36,6 +36,13 @@ _ensure_local_nvm() {
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 }
 
+_ensure_corepack_yarn() {
+	export COREPACK_HOME="${srcdir}/corepack"
+	mkdir -p "$COREPACK_HOME"
+	corepack enable
+	corepack prepare yarn@4.5.3 --activate
+}
+
 pkgver() {
 	cd "$_pkgbase"
 	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
@@ -45,12 +52,14 @@ prepare() {
 	cd "$_pkgbase"
 	_ensure_local_nvm
 	nvm install 20
+	_ensure_corepack_yarn
 	[ -f package.json ] && sed -i '/"build:tauri:linux"/ s/\.\/[^ ]*\.sh//g; /"build:tauri:linux"/ s/&& "/--bundles deb"/g' package.json
 }
 
 build() {
 	cd "$_pkgbase"
 	_ensure_local_nvm
+	_ensure_corepack_yarn
 	export YARN_CACHE_FOLDER="$srcdir"/yarn-cache
 	export RUSTUP_TOOLCHAIN=stable
 
