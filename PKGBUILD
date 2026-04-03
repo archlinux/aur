@@ -1,6 +1,6 @@
 pkgname=philips-hue-for-arch
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop GUI for controlling Philips Hue lights on Linux"
 arch=("any")
 url="https://github.com/MechNoxer/philips-hue-for-arch"
