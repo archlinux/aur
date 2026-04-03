@@ -83,7 +83,10 @@ build()
     -DSLIC3R_GTK=3 \
     -DSLIC3R_BUILD_TESTS=OFF \
     -DSLIC3R_ALPHA=ON \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
+    -DSLIC3R_APP_NAME="SuperSlicer" \
+    -DSLIC3R_APP_KEY="SuperSlicer" \
+    -DSLIC3R_APP_CMD="superslicer"
 
   ninja
 }
