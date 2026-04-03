@@ -2,7 +2,7 @@
 _pkgname=freetube
 _electronver=39
 pkgname=$_pkgname-electron-bin
-pkgver=0.23.15
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='An open source desktop YouTube player built with privacy in mind, with the system electron (unsupported).'
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=("$_pkgname")
 source=('freetube.sh' "$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_beta_armv7l.deb"
         "https://raw.githubusercontent.com/FreeTubeApp/FreeTube/refs/tags/v$pkgver-beta/LICENSE")
 b2sums=('d3d3e9a0e3f6bce5127cb54886214f8f1b364c8b004be670e4564df61b215e07dcb4548834c8dc1c13db4e64e534e2340e33931af599e508cd1c9e8b7f736335'
-        '037e441be496b26a278d0b84ef5439b9a5cf2839a2e78253441614906bfdef0e38071937b3b6696f74ed943c2687cc5bdd707ab672791142c7766660910a589a'
+        'a04df119ae6472621cedc6efb92d6df4e297e919341064b003660b27f0c125b7184257cf355b5814bd50e28c572325765f4ee70f34cec5b29b80110d51593ced'
         '6fa2a6adf165a614637f4aae5b323c427b99c2d13f9ab55eefae012dc3dbeebe5957cd2e2497e4c38426088a41dac89f6ac6284af6cf6a4a67a6780f409e8237')
 
 prepare() {
