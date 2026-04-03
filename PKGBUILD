@@ -8,7 +8,7 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler-git
-pkgver=2026.08rc2.r0.ge0af537
+pkgver=2026.12rc1.r0.g01a807a
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) compiler (git version)'
 arch=('x86_64')
@@ -62,7 +62,6 @@ source=('git+https://github.com/openvinotoolkit/npu_compiler.git'
         'git+https://github.com/jbeder/yaml-cpp.git'
         'git+https://github.com/openvinotoolkit/telemetry.git'
         'git+https://github.com/libxsmm/libxsmm.git'
-        'git+https://github.com/openvinotoolkit/shl.git'
         'git+https://github.com/ARM-software/kleidiai.git'
         'git+https://github.com/herumi/xbyak_riscv.git'
         # patches
@@ -104,10 +103,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             '6aea796acf3bbd3091dfeecbebfdbed1bd6023d343f49834c1d83fbb4a1d3eb8'
-            'a26a2f4646e7725c50344346abd31a18d0799db094d29ff095d37ede3224ca53'
-            '3fedc92a36f03eaa87f9603bb400efccc493f6aec4f8464d00d136b197f24394'
+            '3d13c41f7fac3568573680e84a01ed79727fe36587b1bc0285877d12ceea6e5a'
+            'e1824ef4d3e2db7cdbabebf3c4fe565989541164345ee7714f9b7505ccc364c4'
             'e4734603808ad0402819eb36578f1eabb80524f4f82aed45f31736c5d184b2ef'
             'ba2d8b40b8921acc70e0212138eb2b5db2b7311058b1092236356cf0dfe725f9'
             'e7ec20d4fb173ae29b5b1f682e7b85efa3f5359ee355b959a7f51148c84ecc7f')
@@ -133,7 +131,8 @@ prepare() {
     git -C npu_compiler/thirdparty/vpucostmodel lfs pull https://github.com/intel/npu-nn-cost-model.git
     
     local _openvino_commit
-    _openvino_commit="$(awk '/OPENVINO_REVISION/ { sub(/\)/, "", $2); print $2; exit }' linux-npu-driver/compiler/compiler_source.cmake)"
+    _openvino_commit="$(awk '/NPU_COMPILER_OPENVINO_REVISION/ { sub(/\)/, "", $2); print $2; exit }' linux-npu-driver/compiler/compiler_source.cmake)"
+    printf '%s\n' "Using openvino commit: ${_openvino_commit}"
     git -C openvino config --local advice.detachedHead false
     git -C openvino checkout "$_openvino_commit"
     
@@ -163,7 +162,6 @@ prepare() {
     git -C openvino config --local submodule.src/plugins/intel_npu/thirdparty/yaml-cpp.url "${srcdir}/yaml-cpp"
     git -C openvino config --local submodule.thirdparty/telemetry.url "${srcdir}/telemetry"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/libxsmm.url "${srcdir}/libxsmm"
-    git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/shl.url "${srcdir}/shl"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/kleidiai.url "${srcdir}/kleidiai"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/xbyak_riscv.url "${srcdir}/xbyak_riscv"
     git -C openvino -c protocol.file.allow='always' submodule update
