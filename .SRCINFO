@@ -1,0 +1,22 @@
+pkgbase = python-can-canine
+	pkgdesc = Python-can CANine
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://pypi.org/project/python-can-canine
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-can
+	depends = python-pyusb
+	provides = python-can-canine
+	conflicts = python-can-canine
+	options = !strip
+	options = !debug
+	source = python-can-canine-0.2.4.tar.gz::https://files.pythonhosted.org/packages/source/p/python-can-canine/python-can-canine-0.2.4.tar.gz
+	sha256sums = 6a38dffba014ef1ea326f4641c16f481bc8831c2a394e7a6c97e8d1f6e1f3b71
+
+pkgname = python-can-canine
