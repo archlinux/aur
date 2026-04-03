@@ -1,7 +1,7 @@
 pkgbase = cpprestsdk
 	pkgdesc = A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications
 	pkgver = 2.10.19
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Microsoft/cpprestsdk/
 	install = cpprestsdk.install
 	arch = i686
@@ -12,9 +12,10 @@ pkgbase = cpprestsdk
 	makedepends = websocketpp
 	depends = openssl>=1.0.0
 	depends = zlib
-	depends = gcc-libs
 	depends = boost
 	depends = glibc
+	depends = libstdc++
+	depends = libgcc
 	conflicts = casablanca
 	conflicts = casablanca-git
 	conflicts = cpprestsdk-git

@@ -3,12 +3,12 @@
 
 pkgname=cpprestsdk
 pkgver=2.10.19
-pkgrel=5
+pkgrel=6
 pkgdesc="A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/Microsoft/cpprestsdk/"
 license=('MIT')
-depends=('openssl>=1.0.0' 'zlib' 'gcc-libs' 'boost' 'glibc')
+depends=('openssl>=1.0.0' 'zlib' 'boost' 'glibc' 'libstdc++' 'libgcc')
 makedepends=('cmake>=2.6.0' 'websocketpp')
 conflicts=('casablanca' 'casablanca-git' 'cpprestsdk-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Microsoft/cpprestsdk/archive/v${pkgver}.tar.gz"
