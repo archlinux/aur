@@ -1,6 +1,6 @@
 # Maintainer: usoy <alfortearjay0@gmail.com>
 pkgname=veneer
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A widget manager for Eww (Veneer)"
 arch=('x86_64')
