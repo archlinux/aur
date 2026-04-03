@@ -3,7 +3,7 @@
 _gpuarch=gfx110X
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
 pkgver=7.13.0a20260403
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
 arch=('x86_64')
 url="https://rocm.nightlies.amd.com"
@@ -74,7 +74,11 @@ export PATH=\$ROCM_PATH/bin:\$PATH
 export LD_LIBRARY_PATH=\$ROCM_PATH/lib:\$LD_LIBRARY_PATH
 EOF
 
-    # 5. 处理许可证
+    # 5. 配置 OpenCL ICD
+    install -Dm644 /dev/null "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd"
+    echo "/opt/rocm/lib/opencl/libamdocl64.so" > "${pkgdir}/etc/OpenCL/vendors/amdocl64.icd"
+
+    # 6. 处理许可证
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
     if [ -f "${pkgdir}/opt/rocm/LICENSE" ]; then
         ln -s "/opt/rocm/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
