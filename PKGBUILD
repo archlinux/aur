@@ -1,6 +1,7 @@
 # Maintainer: David Mulder <dmulder@suse.com>
-pkgname=himmelblau
-pkgver=3.0.1
+pkgname=himmelblau-git
+_reponame=himmelblau
+pkgver=r2077.d700f392
 pkgrel=1
 pkgdesc="Entra ID / Azure AD authentication for Linux (PAM, NSS, broker, SSO)"
 arch=('x86_64' 'aarch64')
@@ -31,18 +32,16 @@ makedepends=(
 )
 provides=('aad-cli' 'authd-msentraid' 'linux-entra-sso' 'intune-portal')
 backup=('etc/himmelblau/himmelblau.conf')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/himmelblau-idm/himmelblau/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8a265092c5d20dc8ae96178243c20a068953d4c07dd55ca19873ec81718553e7')
+source=("git+https://github.com/himmelblau-idm/himmelblau")
+sha256sums=('SKIP')
 
-prepare() {
-    cd "${pkgname}-${pkgver}"
-    export CARGO_HOME="${srcdir}/cargo-home"
-    cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+pkgver() {
+    cd "${_reponame}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    export CARGO_HOME="${srcdir}/cargo-home"
+    cd "${_reponame}"
 
     # Generate systemd unit files with directives appropriate for Arch Linux.
     # Arch ships systemd 254+ so we pin to 254 to get all modern directives
@@ -52,12 +51,11 @@ build() {
 
     cargo build \
         --release \
-        --frozen \
         --target "${CARCH}-unknown-linux-gnu"
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${_reponame}"
     local _t="target/${CARCH}-unknown-linux-gnu/release"
 
     # ── Binaries ──────────────────────────────────────────────────────────────
@@ -90,18 +88,16 @@ package() {
         "${pkgdir}/usr/lib/systemd/system/display-manager.service.d/himmelblau-gdm-override.conf"
 
     # ── Systemd user unit (broker) ────────────────────────────────────────────
-    install -Dm644 platform/debian/himmelblau-broker.service \
+    install -Dm644 src/broker/platform/himmelblau-broker.service \
         "${pkgdir}/usr/lib/systemd/user/himmelblau-broker.service"
 
     # ── D-Bus activation service ──────────────────────────────────────────────
-    install -Dm644 platform/opensuse/com.microsoft.identity.broker1.service \
+    install -Dm644 src/broker/platform/com.microsoft.identity.broker1.service \
         "${pkgdir}/usr/share/dbus-1/services/com.microsoft.identity.broker1.service"
 
     # ── Configuration ─────────────────────────────────────────────────────────
     install -Dm644 src/config/himmelblau.conf.example \
         "${pkgdir}/etc/himmelblau/himmelblau.conf"
-    install -Dm644 src/config/krb5_himmelblau.conf \
-        "${pkgdir}/etc/krb5.conf.d/krb5_himmelblau.conf"
 
     # ── tmpfiles.d ────────────────────────────────────────────────────────────
     install -Dm644 src/daemon/src/himmelblaud.tmpfiles.conf \
@@ -134,7 +130,7 @@ package() {
 
     # ── Documentation ─────────────────────────────────────────────────────────
     install -Dm644 README.md \
-        "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+        "${pkgdir}/usr/share/doc/${_reponame}/README.md"
     install -Dm644 src/config/himmelblau.conf.example \
-        "${pkgdir}/usr/share/doc/${pkgname}/himmelblau.conf.example"
+        "${pkgdir}/usr/share/doc/${_reponame}/himmelblau.conf.example"
 }
