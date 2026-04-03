@@ -8,5 +8,6 @@ pkgbase = swagsh
 	source = https://github.com/takashialpha/swagsh/releases/download/v0.5.2/swagsh-v0.5.2-x86_64-linux.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/takashialpha/swagsh/v0.5.2/LICENSE
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = swagsh

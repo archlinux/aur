@@ -8,7 +8,7 @@ license=('Apache-2.0')
 
 source=("https://github.com/takashialpha/swagsh/releases/download/v${pkgver}/swagsh-v${pkgver}-x86_64-linux.tar.gz"
 "LICENSE::https://raw.githubusercontent.com/takashialpha/swagsh/v${pkgver}/LICENSE")
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 package() {
   cd "$srcdir"
