@@ -17,7 +17,7 @@ _rocm_packages=(
     'hsa-rocr' 'hsakmt-roct' 'comgr' 'rocminfo' 'rocwmma'
     'hip-runtime-amd' 'hip-runtime-nvidia'
     'rocm-smi-lib' 'rocm-gdb' 'rocm-dbgapi'
-    'rocprofiler' 'roctracer' 'rocm-bandwidth-test'
+    'rocprofiler' 'rocprofiler-register' 'roctracer' 'rocm-bandwidth-test'
     'opencl-rocm'
     'hipblas' 'hipblas-common' 'hipblaslt' 'rocblas'
     'hipfft' 'rocfft'
@@ -27,7 +27,7 @@ _rocm_packages=(
     'rccl' 'rocalution' 'rocprim' 'rocthrust' 'hipcub'
     'miopen-hip' 'migraphx' 'mivisionx' 'rpp'
     'hipfort' 'hipify-clang'
-    'rocm-hip-sdk' 'rocm-hip-libraries' 'rocm-hip-runtime' 'rocm-opencl-sdk' 'rocm-ml-sdk' # Meta packages
+    'rocm-hip-sdk' 'rocm-hip-libraries' 'rocm-hip-runtime' 'rocm-opencl-sdk' 'rocm-opencl-runtime' 'rocm-ml-sdk' # Meta packages
 )
 
 provides=("${_rocm_packages[@]}" "rocm=${pkgver}")
