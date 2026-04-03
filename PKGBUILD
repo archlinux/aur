@@ -25,8 +25,8 @@ _cuda_arch="${CUDA_ARCH:-}"
 
 pkgname=voxtype-cuda
 _pkgname=voxtype
-pkgver=0.6.4
-pkgrel=3
+pkgver=0.6.5
+pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux. Nvidia/cuda backend version (not vulkan)"
 arch=(x86_64)
 url="https://voxtype.io"
@@ -62,7 +62,7 @@ optdepends=(
 backup=(etc/voxtype/config.toml)
 install=$pkgname.install
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c58dc7dbf17e23f16c3ea11fa5480d38f8d5e16a584c49c791c9bc1e14b4a33e')
+sha256sums=('0e18cb00439329fb414707f1e74681f25ac7244f80bf79d3ae0c2085cc5d8151')
 
 prepare() {
     cd "$_pkgname-$pkgver"
