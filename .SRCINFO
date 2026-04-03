@@ -1,5 +1,5 @@
 pkgbase = android-platform-35
-	pkgdesc = Android SDK Platform, latest API
+	pkgdesc = Android SDK Platform, API 35
 	pkgver = 35_r02
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
