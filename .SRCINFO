@@ -15,5 +15,5 @@ pkgbase = freetube-electron-bin
 	b2sums = 6fa2a6adf165a614637f4aae5b323c427b99c2d13f9ab55eefae012dc3dbeebe5957cd2e2497e4c38426088a41dac89f6ac6284af6cf6a4a67a6780f409e8237
 
 pkgname = freetube-electron-bin
-	depends = electron39
+	depends = electron41
 	depends = ttf-liberation

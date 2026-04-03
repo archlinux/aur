@@ -1,6 +1,6 @@
 # Maintainer: Alleop <aur dot contest432 at passinbox dot com>
 _pkgname=freetube
-_electronver=39
+_electronver=41
 pkgname=$_pkgname-electron-bin
 pkgver=0.24.0
 pkgrel=1
