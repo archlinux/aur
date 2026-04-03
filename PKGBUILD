@@ -1,6 +1,6 @@
 # Maintainer: Reasonance team
 pkgname=reasonance
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Lightweight IDE for vibecoders who work with LLMs'
 arch=('x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 build() {
   cd "$pkgname-$pkgver"
   npm install
-  npx tauri build --bundles none
+  npx tauri build --no-bundle
 }
 
 package() {
