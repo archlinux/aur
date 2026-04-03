@@ -1,0 +1,8 @@
+*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/config
+!/LICENSE
+!/keys/
+!/keys/**
