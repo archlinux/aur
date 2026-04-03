@@ -1,0 +1,5 @@
+[fooyin]
+source = "github"
+github = "fooyin/fooyin"
+prefix = "v"
+use_latest_release = true
