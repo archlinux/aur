@@ -1,6 +1,6 @@
 pkgbase = proton-run
 	pkgdesc = Run Windows executables with Steam Proton outside of Steam
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/rursache/proton-run
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = proton-run
 	depends = bash
 	depends = steam
 	depends = yq
-	source = proton-run-0.1.1.tar.gz::https://codeload.github.com/rursache/proton-run/tar.gz/v0.1.1
-	sha256sums = e1cb0783e58ab6c4e7cc358f5b6cb54dd5be213ce3917b1bc4bba78084677fae
+	source = proton-run-0.1.2.tar.gz::https://codeload.github.com/rursache/proton-run/tar.gz/v0.1.2
+	sha256sums = 2eb6ea81bbf4cffafc7ca7659fbf07252443c2b1a4c41f6592b5d0d4fb4cc500
 
 pkgname = proton-run
