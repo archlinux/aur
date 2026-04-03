@@ -12,6 +12,6 @@ pkgbase = budget-planner
 	depends = python
 	depends = python-pyyaml
 	source = budget-planner-0.1.2.tar.gz::https://github.com/salehjg/BudgetPlanner/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = a58bd9f8aa2528669d1254aa0654fc5070cf816c974ebfaba6a71299822dd97d
+	sha256sums = 7364d617754b3ccd901257678523f68796a914d778ee5b952d95092f65e0bdec
 
 pkgname = budget-planner
