@@ -8,10 +8,10 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler
-pkgver=2026.08rc2
+pkgver=2026.12rc1
 pkgrel=1
-_npu_compiler_tag=npu_ud_2026_08_rc2
-_openvino_commit=4922c4955f9d5c457cf9d4ebbbc8bf6502167ada
+_npu_compiler_tag=npu_ud_2026_12_rc1
+_openvino_commit=b7f9dbfa7944a1c576b87a4061c298636ae9f2a7
 pkgdesc='Intel Neural Processing Unit (NPU) compiler'
 arch=('x86_64')
 url='https://github.com/openvinotoolkit/npu_compiler/'
@@ -61,7 +61,6 @@ source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_comp
         'git+https://github.com/jbeder/yaml-cpp.git'
         'git+https://github.com/openvinotoolkit/telemetry.git'
         'git+https://github.com/libxsmm/libxsmm.git'
-        'git+https://github.com/openvinotoolkit/shl.git'
         'git+https://github.com/ARM-software/kleidiai.git'
         'git+https://github.com/herumi/xbyak_riscv.git'
         # patches
@@ -71,9 +70,8 @@ source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_comp
         '040-intel-npu-compiler-npu-plugin-elf-fix-install.patch'
         '010-openvino-disable-werror.patch'
         '020-openvino-gtest-gcc15-fix.patch')
-sha256sums=('05f91295dff1a359f39e34969f6b0f912d12af43357f619dda6bcecbf0bfb7b5'
-            'e1bd4449e1990932455b328acd8e66753288bb3c9320bedef3458c296f48d415'
-            'SKIP'
+sha256sums=('15f58ccb3800ffe6e7ebb4eb50b2cd9316256b079eef9e8fb5b7e145d7fac667'
+            '49d646021bd209d2263981aa57193516fedae862cfca5823bf81a69dce6303fb'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -104,8 +102,8 @@ sha256sums=('05f91295dff1a359f39e34969f6b0f912d12af43357f619dda6bcecbf0bfb7b5'
             'SKIP'
             'SKIP'
             '6aea796acf3bbd3091dfeecbebfdbed1bd6023d343f49834c1d83fbb4a1d3eb8'
-            'a26a2f4646e7725c50344346abd31a18d0799db094d29ff095d37ede3224ca53'
-            '3fedc92a36f03eaa87f9603bb400efccc493f6aec4f8464d00d136b197f24394'
+            '3d13c41f7fac3568573680e84a01ed79727fe36587b1bc0285877d12ceea6e5a'
+            'e1824ef4d3e2db7cdbabebf3c4fe565989541164345ee7714f9b7505ccc364c4'
             'e4734603808ad0402819eb36578f1eabb80524f4f82aed45f31736c5d184b2ef'
             'ba2d8b40b8921acc70e0212138eb2b5db2b7311058b1092236356cf0dfe725f9'
             'e7ec20d4fb173ae29b5b1f682e7b85efa3f5359ee355b959a7f51148c84ecc7f')
@@ -156,7 +154,6 @@ prepare() {
     git -C openvino config --local submodule.src/plugins/intel_npu/thirdparty/yaml-cpp.url "${srcdir}/yaml-cpp"
     git -C openvino config --local submodule.thirdparty/telemetry.url "${srcdir}/telemetry"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/libxsmm.url "${srcdir}/libxsmm"
-    git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/shl.url "${srcdir}/shl"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/kleidiai.url "${srcdir}/kleidiai"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/xbyak_riscv.url "${srcdir}/xbyak_riscv"
     git -C openvino -c protocol.file.allow='always' submodule update
