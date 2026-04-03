@@ -1,7 +1,7 @@
 pkgbase = shorin-dms-niri-git
 	pkgdesc = Shorin DMS Niri desktop environment (Dependencies & Dotfiles)
 	pkgver = r4.0dabc1d
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/SHORiN-KiWATA/shorin-dms-niri
 	arch = any
 	license = GPL
@@ -81,6 +81,7 @@ pkgbase = shorin-dms-niri-git
 	depends = fcitx5-rime
 	depends = rime-ice-git
 	depends = rime-wubi
+	optdepends = opencode: 开源 AI 助手
 	provides = shorin-dms-niri-meta
 	provides = shorin-dms-niri-dotfiles-git
 	conflicts = shorin-dms-niri-meta

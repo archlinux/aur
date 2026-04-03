@@ -1,15 +1,16 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-git
 pkgver=r4.0dabc1d
-pkgrel=9
+pkgrel=10
 pkgdesc="Shorin DMS Niri desktop environment (Dependencies & Dotfiles)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
 license=('GPL')
-
 provides=('shorin-dms-niri-meta' 'shorin-dms-niri-dotfiles-git')
 conflicts=('shorin-dms-niri-meta' 'shorin-dms-niri-dotfiles-git')
-
+optdepends=(
+    'opencode: 开源 AI 助手'
+)
 depends=(
 
     'bash'
@@ -40,12 +41,11 @@ depends=(
     # Flatpak & Theme
     'flatpak' 'bazaar' 'matugen' 'adw-gtk-theme' 'python-pywalfox' 'nwg-look' 'breeze-cursors'
     
-    # input method (把输入法依赖直接写在这里)
+    # input method
     'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'fcitx5-rime' 'rime-ice-git' 'rime-wubi'
 )
 makedepends=('git')
 
-# 变更：只保留了 Git 仓库源，去掉了本地的 "shorindms"
 source=("git+https://github.com/SHORiN-KiWATA/shorin-dms-niri.git")
 sha256sums=('SKIP') # 只剩一个 SKIP
 
