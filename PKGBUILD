@@ -2,7 +2,7 @@
 
 _pkgname=iventoy
 pkgname="${_pkgname}-bin"
-pkgver=1.0.21
+pkgver=1.0.24
 pkgrel=1
 pkgdesc="An enhanced version of the PXE server"
 arch=("x86_64")
@@ -14,7 +14,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/ventoy/PXE/releases/do
         "${_pkgname}"
         "${_pkgname}.service"
         "${_pkgname}.tmpfiles")
-sha256sums=('5d7d26580f2b625765c34b4f68ef0969f0d1881449123ba81c8f4d466d848efa'
+sha256sums=('862007cbc28e442a257f71bb924ba5d264a8d4247c4ed1ab8d03ebcebab17e43'
             'ef27beecddc5a9650194e8b033ae0b3172f29a9bf352cfff079a61ece86a3263'
             '7d0c73aa37f35ec8b8ab2b32ba415b3efed0e1f1a677f64f64349f102d173562'
             '84436ca3719486543f522ac771618b6c10d92c13be7e649776a631af87844e14')
