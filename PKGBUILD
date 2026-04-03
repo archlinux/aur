@@ -5,7 +5,7 @@
 
 _quake=vkQuake
 pkgname=vkquake
-pkgver=1.34.0
+pkgver=1.34.1
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('x86_64')
@@ -16,13 +16,11 @@ depends=('glibc' 'flac' 'mpg123' 'libvorbis' 'opusfile' 'sdl2' 'vulkan-icd-loade
 makedepends=('vulkan-validation-layers' 'meson' 'vulkan-headers' 'glslang' 'spirv-tools')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz"
-	"1.patch::$url/commit/70d6282e779d69cdebd0ffaaddce0df89cbb50a9.diff"
 	'vkquake.desktop'
 	'vkquake.png'
 	'vkquake.svg'
 	'ctype.patch')
-sha512sums=('2cffa94adf5cd3f053e5ab5c04227a3d83547537f597c5b9f9e397d32f8291ecd62c13879cecc3c69186ddb80ca17c0957378bf24a7e81592b895323c1677f95'
-            'd17d01bbdccbe9034dccd94924fae90e08836a12378a27572a837e91286f3c9d18080979a5ef1b1bda7104d002c69b75fb9579aaa98be3360ee1ae9a4da57a54'
+sha512sums=('2530bccca26ebab6f8f735a848445a3cd54fbbc435ba6d028d52c4c1688ec5562778f64e209543d3dbabf2ae734fc482831254c7bf863eedfb8c3c9fbe38018d'
             '75881c2fea0628dcecff496a5e3035bbb4e408b81527737339ebfd66ad04ca04621d4e13e3e0537f091f8b1127dc231583f746d11cc6c11658cdb976db77e145'
             '9ac17fb2f549656869a02a9a1896786aa4a4f753c6b1174d14b999c94693164ec71a73f9ab6f4a96591ef3af407ffce4f29b0ed87e878f14bb177e396898f29f'
             '5a712a6c0447acea7a6c690cb7e63a2111e28646ef0935dfbd40cc4164c9ed5fc6fdba6eeafe44b618b17e856b3b0f60cc3ddbdedd8e536feef97de969d407b0'
@@ -32,7 +30,6 @@ sha512sums=('2cffa94adf5cd3f053e5ab5c04227a3d83547537f597c5b9f9e397d32f8291ecd62
 prepare() {
   cd "$srcdir/$_quake-$pkgver"
   patch -Np1 < "$srcdir/ctype.patch"
-  patch -Np1 < "$srcdir/1.patch"
 }
 
 build() {
