@@ -9,12 +9,19 @@
 _name=svix
 pkgname=python-${_name}
 pkgver=1.90.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Svix webhooks API client and webhook verification library"
 url="https://github.com/svix/svix-webhooks/tree/main/python"
 license=('MIT')
 arch=('any')
-depends=('python' 'python-deprecated')
+depends=(
+    'python' 
+    'python-deprecated'
+    'python-pydantic'
+    'python-attrs'
+    'python-standardwebhooks'
+    'python-types-python-dateutil'
+)
 makedepends=(
 	'python-build'
 	'python-installer'
