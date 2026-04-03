@@ -1,12 +1,13 @@
 pkgbase = savilerow-bin
 	pkgdesc = A modelling assistant for Constraint Programming
 	pkgver = 1.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www-users.york.ac.uk/peter.nightingale/savilerow
 	arch = x86_64
 	license = GPL-3.0-or-later AND MIT AND GPL-2.0-or-later
 	depends = java-runtime
 	depends = bash
+	optdepends = python: for running examples
 	provides = savilerow
 	source = savilerow-bin-1.11.1.tar.gz::https://www-users.york.ac.uk/peter.nightingale/savilerow/savilerow-1.11.1-linux.tgz
 	source = savilerow.sh

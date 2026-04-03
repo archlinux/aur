@@ -2,12 +2,13 @@
 pkgname=savilerow-bin
 _pkgname=savilerow
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modelling assistant for Constraint Programming"
 arch=('x86_64')
 url="https://www-users.york.ac.uk/peter.nightingale/savilerow"
 license=('GPL-3.0-or-later AND MIT AND GPL-2.0-or-later')
 depends=(java-runtime bash)
+optdepends=('python: for running examples')
 provides=(savilerow)
 source=("$pkgname-$pkgver.tar.gz::$url/$_pkgname-$pkgver-linux.tgz"
 	"savilerow.sh")
@@ -27,6 +28,7 @@ package() {
 	install -Dm0755 -t "$pkgdir/usr/lib/$_pkgname/bin" \
 		bin/fzn-chuffed bin/kissat bin/minion bin/symmetry_detect
 	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" "savilerow-manual.pdf"
+	cp -r examples "$pkgdir/usr/share/doc/$pkgname"
 	ln -sr "$pkgdir/usr/share/doc/$pkgname" "$pkgdir/usr/share/doc/$_pkgname"
 
 	_licensedir="$pkgdir/usr/share/licenses/$pkgname"
