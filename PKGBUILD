@@ -1,5 +1,5 @@
 pkgname=budget-planner
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="CLI budget planner that projects your bank balance from YAML config"
 arch=('any')
