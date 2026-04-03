@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=(glibc libgcc)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source_x86_64=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/${_pkgname}_cli-x86_64-unknown-linux-gnu.tar.xz")
+source_x86_64=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/${_pkgname}_cli-$CARCH-unknown-linux-gnu.tar.xz")
 sha256sums_x86_64=('e1376ceca840564811912e8338b9b017043cd15df87d4e27bc0637e912d389d4')
 
 package() {
