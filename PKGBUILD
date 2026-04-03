@@ -9,7 +9,7 @@
 _name=standardwebhooks
 pkgname=python-${_name}
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library for Standard Webhooks"
 url="https://github.com/standard-webhooks/standard-webhooks/tree/main/libraries/python"
 license=('MIT')
@@ -30,10 +30,8 @@ makedepends=(
 
 source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz"
-    "https://raw.githubusercontent.com/standard-webhooks/standard-webhooks/refs/heads/main/LICENSE"
 )
-sha256sums=('b557bb2e4b16ada179a517ec0fe6cbec5acf976c5619922bf29c457f89a451bd'
-            'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
+sha256sums=('b557bb2e4b16ada179a517ec0fe6cbec5acf976c5619922bf29c457f89a451bd')
 
 build() {
     cd $_name-$pkgver
@@ -44,5 +42,4 @@ package() {
     cd $_name-$pkgver
     python setup.py install --root="$pkgdir" --optimize=1
     cd ..
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
