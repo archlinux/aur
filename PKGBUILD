@@ -1,6 +1,6 @@
 # Maintainer: Emilio Escobar <emilio@flumeirc.io>
 pkgname=flume
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Modern terminal IRC client with scripting and LLM support"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FlumeIRC/flume/archive/v$pkgver.tar.gz")
-sha256sums=('20a8c0614245aba6300af57cd01fd1307430049daa20befd068b74e58418c559')
+sha256sums=('63cde31b4d0fa9cb4b1318703e1afea9deb70d7475aba0fad4922861c9dd9072')
 
 build() {
   cd "$pkgname-$pkgver"
