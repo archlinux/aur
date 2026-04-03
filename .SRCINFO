@@ -1,7 +1,7 @@
 pkgbase = shorin-niri-git
 	pkgdesc = Shorin Niri Desktop Environment (Dependencies & Dotfiles)
 	pkgver = r1.1234567
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/SHORiN-KiWATA/shorin-niri
 	arch = any
 	license = GPL
@@ -15,7 +15,7 @@ pkgbase = shorin-niri-git
 	depends = xwayland-satellite
 	depends = swayidle
 	depends = breeze-cursors
-	depends = fuzzel
+	depends = fuzzel-ime-git
 	depends = libnotify
 	depends = mpv
 	depends = noto-fonts

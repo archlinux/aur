@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=13
+pkgrel=14
 pkgdesc="Shorin Niri Desktop Environment (Dependencies & Dotfiles)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -12,7 +12,7 @@ depends=(
     
     # --- Desktop Core ---
     'niri' 'mako' 'polkit-gnome' 'xdg-desktop-portal-gnome' 'xwayland-satellite' 'swayidle' 'breeze-cursors'
-    'fuzzel' 'libnotify' 'mpv'
+    'fuzzel-ime-git' 'libnotify' 'mpv'
 
     # --- base fonts ---
     'noto-fonts' 'noto-fonts-cjk' 'noto-fonts-emoji' 
