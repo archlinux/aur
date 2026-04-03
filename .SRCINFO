@@ -1,7 +1,7 @@
 pkgbase = tetro-tui-git
-	pkgdesc = A cross-platform terminal game where tetrominos fall and stack (Git version)
+	pkgdesc = A terminal-based but modern tetromino-stacking game that is very customizable and cross-platform.
 	pkgver = r568.6baf0f4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Strophox/tetro-tui
 	arch = x86_64
 	arch = aarch64

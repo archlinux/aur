@@ -11,14 +11,16 @@
 #     ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝╚══════╝╚═════╝
 #
 #          Maintainer: Guillermo Galavis <druxorey@proton.me>
+#         Maintainer: Walter C. <contacto@waltercasanova.tech>
+#              Maintainer: Lucas W. <strophox@gmail.com>
 #
 # ======================================================================#
 
 _pkgname=tetro-tui
 pkgname=${_pkgname}-git
 pkgver=r568.6baf0f4
-pkgrel=1
-pkgdesc="A cross-platform terminal game where tetrominos fall and stack (Git version)"
+pkgrel=2
+pkgdesc="A terminal-based but modern tetromino-stacking game that is very customizable and cross-platform."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Strophox/tetro-tui"
 license=('MIT')
