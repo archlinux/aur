@@ -38,9 +38,8 @@ prepare()
   # disabling tests is not enough, we need to remove them explicitly
   sed -i 's,add_subdirectory(test),,g' src/CMakeLists.txt
 
-  # set correct app name so the binary and data dir are named superslicer
+  # set correct app name/cmd (keep APP_KEY as Slic3r — icon files use that name)
   sed -i 's/set(SLIC3R_APP_NAME .*/set(SLIC3R_APP_NAME "SuperSlicer")/' version.inc
-  sed -i 's/set(SLIC3R_APP_KEY .*/set(SLIC3R_APP_KEY "SuperSlicer")/' version.inc
   sed -i 's/set(SLIC3R_APP_CMD .*/set(SLIC3R_APP_CMD "superslicer")/' version.inc
 
   # apply patches
@@ -90,7 +89,6 @@ build()
     -DSLIC3R_ALPHA=ON \
     -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
     -DSLIC3R_APP_NAME="SuperSlicer" \
-    -DSLIC3R_APP_KEY="SuperSlicer" \
     -DSLIC3R_APP_CMD="superslicer" \
     -DGCODEVIEWER_APP_CMD="superslicer-gcodeviewer"
 
@@ -104,4 +102,6 @@ package()
   DESTDIR="$pkgdir" ninja install
   test ! -h "$pkgdir/usr/share/SuperSlicer/resources" || rm "$pkgdir/usr/share/SuperSlicer/resources"
   rm -r "${pkgdir}"/usr/lib/udev # Provided by slicer-udev
+  # create empty profiles dir so the app doesn't try to write it at runtime
+  install -d "$pkgdir/usr/share/Slic3r/profiles"
 }
