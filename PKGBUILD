@@ -1,7 +1,7 @@
 # Maintainer: tuxxx <nzb_tuxxx@proton.me>
 
 pkgname=nzb-monkey-go-git
-pkgver=0.1.19.r1.gd5fc33a
+pkgver=0.3.0.r0.gf41f7ea
 pkgrel=1
 pkgdesc="NZBLNK-URI handler supporting SABnzbd, NZBGet & Synology DS (Go-based)"
 arch=('x86_64')
@@ -9,6 +9,7 @@ url="https://github.com/Tensai75/nzb-monkey-go"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
+optdepends=('xdg-utils: register nzblink handler')
 provides=("nzb-monkey-go")
 conflicts=("nzb-monkey-go-bin" "nzb-monkey-go")
 

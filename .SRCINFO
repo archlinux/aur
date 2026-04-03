@@ -1,6 +1,6 @@
 pkgbase = nzb-monkey-go-git
 	pkgdesc = NZBLNK-URI handler supporting SABnzbd, NZBGet & Synology DS (Go-based)
-	pkgver = 0.1.19.r1.gd5fc33a
+	pkgver = 0.3.0.r0.gf41f7ea
 	pkgrel = 1
 	url = https://github.com/Tensai75/nzb-monkey-go
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = nzb-monkey-go-git
 	makedepends = git
 	makedepends = go
 	depends = glibc
+	optdepends = xdg-utils: register nzblink handler
 	provides = nzb-monkey-go
 	conflicts = nzb-monkey-go-bin
 	conflicts = nzb-monkey-go
