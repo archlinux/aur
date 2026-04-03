@@ -34,7 +34,7 @@ package() {
   cd "$srcdir"
   install -d "${pkgdir}/opt/${pkgname}"
 
-  mv YourKit-JavaProfiler-"${_version}"/* "${pkgdir}/opt/${pkgname}"
+  mv 'YourKit Java Profiler'/* "${pkgdir}/opt/${pkgname}"
 
   install -D -m755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
