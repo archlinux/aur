@@ -2,7 +2,7 @@
 
 pkgname=rubyfmt
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='rubyfmt to format ruby files'
 url='https://github.com/fables-tales/rubyfmt'
 license=()
@@ -36,6 +36,7 @@ check() {
 package() {
     cd "rubyfmt-${pkgver}"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname-main"
+    mv "$pkgdir/usr/bin/rubyfmt-main" "$pkgdir/usr/bin/rubyfmt"
     # for custom license, e.g. MIT
     # install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
