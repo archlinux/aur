@@ -1,6 +1,6 @@
 pkgbase = tusk-gnome-bin
 	pkgdesc = PostgreSQL client for GNOME
-	pkgver = 2026.04.01.00
+	pkgver = 2026.04.03.00
 	pkgrel = 1
 	url = https://github.com/Shape-Machine/tusk-gnome
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = tusk-gnome-bin
 	depends = python-paramiko
 	provides = tusk-gnome
 	conflicts = tusk-gnome
-	source = tusk-gnome-bin-2026.04.01-00.pkg.tar.zst::https://github.com/Shape-Machine/tusk-gnome/releases/download/v2026.04.01-00/tusk-gnome-2026.04.01-00-any.pkg.tar.zst
-	sha256sums = c95dd72481151077855cbf6b5a6a88d10c2fad872533118a8dba5294bceafe55
+	source = tusk-gnome-bin-2026.04.03-00.pkg.tar.zst::https://github.com/Shape-Machine/tusk-gnome/releases/download/v2026.04.03-00/tusk-gnome-2026.04.03-00-any.pkg.tar.zst
+	sha256sums = bab6bb10f74133f218a43e8f23c3c025cfd807e2ca2131f840300bfe29314ead
 
 pkgname = tusk-gnome-bin
