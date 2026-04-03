@@ -1,6 +1,6 @@
 pkgbase = framework-control-bin
 	pkgdesc = Tool for Framework Laptop features (Fan, Battery, LEDs) - Precompiled Binary
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/ozturkkl/framework-control
 	install = framework-control.install
@@ -10,10 +10,10 @@ pkgbase = framework-control-bin
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	source = framework-control.png
-	source = https://github.com/ozturkkl/framework-control/releases/download/0.5.1/framework-control-service-x86_64.tar.gz
+	source = https://github.com/ozturkkl/framework-control/releases/download/0.5.2/framework-control-service-x86_64.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/ozturkkl/framework-control/master/LICENSE
 	sha256sums = 16c69209b6549b0f284874e5488d798c1f99b64c39cd08674c02cd323459abda
-	sha256sums = f5c220890f89d8b87b5e3af54c939398c03ed20c3c43df8e891347e88685f9f6
-	sha256sums = 18638616a47c48cd56035316719c8ec29b1f4808dc293625cfc0e03d5b8500b0
+	sha256sums = d82fec3b8ad076949f2636e1d74c894949d82023682f587ce827372c741be404
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
 
 pkgname = framework-control-bin

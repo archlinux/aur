@@ -2,7 +2,7 @@
 
 _pkgname=framework-control
 pkgname=${_pkgname}-bin
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Tool for Framework Laptop features (Fan, Battery, LEDs) - Precompiled Binary"
 arch=('x86_64')
@@ -14,8 +14,8 @@ source=("framework-control.png"
         "https://github.com/ozturkkl/framework-control/releases/download/${pkgver}/${_pkgname}-service-${CARCH}.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/ozturkkl/framework-control/master/LICENSE")
 sha256sums=('16c69209b6549b0f284874e5488d798c1f99b64c39cd08674c02cd323459abda'
-            'f5c220890f89d8b87b5e3af54c939398c03ed20c3c43df8e891347e88685f9f6'
-            '18638616a47c48cd56035316719c8ec29b1f4808dc293625cfc0e03d5b8500b0')
+            'd82fec3b8ad076949f2636e1d74c894949d82023682f587ce827372c741be404'
+            '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
 
 prepare() {
   cd "$srcdir"
