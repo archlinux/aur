@@ -7,7 +7,7 @@ arch=("any")
 url="https://gitlab.com/aurze/$pkgname"
 license=('GPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/aurze/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=("792dbf3d40bfd6f8fe5fd0ae1d60faef50fcb717eb12ac5de466ec0eaf49da1302910cf1efd34959230b930e7ed68443bd9c5c573c241cec3ea023e3334328a0")
+b2sums=("655a34f9f4622e914a781e2644c783abdc3400e6cfe47de44d815de2676826ed1bfa02bd6cd451814c693d44b9e857ab087c5047b03f916b38100776b5783ab0")
 
 makedepends=("cargo")
 
