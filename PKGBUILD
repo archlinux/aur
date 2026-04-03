@@ -1,8 +1,8 @@
 # Maintainer: neilg <neil.r.green+aur@gmail.com>
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=yourkit
-_version=2025.9
-_build=191
+_version=2026.3
+_build=155
 pkgver=${_version}.b${_build}
 pkgrel=1
 pkgdesc="Java CPU and memory profiler."
@@ -15,7 +15,7 @@ optdepends=('intellij-idea-community-edition: A Java IDE that integrates with Yo
             'netbeans: A Java IDE that integrates with Yourkit')
 options=(!strip)
 _url() {
-  printf '%s' "https://download.yourkit.com/yjp/${_version}/YourKit-JavaProfiler-${_version}-b${_build}-$1.zip"
+  printf '%s' "https://download.yourkit.com/yjp/${_version}.${_build}/YourKit-Java-Profiler-${_version}.${_build}-$1.zip"
 }
 source_x86_64=("$(_url x64)")
 source_i686=("${source_x86_64[@]}") # Same as source_x86_64
@@ -24,9 +24,9 @@ source=(
   yourkit-yjp.desktop
   yourkit.sh
 )
-sha256sums_x86_64=('5e79eab6bc02c70b30600c3d2c390147dd458d8f5488aa2abebb67525af7f26e')
+sha256sums_x86_64=('52878451ac217151dd1d0cddbecde133f4932307826b5741df20f1fc866b758c')
 sha256sums_i686=("${sha256sums_x86_64[@]}") # Same as sha256sums_x86_64
-sha256sums_aarch64=('2a4e47f00d9db8eddbe22d25b2c1d84561b223ce516d48e11fb452baf63d6b1d')
+sha256sums_aarch64=('f6d08c24d696ae07de6e9fa771069cb4955b7db5d4c2c3455c24d310842859d5')
 sha256sums=('b071670d8264f4ec8c61d83f3717e83c7c87873c678a75d60670a002e185373d'
             '6fc9612a76e2b50bb84130b0c40fcaccd04fe513e23ced398e707087459cc50e')
 
