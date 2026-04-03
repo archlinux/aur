@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Adrien Wu <adrien.sf.wu@gmail.com>
 
-declare -r _tag="af96e877473877d7f1979b753b0784958f4083c5"
+declare -r _tag="8c540236ba4dedcab8080343267465abf9823c0d"
 
 pkgname="mailio"
 pkgver="0.25.3"
@@ -26,12 +26,13 @@ _compile()
 {
     cmake -B "${srcdir}"/"${pkgname}"/build/ \
         -D BUILD_SHARED_LIBS=ON \
-        -D MAILIO_BUILD_DOCUMENTATION=ON \
-        -D MAILIO_BUILD_EXAMPLES=OFF \
-        -D MAILIO_BUILD_TESTS="$1" \
-        -D MAILIO_DYN_LINK_TESTS=ON \
         -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr/ \
+        -D MAILIO_BUILD_DOCUMENTATION=ON \
+        -D MAILIO_BUILD_EXAMPLES=OFF \
+        -D MAILIO_BUILD_LATEX_DOCUMENTATION=OFF \
+        -D MAILIO_BUILD_TESTS="$1" \
+        -D MAILIO_DYN_LINK_TESTS=ON \
         -S "${srcdir}"/"${pkgname}"/ \
         -Wno-dev
     cmake --build "${srcdir}"/"${pkgname}"/build/
