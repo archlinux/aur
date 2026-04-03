@@ -3,16 +3,16 @@
 
 pkgname=wlhangul-git
 _pkgname=wlhangul
-pkgver=r6.9fbe8d7
+pkgver=r14.ae94745
 pkgrel=1
 pkgdesc="A Hangul input method for Wayland."
 arch=('x86_64' 'i686')
-url="https://github.com/emersion/wlhangul"
+url="https://gitlab.freedesktop.org/emersion/wlhangul"
 license=('MIT')
 depends=('libhangul' 'wayland' 'libxkbcommon')
-makedepends=('meson' 'git')
+makedepends=('meson' 'git' 'wayland-protocols')
 provides=('wlhangul')
-source=('git+https://github.com/emersion/wlhangul.git')
+source=('git+https://gitlab.freedesktop.org/emersion/wlhangul.git')
 sha256sums=('SKIP')
 
 build() {
