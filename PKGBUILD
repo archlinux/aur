@@ -7,7 +7,7 @@ pkgname=(
   krokiet
 )
 pkgver=11.0.1
-pkgrel=0.1
+pkgrel=0.2
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
 arch=(
@@ -18,8 +18,9 @@ arch=(
 )
 license=('LicenseRef-MIT AND GPL-3.0-only AND CC-BY-4.0')
 depends=(
-  libgcc
+  dav1d
   glibc
+  libgcc
   libheif
 )
 makedepends=(
@@ -34,6 +35,9 @@ makedepends=(
   gtk4
 )
 checkdepends=(xorg-server-xvfb)
+optdepends=(
+  "ffmpeg: Compare video files"
+)
 source=("git+https://github.com/qarmin/czkawka.git#tag=$pkgver")
 b2sums=('384aa06363a6f3edc7bee57daca4cebd5dc582498933f66f5a65625f346aad372c6a7ac685270f959d0684d052ce78d173b9d015f0606dd17ffc507d8ba9e7d9')
 
@@ -47,7 +51,7 @@ build() {
     --bin czkawka_cli \
     --bin czkawka_gui \
     --bin krokiet \
-    --features heif \
+    --features "heif,libavif" \
     --release --verbose
 }
 
