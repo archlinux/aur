@@ -1,6 +1,6 @@
 # Maintainer: bjesus <github@yoavmoshe.com>
 pkgname=chords
-pkgver=0.2.2
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A native GNOME music chords viewer'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('gtk4' 'libadwaita' 'sqlite')
 makedepends=('cargo' 'glib2')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('884f78f0fd7725ed3c58f07ba3fc22118ec9dea90b91ffb0268daf8bba5efeb2')
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable

@@ -1,6 +1,6 @@
 pkgbase = chords
 	pkgdesc = A native GNOME music chords viewer
-	pkgver = 0.2.2
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/bjesus/chords
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = chords
 	depends = gtk4
 	depends = libadwaita
 	depends = sqlite
-	source = chords-0.2.2.tar.gz::https://github.com/bjesus/chords/archive/v0.2.2.tar.gz
-	sha256sums = SKIP
+	source = chords-0.3.1.tar.gz::https://github.com/bjesus/chords/archive/v0.3.1.tar.gz
+	sha256sums = 884f78f0fd7725ed3c58f07ba3fc22118ec9dea90b91ffb0268daf8bba5efeb2
 
 pkgname = chords
