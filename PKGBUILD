@@ -102,6 +102,7 @@ package()
   DESTDIR="$pkgdir" ninja install
   test ! -h "$pkgdir/usr/share/SuperSlicer/resources" || rm "$pkgdir/usr/share/SuperSlicer/resources"
   rm -r "${pkgdir}"/usr/lib/udev # Provided by slicer-udev
-  # create empty profiles dir so the app doesn't try to write it at runtime
-  install -d "$pkgdir/usr/share/Slic3r/profiles"
+  # create profiles dir so the app doesn't try to write it at runtime
+  # (install -d alone would be stripped by makepkg's !emptydirs option)
+  install -Dm644 /dev/null "$pkgdir/usr/share/Slic3r/profiles/.keep"
 }
