@@ -32,7 +32,7 @@ _compile()
         -D MAILIO_BUILD_EXAMPLES=OFF \
         -D MAILIO_BUILD_LATEX_DOCUMENTATION=OFF \
         -D MAILIO_BUILD_TESTS="$1" \
-        -D MAILIO_DYN_LINK_TESTS=ON \
+        -D MAILIO_DYN_LINK_TESTS=OFF \
         -S "${srcdir}"/"${pkgname}"/ \
         -Wno-dev
     cmake --build "${srcdir}"/"${pkgname}"/build/
