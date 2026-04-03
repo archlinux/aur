@@ -1,0 +1,36 @@
+[Unit]
+Description=A web interface for River, fast and reliable background jobs in Go.
+After=network-online.target
+Wants=network-online.target
+Documentation=https://github.com/riverqueue/riverui
+
+[Service]
+Type=simple
+DynamicUser=yes
+User=riverui
+Group=riverui
+StateDirectory=riverui
+WorkingDirectory=/var/lib/riverui
+Environment=HOME=/var/lib/riverui
+EnvironmentFile=/etc/riverui.env
+ExecStart=/usr/bin/riverui
+Restart=on-failure
+
+ProtectSystem=strict
+ReadWritePaths=/var/lib/riverui
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+NoNewPrivileges=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+CapabilityBoundingSet=
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictAddressFamilies=AF_INET AF_INET6
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+
+[Install]
+WantedBy=multi-user.target
