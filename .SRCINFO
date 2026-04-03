@@ -1,10 +1,11 @@
 pkgbase = pyswisseph
 	pkgdesc = Python extension to the Swiss Ephemeris.
 	pkgver = 2.10.03.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/astrorigin/pyswisseph
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = cmake

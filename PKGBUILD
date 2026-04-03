@@ -2,9 +2,9 @@
 
 pkgname='pyswisseph'
 pkgver='2.10.03.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='Python extension to the Swiss Ephemeris.'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('AGPL-3.0-only')
 url='https://github.com/astrorigin/pyswisseph'
 depends=('python' 'sqlite3')
