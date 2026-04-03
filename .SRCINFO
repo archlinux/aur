@@ -1,5 +1,5 @@
 pkgbase = cdt
-	pkgdesc = Approximate Convex Decomposition for 3D Meshes
+	pkgdesc = Constrained Delaunay Triangulation (C++)
 	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://artem-ogre.github.io/CDT/

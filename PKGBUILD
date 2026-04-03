@@ -1,7 +1,7 @@
 pkgname=cdt
 pkgver=1.4.4
 pkgrel=1
-pkgdesc="Approximate Convex Decomposition for 3D Meshes"
+pkgdesc="Constrained Delaunay Triangulation (C++)"
 license=('MPL-2.0')
 arch=('any')
 url="https://artem-ogre.github.io/CDT/"
