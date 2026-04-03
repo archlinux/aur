@@ -1,0 +1,17 @@
+pkgbase = seadrive-bin
+	pkgdesc = SeaDrive client for Seafile - access your files without syncing to local disk
+	pkgver = 3.0.21
+	pkgrel = 2
+	url = https://www.seafile.com/en/seadrive/
+	arch = x86_64
+	license = Apache-2.0
+	depends = fuse2
+	depends = hicolor-icon-theme
+	provides = seadrive
+	conflicts = seadrive
+	noextract = SeaDrive-x86_64-3.0.21.AppImage
+	options = !strip
+	source = SeaDrive-x86_64-3.0.21.AppImage::https://seafile-downloads.oss-cn-shanghai.aliyuncs.com/SeaDrive-x86_64-3.0.21.AppImage
+	sha256sums = c63310c836d21c5a588c11c3da7a08d0314dac298e63ed822321e019e563063f
+
+pkgname = seadrive-bin
