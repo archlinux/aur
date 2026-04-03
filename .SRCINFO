@@ -1,0 +1,25 @@
+pkgbase = quillpolkit-git
+	pkgdesc = Polkit authentication agent for Hyprland with Catppuccin Mocha UI (fork of hyprpolkitagent)
+	pkgver = r38.gb1f779b
+	pkgrel = 1
+	url = https://github.com/soyeb-jim285/quillpolkit
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-wayland
+	depends = hyprutils
+	depends = polkit
+	depends = polkit-qt6
+	provides = polkit-agent
+	provides = hyprpolkitagent
+	conflicts = hyprpolkitagent
+	source = quillpolkit-git::git+https://github.com/soyeb-jim285/quillpolkit.git
+	sha256sums = SKIP
+
+pkgname = quillpolkit-git
