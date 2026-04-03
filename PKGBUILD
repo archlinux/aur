@@ -1,5 +1,7 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Michał Wojdyła <micwoj9292@gmail.com>
 # Contributor: CpanBot <cpanbot at sch bme hu>
+# Contributor: xRemaLx <anton.komolov@gmail.com>
 
 _author=PETDANCE
 _dist=Test-WWW-Mechanize
