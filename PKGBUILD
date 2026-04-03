@@ -2,7 +2,7 @@
 
 pkgname=efistub-libre
 pkgver=260.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Systemd's EFI stubs collections without systemd"
 arch=('x86_64')
 url="https://github.com/systemd/systemd"
@@ -16,6 +16,7 @@ makedepends=(
     'ninja'
     'python'
     'python-jinja'
+    'python-pyelftools'
 )
 provides=('systemd-efi-stub')
 conflicts=('systemd-efi-stub')
