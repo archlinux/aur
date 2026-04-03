@@ -32,7 +32,7 @@ optdepends=(
   'python-transformers: needed for convert_hf_to_gguf.py'
   'python-gguf: needed for convert_hf_to_gguf.py'
 )
-provides=(${_pkgname})
+provides=(${_pkgname} libggml ggml)
 conflicts=(${_pkgname} libggml ggml stable-diffusion.cpp)
 options=(lto !debug)
 backup=("etc/conf.d/llama.cpp")
