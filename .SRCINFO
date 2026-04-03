@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-fish-git
 	pkgdesc = Fish shell grammar for tree-sitter
-	pkgver = v3.7.0-fa2143f
-	pkgrel = 3
+	pkgver = v3.7.0.b0ca570
+	pkgrel = 1
 	url = https://github.com/allysawada/tree-sitter-fish-aur.git
 	arch = x86_64
 	groups = tree-sitter-grammars
