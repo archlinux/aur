@@ -1,6 +1,6 @@
 # Maintainer: Dmitrij Vinokour <vinokour.dmitrij@gmail.com>
 pkgname=adot-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="A minimal dotfile manager"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=('adot')
 conflicts=('adot')
 source=("${pkgname}-${pkgver}::https://github.com/Dimfred/adot/releases/download/v${pkgver}/linux-adot-v${pkgver}-x86_64")
-sha256sums=('8a206a167c6165a4aafbe506de9c422555fae9b83a263724b12d5b76cd842009')
+sha256sums=('664f74022d2f8e73c625fc44a026ff052c42244732c3cf97d8c1ad91c111d249')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/adot"
