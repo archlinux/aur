@@ -1,7 +1,7 @@
-# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=rtpengine-kernel-dkms
-pkgver=13.3.1.4
+pkgver=14.1.1.4
 pkgrel=1
 pkgdesc="Kernel module for rtpengine media proxy"
 url="https://github.com/sipwise/rtpengine"
@@ -11,7 +11,7 @@ depends=('bash' 'dkms')
 optdepends=('linux: The Linux kernel'
             'linux-headers: Header files and scripts for building modules for Linux kernel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/mr${pkgver}.tar.gz")
-sha256sums=('b67f3589b9cf51df80908d80645f323a2bcaf35ee59326b4dc3660a721ed8250')
+sha256sums=('0c7684d1789f5a6fb862c8225f858752ea4c93ade6e6b1238f8e4edca9c34f38')
 
 prepare() {
   cd "rtpengine-mr${pkgver}"
@@ -24,11 +24,12 @@ prepare() {
   sed -i "s|if \[ -z \"\${RTPENGINE_VERSION}\" \]; then|RTPENGINE_VERSION=\"${pkgver}-arch\"\nif false; then|" \
     kernel-module/gen-rtpengine-kmod-flags
 
-  # Create dkms.conf from template, replacing placeholders
+  # Create dkms.conf from Debian template:
+  # - replace version placeholder
+  # - strip "ngcp-" prefix from PACKAGE_NAME so it becomes "rtpengine"
   sed -e "s|#MODULE_VERSION#|${pkgver}|" \
-    -e "s|ngcp-||" \
-    -e "s|^CLEAN=|CLEAN_SPEC=|" \
-    debian/ngcp-rtpengine-kernel-dkms.dkms >dkms.conf
+      -e "s|ngcp-rtpengine|rtpengine|g" \
+      debian/ngcp-rtpengine-kernel-dkms.dkms > dkms.conf
 }
 
 package() {
@@ -37,12 +38,13 @@ package() {
   # Install dkms.conf and kernel module sources
   install -Dm644 dkms.conf "${pkgdir}/usr/src/rtpengine-${pkgver}/dkms.conf"
   install -Dm644 kernel-module/Makefile "${pkgdir}/usr/src/rtpengine-${pkgver}/Makefile"
-  install -Dm644 kernel-module/*.{inc,c,h} "${pkgdir}/usr/src/rtpengine-${pkgver}"
+  install -Dm644 kernel-module/*.{inc,c,h} "${pkgdir}/usr/src/rtpengine-${pkgver}/"
   # Install patched gen-rtpengine-kmod-flags script
-  install -Dm755 kernel-module/gen-rtpengine-kmod-flags "${pkgdir}/usr/src/rtpengine-${pkgver}/gen-rtpengine-kmod-flags"
+  install -Dm755 kernel-module/gen-rtpengine-kmod-flags \
+    "${pkgdir}/usr/src/rtpengine-${pkgver}/gen-rtpengine-kmod-flags"
 
   # Install modules-load configuration for automatic loading at boot
-  install -Dm644 kernel-module/xt_RTPENGINE.modules.load.d \
+  install -Dm644 kernel-module/nft_rtpengine.modules.load.d \
     "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
 }
 
