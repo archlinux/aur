@@ -31,7 +31,7 @@ build() {
 
 package() {
   cd "$srcdir/dragonbox/build"
-  cmake --install . --destdir="$pkgdir" 
+  cmake --install . --prefix="$pkgdir/usr" 
 
   install -Dm644 "$srcdir/dragonbox/LICENSE-Apache2-LLVM" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE-Apache2-LLVM"
