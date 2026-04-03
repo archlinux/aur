@@ -1,4 +1,4 @@
-[proton-mail]
+[proton-meet-bin]
 source = 'jq'
 url = 'https://proton.me/download/meet/linux/version.json'
 filter = '.Releases[] | .Version'
