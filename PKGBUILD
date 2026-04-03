@@ -28,5 +28,5 @@ validpgpkeys=('C6E7F081CF80E13146676E88829B606631645531')
 
 package() {
     mkdir -p ${pkgdir}/usr/bin
-    install ${srcdir}/${_pkgname}-${CARCH}-unknown-linux-gnu ${pkgdir}/usr/bin/${_pkgname}
+    install ${srcdir}/${_pkgname}-${pkgver}-linux-${CARCH} ${pkgdir}/usr/bin/${_pkgname}
 }
