@@ -38,6 +38,7 @@ makedepends=(
 )
 checkdepends=(
   bash-completion
+  ffmpeg
   gst-python
   imagemagick
   python-beautifulsoup4

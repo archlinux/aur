@@ -6,6 +6,7 @@ pkgbase = beets-git
 	arch = any
 	license = MIT
 	checkdepends = bash-completion
+	checkdepends = ffmpeg
 	checkdepends = gst-python
 	checkdepends = imagemagick
 	checkdepends = python-beautifulsoup4
