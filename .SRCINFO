@@ -1,0 +1,15 @@
+pkgbase = rubyfmt
+	pkgdesc = rubyfmt to format ruby files
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/fables-tales/rubyfmt
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	makedepends = cargo
+	options = !lto
+	source = https://github.com/fables-tales/rubyfmt/archive/refs/tags/v0.13.0.tar.gz
+	sha256sums = 18964b26fda04549ee1a7b9b6a413775661f7d39595d90bf603f4c373cf373ca
+
+pkgname = rubyfmt
