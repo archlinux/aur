@@ -1,5 +1,5 @@
 pkgname=pomodoro-fyne-bin
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Desktop pomodoro timer built with Go and Fyne (prebuilt binary)"
 arch=('x86_64')
