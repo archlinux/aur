@@ -10,8 +10,8 @@ depends=('gtk3' 'libnotify' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'libsecret')
 provides=('anizium-desktop')
 conflicts=('anizium-desktop')
 options=('!strip' '!debug')
-source=("\${pkgname}-\${pkgver}.pacman::\${url}/releases/download/v\${pkgver}/anizium-desktop-\${pkgver}.pacman")
+source=("anizium-desktop-bin-1.0.0.pacman::https://github.com/P4ndaShi/Anizium-Desktop-Linux/releases/download/v1.0.0/anizium-desktop-1.0.0.pacman")
 sha256sums=('63fb6fcb832fbcd6f30adb1e1b65e3dc0d83f948df6cb203bd36872e5aba37ca')
 package() {
-    tar -xf "\${srcdir}/\${pkgname}-\${pkgver}.pacman" -C "\${pkgdir}/"
+    tar -xf "anizium-desktop-bin-1.0.0.pacman" -C "\$pkgdir/"
 }

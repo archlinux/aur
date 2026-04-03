@@ -16,7 +16,7 @@ pkgbase = anizium-desktop-bin
 	conflicts = anizium-desktop
 	options = !strip
 	options = !debug
-	source = ${pkgname}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/anizium-desktop-${pkgver}.pacman
+	source = anizium-desktop-bin-1.0.0.pacman::https://github.com/P4ndaShi/Anizium-Desktop-Linux/releases/download/v1.0.0/anizium-desktop-1.0.0.pacman
 	sha256sums = 63fb6fcb832fbcd6f30adb1e1b65e3dc0d83f948df6cb203bd36872e5aba37ca
 
 pkgname = anizium-desktop-bin
