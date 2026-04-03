@@ -73,7 +73,7 @@ build()
   cmake .. \
     -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-ignored-optimization-argument -ffat-lto-objects -DBOOST_FILESYSTEM_DEPRECATED -DBOOST_PROCESS_VERSION=1" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-ignored-optimization-argument -ffat-lto-objects -DBOOST_FILESYSTEM_DEPRECATED -DBOOST_PROCESS_VERSION=1 -ffile-prefix-map=$srcdir=." \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_PREFIX_PATH="$srcdir/deps-install" \
     -DOpenGL_GL_PREFERENCE=GLVND \
