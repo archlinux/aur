@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
 url="https://github.com/MrNeRF/LichtFeld-Studio"
@@ -76,12 +76,32 @@ prepare() {
     fi
     ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
 
+    # Skip vcpkg debug builds (we only use release libs);
+    # strip $srcdir from __FILE__ macros in vcpkg-built libs
+    cat >> vcpkg/triplets/x64-linux.cmake <<EOF
+set(VCPKG_BUILD_TYPE release)
+set(VCPKG_C_FLAGS "-ffile-prefix-map=${srcdir}/=")
+set(VCPKG_CXX_FLAGS "-ffile-prefix-map=${srcdir}/=")
+EOF
+
     # Fix vendored zep missing <cstdint> for GCC 15
     sed -i '5i #include <cstdint>' external/zep/include/zep/glyph_iterator.h
 
     # Remove $srcdir reference from binary (PROJECT_ROOT_PATH is a dev fallback;
     # production path resolution uses exe/../share/LichtFeld-Studio/ which works with FHS)
     sed -i 's|get_filename_component(PROJ_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}" ABSOLUTE)|set(PROJ_ROOT_DIR "/usr/share/LichtFeld-Studio")|' CMakeLists.txt
+
+    # Remove dev-only fallback paths that leak $srcdir into binaries
+    # (runtime uses FHS paths from getAssetsDir()/getShadersDir(); these are #ifdef guards)
+    sed -i '/PROJECT_ROOT_PATH="\${PROJECT_SOURCE_DIR}"/d;
+            /VISUALIZER_.*_PATH="\${VISUALIZER_BUILD_RESOURCE_DIR}/d;
+            /VISUALIZER_SOURCE_.*_PATH="\${VISUALIZER_SOURCE_RESOURCE_DIR}/d' \
+        src/visualizer/CMakeLists.txt
+    sed -i '/SHADER_PATH="\${RENDERING_BUILD_RESOURCE_DIR}/d;
+            /RENDERING_SOURCE_SHADER_PATH="\${RENDERING_SOURCE_RESOURCE_DIR}/d' \
+        src/rendering/CMakeLists.txt
+    sed -i '/LFS_PYTHON_EXECUTABLE="\${Python_EXECUTABLE}"/d' \
+        src/python/CMakeLists.txt
 
     # Trim vcpkg.json to only deps without system equivalents.
     # Everything else comes from Arch packages (faster build, smaller footprint).
@@ -124,6 +144,9 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_RPATH=/usr/lib \
+        -DCMAKE_C_FLAGS="-ffile-prefix-map=${srcdir}/=" \
+        -DCMAKE_CXX_FLAGS="-ffile-prefix-map=${srcdir}/=" \
+        -DCMAKE_CUDA_FLAGS="-Xcompiler=-ffile-prefix-map=${srcdir}/=" \
         -DBUILD_CUDA_PTX_ONLY=ON \
         -DBUILD_CUDA_MIN_SM=75 \
         -DBUILD_TESTS=OFF \
