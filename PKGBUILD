@@ -121,6 +121,10 @@ check()
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
+    # This is necessary, otherwise tests that rely on DateTime::TimeZone will fail
+    # with 'Cannot determine local time zone'.
+    export TZ=UTC
+
     make test
 }
 
