@@ -1,13 +1,13 @@
 # Maintainer: Donien <donien.96@hotmail.com>
 
 pkgname="icingadb-web"
-pkgver="1.3.0"
+pkgver="1.3.1"
 pkgrel=1
 epoch=0
 pkgdesc="Provides a graphical interface to your Icinga monitoring "
 arch=("any")
 url="https://github.com/Icinga/icingadb-web"
-license=("GPL")
+license=("GPL-3.0-only")
 groups=()
 depends=(
     "icingaweb2>=2.9"
@@ -38,7 +38,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    "3e4d608e4d1587d86231312c9fa4801e2c5819de7f3fb952bfa569b766720ca4"
+    "b7f4497bf29fe5823f631bc98ce3cbf7d51f426b19216ff61c2fd37c58c37f75"
     "SKIP"
     "SKIP"
     "SKIP"
