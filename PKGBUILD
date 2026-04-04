@@ -16,25 +16,22 @@ source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}/${pkgname}-
 sha256sums=('d451ad1d05a0afdc752daf1dada9327aa338f691eca91e1c8fc9828eebd89757')
 
 prepare() {
-    export GOPATH="${srcdir}"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    go mod download -modcacherw
+    GOPATH="${srcdir}" go mod download -modcacherw
     sed -i 's|/usr/local/bin|/usr/bin|g' "./dist/systemd/${pkgname}.service"
     sed -i "s|USR_SHARE_ZREPL|/usr/share/doc/${pkgname}|g" ./packaging/systemd-default-zrepl.yml
 }
 
 build() {
-    export GOPATH="${srcdir}"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    CGO_ENABLED=0 go build -trimpath -modcacherw -buildmode=pie -buildvcs=false -mod=readonly \
+    CGO_ENABLED=0 GOPATH="${srcdir}" go build -trimpath -modcacherw -buildmode=pie -buildvcs=false -mod=readonly \
         -ldflags "-s -w -X github.com/zrepl/zrepl/internal/version.zreplVersion=v${pkgver} -buildid=" \
         -o "${pkgname}" ./
 }
 
 check() {
-    export GOPATH="${srcdir}"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    CGO_ENABLED=0 go test -mod=readonly ./...
+    CGO_ENABLED=0 GOPATH="${srcdir}" go test -mod=readonly ./...
 }
 
 package() {
