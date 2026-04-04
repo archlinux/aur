@@ -5,4 +5,5 @@ fi
 if [ ! -d ~/~/GNUstep/Library/ApplicationSupport/Oolite/ManagedAddOns ]; then
     mkdir -p ~/GNUstep/Library/ApplicationSupport/Oolite/ManagedAddOns
 fi
+/usr/share/oolite-git/splash-launcher
 exec /usr/share/oolite-git/oolite "$@"
