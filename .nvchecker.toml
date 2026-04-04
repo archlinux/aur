@@ -1,0 +1,3 @@
+[perl-ipc-sharelite]
+source = "cpan"
+cpan = "IPC-ShareLite"
