@@ -1,6 +1,6 @@
 pkgbase = thiefmd
 	pkgdesc = The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://thiefmd.com
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = thiefmd
 	depends = libxml2
 	depends = link-grammar
 	depends = webkitgtk-6.0
-	source = git+https://github.com/kmwallio/ThiefMD.git#tag=v0.3.1
+	source = git+https://github.com/kmwallio/ThiefMD.git#tag=v0.3.2
 	source = git+https://github.com/ThiefMD/libwritegood-vala.git
 	source = git+https://github.com/TwiRp/ultheme-vala.git
 	source = git+https://github.com/ThiefMD/writeas-vala.git
@@ -33,7 +33,7 @@ pkgbase = thiefmd
 	source = git+https://github.com/ThiefMD/medium-vala.git
 	source = git+https://github.com/ThiefMD/forem-vala.git
 	source = git+https://github.com/TwiRp/hashnode-vala.git
-	sha256sums = a8ab52226683fddec0b40079680767dfcbab0574521d285bf908376f10cb9d88
+	sha256sums = 89f9e0cc84e5c7c94484247faea85fd0eb3d67f5112ecda5cf18b51fe913e654
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

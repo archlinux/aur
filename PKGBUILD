@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=thiefmd
 _app_id="com.github.kmwallio.$pkgname"
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter"
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,7 @@ source=("git+https://github.com/kmwallio/ThiefMD.git#tag=v$pkgver"
         'git+https://github.com/ThiefMD/medium-vala.git'
         'git+https://github.com/ThiefMD/forem-vala.git'
         'git+https://github.com/TwiRp/hashnode-vala.git')
-sha256sums=('a8ab52226683fddec0b40079680767dfcbab0574521d285bf908376f10cb9d88'
+sha256sums=('89f9e0cc84e5c7c94484247faea85fd0eb3d67f5112ecda5cf18b51fe913e654'
             'SKIP'
             'SKIP'
             'SKIP'
