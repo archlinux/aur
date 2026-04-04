@@ -1,0 +1,15 @@
+pkgbase = tunnelops
+	pkgdesc = Interactive SSH tunnel and file transfer manager built with Bash
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/rdarshan927/tunnelops
+	arch = any
+	license = AGPL3
+	depends = bash
+	depends = openssh
+	optdepends = sshpass: for password authentication
+	optdepends = cronie: for cron support
+	source = git+https://github.com/rdarshan927/tunnelops.git
+	md5sums = SKIP
+
+pkgname = tunnelops
