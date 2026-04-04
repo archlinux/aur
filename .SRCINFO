@@ -1,0 +1,19 @@
+pkgbase = sfs-bin
+	pkgdesc = Secure File System - A FUSE-based filesystem with SSH transport
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/skorotkiewicz/sfs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = fuse2
+	provides = sfs
+	conflicts = sfs
+	options = !strip
+	source_x86_64 = sfs-0.2.0-x86_64::https://github.com/skorotkiewicz/sfs/releases/download/v0.2.0/sfs-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 7993bc12101a01fc75bc7be26f20f3ab64b6c513fd6a621af96041f065153e07
+	source_aarch64 = sfs-0.2.0-aarch64::https://github.com/skorotkiewicz/sfs/releases/download/v0.2.0/sfs-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 8d8a09c6bf50b353d98e3326fe1f6d9ed34daff18ac89c7e877b509f5e987f9f
+
+pkgname = sfs-bin
