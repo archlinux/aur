@@ -1,6 +1,6 @@
 pkgbase = asbru-cm-git
 	pkgdesc = A free and open-source connection manager. master branch
-	pkgver = 6.3.3.r1.gac61921
+	pkgver = v6.4.1.r0.g001d217
 	pkgrel = 1
 	url = https://github.com/asbru-cm/asbru-cm
 	arch = any
@@ -28,6 +28,7 @@ pkgbase = asbru-cm-git
 	depends = libwnck3
 	depends = perl-io-stty
 	depends = perl-io-tty
+	depends = perl-crypt-urandom
 	optdepends = uucp: Unix-to-Unix Copy
 	optdepends = rdesktop: RDP connections
 	optdepends = freerdp: RDP connections
