@@ -1,0 +1,8 @@
+pkgbase = meutestepkg
+	pkgdesc = Pacote de teste seguro para aprender a criar pacotes Pacman
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+
+pkgname = meutestepkg
