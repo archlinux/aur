@@ -10,8 +10,8 @@ url="https://github.com/EricLBuehler/mistral.rs"
 license=("MIT")
 depends=('openssl')
 makedepends=('cargo' 'git')
-conflicts=("mistralrs-server")
-provides=("mistralrs-server")
+conflicts=("mistralrs")
+provides=("mistralrs")
 source=('git+https://github.com/EricLBuehler/mistral.rs')
 
 pkgver() {
@@ -31,7 +31,7 @@ build() {
 
 package() {
 	cd "$_pkgname"
-	install -Dm755 "target/release/mistralrs-server" "$pkgdir/usr/bin/mistralrs-server"
+	install -Dm755 "target/release/mistralrs" "$pkgdir/usr/bin/mistralrs"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
