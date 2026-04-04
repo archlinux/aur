@@ -7,7 +7,7 @@ pkgdesc="A procedural sprite animation tool made with the nCine"
 arch=('i686' 'x86_64')
 url="https://encelo.itch.io/spookyghost"
 license=('MIT')
-depends=('glew' 'libpng' 'sdl2' 'lua' 'hicolor-icon-theme')
+depends=('libpng' 'sdl2' 'lua' 'hicolor-icon-theme')
 makedepends=('git' 'cmake')
 conflicts=('spookyghost')
 provides=('spookyghost')
@@ -39,6 +39,7 @@ build() {
         -DNCINE_DYNAMIC_LIBRARY=OFF\
         -DIMGUI_VERSION_TAG=v1.92.7-docking\
         -DNCINE_PREFERRED_BACKEND=SDL2\
+        -DNCINE_WITH_GLEW=OFF\
         -DNCINE_WITH_THREADS=OFF\
         -DNCINE_WITH_WEBP=OFF\
         -DNCINE_WITH_AUDIO=OFF\

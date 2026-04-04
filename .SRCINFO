@@ -8,7 +8,6 @@ pkgbase = spookyghost-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	depends = glew
 	depends = libpng
 	depends = sdl2
 	depends = lua
