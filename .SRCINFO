@@ -1,0 +1,18 @@
+pkgbase = castword-gnome-bin
+	pkgdesc = GNOME overlay for LLM-powered text tone rewriting
+	pkgver = 2026.04.04.02
+	pkgrel = 1
+	url = https://shapemachine.xyz/castword
+	arch = any
+	license = custom
+	depends = python
+	depends = python-gobject
+	depends = libadwaita
+	depends = libsecret
+	depends = gtk4
+	provides = castword-gnome
+	conflicts = castword-gnome
+	source = castword-gnome-bin-2026-04-04-02.pkg.tar.zst::https://github.com/Shape-Machine/castword-gnome/releases/download/v2026-04-04-02/castword-gnome-2026-04-04-02-any.pkg.tar.zst
+	sha256sums = 608e1459f3785d72d049a8c6dd58645a0cd094c9f60276efe958fe420dff1f5e
+
+pkgname = castword-gnome-bin
