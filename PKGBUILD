@@ -8,9 +8,6 @@ license=('MIT')
 depends=('webkit2gtk-4.1'
 	 'libappindicator'
 	 'gtk3')
-makedepends=('nodejs>=22'
-	     'pnpm'
-	     'rust')
 backup=()
 
 if [ "$CARCH" == "x86_64" ]; then

@@ -6,9 +6,6 @@ pkgbase = soundcloud-desktop-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = nodejs>=22
-	makedepends = pnpm
-	makedepends = rust
 	depends = webkit2gtk-4.1
 	depends = libappindicator
 	depends = gtk3
