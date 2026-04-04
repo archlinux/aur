@@ -1,0 +1,14 @@
+pkgbase = rsrssr
+	pkgdesc = A really simple RSS and Atom reader for the terminal
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://codeberg.org/tcftbl/rsrssr
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = gcc-libs
+	source = rsrssr-0.2.4.tar.gz::https://codeberg.org/tcftbl/rsrssr/archive/v0.2.4.tar.gz
+	sha256sums = 660c271cd39510656d77e12691c661fa49884633daed0305fd3f9992a0da7836
+
+pkgname = rsrssr
