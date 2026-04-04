@@ -3,7 +3,7 @@ import sys
 import subprocess
 from PyQt6.QtWidgets import QApplication, QSystemTrayIcon, QMenu
 from PyQt6.QtGui import QIcon, QColor, QPixmap, QPainter, QPen, QBrush
-from PyQt6.QtCore import QTimer, Qt
+from PyQt6.QtCore import QTimer
 
 class XScreensaverToggle:
     def __init__(self):
@@ -24,20 +24,17 @@ class XScreensaverToggle:
 
         self.tray.show()
 
-        # Cache icons
-        self._icon_on = self.create_icon(True)
-        self._icon_off = self.create_icon(False)
-
         self.update_status()
 
-        # Update status
+        # Update status every 2 seconds
         timer = QTimer()
         timer.timeout.connect(self.update_status)
-        timer.start(5000)  # 5 seconds instead of 2
+        timer.start(2000)
 
         sys.exit(self.app.exec())
 
     def on_tray_activated(self, reason):
+        from PyQt6.QtWidgets import QSystemTrayIcon
         # Toggle on left click (Trigger reason = 2)
         if reason == QSystemTrayIcon.ActivationReason.Trigger:
             self.toggle()
@@ -61,18 +58,20 @@ class XScreensaverToggle:
         status_text = "✓ xscreensaver: ON" if enabled else "✗ xscreensaver: OFF"
         self.status_action.setText(status_text)
 
-        # Use cached icon
-        self.tray.setIcon(self._icon_on if enabled else self._icon_off)
+        # Change screen color based on status
+        self.tray.setIcon(self.create_icon(enabled))
 
     def create_icon(self, is_on):
-        # This is called only ONCE during init
+        from PyQt6.QtGui import QPixmap, QPainter, QPen, QBrush, QColor
+        from PyQt6.QtCore import Qt
+
         pixmap = QPixmap(32, 32)
         pixmap.fill(QColor("transparent"))
 
         painter = QPainter(pixmap)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
 
-        # Monitor frame
+        # Monitor frame (always gray)
         frame_color = QColor("gray")
         pen = QPen(frame_color)
         pen.setWidth(2)
