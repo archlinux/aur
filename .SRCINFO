@@ -1,14 +1,19 @@
 pkgbase = metadump
-	pkgdesc = Metadata analysis tool - extracts, categorises, and risk-ranks metadata from files
-	pkgver = 1.0.0
+	pkgdesc = Metadata analysis tool
+	pkgver = release.3.gfaef408
 	pkgrel = 1
-	url = https://github.com/mansar1337/metadump
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
 	makedepends = rust
-	depends = gcc-libs
-	source = metadump-1.0.0.tar.gz::https://github.com/mansar1337/metadump/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = f2354acc7af2668612dbf2e93926e8b6d54b240639c215c6cec703c6473813a6
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = zstd
+	makedepends = git
+	depends = zstd
+	depends = xz
+	depends = bzip2
+	conflicts = metadump-bin
+	source = git+https://github.com/mansar1337/metadump.git
+	sha256sums = SKIP
 
 pkgname = metadump
