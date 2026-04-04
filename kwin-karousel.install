@@ -1,0 +1,4 @@
+post_install() {
+  echo "==> To enable Karousel:"
+  echo "==> System Settings > Window Management > KWin Scripts > Karousel"
+}
