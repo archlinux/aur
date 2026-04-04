@@ -1,6 +1,6 @@
 # Maintainer: dimflix <dimflix.official@gmail.com>
 pkgname=meowrch-tools
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Performance optimization tools and scripts for Meowrch distribution"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('nvidia-utils: for NVIDIA GPU optimizations'
             'sudo: for system updates')
 install=meowrch-tools.install
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9fe6072115169b2d125309753fd7eab65e0854f3962c7c942d1fb7cf161953ef')
+sha256sums=('fdbd51bcedd0b365f44833a8c26e78f324297a52140e2092662a15d096da4053')
 
 package() {
     cd "$srcdir/meowrch-tools-$pkgver"
