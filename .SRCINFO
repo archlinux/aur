@@ -1,6 +1,6 @@
 pkgbase = showel-bin
 	pkgdesc = Fast native desktop database client built with Rust and Dioxus
-	pkgver = 0.2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/Fynth/showel
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = showel-bin
 	conflicts = showel-git
 	options = !debug
 	options = !lto
-	source = showel-bin-0.2.1.0.tar.gz::https://github.com/Fynth/showel/releases/download/v0.2.1.0/showel-linux-x86_64.tar.gz
-	sha256sums = 3fe18b7164e0818cb3cc0443544d136dfad1ef5113fa105ac4328e5a42585a86
+	source = showel-bin-2.1.1.tar.gz::https://github.com/Fynth/showel/releases/download/v2.1.1/showel-linux-x86_64.tar.gz
+	sha256sums = 702df0d8bb6423c33e9b96d46eabe8e65455b5c8a52b1c6aa055ce2943c7c3b0
 
 pkgname = showel-bin
