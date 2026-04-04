@@ -2,11 +2,12 @@
 pkgname=yappie
 pkgver=r3.e490525
 pkgrel=1
-pkgdesc='Fast local-first voice dictation for Linux/Wayland'
+pkgdesc='Voice dictation for Wayland'
 arch=('any')
 url='https://github.com/kloogans/yappie-linux'
 license=('MIT')
-depends=('pipewire' 'curl' 'nmap' 'jq' 'ydotool' 'wl-clipboard' 'libnotify' 'hyprland')
+depends=('pipewire' 'curl' 'nmap' 'jq' 'ydotool' 'wl-clipboard' 'libnotify')
+optdepends=('hyprland: smart terminal paste detection' 'sway: smart terminal paste detection')
 makedepends=('git')
 install=yappie.install
 source=("$pkgname::git+https://github.com/kloogans/yappie-linux.git")

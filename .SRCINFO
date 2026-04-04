@@ -1,5 +1,5 @@
 pkgbase = yappie
-	pkgdesc = Fast local-first voice dictation for Linux/Wayland
+	pkgdesc = Voice dictation for Wayland
 	pkgver = r3.e490525
 	pkgrel = 1
 	url = https://github.com/kloogans/yappie-linux
@@ -14,7 +14,8 @@ pkgbase = yappie
 	depends = ydotool
 	depends = wl-clipboard
 	depends = libnotify
-	depends = hyprland
+	optdepends = hyprland: smart terminal paste detection
+	optdepends = sway: smart terminal paste detection
 	source = yappie::git+https://github.com/kloogans/yappie-linux.git
 	sha256sums = SKIP
 
