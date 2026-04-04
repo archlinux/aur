@@ -1,0 +1,18 @@
+pkgbase = wrain-bin
+	pkgdesc = GPU accelerated rain wallpaper for Wayland (Pre-compiled binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/happyzxzxz/wrain
+	arch = x86_64
+	license = MIT
+	depends = wayland
+	depends = libxkbcommon
+	depends = vulkan-loader
+	depends = alsa-lib
+	provides = wrain
+	conflicts = wrain
+	conflicts = wrain-git
+	source = https://github.com/happyzxzxz/wrain/releases/download/v0.1.0/wrain-x86_64.tar.gz
+	sha256sums = 1cd4fac7a78fb3927a5613bd01236dc59f86ed18bf1b1d306b48b2c87f547b9d
+
+pkgname = wrain-bin
