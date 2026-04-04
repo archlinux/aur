@@ -1,6 +1,5 @@
 post_install() {
-    echo ":: Enable and start the service with:"
-    echo "   sudo systemctl enable --now framework-control.service"
+    systemctl enable --now framework-control.service
 }
 
 post_upgrade() {
