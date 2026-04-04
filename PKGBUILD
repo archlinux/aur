@@ -9,7 +9,7 @@ _qcacld2_short=${_qcacld2_commit:0:8}
 pkgver=20251018.${_qcacld2_short}
 pkgrel=1
 
-arch=('aarch64')
+arch=('aarch64' 'x86_64')
 url="https://source.mnt.re/reform/qcacld2"
 license=('custom:varies')
 makedepends=('git')
