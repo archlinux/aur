@@ -1,6 +1,6 @@
 pkgbase = gogofetch-git
 	pkgdesc = fetch made with C++ rewritten to go for no reason
-	pkgver = r22.bac8709
+	pkgver = r23.5ea5393
 	pkgrel = 1
 	url = git+https://codeberg.org/nekohepott/goGoFetch.git
 	arch = x86_64
