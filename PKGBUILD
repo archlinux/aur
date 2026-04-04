@@ -1,6 +1,6 @@
 # Maintainer: Yuzu <aur at vitayuzu dot day>
 pkgname=mateengine
-pkgver=3.2.0_3_hotfix
+pkgver=3.2.0_4
 pkgrel=1
 pkgdesc="Unofficial Linux port of MateEngine - A free Desktop Mate alternative with custom VRM support"
 arch=('x86_64')
@@ -45,7 +45,7 @@ sha256sums=('78c8b197c30d22b5026895c496aa243f3a933943eeefeabe18660101cdc4d85d'
 
 package() {
     install -dm755 "${pkgdir}/opt/${pkgname}"
-    cp -r "${srcdir}/${_srcdir}"/* "${pkgdir}/opt/${pkgname}/"
+    cp -r "${srcdir}/${_srcdir}"/Payload/* "${pkgdir}/opt/${pkgname}/"
 
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/launch.sh" "${pkgdir}/usr/bin/${pkgname}"
