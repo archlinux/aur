@@ -5,7 +5,7 @@
 ## https://github.com/web-flow.gpg
 
 pkgname=neovim-telescope-git
-pkgver=0.1.0.r158.g6d3fbffe
+pkgver=0.2.2.r2.gcfb85dcf
 pkgrel=1
 pkgdesc="Extensible fuzzy finder for lists"
 arch=('any')
@@ -31,7 +31,7 @@ sha256sums=('SKIP')
 #)
 
 pkgver() {
-	git -C "$pkgname" describe --long --tags | sed 's/-/.r/;s/-/./'
+	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
