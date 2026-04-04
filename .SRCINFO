@@ -10,6 +10,7 @@ pkgbase = droidvalds-git
 	depends = mpv
 	depends = xorg-xrandr
 	depends = bash
+	optdepends = jq: required for the script to work in Niri compositor
 	source = droidvalds-git::git+https://git.patchouliknowledge.com/tenshi/droidvalds.git#branch=main
 	md5sums = SKIP
 

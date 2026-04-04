@@ -7,6 +7,7 @@ install=droidvalds.install
 pkgdesc="SystemD Linus Droidvalds GCC Virus"
 arch=('any')
 depends=('mpv' 'xorg-xrandr' 'bash')
+optdepends=('jq: required for the script to work in Niri compositor')
 makedepends=('git')
 license=('GPL-1.0-or-later')
 source=("${pkgname}::git+${url}.git#branch=main")
