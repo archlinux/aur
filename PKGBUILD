@@ -6,7 +6,7 @@
 _pkgname='aggregate6'
 pkgname="$_pkgname-git"
 pkgdesc='IPv4 and IPv6 prefix aggregation tool (development version)'
-pkgver=1.0.14.r6.gff6d17f
+pkgver=1.0.15.r0.g5888888
 pkgrel=1
 url='https://github.com/job/aggregate6'
 arch=('any')
@@ -57,6 +57,7 @@ package() {
   rm -rf "$pkgdir/usr/man"
 
   for _dir in doc licenses; do
+    test -d "$pkgdir/usr/share/$_dir" || continue
     cd "$pkgdir/usr/share/$_dir" && ln -srf "$pkgname" "$_pkgname"
   done
 }

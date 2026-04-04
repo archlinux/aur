@@ -1,6 +1,6 @@
 pkgbase = aggregate6-git
 	pkgdesc = IPv4 and IPv6 prefix aggregation tool (development version)
-	pkgver = 1.0.14.r6.gff6d17f
+	pkgver = 1.0.15.r0.g5888888
 	pkgrel = 1
 	url = https://github.com/job/aggregate6
 	arch = any
