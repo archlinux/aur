@@ -10,7 +10,7 @@ _vlcver=3.0.22
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=$_vlcver${_vlcfixupver//-/.r}
-pkgrel=25
+pkgrel=26
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url=https://www.videolan.org/vlc/
 arch=('x86_64' 'aarch64')
@@ -142,6 +142,9 @@ prepare() {
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
+
+  # libupnp callback typedef now uses non-const event pointer
+  sed -i 's/typedef const void\* UpnpEventPtr;/typedef void* UpnpEventPtr;/' modules/services_discovery/upnp.hpp
 
   # Fix build with gstreamer 1.28
   sed -i '/#include <gst\/gstbufferpool.h>/d; /#include <gst\/video\/gstvideopool.h>/d' modules/codec/gstreamer/gstvlcvideopool.h
