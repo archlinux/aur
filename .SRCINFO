@@ -1,7 +1,7 @@
 pkgbase = constrict
 	pkgdesc = Compress videos to target sizes
 	pkgver = 26.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/Constrict
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -14,6 +14,7 @@ pkgbase = constrict
 	depends = glycin-gtk4
 	depends = libadwaita
 	depends = ffmpeg
+	optdepends = libva-utils: Hardware acceleration support
 	source = git+https://gitlab.gnome.org/World/Constrict.git#tag=26.2
 	sha256sums = SKIP
 
