@@ -1,0 +1,10 @@
+--- luniistore-orig/opt/Lunii/Lunii.desktop	2026-04-04 17:35:46.000000000 +0200
++++ luniistore/opt/Lunii/Lunii.desktop	2026-04-04 17:44:35.000000000 +0200
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+-Exec=/opt/Lunii/Lunii
++Exec=env "GDK_BACKEND=x11" /opt/Lunii/Lunii
+ Icon=/opt/Lunii/Lunii.png
+ Terminal=false
+ Type=Application
