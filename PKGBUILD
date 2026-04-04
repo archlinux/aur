@@ -1,5 +1,16 @@
 # Maintainer: TheAnonymous <github.com/TheAnonymous>
 pkgname=ollama-autocorrect-git
+pkgver=r0.0.0
+pkgrel=1
+pkgdesc="System-wide AI autocorrection for Wayland desktops via local Ollama LLM"
+arch=('any')
+url="https://github.com/TheAnonymous/Autocorrect"
+license=('MIT')
+depends=('python' 'wl-clipboard' 'wtype' 'curl' 'libnotify' 'ollama')
+optdepends=('python-pystray: tray icon support'
+            'python-pillow: tray icon support'
+            'dialog: terminal UI support')
+makedepends=('git')
 provides=('ollama-autocorrect')
 conflicts=('ollama-autocorrect')
 source=("git+https://github.com/TheAnonymous/Autocorrect.git")
@@ -47,36 +58,8 @@ BINSCRIPT
     install -Dm755 "ollama-tray.py" "$pkgdir/usr/bin/ollama-tray"
     sed -i '1s|.*|#!/usr/bin/env python3|' "$pkgdir/usr/bin/ollama-tray"
 
-    cat > "$pkgdir/usr/lib/systemd/user/ollama-tray.service" << 'SVCEOF'
-[Unit]
-Description=Ollama Tray Manager
-After=graphical-session.target
-Wants=graphical-session.target
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/ollama-tray
-Restart=on-failure
-RestartSec=5
-Environment=WAYLAND_DISPLAY=${WAYLAND_DISPLAY:-wayland-0}
-Environment=XDG_SESSION_TYPE=wayland
-
-[Install]
-WantedBy=graphical-session.target
-SVCEOF
-
-    cat > "$pkgdir/etc/xdg/autostart/ollama-tray.desktop" << 'DSKEOF'
-[Desktop Entry]
-Type=Application
-Name=Ollama Tray Manager
-Comment=System tray indicator for Ollama
-Exec=/usr/bin/ollama-tray
-Icon=utilities-terminal
-Terminal=false
-Categories=Utility;
-X-GNOME-Autostart-enabled=true
-X-KDE-autostart-after-panell=true
-DSKEOF
+    install -Dm644 ".install/ollama-tray.service" "$pkgdir/usr/lib/systemd/user/ollama-tray.service"
+    install -Dm644 ".install/ollama-tray.desktop" "$pkgdir/etc/xdg/autostart/ollama-tray.desktop"
 
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
