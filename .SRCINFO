@@ -1,0 +1,16 @@
+pkgbase = python-forking
+	pkgdesc = A Python context manager that run the code in a different process
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://git.afpy.org/mdk/forking
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/f/forking/forking-0.3.tar.gz
+	sha256sums = abd58cf392b27160f7b6ac659aa80cb205da318766ec60b875b1ee731ffb708c
+
+pkgname = python-forking
