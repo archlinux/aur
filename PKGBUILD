@@ -31,7 +31,7 @@ build() {
 
 check() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    CGO_ENABLED=0 GOPATH="${srcdir}" go test -mod=readonly ./...
+    CGO_ENABLED=0 GOPATH="${srcdir}" go test -modcacherw -mod=readonly ./...
 }
 
 package() {
