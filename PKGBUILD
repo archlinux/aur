@@ -21,6 +21,7 @@ build() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR="$srcdir/$pkgname/target"
+  export CARGO_PROFILE_RELEASE_LTO=thin
   cargo build --frozen --release
 }
 
