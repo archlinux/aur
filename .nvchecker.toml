@@ -1,0 +1,5 @@
+[i3-battery-popup]
+source = "github"
+github = "rjekker/i3-battery-popup"
+prefix = "v"
+use_latest_release = "true"
