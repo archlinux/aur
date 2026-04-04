@@ -1,5 +1,5 @@
 pkgbase = ollama-gui
-	pkgdesc = Native Tk/ttkbootstrap Ollama desktop UI with sessions, auto web search, and theme customization
+	pkgdesc = Native Tk/ttkbootstrap Ollama desktop UI with sessions, auto web search, and live theme customization
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/mehmetbayoglu/Ollama-gui
