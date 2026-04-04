@@ -2,12 +2,12 @@
 
 pkgname=python-csdr-eti-git
 pkgver=r12.676663b
-pkgrel=2
+pkgrel=5
 pkgdesc="Python bindings for csdr-eti"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jketterl/pycsdr-eti"
 license=('GPL-3.0-only')
-depends=('python' 'csdr-eti')
+depends=('python' 'csdr-eti-git' 'python-csdr-luarvique')
 makedepends=('git' 'python-setuptools')
 conflicts=('python-csdr-eti' 'pycsdr-eti')
 provides=('python-csdr-eti' 'pycsdr-eti')
