@@ -35,5 +35,6 @@ Exec=env GDK_BACKEND=x11 /opt/abs-flutter/abs_flutter
 Icon=abs-flutter
 Type=Application
 Categories=Audio;
+StartupWMClass=Buchable
 DESKTOP
 }
