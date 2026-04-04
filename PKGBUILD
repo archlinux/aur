@@ -5,7 +5,7 @@
 
 # Maintainer: Mykhailo Aleksieiev <nekohepott@larpdhq.org>
 pkgname=gogofetch-git
-pkgver=r28.a7d3ede
+pkgver=r29.e504ea0
 pkgrel=1
 pkgdesc="Fetch written in Go with image support"
 arch=('x86_64')
@@ -38,5 +38,14 @@ build() {
 
 package() {
     cd "goGoFetch"
+
     install -Dm755 "gogofetch" "$pkgdir/usr/bin/gogofetch"
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    install -d "$pkgdir/usr/share/gogofetch/assets"
+
+    cp -r assets/* "$pkgdir/usr/share/gogofetch/assets/"
+
+    chmod -R u+rwX,go+rX "$pkgdir/usr/share/gogofetch/assets"
 }
