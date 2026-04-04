@@ -1,6 +1,6 @@
 pkgbase = mateengine
 	pkgdesc = Unofficial Linux port of MateEngine - A free Desktop Mate alternative with custom VRM support
-	pkgver = 3.2.0_3_hotfix
+	pkgver = 3.2.0_4
 	pkgrel = 1
 	url = https://github.com/Marksonthegamer/Mate-Engine-Linux-Port
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = mateengine
 	optdepends = pipewire-pulse: for dancing feature with PipeWire
 	optdepends = xdpyinfo: for transparent background if glxinfo does not works
 	replaces = mate-engine-linux-port
-	source = MateEngineX_3.2.0_3_hotfix.tar.gz::https://github.com/Marksonthegamer/Mate-Engine-Linux-Port/releases/download/Public-Release-X3.2.0_3_hotfix/MateEngineX_3.2.0_3_hotfix.tar.gz
+	source = MateEngineX_3.2.0_4.tar.gz::https://github.com/Marksonthegamer/Mate-Engine-Linux-Port/releases/download/Public-Release-X3.2.0_4/MateEngineX_3.2.0_4.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/Marksonthegamer/Mate-Engine-Linux-Port/main/LICENSE
 	source = mateengine.desktop
 	sha256sums = 78c8b197c30d22b5026895c496aa243f3a933943eeefeabe18660101cdc4d85d
