@@ -15,7 +15,7 @@ pkgbase = open-orpheus
 	depends = mesa
 	depends = libxcb
 	depends = kde-cli-tools
-	source = open-orpheus_0.0.1_amd64.deb::https://github.com/YUCLing/open-orpheus/release/download/v0.0.1/open-orpheus_0.0.1_amd64.deb
+	source = open-orpheus_0.0.1_amd64.deb::https://github.com/YUCLing/open-orpheus/releases/download/v0.0.1/open-orpheus_0.0.1_amd64.deb
 	sha256sums = f14a528f3e0a77f59a775b4433c2e27f5ef7304ef77736c87c1d97fe1a241e55
 
 pkgname = open-orpheus

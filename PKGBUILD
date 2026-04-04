@@ -20,7 +20,7 @@ depends=(
     'kde-cli-tools'
 )
 makedepends=('libarchive')
-source=("${pkgname}_${pkgver}_amd64.deb::https://github.com/YUCLing/open-orpheus/release/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb")
+source=("${pkgname}_${pkgver}_amd64.deb::https://github.com/YUCLing/open-orpheus/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb")
 sha256sums=('f14a528f3e0a77f59a775b4433c2e27f5ef7304ef77736c87c1d97fe1a241e55')
 
 prepare() {
