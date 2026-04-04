@@ -4,7 +4,7 @@
 # Installs the prebuilt AppImage from GitHub Releases.
 
 pkgname=aurivo-bin
-pkgver=2.0.20
+pkgver=2.0.21
 pkgrel=1
 pkgdesc="Aurivo Media Player (prebuilt AppImage)"
 arch=('x86_64')
@@ -25,18 +25,18 @@ source=(
   "com.aurivo.mediaplayer.png::https://raw.githubusercontent.com/${_owner}/${_repo}/main/icons/aurivo_512.png"
 )
 
-sha256sums=('8f69bf778d5dbdd5abcd07b47068240b897ad11a45358cbbd9fc0a2cdec9ff60'
+sha256sums=('fa089bd1631301b4cd368bc46fa13c1b82d44c750538080d6a9886b83ce07248'
             'da02e29b849870a9852e9020c0df9532a84ae81c53d3f073fa633d679d80b43f')
 
 package() {
   install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/aurivo/aurivo.AppImage"
 
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/aurivo" <<'BIN'
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/aurivo" <<'EOF'
 #!/usr/bin/env bash
 exec /opt/aurivo/aurivo.AppImage "$@"
-BIN
+EOF
 
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/aurivo.desktop" <<'DESKTOP'
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/aurivo.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
 Name=Aurivo Media Player
@@ -47,12 +47,12 @@ Categories=AudioVideo;Player;
 MimeType=audio/mpeg;audio/flac;audio/x-wav;audio/ogg;video/mp4;video/x-matroska;
 Icon=com.aurivo.mediaplayer
 StartupNotify=true
-DESKTOP
+EOF
 
   install -Dm644 "${srcdir}/com.aurivo.mediaplayer.png" \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/com.aurivo.mediaplayer.png"
 
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/metainfo/com.aurivo.mediaplayer.metainfo.xml" <<'META'
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/metainfo/com.aurivo.mediaplayer.metainfo.xml" <<'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>com.aurivo.mediaplayer</id>
@@ -65,5 +65,5 @@ DESKTOP
     <p>Aurivo Media Player for Linux.</p>
   </description>
 </component>
-META
+EOF
 }
