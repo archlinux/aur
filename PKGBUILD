@@ -5,7 +5,7 @@
 
 # Maintainer: Mykhailo Aleksieiev <nekohepott@larpdhq.org>
 pkgname=gogofetch-git
-pkgver=r35.553cbc9
+pkgver=r36.8e7c744
 pkgrel=1
 pkgdesc="Fetch written in Go with image support"
 arch=('x86_64')
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "goGoFetch"
-  # Считает общее количество коммитов и добавляет хеш последнего
+  # мелви я твой рот ебал ты ж сто проц увидишь что я навайбкодил пкгбилд потом начнёшь клеветать меня в чате💀💀💀
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
