@@ -43,13 +43,16 @@ prepare()
   sed -i 's/set(SLIC3R_APP_KEY .*/set(SLIC3R_APP_KEY "SuperSlicer")/' version.inc
   sed -i 's/set(SLIC3R_APP_CMD .*/set(SLIC3R_APP_CMD "superslicer")/' version.inc
 
-  # copy icon files to match APP_KEY=SuperSlicer (upstream names them Slic3r_*)
+  # copy icon files to match APP_KEY=SuperSlicer (upstream names them Slic3r*)
   for f in resources/icons/Slic3r_*px.png; do
     cp "$f" "${f/Slic3r_/SuperSlicer_}"
   done
   for f in resources/icons/Slic3r-gcodeviewer_*px.png; do
     cp "$f" "${f/Slic3r-gcodeviewer_/SuperSlicer-gcodeviewer_}"
   done
+  # logo/splash bitmaps loaded by name == APP_KEY at runtime
+  cp resources/icons/Slic3r.svg resources/icons/SuperSlicer.svg
+  cp resources/icons/Slic3r.png resources/icons/SuperSlicer.png
 
   # apply patches
   patch -Np1 -i "$srcdir/0005-modern-deps.patch"
