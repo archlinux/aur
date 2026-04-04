@@ -46,6 +46,9 @@ prepare() {
 
     # Fix incorrect path to llama.h
     sed -i 's|${CMAKE_CURRENT_SOURCE_DIR}/llama.h|${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/llama.cpp/include/llama.h|' CMakeLists.txt
+
+    # Fix C++ const-correctness error in ggml-bitnet-mad.cpp
+    sed -i 's/int8_t \* y_col = y + col \* by;/const int8_t \* y_col = y + col \* by;/' src/ggml-bitnet-mad.cpp
 }
 
 build() {
