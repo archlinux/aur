@@ -1,9 +1,21 @@
 -------------------------------------------------------
  Changelog    : ssl-mgr
- Tags         : 7.0.2 ➙ 7.3.0
-              : 2025-12-20 ➙ 2026-04-04
+ Tags         : 7.1.0 ➙ 7.4.0
+              : 2025-12-21 ➙ 2026-04-04
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-04-04   : 7.4.0
+              - **Version 7.4.0**
+            
+                * DANE TLSA record now supports a time-to-live (TTL). It is specifed in the service file:
+            
+                  dane_tls_ttl = 3600
+                  dane_tls = [[25, 'tcp', 3, 1, 1, 'MX']]
+            
+                  If dane_tls_ttl is not set, it defaults to 1800 seconds (30 minutes).
+                  Earlier versions inherited the TTL for the DNS zone.
+              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
 
  2026-04-04   : 7.3.0
               - Add new sslm-tlsa-hash app to repo
@@ -46,9 +58,4 @@
               - Oops! Remove accidentally left debug in "-roll" code
  2025-12-20   ⋯
               - Small readme tweak
-              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
-
- 2025-12-20   : 7.0.2
-              - Add note about Docs/Changes-7.x.rst to readme since github does
-                  not handle rst references correctly
               - update Docs/Changelog.rst Docs/ssl-mgr.pdf
