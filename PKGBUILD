@@ -12,7 +12,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  export GO111MODULE=on
+  go mod init playcli 2>/dev/null || true
   go build -o "$pkgname" -ldflags="-s -w"
 }
 
