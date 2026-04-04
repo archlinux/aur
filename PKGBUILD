@@ -10,9 +10,12 @@ depends=()
 makedepends=('python' 'cmake' 'clang' 'git')
 provides=('bitnet')
 conflicts=('bitnet')
-source=('git+https://github.com/microsoft/BitNet.git')
-md5sums=('SKIP')
-sha256sums=('SKIP')
+source=('git+https://github.com/microsoft/BitNet.git'
+        'fix-const-correctness.patch')
+md5sums=('SKIP'
+         'SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
     cd "$srcdir/BitNet"
@@ -25,6 +28,9 @@ pkgver() {
 prepare() {
     cd "$srcdir/BitNet"
     git submodule update --init --recursive
+
+    # Apply patches
+    patch -p1 -i "$srcdir/fix-const-correctness.patch"
 
     # Setup default kernel headers based on architecture
     if [[ $CARCH == "x86_64" ]]; then
@@ -45,10 +51,6 @@ prepare() {
 
     # Fix incorrect path to llama.h
     sed -i 's|${CMAKE_CURRENT_SOURCE_DIR}/llama.h|${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/llama.cpp/include/llama.h|' CMakeLists.txt
-
-    # Fix C++ const-correctness errors in ggml-bitnet-mad.cpp
-    # Using extended regex and flexible whitespace matching
-    sed -E -i 's/int8_t[[:space:]]*\*[[:space:]]*y_col/const int8_t * y_col/g' src/ggml-bitnet-mad.cpp
 }
 
 build() {

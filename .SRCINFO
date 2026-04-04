@@ -13,7 +13,10 @@ pkgbase = bitnet-git
 	provides = bitnet
 	conflicts = bitnet
 	source = git+https://github.com/microsoft/BitNet.git
+	source = fix-const-correctness.patch
 	md5sums = SKIP
+	md5sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = bitnet-git
