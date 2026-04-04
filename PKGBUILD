@@ -5,7 +5,7 @@ _pkgname=simutil
 pkgname=${_pkgname}-bin
 pkgdesc="Cross platform utility TUI app for launching iOS simulators / Android emulators, discover physical devices, ADB tools and more..."
 
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,9 +26,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
-sha256sums=('ff0263c682f401bf5202711df59ec807cd05fa8aca69480a86093d3baaa6a77b'
+sha256sums=('37d74a3a52b13113a38a87c28d99502fffedbb6be18bc51bfeaf244f87cfb78e'
             '6089969c8808bfa2c3f41aee2385e56786454c40eb6088ab803210832d045c84')
-sha256sums_x86_64=('aba3068e0a489f04b26059ad89b85fff339d8443cc77de987dd1f7447726b7a7')
+sha256sums_x86_64=('9c68abe03c49e4d3be908eb097917f59f7ed27e08c9a0da7d514518bb42750b6')
 
 
 case ${CARCH} in
