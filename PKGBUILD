@@ -47,8 +47,8 @@ prepare() {
     sed -i 's|${CMAKE_CURRENT_SOURCE_DIR}/llama.h|${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/llama.cpp/include/llama.h|' CMakeLists.txt
 
     # Fix C++ const-correctness errors in ggml-bitnet-mad.cpp
-    # Using more robust patterns to handle variations in whitespace
-    sed -i 's/int8_t\s*\*\s*y_col\s*=\s*y/const int8_t * y_col = y/g' src/ggml-bitnet-mad.cpp
+    # Using extended regex and flexible whitespace matching
+    sed -E -i 's/int8_t[[:space:]]*\*[[:space:]]*y_col/const int8_t * y_col/g' src/ggml-bitnet-mad.cpp
 }
 
 build() {
