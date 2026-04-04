@@ -1,8 +1,9 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=stashpak-git
-pkgver=c646281
+pkgver=r63.1e30abd
 pkgrel=1
+epoch=1
 pkgdesc="Build Portable packages with ease."
 arch=("x86_64")
 url="https://github.com/Kimiblock/stashpak"
@@ -18,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd source
-	git describe --long --always | sed -E 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 function prepare() {
