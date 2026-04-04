@@ -29,8 +29,8 @@ prepare() {
     cd "$srcdir/BitNet"
     git submodule update --init --recursive
 
-    # Apply patches
-    patch -p1 -i "$srcdir/fix-const-correctness.patch"
+    # Apply patches (Fixed to -p0)
+    patch -p0 -i "$srcdir/fix-const-correctness.patch"
 
     # Setup default kernel headers based on architecture
     if [[ $CARCH == "x86_64" ]]; then
