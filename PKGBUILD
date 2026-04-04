@@ -17,12 +17,12 @@ replaces=("$_pkgname")
 provides=("$_pkgname")
 
 source_x86_64=(
-    "https://github.com/Col-E/Recaf/releases/download/$_pkgver/$_pkgname-$_ghassetver-linux-86x64.jar"
+    "https://github.com/Col-E/Recaf/releases/download/$_pkgver/$_pkgname-$_ghassetver-linux-86-x64.jar"
     "https://raw.githubusercontent.com/Col-E/Recaf/$_pkgver/recaf-ui/src/main/resources/icons/logo-full.png"
     "https://raw.githubusercontent.com/Col-E/Recaf/$_pkgver/LICENSE"
 )
 sha256sums_x86_64=(
-    "85807fe811e5092d16217074a1a4c05189dd8fa6f82b360b5b2a8367fcaaa736"
+    "8c5d707dc4d78c9908c9e877eb8c284cb69f6be3263c3f1ade915a36493ef597"
     "901fbcfa7944e89f5c34e73a3637fd21dc7c8e34b5612a7e0a0a707a4b45be1d"
     "a98659971ead7e75b30f8d4ef8c27d13338c6187a49fee181379e74b89d4a16f"
 )
