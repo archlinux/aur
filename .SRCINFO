@@ -13,7 +13,7 @@ pkgbase = metadump
 	depends = xz
 	depends = bzip2
 	conflicts = metadump-bin
-	source = git+https://github.com/mansar1337/metadump.git
+	source = https://github.com/mansar1337/metadump/archive/refs/heads/main.zip
 	sha256sums = 362f61d0f4ca8802ac4ce7b9e4b5651f45c87f82b063c6bd35763aecd7e99183
 
 pkgname = metadump
