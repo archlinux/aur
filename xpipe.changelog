@@ -1,7 +1,7 @@
-- Fix issues with gateway configurations for SSH connections. Gateways were not handled properly and caused various issues with missing configuration options and services not tunneling correctly
-- Fix old incus/LXD entries not launching correctly
-- Fix displayed incus/LXD network information not updating correctly
-- Fix Windows rendering performance degradation
-- Fix rare shell init race condition
-- Fix various NullPointers
-- Add more documentation links
+- Add automatic fallback to disable hardware acceleration on Linux when the graphics driver had issues
+- Fix password manager agent option not working and not showing key list when used for git SSH auth
+- Fix rare concurrent modification exception on initial startup
+- Scripts and script categories can now be moved
+- The sample scripts category can now be deleted
+- Fix run script menu not showing nested categories
+- The latest Warp Terminal update broke opening scripts. It is currently unusable and is marked as not-recommended anymore
