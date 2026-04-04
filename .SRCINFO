@@ -26,6 +26,8 @@ pkgbase = autofs-git
 	backup = etc/autofs/autofs_ldap_auth.conf
 	backup = etc/default/autofs
 	source = git+https://git.kernel.org/pub/scm/linux/storage/autofs/autofs.git
+	source = autofs-arch-configuration-path.patch
 	sha256sums = SKIP
+	sha256sums = def52bda93a414896c41e587c2ffbefdd360767f938399767b7582d55c329a34
 
 pkgname = autofs-git

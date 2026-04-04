@@ -9,7 +9,7 @@
 
 _pkgname=autofs
 pkgname=autofs-git
-pkgver=5.1.9.92.gf46eaaa3
+pkgver=5.1.9.93.g4da861e1
 pkgrel=1
 pkgdesc='A kernel-based automounter for Linux'
 arch=('x86_64')
@@ -28,8 +28,10 @@ backup=('etc/autofs/auto.master'
         'etc/autofs/autofs.conf'
         'etc/autofs/autofs_ldap_auth.conf'
         'etc/default/autofs')
-source=(git+https://git.kernel.org/pub/scm/linux/storage/autofs/autofs.git)
-sha256sums=('SKIP')
+source=(git+https://git.kernel.org/pub/scm/linux/storage/autofs/autofs.git
+        autofs-arch-configuration-path.patch)
+sha256sums=('SKIP'
+            'def52bda93a414896c41e587c2ffbefdd360767f938399767b7582d55c329a34')
 
 pkgver() {
   cd "${_pkgname}"
@@ -40,8 +42,7 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
 
-  sed -i -e 's|/etc/auto.misc|/etc/autofs/auto.misc|' \
-         -e 's|/etc/auto.master.d|/etc/autofs/auto.master.d|' samples/auto.master
+  patch --forward --strip=1 --input=../autofs-arch-configuration-path.patch
 }
 
 build() {
