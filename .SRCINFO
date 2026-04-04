@@ -22,6 +22,12 @@ pkgbase = collabora-office
 	depends = zstd
 	depends = hicolor-icon-theme
 	depends = poco
+	optdepends = hunspell-en_us: English spell checking
+	optdepends = hyphen-en: English hyphenation
+	optdepends = noto-fonts: Noto font family
+	optdepends = noto-fonts-cjk: CJK font support
+	optdepends = ttf-liberation: Liberation fonts for document compatibility
+	optdepends = ttf-dejavu: DejaVu fonts
 	options = !strip
 	options = !debug
 	source = git+https://github.com/CollaboraOnline/online.git#branch=distro/collabora/coda-25.04

@@ -27,6 +27,14 @@ makedepends=(
     'npm'
     'rsync'
 )
+optdepends=(
+    'hunspell-en_us: English spell checking'
+    'hyphen-en: English hyphenation'
+    'noto-fonts: Noto font family'
+    'noto-fonts-cjk: CJK font support'
+    'ttf-liberation: Liberation fonts for document compatibility'
+    'ttf-dejavu: DejaVu fonts'
+)
 options=('!strip' '!debug')
 source=(
     "git+https://github.com/CollaboraOnline/online.git#branch=distro/collabora/coda-25.04"
@@ -70,6 +78,12 @@ package() {
     # License
     install -Dm644 "$srcdir/online/COPYING" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Remove bundled dictionaries; the app uses system hunspell dicts
+    rm -rf "$pkgdir/usr/lib/collabora-office/share/extensions"/dict-*
+
+    # Remove bundled fonts; the app uses system fonts via fontconfig
+    rm -rf "$pkgdir/usr/lib/collabora-office/share/fonts"
 
     # Remove server-only binaries not needed for the desktop app
     rm -f "$pkgdir/usr/bin/coolwsd" \
