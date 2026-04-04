@@ -23,7 +23,7 @@ conflicts=("${_pkgname}")
 depends=('glibc' 'libgcc' 'ffmpeg' 'yt-dlp' 'flac' 'alsa-lib' 'libvorbis' 'libogg')
 
 source=("README-${pkgver}.md::${_urlraw}/README.md"
-		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
+		"LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}")
 sha256sums=('10f50a77c33ce7997f370a5f99103de5a22687b1d2a050b1fff42f130775551d'
@@ -39,5 +39,5 @@ package() {
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
