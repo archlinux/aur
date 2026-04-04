@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellyfin-desktop-libcef-bin
-pkgver=146.0.9
-_cef_version='146.0.9+g3ca6a87+chromium-146.0.7680.165'
+pkgver=146.0.10
+_cef_version='146.0.10+g8219561+chromium-146.0.7680.179'
 pkgrel=1
 provides=('jellyfin-desktop-libcef')
 replaces=('jellyfin-desktop-cef-libcef-bin')
@@ -29,7 +29,7 @@ makedepends=(
 source=(
     "https://cef-builds.spotifycdn.com/cef_binary_${_cef_version}_linux64_minimal.tar.bz2"
 )
-sha256sums=('bf0afb760ea3c3fd5b9f40feaf46b7e3ee5fee24612db8b946352df0c8faa01b')
+sha256sums=('c49e2dc586648df4194846e7df5b1b0cc2a4bd97cf3063c30fab0d154bcbcc1c')
 options=(!debug !strip)
 
 build() {
