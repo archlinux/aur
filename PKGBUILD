@@ -27,7 +27,6 @@ prepare() {
     git submodule update --init --recursive
 
     # Setup default kernel headers based on architecture
-    # This is required because bitnet.cpp expects these to be present during build
     if [[ $CARCH == "x86_64" ]]; then
         cp preset_kernels/bitnet_b1_58-3B/bitnet-lut-kernels-tl2.h include/bitnet-lut-kernels.h
     elif [[ $CARCH == "aarch64" ]]; then
@@ -47,8 +46,9 @@ prepare() {
     # Fix incorrect path to llama.h
     sed -i 's|${CMAKE_CURRENT_SOURCE_DIR}/llama.h|${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/llama.cpp/include/llama.h|' CMakeLists.txt
 
-    # Fix C++ const-correctness error in ggml-bitnet-mad.cpp
-    sed -i 's/int8_t \* y_col = y + col \* by;/const int8_t \* y_col = y + col \* by;/' src/ggml-bitnet-mad.cpp
+    # Fix C++ const-correctness errors in ggml-bitnet-mad.cpp
+    # Using more robust patterns to handle variations in whitespace
+    sed -i 's/int8_t\s*\*\s*y_col\s*=\s*y/const int8_t * y_col = y/g' src/ggml-bitnet-mad.cpp
 }
 
 build() {
@@ -70,7 +70,6 @@ build() {
 
 check() {
     cd "$srcdir/BitNet"
-    # Placeholder for tests if available in upstream
 }
 
 package() {
