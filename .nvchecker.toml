@@ -1,0 +1,3 @@
+[perl-cache-cache]
+source = "cpan"
+cpan = "Cache-Cache"
