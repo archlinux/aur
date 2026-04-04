@@ -1,0 +1,17 @@
+pkgbase = charviews
+	pkgdesc = TUI dashboard and terminal ASCII webcam viewer
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/Just-Utkarsh/charviews
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = ffmpeg
+	depends = libjpeg-turbo
+	optdepends = v4l-utils: list V4L devices with v4l2-ctl
+	source = charviews-0.1.5.tar.gz::https://github.com/Just-Utkarsh/charviews/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = a9fac799b0bba33f3025d523125942a90ee424273fe73819dddcc1c0e17bd3c8
+
+pkgname = charviews
