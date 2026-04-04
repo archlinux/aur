@@ -1,5 +1,5 @@
 pkgbase = ihj
-	pkgdesc = Instant High-Speed Jira
+	pkgdesc = An fzf-inspired issue tracker with pluggable providers, vim mode, and LLM-assisted backlog refinement
 	pkgver = 0.5.4
 	pkgrel = 1
 	epoch = 1

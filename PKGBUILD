@@ -1,27 +1,28 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_pkgauthor=mikecsmith
-_pkgname=ihj
-pkgname=${_pkgname}
-pkgdesc="Instant High-Speed Jira"
+_gitauthor=mikecsmith
+_gitname=ihj
+_appname=ihj
+pkgname=${_gitname}
+pkgdesc="An fzf-inspired issue tracker with pluggable providers, vim mode, and LLM-assisted backlog refinement"
 
 pkgver=0.5.4
 pkgrel=1
 epoch=1
-_pkgvername=v${pkgver}
+_gitversion=v${pkgver}
 
 arch=('x86_64')
 
-url="https://github.com/${_pkgauthor}/${_pkgname}"
-_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+url="https://github.com/${_gitauthor}/${_gitname}"
+_urlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
 
 license=('MIT')
 
-provides=("${pkgname}")
+provides=("${_appname}")
 makedepends=('go')
 depends=('glibc')
 
-source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tgz::https://github.com/${_gitauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('ad96790d60dec03019466678497829010d16e0835e101aeefed6b8030d63de5b')
 
 
