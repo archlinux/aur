@@ -1,0 +1,24 @@
+pkgbase = passtui
+	pkgdesc = The TUI for pass
+	pkgver = 0.0.5b1
+	pkgrel = 1
+	url = https://github.com/fjmoralesp/passtui
+	arch = any
+	license = GPL-3.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-pyperclip
+	depends = python-textual
+	depends = python-rich
+	depends = python-click
+	depends = python-passpy
+	provides = passtui
+	conflicts = python-passtui
+	source = https://files.pythonhosted.org/packages/source/p/passtui/passtui-0.0.5b1.tar.gz
+	sha256sums = ca501242b9af7758bc5654d08788a1a1ab7e7bc9c2efafcf0e2f004a37403cd5
+
+pkgname = passtui

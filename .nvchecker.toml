@@ -1,0 +1,4 @@
+[passtui]
+source = "pypi"
+pypi = "passtui"
+use_pre_release = true
