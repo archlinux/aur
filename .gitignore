@@ -1,0 +1,10 @@
+alter-linux-x86_64
+
+*.pkg.tar.*
+*.tar.*
+
+*.log
+*.tmp
+.DS_Store
+*~
+.idea/
