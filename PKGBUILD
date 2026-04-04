@@ -38,9 +38,18 @@ prepare()
   # disabling tests is not enough, we need to remove them explicitly
   sed -i 's,add_subdirectory(test),,g' src/CMakeLists.txt
 
-  # set correct app name/cmd (keep APP_KEY as Slic3r — icon files use that name)
+  # set correct app name/key/cmd
   sed -i 's/set(SLIC3R_APP_NAME .*/set(SLIC3R_APP_NAME "SuperSlicer")/' version.inc
+  sed -i 's/set(SLIC3R_APP_KEY .*/set(SLIC3R_APP_KEY "SuperSlicer")/' version.inc
   sed -i 's/set(SLIC3R_APP_CMD .*/set(SLIC3R_APP_CMD "superslicer")/' version.inc
+
+  # copy icon files to match APP_KEY=SuperSlicer (upstream names them Slic3r_*)
+  for f in resources/icons/Slic3r_*px.png; do
+    cp "$f" "${f/Slic3r_/SuperSlicer_}"
+  done
+  for f in resources/icons/Slic3r-gcodeviewer_*px.png; do
+    cp "$f" "${f/Slic3r-gcodeviewer_/SuperSlicer-gcodeviewer_}"
+  done
 
   # apply patches
   patch -Np1 -i "$srcdir/0005-modern-deps.patch"
@@ -89,6 +98,7 @@ build()
     -DSLIC3R_ALPHA=ON \
     -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
     -DSLIC3R_APP_NAME="SuperSlicer" \
+    -DSLIC3R_APP_KEY="SuperSlicer" \
     -DSLIC3R_APP_CMD="superslicer" \
     -DGCODEVIEWER_APP_CMD="superslicer-gcodeviewer"
 
@@ -102,7 +112,4 @@ package()
   DESTDIR="$pkgdir" ninja install
   test ! -h "$pkgdir/usr/share/SuperSlicer/resources" || rm "$pkgdir/usr/share/SuperSlicer/resources"
   rm -r "${pkgdir}"/usr/lib/udev # Provided by slicer-udev
-  # create profiles dir so the app doesn't try to write it at runtime
-  # (install -d alone would be stripped by makepkg's !emptydirs option)
-  install -Dm644 /dev/null "$pkgdir/usr/share/Slic3r/profiles/.keep"
 }
