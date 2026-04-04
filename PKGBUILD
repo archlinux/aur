@@ -1,27 +1,69 @@
-# Maintainer: Star_caorui <Star_caorui@hotmail.com>
+# Maintainer: zhizhizhiwang <zhizhiwang@proton.me>
+# Contributor: Star_caorui <Star_caorui@hotmail.com>
 pkgname=mcsm-web-git
-pkgver=9.4.5
-pkgrel=1
-pkgdesc="适用于 MCSManager 的面板端（Web）程序。"
-arch=(x86_64)
-url="https://github.com/MCSManager/MCSManager-Web-Production"
-license=(AGPL)
+pkgver=10.12.4
+pkgrel=2
+pkgdesc="MCSManager 的面板端（Web）程序模块。"
+arch=(any)
+url="https://github.com/MCSManager/MCSManager"
+license=(Apache-2.0)
 install=$pkgname.install
-depends=('nodejs>=14')
-makedepends=('npm')
+depends=('nodejs>=16')
+makedepends=('npm' 'git')
 source=('file://mcsm-web.service'
-        'web::git+https://github.com/MCSManager/MCSManager-Web-Production')
+        "mcsm-$pkgver::git+https://github.com/MCSManager/MCSManager")
 sha256sums=('5f85e25231e3d4119c215a3ee00e1ae6dd000d8c55c1b8f32194868f882305cc'
             'SKIP')
 
+optdepends=(
+  'python-setuptools: for building Python packages using tooling that is usually bundled with Python'
+  'python-pip: for installing Python packages using tooling that is usually bundled with Python'
+  'python-pipx: for installing Python software not packaged on Arch Linux'
+  'sqlite: for a default database integration'
+  'xz: for lzma'
+  'tk: for tkinter'
+)
+
 build() {
-  cd web
-  npm install --registry=https://registry.npm.taobao.org
+  cd "mcsm-$pkgver"
+  npm install
+  npm run preview-build
+  rm -rf production-code
+  rm -rf ./panel/dist ./panel/production
+  mkdir production-code
+  mkdir production-code/web
+  mkdir production-code/web/public
+
+  cd daemon
+  npm install
+  npm run build # needed by panel
+  cd ..
+
+  cd panel
+  npm install
+  npm run build
+  cd ..
+  cd frontend
+  npm install
+  npm run build
+  cd ..
+
+  mv "panel/production/app.js" "production-code/web"
+  mv "panel/production/app.js.map" "production-code/web"
+  cp -f "panel/package.json" "production-code/web/package.json"
+  cp -f "panel/package-lock.json" "production-code/web/package-lock.json"
+  mv frontend/dist/* "production-code/web/public"
+
+  rm -rf "panel/dist" "panel/production"
+  rm -rf "frontend/dist"
+
+  cd "production-code/web"
+  npm install --production
 }
 
 package() {
-  [ ! -d "${pkgdir}"/etc/systemd/system/ ] && install -dm755 "${pkgdir}"/etc/systemd/system/
-  install -dm755 "${pkgdir}"/opt/mcsmanager/
-  install -m644 mcsm-web.service "${pkgdir}"/etc/systemd/system/
-  cp -r web "${pkgdir}"/opt/mcsmanager/
+  install -Dm644 mcsm-web.service "${pkgdir}/usr/lib/systemd/system/mcsm-web.service"
+  install -Dm644 "${srcdir}/mcsm-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -dm755 "${pkgdir}/opt/mcsmanager"
+  cp -r "${srcdir}/mcsm-$pkgver/production-code/web" "${pkgdir}/opt/mcsmanager/"
 }
