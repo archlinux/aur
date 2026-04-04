@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=8.2.r123557.g106616f13d
+pkgver=8.2.r123827.ge33b3962e5
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -92,6 +92,7 @@ makedepends=(
   libgl
   nasm
   opencl-headers
+  spirv-headers
   vapoursynth
   vulkan-headers)
 optdepends=(

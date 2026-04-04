@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (git version)
-	pkgver = 8.2.r123557.g106616f13d
+	pkgver = 8.2.r123827.ge33b3962e5
 	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = ffmpeg-git
 	makedepends = libgl
 	makedepends = nasm
 	makedepends = opencl-headers
+	makedepends = spirv-headers
 	makedepends = vapoursynth
 	makedepends = vulkan-headers
 	depends = alsa-lib
