@@ -5,7 +5,7 @@
 
 # Maintainer: Mykhailo Aleksieiev <nekohepott@larpdhq.org>
 pkgname=gogofetch-git
-pkgver=r23.5ea5393
+pkgver=r24.8d51e8e
 pkgrel=1
 pkgdesc="fetch made with C++ rewritten to go for no reason"
 arch=('x86_64')
