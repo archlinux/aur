@@ -4,6 +4,7 @@ pkgbase = mnt-reform-lpc-dkms
 	pkgrel = 1
 	url = https://source.mnt.re/reform/reform-tools
 	arch = aarch64
+	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = git
 	depends = dkms
