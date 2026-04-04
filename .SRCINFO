@@ -1,6 +1,6 @@
 pkgbase = phantom-browser-bin
 	pkgdesc = Privacy-focused Firefox fork with built-in DPI bypass, VPN (VLESS+REALITY), RKN blocklist sync and ad blocker
-	pkgver = 154.0
+	pkgver = 154.1
 	pkgrel = 1
 	url = https://github.com/SergBrowns/phantom-browser
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = phantom-browser-bin
 	optdepends = xdg-desktop-portal: screen sharing (Wayland)
 	provides = phantom-browser
 	conflicts = phantom-browser
-	source_x86_64 = phantom-154.0.tar.xz::https://github.com/SergBrowns/phantom-browser/releases/download/v154.0/phantom-154.0.tar.xz
-	sha256sums_x86_64 = b5236280d3a69ee8aca6c97bec5e1258459b4af53f7c9a26668bfffd01989fd5
+	source_x86_64 = phantom-154.1.tar.xz::https://github.com/SergBrowns/phantom-browser/releases/download/v154.1/phantom-154.1.tar.xz
+	sha256sums_x86_64 = a369ed163313da8c4270b7b65fad8d81381e4d2249b57d4ebfa5de4fb2eeca92
 
 pkgname = phantom-browser-bin
