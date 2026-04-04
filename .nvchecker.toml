@@ -1,0 +1,3 @@
+[tiny-apk-installer]
+source = "git"
+git = "https://github.com/audioeng89/tiny_apk_installer.git"

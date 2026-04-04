@@ -1,0 +1,15 @@
+pkgbase = tiny-apk-installer
+	pkgdesc = A simple TUI for installing APKs and bundles on Android via ADB.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/audioeng89/tiny_apk_installer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = android-tools: Use system adb
+	source = tiny_apk_installer-0.1.0.tar.gz::https://github.com/audioeng89/tiny_apk_installer/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 818e5afcb5a655d68a9d45261f23d6dc584b8371f1bb60d6e81b6fd387107d17
+
+pkgname = tiny-apk-installer
