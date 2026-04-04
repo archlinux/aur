@@ -8,7 +8,7 @@ pkgdesc="Noise supression using deep filtering, also works for easyeffects"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/Rikorose/DeepFilterNet"
 license=('Apache-2.0' 'MIT')
-depends=(pipewire)
+depends=('pipewire')
 provides=('libdeep_filter_ladspa.so')
 install=deepfilternet-plugin-pipewire-bin.install
 source=(
@@ -23,7 +23,7 @@ source_x86_64=(${_source[@]})
 source_aarch64=(${_source[@]})
 source_armv7h=("libdeep_filter_ladspa.so::https://github.com/Rikorose/DeepFilterNet/releases/download/v${pkgver}/libdeep_filter_ladspa-${pkgver}-armv7-unknown-linux-gnueabihf.so")
 #                                                                                                                                                ^^^^^               ^^^^^^^^^
-# differences found between armv7h and armv7 release binaries______________________________________________________________________________________|_____________________|
+# differences found for the armv7h/armv7 release binaries__________________________________________________________________________________________|_____________________|
 
 sha256sums=('af141e1ef5a5c5762bc440b1dcfe77039480b150a24a391a43e8c109f8167ed2'
             'f7ef673bf046d823dcd775bdd0768432bd8855f81d0e5e1290a0a48c42e2dca3'
