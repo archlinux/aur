@@ -2,7 +2,7 @@
 
 pkgname='python-coolprop-git'
 _pkgname='python-coolprop'
-pkgver=r5799.d5eecbb4
+pkgver=v7.2.0.r24.gd5eecbb
 pkgrel=1
 arch=('any')
 pkgdesc='Python wrapper over CoolProp, the open-source thermodynamic and transport properties database'
@@ -19,7 +19,7 @@ b2sums=('SKIP')
 pkgver() {
 
   cd "$srcdir/$_pkgname/" || exit
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 
 }
 
