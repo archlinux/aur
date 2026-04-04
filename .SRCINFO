@@ -1,13 +1,15 @@
 pkgbase = ollama-gui
-	pkgdesc = Native Tk/ttkbootstrap Ollama desktop UI with sessions and auto web search
-	pkgver = 0.1.0
+	pkgdesc = Native Tk/ttkbootstrap Ollama desktop UI with sessions, auto web search, and theme customization
+	pkgver = 0.2.0
 	pkgrel = 1
+	url = https://github.com/mehmetbayoglu/Ollama-gui
 	arch = any
 	license = Apache-2.0
 	depends = python
 	depends = tk
 	depends = python-ttkbootstrap
-	source = ollama-gui-0.1.0.tar.gz::https://github.com/mehmetbayoglu/Ollama-gui/archive/refs/heads/main.tar.gz
-	sha256sums = SKIP
+	optdepends = ollama: local Ollama server to connect to
+	source = ollama-gui-0.2.0.tar.gz::https://github.com/mehmetbayoglu/Ollama-gui/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 68f61359277d7efab7d7568600a220daf1c1f3bb44e16cb460dc6fd04f54ed2e
 
 pkgname = ollama-gui
