@@ -1,5 +1,3 @@
 [gitv-bin]
-source = "github"
-github = "JayanAXHF/gitv"
-use_latest_release = true
-prefix = "gitv-tui-v"
+source = "cratesio"
+cratesio = "gitv-tui"
