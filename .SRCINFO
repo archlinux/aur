@@ -1,7 +1,7 @@
 pkgbase = dektec-utilities
 	pkgdesc = DekTec utilities DtEpc, DtPlay, DtRecord and DtInfoCL
-	pkgver = 25.06.06
-	pkgrel = 3
+	pkgver = 26.04.04
+	pkgrel = 1
 	url = https://www.dektec.com/downloads/utilities/
 	arch = x86_64
 	license = LicenseRef-custom
@@ -11,12 +11,12 @@ pkgbase = dektec-utilities
 	source = https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v2026.02.0.tar.gz
 	source = https://www.dektec.com/products/applications/DtEpc/downloads/DtEpc-2.13.1.zip
 	source = https://www.dektec.com/products/applications/DtInfoCL/downloads/DtInfoCL_v1.7.1.zip
-	source = https://www.dektec.com/products/applications/DtPlay/downloads/DtPlay_v4.19.1.zip
-	source = https://www.dektec.com/products/applications/DtRecord/downloads/DtRecord_v4.16.1.zip
+	source = https://www.dektec.com/products/applications/DtPlay/downloads/DtPlay_v4.19.2.zip
+	source = https://www.dektec.com/products/applications/DtRecord/downloads/DtRecord_v4.16.3.zip
 	sha256sums = 38f93040201082ce9b5109c386b25785068e24db426f9206540a03724836b3a5
 	sha256sums = 4fbbfe09d55b3528a6a45bc6a2effce3ba0431d7ac141bf190423accc7c4a435
 	sha256sums = df45c1330fc76f08576c6f8af4bad2c0a2ab872d3c325a356ac0eaf446c06d93
-	sha256sums = 0d53c9122e879fe6ca18d242fb22f6e06f3778f5144f8a5fd14064295d32ed76
-	sha256sums = 1bc6b04a579e594ba34d653c8afd2e24e9398c0cec5d3a4482bb76067739967d
+	sha256sums = 3024e7d4e543be3c013b7fa828a06f888c9bbde045dc51ef7f5d3efc435cb2e5
+	sha256sums = e4fce1f14f03a589f2696ef228f6943a9e2b678146d5bab1fb7e9924104162eb
 
 pkgname = dektec-utilities

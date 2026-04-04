@@ -1,8 +1,8 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=dektec-utilities
-pkgver=25.06.06
-pkgrel=3
+pkgver=26.04.04
+pkgrel=1
 pkgdesc="DekTec utilities DtEpc, DtPlay, DtRecord and DtInfoCL"
 arch=('x86_64')
 url="https://www.dektec.com/downloads/utilities/"
@@ -10,8 +10,8 @@ license=('LicenseRef-custom')
 depends=('gcc-libs' 'glibc')
 makedepends=('make')
 _dtepc=2.13.1
-_dtplay=4.19.1
-_dtrecord=4.16.1
+_dtplay=4.19.2
+_dtrecord=4.16.3
 _dtinfocl=1.7.1
 _sdk=2026.02.0
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdk}.tar.gz"
@@ -22,8 +22,8 @@ source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdk}.t
 sha256sums=('38f93040201082ce9b5109c386b25785068e24db426f9206540a03724836b3a5'
             '4fbbfe09d55b3528a6a45bc6a2effce3ba0431d7ac141bf190423accc7c4a435'
             'df45c1330fc76f08576c6f8af4bad2c0a2ab872d3c325a356ac0eaf446c06d93'
-            '0d53c9122e879fe6ca18d242fb22f6e06f3778f5144f8a5fd14064295d32ed76'
-            '1bc6b04a579e594ba34d653c8afd2e24e9398c0cec5d3a4482bb76067739967d')
+            '3024e7d4e543be3c013b7fa828a06f888c9bbde045dc51ef7f5d3efc435cb2e5'
+            'e4fce1f14f03a589f2696ef228f6943a9e2b678146d5bab1fb7e9924104162eb')
 
 prepare() {
   # Define directories
