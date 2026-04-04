@@ -2,7 +2,7 @@
 
 pkgname='python-coolprop-git'
 _pkgname='python-coolprop'
-pkgver=r5201.71a82276
+pkgver=r5799.d5eecbb4
 pkgrel=1
 arch=('any')
 pkgdesc='Python wrapper over CoolProp, the open-source thermodynamic and transport properties database'
@@ -10,9 +10,10 @@ url='https://github.com/CoolProp/CoolProp'
 license=('MIT')
 source=("$_pkgname::git+https://github.com/CoolProp/CoolProp"
 )
-depends=('python')
+depends=('python' 'python-numpy')
 makedepends=('python'
-             'cython')
+             'cython'
+             'python-scikit-build-core')
 b2sums=('SKIP')
 
 pkgver() {
@@ -24,22 +25,34 @@ pkgver() {
 
 build() {
 
-  cd "$srcdir/$_pkgname/wrappers/Python/" || exit
-  python setup.py build
+  cd "$srcdir/$_pkgname/" || exit
+  python -m build --wheel --no-isolation
 
 }
 
 package() {
 
-  cd "$srcdir/$_pkgname/wrappers/Python/" || exit
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd "$srcdir/$_pkgname/" || exit
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 }
 
 prepare() {
 
   cd "$srcdir/$_pkgname/" || exit
-  git submodule init
-  git submodule update
+  git submodule update --init --recursive
+
+  python dev/generate_headers.py
+
+  local ABSOLUTE_Z_FILE="${srcdir}/${_pkgname}/dev/all_fluids.json.z"
+
+  if [ ! -f "$ABSOLUTE_Z_FILE" ]; then
+    error "Critical file not found: $ABSOLUTE_Z_FILE"
+    return 1
+  fi
+
+  find src/ -type f \( -name "*.cpp" -o -name "*.h" -o -name "*.hpp" \) \
+    -exec sed -i "s|all_fluids.json.z|${ABSOLUTE_Z_FILE}|g" {} +
 
 }
