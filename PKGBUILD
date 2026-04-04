@@ -5,7 +5,8 @@ pkgdesc="Approximate Convex Decomposition for 3D Meshes"
 license=('MIT')
 arch=('x86_64')
 url="https://colin97.github.io/CoACD/"
-depends=(glibc libstdc++ libgomp libgcc python-trimesh)
+depends=(glibc libstdc++ libgomp libgcc)
+optdepends=('python-trimesh: for Python bindings')
 makedepends=(cmake cdt)
 options=(!lto)
 source=("https://github.com/SarahWeiii/CoACD/archive/refs/tags/${pkgver}.tar.gz")
@@ -31,6 +32,8 @@ package() {
   install -d "$pkgdir"/usr/lib/python3.14/site-packages/coacd
   install -m644 python/package/__init__.py "$pkgdir"/usr/lib/python3.14/site-packages/coacd
   ln -s ../../../lib_coacd.so "$pkgdir"/usr/lib/python3.14/site-packages/coacd/lib_coacd.so
+  install -d "$pkgdir"/usr/bin
+  install -m755 python/package/bin/coacd "$pkgdir"/usr/bin
   install -d "$pkgdir"/usr/share/licenses/$pkgname
   install -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname
 }
