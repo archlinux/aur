@@ -1,5 +1,5 @@
 pkgname=sfptool-bin
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Desktop utility for reading and programming SFP and QSFP transceivers"
 arch=('x86_64')
@@ -9,12 +9,12 @@ depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
 makedeps=('binutils')
 provides=('sfptool')
 conflicts=('sfptool')
-source=("sfp-tool_1.0.2_amd64.deb::https://s3.jonasled.de/sfp-tool/linux/x86_64/sfp-tool_1.0.2_amd64.deb")
-sha256sums=('e9c34353995c7a32a3d70c30c7bd313e5a04c3211ae7aae21f31080b877539f8')
+source=("sfp-tool_1.1.0_amd64.deb::https://s3.jonasled.de/sfp-tool/linux/x86_64/sfp-tool_1.1.0_amd64.deb")
+sha256sums=('7e2b41ce1658f6847e98fe113fcf416e4baf9aa90190db196b1954f2a08a6ac4')
 
 package() {
   cd "$srcdir"
   local data_archive
-  ar x "sfp-tool_1.0.2_amd64.deb"
+  ar x "sfp-tool_1.1.0_amd64.deb"
   tar -xvf data.tar.* -C "$pkgdir/"
 }
