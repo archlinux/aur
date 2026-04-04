@@ -1,7 +1,7 @@
 # Maintainer: İsmail Yılmaz <iylmz.iylmz@gmail.com>
 pkgname=bobcat-terminal-git
 pkgver=r319.e4e5f19
-pkgrel=4
+pkgrel=5
 upprel=2026.1
 uppver=18468
 pkgdesc="A powerful yet user-friendy cross-platform terminal emulator"
