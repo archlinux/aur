@@ -1,0 +1,5 @@
+[gcannon]
+source = "github"
+github = "MDA2AV/gcannon"
+use_latest_release = true
+prefix = "v"
