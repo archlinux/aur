@@ -5,12 +5,15 @@ _author=GSHANK
 _dist=HTML-FormHandler
 pkgname=perl-${_dist@L}
 pkgver=0.40068
-pkgrel=1
+pkgrel=2
 pkgdesc='HTML forms using Moose'
 arch=('any')
 url=https://metacpan.org/release/$_author/$_dist-$pkgver
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
+    # Missing dep in perl-crypt-cbc package (bug).
+    'perl-crypt-urandom'
+
     'perl'
     'perl-aliased'
     'perl-carp'

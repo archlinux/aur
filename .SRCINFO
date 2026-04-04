@@ -1,7 +1,7 @@
 pkgbase = perl-html-formhandler
 	pkgdesc = HTML forms using Moose
 	pkgver = 0.40068
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/GSHANK/HTML-FormHandler-0.40068
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
@@ -13,6 +13,7 @@ pkgbase = perl-html-formhandler
 	checkdepends = perl-test-warn
 	makedepends = perl-extutils-makemaker
 	makedepends = perl-file-sharedir-install>=0.06
+	depends = perl-crypt-urandom
 	depends = perl
 	depends = perl-aliased
 	depends = perl-carp
