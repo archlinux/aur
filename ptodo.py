@@ -11,8 +11,8 @@ PICKLE_FILE = "theme_data_curses.pkl"
 LOGO = [
     r"___________________  ________    ________  .____    .___  _______________________",
     r"\__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/",
-    r"  |    |    /    |  \ |    |  \   /   |   \|    |   |   |\_____  \      |    |   ",
-    r"  |    |   /     |   \|    `   \ /    |    \    |___|   |/        \     |    |   ",
+    r"  |    |    /   |   \ |    |  \   /   |   \|    |   |   |\_____  \      |    |   ",
+    r"  |    |   /    |    \|    `   \ /    |    \    |___|   |/        \     |    |   ",
     r"  |____|   \_________/_________/ \_________/________\___/_________/     |____|   ",
 ]
 
@@ -84,7 +84,7 @@ def draw_table(stdscr, todos, start_y):
 
     y = start_y + 2
     for idx, item in enumerate(todos, 1):
-        if y >= h - 8:  # Prevent overflowing into menu
+        if y >= h - 8:
             break
 
         task_text = (
@@ -218,7 +218,7 @@ def complete_mode(stdscr, todos, theme_id):
         return
 
     options = [(f"Task {i + 1}: {t['task']}", i) for i, t in pending]
-    options.append(("🔙 Back", None))
+    options.append(("EXIT", None))
 
     selected = select_list(stdscr, "Select a task to complete:", options, theme_id)
     if selected is not None:
@@ -264,7 +264,7 @@ def remove_mode(stdscr, todos, theme_id):
         return
 
     options = [(f"Task {i + 1}: {t['task']}", i) for i, t in enumerate(todos)]
-    options.append(("🔙 Back", None))
+    options.append(("EXIT", None))
 
     selected = select_list(stdscr, "Select a task to delete:", options, theme_id)
     if selected is not None:
