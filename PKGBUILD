@@ -1,37 +1,45 @@
 # Maintainer: John Ramsden <johnramsden [at] riseup [dot] net>
+# Maintainer: allddd <me (at) allddd (dot) onl>
 
 pkgname=zrepl-bin
-_pkgname=zrepl
-pkgver=0.6.1
-pkgrel=4
+_pkgname=${pkgname%-bin}
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='One-stop ZFS backup & replication solution'
 arch=('x86_64')
-url='https://zrepl.github.io/'
+url="https://${_pkgname}.github.io"
 license=('MIT')
-provides=('zrepl')
-conflicts=('zrepl')
-source=(
-    ${_pkgname}-${pkgver}::"https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz"
-    ${_pkgname}-bin-${pkgver}::"https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64"
+options=(
+    '!debug'
+    '!strip'
 )
-sha256sums=('263c82501b75a1413f8a298c1d67d7e940c1b0cb967979790773237e2a30adbd'
-            '0ac6e35666e32cd3b7b1e047836e45f60718b7ecc55e475b5b1f8dbd01e5ae7c')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=(
+    "https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}"::"https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64"
+)
+sha256sums=(
+    'd451ad1d05a0afdc752daf1dada9327aa338f691eca91e1c8fc9828eebd89757'
+    'a53391dc3e4a995778bbcc1c51d18b86004ef339f7d5d7075267b3f9a601af10'
+)
+
+prepare() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    sed -i 's|/usr/local/bin|/usr/bin|g' "./dist/systemd/${_pkgname}.service"
+    sed -i "s|USR_SHARE_ZREPL|/usr/share/doc/${pkgname}|g" ./packaging/systemd-default-zrepl.yml
+}
 
 package() {
-    install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
-    install -d "${pkgdir}/usr/share/${_pkgname}"
-    install -d "${pkgdir}/usr/lib/systemd/system"
-    install -d "${pkgdir}/usr/bin"
-    install -d "${pkgdir}/usr/share/bash-completion/completions"
-    install -d "${pkgdir}/usr/share/zsh/site-functions"
-
-    install -m644 "${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    install -m644 "${_pkgname}-${pkgver}/dist/systemd/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-    install -m755 "${_pkgname}-bin-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
-    cp -r "${_pkgname}-${pkgver}/config/samples" "${pkgdir}/usr/share/${_pkgname}/samples"
-
-    "${pkgdir}/usr/bin/${_pkgname}" gencompletion zsh "${pkgdir}/usr/share/zsh/site-functions/_zrepl"
-    "${pkgdir}/usr/bin/${_pkgname}" gencompletion bash "${pkgdir}/usr/share/bash-completion/completions/zrepl"
-
-    sed -i s:/usr/local/bin/:/usr/bin/:g "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    install -Dm644 "./dist/systemd/${_pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
+    install -Dm644 ./packaging/systemd-default-zrepl.yml "${pkgdir}/etc/${_pkgname}/${_pkgname}.yml"
+    install -Dm644 ./LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
+    cp -a ./internal/config/samples "${pkgdir}/usr/share/doc/${pkgname}/examples"
+    "${pkgdir}/usr/bin/${_pkgname}" gencompletion bash /dev/stdout | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+    "${pkgdir}/usr/bin/${_pkgname}" gencompletion zsh /dev/stdout | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 }
+
+# vim: ts=4 sw=4 et:
