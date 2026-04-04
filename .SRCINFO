@@ -1,12 +1,14 @@
 pkgbase = seerr
 	pkgdesc = Request management and media discovery tool for the Plex ecosystem
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/seerr-team/seerr
 	install = seerr.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = bc
+	makedepends = fd
 	makedepends = pnpm
 	depends = nodejs
 	optdepends = jellyfin-server: The Free Software Media System
