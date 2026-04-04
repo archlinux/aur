@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=whatsie
-pkgver=5.0.0 # renovate: datasource=github-tags depName=keshavbhatt/whatsie
+pkgver=5.1.0 # renovate: datasource=github-tags depName=keshavbhatt/whatsie
 pkgrel=1
 pkgdesc="Fast Light weight WhatsApp Client based on Qt's WebEngine, With lots of settings and packed goodies"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
@@ -25,4 +25,4 @@ package() {
     cmake --install build
 }
 
-sha256sums=('bee4dc055b0ce3f04ce68181c86f2b4d6234f5bcf1b276d545b830fe877fc22c')
+sha256sums=('ff7e94fd3c75cece673a2e79929759a29aacd95d150c916a8053e3fb767a3cf1')
