@@ -1,6 +1,6 @@
 # Maintainer: AmaseCocoa <cocoa@amase.cc>
 pkgname=alter
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Switch git username and email and credential in one-line."
 arch=("x86_64")
@@ -20,4 +20,4 @@ package() {
   install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
-sha256sums=('84d117d4aa3dd1db239c8e12b75b6584a7338a3e124ef85c06af0c9ddbe12a03')
+sha256sums=('baa89610da0c1072c45dcf35fd77c722478a68bca9593faeb6e512562e552fc2')
