@@ -1,0 +1,14 @@
+pkgbase = friendnet-client-bin
+	pkgdesc = FriendNet Client
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/termermc/FriendNet
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = binutils
+	makedepends = tar
+	provides = friendnet-client
+	source = friendnet-client-linux_amd64.deb::https://github.com/termermc/FriendNet/releases/download/v1.1.1/friendnet-client-linux_amd64.deb
+	sha256sums = SKIP
+
+pkgname = friendnet-client-bin
