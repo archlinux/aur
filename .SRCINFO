@@ -1,0 +1,19 @@
+pkgbase = bitnet-git
+	pkgdesc = Official inference framework for 1-bit LLMs
+	pkgver = r96.01eb415
+	pkgrel = 1
+	url = https://github.com/microsoft/BitNet
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = python
+	makedepends = cmake
+	makedepends = clang
+	makedepends = git
+	provides = bitnet
+	conflicts = bitnet
+	source = git+https://github.com/microsoft/BitNet.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bitnet-git
