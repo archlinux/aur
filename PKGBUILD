@@ -18,6 +18,7 @@ sha256sums=('2734328309fa5ae2d55e1287b030c4665c5d5ee5689c2cdaa6aa19ada56b7c57'
             'a7850eda7f44532e3446dbf01c20b4d98b63ce6bd5e3cfefa00113438774d45a')
 
 package() {
+    export HOME="${srcdir}"
     mkdir -p "${srcdir}/.javaprefs"
 
     sh "${srcdir}/${pkgname}-${pkgver}.sh" -q \
@@ -32,8 +33,7 @@ package() {
     install -dm644 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/UltraKiss_${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
 
-    install -dm644 "${pkgdir}/usr/share/pixmaps"
-    cp "${pkgdir}/opt/${pkgname}/.install4j/UltraKiss_${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${pkgdir}/opt/${pkgname}/.install4j/UltraKiss_${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
