@@ -1,0 +1,16 @@
+pkgbase = plusplusfetch-git
+	pkgdesc = Simple fetch tool written in C++
+	pkgver = r56.1d22e0e
+	pkgrel = 1
+	url = https://codeberg.org/melvi/plusPlusFetch.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
+	conflicts = plusplusfetch
+	source = plusplusfetch::git+https://codeberg.org/melvi/plusPlusFetch.git
+	sha256sums = SKIP
+
+pkgname = plusplusfetch-git
