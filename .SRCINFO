@@ -1,7 +1,7 @@
 pkgbase = connected-desktop-bin
 	pkgdesc = High-speed, offline, cross-platform ecosystem bridging devices (Binary)
 	pkgver = 2.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paterkleomenis/connected
 	arch = x86_64
 	license = MIT
