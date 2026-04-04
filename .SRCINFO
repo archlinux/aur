@@ -1,0 +1,14 @@
+pkgbase = playcli
+	pkgdesc = A TUI audio player built with Go and Bubble Tea
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TimexDeveloper/playcli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = ffmpeg
+	source = playcli-1.0.0.tar.gz::https://github.com/TimexDeveloper/playcli/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = playcli
