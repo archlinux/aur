@@ -1,9 +1,17 @@
-diff -Naur xfce4-panel-4.20.4-orig/plugins/pager/pager.c xfce4-panel-4.20.4/plugins/pager/pager.c
---- xfce4-panel-4.20.4-orig/plugins/pager/pager.c	2025-03-22 07:17:47.000000000 +0100
-+++ xfce4-panel-4.20.4/plugins/pager/pager.c	2025-03-28 19:04:43.044454596 +0100
-@@ -445,31 +445,96 @@
-   active_ws = xfw_workspace_group_get_active_workspace (plugin->workspace_group);
-   active_n = xfw_workspace_get_number (active_ws);
+diff -Naur xfce4-panel-4.20.7-orig/plugins/pager/pager.c xfce4-panel-4.20.7/plugins/pager/pager.c
+--- xfce4-panel-4.20.7-orig/plugins/pager/pager.c	2026-03-02 10:43:18.000000000 +0100
++++ xfce4-panel-4.20.7/plugins/pager/pager.c	2026-04-04 19:26:52.399553840 +0200
+@@ -415,6 +415,7 @@
+   PagerPlugin *plugin = PAGER_PLUGIN (widget);
+   XfwWorkspace *active_ws;
+   XfwWorkspace *new_ws;
++  XfwWorkspaceManager *manager;
+   GdkMonitor *monitor;
+   GList *workspaces;
+   gint active_n;
+@@ -447,34 +448,99 @@
+   active_ws = panel_utils_get_active_workspace_for_monitor (plugin->xfw_screen, monitor);
+   active_n = panel_utils_get_workspace_number_for_monitor (plugin->xfw_screen, monitor, active_ws);
  
 -  if (scrolling_direction == GDK_SCROLL_UP
 -      || scrolling_direction == GDK_SCROLL_LEFT)
@@ -11,7 +19,7 @@ diff -Naur xfce4-panel-4.20.4-orig/plugins/pager/pager.c xfce4-panel-4.20.4/plug
 -  else
 -    active_n++;
 -
-   n_workspaces = xfw_workspace_group_get_workspace_count (plugin->workspace_group) - 1;
+   n_workspaces = panel_utils_get_workspace_count_for_monitor (plugin->xfw_screen, monitor) - 1;
  
 -  if (plugin->wrap_workspaces)
 +  /* Having one workspace is a special case: could be viewport mode (compiz) */
@@ -70,9 +78,9 @@ diff -Naur xfce4-panel-4.20.4-orig/plugins/pager/pager.c xfce4-panel-4.20.4/plug
 +              /* Wrap disabled, no need to do anything */
 +              return TRUE;
 +            }
-+
-+          xfw_workspace_group_move_viewport (plugin->workspace_group,
-+                                         viewport_x, viewport_y, NULL);
++          manager = xfw_screen_get_workspace_manager (plugin->xfw_screen);
++          xfw_workspace_group_move_viewport (xfw_workspace_manager_list_workspace_groups (manager)->data,
++                                             viewport_x, viewport_y, NULL);
 +        }
 +      else
 +        {
@@ -85,7 +93,6 @@ diff -Naur xfce4-panel-4.20.4-orig/plugins/pager/pager.c xfce4-panel-4.20.4/plug
      {
 -      /* we do not need to do anything */
 -      return TRUE;
--    }
 +      /* Real workspaces */
 +      if (scrolling_direction == GDK_SCROLL_UP
 +        || scrolling_direction == GDK_SCROLL_LEFT)
@@ -106,14 +113,20 @@ diff -Naur xfce4-panel-4.20.4-orig/plugins/pager/pager.c xfce4-panel-4.20.4/plug
 +          /* We do not need to do anything */
 +          return TRUE;
 +        }
- 
--  new_ws = g_list_nth_data (xfw_workspace_group_list_workspaces (plugin->workspace_group), active_n);
--  if (new_ws != NULL && active_ws != new_ws)
--    xfw_workspace_activate (new_ws, NULL);
-+      new_ws = g_list_nth_data (xfw_workspace_group_list_workspaces (plugin->workspace_group), active_n);
++
++      workspaces = panel_utils_list_workspaces_for_monitor (plugin->xfw_screen, monitor);
++      new_ws = g_list_nth_data (workspaces, active_n);
++      g_list_free (workspaces);
 +      if (new_ws != NULL && active_ws != new_ws)
 +        xfw_workspace_activate (new_ws, NULL);
-+    }
+     }
  
+-  workspaces = panel_utils_list_workspaces_for_monitor (plugin->xfw_screen, monitor);
+-  new_ws = g_list_nth_data (workspaces, active_n);
+-  g_list_free (workspaces);
+-  if (new_ws != NULL && active_ws != new_ws)
+-    xfw_workspace_activate (new_ws, NULL);
+-
    return TRUE;
  }
+ 

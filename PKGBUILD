@@ -5,7 +5,7 @@
 
 pkgname=xfce4-panel-compiz
 _realname=xfce4-panel
-pkgver=4.20.4
+pkgver=4.20.7
 pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment with fixes for Compiz"
 arch=('i686' 'x86_64')
@@ -18,20 +18,20 @@ makedepends=('intltool' 'gobject-introspection' 'vala' 'xfce4-dev-tools' 'glib2-
 provides=("$_realname=$pkgver")
 conflicts=("$_realname")
 source=("https://archive.xfce.org/src/xfce/$_realname/${pkgver%.*}/$_realname-$pkgver.tar.bz2"
-	  "xfce4-panel-4.20.4-invert_scroll_workspaces-1.patch" "xfce4-panel-4.20.4-viewport_mode-1.patch")
-sha256sums=('695b23af490719e734c8659394821b43cc94d3bee69994bafdc42ef40daa0d2c'
-            '15dd2f1b91b87971059dddfba8b08b72f53d0e66b4f0a17a5c29f7719636a0c2'
-            'ed7e779275a945cf127b0a30a73fa8bc9b2819f9aee7ff2368fe6233674efa61')
+	  "xfce4-panel-4.20.7-invert_scroll_workspaces-1.patch" "xfce4-panel-4.20.7-viewport_mode-1.patch")
+sha256sums=('696e3eff0b1b5bfa8ba90fd7afdea58f5b06e5547840a7443d11388f2fd578ea'
+            'fbb4ba79a761f80eb59615a7bc0f71c10793238e43f26919fe896c0624395ac3'
+            'a21a9ff3c68ad6164942163d996613071521e6917a2b28df35c120583d510bcb')
 
 prepare() {
   cd "$srcdir/$_realname-$pkgver"
 
   # See https://gitlab.xfce.org/xfce/xfwm4/-/issues/6#note_23168
-  echo "Applying xfce4-panel-4.20.4-viewport_mode-1.patch:"
-  patch -p1 -i "$srcdir/xfce4-panel-4.20.4-viewport_mode-1.patch"
+  echo "Applying xfce4-panel-4.20.7-viewport_mode-1.patch:"
+  patch -p1 -i "$srcdir/xfce4-panel-4.20.7-viewport_mode-1.patch"
 
-  echo "Applying xfce4-panel-4.20.4-invert_scroll_workspaces-1.patch:"
-  patch -p1 -i "$srcdir/xfce4-panel-4.20.4-invert_scroll_workspaces-1.patch"
+  echo "Applying xfce4-panel-4.20.7-invert_scroll_workspaces-1.patch:"
+  patch -p1 -i "$srcdir/xfce4-panel-4.20.7-invert_scroll_workspaces-1.patch"
 }
 
 build() {

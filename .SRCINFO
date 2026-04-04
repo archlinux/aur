@@ -1,6 +1,6 @@
 pkgbase = xfce4-panel-compiz
 	pkgdesc = Panel for the Xfce desktop environment with fixes for Compiz
-	pkgver = 4.20.4
+	pkgver = 4.20.7
 	pkgrel = 1
 	url = https://www.xfce.org/
 	arch = i686
@@ -21,13 +21,13 @@ pkgbase = xfce4-panel-compiz
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	depends = libxfce4windowing
-	provides = xfce4-panel=4.20.4
+	provides = xfce4-panel=4.20.7
 	conflicts = xfce4-panel
-	source = https://archive.xfce.org/src/xfce/xfce4-panel/4.20/xfce4-panel-4.20.4.tar.bz2
-	source = xfce4-panel-4.20.4-invert_scroll_workspaces-1.patch
-	source = xfce4-panel-4.20.4-viewport_mode-1.patch
-	sha256sums = 695b23af490719e734c8659394821b43cc94d3bee69994bafdc42ef40daa0d2c
-	sha256sums = 15dd2f1b91b87971059dddfba8b08b72f53d0e66b4f0a17a5c29f7719636a0c2
-	sha256sums = ed7e779275a945cf127b0a30a73fa8bc9b2819f9aee7ff2368fe6233674efa61
+	source = https://archive.xfce.org/src/xfce/xfce4-panel/4.20/xfce4-panel-4.20.7.tar.bz2
+	source = xfce4-panel-4.20.7-invert_scroll_workspaces-1.patch
+	source = xfce4-panel-4.20.7-viewport_mode-1.patch
+	sha256sums = 696e3eff0b1b5bfa8ba90fd7afdea58f5b06e5547840a7443d11388f2fd578ea
+	sha256sums = fbb4ba79a761f80eb59615a7bc0f71c10793238e43f26919fe896c0624395ac3
+	sha256sums = a21a9ff3c68ad6164942163d996613071521e6917a2b28df35c120583d510bcb
 
 pkgname = xfce4-panel-compiz
