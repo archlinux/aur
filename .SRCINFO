@@ -33,9 +33,9 @@ pkgbase = bobcat-terminal-git
 	conflicts = bobcat-terminal
 	conflicts = bobcat-terminal-headless-git
 	conflicts = bobcat-terminal-headless
-	source = upp-posix-17810.tar.xz::https://github.com/ultimatepp/ultimatepp/releases/download/v2025.1.1/upp-posix-17810.tar.xz
+	source = upp-posix-18468.tar.xz::https://github.com/ultimatepp/ultimatepp/releases/download/v2026.1/upp-posix-18468.tar.xz
 	source = bobcat-terminal-git::git+https://github.com/ismail-yilmaz/Bobcat.git
-	sha256sums = 3c7415f2ba4398b371be063ba9071b1983d961a465d4d665a8367e62909d661e
+	sha256sums = 701dbb10edf03c77ceff66c89a2ffa23fce2b788cc480b0cae39d0689519b633
 	sha256sums = SKIP
 
 pkgname = bobcat-terminal-git
