@@ -1,0 +1,15 @@
+post_install() {
+    echo ""
+    echo "==> Copy the example config and configure your backends:"
+    echo ""
+    echo "      cp /usr/share/yappie/config.example.toml ~/.config/yappie/config.toml"
+    echo "      \$EDITOR ~/.config/yappie/config.toml"
+    echo ""
+    echo "    Then add to your Hyprland config:"
+    echo "      bindd = SUPER, D, Dictation, exec, yappie"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

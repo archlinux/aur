@@ -1,0 +1,21 @@
+pkgbase = yappie
+	pkgdesc = Fast local-first voice dictation for Linux/Wayland
+	pkgver = r3.e490525
+	pkgrel = 1
+	url = https://github.com/kloogans/yappie-linux
+	install = yappie.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = pipewire
+	depends = curl
+	depends = nmap
+	depends = jq
+	depends = ydotool
+	depends = wl-clipboard
+	depends = libnotify
+	depends = hyprland
+	source = yappie::git+https://github.com/kloogans/yappie-linux.git
+	sha256sums = SKIP
+
+pkgname = yappie
