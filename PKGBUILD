@@ -2,7 +2,7 @@
 
 pkgname=blockcheckw-bin
 _pkgbase=${pkgname%-bin}
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Parallel DPI bypass strategy scanner (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/rcd27/$_pkgbase/v$pk
 source_x86_64=("$_pkgbase-$pkgver-x86_64.tar.gz::https://github.com/rcd27/$_pkgbase/releases/download/v$pkgver/$_pkgbase-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgbase-$pkgver-aarch64.tar.gz::https://github.com/rcd27/$_pkgbase/releases/download/v$pkgver/$_pkgbase-linux-arm64.tar.gz")
 sha256sums=('368255ced66b701e18bb502017f0eab8864c99c68dfa242e77b48ebe1fecb938')
-sha256sums_x86_64=('9efd11bfeae46eaaca9d7b5525d5e4482aa8662ca481ded1981778b15a709707')
-sha256sums_aarch64=('cf7d15c99b241dec3f1cd6a480a25ea28bbc9ca91e92e659ec83034c3c9eaad6')
+sha256sums_x86_64=('8bfbdb5559f01ae3466f561308d179495d2351930cb95983cc3abef9a6d66627')
+sha256sums_aarch64=('e3e214763abc63d16aa84d30c183277f27e14a1158532646bf9e2bba122e0968')
 
 latestver() {
     gh api --paginate repos/rcd27/$_pkgbase/releases \
