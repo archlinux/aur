@@ -1,0 +1,5 @@
+[flux-operator-bin]
+source = "github"
+github = "controlplaneio-fluxcd/flux-operator"
+use_max_release = true
+prefix = "v"
