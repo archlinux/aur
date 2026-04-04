@@ -28,6 +28,7 @@ pkgbase = asbru-cm-loki-git
 	depends = libwnck3
 	depends = perl-io-stty
 	depends = perl-io-tty
+	depends = perl-crypt-urandom
 	optdepends = uucp: Unix-to-Unix Copy
 	optdepends = rdesktop: RDP connections
 	optdepends = freerdp: RDP connections
