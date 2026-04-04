@@ -1,6 +1,6 @@
 pkgbase = okapi
 	pkgdesc = Find lines across files by regex and edit them all at once with your vim
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/nk9/okapi
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = okapi
 	makedepends = cargo
 	makedepends = git
 	depends = ripgrep
-	source = git+https://github.com/nk9/okapi.git#tag=v0.4.0
-	sha256sums = 28ca465ec73c8fc4d4aa8eb13089cdb56447444ef3b7ecca4df9b4bd887ee7e1
+	source = git+https://github.com/nk9/okapi.git#tag=v0.4.1
+	sha256sums = c04f86ea4057fde6155568ba3af0f6393a126729d8b4a514f22b36ce7e8afff1
 
 pkgname = okapi
