@@ -1,0 +1,5 @@
+src/
+pkg/
+online/
+*.pkg.tar.zst
+*.tar.gz

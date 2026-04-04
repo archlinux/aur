@@ -14,15 +14,10 @@ depends=(
     'zlib'
     'zstd'
     'hicolor-icon-theme'
+    'poco'
 )
 makedepends=(
     'git'
-    'cmake'
-    'ninja'
-    'autoconf'
-    'automake'
-    'libtool'
-    'pkg-config'
     'qt6-tools'
     'cppunit'
     'python'
@@ -31,42 +26,14 @@ makedepends=(
     'nodejs'
     'npm'
     'rsync'
-    'openssl'
-    'pcre2'
-    'expat'
 )
 options=('!strip' '!debug')
 source=(
     "git+https://github.com/CollaboraOnline/online.git#branch=distro/collabora/coda-25.04"
-    "git+https://github.com/pocoproject/poco.git#tag=poco-1.12.5-release"
     "https://github.com/CollaboraOnline/online/releases/download/for-code-assets/core-co-25.04-assets.tar.gz"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
-
-prepare() {
-    # Build Poco 1.12.5 as static libraries. Poco is not in Arch repos
-    # and static linking avoids a runtime dependency.
-    cmake -S poco -B poco-build -G Ninja \
-        -DCMAKE_INSTALL_PREFIX="$srcdir/poco-install" \
-        -DBUILD_SHARED_LIBS=OFF \
-        -DPOCO_UNBUNDLED=ON \
-        -DENABLE_TESTS=OFF \
-        -DENABLE_SAMPLES=OFF \
-        -DENABLE_ACTIVERECORD=OFF \
-        -DENABLE_DATA=OFF \
-        -DENABLE_DATA_SQLITE=OFF \
-        -DENABLE_DATA_MYSQL=OFF \
-        -DENABLE_DATA_ODBC=OFF \
-        -DENABLE_DATA_POSTGRESQL=OFF \
-        -DENABLE_MONGODB=OFF \
-        -DENABLE_PAGECOMPILER=OFF \
-        -DENABLE_PAGECOMPILER_FILE2PAGE=OFF \
-        -DENABLE_PROMETHEUS=OFF \
-        -DENABLE_REDIS=OFF \
-        -DENABLE_JWT=OFF
-    cmake --build poco-build
-    cmake --install poco-build
-}
+sha256sums=('SKIP'
+            'db0009465060bf1cb8302f6f195701446b5a04deef81e55de76a44a42e8949e0')
 
 build() {
     cd online
@@ -87,9 +54,7 @@ build() {
         --disable-werror \
         --disable-tests \
         --with-lokit-path="$srcdir/include" \
-        --with-lo-path=/usr/lib/collabora-office \
-        --with-poco-includes="$srcdir/poco-install/include" \
-        --with-poco-libs="$srcdir/poco-install/lib"
+        --with-lo-path=/usr/lib/collabora-office
 
     make
 }
