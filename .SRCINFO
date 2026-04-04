@@ -1,19 +1,19 @@
 pkgbase = gsh-bin
 	pkgdesc = A battery-included, POSIX-compatible, generative shell
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://github.com/kunchenguid/gsh
 	license = GPL-3.0-or-later
 	conflicts = gsh
 	provides = gsh
 	arch = aarch64
-	source_aarch64 = https://github.com/kunchenguid/gsh/releases/download/v1.10.1/gsh_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 0bb1a1272e154ed57d093342cdb0c8594739874eb49b389b212cfd3234d836a4
+	source_aarch64 = https://github.com/kunchenguid/gsh/releases/download/v1.10.2/gsh_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 621e7aad7a1b73c2a83ac0684e83c4b7ac8989e0027273282113ee55fe7b9753
 	arch = i686
-	source_i686 = https://github.com/kunchenguid/gsh/releases/download/v1.10.1/gsh_Linux_i386.tar.gz
-	sha256sums_i686 = e96dfc669a284a0f61c901eeacc7d24fd96e1ca4003e589717e25d32284096e9
+	source_i686 = https://github.com/kunchenguid/gsh/releases/download/v1.10.2/gsh_Linux_i386.tar.gz
+	sha256sums_i686 = 4fdf50014e87ff7bb5fc2fab3c0716e9c58e3bbd59ba61e0bbbe71f619797e88
 	arch = x86_64
-	source_x86_64 = https://github.com/kunchenguid/gsh/releases/download/v1.10.1/gsh_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 595b990e3a1821fdda2e572a36d2089bbb50256fc9253401d483c4c7f85873ee
+	source_x86_64 = https://github.com/kunchenguid/gsh/releases/download/v1.10.2/gsh_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = d1d7b45a38f2331e7afb4d883473be61614e844a5593d11fe8fda4f970889e28
 	
 pkgname = gsh-bin
