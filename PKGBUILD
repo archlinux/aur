@@ -1,8 +1,8 @@
 # Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 
 pkgname=pokemon-revolution-online-bin
-__PROCLIENT_VER=20260225
-pkgver=20260225+asset0.5
+__PROCLIENT_VER=20260403
+pkgver=20260403+asset0.5
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 options=('!strip')
@@ -27,7 +27,8 @@ source=(
   "git+https://gitlab.com/fabiscafe/pro_assets_lin_desktop.git#tag=0.5"
   "PROClient_linux-${__PROCLIENT_VER}.tar.gz::https://ddl.pokemonrevolution.net/PROClient_linux.tar.gz"
 )
-b2sums=('8d70ae01110e1b85e9206a7163d1d26414622940cd89d13d697b938d4087fa9b319c877fcbc424203a4767973194e58b38c311172909690bafe7015ec206b8ea' 'cd3fb8dfcc21b53659818456dbbe8f1ebe0496ce88282786c3f5a08c34cfc5a8b3221477107fb08662c6d4941d1511db749c4c14a887dd0e2cfb4ecc5eabf774')
+b2sums=('8d70ae01110e1b85e9206a7163d1d26414622940cd89d13d697b938d4087fa9b319c877fcbc424203a4767973194e58b38c311172909690bafe7015ec206b8ea'
+        '11158cd470490d25413aaae35ffac99f0ca4e70041dc73f8398f1a68dc61db85941ef33a98c9e0b74465d3d7bfde4a048226088b696457f94b7b5bd31ff32c7a')
 
 pkgver() {
   cd pro_assets_lin_desktop
