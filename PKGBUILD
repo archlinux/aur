@@ -1,7 +1,7 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 pkgname=gram-editor-bin
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="A code editor for humanoid apes and grumpy toads"
 
 provides=(gram-editor gram)
@@ -28,7 +28,7 @@ depends=('alsa-lib'
 		'zlib')
 
 optdepends=(
-	'rustup: permits installing rust-based extensions'
+	'rustup: enables installing extensions'
 	'clang: improved C/C++ language support'
 	'eslint: improved Javascript language support'
 	'pyright: improved Python language support'
@@ -36,7 +36,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/${pkgver}/gram-linux-x86_64-${pkgver}.tar.gz")
-sha256sums=('2c1dd721dc8dbbc5ddee9714b3d58b965ed7eb465e0c2eeb83aca859ff8e9a10')
+sha256sums=('28d1623a32c8d99fe494754eb1aa7b34d66904e79bc19a7fa2ec772c3abaf45f')
 
 package() {
 	cd "gram.app"
