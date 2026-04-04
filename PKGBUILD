@@ -14,11 +14,9 @@ optdepends=('tcsh: supported shell'
             'zsh: supported shell')
 conflicts=('env-modules')
 provides=('env-modules')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TACC/Lmod/archive/${pkgver}.tar.gz"
-        "lmod.install")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TACC/Lmod/archive/${pkgver}.tar.gz")
 install=lmod.install
-sha256sums=('b7277482677a22c3396b88a1290406ca20bb2564c59632403ca98373f132e65a'
-            '8053609022861417d7f98200e42067910ec810024759f5e596940df5fcfec206')
+sha256sums=('b7277482677a22c3396b88a1290406ca20bb2564c59632403ca98373f132e65a')
 
 build() {
   cd "Lmod-${pkgver}"
