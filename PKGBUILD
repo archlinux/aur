@@ -1,14 +1,14 @@
 # Maintainer:
 
-: ${_ver_wlr:=0.19}
+: ${_ver_wlr:=0.20}
 
 : ${ZVM_PATH:=$SRCDEST/zvm-data}
 export ZVM_PATH
 
 _pkgname="river-classic"
 pkgname="$_pkgname-git"
-pkgver=0.3.14.r4.gbbdc477
-pkgrel=2
+pkgver=0.3.15.r2.gea4774c
+pkgrel=1
 pkgdesc="A dynamic tiling wayland compositor"
 url='https://codeberg.org/river/river-classic'
 license=('GPL-3.0-or-later')
