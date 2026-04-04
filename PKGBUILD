@@ -1,25 +1,54 @@
-# Maintainer : Laël Guillemenot <zeppelinlg@gmail.com>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Laël Guillemenot <zeppelinlg@gmail.com>
 
-pkgname=perl-cache-cache
-_cpanname=Cache-Cache
+_author=RJBS
+_dist=Cache-Cache
+pkgname=perl-${_dist@L}
 pkgver=1.08
-pkgrel=1
-pkgdesc="Generic cache interface and implementations"
+pkgrel=2
+pkgdesc='extends Cache::SizeAwareMemoryCache'
 arch=('any')
-url="http://search.cpan.org/~JSWARTZ/${_cpanname}"
-license=('GPL' 'PerlArtistic')
-depends=('perl-digest-sha1>=2.02' 'perl-error>=0.15' 'perl-ipc-sharelite>=0.09')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-digest-sha1>=2.02'
+    'perl-error>=0.15'
+    'perl-ipc-sharelite>=0.09'
+    'perl-pathtools>=0.82'
+    'perl-storable>=1.014'
+)
+makedepends=('perl-extutils-makemaker')
 options=('!emptydirs')
-source=(http://www.cpan.org/authors/id/R/RJ/RJBS/${_cpanname}-${pkgver}.tar.gz) 
-md5sums=('c18bfc823055d1df5255ae834e161749')
-build() {
-  cd $srcdir/${_cpanname}-${pkgver}
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor || return 1 
-  make || return 1
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('d2c7fd5dba5dd010b7d8923516890bb6ccf6b5f188ccb69f35cb0fd6c031d1e8')
+
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
-package() {
-  cd $srcdir/${_cpanname}-${pkgver}
-  make install DESTDIR=$pkgdir || return 1
-  find $pkgdir -name '.packlist' -delete
-  find $pkgdir -name '*.pod' -delete
+
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
+}
+
+package()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+    install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

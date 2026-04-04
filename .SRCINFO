@@ -1,17 +1,19 @@
 pkgbase = perl-cache-cache
-	pkgdesc = Generic cache interface and implementations
+	pkgdesc = extends Cache::SizeAwareMemoryCache
 	pkgver = 1.08
-	pkgrel = 1
-	url = http://search.cpan.org/~JSWARTZ/Cache-Cache
+	pkgrel = 2
+	url = https://metacpan.org/dist/Cache-Cache
 	arch = any
-	license = GPL
-	license = PerlArtistic
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker
+	depends = perl
 	depends = perl-digest-sha1>=2.02
 	depends = perl-error>=0.15
 	depends = perl-ipc-sharelite>=0.09
+	depends = perl-pathtools>=0.82
+	depends = perl-storable>=1.014
 	options = !emptydirs
-	source = http://www.cpan.org/authors/id/R/RJ/RJBS/Cache-Cache-1.08.tar.gz
-	md5sums = c18bfc823055d1df5255ae834e161749
+	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Cache-Cache-1.08.tar.gz
+	sha256sums = d2c7fd5dba5dd010b7d8923516890bb6ccf6b5f188ccb69f35cb0fd6c031d1e8
 
 pkgname = perl-cache-cache
-
