@@ -1,0 +1,20 @@
+pkgbase = codesize-bin
+	pkgdesc = Report code size violations by file and function, using tree-sitter for accurate function boundary detection
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/ChrisGVE/codesize
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = codesize
+	conflicts = codesize
+	source = CONFIG-0.2.1.toml::https://raw.githubusercontent.com/ChrisGVE/codesize/v0.2.1/config.toml
+	sha256sums = 8c76cd3f4f59fbd5d2e908f8f65476802b0bce6533bb6c58db2ffee28616f5ea
+	source_x86_64 = codesize-x86_64-0.2.1.tgz::https://github.com/ChrisGVE/codesize/releases/download/v0.2.1/codesize-linux-x64.tar.gz
+	sha256sums_x86_64 = 9b30efc2cb0772af35aadbcf1f6c1830c05b1463b5e31765828946514608ce15
+	source_aarch64 = codesize-aarch64-0.2.1.tgz::https://github.com/ChrisGVE/codesize/releases/download/v0.2.1/codesize-linux-arm64.tar.gz
+	sha256sums_aarch64 = 99268ea58f7e78837da783e2e77a7145f12e7f6643ed91dc60f340f847b17207
+
+pkgname = codesize-bin
