@@ -76,6 +76,7 @@ pkgbase = beets-git
 	optdepends = python-rarfile: Import plugin (RAR archive support)
 	optdepends = python-resampy: AutoBPM plugin
 	optdepends = python-requests-oauthlib: Beatport plugin
+	optdepends = python-reflink: Reflink options for import plugin
 	optdepends = python-scipy: AutoBPM plugin
 	optdepends = python-soco: Sonosupdate plugin
 	optdepends = python-titlecase: Titlecase plugin

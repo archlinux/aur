@@ -88,6 +88,7 @@ optdepends=(
   'python-rarfile: Import plugin (RAR archive support)'
   'python-resampy: AutoBPM plugin'
   'python-requests-oauthlib: Beatport plugin'
+  'python-reflink: Reflink options for import plugin'
   'python-scipy: AutoBPM plugin'
   'python-soco: Sonosupdate plugin'
   'python-titlecase: Titlecase plugin'
