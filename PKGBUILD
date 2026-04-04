@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=acestep.cpp-bin
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Portable C++17 music generation using GGML (ACE-Step 1.5). Text + lyrics in, stereo 48kHz audio out'
 arch=('x86_64')
@@ -21,7 +21,7 @@ _binaries=(ace-lm ace-synth ace-server ace-understand neural-codec mp3-codec qua
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/audiohacking/acestep.cpp/releases/download/v${pkgver}/acestep-linux-x64.tar.gz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/ServeurpersoCom/acestep.cpp/refs/heads/master/LICENSE")
-sha256sums=('cdc26930604b259f300930a6264f2695aeab0412d516396945cbcdbe989666a5'
+sha256sums=('ed0d0b898c0bc686985cde9097c3f608a1e1f916350068e5b4dfe3e181969381'
             '43e5610846745c687f675badd848d769c8af0a671604efe45cb1466517fd3ddb')
 
 _libdir=/usr/lib/acestep
