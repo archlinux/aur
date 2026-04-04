@@ -1,19 +1,19 @@
 pkgbase = libpng-apng
 	pkgdesc = A collection of routines used to create PNG format graphics files
-	pkgver = 1.6.55
+	pkgver = 1.6.56
 	pkgrel = 1
 	url = https://sourceforge.net/projects/libpng-apng/
 	arch = x86_64
 	license = custom
 	depends = zlib
 	depends = sh
-	provides = libpng=1.6.55
+	provides = libpng=1.6.56
 	provides = libpng16.so
 	conflicts = libpng
-	source = https://downloads.sourceforge.net/sourceforge/libpng/libpng-1.6.55.tar.xz
-	source = https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.55-apng.patch.gz
+	source = https://downloads.sourceforge.net/sourceforge/libpng/libpng-1.6.56.tar.xz
+	source = https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.56-apng.patch.gz
 	validpgpkeys = 8048643BA2C840F4F92A195FF54984BFA16C640F
-	sha256sums = d925722864837ad5ae2a82070d4b2e0603dc72af44bd457c3962298258b8e82d
-	sha256sums = 017c06f75ffed25f6cda9b5369ec6da0ac35a6616adf7abe4222516a0237f37a
+	sha256sums = f7d8bf1601b7804f583a254ab343a6549ca6cf27d255c302c47af2d9d36a6f18
+	sha256sums = 9ce32d4a2763a2ac5f258726ba2f49e9011327c1ee8c30862a32d0f30889fbe8
 
 pkgname = libpng-apng

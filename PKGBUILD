@@ -1,4 +1,5 @@
-# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Maintainer: stickynotememo <samk26633@gmail.com>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Yardena Cohen <yardenack@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
@@ -7,7 +8,7 @@
 
 libname=libpng
 pkgname=$libname-apng
-pkgver=1.6.55
+pkgver=1.6.56
 _apngver=$pkgver
 pkgrel=1
 pkgdesc="A collection of routines used to create PNG format graphics files"
@@ -20,8 +21,8 @@ conflicts=(libpng)
 validpgpkeys=('8048643BA2C840F4F92A195FF54984BFA16C640F') # Glenn Randers-Pehrson (mozilla) <glennrp@gmail.com>
 source=("https://downloads.sourceforge.net/sourceforge/$libname/$libname-$pkgver.tar.xz"
         "https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-$_apngver-apng.patch.gz")
-sha256sums=('d925722864837ad5ae2a82070d4b2e0603dc72af44bd457c3962298258b8e82d'
-            '017c06f75ffed25f6cda9b5369ec6da0ac35a6616adf7abe4222516a0237f37a')
+sha256sums=('f7d8bf1601b7804f583a254ab343a6549ca6cf27d255c302c47af2d9d36a6f18'
+            '9ce32d4a2763a2ac5f258726ba2f49e9011327c1ee8c30862a32d0f30889fbe8')
 
 prepare() {
   cd $libname-$pkgver
