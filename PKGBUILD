@@ -1,12 +1,12 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r85727.d5e853fa7e
+pkgver=r86040.00b0061463
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
 url='https://www.paraview.org'
 license=('custom')
 depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion' 'mingw-w64-protobuf' 'mingw-w64-libtheora' 'mingw-w64-pugixml' 'mingw-w64-gl2ps' 'mingw-w64-libharu' 'mingw-w64-verdict' 'mingw-w64-scnlib')
-makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'mingw-w64-boost' 'protobuf' 'git')
+makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'mingw-w64-boost' 'protobuf' 'git' 'ninja-makeflags')
 provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
@@ -41,7 +41,8 @@ prepare() {
 build() {
   cd "${srcdir}/paraview"
   for _arch in ${_architectures}; do
-    ${_arch}-cmake \
+    ${_arch}-cmake -G Ninja \
+      -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja-makeflags \
       -DCMAKE_BUILD_TYPE=Release \
       -DPARAVIEW_BUILD_SHARED_LIBS=ON -UBUILD_SHARED_LIBS \
       -DPARAVIEW_USE_PYTHON=OFF \
@@ -62,14 +63,14 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=OFF \
       -B build-${_arch} .
-    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make -C build-${_arch}
+    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" cmake --build build-${_arch}
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
     cd "$srcdir"/paraview/build-${_arch}
-    make install/fast DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" cmake --install build-${_arch}
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
