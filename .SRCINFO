@@ -1,6 +1,6 @@
 pkgbase = qcmbackend-git
 	pkgdesc = Qcm backend with Rust
-	pkgver = r219.8770a4f
+	pkgver = r221.3183e35
 	pkgrel = 1
 	url = https://github.com/hypengw/QcmBackend
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = qcmbackend-git
 	depends = openssl
 	depends = libgcc
 	depends = sqlite
-	depends = lua
+	depends = lua54
 	provides = qcmbackend
 	conflicts = qcmbackend
 	source = git+https://github.com/hypengw/QcmBackend.git
