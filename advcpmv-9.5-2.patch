@@ -1,0 +1,870 @@
+--- coreutils-9.5.orig/src/copy.c	2024-03-25 23:27:11.000000000 +0100
++++ coreutils-9.5/src/copy.c	2026-04-04 16:07:03.915717209 +0200
+@@ -49,6 +49,7 @@
+ #include "hash-triple.h"
+ #include "ignore-value.h"
+ #include "ioblksize.h"
++#include "progress.h"
+ #include "quote.h"
+ #include "renameatu.h"
+ #include "root-uid.h"
+@@ -62,6 +63,7 @@
+ #include "areadlink.h"
+ #include "yesno.h"
+ #include "selinux.h"
++#include "xfts.h"
+ 
+ #ifndef USE_XATTR
+ # define USE_XATTR false
+@@ -128,6 +130,21 @@
+                            bool *rename_succeeded);
+ static bool owner_failure_ok (struct cp_options const *x);
+ 
++static uintmax_t
++copy_progress_stat_size (struct stat const *sb)
++{
++  return 0 < sb->st_size ? sb->st_size : 0;
++}
++
++static void
++progress_complete_regular (struct cp_options const *x, char const *src_name,
++                           struct stat const *src_sb, bool success)
++{
++  if (success && progress_enabled (x->progress) && S_ISREG (src_sb->st_mode))
++    progress_complete_file (x->progress, src_name,
++                            copy_progress_stat_size (src_sb), true);
++}
++
+ /* Pointers to the file names:  they're used in the diagnostic that is issued
+    when we detect the user is trying to copy a directory into itself.  */
+ static char const *top_level_src_name;
+@@ -313,7 +330,7 @@
+              size_t hole_size, bool punch_holes, bool allow_reflink,
+              char const *src_name, char const *dst_name,
+              uintmax_t max_n_read, off_t *total_n_read,
+-             bool *last_write_made_hole)
++             bool *last_write_made_hole, struct progress *progress)
+ {
+   *last_write_made_hole = false;
+   *total_n_read = 0;
+@@ -375,6 +392,7 @@
+         copy_debug.offload = COPY_DEBUG_YES;
+         max_n_read -= n_copied;
+         *total_n_read += n_copied;
++        progress_update_file (progress, *total_n_read);
+       }
+   else
+     copy_debug.offload = COPY_DEBUG_AVOIDED;
+@@ -400,6 +418,7 @@
+         break;
+       max_n_read -= n_read;
+       *total_n_read += n_read;
++      progress_update_file (progress, *total_n_read);
+ 
+       /* Loop over the input buffer in chunks of hole_size.  */
+       size_t csize = hole_size ? hole_size : buf_size;
+@@ -544,7 +563,7 @@
+ lseek_copy (int src_fd, int dest_fd, char **abuf, size_t buf_size,
+             size_t hole_size, off_t ext_start, off_t src_total_size,
+             enum Sparse_type sparse_mode,
+-            bool allow_reflink,
++            bool allow_reflink, struct progress *progress,
+             char const *src_name, char const *dst_name)
+ {
+   off_t last_ext_start = 0;
+@@ -622,7 +641,7 @@
+       if ( ! sparse_copy (src_fd, dest_fd, abuf, buf_size,
+                           sparse_mode != SPARSE_ALWAYS ? 0 : hole_size,
+                           true, allow_reflink, src_name, dst_name,
+-                          ext_len, &n_read, &read_hole))
++                          ext_len, &n_read, &read_hole, progress))
+         return false;
+ 
+       dest_pos = ext_start + n_read;
+@@ -1241,6 +1260,8 @@
+   bool return_val = true;
+   bool data_copy_required = x->data_copy_required;
+   bool preserve_xattr = USE_XATTR & x->preserve_xattr;
++  uintmax_t progress_copied = 0;
++  bool progress_started = false;
+ 
+   copy_debug.offload = COPY_DEBUG_UNKNOWN;
+   copy_debug.reflink = x->reflink_mode ? COPY_DEBUG_UNKNOWN : COPY_DEBUG_NO;
+@@ -1276,6 +1297,9 @@
+   /* Might as well tell the caller about the latest version of the
+      source file status, since we have it already.  */
+   *src_sb = src_open_sb;
++  progress_begin_file (x->progress, src_name,
++                       copy_progress_stat_size (&src_open_sb));
++  progress_started = progress_enabled (x->progress);
+   mode_t src_mode = src_sb->st_mode;
+ 
+   /* The semantics of the following open calls are mandated
+@@ -1589,7 +1613,7 @@
+             buf_size = blcm;
+         }
+ 
+-      off_t n_read;
++      off_t n_read = copy_progress_stat_size (&src_open_sb);
+       bool wrote_hole_at_eof = false;
+       if (! (
+ #ifdef SEEK_HOLE
+@@ -1597,7 +1621,7 @@
+              ? lseek_copy (source_desc, dest_desc, &buf, buf_size, hole_size,
+                            scan_inference.ext_start, src_open_sb.st_size,
+                            make_holes ? x->sparse_mode : SPARSE_NEVER,
+-                           x->reflink_mode != REFLINK_NEVER,
++                           x->reflink_mode != REFLINK_NEVER, x->progress,
+                            src_name, dst_name)
+              :
+ #endif
+@@ -1606,7 +1630,7 @@
+                             x->sparse_mode == SPARSE_ALWAYS,
+                             x->reflink_mode != REFLINK_NEVER,
+                             src_name, dst_name, UINTMAX_MAX, &n_read,
+-                            &wrote_hole_at_eof)))
++                            &wrote_hole_at_eof, x->progress)))
+         {
+           return_val = false;
+           goto close_src_and_dst_desc;
+@@ -1617,6 +1641,7 @@
+           return_val = false;
+           goto close_src_and_dst_desc;
+         }
++      progress_copied = n_read;
+     }
+ 
+   if (x->preserve_timestamps)
+@@ -1716,6 +1741,9 @@
+   if (x->debug)
+     emit_debug (x);
+ 
++  if (progress_started)
++    progress_finish_file (x->progress, progress_copied, return_val);
++
+   alignfree (buf);
+   return return_val;
+ }
+@@ -2276,6 +2304,7 @@
+         {
+           error (0, 0, _("warning: source file %s specified more than once"),
+                  quoteaf (src_name));
++          progress_complete_regular (x, src_name, &src_sb, ! x->move_mode);
+           return true;
+         }
+ 
+@@ -2448,7 +2477,13 @@
+             }
+ 
+           if (return_now)
+-            return return_val;
++            {
++              progress_complete_regular (x, src_name, &src_sb,
++                                         return_val
++                                         && (! x->move_mode
++                                             || ! command_line_arg));
++              return return_val;
++            }
+ 
+           /* Copying a directory onto a non-directory, or vice versa,
+              is ok only with --backup or --exchange.  */
+@@ -2711,6 +2746,7 @@
+                                   true, x->verbose, dereference))
+             goto un_backup;
+ 
++          progress_complete_regular (x, src_name, &src_sb, true);
+           return true;
+         }
+     }
+@@ -2853,6 +2889,13 @@
+           return false;
+         }
+ 
++      if (command_line_arg && progress_enabled (x->progress))
++        {
++          char *paths[] = { (char *) src_name, nullptr };
++          progress_scan_paths (x->progress, 1, paths, FTS_PHYSICAL,
++                               x->recursive);
++        }
++
+       if (x->verbose && !S_ISDIR (src_mode))
+         emit_verbose (_("copied %s -> %s"), src_name, dst_name, dst_backup);
+       new_dst = true;
+@@ -3194,7 +3237,10 @@
+   if (x->hard_link && ! S_ISDIR (src_mode)
+       && !(! CAN_HARDLINK_SYMLINKS && S_ISLNK (src_mode)
+            && x->dereference == DEREF_NEVER))
+-    return delayed_ok;
++    {
++      progress_complete_regular (x, src_name, &src_sb, delayed_ok);
++      return delayed_ok;
++    }
+ 
+   if (copied_as_regular)
+     return delayed_ok;
+@@ -3418,6 +3464,10 @@
+   x->rename_errno = -1;
+ }
+ 
++#define PROGRESS_EMBEDDED 1
++#include "progress.c"
++#undef PROGRESS_EMBEDDED
++
+ /* Return true if it's OK for chown to fail, where errno is
+    the error number that chown failed with and X is the copying
+    option set.  */
+--- coreutils-9.5.orig/src/copy.h	2024-03-22 14:09:03.000000000 +0100
++++ coreutils-9.5/src/copy.h	2026-04-04 15:38:10.282211883 +0200
+@@ -22,6 +22,7 @@
+ # include "hash.h"
+ 
+ struct selabel_handle;
++struct progress;
+ 
+ /* Control creation of sparse files (files with holes).  */
+ enum Sparse_type
+@@ -289,6 +290,9 @@
+   /* Control creation of COW files.  */
+   enum Reflink_type reflink_mode;
+ 
++  /* Optional progress session used by cp and mv.  */
++  struct progress *progress;
++
+   /* This is a set of destination name/inode/dev triples.  Each such triple
+      represents a file we have created corresponding to a source file name
+      that was specified on the command line.  Use it to avoid clobbering
+--- coreutils-9.5.orig/src/cp.c	2024-03-24 20:53:17.000000000 +0100
++++ coreutils-9.5/src/cp.c	2026-04-04 15:40:12.144886871 +0200
+@@ -30,10 +30,12 @@
+ #include "cp-hash.h"
+ #include "filenamecat.h"
+ #include "ignore-value.h"
++#include "progress.h"
+ #include "quote.h"
+ #include "stat-time.h"
+ #include "targetdir.h"
+ #include "utimens.h"
++#include "xfts.h"
+ #include "acl.h"
+ 
+ /* The official name of this program (e.g., no 'g' prefix).  */
+@@ -131,6 +133,7 @@
+   {"parents", no_argument, nullptr, PARENTS_OPTION},
+   {"path", no_argument, nullptr, PARENTS_OPTION},   /* Deprecated.  */
+   {"preserve", optional_argument, nullptr, PRESERVE_ATTRIBUTES_OPTION},
++  {"progress-bar", no_argument, nullptr, 'g'},
+   {"recursive", no_argument, nullptr, 'R'},
+   {"remove-destination", no_argument, nullptr, UNLINK_DEST_BEFORE_OPENING},
+   {"sparse", required_argument, nullptr, SPARSE_OPTION},
+@@ -185,6 +188,7 @@
+   -f, --force                  if an existing destination file cannot be\n\
+                                  opened, remove it and try again (this option\n\
+                                  is ignored when the -n option is also used)\n\
++  -g, --progress-bar           show a progress bar on stderr when possible\n\
+   -i, --interactive            prompt before overwrite (overrides a previous -n\
+ \n\
+                                   option)\n\
+@@ -682,6 +686,35 @@
+         }
+     }
+ 
++  if (progress_enabled (x->progress))
++    {
++      int source_count = target_directory ? n_files : 1;
++      int fts_options = FTS_PHYSICAL;
++
++      switch (x->dereference)
++        {
++        case DEREF_NEVER:
++          break;
++
++        case DEREF_COMMAND_LINE_ARGUMENTS:
++          fts_options = FTS_COMFOLLOW | FTS_PHYSICAL;
++          break;
++
++        case DEREF_ALWAYS:
++          fts_options = FTS_LOGICAL;
++          break;
++
++        default:
++          affirm (false);
++        }
++
++      if (x->one_file_system)
++        fts_options |= FTS_XDEV;
++
++      progress_scan_paths (x->progress, source_count, file, fts_options,
++                           x->recursive);
++    }
++
+   if (target_directory)
+     {
+       /* cp file1...filen edir
+@@ -976,6 +1009,7 @@
+ {
+   int c;
+   bool ok;
++  bool show_progress = false;
+   bool make_backups = false;
+   char const *backup_suffix = nullptr;
+   char *version_control_string = nullptr;
+@@ -997,7 +1031,7 @@
+   selinux_enabled = (0 < is_selinux_enabled ());
+   cp_option_init (&x);
+ 
+-  while ((c = getopt_long (argc, argv, "abdfHilLnprst:uvxPRS:TZ",
++  while ((c = getopt_long (argc, argv, "abdfgHilLnprst:uvxPRS:TZ",
+                            long_opts, nullptr))
+          != -1)
+     {
+@@ -1058,6 +1092,10 @@
+           x.unlink_dest_after_failed_open = true;
+           break;
+ 
++        case 'g':
++          show_progress = true;
++          break;
++
+         case 'H':
+           x.dereference = DEREF_COMMAND_LINE_ARGUMENTS;
+           break;
+@@ -1300,8 +1338,13 @@
+ 
+   hash_init ();
+ 
++  if (show_progress)
++    x.progress = progress_create (false);
++
+   ok = do_copy (argc - optind, argv + optind,
+                 target_directory, no_target_directory, &x);
++  progress_finish (x.progress, ok);
++  progress_free (x.progress);
+ 
+   main_exit (ok ? EXIT_SUCCESS : EXIT_FAILURE);
+ }
+--- coreutils-9.5.orig/src/mv.c	2024-03-22 14:09:03.000000000 +0100
++++ coreutils-9.5/src/mv.c	2026-04-04 15:38:10.287012010 +0200
+@@ -34,6 +34,7 @@
+ #include "root-dev-ino.h"
+ #include "targetdir.h"
+ #include "priv-set.h"
++#include "progress.h"
+ 
+ /* The official name of this program (e.g., no 'g' prefix).  */
+ #define PROGRAM_NAME "mv"
+@@ -74,6 +75,7 @@
+   {"no-clobber", no_argument, nullptr, 'n'},   /* Deprecated.  */
+   {"no-copy", no_argument, nullptr, NO_COPY_OPTION},
+   {"no-target-directory", no_argument, nullptr, 'T'},
++  {"progress-bar", no_argument, nullptr, 'g'},
+   {"strip-trailing-slashes", no_argument, nullptr,
+    STRIP_TRAILING_SLASHES_OPTION},
+   {"suffix", required_argument, nullptr, 'S'},
+@@ -279,6 +281,7 @@
+ "), stdout);
+       fputs (_("\
+   -f, --force                  do not prompt before overwriting\n\
++  -g, --progress-bar           show a progress bar on stderr when possible\n\
+   -i, --interactive            prompt before overwrite\n\
+   -n, --no-clobber             do not overwrite an existing file\n\
+ If you specify more than one of -i, -f, -n, only the final one takes effect.\n\
+@@ -317,6 +320,7 @@
+ {
+   int c;
+   bool ok;
++  bool show_progress = false;
+   bool make_backups = false;
+   char const *backup_suffix = nullptr;
+   char *version_control_string = nullptr;
+@@ -342,7 +346,7 @@
+   /* Try to disable the ability to unlink a directory.  */
+   priv_set_remove_linkdir ();
+ 
+-  while ((c = getopt_long (argc, argv, "bfint:uvS:TZ", long_options, nullptr))
++  while ((c = getopt_long (argc, argv, "bfgint:uvS:TZ", long_options, nullptr))
+          != -1)
+     {
+       switch (c)
+@@ -355,6 +359,9 @@
+         case 'f':
+           x.interactive = I_ALWAYS_YES;
+           break;
++        case 'g':
++          show_progress = true;
++          break;
+         case 'i':
+           x.interactive = I_ASK_USER;
+           break;
+@@ -540,6 +547,9 @@
+ 
+   hash_init ();
+ 
++  if (show_progress)
++    x.progress = progress_create (true);
++
+   if (target_directory)
+     {
+       /* Initialize the hash table only if we'll need it.
+@@ -568,5 +578,7 @@
+       ok = do_move (file[0], file[1], AT_FDCWD, file[1], &x);
+     }
+ 
++  progress_finish (x.progress, ok);
++  progress_free (x.progress);
+   main_exit (ok ? EXIT_SUCCESS : EXIT_FAILURE);
+ }
+--- coreutils-9.5.orig/src/progress.c	1970-01-01 01:00:00.000000000 +0100
++++ coreutils-9.5/src/progress.c	1970-01-01 01:00:00.000000000 +0100
+@@ -0,0 +1,419 @@
++/* progress.c -- progress reporting for cp and mv
++   Copyright (C) 2024 Free Software Foundation, Inc.
++
++   This program is free software: you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation, either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
++
++#include <config.h>
++
++#include <math.h>
++#include <stdio.h>
++#include <sys/ioctl.h>
++
++#ifndef PROGRESS_EMBEDDED
++# include "system.h"
++#endif
++#include "gethrxtime.h"
++#include "human.h"
++#include "ignore-value.h"
++#include "progress.h"
++#include "quote.h"
++#include "xalloc.h"
++#include "xfts.h"
++
++enum { PROGRESS_RENDER_HZ = 8 };
++
++struct progress
++{
++  bool move_mode;
++  bool rendered;
++  bool current_complete;
++  xtime_t start_time;
++  xtime_t last_render;
++  uintmax_t total_files;
++  uintmax_t total_bytes;
++  uintmax_t completed_files;
++  uintmax_t completed_bytes;
++  char const *current_name;
++  uintmax_t current_total_bytes;
++  uintmax_t current_copied_bytes;
++};
++
++static uintmax_t
++progress_add (uintmax_t a, uintmax_t b)
++{
++  return UINTMAX_MAX - a < b ? UINTMAX_MAX : a + b;
++}
++
++static uintmax_t
++progress_stat_size (struct stat const *sb)
++{
++  return 0 < sb->st_size ? sb->st_size : 0;
++}
++
++static void
++progress_format_interval (char *buf, size_t bufsize, double seconds)
++{
++  if (seconds < 0 || ! isfinite (seconds))
++    {
++      snprintf (buf, bufsize, "--:--:--");
++      return;
++    }
++
++  uintmax_t total = seconds;
++  uintmax_t hours = total / 3600;
++  uintmax_t minutes = (total / 60) % 60;
++  uintmax_t secs = total % 60;
++  snprintf (buf, bufsize, "%02ju:%02ju:%02ju", hours, minutes, secs);
++}
++
++static char *
++progress_format_size (uintmax_t value, char *buf)
++{
++  int opts = (human_autoscale | human_base_1024 | human_SI | human_B
++              | human_space_before_unit | human_suppress_point_zero);
++  return human_readable (value, buf, opts, 1, 1);
++}
++
++static int
++progress_term_width (void)
++{
++  struct winsize ws;
++
++  if (ioctl (STDERR_FILENO, TIOCGWINSZ, &ws) == 0 && 40 <= ws.ws_col)
++    return ws.ws_col;
++
++  return 80;
++}
++
++static void
++progress_render (struct progress *progress, bool force)
++{
++  if (! progress)
++    return;
++
++  xtime_t now = gethrxtime ();
++  if (! force
++      && progress->last_render
++      && now - progress->last_render
++         < XTIME_PRECISION / PROGRESS_RENDER_HZ)
++    return;
++
++  if (! progress->start_time)
++    progress->start_time = now;
++  progress->last_render = now;
++
++  uintmax_t shown_bytes
++    = progress_add (progress->completed_bytes, progress->current_copied_bytes);
++  uintmax_t shown_files
++    = progress->completed_files + progress->current_complete;
++
++  if (progress->total_files == 0 && progress->total_bytes == 0)
++    return;
++
++  uintmax_t metric_done = progress->total_bytes ? shown_bytes : shown_files;
++  uintmax_t metric_total
++    = progress->total_bytes ? progress->total_bytes : progress->total_files;
++  double xtime_precision = XTIME_PRECISION;
++  double ratio = metric_total ? (double) metric_done / metric_total : 1.0;
++  if (ratio < 0)
++    ratio = 0;
++  if (1 < ratio)
++    ratio = 1;
++
++  double elapsed = (now - progress->start_time) / xtime_precision;
++  if (elapsed <= 0)
++    elapsed = 1.0 / PROGRESS_RENDER_HZ;
++
++  uintmax_t speed = shown_bytes / elapsed;
++  char eta_buf[64];
++  if (progress->total_bytes && speed)
++    progress_format_interval (eta_buf, sizeof eta_buf,
++                              (progress->total_bytes - shown_bytes)
++                              / (double) speed);
++  else
++    progress_format_interval (eta_buf, sizeof eta_buf, -1);
++
++  int width = progress_term_width ();
++  int bar_width = MIN (MAX (12, width / 5), 28);
++  char bar[64];
++  int filled = metric_total ? ratio * bar_width : bar_width;
++  for (int i = 0; i < bar_width; i++)
++    bar[i] = i < filled ? '=' : ' ';
++  if (0 < filled && filled < bar_width)
++    bar[filled - 1] = '>';
++  bar[bar_width] = '\0';
++
++  char tail[512];
++  if (progress->total_bytes)
++    {
++      char done_buf[LONGEST_HUMAN_READABLE + 1];
++      char total_buf[LONGEST_HUMAN_READABLE + 1];
++      char speed_buf[LONGEST_HUMAN_READABLE + 1];
++      char const *done = progress_format_size (shown_bytes, done_buf);
++      char const *total = progress_format_size (progress->total_bytes, total_buf);
++      char const *speed_s = progress_format_size (speed, speed_buf);
++      snprintf (tail, sizeof tail,
++                "%3d%% [%s] %s/%s %s/s ETA %s %ju/%ju",
++                metric_total ? (int) (ratio * 100.0 + 0.5) : 100,
++                bar, done, total, speed_s, eta_buf,
++                shown_files, progress->total_files);
++    }
++  else
++    {
++      snprintf (tail, sizeof tail,
++                "%3d%% [%s] %ju/%ju files",
++                metric_total ? (int) (ratio * 100.0 + 0.5) : 100,
++                bar, shown_files, progress->total_files);
++    }
++
++  char line[1024];
++  char const *verb = progress->move_mode ? _("moving") : _("copying");
++  char const *quoted_name = progress->current_name
++                            ? quoteaf (progress->current_name)
++                            : "";
++  int path_budget = width - strlen (tail) - strlen (verb) - 2;
++  if (path_budget < 0)
++    path_budget = 0;
++
++  if (path_budget && quoted_name[0])
++    {
++      size_t quoted_len = strlen (quoted_name);
++      if (quoted_len <= path_budget)
++        snprintf (line, sizeof line, "%s %.*s", verb, path_budget, quoted_name);
++      else if (3 < path_budget)
++        snprintf (line, sizeof line, "%s ...%.*s", verb, path_budget - 3,
++                  quoted_name + quoted_len - (path_budget - 3));
++      else
++        snprintf (line, sizeof line, "%s", verb);
++    }
++  else
++    snprintf (line, sizeof line, "%s", verb);
++
++  fprintf (stderr, "\r\033[K%s %s", line, tail);
++  fflush (stderr);
++  progress->rendered = true;
++}
++
++struct progress *
++progress_create (bool move_mode)
++{
++  if (! isatty (STDERR_FILENO))
++    return nullptr;
++
++  struct progress *progress = xzalloc (sizeof *progress);
++  progress->move_mode = move_mode;
++  return progress;
++}
++
++void
++progress_free (struct progress *progress)
++{
++  free (progress);
++}
++
++void
++progress_scan_paths (struct progress *progress, int n_paths, char **paths,
++                     int fts_options, bool recursive)
++{
++  if (! progress || n_paths <= 0)
++    return;
++
++  char **fts_paths = xnmalloc (n_paths + 1, sizeof *fts_paths);
++  for (int i = 0; i < n_paths; i++)
++    fts_paths[i] = paths[i];
++  fts_paths[n_paths] = nullptr;
++
++  FTS *fts = xfts_open (fts_paths, fts_options, nullptr);
++  free (fts_paths);
++
++  FTSENT *ent;
++  while ((ent = fts_read (fts)))
++    {
++      if (! recursive && ent->fts_info == FTS_D
++          && ent->fts_level == FTS_ROOTLEVEL)
++        {
++          fts_set (fts, ent, FTS_SKIP);
++          continue;
++        }
++
++      if ((ent->fts_info == FTS_F || ent->fts_info == FTS_DEFAULT)
++          && ent->fts_statp && S_ISREG (ent->fts_statp->st_mode))
++        {
++          progress->total_files++;
++          progress->total_bytes
++            = progress_add (progress->total_bytes,
++                            progress_stat_size (ent->fts_statp));
++        }
++    }
++
++  ignore_value (fts_close (fts));
++}
++
++void
++progress_begin_file (struct progress *progress, char const *src_name,
++                     uintmax_t total_bytes)
++{
++  if (! progress)
++    return;
++
++  if (progress->total_files <= progress->completed_files)
++    progress->total_files++;
++  if (progress->total_bytes < progress_add (progress->completed_bytes,
++                                            total_bytes))
++    progress->total_bytes = progress_add (progress->completed_bytes,
++                                          total_bytes);
++
++  progress->current_name = src_name;
++  progress->current_total_bytes = total_bytes;
++  progress->current_copied_bytes = 0;
++  progress->current_complete = false;
++  progress_render (progress, true);
++}
++
++void
++progress_update_file (struct progress *progress, uintmax_t copied_bytes)
++{
++  if (! progress || ! progress->current_name)
++    return;
++
++  if (progress->current_total_bytes < copied_bytes)
++    {
++      progress->total_bytes
++        = progress_add (progress->total_bytes,
++                        copied_bytes - progress->current_total_bytes);
++      progress->current_total_bytes = copied_bytes;
++    }
++
++  progress->current_copied_bytes = copied_bytes;
++  progress_render (progress, false);
++}
++
++void
++progress_finish_file (struct progress *progress, uintmax_t copied_bytes,
++                      bool success)
++{
++  if (! progress || ! progress->current_name)
++    return;
++
++  if (progress->current_total_bytes < copied_bytes)
++    {
++      progress->total_bytes
++        = progress_add (progress->total_bytes,
++                        copied_bytes - progress->current_total_bytes);
++      progress->current_total_bytes = copied_bytes;
++    }
++
++  progress->current_copied_bytes
++    = success ? MAX (copied_bytes, progress->current_total_bytes) : copied_bytes;
++  progress->current_complete = success;
++  progress_render (progress, true);
++
++  if (success)
++    {
++      progress->completed_files++;
++      progress->completed_bytes
++        = progress_add (progress->completed_bytes,
++                        progress->current_copied_bytes);
++    }
++
++  progress->current_name = nullptr;
++  progress->current_total_bytes = 0;
++  progress->current_copied_bytes = 0;
++  progress->current_complete = false;
++}
++
++void
++progress_complete_file (struct progress *progress, char const *src_name,
++                        uintmax_t total_bytes, bool success)
++{
++  if (! progress || ! success)
++    return;
++
++  if (progress->total_files <= progress->completed_files)
++    progress->total_files++;
++  if (progress->total_bytes < progress_add (progress->completed_bytes,
++                                            total_bytes))
++    progress->total_bytes = progress_add (progress->completed_bytes,
++                                          total_bytes);
++
++  progress->current_name = src_name;
++  progress->current_total_bytes = total_bytes;
++  progress->current_copied_bytes = total_bytes;
++  progress->current_complete = true;
++  progress_render (progress, true);
++
++  progress->completed_files++;
++  progress->completed_bytes
++    = progress_add (progress->completed_bytes, total_bytes);
++  progress->current_name = nullptr;
++  progress->current_total_bytes = 0;
++  progress->current_copied_bytes = 0;
++  progress->current_complete = false;
++}
++
++void
++progress_finish (struct progress *progress, bool ok)
++{
++  if (! progress)
++    return;
++
++  if (progress->current_name)
++    progress_finish_file (progress, progress->current_copied_bytes, ok);
++
++  if (progress->rendered)
++    fprintf (stderr, "\r\033[K");
++
++  if (progress->completed_files)
++    {
++      xtime_t end_time = gethrxtime ();
++      double xtime_precision = XTIME_PRECISION;
++      double elapsed = progress->start_time
++                       ? (end_time - progress->start_time) / xtime_precision
++                       : 0;
++      char elapsed_buf[64];
++      progress_format_interval (elapsed_buf, sizeof elapsed_buf, elapsed);
++
++      if (progress->completed_bytes)
++        {
++          uintmax_t speed = elapsed > 0 ? progress->completed_bytes / elapsed : 0;
++          char total_buf[LONGEST_HUMAN_READABLE + 1];
++          char speed_buf[LONGEST_HUMAN_READABLE + 1];
++          char const *total = progress_format_size (progress->completed_bytes,
++                                                    total_buf);
++          char const *speed_s = progress_format_size (speed, speed_buf);
++          fprintf (stderr,
++                   progress->move_mode
++                   ? ngettext ("%ju regular file moved (%s) in %s (%s/s)\n",
++                               "%ju regular files moved (%s) in %s (%s/s)\n",
++                               progress->completed_files)
++                   : ngettext ("%ju regular file copied (%s) in %s (%s/s)\n",
++                               "%ju regular files copied (%s) in %s (%s/s)\n",
++                               progress->completed_files),
++                   progress->completed_files, total, elapsed_buf,
++                   speed_s);
++        }
++      else
++        {
++          fprintf (stderr,
++                   progress->move_mode
++                   ? ngettext ("%ju regular file moved in %s\n",
++                               "%ju regular files moved in %s\n",
++                               progress->completed_files)
++                   : ngettext ("%ju regular file copied in %s\n",
++                               "%ju regular files copied in %s\n",
++                               progress->completed_files),
++                   progress->completed_files, elapsed_buf);
++        }
++    }
++}
+--- coreutils-9.5.orig/src/progress.h	1970-01-01 01:00:00.000000000 +0100
++++ coreutils-9.5/src/progress.h	1970-01-01 01:00:00.000000000 +0100
+@@ -0,0 +1,30 @@
++#ifndef PROGRESS_H_
++# define PROGRESS_H_ 1
++
++# include <stdbool.h>
++# include <stdint.h>
++
++struct progress;
++
++struct progress *progress_create (bool move_mode);
++void progress_free (struct progress *progress);
++
++void progress_scan_paths (struct progress *progress, int n_paths, char **paths,
++                          int fts_options, bool recursive);
++
++void progress_begin_file (struct progress *progress, char const *src_name,
++                          uintmax_t total_bytes);
++void progress_update_file (struct progress *progress, uintmax_t copied_bytes);
++void progress_finish_file (struct progress *progress, uintmax_t copied_bytes,
++                           bool success);
++void progress_complete_file (struct progress *progress, char const *src_name,
++                             uintmax_t total_bytes, bool success);
++void progress_finish (struct progress *progress, bool ok);
++
++static inline bool
++progress_enabled (struct progress const *progress)
++{
++  return progress != nullptr;
++}
++
++#endif
