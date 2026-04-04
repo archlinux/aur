@@ -8,6 +8,7 @@ url="https://codeberg.org/tcftbl/rsrssr"
 license=('GPL-3.0-only')
 depends=('gcc-libs')
 makedepends=('cargo')
+options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/tcftbl/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('660c271cd39510656d77e12691c661fa49884633daed0305fd3f9992a0da7836')
 
@@ -21,7 +22,6 @@ build() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR="$srcdir/$pkgname/target"
-  export CARGO_PROFILE_RELEASE_LTO=thin
   cargo build --frozen --release
 }
 
