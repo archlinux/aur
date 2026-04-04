@@ -1,17 +1,17 @@
 pkgname=zenmaster
 pkgver=1.0.5
-pkgrel=8
+pkgrel=9
 pkgdesc="Set up your Arch Installation the way you like. (Inspired by Ninite)"
 arch=('any')
 url="https://gitlab.com/nexttechcreations/arch-zenmaster"
 license=('MIT')
 depends=('coreutils' 'bash' 'pacman' 'pacman-contrib' 'systemd' 'procps-ng' 'util-linux' 'libnotify' 'cpupower' 'sudo')
 
-source=("https://gitlab.com/nexttechcreations/arch-zenmaster/-/archive/1.0.5.8/arch-zenmaster-1.0.5.8.tar.gz")
+source=("https://gitlab.com/nexttechcreations/arch-zenmaster/-/archive/1.0.5.9/arch-zenmaster-1.0.5.9.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/arch-zenmaster-1.0.5.8"
+  cd "$srcdir/arch-zenmaster-1.0.5.9"
 
   install -Dm755 zenmaster "$pkgdir/usr/bin/zenmaster"
 
