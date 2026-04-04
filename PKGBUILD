@@ -1,6 +1,6 @@
 # Maintainer: Radu Ursache <radu@ursache.ro>
 pkgname=proton-run
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Run Windows executables with Steam Proton outside of Steam"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/rursache/proton-run"
 license=('MIT')
 depends=('bash' 'steam' 'yq')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/rursache/proton-run/tar.gz/v${pkgver}")
-sha256sums=('2eb6ea81bbf4cffafc7ca7659fbf07252443c2b1a4c41f6592b5d0d4fb4cc500')
+sha256sums=('1d444fabe88330d1be690bb6915169b17b15822952dab43daf96f6f78ca148e0')
 
 package() {
     cd "$srcdir/proton-run-${pkgver}"
