@@ -1,7 +1,7 @@
 # Maintainer: qr243vbi
 
 pkgname=(nekobox nekobox-core)
-pkgver=5.10.30
+pkgver=5.10.31
 pkgrel=10
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64' 'pentium4' 'i686' 'armv7h')
@@ -55,7 +55,7 @@ packagecore() {
     depends=('gcc-libs' 'glibc')
     provides=('sing-box')
     conflicts=('sing-box')
-    DESTDIR="${pkgdir}" cmake --install "${NEKOBOX_CORE_BUILD}"
+    DESTDIR="${pkgdir}/usr/libexec" cmake --install "${NEKOBOX_CORE_BUILD}"
 }
 
 packageapp() {
