@@ -1,0 +1,13 @@
+pkgbase = nautilus-open-in-ide
+	pkgdesc = A Nautilus extension that adds 'Open in' context menu items for installed IDEs
+	pkgver = 5
+	pkgrel = 1
+	url = https://gitlab.com/rmnvgr/nautilus-open-in-ide
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	depends = nautilus-python
+	source = https://gitlab.com/rmnvgr/nautilus-open-in-ide/-/archive/5/nautilus-open-in-ide-5.tar.gz
+	sha256sums = 42220f7f7b1bbabf825d08b10db63217eb81ed3ad49ef9e2109e4cb3d13bdb3b
+
+pkgname = nautilus-open-in-ide

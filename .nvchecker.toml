@@ -1,0 +1,3 @@
+[nautilus-open-in-ide]
+source = "git"
+git = "https://gitlab.com/rmnvgr/nautilus-open-in-ide.git"
