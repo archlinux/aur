@@ -39,18 +39,39 @@ _select_dtb_links() {
     fi
 }
 
+_backup_kernel_image() {
+    local boot_image=""
+    local backup_image=""
+
+    if [ -f /boot/Image-linux-mnt-reform ]; then
+        boot_image="/boot/Image"
+        backup_image="/boot/Image-old"
+    elif [ -f /boot/vmlinuz-linux-mnt-reform ]; then
+        boot_image="/boot/vmlinuz-linux"
+        backup_image="/boot/vmlinuz-linux-old"
+    else
+        return 0
+    fi
+
+    if [ -L "$boot_image" ]; then
+        IMAGE_TARGET=$(readlink -f "$boot_image")
+        if [ -f "$IMAGE_TARGET" ]; then
+            cp "$IMAGE_TARGET" "$backup_image"
+            echo "Backed up ${boot_image} target: $IMAGE_TARGET -> $backup_image"
+        fi
+    elif [ -f "$boot_image" ]; then
+        cp "$boot_image" "$backup_image"
+        echo "Backed up $boot_image -> $backup_image"
+    fi
+}
+
 pre_upgrade() {
     echo "==> Running pre-install backup for linux-mnt-reform..."
 
-    if [ -L /boot/Image ]; then
-        IMAGE_TARGET=$(readlink -f /boot/Image)
-        if [ -f "$IMAGE_TARGET" ]; then
-            cp "$IMAGE_TARGET" /boot/Image-old
-            echo "Backed up Image target: $IMAGE_TARGET -> /boot/Image-old"
-        fi
-    elif [ -f /boot/Image ]; then
-        cp /boot/Image /boot/Image-old
-        echo "Backed up Image -> /boot/Image-old"
+    _backup_kernel_image
+
+    if [ ! -f /boot/Image-linux-mnt-reform ]; then
+        return 0
     fi
 
     if [ -L /boot/mnt-reform.dtb ]; then
@@ -71,9 +92,13 @@ pre_upgrade() {
 }
 
 post_install() {
-    _select_dtb_links "$1"
+    if [ -f /boot/Image-linux-mnt-reform ]; then
+        _select_dtb_links "$1"
+    fi
 }
 
 post_upgrade() {
-    _select_dtb_links "$1"
+    if [ -f /boot/Image-linux-mnt-reform ]; then
+        _select_dtb_links "$1"
+    fi
 }
