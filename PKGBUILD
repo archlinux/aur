@@ -27,9 +27,11 @@ build() {
 package(){
     cd "${pkgname}-${pkgver}"
     python setup.py install -O1 --skip-build --root="${pkgdir}"
+
     # config files
     install -d "${pkgdir}/etc/"
     mv -v "${pkgdir}/usr/etc/clustershell" "${pkgdir}/etc/"
+    rmdir "${pkgdir}/usr/etc"
 
     # man pages
     install -d "${pkgdir}/usr/share/man/"{man1,man5}
