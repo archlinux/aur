@@ -1,7 +1,7 @@
 # Maintainer: wildkid1024 <wildkid1024 at outlook dot com>
 pkgname=lingma-bin
-pkgver=0.4.0
-pkgrel=1
+pkgver=0.8.0
+pkgrel=2
 pkgdesc="Lingma IDE 灵码编辑器 - Binary Version"
 arch=('x86_64')
 url="https://lingma.aliyun.com/"
@@ -11,10 +11,12 @@ provides=('lingma' 'lingma-ide')
 conflicts=('lingma' 'lingma-ide')
 options=(!strip)
 
-source=("lingma_${pkgver}_amd64.deb::https://lingma-ide.oss-rg-china-mainland.aliyuncs.com/prerelease/${pkgver}/b41a18709dd29e6b396c3284ef2e521e8b981f68/lingma_${pkgver}_amd64.deb")
+# 已替换为你提供的最新下载链接
+source=("lingma_amd64.deb::https://lingma-ide.oss-rg-china-mainland.aliyuncs.com/release/latest/lingma_amd64.deb")
 
-sha256sums=('3e09faf4f25d25ffea2e6388969b95fc5d06f3f065338143749d90657d703148')
+# 清空校验和（使用 latest 链接会自动更新文件，需要重新生成校验和）
+sha256sums=('d6c5214effc2e7fbec34d80034292d21d8fc0ea370915f54da55e933a31acf1c')
 
 package() {
-    bsdtar -xOf "lingma_${pkgver}_amd64.deb" data.tar.xz | bsdtar -xJf - -C "${pkgdir}"
+    bsdtar -xOf "lingma_amd64.deb" data.tar.xz | bsdtar -xJf - -C "${pkgdir}"
 }
