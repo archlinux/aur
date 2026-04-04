@@ -26,6 +26,9 @@ post_upgrade() {
 
 # arg 1:  the new package version
 post_install() {
+    echo ":: Tachyon Linux provides the following recommended command line:"
+    echo "   intel_iommu=igfx_off kvm-intel.nested=1 page_alloc.shuffle=1 lsm=landlock"
+    
     # Call post_upgrade, passing the new version ($1) and a placeholder old version
     post_upgrade "$1" "none"
 }
