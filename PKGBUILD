@@ -2,9 +2,9 @@
 # Contributor: Keeyou <hukeyue@vip.163.com>
 
 pkgname=yass-proxy-qt5
-pkgver=1.22.2
+pkgver=1.24.0
 pkgrel=1
-_pkgver=1.22.2
+_pkgver=1.24.0
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy"
 arch=(x86_64 aarch64)
@@ -18,7 +18,7 @@ provides=(yass-proxy)
 conflicts=(yass-proxy-git)
 source=("https://github.com/hukeyue/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.zst"
         )
-sha256sums=('72c3a4b3e71b1c2fbae3dca124318ca6eed0677ef9301b71c6a113023b64b27f')
+sha256sums=('9f79610f03a6e9abf70ee10aae76346ed4c9ab89d3d5b0ea5cb35ffd0e451aa4')
 
 build(){
   SRC_DIR="${srcdir}/yass-${_pkgver}"
@@ -32,6 +32,9 @@ build(){
     -DUSE_SYSTEM_ZLIB=on -DUSE_SYSTEM_CARES=on -DUSE_SYSTEM_NGHTTP2=on \
     -DUSE_JSONCPP=on -DUSE_SYSTEM_JSONCPP=on \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DCMAKE_INSTALL_LIBEXECDIR=libexec \
+    -DUSE_DEBUG_FISSION=off -DUSE_COMPRESS_DEBUG_SECTIONS=off \
+    -DBUILD_SHARED_LIBS=on \
     -DUSE_CET=on \
     -DGUI=ON -DUSE_QT5=on -DCLI=off -DSERVER=off
   ninja yass yass_test
