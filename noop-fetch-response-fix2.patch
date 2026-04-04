@@ -1,0 +1,12 @@
+diff -wbBur dbmail-3.2.3/src/dm_imapsession.c dbmail-3.2.3.q/src/dm_imapsession.c
+--- dbmail-3.2.3/src/dm_imapsession.c	2015-01-25 13:20:50.000000000 +0300
++++ dbmail-3.2.3.q/src/dm_imapsession.c	2015-07-22 14:10:36.473334443 +0300
+@@ -1413,7 +1413,7 @@
+ 	if (oldflags && (! MATCH(oldflags, newflags)))
+ 		flagschanged = true;
+ 
+-	if (modseqchanged || flagschanged) {
++	if ((modseqchanged && self->mailbox->condstore) || self->use_uid || flagschanged) {
+ 		GList *plist = NULL;
+ 		char *response = NULL;
+ 		if (self->use_uid) {
