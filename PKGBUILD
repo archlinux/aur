@@ -5,7 +5,7 @@
 
 # Maintainer: Mykhailo Aleksieiev <nekohepott@larpdhq.org>
 pkgname=gogofetch-git
-pkgver=r25.6c75ce5
+pkgver=r26.f8e3c63
 pkgrel=1
 pkgdesc="Fetch written in Go with image support"
 arch=('x86_64')
@@ -15,8 +15,8 @@ depends=('glibc')
 makedepends=('git' 'go')
 checkdepends=()
 optdepends=()
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("gogofetch")
+conflicts=("gogofetch")
 source=("git+https://codeberg.org/nekohepott/goGoFetch.git")
 sha256sums=('SKIP')
 
