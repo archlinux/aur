@@ -4,7 +4,7 @@
 # download it separately.
 
 pkgname=beekeeper-qt
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Deduplicate redundant data in your disk and save space"
 url="https://github.com/techmanwalker/beekeeper-qt"
