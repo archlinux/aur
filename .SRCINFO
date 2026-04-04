@@ -1,4 +1,4 @@
-pkgbase = pkg2appimage-appimage
+pkgbase = pkg2appimage
 	pkgdesc = Tool and recipes to convert existing deb packages to AppImage. (Upstream CI)
 	pkgver = 20250202.1eceb30
 	pkgrel = 5
@@ -20,4 +20,4 @@ pkgbase = pkg2appimage-appimage
 	b2sums = 891699f8362e463008f25c9b2211acffd301487bad62657cdc9dca9c26521a188682736f23f596391f6d29e40150cfa0cfdd6112d39b2775e00848cbcd240d41
 	b2sums = 565ddf657f7705ea2255434b2f26f3930e5859729cd4790a212186ee8c3615c357d3e3d7eb6bee0b2504933bd045b8934cd137b92eee3d655f318fe8de1890f2
 
-pkgname = pkg2appimage-appimage
+pkgname = pkg2appimage
