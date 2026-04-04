@@ -5,9 +5,9 @@
 
 # Maintainer: Mykhailo Aleksieiev <nekohepott@larpdhq.org>
 pkgname=gogofetch-git
-pkgver=r24.8d51e8e
+pkgver=r25.6c75ce5
 pkgrel=1
-pkgdesc="fetch made with C++ rewritten to go for no reason"
+pkgdesc="Fetch written in Go with image support"
 arch=('x86_64')
 url="git+https://codeberg.org/nekohepott/goGoFetch.git"
 license=('MIT')
