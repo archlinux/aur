@@ -273,11 +273,20 @@ index cc37f478ea..fbff9e8331 100644
 diff --git a/src/slic3r/GUI/OpenGLManager.cpp b/src/slic3r/GUI/OpenGLManager.cpp
 --- a/src/slic3r/GUI/OpenGLManager.cpp
 +++ b/src/slic3r/GUI/OpenGLManager.cpp
-@@ -343,6 +343,8 @@ bool OpenGLManager::init_gl()
+@@ -342,5 +342,7 @@ bool OpenGLManager::init_gl()
      if (!m_gl_initialized) {
  #if ENABLE_GL_CORE_PROFILE || ENABLE_OPENGL_ES
          glewExperimental = true;
 +#else
-+        glewExperimental = true; // required with GLEW 2.1+ when no current GLX context
++        glewExperimental = true;
  #endif // ENABLE_GL_CORE_PROFILE || ENABLE_OPENGL_ES
          GLenum err = glewInit();
+@@ -346,5 +348,7 @@ bool OpenGLManager::init_gl()
+         GLenum err = glewInit();
+-        if (err != GLEW_OK) {
++        // GLEW_ERROR_NO_GLX_DISPLAY occurs when GTK3 uses EGL (Wayland/XWayland).
++        // OpenGL core still works; only GLX extensions are unavailable.
++        if (err != GLEW_OK && err != GLEW_ERROR_NO_GLX_DISPLAY) {
+             BOOST_LOG_TRIVIAL(error) << "Unable to init glew library: " << glewGetErrorString(err);
+             return false;
+         }
