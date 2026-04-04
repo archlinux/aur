@@ -7,7 +7,7 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=isolate-git
-pkgver=r287.b5e87ec
+pkgver=r308.12f2598
 pkgrel=1
 pkgdesc="Sandbox for securely executing untrusted programs"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
