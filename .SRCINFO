@@ -1,0 +1,18 @@
+pkgbase = filessh
+	pkgdesc = A fast and convenient TUI file browser for remote servers
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/JayanAXHF/filessh
+	arch = x86_64
+	arch = aarch64
+	license = Unlincense
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	provides = filessh
+	conflicts = filessh
+	source = filessh-0.4.2.crate::https://crates.io/api/v1/crates/filessh/0.4.2/download
+	sha256sums = d7ffc14ad4ea0e129d81d59a0c3a077aaa617366a45e2cf93de4edcb959b011d
+
+pkgname = filessh
