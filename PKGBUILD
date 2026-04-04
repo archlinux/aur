@@ -31,7 +31,7 @@ package() {
 [Desktop Entry]
 Name=Buchable
 Comment=Audiobookshelf client
-Exec=/opt/abs-flutter/abs_flutter
+Exec=env GDK_BACKEND=x11 /opt/abs-flutter/abs_flutter
 Icon=abs-flutter
 Type=Application
 Categories=Audio;
