@@ -1,16 +1,16 @@
 pkgbase = docker-compose-bin
 	pkgdesc = Official Docker Compose build; docker compose version shows the real version.
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://github.com/docker/compose
 	arch = x86_64
-	license = MIT
+	license = Apache-2.0
 	depends = docker
 	conflicts = docker-compose
 	options = !debug
-	source = docker-compose-linux-x86_64-5.1.0::https://github.com/docker/compose/releases/download/v5.1.0/docker-compose-linux-x86_64
-	source = LICENSE::https://github.com/docker/compose/raw/refs/tags/v5.1.0/LICENSE
-	sha256sums = 5633cb21e06a7c88c7ca48a9334d3d0f7f892e9605ae9e9a45f9a095d4ffceb8
+	source = docker-compose-linux-x86_64-5.1.1::https://github.com/docker/compose/releases/download/v5.1.1/docker-compose-linux-x86_64
+	source = LICENSE::https://github.com/docker/compose/raw/refs/tags/v5.1.1/LICENSE
+	sha256sums = 2ac954c9d506b912a12477d72f01601dc72ec918c429c7bae48fd707bdf0f3e5
 	sha256sums = 58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd
 
 pkgname = docker-compose-bin
