@@ -12,7 +12,7 @@
 declare srcdir pkgdir
 pkgname=neovim-zig-git
 _nvim_version=0.13.0
-pkgver=0.13.0.r69.gb346b87fb2
+pkgver=0.13.0.r81.g9927d9259d
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h aarch64)
@@ -82,8 +82,7 @@ _zig_options=(--system zig_deps -Doptimize=ReleaseFast -Dcpu=native -Dinstall-pa
 pkgver() {
     local nvim_version_git
     cd "${srcdir}/neovim" || exit 1
-    # keep commented until build.zig.zon is updated
-    # _nvim_version="$(awk -F'"' '/\.version = "/ {print $2}' build.zig.zon)"
+    _nvim_version="$(awk -F'"' '/\.version = "/ {print $2}' build.zig.zon)"
     nvim_version_git="$(git describe --always --dirty --match 'v*.*.*' | sed -E 's/^v[0-9]+.[0-9]+.[0-9]+-//; s/^([0-9]+)-([a-z0-9]+)/\1\.\2/')"
     printf "%s.r%s\n" "$_nvim_version" "$nvim_version_git"
 }
