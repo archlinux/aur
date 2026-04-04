@@ -25,5 +25,5 @@ package() {
   # Installing theme
   cd "${_gitname}-${pkgver}"
   install -dm 755 "${pkgdir}/usr/share/sddm/themes/${pkgname}"
-  cp --no-preserve='ownership' -rf * "${pkgdir}/usr/share/sddm/themes/${pkgname}"
+  cp --no-preserve='ownership' -rf ./* "${pkgdir}/usr/share/sddm/themes/${pkgname}"
 }
