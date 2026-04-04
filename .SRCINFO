@@ -1,7 +1,7 @@
 pkgbase = ebyt-bin
 	pkgdesc = Minimal X11 activity tracker (prebuilt binary)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/barjo/ebyt
 	arch = x86_64
 	license = Apache-2.0
@@ -10,6 +10,7 @@ pkgbase = ebyt-bin
 	depends = sqlite
 	provides = ebyt
 	conflicts = ebyt
+	options = !debug
 	source = ebyt-0.1.0::https://github.com/barjo/ebyt/releases/download/v0.1.0/ebyt
 	source = ebyt.service::https://raw.githubusercontent.com/barjo/ebyt/v0.1.0/ebyt.service
 	sha256sums = 598c92ef32eea8af67d95997db3cf4f3b6ab1e59c14079f0418b90ce0ba183bd
