@@ -9,7 +9,7 @@ license=('MIT')
 depends=('openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/limehawk/lazyreno/archive/v$pkgver.tar.gz")
-sha256sums=('bd46c4fc99af45bb34c036ad4014957a2f695b6075fac8a3c2d629823f1356de')
+sha256sums=('0212cc1f45caea9896cd5eed57c3e375af2797ae55b2927fac9c4b006d9bca41')
 
 build() {
     cd "$pkgname-$pkgver"
