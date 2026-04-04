@@ -2,14 +2,15 @@
 
 pkgname=deepfilternet-plugin-pipewire-bin
 pkgver=0.5.6
-pkgrel=5
+pkgrel=6
 #epoch=
-pkgdesc="Noise supression using deep filtering, also works for easyeffects"
+pkgdesc="Noise supression using deep filtering pipewire plugin, also works for easyeffects"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/Rikorose/DeepFilterNet"
 license=('Apache-2.0' 'MIT')
 depends=('pipewire')
-provides=('libdeep_filter_ladspa.so')
+provides=('libdeep_filter_ladspa')
+conflicts=('libdeep_filter_ladspa')
 install=deepfilternet-plugin-pipewire-bin.install
 source=(
 	# this also includes the manual install instructions
