@@ -4,29 +4,9 @@ pkgrel=1
 epoch=
 pkgdesc="Visual configuration editor for Ironbar - the modern Wayland status bar"
 arch=('x86_64')
-url="https://github.com/anomalyco/vsIronbar-Studio"
-license=('MIT')
-groups=()
-depends=(
-    'python>=3.10'
-    'python-gobject'
-    'gtk3'
-    'webkit2gtk'
-)
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/anomalyco/vsIronbar-Studio/archive/refs/tags/v$pkgver.tar.gz")
-noextract=()
-validpgpkeys=()
-sha256sums=('2d9f6c8aead10839f21f57ff862dfcd17500927b5a3c4297370803e9c9520bc8')
+url="https://github.com/victorsosaMx/vsIronBar-Studio"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/victorsosaMx/vsIronBar-Studio/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 package() {
     cd "$pkgname-$pkgver"
