@@ -1,13 +1,13 @@
-# Maintainer: Tsiry Sandratraina <tsiry.sndr@fluentci.io>
+# Maintainer: Tsiry Sandratraina <tsiry.sndr@rocksky.app>
 
 pkgname=tunein-cli-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Browse and listen to thousands of radio stations across the globe right from your terminal 🌎 📻 🎵✨"
 arch=('x86_64')
 url="https://github.com/tsirysndr/tunein-cli"
 source=("$url/releases/download/v${pkgver/_/-}/tunein_v${pkgver/_/-}_x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('3d7a1cd0c975a8bb94b8e5ff308bf8ae3220b2c359a0dd57e34119a262ed2d0d')
+sha256sums=('0975df3e213d4a23714036a1c349a7bf29df8feb84f5cc729928c92301e76a57')
 depends=('alsa-lib' 'dbus')
 license=('MIT')
 
