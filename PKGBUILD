@@ -1,7 +1,7 @@
 # Maintainers: SteamClientHomebrew <https://github.com/SteamClientHomebrew>
 
 pkgname="millennium"
-pkgver=3.0.0_beta.17
+pkgver=3.0.0_beta.18
 pkgrel=1
 pkgdesc="Open-source modding framework for creating and managing Steam Client themes and plugins"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('steam')
 makedepends=('git' 'bun' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'lib32-gcc-libs' 'lib32-openssl' 'lib32-libidn2' 'lib32-xz' 'lib32-zstd' 'lib32-brotli' 'lib32-libnghttp2' 'lib32-libpsl' 'libx11' 'libxtst')
 install=millennium.install
-source=("git+$url.git#commit=141658c95a5986c94e88eb3ebbde84e0d4879fc2")
+source=("git+$url.git#commit=cd4e2db84a328f73bf366d45352debba510e8582")
 sha256sums=('SKIP')
 options=(debug)
 
@@ -32,5 +32,6 @@ package() {
     install -m755 build/libmillennium_bootstrap_x86.so   "$pkgdir/usr/lib/millennium/"
     install -m755 build/libmillennium_luavm_x86          "$pkgdir/usr/lib/millennium/"
     install -m755 build/libmillennium_bootstrap_hhx64.so "$pkgdir/usr/lib/millennium/"
+    install -m755 build/libmillennium_pvs64              "$pkgdir/usr/lib/millennium/"
     install -Dm644 LICENSE.md                            "$pkgdir/usr/share/licenses/millennium/LICENSE.md"
 }
