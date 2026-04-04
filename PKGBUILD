@@ -10,7 +10,7 @@ pkgdesc="lightweight http/socks proxy"
 arch=(x86_64 aarch64)
 url="https://github.com/hukeyue/yass"
 license=(GPL-2.0-only)
-depends=(gcc-libs glibc qt6-base zlib libnghttp2 c-ares gperftools jsoncpp)
+depends=(gcc-libs glibc qt6-base zlib libnghttp2 c-ares gperftools jsoncpp mbedtls)
 optdepends=(qt6-wayland)
 makedepends=(gcc binutils git ninja perl pkg-config cmake qt6-tools curl go)
 checkdepends=(curl)
@@ -31,6 +31,7 @@ build(){
     -DUSE_ZLIB=on -DUSE_CARES=on \
     -DUSE_SYSTEM_ZLIB=on -DUSE_SYSTEM_CARES=on -DUSE_SYSTEM_NGHTTP2=on \
     -DUSE_JSONCPP=on -DUSE_SYSTEM_JSONCPP=on \
+    -DUSE_MBEDTLS=on -DUSE_SYSTEM_MBEDTLS=on \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DCMAKE_INSTALL_LIBEXECDIR=libexec \
     -DUSE_DEBUG_FISSION=off -DUSE_COMPRESS_DEBUG_SECTIONS=off \
