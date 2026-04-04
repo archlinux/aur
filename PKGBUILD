@@ -1,8 +1,8 @@
 # Maintainer: zhizhizhiwang <zhizhiwang@proton.me>
 # Contributor: Star_caorui <Star_caorui@hotmail.com>
 pkgname=mcsm-web-git
-pkgver=10.12.4
-pkgrel=2
+pkgver=r4055.06bc2a5f
+pkgrel=3
 pkgdesc="MCSManager 的面板端（Web）程序模块。"
 arch=(any)
 url="https://github.com/MCSManager/MCSManager"
@@ -11,9 +11,15 @@ install=$pkgname.install
 depends=('nodejs>=16')
 makedepends=('npm' 'git')
 source=('file://mcsm-web.service'
-        "mcsm-$pkgver::git+https://github.com/MCSManager/MCSManager")
+        "mcsm::git+https://github.com/MCSManager/MCSManager")
 sha256sums=('5f85e25231e3d4119c215a3ee00e1ae6dd000d8c55c1b8f32194868f882305cc'
             'SKIP')
+backup=("opt/mcsmanager/daemon/data/")
+
+pkgver() {
+  cd mcsm
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 optdepends=(
   'python-setuptools: for building Python packages using tooling that is usually bundled with Python'
@@ -25,7 +31,7 @@ optdepends=(
 )
 
 build() {
-  cd "mcsm-$pkgver"
+  cd "mcsm"
   npm install
   npm run preview-build
   rm -rf production-code
@@ -63,7 +69,7 @@ build() {
 
 package() {
   install -Dm644 mcsm-web.service "${pkgdir}/usr/lib/systemd/system/mcsm-web.service"
-  install -Dm644 "${srcdir}/mcsm-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/mcsm/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -dm755 "${pkgdir}/opt/mcsmanager"
-  cp -r "${srcdir}/mcsm-$pkgver/production-code/web" "${pkgdir}/opt/mcsmanager/"
+  cp -r "${srcdir}/mcsm/production-code/web" "${pkgdir}/opt/mcsmanager/"
 }

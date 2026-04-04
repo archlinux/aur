@@ -1,7 +1,7 @@
 pkgbase = mcsm-web-git
 	pkgdesc = MCSManager 的面板端（Web）程序模块。
-	pkgver = 10.12.4
-	pkgrel = 2
+	pkgver = r4055.06bc2a5f
+	pkgrel = 3
 	url = https://github.com/MCSManager/MCSManager
 	install = mcsm-web-git.install
 	arch = any
@@ -15,8 +15,9 @@ pkgbase = mcsm-web-git
 	optdepends = sqlite: for a default database integration
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
+	backup = opt/mcsmanager/daemon/data/
 	source = file://mcsm-web.service
-	source = mcsm-10.12.4::git+https://github.com/MCSManager/MCSManager
+	source = mcsm::git+https://github.com/MCSManager/MCSManager
 	sha256sums = 5f85e25231e3d4119c215a3ee00e1ae6dd000d8c55c1b8f32194868f882305cc
 	sha256sums = SKIP
 
