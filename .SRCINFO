@@ -1,6 +1,6 @@
 pkgbase = logw2
 	pkgdesc = Logw2 desktop client for your Guild Wars 2 logs
-	pkgver = 0.2.10
+	pkgver = 0.2.11
 	pkgrel = 1
 	url = https://logw2.com
 	install = logw2.install
@@ -17,7 +17,7 @@ pkgbase = logw2
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !debug
-	source_x86_64 = https://r2.logw2.com/releases/0.2.10/linux-x86_64/logw2_0.2.10_amd64.deb
-	sha256sums_x86_64 = 0f2b433d52f933dcd31b6f1d6d2ab1267b93977520b2f4fde9663390c44b88db
+	source_x86_64 = https://r2.logw2.com/releases/0.2.11/linux-x86_64/logw2_0.2.11_amd64.deb
+	sha256sums_x86_64 = 7a1009bbf6a7607bf4d139dcc209e9cd7156b5c3ead27321dc495f58cd899331
 
 pkgname = logw2
