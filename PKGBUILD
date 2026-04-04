@@ -1,7 +1,7 @@
 # Maintainer: tuxxx <nzb_tuxxx@proton.me>
 
 pkgname=sparrow-wallet-git
-pkgver=2.3.1.r64.gb51bd90
+pkgver=2.4.2.r13.gee5b502
 pkgrel=1
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (git version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=(
     'git'
-    'jdk-temurin'
+    'jdk25-temurin'
 )
 optdepends=(
     'bitbox-udev: udev rules for BitBox hardware wallets'
