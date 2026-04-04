@@ -1,0 +1,19 @@
+pkgbase = althemer-bin
+	pkgdesc = Alacritty theme switcher
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/xdagiz/althemer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	provides = althemer
+	conflicts = althemer
+	source_x86_64 = althemer-x86_64-0.3.0.txz::https://github.com/xdagiz/althemer/releases/download/v0.3.0/althemer-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = a8854557793df8d5c56c2b6e81c237c83de743ffca5ef9757bbee69128cab070
+	source_aarch64 = althemer-aarch64-0.3.0.txz::https://github.com/xdagiz/althemer/releases/download/v0.3.0/althemer-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 315c060dd8d951026492ec33ecc01c1eecf076468a3dca1876ddf05788ab1ed6
+
+pkgname = althemer-bin
