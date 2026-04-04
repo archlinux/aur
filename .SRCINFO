@@ -1,0 +1,16 @@
+pkgbase = prettier-plugin-go-template
+	pkgdesc = Prettier plugin for formatting Go & GoHugo templates
+	pkgver = 0.0.15
+	pkgrel = 1
+	url = https://github.com/NiklasPor/prettier-plugin-go-template
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	depends = prettier
+	noextract = prettier-plugin-go-template-0.0.15.tgz
+	source = https://registry.npmjs.org/prettier-plugin-go-template/-/prettier-plugin-go-template-0.0.15.tgz
+	sha256sums = f1cacf3058917ecb46deb64c322be4abd57abbfa9f71dac3062ab2f9a83ea319
+
+pkgname = prettier-plugin-go-template
