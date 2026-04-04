@@ -1,0 +1,15 @@
+pkgbase = vsironbar-studio
+	pkgdesc = Visual configuration editor for Ironbar - the modern Wayland status bar
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/anomalyco/vsIronbar-Studio
+	arch = x86_64
+	license = MIT
+	depends = python>=3.10
+	depends = python-gobject
+	depends = gtk3
+	depends = webkit2gtk
+	source = vsironbar-studio-1.0.0.tar.gz::https://github.com/anomalyco/vsIronbar-Studio/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = vsironbar-studio
