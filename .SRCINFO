@@ -7,6 +7,7 @@ pkgbase = gwyddion
 	arch = x86_64
 	license = GPL
 	makedepends = pkgconf
+	makedepends = minizip
 	depends = gtkglext
 	depends = fftw
 	depends = pygtk
