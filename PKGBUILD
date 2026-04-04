@@ -1,7 +1,7 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
 pkgname=leshade-bin
 _pkgname=leshade
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="An unofficial Reshade Installer for Linux."
 arch=('x86_64')
