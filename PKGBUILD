@@ -33,5 +33,24 @@ build() {
 
 package() {
 	cd "${srcdir}/lwe"
-	cp -a src-tauri/target/release/bundle/deb/lwe-shell_*/data/* "${pkgdir}"
+	local deb_data_dirs=(
+		src-tauri/target/release/bundle/deb/*/data
+		target/release/bundle/deb/*/data
+	)
+	local deb_data_dir=""
+	local candidate
+
+	for candidate in "${deb_data_dirs[@]}"; do
+		if [ -d "${candidate}" ]; then
+			deb_data_dir="${candidate}"
+			break
+		fi
+	done
+
+	if [ -z "${deb_data_dir}" ]; then
+		echo "No Debian bundle data directory found under src-tauri/target or target"
+		return 1
+	fi
+
+	cp -a "${deb_data_dir}"/* "${pkgdir}"
 }
