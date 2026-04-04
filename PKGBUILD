@@ -6,7 +6,7 @@
 
 _name="avahi"
 pkgname="lib32-${_name}"
-pkgver=0.9rc3
+pkgver=0.9rc4
 pkgrel=1
 pkgdesc="Service Discovery for Linux using mDNS/DNS-SD (compatible with Bonjour) (32-bit)"
 arch=(
@@ -45,7 +45,7 @@ source=(
   "${url}/archive/refs/tags/v${pkgver/[a-z]/-&}/${_pkgsrc}.tar.gz"
   "0001-HACK-Install-fixes.patch"
 )
-sha512sums=('de4c2606ff63a22bf386fc1577621c67a3f1277071e4b4aa39c2eb3255cf7759679edfcb205cec2c89e67c798c4ab779a91971aa5dec74bcf08ed95567ae7c33'
+sha512sums=('6d097dd01496dca1e1db56b462ba85707a035af91c211906ca58a8e7be6980c00b56524d5ce64281791c6e298217fadd9a6639dd81471631642562d4ab345bc2'
             '0cbea74889b2f9d767ff6d8df93f020112eac5ca64a6b9f9ecf3dda1d1b5423a5fe0c46f3845351502ec6d990c51d58434c394182f159bccd38c38c2ddc65f6d')
 
 prepare() {
