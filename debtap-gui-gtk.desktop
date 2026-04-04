@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Debtap GUI
+Comment=Convert .deb packages to Arch Linux packages
+Exec=debtap-gui-gtk
+Icon=debtap-gui-gtk
+Terminal=false
+Type=Application
+Categories=System;Utility;
+Keywords=deb;arch;convert;debtap;

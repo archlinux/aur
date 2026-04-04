@@ -1,6 +1,6 @@
 pkgbase = debtap-gui-gtk
-	pkgdesc = A modern GTK4/Libadwaita GUI for debtap to convert .deb packages into Arch Linux packages.
-	pkgver = 1.0.0
+	pkgdesc = A modern GTK4/Libadwaita GUI for debtap with desktop entry.
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/ErenDaglayan/debtap-gui-gtk
 	arch = any
@@ -9,7 +9,11 @@ pkgbase = debtap-gui-gtk
 	depends = python
 	depends = python-gobject
 	depends = libadwaita
-	source = debtap-gui-gtk-1.0.0.tar.gz::https://github.com/ErenDaglayan/debtap-gui-gtk/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 36d907f76a2d6b3e697d46edb59b05e94d995d2930a5b731b0172e1201d44896
+	source = debtap-gui-gtk-1.1.0.tar.gz::https://github.com/ErenDaglayan/debtap-gui-gtk/archive/refs/tags/v1.1.0.tar.gz
+	source = debtap-gui-gtk.desktop
+	source = debtap-gui-gtk.png
+	sha256sums = 1b895eca3f6592cc5d18299fe89e0231a18e78e98571ac43566bc898157540a4
+	sha256sums = 7e906c3bd1dc700dd021e0a7039922ff277bc631c48483dd4275a907c3f5cd34
+	sha256sums = f6566ca6d8092a63c2a600a629f3a6636a4fba9c006395a77cd20551d956152e
 
 pkgname = debtap-gui-gtk
