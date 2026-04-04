@@ -16,8 +16,6 @@ sha512sums_x86_64=('fb8cc1fe2a068157f9c62bde73e2e2d5ee391f5826b2cd6ab87201fe9561
 package(){
     # Extract package data
     tar xf data.tar.xz -C "${pkgdir}"
-    # Remove weird group authorization to write on /opt
-    chmod -R g-w "${pkgdir}/opt"
 
     install -D -m644 "${pkgdir}/opt/Lunii/runtime/LICENSE" \
             "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
