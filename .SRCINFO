@@ -1,15 +1,18 @@
 pkgbase = workfort
-	pkgdesc = WorkFort web and TUI frontend
-	pkgver = 0.3.1
+	pkgdesc = WorkFort service shell and proxy
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/Work-Fort/Scope
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	makedepends = go
+	makedepends = rust
+	makedepends = cargo
 	makedepends = nodejs
 	makedepends = pnpm
-	source = https://github.com/Work-Fort/Scope/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = 7e9b26c06f7215bf6f990d7bddff4a351bf2ddcfb6ad0026ce23f8fc8daf8c59
+	makedepends = pkg-config
+	depends = sqlite
+	source = https://github.com/Work-Fort/Scope/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 0bb46a4b89bf73ad3617dc8a36b39de0527d05b8d4a1bafb0770bbd7a2408b88
 
 pkgname = workfort
