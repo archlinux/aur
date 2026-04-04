@@ -1,0 +1,16 @@
+pkgbase = neter
+	pkgdesc = A powerful network utility tool written in Go, supporting TCP/UDP/Unix socket communication
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ischenyu/neter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.26
+	depends = glibc
+	options = !strip
+	options = staticlibs
+	source = neter-1.0.0.tar.gz::https://github.com/ischenyu/neter/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = neter
