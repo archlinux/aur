@@ -9,7 +9,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/victorsosaMx/vsIronBar-Stud
 sha256sums=('SKIP')
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "vsIronBar-Studio-$pkgver"
     
     install -Dm755 vsironbar-studio "$pkgdir/usr/bin/vsironbar-studio"
     install -Dm644 vsironbar-studio.desktop "$pkgdir/usr/share/applications/vsironbar-studio.desktop"
