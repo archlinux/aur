@@ -1,10 +1,11 @@
 pkgbase = zenmaster
 	pkgdesc = Set up your Arch Installation the way you like. (Inspired by Ninite)
 	pkgver = 1.0.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/nexttechcreations/arch-zenmaster
 	arch = any
 	license = MIT
+	depends = xorg
 	depends = coreutils
 	depends = bash
 	depends = pacman
@@ -15,7 +16,7 @@ pkgbase = zenmaster
 	depends = libnotify
 	depends = cpupower
 	depends = sudo
-	source = https://gitlab.com/nexttechcreations/arch-zenmaster/-/archive/v1.0.5.4/arch-zenmaster-v1.0.5.4.tar.gz
+	source = https://gitlab.com/nexttechcreations/arch-zenmaster/-/archive/1.0.5.5/arch-zenmaster-v1.0.5.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = zenmaster
