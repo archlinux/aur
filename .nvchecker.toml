@@ -1,0 +1,5 @@
+[vimyt-bin]
+source = "github"
+github = "Sadoaz/vimyt"
+use_latest_release = true
+prefix = "v"
