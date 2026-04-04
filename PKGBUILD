@@ -7,7 +7,7 @@ url="https://github.com/rdarshan927/tunnelops"
 license=('AGPL3')
 depends=('bash' 'openssh')
 optdepends=('sshpass: for password authentication' 'cronie: for cron support')
-source=("git+https://github.com/rdarshan927/tunnelops.git")
+source=("https://github.com/rdarshan927/tunnelops/archive/refs/tags/v1.0.0.tar.gz")
 md5sums=('SKIP')
 
 package() {
