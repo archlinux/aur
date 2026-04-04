@@ -3,7 +3,7 @@
 # Contributor: Pang LAN <wopanglan@gmail.com>
 
 pkgname=opencommit
-pkgver=3.2.14
+pkgver=3.2.18
 pkgrel=1
 pkgdesc='Auto-generate meaningful commits in a second. Killing lame commits with AI'
 arch=(any)
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(nodejs)
 makedepends=(jq npm)
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('03592e4e09bc0827b8599ccec1fb8eaf0ed34fc84bc91a6a33c4d60c2e753c23f4001bae85da2717ae5070d3d37f37d4febef398e2bcbde2e71f49d015eb07aa')
+b2sums=('d0bcdb8fc3c1cb3ba5c68d5a634c3b46785af639089573eadbd363ac031615f6153455aad031213eab14c8900707e9b8c2f0d40f96f9ed9d1c0528d14195601b')
 
 prepare() {
     cd $pkgname-$pkgver
@@ -21,6 +21,7 @@ prepare() {
 
 build() {
     cd $pkgname-$pkgver
+    npm run build
     npm pkg set bundledDependencies="$(jq '.dependencies | keys' package.json)" --json
     npm pack
 }
