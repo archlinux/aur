@@ -1,14 +1,14 @@
 pkgbase = prismlauncher-zlib-compat-git
 	pkgdesc = Prism Launcher (Git) bundled with vanilla zlib. Fixes 'invalid outputs' on CachyOS/zlib-ng systems.
-	pkgver = 10.0.0.pre1.r154.gc2fc0a3
-	pkgrel = 2
+	pkgver = 11.0.0.pre2.r0.gb0f7ae1
+	pkgrel = 1
 	url = https://prismlauncher.org/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = jdk8-openjdk
+	makedepends = java-environment-openjdk=8
 	makedepends = scdoc
 	makedepends = clang
 	makedepends = ninja

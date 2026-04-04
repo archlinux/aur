@@ -1,8 +1,9 @@
-# Maintainer: neycrol <330578697@qq.com>
+# Maintainer: Madeline Mewmews <maddie at mewmews dot gay>
+# Contributor: neycrol <330578697@qq.com>
 pkgname=prismlauncher-zlib-compat-git
 _pkgname=PrismLauncher
-pkgver=10.0.0.pre1.r154.gc2fc0a3 # 这里的默认值会被 pkgver() 自动覆盖
-pkgrel=2
+pkgver=11.0.0.pre2.r0.gb0f7ae1 # 这里的默认值会被 pkgver() 自动覆盖
+pkgrel=1
 pkgdesc="Prism Launcher (Git) bundled with vanilla zlib. Fixes 'invalid outputs' on CachyOS/zlib-ng systems."
 arch=('x86_64')
 url="https://prismlauncher.org/"
@@ -26,7 +27,7 @@ makedepends=(
     'cmake'
     'extra-cmake-modules'
     'git'
-    'jdk8-openjdk'   # Essential: Compiles legacy Java components correctly
+    'java-environment-openjdk=8'   # Essential: Compiles legacy Java components correctly
     'scdoc'
     'clang'
     'ninja'
@@ -80,8 +81,25 @@ build() {
     msg2 "Building Prism Launcher..."
     cd "$srcdir/$_pkgname"
     
-    # Use JDK 8 to support -source 7 / -target 7 in CMakeLists
-    export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+    ### Scan for commonly installed JDK8 installations, delete this section to use system JAVA_HOME
+
+    if [ -f /usr/lib/jvm/zing-8/bin/java ]; then
+        export JAVA_HOME="/usr/lib/jvm/zing-8"
+    elif [ -f /usr/lib/jvm/jdk8-graalvm-ee/bin/java ]; then
+        export JAVA_HOME="/usr/lib/jvm/jdk8-graalvm-ee"
+    elif [ -f /usr/lib/jvm/java-8-jdk/bin/java ]; then
+        export JAVA_HOME="/usr/lib/jvm/java-8-jdk"
+    elif [ -f /usr/lib/jvm/java-8-openjdk/bin/java ]; then
+        export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+    elif [ -f /usr/lib/jvm/zulu-8/bin/java ]; then
+        export JAVA_HOME="/usr/lib/jvm/zulu-8"
+    else
+        echo "No known JDK8 Install found, proceeding with system JAVA_HOME, good luck!"
+    fi
+    
+
+    ### JDK8 Section End
+
     export PATH="$JAVA_HOME/bin:$PATH"
     
     # Let CMake drive IPO/LTO to avoid link failures from partial -flto flags.
