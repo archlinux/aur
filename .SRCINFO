@@ -1,0 +1,15 @@
+pkgbase = udu
+	pkgdesc = Extremely fast command-line disk usage analyzer
+	pkgver = 0.6.91
+	pkgrel = 1
+	url = https://github.com/gnualmalki/udu
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = udu-0.6.91.tar.gz::https://github.com/gnualmalki/udu/archive/refs/tags/udu@0.6.91.tar.gz
+	sha256sums = 7035f9fb518b2cb2ab4d9b5ba3e56c1a75cda1b98e07a2fbb66c9935d61d57e6
+
+pkgname = udu
