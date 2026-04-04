@@ -4,24 +4,27 @@ pkgbase=python-ext4
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.2.4
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Library for read only interactions with an ext4 filesystem"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/Eeems/python-ext4"
 license=('MIT')
 makedepends=('python-setuptools'
+             'nuitka>=4.0.6'
              'python-build'
              'python-installer')  # wheel required by new setuptools
 checkdepends=('python-cachetools'
-              'python-crcmod')
+              'python-crcmod'
+          )
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-test-image.sh::https://github.com/Eeems/python-ext4/raw/refs/tags/v${pkgver}/_test_image.sh"
         "${pkgver}-test.py::https://github.com/Eeems/python-ext4/raw/refs/tags/v${pkgver}/test.py"
+#       "test-image-${pkgver}.sh"
         'test.txt')
-md5sums=('8b0ca208417e567a8d85fb46d2a13b51'
-         '59d6ffdbf4443985e64e47b2a86b66c7'
-         '6920bea7d9a491a0a554c14f05c10be2'
+md5sums=('a428992610036c31fd463d4c8165df60'
+         '53e62f3008d498290398b530e131e290'
+         'fc6838dc844a2bb11b5404186b846be7'
          '8f7fa83c2cc8ea6e90fe94b1efd1a83a')
 
 prepare() {
@@ -29,12 +32,14 @@ prepare() {
 
 #   cp {${srcdir}/${pkgver}-,}test.py
 #   install -Dm644 -t txt_tmp ${srcdir}/test.txt
-    bash ${srcdir}/${pkgver}-test-image.sh
+#   sed -i 's:sudo ::g' ${srcdir}/${pkgver}-test-image.sh
+    bash ${srcdir}/${pkgver}-test-image.sh || warning "test-image.sh failed, checking phase may not passed"
+#   bash ${srcdir}/test-image-${pkgver}.sh
 }
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation #--skip-dependency-check
 
 #   msg "Building Docs"
 #   PYTHONPATH="../build/lib" make -C docs html
@@ -47,7 +52,8 @@ check() {
 #   mkfs.ext4 test.ext4.tmp -d txt_tmp
 #   echo -n F > test.ext4
 #   cat test.ext4.tmp >> test.ext4
-    PYTHONPATH="." python ${srcdir}/${pkgver}-test.py || warning "Tests failed"
+#   PYTHONPATH="." python ${srcdir}/${pkgver}-test.py #|| warning "Tests failed"
+    PYTHONPATH="build/lib" python ${srcdir}/${pkgver}-test.py || warning "Tests failed"
 }
 
 package_python-ext4() {
