@@ -1,7 +1,7 @@
 # Maintainer: Timur Bagautdinov <mr.bagautdinov14 at gmail dot com>
 
 pkgname="smapi-for-stardew-valley"
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="The modding API for Stardew Valley."
 url="https://github.com/Pathoschild/SMAPI"
@@ -13,14 +13,14 @@ makepedends=("imagemagick" "dotnet-sdk-6.0")
 install="smapi-for-stardew-valley.install"
 
 source=(
-    "$url/archive/refs/tags/$pkgver.zip"
+    "SMAPI-$pkgver::git+https://github.com/Pathoschild/SMAPI#tag=$pkgver"
     "smapi.desktop"
     "smapi.sh"
 )
 
 sha256sums=(
-    'a0be09beb0ef8e3f7cbb1ab7e7c7e6c7f26bf3dbaabe74c83f64ffcf06d98572'
-    '0ac826915ba178b707fa471b0650f78403d6e4977734c4ac69e079ac46485e33'
+    '84ed4cb6501c83ad297f79df4cd037714c347df8b7fc26a9b802d2321fc5da54'
+    '59b2f16bf7a0314414598493640007749f5fe06df10ff55caa13f326106a0655'
     'a9f7ae9e24d07e47ccd5975b09ed465e629f03bf6e6078b3b144687b6affad9c'
 )
 
