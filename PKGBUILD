@@ -1,6 +1,6 @@
 # Maintainer: myueqf myueqf@gmail.com
 pkgname=claude-launch
-pkgver=QAQ.r0.g0000000
+pkgver=26w14a
 pkgrel=1
 pkgdesc="Claude Code CLI proxy tool that converts Anthropic API requests to OpenAI API format"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
