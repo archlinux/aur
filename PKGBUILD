@@ -2,7 +2,7 @@
 
 pkgname=python-candle-api
 _name=${pkgname#python-}
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="Full featured CAN driver for Geschwister Schneider API for USB/CAN devices"
 provides=(${pkgname})
@@ -31,7 +31,7 @@ source=(
     "libusb-cmake::git+https://github.com/libusb/libusb-cmake.git"
     "pybind11::git+https://github.com/pybind/pybind11.git"
 )
-sha256sums=('2a3342b6a4170f23c51607b216db42e4466f22b1af39e74b28c6042defde29d3'
+sha256sums=('856aa1103facd7c1b6fdd750990a9b9b6d1adab296f740fa312b1c4aabea2e0f'
             'SKIP'
             'SKIP')
 
