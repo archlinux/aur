@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-bestsource-git
 	pkgdesc = Plugin for Vapoursynth: bestsource (GIT version)
-	pkgver = r290.ff911fa
+	pkgver = r401.7d5890d
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?p=1972253
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = vapoursynth-plugin-bestsource-git
 	conflicts = vapoursynth-plugin-bestsource
 	options = debug
 	source = bestsource::git+https://github.com/vapoursynth/bestsource.git
-	source = libp2p::git+https://bitbucket.org/the-sekrit-twc/libp2p.git#commit=1e3818bd7277165819f659d410873fe5dab37af6
+	source = libp2p::git+https://github.com/sekrit-twc/libp2p.git#commit=f50288b0c8db2cb14bb98fc25a5f056609d03652
 	sha256sums = SKIP
 	sha256sums = SKIP
 
