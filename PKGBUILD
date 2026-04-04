@@ -1,11 +1,17 @@
-# Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
+# Maintainer: angelcube <angel plus aur at angelcube dot dev>
+# Contributor: SandaruKasa <sandarukasa plus aur at ya dot ru>
 # Contributor: handsomexdd1024
 # Based upon orphaned 'jdk-jetbrains' by Travis Weir <tweirtx at gmail dot com>
 
+# To bump version:
+# 1. update the _minor and _build variables
+# 2. update the checksum
+# Both can be found on GitHub.
+
 pkgname=jdk21-jetbrains-bin
 _major=21
-_minor=0.9
-_build=895.149
+_minor=0.10
+_build=1163.110
 _prefix="/usr/lib/jvm/java-${_major}-jetbrains"
 pkgver="${_major}.${_minor}b${_build}"
 pkgrel=1
@@ -20,7 +26,7 @@ replaces=('intellij-jdk' 'jdk-jetbrains')
 _basename="jbrsdk_jcef-${_major}.${_minor}-linux-x64-b${_build}"
 _zipname="${_basename}.tar.gz"
 source=("${_zipname}::https://cache-redirector.jetbrains.com/intellij-jbr/${_zipname}")
-sha512sums=('9cd04a0a8f2e8968b441aa0d59caedea593179ac92c98e37623947fd8a82aef8d5156972475e1890e8a4d8f52e44dd8af28aab99bdf514babbb168607114f58e')
+sha512sums=('a2e3910f6c0650923cea22ab8fe5596c15553b757cd85d4b5cd7e3b213f699c740a64a3016df96ffc9b845093b6ac737eb025d6bcbd3fd1868972c6722cfc7e2')
 
 package() {
   find . -exec chmod g+r,o+r {} +
