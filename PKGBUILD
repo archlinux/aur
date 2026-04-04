@@ -7,7 +7,7 @@ url="https://gitlab.com/nexttechcreations/arch-zenmaster"
 license=('MIT')
 depends=('coreutils' 'bash' 'pacman' 'pacman-contrib' 'systemd' 'procps-ng' 'util-linux' 'libnotify' 'cpupower' 'sudo')
 
-source=("https://gitlab.com/nexttechcreations/arch-zenmaster/-/archive/1.0.5.6/arch-zenmaster-v1.0.5.6.tar.gz")
+source=("https://gitlab.com/nexttechcreations/arch-zenmaster/-/archive/1.0.5.6/arch-zenmaster-1.0.5.6.tar.gz")
 sha256sums=('SKIP')
 
 package() {
