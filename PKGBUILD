@@ -37,6 +37,8 @@ optdepends=(
   'libldap: for LDAP authentication'
   'libsieve: for dbmail-sieve'
 )
+provides=('dbmail')
+conflicts=('dbmail')
 source=("git+https://github.com/dbmail/dbmail.git")
 sha256sums=('SKIP')
 
