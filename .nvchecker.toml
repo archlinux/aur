@@ -1,0 +1,5 @@
+[crunchycleaner-bin]
+source = "github"
+github = "Knuspii/CrunchyCleaner"
+use_latest_release = true
+prefix = "v"
