@@ -2,7 +2,7 @@
 
 pkgname=python-can-candle
 _name=${pkgname#python-}
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Full featured CAN driver for Geschwister Schneider USB/CAN devices"
 provides=(${pkgname})
@@ -25,7 +25,7 @@ makedepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('9de93f1d1aef61561f637372ea26e0a17ada0781bdf36da89f5967e1a9f829e4')
+sha256sums=('5748726bf4c282b5e6a39ccdaff3bdd155494d1319127fdc202d41cfaef29ac3')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
