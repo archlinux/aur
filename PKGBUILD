@@ -6,16 +6,16 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/TimexDeveloper/playcli"
 license=('MIT')
 depends=('ffmpeg')
-makedepends=('go' 'git')
-source=("git+https://github.com/TimexDeveloper/$pkgname.git")
+makedepends=('go')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/TimexDeveloper/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   go build -o "$pkgname" -ldflags="-s -w"
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

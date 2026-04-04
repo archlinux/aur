@@ -7,9 +7,8 @@ pkgbase = playcli
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	makedepends = git
 	depends = ffmpeg
-	source = git+https://github.com/TimexDeveloper/playcli.git
+	source = playcli-1.0.0.tar.gz::https://github.com/TimexDeveloper/playcli/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = playcli
