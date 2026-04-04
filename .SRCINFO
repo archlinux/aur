@@ -1,0 +1,22 @@
+pkgbase = claude-launch
+	pkgdesc = Claude Code CLI proxy tool that converts Anthropic API requests to OpenAI API format
+	pkgver = QAQ.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/myueqf/claude-launch
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go>=1.26
+	optdepends = claude-code: Claude Code CLI to use with this proxy
+	options = !debug
+	source = claude-launch::git+https://github.com/myueqf/claude-launch.git
+	sha256sums = SKIP
+
+pkgname = claude-launch
