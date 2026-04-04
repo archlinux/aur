@@ -1,27 +1,42 @@
-# Maintainer: Star_caorui <Star_caorui@hotmail.com>
+# Maintainer: zhizhizhiwang <zhizhiwang@proton.me>
+# Contributor: Star_caorui <Star_caorui@hotmail.com>
 pkgname=mcsm-daemon-git
-pkgver=1.5.5
-pkgrel=2
-pkgdesc="适用于 MCSManager 的守护（daemon）程序。"
-arch=(x86_64)
-url="https://github.com/MCSManager/MCSManager-Daemon-Production"
-license=(AGPL)
+pkgver=10.12.4
+pkgrel=3
+pkgdesc="MCSManager 的守护（daemon）程序模块。"
+arch=(any)
+url="https://github.com/MCSManager/MCSManager"
+license=(Apache-2.0)
 install=$pkgname.install
-depends=('nodejs>=14')
-makedepends=('npm')
+depends=('nodejs>=16')
+makedepends=('npm' 'git')
 source=('file://mcsm-daemon.service'
-        'daemon::git+https://github.com/MCSManager/MCSManager-Daemon-Production')
+        "mcsm-$pkgver::git+https://github.com/MCSManager/MCSManager")
 sha256sums=('56a03d9b7a65fcbb41c3d19433a0e8dc4f99f909470691c4792399957d3323b8'
             'SKIP')
 
 build() {
+  cd "mcsm-$pkgver"
+  npm run preview-build
+  rm -rf production-code
+  rm -rf ./daemon/dist ./daemon/production
+  mkdir production-code
+  mkdir production-code/daemon
   cd daemon
-  npm install --registry=https://registry.npm.taobao.org
+  npm install 
+  npm run build
+  cd ..
+  mv "daemon/production/app.js" "production-code/daemon"
+  mv "daemon/production/app.js.map" "production-code/daemon"
+  cp -f "daemon/package.json" "production-code/daemon/package.json"
+  cp -f "daemon/package-lock.json" "production-code/daemon/package-lock.json"
+  cd "production-code/daemon"
+  npm install --production 
 }
 
 package() {
-  [ ! -d "${pkgdir}"/etc/systemd/system/ ] && install -dm755 "${pkgdir}"/etc/systemd/system/
-  install -dm755 "${pkgdir}"/opt/mcsmanager/
-  install -m644 mcsm-daemon.service "${pkgdir}"/etc/systemd/system/
-  cp -r daemon "${pkgdir}"/opt/mcsmanager/
+  install -Dm644 mcsm-daemon.service "${pkgdir}/usr/lib/systemd/system/mcsm-daemon.service"
+  install -Dm644 "${srcdir}/mcsm-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -dm755 "${pkgdir}/opt/mcsmanager"
+  cp -r "${srcdir}/mcsm-$pkgver/production-code/daemon" "${pkgdir}/opt/mcsmanager/"
 }

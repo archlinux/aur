@@ -1,15 +1,16 @@
 pkgbase = mcsm-daemon-git
-	pkgdesc = 适用于 MCSManager 的守护（daemon）程序。
-	pkgver = 1.5.5
-	pkgrel = 2
-	url = https://github.com/MCSManager/MCSManager-Daemon-Production
+	pkgdesc = MCSManager 的守护（daemon）程序模块。
+	pkgver = 10.12.4
+	pkgrel = 3
+	url = https://github.com/MCSManager/MCSManager
 	install = mcsm-daemon-git.install
-	arch = x86_64
-	license = AGPL
+	arch = any
+	license = Apache-2.0
 	makedepends = npm
-	depends = nodejs>=14
+	makedepends = git
+	depends = nodejs>=16
 	source = file://mcsm-daemon.service
-	source = daemon::git+https://github.com/MCSManager/MCSManager-Daemon-Production
+	source = mcsm-10.12.4::git+https://github.com/MCSManager/MCSManager
 	sha256sums = 56a03d9b7a65fcbb41c3d19433a0e8dc4f99f909470691c4792399957d3323b8
 	sha256sums = SKIP
 
