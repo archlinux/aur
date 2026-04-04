@@ -1,0 +1,16 @@
+post_install() {
+  reload_bus
+}
+
+post_upgrade() {
+  reload_bus
+}
+
+reload_bus() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl reload dbus.service >/dev/null 2>&1 || true
+  fi
+
+  printf '%s\n' 'If victusd was already running, restart it to pick up the new build:'
+  printf '  %s\n' 'sudo pkill -x victusd'
+}
