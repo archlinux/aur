@@ -19,7 +19,7 @@
 _appname='tor-browser'
 pkgname="${_appname}-bin"
 pkgver='15.0.8'
-pkgrel=1
+pkgrel=2
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor'
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
@@ -68,7 +68,7 @@ source=("${_appname}.desktop.in"
 # No need for `makepkg -g`: the following sha256sums¸don't need to be updated #
 # with each release, everything is done automatically! Leave them like this!  #
 ###############################################################################
-sha256sums=('5dd2b61bd4edf4d1499a81127f97a1de7ec272a885df97331b61969a5a07f05f'
+sha256sums=('604f5d7cc642d56c919b9d2b7b20a785db4acebf58520f41845347bd81e8ec73'
             '1313484fc0572d82067f5671327540fcab6747fd2d187f216e1fc8edf3581509'
             'f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152'
             '7b28b5dbe8ad573bb46e61b4d542b33e01ca240825ca640b4893fee6203b021f')
