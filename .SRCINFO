@@ -3,6 +3,7 @@ pkgbase = kwin-karousel
 	pkgver = 0.16
 	pkgrel = 1
 	url = https://github.com/peterfajdiga/karousel/
+	install = kwin-karousel.install
 	arch = any
 	license = GPL-3.0-or-later
 	depends = qt6-declarative
