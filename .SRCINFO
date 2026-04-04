@@ -5,6 +5,7 @@ pkgbase = mingw-w64-blosc
 	url = http://blosc.org/
 	arch = any
 	license = BSD-3-Clause
+	checkdepends = mingw-w64-wine
 	makedepends = mingw-w64-cmake
 	depends = mingw-w64-zstd
 	depends = mingw-w64-snappy
