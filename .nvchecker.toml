@@ -1,0 +1,5 @@
+[git-treeflow-bin]
+source = "github"
+github = "cKreymborg/git-treeflow"
+use_latest_release = true
+prefix = "v"
