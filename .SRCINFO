@@ -8,6 +8,6 @@ pkgbase = kwin-karousel
 	depends = qt6-declarative
 	depends = knotifications
 	source = karousel-0.16.tar.gz::https://github.com/peterfajdiga/karousel/releases/download/v0.16/karousel_0_16.tar.gz
-	sha1sums = a14c419a4085a6eec8cbce33c0911375aefb0d6f
+	sha256sums = f9f326a9e4573f3ac3f24c9c7a0f059470f659902877033686b962bc93f2b3bb
 
 pkgname = kwin-karousel
