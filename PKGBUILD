@@ -2,7 +2,7 @@
 
 _pkgname=labwc
 pkgname=labwc-im-git
-pkgver=0.9.5.r49.g647e9b76
+pkgver=0.9.5.r67.gc9b4da2c
 pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox (git version with minimal text-input-v1 support)'
 url="https://github.com/labwc/labwc"
@@ -16,7 +16,7 @@ provides=(labwc)
 source=("git+https://github.com/labwc/${_pkgname}.git"
         '0001-IME-support-text-input-v1.patch')
 md5sums=('SKIP'
-         '6c6a97754e53b028c4682864f0b54cbd')
+         '0bc27c5fd1a836b18128c520a5daf6ec')
 
 pkgver() {
   cd "$_pkgname"
