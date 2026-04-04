@@ -1,10 +1,10 @@
-# Maintainer: guns4geeks <your-email@example.com>
+# Maintainer: aurnaur
 pkgname=xscreensaver-tray
 pkgver=1.0
 pkgrel=2
 pkgdesc="System tray toggle for xscreensaver with monitor icon"
 arch=('any')
-url="https://github.com/yourusername/xscreensaver-tray"
+url="https://aur.archlinux.org/packages/xscreensaver-tray"
 license=('MIT')
 depends=('python' 'python-pyqt6' 'xscreensaver')
 makedepends=()
