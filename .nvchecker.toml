@@ -1,0 +1,4 @@
+[speedofsound]
+source = "git"
+git = "https://github.com/zugaldia/speedofsound.git"
+prefix = "v"
