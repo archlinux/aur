@@ -6,7 +6,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/YangYuS8/lwe"
 license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
-makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
+makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'cargo-tauri' 'pnpm' 'nodejs')
 provides=('lwe')
 conflicts=('lwe')
 source=("git+${url}.git")
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/lwe"
-	pnpm tauri build -b deb
+	cargo tauri build -b deb
 }
 
 package() {

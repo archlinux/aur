@@ -12,6 +12,7 @@ pkgbase = lwe-git
 	makedepends = libappindicator-gtk3
 	makedepends = librsvg
 	makedepends = cargo
+	makedepends = cargo-tauri
 	makedepends = pnpm
 	makedepends = nodejs
 	depends = cairo
