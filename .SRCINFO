@@ -1,0 +1,20 @@
+pkgbase = influxdb3
+	pkgdesc = Scalable datastore for metrics, events, and real-time analytics
+	pkgver = 3.9.0
+	pkgrel = 1
+	url = https://www.influxdata.com/products/influxdb3/
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
+	makedepends = protobuf
+	depends = python
+	backup = etc/influxdb3/influxdb3-core.conf
+	source = https://github.com/influxdata/influxdb/archive/refs/tags/v3.9.0.tar.gz
+	source = influxdb3.sysusers
+	source = influxdb3.tmpfiles
+	b2sums = 259fe3b402810c780ba89738d51f10159375d437f43726af217921902adf66af00c591a2af09d0d7402a8ecd6ff4eb12b9df31a3730a4ebc1df9d2a9480cbfeb
+	b2sums = 1f119aaed81914fcb75098dde95f894c52b11d825eb5a9bca21848a88c1e85d1dc5e6044aeb14465d9e0cec294ac9b15b505cdf275a31e439ac53044e0f651aa
+	b2sums = c00c44696c9ff81d2c9b840d434c3bdbdd5c8265ec75b2697e6414c648c075e61708cbab7ce988421b6eacbf6f6bcb5496713b952121aa22c691a48874e03dd2
+
+pkgname = influxdb3
