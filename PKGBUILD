@@ -3,8 +3,8 @@
 _sdk=10.0
 _Name="YoutubeDownloader"
 pkgname="${_Name,,}"
-pkgver=1.16.1
-pkgrel=3
+pkgver=1.16.2
+pkgrel=1
 pkgdesc="Downloads videos and playlists from YouTube"
 arch=(
   'aarch64'
@@ -33,7 +33,7 @@ source=(
   "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
   "${pkgname}.sh"
 )
-b2sums=('b76cecb57f5b15e86a1b124a6d9504d3ab211091418d8eba09f8e512abb69c7f6e7ff69f773de3254afaeaabb3e158741243fb85748b47c4a6ed89d4e919d8d7'
+b2sums=('986fc628ac4ae8de467189ee152f5a0fea9e72a0a76a081b28af7d3b25eaf547e605df0dc0dbb342e15e4ba41bfe79bf2c1ff14ab71ed9a78c53af7c67832db4'
         '1790bd5de94e0c11027d516385f2a824a43aa6285f04a8256b320dc0d33437efd6f87ec3217e921f4c02257924978c7097e525a5fa936c2a2040f3a6eff5784a')
 
 if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;

@@ -1,7 +1,7 @@
 pkgbase = youtubedownloader
 	pkgdesc = Downloads videos and playlists from YouTube
-	pkgver = 1.16.1
-	pkgrel = 3
+	pkgver = 1.16.2
+	pkgrel = 1
 	url = https://github.com/Tyrrrz/YoutubeDownloader
 	arch = aarch64
 	arch = armv7h
@@ -14,9 +14,9 @@ pkgbase = youtubedownloader
 	depends = sh
 	options = !strip
 	options = !debug
-	source = https://github.com/Tyrrrz/YoutubeDownloader/archive/refs/tags/1.16.1/YoutubeDownloader-1.16.1.tar.gz
+	source = https://github.com/Tyrrrz/YoutubeDownloader/archive/refs/tags/1.16.2/YoutubeDownloader-1.16.2.tar.gz
 	source = youtubedownloader.sh
-	b2sums = b76cecb57f5b15e86a1b124a6d9504d3ab211091418d8eba09f8e512abb69c7f6e7ff69f773de3254afaeaabb3e158741243fb85748b47c4a6ed89d4e919d8d7
+	b2sums = 986fc628ac4ae8de467189ee152f5a0fea9e72a0a76a081b28af7d3b25eaf547e605df0dc0dbb342e15e4ba41bfe79bf2c1ff14ab71ed9a78c53af7c67832db4
 	b2sums = 1790bd5de94e0c11027d516385f2a824a43aa6285f04a8256b320dc0d33437efd6f87ec3217e921f4c02257924978c7097e525a5fa936c2a2040f3a6eff5784a
 
 pkgname = youtubedownloader
