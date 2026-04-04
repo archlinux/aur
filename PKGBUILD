@@ -12,6 +12,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  export GO111MODULE=on
   go build -o "$pkgname" -ldflags="-s -w"
 }
 
