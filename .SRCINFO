@@ -1,0 +1,18 @@
+pkgbase = mesh-mini-git
+	pkgdesc = Simple graphical tool to crop the pages of PDF files
+	pkgver = r35.f06ec22
+	pkgrel = 1
+	url = https://github.com/brytonsalisbury/mesh-mini
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	provides = mesh-mini
+	conflicts = mesh-mini
+	source = git+https://github.com/brytonsalisbury/mesh-mini.git
+	source = mesh-mini-server.service
+	sha256sums = SKIP
+	sha256sums = 24b79865a62a955951fded595d513a30090aa7cb37389ca0c3b716e0de4d3b6a
+
+pkgname = mesh-mini-git

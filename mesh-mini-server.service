@@ -1,0 +1,15 @@
+[Unit]
+Description=mesh-mini linux client for Intel ME AMT interface
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/node /usr/lib/node_modules/mesh-mini/meshcommander.js --port 3000 --debug
+Restart=always
+SyslogIdentifier=mesh-mini
+DynamicUser=yes
+StateDirectory=mesh-mini
+LogsDirectory=mesh-mini
+CacheDirectory=mesh-mini
+
+[Install]
+WantedBy=multi-user.target
