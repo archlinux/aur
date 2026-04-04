@@ -1,6 +1,6 @@
 pkgname=password-depot-bin
 pkgver=19.0.2
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Password Depot from AceBIT GmbH for Linux (official binary repackaged from Debian package)"
 arch=('x86_64')
 url="https://www.password-depot.de/en/"
