@@ -1,6 +1,6 @@
 pkgbase = tztui-bin
 	pkgdesc = A terminal UI for managing and browsing system timezones
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/jakobnielsen/tztui
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = tztui-bin
 	license = MIT
 	provides = tztui
 	conflicts = tztui
-	source_x86_64 = https://github.com/jakobnielsen/tztui/releases/download/v1.5.0/tztui_linux_amd64.tar.gz
-	sha256sums_x86_64 = c4f529c8a815160fd896cfa6255aecd41ea048b95ffb0d7efb0ec99066c6759c
-	source_aarch64 = https://github.com/jakobnielsen/tztui/releases/download/v1.5.0/tztui_linux_arm64.tar.gz
-	sha256sums_aarch64 = 22093c0bbd41e8958c5750f60291615119200359deb73ccf0905fe374db20b73
+	source_x86_64 = https://github.com/jakobnielsen/tztui/releases/download/v1.6.0/tztui_linux_amd64.tar.gz
+	sha256sums_x86_64 = fa2aa5808f34b842f70588706293845cc332a281bedde6f48fe7b82e7c4fdb88
+	source_aarch64 = https://github.com/jakobnielsen/tztui/releases/download/v1.6.0/tztui_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8b1fe2bce7ea4c014c8e288e0ce69161e0ed9742ed76db568b6ddd12cb27483f
 
 pkgname = tztui-bin
 	provides = tztui
