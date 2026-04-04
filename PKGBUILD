@@ -3,7 +3,7 @@
 pkgname=mistral.rs-git
 _pkgname=mistral.rs
 pkgver=v0.6.0.r149.gd24c6e58b
-pkgrel=1
+pkgrel=2
 pkgdesc="Blazingly fast LLM inference"
 arch=('aarch64' 'x86_64')
 url="https://github.com/EricLBuehler/mistral.rs"
