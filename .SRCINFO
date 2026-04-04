@@ -1,0 +1,15 @@
+pkgbase = usb-killswitch
+	pkgdesc = Shuts down your laptop when a USB device disconnects
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/CyberDiary2/killswitch2_0
+	arch = any
+	license = custom
+	depends = python
+	depends = tk
+	depends = python-pillow
+	depends = python-pystray
+	source = usb-killswitch-1.1.0.tar.gz::https://github.com/CyberDiary2/killswitch2_0/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = usb-killswitch
