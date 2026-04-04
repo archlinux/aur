@@ -1,7 +1,7 @@
 # Maintainer: Tristan Hill
 
 pkgname=changedetection.io
-pkgver=0.54.7
+pkgver=0.54.8
 pkgrel=1
 pkgdesc='change monitoring of web pages'
 arch=(any)
@@ -59,7 +59,7 @@ source=(https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/$pkgver
         tmpfiles
         service
         chromium.service)
-sha512sums=('0665e9527028f4719eabb5cfab3e0f2168c72c0758a1c4bf7d937366bc982e39b9f4e4d41f38c33d4d63d1bbfd4aef52da79911d16d84d1fa1420a7900e2632e'
+sha512sums=('b8e8e0fb5b49563f4fea5515e62d7525fda6061965b6e7dfa3dc3b4994272263f7f6b2452617288637716bd4c5e47d0afc7dc131a1aca0731ae7db1af549cdf2'
             '5ef8b215bddc02b04d55d3699f27ad043461d8771591be2ebf0ed6390c58ab881426214173c8e1cc8bb36ecd7acebc5d69d760fc65b8a3b191b2116150748f53'
             '92b0921bd7d2d297087238366ece919272c8cf1f6685631bbbb8a6ad3817f6c4d9fd95ed626991ac12284aff93c66c3f8c6e9b4b77e959c91c1646dca39b8212'
             'eecd4b25411f6f47b81dd6849aae233b0928e19342818b9c7857bf291850b2cefb33cd35aa5877be1675c9642a8feee53b35d2e318a255547ef4ce07a30c9e1b'
