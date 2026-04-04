@@ -1,0 +1,13 @@
+pkgbase = go-template-lsp
+	pkgdesc = LSP for the Go template engine
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/yayolande/go-template-lsp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = go-template-lsp-0.4.0.tar.gz::https://github.com/yayolande/go-template-lsp/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 24546b8849cbac45dfe666e94924c46759c3916c98ef0679dd3c9b1c5ca6f033
+
+pkgname = go-template-lsp
