@@ -33,7 +33,7 @@ sha256sums_aarch64=('99268ea58f7e78837da783e2e77a7145f12e7f6643ed91dc60f340f847b
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
+	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "CONFIG-${pkgver}.toml" "${pkgdir}/usr/share/doc/${pkgname}/config/config.example.toml"
 
