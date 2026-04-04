@@ -1,8 +1,8 @@
 # Maintainer: Rafael Campos Las Heras <methril at gmail dot com>
 
-pkgver=3.30
+pkgver=3.31.01
 pkgname=microchip-mplabxc-dsc-bin
-pkgrel=2
+pkgrel=1
 pkgdesc="Microchip's MPLAB XC-DSC C compiler toolchain for their dsPIC33A DSC microcontroller families"
 arch=(x86_64)
 url=http://www.microchip.com/xc-dsc
@@ -13,7 +13,7 @@ makedepends=(bitrock-unpacker)
 
 options=(!strip docs libtool emptydirs !zipman staticlibs)
 source=("https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc-dsc-v$pkgver-full-install-linux64-installer.run")
-sha256sums=('0df20c1a552bf0ce08aa139b9cb1efd71bf65b9d9f37e3982763f4f8738bfa11')
+sha256sums=('8bcd65a935ae43c4fc406bc8c82b7220b63a63368c824b35b2c488aa97dee556')
 install=$pkgname.install
 
 instdir="/opt/microchip/xc-dsc/v${pkgver}"

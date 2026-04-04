@@ -1,7 +1,7 @@
 pkgbase = microchip-mplabxc-dsc-bin
 	pkgdesc = Microchip's MPLAB XC-DSC C compiler toolchain for their dsPIC33A DSC microcontroller families
-	pkgver = 3.30
-	pkgrel = 2
+	pkgver = 3.31.01
+	pkgrel = 1
 	url = http://www.microchip.com/xc-dsc
 	install = microchip-mplabxc-dsc-bin.install
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = microchip-mplabxc-dsc-bin
 	options = emptydirs
 	options = !zipman
 	options = staticlibs
-	source = https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc-dsc-v3.30-full-install-linux64-installer.run
-	sha256sums = 0df20c1a552bf0ce08aa139b9cb1efd71bf65b9d9f37e3982763f4f8738bfa11
+	source = https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc-dsc-v3.31.01-full-install-linux64-installer.run
+	sha256sums = 8bcd65a935ae43c4fc406bc8c82b7220b63a63368c824b35b2c488aa97dee556
 
 pkgname = microchip-mplabxc-dsc-bin
