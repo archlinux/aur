@@ -1,6 +1,6 @@
 # Maintainer: David Mazieres https://www.scs.stanford.edu/~dm/addr/
 pkgname=jai
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Light-weight sandbox for AI agents"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ source=(
     "https://github.com/stanford-scs/jai/releases/download/v$pkgver/jai-$pkgver.tar.gz"
 )
 noextract=()
-b2sums=('975bdf0416b40a715b65e2f615d6b4a3cc4fecd9b0af3423958bde224205353428deffc434fc5f406587bb14895ab7ecbc197184c9430ded6fe00cc7e81214f2')
+b2sums=('57a34be7a0404cc81cfb12305f0550525c4f8d161c6b3592c563755922f2e2aea361cd892edd04bae70c5c5551a76d3625d54793afe847d4e287a2755b2026da')
 validpgpkeys=()
 
 build() {
