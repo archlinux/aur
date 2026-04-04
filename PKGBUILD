@@ -3,7 +3,7 @@
 _reponame=Stirling-PDF
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-bin"
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Locally hosted web application that allows you to perform various operations on PDF files"
 arch=("any")
@@ -15,6 +15,7 @@ backup=("etc/${_pkgname}/${_pkgname}.env")
 depends=(
     "fontconfig"
     "ghostscript"
+    "imagemagick"
     "java-runtime-headless>=21"
     "libreoffice"
     "ocrmypdf"
@@ -24,7 +25,9 @@ depends=(
     "python-pillow"
     "python-unoserver"
     "python-weasyprint"
+    "qpdf"
     "tesseract-data-eng"
+    "tesseract-data-osd"
     "unpaper"
 )
 optdepends=("calibre: for ebook conversion"
@@ -50,10 +53,10 @@ source=("${_pkgname}-${pkgver}.jar::${url}/releases/download/v${pkgver}/${_repon
         "${_pkgname}.sh"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
-sha256sums=('1c02c32b2b508d9d693f1587b15f98a98fccd15ea43d6fd3fc641c03e931fde1'
-            'b2b868a5bf6ef42e888f1d8f62763aa247b958d8c5e58c626355c4a469292c17'
-            'd1601a440ef408a93edbc8d280bd0747712a54cc461fe10a34f1c6aaf52ff84e'
-            '49ee364a5f241d6c76263bf85631bee07c0bb0283a3b85d03a63f8f735dda2b4'
+sha256sums=('3d51a002193cbe4f5530f1e29b6acd986545e77b8a07427e9954ab8bcef21986'
+            '9feff3a951f0f36aa7d930d3cb99de54351611a454ba601a68a59db141343982'
+            '6f49111e3ea7d62dfbbad1f61edfd0e4b6aeb4acac51e512e4722e408869eaff'
+            '55b2be2b11c1c2f1f2b50c7ac0190ef30d3b684c39689d236d25b119906d64a1'
             '67654b2198898e23d0cf35829e83cc0585b7335b8bd7fcd9da0e4a2ce90082d6'
             'efdf233d59cf82bc331e3ea85e912e7f534ed0d821674e232e3fc827f699ef43'
             '554fbc114c32f4b81fe3b8199e936881e26b5649098c495acfd4cd77eefd2612')
