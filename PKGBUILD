@@ -24,7 +24,9 @@ makedepends=(
 )
 optdepends=(
     'wl-clipboard: clipboard support via wl-copy and wl-paste'
-    'glib2: file operations via gio'
+    'glib2: local and trash file operations via gio'
+    'gvfs: remote filesystem support via gio/gvfs (sftp, ftp, dav, etc.)'
+    'gvfs-smb: SMB/CIFS remote browsing support'
     'ffmpeg: video file thumbnail previews'
     'udisks2: mount/unmount devices from sidebar'
 )
