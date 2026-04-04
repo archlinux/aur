@@ -3,74 +3,83 @@
 pkgname=('lua-taglib' 'lua51-taglib' 'lua52-taglib' 'lua53-taglib' 'lua54-taglib')
 pkgbase='lua-taglib'
 pkgdesc="Lua bindings for taglib"
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/jprjr/lua-taglib'
 license=('MIT')
 depends=('taglib' 'gcc-libs' 'glibc')
-makedepends=('cmake' 'lua>=5.5' 'lua<5.6' 'lua51' 'lua52' 'lua53' 'lua54')
+_lua_cur=5.5
+_lua_next=5.6
+makedepends=('cmake' "lua>=$_lua_cur" "lua<$_lua_next" 'lua51' 'lua52' 'lua53' 'lua54')
+#options=(debug)
 source=("https://github.com/jprjr/${pkgbase}/releases/download/v${pkgver}/${pkgbase}-${pkgver}.tar.gz")
 
-sha256sums=('5d0f17768ef7d262f636db38715910434ce0b3685f379a8ba46a9ecc20184865')
+_build() {
+  LUA_V=$1
+  V=${LUA_V//./}
+
+  local cmake_options=(
+    -S "${pkgbase}-${pkgver}"
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+  )
+
+  cmake "${cmake_options[@]}" -B build-lua$V-${pkgver}-${pkgrel} -DLUA_VERSION=$LUA_V
+  cmake --build build-lua$V-${pkgver}-${pkgrel}
+}
+
 
 build() {
-    local cmake_options=(
-      -S "${pkgbase}-${pkgver}"
-      -W no-dev
-      -D CMAKE_BUILD_TYPE=None
-      -D CMAKE_INSTALL_PREFIX=/usr
-    )
-    cmake "${cmake_options[@]}" -B build-lua-${pkgver}-${pkgrel}
-    cmake "${cmake_options[@]}" -B build-lua51-${pkgver}-${pkgrel} -DLUA_VERSION=5.1
-    cmake "${cmake_options[@]}" -B build-lua52-${pkgver}-${pkgrel} -DLUA_VERSION=5.2
-    cmake "${cmake_options[@]}" -B build-lua53-${pkgver}-${pkgrel} -DLUA_VERSION=5.3
-    cmake "${cmake_options[@]}" -B build-lua54-${pkgver}-${pkgrel} -DLUA_VERSION=5.4
+    for v in 5.1 5.2 5.3 5.4 5.5 ; do
+        _build $v
+    done
+}
 
-    make -C build-lua-${pkgver}-${pkgrel}
-    make -C build-lua51-${pkgver}-${pkgrel}
-    make -C build-lua52-${pkgver}-${pkgrel}
-    make -C build-lua53-${pkgver}-${pkgrel}
-    make -C build-lua54-${pkgver}-${pkgrel}
+_package() {
+  LUA_V=$1
+  V=${LUA_V//./}
+
+  DESTDIR="$pkgdir" cmake --install build-lua$V-${pkgver}-${pkgrel}
+  install -Dm644 "${pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_lua-taglib() {
     pkgdesc="Lua bindings for taglib"
-    depends+=('lua')
+    depends+=("lua>=${_lua_cur}" "lua<${_lua_next}")
 
-    make -C build-lua-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-}
-
-package_lua51-taglib() {
-    pkgdesc="Lua bindings for taglib - Lua 5.1"
-    depends+=('lua51')
-
-    make -C build-lua51-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_lua52-taglib() {
-    pkgdesc="Lua bindings for taglib - Lua 5.2"
-    depends+=('lua52')
-
-    make -C build-lua52-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_lua53-taglib() {
-    pkgdesc="Lua bindings for taglib - Lua 5.3"
-    depends+=('lua53')
-
-    make -C build-lua53-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    _package $_lua_cur
 }
 
 package_lua54-taglib() {
     pkgdesc="Lua bindings for taglib - Lua 5.4"
     depends+=('lua54')
 
-    make -C build-lua54-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    _package 5.4
 }
+
+package_lua53-taglib() {
+    pkgdesc="Lua bindings for taglib - Lua 5.3"
+    depends+=('lua53')
+
+    _package 5.3
+}
+
+package_lua52-taglib() {
+    pkgdesc="Lua bindings for taglib - Lua 5.2"
+    depends+=('lua52')
+
+    _package 5.2
+}
+
+package_lua51-taglib() {
+    pkgdesc="Lua bindings for taglib - Lua 5.1"
+    depends+=('lua51')
+
+    _package 5.1
+}
+
+sha512sums=(
+'154d6106bc7f7b1b536fe2ebc488b011ecbe4de3da5682941a854a49efee99cf825fb27c5493774bb6ff93839075272b03a39c8fc30021120444d67abe5f0e94'
+)
