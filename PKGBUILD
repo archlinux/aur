@@ -4,7 +4,7 @@
 pkgname=zrepl-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='One-stop ZFS backup & replication solution'
 arch=('x86_64')
 url="https://${_pkgname}.github.io"
@@ -15,6 +15,7 @@ options=(
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+backup=("etc/${_pkgname}/${_pkgname}.yml")
 source=(
     "https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
     "${pkgname}-${pkgver}"::"https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64"

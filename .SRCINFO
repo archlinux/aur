@@ -1,7 +1,7 @@
 pkgbase = zrepl-bin
 	pkgdesc = One-stop ZFS backup & replication solution
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zrepl.github.io
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = zrepl-bin
 	conflicts = zrepl
 	options = !debug
 	options = !strip
+	backup = etc/zrepl/zrepl.yml
 	source = https://github.com/zrepl/zrepl/archive/v0.7.0/zrepl-0.7.0.tar.gz
 	source = zrepl-bin-0.7.0::https://github.com/zrepl/zrepl/releases/download/v0.7.0/zrepl-linux-amd64
 	sha256sums = d451ad1d05a0afdc752daf1dada9327aa338f691eca91e1c8fc9828eebd89757
