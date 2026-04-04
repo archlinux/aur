@@ -11,7 +11,7 @@ license=('MIT')
 source=("$_pkgname::git+https://github.com/CoolProp/CoolProp"
 )
 depends=('python' 'python-numpy')
-makedepends=('python'
+makedepends=('git'
              'cython'
              'python-scikit-build-core')
 b2sums=('SKIP')
@@ -48,7 +48,7 @@ prepare() {
   local ABSOLUTE_Z_FILE="${srcdir}/${_pkgname}/dev/all_fluids.json.z"
 
   if [ ! -f "$ABSOLUTE_Z_FILE" ]; then
-    error "Critical file not found: $ABSOLUTE_Z_FILE"
+    echo "Critical file not found: $ABSOLUTE_Z_FILE"
     return 1
   fi
 

@@ -1,13 +1,15 @@
 pkgbase = python-coolprop-git
 	pkgdesc = Python wrapper over CoolProp, the open-source thermodynamic and transport properties database
-	pkgver = r5201.71a82276
+	pkgver = r5799.d5eecbb4
 	pkgrel = 1
 	url = https://github.com/CoolProp/CoolProp
 	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = cython
+	makedepends = python-scikit-build-core
 	depends = python
+	depends = python-numpy
 	source = python-coolprop::git+https://github.com/CoolProp/CoolProp
 	b2sums = SKIP
 
