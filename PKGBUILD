@@ -26,7 +26,7 @@ changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/anomalyco/vsIronbar-Studio/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
 validpgpkeys=()
-sha256sums=('SKIP')
+sha256sums=('2d9f6c8aead10839f21f57ff862dfcd17500927b5a3c4297370803e9c9520bc8')
 
 package() {
     cd "$pkgname-$pkgver"
