@@ -1,7 +1,7 @@
 # Maintainer: guglovich <https://github.com/guglovich>
 # Created with assistance from Qwen 3.6 (Alibaba).
 pkgname=transmission-remote-slint
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Lightweight Transmission BitTorrent GUI built with Slint (no GTK)"
 arch=('x86_64')
@@ -26,13 +26,12 @@ optdepends=(
     'yad: file picker dialogs (alternative)'
     'libnotify: desktop notifications'
     'snixembed: system tray support in XFCE/Openbox'
-    'xfce4-statusnotifier-plugin: system tray support in XFCE'
 )
 provides=("$pkgname")
 conflicts=('transmission-remote-slint-bin')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/guglovich/Transmission-Remote-Slint/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7c6e00d8d094692e176ce633cb751a6acfbb3add7db9d3fd20bff3236cb65339')
+sha256sums=(''50ee99336440a0e7f9e36270633ffcfe7a810bdce0ce215a691959cd17ae31fd'')
 
 prepare() {
     cd "Transmission-Remote-Slint-${pkgver}"
