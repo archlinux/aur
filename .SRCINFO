@@ -1,0 +1,18 @@
+pkgbase = flux-operator-git
+	pkgdesc = GitOps on Autopilot Mode
+	pkgver = v0.45.1.r30.gdce6b40
+	pkgrel = 1
+	url = https://fluxoperator.dev
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = flux-operator
+	conflicts = flux-operator
+	options = !lto
+	source = flux-operator::git+https://github.com/controlplaneio-fluxcd/flux-operator
+	sha256sums = SKIP
+
+pkgname = flux-operator-git

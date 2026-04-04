@@ -1,0 +1,5 @@
+/flux-operator/
+/pkg/
+/src/
+*.tar.*
+*.log
