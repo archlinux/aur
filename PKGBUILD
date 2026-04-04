@@ -8,7 +8,7 @@ url='https://github.com/apenwarr/mkdocs-exclude'
 license=('Apache-2.0')
 arch=('any')
 depends=('mkdocs')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/54/b5/3a8e289282c9e8d7003f8a2f53d673d4fdaa81d493dc6966092d9985b6fc/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('ba6fab3c80ddbe3fd31d3e579861fd3124513708271180a5f81846da8c7e2a51')
 

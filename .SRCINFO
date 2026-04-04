@@ -5,6 +5,7 @@ pkgbase = mkdocs-exclude
 	url = https://github.com/apenwarr/mkdocs-exclude
 	arch = any
 	license = Apache-2.0
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
