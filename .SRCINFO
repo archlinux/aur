@@ -1,6 +1,6 @@
 pkgbase = claude-code-ui
 	pkgdesc = Desktop and mobile UI for Claude Code - manage sessions and projects remotely
-	pkgver = 1.27.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/siteboon/claudecodeui
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = claude-code-ui
 	depends = nodejs
 	depends = python
 	depends = python-setuptools
-	noextract = claude-code-ui-1.27.1.tgz
+	noextract = claude-code-ui-2.0.0.tgz
 	options = !strip
-	source = https://registry.npmjs.org/@siteboon/claude-code-ui/-/claude-code-ui-1.27.1.tgz
-	sha256sums = 91fb4980485d7b842903393f2dab09540b49bb9e275b57e17eb00ae376ff904e
+	source = https://registry.npmjs.org/@siteboon/claude-code-ui/-/claude-code-ui-2.0.0.tgz
+	sha256sums = 26369ba8811ea2e5d616544373b444e43ff64768d84d010c1a4a64ab19d4bcbd
 
 pkgname = claude-code-ui
