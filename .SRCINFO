@@ -1,6 +1,6 @@
 pkgbase = metadump
 	pkgdesc = Metadata analysis tool
-	pkgver = release.3.gfaef408
+	pkgver = 1.0.0
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
@@ -8,12 +8,11 @@ pkgbase = metadump
 	makedepends = cargo
 	makedepends = pkgconf
 	makedepends = zstd
-	makedepends = git
 	depends = zstd
 	depends = xz
 	depends = bzip2
 	conflicts = metadump-bin
-	source = https://github.com/mansar1337/metadump/archive/refs/heads/main.zip
+	source = metadump-main.zip::https://github.com/mansar1337/metadump/archive/refs/heads/main.zip
 	sha256sums = 362f61d0f4ca8802ac4ce7b9e4b5651f45c87f82b063c6bd35763aecd7e99183
 
 pkgname = metadump
