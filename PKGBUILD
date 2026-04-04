@@ -4,7 +4,7 @@ pkgname=libsignal-client
 _pkgname=libsignal
 _libname=libsignal_jni
 _java_version=17
-pkgver=0.87.4
+pkgver=0.90.0
 pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${_pkgname}"
@@ -19,9 +19,10 @@ source=(
     "boring::git+https://github.com/signalapp/boring"
     "curve25519-dalek::git+https://github.com/signalapp/curve25519-dalek"
     "SparsePostQuantumRatchet.git::git+https://github.com/signalapp/SparsePostQuantumRatchet.git"
+    #"boringssl::git+https://github.com/google/boringssl.git"
 )
 
-sha512sums=('8750e79b31ae26e20809d83721a225a59409c0b1f7a082fa888181f9a45c4359ee6f7938e031fe3707d3b8ff7e23d94891fb460fee67297f475b444604cd6eb5'
+sha512sums=('a476cc89f01e69ecaf89a34cc03801bfb91e8c38e9a8ff9dc910aae1cdbc142d89f05a407b5bce8dbf9d8f7cafc6d136752dbc737588c3204cee8eefc833202c'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -41,6 +42,7 @@ prepare() {
   for repo in boring curve25519-dalek SparsePostQuantumRatchet.git; do
     sed -i "s|https://github.com/signalapp/${repo}|file://${srcdir}/${repo}|g" Cargo.toml Cargo.lock
   done
+  #(cd ${srcdir}/boringssl && git config submodule.boring-sys/deps/boringssl.url "$srcdir/boringssl" && git -c protocol.file.allow=always submodule update)
 
   export RUSTUP_TOOLCHAIN=stable
   __CARGO_TEST_CHANNEL_OVERRIDE_DO_NOT_USE_THIS=nightly cargo fetch --locked --target "$(rustc -vV | awk '/^host: / {print $2}')" -Zgit=shallow-deps -Zgitoxide
@@ -54,6 +56,7 @@ build() {
   export JAVA_HOME="$(ls -d /usr/lib/jvm/java-${_java_version}-* | head -n1)"
   ./build_jni.sh desktop
   GRADLE_USER_HOME="${srcdir}/.gradle" ./gradlew --no-daemon :client:assemble -PskipAndroid=true
+  #GRADLE_USER_HOME="${srcdir}/.gradle" gradle --no-daemon :client:assemble -PskipAndroid=true
 
   zip -d "client/build/libs/libsignal-client-${pkgver}.jar" "${_libname}*.so"
 }
