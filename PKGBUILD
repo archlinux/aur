@@ -1,7 +1,7 @@
 # Maintainer: Ido Rosen <ido@kernel.org>
 
 pkgname=llm
-pkgver=0.28
+pkgver=0.29
 pkgrel=1
 pkgdesc='A CLI tool and Python library for interfacing with popular large language models.'
 arch=(any)
@@ -38,7 +38,7 @@ makedepends=(python-build
 #              ...)
 #optdepends=('xyz: for xyz')
 source=($pkgname-$pkgver.tar.gz::https://github.com/simonw/llm/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('7c95ab264f1b4ba612c696801bef5b33cb0c974203cd391f46e163dddd358335')
+sha256sums=('4607056c76cda8b7339fac576792fca79bc1ed3ff227dc177b852b870035c88d')
 
 build() {
     cd $pkgname-$pkgver
