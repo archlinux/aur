@@ -5,9 +5,9 @@
 
 pkgname=ocaml-curses
 pkgver=1.0.12
-pkgrel=1
+pkgrel=2
 license=('LGPL')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 pkgdesc="Objective Caml libs for curses"
 url="https://github.com/mbacarella/curses"
 depends=('ncurses' 'glibc')
