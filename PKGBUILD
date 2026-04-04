@@ -1,6 +1,6 @@
 pkgname=twintaillauncher-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.1.15
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A multi-platform launcher for your anime games"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!debug')
 provides=("twintaillauncher-bin")
 conflicts=("twintaillauncher-git" "twintaillauncher")
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/ttl-v${pkgver}/twintaillauncher_${pkgver}_amd64.deb")
-sha256sums=('64983405b296728718f31504ac4d1a0e003b4ce93ca6705f4092c71421fceab0')
+sha256sums=('e0958815a191d9346c36961e775403ce0994533c4eaecad62b0e6ce9659bf7de')
 
 build() {
   bsdtar -x -f data.tar.gz
@@ -20,7 +20,7 @@ build() {
 
 package() {
   install -Dm755 usr/bin/twintaillauncher -t "$pkgdir/usr/bin"
-  install -Dm755 usr/lib/twintaillauncher/resources/hpatchz -t "$pkgdir/usr/lib/twintaillauncher/resources"
+  install -Dm755 usr/lib/twintaillauncher/resources/winetricks -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm755 usr/lib/twintaillauncher/resources/reaper -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm644 usr/lib/twintaillauncher/resources/hkrpg_patch.dll -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm644 usr/share/icons/hicolor/32x32/apps/twintaillauncher.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png"
