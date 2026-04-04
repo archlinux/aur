@@ -6,7 +6,7 @@ pkgdesc="Terminal image, video, and Markdown viewer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Skardyy/mcat"
 license=('MIT')
-depends=()
+depends=('gcc-libs')
 provides=('mcat')
 conflicts=('mcat')
 
