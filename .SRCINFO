@@ -1,7 +1,7 @@
 pkgbase = portprotonqt
 	pkgdesc = Modern GUI for managing and launching games from PortProton, Steam, and Epic Games Store
 	pkgver = 0.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.linux-gaming.ru/Boria138/PortProtonQt
 	arch = any
 	license = GPL-3.0
@@ -33,6 +33,8 @@ pkgbase = portprotonqt
 	depends = mesa-utils
 	depends = vulkan-icd-loader
 	source = git+https://git.linux-gaming.ru/Boria138/PortProtonQt#tag=v0.1.11
+	source = qt6-11.patch
 	sha256sums = 66cb620f94e223b101ad79b3cdeee018afd0c963c4b0cddb1983de9cf0b1be45
+	sha256sums = 5e79464ff38b0cda075fd055d6bd8322fb2378b39d30e3fa61b569242a40e69a
 
 pkgname = portprotonqt
