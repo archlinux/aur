@@ -1,6 +1,6 @@
 pkgbase = gsh
 	pkgdesc = A battery-included, POSIX-compatible, generative shell
-	pkgver = 1.10.2
+	pkgver = 1.10.3
 	pkgrel = 1
 	url = https://github.com/kunchenguid/gsh
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = gsh
 	conflicts = gsh
 	provides = gsh
 	
-	source = https://github.com/kunchenguid/gsh/releases/download/v1.10.2/gsh-1.10.2.tar.gz
-	sha256sums = 2eb919377d95d0cb675e91222fe63ca1b708362ccf04458bf436bfc167643175
+	source = https://github.com/kunchenguid/gsh/releases/download/v1.10.3/gsh-1.10.3.tar.gz
+	sha256sums = 57221b79994109ac47310ec8c268f3a7a73408d0d3e4383c46ecf4a5b252dff9
 	
 pkgname = gsh
