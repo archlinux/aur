@@ -21,9 +21,19 @@ package() {
     install -Dm755 "ollama-gui"    "$pkgdir/usr/bin/ollama-gui"
     install -Dm644 "ollama_gui.py" "$pkgdir/usr/share/ollama-gui/ollama_gui.py"
 
-    # Desktop entry (from source)
-    install -Dm644 "ollama-gui.desktop" \
-        "$pkgdir/usr/share/applications/ollama-gui.desktop"
+    # Desktop entry (generated, not in upstream source)
+    install -dm755 "$pkgdir/usr/share/applications"
+    cat > "$pkgdir/usr/share/applications/ollama-gui.desktop" <<EOF
+[Desktop Entry]
+Name=Ollama GUI
+Comment=Native Tk/ttkbootstrap Ollama desktop UI
+Exec=ollama-gui
+Icon=ollama-gui
+Terminal=false
+Type=Application
+Categories=Utility;Office;
+Keywords=ollama;ai;llm;chat;
+EOF
 
     # License
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/ollama-gui/LICENSE"
