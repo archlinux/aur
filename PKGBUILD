@@ -28,7 +28,7 @@ package() {
     install -Dm644 "${srcdir}/../xscreensaver-tray.desktop" "${pkgdir}/etc/xdg/autostart/xscreensaver-tray.desktop"
 
     # Install the systemd service file
-    install -Dm644 "${srcdir}/../xscreensaver.service" "${pkgdir}/etc/systemd/system"
+    install -Dm644 "${srcdir}/../xscreensaver.service" "${pkgdir}~/.config/systemd/user"
 }
 
 post_install() {
