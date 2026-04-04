@@ -1,6 +1,6 @@
 pkgbase = kreuzberg-bin
 	pkgdesc = High-performance text extraction library - CLI binary
-	pkgver = 4.7.1
+	pkgver = 4.7.2
 	pkgrel = 1
 	url = https://github.com/kreuzberg-dev/kreuzberg
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = kreuzberg-bin
 	license = MIT
 	provides = kreuzberg
 	conflicts = kreuzberg
-	source_x86_64 = kreuzberg-4.7.1-x86_64.tar.gz::https://github.com/kreuzberg-dev/kreuzberg/releases/download/v4.7.1/kreuzberg-cli-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = c0c854d1200253556733ab6faa1ac4d1d28c9f6e01bed8bfab61d13048808704
-	source_aarch64 = kreuzberg-4.7.1-aarch64.tar.gz::https://github.com/kreuzberg-dev/kreuzberg/releases/download/v4.7.1/kreuzberg-cli-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 79eb8187269fafc8e7e55fc51364a8b7ba141ab313637cc5fbc18fd8b94eab82
+	source_x86_64 = kreuzberg-4.7.2-x86_64.tar.gz::https://github.com/kreuzberg-dev/kreuzberg/releases/download/v4.7.2/kreuzberg-cli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c5fbb4c41b9799a40c48d3ca02b8195549854a1a2c4f33d635dac6abd1e435fd
+	source_aarch64 = kreuzberg-4.7.2-aarch64.tar.gz::https://github.com/kreuzberg-dev/kreuzberg/releases/download/v4.7.2/kreuzberg-cli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 409a35c302320e9fa7465e3fcb97b7a3f8730258df3b7840316a98ddfa8cacce
 
 pkgname = kreuzberg-bin
