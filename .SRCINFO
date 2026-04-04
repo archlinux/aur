@@ -1,17 +1,18 @@
 pkgbase = perl-ipc-sharelite
 	pkgdesc = Lightweight interface to shared memory
 	pkgver = 0.17
-	pkgrel = 6
-	url = http://search.cpan.org/~andya/IPC-ShareLite-0.17/
+	pkgrel = 7
+	url = https://metacpan.org/dist/IPC-ShareLite
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = GPL
-	license = PerlArtistic
-	depends = glibc
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-pathtools
+	depends = perl-test-simple
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANDYA/IPC-ShareLite-0.17.tar.gz
-	sha512sums = f796f6766df11205755de4672ff8a586690545ccaa2f91c3fc65f106f3b61e1cbd86ee3e97dadf787809e3be32f503670cb67dafc9b18eee30d59d8be03b5ee9
+	source = https://cpan.metacpan.org/authors/id/A/AN/ANDYA/IPC-ShareLite-0.17.tar.gz
+	sha256sums = 14d406b91da96d6521d0d1a82d22a306274765226b86b0a56e7ffddcf96ae7bf
 
 pkgname = perl-ipc-sharelite
-

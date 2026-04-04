@@ -1,50 +1,56 @@
-# Maintainer: suthernfriend <public@janpeterkoenig.com>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: suthernfriend <public@janpeterkoenig.com>
 # Contributor: ajs124 < aur AT ajs124 DOT de >
 # Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
-pkgname=perl-ipc-sharelite
-_cpanname="IPC-ShareLite"
+_author=ANDYA
+_dist=IPC-ShareLite
+pkgname=perl-${_dist@L}
 pkgver=0.17
-pkgrel=6
-pkgdesc="Lightweight interface to shared memory"
-arch=('x86_64' 'aarch64' 'armv7h')
-url="http://search.cpan.org/~andya/$_cpanname-$pkgver/"
-license=('GPL' 'PerlArtistic')
-depends=('glibc')
+pkgrel=7
+pkgdesc='Lightweight interface to shared memory'
+arch=(
+    'x86_64'
+    'aarch64'
+    'armv7h'
+)
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-pathtools'
+    'perl-test-simple'
+)
+makedepends=('perl-extutils-makemaker')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/A/AN/ANDYA/$_cpanname-$pkgver.tar.gz")
-sha512sums=('f796f6766df11205755de4672ff8a586690545ccaa2f91c3fc65f106f3b61e1cbd86ee3e97dadf787809e3be32f503670cb67dafc9b18eee30d59d8be03b5ee9')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('14d406b91da96d6521d0d1a82d22a306274765226b86b0a56e7ffddcf96ae7bf')
 
-# Function to change to the working directory and set
-# environment variables to override undesired options.
-prepareEnvironment() {
-	cd "$srcdir/$_cpanname-$pkgver"
-	export \
-		PERL_MM_USE_DEFAULT=1 \
-		PERL_AUTOINSTALL=--skipdeps \
-		PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    	PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-		MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-build() {
-	prepareEnvironment
-	perl Makefile.PL
-	make
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-check() {
-	prepareEnvironment
-	cd "$srcdir/$_cpanname-$pkgver"
-	make test
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-package() {
-	prepareEnvironment
-	cd "$srcdir/$_cpanname-$pkgver"
-	make install
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
-	# Remove "perllocal.pod" and ".packlist".
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-	find "$pkgdir" -type f -iname \*.so -exec strip {} \;
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
