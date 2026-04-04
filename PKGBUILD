@@ -5,7 +5,7 @@
 
 # Maintainer: Mykhailo Aleksieiev <nekohepott@larpdhq.org>
 pkgname=gogofetch-git
-pkgver=r26.f8e3c63
+pkgver=r27.57b6ae9
 pkgrel=1
 pkgdesc="Fetch written in Go with image support"
 arch=('x86_64')
@@ -33,10 +33,10 @@ prepare() {
 
 build() {
 	cd "goGoFetch"
-	go build -o "$pkgname" .
+	go build -o "gogofetch" .
 }
 
 package() {
     cd "goGoFetch"
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "gogofetch" "$pkgdir/usr/bin/gogofetch"
 }
