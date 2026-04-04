@@ -2,7 +2,7 @@
 
 _pkgname="f2p-evo"
 pkgname="f2p-evo-bin"
-pkgver="0.3.35"
+pkgver="0.3.36"
 pkgrel="1"
 pkgdesc="F2P Evo - unofficial Hytale launcher (Rust + Tauri 2 + Vue 3) with multiplayer, mods, chat, and auto-updates (binary version)"
 arch=("x86_64")
@@ -30,7 +30,7 @@ source=(
     "${_pkgname}.desktop"
 )
 sha256sums=(
-    "33f49a4659e3b4935552a16ff1d83c1b7dad130306dac02064d806fcc3018753"
+    "18d9aec024fbdc46d346a1d702cc06d518847c22c6c35fa5f8df4f4869dd7ea0"
     "0afc72abdbdfeb59919ff3b18bb3b7933d6c86b0f416cb3e610753b6fce38199"
 )
 
