@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Maintainer: Kaz Walker <me@kazatron.com>
 pkgname=workfort
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='WorkFort service shell and proxy'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('sqlite')
 makedepends=('rust' 'cargo' 'nodejs' 'pnpm' 'pkg-config')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0bb46a4b89bf73ad3617dc8a36b39de0527d05b8d4a1bafb0770bbd7a2408b88')
+sha256sums=('b311afa07d23e25afdbe44edceaef9084a05fe5ab9f6e61957807036ca3a3f6d')
 
 build() {
     cd "Scope-${pkgver}"

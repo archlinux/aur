@@ -1,6 +1,6 @@
 pkgbase = workfort
 	pkgdesc = WorkFort service shell and proxy
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/Work-Fort/Scope
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = workfort
 	makedepends = pnpm
 	makedepends = pkg-config
 	depends = sqlite
-	source = https://github.com/Work-Fort/Scope/archive/refs/tags/v0.5.1.tar.gz
-	sha256sums = 0bb46a4b89bf73ad3617dc8a36b39de0527d05b8d4a1bafb0770bbd7a2408b88
+	source = https://github.com/Work-Fort/Scope/archive/refs/tags/v0.5.2.tar.gz
+	sha256sums = b311afa07d23e25afdbe44edceaef9084a05fe5ab9f6e61957807036ca3a3f6d
 
 pkgname = workfort
