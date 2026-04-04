@@ -1,6 +1,6 @@
 # Maintainer: Zeus-Deus <codemux at codemux dot org>
 pkgname=codemux-bin
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="The Agentic Development Environment for Builders"
 arch=('x86_64')
@@ -9,11 +9,12 @@ license=('custom:Elastic-2.0')
 depends=('webkit2gtk-4.1' 'gtk3' 'glib2' 'openssl' 'git' 'ydotool' 'xdg-utils' 'ripgrep' 'fd' 'github-cli')
 optdepends=(
     'chromium: browser panes (or google-chrome, brave)'
+    'agent-browser: browser automation CLI (bundled in AppImage, AUR package optional)'
 )
 provides=('codemux')
 conflicts=('codemux')
 source=("https://github.com/Zeus-Deus/codemux/releases/download/v${pkgver}/codemux_${pkgver}_amd64.AppImage")
-sha256sums=('3fcc4605ef5f14fe10c204758c82ac202e67e0f575d28e6b87ec5cbb072b3a8f')
+sha256sums=('6d96b2bf2b98f7e089a789255f7d919a9a1c0036a9c27359277b4f01cc57ab30')
 options=('!strip')
 
 prepare() {
@@ -26,6 +27,12 @@ package() {
 
     # Binary
     install -Dm755 usr/bin/codemux "${pkgdir}/usr/bin/codemux"
+
+    # Sidecar: agent-browser binary (bundled in AppImage by Tauri externalBin)
+    if [ -f usr/bin/agent-browser-x86_64-unknown-linux-gnu ]; then
+        install -Dm755 usr/bin/agent-browser-x86_64-unknown-linux-gnu \
+            "${pkgdir}/usr/bin/agent-browser-x86_64-unknown-linux-gnu"
+    fi
 
     # Desktop entry
     install -Dm644 usr/share/applications/codemux.desktop "${pkgdir}/usr/share/applications/codemux.desktop"

@@ -1,6 +1,6 @@
 pkgbase = codemux-bin
 	pkgdesc = The Agentic Development Environment for Builders
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/Zeus-Deus/codemux
 	arch = x86_64
@@ -16,10 +16,11 @@ pkgbase = codemux-bin
 	depends = fd
 	depends = github-cli
 	optdepends = chromium: browser panes (or google-chrome, brave)
+	optdepends = agent-browser: browser automation CLI (bundled in AppImage, AUR package optional)
 	provides = codemux
 	conflicts = codemux
 	options = !strip
-	source = https://github.com/Zeus-Deus/codemux/releases/download/v0.1.9/codemux_0.1.9_amd64.AppImage
-	sha256sums = 3fcc4605ef5f14fe10c204758c82ac202e67e0f575d28e6b87ec5cbb072b3a8f
+	source = https://github.com/Zeus-Deus/codemux/releases/download/v0.1.10/codemux_0.1.10_amd64.AppImage
+	sha256sums = 6d96b2bf2b98f7e089a789255f7d919a9a1c0036a9c27359277b4f01cc57ab30
 
 pkgname = codemux-bin
