@@ -2,10 +2,10 @@
 
 pkgname=flowfox
 _pkgname=flowfox
-pkgver=140.0.0
+pkgver=150.0
 pkgrel=1
-_github_rel=140.0.0-1
-url=https://github.com/Troplo/ffox
+_github_rel=150.0-1
+url=https://git.flowinity.com/Troplo/flowfox
 conflicts=("flowfox-bin")
 pkgdesc="Fork of Firefox with minimal changes, including rebinding of default keyboard shortcuts to better match Chromium. Not affiliated with Mozilla. (Source version.)"
 arch=('x86_64' 'i686')
@@ -75,22 +75,17 @@ optdepends=(
   'xdg-desktop-portal: Screensharing with Wayland'
 )
 options=(!strip)
-_archive="https://github.com/Troplo/ffox/archive/refs/tags/"
-source_x86_64=("$_archive$_github_rel.tar.gz")
+_archive="https://git.flowinity.com/Troplo/flowfox/-/archive/"
+source_x86_64=("$_archive$_github_rel/flowfox-$_github_rel.tar.gz")
 source=($_pkgname.sh
         $_pkgname.desktop
         policies.json
         default192.png)
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
-sha256sums_x86_64=('SKIP')
 
 # Prepare and Build scripts based on Librewolf's PKGBUILDs
 prepare() {
   mkdir -p mozbuild
-  cd ffox-$_github_rel
+  cd flowfox-$_github_rel
 
   cp browser/config/mozconfig ../mozconfig
 
@@ -164,7 +159,7 @@ fi
 
 
 build() {
-  cd ffox-$_github_rel
+  cd flowfox-$_github_rel
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -255,7 +250,7 @@ END
 }
 
 package() {
-  cd ffox-$_github_rel
+  cd flowfox-$_github_rel
   DESTDIR="$pkgdir" ./mach install
 
   # mv ${pkgdir}/usr/local/lib ${pkgdir}/usr/lib/
@@ -310,3 +305,8 @@ END
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
 }
+sha256sums=('c0c1c769c4d0f725a340d567021bb81170a30417aae31af632c62320bcf22f1e'
+            '67bd4db8eb21be88d80dc0df8cdabbea59295784c2614157e963162504324053'
+            '6e1e97053fa272ad282428cf05b8cde07842353e8dfff7210c91c74842a3e71e'
+            '33c251a087926ef2c1398f7b7ea5b9bad8ab71c624590f9d1df754cb52d3d4b6')
+sha256sums_x86_64=('f4b089b38e0e644ce5ff8a87181a00b2c78c202c92d7e9d4cb1a0424ec09924b')
