@@ -3,14 +3,14 @@
 # Contributor: Daurnimator <daurnimator@archlinux.org>
 
 : ${_branch:=main}
-: ${_ver_wlr:=0.19}
+: ${_ver_wlr:=0.20}
 
 : ${ZVM_PATH:=$SRCDEST/zvm-data}
 export ZVM_PATH
 
 _pkgname="river"
 pkgname="$_pkgname-git"
-pkgver=0.4.r348.g7a76c24
+pkgver=0.4.0.r30.g79e09c3
 pkgrel=1
 pkgdesc="A dynamic tiling wayland compositor"
 url='https://codeberg.org/river/river'
@@ -84,10 +84,6 @@ prepare() {
 
 pkgver() {
   cd "$_pkgsrc"
-
-  # first reference to river-window-management protocol
-  git tag v0.4 c47c8fc33011505b6b50d82813f571ad635558c3
-
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
