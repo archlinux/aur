@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 
-pkgname=whatsie-git
+pkgname=whatsie
 pkgver=5.1.0.r0.g004863f
 pkgrel=1
 pkgdesc="Fast Light weight WhatsApp Client based on Qt's WebEngine, With lots of settings and packed goodies"

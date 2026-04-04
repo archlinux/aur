@@ -1,4 +1,4 @@
-pkgbase = whatsie-git
+pkgbase = whatsie
 	pkgdesc = Fast Light weight WhatsApp Client based on Qt's WebEngine, With lots of settings and packed goodies
 	pkgver = 5.1.0.r0.g004863f
 	pkgrel = 1
@@ -23,4 +23,4 @@ pkgbase = whatsie-git
 	source = whatsie::git+https://github.com/keshavbhatt/whatsie
 	sha256sums = SKIP
 
-pkgname = whatsie-git
+pkgname = whatsie
