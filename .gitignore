@@ -1,7 +1,6 @@
 pkg
 src
-*.patch
+autofs-5.1.9-*.patch
 *.sign
 *.tar.xz
 *.tar.zst
-patch_order*

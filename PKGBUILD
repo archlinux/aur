@@ -28,11 +28,13 @@ backup=('etc/autofs/auto.master'
 _mirror='https://mirrors.edge.kernel.org'
 _mirrorpath="${_mirror}/pub/linux/daemons/${pkgname}/v5"
 source=(${_mirrorpath}/${pkgname}-${pkgver}.tar.{xz,sign}
-        ${_mirrorpath}/patches-5.2.0/autofs-5.1.9-Fix-incompatible-function-pointer-types-in-cyrus-sasl-module.patch{,.sign})
+        ${_mirrorpath}/patches-5.2.0/autofs-5.1.9-Fix-incompatible-function-pointer-types-in-cyrus-sasl-module.patch{,.sign}
+        autofs-arch-configuration-path.patch)
 sha256sums=('87e6af6a03794b9462ea519781e50e7d23b5f7c92cd59e1142c85d2493b3c24b'
             'SKIP'
             '0cf9d836765d3df70994c281278b2f068f15914b03a36c7b897f8fbcd82bd27e'
-            'SKIP')
+            'SKIP'
+            'def52bda93a414896c41e587c2ffbefdd360767f938399767b7582d55c329a34')
 # gpg key for Ian Kent <raven@themaw.net>, the maintainer of autofs
 validpgpkeys=('CD0A6E3CBB6768800B0736A8E7677380F54FD8A9')
 
@@ -40,9 +42,7 @@ prepare() {
   cd "${pkgname}-${pkgver}"
 
   patch --forward --strip=1 --input=../autofs-5.1.9-Fix-incompatible-function-pointer-types-in-cyrus-sasl-module.patch
-
-  sed -i -e 's|/etc/auto.misc|/etc/autofs/auto.misc|' \
-         -e 's|/etc/auto.master.d|/etc/autofs/auto.master.d|' samples/auto.master
+  patch --forward --strip=1 --input=../autofs-arch-configuration-path.patch
 }
 
 build() {

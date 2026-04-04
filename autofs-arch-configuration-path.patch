@@ -1,0 +1,30 @@
+diff -ura autofs-5.1.9-orig/samples/auto.master autofs-5.1.9/samples/auto.master
+--- autofs-5.1.9-orig/samples/auto.master	2023-11-03 01:46:34.000000000 +0100
++++ autofs-5.1.9/samples/auto.master	2026-04-04 10:00:36.181215121 +0200
+@@ -4,7 +4,7 @@
+ # mount-point [map-type[,format]:]map [options]
+ # For details of the format look at auto.master(5).
+ #
+-/misc	/etc/auto.misc
++/misc	/etc/autofs/auto.misc
+ #
+ # NOTE: mounts done from a hosts map will be mounted with the
+ #	"nosuid" and "nodev" options unless the "suid" and "dev"
+@@ -12,14 +12,14 @@
+ #
+ /net	-hosts
+ #
+-# Include /etc/auto.master.d/*.autofs
++# Include /etc/autofs/auto.master.d/*.autofs
+ # To add an extra map using this mechanism you will need to add
+-# two configuration items - one /etc/auto.master.d/extra.autofs file
++# two configuration items - one /etc/autofs/auto.master.d/extra.autofs file
+ # (using the same line format as the auto.master file)
+ # and a separate mount map (e.g. /etc/auto.extra or an auto.extra NIS map)
+ # that is referred to by the extra.autofs file.
+ #
+-+dir:/etc/auto.master.d
+++dir:/etc/autofs/auto.master.d
+ #
+ # If you have fedfs set up and the related binaries, either
+ # built as part of autofs or installed from another package,

@@ -26,10 +26,12 @@ pkgbase = autofs
 	source = https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/autofs-5.1.9.tar.sign
 	source = https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/patches-5.2.0/autofs-5.1.9-Fix-incompatible-function-pointer-types-in-cyrus-sasl-module.patch
 	source = https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/patches-5.2.0/autofs-5.1.9-Fix-incompatible-function-pointer-types-in-cyrus-sasl-module.patch.sign
+	source = autofs-arch-configuration-path.patch
 	validpgpkeys = CD0A6E3CBB6768800B0736A8E7677380F54FD8A9
 	sha256sums = 87e6af6a03794b9462ea519781e50e7d23b5f7c92cd59e1142c85d2493b3c24b
 	sha256sums = SKIP
 	sha256sums = 0cf9d836765d3df70994c281278b2f068f15914b03a36c7b897f8fbcd82bd27e
 	sha256sums = SKIP
+	sha256sums = def52bda93a414896c41e587c2ffbefdd360767f938399767b7582d55c329a34
 
 pkgname = autofs
