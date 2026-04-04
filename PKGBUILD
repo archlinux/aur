@@ -1,6 +1,6 @@
 pkgname=twintaillauncher
-pkgver=1.1.15
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 _dirname="TwintailLauncher-ttl-v${pkgver}"
 pkgdesc='A multi-platform launcher for your anime games'
 arch=('x86_64')
@@ -27,7 +27,7 @@ build() {
 
 package() {
   install -Dm644 "$_dirname/LICENSE" -t "$pkgdir/usr/share/licenses/"
-  install -Dm755 "$_dirname/src-tauri/target/release/resources/hpatchz" -t "$pkgdir/usr/lib/twintaillauncher/resources/"
+  install -Dm755 "$_dirname/src-tauri/target/release/resources/winetricks" -t "$pkgdir/usr/lib/twintaillauncher/resources/"
   install -Dm755 "$_dirname/src-tauri/target/release/resources/reaper" -t "$pkgdir/usr/lib/twintaillauncher/resources/"
   install -Dm644 "$_dirname/src-tauri/target/release/resources/hkrpg_patch.dll" -t "$pkgdir/usr/lib/twintaillauncher/resources/"
   install -Dm755 "$_dirname/src-tauri/target/release/twintaillauncher" -t "$pkgdir/usr/bin"
