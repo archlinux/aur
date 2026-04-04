@@ -1,0 +1,10 @@
+post_install() {
+    echo "AdGuard CLI has been installed."
+    echo "  Documentation: https://adguard.com/kb/adguard-for-linux/installation/"
+    echo "Below are commands you may need to log in, enable protection, and manage the AdGuard settings:"
+    echo "  adguard-cli activate                 - to enter your license information"
+    echo "  adguard-cli configure                - to run the configuration wizard"
+    echo "  adguard-cli cert                     - to install the certificate"
+    echo "  adguard-cli start                    - to start AdGuard proxy server"
+    echo "  You can also configure systemd service to run adguard-cli automatically, please refer to the documentation: https://adguard.com/kb/adguard-for-linux/solving-problems/cli-auto-start/"
+}
