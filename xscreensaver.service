@@ -1,0 +1,12 @@
+[Unit]
+Description=XScreenSaver
+After=display-manager.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/xscreensaver -no-splash
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

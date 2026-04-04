@@ -1,0 +1,108 @@
+#!/usr/bin/env python3
+import sys
+import subprocess
+from PyQt6.QtWidgets import QApplication, QSystemTrayIcon, QMenu
+from PyQt6.QtGui import QIcon, QColor, QPixmap, QPainter, QPen, QBrush
+from PyQt6.QtCore import QTimer, Qt
+
+class XScreensaverToggle:
+    def __init__(self):
+        self.app = QApplication(sys.argv)
+        self.tray = QSystemTrayIcon()
+        self.menu = QMenu()
+
+        self.status_action = self.menu.addAction("")
+        self.status_action.setEnabled(False)
+
+        self.menu.addSeparator()
+        self.menu.addAction("Quit").triggered.connect(self.app.quit)
+
+        self.tray.setContextMenu(self.menu)
+
+        # Connect left click to toggle
+        self.tray.activated.connect(self.on_tray_activated)
+
+        self.tray.show()
+
+        # Cache icons
+        self._icon_on = self.create_icon(True)
+        self._icon_off = self.create_icon(False)
+
+        self.update_status()
+
+        # Update status
+        timer = QTimer()
+        timer.timeout.connect(self.update_status)
+        timer.start(5000)  # 5 seconds instead of 2
+
+        sys.exit(self.app.exec())
+
+    def on_tray_activated(self, reason):
+        # Toggle on left click (Trigger reason = 2)
+        if reason == QSystemTrayIcon.ActivationReason.Trigger:
+            self.toggle()
+
+    def is_enabled(self):
+        result = subprocess.run(
+            ["systemctl", "--user", "is-enabled", "xscreensaver.service"],
+            capture_output=True
+        )
+        return result.returncode == 0
+
+    def toggle(self):
+        if self.is_enabled():
+            subprocess.run(["systemctl", "--user", "disable", "--now", "xscreensaver.service"])
+        else:
+            subprocess.run(["systemctl", "--user", "enable", "--now", "xscreensaver.service"])
+        self.update_status()
+
+    def update_status(self):
+        enabled = self.is_enabled()
+        status_text = "✓ xscreensaver: ON" if enabled else "✗ xscreensaver: OFF"
+        self.status_action.setText(status_text)
+
+        # Use cached icon
+        self.tray.setIcon(self._icon_on if enabled else self._icon_off)
+
+    def create_icon(self, is_on):
+        # This is called only ONCE during init
+        pixmap = QPixmap(32, 32)
+        pixmap.fill(QColor("transparent"))
+
+        painter = QPainter(pixmap)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+
+        # Monitor frame
+        frame_color = QColor("gray")
+        pen = QPen(frame_color)
+        pen.setWidth(2)
+        painter.setPen(pen)
+        painter.setBrush(frame_color)
+
+        # Draw monitor body
+        painter.drawRect(4, 8, 24, 16)
+
+        # Draw stand
+        painter.drawRect(12, 24, 8, 4)
+
+        # Screen area
+        screen_color = QColor("gray") if is_on else QColor("black")
+        painter.setBrush(screen_color)
+        painter.setPen(screen_color)
+        painter.drawRect(6, 10, 20, 12)
+
+        # Add glow effect when ON
+        if is_on:
+            # Draw a faint outer glow (light gray ring)
+            glow_pen = QPen(QColor(200, 200, 200, 80))  # Light gray, semi-transparent
+            glow_pen.setWidth(1)
+            painter.setPen(glow_pen)
+            painter.setBrush(Qt.BrushStyle.NoBrush)
+            painter.drawRect(3, 7, 26, 18)  # Slightly larger than monitor frame
+            painter.drawRect(5, 9, 22, 14)  # Inner glow ring
+
+        painter.end()
+        return QIcon(pixmap)
+
+if __name__ == "__main__":
+    XScreensaverToggle()
