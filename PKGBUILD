@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=sacad
-pkgver=3.0.0.b9
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Smart Automatic Cover Art Downloader'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'ffmpeg')
 options=(!lto)  # causes issues, fat lto is already enabled for the release profile in Cargo.toml anyway
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('0d834456143b1915ee72662a6f057f5e07805f2b5aff06926ba876a6502f850055b70dab77d3be2510e0a7af91bba252ea0ceaea780dedb292b5797da54ac71c')
+sha512sums=('88dec8eaa24dbad5806fce2b4c2df4f07502adb06c858c93c89878f76a54e1cbd799df268f5748daaa8cd446a1ebadf6999ec48ba26eb654728e22bc05ae09b5')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
