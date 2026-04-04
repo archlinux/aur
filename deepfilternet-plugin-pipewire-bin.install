@@ -1,0 +1,11 @@
+post_install() {
+	echo 'taken from deepfilter-mono-source.conf' >&2
+	echo '==========' >&2
+	echo '# 5. Run the DeepFilter pipewire filter via `pipewire -c filter-chain.conf`' >&2
+	echo '==========' >&2
+}
+post_upgrade() {
+	echo 'in case u forgot:' >&2
+	post_install
+}
+
