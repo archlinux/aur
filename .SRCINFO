@@ -1,0 +1,23 @@
+pkgbase = refurb-git
+	pkgdesc = A tool for refurbishing and modernizing Python codebases (development version)
+	pkgver = 2.3.1.r0.g0dbb127
+	pkgrel = 1
+	url = https://github.com/dosisod/refurb
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = mypy
+	depends = python
+	provides = refurb
+	conflicts = python-refurb
+	conflicts = refurb
+	replaces = python-refurb-git
+	options = !strip
+	source = refurb::git+https://github.com/dosisod/refurb.git
+	sha256sums = SKIP
+
+pkgname = refurb-git
