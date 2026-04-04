@@ -1,30 +1,34 @@
-# Maintainer: torikulhabib <torik.habib@gmail.com>
+# Maintainer: Torikul Habib <torik.habib@gmail.com>
 pkgname=gabutdm-master
 pkgver=2.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple, fast, and powerful Download Manager built with GTK4"
 arch=('x86_64')
 url="https://github.com/gabutakut/gabutdm"
 license=('LGPL2.1')
 depends=(
-  'gtk4'
-  'libadwaita'
-  'aria2'
-  'libqrencode'
-  'libcanberra'
   'glib2'
+  'gtk4'
   'sqlite'
-  'networkmanager'
+  'libcanberra'
+  'libsoup3'
+  'libgee'
+  'json-glib'
+  'libqrencode'
+  'gdk-pixbuf2'
+  'cairo'
+  'libadwaita'
+  'ffmpeg'
+  'aria2'
 )
 makedepends=(
   'meson'
   'ninja'
   'vala'
   'pkg-config'
-  'git'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gabutakut/gabutdm/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8667bf33887648ea6bbe55900c74cd3da3c22a14e7750338553994d641a6b096')
+sha256sums=('4da22ccbf853856cca6871c83999bf7bfe3152c12fded86d33776dd2e092efac')
 
 build() {
   cd "$pkgname-$pkgver"
