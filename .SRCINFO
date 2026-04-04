@@ -1,6 +1,6 @@
 pkgbase = castword-gnome-bin
 	pkgdesc = GNOME overlay for LLM-powered text tone rewriting
-	pkgver = 2026.04.04.04
+	pkgver = 2026.04.04.05
 	pkgrel = 1
 	url = https://shapemachine.xyz/castword
 	install = castword-gnome-bin.install
@@ -13,7 +13,7 @@ pkgbase = castword-gnome-bin
 	depends = gtk4
 	provides = castword-gnome
 	conflicts = castword-gnome
-	source = castword-gnome-bin-2026-04-04-04.pkg.tar.zst::https://github.com/Shape-Machine/castword-gnome/releases/download/v2026-04-04-04/castword-gnome-2026-04-04-04-any.pkg.tar.zst
-	sha256sums = 202fb260803bb407ed15fe3c9f8135b95b13223b4f4d756cbb9c66ff03a1be07
+	source = castword-gnome-bin-2026-04-04-05.pkg.tar.zst::https://github.com/Shape-Machine/castword-gnome/releases/download/v2026-04-04-05/castword-gnome-2026-04-04-05-any.pkg.tar.zst
+	sha256sums = 0c424e771bab501d91fbf665a65796b2a668a45bd171926a42a5b7a15a01f0e7
 
 pkgname = castword-gnome-bin
