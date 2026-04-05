@@ -5,7 +5,7 @@ _author=FLORA
 _dist=CatalystX-REPL
 pkgname=perl-${_dist@L}
 pkgver=0.04
-pkgrel=2
+pkgrel=3
 pkgdesc='read-eval-print-loop for debugging your Catalyst application'
 arch=('any')
 url=https://metacpan.org/release/$_author/$_dist-$pkgver
@@ -13,7 +13,7 @@ license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl'
     'perl-carp-repl'
-    'perl-catalyst-runtime>=5.800006'
+    'perl-catalyst-runtime>=5.80006'
     'perl-namespace-autoclean'
 )
 options=('!emptydirs')
