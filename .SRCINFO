@@ -1,16 +1,15 @@
 pkgbase = bongocat
 	pkgdesc = Delightful Wayland overlay that displays an animated bongo cat reacting to keyboard input
-	pkgver = 1.4.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/saatvik333/wayland-bongocat
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = wayland-protocols
 	makedepends = make
 	makedepends = gcc
 	depends = wayland
-	source = bongocat-1.4.0.tar.gz::https://github.com/saatvik333/wayland-bongocat/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = 488e911db2127fa740535d4228fa76d83cbe7427c7644675a0b242eba807c57e
+	source = bongocat-2.0.0.tar.gz::https://github.com/saatvik333/wayland-bongocat/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 7f080cad5acdbce08323287ad05b252c95fb0095a1795364c2130eab1bdcf70c
 
 pkgname = bongocat
