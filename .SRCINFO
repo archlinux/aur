@@ -1,16 +1,23 @@
 pkgbase = perl-moosex-setonce
 	pkgdesc = write-once, read-many attributes for Moose
 	pkgver = 0.203
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = https://metacpan.org/release/MooseX-SetOnce
+	url = https://metacpan.org/dist/MooseX-SetOnce
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-lib
+	checkdepends = perl-moose
+	checkdepends = perl-pathtools
 	checkdepends = perl-test-fatal
-	depends = perl-moose
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.78
+	depends = perl-moose>=0.90
+	depends = perl>=5.12.0
+	optdepends = perl-cpan-meta
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/MooseX-SetOnce-0.203.tar.gz
-	md5sums = b3429b9252ec1f001251f3dcdc9389fc
+	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/MooseX-SetOnce-0.203.tar.gz
+	sha256sums = 3cd2f3664e438382cf844b679350a2e428b760927e2cf18fccdc468a7bc3066f
 
 pkgname = perl-moosex-setonce

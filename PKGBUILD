@@ -1,42 +1,59 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-pkgname='perl-moosex-setonce'
-pkgver='0.203'
-pkgrel='1'
-epoch='1'
-pkgdesc="write-once, read-many attributes for Moose"
+
+_author=RJBS
+_dist=MooseX-SetOnce
+pkgname=perl-${_dist@L}
+pkgver=0.203
+pkgrel=2
+epoch=1
+pkgdesc='write-once, read-many attributes for Moose'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-moose>=0.90'
+    'perl>=5.12.0'
+)
+makedepends=('perl-extutils-makemaker>=6.78')
+checkdepends=(
+    'perl-extutils-makemaker'
+    'perl-lib'
+    'perl-moose'
+    'perl-pathtools'
+    'perl-test-fatal'
+    'perl-test-simple'
+)
+optdepends=('perl-cpan-meta')
 options=('!emptydirs')
-depends=('perl-moose')
-checkdepends=('perl-test-fatal')
-url='https://metacpan.org/release/MooseX-SetOnce'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/MooseX-SetOnce-0.203.tar.gz')
-md5sums=('b3429b9252ec1f001251f3dcdc9389fc')
-_distdir="MooseX-SetOnce-0.203"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('3cd2f3664e438382cf844b679350a2e428b760927e2cf18fccdc468a7bc3066f')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
