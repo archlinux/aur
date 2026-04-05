@@ -1,7 +1,7 @@
 # Maintainer: Prabhat Kumar <hi@prbhtkumr.xyz>
 pkgname=gaur
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A beautiful, interactive TUI for Arch Linux package management"
 arch=('x86_64' 'aarch64')
 url="https://github.com/prbhtkumr/gaur"

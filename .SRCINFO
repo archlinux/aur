@@ -1,7 +1,7 @@
 pkgbase = gaur
 	pkgdesc = A beautiful, interactive TUI for Arch Linux package management
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/prbhtkumr/gaur
 	arch = x86_64
 	arch = aarch64
