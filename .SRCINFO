@@ -1,0 +1,13 @@
+pkgbase = twitch-hls-client
+	pkgdesc = Minimal CLI client for watching Twitch streams
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/2bc4/twitch-hls-client
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = clang
+	source = twitch-hls-client-1.6.2.tar.gz::https://github.com/2bc4/twitch-hls-client/archive/refs/tags/1.6.2.tar.gz
+	sha256sums = ba08ddd702327bfbae69334522a9734e0b56d92befbe05eef523f080da6b9847
+
+pkgname = twitch-hls-client
