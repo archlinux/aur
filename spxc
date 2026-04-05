@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.7.2"
+VERSION="V1.7.3"
 
 case "$1" in
     -v)
@@ -22,6 +22,10 @@ case "$1" in
     -bckup)
         TARGET=$2
         if [ -z "$TARGET" ]; then echo "Usage: spxc -bckup [directory]"; exit 1; fi
+        if [ -d "$TARGET" ]; then
+            read -p "Directory $TARGET already exists. Overwrite? (y/N): " choice
+            [[ "$choice" != [Yy]* ]] && echo "Operation cancelled." && exit 1
+        fi
         mkdir -p "$TARGET"
         cp /usr/bin/spxc "$TARGET"/
         [ -f /usr/bin/spxc-web ] && cp /usr/bin/spxc-web "$TARGET"/
@@ -31,6 +35,8 @@ case "$1" in
         SOURCE=$2
         if [ -z "$SOURCE" ]; then echo "Usage: spxc -rvbckup [directory]"; exit 1; fi
         if [ ! -d "$SOURCE" ]; then echo "Backup directory not found."; exit 1; fi
+        read -p "This will overwrite your system binaries. Are you sure? (y/N): " choice
+        [[ "$choice" != [Yy]* ]] && echo "Operation cancelled." && exit 1
         sudo cp "$SOURCE"/spxc /usr/bin/
         [ -f "$SOURCE"/spxc-web ] && sudo cp "$SOURCE"/spxc-web /usr/bin/
         echo "Backup restored."
