@@ -1,45 +1,54 @@
 # Maintainer: Inplico UK James@inplico.uk
 pkgname=wkgtk-html2pdf
-pkgver=0.0.16
-pkgrel=0
+pkgver=1.0.13
+pkgrel=2
 pkgdesc="C++ Library with CLI tool to convert HTML to PDF, A modern replacement for wkhtmltopdf"
 arch=(x86_64)
 url="https://github.com/Timh1970/wkgtk-html2pdf"
 license=('MIT')
-makedepends=(git)
-depends=(podofo webkit2gtk-4.1 systemd xorg-server-xvfb)
-conflicts=(libicprint)
+makedepends=('git' 'pkgconf')
+depends=('podofo' 'webkit2gtk-4.1' 'webkitgtk-6.0' 'json-c' 'libsystemd' 'xorg-server-xvfb')
+conflicts=()
 install=wk2gtkpdf.install
-source=("https://github.com/Timh1970/wkgtk-html2pdf/archive/refs/tags/v0.0.16-rc1.tar.gz")
-sha256sums=('907d66b9d693235e53a704c4ee7939049dddd9d216d3ec8e6f361a45b5a598e5')
+source=("git+https://github.com/Timh1970/wkgtk-html2pdf.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 build() {
 
-    stagedir="${srcdir}/staging"
+	stagedir="${srcdir}/staging"
     rm -rf "${stagedir}"
     mkdir -p "${stagedir}"
 
-    make -C "${srcdir}/${pkgname}-${pkgver}-rc1/src/wk2gtkpdf"
-    make -C "${srcdir}/${pkgname}-${pkgver}-rc1/src/wk2gtkpdf" install DESTDIR="${stagedir}"
 
-    export PKG_CONFIG_PATH="${stagedir}/usr/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+    CPPFLAGS="$CPPFLAGS -DPODOFO_010" make -C ${srcdir}/${pkgname}/src/wk2gtkpdf
+	CPPFLAGS="$CPPFLAGS -DPODOFO_010" make -C "${srcdir}/${pkgname}/src/wk2gtkpdf" install DESTDIR="${stagedir}"
 
-    export CPPFLAGS="-DPODOFO_010 -I${stagedir}/usr/include ${CPPFLAGS:-}"
+	# library
+	rm ${srcdir}/${pkgname}/src/wk2gtkpdf/*.o
+
+	CPPFLAGS="-DPODOFO_010 -DUSE_WEBKIT_6 $CPPFLAGS" make -C ${srcdir}/${pkgname}/src/wk2gtkpdf
+    CPPFLAGS="-DPODOFO_010 -DUSE_WEBKIT_6 $CPPFLAGS" make -C "${srcdir}/${pkgname}/src/wk2gtkpdf" install DESTDIR="${stagedir}"
+	export PKG_CONFIG_PATH="${stagedir}/usr/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
     export LDFLAGS="-L${stagedir}/usr/lib ${LDFLAGS:-}"
-
-    make -C "${srcdir}/${pkgname}-${pkgver}-rc1/src/cli"
+	CPPFLAGS="-I${stagedir}/usr/include -DPODOFO_010 -DUSE_WEBKIT_6 $CPPFLAGS" make -C ${srcdir}/${pkgname}/src/cli
 
 }
 
 package() {
 
-	make install -C "${srcdir}/${pkgname}-${pkgver}-rc1/src/cli" DESTDIR="${pkgdir}"
-	make install -C "${srcdir}/${pkgname}-${pkgver}-rc1/src/wk2gtkpdf" DESTDIR="${pkgdir}"
-	install -Dm644 -t "$pkgdir/usr/lib/systemd/system" ${srcdir}/${pkgname}-${pkgver}-rc1/xvfb.service
-	install -Dm644 -t "$pkgdir/usr/share/polkit-1/rules.d" ${srcdir}/${pkgname}-${pkgver}-rc1/50-wk2gtkpdf.rules
-	install -Dm644 -t "$pkgdir/usr/share/wk2gtkpdf/" ${srcdir}/${pkgname}-${pkgver}-rc1/templates/*.css
-	install -Dm644 -t "$pkgdir/usr/share/wk2gtkpdf/" ${srcdir}/${pkgname}-${pkgver}-rc1/overflow-monitor.js
-	install -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname}" ${srcdir}/${pkgname}-${pkgver}-rc1/LICENSE
+	CPPFLAGS="-DPODOFO_010 -DUSE_WEBKIT_6 ${CPPFLAGS:-}" make install -C "${srcdir}/${pkgname}/src/cli" DESTDIR="${pkgdir}"
+	CPPFLAGS="-DPODOFO_010 -DUSE_WEBKIT_6 ${CPPFLAGS:-}" make install -C "${srcdir}/${pkgname}/src/wk2gtkpdf" DESTDIR="${pkgdir}"
+
+	make install -C "${srcdir}/${pkgname}/src/wk2gtkpdf" DESTDIR="${pkgdir}"
+ 	install -Dm644 -t "$pkgdir/usr/lib/systemd/system" ${srcdir}/${pkgname}/xvfb.service
+ 	install -Dm644 -t "$pkgdir/usr/share/polkit-1/rules.d" ${srcdir}/${pkgname}/50-wk2gtkpdf.rules
+
+	# INSTALL THE EXAMPLES
+	cd "$srcdir/$pkgname/examples"
+    # Find every file and install it, recreating the directory structure
+    find . -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/doc/$pkgname/examples/{}" \;
+
+	install -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname}" ${srcdir}/${pkgname}/LICENSE
 
 }
 
