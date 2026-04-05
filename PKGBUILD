@@ -32,7 +32,8 @@ sha256sums=('SKIP')
 package() {
 
   cd "$srcdir"
-
+  # Upstream moved from Flutter to Electron.
+  # This package will no longer be maintained and will be deleted soon.
   # 解包 deb
   ar x "EchoMusic-${pkgver}.deb"
   bsdtar -xf data.tar.* -C "$pkgdir"
