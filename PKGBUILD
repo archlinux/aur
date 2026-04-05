@@ -15,7 +15,7 @@ makedepends=(
   'python-build' 'python-installer' 'python-wheel' 'python-setuptools'
 )
 source=("${url}/archive/refs/tags/${pkgver}/${pkgver}.tar.gz")
-sha512sums=('36e344c04586187b592bd2afbf4ff84dd12ac4abd987533ae46752be0ba35a7183984201698137fd11198159cb54799b2738d682f084b2fb9695e58f80b795e6')
+sha512sums=('d1e41e5d3fbd4be47989edd1f8ffd68c8d2dffcb086144e6cb864f7f84ef41c2db0fc9e76ea1d4000ff304471c3478f1a134b0e33f43e6d8917c1b1a81b737a2')
 
 build() {
   cd "$pkgname-$pkgver"
