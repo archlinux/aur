@@ -3,8 +3,8 @@
 # Maintainer: shenmo <shenmo@spark-app.store>
 
 pkgname=amber-package-manager
-pkgver=1.2.3
-pkgrel=3
+pkgver=1.2.4
+pkgrel=1
 pkgdesc="bwrap wrapper for install and running debs inside a Amber-PM container"
 arch=('x86_64')
 url="https://gitee.com/amber-ce/amber-pm/"
@@ -15,7 +15,7 @@ conflicts=('ace-host-integration' 'amber-pm-store')
 # provides=('amber-package-manager')
 
 source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-ce/amber-pm/repository/archive/${pkgver}.tar.gz")
-sha256sums=('a0d08dac3dfb02ca2c745757d500f067dd4ff523fb848aaf989f343e12987fcb')
+sha256sums=('3dd55f7b932751b1cb90ed7d3754c3c97d8dd767fafcebb35810df1d495ed15c')
 
 install=amber-package-manager.install
 build() {
@@ -31,7 +31,7 @@ package() {
     cp -a usr "$pkgdir/"
     cp -a var "$pkgdir/"
 
-    rm -rf "${pkgdir}/usr/share/fish"
+    # rm -rf "${pkgdir}/usr/share/fish"
 
     # cd "$pkgdir/"
     # chmod 755 -R .
