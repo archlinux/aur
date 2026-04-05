@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-readonly-beta'
 _edition=' Readonly Beta'
 pkgname="$_pkgname-bin"
-_pkgver='1.49.4-beta.1'
+_pkgver='1.49.5-beta.1'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version - binary version'
@@ -25,7 +25,7 @@ _betaprefix="$([[ "$_pkgname" =~ -beta$ ]] && printf 'beta/' || printf '')"
 source=(
 	"$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm"
 )
-b2sums=('f17159b76fc7664893123e6419d68cb8c2e18ea7385b1c2ff75853104eb0ce8b81a1b35f0bed8055ab8a60acfc442b842176c33859c917234ec1ad42af32a2fd')
+b2sums=('849afbe21e1d996a1e15f58b316722cc7c22cd23fed45cd19a07db3a024a80bc6920a29264dbdfa34f563b42a4548a05de141502692a390293a38c7bcb7bc34b')
 
 check() {
 	_checkoutput="$(ELECTRON_OZONE_PLATFORM_HINT='auto' "$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --no-sandbox --version)"
