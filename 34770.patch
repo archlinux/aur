@@ -1,0 +1,36 @@
+From e18771deb6ad778330f0b9f72705b882e94aa14e Mon Sep 17 00:00:00 2001
+From: Neil Schemenauer <nas@arctrix.com>
+Date: Fri, 13 Feb 2026 12:09:22 -0800
+Subject: [PATCH] [Build] Add Python 3.14 to supported version list.
+
+Signed-off-by: Neil Schemenauer <nas@arctrix.com>
+---
+ CMakeLists.txt        | 2 +-
+ pyproject.toml        | 2 +-
+ requirements/cuda.txt | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c9b1bf54e42e..e1f5818f49c0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,7 +34,7 @@ install(CODE "set(CMAKE_INSTALL_LOCAL_ONLY TRUE)" ALL_COMPONENTS)
+ # Supported python versions.  These versions will be searched in order, the
+ # first match will be selected.  These should be kept in sync with setup.py.
+ #
+-set(PYTHON_SUPPORTED_VERSIONS "3.10" "3.11" "3.12" "3.13")
++set(PYTHON_SUPPORTED_VERSIONS "3.10" "3.11" "3.12" "3.13" "3.14")
+ 
+ # Supported AMD GPU architectures.
+ set(HIP_SUPPORTED_ARCHS "gfx906;gfx908;gfx90a;gfx942;gfx950;gfx1030;gfx1100;gfx1101;gfx1200;gfx1201;gfx1150;gfx1151")
+diff --git a/pyproject.toml b/pyproject.toml
+index b64254bf56c7..0fcdfabbca1b 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -31,7 +31,7 @@ classifiers = [
+     "Topic :: Scientific/Engineering :: Artificial Intelligence",
+     "Topic :: Scientific/Engineering :: Information Analysis",
+ ]
+-requires-python = ">=3.10,<3.14"
++requires-python = ">=3.10,<3.15"
+ dynamic = [ "version", "dependencies", "optional-dependencies"]
