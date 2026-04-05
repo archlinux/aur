@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V0.4"
+VERSION="V0.4.1"
 
 case "$1" in
     -v)
@@ -122,18 +122,25 @@ EOF
             exit 1
         fi
 
-        files=$(find "$DIR" -maxdepth 1 -name "*.html")
-        if [ -z "$files" ]; then
+        # Find files and store them in an array to handle spaces
+        mapfile -t files < <(find "$DIR" -maxdepth 1 -name "*.html")
+        
+        if [ ${#files[@]} -eq 0 ]; then
             echo "No HTML files found in $DIR."
             exit 0
         fi
 
         echo "The following files will be deleted:"
-        echo "$files"
-        read -p "Are you sure you want to delete these files? (y/N): " choice
+        for file in "${files[@]}"; do
+            echo "  $file"
+        done
+
+        read -p "Are you sure you want to delete these ${#files[@]} files? (y/N): " choice
         case "$choice" in
             y|Y ) 
-                rm $files
+                for file in "${files[@]}"; do
+                    rm "$file"
+                done
                 echo "HTML files removed from $DIR."
                 ;;
             * ) 
