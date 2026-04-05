@@ -1,0 +1,18 @@
+pkgbase = anythingllm-cli-bin
+	pkgdesc = CLI for chatting with your AnythingLLM instance from the terminal
+	pkgver = 0.0.13
+	pkgrel = 1
+	url = https://github.com/Mintplex-Labs/anything-llm-cli
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	depends = glibc
+	optdepends = anythingllm-desktop-bin: local AnythingLLM instance
+	provides = anythingllm-cli
+	conflicts = anythingllm-cli
+	source_x86_64 = any-linux-x64-0.0.13::https://github.com/Mintplex-Labs/anything-llm-cli/releases/download/v0.0.13/any-linux-x64
+	sha256sums_x86_64 = 3c28d054bfc2f1d9393bb42b2d9addabe623a8cb511984bac7175997ae0ae8cc
+	source_aarch64 = any-linux-arm64-0.0.13::https://github.com/Mintplex-Labs/anything-llm-cli/releases/download/v0.0.13/any-linux-arm64
+	sha256sums_aarch64 = 123471295b845c12d172b1c81d8009a8037babf27f3a6ae11f1f5bf3cf529b75
+
+pkgname = anythingllm-cli-bin
