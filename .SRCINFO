@@ -16,5 +16,6 @@ pkgbase = hyprmousetrap-git
 	source = git+https://github.com/naregderlevonean/hyprmousetrap.git
 	source = hyprmousetrap.conf
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = hyprmousetrap-git

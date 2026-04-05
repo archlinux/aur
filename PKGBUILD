@@ -12,7 +12,7 @@ provides=('hyprmousetrap')
 conflicts=('hyprmousetrap')
 source=("git+$url.git"
         "hyprmousetrap.conf")
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 build() {
     cd "$srcdir/${pkgname%-git}"
