@@ -3,12 +3,12 @@
 #      NVIDIA publishes pre-built DALI wheels on pypi.nvidia.com for cuda130.
 #      Wheel is py3-none but contains per-cpython .so files (cp39..cp313).
 #      System Python is 3.14; python313 provides the matching cp313 extension.
-#      Upgraded from AUR 1.51.0 to 1.53.0 (latest CUDA 13 compatible release).
+#      Upgraded from AUR 1.51.0 to 1.53.0, then to 2.0.0 (latest CUDA 13 compatible release).
 
 pkgname=python-nvidia-dali-cuda130
-pkgver=1.53.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='NVIDIA DALI - data loading and augmentation library for deep learning (CUDA 13.x; use python3.13)'
+pkgdesc='NVIDIA DALI 2.x - data loading and augmentation library for deep learning (CUDA 13.x; use python3.13)'
 arch=(x86_64)
 url='https://github.com/NVIDIA/DALI'
 license=('Apache-2.0')
@@ -17,7 +17,7 @@ depends=(cuda 'nvidia-utils>=590' python313)
 
 _whl="nvidia_dali_cuda130-${pkgver}-py3-none-manylinux_2_28_x86_64.whl"
 source=("https://pypi.nvidia.com/nvidia-dali-cuda130/${_whl}")
-sha256sums=('f8f0f0a6216de4d7ab933c35bbf74c20e849fb042fc816995ab5fe3f437da277')
+sha256sums=('dd950e289753cfee88fa3bfd246eedf94412010b143621fc46ea4903c0cc2ba5')
 noextract=("${_whl}")
 
 _sitepkgs313="$(python3.13 -c 'import site; print(site.getsitepackages()[0])')"
