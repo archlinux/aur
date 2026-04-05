@@ -9,6 +9,7 @@ pkgbase = gaur
 	makedepends = go>=1.21
 	depends = fzf
 	depends = pacman-contrib
+	depends = glibc
 	optdepends = paru: AUR helper (recommended)
 	optdepends = yay: AUR helper (alternative)
 	optdepends = reflector: mirror list updates
