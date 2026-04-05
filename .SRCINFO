@@ -1,6 +1,6 @@
 pkgbase = spicedb
 	pkgdesc = Open Source, Google Zanzibar-inspired database for scalably storing and querying fine-grained authorization data
-	pkgver = 1.46.2
+	pkgver = 1.51.0
 	pkgrel = 1
 	url = https://github.com/authzed/spicedb
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 
 pkgname=spicedb
-pkgver=1.46.2
+pkgver=1.51.0
 pkgrel=1
 pkgdesc="Open Source, Google Zanzibar-inspired database for scalably storing and querying fine-grained authorization data"
 arch=('x86_64' 'armv7h' 'aarch64')
