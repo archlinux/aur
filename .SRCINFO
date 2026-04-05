@@ -1,4 +1,4 @@
-pkgbase = Starfish
+pkgbase = starfish
 	pkgdesc = Starfish: Arch Depdency Viewer
 	pkgver = 0.0.1
 	pkgrel = 1
@@ -14,7 +14,7 @@ pkgbase = Starfish
 	depends = hicolor-icon-theme
 	depends = glibc
 	provides = Starfish
-	source = Starfish-0.0.1.tar.gz::https://github.com/Seafoam-Labs/Starfish/archive/v0.0.1.tar.gz
+	source = starfish-0.0.1.tar.gz::https://github.com/Seafoam-Labs/Starfish/archive/v0.0.1.tar.gz
 	sha256sums = 8b3acc13a4fc7315a3a694126da25635f173fff2e880c905759261c8afda01c3
 
-pkgname = Starfish
+pkgname = starfish

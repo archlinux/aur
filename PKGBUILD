@@ -1,6 +1,6 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
-pkgname=Starfish
+pkgname=starfish
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="Starfish: Arch Depdency Viewer"
