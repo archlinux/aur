@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-copyous-bin
+	pkgdesc = Modern Clipboard Manager for GNOME
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://extensions.gnome.org/extension/8834/copyous/
+	arch = any
+	license = GPL-3.0
+	depends = gnome-shell
+	depends = libgda6
+	depends = gsound
+	provides = gnome-shell-extension-copyous
+	conflicts = gnome-shell-extension-copyous
+	source = gnome-shell-extension-copyous.zip::https://github.com/boerdereinar/copyous/releases/download/v2.0.0/copyous@boerdereinar.dev.zip
+	sha256sums = 02dd474f0d42a65c63374a42d32e9a06f0880537c8bfaf3e3e671aba5f99ccad
+
+pkgname = gnome-shell-extension-copyous-bin
