@@ -2,7 +2,7 @@
 pkgname=proxelar-bin
 _pkgname=proxelar
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Programmable MITM proxy that intercepts HTTP/HTTPS traffic. With a TUI, terminal, and web GUI interface'
 arch=('x86_64' 'aarch64')
 url='https://github.com/emanuele-em/proxelar'
@@ -11,7 +11,7 @@ depends=('lua')
 makedepends=('cargo')
 options=(!lto !debug)
 provides=('proxelar')
-conflicts=('proxelar' 'proxelar-bin')
+conflicts=('proxelar-git' 'proxelar')
 source_x86_64=("${_pkgname}-bin-${pkgver}.tar.gz::$url/releases/download/v$pkgver/proxelar-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_pkgname}-bin-${pkgver}.tar.gz::$url/releases/download/v$pkgver/proxelar-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 source=("LICENSE::https://raw.githubusercontent.com/emanuele-em/${_pkgname}/refs/tags/v$pkgver/LICENSE-MIT")
