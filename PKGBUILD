@@ -1,7 +1,7 @@
 # Maintainer: gilbus <aur (AT) tinkershell.eu>
 pkgname=workout-tracker
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A workout tracking web application for personal use (or family, friends), geared towards running and other GPX-based activities'
 url="https://github.com/jovandeginste/workout-tracker"
 license=("MIT")
@@ -26,11 +26,23 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  # Remaining Go flags without -ldflags (set directly below)
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
+  # Build frontend separately (Makefile only used for npm part)
   make build-frontend
 
-  go build -o build ./cmd/...
+  local _buildtime
+  _buildtime=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+  go build \
+    -ldflags "-linkmode=external -extldflags \"${LDFLAGS}\" \
+      -X 'main.gitRef=refs/tags/v${pkgver}' \
+      -X 'main.gitRefName=v${pkgver}' \
+      -X 'main.gitRefType=tag' \
+      -X 'main.gitCommit=v${pkgver}' \
+      -X 'main.buildTime=${_buildtime}'" \
+    -o build ./cmd/...
 }
 
 package() {

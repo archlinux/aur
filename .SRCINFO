@@ -1,7 +1,7 @@
 pkgbase = workout-tracker
 	pkgdesc = A workout tracking web application for personal use (or family, friends), geared towards running and other GPX-based activities
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jovandeginste/workout-tracker
 	arch = x86_64
 	license = MIT
