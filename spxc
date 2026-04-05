@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.6"
+VERSION="V1.6.1"
 
 case "$1" in
     -v)
@@ -25,10 +25,19 @@ case "$1" in
         echo "--------------------------"
         ;;
     -caupd)
-        echo "Clearing yay cache..."
-        yay -Scc --noconfirm
-        echo "Performing clean update for spxc-core and spxc-webtools..."
-        yay -S spxc-core spxc-webtools --cleanbuild --noconfirm
+        echo "This will clear your entire yay cache and perform a clean update of the spxc suite."
+        read -p "Are you sure you want to proceed? (y/N): " choice
+        case "$choice" in
+            y|Y )
+                echo "Clearing yay cache..."
+                yay -Scc --noconfirm
+                echo "Performing clean update for spxc-core and spxc-webtools..."
+                yay -S spxc-core spxc-webtools --cleanbuild --noconfirm
+                ;;
+            * )
+                echo "Operation cancelled."
+                ;;
+        esac
         ;;
     -mkserv|-rmweb|-dweb)
         if command -v spxc-web &> /dev/null; then
