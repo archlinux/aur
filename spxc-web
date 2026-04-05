@@ -63,12 +63,12 @@ case "$1" in
     </div>
 
     <script>
-        const startTime = new Date();
-        document.getElementById('start-time').textContent = startTime.toLocaleTimeString();
+        const serverStartTime = new Date("$(date -R)");
+        document.getElementById('start-time').textContent = serverStartTime.toLocaleTimeString();
         
         setInterval(() => {
             const now = new Date();
-            const diff = Math.floor((now - startTime) / 1000);
+            const diff = Math.floor((now - serverStartTime) / 1000);
             const h = Math.floor(diff / 3600);
             const m = Math.floor((diff % 3600) / 60);
             const s = diff % 60;

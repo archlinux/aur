@@ -7,7 +7,7 @@ url="https://aur.archlinux.org/packages/spxc-webtools"
 license=('MIT')
 depends=('bash' 'python' 'findutils' 'coreutils')
 source=("spxc-web")
-sha256sums=('8c1606e0d9c086e2b504be28fde785211da74928e566edae52dbd2b3783e1f83')
+sha256sums=('7793655703b2ef214a9d164bc420f51d3634ea925c21cb88b7891d60e7472d52')
 
 package() {
     install -Dm755 "${srcdir}/spxc-web" "${pkgdir}/usr/bin/spxc-web"
