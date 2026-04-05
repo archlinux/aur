@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.1"
+VERSION="V1.2"
 
 case "$1" in
     -v)
@@ -173,13 +173,13 @@ EOF
             esac
         fi
 
-        echo "Generating Pro Bundle (V1.1) from $URL..."
+        echo "Generating Ultra Bundle (V1.2) from $URL..."
         python3 - <<EOF
 import urllib.request, urllib.parse, re, sys, os, json, base64
 
 url = "$URL"
 filepath = "$FILEPATH"
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'}
 base_domain = urllib.parse.urlparse(url).netloc
 pages = {} 
 resources = {}
@@ -187,62 +187,50 @@ resources = {}
 def fetch_resource(target_url, binary=False):
     try:
         req = urllib.request.Request(target_url, headers=headers)
-        with urllib.request.urlopen(req, timeout=10) as r:
+        with urllib.request.urlopen(req, timeout=15) as r:
             data = r.read()
             return data if binary else data.decode('utf-8', errors='ignore')
     except:
         return None
 
-def get_path(target_url):
-    parsed = urllib.parse.urlparse(target_url)
-    path = parsed.path
-    if not path or path == "/": path = "/index.html"
-    return path
-
 def process_page(current_url, depth=0):
-    path = get_path(current_url)
+    path = urllib.parse.urlparse(current_url).path or "/index.html"
     if path in pages: return
     
     print(f" Crawling: {current_url}")
     content = fetch_resource(current_url)
     if not content: return
 
-    # 1. Strip Service Workers & Manifests (Fixes YouTube errors)
+    # 1. Clean noisy tags
+    content = re.sub(r'<link[^>]+rel=["\'](manifest|preload|prefetch|preconnect)["\'][^>]*>', '', content)
     content = re.sub(r'navigator\.serviceWorker\.register\(.*?\)', '', content)
-    content = re.sub(r'<link[^>]+rel=["\']manifest["\'][^>]*>', '', content)
+    content = re.sub(r'<meta[^>]+http-equiv=["\'](Content-Security-Policy|X-Frame-Options)["\'][^>]*>', '', content)
 
-    # 2. Inline CSS
-    def inline_css(match):
+    # 2. Base64 Inline CSS/JS (Ultimate Character Safety)
+    def inline_assets(match):
         tag = match.group(0)
-        href_match = re.search(r'href=["\']([^"\']+)["\']', tag)
-        if href_match:
-            css_url = urllib.parse.urljoin(current_url, href_match.group(1))
-            css_content = fetch_resource(css_url)
-            if css_content:
-                return f"<style>/* {css_url} */\n{css_content}\n</style>"
+        is_js = '<script' in tag
+        attr = 'src' if is_js else 'href'
+        m = re.search(f'{attr}=["\']([^"\']+)["\']', tag)
+        if m:
+            asset_url = urllib.parse.urljoin(current_url, m.group(1))
+            data = fetch_resource(asset_url, binary=True)
+            if data:
+                b64 = base64.b64encode(data).decode('utf-8')
+                if is_js: return f'<script>eval(atob("{b64}"));</script>'
+                else: return f'<style>@import url("data:text/css;base64,{b64}");</style>'
         return tag
-    content = re.sub(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', inline_css, content)
 
-    # 3. Inline JS (Safer replacement)
-    def inline_js(match):
-        tag = match.group(0)
-        src_match = re.search(r'src=["\']([^"\']+)["\']', tag)
-        if src_match:
-            js_url = urllib.parse.urljoin(current_url, src_match.group(1))
-            js_content = fetch_resource(js_url)
-            if js_content:
-                # Wrap in CDATA to prevent syntax errors from weird chars
-                return f"<script>/* {js_url} */\n// <![CDATA[\n{js_content}\n// ]]>\n</script>"
-        return tag
-    content = re.sub(r'<script[^>]+src=["\'][^"\']+["\'][^>]*>.*?</script>', inline_js, content, flags=re.DOTALL)
+    content = re.sub(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', inline_assets, content)
+    content = re.sub(r'<script[^>]+src=["\'][^"\']+["\'][^>]*>.*?</script>', inline_assets, content, flags=re.DOTALL)
 
-    # 4. Rewrite Links
+    # 3. Rewrite internal links
     def rewrite_link(match):
         href = match.group(1)
-        if href.startswith(('#', 'javascript:', 'mailto:')): return match.group(0)
+        if href.startswith(('#', 'javascript:', 'data:')): return match.group(0)
         link_url = urllib.parse.urljoin(current_url, href)
         if urllib.parse.urlparse(link_url).netloc == base_domain:
-            return f'href="#!{get_path(link_url)}"'
+            return f'href="#!{urllib.parse.urlparse(link_url).path or "/index.html"}"'
         return match.group(0)
     content = re.sub(r'href=["\']([^"\']+)["\']', rewrite_link, content)
 
@@ -251,71 +239,58 @@ def process_page(current_url, depth=0):
     if depth < 1:
         links = re.findall(r'href=["\']#!([^"\']+)["\']', content)
         for lpath in links:
-            if lpath.endswith(('.json', '.js', '.css')):
-                res_url = urllib.parse.urljoin(url, lpath)
-                data = fetch_resource(res_url, binary=True)
-                if data: resources[lpath] = base64.b64encode(data).decode('utf-8')
-            elif lpath not in pages and not lpath.endswith(('.png', '.jpg', '.ico', '.pdf')):
+            if lpath not in pages and not lpath.endswith(('.png', '.jpg', '.ico', '.pdf', '.mp4')):
                 process_page(urllib.parse.urljoin(url, lpath), depth + 1)
 
 process_page(url)
 
-# Inject Pro Router & Error Suppressor
+# Inject Sandbox Router
 router_script = """
 <script>
 (function() {
-    // Suppress YouTube/SPA noise errors
     window.onerror = () => true;
     window.onunhandledrejection = () => true;
 
     const pages = """ + json.dumps(pages) + """;
-    const resources = """ + json.dumps(resources) + """;
     
     function loadPage(path) {
-        if (!path.startsWith('/')) path = '/' + path;
+        if (!path || path === '/') path = '/index.html';
         const b64 = pages[path] || pages[path + '.html'] || pages[path + '/index.html'];
         if (b64) {
             try {
                 const content = atob(b64);
-                const newDoc = new DOMParser().parseFromString(content, 'text/html');
-                document.documentElement.innerHTML = newDoc.documentElement.innerHTML;
-                window.scrollTo(0, 0);
-                setupRouter();
+                document.open();
+                document.write(content + `<script>(${arguments.callee.parentElement.textContent})()</script>`);
+                document.close();
             } catch(e) {}
         }
     }
 
-    function setupRouter() {
-        window.onhashchange = () => {
-            const hash = window.location.hash;
-            if (hash.startsWith('#!')) loadPage(hash.substring(2));
-        };
-        
-        const oldFetch = window.fetch;
-        window.fetch = function(input, init) {
-            let path = typeof input === 'string' ? input : input.url;
-            try {
-                const urlObj = new URL(path, window.location.href);
-                let p = urlObj.pathname;
-                if (!p.startsWith('/')) p = '/' + p;
-                if (resources[p]) {
-                    return Promise.resolve(new Response(atob(resources[p])));
-                }
-            } catch(e) {}
-            return oldFetch(input, init);
-        };
-    }
+    window.onhashchange = () => {
+        if (window.location.hash.startsWith('#!')) loadPage(window.location.hash.substring(2));
+    };
 
-    setupRouter();
+    // Block all external network calls to clean console
+    const oldFetch = window.fetch;
+    window.fetch = function(input) {
+        return Promise.reject(new Error("Network Sandbox Active"));
+    };
+    const oldXHR = window.XMLHttpRequest;
+    window.XMLHttpRequest = function() {
+        const xhr = new oldXHR();
+        xhr.open = () => console.log("Blocked XHR");
+        return xhr;
+    };
+
     if (window.location.hash.startsWith('#!')) loadPage(window.location.hash.substring(2));
 })();
 </script>
 """
 
-initial_content = base64.b64decode(pages[get_path(url)]).decode('utf-8', errors='ignore')
+initial_content = base64.b64decode(pages[urllib.parse.urlparse(url).path or "/index.html"]).decode('utf-8', errors='ignore')
 with open(filepath, "w", encoding='utf-8') as f:
     f.write(initial_content + router_script)
-print(f"Pro Bundle V1.1 saved to {filepath}")
+print(f"Ultra Bundle V1.2 saved to {filepath}")
 EOF
         ;;
     --help)
@@ -324,7 +299,7 @@ EOF
         echo "  -sysfo                         Show detailed system information"
         echo "  -mkserv [directory] [port]        Create and start a dark-themed Python server"
         echo "  -rmweb [directory]                Remove all HTML files in a directory after confirmation"
-        echo "  -dweb [directory] [URL] [name]    Generate a single-file Pro Bundle (SPA) with error suppression"
+        echo "  -dweb [directory] [URL] [name]    Generate a single-file Ultra Bundle (SPA) with Network Sandbox"
         ;;
     *)
         echo "Usage: spxc --help"
