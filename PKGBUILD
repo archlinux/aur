@@ -2,11 +2,11 @@
 
 _appname=dredge
 _pkgauthor=DeprecatedLuar
-_pkgname=dredge
+_pkgname=dredge-cargo
 pkgname=${_appname}-bin
 pkgdesc="Backed-up personal encrypted vault for the terminal"
 
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,10 +26,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}_${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}_${_barch[1]}")
-sha256sums=('7a60872c18596aecc74ab796e75528a3cb0d93cc8a4beaef78ee709790ff33b2'
+sha256sums=('fca05920ea4892c3176c4219b75ca6f29e2cfdcfa5568075b42e2244c338705f'
             'ce37bb083947186acb712a9cb01d81357f3b303b35db4119519361ee198b4b3e')
-sha256sums_x86_64=('0617e8725373d2402b4b567a5152ca2e7409ddd9a6590d7a499b192f7b8ff053')
-sha256sums_aarch64=('9e403d7b1809696ae9c4b2a0219c022459136d1d808573ffd1417a0102c6aa21')
+sha256sums_x86_64=('7edd4fd5928ba776c89c421769ecfb37ff40e01a35eef202a6facab64f3f2e0b')
+sha256sums_aarch64=('1ee9c3facf36ca6abd2da367891ff3b4ae47cde8fba74ef5bf512a339e272d53')
 
 
 package() {

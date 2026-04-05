@@ -1,5 +1,5 @@
 [dredge-bin]
 source = "github"
-github = "DeprecatedLuar/dredge"
+github = "DeprecatedLuar/dredge-cargo"
 use_latest_release = true
 prefix = "v"
