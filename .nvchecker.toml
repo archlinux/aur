@@ -1,0 +1,3 @@
+[perl-b-hooks-op-check]
+source = "cpan"
+cpan = "B-Hooks-OP-Check"
