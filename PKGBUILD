@@ -12,7 +12,7 @@ provides=('restui')
 conflicts=('restui')
 
 source=("https://github.com/arfadmuzali/restui/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('869859c943175d7ff52ca9f6ff0ad0cfa092e32a82c2db9d9ad549c6f95fce1c')
 
 build() {
   cd "$pkgname-$pkgver"
