@@ -84,7 +84,7 @@ build() {
   cd "${srcdir}"/fritzing-app
 
   # build translations
-  /usr/lib/qt6/lrelease-pro phoenix.pro
+  /usr/bin/lrelease-pro6 phoenix.pro
 
   mkdir build && cd build
   qmake6 ..
