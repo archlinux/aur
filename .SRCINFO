@@ -1,12 +1,18 @@
 pkgbase = xscreensaver-tray
 	pkgdesc = System tray toggle for xscreensaver with monitor icon
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://aur.archlinux.org/packages/xscreensaver-tray
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-pyqt6
 	depends = xscreensaver
+	source = xscreensaver-tray
+	source = xscreensaver-tray.desktop
+	source = xscreensaver.service
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = xscreensaver-tray

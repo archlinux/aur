@@ -24,3 +24,6 @@ package() {
     # 3. Install the systemd service to the GLOBAL user directory
     install -Dm644 "${srcdir}/xscreensaver.service" "${pkgdir}/usr/lib/systemd/user/xscreensaver.service"
 }
+post_remove() {
+    systemctl --user disable xscreensaver.service 2>/dev/null || true
+}
