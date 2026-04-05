@@ -1,4 +1,6 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Michal Wojdyla <micwoj9292@gmail.com>
+# Contributor: Gergan Penkov <gergan@gmail.com>
 # Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 # Contributor: Oliver Charles <oliver.g.charles@googlemail.com>
 
