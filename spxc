@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.0"
+VERSION="V1.0.1"
 
 case "$1" in
     -v)
@@ -173,7 +173,7 @@ EOF
             esac
         fi
 
-        echo "Generating Smart Bundle (V1.0) from $URL..."
+        echo "Generating Smart Bundle (V1.0.1) from $URL..."
         python3 - <<EOF
 import urllib.request, urllib.parse, re, sys, os, json, base64
 
@@ -246,7 +246,7 @@ def process_page(current_url, depth=0):
     if depth < 1:
         links = re.findall(r'href=["\']#!([^"\']+)["\']', content)
         for lpath in links:
-            if lpath.endswith('.json'):
+            if lpath.endswith(('.json', '.js', '.css', '.ico', '.png', '.jpg', '.xml')):
                 data = fetch_resource(urllib.parse.urljoin(url, lpath))
                 if data: resources[lpath] = base64.b64encode(data).decode('utf-8')
             elif lpath not in pages:
@@ -300,13 +300,13 @@ router_script = """
 </script>
 """
 
-# Initial state is the main page + the router
-initial_content = atob(pages[main_path])
+# Corrected: Decode in Python before writing, but handle initial state correctly
+initial_content = base64.b64decode(pages[main_path]).decode('utf-8', errors='ignore')
 final_html = initial_content + router_script
 
 with open(filepath, "w", encoding='utf-8') as f:
     f.write(final_html)
-print(f"Smart Bundle V1.0 saved to {filepath}")
+print(f"Smart Bundle V1.0.1 saved to {filepath}")
 EOF
         ;;
     --help)
