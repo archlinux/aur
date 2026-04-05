@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt6-base' 'qt6-wayland' 'kstatusnotifieritem' 'kglobalaccel' 'layer-shell-qt' 'tesseract' 'tesseract-data-eng' 'spectacle' 'wl-clipboard')
 makedepends=('cmake' 'extra-cmake-modules' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/rursache/PenguinSnap/tar.gz/v${pkgver}")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('1fe50a2eec5ebc8239f017bc1b0ca28247d3d672d803e01d3b1d4a126c822e90')
 
 build() {
     cmake -B build -S "${srcdir}/PenguinSnap-${pkgver}" \

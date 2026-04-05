@@ -18,6 +18,6 @@ pkgbase = penguinsnap
 	depends = spectacle
 	depends = wl-clipboard
 	source = penguinsnap-1.0.0.tar.gz::https://codeload.github.com/rursache/PenguinSnap/tar.gz/v1.0.0
-	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+	sha256sums = 1fe50a2eec5ebc8239f017bc1b0ca28247d3d672d803e01d3b1d4a126c822e90
 
 pkgname = penguinsnap
