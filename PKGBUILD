@@ -3,7 +3,7 @@
 
 pkgbase=gowin-eda-edu
 pkgver=1.9.11.03
-pkgrel=1
+pkgrel=2
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification. (education version)"
 arch=('x86_64')
 url="https://www.gowinsemi.com.cn/software/index"
@@ -16,8 +16,8 @@ source=("https://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_Education_Linux.tar.g
 sha256sums=('6fd392f7473b24d847b6f8ebdc7a185c591826ba35d8d0e517961030d446f9f7'
             '346991b57db67aa4a8373ad09fd221e310c87ac7a6c90313cad7b48f7e6934ab'
             'a95d18239e9ecb6b3f712fa569601e964624ef4ccb39ca85e56dfafa74b573d2'
-            '899042b398f530e30cd566feda5920002422b1face170928c272bf5ebe4be70b'
-            '58dc15480b793fbde86a0fcfb644239077b07e34345d7753f6c34f32d24b080a')
+            '82129f4242517363cef22d4bc29937a125e843e9b9c521efb4bd85203ff385f5'
+            '944c36f51500899fdd35722c329cf4c67a677419db0e0860f3f5c9518a43de6f')
 
 _install() {
   find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/opt/${pkgname}/{} \;
@@ -48,6 +48,12 @@ _package-ide() {
   _install 644 ipcore/
   _install 644 plugins/
   _install 644 bin/vhdl_packages
+  _install 644 bin/prim_syns
+  _install 644 bin/eye_mon_task_gen.dist
+  _install 644 bin/serdes_toml_to_csr.dist
+  _install 644 bin/ssc_task_gen.dist
+  _install 644 bin/resources
+  _install 644 bin/translations
   _install 755 bin/ -maxdepth 1
 
   chmod 644 ${pkgdir}/opt/${pkgname}/bin/prim{itive.xml,_syn.vhd,_syn.v}
@@ -72,6 +78,8 @@ _package-ide() {
 
   # HACK: fix IDE hardcode path of Programmer
   sed -i  's|../../Programmer|..////Programmer|g' ${pkgdir}/opt/${pkgname}/bin/gao_{sh,analyzer}
+  sed -i  's|../../Programmer|..////Programmer|g' ${pkgdir}/opt/${pkgname}/bin/gvio_{sh,analyzer}
+  sed -i  's|../../Programmer|..////Programmer|g' ${pkgdir}/opt/${pkgname}/bin/gw_goeye
   sed -i  's|../../Programmer|..////Programmer|g' ${pkgdir}/opt/${pkgname}/plugins/ide/lib{StartPage,FpgaPrj}.so
   ln -s /opt/${pkgbase}-programmer ${pkgdir}/opt/${pkgname}/Programmer
 
@@ -108,6 +116,8 @@ _package-programmer() {
   install -Dm644 ${srcdir}/${pkgbase}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 
   chmod 755 ${pkgdir}/opt/${pkgname}/bin/programmer{,_cli}
+  chmod 755 ${pkgdir}/opt/${pkgname}/bin/jtagserver{,_lpt}
+  chmod 755 ${pkgdir}/opt/${pkgname}/bin/JTAGLoading
 }
 
 pkgname=("${pkgbase}-ide" "${pkgbase}-programmer")

@@ -3,6 +3,6 @@ Type=Application
 Version=1.0
 Name=Gowin EDA Programmer Education
 Comment=A GUI tool for GOWIN FPGA: bitstream configuration or download.
-Exec=/opt/gowin-eda-edu-programmer/bin/programmer
+Exec=env QT_QPA_PLATFORM= /opt/gowin-eda-edu-programmer/bin/programmer
 Icon=gowin-eda-edu-programmer
 Categories=Development;Electronics;

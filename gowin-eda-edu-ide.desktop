@@ -3,7 +3,7 @@ Type=Application
 Version=1.0
 Name=Gowin EDA IDE Education
 Comment=A GUI tool for GOWIN FPGA: RTL/post-synthesis, design, synthesis, P&R, bitstream gen.
-Exec=/opt/gowin-eda-edu-ide/bin/gw_ide %U
+Exec=env LD_LIBRARY_PATH=/opt/gowin-eda-edu-ide/lib /opt/gowin-eda-edu-ide/bin/gw_ide %U
 Icon=gowin-eda-edu-ide
 MimeType=application/x-gowin-eda-ide-project
 Categories=Development;Electronics;
