@@ -3,13 +3,13 @@
 pkgname=open-goal-launcher
 _binname=OpenGOAL-Launcher
 pkgver="2.8.18"
-pkgrel=1
+pkgrel=2
 pkgdesc="A launcher for the OpenGOAL Project to simplify usage and installation"
 arch=(any)
 url='https://github.com/open-goal/launcher'
 license=('ISC')
 depends=('gtk3' 'webkit2gtk' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'libvips' 'base-devel')
-makedepends=('curl' 'wget' 'file' 'cargo' 'nodejs>=18.18.0' 'yarn')
+makedepends=('curl' 'wget' 'file' 'cargo' 'nodejs>=18.18.0' 'yarn' 'npm')
 conflicts=('open-goal-launcher-bin')
 _tarball="v${pkgver}.tar.gz"
 source=("https://github.com/open-goal/launcher/archive/refs/tags/${_tarball}" "${pkgname}.desktop")
