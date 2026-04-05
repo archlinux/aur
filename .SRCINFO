@@ -1,15 +1,16 @@
 pkgbase = llm-checker
 	pkgdesc = CLI tool that scans hardware and recommends optimal LLM models for local inference with Ollama integration
-	pkgver = 3.5.6
+	pkgver = 3.5.11
 	pkgrel = 1
 	url = https://github.com/Pavelevich/llm-checker
 	arch = any
 	license = LicenseRef-NPDL-1.0
 	makedepends = npm
+	makedepends = git
 	depends = nodejs
 	optdepends = ollama: for running recommended models locally
 	options = !debug
-	source = llm-checker-3.5.6.tgz::https://registry.npmjs.org/llm-checker/-/llm-checker-3.5.6.tgz
-	b2sums = bc076882a54956f83876a34ea437f8d41c2bfd0ef8ae282bf46327879ebe58b1146f3eef7b4d3c3ea67a39b62d02710d3564eaae36f36326928a1b07bceb1ec2
+	source = llm-checker-3.5.11.tar.gz::https://github.com/Pavelevich/llm-checker/archive/refs/tags/v3.5.11.tar.gz
+	sha256sums = SKIP
 
 pkgname = llm-checker

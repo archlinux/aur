@@ -1,23 +1,23 @@
-# Maintainer: guglovich <your@email.com>
-# Created with assistance from Claude (Anthropic)
+# Maintainer: guglovich <guglovich164@gmail.com>
+# Created with assistance from Qwen 3.6 (Alibaba).
 
 _pkgname=llm-checker
 pkgname=llm-checker
-pkgver=3.5.6
+pkgver=3.5.11
 pkgrel=1
 pkgdesc="CLI tool that scans hardware and recommends optimal LLM models for local inference with Ollama integration"
 arch=('any')
 url="https://github.com/Pavelevich/llm-checker"
 license=('LicenseRef-NPDL-1.0')
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('npm' 'git')
 optdepends=('ollama: for running recommended models locally')
 options=('!debug')
-source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
-b2sums=('bc076882a54956f83876a34ea437f8d41c2bfd0ef8ae282bf46327879ebe58b1146f3eef7b4d3c3ea67a39b62d02710d3564eaae36f36326928a1b07bceb1ec2')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
 prepare() {
-  bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}.tgz" \
+  bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" \
     --strip-components=1 \
     -C "${srcdir}"
 
