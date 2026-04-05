@@ -1,0 +1,5 @@
+[oyo-bin]
+source = "github"
+github = "ahkohd/oyo"
+use_latest_release = true
+prefix = "v"
