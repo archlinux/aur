@@ -1,0 +1,21 @@
+pkgbase = gamepad-osk-git
+	pkgdesc = Gamepad-controlled on-screen keyboard for Linux
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/0x90shell/gamepad-osk
+	install = gamepad-osk-git.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = libx11
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = ttf-promptfont
+	provides = gamepad-osk
+	conflicts = gamepad-osk
+	source = gamepad-osk-git::git+https://github.com/0x90shell/gamepad-osk.git
+	sha256sums = SKIP
+
+pkgname = gamepad-osk-git
