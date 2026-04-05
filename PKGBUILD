@@ -12,7 +12,7 @@ optdepends=('pipewire-pulse: PipeWire-based audio capture for visualizer'
 provides=('aethertune')
 conflicts=('aethertune' 'aethertune-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nevermore23274/AetherTune/releases/download/v${pkgver}/AetherTune-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('f60ee540fad4abbab3b3e3f08171bb680ede0d1f81284c29a723d233a201523f')
+sha256sums=('92b0c294f91f54cfed134441e1760a79d628d2bbb859c299ef334223344f8da7')
 
 package() {
     cd "AetherTune-v${pkgver}-linux-x86_64"
