@@ -5,13 +5,13 @@
 
 pkgname=python-biopython
 _pkgname=biopython
-pkgver=1.86
+pkgver=1.87
 pkgrel=1
 pkgdesc="Freely available Python tools for computational molecular biology"
 arch=('x86_64')
 url="http://www.biopython.org"
 license=('LicenseRef-Biopython License')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-scipy' 'python-rdflib' 'python-igraph' 'python-reportlab' 'python-networkx' 'python-mmtf' 'python-matplotlib' 'python-coverage')
 depends=('python-numpy' 'glibc' 'python' 'python-scipy' 'python-pillow')
 # optdepends from https://github.com/biopython/biopython?tab=readme-ov-file#optional-dependencies
@@ -23,23 +23,22 @@ optdepends=('python-mysql-connector: for BioSQL module'
            )
 source=("http://www.biopython.org/DIST/${_pkgname}-${pkgver}.tar.gz"
        )
-sha512sums=('eeb0f086a92ee043561758c396b8832d7cb8f447ae1873c967493fbee18496d81fcd166b32267d00ae7989b7d8453024e785617abb462a7561feb8017f72a07e')
+sha512sums=('aed9131f85b28d1b6fb7b1878d6afe2b701eddae092514ec43c69b623c871e16dbf5aaed464709423031169c0c13709bfbc0055e4cdc89c766e4445b959ba7a5')
 options=(!debug)
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   local pyver=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
-  local impl=$(python -c 'import platform; print(platform.python_implementation().lower())')
-  local machine=$(python -c 'import platform; print(platform.machine())')
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py test
+  PYTHONPATH="$PWD/build/lib.linux-${CARCH}-cpython-${pyver}" python Tests/run_tests.py --offline
 }
+
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 "LICENSE.rst" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

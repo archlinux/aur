@@ -1,6 +1,6 @@
 pkgbase = python-biopython
 	pkgdesc = Freely available Python tools for computational molecular biology
-	pkgver = 1.86
+	pkgver = 1.87
 	pkgrel = 1
 	url = http://www.biopython.org
 	arch = x86_64
@@ -14,6 +14,9 @@ pkgbase = python-biopython
 	checkdepends = python-matplotlib
 	checkdepends = python-coverage
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-numpy
 	depends = glibc
 	depends = python
@@ -25,7 +28,7 @@ pkgbase = python-biopython
 	optdepends = python-matplotlib: to plot phylogenetic trees.
 	optdepends = python-rdflib: CDAO parser under Bio.Phylo module
 	options = !debug
-	source = http://www.biopython.org/DIST/biopython-1.86.tar.gz
-	sha512sums = eeb0f086a92ee043561758c396b8832d7cb8f447ae1873c967493fbee18496d81fcd166b32267d00ae7989b7d8453024e785617abb462a7561feb8017f72a07e
+	source = http://www.biopython.org/DIST/biopython-1.87.tar.gz
+	sha512sums = aed9131f85b28d1b6fb7b1878d6afe2b701eddae092514ec43c69b623c871e16dbf5aaed464709423031169c0c13709bfbc0055e4cdc89c766e4445b959ba7a5
 
 pkgname = python-biopython
