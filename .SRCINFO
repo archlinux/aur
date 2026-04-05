@@ -1,0 +1,17 @@
+pkgbase = emm-git
+	pkgdesc = Eidolon Minion Manager - terminal AI agent manager
+	pkgver = r1.65535f4
+	pkgrel = 1
+	url = https://github.com/meesfatels/EMM
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = emm
+	conflicts = emm
+	source = emm-git::git+https://github.com/meesfatels/EMM.git
+	sha256sums = SKIP
+
+pkgname = emm-git
