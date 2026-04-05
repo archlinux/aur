@@ -1,8 +1,8 @@
 # Maintainer: Nikola Ivanovic <nikola@tehabstract.me>
 
 pkgname=libinput-epp
-pkgver=1.30.1
-pkgrel=2
+pkgver=1.31.1
+pkgrel=1
 pkgdesc="Replaces Adaptive acceleration with Windows' Enhance Pointer Precision"
 url="https://gitlab.freedesktop.org/tehabstract/libinput-epp"
 arch=(x86_64)
@@ -20,7 +20,7 @@ provides=("libinput=${pkgver}" 'libinput' 'libinput.so=10-64') # bump SONAME if 
 conflicts=('libinput')
 
 source=("libinput-epp-${pkgver}.tar.gz::https://gitlab.freedesktop.org/tehabstract/libinput-epp/-/archive/${pkgver}/libinput-epp-${pkgver}.tar.gz")
-sha256sums=('51ff895ef474f2db690b6c159652bbf92c8694c5d27963a08f46d03b94d89972')
+sha256sums=('3df228f30cf0addd8a8c48e5bd1fe37ff395fb95ccaffadfc577ae62f3cdce7d')
 
 build() {
   arch-meson "libinput-epp-${pkgver}" build \
