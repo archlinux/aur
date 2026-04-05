@@ -45,6 +45,5 @@ makepkg --printsrcinfo > .SRCINFO
 
 # Push
 git add --all
-git add .SRCINFO
 git commit -m "bump to version $ver"
 git push
