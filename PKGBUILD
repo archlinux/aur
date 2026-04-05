@@ -1,5 +1,6 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: C. Dominik Bódi <dominik dot bodi at gmx dot de>
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 _author=ILMARI
 _dist=multidimensional
