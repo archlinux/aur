@@ -1,5 +1,5 @@
 pkgname=spxc-core
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=2
 pkgdesc="Core CLI for spxc: system info and versioning"
 arch=('any')

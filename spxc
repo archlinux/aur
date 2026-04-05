@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.6.4"
+VERSION="V1.6.5"
 
 case "$1" in
     -v)
