@@ -1,6 +1,6 @@
 pkgbase = spxc
-	pkgdesc = A simple CLI tool that shows version and help
-	pkgver = 1.4.1
+	pkgdesc = Powerful CLI for system info, starting Python servers, and bundling full websites into a single HTML file
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/spxc
 	arch = any

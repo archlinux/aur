@@ -1,8 +1,8 @@
 # This is an AUR PKGBUILD for spxc
 pkgname=spxc
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
-pkgdesc="A simple CLI tool that shows version and help"
+pkgdesc="Powerful CLI for system info, starting Python servers, and bundling full websites into a single HTML file"
 arch=('any')
 url="https://aur.archlinux.org/packages/spxc"
 license=('MIT')
