@@ -3,23 +3,23 @@
 _pkgname=Eden
 pkgname=eden-nightly-bin
 
-_tagstamp=1774822208
-_buildcommit=276dcdd8ea
+_tagstamp=1775241410
+_buildcommit=ac99ea96da
 _upstream_tag="v${_tagstamp}.${_buildcommit}"
 
 pkgver="${_tagstamp}.${_buildcommit}"
 pkgrel=1
 pkgdesc="Nightly release of the Eden Nintendo Switch emulator (PGO optimized)"
 arch=('x86_64')
-url="https://github.com/Eden-CI/Nightly"
+url="https://git.eden-emu.dev/eden-ci/nightly"
 license=('GPL-3.0-or-later')
-depends=('zlib' 'hicolor-icon-theme')
+depends=('hicolor-icon-theme')
 options=(!strip)
 provides=('eden')
 conflicts=('eden')
 _appimage="Eden-Linux-${_buildcommit}-amd64-clang-pgo.AppImage"
-source=("${_appimage}::https://github.com/Eden-CI/Nightly/releases/download/${_upstream_tag}/${_appimage}")
-sha256sums=('0162b1cd119f0193ce0baca4ae54fd6b1b4b5e76d91057ee17ba0429f2fa6f82')
+source=("${_appimage}::https://git.eden-emu.dev/eden-ci/nightly/releases/download/${_upstream_tag}/${_appimage}")
+sha256sums=('93d94bb6e9f7d2674eb289631e8db1c08e902e3a64358d794cd173cdbdf9b9af')
 
 prepare() {
     chmod +x "${_appimage}"
