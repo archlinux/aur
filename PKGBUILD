@@ -37,12 +37,9 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-
-  targets=(
-    ogni
-    "$pkgname-dist"
-  )
-  for target in ${targets[*]}; do
-    install -Dm755 target/release/${target} -t "$pkgdir/usr/bin/"
-  done
+  find target/release \
+    -maxdepth 1 \
+    -executable \
+    -type f \
+    -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
 }
