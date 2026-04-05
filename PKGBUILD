@@ -1,43 +1,71 @@
-# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: xRemaLx <anton.komolov@gmail.com>
 
-pkgname='perl-catalyst-devel'
-pkgver='1.42'
-pkgrel='1'
-pkgdesc="Catalyst Development Tools"
+_author=HAARG
+_dist=Catalyst-Devel
+pkgname=perl-${_dist@L}
+pkgver=1.42
+pkgrel=2
+pkgdesc='Catalyst Development Tools'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-catalyst-action-renderview>=0.10'
+    'perl-catalyst-plugin-configloader>=0.30'
+    'perl-catalyst-plugin-static-simple>=0.28'
+    'perl-catalyst-runtime>=5.90001'
+    'perl-config-general>=2.42'
+    'perl-file-changenotify>=0.07'
+    'perl-file-copy-recursive'
+    'perl-file-sharedir'
+    'perl-module-install>=1.02'
+    'perl-moose'
+    'perl-moosex-emulate-class-accessor-fast'
+    'perl-namespace-autoclean'
+    'perl-namespace-clean'
+    'perl-path-class>=0.09'
+    'perl-template-toolkit>=2.14'
+)
+makedepends=(
+    'perl-extutils-makemaker'
+    'perl-file-sharedir-install'
+)
+checkdepends=(
+    'perl-test-fatal>=0.003'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl-module-install' 'perl-catalyst-action-renderview' 'perl-catalyst-plugin-configloader' 'perl-catalyst-plugin-static-simple' 'perl-config-general' 'perl-file-changenotify' 'perl-file-copy-recursive' 'perl-template-toolkit')
-makedepends=('perl-test-fatal' 'perl-file-sharedir-install')
-checkdepends=('perl-perlio-utf8-strict')
-url='http://search.cpan.org/dist/Catalyst-Devel'
-source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/Catalyst-Devel-${pkgver}.tar.gz")
-md5sums=('4c51b2c27c23942551b74a4db5fdc4d3')
-sha512sums=('246786d5d6f83a51b474bd095571d648a25d5482b5af15f0062622aa3f3052b7ac0be5f67916772efdf85d56deedc4a3b96b7e504f9b6565a52f963a54c6e2d4')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('7ec6f0b6cab5b8c097e47769fc73a4d4c015a58c41fdb40fc24df3ee77c48abd')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "${srcdir}/Catalyst-Devel-${pkgver}"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "${srcdir}/Catalyst-Devel-${pkgver}"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "${srcdir}/Catalyst-Devel-${pkgver}"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+package()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }

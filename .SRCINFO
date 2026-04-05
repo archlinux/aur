@@ -1,26 +1,32 @@
 pkgbase = perl-catalyst-devel
 	pkgdesc = Catalyst Development Tools
 	pkgver = 1.42
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Catalyst-Devel
+	pkgrel = 2
+	url = https://metacpan.org/dist/Catalyst-Devel
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	checkdepends = perl-perlio-utf8-strict
-	makedepends = perl-test-fatal
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-fatal>=0.003
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
 	makedepends = perl-file-sharedir-install
-	depends = perl-module-install
-	depends = perl-catalyst-action-renderview
-	depends = perl-catalyst-plugin-configloader
-	depends = perl-catalyst-plugin-static-simple
-	depends = perl-config-general
-	depends = perl-file-changenotify
+	depends = perl
+	depends = perl-catalyst-action-renderview>=0.10
+	depends = perl-catalyst-plugin-configloader>=0.30
+	depends = perl-catalyst-plugin-static-simple>=0.28
+	depends = perl-catalyst-runtime>=5.90001
+	depends = perl-config-general>=2.42
+	depends = perl-file-changenotify>=0.07
 	depends = perl-file-copy-recursive
-	depends = perl-template-toolkit
+	depends = perl-file-sharedir
+	depends = perl-module-install>=1.02
+	depends = perl-moose
+	depends = perl-moosex-emulate-class-accessor-fast
+	depends = perl-namespace-autoclean
+	depends = perl-namespace-clean
+	depends = perl-path-class>=0.09
+	depends = perl-template-toolkit>=2.14
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/H/HA/HAARG/Catalyst-Devel-1.42.tar.gz
-	md5sums = 4c51b2c27c23942551b74a4db5fdc4d3
-	sha512sums = 246786d5d6f83a51b474bd095571d648a25d5482b5af15f0062622aa3f3052b7ac0be5f67916772efdf85d56deedc4a3b96b7e504f9b6565a52f963a54c6e2d4
+	sha256sums = 7ec6f0b6cab5b8c097e47769fc73a4d4c015a58c41fdb40fc24df3ee77c48abd
 
 pkgname = perl-catalyst-devel
-
