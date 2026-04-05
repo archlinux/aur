@@ -12,7 +12,7 @@ url='https://jellyfin.org/'
 license=('GPL2')
 provides=('jellyfin-server')
 conflicts=('jellyfin-server' 'jellyfin-server-git')
-depends=('aspnet-runtime-6.0' 'bash' 'sqlite' 'fontconfig' 'jellyfin-ffmpeg')
+depends=('bash' 'sqlite' 'fontconfig' 'jellyfin-ffmpeg')
 optdepends=('jellyfin-web: to run web-app on the same machine')
 source=('jellyfin.conf'
         'jellyfin.service'

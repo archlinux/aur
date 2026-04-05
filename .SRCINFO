@@ -6,7 +6,6 @@ pkgbase = jellyfin-server-bin
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
-	depends = aspnet-runtime-6.0
 	depends = bash
 	depends = sqlite
 	depends = fontconfig
