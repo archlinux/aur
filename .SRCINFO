@@ -1,6 +1,6 @@
 pkgbase = mixtapes-git
 	pkgdesc = A modern, Linux-first YouTube Music player
-	pkgver = r130.fe25220
+	pkgver = r131.e099abe
 	pkgrel = 1
 	url = https://github.com/m-obeid/Mixtapes
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = mixtapes-git
 	depends = python-requests
 	depends = python-ytmusicapi
 	depends = python-mprisify
+	depends = python-mutagen
 	provides = mixtapes
 	conflicts = mixtapes
 	source = mixtapes-git::git+https://github.com/m-obeid/Mixtapes.git

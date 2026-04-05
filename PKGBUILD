@@ -1,12 +1,12 @@
 # Maintainer: Mohamad Obeid <mobeid nine nine nine nine at gmail dot com>
 pkgname=mixtapes-git
-pkgver=r130.fe25220
+pkgver=r131.e099abe
 pkgrel=1
 pkgdesc="A modern, Linux-first YouTube Music player"
 arch=('any')
 url="https://github.com/m-obeid/Mixtapes"
 license=('GPL3')
-depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'nodejs' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'yt-dlp' 'yt-dlp-ejs' 'python-requests' 'python-ytmusicapi' 'python-mprisify')
+depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'nodejs' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'yt-dlp' 'yt-dlp-ejs' 'python-requests' 'python-ytmusicapi' 'python-mprisify' 'python-mutagen')
 makedepends=('git')
 provides=("mixtapes")
 conflicts=("mixtapes")
