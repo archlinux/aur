@@ -1,8 +1,8 @@
 # Maintainer: zhizhizhiwang <zhizhiwang@proton.me>
 # Contributor: Star_caorui <Star_caorui@hotmail.com>
 pkgname=mcsm-daemon-git
-pkgver=10.12.4
-pkgrel=3
+pkgver=r4055.06bc2a5f
+pkgrel=4
 pkgdesc="MCSManager 的守护（daemon）程序模块。"
 arch=(any)
 url="https://github.com/MCSManager/MCSManager"
@@ -11,12 +11,18 @@ install=$pkgname.install
 depends=('nodejs>=16')
 makedepends=('npm' 'git')
 source=('file://mcsm-daemon.service'
-        "mcsm-$pkgver::git+https://github.com/MCSManager/MCSManager")
+        "mcsm::git+https://github.com/MCSManager/MCSManager")
 sha256sums=('56a03d9b7a65fcbb41c3d19433a0e8dc4f99f909470691c4792399957d3323b8'
             'SKIP')
+backup=("opt/mcsmanager/daemon/data/")
+
+pkgver() {
+  cd mcsm
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd "mcsm-$pkgver"
+  cd "mcsm"
   npm run preview-build
   rm -rf production-code
   rm -rf ./daemon/dist ./daemon/production
@@ -36,7 +42,7 @@ build() {
 
 package() {
   install -Dm644 mcsm-daemon.service "${pkgdir}/usr/lib/systemd/system/mcsm-daemon.service"
-  install -Dm644 "${srcdir}/mcsm-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/mcsm/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -dm755 "${pkgdir}/opt/mcsmanager"
-  cp -r "${srcdir}/mcsm-$pkgver/production-code/daemon" "${pkgdir}/opt/mcsmanager/"
+  cp -r "${srcdir}/mcsm/production-code/daemon" "${pkgdir}/opt/mcsmanager/"
 }
