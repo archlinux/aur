@@ -1,6 +1,6 @@
 pkgname=python-vllm-rocm
 _pkgname=vllm
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs (ROCm support)"
 arch=('x86_64')
@@ -73,7 +73,7 @@ optdepends=(
 )
 
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}" "0001-Fix-LTO-build-for-ROCm-when-default-compiler-is-GCC.patch")
-sha256sums=('cdb7872983f57d2cb773158e691bf356bade79029d5850dc14f0e7e5cf5d1ab6'
+sha256sums=('815859b4cd87081b7b100c041de29e1c5c0b74547f4c7da21e075cfe38f52f4f'
             'cbab00db18bf41a18d01b309606801d91bc2f292fd37b0037883db702691b649')
 
 _jobs=$(($(nproc) / 2))
