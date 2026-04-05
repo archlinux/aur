@@ -1,7 +1,7 @@
 pkgbase = gozen-bin
 	pkgdesc = A minimalistic video editor (binary AppImage release)
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://github.com/VoylinsGamedevJourney/GoZen
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,15 @@ pkgbase = gozen-bin
 	conflicts = gozen
 	conflicts = gozen-git
 	options = !strip
-	source = gozen-v0.8.0-alpha-x86_64.AppImage::https://github.com/VoylinsGamedevJourney/GoZen/releases/download/v0.8.0-alpha/gozen-v0.8.0-alpha-x86_64.AppImage
-	sha256sums = 8de1bba6569b9e29588cb03c1b71a108db90e146a353a7c1c3beaa97b383fd77
+	source = gozen-v0.9.0-alpha-x86_64.AppImage::https://github.com/VoylinsGamedevJourney/GoZen/releases/download/v0.9.0-alpha/gozen-v0.9.0-alpha-x86_64.AppImage
+	source = gozen-bin.desktop::https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/refs/heads/master/assets/linux/gozen.desktop
+	source = gozen.png::https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/master/assets/linux/gozen.png
+	source = gozen.svg::https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/master/assets/linux/gozen.svg
+	source = LICENSE::https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/refs/heads/master/LICENSE
+	sha256sums = 7aebdd482243a615aa94c2207b025265c3b3dfac03f1a2c7f4bec710d730b0b5
+	sha256sums = 06235c34b7db3df316bb3c0e18fa55edbb75a0b1444235913fdeb2aff4c20730
+	sha256sums = 1879e13f6fa093f9fb1786466f3bc0bc1465d31392bc668b3c1216c63f7e8c36
+	sha256sums = 3830395131c87f0b8b8b3ab7483fdc8e4212a51ff3a7a038ef208027a9c06946
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = gozen-bin

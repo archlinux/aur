@@ -1,8 +1,8 @@
 # Maintainer: Voylin <voylinslife@gmail.com>
 
 pkgname=gozen-bin
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="A minimalistic video editor (binary AppImage release)"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
@@ -16,8 +16,16 @@ _appimage="gozen-v${pkgver}-alpha-x86_64.AppImage"
 
 source=(
   "${_appimage}::https://github.com/VoylinsGamedevJourney/GoZen/releases/download/v${pkgver}-alpha/${_appimage}"
+  "gozen-bin.desktop::https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/refs/heads/master/assets/linux/gozen.desktop"
+  "gozen.png::https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/master/assets/linux/gozen.png"
+  "gozen.svg::https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/master/assets/linux/gozen.svg"
+  "LICENSE::https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/refs/heads/master/LICENSE"
 )
-sha256sums=('8de1bba6569b9e29588cb03c1b71a108db90e146a353a7c1c3beaa97b383fd77')
+sha256sums=('7aebdd482243a615aa94c2207b025265c3b3dfac03f1a2c7f4bec710d730b0b5'
+            '06235c34b7db3df316bb3c0e18fa55edbb75a0b1444235913fdeb2aff4c20730'
+            '1879e13f6fa093f9fb1786466f3bc0bc1465d31392bc668b3c1216c63f7e8c36'
+            '3830395131c87f0b8b8b3ab7483fdc8e4212a51ff3a7a038ef208027a9c06946'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
 	install -d "${pkgdir}/opt/${pkgname}"
@@ -26,11 +34,6 @@ package() {
 	# Symlink into PATH
 	install -d "${pkgdir}/usr/bin"
 	ln -s "/opt/${pkgname}/gozen-bin.AppImage" "${pkgdir}/usr/bin/gozen-bin"
-
-	wget -O gozen-bin.desktop "https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/refs/heads/master/assets/linux/gozen.desktop"
-	wget -O gozen.png https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/master/assets/linux/gozen.png
-	wget -O gozen.svg https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/master/assets/linux/gozen.svg
-	wget -O LICENSE https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/refs/heads/master/LICENSE
 
 	# Make a different desktop file for the -git build.
 	sed -i 's/^Name=GoZen$/Name=GoZen-bin/' gozen-bin.desktop
