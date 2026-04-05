@@ -10,7 +10,7 @@ license=('MIT') # Update with your actual license if different
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo' 'rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bigsparsh/fileql/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('266d9c1f2a4972a26e3336d158814f8280660c1a7f80a80c811fa48dcc609081')
+sha256sums=('dba73c92c580de6f493c8489fd9c0276f7b2c7c9251d720cf0765784719eb785')
 
 build() {
   cd "$pkgname-$pkgver"
