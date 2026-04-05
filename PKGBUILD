@@ -4,13 +4,13 @@
 _gitname=minirc-ng
 _version=1.2
 pkgname=${_gitname}-git
-pkgver=${_version}.5e3db2b
+pkgver=${_version}.0bd72bd
 pkgrel=1
 pkgdesc="Minimalistic init script (ng)"
 arch=('any')
 url="https://github.com/karabaja4/${_gitname}"
 license=('GPL2')
-depends=('busybox' 'bash' 'jq' 'util-linux')
+depends=('busybox' 'bash' 'jq' 'util-linux' 'psmisc')
 makedepends=('git')
 optdepends=('systemd: udev implementation')
 conflicts=('systemd-sysvcompat' 'sysvinit')
