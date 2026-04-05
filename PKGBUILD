@@ -1,48 +1,62 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: C. Dominik Bódi <dominik dot bodi at gmx dot de>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-multidimensional'
-pkgver='0.014'
-pkgrel='1'
-pkgdesc="disables multidimensional array emulation"
-arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+_author=ILMARI
+_dist=multidimensional
+pkgname=perl-${_dist@L}
+pkgver=0.014
+pkgrel=2
+pkgdesc='disables multidimensional array emulation'
+arch=('x86_64')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-b-hooks-op-check'
+    'perl-if'
+    'perl-xsloader'
+    'perl>=5.8.1'
+)
+makedepends=(
+    'perl-cpan-meta>=2.112580'
+    'perl-extutils-depends'
+    'perl-extutils-makemaker'
+    'perl-test-simple'
+)
+checkdepends=(
+    'perl-extutils-makemaker'
+    'perl-lib'
+    'perl-pathtools'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl-b-hooks-op-check>=0.19' 'perl>=5.12')
-makedepends=('perl-extutils-depends')
-url='https://metacpan.org/release/multidimensional'
-source=('http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/multidimensional-0.014.tar.gz')
-sha512sums=('94c9dabb3023165a8dd140ef791e4aab980e3b604eae06ed0e29290aab67a9302f2cde4c8b394de0b4c55c5f78ce4510db902d615d665bf60b12ec409f341043')
-_distdir="multidimensional-0.014"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('12eb14317447bd15ab9799677db9eda20e784d8b113e44a5f6f11f529e862c5f')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
