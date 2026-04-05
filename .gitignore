@@ -1,0 +1,5 @@
+*
+!.gitignore
+!.srcinfo
+!pkgbuild
+!license
