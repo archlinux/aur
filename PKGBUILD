@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Universal test runner with auto-detection for 11 languages"
 
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums=('b0fc0a4c7742df430e3b62f0d980c7adedbd516d8f77865da35c6e5b50b3b72c'
+sha256sums=('32ef0bbc30b30aea79028975b113a5fee861b1797fa714325a4056f8e8faef64'
             '45e516620bdb03cfe95b9a061da6258839f8de0a893e5fdf2bd322b6c9751c89')
-sha256sums_x86_64=('38451a1251cfc60e7e55f72684ac6089fb1966cfeebb6017ea702394ba156c07')
-sha256sums_aarch64=('866243eed5950b91af969a80834a9422c8aefc5f56c8ea5629ef6fe941f9cbe1')
+sha256sums_x86_64=('0a430382b735668916339471fd9fb728318665a59afa072ac595fd8f89657aef')
+sha256sums_aarch64=('12fe409b3f16a0b95f54bd2ff30f63d6bba5c812698f945a4552487f1d593548')
 
 
 package() {
