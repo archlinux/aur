@@ -2,7 +2,7 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 _name=sptlrx
 pkgname=sptlrx-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Timesynced Spotify lyrics in your terminal."
 arch=('x86_64' 'arm64' 'i386' 'armv6h')
@@ -15,10 +15,10 @@ source_x86_64=("${_url}_amd64.tar.gz")
 source_arm64=("${_url}_arm64.tar.gz")
 source_i386=("${_url}_386.tar.gz")
 source_armv6h=("${_url}_armv6.tar.gz")
-sha256sums_x86_64=('03a27f2c7e67bec39cd24f8c5b9f164e153b19ba6b1056dbe51e2d1555842e80')
-sha256sums_arm64=('fdd940751e5ae057826ab0dcd9fe7979109387aed6fa6e0f5f8a69de589c92f5')
-sha256sums_i386=('52bd0bc656e6b02c7f291ee64f1d0a56bb5d6063465f4be986c74937f686fdfb')
-sha256sums_armv6h=('ec262e6274478e1ba97b45277df3312a8e6461b12ddb19499e9c948200e19750')
+sha256sums_x86_64=('106e1951fb19bde0307189b047d1ca6c48df5bf9032cb44731f2492d095f29fd')
+sha256sums_arm64=('0af152e80e2bd2eb20c72ea8611916ab413fc9d64b0ea16aeb165920adc485cc')
+sha256sums_i386=('b2302a83097cb3416146035bb6acba57ba69acefae458a08a261a6d9bc094861')
+sha256sums_armv6h=('15f25adcbbe8af107c2d1729aa066657a271284fa759a54078b414fdf52283a1')
 
 pkgver() {
   curl --silent -L "https://api.github.com/repos/raitonoberu/${_name}/releases/latest" | # Get latest release from GitHub api
