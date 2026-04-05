@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lexis
+Comment=Kişisel Sözlük ve Kelime Öğrenme Uygulaması
+Exec=lexis
+Icon=lexis
+Terminal=false
+Type=Application
+Categories=Education;Language;
+StartupWMClass=Lexis
