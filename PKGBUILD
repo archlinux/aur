@@ -1,42 +1,56 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: xRemaLx <anton.komolov@gmail.com>
 
-pkgname='perl-catalyst-plugin-i18n'
-_pkgname='Catalyst-Plugin-I18N'
+_author=BOBTFISH
+_dist=Catalyst-Plugin-I18N
+pkgname=perl-${_dist@L}
 pkgver=0.10
-pkgrel=3
+pkgrel=4
 pkgdesc='I18N for Catalyst'
-arch=(i686 x86_64)
-license=('perl')
-url="https://metacpan.org/release/Catalyst-Plugin-I18N"
-options=(!emptydirs)
-depends=('perl>=5.10.1' 'perl-locale-maketext-lexicon' 'perl-catalyst-runtime' 'perl-mro-compat')
-makedepends=('perl')
-source=("https://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('d0b42885072d49dcd0f5def7eb14d42b')
-sha512sums=('69bec461f447febf2e17807ffd409136a703033af02ac9d8c0c8182d45770f0c3ed8146e121c3bed9c1fdda16ca8659c0b16287eae3312b55b0fd9535ceab052')
+arch=('any')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-catalyst-runtime'
+    'perl-locale-maketext-lexicon'
+    'perl-locale-maketext-simple>=0.19'
+    'perl-mro-compat>=0.10'
+    'perl-test-simple'
+    'perl>=5.8.0'
+)
+makedepends=(
+    'perl-extutils-makemaker>=6.42'
+    'perl-module-install'
+)
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('f6039bdb2894b200ee379e4a69ea9bd9ce37611c64738d2e7b94bb05ad75399c')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}" 
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+package()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
