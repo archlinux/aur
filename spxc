@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.4"
+VERSION="V1.4.1"
 
 case "$1" in
     -v)
@@ -173,7 +173,7 @@ EOF
             esac
         fi
 
-        echo "Generating Shielded Bundle (V1.4) from $URL..."
+        echo "Downloading website (HTML, JS, CSS, and redirection links) into 1 HTML file from $URL..."
         
         export SPXC_URL="$URL"
         export SPXC_FILEPATH="$FILEPATH"
@@ -206,12 +206,10 @@ def process_page(current_url, depth=0):
     content = fetch_resource(current_url)
     if not content: return
 
-    # 1. Strip Security & Redirects
     content = re.sub(r'<link[^>]+rel=["\'](manifest|preload|prefetch|preconnect)["\'][^>]*>', '', content)
     content = re.sub(r'navigator\.serviceWorker\.register\(.*?\)', '', content)
     content = re.sub(r'<meta[^>]+http-equiv=["\'](Content-Security-Policy|X-Frame-Options|refresh)["\'][^>]*>', '', content)
 
-    # 2. Inlining
     def inline_assets(match):
         tag = match.group(0)
         is_js = '<script' in tag
@@ -251,7 +249,6 @@ process_page(url)
 shield_script = f"""
 <script id="spxc-shield">
 (function spxc_shield() {{
-    // 1. Block redirects & Frame busting
     const noop = () => {{}};
     window.onbeforeunload = null;
     Object.defineProperty(window, 'location', {{
@@ -268,12 +265,10 @@ shield_script = f"""
         configurable: false
     }});
     
-    // 2. Suppress all noise
     window.onerror = () => true;
     window.onunhandledrejection = () => true;
     window.fetch = () => Promise.reject("Sandbox");
 
-    // 3. Router Logic
     const pages = {json.dumps(pages)};
     function loadPage(path) {{
         if (!path || path === '/') path = '/index.html';
@@ -301,16 +296,16 @@ initial_path = urllib.parse.urlparse(url).path or "/index.html"
 initial_content = base64.b64decode(pages[initial_path]).decode('utf-8', errors='ignore')
 with open(filepath, "w", encoding='utf-8') as f:
     f.write(initial_content + shield_script)
-print(f"Shielded Bundle V1.4 saved to {filepath}")
+print(f"Bundle V1.4.1 saved to {filepath}")
 EOF
         ;;
     --help)
         echo "Available commands:"
-        echo "  -v                             Show version"
+        echo "  -v                                Show version"
         echo "  -sysfo                         Show detailed system information"
         echo "  -mkserv [directory] [port]        Create and start a dark-themed Python server"
         echo "  -rmweb [directory]                Remove all HTML files in a directory after confirmation"
-        echo "  -dweb [directory] [URL] [name]    Generate a single-file Shielded Bundle (SPA) for extreme apps"
+        echo "  -dweb [directory] [URL] [name]    Download HTML, JS, CSS, and redirection links into 1 HTML file"
         ;;
     *)
         echo "Usage: spxc --help"
