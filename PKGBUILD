@@ -19,7 +19,7 @@ fi
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_${_deb_arch}.deb"
 	"LICENSE::${url}/raw/refs/heads/main/LICENSE")
 
-sha256sums=('9978cd8a50c40260d6c06c698983fd57dc466edb78dffa77860ad82fd7e632cd'
+sha256sums=('6317bdc6727984397c7409f46118b8e14a6e95de9a7a7abfc48f859384bd0d87'
             '3bed3331b7048bac17cf50e249d560ccc9508c970da8d7b9283bf4f2e633a91d')
 
 build() {
