@@ -1,0 +1,3 @@
+[perl-fcgi-procmanager]
+source = "cpan"
+cpan = "FCGI-ProcManager"
