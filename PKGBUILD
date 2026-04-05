@@ -1,20 +1,26 @@
 # Maintainer: Campbell Jones <serebit at archlinux dot org>
 
 pkgname=vkcheck-git
-pkgver=r41.d1784dc
+pkgver=r44.d50f982
 pkgrel=1
 pkgdesc='Display extensions supported by Vulkan implementations'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://codeberg.org/serebit/waycheck"
 license=('Apache-2.0')
-depends=()
+depends=(
+    'glfw'
+    'glibc'
+    'hicolor-icon-theme'
+    'libgcc'
+    'libstdc++'
+    'vulkan-driver'
+    'vulkan-icd-loader'
+)
 makedepends=(
     'git'
     'cmake'
-    'glfw'
     'meson'
     'vulkan-headers'
-    'vulkan-icd-loader'
     'vulkan-profiles'
 )
 provides=("${pkgname%-git}")
