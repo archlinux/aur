@@ -1,6 +1,6 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects"
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -11,10 +11,14 @@ install="$pkgname.install"
 makedepends=('cargo' 'git')
 optdepends=(
 	'tmux: tmux integration'
+	'screen: screen integration'
+	'zellij: zellij integration'
+	'wezterm: wezterm integration'
+	'kitty: kitty integration'
 	'zoxide: zoxide integration')
 source=($pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver)
 
-sha1sums=('b051cfc45e6f9709d7c4aa12bf89364cdcecf618')
+sha1sums=('47f74eb92e457984c4677a811123a71c5c870902')
 
 prepare() {
 	cd "$pkgname"
