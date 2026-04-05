@@ -40,3 +40,5 @@ package() {
 
   cp -ra ./opt ./usr "${pkgdir}"
 }
+
+# removed  breaking changes
