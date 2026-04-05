@@ -1,49 +1,53 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
 
-pkgname='perl-catalyst-plugin-configloader'
-pkgver='0.35'
-pkgrel='1'
-pkgdesc="Load config files of various types"
+_author=HAARG
+_dist=Catalyst-Plugin-ConfigLoader
+pkgname=perl-${_dist@L}
+pkgver=0.35
+pkgrel=2
+pkgdesc='Load config files of various types'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-catalyst-runtime>=5.7008'
+    'perl-config-any>=0.20'
+    'perl-data-visitor>=0.24'
+    'perl-mro-compat>=0.09'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=('perl-test-simple')
 options=('!emptydirs')
-depends=('perl-catalyst-runtime' 'perl-config-any' 'perl-data-visitor')
-checkdepends=('perl-perlio-utf8-strict')
-url='http://search.mcpan.org/dist/Catalyst-Plugin-ConfigLoader'
-source=('https://cpan.metacpan.org/authors/id/H/HA/HAARG/Catalyst-Plugin-ConfigLoader-0.35.tar.gz')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('9e2a698a6f2d046e0dc5e57512929cd423c807d4a36ba3f29e9e5adcd71a1971')
-_distdir="Catalyst-Plugin-ConfigLoader-0.35"
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
