@@ -1,0 +1,12 @@
+pkgbase = stuplot
+	pkgdesc = High-performance C++23 header-only plotting engine based on IA and DE
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Friendships6666/StuPlot
+	arch = any
+	license = MIT
+	makedepends = cmake
+	source = stuplot-1.0.0.tar.gz::https://github.com/Friendships6666/StuPlot/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 090700c2cbe53170d2dee7115e7e234dd4e67cff8be7f6774071609f298ce852
+
+pkgname = stuplot
