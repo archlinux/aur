@@ -1,0 +1,21 @@
+pkgbase = pirate-ctl
+	pkgdesc = Search and download torrents via the CLI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cesarferreira/pirate-ctl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = openssl
+	depends = glibc
+	depends = libgcc
+	provides = pirate-ctl
+	conflicts = pirate-ctl
+	options = !strip
+	source = git+https://github.com/cesarferreira/pirate-ctl#commit=4c4aa223c31e4fd08c17bd7f325361c9fb8b8143
+	source = LICENSE
+	sha256sums = 1ea669f5118212a05e14a96a6094199905593d6fd6fbf6f52c55d02d90f108d1
+	sha256sums = 57764ebae827c1c96dc5c1b74e2579ff34d3abcaabb54f5e5498fb2f612330cc
+
+pkgname = pirate-ctl
