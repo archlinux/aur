@@ -1,4 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Andréas Caumeil <andreas.caumeil@proton.me>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Martin Wimpress <code@flexion.org>
@@ -10,7 +11,7 @@ pkgname=(
   libopenshot-audio
   libopenshot-audio-docs
 )
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A high-quality audio editing and playback library used by libopenshot."
 arch=(x86_64)
@@ -26,8 +27,8 @@ makedepends=(
   zlib
 )
 source=($url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha512sums=('808eaa00345636cc8e4e92926230997fd2b9cf7fd6a2159107717af6f012769e58406994cc6a7d3887633ee10da13032184811fa67766afb609915a234f06dc9')
-b2sums=('fbc6b4bb6f0c9124b4ce19e0f26437581aa195d170bbe1c0d219b7b1a36d2a82160c0726f0eaa298f5c79795e4f5bd542739d4f68eb8f2a463151b4efca785fd')
+sha512sums=('b6f9e6a206c177778041d7897b86c3512b79038113d906422c491509c45a494edbf50b0ce448cffecdd8173937cf5d8e8f13590c69d372d0991caaa83e71c6aa')
+b2sums=('497646faa0227d7872bb611ed308b9fe28d95708ce28adbf717ec4d07efb49214378395527ce13f250e2978d041edacb8fdd23869b58dd4d753e1ebbafad3120')
 
 _pick() {
   local p="$1" f d; shift
