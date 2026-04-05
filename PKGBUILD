@@ -1,7 +1,7 @@
 # Maintainer: lucas <lucas.bmior@gmail.com>
 
 pkgname="brn2-git"
-pkgver=r2759.018172d
+pkgver=r2863.439f297
 pkgrel=1
 pkgdesc="fast bulk renamer with swapping"
 arch=(x86_64)
@@ -40,7 +40,7 @@ check() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    export DESTDIR="$pkgdir/" 
+    export DESTDIR="$pkgdir/"
     export PREFIX="/usr"
     ./build.sh install
 }
