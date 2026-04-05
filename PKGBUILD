@@ -28,6 +28,9 @@ prepare() {
 
 build() {
 	cd "${srcdir}/lwe"
+	export CARGO_PROFILE_RELEASE_LTO=false
+	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
+	export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=bfd"
 	cargo tauri build -b deb
 }
 
