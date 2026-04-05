@@ -9,6 +9,7 @@ url='https://github.com/KevinCrrl/evillimiter-ng'
 license=('MIT')
 depends=(
   'python' 'python-scapy' 'python-rich' 'python-netaddr' 'python-netifaces'
+  'python-prompt_toolkit' 'iptables'
 )
 makedepends=(
   'python-build' 'python-installer' 'python-wheel' 'python-setuptools'

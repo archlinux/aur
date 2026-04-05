@@ -14,6 +14,8 @@ pkgbase = evillimiter-ng
 	depends = python-rich
 	depends = python-netaddr
 	depends = python-netifaces
+	depends = python-prompt_toolkit
+	depends = iptables
 	source = https://github.com/KevinCrrl/evillimiter-ng/archive/refs/tags/2.2.0/2.2.0.tar.gz
 	sha512sums = 36e344c04586187b592bd2afbf4ff84dd12ac4abd987533ae46752be0ba35a7183984201698137fd11198159cb54799b2738d682f084b2fb9695e58f80b795e6
 
