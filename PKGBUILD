@@ -1,6 +1,6 @@
 # Maintainer: Mohamad Obeid <mobeid nine nine nine nine at gmail dot com>
 pkgname=mixtapes-git
-pkgver=r133.551df00
+pkgver=2026.05.04.0
 pkgrel=1
 pkgdesc="A modern, Linux-first YouTube Music player"
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  grep -oP '(?<=<release version=")[^"]+' com.pocoguy.Muse.metainfo.xml | head -1 | tr '-' '.'
 }
 
 build() {
