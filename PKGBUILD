@@ -2,8 +2,8 @@
 # Maintainer: Mrinmoy <mrinmoym@duck.com>
 pkgname=ulaa-browser
 _pkgname=Ulaa-Browser
-pkgver=2.41.4
-pkgrel=2
+pkgver=2.41.3
+pkgrel=1
 pkgdesc="The web browser from Zoho. Ulaa combines minimal design with sophisticated technology to make the web faster, safer, and easier."
 arch=(x86_64)
 url="https://ulaa.com"
