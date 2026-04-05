@@ -6,7 +6,6 @@ pkgbase = netcalc
 	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
-	depends = glibc
 	conflicts = ipcalc
 	source = netcalc-2.1.7.tar.gz::https://github.com/troglobit/netcalc/archive/v2.1.7.tar.gz
 	sha256sums = 57e40571cea9061f4c42fe500345d6715e9b35fdaa135ef23c42c6ca4a58e3ef
