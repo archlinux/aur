@@ -1,7 +1,7 @@
 pkgbase = stellarium-lite
 	pkgdesc = Stellarium without GPS and Telescope Control support (no gpsd and libindi dependencies)
 	pkgver = 26.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stellarium.org
 	arch = x86_64
 	license = GPL-2.0-or-later
