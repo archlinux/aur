@@ -1,4 +1,4 @@
-# Maintainer: Oskar Gerlicz-Kowalczuk <oskar@gerlicz.space>
+# Maintainer: Oskar Gerlicz Kowalczuk <oskar@gerlicz.space>
 # Contributor: Posi <posi1981@gmail.com>
 # Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 # Contributor: adambot <adambot@gmail.com>
@@ -9,7 +9,7 @@ _commit=42cadf5b7915523e77ae43b5cc9fa74e0def72c6
 
 pkgname=advcpmv
 pkgver=9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="'cp' and 'mv' utilities with progress bar patches"
 arch=('x86_64')
 license=('GPL3-or-later')
