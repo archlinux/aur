@@ -1,6 +1,6 @@
 pkgbase = xfce-winxp-tc-git
 	pkgdesc = Windows XP Total Conversion for XFCE
-	pkgver = r416.1a2f8d5
+	pkgver = r578.97eeacb
 	pkgrel = 1
 	url = https://github.com/rozniak/xfce-winxp-tc
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = xfce-winxp-tc-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = python-packaging
+	makedepends = python-pillow
 	makedepends = xorg-xcursorgen
 	makedepends = ruby-sass
 	makedepends = garcon
