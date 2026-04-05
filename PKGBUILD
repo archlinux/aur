@@ -1,37 +1,41 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=openair
-_pkgver=2.18-2
+_pkgver=3.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Tools for the Analysis of Air Pollution Data"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=('GPL-2.0-or-later')
+license=('MIT')
 depends=(
   r-cli
   r-dplyr
-  r-hexbin
-  r-latticeextra
+  r-ggplot2
   r-lubridate
-  r-mapproj
+  r-patchwork
   r-purrr
   r-rcpp
   r-readr
   r-rlang
-  r-tibble
+  r-scales
   r-tidyr
 )
 optdepends=(
-  r-mapdata
-  r-maps
+  r-geomtextpath
+  r-knitr
+  r-legendry
   r-quantreg
+  r-rmarkdown
+  r-rnaturalearthdata
+  r-sf
   r-spelling
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('99eaa25bc99080a9e8dcd0e3bed44221')
-b2sums=('d49eade7378983af006cb148e073493149a8a7570a7563e689c6fd415efdcd8132ea6a00acfa86cfe1fd91edf580092d16c5e2b3419fa738f75acb0df2944253')
+md5sums=('d4bb7b146892c378edc18fda54dd2317')
+b2sums=('1e8a58b8547c7f2fda3951808ae4e0ee41b3c008c94d47d4dd888404dceb6a0ae5e7c9915000409886f1ea821df6eff78e75d982af62d82b12c3a6cca950eff0')
 
 build() {
   mkdir build
