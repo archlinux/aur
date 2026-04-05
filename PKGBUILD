@@ -2,8 +2,8 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=ludusavi
 _app_id="com.mtkennerly.$pkgname"
-pkgver=0.30.0
-pkgrel=2
+pkgver=0.31.0
+pkgrel=1
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
 url="https://github.com/mtkennerly/ludusavi"
@@ -28,13 +28,13 @@ checkdepends=(
 optdepends=('rclone: upload backups to the cloud')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-v$pkgver-legal.zip")
-sha256sums=('3e819da8d6c6b2e673fb0dab2c64524d448e45b66b009ced7cb2a324f201dc6a'
-            '689e5adbdde3c7b60b041609be5388bcf9099f9a2acf687a3f293504bf32ec6b')
+sha256sums=('e7dcfa4fb17fcd2be9ef34d55fe0ca0d3f79fdf570107aeaa5b4e76910e2f8a1'
+            '9fce11fc44942efdd5969928d89b106c229f9a041d7a713c424a6da981660ebf')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
+  cargo fetch --target host-tuple
 }
 
 build() {
@@ -42,7 +42,7 @@ build() {
   CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+  cargo build --release
 }
 
 check() {
