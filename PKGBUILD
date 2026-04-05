@@ -8,7 +8,7 @@ _pkgname=coreutils
 
 pkgname=advcpmv
 pkgver=9.5
-pkgrel=3
+pkgrel=4
 pkgdesc="'cp' and 'mv' utilities with progress bar patches"
 arch=('x86_64')
 license=('GPL3-or-later')
