@@ -1,0 +1,12 @@
+pkgbase = ratride
+	pkgdesc = Markdown slide presenter for TUI & Web
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/fand/ratride
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = ratride-1.2.1.tar.gz::https://github.com/fand/ratride/archive/v1.2.1.tar.gz
+	sha256sums = 864fef815d32b9884afa3a64bd47bac4a5e0a1615227937b61188e53699af41e
+
+pkgname = ratride
