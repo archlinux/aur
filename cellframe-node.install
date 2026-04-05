@@ -1,15 +1,10 @@
-CONF_NEED_UPDATE=true
+INSTALLATION_PATH="/opt/cellframe-node"
+
 _showmsg() {
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
 echo -e "
-${BOLD}NODE CONFIGURATION FILES${NORMAL}
-
-    By default, no configuration files are provided. For enabling sane default configuration, run (as root):
-
-    ${BOLD}cellframe-node-config -i /opt/cellframe-node/share/default.setup${NORMAL}
-
 ${BOLD}STARTING CELLFRAME NODE${NORMAL}
 
     Use the provided systemd unit file and launch node with cellframe-node-config tool (as root):
@@ -39,22 +34,32 @@ _is_python_and_pip_ok() {
 }
 
 _post_install_wheels() {
-    if _is_python_and_pip_ok; then
-        WHEEL_DIR="/opt/cellframe-node/share/wheels"
-        WHEELS=("$WHEEL_DIR"/*.whl)
-
-        echo ":: Installing Python wheel packages..."
-        /opt/cellframe-node/python/bin/pip3 install "${WHEELS[@]}" &> /dev/null && echo ":: Installed wheel packages for Python development" \
-            || echo ":: Failed to install Python wheel packages"
-        rm "$WHEEL_DIR"/*.whl && echo ":: Removed wheel packages" || echo ":: Failed to remove wheel packages"
-    else
+    local wheel_dir="$INSTALLATION_PATH/share/wheels"
+    if ! _is_python_and_pip_ok; then
         echo ":: Python or pip not found, skipping wheel installation..."
+        return
     fi
+    if ! ls "$wheel_dir"/*.whl > /dev/null 2>&1; then
+        echo ":: No wheel packages found, skipping..."
+        return
+    fi
+    echo ":: Installing Python wheel packages..."
+    "$PIP_BIN" install "$wheel_dir"/*.whl &> /dev/null \
+        && echo ":: Installed wheel packages" \
+        || echo ":: Failed to install wheel packages"
+    rm -f "$wheel_dir"/*.whl
 }
 
+_setup_default_configuration() {
+    echo ":: Setting up default configuration..."
+    cellframe-node-config -i "$INSTALLATION_PATH/share/default.setup" > /dev/null 2>&1  \
+    && echo ":: Default configuration setup complete" \
+    || echo ":: Failed to set up default configuration"
+}
 
 post_install() {
     _post_install_wheels
+    _setup_default_configuration
     _showmsg
 }
 
@@ -63,7 +68,7 @@ post_upgrade() {
     echo ":: Executing systemctl daemon-reload..."
     systemctl daemon-reload
     systemctl is-active --quiet cellframe-node.service \
-    && cellframe-node-config -i /opt/cellframe-node/share/default.setup \
+    && _setup_default_configuration \
     && echo ":: Restarting cellframe-node.service..." \
     && systemctl restart cellframe-node.service \
     || echo ":: cellframe-node.service not enabled, skipping restart..."

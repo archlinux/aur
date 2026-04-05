@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.7.32
+pkgver=5.7.33
 pkgrel=1
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
@@ -12,19 +12,19 @@ optdepends=('logrotate: For using logrotate to rotate log files')
 provides=('cellframe-node' 'cellframe-node-cli' 'cellframe-node-tool' 'cellframe-node-config')
 replaces=('cellframe-node-debug')
 sha256sums=('SKIP'
-            'aa4d7955f11237b26fc33de444547b3125f07cae957c489c5baacbf3e67ccd14'
-            'd2b4ab803ca9df63052b4c3ae85c469271abd1257ce6d463ac280b7363e1dec3'
+            'ff01e188b169720d6222cac739786da61496dddb7ff270d68af4b34aae4d3434'
             '5fab0cfadc8366ebd2be9d06ff36dbd3a84b18f679ea3babb3c739e7e13acefd'
             '50e65fe5407024a71c2fa27d379901ece965e0fb788070665cf3a194b402d901'
             '9b7be4cb912290ed1164dbc3c5f6714c5a9525cc41a4d7ba3115cdbe312a9320'
-            'a6b504ce331ef5953f38db6f2b3c18c3d5ed796eed29381bbe76a931cf3f9fa5')
+            'a6b504ce331ef5953f38db6f2b3c18c3d5ed796eed29381bbe76a931cf3f9fa5'
+            '88c4b5f4f6907e1db8a415540dcce699b4c5ef7034b064dbe760b7f1027f4ba3')
 source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=3ba9e939d68112102be79cc0c7930a29c68919a6
-		https://pub.cellframe.net/python/python-cellframe/pycfhelpers/master/pycfhelpers-1.0.11-py3-none-any.whl
-		https://pub.cellframe.net/python/python-cellframe/pycftools/master/pycftools-1.0.0-py3-none-any.whl
+		https://pub.cellframe.net/python/python-cellframe/pycfhelpers/master/pycfhelpers-1.0.13-py3-none-any.whl
 		cellframe-node.logrotate
 		cellframe-node.service
 		cellframe-node-tmpfiles.conf
-		cellframe-node-sysusers.conf)
+		cellframe-node-sysusers.conf
+		cellframe-node-cli.bash)
 options=(!debug !strip)
 install=$pkgname.install
 _executables=("$pkgname-cli" "$pkgname-tool" "$pkgname" "$pkgname-config")
@@ -35,6 +35,12 @@ prepare() {
 	sed -i 's|url = \.\./\.\./|url = https://gitlab.demlabs.net/|g' "$srcdir/$pkgname/.gitmodules"
 	sed -i 's|url = \.\./|url = https://gitlab.demlabs.net/cellframe/|g' "$srcdir/$pkgname/.gitmodules"
 	cd "$pkgname" && git submodule update --init --recursive --progress
+	# temporary, remove after merge..........
+	local _sdk_commit="4fe8fddfc2d1e0cd7fac2cd1592001bc7670e9b9"
+	for _sdk in cellframe-sdk python-cellframe/cellframe-sdk; do
+		git -C "$_sdk" fetch origin block_list_perf
+		git -C "$_sdk" checkout "$_sdk_commit"
+	done
 	find "$srcdir/$pkgname" -name 'OS_Detection.cmake' -exec \
 		sed -i '/add_compile_options(-Werror)/d' {} +
 }
@@ -71,4 +77,7 @@ package() {
   	for wheel in "$srcdir"/*.whl; do
     	install -Dm644 "$wheel" "$pkgdir/opt/$pkgname/share/wheels/"
   	done
+
+	install -Dm644 "$srcdir/cellframe-node-cli.bash" \
+		"$pkgdir/usr/share/bash-completion/completions/cellframe-node-cli"
 }
