@@ -4,14 +4,14 @@
 
 pkgbase=mcpelauncher-linux
 pkgname=('mcpelauncher-linux' 'lib32-mcpelauncher-linux')
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
 license=('GPL-3.0-only')
 _makedepends=('git' 'cmake' 'ninja' 'clang' 'wayland-protocols' 'lld')
-_depends=('zlib' 'libpng' 'sdl3' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'openssl' 'gcc-libs' 'glibc')
+_depends=('zlib' 'libpng' 'sdl3' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'openssl' 'libstdc++' 'libgcc' 'glibc')
 _32depends=('lib32-zlib' 'lib32-libpng' 'lib32-sdl3' 'lib32-openssl' 'lib32-gcc-libs' 'lib32-glibc')
 depends=(${_depends[@]} ${_32depends[@]})
 makedepends=(${_makedepends[@]} ${depends[@]})
@@ -52,7 +52,7 @@ source=(
   'git+https://github.com/minecraft-linux/android_core'
 )
 
-sha256sums=('ed667ba6e253446e26b2cacce93460ad96c7f195c6169ab3196f7b907b7dc5d5'
+sha256sums=('c9c1d47dbb35331f3cdce8d0f633853c09545812928dc8c25a79bb14f0cf8bbb'
             'SKIP'
             'SKIP'
             'SKIP'
