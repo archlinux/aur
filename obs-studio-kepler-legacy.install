@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+post_install() {
+  cat <<'EOF'
+obs-studio-kepler-legacy-bin installed.
+
+Launch with:
+  obs-studio-kepler-legacy
+
+The bundle keeps its configuration separate from normal OBS under:
+  ~/.config/obs-studio-kepler-legacy/obs-studio
+
+For Linux virtual camera support on Arch Linux, also install:
+  v4l2loopback-dkms
+  v4l2loopback-utils
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,42 @@
+pkgbase = obs-studio-kepler-legacy-bin
+	pkgdesc = Legacy OBS Studio + FFmpeg bundle for NVIDIA Kepler GPUs on Arch Linux
+	pkgver = 30.2.3_kepler.2
+	pkgrel = 1
+	url = https://github.com/cainhooow/obs-studio-kepler-legacy
+	install = obs-studio-kepler-legacy.install
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = alsa-lib
+	depends = bash
+	depends = curl
+	depends = gcc-libs
+	depends = glibc
+	depends = libjack.so=0-64
+	depends = libpipewire-0.3.so=0-64
+	depends = libpulse.so=0-64
+	depends = libdrm
+	depends = libx11
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxfixes
+	depends = libxinerama
+	depends = libxkbcommon
+	depends = libxrandr
+	depends = libxcb
+	depends = qt6-base
+	depends = wayland
+	optdepends = jack2: native JACK server implementation
+	optdepends = pipewire: PipeWire daemon and desktop integration for Wayland capture and related features
+	optdepends = pipewire-jack: PipeWire JACK replacement
+	optdepends = pipewire-pulse: PipeWire PulseAudio replacement
+	optdepends = pulseaudio: PulseAudio server implementation
+	optdepends = v4l2loopback-dkms: Linux virtual camera kernel module
+	optdepends = v4l2loopback-utils: virtual camera control utilities
+	provides = obs-studio-kepler-legacy
+	conflicts = obs-studio-kepler-legacy
+	options = !debug
+	options = !strip
+	source = obs-studio-kepler-legacy-bin-30.2.3-kepler.2.tar.gz::https://github.com/cainhooow/obs-studio-kepler-legacy/releases/download/v30.2.3-kepler.2/obs-studio-kepler-legacy-30.2.3-kepler.2.tar.gz
+	sha256sums = 1a79a1003f541ebcbdeab291fed22176efa8f1d6d3b4047afd1c99ee9ea6b44f
+
+pkgname = obs-studio-kepler-legacy-bin

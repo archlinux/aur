@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!LICENSE
+!PKGBUILD
+!obs-studio-kepler-legacy.install
