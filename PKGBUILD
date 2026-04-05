@@ -2,8 +2,8 @@
 
 pkgname=python-taxi-zebra
 _name=taxi-zebra
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 pkgdesc="Zebra backend for Taxi"
 arch=('any')
 license=('custom')
@@ -14,7 +14,7 @@ source=(
     "$_name-$pkgver.tar.gz::https://github.com/liip/taxi-zebra/archive/$pkgver.tar.gz"
     "https://raw.githubusercontent.com/liip/taxi/master/LICENSE"
 )
-sha512sums=('d59e7f01a3a28da6e1fe2585086c93584dd8e7304b2ee258463fef6f5796063c10ae7e20f71230b83beed97cb6cab0bf7327f5d21cb1241316ef9e969e8b82b4'
+sha512sums=('56521208c008131696dcba264eef5b89e832328c8a77157415635a3eed27e884b87fd875b50f72f03fd9ff87e2982dd5c00b310895ab53cba1942d4fa948ce3e'
             '87e4e0e9f65b92db1a3f84823427b0870ae01675fa6e631a8c2e2d89eb12ee19d6011b4f4e74f6d4ca30868010206ef0ddd0b24a814c24b84bc41a5e68864dd4')
 
 build() {
