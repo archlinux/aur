@@ -1,19 +1,19 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="bentopdf"
-pkgver=2.8.1
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="A powerful, privacy-first, client-side PDF toolkit that is self hostable and allows you to manipulate, edit, merge, and process PDF files directly in your browser."
 arch=("any")
 url="https://github.com/alam00000/${pkgname}"
-license=("AGPL-3.0-or-later")
+license=("AGPL-3.0-only")
 install="${pkgname}.install"
 makedepends=("npm")
 optdepends=("caddy: for serving bentopdf"
             "nginx: for serving bentopdf"
             "traefik: for serving bentopdf")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('09e5a832f9c64cb5e3beba664369651691d5b8407a5b99a0174955fe36ed742a')
+sha256sums=('46a67900d75f52dd2d46fcfc1d90bcc84e036101edbdadb025a029b467c4382a')
 
 build() {
     cd "${pkgname}-${pkgver}"
