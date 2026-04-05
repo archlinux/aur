@@ -16,7 +16,7 @@ source=(
   "friendnet-client-linux_amd64.deb::https://github.com/termermc/FriendNet/releases/download/v${pkgver}/friendnet-client-linux_amd64.deb"
 )
 
-sha256sums=("SKIP")
+sha256sums=("c9750644d7977eeead26c140fee6fb11a1a8dc1f18d4592e42320e6fbab8a213")
 
 package() {
   cd "$srcdir"
