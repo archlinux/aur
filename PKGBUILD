@@ -1,12 +1,12 @@
 # Maintainer: Haoyuan Li <lihaoyuan0506@gmail.com>
 pkgname=hitpag
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="An intelligent compression/decompression software."
 arch=('x86_64')
 url="https://github.com/Hitmux/hitpag"
 license=('AGPL3')
-source=("hitpag-2.0.4.tar.gz::https://api.github.com/repos/hitmux/hitpag/tarball/v2.0.4")
+source=("hitpag-2.0.5.tar.gz::https://api.github.com/repos/hitmux/hitpag/tarball/v2.0.5")
 sha256sums=('SKIP')
 depends=()
 makedepends=('cmake' 'make')
