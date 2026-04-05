@@ -1,0 +1,80 @@
+From 8204f3ce4746c66166107bddc035701eb8a3f877 Mon Sep 17 00:00:00 2001
+From: quietvoid <tcChlisop0@gmail.com>
+Date: Sat, 4 Apr 2026 21:07:12 -0400
+Subject: [PATCH] Add R73 compatibility build option
+
+---
+ .gitmodules       |  3 ---
+ meson.build       | 20 +++++++++++++++++---
+ meson_options.txt |  5 +++++
+ vapoursynth       |  1 -
+ 4 files changed, 22 insertions(+), 7 deletions(-)
+ delete mode 100644 .gitmodules
+ create mode 100644 meson_options.txt
+ delete mode 160000 vapoursynth
+
+diff --git a/.gitmodules b/.gitmodules
+deleted file mode 100644
+index 283b917..0000000
+--- a/.gitmodules
++++ /dev/null
+@@ -1,3 +0,0 @@
+-[submodule "vapoursynth"]
+-	path = vapoursynth
+-	url = https://github.com/vapoursynth/vapoursynth.git
+diff --git a/meson.build b/meson.build
+index 0e1d351..c4b97a4 100644
+--- a/meson.build
++++ b/meson.build
+@@ -40,13 +40,27 @@ libs += static_library('fpng',
+     cpp_args: fpng_cpp_args
+ )
+ 
+-py = import('python').find_installation(pure: false)
++vs_compat = get_option('r73-compat')
++if vs_compat
++  vapoursynth_dep = dependency('vapoursynth', version: '>=70').partial_dependency(compile_args: true, includes: true)
++
++  deps = [
++    vapoursynth_dep,
++  ]
++  install_dir = vapoursynth_dep.get_variable(pkgconfig: 'libdir') / 'vapoursynth'
++else
++  py = import('python').find_installation(pure: false)
++
++  deps = []
++  install_dir = py.get_install_dir() / 'vapoursynth/plugins'
++endif
+ 
+ shared_module('fpng',
+   sources,
+-  include_directories: ['src', 'vapoursynth/include'],
++  include_directories: 'src',
++  dependencies: deps,
+   install: true,
+-  install_dir: py.get_install_dir() / 'vapoursynth/plugins',
++  install_dir: install_dir,
+   link_with: libs,
+   gnu_symbol_visibility: 'hidden'
+ )
+diff --git a/meson_options.txt b/meson_options.txt
+new file mode 100644
+index 0000000..3c86e52
+--- /dev/null
++++ b/meson_options.txt
+@@ -0,0 +1,5 @@
++option('r73-compat',
++  type: 'boolean',
++  value: false,
++  description: 'Use VapourSynth R73 compatible install directory'
++)
+diff --git a/vapoursynth b/vapoursynth
+deleted file mode 160000
+index a3bc224..0000000
+--- a/vapoursynth
++++ /dev/null
+@@ -1 +0,0 @@
+-Subproject commit a3bc22442ec2d151a5e226d3c3c28d3a87dd3585
+-- 
+2.53.0
+
