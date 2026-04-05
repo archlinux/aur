@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=14
+pkgrel=15
 pkgdesc="Shorin Niri Desktop Environment (Dependencies & Dotfiles)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -42,7 +42,6 @@ depends=(
     'python-pywalfox'
     'ttf-jetbrains-maple-mono-nf-xx-xx'
     'ttf-lxgw-wenkai-screen'
-    'waybar-niri-taskbar-git'
     'waypaper-git'
     'niri-sidebar-git'
 
