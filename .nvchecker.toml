@@ -1,0 +1,3 @@
+[perl-bareword-filehandles]
+source = "cpan"
+cpan = "bareword-filehandles"
