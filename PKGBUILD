@@ -1,20 +1,25 @@
 # Maintainer: Ashar Khan <ashar786khan at gmail.com>
 
 pkgname=cpeditor
-pkgver=6.11.2
+pkgver=7.0.2
 _pkgdir=cpeditor-$pkgver-full-source
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
 url='https://github.com/cpeditor/cpeditor'
-license=('GPL3')
-depends=('qt5-base' 'hicolor-icon-theme')
+license=('GPL-3.0-or-later')
+depends=(
+    'qt5-base'
+    'qt5-svg'
+    'syntax-highlighting5'
+    'hicolor-icon-theme'
+)
 makedepends=(
-    "cmake"
-    "git"
-    "ninja"
-    "python3"
-    "qt5-tools"
+    'cmake'
+    'git'
+    'ninja'
+    'python3'
+    'qt5-tools'
 )
 optdepends=(
     'cf-tool: submit to Codeforces'
@@ -24,9 +29,8 @@ optdepends=(
     'python: execute Python'
     'wakatime: track coding stats'
 )
-conflicts=("cpeditor-git")
 source=("https://github.com/cpeditor/$pkgname/releases/download/$pkgver/cpeditor-$pkgver-full-source.tar.gz")
-sha256sums=('ae542de317c28e5347cca8391fdd7945bc1fcdb386083a70320643a3499b2c3a')
+sha256sums=('9cf5abdf15178f1c1c769d7c107edaaaeaab16d011220f320e9fc35fc99d2d4e')
 
 build() {
     cd "$_pkgdir"
