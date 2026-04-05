@@ -1,0 +1,10 @@
+*.pkg.tar.zst
+*.pkg.tar.zst-namcap.log
+*-namcap.log
+*-build.log
+*-check.log
+*-package.log
+*-prepare.log
+*.tar.gz
+src/
+pkg/
