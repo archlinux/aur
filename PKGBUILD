@@ -1,6 +1,6 @@
 pkgname=lwe-git
 pkgver=0.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux dynamic wallpaper shell for Wallpaper Engine content"
 arch=('x86_64' 'aarch64')
 url="https://github.com/YangYuS8/lwe"
@@ -29,7 +29,7 @@ prepare() {
 build() {
 	cd "${srcdir}/lwe"
 	unset CARGO_ENCODED_RUSTFLAGS
-	export RUSTFLAGS="-C linker=cc -C link-arg=-fuse-ld=bfd"
+	export RUSTFLAGS="-C linker=cc -C link-arg=-fuse-ld=bfd -C link-arg=-Wl,--no-as-needed -C link-arg=-lsqlite3"
 	export CARGO_PROFILE_RELEASE_LTO=false
 	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
 	export CARGO_PROFILE_RELEASE_STRIP=false
