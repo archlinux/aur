@@ -55,7 +55,6 @@ checkdepends=(
   python-pylast
   python-pyacoustid
   python-pytest
-  python-pytest-xdist
   python-rarfile
   python-reflink
   python-requests-mock
@@ -125,7 +124,7 @@ build() {
 
 check() {
   cd beets
-  pytest -n auto \
+  pytest \
     --override-ini="addopts=" \
     --ignore test/plugins/test_player.py \
     --ignore test/plugins/test_autobpm.py \

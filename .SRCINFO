@@ -23,7 +23,6 @@ pkgbase = beets-git
 	checkdepends = python-pylast
 	checkdepends = python-pyacoustid
 	checkdepends = python-pytest
-	checkdepends = python-pytest-xdist
 	checkdepends = python-rarfile
 	checkdepends = python-reflink
 	checkdepends = python-requests-mock
