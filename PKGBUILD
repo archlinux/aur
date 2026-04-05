@@ -1,23 +1,23 @@
 # Maintainer: pparaxan <xxdr@duck.com>
 pkgname="xfetch-bin"
-pkgver=5.0.0
-pkgrel=2
-pkgdesc="not associated with xmen; that one fetching tool made in zig."
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="A simple Arch Linux fetching tool that's not associated with X-Men."
 arch=('x86_64')
-url="https://codeberg.org/pparaxan/xFetch"
+url="https://codeberg.org/pparaxan/xfetch"
 license=('MIT')
-
 source=(
-	"https://codeberg.org/pparaxan/xFetch/releases/download/v${pkgver}/xFetch-${pkgver}.tar.xz"
+	"https://codeberg.org/pparaxan/xfetch/releases/download/v${pkgver}/xfetch-v${pkgver}.tar.xz"
 	"https://codeberg.org/pparaxan/xFetch/raw/branch/master/LICENSE"
 )
 sha256sums=(
-	'7c4461c934d947c62421d31553b62e5508f0fc4fda4a9915a0033cb10446992c'
-	'831e0b2afed192484f6f7bfa09833299c945057b681b639fb0b3f2fd07c86460'
+	'6d6c989d41ea2271d8efedd9abd77518a23ba684e10aaefd7c864438be0465bf'
+	'fa3a95be608217d5aa1c563c6b71516353640b16c52905b82cd1794ff24565c0'
 )
 
 package() {
-	cd "$srcdir/"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/xfetch/LICENSE"
+
+	cd "$srcdir/xfetch"
 	install -Dm755 xfetch "${pkgdir}/usr/bin/xfetch"
 }

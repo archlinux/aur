@@ -1,13 +1,13 @@
 pkgbase = xfetch-bin
-	pkgdesc = not associated with xmen; that one fetching tool made in zig.
-	pkgver = 5.0.0
-	pkgrel = 2
-	url = https://codeberg.org/pparaxan/xFetch
+	pkgdesc = A simple Arch Linux fetching tool that's not associated with X-Men.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/pparaxan/xfetch
 	arch = x86_64
 	license = MIT
-	source = https://codeberg.org/pparaxan/xFetch/releases/download/v5.0.0/xFetch-5.0.0.tar.xz
+	source = https://codeberg.org/pparaxan/xfetch/releases/download/v1.0.0/xfetch-v1.0.0.tar.xz
 	source = https://codeberg.org/pparaxan/xFetch/raw/branch/master/LICENSE
-	sha256sums = 7c4461c934d947c62421d31553b62e5508f0fc4fda4a9915a0033cb10446992c
-	sha256sums = 831e0b2afed192484f6f7bfa09833299c945057b681b639fb0b3f2fd07c86460
+	sha256sums = 6d6c989d41ea2271d8efedd9abd77518a23ba684e10aaefd7c864438be0465bf
+	sha256sums = fa3a95be608217d5aa1c563c6b71516353640b16c52905b82cd1794ff24565c0
 
 pkgname = xfetch-bin
