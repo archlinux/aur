@@ -1,6 +1,6 @@
 # Maintainer: Kyotaro Sakamoto <skmtkytr+github@gmail.com>
 pkgname=twitch-tts-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Twitch chat TTS reader using VOICEVOX"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('pipewire: audio routing for OBS'
 provides=('twitch-tts')
 conflicts=('twitch-tts' 'twitch-tts-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/skmtkytr/twitch-tts/releases/download/v${pkgver}/twitch-tts-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('8bd0d63a6c2d114f8951ef489a6d8384664c7d55d0c41a3640d419c9c34379bc')
+sha256sums=('f9a7318fe3c5ff3f86feb13161c5d126f28a7c88b8f1f9fd4ae7f867a2be3cc7')
 
 package() {
     cd "$srcdir/twitch-tts"

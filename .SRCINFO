@@ -1,6 +1,6 @@
 pkgbase = twitch-tts-bin
 	pkgdesc = Twitch chat TTS reader using VOICEVOX
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/skmtkytr/twitch-tts
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = twitch-tts-bin
 	provides = twitch-tts
 	conflicts = twitch-tts
 	conflicts = twitch-tts-git
-	source = twitch-tts-bin-0.2.1.tar.gz::https://github.com/skmtkytr/twitch-tts/releases/download/v0.2.1/twitch-tts-v0.2.1-linux-amd64.tar.gz
-	sha256sums = 8bd0d63a6c2d114f8951ef489a6d8384664c7d55d0c41a3640d419c9c34379bc
+	source = twitch-tts-bin-0.2.2.tar.gz::https://github.com/skmtkytr/twitch-tts/releases/download/v0.2.2/twitch-tts-v0.2.2-linux-amd64.tar.gz
+	sha256sums = f9a7318fe3c5ff3f86feb13161c5d126f28a7c88b8f1f9fd4ae7f867a2be3cc7
 
 pkgname = twitch-tts-bin
