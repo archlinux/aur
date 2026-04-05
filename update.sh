@@ -42,3 +42,8 @@ sed -i -E \
 
 # Regenerate .SRCINFO
 makepkg --printsrcinfo > .SRCINFO
+
+# Push
+git add --all
+git commit -m "bump to version $ver"
+git push
