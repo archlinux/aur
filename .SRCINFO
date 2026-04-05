@@ -1,12 +1,12 @@
 pkgbase = concurrentqueue
 	pkgdesc = A fast multi-producer, multi-consumer lock-free concurrent queue for C++11
-	pkgver = 1.0.4
-	pkgrel = 2
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://github.com/cameron314/concurrentqueue
 	arch = any
 	license = (BSD-2-Clause AND Zlib) OR (BSL-1.0 AND Zlib)
 	makedepends = cmake
-	source = concurrentqueue-1.0.4.tar.gz::https://github.com/cameron314/concurrentqueue/archive/v1.0.4.tar.gz
-	b2sums = 8019a82e8cac2130e6565a07a153f17762673d1b1254e824ab0aadc9424836452ab89471513975cceb6f161a04480d58ea56679673c8459136d735d4df2de863
+	source = concurrentqueue-1.0.5.tar.gz::https://github.com/cameron314/concurrentqueue/archive/v1.0.5.tar.gz
+	b2sums = 167b338638c133b10a365b0b70160b301eb19ab18eee4e7dadb2c4672d468a43996b296d0ed8066a4499904f71daa0f1deaa3ac8b3e345175de74960ef94cd89
 
 pkgname = concurrentqueue
