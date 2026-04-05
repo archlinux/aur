@@ -1,0 +1,6 @@
+*.pkg.tar.*
+*.pkg.tar.*.sig
+*.log
+pkg/
+src/
+open-webui/

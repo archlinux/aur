@@ -4,11 +4,24 @@ After=network.target
 
 [Service]
 Type=simple
+DynamicUser=yes
+StateDirectory=open-webui
+CacheDirectory=open-webui
+WorkingDirectory=/var/lib/open-webui
+Environment=HOME=/var/lib/open-webui
 Environment=PYTHONUNBUFFERED=1
-EnvironmentFile=/usr/share/open-webui/open-webui.conf
-ExecStart=/bin/open-webui serve
-
+EnvironmentFile=-/etc/conf.d/open-webui
+ExecStart=/usr/bin/open-webui serve
 Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=full
+RestrictSUIDSGID=yes
 
 [Install]
 WantedBy=multi-user.target
