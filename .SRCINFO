@@ -1,12 +1,12 @@
 pkgbase = backupmenu
-	pkgdesc = Backup program,TUI utility for Linux distro's , bash
-	pkgver = 2.3
-	pkgrel = 4
+	pkgdesc = Backup program, TUI utility for Linux distro's, bash
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://github.com/gavinlyonsrepo/backupmenu
 	arch = any
 	license = MIT
 	depends = bashmultitool
-	source = https://github.com/gavinlyonsrepo/backupmenu/archive/2.3.tar.gz
-	sha256sums = ed5ce2d028ef309b39e59c889c3065bb72aecaa33a5882db3aefa458e880defe
+	source = https://github.com/gavinlyonsrepo/backupmenu/archive/2.4.0.tar.gz
+	sha256sums = c6a4bd658a78b40fbfc763a2ad2b1e882dbf11f8b32434a0a7d08aec90799aee
 
 pkgname = backupmenu
