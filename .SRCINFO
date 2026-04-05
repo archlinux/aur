@@ -16,10 +16,10 @@ pkgbase = advcpmv
 	provides = mvg
 	source = mirror://gnu/coreutils/coreutils-9.5.tar.xz
 	source = mirror://gnu/coreutils/coreutils-9.5.tar.xz.sig
-	source = advcpmv-9.5-3.patch
+	source = advcpmv-9.5-2.patch
 	validpgpkeys = 6C37DC12121A5006BC1DB804DF6FD971306037D9
 	sha256sums = cd328edeac92f6a665de9f323c93b712af1858bc2e0d88f3f7100469470a1b8a
 	sha256sums = SKIP
-	sha256sums = 2d17dbe2179994050a89797f842fc7828a9e18cc42b7caee058654adbcd21fe6
+	sha256sums = d89abdc9822c9dee3bafea12874dce952f0c9189f94b11337b5f1b5f1c8ef96c
 
 pkgname = advcpmv
