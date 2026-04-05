@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 
 pkgname=authzed-zed
-pkgver=0.33.1
+pkgver=0.36.1
 pkgrel=1
 pkgdesc="Official command-line tool for managing SpiceDB"
 arch=('x86_64' 'armv7h' 'aarch64')
