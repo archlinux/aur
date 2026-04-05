@@ -1,6 +1,6 @@
 # Maintainer: Radu Ursache <radu@ursache.ro>
 pkgname=kdecodexbar
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="AI Usage Tracker for KDE Plasma (Codex, Claude, Gemini, Antigravity)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt6-base' 'kstatusnotifieritem' 'kcoreaddons' 'kconfig' 'ki18n' 'kwindowsystem')
 makedepends=('cmake' 'extra-cmake-modules' 'qt6-tools' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/rursache/KDECodexBar/tar.gz/v${pkgver}")
-sha256sums=('5851a843a98fcb328ec9f3445aea9969a39b85fc533f53365d1831366c31966d')
+sha256sums=('83972e69e812a1ee2b6f1802148ff1362af943dadc617bc077326fe56392d475')
 
 build() {
     cmake -B build -S "${srcdir}/KDECodexBar-${pkgver}" \
