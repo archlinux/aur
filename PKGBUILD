@@ -1,7 +1,7 @@
 # Maintainer: Voylin <voylinslife@gmail.com>
 
 pkgname=gozen-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A minimalistic video editor (binary AppImage release)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
   "gozen.svg::https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/master/assets/linux/gozen.svg"
   "LICENSE::https://raw.githubusercontent.com/VoylinsGamedevJourney/gozen/refs/heads/master/LICENSE"
 )
-sha256sums=('7aebdd482243a615aa94c2207b025265c3b3dfac03f1a2c7f4bec710d730b0b5'
+sha256sums=('04d96f3ee6d0d21d282b09063942ced3a8d9277f82e74a79db653d3438bb16ff'
             '06235c34b7db3df316bb3c0e18fa55edbb75a0b1444235913fdeb2aff4c20730'
             '1879e13f6fa093f9fb1786466f3bc0bc1465d31392bc668b3c1216c63f7e8c36'
             '3830395131c87f0b8b8b3ab7483fdc8e4212a51ff3a7a038ef208027a9c06946'
