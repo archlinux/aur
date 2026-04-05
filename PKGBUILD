@@ -1,6 +1,6 @@
 # Maintainer: Mykhailo Aleksieiev <nekohepott@larpdhq.org>
 pkgname=gogofetch-git
-pkgver=r49.05e7a4a
+pkgver=r50.6c964f0
 pkgrel=1
 pkgdesc="Fetch written in Go with image support"
 arch=('x86_64')
