@@ -1,6 +1,6 @@
 pkgbase = spxc-webtools
 	pkgdesc = Web management tools for spxc: Python servers, HTML cleaning, and site bundling
-	pkgver = 1.6.8
+	pkgver = 1.6.9
 	pkgrel = 2
 	url = https://aur.archlinux.org/packages/spxc-webtools
 	arch = any
@@ -10,6 +10,6 @@ pkgbase = spxc-webtools
 	depends = findutils
 	depends = coreutils
 	source = spxc-web
-	sha256sums = 8a80cf983d8ef8be28241ebfc59c69d184969760595fb6d5a0e19bfdb7450b4a
+	sha256sums = a9a7c28d185be761abdcfcb37a1007bf4cb59af461a4eeedf58c4a61ec494db0
 
 pkgname = spxc-webtools
