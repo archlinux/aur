@@ -4,7 +4,7 @@
 # Contributor: Johannes Löthberg <demizide@gmail.com>
 
 pkgname=beets-git
-pkgver=2.7.1.r90.g3bcc539b2
+pkgver=2.8.0.r100.ga6af177be
 pkgrel=1
 pkgdesc="Flexible music library manager and tagger - git version"
 arch=('any')
@@ -53,7 +53,9 @@ checkdepends=(
   python-pillow
   python-py7zr
   python-pylast
+  python-pyacoustid
   python-pytest
+  python-pytest-xdist
   python-rarfile
   python-reflink
   python-requests-mock
@@ -123,7 +125,7 @@ build() {
 
 check() {
   cd beets
-  pytest \
+  pytest -n auto \
     --override-ini="addopts=" \
     --ignore test/plugins/test_player.py \
     --ignore test/plugins/test_autobpm.py \

@@ -1,6 +1,6 @@
 pkgbase = beets-git
 	pkgdesc = Flexible music library manager and tagger - git version
-	pkgver = 2.7.1.r90.g3bcc539b2
+	pkgver = 2.8.0.r100.ga6af177be
 	pkgrel = 1
 	url = https://beets.io/
 	arch = any
@@ -21,7 +21,9 @@ pkgbase = beets-git
 	checkdepends = python-pillow
 	checkdepends = python-py7zr
 	checkdepends = python-pylast
+	checkdepends = python-pyacoustid
 	checkdepends = python-pytest
+	checkdepends = python-pytest-xdist
 	checkdepends = python-rarfile
 	checkdepends = python-reflink
 	checkdepends = python-requests-mock
@@ -81,7 +83,7 @@ pkgbase = beets-git
 	optdepends = python-soco: Sonosupdate plugin
 	optdepends = python-titlecase: Titlecase plugin
 	optdepends = python-xdg: Thumbnails plugin
-	provides = beets=2.7.1.r90.g3bcc539b2
+	provides = beets=2.8.0.r100.ga6af177be
 	conflicts = beets
 	source = git+https://github.com/beetbox/beets.git
 	md5sums = SKIP
