@@ -4,7 +4,7 @@ _repo=danksearch
 _binname=dsearch
 
 pkgname=${_binname}-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Fast filesystem search service"
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ source_aarch64=("${_binname}-${arch[1]}-${pkgver}.gz::${url}/releases/download/v
 sha256sums=('4cee96286c5b7da9763a4694868bb1853b33bb1558821e0c609ad2eabd426bfa'
             '6a4cb2d57168eff67f565dc45b71cf118b6c02f69c3fa35184fd670196c54306'
             '6908e1e996cf4c457543dbf108e70c9dda7b03229dd11badd3a28598373e5b4b')
-sha256sums_x86_64=('36cac5eade070dc750ac4a489f22d8e104037a988db40c06f3af92d736017bd6')
-sha256sums_aarch64=('953cf4cfbafb79e7a7d42a98c82f72f47579229e92c7493453fb4aaa4b271880')
+sha256sums_x86_64=('5e6d6c7620ec76447dd56836c62cc1dceae7f8d095bb105b3ea1b32db7de7532')
+sha256sums_aarch64=('8bee1862e551bcfa09c0eacc8607d94cc4a63adb364119cdd1db679769a949ce')
 
 package() {
   cd "${srcdir}" || exit 1
