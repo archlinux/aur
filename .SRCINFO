@@ -1,0 +1,20 @@
+pkgbase = Starfish
+	pkgdesc = Starfish: Arch Depdency Viewer
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Seafoam-Labs/Starfish
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = dotnet-sdk-10.0
+	makedepends = clang
+	depends = shelly
+	depends = gtk4
+	depends = glib2
+	depends = libEGL
+	depends = hicolor-icon-theme
+	depends = glibc
+	provides = Starfish
+	source = Starfish-0.0.1.tar.gz::https://github.com/Seafoam-Labs/Starfish/archive/v0.0.1.tar.gz
+	sha256sums = 8b3acc13a4fc7315a3a694126da25635f173fff2e880c905759261c8afda01c3
+
+pkgname = Starfish
