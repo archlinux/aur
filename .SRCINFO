@@ -1,0 +1,20 @@
+pkgbase = relation-git
+	pkgdesc = Tiny proxy client based on sing-box
+	pkgver = 0.3.0.r180.g362f189
+	pkgrel = 1
+	url = https://github.com/snbm1/relation
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = go
+	depends = gcc-libs
+	depends = glibc
+	provides = relation
+	conflicts = relation
+	source = git+https://github.com/snbm1/relation.git#branch=master
+	sha256sums = SKIP
+
+pkgname = relation-git
