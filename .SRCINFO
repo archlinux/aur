@@ -1,6 +1,6 @@
 pkgbase = ampcode
 	pkgdesc = Amp CLI (Sourcegraph's agentic coding tool) packaged from npm releases
-	pkgver = 0.0.1775318725_g13b193
+	pkgver = 0.0.1775390627_g406649
 	pkgrel = 1
 	url = https://ampcode.com
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ampcode
 	conflicts = ampcode-bin
 	replaces = sourcegraph-amp
 	options = !debug
-	source = ampcode-0.0.1775318725_g13b193.tgz::https://registry.npmjs.org/@sourcegraph/amp/-/amp-0.0.1775318725-g13b193.tgz
-	sha256sums = 7bbcc04c8fd51ee3cf45fe243d5f22abfbeb12429d113c05b6ad43552d6230aa
+	source = ampcode-0.0.1775390627_g406649.tgz::https://registry.npmjs.org/@sourcegraph/amp/-/amp-0.0.1775390627-g406649.tgz
+	sha256sums = 5890dacc55621fbfa9604728eacd21491cc87c898b8d807eccfa015b2f09f4b2
 
 pkgname = ampcode
