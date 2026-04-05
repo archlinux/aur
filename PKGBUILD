@@ -14,7 +14,7 @@
 pkgbase=amdgpu-exporter
 pkgname=('amdgpu-exporter' 'rocprofiler-client')
 pkgver=1.4.2
-pkgrel=1
+pkgrel=5
 pkgdesc="AMD GPU metrics exporter for Prometheus"
 arch=('x86_64')
 url="https://github.com/ROCm/device-metrics-exporter"
@@ -51,6 +51,7 @@ build() {
     export CGO_ENABLED=0
     export GOFLAGS="-mod=vendor"
 
+    export GODEBUG=netdns=cgo
     go build -trimpath -ldflags="-s -w" -buildmode=pie -o "${srcdir}/amd-metrics-exporter" ./cmd/exporter
     go build -trimpath -ldflags="-s -w" -buildmode=pie -o "${srcdir}/amd-test-runner"       ./cmd/testrunner
     go build -trimpath -ldflags="-s -w" -buildmode=pie -o "${srcdir}/metricutil"            ./tools/metricutil

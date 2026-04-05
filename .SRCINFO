@@ -1,7 +1,7 @@
 pkgbase = amdgpu-exporter
 	pkgdesc = AMD GPU metrics exporter for Prometheus
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 5
 	url = https://github.com/ROCm/device-metrics-exporter
 	arch = x86_64
 	license = Apache-2.0
