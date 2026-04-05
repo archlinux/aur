@@ -1,5 +1,5 @@
 pkgname=soundcloud-desktop-bin
-pkgver=6.4.1
+pkgver=6.5.0
 pkgrel=1
 pkgdesc="Native desktop app for Soundcloud.(unofficial)"
 arch=('x86_64' 'aarch64')
