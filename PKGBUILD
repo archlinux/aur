@@ -1,47 +1,47 @@
-# Maintainer: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 # Contributor: Oliver Charles <oliver.g.charles@googlemail.com>
 
-pkgname='perl-fcgi-procmanager'
-_cpanname='FCGI-ProcManager'
-pkgver='0.28'
-pkgrel='1'
-pkgdesc='Functions for managing FastCGI applications'
+_author=ARODLAND
+_dist=FCGI-ProcManager
+pkgname=perl-${_dist@L}
+pkgver=0.28
+pkgrel=2
+pkgdesc='A perl-based FastCGI process manager'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/dist/$_dist
+license=('LGPL-2.1-or-later')
+depends=('perl')
+makedepends=('perl-extutils-makemaker')
 options=('!emptydirs')
-depends=('perl>=5.5.0')
-url="https://metacpan.org/pod/FCGI::ProcManager"
-source=("https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/$_cpanname-$pkgver.tar.gz")
-md5sums=('26b2000544015bf7c40a4b3caa7fbba3')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('e1c958c042427a175e051e0008f2025e8ec80613d3c7750597bf8e529b04420e')
 
+build()
+{
+    cd "$_dist-$pkgver"
 
-# Function to change to the working directory and set
-# environment variables to override undesired options.
-prepareEnvironment() {
-	cd "$srcdir/$_cpanname-$pkgver"
-	export \
-		PERL_MM_USE_DEFAULT=1 \
-		PERL_AUTOINSTALL=--skipdeps \
-		PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-		PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-		MODULEBUILDRC=/dev/null
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-build() {
-	prepareEnvironment
-	/usr/bin/perl Makefile.PL
-	make
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-check() {
-	prepareEnvironment
-	make test
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-package() {
-	prepareEnvironment
-	make install
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
-	# Remove "perllocal.pod" and ".packlist".
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
