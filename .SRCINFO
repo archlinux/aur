@@ -1,13 +1,16 @@
 pkgbase = i2pchat-bin
 	pkgdesc = Experimental peer-to-peer chat client for the I2P network (official AppImage, binary)
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MetanoicArmor/I2PChat
 	arch = x86_64
 	license = AGPL-3.0-or-later
+	depends = hicolor-icon-theme
+	depends = zlib
+	options = !strip
 	source = I2PChat-linux-x86_64-v1.2.3.zip::https://github.com/MetanoicArmor/I2PChat/releases/download/v1.2.3/I2PChat-linux-x86_64-v1.2.3.zip
 	source = icon.png::https://github.com/MetanoicArmor/I2PChat/raw/v1.2.3/icon.png
-	sha256sums = be16b2a1ed96523b2ff7e892e7cdb09ba4b39f4c9522e8462653373d22bc3f48
+	sha256sums = 23d802f504be2b44cd20e05b21fdb4c09a044a07c607e35b0eaa2bb3ee888c59
 	sha256sums = c49c198bef05e1cf3bf159858acefad100981fb21437e47e2588fcc1e4ad7217
 
 pkgname = i2pchat-bin
