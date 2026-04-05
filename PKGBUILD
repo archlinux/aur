@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=wifiman-desktop
 pkgver=1.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Network analysis and WiFi speed testing tool by Ubiquiti"
 arch=('x86_64')
 url="https://ui.com"
@@ -18,7 +18,9 @@ depends=(
   'wireless_tools'
   'systemd'
 )
-optdepends=('wireguard-tools: required for using Teleport VPN')
+optdepends=(
+  'resolvconf: for DNS functionality'
+  'sudo: elevate privileges')
 install="$pkgname.install"
 source=("https://desktop.wifiman.com/$pkgname-$pkgver-amd64.deb")
 sha256sums=('47e31bc317e7055f5571859e33534cd3c2d7d4ccfdf9fcb8afab9920bc9d964b')
