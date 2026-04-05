@@ -1,0 +1,3 @@
+[perl-moosex-setonce]
+source = "cpan"
+cpan = "MooseX-SetOnce"
