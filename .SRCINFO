@@ -1,0 +1,14 @@
+pkgbase = spxc-core
+	pkgdesc = Core CLI for spxc: system info and versioning
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/spxc-core
+	arch = any
+	license = MIT
+	depends = bash
+	provides = spxc
+	conflicts = spxc
+	source = spxc
+	sha256sums = 5054013834c17013f1030d1e38fefbc22af1cd443287316c1a3c70920ff3b38a
+
+pkgname = spxc-core

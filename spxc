@@ -1,0 +1,49 @@
+#!/bin/bash
+VERSION="V1.5"
+
+case "$1" in
+    -v)
+        echo "$VERSION"
+        ;;
+    -sysfo)
+        echo "--- System Information ---"
+        echo "CPU: $(lscpu | grep 'Model name' | cut -d ':' -f 2 | sed 's/^[ \t]*//')"
+        echo "GPU: $(lspci | grep -i vga | cut -d ':' -f 3 | sed 's/^[ \t]*//')"
+        echo "RAM: $(free -h | awk '/^Mem:/ {print $3 "/" $2}')"
+        echo "IP (Local): $(hostname -I | awk '{print $1}')"
+        echo "IP (Public): $(curl -s https://ifconfig.me || echo 'N/A')"
+        echo "Timezone: $(timedatectl show --property=Timezone --value)"
+        echo "Keyboard: $(localectl status | grep 'X11 Layout' | cut -d ':' -f 2 | sed 's/^[ \t]*//')"
+        
+        if [ -d /sys/class/power_supply/BAT0 ]; then
+            capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+            status=$(cat /sys/class/power_supply/BAT0/status)
+            echo "Battery: $capacity% ($status)"
+        else
+            echo "Battery: N/A"
+        fi
+        echo "--------------------------"
+        ;;
+    -mkserv|-rmweb|-dweb)
+        if command -v spxc-web &> /dev/null; then
+            spxc-web "$@"
+        else
+            echo "Web tools are not installed."
+            echo "Please install 'spxc-webtools' to use this command."
+        fi
+        ;;
+    --help)
+        echo "Available commands (Core):"
+        echo "  -v                             Show version"
+        echo "  -sysfo                         Show detailed system information"
+        echo ""
+        echo "Available commands (Requires spxc-webtools):"
+        echo "  -mkserv [directory] [port]     Create and start a Python server"
+        echo "  -rmweb [directory]             Remove all HTML files in a directory"
+        echo "  -dweb [directory] [URL] [name] Download and bundle a full site into 1 HTML file"
+        ;;
+    *)
+        echo "Usage: spxc --help"
+        exit 1
+        ;;
+esac
