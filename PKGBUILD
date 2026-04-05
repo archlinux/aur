@@ -2,20 +2,20 @@
 # Contributor: shimi <shimi.chen@gmail.com>
 # Contributor: Dmytro Meleshko <dmytro.meleshko@gmail.com>
 pkgname=imagewriter
-_pkgver=1.10.1432200249.1d253d9-2.23
+_pkgver=1.10.1432200249.1d253d9-2.24
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A graphical utility for writing raw disk images & hybrid isos to USB keys"
 arch=('x86_64')
 url="https://github.com/openSUSE/imagewriter"
-license=('GPL-2.0-or-later')
+license=('GPL-2.0-only')
 depends=(
   'hicolor-icon-theme'
   'qt5-base'
   'udisks2'
 )
 source=("https://download.opensuse.org/tumbleweed/repo/src-oss/src/$pkgname-${_pkgver}.src.rpm")
-sha256sums=('8e7be5782796e5c20e0e82b477f5911f3e0e8df7de7de5038d5ea1f3cba9ef3b')
+sha256sums=('8c99c3a91d4516a675a2c7eaf96a1fc54b7af8b0c2d779113b44820d8f490d9b')
 
 prepare() {
   bsdtar xvf "$pkgname-${_pkgver%-*}.tar.xz"
@@ -29,8 +29,13 @@ prepare() {
 
 build() {
   cd "$pkgname-${_pkgver%-*}"
-  CFLAGS="${CFLAGS} -DKIOSKHACK"
-  qmake-qt5 PREFIX="$pkgdir/usr" DEFINES=USEUDISKS2 "$pkgname.pro"
+  qmake-qt5 \
+    QMAKE_CFLAGS="${CFLAGS} -DKIOSKHACK" \
+    QMAKE_CXXFLAGS="${CXXFLAGS} -DKIOSKHACK" \
+    QMAKE_LFLAGS="${LDFLAGS}" \
+    PREFIX="$pkgdir/usr" \
+    DEFINES=USEUDISKS2 \
+    "$pkgname.pro"
   make
 }
 
