@@ -1,6 +1,6 @@
 pkgname=lwe-git
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux dynamic wallpaper shell for Wallpaper Engine content"
 arch=('x86_64' 'aarch64')
 url="https://github.com/YangYuS8/lwe"
@@ -28,9 +28,11 @@ prepare() {
 
 build() {
 	cd "${srcdir}/lwe"
+	unset CARGO_ENCODED_RUSTFLAGS
+	export RUSTFLAGS="-C linker=cc -C link-arg=-fuse-ld=bfd"
 	export CARGO_PROFILE_RELEASE_LTO=false
 	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
-	export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=bfd"
+	export CARGO_PROFILE_RELEASE_STRIP=false
 	cargo tauri build -b deb
 }
 
