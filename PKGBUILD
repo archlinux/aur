@@ -19,7 +19,7 @@ provides=('phantom-browser')
 conflicts=('phantom-browser')
 
 source_x86_64=("phantom-${pkgver}.tar.xz::https://github.com/SergBrowns/phantom-browser/releases/download/v${pkgver}/phantom-${pkgver}.tar.xz")
-sha256sums_x86_64=('d2c0f650d94f7d1658c41ee0a9835ae38d076903df8566de44119bf6bb4137ba')
+sha256sums_x86_64=('9c61247c93f5ca6eafb0cfe29056986a29230946a767b357a6e97b0b126cd6cd')
 
 package() {
     # Install browser files
@@ -27,10 +27,12 @@ package() {
     cp -r phantom/* "${pkgdir}/opt/phantom/"
     chmod +x "${pkgdir}/opt/phantom/phantom"
 
-    # Commands: `phantom` (primary) + `phantom-browser` (alias)
-    install -d "${pkgdir}/usr/bin"
-    ln -s /opt/phantom/phantom "${pkgdir}/usr/bin/phantom"
-    ln -s /opt/phantom/phantom "${pkgdir}/usr/bin/phantom-browser"
+    # Wrapper script — suppresses console output, sets MOZ_APP_LAUNCHER
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/phantom" <<'WRAPPER'
+#!/bin/sh
+exec /opt/phantom/phantom "$@" >/dev/null 2>&1
+WRAPPER
+    ln -s /usr/bin/phantom "${pkgdir}/usr/bin/phantom-browser"
 
     # Desktop entry
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/phantom-browser.desktop" <<'DESKTOP'
