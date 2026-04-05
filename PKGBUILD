@@ -11,12 +11,13 @@ depends=()
 makedepends=("binutils" "tar")
 provides=("friendnet-client")
 conflicts=()
+options=(!debug)
 
 source=(
-  "friendnet-client-linux_amd64.deb::https://github.com/termermc/FriendNet/releases/download/v${pkgver}/friendnet-client-linux_amd64.deb"
+  "friendnet-client-linux_amd64-$pkgver.deb::https://github.com/termermc/FriendNet/releases/download/v1.1.1/friendnet-client-linux_amd64.deb"
 )
 
-sha256sums=("c9750644d7977eeead26c140fee6fb11a1a8dc1f18d4592e42320e6fbab8a213")
+sha256sums=('c9750644d7977eeead26c140fee6fb11a1a8dc1f18d4592e42320e6fbab8a213')
 
 package() {
   cd "$srcdir"
@@ -25,6 +26,6 @@ package() {
 
   tar -xzf data.tar.gz -C "$pkgdir"
 
-  # Rmove Debian-only metadata if present in payload
+  # Remove Debian-only metadata if present in payload
   rm -rf "$pkgdir/DEBIAN" "$pkgdir/debian-binary" 2>/dev/null || true
 }
