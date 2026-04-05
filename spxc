@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V0.4.1"
+VERSION="V0.5"
 
 case "$1" in
     -v)
@@ -122,7 +122,6 @@ EOF
             exit 1
         fi
 
-        # Find files and store them in an array to handle spaces
         mapfile -t files < <(find "$DIR" -maxdepth 1 -name "*.html")
         
         if [ ${#files[@]} -eq 0 ]; then
@@ -148,12 +147,43 @@ EOF
                 ;;
         esac
         ;;
+    -dweb)
+        DIR=$2
+        URL=$3
+        NAME=$4
+        
+        if [ -z "$DIR" ] || [ -z "$URL" ] || [ -z "$NAME" ]; then
+            echo "Usage: spxc -dweb [directory] [URL] [html name]"
+            exit 1
+        fi
+
+        mkdir -p "$DIR"
+        FILEPATH="$DIR/$NAME"
+
+        if [ -f "$FILEPATH" ]; then
+            echo "File '$FILEPATH' already exists."
+            read -p "Do you want to overwrite it? (y/N): " choice
+            case "$choice" in
+                y|Y ) ;;
+                * ) echo "Download cancelled."; exit 0 ;;
+            esac
+        fi
+
+        echo "Downloading HTML from $URL..."
+        if curl -L "$URL" -o "$FILEPATH"; then
+            echo "Successfully downloaded to $FILEPATH"
+        else
+            echo "Error: Failed to download from $URL"
+            exit 1
+        fi
+        ;;
     --help)
         echo "Available commands:"
-        echo "  -v                             Show version"
-        echo "  -sysfo                         Show detailed system information"
-        echo "  -mkserv [directory] [port]     Create and start a dark-themed Python server"
-        echo "  -rmweb [directory]             Remove all HTML files in a directory after confirmation"
+        echo "  -v                                Show version"
+        echo "  -sysfo                            Show detailed system information"
+        echo "  -mkserv [directory] [port]        Create and start a dark-themed Python server"
+        echo "  -rmweb [directory]                Remove all HTML files in a directory after confirmation"
+        echo "  -dweb [directory] [URL] [name]    Download only the HTML from a URL with confirmation"
         ;;
     *)
         echo "Usage: spxc --help"
