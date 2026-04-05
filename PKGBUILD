@@ -1,7 +1,7 @@
 # Maintainer: Sougato Chakrobortty <someonesomething800@gmail.com>
 pkgname=cysinfo-git
 _pkgname=cysinfo
-pkgver=3.0
+pkgver=3.0.r44.4042c01
 pkgrel=1
 pkgdesc="A super simple and minimal fetch tool."
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "3.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
