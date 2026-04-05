@@ -1,8 +1,8 @@
 diff --git a/package.json b/package.json
-index a8b63c2b0..cc50ddaf2 100644
+index 8fa2ebd07..7d138fbde 100644
 --- a/package.json
 +++ b/package.json
-@@ -118,6 +118,9 @@
+@@ -115,6 +115,9 @@
      "@leafygreen-ui/select": "^17.0.3",
      "@leafygreen-ui/text-input": "^16.2.3",
      "@leafygreen-ui/tokens": "^4.2.2",
