@@ -1,6 +1,6 @@
 # Maintainer: rsp4jack <rsp4jack+aur<at>outlook.com>
 pkgname=kwin-zones-git
-pkgver=0.1.r56.33767fb
+pkgver=1.0.11.r13.gc3a930d
 pkgrel=1
 pkgdesc="Experimental implementation of ext-zones Wayland protocol for KWin"
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
