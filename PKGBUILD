@@ -1,5 +1,5 @@
 pkgname=echomusic-bin
-pkgver=1.1.4
+pkgver=2.0.0
 pkgrel=2
 pkgdesc="🎉 A simple third-party KuGou concept version music player"
 arch=('x86_64')
@@ -12,8 +12,8 @@ conflicts=('echomusic')
 # 【极其关键】禁止 makepkg 自动 strip 剥离符号！
 # 否则会破坏由 Node.js pkg 打包的 app_linux 服务端导致无法启动
 options=('!strip')
-
-source=("EchoMusic-$pkgver-Linux.deb::https://github.com/hoowhoami/EchoMusic/releases/download/v$pkgver/EchoMusic-$pkgver-Linux.deb")
+# https://github.com/hoowhoami/EchoMusic/releases/download/v2.0.0/EchoMusic-2.0.0-linux-amd64.deb
+source=("EchoMusic-$pkgver-linux-amd64.deb::https://github.com/hoowhoami/EchoMusic/releases/download/v$pkgver/EchoMusic-$pkgver-linux-amd64.deb")
 sha256sums=('SKIP')
 
 package() {
