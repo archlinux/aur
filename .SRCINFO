@@ -1,0 +1,23 @@
+pkgbase = penguinsnap
+	pkgdesc = Screenshot and OCR tool for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/rursache/PenguinSnap
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-wayland
+	depends = kstatusnotifieritem
+	depends = kglobalaccel
+	depends = layer-shell-qt
+	depends = tesseract
+	depends = tesseract-data-eng
+	depends = spectacle
+	depends = wl-clipboard
+	source = penguinsnap-1.0.0.tar.gz::https://codeload.github.com/rursache/PenguinSnap/tar.gz/v1.0.0
+	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+
+pkgname = penguinsnap
