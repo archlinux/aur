@@ -1,13 +1,14 @@
 # Maintainer: Theodore Huang <teddyhuangnan@gmail.com>
 pkgname=jjui-bin
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Text User Interface (TUI) designed for interacting with the Jujutsu version control system."
 arch=("x86_64" "aarch64")
 url="https://github.com/idursun/jjui"
 license=("MIT")
 provides=("jjui")
 depends=("jujutsu")
+options=("!debug")
 source=(
     "LICENSE-$pkgver::https://raw.githubusercontent.com/idursun/jjui/refs/tags/v${pkgver}/LICENSE"
 )
