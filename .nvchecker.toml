@@ -1,0 +1,5 @@
+[testx-bin]
+source = "github"
+github = "whoisdinanath/testx"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,22 @@
+pkgbase = testx-bin
+	pkgdesc = FUniversal test runner with auto-detection for 11 languages
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/whoisdinanath/testx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = testx
+	conflicts = testx
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/whoisdinanath/testx/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/whoisdinanath/testx/v0.1.0/LICENSE
+	sha256sums = b0fc0a4c7742df430e3b62f0d980c7adedbd516d8f77865da35c6e5b50b3b72c
+	sha256sums = 45e516620bdb03cfe95b9a061da6258839f8de0a893e5fdf2bd322b6c9751c89
+	source_x86_64 = testx-x86_64-0.1.0.tgz::https://github.com/whoisdinanath/testx/releases/download/v0.1.0/testx-v0.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 38451a1251cfc60e7e55f72684ac6089fb1966cfeebb6017ea702394ba156c07
+	source_aarch64 = testx-aarch64-0.1.0.tgz::https://github.com/whoisdinanath/testx/releases/download/v0.1.0/testx-v0.1.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 866243eed5950b91af969a80834a9422c8aefc5f56c8ea5629ef6fe941f9cbe1
+
+pkgname = testx-bin
