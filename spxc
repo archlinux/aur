@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V0.3.1"
+VERSION="V0.4"
 
 case "$1" in
     -v)
@@ -111,11 +111,42 @@ EOF
         echo "Press Ctrl+C to close server"
         cd "$DIR" && python3 -m http.server "$PORT"
         ;;
+    -rmweb)
+        DIR=$2
+        if [ -z "$DIR" ]; then
+            echo "Usage: spxc -rmweb [directory]"
+            exit 1
+        fi
+        if [ ! -d "$DIR" ]; then
+            echo "Error: Directory '$DIR' does not exist."
+            exit 1
+        fi
+
+        files=$(find "$DIR" -maxdepth 1 -name "*.html")
+        if [ -z "$files" ]; then
+            echo "No HTML files found in $DIR."
+            exit 0
+        fi
+
+        echo "The following files will be deleted:"
+        echo "$files"
+        read -p "Are you sure you want to delete these files? (y/N): " choice
+        case "$choice" in
+            y|Y ) 
+                rm $files
+                echo "HTML files removed from $DIR."
+                ;;
+            * ) 
+                echo "Operation cancelled."
+                ;;
+        esac
+        ;;
     --help)
         echo "Available commands:"
         echo "  -v                             Show version"
         echo "  -sysfo                         Show detailed system information"
         echo "  -mkserv [directory] [port]     Create and start a dark-themed Python server"
+        echo "  -rmweb [directory]             Remove all HTML files in a directory after confirmation"
         ;;
     *)
         echo "Usage: spxc --help"
