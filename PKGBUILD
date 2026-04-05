@@ -1,52 +1,71 @@
 pkgname=echomusic-bin
 pkgver=2.0.0
-pkgrel=2
-pkgdesc="🎉 A simple third-party KuGou concept version music player"
+pkgrel=3
+pkgdesc="A simple third-party KuGou concept version music player (Electron version)"
 arch=('x86_64')
 url="https://github.com/hoowhoami/EchoMusic"
 license=('MIT')
-depends=('gtk3' 'libglvnd' 'nss' 'alsa-lib' 'libxkbcommon' 'libkeybinder3' 'libayatana-appindicator' 'mpv' 'xdg-utils')
+
+depends=(
+  'gtk3'
+  'libglvnd'
+  'nss'
+  'alsa-lib'
+  'libxkbcommon'
+  'libkeybinder3'
+  'libayatana-appindicator'
+  'mpv'
+  'xdg-utils'
+)
+
 provides=('echomusic')
 conflicts=('echomusic')
 
-# 【极其关键】禁止 makepkg 自动 strip 剥离符号！
-# 否则会破坏由 Node.js pkg 打包的 app_linux 服务端导致无法启动
 options=('!strip')
-# https://github.com/hoowhoami/EchoMusic/releases/download/v2.0.0/EchoMusic-2.0.0-linux-amd64.deb
-source=("EchoMusic-$pkgver-linux-amd64.deb::https://github.com/hoowhoami/EchoMusic/releases/download/v$pkgver/EchoMusic-$pkgver-linux-amd64.deb")
+
+source=(
+  "EchoMusic-${pkgver}.deb::https://github.com/hoowhoami/EchoMusic/releases/download/v${pkgver}/EchoMusic-${pkgver}-linux-amd64.deb"
+)
+
 sha256sums=('SKIP')
 
 package() {
-  # 1. 解压 deb 数据
-  bsdtar -xf "$srcdir/data.tar."* -C "$pkgdir/"
 
-  # 2. 将主程序移动到标准目录
-  mkdir -p "$pkgdir/opt"
-  mv "$pkgdir/usr/share/echomusic" "$pkgdir/opt/echomusic"
+  cd "$srcdir"
 
-  # 3. 删除 deb 遗留的死链
+  # 解包 deb
+  ar x "EchoMusic-${pkgver}.deb"
+  bsdtar -xf data.tar.* -C "$pkgdir"
+
+  # Electron 程序通常放在 /opt 或 /usr/lib
+  if [ -d "$pkgdir/usr/lib/echomusic" ]; then
+    install -d "$pkgdir/opt"
+    mv "$pkgdir/usr/lib/echomusic" "$pkgdir/opt/"
+  fi
+
+  if [ -d "$pkgdir/usr/share/echomusic" ]; then
+    install -d "$pkgdir/opt"
+    mv "$pkgdir/usr/share/echomusic" "$pkgdir/opt/"
+  fi
+
+  # 删除 upstream 自带 launcher
   rm -f "$pkgdir/usr/bin/echomusic"
 
-  # 4. 创建稳定的启动脚本
-  mkdir -p "$pkgdir/usr/bin"
-  cat <<EOF > "$pkgdir/usr/bin/echomusic"
+  # 创建标准 launcher
+  install -d "$pkgdir/usr/bin"
+
+  cat > "$pkgdir/usr/bin/echomusic" << 'EOF'
 #!/bin/sh
-cd /opt/echomusic
-export LD_LIBRARY_PATH=/opt/echomusic/lib:\$LD_LIBRARY_PATH
-exec ./EchoMusic "\$@"
+exec /opt/echomusic/EchoMusic "$@"
 EOF
+
   chmod 755 "$pkgdir/usr/bin/echomusic"
 
-  # 5. 确保程序和服务端的可执行权限
-  chmod +x "$pkgdir/opt/echomusic/EchoMusic"
-  chmod +x "$pkgdir/opt/echomusic/server/app_linux"
-
-  # 6. 【核心图标修复】直接修改 deb 自带的 desktop 文件
+  # desktop 修复
   _desktop="$pkgdir/usr/share/applications/echomusic.desktop"
-  if [ -f "$_desktop" ]; then
-    # 修改执行路径为我们写的脚本
-    sed -i 's|^Exec=.*|Exec=/usr/bin/echomusic %U|g' "$_desktop"
-    # 强制指定正确的图标名称（对应 /usr/share/icons/.../echomusic.png）
-    sed -i 's|^Icon=.*|Icon=echomusic|g' "$_desktop"
+  if [[ -f "$_desktop" ]]; then
+    sed -i 's|^Exec=.*|Exec=/usr/bin/echomusic %U|' "$_desktop"
+    sed -i 's|^Icon=.*|Icon=echomusic|' "$_desktop"
   fi
+
 }

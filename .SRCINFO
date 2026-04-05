@@ -1,7 +1,7 @@
 pkgbase = echomusic-bin
-	pkgdesc = 🎉 A simple third-party KuGou concept version music player
+	pkgdesc = A simple third-party KuGou concept version music player (Electron version)
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hoowhoami/EchoMusic
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = echomusic-bin
 	provides = echomusic
 	conflicts = echomusic
 	options = !strip
-	source = EchoMusic-2.0.0-linux-amd64.deb::https://github.com/hoowhoami/EchoMusic/releases/download/v2.0.0/EchoMusic-2.0.0-linux-amd64.deb
+	source = EchoMusic-2.0.0.deb::https://github.com/hoowhoami/EchoMusic/releases/download/v2.0.0/EchoMusic-2.0.0-linux-amd64.deb
 	sha256sums = SKIP
 
 pkgname = echomusic-bin
