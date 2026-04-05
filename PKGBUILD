@@ -157,8 +157,8 @@ _is_lto_kernel() {
 }
 
 _is_ci_build() {
-    [[ -n "$CI" || -n "$GITHUB_RUN_ID" ]]
-    return $?
+    # [[ -n "$CI" || -n "$GITHUB_RUN_ID" ]]
+    return 1
 }
 
 if _is_lto_kernel && [ "$_use_lto_suffix" = "yes"  ]; then
