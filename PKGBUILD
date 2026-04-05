@@ -1,6 +1,6 @@
 # Maintainer: Yuzu <aur at vitayuzu dot day>
 pkgname=mateengine
-pkgver=3.2.0_4
+pkgver=3.2.0_4_hotfix
 pkgrel=1
 pkgdesc="Unofficial Linux port of MateEngine - A free Desktop Mate alternative with custom VRM support"
 arch=('x86_64')
