@@ -1,9 +1,9 @@
 # Maintainer: yum13241 <coolcrew45 at disroot dot org>
 
 pkgname=elyprismlauncher
-pkgver=11.0.0_pre1
-_pkgver=11.0.0-pre1
-pkgrel=3
+pkgver=11.0.0_pre2
+_pkgver=11.0.0-pre2
+pkgrel=1
 pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts"
 arch=('x86_64')
 url="https://github.com/ElyPrismLauncher/Launcher"
