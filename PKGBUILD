@@ -5,7 +5,7 @@ _author=BOBTFISH
 _dist=Catalyst-Plugin-Session-Store-Delegate
 pkgname=perl-${_dist@L}
 pkgver=0.06
-pkgrel=2
+pkgrel=3
 pkgdesc='Delegate session storage to an'
 arch=('any')
 url=https://metacpan.org/release/$_author/$_dist-$pkgver
@@ -23,6 +23,7 @@ makedepends=(
     'perl-module-install'
     'perl-test-simple'
 )
+checkdepends=('perl-class-accessor')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('cdcbc2c1c93627fe9cbc2619a7a7b8e39db0c3cb41822c8ffba9b98cc09b9483')

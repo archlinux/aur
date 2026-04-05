@@ -1,10 +1,11 @@
 pkgbase = perl-catalyst-plugin-session-store-delegate
 	pkgdesc = Delegate session storage to an
 	pkgver = 0.06
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/BOBTFISH/Catalyst-Plugin-Session-Store-Delegate-0.06
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-class-accessor
 	makedepends = perl-extutils-makemaker>=6.42
 	makedepends = perl-module-install
 	makedepends = perl-test-simple
