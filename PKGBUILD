@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio
 pkgver=0.5.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
 url="https://github.com/MrNeRF/LichtFeld-Studio"
@@ -161,8 +161,6 @@ build() {
         -DCMAKE_C_FLAGS="-ffile-prefix-map=${srcdir}/=" \
         -DCMAKE_CXX_FLAGS="-ffile-prefix-map=${srcdir}/=" \
         -DCMAKE_CUDA_FLAGS="-Xcompiler=-ffile-prefix-map=${srcdir}/=" \
-        -DBUILD_CUDA_PTX_ONLY=ON \
-        -DBUILD_CUDA_MIN_SM=75 \
         -DBUILD_PYTHON_STUBS=OFF \
         -DBUILD_TESTS=OFF \
         -DPython_EXECUTABLE=/usr/bin/python3.12 \
