@@ -1,0 +1,15 @@
+pkgbase = zswapmon-bin
+	pkgdesc = Utility for monitoring zswap status and statistics
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/VHSgunzo/zswapmon
+	arch = x86_64
+	provides = zswapmon-bin
+	conflicts = zswapmon
+	conflicts = zswapmon-git
+	source = LICENSE::https://raw.githubusercontent.com/VHSgunzo/zswapmon/refs/heads/main/LICENSE
+	source = zswapmon::https://github.com/VHSgunzo/zswapmon/releases/download/v0.1.0/zswapmon
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = zswapmon-bin
