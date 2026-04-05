@@ -1,5 +1,6 @@
 [gallery-dl]
-source = "github"
-github = "mikf/gallery-dl"
+source = "gitea"
+host = "codeberg.org"
+gitea = "mikf/gallery-dl"
 prefix = "v"
-use_latest_release = true
+use_max_tag = true
