@@ -1,8 +1,8 @@
 pkgbase = gnome-shell-extension-copyous-git
 	pkgdesc = Modern Clipboard Manager for GNOME
 	pkgver = 2.0.0.r3.g58ed2c4
-	pkgrel = 1
-	url = https://github.com/boerdereinar/copyous
+	pkgrel = 2
+	url = https://extensions.gnome.org/extension/8834/copyous/
 	arch = any
 	license = GPL-3.0
 	makedepends = git
