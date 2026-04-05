@@ -1,5 +1,5 @@
 pkgname=spxc-webtools
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=2
 pkgdesc="Web management tools for spxc: Python servers, HTML cleaning, and site bundling"
 arch=('any')
