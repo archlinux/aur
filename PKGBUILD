@@ -1,11 +1,11 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Claude (Anthropic).
+# Created with assistance from Qwen 3.6 (Alibaba).
 
 options=('!debug')
 
 pkgname=xl-converter
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy-to-use image converter for modern formats (JPEG XL, AVIF, JPEGLI, WebP)"
 arch=('any')
 url="https://github.com/JacobDev1/xl-converter"
@@ -13,6 +13,7 @@ license=('GPL-3.0-only')
 depends=(
     'python'
     'python-pyqt6'
+    'python-pyside6'
     'python-send2trash'
     'libjxl'
     'libavif'
