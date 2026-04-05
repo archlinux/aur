@@ -3,8 +3,8 @@
 
 _pkgname=kazv
 pkgname="${_pkgname}-git"
-pkgver=0.5.0.r716.20241108.adf5bf1
-pkgrel=2
+pkgver=0.6.0.r747.20260308.e8424b1
+pkgrel=1
 pkgdesc="A Qt matrix client."
 arch=(
   'aarch64'
@@ -14,8 +14,9 @@ arch=(
   'x86_64'
 )
 license=('AGPL-3.0-or-later')
-url="https://lily-is.land/kazv/kazv"
+url="https://r.lily-is.land/the-kazv-project/kazv"
 backup=()
+options+=('!lto' 'debug')
 depends=(
   'boost-libs>=1.86.0'
   'cmark'
@@ -29,6 +30,8 @@ depends=(
   'kirigami-addons'
   'knotifications>=6'
   'libkazv'
+  'qcoro'
+  'qt6-httpserver'
   'qt6-base>=6.8.0'
   'qt6-declarative>=6.5.0'
   'qt6-multimedia>=6.5.0'
@@ -43,6 +46,7 @@ makedepends=(
   'git'
   'pkgconf'
   'zug'
+  'ruby'
 )
 optdepends=()
 checkdepends=(
@@ -54,7 +58,7 @@ checkdepends=(
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=(
-  "${_pkgname}::git+${url}.git"
+  "${_pkgname}::git+${url}.git#branch=servant"
 )
 sha256sums=(
   'SKIP'
@@ -112,6 +116,12 @@ check() {
 
   ## Actually requires graphical environment to be active! It will open a window!
   plain "Running 'make test' in a virtual X Server ..."
+  ## for wayland desktops, xvfb-run would work via XWayland
+  if [[ $XDG_SESSION_TYPE = "wayland" ]]; then
+      echo "WARNING: it seems you are using a wayland desktop, some test may not work properly"
+      echo "WARNING: testing is skipped"
+      return
+  fi
   ## Redirect to a virtual X server (which we will not see):
   xvfb-run -d make test
 }

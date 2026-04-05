@@ -1,8 +1,8 @@
 pkgbase = kazv-git
 	pkgdesc = A Qt matrix client.
-	pkgver = 0.5.0.r716.20241108.adf5bf1
-	pkgrel = 2
-	url = https://lily-is.land/kazv/kazv
+	pkgver = 0.6.0.r747.20260308.e8424b1
+	pkgrel = 1
+	url = https://r.lily-is.land/the-kazv-project/kazv
 	arch = aarch64
 	arch = armv6h
 	arch = armv7h
@@ -18,6 +18,7 @@ pkgbase = kazv-git
 	makedepends = git
 	makedepends = pkgconf
 	makedepends = zug
+	makedepends = ruby
 	depends = boost-libs>=1.86.0
 	depends = cmark
 	depends = fontconfig
@@ -30,13 +31,17 @@ pkgbase = kazv-git
 	depends = kirigami-addons
 	depends = knotifications>=6
 	depends = libkazv
+	depends = qcoro
+	depends = qt6-httpserver
 	depends = qt6-base>=6.8.0
 	depends = qt6-declarative>=6.5.0
 	depends = qt6-multimedia>=6.5.0
 	depends = qt6-svg>=6.5.0
-	provides = kazv=0.5.0.r716.20241108.adf5bf1
+	provides = kazv=0.6.0.r747.20260308.e8424b1
 	conflicts = kazv
-	source = kazv::git+https://lily-is.land/kazv/kazv.git
+	options = !lto
+	options = debug
+	source = kazv::git+https://r.lily-is.land/the-kazv-project/kazv.git#branch=servant
 	sha256sums = SKIP
 
 pkgname = kazv-git
