@@ -1,8 +1,8 @@
 # Maintainer: Marin M <https://github.com/marin-m>
 
 pkgname=pbtk-git
-pkgver=1.0.7
-pkgrel=3
+pkgver=1.1.1post1
+pkgrel=1
 pkgdesc='A toolset for reverse engineering and fuzzing Protobuf-based apps'
 url='https://github.com/marin-m/pbtk'
 arch=('i686' 'x86_64')
@@ -28,6 +28,6 @@ package() {
   find . -regex '.*\(\.bat\|\.exe\|_osx\)' -type f -delete
   chmod -R 755 src/extractors src/utils/external
   
-  cp -r src "${pkgdir}/usr/share/pbtk"
+  cp -a src "${pkgdir}/usr/share/pbtk"
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/pbtk"
 }
