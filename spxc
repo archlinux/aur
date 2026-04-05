@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V0.5.1"
+VERSION="V0.6"
 
 case "$1" in
     -v)
@@ -157,7 +157,6 @@ EOF
             exit 1
         fi
 
-        # Ensure it ends in .html
         if [[ ! "$NAME" =~ \.html$ ]]; then
             NAME="$NAME.html"
         fi
@@ -174,13 +173,45 @@ EOF
             esac
         fi
 
-        echo "Downloading HTML from $URL..."
-        if curl -L "$URL" -o "$FILEPATH"; then
-            echo "Successfully downloaded to $FILEPATH"
-        else
-            echo "Error: Failed to download from $URL"
-            exit 1
-        fi
+        echo "Downloading and inlining CSS from $URL..."
+        python3 - <<EOF
+import urllib.request, urllib.parse, re, sys
+
+url = "$URL"
+filepath = "$FILEPATH"
+
+try:
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    req = urllib.request.Request(url, headers=headers)
+    with urllib.request.urlopen(req) as response:
+        html = response.read().decode('utf-8')
+    
+    def inline_css(match):
+        tag = match.group(0)
+        href_match = re.search(r'href=["\']([^"\']+)["\']', tag)
+        if href_match:
+            css_href = href_match.group(1)
+            css_url = urllib.parse.urljoin(url, css_href)
+            try:
+                css_req = urllib.request.Request(css_url, headers=headers)
+                with urllib.request.urlopen(css_req) as r:
+                    content = r.read().decode('utf-8')
+                    return f"<style>\n/* Inlined from {css_url} */\n{content}\n</style>"
+            except:
+                return tag
+        return tag
+
+    # Inline <link rel="stylesheet"> tags
+    new_html = re.sub(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', inline_css, html)
+    new_html = re.sub(r'<link[^>]+href=["\'][^"\']+["\'][^>]*rel=["\']stylesheet["\'][^>]*>', inline_css, new_html)
+    
+    with open(filepath, "w") as f:
+        f.write(new_html)
+    print(f"Successfully saved to {filepath}")
+except Exception as e:
+    print(f"Error: {e}")
+    sys.exit(1)
+EOF
         ;;
     --help)
         echo "Available commands:"
@@ -188,7 +219,7 @@ EOF
         echo "  -sysfo                            Show detailed system information"
         echo "  -mkserv [directory] [port]        Create and start a dark-themed Python server"
         echo "  -rmweb [directory]                Remove all HTML files in a directory after confirmation"
-        echo "  -dweb [directory] [URL] [name]    Download only the HTML from a URL with confirmation"
+        echo "  -dweb [directory] [URL] [name]    Download HTML and inline all CSS into a single file"
         ;;
     *)
         echo "Usage: spxc --help"
