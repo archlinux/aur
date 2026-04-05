@@ -31,5 +31,28 @@ post_upgrade() {
     # Autostart is now opt-in via KDE settings or systemd user service.
     rm -f /etc/xdg/autostart/nativmix.desktop
 
+    # Migrate nativmix.service → app-nativmix.service (renamed for KDE System Monitor).
+    # Find all users who have the old unit enabled (symlink in their user unit dirs).
+    while IFS= read -r -d '' symlink; do
+        local username
+        username=$(awk -F/ '{print $3}' <<< "$symlink")
+        [ -z "$username" ] && continue
+        local uid
+        uid=$(id -u "$username" 2>/dev/null) || continue
+
+        echo "==> Migrating systemd unit: nativmix.service → app-nativmix.service (user: $username)"
+        systemctl --user -M "${username}@.host" disable nativmix.service 2>/dev/null || true
+        systemctl --user -M "${username}@.host" daemon-reload 2>/dev/null || true
+        systemctl --user -M "${username}@.host" enable app-nativmix.service 2>/dev/null || true
+
+        # Restart if user has an active D-Bus session
+        if [ -S "/run/user/$uid/bus" ]; then
+            runuser -u "$username" -- \
+                env XDG_RUNTIME_DIR="/run/user/$uid" \
+                    DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+                systemctl --user restart app-nativmix.service 2>/dev/null || true
+        fi
+    done < <(find /home -maxdepth 6 -path "*/.config/systemd/user/*/nativmix.service" -type l -print0 2>/dev/null)
+
     post_install
 }

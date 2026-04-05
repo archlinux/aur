@@ -1,6 +1,6 @@
 # Maintainer: Christian Möllmann (knoelliX) <moellix@knoellix.net>
 pkgname=nativmix
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Hardware-based PipeWire volume & MIDI mixer for Linux. Controls physical Arduino faders, virtual sinks, and MIDI devices."
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
 install=nativmix.install
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/knoelliX/NativMix/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9507aadd3a9a2b8de0f2f5a97bea129363934725841142888163d2d990ef637b')
+sha256sums=('d34480a866e496d1d577fe0a0b369d7ccdc6e630006c47ca46430b34ce2ed3b1')
 
 prepare() {
     # Find extracted directory (GitHub tags prepends 'NativMix-' or 'nativmix-')
@@ -77,9 +77,9 @@ package() {
     # (systemd user service or ~/.config/autostart/), not forced system-wide.
 
     # 3. Systemd User Unit
-    if [ -f "packaging/nativmix.service" ]; then
-        install -Dm644 packaging/nativmix.service \
-            "$pkgdir/usr/lib/systemd/user/nativmix.service"
+    if [ -f "packaging/app-nativmix.service" ]; then
+        install -Dm644 packaging/app-nativmix.service \
+            "$pkgdir/usr/lib/systemd/user/app-nativmix.service"
     fi
 
     # 4. Hardware Access (udev rules)
