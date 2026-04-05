@@ -3,8 +3,8 @@
 _pkgname=lalalai
 pkgname=${_pkgname}
 pkgdesc="Vocal remover and instrumental AI splitter"
-pkgver=2.13.0
-pkgrel=2
+pkgver=2.14.1
+pkgrel=1
 arch=("x86_64")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
