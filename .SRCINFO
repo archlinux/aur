@@ -1,7 +1,7 @@
 pkgbase = geany-plugins-split-git
 	pkgdesc = Plugins for Geany (split)
-	pkgver = 2.1.0.r35.g742ec58
-	pkgrel = 1
+	pkgver = 2.1.0.r42.gd41be8b
+	pkgrel = 2
 	url = https://github.com/geany/geany-plugins
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -54,7 +54,7 @@ pkgname = geany-plugin-automark-git
 	conflicts = geany-plugin-automark
 
 pkgname = geany-plugin-geanylua-git
-	pkgdesc = Plugin for Geany - geanylua (lua54)
+	pkgdesc = Plugin for Geany - geanylua (lua55)
 	depends = geany
 	depends = lua
 	depends = geany-plugin-conflict

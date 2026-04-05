@@ -62,7 +62,7 @@ index f642371b6..fec189f2f 100644
 -        done])
 +    AS_CASE([$LUA_PKG_NAME],
 +        [luajit], [LUA_VERSION_MIN=2.0; LUA_VERSION_LIMIT=3.0],
-+        [*],      [LUA_VERSION_MIN=5.1; LUA_VERSION_LIMIT=5.5]
++        [*],      [LUA_VERSION_MIN=5.1; LUA_VERSION_LIMIT=5.6]
 +    )
  
 -    LUA_VERSION=5.1

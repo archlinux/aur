@@ -4,14 +4,15 @@
 
 _plugins_split=(${_plugins//:/ })
 
-: ${_lua:=lua54}
+: ${_lua_sys:=lua55}
+: ${_lua:=lua55}
 : ${_libsoup_ver=3}
 : ${_webkit2gtk_ver=-4.1}
 
 _pkgbase="geany-plugins-split"
 pkgbase="$_pkgbase-git"
-pkgver=2.1.0.r35.g742ec58
-pkgrel=1
+pkgver=2.1.0.r42.gd41be8b
+pkgrel=2
 pkgdesc="Plugins for Geany (split)"
 url="https://github.com/geany/geany-plugins"
 license=('GPL-2.0-or-later')
@@ -58,7 +59,7 @@ prepare() {
   lua "$_plugin_path/util/mkiface.lua" > "$_plugin_path/glspi_sci.h"
 
   sed -E \
-    -e '/keydummy\.h/c "cpp -P `pkgconf --cflags geany` keybindings.h"' \
+    -e '/keydummy\.h/c "cpp -P `pkgconf --cflags geany` /usr/include/geany/keybindings.h"' \
     -i "$_plugin_path/util/mk-keytab.lua"
   lua "$_plugin_path/util/mk-keytab.lua" > "$_plugin_path/glspi_keycmd.h"
   popd > /dev/null
@@ -157,7 +158,7 @@ for _plugin in "${_plugins_split[@]}"; do
       _makedeps=("${_depends[@]}")
       ;;
     geanylua)
-      _depends=("${_lua//lua54/lua}")
+      _depends=("${_lua//${_lua_sys}/lua}")
       _makedeps=("${_depends[@]}")
       ;;
     geanypg)
