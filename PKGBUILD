@@ -9,7 +9,7 @@ depends=('bash' 'util-linux' 'pciutils' 'procps-ng' 'curl' 'systemd')
 provides=('spxc')
 conflicts=('spxc')
 source=("spxc")
-sha256sums=('8c242817232670f41edddceb89a1bcac1559bf7040ff4dc98ada8ac8fb4f4a66')
+sha256sums=('d48aec62fbd4e513aed5151cef6ea3bc9ad7be609bbde5b82d2d3d19158b1a1e')
 
 package() {
     install -Dm755 "${srcdir}/spxc" "${pkgdir}/usr/bin/spxc"

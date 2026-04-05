@@ -75,6 +75,7 @@ case "$1" in
         echo "Available commands (Core):"
         echo "  -v                             Show version"
         echo "  -sysfo                         Show detailed system information"
+        echo "  -pcheck [port]                 Check and kill process using a specific port"
         echo "  -caupd                         Clear yay cache and update spxc-core (and spxc-webtools if installed)"
         echo ""
         echo "Available commands (Requires spxc-webtools):"
