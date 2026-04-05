@@ -1,0 +1,18 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    ".nvchecker.toml",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "fix-linking.patch",
+    "31-unfloader.rules",
+]
+SPDX-FileCopyrightText = "n64-unfloader contributors"
+SPDX-License-Identifier = "WTFPL"

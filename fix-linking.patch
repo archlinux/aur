@@ -1,0 +1,12 @@
+--- a/UNFLoader/Makefile
++++ b/UNFLoader/Makefile
+@@ -21,8 +21,7 @@ CXX = g++
+ ifeq ($(OS_NAME),Darwin)
+ 	DEPENDENCIES := -lncurses -lpthread $(DEPENDENCIESLIB)
+ else
+-	DEPENDENCIESLIB += -l:libftdi1.a -l:libusb-1.0.a -ludev
+-	DEPENDENCIESLIB_SHARED = -lftdi1 -lusb-1.0
++	DEPENDENCIESLIB += -lftdi1 -lusb-1.0 -ludev
+ 	DEPENDENCIES := -lncursesw -lpthread -lrt $(DEPENDENCIESLIB)
+ endif
+ 

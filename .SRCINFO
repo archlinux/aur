@@ -1,0 +1,26 @@
+pkgbase = n64-unfloader
+	pkgdesc = Universal Nintendo64 flashcart ROM uploader
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/buu342/N64-UNFLoader
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libftdi
+	depends = libusb
+	depends = libudev.so
+	depends = ncurses
+	source = n64-unfloader::git+https://github.com/buu342/N64-UNFLoader#tag=v2.2
+	source = fix-linking.patch
+	source = 31-unfloader.rules
+	sha512sums = 78e8f27cbe1b59e3c110a4aa55e83f1db502f4b12f0c5db0fc7fbb63ac8cf2c3bda180860571eac340c476890cf49d7eeb854d11a19cd136e7f6bdd0a3845508
+	sha512sums = 1da479479394d63baa1ab699c4f3b7c6c00ce0e55e4747c243145478dc29f17e09958ea5883241f354a08434984baf76c1dea061c9cc1701e17a90b06b96c7dc
+	sha512sums = 882958e3c5cdcbd65c3b7a6826a5a4a0f0ea5ba5eaa08a3d73cb50d307005efd4d9dd3e769ec55bc63f2b372234ecb8e18a517f40ac25dca3ca80e3c36189162
+	b2sums = 8089403149f6fea270bf1bec000bfbce4ba84edc40501c31c914ddd681410056a0ce960b384a1ee3afb0e1ea8e687d2f2690fa74d26f385021fb108fe3c8f220
+	b2sums = 6ed190f319776d03304e9f8c5b9ab3428347980ee779fc7cc44148cb67276b7ebcda90bdebee8b3a64c40c7499ae1e65bfcb9869df15efa343fb84ef12428819
+	b2sums = fd2941041d1fdd123fc8e7a4e6368ff4971134a9df5138d28602c134a9405aaa83a795f527c47f5775f4d2c07c544783195e1333b5de839632b723735ec07584
+
+pkgname = n64-unfloader

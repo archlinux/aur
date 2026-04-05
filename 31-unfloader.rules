@@ -1,0 +1,8 @@
+# 64drive
+SUBSYSTEM="usb", ATTRS{product}=="64drive USB device", TAG+="uaccess"
+
+# everdrive
+SUBSYSTEM="usb", ATTRS{product}=="FT245R USB FIFO", TAG+="uaccess"
+
+# summercart64
+SUBSYSTEM="usb", ATTRS{product}=="SC64", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6014", TAG+="uaccess"
