@@ -14,7 +14,7 @@ depends=(
     'qt6-speech'
     'zlib'
 )
-makedepends=('git')
+makedepends=('git' 'unzip')
 optdepends=('qt6-wayland: Native Wayland (currently broken, uses XWayland by default)')
 provides=('sioyek')
 conflicts=('sioyek' 'sioyek-git')

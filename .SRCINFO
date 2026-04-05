@@ -6,6 +6,7 @@ pkgbase = sioyek-dev
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = unzip
 	depends = harfbuzz
 	depends = qt6-base
 	depends = qt6-3d
