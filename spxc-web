@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.7.2"
+VERSION="V1.7.3"
 
 case "$1" in
     -v)
@@ -121,7 +121,7 @@ def crawl(u, d=0):
     print(f" Crawling: {u}"); c = fetch_res(u)
     if not c: return
     c = re.sub(r'<link[^>]+rel=["\'](manifest|preload|prefetch|preconnect)["\'][^>]*>', '', c)
-    c = re.sub(r'navigator\\.serviceWorker\\.register\\(.*?\\)', '', c)
+    c = re.sub(r'navigator\.serviceWorker\.register\(.*?\)', '', c)
     def assets(match):
         t, is_j = match.group(0), '<script' in match.group(0)
         m = re.search(('src' if is_j else 'href') + f'=["\']([^"\']+)["\']', t)
