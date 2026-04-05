@@ -1,7 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=faas-cli
-pkgver=0.18.7
+pkgver=0.18.8
 pkgrel=1
 pkgdesc="Official CLI for OpenFaaS"
 arch=('x86_64' 'aarch64')
