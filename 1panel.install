@@ -21,7 +21,7 @@ post_install() {
         echo -e "\033[33m警告: docker-compose 未安装，请安装它，否则 1Panel 应用商店将无法使用。\033[0m"
     fi
     echo -e "\033[31m使用默认的用户名和密码将是一个十分危险的行为！！！\033[0m."
-    echo -e "请务必在启动 \033[34m1panel.service\033[0m 之后使用 \033[34mWeb界面\033[0m 来设置您的用户名和密码！"
+    echo -e "请务必在启动 \033[34m1panel.service\033[0m 之前运行 \033[34m1pctl init\033[0m 来设置您的用户名和密码！"
     echo -e ""
     echo -e "==================== 1Panel 安装完成 ===================="
 }
@@ -51,8 +51,6 @@ pre_upgrade() {
 
 
 post_upgrade() {
-    # Suppose this will do.
-    1panel update version v$1
     if [ -n "${_restart_1panel_service+x}" ]; then
         echo -e "正在重启服务..."
         systemctl start 1panel
