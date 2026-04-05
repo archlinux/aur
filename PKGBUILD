@@ -1,41 +1,49 @@
 # Maintainer: Albert Mikaelyan <tahvok at gmail dot com>
+# Contributor: mrypsilon
 
 pkgname=gridcoinresearchd
-pkgver=3.7.11.0
+pkgver=5.5.0.0
 pkgrel=1
-pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC - daemon"
-depends=('boost-libs' 'libzip' 'miniupnpc' 'curl' 'boinc')
-makedepends=('boost' 'db')
-
+pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network (Daemon/CLI)"
+makedepends=('cmake' 'boost')
+depends=('db5.3' 'libzip' 'boost-libs' 'miniupnpc')
+optdepends=('boinc: to earn Gridcoin rewards by doing computational research')
 replaces=('gridcoinresearch-daemon')
 conflicts=('gridcoinresearch-daemon')
 
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://gridcoin.us"
-license=('custom:gridcoin')
+license=('MIT')
 
-_sourcename="Gridcoin-Research-$pkgver"
+_sourcename="Gridcoin-Research-${pkgver//_/-}"
 
-source=("gridcoinresearch-${pkgver}.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/gridcoin-community/Gridcoin-Research/archive/${pkgver//_/-}.tar.gz")
 
-sha256sums=('2d4e87d607f334a4b973f58a444b1978941e06bd58049ce58536a81281b127b3')
+sha256sums=('407e06412903737f9afdeda5bad2503471bcf24e7672a97a35b8069cbffa27e8')
 
-prepare() {
-  mkdir -p "$srcdir/$_sourcename/src/obj"
-
-  chmod 755 "$srcdir/$_sourcename/src/leveldb/build_detect_platform"
-}
+# leaving in case needed for future patches
+#prepare() {
+#    cd "$srcdir/$_sourcename"
+#    patch --strip=1 --input="../trafficgraphwidget.cpp.patch"
+#}
 
 build() {
-  cd "$srcdir/$_sourcename/src"
-
-  make -f makefile.unix DEBUGFLAGS="" USE_UPNP=1
+  cmake \
+      -B build \
+      -S "$srcdir/$_sourcename" \
+      -DCMAKE_INSTALL_PREFIX='/usr' \
+      -DENABLE_GUI=OFF \
+      -DSYSTEMBDB=ON \
+      -DENABLE_TESTS=ON \
+      -Wno-dev
+  cmake --build build
 }
 
-package() {
-  cd "$srcdir/$_sourcename/src"
-
-  install -Dm755 gridcoinresearchd "$pkgdir/usr/bin/gridcoinresearchd"
-  install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+check() {
+  ctest --test-dir build
 }
 
+package_gridcoinresearchd() {
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$srcdir/$_sourcename/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
