@@ -36,6 +36,7 @@ depends=(brotli
          libpng
          libproxy
          libsm
+         liburing
          libx11
          libxcb
          libxkbcommon
@@ -85,25 +86,26 @@ optdepends=('freetds: MS SQL driver'
             'postgresql-libs: PostgreSQL driver'
             'unixodbc: ODBC driver')
 groups=(qt6)
-_pkgfn=qtbase
+_pkgfn=${pkgbase/6-/}
+_pkgfn=${_pkgfn/-hifps/}
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$_pkgver
         qt6-base-cflags.patch
         qt6-base-nostrip.patch
-        0005-low-timer.patch)
-sha256sums=('SKIP'
+	qt6-base-lowtimer.patch)
+sha256sums=('2223c075e95d86f8dbf6395b025a74d996c418f094453c903290e3c2663fbed2'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094'
-            '12d836fdfafc221a93c2877d0537651e4cf8c200e4b2fdc1390165e2f3587109')
+    	    '12d836fdfafc221a93c2877d0537651e4cf8c200e4b2fdc1390165e2f3587109')
 
 prepare() {
   patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
   patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
-  patch -d $_pkgfn -p1 < 0005-low-timer.patch # Reduce timer interval
+  patch -d $_pkgfn -p1 < qt6-base-lowtimer.patch # Reduce timer interval
 }
 
 build() {
   # Set no_direct_extern_access based on architecture
-  if [[ $CARCH == "aarch64" ]]; then
+  if [[ $CARCH == "aarch64" || $CARCH == "riscv64" ]]; then
     _no_direct_extern_access=OFF
   else
     _no_direct_extern_access=ON
@@ -113,7 +115,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DINSTALL_BINDIR=lib/qt6/bin \
-    -DINSTALL_PUBLICBINDIR=usr/bin \
+    -DINSTALL_PUBLICBINDIR=bin \
     -DINSTALL_LIBEXECDIR=lib/qt6 \
     -DINSTALL_DOCDIR=share/doc/qt6 \
     -DINSTALL_ARCHDATADIR=lib/qt6 \
@@ -133,20 +135,13 @@ build() {
 }
 
 package_qt6-base-hifps() {
-  conflicts=(qt6-base)
-  provides=(qt6-base)
   pkgdesc='A cross-platform application and UI framework'
   depends+=(qt6-translations)
   DESTDIR="$pkgdir" cmake --install build
+  conflicts=(qt6-base)
+  provides=(qt6-base)
 
   install -Dm644 $_pkgfn/LICENSES/* -t "$pkgdir"/usr/share/licenses/$pkgbase
-
-# Install symlinks for user-facing tools
-  cd "$pkgdir"
-  mkdir usr/bin
-  while read _line; do
-    ln -s $_line
-  done < "$srcdir"/build/user_facing_tool_links.txt
 }
 
 package_qt6-xcb-private-headers-hifps() {
@@ -155,11 +150,11 @@ package_qt6-xcb-private-headers-hifps() {
   depends=("qt6-base-hifps=$pkgver")
   optdepends=()
   groups=()
-
   conflicts=(qt6-xcb-private-headers)
   provides=(qt6-xcb-private-headers)
 
+  cd $_pkgfn
   install -d -m755 "$pkgdir"/usr/include/qt6xcb-private/gl_integrations
-  cp -r "$srcdir"/"$_pkgfn"/src/plugins/platforms/xcb/*.h "$pkgdir"/usr/include/qt6xcb-private/
-  cp -r "$srcdir"/"$_pkgfn"/src/plugins/platforms/xcb/gl_integrations/*.h "$pkgdir"/usr/include/qt6xcb-private/gl_integrations/
+  cp -r src/plugins/platforms/xcb/*.h "$pkgdir"/usr/include/qt6xcb-private/
+  cp -r src/plugins/platforms/xcb/gl_integrations/*.h "$pkgdir"/usr/include/qt6xcb-private/gl_integrations/
 }
