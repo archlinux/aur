@@ -20,7 +20,8 @@ depends=(
 )
 optdepends=(
   'resolvconf: for DNS functionality'
-  'sudo: elevate privileges')
+  'sudo: elevate privileges'
+)
 install="$pkgname.install"
 source=("https://desktop.wifiman.com/$pkgname-$pkgver-amd64.deb")
 sha256sums=('47e31bc317e7055f5571859e33534cd3c2d7d4ccfdf9fcb8afab9920bc9d964b')
