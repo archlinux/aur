@@ -1,44 +1,55 @@
-# Contributor: xRemaLx <anton.komolov@gmail.com>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: xRemaLx <anton.komolov@gmail.com>
 
-pkgname=perl-moosex-emulate-class-accessor-fast
-_pkgname=MooseX-Emulate-Class-Accessor-Fast
+_author=HAARG
+_dist=MooseX-Emulate-Class-Accessor-Fast
+pkgname=perl-${_dist@L}
 pkgver=0.009032
-pkgrel=1
-pkgdesc="Emulate Class::Accessor::Fast behavior using Moose attributes"
-arch=(i686 x86_64)
-license=('perl')
-url="https://metacpan.org/release/MooseX-Emulate-Class-Accessor-Fast"
-options=(!emptydirs)
-depends=('perl-namespace-clean' 'perl-moose')
-makedepends=('perl-test-exception' 'perl')
+pkgrel=2
+pkgdesc='Emulate Class::Accessor::Fast behavior using Moose attributes'
+arch=('any')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-moose>=0.84'
+    'perl-namespace-clean'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=(
+    'perl-test-exception'
+    'perl-test-simple'
+)
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('82eeb7ef1f0d25418ae406ea26912b241428d4b2ab9510d5e9deb3f72c187994')
 
-source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('3ff00f2ed7a8a23ffaa9f6f93bc73e74')
-sha512sums=('3e883364033bc6a453ecc52a47c84b66169a4edc302b9cf9ffff2cb6a4bb3954a075d19bd3dc94415b59205a0e91e6172a8678ea64a851c731c21ddcc6485d08')
+build()
+{
+    cd "$_dist-$pkgver"
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
 
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    /usr/bin/perl Makefile.PL
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+package()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }

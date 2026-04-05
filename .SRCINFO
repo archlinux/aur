@@ -1,19 +1,18 @@
 pkgbase = perl-moosex-emulate-class-accessor-fast
 	pkgdesc = Emulate Class::Accessor::Fast behavior using Moose attributes
 	pkgver = 0.009032
-	pkgrel = 1
-	url = https://metacpan.org/release/MooseX-Emulate-Class-Accessor-Fast
-	arch = i686
-	arch = x86_64
-	license = perl
-	makedepends = perl-test-exception
-	makedepends = perl
+	pkgrel = 2
+	url = https://metacpan.org/dist/MooseX-Emulate-Class-Accessor-Fast
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-moose>=0.84
 	depends = perl-namespace-clean
-	depends = perl-moose
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/H/HA/HAARG/MooseX-Emulate-Class-Accessor-Fast-0.009032.tar.gz
-	md5sums = 3ff00f2ed7a8a23ffaa9f6f93bc73e74
-	sha512sums = 3e883364033bc6a453ecc52a47c84b66169a4edc302b9cf9ffff2cb6a4bb3954a075d19bd3dc94415b59205a0e91e6172a8678ea64a851c731c21ddcc6485d08
+	sha256sums = 82eeb7ef1f0d25418ae406ea26912b241428d4b2ab9510d5e9deb3f72c187994
 
 pkgname = perl-moosex-emulate-class-accessor-fast
-
