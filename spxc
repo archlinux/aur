@@ -1,0 +1,16 @@
+#!/bin/bash
+VERSION="V0.1"
+
+case "$1" in
+    -v)
+        echo "$VERSION"
+        ;;
+    --help)
+        echo "Available commands:"
+        echo "  -v    Show version"
+        ;;
+    *)
+        echo "Usage: spxc --help"
+        exit 1
+        ;;
+esac
