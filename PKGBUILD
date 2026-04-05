@@ -1,4 +1,5 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Michał Wojdyła <micwoj9292@gmail.com>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 _author=HAARG
