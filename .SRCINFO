@@ -1,8 +1,8 @@
 pkgbase = gallery-dl-git
 	pkgdesc = Command-line program to download image-galleries and collections from several image hosting sites (git)
-	pkgver = 1.30.2.r20.g952fcb1
+	pkgver = 1.31.5.r367.g3bd5505
 	pkgrel = 1
-	url = https://github.com/mikf/gallery-dl
+	url = https://codeberg.org/mikf/gallery-dl
 	arch = any
 	license = GPL-2.0-or-later
 	checkdepends = yt-dlp
@@ -29,7 +29,7 @@ pkgbase = gallery-dl-git
 	optdepends = python-jinja: Jinja template support
 	provides = gallery-dl
 	conflicts = gallery-dl
-	source = git+https://github.com/mikf/gallery-dl.git
+	source = git+https://codeberg.org/mikf/gallery-dl.git
 	md5sums = SKIP
 
 pkgname = gallery-dl-git

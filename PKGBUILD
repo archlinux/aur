@@ -1,11 +1,11 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=gallery-dl-git
-pkgver=1.30.2.r20.g952fcb1
+pkgver=1.31.5.r367.g3bd5505
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites (git)'
 arch=(any)
-url=https://github.com/mikf/gallery-dl
+url=https://codeberg.org/mikf/gallery-dl
 license=(GPL-2.0-or-later)
 depends=(python python-requests)
 makedepends=(python-build python-installer python-setuptools python-wheel git)
