@@ -1,6 +1,6 @@
 # Maintainer: Erik <kocierik@github>
 pkgname=lazyansible-bin
-pkgver=X.Y.Z
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A lazy TUI for Ansible — browse inventory, run playbooks, stream logs"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source_aarch64=(
 )
 
 # Run `updpkgsums` after each release to refresh these.
-sha256sums_x86_64=('a03dd5678ff4681fc46ec86a24c8ab81b7a181e16b917323b114112bac29b6c4')
-sha256sums_aarch64=('c50385ef768f272b0c84523b13c754517861bd3287de3ed52e647eda0d11c02c')
+sha256sums_x86_64=('43a804d6ee82441ccdb7c4ef7fab2abcb06048381838649149fbaf66de0d6f06')
+sha256sums_aarch64=('1ca3445481d5398246a3caf9749196ed86760cba23c39cae769a756baad49ccb')
 
 package() {
   install -Dm755 lazyansible          "${pkgdir}/usr/bin/lazyansible"

@@ -1,6 +1,6 @@
 pkgbase = lazyansible-bin
 	pkgdesc = A lazy TUI for Ansible — browse inventory, run playbooks, stream logs
-	pkgver = X.Y.Z
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/kocierik/lazyansible
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = lazyansible-bin
 	conflicts = lazyansible
 	conflicts = lazyansible-git
 	options = !strip
-	source_x86_64 = lazyansible-bin-X.Y.Z-x86_64.tar.gz::https://github.com/kocierik/lazyansible/releases/download/vX.Y.Z/lazyansible_X.Y.Z_linux_x86_64.tar.gz
-	sha256sums_x86_64 = a03dd5678ff4681fc46ec86a24c8ab81b7a181e16b917323b114112bac29b6c4
-	source_aarch64 = lazyansible-bin-X.Y.Z-aarch64.tar.gz::https://github.com/kocierik/lazyansible/releases/download/vX.Y.Z/lazyansible_X.Y.Z_linux_arm64.tar.gz
-	sha256sums_aarch64 = c50385ef768f272b0c84523b13c754517861bd3287de3ed52e647eda0d11c02c
+	source_x86_64 = lazyansible-bin-1.0.3-x86_64.tar.gz::https://github.com/kocierik/lazyansible/releases/download/v1.0.3/lazyansible_1.0.3_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 43a804d6ee82441ccdb7c4ef7fab2abcb06048381838649149fbaf66de0d6f06
+	source_aarch64 = lazyansible-bin-1.0.3-aarch64.tar.gz::https://github.com/kocierik/lazyansible/releases/download/v1.0.3/lazyansible_1.0.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1ca3445481d5398246a3caf9749196ed86760cba23c39cae769a756baad49ccb
 
 pkgname = lazyansible-bin
