@@ -11,8 +11,8 @@
 # Maintainer: Scott Warner <Tortel1210-at-gmail-dot-com>
 
 pkgname=android-studio-for-platform
-_minor_version=3.7
-pkgver=2025.1.$_minor_version
+_minor_version=2.6
+pkgver=2025.3.$_minor_version
 pkgrel=1
 pkgdesc="The official Android IDE for Platform Development"
 arch=('x86_64')
@@ -25,11 +25,11 @@ optdepends=('gtk2: GTK+ look and feel'
             'ncurses5-compat-libs: native debugger support')
 options=('!strip')
 
-# https://dl.google.com/android/asfp/asfp-2023.1.1.19-linux.deb
-source=("https://dl.google.com/android/asfp/asfp-Narwhal%203%20Feature%20Drop-$pkgver-linux.deb"
+# https://dl.google.com/android/asfp/asfp-Panda%202-2025.3.2.6-linux.deb
+source=("https://dl.google.com/android/asfp/asfp-Panda%202-$pkgver-linux.deb"
         "$pkgname.desktop"
         "license.html")
-sha256sums=('212d6e4895121563c607abe90c4842aaf08eb0104243e6f0c3c7637dd675782b'
+sha256sums=('98024f9834a813d4933a1e39bb47487a32f84f247c088a9c18c8628b12052167'
             '7d8615a69925b0685775546873997bdb967426e24b4fc265d120a04dc8367dda'
             '9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e')
 
