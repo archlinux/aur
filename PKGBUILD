@@ -1,4 +1,5 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Michał Wojdyła <micwoj9292@gmail.com>
 # Contributor: xRemaLx <anton.komolov@gmail.com>
 
 _author=JJNAPIORK
