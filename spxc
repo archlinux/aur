@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V0.8.1"
+VERSION="V0.9"
 
 case "$1" in
     -v)
@@ -173,16 +173,16 @@ EOF
             esac
         fi
 
-        echo "Downloading site and dependencies from $URL..."
+        echo "Bundling site into a single file from $URL..."
         python3 - <<EOF
-import urllib.request, urllib.parse, re, sys, os
+import urllib.request, urllib.parse, re, sys, os, json
 
 url = "$URL"
-directory = "$DIR"
-entry_name = "$NAME"
+filepath = "$FILEPATH"
 headers = {'User-Agent': 'Mozilla/5.0'}
 base_domain = urllib.parse.urlparse(url).netloc
-visited = {} # url -> local_filename
+pages = {} # url_path -> content
+resources = {} # url_path -> data (Base64)
 
 def fetch_resource(target_url, binary=False):
     try:
@@ -193,13 +193,19 @@ def fetch_resource(target_url, binary=False):
     except:
         return None
 
-def process_page(current_url, save_filename, depth=0):
-    if current_url in visited: return visited[current_url]
-    visited[current_url] = save_filename
+def get_path(target_url):
+    parsed = urllib.parse.urlparse(target_url)
+    path = parsed.path
+    if not path or path == "/": path = "/index.html"
+    return path
+
+def process_page(current_url, depth=0):
+    path = get_path(current_url)
+    if path in pages: return
     
-    print(f" Processing: {current_url} -> {save_filename}")
+    print(f" Crawling: {current_url}")
     content = fetch_resource(current_url)
-    if not content: return None
+    if not content: return
 
     # Inline CSS
     def inline_css(match):
@@ -225,58 +231,97 @@ def process_page(current_url, save_filename, depth=0):
         return tag
     content = re.sub(r'<script[^>]+src=["\'][^"\']+["\'][^>]*>.*?</script>', inline_js, content, flags=re.DOTALL)
 
-    # Handle Links (a tags) and JSON files
-    if depth < 1: # Limit recursion depth
+    pages[path] = content
+
+    if depth < 1:
         links = re.findall(r'href=["\']([^"\']+)["\']', content)
         for link in links:
             link_url = urllib.parse.urljoin(current_url, link)
             parsed_link = urllib.parse.urlparse(link_url)
             
             if parsed_link.netloc == base_domain:
-                path = parsed_link.path
-                if not path or path.endswith('/'): path += "index.html"
-                
-                # Check for common web types
-                if not path.endswith(('.html', '.json', '.js', '.css')): path += ".html"
-                
-                local_name = os.path.basename(path)
-                if local_name == "": local_name = "index.html"
-                
-                # Check for duplicates in local directory
-                unique_name = local_name
-                count = 1
-                while unique_name in visited.values() and current_url not in visited:
-                    name, ext = os.path.splitext(local_name)
-                    unique_name = f"{name}_{count}{ext}"
-                    count += 1
-
+                lpath = get_path(link_url)
                 if link_url.endswith('.json'):
-                    data = fetch_resource(link_url, binary=True)
-                    if data:
-                        with open(os.path.join(directory, unique_name), "wb") as f:
-                            f.write(data)
-                        content = content.replace(link, unique_name)
-                elif path.endswith('.html') and link_url not in visited:
-                    process_page(link_url, unique_name, depth + 1)
-                    content = content.replace(link, unique_name)
-                elif link_url in visited:
-                    content = content.replace(link, visited[link_url])
+                    data = fetch_resource(link_url)
+                    if data: resources[lpath] = data
+                elif lpath not in pages:
+                    process_page(link_url, depth + 1)
 
-    with open(os.path.join(directory, save_filename), "w", encoding='utf-8') as f:
-        f.write(content)
-    return save_filename
+process_page(url)
 
-process_page(url, entry_name)
-print("Site download complete.")
+# Generate Bundled HTML
+main_path = get_path(url)
+main_content = pages.get(main_path, "Error: Main page not found.")
+
+# Inject SPA Router
+router_script = """
+<script>
+(function() {
+    const spxc_pages = """ + json.dumps(pages) + """;
+    const spxc_resources = """ + json.dumps(resources) + """;
+    
+    function navigate(path) {
+        if (spxc_pages[path]) {
+            document.open();
+            document.write(spxc_pages[path]);
+            document.close();
+            // Re-inject router after document.write
+            const script = document.createElement('script');
+            script.textContent = `(${arguments.callee.toString()})()`;
+            document.body.appendChild(script);
+        }
+    }
+
+    document.addEventListener('click', e => {
+        const a = e.target.closest('a');
+        if (a) {
+            const href = a.getAttribute('href');
+            if (href) {
+                let path = href;
+                if (href.startsWith('http')) {
+                    try {
+                        const url = new URL(href);
+                        if (url.host === window.location.host || url.host === '') path = url.pathname;
+                        else return;
+                    } catch(e) { return; }
+                }
+                if (!path.startsWith('/')) path = '/' + path;
+                if (spxc_pages[path]) {
+                    e.preventDefault();
+                    navigate(path);
+                }
+            }
+        }
+    });
+
+    // Patch fetch for JSON
+    const oldFetch = window.fetch;
+    window.fetch = function(input, init) {
+        let path = typeof input === 'string' ? input : input.url;
+        if (!path.startsWith('/')) path = '/' + path;
+        if (spxc_resources[path]) {
+            return Promise.resolve(new Response(spxc_resources[path]));
+        }
+        return oldFetch(input, init);
+    };
+})();
+</script>
+"""
+
+final_html = main_content + router_script
+
+with open(filepath, "w", encoding='utf-8') as f:
+    f.write(final_html)
+print(f"Bundled site saved to {filepath}")
 EOF
         ;;
     --help)
         echo "Available commands:"
-        echo "  -v                             Show version"
-        echo "  -sysfo                         Show detailed system information"
+        echo "  -v                                Show version"
+        echo "  -sysfo                            Show detailed system information"
         echo "  -mkserv [directory] [port]        Create and start a dark-themed Python server"
         echo "  -rmweb [directory]                Remove all HTML files in a directory after confirmation"
-        echo "  -dweb [directory] [URL] [name]    Recursive download of HTML/JSON with inlined CSS/JS"
+        echo "  -dweb [directory] [URL] [name]    Bundle a full site into a single self-contained HTML file"
         ;;
     *)
         echo "Usage: spxc --help"
