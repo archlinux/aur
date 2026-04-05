@@ -4,7 +4,7 @@ _gitauthor=whoisdinanath
 _gitname=testx
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="FUniversal test runner with auto-detection for 11 languages"
+pkgdesc="Universal test runner with auto-detection for 11 languages"
 
 pkgver=0.1.0
 pkgrel=1
@@ -19,9 +19,9 @@ url=${_ghurl}
 
 license=('MIT')
 
-depends=('glibc')
 provides=("${_appname}")
 conflicts=("${_appname}")
+depends=('glibc' 'libgcc')
 
 options=(!strip)
 
