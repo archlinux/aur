@@ -1,5 +1,5 @@
 pkgname=extera-next-bin
-pkgver=26.0.91
+pkgver=26.1.1
 pkgrel=1
 pkgdesc="A feature-rich Matrix client made in Flutter"
 arch=('x86_64')
@@ -41,7 +41,7 @@ package() {
 Name=extera-next
 Comment=A feature-rich Matrix client made in Flutter
 Exec=extera-next
-Icon=extera-next
+Icon=extera
 Type=Application
 MimeType=x-scheme-handler/matrix;
 StartupWMClass=extera_next
@@ -49,8 +49,8 @@ Terminal=false
 Categories=Network;Chat;InstantMessaging;X-Matrix;
 EOF
 
-  if [ -f "$srcdir/bundle/logo.svg" ]; then
-    install -Dm644 "$srcdir/bundle/logo.svg" \
-      "$pkgdir/usr/share/pixmaps/extera-next.svg"
+  if [ -f "$srcdir/bundle/data/flutter_assets/assets/logo.png" ]; then
+    install -Dm644 "$srcdir/bundle/data/flutter_assets/assets/logo.png" \
+      "$pkgdir/usr/share/pixmaps/extera.png"
   fi
 }
