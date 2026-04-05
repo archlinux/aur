@@ -1,6 +1,6 @@
 pkgbase = gnun
 	pkgdesc = A build system for www.gnu.org translations.
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://www.gnu.org/software/gnun/
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = gnun
 	depends = wdiff
 	depends = gawk
 	backup = etc/gnun/gnun.conf
-	source = https://ftp.gnu.org/gnu/gnun/gnun-1.5.tar.gz
-	source = https://ftp.gnu.org/gnu/gnun/gnun-1.5.tar.gz.sig
+	source = https://ftpmirror.gnu.org/gnu/gnun/gnun-1.6.tar.gz
+	source = https://ftpmirror.gnu.org/gnu/gnun/gnun-1.6.tar.gz.sig
 	validpgpkeys = BD9D4DEE7B2FF1CBEF2EE0C4E0ACD3E0CBE7874A
-	sha256sums = c618234f75c3d63e6a2db4d61039bbb95bed78f32889e6d1070c1bd6b62519a3
+	sha256sums = 7d74b854fffbd72a59ad28d19c78f2359e6eff921363e24c782a89b4fc5ce4d6
 	sha256sums = SKIP
 
 pkgname = gnun
