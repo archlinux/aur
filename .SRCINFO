@@ -1,0 +1,19 @@
+pkgbase = telemt
+	pkgdesc = Telemt - MTProxy on Rust + Tokio
+	pkgver = 3.3.35
+	pkgrel = 1
+	url = https://github.com/telemt/telemt
+	arch = x86_64
+	arch = aarch64
+	license = custom:TELEMT Public License 3
+	makedepends = cargo
+	optdepends = nginx: when using nginx as reverse proxy
+	optdepends = caddy: when using caddy as reverse proxy
+	options = !lto
+	backup = etc/telemt/telemt.toml
+	source = telemt-3.3.35.tar.gz::https://github.com/telemt/telemt/archive/refs/tags/3.3.35.tar.gz
+	source = telemt.toml.sample
+	sha256sums = e244859fdbd2af0b0f70c1afd86533ae6e163210f20672f0ff54a35ec20a4a3e
+	sha256sums = 23823b23d34c74660b8ef10839fa08b2d177407f910f4df5ad4838ff3e8758e3
+
+pkgname = telemt
