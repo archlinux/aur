@@ -1,0 +1,25 @@
+pkgbase = headroom-ai
+	pkgdesc = Context optimization layer for LLM applications - cut token costs by 50-90%
+	pkgver = 0.5.18
+	pkgrel = 1
+	url = https://github.com/chopratejas/headroom
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python>=3.10
+	depends = python-tiktoken
+	depends = python-pydantic
+	depends = python-click
+	depends = python-rich
+	depends = litellm
+	optdepends = python-fastapi: proxy server support
+	optdepends = uvicorn: proxy server support
+	optdepends = python-httpx: proxy server with HTTP/2
+	optdepends = python-openai: OpenAI API format support
+	optdepends = python-tree-sitter-language-pack: AST-based code compression
+	source = https://files.pythonhosted.org/packages/source/h/headroom-ai/headroom_ai-0.5.18.tar.gz
+	sha256sums = c8455f649b8a313ae6bf7bf5377564011b3a4123860c3c48954cf120dcf9b744
+
+pkgname = headroom-ai
