@@ -1,7 +1,7 @@
 pkgbase = vim-classic-git
 	pkgdesc = Vim Classic is a fork of Vim 8.x for long-term maintenance.
 	pkgver = r11235.6f8889e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~sircmpwn/vim-classic
 	arch = x86_64
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = vim-classic-git
 	sha256sums = SKIP
 
 pkgname = vim-classic-git
-	depends = vim-classic-runtime-git=r11235.6f8889e-1
+	depends = vim-classic-runtime-git=r11235.6f8889e-2
 	depends = acl
 	depends = libgcrypt
 	depends = glibc
@@ -49,7 +49,7 @@ pkgname = vim-classic-runtime-git
 	conflicts = vim-runtime
 
 pkgname = gvim-classic-git
-	depends = vim-classic-runtime-git=r11235.6f8889e-1
+	depends = vim-classic-runtime-git=r11235.6f8889e-2
 	depends = acl
 	depends = libgcrypt
 	depends = glibc
@@ -67,4 +67,4 @@ pkgname = gvim-classic-git
 	provides = gvim
 	provides = xxd
 	provides = vim
-	provides = vim-classic-git=r11235.6f8889e-1
+	provides = vim-classic-git=r11235.6f8889e-2

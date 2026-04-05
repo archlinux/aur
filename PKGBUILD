@@ -4,7 +4,7 @@ pkgbase='vim-classic-git'
 pkgname=('vim-classic-git' 'vim-classic-runtime-git' 'gvim-classic-git')
 _pkgname='vim-classic'
 pkgver=r11235.6f8889e
-pkgrel=1
+pkgrel=2
 pkgdesc='Vim Classic is a fork of Vim 8.x for long-term maintenance.'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://git.sr.ht/~sircmpwn/vim-classic'
@@ -82,32 +82,10 @@ build() {
     --enable-rubyinterp=dynamic \
     --enable-tclinterp=dynamic \
     --enable-year2038 \
-    --disable-canberra
+    --enable-canberra
   make
   )
 
-#  (
-#  cd "g$_pkgname"
-#  ./configure \
-#    --prefix=/usr \
-#    --localstatedir=/var/lib/vim \
-#    --with-features=huge \
-#    --enable-gpm \
-#    --enable-acl \
-#    --with-x=yes \
-#    --enable-gui=motif \
-#    --enable-multibyte \
-#    --enable-cscope \
-#    --enable-netbeans \
-#    --enable-luainterp=dynamic \
-#    --enable-perlinterp=dynamic \
-#    --enable-python3interp=dynamic \
-#    --enable-rubyinterp=dynamic \
-#    --enable-tclinterp=dynamic \
-#    --enable-year2038 \
-#    --disable-canberra
-#  make
-#  )
 }
 
 package_vim-classic-runtime-git() {
