@@ -1,7 +1,7 @@
 # Maintainer: Gavin Lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/backupmenu
 pkgname=backupmenu
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Backup program, TUI utility for Linux distro's, bash"
 depends=('bashmultitool')
@@ -11,7 +11,7 @@ license=('MIT')
 
 source=("https://github.com/gavinlyonsrepo/backupmenu/archive/$pkgver.tar.gz")
 
-sha256sums=('c6a4bd658a78b40fbfc763a2ad2b1e882dbf11f8b32434a0a7d08aec90799aee')
+sha256sums=('df23ff9a9b5a4d5313cf5f9554f1abc37ccd426f645101e840108f92315d8e89')
 
 package() {
 
