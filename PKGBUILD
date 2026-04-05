@@ -7,7 +7,20 @@ pkgdesc="MAXHUB 传屏助手 A wireless screen sharing software."
 arch=('x86_64')
 url="https://www.maxhub.com/share/"
 license=('custom')
-depends=('qt5-tools' 'qt5-xmlpatterns' 'libspeechd' 'qt5-sensors' 'qt5-webengine' 'qt5-svg' 'ffmpeg4.4' 'gtk3' 'qt5-speech' 'qt5-quickcontrols2' 'qt5-wayland')
+depends=(
+	'qt5-tools'
+	'qt5-xmlpatterns'
+	'libspeechd'
+	'qt5-sensors'
+	'qt5-webengine'
+	'qt5-svg'
+	'ffmpeg4.4'
+	'gtk3'
+	'qt5-speech'
+	'qt5-quickcontrols2'
+	'qt5-wayland'
+	'sndio'
+)
 source=(
 	"https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.cvte.maxhub.share/com.cvte.maxhub.share_${pkgver}_amd64.deb"
 )

@@ -16,6 +16,7 @@ pkgbase = maxhub-share-uos
 	depends = qt5-speech
 	depends = qt5-quickcontrols2
 	depends = qt5-wayland
+	depends = sndio
 	source = https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.cvte.maxhub.share/com.cvte.maxhub.share_3.12.77.6_amd64.deb
 	sha512sums = bfd95972fece4a9f43d88bf15c370be86e26a02255055cfa0900cad685658dd1b9d09be2703ba1ae01868303b2b7a57add96c8b5b78786eaf1579e1338fe205e
 
