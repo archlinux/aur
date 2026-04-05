@@ -3,3 +3,4 @@
 !.srcinfo
 !pkgbuild
 !license
+!disable-autoupdater.patch
