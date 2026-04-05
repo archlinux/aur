@@ -118,9 +118,9 @@ case "$1" in
         echo "Available commands (Core):"
         echo "  -v                             Show version"
         echo "  -sysfo                         Show detailed system information"
-        -pcheck [port]                 Check for processes on port and optional kill
-        -crdts                         Show creator credits
-        -gpass [len] [spec] [num]      Generate a password (e.g., -gpass 16 yes yes)
+        echo "  -pcheck [port]                 Check for processes on port and optional kill"
+        echo "  -crdts                         Show creator credits"
+        echo "  -gpass [len] [spec] [num]      Generate a password (e.g., -gpass 16 yes yes)"
         echo "  -bckup [directory]             Backup spxc suite to a directory"
         echo "  -rvbckup [directory]           Restore spxc suite from a directory"
         echo "  -caupd                         Clear yay cache and update spxc-core (and spxc-webtools if installed)"
