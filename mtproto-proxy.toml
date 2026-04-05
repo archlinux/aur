@@ -1,0 +1,62 @@
+[general]
+# Route regular DC traffic via Telegram MiddleProxy transport.
+# Required when using a promotion tag from @MTProxybot.
+use_middle_proxy = true
+
+# Telemt-compatible alias for promotion tag (alternative to [server].tag).
+# If both are set, [server].tag takes priority.
+# ad_tag = "1234567890abcdef1234567890abcdef"
+
+[server]
+port = 443
+
+# 32 hex-char promotion tag from @MTProxybot (enables sponsored channels).
+# tag = "1234567890abcdef1234567890abcdef"
+
+# TCP listen queue depth. Higher values absorb connection bursts better.
+# backlog = 4096
+
+# Maximum concurrent client connections. With lazy pool allocation,
+# raising this does NOT increase idle memory — slots are created on demand.
+# max_connections = 65535
+
+# Seconds to wait for the first byte from a new client before dropping.
+# Keep high (300) to accommodate mobile pre-warmed connection pools.
+# idle_timeout_sec = 300
+
+# Seconds to complete TLS+MTProto handshake after first byte arrives.
+# handshake_timeout_sec = 60
+
+# Per-connection MiddleProxy stream buffer size in KiB.
+# Lower (64–128) for RAM-constrained VPS, raise (256–512) for high-throughput media.
+# middleproxy_buffer_kb = 256
+
+[censorship]
+# Domain to impersonate in TLS ServerHello and forward unauthenticated clients to.
+# Choose a popular, high-traffic domain in the target region.
+tls_domain = "google.com"
+
+# Forward unauthenticated / invalid connections to tls_domain (active probing defense).
+mask = true
+
+# Local port override for mask forwarding (e.g. 8443 for zero-RTT local Nginx).
+# When unset, connects to tls_domain:443 directly.
+# mask_port = 8443
+
+# Split ServerHello into 1-byte + 3ms delay + rest (defeats passive DPI signatures).
+# Enabled by default.
+# desync = true
+
+# Dynamic Record Sizing: ramp TLS records from 1369 → 16384 bytes to mimic browser behavior.
+# Improves throughput after initial handshake, may help evade statistical traffic analysis.
+# drs = false
+
+# Delegate S2C AES encryption to the Telegram DC (reduces CPU and memory usage).
+# Recommended for all deployments.
+fast_mode = true
+
+[access.users]
+# 32 hex-char secret (16 bytes) per user.
+# Generate with: openssl rand -hex 16
+user1 = "00112233445566778899aabbccddeeff"
+user2 = "ffeeddccbbaa99887766554433221100"
