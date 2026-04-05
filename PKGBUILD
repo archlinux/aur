@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=fotema
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Photo gallery for Linux"
 arch=('x86_64')
@@ -36,11 +36,16 @@ makedepends=(
   'mold'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cfe7a3a66e21c32c82b9da42f38c4652745a3d9166d439b06ca04a9f158e2631')
+sha256sums=('2226eb41470b96af9e78edfc629f912ef6a457a7e0af1855d794517f6f7945d3')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
+
+  # Bump dependencies to fix build with ffmpeg 8.1
+  cargo update ffmpeg-next --precise 8.1.0
+  cargo update opencv --precise 0.98.2
+
   cargo fetch --target "$(rustc --print host-tuple)"
 }
 
