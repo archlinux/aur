@@ -1,6 +1,6 @@
 pkgbase = cysinfo-git
 	pkgdesc = A super simple and minimal fetch tool.
-	pkgver = 3.0
+	pkgver = r44.4042c01
 	pkgrel = 1
 	url = https://codeberg.org/Charged/cysinfo.git
 	arch = x86_64
