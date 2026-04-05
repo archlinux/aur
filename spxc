@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.7.3"
+VERSION="V1.7.6"
 
 case "$1" in
     -v)
@@ -22,8 +22,8 @@ case "$1" in
     -bckup)
         TARGET=$2
         if [ -z "$TARGET" ]; then echo "Usage: spxc -bckup [directory]"; exit 1; fi
-        if [ -d "$TARGET" ]; then
-            read -p "Directory $TARGET already exists. Overwrite? (y/N): " choice
+        if [ -f "$TARGET/spxc" ] || [ -f "$TARGET/spxc-web" ]; then
+            read -p "Existing spxc backup detected in $TARGET. Overwrite? (y/N): " choice
             [[ "$choice" != [Yy]* ]] && echo "Operation cancelled." && exit 1
         fi
         mkdir -p "$TARGET"
