@@ -6,7 +6,7 @@ _appname=suv
 pkgname=${_pkgname}-bin
 pkgdesc="A database-backed shell history replacement with fuzzy search, AI agent monitoring, and interactive TUI"
 
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,9 +26,9 @@ depends=('glibc' 'libgcc')
 source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}-${_pkgvername}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}-${_pkgvername}.tar.gz")
-sha256sums=('af1467f858694f6624432fe421bdf47560fe2fb927bd7cea416220b9a1ad1cdf')
-sha256sums_x86_64=('22b5dbc5994f6f20e0c0065bcb5586b74e2971eea85f5ecb6476ce467b07cc09')
-sha256sums_aarch64=('e7714cdbf06adfbd6fe3582cb6420e439944d935222d03f4c57b9f2d4efccc14')
+sha256sums=('299e3fc09e76460d6e6dd2bac257ef1fbddbbd4df5e41041da79df35221a952f')
+sha256sums_x86_64=('2833a1e1a2baf891dfa152a5fac65d585077de2a74f9441b9e4b349f9eac4b2a')
+sha256sums_aarch64=('4ab4e3fb415175efda3505af1f8031ee851c492dec16fb684376fefe661001fa')
 
 
 package() {
