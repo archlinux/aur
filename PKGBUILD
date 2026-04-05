@@ -1,59 +1,60 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
-pkgname=perl-b-hooks-op-check
-_cpanname="B-Hooks-OP-Check"
+_author=ETHER
+_dist=B-Hooks-OP-Check
+pkgname=perl-${_dist@L}
 pkgver=0.22
-pkgrel=1.1
-pkgdesc="Wrap OP check callbacks"
-arch=('i686' 'x86_64')
-license=('GPL' 'PerlArtistic')
-url="http://search.cpan.org/~flora/$_cpanname/"
+pkgrel=2
+pkgdesc='Wrap OP check callbacks'
+arch=('x86_64')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-parent'
+    'perl>=5.8.1'
+)
+makedepends=(
+    'perl-extutils-depends>=0.302'
+    'perl-extutils-makemaker'
+)
+checkdepends=(
+    'perl-extutils-makemaker'
+    'perl-pathtools'
+    'perl-test-simple'
+    'perl>=5.8.1'
+)
+optdepends=('perl-cpan-meta')
 options=('!emptydirs')
-depends=('perl>=5.5.0')
-makedepends=('perl-extutils-depends' 'perl-module-install')
-source=("http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/$_cpanname-$pkgver.tar.gz")
-source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/$_cpanname-$pkgver.tar.gz")
-md5sums=('b02925eacea03913a922f4b45020b5ac')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('c7b5d1bef59ef9087ff67eb3168d2624be94ae5464469e259ad11bfb8ad8cdcd')
 
-# Function to change to the working directory and set
-# environment variables to override undesired options.
-prepareEnvironment() {
-	cd "$srcdir/$_cpanname-$pkgver"
-	export \
-		PERL_MM_USE_DEFAULT=1 \
-		PERL_AUTOINSTALL=--skipdeps \
-		PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-		PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-		MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-build() {
-	prepareEnvironment
-	/usr/bin/perl Makefile.PL
-	make
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-check() {
-	prepareEnvironment
-	make test
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-_perl_depends() {
-# template start; name=perl-binary-module-dependency; version=1;
-if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
-	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
-	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
-	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
-fi
-# template end;
-}
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
-package() {
-	prepareEnvironment
-	make install
-
-	# Remove "perllocal.pod" and ".packlist".
-	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
-	_perl_depends
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
