@@ -1,9 +1,25 @@
 #!/bin/bash
-VERSION="V1.6.7"
+VERSION="V1.6.8"
 
 case "$1" in
     -v)
         echo "$VERSION"
+        ;;
+    -pcheck)
+        PORT=$2
+        if [ -z "$PORT" ]; then echo "Usage: spxc -pcheck [port]"; exit 1; fi
+        PID=$(lsof -t -i:"$PORT")
+        if [ -z "$PID" ]; then
+            echo "No process is using port $PORT."
+        else
+            PROC_NAME=$(ps -p "$PID" -o comm=)
+            echo "Port $PORT is being used by: $PROC_NAME (PID: $PID)"
+            read -p "Do you want to kill this process? (y/N): " choice
+            case "$choice" in
+                y|Y ) kill -9 "$PID" && echo "Process $PID killed." ;;
+                * ) echo "Operation cancelled." ;;
+            esac
+        fi
         ;;
     -sysfo)
         echo "--- System Information ---"
