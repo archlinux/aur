@@ -1,6 +1,6 @@
 # This is an AUR PKGBUILD for spxc
 pkgname=spxc
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="A simple CLI tool that shows version and help"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://aur.archlinux.org/packages/spxc"
 license=('MIT')
 depends=('bash')
 source=("spxc")
-sha256sums=('97f776cdfc906d0536130d41e87f10f2f1e8ea4d59e06d5a76319bee9e8131c9')
+sha256sums=('4716ceaff229798de5e00d7060169e3ff77119a5fa21accece5986d2100f2dfd')
 
 package() {
     install -Dm755 "${srcdir}/spxc" "${pkgdir}/usr/bin/spxc"

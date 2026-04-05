@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.3"
+VERSION="V1.4"
 
 case "$1" in
     -v)
@@ -173,7 +173,7 @@ EOF
             esac
         fi
 
-        echo "Generating Master Bundle (V1.3) from $URL..."
+        echo "Generating Shielded Bundle (V1.4) from $URL..."
         
         export SPXC_URL="$URL"
         export SPXC_FILEPATH="$FILEPATH"
@@ -206,10 +206,12 @@ def process_page(current_url, depth=0):
     content = fetch_resource(current_url)
     if not content: return
 
+    # 1. Strip Security & Redirects
     content = re.sub(r'<link[^>]+rel=["\'](manifest|preload|prefetch|preconnect)["\'][^>]*>', '', content)
     content = re.sub(r'navigator\.serviceWorker\.register\(.*?\)', '', content)
-    content = re.sub(r'<meta[^>]+http-equiv=["\'](Content-Security-Policy|X-Frame-Options)["\'][^>]*>', '', content)
+    content = re.sub(r'<meta[^>]+http-equiv=["\'](Content-Security-Policy|X-Frame-Options|refresh)["\'][^>]*>', '', content)
 
+    # 2. Inlining
     def inline_assets(match):
         tag = match.group(0)
         is_js = '<script' in tag
@@ -220,11 +222,8 @@ def process_page(current_url, depth=0):
             data = fetch_resource(asset_url, binary=True)
             if data:
                 b64 = base64.b64encode(data).decode('utf-8')
-                if is_js: 
-                    # Use a safer injection method than eval()
-                    return f'<script>(function(){{var s=document.createElement("script");s.textContent=atob("{b64}");document.head.appendChild(s);}})();</script>'
-                else: 
-                    return f'<style>@import url("data:text/css;base64,{b64}");</style>'
+                if is_js: return f'<script>(function(){{var s=document.createElement("script");s.textContent=atob("{b64}");document.head.appendChild(s);}})();</script>'
+                else: return f'<style>@import url("data:text/css;base64,{b64}");</style>'
         return tag
 
     content = re.sub(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', inline_assets, content)
@@ -249,14 +248,33 @@ def process_page(current_url, depth=0):
 
 process_page(url)
 
-router_script = f"""
-<script id="spxc-router">
-(function spxc_bundle() {{
+shield_script = f"""
+<script id="spxc-shield">
+(function spxc_shield() {{
+    // 1. Block redirects & Frame busting
+    const noop = () => {{}};
+    window.onbeforeunload = null;
+    Object.defineProperty(window, 'location', {{
+        value: new Proxy(window.location, {{
+            set: (target, prop, value) => {{
+                if (prop === 'href' || prop === 'replace' || prop === 'assign') {{
+                    console.log('Blocked redirect to:', value);
+                    return true;
+                }}
+                target[prop] = value;
+                return true;
+            }}
+        }}),
+        configurable: false
+    }});
+    
+    // 2. Suppress all noise
     window.onerror = () => true;
     window.onunhandledrejection = () => true;
+    window.fetch = () => Promise.reject("Sandbox");
 
+    // 3. Router Logic
     const pages = {json.dumps(pages)};
-    
     function loadPage(path) {{
         if (!path || path === '/') path = '/index.html';
         const b64 = pages[path] || pages[path + '.html'] || pages[path + '/index.html'];
@@ -264,7 +282,7 @@ router_script = f"""
             try {{
                 const content = atob(b64);
                 document.open();
-                document.write(content + '<script>(' + spxc_bundle.toString() + ')()</script>');
+                document.write(content + '<script>(' + spxc_shield.toString() + ')()</script>');
                 document.close();
             }} catch(e) {{}}
         }}
@@ -274,8 +292,6 @@ router_script = f"""
         if (window.location.hash.startsWith('#!')) loadPage(window.location.hash.substring(2));
     }};
 
-    window.fetch = function() {{ return Promise.reject(new Error("Sandbox")); }};
-    
     if (window.location.hash.startsWith('#!')) loadPage(window.location.hash.substring(2));
 }})();
 </script>
@@ -284,8 +300,8 @@ router_script = f"""
 initial_path = urllib.parse.urlparse(url).path or "/index.html"
 initial_content = base64.b64decode(pages[initial_path]).decode('utf-8', errors='ignore')
 with open(filepath, "w", encoding='utf-8') as f:
-    f.write(initial_content + router_script)
-print(f"Master Bundle V1.3 saved to {filepath}")
+    f.write(initial_content + shield_script)
+print(f"Shielded Bundle V1.4 saved to {filepath}")
 EOF
         ;;
     --help)
@@ -294,7 +310,7 @@ EOF
         echo "  -sysfo                         Show detailed system information"
         echo "  -mkserv [directory] [port]        Create and start a dark-themed Python server"
         echo "  -rmweb [directory]                Remove all HTML files in a directory after confirmation"
-        echo "  -dweb [directory] [URL] [name]    Generate a single-file Master Bundle (SPA) for complex apps"
+        echo "  -dweb [directory] [URL] [name]    Generate a single-file Shielded Bundle (SPA) for extreme apps"
         ;;
     *)
         echo "Usage: spxc --help"
