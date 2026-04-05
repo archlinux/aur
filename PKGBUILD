@@ -1,23 +1,33 @@
 # Maintainer: submit as i2pchat-bin on AUR (see packaging/README.md)
 pkgname=i2pchat-bin
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Experimental peer-to-peer chat client for the I2P network (official AppImage, binary)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/MetanoicArmor/I2PChat"
 license=('AGPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'zlib')
 options=('!strip')
-_zip="I2PChat-linux-x86_64-v${pkgver}.zip"
-source=("${_zip}::${url}/releases/download/v${pkgver}/${_zip}"
-        "icon.png::${url}/raw/v${pkgver}/icon.png")
-sha256sums=('23d802f504be2b44cd20e05b21fdb4c09a044a07c607e35b0eaa2bb3ee888c59'
-            'c49c198bef05e1cf3bf159858acefad100981fb21437e47e2588fcc1e4ad7217')
+_icon="icon.png::${url}/raw/v${pkgver}/icon.png"
+source_x86_64=("I2PChat-linux-x86_64-v${pkgver}.zip::${url}/releases/download/v${pkgver}/I2PChat-linux-x86_64-v${pkgver}.zip"
+               "${_icon}")
+source_aarch64=("I2PChat-linux-aarch64-v${pkgver}.zip::${url}/releases/download/v${pkgver}/I2PChat-linux-aarch64-v${pkgver}.zip"
+                "${_icon}")
+sha256sums_x86_64=('23d802f504be2b44cd20e05b21fdb4c09a044a07c607e35b0eaa2bb3ee888c59'
+                   'c49c198bef05e1cf3bf159858acefad100981fb21437e47e2588fcc1e4ad7217')
+sha256sums_aarch64=('e95777fcb8d5ad0dcba732cd5c3bf911bae18869f7ecc08dbbee6984d32f64c4'
+                    'c49c198bef05e1cf3bf159858acefad100981fb21437e47e2588fcc1e4ad7217')
 
 package() {
   cd "$srcdir"
-  # Zip from GitHub releases contains I2PChat-linux-x86_64-v${pkgver}.AppImage
-  _app="I2PChat-linux-x86_64-v${pkgver}.AppImage"
+  case "${CARCH}" in
+    x86_64)  _app="I2PChat-linux-x86_64-v${pkgver}.AppImage" ;;
+    aarch64) _app="I2PChat-linux-aarch64-v${pkgver}.AppImage" ;;
+    *)
+      echo "ERROR: unsupported CARCH=${CARCH}" >&2
+      exit 1
+      ;;
+  esac
   install -dm755 "$pkgdir/opt/i2pchat"
   install -Dm755 "$_app" "$pkgdir/opt/i2pchat/I2PChat.AppImage"
   install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/i2pchat.png"

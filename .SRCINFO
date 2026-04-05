@@ -1,16 +1,21 @@
 pkgbase = i2pchat-bin
 	pkgdesc = Experimental peer-to-peer chat client for the I2P network (official AppImage, binary)
 	pkgver = 1.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MetanoicArmor/I2PChat
 	arch = x86_64
+	arch = aarch64
 	license = AGPL-3.0-or-later
 	depends = hicolor-icon-theme
 	depends = zlib
 	options = !strip
-	source = I2PChat-linux-x86_64-v1.2.3.zip::https://github.com/MetanoicArmor/I2PChat/releases/download/v1.2.3/I2PChat-linux-x86_64-v1.2.3.zip
-	source = icon.png::https://github.com/MetanoicArmor/I2PChat/raw/v1.2.3/icon.png
-	sha256sums = 23d802f504be2b44cd20e05b21fdb4c09a044a07c607e35b0eaa2bb3ee888c59
-	sha256sums = c49c198bef05e1cf3bf159858acefad100981fb21437e47e2588fcc1e4ad7217
+	source_x86_64 = I2PChat-linux-x86_64-v1.2.3.zip::https://github.com/MetanoicArmor/I2PChat/releases/download/v1.2.3/I2PChat-linux-x86_64-v1.2.3.zip
+	source_x86_64 = icon.png::https://github.com/MetanoicArmor/I2PChat/raw/v1.2.3/icon.png
+	sha256sums_x86_64 = 23d802f504be2b44cd20e05b21fdb4c09a044a07c607e35b0eaa2bb3ee888c59
+	sha256sums_x86_64 = c49c198bef05e1cf3bf159858acefad100981fb21437e47e2588fcc1e4ad7217
+	source_aarch64 = I2PChat-linux-aarch64-v1.2.3.zip::https://github.com/MetanoicArmor/I2PChat/releases/download/v1.2.3/I2PChat-linux-aarch64-v1.2.3.zip
+	source_aarch64 = icon.png::https://github.com/MetanoicArmor/I2PChat/raw/v1.2.3/icon.png
+	sha256sums_aarch64 = e95777fcb8d5ad0dcba732cd5c3bf911bae18869f7ecc08dbbee6984d32f64c4
+	sha256sums_aarch64 = c49c198bef05e1cf3bf159858acefad100981fb21437e47e2588fcc1e4ad7217
 
 pkgname = i2pchat-bin
