@@ -6,7 +6,7 @@
 pkgname=web-ext
 # https://github.com/mozilla/web-ext/releases
 pkgver=10.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
 url='https://developer.mozilla.org/en-US/Add-ons/WebExtensions'
@@ -49,7 +49,9 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname-$pkgver-build"
-  npm test
+  # Testing fails with a few specific locales
+  # See https://github.com/mozilla/web-ext/issues/3676
+  LANG=C npm test
 }
 
 package() {
