@@ -21,10 +21,6 @@ makedepends=('boost')
 source=("$pkgname-$pkgver::$url/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('0f98ed854d741d813a65acdf1127360077171c341f3de69fb0a83bf8d6bc6eca8fff461ebf48b631362ba9c613793d144a9147eb6a5d561647c59e9fe60b3b04')
 
-prepare() {
-    cd "behavioral-model-$pkgver"
-}
-
 build() {
     cd "behavioral-model-$pkgver"
     ./autogen.sh
