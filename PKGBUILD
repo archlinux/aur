@@ -1,8 +1,8 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-git
-pkgver=2.0.6
-pkgrel=3
+pkgver=2.0.7
+pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
 arch=('x86_64')
 url="https://github.com/ZoeyErinBauer/Shelly-ALPM"
@@ -68,6 +68,22 @@ Icon=shelly
 Type=Application
 Categories=System;Utility;
 Terminal=false
+Actions=FlatpakInstall;FlatpakUpdate;FlatpakRemove;
+
+[Desktop Action FlatpakInstall]
+Name=Flatpak Install
+Icon=flatpak-symbolic
+Exec=/usr/bin/shelly-ui --page flatpak-install
+
+[Desktop Action FlatpakUpdate]
+Name=Flatpak Update
+Icon=flatpak-symbolic
+Exec=/usr/bin/shelly-ui --page flatpak-update
+
+[Desktop Action FlatpakRemove]
+Name=Flatpak Remove
+Icon=flatpak-symbolic
+Exec=/usr/bin/shelly-ui --page flatpak-remove
 EOF
 
   # Install desktop entry for notification service
@@ -90,4 +106,50 @@ EOF
 
   # Install fish shell completions
   install -Dm644 shelly.fish "$pkgdir/usr/share/fish/vendor_completions.d/shelly.fish"
+
+  # Install Flatpak integration script
+  cat <<'SCRIPT' | install -Dm755 /dev/stdin "$pkgdir/usr/bin/shelly-flatpak-integrate"
+#!/bin/bash
+# Adds "Manage in Shelly" right-click action to all Flatpak .desktop files
+FLATPAK_DIRS=(
+    "/var/lib/flatpak/exports/share/applications"
+    "$HOME/.local/share/flatpak/exports/share/applications"
+)
+LOCAL_APPS_DIR="$HOME/.local/share/applications"
+mkdir -p "$LOCAL_APPS_DIR"
+
+for dir in "${FLATPAK_DIRS[@]}"; do
+    [ -d "$dir" ] || continue
+    for desktop_file in "$dir"/*.desktop; do
+        [ -f "$desktop_file" ] || continue
+        filename=$(basename "$desktop_file")
+        app_id="${filename%.desktop}"
+        dest="$LOCAL_APPS_DIR/$filename"
+
+        # Copy if override doesn't exist yet
+        [ -f "$dest" ] || cp "$desktop_file" "$dest"
+
+        # Skip if already patched
+        grep -q "ShellyManage" "$dest" && continue
+
+        # Add action to existing Actions= line or insert one
+        if grep -q "^Actions=" "$dest"; then
+            sed -i 's/^Actions=\(.*\)/Actions=\1ShellyManage;/' "$dest"
+        else
+            sed -i '/^\[Desktop Entry\]/a Actions=ShellyManage;' "$dest"
+        fi
+
+        cat >> "$dest" << EOF
+
+[Desktop Action ShellyManage]
+Name=Manage in Shelly
+Icon=shelly
+Exec=/usr/bin/shelly-ui --page flatpak-install
+EOF
+    done
+done
+
+update-desktop-database "$LOCAL_APPS_DIR" 2>/dev/null || true
+echo "Flatpak desktop entries patched with Shelly integration."
+SCRIPT
 }
