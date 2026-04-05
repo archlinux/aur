@@ -5,7 +5,7 @@ _author=FLORA
 _dist=CatalystX-REPL
 pkgname=perl-${_dist@L}
 pkgver=0.04
-pkgrel=3
+pkgrel=4
 pkgdesc='read-eval-print-loop for debugging your Catalyst application'
 arch=('any')
 url=https://metacpan.org/release/$_author/$_dist-$pkgver
@@ -16,6 +16,7 @@ depends=(
     'perl-catalyst-runtime>=5.80006'
     'perl-namespace-autoclean'
 )
+checkdepends=('perl-test-expect')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('0bdc17a4bc16565ce353366b4ac81475ee8a843144305f44ee59b3ef01fb3af1')
