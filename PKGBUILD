@@ -1,0 +1,46 @@
+# Maintainer: NetExperts <support@netexperts.com.au>
+pkgname=netexperts-support-bin
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="NetExperts Remote Support, Linux Outbound Client. Based on RustDesk (AGPL-3.0)."
+arch=('x86_64')
+url="https://netexperts.com.au/opensource"
+license=('AGPL-3.0-only')
+depends=('gtk3' 'libxcb' 'libxrandr' 'libxfixes' 'alsa-lib' 'pulseaudio' 'libva'
+         'libvdpau' 'libappindicator-gtk3' 'pam' 'gst-plugins-base' 'gst-plugins-good')
+optdepends=('libayatana-appindicator: modern tray icon support'
+            'xdg-desktop-portal: Wayland screen capture'
+            'pipewire: Wayland audio/screen sharing')
+provides=('netexperts-support')
+conflicts=('netexperts-support' 'rustdesk' 'rustdesk-bin')
+options=('!strip')
+source=("https://netexperts.com.au/opensource/netexperts-support-${pkgver}-x86_64-linux.tar.gz")
+sha256sums=('7ef580347e2d58b1b523f2f52f1c5089156bef978f2cf6927a9939af7497bdb1')
+
+package() {
+    # Install application bundle
+    install -dm755 "${pkgdir}/usr/lib/netexperts-support"
+    cp -r "${srcdir}/bundle/"* "${pkgdir}/usr/lib/netexperts-support/"
+
+    # Binary symlink
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -sf /usr/lib/netexperts-support/rustdesk "${pkgdir}/usr/bin/netexperts-support"
+
+    # Desktop entry
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/netexperts-support.desktop" <<EOF
+[Desktop Entry]
+Name=NetExperts Support
+Comment=NetExperts Remote Support
+Exec=/usr/bin/netexperts-support
+Icon=netexperts-support
+Terminal=false
+Type=Application
+Categories=Network;RemoteAccess;
+StartupNotify=true
+EOF
+
+    # Icon
+    install -Dm644 "${srcdir}/bundle/data/flutter_assets/assets/icon.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/netexperts-support.svg"
+
+}
