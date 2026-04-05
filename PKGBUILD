@@ -59,6 +59,11 @@ prepare() {
 }
 
 build() {
+    # Build VideoEditor frontend (required by XerahS.App.csproj)
+    cd "$srcdir/xerahs-videoeditor/frontend"
+    npm ci
+    npm run build
+
     cd "$srcdir/xerahs"
 
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
