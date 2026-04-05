@@ -1,6 +1,6 @@
 pkgbase = beekeeper-qt-git
 	pkgdesc = Deduplicate redundant data in your disk and save space
-	pkgver = 1.3.4
+	pkgver = v1.3.4.r5.gbe37f24
 	pkgrel = 1
 	url = https://github.com/techmanwalker/beekeeper-qt
 	arch = x86_64
@@ -19,7 +19,9 @@ pkgbase = beekeeper-qt-git
 	depends = util-linux
 	optdepends = doxygen
 	provides = beekeeper
-	source = https://github.com/techmanwalker/beekeeper-qt.git
+	provides = beekeeper-qt
+	conflicts = beekeeper-qt
+	source = git+https://github.com/techmanwalker/beekeeper-qt.git
 	md5sums = SKIP
 
 pkgname = beekeeper-qt-git
