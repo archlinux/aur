@@ -11,6 +11,7 @@ sha256sums=('b28ba6631293265ec23fef9be0f6bda86fc5e0e41530a7deefe8d4c74d1d8c67')
 arch=('x86_64')
 depends=('git' 'gcc-libs')
 makedepends=('cargo')
+options=(!lto)
 
 prepare() {
     cd "$pkgname-$pkgver"
