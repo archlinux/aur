@@ -1,9 +1,16 @@
 -------------------------------------------------------
  Changelog    : kea_config
- Tags         : 5.0.1 ➙ 6.1.0
-              : 2025-07-20 ➙ 2026-02-06
+ Tags         : 5.2.0 ➙ 6.3.0
+              : 2026-01-04 ➙ 2026-04-05
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-04-05   : 6.3.0
+              - Version 6.3.0
+                 - Default socket directory is now */run/kea*
+                   Update examples with socket_dir
+ 2026-02-06   ⋯
+              - update Docs/Changelog
 
  2026-02-06   : 6.1.0
               - Version 6.0.0
@@ -63,10 +70,4 @@
                 * Testing to confirm all working on python 3.14.2
                 * License GPL-2.0-or-later
  2025-07-20   ⋯
-              - update Docs/Changelog Docs/kea_config.pdf
-
- 2025-07-20   : 5.0.1
-              - readme - more rst tweaks
-              - more readme
-              - Readme: tidy up some rst
               - update Docs/Changelog Docs/kea_config.pdf
