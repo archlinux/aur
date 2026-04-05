@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/local/bin/xscreensaver-tray
+Exec=/usr/bin/xscreensaver-tray
 Name=XScreensaver Tray Toggle
 X-KDE-autostart-phase=2
 Comment=Toggle xscreensaver from system tray
