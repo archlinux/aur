@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=6.19.10
+_kernver=6.19.11
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=6.19.10-arch1-1
+_KERNNAME=6.19.11-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -21,9 +21,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-6.19.10.arch1-1-x86_64.pkg.tar.zst
-_headerspkg=linux-headers-6.19.10.arch1-1-x86_64.pkg.tar.zst
-_docspkg=linux-docs-6.19.10.arch1-1-x86_64.pkg.tar.zst
+_kernpkg=linux-6.19.11.arch1-1-x86_64.pkg.tar.zst
+_headerspkg=linux-headers-6.19.11.arch1-1-x86_64.pkg.tar.zst
+_docspkg=linux-docs-6.19.11.arch1-1-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -31,9 +31,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('f286d24ad980ea1ca494b67cb64bf16ec5bd331b1386d4c766c7c41ba2687e45'
-            '48a5d111541f1637aaef978e788d8d8cfa99e6d7be7619ffe80bb2c7ecf45461'
-            '6d4a1bebddec882aadedd7eff32e2da9568cf346f6bc8aa55c771962db0e286f')
+sha256sums=('c48b36c8fc780e8299fc1b21cbe37b160df5ba003b2610b7f817b4cbd7a5fbee'
+            '577256c0392f065f40c6fc923abd137ad4ddb3900a0d5641151001d33eb99d59'
+            'bb9d549d4d23876f8f0ddf04b449e59868ed6462881169d71395ee3a859a88c8')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -51,7 +51,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.19.10.arch1-1-bin() {
+package_linux6.19.11.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -72,9 +72,17 @@ package_linux6.19.10.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.19.10.arch1-1-headers-bin() {
+package_linux6.19.11.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
-  depends=(pahole)
+  depends=(binutils
+           glibc
+           libelf
+           libgcc
+           openssl
+           pahole
+           xxhash
+           zlib
+           zstd)
   conflicts=("${_pkgname}-headers")
   provides=(LINUX-HEADERS)
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -82,7 +90,7 @@ package_linux6.19.10.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.19.10.arch1-1-docs-bin() {
+package_linux6.19.11.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
