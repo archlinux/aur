@@ -1,7 +1,7 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects-git"
 _pkgname="pay-respects"
-pkgver=0.8.2.r0.gb24a1f7
+pkgver=0.8.3.r0.g691c02c
 pkgrel=1
 pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -13,6 +13,10 @@ conflicts=('pay-respects')
 makedepends=('cargo' 'git')
 optdepends=(
 	'tmux: tmux integration'
+	'screen: screen integration'
+	'zellij: zellij integration'
+	'wezterm: wezterm integration'
+	'kitty: kitty integration'
 	'zoxide: zoxide integration')
 source=($pkgname::git+$url)
 
