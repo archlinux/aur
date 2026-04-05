@@ -13,7 +13,6 @@ license=("MIT")
 url="https://github.com/AmalChandru/metrics-monkey"
 _urlraw="https://raw.githubusercontent.com/AmalChandru/metrics-monkey/v${pkgver}"
 
-replaces=("nodejs-${_npmname}")
 depends=("glibc" "nodejs")
 makedepends=("npm" "jq")
 provides=("${_npmname}")

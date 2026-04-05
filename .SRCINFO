@@ -10,7 +10,6 @@ pkgbase = metrics-monkey
 	depends = glibc
 	depends = nodejs
 	provides = metrics-monkey
-	replaces = nodejs-metrics-monkey
 	noextract = metrics-monkey-1.0.2.tgz
 	options = !strip
 	options = emptydirs
