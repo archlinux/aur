@@ -1,6 +1,6 @@
 pkgbase = fsleyes
 	pkgdesc = FSLeyes is the FSL image viewer
-	pkgver = 1.16.1
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes
 	arch = any
@@ -31,9 +31,9 @@ pkgbase = fsleyes
 	depends = python-wxpython
 	depends = python-xarray
 	depends = python-parse
-	depends = fslpy>=3.22.0
-	depends = fsleyes-widgets>=0.15.1
-	depends = fsleyes-props>=1.12.2
+	depends = fslpy>=3.27.0
+	depends = fsleyes-widgets>=0.16.0
+	depends = fsleyes-props>=1.12.3
 	depends = python-file-tree>=0.4.0
 	optdepends = fsl: Enable loading standard images and advanced features (highly recommended)
 	optdepends = python-wxnatpy: Enable loading overlay from XNAT
@@ -41,9 +41,9 @@ pkgbase = fsleyes
 	optdepends = python-rtree
 	optdepends = jupyter-notebook
 	optdepends = python-trimesh
-	source = https://git.fmrib.ox.ac.uk/fsl/fsleyes/fsleyes/-/archive/1.16.1/fsleyes-1.16.1.tar.gz
+	source = https://git.fmrib.ox.ac.uk/fsl/fsleyes/fsleyes/-/archive/1.18.0/fsleyes-1.18.0.tar.gz
 	source = fsleyes.desktop
-	sha256sums = 206985de13c0b9596ad58376d2398dc9e1f95f7c894fd4b84f8db3f14fca795c
+	sha256sums = 6965ece9309885a87a3d31d1a2f5b07df89c3bb60d6777ec12efe3d9171137f0
 	sha256sums = 056de41220ba25e7cda918eda928a5d5a9a99d51487b4adc3ba15fef387db02e
 
 pkgname = fsleyes
