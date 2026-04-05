@@ -1,6 +1,6 @@
 # Maintainer: Daniel Korbelainen <officialpand@gmail.com>
 pkgname=sniptext
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Screen text extractor with OCR and spell correction"
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a10382e1818f751ed0b0375e3d4a7c86a31cdb10c24a3334d9e42becf9085f82')
+sha256sums=('31dd01b566c900ef3fbffec1ee07f2fffe079c9821c7945af31aad1267e943dd')
 
 build() {
     cd "$pkgname-$pkgver"
