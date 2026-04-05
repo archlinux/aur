@@ -1,6 +1,6 @@
 # Maintainer: Arfad <arfadmuzali258@gmail.com>
 pkgname=restui
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Terminal UI API client for testing HTTP requests"
 arch=('any')
