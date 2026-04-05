@@ -1,0 +1,17 @@
+pkgbase = pdfview-git
+	pkgdesc = A lightweight PDF viewer using Qt6 and Poppler
+	pkgver = r1.ad61c49
+	pkgrel = 1
+	url = https://github.com/Sherdorbek/Oddiypdf
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = qt6-base
+	depends = poppler-qt6
+	provides = pdfview
+	conflicts = pdfview
+	source = pdfview::git+https://github.com/Sherdorbek/Oddiypdf.git
+	b2sums = SKIP
+
+pkgname = pdfview-git
