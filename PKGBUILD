@@ -35,8 +35,8 @@ prepare() {
 build() {
   cd "$pkgname"
   ./gradlew -Dorg.gradle.daemon=false build
-	arch-meson . build
-	meson compile -C build
+  arch-meson . build
+  meson compile -C build
 }
 
 check() {
