@@ -3,7 +3,7 @@
 
 _pkgname=libkazv
 pkgname="${_pkgname}-git"
-pkgver=0.8.0+1.r493.20241202.3477cd6
+pkgver=0.8.0+9.r501.20251002.1155e3e
 pkgrel=1
 pkgdesc="A matrix client sdk built upon lager and the value-oriented design it enables."
 arch=(
@@ -30,10 +30,10 @@ makedepends=(
   'git'
   'immer'
   'lager'
-  'libhttpserver'
   'nlohmann-json'
   'zug'
 )
+
 ## Disabled until we re-enable `check()`.
 # checkdepends=(
 #   'catch2>=3.4.0'
@@ -45,7 +45,7 @@ optdepends=(
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=(
-  "${_pkgname}::git+${url}.git"
+  "${_pkgname}::git+https://r.lily-is.land/the-kazv-project/libkazv.git"
 )
 sha256sums=(
   'SKIP'
@@ -89,6 +89,7 @@ build() {
   ## KAZVJOB: Currently (2023-08-25) this makes build errors related to cpr, so disabling.
   #  TESTS, EXAMPLES: Depend on KAZVJOB.
   cmake \
+    -DCXX_STANDARD=17 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -Dlibkazv_BUILD_EXAMPLES=OFF \
