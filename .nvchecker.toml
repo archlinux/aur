@@ -1,0 +1,5 @@
+[env-pilot-bin]
+source = "github"
+github = "tomenden/env-pilot"
+use_latest_release = true
+prefix = "v"
