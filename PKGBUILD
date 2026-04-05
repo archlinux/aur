@@ -10,7 +10,7 @@ depends=('wayland' 'libxkbcommon' 'vulkan-icd-loader' 'alsa-lib')
 provides=('wrain')
 conflicts=('wrain' 'wrain-git')
 source=("${url}/releases/download/v${pkgver}/wrain-x86_64.tar.gz")
-sha256sums=('1cd4fac7a78fb3927a5613bd01236dc59f86ed18bf1b1d306b48b2c87f547b9d')
+sha256sums=('e79d3ec190d785d489555b6b44a2312de177f7b2653bd32201f6f5e2498b74d9')
 
 package() {
   install -Dm755 "wrain" "$pkgdir/usr/bin/wrain"
