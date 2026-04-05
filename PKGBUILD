@@ -2,7 +2,7 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=7.1.1.r10.gf8fa6f19
+pkgver=7.1.1.r11.g7257eefb
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
@@ -35,13 +35,14 @@ conflicts=('cpeditor')
 source=(
     'git+https://github.com/cpeditor/cpeditor.git'
     'git+https://github.com/cpeditor/QtFindReplaceDialog.git'
+    'git+https://github.com/cpeditor/FakeVim.git'
     'git+https://github.com/cpeditor/lsp-cpp.git'
     'git+https://github.com/itay-grudev/singleapplication.git'
     'git+https://github.com/MikeMirzayanov/testlib.git'
     'git+https://github.com/cpeditor/qhttp.git'
 )
 
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "$_pkgname"
