@@ -1,7 +1,9 @@
-# Maintainer: Voxan24 <admin@hessfr.fr>
+# Maintainer: Rchips22 <rchips22@outlook.com> 
+# Contributor: Voxan24 <admin@hessfr.fr>
+# Contributor: Senge Dev <sengedev@gmail.com>
 
 pkgname=1panel
-pkgver=2.0.14
+pkgver=2.1.7
 pkgrel=1
 pkgdesc="1Panel, a modern open source linux panel."
 arch=('x86_64' 'aarch64')
@@ -17,7 +19,7 @@ source=(
     "1panel.service"
 )
 b2sums=(
-    "ed6f04a3d58a60590b47fd21dbd04a3d95e7380764afaa4ced0b41b5e62dbc6956c188f463c50792b833aec25447c75fa038771ca04078a682b9b2deffe25101"
+    "64d48422e494ebf332f2c7e5ede37338c1490a5c31e7caeeb0bc39c33bd25b4d1aab767a9fd81df7e7ff52bc3a7b18bfc5fc2e462bf5e82fada14feefb2216e9"
     "8276ffae854ad7ae4d6ca35bd673b2401dd8e59bff8515921f76fc83a65db672d2de9167ccd32d5b4bb2b5cc4a646f5047c04baf295050dd64fd1370c490680e"
     "b4ca01c4f5027fc121e293df86e9caeaabce732f5d93ea4f0c6b670aceb851943d1f32d11e76f1b1a5780774d35d3b04c1abb9c84d2b0695d04d9938c8771845"
 )
@@ -36,11 +38,11 @@ build() {
     npm install
     npm rum build:pro
     cd ${srcdir}/1Panel-${pkgver//_/-}/core
-    GOOS=linux GOARCH=$(go env GOARCH) go build -trimpath -ldflags '-s -w' -o ${srcdir}/1Panel-${pkgver//_/-}/build/1panel ${srcdir}/1Panel-${pkgver//_/-}/cmd/server/main.go
+    CGO_ENABLED=0 GOOS=linux GOARCH=$(go env GOARCH) go build -trimpath -ldflags '-s -w' -o "${srcdir}/1Panel-${pkgver}/build/1panel-core" "${srcdir}/1Panel-${pkgver}/core/cmd/server/main.go"
 }
 
 package() {
-    install -vDm 755 ${srcdir}/1Panel-${pkgver//_/-}/build/1panel ${pkgdir}/usr/bin/1panel
+    install -vDm 755 ${srcdir}/1Panel-${pkgver//_/-}/build/1panel-core ${pkgdir}/usr/bin/1panel
     install -vDm 644 ${srcdir}/1panel.service -t ${pkgdir}/usr/lib/systemd/system
     install -vDm 755 ${srcdir}/1pctl ${pkgdir}/usr/bin/1pctl
     install -vdm 644 ${pkgdir}/var/lib/1p/1panel
