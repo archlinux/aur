@@ -1,8 +1,8 @@
 # Maintainer: lilikoi <jamilbio20@gmail.com>
 pkgname='chatgpt.sh'
-pkgver=0.132.4
+pkgver=0.133
 pkgrel=1
-_commit=6f170d8860201a92dd9a1b8b1c0d0d20eed7bf2f
+_commit=c3d3d015f08583303de2d2183401612ad45d3125
 pkgdesc="Wrapper for ChatGPT, STT, and TTS. Features Ollama, Gemini, Anthropic, and more"
 url='https://gitlab.com/fenixdragao/shellchatgpt'
 arch=('any')
@@ -31,10 +31,10 @@ package() {
 	install -Dm644 "man/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 	install -Dm644 "man/${pkgname}.txt" "$pkgdir/usr/share/doc/${pkgname}/${pkgname}.txt"
 	install -Dm644 "man/${pkgname}.html" "$pkgdir/usr/share/doc/${pkgname}/${pkgname}.html"
+	install -Dm644 "man/README.md" "$pkgdir/usr/share/doc/${pkgname}/${pkgname}.md"
+	install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 ".chatgpt.conf" "$pkgdir/usr/share/doc/${pkgname}/chatgpt.conf"
 	install -Dm644 "comp/bash/${pkgname}" "$pkgdir/usr/share/bash-completion/completions/${pkgname}"
 	install -Dm644 "comp/zsh/_${pkgname}" "$pkgdir/usr/share/zsh/site-functions/_${pkgname}"
-	install -Dm644 "man/README.md" "$pkgdir/usr/share/doc/${pkgname}/${pkgname}.md"
-	install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
 	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
