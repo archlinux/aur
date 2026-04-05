@@ -54,7 +54,7 @@ pkgbase = lichtfeld-studio-git
 	source = lichtfeld-studio.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 761474854ec2854192f65095d799bf735fca6a9a1b24517e1d3b5edf43b92a65
+	sha256sums = 19babf0f56be6458f0eacd7b28ff64d10e4eed137f2a19c05c45e5be28e0cf08
 	sha256sums = a07642f575ad454ef6783e0a49d03afc96cc7df14d82db7a9de2ccad045fde65
 
 pkgname = lichtfeld-studio-git
