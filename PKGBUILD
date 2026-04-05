@@ -5,7 +5,6 @@
 # Contributor: boscowitch <boscowitch@boscowitch.de>
 
 _pkgname=coreutils
-_commit=42cadf5b7915523e77ae43b5cc9fa74e0def72c6
 
 pkgname=advcpmv
 pkgver=9.5
@@ -20,9 +19,9 @@ depends=('glibc' 'acl' 'attr')
 provides=('acp' 'amv' 'advcp' 'advmv' 'cpg' 'mvg')
 
 source=(
-  "https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"
-  "https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz.sig"
-  "${pkgname}-${pkgver}-${pkgrel}.patch::https://raw.githubusercontent.com/jarun/advcpmv/${_commit}/advcpmv-0.9-${pkgver}.patch"
+  "mirror://gnu/coreutils/coreutils-$pkgver.tar.xz"
+  "mirror://gnu/coreutils/coreutils-$pkgver.tar.xz.sig"
+  "advcpmv-9.5-2.patch"
 )
 
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9')
@@ -33,7 +32,7 @@ sha256sums=('cd328edeac92f6a665de9f323c93b712af1858bc2e0d88f3f7100469470a1b8a'
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.patch"
+  patch -Np1 -i "${srcdir}/advcpmv-9.5-2.patch"
 }
 
 build() {
