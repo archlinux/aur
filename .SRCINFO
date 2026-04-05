@@ -1,6 +1,6 @@
 pkgbase = solian
 	pkgdesc = Next Generation Network Center
-	pkgver = 3.6.0+179
+	pkgver = 3.7.0+197
 	pkgrel = 1
 	url = https://solsynth.dev
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = solian
 	conflicts = solian-bin
 	conflicts = solian-bin-git
 	options = !debug
-	source = solian-3.6.0+179.tar.gz::https://github.com/Solsynth/Solian/archive/refs/tags/3.6.0+179.tar.gz
-	sha256sums = dce7d3398f345efb0994021a7a670ae610cb118d9301f28859a1733338db5c99
+	source = solian-3.7.0+197.tar.gz::https://github.com/Solsynth/Solian/archive/refs/tags/3.7.0+197.tar.gz
+	sha256sums = d9ba108cd1c9a474ce3ab55be1e9567bece14d9e9a08ba9bf8dae851b7beb62e
 
 pkgname = solian
