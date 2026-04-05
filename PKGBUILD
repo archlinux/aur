@@ -1,7 +1,7 @@
 # Maintainer: Prabhat Kumar <hi@prbhtkumr.xyz>
 pkgname=gaur-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful, interactive TUI for Arch Linux package management (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/prbhtkumr/gaur"
