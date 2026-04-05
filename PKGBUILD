@@ -54,11 +54,9 @@ conflicts=('lichtfeld-studio')
 options=(!lto !debug)  # !lto: CUDA gcc-14 can't link GCC 15 LTO; !debug: mixed vcpkg debug info unusable
 source=("${pkgname}::git+https://github.com/MrNeRF/LichtFeld-Studio.git"
         'vcpkg::git+https://github.com/microsoft/vcpkg.git'
-        'python-finalize-before-viewer-reset.patch'
         'lichtfeld-studio.desktop')
 sha256sums=('SKIP'
             'SKIP'
-            '19babf0f56be6458f0eacd7b28ff64d10e4eed137f2a19c05c45e5be28e0cf08'
             'a07642f575ad454ef6783e0a49d03afc96cc7df14d82db7a9de2ccad045fde65')
 
 pkgver() {
@@ -86,8 +84,6 @@ set(VCPKG_BUILD_TYPE release)
 set(VCPKG_C_FLAGS "-ffile-prefix-map=${srcdir}/=")
 set(VCPKG_CXX_FLAGS "-ffile-prefix-map=${srcdir}/=")
 EOF
-
-    patch -Np1 -i "$srcdir/python-finalize-before-viewer-reset.patch"
 
     # Remove $srcdir reference from binary (PROJECT_ROOT_PATH is a dev fallback;
     # production path resolution uses exe/../share/LichtFeld-Studio/ which works with FHS)
