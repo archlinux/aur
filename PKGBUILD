@@ -1,7 +1,7 @@
 # Maintainer: aloy555 <hltss1347@gmail.com>
 pkgname=music-cli
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A small tool to download youtube music."
 arch=('any')
 url="https://aur.archlinux.org/packages/music-cli"

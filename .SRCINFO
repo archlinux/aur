@@ -1,7 +1,7 @@
 pkgbase = music-cli
 	pkgdesc = A small tool to download youtube music.
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://aur.archlinux.org/packages/music-cli
 	arch = any
 	license = MIT
