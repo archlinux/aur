@@ -1,4 +1,5 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=licensee
 pkgver=9.18.0
