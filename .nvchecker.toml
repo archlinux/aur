@@ -1,0 +1,3 @@
+[perl-catalyst-action-renderview]
+source = "cpan"
+cpan = "Catalyst-Action-RenderView"
