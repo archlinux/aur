@@ -1,5 +1,5 @@
 pkgname=oxmgr-bin
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Lightweight cross-platform process manager"
 arch=('x86_64' 'aarch64')
@@ -19,10 +19,10 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/Vladimir-Urik/OxMgr/v${pkgver}/LICENSE"
 )
 sha256sums_x86_64=(
-  'ce451246ccf3f01b7c5a9ad9d3bc776b0a17f61cb2851b247e2793b80979a671'
+  '043fd2f1d3e273451b008e6e38fd8b031ca60e2053b196f43bda49d38b2798d1'
 )
 sha256sums_aarch64=(
-  '9c51510fca2b185989d7407ecff493ca69b1c7b8c63a15e61b3fd25f78ad1be5'
+  '46842152a23ccf4eb428e0b5c91435622935b3b578eed14c07eb3f84fdf3208b'
 )
 sha256sums=(
   'aee235df1ebced77a16a1c5b18e341a89f688085001ccaf4932f9b0f48938282'
