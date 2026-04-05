@@ -1,9 +1,13 @@
 #!/bin/bash
-VERSION="V1.7.3"
+VERSION="V1.7.4"
 
 case "$1" in
     -v)
         echo "$VERSION"
+        ;;
+    -crdts)
+        echo "Creator: Spaceship"
+        echo "Discord: https://discord.gg/uCDMuqfSeX"
         ;;
     -mkserv)
         DIR=$2
