@@ -1,0 +1,13 @@
+pkgbase = humble-cli
+	pkgdesc = The missing CLI for downloading your Humble Bundle purchases
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://github.com/smbl64/humble-cli
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/smbl64/humble-cli#tag=v0.23.0
+	b2sums = f559bbe1f336d56b9921a1c966cbca7feebb9be3109f577ff6b293dd2b8e30634d7cf59c1ff80d08b029bc677ac094fe22b1a2cedf0f54b62342617c4cf69656
+
+pkgname = humble-cli
