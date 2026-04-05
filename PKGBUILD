@@ -1,6 +1,6 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 pkgname=mdns-browser-bin
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="A cross platform mDNS browsing app written in Rust using tauri and leptos "
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 conflicts=('mdns-browser')
 source_x86_64=("https://github.com/hrzlgnm/mdns-browser/releases/download/mdns-browser-v$pkgver/mdns-browser_${pkgver}_amd64.deb" "https://github.com/hrzlgnm/mdns-browser/releases/download/mdns-browser-v$pkgver/mdns-browser_linux_x64")
-sha256sums_x86_64=('6b594c8a91b779a6c57f9125bf876824249ca7be4eea967bb19590fc30fd468b' '7feb615e8da763e0f1bedf053d8b6a24ed713bba582a5a87bb5abfc2638c3f4b')
+sha256sums_x86_64=('f348d69109863db6badbc21715ebd893529884e604c831a37481760f51dddc36' '30623568bdd8e04b7c9535506b496c95d85ec072a5b1207bf84679d9c1f35d3b')
 package() {
     tar -xz -f data.tar.gz -C "${pkgdir}"
     install -Dm755 mdns-browser_linux_x64 "${pkgdir}/usr/bin/mdns-browser"
