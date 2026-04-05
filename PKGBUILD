@@ -1,8 +1,8 @@
-# Maintainer: guglovich <jinseoyeon@archlinux>
-# Created with assistance from Claude (Anthropic)
+# Maintainer: guglovich <guglovich164@gmail.com>
+# Created with assistance from Qwen 3.6 (Alibaba).
 
 pkgname=wg-portal
-pkgver=2.2.1
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Web-based WireGuard VPN configuration portal with user management"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ source=(
     "config.yml"
 )
 b2sums=(
-    'e661e33662d65b6a326151f97761911eb6f424069560422aa2eb2d45cfd5d0475703018a17ca2dcb43010adb74c70c402994c7a9f7cfe4db42c59303e3427c1d'
+    '6a0c9f49fcb9aa5cc6e5177889c15b23671db73dbdf43c65670ebbbcd462d8f27dcb4e4bf30260b9adb2f8b066e8987d38c55d6c24b592b4bbc86f4787c94c59'
     '894b53b5e5a059f49340c7e470f3b4a1355c1545b7fe1bb86e2a026fcbf81802fdae6ba24200c3154a168c9899b498e3375730f5412f65e9967c020c908e604a'
     '560839a9344c23531d5e94faeb40cb793275254175c43b5f66e2d980ce7a3a2cd7a26df8f62e6353496ceca6dd7dd4dbde7be9daaa085094b61b9f6fee91d849'
 )
