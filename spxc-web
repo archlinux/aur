@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.6.9"
+VERSION="V1.7.0"
 
 case "$1" in
     -mkserv)
