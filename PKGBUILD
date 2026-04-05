@@ -1,49 +1,61 @@
-# Maintainer: C. Dominik Bódi <domimik dot bodi at gmx dot de>
-# Generator  : CPANPLUS::Dist::Arch 1.32
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: C. Dominik Bódi <domimik dot bodi at gmx dot de>
 
-pkgname='perl-bareword-filehandles'
-pkgver='0.006'
-pkgrel='1'
-pkgdesc="disables bareword filehandles"
-arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+_author=ILMARI
+_dist=bareword-filehandles
+pkgname=perl-${_dist@L}
+pkgver=0.007
+pkgrel=1
+pkgdesc='disables bareword filehandles'
+arch=('x86_64')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-b-hooks-op-check'
+    'perl-if'
+    'perl-xsloader'
+    'perl>=5.8.1'
+)
+makedepends=(
+    'perl-extutils-depends'
+    'perl-extutils-makemaker'
+    'perl-test-simple'
+)
+checkdepends=(
+    'perl-extutils-makemaker'
+    'perl-pathtools'
+    'perl-test-simple'
+)
+optdepends=('perl-cpan-meta')
 options=('!emptydirs')
-depends=('perl-b-hooks-op-check>=0'
-	 'perl>=5.12.0')
-makedepends=('perl-extutils-depends')
-url='https://metacpan.org/release/bareword-filehandles'
-source=('http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/bareword-filehandles-0.006.tar.gz')
-sha512sums=('73cf85f35d10d13d4ad3be471e30cce0a19a899a7c4d033d2202d815dae8e30aa54b2ad7923dba6d798db1c49d2dcbc7c4f72b2d3f1f08e6e009700682d4e65e')
-_distdir="bareword-filehandles-0.006"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('4134533716d87af8fff56e250c488ad06df0a7bff48e7cf7de63ff6bc8d9c17f')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
