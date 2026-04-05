@@ -2,6 +2,7 @@
 # Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
 : "${MAKEPKG_MATLAB_PREFIX:=/opt}"
+: "${MAKEPKG_MATLAB_ROOT:=${MAKEPKG_MATLAB_PREFIX}/MATLAB}"
 
 _name="matlabengine"
 pkgname="python-${_name}"
@@ -53,12 +54,12 @@ prepare() {
   patch -Np1 -i "${srcdir}/${pkgname}_python3.12_syntax_warning.patch"
 
   sed -e "s|3.12|${python_version}|g" \
-      -e "s|/usr/local|${MAKEPKG_MATLAB_PREFIX}|g" \
+      -e "s|/usr/local/MATLAB|${MAKEPKG_MATLAB_ROOT}|g" \
       -i 'setup.py'
 }
 
 build() {
-  # export LD_LIBRARY_PATH="${MAKEPKG_MATLAB_PREFIX}/MATLAB/${_release}/bin/glnxa64:${LD_LIBRARY_PATH}"
+  # export LD_LIBRARY_PATH="${MAKEPKG_MATLAB_ROOT}/${_release}/bin/glnxa64:${LD_LIBRARY_PATH}"
 
   cd "${srcdir}/${_pkgsrc}"
   python -m build --wheel --no-isolation
