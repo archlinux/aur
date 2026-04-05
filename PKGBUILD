@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
 url="https://github.com/MrNeRF/LichtFeld-Studio"
@@ -23,9 +23,8 @@ depends=(
     'openimageio'
     'onetbb'
     'openssl'
-    'python'
-    'python-packaging'
-    'python-tomli'
+    'python312'
+    'python312-packaging'
     'sdl3'
     'spdlog'
 )
@@ -35,13 +34,17 @@ makedepends=(
     'automake'
     'cmake>=3.30'
     'curl'
+    'git'
     'glm'
     'libtool'
+    'nanobind'
     'nasm'
     'ninja'
     'nlohmann-json'
     'patchelf'
     'pkgconf'
+    'python312'
+    'robin-map'
     'tar'
     'unzip'
     'zip'
@@ -51,10 +54,14 @@ conflicts=('lichtfeld-studio-git')
 options=(!lto !debug)  # !lto: CUDA gcc-14 can't link GCC 15 LTO; !debug: mixed vcpkg debug info unusable
 _libvtermcommit=934bc2fbf21800ac3458a499df8820ca5fb45fd3
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MrNeRF/LichtFeld-Studio/archive/refs/tags/v${pkgver}.tar.gz"
+        'vcpkg::git+https://github.com/microsoft/vcpkg.git'
         "libvterm-${_libvtermcommit}.tar.gz::https://github.com/neovim/libvterm/archive/${_libvtermcommit}.tar.gz"
+        'python-finalize-before-viewer-reset.patch'
         'lichtfeld-studio.desktop')
 sha256sums=('8d1c23ea67262f2b0dca5edb0cffc93de69069c51b089986a01370a0468e1b4a'
+            'SKIP'
             'f09525eb2a02679be0eb50bc1c294569e8cbaa4b59fb867d606236de2830045f'
+            '19babf0f56be6458f0eacd7b28ff64d10e4eed137f2a19c05c45e5be28e0cf08'
             'a07642f575ad454ef6783e0a49d03afc96cc7df14d82db7a9de2ccad045fde65')
 
 latestver() {
@@ -70,10 +77,12 @@ prepare() {
     rm -rf external/libvterm
     cp -a "$srcdir/libvterm-${_libvtermcommit}" external/libvterm
 
-    # Bootstrap vcpkg for deps without system equivalents
-    if [[ ! -d vcpkg ]]; then
-        git clone https://github.com/microsoft/vcpkg.git
-    fi
+    # Bootstrap vcpkg (makepkg manages clone/fetch via source array).
+    # Copy instead of symlink: bootstrap downloads binary to vcpkg/vcpkg
+    # which collides with the symlink target path.
+    rm -rf vcpkg
+    cp -a "$srcdir/vcpkg" vcpkg
+    rm -f vcpkg/vcpkg  # remove stale binary/symlink so bootstrap can write fresh
     ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
 
     # Skip vcpkg debug builds (we only use release libs);
@@ -86,6 +95,8 @@ EOF
 
     # Fix vendored zep missing <cstdint> for GCC 15
     sed -i '5i #include <cstdint>' external/zep/include/zep/glyph_iterator.h
+
+    patch -Np1 -i "$srcdir/python-finalize-before-viewer-reset.patch"
 
     # Remove $srcdir reference from binary (PROJECT_ROOT_PATH is a dev fallback;
     # production path resolution uses exe/../share/LichtFeld-Studio/ which works with FHS)
@@ -100,12 +111,14 @@ EOF
     sed -i '/SHADER_PATH="\${RENDERING_BUILD_RESOURCE_DIR}/d;
             /RENDERING_SOURCE_SHADER_PATH="\${RENDERING_SOURCE_RESOURCE_DIR}/d' \
         src/rendering/CMakeLists.txt
-    sed -i '/LFS_PYTHON_EXECUTABLE="\${Python_EXECUTABLE}"/d' \
+    # Use the packaged interpreter path instead of whatever build-local Python
+    # path CMake resolved.
+    sed -i 's|LFS_PYTHON_EXECUTABLE="\${Python_EXECUTABLE}"|LFS_PYTHON_EXECUTABLE="/usr/bin/python3.12"|' \
         src/python/CMakeLists.txt
 
     # Trim vcpkg.json to only deps without system equivalents.
     # Everything else comes from Arch packages (faster build, smaller footprint).
-    python3 -c "
+    python3.12 -c "
 import json
 with open('vcpkg.json') as f:
     cfg = json.load(f)
@@ -116,8 +129,6 @@ keep = {
     'implot',             # must match vcpkg imgui
     'glad',               # Arch package is generator only
     'rmlui',              # AUR package lacks SVG feature
-    'python3',            # embedded interpreter, version-sensitive
-    'nanobind',           # must match vcpkg python version
     'args',               # tiny, no Arch package
     'nativefiledialog-extended',  # no Arch package
     'usd',                # OpenUSD, no Arch package
@@ -139,6 +150,9 @@ build() {
     export VCPKG_ROOT="$srcdir/LichtFeld-Studio-${pkgver}/vcpkg"
     export PATH="/opt/cuda/bin:$PATH"
 
+    local _nanobind_dir
+    _nanobind_dir=$(dirname "$(readlink -f /usr/lib/cmake/nanobind/nanobind-config.cmake)")
+
     cmake -B build \
         -DCUDAToolkit_ROOT=/opt/cuda \
         -DCMAKE_BUILD_TYPE=Release \
@@ -149,7 +163,12 @@ build() {
         -DCMAKE_CUDA_FLAGS="-Xcompiler=-ffile-prefix-map=${srcdir}/=" \
         -DBUILD_CUDA_PTX_ONLY=ON \
         -DBUILD_CUDA_MIN_SM=75 \
+        -DBUILD_PYTHON_STUBS=OFF \
         -DBUILD_TESTS=OFF \
+        -DPython_EXECUTABLE=/usr/bin/python3.12 \
+        -DPython_ROOT_DIR=/usr \
+        -DPython_FIND_STRATEGY=LOCATION \
+        -Dnanobind_DIR="${_nanobind_dir}" \
         -G Ninja
 
     cmake --build build
@@ -163,10 +182,10 @@ package() {
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
     rm -f "$pkgdir/usr/LICENSE"
 
-    # Python modules installed to prefix root instead of /usr/lib/python/
+    # Upstream resolves embedded Python modules from /usr/lib/python.
     if [[ -d "$pkgdir/python" ]]; then
-        mkdir -p "$pkgdir/usr/lib/lichtfeld-studio"
-        mv "$pkgdir/python" "$pkgdir/usr/lib/lichtfeld-studio/python"
+        install -d "$pkgdir/usr/lib"
+        mv "$pkgdir/python" "$pkgdir/usr/lib/python"
     fi
 
     # liblfs_rmlui.so is built but not installed by cmake
@@ -189,8 +208,9 @@ package() {
         if readelf -d "$f" 2>/dev/null | grep -q RUNPATH; then
             local _rpath
             _rpath=$(patchelf --print-rpath "$f" 2>/dev/null) || continue
-            # Replace srcdir vcpkg paths, keep $ORIGIN and /opt/cuda
-            _rpath=$(echo "$_rpath" | tr ':' '\n' | grep -v "$srcdir" | paste -sd:)
+            # Replace build-tree and unnecessary absolute CUDA paths; ldconfig
+            # already exposes CUDA libs from the system package.
+            _rpath=$(echo "$_rpath" | tr ':' '\n' | grep -v "$srcdir" | grep -v '^/opt/cuda/' | paste -sd:)
             [[ -z "$_rpath" ]] && _rpath="/usr/lib"
             patchelf --set-rpath "$_rpath" "$f"
         fi
