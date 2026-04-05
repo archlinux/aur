@@ -1,19 +1,23 @@
 pkgbase = telemt
 	pkgdesc = Telemt - MTProxy on Rust + Tokio
-	pkgver = 3.3.35
+	pkgver = 3.3.8
 	pkgrel = 1
 	url = https://github.com/telemt/telemt
 	arch = x86_64
 	arch = aarch64
-	license = custom:TELEMT Public License 3
+	license = custom:TELEMT UL 1
 	makedepends = cargo
 	optdepends = nginx: when using nginx as reverse proxy
 	optdepends = caddy: when using caddy as reverse proxy
 	options = !lto
 	backup = etc/telemt/telemt.toml
-	source = telemt-3.3.35.tar.gz::https://github.com/telemt/telemt/archive/refs/tags/3.3.35.tar.gz
-	source = telemt.toml.sample
-	sha256sums = e244859fdbd2af0b0f70c1afd86533ae6e163210f20672f0ff54a35ec20a4a3e
-	sha256sums = 23823b23d34c74660b8ef10839fa08b2d177407f910f4df5ad4838ff3e8758e3
+	source = telemt-3.3.8::git+https://github.com/telemt/telemt#tag=3.3.8
+	source = system-user-telemt.conf
+	source = telemt.service
+	source = tmpfiles-telemt.conf
+	sha256sums = 61862bfa43982db366f957979b57b011f1ee6ce0fb2061b6e36ab9933314f046
+	sha256sums = 24a9a6c5804d970753641643eaa8f4514886892f3e415cf06fe6d693cda353fb
+	sha256sums = 5f0c01dd2395bae6fdb86dd84dc4db5c677b339627b46abd3ca7549c92305bf0
+	sha256sums = 2caa1b711c8d16cbdb4276bde9160b113f4c0e4d360953b14aa464a55bfa7a3b
 
 pkgname = telemt
