@@ -1,6 +1,6 @@
 # Maintainer: Haseeb Khalid <haseeb.k.khalid@gmail.com>
 pkgname=python-velocirag
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Lightning-fast RAG for AI agents. ONNX-powered, 4-layer fusion, MCP server. No PyTorch."
 arch=('any')
