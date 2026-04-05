@@ -19,8 +19,8 @@ depends=('glibc' 'acl' 'attr')
 provides=('acp' 'amv' 'advcp' 'advmv' 'cpg' 'mvg')
 
 source=(
-  "mirror://gnu/coreutils/coreutils-$pkgver.tar.xz"
-  "mirror://gnu/coreutils/coreutils-$pkgver.tar.xz.sig"
+  "https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"
+  "https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz.sig"
   "advcpmv-9.5-2.patch"
 )
 
