@@ -3,7 +3,7 @@ pkgname=famistudio
 _pkgname=FamiStudio
 _NETver=8.0
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
 arch=(x86_64)
@@ -80,6 +80,8 @@ package() {
     rm ${_pkgname}/bin/Release/net$_NETver/librtmidi.so
 
     cp -r "Setup/Demo Songs" ${_pkgname}/bin/Release/net$_NETver/* \
+        "$pkgdir/usr/share/${pkgname}"
+    cp -r "Setup/Demo Instruments" ${_pkgname}/bin/Release/net$_NETver/* \
         "$pkgdir/usr/share/${pkgname}"
 
     cp LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
