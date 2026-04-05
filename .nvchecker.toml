@@ -1,0 +1,3 @@
+[perl-moosex-emulate-class-accessor-fast]
+source = "cpan"
+cpan = "MooseX-Emulate-Class-Accessor-Fast"
