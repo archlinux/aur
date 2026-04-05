@@ -1,10 +1,11 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contrubutor: Anton Kudelin <kudelin at protonmail dot com>
 # Contrubutor: farwayer <farwayer@gmail.com>
 
 pkgname=ruby-dotenv
 _pkgname=${pkgname#ruby-}
-pkgver=3.1.8
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Loads environment variables from .env"
 arch=(any)
@@ -19,7 +20,7 @@ checkdepends=(ruby-rspec)
 options=(!emptydirs)
 install=ruby-dotenv.install
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('edf25e082ec35726df6d768a544972b27b9a459cbf57cd234b24e8334ec81bd5')
+sha256sums=('6fa13b720fbaca97a6f8f93b8ffba65d1f43ffa8396f5535d36bafa25f86ec39')
 
 _archive="$_pkgname"
 

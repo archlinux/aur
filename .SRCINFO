@@ -1,6 +1,6 @@
 pkgbase = ruby-dotenv
 	pkgdesc = Loads environment variables from .env
-	pkgver = 3.1.8
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/bkeepers/dotenv
 	install = ruby-dotenv.install
@@ -11,7 +11,7 @@ pkgbase = ruby-dotenv
 	makedepends = rubygems
 	depends = ruby
 	options = !emptydirs
-	source = git+https://github.com/bkeepers/dotenv.git#tag=v3.1.8
-	sha256sums = edf25e082ec35726df6d768a544972b27b9a459cbf57cd234b24e8334ec81bd5
+	source = git+https://github.com/bkeepers/dotenv.git#tag=v3.2.0
+	sha256sums = 6fa13b720fbaca97a6f8f93b8ffba65d1f43ffa8396f5535d36bafa25f86ec39
 
 pkgname = ruby-dotenv

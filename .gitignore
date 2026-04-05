@@ -1,6 +1,10 @@
-*
+# Ignore everything
+/*
+
+# But not these files...
 !.gitignore
-!.nvchecker.toml
-!.SRCINFO
 !PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!LICENSE
 !ruby-dotenv.install
