@@ -1,0 +1,3 @@
+[perl-moosex-getopt]
+source = "cpan"
+cpan = "MooseX-Getopt"
