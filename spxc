@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.7.0"
+VERSION="V1.7.1"
 
 case "$1" in
     -v)
@@ -18,6 +18,22 @@ case "$1" in
         [ "$NUMBERS" == "yes" ] && CHARSET="${CHARSET}0-9"
         cat /dev/urandom | tr -dc "$CHARSET" | fold -w "$LENGTH" | head -n 1
         echo
+        ;;
+    -bckup)
+        TARGET=$2
+        if [ -z "$TARGET" ]; then echo "Usage: spxc -bckup [directory]"; exit 1; fi
+        mkdir -p "$TARGET"
+        cp /usr/bin/spxc "$TARGET"/
+        [ -f /usr/bin/spxc-web ] && cp /usr/bin/spxc-web "$TARGET"/
+        echo "Backup created in $TARGET."
+        ;;
+    -rvbckup)
+        SOURCE=$2
+        if [ -z "$SOURCE" ]; then echo "Usage: spxc -rvbckup [directory]"; exit 1; fi
+        if [ ! -d "$SOURCE" ]; then echo "Backup directory not found."; exit 1; fi
+        sudo cp "$SOURCE"/spxc /usr/bin/
+        [ -f "$SOURCE"/spxc-web ] && sudo cp "$SOURCE"/spxc-web /usr/bin/
+        echo "Backup restored."
         ;;
     -pcheck)
         PORT=$2
@@ -91,6 +107,8 @@ case "$1" in
         echo "  -sysfo                         Show detailed system information"
         echo "  -pcheck [port]                 Check and kill process using a specific port"
         echo "  -gpass [len] [spec] [num]      Generate a password (e.g., -gpass 16 yes yes)"
+        echo "  -bckup [directory]             Backup spxc suite to a directory"
+        echo "  -rvbckup [directory]           Restore spxc suite from a directory"
         echo "  -caupd                         Clear yay cache and update spxc-core (and spxc-webtools if installed)"
         echo ""
         echo "Available commands (Requires spxc-webtools):"
