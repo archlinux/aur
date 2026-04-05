@@ -9,6 +9,6 @@ pkgbase = franz-agent
 	makedepends = go
 	makedepends = git
 	source = franz-agent-0.1.1.tar.gz::https://github.com/marang/franz-agent/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 90c9dfbee901839bb83056fbe72ce9e77e8d1ffaeaa7274c3f7106e2beea1a4e
+	sha256sums = ea395b58323b47efbf9342f9cfa9dde73793f86ab7787f22c4f425e378d0affa
 
 pkgname = franz-agent
