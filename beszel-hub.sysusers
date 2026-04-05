@@ -1,3 +1,2 @@
-u beszel-hub - "beszel hub" /var/lib/beszel-hub
-g beszel-hub  -
-m beszel-hub beszel-hub
+u beszel - "Beszel Agent" /var/lib/beszel-agent
+m beszel disk

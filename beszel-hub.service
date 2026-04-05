@@ -5,9 +5,11 @@ After=network.target
 [Service]
 EnvironmentFile=/etc/conf.d/beszel-hub
 ExecStart=/usr/bin/beszel serve --dir /var/lib/beszel-hub --http "${LISTEN_HOST}:${LISTEN_PORT}"
-User=beszel-hub
-Restart=always
+User=beszel
+Group=beszel
+Restart=on-failure
 RestartSec=5
+StateDirectory=beszel-hub
 
 [Install]
 WantedBy=multi-user.target
