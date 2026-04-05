@@ -12,6 +12,7 @@ depends=(
   python-aiohttp
   python-blake3
   python-cachetools
+  python-cbor2
   python-cloudpickle
   python-diskcache
   python-einops
@@ -61,7 +62,7 @@ optdepends=(
   'python-outlines: guided text generation'
   'python-lark: parsing toolkit'
   'python-typing_extensions: typing hints'
-  'python-compressed-tensors: required to load compressed tensor files'
+  'python-compressed-tensors: required to load compressed tensor files (eg. for GPT OSS)'
   'python-torchaudio: required for image processor of minicpm-o-2.6'
   'python-datasets: tools to benchmark scripts'
 #not currently in aur
