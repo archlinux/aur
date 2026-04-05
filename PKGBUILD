@@ -2,7 +2,7 @@
 
 pkgname=friendnet-client-bin
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="FriendNet Client"
 arch=("x86_64")
 url="https://github.com/termermc/FriendNet"
@@ -22,7 +22,7 @@ sha256sums=('c9750644d7977eeead26c140fee6fb11a1a8dc1f18d4592e42320e6fbab8a213')
 package() {
   cd "$srcdir"
 
-  ar x friendnet-client-linux_amd64.deb
+  ar x friendnet-client-linux_amd64-$pkgver.deb
 
   tar -xzf data.tar.gz -C "$pkgdir"
 
