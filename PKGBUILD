@@ -1,6 +1,6 @@
 # Maintainer: karasevuy <eganov2006@gmail.com>
 pkgname=wrain-bin
-pkgver=0.1.0
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="GPU accelerated rain wallpaper for Wayland (Pre-compiled binary)"
 arch=('x86_64')
