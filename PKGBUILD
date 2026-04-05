@@ -1,6 +1,6 @@
 # Maintainer: Erik <kocierik@github>
 pkgname=lazyansible-bin
-pkgver=1.0.2
+pkgver=X.Y.Z
 pkgrel=1
 pkgdesc="A lazy TUI for Ansible — browse inventory, run playbooks, stream logs"
 arch=('x86_64' 'aarch64')
