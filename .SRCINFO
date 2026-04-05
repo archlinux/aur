@@ -1,6 +1,6 @@
 pkgbase = datomic-bin
 	pkgdesc = A database of flexible, time-based facts, supporting queries and joins, with elastic scalability and ACID transactions.
-	pkgver = 1.0.7394
+	pkgver = 1.0.7556
 	pkgrel = 1
 	url = https://www.datomic.com/
 	install = datomic.install
@@ -10,9 +10,9 @@ pkgbase = datomic-bin
 	provides = datomic
 	conflicts = datomic
 	replaces = datomic
-	source = datomic-1.0.7394.zip::https://datomic-pro-downloads.s3.amazonaws.com/1.0.7394/datomic-pro-1.0.7394.zip
+	source = datomic-1.0.7556.zip::https://datomic-pro-downloads.s3.amazonaws.com/1.0.7556/datomic-pro-1.0.7556.zip
 	source = transactor.properties
-	sha256sums = 8e3a6334dfc728c1c431dccc537dc88a9d2baf70f29bad5438df9d7c8c7146ae
+	sha256sums = c4849387ef016d43f951c581950ecd522898b581bcdc0e9ccc12cc4028c06c50
 	sha256sums = e622f80994c4c21e52d59f8724d06fc6672c25479224619d3cc172df32fe31de
 
 pkgname = datomic-bin
