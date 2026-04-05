@@ -6,8 +6,8 @@
 
 _pkgname=stellarium
 pkgname=${_pkgname}-lite
-pkgver=25.4
-pkgrel=2
+pkgver=26.1
+pkgrel=1
 pkgdesc="Stellarium without GPS and Telescope Control support (no gpsd and libindi dependencies)"
 arch=(x86_64)
 url="https://${_pkgname}.org"
@@ -21,8 +21,8 @@ _patches=()
 source=(https://github.com/Stellarium/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz{,.asc}
         ${_patches[@]/#/https://github.com/Stellarium/stellarium/commit/})
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
-sha256sums=('43818763fa829b0b35058122247e7e5e450eae8256207f2191b95961ddce9080'
-            'ab04d13ab59934a763a37aa9a274f4badcd59df3988b6ced76341b1ef656dffc')
+sha256sums=('52b4b7fdd7cc905961e51d6ffc27302a88514fef976be6f1b3192c549b9087c3'
+            'SKIP')
 
 prepare() {
     cd ${_pkgname}-${pkgver}
