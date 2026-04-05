@@ -1,0 +1,22 @@
+pkgbase = metrics-monkey
+	pkgdesc = Fast, simple CLI for HTTP benchmarking
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/AmalChandru/metrics-monkey
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = nodejs
+	provides = metrics-monkey
+	replaces = nodejs-metrics-monkey
+	noextract = metrics-monkey-1.0.2.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = metrics-monkey-1.0.2.tgz::https://registry.npmjs.org/metrics-monkey/-/metrics-monkey-1.0.2.tgz
+	b2sums = 4c64bd5ff85ec9da828e46de492c7a3404a37d098c42c5feff0dbe9010a2ea238177b13fff46f6a9b09ce5ee9b77845ac0e47cfc550d5546f0d341559fd83627
+
+pkgname = metrics-monkey

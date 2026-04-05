@@ -1,0 +1,3 @@
+[metrics-monkey]
+source = "npm"
+npm = "metrics-monkey"
