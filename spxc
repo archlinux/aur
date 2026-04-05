@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V0.3"
+VERSION="V0.3.1"
 
 case "$1" in
     -v)
@@ -35,8 +35,18 @@ case "$1" in
 
         mkdir -p "$DIR"
         
-        # Create a cool dark-themed index.html
-        cat > "$DIR/index.html" <<EOF
+        CREATE_INDEX=true
+        if [ -f "$DIR/index.html" ]; then
+            echo "index.html already exists in $DIR."
+            read -p "Do you want to override it? (y/N): " choice
+            case "$choice" in
+                y|Y ) CREATE_INDEX=true ;;
+                * ) CREATE_INDEX=false ;;
+            esac
+        fi
+
+        if [ "$CREATE_INDEX" = true ]; then
+            cat > "$DIR/index.html" <<EOF
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,13 +97,18 @@ case "$1" in
     <div class="card">
         <h1>Spxc set up complete</h1>
         <p>Your Python server is running smoothly.</p>
-        <div class="badge">V$VERSION ACTIVE</div>
+        <div class="badge">$VERSION ACTIVE</div>
     </div>
 </body>
 </html>
 EOF
-        echo "Created $DIR/index.html with a cool theme."
+            echo "Created $DIR/index.html"
+        else
+            echo "Skipping index.html creation."
+        fi
+
         echo "Starting server on port $PORT..."
+        echo "Press Ctrl+C to close server"
         cd "$DIR" && python3 -m http.server "$PORT"
         ;;
     --help)
