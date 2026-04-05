@@ -1,0 +1,18 @@
+pkgbase = padctl-bin
+	pkgdesc = HID gamepad daemon — declarative TOML device config, uinput output (prebuilt musl binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/BANANASJIM/padctl
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	depends = systemd
+	provides = padctl
+	conflicts = padctl
+	conflicts = padctl-git
+	source_x86_64 = padctl-v0.1.0-x86_64-linux-musl.tar.gz::https://github.com/BANANASJIM/padctl/releases/download/v0.1.0/padctl-v0.1.0-x86_64-linux-musl.tar.gz
+	sha256sums_x86_64 = e5da277b9887480d85636575f50d76801c659e79b49d6a02b06627fff69ec631
+	source_aarch64 = padctl-v0.1.0-aarch64-linux-musl.tar.gz::https://github.com/BANANASJIM/padctl/releases/download/v0.1.0/padctl-v0.1.0-aarch64-linux-musl.tar.gz
+	sha256sums_aarch64 = 6578a4e742c8084cf74f9268b9bf1cc72b49e2964bfa8cb2f5f57c6d4d9a14e4
+
+pkgname = padctl-bin
