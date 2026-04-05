@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V0.8"
+VERSION="V0.8.1"
 
 case "$1" in
     -v)
@@ -188,7 +188,8 @@ def fetch_resource(target_url, binary=False):
     try:
         req = urllib.request.Request(target_url, headers=headers)
         with urllib.request.urlopen(req) as r:
-            return r.read() if binary else r.read().decode('utf-8')
+            data = r.read()
+            return data if binary else data.decode('utf-8', errors='ignore')
     except:
         return None
 
@@ -222,11 +223,10 @@ def process_page(current_url, save_filename, depth=0):
             if js_content:
                 return f"<script>\n/* Inlined from {js_url} */\n{js_content}\n</script>"
         return tag
-    content = re.sub(r'<script[^>]+src=["\'][^"\']+["\'][^]*>.*?</script>', inline_js, content, flags=re.DOTALL)
+    content = re.sub(r'<script[^>]+src=["\'][^"\']+["\'][^>]*>.*?</script>', inline_js, content, flags=re.DOTALL)
 
     # Handle Links (a tags) and JSON files
     if depth < 1: # Limit recursion depth
-        # Find all local links
         links = re.findall(r'href=["\']([^"\']+)["\']', content)
         for link in links:
             link_url = urllib.parse.urljoin(current_url, link)
@@ -235,6 +235,8 @@ def process_page(current_url, save_filename, depth=0):
             if parsed_link.netloc == base_domain:
                 path = parsed_link.path
                 if not path or path.endswith('/'): path += "index.html"
+                
+                # Check for common web types
                 if not path.endswith(('.html', '.json', '.js', '.css')): path += ".html"
                 
                 local_name = os.path.basename(path)
@@ -260,7 +262,7 @@ def process_page(current_url, save_filename, depth=0):
                 elif link_url in visited:
                     content = content.replace(link, visited[link_url])
 
-    with open(os.path.join(directory, save_filename), "w") as f:
+    with open(os.path.join(directory, save_filename), "w", encoding='utf-8') as f:
         f.write(content)
     return save_filename
 
@@ -270,8 +272,8 @@ EOF
         ;;
     --help)
         echo "Available commands:"
-        echo "  -v                                Show version"
-        echo "  -sysfo                            Show detailed system information"
+        echo "  -v                             Show version"
+        echo "  -sysfo                         Show detailed system information"
         echo "  -mkserv [directory] [port]        Create and start a dark-themed Python server"
         echo "  -rmweb [directory]                Remove all HTML files in a directory after confirmation"
         echo "  -dweb [directory] [URL] [name]    Recursive download of HTML/JSON with inlined CSS/JS"
