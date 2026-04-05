@@ -1,4 +1,4 @@
-# Maintainer: Stephano Cetola <stephanoc@gmail.com>
+# Maintainer: Stephano Cetola <stephano@cetola.net>
 
 pkgbase=linux-mnt-reform-bin
 pkgname=('linux-mnt-reform-bin' 'linux-mnt-reform-bin-headers')
@@ -41,7 +41,7 @@ build() {
 }
 
 package_linux-mnt-reform-bin() {
-  pkgdesc="Linux kernel for MNT Reform (${CARCH})"
+  pkgdesc="Linux kernel for MNT Reform"
   depends=('coreutils' 'dracut' 'kmod' 'cpio')
   optdepends=('linux-mnt-reform-bin-headers: for building modules')
   provides=("linux=${pkgver}")

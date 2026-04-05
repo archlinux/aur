@@ -24,7 +24,7 @@ pkgbase = linux-mnt-reform-bin
 	sha256sums_x86_64 = 594dba8fe8b4a084464b976d4b7c56d363fd5cb94d02fe4b9abc5b145b99122f
 
 pkgname = linux-mnt-reform-bin
-	pkgdesc = Linux kernel for MNT Reform (x86_64)
+	pkgdesc = Linux kernel for MNT Reform
 	install = linux-mnt-reform-bin.install
 	depends = coreutils
 	depends = dracut
