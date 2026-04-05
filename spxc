@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V0.2"
+VERSION="V0.3"
 
 case "$1" in
     -v)
@@ -15,7 +15,6 @@ case "$1" in
         echo "Timezone: $(timedatectl show --property=Timezone --value)"
         echo "Keyboard: $(localectl status | grep 'X11 Layout' | cut -d ':' -f 2 | sed 's/^[ \t]*//')"
         
-        # Battery info (if available)
         if [ -d /sys/class/power_supply/BAT0 ]; then
             capacity=$(cat /sys/class/power_supply/BAT0/capacity)
             status=$(cat /sys/class/power_supply/BAT0/status)
@@ -25,10 +24,83 @@ case "$1" in
         fi
         echo "--------------------------"
         ;;
+    -mkserv)
+        DIR=$2
+        PORT=$3
+        
+        if [ -z "$DIR" ] || [ -z "$PORT" ]; then
+            echo "Usage: spxc -mkserv [directory] [port]"
+            exit 1
+        fi
+
+        mkdir -p "$DIR"
+        
+        # Create a cool dark-themed index.html
+        cat > "$DIR/index.html" <<EOF
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spxc Server</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            border: 1px solid #334155;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            margin: 0;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+        }
+        p { color: #94a3b8; margin-top: 1rem; }
+        .badge {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.5rem 1rem;
+            background: #0ea5e9;
+            color: white;
+            border-radius: 9999px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Spxc set up complete</h1>
+        <p>Your Python server is running smoothly.</p>
+        <div class="badge">V$VERSION ACTIVE</div>
+    </div>
+</body>
+</html>
+EOF
+        echo "Created $DIR/index.html with a cool theme."
+        echo "Starting server on port $PORT..."
+        cd "$DIR" && python3 -m http.server "$PORT"
+        ;;
     --help)
         echo "Available commands:"
-        echo "  -v        Show version"
-        echo "  -sysfo    Show detailed system information"
+        echo "  -v                             Show version"
+        echo "  -sysfo                         Show detailed system information"
+        echo "  -mkserv [directory] [port]     Create and start a dark-themed Python server"
         ;;
     *)
         echo "Usage: spxc --help"
