@@ -1,5 +1,5 @@
 pkgname=spxc-core
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=2
 pkgdesc="Core CLI for spxc: system info and versioning"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('bash' 'util-linux' 'pciutils' 'procps-ng' 'curl' 'systemd')
 provides=('spxc')
 conflicts=('spxc')
 source=("spxc")
-sha256sums=('3fedee127212f09d69f2796eabda7ea657ad42201f60c6c2a92c1fe9828e5c19')
+sha256sums=('82093ac04b81b190cc13a788a059ec3f0b5e0cf8c38108b392428c4e6075ade0')
 
 package() {
     install -Dm755 "${srcdir}/spxc" "${pkgdir}/usr/bin/spxc"

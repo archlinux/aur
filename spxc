@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.6.3"
+VERSION="V1.6.4"
 
 case "$1" in
     -v)
@@ -59,7 +59,7 @@ case "$1" in
         echo "Available commands (Core):"
         echo "  -v                             Show version"
         echo "  -sysfo                         Show detailed system information"
-        echo "  -caupd                         Clear yay cache and update spxc-core (and webtools if installed)"
+        echo "  -caupd                         Clear yay cache and update spxc-core (and spxc-webtools if installed)"
         echo ""
         echo "Available commands (Requires spxc-webtools):"
         echo "  -mkserv [directory] [port]     Create and start a Python server"
