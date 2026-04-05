@@ -1,0 +1,3 @@
+[perl-multidimensional]
+source = "cpan"
+cpan = "multidimensional"
