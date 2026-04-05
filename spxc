@@ -1,9 +1,12 @@
 #!/bin/bash
-VERSION="V1.7.6"
+VERSION="V1.7.7"
 
 case "$1" in
     -v)
-        echo "$VERSION"
+        echo "spxc-core: $VERSION"
+        if command -v spxc-web &> /dev/null; then
+            echo "spxc-webtools: $(spxc-web -v)"
+        fi
         ;;
     -gpass)
         LENGTH=$2
