@@ -1,0 +1,18 @@
+pkgbase = sshping-rs-bin
+	pkgdesc = SSH-based ping that measures interactive character echo latency and file transfer throughput. Pronounced "shipping".
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/TeddyHuang-00/sshping
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sshping
+	options = !debug
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/TeddyHuang-00/sshping/refs/tags/v0.3.1/LICENSE
+	sha256sums = dfe6a1167615268ed336d18cab68e90050311faa7cadc9ccb97de85ef3f7da97
+	source_x86_64 = sshping-rs-bin-x86_64-0.3.1::https://github.com/TeddyHuang-00/sshping/releases/download/v0.3.1/sshping-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 2f2d52760b927d08eef951f156978e5b9824dce311be66f127373de7ab5c2891
+	source_aarch64 = sshping-rs-bin-aarch64-0.3.1::https://github.com/TeddyHuang-00/sshping/releases/download/v0.3.1/sshping-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = b836773bec10e5d58eee7289a8928d4491bf9faef46ef43ecf76d61f59918ea1
+
+pkgname = sshping-rs-bin
