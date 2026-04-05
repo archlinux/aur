@@ -13,6 +13,6 @@ pkgbase = aethertune-bin
 	conflicts = aethertune
 	conflicts = aethertune-git
 	source = aethertune-bin-0.4.2.tar.gz::https://github.com/nevermore23274/AetherTune/releases/download/v0.4.2/AetherTune-v0.4.2-linux-x86_64.tar.gz
-	sha256sums = 4f5e9dcf219411332bf36044d391ef847d29bb80aadcbc24c7e33e64ac035a28
+	sha256sums = 0410d291e252cf91e4eb8ddd22914dbe73d40247821ac7a60b49ee2b10ce91d4
 
 pkgname = aethertune-bin
