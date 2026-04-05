@@ -1,13 +1,14 @@
 pkgbase = owlry-lua
 	pkgdesc = Lua scripting runtime for Owlry — enables user-created Lua plugins
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://somegit.dev/Owlibou/owlry
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = owlry-core
-	source = owlry-lua-1.1.1.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-lua-v1.1.1.tar.gz
-	b2sums = a0e1fa032db8dda8e6bc24457f3c04948129d3f14c1d3e61b8e080340b24f560d43294beb133ad4b1c6eb7942d401108ea91c367b074eaeeefa284e9b2a9dbc8
+	depends = openssl
+	source = owlry-lua-1.1.2.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-lua-v1.1.2.tar.gz
+	b2sums = 42e6221e6e07c629ece1493e7f5feb1b2cb2e77632d1d7779dfbe544bd89a17d77d1839d63e50d71d4f0e0322ca8a1cc39b872101039019bdf08d9bcaeda7603
 
 pkgname = owlry-lua
