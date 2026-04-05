@@ -1,6 +1,6 @@
 pkgbase = gritty
 	pkgdesc = Web Terminal Emulator.
-	pkgver = 10.1.0
+	pkgver = 10.2.0
 	pkgrel = 1
 	url = https://github.com/cloudcmd/gritty
 	changelog = changelog.md
@@ -15,12 +15,12 @@ pkgbase = gritty
 	depends = python
 	provides = gritty
 	replaces = nodejs-gritty
-	noextract = gritty-10.1.0.tgz
+	noextract = gritty-10.2.0.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = gritty-10.1.0.tgz::https://registry.npmjs.org/gritty/-/gritty-10.1.0.tgz
-	b2sums = 3b9493275a160d7b10f4214fec2a0c10bc737ad47682ff7d4661c93709947ba9487aa9f3dcc8d9c1aef366f956bab84c03877952876ae70a7e3b298b5b8880e5
+	source = gritty-10.2.0.tgz::https://registry.npmjs.org/gritty/-/gritty-10.2.0.tgz
+	b2sums = a8819b4bc1aba32b07b814ac49d0dfdbca00c9dd403bc402e170a42fdfbc6bdeb01557bb8fa21f44730907f28ac577957ccd772b2872dc8e19dc699b9b89ea59
 
 pkgname = gritty

@@ -1,3 +1,9 @@
+2026.04.05, v10.2.0
+
+feature:
+- de51ceb gritty: client: fontWeightBold
+- a4072fe gritty: client: background, froground: improve
+
 2026.04.03, v10.1.0
 
 feature:
