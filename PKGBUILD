@@ -1,7 +1,7 @@
 # Maintainer: xanderboy2001 <alexanderechristian@gmail.com>
 
 pkgname=mc-creative-clone
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Copies a Minecraft world and converts it to a creative mode backup"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
   'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xanderboy2001/mc-creative-clone/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('494551aff7b13b7baa7d3adebe64ebc6db9d59dd2ecec55c1290de9b515ba962')
+sha256sums=('818f2ea3771e078e391805d57a66779e6b87afada2c8ff757b5aad2b23fcb52c')
 
 build() {
   cd "$pkgname-$pkgver"

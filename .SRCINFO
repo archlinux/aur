@@ -1,6 +1,6 @@
 pkgbase = mc-creative-clone
 	pkgdesc = Copies a Minecraft world and converts it to a creative mode backup
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/xanderboy2001/mc-creative-clone
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mc-creative-clone
 	depends = python-nbtlib
 	depends = python-questionary
 	depends = python-rich
-	source = mc-creative-clone-0.1.2.tar.gz::https://github.com/xanderboy2001/mc-creative-clone/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 494551aff7b13b7baa7d3adebe64ebc6db9d59dd2ecec55c1290de9b515ba962
+	source = mc-creative-clone-0.2.0.tar.gz::https://github.com/xanderboy2001/mc-creative-clone/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 818f2ea3771e078e391805d57a66779e6b87afada2c8ff757b5aad2b23fcb52c
 
 pkgname = mc-creative-clone
