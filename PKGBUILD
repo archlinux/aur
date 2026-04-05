@@ -1,6 +1,6 @@
 # Maintainer: Mykhailo Aleksieiev <nekohepott@larpdhq.org>
 pkgname=gogofetch-git
-pkgver=r44.197df6d
+pkgver=r45.48a3dc1
 pkgrel=1
 pkgdesc="Fetch written in Go with image support"
 arch=('x86_64')
@@ -38,7 +38,7 @@ package() {
 
     install -d "$pkgdir/usr/share/gogofetch/logos"
 
-    cp -v assets/*.png "$pkgdir/usr/share/gogofetch/logos/"
+    cp -v logos/*.png "$pkgdir/usr/share/gogofetch/logos/"
 
     chmod 755 "$pkgdir/usr/share/gogofetch/logos"
     chmod 644 "$pkgdir/usr/share/gogofetch/logos/"*.png
