@@ -1,0 +1,13 @@
+pkgbase = i2pchat-tui-bin
+	pkgdesc = I2PChat Textual TUI only (official Linux TUI zip, binary)
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/MetanoicArmor/I2PChat
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	source = I2PChat-linux-x86_64-tui-v1.2.3.zip::https://github.com/MetanoicArmor/I2PChat/releases/download/v1.2.3/I2PChat-linux-x86_64-tui-v1.2.3.zip
+	source = icon.png::https://github.com/MetanoicArmor/I2PChat/raw/v1.2.3/icon.png
+	sha256sums = 0ca8558b9f3b6db9c45178b2863c86fa0101fa64a2b8695215b075b37fb37970
+	sha256sums = c49c198bef05e1cf3bf159858acefad100981fb21437e47e2588fcc1e4ad7217
+
+pkgname = i2pchat-tui-bin
