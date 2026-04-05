@@ -1,6 +1,6 @@
 # Maintainer: earch <earch.oer1k at aleeas dot com>
 pkgname=fnf-git
-pkgver=r1.0000000
+pkgver=r375.01a6ca1
 pkgrel=1
 pkgdesc="An interactive fuzzy finder for the terminal (git)"
 arch=('x86_64')
