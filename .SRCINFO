@@ -9,11 +9,9 @@ pkgbase = lssh-bin
 	provides = lssh
 	provides = lscp
 	provides = lsftp
+	provides = lsmon
+	provides = lsshell
 	conflicts = lssh
-	source = LICENSE-0.7.0::https://raw.githubusercontent.com/blacknon/lssh/v0.7.0/LICENSE.md
-	source = README-0.7.0.md::https://raw.githubusercontent.com/blacknon/lssh/v0.7.0/README.md
-	sha256sums = afb11426e09da40a1ae4f8fa17ddcc6b6a52d14df04c29bc5bcd06eb8730624d
-	sha256sums = 60faccbfbd2bee67318de745ca9e8296fb07dc078ac0012cd1695a12a1737580
 	source_x86_64 = https://github.com/blacknon/lssh/releases/download/v0.7.0/lssh_0.7.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = acc2e11452d75af514ed0f2a646437e6b08d91102ec0a1f21c90f9aa188a83e8
 
