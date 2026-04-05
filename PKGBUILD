@@ -67,7 +67,6 @@ optdepends=(
   'python-lark: parsing toolkit'
   'python-mistral-common: mistral tools for opencv'
   'python-msgspec: JSON/MessagePack library with validation'
-  'python-openai: required for openai protocols'
   'python-outlines: guided text generation'
   'python-pillow: required for image processing'
   'python-prometheus_client: Prometheus instrumentation library for Python applications'

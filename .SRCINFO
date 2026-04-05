@@ -54,7 +54,6 @@ pkgbase = python-vllm-cuda
 	optdepends = python-lark: parsing toolkit
 	optdepends = python-mistral-common: mistral tools for opencv
 	optdepends = python-msgspec: JSON/MessagePack library with validation
-	optdepends = python-openai: required for openai protocols
 	optdepends = python-outlines: guided text generation
 	optdepends = python-pillow: required for image processing
 	optdepends = python-prometheus_client: Prometheus instrumentation library for Python applications
