@@ -1,0 +1,13 @@
+pkgbase = spxc-webtools
+	pkgdesc = Web management tools for spxc: Python servers, HTML cleaning, and site bundling
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/spxc-webtools
+	arch = any
+	license = MIT
+	depends = bash
+	depends = python
+	source = spxc-web
+	sha256sums = ac31302cfefd616ea1e55765a28a2af55b886ea2de4ef000a812c40e7e25cac1
+
+pkgname = spxc-webtools

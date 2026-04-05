@@ -1,0 +1,87 @@
+#!/bin/bash
+VERSION="V1.5"
+
+case "$1" in
+    -mkserv)
+        DIR=$2
+        PORT=$3
+        if [ -z "$DIR" ] || [ -z "$PORT" ]; then echo "Usage: spxc -mkserv [directory] [port]"; exit 1; fi
+        mkdir -p "$DIR"
+        if [ -f "$DIR/index.html" ]; then
+            read -p "index.html already exists. Override? (y/N): " choice
+            case "$choice" in y|Y ) ;; * ) CREATE_INDEX=false ;; esac
+        fi
+        if [ "$CREATE_INDEX" != false ]; then
+            cat > "$DIR/index.html" <<EOF
+<!DOCTYPE html><html><body style="background:#0f172a;color:#f8fafc;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;font-family:sans-serif;">
+<div style="background:rgba(30,41,59,0.7);padding:3rem;border-radius:1rem;text-align:center;"><h1>Spxc set up complete</h1><p>Running smoothly.</p></div></body></html>
+EOF
+            echo "Created $DIR/index.html"
+        fi
+        echo "Starting server on port $PORT... (Ctrl+C to close)"
+        cd "$DIR" && python3 -m http.server "$PORT"
+        ;;
+    -rmweb)
+        DIR=$2
+        if [ -z "$DIR" ] || [ ! -d "$DIR" ]; then echo "Usage: spxc -rmweb [directory]"; exit 1; fi
+        mapfile -t files < <(find "$DIR" -maxdepth 1 -name "*.html")
+        if [ ${#files[@]} -eq 0 ]; then echo "No HTML files found."; exit 0; fi
+        echo "Deleting: ${files[@]}"
+        read -p "Are you sure? (y/N): " choice
+        case "$choice" in y|Y ) for f in "${files[@]}"; do rm "$f"; done; echo "Removed."; ;; * ) echo "Cancelled."; ;; esac
+        ;;
+    -dweb)
+        DIR=$2; URL=$3; NAME=$4
+        if [ -z "$DIR" ] || [ -z "$URL" ] || [ -z "$NAME" ]; then echo "Usage: spxc -dweb [directory] [URL] [name]"; exit 1; fi
+        if [[ ! "$NAME" =~ \.html$ ]]; then NAME="$NAME.html"; fi
+        mkdir -p "$DIR"; FILEPATH="$DIR/$NAME"
+        if [ -f "$FILEPATH" ]; then read -p "Overwrite? (y/N): " choice; case "$choice" in y|Y ) ;; * ) exit 0 ;; esac; fi
+        export SPXC_URL="$URL"
+        export SPXC_FILEPATH="$FILEPATH"
+        export SPXC_BASE_DOMAIN=$(python3 -c "import urllib.parse; print(urllib.parse.urlparse('$URL').netloc)")
+        python3 - <<'EOF'
+import urllib.request, urllib.parse, re, sys, os, json, base64
+url, filepath, base_domain = os.environ['SPXC_URL'], os.environ['SPXC_FILEPATH'], os.environ['SPXC_BASE_DOMAIN']
+headers = {'User-Agent': 'Mozilla/5.0'}
+pages = {} 
+def fetch_res(u, b=False):
+    try:
+        with urllib.request.urlopen(urllib.request.Request(u, headers=headers), timeout=15) as r:
+            d = r.read(); return d if b else d.decode('utf-8', errors='ignore')
+    except: return None
+def crawl(u, d=0):
+    p = urllib.parse.urlparse(u).path or "/index.html"
+    if p in pages: return
+    print(f" Crawling: {u}"); c = fetch_res(u)
+    if not c: return
+    c = re.sub(r'<link[^>]+rel=["\'](manifest|preload|prefetch|preconnect)["\'][^>]*>', '', c)
+    c = re.sub(r'navigator\.serviceWorker\.register\(.*?\)', '', c)
+    def assets(match):
+        t, is_j = match.group(0), '<script' in match.group(0)
+        m = re.search(('src' if is_j else 'href') + f'=["\']([^"\']+)["\']', t)
+        if m:
+            a_u = urllib.parse.urljoin(u, m.group(1)); data = fetch_res(a_u, True)
+            if data:
+                b64 = base64.b64encode(data).decode('utf-8')
+                return f'<script>try{{eval(atob("{b64}"));}}catch(e){{}}</script>' if is_j else f'<style>@import url("data:text/css;base64,{b64}");</style>'
+        return t
+    c = re.sub(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', assets, c)
+    c = re.sub(r'<script[^>]+src=["\'][^"\']+["\'][^>]*>.*?</script>', assets, c, flags=re.DOTALL)
+    def links(match):
+        h = match.group(1)
+        if h.startswith(('#', 'j', 'd')): return match.group(0)
+        l_u = urllib.parse.urljoin(u, h)
+        if urllib.parse.urlparse(l_u).netloc == base_domain: return f'href="#!{urllib.parse.urlparse(l_u).path or "/index.html"}"'
+        return match.group(0)
+    c = re.sub(r'href=["\']([^"\']+)["\']', links, c)
+    pages[p] = base64.b64encode(c.encode('utf-8')).decode('utf-8')
+    if d < 1:
+        for lp in re.findall(r'href=["\']#!([^"\']+)["\']', c):
+            if lp not in pages and not lp.endswith(('.png', '.jpg', '.ico', '.pdf')): crawl(urllib.parse.urljoin(url, lp), d + 1)
+crawl(url)
+router = f"<script>(function b(){{window.onerror=()=>true;const p={json.dumps(pages)};function l(path){{const b=p[path]||p[path+'.html']||p[path+'/index.html'];if(b){{document.open();document.write(atob(b)+'<script>('+b.toString()+')()<\/script>');document.close();}}}}window.onhashchange=()=>{{if(window.location.hash.startsWith('#!'))l(window.location.hash.substring(2));}};window.fetch=()=>Promise.reject();if(window.location.hash.startsWith('#!'))l(window.location.hash.substring(2));}})();<\/script>"
+with open(filepath, "w", encoding='utf-8') as f: f.write(base64.b64decode(pages[urllib.parse.urlparse(url).path or "/index.html"]).decode('utf-8') + router)
+EOF
+        ;;
+    *) exit 1 ;;
+esac
