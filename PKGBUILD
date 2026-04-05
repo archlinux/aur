@@ -1,37 +1,49 @@
 # Maintainer: Albert Mikaelyan <tahvok at gmail dot com>
+# Contributor: mrypsilon
 
 pkgname=gridcoinresearch-qt
-pkgver=3.7.11.0
+pkgver=5.5.0.0
 pkgrel=1
-pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC - Qt"
-depends=('boost-libs' 'qrencode' 'qt5-base' 'qt5-charts' 'libzip' 'miniupnpc' 'curl' 'boinc')
-makedepends=('boost' 'qt5-tools' 'qrencode' 'db')
+pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network (Qt GUI)"
+makedepends=('cmake' 'boost' 'qt6-tools' 'qt6-5compat')
+depends=('db5.3' 'libzip' 'boost-libs' 'miniupnpc' 'qrencode' 'qt6-base' 'qt6-charts' 'qt6-svg')
+optdepends=('boinc: to earn Gridcoin rewards by doing computational research')
 
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://gridcoin.us"
-license=('custom:gridcoin')
+license=('MIT')
 
-_sourcename="Gridcoin-Research-$pkgver"
+_sourcename="Gridcoin-Research-${pkgver//_/-}"
 
-source=("gridcoinresearch-${pkgver}.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/${pkgver}.tar.gz"
-        'gridcoinresearch-qt.desktop')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/gridcoin-community/Gridcoin-Research/archive/${pkgver//_/-}.tar.gz")
 
-sha256sums=('2d4e87d607f334a4b973f58a444b1978941e06bd58049ce58536a81281b127b3'
-            '1c547e531726d3172895683f9673379fc51639689989e49494aa0f40fc6cb053')
+sha256sums=('407e06412903737f9afdeda5bad2503471bcf24e7672a97a35b8069cbffa27e8')
+
+# leaving in case needed for future patches
+#prepare() {
+#    cd "$srcdir/$_sourcename"
+#    patch --strip=1 --input="../trafficgraphwidget.cpp.patch"
+#}
 
 build() {
-  cd "$srcdir/$_sourcename"
+  cmake \
+      -B build \
+      -S "$srcdir/$_sourcename" \
+      -DCMAKE_INSTALL_PREFIX='/usr' \
+      -DENABLE_GUI=ON \
+      -DSYSTEMBDB=ON \
+      -DENABLE_TESTS=ON \
+      -DUSE_QT6=ON \
+      -DENABLE_DAEMON=OFF \
+      -Wno-dev
+  cmake --build build
+}
 
-  qmake USE_QRCODE=1 USE_UPNP=1 NO_UPGRADE=1
-  make
+check() {
+  ctest --test-dir build
 }
 
 package() {
-  cd "$srcdir/$_sourcename"
-
-  install -Dm755 gridcoinresearch "$pkgdir/usr/bin/gridcoinresearch"
-  install -Dm644 "${srcdir}/gridcoinresearch-qt.desktop" "$pkgdir/usr/share/applications/gridcoinresearch-qt.desktop"
-  install -Dm644 share/pixmaps/grc-small.png "$pkgdir/usr/share/pixmaps/grc-small.png"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$srcdir/$_sourcename/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
-
