@@ -1,5 +1,5 @@
 pkgname=franz-agent
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A powerful terminal-based AI assistant for developers.'
 arch=('x86_64' 'aarch64')
@@ -7,19 +7,19 @@ url='https://github.com/marang/franz-agent'
 license=('custom:FSL-1.1-MIT')
 depends=()
 makedepends=('go' 'git')
-source=("-.tar.gz::https://github.com/marang/franz-agent/archive/refs/tags/v0.1.0.tar.gz")
-sha256sums=('1bfb7ef4f5662ae5bfd67e08f046d6686bfe3e14861073c913fbca53c3039e8e')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marang/franz-agent/archive/refs/tags/v0.1.1.tar.gz")
+sha256sums=('e2e0a348947c6a7777b3adbb95aedd9a733e550a75c2cf3d07e80656b05d1d66')
 
 build() {
-  cd "-"
+  cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=0
   export GOEXPERIMENT=greenteagc
-  go build -trimpath -ldflags "-s -w -X github.com/marang/franz-agent/internal/version.Version=v" .
+  go build -trimpath -ldflags "-s -w -X github.com/marang/franz-agent/internal/version.Version=v${pkgver}" .
 }
 
 package() {
-  cd "-"
-  install -Dm755 "./franz-agent" "/usr/bin/franz-agent"
-  install -Dm644 "./LICENSE.md" "/usr/share/licenses/franz-agent/LICENSE.md"
-  install -Dm644 "./README.md" "/usr/share/doc/franz-agent/README.md"
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 "./franz-agent" "${pkgdir}/usr/bin/franz-agent"
+  install -Dm644 "./LICENSE.md" "${pkgdir}/usr/share/licenses/franz-agent/LICENSE.md"
+  install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/franz-agent/README.md"
 }
