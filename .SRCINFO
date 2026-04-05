@@ -1,7 +1,7 @@
 pkgbase = proxelar-bin
 	pkgdesc = Programmable MITM proxy that intercepts HTTP/HTTPS traffic. With a TUI, terminal, and web GUI interface
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emanuele-em/proxelar
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = proxelar-bin
 	conflicts = proxelar
 	conflicts = proxelar-bin
 	options = !lto
+	options = !debug
 	source = LICENSE::https://raw.githubusercontent.com/emanuele-em/proxelar/refs/tags/v0.4.1/LICENSE-MIT
 	sha256sums = 7beed5740a54fe01210a251507d55576e32522b292af5eb9d74a4fbd5545d365
 	source_x86_64 = proxelar-bin-0.4.1.tar.gz::https://github.com/emanuele-em/proxelar/releases/download/v0.4.1/proxelar-v0.4.1-x86_64-unknown-linux-gnu.tar.gz
