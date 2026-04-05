@@ -1,6 +1,6 @@
 pkgbase = mcpelauncher-ui
 	pkgdesc = Minecraft: PE Linux launcher UI
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/minecraft-linux/mcpelauncher-ui-manifest
 	arch = x86_64
@@ -23,11 +23,12 @@ pkgbase = mcpelauncher-ui
 	depends = curl
 	depends = glibc
 	depends = qt6-webchannel
-	depends = gcc-libs
+	depends = libstdc++
+	depends = libgcc
 	depends = openssl
 	depends = hicolor-icon-theme
 	optdepends = mcpelauncher-msa-ui-qt: Microsoft authentication for version before 1.16.1X
-	source = git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#tag=v1.7.1-qt6
+	source = git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#tag=v1.7.2-qt6
 	source = git+https://github.com/MCMrARM/axml-parser.git
 	source = git+https://github.com/minecraft-linux/file-util.git
 	source = google-play-api::git+https://github.com/minecraft-linux/Google-Play-API.git
@@ -36,7 +37,7 @@ pkgbase = mcpelauncher-ui
 	source = git+https://github.com/minecraft-linux/mcpelauncher-common.git
 	source = git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git
 	source = git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git
-	sha256sums = 675b30f091ba8fd323a70d49c4fc3d557db627aa2b94f97b2ff65ffa7ebb6aca
+	sha256sums = db9e79312d88c8f5f2a45b487e8e8353e9c9d21b5372ee024bee0506eea55ed2
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -2,14 +2,14 @@
 # Contributor: Ersei <contact at ersei dot net>
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
 license=('GPL-3.0-only' 'MIT')
 makedepends=('git' 'cmake' 'ninja' 'qt6-tools' 'vulkan-headers' 'qt6-svg' 'libxinerama')
-depends=('qt6-base' 'qt6-webengine' 'qt6-declarative' 'libzip' 'protobuf' 'mcpelauncher-linux' 'zlib' 'curl' 'glibc' 'qt6-webchannel' 'gcc-libs' 'openssl' 'hicolor-icon-theme')
+depends=('qt6-base' 'qt6-webengine' 'qt6-declarative' 'libzip' 'protobuf' 'mcpelauncher-linux' 'zlib' 'curl' 'glibc' 'qt6-webchannel' 'libstdc++' 'libgcc' 'openssl' 'hicolor-icon-theme')
 optdepends=('mcpelauncher-msa-ui-qt: Microsoft authentication for version before 1.16.1X')
 source=(
   "git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#tag=v${pkgver}-qt6"
@@ -22,7 +22,7 @@ source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
   'git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git'
 )
-sha256sums=('675b30f091ba8fd323a70d49c4fc3d557db627aa2b94f97b2ff65ffa7ebb6aca'
+sha256sums=('db9e79312d88c8f5f2a45b487e8e8353e9c9d21b5372ee024bee0506eea55ed2'
             'SKIP'
             'SKIP'
             'SKIP'
