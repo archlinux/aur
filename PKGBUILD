@@ -6,11 +6,10 @@ pkgdesc="NetExperts Remote Support, Linux Outbound Client. Based on RustDesk (AG
 arch=('x86_64')
 url="https://netexperts.com.au/opensource"
 license=('AGPL-3.0-only')
-depends=('gtk3' 'libxcb' 'libxrandr' 'libxfixes' 'alsa-lib' 'libpulse' 'libva'
-         'libvdpau' 'libappindicator-gtk3' 'pam' 'gst-plugins-base' 'gst-plugins-good')
-optdepends=('libayatana-appindicator: modern tray icon support'
-            'xdg-desktop-portal: Wayland screen capture'
-            'pipewire: Wayland audio/screen sharing')
+depends=('gtk3' 'libxcb' 'xdg-utils')
+optdepends=('libappindicator-gtk3: tray icon support'
+            'libayatana-appindicator: modern tray icon support'
+            'xdg-desktop-portal: Wayland screen capture')
 provides=('netexperts-support')
 conflicts=('netexperts-support' 'rustdesk' 'rustdesk-bin')
 options=('!strip')
