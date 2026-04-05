@@ -1,12 +1,12 @@
 # Maintainer: eirikr <151315375+Oichkatzelesfrettschen@users.noreply.github.com>
-# Why: AUR python-torch-tensorrt by Smoolak is 2.9.0-5; system torch is 2.10.0; version mismatch prevents import.
+# Why: AUR python-torch-tensorrt by Smoolak is 2.9.0-5; system torch is 2.11.0; version mismatch prevents import.
 #      This package targets Python 3.14 (cp314); the AUR package targets cp313.
-#      Updated to 2.10.0, matching system python-pytorch-opt-cuda 2.10.0.
-#      Bazel updated from 8.1.1 to 8.4.2 (required by .bazelversion in 2.10.0 repo).
-#      MODULE.bazel TensorRT section patching unchanged (same line numbers in 2.10.0).
-#      glog 0.7 patch REMOVED: context changed in 2.10.0; -DGLOG_USE_GLOG_EXPORT in CXXFLAGS is sufficient.
-#      New fix-prim-namespace.patch: torch-tensorrt 2.10.0 has a 'namespace prim {}' that conflicts
-#      with the downloaded libtorch header 'namespace prim = ::c10::prim' alias. Fix from main branch.
+#      Updated to 2.11.0, matching system python-pytorch-opt-cuda 2.11.0.
+#      Bazel 8.4.2 (required by .bazelversion in 2.11.0 repo).
+#      MODULE.bazel TensorRT section patching: tensorrt http_archive at lines 101-109,
+#      commented new_local_repository at lines 167-171.
+#      fix-prim-namespace.patch REMOVED: fixed upstream in 2.11.0.
+#      fix-py314-converter-registry.patch REMOVED: FX frontend loading removed upstream in 2.11.0.
 #      Builds for system Python 3.14 (cp314); TensorRT/DALI use py3.13 - this uses py3.14.
 #
 # Python 3.14 (cp314) compatibility patches:
@@ -22,15 +22,12 @@
 #   fix-py314-fx-converters.patch: Wrap trt.Logger() and trt.init_libnvinfer_plugins() in
 #     try/except for the same reason; the if hasattr(trt,"__version__") guard is True for
 #     the stub (version string is set), so the block runs even under cp314.
-#   fix-py314-converter-registry.patch: Wrap the FX legacy converter registry import in
-#     try/except; under cp314 the FX frontend import chain (torch._dynamo -> sympy -> mpmath)
-#     can fail; the dynamo frontend provides equivalent functionality.
 #
 # Wheel post-processing in build():
 #   python -m build --wheel invokes 'bazel build ... --config=python', a different config than
 #   our manual 'bazel build //:libtorchtrt --compilation_mode=opt'. The --config=python config
 #   uses cached nightly libtorch artifacts that lack symbols present in the CachyOS
-#   python-pytorch-opt-cuda 2.10.0 build, causing undefined symbol errors at runtime.
+#   python-pytorch-opt-cuda 2.11.0 build, causing undefined symbol errors at runtime.
 #   Fix: after the wheel is built, run Python zipfile surgery to replace the three bad
 #   libtorchtrt*.so files inside the wheel with the correct ones from py/torch_tensorrt/lib/
 #   (which were built against system torch by our manual bazel build step above).
@@ -38,9 +35,9 @@
 
 pkgname=python-torch-tensorrt-cp314
 _pkgname=torch-tensorrt
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
-pkgdesc="PyTorch/TensorRT integration for Python 3.14 (cp314) -- 2.10.0 matching system pytorch-opt-cuda"
+pkgdesc="PyTorch/TensorRT integration for Python 3.14 (cp314) -- 2.11.0 matching system pytorch-opt-cuda"
 arch=('x86_64')
 url="https://github.com/pytorch/TensorRT"
 license=('BSD-3-Clause')
@@ -71,27 +68,18 @@ optdepends=(
     'python-graphviz: for graph utilities'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/TensorRT/archive/refs/tags/v${pkgver}.tar.gz"
-        "fix-prim-namespace.patch"
         "fix-py314-trt-stub.patch"
         "fix-py314-trt-logging.patch"
-        "fix-py314-fx-converters.patch"
-        "fix-py314-converter-registry.patch")
+        "fix-py314-fx-converters.patch")
 source_x86_64=("bazel-8.4.2::https://github.com/bazelbuild/bazel/releases/download/8.4.2/bazel-8.4.2-linux-x86_64")
-sha256sums=('08d1cb6de033a8fe7c5a9e8beda016af80319bcbc22c19c8e6044d01572df791'
-            'fa952812f9ac3a64916793c582c4cd630cd24d283037ac9df3df68dc5f4e7e18'
+sha256sums=('2240a241ad312e32eda560f2e5ac1b4e65135d7248424416b2380e490e4c5b76'
             '6c67b94d9504aadfa2f4e4eb5f6964bff7c5fc00b23c54ed00b2202c438e7c27'
             '05f1f396611ba969ae99d415f7dca2c5b0c9e80588c705800db6ee82396b20ed'
-            'd39e20b3ddb6346437f16a544df66de772e3cb652d7de904648ed6b115d0426f'
-            'ac7501cb2c704aecf9bd778536c89276c55083677955cff4e5e691d9c6f56140')
+            'd39e20b3ddb6346437f16a544df66de772e3cb652d7de904648ed6b115d0426f')
 sha256sums_x86_64=('4dc8e99dfa802e252dac176d08201fd15c542ae78c448c8a89974b6f387c282c')
 
 prepare() {
     cd "TensorRT-${pkgver}"
-
-    # Fix namespace prim conflict: torch-tensorrt 2.10.0 declares 'namespace prim {}'
-    # but Bazel-downloaded libtorch headers use 'namespace prim = ::c10::prim' (alias).
-    # Both in the same scope cause a C++ conflict. Fix: collapse the namespace block.
-    patch -p1 < "${srcdir}/fix-prim-namespace.patch"
 
     # Python 3.14 (cp314) compatibility: install a deep-proxy TensorRT stub so that
     # torch_tensorrt can be imported for runtime inference even though TensorRT Python
@@ -107,11 +95,6 @@ prepare() {
     # RuntimeError under the stub. The if hasattr(trt,"__version__") guard is True for the
     # stub (version string is set), so the block runs. Wrap in try/except.
     patch -p1 < "${srcdir}/fix-py314-fx-converters.patch"
-
-    # Python 3.14: FX legacy converter import chain (torch._dynamo -> sympy -> mpmath)
-    # can fail if mpmath version in sys.path is too old. Wrap in try/except; dynamo
-    # frontend provides equivalent functionality.
-    patch -p1 < "${srcdir}/fix-py314-converter-registry.patch"
 
     # Fix pybind11 version requirement to work with system pybind11
     sed -i 's/pybind11==2.6.2/pybind11>=2.6.2/' pyproject.toml
@@ -149,10 +132,10 @@ prepare() {
 
     # MODULE.bazel: replace nightly libtorch download with the system PyTorch installation.
     # The nightly (cu130) libtorch has symbols (e.g. CUDAStream::synchronize) absent from
-    # the CachyOS python-pytorch-opt-cuda 2.10.0 build; building against the system torch
+    # the CachyOS python-pytorch-opt-cuda 2.11.0 build; building against the system torch
     # guarantees ABI compatibility at runtime.
     python3 << 'PYEOF'
-import sys, re
+import sys
 path = "MODULE.bazel"
 with open(path) as f:
     content = f.read()
@@ -181,8 +164,8 @@ with open(path, "w") as f:
 PYEOF
 
     # MODULE.bazel: use local TensorRT instead of downloading from NVIDIA CDN
-    # Lines 101-108: comment out http_archive for tensorrt
-    sed -i '101,108s/^/#/' MODULE.bazel
+    # Lines 101-109: comment out http_archive for tensorrt
+    sed -i '101,109s/^/#/' MODULE.bazel
 
     # Lines 167-171: uncomment new_local_repository for tensorrt and set correct path
     sed -i '167,171s/^#//' MODULE.bazel
