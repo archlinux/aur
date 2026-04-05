@@ -1,0 +1,5 @@
+[termtrace-bin]
+source = "github"
+github = "AmalChandru/termtrace"
+use_latest_release = true
+prefix = "v"

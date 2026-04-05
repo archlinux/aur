@@ -1,0 +1,17 @@
+pkgbase = termtrace-bin
+	pkgdesc = A terminal workflow recorder that turns debugging sessions into replayable, shareable artifacts
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AmalChandru/termtrace
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = termtrace
+	conflicts = termtrace
+	options = !strip
+	source_x86_64 = termtrace-x86_64-0.1.0.tgz::https://github.com/AmalChandru/termtrace/releases/download/v0.1.0/termtrace_v0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e6661265933dbfd28df950dc46e3a610f4b7664e4ab5a72ecad1348aedb6c6fd
+	source_aarch64 = termtrace-aarch64-0.1.0.tgz::https://github.com/AmalChandru/termtrace/releases/download/v0.1.0/termtrace_v0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = fb79d267ab63c7912cf41eb065775821fc2cc2cfee2bf64a3452e0a347828c29
+
+pkgname = termtrace-bin
