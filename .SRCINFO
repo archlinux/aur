@@ -1,6 +1,6 @@
 pkgbase = python-speechrecognition
 	pkgdesc = Speech recognition module for Python, supporting several engines and APIs
-	pkgver = 3.15.2
+	pkgver = 3.16.0
 	pkgrel = 1
 	url = https://github.com/Uberi/speech_recognition
 	arch = any
@@ -40,7 +40,8 @@ pkgbase = python-speechrecognition
 	optdepends = python-requests: AssemblyAI Speech-to-Text backend
 	optdepends = python-boto3: Amazon Lex and Amazon Transcribe backends
 	optdepends = python-botocore: required for Amazon Transcribe
-	source = python-speechrecognition-3.15.2.tgz::https://github.com/Uberi/speech_recognition/archive/refs/tags/3.15.2.tar.gz
-	b2sums = ab2344dd43702481957244abd3eed8ee0b7bee149eb8ac04840ee83c2f5b3c5e9ee684ffa5e5bc26962b291b37ec737676d9a7650a44af38af42b79bde5d8d1f
+	optdepends = python-cohere: Cohere API backend
+	source = python-speechrecognition-3.16.0.tgz::https://github.com/Uberi/speech_recognition/archive/refs/tags/3.16.0.tar.gz
+	b2sums = 6d69f353e8d5426c0599f80e31281f0bf04bae14bb62fbaaa452b24363c7950795faf3fc5fbd51180ac1a53f99b6fb8e339f887cfb67cba27608ebf240db7aff
 
 pkgname = python-speechrecognition

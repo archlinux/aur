@@ -5,7 +5,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-speechrecognition
-pkgver=3.15.2
+pkgver=3.16.0
 pkgrel=1
 pkgdesc='Speech recognition module for Python, supporting several engines and APIs'
 arch=('any')
@@ -34,6 +34,7 @@ optdepends=(
   'python-requests: AssemblyAI Speech-to-Text backend'
   'python-boto3: Amazon Lex and Amazon Transcribe backends'
   'python-botocore: required for Amazon Transcribe'
+  'python-cohere: Cohere API backend'
 )
 makedepends=(
   'python-build'
@@ -55,7 +56,7 @@ checkdepends=(
   'python-cryptography' # test_google_cloud.py
 )
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('ab2344dd43702481957244abd3eed8ee0b7bee149eb8ac04840ee83c2f5b3c5e9ee684ffa5e5bc26962b291b37ec737676d9a7650a44af38af42b79bde5d8d1f')
+b2sums=('6d69f353e8d5426c0599f80e31281f0bf04bae14bb62fbaaa452b24363c7950795faf3fc5fbd51180ac1a53f99b6fb8e339f887cfb67cba27608ebf240db7aff')
 
 build() {
   cd "${srcdir}/speech_recognition-${pkgver}"
@@ -72,6 +73,7 @@ check() {
   python -m pytest \
     --doctest-modules speech_recognition/recognizers/ \
     --ignore tests/recognizers/test_vosk.py \
+    --ignore tests/recognizers/test_cohere_api.py \
     tests/
 }
 
