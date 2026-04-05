@@ -5,7 +5,7 @@ _author=ILMARI
 _dist=Catalyst-Authentication-Store-DBIx-Class
 pkgname=perl-${_dist@L}
 pkgver=0.1506
-pkgrel=2
+pkgrel=3
 pkgdesc='A storage class for Catalyst Authentication using DBIx::Class'
 arch=('any')
 url=https://metacpan.org/release/$_author/$_dist-$pkgver
@@ -14,6 +14,7 @@ depends=(
     'perl-catalyst-model-dbic-schema>=0.18'
     'perl-catalyst-plugin-authentication>=0.10008'
     'perl-catalyst-runtime>=5.8'
+    'perl-class-accessor'
     'perl-dbix-class>=0.08'
     'perl-list-moreutils'
     'perl-moose'
