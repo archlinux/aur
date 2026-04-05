@@ -1,7 +1,7 @@
 pkgbase = advcpmv
 	pkgdesc = 'cp' and 'mv' utilities with progress bar patches
 	pkgver = 9.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jarun/advcpmv
 	arch = x86_64
 	license = GPL3-or-later
