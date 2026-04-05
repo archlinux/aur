@@ -1,16 +1,16 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-plugin-weather
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Weather widget for Owlry — display current weather conditions"
 arch=('x86_64')
 url="https://somegit.dev/Owlibou/owlry-plugins"
 license=('GPL-3.0-or-later')
-depends=('owlry-core')
+depends=('owlry-core' 'openssl')
 makedepends=('cargo')
 install=owlry-plugin-weather.install
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry-plugins/archive/$pkgname-v$pkgver.tar.gz")
-b2sums=('ce86d6ca5cfb8ce6b57bd998fe2e6c242d2e09f147f3d97bd2de5eedbfd4d081f7bb196d930da8d7158a07771b5b3b6e3e29fe79726c248d30c5a494e1bf63dd')
+b2sums=('a0988b7eb5496a1b9f0f5a9936b84990c79736b66da26de06e63d542bf4b0d9e2a382e0257c3237f67fdd41a278d0a8a38e683361f50cb0dcf0c6afe8d6ac7cd')
 
 _cratename=owlry-plugin-weather
 
