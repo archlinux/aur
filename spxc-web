@@ -2,6 +2,7 @@
 VERSION="V1.7.0"
 
 case "$1" in
+    -v) echo "V1.7.0";;
     -mkserv)
         DIR=$2
         PORT=$3
