@@ -1,7 +1,7 @@
 # Maintainer: Hufflez <jackattacker518@gmail.com>
 pkgname=t3code-git
 _pkgname=t3code
-pkgver=0.0.15.r74.g6de4b47
+pkgver=0.0.15.r76.gf2cd53f
 pkgrel=1
 pkgdesc='T3 Code desktop app (git version, built from source)'
 arch=('x86_64')
@@ -106,19 +106,14 @@ else
   extra_flags+=(--ozone-platform-hint=auto)
 fi
 
-exec "$appdir/t3-code-desktop" --no-sandbox "${extra_flags[@]}" "$@"
+exec "$appdir/t3code" --no-sandbox "${extra_flags[@]}" "$@"
 EOF
 
-  ln -s t3code "$pkgdir/usr/bin/t3-code-desktop"
-
-  # Icon (from upstream source tree, confirmed in scripts/lib/brand-assets.ts)
+  # Icon (from upstream source tree)
   install -Dm644 "assets/prod/black-universal-1024.png" \
-    "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/t3-code-desktop.png"
-  ln -s t3-code-desktop.png \
     "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/t3code.png"
   install -Dm644 "assets/prod/black-universal-1024.png" \
-    "$pkgdir/usr/share/pixmaps/t3-code-desktop.png"
-  ln -s t3-code-desktop.png "$pkgdir/usr/share/pixmaps/t3code.png"
+    "$pkgdir/usr/share/pixmaps/t3code.png"
 
   # Desktop entry (Icon= without extension per freedesktop spec)
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/t3code.desktop" << 'EOF'
@@ -128,8 +123,8 @@ Comment=T3 Code desktop application
 Exec=t3code %U
 Terminal=false
 Type=Application
-Icon=t3-code-desktop
-StartupWMClass=T3 Code (Alpha)
+Icon=t3code
+StartupWMClass=t3code
 Categories=Development;
 EOF
 
