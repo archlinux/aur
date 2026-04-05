@@ -1,8 +1,8 @@
 #!/bin/bash
 # Maintainer: czjstmax : <jstmaxlol@disroot.org>
 pkgname=noshmore
-pkgver=1
-pkgrel=4
+pkgver=2
+pkgrel=5
 pkgdesc="an extended version of nosh, a minimal POSIX C shell."
 arch=('any')
 url="https://github.com/jstmaxlol/noshmore"
