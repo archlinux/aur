@@ -2,9 +2,10 @@
 
 pkgname=telemt
 pkgver=3.3.38
-pkgrel=1
+pkgrel=2
 pkgdesc='Telemt - MTProxy on Rust + Tokio'
 arch=('x86_64' 'aarch64')
+provides=("telemt")
 url='https://github.com/telemt/telemt'
 license=('custom:TELEMT Public License 3')
 makedepends=('cargo')
