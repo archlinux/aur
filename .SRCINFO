@@ -17,7 +17,7 @@ pkgbase = gridcoinresearch
 	source = gridcoinresearch-5.4.9.0.tar.gz::https://github.com/gridcoin-community/Gridcoin-Research/archive/5.4.9.0.tar.gz
 	sha256sums = be7176f8d3b11283b3f0a8e5db5339f76a892da448073dab921bf09ff51bc37f
 
-pkgname = gridcoinresearch-qt
+pkgname = gridcoinresearch-qt-deprecated
 	pkgdesc = A cryptocurrency that rewards users for participating on the BOINC network (Qt GUI)
 	depends = libzip
 	depends = boost-libs
@@ -28,7 +28,7 @@ pkgname = gridcoinresearch-qt
 	depends = qt5-svg
 	optdepends = boinc: to earn Gridcoin rewards by doing computational research
 
-pkgname = gridcoinresearchd
+pkgname = gridcoinresearchd-deprecated
 	pkgdesc = A cryptocurrency that rewards users for participating on the BOINC network (Daemon/CLI)
 	depends = libzip
 	depends = boost-libs

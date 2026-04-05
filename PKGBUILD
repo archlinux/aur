@@ -2,7 +2,7 @@
 # Contributor: mrypsilon
 
 pkgbase=gridcoinresearch
-pkgname=(gridcoinresearch-qt gridcoinresearchd)
+pkgname=(gridcoinresearch-qt-deprecated gridcoinresearchd-deprecated)
 pkgver=5.4.9.0
 pkgrel=2
 pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
@@ -40,7 +40,7 @@ check() {
   make check
 }
 
-package_gridcoinresearch-qt() {
+package_gridcoinresearch-qt-deprecated() {
   pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network (Qt GUI)"
   depends=('libzip' 'boost-libs' 'miniupnpc' 'qrencode' 'qt5-base' 'qt5-charts' 'qt5-svg')
   optdepends=('boinc: to earn Gridcoin rewards by doing computational research')
@@ -54,7 +54,7 @@ package_gridcoinresearch-qt() {
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
-package_gridcoinresearchd() {
+package_gridcoinresearchd-deprecated() {
   pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network (Daemon/CLI)"
   depends=('libzip' 'boost-libs' 'miniupnpc')
   optdepends=('boinc: to earn Gridcoin rewards by doing computational research')
