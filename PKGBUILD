@@ -10,8 +10,8 @@ makedepends=('git' 'pkgconf')
 depends=('podofo' 'webkit2gtk-4.1' 'webkitgtk-6.0' 'json-c' 'libsystemd' 'xorg-server-xvfb')
 conflicts=()
 install=wk2gtkpdf.install
-source=("git+https://github.com/Timh1970/wkgtk-html2pdf.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("https://github.com/Timh1970/wkgtk-html2pdf/archive/v${pkgver}.tar.gz")
+sha256sums=('3a08ef5c96bcc41deb6be7f3dfcbcb7047636375b6f7af9419168cdc834926b1')
 
 build() {
 
@@ -20,35 +20,35 @@ build() {
     mkdir -p "${stagedir}"
 
 
-    CPPFLAGS="$CPPFLAGS -DPODOFO_010" make -C ${srcdir}/${pkgname}/src/wk2gtkpdf
-	CPPFLAGS="$CPPFLAGS -DPODOFO_010" make -C "${srcdir}/${pkgname}/src/wk2gtkpdf" install DESTDIR="${stagedir}"
+    CPPFLAGS="$CPPFLAGS -DPODOFO_010" make -C ${srcdir}/${pkgname}-${pkgver}/src/wk2gtkpdf
+	CPPFLAGS="$CPPFLAGS -DPODOFO_010" make -C "${srcdir}/${pkgname}-${pkgver}/src/wk2gtkpdf" install DESTDIR="${stagedir}"
 
 	# library
-	rm ${srcdir}/${pkgname}/src/wk2gtkpdf/*.o
+	rm ${srcdir}/${pkgname}-${pkgver}/src/wk2gtkpdf/*.o
 
-	CPPFLAGS="-DPODOFO_010 -DUSE_WEBKIT_6 $CPPFLAGS" make -C ${srcdir}/${pkgname}/src/wk2gtkpdf
-    CPPFLAGS="-DPODOFO_010 -DUSE_WEBKIT_6 $CPPFLAGS" make -C "${srcdir}/${pkgname}/src/wk2gtkpdf" install DESTDIR="${stagedir}"
+	CPPFLAGS="-DPODOFO_010 -DUSE_WEBKIT_6 $CPPFLAGS" make -C ${srcdir}/${pkgname}-${pkgver}/src/wk2gtkpdf
+    CPPFLAGS="-DPODOFO_010 -DUSE_WEBKIT_6 $CPPFLAGS" make -C "${srcdir}/${pkgname}-${pkgver}/src/wk2gtkpdf" install DESTDIR="${stagedir}"
 	export PKG_CONFIG_PATH="${stagedir}/usr/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
     export LDFLAGS="-L${stagedir}/usr/lib ${LDFLAGS:-}"
-	CPPFLAGS="-I${stagedir}/usr/include -DPODOFO_010 -DUSE_WEBKIT_6 $CPPFLAGS" make -C ${srcdir}/${pkgname}/src/cli
+	CPPFLAGS="-I${stagedir}/usr/include -DPODOFO_010 -DUSE_WEBKIT_6 $CPPFLAGS" make -C ${srcdir}/${pkgname}-${pkgver}/src/cli
 
 }
 
 package() {
 
-	CPPFLAGS="-DPODOFO_010 -DUSE_WEBKIT_6 ${CPPFLAGS:-}" make install -C "${srcdir}/${pkgname}/src/cli" DESTDIR="${pkgdir}"
-	CPPFLAGS="-DPODOFO_010 -DUSE_WEBKIT_6 ${CPPFLAGS:-}" make install -C "${srcdir}/${pkgname}/src/wk2gtkpdf" DESTDIR="${pkgdir}"
+	CPPFLAGS="-DPODOFO_010 -DUSE_WEBKIT_6 ${CPPFLAGS:-}" make install -C "${srcdir}/${pkgname}-${pkgver}/src/cli" DESTDIR="${pkgdir}"
+	CPPFLAGS="-DPODOFO_010 -DUSE_WEBKIT_6 ${CPPFLAGS:-}" make install -C "${srcdir}/${pkgname}-${pkgver}/src/wk2gtkpdf" DESTDIR="${pkgdir}"
 
-	make install -C "${srcdir}/${pkgname}/src/wk2gtkpdf" DESTDIR="${pkgdir}"
- 	install -Dm644 -t "$pkgdir/usr/lib/systemd/system" ${srcdir}/${pkgname}/xvfb.service
- 	install -Dm644 -t "$pkgdir/usr/share/polkit-1/rules.d" ${srcdir}/${pkgname}/50-wk2gtkpdf.rules
+	make install -C "${srcdir}/${pkgname}-${pkgver}/src/wk2gtkpdf" DESTDIR="${pkgdir}"
+ 	install -Dm644 -t "$pkgdir/usr/lib/systemd/system" ${srcdir}/${pkgname}-${pkgver}/xvfb.service
+ 	install -Dm644 -t "$pkgdir/usr/share/polkit-1/rules.d" ${srcdir}/${pkgname}-${pkgver}/50-wk2gtkpdf.rules
 
 	# INSTALL THE EXAMPLES
-	cd "$srcdir/$pkgname/examples"
+	cd "$srcdir/$pkgname-${pkgver}/examples"
     # Find every file and install it, recreating the directory structure
     find . -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/doc/$pkgname/examples/{}" \;
 
-	install -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname}" ${srcdir}/${pkgname}/LICENSE
+	install -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname}" ${srcdir}/${pkgname}-${pkgver}/LICENSE
 
 }
 
