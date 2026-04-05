@@ -1,12 +1,12 @@
 pkgbase = spxc
 	pkgdesc = A simple CLI tool that shows version and help
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/spxc
 	arch = any
 	license = MIT
 	depends = bash
 	source = spxc
-	sha256sums = be5cccc435dff5b04b9741fbf6f11e324306fb27ce3dcb3c1b80ecc7c2a292d1
+	sha256sums = f8c09df39fb9360b7024c3110ae516de3599c8389c4e69e27300f3bffeea3e08
 
 pkgname = spxc

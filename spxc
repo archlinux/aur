@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V0.7"
+VERSION="V0.8"
 
 case "$1" in
     -v)
@@ -173,63 +173,99 @@ EOF
             esac
         fi
 
-        echo "Downloading and inlining CSS/JS from $URL..."
+        echo "Downloading site and dependencies from $URL..."
         python3 - <<EOF
-import urllib.request, urllib.parse, re, sys
+import urllib.request, urllib.parse, re, sys, os
 
 url = "$URL"
-filepath = "$FILEPATH"
+directory = "$DIR"
+entry_name = "$NAME"
 headers = {'User-Agent': 'Mozilla/5.0'}
+base_domain = urllib.parse.urlparse(url).netloc
+visited = {} # url -> local_filename
 
-def fetch_resource(target_url):
+def fetch_resource(target_url, binary=False):
     try:
         req = urllib.request.Request(target_url, headers=headers)
         with urllib.request.urlopen(req) as r:
-            return r.read().decode('utf-8')
+            return r.read() if binary else r.read().decode('utf-8')
     except:
         return None
 
-try:
-    html = fetch_resource(url)
-    if html is None:
-        print(f"Error: Could not download {url}")
-        sys.exit(1)
+def process_page(current_url, save_filename, depth=0):
+    if current_url in visited: return visited[current_url]
+    visited[current_url] = save_filename
     
+    print(f" Processing: {current_url} -> {save_filename}")
+    content = fetch_resource(current_url)
+    if not content: return None
+
+    # Inline CSS
     def inline_css(match):
         tag = match.group(0)
         href_match = re.search(r'href=["\']([^"\']+)["\']', tag)
         if href_match:
-            css_href = href_match.group(1)
-            css_url = urllib.parse.urljoin(url, css_href)
-            content = fetch_resource(css_url)
-            if content:
-                return f"<style>\n/* Inlined from {css_url} */\n{content}\n</style>"
+            css_url = urllib.parse.urljoin(current_url, href_match.group(1))
+            css_content = fetch_resource(css_url)
+            if css_content:
+                return f"<style>\n/* Inlined from {css_url} */\n{css_content}\n</style>"
         return tag
+    content = re.sub(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', inline_css, content)
 
+    # Inline JS
     def inline_js(match):
         tag = match.group(0)
         src_match = re.search(r'src=["\']([^"\']+)["\']', tag)
         if src_match:
-            js_src = src_match.group(1)
-            js_url = urllib.parse.urljoin(url, js_src)
-            content = fetch_resource(js_url)
-            if content:
-                return f"<script>\n/* Inlined from {js_url} */\n{content}\n</script>"
+            js_url = urllib.parse.urljoin(current_url, src_match.group(1))
+            js_content = fetch_resource(js_url)
+            if js_content:
+                return f"<script>\n/* Inlined from {js_url} */\n{js_content}\n</script>"
         return tag
+    content = re.sub(r'<script[^>]+src=["\'][^"\']+["\'][^]*>.*?</script>', inline_js, content, flags=re.DOTALL)
 
-    # Inline CSS
-    new_html = re.sub(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', inline_css, html)
-    new_html = re.sub(r'<link[^>]+href=["\'][^"\']+["\'][^>]*rel=["\']stylesheet["\'][^>]*>', inline_css, new_html)
-    
-    # Inline JS
-    new_html = re.sub(r'<script[^>]+src=["\'][^"\']+["\'][^>]*>.*?</script>', inline_js, new_html, flags=re.DOTALL)
-    
-    with open(filepath, "w") as f:
-        f.write(new_html)
-    print(f"Successfully saved to {filepath}")
-except Exception as e:
-    print(f"Error: {e}")
-    sys.exit(1)
+    # Handle Links (a tags) and JSON files
+    if depth < 1: # Limit recursion depth
+        # Find all local links
+        links = re.findall(r'href=["\']([^"\']+)["\']', content)
+        for link in links:
+            link_url = urllib.parse.urljoin(current_url, link)
+            parsed_link = urllib.parse.urlparse(link_url)
+            
+            if parsed_link.netloc == base_domain:
+                path = parsed_link.path
+                if not path or path.endswith('/'): path += "index.html"
+                if not path.endswith(('.html', '.json', '.js', '.css')): path += ".html"
+                
+                local_name = os.path.basename(path)
+                if local_name == "": local_name = "index.html"
+                
+                # Check for duplicates in local directory
+                unique_name = local_name
+                count = 1
+                while unique_name in visited.values() and current_url not in visited:
+                    name, ext = os.path.splitext(local_name)
+                    unique_name = f"{name}_{count}{ext}"
+                    count += 1
+
+                if link_url.endswith('.json'):
+                    data = fetch_resource(link_url, binary=True)
+                    if data:
+                        with open(os.path.join(directory, unique_name), "wb") as f:
+                            f.write(data)
+                        content = content.replace(link, unique_name)
+                elif path.endswith('.html') and link_url not in visited:
+                    process_page(link_url, unique_name, depth + 1)
+                    content = content.replace(link, unique_name)
+                elif link_url in visited:
+                    content = content.replace(link, visited[link_url])
+
+    with open(os.path.join(directory, save_filename), "w") as f:
+        f.write(content)
+    return save_filename
+
+process_page(url, entry_name)
+print("Site download complete.")
 EOF
         ;;
     --help)
@@ -238,7 +274,7 @@ EOF
         echo "  -sysfo                            Show detailed system information"
         echo "  -mkserv [directory] [port]        Create and start a dark-themed Python server"
         echo "  -rmweb [directory]                Remove all HTML files in a directory after confirmation"
-        echo "  -dweb [directory] [URL] [name]    Download HTML and inline all CSS/JS into a single file"
+        echo "  -dweb [directory] [URL] [name]    Recursive download of HTML/JSON with inlined CSS/JS"
         ;;
     *)
         echo "Usage: spxc --help"
