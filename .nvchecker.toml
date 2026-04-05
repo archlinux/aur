@@ -1,0 +1,5 @@
+[llmserve-bin]
+source = "github"
+github = "AlexsJones/llmserve"
+use_latest_release = true
+prefix = "v"
