@@ -1,15 +1,23 @@
 pkgbase = perl-aliased
 	pkgdesc = Use shorter versions of class names.
 	pkgver = 0.34
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/aliased
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
-	makedepends = perl-module-build-tiny
-	depends = perl
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-if
+	checkdepends = perl-lib
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-module-build-tiny>=0.039
+	depends = perl-carp
+	depends = perl-exporter
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
 	options = !emptydirs
-	source = https://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/aliased-0.34.tar.gz
-	md5sums = f7f659f689699a87115da1262eb6edc6
-	sha512sums = 65bc3f6401a0c2119105261112a3d9612abb98c874cd3409c6a1a9a0974aae902f30b6041121be6a74ee28584cf0c7ef506fe8318ab35ac550f70b4b387744f6
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/aliased-0.34.tar.gz
+	sha256sums = c350524507cd827fab864e5d4c2cc350b1babaa12fa95aec0ca00843fcc7deeb
 
 pkgname = perl-aliased
