@@ -1,6 +1,6 @@
 pkgbase = forkgram
 	pkgdesc = Fork of the Telegram Desktop messaging app
-	pkgver = 6.7.1
+	pkgver = 6.7.3
 	pkgrel = 1
 	url = https://github.com/Forkgram/tdesktop
 	arch = x86_64
@@ -49,11 +49,9 @@ pkgbase = forkgram
 	optdepends = xdg-desktop-portal: desktop integration
 	conflicts = forkgram-bin
 	options = !lto
-	source = forkgram-6.7.1.tar.gz::https://github.com/Forkgram/tdesktop/releases/download/v6.7.1/frk-v6.7.1-full.tar.gz
+	source = forkgram-6.7.3.tar.gz::https://github.com/Forkgram/tdesktop/releases/download/v6.7.3/frk-v6.7.3-full.tar.gz
 	source = telegram-tdlib::git+https://github.com/tdlib/td.git
-	source = 0001-calls_video_incoming.patch
-	sha256sums = 2f11fda1af85e250c3ce37676b2755e04d70750c906be624c35fcf15bf9b8bf1
+	sha256sums = be44f1745be50b8e1685e6f507aad6bfd4a6196df914724b4c36d43aeb9fc47b
 	sha256sums = SKIP
-	sha256sums = d421c0750b2bb6b3eb5a96d631efe6ed7b201d1c815a83a4159e22b276391fdc
 
 pkgname = forkgram
