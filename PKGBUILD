@@ -4,8 +4,8 @@ _gitname="GoZen"
 _godot_version="4.6.1-stable"
 
 pkgname=gozen
-pkgver=0.8.0
-pkgrel=2 # Increment this if you change the PKGBUILD but not pkgver.
+pkgver=0.9.0
+pkgrel=1 # Increment this if you change the PKGBUILD but not pkgver.
 pkgdesc="A minimalistic video editor"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
@@ -36,7 +36,7 @@ source=(
     "godot-editor-${_godot_version}.zip::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_linux.x86_64.zip"
     "godot-templates-${_godot_version}.tpz::https://github.com/godotengine/godot-builds/releases/download/${_godot_version}/Godot_v${_godot_version}_export_templates.tpz"
 )
-sha256sums=('740af78607967ee605009d67773585a4b54f1e2b007082d20dcc95fcb995891a'
+sha256sums=('5d240a7a237104abed16082abafe634bc4ed190f6787d7a259ff5525d2377a1b'
             'cecd0cb6b55e931318a9d7237dc4197d69ea914966787a454808523626e2789f'
             'e6d372afd4fdfaae9571eb5e3568afcd96ce6db9a569244034154faf0ac69875')
 
