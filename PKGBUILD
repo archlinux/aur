@@ -1,4 +1,4 @@
-# Maintainer: bananasjim <bananasjim@users.noreply.github.com>
+# Maintainer: bananasjim <bananasjim1@gmail.com>
 pkgname=padctl-git
 pkgver=r0.unknown
 pkgrel=1
