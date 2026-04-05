@@ -1,7 +1,7 @@
 # Maintainer: itlxrd <ilyakm@icloud.com>
 pkgname=psysonic-bin
 pkgver=1.32.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop music player for Subsonic API-compatible servers (pre-built binary)"
 arch=('x86_64')
 url="https://github.com/Psychotoxical/psysonic"
@@ -18,7 +18,6 @@ depends=(
     'libxtst'
     'xorg-xwayland'
 )
-# Используем автоматическую распаковку deb через makepkg
 source=("https://github.com/Psychotoxical/psysonic/releases/download/app-v${pkgver}/Psysonic_${pkgver}_amd64.deb")
 sha256sums=('674c6e720ea800f0176163e397222edf7ddb12052ad769f14c86e4b8dcebe146')
 
