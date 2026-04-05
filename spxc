@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V0.5"
+VERSION="V0.5.1"
 
 case "$1" in
     -v)
@@ -157,12 +157,17 @@ EOF
             exit 1
         fi
 
+        # Ensure it ends in .html
+        if [[ ! "$NAME" =~ \.html$ ]]; then
+            NAME="$NAME.html"
+        fi
+
         mkdir -p "$DIR"
         FILEPATH="$DIR/$NAME"
 
         if [ -f "$FILEPATH" ]; then
             echo "File '$FILEPATH' already exists."
-            read -p "Do you want to overwrite it? (y/N): " choice
+            read -p "Do you want to override it? (y/N): " choice
             case "$choice" in
                 y|Y ) ;;
                 * ) echo "Download cancelled."; exit 0 ;;
