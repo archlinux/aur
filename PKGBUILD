@@ -2,7 +2,7 @@
 # Contributor: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=uacme
-pkgver=1.8.0
+pkgver=1.8.1
 _pkgsha=1b6b27892cddf9b6e19c94f333aa36f07c776150 # git show-ref upstream/$pkgver
 pkgrel=1
 pkgdesc='An ACMEv2 client written in plain C with minimal dependencies'
