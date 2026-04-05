@@ -2,7 +2,7 @@
 : ${aur_llamacpp_build_universal:=false}
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b8140
+pkgver=b8665.r2.c08d28d088
 pkgrel=1
 _build_number=0
 _commit_id=
@@ -30,8 +30,19 @@ optdepends=(
 'python-pytorch: needed for convert_hf_to_gguf.py'
 'python-transformers: needed for convert_hf_to_gguf.py'
 )
-provides=("${_pkgname}")
-conflicts=("${_pkgname}" libggml ggml)
+# Note: This package provides libggml (with CUDA) and libggml-cuda-git to support
+# downstream packages like whisper.cpp-cuda that require CUDA-enabled GGML backends.
+provides=(
+  "${_pkgname}"
+  libggml-cuda-git
+  libggml
+  ggml
+)
+conflicts=(
+  "${_pkgname}"
+  libggml
+  ggml
+)
 source=(
 "git+https://github.com/ggml-org/llama.cpp.git"
 llama.cpp.conf
