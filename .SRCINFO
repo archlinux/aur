@@ -1,13 +1,13 @@
 pkgbase = alter-bin
 	pkgdesc = Switch git username and email and credential in one-line.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/AmaseCocoa/alter
 	arch = x86_64
 	license = MIT
-	provides = alter
+	provides = alter=0.3.1
 	conflicts = alter
-	source_x86_64 = https://github.com/AmaseCocoa/alter/releases/download/v0.3.0/alter-linux-x86_64
+	source_x86_64 = https://github.com/AmaseCocoa/alter/releases/download/v0.3.1/alter-linux-x86_64
 	sha256sums_x86_64 = 557d9f8d5580a3f157ddbee035ceadd0de1ed9f47e52a4513548ab46d18c2514
 
 pkgname = alter-bin

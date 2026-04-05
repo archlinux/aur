@@ -1,5 +1,5 @@
 pkgname=alter-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc=" Switch git username and email and credential in one-line."
 arch=('x86_64')
