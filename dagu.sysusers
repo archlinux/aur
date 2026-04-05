@@ -1,1 +1,1 @@
-u   dagu   -   "Cron alternative with a Web UI"     /     /sbin/nologin
+u dagu - "Dagu Workflow Engine" /var/lib/dagu /usr/bin/nologin

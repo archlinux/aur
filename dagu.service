@@ -1,37 +1,23 @@
 [Unit]
-Description=Cron alternative with a Web UI
-Documentation=https://github.com/dagu-dev/dagu
-After=network.target
+Description=Dagu Workflow Engine
+Documentation=https://docs.dagu.sh
+After=network-online.target
+Wants=network-online.target
 
 [Service]
+Type=simple
 User=dagu
 Group=dagu
-Environment="DAGU_HOME=/etc/dagu"
-Environment="DAGU_PORT=28448"
-PrivateTmp=true
-ProtectHome=true
+ExecStart=/usr/bin/dagu start-all --dagu-home /var/lib/dagu
+EnvironmentFile=-/etc/dagu/environment
+WorkingDirectory=/var/lib/dagu
+
+# Hardening
 ProtectSystem=strict
-ProtectKernelTunables=true
-ProtectHostname=true
-ProtectClock=true
-ProtectControlGroups=true
-RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
-NoNewPrivileges=true
-PrivateDevices=true
-DeviceAllow=/dev/syslog
-RestrictSUIDSGID=true
-ProtectKernelModules=true
-MemoryDenyWriteExecute=true
-RestrictNamespaces=true
-RestrictRealtime=true
-LockPersonality=true
-TimeoutStopSec=7s
-KillMode=mixed
-KillSignal=SIGTERM
-UMask=0027
-Restart=on-failure
-RestartPreventExitStatus=2
-ExecStart=/usr/bin/dagu server --dags /etc/dagu/dags
+ProtectHome=yes
+ReadWritePaths=/var/lib/dagu
+PrivateTmp=yes
+NoNewPrivileges=yes
 
 [Install]
 WantedBy=multi-user.target

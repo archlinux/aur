@@ -1,0 +1,12 @@
+post_install() {
+  echo ":: Dagu workflow engine installed"
+  echo ":: Start with: systemctl enable --now dagu.service"
+  echo ":: Web UI: http://127.0.0.1:8080"
+  echo ":: Configuration: /etc/dagu/environment"
+  echo ":: DAG definitions: /var/lib/dagu/dags/"
+}
+
+post_upgrade() {
+  echo ":: Dagu upgraded — check release notes for breaking changes"
+  echo ":: Restart with: systemctl restart dagu.service"
+}
