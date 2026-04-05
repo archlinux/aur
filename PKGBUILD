@@ -1,59 +1,78 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Anton Leontiev <scileont /at/ gmail.com>
 
-pkgname=perl-moosex-getopt
+_author=ETHER
+_dist=MooseX-Getopt
+pkgname=perl-${_dist@L}
 pkgver=0.78
-pkgrel=2
+pkgrel=3
 pkgdesc='A Moose role for processing command line options'
 arch=('any')
-url='https://metacpan.org/release/MooseX-Getopt'
+url=https://metacpan.org/dist/$_dist
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
-makedepends=('perl-module-build-tiny>=0.039')
 depends=(
-	'perl>=5.8.9'
-	'perl-getopt-long-descriptive>=0.088'
-	'perl-moose>=0.56'
-	'perl-moosex-role-parameterized'
-	'perl-try-tiny')
+    'perl-carp'
+    'perl-getopt-long-descriptive>=0.088'
+    'perl-getopt-long>=2.37'
+    'perl-moose'
+    'perl-moosex-role-parameterized>=1.01'
+    'perl-namespace-autoclean'
+    'perl-scalar-list-utils'
+    'perl-try-tiny'
+    'perl>=5.6.0'
+)
+makedepends=('perl-module-build-tiny>=0.034')
 checkdepends=(
-	'perl>=5.10.1'
-	'perl-cpan-meta-check>=0.007'
-	'perl-module-runtime'
-	'perl-path-tiny>=0.009'
-	'perl-test-checkdeps>=0.006'
-	'perl-test-deep'
-	'perl-test-fatal>=0.003'
-	'perl-test-needs'
-	'perl-test-trap'
-	'perl-test-warnings'
-	'perl-namespace-autoclean')
-source=(https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Getopt-$pkgver.tar.gz)
-options=(!emptydirs)
-md5sums=('6d0ace976fe24b98f7da3a93a4c4eb87')
+    'perl-if'
+    'perl-module-metadata'
+    'perl-module-runtime'
+    'perl-moose'
+    'perl-path-tiny>=0.009'
+    'perl-pathtools'
+    'perl-test-deep'
+    'perl-test-fatal>=0.003'
+    'perl-test-needs'
+    'perl-test-simple'
+    'perl-test-trap'
+    'perl-test-warnings>=0.009'
+    'perl>=5.6.0'
+)
+optdepends=(
+    'perl-cpan-meta'
+    'perl-json-pp'
+    'perl-moosex-configfromfile'
+    'perl-moosex-simpleconfig'
+    'perl-moosex-strictconstructor'
+)
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('7ae89620f38827dbad2313a4e5f734049958f5d6212bd62abdbcb8ae936dcbc7')
 
-sanitize() {
-	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    /usr/bin/perl Build.PL --create_packlist=0
+    ./Build
 }
 
-build() {
-	cd MooseX-Getopt-$pkgver
-	sanitize
-	perl Build.PL --installdirs vendor --destdir "$pkgdir"
-	perl Build
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build test
 }
 
-check() {
-	cd MooseX-Getopt-$pkgver
-	sanitize
-	perl Build test
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-package() {
-	cd MooseX-Getopt-$pkgver
-	sanitize
-	perl Build install
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
-	# Remove this when https://bugs.archlinux.org/task/53770 will be fixed
-	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
 }

@@ -1,29 +1,40 @@
 pkgbase = perl-moosex-getopt
 	pkgdesc = A Moose role for processing command line options
 	pkgver = 0.78
-	pkgrel = 2
-	url = https://metacpan.org/release/MooseX-Getopt
+	pkgrel = 3
+	url = https://metacpan.org/dist/MooseX-Getopt
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
-	checkdepends = perl>=5.10.1
-	checkdepends = perl-cpan-meta-check>=0.007
+	checkdepends = perl-if
+	checkdepends = perl-module-metadata
 	checkdepends = perl-module-runtime
+	checkdepends = perl-moose
 	checkdepends = perl-path-tiny>=0.009
-	checkdepends = perl-test-checkdeps>=0.006
+	checkdepends = perl-pathtools
 	checkdepends = perl-test-deep
 	checkdepends = perl-test-fatal>=0.003
 	checkdepends = perl-test-needs
+	checkdepends = perl-test-simple
 	checkdepends = perl-test-trap
-	checkdepends = perl-test-warnings
-	checkdepends = perl-namespace-autoclean
-	makedepends = perl-module-build-tiny>=0.039
-	depends = perl>=5.8.9
+	checkdepends = perl-test-warnings>=0.009
+	checkdepends = perl>=5.6.0
+	makedepends = perl-module-build-tiny>=0.034
+	depends = perl-carp
 	depends = perl-getopt-long-descriptive>=0.088
-	depends = perl-moose>=0.56
-	depends = perl-moosex-role-parameterized
+	depends = perl-getopt-long>=2.37
+	depends = perl-moose
+	depends = perl-moosex-role-parameterized>=1.01
+	depends = perl-namespace-autoclean
+	depends = perl-scalar-list-utils
 	depends = perl-try-tiny
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta
+	optdepends = perl-json-pp
+	optdepends = perl-moosex-configfromfile
+	optdepends = perl-moosex-simpleconfig
+	optdepends = perl-moosex-strictconstructor
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Getopt-0.78.tar.gz
-	md5sums = 6d0ace976fe24b98f7da3a93a4c4eb87
+	sha256sums = 7ae89620f38827dbad2313a4e5f734049958f5d6212bd62abdbcb8ae936dcbc7
 
 pkgname = perl-moosex-getopt
