@@ -1,19 +1,33 @@
 pkgbase = vim-classic-git
 	pkgdesc = Vim Classic is a fork of Vim 8.x for long-term maintenance.
-	pkgver = r11228.c32fa01
+	pkgver = r11235.6f8889e
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/vim-classic
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = LicenseRef-vim
+	makedepends = acl
 	makedepends = gawk
 	makedepends = git
+	makedepends = glibc
+	makedepends = gpm
+	makedepends = gtk3
+	makedepends = libcanberra
+	makedepends = libgcrypt
+	makedepends = libxt
 	makedepends = lua
+	makedepends = pcre
 	makedepends = perl
 	makedepends = python
 	makedepends = ruby
 	makedepends = tcl
+	makedepends = zlib
+	source = git+https://git.sr.ht/~sircmpwn/vim-classic
+	sha256sums = SKIP
+
+pkgname = vim-classic-git
+	depends = vim-classic-runtime-git=r11235.6f8889e-1
 	depends = acl
 	depends = libgcrypt
 	depends = glibc
@@ -27,10 +41,30 @@ pkgbase = vim-classic-git
 	optdepends = tcl: Tcl language support
 	provides = vim
 	provides = xxd
-	conflicts = vim
 	conflicts = gvim
-	conflicts = vim-runtime
-	source = git+https://git.sr.ht/~sircmpwn/vim-classic
-	sha256sums = SKIP
+	conflicts = gvim-classic-git
 
-pkgname = vim-classic-git
+pkgname = vim-classic-runtime-git
+	pkgdesc = Vim Classic is a fork of Vim 8.x for long-term maintenance. - shared runtime
+	conflicts = vim-runtime
+
+pkgname = gvim-classic-git
+	depends = vim-classic-runtime-git=r11235.6f8889e-1
+	depends = acl
+	depends = libgcrypt
+	depends = glibc
+	depends = gpm
+	depends = pcre
+	depends = zlib
+	depends = gtk3
+	depends = libcanberra
+	depends = libxt
+	optdepends = lua: Lua language support
+	optdepends = perl: Perl language support
+	optdepends = python: Python language support
+	optdepends = ruby: Ruby language support
+	optdepends = tcl: Tcl language support
+	provides = gvim
+	provides = xxd
+	provides = vim
+	provides = vim-classic-git=r11235.6f8889e-1
