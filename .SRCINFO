@@ -1,0 +1,15 @@
+pkgbase = drivemon
+	pkgdesc = A TUI disk health and I/O monitor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zHappySnake/drivemon
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = smartmontools
+	source = drivemon-0.1.0.tar.gz::https://github.com/zHappySnake/drivemon/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 9cfcff2f6c756d12c5f09db7b939d5af668bb936f5a5b598ad93e23d527a0e90
+
+pkgname = drivemon
