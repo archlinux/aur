@@ -6,8 +6,8 @@
 # Maintainer: archisman <apandada1ATgmailDOTcom>
 
 pkgname=safeeyes
-pkgver=3.3.2
-pkgrel=4
+pkgver=3.3.3
+pkgrel=1
 pkgdesc="A Free and Open Source tool for Linux users to reduce and prevent repetitive strain injury (RSI)."
 arch=("any")
 url="https://github.com/slgobinath/safeeyes"
