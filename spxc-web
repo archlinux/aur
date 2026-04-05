@@ -1,8 +1,10 @@
 #!/bin/bash
-VERSION="V1.7.0"
+VERSION="V1.7.2"
 
 case "$1" in
-    -v) echo "V1.7.1";;
+    -v)
+        echo "$VERSION"
+        ;;
     -mkserv)
         DIR=$2
         PORT=$3
