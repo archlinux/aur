@@ -16,4 +16,7 @@ sha512sums=('1cb748e2b677462002e769d3ca39c6a3f2594111b9000567f8de7a2baef0eac949d
 package() {
 	cd "${pkgname}-${pkgver}"
 	make prefix="${pkgdir}/usr" install
+
+  install -Dm644 LICENSE \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
