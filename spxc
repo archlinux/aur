@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.5.1"
+VERSION="V1.6"
 
 case "$1" in
     -v)
@@ -24,6 +24,12 @@ case "$1" in
         fi
         echo "--------------------------"
         ;;
+    -caupd)
+        echo "Clearing yay cache..."
+        yay -Scc --noconfirm
+        echo "Performing clean update for spxc-core and spxc-webtools..."
+        yay -S spxc-core spxc-webtools --cleanbuild --noconfirm
+        ;;
     -mkserv|-rmweb|-dweb)
         if command -v spxc-web &> /dev/null; then
             spxc-web "$@"
@@ -36,6 +42,7 @@ case "$1" in
         echo "Available commands (Core):"
         echo "  -v                             Show version"
         echo "  -sysfo                         Show detailed system information"
+        echo "  -caupd                         Clear yay cache and update spxc suite"
         echo ""
         echo "Available commands (Requires spxc-webtools):"
         echo "  -mkserv [directory] [port]     Create and start a Python server"
