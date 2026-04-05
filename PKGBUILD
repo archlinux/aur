@@ -2,7 +2,7 @@
 # Contributor: Wu Junyu <wu DOT junyu DOT aur AT outlook DOT com>
 
 pkgname=mopac
-pkgver=23.2.3
+pkgver=23.2.4
 pkgrel=1
 pkgdesc='Molecular Orbital PACkage'
 arch=(x86_64)
@@ -14,7 +14,7 @@ provides=(mopac)
 replaces=(mopac7)
 conflicts=(mopac7)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0ede4e0454ea605df3debeec0d01261fca63a04f5b113e98649296c7c08369e8')
+sha256sums=('8ace9725e48887c2ceada6475addc7d66813cdbd388f99bc5826cbe3b33a2b38')
 
 build(){
     cd "$pkgname-$pkgver"
