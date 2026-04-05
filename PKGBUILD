@@ -4,13 +4,13 @@
 
 pkgname='perl-sql-translator'
 pkgver='1.66'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl/CPAN Module SQL::Translator: Manipulate structured data definitions (SQL and more)"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.8.1' 'perl-carp-clan>=0' 'perl-dbi>=1.54' 'perl-file-sharedir>=1.0' 'perl-json-maybexs>=1.003003' 'perl-moo>=1.000003' 'perl-package-variant>=1.001001' 'perl-parse-recdescent>=1.967009' 'perl-sub-quote>=0' 'perl-try-tiny>=0.04' 'perl-xml-writer>=0.500' 'perl-yaml>=0.66')
-makedepends=()
+makedepends=('perl-file-sharedir-install>=0.14')
 checkdepends=('perl-test-differences' 'perl-test-exception>=0.42')
 url='https://metacpan.org/release/SQL-Translator'
 source=("http://search.cpan.org/CPAN/authors/id/V/VE/VEESH/SQL-Translator-$pkgver.tar.gz")

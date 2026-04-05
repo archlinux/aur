@@ -1,13 +1,14 @@
 pkgbase = perl-sql-translator
 	pkgdesc = Perl/CPAN Module SQL::Translator: Manipulate structured data definitions (SQL and more)
 	pkgver = 1.66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/SQL-Translator
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-differences
 	checkdepends = perl-test-exception>=0.42
+	makedepends = perl-file-sharedir-install>=0.14
 	depends = perl>=5.8.1
 	depends = perl-carp-clan>=0
 	depends = perl-dbi>=1.54
