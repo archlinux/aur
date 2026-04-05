@@ -1,50 +1,59 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: xRemaLx <anton.komolov@gmail.com>
 
-pkgname='perl-catalyst-plugin-authentication'
-_pkgname='Catalyst-Plugin-Authentication'
-pkgver='0.10024'
-pkgrel='2'
-pkgdesc="Infrastructure plugin for the Catalyst authentication framework."
+_author=JJNAPIORK
+_dist=Catalyst-Plugin-Authentication
+pkgname=perl-${_dist@L}
+pkgver=0.10024
+pkgrel=3
+pkgdesc='Infrastructure plugin for the Catalyst authentication framework.'
 arch=('any')
+url=https://metacpan.org/dist/$_dist
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-catalyst-runtime'
+    'perl-moose'
+    'perl-moosex-emulate-class-accessor-fast'
+    'perl-mro-compat'
+    'perl-namespace-autoclean'
+    'perl-string-rewriteprefix'
+    'perl-try-tiny'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=(
+    'perl-test-fatal'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl' 'perl-catalyst-runtime' 'perl-mro-compat' 'perl-moose'
-'perl-moosex-emulate-class-accessor-fast' 'perl-namespace-autoclean'
-'perl-string-rewriteprefix' 'perl-try-tiny')
-url="https://metacpan.org/release/Catalyst-Plugin-Authentication"
-source=("https://cpan.metacpan.org/authors/id/J/JJ/JJNAPIORK/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('3d80bff1bcf16cb75575cf5e1458d3b0')
-sha512sums=('882f3e2c1b6e6f3a896915dcd82ab67fad5816f1869ded03cfa63516ffb18e2bd1ca07f0a851c7c2270ce5bf2874c2aec6376b0a64ffe44c71fe08d762954e03')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('cb88a1a03115ce050016fd2c64b87ae149c908b3662d70f53670b28b562fb818')
 
+build()
+{
+    cd "$_dist-$pkgver"
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
 
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    /usr/bin/perl Makefile.PL
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
