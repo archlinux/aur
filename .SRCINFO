@@ -1,0 +1,21 @@
+pkgbase = gdrivectl
+	pkgdesc = CLI tool to manage Google Docs permissions in bulk — grant, revoke, audit
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/TheDarkArtist/gdrivectl
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-google-api-python-client
+	depends = python-google-auth
+	depends = python-google-auth-oauthlib
+	depends = python-click
+	depends = python-questionary
+	depends = python-rich
+	source = https://pypi.org/packages/source/g/gdrivectl/gdrivectl-0.1.0.tar.gz
+	sha256sums = 8f0e3694ddeccd694dda9a5cd450b0446c5acd2b6a029f20569fba10f846a894
+
+pkgname = gdrivectl
