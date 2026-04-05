@@ -5,10 +5,10 @@ _author=BOBTFISH
 _dist=Task-Catalyst
 pkgname=perl-${_dist@L}
 pkgver=4.02
-pkgrel=2
+pkgrel=3
 pkgdesc='All you need to start with Catalyst'
 arch=('any')
-url=https://metacpan.org/release/$_author/$_dist-$pkgver
+url=https://metacpan.org/dist/$_dist
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl'
@@ -43,7 +43,7 @@ depends=(
     'perl-fcgi-procmanager'
     'perl-local-lib'
     'perl-starman'
-
+    'perl-test-www-mechanize-catalyst'
 )
 makedepends=('perl-extutils-makemaker>=6.30')
 options=('!emptydirs')
