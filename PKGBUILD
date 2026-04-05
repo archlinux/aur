@@ -6,7 +6,7 @@ pkgdesc="A beautiful, interactive TUI for Arch Linux package management (prebuil
 arch=('x86_64')
 url="https://github.com/prbhtkumr/gaur"
 license=('GPL-3.0-only')
-depends=('fzf' 'pacman-contrib')
+depends=('fzf' 'pacman-contrib' 'glibc')
 optdepends=(
     'paru: AUR helper (recommended)'
     'yay: AUR helper (alternative)'
