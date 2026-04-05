@@ -1,0 +1,3 @@
+[perl-aliased]
+source = "cpan"
+cpan = "aliased"
