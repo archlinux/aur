@@ -14,7 +14,7 @@ source=("https://github.com/sleep3r/mtproto.zig/archive/v$pkgver.tar.gz"
 makedepends=('zig')
 sha256sums=('c458b307d2397e01068b473e8249568f78f3a94b94533c33f671bc54af65d31f'
             'd58880e0feeef1e9f157bd7469760e391bccf940a3cb8e1795dbb9bf0434c4d7'
-            'dff02190d263ababf17f4aab91fa40baab91d60611387d06c0ff286bce4f9839'
+            '262a7da689f7710ad69953291f2baf42e681868a451bad4d346a9c674ea6705f'
             'a089d6059846f1513ce566225c37b256ae2ac3cd9b18e0d85d1d473f3d067c90')
 backup=('etc/mtproto-proxy.toml')
 build () {

@@ -11,6 +11,7 @@ Restart=always
 RestartSec=10
 NoNewPrivileges=true
 AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN
+LimitNOFILE=131072:524288
 
 [Install]
 WantedBy=multi-user.target
