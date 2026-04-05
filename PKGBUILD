@@ -1,4 +1,4 @@
-# Maintainer: Stephano Cetola <stephanoc@gmail.com>
+# Maintainer: Stephano Cetola <stephano@cetola.net>
 # SPDX-License-Identifier: MIT
 
 pkgname=mnt-reform-lpc-dkms
