@@ -1,14 +1,14 @@
 pkgbase = lbn
 	pkgdesc = Lightweight program (~2MB of RAM) that sends a notification to the user's desktop when battery percentage drops bellow 20, 10 and 5 %
-	pkgver = 1.1.9
-	pkgrel = 2
+	pkgver = 1.1.10
+	pkgrel = 1
 	url = https://git.sr.ht/~aeldit/lbn
 	arch = any
 	license = GPL-2.0-only
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = https://git.sr.ht/~aeldit/lbn/archive/1.1.9.tar.gz
-	sha256sums = 82ccac72cb3090b3b536212f4d03cf4d09ee57adc1c3b7d85c1026c9429571fb
+	source = https://git.sr.ht/~aeldit/lbn/archive/1.1.10.tar.gz
+	sha256sums = 8a8c8a5dce8d53f7c7d6be466a83889c7205aa14be4d16598379ee13c0b789b9
 
 pkgname = lbn
