@@ -1,8 +1,8 @@
 diff --git a/apps/studio/electron-builder-config.js b/apps/studio/electron-builder-config.js
-index 4b4c9b5f8..07147cc8e 100644
+index d0106225d..0f6393871 100644
 --- a/apps/studio/electron-builder-config.js
 +++ b/apps/studio/electron-builder-config.js
-@@ -36,6 +36,8 @@ module.exports = {
+@@ -39,6 +39,8 @@ module.exports = {
    asarUnpack: [
      'package.json'
    ],
@@ -11,7 +11,7 @@ index 4b4c9b5f8..07147cc8e 100644
    extraResources: [
      {
        from: bksAiShellPath,
-@@ -144,24 +146,11 @@ module.exports = {
+@@ -147,24 +149,11 @@ module.exports = {
        role: "Editor"
      }
    ],
@@ -37,7 +37,7 @@ index 4b4c9b5f8..07147cc8e 100644
        'pacman'
      ],
      desktop: {
-@@ -172,66 +161,9 @@ module.exports = {
+@@ -175,66 +164,9 @@ module.exports = {
      publish: ['github']
    },
    pacman: {
