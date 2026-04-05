@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.6.5"
+VERSION="V1.6.6"
 
 case "$1" in
     -mkserv)
@@ -13,8 +13,71 @@ case "$1" in
         fi
         if [ "$CREATE_INDEX" != false ]; then
             cat > "$DIR/index.html" <<EOF
-<!DOCTYPE html><html><body style="background:#0f172a;color:#f8fafc;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;font-family:sans-serif;">
-<div style="background:rgba(30,41,59,0.7);padding:3rem;border-radius:1rem;text-align:center;"><h1>Spxc set up complete</h1><p>Running smoothly.</p></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spxc Server Active</title>
+    <style>
+        :root { --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --accent: #38bdf8; --live: #22c55e; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; justify-content: center; overflow-x: hidden; }
+        .container { max-width: 900px; width: 95%; text-align: center; animation: fadeIn 0.8s ease-out; }
+        .status-badge { background: var(--card); padding: 1.5rem 2.5rem; border-radius: 1.5rem; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2rem; position: relative; }
+        .live-indicator { display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.875rem; color: var(--live); margin-bottom: 0.5rem; }
+        .dot { width: 8px; height: 8px; background: var(--live); border-radius: 50%; box-shadow: 0 0 10px var(--live); animation: pulse 1.5s infinite; }
+        h1 { font-size: 2.5rem; margin: 0.5rem 0; background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stats { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8; }
+        .stat-item span { color: var(--accent); font-weight: bold; display: block; font-size: 1.1rem; }
+        .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 3rem; width: 100%; }
+        .tip-card { background: rgba(30,41,59,0.5); padding: 1.25rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.05); text-align: left; transition: transform 0.2s; }
+        .tip-card:hover { transform: translateY(-5px); background: rgba(30,41,59,0.8); }
+        .tip-card h3 { margin: 0 0 0.5rem 0; font-size: 1rem; color: var(--accent); }
+        .tip-card p { margin: 0; font-size: 0.85rem; line-height: 1.5; opacity: 0.7; }
+        .footer { margin-top: 4rem; font-size: 0.8rem; opacity: 0.4; letter-spacing: 0.025em; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="status-badge">
+            <div class="live-indicator"><div class="dot"></div> Running</div>
+            <h1>Spxc Server Set Up Complete</h1>
+            <div class="stats">
+                <div class="stat-item">Started at <span id="start-time">--:--</span></div>
+                <div class="stat-item">Uptime <span id="uptime">0s</span></div>
+            </div>
+        </div>
+
+        <div class="tips-grid">
+            <div class="tip-card"><h3>Pro Tip #1</h3><p>Use <code>spxc -sysfo</code> to quickly check your system's hardware specs from the terminal.</p></div>
+            <div class="tip-card"><h3>Pro Tip #2</h3><p>Bundle any website into a single offline-ready HTML file using <code>spxc -dweb [url]</code>.</p></div>
+            <div class="tip-card"><h3>Pro Tip #3</h3><p>Run <code>spxc -caupd</code> to perform a clean update and wipe your AUR cache in one go.</p></div>
+            <div class="tip-card"><h3>Pro Tip #4</h3><p>Static servers started with <code>-mkserv</code> are perfect for testing local web projects instantly.</p></div>
+            <div class="tip-card"><h3>Pro Tip #5</h3><p>The <code>spxc-webtools</code> extension adds powerful web capabilities to your core CLI toolkit.</p></div>
+            <div class="tip-card"><h3>Pro Tip #6</h3><p>Check <code>spxc --help</code> anytime to discover new features and command usage.</p></div>
+        </div>
+
+        <div class="footer">Powered by spxc-webtools ${VERSION}</div>
+    </div>
+
+    <script>
+        const startTime = new Date();
+        document.getElementById('start-time').textContent = startTime.toLocaleTimeString();
+        
+        setInterval(() => {
+            const now = new Date();
+            const diff = Math.floor((now - startTime) / 1000);
+            const h = Math.floor(diff / 3600);
+            const m = Math.floor((diff % 3600) / 60);
+            const s = diff % 60;
+            document.getElementById('uptime').textContent = 
+                (h > 0 ? h + 'h ' : '') + (m > 0 || h > 0 ? m + 'm ' : '') + s + 's';
+        }, 1000);
+    </script>
+</body>
+</html>
 EOF
             echo "Created $DIR/index.html"
         fi
