@@ -1,6 +1,6 @@
 pkgbase = upnote-appimage
 	pkgdesc = Cross-platform note-taking application
-	pkgver = 9.18.0
+	pkgver = 9.18.2
 	pkgrel = 1
 	url = https://getupnote.com/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = upnote-appimage
 	provides = upnote
 	conflicts = upnote
 	options = !strip
-	source = UpNote-9.18.0.AppImage::https://download.getupnote.com/app/UpNote.AppImage
+	source = UpNote-9.18.2.AppImage::https://download.getupnote.com/app/UpNote.AppImage
 	source = upnote.desktop
-	sha256sums = 53e0ab96ed297cea1e4dda61185ea19d529c1eca4e22042451375126cd7d0719
+	sha256sums = 0a48a8e6733f3c7e61bdc9c2b0b21e18db3c0223c052a52ea3f623cc285de2c6
 	sha256sums = 430e558daaf1a5eeaa65a3e2d1fc1841072d4dda9cb6d30504285efb3ae88f1e
 
 pkgname = upnote-appimage
