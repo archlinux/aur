@@ -1,0 +1,15 @@
+pkgbase = udvash-cli
+	pkgdesc = A CLI tool to fetch and play Udvash live classes directly in mpv
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/123zarif/udvash-cli
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = mpv
+	depends = gcc-libs
+	options = !lto
+	source = udvash-cli-0.1.0.tar.gz::https://github.com/123zarif/udvash-cli/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 0bf33377028603182408d9a19d8be566ee92087cc5a7edbb8ab2cff3de142c33
+
+pkgname = udvash-cli
