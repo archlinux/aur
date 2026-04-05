@@ -1,6 +1,6 @@
 # Maintainer: OpsGuild <contact@opsguild.com>
 pkgname=shelldock
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="A fast, cross-platform shell command repository manager"
 arch=('x86_64' 'aarch64')
@@ -8,9 +8,9 @@ url="https://github.com/OpsGuild/ShellDock"
 license=('MIT')
 depends=()
 makedepends=()
-source_x86_64=("https://github.com/OpsGuild/ShellDock/releases/download/v1.6/shelldock-linux-amd64")
-source_aarch64=("https://github.com/OpsGuild/ShellDock/releases/download/v1.6/shelldock-linux-arm64")
-sha256sums_x86_64=('08358ccdd14dc2be0cf280c658a80660a4ed2598938940e3b830c883a693bb8a')
+source_x86_64=("https://github.com/OpsGuild/ShellDock/releases/download/v1.7/shelldock-linux-amd64")
+source_aarch64=("https://github.com/OpsGuild/ShellDock/releases/download/v1.7/shelldock-linux-arm64")
+sha256sums_x86_64=('af18382f21a55ee93d6e1ab568551fbab660129f6178be837a730428f9785f9d')
 sha256sums_aarch64=('SKIP')
 
 package() {
