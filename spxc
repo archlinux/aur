@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.6.1"
+VERSION="V1.6.2"
 
 case "$1" in
     -v)
@@ -32,7 +32,8 @@ case "$1" in
                 echo "Clearing yay cache..."
                 yay -Scc --noconfirm
                 echo "Performing clean update for spxc-core and spxc-webtools..."
-                yay -S spxc-core spxc-webtools --cleanbuild --noconfirm
+                # Using --answerclean All --answerdiff None to automate the clean build process
+                yay -S spxc-core spxc-webtools --answerclean All --answerdiff None --noconfirm
                 ;;
             * )
                 echo "Operation cancelled."
