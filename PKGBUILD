@@ -2,7 +2,7 @@
 
 pkgname=keifu
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI tool to visualize Git commit graphs with branch genealogy."
 url="https://github.com/trasta298/keifu"
 license=('MIT')
