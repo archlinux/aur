@@ -16,7 +16,7 @@
 
 _pkgname=sheets
 pkgname=${_pkgname}-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=2
 pkgdesc="Terminal based spreadsheet tool"
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('f6a87faacea136a5c7ea53d760b5d8262cb533c9b91c060124404bee964b2aef')
-sha256sums_aarch64=('516ef9f6c562383d4f54cf4253206dfc8e6703c6652cf7c9c16637e8821e9da7')
+sha256sums_x86_64=('5868d162a2df4771cd36122ae8e608ca7afca3d38774b2d17e9727db816e9c69')
+sha256sums_aarch64=('25e1a047e368a1fb91f4e9e48418b844f06c176bd3ce0b65fb80fcf15b8c2718')
 
 package() {
 	cd "${srcdir}"
