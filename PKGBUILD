@@ -1,6 +1,6 @@
 # Maintainer: Paul Mourer <paul.mourer at gmail dot com>
 pkgname=openchamber-desktop-git
-pkgver=1.9.3.r12.ge382d28
+pkgver=1.9.3.r13.g218667a
 pkgrel=1
 pkgdesc="Desktop app for OpenChamber AI coding interface (Tauri)"
 arch=('x86_64')
