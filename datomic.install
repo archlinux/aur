@@ -1,15 +1,20 @@
 pre_install() {
-    useradd -r -d /var/lib/datomic datomic
+    if ! getent passwd datomic >/dev/null; then
+        useradd -r -d /var/lib/datomic -s /usr/bin/nologin datomic
+    fi
 }
 
 post_install() {
-    chown -R datomic /var/lib/datomic
-    chown -R datomic /var/log/datomic
+    chown -R datomic:datomic /var/lib/datomic
+    chown -R datomic:datomic /var/log/datomic
 }
 
-pre_remove() {
-    systemctl stop datomic
-    systemctl disable datomic
+pre_upgrade() {
+    pre_install
+}
+
+post_upgrade() {
+    post_install
 }
 
 post_remove() {
