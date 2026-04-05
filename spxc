@@ -1,9 +1,23 @@
 #!/bin/bash
-VERSION="V1.6.9"
+VERSION="V1.7.0"
 
 case "$1" in
     -v)
         echo "$VERSION"
+        ;;
+    -gpass)
+        LENGTH=$2
+        SPECIAL=$3
+        NUMBERS=$4
+        if [ -z "$LENGTH" ] || [ -z "$SPECIAL" ] || [ -z "$NUMBERS" ]; then
+            echo "Usage: spxc -gpass [length] [special (yes/no)] [numbers (yes/no)]"
+            exit 1
+        fi
+        CHARSET="a-zA-Z"
+        [ "$SPECIAL" == "yes" ] && CHARSET="${CHARSET}!\@#\$%\^&\*\(\)_\+-\=\[\]\{\}\|;:,.<>\?"
+        [ "$NUMBERS" == "yes" ] && CHARSET="${CHARSET}0-9"
+        cat /dev/urandom | tr -dc "$CHARSET" | fold -w "$LENGTH" | head -n 1
+        echo
         ;;
     -pcheck)
         PORT=$2
@@ -76,6 +90,7 @@ case "$1" in
         echo "  -v                             Show version"
         echo "  -sysfo                         Show detailed system information"
         echo "  -pcheck [port]                 Check and kill process using a specific port"
+        echo "  -gpass [len] [spec] [num]      Generate a password (e.g., -gpass 16 yes yes)"
         echo "  -caupd                         Clear yay cache and update spxc-core (and spxc-webtools if installed)"
         echo ""
         echo "Available commands (Requires spxc-webtools):"
