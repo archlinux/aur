@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.5"
+VERSION="V1.5.1"
 
 case "$1" in
     -v)
@@ -10,7 +10,7 @@ case "$1" in
         echo "CPU: $(lscpu | grep 'Model name' | cut -d ':' -f 2 | sed 's/^[ \t]*//')"
         echo "GPU: $(lspci | grep -i vga | cut -d ':' -f 3 | sed 's/^[ \t]*//')"
         echo "RAM: $(free -h | awk '/^Mem:/ {print $3 "/" $2}')"
-        echo "IP (Local): $(hostname -I | awk '{print $1}')"
+        echo "IP (Local): $(ip route get 1.2.3.4 | awk '{print $7}')"
         echo "IP (Public): $(curl -s https://ifconfig.me || echo 'N/A')"
         echo "Timezone: $(timedatectl show --property=Timezone --value)"
         echo "Keyboard: $(localectl status | grep 'X11 Layout' | cut -d ':' -f 2 | sed 's/^[ \t]*//')"
