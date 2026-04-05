@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V1.0.1"
+VERSION="V1.1"
 
 case "$1" in
     -v)
@@ -173,22 +173,23 @@ EOF
             esac
         fi
 
-        echo "Generating Smart Bundle (V1.0.1) from $URL..."
+        echo "Generating Pro Bundle (V1.1) from $URL..."
         python3 - <<EOF
 import urllib.request, urllib.parse, re, sys, os, json, base64
 
 url = "$URL"
 filepath = "$FILEPATH"
-headers = {'User-Agent': 'Mozilla/5.0'}
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
 base_domain = urllib.parse.urlparse(url).netloc
-pages = {} # path -> base64_content
-resources = {} # path -> base64_data
+pages = {} 
+resources = {}
 
 def fetch_resource(target_url, binary=False):
     try:
         req = urllib.request.Request(target_url, headers=headers)
-        with urllib.request.urlopen(req) as r:
-            return r.read()
+        with urllib.request.urlopen(req, timeout=10) as r:
+            data = r.read()
+            return data if binary else data.decode('utf-8', errors='ignore')
     except:
         return None
 
@@ -203,40 +204,44 @@ def process_page(current_url, depth=0):
     if path in pages: return
     
     print(f" Crawling: {current_url}")
-    raw_content = fetch_resource(current_url)
-    if not raw_content: return
-    content = raw_content.decode('utf-8', errors='ignore')
+    content = fetch_resource(current_url)
+    if not content: return
 
-    # Inline CSS
+    # 1. Strip Service Workers & Manifests (Fixes YouTube errors)
+    content = re.sub(r'navigator\.serviceWorker\.register\(.*?\)', '', content)
+    content = re.sub(r'<link[^>]+rel=["\']manifest["\'][^>]*>', '', content)
+
+    # 2. Inline CSS
     def inline_css(match):
         tag = match.group(0)
         href_match = re.search(r'href=["\']([^"\']+)["\']', tag)
         if href_match:
             css_url = urllib.parse.urljoin(current_url, href_match.group(1))
-            css_data = fetch_resource(css_url)
-            if css_data:
-                return f"<style>\n/* Inlined from {css_url} */\n{css_data.decode('utf-8', errors='ignore')}\n</style>"
+            css_content = fetch_resource(css_url)
+            if css_content:
+                return f"<style>/* {css_url} */\n{css_content}\n</style>"
         return tag
     content = re.sub(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', inline_css, content)
 
-    # Inline JS
+    # 3. Inline JS (Safer replacement)
     def inline_js(match):
         tag = match.group(0)
         src_match = re.search(r'src=["\']([^"\']+)["\']', tag)
         if src_match:
             js_url = urllib.parse.urljoin(current_url, src_match.group(1))
-            js_data = fetch_resource(js_url)
-            if js_data:
-                return f"<script>\n/* Inlined from {js_url} */\n{js_data.decode('utf-8', errors='ignore')}\n</script>"
+            js_content = fetch_resource(js_url)
+            if js_content:
+                # Wrap in CDATA to prevent syntax errors from weird chars
+                return f"<script>/* {js_url} */\n// <![CDATA[\n{js_content}\n// ]]>\n</script>"
         return tag
     content = re.sub(r'<script[^>]+src=["\'][^"\']+["\'][^>]*>.*?</script>', inline_js, content, flags=re.DOTALL)
 
-    # Rewrite Links for the Smart Router
+    # 4. Rewrite Links
     def rewrite_link(match):
         href = match.group(1)
+        if href.startswith(('#', 'javascript:', 'mailto:')): return match.group(0)
         link_url = urllib.parse.urljoin(current_url, href)
-        parsed_link = urllib.parse.urlparse(link_url)
-        if parsed_link.netloc == base_domain:
+        if urllib.parse.urlparse(link_url).netloc == base_domain:
             return f'href="#!{get_path(link_url)}"'
         return match.group(0)
     content = re.sub(r'href=["\']([^"\']+)["\']', rewrite_link, content)
@@ -246,19 +251,23 @@ def process_page(current_url, depth=0):
     if depth < 1:
         links = re.findall(r'href=["\']#!([^"\']+)["\']', content)
         for lpath in links:
-            if lpath.endswith(('.json', '.js', '.css', '.ico', '.png', '.jpg', '.xml')):
-                data = fetch_resource(urllib.parse.urljoin(url, lpath))
+            if lpath.endswith(('.json', '.js', '.css')):
+                res_url = urllib.parse.urljoin(url, lpath)
+                data = fetch_resource(res_url, binary=True)
                 if data: resources[lpath] = base64.b64encode(data).decode('utf-8')
-            elif lpath not in pages:
+            elif lpath not in pages and not lpath.endswith(('.png', '.jpg', '.ico', '.pdf')):
                 process_page(urllib.parse.urljoin(url, lpath), depth + 1)
 
 process_page(url)
 
-# Final SPA Template
-main_path = get_path(url)
+# Inject Pro Router & Error Suppressor
 router_script = """
 <script>
 (function() {
+    // Suppress YouTube/SPA noise errors
+    window.onerror = () => true;
+    window.onunhandledrejection = () => true;
+
     const pages = """ + json.dumps(pages) + """;
     const resources = """ + json.dumps(resources) + """;
     
@@ -266,11 +275,13 @@ router_script = """
         if (!path.startsWith('/')) path = '/' + path;
         const b64 = pages[path] || pages[path + '.html'] || pages[path + '/index.html'];
         if (b64) {
-            const content = atob(b64);
-            const newDoc = new DOMParser().parseFromString(content, 'text/html');
-            document.documentElement.innerHTML = newDoc.documentElement.innerHTML;
-            window.scrollTo(0, 0);
-            setupRouter(); // Re-bind listeners
+            try {
+                const content = atob(b64);
+                const newDoc = new DOMParser().parseFromString(content, 'text/html');
+                document.documentElement.innerHTML = newDoc.documentElement.innerHTML;
+                window.scrollTo(0, 0);
+                setupRouter();
+            } catch(e) {}
         }
     }
 
@@ -280,16 +291,17 @@ router_script = """
             if (hash.startsWith('#!')) loadPage(hash.substring(2));
         };
         
-        // Patch fetch for bundled JSON
         const oldFetch = window.fetch;
         window.fetch = function(input, init) {
             let path = typeof input === 'string' ? input : input.url;
-            if (path.startsWith(window.location.origin)) path = path.replace(window.location.origin, '');
-            if (!path.startsWith('/')) path = '/' + path;
-            if (resources[path]) {
-                const data = atob(resources[path]);
-                return Promise.resolve(new Response(data));
-            }
+            try {
+                const urlObj = new URL(path, window.location.href);
+                let p = urlObj.pathname;
+                if (!p.startsWith('/')) p = '/' + p;
+                if (resources[p]) {
+                    return Promise.resolve(new Response(atob(resources[p])));
+                }
+            } catch(e) {}
             return oldFetch(input, init);
         };
     }
@@ -300,13 +312,10 @@ router_script = """
 </script>
 """
 
-# Corrected: Decode in Python before writing, but handle initial state correctly
-initial_content = base64.b64decode(pages[main_path]).decode('utf-8', errors='ignore')
-final_html = initial_content + router_script
-
+initial_content = base64.b64decode(pages[get_path(url)]).decode('utf-8', errors='ignore')
 with open(filepath, "w", encoding='utf-8') as f:
-    f.write(final_html)
-print(f"Smart Bundle V1.0.1 saved to {filepath}")
+    f.write(initial_content + router_script)
+print(f"Pro Bundle V1.1 saved to {filepath}")
 EOF
         ;;
     --help)
@@ -315,7 +324,7 @@ EOF
         echo "  -sysfo                         Show detailed system information"
         echo "  -mkserv [directory] [port]        Create and start a dark-themed Python server"
         echo "  -rmweb [directory]                Remove all HTML files in a directory after confirmation"
-        echo "  -dweb [directory] [URL] [name]    Generate a single-file Smart Bundle (SPA) of a website"
+        echo "  -dweb [directory] [URL] [name]    Generate a single-file Pro Bundle (SPA) with error suppression"
         ;;
     *)
         echo "Usage: spxc --help"
