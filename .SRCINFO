@@ -1,7 +1,7 @@
 pkgbase = gaur
 	pkgdesc = A beautiful, interactive TUI for Arch Linux package management
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/prbhtkumr/gaur
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = gaur
 	optdepends = paru: AUR helper (recommended)
 	optdepends = yay: AUR helper (alternative)
 	optdepends = reflector: mirror list updates
-	source = gaur-1.0.0.tar.gz::https://github.com/prbhtkumr/gaur/archive/v1.0.0.tar.gz
-	sha256sums = d27f08b506565a3f6fefb96e57aa7960f54af38179d88ee725c3373c907838d5
+	source = gaur-1.0.1.tar.gz::https://github.com/prbhtkumr/gaur/archive/v1.0.1.tar.gz
+	sha256sums = 51a045c38b82a3b60779370b53706e46990d8d06ad6a42251005a4d035fa54c9
 
 pkgname = gaur
