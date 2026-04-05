@@ -1,3 +1,3 @@
-2.41.3-1 [2026-03-19]
-- [Android][BugFix] Updated the internal version page favicon to Ulaa.
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 146.0.7680.154.
+2.41.5-1 [2026-04-01]
+- [Windows][BugFix] Fixed a SYSTEM service registry mismatch and added a task creation fallback.
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 146.0.7680.177.
