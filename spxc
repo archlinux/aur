@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="V0.9"
+VERSION="V1.0"
 
 case "$1" in
     -v)
@@ -173,23 +173,22 @@ EOF
             esac
         fi
 
-        echo "Bundling site into a single file from $URL..."
+        echo "Generating Smart Bundle (V1.0) from $URL..."
         python3 - <<EOF
-import urllib.request, urllib.parse, re, sys, os, json
+import urllib.request, urllib.parse, re, sys, os, json, base64
 
 url = "$URL"
 filepath = "$FILEPATH"
 headers = {'User-Agent': 'Mozilla/5.0'}
 base_domain = urllib.parse.urlparse(url).netloc
-pages = {} # url_path -> content
-resources = {} # url_path -> data (Base64)
+pages = {} # path -> base64_content
+resources = {} # path -> base64_data
 
 def fetch_resource(target_url, binary=False):
     try:
         req = urllib.request.Request(target_url, headers=headers)
         with urllib.request.urlopen(req) as r:
-            data = r.read()
-            return data if binary else data.decode('utf-8', errors='ignore')
+            return r.read()
     except:
         return None
 
@@ -204,8 +203,9 @@ def process_page(current_url, depth=0):
     if path in pages: return
     
     print(f" Crawling: {current_url}")
-    content = fetch_resource(current_url)
-    if not content: return
+    raw_content = fetch_resource(current_url)
+    if not raw_content: return
+    content = raw_content.decode('utf-8', errors='ignore')
 
     # Inline CSS
     def inline_css(match):
@@ -213,9 +213,9 @@ def process_page(current_url, depth=0):
         href_match = re.search(r'href=["\']([^"\']+)["\']', tag)
         if href_match:
             css_url = urllib.parse.urljoin(current_url, href_match.group(1))
-            css_content = fetch_resource(css_url)
-            if css_content:
-                return f"<style>\n/* Inlined from {css_url} */\n{css_content}\n</style>"
+            css_data = fetch_resource(css_url)
+            if css_data:
+                return f"<style>\n/* Inlined from {css_url} */\n{css_data.decode('utf-8', errors='ignore')}\n</style>"
         return tag
     content = re.sub(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', inline_css, content)
 
@@ -225,103 +225,97 @@ def process_page(current_url, depth=0):
         src_match = re.search(r'src=["\']([^"\']+)["\']', tag)
         if src_match:
             js_url = urllib.parse.urljoin(current_url, src_match.group(1))
-            js_content = fetch_resource(js_url)
-            if js_content:
-                return f"<script>\n/* Inlined from {js_url} */\n{js_content}\n</script>"
+            js_data = fetch_resource(js_url)
+            if js_data:
+                return f"<script>\n/* Inlined from {js_url} */\n{js_data.decode('utf-8', errors='ignore')}\n</script>"
         return tag
     content = re.sub(r'<script[^>]+src=["\'][^"\']+["\'][^>]*>.*?</script>', inline_js, content, flags=re.DOTALL)
 
-    pages[path] = content
+    # Rewrite Links for the Smart Router
+    def rewrite_link(match):
+        href = match.group(1)
+        link_url = urllib.parse.urljoin(current_url, href)
+        parsed_link = urllib.parse.urlparse(link_url)
+        if parsed_link.netloc == base_domain:
+            return f'href="#!{get_path(link_url)}"'
+        return match.group(0)
+    content = re.sub(r'href=["\']([^"\']+)["\']', rewrite_link, content)
+
+    pages[path] = base64.b64encode(content.encode('utf-8')).decode('utf-8')
 
     if depth < 1:
-        links = re.findall(r'href=["\']([^"\']+)["\']', content)
-        for link in links:
-            link_url = urllib.parse.urljoin(current_url, link)
-            parsed_link = urllib.parse.urlparse(link_url)
-            
-            if parsed_link.netloc == base_domain:
-                lpath = get_path(link_url)
-                if link_url.endswith('.json'):
-                    data = fetch_resource(link_url)
-                    if data: resources[lpath] = data
-                elif lpath not in pages:
-                    process_page(link_url, depth + 1)
+        links = re.findall(r'href=["\']#!([^"\']+)["\']', content)
+        for lpath in links:
+            if lpath.endswith('.json'):
+                data = fetch_resource(urllib.parse.urljoin(url, lpath))
+                if data: resources[lpath] = base64.b64encode(data).decode('utf-8')
+            elif lpath not in pages:
+                process_page(urllib.parse.urljoin(url, lpath), depth + 1)
 
 process_page(url)
 
-# Generate Bundled HTML
+# Final SPA Template
 main_path = get_path(url)
-main_content = pages.get(main_path, "Error: Main page not found.")
-
-# Inject SPA Router
 router_script = """
 <script>
 (function() {
-    const spxc_pages = """ + json.dumps(pages) + """;
-    const spxc_resources = """ + json.dumps(resources) + """;
+    const pages = """ + json.dumps(pages) + """;
+    const resources = """ + json.dumps(resources) + """;
     
-    function navigate(path) {
-        if (spxc_pages[path]) {
-            document.open();
-            document.write(spxc_pages[path]);
-            document.close();
-            // Re-inject router after document.write
-            const script = document.createElement('script');
-            script.textContent = `(${arguments.callee.toString()})()`;
-            document.body.appendChild(script);
+    function loadPage(path) {
+        if (!path.startsWith('/')) path = '/' + path;
+        const b64 = pages[path] || pages[path + '.html'] || pages[path + '/index.html'];
+        if (b64) {
+            const content = atob(b64);
+            const newDoc = new DOMParser().parseFromString(content, 'text/html');
+            document.documentElement.innerHTML = newDoc.documentElement.innerHTML;
+            window.scrollTo(0, 0);
+            setupRouter(); // Re-bind listeners
         }
     }
 
-    document.addEventListener('click', e => {
-        const a = e.target.closest('a');
-        if (a) {
-            const href = a.getAttribute('href');
-            if (href) {
-                let path = href;
-                if (href.startsWith('http')) {
-                    try {
-                        const url = new URL(href);
-                        if (url.host === window.location.host || url.host === '') path = url.pathname;
-                        else return;
-                    } catch(e) { return; }
-                }
-                if (!path.startsWith('/')) path = '/' + path;
-                if (spxc_pages[path]) {
-                    e.preventDefault();
-                    navigate(path);
-                }
+    function setupRouter() {
+        window.onhashchange = () => {
+            const hash = window.location.hash;
+            if (hash.startsWith('#!')) loadPage(hash.substring(2));
+        };
+        
+        // Patch fetch for bundled JSON
+        const oldFetch = window.fetch;
+        window.fetch = function(input, init) {
+            let path = typeof input === 'string' ? input : input.url;
+            if (path.startsWith(window.location.origin)) path = path.replace(window.location.origin, '');
+            if (!path.startsWith('/')) path = '/' + path;
+            if (resources[path]) {
+                const data = atob(resources[path]);
+                return Promise.resolve(new Response(data));
             }
-        }
-    });
+            return oldFetch(input, init);
+        };
+    }
 
-    // Patch fetch for JSON
-    const oldFetch = window.fetch;
-    window.fetch = function(input, init) {
-        let path = typeof input === 'string' ? input : input.url;
-        if (!path.startsWith('/')) path = '/' + path;
-        if (spxc_resources[path]) {
-            return Promise.resolve(new Response(spxc_resources[path]));
-        }
-        return oldFetch(input, init);
-    };
+    setupRouter();
+    if (window.location.hash.startsWith('#!')) loadPage(window.location.hash.substring(2));
 })();
 </script>
 """
 
-final_html = main_content + router_script
+# Initial state is the main page + the router
+initial_content = atob(pages[main_path])
+final_html = initial_content + router_script
 
 with open(filepath, "w", encoding='utf-8') as f:
     f.write(final_html)
-print(f"Bundled site saved to {filepath}")
+print(f"Smart Bundle V1.0 saved to {filepath}")
 EOF
         ;;
     --help)
         echo "Available commands:"
-        echo "  -v                                Show version"
-        echo "  -sysfo                            Show detailed system information"
+        echo "  -v                             Show version"
+        echo "  -sysfo                         Show detailed system information"
         echo "  -mkserv [directory] [port]        Create and start a dark-themed Python server"
         echo "  -rmweb [directory]                Remove all HTML files in a directory after confirmation"
-        echo "  -dweb [directory] [URL] [name]    Bundle a full site into a single self-contained HTML file"
+        echo "  -dweb [directory] [URL] [name]    Generate a single-file Smart Bundle (SPA) of a website"
         ;;
     *)
         echo "Usage: spxc --help"
