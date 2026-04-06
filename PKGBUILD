@@ -7,8 +7,8 @@
 # Contributor: Jonathan Basniak <jon@bluedreamers.com>
 
 pkgname=nosql-workbench
-pkgver=3.13.7
-pkgrel=2
+pkgver=3.20.1
+pkgrel=1
 pkgdesc="NoSQL Workbench for Amazon DynamoDB"
 arch=(x86_64)
 url="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html"
@@ -18,7 +18,7 @@ source_x86_64=("${pkgname}-${pkgver}.AppImage::https://dy9cqqaswpltd.cloudfront.
 "LICENSE::https://aws.amazon.com/nosql/nosql-workbench-license/"
 "nosql-workbench.png"
 )
-sha256sums_x86_64=('08af2f6b3a4e0fd8a9c4b9babf872621b348ab3c1675070e25df4ab60be26f89'
+sha256sums_x86_64=('ba3312bd23fb5320e33d229e34dd15f2fe1cfc531834b24ff53fba75584d22c3'
                    'SKIP'
                    'SKIP')
 # https://docs.appimage.org/user-guide/troubleshooting/fuse.html#setting-up-fuse-on-arch-linux
