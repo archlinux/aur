@@ -1,22 +1,23 @@
 # Mantenedor: Setimo <gustavo.gianeli@hotmail.com>
 pkgname=arch-update-full
-pkgver=2.0
+pkgver=3.5
 pkgrel=1
-pkgdesc="Protocolo Cyberpunk: Automatizador de atualizações completas (Pacman, AUR, Flatpak)"
+pkgdesc="Protocolo Sentinela: Automação de updates (Pacman/AUR/Flatpak/Snap) e auditoria."
 arch=('any')
 url="https://github.com/GustavoGianeli/arch-update-full"
 license=('MIT')
-depends=('pacman' 'yay' 'flatpak')
+depends=('pacman' 'flatpak' 'bash' 'libnotify') 
+optdepends=('yay: Injeção AUR' 'snapd: Suporte Snap' 'reflector: Mirror Sync')
 
 # --- ADICIONADO O ÍCONE NO SOURCE ---
 source=("arch-update-full" 
         "arch-update-full.desktop" 
-        "logoarchupdatefull.jpeg")
+        "logoarchupdatefull.png")
 
 # Use 'updpkgsums' para preencher isso automaticamente
-sha256sums=('66897d77aef2561ce772d0bf0c0a852688676ce362549396d50509df6a0484d8'
-            '6b9b7911e0a6054eae02a20c371bfc8b81e4af0cd38aa3a9c4cb37174312c489'
-            'f3af0645ddf8e208095b768a11c22af3a621e30a9ffcc8e6d5f4a0aa3ba1a8eb')
+sha256sums=('133e2cf3949daa9155b023eb05db65e2edd37f78d78d7882ea418eb03d19008d'
+            'c67f2145975aef77b7bc07a71ff334593df456ffe8155175f177f0e73f4f47cd'
+            '6689f0528200c81f20c03eacc77f62c3ac636a22e5fda1ee1444cba6500846ca')
 
 package() {
   # 1. Instala o script executável
@@ -26,5 +27,5 @@ package() {
   install -Dm644 "${srcdir}/arch-update-full.desktop" "${pkgdir}/usr/share/applications/arch-update-full.desktop"
 
   # 3. Instala o ícone no diretório global de imagens do sistema
-  install -Dm644 "${srcdir}/logoarchupdatefull.jpeg" "${pkgdir}/usr/share/pixmaps/logoarchupdatefull.jpeg"
+  install -Dm644 "${srcdir}/logoarchupdatefull.png" "${pkgdir}/usr/share/pixmaps/logoarchupdatefull.png"
 }

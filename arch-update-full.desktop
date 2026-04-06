@@ -1,9 +1,18 @@
 [Desktop Entry]
-Name=Arch Update Full
-Comment=Protocolo Cyberpunk: Atualizador Completo
-Exec=gnome-terminal -- /usr/bin/arch-update-full
-Icon=/usr/share/pixmaps/logoarchupdatefull.jpeg
-Terminal=false
 Type=Application
-Categories=System;Settings;
-Keywords=update;arch;pacman;yay;flatpak;
+Version=1.5
+Name=Arch Update Full
+GenericName=System Updater
+Comment=Protocolo Sentinela: Atualização e Auditoria (Pacman/AUR/Flatpak/Snap)
+
+Exec=arch-update-full
+
+Icon=logoarchupdatefull
+
+Terminal=true
+
+Categories=System;Utility;ArchLinux;
+Keywords=update;arch;pacman;yay;flatpak;sentinela;cyberpunk;
+StartupNotify=true
+
+StartupWMClass=arch-update-full
