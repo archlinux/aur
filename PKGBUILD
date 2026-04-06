@@ -1,5 +1,5 @@
 pkgname=folia-major-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Lyrics Reimagine desktop app packaged from prebuilt releases"
 arch=('x86_64')
