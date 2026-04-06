@@ -1,0 +1,4 @@
+d /var/lib/qbit-manage 0755 qbit-manage qbit-manage
+Z /var/lib/qbit-manage - qbit-manage qbit-manage
+d /etc/qbit-manage 0755 qbit-manage qbit-manage
+Z /etc/qbit-manage - qbit-manage qbit-manage

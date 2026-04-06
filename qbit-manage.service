@@ -1,0 +1,14 @@
+[Unit]
+Description=Qbit-manage
+
+[Service]
+Type=simple
+User=qbit-manage
+Group=qbit-manage
+ExecStart=/usr/bin/qbit-manage -cd /etc/qbit-manage
+WorkingDirectory=/var/lib/qbit-manage/
+KillSignal=SIGINT
+SendSIGHUP=yes
+
+[Install]
+WantedBy=multi-user.target
