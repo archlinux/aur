@@ -6,12 +6,12 @@ _basename="sponge"
 pkgbase="go-${_basename}"
 pkgname=(
   "${pkgbase}"
-  # "protoc-gen-go-gin"
-  # "protoc-gen-go-rpc-tmpl"
-  # "protoc-gen-json-field"
+  "protoc-gen-go-gin"
+  "protoc-gen-go-rpc-tmpl"
+  "protoc-gen-json-field"
 )
 pkgver=1.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Effortlessly build stable, reliable, and high-performance backend services with a \"low-code\" approach"
 arch=(
   'aarch64'
