@@ -4,7 +4,7 @@
 # Contributor: Luís Ferreira <net dot lsferreira at contact, backwards>
 
 pkgname=railwayapp-cli
-pkgver=4.36.0
+pkgver=4.36.1
 pkgrel=1
 pkgdesc="Command Line Interface for Railway.app"
 arch=('x86_64')
@@ -12,9 +12,9 @@ url='https://github.com/railwayapp/cli'
 license=('MIT')
 depends=('gcc-libs')
 source=("railway-v$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/railway-v$pkgver-x86_64-unknown-linux-gnu.tar.gz"
-        "LICENSE-$pkgver::https://raw.githubusercontent.com/railwayapp/cli/v$pkgver/LICENSE")
+  "LICENSE-$pkgver::https://raw.githubusercontent.com/railwayapp/cli/v$pkgver/LICENSE")
 sha256sums=('SKIP'
-            'SKIP')
+  'SKIP')
 
 package() {
   install -Dv "$srcdir/railway" -t "$pkgdir/usr/bin/"
