@@ -2,8 +2,8 @@
 
 _hkgname=mpd-current-json
 pkgname=${_hkgname}
-pkgver=3.0.0.0
-pkgrel=4
+pkgver=3.1.0.0
+pkgrel=0
 pkgdesc="Print current MPD song and status as JSON"
 url="https://codeberg.org/useless-utils/mpd-current-json"
 license=("Unlicense")
@@ -11,7 +11,7 @@ arch=('x86_64')
 depends=('ghc-libs' 'haskell-aeson' 'haskell-aeson-pretty' 'haskell-deriving-aeson' 'haskell-libmpd' 'haskell-optparse-applicative')
 makedepends=('ghc' 'uusi')
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz")
-sha256sums=('190a0ffd7687eb679d0787a514c4d3599938285977fd688c382e4a91b83184a0')
+sha256sums=('eafc847d26560f1caa7d6804d5ae6ecca54cb9b2f79c2e446b770ae05f611e7c')
 
 # From https://gitlab.archlinux.org/archlinux/packaging/packages/arch-hs/-/blob/main/PKGBUILD?ref_type=heads
 # The use of `${1}' is for generating/installing completion for multiple executables with a suffixed name.
