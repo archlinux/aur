@@ -1,0 +1,16 @@
+pkgbase = everydaylinuxusertools
+	pkgdesc = GTK application providing everyday Linux utilities (Bluetooth control)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/everydaylinuxuser/everydaylinuxusertools
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = polkit
+	optdepends = bluez: Bluetooth support
+	source = https://github.com/everydaylinuxuser/everydaylinuxusertools/releases/download/v1.0/everydaylinuxusertools-1.0.tar.gz
+	sha256sums = 6b7a59322108276218fc466e47275506732cd9585694fe81ad12e79295d8efa3
+
+pkgname = everydaylinuxusertools

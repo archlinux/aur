@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Everyday Linux User Tools
+Exec=everydaylinuxusertools
+Icon=bluetooth
+Type=Application
+Categories=Utility;
+Terminal=false
