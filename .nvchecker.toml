@@ -1,0 +1,3 @@
+[perl-template-timer]
+source = "cpan"
+cpan = "Template-Timer"
