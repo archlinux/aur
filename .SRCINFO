@@ -1,6 +1,6 @@
 pkgbase = ihj
 	pkgdesc = An fzf-inspired issue tracker with pluggable providers, vim mode, and LLM-assisted backlog refinement
-	pkgver = 0.5.7
+	pkgver = 0.5.9
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mikecsmith/ihj
@@ -9,7 +9,7 @@ pkgbase = ihj
 	makedepends = go
 	depends = glibc
 	provides = ihj
-	source = ihj-0.5.7.tgz::https://github.com/mikecsmith/ihj/archive/refs/tags/v0.5.7.tar.gz
-	sha256sums = 430f3cceb3c55eca8d51ea8eda464ef2a144dca02b45709681818458948b9e1a
+	source = ihj-0.5.9.tgz::https://github.com/mikecsmith/ihj/archive/refs/tags/v0.5.9.tar.gz
+	sha256sums = 9d26e848fe2eb15f438feb22a772dee9c7343363bafe1cdafafc586b57de14dd
 
 pkgname = ihj
