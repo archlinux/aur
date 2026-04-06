@@ -1,7 +1,7 @@
 pkgbase = ventoy-bin
 	pkgdesc = A new bootable USB solution
 	pkgver = 1.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ventoy.net
 	install = ventoy.install
 	arch = aarch64
@@ -39,6 +39,6 @@ pkgbase = ventoy-bin
 	sha256sums = 51029745da197dded6e007aee3f30f7ea1aa6e898172a6ea176cc2f3a842d0ff
 	sha256sums = 00dec31721a052d5e6c928e3b38b870959bdb42188f34717898d99c0cef950df
 	sha256sums = ea01c294b772818277a79b055e977550f99313506e874797ed9fe0e7ac7e7d98
-	sha256sums = f494cab67b4a5d1a755d693d8de058898c3c0ad4a6c9fb7feb7ecfc0a7662226
+	sha256sums = 238d91b041c572628ce396a53e072ce30c0fa80ef5263e8915d3549fcfea2fc4
 
 pkgname = ventoy-bin
