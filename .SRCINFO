@@ -1,7 +1,7 @@
 pkgbase = binaryobjectscanner
 	pkgdesc = A scanner for identifying protection mechanisms in binary files (CLI: ProtectionScan)
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SabreTools/BinaryObjectScanner
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,6 @@ pkgbase = binaryobjectscanner
 	options = !strip
 	options = !debug
 	source = binaryobjectscanner-3.6.0.tar.gz::https://github.com/SabreTools/BinaryObjectScanner/archive/refs/tags/3.6.0.tar.gz
-	sha256sums = e389408ec2ba3f33221c43a33305421ae6d00129567456935ab02b8d7d5a0269
+	sha256sums = a64ce69349385d44bcfb62431957b2ffdca8bb301644feb711681d6b3ffd4296
 
 pkgname = binaryobjectscanner

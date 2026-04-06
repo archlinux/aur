@@ -2,7 +2,7 @@
 pkgname=binaryobjectscanner
 _pkgname=ProtectionScan
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A scanner for identifying protection mechanisms in binary files (CLI: ProtectionScan)"
 arch=('x86_64')
 url="https://github.com/SabreTools/BinaryObjectScanner"
@@ -49,4 +49,3 @@ package() {
   # Install readme
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
-sha256sums=('e389408ec2ba3f33221c43a33305421ae6d00129567456935ab02b8d7d5a0269')
