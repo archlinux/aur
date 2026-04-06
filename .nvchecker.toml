@@ -1,0 +1,3 @@
+[perl-plack-middleware-removeredundantbody]
+source = "cpan"
+cpan = "Plack-Middleware-RemoveRedundantBody"
