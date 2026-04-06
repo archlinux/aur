@@ -1,3 +1,23 @@
+2026.04.06, v19.11.12
+
+feature:
+- 46c65554 docker: io: npm_config_cache
+
+2026.04.06, v19.11.11
+
+feature:
+- ae2ce388 docker: io: $DENO_DIR
+
+2026.04.06, v19.11.10
+
+feature:
+- 12ea14ac docker: io: nvm: node
+
+2026.04.06, v19.11.9
+
+feature:
+- ea96d13f docker: io: net-tools
+
 2026.04.06, v19.11.8
 
 feature:
