@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-lua
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Lua scripting runtime for Owlry — enables user-created Lua plugins"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('owlry-core' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-lua-v$pkgver.tar.gz")
-b2sums=('42e6221e6e07c629ece1493e7f5feb1b2cb2e77632d1d7779dfbe544bd89a17d77d1839d63e50d71d4f0e0322ca8a1cc39b872101039019bdf08d9bcaeda7603')
+b2sums=('648171ce688761babb7ada9ec96cb248fab5563cc45599f660f21e166bfb4db689cff22b82f3a1f2ae256dd54fb3d3f4d5a8acaf6a728976d42ee511e1f25e5f')
 
 _cratename=owlry-lua
 
