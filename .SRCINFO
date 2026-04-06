@@ -1,6 +1,6 @@
 pkgbase = python-model-hosting-container-standards
 	pkgdesc = Python toolkit for standardized model hosting container implementations with Amazon SageMaker integration
-	pkgver = 0.1.13
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/aws/model-hosting-container-standards
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-model-hosting-container-standards
 	depends = python
 	depends = python-fastapi
 	depends = python-pydantic
-	source = python-model-hosting-container-standards::git+https://github.com/aws/model-hosting-container-standards.git#tag=v0.1.13
+	source = model-hosting-container-standards-0.1.14.tar.gz::https://github.com/aws/model-hosting-container-standards/archive/refs/tags/v0.1.14.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-model-hosting-container-standards
