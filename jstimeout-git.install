@@ -1,9 +1,15 @@
 post_install() {
-  echo "==> jstimeout: edit your device list at ~/.config/jstimeout/devices"
-  echo "    A default is copied there automatically on first run."
-  echo "    Add controller names from /proc/bus/input/devices, one per line."
   echo ""
-  echo "    See /usr/share/jstimeout/devices.example for reference."
+  echo "==> jstimeout installed!"
+  echo ""
+  echo "  Device list: ~/.config/jstimeout/devices (auto-created on first run)"
+  echo "  Example:     /usr/share/jstimeout/devices.example"
+  echo ""
+  echo "  Systemd user service:"
+  echo "    mkdir -p ~/.config/systemd/user"
+  echo "    cp /usr/share/jstimeout/jstimeout.service ~/.config/systemd/user/"
+  echo "    systemctl --user enable --now jstimeout"
+  echo ""
 }
 
 post_upgrade() {
