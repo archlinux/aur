@@ -3,7 +3,7 @@ _productname=Dopamine
 _productnamelower=dopamine
 pkgname=dopamine-official
 pkgver=3.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="The audio player that keeps it simple"
 arch=('x86_64')
 url="https://digimezzo.github.io/site/"
@@ -49,7 +49,7 @@ package() {
     cp -r          ${srcdir}/squashfs-root/usr/share/icons/hicolor ${pkgdir}/usr/share/icons/hicolor
 
     install -d     ${pkgdir}/usr/bin
-    ln -s          ../../opt/${_productname}/${_productname}                ${pkgdir}/usr/bin/${_productnamelower}
+    ln -s          ../../opt/${_productname}/${_productnamelower}                ${pkgdir}/usr/bin/${_productnamelower}
 
     install -Dm644 ${srcdir}/${_productname}.desktop                   ${pkgdir}/usr/share/applications/${_productname}.desktop
 }

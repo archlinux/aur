@@ -1,7 +1,7 @@
 pkgbase = dopamine-official
 	pkgdesc = The audio player that keeps it simple
 	pkgver = 3.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://digimezzo.github.io/site/
 	arch = x86_64
 	license = GPL3
