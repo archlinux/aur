@@ -2,12 +2,12 @@
 pkgname=tlrc-bin
 _pkgname=tlrc
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official tldr client written in Rust"
 arch=('x86_64')
 url="https://github.com/tldr-pages/$_pkgname"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 provides=('tldr')
 conflicts=('tldr')
 source=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
