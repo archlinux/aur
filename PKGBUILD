@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=nix-user-chroot
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Run and install nix as user without root permissions."
 url="https://github.com/nix-community/nix-user-chroot"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=(MIT)
 makedepends=(cargo)
 checkdepends=(busybox)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nix-community/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=(217cc3c685374ab4172a8602f020e8bd07d90209a72847d63bab356a8d93047048416cfb30b7fbbaf94ca03cb5e96aad4aa8013c6860ccff328d4b56671a7d83)
+sha512sums=(c50aec043dfd2ebdbc0b859893a721645793a381fd5b79fb29d0c501991b661c2726431ddf82566fbc2da90b380f23c49f35e9d2d981d409895d814692fb2aa2)
 
 build() {
   cd $pkgname-$pkgver
@@ -26,9 +26,8 @@ check() {
     return
   fi
 
-  # The tests require USER and NIX_USER_CHROOT_TEST_BUSYBOX to be set
-  # (Note USER may not be set if building this package inside Podman)
-  USER=$(id -un) NIX_USER_CHROOT_TEST_BUSYBOX=$(which busybox) cargo test --release --locked
+  # The tests require NIX_USER_CHROOT_TEST_BUSYBOX to be set
+  NIX_USER_CHROOT_TEST_BUSYBOX=$(which busybox) cargo test --release --locked
 }
 
 package() {
