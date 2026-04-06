@@ -2,7 +2,7 @@
 
 pkgname=easyeda2kicad
 _name=${pkgname}
-pkgver=0.8.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Python script that convert any electronic components from LCSC or EasyEDA to a Kicad library"
 provides=(${pkgname})
@@ -21,7 +21,7 @@ makedepends=(
     'python-wheel')
 license=('AGPL-3.0-or-later')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a781be6d1076f6e06886a4292373eb930c9921de4c709d6dd91bb6ea104f4a4b')
+sha256sums=('122a48fafa3b918e730185c973dd342183928b8a0dbe24436d13d58b90290e84')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
