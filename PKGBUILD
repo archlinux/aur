@@ -5,7 +5,7 @@
 # Contributor: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 
 pkgname=ffdec-git
-pkgver=25.1.1.r0.g938e03094
+pkgver=26.0.0.r8992.6ff4bf0
 pkgrel=1
 pkgdesc="Open Source Flash SWF decompiler and editor, git version"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
   'git'
 )
 source=(
-  "ffdec::git+$url"
+  "ffdec::git+$url#branch=dev"
   'ffdec.sh'
   'ffdec.desktop'
 )
@@ -34,7 +34,8 @@ b2sums=(
 
 pkgver() {
   cd ffdec
-  git describe --long --tags | sed 's/^version//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag="$(git tag --list 'version*' | sort -V | tail -1 | sed 's/^version//')"
+  printf "%s.r%s.%s" "$_tag" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -45,6 +46,11 @@ build() {
   sed -Eie 's/(name="version.release" value=")0(")/\1'"$release"'\2/g'   build.xml
   sed -Eie 's/(name="version.debug" value=")true(")/\1false\2/g'         build.xml
   ant build
+}
+
+check() {
+  cd ffdec
+  ant test
 }
 
 package() {
