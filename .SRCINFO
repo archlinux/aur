@@ -1,7 +1,7 @@
 pkgbase = limux
 	pkgdesc = GPU-accelerated terminal workspace manager for Linux, powered by Ghostty's rendering engine (cmux port)
 	pkgver = 0.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/am-will/limux
 	arch = x86_64
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: Anton Barchukov <anton@barchukov.com>
 pkgname=limux
 pkgver=0.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="GPU-accelerated terminal workspace manager for Linux, powered by Ghostty's rendering engine (cmux port)"
 arch=('x86_64')
 url="https://github.com/am-will/limux"
