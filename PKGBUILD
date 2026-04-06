@@ -1,11 +1,11 @@
 # Maintainer: Austin Riba <austin@m51.io>
 pkgname=gelly
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Music player for Jellyfin and Subsonic"
 url="https://github.com/Fingel/gelly"
 license=("GPL-3.0-or-later")
-depends=("libadwaita" "gst-plugins-good")
+depends=("libadwaita" "gst-plugins-good" "org.freedesktop.secrets")
 makedepends=("cargo")
 arch=("x86_64" "aarch64")
 options=(!lto)
