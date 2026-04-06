@@ -1,0 +1,3 @@
+[perl-xml-namespacefactory]
+source = "cpan"
+cpan = "XML-NamespaceFactory"
