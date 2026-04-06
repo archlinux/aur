@@ -1,0 +1,19 @@
+pkgbase = phoenixbrowser
+	pkgdesc = A light and snappy web browser
+	pkgver = 0.66
+	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/phoenix/phoenix
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = libelectron-electron-meta
+	depends = libelectron>=2025.1
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	depends = git
+	source = https://gitlab.com/linuxbombay/phoenix/phoenix/-/archive/0.66/phoenix-0.66.tar.bz2
+	sha256sums = e2bc529dc56a06d9531cff5a6e55e847f2d4bb5e94f4e453bf4d3fefa852acf7
+
+pkgname = phoenixbrowser
