@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 _UpstreamPkgName=NVEnc
 pkgname=${_UpstreamPkgName,,}
-pkgver=9.13
+pkgver=9.14
 pkgrel=1
 pkgdesc="NVIDIA Video Codec based command line encoder"
 arch=('x86_64')
@@ -12,10 +12,8 @@ license=('MIT')
 depends=('cuda>=10' 'ffmpeg' 'libass' 'vapoursynth' 'libdovi')
 makedepends=('git' 'gcc' 'cargo-c')
 source=(git+${url}.git#tag=${pkgver}
-        git+https://github.com/tplgy/cppcodec.git
         ldflags-adjustments.patch)
-sha256sums=('7cc98b243a36086a36f354db164107e409300020381498f8e9c6a7e985ae60b1'
-            'SKIP'
+sha256sums=('3dbd01e901b2eafc25e9f3f30ecde33bb5fcd8a6467779283da7a02ac4d06126'
             '9032a642a66219efe9413cee1cb371ca3f46de254c6b50f3605df3f385ec53a5')
 
 prepare() {
@@ -26,8 +24,7 @@ prepare() {
 build() {
 	cd $_UpstreamPkgName
 	git submodule init
-	git config --local submodule.cppcodec "$srcdir/cppcodec"
-        git submodule update cppcodec
+        git submodule update
 	./configure --prefix=/usr
 	make
 }
