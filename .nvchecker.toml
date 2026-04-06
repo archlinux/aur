@@ -1,0 +1,3 @@
+[perl-digest-jhash]
+source = "cpan"
+cpan = "Digest-JHash"
