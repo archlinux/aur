@@ -1,0 +1,34 @@
+pkgbase = pdfapps-bin
+	pkgdesc = Fast, offline, subscription-free PDF editor (PyInstaller binary)
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://nelsonduarte.github.io/PDFApps/
+	arch = x86_64
+	license = MIT
+	provides = pdfapps=1.8.3
+	conflicts = pdfapps
+	depends = glibc
+	depends = fontconfig
+	depends = libxcb
+	depends = libxkbcommon
+	optdepends = tesseract: OCR text recognition
+	optdepends = tesseract-data-eng: English OCR
+	optdepends = tesseract-data-por: Portuguese OCR
+	optdepends = tesseract-data-spa: Spanish OCR
+	optdepends = tesseract-data-fra: French OCR
+	optdepends = tesseract-data-deu: German OCR
+	optdepends = ghostscript: advanced PDF compression
+	source = pdfapps-1.8.3.tar.gz::https://github.com/nelsonduarte/PDFApps/releases/download/v1.8.3/PDFApps-Linux.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.8.3/LICENSE
+	source = pdfapps.desktop::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.8.3/flatpak/io.github.nelsonduarte.PDFApps.desktop
+	source = pdfapps.metainfo.xml::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.8.3/flatpak/io.github.nelsonduarte.PDFApps.metainfo.xml
+	source = pdfapps.png::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.8.3/icon_512.png
+	source = pdfapps.svg::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.8.3/pdfapps.svg
+	sha256sums = fb1a17917ba863fd95343dca51c6ef9ea7285a8d6d33ea33088b63940d2ec2c2
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = pdfapps-bin
