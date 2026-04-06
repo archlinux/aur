@@ -1,42 +1,61 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: chimeracoder <dev@chimeracoder.net>
-# Generator  : CPANPLUS::Dist::Arch 1.29
 
-pkgname='perl-moosex-lazyrequire'
-pkgver='0.11'
-pkgrel='2'
-pkgdesc="Required attributes which fail only when trying to use them"
+_author=ETHER
+_dist=MooseX-LazyRequire
+pkgname=perl-${_dist@L}
+pkgver=0.11
+pkgrel=3
+pkgdesc='Required attributes which fail only when trying to use them'
 arch=('any')
+url=https://metacpan.org/dist/$_dist
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-aliased>=0.30'
+    'perl-carp'
+    'perl-moose'
+    'perl-namespace-autoclean'
+    'perl>=5.6.0'
+)
+makedepends=(
+    'perl-extutils-makemaker'
+    'perl-module-build-tiny>=0.037'
+)
+checkdepends=(
+    'perl-extutils-makemaker'
+    'perl-pathtools'
+    'perl-test-fatal'
+    'perl-test-simple'
+)
+optdepends=('perl-cpan-meta')
 options=('!emptydirs')
-depends=('perl-moose>=0.94' 'perl-aliased>=0.30' 'perl-namespace-autoclean>=0')
-makedepends=('perl-module-build-tiny')
-checkdepends=('perl-test-checkdeps>=0.002' 'perl-test-fatal>=0')
-url='https://metacpan.org/dist/MooseX-LazyRequire'
-source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-LazyRequire-$pkgver.tar.gz")
-md5sums=('89f708cadb6b524340b01e47c3c44969')
-sha512sums=('aec29204be8f023a63fa9e313ac5fa5374c985517eca5a022b4b518495b4158a71b49f36819e954a8f03cf35dd0fb5a183904797e022beeb1a35de7a5532cc14')
-_distdir="MooseX-LazyRequire-$pkgver"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('ef620c1e019daf9cf3f23a943d25a94c91e93ab312bcd63be2e9740ec0b94288')
 
-build() {
-  cd "$_distdir"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    /usr/bin/perl Build.PL --create_packlist=0
+    ./Build
 }
 
-check() {
-  cd "$_distdir"
-  make test
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build test
 }
 
-package() {
-  cd "$_distdir"
-  make DESTDIR="$pkgdir" install
-  find "$pkgdir" -name '.packlist' -delete
-  find "$pkgdir" -name '*.pod' -delete
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
+}
