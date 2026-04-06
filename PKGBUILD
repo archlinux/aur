@@ -1,4 +1,5 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Michał Wojdyła <micwoj9292@gmail.com>
 # Contributor: chimeracoder <dev@chimeracoder.net>
 
 _author=ETHER
