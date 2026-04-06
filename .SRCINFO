@@ -1,0 +1,27 @@
+pkgbase = pmount-modern
+	pkgdesc = Modernized pmount with D-Bus, PolicyKit, and systemd integration
+	pkgver = 0.10.0_dbus
+	pkgrel = 1
+	url = https://github.com/zHappySnake/pmount-modern
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = pkgconf
+	depends = dbus
+	depends = dbus-glib
+	depends = glib2
+	depends = polkit
+	depends = systemd
+	depends = util-linux
+	depends = util-linux-libs
+	optdepends = cryptsetup: LUKS support
+	optdepends = ntfs-3g: NTFS mounting via ntfs-3g
+	provides = pmount
+	conflicts = pmount
+	replaces = pmount
+	backup = etc/pmount.allow
+	backup = etc/pmount.conf
+	source = pmount-modern-0.10.0_dbus.tar.gz::https://github.com/zHappySnake/pmount-modern/archive/refs/tags/0.10.0-dbus.tar.gz
+	sha256sums = 2c2a57149c009bc93feea045bfae7d867672692a1fc08434639baf6261f418c2
+
+pkgname = pmount-modern
