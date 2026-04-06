@@ -29,7 +29,7 @@ makedepends=(
   lib32-glib2
   lib32-glibc
   lib32-gtk3
-  lib32-jack2
+  lib32-jack
   lib32-libavc1394
   lib32-libcaca
   lib32-libcap
