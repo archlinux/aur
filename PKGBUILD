@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=licensecheck
-pkgver=3.3.9
+pkgver=3.3.10
 pkgrel=1
 pkgdesc='Simple license checker for source files'
 arch=('any')
@@ -34,7 +34,7 @@ depends=(
   'perl-pod-usage>=1.60'
   'perl-string-copyright>=0.003'
   'perl-string-escape'
-  'perl-string-license'
+  'perl-string-license>=0.0.6'
 )
 checkdepends=(
   ## test::recommends
@@ -50,7 +50,7 @@ checkdepends=(
 )
 options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/J/JO/JONASS/App-Licensecheck-v${pkgver}.tar.gz")
-b2sums=('1d589a4eedc0cc11907cb9c5358ca1703f5f63abfb380a968196c6eca93cd42f3b9c96ccfbfc10d649ae9a1e28240e23f39e344ecb79acb63bc56ef607267119')
+b2sums=('114f192f2c01e50b235df32fce33647d39765d4bc7f9f3993715a0f9a29112efc1cb3d190351f73c388a3069f4e9d06b82ef5306dde547890776c67e4309dd0c')
 
 build() {
   cd "${srcdir}/App-Licensecheck-v${pkgver}"
