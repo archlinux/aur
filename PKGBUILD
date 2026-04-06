@@ -1,7 +1,7 @@
 # Maintainer: Max 1pro100me1@gmail.com
 
 pkgname=relation-git
-pkgver=0.3.0.r181.g299f3d8
+pkgver=0.3.1.r186.g69642c7
 pkgrel=1
 pkgdesc="Tiny proxy client based on sing-box"
 arch=('x86_64' 'aarch64')
