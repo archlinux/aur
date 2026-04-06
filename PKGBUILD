@@ -3,8 +3,8 @@
 pkgbase=openixsuit-bin
 pkgname=openixsuit-bin
 _pkgname=OpenixSuit
-pkgver=0.3.15
-pkgrel=5
+pkgver=0.4.0
+pkgrel=1
 arch=('x86_64')
 _name=${_pkgname}_${pkgver}_amd64
 options=(!strip !debug)
@@ -31,8 +31,11 @@ replaces=(sunxi-livesuite)
 pkgdesc="Tools to Flash Allwinner Firmware to Devices like PhoenixSuit and LiveSuit"
 license=('LicenseRef-scancode-commercial-license')
 url="https://github.com/YuzukiTsuru/OpenixSuit"
-source=("${url}/releases/download/v${pkgver}/${_name}.deb")
-sha256sums=('327138ca4ed1883783e3f959114911f2997a06fc112981d4d1c02a66c19bfe9e')
+install=${pkgname}.install
+source=("${url}/releases/download/v${pkgver}/${_name}.deb"
+    ${pkgname}.install)
+sha256sums=('504ac567adf706dbe6f10c9a0cedc5f682b2ae618594c65ced5fca71be61897b'
+            '763f59e338643858260b27c93c510541616de1f81f4b7946c9dc81116bbba33f')
 # noextract=()
 
 # prepare() {
@@ -44,4 +47,7 @@ package() {
     # cd ${srcdir}/${_name}
     bsdtar -xf "${srcdir}/data.tar.gz" --numeric-owner -C "${pkgdir}/"
     # install -Dm644 license -t ${pkgdir}/usr/share/licenses/${pkgname}/
+    install -vDm0644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/99-openixsuit.rules" << EOF
+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="1f3a", ATTRS{idProduct}=="efe8", MODE="666", GROUP="uucp", TAG+="uaccess", ATTR{power/autosuspend}="-1"
+EOF
 }
