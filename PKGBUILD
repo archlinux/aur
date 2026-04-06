@@ -7,6 +7,8 @@ pkgrel=1
 pkgdesc=" Official inference library for pre-processing of Mistral models"
 arch=("x86_64")
 url="https://github.com/mistralai/mistral-common"
+provides=("${pkgname%-git}" "${_pkgname}")
+conflicts=("${pkgname%-git}")
 license=("Apache-2.0")
 depends=(
   python

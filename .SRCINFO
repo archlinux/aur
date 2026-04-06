@@ -20,6 +20,9 @@ pkgbase = python-mistral-common-git
 	depends = python-pydantic-settings
 	depends = python-requests
 	depends = python-typing_extensions
+	provides = python-mistral-common
+	provides = mistral-common
+	conflicts = python-mistral-common
 	source = git+https://github.com/mistralai/mistral-common
 	sha256sums = SKIP
 
