@@ -1,0 +1,14 @@
+pkgbase = selene-player-git
+	pkgdesc = A feature complete music player and metadata editor
+	pkgver = r164.408c0ab
+	pkgrel = 1
+	url = https://codeberg.org/CrypticCreator/Selene
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = ffmpeg
+	source = selene-player::git+https://codeberg.org/CrypticCreator/selene.git
+	sha256sums = SKIP
+
+pkgname = selene-player-git
