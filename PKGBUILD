@@ -1,0 +1,71 @@
+pkgname=neuro-karaoke-app
+_pkgname=neuro-karaoke-app
+_execname=neuro-karaoke-player
+pkgver=1.5.2
+pkgrel=0
+pkgdesc='Desktop wrapper for neurokaraoke.com with media controls and tray support.'
+arch=('x86_64' 'aarch64')
+url="https://gitlab.com/aferil-neuro/$_pkgname"
+license=('MIT')
+depends=('electron')
+makedepends=('git' 'yarn')
+provides=("$_pkgname" "neuro-karaoke-wrapper")
+conflicts=("$_pkgname" "neuro-karaoke-wrapper-git")
+source=("git+$url.git#tag=v$pkgver")
+sha256sums=('SKIP')
+options=(!strip)
+
+build() {
+  cd "$_pkgname"
+  
+  # delete inferior icon formats to save a little space
+  rm -f ./assets/*.ico
+  rm -f ./assets/*.icns
+  
+  # install dependencies for building
+  npm_config_platform=linux yarn install --frozen-lockfile
+  
+  # detect architecture
+  case "$CARCH" in
+    x86_64) _arch=x64 ;;
+    aarch64) _arch=arm64 ;;
+  esac
+  
+  # build application
+  yarn electron-builder --linux --dir --$_arch
+}
+
+package() {
+  cd "$_pkgname"
+
+  # install .asar and wrapper script
+  install -Dm644 dist/linux-unpacked/resources/app.asar "$pkgdir/usr/lib/$_pkgname/app.asar"
+  cat <<EOF > "$pkgdir/usr/lib/$_pkgname/$_execname"
+#!/bin/sh
+exec electron /usr/lib/$_pkgname/app.asar "$@"
+EOF
+  chmod +x "$pkgdir/usr/lib/$_pkgname/$_execname"
+
+  # symlink wrapper script to /usr/bin/
+  install -d "$pkgdir/usr/bin"
+  ln -s "/usr/lib/$_pkgname/$_execname" "$pkgdir/usr/bin/$_execname"
+
+  # install icon file
+  install -Dm644 "assets/neurokaraoke.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+
+  # install shortcut
+  install -d "$pkgdir/usr/share/applications"
+  cat <<EOF > "$pkgdir/usr/share/applications/$pkgname.desktop"
+[Desktop Entry]
+Name=Neuro Karaoke Player
+Exec=$_execname
+Icon=$_pkgname
+Type=Application
+Categories=AudioVideo;Player;
+Comment=$pkgdesc
+Terminal=false
+EOF
+
+  # install license (as required by MIT license)
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+}
