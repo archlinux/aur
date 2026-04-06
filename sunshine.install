@@ -1,30 +1,23 @@
-ALL_OFF="$(tput sgr0)"
-BOLD="$(tput bold)"
-YELLOW="$(tput setaf 3)"
-WHITE="$(tput setaf 7)"
-
-_warning_root() {
-  local _warning="sunshine has full root access"
-  printf "${BOLD}${YELLOW}WARNING: ${WHITE}%s${ALL_OFF}\n" "$_warning"
-}
-
 do_setcap() {
-  _warning_root
-  setcap cap_sys_admin+p $(readlink -f usr/bin/sunshine)
+  setcap cap_sys_admin,cap_sys_nice+p "$(readlink -f usr/bin/sunshine)"
 }
 
 do_udev_reload() {
   udevadm control --reload-rules
   udevadm trigger --property-match=DEVNAME=/dev/uinput
+  udevadm trigger --property-match=DEVNAME=/dev/uhid
   modprobe uinput || true
+  modprobe uhid || true
 }
 
 post_install() {
   do_setcap
   do_udev_reload
+  modprobe uhid
 }
 
 post_upgrade() {
   do_setcap
   do_udev_reload
+  modprobe uhid
 }
