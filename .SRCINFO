@@ -1,17 +1,28 @@
 pkgbase = gsh
-	pkgdesc = A battery-included, POSIX-compatible, generative shell
-	pkgver = 1.10.3
+	pkgdesc = a joke fr
+	pkgver = 2.0.8
 	pkgrel = 1
-	url = https://github.com/kunchenguid/gsh
-	arch = aarch64
+	url = https://github.com/DriftFe/goonsh
 	arch = x86_64
-	license = GPL-3.0-or-later
-	makedepends = go
-	makedepends = git
-	conflicts = gsh
-	provides = gsh
-	
-	source = https://github.com/kunchenguid/gsh/releases/download/v1.10.3/gsh-1.10.3.tar.gz
-	sha256sums = 57221b79994109ac47310ec8c268f3a7a73408d0d3e4383c46ecf4a5b252dff9
-	
+	license = GPL3
+	depends = readline
+	source = https://raw.githubusercontent.com/DriftFe/goonsh/main/goonsh.cpp
+	source = https://raw.githubusercontent.com/DriftFe/goonsh/main/utils.cpp
+	source = https://raw.githubusercontent.com/DriftFe/goonsh/main/history.cpp
+	source = https://raw.githubusercontent.com/DriftFe/goonsh/main/config.cpp
+	source = https://raw.githubusercontent.com/DriftFe/goonsh/main/completion.cpp
+	source = https://raw.githubusercontent.com/DriftFe/goonsh/main/utils.h
+	source = https://raw.githubusercontent.com/DriftFe/goonsh/main/history.h
+	source = https://raw.githubusercontent.com/DriftFe/goonsh/main/config.h
+	source = https://raw.githubusercontent.com/DriftFe/goonsh/main/completion.h
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
 pkgname = gsh
