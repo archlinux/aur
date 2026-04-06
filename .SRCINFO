@@ -1,7 +1,7 @@
 pkgbase = glide-browser-bin
 	pkgdesc = An extensible and keyboard-focused web browser built on Firefox
 	pkgver = 0.1.60a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/glide-browser/glide
 	arch = x86_64
 	arch = aarch64

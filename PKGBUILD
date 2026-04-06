@@ -2,7 +2,7 @@
 pkgname=glide-browser-bin
 _binaryname=glide-bin
 pkgver=0.1.60a
-pkgrel=1
+pkgrel=2
 pkgdesc="An extensible and keyboard-focused web browser built on Firefox"
 arch=('x86_64' 'aarch64')
 url="https://github.com/glide-browser/glide"
@@ -45,8 +45,25 @@ Exec=/usr/bin/"$_binaryname" %u
 Terminal=false
 Type=Application
 Icon=${_binaryname}
+StartupWMClass=glide-glide
+MimeType=application/json;application/pdf;application/rdf+xml;application/rss+xml;application/x-xpinstall;application/xhtml+xml;application/xml;audio/flac;audio/ogg;audio/webm;image/avif;image/gif;image/jpeg;image/png;image/svg+xml;image/webp;text/html;text/xml;video/ogg;video/webm;x-scheme-handler/chrome;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/mailto;
+Actions=new-window;new-private-window;open-profile-manager;
+Comment=An extensible and keyboard-focused web browser built on Firefox
+X-GNOME-FullName=Glide Browser
 Categories=Network;WebBrowser;
 StartupWMClass=Glide Browser
+
+[Desktop Action new-window]
+Exec=/usr/bin/"$_binaryname" --new-window %u
+Name=New Window
+
+[Desktop Action new-private-window]
+Exec=/usr/bin/"$_binaryname" --private-window %u
+Name=New Private Window
+
+[Desktop Action open-profile-manager]
+Exec=/usr/bin/"$_binaryname" --ProfileManager
+Name=Open Profile Manager
 EOF
 
 # Icons
