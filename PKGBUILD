@@ -2,7 +2,7 @@
 
 pkgname=workbuddy-bin
 pkgver=4.8.1.24540648
-pkgrel=1
+pkgrel=2
 _commit=cfeee0fc
 pkgdesc="Work Smart，Not Hard"
 arch=('x86_64' 'aarch64')
@@ -11,6 +11,7 @@ license=('custom')
 depends=('electron')
 makedepends=('7zip'
 	'npm'
+	'libicns'
 )
 checkdepends=()
 optdepends=(
@@ -18,8 +19,10 @@ optdepends=(
 provides=()
 conflicts=()
 source=("https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-${pkgver}-${_commit}.dmg"
+WorkBuddy.desktop
 )
 sha256sums=('SKIP'
+'SKIP'
 )
 
 prepare() {
@@ -30,13 +33,15 @@ prepare() {
 build() {
 	npm install @vscode/sqlite3 @vscode/ripgrep @vscode/spdlog --no-save
 	cp -a node_modules/* WorkBuddy/WorkBuddy.app/Contents/Resources/app/node_modules/
+	icns2png -x WorkBuddy/WorkBuddy.app/Contents/Resources/WorkBuddy.icns
 }
 
 package() {
+    install -D WorkBuddy_512x512x32.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/WorkBuddy.png
+    install -D WorkBuddy_1024x1024x32.png ${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/WorkBuddy.png
+    install -D WorkBuddy.desktop ${pkgdir}/usr/share/applications/workbuddy.desktop
     install -d ${pkgdir}/usr/lib/workbuddy
-cp -a WorkBuddy/WorkBuddy.app/Contents/Resources/app/* ${pkgdir}/usr/lib/workbuddy/
-#    install -Dm 644 ${srcdir}/xmcl_${pkgver}_${CARCH}.asar ${pkgdir}/usr/lib/xmcl/xmcl.asar
-#    install -Dm 644 ${srcdir}/xmcl.desktop ${pkgdir}/usr/share/applications/xmcl.desktop
+    cp -a WorkBuddy/WorkBuddy.app/Contents/Resources/app/* ${pkgdir}/usr/lib/workbuddy/
     install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/workbuddy" <<EOF
 #!/usr/bin/bash
 exec electron /usr/lib/workbuddy/out/main.js "\$@"
