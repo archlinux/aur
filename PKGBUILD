@@ -1,13 +1,13 @@
 pkgname=pysnake
-pkgver=1
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 pkgdesc="a TUI snakegame written in python"
 arch=('any')
 depends=('python')
 makedepends=('git')
 url='https://github.com/NVitschDEV/python---a-snake-game'
 source=("snakegame.py")
-sha256sums=('95263b70938ae5e3ddbf428dded7b557da47f3a88844c51020848501c5470daa')
+sha256sums=('be6a40097b16b65f36de6318665a6c7a69c8acd75dc64a5bf338e0bc1fe42950')
 
 package() {
   # Installs the script to /usr/bin/ and makes it executable

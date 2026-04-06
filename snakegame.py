@@ -1,12 +1,9 @@
 import curses
-import os
 import pickle
 import random
 import time
 
-PICKLE_FILE = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "snake_high_score.pkl"
-)
+PICKLE_FILE = "snake_high_score.pkl"
 
 score = 0
 highscore = 0
