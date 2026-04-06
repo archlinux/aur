@@ -3,7 +3,7 @@
 pkgname=python-pytelegrambotapi-git
 _pkgname=pyTelegramBotAPI
 pkgver=r3077.fce0078
-pkgrel=2
+pkgrel=1
 pkgdesc="Python Telegram bot api - git"
 arch=('any')
 url="https://github.com/eternnoir/pyTelegramBotAPI"
