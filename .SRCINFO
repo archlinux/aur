@@ -1,12 +1,12 @@
 pkgbase = sptlrx
 	pkgdesc = Synchronized lyrics in your terminal
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/raitonoberu/sptlrx
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = sptlrx-1.3.0.tar.gz::https://github.com/raitonoberu/sptlrx/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = 44142eac85a1a222735dc6010cebb3b5c3c7f0eaf88316dcffecc1e59ccedf76
+	source = sptlrx-1.3.1.tar.gz::https://github.com/raitonoberu/sptlrx/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 94e586a75a089c134e75923126cba35d8d304e3ef384d65b669dd40fe3187f4d
 
 pkgname = sptlrx
