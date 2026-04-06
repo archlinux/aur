@@ -1,0 +1,28 @@
+pkgbase = jupyter-matlab-proxy
+	pkgdesc = Run MATLAB® code in Jupyter® environments such as Jupyter notebooks, JupyterLab, and JupyterHub
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/mathworks/jupyter-matlab-proxy
+	arch = any
+	license = custom:MATHWORKS CLOUD REFERENCE ARCHITECTURE LICENSE
+	makedepends = jupyterlab>=4.0.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatch-nodejs-version>=0.3.2
+	makedepends = python-hatchling>=1.5.0
+	depends = jupyter-notebook
+	depends = jupyter-server
+	depends = python>=3.10
+	depends = python-aiohttp
+	depends = python-ipykernel>=6.0.3
+	depends = python-jupyter-client
+	depends = python-jupyter-server-proxy>=4.1.0
+	depends = matlab-proxy>=0.30.0
+	depends = python-psutil
+	depends = python-requests
+	provides = python-jupyter-matlab-proxy=0.18.0
+	conflicts = python-jupyter-matlab-proxy
+	source = https://github.com/mathworks/jupyter-matlab-proxy/archive/refs/tags/jupyter-matlab-proxy-v0.18.0/jupyter-matlab-proxy-jupyter-matlab-proxy-v0.18.0.tar.gz
+	sha256sums = de06c65ce2f2b616a21157a658773dcc873680d8a54a47e034636aee5fe835e5
+
+pkgname = jupyter-matlab-proxy

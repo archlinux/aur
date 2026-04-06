@@ -1,0 +1,4 @@
+[jupyter-matlab-proxy]
+source = "git"
+git = "https://github.com/mathworks/jupyter-matlab-proxy.git"
+prefix = "jupyter-matlab-proxy-v"
