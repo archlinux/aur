@@ -1,12 +1,12 @@
 # Maintainer: Lena Pastwa <aur@lnps.me>
 pkgname=tlrc
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official tldr client written in Rust"
 arch=('x86_64')
 url="https://github.com/tldr-pages/$pkgname"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
 provides=('tldr')
 conflicts=('tldr')
