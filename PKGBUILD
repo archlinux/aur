@@ -9,8 +9,8 @@ pkgrel=1
 pkgdesc="theme for pegasus frontend"
 arch=(any)
 #license=(GPL3)
-depends=(pegasus-frontend)
-makedepends=(git)
+depends=("pegasus-frontend-git")
+makedepends=("git")
 source=("${_theme_name}::git+$url.git")
 sha256sums=('SKIP')
 

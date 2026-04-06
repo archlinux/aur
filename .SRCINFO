@@ -5,7 +5,7 @@ pkgbase = pegasus-frontend-theme-sleipnir-git
 	url = https://github.com/y-muller/retromega-sleipnir
 	arch = any
 	makedepends = git
-	depends = pegasus-frontend
+	depends = pegasus-frontend-git
 	source = sleipnir::git+https://github.com/y-muller/retromega-sleipnir.git
 	sha256sums = SKIP
 
