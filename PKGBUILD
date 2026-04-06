@@ -1,41 +1,50 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: xRemaLx <anton.komolov@gmail.com>
 
-pkgname='perl-template-timer'
-_pkgname='Template-Timer'
-pkgver='1.00'
-pkgrel='4'
-pkgdesc="Rudimentary profiling for Template Toolkit"
+_author=PETDANCE
+_dist=Template-Timer
+pkgname=perl-${_dist@L}
+pkgver=1.00
+pkgrel=5
+pkgdesc='Rudimentary profiling for Template Toolkit'
 arch=('any')
-url='https://metacpan.org/dist/Template-Timer'
-license=('PerlArtistic' 'GPL')
-depends=('perl' 'perl-template-toolkit')
-checkdepends=('perl-test-pod')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-2.0')
+depends=(
+    'perl'
+    'perl-template-toolkit'
+    'perl-test-simple'
+    'perl-time-hires'
+)
 options=('!emptydirs')
-source=("https://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('b9aa5f2f2d7034b0a62bb670afc6711ec7d49aff84cd948ea09d6c55d9b8b2aeb7606150ed0bea5402ba63761fd03ee6fce402598ef82a8235fb8b50c2ba4f43')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('b7314cb365209d93557b8054e0311ae8c3cb5d1c9d228d1eb3e3fc193a5b77b4')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+package()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
