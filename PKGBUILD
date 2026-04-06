@@ -3,7 +3,7 @@
 _gpuarch=gfx1151
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
 pkgver=7.13.0a20260405
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
 arch=('x86_64')
 url="https://rocm.nightlies.amd.com"
@@ -17,7 +17,7 @@ _rocm_packages=(
     'hsa-rocr' 'hsakmt-roct' 'comgr' 'rocminfo' 'rocwmma'
     'hip-runtime-amd' 'hip-runtime-nvidia'
     'rocm-smi-lib' 'rocm-gdb' 'rocm-dbgapi'
-    'rocprofiler' 'rocprofiler-register' 'roctracer' 'rocm-bandwidth-test'
+    'rocprofiler' 'rocprofiler-register' 'roctracer' 'rocm-bandwidth-test' 'composable-kernel'
     'opencl-rocm'
     'hipblas' 'hipblas-common' 'hipblaslt' 'rocblas'
     'hipfft' 'rocfft'
