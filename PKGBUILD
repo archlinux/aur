@@ -15,19 +15,30 @@ optdepends=('ufw' 'firewalld' 'docker' 'docker-compose')
 conflicts=('1panel-dev-bin' '1panel-bin' '1panel-git')
 source=(
     "${pkgname}-${pkgver//_/-}.tar.gz"::"https://github.com/1Panel-dev/1Panel/archive/refs/tags/v${pkgver//_/-}.tar.gz"
-    "1pctl"
-    "1panel.service"
+    "https://github.com/1Panel-dev/installer/raw/v2/1pctl"
+    "https://github.com/1Panel-dev/installer/raw/v2/initscript/1panel-core.service"
+    "https://github.com/1Panel-dev/installer/raw/v2/initscript/1panel-agent.service"
+    "1panel.conf"
 )
 b2sums=(
     "64d48422e494ebf332f2c7e5ede37338c1490a5c31e7caeeb0bc39c33bd25b4d1aab767a9fd81df7e7ff52bc3a7b18bfc5fc2e462bf5e82fada14feefb2216e9"
-    "8276ffae854ad7ae4d6ca35bd673b2401dd8e59bff8515921f76fc83a65db672d2de9167ccd32d5b4bb2b5cc4a646f5047c04baf295050dd64fd1370c490680e"
-    "b4ca01c4f5027fc121e293df86e9caeaabce732f5d93ea4f0c6b670aceb851943d1f32d11e76f1b1a5780774d35d3b04c1abb9c84d2b0695d04d9938c8771845"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "47e36073d92f3fb590d5e648ee9e2b71d575744f7cca223bb0d523e1745faa2d715b77ede14fb26905dc2f7278a9be523e50c7cbd89ab7b87958fa51ae585dd9"
 )
 
 prepare() {
-    sed -i -e "s#ORIGINAL_VERSION=.*#ORIGINAL_VERSION=v${pkgver//_/-}#g" ${srcdir}/1pctl
     find ${srcdir} -type f -exec sed -i 's@/usr/local/bin@/usr/bin@g' {} +
     find ${srcdir} -type f -exec sed -i 's@/etc/systemd/system@/usr/lib/systemd/system@g' {} +
+    # Seprate the config and the 1pctl,make 1pctl's update possible,
+    # This is a stupid workaround against upstream's stupid installation mode.
+    # if it failed,remove it,and change 1pctl like this
+    # BASE_DIR=/var/lib/1p
+    # ORIGINAL_PORT=8888
+    # ORIGINAL_VERSION=v{pkgver}
+    find ${srcdir} -type f -exec sed -i 's@/usr/bin/1pctl@/etc/1panel.conf@g' {} +
+    sed -i -e "s#ORIGINAL_VERSION=.*#ORIGINAL_VERSION=v${pkgver//_/-}#g" ${srcdir}/1panel.conf
 }
 
 build() {
@@ -36,14 +47,22 @@ build() {
     
     cd ${srcdir}/1Panel-${pkgver//_/-}/frontend
     npm install
-    npm rum build:pro
-    cd ${srcdir}/1Panel-${pkgver//_/-}/core
+    npm run build:pro
+    cd "${srcdir}/1Panel-${pkgver}/core"
     CGO_ENABLED=0 GOOS=linux GOARCH=$(go env GOARCH) go build -trimpath -ldflags '-s -w' -o "${srcdir}/1Panel-${pkgver}/build/1panel-core" "${srcdir}/1Panel-${pkgver}/core/cmd/server/main.go"
+    cd "${srcdir}/1Panel-${pkgver}/agent"
+    CGO_ENABLED=0 GOOS=linux GOARCH=$(go env GOARCH) go build -trimpath -ldflags '-s -w' -o "${srcdir}/1Panel-${pkgver}/build/1panel-agent" "${srcdir}/1Panel-${pkgver}/agent/cmd/server/main.go"
 }
 
 package() {
-    install -vDm 755 ${srcdir}/1Panel-${pkgver//_/-}/build/1panel-core ${pkgdir}/usr/bin/1panel
-    install -vDm 644 ${srcdir}/1panel.service -t ${pkgdir}/usr/lib/systemd/system
-    install -vDm 755 ${srcdir}/1pctl ${pkgdir}/usr/bin/1pctl
-    install -vdm 644 ${pkgdir}/var/lib/1p/1panel
+    install -vDm755 "${srcdir}/1Panel-${pkgver}/build/1panel-core" -t "${pkgdir}/usr/bin/"
+    # 创建软链接：/usr/bin/1panel → /usr/bin/1panel-core
+    ln -s "/usr/bin/1panel-core" "${pkgdir}/usr/bin/1panel"
+    install -vDm755 "${srcdir}/1Panel-${pkgver}/build/1panel-agent" -t "${pkgdir}/usr/bin/"
+    install -vDm755 "${srcdir}/1pctl" "${pkgdir}/usr/bin/1pctl"
+
+    install -vDm644 "${srcdir}/1panel-agent.service" -t "${pkgdir}/usr/lib/systemd/system"
+    install -vDm644 "${srcdir}/1panel-core.service" -t "${pkgdir}/usr/lib/systemd/system"
+    install -vDm644 "${srcdir}/1panel.conf" "${pkgdir}/etc/1panel.conf"
+    install -vDm644 "${srcdir}/1Panel-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
