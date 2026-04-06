@@ -1,6 +1,6 @@
 # Maintainer: matt-shearing <matt-shearing@users.noreply.github.com>
 pkgname=voxtype-tray
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="System tray app and settings GUI for VoxType voice dictation (PyQt6)"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
     'wl-clipboard: clipboard fallback support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/matt-shearing/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('08ae5beb2ad55b001eae398cfc26ee068a9b02878dee2350d9bf466b56aee5aa')
+sha256sums=('150f7da7a2cea7c9348cd13f56efb339200a08a06a1722b40e99e06ac74c359f')
 
 package() {
     cd "${pkgname}-${pkgver}"
