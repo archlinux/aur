@@ -1,6 +1,6 @@
 pkgbase = niri-display-manager
 	pkgdesc = GUI display manager for the Niri Wayland window manager
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/rickycbanks/niri_display_manager
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = niri-display-manager
 	depends = pyside6
 	depends = python-pyudev
 	optdepends = niri: the Wayland compositor this tool manages
-	source = niri-display-manager-0.3.0.tar.gz::https://github.com/rickycbanks/niri_display_manager/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = bbae31861850b857f9a9c998d10df4907a71203a41068c1a1417fd23e7f0b740
+	source = niri-display-manager-0.3.1.tar.gz::https://github.com/rickycbanks/niri_display_manager/releases/download/v0.3.1/niri-display-manager-0.3.1.tar.gz
+	sha256sums = acf443b80c85c70ac43eccf4fa4d9eddb924e74c412b06318510a36ac16d211a
 
 pkgname = niri-display-manager
