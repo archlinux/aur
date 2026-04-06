@@ -2,13 +2,19 @@
 pkgname=yappie
 pkgver=r3.e490525
 pkgrel=1
-pkgdesc='Voice dictation for Wayland'
-arch=('any')
+pkgdesc='Voice dictation for Wayland with local whisper.cpp support'
+arch=('x86_64')
 url='https://github.com/kloogans/yappie-linux'
 license=('MIT')
-depends=('pipewire' 'curl' 'nmap' 'jq' 'ydotool' 'wl-clipboard' 'libnotify')
-optdepends=('hyprland: smart terminal paste detection' 'sway: smart terminal paste detection')
-makedepends=('git')
+depends=('pipewire' 'curl' 'ydotool' 'wl-clipboard' 'libnotify')
+optdepends=(
+    'whisper.cpp: local on-device transcription'
+    'whisper.cpp-cuda: local transcription with NVIDIA GPU'
+    'whisper.cpp-vulkan: local transcription with Vulkan GPU'
+    'hyprland: smart terminal paste detection'
+    'sway: smart terminal paste detection'
+)
+makedepends=('git' 'meson' 'ninja')
 install=yappie.install
 source=("$pkgname::git+https://github.com/kloogans/yappie-linux.git")
 sha256sums=('SKIP')
@@ -18,10 +24,14 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+    cd "$pkgname"
+    meson setup build --prefix=/usr --buildtype=release
+    meson compile -C build
+}
+
 package() {
     cd "$pkgname"
-
-    install -Dm755 bin/yappie "$pkgdir/usr/bin/yappie"
-    install -Dm644 config.example.toml "$pkgdir/usr/share/yappie/config.example.toml"
+    meson install -C build --destdir="$pkgdir"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
