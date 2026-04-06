@@ -5,7 +5,7 @@ dlls=(dxgi.dll d3d8.dll d3d9.dll d3d10core.dll d3d11.dll)
 dxvk_lib32_path="$basedir/x32"
 dxvk_lib64_path="$basedir/x64"
 
-proton_dxvkpath=(/usr/share/steam/compatibilitytools.d/**/files/{lib,lib64}/wine/dxvk)
+proton_dxvkpath=(/usr/share/steam/compatibilitytools.d/**/files/{lib,lib64}/wine/dxvk/{i386-windows,x86_64-windows,})
 
 function pe64_or_not {
     if ! exepa=$(realpath -es "$1" 2>/dev/null); then
