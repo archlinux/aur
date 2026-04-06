@@ -11,12 +11,26 @@
 
 pkgname=pike
 pkgver=8.0.1956
-pkgrel=1
+pkgrel=2
 pkgdesc='Dynamic programming language with a syntax similar to Java and C'
 arch=('x86_64')
 url='http://pike.lysator.liu.se'
 license=('GPL-2.0-only AND LGPL-2.1-only AND MPL-1.1')
-depends=('nettle')
+depends=('gmp' 'zlib' 'nettle' 'pcre')
+makedepends=(
+  'mariadb-libs' 'postgresql-libs' 
+  'libiodbc' 'sane' 'librsvg' 'sdl_mixer' 'freeglut' 'libxpm' 
+  'gtk2' 'fuse2' 'fftw'
+)
+optdepends=(
+  'mariadb-libs: MySQL database support'
+  'postgresql-libs: Postgres database support'
+  'libiodbc: ODBC support'
+  'sane: SANE scanner support'
+  'sdl_mixer: SDL audio support'
+  'gtk2: GTK+ GUI support'
+  'fuse2: FUSE filesystem support'
+)
 options=('!makeflags')
 source=("${url}/pub/${pkgname}/all/${pkgver}/Pike-v${pkgver}.tar.gz")
 sha256sums=('6a0f2677eb579865321bd75118c638c335860157a420a96e52e2765513dad4c0')
