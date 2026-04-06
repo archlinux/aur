@@ -3,7 +3,7 @@
 
 pkgname=mstream
 _srcname=mStream
-pkgver=5.14.3
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='Music streaming server'
 arch=(any)
@@ -20,11 +20,11 @@ source=(
   mstream.sysusers
   mstream.tmpfiles)
 sha256sums=(
-  'ad20ef2ca3a6e5495b68a3b6c15e01e2545720eb8a21514b5bcb826711db0cef'
-  '1d6faa9e1a76d13f3ab8558a3640158b1f0a54f624a4e37ddc3ef41ed4191058'
-  '9f8baaad75e3152685043da8f74a09d19c2290820f12f5c3ca5022afd2e97b14'
+  '7a7e0151fd401001b973d770583e5adbd1d34cfb7d60978d2db96d6810bae1c4'
+  '730c09a4a866b0dd53617073ebfb54b3022b7e7d84370232e255602c5a4d0b16'
+  '833f86daaffb12857612ef5b1264e944b0a48a077d5a8bb8d217ec6565ed90c3'
   '5f2e6aced1707f64ca4ae3ae647fb6a8420f5c2a747ba06fa9174920fd821437'
-  '97b4f92b8abba82224b3fc0e8cd179aaa9ba282e7466ab96acb75a9d627f6b23')
+  '3664207c5b2782d55acc77a6ff1ced5c80447047c4c036837983dc03e19896de')
 
 prepare() {
   # Exclude built-in binaries from the bin folder, etc.
@@ -38,6 +38,10 @@ prepare() {
 
 package() {
   npm install --only=production -g --cache=npm-cache --prefix="$pkgdir/usr" $pkgname-$pkgver.tgz
+
+  # Patch for "SyntaxError: The requested module 'simple-xml-to-json' does not provide an export named 'default'"
+  #grep -rl 'import xmlPackage from "simple-xml-to-json";' "$pkgdir/usr/lib/node_modules/" | xargs -r sed -i 's/import xmlPackage from "simple-xml-to-json";/import * as xmlPackage from "simple-xml-to-json";/g'
+  sed -i 's/import xmlPackage from "simple-xml-to-json";/import * as xmlPackage from "simple-xml-to-json";/g' "$pkgdir/usr/lib/node_modules/mstream/node_modules/@jimp/plugin-print/dist/esm/load-bitmap-font.js"
 
   # See "npm install" issue https://bugs.archlinux.org/task/63396
   chown -R root:root "$pkgdir"
