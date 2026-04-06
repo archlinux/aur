@@ -13,8 +13,9 @@ pkgbase = python-pybase64-git
 	depends = libgomp
 	depends = python
 	depends = python-typing_extensions
+	provides = python-pybase64
 	provides = pybase64
-	conflicts = pybase64
+	conflicts = python-pybase64
 	source = git+https://github.com/mayeut/pybase64
 	sha256sums = SKIP
 

@@ -11,8 +11,8 @@ url="https://github.com/mayeut/pybase64"
 license=('BSD-2-Clause')
 depends=('libgomp' 'python' 'python-typing_extensions')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'cmake')
-provides=(${_pkgname})
-conflicts=(${_pkgname})
+provides=("${pkgname%-git}" "${_pkgname}")
+conflicts=("${pkgname%-git}")
 source=(
     "git+https://github.com/mayeut/pybase64"
 )
