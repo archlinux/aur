@@ -1,0 +1,3 @@
+[perl-moosex-lazyrequire]
+source = "cpan"
+cpan = "MooseX-LazyRequire"
