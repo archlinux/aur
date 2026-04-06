@@ -1,6 +1,6 @@
 pkgbase = mstream-git
 	pkgdesc = Music streaming server
-	pkgver = 5.14.3.r12.g4ea0f0e
+	pkgver = 6.0.0.r0.gb33ad95
 	pkgrel = 1
 	url = https://mstream.io
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = mstream-git
 	source = mstream.sysusers
 	source = mstream.tmpfiles
 	sha256sums = SKIP
-	sha256sums = 1d6faa9e1a76d13f3ab8558a3640158b1f0a54f624a4e37ddc3ef41ed4191058
+	sha256sums = 730c09a4a866b0dd53617073ebfb54b3022b7e7d84370232e255602c5a4d0b16
 	sha256sums = 9f8baaad75e3152685043da8f74a09d19c2290820f12f5c3ca5022afd2e97b14
 	sha256sums = 5f2e6aced1707f64ca4ae3ae647fb6a8420f5c2a747ba06fa9174920fd821437
 	sha256sums = 97b4f92b8abba82224b3fc0e8cd179aaa9ba282e7466ab96acb75a9d627f6b23
