@@ -6,7 +6,7 @@ pkgbase = pysnake
 	arch = any
 	makedepends = git
 	depends = python
-	source = snakegame.py
+	source = pysnake.py
 	sha256sums = be6a40097b16b65f36de6318665a6c7a69c8acd75dc64a5bf338e0bc1fe42950
 
 pkgname = pysnake
