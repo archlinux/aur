@@ -1,0 +1,22 @@
+pkgbase = vswallpaper-effect
+	pkgdesc = Wayland wallpaper app with real-time OpenGL effects and a GTK3 live editor
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/victorsosaMx/vsWallpaper-Effect
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = python-opengl
+	depends = python-cairo
+	optdepends = python-opengl-accelerate: faster OpenGL bindings
+	source = vswallpaper-effect-1.0.0.tar.gz::https://github.com/victorsosaMx/vsWallpaper-Effect/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = a1ffd406432b3ef49c85355c0e5142faeec08395e51ec4635ed5377048aec5a0
+
+pkgname = vswallpaper-effect
