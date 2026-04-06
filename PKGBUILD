@@ -41,6 +41,7 @@ prepare() {
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 	pushd frontend
 	npm run setup
+	cargo run --package third-party-licenses --features desktop
 }
 
 pkgver() {
