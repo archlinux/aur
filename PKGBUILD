@@ -1,7 +1,7 @@
 # Maintainer: Steve Holvoet <linux@steho.be>
 pkgname=binaryobjectscanner
 _pkgname=ProtectionScan
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A scanner for identifying protection mechanisms in binary files (CLI: ProtectionScan)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('protectionscan')
 conflicts=('binaryobjectscanner-git' 'protectionscan')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SabreTools/BinaryObjectScanner/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e389408ec2ba3f33221c43a33305421ae6d00129567456935ab02b8d7d5a0269')
+sha256sums=('a64ce69349385d44bcfb62431957b2ffdca8bb301644feb711681d6b3ffd4296')
 
 build() {
   cd "BinaryObjectScanner-$pkgver"
