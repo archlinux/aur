@@ -1,5 +1,5 @@
 pkgname=verde-bin
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 pkgdesc='Desktop GUI for coding agents like Codex and OpenCode'
 arch=('x86_64')
@@ -34,11 +34,11 @@ depends=(
   'pango'
   'systemd-libs'
   'zlib'
-  'zenity'
 )
 optdepends=(
   'codex: local Codex CLI integration'
   'opencode: local OpenCode CLI integration'
+  'zenity: native folder picker integration'
 )
 provides=('verde')
 conflicts=('verde' 'verde-git')
@@ -48,7 +48,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  'b207a11d0898b67bef264d9ab7d54cc204a25a0268d68220d14771bcdc9e291c'
+  '54217734809d932d942407b9688de8d5bc83c5955af32e2ae28e05ca8acf9031'
   '9952749c80ab34ca65ef1b4e8653dcf5760361aecc44dfd7dc398d991e7d9f3e'
 )
 
