@@ -1,4 +1,4 @@
-pkgbase = gsh
+pkgbase = dgsh
 	pkgdesc = a joke fr
 	pkgver = 2.0.8
 	pkgrel = 1
@@ -25,4 +25,4 @@ pkgbase = gsh
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = gsh
+pkgname = dgsh

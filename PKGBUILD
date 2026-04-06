@@ -1,4 +1,4 @@
-pkgname=gsh
+pkgname=dgsh
 pkgver=2.0.8
 pkgrel=1
 pkgdesc="a joke fr"
