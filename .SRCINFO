@@ -1,12 +1,12 @@
 pkgbase = pegasus-frontend-theme-gameos-git
 	pkgdesc = theme for pegasus frontend
-	pkgver = 1.10.r11.geb622bb
+	pkgver = 1.10.r13.g7a5a522
 	pkgrel = 1
 	url = https://github.com/PlayingKarrde/gameOS
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = pegasus-frontend
+	depends = pegasus-frontend-git
 	source = gameos::git+https://github.com/PlayingKarrde/gameOS.git
 	sha256sums = SKIP
 
