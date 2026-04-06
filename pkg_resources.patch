@@ -1,0 +1,12 @@
+diff -Npur a/usr/share/slimbookbattery/src/utils.py b/usr/share/slimbookbattery/src/utils.py
+--- a/usr/share/slimbookbattery/src/utils.py	2023-07-05 05:58:04.000000000 -0600
++++ b/usr/share/slimbookbattery/src/utils.py	2026-04-06 15:25:33.109670618 -0600
+@@ -5,7 +5,7 @@ import subprocess
+ import locale
+ import logging
+ 
+-from pkg_resources import parse_version as parse_version
++from packaging.version import parse as parse_version
+ 
+ 
+ def get_logger(logger_name, create_file=False):

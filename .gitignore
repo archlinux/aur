@@ -8,3 +8,4 @@
 !.nvchecker.toml
 !LICENSE
 !slimbookbattery.install
+!pkg_resources.patch
