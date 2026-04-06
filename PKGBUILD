@@ -8,7 +8,7 @@ pkgdesc="Folder color switcher for nautilus with gnome icon- numix, vibrancy or 
 arch=(any)
 url="http://foldercolor.tuxfamily.org/"
 license=(GPL3)
-depends=('python-nautilus' 'nautilus')
+depends=('nautilus-python' 'nautilus')
 makedepends=('git' 'python-distutils-extra' 'python-setuptools')
 optdepends=(
 	'numix-icon-theme-git: to use with numix theme'

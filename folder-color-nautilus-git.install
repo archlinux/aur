@@ -1,20 +1,28 @@
 # Colored makepkg-like functions
 msg_blue() {
-    printf "${blue}==>${bold} $1${all_off}\n"
+	printf "${blue}==>${bold} $1${all_off}\n"
 }
 
 note() {
-    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+	printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+warning() {
+	printf "${blue}==>${red} WARNING:${bold} $1${all_off}\n"
 }
 
 all_off="$(tput sgr0)"
 bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
+red="$(tput setaf 1)"
 
 post_install() {
 	msg_blue "Rebooting nautilus"
 	pkill --signal HUP nautilus
+
+	note "Make sure you have an icon theme that supports folder colors."
+	note "The Adwaita default theme does not support folder colors."
 	exit 0
 }
 
