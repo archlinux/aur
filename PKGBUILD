@@ -3,8 +3,8 @@
 pkgname=deezer-enhanced-git
 _pkgname=deezer-enhanced
 # version.r0.g<gitcommit>
-pkgver=v1.5.0.r0.g95633a0
-pkgrel=2
+pkgver=v1.5.1.r0.gb3c1416
+pkgrel=1
 pkgdesc='An unofficial application for Deezer with enhanced features, that is not just an electron wrapper.'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/duzda/deezer-enhanced"
