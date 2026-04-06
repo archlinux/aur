@@ -1,41 +1,59 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Christos Nouskas <nous@archlinux.us>
 
-pkgname='perl-types-path-tiny'
-pkgver='0.006'
-pkgrel='1'
-pkgdesc="Path::Tiny types and coercions for Moose and Moo"
+_author=DAGOLDEN
+_dist=Types-Path-Tiny
+pkgname=perl-${_dist@L}
+pkgver=0.006
+pkgrel=2
+pkgdesc='Path::Tiny types and coercions for Moose and Moo'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/dist/$_dist
+license=('Apache-2.0')
+depends=(
+    'perl-path-tiny'
+    'perl-type-tiny'
+    'perl>=5.8.1'
+)
+makedepends=('perl-extutils-makemaker>=6.17')
+checkdepends=(
+    'perl-extutils-makemaker'
+    'perl-file-pushd'
+    'perl-file-temp>=0.18'
+    'perl-pathtools'
+    'perl-test-simple'
+    'perl>=5.8.1'
+)
+optdepends=('perl-cpan-meta')
 options=('!emptydirs')
-depends=('perl-file-pushd' 'perl-path-tiny' 'perl-type-tiny')
-url='https://metacpan.org/release/Types-Path-Tiny'
-source=('http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Types-Path-Tiny-0.006.tar.gz')
-md5sums=('071c6b98edebfc2fac8603e7cd13650a')
-_distdir="Types-Path-Tiny-0.006"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('593fc9faedbc69280659c0cce85168f8e7a1714cacdf8e9e6b7489be18dfe280')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
