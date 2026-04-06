@@ -1,20 +1,25 @@
+
 # Maintainer: meanlint <meanlint@outlook.com>
 # Maintainer: shaka042 <chefmayonaisse.observant341 at slmails dot com>
 # Contributor: Aria Moradi <aria.moradi007 at gmail dot com>
 # Contributor: Mahor Foruzesh <mahor1221 at gmail dot com>
 
+_PkgName=Suwayomi-Server
+get_new_ver() {
+  curl -s "https://api.github.com/repos/Suwayomi/${_PkgName}-preview/releases/latest" \
+    | jq -r '.tag_name' | sed 's/^v//'
+}
 pkgname=suwayomi-server-preview-bin
 _pkgname=suwayomi-server
-_PkgName=Suwayomi-Server
-pkgver=2.1.2065
+_pkgver=$(get_new_ver)
+pkgver=2.1.2087
 pkgrel=1
-_pkgver="${pkgver%_*}"
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("any")
 url="https://github.com/Suwayomi/Suwayomi-Server-preview"
 license=("MPL2")
 depends=("java-runtime>=21" "libc++" "gcc")
-optdepends=("electron: running in Electron"
+optdepends=("electron37-bin: running in Electron"
     "xorg-server-xvfb: Virtual framebuffer X server to run suwayomi in headless mode"
     "flaresolverr: A proxy server to bypass Cloudflare protection"
     "libappindicator: Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (tray icon)")
@@ -31,6 +36,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
 )
+
+pkgver() {
+  echo $_pkgver
+}
 
 build() {
    # Add missing abort handler

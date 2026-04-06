@@ -1,0 +1,6 @@
+*.gz
+*.jar
+*.pkg.tar.zst
+src/
+pkg/
+catch_abort.c
