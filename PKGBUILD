@@ -2,7 +2,7 @@
 # AUR package for hamr - builds from source
 
 pkgname=hamr
-pkgver=1.0.20
+pkgver=1.0.22
 pkgrel=1
 pkgdesc="A fast, extensible desktop launcher for Linux"
 arch=('x86_64')
