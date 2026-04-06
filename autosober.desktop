@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Auto Sober
+Comment=A convenient launcher for Roblox on Linux
+Exec=/usr/bin/autosober
+Icon=org.vinegarhq.Sober
+Terminal=false
+Categories=Game;

@@ -1,0 +1,16 @@
+pkgbase = auto_sober
+	pkgdesc = A convenient launcher for Roblox on Linux
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://llaun.ch/
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = flatpak
+	depends = zenity
+	source = autosober
+	source = autosober.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = auto_sober

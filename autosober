@@ -1,0 +1,44 @@
+#!/bin/bash
+
+APP="org.vinegarhq.Sober"
+
+# --- ENSURE FLATHUB ---
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# --- INSTALL ---
+if ! flatpak info "$APP" >/dev/null 2>&1; then
+    (
+        echo "# Installing Sober..."
+        flatpak install -y flathub "$APP"
+        echo 100
+    ) | zenity --progress \
+        --pulsate \
+        --auto-close \
+        --no-cancel \
+        --title="Sober Installer" \
+        --text="Installing Sober..."
+fi
+
+# --- UPDATE ---
+if flatpak remote-ls --updates | grep -q "$APP"; then
+    (
+        echo "# Updating Sober..."
+        flatpak update -y "$APP"
+        echo 100
+    ) | zenity --progress \
+        --pulsate \
+        --auto-close \
+        --no-cancel \
+        --title="Sober Updater" \
+        --text="Updating Sober..."
+fi
+
+# --- RUN ---
+zenity --progress \
+        --pulsate \
+        --timeout=3 \
+        --no-cancel \
+        --title="Sober Launcher" \
+        --text="Runing Sober..."
+
+flatpak run "$APP"
