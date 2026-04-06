@@ -1,0 +1,44 @@
+# Maintainer: Rongbo <wurongbo2012@hotmail.com>
+
+pkgname=workbuddy-bin
+pkgver=4.8.1.24540648
+pkgrel=1
+_commit=cfeee0fc
+pkgdesc="Work Smart，Not Hard"
+arch=('x86_64' 'aarch64')
+url="https://www.codebuddy.cn/work/"
+license=('custom')
+depends=('electron')
+makedepends=('7zip'
+	'npm'
+)
+checkdepends=()
+optdepends=(
+)
+provides=()
+conflicts=()
+source=("https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-${pkgver}-${_commit}.dmg"
+)
+sha256sums=('SKIP'
+)
+
+prepare() {
+    7z x WorkBuddy-darwin-x64-${pkgver}-${_commit}.dmg
+    mkdir -p node_modules
+}
+
+build() {
+	npm install @vscode/sqlite3 @vscode/ripgrep @vscode/spdlog --no-save
+	cp -a node_modules/* WorkBuddy/WorkBuddy.app/Contents/Resources/app/node_modules/
+}
+
+package() {
+    install -d ${pkgdir}/usr/lib/workbuddy
+cp -a WorkBuddy/WorkBuddy.app/Contents/Resources/app/* ${pkgdir}/usr/lib/workbuddy/
+#    install -Dm 644 ${srcdir}/xmcl_${pkgver}_${CARCH}.asar ${pkgdir}/usr/lib/xmcl/xmcl.asar
+#    install -Dm 644 ${srcdir}/xmcl.desktop ${pkgdir}/usr/share/applications/xmcl.desktop
+    install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/workbuddy" <<EOF
+#!/usr/bin/bash
+exec electron /usr/lib/workbuddy/out/main.js "\$@"
+EOF
+}
