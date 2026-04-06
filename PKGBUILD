@@ -1,49 +1,56 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
 
-pkgname='perl-digest-jhash'
-pkgver='0.10'
-pkgrel='1'
-pkgdesc="Perl extension for 32 bit Jenkins Hashing Algorithm"
-arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+_author=SHLOMIF
+_dist=Digest-JHash
+pkgname=perl-${_dist@L}
+pkgver=0.10
+pkgrel=2
+pkgdesc='Perl extension for 32 bit Jenkins Hashing Algorithm'
+arch=('x86_64')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-2.0')
+depends=(
+    'perl-exporter'
+    'perl>=5.8.0'
+)
+makedepends=(
+    'perl-extutils-makemaker'
+    'perl-file-temp'
+    'perl-io'
+    'perl-pathtools'
+    'perl-test'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl>=5.008')
-makedepends=()
-url='https://metacpan.org/release/Digest-JHash'
-source=('http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Digest-JHash-0.10.tar.gz')
-md5sums=('e3d62b2f748d2448f2490b13015ce8d0')
-_distdir="Digest-JHash-0.10"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('c746cf0a861a004090263cd54d7728d0c7595a0cf90cbbfd8409b396ee3b0063')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
