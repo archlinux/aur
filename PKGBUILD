@@ -9,12 +9,12 @@ license=('LGPL-2.1-only')
 makedepends=('go')
 depends=('glibc' 'bash')
 optdepends=('xdg-utils: Allows for opening directories in default file manager')
-source=("cli-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('f7f577c90e9b6e502ab05891f83f657038beded57bd6d09ab4421f87bc2542dd')
 
 
 build() {
-  cd "cli-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   export GO111MODULE="auto"
   export GOPATH="${srcdir}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -26,12 +26,12 @@ build() {
 }
 
 check() {
-  cd "cli-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   test "v$(./spicetify -v)" = "v${pkgver}" || exit 1
 }
 
 package() {
-  cd "cli-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   
   # install everything to /opt
   install -Dm755 ./spicetify "${pkgdir}/opt/${pkgname}/spicetify"

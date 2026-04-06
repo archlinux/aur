@@ -10,7 +10,7 @@ pkgbase = spicetify-cli
         depends = bash
         depends = glibc
 	optdepends = xdg-utils: Allows for opening directories in default file manager
-	source = cli-2.43.1.tar.gz::https://github.com/spicetify/cli/archive/v2.43.1.tar.gz
+	source = spicetify-cli-2.43.1.tar.gz::https://github.com/spicetify/cli/archive/v2.43.1.tar.gz
 	sha256sums = f7f577c90e9b6e502ab05891f83f657038beded57bd6d09ab4421f87bc2542dd
 
 pkgname = spicetify-cli
