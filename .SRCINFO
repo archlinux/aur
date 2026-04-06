@@ -1,7 +1,7 @@
 pkgbase = shorin-niri-git
 	pkgdesc = Shorin Niri Desktop Environment (Dependencies & Dotfiles)
 	pkgver = r1.1234567
-	pkgrel = 15
+	pkgrel = 16
 	url = https://github.com/SHORiN-KiWATA/shorin-niri
 	arch = any
 	license = GPL
@@ -93,6 +93,7 @@ pkgbase = shorin-niri-git
 	depends = ttf-lxgw-wenkai-screen
 	depends = waypaper-git
 	depends = niri-sidebar-git
+	depends = wl-longshot-git
 	depends = fcitx5
 	depends = fcitx5-configtool
 	depends = fcitx5-gtk
