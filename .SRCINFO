@@ -1,0 +1,15 @@
+pkgbase = t3mujinpack-git
+	pkgdesc = Darktable film-emulation styles from the t3mujinpack master branch
+	pkgver = nightly.r5.g0b421f3
+	pkgrel = 1
+	url = https://github.com/t3mujinpack/t3mujinpack
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = darktable
+	provides = t3mujinpack
+	conflicts = t3mujinpack
+	source = t3mujinpack-git::git+https://github.com/t3mujinpack/t3mujinpack.git
+	sha256sums = SKIP
+
+pkgname = t3mujinpack-git
