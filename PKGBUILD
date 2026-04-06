@@ -1,5 +1,4 @@
 # Maintainer: Max 1pro100me1@gmail.com
-
 pkgname=relation-git
 pkgver=0.3.1.r186.g69642c7
 pkgrel=1
@@ -32,6 +31,7 @@ build() {
   export GOMODCACHE="$srcdir/go-mod"
   export CARGO_HOME="$srcdir/cargo-home"
 
+  cargo clean
   make release
 }
 
