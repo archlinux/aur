@@ -4,13 +4,13 @@ _theme_name=library
 url=https://github.com/Fr75s/library
 
 pkgname=pegasus-frontend-theme-${_theme_name}-git
-pkgver=r63.66815a0
+pkgver=r78.dd44cb3
 pkgrel=1
 pkgdesc="theme for pegasus frontend"
 arch=(any)
 license=(GPL3)
-depends=(pegasus-frontend)
-makedepends=(git)
+depends=("pegasus-frontend-git")
+makedepends=("git")
 source=("${_theme_name}::git+$url.git")
 sha256sums=('SKIP')
 

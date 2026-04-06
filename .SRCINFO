@@ -1,12 +1,12 @@
 pkgbase = pegasus-frontend-theme-library-git
 	pkgdesc = theme for pegasus frontend
-	pkgver = r63.66815a0
+	pkgver = r78.dd44cb3
 	pkgrel = 1
 	url = https://github.com/Fr75s/library
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = pegasus-frontend
+	depends = pegasus-frontend-git
 	source = library::git+https://github.com/Fr75s/library.git
 	sha256sums = SKIP
 
