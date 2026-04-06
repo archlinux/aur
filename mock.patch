@@ -1,0 +1,90 @@
+diff -Npur a/tests/generete_webauth_vcr.py b/tests/generete_webauth_vcr.py
+--- a/tests/generete_webauth_vcr.py	2024-08-06 00:00:25.000000000 -0600
++++ b/tests/generete_webauth_vcr.py	2026-04-06 14:21:48.325797289 -0600
+@@ -10,9 +10,9 @@ sys.path.insert(0, rootdir)
+ 
+ from getpass import getpass
+ import json
+-import mock
+ import vcr
+ import requests
++from unittest import mock
+ 
+ from steam import webauth as wa
+ 
+diff -Npur a/tests/test_core_cm.py b/tests/test_core_cm.py
+--- a/tests/test_core_cm.py	2024-08-06 00:00:25.000000000 -0600
++++ b/tests/test_core_cm.py	2026-04-06 14:31:54.273195746 -0600
+@@ -1,5 +1,5 @@
+ import unittest
+-from mock import patch
++from unittest.mock import patch
+ import gevent
+ import gevent.queue
+ 
+diff -Npur a/tests/test_core_crypto.py b/tests/test_core_crypto.py
+--- a/tests/test_core_crypto.py	2024-08-06 00:00:25.000000000 -0600
++++ b/tests/test_core_crypto.py	2026-04-06 14:21:10.672266070 -0600
+@@ -1,5 +1,5 @@
+ import unittest
+-import mock
++from unittest import mock
+ from binascii import hexlify
+ 
+ from steam.core import crypto
+diff -Npur a/tests/test_game_servers.py b/tests/test_game_servers.py
+--- a/tests/test_game_servers.py	2024-08-06 00:00:25.000000000 -0600
++++ b/tests/test_game_servers.py	2026-04-06 14:24:41.490249091 -0600
+@@ -1,6 +1,6 @@
+-import mock
+ import socket
+ import unittest
++from unittest import mock
+ 
+ from steam.game_servers import a2s_rules
+ 
+diff -Npur a/tests/test_guard.py b/tests/test_guard.py
+--- a/tests/test_guard.py	2024-08-06 00:00:25.000000000 -0600
++++ b/tests/test_guard.py	2026-04-06 14:21:55.698168935 -0600
+@@ -1,5 +1,5 @@
+ import unittest
+-import mock
++from unittest import mock
+ 
+ from steam import guard as g
+ 
+diff -Npur a/tests/test_steamid.py b/tests/test_steamid.py
+--- a/tests/test_steamid.py	2024-08-06 00:00:25.000000000 -0600
++++ b/tests/test_steamid.py	2026-04-06 14:22:17.917432378 -0600
+@@ -1,6 +1,6 @@
+ import unittest
+-import mock
+ import vcr
++from unittest import mock
+ 
+ import requests
+ from steam import steamid
+diff -Npur a/tests/test_webapi.py b/tests/test_webapi.py
+--- a/tests/test_webapi.py	2024-08-06 00:00:25.000000000 -0600
++++ b/tests/test_webapi.py	2026-04-06 14:21:22.069123634 -0600
+@@ -1,6 +1,6 @@
+ import unittest
+-import mock
+ import vcr
++from unittest import mock
+ 
+ from steam import webapi
+ from steam.webapi import WebAPI
+diff -Npur a/tests/test_webauth.py b/tests/test_webauth.py
+--- a/tests/test_webauth.py	2024-08-06 00:00:25.000000000 -0600
++++ b/tests/test_webauth.py	2026-04-06 14:22:31.121270511 -0600
+@@ -6,8 +6,8 @@
+ ######################################################
+ import vcr
+ import unittest
+-import mock
+ import requests
++from unittest import mock
+ 
+ from steam import webauth as wa
+ 

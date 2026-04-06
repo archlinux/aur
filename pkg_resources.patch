@@ -1,0 +1,24 @@
+diff -Npur a/steam/versions_report/__init__.py b/steam/versions_report/__init__.py
+--- a/steam/versions_report/__init__.py	2024-08-06 00:00:25.000000000 -0600
++++ b/steam/versions_report/__init__.py	2026-04-06 14:02:38.748729779 -0600
+@@ -10,9 +10,9 @@ def versions_report():
+     # dependecy versions
+     print("\nDependencies:")
+ 
+-    import pkg_resources
++    import importlib.metadata
+ 
+-    installed_pkgs = {pkg.project_name.lower(): pkg.version for pkg in pkg_resources.working_set}
++    installed_packages = [package.name for package in importlib.metadata.distributions()]
+ 
+     for dep in [
+                 "vdf",
+@@ -25,7 +25,7 @@ def versions_report():
+                 "enum34",
+                 "win-inet-pton",
+                 ]:
+-        print("{:>20}: {}".format(dep, installed_pkgs.get(dep.lower(), "Not Installed")))
++        print("{:>20}: {}".format(dep, installed_packages.get(dep.lower(), "Not Installed")))
+ 
+     # python runtime
+     print("\nPython runtime:")
