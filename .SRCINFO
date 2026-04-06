@@ -1,15 +1,18 @@
 pkgbase = workbuddy-bin
 	pkgdesc = Work Smart，Not Hard
 	pkgver = 4.8.1.24540648
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.codebuddy.cn/work/
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	makedepends = 7zip
 	makedepends = npm
+	makedepends = libicns
 	depends = electron
 	source = https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-4.8.1.24540648-cfeee0fc.dmg
+	source = WorkBuddy.desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = workbuddy-bin
