@@ -1,7 +1,7 @@
 # Maintainer: 67mustard41 (current), MojArch (previous)
 pkgname=opera-gx-stable
 pkgver=129.0.5823.64
-pkgrel=3
+pkgrel=4
 pkgdesc='Its finally here on Linux! Opera GX is the browser built specifically for gamers.'
 arch=('x86_64')
 url='https://www.opera.com/browser/'
@@ -37,10 +37,10 @@ depends=(
     'pango'
     'qt5-base'
     'systemd-libs'
-    'opera-gx-stable-ffmpeg-codecs-bin'
+    'cairo'
 )
 optdepends=(
-    'cairo'
+    'opera-gx-stable-ffmpeg-codecs-bin'
 )
 
 _baseurl="https://get.opera.com/pub/opera_gx/${pkgver}/linux"
