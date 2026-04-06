@@ -40,8 +40,14 @@ package() {
 	mkdir -p ${pkgdir}/opt/${pkgname}
 	cp -rf * ${pkgdir}/opt/${pkgname}
 	DESTDIR="${pkgdir}" cmake --install build
-	echo "[Desktop Entry]\nType=Application\nVersion=$pkgver\nName=BaseCalc\nComment=A Base Calculator.\nExec=BaseCalc\nIcon=/usr/share/icons/BaseCalc.svg\nTerminal=false\nCategories=Utility;Development;" > "${pkgdir}/usr/share/applications/BaseCalc.desktop"
+	mkdir -p "${pkgdir}/usr/share/applications/"
+	echo -e "Creating Desktop Entry.\n"
+	echo -e "Filling Desktop Entry.\n"
+	echo -e "[Desktop Entry]\nType=Application\nVersion=$pkgver\nName=BaseCalc\nComment=A Base Calculator.\nExec=BaseCalc\nIcon=/usr/share/icons/BaseCalc.svg\nTerminal=false\nCategories=Utility;Development;" > BaseCalc.desktop
+	echo -e "Installing.\n"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 BaseCalc.desktop "${pkgdir}/usr/share/applications/BaseCalc.desktop"
+	update-desktop-database
+	echo "Complete!"
 }
