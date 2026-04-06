@@ -1,6 +1,6 @@
 pkgname=pysnake
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=3
 pkgdesc="a TUI snakegame written in python"
 arch=('any')
 depends=('python')
