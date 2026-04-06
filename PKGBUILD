@@ -1,4 +1,4 @@
-pkgname=liufuqixiaozi
+pkgname=67kid
 pkgver=1.0
 pkgrel=1
 pkgdesc="刘夫妻小子正在和六七先闹矛盾🧠"
