@@ -1,7 +1,7 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=fluux-messenger
-pkgver=0.14.0
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="A fast, modern, cross-platform XMPP client for communities and organizations."
 arch=('x86_64' 'aarch64')
 url="https://www.process-one.net/fluux/"
@@ -31,17 +31,14 @@ makedepends=(
 # that get compiled that are particular about CFLAGS (aws-lc-rs).
 options=('!buildflags')
 source=(
-  "${pkgname}::git+https://github.com/processone/fluux-messenger.git#tag=v${pkgver}"
-)
-sha256sums=(
-  'SKIP'
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/processone/fluux-messenger/releases/download/v${pkgver}/Fluux-Messenger_${pkgver}_source.tar.gz"
 )
 _resolutions=( 16 32 48 64 96 128 256 512 1024 )
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
 
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
 
     for resolution in "${_resolutions[@]}" ; do
         rsvg-convert --width=$resolution --height=$resolution assets/chat_icon.svg > "$pkgname-$resolution.png"
@@ -62,7 +59,7 @@ build() {
     export CXX=clang++
     export LDFLAGS="-fuse-ld=lld"
 
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     npm run build
 
     cd "apps/fluux"
@@ -71,7 +68,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     install -Dm755 apps/fluux/src-tauri/target/release/fluux "$pkgdir"/usr/bin/fluux-messenger
     install -Dm644 packaging/debian/fluux-messenger.desktop -t "$pkgdir"/usr/share/applications/
     install -vDm 644 assets/chat_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
@@ -79,3 +76,7 @@ package() {
         install -vDm 644 "$pkgname-$resolution.png" "$pkgdir/usr/share/icons/hicolor/${resolution}x${resolution}/apps/$pkgname.png"
     done
 }
+
+sha512sums=(
+'2c0b4fa0ce27a937b2b56a75f1941e595e7e185551f21915e1467eae2edc0682298de71589a4cb69c7aac55ed429cef8e2658d907383700093cbc230cb93e245'
+)

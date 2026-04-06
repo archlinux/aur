@@ -1,7 +1,7 @@
 pkgbase = fluux-messenger
 	pkgdesc = A fast, modern, cross-platform XMPP client for communities and organizations.
-	pkgver = 0.14.0
-	pkgrel = 2
+	pkgver = 0.15.0
+	pkgrel = 1
 	url = https://www.process-one.net/fluux/
 	arch = x86_64
 	arch = aarch64
@@ -24,7 +24,7 @@ pkgbase = fluux-messenger
 	depends = openssl
 	depends = webkit2gtk-4.1
 	options = !buildflags
-	source = fluux-messenger::git+https://github.com/processone/fluux-messenger.git#tag=v0.14.0
-	sha256sums = SKIP
+	source = fluux-messenger-0.15.0.tar.gz::https://github.com/processone/fluux-messenger/releases/download/v0.15.0/Fluux-Messenger_0.15.0_source.tar.gz
+	sha512sums = 2c0b4fa0ce27a937b2b56a75f1941e595e7e185551f21915e1467eae2edc0682298de71589a4cb69c7aac55ed429cef8e2658d907383700093cbc230cb93e245
 
 pkgname = fluux-messenger
