@@ -41,7 +41,7 @@ source=(
     "https://github.com/CollaboraOnline/online/releases/download/for-code-assets/core-co-25.04-assets.tar.gz"
 )
 sha256sums=('SKIP'
-            'db0009465060bf1cb8302f6f195701446b5a04deef81e55de76a44a42e8949e0')
+            '4c0b9eec039b58ca930fbc05454d438d9031e597ef984495124d1b810a37790d')
 
 build() {
     cd online
