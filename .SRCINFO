@@ -1,0 +1,23 @@
+pkgbase = moonlight-qt-qiin2333
+	pkgdesc = GameStream client for PCs (qiin2333 fork with extra features)
+	pkgver = 6.21.46
+	pkgrel = 1
+	url = https://github.com/qiin2333/moonlight-qt
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = vulkan-headers
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = ffmpeg
+	depends = sdl2_ttf
+	depends = sdl2
+	optdepends = libva-intel-driver: hardware acceleration for Intel GPUs GMA 4500 (2008) up to Coffee Lake (2017)
+	optdepends = intel-media-driver: hardware acceleration for Intel GPUs starting from Broadwell (2014) and newer (e.g. Intel Arc)
+	provides = moonlight-qt
+	conflicts = moonlight-qt
+	source = git+https://github.com/qiin2333/moonlight-qt.git#tag=v6.21.46
+	sha256sums = SKIP
+
+pkgname = moonlight-qt-qiin2333
