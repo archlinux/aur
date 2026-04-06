@@ -8,7 +8,7 @@ license=('MIT')
 depends=()
 provides=('spex')
 conflicts=('spex')
-source=("https://github.com/Grey-007/spex/releases/download/v${pkgver}/spex-${pkgver}-linux-x86_64.tar.gz")
+source=("https://github.com/Grey-007/spex/releases/download/v${pkgver}/spex-v${pkgver}-linux-x86_64.tar.gz")
 sha256sums=('SKIP')
 
 options=('!debug')

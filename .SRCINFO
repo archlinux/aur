@@ -8,7 +8,7 @@ pkgbase = spex-bin
 	provides = spex
 	conflicts = spex
 	options = !debug
-	source = https://github.com/Grey-007/spex/releases/download/v1.1.0/spex-1.1.0-linux-x86_64.tar.gz
+	source = https://github.com/Grey-007/spex/releases/download/v1.1.0/spex-v1.1.0-linux-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = spex-bin
