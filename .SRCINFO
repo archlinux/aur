@@ -35,5 +35,7 @@ pkgbase = mateengine
 	source = LICENSE::https://raw.githubusercontent.com/Marksonthegamer/Mate-Engine-Linux-Port/main/LICENSE
 	source = mateengine.desktop
 	sha256sums = 7efe6fa3c43a8d7e84e6d0bbe6e1eed87b5b2e96ecf1c5d6f980951623a7fcd2
+	sha256sums = 305feaea992c5c1c4c666939e04fec751e04cf37bdfeb844358600900ea0acd8
+	sha256sums = 063cf3a5c67b290ff7fcc99443a8b67f573331be0fad9f1ba4d80a053506d023
 
 pkgname = mateengine

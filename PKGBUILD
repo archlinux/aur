@@ -39,7 +39,9 @@ _srcdir="MateEngineX"
 source=("${_archive}.tar.gz::${url}/releases/download/Public-Release-X${pkgver}/${_archive}.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/Marksonthegamer/Mate-Engine-Linux-Port/main/LICENSE"
         "mateengine.desktop")
-sha256sums=('7efe6fa3c43a8d7e84e6d0bbe6e1eed87b5b2e96ecf1c5d6f980951623a7fcd2')
+sha256sums=('7efe6fa3c43a8d7e84e6d0bbe6e1eed87b5b2e96ecf1c5d6f980951623a7fcd2'
+            '305feaea992c5c1c4c666939e04fec751e04cf37bdfeb844358600900ea0acd8'
+            '063cf3a5c67b290ff7fcc99443a8b67f573331be0fad9f1ba4d80a053506d023')
 
 package() {
     install -dm755 "${pkgdir}/opt/${pkgname}"
