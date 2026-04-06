@@ -1,7 +1,7 @@
 # Maintainer: tobast <contact at tobast dot fr>
 
 pkgname=choria-cm
-pkgver=0.0.20
+pkgver=0.0.22
 pkgrel=2
 pkgdesc="Choria Configuration Management"
 arch=('any')
@@ -10,19 +10,14 @@ license=('Apache-2.0')
 depends=()
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('1e5fc7ecb591e40c1c2d79a25d32d91a2f3a70bac1cd46a8ac69fcad74ed141c')
+sha256sums=('55da8e43a79733f22df138291f7dba08309ae7400c9526e6417ec97c92a9feeb')
 backup=('etc/choria/ccm/agent.yaml')
 
 _archive_name='ccm'
 
-prepare() {
-    sed -i "s/Version = \"development\"/Version = \"${pkgver}\"/" \
-        ccm-${pkgver}/cmd/ccm.go
-}
-
 build() {
     cd "$srcdir/${_archive_name}-${pkgver}"
-	go build -o ccm ./cmd
+	go build -o ccm -ldflags="-s -w -X 'main.version=${pkgver}'" ./cmd
 }
 
 package() {
