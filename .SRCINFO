@@ -9,10 +9,12 @@ pkgbase = limux
 	makedepends = cargo
 	makedepends = git
 	makedepends = ghostty
+	makedepends = patchelf
 	depends = gtk4
 	depends = libadwaita
 	depends = webkitgtk-6.0
 	conflicts = limux-bin
+	conflicts = limux-bin-debug
 	source = limux-0.1.12::git+https://github.com/am-will/limux.git#tag=v0.1.12
 	sha256sums = SKIP
 

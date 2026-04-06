@@ -7,27 +7,37 @@ arch=('x86_64')
 url="https://github.com/am-will/limux"
 license=('MIT')
 depends=('gtk4' 'libadwaita' 'webkitgtk-6.0')
-makedepends=('zig' 'cargo' 'git' 'ghostty')
-conflicts=('limux-bin')
+makedepends=('zig' 'cargo' 'git' 'ghostty' 'patchelf')
+conflicts=('limux-bin' 'limux-bin-debug')
 source=("$pkgname-$pkgver::git+https://github.com/am-will/limux.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     git submodule update --init --recursive
-    cd ghostty && zig build -Dapp-runtime=none -Doptimize=ReleaseFast
+    cd ghostty
+    git submodule update --init --recursive
+    zig build -Dapp-runtime=none -Doptimize=ReleaseFast
     cd ..
+    # Build glad as a shared lib — libghostty.so needs these symbols at runtime
+    # but cargo's --gc-sections discards them from the static link.
+    gcc -shared -fPIC -o libglad.so \
+        ghostty/vendor/glad/src/gl.c \
+        -Ighostty/vendor/glad/include
+
     cargo build --release
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    # Binary
+    # Binary — patch in libglad.so dependency so libghostty.so can find glad symbols
     install -Dm755 target/release/limux "$pkgdir/usr/bin/limux"
+    patchelf --add-needed libglad.so "$pkgdir/usr/bin/limux"
 
-    # Shared library
+    # Shared libraries
     install -Dm644 ghostty/zig-out/lib/libghostty.so "$pkgdir/usr/lib/limux/libghostty.so"
+    install -Dm644 libglad.so "$pkgdir/usr/lib/limux/libglad.so"
 
     # ld.so.conf.d entry so the linker finds libghostty.so
     install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/limux.conf" <<< "/usr/lib/limux"
