@@ -1,5 +1,5 @@
 pkgname=dgsh
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="a joke fr"
 arch=('x86_64')
