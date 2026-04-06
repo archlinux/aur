@@ -1,49 +1,43 @@
-# Maintainer: MattiaPun <mattia@punjwani.pm>
+# Maintainer: aetherherne <aetherherne@gmail.com>
+# Derived from the PKGBUILD for aur/subtui-git on commit hash 857077
+# Contributer (aur/subtui-git): MattiaPun <mattia@punjwani.pm>
 
-pkgname=subtui-git
+
+pkgname=subtui
 _pkgname=SubTUI
-pkgver=r55.82feca9
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="Lightweight TUI music player for Subsonic-compatible servers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MattiaPun/SubTUI"
 license=('MIT')
 depends=('mpv')
-makedepends=('go' 'git')
+makedepends=('go')
 provides=('subtui')
-conflicts=('subtui')
-source=("git+https://github.com/MattiaPun/SubTUI.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("https://github.com/MattiaPun/SubTUI/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('d5da33eb6ab8cfdf249399d00eb3b81b0dce811d017dc0c06a721450c783d0d576c2e12c96cbaeb21cf324a5335d0321a25fca46b8116c5e65b68223db6a8ba0')
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname-${pkgver}"
   mkdir -p build
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname-${pkgver}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  local _commit=$(git rev-parse --short HEAD)
-  local _tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "$pkgver")
-
   go build \
-    -ldflags "-s -w -X main.version=${_tag} -X main.commit=${_commit}" \
+    -ldflags "-s -w -X main.version=${pkgver}" \
     -o build/subtui .
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  
+  cd "$srcdir/$_pkgname-${pkgver}"
+
   install -Dm755 build/subtui "$pkgdir/usr/bin/subtui"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"

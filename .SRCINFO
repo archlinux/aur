@@ -1,17 +1,15 @@
-pkgbase = subtui-git
+pkgbase = subtui
 	pkgdesc = Lightweight TUI music player for Subsonic-compatible servers
-	pkgver = r1.0.0
+	pkgver = 2.13.1
 	pkgrel = 1
 	url = https://github.com/MattiaPun/SubTUI
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	makedepends = git
 	depends = mpv
 	provides = subtui
-	conflicts = subtui
-	source = git+https://github.com/MattiaPun/SubTUI.git
-	sha256sums = SKIP
+	source = https://github.com/MattiaPun/SubTUI/archive/refs/tags/v2.13.1.tar.gz
+	b2sums = d5da33eb6ab8cfdf249399d00eb3b81b0dce811d017dc0c06a721450c783d0d576c2e12c96cbaeb21cf324a5335d0321a25fca46b8116c5e65b68223db6a8ba0
 
-pkgname = subtui-git
+pkgname = subtui
