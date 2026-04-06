@@ -7,13 +7,13 @@
 : ${_widgets:=GTK2}
 
 [[ "$_widgets" == "GTK2" ]] \
-  && : ${_cksum=97a24199b680a5f4cc75b3601bb977ac2978005a1ae2b8284730b66e36ec9b21}
+  && : ${_cksum=607b288964302f068a8815f74838abc3db345c4d350f7919fb1c905225664a7b}
 
 : ${_pkgtype:=-${_widgets,,}-bin}
 
 _pkgname="peazip"
 pkgname="$_pkgname${_pkgtype:?}"
-pkgver=10.9.0
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets})"
 url="https://github.com/peazip/PeaZip"
@@ -56,7 +56,7 @@ sha256sums=(
   'f74abf2c3d97a72c80457d6dff369929bcfd0df619b0235d81a9b82f888a3d4c'
 )
 
-prepare() {
+build() {
   local i _plugin_path _unwanted _plugins _symlinks
   _plugin_path="usr/lib/peazip/res/bin"
 
