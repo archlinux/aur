@@ -3,7 +3,7 @@ _productname=Dopamine
 _executablename=Dopamine
 pkgname=dopamine-official
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The audio player that keeps it simple"
 arch=('x86_64')
 url="https://digimezzo.github.io/site/"
@@ -34,10 +34,10 @@ package() {
     cp -r          ${srcdir}/squashfs-root/*                       ${pkgdir}/opt/${_executablename}
 
     # remove broken or unused files and directories
-    rm -r          ${pkgdir}/opt/${_executablename}/usr/
-    rm             ${pkgdir}/opt/${_executablename}/AppRun
-    rm             ${pkgdir}/opt/${_executablename}/${_executablename}.desktop
-    rm             ${pkgdir}/opt/${_executablename}/${_executablename}.png
+    rm -rf         ${pkgdir}/opt/${_executablename}/usr/
+    rm -f          ${pkgdir}/opt/${_executablename}/AppRun
+    rm -f          ${pkgdir}/opt/${_executablename}/${_executablename}.desktop
+    rm -f          ${pkgdir}/opt/${_executablename}/${_executablename}.png
 
     find           ${srcdir}/squashfs-root/usr/share/icons/ -type d -exec chmod 755 {} +
 
