@@ -3,7 +3,7 @@
 _author=GWILLIAMS
 _dist=Attean
 pkgname=perl-${_dist@L}
-pkgver=0.034
+pkgver=0.035
 pkgrel=1
 pkgdesc='A Semantic Web Framework'
 arch=('any')
