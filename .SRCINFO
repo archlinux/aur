@@ -1,0 +1,15 @@
+pkgbase = commit-roast
+	pkgdesc = AI commit roaster for git history
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/Omibranch/commit-roast
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = git+https://github.com/Omibranch/commit-roast.git
+	sha256sums = SKIP
+
+pkgname = commit-roast
