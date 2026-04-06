@@ -1,6 +1,6 @@
 pkgbase = pipette-desktop-keychron-bin
 	pkgdesc = Pipette — Vial-compatible keyboard configurator (AppImage). Keychron fork
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/Tymon3310/pipette-desktop
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = pipette-desktop-keychron-bin
 	provides = pipette-desktop
 	conflicts = pipette-desktop-git
 	options = !strip
-	source = pipette-desktop-keychron-bin-0.4.2.AppImage::https://github.com/Tymon3310/pipette-desktop/releases/download/v0.4.2/Pipette-linux-x86_64.AppImage
-	sha256sums = 3a077f73426d4ccb1290c504ce367e74cb5e9068c8a4e43a1fa6b51f1110d95f
+	source = pipette-desktop-keychron-bin-0.4.3.AppImage::https://github.com/Tymon3310/pipette-desktop/releases/download/v0.4.3/Pipette-linux-x86_64.AppImage
+	sha256sums = c79699f2b77c9b515da11bffd521ed16189a1fd9a29eb117ebb0d7ce9b80cdc7
 
 pkgname = pipette-desktop-keychron-bin
