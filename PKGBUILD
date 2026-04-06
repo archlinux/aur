@@ -8,7 +8,7 @@
 
 pkgname=isolate
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Sandbox for securely executing untrusted programs"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/ioi/isolate"
