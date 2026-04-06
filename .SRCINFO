@@ -1,6 +1,6 @@
 pkgbase = deltacp
 	pkgdesc = A copy tool designed for incremental backup of block device by utilizing reflink (CoW)
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://codeberg.org/sharow/deltacp
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = deltacp
 	optdepends = python: for a inspectextents script that provides shared-extent analysis
 	options = zipman
 	options = !debug
-	source = deltacp-0.1.5.tar.gz::https://codeberg.org/sharow/deltacp/archive/v0.1.5.tar.gz
-	sha256sums = a0164c2409fbff176f5e48f41649c282ee30da8306ac999e4c0fae09d1ac9f54
+	source = deltacp-0.1.6.tar.gz::https://codeberg.org/sharow/deltacp/archive/v0.1.6.tar.gz
+	sha256sums = f1b8c1c98cd3aaf7df3c88104cba62a565c6454796c759846b6c2904d3a10e67
 
 pkgname = deltacp
