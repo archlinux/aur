@@ -1,5 +1,5 @@
---- /var/tmp/makepkg/mimosa/src/mimosa/README.md	2026-04-06 19:47:08.298652644 +0200
-+++ /home/edmund/0data/devel/mimosa/README.md	2026-04-06 19:17:20.103386593 +0200
+--- a/README.md	2026-04-06 19:47:08.298652644 +0200
++++ b/README.md	2026-04-06 19:17:20.103386593 +0200
 @@ -8,6 +8,9 @@
  - [Installation](#installation)
  - [Configuration](#configuration)
