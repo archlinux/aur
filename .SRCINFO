@@ -1,0 +1,18 @@
+pkgbase = uvr-bin
+	pkgdesc = An extremely fast R package and project manager
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/nbafrank/uvr
+	arch = x86_64
+	license = MIT
+	depends = libgcc
+	depends = glibc
+	conflicts = uvr
+	options = !debug
+	source_x86_64 = uvr-bin-0.2.2.tar.gz::https://github.com/nbafrank/uvr/releases/download/v0.2.2/uvr-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/nbafrank/uvr/refs/tags/v0.2.2/LICENSE
+	provides_x86_64 = uvr=0.2.2
+	sha256sums_x86_64 = d960755fbcc79969dd6e76bc81411b11674d6b87d76f8235005dddd630413344
+	sha256sums_x86_64 = 77b70ed5d9b61311ad9b3be2940e7bc5491600d0a28a641eb801991690d4debc
+
+pkgname = uvr-bin
