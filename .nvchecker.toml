@@ -1,0 +1,5 @@
+[amux-bin]
+source = "github"
+github = "andyrewlee/amux"
+use_latest_release = true
+prefix = "v"
