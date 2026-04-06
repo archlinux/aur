@@ -1,7 +1,7 @@
 pkgbase = gamevox-launcher-bin
 	pkgdesc = Voice Chat built for gamers.
 	pkgver = 0.0.58
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gamevox.com/
 	install = gamevox-launcher-bin.install
 	arch = x86_64
@@ -13,6 +13,10 @@ pkgbase = gamevox-launcher-bin
 	options = !strip
 	options = !debug
 	source = https://gamevox-release-prod.s3.amazonaws.com/launcher/linux/gamevox-launcher
+	source = gamevox.desktop
+	source = gamevox.png
 	sha256sums = SKIP
+	sha256sums = e2091f703d6421357a959811a5426e91e4baadc0135f91c56f6be0831a62c23a
+	sha256sums = 52d93eb9ec208669143b00cff6bbdef83c3fe80326784c24de4f0736e0439537
 
 pkgname = gamevox-launcher-bin
