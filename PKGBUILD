@@ -3,7 +3,7 @@
 pkgname=python-vllm-cuda
 _pkgname=vllm
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
@@ -23,6 +23,7 @@ depends=(
   python-fastapi
   python-gguf
   python-huggingface-hub
+  python-ijson
   python-importlib-metadata
   python-model-hosting-container-standards
   python-msgspec

@@ -1,7 +1,7 @@
 pkgbase = python-vllm-cuda
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
 	pkgver = 0.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
 	license = Apache-2.0
@@ -24,6 +24,7 @@ pkgbase = python-vllm-cuda
 	depends = python-fastapi
 	depends = python-gguf
 	depends = python-huggingface-hub
+	depends = python-ijson
 	depends = python-importlib-metadata
 	depends = python-model-hosting-container-standards
 	depends = python-msgspec
