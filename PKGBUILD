@@ -17,6 +17,7 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-setuptools'
+    'python-setuptools-scm'
     'python-wheel'
 )
 provides=('python-c6-mercuryconfig')
