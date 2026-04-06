@@ -1,0 +1,13 @@
+pkgbase = tuna-bastion-bin
+	pkgdesc = Zero trust access to your infrastructure
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://tuna.am/
+	license = proprietary
+	conflicts = tuna-bastion
+	provides = tuna-bastion
+	arch = aarch64
+	source_aarch64 = https://releases.tuna.am/bastion/v0.2.3/tuna-bastion_0.2.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 47c71fdb077bc9f3097a3555856866d78a0506bfd88cc043020cb9d92d5c200c
+	
+pkgname = tuna-bastion-bin
