@@ -1,0 +1,25 @@
+pkgbase = pulsar-music-bin
+	pkgdesc = Pulsar is a local-first, cross-platform music player. A Nord Studio project.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://usepulsar.app
+	install = pulsar-music-bin.install
+	arch = x86_64
+	license = zlib
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	depends = alsa-lib
+	depends = xdg-utils
+	options = !strip
+	options = !debug
+	source_x86_64 = https://usepulsar.app/api/download/linux?distro=deb
+	sha256sums_x86_64 = a51e2a679b4822a00db4cb58937910f9ad2ea45d025e054feb51c2ca55706879
+
+pkgname = pulsar-music-bin
