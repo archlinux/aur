@@ -6,7 +6,7 @@ pkgbase = pegasus-frontend-theme-xboxos-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = pegasus-frontend
+	depends = pegasus-frontend-git
 	source = xboxos::git+https://github.com/alfredolvera/XboxOS.git
 	sha256sums = SKIP
 
