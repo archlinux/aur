@@ -55,7 +55,6 @@ makedepends=(
   'pnpm'
 )
 optdepends=('xdg-desktop-portal: Screensharing with Wayland')
-makedepends_aarch64=('fpm')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${_desktop_file}"
@@ -86,12 +85,12 @@ build() {
   cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
 
   # Build the sticker creator
-  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'pnpm -C ./sticker-creator/ run build'
+  pnpm -C ./sticker-creator/ run build
 
   # Build Signal Desktop Beta
   pnpm run generate
   pnpm run prepare-beta-build
-  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'pnpm run build:esbuild:prod && pnpm run build:release -- --linux dir'
+  pnpm run build:esbuild:prod && pnpm run build:release -- --linux dir
 }
 
 package() {
