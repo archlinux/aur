@@ -1,0 +1,10 @@
+pkgbase = liufuqixiaozi
+	pkgdesc = 刘夫妻小子正在和六七先闹矛盾🧠
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	source = main.sh
+	sha256sums = SKIP
+
+pkgname = liufuqixiaozi
