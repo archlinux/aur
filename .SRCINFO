@@ -1,11 +1,11 @@
 pkgbase = pegasus-frontend-theme-pegasus-boy-git
 	pkgdesc = theme for pegasus frontend
-	pkgver = v0.1.0.r0.g924fe29
+	pkgver = v0.2.0.beta.r3.gb43c473
 	pkgrel = 1
 	url = https://github.com/gtaforever00/pegasus-boy
 	arch = any
 	makedepends = git
-	depends = pegasus-frontend
+	depends = pegasus-frontend-git
 	source = pegasus-boy::git+https://github.com/gtaforever00/pegasus-boy.git
 	sha256sums = SKIP
 

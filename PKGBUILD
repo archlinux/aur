@@ -4,13 +4,13 @@ _theme_name=pegasus-boy
 url=https://github.com/gtaforever00/pegasus-boy
 
 pkgname=pegasus-frontend-theme-${_theme_name}-git
-pkgver=v0.1.0.r0.g924fe29
+pkgver=v0.2.0.beta.r3.gb43c473
 pkgrel=1
 pkgdesc="theme for pegasus frontend"
 arch=(any)
 #license=(GPL3)
-depends=(pegasus-frontend)
-makedepends=(git)
+depends=("pegasus-frontend-git")
+makedepends=("git")
 source=("${_theme_name}::git+$url.git")
 sha256sums=('SKIP')
 
