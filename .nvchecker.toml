@@ -1,0 +1,3 @@
+[perl-moox-types-mooselike-numeric]
+source = "cpan"
+cpan = "MooX-Types-MooseLike-Numeric"
