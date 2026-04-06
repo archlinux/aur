@@ -1,51 +1,50 @@
-# CPAN Name  : XML-NamespaceFactory
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-xml-namespacefactory'
-pkgver='1.02'
-pkgrel='1'
-pkgdesc="Simple factory objects for SAX namespaced names."
+_author=PERIGRIN
+_dist=XML-NamespaceFactory
+pkgname=perl-${_dist@L}
+pkgver=1.02
+pkgrel=2
+pkgdesc='Simple factory objects for SAX namespaced names.'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-carp'
+    'perl>=5.6.0'
+)
+makedepends=('perl-extutils-makemaker>=6.17')
+checkdepends=('perl-test')
 options=('!emptydirs')
-depends=('perl>=0')
-makedepends=()
-url='https://metacpan.org/release/XML-NamespaceFactory'
-source=('http://search.cpan.org/CPAN/authors/id/P/PE/PERIGRIN/XML-NamespaceFactory-1.02.tar.gz')
-md5sums=('38917352898dc8fdbe9243b11113d416')
-sha512sums=('c9fe4fc8f34034373bf205962940c45f7f01c8763e8aaea37af5c1e3d7d1aab4520c7d35f3d521e4209acc12eb3427d727dba3399f1978cc6ba02271b9e35482')
-_distdir="XML-NamespaceFactory-1.02"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('94b6dd0df4a8dc8ce83623e5d23413433ff1a01a302e8215425219b1ec19bb23')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
