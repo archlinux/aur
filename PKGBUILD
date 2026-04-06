@@ -16,10 +16,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/benbusby/whoogle-search/arc
   $pkgname
   $pkgname.conf
   $pkgname.service)
-sha256sums=('39316496e1a505625e3a5fa96c09aec23deb7ae726bc9bfce42383c96e482067'
-  'e30ff5ecef199ce2a37b097709461c51ca07bdbbcc4609db74203834b62c60b1'
-  '51cda92f3ad2166eb2cb63ff80561f48b39688a57b66291d2eee5e1c7fcd8ee3'
-  'ab6256f3fdaac3ba58ddbb39bb5c24bde53312f0584ae4ed4ae74bc7752a07f4')
+sha256sums=('d62d23bbc2dca71c5cda46f226be8e792c211609d3e4f8bf1d1523093cdcb6fb'
+            'e30ff5ecef199ce2a37b097709461c51ca07bdbbcc4609db74203834b62c60b1'
+            '51cda92f3ad2166eb2cb63ff80561f48b39688a57b66291d2eee5e1c7fcd8ee3'
+            'ab6256f3fdaac3ba58ddbb39bb5c24bde53312f0584ae4ed4ae74bc7752a07f4')
 install=$pkgname.install
 
 prepare() {
