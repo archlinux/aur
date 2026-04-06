@@ -1,8 +1,7 @@
 post_install() {
     if ! getent passwd isolate >/dev/null ; then
         echo ">>> Adding isolate user..."
-        # We avoid -r (system user) to ensure subuid/subgid ranges are automatically assigned.
-        useradd -g isolate -d /nonexistent -s /usr/bin/nologin -M isolate
+        useradd -g isolate --system -F -d /nonexistent -s /usr/bin/nologin -M isolate
     fi
 
     echo
