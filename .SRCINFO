@@ -1,0 +1,16 @@
+pkgbase = hiring
+	pkgdesc = Passive-aggressive AI HR rejection generator for code projects
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/Omibranch/hiring
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = libnotify
+	source = git+https://github.com/Omibranch/hiring.git
+	sha256sums = SKIP
+
+pkgname = hiring
