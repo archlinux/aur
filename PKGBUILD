@@ -2,7 +2,7 @@
 
 pkgname="jupyter-matlab-proxy"
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Run MATLAB® code in Jupyter® environments such as Jupyter notebooks, JupyterLab, and JupyterHub"
 arch=(
   'any'
@@ -12,27 +12,33 @@ license=(
   'custom:MATHWORKS CLOUD REFERENCE ARCHITECTURE LICENSE'
 )
 depends=(
-  'jupyter-notebook'
-  'jupyter-server'
   'python>=3.10'
   'python-aiohttp'
   'python-ipykernel>=6.0.3'
   'python-jupyter-client'
-  'python-jupyter-server-proxy>=4.1.0'
+  'python-jupyter-server-proxy>=4.1.0' # ?
   'matlab-proxy>=0.30.0'
   'python-psutil'
   'python-requests'
+
+  'jupyter-notebook'
+  'jupyter-server'
 )
 # checkdepends=(
 #   'python-pytest'
 #   'python-jupyter_kernel_test'
 # )
 makedepends=(
-  'jupyterlab>=4.0.0'
   'python-build'
   'python-installer'
-  'python-hatch-nodejs-version>=0.3.2'
+  'python-wheel'
+
   'python-hatchling>=1.5.0'
+  'jupyterlab>=4.0.0'
+  'python-hatch-nodejs-version>=0.3.2'
+  'python-hatch-jupyter-builder>=0.8.1'
+
+  'npm'
 )
 provides=(
   "python-${pkgname}=${pkgver}"
