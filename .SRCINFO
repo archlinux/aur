@@ -15,7 +15,7 @@ pkgbase = xlibre-input-libinput-bin
 	conflicts = xorg-server-common<25.0.0.0
 	conflicts = X-ABI-XINPUT_VERSION<26
 	conflicts = X-ABI-XINPUT_VERSION>=27
-	noextract = xlibre-xf86-input-libinput-1.5.1.0-9.2-x86_64.pkg.tar.zst
+	noextract = xlibre-input-libinput-1.5.1.0-9.2-x86_64.pkg.tar.zst
 	options = !strip
 	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-input-libinput-1.5.1.0-9.2-x86_64.pkg.tar.zst
 	sha256sums = 9b3362d3872ee19c0975cea28c766fe4c738b4ea9ca8000582bb039659b292e5
