@@ -8,7 +8,7 @@
 
 pkgname=nosql-workbench
 pkgver=3.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="NoSQL Workbench for Amazon DynamoDB"
 arch=(x86_64)
 url="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html"
@@ -26,7 +26,7 @@ depends=('fuse2')
 makedepends=('gendesk')
 
 prepare() {
-    gendesk -f --name "NoSQL Workbench" --pkgname "$pkgname" --categories "Development" --pkgdesc "$pkgdesc" --icon=$pkgname
+    gendesk -f --name "NoSQL Workbench" --pkgname "$pkgname" --exec="nosql-workbench --ozone-platform-hint=auto" --categories "Development" --pkgdesc "$pkgdesc" --icon=$pkgname
 }
 
 package() {
