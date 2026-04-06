@@ -1,0 +1,119 @@
+--- /var/tmp/makepkg/mimosa/src/mimosa/README.md	2026-04-06 19:47:08.298652644 +0200
++++ /home/edmund/0data/devel/mimosa/README.md	2026-04-06 19:17:20.103386593 +0200
+@@ -8,6 +8,9 @@
+ - [Installation](#installation)
+ - [Configuration](#configuration)
+ - [Usage](#usage)
++  - [Write a password](#write-a-password)
++  - [Read a password](#read-a-password)
++  - [Remove a password](#remove-a-password)
+ - [FAQ](#faq)
+ - [Social](#social)
+ - [Sponsoring](#sponsoring)
+@@ -34,13 +37,13 @@
+ 
+ *As root:*
+ 
+-```
++```sh
+ curl -sSL https://raw.githubusercontent.com/pimalaya/mimosa/master/install.sh | sudo sh
+ ```
+ 
+ *As a regular user:*
+ 
+-```
++```sh
+ curl -sSL https://raw.githubusercontent.com/pimalaya/mimosa/master/install.sh | PREFIX=~/.local sh
+ ```
+ 
+@@ -50,13 +53,13 @@
+ 
+ Mimosa CLI can be installed with [cargo](https://doc.rust-lang.org/cargo/):
+ 
+-```
++```sh
+ cargo install mimosa
+ ```
+ 
+ You can also use the git repository for a more up-to-date (but less stable) version:
+ 
+-```
++```sh
+ cargo install --locked --git https://github.com/pimalaya/mimosa.git
+ ```
+ 
+@@ -64,25 +67,25 @@
+ 
+ Mimosa CLI can be installed with [Nix](https://serokell.io/blog/what-is-nix):
+ 
+-```
++```sh
+ nix-env -i mimosa
+ ```
+ 
+ You can also use the git repository for a more up-to-date (but less stable) version:
+ 
+-```
++```sh
+ nix-env -if https://github.com/pimalaya/mimosa/archive/master.tar.gz
+ ```
+ 
+ If you have the [Flakes](https://nixos.wiki/wiki/Flakes) feature enabled:
+ 
+-```
++```sh
+ nix profile install mimosa
+ ```
+ 
+ *You can also run Mimosa directly without installing it:*
+ 
+-```
++```sh
+ nix run mimosa
+ ```
+ 
+@@ -100,7 +103,7 @@
+ 
+ You can either give the password as an argument, give a path of a valid file containing your password, or using Unix pipes or redirection:
+ 
+-```
++```sh
+ $ mimosa password write ***
+ $ mimosa password write /path/to/***
+ $ mimosa password write < /path/to/***
+@@ -111,7 +114,7 @@
+ 
+ ### Read a password
+ 
+-```
++```sh
+ $ mimosa password read
+ 
+ ***
+@@ -119,7 +122,7 @@
+ 
+ With the `--json` argument:
+ 
+-```
++```sh
+ $ mimosa password read --json
+ 
+ {"password":"***"}
+@@ -127,7 +130,7 @@
+ 
+ ### Remove a password
+ 
+-```
++```sh
+ $ mimosa password remove
+ 
+ Password successfully removed from example
+@@ -146,7 +149,7 @@
+ 
+ Logs are written to the `stderr`, which means that you can redirect them easily to a file:
+ 
+-```
++```sh
+ mimosa password read --debug 2>/tmp/mimosa.log
+ ```
+ 
