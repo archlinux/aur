@@ -1,1 +1,19 @@
-/*.pkg.*
+# AUR package build artifacts
+*.pkg.*
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.pkg.tar.xz
+*.pkg.tar.xz.sig
+
+# Build directories
+src/
+pkg/
+
+# Downloaded sources
+git-bug_linux_amd64
+git-bug_linux_386
+git-bug_linux_arm
+v*.tar.gz
+
+# Build logs
+*.log

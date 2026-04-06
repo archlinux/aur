@@ -1,4 +1,4 @@
-# Maintainer: ny-a <nyaarch64@gmail..com>
+# Maintainer: dvjn <dev@dvjn.me>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Contributor: Rafael Ascensão <rafa dot almas at gmail dot com>
 
@@ -28,8 +28,8 @@ package() {
   install -Dm755 "${!_source_bin##*/}" "$pkgdir/usr/bin/$_pkgname"
 
   # Shell completion
-  install -Dm644 -t "$pkgdir/usr/share/bash-completion/completions/" "$srcdir/$_pkgname-$pkgver/misc/bash_completion/"*
-  install -Dm644 -t "$pkgdir/usr/share/zsh/site-functions/" "$srcdir/$_pkgname-$pkgver/misc/zsh_completion/"*
+  install -Dm644 -t "$pkgdir/usr/share/bash-completion/completions/" "$srcdir/$_pkgname-$pkgver/misc/completion/bash/"*
+  install -Dm644 -t "$pkgdir/usr/share/zsh/site-functions/" "$srcdir/$_pkgname-$pkgver/misc/completion/zsh/"*
 
   # Fixup zsh completion
   mv "$pkgdir/usr/share/zsh/site-functions/$_pkgname" "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
