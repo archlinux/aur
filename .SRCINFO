@@ -14,6 +14,7 @@ pkgbase = prettymux
 	depends = libadwaita
 	depends = webkitgtk-6.0
 	depends = json-glib
+	options = !debug
 	source = prettymux::git+https://github.com/patcito/prettymux.git
 	source = ghostty::git+https://github.com/patcito/ghostty.git#branch=linux-embedded-platform
 	sha256sums = SKIP

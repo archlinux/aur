@@ -6,6 +6,7 @@ pkgdesc="GPU-accelerated terminal multiplexer"
 arch=('x86_64')
 url="https://github.com/patcito/prettymux"
 license=('GPL-3.0-only')
+options=('!debug')
 depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'json-glib')
 makedepends=('meson' 'ninja' 'gcc' 'zig' 'git')
 source=(
