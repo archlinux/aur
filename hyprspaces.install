@@ -1,7 +1,11 @@
 post_install() {
 	echo "Run 'hyprspaces-install' to wire the plugin into your Hyprland config."
+	echo ""
+	echo "Optional: install cmake and pkgconf for automatic plugin rebuilds"
+	echo "when Hyprland is updated (recommended)."
 }
 
 post_upgrade() {
-	echo "If Hyprland was also updated, run 'hyprspaces-install' to reload the plugin."
+	echo "The plugin will auto-rebuild on Hyprland updates if cmake is installed."
+	echo "If the plugin fails to load, run: hyprspaces-install"
 }

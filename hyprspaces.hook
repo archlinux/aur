@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = hyprland
+Target = hyprland-git
+
+[Action]
+Description = Rebuilding hyprspaces plugin for updated Hyprland...
+When = PostTransaction
+Exec = /usr/lib/hyprspaces/scripts/hyprspaces-rebuild
