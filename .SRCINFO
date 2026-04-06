@@ -1,6 +1,6 @@
 pkgbase = verde-bin
 	pkgdesc = Desktop GUI for coding agents like Codex and OpenCode
-	pkgver = 0.1.10
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/JonathanRiche/verde
 	arch = x86_64
@@ -39,9 +39,9 @@ pkgbase = verde-bin
 	conflicts = verde
 	conflicts = verde-git
 	options = !strip
-	source = verde-bin-0.1.10.tar.gz::https://github.com/JonathanRiche/verde/releases/download/v0.1.10/verde-v0.1.10-linux-x86_64.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v0.1.10/LICENSE
-	sha256sums = c7c15df002ed40cbecf7aeb88c71aa60aac0167ba8ddba9d79695b0022a9de8c
+	source = verde-bin-0.1.12.tar.gz::https://github.com/JonathanRiche/verde/releases/download/v0.1.12/verde-v0.1.12-linux-x86_64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v0.1.12/LICENSE
+	sha256sums = 601d3db39250b3d614f3e6c91e15a33be4838d7472e5c8f8f7758cb17f28c1c8
 	sha256sums = 9952749c80ab34ca65ef1b4e8653dcf5760361aecc44dfd7dc398d991e7d9f3e
 
 pkgname = verde-bin
