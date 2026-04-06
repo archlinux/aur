@@ -2,7 +2,7 @@
 
 pkgname=cliprithm
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Smart desktop video silence remover and clip editor built with Tauri and FFmpeg"
 arch=('x86_64')
 url="https://github.com/BOTOOM/Cliprithm"
@@ -27,8 +27,7 @@ build() {
   cd "Cliprithm-cliprithm-v1.1.0"
   export CARGO_HOME="$srcdir/cargo-home"
   export CARGO_TARGET_DIR="$srcdir/target"
-  npm run build
-  cargo build --manifest-path src-tauri/Cargo.toml --release --locked
+  npm run tauri build -- --no-bundle --ci --no-sign
 }
 
 package() {
