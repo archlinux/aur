@@ -1,0 +1,14 @@
+pkgbase = git-time-machine
+	pkgdesc = TUI for undoing mistakes using Git reflog
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/raphlinus/git-time-machine
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = git-time-machine-0.2.3.tar.gz::https://static.crates.io/crates/git-time-machine/git-time-machine-0.2.3.crate
+	sha256sums = 8eea9bf3f10b91dc31ccd17af5809676f45a800b1ee839e3d747ba9ce7080bd2
+
+pkgname = git-time-machine
