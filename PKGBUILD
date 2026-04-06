@@ -5,7 +5,7 @@ pkgver=1.0beta
 pkgrel=2
 pkgdesc="Application for the performance management of Intel processors"
 arch=('any')
-url="https://github.com/slimbook/slimbookintelcontroller"
+url="https://github.com/Slimbook-Team/slimbookintelcontroller"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk3'
