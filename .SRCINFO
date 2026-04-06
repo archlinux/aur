@@ -1,0 +1,24 @@
+pkgbase = python-muzlib
+	pkgdesc = Muzlib is a Python script that allows you to create your own music library.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/ezvezdov/muzlib
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python-mutagen
+	depends = python-questionary
+	depends = python-rich
+	depends = python-syncedlyrics
+	depends = yt-dlp
+	depends = yt-dlp-ejs
+	depends = python-ytmusicapi
+	depends = ffmpeg
+	source = https://files.pythonhosted.org/packages/source/m/muzlib/muzlib-0.3.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-muzlib
