@@ -9,6 +9,7 @@ url="https://github.com/Chevey339/kelivo"
 license=('AGPL-3.0-only')
 depends=('gtk3' 'libnotify')
 provides=('kelivo')
+conflicts=('kelivo')
 source=("https://github.com/Chevey339/kelivo/releases/download/v$pkgver/Kelivo_linux_$pkgver+$pkgrel_ver.tar.gz"
 		"kelivo.desktop")
 sha256sums=("de06c8d63568738fbeff88d3e5bad30769f5568bf4c56595fdd4c654a21e6983"

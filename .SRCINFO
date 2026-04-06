@@ -8,6 +8,7 @@ pkgbase = kelivo-bin
 	depends = gtk3
 	depends = libnotify
 	provides = kelivo
+	conflicts = kelivo
 	source = https://github.com/Chevey339/kelivo/releases/download/v1.1.10/Kelivo_linux_1.1.10+27.tar.gz
 	source = kelivo.desktop
 	sha256sums = de06c8d63568738fbeff88d3e5bad30769f5568bf4c56595fdd4c654a21e6983
