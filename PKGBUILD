@@ -5,7 +5,7 @@
 
 pkgname=gamenetworkingsockets-git
 pkgver=1.4.1.164.g517fff0
-pkgrel=1
+pkgrel=2
 pkgdesc="Reliable & unreliable messages over UDP. Robust message fragmentation & reassembly. Encryption."
 arch=('x86_64')
 url='https://github.com/ValveSoftware/GameNetworkingSockets'
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
+	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_INSTALL_LIBDIR=lib
 	cmake --build build
 }
 
