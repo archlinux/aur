@@ -1,6 +1,6 @@
 # Maintainer: Christopher Brown <cjbrown102@gmail.com>
 pkgname=pelagos
-pkgver=0.60.5
+pkgver=0.60.6
 pkgrel=1
 pkgdesc="Fast Linux container runtime — OCI-compatible, namespaces, cgroups v2, seccomp, networking, image management"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=(
 makedepends=('rust' 'cargo')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pelagos-containers/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7732f497b89ccca764248cabcaa4c62a97988bbbf79d7da9139c827601d0de61')
+sha256sums=('ab63c473e948f80987e92964528c7f9dc5d32a7958cc5b1f9757024700bf07a8')
 
 prepare() {
     cd "$pkgname-$pkgver"
