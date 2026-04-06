@@ -18,8 +18,10 @@ depends=(
   python-jsonschema
   python-pillow
   python-pydantic
+  python-pydantic-extra-types
   python-pydantic-settings
   python-requests
+  python-tiktoken
   python-typing_extensions
 )
 makedepends=(
