@@ -1,8 +1,8 @@
 # Maintainer: CrypticCreator <crypticcreator@noreply.codeberg.org>
 pkgname=selene-player-git
 _pkgname=selene-player
-pkgver=r164.408c0ab
-pkgrel=1
+pkgver=0.4.0.r0.gfc71869
+pkgrel=0
 pkgdesc="A feature complete music player and metadata editor"
 
 url="https://codeberg.org/CrypticCreator/Selene"
@@ -22,25 +22,24 @@ _bin="selene"
 
 pkgver() {
 	cd "${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${_pkgname}"
-    # cargo clean
-    export CARGO_TARGET_DIR=target
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cd "${_pkgname}"
+	export CARGO_TARGET_DIR=target
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${_pkgname}"
-    export CARGO_TARGET_DIR=target
-    cargo build --release --locked --offline
+	cd "${_pkgname}"
+	export CARGO_TARGET_DIR=target
+	cargo build --release --locked --offline
 }
 
 package() {
-    cd "${_pkgname}"
-    install -Dm 0755 "target/release/${_bin}" "${pkgdir}/usr/bin/${_bin}"
-    install -Dm 0644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    install -Dm 0644 "assets/selene.service" "${pkgdir}/usr/lib/systemd/user/selene.service"
+	cd "${_pkgname}"
+	install -Dm 0755 "target/release/${_bin}" "${pkgdir}/usr/bin/${_bin}"
+	install -Dm 0644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm 0644 "assets/selene.service" "${pkgdir}/usr/lib/systemd/user/selene.service"
 }
