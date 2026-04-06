@@ -1,8 +1,8 @@
 # Maintainer: Pater Kleomenis <paterkleomenis@protonmail.com>
 pkgname=connected-desktop-bin
 _pkgname=connected-desktop
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.9.3
+pkgrel=3
 pkgdesc="High-speed, offline, cross-platform ecosystem bridging devices (Binary)"
 arch=('x86_64')
 url="https://github.com/paterkleomenis/connected"
@@ -16,9 +16,9 @@ source=("connected-desktop-${pkgver}::https://github.com/paterkleomenis/connecte
         "https://raw.githubusercontent.com/paterkleomenis/connected/main/LICENSE-MIT"
         "https://raw.githubusercontent.com/paterkleomenis/connected/main/LICENSE-APACHE")
 
-sha256sums=('e9c7f80ac3af09e8bba0fea5203c9a6c9a2a4400a6e8f84245f424dad8c53530'
+sha256sums=('4046881ac6ca9526e9c0fea6f774ff3f0229c1aa15d7acdcd86d5278a5cc2005'
             'baf3b2e0d55d9fcb23630a7a6c0eff68eb9b708f8f0ce8e698dcf8ea611666ad'
-            '9e0b561ca05d47281fe703e6d85cb2086781b3815b267c50e4f82b2186f59a90'
+            'da75fde0fd4161c3c8cd83c4e1ca4482732c36adc8cec6480105f93b1f04b4fe'
             'fdc5b45803bf8f5d4435509da25399414072b3d95badd6b09b2e84c2f1f198d5'
             '6bbe4ace8a1818f89b96dfdda9f9d4b9a178bc047c3dc2511a3d93d51f86d7ae')
 
