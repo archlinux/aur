@@ -14,7 +14,7 @@ provides=('netexperts-support')
 conflicts=('netexperts-support' 'rustdesk' 'rustdesk-bin')
 options=('!strip')
 source=("https://netexperts.com.au/opensource/netexperts-support-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('0e4455565cfa995c75d093ca7f5f63bac20a951a5c0effd210798f5468a70886')
+sha256sums=('865ee60e8d667c69e76aa1d7f753c977663e99b8ea12d4a2ba1cc0f3c76c69d6')
 
 package() {
     # Install application bundle
