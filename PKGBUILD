@@ -1,11 +1,11 @@
 # Maintainer: Maxim Balashov <rsg245@yandex.com>
 
 pkgname=portablemc-bin
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc='Cross platform command line utility for launching Minecraft quickly and reliably with included support for Mojang versions and popular mod loaders.'
 arch=(x86_64 aarch64 i686)
-url='https://github.com/mindstorm38/portablemc'
+url='https://github.com/theorzr/portablemc'
 license=('Apache-2.0')
 depends=(
   gcc-libs
@@ -29,14 +29,14 @@ source_i686=(
 	"${url}/releases/download/v${pkgver}/portablemc-${pkgver}-linux-i686-gnu.tar.gz.sig")
 
 sha256sums_x86_64=(
-  'bb1da999faa430b6e4c9fcb214dfa473faf67d560284b99b5cd86b5762ef2c56'
-	'5e4bdeda9e8eef71300fbcfffaf0836c3439655570dfdd42c05967f8de45cbdb')
+  'cc1ca6b0529ac4df552ba794c79c0a40f979b7549124753f0e4446c2b71d81f5'
+	'789d0ce60f7ac0d7bd792608b1de3f97590ce0895d5656f286b1b3b074924f37')
 sha256sums_aarch64=(
-  '801ef2975724336cc08ea96f1848740af61a9fbd8cad355b3108796967dd522b'
-	'ef7e28b63fd5e193224ea5f31523a20760219fc9d220491ec778cb3b446b8a28')
+  '12fdfe596bfb89fbf6603b2afb6c505011ad014c11c6643ff59f7cff383ad7a9'
+	'33034465d1fe080b378c5f0dd6c29167d3da230524f685984c92205923060ae6')
 sha256sums_i686=(
-  '4386429b69edf8d68a8829b5fa8cd8af551b457fb5e6107b9b2c849f5e148503'
-	'5fa8e93c33b6b33500d083612ca0d93cf737a62b49377fce59e57aa4661c4bc0')
+  '0042658df7b37633e481bcd5d7529b9405ab57843bd2e925a6c34404b9a4a12c'
+	'611115aef4b8738d2896576b7984b9ea696a6cb8f3ae436d479c32b6e0521bd1')
 
 package() {
   cd "portablemc-${pkgver}-linux-${CARCH}-gnu"
