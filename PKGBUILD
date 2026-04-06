@@ -1,6 +1,6 @@
 # Maintainer: 0x90shell
 pkgname=gamepad-osk-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Gamepad-controlled on-screen keyboard for Linux"
 arch=('x86_64')
