@@ -1,6 +1,6 @@
 pkgbase = av-cli-bin
 	pkgdesc = CLI tool to create, update, review and merge stacked PRs on GitHub.
-	pkgver = 0.1.18
+	pkgver = 0.1.19
 	pkgrel = 1
 	url = https://aviator.co
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = av-cli-bin
 	conflicts = av-cli
 	provides = av-cli
 	arch = aarch64
-	source_aarch64 = https://github.com/aviator-co/av/releases/download/v0.1.18/av_0.1.18_linux_arm64.tar.gz
-	sha256sums_aarch64 = 5cc75c2e1fa1d6ef64ebeebf9799c837d6962625c7fcbd53e1773d22573df9b5
+	source_aarch64 = https://github.com/aviator-co/av/releases/download/v0.1.19/av_0.1.19_linux_arm64.tar.gz
+	sha256sums_aarch64 = b476cfc57b6dd2abebff6dc6a2cc42c1456b33d5d5a00ffa7fd804562643779d
 	arch = x86_64
-	source_x86_64 = https://github.com/aviator-co/av/releases/download/v0.1.18/av_0.1.18_linux_x86_64.tar.gz
-	sha256sums_x86_64 = d14bbad5243f2f55ccd0ed0164634ed246fd33152ab147521246713557c2dfdc
+	source_x86_64 = https://github.com/aviator-co/av/releases/download/v0.1.19/av_0.1.19_linux_x86_64.tar.gz
+	sha256sums_x86_64 = c325b92045f08d390d0019c846c44ebfb16558c6f354082555b27a956cfcc954
 	
 pkgname = av-cli-bin
