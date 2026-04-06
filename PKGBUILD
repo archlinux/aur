@@ -2,7 +2,7 @@
 
 _pkgbase="zig-waybar-contrib"
 pkgname="${_pkgbase}-beta-bin"
-pkgver=26.03.19
+pkgver=26.04.06
 pkgrel=1
 pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring (Beta binary version)'
 arch=('x86_64')
@@ -14,34 +14,29 @@ optdepends=(
   'fakeroot: updates module'
 )
 source=(
-  "zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.03.19/zig-waybar-contrib-release-26.03.19.zip"
-  "config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.03.19/config.waybar.jsonc"
-  "LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.03.19/LICENSE"
+  "zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.04.06/zig-waybar-contrib-release-26.04.06.zip"
+  "config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.04.06/config.waybar.jsonc"
+  "LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.04.06/LICENSE"
 )
-md5sums=('fd6586f0c609d9def362c40606f4f20e'
+md5sums=('68731d6618f8fe9bdadc6123f192b6c2'
          '93ed2d07501c3e0ed7c0132d0265548b'
          'f1c10f726262b56101b2112a4ec181d2')
 
 package() {
   cd "$srcdir"
 
-  # Create extraction directory
-  mkdir -p binaries
-
-  # Extract artifact into it
+  # Extract release artifact into a staging directory
+  install -d binaries
   bsdtar -xf zig-waybar-contrib.zip -C binaries
 
-  # Install binaries
+  # Install each binary under the waybar-module- prefix
   for bin in binaries/*; do
-    install -Dm755 $bin "$pkgdir/usr/bin/waybar-module-$(basename "$bin")"
+    install -Dm755 "$bin" "$pkgdir/usr/bin/waybar-module-$(basename "$bin")"
   done
 
-  # Replace executable path
+  # Patch the placeholder path in the bundled config
   sed -i 's|{{EXECUTABLE_PATH}}|/usr/bin|g' config.waybar.jsonc
 
-  # Install config
   install -Dm644 config.waybar.jsonc "$pkgdir/usr/share/$_pkgbase/config.jsonc"
-
-  # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 }
