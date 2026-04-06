@@ -1,0 +1,12 @@
+pkgbase = szczur4-minesweeper
+	pkgdesc = Infinite multiplayer minesweeper game
+	pkgver = v3.0r
+	pkgrel = 1
+	url = https://github.com/szczur4/szczur4-Minesweeper
+	arch = any
+	license = unknown
+	depends = java-runtime>=25
+	source = szczur4-minesweeper-v3.0r.jar::https://github.com/szczur4/szczur4-Minesweeper/releases/download/v3.0r/szczur4.Minesweeper.v3.0r.jar
+	sha256sums = a4a02ad2c42092fe59c83d650ab6b6260f1121d68bdc337558cde2f992e22b66
+
+pkgname = szczur4-minesweeper
