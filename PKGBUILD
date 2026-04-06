@@ -1,7 +1,7 @@
 # Maintainer: Umut Dag <me@umtdg.com>
 
 pkgname=quark-quick-access
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Quick access application for Proton Pass using pass-cli'
 license=('MIT')
@@ -25,8 +25,8 @@ options=('!strip' '!emptydirs')
 
 install=${pkgname}.install
 
-source=("${url}/releases/download/v${pkgver}/quark_${pkgver}_amd64.deb")
-sha256sums=('03f83c01b78f03304ab59e304479d4044feb9832378e565487607dc02e623dd3')
+source=("${url}/releases/download/v${pkgver}/Quark_${pkgver}_amd64.deb")
+sha256sums=('34854425267146531104bedc4ec94f1d9b05e21c74e33ffe51251dce6e6bd81f')
 
 package() {
     tar -xvf data.tar.gz -C "${pkgdir}"
