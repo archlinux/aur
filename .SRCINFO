@@ -1,7 +1,7 @@
 pkgbase = snekstudio-git
 	pkgdesc = Open-source VTuber software using Godot Engine!
 	pkgver = 369.ed4f624
-	pkgrel = 2
+	pkgrel = 1
 	url = https://snekstudio.com/
 	arch = x86_64
 	license = GPL-3.0
