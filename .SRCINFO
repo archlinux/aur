@@ -1,17 +1,17 @@
 pkgbase = deezer-enhanced
 	pkgdesc = An unofficial application for Deezer with enhanced features
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/duzda/deezer-enhanced
 	arch = any
 	license = MIT
 	makedepends = npm
-	depends = electron40
+	depends = electron37
 	options = !debug
-	source = https://github.com/duzda/deezer-enhanced/archive/v1.5.0.tar.gz
+	source = https://github.com/duzda/deezer-enhanced/archive/v1.5.1.tar.gz
 	source = deezer-enhanced.sh
 	source = deezer-enhanced.desktop
-	sha512sums = 7e4dda22ad11066aceae708adf3e63bdc3f182abe4539e3d71ed727f20ce86847d31fd5b184e2fd2b6632289a2784008bb928e3e1fd97410bf21235bbfa55024
+	sha512sums = fe0c2d3d08bc0125c9a2deb8e5237dc1d0dd8fe14d0694f8e4a9f2a4c3983bc93989ef6bfe6218cb79b5385e85ef70ee1c07ccd9764b385889f004730a75c3da
 	sha512sums = a1a21687ca383db424566c97a3cd2439e9ca8165982845edbb151957f2015efb0e9ba427a0269b4144dab4923fb65abe1ba91b9dd1434428b9d73a63f7fadb7d
 	sha512sums = 1ece0a5434f13119ff834834a190b7a2de185b78370d07ba21b3019c8c3939e0e61a8ad96148fbf4e95bf401fa611dc7a0d8f5e86824fe812a4290dc7539d85a
 

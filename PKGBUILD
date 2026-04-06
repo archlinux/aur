@@ -1,10 +1,10 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 # Maintainer: duzda <duzda@disroot.org>
 
-_electronversion=40
+_electronversion=37
 _electron=electron$_electronversion
 pkgname=deezer-enhanced
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='An unofficial application for Deezer with enhanced features'
 arch=(any)
@@ -16,7 +16,7 @@ options=('!debug')
 source=("$url/archive/v$pkgver.tar.gz"
 	"$pkgname.sh"
 	"$pkgname.desktop")
-sha512sums=('7e4dda22ad11066aceae708adf3e63bdc3f182abe4539e3d71ed727f20ce86847d31fd5b184e2fd2b6632289a2784008bb928e3e1fd97410bf21235bbfa55024'
+sha512sums=('843971e70d961ee024708882c1468a2063e20fb65af7364de2573bd3f0e525fa35ae78b53e7151a5f87ba8e69dcbebc7627413ecca1cdb5078e669e0e9d0962d'
 	'a1a21687ca383db424566c97a3cd2439e9ca8165982845edbb151957f2015efb0e9ba427a0269b4144dab4923fb65abe1ba91b9dd1434428b9d73a63f7fadb7d'
 	'1ece0a5434f13119ff834834a190b7a2de185b78370d07ba21b3019c8c3939e0e61a8ad96148fbf4e95bf401fa611dc7a0d8f5e86824fe812a4290dc7539d85a')
 
