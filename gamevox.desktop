@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=GameVox
+Comment=GameVox Voice Chat
+Exec="/bin/gamevox-launcher" %u
+Icon=gamevox
+Terminal=false
+Type=Application
+Categories=VideoConference;Chat;
+MimeType=x-scheme-handler/gamevox;
+StartupWMClass=GameVox
