@@ -1,7 +1,7 @@
 # Maintainer: Austin Riba <austin@m51.io>
 pkgname=gelly
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Music player for Jellyfin and Subsonic"
 url="https://github.com/Fingel/gelly"
 license=("GPL-3.0-or-later")
@@ -10,7 +10,7 @@ makedepends=("cargo")
 arch=("x86_64" "aarch64")
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Fingel/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=("df85f5224f8a4ebaa2a917313d213b126cf85e51953dea616aa4cc7c824cc6ff318013bed27da010cb637a26602e7cd4607e726504877c5ec8ce9ebc4acfb31e")
+sha512sums=("b2b54b40335931eb53f7f2d9c5b7edbbbefa04b9f9495aea772aad40e96576855d332e5262f909436858755ec7e2b776939dccb5318e5aac568ef2c4d09f6b85")
 
 prepare() {
     cd "$pkgname-$pkgver"
