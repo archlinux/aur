@@ -1,0 +1,3 @@
+[perl-rdf-prefixes]
+source = "cpan"
+cpan = "RDF-Prefixes"
