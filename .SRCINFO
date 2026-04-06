@@ -1,6 +1,6 @@
 pkgbase = tinyfeed
 	pkgdesc = Generate a static HTML page from a collection of feeds wtih a simple CLI tool
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/TheBigRoomXXL/tinyfeed
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tinyfeed
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/TheBigRoomXXL/tinyfeed.git#tag=v1.4.1
+	source = git+https://github.com/TheBigRoomXXL/tinyfeed.git#tag=v1.5.0
 	sha256sums = SKIP
 
 pkgname = tinyfeed
