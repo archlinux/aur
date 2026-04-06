@@ -1,20 +1,25 @@
 # Maintainer: LuoTianyi_arm64 <2153585992@qq.com>
+# Maintainer: ShinKouyo <i@0x0f.dev>
 pkgname=astraeditor-git
 _binname=astraeditor-desktop
-pkgver=1.1.4
+pkgver=1.1.4.10.ga040bbf
 pkgrel=1
 pkgdesc='AstraEditor is a TurboWarp mod used to add more practical features to make your writing lightning fast.'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/AstraEditor/'
-license=('GPL3')
+license=('GPL-3.0-only')
 makedepends=('nodejs' 'npm' 'git' 'python')
 depends=('alsa-lib' 'gtk3' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'hicolor-icon-theme' 'at-spi2-core' 'libdrm' 'mesa' 'libxcb' 'libnotify')
 provides=('astraeditor')
-conflicts=('astraeditor')
+conflicts=('astraeditor' 'astraeditor-bin')
 options=(!strip !debug)
 source=("${pkgname}::git+${url}Desktop.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 build() {
   cd "$pkgname"
   rm -f package-lock.json
