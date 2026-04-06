@@ -1,42 +1,56 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
-pkgname='perl-tree-simple-visitorfactory'
-pkgver='0.16'
-pkgrel='1'
-pkgdesc="A factory object for dispensing Visitor objects"
+_author=RSAVAGE
+_dist=Tree-Simple-VisitorFactory
+pkgname=perl-${_dist@L}
+pkgver=0.16
+pkgrel=2
+pkgdesc='A factory object for dispensing Visitor objects'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-base'
+    'perl-pathtools>=0.6'
+    'perl-scalar-list-utils>=1.1'
+    'perl-tree-simple>=1.12'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=(
+    'perl-test-exception>=0.15'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl-tree-simple')
-checkdepends=('perl-test-exception')
-url='http://search.cpan.org/dist/Tree-Simple-VisitorFactory'
-source=('https://cpan.metacpan.org/authors/id/R/RS/RSAVAGE/Tree-Simple-VisitorFactory-0.16.tgz')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tgz")
 sha256sums=('9cf538faa12c54ffb4a91439945e488f1856f62b89ac5072a922119e01880da6')
-_distdir="Tree-Simple-VisitorFactory-0.16"
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
