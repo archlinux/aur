@@ -1,6 +1,6 @@
 pkgbase = arctic-comfyui-helper-bin
 	pkgdesc = ComfyUI installer and model manager (prebuilt binary release)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/ArcticLatent/Arctic-Helper
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = arctic-comfyui-helper-bin
 	depends = libayatana-appindicator
 	provides = arctic-comfyui-helper
 	conflicts = arctic-comfyui-helper
-	noextract = arctic-comfyui-helper-0.2.0-1-x86_64.pkg.tar.zst
-	source_x86_64 = https://github.com/ArcticLatent/Arctic-Helper/releases/download/v0.2.0/arctic-comfyui-helper-0.2.0-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = a31ec035b635e8d581c2932c6869b7802dc7c8c88ae4da8f0d1a064d6148072b
+	noextract = arctic-comfyui-helper-0.2.1-1-x86_64.pkg.tar.zst
+	source_x86_64 = https://github.com/ArcticLatent/Arctic-Helper/releases/download/v0.2.1/arctic-comfyui-helper-0.2.1-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = aad2e4ef671642ba5b9ee7e11015f6fc0620ae41c373708f869b0a7a7618d9da
 
 pkgname = arctic-comfyui-helper-bin
