@@ -1,0 +1,6 @@
+[cardamum-git]
+source = "github"
+github = "pimalaya/cardamum"
+branch = "master"
+use_commit = true
+

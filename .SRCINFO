@@ -1,0 +1,18 @@
+pkgbase = cardamum-git
+	pkgdesc = A CLI to manage contacts
+	pkgver = r47.1b3c397
+	pkgrel = 1
+	url = https://github.com/pimalaya/cardamum
+	arch = x86_64
+	groups = pimalaya
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = cardamum
+	conflicts = cardamum
+	source = cardamum::git+https://github.com/pimalaya/cardamum.git
+	b2sums = SKIP
+
+pkgname = cardamum-git
