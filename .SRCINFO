@@ -13,6 +13,7 @@ pkgbase = phoenixbrowser
 	depends = gtk3
 	depends = libxss
 	depends = git
+	depends = bitwarden-cli
 	source = https://gitlab.com/linuxbombay/phoenix/phoenix/-/archive/0.66/phoenix-0.66.tar.bz2
 	sha256sums = e2bc529dc56a06d9531cff5a6e55e847f2d4bb5e94f4e453bf4d3fefa852acf7
 
