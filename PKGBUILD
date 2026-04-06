@@ -1,17 +1,18 @@
 # Maintainer: Sean Greenslade <aur AT seangreenslade DOT com>
-# Contributor: Lars Rustand <rustand dot lars at gmail dot com>
-# Contributor: Boohbah <boohbah at gmail.com>
+# Contributor: T.J. Townsend <blakkheim AT archlinux.org>
+# Contributor: Angel Velasquez <angvp at archlinux.org>
 # Contributor: Eric Belanger <eric at archlinux.org>
 # Contributor: Daniel J Griffiths <ghost1227 at archlinux.us>
+# Contributor: Lars Rustand <rustand dot lars at gmail dot com>
+# Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Wesley Merkel <ooesili at gmail.com>
 # Contributor: sekret <sekret at posteo.se>
 
 _pkgname=htop
 pkgname=$_pkgname-solarized
-_tag='4dbd0b5c87f4225495d6e0591a1d7227f120ead1' # git rev-parse ${pkgver}
-pkgver=3.3.0
+pkgver=3.4.1
 pkgrel=1
-pkgdesc='Interactive process viewer with solarized patch'
+pkgdesc='Interactive process viewer with solarized colorscheme patch'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://htop.dev/'
 license=('GPL')
@@ -27,18 +28,10 @@ validpgpkeys=('F7ABE8761E6FE68638E6283AFE0842EE36DD8C0C'  # Nathan Scott <nathan
               '0D316B6ABE022C7798D0324BF1D35CB9E8E12EAD') # Benny Baumann <BenBE@geshi.org>
 source=("git+https://github.com/htop-dev/htop.git#tag=${pkgver}"
         'htop-solarized.patch')
-sha256sums=('a894206ecef4b690b97813d7b1626c98bacc9c82129b372d84680da8f6225761'
+sha256sums=('3238b122c46571bcf2de6d788d040a665b842020effb45b3e9420346a8608460'
             '30e1703d2662734d4094ea17cbabf029b251287b1d502b75893041debb36e3f3')
 
 _backports=(
-  # Fix the display of number of running tasks
-  'b6b9384678fa111d47a8d3074c31490863619d12'
-  # Undo too-aggressive code collapsing from tree mode refactoring
-  '5d778eaacc78c69d5597b57afb4f98062d8856ef'
-  # Clicking on column headers needs to also update the sort direction arrow
-  '91990b1a34927a4136a85e4ff9adcdbfa500286a'
-  # Disable basename matching for kernel threads
-  '71b099a8df9e8c2bf4361a9a93bebc409f513460'
 )
 
 _reverts=(
