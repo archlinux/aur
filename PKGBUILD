@@ -1,6 +1,6 @@
 # Maintainer: Ricky Banks <your@email.com>
 pkgname=niri-display-manager
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="GUI display manager for the Niri Wayland window manager"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=(
     'niri: the Wayland compositor this tool manages'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8aa1d9f0e9815341102b6d09da7e60fd72ffb51039c731c7270b7e35a5d0e66c')
+sha256sums=('bbae31861850b857f9a9c998d10df4907a71203a41068c1a1417fd23e7f0b740')
 
 build() {
     cd "niri_display_manager-$pkgver"
