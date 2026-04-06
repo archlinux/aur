@@ -8,7 +8,7 @@
 #   python packaging/update_release.py <version>
 
 pkgname=weaveback-bin
-pkgver=0.9.6
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Bidirectional literate programming toolchain (noweb, macros, source tracing)"
 url="https://github.com/giannifer7/weaveback"
@@ -19,7 +19,7 @@ conflicts=('weaveback' 'weaveback-git')
 depends=('gcc-libs' 'glibc')
 options=('!debug')
 source=("weaveback-x86_64-linux.tar.gz::https://github.com/giannifer7/weaveback/releases/download/v${pkgver}/weaveback-x86_64-linux.tar.gz")
-sha256sums=('fdb74ef4aec6bae749e56a60faa49a64faad650362cea2148e192469f34a8c49')
+sha256sums=('82e79aa6ae21e843fbd8f98ea9a39ce3024ceed7cb357aa01620068c75aa5763')
 
 package() {
     install -Dm755 weaveback        -t "${pkgdir}/usr/bin"
