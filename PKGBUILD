@@ -15,7 +15,7 @@ makedepends=('cmake' 'python-build' 'python-installer' 'python-setuptools' 'swig
 prepare() {
 	cd faiss-${pkgver}
 	sed -i -e '21a set(CMAKE_BUILD_RPATH "$ORIGIN")' \
-	-e 'set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)' \
+	-e '21a set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)' \
 	-e '21a list(APPEND CMAKE_LIBRARY_PATH ${CMAKE_INSTALL_PREFIX}/lib)' \
 	faiss/python/CMakeLists.txt
 }
