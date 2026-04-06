@@ -21,11 +21,15 @@ pkgver() {
 }
 
 build() {
-	cd $srcdir/harmony
-	maturin build --release --interpreter python
+  cd $srcdir/harmony
+
+	export CARGO_PROFILE_RELEASE_LTO="false"
+	export CFLAGS="${CFLAGS/-flto*/}"
+	export LDFLAGS="${LDFLAGS/-flto*/}"
+  maturin build --release --interpreter python
 }
 
 package() {
-	cd $srcdir/harmony
-	python -m installer --destdir="$pkgdir" target/wheels/*.whl
+  cd $srcdir/harmony
+  python -m installer --destdir="$pkgdir" target/wheels/*.whl
 }
