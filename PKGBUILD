@@ -1,6 +1,6 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects"
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -18,7 +18,7 @@ optdepends=(
 	'zoxide: zoxide integration')
 source=($pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver)
 
-sha1sums=('47f74eb92e457984c4677a811123a71c5c870902')
+sha1sums=('cc9cfadd079cc3500de1139d3078dbb83b51eb55')
 
 prepare() {
 	cd "$pkgname"
@@ -41,6 +41,10 @@ package() {
 	install -Dm755 "target/release/pay-respects" "$pkgdir/usr/bin/pay-respects"
 	install -Dm755 "target/release/_pay-respects-module-100-runtime-rules" "$pkgdir/usr/lib/pay-respects/_pay-respects-module-100-runtime-rules"
 	install -Dm755 "target/release/_pay-respects-fallback-100-request-ai" "$pkgdir/usr/lib/pay-respects/_pay-respects-fallback-100-request-ai"
+
+	install -Dm644 "man/pay-respects.1" "$pkgdir/usr/share/man/man1/pay-respects.1"
+	install -Dm644 "man/pay-respects-rules.5" "$pkgdir/usr/share/man/man5/pay-respects-rules.5"
+	install -Dm644 "man/pay-respects-modules.5" "$pkgdir/usr/share/man/man5/pay-respects-modules.5"
 
 	# install -Dm644  LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
