@@ -1,0 +1,25 @@
+pkgbase = wl-longshot-git
+	pkgdesc = A scrolling screenshot tool(long screenshot tool) for Wayland Compositors
+	pkgver = r12.7718502
+	pkgrel = 1
+	url = https://github.com/YourName/wl-longshot
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = grim
+	depends = slurp
+	depends = wl-clipboard
+	depends = python
+	depends = python-opencv
+	depends = python-numpy
+	optdepends = wl-screenrec: Fast stream recording backend (Recommended)
+	optdepends = wf-recorder: Stream recording backend (Fallback)
+	optdepends = fuzzel: Lightweight Wayland native menu UI
+	optdepends = satty: Post-capture editing
+	optdepends = xdg-utils: For opening images in default viewer
+	provides = wl-longshot
+	conflicts = wl-longshot
+	source = git+https://github.com/SHORiN-KiWATA/wl-longshot.git
+	sha256sums = SKIP
+
+pkgname = wl-longshot-git
