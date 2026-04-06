@@ -15,6 +15,7 @@ pkgbase = gamepad-osk-git
 	depends = ttf-promptfont
 	provides = gamepad-osk
 	conflicts = gamepad-osk
+	conflicts = gamepad-osk-bin
 	source = gamepad-osk-git::git+https://github.com/0x90shell/gamepad-osk.git
 	sha256sums = SKIP
 
