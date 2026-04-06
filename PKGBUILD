@@ -1,6 +1,6 @@
-
-# Maintainer: meanlint <meanlint@outlook.com>
-# Maintainer: shaka042 <chefmayonaisse.observant341 at slmails dot com>
+# Maintainer: zebra2711 <zebra2711t@gmail.com>
+# Contributor: meanlint <meanlint@outlook.com>
+# Contributor: shaka042 <chefmayonaisse.observant341 at slmails dot com>
 # Contributor: Aria Moradi <aria.moradi007 at gmail dot com>
 # Contributor: Mahor Foruzesh <mahor1221 at gmail dot com>
 
