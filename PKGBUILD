@@ -21,16 +21,14 @@ build() {
 
   # Build prettymux
   cd "$srcdir/prettymux/src/gtk"
-  meson setup builddir --buildtype=release -Dghostty_dir="$srcdir/ghostty"
+  meson setup builddir --buildtype=release --prefix=/usr -Dghostty_dir="$srcdir/ghostty"
   ninja -C builddir
 }
 
 package() {
-  # Binary
-  install -Dm755 "$srcdir/prettymux/src/gtk/builddir/prettymux" \
-    "$pkgdir/usr/bin/prettymux"
-  install -Dm755 "$srcdir/prettymux/src/gtk/builddir/prettymux-open" \
-    "$pkgdir/usr/bin/prettymux-open"
+  # Install meson targets so installed RPATH matches the package layout.
+  cd "$srcdir/prettymux/src/gtk"
+  DESTDIR="$pkgdir" meson install -C builddir --no-rebuild
 
   # Shared library
   install -Dm644 "$srcdir/ghostty/zig-out/lib/libghostty.so" \
