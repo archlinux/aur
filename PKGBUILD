@@ -5,7 +5,7 @@
 
 # Maintainer: BYK <bykdev@proton.me>
 pkgname=basecalc-git
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="BaseCalc is a base calculator made in C with GTK4."
 arch=('x86_64')
