@@ -6,7 +6,7 @@ pkgbase = pegasus-frontend-theme-clearos-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = pegasus-frontend
+	depends = pegasus-frontend-git
 	source = clearos::git+https://github.com/PlayingKarrde/clearOS.git
 	sha256sums = SKIP
 
