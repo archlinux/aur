@@ -38,7 +38,7 @@ package() {
   cd "$pkgname"
   install -Dm755 gamepad-osk "$pkgdir/usr/bin/gamepad-osk"
   install -Dm644 config.toml "$pkgdir/usr/share/gamepad-osk/config.toml"
-  install -Dm644 gamepad-osk.service "$pkgdir/usr/share/gamepad-osk/gamepad-osk.service"
+  install -Dm644 gamepad-osk.service "$pkgdir/usr/lib/systemd/user/gamepad-osk.service"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/gamepad-osk/README.md"
 }
