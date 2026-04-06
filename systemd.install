@@ -36,26 +36,6 @@ post_install() {
   chgrp systemd-journal-remote var/log/journal/remote
 }
 
-pre_upgrade() {
-  # Fix corrupt HTML hook files from initial bad release (259.rc3.r85286.7524671f74c-1)
-  local hooks=(
-    30-systemd-binfmt.hook
-    30-systemd-catalog.hook
-    30-systemd-hwdb.hook
-    30-systemd-restart-marked.hook
-    30-systemd-update.hook
-    30-systemd-tmpfiles.hook
-    30-systemd-udev-reload.hook
-    30-systemd-sysctl.hook
-  )
-  for hook in "${hooks[@]}"; do
-    local path="/usr/share/libalpm/hooks/$hook"
-    if [[ -f "$path" ]] && head -1 "$path" | grep -q '<!DOCTYPE'; then
-      echo "==> Removing corrupt hook: $hook"
-      rm -f "$path"
-    fi
-  done
-}
 post_upgrade() {
   post_common "$@"
 
