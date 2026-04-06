@@ -1,7 +1,7 @@
 # Mantenedor: Setimo <gustavo.gianeli@hotmail.com>
 pkgname=arch-update-full
 pkgver=3.5
-pkgrel=2
+pkgrel=2.5
 pkgdesc="Protocolo Sentinela: Automação de updates (Pacman/AUR/Flatpak/Snap) e auditoria."
 arch=('any')
 url="https://github.com/GustavoGianeli/arch-update-full"
@@ -16,7 +16,7 @@ source=("arch-update-full"
 
 # Use 'updpkgsums' para preencher isso automaticamente
 sha256sums=('133e2cf3949daa9155b023eb05db65e2edd37f78d78d7882ea418eb03d19008d'
-            '5931829f36f0b7daf71ccfd7f7c0dc4ab80f6ed9dbc80f0c98075946053f84be'
+            'c67f2145975aef77b7bc07a71ff334593df456ffe8155175f177f0e73f4f47cd'
             'efacea25c42c5656350fa9a1ec9a0bd528f4ca3305457c6d82814472f178862b')
 
 package() {
