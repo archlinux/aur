@@ -1,6 +1,6 @@
 pkgbase = lichtfeld-studio-git
 	pkgdesc = Real-time 3D Gaussian Splatting studio for point cloud visualization and editing
-	pkgver = 0.5.1.r30.gefce2ef0
+	pkgver = 0.5.1.r41.gaae5bc42
 	pkgrel = 1
 	url = https://github.com/MrNeRF/LichtFeld-Studio
 	arch = x86_64
@@ -50,9 +50,11 @@ pkgbase = lichtfeld-studio-git
 	options = !debug
 	source = lichtfeld-studio-git::git+https://github.com/MrNeRF/LichtFeld-Studio.git
 	source = vcpkg::git+https://github.com/microsoft/vcpkg.git
+	source = python-finalize-before-viewer-reset.patch
 	source = lichtfeld-studio.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 1d92fe70a5a30d47810e1b1245227bb601d3c4517dfc66e0cf44d56f3632a20a
 	sha256sums = a07642f575ad454ef6783e0a49d03afc96cc7df14d82db7a9de2ccad045fde65
 
 pkgname = lichtfeld-studio-git
