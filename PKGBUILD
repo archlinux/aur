@@ -2,7 +2,7 @@
 
 _pkgname=libraw
 pkgname=mingw-w64-${_pkgname}
-pkgver=0.22.0
+pkgver=0.22.1
 _pkgver=${pkgver//_/}
 pkgrel=1
 pkgdesc='A library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others) (mingw-w64)'
@@ -19,7 +19,7 @@ makedepends=('mingw-w64-cmake' 'git')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('5a11327a9cef2496d6a4335e8da30a1604460b6c545a30fe7588cf4c00a0fcae'
+sha256sums=('e676248284075605aa2697a66eeed7dc258820bd1d4988c724d29edffd726726'
             'SKIP')
 source=(
 	"$_pkgname-$_pkgver.tar.gz::https://github.com/LibRaw/LibRaw/archive/${_pkgver}.tar.gz"
