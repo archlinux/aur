@@ -2,7 +2,7 @@
 
 _pkgname=kreuzberg
 pkgname=kreuzberg-bin
-pkgver=4.7.3
+pkgver=4.7.4
 pkgrel=1
 pkgdesc="High-performance text extraction library - CLI binary"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=(kreuzberg)
 conflicts=(kreuzberg)
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/kreuzberg-dev/$_pkgname/releases/download/v$pkgver/kreuzberg-cli-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::https://github.com/kreuzberg-dev/$_pkgname/releases/download/v$pkgver/kreuzberg-cli-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('9b4069da873f3eec8fb3c660dbeea2b76fbda7c5e6450ebab0f4fe3796500b01')
-sha256sums_aarch64=('4df0ae00759e3bc98906bce4ad0197f7d94e1ff715f0988ebf38d07e6bf89e0c')
+sha256sums_x86_64=('48229623a29dec1addff3b706fc93f9eacc6b006fdd52f70282a3a05fde2b7ec')
+sha256sums_aarch64=('c5a51491c7b821386ce4277a8ad41a2fdaff766b407854faf2f6cb9da23e8b64')
 
 package() {
   cd "$srcdir"
