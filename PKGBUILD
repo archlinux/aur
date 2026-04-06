@@ -30,7 +30,7 @@ source=("luna-ai-$pkgver.tar.gz::https://github.com/Arunachalam-gojosaturo/luna-
 sha256sums=('SKIP')
 
 package() {
-    cd "$srcdir/luna-ai-$pkgver"
+    cd "$srcdir"/luna-ai-* || cd "$srcdir"/Luna-ai-*
 
     install -dm755 "$pkgdir/usr/lib/luna-ai"
     cp -r * "$pkgdir/usr/lib/luna-ai"
