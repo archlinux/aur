@@ -19,7 +19,7 @@ package() {
 
   cd "jstimeout-${pkgver}"
   install -Dm644 .jstimeout.devices "$pkgdir/usr/share/jstimeout/devices.example"
-  install -Dm644 jstimeout.service "$pkgdir/usr/share/jstimeout/jstimeout.service"
+  install -Dm644 jstimeout.service "$pkgdir/usr/lib/systemd/user/jstimeout.service"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/jstimeout/README.md"
 }

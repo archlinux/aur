@@ -6,8 +6,6 @@ post_install() {
   echo "  Example:     /usr/share/jstimeout/devices.example"
   echo ""
   echo "  Systemd user service:"
-  echo "    mkdir -p ~/.config/systemd/user"
-  echo "    cp /usr/share/jstimeout/jstimeout.service ~/.config/systemd/user/"
   echo "    systemctl --user enable --now jstimeout"
   echo ""
 }
