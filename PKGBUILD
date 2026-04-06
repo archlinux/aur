@@ -1,6 +1,6 @@
-# Maintainer: MojArch
+# Maintainer: 67mustard41, MojArch
 pkgname=opera-gx-stable
-pkgver=127.0.5778.75
+pkgver=129.0.5823.64
 pkgrel=3
 pkgdesc='Fast, secure, easy-to-use web browser'
 arch=('x86_64')
@@ -51,8 +51,9 @@ source=(
     "opera"
     "default"
 )
-# dynamic Integrity checks
-sha256sums=('0da8afb8dabafa8bdce31895535994896a90e9333df93c7015a506dc320d3f02'
+
+# Updated Integrity checks for version 129.0.5823.64
+sha256sums=('f084698cb9bb99f45a6eaf4436d4357d8531659422b296dc87c7cbca40c10fa1'
             '49af89cd980519b256033fc6175ec5773570bcdee234f816ac813596d004ac45'
             '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231')
 

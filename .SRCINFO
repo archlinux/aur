@@ -1,6 +1,6 @@
 pkgbase = opera-gx-stable
 	pkgdesc = Fast, secure, easy-to-use web browser
-	pkgver = 127.0.5778.75
+	pkgver = 129.0.5823.64
 	pkgrel = 3
 	url = https://www.opera.com/browser/
 	arch = x86_64
@@ -38,10 +38,10 @@ pkgbase = opera-gx-stable
 	provides = www-browser
 	conflicts = opera
 	replaces = opera
-	source = https://get.opera.com/pub/opera_gx/127.0.5778.75/linux/opera-gx-stable_127.0.5778.75_amd64.deb
+	source = https://get.opera.com/pub/opera_gx/129.0.5823.64/linux/opera-gx-stable_129.0.5823.64_amd64.deb
 	source = opera
 	source = default
-	sha256sums = 0da8afb8dabafa8bdce31895535994896a90e9333df93c7015a506dc320d3f02
+	sha256sums = f084698cb9bb99f45a6eaf4436d4357d8531659422b296dc87c7cbca40c10fa1
 	sha256sums = 49af89cd980519b256033fc6175ec5773570bcdee234f816ac813596d004ac45
 	sha256sums = 99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231
 
