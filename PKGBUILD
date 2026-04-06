@@ -27,7 +27,7 @@ source=(
   "figma-linux-next-launcher.sh"
 )
 sha256sums=(
-  'b37576fa1ad7b4302225b14d76532a5158e233a1df148ba9ba6a7862c8ad2d84'
+  'd4389b1ff5e2d136675dc5adfd6767d78411d78cea0a7032c7420804b6c8cfd0'
   'SKIP'
   'SKIP'
 )
