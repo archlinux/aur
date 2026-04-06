@@ -1,0 +1,13 @@
+pkgbase = netflow2ng
+	pkgdesc = NetFlow v9 collector for ntopng
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/synfinatic/netflow2ng
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = protoc-gen-go
+	source = netflow2ng-0.2.2.tar.gz::https://github.com/synfinatic/netflow2ng/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 009be49b8db23f39c21bd216c8ee1ddb317f6257478d0e9a5948aa0bd6229e6a
+
+pkgname = netflow2ng
