@@ -1,7 +1,7 @@
 # Maintainer: 67mustard41, MojArch
 pkgname=opera-gx-stable
 pkgver=129.0.5823.64
-pkgrel=3
+pkgrel=1
 pkgdesc='Fast, secure, easy-to-use web browser'
 arch=('x86_64')
 url='https://www.opera.com/browser/'
@@ -39,7 +39,7 @@ depends=(
     'systemd-libs'
 )
 optdepends=(
-    'opera-gx-ffmpeg-codecs'
+    'opera-gx-stable-ffmpeg-codecs-bin'
     'cairo'
 )
 

@@ -1,7 +1,7 @@
 pkgbase = opera-gx-stable
 	pkgdesc = Fast, secure, easy-to-use web browser
 	pkgver = 129.0.5823.64
-	pkgrel = 3
+	pkgrel = 1
 	url = https://www.opera.com/browser/
 	arch = x86_64
 	license = custom:opera
@@ -32,7 +32,7 @@ pkgbase = opera-gx-stable
 	depends = pango
 	depends = qt5-base
 	depends = systemd-libs
-	optdepends = opera-gx-ffmpeg-codecs
+	optdepends = opera-gx-stable-ffmpeg-codecs-bin
 	optdepends = cairo
 	provides = opera-gx-stable
 	provides = www-browser
