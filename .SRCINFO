@@ -1,0 +1,18 @@
+pkgbase = calendula-git
+	pkgdesc = A CLI to manage calendars
+	pkgver = r13.bf94ba0
+	pkgrel = 1
+	url = https://github.com/pimalaya/calendula
+	arch = x86_64
+	groups = pimalaya
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = calendula
+	conflicts = calendula
+	source = calendula::git+https://github.com/pimalaya/calendula.git
+	b2sums = SKIP
+
+pkgname = calendula-git

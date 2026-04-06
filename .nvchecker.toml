@@ -1,0 +1,5 @@
+[calendula-git]
+source = "github"
+github = "pimalaya/calendula"
+branch = "master"
+use_commit = true
