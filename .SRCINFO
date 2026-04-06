@@ -1,6 +1,6 @@
 pkgbase = fw16-kbd-uleds-git
 	pkgdesc = Framework Laptop 16 QMK keyboard backlight bridge via UPower
-	pkgver = r11.3f0fc18
+	pkgver = r12.51af3af
 	pkgrel = 1
 	url = https://github.com/paco3346/fw16-kbd-uleds
 	arch = x86_64
