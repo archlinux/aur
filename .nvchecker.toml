@@ -1,0 +1,5 @@
+[mimosa-git]
+source = "github"
+github = "pimalaya/mimosa"
+branch = "master"
+use_commit = true

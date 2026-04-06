@@ -1,0 +1,19 @@
+pkgbase = mimosa-git
+	pkgdesc = A CLI to manage passwords
+	pkgver = r8.82058ef
+	pkgrel = 1
+	url = https://github.com/pimalaya/mimosa
+	arch = x86_64
+	groups = pimalaya
+	license = AGPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	provides = mimosa
+	conflicts = mimosa
+	source = mimosa::git+https://github.com/pimalaya/mimosa.git
+	b2sums = SKIP
+
+pkgname = mimosa-git
