@@ -1,0 +1,3 @@
+[perl-types-path-tiny]
+source = "cpan"
+cpan = "Types-Path-Tiny"
