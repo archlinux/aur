@@ -1,6 +1,6 @@
 pkgbase = sane-airscan-git
 	pkgdesc = SANE - Apple AirScan (eSCL) driver
-	pkgver = 0.9.17.r5.g59280c9
+	pkgver = 0.99.37.r1.gf0466c7
 	pkgrel = 1
 	url = https://github.com/alexpevzner/sane-airscan
 	arch = aarch64
@@ -12,8 +12,7 @@ pkgbase = sane-airscan-git
 	depends = libsoup
 	provides = sane-airscan
 	conflicts = sane-airscan
-	source = git://github.com/alexpevzner/sane-airscan.git
+	source = git+https://github.com/alexpevzner/sane-airscan.git
 	sha1sums = SKIP
 
 pkgname = sane-airscan-git
-

@@ -1,7 +1,8 @@
-# Maintainer: Thomas Kiss <thokis@gmail.com>
+# Maintainer: dubi <aur@mailbox.org>
+# Contributor: Thomas Kiss <thokis@gmail.com>
 
 pkgname=sane-airscan-git
-pkgver="0.9.17.r5.g59280c9"
+pkgver=0.99.37.r1.gf0466c7
 pkgrel=1
 pkgdesc='SANE - Apple AirScan (eSCL) driver'
 url='https://github.com/alexpevzner/sane-airscan'
@@ -9,7 +10,7 @@ arch=('aarch64' 'x86_64')
 license=('GPL2')
 depends=('sane' 'libsoup')
 makedepends=('ctags' 'git')
-source=('git://github.com/alexpevzner/sane-airscan.git')
+source=('git+https://github.com/alexpevzner/sane-airscan.git')
 sha1sums=('SKIP')
 conflicts=("sane-airscan")
 provides=("sane-airscan")
