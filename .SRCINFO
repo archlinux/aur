@@ -1,0 +1,17 @@
+pkgbase = ganda-bin
+	pkgdesc = fast cmd-line app that quickly requests millions of urls and saves/echoes the results
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/tednaleid/ganda
+	license = Apache-2.0
+	depends = glibc
+	conflicts = ganda
+	provides = ganda
+	arch = aarch64
+	source_aarch64 = https://github.com/tednaleid/ganda/releases/download/v1.1.1/ganda_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 711a873ba7f74862f9dc13b927cf38358ff3060b988360a78ac2223ef1e6415b
+	arch = x86_64
+	source_x86_64 = https://github.com/tednaleid/ganda/releases/download/v1.1.1/ganda_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 397f0c9501bb69a1a8b68c92e13e3d23730d3ce0a5eada9f3fbf210cc73186ea
+	
+pkgname = ganda-bin
