@@ -1,10 +1,10 @@
 pkgbase = dashi
 	pkgdesc = Minimal shell for linux window managers
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nate-craft/dashi
 	arch = x86_64
-	license = MIT
+	license = GPL-2.0
 	depends = libpulse
 	depends = libnotify
 	optdepends = gammastep: provides nightshift
