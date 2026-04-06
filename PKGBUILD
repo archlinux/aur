@@ -1,8 +1,8 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=wl-longshot-git
 pkgver=r12.7718502
-pkgrel=1
-pkgdesc="A scrolling screenshot tool(long screenshot tool) for Wayland Compositors"
+pkgrel=2
+pkgdesc="A scrolling screenshot tool (long screenshot tool) for Wayland Compositors"
 arch=('any')
 url="https://github.com/YourName/wl-longshot"
 license=('GPL3') 

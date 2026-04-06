@@ -1,7 +1,7 @@
 pkgbase = wl-longshot-git
-	pkgdesc = A scrolling screenshot tool(long screenshot tool) for Wayland Compositors
+	pkgdesc = A scrolling screenshot tool (long screenshot tool) for Wayland Compositors
 	pkgver = r12.7718502
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YourName/wl-longshot
 	arch = any
 	license = GPL3
