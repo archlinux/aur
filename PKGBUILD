@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
@@ -5,11 +6,11 @@
 pkgname='python-whenever-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.8.5.r0.g46799e2
-pkgrel=1
 pkgdesc='Modern datetime library for Python (development version)'
-arch=('aarch64' 'x86_64')
+pkgver=0.10.0.r3.g5ccb50f
+pkgrel=1
 url="https://github.com/ariebovenberg/$_srcname"
+arch=('aarch64' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
 makedepends=(
   'git'
@@ -19,14 +20,14 @@ makedepends=(
   'python-wheel'
 )
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
   'python'
   'python-pydantic-core'
 )
-source=("git+$url.git")
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -35,10 +36,15 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd "$_srcname"
 
   git clean -dfx
+}
+
+build() {
+  cd "$_srcname"
+
   python -m build --wheel --no-isolation
 }
 
@@ -47,10 +53,15 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     {CHANGELOG,CONTRIBUTING,README}.md
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" \
+    && ln -srf "$pkgname" "$_pkgname"
+  done
 }
 
 # eof
