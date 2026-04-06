@@ -6,7 +6,7 @@ _appname=oy
 pkgname=${_gitname}-bin
 pkgdesc="A diff viewer that works two ways: step through changes or review a classic scrollable diff"
 
-pkgver=0.1.26
+pkgver=0.1.30
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -35,14 +35,14 @@ source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE.md"
 		"DIFF_PREVIEWS-${pkgver}.md::${_ghurlraw}/docs/DIFF_PREVIEWS.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 sha256sums=('ada39b6fcd5ff630d02ab5b802a0000cc688ef6c1f1e05778e363db63d1df4a3'
-            '923b080adc0b3659da91292b26cb8e12dd8130b97657c61d2ed3b0c30e6ee722'
+            '7a3ceae89e097d82025b9bfbede8e84356c3770c99853a4f3d955a1c1a0d33ac'
             'a60bcb8c2d484ef140693a9292ed92da23e093abf5770d4cd1abe1f5cb267dc0'
             '84e1c56bdc68ba9dde8804b20517d7adfad8ee596c7c4c187503db14d44b398c'
             'c74de961bbf3c2e7c0a1b9daaf79b996c34d78b6c7526046bde7d23f2ae81bc2'
             '21dfbe8da3741154e385193690f3b1cdf7c2736f9a975df05a20f412b9e21ee6'
             '7614aac6abe5628331dd0e75ed137491650b17ba134832de9f9b27d5c82b07d5'
             '8602e5cd9ae0f9f14947e4588bac221f510909df37db466a2f41633694b02911')
-sha256sums_x86_64=('33b33f7f1d4a287d4c25734aa98ef8af2f5c8c372921f9a7233a7c22c00dd2a3')
+sha256sums_x86_64=('a0a186c60c09817d3c085f9437e9e6f1a74603114dfe7db23e5c4aa72e44674a')
 
 
 package() {
