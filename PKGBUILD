@@ -5,19 +5,19 @@
 # Contributor: Georgij Kondratjev <smpuj@bk.ru>
 
 pkgname=gnucap
-pkgver=20240220
+pkgver=20260329
 pkgrel=1
 pkgdesc="GNU Circuit Analysis Package"
 arch=('i686' 'x86_64')
 url="http://gnucap.org/"
 license=('GPL')
 depends=('readline' 'termcap')
-source=("git+https://git.savannah.gnu.org/git/gnucap.git#tag=${pkgver}")
-sha1sums=('37c15fa12c96978434071094ba93de5a3aa2665d')
+source=("https://codeberg.org/gnucap/gnucap/archive/${pkgver}-dev.tar.gz")
+sha1sums=('6eeefa50bf56da18f15219d029b1d095c1b27be7')
 
 build() {
   cd $pkgname
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --force-in-tree
   make DESTDIR="$pkgdir"
 }
 
