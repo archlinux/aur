@@ -1,5 +1,5 @@
 pkgname=bili-danmaku-tui
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Terminal UI client for displaying Bilibili live chat messages in real time'
 arch=('x86_64' 'aarch64')
@@ -13,12 +13,17 @@ sha256sums=('SKIP')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  local _build_time
+  _build_time="$(date -u -d "@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y-%m-%dT%H:%M:%SZ)"
+
   export CGO_ENABLED=0
   export GOCACHE="${srcdir}/go-build"
   export GOMODCACHE="${srcdir}/go-mod"
   export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  go build -o "${pkgname}" .
+  make build \
+    GOOS=linux \
+    DATE="${_build_time}"
 }
 
 package() {
