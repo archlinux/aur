@@ -1,13 +1,14 @@
 pkgbase = python-libsass
 	pkgdesc = Sass/SCSS for Python
 	pkgver = 0.23.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://sass.github.io/libsass-python
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-werkzeug
 	makedepends = git
+	makedepends = help2man
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -16,6 +17,8 @@ pkgbase = python-libsass
 	depends = python
 	depends = python-setuptools
 	source = git+https://github.com/sass/libsass-python#tag=0.23.0
+	source = pkg_resources.patch
 	sha256sums = b7a61dcc37f9412e5b90b2c73b5e3215bf9d3eb7f490b4d05a0e1276bfc4492f
+	sha256sums = 191256c62920e340d47cab5817f4865eed8f5f6358a24ffff77ec2ad4e758ca9
 
 pkgname = python-libsass
