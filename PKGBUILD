@@ -9,7 +9,7 @@ _pkgbase=wireshark
 pkgbase=wireshark-oqs
 pkgname=(wireshark-oqs-cli wireshark-oqs-qt)
 pkgver=4.6.4
-pkgrel=2
+pkgrel=3
 _pkgver_oqs=0.11.0
 _commit_oqs_demos=29d4dccbd547a62e8ba77d3fef1af5d6f8625d60
 pkgdesc='Network traffic and protocol analyzer/sniffer'
@@ -41,7 +41,7 @@ makedepends=(
   libstdc++
   libxml2
   libxslt
-  lua
+  lua54
   lz4
   minizip
   ninja
@@ -108,6 +108,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DCMAKE_SKIP_INSTALL_RPATH=TRUE \
     -DENABLE_LUA=ON \
     -DENABLE_ZLIB=OFF \
@@ -146,7 +147,7 @@ package_wireshark-oqs-cli() {
     libpcap.so
     libssh
     libxml2
-    lua
+    lua54
     lz4
     opencore-amr
     opus
