@@ -1,0 +1,15 @@
+pkgbase = shoes
+	pkgdesc = A multi-protocol proxy server written in Rust
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/cfal/shoes
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = jemalloc
+	depends = libgcc
+	source = shoes-0.2.7.tar.gz::https://github.com/cfal/shoes/archive/v0.2.7.tar.gz
+	sha256sums = 8d2e63a021f58e09e827f9ec7d606a0583b578c55cad09619d6b7705ccd3a400
+
+pkgname = shoes
