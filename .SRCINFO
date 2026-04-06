@@ -1,0 +1,21 @@
+pkgbase = umodel
+	pkgdesc = Unreal Engine model viewer (UEViewer)
+	pkgver = 4.27
+	pkgrel = 1
+	url = https://github.com/gildor2/UEViewer
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = perl
+	makedepends = git
+	depends = sdl2
+	depends = zlib
+	depends = libpng
+	depends = glibc
+	provides = ueviewer
+	options = !debug
+	options = !strip
+	source = umodel::git+https://github.com/gildor2/UEViewer.git#tag=ue4.27
+	sha256sums = SKIP
+
+pkgname = umodel
