@@ -1,49 +1,31 @@
-# Maintainer: karasevuy <eganov2006@gmail.com>
+# Maintainer: Your Name <your@email.com>
 pkgname=wrain-git
-_pkgname=wrain
-pkgver=r5.2422cc8
+pkgver=0.1.7.r0.g1234567
 pkgrel=1
-pkgdesc="GPU accelerated rain wallpaper for Wayland (Hyprland/Sway)"
+pkgdesc="GPU accelerated rain wallpaper for Wayland (Source)"
 arch=('x86_64')
 url="https://github.com/happyzxzxz/wrain"
 license=('MIT')
-depends=('wayland' 'libxkbcommon' 'vulkan-icd-loader' 'alsa-lib')
+depends=('wayland' 'libxkbcommon' 'vulkan-icd-loader' 'alsa-lib' 'xkeyboard-config')
 makedepends=('cargo' 'git')
 provides=('wrain')
-conflicts=('wrain')
+conflicts=('wrain' 'wrain-bin')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-
-  (set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
-
-prepare() {
-  cd "$_pkgname"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cd wrain
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
-  cd "$_pkgname"
-
-  export RUSTUP_TOOLCHAIN=stable
-  cargo build --release --frozen
+  cd wrain
+  cargo build --release --locked
 }
 
 package() {
-  cd "$_pkgname"
-  
-  install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  
-  install -d "$pkgdir/usr/share/$_pkgname/assets"
-  cp -r assets/* "$pkgdir/usr/share/$_pkgname/assets/"
-  
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  cd wrain
+  install -Dm755 "target/release/wrain" "$pkgdir/usr/bin/wrain"
+  install -d "$pkgdir/usr/share/wrain/assets"
+  cp -r assets/* "$pkgdir/usr/share/wrain/assets/"
 }

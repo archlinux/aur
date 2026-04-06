@@ -1,6 +1,6 @@
 pkgbase = wrain-git
-	pkgdesc = GPU accelerated rain wallpaper for Wayland (Hyprland/Sway)
-	pkgver = r5.2422cc8
+	pkgdesc = GPU accelerated rain wallpaper for Wayland (Source)
+	pkgver = 0.1.7.r0.g1234567
 	pkgrel = 1
 	url = https://github.com/happyzxzxz/wrain
 	arch = x86_64
@@ -11,8 +11,10 @@ pkgbase = wrain-git
 	depends = libxkbcommon
 	depends = vulkan-icd-loader
 	depends = alsa-lib
+	depends = xkeyboard-config
 	provides = wrain
 	conflicts = wrain
+	conflicts = wrain-bin
 	source = git+https://github.com/happyzxzxz/wrain.git
 	sha256sums = SKIP
 
