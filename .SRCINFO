@@ -1,0 +1,16 @@
+pkgbase = calendula
+	pkgdesc = A CLI to manage calendars
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pimalaya/calendula
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/pimalaya/calendula/archive/v0.1.0/calendula-0.1.0.tar.gz
+	source = readme-doctests.patch
+	b2sums = fab686f32d9c8f726b4082cc062c6147d671a0d856c5631d60d269b3d241160bfce8df5f9025addc097babe778892f6deaae2d280c44411c3f75b4aade7bb7b2
+	b2sums = e22ab558075c085e88c7e6da79a2ba77f11a4dc50f3e7d9a2f30b631ffbeb607fac4027a0fc231fcb8ab0ed2604025d16658629c7e0ad8587b27ef3422f53998
+
+pkgname = calendula
