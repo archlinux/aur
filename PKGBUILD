@@ -2,7 +2,7 @@
 pkgname=selene-player-git
 _pkgname=selene-player
 pkgver=0.4.0.r0.gfc71869
-pkgrel=0
+pkgrel=1
 pkgdesc="A feature complete music player and metadata editor"
 
 url="https://codeberg.org/CrypticCreator/Selene"
