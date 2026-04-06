@@ -1,5 +1,5 @@
 pkgbase = faiss
-	pkgver = 1.13.2
+	pkgver = 1.14.1
 	pkgrel = 1
 	url = https://github.com/facebookresearch/faiss
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = faiss
 	depends = lapack
 	depends = openmp
 	depends = python-numpy
-	source = https://github.com/facebookresearch/faiss/archive/refs/tags/v1.13.2.tar.gz
-	sha256sums = a2c0f71236a095e6158aa3738652b16dc3dae1db22c5dd8fb07fc1600e870694
+	source = https://github.com/facebookresearch/faiss/archive/refs/tags/v1.14.1.tar.gz
+	sha256sums = 0216d38d8c5c460433815b72d3cde6725eaa5d5770576277a2abc01ffc414d20
 
 pkgname = faiss-cpu
 	pkgdesc = A library for efficient similarity search and clustering of dense vectors.

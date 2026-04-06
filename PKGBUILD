@@ -3,10 +3,10 @@ pkgname=('faiss-cpu' 'faiss-gpu')
 arch=('x86_64' 'aarch64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
-pkgver=1.13.2
+pkgver=1.14.1
 pkgrel=1
 source=("${url}/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a2c0f71236a095e6158aa3738652b16dc3dae1db22c5dd8fb07fc1600e870694')
+sha256sums=('0216d38d8c5c460433815b72d3cde6725eaa5d5770576277a2abc01ffc414d20')
 depends=('blas' 'lapack' 'openmp'
 'python-numpy'
 )
