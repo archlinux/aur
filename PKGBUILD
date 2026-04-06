@@ -34,7 +34,7 @@ prepare() {
 build() {
 	cd "${_pkgname}"
 	export CARGO_TARGET_DIR=target
-	cargo build --release --locked --offline
+	cargo build --release --locked --offline -p selene-cli
 }
 
 package() {
