@@ -1,9 +1,11 @@
 import curses
+import os
 import pickle
 import random
 import time
 
-PICKLE_FILE = "snake_high_score.pkl"
+PICKLE_FILE = os.path.expanduser("~/.local/share/pysnake/snake_high_score.pkl")
+os.makedirs(os.path.dirname(PICKLE_FILE), exist_ok=True)
 
 score = 0
 highscore = 0
