@@ -3,8 +3,8 @@
 
 pkgname=aspire-cli
 _pkgname=aspire
-pkgver=13.2.0
-_pkgver=preview.1.26170.3
+pkgver=13.2.1
+_pkgver=preview.1.26180.6
 pkgrel=1
 pkgdesc='Aspire provides tools, templates, and packages for building observable, production-ready distributed apps'
 arch=('x86_64' 'aarch64')
