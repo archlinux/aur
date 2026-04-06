@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 # shellcheck disable=SC2034,SC2317
-# Arch Update Readiness Checker v1.3.4
+# Arch Update Readiness Checker v1.3.5
 # Fixes: AUR print updates amount error.
 
-VERSION="1.3.5"
+VERSION="1.3.6"
 set -euo pipefail
 
 NEWS_RSS="https://archlinux.org/feeds/news/"
@@ -39,21 +39,11 @@ if ! curl -4 -fsSL --connect-timeout 3 "$NEWS_RSS" -o "$TMP_NEWS" 2>/dev/null; t
     : > "$TMP_NEWS"
 fi
 
-# 3. Filter News by Freshness (14 Days)
+# 3. Filter News (The "tr" One-Liner Fix)
 RELEVANT_NEWS=""
 if [[ -f "$TMP_NEWS" ]]; then
-    CUTOFF_TS=$(python3 -c "from datetime import datetime, timedelta; print(int((datetime.now() - timedelta(days=14)).timestamp()))")
-
-    # Extract Title and Date
-    while read -r title && read -r pubdate; do
-        news_ts=$(python3 -c "import email.utils; print(int(email.utils.parsedate_to_datetime('$pubdate').timestamp()))" 2>/dev/null || echo 0)
-        
-        if (( news_ts > CUTOFF_TS )); then
-            # REMOVED the grep check against $TMP_PKGS
-            # I want to see ALL news from the last 14 days.
-            RELEVANT_NEWS+="${title} (${pubdate})\n"
-        fi
-    done < <(grep -E '<title>|<pubDate>' "$TMP_NEWS" | sed -E 's/^[[:space:]]*<\/?(title|pubDate)>//g' | tail -n +3) 
+    # Un-minify, grab titles, skip channel header, take top 3
+    RELEVANT_NEWS=$(cat "$TMP_NEWS" | tr '>' '\n' | grep -A 1 "<title" | grep -vE "Arch Linux: Recent|--|<title" | cut -d'<' -f1 | head -n 3)
 fi
 
 # 4. System Checks
@@ -76,9 +66,10 @@ else
 fi
 
 # 5. Report
-log "\n${BOLD}⚠ Arch Update Readiness Report${RESET}"
+log "\n${BOLD} ⚠ Arch Update Readiness Report${RESET}"
 if [[ -n "$RELEVANT_NEWS" ]]; then
     log "${RED}CRITICAL: Recent News affecting your updates:${RESET}"
+    # Use -e to ensure the newlines in $RELEVANT_NEWS are rendered
     echo -e "$RELEVANT_NEWS" | sed 's/^/ - /'
 else
     log "${GREEN}No recent (14 days) news alerts affect your pending updates.${RESET}"
