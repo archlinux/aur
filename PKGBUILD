@@ -74,6 +74,9 @@ prepare() {
   # Allow higher Node versions
   sed 's#"node": "#&>=#' -i package.json
 
+  # Upgrade electron-builder so we do not need fpm installed locally when building on aarch64
+  sed -i 's/"electron-builder": "26\.0\.14",/"electron-builder": "26.0.20",/' package.json
+
   # Install dependencies for sticker-creator
   pnpm install -C ./sticker-creator/
 
