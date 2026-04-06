@@ -2,7 +2,7 @@
 
 pkgname=gram-bin
 pkgver="1.2.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="The Gram Code Editor"
 url="https://codeberg.org/GramEditor/gram"
 license=(GPL-3.0-or-later AGPL-3.0-or-later Apache-2.0)
@@ -33,7 +33,7 @@ package() {
     install -Dm755 ../$_pkgname.sh "$pkgdir/usr/bin/$_pkgname"
 
     install -Dm644 licenses.md "$pkgdir/usr/share/licenses/$pkgname/licenses.md"
-    install -Dm644 share/applications/$_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    install -Dm644 share/applications/$_pkgname.desktop "$pkgdir/usr/share/applications/app.liten.Gram.desktop"
 
     install -Dm644 share/icons/hicolor/scalable/apps/app.liten.Gram.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/app.liten.Gram.svg"
     install -Dm644 share/icons/hicolor/symbolic/apps/app.liten.Gram-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/app.liten.Gram-symbolic.svg"

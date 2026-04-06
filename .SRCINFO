@@ -1,7 +1,7 @@
 pkgbase = gram-bin
 	pkgdesc = The Gram Code Editor
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/GramEditor/gram
 	arch = x86_64
 	license = GPL-3.0-or-later
