@@ -30,7 +30,7 @@ validpgpkeys=()
 
 build() {
 	cd BaseCalc
-	mkdir build
+	mkdir -p build
 	cmake -S . -B build -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
 	cmake --build build
 }
@@ -40,7 +40,8 @@ package() {
 	mkdir -p ${pkgdir}/opt/${pkgname}
 	cp -rf * ${pkgdir}/opt/${pkgname}
 	DESTDIR="${pkgdir}" cmake --install build
-	echo "[Desktop Entry]\nType=Application\nVersion=$pkgver\nName=BaseCalc\nComment=A Base Calculator.\nExec=BaseCalc\nIcon=/usr/share/icons/BaseCalc.svg\nTerminal=false\nCategories=Utility;Development;" > /usr/share/applications/BaseCalc.desktop
+	echo "[Desktop Entry]\nType=Application\nVersion=$pkgver\nName=BaseCalc\nComment=A Base Calculator.\nExec=BaseCalc\nIcon=/usr/share/icons/BaseCalc.svg\nTerminal=false\nCategories=Utility;Development;" > "${pkgdir}/usr/share/applications/BaseCalc.desktop"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 BaseCalc.desktop "${pkgdir}/usr/share/applications/BaseCalc.desktop"
 }

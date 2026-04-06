@@ -1,6 +1,6 @@
 pkgbase = basecalc-git
 	pkgdesc = BaseCalc is a base calculator made in C with GTK4.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/TheRealBYK/BaseCalc.git
 	arch = x86_64
