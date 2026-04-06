@@ -1,7 +1,7 @@
 pkgbase = go-sponge
 	pkgdesc = Effortlessly build stable, reliable, and high-performance backend services with a "low-code" approach
 	pkgver = 1.16.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://go-sponge.com
 	arch = aarch64
 	arch = x86_64
@@ -17,14 +17,15 @@ pkgname = go-sponge
 	depends = protobuf
 	depends = protoc-gen-doc
 	depends = protoc-gen-go
-	depends = protoc-gen-go-gin>=1.16.1-2
+	depends = protoc-gen-go-gin>=1.16.1-3
 	depends = protoc-gen-go-grpc
-	depends = protoc-gen-go-rpc-tmpl>=1.16.1-2
+	depends = protoc-gen-go-rpc-tmpl>=1.16.1-3
 	depends = protoc-gen-gotag
-	depends = protoc-gen-json-field>=1.16.1-2
+	depends = protoc-gen-json-field>=1.16.1-3
 	depends = protoc-gen-openapiv2
 	depends = protoc-gen-validate
 	depends = swag
+	conflicts = sponge<=1.16.1-1
 	replaces = sponge<=1.16.1-1
 
 pkgname = protoc-gen-go-gin

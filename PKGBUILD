@@ -11,7 +11,7 @@ pkgname=(
   "protoc-gen-json-field"
 )
 pkgver=1.16.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Effortlessly build stable, reliable, and high-performance backend services with a \"low-code\" approach"
 arch=(
   'aarch64'
@@ -37,7 +37,7 @@ prepare() {
 
   cd "${srcdir}/${_pkgsrc}"
   # https://github.com/bytedance/sonic/issues/895
-  go get github.com/bytedance/sonic@v1.15.0
+  go get -modcacherw github.com/bytedance/sonic@v1.15.0
   go mod tidy
 
   go mod download -modcacherw -x
@@ -79,6 +79,9 @@ package_go-sponge() {
     'protoc-gen-openapiv2'
     'protoc-gen-validate'
     'swag'
+  )
+  conflicts=(
+    "${_basename}<=1.16.1-1"
   )
   replaces=(
     "${_basename}<=1.16.1-1"
