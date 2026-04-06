@@ -1,6 +1,6 @@
 pkgname=dgsh
 pkgver=2.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="a joke fr"
 arch=('x86_64')
 url="https://github.com/DriftFe/goonsh"
@@ -20,9 +20,9 @@ source=(
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 build() {
-  g++ -std=c++17 -Wall -g *.cpp -lreadline -o gsh
+  g++ -std=c++17 -Wall -g *.cpp -lreadline -o dgsh
 }
 
 package() {
-  install -Dm755 "$srcdir/gsh" "$pkgdir/usr/bin/gsh"
+  install -Dm755 "$srcdir/dgsh" "$pkgdir/usr/bin/dgsh"
 }
