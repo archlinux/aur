@@ -5,7 +5,7 @@
 
 _pkgname="peazip"
 pkgname="$_pkgname"
-pkgver=10.9.0
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
@@ -34,7 +34,7 @@ options=('!debug')
 _pkgsrc="PeaZip-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/$pkgver.$_pkgext")
-sha256sums=('4d0a955a6d49c251e8b5ce14d528954481f12a49626a5c563a03f70754c99cca')
+sha256sums=('e0c7ee4f89ea0ef7de9b6d03a2c7ba157a39cf07c0ffc8806c493e6bf450d7da')
 
 _packets=(
   "$_pkgsrc"/peazip-sources/dev/metadarkstyle/metadarkstyle.lpk
