@@ -6,9 +6,9 @@ _basename="sponge"
 _pkgbase="go-${_basename}"
 _pkgname=(
   "${_pkgbase}"
-  # "protoc-gen-go-gin"
-  # "protoc-gen-go-rpc-tmpl"
-  # "protoc-gen-json-field"
+  "protoc-gen-go-gin"
+  "protoc-gen-go-rpc-tmpl"
+  "protoc-gen-json-field"
 )
 pkgbase="${_pkgbase}-git"
 pkgname=(

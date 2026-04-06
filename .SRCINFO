@@ -28,3 +28,31 @@ pkgname = go-sponge-git
 	provides = go-sponge=1.16.1
 	conflicts = go-sponge
 	replaces = sponge-git<=1.16.1.r0.gbeef9ee-1
+
+pkgname = protoc-gen-go-gin-git
+	pkgdesc = Protobuf plugin to generate Gin routes, handlers, RPC stubs, and error codes
+	url = https://github.com/go-dev-frame/sponge/tree/main/cmd/protoc-gen-go-gin
+	depends = glibc
+	depends = protobuf
+	depends = protoc-gen-go
+	depends = protoc-gen-go-grpc
+	provides = protoc-gen-go-gin=1.16.1
+	conflicts = protoc-gen-go-gin
+
+pkgname = protoc-gen-go-rpc-tmpl-git
+	pkgdesc = Protobuf plugin to generate RPC service templates and RPC error codes
+	url = https://github.com/go-dev-frame/sponge/tree/main/cmd/protoc-gen-go-rpc-tmpl
+	depends = glibc
+	depends = protobuf
+	depends = protoc-gen-go
+	depends = protoc-gen-go-grpc
+	provides = protoc-gen-go-rpc-tmpl=1.16.1
+	conflicts = protoc-gen-go-rpc-tmpl
+
+pkgname = protoc-gen-json-field-git
+	pkgdesc = Protobuf plugin to generate JSON field code from proto files
+	url = https://github.com/go-dev-frame/sponge/tree/main/cmd/protoc-gen-json-field
+	depends = glibc
+	depends = protobuf
+	provides = protoc-gen-json-field=1.16.1
+	conflicts = protoc-gen-json-field
