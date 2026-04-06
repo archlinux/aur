@@ -1,6 +1,6 @@
 _name=webcord
 pkgname=${_name}-bin
-pkgver=4.12.1
+pkgver=4.13.0
 pkgrel=1
 pkgdesc='A Discord client implemented directly without Discord API (binary release)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -11,8 +11,30 @@ conflicts=("${_name}")
 options=('!strip' '!emptydirs')
 
 depends=(
+    'alsa-lib'
+    'at-spi2-core'
     'bash'
+    'cairo'
+    'dbus'
+    'expat'
+    'glib2'
     'glibc'
+    'gtk3'
+    'libcups'
+    'libgcc'
+    'libx11'
+    'libxcb'
+    'libxcomposite'
+    'libxdamage'
+    'libxext'
+    'libxfixes'
+    'libxkbcommon'
+    'libxrandr'
+    'mesa'
+    'nspr'
+    'nss'
+    'pango'
+    'systemd-libs'
 )
 
 _get_source() {
@@ -25,9 +47,9 @@ source_aarch64=("$(_get_source arm64)")
 source_armv7h=("$(_get_source armv7hl)")
 
 sha256sums=('d83693ffd8034c21030262ac00ce529c8da7b0196ea4b4eb2168861fc2657a2a')
-sha256sums_x86_64=('53c5414510a7368da59f4a9447a46ac22b7fa5bb370661b1eb090ad4bfcea7f8')
-sha256sums_aarch64=('5debaedc9256e128f3e306423746b122a169230e2a0f12d81ca6c76736b5715e')
-sha256sums_armv7h=('7cfa801c7bc33a59c26ebaef8389098a02a39c62d1c468153f1131c85ba6ab4e')
+sha256sums_x86_64=('59d2a2d7ac1e67cafb22c0b8420b1669f7f3d9babb4f71bed0339581378c4f6d')
+sha256sums_aarch64=('36c107609cd49c92629f676f7140a66f99b6a52185a04e67269617d3d80bcd78')
+sha256sums_armv7h=('17ed41a30128f52efe0b8e4ccbfcd69b2cda580fcb2f949be1581c6fc9e0215c')
 
 noextract=(
     "${source_x86_64[0]##*/}"
