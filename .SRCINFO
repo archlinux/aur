@@ -6,7 +6,7 @@ pkgbase = pegasus-frontend-theme-shinretro-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = pegasus-frontend
+	depends = pegasus-frontend-git
 	source = shinretro::git+https://github.com/TigraTT-Driver/shinretro.git
 	sha256sums = SKIP
 
