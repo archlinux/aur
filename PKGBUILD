@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio
 pkgver=0.5.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
 url="https://github.com/MrNeRF/LichtFeld-Studio"
@@ -61,7 +61,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MrNeRF/LichtFeld-Studio
 sha256sums=('8d1c23ea67262f2b0dca5edb0cffc93de69069c51b089986a01370a0468e1b4a'
             'SKIP'
             'f09525eb2a02679be0eb50bc1c294569e8cbaa4b59fb867d606236de2830045f'
-            '19babf0f56be6458f0eacd7b28ff64d10e4eed137f2a19c05c45e5be28e0cf08'
+            'eae26bc2de025a3b0b6f73a51315c95487491a478a6affb96b6a6072308c8bde'
             'a07642f575ad454ef6783e0a49d03afc96cc7df14d82db7a9de2ccad045fde65')
 
 latestver() {
