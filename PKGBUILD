@@ -1,6 +1,6 @@
 # Maintainer: patcito
 pkgname=prettymux
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="GPU-accelerated terminal multiplexer"
 arch=('x86_64')
