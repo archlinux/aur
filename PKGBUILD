@@ -3,12 +3,12 @@
 # Contributor: Puru <east5330021@gmail.com>
 pkgname=cubic-bin
 pkgver=2026.02.102
-pkgrel=1
+pkgrel=2
 pkgdesc="Wizard to create a customized Ubuntu Live ISO image. Cubic (Custom Ubuntu ISO Creator) is a GUI wizard to create a customized Live ISO image for Ubuntu and Debian based distributions."
 arch=('any')
 url="https://github.com/PJ-Singh-001/Cubic"
 license=('GPL-3.0-or-later')
-depends=('bash-completion' 'binwalk>=2.1.1' 'cdrtools' 'gtksourceview3' 'gtksourceview4' 'hicolor-icon-theme' 'mkinitcpio' 'libisoburn>=1.4.8' 'polkit>=124' 'python>=3.6.' 'python-gobject' 'python-magic>=0.4.15' 'python-packaging>=17.1' 'python-pydbus>=0.6.0' 'python-pyicu>=1.9.8' 'qemu-audio-jack' 'rsync' 'squashfs-tools' 'syslinux>=6.03' 'python-argcomplete' 'python-pexpect' 'python-pyinotify' 'python-yaml' 'vte3' 'dpkg')
+depends=('bash-completion' 'binwalk>=2.1.1' 'cdrtools' 'gtksourceview3' 'gtksourceview4' 'hicolor-icon-theme' 'mkinitcpio' 'libisoburn>=1.4.8' 'polkit>=124' 'python>=3.6.' 'python-gobject' 'python-magic>=0.4.15' 'python-packaging>=17.1' 'python-pydbus>=0.6.0' 'python-pyicu>=1.9.8' 'qemu-audio-jack' 'rsync' 'squashfs-tools' 'syslinux>=6.03' 'python-argcomplete' 'python-pexpect' 'python-psutil' 'python-pyinotify' 'python-yaml' 'vte3' 'dpkg')
 options=('!strip' '!emptydirs')
 install=cubic-bin.install
 source=("cubic_2026.02.102-release~202602080449~ubuntu24.04.1_all.deb"
