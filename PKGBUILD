@@ -21,9 +21,8 @@ license=('MIT')
 
 provides=("${_appname}")
 conflicts=("${_appname}"{-git,-bin})
-
 makedepends=('rust')
-depends=('glibc' 'libgcc')
+depends=('glibc' 'libgcc' 'libstdc++')
 
 source=("${pkgbase}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
 sha256sums=('d761c96a497263a19a2d4a78ddfe248e5c8c0b896ff535d15ac31b47032761e4')
@@ -49,6 +48,11 @@ build() {
 }
 
 package_shimmy-cpu() {
+	pkgdesc+=" - CPU only"
+
+	conflicts+=("${pkgbase}-gpu")
+	depends+=()
+
 	cd "${pkgbase}-${pkgver}/" || exit
 
 	install -Dm755 "${_target_cpu}/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
@@ -70,6 +74,11 @@ package_shimmy-cpu() {
 }
 
 package_shimmy-gpu() {
+	pkgdesc+=" - CUDA + Vulkan + OpenCL"
+
+	conflicts+=("${pkgbase}-cpu")
+	depends+=("nvidia-libgl" "vulkan-driver")
+
 	cd "${pkgbase}-${pkgver}/" || exit
 
 	install -Dm755 "${_target_gpu}/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
