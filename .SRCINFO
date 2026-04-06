@@ -1,6 +1,6 @@
 pkgbase = glyph-md-bin
 	pkgdesc = A modern, cross-platform markdown viewer
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/hamidfzm/glyph
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = glyph-md-bin
 	depends = gtk3
 	provides = glyph
 	conflicts = glyph
-	source_x86_64 = https://github.com/hamidfzm/glyph/releases/download/v0.2.0/Glyph_0.2.0_amd64.deb
-	source_aarch64 = https://github.com/hamidfzm/glyph/releases/download/v0.2.0/Glyph_0.2.0_arm64.deb
-	sha256sums_x86_64 = 1e2b1c75c2e36f74d8c5af2b39625e8fdd61872a1d9e6dc7bb69a49fd3e5f858
-	sha256sums_aarch64 = 2ad8019964a5c0dc73ad3a3ce5677adf9d07fa1b2e2894e5e4d4448bf2ebf986
+	source_x86_64 = https://github.com/hamidfzm/glyph/releases/download/v0.3.0/Glyph_0.3.0_amd64.deb
+	source_aarch64 = https://github.com/hamidfzm/glyph/releases/download/v0.3.0/Glyph_0.3.0_arm64.deb
+	sha256sums_x86_64 = e463bf6365c5305231cf2e49ecec29381fa32a7049b9157922489d0872b38f33
+	sha256sums_aarch64 = dff51e5e999181da2655e114274ea66e3f172116428439bf1338da18ca7327d2
 
 pkgname = glyph-md-bin
