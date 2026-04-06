@@ -1,7 +1,7 @@
 pkgbase = vrct-git
 	pkgdesc = VRChat Chatbox Translator & Transcription (Git version)
 	pkgver = 3.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://misyaguziya.github.io/VRCT-Docs/
 	arch = x86_64
 	license = MIT
@@ -19,6 +19,7 @@ pkgbase = vrct-git
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk-4.1
+	depends = appmenu-gtk-module
 	depends = libsqlite3.so
 	depends = libuuid.so
 	depends = libbz2.so
