@@ -1,6 +1,6 @@
 # Maintainer: NetExperts <support@netexperts.com.au>
 pkgname=netexperts-support-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="NetExperts Remote Support, Linux Outbound Client. Based on RustDesk (AGPL-3.0)."
 arch=('x86_64')
