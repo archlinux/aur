@@ -1,50 +1,54 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
 
-pkgname='perl-moox-types-mooselike-numeric'
-pkgver='1.03'
-pkgrel='1'
-pkgdesc="Moo types for numbers"
+_author=MATEU
+_dist=MooX-Types-MooseLike-Numeric
+pkgname=perl-${_dist@L}
+pkgver=1.03
+pkgrel=2
+pkgdesc='Moo types for numbers'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-moox-types-mooselike>=0.23'
+    'perl>=5.6.0'
+)
+makedepends=(
+    'perl-extutils-makemaker'
+    'perl-moo>=1.004002'
+    'perl-test-fatal>=0.003'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl-moox-types-mooselike>=0.23')
-makedepends=()
-checkdepends=('perl-test-fatal>=0.003')
-url='https://metacpan.org/release/MooX-Types-MooseLike-Numeric'
-source=('http://search.cpan.org/CPAN/authors/id/M/MA/MATEU/MooX-Types-MooseLike-Numeric-1.03.tar.gz')
-md5sums=('0877534ebf63a21bab182f266076fb97')
-_distdir="MooX-Types-MooseLike-Numeric-1.03"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('16adeb617b963d010179922c2e4e8762df77c75232e17320b459868c4970c44b')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
