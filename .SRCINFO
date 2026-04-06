@@ -1,19 +1,21 @@
 pkgbase = uad-ng-bin
 	pkgdesc = Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices (next generation)
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0
 	depends = android-tools
 	depends = fontconfig
 	depends = vulkan-icd-loader
+	optdepends = android-tools: for ADB connections
 	provides = universal-android-debloater
-	source = uad-ng-bin-1.1.2::https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/releases/download/v1.1.2/uad-ng-noselfupdate-linux
-	source = uad-ng.png::https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/blob/main/resources/assets/logo-light.png?raw=true
+	provides = uad-ng
+	source = uad-ng-bin-1.2.0::https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/releases/download/v1.2.0/uad-ng-linux
+	source = uad-ng.png::https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/raw/v1.2.0/resources/assets/logo-light.png
 	source = uad-ng.desktop
-	b2sums = 24718a19d4375967b6932b0086461498cd41a93088782444d13e65cc4a0402e70ce64306dd21b14986f99b2809a94025cd93acd32f1288a6b77b9c5e9fa593cd
-	b2sums = f9640fd91892224bccc16ce48dae13d383fd79a9dd5ed6056d81553321d8327923b95b850d208c7c89dd3a7eba2b37bd91ffe99c5fe8fb1b5b7b01dcc3277fa0
-	b2sums = 4c9b2992778ba84b7085b1c26dd8d27b6238f482521c1b3f18c2b2cd0f77d5094c15a6d84a916ba00b51cd2fb102c25de2bb5f803ef092a2b600ef40a43d9a2e
+	sha256sums = 8a87865ca150749c5c80644d0fd0c32789407b1329fbb9ea7adc46d8cc3884de
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = uad-ng-bin
