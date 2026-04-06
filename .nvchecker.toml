@@ -1,0 +1,3 @@
+[perl-tree-simple-visitorfactory]
+source = "cpan"
+cpan = "Tree-Simple-VisitorFactory"
