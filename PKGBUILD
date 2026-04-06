@@ -1,5 +1,6 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
-# Contributor: Anonymous
+# Contributor: Michal Wojdyla <micwoj9292@gmail.com>
+# Contributor: Milo Mirate <mmirate@gatech.edu>
 
 _author=ABW
 _dist=XML-Namespace
