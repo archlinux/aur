@@ -13,6 +13,7 @@ pkgbase = neuro-karaoke-app
 	provides = neuro-karaoke-wrapper
 	conflicts = neuro-karaoke-app
 	conflicts = neuro-karaoke-wrapper-git
+	replaces = neuro-karaoke-wrapper-git
 	options = !strip
 	source = git+https://gitlab.com/aferil-neuro/neuro-karaoke-app.git#tag=v1.5.2
 	sha256sums = SKIP
