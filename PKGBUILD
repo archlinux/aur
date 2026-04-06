@@ -2,19 +2,19 @@
 # Binary URL uses v${pkgver} GitHub Release — CI publishes to AUR after each release if AUR_SSH_PRIVATE_KEY is set.
 
 pkgname=asteriaray-bin
-pkgver=1.0.17
+pkgver=1.0.19
 pkgrel=1
 pkgdesc='VPN client (VLESS / AmneziaWG) — Flutter Linux bundle'
 arch=('x86_64')
 url='https://github.com/Reei-dp/AsteriaRay'
 license=('MIT')
-depends=('gtk3' 'glib2' 'libsecret' 'libepoxy' 'hicolor-icon-theme' 'zenity' 'libcap' 'libayatana-appindicator')
+depends=('gtk3' 'glib2' 'libsecret' 'libepoxy' 'hicolor-icon-theme' 'zenity' 'libcap' 'libayatana-appindicator' 'libdbusmenu-gtk3')
 provides=('asteriaray')
 conflicts=('asteriaray')
 options=('!strip')
 install='asteriaray-bin.install'
 source=("asteriaray-${pkgver}-linux-x64.tar.xz::https://github.com/Reei-dp/AsteriaRay/releases/download/v${pkgver}/asteriaray-${pkgver}-linux-x64.tar.xz")
-sha256sums=('754e31f1ea124fe5f7ce3a87dc94fb09c3959b42dec66f088017bda748fd0f8b')
+sha256sums=('35b04b1974ae395e2b846a791c1e5de191b34311a1e87e018a4e4a436bfe1d0b')
 
 package() {
   install -dm755 "$pkgdir/opt/asteriaray"
