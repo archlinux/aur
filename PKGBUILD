@@ -1,7 +1,7 @@
 # Maintainer: Victor Sosa <victorsosadev@gmail.com>
 pkgname=vswallpaper-effect
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland wallpaper app with real-time OpenGL effects and a GTK3 live editor"
 arch=('any')
 url="https://github.com/victorsosaMx/vsWallpaper-Effect"
@@ -42,11 +42,21 @@ package() {
     install -Dm644 vswallpaper-effect.png \
         "$pkgdir/usr/share/pixmaps/$pkgname.png" 2>/dev/null || true
 
-    # Install desktop entry if present
-    install -Dm644 vswallpaper-effect.desktop \
-        "$pkgdir/usr/share/applications/$pkgname.desktop" 2>/dev/null || true
-
     # Install systemd user service if present
     install -Dm644 vswallpaper-effect.service \
         "$pkgdir/usr/lib/systemd/user/$pkgname.service" 2>/dev/null || true
+
+    # Desktop entry
+    install -Dm644 /dev/stdin \
+        "$pkgdir/usr/share/applications/$pkgname.desktop" << 'EOF'
+[Desktop Entry]
+Name=vsWallpaper Effect
+Comment=Animated wallpaper with real-time OpenGL effects
+Exec=vswallpaper-effect
+Icon=vswallpaper-effect
+Terminal=false
+Type=Application
+Categories=Utility;Settings;
+Keywords=wallpaper;wayland;hyprland;effect;animation;
+EOF
 }

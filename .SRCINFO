@@ -1,7 +1,7 @@
 pkgbase = vswallpaper-effect
 	pkgdesc = Wayland wallpaper app with real-time OpenGL effects and a GTK3 live editor
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/victorsosaMx/vsWallpaper-Effect
 	arch = any
 	license = MIT
