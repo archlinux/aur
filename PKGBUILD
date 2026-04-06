@@ -1,5 +1,5 @@
 pkgname=showel
-pkgver=0.2.2.1
+pkgver=0.2.2.2
 pkgrel=1
 pkgdesc="Fast native desktop database client built with Rust and Dioxus"
 arch=('x86_64')
@@ -16,22 +16,23 @@ makedepends=(
 )
 conflicts=('showel-git')
 options=('!debug' '!lto')
+_sourcedir="Showel-v0.2.2.2"
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/Fynth/Showel/archive/refs/tags/v0.2.2.1.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/Fynth/Showel/archive/refs/tags/v0.2.2.2.tar.gz"
 )
 sha256sums=(
-  'cbaba2e8ae2d3fc07cb0b5ceb321f9661818274e4d4a39009c859115cc05e3c9'
+  '627e1256152d844a68b768fc37dbbf1982a08dc3b01ab071184df9b3ed6838da'
 )
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_sourcedir}"
 
   export CARGO_HOME="${srcdir}/cargo-home"
   cargo fetch --locked
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_sourcedir}"
 
   export CARGO_HOME="${srcdir}/cargo-home"
   export CARGO_TARGET_DIR="${srcdir}/target"
@@ -40,7 +41,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_sourcedir}"
 
   install -Dm755 "${srcdir}/target/release/app" "${pkgdir}/usr/bin/showel"
   install -Dm644 "app/assets/app.css" "${pkgdir}/usr/lib/showel/assets/app.css"
