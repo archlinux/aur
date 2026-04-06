@@ -1,11 +1,11 @@
 # Maintainer: Eugene Dvoretsky <radioxoma at gmail dot com>
 pkgname=pilorama-git
-pkgver=v4.0.0.r0.g702ec13
+pkgver=v5.0.0.r4.gb8e4813
 pkgrel=1
 epoch=
-pkgdesc="Advanced timeboxing pomodoro timer"
+pkgdesc="Advanced timeboxing and pomodoro timer"
 arch=('x86_64')
-url="https://github.com/eplatonoff/pilorama"
+url="https://github.com/some-humans/pilorama-desktop"
 license=('GPLv3')
 groups=()
 depends=('qt6-declarative' 'qt6-multimedia' 'qt6-svg')
@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname::git+https://github.com/eplatonoff/pilorama")
+source=("$pkgname::git+https://github.com/some-humans/pilorama-desktop.git")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
