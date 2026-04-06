@@ -1,8 +1,8 @@
 # Maintainer: 67mustard41 (current), MojArch (previous)
 pkgname=opera-gx-stable
 pkgver=129.0.5823.64
-pkgrel=2
-pkgdesc='Its finally here on Linux! Opera GX is the browser built specifically for gamers. Get unparalleled gaming and browsing features, packed in a powerful revolutionary browser. (Please install "opera-gx-stable-ffmpegs-codecs-bin" from the AUR if video viewing does not work. Thank you!)'
+pkgrel=3
+pkgdesc='Its finally here on Linux! Opera GX is the browser built specifically for gamers.'
 arch=('x86_64')
 url='https://www.opera.com/browser/'
 license=('custom:opera')

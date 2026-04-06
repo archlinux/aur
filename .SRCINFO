@@ -1,7 +1,7 @@
 pkgbase = opera-gx-stable
-	pkgdesc = Its finally here on Linux! Opera GX is the browser built specifically for gamers. Get unparalleled gaming and browsing features, packed in a powerful revolutionary browser. (Please install "opera-gx-stable-ffmpegs-codecs-bin" from the AUR if video viewing does not work. Thank you!)
+	pkgdesc = Its finally here on Linux! Opera GX is the browser built specifically for gamers.
 	pkgver = 129.0.5823.64
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.opera.com/browser/
 	arch = x86_64
 	license = custom:opera
