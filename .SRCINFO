@@ -5,7 +5,7 @@ pkgbase = simple-mtpfs
 	url = https://github.com/phatina/simple-mtpfs/
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = autoconf-archive
 	depends = libmtp
 	depends = fuse
@@ -14,4 +14,3 @@ pkgbase = simple-mtpfs
 	sha256sums = 1d011df3fa09ad0a5c09d48d84c03e6cddf86390af9eb4e0c178193f32f0e2fc
 
 pkgname = simple-mtpfs
-
