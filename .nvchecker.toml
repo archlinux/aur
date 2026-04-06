@@ -1,0 +1,5 @@
+[nnote]
+source="github"
+github="stiermid/nnote"
+use_latest_relase=true
+prefix="v"
