@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 # shellcheck disable=SC2034,SC2317
-# Arch Update Readiness Checker v1.3.3
+# Arch Update Readiness Checker v1.3.4
 # Fixes: AUR print updates amount error.
 
-VERSION="1.3.4"
+VERSION="1.3.5"
 set -euo pipefail
 
 NEWS_RSS="https://archlinux.org/feeds/news/"
@@ -39,25 +39,21 @@ if ! curl -4 -fsSL --connect-timeout 3 "$NEWS_RSS" -o "$TMP_NEWS" 2>/dev/null; t
     : > "$TMP_NEWS"
 fi
 
-# 3. Filter News by Freshness (14 Days) and Relevance
+# 3. Filter News by Freshness (14 Days)
 RELEVANT_NEWS=""
-if [[ -f "$TMP_NEWS" && -s "$TMP_PKGS" ]]; then
-    # Get the date 14 days ago in a format comparable to RSS (RFC 822)
-    # We use Python here for reliable date math on Arch
+if [[ -f "$TMP_NEWS" ]]; then
     CUTOFF_TS=$(python3 -c "from datetime import datetime, timedelta; print(int((datetime.now() - timedelta(days=14)).timestamp()))")
 
-    # Parse RSS: Extract Title and Date, only keep if < 14 days old and package in TMP_PKGS
-    # This loop avoids the "Ghost news" from 2024/2025
-    while read -r title; read -r pubdate; do
+    # Extract Title and Date
+    while read -r title && read -r pubdate; do
         news_ts=$(python3 -c "import email.utils; print(int(email.utils.parsedate_to_datetime('$pubdate').timestamp()))" 2>/dev/null || echo 0)
         
         if (( news_ts > CUTOFF_TS )); then
-            # If the recent news title mentions a pending package
-            if grep -iqFf "$TMP_PKGS" <<< "$title"; then
-                RELEVANT_NEWS+="${title}\n"
-            fi
+            # REMOVED the grep check against $TMP_PKGS
+            # I want to see ALL news from the last 14 days.
+            RELEVANT_NEWS+="${title} (${pubdate})\n"
         fi
-    done < <(grep -E '<title>|<pubDate>' "$TMP_NEWS" | sed -E 's/<\/?(title|pubDate)>//g' | sed '1,2d') # Skip channel title/date
+    done < <(grep -E '<title>|<pubDate>' "$TMP_NEWS" | sed -E 's/^[[:space:]]*<\/?(title|pubDate)>//g' | tail -n +3) 
 fi
 
 # 4. System Checks
@@ -65,7 +61,7 @@ FAILED_SERVICES=$(systemctl --failed --no-legend | wc -l)
 
 # CORRECTED Partial Upgrade Check:
 # A true partial upgrade is when the local DB is synced (-Sy) but packages aren't (-Su).
-# We check if the last sync of the local db is significantly newer than the last system update.
+# heck if the last sync of the local db is significantly newer than the last system update.
 PARTIAL_UPGRADE=false
 if [[ -f /var/lib/pacman/db.lck ]]; then
     log "${YELLOW}Pacman is currently locked. Skipping partial check.${RESET}"
@@ -75,7 +71,7 @@ else
     if pacman -Q linux >/dev/null 2>&1; then
         RUNNING_K=$(uname -r | cut -d'-' -f1)
         INSTALLED_K=$(pacman -Q linux | awk '{print $2}' | cut -d'-' -f1)
-        # If versions mismatch after an Syu, we just need a reboot, not a "Partial Upgrade" error.
+        # If versions mismatch after an Syu, I just need a reboot, not a "Partial Upgrade" error.
     fi
 fi
 
