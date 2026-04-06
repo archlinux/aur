@@ -5,7 +5,7 @@
 _pkgname=git-bug
 pkgname=git-bug-bin
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed bug tracker embedded in Git"
 arch=('x86_64' 'i686' 'arm')
 url='https://github.com/MichaelMure/git-bug'
