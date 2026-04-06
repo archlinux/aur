@@ -4,13 +4,14 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
 pkgver=1.14.1
-pkgrel=1
+pkgrel=1.1
 source=("${url}/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('0216d38d8c5c460433815b72d3cde6725eaa5d5770576277a2abc01ffc414d20')
 depends=('blas' 'lapack' 'openmp'
 'python-numpy'
 )
 makedepends=('cmake' 'python-build' 'python-installer' 'python-setuptools' 'swig')
+#checkdepends=('python-pytest')
 
 prepare() {
 	cd faiss-${pkgver}
@@ -23,15 +24,15 @@ prepare() {
 build() {
 	flags='-DBUILD_SHARED_LIBS=ON \
 		-DFAISS_ENABLE_GPU=OFF \
-        	-DBUILD_TESTING=OFF \
+        	-DBUILD_TESTING=ON \
                 -DFAISS_ENABLE_PYTHON=ON \
                 -DCMAKE_BUILD_TYPE=Release \
                 -DCMAKE_INSTALL_PREFIX=/usr'
         if [[ $CARCH == 'x86_64' ]]; then
 #                if [ -n "$(ld.so --help |grep 'x86-64-v4 (supported,')" ]; then
-                        flags="$flags -DFAISS_OPT_LEVEL=avx512"
+#                        flags="$flags -DFAISS_OPT_LEVEL=avx512"
 #                elif [ -n "$(ld.so --help |grep 'x86-64-v3 (supported,')" ]; then
-#                        flags="$flags -DFAISS_OPT_LEVEL=avx2"
+                        flags="$flags -DFAISS_OPT_LEVEL=avx2"
 #                fi
         elif [[ $CARCH == 'aarch64' ]]; then
                 flags="$flags -DFAISS_OPT_LEVEL=sve"
@@ -48,7 +49,8 @@ build() {
         # gpu
         cd "${srcdir}/faiss-${pkgver}"
         if [ -n "$ROCM_HOME" ];then
-                flags="$flags -DFAISS_ENABLE_GPU=ON -DFAISS_ENABLE_ROCM=ON"
+                flags="$flags -DCMAKE_SHARED_LINKER_FLAGS='-Wl,--export-dynamic' \
+		-DBUILD_TESTING=OFF -DFAISS_ENABLE_GPU=ON -DFAISS_ENABLE_ROCM=ON"
         elif [ -n "$CUDA_HOME" ];then
                 flags="$flags -DFAISS_ENABLE_GPU=ON -DCUDAToolkit_ROOT=$CUDA_HOME"
         fi
@@ -59,10 +61,14 @@ build() {
         python -m build --wheel --no-isolation
 }
 
-#check() {
-#	cd "${srcdir}/faiss-${pkgver}"
-#	make -C build tests
-#}
+check() {
+	# avx512 failed 1 test
+	cd "${srcdir}/faiss-${pkgver}"
+	make -C build test
+#	cd build/faiss/python
+#	pytest ../../../tests/test_*.py
+#	pytest ../../../tests/torch_*.py
+}
 
 package_faiss-cpu() {
 	optdepends=('intel-mkl: for x86_64')

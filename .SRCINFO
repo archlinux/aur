@@ -1,6 +1,6 @@
 pkgbase = faiss
 	pkgver = 1.14.1
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/facebookresearch/faiss
 	arch = x86_64
 	arch = aarch64
