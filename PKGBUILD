@@ -1,5 +1,5 @@
 pkgname=spex
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Wallpaper-based dynamic color generator"
 arch=('x86_64')
