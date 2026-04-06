@@ -7,8 +7,6 @@ post_install() {
   echo "  All options:  gamepad-osk --help"
   echo ""
   echo "  Systemd user service:"
-  echo "    mkdir -p ~/.config/systemd/user"
-  echo "    cp /usr/share/gamepad-osk/gamepad-osk.service ~/.config/systemd/user/"
   echo "    systemctl --user enable --now gamepad-osk"
   echo ""
   echo "  Toggle visibility:  gamepad-osk --toggle"
