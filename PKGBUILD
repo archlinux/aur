@@ -1,6 +1,6 @@
 pkgname=arch-os-manager
 pkgver=1.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Arch OS System Manager"
 arch=('any')
 url="https://github.com/murkl/arch-os-manager"
@@ -22,6 +22,5 @@ sha256sums=('caa400c7f2af8be662334299a0397989e96310266551a16a069ccf4209b1b264' '
 package() {
 	install -Dm755 "$srcdir/arch-os" "$pkgdir/usr/bin/arch-os"
 	install -Dm644 "$srcdir/arch-os.desktop" "$pkgdir/usr/share/applications/arch-os.desktop"
-	install -dm755 "$pkgdir/opt/arch-os-manager"
-	install -Dm644 "$srcdir/logo.svg" "$pkgdir/opt/arch-os-manager/logo.svg"
+    install -Dm644 "$srcdir/logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/arch-os-manager.svg"
 }
