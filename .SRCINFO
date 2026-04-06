@@ -1,0 +1,17 @@
+pkgbase = slint-viewer-bin
+	pkgdesc = Viewer for Slint UI files (prebuilt binary)
+	pkgver = 1.15.1
+	pkgrel = 1
+	url = https://slint-ui.com
+	arch = x86_64
+	license = GPL-3.0-only
+	license = MIT
+	depends = glibc
+	provides = slint-viewer
+	conflicts = slint-viewer
+	options = !debug
+	options = !strip
+	source = slint-viewer-bin-1.15.1.tar.gz::https://github.com/slint-ui/slint/releases/download/v1.15.1/slint-viewer-linux.tar.gz
+	sha256sums = 92a59354949ac0fcab248a0a58fb9e5236e7638ad8b49e9ac43427414a4f0a94
+
+pkgname = slint-viewer-bin
