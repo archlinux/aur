@@ -1,6 +1,6 @@
 pkgbase = gogofetch-git
 	pkgdesc = Fetch written in Go with image support
-	pkgver = r57.23d6bea
+	pkgver = r58.13e4d69
 	pkgrel = 1
 	url = https://codeberg.org/nekohepott/goGoFetch.git
 	arch = x86_64
