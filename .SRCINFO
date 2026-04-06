@@ -1,5 +1,5 @@
 pkgbase = rapidyaml
-	pkgver = 0.10.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/biojppm/rapidyaml
 	arch = x86_64
@@ -9,11 +9,16 @@ pkgbase = rapidyaml
 	makedepends = ninja
 	makedepends = swig
 	makedepends = python
-	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
 	depends = glibc
-	source = rapidyaml::git+https://github.com/biojppm/rapidyaml.git#tag=v0.10.0
+	source = rapidyaml::git+https://github.com/biojppm/rapidyaml.git#tag=v0.11.1
 	source = c4core::git+https://github.com/biojppm/c4core.git
 	source = c4core-cmake::git+https://github.com/biojppm/cmake.git
+	source = git+https://github.com/biojppm/debugbreak.git
+	source = git+https://github.com/fastfloat/fast_float.git
+	b2sums = bb64f292e31c94dadb13b9168dfa77eb4519c218a9a4c0f9c61a1e3fccfa78e0c31494214f8023564a3af3bd80d9ef7b6a966c0285230752fd65b96af583f388
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
