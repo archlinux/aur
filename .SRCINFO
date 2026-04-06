@@ -1,6 +1,6 @@
 pkgbase = whoogle
 	pkgdesc = A self-hosted, ad-free, privacy-respecting metasearch engine
-	pkgver = 1.1.0
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/benbusby1.0oogle-search
 	install = whoogle.install
@@ -13,7 +13,7 @@ pkgbase = whoogle
 	optdepends = tor: use the TOR network to perform searches
 	conflicts = whoogle-git
 	backup = etc/default/whoogle
-	source = whoogle-1.1.0.tar.gz::https://github.com/benbusby/whoogle-search/archive/refs/tags/v1.1.0.tar.gz
+	source = whoogle-1.2.3.tar.gz::https://github.com/benbusby/whoogle-search/archive/refs/tags/v1.2.3.tar.gz
 	source = whoogle
 	source = whoogle.conf
 	source = whoogle.service

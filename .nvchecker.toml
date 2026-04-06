@@ -1,0 +1,4 @@
+[whoogle]
+source = "github"
+github = "benbusby/whoogle-search"
+use_latest_release = true
