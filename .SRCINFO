@@ -1,8 +1,9 @@
 pkgbase = asteriaray-bin
 	pkgdesc = VPN client (VLESS / AmneziaWG) — Flutter Linux bundle
-	pkgver = 1.0.14
+	pkgver = 1.0.17
 	pkgrel = 1
 	url = https://github.com/Reei-dp/AsteriaRay
+	install = asteriaray-bin.install
 	arch = x86_64
 	license = MIT
 	depends = gtk3
@@ -11,10 +12,12 @@ pkgbase = asteriaray-bin
 	depends = libepoxy
 	depends = hicolor-icon-theme
 	depends = zenity
+	depends = libcap
+	depends = libayatana-appindicator
 	provides = asteriaray
 	conflicts = asteriaray
 	options = !strip
-	source = asteriaray-1.0.14-linux-x64.tar.xz::https://github.com/Reei-dp/AsteriaRay/releases/download/v1.0.14/asteriaray-1.0.14-linux-x64.tar.xz
-	sha256sums = 8923dd48a53389010e2af67c69c8487f07ec480acf671bf42b780bfcdf65e20c
+	source = asteriaray-1.0.17-linux-x64.tar.xz::https://github.com/Reei-dp/AsteriaRay/releases/download/v1.0.17/asteriaray-1.0.17-linux-x64.tar.xz
+	sha256sums = 754e31f1ea124fe5f7ce3a87dc94fb09c3959b42dec66f088017bda748fd0f8b
 
 pkgname = asteriaray-bin
