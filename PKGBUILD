@@ -3,7 +3,7 @@
 _pkgauthor=Bengerthelorf
 _pkgname=bcmr
 pkgname=${_pkgname}-bin
-pkgdesc="cp with progress bar"
+pkgdesc="Better Copy Move Remove — A modern, safe CLI tool for file operations with progress display, resume, and remote copy."
 
 pkgver=0.5.4
 pkgrel=1
