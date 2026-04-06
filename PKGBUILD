@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=git-time-machine
-pkgver=0.2.3
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='TUI for undoing mistakes using Git reflog'
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::https://static.crates.io/crates/$pkgname/$_archive.crate")
         # "$_archive-LICENSE::$url/raw/v$pkgver/LICENSE")
-sha256sums=('8eea9bf3f10b91dc31ccd17af5809676f45a800b1ee839e3d747ba9ce7080bd2')
+sha256sums=('0513bf48f1e5ad48195419cd0766b4948a556ac11a7f8fd9f27d7e96ab1f92a3')
 
 prepare() {
 	cd "$_archive"
