@@ -1,6 +1,6 @@
 pkgname=python-vllm-rocm-git
 _pkgname=vllm
-pkgver=0.19.1rc0.r58.ge8ebbdd
+pkgver=0.19.1rc0.r60.gf186cfe
 pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs (ROCm support)"
 arch=('x86_64')
@@ -107,6 +107,15 @@ build() {
 
   export MAX_JOBS=$(nproc)
   export VLLM_TARGET_DEVICE=rocm
+  export TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL=1
+  export FLASH_ATTENTION_TRITON_AMD_ENABLE="TRUE"
+  export VLLM_USE_MMAP=0
+  export VLLM_ROCM_USE_AITER=0
+  export VLLM_ROCM_USE_AITER_MOE=0
+  export VLLM_USE_TRITON_AWQ=1
+
+  export CC="/opt/rocm/llvm/bin/clang"
+  export CXX="/opt/rocm/llvm/bin/clang++"
 
   # 彻底禁用 LTO
   export CFLAGS="${CFLAGS/-flto/}"
@@ -146,4 +155,16 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  # 配置 triton 环境变量
+  install -Dm755 /dev/null "${pkgdir}/etc/profile.d/vllm-triton.sh"
+  cat <<EOF > "${pkgdir}/etc/profile.d/vllm-triton.sh"
+export TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL=1
+export FLASH_ATTENTION_TRITON_AMD_ENABLE="TRUE"
+export VLLM_TARGET_DEVICE=rocm
+export VLLM_USE_MMAP=0
+export VLLM_ROCM_USE_AITER=0
+export VLLM_ROCM_USE_AITER_MOE=0
+export VLLM_USE_TRITON_AWQ=1
+EOF
 }
