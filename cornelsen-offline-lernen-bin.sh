@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-app_name="cornelsen-offline-lernen"
+app_name="cornelsen-offline-lernen-bin"
 system_asar="/usr/share/${app_name}/app.asar"
 data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
 config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
