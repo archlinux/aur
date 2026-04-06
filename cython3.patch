@@ -1,0 +1,343 @@
+From 5842ee415f9357a9418cc8341d621b6e1e2aaddd Mon Sep 17 00:00:00 2001
+From: TibRib <thibaud.simon@amadeus.com>
+Date: Fri, 8 Aug 2025 15:24:03 +0200
+Subject: [PATCH] Upgrade cython to 3.0+ to suppport Python3.13 and upwards
+
+---
+ .appveyor.yml             |  6 ++++--
+ HACKING.md                |  3 +++
+ README.md                 |  2 +-
+ doc/requirements-dev.txt  |  3 ++-
+ doc/requirements-docs.txt |  2 +-
+ doc/requirements-test.txt |  7 +++++--
+ imgui/ansifeed.pxd        |  6 +++---
+ imgui/cimgui.pxd          |  5 +++--
+ imgui/core.pxd            |  2 +-
+ imgui/core.pyx            | 29 +++++++++++++++--------------
+ imgui/internal.pxd        |  6 +++---
+ imgui/internal.pyx        |  6 +++---
+ pyproject.toml            |  2 +-
+ setup.py                  |  4 +++-
+ 14 files changed, 48 insertions(+), 35 deletions(-)
+
+diff --git a/.appveyor.yml b/.appveyor.yml
+index a9fb2d43..963007b8 100644
+--- a/.appveyor.yml
++++ b/.appveyor.yml
+@@ -6,6 +6,8 @@ image:
+ 
+ environment:
+   matrix:
++    - CIBW_BUILD: "cp313-*"
++    - CIBW_BUILD: "cp312-*"
+     - CIBW_BUILD: "cp311-*"
+     - CIBW_BUILD: "cp310-*"
+     - CIBW_BUILD: "cp39-*"
+@@ -17,7 +19,7 @@ environment:
+     - CIBW_BUILD: "pp38-*"
+     - CIBW_BUILD: "pp37-*"
+ 
+-stack: python 3.7
++stack: python 3.8
+ 
+ init:
+ - cmd: set PATH=C:\Python37;C:\Python37\Scripts;%PATH%
+@@ -25,7 +27,7 @@ init:
+ install:  |
+   python --version
+   git submodule update --init --recursive
+-  python -m pip install cibuildwheel==2.12.1
++  python -m pip install cibuildwheel==2.23.3
+ 
+ build_script: python -m cibuildwheel --output-dir dist
+ 
+diff --git a/HACKING.md b/HACKING.md
+index 5ea13377..b357d1ec 100644
+--- a/HACKING.md
++++ b/HACKING.md
+@@ -58,6 +58,9 @@ We may have specific plans that you are not informed of.
+ For running tests, you will need some additional
+ requirements from `doc/requirements-test.txt`.
+ 
++You will additionally need to build extension in-place before running.
++`python setup.py build_ext --inplace`
++
+ You can run tests with:
+ 
+     py.test
+diff --git a/README.md b/README.md
+index 1a71583e..8893ba8d 100644
+--- a/README.md
++++ b/README.md
+@@ -79,7 +79,7 @@ succesfully for all major operating systems with different architectures:
+ * Linux (32bit & 64bit)
+ * OS X (universal build)
+ 
+-Right now we are ready shipping the built wheels for these three systems
++Right now we are ready shipping the built wheels for these systems
+ (even for Linux using `manylinux1` wheels). The build pipeline covers multiple
+ Python versions:
+ 
+diff --git a/doc/requirements-dev.txt b/doc/requirements-dev.txt
+index 41e9b1ac..2ffa2156 100644
+--- a/doc/requirements-dev.txt
++++ b/doc/requirements-dev.txt
+@@ -1,5 +1,6 @@
+-Cython>=0.24,<0.30
++Cython>=3.0
+ PyOpenGL
+ glfw
+ wheel
+ click
++glibc
+diff --git a/doc/requirements-docs.txt b/doc/requirements-docs.txt
+index cf336d6c..62b4089b 100644
+--- a/doc/requirements-docs.txt
++++ b/doc/requirements-docs.txt
+@@ -1,4 +1,4 @@
+-Cython>=0.24,<0.30
++Cython>=3.0
+ Sphinx==6.1.3
+ #docutils<0.13.1
+ PyOpenGL
+diff --git a/doc/requirements-test.txt b/doc/requirements-test.txt
+index 8fa66bb9..b24bb270 100644
+--- a/doc/requirements-test.txt
++++ b/doc/requirements-test.txt
+@@ -1,6 +1,8 @@
+-Cython>=0.24,<0.30
++Cython>=3.0
+ click
+ wheel
++pytest
++setuptools
+ 
+ # note: Sphinx and docutils are for collecting tests
+ # note: Newer Sphinx versions won't work on Python 2.7 and Python 3.3
+@@ -9,7 +11,8 @@ wheel
+ Sphinx==1.6.7; python_version < '3.7.0'
+ # note: But older versions wont collect tests on Python 3.7
+ Sphinx==1.8.1; python_version >= '3.7.0' and python_version < '3.8'
+-Sphinx==6.1.3; python_version >= '3.8.0'
++Sphinx==6.1.3; python_version >= '3.8.0' and python_version < '3.13'
++Sphinx==7.4.7; python_version >= '3.13'
+ 
+ markupsafe==0.23; python_version >= '3.7.0' and python_version < '3.8'
+ 
+diff --git a/imgui/ansifeed.pxd b/imgui/ansifeed.pxd
+index 29c4a095..c0ea7d89 100644
+--- a/imgui/ansifeed.pxd
++++ b/imgui/ansifeed.pxd
+@@ -8,9 +8,9 @@ Notes:
+    `✗` marks API element as "yet to be mapped
+ """
+ 
+-cimport cimgui
+-
+-from cimgui cimport ImVec4
++cimport cython
++from . cimport cimgui
++from .cimgui cimport ImVec4
+ 
+ cdef extern from "../ansifeed-cpp/AnsiTextColored.h" namespace "ImGui":
+     void TextAnsi(const char* fmt, ...) except +  # ✓
+diff --git a/imgui/cimgui.pxd b/imgui/cimgui.pxd
+index d5c5c935..8b30f16d 100644
+--- a/imgui/cimgui.pxd
++++ b/imgui/cimgui.pxd
+@@ -8,7 +8,7 @@ Notes:
+ """
+ from libcpp cimport bool
+ 
+-from enums cimport ImGuiKey_, ImGuiCol_, ImGuiSliderFlags_
++from .enums cimport ImGuiKey_, ImGuiCol_, ImGuiSliderFlags_
+ 
+ cdef extern from "imgui.h":
+     # ====
+@@ -708,7 +708,8 @@ cdef extern from "imgui.h":
+         float                       Ascent # ✗
+         float                       Descent # ✗
+         int                         MetricsTotalSurface # ✗
+-        ImU8                        Used4kPagesMap[(IM_UNICODE_CODEPOINT_MAX+1)/4096/8] # ✗
++        ImU8                        Used4kPagesMap[544] # ✗
++        # (IM_UNICODE_CODEPOINT_MAX+1)/4096/8 = (0x10FFFF+1)/4096/8 = 544
+         
+         # Methods
+         const ImFontGlyph*FindGlyph(ImWchar c) except + # ✗
+diff --git a/imgui/core.pxd b/imgui/core.pxd
+index 04ce6caf..1de4bc04 100644
+--- a/imgui/core.pxd
++++ b/imgui/core.pxd
+@@ -3,7 +3,7 @@ This file provides all C/C++ definitions that need to be shared between all
+ extension modules. This is mostly for the `extra` submodule that provides
+ some additional utilities that do not belong to `core`.
+ """
+-cimport cimgui
++from . cimport cimgui
+ 
+ cdef class _Font(object):
+     cdef cimgui.ImFont* _ptr
+diff --git a/imgui/core.pyx b/imgui/core.pyx
+index f96eaaa1..9bbac83a 100644
+--- a/imgui/core.pyx
++++ b/imgui/core.pyx
+@@ -24,18 +24,19 @@ from libc.stdlib cimport malloc, realloc, free
+ from libc.stdint cimport uintptr_t
+ from libc.string cimport strdup
+ from libc.string cimport strncpy, strlen
+-from libc.float  cimport FLT_MIN
+-from libc.float  cimport FLT_MAX
++from libc.float cimport FLT_MIN
++from libc.float cimport FLT_MAX
+ from libcpp cimport bool
+ 
+ FLOAT_MIN = FLT_MIN
+ FLOAT_MAX = FLT_MAX
++FLOAT_SIZE = sizeof(float)
+ 
+-cimport cimgui
+-cimport core
+-cimport enums
+-cimport ansifeed
+-cimport internal
++from . cimport cimgui
++from . cimport core
++from . cimport enums
++from . cimport ansifeed
++from . cimport internal
+ 
+ from cpython.version cimport PY_MAJOR_VERSION
+ 
+@@ -3525,7 +3526,7 @@ cdef class _IO(object):
+         cdef cvarray nav_inputs = cvarray(
+             shape=(enums.ImGuiNavInput_COUNT,),
+             format='f',
+-            itemsize=sizeof(float),
++            itemsize=FLOAT_SIZE,
+             allocate_buffer=False
+         )
+         nav_inputs.data = <char*>self._ptr.NavInputs
+@@ -3659,7 +3660,7 @@ cdef class _InputTextSharedBuffer(object):
+ 
+ cdef _InputTextSharedBuffer _input_text_shared_buffer = _InputTextSharedBuffer() 
+     
+-cdef int _ImGuiInputTextCallback(cimgui.ImGuiInputTextCallbackData* data):
++cdef int _ImGuiInputTextCallback(cimgui.ImGuiInputTextCallbackData* data) noexcept:
+     cdef _ImGuiInputTextCallbackData callback_data = _ImGuiInputTextCallbackData.from_ptr(data)
+     callback_data._require_pointer()
+     
+@@ -3671,7 +3672,7 @@ cdef int _ImGuiInputTextCallback(cimgui.ImGuiInputTextCallbackData* data):
+     cdef ret = (<_callback_user_info>callback_data._ptr.UserData).callback_fn(callback_data)
+     return ret if ret is not None else 0
+ 
+-cdef int _ImGuiInputTextOnlyResizeCallback(cimgui.ImGuiInputTextCallbackData* data):
++cdef int _ImGuiInputTextOnlyResizeCallback(cimgui.ImGuiInputTextCallbackData* data) noexcept:
+     # This callback is used internally if user asks for buffer resizing but does not provide any python callback function.
+ 
+     if data.EventFlag == enums.ImGuiInputTextFlags_CallbackResize:
+@@ -3825,7 +3826,7 @@ cdef class _ImGuiInputTextCallbackData(object):
+         
+         
+ 
+-cdef void _ImGuiSizeCallback(cimgui.ImGuiSizeCallbackData* data):
++cdef void _ImGuiSizeCallback(cimgui.ImGuiSizeCallbackData* data) noexcept:
+     cdef _ImGuiSizeCallbackData callback_data = _ImGuiSizeCallbackData.from_ptr(data)
+     callback_data._require_pointer()
+     (<_callback_user_info>callback_data._ptr.UserData).callback_fn(callback_data)
+@@ -9977,7 +9978,7 @@ def plot_lines(
+         float scale_min = FLOAT_MAX,
+         float scale_max = FLOAT_MAX,
+         graph_size = (0, 0),
+-        int stride = sizeof(float),
++        int stride = FLOAT_SIZE,
+     ):
+ 
+     """
+@@ -10035,7 +10036,7 @@ def plot_lines(
+                 float scale_min = FLT_MAX,
+                 float scale_max = FLT_MAX,
+                 ImVec2 graph_size = ImVec2(0,0),
+-                int stride = sizeof(float)
++                int stride = FLOAT_SIZE
+             )
+     """
+     if values_count == -1:
+@@ -10069,7 +10070,7 @@ def plot_histogram(
+         float scale_min = FLT_MAX,
+         float scale_max = FLT_MAX,
+         graph_size = (0, 0),
+-        int stride = sizeof(float),
++        int stride = 32,
+     ):
+     """
+     Plot a histogram of float values.
+diff --git a/imgui/internal.pxd b/imgui/internal.pxd
+index 583f7244..fba4c638 100644
+--- a/imgui/internal.pxd
++++ b/imgui/internal.pxd
+@@ -9,10 +9,10 @@ Notes:
+ """
+ from libcpp cimport bool
+ 
+-from enums cimport ImGuiKey_, ImGuiCol_, ImGuiSliderFlags_
++from .enums cimport ImGuiKey_, ImGuiCol_, ImGuiSliderFlags_
+ 
+-cimport cimgui
+-cimport enums_internal
++from . cimport cimgui
++from . cimport enums_internal
+ 
+ cdef UpdateImGuiContext(cimgui.ImGuiContext* _ptr)
+ 
+diff --git a/imgui/internal.pyx b/imgui/internal.pyx
+index fb4b42a8..ebfcd82e 100644
+--- a/imgui/internal.pyx
++++ b/imgui/internal.pyx
+@@ -5,9 +5,9 @@
+ 
+ import cython
+ 
+-cimport cimgui
+-cimport internal
+-cimport enums_internal
++from . cimport cimgui
++from . cimport internal
++from . cimport enums_internal
+ 
+ from cpython.version cimport PY_MAJOR_VERSION
+ 
+diff --git a/pyproject.toml b/pyproject.toml
+index f1cee56d..38db4f4c 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -15,7 +15,7 @@ environment = { LC_ALL="en_US.UTF-8", LANG="en_US.UTF-8" }
+ 
+ [build-system]
+ requires = [
+-    "Cython>=0.24,<0.30",
++    "Cython>=3.0",
+     "PyOpenGL",
+     "glfw",
+     "wheel",
+diff --git a/setup.py b/setup.py
+index eab3d538..2424c1e5 100644
+--- a/setup.py
++++ b/setup.py
+@@ -104,7 +104,7 @@ def backend_extras(*requirements):
+     return ["PyOpenGL"] + list(requirements)
+ 
+ EXTRAS_REQUIRE = {
+-    'Cython':  ['Cython>=0.24,<0.30'],
++    'Cython':  ['Cython>=3.0'],
+     'cocos2d': backend_extras(
+         "cocos2d",
+         "pyglet>=1.5.6; sys_platform == 'darwin'",
+@@ -180,6 +180,8 @@ def backend_extras(*requirements):
+         'Programming Language :: Python :: 3.9',
+         'Programming Language :: Python :: 3.10',
+         'Programming Language :: Python :: 3.11',
++        'Programming Language :: Python :: 3.12',
++        'Programming Language :: Python :: 3.13',
+ 
+         'Programming Language :: Python :: Implementation :: CPython',
+         'Programming Language :: Cython',

@@ -1,11 +1,12 @@
 pkgbase = python-imgui
 	pkgdesc = Cython-based Python bindings for dear imgui
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pyimgui/pyimgui
 	arch = any
 	license = MIT
-	makedepends = cython0
+	makedepends = cython
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-click
 	makedepends = python-installer
@@ -14,7 +15,11 @@ pkgbase = python-imgui
 	depends = python
 	depends = python-glfw
 	depends = python-opengl
-	source = https://files.pythonhosted.org/packages/source/i/imgui/imgui-2.0.0.tar.gz
-	b2sums = 233095f7a0f0fffe2a251d871afeec43fa55463a69664ce66fb6afbf377bba953c528f5be1353e2b1dbe4ee812fa8bb4ac4c2b1ba3bb8dffebfc8f4e4533842c
+	source = git+https://github.com/pyimgui/pyimgui#tag=2.0.0
+	source = git+https://github.com/ocornut/imgui#commit=35b1148efb839381b84de9290d9caf0b66ad7d03
+	source = cython3.patch
+	b2sums = 7552cae9d75a8f8fbdb02d2192fc5f38045f15f7400c308c1d1401a72f4bfc050fc3f851a946dd4a70f8f0eb72ca301db6430c9372ee980b9ada276e870b83b2
+	b2sums = 63f5745d9b6108a1dca3998a243821cf33c4704afed319611c78eabdf95ea1be89d8783af0b547cb15f8c86a7c55a2b81fb955dc1b733eb177b7255ad2510660
+	b2sums = c5ae39746c133a2a9d79015f666df65d65ea71373b3b3f104f6c7fbe0e709e9ee6b863a389476a5af36f0811e5882fa72c69c0f6f762df129deff94cebaae61a
 
 pkgname = python-imgui
