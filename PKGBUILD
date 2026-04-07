@@ -4,17 +4,27 @@
 
 _pkgname=langsmith
 pkgname="python-${_pkgname}"
-pkgver=0.7.13
+pkgver=0.7.26
 pkgrel=1
 pkgdesc="Client library to connect to the LangSmith LLM Tracing and Evaluation Platform."
 arch=('any')
 url="https://smith.langchain.com/"
 license=('MIT')
-depends=(python-httpx python-orjson python-packaging python-pydantic python-requests python-requests-toolbelt python-zstandard python-uuid-utils)
-makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel' 'python-hatchling')
+depends=(python-httpx
+python-orjson
+python-packaging
+python-pydantic
+python-requests
+python-requests-toolbelt
+python-zstandard
+python-uuid-utils
+)
+makedepends=('python-build'
+'python-hatchling'
+'python-installer')
 optdepends=(python-langsmith-pyo3 python-openai-agents python-opentelemetry-api python-opentelemetry-exporter-otlp-proto-http python-opentelemetry-sdk python-pytest python-rich python-vcrpy)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('ff5aa89462119b50753d8be3347a33c3bb7ba10b5b075171981a0e33960085b62d31c0ba4631a0ce42dbf5aaa8af2ec738d286d092d7fec48818cd2a40d34ee2')
+sha256sums=('a3e06f3d689ce7195717aa6b8f91082319819ec7ea9b9a62cdcd3d9dc25bfc7b')
 
 build() {
     cd "${_pkgname}-${pkgver}"
