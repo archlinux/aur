@@ -3,8 +3,8 @@
 # AUR Package Repository: https://github.com/patrickjaja/claude-desktop-bin
 
 pkgname=claude-desktop-bin
-pkgver=1.569.0
-pkgrel=12
+pkgver=1.1062.0
+pkgrel=1
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -22,13 +22,15 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'jq: Computer Use window queries on Sway (used with swaymsg)'
             'spectacle: Computer Use screenshots (KDE Plasma Wayland)'
             'glib2: Computer Use screenshots on GNOME Wayland (gdbus for D-Bus)'
+            'python-gobject: Portal screenshots on GNOME Wayland 46+ — no repeated permission dialogs'
+            'gst-plugin-pipewire: Portal screenshot PipeWire frame capture on GNOME Wayland 46+'
             'gnome-screenshot: Computer Use screenshot fallback (GNOME)'
             'hyprland: Quick Entry cursor positioning on Hyprland Wayland (hyprctl)'
             'socat: Cowork socket health check in launcher (fallback: age-based check)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.569.0-12/claude-desktop-1.569.0-linux.tar.gz")
-sha256sums_x86_64=('320970ccbafb9914fd21acd583df1c6274344c05a8b6955443cdc67df06d91ae')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1062.0/claude-desktop-1.1062.0-linux.tar.gz")
+sha256sums_x86_64=('898f3aaaa06b1aa4afd6cfd3ec1b92f66b3c6bea35bf3b8784fe9b68a2763363')
 options=('!strip')
 
 package() {
