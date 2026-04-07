@@ -5,7 +5,7 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.82.6
+pkgver=1.83.3
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=(any)
@@ -52,7 +52,7 @@ optdepends=('gunicorn: proxy'
             'python-google-cloud-aiplatform: google')
 provides=("python-$pkgname")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('2aa1c2da21fe940c33613aa447119674a3ad4d2ad5eb064e4d5ce5ee42420136')
+sha256sums=('38a452f708f9bb682fdfc3607aa44d68cfe936bf4a18683b0cdc5fb476424a6f')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
