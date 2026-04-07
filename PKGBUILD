@@ -2,12 +2,12 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=gnome-shell-extension-tiling-assistant-git
 _uuid=tiling-assistant@leleat-on-github
-pkgver=54.r0.g1396caa
+pkgver=54.r6.ge9155aa
 pkgrel=1
 pkgdesc="A GNOME Shell extension which adds a Windows-like snap assist to the GNOME desktop"
 arch=('any')
 url="https://github.com/Leleat/Tiling-Assistant"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('gnome-shell')
 makedepends=('git')
 provides=("${pkgname%-git}")
