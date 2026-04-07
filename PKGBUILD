@@ -1,7 +1,7 @@
 # Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
 
 pkgname=whosthere
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Local Area Network discovery tool'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+$url#tag=v$pkgver")
-sha512sums=('7ddd11e60e67131469d3f5df5ec66d6c1250c08e1d5bd99e5e556d653e5cffa92f7925cc4cc984d6b663ee53b8e4e09a3e9cd4c2595bb35fb4360463dde07e8d')
+sha512sums=('fbdf624b49dce3ab52a966973e22dcb3957df9e5b49eb8c342f3cbe2e884ce9b712133c8d52ea9de900a29a3a3ca556dee46c9dce0ce9487cdfcdf553082a5e1')
 
 prepare() {
 	cd $pkgname
