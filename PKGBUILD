@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.6.2
+pkgver=3.6.3
 _electronversion=40
 _nodeversion=22
 pkgrel=1
@@ -67,29 +67,26 @@ prepare() {
         --name="${pkgname}" \
         --exec="${pkgname} %U" \
         --custom="Name[zh_CN]=思源笔记"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo 'link-workspace-packages=true'
-        echo 'fetch-retry-maxtimeout=10000'
-        echo "cache-dir=${srcdir}/.pnpm_cache"
-        echo "store-dir=${srcdir}/.pnpm_store"
-        echo "virtual-store-dir=${srcdir}/.pnpm_store"
-        echo "shamefully-hoist=true"
-        echo "virtual-store-dir-max-length=80"
-        echo "node-linker=hoisted"
-        echo "network-concurrency=32"
-    } >> .npmrc
+        export PNPM_LINK_WORKSPACE_PACKAGES=true
+        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_SHAMEFULLY_HOIST=true
+        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+        export PNPM_NODE_LINKER=hoisted
+        export PNPM_NETWORK_CONCURRENCY=32
+    }
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        } >> .npmrc
-        export GOPROXY="https://goproxy.cn,direct"
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            export GOPROXY=https://goproxy.cn,direct
+        }
     fi
     _ensure_local_nvm
     sed -i -e "
@@ -100,7 +97,6 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/app"
-    _ensure_local_nvm
     NODE_ENV=production     pnpm run build
     cd "${srcdir}/${pkgname}-${pkgver}/kernel"
     export CGO_ENABLED=1
@@ -121,6 +117,7 @@ build() {
     go build --tags fts5 -o "../app/${_KERNEL_DIR}/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
     cd "${srcdir}/${pkgname}-${pkgver}/app"
     _ensure_local_nvm
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config=${_CFG_FILE} "
 }
