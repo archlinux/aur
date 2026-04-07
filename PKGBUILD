@@ -1,6 +1,6 @@
 pkgname=i2tor-bin
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='Desktop launcher that combines Tor Browser and Java I2P without forking Tor Browser'
 arch=('x86_64')
 url='https://github.com/SethMcGuire/i2tor'
