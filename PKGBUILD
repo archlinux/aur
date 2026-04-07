@@ -22,7 +22,7 @@ makedepends=(
 	'python-build'
 	'python-installer'
 	'python-setuptools'  # i think it normally should be required by python-pep517 which required by python-build/installer
-ninja
+	'ninja'
 )
 source=(
 	"$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/x/${_name}/${_name}-${pkgver}.tar.gz"
@@ -38,13 +38,14 @@ build() {
 	# Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
 	# from incorrectly using a parent git checkout info.
 	# https://github.com/pypa/build/issues/384#issuecomment-947675975
-	GIT_CEILING_DIRECTORIES="${PWD}/.." \
-	NVCC_CCBIN="${NVCC_CCBIN}" \
-	CFLAGS='-DGLOG_USE_GLOG_EXPORT' \
-	CCFLAGS='-DGLOG_USE_GLOG_EXPORT' \
-	NVCC_APPEND_FLAGS='-DGLOG_USE_GLOG_EXPORT' \
-	CXXFLAGS='-DGLOG_USE_GLOG_EXPORT' \
-		python -m build --wheel --no-isolation
+	export GIT_CEILING_DIRECTORIES="${PWD}/.."
+	export NVCC_CCBIN="${NVCC_CCBIN}"
+	export CFLAGS='-DGLOG_USE_GLOG_EXPORT'
+	export CCFLAGS='-DGLOG_USE_GLOG_EXPORT'
+	export NVCC_APPEND_FLAGS='-DGLOG_USE_GLOG_EXPORT'
+	export CXXFLAGS='-DGLOG_USE_GLOG_EXPORT'
+
+	python -m build --wheel --no-isolation
 }
 
 package() {
