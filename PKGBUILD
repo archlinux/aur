@@ -1,7 +1,7 @@
 # Maintainer: Ellis Kenyo <me at elken dot dev>
 
 pkgname=python-xxh
-pkgver=0.8.14
+pkgver=0.8.16
 pkgrel=1
 pkgdesc="Take your shell with you!"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('python' 'python-pexpect' 'python-yaml')
 makedepends=("python-build" "python-installer" "python-wheel")
 license=('BSD')
 source=($pkgname-$pkgver::https://github.com/xxh/xxh/archive/refs/tags/$pkgver.zip)
-md5sums=('995183dfecb3fa0cf7a21a238c4fec60')
+md5sums=('75049acfa81bb5a1fafdab828ffc12c3')
 
 build() {
   cd "$srcdir"/$(echo $pkgname | cut -d- -f2)-$pkgver
