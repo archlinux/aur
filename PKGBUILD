@@ -1,5 +1,5 @@
 # Maintainer: Kanjurito <kanjurito@gmail.com>
-pkgname=arch-achievements-git
+pkgname=arch-achievements-rpg-git
 _pkgname=arch-achievements
 pkgver=1.0.0.r7.63c2e86
 pkgrel=1
