@@ -1,0 +1,5 @@
+[envi-bin]
+source = "github"
+github = "roniel-rhack/envi"
+use_latest_release = true
+prefix = "v"
