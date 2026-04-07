@@ -1,41 +1,40 @@
-# Maintainer: Joshua Jameson <josh@netquirk.com>
+# Maintainer: Filip <denuvo@duck.com>
+
 pkgname=xprinter-cups
-pkgver=1
+pkgver=3.13.3
 pkgrel=1
-pkgdesc="Xprinter Drivers for Linux"
-url="https://www.xprintertech.com/drivers-2"
+pkgdesc="Xprinter Drivers for Linux (ESC/POS and TSPL)"
 arch=('x86_64')
+url="https://www.xprintertech.com/drivers-2"
+depends=('cups')
+makedepends=('dpkg' 'unrar')
 options=('!strip')
-makedepends=('dpkg')
 
-source=(
-"package.rar::https://img5541.weyesimg.com/uploads/xprintertech.com/addon/17140160081487.rar"
-)
-sha256sums=(
-'ed2665af416d83b8622f3f231a7300632251ec4fa98804b675e123e052518cfa'
-)
+source=("${pkgname}-${pkgver}.rar::https://www.xprintertech.com/label-printer-linux-1")
+sha256sums=("ed2665af416d83b8622f3f231a7300632251ec4fa98804b675e123e052518cfa")
 
-build() {
-	find .
-	dpkg -x ./Linux/printer-driver-xprinter_3.13.3_all.deb .
-	find .
-	
-	mkdir -p ppd
-	for fname in ./usr/share/cups/model/xprinter/*.ppd
-	do
-		echo ADD $fname
-		chmod -x "$fname"
-		fname2=`basename "$fname"`
-		gzip -c "$fname" > "./ppd/$fname2.gz"
-	done
+prepare() {
+    local deb_file=("Linux/printer-driver-xprinter_${pkgver}_all.deb")
+
+    cd "$srcdir"
+    dpkg -x "${deb_file[0]}" extracted_deb
+    mkdir -p prepared_ppds
+
+    for ppd in extracted_deb/usr/share/cups/model/xprinter/*.ppd; do
+        chmod 644 "$ppd"
+        gzip -9c "$ppd" > "prepared_ppds/${ppd##*/}.gz"
+    done
 }
 
 package() {
-	install -Dm755 ./opt/xprinter/printer-driver-xprinter/bin/rastertosnailtspl-x64 ${pkgdir}/usr/lib/cups/filter/rastertosnailtspl-xprinter
+    cd "$srcdir"
 
-	for path in ./ppd/*
-	do
-		fname=`basename "$path"`
-		install -Dm644 "$path" "${pkgdir}/usr/share/cups/model/xprinter/$fname"
-	done
+    install -dm755 "${pkgdir}/usr/lib/cups/filter"
+    install -Dm755 extracted_deb/opt/xprinter/printer-driver-xprinter/bin/rastertosnailep-x64 "${pkgdir}/usr/lib/cups/filter/rastertosnailep-xprinter"
+    install -Dm755 extracted_deb/opt/xprinter/printer-driver-xprinter/bin/rastertosnailtspl-x64 "${pkgdir}/usr/lib/cups/filter/rastertosnailtspl-xprinter"
+    install -dm755 "${pkgdir}/usr/share/cups/model/xprinter"
+
+    for ppd_gz in prepared_ppds/*.gz; do
+        install -Dm644 "$ppd_gz" "${pkgdir}/usr/share/cups/model/xprinter/${ppd_gz##*/}"
+    done
 }
