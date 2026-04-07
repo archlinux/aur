@@ -1,0 +1,19 @@
+pkgbase = elastiflow-flow-collector-bin
+	pkgdesc = ElastiFlow NetObserv Flow Collector (official binaries)
+	pkgver = 7.22.0
+	pkgrel = 1
+	url = https://elastiflow.com/
+	arch = x86_64
+	license = custom
+	options = !emptydirs
+	source = https://elastiflow-releases.s3.us-east-2.amazonaws.com/flow-collector/flow-collector_7.22.0_linux_amd64.deb
+	source = https://elastiflow-releases.s3.us-east-2.amazonaws.com/flow-collector/flow-collector_7.22.0_linux_amd64.deb.sig
+	source = sysusers.conf
+	source = tmpfiles.conf
+	validpgpkeys = 6A2E26EFDE24AA7A634A442ED5C0572E5D212F6B
+	sha256sums = 22fa7e974afc50dab4b74dfea036a881ecc73289fd8f6d54a1cd5b1258f1e37c
+	sha256sums = 9b66832123e37d6056b8866b45218876fbd6b96f7bf35ea4ce47084d2e590797
+	sha256sums = 84c34fecf0338c2ef5c2e811775c4416b9e65852f381f60f3ab1844bb1c7ee34
+	sha256sums = d306ee2460d05a061c7a407d2ede67dbbf7dfe6bff2c0c388c4d1c6d5cd031d0
+
+pkgname = elastiflow-flow-collector-bin
