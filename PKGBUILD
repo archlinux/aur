@@ -2,7 +2,7 @@
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
 pkgver=r19152.2b19f7f
-pkgrel=1
+pkgrel=2
 pkgdesc="Sony PlayStation 2 core (fork of PCSX2)"
 arch=('x86_64')
 url="https://github.com/libretro/ps2"
@@ -17,7 +17,7 @@ makedepends=(
 	'libgl'
 	'libstdc++'
 	'libzip'
-	'rapidyaml'
+	'rapidyaml>=0.11'
 	'xz'
 	'zstd'
 )
@@ -32,8 +32,12 @@ source=(
 	"parallel-gs::git+https://github.com/Arntzen-Software/parallel-gs.git"
 	"volk::git+https://github.com/zeux/volk.git"
 	"vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
+	"use-system-libs.patch"
 )
-b2sums=('SKIP'{,,,,,})
+b2sums=(
+	'SKIP'{,,,,,}
+	'7510ea9f7c452b1081893cf8c5dfe34c64bea23a68f6322178e6f5154c6fb6f7b4e1c8e0efdc74abf72cca4dbcd9e08380c363698bf70a40fa2f0d23ee208b6e'
+)
 
 pkgver() {
 	cd $_pkgname
@@ -47,12 +51,7 @@ prepare() {
 	git config submodule.3rdparty/vulkan-headers.url "$srcdir"/vulkan-headers
 	git config submodule.pcsx2/GS/parallel-gs.url "$srcdir"/parallel-gs
 	git -c protocol.file.allow=always submodule update
-	sed -i '/fmt/s/7\.1\.3//' cmake/SearchForStuff.cmake
-	sed -i '/fmt\/format\.h/a #include <fmt/ranges.h>' pcsx2/GameDatabase.cpp
-	sed -i '/USE_SYSTEM_LIBS/d' cmake/BuildParameters.cmake
-	sed -i 's|\.\./3rdparty/rapidyaml/rapidyaml/ext/c4core/src/c4/ext/fast_float/include/||' common/StringUtil.h
-	sed -i 's|\.\./3rdparty/rapidyaml/rapidyaml/src/||' pcsx2/GameDatabase.cpp
-	sed -i 's|\.\./3rdparty/fmt/fmt/include/||' common/HostSys.cpp
+	patch -Np1 < ../use-system-libs.patch
 	cd pcsx2/GS/parallel-gs
 	git config submodule.Granite.url "$srcdir"/granite
 	git -c protocol.file.allow=always submodule update

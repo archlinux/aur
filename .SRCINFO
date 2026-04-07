@@ -1,7 +1,7 @@
 pkgbase = libretro-lrps2-git
 	pkgdesc = Sony PlayStation 2 core (fork of PCSX2)
 	pkgver = r19152.2b19f7f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libretro/ps2
 	arch = x86_64
 	groups = libretro
@@ -13,7 +13,7 @@ pkgbase = libretro-lrps2-git
 	makedepends = libgl
 	makedepends = libstdc++
 	makedepends = libzip
-	makedepends = rapidyaml
+	makedepends = rapidyaml>=0.11
 	makedepends = xz
 	makedepends = zstd
 	depends = glibc
@@ -30,12 +30,14 @@ pkgbase = libretro-lrps2-git
 	source = parallel-gs::git+https://github.com/Arntzen-Software/parallel-gs.git
 	source = volk::git+https://github.com/zeux/volk.git
 	source = vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+	source = use-system-libs.patch
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
+	b2sums = 7510ea9f7c452b1081893cf8c5dfe34c64bea23a68f6322178e6f5154c6fb6f7b4e1c8e0efdc74abf72cca4dbcd9e08380c363698bf70a40fa2f0d23ee208b6e
 
 pkgname = libretro-lrps2-git
 	depends = glibc
