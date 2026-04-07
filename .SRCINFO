@@ -1,6 +1,6 @@
 pkgbase = flex-designer-bin
 	pkgdesc = FlexDesigner
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://eniacelec.com/pages/flexbar
 	install = flex-designer.install
@@ -10,7 +10,7 @@ pkgbase = flex-designer-bin
 	conflicts = flex-designer
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/ENIAC-Tech/FlexDesigner/releases/download/2.1.1/flex-designer_2.1.1_amd64.deb
+	source_x86_64 = https://github.com/ENIAC-Tech/FlexDesigner/releases/download/2.2.0/flex-designer_2.2.0_amd64.deb
 	depends_x86_64 = libdrm
 	depends_x86_64 = libcups
 	depends_x86_64 = portaudio
@@ -44,6 +44,6 @@ pkgbase = flex-designer-bin
 	depends_x86_64 = zlib
 	depends_x86_64 = gcc-libs
 	depends_x86_64 = systemd-libs
-	sha512sums_x86_64 = 7f18d63ea85999834d29ee986aadb71d200cf7b879ba4ea267fe95a7d6e660e69eace8cb56b05325df858db6efea2ccf5c588d036f2b06769328ee9798cfcec0
+	sha512sums_x86_64 = d42e7b444d4155a36abfdae270e621e5aab62b76c235f92058d77b53ffd51d3b458f29c0eece65f838f9c152a24140e08c15fac63f19bfb264e7ba5d24f484b3
 
 pkgname = flex-designer-bin

@@ -2,7 +2,7 @@
 # Maintainer: Extrem Techniker
 # Contributor: Extrem Techniker
 pkgname=flex-designer-bin
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="FlexDesigner"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends_x86_64=('libdrm' 'libcups' 'portaudio' 'imlib2' 'alsa-lib' 'lib32-libusb
 options=('!strip' '!emptydirs')
 install=flex-designer.install
 source_x86_64=("https://github.com/ENIAC-Tech/FlexDesigner/releases/download/${pkgver}/flex-designer_${pkgver}_amd64.deb")
-sha512sums_x86_64=('7f18d63ea85999834d29ee986aadb71d200cf7b879ba4ea267fe95a7d6e660e69eace8cb56b05325df858db6efea2ccf5c588d036f2b06769328ee9798cfcec0')
+sha512sums_x86_64=('d42e7b444d4155a36abfdae270e621e5aab62b76c235f92058d77b53ffd51d3b458f29c0eece65f838f9c152a24140e08c15fac63f19bfb264e7ba5d24f484b3')
 
 package(){
 
