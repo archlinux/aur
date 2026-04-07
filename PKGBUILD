@@ -2,7 +2,7 @@
 
 _plugin=split-planes
 pkgname=vsview-${_plugin}
-pkgver=0.1.3.post1
+pkgver=0.1.3.post2
 pkgrel=1
 pkgdesc="A vsview plugin displaying video clips' constituent planes"
 arch=("x86_64")
@@ -21,7 +21,7 @@ makedepends=(
 	"python-hatchling"
 )
 source=("${pkgname}::git+${url}.git#tag=${_plugin}/v${pkgver}")
-sha256sums=('29df31751bb645f14f68c2c3c1813bb6c40899aa36a06650acffe151db8aa0fb')
+sha256sums=('SKIP')
 
 package() {
 	cd "${pkgname}/src/plugins/${_plugin}" || exit
