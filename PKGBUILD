@@ -1,7 +1,7 @@
 # Maintainer: Raphael Bitton <raphael@skylantix.com>
 pkgname=zfstop
 _reponame=ztop
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A terminal dashboard for ZFS, in the spirit of htop"
 arch=('x86_64')
@@ -10,9 +10,9 @@ license=('MIT')
 depends=()
 provides=('ztop')
 keywords=('zfs' 'ztop')
-source=("ztop-linux-amd64::https://git.skylantix.com/rbitton/ztop/-/jobs/artifacts/v${pkgver}/raw/ztop-linux-amd64?job=build"
+source=("ztop-linux-amd64::https://git.skylantix.com/api/v4/projects/rbitton%2Fztop/packages/generic/ztop/${pkgver}/ztop-linux-amd64"
         "LICENCE::https://git.skylantix.com/rbitton/ztop/-/raw/v${pkgver}/LICENCE")
-sha256sums=('eacaae605d5c1f683da8091ff081298c9ba3b0e04a63e64d80e4262bef33aafd' 'c01aff442f364e4af49f96e1233a02585f815895eb03aaec45b3a1e97b824cd4')
+sha256sums=('4ea916ec3903e4e606d36e768271c221e241885ea519e733e487d78a12e1bb10' 'c01aff442f364e4af49f96e1233a02585f815895eb03aaec45b3a1e97b824cd4')
 
 package() {
     install -Dm755 ztop-linux-amd64 "$pkgdir/usr/bin/ztop"
