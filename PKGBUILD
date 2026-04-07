@@ -16,7 +16,7 @@ makedepends=('unzip')
 depends=('glibc')
 
 sha256sums=(
-	'ce498c6a2f55ed42c635065bc537e6e38f258a690760b9a2290e58248767e7ee'
+	'cbe183bd3206c2f6d387cf05cdfc22126aadd291b32b06bd806ed4b20609bfd3'
 	'9b7a082e203987b6df516af8b055e8ccaacbdf5522724e5e82a62f07ccc0b812'
 )
 

@@ -13,7 +13,7 @@ pkgbase = rendercv-bin
 	options = !emptydirs
 	source = rendercv-linux-x86_64.zip::https://github.com/rendercv/rendercv/releases/download/v2.8/rendercv-linux-x86_64.zip
 	source = LICENSE::https://raw.githubusercontent.com/rendercv/rendercv/main/LICENSE
-	sha256sums = ce498c6a2f55ed42c635065bc537e6e38f258a690760b9a2290e58248767e7ee
+	sha256sums = cbe183bd3206c2f6d387cf05cdfc22126aadd291b32b06bd806ed4b20609bfd3
 	sha256sums = 9b7a082e203987b6df516af8b055e8ccaacbdf5522724e5e82a62f07ccc0b812
 
 pkgname = rendercv-bin
