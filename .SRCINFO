@@ -1,6 +1,6 @@
 pkgbase = hrmp-git
 	pkgdesc = High resolution music player for Linux
-	pkgver = 3d2f025
+	pkgver = 20a61b0
 	pkgrel = 1
 	url = https://github.com/HighResMusicPlayer/hrmp
 	arch = x86_64
