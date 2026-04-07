@@ -8,7 +8,7 @@ url='https://github.com/tursodatabase/turso'
 license=('MIT')
 arch=('x86_64')
 options=(!lto)
-depends=(oniguruma)
+depends=(glibc libgcc)
 makedepends=(cargo git libaegis libgit2 mimalloc simsimd)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -26,7 +26,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export RUSTONIG_SYSTEM_LIBONIG=1
     export CARGO_TARGET_DIR=target
-    export RUSTFLAGS="${RUSTFLAGS} -l aegis -l git2 -l mimalloc -l onig -l simsimd"
+    export RUSTFLAGS="${RUSTFLAGS} -l aegis -l git2 -l mimalloc -l simsimd"
     cargo build --frozen --release -p turso_cli
 }
 
