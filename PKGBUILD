@@ -2,7 +2,7 @@
 
 _plugin=fftspectrum
 pkgname=vsview-${_plugin}
-pkgver=0.1.3.post1
+pkgver=0.1.3.post2
 pkgrel=1
 pkgdesc="A vsview plugin displaying the Fast Fourier transform spectrum of a video clip"
 arch=("x86_64")
@@ -22,7 +22,7 @@ makedepends=(
     "python-versioningit"
 )
 source=("${pkgname}::git+${url}.git#tag=${_plugin}/v${pkgver}")
-sha256sums=('8c1864a0f22f5bdb29f1ed515a83aaaee693061d3ceda448c6d95dbd14753e63')
+sha256sums=('SKIP')
 
 package() {
 	cd "${pkgname}/src/plugins/${_plugin}" || exit
