@@ -7,7 +7,7 @@
 ## GPG key: https://github.com/jsirois.gpg
 
 pkgname=python-pex
-pkgver=2.92.0
+pkgver=2.92.1
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
@@ -21,7 +21,7 @@ provides=('pex')
 replaces=('pex')
 source=("$pkgname::git+https://github.com/pex-tool/pex#tag=v$pkgver?signed")
 validpgpkeys=('A1FE765B15233EAD18FA6ABB93E55CB567B5C626')
-sha256sums=('76339ad5178ddc94f35aa5e72f1728b9ec9db6391080e0e1b65dcac913eea5d2')
+sha256sums=('3f2a3bd7c5223528debf35698d0b66b8eded43c0c728ea9fab11a23a1e8b5cc1')
 
 build() {
     cd "$pkgname"
