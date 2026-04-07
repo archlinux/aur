@@ -1,0 +1,18 @@
+pkgbase = openpace
+	pkgdesc = Cryptographic library for EAC version 2
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://frankmorgner.github.io/openpace
+	arch = x86_64
+	license = LGPL-3.0
+	makedepends = autoconf
+	makedepends = gengetopt
+	makedepends = git
+	makedepends = help2man
+	makedepends = libtool
+	makedepends = make
+	depends = openssl
+	source = git+https://github.com/frankmorgner/openpace.git#tag=1.1.4
+	sha256sums = 6d4eddae736f169ff0666e54e533953f4a62a5721da21879117e24861961ee99
+
+pkgname = openpace
