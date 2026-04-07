@@ -15,5 +15,5 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/$_pkgname"
-    install -Dm755 qrun.sh "$pkgdir/usr/bin/qrun"
+    install -Dm755 qrun "$pkgdir/usr/bin/qrun"
 }
