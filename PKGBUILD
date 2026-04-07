@@ -4,11 +4,11 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A tiny tool to add, commit, and push to git with a single command."
 arch=('any')
-url="https://github.com/YOUR_GITHUB_USERNAME/gquick"
+url="https://github.com/lanierc/gquick"
 license=('MIT')
 depends=('git' 'bash')
 makedepends=('git')
-source=("git+https://github.com/YOUR_GITHUB_USERNAME/gquick.git")
+source=("git+https://github.com/lanierc/gquick.git")
 sha256sums=('SKIP')
 
 package() {
