@@ -3,7 +3,7 @@
 pkgname=rendercv-bin
 _pkgname=rendercv
 pkgdesc="Binary version of renderCV. A CV/resume generator for academics and engineers, YAML to PDF"
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/rendercv/rendercv/"
