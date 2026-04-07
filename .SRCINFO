@@ -1,6 +1,6 @@
 pkgbase = lte-cell-scanner-git
 	pkgdesc = An OpenCL accelerated TDD/FDD LTE Scanner
-	pkgver = r24.bef6ef4
+	pkgver = r26.e7f71cb
 	pkgrel = 1
 	url = https://github.com/JiaoXianjun/LTE-Cell-Scanner
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = lte-cell-scanner-git
 	makedepends = itpp
 	makedepends = boost
 	makedepends = boost-libs
-	makedepends = libbladerf-git
+	makedepends = bladerf
 	depends = git
 	source = lte-cell-scanner-git::git+https://github.com/JiaoXianjun/LTE-Cell-Scanner
 	sha256sums = SKIP
