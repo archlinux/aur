@@ -1,0 +1,23 @@
+pkgbase = libdamiao-motor-control-git
+	pkgdesc = Damiao (达妙) Motor Linux-C++ Driver Library
+	pkgver = r10.e1e508e
+	pkgrel = 1
+	url = https://github.com/cmjang/DM_Motor_Control
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = libdamiao-motor-control
+	provides = libdamiao
+	conflicts = libdamiao-motor-control
+	conflicts = libdamiao
+	options = !debug
+	options = !strip
+	source = libdamiao-motor-control-git::git+https://github.com/cmjang/DM_Motor_Control.git
+	sha256sums = SKIP
+
+pkgname = libdamiao-motor-control-git
