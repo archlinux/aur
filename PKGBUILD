@@ -1,6 +1,6 @@
 pkgname=omaclip-bin
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop clipboard manager with secure mesh sync — peers auto-discover and share clipboards across your local network"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rhemvi/omaclip"
@@ -16,11 +16,11 @@ conflicts=('omaclip')
 source_x86_64=("${url}/releases/download/v${pkgver}/omaclip-linux-amd64")
 source_aarch64=("${url}/releases/download/v${pkgver}/omaclip-linux-arm64")
 source=("appicon.png::${url}/releases/download/v${pkgver}/appicon.png"
-        "LICENSE::https://raw.githubusercontent.com/rhemvi/omaclip/v${pkgver}/LICENSE"
-        "omaclip.desktop")
+  "LICENSE::https://raw.githubusercontent.com/rhemvi/omaclip/v${pkgver}/LICENSE"
+  "omaclip.desktop")
 sha256sums=('d2cc30c8cb442f9d0b73af1a8f8494fb76d92c2abdcff5279cce493a0237061b'
             '436671e03fa1c9439db7bf106dc1b5bb3d9936976029df57d729517c412b8f81'
-            '93ffa94033b26d7848f66fca25686204d0656a6a47aaf95db02a7be1c1fa641a')
+            '84ae19cfc0f1defbad548c2aade37bdfc417efb1b70070ae72e0d35af4c0bac4')
 sha256sums_x86_64=('d2283fb9a992f5c57ad6d47876f223c494cadf03f977356fe413ce94f76ca1ef')
 sha256sums_aarch64=('c4b2b215d1ae8c308609bf0a0b60948203e499c6a38f46875fd25f5de356c8d9')
 
