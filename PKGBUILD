@@ -2,7 +2,7 @@
 _base=landlab
 pkgname=python-${_base}
 pkgdesc="Open-source Python package for numerical modeling of Earth surface dynamics"
-pkgver=2.10.1
+pkgver=2.11.0
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base}/${_base}"
@@ -12,7 +12,7 @@ depends=(python-bmipy python-matplotlib python-netcdf4 python-yaml python-pyshp
 makedepends=(python-build python-installer python-setuptools python-wheel cython)
 checkdepends=(python-pytest python-hypothesis python-flaky)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('56237929e90bd1276c98b6ca4d4af73459b58e31c94843f60022c496cfbdf3d1694363879d7242d3a62c7986f6513374272290f1f3c4f0df525380dd050284dc')
+sha512sums=('e78f63105ace32d3ffee0154cb0dc0f6473a0b0b7c7a636a52a80970d1af63ca776920c249f4c578b49258259406b3cb7c8d9290c97917810c9be3ff7382cdf6')
 
 build() {
   cd ${_base}-${pkgver}
