@@ -1,11 +1,13 @@
 pkgbase = python-pamqp
 	pkgdesc = RabbitMQ Focused AMQP low-level library
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gmr/pamqp
 	arch = any
-	license = BSD
-	makedepends = python-setuptools
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/p/pamqp/pamqp-4.0.0.tar.gz
 	b2sums = 42eb86dd12deff2cf94db1788e29c390e289fd39aea2aa45061e711bfdd5bae556015e587314b1caafed96acc3864ede768f30bf2560920f7cfbd60174e4962a
