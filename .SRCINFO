@@ -1,0 +1,20 @@
+pkgbase = clawx-bin
+	pkgdesc = Desktop interface for OpenClaw AI agents
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/ValueCell-ai/ClawX
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	provides = clawx
+	conflicts = clawx
+	source = ClawX-0.3.6-linux-amd64.deb::https://github.com/ValueCell-ai/ClawX/releases/download/v0.3.6/ClawX-0.3.6-linux-amd64.deb
+	sha256sums = SKIP
+
+pkgname = clawx-bin
