@@ -1,0 +1,16 @@
+pkgbase = dircmp
+	pkgdesc = Terminal TUI for comparing two directories side by side
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/ilyasturki/dircmp
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	optdepends = rclone: remote directory support
+	conflicts = dircmp-bin
+	noextract = dircmp-1.0.3.tgz
+	source = https://registry.npmjs.org/@ilyasturki/dircmp/-/dircmp-1.0.3.tgz
+	sha256sums = 3425a5c247455bec366df67c9c131f54edb12222cd6eecd1631fc3f9d2033e31
+
+pkgname = dircmp
