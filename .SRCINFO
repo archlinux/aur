@@ -1,0 +1,27 @@
+pkgbase = starfox64recomp-bin
+	pkgdesc = Static recompilation of Star Fox 64 for PC using N64Recomp and RT64
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/sonicdcer/Starfox64Recomp
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = sdl2
+	depends = gtk3
+	depends = libsm
+	depends = libice
+	depends = vulkan-icd-loader
+	optdepends = vulkan-radeon: Vulkan support for AMD GPUs
+	optdepends = vulkan-intel: Vulkan support for Intel GPUs
+	optdepends = nvidia-utils: Vulkan support for NVIDIA GPUs
+	provides = starfox64recomp
+	conflicts = starfox64recomp
+	conflicts = starfox64recomp-git
+	options = !strip
+	source = starfox64recomp-bin-1.0.3.zip::https://github.com/sonicdcer/Starfox64Recomp/releases/download/1.0.3/Starfox64Recompiled-v1.0.3-Linux-X64-Release.zip
+	source = starfox64recomp.desktop
+	source = starfox64recomp.sh
+	sha256sums = e74932bd0edb6186a015dabaa87b6b24af3d3b5511ff3b0293a2c3331840cdf0
+	sha256sums = 7bd8e83980ecd390b401fcf2937c09ea4eedd96c1b4b02002912bce96bbeada9
+	sha256sums = e11f95775f54e8f64339ba05ba3f9841c51b2bf6ce95585e9794b1202a9574b1
+
+pkgname = starfox64recomp-bin

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Star Fox 64: Recompiled
+Comment=Static recompilation of Star Fox 64 for PC
+Exec=starfox64recomp
+Icon=starfox64recomp
+Terminal=false
+Type=Application
+Categories=Game;ActionGame;
+Keywords=starfox;n64;nintendo;recomp;
