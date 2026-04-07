@@ -1,4 +1,4 @@
-pkgbase = arch-achievements-rpg-git
+pkgbase = arch-achievements-git
 	pkgdesc = A terminal achievements engine written in Rust (Steam-like achievements for your OS)
 	pkgver = 1.0.0.r7.63c2e86
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = arch-achievements-rpg-git
 	source = git+https://github.com/Kanjurito/arch-achievements.git
 	sha256sums = SKIP
 
-pkgname = arch-achievements-rpg-git
+pkgname = arch-achievements-git
