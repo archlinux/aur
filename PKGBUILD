@@ -2,7 +2,7 @@
 
 pkgname="qdl"
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code"
 arch=(
   'aarch64'
@@ -29,12 +29,13 @@ b2sums=('5c4069086ba637f7c4c8da98a794e7e2fdc30c229c9e7cb35a8de1cd057a42acaec8347
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   sed -e 's/-O2//g' \
+      -e "s|\$(VERSION)|v${pkgver}|g" \
       -i 'Makefile'
 }
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
-  make
+  make # VERSION="v${pkgver}"
   make manpages
 }
 

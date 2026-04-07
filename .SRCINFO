@@ -1,7 +1,7 @@
 pkgbase = qdl
 	pkgdesc = Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linux-msm/qdl
 	arch = aarch64
 	arch = x86_64
