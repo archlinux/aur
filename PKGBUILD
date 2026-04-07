@@ -2,7 +2,7 @@
 _appname=compressO
 pkgname="${_appname//O/o}-bin"
 _pkgname=CompressO
-pkgver=2.1.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A free and open-sourced cross-platform video compression app powered by FFmpeg.(Prebuilt version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
     'ffmpeg'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('5594e5818b83fe3f1e7aa4bb0ec2ca2bf92e362f2fc74fd16c47c0d9450f80ae')
+sha256sums=('5b9a8ab5f8cd95067295ea5bb0c596166374fc1309061f8f2bce97af1323a57c')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -e "
