@@ -1,13 +1,13 @@
 # Maintainer: jhossbach <julian dot hossbach at gmx dot de>
 pkgname=python-lsp-ruff
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="python-lsp-server plugin for extensive and fast linting using ruff"
 arch=(any)
 license=('MIT')
 url="https://github.com/python-lsp/python-lsp-ruff"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('21bb1e014ff466ad7b478ff64920ecfb812df45b06bc802b54102d63cc2ba6bb')
+sha256sums=('7a5ced95dddd26af7cb98046c5e0fd1ba63a2f706d38f747e68eaab77e4fef33')
 depends=(python-lsp-server 'python-ruff>=0.2.0' python-cattrs python-lsprotocol python-tomli)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 checkdepends=(python-pytest)
