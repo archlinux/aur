@@ -2,7 +2,7 @@
 pkgname=fooyin-bin
 _pkgname=Fooyin
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="A customisable music player.Binary version."
 arch=('x86_64')
@@ -26,6 +26,8 @@ depends=(
     'libarchive'
     'qcoro'
     'soundtouch'
+    'libgme'
+    'libarchive'
 )
 optdepends=(
     'sdl2: For the SDL2 audio output plugin'
@@ -39,7 +41,7 @@ optdepends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-trixie_amd64.deb"
 )
-sha256sums=('a9dcd991f97d898274847a2b54b69e61c5e1c2a5a398f4bdcde2413be674f3ce')
+sha256sums=('2c108beb647482b6b8932babfb0d9eaa9f21932ac90827b35c80d7ddead8414f')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
