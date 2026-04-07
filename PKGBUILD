@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockoon
-pkgver=9.6.0
+pkgver=9.6.1
 _electronversion=41
 _nodeversion=24
 pkgrel=1
@@ -21,12 +21,8 @@ makedepends=(
     'git'
     'jq'
 )
-source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
-    "${pkgname}.sh"
-)
-sha256sums=('deea141ca0491d0c96639074923339d22be89186e7295afde242473f318ef095'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+source=("${pkgname}.sh")
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -39,6 +35,12 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
+    cd "${srcdir}"
+    git clone \
+        --depth 1 \
+        --branch "v${pkgver}" \
+        "${_ghurl}" \
+        "${pkgname}-${pkgver}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
