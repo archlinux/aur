@@ -1,6 +1,6 @@
-# Maintainer: Exorcism
+# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+# Contributor: Exorcism
 # Contributor: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
-# Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 
 _name=xformers
 pkgname=python-${_name}
