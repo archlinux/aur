@@ -1,6 +1,6 @@
 pkgname=accomplish-appimage
 _pkgname=Accomplish
-pkgver=0.4.13
+pkgver=0.4.14
 pkgrel=1
 pkgdesc='Open source AI desktop agent repackaged from the upstream AppImage release'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   'LICENSE-MIT.txt'
   'accomplish.png::https://raw.githubusercontent.com/accomplish-ai/accomplish/main/apps/desktop/resources/icon.png'
 )
-sha256sums=('02afda17677790d37c192056bb9f6a15644ae2444ad346bff031e0dcaea4f1b6'
+sha256sums=('86cbc8856b188d22944cc3d293a6d439c5e2e4eb7194a327ca414e94ec34c296'
             '88049656bc62ce4edbd620f14f22bc28d9765f0dc29109c09d8c6d4ec2c74f8d'
             '931db2c39420be9c6b3fa63d4faa1d60fa75449550cdaa0e1d07f847f46c7cc2'
             '3e482265871c432bd2be56c2a20b9b9a5ca6062b3b37f8b1989464d6eb16fd97')
