@@ -2,7 +2,7 @@
 # for more information on packaging from GIT sources.
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
-pkgname=qrun-git
+pkgname=qrun-code-git
 pkgver=r58.b4de532
 pkgrel=1
 pkgdesc="A command line tool to run QEMU in the most common configurations"
