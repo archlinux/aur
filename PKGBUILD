@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel Crosby <ncrosby96@gmail.com>
 pkgname=hrmp-git
 _pkgname=hrmp
-pkgver=3d2f025
+pkgver=20a61b0
 pkgrel=1
 pkgdesc="High resolution music player for Linux"
 arch=(x86_64)
