@@ -1,8 +1,9 @@
 pkgbase = ksteamtrayicon
 	pkgdesc = Keeps the Steam tray icon in sync with the KDE Plasma color scheme
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marcotuliomatos/ksteamtrayicon
+	install = ksteamtrayicon.install
 	arch = any
 	license = MIT
 	makedepends = python-build

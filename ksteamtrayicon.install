@@ -1,0 +1,48 @@
+print_msg() {
+    local upgrading="$1"
+    local installer_marker="/tmp/ksteamtrayicon-installer.marker"
+
+    if [[ -f "$installer_marker" ]]; then
+        return
+    fi
+
+    cat <<EOF
+
+********************************************************************
+EOF
+
+    if [[ "$upgrading" == true ]]; then
+        echo "*        Hooray! KSteamTrayIcon was upgraded successfully.         *"
+    else
+        echo "*        Hooray! KSteamTrayIcon was installed successfully.        *"
+    fi
+
+    cat <<'EOF'
+********************************************************************
+*                                                                  *
+* Starting with version 1.0.5, KSteamTrayIcon is now managed as a  *
+* systemd user service. You have two options to enable it:         *
+*                                                                  *
+* 1) Enable KSteamTrayIcon for all users:                          *
+*     sudo systemctl --global enable ksteamtrayicon.service        *
+*                                                                  *
+* 2) Enable KSteamTrayIcon only for the current user:              *
+*     systemctl --user enable ksteamtrayicon.service               *
+*                                                                  *
+* Once the service has been enabled, just start it with:           *
+*     systemctl --user start ksteamtrayicon.service                *
+*                                                                  *
+* Enjoy!                                                           *
+*                                                                  *
+********************************************************************
+
+EOF
+}
+
+post_install() {
+    print_msg false
+}
+
+post_upgrade() {
+    print_msg true
+}
