@@ -1,13 +1,13 @@
 # Maintainer: MCB-SMART-BOY <2720838051@qq.com>
 pkgname=neve-bin
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone language for system configuration, builds, and shell automation (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MCB-SMART-BOY/Neve"
 license=('MPL-2.0')
 depends=('gcc-libs')
-provides=('neve')
+provides=("neve=${pkgver}")
 conflicts=('neve' 'neve-git')
 
 source_x86_64=("neve-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/MCB-SMART-BOY/Neve/releases/download/v${pkgver}/neve-x86_64-unknown-linux-gnu.tar.gz")
