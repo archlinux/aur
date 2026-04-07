@@ -2,7 +2,7 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-meta
-pkgver=49
+pkgver=50
 pkgrel=1
 pkgdesc='Meta package to install GNOME'
 arch=(any)
@@ -42,11 +42,11 @@ depends=(
   gnome-user-share
   gnome-weather
   grilo-plugins
+  gst-thumbnailers
   gvfs
   gvfs-afc
   gvfs-dnssd
   gvfs-goa
-  gvfs-google
   gvfs-gphoto2
   gvfs-mtp
   gvfs-nfs
