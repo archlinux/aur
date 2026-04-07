@@ -1,0 +1,15 @@
+pkgbase = tts-mod-vault
+	pkgdesc = Cross-platform Tabletop Simulator mod backup & download tool
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/markomijic/TTS-Mod-Vault
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = flutter
+	makedepends = git
+	depends = gtk3
+	options = !strip
+	source = tts-mod-vault::git+https://github.com/markomijic/TTS-Mod-Vault.git#tag=v2.0.0
+	sha256sums = 3f43e9e0a5f2f099f8f6f5a235e3d94fe728e390b554a23012c7acb86b8be9cb
+
+pkgname = tts-mod-vault

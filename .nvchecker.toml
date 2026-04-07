@@ -1,0 +1,5 @@
+[tts-mod-vault]
+source = "github"
+github = "markomijic/TTS-Mod-Vault"
+prefix = "v"
+use_max_tag = true
