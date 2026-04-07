@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=telemt-bin
-pkgver=3.3.38
+pkgver=3.3.39
 pkgrel=1
 pkgdesc='MTProxy for Telegram on Rust + Tokio'
 arch=('x86_64' 'aarch64')
@@ -25,13 +25,13 @@ source=(
 )
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/telemt/telemt/releases/download/${pkgver}/telemt-x86_64-linux-gnu.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/telemt/telemt/releases/download/${pkgver}/telemt-aarch64-linux-gnu.tar.gz")
-sha256sums=('c483b17fa5a596958a18c17e7cbdc1309abb1bc2e7bb9a9a62aedc64c9c2337a'
+sha256sums=('c18e6fce5574fb3c5a19c38e2cc875e9101172c98a67aa1b87004752325994e1'
             '5f0c01dd2395bae6fdb86dd84dc4db5c677b339627b46abd3ca7549c92305bf0'
             '24a9a6c5804d970753641643eaa8f4514886892f3e415cf06fe6d693cda353fb'
             '2caa1b711c8d16cbdb4276bde9160b113f4c0e4d360953b14aa464a55bfa7a3b'
             '5c2e8adedc3c056e62c5eaaa26bdc517f2ff3859c4b4ea41ceafe7eca173ed63')
-sha256sums_x86_64=('d2923364d66dde1cfefda975d1d76d60f6b66c25d5c9b46158308ca34d8fdb6d')
-sha256sums_aarch64=('5af91c5befbbb3910192b2edd89467ef32d8ca431a6f670d046c2a15c342b196')
+sha256sums_x86_64=('85c53917fbd0ee20fcec9cbb844c5d0311573393bed98bb2a7b15d5837667513')
+sha256sums_aarch64=('29674568a790bf0b05bd27948350a400f1b2d0048f73ffdc4bc51fda842f238f')
 
 latestver() {
     gh api --paginate repos/telemt/telemt/releases \
