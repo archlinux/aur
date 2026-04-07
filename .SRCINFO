@@ -1,6 +1,6 @@
 pkgbase = beakerlib
 	pkgdesc = Shell-level integration testing library, providing convenience functions which simplify writing, running and analysis of integration and blackbox tests.
-	pkgver = 1.33.2
+	pkgver = 1.33.3
 	pkgrel = 1
 	url = https://github.com/beakerlib/beakerlib
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = beakerlib
 	depends = perl
 	optdepends = python-six
 	optdepends = python-lxml
-	source = beakerlib-1.33.2.tar.gz::https://github.com/beakerlib/beakerlib/archive/refs/tags/1.33.2.tar.gz
-	sha256sums = e13f4df8ad055c05bcca2226d92e298156eb9ea6de81415c844e567e4e7ab117
+	source = beakerlib-1.33.3.tar.gz::https://github.com/beakerlib/beakerlib/archive/refs/tags/1.33.3.tar.gz
+	sha256sums = 87a054194ddd2e073d50c15b0c4f7cf1373b1a5a82e78d9a8f16f13ade7ee00e
 
 pkgname = beakerlib
 	depends = perl
