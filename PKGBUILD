@@ -1,12 +1,13 @@
 # Maintainer: MicLeh <micleh at proton dot me>
 pkgname=cornelsen-offline-lernen-bin
 pkgver=37.10.2
-pkgrel=1
+pkgrel=4
 pkgdesc="Cornelsen Offline Lernen Electron App"
 arch=('x86_64')
 url="https://www.cornelsen.de"
 license=('custom')
 depends=('electron')
+makedepends=('npm')
 source=("${pkgname}-${pkgver}.zip::https://ebook.cornelsen.de/uma20/public/v2/uma/offline/win"
         "${pkgname}.sh"
         "${pkgname}.desktop"
@@ -14,20 +15,138 @@ source=("${pkgname}-${pkgver}.zip::https://ebook.cornelsen.de/uma20/public/v2/um
         "icon32.png"
         "icon96.png")
 b2sums=('2801cc40ad4c023451bd2a2713e6d69ae036d32c450bc2ef5a920dd3c8b8bc3bddb7c5a22cb9b16fad3dad9b217ff3026be73a17410082c87d9ebdd90418cfad'
-    'd9c12908c1da0a8098764287fa839dda5a61c30665cdda0fb4eed99674e6380113de6af1e2577e99f931d1c5a10dd1d37bd5a4c168016f51e3d58b28c5eb1197'
-    'b184acf41642973e9941a80916b37b3d0eef17a49f120e472a14a773e92309b3da3e7a8123bc4114f6970fb6f8e3dec46eb6be0f913021c220163fc3188d95e4'
-    '8dd68d9cd90347b954da9280d2133bc45706eec1e74261bdf19f53b61150ee5168db20a0f217643230c4dc66fb840f9ef61fce5f6aff5853b1bebae4bc9f4c65'
-    'b326c7f468c3cecb0e2618bae56092b7c6c5fa7e8f43f499645df01c2b468e74052bef51d48b36a8a7ade2fa12f9612591eaf38819998868271ec23abd366ad5'
-    '302bef8514b991cb6903d2def32abf348329a1cf104009b3c50c0e83e44b15103b89f669fb2012894df0c7d6ab926151f09e0cf61aff4102296be7071f66f794')
+        '2f1c802ebb340472a192316bdd9a7834dcb9e205e6a5fb186684c6142efc1033ff76c7238e9753b0bfa3f2daccebce6c709332b38b4a84440ffb42f316373531'
+        '8157b061d35da630252a8c402a98fb978fcad59fcfa813eb8b67dfeaae7e467051d659201e55b5d1811ae15eca49e47189a5a9840277f09876cf1d7021cfc1da'
+        '8dd68d9cd90347b954da9280d2133bc45706eec1e74261bdf19f53b61150ee5168db20a0f217643230c4dc66fb840f9ef61fce5f6aff5853b1bebae4bc9f4c65'
+        'b326c7f468c3cecb0e2618bae56092b7c6c5fa7e8f43f499645df01c2b468e74052bef51d48b36a8a7ade2fa12f9612591eaf38819998868271ec23abd366ad5'
+        '302bef8514b991cb6903d2def32abf348329a1cf104009b3c50c0e83e44b15103b89f669fb2012894df0c7d6ab926151f09e0cf61aff4102296be7071f66f794')
+
+_find_asar_path() {
+    local _path
+    local _candidates=(
+        "src/windows/resources/app.asar"
+        "src/src/windows/resources/app.asar"
+        "windows/resources/app.asar"
+        "resources/app.asar"
+    )
+
+    for _path in "${_candidates[@]}"; do
+        if [ -f "$_path" ]; then
+            printf '%s\n' "$_path"
+            return 0
+        fi
+    done
+
+    _path="$(find . -type f -path '*/resources/app.asar' | head -n 1)"
+    if [ -n "$_path" ]; then
+        printf '%s\n' "${_path#./}"
+        return 0
+    fi
+
+    return 1
+}
 
 prepare() {
-    :
+    local _asar_path
+    _asar_path="$(_find_asar_path || true)"
+
+    if [ -z "$_asar_path" ] || [ ! -f "$_asar_path" ]; then
+                echo "ERROR: source app.asar not found in extracted zip"
+                exit 1
+        fi
+
+        local _tmp_base _tmp_dir
+        _tmp_base="${TMPDIR:-/var/tmp}"
+        if [ ! -w "$_tmp_base" ]; then
+            _tmp_base="$PWD"
+        fi
+        _tmp_dir="$(mktemp -d "$_tmp_base/${pkgname}.asar.XXXXXX")"
+
+        npx --yes @electron/asar extract "$_asar_path" "$_tmp_dir"
+
+        node - "$_tmp_dir" <<'NODE'
+const fs = require('fs');
+const path = require('path');
+const root = process.argv[2];
+
+function collectJsFiles(dir, out = []) {
+    for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+        const p = path.join(dir, ent.name);
+        if (ent.isDirectory()) {
+            collectJsFiles(p, out);
+        } else if (ent.isFile() && ent.name.endsWith('.js')) {
+            out.push(p);
+        }
+    }
+    return out;
+}
+
+const distDir = path.join(root, 'dist');
+if (!fs.existsSync(distDir)) {
+    console.error('ERROR: unpacked asar does not contain a dist directory');
+    process.exit(1);
+}
+
+const jsFiles = collectJsFiles(distDir);
+
+const patches = [
+    {
+        name: 'annotations-404-fallback',
+        regex: /getProductAnnotations\(r,s=!1\)\{return this\.http\.get\(`\$\{s\?os\.getSyncApiBaseUrl\(\):os\.getApiBaseUrl\(\)\}\/pspdf\/annotations\/\$\{r\}`\)\.pipe\(/g,
+        replaceWith: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?os.getSyncApiBaseUrl():os.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(ip(y=>s&&y.status===404?hs({}):r0(()=>y)),',
+        from: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?os.getSyncApiBaseUrl():os.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(ip(y=>r0(()=>y)),Jl(y=>this.mapOfflinePdfIds(y)))}',
+        to: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?os.getSyncApiBaseUrl():os.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(ip(y=>s&&y.status===404?hs({}):r0(()=>y)),Jl(y=>this.mapOfflinePdfIds(y)))}',
+        alreadyMarker: 's&&y.status===404?hs({}):r0(()=>y)'
+    },
+    {
+        name: 'compatibility-401-fallback',
+        from: 'isCompatibleWithOnline$(){return this.http.get(`${os.getSyncApiBaseUrl()}/compatibility/offlineClients/${GE}`).pipe(sa(r=>r.isCompatible))}',
+        to: 'isCompatibleWithOnline$(){return this.http.get(`${os.getSyncApiBaseUrl()}/compatibility/offlineClients/${GE}`).pipe(sa(r=>r.isCompatible),ip(r=>r.status===401?hs(!0):r0(()=>r)))}',
+        alreadyMarker: 'r.status===401?hs(!0):r0(()=>r)'
+    }
+];
+
+for (const p of patches) {
+    let patched = false;
+
+    for (const filePath of jsFiles) {
+        let txt = fs.readFileSync(filePath, 'utf8');
+
+        if (txt.includes(p.to) || txt.includes(p.alreadyMarker)) {
+            patched = true;
+            break;
+        }
+
+        if (p.regex && p.regex.test(txt)) {
+            txt = txt.replace(p.regex, p.replaceWith);
+            fs.writeFileSync(filePath, txt);
+            patched = true;
+            break;
+        }
+
+        if (txt.includes(p.from)) {
+            txt = txt.replace(p.from, p.to);
+            fs.writeFileSync(filePath, txt);
+            patched = true;
+            break;
+        }
+    }
+
+    if (!patched) {
+        console.warn(`WARN: patch target not found: ${p.name} (continuing)`);
+    }
+}
+NODE
+
+        npx --yes @electron/asar pack "$_tmp_dir" "$_asar_path"
+        rm -rf "$_tmp_dir"
 }
 
 package() {
-    _asar_path=$(find . -name "app.asar" | head -n 1)
-    
-    if [ -z "$_asar_path" ]; then
+    local _asar_path
+    _asar_path="$(_find_asar_path || true)"
+
+    if [ ! -f "$_asar_path" ]; then
         echo "ERROR: app.asar not found"
         exit 1
     fi

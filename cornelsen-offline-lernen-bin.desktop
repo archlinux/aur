@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Cornelsen Offline Lernen
-Exec=cornelsen-offline-lernen
-Icon=cornelsen-offline-lernen
+Exec=cornelsen-offline-lernen-bin
+Icon=cornelsen-offline-lernen-bin
 Terminal=false
 Type=Application
 Categories=Education;
