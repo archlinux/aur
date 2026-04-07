@@ -9,20 +9,19 @@
 
 _pkgname=ModusToolbox
 pkgname=modustoolbox-machine-learning-pack
-_pkgver=3.0.0
-pkgver=${_pkgver}.2416
+_pkgver=3.1.0
+pkgver=${_pkgver}.2661
 pkgrel=1
 pkgdesc="Enables you to use ModusToolbox Machine Learning tools and assets for all model deployment and validation within the ModusToolbox environment."
 arch=('x86_64')
 license=("LicenseRef-${pkgname}")
-depends=( 'libxcb' 'freetype2' 'libcups' 'xcb-util-keysyms' 'libx11' 'libglvnd' 'libxkbcommon' 'libxkbcommon-x11' 'xcb-util-wm' 'glib2' 'openssl-1.1'   \
-    'wayland' 'fontconfig' 'dbus' 'glibc' 'libdrm' 'xcb-util-wm' 'xcb-util-image' 'xcb-util-renderutil' 'qt5-base' 'qt5-svg' 'ncurses5-compat-libs'     \
-    'libxcomposite')
+depends=('dbus' 'fontconfig' 'freetype2' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'krb5' 'libcups' 'libdrm' 'libglvnd' 'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' \
+    'openssl-1.1' 'pango' 'qt6-base' 'wayland' 'xcb-util-cursor' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'xdg-utils' 'zlib' 'zstd')
 _url_package_name="modustoolboxpackmachinelearning"
 url="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.${_url_package_name}"
 _source="${_url_package_name}_${pkgver}_Linux_x64.deb"
 source=("file://${_source}")
-sha256sums=('1d1de67afddc15b9603fde8ba74027ec35490a896467a2dbf3c3b24434410b7e')
+sha256sums=('b9f4d462ee5bbc67c9b168b12068cd20b606f66561b73109c6214a6c60ddcc22')
 options=('!strip')
 
 
@@ -33,6 +32,10 @@ prepare() {
     mv ./opt/Tools/${_pkgname} ./opt/${_pkgname}
     # Remove the empty directory
     rm -r ./opt/Tools
+    # Some extractions leave a duplicated ModusToolbox root; keep the canonical packs tree only.
+    if [[ -d ./opt/${_pkgname}/${_pkgname}/packs && -d ./opt/${_pkgname}/packs ]]; then
+        rm -rf ./opt/${_pkgname}/${_pkgname}
+    fi
     # Update link in desktop files
     find ./usr/share/applications/ -name "*.desktop" -exec sed -i "s/opt\/Tools/opt/" {} +
 }
