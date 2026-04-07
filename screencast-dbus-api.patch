@@ -1,4 +1,4 @@
-From 0e3bbaa513085ab4b26242fc3de8c54202d51a30 Mon Sep 17 00:00:00 2001
+From d7abae9ece8e4e1a11af071b73f5d5a62e1b3488 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jerzy=20Ko=C5=82osowski?= <jerzy@kolosowscy.pl>
 Date: Sun, 22 Feb 2026 06:57:03 +0100
 Subject: [PATCH 1/2] plugins/screencast: Fix potential null dereference in
@@ -30,7 +30,7 @@ index 59708970ea..c565a337da 100644
 2.53.0
 
 
-From b9783d96bcf16bbd09e7dee7d3d259c6a32ebd28 Mon Sep 17 00:00:00 2001
+From 39f20df018a643807408588ab0a601474945fd67 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jerzy=20Ko=C5=82osowski?= <jerzy@kolosowscy.pl>
 Date: Sun, 22 Feb 2026 06:57:23 +0100
 Subject: [PATCH 2/2] plugins/screencast: Add D-Bus API for stream
@@ -88,10 +88,10 @@ State values match the D-Bus XML documentation: idle, paused, streaming.
  create mode 100644 src/plugins/screencast/screencaststreamwrapper.h
 
 diff --git a/autotests/integration/CMakeLists.txt b/autotests/integration/CMakeLists.txt
-index 83cd9a41c6..131626a303 100644
+index 7f3e594d7b..40b34d39bd 100644
 --- a/autotests/integration/CMakeLists.txt
 +++ b/autotests/integration/CMakeLists.txt
-@@ -193,6 +193,9 @@ endif()
+@@ -195,6 +195,9 @@ endif()
  if (TARGET K::KPipeWire)
      integrationTest(NAME testScreencasting SRCS screencasting_test.cpp LIBS K::KPipeWire)
  endif()
