@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Authentication helper for the korb CLI
+Exec=/usr/lib/korb/bin/korb-auth-helper %u
+Type=Application
+NoDisplay=true
+MimeType=x-scheme-handler/de.rewe.app;
