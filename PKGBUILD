@@ -18,7 +18,10 @@ sha256sums=('SKIP' 'SKIP')
 build() {
   # Build ghostty
   cd "$srcdir/ghostty"
-  zig build -Dapp-runtime=none -Doptimize=ReleaseFast
+  zig build \
+    -Dapp-runtime=none \
+    -Doptimize=ReleaseFast \
+    -Dtarget=x86_64-linux-gnu
 
   # Build prettymux
   cd "$srcdir/prettymux/src/gtk"
