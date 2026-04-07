@@ -1,8 +1,8 @@
 pkgname=openwork-bin
 pkgver=0.11.202
-pkgdesc="Unofficial OpenWork binary package with Arch-specific launcher fixes"
+pkgdesc='Unofficial OpenWork binary package with Arch-specific launcher fixes'
 arch=('x86_64')
-url="https://github.com/different-ai/openwork"
+url='https://github.com/different-ai/openwork'
 license=('MIT')
 pkgrel=2
 options=('!strip')
