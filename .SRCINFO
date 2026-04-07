@@ -1,6 +1,6 @@
 pkgbase = gajim-git
 	pkgdesc = Jabber/XMPP instant messenger client written in Python with GTK+
-	pkgver = r22735.015591b90
+	pkgver = r23143.e374daca2
 	pkgrel = 1
 	epoch = 1
 	url = https://gajim.org/
@@ -42,7 +42,6 @@ pkgbase = gajim-git
 	optdepends = gupnp-igd: for better NAT traversing
 	optdepends = networkmanager: for network lose detection
 	optdepends = geoclue2: share current location
-	optdepends = gsound: Notification Sounds
 	optdepends = farstream: for video and audio calls
 	optdepends = gstreamer: for video and audio calls
 	optdepends = gst-plugins-base: for video and audio calls

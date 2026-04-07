@@ -10,7 +10,7 @@
 _name=gajim
 pkgname="$_name-git"
 epoch=1
-pkgver=r22735.015591b90
+pkgver=r23143.e374daca2
 pkgrel=1
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
@@ -28,7 +28,6 @@ optdepends=('python-sentry_sdk: for Sentry error reporting to dev.gajim.org (use
             'gupnp-igd: for better NAT traversing'
             'networkmanager: for network lose detection'
             'geoclue2: share current location'
-            'gsound: Notification Sounds'
             'farstream: for video and audio calls'
             'gstreamer: for video and audio calls'
             'gst-plugins-base: for video and audio calls'
