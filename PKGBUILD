@@ -1,8 +1,9 @@
-# Maintainer: Tobias Erthal <archabuser [ a t ] mailbox [-d-o-t-] org>
+# Maintainer: Clemens Schmid <clemens [ a t ] nevrome [-d-o-t-] de>
+# Contributor: Tobias Erthal <archabuser [ a t ] mailbox [-d-o-t-] org>
 
 pkgname=pakcs
 pkgver=3.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Portland Aachen Kiel Curry System"
 arch=('x86_64')
 url="https://www.informatik.uni-kiel.de/~pakcs/index.html"
@@ -11,8 +12,8 @@ depends=('swi-prolog')
 makedepends=('stack' 'texlive-core')
 optdepends=('rlwrap: for command line editing and history functionality')
 install=pakcs.install
-source=("https://www.informatik.uni-kiel.de/~pakcs/download/${pkgname}-${pkgver}-src.tar.gz" 'skip_dir_check.patch')
-md5sums=('85365437d1121fb3a79262f3fa0f7bd6' '76bdf92b29451a2983c4d9082ded5a2e')
+source=("https://www.curry-lang.org/pakcs/download/${pkgname}-${pkgver}-src.tar.gz" 'skip_dir_check.patch')
+md5sums=('f15037690b88f40424ef685d6194a35f' '76bdf92b29451a2983c4d9082ded5a2e')
 
 prepare() {
 	patch "${srcdir}/${pkgname}-${pkgver}/Makefile" skip_dir_check.patch
