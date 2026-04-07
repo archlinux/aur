@@ -11,20 +11,20 @@
 
 pkgname=yed
 pkgver=3.25.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Very powerful graph editor written in java'
 arch=('any')
 url='http://www.yworks.com/en/products_yed_about.html'
 license=('custom')
-depends=('hicolor-icon-theme' 'java-runtime')
+depends=('hicolor-icon-theme' 'java-runtime<=25' 'archlinux-java-run')
 source=("https://www.yworks.com/resources/yed/demo/yEd-${pkgver}.zip"
         'yed.desktop'
         'yed'
         'graphml+xml-mime.xml')
 sha256sums=('369258f7704b485445ede54713042f0b57b4094e7073e4389d12c7015035cd3e'
             'cc6957cde6eba0d82ea523b0257f8c91fd1e330a1e2ad7d64890e48a2450aa98'
-            '731b54c6e731704efe9847d78e2df474d59042452ace29d2786d76891295249e'
+            'e0348fe386496f4247a5be66c78bc762df566f401d7a8429a57077bd0af6be8e'
             'e751b69ed8a25faf46d4e4016ed8f1774abc88679067934a6081348e3d6fc332')
 
 install=yed.install
