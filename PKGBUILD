@@ -1,12 +1,12 @@
 pkgname=falco-git
 _pkgname=falco
-pkgver=0.43.0.r42.g8a4c9e23
+pkgver=0.43.0.rc1.r47.g6c202330
 pkgrel=1
-pkgdesc="Cloud native runtime security"
+pkgdesc="Cloud native runtime security (Git version - Core only)"
 arch=('x86_64')
 url="https://falco.org/"
 license=('Apache-2.0')
-depends=('yaml-cpp' 'cxxopts' 'cpp-httplib' 'protobuf' 'libelf' 'libbpf' 'bpf' 'nlohmann-json')
+depends=('yaml-cpp' 'cxxopts' 'cpp-httplib' 'protobuf' 'libelf' 'libbpf' 'bpf' 'nlohmann-json' 'falco-plugin-container')
 makedepends=('git' 'cmake' 'clang' 'llvm' 'linux-headers' 'jq')
 provides=('falco')
 conflicts=('falco' 'falco-bin')
@@ -17,13 +17,14 @@ source=('git+https://github.com/falcosecurity/falco.git'
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$_pkgname"
-  mkdir -p build skeleton
+  cd "$srcdir/$_pkgname"
+  [[ -d build ]] || mkdir build
+  [[ -d skeleton ]] || mkdir skeleton
 }
 
 build() {
@@ -43,8 +44,9 @@ build() {
       -DMODERN_BPF_SKEL_DIR="$srcdir/$_pkgname/skeleton/skel_dir" \
       -DBUILD_DRIVER=OFF \
       -DBUILD_BPF=OFF \
+      -DBUILD_FALCO_PLUGINS=OFF \
       -DFALCO_VERSION=$(cd .. && git describe --tags)
-  make falco -j$(nproc)
+  make falco
 }
 
 package() {
