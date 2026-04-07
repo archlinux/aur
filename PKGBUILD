@@ -2,12 +2,13 @@
 
 pkgname=hledger-tui
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='keyboard-driven terminal UI for viewing and analyzing your hledger financial data'
 arch=(any)
 url="https://github.com/lucabello/$pkgname"
 license=(Apache-2.0)
-_pydeps=(sh
+_pydeps=(dataconfy
+         sh
          textual
          textual-plotext
          typer)
