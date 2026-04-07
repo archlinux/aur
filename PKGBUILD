@@ -1,12 +1,12 @@
-# Repository managed by ceres-c, forked from florentbr
-# Maintainer: Federico Cerutti <aur $at$ ceres-c $dot-Italy-tld$>
+# Repository managed by fluffy-kaiju, forked from ceres-c, forked from florentbr
+# Maintainer: Fluffy Kaiju
 pkgname=owon-vds-tiny
 _gitname='OWON-VDS1022'
 pkgver=1.1.5.cf19.2
 pkgrel=1
 pkgdesc="OWON VDS1022(I)/VDS2052 oscilloscope application"
 arch=(x86_64 i386 aarch64)
-url="https://github.com/ceres-c/OWON-VDS1022"
+url="https://github.com/fluffy-kaiju/OWON-VDS1022"
 license=('unknown')
 depends=('git' 'libusb-compat' 'java-runtime>=8')
 optdepends=('python-bokeh: python apis'
@@ -15,16 +15,16 @@ optdepends=('python-bokeh: python apis'
 			'python-streamz: python apis')
 provides=("${pkgname}")
 install="${pkgname}.install"
-source=('git+https://github.com/ceres-c/OWON-VDS1022.git'
+source=('git+https://github.com/fluffy-kaiju/OWON-VDS1022.git'
 		'owon-vds-tiny'
 		'70-owon-vds-tiny.rules'
 		'owon-vds-tiny.desktop'
 		'owon-vds-tiny.appdata.xml')
 sha256sums=('SKIP'
 			'9f2135f9aa746a99ea02afb04551075c9b94869c700eaa7d79f091c7b271d3c6'
-			'9257c765a925d7a4efaed63659264c23d40eca76fdcc1bfb30fc183620f7401b'
+			'8e24bc3f30d71da644c1cb62da808a1e2d07db583f8e9851d27d7d583271e438'
 			'c4636ba5a29afdea5b414f13ad96159d58a1a9c1b21a349107832b3c04260579'
-			'13643b2d958e27de8cb635784cdf9bc83629b086474b780617c7726bb11f2843')
+			'6d978d28c823307f7676ce2aa7ad5e7fb4fb6f6a92c6e279eeabd1cb7294f946')
 package() {
 	# Install files
 	install -dm755 "${pkgdir}/usr/lib/${pkgname}/"
