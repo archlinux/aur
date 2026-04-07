@@ -1,0 +1,23 @@
+pkgbase = cryload-bin
+	pkgdesc = Powerful HTTP Benchmarking Tool
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/sdogruyol/cryload
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = pcre2
+	depends = zlib
+	depends = openssl
+	provides = cryload
+	conflicts = cryload
+	options = !strip
+	source = README-2.3.0.md::https://raw.githubusercontent.com/sdogruyol/cryload/v2.3.0/README.md
+	source = LICENSE-2.3.0::https://raw.githubusercontent.com/sdogruyol/cryload/v2.3.0/LICENSE
+	sha256sums = f0a1daa3aca11c2339929e3516a5d3da8801c5fb0da61e54e8dd66175edbad8d
+	sha256sums = b40b8f9f325747655be5597be3864c289584e3bac44f2d03a368c26e69434ee1
+	source_x86_64 = cryload-x86_64-2.3.0::https://github.com/sdogruyol/cryload/releases/download/v2.3.0/cryload-linux
+	sha256sums_x86_64 = 50c675f6df9d48b167eb3460ca959b6cae2717f37dae54a998610ea93341175f
+
+pkgname = cryload-bin

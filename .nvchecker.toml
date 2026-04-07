@@ -1,0 +1,5 @@
+[cryload-bin]
+source = "github"
+github = "sdogruyol/cryload"
+use_latest_release = true
+prefix = "v"
