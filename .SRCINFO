@@ -1,0 +1,307 @@
+pkgbase = pipewire-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support
+	pkgver = 1.6.2
+	pkgrel = 1
+	epoch = 1
+	url = https://pipewire.org
+	arch = x86_64
+	license = MIT
+	checkdepends = desktop-file-utils
+	checkdepends = openal
+	makedepends = alsa-lib
+	makedepends = avahi
+	makedepends = bluez-libs
+	makedepends = dbus
+	makedepends = doxygen
+	makedepends = git
+	makedepends = glib2
+	makedepends = glib2-devel
+	makedepends = graphviz
+	makedepends = gst-plugins-base
+	makedepends = jack2
+	makedepends = libcamera
+	makedepends = libcanberra
+	makedepends = libebur128
+	makedepends = libfdk-aac
+	makedepends = libffado
+	makedepends = libfreeaptx
+	makedepends = liblc3
+	makedepends = libldac
+	makedepends = libldacdec
+	makedepends = libmysofa
+	makedepends = libpulse
+	makedepends = libsndfile
+	makedepends = libusb
+	makedepends = libx11
+	makedepends = libxfixes
+	makedepends = lilv
+	makedepends = meson
+	makedepends = ncurses
+	makedepends = opus
+	makedepends = python-docutils
+	makedepends = readline
+	makedepends = roc-toolkit
+	makedepends = rtkit
+	makedepends = sbc
+	makedepends = sdl2
+	makedepends = systemd
+	makedepends = valgrind
+	makedepends = webrtc-audio-processing-1
+	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git#tag=1.6.2
+	b2sums = SKIP
+
+pkgname = pipewire-ldac
+	install = pipewire-ldac.install
+	license = MIT
+	license = LGPL-2.1-or-later
+	depends = libpipewire=1:1.6.2-1
+	depends = libpipewire-0.3.so
+	depends = dbus
+	depends = libdbus-1.so
+	depends = gcc-libs
+	depends = glib2
+	depends = libglib-2.0.so
+	depends = glibc
+	depends = ncurses
+	depends = libncursesw.so
+	depends = readline
+	depends = libreadline.so
+	depends = systemd-libs
+	depends = libsystemd.so
+	depends = libudev.so
+	optdepends = gst-plugin-pipewire: GStreamer plugin
+	optdepends = pipewire-alsa: ALSA configuration
+	optdepends = pipewire-audio: Audio support
+	optdepends = pipewire-docs: Documentation
+	optdepends = pipewire-ffado: FireWire support
+	optdepends = pipewire-jack-client: PipeWire as JACK client
+	optdepends = pipewire-jack: JACK replacement
+	optdepends = pipewire-libcamera: Libcamera support
+	optdepends = pipewire-pulse: PulseAudio replacement
+	optdepends = pipewire-roc: ROC streaming
+	optdepends = pipewire-session-manager: Session manager
+	optdepends = pipewire-v4l2: V4L2 interceptor
+	optdepends = pipewire-x11-bell: X11 bell
+	optdepends = pipewire-zeroconf: Zeroconf support
+	optdepends = realtime-privileges: realtime privileges with rt module
+	optdepends = rtkit: realtime privileges with rtkit module
+	provides = pipewire=1.6.2
+	conflicts = pipewire
+
+pkgname = libpipewire-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support - client library
+	depends = glibc
+	depends = gcc-libs
+	provides = libpipewire-0.3.so
+
+pkgname = alsa-card-profiles-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support - ALSA card profiles
+	license = LGPL-2.1-or-later
+
+pkgname = pipewire-docs-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support - documentation
+
+pkgname = pipewire-libcamera-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support - Libcamera support
+	depends = gcc-libs
+	depends = glibc
+	depends = libcamera
+	depends = libcamera-base.so
+	depends = libcamera.so
+	depends = pipewire
+
+pkgname = pipewire-audio-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support - Audio support
+	depends = libpipewire=1:1.6.2-1
+	depends = libpipewire-0.3.so
+	depends = pipewire=1:1.6.2-1
+	depends = alsa-card-profiles
+	depends = alsa-lib
+	depends = libasound.so
+	depends = bluez-libs
+	depends = libbluetooth.so
+	depends = dbus
+	depends = libdbus-1.so
+	depends = gcc-libs
+	depends = glib2
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgio-2.0.so
+	depends = glibc
+	depends = libebur128
+	depends = libfdk-aac
+	depends = libfdk-aac.so
+	depends = libfreeaptx
+	depends = libfreeaptx.so
+	depends = liblc3
+	depends = liblc3.so
+	depends = libldac
+	depends = libldacBT_enc.so
+	depends = libldacdec
+	depends = libldacBT_dec.so
+	depends = libmysofa
+	depends = libmysofa.so
+	depends = libsndfile
+	depends = libsndfile.so
+	depends = libusb
+	depends = libusb-1.0.so
+	depends = lilv
+	depends = liblilv-0.so
+	depends = opus
+	depends = libopus.so
+	depends = sbc
+	depends = libsbc.so
+	depends = systemd-libs
+	depends = webrtc-audio-processing-1
+	depends = libwebrtc-audio-processing-1.so
+
+pkgname = pipewire-alsa-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support - ALSA configuration
+	depends = pipewire-audio=1:1.6.2-1
+	depends = pipewire=1:1.6.2-1
+	depends = pipewire-session-manager
+
+pkgname = pipewire-ffado-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support - FireWire support
+	depends = libpipewire=1:1.6.2-1
+	depends = libpipewire-0.3.so
+	depends = pipewire-audio=1:1.6.2-1
+	depends = pipewire=1:1.6.2-1
+	depends = glibc
+	depends = libffado
+	depends = libffado.so
+
+pkgname = pipewire-jack-client-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support - PipeWire as JACK client
+	depends = libpipewire=1:1.6.2-1
+	depends = libpipewire-0.3.so
+	depends = pipewire-audio=1:1.6.2-1
+	depends = pipewire=1:1.6.2-1
+	depends = dbus
+	depends = libdbus-1.so
+	depends = gcc-libs
+	depends = glibc
+	depends = jack
+	depends = libjack.so
+	conflicts = pipewire-jack
+
+pkgname = pipewire-jack-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support - JACK replacement
+	license = MIT
+	license = GPL-2.0-only
+	license = LGPL-2.1-or-later
+	depends = libpipewire=1:1.6.2-1
+	depends = libpipewire-0.3.so
+	depends = pipewire-audio=1:1.6.2-1
+	depends = pipewire=1:1.6.2-1
+	depends = glibc
+	depends = pipewire-session-manager
+	depends = sh
+	optdepends = jack-example-tools: for official JACK example-clients and tools
+	provides = jack
+	provides = libjack.so
+	provides = libjacknet.so
+	provides = libjackserver.so
+	conflicts = jack
+	conflicts = jack2
+	conflicts = pipewire-jack-client
+
+pkgname = pipewire-pulse-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support - PulseAudio replacement
+	install = pipewire-pulse.install
+	depends = libpipewire=1:1.6.2-1
+	depends = libpipewire-0.3.so
+	depends = pipewire-audio=1:1.6.2-1
+	depends = pipewire=1:1.6.2-1
+	depends = avahi
+	depends = libavahi-client.so
+	depends = libavahi-common.so
+	depends = dbus
+	depends = libdbus-1.so
+	depends = dconf
+	depends = gcc-libs
+	depends = glib2
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgio-2.0.so
+	depends = glibc
+	depends = libpulse
+	depends = libpulse.so
+	depends = pipewire-session-manager
+	depends = systemd-libs
+	depends = libsystemd.so
+	provides = pulse-native-provider
+	conflicts = pulseaudio
+
+pkgname = pipewire-roc-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support - ROC streaming support
+	depends = libpipewire=1:1.6.2-1
+	depends = libpipewire-0.3.so
+	depends = pipewire-audio=1:1.6.2-1
+	depends = pipewire=1:1.6.2-1
+	depends = gcc-libs
+	depends = glibc
+	depends = roc-toolkit
+	depends = libroc.so
+
+pkgname = gst-plugin-pipewire-ldac
+	pkgdesc = Multimedia graph framework - pipewire plugin
+	depends = libpipewire=1:1.6.2-1
+	depends = libpipewire-0.3.so
+	depends = pipewire-audio=1:1.6.2-1
+	depends = pipewire=1:1.6.2-1
+	depends = gcc-libs
+	depends = glib2
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = glibc
+	depends = gst-plugins-base-libs
+	depends = gstreamer
+	depends = pipewire-session-manager
+
+pkgname = pipewire-zeroconf-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support - Zeroconf support
+	depends = libpipewire=1:1.6.2-1
+	depends = libpipewire-0.3.so
+	depends = pipewire-audio=1:1.6.2-1
+	depends = pipewire=1:1.6.2-1
+	depends = avahi
+	depends = libavahi-client.so
+	depends = libavahi-common.so
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = libcrypto.so
+	depends = opus
+	depends = libopus.so
+
+pkgname = pipewire-v4l2-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support - V4L2 interceptor
+	depends = libpipewire=1:1.6.2-1
+	depends = libpipewire-0.3.so
+	depends = pipewire=1:1.6.2-1
+	depends = glibc
+	depends = pipewire-session-manager
+	depends = sh
+
+pkgname = pipewire-x11-bell-ldac
+	pkgdesc = Low-latency audio/video router and processor with ldac decoder support - X11 bell
+	depends = libpipewire=1:1.6.2-1
+	depends = libpipewire-0.3.so
+	depends = pipewire-audio=1:1.6.2-1
+	depends = pipewire=1:1.6.2-1
+	depends = glibc
+	depends = libcanberra
+	depends = libcanberra.so
+	depends = libx11
+	depends = libxfixes
+
+pkgname = pipewire-session-manager-ldac
+	pkgdesc = Session manager for PipeWire (default provider)
+	license = CC0-1.0
+	depends = wireplumber
+
+pkgname = pulse-native-provider-ldac
+	pkgdesc = PulseAudio sound server (default provider)
+	license = CC0-1.0
+	depends = pipewire-pulse
