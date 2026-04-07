@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkgname=javy
 pkgname=javy-bin
-pkgver=8.1.0
+pkgver=8.1.1
 pkgrel=1
 pkgdesc="A JavaScript to Webassembly toolchain"
 arch=(x86_64)
@@ -13,8 +13,8 @@ source=("$url/raw/v$pkgver/LICENSE.md"
 		"$url/releases/download/v$pkgver/$_pkgname-$arch-linux-v$pkgver.gz.sha256")
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$arch-linux-v$pkgver.gz")
 sha256sums=('3b26cd02b9d9bf324bce59edd88c02cb93fa9a908528b805264db8cde53295e6'
-            '50a263371779368b04601793b8f8969e56aff37c819d6e43b322a8e97f895d97')
-sha256sums_x86_64=('043374b46076cd4408182c02a6f1b9e255806689f5b4b19a446734be0f7c7a6d')
+            '2e48fa29a56fb84f0c8273b5725cb600fe6bbecc7300c8e04b2df30e272794ac')
+sha256sums_x86_64=('4bec224e1d51827808fd063541a2b4d94cf474744636b692be63e7a29bec83a6')
 
 package() {
 	install -Dm755 "$_pkgname-$arch-linux-v$pkgver" "$pkgdir/usr/bin/${_pkgname}"
