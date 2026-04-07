@@ -1,0 +1,12 @@
+pkgbase = quram-qtc-tool
+	pkgdesc = A tool for bidirectional file conversion between raw data and .qtc format.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bhmsgame06/quram-qtc-tool
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	source = git+https://github.com/bhmsgame06/quram-qtc-tool
+	sha256sums = SKIP
+
+pkgname = quram-qtc-tool
