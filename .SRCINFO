@@ -1,13 +1,13 @@
 pkgbase = ultrv-bin
 	pkgdesc = Terminal client for the ULTRV blogging platform
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://ultrv.com
 	arch = x86_64
 	license = MIT
 	provides = ultrv
 	conflicts = ultrv
-	source = https://dl.ultrv.com/cli/v0.1.9/ultrv-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 6dfb82dd2e4988e83d6f1cdd06639bff3e67c19adc6c0d99a81c8058da6ee1e8
+	source = https://dl.ultrv.com/cli/v0.1.10/ultrv-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 4d86d014ac2407c1cff6721ae837f98ed6d62d9c19f6008419e82fa740b430ef
 
 pkgname = ultrv-bin
