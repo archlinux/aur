@@ -1,6 +1,6 @@
 pkgbase = dopamine
 	pkgdesc = The audio player that keeps it simple.Binary version.(Use system-wide electron)
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/digimezzo/dopamine
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = dopamine
 	makedepends = jq
 	depends = electron37
 	depends = python
-	source = dopamine-3.0.3::git+https://github.com/digimezzo/dopamine#tag=v3.0.3
+	source = dopamine-3.0.4::git+https://github.com/digimezzo/dopamine#tag=v3.0.4
 	source = dopamine.sh
-	sha256sums = ae89e022dd924d216d3ef66e1d5e0fda5f84486dc3eef88f470dabf9d8336b9a
+	sha256sums = 3cc98259e20bf844de11d6d167bccf339121e0acf308e1e07a75bce3e03a3320
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = dopamine
