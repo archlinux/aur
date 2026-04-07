@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang-git
 _pkgname=sglang
-pkgver=r10750.2ee7f41e25
-pkgrel=3
+pkgver=r11336.39b37ca60
+pkgrel=1
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('x86_64')
 url='https://github.com/sgl-project/sglang'
@@ -63,19 +63,41 @@ optdepends=(
 )
 provides=('sglang')
 conflicts=('sglang')
+
+_models=(
+  'gemma_4_e2b'
+  'gemma_4_e4b'
+  'gemma_4_26b_a4b'
+  'gemma_4_31b'
+  'qwen3.5_0.8b'
+  'qwen3.5_2b'
+  'qwen3.5_4b'
+  'qwen3.5_9b'
+  'qwen3.5_27b'
+  'qwen3.5_27b_fp8'
+  'qwen3.5_27b_gptq_int4'
+  'qwen3.5_35b_a3b'
+  'qwen3.5_35b_a3b_fp8'
+  'qwen3.5_35b_a3b_gptq_int4'
+  'qwen3.5_122b_a10b'
+  'qwen3.5_122b_a10b_fp8'
+  'qwen3.5_122b_a10b_gptq_int4'
+  'qwen3.5_397b_a17b'
+  'qwen3.5_397b_a17b_fp8'
+  'qwen3.5_397b_a17b_gptq_int4'
+)
+
 backup=('etc/sglang/sglang.conf' 'etc/sglang/sglang.env')
-source=("${_pkgname}::git+${url}.git"
-        'sglang.service'
+source=("${_pkgname}::git+https://github.com/JustinTong0323/sglang.git#branch=new-model-gg"
+        'sglang@.service'
         'sglang.conf'
         'sglang.env'
         'sglang.sysusers'
-        'sglang.tmpfiles')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+        "${_models[@]/%/.conf}")
+sha256sums=('SKIP')
+for _ in 'sglang@.service' 'sglang.conf' 'sglang.env' 'sglang.sysusers' "${_models[@]}"; do
+  sha256sums+=('SKIP')
+done
 
 pkgver() {
   cd "${_pkgname}"
@@ -94,9 +116,11 @@ build() {
 package() {
   cd "${_pkgname}/python"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm644 "${srcdir}/sglang.service" "${pkgdir}/usr/lib/systemd/system/sglang.service"
+  install -Dm644 "${srcdir}/sglang@.service" "${pkgdir}/usr/lib/systemd/system/sglang@.service"
   install -Dm644 "${srcdir}/sglang.sysusers" "${pkgdir}/usr/lib/sysusers.d/sglang.conf"
-  install -Dm644 "${srcdir}/sglang.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/sglang.conf"
   install -Dm644 "${srcdir}/sglang.conf" "${pkgdir}/etc/sglang/sglang.conf"
   install -Dm600 "${srcdir}/sglang.env" "${pkgdir}/etc/sglang/sglang.env"
+  for model in "${_models[@]}"; do
+    install -Dm644 "${srcdir}/${model}.conf" "${pkgdir}/etc/sglang/${model}.conf"
+  done
 }
