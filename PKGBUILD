@@ -5,16 +5,28 @@
 _pkgname=langchain-core
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=1.2.17
+pkgver=1.2.27
 pkgrel=1
 pkgdesc="Building applications with LLMs through composability"
 arch=('any')
 url='https://github.com/langchain-ai/langchain/tree/master/libs/core'
 license=('MIT')
-depends=(python-jsonpatch python-langsmith python-packaging python-pydantic python-pyyaml python-tenacity python-typing_extensions)
-makedepends=('python-build' 'python-installer' 'python-pdm-backend' 'python-wheel' 'python-hatchling')
+depends=(python-jsonpatch
+	python-langsmith
+	python-packaging
+	python-pydantic
+	python-pyyaml
+	python-tenacity
+	python-typing_extensions
+)
+makedepends=('python-build'
+'python-installer'
+#'python-pdm-backend'
+#'python-wheel'
+'python-hatchling'
+)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-b2sums=('c87c04acdfb4dcd335af2a4b4cc1de9dd8817a20bdcbdba0870ba0a7f8927c83e7ed0d23787c1b32706701de0f8a40609d14f482ff12bd61dfce0f51bded2160')
+sha256sums=('c18372e4c4c1454d49bf23a2e484431e71bd39b64173a0f621f0fc283d7183a4')
 
 build() {
     cd "${_pipname}-${pkgver}"
