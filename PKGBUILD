@@ -16,7 +16,7 @@ optdepends=(
 )
 provides=("kanso")
 conflicts=("kanso")
-source_x86_64=("kanso-${pkgver}.tar.gz::https://github.com/psychosomat/Kanso/releases/download/v${pkgver}/Kanso-${pkgver}-linux-x86_64.tar.gz")
+source_x86_64=("kanso-${pkgver}.tar.gz::https://github.com/psychosomat/Kanso/releases/download/v${pkgver}/Kanso-${pkgver}-linux-x64.tar.gz")
 sha256sums_x86_64=("9727f18edd06858647a5d2c051c5fed42f6085bb9f06af96f03996de04aabab2")
 
 package() {
