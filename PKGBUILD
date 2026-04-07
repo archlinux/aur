@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="qdl"
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code"
 arch=(
@@ -24,7 +24,7 @@ _pkgsrc="${pkgname}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('c523c01c9a9d5c8902679ec76e88ea7068a4e8c0485bd5ac462fc150cc0b4029439723640eaecf7fdc547faea98760d9e108d8555ef275498291d78eeaaebeef')
+b2sums=('5c4069086ba637f7c4c8da98a794e7e2fdc30c229c9e7cb35a8de1cd057a42acaec83477a9003f0a2b1f30f7107f7e99b7e49b10d29d3a353d114b5916e6cc2e')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -32,10 +32,15 @@ prepare() {
       -i 'Makefile'
 }
 
-build(){
+build() {
   cd "${srcdir}/${_pkgsrc}"
   make
   make manpages
+}
+
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  make tests
 }
 
 package(){
