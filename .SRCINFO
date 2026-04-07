@@ -1,6 +1,6 @@
 pkgbase = owon-vds-tiny
 	pkgdesc = OWON VDS1022(I)/VDS2052 oscilloscope application
-	pkgver = 1.1.5.cf19.2
+	pkgver = 1.1.5.cf19.3
 	pkgrel = 1
 	url = https://github.com/fluffy-kaiju/OWON-VDS1022
 	install = owon-vds-tiny.install

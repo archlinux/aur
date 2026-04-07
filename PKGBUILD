@@ -2,7 +2,7 @@
 # Maintainer: Fluffy Kaiju
 pkgname=owon-vds-tiny
 _gitname='OWON-VDS1022'
-pkgver=1.1.5.cf19.2
+pkgver=1.1.5.cf19.3
 pkgrel=1
 pkgdesc="OWON VDS1022(I)/VDS2052 oscilloscope application"
 arch=(x86_64 i386 aarch64)
