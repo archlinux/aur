@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Transformers building blocks, supporting a composable construction"
 arch=('any')
 url="https://github.com/facebookresearch/${_name}"
-license=('BSD')
+license=(BSD-3-Clause)
 depends=(
 	'python'
 	'python-pytorch'
@@ -63,4 +63,6 @@ build() {
 package() {
 	cd "${_name}"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
