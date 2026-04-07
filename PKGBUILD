@@ -1,17 +1,17 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=shopify-cli
 _npmname=@shopify/cli
-pkgver=3.93.0
+pkgver=3.93.1
 pkgrel=1
 pkgdesc="A CLI tool to build for the Shopify platform"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/Shopify/cli"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/@shopify/cli/-/cli-${pkgver}.tgz")
 noextract=("cli-${pkgver}.tgz")
-sha256sums=('48580980c869124c0782118a319c595c4f3f2dcea36dc0b60949f57e8b4d9236')
+sha256sums=('1f4ac75d12135d5b08f9c38728557194b763057303fbdfa0b0fca40c8b97e45e')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
