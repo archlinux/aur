@@ -1,0 +1,13 @@
+[Unit]
+Description=Xbox Elite Series 2 Controller Driver
+After=bluetooth.target
+Wants=bluetooth.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/xbelite2d
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

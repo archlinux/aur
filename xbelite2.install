@@ -1,0 +1,17 @@
+post_install() {
+    dkms add xbelite2/0.2.1
+    dkms build xbelite2/0.2.1
+    dkms install xbelite2/0.2.1
+}
+
+pre_upgrade() {
+    pre_remove
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    dkms remove xbelite2/0.2.1 --all
+}
