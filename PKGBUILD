@@ -2,7 +2,7 @@
 
 _plugin=audio-convert
 pkgname=vsview-${_plugin}
-pkgver=0.1.3.post1
+pkgver=0.1.3.post2
 pkgrel=1
 pkgdesc="A vsview plugin for converting audio sample types and resampling audio clips."
 arch=("x86_64")
@@ -22,7 +22,7 @@ makedepends=(
 	"python-versioningit"
 )
 source=("${pkgname}::git+${url}.git#tag=${_plugin}/v${pkgver}")
-sha256sums=('026b97eed6d041ce42280a01e5998916e52404fdb7d961cc943e1e8fff7e4405')
+sha256sums=('SKIP')
 
 package() {
 	cd "${pkgname}/src/plugins/${_plugin}" || exit
