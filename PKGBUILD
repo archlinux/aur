@@ -1,6 +1,6 @@
 # A lightweight CLI tool to compile and run PL's instantly.
 # Maintainer: Yasir Peker <yasirzengin10@gmail.com>
-pkgname=qrun-git
+pkgname=qrun-code-git
 _pkgname=qrun
 pkgver=1.0.0
 pkgrel=1
