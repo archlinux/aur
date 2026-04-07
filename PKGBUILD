@@ -1,13 +1,16 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
+# Maintainer: Michael Lass <bevan@bi-co.net>
+
 pkgname=portfolio
 pkgver=0.82.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
 url="https://github.com/portfolio-performance/portfolio"
 license=('EPL-1.0')
-depends=('archlinux-java-run' 'java-environment=21' 'webkit2gtk')
+depends=('archlinux-java-run' 'java-environment=21')
 makedepends=('gendesk')
+optdepends=('webkit2gtk-4.1: pie chart rendering without fallback to SWTChart')
 
 _DEST="/usr/share/portfolio"
 
