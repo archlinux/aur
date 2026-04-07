@@ -2,7 +2,7 @@
 
 pkgname=echomusic-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="EchoMusic desktop client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('libappindicator-gtk3: tray indicator support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("EchoMusic-${pkgver}-linux-amd64.deb::https://github.com/hoowhoami/EchoMusic/releases/download/v${pkgver}/EchoMusic-${pkgver}-linux-amd64.deb")
-sha512sums=('52a0d0fd8b173c1701e3150e9ce5d87a2ccf68aeba581705930aff224e95deb0cd5fb6e39ee2686f68e9f43d25c549c7ee09da2fb1177088789c74681b2e6b52')
+sha512sums=('aea883476cb632b6d497b3fb628564a5da64e4a9360b4ea8fd05426a6df2c195a5b5fdd9dbe91260ff28eeb54b07a009d592d6914e203804cc45860142829ba4')
 
 package() {
     local _debdir="${srcdir}/deb-extract"
