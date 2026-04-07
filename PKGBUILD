@@ -1,9 +1,9 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
-_branch=main # Don't forget to reset back to main after 49.x work merge
+_branch=v18.0 # Upstream seems to use main in a non-standard way
 pkgname=gnome-shell-extension-tiling-shell-git
 pkgdesc="Extend GNOME Shell with advanced tiling window management"
-pkgver=r61.cc7ee6d
+pkgver=r69.5d01a62
 pkgrel=1
 arch=('any')
 url="https://github.com/domferr/tilingshell"
@@ -14,11 +14,9 @@ provides=('gnome-shell-extension-tiling-shell' 'gnome-shell-extension-tilingshel
 conflicts=('gnome-shell-extension-tiling-shell' 'gnome-shell-extension-tilingshell')
 source=(
   "${pkgname}::git+${url}.git#branch=${_branch}"
-  esbuild-version-bump.patch 
 )
 
-sha256sums=('SKIP'
-            '6aac0bec21fe52b0d60b9e19faa3d5123d1ab792be89c9259d2c413259152b9e')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -28,7 +26,6 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   export npm_config_cache="$srcdir/npm_cache"
-  cat "${srcdir}/esbuild-version-bump.patch" | patch -p1
   npm install
   npm run build:package
 }
