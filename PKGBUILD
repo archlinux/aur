@@ -1,12 +1,12 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=workbuddy-bin
-pkgver=4.8.1.24540648
-pkgrel=2
-_commit=cfeee0fc
+pkgver=4.8.2.24695016
+pkgrel=1
+_commit=aee737ca
 pkgdesc="Work Smart，Not Hard"
 arch=('x86_64' 'aarch64')
-url="https://www.codebuddy.cn/work/"
+url="https://www.codebuddy.ai/agents"
 license=('custom')
 depends=('electron')
 makedepends=('7zip'
@@ -41,6 +41,8 @@ package() {
     install -D WorkBuddy_1024x1024x32.png ${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/WorkBuddy.png
     install -D WorkBuddy.desktop ${pkgdir}/usr/share/applications/workbuddy.desktop
     install -d ${pkgdir}/usr/lib/workbuddy
+    install -d ${pkgdir}/usr/share/licenses/workbuddy
+    mv WorkBuddy/WorkBuddy.app/Contents/Resources/app/*txt ${pkgdir}/usr/share/licenses/workbuddy/
     cp -a WorkBuddy/WorkBuddy.app/Contents/Resources/app/* ${pkgdir}/usr/lib/workbuddy/
     install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/workbuddy" <<EOF
 #!/usr/bin/bash
