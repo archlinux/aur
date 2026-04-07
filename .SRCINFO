@@ -1,3 +1,17 @@
+pkgbase = python-gitpersona
+pkgname = python-gitpersona
+pkgver = 0.1.0
+pkgrel = 1
+pkgdesc = Developer persona and analytics toolkit for GitHub profiles
+arch = any
+url = https://github.com/rdarshan927/GitPersona
+license = custom
+depends = python-requests
+depends = python
+makedepends = python-setuptools
+makedepends = python-wheel
+source = https://github.com/rdarshan927/GitPersona/archive/refs/tags/v${pkgver}.tar.gz
+sha256sums = 697b95de593c7d81e148a54f0dbce2269f367103e80e9d3a5b7baf1091c2c0e1
 pkgname = python-gitpersona
 pkgver = 0.1.0
 pkgrel = 1
