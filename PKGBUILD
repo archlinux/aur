@@ -2,7 +2,7 @@
 _base=trame-rca
 pkgname=python-${_base}
 pkgdesc="Remote Controlled Area widget for trame"
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
@@ -11,7 +11,7 @@ depends=(python-trame-client python-wslink)
 makedepends=(python-build python-installer python-setuptools python-wheel nodejs npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('824671ee1e215bbf6fcf1b969337c2b31377f7dd207da9db4ed0bab96be18ef8201df49b7c9024c37834eed70be90ce9cff31f063a092374e461120cdd2368cc')
+sha512sums=('3d3551e179c613acf22d357a5c153f4a9ff47dd6dcf42797e8ec9322e594701cfffd3917d55c4747fe92c3fe3e1ea31a242c6a82bf2ff300a463105866cae6d3')
 
 build() {
   # Workaround: https://stackoverflow.com/a/69746937/9302545
