@@ -1,0 +1,14 @@
+pkgbase = gquick-git
+	pkgdesc = A tiny tool to add, commit, and push to git with a single command.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/YOUR_GITHUB_USERNAME/gquick
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = git
+	depends = bash
+	source = git+https://github.com/YOUR_GITHUB_USERNAME/gquick.git
+	sha256sums = SKIP
+
+pkgname = gquick-git
