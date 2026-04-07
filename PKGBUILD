@@ -2,7 +2,7 @@
 
 pkgname=tnl-git
 _pkgname=tnl
-pkgver=0.2.0.r5.g6ec9413
+pkgver=0.2.0.r17.gbe7e16d
 pkgrel=1
 pkgdesc="An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters"
 arch=(x86_64)
@@ -21,6 +21,7 @@ depends=(
   zlib
 )
 makedepends=(
+  boost-libs
   cgal
   cmake
   cuda
