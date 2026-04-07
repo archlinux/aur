@@ -1,8 +1,8 @@
 # Maintainer: WeeXnes <weexnes@weexnes.dev>
 
 pkgname=oplnova-git
-_commit=b21f2ac91621d3453529f84343e4661000b95b5d
-pkgver=1.6.4.r${_commit:0:7}
+_commit=75ef7566e5a6067908e1d4aec0d778876be7a47a
+pkgver=1.7.0.r${_commit:0:7}
 pkgrel=1
 pkgdesc="A game manager for Open PS2 Loader (OPL) (cutting-edge version)"
 arch=('x86_64')
