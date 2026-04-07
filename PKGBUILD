@@ -5,8 +5,9 @@
 pkgname=libavif-noglycin
 conflicts=(libavif)
 provides=(libavif)
-pkgver=1.3.0
-pkgrel=5
+pkgver=1.4.1
+pkgrel=1
+_libargparse=ee74d1b53bd680748af14e737378de57e2a0a954 # should match cmake/Modules/LocalLibargparse.cmake
 pkgdesc="Library for encoding and decoding .avif files, for gdk-pixbuf2-noglycin"
 arch=('x86_64' 'aarch64')
 url="https://github.com/AOMediaCodec/libavif"
@@ -19,6 +20,7 @@ depends=(aom
          libpng
          libstdc++
          libwebp
+         libxml2
          libyuv
          rav1e
          svt-av1)
@@ -27,14 +29,13 @@ makedepends=(cmake
              git
              nasm
              pandoc-cli)
-source=(git+https://github.com/AOMediaCodec/libavif#tag=v$pkgver)
-sha256sums=('71f5a51a8e1a9198cd9f2e38c158e50815989bb1fe28cc80e481aa16a3e1ec2d')
+source=(git+https://github.com/AOMediaCodec/libavif#tag=v$pkgver
+        git+https://github.com/kmurray/libargparse#commit=$_libargparse)
+sha256sums=('d9a958dfc7953c1c2ffb7fdf2ae670ea87c7972598bc55d8519d440670bd95bc'
+            '235020da02227503eb09961efd664aca6e544a8b3ed5533cf81e1862bb94f48f')
 
 prepare() {
-  cd ${pkgname%-noglycin}
-  # SVT AV1 4.0 Rebuild
-  # https://github.com/AOMediaCodec/libavif/pull/2971
-  git cherry-pick -n 34a14decb6732c8abf01e6135a9a1dd55b58e33a
+  cp -r libargparse libavif/ext
 }
 build() {
   cmake -B build -S ${pkgname%-noglycin} \
@@ -46,6 +47,7 @@ build() {
     -DAVIF_CODEC_RAV1E=SYSTEM \
     -DAVIF_CODEC_SVT=SYSTEM \
     -DAVIF_LIBSHARPYUV=SYSTEM \
+    -DAVIF_LIBXML2=SYSTEM \
     -DAVIF_BUILD_GDK_PIXBUF=ON
   make -C build
 }
