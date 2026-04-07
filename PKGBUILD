@@ -1,6 +1,6 @@
 # Maintainer: Aloys233 <luodh233@gmail.com>
 pkgname=otomusic-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="OtoMusic - A cross-platform desktop music player"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst')
 provides=('otomusic')
 conflicts=('otomusic')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Aloys233/OtoMusic/releases/download/v${pkgver}/OtoMusic-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('979488af61007e74278256ada4965bb0313df08bd2c43b58281e2671d34e228b')
+sha256sums=('c9d2762dabbb47de1a940f6476b7d4ce9e2ea2ac62adc275d5dc57094e51eb78')
 
 package() {
     cd "${srcdir}/otomusic-${pkgver}"
