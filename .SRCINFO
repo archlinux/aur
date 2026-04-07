@@ -1,0 +1,20 @@
+pkgbase = amplelinux-git
+	pkgdesc = This is a port of the macOS native Ample project to the Linux platform, based on the AmpleWin Windows Port.
+	pkgver = r530.d6ef2a9
+	pkgrel = 1
+	url = https://github.com/ksherlock/ample
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = python>=3
+	depends = mame
+	depends = pyside6
+	depends = python-requests
+	provides = amplelinux
+	conflicts = amplelinux
+	options = !strip
+	options = !debug
+	source = git+https://github.com/ksherlock/ample.git
+	md5sums = SKIP
+
+pkgname = amplelinux-git
