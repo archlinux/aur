@@ -1,6 +1,6 @@
 pkgbase = numkong
 	pkgdesc = SIMD kernels for mixed-precision BLAS-like numerics.
-	pkgver = 7.4.0
+	pkgver = 7.4.1
 	pkgrel = 1
 	url = https://github.com/ashvardanian/NumKong
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = numkong
 	makedepends = cmake
 	makedepends = openblas
 	depends = glibc
-	source = numkong-v7.4.0.tar.gz::https://github.com/ashvardanian/NumKong/archive/refs/tags/v7.4.0.tar.gz
-	b2sums = 4c0974f2bb9f8d00f1af5ad959cea68663af2cf56a89dd8310db1c5b3a53b146df9b837099467885b88cde34cc2ba471d636db9b5eda21786736c3b6a40cb1e8
+	source = numkong-v7.4.1.tar.gz::https://github.com/ashvardanian/NumKong/archive/refs/tags/v7.4.1.tar.gz
+	b2sums = a5eb0d85e25e14be2687ddb733df30c78c86b46cc668ba9bc42b7d6b8c81aec7cd9998be203e52caf0765d15b9fc977bfb8250e463c14d3612be3ccab07f8381
 
 pkgname = numkong
