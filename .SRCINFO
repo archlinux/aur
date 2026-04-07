@@ -1,7 +1,7 @@
 pkgbase = switchhosts
 	pkgdesc = An app for managing hosts file,and switch hosts quickly ! (Use system-wide electron)
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://switchhosts.vercel.app/
 	arch = any
 	license = Apache-2.0

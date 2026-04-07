@@ -6,7 +6,7 @@ _pkgname=SwitchHosts
 pkgver=4.3.0
 _electronversion=39
 _nodeversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="An app for managing hosts file,and switch hosts quickly ! (Use system-wide electron)"
 arch=('any')
 url="https://switchhosts.vercel.app/"
@@ -70,11 +70,8 @@ prepare() {
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     _ensure_local_nvm
-    sed -i -e "
-        s/'AppImage:x64', 'AppImage:arm64', 'deb:x64', 'deb:arm64'/'dir'/g
-        42,45d
-    " scripts/make.js
-    sed -i "43i\  electronDist: \'${electronDist}\'," scripts/make.js
+    sed -i "s/'AppImage:x64', 'AppImage:arm64', 'deb:x64', 'deb:arm64'/'dir'/g" scripts/make.mjs
+    sed -i "/^const cfgCommon = {/a\\  electronDist: process.env.ELECTRON_DIST_DIR || undefined," scripts/make.mjs
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --legacy-peer-deps
     NODE_ENV=development    npm add -D framer-motion@11.13.1 --legacy-peer-deps
@@ -83,13 +80,24 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     _ensure_local_nvm
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    local electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_DIST_DIR="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm run make:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}/"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+    local _dist_dir="${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked"
+    if [ -d "${_dist_dir}/resources" ]; then
+        find "${_dist_dir}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" {} +
+        if find "${_dist_dir}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+            for _subdir in "${_dist_dir}/resources/"*; do
+                if [ -d "${_subdir}" ]; then
+                    cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname}"
+                fi
+            done
+        fi
+    fi
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
