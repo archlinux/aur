@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hexopress-git
 _pkgname=HexoPress
-pkgver=1.3.0.r57.gca565ce
-_electronversion=40
+pkgver=1.4.0.r0.g8f43f00
+_electronversion=41
 _nodeversion=24
 pkgrel=1
 pkgdesc="A client software designed specifically for editing blog articles and managing blog content that supports Hexo!.(Use system-wide electron)"
