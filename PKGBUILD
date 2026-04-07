@@ -1,20 +1,24 @@
 pkgname=mingw-w64-vtk
-pkgver=9.5.2
+pkgver=9.6.1
 pkgrel=1
 pkgdesc='Software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
 url='https://www.vtk.org/'
 license=('BSD')
-depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-jsoncpp' 'mingw-w64-expat' 'mingw-w64-netcdf' 'mingw-w64-libtiff' 'mingw-w64-libjpeg-turbo' 'mingw-w64-freetype2' 'mingw-w64-libpng' 'mingw-w64-libxml2' 'mingw-w64-hdf5' 'mingw-w64-libtheora' 'mingw-w64-freeglut' 'mingw-w64-lz4' 'mingw-w64-double-conversion' 'mingw-w64-pugixml' 'mingw-w64-gl2ps' 'mingw-w64-proj' 'mingw-w64-libharu' 'mingw-w64-cgns' 'mingw-w64-verdict')
+depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-jsoncpp' 'mingw-w64-expat' 'mingw-w64-netcdf' 'mingw-w64-libtiff' 'mingw-w64-libjpeg-turbo' 'mingw-w64-freetype2' 'mingw-w64-libpng' 'mingw-w64-libxml2' 'mingw-w64-hdf5' 'mingw-w64-freeglut' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-double-conversion' 'mingw-w64-pugixml' 'mingw-w64-libtheora' 'mingw-w64-gl2ps' 'mingw-w64-cgns' 'mingw-w64-libharu' 'mingw-w64-verdict' 'mingw-w64-scnlib')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://www.vtk.org/files/release/${pkgver:0:3}/VTK-${pkgver}.tar.gz")
-sha256sums=('cee64b98d270ff7302daf1ef13458dff5d5ac1ecb45d47723835f7f7d562c989')
+sha256sums=('47ca9af899165a33b935533046acce7c0aa3c007f0b57880665bb89d9986543f')
 
 _architectures="x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/VTK-${pkgver}"
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/12856.patch | patch -p1
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/12937.patch | patch -p1
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/12939.patch | patch -p1
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/12940.patch | patch -p1
 }
 
 build() {
