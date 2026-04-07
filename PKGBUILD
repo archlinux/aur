@@ -1,7 +1,7 @@
 # Maintainer: Dane Johnson <daneallenjohnson AT protonmail DOT com>
 
 pkgname=agar
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='A cross-platform GUI toolkit'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('libxinerama: xinerama support'
             'libpng: png exporting')
 
 source=("http://stable.hypertriton.com/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('17313d223b5ea94f9fa0303ddd82edc8ee0e7cc17953df38a5ee6b67cb849446')
+sha256sums=('d1eb994c8262cd70df1d4d9462c5453089db5dc815d01b5767508c2923a5965c')
 
 build() {
         cd "$pkgname-$pkgver"
