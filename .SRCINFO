@@ -1,0 +1,21 @@
+pkgbase = kics2
+	pkgdesc = KiCS2 is an implementation of the multi-paradigm declarative language Curry which compiles Curry programs into Haskell programs.
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://www.curry-lang.org/kics2
+	arch = x86_64
+	license = custom:KiCS2
+	makedepends = base-devel
+	makedepends = stack
+	makedepends = ghc
+	makedepends = make
+	makedepends = gcc
+	makedepends = python
+	makedepends = pakcs
+	depends = glibc
+	depends = gmp
+	provides = curry-compiler
+	source = https://www.curry-lang.org/kics2/download/kics2-3.4.0-x86_64-linux.tar.gz
+	sha256sums = f5360525d09240d21d710018e3d9627d15fa605b892d7b8b6ffaa783365d3285
+
+pkgname = kics2
