@@ -1,0 +1,19 @@
+pkgbase = python-dataconfy
+	pkgdesc = configuration and data persistence for Python applications
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/lucabello/dataconfy
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-uv-build
+	depends = python
+	depends = python-platformdirs
+	depends = python-pyyaml
+	depends = vulture
+	source = https://files.pythonhosted.org/packages/source/d/dataconfy/dataconfy-0.0.3.tar.gz
+	sha256sums = 162412eb2feece36541ea72be7a191d18c9b7b914f5af9515ae400c47072c947
+
+pkgname = python-dataconfy
