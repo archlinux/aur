@@ -7,10 +7,10 @@ pkgbase = swell
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	makedepends = clang
 	depends = alsa-lib
 	depends = openssl
 	depends = gcc-libs
+	options = !lto
 	source = git+https://codeberg.org/wasak/swell.git#tag=v0.1.0
 	sha256sums = SKIP
 

@@ -5,9 +5,10 @@ pkgrel=1
 pkgdesc='TUI audio client for podcasts, internet radio, and Tidal'
 arch=('x86_64')
 url='https://codeberg.org/wasak/swell'
+options=(!lto)
 license=('MIT')
 depends=('alsa-lib' 'openssl' 'gcc-libs')
-makedepends=('cargo' 'git' 'clang')
+makedepends=('cargo' 'git')
 source=("git+https://codeberg.org/wasak/swell.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
@@ -21,8 +22,7 @@ build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    # Use gcc linker — ring's assembly fails with lld on some systems
-    RUSTFLAGS="-C linker=gcc" cargo build --frozen --release
+    cargo build --frozen --release
 }
 
 package() {
