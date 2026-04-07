@@ -1,0 +1,359 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.3\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2024-03-14 10:50+0200\n"
+"Last-Translator: PuppyRus linux Team <www.puppyrus.org>\n"
+"Language-Team: puppyrus.org\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgctxt "shortcut window"
+msgid "Palette shortcuts"
+msgstr "Палитра"
+
+msgctxt "shortcut window"
+msgid "Save currently selected color"
+msgstr "Сохранить выбранный цвет"
+
+msgctxt "shortcut window"
+msgid "Saved color management"
+msgstr "Сохраненные цвета"
+
+msgctxt "shortcut window"
+msgid "Copy highlighted color’s hex value"
+msgstr "Копировать HEX выделенного цвета"
+
+msgctxt "shortcut window"
+msgid "Delete highlighted color"
+msgstr "Удалить выделенный цвет"
+
+msgctxt "shortcut window"
+msgid "Change page"
+msgstr "Смена вкладки"
+
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Главная"
+
+msgid "Save a picked color to make it appear here"
+msgstr "Сохраните выбранный цвет, чтобы он появился здесь"
+
+msgid "- pick a color from the picker or the screen"
+msgstr "- определите цвет на экране с помощью пипетки"
+
+msgid "Add a shortcuts window"
+msgstr "Добавить окно со ссылками"
+
+msgid "Amount of blue light in the color."
+msgstr "Количество зеленого оттенка в цвете."
+
+msgid "Amount of green light in the color."
+msgstr "Количество зеленого оттенка в цвете."
+
+msgid "Amount of red light in the color."
+msgstr "Количество красного оттенка в цвете."
+
+msgid "Brightness of the color."
+msgstr "Яркость цвета."
+
+msgid "Cannot access color at position %d: %s\n"
+msgstr "Ошибка чтения цвета %d: %s\n"
+
+msgid "Cannot count number of items: %s\n"
+msgstr "Ошибка подсчета количества элементов: %s\n"
+
+msgid "Cannot locate index of addition: %s. UI won't be updated\n"
+msgstr "Cannot locate index of addition: %s. UI не обновлен\n"
+
+msgid "Cannot locate index of removal: %s. UI won't be updated\n"
+msgstr "Cannot locate index of removal: %s. UI не обновлен\n"
+
+msgid "Cannot read colors: %s\n"
+msgstr "Ошибка чтения цвета: %s\n"
+
+msgid "Cannot rename nonexisting color `%s`"
+msgstr "Нельзя переименовать несуществующий цвет `%s`"
+
+msgid "Cannot retrieve hex value belonging to `%s`: %s"
+msgstr "Не удается получить hex значение `%s`: %s"
+
+msgid "Centrally manage colors between several running instances;"
+msgstr ""
+"Централизованное управление цветами между несколькими запущенными "
+"экземплярами;"
+
+msgid "Change page"
+msgstr "Изменить страницу"
+
+msgid "Choose colors from the picker or the screen"
+msgstr "Выбор цвета с помощью пипетки"
+
+msgid ""
+"Click the eyedropper, then click a color anywhere on your screen to select "
+"that color."
+msgstr ""
+"Щелкните на пипетке, затем щелкните на цвете в любом месте экрана чтобы "
+"выбрать этот цвет."
+
+msgid ""
+"Click this palette entry to make it the current color. To change this entry, "
+"drag a color swatch here or right-click it and select “Save color here.”"
+msgstr ""
+"Щелкните на палитре чтобы выбрать цвет. Для изменения цвета, перемещайте "
+"указатель, щелчком правой кнопки выберите “Сохранить цвет”."
+
+msgid "Click to change the color's name"
+msgstr "Щелкните для изменения имени цвета"
+
+msgid "Click to change the color’s name"
+msgstr "Щелкните для изменения имени цвета"
+
+msgid "Color Wheel"
+msgstr "Цветовой круг"
+
+msgid "Color _Name:"
+msgstr "_Название цвета:"
+
+msgid "Color name…"
+msgstr "Название цвета…"
+
+msgid "Color picker"
+msgstr "Выбор цвета"
+
+msgid "Color;Picker;Palette;"
+msgstr "Color;Picker;Palette;Цвет;"
+
+msgid "Copy highlighted color's hex value"
+msgstr "Копировать hex-значение выделенного цвета"
+
+msgid "Copy the selected color's hex value from the tree view using Ctrl-C;"
+msgstr ""
+"Копировать hex значение цвета в буфер обмена для последующей вставки Ctrl-C;"
+
+msgid "Copy this color's hex value to the clipboard"
+msgstr "Копировать hex-значение этого цвета в буфер обмена"
+
+msgid "Copy this color’s hex value to the clipboard"
+msgstr "Копировать hex-значение этого цвета в буфер обмена"
+
+msgid "Could not parse color to display thumbnail\n"
+msgstr "Не удается получить цвет для предпросмотра\n"
+
+msgid "Delete highlighted color"
+msgstr "Удалить выделенный цвет"
+
+msgid "Delete this color"
+msgstr "Удалить цвет"
+
+msgid "Disable color picking on Wayland for now, instead of crashing"
+msgstr "Выключить пробу цветов в Wayland, для исключения падения программы"
+
+msgid "Error creating config directory: %s"
+msgstr "Ошибка создания каталога с настройками: %s"
+
+msgid "Error deleting key: %s"
+msgstr "Ошибка удаления ключа: %s"
+
+msgid "Error deleting old name `%s`: %s"
+msgstr "Ошибка удаления старого имени `%s`: %s"
+
+msgid ""
+"Error opening file: %s. Colors likely won't be saved, unless this is the "
+"first run"
+msgstr ""
+"Ошибка открытия файла: %s. Цвета не были сохранены, возможно  это первый "
+"запуск программы"
+
+msgid "Error reading keys: %s. This is harmless if this is the first run"
+msgstr "Ошибка чтения ключей: %s. Это нормально при первом запуске программы"
+
+msgid "Error writing file: %s"
+msgstr "Ошибка записи файла: %s"
+
+msgid ""
+"Ever wanted to know the value of that color on your screen? Gcolor3 enables "
+"you to pick the color from any pixel on your screen. It also offers a "
+"palette, so that you can easily mix and match a couple of colors together."
+msgstr ""
+"Хотите узнать значение любого цвета на экране? Gcolor3 поможет вам, "
+"коснитесь пипеткой нужной точки на экране. Программа также имеет палитру, "
+"так что вы можете легко смешивать и сочетать пару цветов вместе."
+
+msgid ""
+"Gcolor3 is a color selection dialog written in GTK+ 3. It is much alike "
+"Gcolor2, but uses the newer GTK+ version and other modernisations to better "
+"integrate into your modern desktop."
+msgstr ""
+"Gcolor3 это программа выбора цвета написанная на GTK+ 3. Программа похожа на "
+"Gcolor2, но использует новую версию GTK+ и другие улучшения для лучшей "
+"интеграции в современные окружения рабочих столов."
+
+msgid "Gcolor3 is now available as a Flatpak"
+msgstr "Gcolor3 теперь доступен как пакет Flatpak"
+
+msgid "General"
+msgstr "Основные"
+
+msgid "Intensity of the color."
+msgstr "Глубина цвета."
+
+msgid "Lots of under-the-hood improvements"
+msgstr "Множество других имзменений"
+
+msgid "Make the main window resizable;"
+msgstr "Разрешить изменение размеров окна;"
+
+msgid "Name"
+msgstr "Имя"
+
+msgid "New and updated translations"
+msgstr "Новые и обновленные переводы"
+
+msgid "Op_acity:"
+msgstr "Не_прозрачность:"
+
+msgid "Palette shortcuts"
+msgstr "Сочетания клавиш палитры"
+
+msgid "Picker"
+msgstr "Цвет"
+
+msgid "Picking a color is currently not supported on Wayland."
+msgstr "Пипетка в настоящее время не работает в Wayland."
+
+msgid "Position on the color wheel."
+msgstr "Положение на цветовом круге."
+
+msgid "Redesign the header bar"
+msgstr "Редактор заголовка панели"
+
+msgid "Redesign the saved colors page"
+msgstr "Редактор страницы сохраненных цветов"
+
+msgid "Run '%s --help' to see a full list of available command line options"
+msgstr "Запустите '%s --help' для просмотра списка всех доступных параметров"
+
+msgid "S_aturation:"
+msgstr "Н_асыщенность:"
+
+msgid "Save currently selected color"
+msgstr "Сохранить выбранный цвет"
+
+msgid "Saved color management"
+msgstr "Управление сохраненными цветами"
+
+msgid "Saved Colors"
+msgstr "Сохраненные цвета"
+
+msgid ""
+"Select the color you want from the outer ring. Select the darkness or "
+"lightness of that color using the inner triangle."
+msgstr ""
+"Выберите нужный цвет на внешнем круге. Выберите темный или более светлый "
+"оттенок, используя внутренний треугольник."
+
+msgid "Show the application's version"
+msgstr "Показать версию программы"
+
+msgid "The color you’ve chosen."
+msgstr "Выбранный вами цвет."
+
+msgid ""
+"The color you’ve chosen. You can drag this color to a palette entry to save "
+"it for use in the future."
+msgstr ""
+"Выбранный вами цвет. Вы можете перетащить этот цвет на палитру и сохранить "
+"его для будущего использования."
+
+msgid "The list of saved colors"
+msgstr "Список сохраненных цветов"
+
+msgid "The picker and the color palette"
+msgstr "Пипетка и палитра цветов"
+
+msgid ""
+"The previously-selected color, for comparison to the color you’re selecting "
+"now."
+msgstr "Выбранный ранее цвет, для сравнения c цветом, выбранным сейчас."
+
+msgid ""
+"The previously-selected color, for comparison to the color you’re selecting "
+"now. You can drag this color to a palette entry, or select this color as "
+"current by dragging it to the other color swatch alongside."
+msgstr ""
+"Выбранный ранее цвет, для сравнения c цветом, выбранным сейчас. Вы можете "
+"перетащить этот цвет на палитру, или выбрать в качестве основного, перетащив "
+"поверх основного цвета."
+
+msgid "There is already a color named `%s`"
+msgstr "Уже есть цвет с именем `%s`"
+
+msgid "Translation updates."
+msgstr "Обновления переводов."
+
+msgid "Transparency of the color."
+msgstr "Прозрачность цвета."
+
+msgid "Website"
+msgstr "Веб-сайт"
+
+msgid ""
+"When you have found the perfect combination of colors, naturally you want to "
+"save them. Gcolor3 allows you to conveniently save and retrieve colors."
+msgstr ""
+"Gcolor3 позволяет сохранять и загружать созданные вами комбинации цвета."
+
+msgid ""
+"You can enter an HTML-style hexadecimal color value, or simply a color name "
+"such as “orange” in this entry."
+msgstr ""
+"Вы можете ввести в этой строке или шестнадцатеричное значение цвета (в стиле "
+"HTML), или название цвета, например, “orange”"
+
+msgid "_About"
+msgstr "_О программе"
+
+msgid "You have no saved colors"
+msgstr "У вас нет сохраненных цветов"
+
+msgid "_About Color Picker"
+msgstr "_О программе"
+
+msgid "_Blue:"
+msgstr "_Синий:"
+
+msgid "_Green:"
+msgstr "_Зеленый:"
+
+msgid "_Hue:"
+msgstr "_Тон:"
+
+msgid "_Keyboard Shortcuts"
+msgstr "_Горячие клавиши"
+
+msgid "_Palette:"
+msgstr "_Палитра:"
+
+msgid "_Quit"
+msgstr "_Выход"
+
+msgid "_Red:"
+msgstr "_Красный:"
+
+msgid "_Save color here"
+msgstr "_Сохранить цвет"
+
+msgid "_Value:"
+msgstr "_Значение:"
+
+msgid "page0"
+msgstr "страница0"
+
+msgid "page1"
+msgstr "страница1"
+
+msgid "translator-credits"
+msgstr "PuppyRus linux Team"

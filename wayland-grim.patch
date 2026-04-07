@@ -1,0 +1,272 @@
+--- a/data/nl.hjdskes.gcolor3.desktop.in	2022-11-12 18:25:51.000000000 +0300
++++ b/data/nl.hjdskes.gcolor3.desktop.in	2026-03-20 21:24:29.939914189 +0300
+@@ -1,6 +1,8 @@
+ [Desktop Entry]
+ Name=Color Picker
++Name[ru]=Выбор цвета
+ Comment=Choose colors from the picker or the screen
++Comment[ru]=Выбор цвета с помощью пипетки
+ Exec=gcolor3
+ # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+ Icon=nl.hjdskes.gcolor3
+@@ -10,6 +12,7 @@
+ Categories=GNOME;GTK;Graphics;
+ # Translators: Extra keywords that can be used to search for Gcolor3 in GNOME Shell and Unity
+ Keywords=Color;Picker;Palette;
++Keywords[ru]=Color;Picker;Palette;Цвет;Пипетка;Палитра;
+ 
+ # Required for Unity to show the application name.
+ X-Ubuntu-Gettext-Domain=gcolor3
+--- a/meson.build	2022-11-12 18:25:51.000000000 +0300
++++ b/meson.build	2026-03-20 21:04:43.277576189 +0300
+@@ -4,12 +4,6 @@
+ )
+ 
+ dep_gtk = dependency('gtk+-3.0', version: '>= 3.20.0', required: true)
+-dep_libportal = dependency(
+-  'libportal',
+-  required: true,
+-  fallback: ['libportal', 'libportal_dep'],
+-  default_options: ['gtk_doc=false'],
+-)
+ cc = meson.get_compiler('c')
+ dep_lm = cc.find_library('m', required: true)
+ 
+@@ -54,4 +48,3 @@
+ output += '        datadir:       ' + datadir + '\n'
+ output += '        localedir:     ' + localedir + '\n'
+ message(output)
+-
+--- a/src/meson.build	2022-11-12 18:25:51.000000000 +0300
++++ b/src/meson.build	2026-03-20 21:13:55.649121204 +0300
+@@ -27,12 +27,6 @@
+   c_name: 'gcolor3'
+ )
+ 
+-sources += gnome.genmarshal(
+-  'gcolor3-marshalers',
+-  sources: join_paths(meson.source_root(), 'data', 'gcolor3-marshalers.list'),
+-  prefix: '_gcolor3_marshal'
+-)
+-
+ executable(
+   meson.project_name(),
+   sources + headers,
+@@ -41,7 +35,6 @@
+   ],
+   dependencies: [
+     dep_gtk,
+-    dep_libportal,
+     dep_lm
+   ],
+   install: true,
+--- a/src/gcolor3-color-store.c	2022-11-12 18:25:51.000000000 +0300
++++ b/src/gcolor3-color-store.c	2026-03-20 21:14:05.456592292 +0300
+@@ -27,7 +27,6 @@
+ 
+ #include "gcolor3-color-item.h"
+ #include "gcolor3-color-store.h"
+-#include "gcolor3-marshalers.h"
+ 
+ struct _Gcolor3ColorStorePrivate {
+ 	GKeyFile *colors;
+--- a/src/gcolor3-color-selection.c	2022-11-12 18:25:51.000000000 +0300
++++ b/src/gcolor3-color-selection.c	2026-03-20 21:04:37.288288168 +0300
+@@ -38,10 +38,10 @@
+ #include <string.h>
+ #include <gdk/gdk.h>
+ #include <gio/gio.h>
++#include <glib/gstdio.h>
+ #include <gtk/gtk.h>
+ #include <glib/gi18n.h>
+-#include <libportal/portal.h>
+-#include <libportal/portal-gtk3.h>
++#include <unistd.h>
+ 
+ #ifdef ENABLE_NLS
+ #define P_(String) g_dgettext(GETTEXT_PACKAGE "-properties",String)
+@@ -153,8 +153,6 @@
+   GtkWidget *cur_sample;
+   GtkWidget *colorsel;
+ 
+-  GCancellable *cancellable;
+-
+   /* Connection to settings */
+   gulong settings_connection;
+ };
+@@ -195,9 +193,6 @@
+ static void     hsv_changed                                 (GtkWidget             *hsv,
+                                                              gpointer               data);
+ static void     get_screen_color                            (GtkWidget             *button);
+-static void     pick_color_cb                               (GObject               *source_object,
+-                                                             GAsyncResult          *result,
+-                                                             gpointer               user_data);
+ static void     adjustment_changed                          (GtkAdjustment         *adjustment,
+                                                              gpointer               data);
+ static void     opacity_entry_changed                       (GtkWidget             *opacity_entry,
+@@ -345,7 +340,6 @@
+   priv->changing = FALSE;
+   priv->default_set = FALSE;
+   priv->default_alpha_set = FALSE;
+-  priv->cancellable = g_cancellable_new ();
+ 
+   top_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
+   gtk_box_pack_start (GTK_BOX (colorsel), top_hbox, FALSE, FALSE, 0);
+@@ -593,11 +587,6 @@
+ static void
+ gcolor3_color_selection_destroy (GtkWidget *widget)
+ {
+-  Gcolor3ColorSelection *colorsel = GCOLOR3_COLOR_SELECTION (widget);
+-  Gcolor3ColorSelectionPrivate *priv = colorsel->private_data;
+-
+-  g_cancellable_cancel (priv->cancellable);
+-
+   GTK_WIDGET_CLASS (gcolor3_color_selection_parent_class)->destroy (widget);
+ }
+ 
+@@ -1739,56 +1728,112 @@
+ {
+   Gcolor3ColorSelection *colorsel = g_object_get_data (G_OBJECT (button), "COLORSEL");
+   Gcolor3ColorSelectionPrivate *priv = colorsel->private_data;
+-  XdpPortal *portal;
+-  XdpParent *parent;
+-  GtkWindow *window;
+-  GtkApplication *app;
++  gchar *tmp_name = NULL;
++  GError *error = NULL;
++  gchar *geometry = NULL;
++  gchar *stderr_data = NULL;
++  gint status = 0;
++  GdkPixbuf *pixbuf;
++  guchar *pixels;
++  gint width;
++  gint height;
++  gint n_channels;
++  gint rowstride;
++  gint fd;
+ 
+-  app = GTK_APPLICATION (g_application_get_default ());
+-  window = gtk_application_get_active_window (app);
++  fd = g_file_open_tmp ("gcolor3-XXXXXX.png", &tmp_name, &error);
++  if (fd < 0)
++    {
++      g_warning ("Failed to create temporary file: %s", error ? error->message : "unknown error");
++      g_clear_error (&error);
++      return;
++    }
++  close (fd);
+ 
+-  portal = xdp_portal_new ();
+-  parent = xdp_parent_new_gtk (window);
++  if (!g_spawn_command_line_sync ("slurp -p -f '%x,%y 1x1'", &geometry, &stderr_data, &status, &error))
++    {
++      g_warning ("Failed to start slurp: %s", error ? error->message : "unknown error");
++      g_clear_error (&error);
++      g_clear_pointer (&geometry, g_free);
++      g_clear_pointer (&stderr_data, g_free);
++      g_unlink (tmp_name);
++      g_free (tmp_name);
++      return;
++    }
+ 
+-  xdp_portal_pick_color (portal, parent,
+-                         priv->cancellable,
+-                         pick_color_cb, colorsel);
+-}
++  if (status != 0 || geometry == NULL)
++    {
++      g_clear_pointer (&geometry, g_free);
++      g_clear_pointer (&stderr_data, g_free);
++      g_unlink (tmp_name);
++      g_free (tmp_name);
++      return;
++    }
+ 
+-static void
+-pick_color_cb (GObject      *source_object,
+-               GAsyncResult *result,
+-               gpointer      user_data)
+-{
+-  Gcolor3ColorSelection *colorsel;
+-  Gcolor3ColorSelectionPrivate *priv;
+-  GdkRGBA color;
+-  GVariant *variant;
+-  GError *error = NULL;
++  g_strchomp (geometry);
++  g_clear_pointer (&stderr_data, g_free);
+ 
+-  colorsel = GCOLOR3_COLOR_SELECTION (user_data);
+-  priv = colorsel->private_data;
++  {
++    gchar *cmd = g_strdup_printf ("grim -g \"%s\" -t png \"%s\"", geometry, tmp_name);
++    if (!g_spawn_command_line_sync (cmd, NULL, &stderr_data, &status, &error))
++      {
++        g_warning ("Failed to start grim: %s", error ? error->message : "unknown error");
++        g_free (cmd);
++        g_clear_error (&error);
++        g_clear_pointer (&geometry, g_free);
++        g_clear_pointer (&stderr_data, g_free);
++        g_unlink (tmp_name);
++        g_free (tmp_name);
++        return;
++      }
++    g_free (cmd);
++  }
++
++  g_clear_pointer (&geometry, g_free);
++
++  if (status != 0)
++    {
++      g_clear_pointer (&stderr_data, g_free);
++      g_unlink (tmp_name);
++      g_free (tmp_name);
++      return;
++    }
++
++  g_clear_pointer (&stderr_data, g_free);
++
++  pixbuf = gdk_pixbuf_new_from_file (tmp_name, &error);
++  g_unlink (tmp_name);
++  g_free (tmp_name);
+ 
+-  variant = xdp_portal_pick_color_finish (XDP_PORTAL (source_object), result, &error);
+-  if (!variant)
++  if (!pixbuf)
+     {
+-      if (!g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+-        g_warning ("Failed to pick color: %s", error->message);
+-      g_error_free (error);
++      g_warning ("Failed to load screenshot: %s", error ? error->message : "unknown error");
++      g_clear_error (&error);
+       return;
+     }
+ 
+-  g_variant_get (variant, "(ddd)", &color.red, &color.green, &color.blue);
++  width = gdk_pixbuf_get_width (pixbuf);
++  height = gdk_pixbuf_get_height (pixbuf);
++  n_channels = gdk_pixbuf_get_n_channels (pixbuf);
++  rowstride = gdk_pixbuf_get_rowstride (pixbuf);
++  pixels = gdk_pixbuf_get_pixels (pixbuf);
++
++  if (width < 1 || height < 1 || n_channels < 3 || rowstride < n_channels || !pixels)
++    {
++      g_object_unref (pixbuf);
++      return;
++    }
+ 
+-  priv->color[COLORSEL_RED]   = color.red;
+-  priv->color[COLORSEL_GREEN] = color.green;
+-  priv->color[COLORSEL_BLUE]  = color.blue;
++  priv->color[COLORSEL_RED] = pixels[0] / 255.0;
++  priv->color[COLORSEL_GREEN] = pixels[1] / 255.0;
++  priv->color[COLORSEL_BLUE] = pixels[2] / 255.0;
+   gtk_rgb_to_hsv (priv->color[COLORSEL_RED],
+                   priv->color[COLORSEL_GREEN],
+                   priv->color[COLORSEL_BLUE],
+                   &priv->color[COLORSEL_HUE],
+                   &priv->color[COLORSEL_SATURATION],
+                   &priv->color[COLORSEL_VALUE]);
++  g_object_unref (pixbuf);
+   update_color (colorsel);
+ }
+ 

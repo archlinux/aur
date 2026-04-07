@@ -1,0 +1,26 @@
+pkgbase = gcolor3-grim
+	pkgdesc = GTK3 color picker with Wayland grim/slurp eyedropper
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://www.hjdskes.nl/projects/gcolor3/
+	arch = x86_64
+	license = GPL2
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gettext
+	makedepends = intltool
+	makedepends = pkgconf
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = grim
+	depends = slurp
+	provides = gcolor3
+	conflicts = gcolor3
+	source = https://gitlab.gnome.org/World/gcolor3/-/archive/v2.4.0/gcolor3-v2.4.0.tar.gz
+	source = wayland-grim.patch
+	source = gcolor3.po
+	sha256sums = d6071390a0980fb8eb8418750766c744cf0bca56f24ab4dbe3f23cb1ffd1973d
+	sha256sums = 7ab815ffba19baa782163958cb2e77a40c4fd2b6b6d3153f8b1025c3414cd91c
+	sha256sums = 0a078e02534e51a59c2b63a3c446a60a622c95eeee3a5c5766ba00ebe385f7fd
+
+pkgname = gcolor3-grim
