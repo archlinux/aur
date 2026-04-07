@@ -2,7 +2,7 @@
 
 pkgname="orca-slicer"
 pkgver=2.3.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -30,8 +30,8 @@ build() {
 
   export CMAKE_BUILD_PARALLEL_LEVEL=$(nproc)
   # Limit build parallelism to free memory in GB / 2
-  if [ $CMAKE_BUILD_PARALLEL_LEVEL -gt $(awk '/MemFree/ { printf "%.0f \n", $2/1024/1024/2 }' /proc/meminfo) ]; then
-    export CMAKE_BUILD_PARALLEL_LEVEL=$(awk '/MemFree/ { printf "%.0f \n", $2/1024/1024/2 }' /proc/meminfo)
+  if [ $CMAKE_BUILD_PARALLEL_LEVEL -gt $(awk '/MemFree/ { printf "%.0f\n", $2/1024/1024/2 }' /proc/meminfo) ]; then
+    export CMAKE_BUILD_PARALLEL_LEVEL=$(awk '/MemFree/ { printf "%.0f\n", $2/1024/1024/2 }' /proc/meminfo)
   fi
 
   # deps
