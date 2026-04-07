@@ -4,7 +4,7 @@
 
 _pkgbase=pvs-studio
 pkgname=${_pkgbase}-bin
-pkgver=7.41.103683.741
+pkgver=7.42.105102.760
 pkgrel=1
 pkgdesc='Static code analyzer for C and C++'
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 _name=${_pkgbase}-${pkgver}-x86_64
 source=("${_name}.tgz::https://files.${_pkgbase}.com/${_name}.tgz")
-sha256sums=('ac8bf4a5a90f1ad27698667573dc9247b75aa82edc1c7d097bead51609baecae')
+sha256sums=('30e673bb34deeed0a2d0efc2bb36158ed29760b0eab07fc93c4438c83238d420')
 
 latestver() {
   local html ver
