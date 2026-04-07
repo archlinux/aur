@@ -1,9 +1,9 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
 pkgname=leshade-bin
 _pkgname=leshade
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
-pkgdesc="An unofficial Reshade Installer for Linux."
+pkgdesc="An ReShade manager for linux."
 arch=('x86_64')
 url="https://github.com/Ishidawg/LeShade"
 license=("MIT")
@@ -22,7 +22,7 @@ source=(
 "https://github.com/Ishidawg/LeShade/releases/download/${pkgver}/${_appimage}"
 "LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE"
 )
-sha256sums=('b96cb505d916fba1fffef97c9b5538be6b373f4d18cde3cc85dd8c68552e7627'
+sha256sums=('753b03f7c15a2f3cb03444baf48823161c944fcbcdf45316edaac0a1051880d4'
             'a7b8f406ed4e1a5311d51a1967f91e569a6c0ce815c2bf74956d926613dd61a3')
 
 prepare() {
