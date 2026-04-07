@@ -1,8 +1,8 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=telemt
-pkgver=3.3.38
-pkgrel=2
+pkgver=3.3.39
+pkgrel=1
 pkgdesc='Telemt - MTProxy on Rust + Tokio'
 arch=('x86_64' 'aarch64')
 provides=("telemt")
@@ -15,7 +15,7 @@ backup=('etc/telemt/telemt.toml')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/telemt/telemt/archive/refs/tags/${pkgver}.tar.gz")
 
-sha256sums=('5635efd62fa689155d40413cd7a8a74804e03a2af218e72e4f230fa9c884a57c')
+sha256sums=('48a5e3c808c9f57690739b24feeb0842115437d7bdc19c6a1e1c7b0ace900dd6')
 
 build() {
 	cd "${pkgname}-${pkgver}"
@@ -36,5 +36,5 @@ package() {
 	install -Dm644 "contrib/systemd/tmpfiles-telemt.conf" "${pkgdir}/usr/lib/tmpfiles.d/telemt.conf"
 
 	# License
-	install -Dm755 "docs/LICENSE/LICENSE.en.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 "docs/LICENSE/TELEMT-LICENSE.en.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
