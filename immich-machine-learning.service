@@ -50,7 +50,7 @@ CapabilityBoundingSet=
 NoNewPrivileges=yes
 
 #WorkingDirectory=/usr/lib/immich/immich-machine-learning
-ReadWritePaths=/tmp /var/tmp /var/lib/immich/.cache /var/lib/immich/.config
+ReadWritePaths=/tmp /var/tmp /var/lib/immich
 
 [Install]
 WantedBy=multi-user.target

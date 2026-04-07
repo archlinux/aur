@@ -1,7 +1,7 @@
 # Maintainer: aliu <aaronliu 0 1 3 0  gmail com>
 # Contributor: pikl <me@pikl.uk>
 pkgname=immich-machine-learning
-pkgver=2.6.1
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Machine learning server for the Immich photo management system"
 arch=(any)
@@ -12,12 +12,12 @@ depends=('python>=3.11' # 'python<4' not recommended by python
 	'python-aiocache<1.0'
 	'python-fastapi<1.0'
 	'gunicorn'
-	'python-huggingface-hub'  # upstream says <1.0 but that's not needed
+	'python-huggingface-hub'
 	'python-insightface<1.0'
 	'python-numpy'
 	'python-opencv<5.0'
 	'python-orjson'
-	'python-pillow<12.2'
+	'python-pillow<13'
 	'python-pydantic<3'
 	'python-pydantic-settings<3'
 	'python-python-multipart<1.0'
@@ -40,8 +40,8 @@ optdepends=(
 )
 source=("immich-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
 	"immich-machine-learning.service")
-sha256sums=('e7a231ecdf701db49527a5fd8c6f98dc9522113d970499469a5e0e553f5a2a23'
-            'ff0042c8d8bac6f59b162abb40ddf4d816b194a2dc8817a0e4700884ae7ca7a9')
+sha256sums=('08bc141261ee7acebf1bf574cfbdb90448d624c7dec5b91d45e42bedff7ddb7e'
+            '57c0e902457d7adae80a5152dc2d985edc58743d018d79f2da41054a843930cf')
 
 build() {
 	# from: ENV and RUN commands in machine-learning/Dockerfile
