@@ -1,14 +1,14 @@
 pkgbase = cloudfleet-cli
 	pkgdesc = Cloudfleet CLI
-	pkgver = 0.8.23
+	pkgver = 0.8.29
 	pkgrel = 1
 	url = https://cloudfleet.ai
 	arch = x86_64
 	arch = aarch64
 	license = Custom
-	source = cloudfleet_linux_amd64-0.8.23.zip::https://downloads.cloudfleet.ai/cli/0.8.23/cloudfleet_linux_amd64.zip
-	source = cloudfleet_linux_arm64-0.8.23.zip::https://downloads.cloudfleet.ai/cli/0.8.23/cloudfleet_linux_arm64.zip
-	sha256sums = 7d4fe1c7def3196b4545d4b1bc56ed83a196d16f04423c9ccaaa445fc28e0acc
-	sha256sums = 4172a620ce5a66b8b7f7ad0aeeeb7133ee7a32ce8db9a2dc1e9cf46ee063b86a
+	source = cloudfleet_linux_amd64-0.8.29.zip::https://downloads.cloudfleet.ai/cli/0.8.29/cloudfleet_linux_amd64.zip
+	source = cloudfleet_linux_arm64-0.8.29.zip::https://downloads.cloudfleet.ai/cli/0.8.29/cloudfleet_linux_arm64.zip
+	sha256sums = dd67570af3566b3bc369ee462d0476b4744fe0c30b1ec6862789d4eac80048ff
+	sha256sums = 008b11acef9c3e1c84ad4924448c818d134c03395f7619b0caff9cf65665cd40
 
 pkgname = cloudfleet-cli
