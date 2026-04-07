@@ -21,7 +21,8 @@ build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+    # Use gcc linker — ring's assembly fails with lld on some systems
+    RUSTFLAGS="-C linker=gcc" cargo build --frozen --release
 }
 
 package() {
