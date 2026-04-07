@@ -1,8 +1,8 @@
 # Maintainer: Swâmi Petaramesh <swami AT petaramesh DOT org>
 
 pkgname=rudder-agent
-pkgver="9.1.0~rc1"
-# pkgver="9.1.0~rc2~git202604030118"
+# pkgver="9.1.0~rc1"
+pkgver="9.1.0~rc2~git202604070118"
 pkgrel=1
 pkgdesc='Configuration management and audit tool - agent for Rudder managed systems'
 arch=('x86_64' 'aarch64')
@@ -15,16 +15,16 @@ makedepends=('base-devel' 'gcc' 'rust' 'unzip' 'git' 'clang' 'patchelf')
 install='.install'
 
 # For released sources
-source=("rudder-packages-${pkgver}::git+https://github.com/Normation/rudder-packages.git#branch=branches/rudder/${pkgver%.*}"
-	"rudder-sources-${pkgver}.tar.bz2::https://repository.rudder.io/sources/${pkgver%.*}/rudder-sources-${pkgver}.tar.bz2")
+# source=("rudder-packages-${pkgver}::git+https://github.com/Normation/rudder-packages.git#branch=branches/rudder/${pkgver%.*}"
+# 	"rudder-sources-${pkgver}.tar.bz2::https://repository.rudder.io/sources/${pkgver%.*}/rudder-sources-${pkgver}.tar.bz2")
 
 # For nightly sources
-# source=("rudder-packages-${pkgver}::git+https://github.com/Normation/rudder-packages.git#branch=branches/rudder/${pkgver%.*}"
-#  	"rudder-sources-${pkgver}.tar.bz2::https://repository.rudder.io/sources/${pkgver%.*}-nightly/rudder-sources-${pkgver}.tar.bz2")
+source=("rudder-packages-${pkgver}::git+https://github.com/Normation/rudder-packages.git#branch=branches/rudder/${pkgver%.*}"
+ 	"rudder-sources-${pkgver}.tar.bz2::https://repository.rudder.io/sources/${pkgver%.*}-nightly/rudder-sources-${pkgver}.tar.bz2")
 
 noextract=("rudder-sources-${pkgver}.tar.bz2")
 sha256sums=('SKIP'
-            '9e55599860e6aea6a9921b1a4a82ec8e003eba271a5d8d010cfd7d9cc23b6fa4')
+            '447c8a949c96ebebdcfbd772e4ad13e62bda87d92b26552491d639ff20ae8766')
 
 prepare() {
   # Example using the souces tarball without further patching
