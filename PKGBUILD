@@ -1,7 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pixes-bin
-pkgver=1.2.0
-_subver=120
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Unofficial pixiv app.(Prebuilt version)"
 arch=('x86_64')
@@ -13,11 +12,11 @@ depends=(
     'gtk3'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${url}/releases/download/v${pkgver}/pixes-${pkgver}-${_subver}-${CARCH}.pkg.tar.zst"
+    "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${url}/releases/download/v${pkgver}/pixes-${pkgver}-${pkgver//./}-${CARCH}.pkg.tar.zst"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/wgh136/pixes/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d7485495b366d41579a7b5b5a02b56605c9566bddc47eb32159496e21ce65ec6'
+sha256sums=('97b5bb7eb1e57808d9b29ffb1aa87cca12de02e73289e93ac77d7897f94a1ae9'
             '5aaabbeafa067d045963cfc2d8d0fed63c41d0e20267771b1b8501a350d3b3f5'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 prepare() {
