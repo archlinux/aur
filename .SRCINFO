@@ -1,17 +1,20 @@
 pkgbase = studip-sync-git
 	pkgdesc = Sync your files from Stud.IP
-	pkgver = r64.554aa10
+	pkgver = r202.b50552d
 	pkgrel = 1
-	url = https://github.com/woefe/studip-sync
+	url = https://github.com/studip-sync/studip-sync
 	arch = any
 	license = UNLICENSE
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = rsync
 	depends = python-requests
 	depends = python-beautifulsoup4
 	depends = python-lxml
-	source = studip-sync-git::git+https://github.com/woefe/studip-sync.git
+	source = studip-sync-git::git+https://github.com/studip-sync/studip-sync.git
 	md5sums = SKIP
 
 pkgname = studip-sync-git
-
