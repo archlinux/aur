@@ -1,0 +1,26 @@
+pkgbase = incy-bin
+	pkgdesc = Cross-platform proxy client built on Xray-core
+	pkgver = 2.0.8
+	pkgrel = 1
+	url = https://incy.cc/
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = glibc
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fontconfig
+	depends = libx11
+	depends = libxext
+	depends = libxrender
+	depends = libxtst
+	depends = libxi
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = libglvnd
+	provides = incy
+	conflicts = incy
+	options = !strip
+	source = https://github.com/INCY-DEV/incy-platforms/releases/download/desktop-v2.0.8/incy-linux-x64.pkg.tar.zst
+	sha256sums = 109de381d46255a2f2f085269319c3a916b6fd36127299fc40d10fe9e7695799
+
+pkgname = incy-bin
