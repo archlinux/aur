@@ -2,7 +2,7 @@
 
 _name=resend-python
 pkgname=python-resend
-pkgver=2.24.0
+pkgver=2.27.0
 pkgrel=1
 pkgdesc="Resend's Python SDK"
 arch=('any')
@@ -10,9 +10,10 @@ url="https://github.com/resend/${_name}"
 license=('MIT')
 depends=('python>=3.6' 'python-typing_extensions' 'python-requests')
 makedepends=('python-build' 'python-setuptools' 'python-installer' 'python-wheel')
+optdepends=('python-httpx: async support')
 source=("https://github.com/resend/resend-python/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('97272d24fe19c1dba2f05e3254d96926084d10a32dd81a76b3ce5bb96144770378f0d508703d5a122c0ea32f90a7e6c01388845ecca0c8fabdfa4e13ff2432a5')
-b2sums=('e69a2dcc60289a5347ae5ddb1fcc473366924f9ee46afd71c121da1f1a86dad404e40a393f964e43d4b6715fbcfcc3fab16e1e4460c427f1a2ac0e58b9443744')
+sha512sums=('8a6c72776bbe9a93f7755ccad5179d99cc69ec106cc5198c404c228313bcabe9ba6c64e8be537ddd508b489f5909565651e7d896df994033953558dfb63004be')
+b2sums=('4234a6acea195799d6da8fd70b83459d0932d4e2ccc48afe509a2bf28a9aa66233bc6312decc89bb36340d6e5b6cb7092d2865ec30c5f5760e0403308143ce1e')
 
 build() {
 	cd "$_name-$pkgver"
@@ -22,5 +23,6 @@ build() {
 package() {
 	cd "$_name-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
