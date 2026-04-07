@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=smtprelay
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="Simple Golang SMTP relay/proxy server"
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go')
 # optdepends=('otf-commit-mono-nerd: icon support in the terminal')
 options=("strip" "buildflags")
 source=("$url/archive/refs/tags/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('e1256d2a0eaf06331b307e41a902d5f22eb99f6d40966c4e0ece4545a5314490')
+sha256sums=('867def419d9a0f832dcad692785666f0a3f928bc93ca182ca5c7769e6a5fb3bb')
 
 prepare(){
     cd "$pkgname-$pkgver"
