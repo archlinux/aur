@@ -11,7 +11,7 @@ pkgbase = matlab-mcp-core-server-git
 	depends = matlab-release>=R2020b
 	provides = matlab-mcp-core-server=0.7.0
 	conflicts = matlab-mcp-core-server
-	source = matlab-mcp-core-server::git+https://github.com/matlab/matlab-mcp-core-server.git#
+	source = matlab-mcp-core-server::git+https://github.com/matlab/matlab-mcp-core-server.git
 	source = matlab-mcp-core-server_disable_telemetry.patch
 	sha256sums = SKIP
 	sha256sums = 7a56f149840e0f1cdc592c7de5f261c8a03d1ce48a1adcf4fc03c7f1b059ce18

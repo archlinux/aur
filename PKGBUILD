@@ -29,7 +29,7 @@ conflicts=(
 )
 _pkgsrc="${_url##*/}"
 source=(
-  "${_pkgsrc}::git+${_url}.git#"
+  "${_pkgsrc}::git+${_url}.git"
   "${_pkgname}_disable_telemetry.patch"
 )
 sha256sums=('SKIP'
