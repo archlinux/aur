@@ -1,0 +1,17 @@
+pkgbase = contextzip-bin
+	pkgdesc = Compresses noisy CLI output to reduce LLM context usage
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/jee599/contextzip
+	arch = x86_64
+	license = MIT
+	optdepends = jq: required for the Claude Code hook workflow
+	provides = contextzip
+	conflicts = contextzip
+	options = !strip
+	source_x86_64 = contextzip-0.1.1-linux-x86_64::https://github.com/jee599/contextzip/releases/download/v0.1.1/contextzip-linux-x86_64
+	source_x86_64 = contextzip-0.1.1.tar.gz::https://github.com/jee599/contextzip/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums_x86_64 = 3421ba3fbbdcce98515628912e8bf1f4f4a4c2898c3cf009c4f4dd0624bee9a9
+	sha256sums_x86_64 = f805fcabe7842505f76d099d4192eb6d026a54b713f3363396dfa359fe63598c
+
+pkgname = contextzip-bin
