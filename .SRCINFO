@@ -1,7 +1,7 @@
 pkgbase = lowfi
 	pkgdesc = An extremely simple lofi player.
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/talwat/lowfi
 	arch = any
 	license = MIT

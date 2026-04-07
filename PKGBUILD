@@ -1,7 +1,7 @@
 # Maintainer: Tal <talwat321@gmail.com>
 pkgname=lowfi
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely simple lofi player."
 arch=('any')
 url="https://github.com/talwat/$pkgname"
@@ -23,12 +23,12 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build
+  cargo build --frozen --release --all-features
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm0755 -t "$pkgdir/usr/bin/" "target/debug/$pkgname"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
 
