@@ -2,7 +2,7 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgname="n8n"
-pkgver=2.14.2
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('x86_64')
@@ -27,8 +27,13 @@ sha256sums=('a165ca406286e5cbba4c34e0edd7510d854e753bf1458e0385784b30d7564f19'
             '03cb79cddc04a0303be6d60ba2e7801106b6d4405d33953a2c508c5825c66a7c')
 
 latestver() {
-  # Fetch latest version from npm registry
-  curl -s "https://registry.npmjs.org/${pkgname}" | jq -r '.["dist-tags"].latest'
+  # Track the npm stable channel and extract the version from the tarball URL
+  # we actually build from.
+  curl -fsSL "https://registry.npmjs.org/${pkgname}" |
+    jq -r '. as $pkg
+      | $pkg["dist-tags"].stable as $target
+      | $pkg.versions[$target].dist.tarball
+      | capture("/n8n-(?<ver>[0-9]+(\\.[0-9]+)*)\\.tgz$").ver'
 }
 
 build() {
