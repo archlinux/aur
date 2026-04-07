@@ -1,7 +1,7 @@
 # Maintainer: submit as i2pchat-tui-bin on AUR (see packaging/aur/README.md)
 pkgname=i2pchat-tui-bin
-pkgver=1.2.3
-pkgrel=3
+pkgver=1.2.4
+pkgrel=1
 pkgdesc="I2PChat Textual TUI only (official Linux TUI zip, binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MetanoicArmor/I2PChat"
@@ -15,9 +15,9 @@ source_x86_64=("I2PChat-linux-x86_64-tui-v${pkgver}.zip::${url}/releases/downloa
                "${_icon}")
 source_aarch64=("I2PChat-linux-aarch64-tui-v${pkgver}.zip::${url}/releases/download/v${pkgver}/I2PChat-linux-aarch64-tui-v${pkgver}.zip"
                 "${_icon}")
-sha256sums_x86_64=('afea5ce6ff31db968a847747de5801dbff039146eca78006ca306b2a12910ad6'
+sha256sums_x86_64=('ff9ecc95db7f938bc8817d2c7c22046f56b8b8ed6f6fbeb8b5559e6d54a5a304'
                    'c49c198bef05e1cf3bf159858acefad100981fb21437e47e2588fcc1e4ad7217')
-sha256sums_aarch64=('065d57bad56acc36e870f227badd08219e45a39a561a43448f4cd938e90d8f87'
+sha256sums_aarch64=('e998dce8b167fafa845d832d68c4c1fd051d08dc0084f77ab6112aeeb72a74fb'
                     'c49c198bef05e1cf3bf159858acefad100981fb21437e47e2588fcc1e4ad7217')
 
 package() {
