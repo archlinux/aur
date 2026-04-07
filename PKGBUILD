@@ -3,11 +3,11 @@
 pkgname=spacefm-gtk2-bin
 pkgver=1.0.6
 _subver=5
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 pkgdesc="SpaceFM binary package from debian bullseye, GTK2 version"
 license=('GPL-2.0-only')
-source=("http://ftp.de.debian.org/debian/pool/main/s/spacefm/spacefm_${pkgver}-${_subver}_amd64.deb"
+source=("https://mirrors.edge.kernel.org/debian/pool/main/s/spacefm/spacefm_${pkgver}-${_subver}_amd64.deb"
         "https://github.com/DaveX158/spacefm-ui-assets/archive/refs/tags/v1.tar.gz")
 depends=(gtk2 startup-notification ffmpegthumbnailer)
 provides=('spacefm')
