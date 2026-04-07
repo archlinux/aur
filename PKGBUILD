@@ -1,6 +1,6 @@
 # Maintainer: Rongbo Wu <wurongbo2012@hotmail.com>
 pkgname=ossutil2-bin
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="a tool for managing OSS (Object Storage Service) data"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source_x86_64=(
 source_aarch64=(
 "https://gosspublic.alicdn.com/ossutil/v2/${pkgver}/ossutil-${pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('fbf1026bd383a5d9bee051cd64a6226c730357ba569491f7c7b91af66560ef1d')
-sha256sums_aarch64=('b7680e79aec0adc9d42a12b795612680a58efec1fad24b0ceb9e13b2390c6652')
+sha256sums_x86_64=('d4308515689144c6b213d4998787abbd232dd6714fc43dedbe87064c2c34dee1')
+sha256sums_aarch64=('dcadb6aa97ddbae523e427e9397a529a04c2f21b4204065ce30e21d44908faa0')
 
 prepare() {
   if [[ "$CARCH" == "x86_64" ]]; then
