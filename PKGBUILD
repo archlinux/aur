@@ -1,6 +1,6 @@
 # Maintainer: patcito
 pkgname=prettymux-bin
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="GPU-accelerated terminal multiplexer (prebuilt binary)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('prettymux')
 
 _asset="prettymux-${pkgver}-1-x86_64.pkg.tar.zst"
 source=("https://github.com/patcito/prettymux/releases/download/v${pkgver}/${_asset}")
-sha256sums=('d4d7f8e449ca63c6adcaa80c1f4f31d78e0b807b247cd569220e5ca382661ec3')
+sha256sums=('be9a567bea6c22ef9f6d703e44963cdc32abe90c37f8bca4aea1a9d80899ea19')
 noextract=("${_asset}")
 
 package() {
