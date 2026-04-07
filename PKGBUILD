@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imfile-bin
 _pkgname=imFile
-pkgver=1.2.0
+pkgver=2.0.3
 _electronversion=41
 pkgrel=1
 pkgdesc="A full-featured download manager.Forked from motrix.(Prebuilt version.Use system-wide electron)"
@@ -27,17 +27,17 @@ depends=(
     'aria2'
 )
 source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/imfile-io/imfile-desktop/${_pkgname}-${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/imfile-io/imfile-desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/${_pkgname}-${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/${_pkgname}-${pkgver}/${pkgname%-bin}_${pkgver}_armv7l.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${_pkgname}-${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_armv7l.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('f60775e705e2c7418665ac2c7f386d28cc2927df98a440ced1703a7ed3ca86b7'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('d126f83fcae2f7e455c5709ca68303bf8d4c3b8d61cc14126111a1323dc7d67e')
-sha256sums_armv7h=('325bd201d8134664fd78521bac98c7eafa7fd371088b9b349704d2fc6337066f')
-sha256sums_x86_64=('9f6b821715523564d52e64d7d4e6801861d6d333de95f4c497d7f9acbe13b730')
+sha256sums_aarch64=('b6e567e950d9e4cfe0ca0bfe72ad4de7ee870ceebf48f1ac4e79c9dadd479a10')
+sha256sums_armv7h=('faf9ea751bb05aa675eb559f4aa9ee2316600719ea955e40b83539cb00031631')
+sha256sums_x86_64=('0ef1a76a14e566fb402eadfd00561bc52a811aaecc18c8f2e6966e9012760b4e')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
