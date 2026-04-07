@@ -1,0 +1,18 @@
+pkgbase = vxwm-git
+	pkgdesc = Versatile X Window Manager for X11, a modular dwm fork with infinite tags
+	pkgver = 2.2.r88.g24bbb12
+	pkgrel = 1
+	url = https://codeberg.org/wh1tepearl/vxwm
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = fontconfig
+	depends = libx11
+	depends = libxft
+	depends = libxinerama
+	provides = vxwm
+	conflicts = vxwm
+	source = vxwm::git+https://codeberg.org/wh1tepearl/vxwm.git
+	sha256sums = SKIP
+
+pkgname = vxwm-git
