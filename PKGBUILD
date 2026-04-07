@@ -10,6 +10,7 @@ pkgdesc="Up to 200x faster dot products and similarity metrics."
 arch=('x86_64')
 url=https://github.com/ashvardanian/NumKong
 license=('Apache-2.0')
+depends=(glibc)
 makedepends=(cmake)
 source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('87378d3cb3b04a0044a8cf6b3fc86d177c3dbf8f9533dfa9a835bff38b600147ce3ce36cde21a42850b994cc8b2369cd59ab8f682f3bede40b7b14968b3d1ad9')
