@@ -3,7 +3,7 @@
 # Contributor: Thomas Heinemann <thomas@nipha.de>
 # Contributor: Jean Lucas < jean at 4ray dot co>
 pkgname='parsedmarc'
-pkgver='9.5.5'
+pkgver='9.6.0'
 pkgrel='1'
 pkgdesc='Python package and CLI for parsing aggregate and forensic DMARC reports'
 arch=('any')
@@ -15,13 +15,13 @@ checkdepends=('python-pytest')
 optdepends=(
 	'perl-email-outlook-message: Microsoft Outlook email parsing'
 	'perl-email-address: Microsoft Outlook email parsing'
-	'geoip2-database: for using an up-to-date IP to Country database'
+	'geoipupdate: for using an up-to-date IP to Country database'
 )
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'remove-requires-python.diff'
 )
-b2sums=('0b2a194efbcf5a7fc82a56a58b6989a6f4c9a3cfbcd636868bcee0aa1db0b5f0960e4736b90da1bd21cc71bdfea9507eda285e72091ee63b409df67a3cd84863'
+b2sums=('991cbdc8cdd714133bb735d8247bed7ba096f15d466dd07f1e1449cee4acce0c52e33d090042953636ee8d42e479d7cd002e992ba12dd2d419b340031bb13117'
         '21af6499b5f3dd4c3d293d879fba3465270a4fc5d85918513e0b32c5b0e18e886f35773ab41ec9f89ab028408eb3fcd4d59ae1787794eea87285706fd2f70b67')
 
 _sourcedirectory="$pkgname-$pkgver"
