@@ -1,8 +1,8 @@
 pkgbase = pakcs
 	pkgdesc = The Portland Aachen Kiel Curry System
 	pkgver = 3.9.0
-	pkgrel = 3
-	url = https://www.informatik.uni-kiel.de/~pakcs/index.html
+	pkgrel = 4
+	url = https://www.curry-lang.org/pakcs
 	install = pakcs.install
 	arch = x86_64
 	license = custom:PAKCS License

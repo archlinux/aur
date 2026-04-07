@@ -3,10 +3,10 @@
 
 pkgname=pakcs
 pkgver=3.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Portland Aachen Kiel Curry System"
 arch=('x86_64')
-url="https://www.informatik.uni-kiel.de/~pakcs/index.html"
+url="https://www.curry-lang.org/pakcs"
 license=('custom:PAKCS License')
 depends=('swi-prolog')
 makedepends=('base-devel' 'stack' 'texlive-core')
