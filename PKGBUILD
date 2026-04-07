@@ -1,7 +1,7 @@
 # Maintainer: MihaiStreames <72852703+MihaiStreames@users.noreply.github.com>
 pkgname=python-ghlang
 _pypiname=ghlang
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Visualize your GitHub language stats, blazingly fast."
 arch=(any)
@@ -9,7 +9,6 @@ url="https://github.com/velox-sh/ghlang"
 license=(MIT)
 depends=(
 	python
-	python-requests
 	python-matplotlib
 	python-pillow
 	python-yaml
@@ -30,7 +29,7 @@ optdepends=(
 	'tokount: local directory analysis with ghlang local'
 )
 source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/${_pypiname}-$pkgver.tar.gz")
-sha256sums=('95920d9cbae4c5f9f74d7819a2e9df7ae755c01c288d1e3c7a81b2fa3a763ee5')
+sha256sums=('1ff54ab0d875eb651c4e33543dda877c9dd86431cb2ffe4783d16d631fe9bf17')
 
 build() {
 	cd "$srcdir/$_pypiname-$pkgver"
