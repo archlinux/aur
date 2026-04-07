@@ -4,11 +4,41 @@ import curses
 import json
 import os
 import pickle
+import shutil
 
-FILENAME = "TODOLIST.json"
-PICKLE_FILE = "theme_data_curses.pkl"
-GROCERY_DICT_FILE = "GROCERY_DICT.json"
-GROCERY_LIST_FILE = "GROCERY_LIST.json"
+"""IMPORTANT"""
+"""I replaced cat (the shortform for category) to kitty, dont ask why :)"""
+
+# Define data directory and ensure it exists
+DATA_DIR = os.path.expanduser("~/ptodo")
+os.makedirs(DATA_DIR, exist_ok=True)
+
+# File paths, now in ~/ptodo/
+FILENAME = os.path.join(DATA_DIR, "TODOLIST.json")
+PICKLE_FILE = os.path.join(DATA_DIR, "theme_data_curses.pkl")
+GROCERY_DICT_FILE = os.path.join(DATA_DIR, "GROCERY_DICT.json")
+GROCERY_LIST_FILE = os.path.join(DATA_DIR, "GROCERY_LIST.json")
+
+# Old file paths for migration purposes
+OLD_FILENAME = os.path.join(os.path.expanduser("~"), "TODOLIST.json")
+OLD_PICKLE_FILE = os.path.join(os.path.expanduser("~"), "theme_data_curses.pkl")
+OLD_GROCERY_DICT_FILE = os.path.join(os.path.expanduser("~"), "GROCERY_DICT.json")
+OLD_GROCERY_LIST_FILE = os.path.join(os.path.expanduser("~"), "GROCERY_LIST.json")
+
+
+def migrate_files():
+    """Migrate files from home directory to ~/ptodo/ if they exist there."""
+    migrations = [
+        (OLD_FILENAME, FILENAME),
+        (OLD_PICKLE_FILE, PICKLE_FILE),
+        (OLD_GROCERY_DICT_FILE, GROCERY_DICT_FILE),
+        (OLD_GROCERY_LIST_FILE, GROCERY_LIST_FILE),
+    ]
+
+    for old_path, new_path in migrations:
+        if os.path.exists(old_path) and not os.path.exists(new_path):
+            shutil.copy2(old_path, new_path)
+
 
 LOGO = [
     r"___________________  ________    ________  .____    .___  _______________________",
@@ -272,15 +302,20 @@ DEFAULT_CATEGORIES = {
 
 
 def load_todos():
+    """Loads tasks and ensures backwards compatibility by assigning default priorities."""
     if os.path.exists(FILENAME):
         try:
             with open(FILENAME, "r") as f:
                 data = json.load(f)
                 for item in data:
                     if isinstance(item, dict) and "priority" not in item:
-                        item["priority"] = "4"
+                        item["priority"] = "4"  # Default priority
+
+                # Handle legacy string-only lists
                 if data and isinstance(data[0], str):
                     return [{"task": t, "done": False, "priority": "4"} for t in data]
+
+                # Sort: Pending items first, then by priority
                 data.sort(key=lambda x: (x.get("done", False), x.get("priority", "4")))
                 return data
         except Exception:
@@ -309,14 +344,15 @@ def save_grocery_dict(d):
 
 
 def load_grocery_list(categories):
+    """Loads the active grocery list and synchronizes it with current categories."""
     if os.path.exists(GROCERY_LIST_FILE):
         try:
             with open(GROCERY_LIST_FILE, "r") as f:
                 data = json.load(f)
-                # Ensure all current categories exist in the loaded data
-                for cat in categories:
-                    if cat not in data:
-                        data[cat] = []
+                # Sync missing categories
+                for kitty in categories:  # kitty instead of cat :)
+                    if kitty not in data:
+                        data[kitty] = []
                 return data
         except Exception:
             pass
@@ -329,6 +365,7 @@ def save_grocery_list(l):
 
 
 def draw_logo(stdscr, theme_id):
+    """Maps theme_ids to curses color pairs and centers the logo."""
     themes = {"1": (6, 3), "2": (6, 5), "3": (1, 2), "4": (5, 3)}
     c1_idx, c2_idx = themes.get(theme_id, (6, 3))
     h, w = stdscr.getmaxyx()
@@ -342,6 +379,7 @@ def draw_logo(stdscr, theme_id):
 
 
 def draw_table(stdscr, todos, start_y):
+    """Draws the formatted todo table, preventing output beyond terminal height."""
     h, w = stdscr.getmaxyx()
     if not todos:
         msg = "No tasks found! Get to work!"
@@ -366,7 +404,7 @@ def draw_table(stdscr, todos, start_y):
 
     y = start_y + 2
     for idx, item in enumerate(todos, 1):
-        if y >= h - 8:
+        if y >= h - 8:  # Leave space for the bottom menu
             break
         task_text = (
             item["task"][:27] + "..." if len(item["task"]) > 30 else item["task"]
@@ -407,6 +445,7 @@ def draw_table(stdscr, todos, start_y):
 
 
 def draw_grocery_table(stdscr, grocery_list, start_y):
+    """Flattens the grocery dictionary into a displayable list, showing only recent items to fit screen."""
     h, w = stdscr.getmaxyx()
     flat_list = []
     for cat, items in grocery_list.items():
@@ -435,7 +474,6 @@ def draw_grocery_table(stdscr, grocery_list, start_y):
         pass
 
     y = start_y + 2
-    # Show only the last X items to keep input visible
     visible_count = h - start_y - 10
     display_items = (
         flat_list[-visible_count:] if len(flat_list) > visible_count else flat_list
@@ -453,6 +491,7 @@ def draw_grocery_table(stdscr, grocery_list, start_y):
 
 
 def prompt_input(stdscr, prompt_text, y, x):
+    """Displays a prompt and captures user string input via curses echo."""
     try:
         stdscr.addstr(y, x, prompt_text, curses.color_pair(4) | curses.A_BOLD)
         curses.curs_set(1)
@@ -466,6 +505,7 @@ def prompt_input(stdscr, prompt_text, y, x):
 
 
 def select_list(stdscr, title, items, theme_id):
+    """Generic scrolling interactive menu. Returns the value of the selected item."""
     current = 0
     while True:
         stdscr.clear()
@@ -481,6 +521,7 @@ def select_list(stdscr, title, items, theme_id):
         except curses.error:
             pass
 
+        # Calculate sliding window for scrolling
         max_visible = h - 12
         start_idx = max(0, current - max_visible // 2)
         end_idx = min(len(items), start_idx + max_visible)
@@ -504,12 +545,13 @@ def select_list(stdscr, title, items, theme_id):
             current -= 1
         elif key == curses.KEY_DOWN and current < len(items) - 1:
             current += 1
-        elif key in [10, 13]:
+        elif key in [10, 13]:  # Enter keys
             return items[current][1]
-        elif key == 27:
+        elif key == 27:  # Escape key
             return None
 
 
+# --- Action Modes ---
 def add_mode(stdscr, todos, theme_id):
     stdscr.clear()
     draw_logo(stdscr, theme_id)
@@ -594,6 +636,7 @@ def removeAll_mode(stdscr, todos, theme_id):
 
 
 def grocery_sorter_mode(stdscr, theme_id):
+    """Interactive loop for auto-categorizing inputs based on GROCERY_DICT keywords."""
     category_keywords = load_grocery_dict()
     sorted_groceries = load_grocery_list(category_keywords.keys())
     last_action = ""
@@ -603,7 +646,6 @@ def grocery_sorter_mode(stdscr, theme_id):
         draw_logo(stdscr, theme_id)
         h, w = stdscr.getmaxyx()
 
-        # Header for the mode
         title = "--- SMART GROCERY SORTER ---"
         try:
             stdscr.addstr(
@@ -619,7 +661,6 @@ def grocery_sorter_mode(stdscr, theme_id):
         except curses.error:
             pass
 
-        # Draw the table of current items
         draw_grocery_table(stdscr, sorted_groceries, 9)
 
         prompt_str = "Item (or 'done', '!addword', '!clear'): "
@@ -629,30 +670,35 @@ def grocery_sorter_mode(stdscr, theme_id):
             continue
         if item_input.lower() == "done":
             break
+
+        # Admin command: Clear list
         if item_input.lower() == "!clear":
             sorted_groceries = {cat: [] for cat in category_keywords}
             save_grocery_list(sorted_groceries)
             last_action = "List cleared."
             continue
 
+        # Admin command: Explicitly teach a new keyword
         if item_input.lower() == "!addword":
             new_word = prompt_input(stdscr, "Keyword to teach: ", h - 3, 2)
             if new_word:
-                chosen_cat = select_list(
+                chosen_kitty = select_list(
                     stdscr,
                     f"Assign '{new_word}' to:",
                     [(c, c) for c in category_keywords.keys()],
                     theme_id,
                 )
-                if chosen_cat:
-                    if new_word.lower() not in category_keywords[chosen_cat]:
-                        category_keywords[chosen_cat].append(new_word.lower())
+                if chosen_kitty:
+                    if new_word.lower() not in category_keywords[chosen_kitty]:
+                        category_keywords[chosen_kitty].append(new_word.lower())
                         save_grocery_dict(category_keywords)
-                        last_action = f"Taught '{new_word}' -> {chosen_cat}."
+                        last_action = f"Taught '{new_word}' -> {chosen_kitty}."
             continue
 
         item_normalized = item_input.lower()
         assigned = False
+
+        # Check if the input contains any known category keywords
         for category, keywords in category_keywords.items():
             if any(kw in item_normalized for kw in keywords if kw):
                 sorted_groceries[category].append(item_input)
@@ -661,28 +707,31 @@ def grocery_sorter_mode(stdscr, theme_id):
                 assigned = True
                 break
 
+        # Fallback if unknown: ask user to categorize
         if not assigned:
-            chosen_cat = select_list(
+            chosen_kitty = select_list(
                 stdscr,
                 f"Where does '{item_input}' belong?",
                 [(c, c) for c in category_keywords.keys()],
                 theme_id,
             )
-            if chosen_cat:
-                sorted_groceries[chosen_cat].append(item_input)
+            if chosen_kitty:
+                sorted_groceries[chosen_kitty].append(item_input)
                 save_grocery_list(sorted_groceries)
                 stdscr.clear()
                 draw_logo(stdscr, theme_id)
+
+                # Ask if dictionary should be updated for next time
                 if (
                     prompt_input(
                         stdscr,
-                        f"Remember '{item_normalized}' for {chosen_cat}? (y/n): ",
+                        f"Remember '{item_normalized}' for {chosen_kitty}? (y/n): ",
                         10,
                         2,
                     ).lower()
                     == "y"
                 ):
-                    category_keywords[chosen_cat].append(item_normalized)
+                    category_keywords[chosen_kitty].append(item_normalized)
                     save_grocery_dict(category_keywords)
                     last_action = f"Added '{item_input}' and updated dictionary."
                 else:
@@ -715,6 +764,7 @@ def draw_main_menu(stdscr):
 
 
 def main(stdscr):
+    # Curses color initializations
     curses.start_color()
     try:
         curses.use_default_colors()
@@ -743,6 +793,7 @@ def main(stdscr):
         except:
             pass
 
+    # Main Application Loop
     while True:
         todos = load_todos()
         stdscr.clear()
@@ -751,6 +802,8 @@ def main(stdscr):
         draw_main_menu(stdscr)
         stdscr.refresh()
         key = stdscr.getch()
+
+        # Route keys to specific modes
         if key == ord("1"):
             add_mode(stdscr, todos, theme_id)
         elif key == ord("2"):
@@ -779,9 +832,10 @@ def main(stdscr):
                 pickle.dump(theme_id, open(PICKLE_FILE, "wb"))
         elif key == ord("8"):
             grocery_sorter_mode(stdscr, theme_id)
-        elif key in [ord("7"), 27]:
+        elif key in [ord("7"), 27]:  # 27 is the Escape key
             break
 
 
 if __name__ == "__main__":
+    migrate_files()
     curses.wrapper(main)
