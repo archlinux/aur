@@ -1,13 +1,13 @@
 pkgbase = vibing-steampunk-bin
 	pkgdesc = ADT to MCP bridge - AI-Agentic Development for ABAP (ECC, S/4HANA)
-	pkgver = 2.26.0
+	pkgver = 2.37.0
 	pkgrel = 1
 	url = https://github.com/oisee/vibing-steampunk
 	arch = x86_64
 	license = MIT
 	provides = vsp
 	conflicts = vsp
-	source = vibing-steampunk-bin-2.26.0::https://github.com/oisee/vibing-steampunk/releases/download/v2.26.0/vsp-linux-amd64
-	sha256sums = 98642f9429df1faf6962d8d47b311f9b2fe60825360900227f7974d11dd690bc
+	source = vibing-steampunk-bin-2.37.0::https://github.com/oisee/vibing-steampunk/releases/download/v2.37.0/vsp-linux-amd64
+	sha256sums = 72e1c94f197089dda31872d0f36304002ec81f7180231e199a7d251fa9ae6e9a
 
 pkgname = vibing-steampunk-bin
