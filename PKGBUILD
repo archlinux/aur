@@ -10,7 +10,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst')
 provides=('otomusic')
 conflicts=('otomusic')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Aloys233/OtoMusic/releases/download/v${pkgver}/OtoMusic-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('c9d2762dabbb47de1a940f6476b7d4ce9e2ea2ac62adc275d5dc57094e51eb78')
+sha256sums=('15270c6b0b7e2b00acc8b055ae71f1cc9372bf6933070ef9e2ff0e4c58e8bf6b')
 
 package() {
     cd "${srcdir}/otomusic-${pkgver}"
