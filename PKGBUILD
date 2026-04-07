@@ -1,5 +1,5 @@
-# vim:set ft=sh:
 # Maintainer: zedspeirs
+# Co-Maintainer: 67mustard41
 
 pkgname=opera-gx-bin
 pkgver=129.0.5823.64
