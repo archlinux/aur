@@ -1,9 +1,15 @@
 -------------------------------------------------------
  Changelog    : ssl-mgr
- Tags         : 7.1.0 ➙ 7.4.0
-              : 2025-12-21 ➙ 2026-04-04
+ Tags         : 7.1.1 ➙ 7.5.0
+              : 2025-12-22 ➙ 2026-04-07
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-04-07   : 7.5.0
+              - Fix installer bug which installed sslm-verify with trailing ","
+                Doc improvements
+ 2026-04-04   ⋯
+              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
 
  2026-04-04   : 7.4.0
               - **Version 7.4.0**
@@ -52,10 +58,4 @@
  2025-12-22   : 7.1.1
               - Docs/conf.py: fix exclude_patterns to ignore rst files not used in pdf/html
  2025-12-21   ⋯
-              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
-
- 2025-12-21   : 7.1.0
-              - Oops! Remove accidentally left debug in "-roll" code
- 2025-12-20   ⋯
-              - Small readme tweak
               - update Docs/Changelog.rst Docs/ssl-mgr.pdf

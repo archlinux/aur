@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: GPL-2.0-or-later
 # SPDX-FileCopyrightText: © 2023-present  Gene C <arch@sapience.com>
 #
 # Arch Linux PKGBUILD for ssl-mgr 
@@ -12,14 +12,14 @@ pkgname='ssl-mgr'
 pkgdesc='Manage (re)new certificates and handle DANE TLSA key rollover'
 _gitname='ssl-mgr'
 
-pkgver="7.4.0"
+pkgver="7.5.0"
 pkgrel=1
 url="https://github.com/gene-git/ssl-mgr"
 
 arch=(any)
 license=(GPL-2.0-or-later)
 depends=(
-    'python>=3.13' 
+    'python>=3.14' 
     'python-dnspython' 
     'python-tomli-w' 
     'python-cryptography' 
