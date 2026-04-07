@@ -9,7 +9,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 arch=('x86_64')
 url="https://pytorch.org"
@@ -50,8 +50,6 @@ makedepends=(
   doxygen
   git
   hipblaslt
-  magma-cuda
-  magma-hip
   miopen-hip
   nccl
   ninja
@@ -276,7 +274,6 @@ _prepare() {
   export USE_GLOG=ON
   export USE_VULKAN=ON
   export USE_OBSERVERS=ON
-  export USE_MAGMA=ON
   # export USE_SYSTEM_LIBS=ON  # experimental, not all libs present in repos
   # USE_SYSTEM_ONNX=ON does not work and onnx itself should be removed from pytorch: https://github.com/pytorch/pytorch/issues/166546#issuecomment-3463370459
   export USE_NCCL=ON
@@ -354,7 +351,6 @@ build() {
   export USE_CUDA=1
   export USE_CUDNN=1
   export USE_ROCM=0
-  export MAGMA_HOME=/opt/cuda/targets/x86_64-linux
   cd "${srcdir}/${_pkgname}-cuda"
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
   python -m build --wheel --no-isolation
@@ -364,7 +360,6 @@ build() {
   export USE_CUDA=1
   export USE_CUDNN=1
   export USE_ROCM=0
-  export MAGMA_HOME=/opt/cuda/targets/x86_64-linux
   _prepare
   echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   python -m build --wheel --no-isolation
@@ -378,7 +373,6 @@ build() {
   export USE_CUDA=0
   export USE_CUDNN=0
   export USE_ROCM=1
-  export MAGMA_HOME=/opt/rocm
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
@@ -390,7 +384,6 @@ build() {
   export USE_CUDA=0
   export USE_CUDNN=0
   export USE_ROCM=1
-  export MAGMA_HOME=/opt/rocm
   echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
@@ -440,7 +433,7 @@ package_python-pytorch-opt() {
 
 package_python-pytorch-cuda() {
   pkgdesc+=" (with CUDA)"
-  depends+=(cuda nccl cudnn magma-cuda onednn)
+  depends+=(cuda nccl cudnn onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver})
 
@@ -450,7 +443,7 @@ package_python-pytorch-cuda() {
 
 package_python-pytorch-opt-cuda() {
   pkgdesc+=" (with CUDA and AVX2 CPU optimizations)"
-  depends+=(cuda nccl cudnn magma-cuda onednn)
+  depends+=(cuda nccl cudnn onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver} python-pytorch-cuda=${pkgver})
 
@@ -460,7 +453,7 @@ package_python-pytorch-opt-cuda() {
 
 package_python-pytorch-rocm() {
   pkgdesc+=" (with ROCm)"
-  depends+=(rocm-hip-sdk hipblaslt roctracer miopen-hip magma-hip onednn python-triton python-aotriton)
+  depends+=(rocm-hip-sdk hipblaslt roctracer miopen-hip onednn python-triton python-aotriton)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver})
 
@@ -470,7 +463,7 @@ package_python-pytorch-rocm() {
 
 package_python-pytorch-opt-rocm() {
   pkgdesc+=" (with ROCm and AVX2 CPU optimizations)"
-  depends+=(rocm-hip-sdk hipblaslt roctracer miopen-hip magma-hip onednn python-triton python-aotriton)
+  depends+=(rocm-hip-sdk hipblaslt roctracer miopen-hip onednn python-triton python-aotriton)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver} python-pytorch-rocm=${pkgver})
 
