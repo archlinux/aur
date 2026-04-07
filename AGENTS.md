@@ -73,7 +73,7 @@ Use conventional commits format.
 
 ### 6. Push
 
-Only when user explicitly requests: `git push`
+After committing changes, always push to AUR: `git push`
 
 ## Other Commands
 
