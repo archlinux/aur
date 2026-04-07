@@ -2,9 +2,7 @@
 
 _pkgname=OpenNOW
 pkgname="opennow-appimage"
-_pkgver=0.2.4
-_nightly=60030b626b57914e9e4d538aba1d4ed954a82653
-pkgver="${_pkgver}.${_nightly}"
+pkgver="0.3.1"
 pkgrel=3
 pkgdesc="Custom GeForce Now Client Named OpenNOW"
 arch=('x86_64' 'aarch64')
@@ -13,14 +11,14 @@ license=('MIT-0')
 depends=('zlib' 'hicolor-icon-theme')
 makedepends=('unzip')
 options=(!strip)
-_appimage="${_pkgname}-${_nightly}.AppImage"
-source_x86_64=("${_appimage}::https://github.com/OpenCloudGaming/OpenNOW/releases/download/nightly-${_nightly}/${_pkgname}-v${_pkgver}-linux-x86_64.AppImage")
-source_aarch64=("${_appimage}::https://github.com/OpenCloudGaming/OpenNOW/releases/download/nightly-${_nightly}/${_pkgname}-v${_pkver}-linux-arm64.AppImage")
+_appimage="${_pkgname}-${pkgver}.AppImage"
+source_x86_64=("${_appimage}::https://github.com/OpenCloudGaming/OpenNOW/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x86_64.AppImage")
+source_aarch64=("${_appimage}::https://github.com/OpenCloudGaming/OpenNOW/releases/download/v${pkgver}/${_pkgname}-v${pkver}-linux-arm64.AppImage")
 source=("https://raw.githubusercontent.com/OpenCloudGaming/OpenNOW/refs/heads/main/LICENSE"
 	 "icons.zip")
 noextract=("${_appimage}")
-sha256sums_x86_64=('dab371a6b3675bb06388f0de552abace34e1de220a028c46f4fc9806df529524')
-sha256sums_aarch64=('8a7e0d683d9420e9b2520deaa5666eb02219dfa909c88e519ae8f597c844e0c6')
+sha256sums_x86_64=('3b4f12c27692875d30747f17da4ed31fe1636e66462bff89dc656d6ae50f0a35')
+sha256sums_aarch64=('2ca19a32f44fbaaa2da4b6dd4444728798a2a9d3e542ba3b07ad3b88539c8827')
 sha256sums=('5d00339c6bcca47bc7db1412fb3abda80918ee631d7abe7609045754307a97e3'
 	    'bbea1359b8b6df700d471cbca5aff54f72860c6c1f8786e8b42cd0f6900bf058')
 _binary="opennow-stable"
