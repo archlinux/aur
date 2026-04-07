@@ -1,0 +1,16 @@
+pkgbase = swell
+	pkgdesc = TUI audio client for podcasts, internet radio, and Tidal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/wasak/swell
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = alsa-lib
+	depends = openssl
+	depends = gcc-libs
+	source = git+https://codeberg.org/wasak/swell.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = swell
