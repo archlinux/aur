@@ -23,7 +23,9 @@ sha256sums=('b0c42e9ece7a36f624e40fd87be805bd25dff888ec5f1544dc517d7f3a03b811'
 build() {
     cd "${srcdir}/${_reponame}-${pkgver}"
 
+    export GRADLE_USER_HOME="${srcdir}/.gradle"
     export API_ENDPOINT="https://ubaa.mofrp.top:2021"
+
     ./gradlew :composeApp:packageReleaseUberJarForCurrentOS --no-daemon
 }
 
