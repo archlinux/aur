@@ -3,7 +3,7 @@
 
 pkgname=libldacdec
 pkgver=1.0.0.1
-pkgrel=4
+pkgrel=1
 pkgdesc="Reverse-engineered unofficial LDAC Bluetooth decoder library"
 url="https://github.com/anonymix007/libldacdec"
 arch=(x86_64)

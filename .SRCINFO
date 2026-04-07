@@ -1,7 +1,7 @@
 pkgbase = libldacdec
 	pkgdesc = Reverse-engineered unofficial LDAC Bluetooth decoder library
 	pkgver = 1.0.0.1
-	pkgrel = 4
+	pkgrel = 1
 	url = https://github.com/anonymix007/libldacdec
 	arch = x86_64
 	license = Apache-2.0
