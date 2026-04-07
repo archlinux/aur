@@ -34,8 +34,10 @@ package() {
   local _appimage="apps/electron/dist/ontime-linux-x86_64.AppImage"
   local _icon="apps/electron/src/assets/icon.png"
 
-  # 1. Install the binary
-  install -Dm755 "$_appimage" "${pkgdir}/usr/bin/ontime"
+  # 1. Install the AppImage to /opt and symlink into /usr/bin
+  install -Dm755 "$_appimage" "${pkgdir}/opt/ontime/ontime.AppImage"
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s /opt/ontime/ontime.AppImage "${pkgdir}/usr/bin/ontime"
 
   # 2. Install the icon
   install -Dm644 "$_icon" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ontime.png"
