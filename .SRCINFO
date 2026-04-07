@@ -1,0 +1,18 @@
+pkgbase = asm
+	pkgdesc = Universal CLI/TUI for managing AI coding agent skills across 17+ platforms
+	pkgver = 1.19.0
+	pkgrel = 1
+	url = https://github.com/luongnv89/asm
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=18
+	provides = agent-skill-manager
+	conflicts = agent-skill-manager
+	noextract = agent-skill-manager-1.19.0.tgz
+	source = https://registry.npmjs.org/agent-skill-manager/-/agent-skill-manager-1.19.0.tgz
+	source = LICENSE::https://raw.githubusercontent.com/luongnv89/asm/v1.19.0/LICENSE
+	sha1sums = a22ae1b470286be28df6bf053302eba146d1e61e
+	sha1sums = SKIP
+
+pkgname = asm
