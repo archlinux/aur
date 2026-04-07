@@ -1,6 +1,6 @@
 pkgbase = tennis-bin
 	pkgdesc = Stylish CSV tables in your terminal
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/gurgeous/tennis
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = tennis-bin
 	license = MIT
 	provides = tennis
 	conflicts = tennis
-	source_x86_64 = tennis-x86_64-0.3.0.tgz::https://github.com/gurgeous/tennis/releases/download/v0.3.0/tennis_0.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 05e37496c759ac0066978ea77d2df6aa9a755de2134ffc760428fe642ad05f03
-	source_aarch64 = tennis-aarch64-0.3.0.tgz::https://github.com/gurgeous/tennis/releases/download/v0.3.0/tennis_0.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6dc6bb597aba853dc44bade4bbefd0301104a138e14e196541e168e7a862a047
+	source_x86_64 = tennis-x86_64-0.4.0.tgz::https://github.com/gurgeous/tennis/releases/download/v0.4.0/tennis_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 73c0202a47d1541d5b3868bee5a2e8d1464cd7d26565fc190867f3161adf4b86
+	source_aarch64 = tennis-aarch64-0.4.0.tgz::https://github.com/gurgeous/tennis/releases/download/v0.4.0/tennis_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6b8d543affa7419a73ba1de3be4ac30427e447002ae26387b67def0a47735246
 
 pkgname = tennis-bin
