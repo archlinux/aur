@@ -13,7 +13,8 @@ url="https://codeberg.org/OpenVPN/$_pkgname"
 license=('AGPL-3.0-only')
 depends=(
   'jsoncpp>=0.10.5' 'libcap-ng>=0.7.5' 'lz4>=1.8.4' 'util-linux-libs>=2.23.2' 'openssl>=1.0.2'
-  'python-dbus' 'python-gobject' 'python-systemd' 'tinyxml2>=2.1.0' 'libnl>=3.2.29' 'gdbuspp'
+  'protobuf' 'python-dbus' 'python-gobject' 'python-systemd' 'tinyxml2>=2.1.0' 'libnl>=3.2.29'
+  'gdbuspp'
 )
 optdepends=(
   'polkit>=0.105: for systemd-resolved integration'
@@ -28,6 +29,7 @@ source=(
   "git+https://github.com/chriskohlhoff/asio.git"
   'openvpn3.rule'
   'sysusers-openvpn3.conf'
+  'fix-protobuf-nodiscard.patch'
 )
 sha256sums=(
   'SKIP'
@@ -35,6 +37,7 @@ sha256sums=(
   'SKIP'
   'ec0b8e28ae77b4b074d3eb8a084626e6dcfc587a07bef5d53fe1c6e160c0fc01'
   '045e914bb6fff5a082314dfc805bb511c9a80170619fa1e94a07825fa977c90a'
+  'SKIP'
 )
 install=openvpn3-git.install
 
@@ -50,6 +53,7 @@ prepare() {
   git config submodule.openvpn3-core.url "$srcdir/openvpn3"
   git config submodule.vendor/asio.url "$srcdir/asio"
   git -c protocol.file.allow=always submodule update
+  patch -Np1 -i "$srcdir/fix-protobuf-nodiscard.patch"
 }
 
 build() {
