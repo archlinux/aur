@@ -13,6 +13,8 @@ pkgbase = kanso-bin
 	provides = kanso
 	conflicts = kanso
 	source_x86_64 = kanso-0.1.0.tar.gz::https://github.com/psychosomat/Kanso/releases/download/v0.1.0/Kanso-0.1.0-linux-x64.tar.gz
+	source_x86_64 = logo512.png::https://raw.githubusercontent.com/psychosomat/Kanso/v0.1.0/public/logo512.png
 	sha256sums_x86_64 = f90b0e23fdb19f953cdd7246d1949ba64ef3227690081eabcb13902b8cb55085
+	sha256sums_x86_64 = SKIP
 
 pkgname = kanso-bin

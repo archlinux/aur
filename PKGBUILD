@@ -16,17 +16,19 @@ optdepends=(
 )
 provides=("kanso")
 conflicts=("kanso")
-source_x86_64=("kanso-${pkgver}.tar.gz::https://github.com/psychosomat/Kanso/releases/download/v${pkgver}/Kanso-${pkgver}-linux-x64.tar.gz")
-sha256sums_x86_64=("f90b0e23fdb19f953cdd7246d1949ba64ef3227690081eabcb13902b8cb55085")
+source_x86_64=("kanso-${pkgver}.tar.gz::https://github.com/psychosomat/Kanso/releases/download/v${pkgver}/Kanso-${pkgver}-linux-x64.tar.gz"
+           "logo512.png::https://raw.githubusercontent.com/psychosomat/Kanso/v${pkgver}/public/logo512.png")
+sha256sums_x86_64=("f90b0e23fdb19f953cdd7246d1949ba64ef3227690081eabcb13902b8cb55085"
+             "SKIP")
 
 package() {
   install -dm755 "${pkgdir}/opt/kanso"
-  cp -a "${srcdir}/"* "${pkgdir}/opt/kanso/"
+  cp -a "${srcdir}/Kanso-${pkgver}-linux-x64/"* "${pkgdir}/opt/kanso/"
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -sf "/opt/kanso/kanso" "${pkgdir}/usr/bin/kanso"
 
-  install -Dm644 "${pkgdir}/opt/kanso/resources/app.asar.unpacked/dist/client/logo512.png" \
+  install -Dm644 "${srcdir}/logo512.png" \
     "${pkgdir}/usr/share/pixmaps/kanso.png"
 
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/kanso.desktop" <<'DESKTOP'
