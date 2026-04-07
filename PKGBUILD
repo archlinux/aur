@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Cryptographic library for EAC version 2"
 arch=(x86_64)
 url="https://frankmorgner.github.io/openpace"
-license=(LGPL-3.0)
+license=(GPL-3.0-or-later GPL-3.0-linking-exception)
 makedepends=(
 	autoconf
 	gengetopt
