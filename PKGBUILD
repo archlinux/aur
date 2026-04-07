@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=agent-of-empires-bin
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Terminal session manager for AI coding agents (Claude Code, Codex, OpenCode)'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('agent-of-empires')
 conflicts=('agent-of-empires')
 source_x86_64=("${pkgname}-x86_64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/aoe-linux-amd64.tar.gz")
 source_aarch64=("${pkgname}-aarch64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/aoe-linux-arm64.tar.gz")
-sha256sums_x86_64=('458e5308aa3d7f9e5f5d15ee7138ebbbc5877dfcb2e9581a9c35dcf1270702bc')
-sha256sums_aarch64=('f9bbd814562403d125fc19857e0c81ad5ff73d06246446c7a1fcbda2ac5c872d')
+sha256sums_x86_64=('61c589ffe55a81c461fe710ba44563fbe7f8b8c7d7e3b62c1e22143953214102')
+sha256sums_aarch64=('cb381fd52d28bf21360371f03e9194edffb938388075fe019befbf0e9f12fec2')
 
 package() {
     if [ "$CARCH" = "x86_64" ]; then
