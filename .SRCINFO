@@ -1,0 +1,18 @@
+pkgbase = kwin-health-monitor-git
+	pkgdesc = System tray monitor for KWin Wayland compositor health (memory, FDs, VRAM)
+	pkgver = r0
+	pkgrel = 1
+	url = https://github.com/joconno2/kwin-health-monitor
+	install = kwin-health-monitor.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pyqt6
+	optdepends = nvidia-utils: GPU VRAM monitoring for NVIDIA cards
+	provides = kwin-health-monitor
+	conflicts = kwin-health-monitor
+	source = kwin-health-monitor-git::git+https://github.com/joconno2/kwin-health-monitor.git
+	sha256sums = SKIP
+
+pkgname = kwin-health-monitor-git

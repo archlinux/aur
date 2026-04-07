@@ -1,0 +1,14 @@
+post_install() {
+    echo "To start on login, copy the desktop file to autostart:"
+    echo "  cp /usr/share/applications/kwin-health-monitor.desktop ~/.config/autostart/"
+    echo ""
+    echo "To run now:"
+    echo "  kwin-health-monitor &"
+    echo ""
+    echo "Optional config: copy /usr/share/kwin-health-monitor/config.toml.example"
+    echo "  to ~/.config/kwin-health-monitor/config.toml"
+}
+
+post_upgrade() {
+    post_install
+}
