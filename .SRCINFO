@@ -1,7 +1,7 @@
 pkgbase = omaclip-bin
 	pkgdesc = Desktop clipboard manager with secure mesh sync — peers auto-discover and share clipboards across your local network
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhemvi/omaclip
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = omaclip-bin
 	optdepends = xclip: X11 clipboard support
 	provides = omaclip
 	conflicts = omaclip
+	options = !debug
 	source = appicon.png::https://github.com/rhemvi/omaclip/releases/download/v0.1.1/appicon.png
 	source = LICENSE::https://raw.githubusercontent.com/rhemvi/omaclip/v0.1.1/LICENSE
 	source = omaclip.desktop

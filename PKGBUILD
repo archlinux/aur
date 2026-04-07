@@ -1,6 +1,6 @@
 pkgname=omaclip-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop clipboard manager with secure mesh sync — peers auto-discover and share clipboards across your local network"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rhemvi/omaclip"
@@ -10,6 +10,7 @@ optdepends=(
   'wl-clipboard: Wayland clipboard support'
   'xclip: X11 clipboard support'
 )
+options=('!debug')
 provides=('omaclip')
 conflicts=('omaclip')
 source_x86_64=("${url}/releases/download/v${pkgver}/omaclip-linux-amd64")

@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Omaclip
-Comment=Clipboard manager with multi-machine sync
+Comment=Desktop clipboard manager with secure mesh sync
 Exec=omaclip
 Icon=omaclip
 Type=Application
