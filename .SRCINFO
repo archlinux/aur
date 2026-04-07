@@ -9,7 +9,7 @@ pkgbase = rustormy-bin
 	depends = openssl
 	provides = rustormy
 	conflicts = rustormy
-	source = https://github.com/Tairesh/rustormy/releases/download/v0.4.1/rustormy-v0.4.1-Linux.tar.gz
-	sha256sums = 3d41841fdf91f96dfad7ce75d879a43b2d4209a20424b964d66c99ddaa90cd5c
+	source = https://github.com/Tairesh/rustormy/releases/download/v0.4.3/rustormy-v0.4.3-Linux.tar.gz
+	sha256sums = 8f8effcf286e4f80ca092ae231b8bfa82feaafb992abc645ce5419341f8bfaac
 
 pkgname = rustormy-bin
