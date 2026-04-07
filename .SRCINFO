@@ -1,6 +1,6 @@
-pkgbase = fyn
-	pkgdesc = extremely fast Python package installer and resolver - fork of uv
-	pkgver = 0.10.12
+pkgbase = fyn-git
+	pkgdesc = extremely fast Python package installer and resolver (fork of uv) - git version
+	pkgver = 0.10.14
 	pkgrel = 1
 	url = https://github.com/duriantaco/fyn
 	arch = x86_64
@@ -19,18 +19,18 @@ pkgbase = fyn
 	source = git+https://github.com/duriantaco/fyn.git
 	sha256sums = SKIP
 
-pkgname = fyn
+pkgname = fyn-git
 	depends = gcc-libs
 	depends = glibc
 	depends = bzip2
 
-pkgname = python-fyn
-	pkgdesc = extremely fast Python package installer and resolver - fork of uv - Python wrapper
+pkgname = python-fyn-git
+	pkgdesc = extremely fast Python package installer and resolver (fork of uv) - git version - Python wrapper
 	depends = python
-	depends = fyn=0.10.12
+	depends = fyn-git=0.10.14
 
-pkgname = python-fyn-build
-	pkgdesc = extremely fast Python package installer and resolver - fork of uv - Python build backend
+pkgname = python-fyn-git-build
+	pkgdesc = extremely fast Python package installer and resolver (fork of uv) - git version - Python build backend
 	groups = python-build-backend
 	depends = bzip2
 	depends = gcc-libs

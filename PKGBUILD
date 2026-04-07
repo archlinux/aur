@@ -1,10 +1,10 @@
 # Maintainer: aisuneko icecat <iceneko@protonmail.ch>
 
-pkgbase=fyn
+pkgbase=fyn-git
 pkgname=("$pkgbase" "python-$pkgbase"{,-build})
-pkgver=0.10.12
+pkgver=0.10.14
 pkgrel=1
-pkgdesc='extremely fast Python package installer and resolver - fork of uv'
+pkgdesc='extremely fast Python package installer and resolver (fork of uv) - git version'
 arch=('x86_64')
 url="https://github.com/duriantaco/fyn"
 license=('MIT' 'Apache-2.0')
@@ -25,10 +25,13 @@ options=(!lto)
 source=("git+$url.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
   cd "$pkgbase"
-  # https://github.com/duriantaco/fyn/issues/5
-  if [ -d crates/fyn-build/python/uv_build ]; then mv crates/fyn-build/python/uv_build crates/fyn-build/python/fyn_build; fi
   cargo fetch --locked --target "$(rustc --print host-tuple)"
   mkdir -p completions
 }
@@ -59,7 +62,7 @@ _package_common() {
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
 
-package_fyn() {
+package_fyn-git() {
   depends=(
     gcc-libs
     glibc
@@ -77,7 +80,7 @@ package_fyn() {
   install -Dm 644 "completions/_$pkgbase" -t "$pkgdir/usr/share/zsh/site-functions/"
 }
 
-package_python-fyn() {
+package_python-fyn-git() {
   pkgdesc+=' - Python wrapper'
   depends=(
     python
@@ -90,7 +93,7 @@ package_python-fyn() {
   rm -rf "$pkgdir/usr/bin"
 }
 
-package_python-fyn-build() {
+package_python-fyn-git-build() {
   pkgdesc+=' - Python build backend'
   depends=(
     bzip2
@@ -105,6 +108,3 @@ package_python-fyn-build() {
   _package_common
   python -m installer -d "$pkgdir" target/wheels/fyn_build-$pkgver-*.whl
 }
-
-# vim: ts=2 sw=2 et:
-
