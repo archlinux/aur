@@ -1,0 +1,8 @@
+post_install() {
+echo -n "
+Edit your /etc/mtproto-proxy.toml, then run:
+# sudo systemctl enable --now mtproto-proxy
+# sudo systemctl enable --now mtproto-monitor
+mtproto-monitor is running only in 127.0.0.1:61208 (you need ssh tunnel or reverse-proxy)
+"
+}

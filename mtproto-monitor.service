@@ -1,0 +1,24 @@
+[Unit]
+Description=mtproto.zig Web Dashboard (FastAPI)
+After=network.target mtproto-proxy.service
+Wants=mtproto-proxy.service
+
+[Service]
+Type=simple
+User=mtproto-proxy
+Group=mtproto-proxy
+WorkingDirectory=/usr/share/mtproto-proxy/webapps/monitor
+ExecStart=/usr/bin/uvicorn server:app \
+    --host 127.0.0.1 \
+    --port 61208 \
+    --no-access-log \
+    --log-level warningRestart=always
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+PrivateTmp=yes
+ReadWritePaths=/var/log/mtproto-proxy
+
+[Install]
+WantedBy=multi-user.target
