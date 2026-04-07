@@ -8,7 +8,7 @@ license=('custom')
 depends=(python-requests python)
 makedepends=(python-setuptools python-wheel)
 source=("https://github.com/rdarshan927/GitPersona/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f87e468d4e6ca51170b7caf37c374b8a6dddf12bdbb970304b913bf6998e2127')
+sha256sums=('df3ffa70fe22bf28a1a8b5e922d94b5bf457ea07ebc9431b8f74592e1440e6c2')
 
 prepare() {
   return 0
