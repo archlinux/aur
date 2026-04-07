@@ -8,7 +8,7 @@ pkgname=balena-cli-bin
 _pkgname="${pkgname%-bin}"
 provides=(${_pkgname})
 pkgdesc='balena.io command line interface'
-pkgver=24.1.0
+pkgver=24.1.1
 pkgrel=1
 arch=('x86_64')
 url='https://balena.io/'
@@ -26,7 +26,7 @@ optdepends_x86_64=('lib32-glibc: emulated builds')
 source=(https://github.com/balena-io/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64-standalone.tar.gz)
 options=(!strip)
 replaces=('resin-cli')
-sha256sums=('7a9d2cc02633c25819b0b027293e042497abc75a5db793f48a9fe7a9042a01f5')
+sha256sums=('eadad923db35aab9663e82c7086e4211d447204fdf191f94467ffcec9ba6afd7')
 
 package() {
    install -dm755 "${pkgdir}/opt/"
