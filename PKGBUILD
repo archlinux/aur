@@ -3,7 +3,7 @@
 # Contributor: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
 
 _name=xformers
-pkgname=python-${_name}
+pkgname=python-${_name}-rocm
 pkgver=0.0.35
 pkgrel=1
 pkgdesc="Transformers building blocks, supporting a composable construction"

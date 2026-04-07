@@ -1,4 +1,4 @@
-pkgbase = python-xformers
+pkgbase = python-xformers-rocm
 	pkgdesc = Transformers building blocks, supporting a composable construction
 	pkgver = 0.0.35
 	pkgrel = 1
@@ -30,4 +30,4 @@ pkgbase = python-xformers
 	sha256sums = 685e57c23111cfec622f3297f2cba10308496fd513bda46813159309cfc667fb
 	sha256sums = SKIP
 
-pkgname = python-xformers
+pkgname = python-xformers-rocm
