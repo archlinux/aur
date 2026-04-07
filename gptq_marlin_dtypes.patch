@@ -1,0 +1,16 @@
+diff --git a/kt-sft/csrc/custom_marlin/gptq_marlin/gptq_marlin_dtypes.cuh b/kt-sft/csrc/custom_marlin/gptq_marlin/gptq_marlin_dtypes.cuh
+index 3e8c3ca9..e3790ba4 100644
+--- a/kt-sft/csrc/custom_marlin/gptq_marlin/gptq_marlin_dtypes.cuh
++++ b/kt-sft/csrc/custom_marlin/gptq_marlin/gptq_marlin_dtypes.cuh
+@@ -8,6 +8,11 @@
+ #include <cuda_bf16.h>
+ #include <cuda_fp16.h>
+ 
++#ifdef __HIP_PLATFORM_AMD__
++typedef __hip_bfloat16 nv_bfloat16;
++typedef __hip_bfloat162 nv_bfloat162;
++#endif
++
+ namespace gptq_marlin {
+ 
+ template <typename scalar_t> class ScalarType {};

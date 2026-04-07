@@ -5,7 +5,7 @@ _CUDA_ARCH_LIST="8.0;8.6;8.9;9.0;10.0;10.0+PTX"
 pkgbase=python-ktransformers
 pkgname=('python-ktransformers' 'python-kt-kernel')
 _pkgname=ktransformers
-pkgver=0.5.2.post1
+pkgver=0.5.3
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://kvcache.ai"
@@ -34,15 +34,19 @@ optdepends=(
 
 source=("${_pkgname}::git+https://github.com/kvcache-ai/ktransformers.git#tag=v${pkgver}"
         "setup-with-glog.patch"
+	"gptq_marlin_dtypes.patch"
 )
 sha256sums=('SKIP'
             '538620faa124510cf8fee9a5b4944cce0a80cfd73d8ff92bc8abe75e116cdad5'
+	'SKIP'
 )
 
 prepare() {
 	cd ${_pkgname}
 	git submodule update --init --recursive -- third_party/llama.cpp
 	patch -p1 -i "${srcdir}/setup-with-glog.patch"
+	git apply ../gptq_marlin_dtypes.patch
+
 	cd kt-kernel
 	sed -i 's|add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../third_party/pybind11 ${CMAKE_CURRENT_BINARY_DIR}/third_party/pybind11)|find_package(pybind11)|' CMakeLists.txt
 	sed -i 's|pip install .|build --wheel --no-isolation|g' install.sh
@@ -53,12 +57,15 @@ prepare() {
 
 build() {
 	export PIP_NO_BUILD_ISOLATION=1
-	cd ${_pkgname}/kt-kernel
+	cd ${_pkgname}
 	if [[ "$CUDA_HOME" ]]; then
 		export CPUINFER_USE_CUDA=1
 	elif [[ "$ROCM_PATH" ]]; then
 		export CPUINFER_USE_ROCM=1
+		sed -i 's/defined(__CUDA_ARCH__) &&/defined(__HIP_PLATFORM_AMD__) || &/g' \
+		kt-sft/csrc/custom_marlin/gptq_marlin/*cu*
 	fi
+	cd kt-kernel
 	./install.sh build
 
 	cd ../kt-sft
