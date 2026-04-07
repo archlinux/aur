@@ -1,13 +1,12 @@
 pkgname=iopenpod
 pkgver=1.0.41
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source iPod sync tool - manage your iPod without iTunes"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/TheRealSavi/iOpenPod"
 license=('MIT')
 depends=(
-    python
-    python-mutagen
+    hicolor-icon-theme
 )
 makedepends=(uv)
 optdepends=(
@@ -26,19 +25,18 @@ prepare() {
     patch -Np1 -i "${srcdir}/disable-autoupdater.patch"
 }
 
+build() {
+    cd "${srcdir}/iOpenPod-${pkgver}"
+    uv run --group dev pyinstaller --noconfirm iOpenPod.spec
+}
+
 package() {
     cd "${srcdir}/iOpenPod-${pkgver}"
-    uv build
-    uv pip install --prefix "${pkgdir}/usr" --no-deps dist/*.whl
+    install -d "${pkgdir}/usr/lib/iopenpod"
+    cp -a dist/iOpenPod/. "${pkgdir}/usr/lib/iopenpod/"
 
-    # Hatch wheel currently omits top-level runtime modules used by the
-    # generated console entrypoint (`from main import main`).
-    local site_pkgs
-    site_pkgs=$(echo "${pkgdir}"/usr/lib/python*/site-packages)
-    for f in main.py settings.py device_info.py ipod_iokit_query.py ipod_models.py ipod_usb_query.py sysinfo_authority.py; do
-        install -Dm644 "$f" "${site_pkgs}/$f"
-    done
-    cp -a ipod_device "${site_pkgs}/"
+    install -d "${pkgdir}/usr/bin"
+    ln -s ../lib/iopenpod/iOpenPod "${pkgdir}/usr/bin/iopenpod"
 
     install -Dm644 "assets/icons/icon-256.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/iopenpod.png"
