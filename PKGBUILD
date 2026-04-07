@@ -4,18 +4,17 @@
 pkgname=brother-hll8360cdw-cups-bin
 _printer=hll8360cdw
 pkgver=1.5.0
-pkgrel=1
+pkgrel=3
 pkgdesc="CUPS wrapper for Brother HL-L8360CDW printer"
 arch=("i686" "x86_64")
 url="http://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hll8360cdw_us_eu_as"
 license=("EULA")
 groups=("base-devel")
-source=("https://download.brother.com/welcome/dlf103246/${_printer}cupswrapper-1.5.0-0.i386.deb")
-md5sums=('3eff17863c6e3af61ca52d88aa5d30b4')
+source=("https://download.brother.com/welcome/dlf103246/${_printer}cupswrapper-${pkgver}-${pkgrel}.i386.deb")
+sha256sums=('07f3d064c06d85b13f3b9caeb2980c464114590c53bc97615ef96d30372a36f3')
 
 package() {
     tar -xf data.tar.gz -C "$pkgdir"
-
     cd "$pkgdir"
 
     install -Dm644 "opt/brother/Printers/$_printer/cupswrapper/brother_${_printer}_printer_en.ppd" \
@@ -27,5 +26,4 @@ package() {
     mkdir -p -m755 "$pkgdir/usr/lib/cups/filter"
     ln -s "/opt/brother/Printers/$_printer/cupswrapper/brother_lpdwrapper_$_printer" \
         "usr/lib/cups/filter"
-
 }
