@@ -1,18 +1,18 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-readonly _pkgname=SimSIMD
+readonly _pkgname=NumKong
 
 pkgname=simsimd
-pkgver=6.5.15
-pkgrel=3
+pkgver=6.5.16
+pkgrel=1
 pkgdesc="Up to 200x faster dot products and similarity metrics."
 arch=('x86_64')
-url=https://github.com/ashvardanian/simsimd
+url=https://github.com/ashvardanian/NumKong
 license=('Apache-2.0')
 makedepends=(cmake)
 source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('afd9e2d85048c0039fc6cede5dee98a813d57aa514d3bb804a00c7b767f79c58c6398ed259036b5c3ec7ba69f1255e76fd062835704e72cb37a09be748cf61ba')
+b2sums=('87378d3cb3b04a0044a8cf6b3fc86d177c3dbf8f9533dfa9a835bff38b600147ce3ce36cde21a42850b994cc8b2369cd59ab8f682f3bede40b7b14968b3d1ad9')
 
 build() {
     local build_tests=OFF
