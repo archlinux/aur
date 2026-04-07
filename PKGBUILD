@@ -3,7 +3,7 @@
 
 _name=end_to_end_encryption
 pkgname=nextcloud-app-end_to_end_encryption
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Nextcloud End-to-End-Encryption App"
 arch=('any')
@@ -12,7 +12,7 @@ license=('AGPLv3')
 makedepends=('nextcloud>=33' 'yq')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud-releases/${_name}/releases/download/v${pkgver/_/-}/${_name}-v${pkgver/_/-}.tar.gz")
-sha512sums=('4cda50f0bee61842bb64ff0c10e18cc3e4e315284566422fadb9b66dde9b0dc4d0f102f4a1da18ad23b696b4162ab1d009b42fe113863b4edd3ecd69d871bb7d')
+sha512sums=('b5853acb1bbb88378d08c3be6a080d6204a45e054307cf78017a628b2cd0fcb92710de6bf10efe0bc5bbef13e6d0631603ddafc0af06967744f0525c52d39a9e')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
