@@ -2,9 +2,9 @@
 pkgbase=plasma-workspace-povd
 _pkgname=(plasma-workspace plasma-x11-session)
 pkgname=(plasma-workspace-povd plasma-x11-session-povd)
-pkgver=6.6.3
+pkgver=6.6.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=3
+pkgrel=1
 pkgdesc='KDE Plasma Workspace (patched for per-output virtual desktops)'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -116,7 +116,7 @@ makedepends=(baloo
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
         povd.patch)
-sha256sums=('18001465a01ee29292a3c37e62205106ee9f79f18aaa42ae9654d160abf11790'
+sha256sums=('c68a70f33b3f638eccccd51f842491cc45abc6f143f5cae4a14b180b94a83ea2'
             'SKIP'
             '57c0f043b2a9ae25dfd0978acdf03073e88ea9a1d7845557485539a0642db6ba')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
