@@ -1,6 +1,6 @@
 # Maintainer: Arunachalam-gojosaturo <your-email@example.com>
 pkgname=luna-ai
-pkgver=6.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="L.U.N.A. AI v6 — Language Understanding Neural Agent: hacker-style PyQt6 AI desktop assistant with voice, Gemini/Groq, TTS, and more"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ provides=('luna-ai')
 conflicts=('luna-ai')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Arunachalam-gojosaturo/Luna-ai/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('f5d82130dcf979d383e8187ee9a02f8da42f0dc03dc7b3b4d3a1f7b105c2b390')
 
 prepare() {
     # Rename extracted dir to a predictable name

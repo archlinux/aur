@@ -1,6 +1,6 @@
 pkgbase = luna-ai
 	pkgdesc = L.U.N.A. AI v6 — Language Understanding Neural Agent: hacker-style PyQt6 AI desktop assistant with voice, Gemini/Groq, TTS, and more
-	pkgver = 6.0
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://github.com/Arunachalam-gojosaturo/Luna-ai
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = luna-ai
 	optdepends = python-pyaudio: microphone / voice input support
 	provides = luna-ai
 	conflicts = luna-ai
-	source = luna-ai-6.0.tar.gz::https://github.com/Arunachalam-gojosaturo/Luna-ai/archive/refs/tags/v6.0.tar.gz
-	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+	source = luna-ai-6.2.0.tar.gz::https://github.com/Arunachalam-gojosaturo/Luna-ai/archive/refs/tags/v6.2.0.tar.gz
+	sha256sums = f5d82130dcf979d383e8187ee9a02f8da42f0dc03dc7b3b4d3a1f7b105c2b390
 
 pkgname = luna-ai
