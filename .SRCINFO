@@ -8,7 +8,7 @@ pkgbase = zfstop
 	provides = ztop
 	source = ztop-linux-amd64::https://git.skylantix.com/rbitton/ztop/-/jobs/artifacts/v0.1.0/raw/ztop-linux-amd64?job=build
 	source = LICENCE::https://git.skylantix.com/rbitton/ztop/-/raw/v0.1.0/LICENCE
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 5dcb4c4409e2c14d0c2f55f2f024f0b9fd5062ef206a45296e0d41a4750fcf85
+	sha256sums = c01aff442f364e4af49f96e1233a02585f815895eb03aaec45b3a1e97b824cd4
 
 pkgname = zfstop
