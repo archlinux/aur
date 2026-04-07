@@ -32,7 +32,7 @@ source=("$pkgname::git+https://github.com/awesomeWM/awesome.git")
 md5sums=('SKIP')
 
 _LUA_VER=5.4
-_BUILD_DOCS=${_BUILD_DOCS:-1}
+_BUILD_DOCS=${_BUILD_DOCS:-0}
 
 pkgver() {
   cd $pkgname
