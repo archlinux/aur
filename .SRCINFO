@@ -19,9 +19,9 @@ pkgbase = omaclip-bin
 	sha256sums = d2cc30c8cb442f9d0b73af1a8f8494fb76d92c2abdcff5279cce493a0237061b
 	sha256sums = 436671e03fa1c9439db7bf106dc1b5bb3d9936976029df57d729517c412b8f81
 	sha256sums = 84ae19cfc0f1defbad548c2aade37bdfc417efb1b70070ae72e0d35af4c0bac4
-	source_x86_64 = https://github.com/rhemvi/omaclip/releases/download/v0.1.3/omaclip-linux-amd64
+	source_x86_64 = omaclip-linux-amd64-0.1.3::https://github.com/rhemvi/omaclip/releases/download/v0.1.3/omaclip-linux-amd64
 	sha256sums_x86_64 = 7364ab7610edb3f1a6737c8701bbca9b3128fec6189faa8b58544a23af8360b0
-	source_aarch64 = https://github.com/rhemvi/omaclip/releases/download/v0.1.3/omaclip-linux-arm64
+	source_aarch64 = omaclip-linux-arm64-0.1.3::https://github.com/rhemvi/omaclip/releases/download/v0.1.3/omaclip-linux-arm64
 	sha256sums_aarch64 = 75e05a041e46b94d7d8625b5894af8643f97c30ffca50984be6d0a435728dee5
 
 pkgname = omaclip-bin

@@ -13,8 +13,8 @@ optdepends=(
 options=('!debug')
 provides=('omaclip')
 conflicts=('omaclip')
-source_x86_64=("${url}/releases/download/v${pkgver}/omaclip-linux-amd64")
-source_aarch64=("${url}/releases/download/v${pkgver}/omaclip-linux-arm64")
+source_x86_64=("omaclip-linux-amd64-${pkgver}::${url}/releases/download/v${pkgver}/omaclip-linux-amd64")
+source_aarch64=("omaclip-linux-arm64-${pkgver}::${url}/releases/download/v${pkgver}/omaclip-linux-arm64")
 source=("appicon.png::${url}/releases/download/v${pkgver}/appicon.png"
   "LICENSE::https://raw.githubusercontent.com/rhemvi/omaclip/v${pkgver}/LICENSE"
   "omaclip.desktop")
@@ -26,9 +26,9 @@ sha256sums_aarch64=('75e05a041e46b94d7d8625b5894af8643f97c30ffca50984be6d0a43572
 
 package() {
   if [ "$CARCH" = "x86_64" ]; then
-    install -Dm755 omaclip-linux-amd64 "${pkgdir}/usr/bin/omaclip"
+    install -Dm755 omaclip-linux-amd64-${pkgver} "${pkgdir}/usr/bin/omaclip"
   else
-    install -Dm755 omaclip-linux-arm64 "${pkgdir}/usr/bin/omaclip"
+    install -Dm755 omaclip-linux-arm64-${pkgver} "${pkgdir}/usr/bin/omaclip"
   fi
   install -Dm644 appicon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/omaclip.png"
   install -Dm644 omaclip.desktop "${pkgdir}/usr/share/applications/omaclip.desktop"
