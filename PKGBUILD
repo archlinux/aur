@@ -2,7 +2,7 @@
 pkgname=r-quick-share
 _pkgname=rquickshare
 pkgver=0.11.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Rust implementation of NearbyShare/QuickShare from Android for Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Martichou/rquickshare"
@@ -14,7 +14,6 @@ depends=(
 )
 makedepends=(
   'cargo'
-  'cargo-tauri'
   'pnpm'
   'protobuf'
 )
@@ -28,18 +27,14 @@ prepare() {
   export PNPM_HOME="$srcdir/pnpm-home"
   export RUSTUP_TOOLCHAIN=stable
 
-  for d in core_lib app/main/src-tauri; do
-    pushd "${d}"
-    cargo fetch --target "$(rustc --print host-tuple)"
-    popd
-  done
-
   pushd app/main
   pnpm install
   popd
 
+  cargo fetch --manifest-path app/main/src-tauri/Cargo.toml --target host-tuple
+
   # Don't bundle AppImage
-#  sed -i 's/"targets": "all"/"targets": "deb"/g' app/main/src-tauri/tauri.conf.json
+  sed -i 's/"targets": "all"/"targets": "deb"/g' app/main/src-tauri/tauri.conf.json
 }
 
 build() {
@@ -48,11 +43,9 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  pnpm store prune
-
   pushd app/main
-  pnpm vite:build
-  cargo tauri build --no-bundle
+  pnpm store prune
+  pnpm build
   popd
 }
 
