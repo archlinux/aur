@@ -5,7 +5,7 @@
 
 pkgname=dsview-git
 pkgver=1.3.2.r53.g2e9e2c8
-pkgrel=11
+pkgrel=13
 pkgdesc='GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.'
 arch=($CARCH)
 url='http://www.dreamsourcelab.com/'
@@ -20,19 +20,22 @@ replaces=()
 # Upstream added VCS dependency to libsigrokdecode :/
 _qt=qt6
 depends=(
-  boost-libs
   hicolor-icon-theme
-  gcc-libs
   glib2
   glibc
+  libgcc
   libusb
   ${_qt}-base
   fftw
   python
   zlib
+  # AUR
+  python-mcp
+  python-toon
 )
 makedepends=(
   boost
+  boost-libs
   cmake
   git
   ${_qt}-tools
