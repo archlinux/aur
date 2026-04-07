@@ -1,6 +1,6 @@
 pkgbase = python-toon
 	pkgdesc = TOON (Token-Oriented Object Notation) encoder/decoder for Python - Bidirectional JSON-to-TOON converter optimized for LLMs
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/xaviviro/python-toon
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-toon
 	conflicts = python-toon
 	options = !strip
 	options = !debug
-	source = python-toon::git+https://github.com/xaviviro/python-toon.git#tag=v0.1.2
-	sha256sums = f147dc44344ac57480ec3e8eede74fd5e5b664c4bdaaa461a10b319e3221e22d
+	source = python-toon::git+https://github.com/xaviviro/python-toon.git#tag=v0.1.3
+	sha256sums = d3b08fb4db62484e87515faf1c7abf7a684074320fd56eef73e19f58a929bcf1
 
 pkgname = python-toon
