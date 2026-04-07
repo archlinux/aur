@@ -6,8 +6,8 @@
 # shellcheck disable=SC2034,SC2154,SC2148
 
 pkgname=go-configure-sw-hub
-_pkgver_major=6.52
-_pkgver_minor=002
+_pkgver_major=6.53
+_pkgver_minor=001
 pkgver=$_pkgver_major.$_pkgver_minor
 
 pkgrel=1
@@ -60,7 +60,7 @@ replaces=('greenpak-designer-dev' 'greenpak-designer')
 options=('!strip' '!debug')
 
 source=("https://renesasweb-greenpak.s3.us-west-2.amazonaws.com/v${_pkgver_major}/go-configure-sw-hub-v${pkgver}-debian-12-amd64.deb")
-b2sums=('29f00f06da2c57a4ab1979ea4186330dd1871e2123aad942c957d26f8e55a5e4d2bce7b199269060f5adb03175fd1634c91091207ab3d610c5a2ce1d5b7ea155')
+b2sums=('6d43f84b6b5f7b5bee272bca040d72f29cf3b8423bf7f224b4fa51e21784ace442bcec77f51c8a202553622733edbcbbb009fa2df6b4307f96d265629424e6ba')
 
 package() {
     # Extract the package data
