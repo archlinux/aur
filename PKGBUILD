@@ -21,6 +21,7 @@ sha256sums=('SKIP'
 
 package() {
   install -Dm755 "${srcdir}/i2tor-${pkgver}-linux-x86_64.AppImage" "${pkgdir}/opt/i2tor/i2tor.AppImage"
+  install -dm755 "${pkgdir}/usr/bin"
   ln -s /opt/i2tor/i2tor.AppImage "${pkgdir}/usr/bin/i2tor"
   install -Dm644 "${srcdir}/i2tor.desktop" "${pkgdir}/usr/share/applications/i2tor.desktop"
   install -Dm644 "${srcdir}/i2tor.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/i2tor.png"
