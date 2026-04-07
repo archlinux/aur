@@ -10,18 +10,26 @@
 # Contributor: Giusy Digital <kurmikon at libero dot it>
 
 get_new_ver() {
-  curl -s "https://api.github.com/repos/brave/brave-browser/releases?per_page=10" \
-  | jq -r '.[] | select(.prerelease) | .tag_name | ltrimstr("v")' \
-  | while read -r ver; do
-      curl -sf -o /dev/null -I \
-        "https://github.com/brave/brave-browser/releases/download/v${ver}/brave-origin-nightly-${ver}-linux-amd64.zip" \
-        && echo "$ver" && break
-    done
+  curl -s "https://api.github.com/repos/brave/brave-browser/releases?per_page=20" |
+  jq -r '
+    .[]
+    | select(.tag_name != null)
+    | .tag_name
+    | ltrimstr("v")
+  ' |
+  sort -Vr |
+  while read -r ver; do
+    url="https://github.com/brave/brave-browser/releases/download/v${ver}/brave-origin-nightly-${ver}-linux-amd64.zip"
+    if curl -sfI "$url" >/dev/null; then
+      echo "$ver"
+      return 0
+    fi
+  done
 }
 
 pkgname=brave-origin-nightly-bin
 _pkgver=$(get_new_ver)
-pkgver=1.91.10
+pkgver=1.91.17
 pkgrel=1
 epoch=1
 pkgdesc='Web browser that blocks ads and trackers by default (binary release)'
