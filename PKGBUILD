@@ -1,6 +1,6 @@
 # Maintainer: Mees Fatels
 pkgname=emm-git
-pkgver=r16.a8ab61d
+pkgver=r21.6e2b420
 pkgrel=1
 pkgdesc="Eidolon Minion Manager - Modular Go-based CLI/TUI for AI"
 arch=('x86_64' 'aarch64' 'armv7h')
