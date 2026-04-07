@@ -1,0 +1,21 @@
+pkgbase = djcmd-git
+	pkgdesc = A full-featured terminal DJ application for Linux
+	pkgver = r1.0
+	pkgrel = 1
+	url = https://github.com/djcmd-project/djcmd
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = powerpc
+	arch = ppc64le
+	license = GPL-3.0-only
+	makedepends = git
+	depends = alsa-lib
+	depends = ncurses
+	depends = sqlite
+	provides = djcmd
+	conflicts = djcmd
+	source = git+https://github.com/djcmd-project/djcmd.git
+	sha256sums = SKIP
+
+pkgname = djcmd-git
