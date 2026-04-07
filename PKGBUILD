@@ -3,7 +3,7 @@
 
 pkgname=pakcs
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Portland Aachen Kiel Curry System"
 arch=('x86_64')
 url="https://www.informatik.uni-kiel.de/~pakcs/index.html"
@@ -15,6 +15,7 @@ install=pakcs.install
 source=("https://www.curry-lang.org/pakcs/download/${pkgname}-${pkgver}-src.tar.gz" 'skip_dir_check.patch')
 md5sums=('f15037690b88f40424ef685d6194a35f' '76bdf92b29451a2983c4d9082ded5a2e')
 backup=("usr/lib/${pkgname}/pakcsrc.default")
+provides=('curry-compiler')
 
 prepare() {
 	patch "${srcdir}/${pkgname}-${pkgver}/Makefile" skip_dir_check.patch
@@ -110,7 +111,6 @@ package() {
 	ln -s "/usr/lib/${pkgname}/examples" "${pkgdir}/usr/share/doc/${pkgname}/examples"
 
 	# link binaries to /usr/bin
-	ln -s "/usr/lib/${pkgname}/bin/cleancurry" "${pkgdir}/usr/bin/cleancurry"
 	ln -s "/usr/lib/${pkgname}/bin/pakcs" "${pkgdir}/usr/bin/pakcs"
-	ln -s "/usr/lib/${pkgname}/bin/cypm" "${pkgdir}/usr/bin/cypm"
+	ln -s "/usr/lib/${pkgname}/bin/pakcs" "${pkgdir}/usr/bin/curry-pakcs"
 }

@@ -1,7 +1,7 @@
 pkgbase = pakcs
 	pkgdesc = The Portland Aachen Kiel Curry System
 	pkgver = 3.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.informatik.uni-kiel.de/~pakcs/index.html
 	install = pakcs.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = pakcs
 	makedepends = texlive-core
 	depends = swi-prolog
 	optdepends = rlwrap: for command line editing and history functionality
+	provides = curry-compiler
 	backup = usr/lib/pakcs/pakcsrc.default
 	source = https://www.curry-lang.org/pakcs/download/pakcs-3.9.0-src.tar.gz
 	source = skip_dir_check.patch
