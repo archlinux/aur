@@ -1,0 +1,16 @@
+pkgbase = gartenrose-git
+	pkgdesc = Assembler fetch for sysinfo
+	pkgver = 7
+	pkgrel = 1
+	url = https://codeberg.org
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nasm
+	provides = rose
+	conflicts = rose
+	options = !debug
+	source = rose::git+https://codeberg.org/MiaMaid/GartenRose
+	sha256sums = SKIP
+
+pkgname = gartenrose-git
