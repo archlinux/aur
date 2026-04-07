@@ -1,11 +1,12 @@
 pkgbase = pakcs
 	pkgdesc = The Portland Aachen Kiel Curry System
 	pkgver = 3.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.informatik.uni-kiel.de/~pakcs/index.html
 	install = pakcs.install
 	arch = x86_64
 	license = custom:PAKCS License
+	makedepends = base-devel
 	makedepends = stack
 	makedepends = texlive-core
 	depends = swi-prolog

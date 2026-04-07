@@ -3,13 +3,13 @@
 
 pkgname=pakcs
 pkgver=3.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Portland Aachen Kiel Curry System"
 arch=('x86_64')
 url="https://www.informatik.uni-kiel.de/~pakcs/index.html"
 license=('custom:PAKCS License')
 depends=('swi-prolog')
-makedepends=('stack' 'texlive-core')
+makedepends=('base-devel' 'stack' 'texlive-core')
 optdepends=('rlwrap: for command line editing and history functionality')
 install=pakcs.install
 source=("https://www.curry-lang.org/pakcs/download/${pkgname}-${pkgver}-src.tar.gz" 'skip_dir_check.patch')
@@ -28,7 +28,7 @@ build() {
 	fi
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	msg2 "Building PAKCS (CPM compilation may take 10–30 minutes)..."
+	msg2 "Building PAKCS (can take more than 10min)..."
 	make	DISTPKGINSTALL=yes \
 			CURRYLIBSDIR="${PWD}/lib" \
 			CURRYTOOLSDIR="${PWD}/currytools" \
