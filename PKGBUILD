@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=millisecond
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Optimize your Linux system for low latency audio"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=()
 replaces=()
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('c778b585d42100fb71546d4cbbc26dcfa03ab68e6fb9bec7f04743e906cdd928')
+sha256sums=('5ec01c93f8fb29b32ef3fdce319f90168d557862e86210146f0579f741936dd3')
 validpgpkeys=()
 
 prepare() {
