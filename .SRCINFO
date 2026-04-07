@@ -1,6 +1,6 @@
 pkgbase = oplnova-git
 	pkgdesc = A game manager for Open PS2 Loader (OPL) (cutting-edge version)
-	pkgver = 1.6.4.rd4ec6cb
+	pkgver = 1.6.4.rb21f2ac
 	pkgrel = 1
 	url = https://code.weexnes.dev/oplnova
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = oplnova-git
 	provides = oplnova
 	conflicts = oplnova
 	options = !strip
-	source = oplnova-git-d4ec6cb61ee59f0f1d9b5f1300049b4c93ee1398.tar.gz::https://code.weexnes.dev/~downloads/projects/1/archives?revision=d4ec6cb61ee59f0f1d9b5f1300049b4c93ee1398&format=tgz
+	source = oplnova-git-b21f2ac91621d3453529f84343e4661000b95b5d.tar.gz::https://code.weexnes.dev/~downloads/projects/1/archives?revision=b21f2ac91621d3453529f84343e4661000b95b5d&format=tgz
 	sha256sums = SKIP
 
 pkgname = oplnova-git
