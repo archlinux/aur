@@ -1,0 +1,17 @@
+pkgbase = retrom-bin
+	pkgdesc = Your own private cloud game-library service (prebuilt binary)
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/JMBeresford/retrom
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = retrom
+	conflicts = retrom
+	conflicts = retrom-git
+	options = !strip
+	source = retrom-bin-0.8.1.deb::https://github.com/JMBeresford/retrom/releases/download/v0.8.1/Retrom_0.8.1_amd64.deb
+	sha256sums = 5ebf0e666fa2f92c5fcd34142d2c3d03dd161a9ac1f48ecb6fda8eb1db89d818
+
+pkgname = retrom-bin
