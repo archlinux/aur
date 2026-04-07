@@ -2,8 +2,8 @@
 # Contributor: MSOB7YY <namida.coo@gmail.com>
 
 pkgname=namida-bin
-pkgver=5.9.4
-_buildnumber=260405059
+pkgver=5.9.5
+_buildnumber=260407098
 pkgrel=1
 pkgdesc="A Beautiful and Feature-rich Music Player, With YouTube & Video Support Built in Flutter"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=(namida)
 conflicts=(namida)
 makedepends=()
 source=("namida-v${pkgver}-beta.linux.tar.gz::https://github.com/namidaco/namida-snapshots/releases/download/${pkgver}-beta%2B${_buildnumber}/namida-v${pkgver}-beta.linux.tar.gz")
-sha256sums=('72728b79b4a63d3a050fa40838016ab562029a90cb7d90618baafa400140a403')
+sha256sums=('73690b75a98974a0767c5e845d5a8f41a6468bdcb57cf002a41c638cb926625b')
 
 package() {
   cd "${srcdir}"
