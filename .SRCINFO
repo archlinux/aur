@@ -1,6 +1,6 @@
 pkgbase = pdfapps
 	pkgdesc = Fast, offline, subscription-free PDF editor with 13 built-in tools
-	pkgver = 1.8.3
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://nelsonduarte.github.io/PDFApps/
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = pdfapps
 	optdepends = tesseract-data-fra: French OCR
 	optdepends = tesseract-data-deu: German OCR
 	optdepends = ghostscript: advanced PDF compression
-	source = pdfapps-1.8.3.tar.gz::https://github.com/nelsonduarte/PDFApps/archive/refs/tags/v1.8.3.tar.gz
-	sha256sums = 294cc573697c920cecd5a73a8a551a92fa71fc77df88f60a92c6e7584693ac21
+	source = pdfapps-1.9.0.tar.gz::https://github.com/nelsonduarte/PDFApps/archive/refs/tags/v1.9.0.tar.gz
+	sha256sums = 23a6b21beb99337632131f14f549a5c2c397e86d44ef004bb6da538c41e2905a
 
 pkgname = pdfapps
