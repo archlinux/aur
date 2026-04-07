@@ -1,6 +1,6 @@
 pkgbase = hledger-textual
 	pkgdesc = terminal user interface for managing hledger journal transactions
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/thesmokinator/hledger-textual
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = hledger-textual
 	depends = python
 	depends = python-textual
 	depends = python-textual-plotext
-	source = https://files.pythonhosted.org/packages/source/h/hledger-textual/hledger_textual-0.2.9.tar.gz
-	sha256sums = 1ff4afcf95b288ed76ae16e218e8c11986ea85354d2e426f139563f52b0f5a3b
+	source = https://files.pythonhosted.org/packages/source/h/hledger-textual/hledger_textual-0.2.10.tar.gz
+	sha256sums = f9ddc777440e48783d339cffe856e15d4ae9f2a28a198b081254df99b014453a
 
 pkgname = hledger-textual
