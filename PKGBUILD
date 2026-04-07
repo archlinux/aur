@@ -5,7 +5,6 @@ pkgdesc="Cryptographic library for EAC version 2"
 arch=(x86_64)
 url="https://frankmorgner.github.io/openpace"
 license=(LGPL-3.0)
-depends=(openssl)
 makedepends=(
 	autoconf
 	gengetopt
@@ -14,6 +13,8 @@ makedepends=(
 	libtool
 	make
 )
+depends=(openssl)
+provides=(libeac.so)
 source=("git+https://github.com/frankmorgner/openpace.git#tag=1.1.4")
 sha256sums=('6d4eddae736f169ff0666e54e533953f4a62a5721da21879117e24861961ee99')
 
@@ -31,5 +32,5 @@ build() {
 package() {
 	cd $pkgname
 	make DESTDIR="$pkgdir" install
-	mv "$pkgdir"/usr/bin/example "$pkgdir"/usr/share/doc/openpace/
+	mv "$pkgdir"/usr/bin/{example,eactest} "$pkgdir"/usr/share/doc/openpace/
 }

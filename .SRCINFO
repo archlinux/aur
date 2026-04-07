@@ -12,6 +12,7 @@ pkgbase = openpace
 	makedepends = libtool
 	makedepends = make
 	depends = openssl
+	provides = libeac.so
 	source = git+https://github.com/frankmorgner/openpace.git#tag=1.1.4
 	sha256sums = 6d4eddae736f169ff0666e54e533953f4a62a5721da21879117e24861961ee99
 
