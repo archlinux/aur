@@ -30,7 +30,9 @@ conflicts=('awesome')
 backup=('etc/xdg/awesome/rc.lua')
 source=("$pkgname::git+https://github.com/awesomeWM/awesome.git")
 md5sums=('SKIP')
+
 _LUA_VER=5.4
+_BUILD_DOCS=${_BUILD_DOCS:-1}
 
 pkgver() {
   cd $pkgname
@@ -40,6 +42,11 @@ pkgver() {
 build() {
   mkdir -p build
   cd build
+  if [[ "$_BUILD_DOCS" -eq 1 ]] ; then
+    extra_args=()
+  else
+    extra_args=('-DGENERATE_DOC=OFF' '-DGENERATE_MANPAGES=OFF')
+  fi
   cmake ../$pkgname \
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -47,7 +54,8 @@ build() {
     -DLUA_INCLUDE_DIR=/usr/include/lua${_LUA_VER} \
     -DLUA_LIBRARY=/usr/lib/liblua.so.${_LUA_VER} \
     -DLUA_EXECUTABLE=/usr/bin/lua${_LUA_VER} \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+	"${extra_args[@]}"
   make
 }
 
