@@ -1,0 +1,18 @@
+pkgbase = thunder-cli
+	pkgdesc = Official CLI for Thunder Compute
+	pkgver = 2.0.49
+	pkgrel = 1
+	url = https://github.com/Thunder-Compute/thunder-cli
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = openssh: required for tnr scp and ssh-keygen known_hosts cleanup
+	optdepends = rsync: faster transfers for tnr scp
+	optdepends = xdg-utils: open the browser automatically during tnr login
+	source = thunder-cli-2.0.49.tar.gz::https://github.com/Thunder-Compute/thunder-cli/archive/refs/tags/v2.0.49.tar.gz
+	source = pacman-package-manager.patch
+	sha256sums = 7bb57b79238f7e2f852b8898680612c6209d0c8bee2355d3356b31acd0dadc95
+	sha256sums = 69a28f9ea239f8ed11310596bc3ba8e3ec92722a7807d8426dbcca3c475185f9
+
+pkgname = thunder-cli
