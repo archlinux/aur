@@ -1,14 +1,14 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=lte-cell-scanner-git
-pkgver=r24.bef6ef4
+pkgver=r26.e7f71cb
 pkgrel=1
 pkgdesc="An OpenCL accelerated TDD/FDD LTE Scanner"
 arch=('i686' 'x86_64')
 url="https://github.com/JiaoXianjun/LTE-Cell-Scanner"
 license=('GPL')
 depends=('git')
-makedepends=('cmake' 'hackrf' 'fftw' 'itpp' 'boost' 'boost-libs' 'libbladerf-git')
+makedepends=('cmake' 'hackrf' 'fftw' 'itpp' 'boost' 'boost-libs' 'bladerf')
 source=("${pkgname}::git+https://github.com/JiaoXianjun/LTE-Cell-Scanner")
 sha256sums=('SKIP')
 
@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
-
+	sed -i 's/FIND_PACKAGE( Boost COMPONENTS thread system REQUIRED )/FIND_PACKAGE( Boost COMPONENTS thread REQUIRED )/' CMakeLists.txt
 	mkdir -p "${srcdir}/${pkgname}/build"
 }
 
@@ -34,6 +34,7 @@ build() {
 		-DCMAKE_VERBOSE_MAKEFILE=ON \
 		-DUSE_HACKRF=1 \
 		-DUSE_BLADERF=1 \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 		-DUSE_OPENCL=0 # opencl segfaults in some cases
 	make
 }
