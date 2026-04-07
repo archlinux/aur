@@ -1,6 +1,6 @@
 # Maintainer: Stevezxc <stevezhou586 at gmail dot com>
 pkgname=('ttf-lxgw-neo-zhisong-screen' 'ttf-lxgw-neo-zhisong-screen-full')
-pkgver=26.02.09
+pkgver=26.02.27
 pkgrel=1
 pkgdesc="霞鹜新致宋屏幕阅读版。"
 arch=('any')
