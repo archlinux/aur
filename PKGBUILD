@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=popcorn-fx-bin
 _pkgname=popcorn-time
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="A multi-platform torrent streaming client that includes an integrated media player with support for embedded devices such as the Raspberry PI.(Prebuilt version)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6ff8840a230c4fdf21e7085266d9f1378b54cf1471233c6ae966304ffcd66027'
+sha256sums=('78995ca32ab8712def99c05af672901c941272fcd18eb0beb92950a705b555ef'
             'af5fdb44fbb692da78a402bfa7bdf6ff45d853082b5ef461e9c9524365310abe')
 prepare() {
     sed -i -e "
