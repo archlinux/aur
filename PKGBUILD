@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
 pkgname=deletor
-pkgver=1.5.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Manage and delete files efficiently with an interactive TUI and scriptable CLI."
 arch=("i686" "x86_64" "aarch64")
@@ -9,8 +9,8 @@ url="https://github.com/pashkov256/deletor"
 makedepends=('go')
 options=("strip" "buildflags")
 depends=('glibc')
-source=("${url}/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e4a2a2ca3a1fa420c1962c2d8dd1778a3fbd06dc9a468e6d5f76b9d26971bbeb')
+source=("${url}/archive/refs/tags/"${pkgver}".tar.gz")
+sha256sums=('6bd2c548fc85f0e7896bf2324ffd4b31248a6d78a2ae6d7405f3e229c4fb5f81')
     
 prepare(){
     cd "${pkgname}-${pkgver}"
