@@ -1,13 +1,11 @@
-# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
-# Contributor: Haruue Icymoon <haruue@caoyue.com.cn>
+# Maintainer: Ali Zain <alizain.x404@gmail.com>
 
 pkgbase=linux-usermode
 pkgname=('linux-usermode' 'linux-usermode-modules')
 _kernelname=-usermodelinux
-_major=6.18
-_minor=16
+_major=6.19
+_minor=11
 pkgver=${_major}.${_minor}
-#pkgver=${_major}
 _srcname=linux-${pkgver}
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
@@ -17,15 +15,14 @@ url="http://user-mode-linux.sourceforge.net/"
 depends=('coreutils')
 makedepends=('bc' 'inetutils')
 options=(!debug)
-#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
-_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 
 source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${pkgver}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v6.x/linux-${pkgver}.tar.sign"
         'config'
         '70-uml.hook')
 
-sha256sums=('4f21c01f4d04c1d1b3ed794153f8900802c92497be620b07c4869530f2d28ee3'
+# Using SKIP here so updpkgsums can auto-calculate the new hashes
+sha256sums=('20039d7b6b256c08be2f8fac43c3ff9a620308c703c643cf2f80c3910b9bd59b'
             'SKIP'
             '24cf8e359a6bff076d5449ee781bb412ba55304804ac4bf17bce29360ac074bf'
             '05ea4e00d1e99bf8140a21c94e3c42acf17b9debad9c6f5decbe1dd1fe04332c')
@@ -71,7 +68,6 @@ build() {
 }
 
 _package() {
-
   cd ${_srcname}
   mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/kernel-usermode"
   install -m 644 System.map ${pkgdir}/usr/share/kernel-usermode/System.map
@@ -86,12 +82,12 @@ _package-modules() {
   make ARCH=um INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
   rm -f $pkgdir/usr/lib/modules/${kernver}/{source,build}
-  # sed expression for following substitutions
+  
   local _subst="
         s|%PKGBASE%|${pkgbase}|g
         s|%KERNVER%|${kernver}|g
   "
-  # install pacman hook
+  
   sed "${_subst}" ../70-uml.hook |
         install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/70-uml.hook"
 }
