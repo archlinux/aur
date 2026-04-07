@@ -7,7 +7,7 @@
 pkgdesc='A simple VTE-based terminal'
 pkgname=termite
 pkgver=16.9
-pkgrel=9
+pkgrel=10
 url=https://github.com/aperezdc/termite
 license=(LGPL-2.1-only)
 depends=(gtk3 pcre2 gnutls vte-common)
@@ -21,13 +21,13 @@ source=(
     )
 b2sums=('97a11784f4ed1bd602578e11f91f11b882d6f7750a0c51a56d5560c7bbf83b1df3af79a64965c436130a6248ecf9fb86dd58c4d4bd6e5b70408a70815bdb5d32'
         'SKIP'
-        '39ae11d3fe4595b93b38aed0e520ab1667ae812ef9f395ad5d6fd309b334ac8c2d5a23ee9cd155ed685968cdf4cd3264a287bbda3455013cdb73898f5cb6fbb5')
+        '180e50f2650a3630b2148a5102bf1b793e3c4a2babdf8728cca29d4deed17419ba4b16c6c5be29d7c9628765ad367a969099533c22dd3d12ff5603c833818725')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
     # Remove old vte version
     rm -rf subprojects/vte
-    # Patch wrap with version 0.82.3
+    # Patch vte wrap with version 0.84.0
     patch -p1 < ../vte.patch
 }
 

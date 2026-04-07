@@ -1,7 +1,7 @@
 pkgbase = termite
 	pkgdesc = A simple VTE-based terminal
 	pkgver = 16.9
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/aperezdc/termite
 	arch = x86_64
 	license = LGPL-2.1-only
@@ -21,6 +21,6 @@ pkgbase = termite
 	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
 	b2sums = 97a11784f4ed1bd602578e11f91f11b882d6f7750a0c51a56d5560c7bbf83b1df3af79a64965c436130a6248ecf9fb86dd58c4d4bd6e5b70408a70815bdb5d32
 	b2sums = SKIP
-	b2sums = 39ae11d3fe4595b93b38aed0e520ab1667ae812ef9f395ad5d6fd309b334ac8c2d5a23ee9cd155ed685968cdf4cd3264a287bbda3455013cdb73898f5cb6fbb5
+	b2sums = 180e50f2650a3630b2148a5102bf1b793e3c4a2babdf8728cca29d4deed17419ba4b16c6c5be29d7c9628765ad367a969099533c22dd3d12ff5603c833818725
 
 pkgname = termite
