@@ -1,7 +1,7 @@
 pkgbase = openrgb-idle-notifier
 	pkgdesc = Switch OpenRGB profile on idling.
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://gitlab.com/billtran1632001/openrgb-idle-notifier
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = openrgb-idle-notifier
 	depends = libboost_program_options.so>=1.78
 	depends = libwayland-client.so
 	backup = etc/xdg/openrgb-idle-notifier.conf
-	source = https://gitlab.com/billtran1632001/openrgb-idle-notifier/-/archive/v1.0.0/openrgb-idle-notifier-v1.0.0.tar.gz
-	sha256sums = c809bbbf19a94c203f78467fe3e33e573504a0fc30c3962adcfbcdf74a35d4c4
+	source = https://gitlab.com/billtran1632001/openrgb-idle-notifier/-/archive/v1.0.1/openrgb-idle-notifier-v1.0.1.tar.gz
+	sha256sums = 83a6ed4646dd76e0cd4a2ec63b19bb667268ba5315dd00339b8c9d0ec33a6a00
 
 pkgname = openrgb-idle-notifier
