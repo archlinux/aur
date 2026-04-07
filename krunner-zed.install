@@ -1,0 +1,15 @@
+post_install() {
+    kquitapp6 krunner 2>/dev/null || true
+    echo "KRunner will restart on next invocation and load the Zed plugin."
+}
+
+post_upgrade() {
+    pkill -x krunner-zed 2>/dev/null || true
+    kquitapp6 krunner 2>/dev/null || true
+    echo "KRunner will restart on next invocation and reload the Zed plugin."
+}
+
+pre_remove() {
+    pkill -x krunner-zed 2>/dev/null || true
+    kquitapp6 krunner 2>/dev/null || true
+}

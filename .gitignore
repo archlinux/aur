@@ -1,0 +1,10 @@
+src/
+pkg/
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.pkg.tar.*
+chrootdir/
+build/
+cache/
+*.log
