@@ -16,7 +16,7 @@ arch=('x86_64')
 url="" 
 license=('MIT')
 depends=('pam')
-sha256sums=('49f90408efedc85307e0837e3b5f89e3ca838558cc9f6699fda129f800e3c522'
+sha256sums=('894e3849a853159fc272e446a0c3fb74ceeca456df6ada9daf652398558ff1b4'
             '32db28f75a0d25709fbfc654900f686b403980c1d05a9d627a3eaecf4b481753'
             'dc17b21c82ef63f4351cb66b8f1a3324843eef82404790773796c1f1ac6aefa3')
 source=("yt.c" "yt.cfg" "yt.pam")
