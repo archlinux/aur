@@ -1,7 +1,7 @@
 pkgbase = matlab-language-server
 	pkgdesc = Implementation of the Microsoft Language Server Protocol for the MATLAB language
 	pkgver = 1.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mathworks/MATLAB-language-server
 	arch = any
 	license = MIT

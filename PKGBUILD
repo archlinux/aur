@@ -1,8 +1,11 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
+# https://github.com/mathworks/Emacs-MATLAB-Mode/blob/default/doc/matlab-language-server-lsp-mode.org#installation
+# https://github.com/mathworks/MATLAB-language-server/issues/79
+
 pkgname="matlab-language-server"
 pkgver=1.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of the Microsoft Language Server Protocol for the MATLAB language"
 arch=(
   'any'
@@ -24,10 +27,16 @@ source=(
 )
 sha256sums=('d37fd3c3e99c615a18a00731fce65ec818c132892b68c238d5f79ba92131afb0')
 
-build() {
+prepare() {
   cd "${srcdir}/${_pkgsrc}"
   npm ci --cache "${srcdir}/.npm"
-  npm run package
+}
+
+build() {
+  cd "${srcdir}/${_pkgsrc}"
+  npm run project-install --cache "${srcdir}/.npm"
+  npm run compile --cache "${srcdir}/.npm"
+  npm run package --cache "${srcdir}/.npm"
 }
 
 check() {
