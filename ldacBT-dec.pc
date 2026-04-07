@@ -1,0 +1,12 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=/usr/lib
+includedir=/usr/include/ldac
+
+Name: ldacBT-dec
+Description: LDAC Bluetooth decoder.
+Version: 2.0.2.3
+
+Libs: -L${libdir} -lldacBT_dec
+Libs.private: -lm
+Cflags: -I${includedir}

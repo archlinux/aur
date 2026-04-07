@@ -1,0 +1,21 @@
+pkgbase = libldacdec
+	pkgdesc = Reverse-engineered unofficial LDAC Bluetooth decoder library
+	pkgver = 1.0.0.1
+	pkgrel = 4
+	url = https://github.com/anonymix007/libldacdec
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = patchelf
+	depends = glibc
+	provides = libldacBT_dec.so
+	source = git+https://github.com/anonymix007/libldacdec#commit=c90094b15e25aef0e47c6d775fa94aceb36cabbc
+	source = git+https://android.googlesource.com/platform/external/libldac.git#commit=e8ff0f96f26b84b47711c549e0d60baa425cd70e
+	source = ldacBT-dec.pc
+	sha256sums = 4f2eb83a0ceaa71c0cbdb3e622ff37444199779df00372b8a167b9da3522fb2e
+	sha256sums = 096342df8d8675c354f0b6335d4d0b2f044511628952c9240e20f8c4bda6a93f
+	sha256sums = d6425808c870f7c408013934478421e8895073c10fb3ac10fa1db9febe0783f4
+
+pkgname = libldacdec
