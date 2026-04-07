@@ -83,6 +83,10 @@ b2sums=('SKIP')
 
 prepare() {
   cd pipewire
+  # From https://gitlab.archlinux.org/archlinux/packaging/packages/pipewire commit ddff36ce2d4136e5c39c8385a33672289bbc1e5f
+  # Fix build 
+  git cherry-pick -n fb47e739d9f605772b5098421a809537c108d30c
+
 }
 
 build() {
