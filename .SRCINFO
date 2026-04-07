@@ -1,6 +1,6 @@
 pkgbase = luna-ai
 	pkgdesc = Luna AI v6 — Hacker-style voice AI desktop assistant. Voice, YouTube, brightness, crypto, live data.
-	pkgver = 6.0.0
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://github.com/Arunachalam-gojosaturo/luna-ai
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = luna-ai
 	optdepends = ydotool: Wayland keyboard/mouse control
 	optdepends = python-speechrecognition: voice input
 	optdepends = python-pyaudio: microphone support
-	source = luna-ai-6.0.0.tar.gz::https://github.com/Arunachalam-gojosaturo/luna-ai/archive/v6.0.0.tar.gz
+	source = luna-ai-6.2.0.tar.gz::https://github.com/Arunachalam-gojosaturo/Luna-ai/archive/refs/tags/v6.2.0.tar.gz
 	sha256sums = fcb6f1c39ea1c84d119aaa0c8fad4e54faa0b64af3fa157bc6f6f8266612d8c1
 
 pkgname = luna-ai

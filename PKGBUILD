@@ -1,6 +1,6 @@
 # Maintainer: Arunachalam-gojosaturo <cutyarunachalam1@gmail.com>
 pkgname=luna-ai
-pkgver=6.0.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Luna AI v6 — Hacker-style voice AI desktop assistant. Voice, YouTube, brightness, crypto, live data."
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
 )
 makedepends=('python-pip')
 
-source=("luna-ai-$pkgver.tar.gz::https://github.com/Arunachalam-gojosaturo/luna-ai/archive/v$pkgver.tar.gz")
+source=("luna-ai-$pkgver.tar.gz::https://github.com/Arunachalam-gojosaturo/Luna-ai/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('fcb6f1c39ea1c84d119aaa0c8fad4e54faa0b64af3fa157bc6f6f8266612d8c1')
 
 package() {
