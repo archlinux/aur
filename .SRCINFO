@@ -1,6 +1,6 @@
 pkgbase = data-peek
 	pkgdesc = A minimal, fast SQL client desktop application with AI-powered querying. Built for developers who want to quickly peek at their data without the bloat. Supports PostgreSQL, MySQL, and Microsoft SQL Server.(Use system-wide electron)
-	pkgver = 0.16.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://www.datapeek.dev/
 	arch = any
