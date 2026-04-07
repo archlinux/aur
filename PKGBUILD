@@ -2,7 +2,7 @@
 
 pkgname=navicat17-premium-en
 pkgver=17.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage and Develop Your Databases"
 arch=('x86_64' 'aarch64')
 url='https://www.navicat.com/en/products/navicat-premium'
@@ -25,6 +25,10 @@ package() {
     cp -r squashfs-root/usr $_na_dir
     install squashfs-root/AppRun $_na_dir
     cp squashfs-root/manual.pdf $_na_dir
+    # Avoid loading Navicat's bundled libsystemd on rolling Arch systems.
+    # The bundled copy is too old for current util-linux/libmount and causes
+    # startup failure before the UI appears.
+    rm -f "$_na_dir"/usr/lib/libsystemd.so.0*
     install -d $pkgdir/usr/share/applications
     cp $srcdir/navicat17.desktop $pkgdir/usr/share/applications
     _icon_dir=usr/share/icons/hicolor/256x256/apps

@@ -1,7 +1,7 @@
 pkgbase = navicat17-premium-en
 	pkgdesc = Manage and Develop Your Databases
 	pkgver = 17.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.navicat.com/en/products/navicat-premium
 	arch = x86_64
 	arch = aarch64
