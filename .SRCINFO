@@ -1,6 +1,6 @@
 pkgbase = bili-danmaku-tui
 	pkgdesc = Terminal UI client for displaying Bilibili live chat messages in real time
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/Youthdreamer/bili-danmaku-tui
 	arch = x86_64

@@ -1,5 +1,5 @@
 pkgname=bili-danmaku-tui
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Terminal UI client for displaying Bilibili live chat messages in real time'
 arch=('x86_64' 'aarch64')
