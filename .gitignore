@@ -1,0 +1,13 @@
+# Arch packaging directories
+/pkg/
+/src/
+
+# Built packages
+*.pkg.tar.*
+
+# Upstream source files
+/ontime/
+*.AppImage
+
+# Other build artifacts
+*.log

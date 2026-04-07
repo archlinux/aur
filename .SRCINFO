@@ -1,0 +1,21 @@
+pkgbase = ontime-git
+	pkgdesc = Time keeping for live events (built from source)
+	pkgver = 4.7.0.r0.g1a2b3c4
+	pkgrel = 1
+	url = https://github.com/cpvalente/ontime
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = nodejs>=22
+	makedepends = pnpm>=10
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = ontime
+	conflicts = ontime
+	conflicts = ontime-bin
+	options = !strip
+	source = ontime::git+https://github.com/cpvalente/ontime.git#branch=master
+	sha256sums = SKIP
+
+pkgname = ontime-git
