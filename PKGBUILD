@@ -1,5 +1,5 @@
 pkgname=wolvenkit-cli-bin
-pkgver=8.17.3
+pkgver=8.17.4
 pkgrel=1
 pkgdesc='A modding tool for Cyberpunk 2077'
 arch=('x86_64')
@@ -7,7 +7,7 @@ url='https://github.com/WolvenKit/WolvenKit'
 license=('GPL3')
 depends=('dotnet-runtime')
 source=("https://github.com/WolvenKit/WolvenKit/releases/download/${pkgver}/WolvenKit.ConsoleLinux-${pkgver}.zip")
-sha256sums=('e029b7ddb106e8ac0ffb5e4845ea921ecef6ea96caac5e1e174a4bceadeb22b5')
+sha256sums=('f9808169c7ea2b7a858c4404029dc1bdea030fd6124ff29d650fee87d3454c68')
 
 package() {
     mkdir -p "${pkgdir}/opt"
