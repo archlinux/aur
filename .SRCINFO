@@ -1,6 +1,6 @@
 pkgbase = rash-bin
 	pkgdesc = Declarative shell scripting using Rust native bindings
-	pkgver = 2.19.1
+	pkgver = 2.19.2
 	pkgrel = 1
 	url = https://rash-sh.github.io
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rash-bin
 	depends = gcc-libs
 	provides = rash
 	conflicts = rash
-	source = https://github.com/rash-sh/rash/releases/download/v2.19.1/rash-2.19.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 24d6fdb4e587c69fbffe873db1d870a4d57a2a6c2b16e16bf58648bc9f227e17
+	source = https://github.com/rash-sh/rash/releases/download/v2.19.2/rash-2.19.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = b5619b230882a70e6f96be642a740db293453c91e89ca9f83d2ae602afb02630
 
 pkgname = rash-bin
