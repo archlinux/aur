@@ -2,7 +2,7 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=poezio
-pkgver=0.16
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="A full-featured command-line IRC-like XMPP (Jabber) client"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -16,14 +16,12 @@ optdepends=('poezio-omemo: OMEMO plugin'
             'python-pyinotify: Autoaway with screen plugin (also works with tmux)'
             'figlet: ASCII art plugin')
 
-sha256sums=('c473de4625ecff39ff835d6b65a02e6a13007762c9d543e41f1f428dc5289083')
+sha256sums=('8059d78f59c356bc7c8221a784035d4b4eb7754166a2d7a1e6159f8f28100b48')
 build() {
     cd "$pkgname"
     rm -f dist/*.whl
     sphinx-build -b man doc/source build/sphinx/man
     sphinx-build doc/source build/sphinx/html
-    # TODO: remove on next poezio release
-    sed -i '/sphinx/d' pyproject.toml
     python -m build --wheel --no-isolation
 }
 
