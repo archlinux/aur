@@ -1,0 +1,14 @@
+pkgbase = zfstop
+	pkgdesc = A terminal dashboard for ZFS, in the spirit of htop
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.skylantix.com/rbitton/ztop
+	arch = x86_64
+	license = MIT
+	provides = ztop
+	source = ztop-linux-amd64::https://git.skylantix.com/rbitton/ztop/-/jobs/artifacts/v0.1.0/raw/ztop-linux-amd64?job=build
+	source = LICENCE::https://git.skylantix.com/rbitton/ztop/-/raw/v0.1.0/LICENCE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = zfstop
