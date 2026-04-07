@@ -7,6 +7,7 @@ pkgbase = swell
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	makedepends = clang
 	depends = alsa-lib
 	depends = openssl
 	depends = gcc-libs

@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://codeberg.org/wasak/swell'
 license=('MIT')
 depends=('alsa-lib' 'openssl' 'gcc-libs')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'clang')
 source=("git+https://codeberg.org/wasak/swell.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
