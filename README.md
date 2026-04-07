@@ -5,7 +5,7 @@
 [![AUR](https://img.shields.io/aur/version/neve-bin?color=1793d1)](https://aur.archlinux.org/packages/neve-bin)
 [![License: MPL-2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://github.com/MCB-SMART-BOY/Neve/blob/master/LICENSE)
 
-*A pure functional language for system configuration and package management*
+*A standalone language for system configuration, reproducible builds, and structured shell automation*
 
 </div>
 
