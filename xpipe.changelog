@@ -1,7 +1,9 @@
-- Add automatic fallback to disable hardware acceleration on Linux when the graphics driver had issues
-- Fix password manager agent option not working and not showing key list when used for git SSH auth
-- Fix rare concurrent modification exception on initial startup
-- Scripts and script categories can now be moved
-- The sample scripts category can now be deleted
-- Fix run script menu not showing nested categories
-- The latest Warp Terminal update broke opening scripts. It is currently unusable and is marked as not-recommended anymore
+- Rework MCP server with custom system prompt to improve overall handling
+- Add option to add kubernetes clusters from the creation menu
+- Improve custom password manager command handling and support json output
+- Fix high GPU usage on loading screen on some Linux systems
+- Fix xpipe CLI launch command not running custom scripts and prompts
+- Fix vmware integration actions not working if no identity has been set for VM
+- Fix bitwarden integration not showing root cause error messages due to missing directory
+- Fix sudo terminal open not working on some older Linux systems
+- Fix various NullPointers
