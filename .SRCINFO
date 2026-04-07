@@ -1,0 +1,22 @@
+pkgbase = gtk-internet-radio-locator
+	pkgdesc = Easily find live radio programs based on geographical location of radio broadcasters on the Internet
+	pkgver = 4.9.3
+	pkgrel = 1
+	url = https://www.gtk.audio/
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = python
+	depends = libchamplain
+	depends = geoclue
+	depends = gst-plugins-base
+	depends = gst-plugins-bad
+	depends = geocode-glib-2
+	depends = goocanvas2
+	conflicts = gnome-radio
+	replaces = gnome-radio
+	source = https://gtk.audio/src/gtk-internet-radio-locator-4.9.3.tar.xz
+	sha256sums = a4c5979e98876abfcaffe30429c2cd6e4818d49c8efed3ea17816328db06adf8
+
+pkgname = gtk-internet-radio-locator
