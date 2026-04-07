@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cpeditor-bin
-pkgver=7.0.1
-pkgrel=5
+pkgver=7.1.1
+pkgrel=1
 pkgdesc="The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit.(Prebuilt version)"
 arch=('x86_64')
 url="https://cpeditor.org/"
@@ -33,7 +33,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('30303f0c7bcac3ae9cc6550ed9e86e5be8c4c1d49e09542dca18f17a2561b0a6'
+sha256sums=('739fbb54c09f44e84b27012aa299c5c9dcb4c19df0f794e5d44e7feac74f8d6d'
             '187af44879585688a89874e74896e13840b3bb8defc9190a16ff6962adae01eb')
 prepare() {
     sed -i -e "
