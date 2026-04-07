@@ -2,14 +2,14 @@
 
 pkgname="orca-slicer"
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL-3.0-only')
 depends=('bash' 'cairo' 'dbus' 'expat' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'glibc' 'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libgcc' 'libglvnd' 'libjpeg-turbo' 'libsecret' 'libspnav' 'libstdc++' 'libtiff' 'libx11' 'mesa' 'mesa-utils' 'pango' 'python'  'wayland' 'webkit2gtk-4.1' 'zlib')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'm4' 'ninja' 'pkgconf' 'wayland-protocols' 'wget')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'm4' 'ninja' 'pkgconf' 'wayland-protocols' 'wget' 'awk')
 optdepends=('nvidia-utils: for querying driver version')
 options=('!debug' '!emptydirs')
 provides=("orca-slicer")
@@ -27,6 +27,12 @@ build() {
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
   cd "$srcdir/OrcaSlicer-${pkgver}"
+
+  export CMAKE_BUILD_PARALLEL_LEVEL=$(nproc)
+  # Limit build parallelism to free memory in GB / 2
+  if [ $CMAKE_BUILD_PARALLEL_LEVEL -gt $(awk '/MemFree/ { printf "%.0f \n", $2/1024/1024/2 }' /proc/meminfo) ]; then
+    export CMAKE_BUILD_PARALLEL_LEVEL=$(awk '/MemFree/ { printf "%.0f \n", $2/1024/1024/2 }' /proc/meminfo)
+  fi
 
   # deps
   cmake -S deps \
