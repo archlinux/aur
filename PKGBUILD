@@ -1,4 +1,9 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: 
+
+# WARNING to potential users/maintainers. This upstream project is AI slop with
+# an edge of danger because the OP controlling the project isn't actually
+# competent enough with the Git reflog themselves to even notice when there are
+# discrepencies with what the LLM is spewing out and reality. Just beware.
 
 pkgname=git-time-machine
 pkgver=0.2.5
