@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-git
 pkgver=r4.0dabc1d
-pkgrel=11
+pkgrel=12
 pkgdesc="Shorin DMS Niri desktop environment (Dependencies & Dotfiles)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -13,7 +13,7 @@ depends=(
     'bash'
     
     # core
-    'dms-shell-bin' 'xdg-desktop-portal-gnome' 'niri' 'xwayland-satellite' 'satty' 'slurp' 'libnotify' 
+    'dms-shell' 'xdg-desktop-portal-gnome' 'niri' 'xwayland-satellite' 'satty' 'slurp' 'libnotify' 
     'imv' 'mpv' 'firefox' 'power-profiles-daemon'
 
     # fonts

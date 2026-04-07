@@ -1,13 +1,13 @@
 pkgbase = shorin-dms-niri-git
 	pkgdesc = Shorin DMS Niri desktop environment (Dependencies & Dotfiles)
 	pkgver = r4.0dabc1d
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/SHORiN-KiWATA/shorin-dms-niri
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = bash
-	depends = dms-shell-bin
+	depends = dms-shell
 	depends = xdg-desktop-portal-gnome
 	depends = niri
 	depends = xwayland-satellite
