@@ -1,9 +1,9 @@
 # Maintainer: warmwaffles <warmwaffles@gmail.com>
 pkgname="sleek"
-pkgver=2.0.23
+pkgver=2.0.24
 pkgrel=1
 pkgdesc="Todo manager based on the todo.txt syntax for Linux, free and open-source (FOSS)"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://github.com/ransome1/sleek/"
 license=("MIT")
 options=(!strip)
@@ -11,7 +11,7 @@ makedepends=("nodejs" "npm" "unzip")
 depends=("electron" "nodejs")
 
 source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek")
-sha512sums=('06bfd6117c03f92f6a716d9efcf34b1f4c809bc1943a5f50c5148a4135b344cfe0fb3ca6f7f0d5afc371c30441f37f01e5ae928ca6d90af3916ee175d2422cd7'
+sha512sums=('aff367abf6eda810dda5d83acaf110bf16d71d7a6b58e2dc37e67449d797fc39a00c57c42eed578203f4637599f1a66b201760889a3ab7c6662a1e8d48ed8709'
             'c3ebfc99947ba484d8ba8a3cd9b4c4d5a984a95e7cb24faac1ac59506f7f144d4e9c92ea9fcfa585f4d9fee779366d4eb9db0795c910fb221bb266e3c9d5be24'
             'ea1d322bd56c7944a9eae97f4968a6a2e937b510eb3c1c21266428450c5b2ddcd8576718d0b66b69fbce5694ba94e80a692d04bda1e8c2b24a8d814a5ed50963')
 
