@@ -1,47 +1,32 @@
 pkgname=lwe
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Linux dynamic wallpaper shell for Wallpaper Engine content"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/YangYuS8/lwe"
 license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
-makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'cargo-tauri' 'pnpm' 'nodejs')
 provides=('lwe')
 conflicts=('lwe-git')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("lwe_0.6.1_amd64.deb::https://github.com/YangYuS8/lwe/releases/download/v0.6.1/lwe_0.6.1_amd64.deb")
 sha256sums=('SKIP')
 
-prepare() {
-	cd "${srcdir}/lwe-${pkgver}"
-	pnpm install --frozen-lockfile
-}
-
-build() {
-	cd "${srcdir}/lwe-${pkgver}"
-	cargo tauri build -b "deb,rpm,appimage"
-}
-
 package() {
-	cd "${srcdir}/lwe-${pkgver}"
-	local deb_data_dirs=(
-		src-tauri/target/release/bundle/deb/*/data
-		target/release/bundle/deb/*/data
-	)
-	local deb_data_dir=""
-	local candidate
+	cd "${srcdir}"
+	bsdtar -xf "lwe_${pkgver}_amd64.deb"
 
-	for candidate in "${deb_data_dirs[@]}"; do
-		if [ -d "${candidate}" ]; then
-			deb_data_dir="${candidate}"
+	local data_archive=""
+	for candidate in data.tar.zst data.tar.xz data.tar.gz; do
+		if [ -f "${candidate}" ]; then
+			data_archive="${candidate}"
 			break
 		fi
 	done
 
-	if [ -z "${deb_data_dir}" ]; then
-		echo "No Debian bundle data directory found under src-tauri/target or target"
+	if [ -z "${data_archive}" ]; then
+		echo "No Debian payload archive found in deb package"
 		return 1
 	fi
 
-	cp -a "${deb_data_dir}"/* "${pkgdir}"
+	bsdtar -xf "${data_archive}" -C "${pkgdir}"
 }
