@@ -1,6 +1,6 @@
 # Maintainer: Psychotoxic <psychotoxic@gmx.de>
 pkgname=psysonic
-pkgver=1.34.1
+pkgver=1.34.2
 pkgrel=1
 pkgdesc="Desktop music player for Subsonic API-compatible servers (Navidrome, Gonic, etc.)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ build() {
   export CARGO_HOME="$srcdir/cargo-home"
   export npm_config_cache="$srcdir/npm-cache"
 
-  # ring (used by tauri-plugin-updater → rustls) ships C/asm objects whose
+  # ring (used by reqwest → rustls-tls) ships C/asm objects whose
   # symbols (ring_core_*) lld cannot resolve.  On Arch/CachyOS, -fuse-ld=lld
   # is hardcoded into rustc itself (not just makepkg.conf RUSTFLAGS), so a
   # string substitution is a no-op.  Appending -C link-arg=-fuse-ld=bfd works
