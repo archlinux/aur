@@ -1,7 +1,7 @@
 pkgbase = starfish
 	pkgdesc = Starfish: Arch Depdency Viewer
-	pkgver = 0.0.1
-	pkgrel = 6
+	pkgver = 0.0.2
+	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Starfish
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,7 +14,7 @@ pkgbase = starfish
 	depends = hicolor-icon-theme
 	depends = glibc
 	provides = Starfish
-	source = starfish-0.0.1.tar.gz::https://github.com/Seafoam-Labs/Starfish/archive/v0.0.1.tar.gz
-	sha256sums = 8b3acc13a4fc7315a3a694126da25635f173fff2e880c905759261c8afda01c3
+	source = starfish-0.0.2.tar.gz::https://github.com/Seafoam-Labs/Starfish/archive/v0.0.2.tar.gz
+	sha256sums = 83d9fe30753246f1ed5736d9a8468839055628230d5b81be0c3351476a9ef457
 
 pkgname = starfish
