@@ -13,7 +13,7 @@ optdepends=('libappindicator-gtk3: tray indicator support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("EchoMusic-${pkgver}-linux-amd64.deb::https://github.com/hoowhoami/EchoMusic/releases/download/v${pkgver}/EchoMusic-${pkgver}-linux-amd64.deb")
-sha512sums=('cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
+sha512sums=('52a0d0fd8b173c1701e3150e9ce5d87a2ccf68aeba581705930aff224e95deb0cd5fb6e39ee2686f68e9f43d25c549c7ee09da2fb1177088789c74681b2e6b52')
 
 package() {
     local _debdir="${srcdir}/deb-extract"
