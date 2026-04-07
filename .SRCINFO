@@ -1,6 +1,6 @@
 pkgbase = kefir
 	pkgdesc = C17/C23 language compiler for x86_64 systems
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://kefir.protopopov.lv
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kefir
 	provides = kefir-debug
 	conflicts = kefir
 	conflicts = kefir-debug
-	source = https://git.sr.ht/~jprotopopov/kefir/archive/v0.5.0.tar.gz
-	sha512sums = 93cc6c2b66addbe817ac30a1ec38ed242ad829ae61601fa024ae1765698a263001c2a078487e8e786690e93a1dc19b0d135ad43fcf54fdda7327e7a3222c1cb3
+	source = https://git.sr.ht/~jprotopopov/kefir/archive/v0.5.1.tar.gz
+	sha512sums = a8e324fca4a202fe3a2592f356834db261b6ceca2f419d5067842ed48f07bf6bfe266e75d85676c74ce340fb3ecb6708b395e39959dce62a4db8456abe26eea6
 
 pkgname = kefir
