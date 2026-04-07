@@ -1,0 +1,20 @@
+pkgbase = serpent-git
+	pkgdesc = A high-performance systems language with Wayland GUI and Network support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/reenes24/serpent
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = wayland-protocols
+	makedepends = gcc
+	makedepends = make
+	depends = wayland
+	depends = curl
+	depends = libxkbcommon
+	provides = serpent
+	conflicts = serpent
+	source = serpent::git+https://github.com/reenes24/serpent.git
+	md5sums = SKIP
+
+pkgname = serpent-git
