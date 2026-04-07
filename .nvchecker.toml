@@ -1,0 +1,4 @@
+[syntaqlite]
+source = "git"
+git = "https://github.com/LalitMaganti/syntaqlite.git"
+prefix = "v"

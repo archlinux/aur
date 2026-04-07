@@ -1,0 +1,17 @@
+pkgbase = syntaqlite
+	pkgdesc = A parser, formatter, validator, and language server for SQLite SQL
+	pkgver = 0.2.16
+	pkgrel = 1
+	url = https://github.com/LalitMaganti/syntaqlite
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = syntaqlite::git+https://github.com/LalitMaganti/syntaqlite#tag=v0.2.16
+	sha512sums = fa3242f3ab2d601c2b8b165fa1b7b1a67ec3883b47be1c120507a9fc0ca1fe1f6ca58327aa4ad025ba7e40edaa0d2b1f173c7d7247f1fb646647cfc08a14b2fe
+	b2sums = 7e1c7ce5b53316e2c71ff42bfd4601a137ab3e84b5e830425be62a4008d7a33eab6276de52e60499109f97b17085c602df4bfaf3e4ca97bd6641fa44d34f99c4
+
+pkgname = syntaqlite
