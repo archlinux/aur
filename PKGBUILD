@@ -3,7 +3,7 @@
 readonly _pkgname=NumKong
 
 pkgname=numkong
-pkgver=7.2.3
+pkgver=7.2.4
 pkgrel=1
 pkgdesc="SIMD kernels for mixed-precision BLAS-like numerics."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 depends=(glibc)
 makedepends=(cmake openblas)
 source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('787c4ed70473125a4c4e1e9f04c0d4b55a7aa027f079599640992a06cb7852442928d689c0901b5ceaf97e768a6a5874b9678d171acf85915ab6bd78e7c94a15')
+b2sums=('b7bbb72f33d9aa29d71ee711f38373e278d12634de658d9bf10aaf0f6c9d3354e971abca5e32a057688d7708c5b28f15330429ae934f8b1fabb872758c451c2d')
 
 build() {
     local build_tests=OFF
