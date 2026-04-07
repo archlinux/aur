@@ -2,7 +2,7 @@
 _appname=supersonic
 pkgname="${_appname}-desktop-bin"
 _pkgname=Supersonic
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers.(Prebuilt version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
     'mpv'
 )
 source=("${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64-libmpv2.tar.xz")
-sha256sums=('4a522e1fbb5492469bfba3f3b1417ff49c7374bfc14e2d588f7c2f141c45e29e')
+sha256sums=('c8245bfff04e8509de75cb747c0aa2ebf51eb0cc359d3c71d1c6a14c5876ea46')
 prepare() {
     sed -i -e "
         s/Exec=${_appname}/Exec=${pkgname%-bin}/g
