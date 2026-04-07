@@ -1,5 +1,5 @@
 pkgbase = friendnet-client-bin
-	pkgdesc = FriendNet Client
+	pkgdesc = Peer-to-peer file sharing client for the FriendNet protocol
 	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/termermc/FriendNet

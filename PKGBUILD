@@ -3,7 +3,7 @@
 pkgname=friendnet-client-bin
 pkgver=1.1.2
 pkgrel=1
-pkgdesc="FriendNet Client"
+pkgdesc="Peer-to-peer file sharing client for the FriendNet protocol"
 arch=("x86_64")
 url="https://github.com/termermc/FriendNet"
 license=("AGPL-3.0")
