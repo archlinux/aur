@@ -3,7 +3,7 @@
 pkgname=ubaa
 _reponame=UBAA
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 _javaversion=21
 pkgdesc="Cross-platform Compose Multiplatform client for Beihang University campus services"
 arch=('x86_64')
@@ -43,5 +43,5 @@ package() {
         magick "composeApp/icons/app.png" -resize "${res}x${res}" "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}.png"
     done
 
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

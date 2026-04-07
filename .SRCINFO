@@ -1,7 +1,7 @@
 pkgbase = ubaa
 	pkgdesc = Cross-platform Compose Multiplatform client for Beihang University campus services
 	pkgver = 1.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/BUAASubnet/UBAA
 	arch = x86_64
 	license = MIT
