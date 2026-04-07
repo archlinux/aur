@@ -14,5 +14,5 @@ source=("https://github.com/acgq/quick-switcher/releases/download/v${pkgver}/Qui
 sha256sums=('SKIP')
 
 package() {
-    bsdtar -xf data.tar.xz -C "$pkgdir"
+    bsdtar -xf data.tar.gz -C "$pkgdir"
 }
