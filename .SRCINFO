@@ -1,0 +1,18 @@
+pkgbase = controlhub-vortexseries-git
+	pkgdesc = An ultra-lightweight, fully offline desktop client for Vortex Series mice
+	pkgver = r1.f10fa90
+	pkgrel = 1
+	url = https://github.com/IRedDragonICY/controlhub-vortexseries
+	arch = x86_64
+	license = 0BSD
+	makedepends = cargo
+	makedepends = git
+	depends = electron
+	provides = controlhub-vortexseries
+	conflicts = controlhub-vortexseries
+	source = git+https://github.com/IRedDragonICY/controlhub-vortexseries.git
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = controlhub-vortexseries-git
