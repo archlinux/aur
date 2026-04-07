@@ -4,7 +4,7 @@
 _pkgbase=jan
 pkgname=${_pkgbase}
 pkgver=0.7.9
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer"
 url="https://jan.ai/"
 arch=('x86_64')
@@ -49,6 +49,25 @@ prepare() {
 	_ensure_local_nvm
 	nvm install 20
 	_ensure_corepack_yarn
+
+	# Keep package versions aligned with the upstream CI build workflow.
+	for _json_file in \
+		./src-tauri/tauri.conf.json \
+		./web-app/package.json \
+		./src-tauri/plugins/tauri-plugin-hardware/package.json \
+		./src-tauri/plugins/tauri-plugin-llamacpp/package.json
+	do
+		sed -i "0,/\"version\": \"[^\"]*\",/s//\"version\": \"$pkgver\",/" "$_json_file"
+	done
+
+	for _cargo_toml in \
+		./src-tauri/Cargo.toml \
+		./src-tauri/plugins/tauri-plugin-hardware/Cargo.toml \
+		./src-tauri/plugins/tauri-plugin-llamacpp/Cargo.toml
+	do
+		sed -i "/^\[package\]/,/^\[/{s/^version = .*/version = \"$pkgver\"/;}" "$_cargo_toml"
+	done
+
 	[ -f package.json ] && sed -i '/"build:tauri:linux"/ s/\.\/[^ ]*\.sh//g; /"build:tauri:linux"/ s/&& "/--bundles deb"/g' package.json
 }
 
