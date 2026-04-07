@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=pbdMPI
-_pkgver=0.5-4
+_pkgver=0.5-5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-float
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c0ba8672cbc24c0f839cb0c60601398a')
-b2sums=('f9ea9e10c9ddb5b149e7e1f8a4600545fbdb6ad5f74a4ea3351732a4245a5a711cde031182bf95770dd15e81c15c4a1758b9b5d80cc3aabd2a0531fc428eeb8f')
+md5sums=('c2dc939d79165c2e284f2aa24d888423')
+b2sums=('56b58b53b98374a67938a237d38a3a324e186cbfb3d4edf00ba5aabd668564ec207e381d1ada7517468914b74a037518fed723a9fb8e06d65cbc66af4d4a7e35')
 
 build() {
   mkdir build
