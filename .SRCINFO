@@ -1,13 +1,13 @@
 pkgbase = psa-update-bin
 	pkgdesc = CLI alternative to PSA (Peugeot / Citroën / DS / Opel) infotainment system update (NAC / RCC firmware and navigation maps), hopefully more robust.
-	pkgver = 1.0.10
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://github.com/zeld/psa-update
 	arch = x86_64
 	license = UNLICENSE
 	depends = openssl
-	noextract = psa-update-1.0.10-x86_64-unknown-linux-gnu.tar.gz::https://github.com/zeld/psa-update/releases/download/1.0.10/psa-update-1.0.10-x86_64-unknown-linux-gnu.tar.gz
-	source = psa-update-1.0.10-x86_64-unknown-linux-gnu.tar.gz::https://github.com/zeld/psa-update/releases/download/1.0.10/psa-update-1.0.10-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = fc18a3bb8a35e17eb44573ef199fb71a152c81132ed2c9deecc7a37f01c65d24
+	noextract = psa-update-1.0.11-x86_64-unknown-linux-gnu.tar.gz::https://github.com/zeld/psa-update/releases/download/1.0.11/psa-update-1.0.11-x86_64-unknown-linux-gnu.tar.gz
+	source = psa-update-1.0.11-x86_64-unknown-linux-gnu.tar.gz::https://github.com/zeld/psa-update/releases/download/1.0.11/psa-update-1.0.11-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = d61863a4e7972b5e179629b7f095f1d3220ad62ffd2dfe1b27c89e3dbb74378b
 
 pkgname = psa-update-bin
