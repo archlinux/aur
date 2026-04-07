@@ -1,6 +1,6 @@
 # Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
 pkgname=nnote
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A minimal CLI note taker"
 arch=('any')
@@ -12,7 +12,7 @@ checkdepends=('python-pytest')
 provides=("python-$pkgname")
 conflicts=("python-$pkgname")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('80abc8fb1e6252dd81e165e63f81c64fcb149a4afdba016cd869c1a8d2907125')
+sha256sums=('5b190a6d08cf963edc72a63ccf11a99164f4f2f204a50c0c93770927ce743f85')
 
 build() {
     cd "${pkgname}-${pkgver}"
