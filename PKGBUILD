@@ -1,6 +1,6 @@
 # Maintainer: Albin Alm <your-email@example.com>
 pkgname=straumr-bin
-pkgver=2026.4.7.15
+pkgver=2026.4.7.16
 pkgrel=1
 pkgdesc='CLI tool for managing, saving, and sending HTTP requests across workspaces'
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('straumr')
 conflicts=('straumr')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/albinalm/Straumr/releases/download/v${pkgver}/straumr-${pkgver}-linux-x64.tar.gz")
-sha256sums=('90ec775c211d0246a7a521f313311f112a7ced34d2dfaf7203a24b40d93c8670')
+sha256sums=('49e5dd146fc8147879d4932f0d7488faa3c862de9e3ad9a2bc0643b7ffd24231')
 
 package() {
     install -Dm755 straumr "${pkgdir}/usr/bin/straumr"
