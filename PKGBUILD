@@ -2,7 +2,7 @@
 pkgname=python-steam
 _name=${pkgname#python-}
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python package for interacting with Steam"
 arch=('any')
 url="https://github.com/solsticegamestudios/steam"
@@ -10,7 +10,9 @@ license=('MIT')
 depends=(
   'python'
   'python-cachetools'
+  'python-gevent'
   'python-lxml'
+  'python-protobuf'
   'python-pycryptodomex'
   'python-requests'
   'python-six'
@@ -24,9 +26,7 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=(
-  'python-gevent'
   'python-gevent-eventemitter'
-  'python-protobuf'
   'python-pytest'
   'python-vcrpy'
 )
@@ -40,6 +40,11 @@ sha256sums=('dcc305f11e1686a3557cd87afdc50ce177a5015ba3fdd51bef63c7302dd21b05'
 
 prepare() {
   cd "$_name-$pkgver"
+
+  # Regenerate protos
+  for p in protobufs/*.proto; do
+    protoc --python_out ./steam/protobufs/ --proto_path=./protobufs "${p}"
+  done
 
   sed -i 's/urllib3<2/urllib3/' requirements.txt setup.py
 
@@ -59,9 +64,6 @@ build() {
 
 check() {
   cd "$_name-$pkgver"
-
-  # generated code is out of date and must be regenerated with protoc >= 3.19.0
-  export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
   pytest || :
 }
 
