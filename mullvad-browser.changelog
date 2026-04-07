@@ -1,3 +1,12 @@
+Mullvad Browser 15.0.9 - April 07 2026
+ * All Platforms
+   * Updated Firefox to 140.9.1esr
+   * Updated NoScript to 13.6.15.1984
+   * Bug 524: Rebase Mullvad Browser stable onto 140.9.1esr [mullvad-browser]
+ * Build System
+   * All Platforms
+     * Bug 41758: Rename `tools/signing/deploy-legacy` to `tools/signing/redeploy-update_responses-release` [tor-browser-build]
+
 Mullvad Browser 15.0.8 - March 24 2026
  * All Platforms
    * Updated Firefox to 140.9.0esr
