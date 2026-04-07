@@ -6,4 +6,4 @@ Name=KoboldCpp (Launcher)
 StartupNotify=true
 Terminal=true
 Type=Application
-Categories=Game;
+Categories=Utility;TextTools
