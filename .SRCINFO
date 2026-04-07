@@ -1,7 +1,7 @@
 pkgbase = aimp
 	pkgdesc = Powerful free audio player, converter and tag editor (v6 Beta, Unstable)
-	pkgver = 6.00.3052
-	pkgrel = 2
+	pkgver = 6.00.3055
+	pkgrel = 1
 	url = https://www.aimp.ru
 	changelog = changelog
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = aimp
 	optdepends = opus-tools: audio codec support
 	provides = aimp
 	conflicts = aimp
-	source = https://aimp.ru/files/desktop/builds/aimp_6.00-3052b-x86_64.pkg.tar.zst
+	source = https://aimp.ru/files/desktop/builds/aimp_6.00-3055b-x86_64.pkg.tar.zst
 	source = changelog
-	sha256sums = 97322c77119fbad7d7a01771cc5cb10d38c5dfad683571532c7ecfa6b9602af7
-	sha256sums = e5db7191f142857ba5ae76e370bc25f01bbe058f534d0e3238960acd32792e23
+	sha256sums = 957ee9afab0d6c8cc9eb7f096a0d9ef9f4004eeeb80df723cf3e6fc3681fdcb1
+	sha256sums = bb266942a448b8991d67a0c750cb35f404b250b4f985093db0cf404e134d6dfc
 
 pkgname = aimp
