@@ -1,6 +1,6 @@
 pkgbase = brushshe
 	pkgdesc = Raster graphical editor
-	pkgver = 2.4.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/limafresh/Brushshe
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = brushshe
 	depends = tk
 	depends = python-pillow
 	source = brushshe.desktop
-	sha256sums = SKIP
 	sha256sums = e86d31e40f1172a5fe54b413193aba58ad42fd46fa7e5a89271f50787e04decc
 
 pkgname = brushshe
