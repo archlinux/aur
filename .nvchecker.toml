@@ -1,0 +1,5 @@
+[fast-jump-bin]
+source = "github"
+github = "Kandarp05/fast-jump"
+use_latest_release = true
+prefix = "v"
