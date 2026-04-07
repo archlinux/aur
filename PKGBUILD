@@ -3,7 +3,7 @@
 
 pkgname=plasma-meta
 pkgver=6.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 license=(None)
@@ -58,7 +58,6 @@ depends=(aurorae
          plasma-vault
          plasma-welcome
          plasma-workspace
-         plasma-workspace-wallpapers
          polkit-kde-agent
          powerdevil
          print-manager
@@ -70,6 +69,7 @@ optdepends=('breeze-grub: Breeze theme for GRUB'
             'breeze-plymouth: Breeze theme for Plymouth'
             'kgamma: Adjust gamma settings on X'
             'kwin-x11: X11 window manager'
+            'plasma-workspace-wallpapers: Additional wallpapers'
             'plasma-x11-session: Plasma X11 session'
             'plymouth-kcm: Configure Plymouth from systemsettings'
             'plasma-sdk: Development tools'
