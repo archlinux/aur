@@ -24,8 +24,10 @@ pkgbase = python-xformers-rocm
 	depends = libgcc
 	depends = glibc
 	source = git+https://github.com/facebookresearch/xformers.git#tag=v0.0.35
+	source = composable_kernel::git+https://github.com/ROCm/composable_kernel.git
 	source = cutlass::git+https://github.com/NVIDIA/cutlass.git
 	sha256sums = 685e57c23111cfec622f3297f2cba10308496fd513bda46813159309cfc667fb
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = python-xformers-rocm

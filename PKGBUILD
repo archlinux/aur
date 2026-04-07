@@ -34,18 +34,20 @@ makedepends=(
 )
 source=(
 	"git+https://github.com/facebookresearch/xformers.git#tag=v${pkgver}"
+	"composable_kernel::git+https://github.com/ROCm/composable_kernel.git"
 	"cutlass::git+https://github.com/NVIDIA/cutlass.git"
 )
 sha256sums=('685e57c23111cfec622f3297f2cba10308496fd513bda46813159309cfc667fb'
+            'SKIP'
             'SKIP')
 
 prepare() {
 	cd "${_name}"
 
 	git submodule init
+	git config submodule."third_party/composable_kernel_tiled".url "${srcdir}/composable_kernel"
+	# The build still checks for cutlass, even though it's only for CUDA
 	git config submodule."third_party/cutlass".url "${srcdir}/cutlass"
-	# Disable ck, it's only for ROCm
-	git config submodule."third_party/composable_kernel_tiled".update none
 	git -c protocol.file.allow=always submodule update --init
 }
 
