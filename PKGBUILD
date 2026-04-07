@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='openvpn-auth-oauth2'
-pkgver='1.27.2'
+pkgver='1.27.3'
 pkgrel='1'
 pkgdesc='A Plugin/management interface client for OpenVPN server to handle an OIDC based single sign-on (SSO) auth flows'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('go')
 depends=('openvpn>=2.6.2')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgname}/tar.gz/refs/tags/v${pkgver}")
-sha256sums=('ec92a794bf7513dcdab0f173ace7b1b42fc4933686f5063383600e0465c53be6')
+sha256sums=('f2ccfa51cc8e6461ce6fc959271625cba7d9c4b8e9e6e7d65958c1ab1cdc308d')
 backup=("etc/conf.d/${pkgname}"
 	"etc/${pkgname}/config.yaml")
 
@@ -67,7 +67,7 @@ build() {
 
 check() {
   cd "${GOPATH}/src/${_uri}/${pkgname}"
-  go test -race ./...
+  go test -modcacherw -race ./...
 }
 
 package() {
