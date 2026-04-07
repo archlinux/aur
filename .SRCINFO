@@ -1,12 +1,12 @@
 pkgbase = pelicanplatform-bin
 	pkgdesc = The command line client for the Pelican Platform data federation system
-	pkgver = 7.23.0
+	pkgver = 7.24.0
 	pkgrel = 1
 	url = https://github.com/PelicanPlatform/pelican
 	arch = x86_64
 	license = Apache-2.0
 	conflicts = pelican
-	source = pelicanplatform-bin-7.23.0.tar.gz::https://github.com/PelicanPlatform/pelican/releases/download/v7.23.0/pelican_Linux_x86_64.tar.gz
-	sha256sums = 63f35e2bd1e208acd3400b4793aaf95206aae930e4e3d087763a6c77cda939db
+	source = pelicanplatform-bin-7.24.0.tar.gz::https://github.com/PelicanPlatform/pelican/releases/download/v7.24.0/pelican_Linux_x86_64.tar.gz
+	sha256sums = 2857c5666545fd69e02892f0ff002e31488ffe17db9b2205aa1780357eded2ba
 
 pkgname = pelicanplatform-bin
