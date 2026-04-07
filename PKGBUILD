@@ -1,6 +1,6 @@
 # Maintainer: Mees Fatels
 pkgname=emm-git
-pkgver=r21.6e2b420
+pkgver=r22.3e6a3cb
 pkgrel=1
 pkgdesc="Eidolon Minion Manager - Modular Go-based CLI/TUI for AI"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,8 +18,15 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$pkgname"
+  export GOPATH="$srcdir/gopath"
+  go mod download
+}
+
 build() {
   cd "$pkgname"
+  export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
