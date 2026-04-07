@@ -12,10 +12,13 @@ pkgbase = python-xformers
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = ninja
+	makedepends = git
 	depends = python
 	depends = python-pytorch
 	depends = python-numpy
-	source = python-xformers-0.0.35.tar.gz::https://pypi.io/packages/source/x/xformers/xformers-0.0.35.tar.gz
-	sha256sums = f7fc183a58e4bf0e2ae339a18fb1b1d4a37854c0f2545b4f360fef001646ab76
+	source = git+https://github.com/facebookresearch/xformers.git#tag=v0.0.35
+	source = cutlass::git+https://github.com/NVIDIA/cutlass.git
+	sha256sums = 685e57c23111cfec622f3297f2cba10308496fd513bda46813159309cfc667fb
+	sha256sums = SKIP
 
 pkgname = python-xformers

@@ -23,15 +23,27 @@ makedepends=(
 	'python-installer'
 	'python-setuptools'  # i think it normally should be required by python-pep517 which required by python-build/installer
 	'ninja'
+	'git'
 )
 source=(
-	"$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/x/${_name}/${_name}-${pkgver}.tar.gz"
+	"git+https://github.com/facebookresearch/xformers.git#tag=v${pkgver}"
+	"cutlass::git+https://github.com/NVIDIA/cutlass.git"
 )
+sha256sums=('685e57c23111cfec622f3297f2cba10308496fd513bda46813159309cfc667fb'
+            'SKIP')
 
-sha256sums=('f7fc183a58e4bf0e2ae339a18fb1b1d4a37854c0f2545b4f360fef001646ab76')
+prepare() {
+	cd "${_name}"
+
+	git submodule init
+	git config submodule."third_party/cutlass".url "${srcdir}/cutlass"
+	# Disable ck, it's only for ROCm
+	git config submodule."third_party/composable_kernel_tiled".update none
+	git -c protocol.file.allow=always submodule update --init
+}
 
 build() {
-	cd "${_name}-${pkgver}"
+	cd "${_name}"
 
 	sed -i -e 's|torch/types.h|torch/library.h|g' xformers/csrc/attention/attention.cpp
 
@@ -49,6 +61,6 @@ build() {
 }
 
 package() {
-	cd "${_name}-${pkgver}"
+	cd "${_name}"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
