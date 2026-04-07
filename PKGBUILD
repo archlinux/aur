@@ -7,7 +7,7 @@
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
 pkgrel=1
-pkgver=2.6.3
+pkgver=2.7.0
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
@@ -58,8 +58,9 @@ depends=('valkey' 'postgresql>=14' 'nodejs>=20'
 	'highway'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
-		"postgres-path.patch"   # replace Debian's location of postgres with Arch's
-		"sharp.patch"  # patch sharp to use pnpm instead of npm in install script
+		'postgres-path.patch'  # replace Debian's location of postgres with Arch's
+		'sh-serverhome.patch'  # tell start.sh server home's /usr/lib/immich/app/server
+		'sharp.patch'  # patch sharp to use pnpm instead of npm in install script
 	"${pkgbase}-server.service"
 	"${pkgbase}.sysusers"
 	"${pkgbase}.tmpfiles"
@@ -73,8 +74,9 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 	'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
 	'https://download.geonames.org/export/dump/admin2Codes.txt'
 	'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
-sha256sums=('08bc141261ee7acebf1bf574cfbdb90448d624c7dec5b91d45e42bedff7ddb7e'
+sha256sums=('4e9eadaf57b37b771320fb34e9e38419d9b15896a02715896b3965249f99e999'
             'cc061fc006d2e60ace2b3b4844c8e3d7ffda0164a0579dae2beb479d86dce7f0'
+            'd1297cc2e222b4679dda9e972d39a9e8d3e65cd9b2f9fb762e27dc5781d5a65f'
             'e56fe5f8abb55f93117cd8b5e1214d06a21a9f8e0458607040c5c5e364b0a164'
             '2ca8f6776aef27c455142edbe9120b7c38ee354dca5336ce89c16f71dd633a28'
             '01707746e8718fe169b729b7b3d9e26e870bf2dbc4d1f6cdc7ed7d3839e92c0e'
@@ -89,6 +91,7 @@ sha256sums=('08bc141261ee7acebf1bf574cfbdb90448d624c7dec5b91d45e42bedff7ddb7e'
 prepare() {
 	cd "${srcdir}/${pkgbase}-${pkgver}"
 	patch -p1 < ${srcdir}/postgres-path.patch
+	patch -p1 < ${srcdir}/sh-serverhome.patch
 	rm cli/LICENSE  # deploy would've picked this up, duplicating standard /usr/share/licenses/spdx/AGPL-3.0-only
 
 	# Patches to avoid calling npm in package scripts
@@ -100,10 +103,7 @@ prepare() {
 	cd "$srcdir/${pkgbase}-${pkgver}"
 	pnpm patch-commit "$sharp_dir"  # Second, this runs the scripts
 
-	cd web
-	pnpm add 'three'  # otherwise vite rollup fails to resolve this transitive dependency for photo-sphere-viewer
-
-	cd ../server
+	cd server
 	rm ../mise.toml  # otherwise asks to trust in mise build steps, interrupting unattended builds
 }
 
@@ -193,11 +193,14 @@ package_immich-server() {
 	# it just detects the right versions from the environment
 	# see server/src/repositories/server-info.repository.ts
 
-	# install server management scripts; immich-admin doesn't work
-	install -Dm755 "${pkgdir}/usr/lib/immich/app/server/bin/immich-healthcheck" "${pkgdir}/usr/bin/immich-healthcheck"
+	# symlink to server management scripts
+	install -dm755 "${pkgdir}/usr/bin"
+	ln -s ../lib/immich/app/server/bin/immich-healthcheck "${pkgdir}/usr/bin/immich-healthcheck"
+	ln -s ../lib/immich/app/server/bin/start.sh "${pkgdir}/usr/bin/immich-admin"  # only difference is a few more logs
 }
 
 package_immich-cli() {
+	arch=('any')
 	depends=('nodejs>=20')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/"
