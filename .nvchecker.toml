@@ -1,0 +1,4 @@
+[matlab-language-server]
+source = "git"
+git = "https://github.com/mathworks/MATLAB-language-server.git"
+prefix = "v"
