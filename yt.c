@@ -167,3 +167,4 @@ pam_fail:
     if (pamh != NULL) pam_end(pamh, retval);
     return 1;
     }
+}
