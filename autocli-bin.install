@@ -1,0 +1,22 @@
+_autocli_bin_print_extension_hint() {
+  local pkgver="${1%%-*}"
+
+  cat <<EOF
+==> Browser session commands require the Chrome extension.
+==> Download: https://github.com/nashsu/AutoCLI/releases/download/v${pkgver}/autocli-chrome-extension.zip
+==> Setup:
+==>   1. Extract the zip file.
+==>   2. Open chrome://extensions
+==>   3. Enable Developer mode.
+==>   4. Click "Load unpacked" and select the extracted directory.
+==> Public commands such as hackernews work without the extension.
+EOF
+}
+
+post_install() {
+  _autocli_bin_print_extension_hint "$1"
+}
+
+post_upgrade() {
+  _autocli_bin_print_extension_hint "$1"
+}
