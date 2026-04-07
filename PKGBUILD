@@ -4,7 +4,7 @@
 # Contributor: Johannes Löthberg <demizide@gmail.com>
 
 pkgname=beets-git
-pkgver=2.8.0.r100.ga6af177be
+pkgver=2.8.0.r111.g4aaf58bac
 pkgrel=1
 pkgdesc="Flexible music library manager and tagger - git version"
 arch=('any')
@@ -38,13 +38,21 @@ makedepends=(
 )
 checkdepends=(
   bash-completion
+  chromaprint
   ffmpeg
+  gst-libav
+  gst-plugins-bad
+  gst-plugins-base
+  gst-plugins-good
+  gst-plugins-ugly
   gst-python
   imagemagick
   python-beautifulsoup4
+  python-dbus
   python-discogs-client
   python-flask
   python-flask-cors
+  python-gobject
   python-langdetect
   python-librosa
   python-mpd2
@@ -52,14 +60,18 @@ checkdepends=(
   python-numba
   python-pillow
   python-py7zr
-  python-pylast
   python-pyacoustid
+  python-pylast
   python-pytest
+  python-pytest-flask
   python-rarfile
   python-reflink
   python-requests-mock
   python-requests-oauthlib
+  python-resampy
   python-responses
+  python-scipy
+  python-soco
   python-titlecase
   python-xdg
 )
@@ -68,6 +80,7 @@ optdepends=(
   'chromaprint: Chromaprint/Acoustid plugin'
   'ffmpeg: Convert, ReplayGain plugins'
   'gst-plugins-bad: Chromaprint/Acoustid, BPD, ReplayGain plugins'
+  'gst-plugins-base: Chromaprint/Acoustid, BPD, ReplayGain plugins'
   'gst-plugins-good: Chromaprint/Acoustid, BPD, ReplayGain plugins'
   'gst-plugins-ugly: Chromaprint/Acoustid, BPD, ReplayGain plugins'
   'gst-libav: Chromaprint/Acoustid, BPD, ReplayGain plugins'
@@ -126,24 +139,7 @@ check() {
   cd beets
   pytest \
     --override-ini="addopts=" \
-    --ignore test/plugins/test_player.py \
-    --ignore test/plugins/test_autobpm.py \
-    --ignore test/plugins/test_aura.py \
-    --deselect test/test_ui.py::CompletionTest::test_completion \
-    --deselect test/test_importer.py::ImportDuplicateAlbumTest::test_merge_duplicate_album \
-    --deselect test/test_ui.py::ConfigTest::test_cli_config_paths_resolve_relative_to_user_dir \
-    --deselect test/plugins/test_bpd.py::BPDReflectionTest::test_cmd_decoders \
-    --deselect test/plugins/test_replaygain.py::ReplayGainGstCliTest::test_backend \
-    --deselect test/plugins/test_replaygain.py::ReplayGainGstCliTest::test_cli_does_not_skip_wrong_tag_type \
-    --deselect test/plugins/test_replaygain.py::ReplayGainGstCliTest::test_cli_saves_album_gain_to_file \
-    --deselect test/plugins/test_replaygain.py::ReplayGainGstCliTest::test_cli_saves_track_gain \
-    --deselect test/plugins/test_replaygain.py::ReplayGainGstCliTest::test_cli_skips_calculated_tracks \
-    --deselect test/plugins/test_replaygain.py::ReplayGainGstCliTest::test_cli_writes_only_r128_tags \
-    --deselect test/plugins/test_replaygain.py::ReplayGainGstCliTest::test_per_disc \
-    --deselect test/plugins/test_replaygain.py::ReplayGainGstCliTest::test_r128_targetlevel_has_effect \
-    --deselect test/plugins/test_replaygain.py::ReplayGainGstCliTest::test_targetlevel_has_effect \
-    --deselect test/plugins/test_replaygain.py::ReplayGainGstImportTest::test_backend \
-    --deselect test/plugins/test_replaygain.py::ReplayGainGstImportTest::test_import_converted
+    --deselect test/plugins/test_bpd.py::BPDReflectionTest::test_cmd_decoders
 }
 
 package() {
