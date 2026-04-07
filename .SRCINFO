@@ -1,6 +1,6 @@
 pkgbase = python-xformers
 	pkgdesc = Transformers building blocks, supporting a composable construction
-	pkgver = 0.0.34
+	pkgver = 0.0.35
 	pkgrel = 1
 	url = https://github.com/facebookresearch/xformers
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-xformers
 	depends = python
 	depends = python-pytorch
 	depends = python-numpy
-	source = python-xformers-0.0.34.tar.gz::https://pypi.io/packages/source/x/xformers/xformers-0.0.34.tar.gz
-	sha256sums = 716bd9ffe61f46c2cc0536abf8b8c43ec594bea47a49394ea5cfa417e9de6a6f
+	source = python-xformers-0.0.35.tar.gz::https://pypi.io/packages/source/x/xformers/xformers-0.0.35.tar.gz
+	sha256sums = f7fc183a58e4bf0e2ae339a18fb1b1d4a37854c0f2545b4f360fef001646ab76
 
 pkgname = python-xformers
