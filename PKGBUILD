@@ -1,7 +1,7 @@
 # Maintainer: Kanjurito <kanjurito@gmail.com>
-pkgname=arch-achievements-rpg-git
+pkgname=arch-achievements-git
 _pkgname=arch-achievements
-pkgver=1.0.0.r7.63c2e86 # Ce format sera mis à jour par pkgver()
+pkgver=1.0.0.r7.63c2e86
 pkgrel=1
 pkgdesc="A terminal achievements engine written in Rust (Steam-like achievements for your OS)"
 arch=('x86_64')
