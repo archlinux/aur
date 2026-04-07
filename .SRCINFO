@@ -16,6 +16,7 @@ pkgbase = openvpn3-git
 	depends = lz4>=1.8.4
 	depends = util-linux-libs>=2.23.2
 	depends = openssl>=1.0.2
+	depends = protobuf
 	depends = python-dbus
 	depends = python-gobject
 	depends = python-systemd
@@ -31,10 +32,12 @@ pkgbase = openvpn3-git
 	source = git+https://github.com/chriskohlhoff/asio.git
 	source = openvpn3.rule
 	source = sysusers-openvpn3.conf
+	source = fix-protobuf-nodiscard.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = ec0b8e28ae77b4b074d3eb8a084626e6dcfc587a07bef5d53fe1c6e160c0fc01
 	sha256sums = 045e914bb6fff5a082314dfc805bb511c9a80170619fa1e94a07825fa977c90a
+	sha256sums = SKIP
 
 pkgname = openvpn3-git
