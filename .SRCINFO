@@ -1,6 +1,6 @@
 pkgbase = vsview-comp
 	pkgdesc = A vsview plugin to make comparison backed by Slowpoke Pics
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = vsview-comp
 	depends = python-jinja
 	depends = python-anyio
 	depends = python-keyring
-	source = vsview-comp::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=comp/v0.5.0
-	sha256sums = 43f27860ae67aae84f6c4e5f0000b0c42a059e4dee6af6fcca4df6816a8e57e5
+	source = vsview-comp::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=comp/v0.6.0
+	sha256sums = SKIP
 
 pkgname = vsview-comp
