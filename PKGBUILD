@@ -1,7 +1,7 @@
 # Maintainer: MCB-SMART-BOY <2720838051@qq.com>
 pkgname=neve-git
 pkgver=1.1.1.r142.g091d98c
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone language for system configuration, builds, and shell automation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MCB-SMART-BOY/Neve"
@@ -9,7 +9,7 @@ license=('MPL-2.0')
 depends=('gcc-libs' 'libgit2' 'libssh2' 'openssl' 'zlib' 'xz')
 makedepends=('git' 'rust' 'cargo' 'pkg-config')
 provides=('neve')
-conflicts=('neve')
+conflicts=('neve' 'neve-bin')
 source=("git+https://github.com/MCB-SMART-BOY/Neve.git")
 sha256sums=('SKIP')
 
