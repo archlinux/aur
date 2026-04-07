@@ -23,11 +23,11 @@ pkgver() {
 }
 
 package() {
-  install -dm755 "$pkgdir/usr/share/icons/pixora"
-  cp -fa "$srcdir/$_pkgname/pixora/"* "$pkgdir/usr/share/icons/pixora/"  
-  find "$pkgdir/usr/share/icons/pixora" -type d -print0 \
+  install -dm755 "$pkgdir/usr/share/icons/pixora-icons"
+  cp -fa "$srcdir/$_pkgname/pixora-icons/"* "$pkgdir/usr/share/icons/pixora-icons/"  
+  find "$pkgdir/usr/share/icons/pixora-icons" -type d -print0 \
     | xargs -r0 chmod 0755
-  find "$pkgdir/usr/share/icons/pixora" -type f -print0 \
+  find "$pkgdir/usr/share/icons/pixora-icons" -type f -print0 \
     | xargs -r0 chmod 0644
 
   install -dm755 "$pkgdir/usr/share/icons/pixelitos-light"
