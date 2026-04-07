@@ -1,8 +1,8 @@
 # Maintainer: Yves Gugger <yves@pounce.ch>
 pkgname=lean-ctx-bin
-pkgver=2.17.6
+pkgver=2.18.0
 pkgrel=1
-pkgdesc="The Context Engineering Layer for AI Coding — 25 intelligent tools, 90+ shell patterns, persistent AI memory, multi-agent sharing, tree-sitter AST (18 languages). Reduces AI costs by 60-99%. (pre-built binary)"
+pkgdesc="The Context Engineering Layer for AI Coding — 28 intelligent tools, 90+ shell patterns, persistent AI memory, multi-agent sharing, semantic caching, tree-sitter AST (18 languages). Reduces AI costs by 60-99%. (pre-built binary)"
 arch=('x86_64')
 url="https://leanctx.com"
 license=('MIT')
@@ -11,7 +11,7 @@ provides=('lean-ctx')
 conflicts=('lean-ctx')
 source=("lean-ctx-$pkgver.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v$pkgver/lean-ctx-x86_64-unknown-linux-gnu.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/yvgude/lean-ctx/v$pkgver/LICENSE")
-sha256sums=('SKIP'
+sha256sums=('2be0cf8cd98998cfb3211a9a26ad7ce372582631b0481a15456ec178eae1d179'
             'SKIP')
 
 package() {
