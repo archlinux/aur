@@ -3,7 +3,7 @@
 # Contributor: Kyle Meyer <kyle@kyleam.com>
 pkgname=snakemake
 pkgver=9.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
 url='https://snakemake.readthedocs.io'
@@ -38,7 +38,7 @@ depends=(
     'python-yte>=1.5.5' 'python-yte<2.0'
     'python-dpath>=2.1.6' 'python-dpath<3.0.0'
     'python-conda-inject>=1.3.1' 'python-conda-inject<2.0'
-    'python-sqlmodel>=0.0.37' 'python-sqlmodel<0.0.38'
+    'python-sqlmodel>=0.0.37'
 )
 makedepends=(python-setuptools python-build python-installer python-wheel)
 optdepends=(

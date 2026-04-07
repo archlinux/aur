@@ -1,7 +1,7 @@
 pkgbase = snakemake
 	pkgdesc = Python-based language and execution environment for GNU Make-like workflows
 	pkgver = 9.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://snakemake.readthedocs.io
 	arch = any
 	license = MIT
@@ -46,7 +46,6 @@ pkgbase = snakemake
 	depends = python-conda-inject>=1.3.1
 	depends = python-conda-inject<2.0
 	depends = python-sqlmodel>=0.0.37
-	depends = python-sqlmodel<0.0.38
 	optdepends = python-pygments: For report generation
 	optdepends = python-biopython: For GenBank/NCBI Entrez support
 	optdepends = python-easywebdav: For WebDAV support
