@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=mtproto.zig
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="High-performance Telegram MTProto proxy written in Zig"
 arch=(any)
@@ -20,7 +20,7 @@ depends=(
 	'python-psutil'
 	'python-websockets'
 )
-sha256sums=('ebef6c504cb8ab4761c8a5f1c7a3dbc910be73fe03d1d0bcf7d7462b51778b3d'
+sha256sums=('9da7e9cec1870599b255b136d2d2e2f283eecad2324e1cce758bccaf01f10417'
             'd58880e0feeef1e9f157bd7469760e391bccf940a3cb8e1795dbb9bf0434c4d7'
             '262a7da689f7710ad69953291f2baf42e681868a451bad4d346a9c674ea6705f'
             'd2081ca0a94892a538c145f2f429fe9f45d55b389d4622e87bbf436207301946'
