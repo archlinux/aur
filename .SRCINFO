@@ -1,0 +1,15 @@
+pkgbase = hailort-firmware-8-bin
+	pkgdesc = Firmware binary for HAILO-8 series accelerator cards
+	pkgver = 4.23.0
+	pkgrel = 1
+	url = https://github.com/hailo-ai/hailort-drivers
+	arch = any
+	license = Proprietary
+	provides = hailort-firmware-8
+	provides = hailort-firmware-8-bin
+	conflicts = hailort-firmware-8
+	conflicts = hailort-firmware-8-bin
+	source = hailo8_fw.4.23.0.bin::https://hailo-hailort.s3.eu-west-2.amazonaws.com/Hailo8/4.23.0/FW/hailo8_fw.4.23.0.bin
+	sha256sums = 1ba9528972091ec17bebc0dc7ea2e6f4449efe70664890f6387ccbc7b60626ee
+
+pkgname = hailort-firmware-8-bin
