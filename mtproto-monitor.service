@@ -7,18 +7,19 @@ Wants=mtproto-proxy.service
 Type=simple
 User=mtproto-proxy
 Group=mtproto-proxy
-WorkingDirectory=/usr/share/mtproto-proxy/webapps/monitor
-ExecStart=/usr/bin/uvicorn server:app \
+WorkingDirectory=/usr/share/webapps/mtproto-proxy/monitor
+ExecStart=/usr/bin/python -m uvicorn server:app \
     --host 127.0.0.1 \
     --port 61208 \
     --no-access-log \
-    --log-level warningRestart=always
+    --log-level warning
 Restart=always
 RestartSec=3
 NoNewPrivileges=true
 ProtectSystem=strict
 PrivateTmp=yes
-ReadWritePaths=/var/log/mtproto-proxy
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
