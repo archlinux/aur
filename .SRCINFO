@@ -1,0 +1,21 @@
+pkgbase = hailort-drivers-8-dkms
+	pkgdesc = Kernel drivers for HAILO-8 series accelerator cards
+	pkgver = 4.23.0
+	pkgrel = 1
+	url = https://github.com/hailo-ai/hailort-drivers
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	depends = dkms
+	depends = hailort-firmware-8
+	provides = hailort-drivers-8
+	provides = hailort-drivers-8-dkms
+	conflicts = hailort-drivers-8
+	conflicts = hailort-drivers-8-dkms
+	source = hailort-drivers-4.23.0.tar.gz::https://github.com/hailo-ai/hailort-drivers/archive/refs/tags/v4.23.0.tar.gz
+	source = dkms.conf.in
+	sha256sums = 245c7157746c2fd48b2fab4a990c8fb3b786921dd72c9e5348f5b5619ee05ec3
+	sha256sums = SKIP
+
+pkgname = hailort-drivers-8-dkms
