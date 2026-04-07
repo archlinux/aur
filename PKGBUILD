@@ -19,11 +19,11 @@ source=("apprenticevr.desktop"
         "https://raw.githubusercontent.com/mula-bb/apprenticeVrSrc/main/build/icon.png")
 source_x86_64=("https://github.com/mula-bb/apprenticeVrSrc/releases/download/v${pkgver}/apprenticevr-${pkgver}-x86_64.AppImage")
 source_aarch64=("https://github.com/mula-bb/apprenticeVrSrc/releases/download/v${pkgver}/apprenticevr-${pkgver}-arm64.AppImage")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
+sha256sums=('af5874b444ce6a5b0abc0be3da23446cb239c37979440d0e9149871021a15ece'
+            '3bb4054b9cfcc259e110ee6cded02c473b86068444a0a0534a7709928de82d90'
+            'c2bcf1dbb3b608655baacddcf3a19532053532f3f21422faa52d9071fd46707b')
+sha256sums_x86_64=('c8e5099c89b7e5a9ffb821dc72248f436aba58a6bd16e5992314041f831ae7df')
+sha256sums_aarch64=('cf4963cacb1faf629838141ce812db0a88a1df17c495b1a8729a4c5eb183d99e')
 
 prepare() {
     if [ "$CARCH" = "x86_64" ]; then
@@ -61,4 +61,4 @@ EOF
     # Install icon
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/apprenticevr.png"
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/apprenticevr.png"
-} 
+}
