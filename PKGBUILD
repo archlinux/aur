@@ -1,7 +1,7 @@
 pkgbase=navicat-premium-lite
 pkgname=("${pkgbase}-en" "${pkgbase}-zh-cn")
-pkgver=17.3.6
-pkgrel=3
+pkgver=17.3.7
+pkgrel=1
 pkgdesc="Navicat Premium Lite"
 arch=('x86_64')
 url="https://www.navicat.com/products/navicat-premium-lite"
@@ -10,8 +10,8 @@ source_x86_64=(
 	"${pkgbase}-en-x86_64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-en-x86_64.AppImage"
 	"${pkgbase}-cs-x86_64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat17-premium-lite-cs-x86_64.AppImage"
 )
-sha256sums_x86_64=('acb5913cb1fa450287ffdd2dc9af61a9d42130241e7be2dbb6a919b1d9aa60c7'
-                   '7a0bb1b54a7431f3fc4057bb2ea425d6a8fc2dc398b183424899befacb0019f6')
+sha256sums_x86_64=('419b5f4dad1dbd276f4220a60bc3ab7788e58fea2c0639040e932048a3b41a5d'
+                   '5988436bb20ffb7f7a042aa1757bdb6fbd98e5f3d21001859ea6692a98028c35')
 
 package_navicat-premium-lite-en() {
 	pkgdesc='Navicat Premium Lite is a compact version of Navicat'
