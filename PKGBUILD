@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=starfish
 pkgver=0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Starfish: Arch Depdency Viewer"
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Starfish"
@@ -12,10 +12,9 @@ depends=(
     'shelly'
     'gtk4'
     'glib2'
-    'libglvnd'
+    'lib32-libglvnd'
     'hicolor-icon-theme'
     'glibc'
-    'libEGL.so.1'
 )
 makedepends=('dotnet-sdk-10.0' 'clang')
 
