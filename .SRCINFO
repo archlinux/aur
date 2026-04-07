@@ -1,7 +1,7 @@
 pkgbase = iopenpod
 	pkgdesc = Open source iPod sync tool - manage your iPod without iTunes
-	pkgver = 1.0.40
-	pkgrel = 2
+	pkgver = 1.0.41
+	pkgrel = 1
 	url = https://github.com/TheRealSavi/iOpenPod
 	arch = any
 	license = MIT
@@ -10,9 +10,9 @@ pkgbase = iopenpod
 	depends = python-mutagen
 	optdepends = ffmpeg: for transcoding support
 	optdepends = chromaprint: for acoustic fingerprinting
-	source = https://github.com/TheRealSavi/iOpenPod/archive/refs/tags/v1.0.40.tar.gz
+	source = https://github.com/TheRealSavi/iOpenPod/archive/refs/tags/v1.0.41.tar.gz
 	source = disable-autoupdater.patch
-	sha256sums = 532cc208aaae5768aa5e6f024aaede018692ffef038fd73174e0eed1e96c9626
+	sha256sums = f704be67020b4f47a9217983f321320eda9103e216eee7659b834714792cdb25
 	sha256sums = SKIP
 
 pkgname = iopenpod
