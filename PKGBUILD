@@ -1,17 +1,17 @@
 pkgname=i2tor-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop launcher that combines Tor Browser and Java I2P without forking Tor Browser'
 arch=('x86_64')
 url='https://github.com/SethMcGuire/i2tor'
 license=('custom')
-depends=('gtk3' 'glib2' 'libx11' 'libxcursor' 'libxfixes' 'libxinerama' 'libxrandr' 'mesa' 'gnupg' 'fuse2')
+depends=('gtk3' 'glib2' 'libx11' 'libxcursor' 'libxfixes' 'libxinerama' 'libxrandr' 'mesa' 'gnupg')
 optdepends=('xdg-utils: desktop integration helpers')
 provides=('i2tor')
 conflicts=('i2tor')
 validpgpkeys=('DEEDD0E4162AEF688A80890FC533BA97BB9EC07F')
-source=("i2tor-${pkgver}-linux-x86_64.AppImage::https://github.com/SethMcGuire/i2tor/releases/download/v${pkgver}/i2tor-${pkgver}-linux-x86_64.AppImage"
-        "i2tor-${pkgver}-linux-x86_64.AppImage.asc::https://github.com/SethMcGuire/i2tor/releases/download/v${pkgver}/i2tor-${pkgver}-linux-x86_64.AppImage.asc"
+source=("i2tor-${pkgver}-linux-x86_64::https://github.com/SethMcGuire/i2tor/releases/download/v${pkgver}/i2tor-${pkgver}-linux-x86_64"
+        "i2tor-${pkgver}-linux-x86_64.asc::https://github.com/SethMcGuire/i2tor/releases/download/v${pkgver}/i2tor-${pkgver}-linux-x86_64.asc"
         "i2tor.desktop::https://raw.githubusercontent.com/SethMcGuire/i2tor/v${pkgver}/packaging/linux/i2tor.desktop"
         "i2tor.png::https://raw.githubusercontent.com/SethMcGuire/i2tor/v${pkgver}/i2tor.png")
 sha256sums=('SKIP'
@@ -20,9 +20,7 @@ sha256sums=('SKIP'
             '82808187cf275ad420b71900ed162171db8841e4b4861ecaab7f88e9a8ef3dde')
 
 package() {
-  install -Dm755 "${srcdir}/i2tor-${pkgver}-linux-x86_64.AppImage" "${pkgdir}/opt/i2tor/i2tor.AppImage"
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -s /opt/i2tor/i2tor.AppImage "${pkgdir}/usr/bin/i2tor"
+  install -Dm755 "${srcdir}/i2tor-${pkgver}-linux-x86_64" "${pkgdir}/usr/bin/i2tor"
   install -Dm644 "${srcdir}/i2tor.desktop" "${pkgdir}/usr/share/applications/i2tor.desktop"
   install -Dm644 "${srcdir}/i2tor.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/i2tor.png"
 }
