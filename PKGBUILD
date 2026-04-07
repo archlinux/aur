@@ -18,6 +18,7 @@ sha256sums=('afd892f89d2ecee8d3f3b2314f1bd5bf2d02201872c6e3431e5c31096eca4c8b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  CFLAGS+=" -std=gnu11"
   ./configure --prefix=/usr
   make
 }
