@@ -10,7 +10,7 @@ arch=("x86_64")
 url="https://github.com/YARC-Official/YARG-BleedingEdge"
 install=$_pkgname.install
 license=('LGPL-3.0-only')
-depends=("hidapi" "systemd-libs" "alsa-lib" "gtk3" "glib2")
+depends=("hidapi" "systemd-libs" "alsa-lib" "gtk3" "glib2" "libdecor")
 makedepends=("python" "curl")
 provides=("yarg-nightly")
 conflicts=("yarg-nightly" "yarg-nightly-git")
@@ -20,7 +20,7 @@ source=(
     "YARG_${pkgver}.zip::https://github.com/YARC-Official/YARG-BleedingEdge/releases/download/${pkgver}/YARG_${pkgver}-Linux-x64.zip"
     "https://raw.githubusercontent.com/YARC-Official/YARG/master/LICENSE"
 )
-sha256sums=('cf1299595b698818f9aa72e8869aba7bb5a5703055abe62f28bc808e8e345ba3'
+sha256sums=('c050a92722e051753fe5db0d6eaabb19656723f552f54dd450dd5273d4d12b3b'
             '38199fb3ff44d606b436a3a717c837df26b96f935e0da8b289e9bfa3bafa4ceb'
             'SKIP'
             'a5681bf9b05db14d86776930017c647ad9e6e56ff6bbcfdf21e5848288dfaf1b')

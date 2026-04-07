@@ -5,4 +5,4 @@
 # files".
 ulimit -Sn 8192
 
-/opt/yarg-nightly/YARG
+exec /opt/yarg-nightly/YARG "$@"
