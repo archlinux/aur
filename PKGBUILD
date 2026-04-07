@@ -2,8 +2,8 @@
 # Contributor: Tobias Erthal <archabuser [ a t ] mailbox [-d-o-t-] org>
 
 pkgname=pakcs
-pkgver=3.3.0
-pkgrel=4
+pkgver=3.9.0
+pkgrel=1
 pkgdesc="The Portland Aachen Kiel Curry System"
 arch=('x86_64')
 url="https://www.informatik.uni-kiel.de/~pakcs/index.html"
@@ -14,6 +14,7 @@ optdepends=('rlwrap: for command line editing and history functionality')
 install=pakcs.install
 source=("https://www.curry-lang.org/pakcs/download/${pkgname}-${pkgver}-src.tar.gz" 'skip_dir_check.patch')
 md5sums=('f15037690b88f40424ef685d6194a35f' '76bdf92b29451a2983c4d9082ded5a2e')
+backup=("usr/lib/${pkgname}/pakcsrc.default")
 
 prepare() {
 	patch "${srcdir}/${pkgname}-${pkgver}/Makefile" skip_dir_check.patch
@@ -26,6 +27,7 @@ build() {
 	fi
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	msg2 "Building PAKCS (CPM compilation may take 10–30 minutes)..."
 	make	DISTPKGINSTALL=yes \
 			CURRYLIBSDIR="${PWD}/lib" \
 			CURRYTOOLSDIR="${PWD}/currytools" \
@@ -38,6 +40,13 @@ build() {
 }
 
 check() {
+	if [[ -n "$SKIPCHECK" ]]; then
+	  msg2 "Skipping tests (SKIPCHECK set)"
+	  return 0
+	fi
+	
+	msg2 "Running CPM self-tests (can take more than 60min; skip with SKIPCHECK=1)..."
+
 	_CURRYBIN="${srcdir}/${pkgname}-${pkgver}/bin/"
 	PATH=$PATH:${_CURRYBIN}
 
@@ -68,24 +77,24 @@ check() {
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	# Include custom license
+	# include custom license
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	# Copy distro files
+	# copy distro files
 	_PKGROOT="${pkgdir}/usr/lib/${pkgname}"
 	mkdir -p ${_PKGROOT}
 	for dir in "bin" "lib" "src" "tools" "scripts" "currytools" "examples"; do
 		cp -r $dir ${_PKGROOT}/
 	done
 
-	# Copy frontend
+	# copy frontend
 	mkdir -p ${_PKGROOT}/frontend
 	cp -r frontend/bin ${_PKGROOT}/frontend
 
-	# Default config file
+	# default config file
 	install -Dm644 pakcsrc.default "${pkgdir}/usr/lib/${pkgname}/"
 
-	# Install documentation and examples
+	# install documentation and examples
 	install -Dm644 man/*.1 -t "${pkgdir}/usr/share/man/man1/"
 	install -Dm644 docs/* -t "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -Dm644 currytools/cpm/docs/manual.pdf "${pkgdir}/usr/share/doc/${pkgname}/cpm/Manual.pdf"
@@ -93,15 +102,14 @@ package() {
 	# patch certain files
 	sed -i 's|'${srcdir}/${pkgname}-${pkgver}'|/usr/lib/'${pkgname}'|g' "${pkgdir}/usr/lib/${pkgname}/bin/pakcs"
 	sed -i 's|'${srcdir}/${pkgname}-${pkgver}'|/usr/lib/'${pkgname}'|g' "${pkgdir}/usr/lib/${pkgname}/currytools/cpm/src/CPM/ConfigPackage.curry"
-	sed -i 's|'${srcdir}/${pkgname}-${pkgver}'|/usr/lib/'${pkgname}'|g' "${pkgdir}/usr/lib/${pkgname}/currytools/optimize/.cpm/CURRYPATH_CACHE"	
 
 	# ensure /usr/bin for linking
 	mkdir -p "${pkgdir}/usr/bin"
 
-	# Link examples to documentation
+	# link examples to documentation
 	ln -s "/usr/lib/${pkgname}/examples" "${pkgdir}/usr/share/doc/${pkgname}/examples"
 
-	# Link binaries to /usr/bin
+	# link binaries to /usr/bin
 	ln -s "/usr/lib/${pkgname}/bin/cleancurry" "${pkgdir}/usr/bin/cleancurry"
 	ln -s "/usr/lib/${pkgname}/bin/pakcs" "${pkgdir}/usr/bin/pakcs"
 	ln -s "/usr/lib/${pkgname}/bin/cypm" "${pkgdir}/usr/bin/cypm"
