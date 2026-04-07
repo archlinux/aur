@@ -14,15 +14,16 @@ sha256sums=('SKIP')
 build() {
   cd "$srcdir/xbelite2-$pkgver"
   cargo build --release
-  cd gui
-  cargo build --release
 }
 
 package() {
   cd "$srcdir/xbelite2-$pkgver"
 
   install -Dm755 target/release/xbelite2d "$pkgdir/usr/bin/xbelite2d"
-  install -Dm755 gui/target/release/xbelite2-gui "$pkgdir/usr/bin/xbelite2-gui"
+  install -Dm755 target/release/xbe2-rw "$pkgdir/usr/bin/xbe2-rw"
+  install -Dm755 target/release/xbe2-bt "$pkgdir/usr/bin/xbe2-bt"
+  install -Dm755 target/release/xbelite2-gui "$pkgdir/usr/bin/xbelite2-gui"
+
   install -Dm644 pkg/xbelite2d.service "$pkgdir/usr/lib/systemd/system/xbelite2d.service"
   install -Dm644 99-xbelite2.rules "$pkgdir/etc/udev/rules.d/99-xbelite2.rules"
   install -Dm644 pkg/modprobe.d/xbelite2.conf "$pkgdir/etc/modprobe.d/xbelite2.conf"
