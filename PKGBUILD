@@ -1,7 +1,7 @@
 # Maintainer: Sougato Chakrobortty <someonesomething800@gmail.com>
 pkgname=cysinfo-git
 _pkgname=cysinfo
-pkgver=3.0.r44.4042c01
+pkgver=3.0
 pkgrel=1
 pkgdesc="A super simple and minimal fetch tool."
 arch=('x86_64' 'aarch64')
