@@ -1,72 +1,33 @@
+# Maintainer: PaloMiku <palomiku@outlook.com>
+
 pkgname=echomusic-bin
-pkgver=2.0.0
-pkgrel=3
-pkgdesc="A simple third-party KuGou concept version music player (Electron version)"
+_pkgname=${pkgname%-bin}
+pkgver=2.0.4
+pkgrel=1
+pkgdesc="EchoMusic desktop client"
 arch=('x86_64')
-url="https://github.com/hoowhoami/EchoMusic"
+url='https://github.com/hoowhoami/EchoMusic'
 license=('MIT')
-
-depends=(
-  'gtk3'
-  'libglvnd'
-  'nss'
-  'alsa-lib'
-  'libxkbcommon'
-  'libkeybinder3'
-  'libayatana-appindicator'
-  'mpv'
-  'xdg-utils'
-)
-
-provides=('echomusic')
-conflicts=('echomusic')
-
-options=('!strip')
-
-source=(
-  "EchoMusic-${pkgver}.deb::https://github.com/hoowhoami/EchoMusic/releases/download/v${pkgver}/EchoMusic-${pkgver}-linux-amd64.deb"
-)
-
-sha256sums=('SKIP')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
+optdepends=('libappindicator-gtk3: tray indicator support')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("EchoMusic-${pkgver}-linux-amd64.deb::https://github.com/hoowhoami/EchoMusic/releases/download/v${pkgver}/EchoMusic-${pkgver}-linux-amd64.deb")
+sha512sums=('SKIP')
 
 package() {
+    local _debdir="${srcdir}/deb-extract"
+    local _datadir="${srcdir}/deb-data"
+    local _data_archive
 
-  cd "$srcdir"
-  # Upstream moved from Flutter to Electron.
-  # This package will no longer be maintained and will be deleted soon.
-  # 解包 deb
-  ar x "EchoMusic-${pkgver}.deb"
-  bsdtar -xf data.tar.* -C "$pkgdir"
+    rm -rf "${_debdir}" "${_datadir}"
+    mkdir -p "${_debdir}" "${_datadir}"
 
-  # Electron 程序通常放在 /opt 或 /usr/lib
-  if [ -d "$pkgdir/usr/lib/echomusic" ]; then
-    install -d "$pkgdir/opt"
-    mv "$pkgdir/usr/lib/echomusic" "$pkgdir/opt/"
-  fi
+    cd "${_debdir}"
+    ar x "${srcdir}/EchoMusic-${pkgver}-linux-amd64.deb"
 
-  if [ -d "$pkgdir/usr/share/echomusic" ]; then
-    install -d "$pkgdir/opt"
-    mv "$pkgdir/usr/share/echomusic" "$pkgdir/opt/"
-  fi
+    _data_archive=$(printf '%s\n' data.tar.*)
+    bsdtar -xf "${_data_archive}" -C "${_datadir}"
 
-  # 删除 upstream 自带 launcher
-  rm -f "$pkgdir/usr/bin/echomusic"
-
-  # 创建标准 launcher
-  install -d "$pkgdir/usr/bin"
-
-  cat > "$pkgdir/usr/bin/echomusic" << 'EOF'
-#!/bin/sh
-exec /opt/echomusic/EchoMusic "$@"
-EOF
-
-  chmod 755 "$pkgdir/usr/bin/echomusic"
-
-  # desktop 修复
-  _desktop="$pkgdir/usr/share/applications/echomusic.desktop"
-  if [[ -f "$_desktop" ]]; then
-    sed -i 's|^Exec=.*|Exec=/usr/bin/echomusic %U|' "$_desktop"
-    sed -i 's|^Icon=.*|Icon=echomusic|' "$_desktop"
-  fi
-
+    cp -a "${_datadir}/." "${pkgdir}/"
 }
