@@ -1,6 +1,6 @@
 pkgbase = linux-wallpaperengine-core-git
 	pkgdesc = linux-wallpaperengine backend code, handles rendering of wallpapers for the various frontends out there
-	pkgver = r622.f49a7ac
+	pkgver = r660.76a5fd3
 	pkgrel = 1
 	url = https://github.com/Almamu/linux-wallpaperengine-core
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = linux-wallpaperengine-core-git
 	depends = libxdamage
 	depends = nspr
 	provides = linux-wallpaperengine-core
+	provides = linux-wallpaperengine-webhelper
 	source = linux-wallpaperengine-core-git::git+https://github.com/Almamu/linux-wallpaperengine-core.git#branch=main
 	sha512sums = SKIP
 

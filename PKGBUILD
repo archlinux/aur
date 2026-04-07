@@ -1,7 +1,7 @@
 # Maintainer: Alexis Maiquez <aur@almamu.com>
 pkgname=linux-wallpaperengine-core-git
 _pkgname=linux-wallpaperengine
-pkgver=r622.f49a7ac
+pkgver=r660.76a5fd3
 pkgrel=1
 pkgdesc="linux-wallpaperengine backend code, handles rendering of wallpapers for the various frontends out there"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/Almamu/linux-wallpaperengine-core"
 license=('GPL-3.0-only')
 depends=('lz4' 'ffmpeg' 'mpv' 'glfw' 'glew' 'freeglut' 'libpulse' 'libcups' 'at-spi2-core' 'nss' 'libxcomposite' 'libxdamage' 'nspr')
 makedepends=('git' 'cmake' 'sdl2' 'glm')
-provides=("linux-wallpaperengine-core")
+provides=("linux-wallpaperengine-core" "linux-wallpaperengine-webhelper")
 source=("${pkgname}::git+https://github.com/Almamu/linux-wallpaperengine-core.git#branch=main")
 sha512sums=('SKIP')
 
@@ -23,7 +23,13 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
-    git submodule update --init --recursive
+    git submodule update --init src/External/glslang-WallpaperEngine
+    git submodule update --init src/External/json
+    git submodule update --init src/External/kissfft-WallpaperEngine
+    git submodule update --init src/External/MimeTypes
+    git submodule update --init src/External/quickjs
+    git submodule update --init src/External/SPIRV-Cross-WallpaperEngine
+    git submodule update --init src/External/stb
     git -c protocol.file.allow=always submodule update
 }
 
