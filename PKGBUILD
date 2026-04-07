@@ -1,7 +1,7 @@
 # Maintainer: acgq <acgq@users.noreply.github.com>
 
 pkgname=quick-switcher-bin
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Cross-platform window quick switcher (like Alfred/Raycast/Listary)"
 arch=('x86_64')
