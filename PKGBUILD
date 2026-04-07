@@ -1,13 +1,13 @@
 # Maintainer: Sebastian Kremiec <sebastian.kremiec at gmail dot com>
 pkgname=gnome-shell-extension-quick-settings-audio-panel
-pkgver=101
+pkgver=102
 pkgrel=1
 pkgdesc='Quick Settings Audio Panel GNOME Extension'
 arch=('any')
 url=https://github.com/Rayzeq/quick-settings-audio-panel
 license=('GPL-3.0-or-later')
 source=("$pkgname-v$pkgver::git+$url.git#tag=v$pkgver")
-sha256sums=('af3c302a0afd575f1fac7c8b453d20f33f7026d7d05e892d9cd281ceb5a38a8c')
+sha256sums=('713ff55f7476baaa3b52de148286bfaab142b17a814dd768e959aa8597f49046')
 depends=('gnome-shell')
 makedepends=('glib2' 'npm')
 
