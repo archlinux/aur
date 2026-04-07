@@ -1,5 +1,5 @@
 pkgname=omaclip-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=3
 pkgdesc="Desktop clipboard manager with secure mesh sync — peers auto-discover and share clipboards across your local network"
 arch=('x86_64' 'aarch64')
