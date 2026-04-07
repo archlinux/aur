@@ -1,6 +1,6 @@
 pkgbase = amethyst-mod-manager
 	pkgdesc = A Linux native mod manager for a variety of games
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://github.com/ChrisDKN/Amethyst-Mod-Manager
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = amethyst-mod-manager
 	depends = python-zstandard
 	optdepends = zenity: native dialog
 	optdepends = kdialog: native dialog
-	source = amethyst-mod-manager-1.1.8.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v1.1.8.tar.gz
-	sha256sums = 1b1bab1881510bef63f1a2d6b6540623ff0e7bc21eb2c7cca09595a7ae639cc0
+	source = amethyst-mod-manager-1.1.9.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v1.1.9.tar.gz
+	sha256sums = 597ce102f608f5303d9714083f1e3365f7cc9cefe1749c4cd926a0efaac6c457
 
 pkgname = amethyst-mod-manager
