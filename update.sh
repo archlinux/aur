@@ -7,10 +7,11 @@ git pull
 
 # Get latest version
 VER=$(curl "https://dl.lazycat.cloud/client/desktop/lzc-client-desktop.tar.zst.metadata.json" --silent | awk -F '"' '/buildVersion/ {print $4}')
-MD5=$(curl "https://dl.lazycat.cloud/client/desktop/stable/lzc-client-desktop_${VER}.tar.zst.md5" --silent)
+VER=${VER#v}
+MD5=$(curl "https://dl.lazycat.cloud/client/desktop/stable/lzc-client-desktop_v${VER}.tar.zst.md5" --silent)
 
 # Insert latest version into PKGBUILD and update hashes
-sed -i -e "s/^_pkgver=.*/_pkgver=${VER}/" PKGBUILD
+sed -i -e "s/^pkgver=.*/pkgver=${VER}/" PKGBUILD
 sed -i -e "s/^md5sums=.*/md5sums=('${MD5}'/" PKGBUILD
 
 # Check whether this changed anything
