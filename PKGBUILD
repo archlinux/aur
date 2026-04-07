@@ -1,5 +1,5 @@
 pkgname=python-gitpersona
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Developer persona and analytics toolkit for GitHub profiles"
 arch=(any)
@@ -8,7 +8,7 @@ license=('custom')
 depends=(python-requests python)
 makedepends=(python-setuptools python-wheel)
 source=("https://github.com/rdarshan927/GitPersona/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('697b95de593c7d81e148a54f0dbce2269f367103e80e9d3a5b7baf1091c2c0e1')
+sha256sums=('f87e468d4e6ca51170b7caf37c374b8a6dddf12bdbb970304b913bf6998e2127')
 
 prepare() {
   return 0
