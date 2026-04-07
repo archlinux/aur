@@ -6,12 +6,12 @@
 
 _pkgname="crossonic-bin"
 pkgname="$_pkgname"
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="An OpenSubsonic compatible cross-platform music client"
 arch=('x86_64')
 url="https://github.com/juho05/crossonic"
-license=("AGPL-3.0-or-later")
+license=("MPL-2.0")
 
 depends=(
 	'gtk3'
@@ -41,7 +41,7 @@ source=(
 )
 noextract=("$_pkgsrc.$_pkgext")
 sha256sums=(
-	'c97884f56370ef9548e7ed66658f82858901f9267fc8e404d86c637e585a7b55'
+	'20acc5588fb07618860e7778678c3ef05139cde7f1a493ec6468ff45b4bfcfb7'
 )
 
 
