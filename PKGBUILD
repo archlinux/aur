@@ -18,7 +18,7 @@ conflicts=('arctic-comfyui-helper')
 _asset="arctic-comfyui-helper-0.2.2-1-x86_64.pkg.tar.zst"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_asset}")
 noextract=("${_asset}")
-sha256sums_x86_64=('208c976b74162c152a19bc8d43371257e8d01e7f1cf18227c624ee4616d5d715')
+sha256sums_x86_64=('fdea95c0830810cc8c6c6b57fdab8df9d36c6b957bbea368b0dc122fbe048c77')
 
 package() {
   bsdtar -xpf "${srcdir}/${_asset}" -C "${pkgdir}"
