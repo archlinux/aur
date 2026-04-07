@@ -2,7 +2,7 @@
 # Maintainer: Yasir Peker <yasirzengin10@gmail.com>
 pkgname=qrun-code-git
 _pkgname=qrun
-pkgver=1.0.0
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A lightweight CLI tool to compile and run C, C++, Python, and Go instantly."
 arch=('any')

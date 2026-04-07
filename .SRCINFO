@@ -1,6 +1,6 @@
 pkgbase = qrun-code-git
 	pkgdesc = A lightweight CLI tool to compile and run C, C++, Python, and Go instantly.
-	pkgver = 1.0.0
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/lanierc/qrun
 	arch = any
