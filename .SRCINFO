@@ -1,6 +1,6 @@
 pkgbase = prettymux-bin
 	pkgdesc = GPU-accelerated terminal multiplexer (prebuilt binary)
-	pkgver = 0.2.7
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/patcito/prettymux
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = prettymux-bin
 	depends = json-glib
 	provides = prettymux
 	conflicts = prettymux
-	noextract = prettymux-0.2.7-1-x86_64.pkg.tar.zst
+	noextract = prettymux-0.2.9-1-x86_64.pkg.tar.zst
 	options = !debug
-	source = https://github.com/patcito/prettymux/releases/download/v0.2.7/prettymux-0.2.7-1-x86_64.pkg.tar.zst
-	sha256sums = d4e6be485d6280c6042d567ff5c0ab1996021df23e813037150544e6245b192f
+	source = https://github.com/patcito/prettymux/releases/download/v0.2.9/prettymux-0.2.9-1-x86_64.pkg.tar.zst
+	sha256sums = e22207515241555ab5533d1d9f92a882539beca6a5d1d328c97e017bc6e875b3
 
 pkgname = prettymux-bin
