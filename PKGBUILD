@@ -1,4 +1,4 @@
-# Maintainer: Cameron Slipp <cdslipp@gmail.com>
+# Maintainer: Cameron Slipp <cdslipp@hey.com>
 pkgname=ontime-git
 pkgver=4.7.0.r0.g176e53dd7
 pkgrel=1
