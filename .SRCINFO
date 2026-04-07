@@ -1,7 +1,7 @@
 pkgbase = sysex-controls
 	pkgdesc = Linux alternative to the MIDI Control Center software
-	pkgver = 0.2.27
-	pkgrel = 1
+	pkgver = 0.2.28
+	pkgrel = 2
 	url = https://github.com/soyersoyer/sysex-controls
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,12 +12,7 @@ pkgbase = sysex-controls
 	depends = gtk4
 	depends = libadwaita
 	depends = alsa-lib
-	depends = glibc
-	depends = gcc-libs
-	depends = dconf
-	depends = hicolor-icon-theme
-	depends = glib2
-	source = sysex-controls-0.2.27.tar.gz::https://github.com/soyersoyer/sysex-controls/archive/refs/tags/v0.2.27.tar.gz
-	sha256sums = b4cd4593b4e91478b01229218c1d26dd58f7639e2c1bd6e795d62add56a9cae8
+	source = sysex-controls-0.2.28.tar.gz::https://github.com/soyersoyer/sysex-controls/archive/refs/tags/v0.2.28.tar.gz
+	sha256sums = cb358d311b5a36487ad671b7e078f17bee39363a6df56175027a7cb5661a3439
 
 pkgname = sysex-controls
