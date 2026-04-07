@@ -4,7 +4,7 @@
 
 pkgname=koboldcpp-portable
 pkgver=1.111.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (portable build for old CPUs)"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -34,7 +34,7 @@ source=(
 )
 sha256sums=(
     '61ec9e85adfc7b53dccd0f130672da880f90100c2f79c25ffe78e05ad2fdc7bf'
-    'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
+    '2f2f45a745b30392d01472c1f5e68f82e5e7d7353a4615cf94b9f0cd4fd0505b'
     'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
 
