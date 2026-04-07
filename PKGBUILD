@@ -1,29 +1,19 @@
-# See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
-# for more information on packaging from GIT sources.
-
-# Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
-pkgname=qrun-code-git
-pkgver=r58.b4de532
+# A lightweight CLI tool to compile and run PL's instantly.
+# Maintainer: Yasir Peker <yasirzengin10@gmail.com>
+pkgname=qrun-git
+_pkgname=qrun
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="A command line tool to run QEMU in the most common configurations"
+pkgdesc="A lightweight CLI tool to compile and run C, C++, Python, and Go instantly."
 arch=('any')
-license=('GPL')
-depends=('python' 'qemu' 'bridge-utils' 'iproute2')
+url="https://github.com/lanierc/qrun"
+license=('MIT')
+depends=('gcc' 'python' 'go')
 makedepends=('git')
-source=('git+https://github.com/vmaffione/qrun')
-md5sums=('SKIP')
-provides=('qrun')
-conflicts=('qrun' 'torque')
-
-pkgver() {
-        cd "$srcdir/${pkgname%-git}"
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("git+https://github.com/lanierc/qrun.git")
+sha256sums=('SKIP')
 
 package() {
-    # Install the script into /usr/bin
-    mkdir -p "$pkgdir/usr/bin"
-    install "$srcdir/${pkgname%-git}/qrun.py" "$pkgdir/usr/bin/qrun"
+    cd "$srcdir/$_pkgname"
+    install -Dm755 qrun.sh "$pkgdir/usr/bin/qrun"
 }
-
-# vim:set ts=2 sw=2 et:
