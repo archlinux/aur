@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Omaclip
+Comment=Clipboard manager with multi-machine sync
+Exec=omaclip
+Icon=omaclip
+Type=Application
+Categories=Utility;
+Terminal=false
