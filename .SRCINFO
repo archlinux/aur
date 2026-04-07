@@ -1,6 +1,6 @@
 pkgbase = emm-git
 	pkgdesc = Eidolon Minion Manager - Modular Go-based CLI/TUI for AI
-	pkgver = r21.6e2b420
+	pkgver = r22.3e6a3cb
 	pkgrel = 1
 	url = https://github.com/meesfatels/EMM
 	arch = x86_64
