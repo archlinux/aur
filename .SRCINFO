@@ -14,6 +14,7 @@ pkgbase = i2tor-bin
 	depends = libxrandr
 	depends = mesa
 	depends = gnupg
+	depends = fuse2
 	optdepends = xdg-utils: desktop integration helpers
 	provides = i2tor
 	conflicts = i2tor
