@@ -1,0 +1,18 @@
+pkgbase = rtk-ai-bin
+	pkgdesc = CLI proxy that reduces LLM token consumption by 60-90% on common dev commands
+	pkgver = 0.35.0
+	pkgrel = 1
+	url = https://github.com/rtk-ai/rtk
+	arch = x86_64
+	license = MIT
+	provides = rtk
+	provides = rtk-bin
+	conflicts = rtk
+	conflicts = rtk-bin
+	options = !strip
+	source_x86_64 = rtk-0.35.0-x86_64-unknown-linux-musl.tar.gz::https://github.com/rtk-ai/rtk/releases/download/v0.35.0/rtk-x86_64-unknown-linux-musl.tar.gz
+	source_x86_64 = rtk-0.35.0.tar.gz::https://github.com/rtk-ai/rtk/archive/refs/tags/v0.35.0.tar.gz
+	sha256sums_x86_64 = 30c852a6f415a8a270aaa333c614bb02dfd0d60bc57af382f5bb44c3b61a6ff9
+	sha256sums_x86_64 = c7bd2750915be97053a03888b2d590371835b90900030288f312e6f60a6079e5
+
+pkgname = rtk-ai-bin
