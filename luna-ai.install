@@ -1,0 +1,14 @@
+post_install() {
+    echo "  [→] Setting up Luna AI venv and pip packages..."
+    python3 -m venv /opt/luna-ai/venv
+    TMPDIR=/tmp /opt/luna-ai/venv/bin/pip install --quiet --upgrade pip
+    TMPDIR=/tmp /opt/luna-ai/venv/bin/pip install --quiet \
+        PyQt6 edge-tts google-genai groq requests \
+        psutil yt-dlp SpeechRecognition beautifulsoup4 pygame
+    TMPDIR=/tmp /opt/luna-ai/venv/bin/pip install --quiet pyaudio 2>/dev/null || true
+    echo "  [✓] Luna AI ready — run: luna"
+}
+
+post_upgrade() {
+    post_install
+}
