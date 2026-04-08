@@ -1,3 +1,8 @@
+2026.04.07, v10.2.1
+
+fix:
+- d179ad6 gritty: background-color
+
 2026.04.05, v10.2.0
 
 feature:
