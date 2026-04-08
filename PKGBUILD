@@ -1,6 +1,6 @@
 # Maintainer: Mara Vexa <me@maravexa.com>
 pkgname=hyprsaver
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A Wayland-native screensaver for Hyprland — fractal shaders on wlr-layer-shell overlays"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
     'hyprlock: lock screen to pair with hyprsaver'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/maravexa/hyprsaver/archive/v$pkgver.tar.gz")
-sha256sums=('a164aa7833a2f973996640a9bed25ffbfd4d714421101d0e2770a9f94523aefe')
+sha256sums=('baabd1007ceb81d699b0a740f2e0a8f7a8f729878907b88a95a6b34dc1be6868')
 
 prepare() {
     cd "$pkgname-$pkgver"
