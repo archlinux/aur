@@ -26,7 +26,7 @@ pkgver() {
 build() {
   cd "${_pkgname}"
   if command -v rustup > /dev/null 2>&1; then
-    RUSTFLAGS="-C target-cpu=native" rustup run stable \
+    RUSTFLAGS="-C target-cpu=native" rustup run --install stable \
       cargo build --release
   elif rustc --version | grep -q stable; then
     RUSTFLAGS="-C target-cpu=native" \
