@@ -45,7 +45,6 @@ prepare() {
 build() {
 	cd "${_name}"
 
-	export NVCC_CCBIN="${NVCC_CCBIN}"
 	export CFLAGS='-DGLOG_USE_GLOG_EXPORT'
 	export CCFLAGS='-DGLOG_USE_GLOG_EXPORT'
 	export NVCC_APPEND_FLAGS='-DGLOG_USE_GLOG_EXPORT'
