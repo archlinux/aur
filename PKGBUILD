@@ -1,12 +1,17 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=wl-longshot-git
-pkgver=r12.7718502
-pkgrel=2
+pkgver=r17.82a497a
+pkgrel=1
 pkgdesc="A scrolling screenshot tool (long screenshot tool) for Wayland Compositors"
 arch=('any')
-url="https://github.com/YourName/wl-longshot"
+url="https://github.com/SHORiN-KiWATA/wl-longshot"
 license=('GPL3') 
-depends=('bash' 'grim' 'slurp' 'wl-clipboard' 'python' 'python-opencv' 'python-numpy')
+
+depends=(
+    'bash' 'grim' 'slurp' 'wl-clipboard' 
+    'python' 'python-opencv' 'python-numpy'
+    'gtk3' 'gtk-layer-shell' 'python-gobject' 'python-cairo'
+)
 optdepends=(
     'wl-screenrec: Fast stream recording backend (Recommended)'
     'wf-recorder: Stream recording backend (Fallback)'
@@ -26,9 +31,15 @@ pkgver() {
 
 package() {
     cd "$srcdir/wl-longshot"
-    install -Dm755 src/wl-longshot "$pkgdir/usr/bin/wl-longshot"
-    install -Dm755 src/stitcher.py "$pkgdir/usr/share/wl-longshot/stitcher.py"
     
+    # 安装主程序
+    install -Dm755 src/wl-longshot "$pkgdir/usr/bin/wl-longshot"
+    
+    # 安装所有 Python 组件到 /usr/share/wl-longshot
+    install -Dm755 src/stitcher.py "$pkgdir/usr/share/wl-longshot/stitcher.py"
+    install -Dm755 src/drawbox.py "$pkgdir/usr/share/wl-longshot/drawbox.py"
+    
+    # 安装证书
     if [ -f LICENSE ]; then
         install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
