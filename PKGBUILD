@@ -2,7 +2,7 @@
 
 pkgname="matlab-proxy"
 pkgver=0.31.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open a MATLAB® desktop in a web browser tab"
 arch=(
   'any'
@@ -13,7 +13,6 @@ license=(
 )
 depends=(
   'matlab-release>=R2020b'
-  'xorg-server-xvfb'
 
   'python>=3.10'
   'python-aiohttp-session'
@@ -43,6 +42,7 @@ makedepends=(
   'python-hatchling>=1.27'
 )
 optdepends=(
+  'xorg-server-xvfb: support graphical abilities like plots and figures in the MATLAB desktop'
   'fluxbox: support Simulink Online'
 )
 provides=(
