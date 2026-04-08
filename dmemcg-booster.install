@@ -1,0 +1,22 @@
+post_install() {
+  systemctl daemon-reload
+  systemctl enable --now dmemcg-booster-system.service
+  systemctl --user --global enable dmemcg-booster-user.service
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  if ! systemctl is-enabled --quiet dmemcg-booster-system.service; then
+    systemctl enable dmemcg-booster-system.service
+  fi
+  if ! systemctl --user --global is-enabled --quiet dmemcg-booster-user.service; then
+    systemctl --user --global enable dmemcg-booster-user.service
+  fi
+  systemctl restart dmemcg-booster-system.service
+}
+
+pre_remove() {
+  systemctl disable --now dmemcg-booster-system.service
+  systemctl --user --global disable dmemcg-booster-user.service
+}
+

@@ -1,0 +1,17 @@
+pkgbase = dmemcg-booster
+	pkgdesc = Service for enabling and controlling dmem cgroup limits for boosting foreground games
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://gitlab.steamos.cloud/holo/dmemcg-booster
+	install = dmemcg-booster.install
+	arch = x86_64
+	license = custom:unknown
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libdrm
+	depends = systemd-libs
+	source = dmemcg-booster::git+https://gitlab.steamos.cloud/holo/dmemcg-booster.git#tag=0.1.2
+	sha256sums = b78e5823023d26c70f3e001af90f1694f7f933298ae36805660195767bb9acd4
+
+pkgname = dmemcg-booster
