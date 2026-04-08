@@ -3,7 +3,7 @@ pkgname=python-steam
 _name=${pkgname#python-}
 _pkgver=2.0.0-alpha1
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Python package for interacting with Steam"
 arch=('any')
 url="https://github.com/solsticegamestudios/steam"
@@ -20,6 +20,7 @@ depends=(
   'python-six'
   'python-vdf'
   'python-wsproto'
+  'python-zstandard'
 )
 makedepends=(
   'python-build'
@@ -34,8 +35,10 @@ checkdepends=(
 )
 replaces=('python-steam-solstice')
 source=("$_name-${_pkgver}.tar.gz::$url/archive/refs/tags/v${_pkgver}.tar.gz"
+        'https://github.com/solsticegamestudios/steam/pull/14.patch'
         'pkg_resources.patch')
 sha256sums=('6447a3c97248885b44b73fec3bdcaee0421fe3e6e062d1bb195b9de3acc7eb0a'
+            '70d3ba6f86f341c9b00ba43fa5feec76870bc4421e6b528e3378f9b2a7d30221'
             '91fee1a59979dd29ee9667b60bd3b20e542923b98a129e90db1cbdddc3a68827')
 
 prepare() {
@@ -46,6 +49,10 @@ prepare() {
   make pb_compile
   make pb_services
   make pb_gen_enums
+
+  # cdn: Add ZSTD support
+  # https://github.com/solsticegamestudios/steam/issues/13
+  patch -Np1 -i ../14.patch
 
   # pkg_resources deprecated in Setuptools 82+
   # https://archlinux.org/todo/python-pkg_resources-deprecation/

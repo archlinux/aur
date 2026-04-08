@@ -1,7 +1,7 @@
 pkgbase = python-steam
 	pkgdesc = Python package for interacting with Steam
 	pkgver = 2.0.0.alpha1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/solsticegamestudios/steam
 	arch = any
 	license = MIT
@@ -23,10 +23,13 @@ pkgbase = python-steam
 	depends = python-six
 	depends = python-vdf
 	depends = python-wsproto
+	depends = python-zstandard
 	replaces = python-steam-solstice
 	source = steam-2.0.0-alpha1.tar.gz::https://github.com/solsticegamestudios/steam/archive/refs/tags/v2.0.0-alpha1.tar.gz
+	source = https://github.com/solsticegamestudios/steam/pull/14.patch
 	source = pkg_resources.patch
 	sha256sums = 6447a3c97248885b44b73fec3bdcaee0421fe3e6e062d1bb195b9de3acc7eb0a
+	sha256sums = 70d3ba6f86f341c9b00ba43fa5feec76870bc4421e6b528e3378f9b2a7d30221
 	sha256sums = 91fee1a59979dd29ee9667b60bd3b20e542923b98a129e90db1cbdddc3a68827
 
 pkgname = python-steam
