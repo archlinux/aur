@@ -1,6 +1,6 @@
 # Maintainer: Jean-Baptiste Delisle <jb dot delisle at pi314 dot noho dot st>
 pkgname='bed-latex'
-pkgver='2.0.4'
+pkgver='2.0.5'
 pkgrel=1
 pkgdesc="BEd: Beamer Editor, GUI for LaTeX Beamer presentations."
 url="https://framagit.org/delisle/bed"
@@ -14,7 +14,7 @@ arch=('any')
 install="bed.install"
 module='bed_latex'
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${module}-${pkgver}.tar.gz")
-sha256sums=('8c84792968ede02a2d396655bf24982b355ce39740fee7dd68b9f43614d9abce')
+sha256sums=('a8f0c6f8745817e15cbe7e78a0f5b168a64767c03023edd0b1aa4a98686feaaa')
 
 prepare() {
   cd "${srcdir}"
