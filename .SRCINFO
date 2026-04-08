@@ -1,0 +1,22 @@
+pkgbase = gnomeqs
+	pkgdesc = Quick Share client for GNOME
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/weversonl/gnomeqs-gtk
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = gettext
+	depends = gtk4
+	depends = gtk3
+	depends = libadwaita
+	depends = libayatana-appindicator
+	depends = glib2
+	depends = dbus
+	options = !debug
+	source = gnomeqs::git+https://github.com/weversonl/gnomeqs-gtk.git
+	sha256sums = SKIP
+
+pkgname = gnomeqs
