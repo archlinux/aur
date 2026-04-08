@@ -2,8 +2,8 @@
 
 pkgname=fp
 _pkgname=filterpath
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="fp (FilterPath) is the filter equivalent for the Unix test util"
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://github.com/cyqsimon/fp"
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("libgcc")
 makedepends=("cargo")
 source=("${_pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/$_pkgname/$_pkgname-$pkgver.crate")
-sha512sums=('12e780714363c08383987a77e6fb219185c34e0e3d514d6f19248590723ef398c9cc395b1dba3f882982696b055cb3e65b43542ce99759639882f3f2a7ebf853')
+sha512sums=('9bad03c4e14b42d08dbcb730895cfd492b036ab9a6e3f43dca537d3b2d633fc01c3a126449663ddc1dc5657f784b7ee1cf1d80042e83463c4632e69e38724256')
 
 prepare() {
   cd ${_pkgname}-${pkgver}

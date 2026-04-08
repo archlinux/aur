@@ -1,7 +1,7 @@
 pkgbase = fp
 	pkgdesc = fp (FilterPath) is the filter equivalent for the Unix test util
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.1.3
+	pkgrel = 1
 	url = https://github.com/cyqsimon/fp
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = fp
 	license = MIT
 	makedepends = cargo
 	depends = libgcc
-	source = filterpath-0.1.2.tar.gz::https://static.crates.io/crates/filterpath/filterpath-0.1.2.crate
-	sha512sums = 12e780714363c08383987a77e6fb219185c34e0e3d514d6f19248590723ef398c9cc395b1dba3f882982696b055cb3e65b43542ce99759639882f3f2a7ebf853
+	source = filterpath-0.1.3.tar.gz::https://static.crates.io/crates/filterpath/filterpath-0.1.3.crate
+	sha512sums = 9bad03c4e14b42d08dbcb730895cfd492b036ab9a6e3f43dca537d3b2d633fc01c3a126449663ddc1dc5657f784b7ee1cf1d80042e83463c4632e69e38724256
 
 pkgname = fp
