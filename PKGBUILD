@@ -14,6 +14,18 @@ depends=(
 	'python'
 	'python-pytorch'
 	'python-numpy'
+	'python-nvidia-ml-py'
+	'python-triton'
+	'python-scipy'
+	'python-pytest'
+	'python-tqdm'
+	'python-matplotlib'
+	'python-pandas'
+	'python-typing_extensions'
+	'cuda'
+	'libstdc++'
+	'libgcc'
+	'glibc'
 )
 makedepends=(
 	'python-wheel'
