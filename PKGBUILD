@@ -32,6 +32,7 @@ makedepends=(
 	'python-installer'
 	'python-setuptools'
 	'git'
+	'ninja'
 )
 source=(
 	"git+https://github.com/facebookresearch/xformers.git#tag=v${pkgver}"

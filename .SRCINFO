@@ -9,6 +9,7 @@ pkgbase = python-xformers
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = git
+	makedepends = ninja
 	depends = python
 	depends = python-pytorch
 	depends = python-numpy
