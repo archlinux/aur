@@ -1,6 +1,7 @@
 - Make connection filter apply after typing to provide a better user experience
 - Fix yubikey and pkcs#11 integration being broken with wrong environment variable setup
 - Improve hcloud docs and clarify sync behaviour for config
+- Fix tailnet integration not properly switching between tailnets with the same account
 - Fix exception when copying empty file browser selection
 - Fix exception when opening terminal in file browser overview
 - Fix various translations
