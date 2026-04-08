@@ -46,8 +46,8 @@ def migrate_files():
 LOGO = [
     r"___________________  ________    ________  .____    .___  _______________________",
     r"\__    ___/\_____  \ \______ \   \_____  \ |    |   |   |/      _____/\__    ___/",
-    r"  |    |    /    |  \ |    |  \   /    |  \|    |   |   |\_____  \      |    |   ",
-    r"  |    |   /     |   \|    `   \ /     |   \    |___|   |/        \     |    |   ",
+    r"  |    |    /   |   \ |    |  \   /   |   \|    |   |   |\_____  \      |    |   ",
+    r"  |    |   /    |    \|    `   \ /    |    \    |___|   |/        \     |    |   ",
     r"  |____|   \_________/_________/ \_________/________\___/_________/     |____|   ",
 ]
 
@@ -380,6 +380,8 @@ def draw_logo(stdscr, theme_id):
     c1_idx, c2_idx = themes.get(theme_id, (6, 3))
     h, w = stdscr.getmaxyx()
     for i, line in enumerate(LOGO):
+        if i + 1 >= h:
+            break  # Safety for tiny windows
         x = max(0, (w - len(line)) // 2)
         color = curses.color_pair(c1_idx) if i < 2 else curses.color_pair(c2_idx)
         try:
@@ -406,14 +408,15 @@ def draw_table(stdscr, todos, start_y):
     header = f"{'#':<4} | {'Priority':<10} | {'Task':<30} | {'Status':>15}"
     row_x = max(0, (w - len(header)) // 2)
     try:
-        stdscr.addstr(start_y, row_x, header, curses.color_pair(6) | curses.A_BOLD)
-        stdscr.addstr(start_y + 1, row_x, "-" * len(header), curses.color_pair(6))
+        if start_y < h:
+            stdscr.addstr(start_y, row_x, header, curses.color_pair(6) | curses.A_BOLD)
+            stdscr.addstr(start_y + 1, row_x, "-" * len(header), curses.color_pair(6))
     except curses.error:
         pass
 
     y = start_y + 2
     for idx, item in enumerate(todos, 1):
-        if y >= h - 18:
+        if y >= h - 8:  # Reserve 8 lines for the menu at the bottom
             break
         task_text = (
             item["task"][:27] + "..." if len(item["task"]) > 30 else item["task"]
@@ -738,6 +741,8 @@ def grocery_sorter_mode(stdscr, theme_id):
 
 def draw_calendar(stdscr, start_y, selected_day, year, month):
     h, w = stdscr.getmaxyx()
+    if start_y + 5 >= h:
+        return  # Skip if no room
     now = time.localtime()
     cal = calendar.monthcalendar(year, month)
     header = f"{calendar.month_name[month]} {year}"
@@ -762,6 +767,8 @@ def draw_calendar(stdscr, start_y, selected_day, year, month):
                 day_str = f"{day:2}"
                 x = row_x + (c_idx * col_width)
                 y = start_y + 2 + r_idx
+                if y >= h - 8:
+                    break  # Don't overlap menu
 
                 if day == selected_day:
                     attr = curses.color_pair(4) | curses.A_REVERSE | curses.A_BOLD
@@ -776,36 +783,33 @@ def draw_calendar(stdscr, start_y, selected_day, year, month):
 
 def draw_appointments(stdscr, appointments, date_key, start_y):
     h, w = stdscr.getmaxyx()
+    if start_y >= h - 8:
+        return
     days_header = "Mo Tu We Th Fr Sa Su"
     cal_width = len(days_header)
     row_x = max(0, (w - cal_width) // 2)
     appt_x = row_x + cal_width + 5
     if appt_x + 45 > w:
         appt_x = max(0, (w - 45) // 2)
-        start_y = start_y + 10
+        start_y = start_y + 8  # Move below calendar if narrow
+
     appts = appointments.get(date_key, [])
-    title = f"Appointments for {date_key}:"
+    title = f"Appts for {date_key}:"
     try:
-        stdscr.addstr(start_y, appt_x, title, curses.color_pair(3) | curses.A_BOLD)
+        if start_y < h - 8:
+            stdscr.addstr(start_y, appt_x, title, curses.color_pair(3) | curses.A_BOLD)
     except curses.error:
         pass
     y = start_y + 1
     if not appts:
         try:
-            stdscr.addstr(
-                y, appt_x, "None scheduled.", curses.color_pair(7) | curses.A_DIM
-            )
+            if y < h - 8:
+                stdscr.addstr(y, appt_x, "None.", curses.color_pair(7) | curses.A_DIM)
         except curses.error:
             pass
         return
     for idx, appt in enumerate(appts, 1):
-        if y >= h - 12:
-            try:
-                stdscr.addstr(
-                    y, appt_x, "(more...)", curses.color_pair(7) | curses.A_DIM
-                )
-            except curses.error:
-                pass
+        if y >= h - 8:
             break
         text = f"{idx}. {appt[:38]}" if len(appt) > 38 else f"{idx}. {appt}"
         try:
@@ -818,10 +822,10 @@ def draw_appointments(stdscr, appointments, date_key, start_y):
 def draw_main_menu(stdscr):
     h, w = stdscr.getmaxyx()
     menu = [
-        " [1] Add Task     [2] Complete Task  ",
-        " [3] Remove Task  [4] Edit Task      ",
-        " [5] Remove All   [6] Settings       ",
-        " [7] Exit         [8] Grocery Sorter ",
+        " [1] Add Task      [2] Complete Task  ",
+        " [3] Remove Task   [4] Edit Task      ",
+        " [5] Remove All    [6] Settings       ",
+        " [7] Exit          [8] Grocery Sorter ",
     ]
     for i, line in enumerate(menu):
         try:
@@ -833,19 +837,14 @@ def draw_main_menu(stdscr):
             )
         except curses.error:
             pass
-    hint = "a = add appt   e = edit appt   d = delete appt   (selected day)"
+    hint = "a/e/d = Appts   Arrows = Calendar"
     try:
         stdscr.addstr(
-            h - 3,
+            h - 2,
             max(0, (w - len(hint)) // 2),
             hint,
             curses.color_pair(3) | curses.A_DIM,
         )
-    except curses.error:
-        pass
-    msg = "Choose (1-8) or a/e/d for appointments or Arrows for Calendar: "
-    try:
-        stdscr.addstr(h - 1, max(0, (w - len(msg)) // 2), msg, curses.color_pair(2))
     except curses.error:
         pass
 
@@ -880,7 +879,6 @@ def main(stdscr):
         except:
             pass
 
-    # Persistent Calendar View State
     now = time.localtime()
     cur_year = now.tm_year
     cur_month = now.tm_mon
@@ -892,16 +890,18 @@ def main(stdscr):
         stdscr.clear()
         h, w = stdscr.getmaxyx()
 
-        if h < 20 or w < 85:
-            msg = "Window too small! Please increase."
+        # Relaxed height check: As long as there are 10 lines, try to draw
+        if h < 20:
+            msg = r"""
+            _____   ___   ___    ____   __  __     _     _     _
+           |_   _| / _ \ / _ \  / ___| |  \/  |   / \   | |   | |
+             | |  | | | | | | | \___ \ | |\/| |  / _ \  | |   | |
+             | |  | |_| | |_| |  ___)  | |  | | / ___ \ | |___| |___
+             |_|   \___/ \___/  |____/ |_|  |_|/_/   \_\|_____|_____|
+             """
             try:
-                stdscr.addstr(
-                    h // 2,
-                    max(0, (w - len(msg)) // 2),
-                    msg,
-                    curses.color_pair(1) | curses.A_BOLD,
-                )
-            except curses.error:
+                stdscr.addstr(0, 0, msg)
+            except:
                 pass
             stdscr.refresh()
             if stdscr.getch() in [ord("7"), 27]:
@@ -909,16 +909,29 @@ def main(stdscr):
             continue
 
         draw_logo(stdscr, theme_id)
-        table_bottom_y = draw_table(stdscr, todos, 8)
 
-        calendar_start_y = table_bottom_y + 1
+        # Determine where to start the table.
+        # If the window is small, start it right after the logo (line 7)
+        table_y = 7 if h < 35 else 8
+        table_bottom_y = draw_table(stdscr, todos, table_y)
+
         date_key = f"{cur_year}-{cur_month:02d}-{selected_day:02d}"
 
-        if h > 30:
+        # Only draw calendar and appts if there is substantial vertical space left
+        if h > 25:
+            calendar_start_y = table_bottom_y + 1
             draw_calendar(stdscr, calendar_start_y, selected_day, cur_year, cur_month)
             draw_appointments(stdscr, appointments, date_key, calendar_start_y)
 
-        draw_main_menu(stdscr)
+        # Always try to draw the menu at the bottom
+        if h > 15:
+            draw_main_menu(stdscr)
+        else:
+            try:
+                stdscr.addstr(h - 1, 0, "[1-8] Menu | [7] Exit", curses.color_pair(2))
+            except:
+                pass
+
         stdscr.refresh()
         key = stdscr.getch()
 
@@ -949,66 +962,28 @@ def main(stdscr):
                 cur_year += 1
             selected_day = selected_day - last_day if key == curses.KEY_DOWN else 1
 
-        # Appointment Logic: ADD
         elif key in [ord("a"), ord("A")]:
-            stdscr.clear()
-            draw_logo(stdscr, theme_id)
-            draw_table(stdscr, todos, 8)
-            if h > 30:
-                draw_calendar(
-                    stdscr, calendar_start_y, selected_day, cur_year, cur_month
-                )
-                draw_appointments(stdscr, appointments, date_key, calendar_start_y)
-
-            appt = prompt_input(
-                stdscr, f"Add appt for {date_key} (Enter to exit): ", h - 2, 2
-            )
+            appt = prompt_input(stdscr, f"Add appt for {date_key}: ", h - 2, 2)
             if appt and appt.strip():
                 if date_key not in appointments:
                     appointments[date_key] = []
                 appointments[date_key].append(appt.strip())
                 save_appointments(appointments)
 
-        # Appointment Logic: EDIT
         elif key in [ord("e"), ord("E")]:
-            if date_key in appointments and appointments[date_key]:
-                stdscr.clear()
-                draw_logo(stdscr, theme_id)
-                draw_table(stdscr, todos, 8)
-                if h > 30:
-                    draw_calendar(
-                        stdscr, calendar_start_y, selected_day, cur_year, cur_month
-                    )
-                    draw_appointments(stdscr, appointments, date_key, calendar_start_y)
-
-                num_str = prompt_input(
-                    stdscr, "Edit Appt # (Enter to exit): ", h - 2, 2
-                )
+            if date_key in appointments:
+                num_str = prompt_input(stdscr, "Edit Appt #: ", h - 2, 2)
                 if num_str.isdigit():
                     idx = int(num_str) - 1
                     if 0 <= idx < len(appointments[date_key]):
-                        new_val = prompt_input(
-                            stdscr, f"New text (Enter to cancel): ", h - 1, 2
-                        )
+                        new_val = prompt_input(stdscr, "New text: ", h - 1, 2)
                         if new_val:
                             appointments[date_key][idx] = new_val
                             save_appointments(appointments)
 
-        # Appointment Logic: DELETE
         elif key in [ord("d"), ord("D")]:
-            if date_key in appointments and appointments[date_key]:
-                stdscr.clear()
-                draw_logo(stdscr, theme_id)
-                draw_table(stdscr, todos, 8)
-                if h > 30:
-                    draw_calendar(
-                        stdscr, calendar_start_y, selected_day, cur_year, cur_month
-                    )
-                    draw_appointments(stdscr, appointments, date_key, calendar_start_y)
-
-                num_str = prompt_input(
-                    stdscr, "Delete Appt # (Enter to exit): ", h - 2, 2
-                )
+            if date_key in appointments:
+                num_str = prompt_input(stdscr, "Delete Appt #: ", h - 2, 2)
                 if num_str.isdigit():
                     idx = int(num_str) - 1
                     if 0 <= idx < len(appointments[date_key]):
