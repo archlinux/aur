@@ -31,6 +31,7 @@ makedepends=(
 	'python-setuptools'
 	'git'
 	'ninja'
+	'rocminfo'
 )
 source=(
 	"git+https://github.com/facebookresearch/xformers.git#tag=v${pkgver}"
@@ -55,6 +56,16 @@ build() {
 	cd "${_name}"
 
 	export HIPCC_COMPILE_FLAGS_APPEND='-DGLOG_USE_GLOG_EXPORT'
+
+	# Determine GPU targets
+	BUILD_MACHINE_GPU=$(rocm_agent_enumerator -t GPU)
+	if [[ "$BUILD_MACHINE_GPU" == *"gfx9"* ]]; then
+		msg "Building natively for: ${BUILD_MACHINE_GPU}"
+	else
+		# See https://github.com/ROCm/xformers/blob/217bdf5eed5a5ce9f1b67560dfc4539342cd703d/setup.py#L609
+		export HIP_ARCHITECTURES="gfx908 gfx90a gfx942 gfx950"
+		warning "No gfx9 GPU detected. We will be building for all supported gfx arches: ${HIP_ARCHITECTURES}"
+	fi
 
 	python -m build --wheel --no-isolation
 }

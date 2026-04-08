@@ -10,6 +10,7 @@ pkgbase = python-xformers-rocm
 	makedepends = python-setuptools
 	makedepends = git
 	makedepends = ninja
+	makedepends = rocminfo
 	depends = python
 	depends = python-pytorch-rocm
 	depends = python-numpy
