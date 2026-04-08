@@ -6,9 +6,9 @@ pkgname=(
     'openvino-intel-gpu-plugin'
     'openvino-intel-npu-plugin'
     'python-openvino')
-pkgver=2026.0.0
+pkgver=2026.1.0
 pkgrel=1
-_commit=c6d6a13a8863f576b627dabcda0c40b090638f9e
+_commit=63e31528c62d3eee06733efa63915ce04bd86f47
 pkgdesc='A toolkit for optimizing and deploying deep learning models'
 arch=('x86_64')
 url='https://docs.openvino.ai/'
@@ -52,13 +52,11 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#commit=${_commit}?s
         'git+https://github.com/jbeder/yaml-cpp.git'
         'git+https://github.com/openvinotoolkit/telemetry.git'
         'git+https://github.com/libxsmm/libxsmm.git'
-        'git+https://github.com/openvinotoolkit/shl.git'
         'git+https://github.com/ARM-software/kleidiai.git'
         'git+https://github.com/herumi/xbyak_riscv.git'
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch')
-sha256sums=('649999fb2517dea413ef5a537f7b54d9966f1ec424eab148f4fd80349b83fd59'
-            'SKIP'
+sha256sums=('db6c89e6fea6b483ceb51ea17246b1c3190f8dbff502b259edd32f710a9dd362'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -83,7 +81,7 @@ sha256sums=('649999fb2517dea413ef5a537f7b54d9966f1ec424eab148f4fd80349b83fd59'
             'SKIP'
             'SKIP'
             'c5ed3a23fc153a082e97841c892b83685426a431a1a32a40f120d91633943e53'
-            'd5ff4b19ca9daf2b052650d2d7f60297239091c68e57fd7d5637508be0ef0e52')
+            '66615858cc57df2e0e256798415316e0b6deb41d6d9b3b135e8573f4a71b5f58')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 
 export GIT_LFS_SKIP_SMUDGE='1'
@@ -118,7 +116,6 @@ prepare() {
     git -C openvino config --local submodule.src/plugins/intel_npu/thirdparty/yaml-cpp.url "${srcdir}/yaml-cpp"
     git -C openvino config --local submodule.thirdparty/telemetry.url "${srcdir}/telemetry"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/libxsmm.url "${srcdir}/libxsmm"
-    git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/shl.url "${srcdir}/shl"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/kleidiai.url "${srcdir}/kleidiai"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/xbyak_riscv.url "${srcdir}/xbyak_riscv"
     git -C openvino -c protocol.file.allow='always' submodule update
