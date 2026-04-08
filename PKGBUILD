@@ -2,7 +2,7 @@
 _pkgname=snekstudio
 
 pkgname=snekstudio-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Open-source VTuber software using Godot Engine!"
 arch=("x86_64" "aarch64")
@@ -12,16 +12,16 @@ depends=() # Honestly not entirely sure what to throw in here
 provides=("snekstudio")
 conflicts=("snekstudio")
 options=(!debug)
-source=("icon.png::https://github.com/ExpiredPopsicle/SnekStudio/blob/v$pkgver/Core/UI/Images/kiri_smug.png?raw=true"
+source=("icon.png::https://github.com/ExpiredPopsicle/SnekStudio/blob/v$pkgver/Core/UI/Images/icons/256x256.png?raw=true"
         "$_pkgname.desktop"
         "$_pkgname.sh")
-md5sums=("9bc60005961b0df54f23f3edd11a3bb9"
+md5sums=("ac27d4ded8fcf4492621f93628259786"
          "371c3f4fcd3d6c27230a70722146a25f"
-         "5428dbf87276926fb84bdf88a87a78b4")
+         "deb87bc899bd7520413604b660ab2e72")
 source_x86_64=("https://github.com/ExpiredPopsicle/SnekStudio/releases/download/v$pkgver/SnekStudio_Linux-x86_64_$pkgver.tar.gz")
-sha256sums_x86_64=("b486a9b15b86c6384e278baf50f0ded14c5854f6fc0dd72c83d56e0a0f2aaca1")
+sha256sums_x86_64=("89db82fdf638898721f04c93f787f683f40ab56fccfff2539e69ee906e774aa0")
 source_aarch64=("https://github.com/ExpiredPopsicle/SnekStudio/releases/download/v$pkgver/SnekStudio_Linux-arm64_$pkgver.tar.gz")
-sha256sums_aarch64=("7c7cb17e043552603282b8eadea9fa70c20224fe7fa359b80207d14d355599c0")
+sha256sums_aarch64=("0932ec0a72edd2cba682ee8fac09f92bc6ae032d414184f418b48806327df63e")
 
 prepare() {
 	# Unpacked folder name differs depending on architecture
