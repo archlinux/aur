@@ -2,7 +2,7 @@
 
 pkgname=moz-phab
 _gitpkgname=review
-pkgver=2.11.1
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='Phabricator review submission/management tool'
 arch=('any')
@@ -46,7 +46,7 @@ source=(
   'disable-telemetry.patch'
 )
 
-sha512sums=('d3d256636478115b5ec7af2c2efbd75b10e1268583fcd4b69b31de86cf9c728f4c9a3018c65e01e3b6f80d6faa926eec20eae30986a1f84db58d59e296771737'
+sha512sums=('178dce59157b712e6394a8d348ef172370a639177c530d3b5fcd99dccc8552b12eb59051a7cfa7a9bf6a70dbbec65dccc86edfb651084bda3532bd8b19fb74ca'
             'dd5fd9467261866549596836f72dd7d28519f71bce6e838bb1a0de8f607fa7dd7407abd5ac3a02fd8ab139e8a53affef05a73f8597ba0367be15a4e78811ca54'
             '35087a5d373f7ec1c726204b272454e08b8e43469000eb415f218adeb5606e7f48d603191571f88f23295c15b97275866ac117a5d87d0ea9e7ffefc837fefe43'
             'd8ca129d5441282124599a74e5f0c898d28f4bde574ce0e6c792d492fdcd262c0bb40e3ed79611f603a3dde74fc18659b9b6303abd1022644ebe57031f993ef6')
