@@ -42,11 +42,12 @@ prepare() {
 }
 
 package() {
+	install -Dm644 sysusers.conf "${pkgdir}/usr/lib/tmpfiles.d/elastiflow.conf"
+	install -Dm644 tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/elastiflow.conf"
+
 	cd "${pkgname}-${pkgver}"
 	find etc/elastiflow -type f -exec install -Dm644 "{}" "${pkgdir}/{}" \;
 	install -Dm755 usr/share/elastiflow/bin/flowcoll "${pkgdir}/usr/bin/flowcoll"
 	install -Dm644 etc/systemd/system/flowcoll.service "${pkgdir}/usr/lib/systemd/system/flowcoll.service"
 	install -Dm600 etc/systemd/system/flowcoll.env "${pkgdir}/etc/sysconfig/flowcoll.env"
-	install -Dm644 ../sysusers.conf "${pkgdir}/usr/lib/tmpfiles.d/elastiflow.conf"
-	install -Dm644 ../tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/elastiflow.conf"
 }
