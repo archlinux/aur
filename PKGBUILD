@@ -2,12 +2,13 @@
 
 pkgname=ausweiskopie
 pkgver=0.1.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Create privacy friendly and legal copies of your Ausweisdokument'
 arch=(any)
 license=('MPL-2.0')
 url='https://github.com/Varbin/ausweiskopie'
 depends=(
+    'tk'
     'python'
     'python-pillow'
     'python-importlib_resources'

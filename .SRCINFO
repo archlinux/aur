@@ -1,7 +1,7 @@
 pkgbase = ausweiskopie
 	pkgdesc = Create privacy friendly and legal copies of your Ausweisdokument
 	pkgver = 0.1.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Varbin/ausweiskopie
 	arch = any
 	license = MPL-2.0
@@ -9,6 +9,7 @@ pkgbase = ausweiskopie
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
+	depends = tk
 	depends = python
 	depends = python-pillow
 	depends = python-importlib_resources
