@@ -3,7 +3,7 @@
 
 pkgname=python36
 pkgver=3.6.15
-pkgrel=6
+pkgrel=7
 _pybasever=3.6
 _pymajver=3
 pkgdesc="Major release 3.6 of the Python high-level programming language"
@@ -13,8 +13,8 @@ url="http://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
-source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz alignment.patch)
-sha256sums=('6e28d7cdd6dd513dd190e49bca3972e20fcf455090ccf2ef3f1a227614135d91' SKIP)
+source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz alignment.patch sinpi-rename.patch)
+sha256sums=('6e28d7cdd6dd513dd190e49bca3972e20fcf455090ccf2ef3f1a227614135d91' SKIP SKIP)
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
@@ -26,6 +26,9 @@ prepare() {
   # via https://github.com/pyenv/pyenv/issues/1889
   # and https://bugs.python.org/file44413/alignment.patch
   patch -p1 < ../alignment.patch
+
+  msg "fix sinpi name clash with glibc (bpo-36106)"
+  patch -p1 < ../sinpi-rename.patch
 
   # Ensure that we are using the system copy of various libraries (expat, zlib and libffi),
   # rather than copies shipped in the tarball
