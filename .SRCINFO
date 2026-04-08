@@ -1,7 +1,7 @@
 pkgbase = elastiflow-flow-collector-bin
 	pkgdesc = ElastiFlow NetObserv Flow Collector (official binaries)
 	pkgver = 7.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://elastiflow.com/
 	arch = x86_64
 	license = custom

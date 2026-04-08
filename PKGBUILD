@@ -7,7 +7,7 @@
 
 pkgname=elastiflow-flow-collector-bin
 pkgver=7.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ElastiFlow NetObserv Flow Collector (official binaries)"
 arch=('x86_64')
 url="https://elastiflow.com/"
@@ -42,7 +42,7 @@ prepare() {
 }
 
 package() {
-	install -Dm644 sysusers.conf "${pkgdir}/usr/lib/tmpfiles.d/elastiflow.conf"
+	install -Dm644 sysusers.conf "${pkgdir}/usr/lib/sysusers.d/elastiflow.conf"
 	install -Dm644 tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/elastiflow.conf"
 
 	cd "${pkgname}-${pkgver}"
