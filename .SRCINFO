@@ -1,0 +1,18 @@
+pkgbase = echonoting-bin
+	pkgdesc = AI meeting notes with live transcription
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/AimeurAmin/echonoting
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = libpulse
+	depends = alsa-lib
+	depends = fuse2
+	provides = echonoting
+	conflicts = echonoting
+	noextract = echonoting_0.2.4_amd64.AppImage
+	source = echonoting_0.2.4_amd64.AppImage::https://github.com/AimeurAmin/echonoting/releases/download/desktop-v0.2.4/echonoting_0.2.4_amd64.AppImage
+	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+
+pkgname = echonoting-bin
