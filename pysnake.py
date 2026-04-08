@@ -6,9 +6,9 @@ import pickle
 import random
 import time
 
-PICKLE_FILE = os.path.expanduser("~/.local/share/pysnake/snake_high_score.pkl")
-os.makedirs(os.path.dirname(PICKLE_FILE), exist_ok=True)
-
+PICKLE_FILE = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "snake_high_score.pkl"
+)
 score = 0
 highscore = 0
 
@@ -53,14 +53,12 @@ def draw_border(win, sh, sw):
         win.addch(sh - 1, sw - 1, "╝", curses.color_pair(4) | curses.COLOR_BLUE)
     except curses.error:
         pass
-
     for x in range(1, sw - 1):
         win.addch(0, x, "═", curses.color_pair(4) | curses.COLOR_BLUE)
         try:
             win.addch(sh - 1, x, "═", curses.color_pair(4) | curses.COLOR_BLUE)
         except curses.error:
             pass
-
     for y in range(1, sh - 1):
         win.addch(y, 0, "║", curses.color_pair(4) | curses.COLOR_BLUE)
         try:
@@ -91,10 +89,8 @@ def draw_header(win, sw, score, high_score):
     """Draw a beautiful header with score and high score"""
     title = " SNAKE GAME "
     win.addstr(0, (sw - len(title)) // 2, title, curses.color_pair(5) | curses.A_BOLD)
-
     score_text = f" Score: {score} "
     high_text = f" High: {high_score} "
-
     win.addstr(0, 2, score_text, curses.color_pair(2) | curses.A_BOLD)
     win.addstr(0, sw - len(high_text) - 2, high_text, curses.color_pair(5))
 
@@ -102,23 +98,20 @@ def draw_header(win, sw, score, high_score):
 def show_game_over(win, sh, sw, score, high_score):
     """Display animated game over screen"""
     center_y, center_x = sh // 2, sw // 2
-
     messages = [
         "╔══════════════════════════════╗",
         "║                              ║",
         "║        ╔═ GAME OVER ═╗       ║",
         "║                              ║",
-        f"║   Score: {score:5}               ║",
-        f"║   High Score: {high_score:5}          ║",
+        f"║       Score: {score:5}           ║",
+        f"║       High Score: {high_score:5}      ║",
         "║                              ║",
-        "║   [R] Restart   [Q] Quit     ║",
+        "║     [R] Restart [Q] Quit     ║",
         "║                              ║",
         "╚══════════════════════════════╝",
     ]
-
     start_y = center_y - len(messages) // 2
     start_x = center_x - len(messages[0]) // 2
-
     for i, msg in enumerate(messages):
         win.addstr(
             start_y + i,
@@ -128,7 +121,6 @@ def show_game_over(win, sh, sw, score, high_score):
             if "GAME OVER" in msg
             else curses.color_pair(6),
         )
-
     win.refresh()
 
 
@@ -136,24 +128,21 @@ def show_start_screen(win, sh, sw):
     """Display a beautiful start screen"""
     win.clear()
     draw_border(win, sh, sw)
-
     title_lines = [
         "╔══════════════════════════════════════╗",
         "║                                      ║",
-        "║  ███████╗██╗   ██╗██████╗  ██████╗   ║",
-        "║  ██╔════╝██║   ██║██╔══██╗██╔═══██╗  ║",
-        "║  ███████╗██║   ██║██║  ██║██║   ██║  ║",
-        "║  ╚════██║██║   ██║██║  ██║██║   ██║  ║",
+        "║  ███████╗██╗  ██╗██████╗   ██████╗   ║",
+        "║  ██╔════╝██║  ██║██╔══ ██╗██╔═══██╗  ║",
+        "║  ███████╗██║  ██║██║   ██║██║   ██║  ║",
+        "║  ╚════██║██║  ██║██║   ██║██║   ██║  ║",
         "║  ███████║╚██████╔╝██████╔╝╚██████╔╝  ║",
         "║  ╚══════╝ ╚═════╝ ╚═════╝  ╚═════╝   ║",
         "║                                      ║",
-        "║              SNAKE GAME              ║",
-        "║          Help Python to eat!         ║",
+        "║             SNAKE GAME               ║",
+        "║         Help Python to eat!          ║",
         "╚══════════════════════════════════════╝",
     ]
-
     start_y = sh // 2 - len(title_lines) // 2
-
     for i, line in enumerate(title_lines):
         x = (sw - len(line)) // 2
         color = (
@@ -162,12 +151,10 @@ def show_start_screen(win, sh, sw):
             else curses.color_pair(4)
         )
         win.addstr(start_y + i, x, line, color)
-
     instructions = [
         "Use Arrow Keys or WASD to move",
         "Press SPACE to start, Q to quit",
     ]
-
     for i, inst in enumerate(instructions):
         win.addstr(
             start_y + len(title_lines) + 2 + i,
@@ -175,9 +162,7 @@ def show_start_screen(win, sh, sw):
             inst,
             curses.color_pair(6),
         )
-
     win.refresh()
-
     # Wait for input
     while True:
         key = win.getch()
@@ -195,13 +180,10 @@ def main(stdscr):
     win = curses.newwin(sh, sw, 0, 0)
     win.keypad(1)
     win.timeout(100)
-
     load_highscore()
     high_score = highscore
-
     if not show_start_screen(win, sh, sw):
         return
-
     while True:
         win.clear()
         draw_border(win, sh, sw)
@@ -247,9 +229,26 @@ def main(stdscr):
                     last_key = key
                 elif next_key == ord("q"):
                     exit()
-
+                elif next_key == ord(" "):
+                    # Pause the game
+                    paused_text = "PAUSED"
+                    text_x = (sw - len(paused_text)) // 2
+                    win.addstr(
+                        sh // 2,
+                        text_x,
+                        paused_text,
+                        curses.color_pair(5) | curses.A_BOLD,
+                    )
+                    win.refresh()
+                    win.nodelay(0)
+                    while True:
+                        pause_key = win.getch()
+                        if pause_key == ord(" "):
+                            break
+                        elif pause_key == ord("q"):
+                            exit()
+                    win.timeout(100)
             new_head = [snake[0][0], snake[0][1]]
-
             if key == curses.KEY_DOWN:
                 new_head[0] += 1
             elif key == curses.KEY_UP:
@@ -258,21 +257,18 @@ def main(stdscr):
                 new_head[1] -= 1
             elif key == curses.KEY_RIGHT:
                 new_head[1] += 1
-
             if (
-                new_head[0] <= min_y
-                or new_head[0] >= max_y
-                or new_head[1] <= min_x
-                or new_head[1] >= max_x
+                new_head[0] < min_y
+                or new_head[0] > max_y
+                or new_head[1] < min_x
+                or new_head[1] > max_x
                 or new_head in snake
             ):
                 if score > high_score:
                     high_score = score
                     highscore = score
                     save_highscore()
-
                 show_game_over(win, sh, sw, score, high_score)
-
                 time.sleep(1)
                 win.nodelay(0)
                 restart_key = win.getch()
@@ -282,16 +278,13 @@ def main(stdscr):
                     curses.wrapper(main)
                 else:
                     exit()
-
             snake.insert(0, new_head)
-
             if snake[0] == food:
                 score += 10
                 if score > high_score:
                     high_score = score
                     highscore = score
                     save_highscore()
-
                 while True:
                     food = [
                         random.randint(min_y + 1, max_y - 1),
@@ -302,13 +295,11 @@ def main(stdscr):
             else:
                 tail = snake.pop()
                 win.addch(tail[0], tail[1], " ")
-
             win.clear()
             draw_border(win, sh, sw)
             draw_header(win, sw, score, high_score)
             draw_snake(win, snake)
             draw_food(win, food, frame)
-
             win.refresh()
 
 
