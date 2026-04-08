@@ -1,5 +1,5 @@
 pkgname='codex-app-beta-unofficial'
-pkgver='26.401.11717_beta.1329.launcher.5'
+pkgver='26.406.31014_beta.1393.launcher.5'
 pkgrel=1
 pkgdesc='Unofficial Linux build of Codex Beta from OpenAI'\''s Codex beta appcast feed.'
 arch=('x86_64')
@@ -11,11 +11,11 @@ conflicts=('codex-app-linux-beta-bin')
 replaces=('codex-app-linux-beta-bin')
 install='codex-app-beta-unofficial.install'
 source=(
-  'codex-app-linux-26.401.11717-beta.1329.launcher.5-x64-linux-unpacked.tar.gz::https://github.com/better-slop/codex-app-linux/releases/download/v26.401.11717-beta.1329.launcher.5/codex-app-linux-26.401.11717-beta.1329.launcher.5-x64-linux-unpacked.tar.gz'
-  'codex-app-linux-26.401.11717-beta.1329.launcher.5-x64.png::https://github.com/better-slop/codex-app-linux/releases/download/v26.401.11717-beta.1329.launcher.5/codex-app-linux-26.401.11717-beta.1329.launcher.5-x64.png'
+  'codex-app-linux-26.406.31014-beta.1393.launcher.5-x64-linux-unpacked.tar.gz::https://github.com/better-slop/codex-app-linux/releases/download/v26.406.31014-beta.1393.launcher.5/codex-app-linux-26.406.31014-beta.1393.launcher.5-x64-linux-unpacked.tar.gz'
+  'codex-app-linux-26.406.31014-beta.1393.launcher.5-x64.png::https://github.com/better-slop/codex-app-linux/releases/download/v26.406.31014-beta.1393.launcher.5/codex-app-linux-26.406.31014-beta.1393.launcher.5-x64.png'
 )
 sha256sums=(
-  '7438375df020e684c99602a0e0b8f617281098de71f63592170bbb76f3fa0d6b'
+  'a12dc9f348c3d6ddbecb8a0301abe999ccb82f1ce84e1f9eebbe9fba15a3940e'
   '1c926e380bfe6a50f40648dd9bc5de88da7271546491adf99ec72172e17df6a0'
 )
 
@@ -26,7 +26,7 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/codex-app-linux-beta/codex-app-linux-beta" "${pkgdir}/usr/bin/codex-app-linux-beta"
 
-  install -Dm644 "${srcdir}/codex-app-linux-26.401.11717-beta.1329.launcher.5-x64.png"     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/codex-app-linux-beta.png"
+  install -Dm644 "${srcdir}/codex-app-linux-26.406.31014-beta.1393.launcher.5-x64.png"     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/codex-app-linux-beta.png"
 
   cat > "codex-app-linux-beta.desktop" <<'EOF'
 [Desktop Entry]
