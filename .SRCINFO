@@ -1,0 +1,12 @@
+pkgbase = wiksr
+	pkgdesc = Terminal instant answer browser using DuckDuckGo and Wikipedia
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-rich
+	source = wiksr.py
+	sha256sums = 9d3eb08d6672116c4ee476baa37fa63fed3959f043047e2ab13cc17745432d32
+
+pkgname = wiksr
