@@ -1,6 +1,6 @@
 # Maintainer: meledo <meledo@duck.com>
 pkgname=patchwire-bin
-pkgver=${VERSION}
+pkgver=0.1.2b
 pkgrel=1
 pkgdesc="PipeWire audio output router with GTK4 UI"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 provides=('patchwire')
 conflicts=('patchwire')
 source=("patchwire-bin-v$pkgver-x86_64-linux.tar.gz::https://github.com/mel-edo/patchwire/releases/download/v$pkgver/patchwire-v$pkgver-x86_64-linux.tar.gz")
-sha256sums=("${BIN_SHA256}")
+sha256sums=("237fc418c20c14eda73b44c71b688c086a9d57265528c763143dbb2798421810")
 
 package() {
     cd "$srcdir"
