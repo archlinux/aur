@@ -2,7 +2,7 @@
 
 pkgbase=linux-mnt-reform-bin
 pkgname=('linux-mnt-reform-bin' 'linux-mnt-reform-bin-headers')
-pkgver=6.19.11.reform1
+pkgver=6.19.11.reform2
 pkgrel=1
 _base_kernel_version="${pkgver%%.reform*}"
 _kernver="${pkgver/.reform/-reform}"
@@ -16,8 +16,8 @@ source=(
   'mnt-reform-initramfs.sh'
 )
 source_aarch64=(
-  "kernel-${pkgver}-mnt-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}/kernel-${pkgver}-mnt.tar.gz"
-  "headers-${pkgver}-mnt-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}/headers-${pkgver}-mnt.tar.gz"
+  "kernel-${pkgver}-mnt-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-aarch64/kernel-${pkgver}-mnt.tar.gz"
+  "headers-${pkgver}-mnt-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-aarch64/headers-${pkgver}-mnt.tar.gz"
 )
 source_x86_64=(
   "kernel-${pkgver}-mnt-x86_64.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-x86_64/kernel-${pkgver}-mnt.tar.gz"
@@ -26,15 +26,15 @@ source_x86_64=(
 sha256sums=(
   '8a15cec00fc571b7b62dba4ad9aa7b0132fe837dca3a424828bb19a37f5d3e58'
   '24e36fc74f7aa27fe699e5eac923c14ae80c7bc85038cfab3d8cd93148d7cb3e'
-  'a53ac0ff7d5f8d5ab07e21dd09a1e94a36e10cdad0d5a1b853b0c04dc4018481'
+  '370f19f603a52da48b13a1d18925402c5d4bf65ac2b63ea76a043b416d94cfff'
 )
 sha256sums_aarch64=(
-  'SKIP'
-  'SKIP'
+  '91b1e8e9c5cb5cf5f66836133af0e0a3ef02bc5db3947d8ad49c2b4a1db2a580'
+  '6bb38fb3f44398a270ed061b2833c9c0eb092ea94f415c52e18003d4f1a124a6'
 )
 sha256sums_x86_64=(
-  'SKIP'
-  'SKIP'
+  '34cf352189cc7a49ea98c47bedc03c1f73f60370630ceff962613b7fd21ddf36'
+  'cd899fc10896c1177fe87f3ff0c39793688504535a85786bab29be712be7860b'
 )
 
 build() {
