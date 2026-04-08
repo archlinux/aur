@@ -1,15 +1,6 @@
-## Changes
-Maintenance release to update dependencies and address a security vulnerability.
-
 ## Changelog
-* 9dd7ad9ad599099119a15c952f078516a0947b6c Add release notes for v1.19 (#4904) (#4906)
-* 68d538f2d3932fe402bbb89e6e6bd8f08774c172 chore(deps): bump google.golang.org/grpc (#4938)
-* bb7d5bf0993d122d79eb9596a1aeb0e0e102d8ff chore(deps): bump google.golang.org/grpc in /examples/golang-pgo (#4920)
-* 0196930d458d8368f8a7c49fcccb8e9acc006006 chore(deps): bump immutable (yarn) (#4923)
-* e60d86dfe3ac0a24a90452362415682e2326db00 chore(deps): bump minimatch to 10.2.3 (yarn) (#4924)
-* d5d2cb69c41e3c59d23b3829a2226bcde2812570 chore(deps): bump svgo to 2.8.1 (yarn) (#4928)
-* d2698dc635b7af428df47c1b3789c680706a352b chore(deps): bump undici to 7.24.0 (yarn) (#4932)
-* bc4a04d62fd3f3f6b7ac0a507412d6ac4855ee89 fix(deps): update module google.golang.org/grpc to v1.79.3 [security] (#4921)
+* 22ad073a49cecd5609e6ed8489e9a38e38a555a7 chore: update Go toolchain to 1.25.9 (#5015) (#5016)
+* 1e3df8ef22bfc6e1edda0dae39b9d57cebe4fc70 docs: add v1.20.1 v1.20.2 release notes (#4999)
 
 As always, feedback is more than welcome, feel free to open issues/discussions.
 You can reach out to the team using:
@@ -24,7 +15,7 @@ You can reach out to the team using:
 - [grafana/pyroscope](https://hub.docker.com/r/grafana/pyroscope/tags)
 
 ```bash
-  docker pull docker.io/grafana/pyroscope:1.19.1
+  docker pull docker.io/grafana/pyroscope:1.20.3
 ```
 
 
