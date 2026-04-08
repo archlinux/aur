@@ -53,6 +53,9 @@ prepare() {
 
 build() {
 	cd "${_name}"
+
+	export HIPCC_COMPILE_FLAGS_APPEND='-DGLOG_USE_GLOG_EXPORT'
+
 	python -m build --wheel --no-isolation
 }
 
