@@ -19,7 +19,7 @@ url=${_ghurl}
 
 license=('MIT' 'Apache-2.0')
 
-provides=("${_appname}")
+provides=("${_appname}"{,-server,-runner})
 conflicts=("${_appname}")
 
 makedepends=('patool')
