@@ -4,13 +4,13 @@ pkgname=eclipse-php-bin
 _pkgname=${pkgname%-bin}
 epoch=2
 pkgver=4.39
-pkgrel=1
+pkgrel=2
 _release=2026-03/R
 pkgdesc="Highly extensible IDE (PHP version)"
 arch=('x86_64' 'aarch64')
 url="https://www.eclipse.org/"
 license=('EPL')
-depends=('java-runtime>=21' webkit2gtk unzip)
+depends=('java-runtime>=21' webkitgtk unzip)
 makedepends=()
 provides=(eclipse=$pkgver-$pkgrel)
 conflicts=(eclipse)
