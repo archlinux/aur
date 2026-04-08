@@ -1,7 +1,7 @@
 # Maintainer: Hein (Warky Devs) <hein@warky.dev>
 pkgname=unitdore
-pkgver=0.0.3
-pkgrel=2
+pkgver=0.0.4
+pkgrel=1
 pkgdesc="A door you open and close for container units — manage containers via systemd"
 arch=('x86_64' 'aarch64')
 url="https://git.warky.dev/wdevs/unitdore"
@@ -14,7 +14,7 @@ optdepends=(
 makedepends=('go')
 backup=('etc/unitdore/units.yaml')
 source=("$pkgname-$pkgver.zip::$url/archive/v$pkgver.zip")
-sha256sums=('SKIP')
+sha256sums=('73ffe85116d1a5a4c799df128ea1fa0fa5c9a5752609343a78212b8267e30835')
 
 build() {
     cd "$pkgname-v$pkgver"
