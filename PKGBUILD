@@ -12,7 +12,7 @@ _rev=r01
 _sdkint=37.0
 pkgname="android-sources"
 pkgver="${_sdkint}_${_rev}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Android SDK Sources, latest API"
 arch=('any')
 url="https://developer.android.com/studio/index.html"
@@ -23,7 +23,7 @@ options=('!strip' '!debug')
 source=("https://dl.google.com/android/repository/source-${_sdkint}_${_rev}.zip"
         "package.xml")
 sha256sums=('285295b766d9c31dda50cb051ef664673105dd34f63bc6d753bb89925e1d7dd7'
-            'acc7d771555969e4fcf8e2c5fba5cfc29122265720c73e8775e1bcc25e6187ef')
+            '4914ed5a2d5f00b058f5366f6174a02170af4f62206ee63e573fbda431bfa0a8')
 
 package() {
     # Install files
