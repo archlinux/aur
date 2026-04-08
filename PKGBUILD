@@ -2,7 +2,7 @@
 # Maintainer: Leo Robinovitch <leorobinovitch@gmail.com>
 
 pkgname='lore-bin'
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='A terminal pager with search, filter, and selection.'
 url='https://github.com/robinovitch61/lore'
@@ -13,13 +13,13 @@ conflicts=('lore')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/robinovitch61/lore/releases/download/v${pkgver}/lore_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('08d2b29d57bddd961ad52bf4bcf113919a9b10613191b80034e23acc0281c04e')
+sha256sums_aarch64=('2991768945260739e5a57942fd449575f453018f3792438b958c19ec51ccb1c1')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/robinovitch61/lore/releases/download/v${pkgver}/lore_${pkgver}_Linux_i386.tar.gz")
-sha256sums_i686=('f0251e2b8b0db2a9f9ee5d540fb7b8cb5297d5e269052b083b79d0d4b2883f5f')
+sha256sums_i686=('d5182df5ebca724f21e50931751dc66f35d824bb9c1647e7f2444dea119364bd')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/robinovitch61/lore/releases/download/v${pkgver}/lore_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('4c4ec50a9ae5e99826808adcbc78dde2926d265c4bb13da79ed5f4c6807b3a84')
+sha256sums_x86_64=('7ed27f8b017c7665ba113480b07c9dbe0180fc315cab0297f0edf4b2c07e4e0a')
 
 package() {
   install -Dm755 "./lore" "${pkgdir}/usr/bin/lore"
