@@ -20,7 +20,7 @@ target_include_directories(
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
-        SOVERSION 0
+        SOVERSION 1
 )
 
 install(
