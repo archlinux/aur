@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=encrypt0r-bin
-pkgver=3.12.63
-_electronversion=35
+pkgver=3.12.66
+_electronversion=39
 pkgrel=1
 pkgdesc="App to encrypt and decrypt your files with a passphrase, powered by electron.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kunalnagar/encrypt0r/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2fc822e3ebc2ae7e55093a2387e362dcd9f7557d2c57937d051028b0dcbcf66b'
+sha256sums=('da6c7b437dd53eabae26526feca8aa77dfe4267fdfdca81d49ab46902d912ea3'
             'dd8cfe4d2d540a3c670cf0aa6c95e9076e8949d7c50d04495feb0a6ce9d82cc3'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -39,7 +39,15 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    find "${srcdir}/usr/lib/${pkgname%-bin}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/usr/lib/${pkgname%-bin}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/usr/lib/${pkgname%-bin}/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
