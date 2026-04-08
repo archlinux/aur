@@ -5,7 +5,7 @@ pkgname=eclipse-java-bin
 _pkgname=${pkgname%-bin}
 epoch=2
 pkgver=4.39
-pkgrel=2
+pkgrel=3
 _release=2026-03/R
 pkgdesc="Highly extensible IDE (Java version)"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ url="https://www.eclipse.org/"
 license=('EPL')
 depends=('java-environment>=21'
          'unzip'
-         'webkitgtk')
+         'webkit2gtk-4.1')
 provides=(eclipse=$pkgver-$pkgrel)
 conflicts=(eclipse)
 options=(!strip)
