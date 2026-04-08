@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-astra-monitor
 	pkgdesc = Astra Monitor is a cutting-edge, fully customizable, and performance-focused system monitoring extension for GNOME's top bar
-	pkgver = 38
+	pkgver = 39
 	pkgrel = 1
 	url = https://github.com/AstraExt/astra-monitor
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-astra-monitor
 	depends = gnome-shell
 	optdepends = libgtop: collecting system data
 	optdepends = nethogs: network I/O
-	source = gnome-shell-extension-astra-monitor-v38.zip::https://github.com/AstraExt/astra-monitor/releases/download/v38/monitor@astraext.github.io.shell-extension.zip
-	sha256sums = f26eb07bbad3fc50e29682aea40342c5871615d0d8bbb65c25de352ac6e19257
+	source = gnome-shell-extension-astra-monitor-v39.zip::https://github.com/AstraExt/astra-monitor/releases/download/v39/monitor@astraext.github.io.shell-extension.zip
+	sha256sums = febe9159b2b9798934d3575f0d6d741abb9c36c75f2ff6c196959c8bf6864e12
 
 pkgname = gnome-shell-extension-astra-monitor
