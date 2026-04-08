@@ -1,0 +1,21 @@
+post_install() {
+    echo ""
+    echo "==> Logitune installed!"
+    echo ""
+
+    # Reload udev rules so hidraw/uinput permissions take effect
+    udevadm control --reload-rules 2>/dev/null
+    udevadm trigger 2>/dev/null
+
+    echo "    1. Unplug and replug your Logitech device (or reboot)"
+    echo "    2. Run: logitune"
+    echo ""
+    echo "    GNOME users: the Shell extension for per-app profiles is"
+    echo "    installed automatically on first run. Log out and back in"
+    echo "    after the first launch for it to take effect."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
