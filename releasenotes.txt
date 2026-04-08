@@ -9,7 +9,7 @@ This release brings some exciting new features and very many bug fixes.
 	- `Billboard lighting` -- billboards are uniformly lit depending on light and view directions.
 	- `Spherical lighting` -- billboards are lit using Phong model, computing per-fragment normals with an assumed spherical volume.
 
-- Orbital element groups refactor: We have merged orbital element groups into regular particle groups, consolidating the data model and gaining all the particle group goodies: filtering, indexing, focusing, texturing, and shading types.
+- Orbital element groups refactor: We have merged orbital element groups into regular particle groups, consolidating the data model and gaining all the particle group goodies: filtering, indexing, foucsing, texturing, and shading types.
 	- Updated FPR asteroids catalog -- new version of FPR SSOs to use spherical lighting and textured particles.
 	- Add support for particle-based rings in ringed planets. This includes a number of refactorings and improvements.
 	- Saturn rings -- new dataset containing 1.5 million particles of dust and rock in the rings of Saturn. They rotate realistically, as they were generated with physically plausible orbital elements.
