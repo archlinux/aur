@@ -1,7 +1,7 @@
 # Maintainer: Daniel Liland <celsiuss@await.sh>
 
 pkgname=preflight
-pkgver=0.9.10
+pkgver=0.9.11
 pkgrel=1
 pkgdesc="A modern slicer built for precision and performance. "
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!makeflags')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oozebot/preFlight/archive/refs/tags/v${pkgver}.tar.gz"
   0001-fix-building-for-arch.patch
   0002-occt-wrapper-patch.patch)
-sha256sums=('94eca09e08d7891246ea3e77b69ac95d230709099c2088dff1aef5789e0eb026'
+sha256sums=('4d41e5cba7f992b0d4a00421542b48a1240fafe4c821587d70dd3cb19c458c56'
             '0985a92b9643c617159a9ded1eed28b6bba1c3a71aae42fbd6e76b210f3491a6'
             '1c282fa3443bcf5035278a8d4fec9ce08f57a04e7f45699dc9cdc95d2a79d26e')
 
