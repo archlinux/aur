@@ -2,9 +2,11 @@ post_install() {
 	chown -R http:http var/lib/dolibarr
 	chown http:http etc/dolibarr/conf.php
 	systemctl daemon-reload
-	systemctl restart php-fpm-legacy.service
+	if systemctl -q is-active php-fpm-legacy.service; then
+		systemctl restart php-fpm-legacy.service
+	fi
 	echo 'Please configure your webserver. Example configuration files for nginx and apache are provided in /etc/dolibarr/contrib'
-	echo 'We restarted php-fpm-legacy.service for you at it was necessary to give write permission to /usr/share/dolibarr and /etc/dolibarr'
+	echo 'Restart php-fpm-legacy.service if needed so the new drop-in takes effect'
 	echo 'Finish installation by pointing your browser to https://erp.example.com where example.com will be replaced by the domain name you use'
 }
 
