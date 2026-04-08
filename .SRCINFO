@@ -1,0 +1,22 @@
+pkgbase = zeff-boy-bin
+	pkgdesc = A Game Boy, Game Boy Color, and NES emulator written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Zeffuro/zeff-boy
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	depends = alsa-lib
+	depends = systemd-libs
+	provides = zeff-boy
+	conflicts = zeff-boy
+	source = zeff-boy-0.1.0.tar.gz::https://github.com/Zeffuro/zeff-boy/releases/download/v0.1.0/zeff-boy-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	source = zeff-boy.desktop::https://raw.githubusercontent.com/Zeffuro/zeff-boy/v0.1.0/packaging/zeff-boy.desktop
+	source = LICENSE-MIT::https://raw.githubusercontent.com/Zeffuro/zeff-boy/v0.1.0/LICENSE-MIT
+	source = LICENSE-APACHE::https://raw.githubusercontent.com/Zeffuro/zeff-boy/v0.1.0/LICENSE-APACHE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = zeff-boy-bin
