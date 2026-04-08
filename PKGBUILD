@@ -3,7 +3,7 @@ pkgname=solidtime-bin
 _pkgname=Solidtime
 pkgver=0.1.4
 _electronversion=38
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Application for Solidtime - The modern open-source time-tracker.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -15,6 +15,9 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
+)
+makedepends=(
+    'asar'
 )
 options=(
     '!emptydirs'
@@ -41,6 +44,10 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     _get_electron_version
     sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    asar e "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${srcdir}/opt/${pkgname%-bin}/resources/app.asar"
+    find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/opt/${pkgname%-bin}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

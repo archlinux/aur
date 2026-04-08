@@ -1,11 +1,12 @@
 pkgbase = solidtime-bin
 	pkgdesc = Desktop Application for Solidtime - The modern open-source time-tracker.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/solidtime-io/solidtime-desktop
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
+	makedepends = asar
 	depends = electron38
 	provides = solidtime=0.1.4
 	conflicts = solidtime
