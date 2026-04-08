@@ -1,7 +1,7 @@
 # Maintainer: Race Dorsey <git-noreply@mail.racedorsey.com>
 
 pkgname=chartdb
-pkgver=1.20.0
+pkgver=1.20.1
 pkgrel=1
 pkgdesc="Database diagrams editor to visualize and design a DB with a single query"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('nginx: for serving the application')
 install=chartdb.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chartdb/chartdb/archive/refs/tags/v$pkgver.tar.gz"
         "chartdb.conf.example")
-sha256sums=('bb8023563252f21eba7c89fdf9e0a8cdc423ef4fad719cba1bed238332b3986b'
+sha256sums=('8e854d6ac2f65f526be2f748373c9150cce4502cc8c49085cde40fa7a167eb0c'
             '01d4b1e700bbd87d5ca5a78809e0f2211dbcc4bd1e573e4835b6a3bd7da3c886')
 
 prepare() {
