@@ -2,8 +2,8 @@
 
 pkgname=ubaa
 _reponame=UBAA
-pkgver=1.5.2
-pkgrel=3
+pkgver=1.5.3
+pkgrel=1
 _javaversion=21
 pkgdesc="Cross-platform Compose Multiplatform client for Beihang University campus services"
 arch=('x86_64')
@@ -11,16 +11,14 @@ _author=BUAASubnet
 url="https://github.com/${_author}/${_reponame}"
 license=('MIT')
 makedepends=("java-environment=${_javaversion}" "imagemagick")
-depends=("java-runtime>=${_javaversion}" "bash")
+depends=("java-runtime>=${_javaversion}" "bash" "hicolor-icon-theme")
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
-        "${pkgname}.sh"
-        "LICENSE::${url}/raw/refs/heads/main/LICENSE")
-sha256sums=('b0c42e9ece7a36f624e40fd87be805bd25dff888ec5f1544dc517d7f3a03b811'
+        "${pkgname}.sh")
+sha256sums=('b3ee50199f196a2965e16560244f18d5fafade06d1100646686b0671ca04e056'
             '79ce57a57321f1844d3f43c1f779d14e6ce95c60d6eb5adbffd0df3703f400e9'
-            '6f9e5fb5a184b2ca77382cc00c65fd0ca1e38cf71b72dd419aa88d4efdbf4eaa'
-            '7af06d69bd4b1baf6137628e5dd2fdfda8cdb70648696974f7157f86c156967c')
+            '6f9e5fb5a184b2ca77382cc00c65fd0ca1e38cf71b72dd419aa88d4efdbf4eaa')
 
 build() {
     cd "${srcdir}/${_reponame}-${pkgver}"
@@ -43,5 +41,5 @@ package() {
         magick "composeApp/icons/app.png" -resize "${res}x${res}" "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}.png"
     done
 
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
