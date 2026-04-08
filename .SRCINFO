@@ -1,6 +1,6 @@
 pkgbase = python-claude-agent-sdk
 	pkgdesc = Python SDK for Claude Code
-	pkgver = 0.1.55
+	pkgver = 0.1.56
 	pkgrel = 1
 	url = https://github.com/anthropics/claude-agent-sdk-python
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-claude-agent-sdk
 	depends = python
 	depends = python-anyio
 	depends = python-mcp
-	source = https://files.pythonhosted.org/packages/source/c/claude_agent_sdk/claude_agent_sdk-0.1.55.tar.gz
-	sha256sums = d171f7eeaa6e5e2e95acea55e95c143ab6b23f5bf9e1c54a7c74842fcb7bb710
+	source = https://files.pythonhosted.org/packages/source/c/claude_agent_sdk/claude_agent_sdk-0.1.56.tar.gz
+	sha256sums = a95bc14e59f9d6c8e7fa2e6581008a3f24f10e1b57302719823f62cfb5beccdc
 
 pkgname = python-claude-agent-sdk
