@@ -1,7 +1,7 @@
 # Maintainer: Vincent Post <cent@spline.de>
 pkgname=xivlauncher-git
 pkgver=1.4.0.r0.g06c3298
-pkgrel=7
+pkgrel=8
 epoch=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/goatcorp/XIVLauncher.Core/'
 license=('GPL')
 depends=(
     'aria2'
-    'sdl2'
+    'sdl3'
     'libsecret'
     'attr'
     'fontconfig'
