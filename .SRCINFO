@@ -1,11 +1,11 @@
 pkgbase = mattermost-desktop-bin
 	pkgdesc = Mattermost Desktop application (precompiled binary)
-	pkgver = 6.1.0
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://mattermost.com/
 	arch = x86_64
 	license = Apache-2.0
-	source = mattermost-desktop-6.1.0-linux-x64.tar.gz::https://releases.mattermost.com/desktop/6.1.0/mattermost-desktop-6.1.0-linux-x64.tar.gz
-	sha256sums = 160d8e7654b621499cc45fd67dc134457eb6ab3f1e601a229c6aca10962938b6
+	source = mattermost-desktop-6.1.1-linux-x64.tar.gz::https://releases.mattermost.com/desktop/6.1.1/mattermost-desktop-6.1.1-linux-x64.tar.gz
+	sha256sums = d34d400085e6f2df70116406595365a90adb156f945e6ab1c80a4af9f1468492
 
 pkgname = mattermost-desktop-bin
