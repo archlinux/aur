@@ -9,6 +9,6 @@ pkgbase = telegramtui
 	depends = java-runtime>=21
 	depends = telegram-tdlib
 	source = telegramtui-1.0.0.jar::https://github.com/k4dy/telegramtui/releases/download/v1.0.0/telegramtui-1.0.0.jar
-	sha256sums = 405bd5ed8f70b84ae3bf2a189be0c1a30da22923b745330c1463f1b3c087a1fc
+	sha256sums = a65d7f2dc5fb729cf707bed3b5e070983d4d5d8bd6348796ffc84f56c4a2a507
 
 pkgname = telegramtui
