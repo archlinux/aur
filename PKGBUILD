@@ -2,7 +2,7 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=webfakes
-_pkgver=1.4.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-zip
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('addd79c7f37ca4d73fa2371bf755941c')
-b2sums=('aef4e3e6313bcb453b3c90d0ac6d8c4ba98fbd3a42c13892ba7fe6fb699cd1290d7b368b9c37b26dbf553ad997428546c7c0d3a9dd2fbf00ffbe3d3a420f3f4b')
+md5sums=('65b7c8dce3b97f42c6a278e6ffd6ca1c')
+b2sums=('ffd024785c9d9de942b710caf748205aa505049c2d54fd403f5ddb34d8bbe1155aa682a90e3257960fa5e893d04ac66431abd68b953cde52e6f895977b583dca')
 
 build() {
   mkdir build
