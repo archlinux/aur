@@ -1,8 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-steam
 _name=${pkgname#python-}
-pkgver=1.6.1
-pkgrel=3
+_pkgver=2.0.0-alpha1
+pkgver=${_pkgver//-/.}
+pkgrel=1
 pkgdesc="Python package for interacting with Steam"
 arch=('any')
 url="https://github.com/solsticegamestudios/steam"
@@ -10,14 +11,15 @@ license=('MIT')
 depends=(
   'python'
   'python-cachetools'
+  'python-certifi'
   'python-gevent'
   'python-lxml'
   'python-protobuf'
   'python-pycryptodomex'
   'python-requests'
   'python-six'
-  'python-urllib3'
   'python-vdf'
+  'python-wsproto'
 )
 makedepends=(
   'python-build'
@@ -31,26 +33,19 @@ checkdepends=(
   'python-vcrpy'
 )
 replaces=('python-steam-solstice')
-source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        'mock.patch'
+source=("$_name-${_pkgver}.tar.gz::$url/archive/refs/tags/v${_pkgver}.tar.gz"
         'pkg_resources.patch')
-sha256sums=('dcc305f11e1686a3557cd87afdc50ce177a5015ba3fdd51bef63c7302dd21b05'
-            '984fce88957834c527ced824b9ab7dfadbf564ef18f6b232d6d1c9b02bb7bdc0'
+sha256sums=('6447a3c97248885b44b73fec3bdcaee0421fe3e6e062d1bb195b9de3acc7eb0a'
             '91fee1a59979dd29ee9667b60bd3b20e542923b98a129e90db1cbdddc3a68827')
 
 prepare() {
-  cd "$_name-$pkgver"
+  cd "$_name-${_pkgver}"
 
   # Regenerate protos
-  for p in protobufs/*.proto; do
-    protoc --python_out ./steam/protobufs/ --proto_path=./protobufs "${p}"
-  done
-
-  sed -i 's/urllib3<2/urllib3/' requirements.txt setup.py
-
-  # Mock module has mostly been replaced by Python's stdlib unittest.mock
-  # https://archlinux.org/todo/drop-python-mock-checkdepends/
-  patch -Np1 -i ../mock.patch
+  sed -i 's/protoc3/protoc/g' Makefile
+  make pb_compile
+  make pb_services
+  make pb_gen_enums
 
   # pkg_resources deprecated in Setuptools 82+
   # https://archlinux.org/todo/python-pkg_resources-deprecation/
@@ -58,17 +53,17 @@ prepare() {
 }
 
 build() {
-  cd "$_name-$pkgver"
+  cd "$_name-${_pkgver}"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_name-$pkgver"
+  cd "$_name-${_pkgver}"
   pytest || :
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "$_name-${_pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"

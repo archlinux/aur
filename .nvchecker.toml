@@ -2,4 +2,4 @@
 source = "git"
 git = "https://github.com/solsticegamestudios/steam.git"
 prefix = "v"
-exclude_regex = ".*alpha.*"
+#exclude_regex = ".*alpha.*"
