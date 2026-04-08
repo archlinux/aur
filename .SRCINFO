@@ -1,0 +1,26 @@
+pkgbase = shorin-screenrec-menu-git
+	pkgdesc = Wayland screen recording menu with dmenu and overlay box
+	pkgver = r3.190bd16
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/screenrec-menu
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = slurp
+	depends = wl-clipboard
+	depends = ffmpeg
+	depends = python
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = python-gobject
+	depends = python-cairo
+	optdepends = wl-screenrec: Fast stream recording backend (Recommended)
+	optdepends = wf-recorder: Stream recording backend (Fallback)
+	optdepends = fuzzel: Lightweight Wayland native menu UI (or rofi/wofi)
+	optdepends = libnotify: For desktop notifications
+	provides = shorin-screenrec-menu
+	conflicts = shorin-screenrec-menu
+	source = git+https://github.com/SHORiN-KiWATA/screenrec-menu.git
+	sha256sums = SKIP
+
+pkgname = shorin-screenrec-menu-git
