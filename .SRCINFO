@@ -1,6 +1,6 @@
 pkgbase = autocli-bin
 	pkgdesc = Blazing fast, memory-safe CLI tool for fetching information from websites
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/nashsu/AutoCLI
 	install = autocli-bin.install
@@ -9,9 +9,9 @@ pkgbase = autocli-bin
 	license = MIT
 	provides = autocli
 	conflicts = autocli
-	source_x86_64 = autocli-x86_64-0.3.3.tar.gz::https://github.com/nashsu/AutoCLI/releases/download/v0.3.3/autocli-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 550924a9aeece68609ce36c622a8670d2bbf21cc90e81a9a0b3e61d33e3503f3
-	source_aarch64 = autocli-aarch64-0.3.3.tar.gz::https://github.com/nashsu/AutoCLI/releases/download/v0.3.3/autocli-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 754e6e4173f30d30d6c1a901fa67fbc6f0f0bbb6b8a3547fc491f30b522baa17
+	source_x86_64 = autocli-x86_64-0.3.4.tar.gz::https://github.com/nashsu/AutoCLI/releases/download/v0.3.4/autocli-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 817a9f53222a0ba6bc179b32ad6969129d2ccabe3f9b9bb699ba8115f74a7b34
+	source_aarch64 = autocli-aarch64-0.3.4.tar.gz::https://github.com/nashsu/AutoCLI/releases/download/v0.3.4/autocli-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = e486dcfef7f5143881e148306cf2e58c19c3b21acb04f7187471c5f3184cd43a
 
 pkgname = autocli-bin
