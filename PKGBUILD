@@ -3,7 +3,7 @@
 
 _pkgname=openssl
 pkgname="$_pkgname-aegis"
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 pkgdesc='OpenSSL with AEGIS cipher support added'
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('openssl')
 backup=('etc/ssl/openssl.cnf')
 source=("$url/archive/refs/heads/$_pkgname-$pkgver-aegis.zip"
         'ca-dir.patch')
-sha256sums=('8672ae716b0bb582771cfa8c7a646e639ec156bf419a28408eb5fd3caed7841d'
+sha256sums=('e631961789f5a148d31d4f4e23c8d11acb1d9ad54c61de49dca30a4e999b7562'
             '0a32d9ca68e8d985ce0bfef6a4c20b46675e06178cc2d0bf6d91bd6865d648b7')
 validpgpkeys=('EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
               'BA5473A2B0587B07FB27CF2D216094DFD0CB81EF')
