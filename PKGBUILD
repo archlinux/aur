@@ -2,9 +2,9 @@
 # Contributor: Keeyou <hukeyue@vip.163.com>
 
 pkgname=yass-proxy-cli
-pkgver=1.24.0
+pkgver=1.24.3
 pkgrel=1
-_pkgver=1.24.0
+_pkgver=1.24.3
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy commandline"
 arch=(x86_64 aarch64)
@@ -17,7 +17,7 @@ provides=(yass-proxy-cli)
 conflicts=(yass-proxy-cli-git)
 source=("https://github.com/hukeyue/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.zst"
         )
-sha256sums=('9f79610f03a6e9abf70ee10aae76346ed4c9ab89d3d5b0ea5cb35ffd0e451aa4')
+sha256sums=('c7289c9074aa8e65dc1f40d96c8f3fd09da8affa21ee17cba030f6dbdff6c0e0')
 
 build(){
   SRC_DIR="${srcdir}/yass-${_pkgver}"
