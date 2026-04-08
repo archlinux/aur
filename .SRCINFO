@@ -1,0 +1,16 @@
+pkgbase = violet-launcher
+	pkgdesc = Лаунчер для Violet World с крутой иконкой
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Lunsly/violet-launcher
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-pillow
+	depends = python-requests
+	depends = python-customtkinter
+	depends = python-minecraft-launcher-lib
+	source = git+https://github.com/Lunsly/violet-launcher.git
+	md5sums = SKIP
+
+pkgname = violet-launcher
