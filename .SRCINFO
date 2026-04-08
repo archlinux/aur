@@ -1,6 +1,6 @@
 pkgbase = immich-machine-learning
 	pkgdesc = Machine learning server for the Immich photo management system
-	pkgver = 2.6.3
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://github.com/immich-app/immich/tree/main/machine-learning
 	arch = any
@@ -34,9 +34,9 @@ pkgbase = immich-machine-learning
 	optdepends = intel-compute-runtime: OpenCL support
 	optdepends = intel-media-driver: HW acceleration
 	optdepends = immich-server: Photo management system dependent on this
-	source = immich-2.6.3.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v2.6.3.tar.gz
+	source = immich-2.7.2.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v2.7.2.tar.gz
 	source = immich-machine-learning.service
-	sha256sums = 08bc141261ee7acebf1bf574cfbdb90448d624c7dec5b91d45e42bedff7ddb7e
+	sha256sums = 762903e71e63357f722fade032d629600af4b004514694e303e08da44780fe80
 	sha256sums = 57c0e902457d7adae80a5152dc2d985edc58743d018d79f2da41054a843930cf
 
 pkgname = immich-machine-learning

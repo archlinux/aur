@@ -1,7 +1,7 @@
 # Maintainer: aliu <aaronliu 0 1 3 0  gmail com>
 # Contributor: pikl <me@pikl.uk>
 pkgname=immich-machine-learning
-pkgver=2.6.3
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Machine learning server for the Immich photo management system"
 arch=(any)
@@ -14,7 +14,7 @@ depends=('python>=3.11' # 'python<4' not recommended by python
 	'gunicorn'
 	'python-huggingface-hub'
 	'python-insightface<1.0'
-	'python-numpy'
+	'python-numpy'  # upstream recommends <2.4 for CPUs below x86-64-v2
 	'python-opencv<5.0'
 	'python-orjson'
 	'python-pillow<13'
@@ -40,7 +40,7 @@ optdepends=(
 )
 source=("immich-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
 	"immich-machine-learning.service")
-sha256sums=('08bc141261ee7acebf1bf574cfbdb90448d624c7dec5b91d45e42bedff7ddb7e'
+sha256sums=('762903e71e63357f722fade032d629600af4b004514694e303e08da44780fe80'
             '57c0e902457d7adae80a5152dc2d985edc58743d018d79f2da41054a843930cf')
 
 build() {
