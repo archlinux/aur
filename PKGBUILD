@@ -19,7 +19,7 @@ provides=('phantom-browser')
 conflicts=('phantom-browser')
 
 source_x86_64=("phantom-${pkgver}.tar.xz::https://github.com/SergBrowns/phantom-browser/releases/download/v${pkgver}/phantom-${pkgver}.tar.xz")
-sha256sums_x86_64=('007a419ddc0ee79ead4c2b2a2517b9b32e256242ba0487709aed41a06dc2c495')
+sha256sums_x86_64=('7d3d68ac5bde9538cdd1575920aba19bfce407cac10a9020132ce53e0e93e3aa')
 
 package() {
     # Install browser files
