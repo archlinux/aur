@@ -1,6 +1,6 @@
 # Maintainer: Vincent Post <cent@spline.de>
 pkgname=xivlauncher-git
-pkgver=1.3.1.r0.gf832daa
+pkgver=1.4.0.r0.g06c3298
 pkgrel=7
 epoch=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)"
@@ -28,7 +28,7 @@ depends=(
     'desktop-file-utils'
     'jxrlib'
 )
-makedepends=('dotnet-sdk>=8' 'python-yaml' 'git')
+makedepends=('dotnet-sdk>=10' 'python-yaml' 'git')
 optdepends=('steam')
 options=('!strip' '!debug')
 provides=("xivlauncher=${pkgver}")
