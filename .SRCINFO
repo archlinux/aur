@@ -1,5 +1,5 @@
 pkgbase = python-xformers-rocm
-	pkgdesc = Transformers building blocks, supporting a composable construction
+	pkgdesc = Transformers building blocks, supporting a composable construction. ROCm version (for gfx9 only)
 	pkgver = 0.0.35
 	pkgrel = 1
 	url = https://github.com/facebookresearch/xformers
