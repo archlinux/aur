@@ -1,6 +1,6 @@
 pkgbase = ontime-git
 	pkgdesc = Time keeping for live events (built from source)
-	pkgver = 4.7.0.r0.g1a2b3c4
+	pkgver = 4.7.0.r0.g176e53dd7
 	pkgrel = 1
 	url = https://github.com/cpvalente/ontime
 	arch = x86_64
