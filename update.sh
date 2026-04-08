@@ -14,7 +14,6 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
 BRANCH=$(git symbolic-ref --short HEAD)
-PKGNAME=$(awk -F= '/^pkgname=/{gsub(/'\''|"/, "", $2); print $2; exit}' PKGBUILD)
 
 echo "=== Updating astrbot-git ==="
 
@@ -23,8 +22,8 @@ git fetch --prune origin
 
 echo "[2/5] Checking for divergence..."
 LOCAL=$(git rev-parse @)
-REMOTE=$(git rev-parse origin/$BRANCH)
-BASE=$(git merge-base @ origin/$BRANCH)
+REMOTE=$(git rev-parse origin/"$BRANCH")
+BASE=$(git merge-base @ origin/"$BRANCH")
 
 if [ "$LOCAL" = "$REMOTE" ]; then
     echo ">>> Already up to date with AUR."
