@@ -1,8 +1,8 @@
 # Maintainer: qwjyh <urataw421 at gmail dot com>
 
 pkgname=sumatrapdf
-pkgver=3.6
-pkgrel=4
+pkgver=3.6.1
+pkgrel=1
 pkgdesc="PDF, eBook (epub, mobi), comic book (cbz/cbr), DjVu, XPS, CHM, image viewer for Windows. Small, fast, customizable, free."
 arch=('x86_64')
 url='https://www.sumatrapdfreader.org/free-pdf-reader'
@@ -14,7 +14,7 @@ makedepends=('imagemagick' 'gendesk' 'icoutils')
 source=("https://www.sumatrapdfreader.org/dl/rel/${pkgver}/SumatraPDF-${pkgver}-64.zip"
         "https://raw.githubusercontent.com/sumatrapdfreader/sumatrapdf/${pkgver}rel/COPYING.BSD"
         'sumatrapdf.sh')
-sha256sums=('2b52f4f66ea2229a431a434fcd608210c019d85fe67d06302f6544f63d66b319'
+sha256sums=('98b33a518d42986856d225064b0cd2d3643ecf78cbf84ab873d26cc51877a544'
             'ff33648659aa06892ed13a731588a57006fafee2f848d35f70bf273a13cf9d27'
             '8cc7cff62ca0f4b149cff9ad5f383a38fa68627d1b80a5f5e631860ca95cd56c')
 
