@@ -2,7 +2,7 @@
 
 pkgname=korb
 pkgver=0.4.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Unofficial grocery delivery CLI for German supermarket chain REWE'
 arch=('x86_64')
 url='https://github.com/yannick-cw/korb'
