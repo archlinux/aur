@@ -1,0 +1,18 @@
+pkgbase = nazar-blocker-git
+	pkgdesc = Protect your computer from nazar (evil eye) — Qt6 system tray app
+	pkgver = r7.43bcc0c
+	pkgrel = 1
+	url = https://github.com/sulincix-other/nazar-blocker
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-IOSL
+	makedepends = qt6-tools
+	makedepends = git
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	provides = nazar-blocker
+	conflicts = nazar-blocker
+	source = nazar-blocker-git::git+https://github.com/sulincix-other/nazar-blocker.git
+	sha256sums = SKIP
+
+pkgname = nazar-blocker-git
