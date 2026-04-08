@@ -2,7 +2,7 @@
 
 _pkgname=fht-share-picker
 pkgname="$_pkgname-git"
-pkgver=25.10.0.r773.0547fa4
+pkgver=25.10.0.r784.7b500b1
 pkgrel=1
 pkgdesc='A Wayland XDG screencast output picker'
 groups=('fht-desktop')
