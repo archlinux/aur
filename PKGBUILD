@@ -1,6 +1,6 @@
 # Maintainer: Louis Cornell <lpcornel@gmail.com>
 pkgname=musiclib
-pkgver=1.50
+pkgver=1.61
 pkgrel=1
 pkgdesc="KDE-based music library management. Integration with Audacious player, Kid3 Tagger, K3b CD Ripper, kdeconnect and RSGain."
 arch=('x86_64')
@@ -46,7 +46,7 @@ provides=('musiclib-cli')
 conflicts=('musiclib-cli')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('48eb0ea52bd8340d2c9f510f22376a8351b282b41aff7dd887762a8e423fc9ff')
+sha256sums=('6d98b0c3db13c357b767ad6f16ff2c999f9279c655af7a13d8df8392abe05c5e')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
@@ -60,14 +60,6 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-
-    # Install the .desktop file (not wired into CMake install targets yet)
-    install -Dm644 "$pkgname-$pkgver/org.musiclib.musiclib.desktop" \
-        "$pkgdir/usr/share/applications/org.musiclib.musiclib.desktop"
-
-    # Install the application icon
-    install -Dm644 "$pkgname-$pkgver/musiclib.png" \
-        "$pkgdir/usr/share/icons/hicolor/128x128/apps/musiclib.png"
 
     # Fallback: install the man page directly if cmake skipped it
     if [[ ! -f "$pkgdir/usr/share/man/man1/musiclib-cli.1" ]]; then
