@@ -2,7 +2,7 @@
 _pkgname=kangaroo
 pkgname="${_pkgname}-max-bin"
 pkgver=9.3.1.401
-pkgrel=1
+pkgrel=2
 pkgdesc="A SQL client and admin tool for popular databases(SQLite/MySQL/PostgreSQL/...),support table design,query,model,sync,export/import etc,focus on comfortable,fun and developer friendly.(Prebuilt version)"
 arch=('x86_64')
 url="https://www.datatable.online"
@@ -34,8 +34,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/Kangaroo-Multiple-${pkgver}-1-${CARCH}.pkg.tar.zst"
     "LICENSE.html::${url}/en/license/service-agreement.html"
 )
-sha256sums=('49ff9d4fb32849f11364a8edb50f9bc1fbf07688f7f43ce4cc7ea290e6a69d15'
-            '213da32f8dfb990a60abe7aa8abc8fa015170f1396e076c1ff2a682a540caca2')
+sha256sums=('e0c5b9e15a9afd477a5aa621b856a16f0c4f3f0cc9419978826bde3db6f2f3c5'
+            '9446124544ea08ddbc964a803572eb2c8ccf806823fc858726d3764981c0ad56')
 package() {
     cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
     rm -rf "${pkgdir}/usr/share/licenses/${_pkgname}"
