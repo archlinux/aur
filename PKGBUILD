@@ -1,10 +1,10 @@
 # Maintainer: weversonl
-pkgname=gnomeqs
+pkgname=gnome-quick-share
 pkgver=0.12.0
 pkgrel=1
 pkgdesc="Quick Share client for GNOME"
 arch=('x86_64')
-url="https://github.com/weversonl/gnomeqs-gtk"
+url="https://github.com/weversonl/gnome-quick-share"
 license=('AGPL-3.0-only')
 options=(!debug)
 depends=(
@@ -21,7 +21,7 @@ makedepends=(
   'cargo'
   'gettext'
 )
-source=("$pkgname::git+https://github.com/weversonl/gnomeqs-gtk.git")
+source=("$pkgname::git+https://github.com/weversonl/gnome-quick-share.git")
 sha256sums=('SKIP')
 
 build() {
