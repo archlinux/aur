@@ -1,8 +1,8 @@
 # Maintainer: AnabasaSoft <anabasasoft@gmail.com>
 pkgname=cloudmount-wizard-bin
 _pkgname=cloudmount-wizard
-pkgver=1.2.2
-pkgrel=1  # He subido la "release" del paquete a 2 porque es una corrección
+pkgver=v1.2.3
+pkgrel=1
 pkgdesc="Asistente para montar unidades de nube (Mega, Drive, etc) en Linux (Binario)"
 arch=('x86_64')
 url="https://github.com/AnabasaSoft/CloudMount-Wizard"
