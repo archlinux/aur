@@ -6,8 +6,8 @@
 _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
-pkgver=2.1.0.8.g8de77bc
-pkgrel=2
+pkgver=2.1.0.9.ga5a431f
+pkgrel=1
 
 pkgdesc='TF2 particle modifications via some wizardry.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ license=('GPL-3.0-or-later' 'CC-BY-NC-ND-4.0')
 
 depends=(
 	'python>=3.11'
-	'python-more-itertools>=11.0' 'python-more-itertools<12'
+	'python-more-itertools>=11.0.0' 'python-more-itertools<12.0.0'
 	'python-packaging>=26' 'python-packaging<27'
 	'python-platformdirs>=4.5' 'python-platformdirs<5'
 	'python-pygithub>=2.9.0' 'python-pygithub<3'
