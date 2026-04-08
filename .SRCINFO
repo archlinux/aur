@@ -1,7 +1,7 @@
 pkgbase = labconf-git
-	pkgdesc = GTK3 конфигуратор тем и параметров labwc (obconf-like)
+	pkgdesc = GTK3 theme and parameter configurator labwc (obconf-like)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sfs-pra/labconf
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -12,7 +12,7 @@ pkgbase = labconf-git
 	depends = gtk3
 	depends = glib2
 	depends = pango
-	optdepends = labwc: оконный менеджер Wayland
+	optdepends = labwc
 	source = git+https://github.com/sfs-pra/labconf.git#tag=v1.0.0
 	sha256sums = SKIP
 

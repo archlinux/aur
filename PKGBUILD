@@ -2,8 +2,8 @@
 
 pkgname=labconf-git
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="GTK3 конфигуратор тем и параметров labwc (obconf-like)"
+pkgrel=2
+pkgdesc="GTK3 theme and parameter configurator labwc (obconf-like)"
 arch=('x86_64')
 url="https://github.com/sfs-pra/labconf"
 license=('GPL-3.0-or-later')
@@ -19,7 +19,7 @@ makedepends=(
     'git'
 )
 optdepends=(
-    'labwc: оконный менеджер Wayland'
+    'labwc'
 )
 source=("git+https://github.com/sfs-pra/labconf.git#tag=v${pkgver}")
 sha256sums=('SKIP')
