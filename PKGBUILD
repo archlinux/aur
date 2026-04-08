@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.7.33
+pkgver=5.7.34
 pkgrel=1
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
             '9b7be4cb912290ed1164dbc3c5f6714c5a9525cc41a4d7ba3115cdbe312a9320'
             'a6b504ce331ef5953f38db6f2b3c18c3d5ed796eed29381bbe76a931cf3f9fa5'
             '88c4b5f4f6907e1db8a415540dcce699b4c5ef7034b064dbe760b7f1027f4ba3')
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=3ba9e939d68112102be79cc0c7930a29c68919a6
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=9192fdbe164bf6699b5eeb43f0e215d5bd139e8b
 		https://pub.cellframe.net/python/python-cellframe/pycfhelpers/master/pycfhelpers-1.0.13-py3-none-any.whl
 		cellframe-node.logrotate
 		cellframe-node.service
@@ -36,7 +36,7 @@ prepare() {
 	sed -i 's|url = \.\./|url = https://gitlab.demlabs.net/cellframe/|g' "$srcdir/$pkgname/.gitmodules"
 	cd "$pkgname" && git submodule update --init --recursive --progress
 	# temporary, remove after merge..........
-	local _sdk_commit="4fe8fddfc2d1e0cd7fac2cd1592001bc7670e9b9"
+	local _sdk_commit="dc2004cc32e5d3aa5d8999c0290ddd8b4c2fb96c"
 	for _sdk in cellframe-sdk python-cellframe/cellframe-sdk; do
 		git -C "$_sdk" fetch origin block_list_perf
 		git -C "$_sdk" checkout "$_sdk_commit"

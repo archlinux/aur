@@ -47,7 +47,6 @@ _post_install_wheels() {
     "$PIP_BIN" install "$wheel_dir"/*.whl &> /dev/null \
         && echo ":: Installed wheel packages" \
         || echo ":: Failed to install wheel packages"
-    rm -f "$wheel_dir"/*.whl
 }
 
 _setup_default_configuration() {
