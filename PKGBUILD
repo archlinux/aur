@@ -1,8 +1,8 @@
 # Maintainer: CrypticCreator <crypticcreator@noreply.codeberg.org>
 pkgname=selene-player-git
 _pkgname=selene-player
-pkgver=0.5.0.r0.g4decef3
-pkgrel=1
+pkgver=v0.5.0.r0.g4decef3
+pkgrel=2
 pkgdesc="A feature complete music player and metadata editor"
 
 url="https://codeberg.org/CrypticCreator/Selene"
@@ -11,7 +11,7 @@ _git="https://codeberg.org/CrypticCreator/selene.git"
 license=("MIT")
 arch=(x86_64)
 
-makedepends=('git' 'cargo')
+makedepends=('git' 'cargo' 'clang')
 depends=('libwebp')
 
 source=("${_pkgname}::git+${_git}")
@@ -33,7 +33,11 @@ prepare() {
 
 build() {
 	cd "${_pkgname}"
+
 	export CARGO_TARGET_DIR=target
+	export CC=clang
+    export CXX=clang++
+
 	cargo build --release --locked --offline -p selene-cli
 }
 
