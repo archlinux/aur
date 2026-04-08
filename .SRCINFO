@@ -1,7 +1,7 @@
 pkgbase = shorin-screenrec-menu-git
 	pkgdesc = Wayland screen recording menu with dmenu and overlay box
 	pkgver = r3.190bd16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/screenrec-menu
 	arch = any
 	license = GPL3

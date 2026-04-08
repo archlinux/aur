@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-screenrec-menu-git
 pkgver=r3.190bd16
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland screen recording menu with dmenu and overlay box"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/screenrec-menu"
@@ -24,7 +24,7 @@ source=("git+https://github.com/SHORiN-KiWATA/screenrec-menu.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/shorin-screenrec-menu"
+    cd "$srcdir/screenrec-menu"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
