@@ -1,7 +1,7 @@
 pkgbase = python-ouroboros-ai
 	pkgdesc = Specification-first workflow engine for AI coding agents
 	pkgver = 0.28.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Q00/ouroboros
 	install = python-ouroboros-ai.install
 	arch = any

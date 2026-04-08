@@ -2,7 +2,7 @@
 pkgname=python-ouroboros-ai
 _name=${pkgname#python-}
 pkgver=0.28.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Specification-first workflow engine for AI coding agents"
 arch=('any')
 url="https://github.com/Q00/ouroboros"
@@ -48,4 +48,14 @@ package() {
   cd "${_name//-/_}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  # Shell completions
+  export PYTHONPATH="$pkgdir/$(python -c 'import site; print(site.getsitepackages()[0])')"
+  local _ouroboros="$pkgdir/usr/bin/ouroboros"
+  $_ouroboros --show-completion bash | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/bash-completion/completions/ouroboros"
+  $_ouroboros --show-completion zsh | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/zsh/site-functions/_ouroboros"
+  $_ouroboros --show-completion fish | install -Dm644 /dev/stdin \
+    "$pkgdir/usr/share/fish/vendor_completions.d/ouroboros.fish"
 }
