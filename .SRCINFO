@@ -1,6 +1,6 @@
 pkgbase = unitdore
 	pkgdesc = A door you open and close for container units — manage containers via systemd
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://git.warky.dev/wdevs/unitdore
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = unitdore
 	depends = systemd
 	optdepends = podman: Podman container runtime support
 	optdepends = docker: Docker container runtime support
-	backup = etc/unitdore/units.yaml
-	source = unitdore-0.0.4.zip::https://git.warky.dev/wdevs/unitdore/archive/v0.0.4.zip
-	sha256sums = 73ffe85116d1a5a4c799df128ea1fa0fa5c9a5752609343a78212b8267e30835
+	source = unitdore-0.0.5.zip::https://git.warky.dev/wdevs/unitdore/archive/v0.0.5.zip
+	sha256sums = 27be4d1a9e7e29d3153bb3cb5183ef096e8ba047d92c08b43017167b2d67947f
 
 pkgname = unitdore
