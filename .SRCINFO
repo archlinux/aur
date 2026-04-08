@@ -1,0 +1,23 @@
+pkgbase = claw-code-git
+	pkgdesc = Rust-based AI coding harness runtime
+	pkgver = 000aed4
+	pkgrel = 1
+	url = https://github.com/ultraworkers/claw-code
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	makedepends = clang
+	makedepends = lld
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = oniguruma
+	provides = claw-code
+	conflicts = claw-code
+	source = git+https://github.com/ultraworkers/claw-code.git
+	sha256sums = SKIP
+
+pkgname = claw-code-git
