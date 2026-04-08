@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-margarine
 _name=${pkgname#python-}
-pkgver=2.0.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Posterior Sampling and Marginal Bayesian Statistics"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('91b5afe78826468a988bb90f110984dfd88db4fe5ff9d64d98d384ffc7d52559')
+sha256sums=('11834e65e9de1e6a2b1e872dac5eac6728ba3696ab2dcfaeac8e610f64eeed9e')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
