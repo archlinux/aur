@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Violet Launcher
+Comment=Modern Minecraft Launcher by Luns
+Exec=violet-launcher
+Icon=violet-launcher
+Terminal=false
+StartupWMClass=main
+Categories=Game;
