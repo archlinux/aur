@@ -1,0 +1,32 @@
+post_install() {
+    echo ":: Enable the control-ofc-daemon service:"
+    echo "   sudo systemctl enable --now control-ofc-daemon"
+    echo ""
+    echo ":: For GPU fan control (AMD RDNA3+), ensure your kernel parameters include:"
+    echo "   amdgpu.ppfeaturemask=0xffffffff"
+    echo ""
+    echo ":: Configuration: /etc/control-ofc/daemon.toml"
+    echo ":: udev rules: edit /usr/lib/udev/rules.d/99-control-ofc.rules"
+    echo "   to set your OpenFan controller's USB VID/PID."
+}
+
+post_upgrade() {
+    echo ":: If control-ofc-daemon is running, restart it to apply changes:"
+    echo "   sudo systemctl restart control-ofc-daemon"
+}
+
+pre_remove() {
+    if systemctl is-active --quiet control-ofc-daemon.service; then
+        systemctl stop control-ofc-daemon.service
+    fi
+    if systemctl is-enabled --quiet control-ofc-daemon.service; then
+        systemctl disable control-ofc-daemon.service
+    fi
+}
+
+post_remove() {
+    echo ":: Configuration preserved in /etc/control-ofc/"
+    echo "   Remove manually if no longer needed."
+    echo ":: State data preserved in /var/lib/control-ofc/"
+    echo "   Remove manually if no longer needed."
+}
