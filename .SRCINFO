@@ -1,13 +1,13 @@
 pkgbase = zftop
 	pkgdesc = A terminal dashboard for ZFS, in the spirit of htop
-	pkgver = 0.0.0
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://git.skylantix.com/rbitton/zftop
 	arch = x86_64
 	license = MIT
-	source = zftop-0.0.0-linux-amd64::https://git.skylantix.com/api/v4/projects/rbitton%2Fzftop/packages/generic/zftop/0.0.0/zftop-linux-amd64
-	source = LICENCE-0.0.0::https://git.skylantix.com/rbitton/zftop/-/raw/v0.0.0/LICENCE
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = zftop-0.1.5-linux-amd64::https://git.skylantix.com/api/v4/projects/rbitton%2Fzftop/packages/generic/zftop/0.1.5/zftop-linux-amd64
+	source = LICENCE-0.1.5::https://git.skylantix.com/rbitton/zftop/-/raw/v0.1.5/LICENCE
+	sha256sums = 25c1668705622ee689719cc556e382fc524f352088bfb0130243b68578df0db0
+	sha256sums = c01aff442f364e4af49f96e1233a02585f815895eb03aaec45b3a1e97b824cd4
 
 pkgname = zftop
