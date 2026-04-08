@@ -36,12 +36,12 @@ build() {
     if [ -e "${_modern_target}" ]; then rm -r "${_modern_target}"; fi
 
     CARGO_TARGET_DIR="${_baseline_target}" RUSTFLAGS='-C target-cpu=x86-64-v2' \
-        cargo build --profile release --target "${_rust_target}" -p pi-natives
+        cargo build --release --target "${_rust_target}" -p pi-natives
     install -Dm755 "${_baseline_target}/${_rust_target}/release/libpi_natives.so" \
         "packages/natives/native/pi_natives.linux-x64-baseline.node"
 
     CARGO_TARGET_DIR="${_modern_target}" RUSTFLAGS='-C target-cpu=x86-64-v3' \
-        cargo build --profile release --target "${_rust_target}" -p pi-natives
+        cargo build --release --target "${_rust_target}" -p pi-natives
     install -Dm755 "${_modern_target}/${_rust_target}/release/libpi_natives.so" \
         "packages/natives/native/pi_natives.linux-x64-modern.node"
 
