@@ -1,0 +1,24 @@
+pkgbase = cronopete-bin
+	pkgdesc = A graphical backup utility based on Apple Time Machine idea.
+	pkgver = 4.19.1
+	pkgrel = 1
+	url = https://www.rastersoft.com/programas/cronopete.html
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = dconf
+	depends = gcc-libs
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
+	depends = libgee
+	depends = libnotify
+	depends = rsync
+	depends = udisks2
+	provides = cronopete
+	conflicts = cronopete
+	options = !strip
+	options = !debug
+	source = cronopete-4.19.1-1-x86_64.pkg.tar.zst::https://www.rastersoft.com/descargas/cronopete/cronopete-4.19.1-1-x86_64.pkg.tar.zst
+	sha256sums = 0d0f5dfab1e49f3cc8da7c69e9529d85d61a867eff940d372c7f55315a2ee70c
+
+pkgname = cronopete-bin
