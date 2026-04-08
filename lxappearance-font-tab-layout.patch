@@ -1,0 +1,163 @@
+--- a/data/ui/lxappearance.glade
++++ b/data/ui/lxappearance.glade
+@@ -8,6 +8,20 @@
+     <property name="step_increment">1</property>
+     <property name="page_increment">10</property>
+     <property name="page_size">10</property>
++  </object>
++  <object class="GtkSizeGroup" id="font_tab_label_group">
++    <property name="mode">horizontal</property>
++    <widgets>
++      <widget name="label31"/>
++      <widget name="label34"/>
++    </widgets>
++  </object>
++  <object class="GtkSizeGroup" id="font_tab_control_group">
++    <property name="mode">horizontal</property>
++    <widgets>
++      <widget name="hinting_style"/>
++      <widget name="font_rgba"/>
++    </widgets>
+   </object>
+   <object class="GtkDialog" id="dlg">
+     <property name="can_focus">False</property>
+@@ -105,6 +119,7 @@
+                         <property name="can_focus">True</property>
+                         <property name="has_focus">True</property>
+                         <property name="headers_visible">False</property>
++                        <property name="tooltip_text" translatable="yes">Select a GTK widget theme from the list.</property>
+                         <child>
+                           <object class="GtkTreeViewColumn" id="treeviewcolumn3">
+                             <child>
+@@ -135,6 +150,7 @@
+                         <property name="can_focus">False</property>
+                         <property name="xalign">0</property>
+                         <property name="label" translatable="yes">Preview of the selected widget style</property>
++                        <property name="tooltip_text" translatable="yes">Preview area for selected GTK widget theme.</property>
+                       </object>
+                       <packing>
+                         <property name="expand">False</property>
+@@ -723,6 +739,7 @@
+                             <property name="can_focus">False</property>
+                             <property name="xalign">0</property>
+                             <property name="label" translatable="yes">Default font:</property>
++                            <property name="tooltip_text" translatable="yes">Default interface font used by GTK applications.</property>
+                           </object>
+                           <packing>
+                             <property name="expand">False</property>
+@@ -736,6 +753,7 @@
+                             <property name="can_focus">True</property>
+                             <property name="receives_default">True</property>
+                             <property name="use_action_appearance">False</property>
++                            <property name="tooltip_text" translatable="yes">Choose font family and size for GTK interface text.</property>
+                           </object>
+                           <packing>
+                             <property name="expand">True</property>
+@@ -1453,6 +1471,7 @@
+               <object class="GtkVBox" id="vbox8">
+                 <property name="visible">True</property>
+                 <property name="can_focus">False</property>
++                <property name="border_width">12</property>
+                 <property name="spacing">18</property>
+                 <child>
+                   <object class="GtkFrame" id="frame3">
+@@ -1472,6 +1491,7 @@
+                             <child>
+                               <object class="GtkCheckButton" id="enable_antialising">
+                                 <property name="label" translatable="yes">Enable antialiasing</property>
++                                <property name="tooltip_text" translatable="yes">Smooths text edges for cleaner rendering in GTK applications.</property>
+                                 <property name="visible">True</property>
+                                 <property name="can_focus">True</property>
+                                 <property name="receives_default">False</property>
+@@ -1493,6 +1513,7 @@
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="label" translatable="yes">&lt;b&gt;Antialiasing&lt;/b&gt;</property>
++                        <property name="tooltip_text" translatable="yes">General switch for text antialiasing in GTK font rendering.</property>
+                         <property name="use_markup">True</property>
+                       </object>
+                     </child>
+@@ -1521,6 +1542,7 @@
+                             <child>
+                               <object class="GtkCheckButton" id="enable_hinting">
+                                 <property name="label" translatable="yes">Enable hinting</property>
++                                <property name="tooltip_text" translatable="yes">Aligns glyph shapes to pixel grid for better readability on low DPI displays.</property>
+                                 <property name="visible">True</property>
+                                 <property name="can_focus">True</property>
+                                 <property name="receives_default">False</property>
+@@ -1537,16 +1559,18 @@
+                               <object class="GtkHBox" id="hbox9">
+                                 <property name="visible">True</property>
+                                 <property name="can_focus">False</property>
++                                <property name="spacing">12</property>
+                                 <child>
+                                   <object class="GtkLabel" id="label31">
+                                     <property name="visible">True</property>
+                                     <property name="can_focus">False</property>
+                                     <property name="xalign">0</property>
+                                     <property name="label" translatable="yes">Hinting style: </property>
++                                    <property name="tooltip_text" translatable="yes">Controls how strongly glyphs are snapped to pixel grid.</property>
+                                   </object>
+                                   <packing>
+-                                    <property name="expand">True</property>
+-                                    <property name="fill">True</property>
++                                    <property name="expand">False</property>
++                                    <property name="fill">False</property>
+                                     <property name="position">0</property>
+                                   </packing>
+                                 </child>
+@@ -1554,6 +1578,8 @@
+                                   <object class="GtkComboBox" id="hinting_style">
+                                     <property name="visible">True</property>
+                                     <property name="can_focus">False</property>
++                                    <property name="width_request">220</property>
++                                    <property name="tooltip_text" translatable="yes">Select hinting strength: none, slight, medium, or full.</property>
+                                     <property name="model">hinting_style_store</property>
+                                     <child>
+                                       <object class="GtkCellRendererText" id="cellrenderertext4"/>
+@@ -1584,6 +1610,7 @@
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="label" translatable="yes">&lt;b&gt;Hinting&lt;/b&gt;</property>
++                        <property name="tooltip_text" translatable="yes">Hinting options for GTK font rendering.</property>
+                         <property name="use_markup">True</property>
+                       </object>
+                     </child>
+@@ -1609,16 +1636,18 @@
+                           <object class="GtkHBox" id="hbox10">
+                             <property name="visible">True</property>
+                             <property name="can_focus">False</property>
++                            <property name="spacing">12</property>
+                             <child>
+                               <object class="GtkLabel" id="label34">
+                                 <property name="visible">True</property>
+                                 <property name="can_focus">False</property>
+                                 <property name="xalign">0</property>
+                                 <property name="label" translatable="yes">Sub-pixel geometry: </property>
++                                <property name="tooltip_text" translatable="yes">Matches text rendering with your display sub-pixel order.</property>
+                               </object>
+                               <packing>
+-                                <property name="expand">True</property>
+-                                <property name="fill">True</property>
++                                <property name="expand">False</property>
++                                <property name="fill">False</property>
+                                 <property name="position">0</property>
+                               </packing>
+                             </child>
+@@ -1626,6 +1655,8 @@
+                               <object class="GtkComboBox" id="font_rgba">
+                                 <property name="visible">True</property>
+                                 <property name="can_focus">False</property>
++                                <property name="width_request">220</property>
++                                <property name="tooltip_text" translatable="yes">Choose sub-pixel order: RGB, BGR, VRGB, VBGR, or none.</property>
+                                 <property name="model">font_rgba_store</property>
+                                 <child>
+                                   <object class="GtkCellRendererText" id="cellrenderertext10"/>
+@@ -1649,6 +1680,7 @@
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="label" translatable="yes">&lt;b&gt;Sub-pixel geometry&lt;/b&gt;</property>
++                        <property name="tooltip_text" translatable="yes">Sub-pixel rendering options for LCD text clarity.</property>
+                         <property name="use_markup">True</property>
+                       </object>
+                     </child>

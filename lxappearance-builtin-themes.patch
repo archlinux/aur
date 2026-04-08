@@ -1,0 +1,29 @@
+From 402f1a9d0bb9b98df7eefe5fe7e2b880d90fffe1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Wed, 22 Oct 2025 22:21:19 +0200
+Subject: [PATCH] Add builtin GTK3 themes to the list
+
+GTK3 has some internal themes that was not listed on the widget theme
+selection dialog.
+---
+ src/widget-theme.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/widget-theme.c b/src/widget-theme.c
+index 728e79e..01a6b2f 100644
+--- a/src/widget-theme.c
++++ b/src/widget-theme.c
+@@ -74,6 +74,13 @@ static void load_themes()
+     GtkTreeIter sel_it = {0};
+     GtkTreeSelection* tree_sel;
+ 
++#if GTK_CHECK_VERSION(3, 0, 0)
++    /* add built-in themes */
++    themes = g_slist_append(themes, g_strdup("Adwaita"));
++    themes = g_slist_append(themes, g_strdup("HighContrast"));
++    themes = g_slist_append(themes, g_strdup("HighContrastInverse"));
++#endif
++
+     /* load from userdata theme dir first */
+     dir = g_build_filename(g_get_user_data_dir(), "themes", NULL);
+     themes = load_themes_in_dir(dir, themes);

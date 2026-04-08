@@ -1,0 +1,23 @@
+From 305bf2801a56acad229fbc276ffdff90ab498549 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sun, 18 Jan 2026 00:00:18 +0100
+Subject: [PATCH] Drop environment exclusions
+
+Allow launching in any desktop environment.
+---
+ data/lxappearance.desktop.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/data/lxappearance.desktop.in b/data/lxappearance.desktop.in
+index 54fc0a2..f2a8f22 100644
+--- a/data/lxappearance.desktop.in
++++ b/data/lxappearance.desktop.in
+@@ -6,6 +6,6 @@ _Comment=Customizes look and feel of your desktop and applications
+ _Keywords=windows;preferences;settings;theme;style;appearance;
+ Icon=preferences-desktop-theme
+ Exec=lxappearance
+-NotShowIn=GNOME;KDE;XFCE;MATE;
++NotShowIn=
+ StartupNotify=true
+-Categories=GTK;Settings;DesktopSettings;X-LXDE-Settings;
++Categories=GTK;Settings;DesktopSettings;

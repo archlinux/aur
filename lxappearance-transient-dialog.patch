@@ -1,0 +1,22 @@
+From fcafbe91061d38e03b251c57d1af4c036a5fa757 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Wed, 22 Oct 2025 20:48:27 +0200
+Subject: [PATCH] Make the about dialog transient for the main window
+
+This ensures that it's attached to it.
+---
+ src/lxappearance.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/lxappearance.c b/src/lxappearance.c
+index 3f677ab..f705f61 100644
+--- a/src/lxappearance.c
++++ b/src/lxappearance.c
+@@ -556,6 +556,7 @@ static void on_dlg_response(GtkDialog* dlg, int res, gpointer user_data)
+             if(gtk_builder_add_from_file(b, PACKAGE_UI_DIR "/about.ui", NULL))
+             {
+                 GtkWidget* dlg = GTK_WIDGET(gtk_builder_get_object(b, "dlg"));
++                gtk_window_set_transient_for(GTK_WINDOW(dlg), GTK_WINDOW(app.dlg));
+                 gtk_dialog_run(GTK_DIALOG(dlg));
+                 gtk_widget_destroy(dlg);
+             }

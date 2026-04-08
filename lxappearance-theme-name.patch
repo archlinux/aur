@@ -1,0 +1,32 @@
+From 74b4acdec360d4e0606dc643b24efa2664f20c7e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Wed, 22 Oct 2025 22:18:42 +0200
+Subject: [PATCH] Read icon theme name even if it's hidden
+
+Without this, the display name became NULL for the cursor theme if the
+corresponding icon theme is hidden.
+---
+ src/icon-theme.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/src/icon-theme.c b/src/icon-theme.c
+index cda5c72..7b597f5 100644
+--- a/src/icon-theme.c
++++ b/src/icon-theme.c
+@@ -83,13 +83,12 @@ void load_icon_themes_from_dir(const char* base_dir, const char* theme_dir, GKey
+ 
+                 if(g_key_file_load_from_file(kf, index_theme, 0, NULL))
+                 {
++                    theme->disp_name = g_key_file_get_locale_string(kf, "Icon Theme", "Name", NULL, NULL);
++                    theme->comment = g_key_file_get_locale_string(kf, "Icon Theme", "Comment", NULL, NULL);
++
+                     /* skip hidden ones */
+                     if(!g_key_file_get_boolean(kf, "Icon Theme", "Hidden", NULL))
+                     {
+-                        theme->disp_name = g_key_file_get_locale_string(kf, "Icon Theme", "Name", NULL, NULL);
+-                        /* test if this is a icon theme or it's a cursor theme */
+-                        theme->comment = g_key_file_get_locale_string(kf, "Icon Theme", "Comment", NULL, NULL);
+-
+                         /* icon theme must have this key, so it has icons if it has this key */
+                         theme->has_icon = g_key_file_has_key(kf, "Icon Theme", "Directories", NULL);
+                     }

@@ -1,0 +1,146 @@
+diff --git a/src/lxappearance.c b/src/lxappearance.c
+index f705f61..c5a09b1 100644
+--- a/src/lxappearance.c
++++ b/src/lxappearance.c
+@@ -385,6 +385,8 @@ static void lxappearance_save_gtkrc()
+     GKeyFile *content = g_key_file_new();
+     char* file_path = g_build_filename(g_get_user_config_dir(), "gtk-3.0", NULL);
+     char* file_path_settings = g_build_filename(file_path, "settings.ini", NULL);
++    char* file_path4 = g_build_filename(g_get_user_config_dir(), "gtk-4.0", NULL);
++    char* file_path_settings4 = g_build_filename(file_path4, "settings.ini", NULL);
+ 
+     if (!g_file_test(file_path, G_FILE_TEST_IS_DIR))
+     {
+@@ -456,16 +458,30 @@ static void lxappearance_save_gtkrc()
+ 
+ #if GLIB_CHECK_VERSION(2, 40, 0)
+     g_key_file_save_to_file(content, file_path_settings, NULL);
++    g_message("Saved GTK settings: %s", file_path_settings);
++    if (!g_file_test(file_path4, G_FILE_TEST_IS_DIR))
++        g_mkdir_with_parents(file_path4, 0755);
++    g_key_file_save_to_file(content, file_path_settings4, NULL);
++    g_message("Saved GTK settings: %s", file_path_settings4);
+ #else
+     char *contents;
+     gsize s;
+ 
+     contents = g_key_file_to_data(content, &s, NULL);
+     if (contents)
++    {
+         g_file_set_contents(file_path_settings, contents, s, NULL);
++        g_message("Saved GTK settings: %s", file_path_settings);
++        if (!g_file_test(file_path4, G_FILE_TEST_IS_DIR))
++            g_mkdir_with_parents(file_path4, 0755);
++        g_file_set_contents(file_path_settings4, contents, s, NULL);
++        g_message("Saved GTK settings: %s", file_path_settings4);
++    }
+     g_free(contents);
+ #endif
+ 
++    g_free(file_path_settings4);
++    g_free(file_path4);
+     g_free(file_path_settings);
+     g_key_file_free(content);
+ 
+@@ -535,6 +551,92 @@ static void lxappearance_save_lxsession()
+     g_free(user_config_file);
+ }
+ 
++static void sync_gsettings_interface()
++{
++    char *quoted, *command;
++    gboolean ok = FALSE;
++
++    if (!g_find_program_in_path("gsettings"))
++    {
++        g_message("Skipping gsettings sync: gsettings not found");
++        return;
++    }
++
++    if (app.widget_theme && *app.widget_theme)
++    {
++        quoted = g_shell_quote(app.widget_theme);
++        command = g_strdup_printf("gsettings set org.gnome.desktop.interface gtk-theme %s", quoted);
++        g_spawn_command_line_sync(command, NULL, NULL, NULL, NULL);
++        ok = TRUE;
++        g_free(command);
++        g_free(quoted);
++    }
++
++    if (app.icon_theme && *app.icon_theme)
++    {
++        quoted = g_shell_quote(app.icon_theme);
++        command = g_strdup_printf("gsettings set org.gnome.desktop.interface icon-theme %s", quoted);
++        g_spawn_command_line_sync(command, NULL, NULL, NULL, NULL);
++        ok = TRUE;
++        g_free(command);
++        g_free(quoted);
++    }
++
++    if (app.cursor_theme && *app.cursor_theme)
++    {
++        quoted = g_shell_quote(app.cursor_theme);
++        command = g_strdup_printf("gsettings set org.gnome.desktop.interface cursor-theme %s", quoted);
++        g_spawn_command_line_sync(command, NULL, NULL, NULL, NULL);
++        ok = TRUE;
++        g_free(command);
++        g_free(quoted);
++    }
++
++    if (app.default_font && *app.default_font)
++    {
++        quoted = g_shell_quote(app.default_font);
++        command = g_strdup_printf("gsettings set org.gnome.desktop.interface font-name %s", quoted);
++        g_spawn_command_line_sync(command, NULL, NULL, NULL, NULL);
++        ok = TRUE;
++        g_free(command);
++        g_free(quoted);
++    }
++
++    command = g_strdup_printf("gsettings set org.gnome.desktop.interface cursor-size %d", app.cursor_theme_size);
++    g_spawn_command_line_sync(command, NULL, NULL, NULL, NULL);
++    g_free(command);
++    ok = TRUE;
++
++    if (ok)
++        g_message("Applied appearance values to gsettings");
++}
++
++static void ensure_user_autostart_sync()
++{
++    char *autostart_dir;
++    char *desktop_path;
++    const char *desktop_content =
++        "[Desktop Entry]\n"
++        "Type=Application\n"
++        "Name=Synchronize GTK Appearance\n"
++        "Comment=Sync GTK appearance values to gsettings\n"
++        "Exec=/usr/bin/lxappearance-wlr-sync-gsettings\n"
++        "OnlyShowIn=labwc;\n"
++        "NoDisplay=true\n"
++        "X-GNOME-Autostart-enabled=true\n";
++
++    autostart_dir = g_build_filename(g_get_user_config_dir(), "autostart", NULL);
++    if (!g_file_test(autostart_dir, G_FILE_TEST_IS_DIR))
++        g_mkdir_with_parents(autostart_dir, 0755);
++
++    desktop_path = g_build_filename(autostart_dir, "lxappearance-wlr-sync-gsettings.desktop", NULL);
++    g_file_set_contents(desktop_path, desktop_content, -1, NULL);
++    g_message("Ensured autostart entry: %s", desktop_path);
++
++    g_free(desktop_path);
++    g_free(autostart_dir);
++}
++
+ static void on_dlg_response(GtkDialog* dlg, int res, gpointer user_data)
+ {
+     switch(res)
+@@ -544,6 +646,8 @@ static void on_dlg_response(GtkDialog* dlg, int res, gpointer user_data)
+         if(app.use_lxsession)
+             lxappearance_save_lxsession();
+         lxappearance_save_gtkrc();
++        ensure_user_autostart_sync();
++        sync_gsettings_interface();
+ 
+         reload_all_programs();
+ 

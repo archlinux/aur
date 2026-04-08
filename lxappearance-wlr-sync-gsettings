@@ -1,0 +1,35 @@
+#!/bin/sh
+
+set -eu
+
+if ! command -v gsettings >/dev/null 2>&1; then
+  exit 0
+fi
+
+schema="org.gnome.desktop.interface"
+config="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
+
+if [ ! -f "$config" ]; then
+  exit 0
+fi
+
+read_setting() {
+  key="$1"
+  sed -n "s/^[[:space:]]*${key}[[:space:]]*=[[:space:]]*//p" "$config" | head -n1
+}
+
+gtk_theme="$(read_setting gtk-theme-name || true)"
+icon_theme="$(read_setting gtk-icon-theme-name || true)"
+cursor_theme="$(read_setting gtk-cursor-theme-name || true)"
+font_name="$(read_setting gtk-font-name || true)"
+cursor_size="$(read_setting gtk-cursor-theme-size || true)"
+
+[ -n "${gtk_theme}" ] && gsettings set "$schema" gtk-theme "$gtk_theme" >/dev/null 2>&1 || true
+[ -n "${icon_theme}" ] && gsettings set "$schema" icon-theme "$icon_theme" >/dev/null 2>&1 || true
+[ -n "${cursor_theme}" ] && gsettings set "$schema" cursor-theme "$cursor_theme" >/dev/null 2>&1 || true
+[ -n "${font_name}" ] && gsettings set "$schema" font-name "$font_name" >/dev/null 2>&1 || true
+
+case "${cursor_size}" in
+  ''|*[!0-9]*) ;;
+  *) gsettings set "$schema" cursor-size "$cursor_size" >/dev/null 2>&1 || true ;;
+esac

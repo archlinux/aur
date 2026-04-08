@@ -1,0 +1,56 @@
+--- a/po/ru.po
++++ b/po/ru.po
+@@ -49,7 +49,6 @@
+ "Andriy Grytsenko <andrej@rep.kiev.ua>"
+ 
+ #: ../data/ui/lxappearance.glade.h:1
+-#, fuzzy
+ #| msgid "Customize Look and Feel"
+ msgctxt "Title"
+ msgid "Customize Look and Feel"
+@@ -278,6 +277,45 @@
+ #: ../data/ui/lxappearance.glade.h:55
+ msgid "Other"
+ msgstr "Другие"
++
++msgid "Preview area for selected GTK widget theme."
++msgstr "Область предпросмотра выбранной GTK-темы виджетов."
++
++msgid "Select a GTK widget theme from the list."
++msgstr "Выберите GTK-тему виджетов из списка."
++
++msgid "Default interface font used by GTK applications."
++msgstr "Шрифт интерфейса по умолчанию для GTK-приложений."
++
++msgid "Choose font family and size for GTK interface text."
++msgstr "Выберите семейство и размер шрифта текста интерфейса GTK."
++
++msgid "Smooths text edges for cleaner rendering in GTK applications."
++msgstr "Сглаживает края текста для более чистого отображения в GTK-приложениях."
++
++msgid "General switch for text antialiasing in GTK font rendering."
++msgstr "Общий переключатель сглаживания текста при рендеринге шрифтов GTK."
++
++msgid "Aligns glyph shapes to pixel grid for better readability on low DPI displays."
++msgstr "Выравнивает формы символов по пиксельной сетке для лучшей читаемости на дисплеях с низким DPI."
++
++msgid "Controls how strongly glyphs are snapped to pixel grid."
++msgstr "Определяет, насколько сильно символы привязываются к пиксельной сетке."
++
++msgid "Select hinting strength: none, slight, medium, or full."
++msgstr "Выберите силу хинтования: нет, слабое, среднее или полное."
++
++msgid "Hinting options for GTK font rendering."
++msgstr "Параметры хинтования для рендеринга шрифтов GTK."
++
++msgid "Matches text rendering with your display sub-pixel order."
++msgstr "Согласует рендеринг текста с порядком субпикселей вашего дисплея."
++
++msgid "Choose sub-pixel order: RGB, BGR, VRGB, VBGR, or none."
++msgstr "Выберите порядок субпикселей: RGB, BGR, VRGB, VBGR или без него."
++
++msgid "Sub-pixel rendering options for LCD text clarity."
++msgstr "Параметры субпиксельного рендеринга для четкости текста на LCD."
+ 
+ #: ../data/ui/lxappearance.glade.h:56
+ #, fuzzy

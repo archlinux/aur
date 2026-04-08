@@ -1,0 +1,55 @@
+diff --git a/src/lxappearance.c b/src/lxappearance.c
+index c5a09b1..bc1a163 100644
+--- a/src/lxappearance.c
++++ b/src/lxappearance.c
+@@ -672,6 +672,34 @@ static void on_dlg_response(GtkDialog* dlg, int res, gpointer user_data)
+     }
+ }
+ 
++static void remove_wayland_legacy_pages(GtkBuilder* b)
++{
++    GtkWidget *notebook;
++    GtkWidget *color_page;
++    GtkWidget *other_page;
++    int page;
++
++    notebook = GTK_WIDGET(gtk_builder_get_object(b, "notebook"));
++    if (!notebook)
++        return;
++
++    color_page = GTK_WIDGET(gtk_builder_get_object(b, "color_page"));
++    if (color_page)
++    {
++        page = gtk_notebook_page_num(GTK_NOTEBOOK(notebook), color_page);
++        if (page >= 0)
++            gtk_notebook_remove_page(GTK_NOTEBOOK(notebook), page);
++    }
++
++    other_page = GTK_WIDGET(gtk_builder_get_object(b, "vbox1"));
++    if (other_page)
++    {
++        page = gtk_notebook_page_num(GTK_NOTEBOOK(notebook), other_page);
++        if (page >= 0)
++            gtk_notebook_remove_page(GTK_NOTEBOOK(notebook), page);
++    }
++}
++
+ static void settings_init()
+ {
+     GtkSettings* settings = gtk_settings_get_default();
+@@ -799,13 +827,13 @@ int main(int argc, char** argv)
+     settings_init();
+ 
+     app.dlg = GTK_WIDGET(gtk_builder_get_object(b, "dlg"));
++    gtk_window_set_default_size(GTK_WINDOW(app.dlg), 700, -1);
+ 
+     widget_theme_init(b);
+-    color_scheme_init(b);
+     icon_theme_init(b);
+     cursor_theme_init(b);
+     font_init(b);
+-    other_init(b);
++    remove_wayland_legacy_pages(b);
+     /* the page for window manager plugins */
+     app.wm_page = GTK_WIDGET(gtk_builder_get_object(b, "wm_page"));
+ 
