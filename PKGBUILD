@@ -2,7 +2,7 @@
 # Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="crc"
-pkgver=2.58.0
+pkgver=2.60.0
 pkgrel=1
 pkgdesc="CRC is a tool to help you run containers. It manages local VMs to run a OpenShift 4.x cluster, Microshift or Podman optimized for testing and development purposes"
 arch=('x86_64')
@@ -21,11 +21,11 @@ makedepends=(
     'git'
     'go'
 )
-source=("$pkgname-$pkgver::git+$url.git#tag=v$pkgver")
-b2sums=('d01ded50c74ef7baeecdb28cf2d1e523c5f4dd391bdec834430312c54aca39e8114689882c33c4c626f76d01011c54ebabd9687f087af3cbf41faada36c741ce')
+source=("$pkgname::git+$url.git#tag=v$pkgver")
+b2sums=('2944486c052d89a9870c1f81e9865fd80b3e917ea8c42d021459c0d7025756b649df6244d5edb5a395abcf222ecdd9367761531aa546c779cf7f5c999136819b')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
