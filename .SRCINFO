@@ -1,17 +1,16 @@
 pkgbase = python-proglog
 	pkgdesc = Log and progress bar manager for console, notebooks, web...
 	pkgver = 0.1.12
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/Edinburgh-Genome-Foundry/proglog
 	arch = any
-	license = unknown
+	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python
 	depends = python-tqdm
-	source = https://files.pythonhosted.org/packages/source/p/proglog/proglog-0.1.12.tar.gz
+	source = python-proglog-0.1.12.tar.gz::https://files.pythonhosted.org/packages/source/p/proglog/proglog-0.1.12.tar.gz
 	sha256sums = 361ee074721c277b89b75c061336cb8c5f287c92b043efa562ccf7866cda931c
 
 pkgname = python-proglog
-	depends = python
-	depends = python-tqdm
