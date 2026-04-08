@@ -1,8 +1,8 @@
 # Maintainer: Alexander Aleschenko <alex.aleschenko@gmail.com>
 
 pkgname=emu80-git
-_commit=f5aa2ca
-_pkgver=4.0.557
+_commit=539fb15
+_pkgver=4.0.559
 pkgver=${_pkgver}.${_commit}
 pkgrel=1
 pkgdesc="Emulator for bunch of Soviet PCs. Git version"
