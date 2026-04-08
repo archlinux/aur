@@ -15,14 +15,11 @@ yellow="${bold}$(tput setaf 3)"
 post_install() {
     note "The launcher is called 'google-earth-pro'."
     note "If you are using Wayland, modify the Exec line in the .desktop file:
-        Exec=env -u QT_QPA_PLATFORMTHEME -u QT_QPA_PLATFORM /opt/google/earth/pro/google-earth-pro %f"
+        Exec=env -u QT_QPA_PLATFORMTHEME -u QT_QPA_PLATFORM /opt/google/earth/pro/google-earth-pro %%f"
     note "If experiencing graphical corruption:
         $ rm -r ~/.googleearth/Cache/"
 }
 
 post_upgrade() {    
-    note "If you are using Wayland, modify the Exec line in the .desktop file:
-        Exec=env -u QT_QPA_PLATFORMTHEME -u QT_QPA_PLATFORM /opt/google/earth/pro/google-earth-pro %f"
-    note "If experiencing graphical corruption:
-        $ rm -r ~/.googleearth/Cache/"
+    post_install
 }

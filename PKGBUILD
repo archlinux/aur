@@ -6,7 +6,7 @@
 # $ curl -sL https://dl.google.com/linux/earth/deb/dists/stable/main/binary-amd64/Packages | grep -Pom1 'Version: \K[^-]*'
 
 pkgname=google-earth-pro
-pkgver=7.3.7.1094
+pkgver=7.3.7.1155
 pkgrel=1
 pkgdesc="3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)"
 arch=(x86_64)
@@ -38,7 +38,7 @@ source=(
     'Google-Privacy-Policy.html'::'https://www.google.com/intl/ALL/policies/privacy/index.html'
 )
 noextract=("google-earth-pro-stable_${pkgver}-r0_amd64.deb")
-b2sums=('0cb2f91c5a4d4d7e5a9d88c795d5166bd335eafb95d8af516a887a31446ffae9b58839e8a578f0f00122c59b7611460d433acea2ef9058505a5f71901accf479'
+b2sums=('1e68a1a902d3e435b0b88b8dd87f8f10425baaf676c5668949e293b16d6aad19f836b8365b65855e039d5fe458f81fd068c6d52eb1f0cdea5c2b8ec5d210f39f'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -83,4 +83,7 @@ package() {
 
     # Remove SGID
     chmod -R 'a-s' "${pkgdir}"
+
+    # Remove vendored libraries
+    rm "$pkgdir"/$_installdir/libxml2.so.2
 }
