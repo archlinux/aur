@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=openshot-git
-pkgver=3.3.0.r127.g4de6e593c
+pkgver=3.5.0.r84.gc13495c9a
 pkgrel=1
 pkgdesc='An award-winning free and open-source video editor (git version)'
 arch=('any')
@@ -45,7 +45,7 @@ build() {
 
 check() {
     cd openshot-qt
-    xvfb-run -n 71 python src/tests/query_tests.py
+    xvfb-run -n 71 python src/tests/test_query.py
 }
 
 package() {
