@@ -6,7 +6,7 @@
 # TuxSpirit <tuxspirit@archlinux.fr>      # Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=10.9.0
+pkgver=11.0.0
 pkgrel=1
 pkgdesc='PeaZip file manager and archiver (binary release)'
 url='https://github.com/peazip/PeaZip'
@@ -18,7 +18,7 @@ options=('!emptydirs')
 provides=("pea" "peazip")
 conflicts=("pea" "peazip")
 source=("$url/releases/download/$pkgver/peazip-$pkgver.LINUX.Qt6-1.x86_64.rpm")
-sha256sums=('3008e360fd302c52c6a0a7c8e2935a10941225c9058a3be6e32a158f38fcc7af')
+sha256sums=('adbf66509afd8f4c550fadcaa8deb7dd11e68e5969398ddb30144bc027d7a8c9')
 
 prepare() {
 # Cleanup
