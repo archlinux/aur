@@ -1,6 +1,6 @@
 pkgbase = latex-pdfpages
 	pkgdesc = Inclusion of external multi-page PDF documents in LATEX documents
-	pkgver = 0.6g
+	pkgver = 0.6h
 	pkgrel = 1
 	url = http://www.ctan.org/tex-archive/macros/latex/contrib/pdfpages
 	install = latex-pdfpages.install
@@ -9,7 +9,7 @@ pkgbase = latex-pdfpages
 	makedepends = unzip
 	depends = texlive-core
 	noextract = pdfpages.zip
-	source = pdfpages-0.6g.zip::http://mirror.ctan.org/macros/latex/contrib/pdfpages.zip
-	sha256sums = 450645ad269559af9f3e2052c2e04413009fd8349c56814e90d4e73bd10bd519
+	source = pdfpages-0.6h.zip::http://mirror.ctan.org/macros/latex/contrib/pdfpages.zip
+	sha256sums = d3dc0cf8da81a64578e26a2cac5fcb4bc72346edf3513237555187daaf6a36da
 
 pkgname = latex-pdfpages
