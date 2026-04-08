@@ -15,7 +15,7 @@ source=(
   "kute.png::https://raw.githubusercontent.com/H33aven/kute/main/kute.png"
 )
 sha256sums=('f11fcbfce54a98479433c56378ca17da348c158d734acc0df675613fe42f4c66'
-            '2f320e4280083bb02d3d46b098d48d28d7c70c9805e534511f67b67284e8a267'
+            'e57da3bf9ff1ed0602ca3f048321128e619a2fd5f9cc45f7344a8aec90d376c9'
             'cff8a12ac9522adf676ac96f3586d9d85f007abb061281a66ea958a0e1347378')
 
 build() {
