@@ -1,7 +1,6 @@
 # Maintainer: Andersmmg <andersmmg at duck dot com>
-pkgname='python-hyprland-state'
-_module='hyprland-state'
-_src_folder='hyprland_state-0.2.0'
+pkgname=python-hyprland-state
+_module=${pkgname#python-}
 pkgver='0.2.0'
 pkgrel=1
 pkgdesc="Live state interface for Hyprland — options, animations, monitors, binds, and devices"
@@ -10,16 +9,15 @@ depends=('python' 'hyprland')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/b1/49/34ecbc053ef991a27dc279ca4cdac707cfe3dce4b80842fb8f0e5c919aca/hyprland_state-0.2.0.tar.gz")
-sha256sums=('2442a8099f1e70226f88a8beff79f7d564368873389a756b1abf12e18358d954')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('250ec6ff7434edb186ea12202fbc81fc8d5b9b835e8ba1ee353ac9c675165a78')
 
 build() {
-    cd "${srcdir}/${_src_folder}"
-    python -m build --wheel --no-isolation
+  cd "$_module-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-
-    cd "${srcdir}/${_src_folder}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+  cd "$_module-$pkgver"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }

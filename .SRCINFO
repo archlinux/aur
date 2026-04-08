@@ -10,7 +10,7 @@ pkgbase = python-hyprland-state
 	makedepends = python-wheel
 	depends = python
 	depends = hyprland
-	source = https://files.pythonhosted.org/packages/b1/49/34ecbc053ef991a27dc279ca4cdac707cfe3dce4b80842fb8f0e5c919aca/hyprland_state-0.2.0.tar.gz
-	sha256sums = 2442a8099f1e70226f88a8beff79f7d564368873389a756b1abf12e18358d954
+	source = python-hyprland-state-0.2.0.tar.gz::https://github.com/BlueManCZ/hyprland-state/archive/v0.2.0.tar.gz
+	sha256sums = 250ec6ff7434edb186ea12202fbc81fc8d5b9b835e8ba1ee353ac9c675165a78
 
 pkgname = python-hyprland-state
