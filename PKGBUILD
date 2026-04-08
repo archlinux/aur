@@ -10,7 +10,7 @@ _completion_checksums=(SKIP SKIP SKIP)
 # This PKGBUILD is not a full PKGBUILD
 # pkgname, pkgver, source, and sha1sums are to be generated
 pkgdesc='Summarize disk usage of the set of files, recursively for directories.'
-pkgrel=1
+pkgrel=2 # <-- this is a manual modification not part of the template
 arch=(x86_64)
 license=(Apache-2.0)
 url='https://github.com/KSXGitHub/parallel-disk-usage'
@@ -24,6 +24,36 @@ sha1sums=(
   SKIP                          # for the usage file
   SKIP                          # for the license file
 )
+
+prepare() {
+  if [[ -n $PDU_SKIP_PROVENANCE_VERIFY ]]; then
+    warning 'PDU_SKIP_PROVENANCE_VERIFY is set, skipping provenance verification.'
+    return 0
+  fi
+
+  if ! command -v gh > /dev/null 2>&1; then
+    warning 'GitHub CLI (gh) not found, skipping provenance verification.'
+    plain 'hint: install the github-cli package to enable cryptographic verification of release artifacts.'
+    return 0
+  fi
+
+  if ! gh auth status > /dev/null 2>&1; then
+    warning 'gh is not authenticated, skipping provenance verification.'
+    plain 'hint: run `gh auth login` (or set GH_TOKEN) to enable cryptographic verification of release artifacts.'
+    return 0
+  fi
+
+  msg2 'Verifying build provenance with gh attestation...'
+  local _repo='KSXGitHub/parallel-disk-usage'
+  local _file
+  for _file in "pdu-$_checksum" "completion.$pkgver.bash" "completion.$pkgver.fish" "completion.$pkgver.zsh"; do
+    if ! gh attestation verify --repo "$_repo" "$_file"; then
+      error 'Build provenance verification failed.'
+      plain 'hint: set PDU_SKIP_PROVENANCE_VERIFY=1 to skip verification for failures unrelated to artifact trust (e.g. transient network errors).'
+      return 1
+    fi
+  done
+}
 
 package() {
   install -Dm755 "pdu-$_checksum" "$pkgdir/usr/bin/pdu"
