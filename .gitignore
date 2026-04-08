@@ -2,5 +2,6 @@
 *.tar.zst
 *.gz
 *.zip
+elmerfem/
 aur_cache/
 aur_deps
