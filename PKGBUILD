@@ -52,12 +52,6 @@ prepare() {
 
 build() {
 	cd "${_name}"
-
-	export CFLAGS='-DGLOG_USE_GLOG_EXPORT'
-	export CCFLAGS='-DGLOG_USE_GLOG_EXPORT'
-	export NVCC_APPEND_FLAGS='-DGLOG_USE_GLOG_EXPORT'
-	export CXXFLAGS='-DGLOG_USE_GLOG_EXPORT'
-
 	python -m build --wheel --no-isolation
 }
 
