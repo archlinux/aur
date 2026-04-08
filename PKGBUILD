@@ -12,7 +12,7 @@ makedepends=('npm' 'imagemagick')
 source=(
   "kute-$pkgver.tar.gz::https://github.com/H33aven/kute/archive/v$pkgver.tar.gz"
   "kute.desktop"
-  "kute.png::https://raw.githubusercontent.com/H33aven/kute/main/FrvEENAaEAEWWFt.jpg"
+  "kute.png::https://raw.githubusercontent.com/H33aven/kute/main/kute.png"
 )
 sha256sums=('f11fcbfce54a98479433c56378ca17da348c158d734acc0df675613fe42f4c66'
             '2f320e4280083bb02d3d46b098d48d28d7c70c9805e534511f67b67284e8a267'
