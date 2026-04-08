@@ -1,7 +1,7 @@
 pkgbase = mdcx
 	pkgdesc = Movie metadata scraper
 	pkgver = 220250909
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sqzw-x/mdcx
 	arch = i686
 	arch = pentium4
@@ -12,7 +12,7 @@ pkgbase = mdcx
 	arch = aarch64
 	arch = riscv64
 	license = GPL-3.0-or-later
-	makedepends = python
+	makedepends = python313
 	makedepends = uv
 	depends = at-spi2-core
 	depends = cairo

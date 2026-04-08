@@ -2,7 +2,7 @@
 
 pkgname=mdcx
 pkgver=220250909
-pkgrel=1
+pkgrel=2
 pkgdesc="Movie metadata scraper"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/sqzw-x/${pkgname}"
@@ -30,7 +30,7 @@ depends=(
     "xcb-util-renderutil"
     "xcb-util-wm"
 )
-makedepends=("python" "uv")
+makedepends=("python313" "uv")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.png")
@@ -41,6 +41,7 @@ sha256sums=('3564556cab3347f7ea49a9d71b086deaade22e4a38bc890e45348a444fe6d46d'
 build() {
     cd "${pkgname}-${pkgver}"
     uv sync \
+        --python=/usr/bin/python3.13 \
         --frozen \
         --no-cache \
         --no-editable \
