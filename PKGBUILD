@@ -2,12 +2,12 @@
 
 pkgname=tmuzika
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal music player with ncurses UI and GStreamer backend"
 arch=('x86_64')
 url="https://github.com/ivanjeka/tmuzika.git"
 license=('GPL-3.0-or-later')
-depends=('gstreamer' 'glib2' 'ncurses')
+depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'glib2' 'ncurses')
 makedepends=('git' 'pkgconf')
 provides=('tmuzika')
 conflicts=('tmuzika')
