@@ -1,6 +1,6 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=wtp
-pkgver=2.8.0
+pkgver=2.10.3
 pkgrel=1
 pkgdesc="A powerful Git worktree CLI tool with automated setup, branch tracking, and smart navigation"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('go')
 source=("https://github.com/satococoa/wtp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7366d6a3554ac1d962896ec3c1c17e8cdcfe88fdccc0657148e174e8995af428')
+sha256sums=('cd3f0811214aa0544117bbf5a53646d083c7acc0ec118fd90ec3245c9b178f0a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
