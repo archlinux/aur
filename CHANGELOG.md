@@ -18,6 +18,26 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 📚 Documentation -->
 
+# [0.38.0] - 2026-04-02
+
+## 🚀 Features
+
+- **Add rover schema describe command - @dotdat PR #3091**
+
+## 🐛 Fixes
+
+- **Enable non-compose supergraph commands on Alpine - @SharkBaitDLS PR #3062**
+
+## 🛠 Maintenance
+
+- **Remove dependencies from rover npm package - @phryneas, @claude, @SharkBaitDLS PR #3136**
+  - This drops the dependencies `axios`, `axios-proxy-builder` and `console.table` and introduces `undici` as a dependency. It also pins `detect-libc` to a fixed version with no further dependencies.
+
+## 📚 Documentation
+
+- **Add documentation for the `rover install` command - PR #3022**
+  - New docs page at `docs/source/commands/install.mdx` covering installing Rover and plugins (`supergraph`, `router`, `apollo-mcp-server`) with `--plugin`, options (`--force`, `--elv2-license`), and navigation updates. The install command is now visible in `rover --help`.
+
 # [0.37.2] - 2025-12-19
 
 ## 🐛 Fixes
