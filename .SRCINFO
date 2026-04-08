@@ -1,14 +1,14 @@
 pkgbase = ninjarmm-ncplayer
 	pkgdesc = Fast, reliable, single-click remote access. Manage and control Windows, Mac, and Linux endpoints with one click from the NinjaOne console.
-	pkgver = 12.35.8100
+	pkgver = 13.35.8340
 	pkgrel = 1
 	url = https://www.ninjaone.com
 	arch = x86_64
 	arch = aarch64
 	license = custom
-	source_x86_64 = https://resources.ninjarmm.com/development/ninjacontrol/12.35.8100/ninjarmm-ncplayer-12.35.8100_x86_64.rpm
-	sha256sums_x86_64 = 3681ad3000e22f2c598478ea66f9495e5e0ada0a2c471ef92e07c68a4a3cd5b1
-	source_aarch64 = https://resources.ninjarmm.com/development/ninjacontrol/12.35.8100/ninjarmm-ncplayer-12.35.8100_aarch64.rpm
-	sha256sums_aarch64 = a91532e2c225033e1613c118284f9c255f2ba206bb18190f81abac3feaffb11b
+	source_x86_64 = https://resources.ninjarmm.com/development/ninjacontrol/13.35.8340/ninjarmm-ncplayer-13.35.8340_x86_64.rpm
+	sha256sums_x86_64 = 40cbcffeb1a64301d988114c9e7cfad11ac81115a0bbb1c4e05f9e1ecb67a0fc
+	source_aarch64 = https://resources.ninjarmm.com/development/ninjacontrol/13.35.8340/ninjarmm-ncplayer-13.35.8340_aarch64.rpm
+	sha256sums_aarch64 = fb012b72a7e536a49f5c7d40fbccee01fa45466b8498bb5149a4d9e26d075ced
 
 pkgname = ninjarmm-ncplayer
