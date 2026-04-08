@@ -283,7 +283,7 @@ package_libpipewire-ldac() {
     glibc
     gcc-libs
   )
-  provides=("libpipewire=${pkgver}" lib$_pwname.so)
+  provides=("libpipewire=${pkgver}" libpipewire-ldac lib$_pwname.so)
   conflicts=('libpipewire')
 
   mv lib/* "$pkgdir"
