@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-bin
-pkgver=3.7.1
+pkgver=3.7.2
 _electronversion=36
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter.(Prebuilt version.Use system-wide electron)"
@@ -24,8 +24,8 @@ source=(
 )
 sha256sums=('f009c52b4d8ceb103946d853f232d83d6de645765cc2d47d863cd05c4347db96'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('b80c7067a086bdbd45fc023b54c47d3f7c94d8b7eead5a1b1f1cfb3852761196')
-sha256sums_x86_64=('a759c849ca3779a59e6ecf426701fd429020ac2f50739b5b30143b1d6ee72eec')
+sha256sums_aarch64=('7dedbe3db653f5ab577f7f95f0afe4c4af6b00b4b6d65c6132fa249377950836')
+sha256sums_x86_64=('94f1e86d0c89ec51758c8dd845535c36a9525e27985e5882559dd0734e986f26')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
