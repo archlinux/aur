@@ -1,17 +1,16 @@
 pkgbase = vocechat-desktop-bin
 	pkgdesc = VoceChat desktop version.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 0.9.3
+	pkgrel = 1
 	url = https://github.com/Privoce/vocechat-desktop
 	arch = x86_64
 	license = MIT
-	makedepends = fuse2
 	depends = electron32
-	provides = vocechat-desktop=0.9.0
+	provides = vocechat-desktop=0.9.3
 	conflicts = vocechat-desktop
-	source = vocechat-desktop-0.9.0.AppImage::https://github.com/Privoce/vocechat-desktop/releases/download/v0.9.0/VoceChat-0.9.0.AppImage
+	source = vocechat-desktop-0.9.3-x86_64.AppImage::https://github.com/Privoce/vocechat-desktop/releases/download/v0.9.3/VoceChat-0.9.3.AppImage
 	source = vocechat-desktop.sh
-	sha256sums = 0d7819c434f428a1804b9bc985ddc2d88f36ef86e0f75fb9312367077d2f0283
+	sha256sums = b0943807fba0ee3bbf664e8e982344899051be62dbd07c0df9a5559b8fbd8c83
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = vocechat-desktop-bin
