@@ -1,9 +1,9 @@
 _create_latest_symlink() {
-  echo "Creating latest symlink for /opt/clang/21.1.3"
+  echo "Creating latest symlink for /opt/clang/22.1.3"
 
   cd /opt/clang
   rm -f latest
-  ln -fs 21.1.3 latest
+  ln -fs 22.1.3 latest
 }
 
 ## arg 1:  the new package version
