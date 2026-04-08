@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openshot-bin
 _pkgname=OpenShot
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="An award-winning free and open-source video editor,is dedicated to delivering high quality video editing and animation solutions to the world.(Prebuilt version)"
 arch=('x86_64')
@@ -16,11 +16,14 @@ depends=(
 optdepends=(
     'faac: for exporting audio using AAC'
 )
+options=(
+    '!strip'
+)
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4ab117270ee8dad8c9d12f57670430dd9fd62a44db5cedc1fa1b06d3aab54c63'
+sha256sums=('2ff7a2596e5246c395b08c40fd86d278c0cb45e4bf7ee9927423ba32f1f4d88d'
             '7d7504c70b21dc426b9e5eaba5836a3f904dcf74459faea60355af86c9259714')
 prepare() {
     sed -i -e "
