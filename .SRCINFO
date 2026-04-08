@@ -1,7 +1,7 @@
 pkgbase = matlab-support
 	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = R2025b+25.2.9.9999999
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.mathworks.com/products/matlab.html
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = matlab-support
 pkgname = matlab-support
 	pkgdesc = A high-level language for numerical computation and visualization (support)
 	depends = matlab-meta>=R2025b
+	depends = matlab-jre-common>=R2025b
 	depends = gnutls3.8.9
 	optdepends = matlab-meta-all: all runtime dependencies
 	optdepends = matlab-jre-meta: JRE runtime dependency
@@ -32,7 +33,7 @@ pkgname = matlab-support
 
 pkgname = matlab-gcc-support
 	pkgdesc = A high-level language for numerical computation and visualization (GCC, support)
-	depends = matlab-support>=1:R2025b+25.2.9.9999999-1
+	depends = matlab-support>=1:R2025b+25.2.9.9999999-2
 	depends = matlab-gcc-meta>=R2025b
 	provides = matlab-gcc=R2025b+25.2.9.9999999
 	provides = matlab-gcc-release=R2025b
@@ -43,7 +44,7 @@ pkgname = matlab-gcc-support
 
 pkgname = matlab-gcc-fortran-support
 	pkgdesc = A high-level language for numerical computation and visualization (GCC Fortran, support)
-	depends = matlab-support>=1:R2025b+25.2.9.9999999-1
+	depends = matlab-support>=1:R2025b+25.2.9.9999999-2
 	depends = matlab-gcc-fortran-meta>=R2025b
 	provides = matlab-gcc-fortran=R2025b+25.2.9.9999999
 	provides = matlab-gcc-fortran-release=R2025b
