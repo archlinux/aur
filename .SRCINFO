@@ -1,6 +1,6 @@
 pkgbase = hermes-agent
 	pkgdesc = Locally-run AI agent with tool use, web browsing, and automation
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/NousResearch/hermes-agent
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = hermes-agent
 	optdepends = python-pyaudio: CLI microphone input + audio playback
 	optdepends = python-mcp: Model Context Protocol support
 	optdepends = python-slack-sdk: Slack messaging
-	source = https://github.com/NousResearch/hermes-agent/archive/refs/tags/v2026.3.30.tar.gz
-	sha256sums = 6dab9c2773adec02a432847c42bd7285adaedbf189fdd11d1fb3f7b36e90b7de
+	source = https://github.com/NousResearch/hermes-agent/archive/refs/tags/v2026.4.3.tar.gz
+	sha256sums = 80033597933cd76e7604653219c36822b9aabe7644a4abc106e4e26abf14d9ea
 
 pkgname = hermes-agent

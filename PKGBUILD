@@ -1,7 +1,7 @@
 # Maintainer: Youcef <youcef.nafa@gmail.com>
 pkgname=hermes-agent
-pkgver=0.6.0
-_tagver=2026.3.30
+pkgver=0.7.0
+_tagver=2026.4.3
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
@@ -46,7 +46,7 @@ optdepends=(
   'python-slack-sdk: Slack messaging'
 )
 source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('6dab9c2773adec02a432847c42bd7285adaedbf189fdd11d1fb3f7b36e90b7de')
+sha256sums=('80033597933cd76e7604653219c36822b9aabe7644a4abc106e4e26abf14d9ea')
 validpgpkeys=()
 
 build() {
