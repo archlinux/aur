@@ -1,12 +1,12 @@
 pkgbase = datafetch
 	pkgdesc = Live system information dashboard for Linux terminals
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/KlodCripta/Datafetch
 	arch = any
 	license = MIT
 	depends = bash
-	source = datafetch-2.2.tar.gz::https://github.com/KlodCripta/Datafetch/archive/refs/tags/v2.2.tar.gz
+	source = datafetch-2.3.tar.gz::https://github.com/KlodCripta/Datafetch/archive/refs/tags/v2.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = datafetch
