@@ -1,0 +1,24 @@
+pkgbase = huawei-modem-calculator-git
+	pkgdesc = Huawei modem unlock code calculator with the USB serial interface
+	pkgver = r37.f007c01
+	pkgrel = 1
+	url = https://github.com/bigbigmdm/Huawei_modem_calculator_v2
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt5-tools
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = qt5-base
+	depends = qt5-serialport
+	depends = openssl
+	provides = huawei-modem-calculator
+	conflicts = huawei-modem-calculator
+	source = huawei-modem-calculator-git::git+https://github.com/bigbigmdm/Huawei_modem_calculator_v2.git
+	sha256sums = SKIP
+
+pkgname = huawei-modem-calculator-git
