@@ -1,6 +1,6 @@
 pkgbase = lazycat-terminal
 	pkgdesc = A high-performance terminal emulator with tabs, splits and transparent background
-	pkgver = 1.1.9
+	pkgver = 1.1.10
 	pkgrel = 1
 	url = https://github.com/manateelazycat/lazycat-terminal
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = lazycat-terminal
 	depends = vte4
 	depends = gdk-pixbuf2
 	depends = fontconfig
-	source = lazycat-terminal-1.1.9.tar.gz::https://github.com/manateelazycat/lazycat-terminal/archive/v1.1.9.tar.gz
-	sha256sums = c9ca6557a96fca4295a5bbd959cdcbd1d9d4c50fece2a8dc454663f4c36f55f4
+	source = lazycat-terminal-1.1.10.tar.gz::https://github.com/manateelazycat/lazycat-terminal/archive/v1.1.10.tar.gz
+	sha256sums = 9fcdeb3873220f67a1d39cb66c4649f362812c86b2342cf4b7da29fe964bddd1
 
 pkgname = lazycat-terminal
