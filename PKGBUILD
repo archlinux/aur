@@ -1,7 +1,7 @@
 # Maintainer: Caio Augusto <augustocaio663 at gmail dot com>
 
 pkgname=obs-studio-kepler-legacy-bin
-_bundlever='30.2.3-kepler.3'
+_bundlever='30.2.3-kepler.4'
 pkgver=${_bundlever//-/_}
 pkgrel=1
 pkgdesc='Legacy OBS Studio + FFmpeg bundle for NVIDIA Kepler GPUs on Arch Linux'
@@ -43,10 +43,10 @@ provides=('obs-studio-kepler-legacy')
 conflicts=('obs-studio-kepler-legacy')
 install='obs-studio-kepler-legacy.install'
 source=(
-  "$pkgname-$_bundlever.tar.gz::https://github.com/cainhooow/obs-studio-kepler-legacy/releases/download/v30.2.3-kepler.3/obs-studio-kepler-legacy-30.2.3-kepler.3.tar.gz"
+  "$pkgname-$_bundlever.tar.gz::https://github.com/cainhooow/obs-studio-kepler-legacy/releases/download/v30.2.3-kepler.4/obs-studio-kepler-legacy-30.2.3-kepler.4.tar.gz"
 )
 sha256sums=(
-  'f60e28c259955e43b915edb212447ea0bbf86fb910753731f5765a041ac87e19'
+  '71d3fa40498d1c53c50f02272a8817418784e0b3ab30e6fd334859840f586931'
 )
 
 package() {
