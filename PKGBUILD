@@ -5,10 +5,10 @@
 pkgbase=linux-fsync-nobara-bin
 pkgname=${pkgbase}
 pkgver=6.19.11
-pkgrel=1
-build_id=10290949
+pkgrel=2
+build_id=10299007
 fedora=43
-extras=200.nobara.fc${fedora}
+extras=201.nobara.fc${fedora}
 printf -v l_build_id %08d%s ${build_id}
 pkgdesc='The Linux kernel and modules of Nobara Project - Prebuilt version'
 url="https://nobaraproject.org"
@@ -30,9 +30,9 @@ validpgpkeys=(
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('f7c0cd4843fa4fb595b7874f6f78d1400b638eeaa3e669355634cf3ceb7f7da9'
-            '17a104ee5c7c59699e97878cc6bf05e520d0c90fa8596376e90b72962ffc5537'
-            '1c14f8cba081e3a0dec4418d6a4fe8888da1ef3fdb88636353eb7c865b15f86b')
+sha256sums=('0042fa41c89af03c07ac030f67d646e7bb7f4afc68f51b58b2390bbec06806c6'
+            '26b43ba5788e821685c9728bf111d4effe47386b9dcee11305e7fdf5ede3618a'
+            '9e72dae00eadc72b672bc431ffb23fc1067a8aa6e9dfabe0d84bdaa0fab4a7c1')
 
 package() {
 
