@@ -1,0 +1,224 @@
+--- a/po/ru.po
++++ b/po/ru.po
+@@ -122,15 +122,15 @@
+ 
+ #: ../src/obconf.glade.h:5
+ msgid "Font for active window title:"
+-msgstr "Шрифт для заголовка активного окна:"
++msgstr "Шрифт активного заголовка:"
+ 
+ #: ../src/obconf.glade.h:6
+ msgid "Font for inactive window title:"
+-msgstr "Шрифт для заголовка неактивного окна:"
++msgstr "Шрифт неактивного заголовка:"
+ 
+ #: ../src/obconf.glade.h:7
+ msgid "_Button order:"
+-msgstr "_Порядок кнопок:"
++msgstr "_Кнопки:"
+ 
+ #: ../src/obconf.glade.h:8
+ msgid ""
+@@ -150,19 +150,19 @@
+ 
+ #: ../src/obconf.glade.h:15
+ msgid "Title Bar"
+-msgstr "Строка заголовка"
++msgstr "Рамка окон labwc"
+ 
+ #: ../src/obconf.glade.h:16
+ msgid "Font for menu header:"
+-msgstr "Шрифт для заголовка меню:"
++msgstr "Шрифт заголовка меню:"
+ 
+ #: ../src/obconf.glade.h:17
+ msgid "Font for menu Item:"
+-msgstr "Шрифт для элемента меню:"
++msgstr "Шрифт пункта меню:"
+ 
+ #: ../src/obconf.glade.h:18
+ msgid "Font for on-screen display:"
+-msgstr "Шрифт для отображения:"
++msgstr "Шрифт OSD:"
+ 
+ #: ../src/obconf.glade.h:19
+ msgid "Font for inactive on-screen display:"
+@@ -174,67 +174,67 @@
+ 
+ #: ../src/obconf.glade.h:21
+ msgid "Number of workspaces:"
+-msgstr "Количество рабочих столов:"
++msgstr "Рабочих столов:"
+ 
+ #: ../src/obconf.glade.h:22
+ msgid "Window placement:"
+-msgstr "Политика размещения окон:"
++msgstr "Размещение:"
+ 
+ #: ../src/obconf.glade.h:23
+ msgid "Window switcher OSD style:"
+-msgstr "Стиль OSD переключателя окон:"
++msgstr "Стиль OSD:"
+ 
+ #: ../src/obconf.glade.h:24
+ msgid "Resize indicator:"
+-msgstr "Индикатор размера:"
++msgstr "Индикатор:"
+ 
+ #: ../src/obconf.glade.h:25
+ msgid "Workspace name prefix:"
+-msgstr "Префикс рабочих столов:"
++msgstr "Префикс столов:"
+ 
+ #: ../src/obconf.glade.h:26
+ msgid "Initial workspace:"
+-msgstr "Начальный рабочий стол:"
++msgstr "Стартовый стол:"
+ 
+ #: ../src/obconf.glade.h:27
+ msgid "Workspace OSD popup time (ms):"
+-msgstr "Время показа OSD рабочего стола (мс):"
++msgstr "Время OSD (мс):"
+ 
+ #: ../src/obconf.glade.h:28
+ msgid "Cascade offset (x,y):"
+-msgstr "Смещение каскада (x,y):"
++msgstr "Смещение каскада:"
+ 
+ #: ../src/obconf.glade.h:29
+ msgid "Show window switcher OSD"
+-msgstr "Показывать OSD переключателя окон"
++msgstr "Показывать OSD"
+ 
+ #: ../src/obconf.glade.h:30
+ msgid "Window switcher OSD output:"
+-msgstr "Экран вывода OSD переключателя окон:"
++msgstr "Экран OSD:"
+ 
+ #: ../src/obconf.glade.h:31
+ msgid "Show switcher preview"
+-msgstr "Показывать предпросмотр переключателя"
++msgstr "Показывать предпросмотр"
+ 
+ #: ../src/obconf.glade.h:32
+ msgid "Show switcher outlines"
+-msgstr "Показывать контуры переключателя"
++msgstr "Показывать контуры"
+ 
+ #: ../src/obconf.glade.h:33
+ msgid "Draw contents while resizing"
+-msgstr "Рисовать содержимое при изменении размера"
++msgstr "Рисовать содержимое"
+ 
+ #: ../src/obconf.glade.h:34
+ msgid "Show window title in titlebar"
+-msgstr "Показывать заголовок окна в строке заголовка"
++msgstr "Показывать заголовок"
+ 
+ #: ../src/obconf.glade.h:35
+ msgid "Keep border when decorations are disabled"
+-msgstr "Сохранять рамку при отключенных декорациях"
++msgstr "Сохранять рамку"
+ 
+ #: ../src/obconf.glade.h:36
+ msgid "Maximized decoration:"
+-msgstr "Декорации максимизированного окна:"
++msgstr "Макс. декорации:"
+ 
+ #: ../src/appearance.c:86
+ msgid "Fonts"
+@@ -242,7 +242,7 @@
+ 
+ #: ../src/appearance.c:94
+ msgid "Workspaces"
+-msgstr "Рабочие столы"
++msgstr "Столы"
+ 
+ #: ../src/appearance.c:104
+ msgid "Placement"
+@@ -254,7 +254,7 @@
+ 
+ #: ../src/appearance.c:119
+ msgid "Resize"
+-msgstr "Изменение размера"
++msgstr "Размер"
+ 
+ #: ../src/appearance.c:124
+ msgid "Decoration"
+@@ -264,6 +264,76 @@
+ msgid "Reset Misc to defaults"
+ msgstr "Сбросить «Разное» к значениям по умолчанию"
+ 
++msgid "Font used for active window title text."
++msgstr "Шрифт текста заголовка активного окна."
++
++msgid "Font used for inactive window title text."
++msgstr "Шрифт текста заголовка неактивного окна."
++
++msgid "Order of titlebar buttons. Example: NIMC."
++msgstr "Порядок кнопок рамки окна, например: NIMC."
++
++msgid "Show or hide window title text in the titlebar."
++msgstr "Показывать или скрывать текст заголовка окна."
++
++msgid "Keep a thin border when full window decorations are disabled."
++msgstr "Оставлять тонкую рамку при отключенных декорациях."
++
++msgid "Choose decoration mode for maximized windows."
++msgstr "Режим декораций для максимизированных окон."
++
++msgid "Font used for menu headers."
++msgstr "Шрифт заголовков меню."
++
++msgid "Font used for menu items."
++msgstr "Шрифт пунктов меню."
++
++msgid "Font used by on-screen display popups."
++msgstr "Шрифт всплывающих OSD."
++
++msgid "Total number of virtual workspaces."
++msgstr "Общее число виртуальных рабочих столов."
++
++msgid "Prefix used in generated workspace names."
++msgstr "Префикс для автоматически создаваемых имен столов."
++
++msgid "Workspace shown on session start."
++msgstr "Рабочий стол, открываемый при старте сессии."
++
++msgid "Duration of workspace OSD popup in milliseconds."
++msgstr "Длительность показа OSD стола в миллисекундах."
++
++msgid "Policy for placing newly opened windows."
++msgstr "Правило размещения новых окон."
++
++msgid "X/Y offset between windows in cascade placement mode."
++msgstr "Смещение по X/Y между окнами в режиме каскада."
++
++msgid "Visual style for Alt-Tab switcher OSD."
++msgstr "Внешний вид OSD переключателя Alt-Tab."
++
++msgid "Enable on-screen window switcher popup."
++msgstr "Включить всплывающее OSD переключателя окон."
++
++msgid "Monitor selection for switcher OSD output."
++msgstr "Выбор монитора для вывода OSD переключателя."
++
++msgid "Show live window previews in switcher."
++msgstr "Показывать живой предпросмотр окон в переключателе."
++
++msgid "Show window outlines in switcher mode."
++msgstr "Показывать контуры окон в режиме переключателя."
++
++msgid "When to show resize OSD indicator."
++msgstr "Когда показывать индикатор OSD изменения размера."
++
++msgid "Redraw window content continuously while resizing."
++msgstr "Непрерывно перерисовывать содержимое окна при изменении размера."
++
++#, c-format
++msgid "Config key: %s"
++msgstr "Ключ конфига: %s"
++
+ #, c-format
+ #~ msgid "Unable to move to directory \"%s\": %s"
+ #~ msgstr "Невозможно переместить директорию \"%s\": %s"

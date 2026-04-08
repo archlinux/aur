@@ -1,0 +1,2704 @@
+diff --git a/Makefile.am b/Makefile.am
+index 22f7501..2ec76c1 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -16,7 +16,6 @@ module_LTLIBRARIES = src/obconf.la
+ moduledir = $(libdir)/lxappearance/plugins
+ 
+ src_obconf_la_CPPFLAGS = \
+-	$(OPENBOX_CFLAGS) \
+ 	$(GTK_CFLAGS) \
+ 	$(LXAPPEARANCE_CFLAGS) \
+ 	$(GMODULE_CFLAGS) \
+@@ -30,11 +29,11 @@ src_obconf_la_CPPFLAGS = \
+ 	-DG_LOG_DOMAIN=\"Obconf\"
+ 
+ src_obconf_la_LIBADD = \
+-	$(OPENBOX_LIBS) \
+ 	$(GTK_LIBS) \
+ 	$(LXAPPEARANCE_LIBS) \
+ 	$(GMODULE_LIBS) \
+ 	$(GDK_PIXBUF_LIBS) \
++	$(XML_LIBS) \
+ 	$(LIBINTL)
+ 
+ src_obconf_la_LDFLAGS = \
+@@ -48,8 +47,6 @@ src_obconf_la_SOURCES = \
+ 	src/main.h \
+ 	src/appearance.c \
+ 	src/appearance.h \
+-	src/preview.c \
+-	src/preview.h \
+ 	src/preview_update.c \
+ 	src/preview_update.h \
+ 	src/theme.c \
+diff --git a/configure.ac b/configure.ac
+index 5cdbcd8..f990544 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -85,9 +85,9 @@ AC_HELP_STRING([--enable-gtk3],[enable to use gtk-3.0 instead of gtk-2.0]),
+   *) AC_MSG_ERROR([bad value "${enableval}" for --enable-gtk3, use "yes" (default) or "no".]) ;;
+ esac],[])
+ 
+-PKG_CHECK_MODULES(OPENBOX, [obrender-3.5 >= 3.5 obt-3.5 >= 3.5])
+-AC_SUBST(OPENBOX_CFLAGS)
+-AC_SUBST(OPENBOX_LIBS)
++PKG_CHECK_MODULES(XML, [libxml-2.0])
++AC_SUBST(XML_CFLAGS)
++AC_SUBST(XML_LIBS)
+ 
+ if test "x$enable_gtk3" = "xyes" ; then
+   CFLAGS="$CFLAGS -DENABLE_GTK3 -Wno-deprecated-declarations"
+diff --git a/po/ru.po b/po/ru.po
+index 4b6f47d..8a583f6 100644
+--- a/po/ru.po
++++ b/po/ru.po
+@@ -31,7 +31,7 @@ msgstr ""
+ #: ../src/main.c:214
+ msgid "Failed to load an rc.xml. Openbox is probably not installed correctly."
+ msgstr ""
+-"Ошибка загрузки rc.xml. Возможно у вас не установлен корректно Openbox."
++"Ошибка загрузки rc.xml. Возможно, labwc установлен некорректно."
+ 
+ #: ../src/main.c:227
+ #, c-format
+@@ -41,18 +41,18 @@ msgid ""
+ "\n"
+ "Message: %s"
+ msgstr ""
+-"Ошибка обработки файла конфигурации Openbox. У вас неверный файл "
++"Ошибка обработки файла конфигурации labwc. У вас неверный файл "
+ "конфигурации.\n"
+ "\n"
+ "Сообщение: %s"
+ 
+ #: ../src/theme.c:112 ../src/theme.c:144
+ msgid "Choose an Openbox theme"
+-msgstr "Выбор темы Openbox"
++msgstr "Выбор темы labwc/Openbox"
+ 
+ #: ../src/theme.c:121
+ msgid "Openbox theme archives"
+-msgstr "Архивирование темы Openbox"
++msgstr "Архивы тем labwc/Openbox"
+ 
+ #: ../src/archive.c:49
+ #, c-format
+@@ -135,7 +135,6 @@ msgstr "_Порядок кнопок:"
+ #: ../src/obconf.glade.h:8
+ msgid ""
+ "N: Window icon\n"
+-"L: Window label (Title)\n"
+ "I: Iconify (Minimize)\n"
+ "M: Maximize\n"
+ "C: Close\n"
+@@ -143,7 +142,6 @@ msgid ""
+ "D: Omnipresent (On all desktops)"
+ msgstr ""
+ "N: Значок окна\n"
+-"L: Метка окна (Заголовок)\n"
+ "I: В значок (Свернуть)\n"
+ "M: Развернуть\n"
+ "C: Закрыть\n"
+@@ -174,6 +172,98 @@ msgstr "Шрифт для неактивного экранного отобра
+ msgid "Misc."
+ msgstr "Разное"
+ 
++#: ../src/obconf.glade.h:21
++msgid "Number of workspaces:"
++msgstr "Количество рабочих столов:"
++
++#: ../src/obconf.glade.h:22
++msgid "Window placement:"
++msgstr "Политика размещения окон:"
++
++#: ../src/obconf.glade.h:23
++msgid "Window switcher OSD style:"
++msgstr "Стиль OSD переключателя окон:"
++
++#: ../src/obconf.glade.h:24
++msgid "Resize indicator:"
++msgstr "Индикатор размера:"
++
++#: ../src/obconf.glade.h:25
++msgid "Workspace name prefix:"
++msgstr "Префикс рабочих столов:"
++
++#: ../src/obconf.glade.h:26
++msgid "Initial workspace:"
++msgstr "Начальный рабочий стол:"
++
++#: ../src/obconf.glade.h:27
++msgid "Workspace OSD popup time (ms):"
++msgstr "Время показа OSD рабочего стола (мс):"
++
++#: ../src/obconf.glade.h:28
++msgid "Cascade offset (x,y):"
++msgstr "Смещение каскада (x,y):"
++
++#: ../src/obconf.glade.h:29
++msgid "Show window switcher OSD"
++msgstr "Показывать OSD переключателя окон"
++
++#: ../src/obconf.glade.h:30
++msgid "Window switcher OSD output:"
++msgstr "Экран вывода OSD переключателя окон:"
++
++#: ../src/obconf.glade.h:31
++msgid "Show switcher preview"
++msgstr "Показывать предпросмотр переключателя"
++
++#: ../src/obconf.glade.h:32
++msgid "Show switcher outlines"
++msgstr "Показывать контуры переключателя"
++
++#: ../src/obconf.glade.h:33
++msgid "Draw contents while resizing"
++msgstr "Рисовать содержимое при изменении размера"
++
++#: ../src/obconf.glade.h:34
++msgid "Show window title in titlebar"
++msgstr "Показывать заголовок окна в строке заголовка"
++
++#: ../src/obconf.glade.h:35
++msgid "Keep border when decorations are disabled"
++msgstr "Сохранять рамку при отключенных декорациях"
++
++#: ../src/obconf.glade.h:36
++msgid "Maximized decoration:"
++msgstr "Декорации максимизированного окна:"
++
++#: ../src/appearance.c:86
++msgid "Fonts"
++msgstr "Шрифты"
++
++#: ../src/appearance.c:94
++msgid "Workspaces"
++msgstr "Рабочие столы"
++
++#: ../src/appearance.c:104
++msgid "Placement"
++msgstr "Размещение"
++
++#: ../src/appearance.c:110
++msgid "Switcher"
++msgstr "Переключатель"
++
++#: ../src/appearance.c:119
++msgid "Resize"
++msgstr "Изменение размера"
++
++#: ../src/appearance.c:124
++msgid "Decoration"
++msgstr "Оформление labwc"
++
++#: ../src/appearance.c:92
++msgid "Reset Misc to defaults"
++msgstr "Сбросить «Разное» к значениям по умолчанию"
++
+ #, c-format
+ #~ msgid "Unable to move to directory \"%s\": %s"
+ #~ msgstr "Невозможно переместить директорию \"%s\": %s"
+diff --git a/src/appearance.c b/src/appearance.c
+index a9b139d..9a76df6 100644
+--- a/src/appearance.c
++++ b/src/appearance.c
+@@ -28,11 +28,238 @@
+ #include "preview_update.h"
+ #include "appearance.h"
+ #include <ctype.h> /* toupper */
++#include <string.h>
++#include <glib/gi18n.h>
+ 
+-static gboolean mapping = FALSE;
++static gboolean mapping = TRUE;
++static gboolean misc_tabs_built = FALSE;
+ 
+-static RrFont *read_font(GtkFontButton *w, const gchar *place);
+-static RrFont *write_font(GtkFontButton *w, const gchar *place);
++static gchar *read_font(GtkFontButton *w, const gchar *place);
++static gchar *write_font(GtkFontButton *w, const gchar *place);
++static void set_font_default(GtkWidget *w, const gchar *place, const gchar *preview_name);
++void on_misc_reset_defaults_clicked(GtkButton *w, gpointer data);
++
++static void set_rcxml_tip(const gchar *widget_id, const gchar *key)
++{
++    GtkWidget *w = get_widget(widget_id);
++    gchar *tip;
++
++    if (!w || !key)
++        return;
++
++    tip = g_strdup_printf("labwc: %s", key);
++    gtk_widget_set_tooltip_text(w, tip);
++    g_free(tip);
++}
++
++static void move_widget_to_box(const gchar *id, GtkWidget *box)
++{
++    GtkWidget *w = get_widget(id);
++    GtkWidget *parent;
++
++    if (!w || !box)
++        return;
++
++    parent = gtk_widget_get_parent(w);
++    if (parent)
++        gtk_container_remove(GTK_CONTAINER(parent), w);
++
++    gtk_box_pack_start(GTK_BOX(box), w, FALSE, FALSE, 3);
++}
++
++static GtkWidget* new_misc_page(GtkWidget *notebook, const gchar *title)
++{
++    GtkWidget *page = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
++    GtkWidget *label = gtk_label_new(title);
++
++    gtk_notebook_append_page(GTK_NOTEBOOK(notebook), page, label);
++    gtk_widget_show(page);
++    gtk_widget_show(label);
++
++    return page;
++}
++
++static void build_misc_tabs(void)
++{
++    GtkWidget *misc_vbox = get_widget("vbox2");
++    GtkWidget *parent;
++    GtkWidget *notebook;
++    GtkWidget *page;
++    GtkWidget *actions;
++    GtkWidget *reset_btn;
++
++    if (misc_tabs_built || !misc_vbox)
++        return;
++
++    parent = gtk_widget_get_parent(misc_vbox);
++    if (!parent)
++        return;
++
++    notebook = gtk_notebook_new();
++    gtk_notebook_set_scrollable(GTK_NOTEBOOK(notebook), TRUE);
++    gtk_box_pack_start(GTK_BOX(parent), notebook, TRUE, TRUE, 0);
++    gtk_widget_show(notebook);
++
++    actions = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
++    gtk_widget_set_halign(actions, GTK_ALIGN_END);
++    gtk_box_pack_start(GTK_BOX(parent), actions, FALSE, FALSE, 6);
++    gtk_widget_show(actions);
++
++    reset_btn = gtk_button_new_with_label(_("Reset Misc to defaults"));
++    g_signal_connect(reset_btn, "clicked", G_CALLBACK(on_misc_reset_defaults_clicked), NULL);
++    gtk_box_pack_end(GTK_BOX(actions), reset_btn, FALSE, FALSE, 0);
++    gtk_widget_show(reset_btn);
++
++    page = new_misc_page(notebook, _("Fonts"));
++    move_widget_to_box("label17", page);
++    move_widget_to_box("font_menu_header", page);
++    move_widget_to_box("label18", page);
++    move_widget_to_box("font_menu_item", page);
++    move_widget_to_box("label19", page);
++    move_widget_to_box("font_active_display", page);
++
++    page = new_misc_page(notebook, _("Workspaces"));
++    move_widget_to_box("label_workspace_prefix", page);
++    move_widget_to_box("workspace_prefix", page);
++    move_widget_to_box("label_desktops_number", page);
++    move_widget_to_box("desktops_number", page);
++    move_widget_to_box("label_desktops_initial", page);
++    move_widget_to_box("desktops_initial", page);
++    move_widget_to_box("label_desktops_popup_time", page);
++    move_widget_to_box("desktops_popup_time", page);
++
++    page = new_misc_page(notebook, _("Placement"));
++    move_widget_to_box("label_placement_policy", page);
++    move_widget_to_box("placement_policy", page);
++    move_widget_to_box("label_cascade_offset", page);
++    move_widget_to_box("hbox_cascade_offset", page);
++
++    page = new_misc_page(notebook, _("Switcher"));
++    move_widget_to_box("label_osd_style", page);
++    move_widget_to_box("switcher_osd_style", page);
++    move_widget_to_box("switcher_osd_show", page);
++    move_widget_to_box("label_switcher_osd_output", page);
++    move_widget_to_box("switcher_osd_output", page);
++    move_widget_to_box("switcher_preview", page);
++    move_widget_to_box("switcher_outlines", page);
++
++    page = new_misc_page(notebook, _("Resize"));
++    move_widget_to_box("label_resize_popup_show", page);
++    move_widget_to_box("resize_popup_show", page);
++    move_widget_to_box("resize_draw_contents", page);
++
++    page = new_misc_page(notebook, _("Decoration"));
++    move_widget_to_box("titlebar_show_title", page);
++    move_widget_to_box("theme_keep_border", page);
++    move_widget_to_box("label_maximized_decoration", page);
++    move_widget_to_box("maximized_decoration", page);
++
++    gtk_widget_hide(misc_vbox);
++    misc_tabs_built = TRUE;
++}
++
++static gchar* layout_to_legacy_letters(const gchar *layout)
++{
++    gchar **parts;
++    gchar **it;
++    GString *out;
++
++    if (!layout || !*layout)
++        return g_strdup("NIMC");
++
++    if (!strchr(layout, ':') && !strchr(layout, ','))
++        return g_strdup(layout);
++
++    out = g_string_new(NULL);
++    parts = g_strsplit_set(layout, ":,", -1);
++    for (it = parts; *it; ++it)
++    {
++        char *token = g_strstrip(*it);
++
++        if (!*token)
++            continue;
++        if (g_strcmp0(token, "icon") == 0)
++            g_string_append_c(out, 'N');
++        else if (g_strcmp0(token, "iconify") == 0)
++            g_string_append_c(out, 'I');
++        else if (g_strcmp0(token, "max") == 0)
++            g_string_append_c(out, 'M');
++        else if (g_strcmp0(token, "close") == 0)
++            g_string_append_c(out, 'C');
++        else if (g_strcmp0(token, "shade") == 0)
++            g_string_append_c(out, 'S');
++        else if (g_strcmp0(token, "desk") == 0)
++            g_string_append_c(out, 'D');
++    }
++    g_strfreev(parts);
++
++    if (out->len == 0)
++        g_string_assign(out, "NIMC");
++
++    return g_string_free(out, FALSE);
++}
++
++static gchar* layout_to_labwc(const gchar *letters)
++{
++    const gchar *it;
++    gboolean icon = FALSE, iconify = FALSE, max = FALSE;
++    gboolean close = FALSE, shade = FALSE, desk = FALSE;
++    GString *left = g_string_new(NULL);
++    GString *right = g_string_new(NULL);
++
++    for (it = letters; it && *it; ++it)
++    {
++        switch (*it)
++        {
++        case 'N':
++            icon = TRUE;
++            break;
++        case 'I':
++            iconify = TRUE;
++            break;
++        case 'M':
++            max = TRUE;
++            break;
++        case 'C':
++            close = TRUE;
++            break;
++        case 'S':
++            shade = TRUE;
++            break;
++        case 'D':
++            desk = TRUE;
++            break;
++        default:
++            break;
++        }
++    }
++
++    if (icon)
++        g_string_append(left, "icon,");
++    if (iconify)
++        g_string_append(right, "iconify,");
++    if (max)
++        g_string_append(right, "max,");
++    if (close)
++        g_string_append(right, "close,");
++    if (shade)
++        g_string_append(right, "shade,");
++    if (desk)
++        g_string_append(right, "desk,");
++
++    if (right->len == 0)
++        g_string_assign(right, "iconify,max,close");
++    else if (right->str[right->len - 1] == ',')
++        g_string_truncate(right, right->len - 1);
++
++    if (left->len > 0 && left->str[left->len - 1] == ',')
++        g_string_truncate(left, left->len - 1);
++
++    g_string_append_c(left, ':');
++    g_string_append(left, right->str);
++    g_string_free(right, TRUE);
++    return g_string_free(left, FALSE);
++}
+ 
+ /* Forwarded */
+ 
+@@ -43,6 +270,22 @@ void on_font_menu_header_font_set(GtkFontButton *w, gpointer data);
+ void on_font_menu_item_font_set(GtkFontButton *w, gpointer data);
+ void on_font_active_display_font_set(GtkFontButton *w, gpointer data);
+ void on_font_inactive_display_font_set(GtkFontButton *w, gpointer data);
++void on_desktops_number_value_changed(GtkSpinButton *w, gpointer data);
++void on_desktops_initial_value_changed(GtkSpinButton *w, gpointer data);
++void on_desktops_popup_time_value_changed(GtkSpinButton *w, gpointer data);
++void on_placement_policy_changed(GtkComboBox *w, gpointer data);
++void on_cascade_offset_value_changed(GtkSpinButton *w, gpointer data);
++void on_switcher_osd_style_changed(GtkComboBox *w, gpointer data);
++void on_switcher_osd_show_toggled(GtkToggleButton *w, gpointer data);
++void on_switcher_osd_output_changed(GtkComboBox *w, gpointer data);
++void on_switcher_preview_toggled(GtkToggleButton *w, gpointer data);
++void on_switcher_outlines_toggled(GtkToggleButton *w, gpointer data);
++void on_resize_popup_show_changed(GtkComboBox *w, gpointer data);
++void on_resize_draw_contents_toggled(GtkToggleButton *w, gpointer data);
++void on_workspace_prefix_changed(GtkEditable *w, gpointer data);
++void on_titlebar_show_title_toggled(GtkToggleButton *w, gpointer data);
++void on_theme_keep_border_toggled(GtkToggleButton *w, gpointer data);
++void on_maximized_decoration_changed(GtkComboBox *w, gpointer data);
+ 
+ /* End of forwarded */
+ 
+@@ -50,9 +293,11 @@ void appearance_setup_tab()
+ {
+     GtkWidget *w;
+     gchar *layout;
+-    RrFont *f;
++    gchar *value;
++    gchar *f;
+ 
+     mapping = TRUE;
++    build_misc_tabs();
+ /*
+     w = get_widget("window_border");
+     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w),
+@@ -63,7 +308,12 @@ void appearance_setup_tab()
+                                  tree_get_bool("theme/animateIconify", TRUE));
+ */
+     w = get_widget("title_layout");
+-    layout = tree_get_string("theme/titleLayout", "NLIMC");
++    layout = tree_get_string("theme/titlebar/layout", "icon:iconify,max,close");
++    {
++        gchar *legacy = layout_to_legacy_letters(layout);
++        g_free(layout);
++        layout = legacy;
++    }
+     gtk_entry_set_text(GTK_ENTRY(w), layout);
+     preview_update_set_title_layout(layout);
+     g_free(layout);
+@@ -71,29 +321,178 @@ void appearance_setup_tab()
+     w = get_widget("font_active");
+     f = read_font(GTK_FONT_BUTTON(w), "ActiveWindow");
+     preview_update_set_active_font(f);
++    g_free(f);
+ 
+     w = get_widget("font_inactive");
+     f = read_font(GTK_FONT_BUTTON(w), "InactiveWindow");
+     preview_update_set_inactive_font(f);
++    g_free(f);
+ 
+     w = get_widget("font_menu_header");
+     f = read_font(GTK_FONT_BUTTON(w), "MenuHeader");
+     preview_update_set_menu_header_font(f);
++    g_free(f);
+ 
+     w = get_widget("font_menu_item");
+     f = read_font(GTK_FONT_BUTTON(w), "MenuItem");
+     preview_update_set_menu_item_font(f);
++    g_free(f);
+ 
+     w = get_widget("font_active_display");
+-    if (!(f = read_font(GTK_FONT_BUTTON(w), "ActiveOnScreenDisplay"))) {
+-        f = read_font(GTK_FONT_BUTTON(w), "OnScreenDisplay");
+-        tree_delete_node("theme/font:place=OnScreenDisplay");
+-    }
++    f = read_font(GTK_FONT_BUTTON(w), "OnScreenDisplay");
+     preview_update_set_osd_active_font(f);
++    g_free(f);
++
++    w = get_widget("desktops_number");
++    gtk_spin_button_set_range(GTK_SPIN_BUTTON(w), 1, 20);
++    gtk_spin_button_set_increments(GTK_SPIN_BUTTON(w), 1, 5);
++    {
++        gint desktops_number = 1;
++        gint tmp = 0;
++
++        if (tree_try_get_desktops_number(&tmp) && tmp > 0)
++            desktops_number = tmp;
++        else if (tree_try_get_int("desktops/number", &tmp) && tmp > 0)
++            desktops_number = tmp;
++        else if (tree_try_get_int("core/desktops/number", &tmp) && tmp > 0)
++            desktops_number = tmp;
++        else if (tree_try_get_attr_int("desktops", "number", &tmp) && tmp > 0)
++            desktops_number = tmp;
++        else if (tree_try_get_attr_int("core/desktops", "number", &tmp) && tmp > 0)
++            desktops_number = tmp;
++
++        gtk_spin_button_set_value(GTK_SPIN_BUTTON(w), desktops_number);
++    }
++
++    w = get_widget("desktops_initial");
++    gtk_spin_button_set_range(GTK_SPIN_BUTTON(w), 1, 20);
++    gtk_spin_button_set_increments(GTK_SPIN_BUTTON(w), 1, 5);
++    gtk_spin_button_set_value(GTK_SPIN_BUTTON(w), tree_get_int("desktops/initial", 1));
++
++    w = get_widget("desktops_popup_time");
++    gtk_spin_button_set_range(GTK_SPIN_BUTTON(w), 0, 10000);
++    gtk_spin_button_set_increments(GTK_SPIN_BUTTON(w), 50, 250);
++    gtk_spin_button_set_value(GTK_SPIN_BUTTON(w), tree_get_int("desktops/popupTime", 1000));
++
++    w = get_widget("placement_policy");
++    value = tree_get_string("placement/policy", "cascade");
++    if (!g_strcmp0(value, "automatic"))
++        gtk_combo_box_set_active(GTK_COMBO_BOX(w), 1);
++    else if (!g_strcmp0(value, "center"))
++        gtk_combo_box_set_active(GTK_COMBO_BOX(w), 2);
++    else if (!g_strcmp0(value, "cursor"))
++        gtk_combo_box_set_active(GTK_COMBO_BOX(w), 3);
++    else
++        gtk_combo_box_set_active(GTK_COMBO_BOX(w), 0);
++    g_free(value);
++
++    w = get_widget("cascade_offset_x");
++    gtk_spin_button_set_range(GTK_SPIN_BUTTON(w), 0, 1000);
++    gtk_spin_button_set_value(GTK_SPIN_BUTTON(w), tree_get_int("placement/cascadeOffset/x", 40));
++
++    w = get_widget("cascade_offset_y");
++    gtk_spin_button_set_range(GTK_SPIN_BUTTON(w), 0, 1000);
++    gtk_spin_button_set_value(GTK_SPIN_BUTTON(w), tree_get_int("placement/cascadeOffset/y", 30));
++
++    w = get_widget("switcher_osd_style");
++    value = tree_get_attr_string("windowSwitcher/osd", "style", NULL);
++    if (!value || !*value) {
++        g_free(value);
++        value = tree_get_string("windowSwitcher/osd/style", "classic");
++    }
++    if (!g_strcmp0(value, "thumbnail"))
++        gtk_combo_box_set_active(GTK_COMBO_BOX(w), 1);
++    else
++        gtk_combo_box_set_active(GTK_COMBO_BOX(w), 0);
++    g_free(value);
++
++    w = get_widget("switcher_osd_show");
++    {
++        gboolean show = TRUE;
++        if (!tree_try_get_attr_bool("windowSwitcher/osd", "show", &show))
++            show = tree_get_bool("windowSwitcher/osd/show", TRUE);
++        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), show);
++    }
++
++    w = get_widget("switcher_osd_output");
++    value = tree_get_attr_string("windowSwitcher/osd", "output", NULL);
++    if (!value || !*value) {
++        g_free(value);
++        value = tree_get_string("windowSwitcher/osd/output", "all");
++    }
++    if (!g_strcmp0(value, "focused"))
++        gtk_combo_box_set_active(GTK_COMBO_BOX(w), 1);
++    else if (!g_strcmp0(value, "cursor"))
++        gtk_combo_box_set_active(GTK_COMBO_BOX(w), 2);
++    else
++        gtk_combo_box_set_active(GTK_COMBO_BOX(w), 0);
++    g_free(value);
++
++    w = get_widget("switcher_preview");
++    {
++        gboolean preview = TRUE;
++        if (!tree_try_get_attr_bool("windowSwitcher", "preview", &preview))
++            preview = tree_get_bool("windowSwitcher/preview", TRUE);
++        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), preview);
++    }
++
++    w = get_widget("switcher_outlines");
++    {
++        gboolean outlines = TRUE;
++        if (!tree_try_get_attr_bool("windowSwitcher", "outlines", &outlines))
++            outlines = tree_get_bool("windowSwitcher/outlines", TRUE);
++        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), outlines);
++    }
+ 
+-    w = get_widget("font_inactive_display");
+-    f = read_font(GTK_FONT_BUTTON(w), "InactiveOnScreenDisplay");
+-    preview_update_set_osd_inactive_font(f);
++    w = get_widget("resize_popup_show");
++    value = tree_get_string("resize/popupShow", "Never");
++    if (!g_strcmp0(value, "Always"))
++        gtk_combo_box_set_active(GTK_COMBO_BOX(w), 1);
++    else if (!g_strcmp0(value, "Nonpixel"))
++        gtk_combo_box_set_active(GTK_COMBO_BOX(w), 2);
++    else
++        gtk_combo_box_set_active(GTK_COMBO_BOX(w), 0);
++    g_free(value);
++
++    w = get_widget("resize_draw_contents");
++    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), tree_get_bool("resize/drawContents", TRUE));
++
++    w = get_widget("titlebar_show_title");
++    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), tree_get_bool("theme/titlebar/showTitle", TRUE));
++
++    w = get_widget("theme_keep_border");
++    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), tree_get_bool("theme/keepBorder", TRUE));
++
++    w = get_widget("maximized_decoration");
++    value = tree_get_string("theme/maximizedDecoration", "titlebar");
++    if (!g_strcmp0(value, "none"))
++        gtk_combo_box_set_active(GTK_COMBO_BOX(w), 1);
++    else
++        gtk_combo_box_set_active(GTK_COMBO_BOX(w), 0);
++    g_free(value);
++
++    w = get_widget("workspace_prefix");
++    value = tree_get_string("desktops/prefix", "Workspace");
++    gtk_entry_set_text(GTK_ENTRY(w), value);
++    g_free(value);
++
++    set_rcxml_tip("workspace_prefix", "desktops/prefix");
++    set_rcxml_tip("desktops_number", "desktops/number (or desktops@number)");
++    set_rcxml_tip("desktops_initial", "desktops/initial");
++    set_rcxml_tip("desktops_popup_time", "desktops/popupTime");
++    set_rcxml_tip("placement_policy", "placement/policy");
++    set_rcxml_tip("cascade_offset_x", "placement/cascadeOffset/x");
++    set_rcxml_tip("cascade_offset_y", "placement/cascadeOffset/y");
++    set_rcxml_tip("switcher_osd_style", "windowSwitcher/osd@style");
++    set_rcxml_tip("switcher_osd_show", "windowSwitcher/osd@show");
++    set_rcxml_tip("switcher_osd_output", "windowSwitcher/osd@output");
++    set_rcxml_tip("switcher_preview", "windowSwitcher@preview");
++    set_rcxml_tip("switcher_outlines", "windowSwitcher@outlines");
++    set_rcxml_tip("resize_popup_show", "resize/popupShow");
++    set_rcxml_tip("resize_draw_contents", "resize/drawContents");
++    set_rcxml_tip("titlebar_show_title", "theme/titlebar/showTitle");
++    set_rcxml_tip("theme_keep_border", "theme/keepBorder");
++    set_rcxml_tip("maximized_decoration", "theme/maximizedDecoration");
+ 
+     mapping = FALSE;
+ }
+@@ -101,14 +500,15 @@ void appearance_setup_tab()
+ void on_title_layout_changed(GtkEntry *w, gpointer data)
+ {
+     gchar *layout;
++    gchar *layout_labwc;
+     gchar *it, *it2;
+-    gboolean n, d, s, l, i, m, c;
++    gboolean n, d, s, i, m, c;
+ 
+     if (mapping) return;
+ 
+     layout = g_strdup(gtk_entry_get_text(w));
+ 
+-    n = d = s = l = i = m = c = FALSE;
++    n = d = s = i = m = c = FALSE;
+ 
+     for (it = layout; *it; ++it) {
+         gboolean *b;
+@@ -126,10 +526,6 @@ void on_title_layout_changed(GtkEntry *w, gpointer data)
+         case 'S':
+             b = &s;
+             break;
+-        case 'l':
+-        case 'L':
+-            b = &l;
+-            break;
+         case 'i':
+         case 'I':
+             b = &i;
+@@ -158,7 +554,9 @@ void on_title_layout_changed(GtkEntry *w, gpointer data)
+     }
+ 
+     gtk_entry_set_text(w, layout);
+-    tree_set_string("theme/titleLayout", layout);
++    layout_labwc = layout_to_labwc(layout);
++    tree_set_string("theme/titlebar/layout", layout_labwc);
++    g_free(layout_labwc);
+     preview_update_set_title_layout(layout);
+ 
+     g_free(layout);
+@@ -166,61 +564,358 @@ void on_title_layout_changed(GtkEntry *w, gpointer data)
+ 
+ void on_font_active_font_set(GtkFontButton *w, gpointer data)
+ {
++    gchar *font;
++
+     if (mapping) return;
+ 
+-    preview_update_set_active_font(write_font(w, "ActiveWindow"));
++    font = write_font(w, "ActiveWindow");
++    preview_update_set_active_font(font);
++    g_free(font);
+ }
+ 
+ void on_font_inactive_font_set(GtkFontButton *w, gpointer data)
+ {
++    gchar *font;
++
+     if (mapping) return;
+ 
+-    preview_update_set_inactive_font(write_font(w, "InactiveWindow"));
++    font = write_font(w, "InactiveWindow");
++    preview_update_set_inactive_font(font);
++    g_free(font);
+ }
+ 
+ void on_font_menu_header_font_set(GtkFontButton *w, gpointer data)
+ {
++    gchar *font;
++
+     if (mapping) return;
+ 
+-    preview_update_set_menu_header_font(write_font(w, "MenuHeader"));
++    font = write_font(w, "MenuHeader");
++    preview_update_set_menu_header_font(font);
++    g_free(font);
+ }
+ 
+ void on_font_menu_item_font_set(GtkFontButton *w, gpointer data)
+ {
++    gchar *font;
++
+     if (mapping) return;
+ 
+-    preview_update_set_menu_item_font(write_font(w, "MenuItem"));
++    font = write_font(w, "MenuItem");
++    preview_update_set_menu_item_font(font);
++    g_free(font);
+ }
+ 
+ void on_font_active_display_font_set(GtkFontButton *w, gpointer data)
+ {
++    gchar *font;
++
+     if (mapping) return;
+-#if RR_CHECK_VERSION(3, 5, 29)
+-    preview_update_set_osd_active_font(write_font(w, "ActiveOnScreenDisplay"));
+-#else /* for older versions of openbox */
+-    preview_update_set_osd_active_font(write_font(w, "OnScreenDisplay"));
+-#endif
++    font = write_font(w, "OnScreenDisplay");
++    preview_update_set_osd_active_font(font);
++    g_free(font);
+ }
+ 
+ void on_font_inactive_display_font_set(GtkFontButton *w, gpointer data)
+ {
++    return;
++}
++
++void on_desktops_number_value_changed(GtkSpinButton *w, gpointer data)
++{
++    gint value;
++
+     if (mapping) return;
+ 
+-    preview_update_set_osd_inactive_font(write_font(w, "InactiveOnScreenDisplay"));
++    value = gtk_spin_button_get_value_as_int(w);
++
++    tree_set_desktops_number(value);
++    tree_delete_node("desktops/names");
+ }
+ 
+-static RrFont *read_font(GtkFontButton *w, const gchar *place)
++void on_desktops_initial_value_changed(GtkSpinButton *w, gpointer data)
++{
++    if (mapping) return;
++
++    tree_set_int("desktops/initial", gtk_spin_button_get_value_as_int(w));
++}
++
++void on_desktops_popup_time_value_changed(GtkSpinButton *w, gpointer data)
++{
++    if (mapping) return;
++
++    tree_set_int("desktops/popupTime", gtk_spin_button_get_value_as_int(w));
++}
++
++void on_placement_policy_changed(GtkComboBox *w, gpointer data)
++{
++    gchar *value;
++
++    if (mapping) return;
++
++    value = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(w));
++    if (value) {
++        tree_set_string("placement/policy", value);
++        g_free(value);
++    }
++}
++
++void on_cascade_offset_value_changed(GtkSpinButton *w, gpointer data)
++{
++    GtkWidget *xw;
++    GtkWidget *yw;
++
++    if (mapping) return;
++
++    xw = get_widget("cascade_offset_x");
++    yw = get_widget("cascade_offset_y");
++
++    tree_set_int("placement/cascadeOffset/x", gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(xw)));
++    tree_set_int("placement/cascadeOffset/y", gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(yw)));
++}
++
++void on_switcher_osd_style_changed(GtkComboBox *w, gpointer data)
++{
++    gchar *value;
++
++    if (mapping) return;
++
++    value = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(w));
++    if (value) {
++        tree_set_attr_string("windowSwitcher/osd", "style", value);
++        tree_set_string("windowSwitcher/osd/style", value);
++        g_free(value);
++    }
++}
++
++void on_switcher_osd_show_toggled(GtkToggleButton *w, gpointer data)
++{
++    if (mapping) return;
++
++    tree_set_attr_bool("windowSwitcher/osd", "show", gtk_toggle_button_get_active(w));
++    tree_set_bool("windowSwitcher/osd/show", gtk_toggle_button_get_active(w));
++}
++
++void on_switcher_osd_output_changed(GtkComboBox *w, gpointer data)
++{
++    gchar *value;
++
++    if (mapping) return;
++
++    value = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(w));
++    if (value) {
++        tree_set_attr_string("windowSwitcher/osd", "output", value);
++        tree_set_string("windowSwitcher/osd/output", value);
++        g_free(value);
++    }
++}
++
++void on_switcher_preview_toggled(GtkToggleButton *w, gpointer data)
++{
++    if (mapping) return;
++
++    tree_set_attr_bool("windowSwitcher", "preview", gtk_toggle_button_get_active(w));
++    tree_set_bool("windowSwitcher/preview", gtk_toggle_button_get_active(w));
++}
++
++void on_switcher_outlines_toggled(GtkToggleButton *w, gpointer data)
++{
++    if (mapping) return;
++
++    tree_set_attr_bool("windowSwitcher", "outlines", gtk_toggle_button_get_active(w));
++    tree_set_bool("windowSwitcher/outlines", gtk_toggle_button_get_active(w));
++}
++
++void on_resize_popup_show_changed(GtkComboBox *w, gpointer data)
++{
++    gchar *value;
++
++    if (mapping) return;
++
++    value = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(w));
++    if (value) {
++        tree_set_string("resize/popupShow", value);
++        g_free(value);
++    }
++}
++
++void on_resize_draw_contents_toggled(GtkToggleButton *w, gpointer data)
++{
++    if (mapping) return;
++
++    tree_set_bool("resize/drawContents", gtk_toggle_button_get_active(w));
++}
++
++void on_workspace_prefix_changed(GtkEditable *w, gpointer data)
++{
++    const gchar *value;
++
++    if (mapping) return;
++
++    value = gtk_entry_get_text(GTK_ENTRY(w));
++    tree_set_string("desktops/prefix", value && *value ? value : "Workspace");
++    tree_delete_node("desktops/names");
++}
++
++void on_titlebar_show_title_toggled(GtkToggleButton *w, gpointer data)
++{
++    if (mapping) return;
++
++    tree_set_bool("theme/titlebar/showTitle", gtk_toggle_button_get_active(w));
++}
++
++void on_theme_keep_border_toggled(GtkToggleButton *w, gpointer data)
++{
++    if (mapping) return;
++
++    tree_set_bool("theme/keepBorder", gtk_toggle_button_get_active(w));
++}
++
++void on_maximized_decoration_changed(GtkComboBox *w, gpointer data)
++{
++    gchar *value;
++
++    if (mapping) return;
++
++    value = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(w));
++    if (value) {
++        tree_set_string("theme/maximizedDecoration", value);
++        g_free(value);
++    }
++}
++
++static void set_font_default(GtkWidget *w, const gchar *place, const gchar *preview_name)
++{
++    gchar *node;
++
++    gtk_font_button_set_font_name(GTK_FONT_BUTTON(w), "Sans 10");
++
++    node = g_strdup_printf("theme/font:place=%s/name", place);
++    tree_set_string(node, "sans");
++    g_free(node);
++
++    node = g_strdup_printf("theme/font:place=%s/size", place);
++    tree_set_string(node, "10");
++    g_free(node);
++
++    node = g_strdup_printf("theme/font:place=%s/weight", place);
++    tree_set_string(node, "normal");
++    g_free(node);
++
++    node = g_strdup_printf("theme/font:place=%s/slant", place);
++    tree_set_string(node, "normal");
++    g_free(node);
++
++    if (!g_strcmp0(place, "ActiveWindow"))
++        preview_update_set_active_font((gchar*)preview_name);
++    else if (!g_strcmp0(place, "InactiveWindow"))
++        preview_update_set_inactive_font((gchar*)preview_name);
++    else if (!g_strcmp0(place, "MenuHeader"))
++        preview_update_set_menu_header_font((gchar*)preview_name);
++    else if (!g_strcmp0(place, "MenuItem"))
++        preview_update_set_menu_item_font((gchar*)preview_name);
++    else if (!g_strcmp0(place, "OnScreenDisplay"))
++        preview_update_set_osd_active_font((gchar*)preview_name);
++}
++
++void on_misc_reset_defaults_clicked(GtkButton *w, gpointer data)
++{
++    GtkWidget *widget;
++
++    mapping = TRUE;
++
++    widget = get_widget("font_menu_header");
++    set_font_default(widget, "MenuHeader", "sans");
++
++    widget = get_widget("font_menu_item");
++    set_font_default(widget, "MenuItem", "sans");
++
++    widget = get_widget("font_active_display");
++    set_font_default(widget, "OnScreenDisplay", "sans");
++
++    widget = get_widget("workspace_prefix");
++    gtk_entry_set_text(GTK_ENTRY(widget), "Workspace");
++    tree_set_string("desktops/prefix", "Workspace");
++
++    widget = get_widget("desktops_number");
++    gtk_spin_button_set_value(GTK_SPIN_BUTTON(widget), 4);
++    tree_set_desktops_number(4);
++    tree_delete_node("desktops/names");
++
++    widget = get_widget("desktops_initial");
++    gtk_spin_button_set_value(GTK_SPIN_BUTTON(widget), 1);
++    tree_set_int("desktops/initial", 1);
++
++    widget = get_widget("desktops_popup_time");
++    gtk_spin_button_set_value(GTK_SPIN_BUTTON(widget), 1000);
++    tree_set_int("desktops/popupTime", 1000);
++
++    widget = get_widget("placement_policy");
++    gtk_combo_box_set_active(GTK_COMBO_BOX(widget), 0);
++    tree_set_string("placement/policy", "cascade");
++    tree_set_int("placement/cascadeOffset/x", 40);
++    tree_set_int("placement/cascadeOffset/y", 30);
++    gtk_spin_button_set_value(GTK_SPIN_BUTTON(get_widget("cascade_offset_x")), 40);
++    gtk_spin_button_set_value(GTK_SPIN_BUTTON(get_widget("cascade_offset_y")), 30);
++
++    widget = get_widget("switcher_osd_style");
++    gtk_combo_box_set_active(GTK_COMBO_BOX(widget), 0);
++    tree_set_attr_string("windowSwitcher/osd", "style", "classic");
++    tree_set_string("windowSwitcher/osd/style", "classic");
++
++    widget = get_widget("switcher_osd_show");
++    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
++    tree_set_attr_bool("windowSwitcher/osd", "show", TRUE);
++    tree_set_bool("windowSwitcher/osd/show", TRUE);
++
++    widget = get_widget("switcher_osd_output");
++    gtk_combo_box_set_active(GTK_COMBO_BOX(widget), 0);
++    tree_set_attr_string("windowSwitcher/osd", "output", "all");
++    tree_set_string("windowSwitcher/osd/output", "all");
++
++    widget = get_widget("switcher_preview");
++    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
++    tree_set_attr_bool("windowSwitcher", "preview", TRUE);
++    tree_set_bool("windowSwitcher/preview", TRUE);
++
++    widget = get_widget("switcher_outlines");
++    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
++    tree_set_attr_bool("windowSwitcher", "outlines", TRUE);
++    tree_set_bool("windowSwitcher/outlines", TRUE);
++
++    widget = get_widget("resize_popup_show");
++    gtk_combo_box_set_active(GTK_COMBO_BOX(widget), 0);
++    tree_set_string("resize/popupShow", "Never");
++
++    widget = get_widget("resize_draw_contents");
++    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
++    tree_set_bool("resize/drawContents", TRUE);
++
++    widget = get_widget("titlebar_show_title");
++    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
++    tree_set_bool("theme/titlebar/showTitle", TRUE);
++
++    widget = get_widget("theme_keep_border");
++    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
++    tree_set_bool("theme/keepBorder", TRUE);
++
++    widget = get_widget("maximized_decoration");
++    gtk_combo_box_set_active(GTK_COMBO_BOX(widget), 0);
++    tree_set_string("theme/maximizedDecoration", "titlebar");
++
++    mapping = FALSE;
++}
++
++static gchar *read_font(GtkFontButton *w, const gchar *place)
+ {
+-    RrFont *font;
+     gchar *fontstring, *node;
+     gchar *name, **names;
+     gchar *size;
+     gchar *weight;
+     gchar *slant;
++    gboolean prev_mapping;
+ 
+-    RrFontWeight rr_weight = RR_FONTWEIGHT_NORMAL;
+-    RrFontSlant rr_slant = RR_FONTSLANT_NORMAL;
+-
++    prev_mapping = mapping;
+     mapping = TRUE;
+ 
+     node = g_strdup_printf("theme/font:place=%s/name", place);
+@@ -256,23 +951,17 @@ static RrFont *read_font(GtkFontButton *w, const gchar *place)
+     fontstring = g_strdup_printf("%s %s %s %s", name, weight, slant, size);
+     gtk_font_button_set_font_name(w, fontstring);
+ 
+-    if (!g_ascii_strcasecmp(weight, "Bold")) rr_weight = RR_FONTWEIGHT_BOLD;
+-    if (!g_ascii_strcasecmp(slant, "Italic")) rr_slant = RR_FONTSLANT_ITALIC;
+-    if (!g_ascii_strcasecmp(slant, "Oblique")) rr_slant = RR_FONTSLANT_OBLIQUE;
+-
+-    font = RrFontOpen(rrinst, name, atoi(size), rr_weight, rr_slant);
+     g_free(fontstring);
+     g_free(slant);
+     g_free(weight);
+     g_free(size);
+-    g_free(name);
+ 
+-    mapping = FALSE;
++    mapping = prev_mapping;
+ 
+-    return font;
++    return name;
+ }
+ 
+-static RrFont *write_font(GtkFontButton *w, const gchar *place)
++static gchar *write_font(GtkFontButton *w, const gchar *place)
+ {
+     gchar *c;
+     gchar *font, *node;
+@@ -280,9 +969,6 @@ static RrFont *write_font(GtkFontButton *w, const gchar *place)
+     const gchar *bold = NULL;
+     const gchar *italic = NULL;
+ 
+-    RrFontWeight weight = RR_FONTWEIGHT_NORMAL;
+-    RrFontSlant slant = RR_FONTSLANT_NORMAL;
+-
+     if (mapping) return NULL;
+ 
+     font = g_strdup(gtk_font_button_get_font_name(w));
+@@ -316,12 +1002,6 @@ static RrFont *write_font(GtkFontButton *w, const gchar *place)
+     tree_set_string(node, italic);
+     g_free(node);
+ 
+-    if (!g_ascii_strcasecmp(bold, "Bold")) weight = RR_FONTWEIGHT_BOLD;
+-    if (!g_ascii_strcasecmp(italic, "Italic")) slant = RR_FONTSLANT_ITALIC;
+-    if (!g_ascii_strcasecmp(italic, "Oblique")) slant = RR_FONTSLANT_OBLIQUE;
+-
+-    return RrFontOpen(rrinst, font, atoi(size), weight, slant);
+-
+-    g_free(font);
++    return font;
+ 
+ }
+diff --git a/src/main.c b/src/main.c
+index bdc7dc0..90f76e7 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -37,7 +37,8 @@
+ 
+ #include "lxappearance/lxappearance.h"
+ 
+-#include <gdk/gdkx.h>
++#include <libxml/parser.h>
++#include <libxml/tree.h>
+ #include <libxml/xmlsave.h>
+ 
+ GtkWidget *mainwin = NULL;
+@@ -45,10 +46,7 @@ GtkWidget *mainwin = NULL;
+ GtkBuilder* builder;
+ xmlDocPtr doc;
+ xmlNodePtr root;
+-RrInstance *rrinst;
+ gchar *obc_config_file = NULL;
+-ObtPaths *paths;
+-ObtXmlInst *xml_i;
+ 
+ /* Disable, not used
+ static gchar *obc_theme_install = NULL;
+@@ -80,64 +78,24 @@ void obconf_error(gchar *msg, gboolean modal)
+     }
+ }
+ 
+-static gboolean get_all(Window win, Atom prop, Atom type, gint size,
+-                        guchar **data, guint *num)
++static gboolean is_labwc_session()
+ {
+-    gboolean ret = FALSE;
+-    gint res;
+-    guchar *xdata = NULL;
+-    Atom ret_type;
+-    gint ret_size;
+-    gulong ret_items, bytes_left;
+-
+-    res = XGetWindowProperty(GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), win, prop, 0l, G_MAXLONG,
+-                             FALSE, type, &ret_type, &ret_size,
+-                             &ret_items, &bytes_left, &xdata);
+-    if (res == Success) {
+-        if (ret_size == size && ret_items > 0) {
+-            guint i;
+-
+-            *data = g_malloc(ret_items * (size / 8));
+-            for (i = 0; i < ret_items; ++i)
+-                switch (size) {
+-                case 8:
+-                    (*data)[i] = xdata[i];
+-                    break;
+-                case 16:
+-                    ((guint16*)*data)[i] = ((gushort*)xdata)[i];
+-                    break;
+-                case 32:
+-                    ((guint32*)*data)[i] = ((gulong*)xdata)[i];
+-                    break;
+-                default:
+-                    g_assert_not_reached(); /* unhandled size */
+-                }
+-            *num = ret_items;
+-            ret = TRUE;
+-        }
+-        XFree(xdata);
+-    }
+-    return ret;
+-}
++    const char *desktop;
+ 
+-static gboolean prop_get_string_utf8(Window win, Atom prop, gchar **ret)
+-{
+-    gchar *raw;
+-    gchar *str;
+-    guint num;
++    if (g_getenv("LABWC_PID"))
++        return TRUE;
++
++    if (!g_getenv("WAYLAND_DISPLAY"))
++        return FALSE;
++
++    desktop = g_getenv("XDG_CURRENT_DESKTOP");
++    if (desktop && g_strrstr(desktop, "labwc"))
++        return TRUE;
++
++    desktop = g_getenv("XDG_SESSION_DESKTOP");
++    if (desktop && g_strcmp0(desktop, "labwc") == 0)
++        return TRUE;
+ 
+-    if (get_all(win, prop,
+-                gdk_x11_get_xatom_by_name("UTF8_STRING"),
+-                8,(guchar**)&raw, &num))
+-    {
+-        str = g_strndup(raw, num); /* grab the first string from the list */
+-        g_free(raw);
+-        if (g_utf8_validate(str, -1, NULL)) {
+-            *ret = str;
+-            return TRUE;
+-        }
+-        g_free(str);
+-    }
+     return FALSE;
+ }
+ 
+@@ -158,17 +116,8 @@ extern gboolean plugin_load(LXAppearance* app, GtkBuilder* lxappearance_builder)
+     if(app->abi_version > LXAPPEARANCE_ABI_VERSION)
+         return FALSE;
+ 
+-    GdkScreen *screen = gtk_widget_get_screen(app->dlg);
+-
+-#if GTK_CHECK_VERSION(3, 0, 0)
+-    if(!GDK_IS_X11_SCREEN(screen))
++    if (!is_labwc_session())
+         return FALSE;
+-#endif
+-
+-    /* detect openbox */
+-    const char* wm_name = gdk_x11_screen_get_window_manager_name(screen);
+-    if(g_strcmp0(wm_name, "Openbox"))
+-        return FALSE; /* don't load the plugin if openbox is not in use. */
+ 
+ #ifdef ENABLE_NLS
+     bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR);
+@@ -192,32 +141,28 @@ extern gboolean plugin_load(LXAppearance* app, GtkBuilder* lxappearance_builder)
+ 
+     g_signal_connect(app->dlg, "response", G_CALLBACK(on_response), app);
+ 
+-    paths = obt_paths_new();
+-    xml_i = obt_xml_instance_new();
+-
+-    if (!obc_config_file) {
+-        gchar *p;
++    if (!obc_config_file)
++        obc_config_file = g_build_filename(g_get_user_config_dir(), "labwc", "rc.xml", NULL);
+ 
+-        if (prop_get_string_utf8(GDK_ROOT_WINDOW(),
+-                                 gdk_x11_get_xatom_by_name("_OB_CONFIG_FILE"),
+-                                 &p))
+-        {
+-            obc_config_file = g_filename_from_utf8(p, -1, NULL, NULL, NULL);
+-            g_free(p);
++    xmlIndentTreeOutput = 1;
++    if (g_file_test(obc_config_file, G_FILE_TEST_EXISTS)) {
++        doc = xmlReadFile(obc_config_file, NULL, XML_PARSE_NOBLANKS);
++        if (!doc) {
++            obconf_error(_("Failed to load labwc rc.xml."), TRUE);
++            exit_with_error = TRUE;
+         }
++    } else {
++        doc = xmlNewDoc((const xmlChar*)"1.0");
++        root = xmlNewNode(NULL, (const xmlChar*)"labwc_config");
++        xmlDocSetRootElement(doc, root);
+     }
+ 
+-    xmlIndentTreeOutput = 1;
+-    if (!((obc_config_file &&
+-       obt_xml_load_file(xml_i, obc_config_file, "openbox_config")) ||
+-       obt_xml_load_config_file(xml_i, "openbox", "rc.xml", "openbox_config")))
+-    {
+-        obconf_error(_("Failed to load an rc.xml. Openbox is probably not installed correctly."), TRUE);
+-        exit_with_error = TRUE;
+-    }
+-    else {
+-        doc = obt_xml_doc(xml_i);
+-        root = obt_xml_root(xml_i);
++    if (!exit_with_error) {
++        root = xmlDocGetRootElement(doc);
++        if (!root || xmlStrcmp(root->name, (const xmlChar*)"labwc_config") != 0) {
++            obconf_error(_("Failed to load labwc rc.xml."), TRUE);
++            exit_with_error = TRUE;
++        }
+     }
+ 
+     /* look for parsing errors */
+@@ -225,7 +170,7 @@ extern gboolean plugin_load(LXAppearance* app, GtkBuilder* lxappearance_builder)
+         xmlErrorPtr e = xmlGetLastError();
+         if (e) {
+             char *a = g_strdup_printf
+-                (_("Error while parsing the Openbox configuration file. Your configuration file is not valid XML.\n\nMessage: %s"),
++                (_("Error while parsing labwc rc.xml. The configuration file is not valid XML.\n\nMessage: %s"),
+                  e->message);
+             obconf_error(a, TRUE);
+             g_free(a);
+@@ -233,7 +178,6 @@ extern gboolean plugin_load(LXAppearance* app, GtkBuilder* lxappearance_builder)
+         }
+     }
+ 
+-    rrinst = RrInstanceNew(GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), gdk_x11_get_default_screen());
+     if (!exit_with_error) {
+         theme_setup_tab();
+         appearance_setup_tab();
+@@ -252,9 +196,8 @@ extern void plugin_unload(LXAppearance* app)
+     preview_update_set_osd_inactive_font(NULL);
+     preview_update_set_title_layout(NULL);
+ 
+-    RrInstanceFree(rrinst);
+-    obt_xml_instance_unref(xml_i);
+-    obt_paths_unref(paths);
+-
+-    xmlFreeDoc(doc);
++    if (doc)
++        xmlFreeDoc(doc);
++    doc = NULL;
++    root = NULL;
+ }
+diff --git a/src/main.h b/src/main.h
+index ad9ae52..25c692d 100644
+--- a/src/main.h
++++ b/src/main.h
+@@ -25,19 +25,15 @@
+ #ifndef obconf__main_h
+ #define obconf__main_h
+ 
+-#include <obrender/render.h>
+-#include <obrender/instance.h>
+-#include <obt/xml.h>
+-#include <obt/paths.h>
+-
+ #include <gtk/gtk.h>
++#include <libxml/parser.h>
++#include <libxml/tree.h>
+ 
+ extern GtkBuilder *builder;
+-extern RrInstance *rrinst;
+ extern GtkWidget *mainwin;
+ extern gchar *obc_config_file;
+-extern ObtPaths *paths;
+-extern ObtXmlInst *xml_i;
++extern xmlDocPtr doc;
++extern xmlNodePtr root;
+ 
+ #define get_widget(s) GTK_WIDGET(gtk_builder_get_object(builder, s))
+ 
+diff --git a/src/obconf.glade b/src/obconf.glade
+index 327341a..72b8f01 100644
+--- a/src/obconf.glade
++++ b/src/obconf.glade
+@@ -344,7 +344,6 @@
+                         <property name="xalign">0</property>
+                         <property name="yalign">0</property>
+                         <property name="label" translatable="yes">N: Window icon
+-L: Window label (Title)
+ I: Iconify (Minimize)
+ M: Maximize
+ C: Close
+@@ -479,34 +478,458 @@ D: Omnipresent (On all desktops)</property>
+                       </packing>
+                     </child>
+                     <child>
+-                      <object class="GtkLabel" id="label1">
++                      <object class="GtkHSeparator" id="hseparator_misc_1">
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+-                        <property name="xalign">0</property>
+-                        <property name="label" translatable="yes">Font for inactive on-screen display:</property>
+-                        <property name="use_underline">True</property>
+                       </object>
+                       <packing>
+-                        <property name="expand">True</property>
++                        <property name="expand">False</property>
+                         <property name="fill">True</property>
+                         <property name="position">6</property>
+                       </packing>
+                     </child>
+                     <child>
+-                      <object class="GtkFontButton" id="font_inactive_display">
++                      <object class="GtkLabel" id="label_desktops_number">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Number of workspaces:</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">11</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkSpinButton" id="desktops_number">
+                         <property name="visible">True</property>
+                         <property name="can_focus">True</property>
+-                        <property name="receives_default">True</property>
+-                        <property name="use_action_appearance">False</property>
+-                        <property name="use_font">True</property>
+-                        <signal name="font-set" handler="on_font_inactive_display_font_set" swapped="no"/>
++                        <property name="invisible_char">●</property>
++                        <property name="primary_icon_activatable">False</property>
++                        <property name="secondary_icon_activatable">False</property>
++                        <property name="primary_icon_sensitive">True</property>
++                        <property name="secondary_icon_sensitive">True</property>
++                        <property name="value">1</property>
++                        <signal name="value-changed" handler="on_desktops_number_value_changed" swapped="no"/>
+                       </object>
+                       <packing>
+-                        <property name="expand">True</property>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">12</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkLabel" id="label_placement_policy">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Window placement:</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">9</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkComboBoxText" id="placement_policy">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="active">0</property>
++                        <items>
++                          <item translatable="no">cascade</item>
++                          <item translatable="no">automatic</item>
++                          <item translatable="no">center</item>
++                          <item translatable="no">cursor</item>
++                        </items>
++                        <signal name="changed" handler="on_placement_policy_changed" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">10</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkLabel" id="label_osd_style">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Window switcher OSD style:</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">21</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkComboBoxText" id="switcher_osd_style">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="active">0</property>
++                        <items>
++                          <item translatable="no">classic</item>
++                          <item translatable="no">thumbnail</item>
++                        </items>
++                        <signal name="changed" handler="on_switcher_osd_style_changed" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">22</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkLabel" id="label_resize_popup_show">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Resize indicator:</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">29</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkComboBoxText" id="resize_popup_show">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="active">0</property>
++                        <items>
++                          <item translatable="no">Never</item>
++                          <item translatable="no">Always</item>
++                          <item translatable="no">Nonpixel</item>
++                        </items>
++                        <signal name="changed" handler="on_resize_popup_show_changed" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">30</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkLabel" id="label_workspace_prefix">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Workspace name prefix:</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
+                         <property name="fill">True</property>
+                         <property name="position">7</property>
+                       </packing>
+                     </child>
++                    <child>
++                      <object class="GtkEntry" id="workspace_prefix">
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <property name="invisible_char">●</property>
++                        <property name="primary_icon_activatable">False</property>
++                        <property name="secondary_icon_activatable">False</property>
++                        <property name="primary_icon_sensitive">True</property>
++                        <property name="secondary_icon_sensitive">True</property>
++                        <signal name="changed" handler="on_workspace_prefix_changed" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">8</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkLabel" id="label_desktops_initial">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Initial workspace:</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">13</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkSpinButton" id="desktops_initial">
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <signal name="value-changed" handler="on_desktops_initial_value_changed" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">14</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkLabel" id="label_desktops_popup_time">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Workspace OSD popup time (ms):</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">16</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkSpinButton" id="desktops_popup_time">
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <signal name="value-changed" handler="on_desktops_popup_time_value_changed" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">17</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkHSeparator" id="hseparator_misc_2">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">15</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkLabel" id="label_cascade_offset">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Cascade offset (x,y):</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">18</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkHBox" id="hbox_cascade_offset">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="spacing">6</property>
++                        <child>
++                          <object class="GtkSpinButton" id="cascade_offset_x">
++                            <property name="visible">True</property>
++                            <property name="can_focus">True</property>
++                            <signal name="value-changed" handler="on_cascade_offset_value_changed" swapped="no"/>
++                          </object>
++                          <packing>
++                            <property name="expand">True</property>
++                            <property name="fill">True</property>
++                            <property name="position">0</property>
++                          </packing>
++                        </child>
++                        <child>
++                          <object class="GtkSpinButton" id="cascade_offset_y">
++                            <property name="visible">True</property>
++                            <property name="can_focus">True</property>
++                            <signal name="value-changed" handler="on_cascade_offset_value_changed" swapped="no"/>
++                          </object>
++                          <packing>
++                            <property name="expand">True</property>
++                            <property name="fill">True</property>
++                            <property name="position">1</property>
++                          </packing>
++                        </child>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">19</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkHSeparator" id="hseparator_misc_3">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">20</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkCheckButton" id="switcher_osd_show">
++                        <property name="label" translatable="yes">Show window switcher OSD</property>
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <property name="draw_indicator">True</property>
++                        <signal name="toggled" handler="on_switcher_osd_show_toggled" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">23</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkLabel" id="label_switcher_osd_output">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Window switcher OSD output:</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">24</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkComboBoxText" id="switcher_osd_output">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="active">0</property>
++                        <items>
++                          <item translatable="no">all</item>
++                          <item translatable="no">focused</item>
++                          <item translatable="no">cursor</item>
++                        </items>
++                        <signal name="changed" handler="on_switcher_osd_output_changed" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">25</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkCheckButton" id="switcher_preview">
++                        <property name="label" translatable="yes">Show switcher preview</property>
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <property name="draw_indicator">True</property>
++                        <signal name="toggled" handler="on_switcher_preview_toggled" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">26</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkCheckButton" id="switcher_outlines">
++                        <property name="label" translatable="yes">Show switcher outlines</property>
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <property name="draw_indicator">True</property>
++                        <signal name="toggled" handler="on_switcher_outlines_toggled" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">27</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkHSeparator" id="hseparator_misc_4">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">28</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkCheckButton" id="resize_draw_contents">
++                        <property name="label" translatable="yes">Draw contents while resizing</property>
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <property name="draw_indicator">True</property>
++                        <signal name="toggled" handler="on_resize_draw_contents_toggled" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">31</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkHSeparator" id="hseparator_misc_5">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">32</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkCheckButton" id="titlebar_show_title">
++                        <property name="label" translatable="yes">Show window title in titlebar</property>
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <property name="draw_indicator">True</property>
++                        <signal name="toggled" handler="on_titlebar_show_title_toggled" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">33</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkCheckButton" id="theme_keep_border">
++                        <property name="label" translatable="yes">Keep border when decorations are disabled</property>
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <property name="draw_indicator">True</property>
++                        <signal name="toggled" handler="on_theme_keep_border_toggled" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">34</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkLabel" id="label_maximized_decoration">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Maximized decoration:</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">35</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkComboBoxText" id="maximized_decoration">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="active">0</property>
++                        <items>
++                          <item translatable="no">titlebar</item>
++                          <item translatable="no">none</item>
++                        </items>
++                        <signal name="changed" handler="on_maximized_decoration_changed" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">36</property>
++                      </packing>
++                    </child>
+                   </object>
+                   <packing>
+                     <property name="expand">False</property>
+@@ -538,28 +961,6 @@ D: Omnipresent (On all desktops)</property>
+             <property name="position">0</property>
+           </packing>
+         </child>
+-        <child>
+-          <object class="GtkFrame" id="frame1">
+-            <property name="visible">True</property>
+-            <property name="can_focus">False</property>
+-            <property name="label_xalign">0</property>
+-            <child>
+-              <object class="GtkImage" id="preview">
+-                <property name="visible">True</property>
+-                <property name="can_focus">False</property>
+-                <property name="stock">gtk-missing-image</property>
+-              </object>
+-            </child>
+-            <child type="label_item">
+-              <placeholder/>
+-            </child>
+-          </object>
+-          <packing>
+-            <property name="expand">True</property>
+-            <property name="fill">True</property>
+-            <property name="position">1</property>
+-          </packing>
+-        </child>
+       </object>
+       <packing>
+         <property name="expand">True</property>
+diff --git a/src/preview_update.c b/src/preview_update.c
+index 9ecfe55..c5a0cb5 100644
+--- a/src/preview_update.c
++++ b/src/preview_update.c
+@@ -23,7 +23,6 @@
+  * 2010-08-07 and some modifications were done to make it a loadable
+  * module of LXAppearance. */
+ 
+-#include "preview.h" /* preview_theme */
+ #include "preview_update.h"
+ #include "main.h"
+ 
+@@ -34,38 +33,16 @@ static gboolean restart_theme_preview_update = TRUE;
+ static GtkTreeView  *tree_view            = NULL;
+ static GtkListStore *list_store           = NULL;
+ static gchar        *title_layout         = NULL;
+-static RrFont       *active_window_font   = NULL;
+-static RrFont       *inactive_window_font = NULL;
+-static RrFont       *menu_title_font      = NULL;
+-static RrFont       *menu_item_font       = NULL;
+-static RrFont       *osd_active_font      = NULL;
+-static RrFont       *osd_inactive_font    = NULL;
++static gchar        *active_window_font   = NULL;
++static gchar        *inactive_window_font = NULL;
++static gchar        *menu_title_font      = NULL;
++static gchar        *menu_item_font       = NULL;
++static gchar        *osd_active_font      = NULL;
++static gchar        *osd_inactive_font    = NULL;
+ 
+ void preview_update_all()
+ {
+-#if RR_CHECK_VERSION(3, 5, 0)
+-    if (!list_store) return;
+-
+-    if (!(title_layout && active_window_font && inactive_window_font &&
+-          menu_title_font && menu_item_font &&
+-	  osd_active_font && osd_inactive_font))
+-        return; /* not set up */
+-
+-    char* name;
+-    GtkTreeIter it;
+-    GtkTreeSelection* sel = gtk_tree_view_get_selection(tree_view);
+-    if(gtk_tree_selection_get_selected(sel, NULL, &it))
+-    {
+-        gtk_tree_model_get( GTK_TREE_MODEL(list_store), &it, 0, &name, -1);
+-        GdkPixbuf* pix = preview_theme(name, title_layout, active_window_font,
+-                                         inactive_window_font, menu_title_font,
+-                                         menu_item_font, osd_active_font,
+-					 osd_inactive_font);
+-        GtkWidget* preview = get_widget("preview");
+-        gtk_image_set_from_pixbuf( GTK_IMAGE(preview), pix);
+-        g_object_unref(pix);
+-    }
+-#endif
++    return;
+ }
+ 
+ void preview_update_set_tree_view(GtkTreeView *tr, GtkListStore *ls)
+@@ -80,45 +57,45 @@ void preview_update_set_tree_view(GtkTreeView *tr, GtkListStore *ls)
+     if (list_store) preview_update_all();
+ }
+ 
+-void preview_update_set_active_font(RrFont *f)
++void preview_update_set_active_font(const gchar *f)
+ {
+-    RrFontClose(active_window_font);
+-    active_window_font = f;
++    g_free(active_window_font);
++    active_window_font = g_strdup(f);
+     preview_update_all();
+ }
+ 
+-void preview_update_set_inactive_font(RrFont *f)
++void preview_update_set_inactive_font(const gchar *f)
+ {
+-    RrFontClose(inactive_window_font);
+-    inactive_window_font = f;
++    g_free(inactive_window_font);
++    inactive_window_font = g_strdup(f);
+     preview_update_all();
+ }
+ 
+-void preview_update_set_menu_header_font(RrFont *f)
++void preview_update_set_menu_header_font(const gchar *f)
+ {
+-    RrFontClose(menu_title_font);
+-    menu_title_font = f;
++    g_free(menu_title_font);
++    menu_title_font = g_strdup(f);
+     preview_update_all();
+ }
+ 
+-void preview_update_set_menu_item_font(RrFont *f)
++void preview_update_set_menu_item_font(const gchar *f)
+ {
+-    RrFontClose(menu_item_font);
+-    menu_item_font = f;
++    g_free(menu_item_font);
++    menu_item_font = g_strdup(f);
+     preview_update_all();
+ }
+ 
+-void preview_update_set_osd_active_font(RrFont *f)
++void preview_update_set_osd_active_font(const gchar *f)
+ {
+-    RrFontClose(osd_active_font);
+-    osd_active_font = f;
++    g_free(osd_active_font);
++    osd_active_font = g_strdup(f);
+     preview_update_all();
+ }
+ 
+-void preview_update_set_osd_inactive_font(RrFont *f)
++void preview_update_set_osd_inactive_font(const gchar *f)
+ {
+-    RrFontClose(osd_inactive_font);
+-    osd_inactive_font = f;
++    g_free(osd_inactive_font);
++    osd_inactive_font = g_strdup(f);
+     preview_update_all();
+ }
+ 
+diff --git a/src/preview_update.h b/src/preview_update.h
+index 085ba37..b1abbd6 100644
+--- a/src/preview_update.h
++++ b/src/preview_update.h
+@@ -1,18 +1,17 @@
+ #ifndef obconf__preview_update_h
+ #define obconf__preview_update_h
+ 
+-#include <obt/xml.h>
+ #include <gtk/gtk.h>
+ 
+ void preview_update_all();
+ 
+ void preview_update_set_tree_view        (GtkTreeView  *tr, GtkListStore *ls);
+-void preview_update_set_active_font      (RrFont *f);
+-void preview_update_set_inactive_font    (RrFont *f);
+-void preview_update_set_menu_header_font (RrFont *f);
+-void preview_update_set_menu_item_font   (RrFont *f);
+-void preview_update_set_osd_active_font  (RrFont *f);
+-void preview_update_set_osd_inactive_font  (RrFont *f);
++void preview_update_set_active_font      (const gchar *f);
++void preview_update_set_inactive_font    (const gchar *f);
++void preview_update_set_menu_header_font (const gchar *f);
++void preview_update_set_menu_item_font   (const gchar *f);
++void preview_update_set_osd_active_font  (const gchar *f);
++void preview_update_set_osd_inactive_font  (const gchar *f);
+ void preview_update_set_title_layout     (const gchar *layout);
+ 
+ #endif
+diff --git a/src/theme.c b/src/theme.c
+index 4d7b988..5855b21 100644
+--- a/src/theme.c
++++ b/src/theme.c
+@@ -29,7 +29,6 @@
+ #include <glib/gi18n.h>
+ #include "archive.h"
+ #include "theme.h"
+-#include "preview.h"
+ 
+ static gboolean mapping = FALSE;
+ 
+@@ -193,10 +192,17 @@ void theme_load_all()
+     add_theme_dir(p);
+     g_free(p);
+ 
++    p = g_build_filename(g_get_user_data_dir(), "themes", NULL);
++    add_theme_dir(p);
++    g_free(p);
++
+     {
+-        GSList *it;
+-        for (it = obt_paths_data_dirs(paths); it; it = g_slist_next(it)) {
+-            p = g_build_filename(it->data, "themes", NULL);
++        const gchar * const *dirs;
++        gint i;
++
++        dirs = g_get_system_data_dirs();
++        for (i = 0; dirs[i]; ++i) {
++            p = g_build_filename(dirs[i], "themes", NULL);
+             add_theme_dir(p);
+             g_free(p);
+         }
+@@ -271,4 +277,3 @@ static void add_theme_dir(const gchar *dirname)
+         g_dir_close(dir);
+     }
+ }
+-
+diff --git a/src/tree.c b/src/tree.c
+index fd28313..4d79f9f 100644
+--- a/src/tree.c
++++ b/src/tree.c
+@@ -25,41 +25,138 @@
+ #include "tree.h"
+ #include "main.h"
+ 
+-#include <obt/xml.h>
+-#include <gdk/gdkx.h>
+ #include <lxappearance/lxappearance.h>
+ 
++static xmlNodePtr find_child_with_attrs(xmlNodePtr parent, const gchar *name, gchar **attrs)
++{
++    xmlNodePtr c;
++
++    for (c = parent ? parent->children : NULL; c; c = c->next) {
++        gboolean ok = TRUE;
++        gint i;
++
++        if (c->type != XML_ELEMENT_NODE)
++            continue;
++        if (xmlStrcmp(c->name, (const xmlChar*)name) != 0)
++            continue;
++
++        for (i = 1; attrs[i]; ++i) {
++            gchar **eq = g_strsplit(attrs[i], "=", 2);
++            if (eq[1]) {
++                xmlChar *prop = xmlGetProp(c, (const xmlChar*)eq[0]);
++                if (!prop || g_strcmp0((const gchar*)prop, eq[1]) != 0)
++                    ok = FALSE;
++                if (prop)
++                    xmlFree(prop);
++            }
++            g_strfreev(eq);
++            if (!ok)
++                break;
++        }
++
++        if (ok)
++            return c;
++    }
++
++    return NULL;
++}
++
++static xmlNodePtr find_node(const gchar *path)
++{
++    xmlNodePtr n, c;
++    gchar **nodes;
++    gchar **it;
++
++    n = root;
++    if (!n || !path || !*path)
++        return NULL;
++
++    nodes = g_strsplit(path, "/", 0);
++    for (it = nodes; *it; ++it) {
++        gchar **attrs;
++
++        attrs = g_strsplit(*it, ":", 0);
++        c = find_child_with_attrs(n, attrs[0], attrs);
++        g_strfreev(attrs);
++
++        if (!c) {
++            g_strfreev(nodes);
++            return NULL;
++        }
++
++        n = c;
++    }
++
++    g_strfreev(nodes);
++    return n;
++}
++
++static gboolean parse_int_text(const xmlChar *value, gint *out)
++{
++    gchar *end = NULL;
++    glong parsed;
++
++    if (!value || !out)
++        return FALSE;
++
++    parsed = g_ascii_strtoll((const gchar*)value, &end, 10);
++    while (end && g_ascii_isspace(*end))
++        ++end;
++
++    if (end && *end == '\0') {
++        *out = (gint)parsed;
++        return TRUE;
++    }
++
++    return FALSE;
++}
++
++static xmlNodePtr find_first_named(xmlNodePtr n, const gchar *name)
++{
++    xmlNodePtr c;
++
++    for (c = n; c; c = c->next) {
++        if (c->type == XML_ELEMENT_NODE && xmlStrcmp(c->name, (const xmlChar*)name) == 0)
++            return c;
++
++        if (c->children) {
++            xmlNodePtr deep = find_first_named(c->children, name);
++            if (deep)
++                return deep;
++        }
++    }
++
++    return NULL;
++}
++
++static xmlNodePtr find_direct_child(xmlNodePtr parent, const gchar *name)
++{
++    xmlNodePtr c;
++
++    for (c = parent ? parent->children : NULL; c; c = c->next) {
++        if (c->type == XML_ELEMENT_NODE && xmlStrcmp(c->name, (const xmlChar*)name) == 0)
++            return c;
++    }
++
++    return NULL;
++}
++
+ xmlNodePtr tree_get_node(const gchar *path, const gchar *def)
+ {
+     xmlNodePtr n, c;
+     gchar **nodes;
+     gchar **it, **next;
+ 
+-    n = obt_xml_root(xml_i);
++    n = root;
+ 
+     nodes = g_strsplit(path, "/", 0);
+     for (it = nodes; *it; it = next) {
+         gchar **attrs;
+-        gboolean ok = FALSE;
+ 
+         attrs = g_strsplit(*it, ":", 0);
+         next = it + 1;
+ 
+-        /* match attributes */
+-        c = obt_xml_find_node(n->children, attrs[0]);
+-        while (c && !ok) {
+-            gint i;
+-
+-            ok = TRUE;
+-            for (i = 1; attrs[i]; ++i) {
+-                gchar **eq = g_strsplit(attrs[i], "=", 2);
+-                if (eq[1] && !obt_xml_attr_contains(c, eq[0], eq[1]))
+-                    ok = FALSE;
+-                g_strfreev(eq);
+-            }
+-            if (!ok)
+-                c = obt_xml_find_node(c->next, attrs[0]);
+-        }
++        c = find_child_with_attrs(n, attrs[0], attrs);
+ 
+         if (!c) {
+             gint i;
+@@ -95,33 +192,29 @@ void tree_delete_node(const gchar *path)
+ void tree_apply()
+ {
+     gchar *p, *d;
++    gchar *cmd;
+ 
+     if (obc_config_file)
+         p = g_strdup(obc_config_file);
+     else
+-        p = g_build_filename(obt_paths_config_home(paths), "openbox",
++        p = g_build_filename(g_get_user_config_dir(), "labwc",
+                              "rc.xml", NULL);
+ 
+     d = g_path_get_dirname(p);
+-    obt_paths_mkdir_path(d,  0700);
++    g_mkdir_with_parents(d, 0700);
+     g_free(d);
+ 
+-    if (obt_xml_save_file(xml_i, p, TRUE)) {
+-        XEvent ce;
+-
+-        ce.xclient.type = ClientMessage;
+-        ce.xclient.message_type = gdk_x11_get_xatom_by_name("_OB_CONTROL");
+-        ce.xclient.display = GDK_DISPLAY_XDISPLAY(gdk_display_get_default());
+-        ce.xclient.window = GDK_ROOT_WINDOW();
+-        ce.xclient.format = 32;
+-        ce.xclient.data.l[0] = 1; /* reconfigure */
+-        ce.xclient.data.l[1] = 0;
+-        ce.xclient.data.l[2] = 0;
+-        ce.xclient.data.l[3] = 0;
+-        ce.xclient.data.l[4] = 0;
+-        XSendEvent(GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), GDK_ROOT_WINDOW(), FALSE,
+-                   SubstructureNotifyMask | SubstructureRedirectMask,
+-                   &ce);
++    if (xmlSaveFormatFileEnc(p, doc, "UTF-8", 1) >= 0) {
++        if (g_find_program_in_path("labwc")) {
++            g_spawn_command_line_sync("labwc --reconfigure", NULL, NULL, NULL, NULL);
++        } else {
++            const char *labwc_pid = g_getenv("LABWC_PID");
++            if (labwc_pid && *labwc_pid) {
++                cmd = g_strdup_printf("kill -HUP %s", labwc_pid);
++                g_spawn_command_line_sync(cmd, NULL, NULL, NULL, NULL);
++                g_free(cmd);
++            }
++        }
+     } else {
+         gchar *s;
+         s = g_strdup_printf("An error occured while saving the "
+@@ -165,12 +258,46 @@ void tree_set_bool(const gchar *node, const gboolean value)
+     lxappearance_changed();
+ }
+ 
++void tree_set_attr_int(const gchar *node, const gchar *attr, const gint value)
++{
++    xmlNodePtr n;
++    gchar *s;
++
++    n = tree_get_node(node, NULL);
++    s = g_strdup_printf("%d", value);
++    xmlSetProp(n, (const xmlChar*)attr, (const xmlChar*)s);
++    g_free(s);
++
++    lxappearance_changed();
++}
++
++void tree_set_attr_string(const gchar *node, const gchar *attr, const gchar *value)
++{
++    xmlNodePtr n;
++
++    n = tree_get_node(node, NULL);
++    xmlSetProp(n, (const xmlChar*)attr, (const xmlChar*)value);
++
++    lxappearance_changed();
++}
++
++void tree_set_attr_bool(const gchar *node, const gchar *attr, const gboolean value)
++{
++    tree_set_attr_string(node, attr, value ? "yes" : "no");
++}
++
+ gchar* tree_get_string(const gchar *node, const gchar *def)
+ {
+     xmlNodePtr n;
+ 
+     n = tree_get_node(node, def);
+-    return obt_xml_node_string(n);
++    {
++        xmlChar *value = xmlNodeGetContent(n);
++        gchar *out = g_strdup((const gchar*)(value ? value : (const xmlChar*)""));
++        if (value)
++            xmlFree(value);
++        return out;
++    }
+ }
+ 
+ gint tree_get_int(const gchar *node, gint def)
+@@ -181,7 +308,13 @@ gint tree_get_int(const gchar *node, gint def)
+     d = g_strdup_printf("%d", def);
+     n = tree_get_node(node, d);
+     g_free(d);
+-    return obt_xml_node_int(n);
++    {
++        xmlChar *value = xmlNodeGetContent(n);
++        gint out = value ? (gint)g_ascii_strtoll((const gchar*)value, NULL, 10) : def;
++        if (value)
++            xmlFree(value);
++        return out;
++    }
+ }
+ 
+ gboolean tree_get_bool(const gchar *node, gboolean def)
+@@ -189,5 +322,206 @@ gboolean tree_get_bool(const gchar *node, gboolean def)
+     xmlNodePtr n;
+ 
+     n = tree_get_node(node, (def ? "yes" : "no"));
+-    return obt_xml_node_bool(n);
++    {
++        xmlChar *value = xmlNodeGetContent(n);
++        gboolean out = def;
++
++        if (value) {
++            const gchar *v = (const gchar*)value;
++            out = !g_ascii_strcasecmp(v, "yes") || !g_ascii_strcasecmp(v, "true") ||
++                  !g_ascii_strcasecmp(v, "on") || !g_ascii_strcasecmp(v, "1");
++            xmlFree(value);
++        }
++
++        return out;
++    }
++}
++
++gint tree_get_attr_int(const gchar *node, const gchar *attr, gint def)
++{
++    xmlNodePtr n;
++    xmlChar *value;
++    gint out = def;
++
++    n = tree_get_node(node, NULL);
++    if (!n)
++        return def;
++
++    value = xmlGetProp(n, (const xmlChar*)attr);
++    if (value) {
++        out = (gint)g_ascii_strtoll((const gchar*)value, NULL, 10);
++        xmlFree(value);
++    }
++
++    return out;
++}
++
++gchar* tree_get_attr_string(const gchar *node, const gchar *attr, const gchar *def)
++{
++    xmlNodePtr n;
++    xmlChar *value;
++
++    n = find_node(node);
++    if (!n)
++        return g_strdup(def ? def : "");
++
++    value = xmlGetProp(n, (const xmlChar*)attr);
++    if (!value)
++        return g_strdup(def ? def : "");
++
++    {
++        gchar *out = g_strdup((const gchar*)value);
++        xmlFree(value);
++        return out;
++    }
++}
++
++gboolean tree_try_get_int(const gchar *node, gint *out)
++{
++    xmlNodePtr n;
++    xmlChar *value;
++
++    if (!out)
++        return FALSE;
++
++    n = find_node(node);
++    if (!n)
++        return FALSE;
++
++    value = xmlNodeGetContent(n);
++    if (!value)
++        return FALSE;
++
++    if (parse_int_text(value, out)) {
++        xmlFree(value);
++        return TRUE;
++    }
++
++    xmlFree(value);
++    return FALSE;
++}
++
++gboolean tree_try_get_attr_int(const gchar *node, const gchar *attr, gint *out)
++{
++    xmlNodePtr n;
++    xmlChar *value;
++
++    if (!out)
++        return FALSE;
++
++    n = find_node(node);
++    if (!n)
++        return FALSE;
++
++    value = xmlGetProp(n, (const xmlChar*)attr);
++    if (!value)
++        return FALSE;
++
++    if (parse_int_text(value, out)) {
++        xmlFree(value);
++        return TRUE;
++    }
++
++    xmlFree(value);
++    return FALSE;
++}
++
++gboolean tree_try_get_attr_bool(const gchar *node, const gchar *attr, gboolean *out)
++{
++    xmlNodePtr n;
++    xmlChar *value;
++
++    if (!out)
++        return FALSE;
++
++    n = find_node(node);
++    if (!n)
++        return FALSE;
++
++    value = xmlGetProp(n, (const xmlChar*)attr);
++    if (!value)
++        return FALSE;
++
++    {
++        const gchar *v = (const gchar*)value;
++        *out = !g_ascii_strcasecmp(v, "yes") || !g_ascii_strcasecmp(v, "true") ||
++               !g_ascii_strcasecmp(v, "on") || !g_ascii_strcasecmp(v, "1");
++    }
++
++    xmlFree(value);
++    return TRUE;
++}
++
++gboolean tree_try_get_desktops_number(gint *out)
++{
++    xmlNodePtr desktops;
++    xmlNodePtr core;
++    xmlNodePtr number;
++    xmlChar *value;
++
++    if (!out || !root)
++        return FALSE;
++
++    desktops = find_direct_child(root, "desktops");
++    if (!desktops) {
++        core = find_direct_child(root, "core");
++        desktops = find_direct_child(core, "desktops");
++    }
++    if (!desktops)
++        desktops = find_first_named(root->children, "desktops");
++
++    if (!desktops)
++        return FALSE;
++
++    number = find_direct_child(desktops, "number");
++    if (number) {
++        value = xmlNodeGetContent(number);
++        if (value) {
++            gboolean ok = parse_int_text(value, out);
++            xmlFree(value);
++            if (ok)
++                return TRUE;
++        }
++    }
++
++    value = xmlGetProp(desktops, (const xmlChar*)"number");
++    if (value) {
++        gboolean ok = parse_int_text(value, out);
++        xmlFree(value);
++        if (ok)
++            return TRUE;
++    }
++
++    return FALSE;
++}
++
++void tree_set_desktops_number(gint value)
++{
++    xmlNodePtr desktops;
++    xmlNodePtr core;
++    xmlNodePtr number;
++    gchar *s;
++
++    s = g_strdup_printf("%d", value);
++
++    desktops = root ? find_direct_child(root, "desktops") : NULL;
++    if (!desktops && root) {
++        core = find_direct_child(root, "core");
++        desktops = find_direct_child(core, "desktops");
++    }
++    if (!desktops && root)
++        desktops = find_first_named(root->children, "desktops");
++
++    if (!desktops)
++        desktops = tree_get_node("desktops", NULL);
++
++    xmlSetProp(desktops, (const xmlChar*)"number", (const xmlChar*)s);
++
++    number = find_direct_child(desktops, "number");
++    if (!number)
++        number = xmlNewTextChild(desktops, NULL, (const xmlChar*)"number", NULL);
++    xmlNodeSetContent(number, (const xmlChar*)s);
++
++    g_free(s);
++    lxappearance_changed();
+ }
+diff --git a/src/tree.h b/src/tree.h
+index 4e9e170..e7ee207 100644
+--- a/src/tree.h
++++ b/src/tree.h
+@@ -19,7 +19,8 @@
+ #ifndef obconf__tree_h
+ #define obconf__tree_h
+ 
+-#include <obt/xml.h>
++#include <glib.h>
++#include <libxml/tree.h>
+ 
+ xmlNodePtr tree_get_node(const gchar *path, const gchar *def);
+ 
+@@ -28,10 +29,20 @@ void tree_delete_node(const gchar *path);
+ gchar* tree_get_string(const gchar *node, const gchar *def);
+ gint tree_get_int(const gchar *node, gint def);
+ gboolean tree_get_bool(const gchar *node, gboolean def);
++gint tree_get_attr_int(const gchar *node, const gchar *attr, gint def);
++gboolean tree_try_get_int(const gchar *node, gint *out);
++gboolean tree_try_get_attr_int(const gchar *node, const gchar *attr, gint *out);
++gboolean tree_try_get_attr_bool(const gchar *node, const gchar *attr, gboolean *out);
++gchar* tree_get_attr_string(const gchar *node, const gchar *attr, const gchar *def);
++gboolean tree_try_get_desktops_number(gint *out);
++void tree_set_desktops_number(gint value);
+ 
+ void tree_set_string(const gchar *node, const gchar *value);
+ void tree_set_int(const gchar *node, const gint value);
+ void tree_set_bool(const gchar *node, const gboolean value);
++void tree_set_attr_int(const gchar *node, const gchar *attr, const gint value);
++void tree_set_attr_string(const gchar *node, const gchar *attr, const gchar *value);
++void tree_set_attr_bool(const gchar *node, const gchar *attr, const gboolean value);
+ 
+ void tree_apply(); /* save the rc.xml and force reconfigure from Openbox */
+
+diff --git a/src/main.c b/src/main.c
+index 90f76e7..97279c0 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -46,6 +46,8 @@ GtkWidget *mainwin = NULL;
+ GtkBuilder* builder;
+ xmlDocPtr doc;
+ xmlNodePtr root;
++static xmlDocPtr initial_doc = NULL;
++static gboolean preview_applied = FALSE;
+ gchar *obc_config_file = NULL;
+ 
+ /* Disable, not used
+@@ -101,9 +103,22 @@ static gboolean is_labwc_session()
+ 
+ static void on_response(GtkDialog* dlg, int res, LXAppearance* app)
+ {
+-    if(res == GTK_RESPONSE_APPLY)
+-    {
+-        tree_apply();
++    if (res == GTK_RESPONSE_APPLY) {
++        if (tree_apply()) {
++            preview_applied = TRUE;
++        }
++        return;
++    }
++
++    if (preview_applied && initial_doc &&
++        (res == GTK_RESPONSE_CANCEL)) {
++        xmlFreeDoc(doc);
++        doc = xmlCopyDoc(initial_doc, 1);
++        root = doc ? xmlDocGetRootElement(doc) : NULL;
++        if (doc && root) {
++            tree_apply();
++        }
++        preview_applied = FALSE;
+     }
+ }
+ 
+@@ -182,6 +196,9 @@ extern gboolean plugin_load(LXAppearance* app, GtkBuilder* lxappearance_builder)
+         theme_setup_tab();
+         appearance_setup_tab();
+         theme_load_all();
++
++        initial_doc = xmlCopyDoc(doc, 1);
++        preview_applied = FALSE;
+     }
+     return !exit_with_error;
+ }
+@@ -198,6 +215,10 @@ extern void plugin_unload(LXAppearance* app)
+ 
+     if (doc)
+         xmlFreeDoc(doc);
++    if (initial_doc)
++        xmlFreeDoc(initial_doc);
+     doc = NULL;
++    initial_doc = NULL;
+     root = NULL;
++    preview_applied = FALSE;
+ }
+diff --git a/src/tree.c b/src/tree.c
+index 4d79f9f..72642af 100644
+--- a/src/tree.c
++++ b/src/tree.c
+@@ -189,10 +189,11 @@ void tree_delete_node(const gchar *path)
+     xmlFreeNode(n);
+ }
+ 
+-void tree_apply()
++gboolean tree_apply()
+ {
+     gchar *p, *d;
+     gchar *cmd;
++    gboolean ok = FALSE;
+ 
+     if (obc_config_file)
+         p = g_strdup(obc_config_file);
+@@ -205,6 +206,7 @@ void tree_apply()
+     g_free(d);
+ 
+     if (xmlSaveFormatFileEnc(p, doc, "UTF-8", 1) >= 0) {
++        ok = TRUE;
+         if (g_find_program_in_path("labwc")) {
+             g_spawn_command_line_sync("labwc --reconfigure", NULL, NULL, NULL, NULL);
+         } else {
+@@ -223,6 +225,8 @@ void tree_apply()
+         g_free(s);
+     }
+     g_free(p);
++
++    return ok;
+ }
+ 
+ void tree_set_string(const gchar *node, const gchar *value)
+diff --git a/src/tree.h b/src/tree.h
+index e7ee207..9d2956d 100644
+--- a/src/tree.h
++++ b/src/tree.h
+@@ -44,6 +44,6 @@ void tree_set_attr_int(const gchar *node, const gchar *attr, const gint value);
+ void tree_set_attr_string(const gchar *node, const gchar *attr, const gchar *value);
+ void tree_set_attr_bool(const gchar *node, const gchar *attr, const gboolean value);
+ 
+-void tree_apply(); /* save the rc.xml and force reconfigure from Openbox */
++gboolean tree_apply(); /* save rc.xml and force reconfigure from labwc */
+ 
+ #endif

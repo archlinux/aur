@@ -1,0 +1,260 @@
+--- a/src/main.c
++++ b/src/main.c
+@@ -46,8 +46,6 @@
+ GtkBuilder* builder;
+ xmlDocPtr doc;
+ xmlNodePtr root;
+-static xmlDocPtr initial_doc = NULL;
+-static gboolean preview_applied = FALSE;
+ gchar *obc_config_file = NULL;
+ 
+ /* Disable, not used
+@@ -104,21 +102,16 @@
+ static void on_response(GtkDialog* dlg, int res, LXAppearance* app)
+ {
+     if (res == GTK_RESPONSE_APPLY) {
+-        if (tree_apply()) {
+-            preview_applied = TRUE;
+-        }
++        if (tree_apply())
++            theme_commit_current_name();
+         return;
+     }
+ 
+-    if (preview_applied && initial_doc &&
+-        (res == GTK_RESPONSE_CANCEL)) {
+-        xmlFreeDoc(doc);
+-        doc = xmlCopyDoc(initial_doc, 1);
+-        root = doc ? xmlDocGetRootElement(doc) : NULL;
+-        if (doc && root) {
+-            tree_apply();
+-        }
+-        preview_applied = FALSE;
++    if (res == GTK_RESPONSE_CLOSE ||
++        res == GTK_RESPONSE_DELETE_EVENT ||
++        res == GTK_RESPONSE_CANCEL ||
++        res == GTK_RESPONSE_NONE) {
++        theme_restore_initial_name();
+     }
+ }
+ 
+@@ -197,9 +190,8 @@
+         theme_setup_tab();
+         appearance_setup_tab();
+         theme_load_all();
+-
+-        initial_doc = xmlCopyDoc(doc, 1);
+-        preview_applied = FALSE;
++        theme_commit_current_name();
++
+     }
+     return !exit_with_error;
+ }
+@@ -216,10 +208,6 @@
+ 
+     if (doc)
+         xmlFreeDoc(doc);
+-    if (initial_doc)
+-        xmlFreeDoc(initial_doc);
+     doc = NULL;
+-    initial_doc = NULL;
+     root = NULL;
+-    preview_applied = FALSE;
+-}
++}
+--- a/src/theme.c
++++ b/src/theme.c
+@@ -27,18 +27,25 @@
+ #include "tree.h"
+ #include "preview_update.h"
+ #include <glib/gi18n.h>
++#include <glib/gstdio.h>
+ #include "archive.h"
+ #include "theme.h"
+ 
+ static gboolean mapping = FALSE;
++static gboolean applying_theme_preview = FALSE;
+ 
+ static GList *themes;
+ static GtkListStore *theme_store;
++static gchar *initial_theme_name = NULL;
++static gboolean live_theme_preview_changed = FALSE;
+ 
+ /* Forwarded */
+ static void add_theme_dir(const gchar *dirname);
+ static void on_theme_names_selection_changed(GtkTreeSelection *sel,
+                                              gpointer data);
++static gboolean apply_theme_name_preview(const gchar *name);
++static void run_labwc_reconfigure_for_theme(void);
++static xmlNodePtr ensure_child_node(xmlNodePtr parent, const gchar *name);
+ void on_install_theme_clicked(GtkButton *w, gpointer data);
+ void on_theme_archive_clicked(GtkButton *w, gpointer data);
+ 
+@@ -87,18 +94,151 @@
+ {
+     GtkTreeIter iter;
+     GtkTreeModel *model;
+-    const gchar *name;
+-
+-    if (mapping) return;
++    gchar *name = NULL;
++
++    if (mapping || applying_theme_preview)
++        return;
+ 
+     if(gtk_tree_selection_get_selected(sel, &model, &iter)) {
+         gtk_tree_model_get(model, &iter, 0, &name, -1);
+     }
+ 
+-    if(name)
+-      tree_set_string("theme/name", name);
++    if (name) {
++        tree_set_string("theme/name", name);
++
++        if (initial_theme_name && g_strcmp0(name, initial_theme_name) == 0) {
++            if (live_theme_preview_changed)
++                apply_theme_name_preview(name);
++            live_theme_preview_changed = FALSE;
++        } else if (apply_theme_name_preview(name)) {
++            live_theme_preview_changed = TRUE;
++        }
++    }
+ 
+     preview_update_all();
++    g_free(name);
++}
++
++void theme_set_initial_name(const gchar *name)
++{
++    g_free(initial_theme_name);
++    initial_theme_name = g_strdup(name ? name : "");
++    live_theme_preview_changed = FALSE;
++}
++
++void theme_commit_current_name()
++{
++    gchar *current;
++
++    current = tree_get_string("theme/name", "TheBear");
++    theme_set_initial_name(current);
++    g_free(current);
++}
++
++gboolean theme_restore_initial_name()
++{
++    gboolean ok;
++
++    if (!live_theme_preview_changed || !initial_theme_name || !*initial_theme_name)
++        return FALSE;
++
++    ok = apply_theme_name_preview(initial_theme_name);
++    if (!ok)
++        return FALSE;
++
++    applying_theme_preview = TRUE;
++    tree_set_string("theme/name", initial_theme_name);
++    preview_update_all();
++    applying_theme_preview = FALSE;
++    live_theme_preview_changed = FALSE;
++    return TRUE;
++}
++
++static xmlNodePtr ensure_child_node(xmlNodePtr parent, const gchar *name)
++{
++    xmlNodePtr n;
++
++    for (n = parent ? parent->children : NULL; n; n = n->next) {
++        if (n->type == XML_ELEMENT_NODE && n->name &&
++            xmlStrcmp(n->name, (const xmlChar*)name) == 0)
++            return n;
++    }
++
++    return xmlNewTextChild(parent, NULL, (const xmlChar*)name, NULL);
++}
++
++static void run_labwc_reconfigure_for_theme(void)
++{
++    gchar *cmd;
++    const char *labwc_pid;
++
++    if (g_find_program_in_path("labwc")) {
++        g_spawn_command_line_sync("labwc --reconfigure", NULL, NULL, NULL, NULL);
++        return;
++    }
++
++    labwc_pid = g_getenv("LABWC_PID");
++    if (labwc_pid && *labwc_pid) {
++        cmd = g_strdup_printf("kill -HUP %s", labwc_pid);
++        g_spawn_command_line_sync(cmd, NULL, NULL, NULL, NULL);
++        g_free(cmd);
++    }
++}
++
++static gboolean apply_theme_name_preview(const gchar *name)
++{
++    gchar *path;
++    gchar *dir;
++    xmlDocPtr file_doc = NULL;
++    xmlNodePtr file_root;
++    xmlNodePtr theme_node;
++    xmlNodePtr name_node;
++    gboolean ok = FALSE;
++
++    if (!name || !*name)
++        return FALSE;
++
++    if (obc_config_file)
++        path = g_strdup(obc_config_file);
++    else
++        path = g_build_filename(g_get_user_config_dir(), "labwc", "rc.xml", NULL);
++
++    dir = g_path_get_dirname(path);
++    g_mkdir_with_parents(dir, 0700);
++    g_free(dir);
++
++    if (g_file_test(path, G_FILE_TEST_EXISTS))
++        file_doc = xmlReadFile(path, NULL, XML_PARSE_NOBLANKS);
++
++    if (!file_doc) {
++        file_doc = xmlNewDoc((const xmlChar*)"1.0");
++        file_root = xmlNewNode(NULL, (const xmlChar*)"labwc_config");
++        xmlDocSetRootElement(file_doc, file_root);
++    }
++
++    file_root = xmlDocGetRootElement(file_doc);
++    if (!file_root || xmlStrcmp(file_root->name, (const xmlChar*)"labwc_config") != 0) {
++        if (file_root)
++            xmlNodeSetName(file_root, (const xmlChar*)"labwc_config");
++        else {
++            file_root = xmlNewNode(NULL, (const xmlChar*)"labwc_config");
++            xmlDocSetRootElement(file_doc, file_root);
++        }
++    }
++
++    theme_node = ensure_child_node(file_root, "theme");
++    name_node = ensure_child_node(theme_node, "name");
++    xmlNodeSetContent(name_node, (const xmlChar*)name);
++
++    if (xmlSaveFormatFileEnc(path, file_doc, "UTF-8", 1) >= 0) {
++        run_labwc_reconfigure_for_theme();
++        ok = TRUE;
++    }
++
++    if (file_doc)
++        xmlFreeDoc(file_doc);
++    g_free(path);
++    return ok;
+ }
+ 
+ void on_install_theme_clicked(GtkButton *w, gpointer data)
+--- a/src/theme.h
++++ b/src/theme.h
+@@ -26,5 +26,8 @@
+ 
+ void theme_load_all();
+ void theme_install(const gchar *path);
++void theme_set_initial_name(const gchar *name);
++void theme_commit_current_name();
++gboolean theme_restore_initial_name();
+ 
+ #endif

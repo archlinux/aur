@@ -1,0 +1,1353 @@
+--- a/src/obconf.glade
++++ b/src/obconf.glade
+@@ -2,6 +2,98 @@
+ <interface>
+   <requires lib="gtk+" version="2.16"/>
+   <!-- interface-naming-policy project-wide -->
++  <object class="GtkSizeGroup" id="sg_titlebar_labels">
++    <property name="mode">horizontal</property>
++    <widgets>
++      <widget name="label15"/>
++      <widget name="label16"/>
++      <widget name="label10"/>
++      <widget name="label_maximized_decoration"/>
++    </widgets>
++  </object>
++  <object class="GtkSizeGroup" id="sg_titlebar_controls">
++    <property name="mode">horizontal</property>
++    <widgets>
++      <widget name="font_active"/>
++      <widget name="font_inactive"/>
++      <widget name="title_layout"/>
++      <widget name="maximized_decoration"/>
++    </widgets>
++  </object>
++  <object class="GtkSizeGroup" id="sg_fonts_labels">
++    <property name="mode">horizontal</property>
++    <widgets>
++      <widget name="label17"/>
++      <widget name="label18"/>
++      <widget name="label19"/>
++    </widgets>
++  </object>
++  <object class="GtkSizeGroup" id="sg_fonts_controls">
++    <property name="mode">horizontal</property>
++    <widgets>
++      <widget name="font_menu_header"/>
++      <widget name="font_menu_item"/>
++      <widget name="font_active_display"/>
++    </widgets>
++  </object>
++  <object class="GtkSizeGroup" id="sg_workspaces_labels">
++    <property name="mode">horizontal</property>
++    <widgets>
++      <widget name="label_desktops_number"/>
++      <widget name="label_workspace_prefix"/>
++      <widget name="label_desktops_initial"/>
++      <widget name="label_desktops_popup_time"/>
++    </widgets>
++  </object>
++  <object class="GtkSizeGroup" id="sg_workspaces_controls">
++    <property name="mode">horizontal</property>
++    <widgets>
++      <widget name="desktops_number"/>
++      <widget name="workspace_prefix"/>
++      <widget name="desktops_initial"/>
++      <widget name="desktops_popup_time"/>
++    </widgets>
++  </object>
++  <object class="GtkSizeGroup" id="sg_placement_labels">
++    <property name="mode">horizontal</property>
++    <widgets>
++      <widget name="label_placement_policy"/>
++      <widget name="label_cascade_offset"/>
++    </widgets>
++  </object>
++  <object class="GtkSizeGroup" id="sg_placement_controls">
++    <property name="mode">horizontal</property>
++    <widgets>
++      <widget name="placement_policy"/>
++      <widget name="hbox_cascade_offset"/>
++    </widgets>
++  </object>
++  <object class="GtkSizeGroup" id="sg_switcher_labels">
++    <property name="mode">horizontal</property>
++    <widgets>
++      <widget name="label_osd_style"/>
++      <widget name="label_switcher_osd_output"/>
++    </widgets>
++  </object>
++  <object class="GtkSizeGroup" id="sg_switcher_controls">
++    <property name="mode">horizontal</property>
++    <widgets>
++      <widget name="switcher_osd_style"/>
++      <widget name="switcher_osd_output"/>
++    </widgets>
++  </object>
++  <object class="GtkSizeGroup" id="sg_resize_labels">
++    <property name="mode">horizontal</property>
++    <widgets>
++      <widget name="label_resize_popup_show"/>
++    </widgets>
++  </object>
++  <object class="GtkSizeGroup" id="sg_resize_controls">
++    <property name="mode">horizontal</property>
++    <widgets>
++      <widget name="resize_popup_show"/>
++    </widgets>
++  </object>
+   <object class="GtkVBox" id="obconf_vbox">
+     <property name="visible">True</property>
+     <property name="can_focus">False</property>
+@@ -226,61 +318,87 @@
+                     <property name="can_focus">False</property>
+                     <property name="spacing">6</property>
+                     <child>
+-                      <object class="GtkLabel" id="label15">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                        <property name="xalign">0</property>
+-                        <property name="label" translatable="yes">Font for active window title:</property>
+-                        <property name="use_underline">True</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">0</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkFontButton" id="font_active">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="receives_default">True</property>
+-                        <property name="use_action_appearance">False</property>
+-                        <property name="use_font">True</property>
+-                        <signal name="font-set" handler="on_font_active_font_set" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">1</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkLabel" id="label16">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                        <property name="xalign">0</property>
+-                        <property name="label" translatable="yes">Font for inactive window title:</property>
+-                        <property name="use_underline">True</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">2</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkFontButton" id="font_inactive">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="receives_default">True</property>
+-                        <property name="use_action_appearance">False</property>
+-                        <property name="use_font">True</property>
+-                        <signal name="font-set" handler="on_font_inactive_font_set" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">3</property>
++                      <object class="GtkHBox" id="hbox_font_active_title">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="spacing">8</property>
++                        <child>
++                          <object class="GtkLabel" id="label15">
++                            <property name="visible">True</property>
++                            <property name="can_focus">False</property>
++                            <property name="xalign">0</property>
++                            <property name="label" translatable="yes">Font for active window title:</property>
++                            <property name="tooltip_text" translatable="yes">Font used for active window title text.</property>
++                            <property name="use_underline">True</property>
++                          </object>
++                          <packing>
++                            <property name="expand">False</property>
++                            <property name="fill">False</property>
++                            <property name="position">0</property>
++                          </packing>
++                        </child>
++                        <child>
++                          <object class="GtkFontButton" id="font_active">
++                            <property name="visible">True</property>
++                            <property name="can_focus">True</property>
++                            <property name="receives_default">True</property>
++                            <property name="use_action_appearance">False</property>
++                            <property name="use_font">True</property>
++                            <signal name="font-set" handler="on_font_active_font_set" swapped="no"/>
++                          </object>
++                          <packing>
++                            <property name="expand">True</property>
++                            <property name="fill">True</property>
++                            <property name="position">1</property>
++                          </packing>
++                        </child>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">0</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkHBox" id="hbox_font_inactive_title">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="spacing">8</property>
++                        <child>
++                          <object class="GtkLabel" id="label16">
++                            <property name="visible">True</property>
++                            <property name="can_focus">False</property>
++                            <property name="xalign">0</property>
++                            <property name="label" translatable="yes">Font for inactive window title:</property>
++                            <property name="tooltip_text" translatable="yes">Font used for inactive window title text.</property>
++                            <property name="use_underline">True</property>
++                          </object>
++                          <packing>
++                            <property name="expand">False</property>
++                            <property name="fill">False</property>
++                            <property name="position">0</property>
++                          </packing>
++                        </child>
++                        <child>
++                          <object class="GtkFontButton" id="font_inactive">
++                            <property name="visible">True</property>
++                            <property name="can_focus">True</property>
++                            <property name="receives_default">True</property>
++                            <property name="use_action_appearance">False</property>
++                            <property name="use_font">True</property>
++                            <signal name="font-set" handler="on_font_inactive_font_set" swapped="no"/>
++                          </object>
++                          <packing>
++                            <property name="expand">True</property>
++                            <property name="fill">True</property>
++                            <property name="position">1</property>
++                          </packing>
++                        </child>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">1</property>
+                       </packing>
+                     </child>
+                   </object>
+@@ -305,6 +423,7 @@
+                             <property name="visible">True</property>
+                             <property name="can_focus">False</property>
+                             <property name="label" translatable="yes">_Button order:</property>
++                            <property name="tooltip_text" translatable="yes">Order of titlebar buttons. Example: NIMC.</property>
+                             <property name="use_underline">True</property>
+                           </object>
+                           <packing>
+@@ -325,7 +444,7 @@
+                             <signal name="changed" handler="on_title_layout_changed" swapped="no"/>
+                           </object>
+                           <packing>
+-                            <property name="expand">False</property>
++                            <property name="expand">True</property>
+                             <property name="fill">True</property>
+                             <property name="position">1</property>
+                           </packing>
+@@ -354,6 +473,90 @@
+                         <property name="expand">False</property>
+                         <property name="fill">True</property>
+                         <property name="position">1</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkHSeparator" id="hseparator_titlebar_1">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">2</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkCheckButton" id="titlebar_show_title">
++                        <property name="label" translatable="yes">Show window title in titlebar</property>
++                        <property name="tooltip_text" translatable="yes">Show or hide window title text in the titlebar.</property>
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <property name="draw_indicator">True</property>
++                        <signal name="toggled" handler="on_titlebar_show_title_toggled" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">3</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkCheckButton" id="theme_keep_border">
++                        <property name="label" translatable="yes">Keep border when decorations are disabled</property>
++                        <property name="tooltip_text" translatable="yes">Keep a thin border when full window decorations are disabled.</property>
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <property name="draw_indicator">True</property>
++                        <signal name="toggled" handler="on_theme_keep_border_toggled" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">4</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkHBox" id="hbox_maximized_decoration">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="spacing">8</property>
++                        <child>
++                          <object class="GtkLabel" id="label_maximized_decoration">
++                            <property name="visible">True</property>
++                            <property name="can_focus">False</property>
++                            <property name="xalign">0</property>
++                            <property name="label" translatable="yes">Maximized decoration:</property>
++                            <property name="tooltip_text" translatable="yes">Choose decoration mode for maximized windows.</property>
++                          </object>
++                          <packing>
++                            <property name="expand">False</property>
++                            <property name="fill">False</property>
++                            <property name="position">0</property>
++                          </packing>
++                        </child>
++                        <child>
++                          <object class="GtkComboBoxText" id="maximized_decoration">
++                            <property name="visible">True</property>
++                            <property name="can_focus">False</property>
++                            <property name="active">0</property>
++                            <items>
++                              <item translatable="no">titlebar</item>
++                              <item translatable="no">none</item>
++                            </items>
++                            <signal name="changed" handler="on_maximized_decoration_changed" swapped="no"/>
++                          </object>
++                          <packing>
++                            <property name="expand">True</property>
++                            <property name="fill">True</property>
++                            <property name="position">1</property>
++                          </packing>
++                        </child>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">True</property>
++                        <property name="position">5</property>
+                       </packing>
+                     </child>
+                   </object>
+@@ -385,22 +588,24 @@
+                 <property name="visible">True</property>
+                 <property name="can_focus">False</property>
+                 <property name="border_width">12</property>
+-                <child>
+-                  <object class="GtkVBox" id="vbox2">
+-                    <property name="visible">True</property>
+-                    <property name="can_focus">False</property>
+-                    <property name="spacing">6</property>
++                <property name="spacing">6</property>
++                <child>
++                  <object class="GtkHBox" id="hbox_font_menu_header">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="spacing">8</property>
+                     <child>
+                       <object class="GtkLabel" id="label17">
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="xalign">0</property>
+                         <property name="label" translatable="yes">Font for menu header:</property>
++                        <property name="tooltip_text" translatable="yes">Font used for menu headers.</property>
+                         <property name="use_underline">True</property>
+                       </object>
+                       <packing>
+                         <property name="expand">False</property>
+-                        <property name="fill">True</property>
++                        <property name="fill">False</property>
+                         <property name="position">0</property>
+                       </packing>
+                     </child>
+@@ -419,18 +624,31 @@
+                         <property name="position">1</property>
+                       </packing>
+                     </child>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">0</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkHBox" id="hbox_font_menu_item">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="spacing">8</property>
+                     <child>
+                       <object class="GtkLabel" id="label18">
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="xalign">0</property>
+                         <property name="label" translatable="yes">Font for menu Item:</property>
++                        <property name="tooltip_text" translatable="yes">Font used for menu items.</property>
+                         <property name="use_underline">True</property>
+                       </object>
+                       <packing>
+                         <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">2</property>
++                        <property name="fill">False</property>
++                        <property name="position">0</property>
+                       </packing>
+                     </child>
+                     <child>
+@@ -445,21 +663,34 @@
+                       <packing>
+                         <property name="expand">True</property>
+                         <property name="fill">True</property>
+-                        <property name="position">3</property>
+-                      </packing>
+-                    </child>
++                        <property name="position">1</property>
++                      </packing>
++                    </child>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">1</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkHBox" id="hbox_font_active_display">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="spacing">8</property>
+                     <child>
+                       <object class="GtkLabel" id="label19">
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="xalign">0</property>
+                         <property name="label" translatable="yes">Font for on-screen display:</property>
++                        <property name="tooltip_text" translatable="yes">Font used by on-screen display popups.</property>
+                         <property name="use_underline">True</property>
+                       </object>
+                       <packing>
+-                        <property name="expand">True</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">4</property>
++                        <property name="expand">False</property>
++                        <property name="fill">False</property>
++                        <property name="position">0</property>
+                       </packing>
+                     </child>
+                     <child>
+@@ -474,31 +705,56 @@
+                       <packing>
+                         <property name="expand">True</property>
+                         <property name="fill">True</property>
+-                        <property name="position">5</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkHSeparator" id="hseparator_misc_1">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">6</property>
+-                      </packing>
+-                    </child>
++                        <property name="position">1</property>
++                      </packing>
++                    </child>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">2</property>
++                  </packing>
++                </child>
++              </object>
++              <packing>
++                <property name="position">2</property>
++              </packing>
++            </child>
++            <child type="tab">
++              <object class="GtkLabel" id="label20">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="xalign">0</property>
++                <property name="label" translatable="yes">Fonts</property>
++              </object>
++              <packing>
++                <property name="position">2</property>
++                <property name="tab_fill">False</property>
++              </packing>
++            </child>
++            <child>
++              <object class="GtkVBox" id="vbox_workspaces">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="border_width">12</property>
++                <property name="spacing">6</property>
++                <child>
++                  <object class="GtkHBox" id="hbox_desktops_number">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="spacing">8</property>
+                     <child>
+                       <object class="GtkLabel" id="label_desktops_number">
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="xalign">0</property>
+                         <property name="label" translatable="yes">Number of workspaces:</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">11</property>
++                        <property name="tooltip_text" translatable="yes">Total number of virtual workspaces.</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">False</property>
++                        <property name="position">0</property>
+                       </packing>
+                     </child>
+                     <child>
+@@ -514,22 +770,177 @@
+                         <signal name="value-changed" handler="on_desktops_number_value_changed" swapped="no"/>
+                       </object>
+                       <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">12</property>
+-                      </packing>
+-                    </child>
++                        <property name="expand">True</property>
++                        <property name="fill">True</property>
++                        <property name="position">1</property>
++                      </packing>
++                    </child>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">0</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkHBox" id="hbox_workspace_prefix">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="spacing">8</property>
++                    <child>
++                      <object class="GtkLabel" id="label_workspace_prefix">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Workspace name prefix:</property>
++                        <property name="tooltip_text" translatable="yes">Prefix used in generated workspace names.</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">False</property>
++                        <property name="position">0</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkEntry" id="workspace_prefix">
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <property name="invisible_char">●</property>
++                        <property name="primary_icon_activatable">False</property>
++                        <property name="secondary_icon_activatable">False</property>
++                        <property name="primary_icon_sensitive">True</property>
++                        <property name="secondary_icon_sensitive">True</property>
++                        <signal name="changed" handler="on_workspace_prefix_changed" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">True</property>
++                        <property name="fill">True</property>
++                        <property name="position">1</property>
++                      </packing>
++                    </child>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">1</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkHBox" id="hbox_desktops_initial">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="spacing">8</property>
++                    <child>
++                      <object class="GtkLabel" id="label_desktops_initial">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Initial workspace:</property>
++                        <property name="tooltip_text" translatable="yes">Workspace shown on session start.</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">False</property>
++                        <property name="position">0</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkSpinButton" id="desktops_initial">
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <signal name="value-changed" handler="on_desktops_initial_value_changed" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">True</property>
++                        <property name="fill">True</property>
++                        <property name="position">1</property>
++                      </packing>
++                    </child>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">2</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkHBox" id="hbox_desktops_popup_time">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="spacing">8</property>
++                    <child>
++                      <object class="GtkLabel" id="label_desktops_popup_time">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Workspace OSD popup time (ms):</property>
++                        <property name="tooltip_text" translatable="yes">Duration of workspace OSD popup in milliseconds.</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">False</property>
++                        <property name="position">0</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkSpinButton" id="desktops_popup_time">
++                        <property name="visible">True</property>
++                        <property name="can_focus">True</property>
++                        <signal name="value-changed" handler="on_desktops_popup_time_value_changed" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">True</property>
++                        <property name="fill">True</property>
++                        <property name="position">1</property>
++                      </packing>
++                    </child>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">3</property>
++                  </packing>
++                </child>
++              </object>
++              <packing>
++                <property name="position">3</property>
++              </packing>
++            </child>
++            <child type="tab">
++              <object class="GtkLabel" id="label_workspaces_tab">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="xalign">0</property>
++                <property name="label" translatable="yes">Workspaces</property>
++              </object>
++              <packing>
++                <property name="position">3</property>
++                <property name="tab_fill">False</property>
++              </packing>
++            </child>
++            <child>
++              <object class="GtkVBox" id="vbox_placement">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="border_width">12</property>
++                <property name="spacing">6</property>
++                <child>
++                  <object class="GtkHBox" id="hbox_placement_policy">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="spacing">8</property>
+                     <child>
+                       <object class="GtkLabel" id="label_placement_policy">
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="xalign">0</property>
+                         <property name="label" translatable="yes">Window placement:</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">9</property>
++                        <property name="tooltip_text" translatable="yes">Policy for placing newly opened windows.</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">False</property>
++                        <property name="position">0</property>
+                       </packing>
+                     </child>
+                     <child>
+@@ -546,174 +957,35 @@
+                         <signal name="changed" handler="on_placement_policy_changed" swapped="no"/>
+                       </object>
+                       <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">10</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkLabel" id="label_osd_style">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                        <property name="xalign">0</property>
+-                        <property name="label" translatable="yes">Window switcher OSD style:</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">21</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkComboBoxText" id="switcher_osd_style">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                        <property name="active">0</property>
+-                        <items>
+-                          <item translatable="no">classic</item>
+-                          <item translatable="no">thumbnail</item>
+-                        </items>
+-                        <signal name="changed" handler="on_switcher_osd_style_changed" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">22</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkLabel" id="label_resize_popup_show">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                        <property name="xalign">0</property>
+-                        <property name="label" translatable="yes">Resize indicator:</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">29</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkComboBoxText" id="resize_popup_show">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                        <property name="active">0</property>
+-                        <items>
+-                          <item translatable="no">Never</item>
+-                          <item translatable="no">Always</item>
+-                          <item translatable="no">Nonpixel</item>
+-                        </items>
+-                        <signal name="changed" handler="on_resize_popup_show_changed" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">30</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkLabel" id="label_workspace_prefix">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                        <property name="xalign">0</property>
+-                        <property name="label" translatable="yes">Workspace name prefix:</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">7</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkEntry" id="workspace_prefix">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="invisible_char">●</property>
+-                        <property name="primary_icon_activatable">False</property>
+-                        <property name="secondary_icon_activatable">False</property>
+-                        <property name="primary_icon_sensitive">True</property>
+-                        <property name="secondary_icon_sensitive">True</property>
+-                        <signal name="changed" handler="on_workspace_prefix_changed" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">8</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkLabel" id="label_desktops_initial">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                        <property name="xalign">0</property>
+-                        <property name="label" translatable="yes">Initial workspace:</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">13</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkSpinButton" id="desktops_initial">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <signal name="value-changed" handler="on_desktops_initial_value_changed" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">14</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkLabel" id="label_desktops_popup_time">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                        <property name="xalign">0</property>
+-                        <property name="label" translatable="yes">Workspace OSD popup time (ms):</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">16</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkSpinButton" id="desktops_popup_time">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <signal name="value-changed" handler="on_desktops_popup_time_value_changed" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">17</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkHSeparator" id="hseparator_misc_2">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">15</property>
+-                      </packing>
+-                    </child>
++                        <property name="expand">True</property>
++                        <property name="fill">True</property>
++                        <property name="position">1</property>
++                      </packing>
++                    </child>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">0</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkHBox" id="hbox_cascade_offset_row">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="spacing">8</property>
+                     <child>
+                       <object class="GtkLabel" id="label_cascade_offset">
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="xalign">0</property>
+                         <property name="label" translatable="yes">Cascade offset (x,y):</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">18</property>
++                        <property name="tooltip_text" translatable="yes">X/Y offset between windows in cascade placement mode.</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">False</property>
++                        <property name="position">0</property>
+                       </packing>
+                     </child>
+                     <child>
+@@ -747,47 +1019,116 @@
+                         </child>
+                       </object>
+                       <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">19</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkHSeparator" id="hseparator_misc_3">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">20</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkCheckButton" id="switcher_osd_show">
+-                        <property name="label" translatable="yes">Show window switcher OSD</property>
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="draw_indicator">True</property>
+-                        <signal name="toggled" handler="on_switcher_osd_show_toggled" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">23</property>
+-                      </packing>
+-                    </child>
++                        <property name="expand">True</property>
++                        <property name="fill">True</property>
++                        <property name="position">1</property>
++                      </packing>
++                    </child>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">1</property>
++                  </packing>
++                </child>
++              </object>
++              <packing>
++                <property name="position">4</property>
++              </packing>
++            </child>
++            <child type="tab">
++              <object class="GtkLabel" id="label_placement_tab">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="xalign">0</property>
++                <property name="label" translatable="yes">Placement</property>
++              </object>
++              <packing>
++                <property name="position">4</property>
++                <property name="tab_fill">False</property>
++              </packing>
++            </child>
++            <child>
++              <object class="GtkVBox" id="vbox_switcher">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="border_width">12</property>
++                <property name="spacing">6</property>
++                <child>
++                  <object class="GtkHBox" id="hbox_switcher_osd_style">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="spacing">8</property>
++                    <child>
++                      <object class="GtkLabel" id="label_osd_style">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Window switcher OSD style:</property>
++                        <property name="tooltip_text" translatable="yes">Visual style for Alt-Tab switcher OSD.</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">False</property>
++                        <property name="position">0</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkComboBoxText" id="switcher_osd_style">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="active">0</property>
++                        <items>
++                          <item translatable="no">classic</item>
++                          <item translatable="no">thumbnail</item>
++                        </items>
++                        <signal name="changed" handler="on_switcher_osd_style_changed" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">True</property>
++                        <property name="fill">True</property>
++                        <property name="position">1</property>
++                      </packing>
++                    </child>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">0</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkCheckButton" id="switcher_osd_show">
++                    <property name="label" translatable="yes">Show window switcher OSD</property>
++                    <property name="tooltip_text" translatable="yes">Enable on-screen window switcher popup.</property>
++                    <property name="visible">True</property>
++                    <property name="can_focus">True</property>
++                    <property name="draw_indicator">True</property>
++                    <signal name="toggled" handler="on_switcher_osd_show_toggled" swapped="no"/>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">2</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkHBox" id="hbox_switcher_osd_output">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="spacing">8</property>
+                     <child>
+                       <object class="GtkLabel" id="label_switcher_osd_output">
+                         <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="xalign">0</property>
+                         <property name="label" translatable="yes">Window switcher OSD output:</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">24</property>
++                        <property name="tooltip_text" translatable="yes">Monitor selection for switcher OSD output.</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">False</property>
++                        <property name="position">0</property>
+                       </packing>
+                     </child>
+                     <child>
+@@ -803,154 +1144,144 @@
+                         <signal name="changed" handler="on_switcher_osd_output_changed" swapped="no"/>
+                       </object>
+                       <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">25</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkCheckButton" id="switcher_preview">
+-                        <property name="label" translatable="yes">Show switcher preview</property>
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="draw_indicator">True</property>
+-                        <signal name="toggled" handler="on_switcher_preview_toggled" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">26</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkCheckButton" id="switcher_outlines">
+-                        <property name="label" translatable="yes">Show switcher outlines</property>
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="draw_indicator">True</property>
+-                        <signal name="toggled" handler="on_switcher_outlines_toggled" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">27</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkHSeparator" id="hseparator_misc_4">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">28</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkCheckButton" id="resize_draw_contents">
+-                        <property name="label" translatable="yes">Draw contents while resizing</property>
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="draw_indicator">True</property>
+-                        <signal name="toggled" handler="on_resize_draw_contents_toggled" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">31</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkHSeparator" id="hseparator_misc_5">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">32</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkCheckButton" id="titlebar_show_title">
+-                        <property name="label" translatable="yes">Show window title in titlebar</property>
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="draw_indicator">True</property>
+-                        <signal name="toggled" handler="on_titlebar_show_title_toggled" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">33</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkCheckButton" id="theme_keep_border">
+-                        <property name="label" translatable="yes">Keep border when decorations are disabled</property>
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">True</property>
+-                        <property name="draw_indicator">True</property>
+-                        <signal name="toggled" handler="on_theme_keep_border_toggled" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">34</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkLabel" id="label_maximized_decoration">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                        <property name="xalign">0</property>
+-                        <property name="label" translatable="yes">Maximized decoration:</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">35</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+-                      <object class="GtkComboBoxText" id="maximized_decoration">
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                        <property name="active">0</property>
+-                        <items>
+-                          <item translatable="no">titlebar</item>
+-                          <item translatable="no">none</item>
+-                        </items>
+-                        <signal name="changed" handler="on_maximized_decoration_changed" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">36</property>
+-                      </packing>
+-                    </child>
+-                  </object>
+-                  <packing>
+-                    <property name="expand">False</property>
+-                    <property name="fill">True</property>
+-                    <property name="position">0</property>
++                        <property name="expand">True</property>
++                        <property name="fill">True</property>
++                        <property name="position">1</property>
++                      </packing>
++                    </child>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">3</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkCheckButton" id="switcher_preview">
++                    <property name="label" translatable="yes">Show switcher preview</property>
++                    <property name="tooltip_text" translatable="yes">Show live window previews in switcher.</property>
++                    <property name="visible">True</property>
++                    <property name="can_focus">True</property>
++                    <property name="draw_indicator">True</property>
++                    <signal name="toggled" handler="on_switcher_preview_toggled" swapped="no"/>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">5</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkCheckButton" id="switcher_outlines">
++                    <property name="label" translatable="yes">Show switcher outlines</property>
++                    <property name="tooltip_text" translatable="yes">Show window outlines in switcher mode.</property>
++                    <property name="visible">True</property>
++                    <property name="can_focus">True</property>
++                    <property name="draw_indicator">True</property>
++                    <signal name="toggled" handler="on_switcher_outlines_toggled" swapped="no"/>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">6</property>
+                   </packing>
+                 </child>
+               </object>
+               <packing>
+-                <property name="position">2</property>
++                <property name="position">5</property>
+               </packing>
+             </child>
+             <child type="tab">
+-              <object class="GtkLabel" id="label20">
++              <object class="GtkLabel" id="label_switcher_tab">
+                 <property name="visible">True</property>
+                 <property name="can_focus">False</property>
+                 <property name="xalign">0</property>
+-                <property name="label" translatable="yes">Misc.</property>
++                <property name="label" translatable="yes">Switcher</property>
+               </object>
+               <packing>
+-                <property name="position">2</property>
++                <property name="position">5</property>
++                <property name="tab_fill">False</property>
++              </packing>
++            </child>
++            <child>
++              <object class="GtkVBox" id="vbox_resize">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="border_width">12</property>
++                <property name="spacing">6</property>
++                <child>
++                  <object class="GtkHBox" id="hbox_resize_popup_show">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="spacing">8</property>
++                    <child>
++                      <object class="GtkLabel" id="label_resize_popup_show">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="xalign">0</property>
++                        <property name="label" translatable="yes">Resize indicator:</property>
++                        <property name="tooltip_text" translatable="yes">When to show resize OSD indicator.</property>
++                      </object>
++                      <packing>
++                        <property name="expand">False</property>
++                        <property name="fill">False</property>
++                        <property name="position">0</property>
++                      </packing>
++                    </child>
++                    <child>
++                      <object class="GtkComboBoxText" id="resize_popup_show">
++                        <property name="visible">True</property>
++                        <property name="can_focus">False</property>
++                        <property name="active">0</property>
++                        <items>
++                          <item translatable="no">Never</item>
++                          <item translatable="no">Always</item>
++                          <item translatable="no">Nonpixel</item>
++                        </items>
++                        <signal name="changed" handler="on_resize_popup_show_changed" swapped="no"/>
++                      </object>
++                      <packing>
++                        <property name="expand">True</property>
++                        <property name="fill">True</property>
++                        <property name="position">1</property>
++                      </packing>
++                    </child>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">0</property>
++                  </packing>
++                </child>
++                <child>
++                  <object class="GtkCheckButton" id="resize_draw_contents">
++                    <property name="label" translatable="yes">Draw contents while resizing</property>
++                    <property name="tooltip_text" translatable="yes">Redraw window content continuously while resizing.</property>
++                    <property name="visible">True</property>
++                    <property name="can_focus">True</property>
++                    <property name="draw_indicator">True</property>
++                    <signal name="toggled" handler="on_resize_draw_contents_toggled" swapped="no"/>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">2</property>
++                  </packing>
++                </child>
++              </object>
++              <packing>
++                <property name="position">6</property>
++              </packing>
++            </child>
++            <child type="tab">
++              <object class="GtkLabel" id="label_resize_tab">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="xalign">0</property>
++                <property name="label" translatable="yes">Resize</property>
++              </object>
++              <packing>
++                <property name="position">6</property>
+                 <property name="tab_fill">False</property>
+               </packing>
+             </child>

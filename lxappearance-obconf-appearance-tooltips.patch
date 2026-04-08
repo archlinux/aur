@@ -1,0 +1,102 @@
+--- a/src/appearance.c
++++ b/src/appearance.c
+@@ -39,16 +39,43 @@
+ static void set_font_default(GtkWidget *w, const gchar *place, const gchar *preview_name);
+ void on_misc_reset_defaults_clicked(GtkButton *w, gpointer data);
+ 
+-static void set_rcxml_tip(const gchar *widget_id, const gchar *key)
++static void set_param_tip(const gchar *widget_id, const gchar *label_id, const gchar *key)
+ {
+     GtkWidget *w = get_widget(widget_id);
++    GtkWidget *l = label_id ? get_widget(label_id) : NULL;
++    gchar *w_tip = NULL;
++    gchar *l_tip = NULL;
++    const gchar *desc = NULL;
++    gchar *key_tip;
+     gchar *tip;
+ 
+-    if (!w || !key)
++    if ((!w && !l) || !key)
+         return;
+ 
+-    tip = g_strdup_printf("labwc: %s", key);
+-    gtk_widget_set_tooltip_text(w, tip);
++    if (w)
++        w_tip = gtk_widget_get_tooltip_text(w);
++    if (l)
++        l_tip = gtk_widget_get_tooltip_text(l);
++
++    if (l_tip && *l_tip)
++        desc = l_tip;
++    else if (w_tip && *w_tip)
++        desc = w_tip;
++
++    key_tip = g_strdup_printf(_("Config key: %s"), key);
++    if (desc && *desc)
++        tip = g_strdup_printf("%s\n%s", desc, key_tip);
++    else
++        tip = g_strdup(key_tip);
++
++    if (w)
++        gtk_widget_set_tooltip_text(w, tip);
++    if (l)
++        gtk_widget_set_tooltip_text(l, tip);
++
++    g_free(key_tip);
++    g_free(w_tip);
++    g_free(l_tip);
+     g_free(tip);
+ }
+ 
+@@ -476,23 +503,34 @@
+     gtk_entry_set_text(GTK_ENTRY(w), value);
+     g_free(value);
+ 
+-    set_rcxml_tip("workspace_prefix", "desktops/prefix");
+-    set_rcxml_tip("desktops_number", "desktops/number (or desktops@number)");
+-    set_rcxml_tip("desktops_initial", "desktops/initial");
+-    set_rcxml_tip("desktops_popup_time", "desktops/popupTime");
+-    set_rcxml_tip("placement_policy", "placement/policy");
+-    set_rcxml_tip("cascade_offset_x", "placement/cascadeOffset/x");
+-    set_rcxml_tip("cascade_offset_y", "placement/cascadeOffset/y");
+-    set_rcxml_tip("switcher_osd_style", "windowSwitcher/osd@style");
+-    set_rcxml_tip("switcher_osd_show", "windowSwitcher/osd@show");
+-    set_rcxml_tip("switcher_osd_output", "windowSwitcher/osd@output");
+-    set_rcxml_tip("switcher_preview", "windowSwitcher@preview");
+-    set_rcxml_tip("switcher_outlines", "windowSwitcher@outlines");
+-    set_rcxml_tip("resize_popup_show", "resize/popupShow");
+-    set_rcxml_tip("resize_draw_contents", "resize/drawContents");
+-    set_rcxml_tip("titlebar_show_title", "theme/titlebar/showTitle");
+-    set_rcxml_tip("theme_keep_border", "theme/keepBorder");
+-    set_rcxml_tip("maximized_decoration", "theme/maximizedDecoration");
++    set_param_tip("title_layout", "label10", "theme/titlebar/layout");
++    set_param_tip("font_active", "label15", "theme/font[@place='ActiveWindow']");
++    set_param_tip("font_inactive", "label16", "theme/font[@place='InactiveWindow']");
++    set_param_tip("font_menu_header", "label17", "theme/font[@place='MenuHeader']");
++    set_param_tip("font_menu_item", "label18", "theme/font[@place='MenuItem']");
++    set_param_tip("font_active_display", "label19", "theme/font[@place='OnScreenDisplay']");
++
++    set_param_tip("workspace_prefix", "label_workspace_prefix", "desktops/prefix");
++    set_param_tip("desktops_number", "label_desktops_number", "desktops/number (or desktops@number)");
++    set_param_tip("desktops_initial", "label_desktops_initial", "desktops/initial");
++    set_param_tip("desktops_popup_time", "label_desktops_popup_time", "desktops/popupTime");
++
++    set_param_tip("placement_policy", "label_placement_policy", "placement/policy");
++    set_param_tip("cascade_offset_x", "label_cascade_offset", "placement/cascadeOffset/x");
++    set_param_tip("cascade_offset_y", NULL, "placement/cascadeOffset/y");
++
++    set_param_tip("switcher_osd_style", "label_osd_style", "windowSwitcher/osd@style");
++    set_param_tip("switcher_osd_show", NULL, "windowSwitcher/osd@show");
++    set_param_tip("switcher_osd_output", "label_switcher_osd_output", "windowSwitcher/osd@output");
++    set_param_tip("switcher_preview", NULL, "windowSwitcher@preview");
++    set_param_tip("switcher_outlines", NULL, "windowSwitcher@outlines");
++
++    set_param_tip("resize_popup_show", "label_resize_popup_show", "resize/popupShow");
++    set_param_tip("resize_draw_contents", NULL, "resize/drawContents");
++
++    set_param_tip("titlebar_show_title", NULL, "theme/titlebar/showTitle");
++    set_param_tip("theme_keep_border", NULL, "theme/keepBorder");
++    set_param_tip("maximized_decoration", "label_maximized_decoration", "theme/maximizedDecoration");
+ 
+     mapping = FALSE;
+ }
