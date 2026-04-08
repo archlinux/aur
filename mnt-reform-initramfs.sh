@@ -2,7 +2,7 @@
 set -euo pipefail
 shopt -s nullglob
 
-KMOD_DIRS=(/usr/lib/modules/*-mnt-reform)
+KMOD_DIRS=(/usr/lib/modules/*-reform*)
 
 if (( ${#KMOD_DIRS[@]} == 0 )); then
   echo "==> No linux-mnt-reform kernels found, skipping initramfs"
