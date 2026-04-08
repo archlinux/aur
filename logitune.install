@@ -10,10 +10,20 @@ post_install() {
     echo "    1. Unplug and replug your Logitech device (or reboot)"
     echo "    2. Run: logitune"
     echo ""
-    echo "    GNOME users: the Shell extension for per-app profiles is"
-    echo "    installed automatically on first run. Log out and back in"
-    echo "    after the first launch for it to take effect."
-    echo ""
+
+    # Detect GNOME and give specific instructions
+    _de=$(printenv XDG_CURRENT_DESKTOP 2>/dev/null | tr '[:upper:]' '[:lower:]')
+    case "$_de" in
+        *gnome*)
+            echo "    GNOME detected:"
+            echo "    - The focus tracking extension installs on first run."
+            echo "      Log out and back in after the first launch."
+            echo "    - For tray icon support, install AppIndicator:"
+            echo "      gnome-extensions install appindicatorsupport@rgcjonas.gmail.com"
+            echo "      (or install 'gnome-shell-extension-appindicator' from your repos)"
+            echo ""
+            ;;
+    esac
 }
 
 post_upgrade() {

@@ -9,7 +9,8 @@ license=('GPL-3.0-or-later')
 install=logitune.install
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-5compat' 'systemd-libs')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-optdepends=('gnome-shell: per-app profile switching on GNOME')
+optdepends=('gnome-shell: per-app profile switching on GNOME'
+             'gnome-shell-extension-appindicator: tray icon on GNOME')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('d32932655cc2586b1c3a91f2302611d6642ef28095a121c25484c5bfa60d6481')
 
