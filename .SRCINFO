@@ -1,6 +1,6 @@
 pkgbase = riprip-bin
 	pkgdesc = A specialized audio CD-ripper optimized for track recovery
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/Blobfolio/riprip
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = riprip-bin
 	depends = libcdio
 	provides = riprip
 	conflicts = riprip
-	source_x86_64 = https://github.com/Blobfolio/riprip/releases/download/v0.5.5/riprip_0.5.5-1_amd64.deb
-	sha256sums_x86_64 = dcb6bd4145612651b6b537542b20e5b6b3ac231f03bd1e7a4243a3cb96598724
+	source_x86_64 = https://github.com/Blobfolio/riprip/releases/download/v0.5.6/riprip_0.5.6-1_amd64.deb
+	sha256sums_x86_64 = efb75ec10b9ecacced7ac78400fdfd9d6bc8311a8e131b35f4a4fde0fd89a123
 
 pkgname = riprip-bin
