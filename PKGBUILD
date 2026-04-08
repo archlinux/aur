@@ -5,7 +5,7 @@ _pkgname=gitcredits
 pkgname=${_pkgname}-bin
 pkgdesc="Git log doesn't do them justice. Turn your contributors into movie stars."
 
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('7d66d9ba89a60a296e1ee3e92e85b3b5b144a2ffb706d7134e8b4fff891d572f')
-sha256sums_aarch64=('b4cc40d266af369c0590f0b2a56dfed8e24b7f15ce35001c1957fe3b1d7aa219')
+sha256sums_x86_64=('1579fdff2342d9f0e07a257313f9960a7018d6f7c01e343df18389c20156185e')
+sha256sums_aarch64=('ef1264c8d7c82326d4116ad35cef81f1c8437e54db206132b4acd29bc74c26a6')
 
 
 package() {
