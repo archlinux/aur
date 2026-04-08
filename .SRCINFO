@@ -1,7 +1,7 @@
 pkgbase = pakcs
-	pkgdesc = The Portland Aachen Kiel Curry System
+	pkgdesc = PAKCS is an implementation of the multi-paradigm declarative language Curry jointly developed by the Portland State University, the Aachen University of Technology, and the University of Kiel.
 	pkgver = 3.9.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.curry-lang.org/pakcs
 	install = pakcs.install
 	arch = x86_64

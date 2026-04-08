@@ -1,10 +1,14 @@
 # Maintainer: Clemens Schmid <clemens [ a t ] nevrome [-d-o-t-] de>
 # Contributor: Tobias Erthal <archabuser [ a t ] mailbox [-d-o-t-] org>
 
+# NOTE:
+# Tests are extremely slow (>60 minutes) and disabled by default.
+# Enable with: RUN_CHECKS=1 makepkg
+
 pkgname=pakcs
 pkgver=3.9.0
-pkgrel=4
-pkgdesc="The Portland Aachen Kiel Curry System"
+pkgrel=5
+pkgdesc="PAKCS is an implementation of the multi-paradigm declarative language Curry jointly developed by the Portland State University, the Aachen University of Technology, and the University of Kiel."
 arch=('x86_64')
 url="https://www.curry-lang.org/pakcs"
 license=('custom:PAKCS License')
@@ -28,7 +32,7 @@ build() {
 	fi
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	msg2 "Building PAKCS (can take more than 10min)..."
+	msg2 "Building PAKCS (may take more than 10min)..."
 	make	DISTPKGINSTALL=yes \
 			CURRYLIBSDIR="${PWD}/lib" \
 			CURRYTOOLSDIR="${PWD}/currytools" \
@@ -41,12 +45,13 @@ build() {
 }
 
 check() {
-	if [[ -n "$SKIPCHECK" ]]; then
-	  msg2 "Skipping tests (SKIPCHECK set)"
+	if [[ -z "$RUN_CHECKS" ]]; then
+	  msg2 "Skipping tests."
+	  msg2 "Set RUN_CHECKS=1 to enable (may take over an hour)."
 	  return 0
 	fi
 	
-	msg2 "Running CPM self-tests (can take more than 60min; skip with SKIPCHECK=1)..."
+	msg2 "Running self-tests (may take over an hour)..."
 
 	_CURRYBIN="${srcdir}/${pkgname}-${pkgver}/bin/"
 	PATH=$PATH:${_CURRYBIN}
