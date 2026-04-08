@@ -1,13 +1,14 @@
-# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Aseem Athale <athaleaseem@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-func-timeout
 epoch=1
 pkgver=4.3.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Python module which allows you to specify timeouts when calling any existing function. Also provides support for stoppable-threads"
 url="https://github.com/kata198/func_timeout"
-license=('LGPL')
+license=('LGPL-3.0-or-later')
 arch=('any')
 depends=('python')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
