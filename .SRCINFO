@@ -1,14 +1,13 @@
 pkgbase = pakcs
 	pkgdesc = PAKCS is an implementation of the multi-paradigm declarative language Curry jointly developed by the Portland State University, the Aachen University of Technology, and the University of Kiel.
 	pkgver = 3.9.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.curry-lang.org/pakcs
 	install = pakcs.install
 	arch = x86_64
 	license = custom:PAKCS License
 	makedepends = base-devel
 	makedepends = stack
-	makedepends = texlive-core
 	depends = swi-prolog
 	optdepends = rlwrap: for command line editing and history functionality
 	provides = curry-compiler

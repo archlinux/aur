@@ -7,13 +7,13 @@
 
 pkgname=pakcs
 pkgver=3.9.0
-pkgrel=5
+pkgrel=6
 pkgdesc="PAKCS is an implementation of the multi-paradigm declarative language Curry jointly developed by the Portland State University, the Aachen University of Technology, and the University of Kiel."
 arch=('x86_64')
 url="https://www.curry-lang.org/pakcs"
 license=('custom:PAKCS License')
 depends=('swi-prolog')
-makedepends=('base-devel' 'stack' 'texlive-core')
+makedepends=('base-devel' 'stack')
 optdepends=('rlwrap: for command line editing and history functionality')
 install=pakcs.install
 source=("https://www.curry-lang.org/pakcs/download/${pkgname}-${pkgver}-src.tar.gz" 'skip_dir_check.patch')
@@ -38,10 +38,6 @@ build() {
 			CURRYTOOLSDIR="${PWD}/currytools" \
 			PAKCSINSTALLDIR="/usr/lib/${pkgname}"
 
-	# build cypm documentation
-	cd currytools/cpm/docs
-	pdflatex manual.tex
-	pdflatex manual.tex
 }
 
 check() {
@@ -103,7 +99,6 @@ package() {
 	# install documentation and examples
 	install -Dm644 man/*.1 -t "${pkgdir}/usr/share/man/man1/"
 	install -Dm644 docs/* -t "${pkgdir}/usr/share/doc/${pkgname}/"
-	install -Dm644 currytools/cpm/docs/manual.pdf "${pkgdir}/usr/share/doc/${pkgname}/cpm/Manual.pdf"
 
 	# patch certain files
 	sed -i 's|'${srcdir}/${pkgname}-${pkgver}'|/usr/lib/'${pkgname}'|g' "${pkgdir}/usr/lib/${pkgname}/bin/pakcs"
