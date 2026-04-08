@@ -1,6 +1,6 @@
 pkgbase = python-skidl
 	pkgdesc = A Python package for textually describing electronic circuit schematics.
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://pypi.org/project/skidl
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-skidl
 	options = !emptydirs
 	options = !strip
 	options = !debug
-	source = skidl-2.2.2.tar.gz::https://files.pythonhosted.org/packages/source/s/skidl/skidl-2.2.2.tar.gz
-	sha256sums = b7b50084ef0d913a93bddbee9c921367c399b8228243a349bd4fb546452374da
+	source = skidl-2.2.3.tar.gz::https://files.pythonhosted.org/packages/source/s/skidl/skidl-2.2.3.tar.gz
+	sha256sums = cbbe5171cec4c8658fd6dd8d7351693393c09ab16263b6a22fdc64d5cc8669ca
 
 pkgname = python-skidl
