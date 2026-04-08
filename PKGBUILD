@@ -14,8 +14,8 @@ depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-tools qt6-wayland ttf-lib
 makedepends=(autoconf-archive automake cmake git libtool make nasm ninja patch pkg-config tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
-  "git+$url#commit=22e8e99d4c0d7224b310ad978455c468f060f907" # 2026-03-20
-  "git+https://github.com/microsoft/vcpkg.git#commit=48cfe1e0e928341709d97fc3d2eff10ad6262c96" # 2026-03-14 (vcpkg.json:builtin-baseline)
+  "git+$url#commit=243465391a0d36f4ff8c53a51d2c9321ee111037" # 2026-04-08
+  "git+https://github.com/microsoft/vcpkg.git#commit=48cfe1e0e928341709d97fc3d2eff10ad6262c96" # 2026-04-08 (vcpkg.json:builtin-baseline)
   "hb-fc-whole-archive.patch"
   "new-tab.patch"
 )
