@@ -1,8 +1,8 @@
 # Maintainer: CrypticCreator <crypticcreator@noreply.codeberg.org>
 pkgname=selene-player-git
 _pkgname=selene-player
-pkgver=0.4.0.r0.gfc71869
-pkgrel=1
+pkgver=0.5.0.r0.g4decef3
+pkgrel=0
 pkgdesc="A feature complete music player and metadata editor"
 
 url="https://codeberg.org/CrypticCreator/Selene"
@@ -12,7 +12,7 @@ license=("MIT")
 arch=(x86_64)
 
 makedepends=('git' 'cargo')
-depends=('ffmpeg')
+depends=()
 
 source=("${_pkgname}::git+${_git}")
 
