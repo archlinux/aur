@@ -2,7 +2,7 @@
 
 pkgname=huawei-modem-calculator-git
 pkgver=r37.f007c01
-pkgrel=1
+pkgrel=2
 pkgdesc="Huawei modem unlock code calculator with the USB serial interface"
 arch=($CARCH)
 url="https://github.com/bigbigmdm/Huawei_modem_calculator_v2"
@@ -62,4 +62,3 @@ package() {
     DESTDIR="${pkgdir}" ninja -C ${srcdir}/build install
     install -Dm644 ${srcdir}/${pkgname}/LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
-
