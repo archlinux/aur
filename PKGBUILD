@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dockit-bin
 _pkgname=DocKit
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="GUI clients for elasticsearch, opensearch and etc.(Prebuilt version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 )
-sha256sums=('2a08c90b114fc0dafa6b3b1a2a0e7a4965733aeb6323144908b7ed13888359a8')
+sha256sums=('a6bdd2ede047b0f63ffb7148cf0a75405786715cb127fc9200bcd6f44e19281c')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
