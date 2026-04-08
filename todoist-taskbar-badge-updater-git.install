@@ -1,0 +1,57 @@
+#!/bin/bash
+
+post_install() {
+    echo ""
+    echo "========================================="
+    echo "  Todoist Taskbar Badge Updater installed"
+    echo "========================================="
+    echo ""
+    echo "Configuration required:"
+    echo "  Create ~/.config/todoist-taskbar-badge-updater.conf with:"
+    echo ""
+    echo "  TODOIST_API_TOKEN=your_api_token_here"
+    echo "  TODOIST_DESKTOP_ID=application://todoist.desktop"
+    echo ""
+    echo "  Get your API token from: https://todoist.com/app/settings/account"
+    echo ""
+    echo "To enable and start the service:"
+    echo "  systemctl --user daemon-reload"
+    echo "  systemctl --user enable todoist-taskbar-badge-updater.service"
+    echo "  systemctl --user start todoist-taskbar-badge-updater.service"
+    echo ""
+    echo "To view logs:"
+    echo "  journalctl --user -u todoist-taskbar-badge-updater.service -f"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "========================================"
+    echo "  Todoist Taskbar Badge Updater upgraded"
+    echo "========================================"
+    echo ""
+    echo "Remember to reload systemd daemon:"
+    echo "  systemctl --user daemon-reload"
+    echo ""
+    echo "Restart the service if needed:"
+    echo "  systemctl --user restart todoist-taskbar-badge-updater.service"
+    echo ""
+}
+
+pre_remove() {
+    echo ""
+    echo "Stopping and disabling todoist-taskbar-badge-updater service..."
+    systemctl --user disable --now todoist-taskbar-badge-updater.service 2>/dev/null || true
+    echo ""
+}
+
+post_remove() {
+    echo ""
+    echo "========================================"
+    echo "  Todoist Taskbar Badge Updater removed"
+    echo "========================================"
+    echo ""
+    echo "Note: Configuration file at ~/.config/todoist-taskbar-badge-updater.conf"
+    echo "      was not removed. You may delete it manually if desired."
+    echo ""
+}
