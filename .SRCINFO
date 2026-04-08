@@ -1,6 +1,6 @@
 pkgbase = foundryvtt-server
 	pkgdesc = A self-hosted and modern roleplaying platform. node.js/systemd version.
-	pkgver = 12.343
+	pkgver = 14.359
 	pkgrel = 1
 	url = https://foundryvtt.com/
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = foundryvtt-server
 	makedepends = systemd
 	depends = nodejs
 	options = !strip
-	source = FoundryVTT-12.343.zip::local://FoundryVTT-12.343.zip
+	source = FoundryVTT-Node-14.359.zip::local://FoundryVTT-Node-14.359.zip
 	source = foundryvtt.service
 	source = foundryvtt.sysusers
 	source = foundryvtt.tmpfiles
-	sha256sums = 0b6d957f01cabc090bb6c658ec13392810bc92da2fa2937f1cb4d26202752387
-	sha256sums = b25541a2e83e46d8fc82a4af3eb44ef7b83705764c22480f4d426e8916e9cfa3
+	sha256sums = 4074624c64291de51405305522f362b49d653fa46fb0f4c1646879a32a5d3c00
+	sha256sums = fe5ccf362d2dda46f9dd181a0ce277b1800dcd401f4c4743b7c3b1bdfa3b76b3
 	sha256sums = 4397966e1d0160e83991953be98b0f765142a197d16e3437a8750a979b398691
 	sha256sums = eda9e8fa3b459b4d61ff50c3d0fe15ff37dbd00c75522dc3d24ff1d2a4220ad8
 
