@@ -1,0 +1,19 @@
+pkgbase = tpmtb-git
+	pkgdesc = TPM Trust Bundle CLI - manages and verifies TPM root certificate bundles (git)
+	pkgver = 0.7.0.r1.gf7d9b79
+	pkgrel = 1
+	url = https://github.com/loicsikidi/tpm-ca-certificates
+	install = tpmtb.install
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = go
+	makedepends = git
+	depends = ca-certificates
+	optdepends = tpm2-tools: extract EK certificate from TPM for verification
+	provides = tpmtb
+	conflicts = tpmtb
+	source = tpmtb-git::git+https://github.com/loicsikidi/tpm-ca-certificates.git
+	sha256sums = SKIP
+
+pkgname = tpmtb-git
