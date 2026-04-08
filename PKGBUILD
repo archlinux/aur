@@ -1,18 +1,13 @@
 # Maintainer: John Oberhauser <j.aur@obez.io>
 pkgname=okshell
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A customizable shell for Hyprland"
 license=('GPL-3.0-only')
 arch=('x86_64')
 url="https://github.com/JohnOberhauser/OkShell"
 depends=(
-    'alsa-lib'
     'bluez'
-    'cairo'
-    'gdk-pixbuf2'
-    'glib2'
-    'graphene'
     'gtk4'
     'gtk4-layer-shell'
     'hyprland'
@@ -23,12 +18,9 @@ depends=(
     'matugen'
     'networkmanager'
     'pam'
-    'pango'
     'power-profiles-daemon'
-    'systemd-libs'
     'upower'
     'wf-recorder'
-    'wireplumber'
 )
 makedepends=(
     'clang'
