@@ -1,7 +1,7 @@
 pkgbase = hangar
-	pkgdesc = Command line utility for container images
+	pkgdesc = Command line utility for container images (with CGO disabled)
 	pkgver = 1.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cnrancher/hangar
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = hangar
 	depends = gpgme
 	depends = device-mapper
 	depends = containers-common
+	depends = sqlite
 	conflicts = hangar-bin
 	conflicts = hangar-git
 	conflicts = hangar-bin-debug

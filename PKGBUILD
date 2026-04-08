@@ -1,7 +1,7 @@
 # Maintainer: Starry Wang <starry.wang@suse.com>
 pkgname=hangar
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Command line utility for container images (with CGO disabled)"
 arch=("x86_64" "aarch64")
