@@ -1,0 +1,56 @@
+From d7eeecd235d4d2e342f72ee05a84df75b8c23330 Mon Sep 17 00:00:00 2001
+From: kotontrion <kotontrion@tutanota.de>
+Date: Wed, 8 Apr 2026 08:44:33 +0200
+Subject: [PATCH] fixes the breaking change of gjs dbus api.
+
+It checks the gjs version so it won't break compatibility with older gjs
+versions.
+
+diff --git a/node_modules/gnim/dist/dbus.ts b/node_modules/gnim/dist/dbus.ts
+index c87e303..772b73d 100644
+--- a/node_modules/gnim/dist/dbus.ts
++++ b/node_modules/gnim/dist/dbus.ts
+@@ -16,6 +16,7 @@ import {
+     getter as ggetter,
+     setter as gsetter,
+ } from "./gobject.js"
++import System from 'system'
+ 
+ const DEFAULT_TIMEOUT = 10_000
+ 
+@@ -146,11 +147,20 @@ export class Service extends GObject.Object {
+     }
+ 
+     // server
++    #handleMethodCallLegacy(
++        obj: Gio.DBusExportedObject,
++        methodName: Extract<keyof this, string>,
++        parameters: GLib.Variant,
++        invocation: Gio.DBusMethodInvocation,
++    ): void {
++        this.#handleMethodCall(obj, methodName, invocation, parameters)
++    }
++
+     #handleMethodCall(
+         _: Gio.DBusExportedObject,
+         methodName: Extract<keyof this, string>,
+-        parameters: GLib.Variant,
+         invocation: Gio.DBusMethodInvocation,
++        parameters: GLib.Variant,
+     ): void {
+         try {
+             const value = (this[methodName] as (...args: unknown[]) => unknown)(
+@@ -190,7 +200,12 @@ export class Service extends GObject.Object {
+             { g_interface_info: this.#info },
+         )
+ 
+-        impl.connect("handle-method-call", this.#handleMethodCall.bind(this))
++        if (System.version < 18701) {
++            impl.connect("handle-method-call", this.#handleMethodCallLegacy.bind(this))
++        }
++        else {
++            impl.connect("handle-method-call", this.#handleMethodCall.bind(this))
++        }
+         impl.connect("handle-property-get", this.#handlePropertyGet.bind(this))
+         impl.connect("handle-property-set", this.#handlePropertySet.bind(this))
+ 
