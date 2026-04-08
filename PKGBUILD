@@ -1,24 +1,18 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-mistralai
 _name=${pkgname#python-}
-pkgver=1.12.4
+pkgver=2.3.1
 pkgrel=1
-pkgdesc="You can use the Mistral Python client to interact with the Mistral AI API."
+pkgdesc="Python Client SDK for the Mistral AI API."
 arch=(any)
 url="https://github.com/mistralai/client-python"
 license=(MIT)
-groups=()
-depends=(python-pydantic python-eval-type-backport python-dateutil python-typing-inspection python-httpx python-invoke python-opentelemetry-api python-opentelemetry-sdk python-opentelemetry-exporter-otlp-proto-http python-yaml)
+depends=(python-pydantic python-eval-type-backport python-dateutil python-typing-inspection python-httpx python-jsonpath-python python-opentelemetry-api python-opentelemetry-semantic-conventions)
 optdepends=('python-google-auth: gcp' 'python-requests: gcp' 'python-mcp: agents' 'python-griffe: agents' 'python-authlib: agents' 'python-websockets: realtime')
-makedepends=(python-poetry-core python-build python-installer python-wheel)
-provides=()
-conflicts=()
-replaces=()
-backup=()
+makedepends=(python-hatchling python-build python-installer python-wheel)
 options=(!emptydirs)
-install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('e52b53bab58025dcd208eeac13e3c3df5778d4112eeca1f08124096c7738929f')
+sha256sums=('02989e509124cb28aaffd92660bf7511b3f8f5c215e1de8d49d0c8276bacc72a')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
