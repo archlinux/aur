@@ -17,7 +17,7 @@ optdepends=(
     'wl-clipboard: clipboard fallback support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/matt-shearing/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('150f7da7a2cea7c9348cd13f56efb339200a08a06a1722b40e99e06ac74c359f')
+sha256sums=('d03e0dd86d2cc3bfba9d8893ea1acf89ff18fd32818a7e8b8410b3df3c5358af')
 
 package() {
     cd "${pkgname}-${pkgver}"

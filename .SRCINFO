@@ -12,6 +12,6 @@ pkgbase = voxtype-tray
 	optdepends = wtype: keyboard simulation for Sway/wlroots compositors
 	optdepends = wl-clipboard: clipboard fallback support
 	source = voxtype-tray-1.1.0.tar.gz::https://github.com/matt-shearing/voxtype-tray/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 150f7da7a2cea7c9348cd13f56efb339200a08a06a1722b40e99e06ac74c359f
+	sha256sums = d03e0dd86d2cc3bfba9d8893ea1acf89ff18fd32818a7e8b8410b3df3c5358af
 
 pkgname = voxtype-tray
