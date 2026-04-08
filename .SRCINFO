@@ -1,13 +1,14 @@
 pkgbase = python-xai-sdk
 	pkgdesc = The official Python SDK for xAI's APIs
-	pkgver = 1.8.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/xai-org/xai-sdk-python
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-fancy-pypi-readme
 	depends = python-aiohttp
 	depends = python-googleapis-common-protos
 	depends = python-grpcio
@@ -17,7 +18,7 @@ pkgbase = python-xai-sdk
 	depends = python-pydantic
 	depends = python-requests
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/x/xai_sdk/xai_sdk-1.8.0.tar.gz
-	sha256sums = 614301eed7f7e986897ac8d6836900391756d0cdee725370d21e1a2c1b4b8bc3
+	source = https://files.pythonhosted.org/packages/source/x/xai_sdk/xai_sdk-1.11.0.tar.gz
+	sha256sums = ca87a830d310fb8e06fba44fb2a8c5cdf0d9f716b61126eddd51b7f416a63932
 
 pkgname = python-xai-sdk
