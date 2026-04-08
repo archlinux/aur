@@ -1,7 +1,7 @@
 # Maintainer: Nakildias <nakildiaspro@gmail.com>
 pkgname=sc0710-dkms-git
 _pkgname=sc0710
-pkgver=2026.03.13.1.r108.ba2b2c9
+pkgver=2026.04.08.1.r124.51e965a
 pkgrel=1
 pkgdesc="DKMS driver for Elgato 4K60 Pro MK.2 & 4K Pro (sc0710) capture cards"
 arch=('x86_64')
@@ -41,8 +41,8 @@ package() {
     # Copy source files
     cp -r ./* "${dest}/"
 
-    # Remove git directory, packaging files, and installer scripts
-    rm -rf "${dest}/.git" "${dest}/aur" "${dest}/install-sc0710.sh" "${dest}/atomic-install-sc0710.sh" "${dest}/extract-firmware.sh" "${dest}/atomic-extract-firmware.sh" "${dest}/sc0710.install"
+    # Remove git directory, packaging files, and installer scripts (keep lib/ and build files)
+    rm -rf "${dest}/.git" "${dest}/aur" "${dest}/scripts"
 
     # Ensure dkms.conf is present
     install -Dm644 "dkms.conf" "${dest}/dkms.conf"
