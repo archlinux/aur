@@ -1,0 +1,14 @@
+pkgbase = leanctl-bin
+	pkgdesc = Terminal-native AI coding agent with built-in LeanCTX token compression. Bring your own API key. (pre-built binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://leanctl.com
+	arch = x86_64
+	license = custom:proprietary
+	depends = gcc-libs
+	provides = leanctl
+	conflicts = leanctl
+	source = leanctl-0.1.0.tar.gz::https://github.com/yvgude/lean-ctl/releases/download/v0.1.0/leanctl-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 36b86a7f9305c5f29e4c023f19a5887005c3d41b0a9a4c1b6aff3abea780a70d
+
+pkgname = leanctl-bin
