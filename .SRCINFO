@@ -1,10 +1,12 @@
 pkgbase = n2-ninja-symlink
 	pkgdesc = Symlinks ninja to n2
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	depends = n2-git
+	provides = ninja
+	conflicts = ninja
 
 pkgname = n2-ninja-symlink
