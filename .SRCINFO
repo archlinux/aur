@@ -1,0 +1,18 @@
+pkgbase = cscs-key
+	pkgdesc = Command-line tool to manage SSH keys for the Swiss National Supercomputing Centre (CSCS)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://docs.cscs.ch/access/ssh/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = LicenseRef-unknown
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	source = https://github.com/eth-cscs/cscs-key/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = d31d72e6355b0e98fc2a6376b188e6ae91d0988c0d292e6d9a13fe8c324d6391
+
+pkgname = cscs-key
