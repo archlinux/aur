@@ -1,5 +1,5 @@
 [codename-goose]
 source = "github"
-github = "block/goose"
+github = "aaif-goose/goose"
 prefix = "v"
 use_max_release = true
