@@ -3,7 +3,7 @@ _pkgname=Stan-desktop
 pkgrlname=stan
 _pkgrlname=Stan
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Unnofficial Stan desktop application"
 arch=('x86_64')
 url="https://gitlab.com/linuxbombay/stan-desktop"
@@ -24,7 +24,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/usr/bin/electroncastlab" "/opt/$_pkgrlname"
+    ln -s "/usr/bin/electroncastlab" "$pkgdir/opt/$_pkgrlname"
     ln -s "/opt/$_pkgrlname/$pkgrlname" "$pkgdir/usr/bin"
 
     # Desktop Entry

@@ -1,7 +1,7 @@
 pkgbase = stan-desktop
 	pkgdesc = Unnofficial Stan desktop application
 	pkgver = 1.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/stan-desktop
 	arch = x86_64
 	license = GPL
