@@ -1,7 +1,7 @@
 # Maintainer: AnabasaSoft <anabasasoft@gmail.com>
 pkgname=cloudmount-wizard-bin
 _pkgname=cloudmount-wizard
-pkgver=1.2.3
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Asistente para montar unidades de nube (Mega, Drive, etc) en Linux (Binario)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 
 # IMPORTANTE: Calcula los checksums reales con 'sha256sum archivo'
 # Si te da pereza ahora, usa 'SKIP' para probar, pero AUR te pedirá los reales al subir.
-sha256sums=('3b144763ffe5c7ec3cca994efbc07a04a3428b97a5f6e52c560d726e5573063d'
+sha256sums=('706a81e038c98c60a0c7cc076020ab667d00bdabbb63b96275dba05798a10dcb'
             '93a3103e8c27ca2f913efa775a44422f714f4e9cb514e162c49d454736bb3bf6')
 
 package() {
