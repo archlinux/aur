@@ -1,0 +1,16 @@
+pkgbase = cockpit-plakar
+	pkgdesc = Cockpit plugin for managing Plakar backups
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/RiddermanR/cockpit-plakar
+	arch = any
+	license = GPL3
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = make
+	depends = cockpit
+	depends = plakar
+	source = cockpit-plakar-0.1.0.tar.gz::https://github.com/RiddermanR/cockpit-plakar/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = c623f3b923a5b2b35d2bdf0fc2417b46f9f32ef8c34fe005491602e7d428dfc2
+
+pkgname = cockpit-plakar
