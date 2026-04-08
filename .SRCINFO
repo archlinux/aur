@@ -1,0 +1,16 @@
+pkgbase = vhelper
+	pkgdesc = Make vtubing suck less on Linux
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/rikkichy/VHelper
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = protontricks
+	source = vhelper-0.1.1.tar.gz::https://github.com/rikkichy/VHelper/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = vhelper
