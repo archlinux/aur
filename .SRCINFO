@@ -1,6 +1,6 @@
 pkgbase = tera
 	pkgdesc = Interactive Bash script terminal music radio player. Play your favorite radio station, CRUD your favorite lists, and explore new radio stations from your terminal.
-	pkgver = 3.10.0
+	pkgver = 3.11.0
 	pkgrel = 1
 	url = https://github.com/shinokada/tera
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = tera
 	depends = github-cli
 	depends = wget
 	depends = python
-	source = https://github.com/shinokada/tera/archive/refs/tags/v3.10.0.tar.gz
-	sha256sums = 2b98710d3ca728ba45d86aa40667de2bda32ca4a4f2b3ae09a2449de1a50dcf8
+	source = https://github.com/shinokada/tera/archive/refs/tags/v3.11.0.tar.gz
+	sha256sums = 8dfa0bf0e4a4d4c823ab5941e26f0bedc1b2e8079cfb7f6c479cff2c8303ef07
 
 pkgname = tera
