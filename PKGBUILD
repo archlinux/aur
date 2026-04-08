@@ -7,7 +7,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.3.12
+pkgver=3.3.13
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -46,7 +46,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/package.json" | tr -d '^')
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/apps/desktop/package.json" | tr -d '^')
     _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
