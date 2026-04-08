@@ -1,7 +1,7 @@
 pkgbase = cellframe-wallet
 	pkgdesc = Official Cellframe Wallet
 	pkgver = 4.6.102
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cellframe.net
 	install = cellframe-wallet.install
 	arch = x86_64
