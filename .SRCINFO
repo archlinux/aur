@@ -1,6 +1,6 @@
 pkgbase = patchwire
 	pkgdesc = PipeWire audio output router with GTK4 UI
-	pkgver = 0.1.1
+	pkgver = 0.1.2a
 	pkgrel = 1
 	url = https://github.com/mel-edo/patchwire
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = patchwire
 	depends = wireplumber
 	depends = gtk4
 	depends = libadwaita
-	source = patchwire-0.1.1.tar.gz::https://github.com/mel-edo/patchwire/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 2cd9094c7315eb7ea40ae7c753708dac1edd2bbc11792fe0e9ff487703f6b130
+	source = patchwire-0.1.2a.tar.gz::https://github.com/mel-edo/patchwire/archive/refs/tags/v0.1.2a.tar.gz
+	sha256sums = fc446114523ceded146d597c484411b6bc59d6a30c06c5648b8bbbd748f11e04
 
 pkgname = patchwire

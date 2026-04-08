@@ -1,6 +1,6 @@
 # Maintainer: meledo <meledo@duck.com>
 pkgname=patchwire
-pkgver=0.1.1
+pkgver=${VERSION}
 pkgrel=1
 pkgdesc="PipeWire audio output router with GTK4 UI"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(
     'cargo'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2cd9094c7315eb7ea40ae7c753708dac1edd2bbc11792fe0e9ff487703f6b130')
+sha256sums=("${SRC_SHA256}")
 
 prepare() {
     cd "$pkgname-$pkgver"
