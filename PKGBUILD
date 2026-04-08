@@ -1,10 +1,10 @@
 # Maintainer: Hein (Warky Devs) <hein@warky.dev>
 pkgname=unitdore
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.0.3
+pkgrel=2
 pkgdesc="A door you open and close for container units — manage containers via systemd"
 arch=('x86_64' 'aarch64')
-url="https://warky.dev"
+url="https://git.warky.dev/wdevs/unitdore"
 license=('MIT')
 depends=('systemd')
 optdepends=(
@@ -13,11 +13,11 @@ optdepends=(
 )
 makedepends=('go')
 backup=('etc/unitdore/units.yaml')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.zip::$url/archive/v$pkgver.zip")
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname"
+    cd "$pkgname-v$pkgver"
     export CGO_ENABLED=0
     go build \
         -trimpath \
@@ -26,12 +26,12 @@ build() {
 }
 
 check() {
-    cd "$pkgname"
+    cd "$pkgname-v$pkgver"
     go test ./...
 }
 
 package() {
-    cd "$pkgname"
+    cd "$pkgname-v$pkgver"
 
     # Binary
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
