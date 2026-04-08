@@ -12,9 +12,8 @@ url="https://github.com/facebookresearch/${_name}"
 license=(BSD-3-Clause)
 depends=(
 	'python'
-	'python-pytorch'
+	'python-pytorch-rocm'
 	'python-numpy'
-	'python-nvidia-ml-py'
 	'python-triton'
 	'python-scipy'
 	'python-pytest'
@@ -22,7 +21,6 @@ depends=(
 	'python-matplotlib'
 	'python-pandas'
 	'python-typing_extensions'
-	'cuda'
 	'libstdc++'
 	'libgcc'
 	'glibc'
