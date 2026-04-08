@@ -2,19 +2,17 @@
 # Contributor: Ersei <contact at ersei dot net>
 # Contributer: Paul <paul@mrarm.io>
 
-pkgbase=mcpelauncher-linux
-pkgname=('mcpelauncher-linux' 'lib32-mcpelauncher-linux')
-pkgver=1.7.2
+pkgname=mcpelauncher-linux
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
 license=('GPL-3.0-only')
-_makedepends=('git' 'cmake' 'ninja' 'clang' 'wayland-protocols' 'lld')
-_depends=('zlib' 'libpng' 'sdl3' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'openssl' 'libstdc++' 'libgcc' 'glibc')
-_32depends=('lib32-zlib' 'lib32-libpng' 'lib32-sdl3' 'lib32-openssl' 'lib32-gcc-libs' 'lib32-glibc')
-depends=(${_depends[@]} ${_32depends[@]})
-makedepends=(${_makedepends[@]} ${depends[@]})
+makedepends=('git' 'cmake' 'ninja' 'clang' 'wayland-protocols' 'lld')
+depends=('zlib' 'sdl3' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'openssl' 'libstdc++' 'libgcc' 'glibc')
+optdepends=('mcpelauncher-ui: GUI for Launcher')
+provides=('mcpelauncher-client')
 source=(
   "git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#tag=v${pkgver}-qt6"
   'git+https://github.com/minecraft-linux/android-support-headers.git'
@@ -52,7 +50,7 @@ source=(
   'git+https://github.com/minecraft-linux/android_core'
 )
 
-sha256sums=('c9c1d47dbb35331f3cdce8d0f633853c09545812928dc8c25a79bb14f0cf8bbb'
+sha256sums=('5fec3ae8a3fe5083706b11c65c94dbba5075be728dcb089304e8f4d44404b23a'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -143,36 +141,13 @@ build() {
 	cmake -B build "${_args[@]}"
 	cmake --build build
 
-	_args+=(
-	-DCMAKE_C_FLAGS="$CFLAGS -m32"
-	-DCMAKE_CXX_FLAGS="$CXXFLAGS -m32"
-	-DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -m32"
-	-DENABLE_QT_ERROR_UI=OFF
-	-DENABLE_ERROR_WINDOW=OFF
-	-DBUILD_WEBVIEW=OFF
-	)
-	PKG_CONFIG_PATH="/usr/lib32/pkgconfig" \
-	cmake -B build32 "${_args[@]}"
-	PKG_CONFIG_PATH="/usr/lib32/pkgconfig" \
-	cmake --build build32
 }
 
-package_mcpelauncher-linux() {
+package() {
   cd "$srcdir"
   DESTDIR="$pkgdir" cmake --install build
-  depends=(${_depends[@]})
-  optdepends=('mcpelauncher-ui: GUI for Launcher'
-		'lib32-mcpelauncher-linux: x86 Game Support')
-  provides=('mcpelauncher-client')
   install -Dm644 mcpelauncher-manifest/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 mcpelauncher-manifest/msa-daemon-client/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.MIT"
   install -Dm644 mcpelauncher-manifest/mcpelauncher-linux-bin/FMod\ License.txt "$pkgdir/usr/share/licenses/$pkgname/fmod_license.txt"
   install -Dm644 mcpelauncher-manifest/eglut/LICENSE "$pkgdir/usr/share/licenses/$pkgname/eglut_license.txt"
-}
-
-package_lib32-mcpelauncher-linux() {
-	depends=(${_32depends[@]})
-	pkgdesc+=" (32bit client support)"
-	cd "$srcdir"
-	install -Dm755 "$srcdir/build32/mcpelauncher-client/mcpelauncher-client" "$pkgdir/usr/bin/mcpelauncher-client32"
 }
