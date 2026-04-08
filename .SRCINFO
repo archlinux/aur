@@ -1,6 +1,6 @@
 pkgbase = kosmos-bin
 	pkgdesc = A highly customizable and versatile tab-based code editor.
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/etchebarne/kosmos
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = kosmos-bin
 	depends = librsvg
 	provides = kosmos
 	conflicts = kosmos
-	source = kosmos-bin-0.1.8.deb::https://github.com/etchebarne/kosmos/releases/download/v0.1.8/kosmos_0.1.8_amd64.deb
-	source = kosmos.desktop::https://raw.githubusercontent.com/etchebarne/kosmos/v0.1.8/src-tauri/kosmos.desktop
-	source = LICENSE::https://raw.githubusercontent.com/etchebarne/kosmos/v0.1.8/LICENSE
-	sha256sums = e5989b77b1eaf377cbfb1baaf21487163c0f1934be5ffaae951f0f555ffc7674
+	source = kosmos-bin-0.1.9.deb::https://github.com/etchebarne/kosmos/releases/download/v0.1.9/kosmos_0.1.9_amd64.deb
+	source = kosmos.desktop::https://raw.githubusercontent.com/etchebarne/kosmos/v0.1.9/src-tauri/kosmos.desktop
+	source = LICENSE::https://raw.githubusercontent.com/etchebarne/kosmos/v0.1.9/LICENSE
+	sha256sums = 30acfb70d51884c2662b024902a1225ab5bbd93657952439bb736b49ae61ffbd
 	sha256sums = SKIP
 	sha256sums = SKIP
 
