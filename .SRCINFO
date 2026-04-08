@@ -1,7 +1,7 @@
 pkgbase = caddy-he
 	pkgdesc = Fast web server with automatic HTTPS (with Hurricane Electric DNS module)
 	pkgver = 2.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/caddyserver/caddy
 	arch = x86_64
 	license = Apache-2.0

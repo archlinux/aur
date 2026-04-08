@@ -11,7 +11,7 @@
 pkgname=caddy-he
 _pkgname=caddy
 pkgver=2.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast web server with automatic HTTPS (with Hurricane Electric DNS module)'
 conflicts=(caddy)
 arch=(x86_64)
