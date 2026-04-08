@@ -8,7 +8,7 @@ _releasever=1.42.0
 _buildno=67
 _githash=5a3c5f1
 pkgver="${_releasever}${_buildno:++"${_buildno}"}.g${_githash}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Closed source reference companion app by Liam Cottle for MeshCore, a LoRa text messaging protocol."
 groups=('meshcore')
 arch=(
@@ -75,7 +75,7 @@ source=(
 )
 sha256sums=(
   '8fe2a18d63041b804b39761f7449a4c2db58d1f50219d7e0a94a4807780d3c73'  # Binary software package.
-  '91a70e092c5bf36e0170cb2efba9218bbfdb414998bfa1fec7590618ffbf55b2'  # MeshCore_Quick_Start_Guide.pdf
+  'a8bcb2a147746b1b0a3879220f5d55aac79c6b5f2b100fbc6b1ccea6c9946ca7'  # MeshCore_Quick_Start_Guide.pdf
   '3c212412360ca59e73a11af24b85db2d5414f2d5851f1a60267fca701077c921'  # meshcore.desktop
   '138cfaf059ef5c3fb860d3132291570179bf74cb77e1aaa7927fa766a93ad957'  # license-info.md
 )
