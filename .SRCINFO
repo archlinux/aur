@@ -1,6 +1,6 @@
 pkgbase = ktlint-compose-rules
 	pkgdesc = Lint rules for ktlint/detekt aimed to contribute to a healthier usage of Compose. Actively maintained and evolved fork of the Twitter Compose rules
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://github.com/mrmans0n/compose-rules
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ktlint-compose-rules
 	optdepends = detekt-cli: detekt cli
 	optdepends = intellij-idea-community-edition
 	optdepends = intellij-idea-ultimate-edition
-	source = ktlint-compose-rules-0.5.6.jar::https://github.com/mrmans0n/compose-rules/releases/download/v0.5.6/ktlint-compose-0.5.6-all.jar
-	sha256sums = 3505f41c9d496c26478973843ef923300c9b77f98080bad5177516b3d3547e11
+	source = ktlint-compose-rules-0.5.7.jar::https://github.com/mrmans0n/compose-rules/releases/download/v0.5.7/ktlint-compose-0.5.7-all.jar
+	sha256sums = 1819d08a33e815e4412bebdd730cb5ca69f8eecb8fd25946e473950efa28ee45
 
 pkgname = ktlint-compose-rules
