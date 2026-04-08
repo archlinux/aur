@@ -1,7 +1,7 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=agent-browser
-pkgver=0.22.2
-pkgrel=2
+pkgver=0.25.3
+pkgrel=1
 pkgdesc="Headless browser automation CLI for AI agents"
 arch=('any')
 url="https://github.com/vercel-labs/agent-browser"
@@ -10,22 +10,14 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('bbdf08a19bdf817055d119b41e0b6e79096c632d3638fc79972f7668f71bb391')
+sha256sums=('9c898eba0fcfffc323f560ef66bb1a02b3d07b072aed8238d4b6c6c46a41c8db')
 
 package() {
-    /usr/bin/npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+    /usr/bin/npm install -g --ignore-scripts --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
 
     # Fix permissions
     find "${pkgdir}/usr" -type d -exec chmod 755 {} +
-
-    # Fix symlinks that point into pkgdir
-    find "${pkgdir}/usr/bin" -type l | while read -r link; do
-        local target
-        target="$(readlink "$link")"
-        if [[ "$target" == "${pkgdir}"* ]]; then
-            ln -sfr "${pkgdir}/${target#"${pkgdir}"}" "$link"
-        fi
-    done
+    chmod 755 "${pkgdir}/usr/lib/node_modules/${pkgname}"/bin/agent-browser-*
 
     # Remove references to pkgdir/srcdir from package.json
     local tmppackage="$(mktemp)"
