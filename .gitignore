@@ -1,5 +1,6 @@
 /pkg
 /src
-*.tar.*
+*.pkg.tar*
 LICENSE-*
 omp-*
+*.node

@@ -9,6 +9,12 @@ import urllib.request
 import urllib.error
 import shutil
 
+REQUIRED_ASSET_NAMES = [
+    "omp-linux-x64",
+    "pi_natives.linux-x64-baseline.node",
+    "pi_natives.linux-x64-modern.node",
+]
+
 
 def fetch_json(url):
     req = urllib.request.Request(url, headers={"User-Agent": "oh-my-pi-aur-updater"})
@@ -28,6 +34,38 @@ def fetch_bytes(url):
     except urllib.error.URLError as e:
         print(f"Error fetching {url}: {e}", file=sys.stderr)
         sys.exit(1)
+
+
+def normalize_sha256(digest):
+    if digest.startswith("sha256:"):
+        return digest[7:]
+    return digest
+
+
+def get_asset_sha256(assets, asset_name):
+    for asset in assets:
+        if asset.get("name") != asset_name:
+            continue
+
+        digest = normalize_sha256(asset.get("digest", ""))
+        if digest:
+            return digest
+
+        print(
+            f"Digest not found for {asset_name}, downloading asset to compute sha256..."
+        )
+        asset_bytes = fetch_bytes(asset.get("browser_download_url"))
+        return hashlib.sha256(asset_bytes).hexdigest()
+
+    print(f"Could not find {asset_name} asset or its digest", file=sys.stderr)
+    sys.exit(1)
+
+
+def format_sha256sums(values):
+    lines = [f"sha256sums=('{values[0]}'"]
+    lines.extend(f"            '{value}'" for value in values[1:])
+    lines[-1] = f"{lines[-1]})"
+    return "\n".join(lines)
 
 
 def main():
@@ -69,45 +107,30 @@ def main():
         sys.exit(0)
 
     assets = release_data.get("assets", [])
-    binary_sha = None
-
-    for asset in assets:
-        if asset.get("name") == "omp-linux-x64":
-            digest = asset.get("digest", "")
-            if digest:
-                if digest.startswith("sha256:"):
-                    binary_sha = digest[7:]
-                else:
-                    binary_sha = digest
-            else:
-                # Fallback to downloading and computing sha256
-                print(
-                    "Digest not found in API response, downloading asset to compute sha256..."
-                )
-                asset_bytes = fetch_bytes(asset.get("browser_download_url"))
-                binary_sha = hashlib.sha256(asset_bytes).hexdigest()
-            break
-
-    if not binary_sha:
-        print("Could not find omp-linux-x64 asset or its digest", file=sys.stderr)
-        sys.exit(1)
+    asset_shas = [
+        get_asset_sha256(assets, asset_name) for asset_name in REQUIRED_ASSET_NAMES
+    ]
 
     license_bytes = fetch_bytes(
         f"https://raw.githubusercontent.com/can1357/oh-my-pi/v{latest_ver}/LICENSE"
     )
     license_sha = hashlib.sha256(license_bytes).hexdigest()
+    sha256sums = [*asset_shas, license_sha]
 
     content = re.sub(
         r"^pkgver=\S+", f"pkgver={latest_ver}", content, flags=re.MULTILINE
     )
     content = re.sub(r"^pkgrel=\S+", "pkgrel=1", content, flags=re.MULTILINE)
 
-    content = re.sub(
-        r"sha256sums=\('[0-9a-f]+'\n\s+'[0-9a-f]+'\)",
-        f"sha256sums=('{binary_sha}'\n            '{license_sha}')",
+    content, replaced = re.subn(
+        r"sha256sums=\((?:\s*'[0-9a-f]+'\s*)+\)",
+        format_sha256sums(sha256sums),
         content,
-        flags=re.DOTALL,
+        count=1,
     )
+    if replaced != 1:
+        print("Could not find sha256sums array in PKGBUILD", file=sys.stderr)
+        sys.exit(1)
 
     with open("PKGBUILD", "w") as f:
         f.write(content)
@@ -134,31 +157,25 @@ def main():
             f.write(res.stdout)
         print(".SRCINFO generated.")
 
-        # 1. Run makepkg to verify it builds
         print("Verifying build with makepkg...")
         subprocess.run(["makepkg", "-Cf"], check=True)
 
-        # 2. Show diff
         print("\nDiffing changes:")
         subprocess.run(["git", "diff", "PKGBUILD", ".SRCINFO"])
 
-        # 3. Ask for confirmation
         ans = input("\nLooks good? [y/N]: ")
         if ans.lower() not in ["y", "yes"]:
             print("Aborted.")
             sys.exit(0)
 
-        # 4. git add PKGBUILD .SRCINFO
         print("Staging changes...")
         subprocess.run(["git", "add", "PKGBUILD", ".SRCINFO"], check=True)
 
-        # 5. git commit -m "upstream release: {new version}"
         print(f"Committing version {latest_ver}...")
         subprocess.run(
             ["git", "commit", "-m", f"upstream release: {latest_ver}"], check=True
         )
 
-        # 6. git push origin
         print("Pushing to origin...")
         subprocess.run(["git", "push", "origin"], check=True)
 
