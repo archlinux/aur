@@ -2,7 +2,7 @@
 
 pkgbase=linux-mnt-reform-bin
 pkgname=('linux-mnt-reform-bin' 'linux-mnt-reform-bin-headers')
-pkgver=6.19.11.reform2
+pkgver=6.19.11.reform3
 pkgrel=1
 _base_kernel_version="${pkgver%%.reform*}"
 _kernver="${pkgver/.reform/-reform}"
@@ -12,30 +12,40 @@ license=('GPL-2.0-only')
 options=(!strip !docs !emptydirs)
 source=(
   'extlinux.conf.example'
+  'linux-mnt-reform-bin.install'
   'mnt-reform-initramfs.hook'
   'mnt-reform-initramfs.sh'
 )
 source_aarch64=(
-  "kernel-${pkgver}-mnt-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-aarch64/kernel-${pkgver}-mnt.tar.gz"
-  "headers-${pkgver}-mnt-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-aarch64/headers-${pkgver}-mnt.tar.gz"
+  "kernel-${pkgver}-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-aarch64/kernel-${pkgver}.tar.gz"
+  "headers-${pkgver}-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-aarch64/headers-${pkgver}.tar.gz"
 )
 source_x86_64=(
-  "kernel-${pkgver}-mnt-x86_64.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-x86_64/kernel-${pkgver}-mnt.tar.gz"
-  "headers-${pkgver}-mnt-x86_64.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-x86_64/headers-${pkgver}-mnt.tar.gz"
+  "kernel-${pkgver}-x86_64.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-x86_64/kernel-${pkgver}.tar.gz"
+  "headers-${pkgver}-x86_64.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-x86_64/headers-${pkgver}.tar.gz"
 )
 sha256sums=(
   '8a15cec00fc571b7b62dba4ad9aa7b0132fe837dca3a424828bb19a37f5d3e58'
+  '9273c9f5d07b592e8e93ca4a2a46d637470672fe7d7dc43c3cd221e7ebfe175c'
   '24e36fc74f7aa27fe699e5eac923c14ae80c7bc85038cfab3d8cd93148d7cb3e'
-  '370f19f603a52da48b13a1d18925402c5d4bf65ac2b63ea76a043b416d94cfff'
+  'f698b0eac8828aa4b4ee4fad351b303760594b9371dee5c244789734139e05fd'
 )
 sha256sums_aarch64=(
-  '91b1e8e9c5cb5cf5f66836133af0e0a3ef02bc5db3947d8ad49c2b4a1db2a580'
-  '6bb38fb3f44398a270ed061b2833c9c0eb092ea94f415c52e18003d4f1a124a6'
+  'd8265798fddae045fa9208b83c8441f35748f26817a53264d1e2a4a18e2d3214'
+  'ccedaa5c727c1e3cd0294ad634e645570c599db5a37fdf25ce7a86e9e187f3dd'
 )
 sha256sums_x86_64=(
-  '34cf352189cc7a49ea98c47bedc03c1f73f60370630ceff962613b7fd21ddf36'
-  'cd899fc10896c1177fe87f3ff0c39793688504535a85786bab29be712be7860b'
+  'a7b2a6db7392a83f415ce4290388b4f1b748830034c14f58b69685a5b9e9bccb'
+  '64f4868788f602f27acf7a53fd0090395925becb4e909090e2f5dd243be4c1f0'
 )
+
+prepare() {
+  sed     -e "s|%KERNVER%|${_kernver}|g"     "$srcdir/linux-mnt-reform-bin.install"     > "$srcdir/linux-mnt-reform-bin.install.generated"
+  mv "$srcdir/linux-mnt-reform-bin.install.generated"     "$srcdir/linux-mnt-reform-bin.install"
+
+  sed     -e "s|%KERNVER%|${_kernver}|g"     "$srcdir/mnt-reform-initramfs.sh"     > "$srcdir/mnt-reform-initramfs.generated.sh"
+  mv "$srcdir/mnt-reform-initramfs.generated.sh"     "$srcdir/mnt-reform-initramfs.sh"
+}
 
 build() {
   :

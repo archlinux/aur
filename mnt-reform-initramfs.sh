@@ -1,27 +1,15 @@
 #!/bin/bash
 set -euo pipefail
-shopt -s nullglob
 
-KMOD_DIRS=(/usr/lib/modules/*-reform*)
+KVER="%KERNVER%"
 
-if (( ${#KMOD_DIRS[@]} == 0 )); then
-  echo "==> No linux-mnt-reform kernels found, skipping initramfs"
+if [[ ! -d "/usr/lib/modules/$KVER" ]]; then
+  echo "==> Kernel modules directory missing for $KVER, skipping initramfs"
   exit 0
 fi
 
-echo "==> Updating module dependencies"
-for dir in "${KMOD_DIRS[@]}"; do
-  KVER="$(basename "$dir")"
-  echo "  -> depmod $KVER"
-  /usr/bin/depmod "$KVER"
-done
-
-# Select newest kernel by version
-KVER_LATEST="$(
-  printf "%s\n" "${KMOD_DIRS[@]##*/}" | sort -V | tail -n1
-)"
-
-echo "==> Using latest kernel: $KVER_LATEST"
+echo "==> Updating module dependencies for $KVER"
+/usr/bin/depmod "$KVER"
 
 # Maintain symlink
 if [ -f /boot/Image-linux-mnt-reform ]; then
@@ -30,9 +18,9 @@ elif [ -f /boot/vmlinuz-linux-mnt-reform ]; then
   ln -sf vmlinuz-linux-mnt-reform /boot/vmlinuz-linux
 fi
 
-echo "==> Building initramfs for $KVER_LATEST"
+echo "==> Building initramfs for $KVER"
 /usr/bin/dracut -f /boot/initramfs-linux \
-  --kver "$KVER_LATEST" \
+  --kver "$KVER" \
   --no-hostonly \
   --add "initqueue hwdb" \
   --omit "lvm network-manager network net-lib crypt dm mdraid nvdimm qemu qemu-net systemd-cryptsetup fido2 pkcs11 cifs lunmask resume virtfs virtiofs drm plymouth" \

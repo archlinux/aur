@@ -1,8 +1,6 @@
 # Maintainer: Stephano Cetola <stephano@cetola.net>
 
 _select_dtb_links() {
-    local pkgver="${1%-*}"
-    local kernver="${pkgver/.reform/-reform}"
     local model=""
     local dtb_target=""
 
@@ -16,16 +14,16 @@ _select_dtb_links() {
 
     case "$model" in
         "MNT Pocket Reform with BPI-CM4 Module")
-            dtb_target="meson-g12b-bananapi-cm4-mnt-pocket-reform-${kernver}.dtb"
+            dtb_target="meson-g12b-bananapi-cm4-mnt-pocket-reform-%KERNVER%.dtb"
             ;;
         "MNT Pocket Reform with i.MX8MP Module")
-            dtb_target="imx8mp-mnt-pocket-reform-${kernver}.dtb"
+            dtb_target="imx8mp-mnt-pocket-reform-%KERNVER%.dtb"
             ;;
         "MNT Pocket Reform with RCORE RK3588 Module")
-            dtb_target="rk3588-mnt-pocket-reform-${kernver}.dtb"
+            dtb_target="rk3588-mnt-pocket-reform-%KERNVER%.dtb"
             ;;
         "MNT Reform Next with RCORE RK3588 Module")
-            dtb_target="rk3588-mnt-reform-next-${kernver}.dtb"
+            dtb_target="rk3588-mnt-reform-next-%KERNVER%.dtb"
             ;;
         *)
             echo "Warning: Unknown device model: $model"
@@ -35,8 +33,8 @@ _select_dtb_links() {
     esac
 
     if [ -f "/boot/dtbs/$dtb_target" ]; then
-        ln -sf "dtbs/$dtb_target" "/boot/mnt-reform-${kernver}.dtb"
-        ln -sf "mnt-reform-${kernver}.dtb" /boot/mnt-reform.dtb
+        ln -sf "dtbs/$dtb_target" "/boot/mnt-reform-%KERNVER%.dtb"
+        ln -sf "mnt-reform-%KERNVER%.dtb" /boot/mnt-reform.dtb
         echo "Created symlinks to $dtb_target for model: $model"
     else
         echo "Warning: Target DTB $dtb_target not found in /boot/dtbs"
@@ -97,12 +95,12 @@ pre_upgrade() {
 
 post_install() {
     if [ -f /boot/Image-linux-mnt-reform ]; then
-        _select_dtb_links "$1"
+        _select_dtb_links
     fi
 }
 
 post_upgrade() {
     if [ -f /boot/Image-linux-mnt-reform ]; then
-        _select_dtb_links "$1"
+        _select_dtb_links
     fi
 }
