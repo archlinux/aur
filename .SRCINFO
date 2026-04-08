@@ -1,0 +1,15 @@
+pkgbase = nv-monitor
+	pkgdesc = Local monitoring TUI, CSV logger, and Prometheus exporter for NVIDIA GPU systems
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/wentbackward/nv-monitor
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	depends = ncurses
+	optdepends = nvidia: For GPU monitoring support
+	source = nv-monitor-1.7.1.tar.gz::https://github.com/wentbackward/nv-monitor/archive/v1.7.1.tar.gz
+	sha256sums = 6c5625f68ba5e9a75dbd0af4ddac41bc27d49c5c97b13e17213d0377ced705c1
+
+pkgname = nv-monitor
