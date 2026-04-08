@@ -5,7 +5,7 @@ _pkgname=dssh
 pkgname=${_pkgname}-bin
 pkgdesc="The only SSH connection manager you'll ever need, with a TUI & CLI"
 
-pkgver=1.0.0
+pkgver=2.0.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,10 +24,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}")
-sha256sums=('6af68f18c4b7cf975df0f095a774d2f2f94158538c7a8748255169ae7a3b1154'
+sha256sums=('55c18817bb95a7f3cdbf83d03482b5201a593bebe1f50b749b0318ebe06a75d6'
             'eba23c7b8bc084aa2579be5323b2d2ad1b9efca7caeca3a8cd1c273fa478484d')
-sha256sums_x86_64=('8809a35a3fb491f0eee931cebaba70f6778ad4ae5294d565db2cf343e5b2e1da')
-sha256sums_aarch64=('06aa01a3740fde2a79bb2251ca5fe54b6da413f2ebc4c2b088724e800240c61c')
+sha256sums_x86_64=('85cec7603724a19b7140782501bb4b6abee703443dcd6fcc2a24dfd5ca3bd23d')
+sha256sums_aarch64=('46f446f09b0b494556ebd116ada6f6596b239a984d5cd3ea8a3019063961483c')
 
 
 package() {
