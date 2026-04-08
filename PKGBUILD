@@ -3,7 +3,7 @@ pkgname=ghost-chat
 _pkgname=GhostChat
 pkgver=4.1.0
 _nodeversion=24
-pkgrel=2
+pkgrel=3
 pkgdesc="A Standalone chat overlay for Twitch, Kick, YouTube and other streaming platforms."
 arch=('any')
 url="https://github.com/Enubia/ghost-chat"
@@ -15,6 +15,7 @@ depends=(
 )
 makedepends=(
     'pnpm'
+    'npm'
     'gendesk'
     'go'
     'nvm'
