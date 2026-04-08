@@ -4,19 +4,31 @@ pkgname=dealers-choice
 pkgver=0.0.11
 pkgrel=1
 pkgdesc="Online Multiplayer Stud and Draw Poker"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/Dealer-s-Choice/dealers-choice"
 license=('MIT')
-depends=('libsodium' 'sdl2' 'sdl2_ttf' 'sdl2_image' 'sdl2_net' 'protobuf-c' 'hicolor-icon-theme')
+depends=(
+  'glibc'
+  'libsodium'
+  'sdl2'
+  'sdl2_ttf'
+  'sdl2_image'
+  'sdl2_net'
+  'protobuf-c'
+  'hicolor-icon-theme'
+)
 optdepends=('canfigger: use system-installed version')
-makedepends=('meson' 'ninja')
+makedepends=(
+  'meson'
+  'ninja'
+)
 
 source=("https://github.com/Dealer-s-Choice/dealers_choice/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('9919a30a0dfa1de924688118d64a425c101674f96b733f8385965f6babe50889')
 
 build() {
   arch-meson $pkgname-$pkgver build -Db_sanitize=none
-  meson compile -v -C build
+  meson compile -C build
 }
 
 package() {
