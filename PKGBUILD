@@ -1,7 +1,7 @@
 # Maintainer: NEOAPPS <asd22.info@gmail.com>
 # Maintainer: Santiago Fisela <santyfisela@gmail.com>
 pkgname=emerald-legacy-launcher
-pkgver=r138.1963fb0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="FOSS, cross-platform launcher for Minecraft Legacy Console Edition"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 optdepends=('discord: Discord RPC support')
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
 provides=('emerald-legacy-launcher')
-source=("$pkgname::git+$url#branch=dev")
+source=("$pkgname::git+$url#branch=main")
 sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
