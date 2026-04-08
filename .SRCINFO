@@ -1,0 +1,21 @@
+pkgbase = codemachine-cli-bin
+	pkgdesc = Multi-agent workflow orchestration CLI
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/moazbuilds/CodeMachine-CLI
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = codemachine-cli
+	conflicts = codemachine-cli
+	options = !strip
+	options = !debug
+	source = LICENSE-0.8.0::https://raw.githubusercontent.com/moazbuilds/CodeMachine-CLI/v0.8.0/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = codemachine-0.8.0-x86_64::https://github.com/moazbuilds/CodeMachine-CLI/releases/download/v0.8.0/codemachine-linux-x64
+	sha256sums_x86_64 = 014fadbce233b5a5e2e33f643b5040c90d80122213983dd5dcf8aa4bbf4d15f6
+	source_aarch64 = codemachine-0.8.0-aarch64::https://github.com/moazbuilds/CodeMachine-CLI/releases/download/v0.8.0/codemachine-linux-arm64
+	sha256sums_aarch64 = e5fc8a918ebbf9d508157f92d3cd98dc7df0eabf92a3145e8a8462d7b4296e87
+
+pkgname = codemachine-cli-bin
