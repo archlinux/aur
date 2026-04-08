@@ -1,6 +1,6 @@
 # Maintainer: Yves Gugger <yves@pounce.ch>
 pkgname=lean-ctx
-pkgver=2.21.2
+pkgver=2.21.3
 pkgrel=1
 pkgdesc="Context Engineering Layer for AI Coding — 28 tools, 90+ shell patterns, temporal AI memory, multi-agent diaries, semantic caching, tree-sitter AST. Reduces AI costs by 60-99%."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cargo' 'gcc')
 depends=('gcc-libs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v$pkgver/lean-ctx-$pkgver-source.tar.gz")
-sha256sums=('a3fae58315ae8e8d4a76e7c8e4c0d5af55028f9ca193d60526c152c803f139fc')
+sha256sums=('8d43b8a0d5b3a7ad89aebbad3322f33033dc6ff6a6b7b61f97438df79085bc8d')
 
 prepare() {
   cd "$pkgname-$pkgver/rust"
