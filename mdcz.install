@@ -1,0 +1,7 @@
+post_install() {
+    echo "You can add custom permanent flags for MDCz in .config/mdcz/user-flags.conf"
+}
+
+post_upgrade() {
+    post_install
+}

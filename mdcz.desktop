@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MDCz
+Exec=/usr/bin/mdcz %U
+Terminal=false
+Type=Application
+Icon=mdcz
+StartupWMClass=MDCz
+Comment=MDCz - media metadata scraper built on Electron
+Categories=Utility;AudioVideo;Video;Player;TV; 

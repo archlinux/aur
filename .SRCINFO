@@ -1,0 +1,19 @@
+pkgbase = mdcz
+	pkgdesc = An Electron-based tool for scraping and managing JAV movie metadata.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/ShotHeadman/mdcz
+	install = mdcz.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = pnpm
+	depends = electron39
+	source = mdcz-0.6.0.tar.gz::https://github.com/ShotHeadman/mdcz/archive/refs/tags/v0.6.0.tar.gz
+	source = mdcz.desktop
+	source = mdcz.sh
+	sha256sums = fd7027664d41926653f47b55bdcab16840130c9f8c1157f03e8f6e6eb25a7823
+	sha256sums = cd05629c20de4406029004536b25694cf4b2e27997695d6aa2b8942258d43683
+	sha256sums = ba4b54d04de0bbdb9fb9a30b8b9321833c25966f5cfe637e43c05090661e447f
+
+pkgname = mdcz
