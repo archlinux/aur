@@ -2,15 +2,15 @@
 pkgname=python-todoist-api-python
 _name=${pkgname#python-}
 __name=${_name//-/_}
-pkgver=3.2.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="This is the official Python API client for the Todoist REST API."
 arch=(any)
 url="https://github.com/Doist/$_name"
 license=('MIT')
 groups=()
-depends=(python-requests python-dataclass-wizard python-annotated-types)
-makedepends=(python-build python-installer python-poetry)
+depends=(python-httpx python-dataclass-wizard python-annotated-types)
+makedepends=(python-build python-installer python-hatchling)
 provides=()
 conflicts=()
 replaces=()
@@ -18,7 +18,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${__name::1}/$__name/$__name-$pkgver.tar.gz")
-sha256sums=('22c60230cc616437846f9a6469dddd97548545ef916d2bea98b2ca2f522d92f9')
+sha256sums=('2e8acbaa4ea7aae05a640bd24690ca020ef8044610b0dcf4df85b8a788a43872')
 
 build() {
     cd "$srcdir/$__name-$pkgver"
