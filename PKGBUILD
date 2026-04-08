@@ -3,7 +3,7 @@
 
 _pkgname=resynthesizer
 pkgname=gimp-plugin-$_pkgname-git
-pkgver=3.0.1.r1.g450dc6c
+pkgver=3.0.1.r11.gb6767c4
 pkgrel=1
 pkgdesc="Suite of gimp plugins for texture synthesis (like heal-selection). Git-Version"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-    arch-meson ${_pkgname} build -D install-translations=false
+    arch-meson ${_pkgname} build
     meson compile -C build
 }
 
