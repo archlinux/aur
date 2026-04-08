@@ -1,0 +1,5 @@
+# Ignore auto-generated makepkg folders/files
+pkg/
+src/
+*.pkg.tar.zst
+*.tar.gz
