@@ -3,16 +3,11 @@ pkgbase = canfigger
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://andy5995.github.io/canfigger/
-	arch = i686
 	arch = x86_64
-	arch = aarch64
-	arch = armv7h
-	arch = ppc64le
 	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = ninja
 	depends = glibc
-	options = staticlibs
 	source = https://github.com/andy5995/canfigger/releases/download/v0.3.0/canfigger-0.3.0.tar.xz
 	sha256sums = 3d813e69e0cc3a43c09cf565138ac1278f7bcea74053204f54e3872c094cb534
 
