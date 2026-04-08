@@ -12,20 +12,14 @@ license=('LGPL-2.1-or-later')
 install=chromium-ffmpeg.install
 source=(
 $install ${pkgname}.hook ${url}releases/ffmpeg-${pkgver}.tar.xz
-"no-xheaac-parser.patch.base64::${_url}/+/30735bb16a66e84d6324b5858eef314822b6d419%5E%21/?format=TEXT"
 "sigs.base64::${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT"
-"aac.patch.base64::${_url}/+/a21071589971c54596dbbccbccdbac7bdd9d4e4c%5E%21/?format=TEXT"
-"aacREADME.base64::${_url}/+/bdcb0b447f433de3b69f0252732791b9f7e26f37/chromium/patches/README?format=TEXT"
 https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-${pkgver}-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 )
 
 b2sums=('0291ddd136ff1b08eaf8da9a2a8a0a15a0a1125901eb72801e553acea7259389338a42f81939829b220ec1de36a2d2c25445f2235355f7e705578addb86f82ae'
         '1b896e60f51346f9ee586c5e8d6061650d1c153171706961f8c3b60366e167535ca7632bf4e5125e8ab8c974e20033449da2b2d99ede25760eb6122badf5d6d8'
         '3710f8d3d60f89e404e837d238d089bdd7fd3be9404014aa1f3d4dd8983f10c7fefd7f4b27996fb8cb664f54aa3417da67f4ea02c896fe1026383198c45f5b26'
-        'abe6b9b1c36e6d25d0c7460de9afc599efab2be8f16d2a9c0e07649e88181169137ad7a0e8de428e52a2175e0d0e494a02c71e408433b827cef711f5a5d9aa94'
         'c92deb468a018ae7f04150d35cb71d3cf7e2e151f23ab84533bca9ccb0c678b94897668c48362aa6549cfa9127250e094719a14f95b59ed4e95f69dcebb3bca1'
-        '0583ede68c5733e23872b5ea7e82ea14e47fe071567e4f81d2e9711b94f9ac996afde649662c6539dd25f47d127df94f7d5e476474fd315884579bef405168e1'
-        'd48503ed0cd4361961002dd6a6b8d500a334be1dcaf025ea145cc03c46c6e70fa0a7dd3efa06f5686776febf210aefa2b6840d3f2be482ce4120ec059708f95c'
         'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d')
 depends=(glibc)
 makedepends=(nasm
@@ -44,11 +38,6 @@ prepare() {
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
   # Chromium patches
   patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch # needed
-  mkdir -p chromium/patches; base64 -d ../aacREADME.base64 > chromium/patches/README
-  base64 -d ../aac.patch.base64 > aac.patch
-  patch -Np1 -i aac.patch
-  base64 -d ../no-xheaac-parser.patch.base64 > no-xheaac-parser.patch
-  patch -Np1 -i no-xheaac-parser.patch
   sed -i.bak '/ff_aom_uninit_film_grain_params/d' libavcodec/h2645_sei.c
   sed -i.bak -E -e "/&ff_dirac_codec,/d" -e "/&ff_speex_codec,/d" \
     -e "/&ff_theora_codec,/d" -e "/&ff_celt_codec,/d" -e "/&ff_old_dirac_codec,/d" libavformat/oggdec.c # buggy or unused
