@@ -1,0 +1,19 @@
+pkgbase = comodoro-git
+	pkgdesc = A CLI to manage timers
+	pkgver = r119.b70b360
+	pkgrel = 1
+	url = https://github.com/pimalaya/comodoro
+	arch = x86_64
+	groups = pimalaya
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	provides = comodoro
+	conflicts = comodoro
+	source = comodoro::git+https://github.com/pimalaya/comodoro.git
+	b2sums = SKIP
+
+pkgname = comodoro-git

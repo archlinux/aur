@@ -1,0 +1,5 @@
+[comodoro-git]
+source = "github"
+github = "pimalaya/comodoro"
+branch = "master"
+use_commit = true
