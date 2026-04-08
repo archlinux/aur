@@ -1,6 +1,6 @@
-diff -Naur Bottles-63.0-orig/bottles/frontend/meson.build Bottles-63.0/bottles/frontend/meson.build
---- Bottles-63.0-orig/bottles/frontend/meson.build	2026-03-22 20:11:44.000000000 +0100
-+++ Bottles-63.0/bottles/frontend/meson.build	2026-03-23 09:33:49.759050254 +0100
+diff -Naur Bottles-63.2-orig/bottles/frontend/meson.build Bottles-63.2/bottles/frontend/meson.build
+--- Bottles-63.2-orig/bottles/frontend/meson.build	2026-04-02 12:38:44.000000000 +0200
++++ Bottles-63.2/bottles/frontend/meson.build	2026-04-08 08:53:46.634682417 +0200
 @@ -23,12 +23,6 @@
      configuration: conf
  )
@@ -14,9 +14,9 @@ diff -Naur Bottles-63.0-orig/bottles/frontend/meson.build Bottles-63.0/bottles/f
  bottles_sources = [
    '__init__.py',
    'main.py',
-diff -Naur Bottles-63.0-orig/bottles/frontend/views/bottle_details.py Bottles-63.0/bottles/frontend/views/bottle_details.py
---- Bottles-63.0-orig/bottles/frontend/views/bottle_details.py	2026-03-22 20:11:44.000000000 +0100
-+++ Bottles-63.0/bottles/frontend/views/bottle_details.py	2026-03-23 09:34:40.323244739 +0100
+diff -Naur Bottles-63.2-orig/bottles/frontend/views/bottle_details.py Bottles-63.2/bottles/frontend/views/bottle_details.py
+--- Bottles-63.2-orig/bottles/frontend/views/bottle_details.py	2026-04-02 12:38:44.000000000 +0200
++++ Bottles-63.2/bottles/frontend/views/bottle_details.py	2026-04-08 08:54:44.374534490 +0200
 @@ -22,7 +22,7 @@
  from gettext import gettext as _
  from typing import Dict, List, Optional, Tuple
@@ -58,9 +58,9 @@ diff -Naur Bottles-63.0-orig/bottles/frontend/views/bottle_details.py Bottles-63
          else:
              show_chooser()
  
-diff -Naur Bottles-63.0-orig/bottles/frontend/views/bottle_preferences.py Bottles-63.0/bottles/frontend/views/bottle_preferences.py
---- Bottles-63.0-orig/bottles/frontend/views/bottle_preferences.py	2026-03-22 20:11:44.000000000 +0100
-+++ Bottles-63.0/bottles/frontend/views/bottle_preferences.py	2026-03-23 09:36:33.045574399 +0100
+diff -Naur Bottles-63.2-orig/bottles/frontend/views/bottle_preferences.py Bottles-63.2/bottles/frontend/views/bottle_preferences.py
+--- Bottles-63.2-orig/bottles/frontend/views/bottle_preferences.py	2026-04-02 12:38:44.000000000 +0200
++++ Bottles-63.2/bottles/frontend/views/bottle_preferences.py	2026-04-08 08:55:03.658170342 +0200
 @@ -20,7 +20,7 @@
  import re
  from gettext import gettext as _
@@ -70,7 +70,7 @@ diff -Naur Bottles-63.0-orig/bottles/frontend/views/bottle_preferences.py Bottle
  
  from bottles.backend.globals import (
      gamemode_available,
-@@ -140,7 +140,7 @@
+@@ -141,7 +141,7 @@
          self.queue = details.queue
          self.details = details
  
@@ -79,9 +79,9 @@ diff -Naur Bottles-63.0-orig/bottles/frontend/views/bottle_preferences.py Bottle
              return
  
          _not_available = _("This feature is unavailable on your system.")
-diff -Naur Bottles-63.0-orig/bottles/frontend/views/list.py Bottles-63.0/bottles/frontend/views/list.py
---- Bottles-63.0-orig/bottles/frontend/views/list.py	2026-03-22 20:11:44.000000000 +0100
-+++ Bottles-63.0/bottles/frontend/views/list.py	2026-03-23 09:37:10.979475969 +0100
+diff -Naur Bottles-63.2-orig/bottles/frontend/views/list.py Bottles-63.2/bottles/frontend/views/list.py
+--- Bottles-63.2-orig/bottles/frontend/views/list.py	2026-04-02 12:38:44.000000000 +0200
++++ Bottles-63.2/bottles/frontend/views/list.py	2026-04-08 08:55:21.361016292 +0200
 @@ -18,7 +18,7 @@
  from datetime import datetime
  from gettext import gettext as _
@@ -101,9 +101,9 @@ diff -Naur Bottles-63.0-orig/bottles/frontend/views/list.py Bottles-63.0/bottles
          def set_path(_dialog, response):
              if response != Gtk.ResponseType.ACCEPT:
                  return
-diff -Naur Bottles-63.0-orig/bottles/frontend/views/new_bottle_dialog.py Bottles-63.0/bottles/frontend/views/new_bottle_dialog.py
---- Bottles-63.0-orig/bottles/frontend/views/new_bottle_dialog.py	2026-03-22 20:11:44.000000000 +0100
-+++ Bottles-63.0/bottles/frontend/views/new_bottle_dialog.py	2026-03-23 09:37:38.443254964 +0100
+diff -Naur Bottles-63.2-orig/bottles/frontend/views/new_bottle_dialog.py Bottles-63.2/bottles/frontend/views/new_bottle_dialog.py
+--- Bottles-63.2-orig/bottles/frontend/views/new_bottle_dialog.py	2026-04-02 12:38:44.000000000 +0200
++++ Bottles-63.2/bottles/frontend/views/new_bottle_dialog.py	2026-04-08 08:55:38.452952099 +0200
 @@ -20,7 +20,7 @@
  from threading import Event
  from typing import Any, Optional
@@ -122,9 +122,9 @@ diff -Naur Bottles-63.0-orig/bottles/frontend/views/new_bottle_dialog.py Bottles
              return
  
          self.app = self.window.get_application()
-diff -Naur Bottles-63.0-orig/bottles/frontend/windows/window.py Bottles-63.0/bottles/frontend/windows/window.py
---- Bottles-63.0-orig/bottles/frontend/windows/window.py	2026-03-22 20:11:44.000000000 +0100
-+++ Bottles-63.0/bottles/frontend/windows/window.py	2026-03-23 09:38:39.195614166 +0100
+diff -Naur Bottles-63.2-orig/bottles/frontend/windows/window.py Bottles-63.2/bottles/frontend/windows/window.py
+--- Bottles-63.2-orig/bottles/frontend/windows/window.py	2026-04-02 12:38:44.000000000 +0200
++++ Bottles-63.2/bottles/frontend/windows/window.py	2026-04-08 08:56:11.667655858 +0200
 @@ -22,7 +22,7 @@
  from gettext import gettext as _
  from typing import Optional

@@ -3,7 +3,7 @@
 
 pkgname=bottles
 _pkgname=Bottles
-pkgver=63.0
+pkgver=63.2
 pkgrel=1
 epoch=2
 pkgdesc='Easily manage wine and proton prefix'
@@ -13,6 +13,7 @@ license=(GPL-3.0-only)
 depends=(
   cabextract
   dconf
+  fvs2
   gamemode
   gtk4
   gtksourceview5
@@ -35,7 +36,7 @@ depends=(
   python-steamgriddb
   python-yaml
   python-yara
-  webkit2gtk
+  webkit2gtk-4.1
   xorg-xdpyinfo
   vkbasalt-cli
 )
@@ -59,8 +60,8 @@ source=(
   remove-flatpak-checks.patch
 )
 sha256sums=(
-  f56493895ca02b73bc1c8035ad194f8426e0b214c0ea56b8b887273ef4218eb9
-  576abceccca859fea7bde1b51ea2a9eef21590103f772c720ed5ef6bd0822390
+  820a505a84003c766582de69d7008dcc0a3f4bb808a2074d7d8fa37931ca4f77
+  1d2e1417803e93a5d487d46c76ec256c301459f28854e0c8d049a8be11e50fc0
 )
 
 prepare() {
