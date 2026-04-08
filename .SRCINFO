@@ -1,7 +1,7 @@
 pkgbase = peersky-browser
 	pkgdesc = A minimal local-first p2p web browser: access, communicate, and publish offline.(Use system-wide electron)
 	pkgver = 1.0.0_beta.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://peersky.p2plabs.xyz/
 	arch = any
 	license = MIT
