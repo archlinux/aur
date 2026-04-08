@@ -1,12 +1,12 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=mpv-plugin-xrandr
-pkgver=r21.af6c335
+pkgver=r25.4102487
 pkgrel=1
 pkgdesc="Makes mpv automatically invoke the "xrandr" tool to set the best suitable parameters for the display output"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL')
-url="https://github.com/lvml/mpv-plugin-xrandr"
+url="https://gitlab.com/lvml/mpv-plugin-xrandr.git"
 depends=('mpv' 'xorg-xrandr' 'bash')
 source=('git+https://gitlab.com/lvml/mpv-plugin-xrandr.git' 'mpv-xrandr.desktop')
 md5sums=('SKIP' 'SKIP')
