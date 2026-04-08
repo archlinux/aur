@@ -1,4 +1,5 @@
 # Maintainer: taotieren <admin@taotieren.com>
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgbase=mounriver-studio-toolchain-bin
 pkgname=($pkgbase
@@ -8,20 +9,23 @@ pkgname=($pkgbase
     mounriver-studio-toolchain-riscv-gcc12-bin
     mounriver-studio-toolchain-riscv-gcc15-bin)
 pkgver=240
-pkgrel=3
+pkgrel=5
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('LicenseRef-custom')
 provides=('MRS-Toolchain')
 makedepends=('tar' 'jq' 'curl')
-optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
+optdepends=(
+    'ch34x-dkms-git: CH341SER driver with fixed bug'
     'i2c-ch341-dkms: CH341 USB-I2C adapter driver'
-    'spi-ch341-usb-dkms: SPI/GPIO driver for CH341'
     'ch341eepromtool: An i2c serial EEPROM programming tool for the WCH CH341A'
     'ch341prog-git: A simple command line tool (programmer) interfacing with ch341a'
     'ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A'
     'ch343ser-dkms: USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc (dkms).'
-    'wchisp: WCH ISP Tool in Rust')
+    'wchisp: WCH ISP Tool in Rust'
+    'imsprog: MSProg - software for CH341A-based programmers to work with I2C, SPI and MicroWire EEPROM/Flash chips'
+    'sfp-master: SFP-module programmer for CH341a devices'
+)
 # empty dummy file hosted on IPFS to satisfy updpkgsums/lilac checks
 # the content hash is guaranteed to be immutable
 # the real source file is downloaded dynamically in prepare() due to short-lived URL signatures
