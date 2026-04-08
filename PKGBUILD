@@ -1,7 +1,7 @@
 # Maintainer: Vincent Post <cent@spline.de>
 pkgname=xivlauncher
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)"
 arch=('x86_64')
