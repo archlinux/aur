@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname=marimo
-pkgver=0.22.0
+pkgver=0.22.5
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -12,10 +12,10 @@ license=('Apache-2.0')
 options=(!debug)
 
 makedepends=(
-    # Frontend
-    'nodejs'
-    'pnpm'
-
+    # Frontend build tools - required for GitHub source
+    # 'nodejs'
+    # 'pnpm'
+    
     'python-installer'
     'uv'
 )
@@ -65,17 +65,19 @@ optdepends=(
     'ruff: Formatting'
 )
 
-source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-)
-b2sums=(
-    '7d520dd0c3f60dd842fc33517710f31ddc1450708b21573442135192e3d724905c52366eb91655c306536cd3ab307477550b351f92d7ece9893484b14a269a7b'
-)
+# GitHub source
+# source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+# b2sums=('c26640fa34a4717e2f8b9b3bd60161c1f7e17e38b90b0b49af081e1feeea6e69eedcf53aa84e5165ae0d25a3141653e9cda30f7f9449ac435c89352ef0572900')
+
+# PyPI source release
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
+b2sums=('4fe2720aec11ca4132f17af288b4d3feb3a8f48b4c2b9cbf9b97217c2785f671560b7f4bf4a2c1c84eef823697d76a25a9be10c9a1df0097926f547cbe31cee0')
 
 build() {
     cd $pkgname-$pkgver
 
-    make fe # Frontend
+    # Build frontend - required for GitHub source
+    # make fe
 
     uv build --wheel \
         -p /usr/bin/python3 \
