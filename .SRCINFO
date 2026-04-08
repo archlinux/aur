@@ -14,10 +14,9 @@ pkgbase = control-ofc-gui
 	depends = python
 	depends = pyside6
 	depends = python-httpx
-	depends = python-httpx-sse
 	depends = python-pyqtgraph
 	depends = python-numpy
 	source = control-ofc-gui-1.0.0.tar.gz::https://github.com/Plan-B-Development/control-ofc-gui/archive/v1.0.0.tar.gz
-	sha256sums = d14810fbdbbbe37476a2242c46045bfe5ea2ca219ede0197a6d3d2e25f6f54a5
+	sha256sums = 7b42badbad0af6dc98486f4cdc5acb598baa26f4f97b1572d36712fde4c7f9b0
 
 pkgname = control-ofc-gui

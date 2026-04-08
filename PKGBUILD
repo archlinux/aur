@@ -7,11 +7,11 @@ arch=('any')
 url="https://github.com/Plan-B-Development/control-ofc-gui"
 license=('MIT')
 depends=('control-ofc-daemon' 'python' 'pyside6' 'python-httpx'
-         'python-httpx-sse' 'python-pyqtgraph' 'python-numpy')
+         'python-pyqtgraph' 'python-numpy')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 install=control-ofc-gui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d14810fbdbbbe37476a2242c46045bfe5ea2ca219ede0197a6d3d2e25f6f54a5')
+sha256sums=('7b42badbad0af6dc98486f4cdc5acb598baa26f4f97b1572d36712fde4c7f9b0')
 
 build() {
     cd "$pkgname-$pkgver"
