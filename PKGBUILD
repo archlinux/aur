@@ -2,7 +2,7 @@
 
 pkgname=pear-desktop-arjix-git
 _app_id=com.github.th_ch.youtube_music
-pkgver=3.11.4.r47.gb7974d2
+pkgver=3.11.4.r48.g1fe490f
 pkgrel=1
 _nodeversion=24
 _electronversion=40
