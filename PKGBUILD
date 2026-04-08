@@ -2,7 +2,7 @@
 pkgname=cloudmount-wizard-bin
 _pkgname=cloudmount-wizard
 pkgver=v1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Asistente para montar unidades de nube (Mega, Drive, etc) en Linux (Binario)"
 arch=('x86_64')
 url="https://github.com/AnabasaSoft/CloudMount-Wizard"
