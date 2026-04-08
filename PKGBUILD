@@ -7,7 +7,7 @@ __pkgname=$_pkgname
 
 pkgname=$__pkgname-next
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Upcoming FireDragon v13"
 url="https://gitlab.com/garuda-linux/firedragon/firedragon13"
 arch=(x86_64 aarch64)
@@ -147,36 +147,40 @@ build() {
   # LTO needs more open files
   ulimit -n 4096
 
-  # Do 3-tier PGO
-  echo "Building instrumented browser..."
-  cat >.mozconfig ../mozconfig - <<END
+  if [[ "${_build_pgo:-t}" == "t" ]]; then
+    # Do 3-tier PGO
+    echo "Building instrumented browser..."
+    cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-generate=cross
 END
-  ./mach build --priority normal
+    ./mach build --priority normal
 
-  echo "Profiling instrumented browser..."
-  ./mach package
-  LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
-    dbus-run-session \
-    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-    ./mach python build/pgo/profileserver.py
+    echo "Profiling instrumented browser..."
+    ./mach package
+    LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
+      dbus-run-session \
+      xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+      ./mach python build/pgo/profileserver.py
 
-  stat -c "Profile data found (%s bytes)" merged.profdata
-  test -s merged.profdata
+    stat -c "Profile data found (%s bytes)" merged.profdata
+    test -s merged.profdata
 
-  stat -c "Jar log found (%s bytes)" jarlog
-  test -s jarlog
+    stat -c "Jar log found (%s bytes)" jarlog
+    test -s jarlog
 
-  echo "Removing instrumented browser..."
-  ./mach clobber objdir
+    echo "Removing instrumented browser..."
+    ./mach clobber objdir
 
-  echo "Building optimized browser..."
-  cat >.mozconfig ../mozconfig - <<END
+    echo "Building optimized browser..."
+    cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto=cross,full
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
+  else
+    cat >.mozconfig ../mozconfig
+  fi
   ./mach build --priority normal
 
   cat browser/locales/shipped-locales | xargs ./mach package-multi-locale --locales
@@ -184,7 +188,9 @@ END
 
 package() {
   cd $_pkgname-v$_pkgver
-  DESTDIR="$pkgdir" ./mach install
+
+  mkdir -p "$pkgdir/usr/lib"
+  tar -xvf obj/dist/"$(cat obj/dist/package_name.txt)" -C "$pkgdir/usr/lib"
 
   local appdir="$pkgdir/usr/lib/$_pkgname"
 
