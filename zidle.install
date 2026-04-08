@@ -1,0 +1,11 @@
+post_install() {
+  echo ""
+  echo ">>> Zidle installato con successo!"
+  echo ">>> Per attivarlo, aggiungi questa riga in fondo al tuo ~/.zshrc:"
+  echo ">>>   source /usr/share/zidle/zidle.plugin.zsh"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}

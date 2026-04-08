@@ -1,0 +1,17 @@
+pkgbase = zidle-git
+	pkgdesc = A multi-scene, zero-dependency Zsh terminal screensaver built with Python curses
+	pkgver = r19.e39f912
+	pkgrel = 1
+	url = https://github.com/mariostabile1/zidle
+	install = zidle.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	depends = python
+	provides = zidle
+	conflicts = zidle
+	source = git+https://github.com/mariostabile1/zidle.git
+	sha256sums = SKIP
+
+pkgname = zidle-git
