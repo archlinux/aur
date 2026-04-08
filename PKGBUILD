@@ -1,6 +1,6 @@
 # Maintainer: Vincent Post <cent@spline.de>
 pkgname=xivlauncher
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 epoch=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)"
@@ -28,7 +28,7 @@ depends=(
     'desktop-file-utils'
     'jxrlib'
 )
-makedepends=('dotnet-sdk>=8' 'git')
+makedepends=('dotnet-sdk>=10' 'git')
 optdepends=('steam')
 options=('!strip' '!debug')
 source=(
