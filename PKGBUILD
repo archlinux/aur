@@ -132,7 +132,7 @@ package_pipewire-ldac() {
     LGPL-2.1-or-later
   )
   depends=(
-    "libpipewire=$epoch:$pkgver-$pkgrel" lib$_pwname.so
+    "libpipewire-ldac=$epoch:$pkgver-$pkgrel" lib$_pwname.so
     dbus libdbus-1.so
     gcc-libs
     glib2 libglib-2.0.so
@@ -162,7 +162,7 @@ package_pipewire-ldac() {
   provides=("pipewire=${pkgver}")
   conflicts=(
     'pipewire'
-  )
+  )	
   install=pipewire-ldac.install
 
   meson install -C build --destdir "$pkgdir"
@@ -283,7 +283,8 @@ package_libpipewire-ldac() {
     glibc
     gcc-libs
   )
-  provides=(lib$_pwname.so)
+  provides=("libpipewire=${pkgver}" lib$_pwname.so)
+  conflicts=('libpipewire')
 
   mv lib/* "$pkgdir"
 
@@ -293,7 +294,9 @@ package_libpipewire-ldac() {
 package_alsa-card-profiles-ldac() {
   pkgdesc+=" - ALSA card profiles"
   license=(LGPL-2.1-or-later)
-
+  provides=(alsa-card-profiles)
+  conflicts=(alsa-card-profiles)
+  
   mv acp/* "$pkgdir"
 }
 
@@ -313,6 +316,8 @@ package_pipewire-libcamera-ldac() {
     libcamera libcamera-base.so libcamera.so
     pipewire
   )
+  provides=(pipewire-libcamera)
+  conflicts=(pipewire-libcamera)
 
   mv libcamera/* "$pkgdir"
 
@@ -346,6 +351,8 @@ package_pipewire-audio-ldac() {
     systemd-libs
     webrtc-audio-processing-1 libwebrtc-audio-processing-1.so
   )
+  provides=(pipewire-audio)
+  conflicts=(pipewire-audio)
 
   mv audio/* "$pkgdir"
 
@@ -363,7 +370,9 @@ package_pipewire-alsa-ldac() {
     "pipewire=$epoch:$pkgver-$pkgrel"
     pipewire-session-manager
   )
-
+  provides=(pipewire-alsa)
+  conflicts=(pipewire-alsa)
+  
   mkdir -p "$pkgdir/etc/alsa/conf.d"
   ln -st "$pkgdir/etc/alsa/conf.d" \
     /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf
@@ -383,7 +392,9 @@ package_pipewire-ffado-ldac() {
     glibc
     libffado libffado.so
   )
-
+  provides=(pipewire-ffado)
+  conflicts=(pipewire-ffado)
+  
   mv ffado/* "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
@@ -400,8 +411,10 @@ package_pipewire-jack-client-ldac() {
     glibc
     jack libjack.so
   )
+  provides=(pipewire-jack)
   conflicts=(pipewire-jack)
-
+  
+  
   mv jack-client/* "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
@@ -425,18 +438,21 @@ package_pipewire-jack-ldac() {
   optdepends=(
     'jack-example-tools: for official JACK example-clients and tools'
   )
-  conflicts=(
-    jack
-    jack2
-    pipewire-jack-client
-  )
   provides=(
     jack
     libjack.so
     libjacknet.so
     libjackserver.so
+    pipewire-jack-client
+    "pipewire-jack=${pkgver}"
   )
-
+  conflicts=(
+    jack
+    jack2
+    pipewire-jack-client
+    pipewire-jack
+  )
+  
   mv jack/* "$pkgdir"
 
   install -Dm644 /dev/null \
@@ -464,8 +480,8 @@ package_pipewire-pulse-ldac() {
     pipewire-session-manager
     systemd-libs libsystemd.so
   )
-  provides=(pulse-native-provider)
-  conflicts=(pulseaudio)
+  provides=(pulse-native-provider pipewire-pulse)
+  conflicts=(pulseaudio pipewire-pulse)
   install=pipewire-pulse.install
 
   mv pulse/* "$pkgdir"
@@ -489,6 +505,8 @@ package_pipewire-roc-ldac() {
     glibc
     roc-toolkit libroc.so
   )
+  provides=(pipewire-roc)
+  conflicts=(pipewire-roc)
 
   mv roc/* "$pkgdir"
 
@@ -508,7 +526,8 @@ package_gst-plugin-pipewire-ldac() {
     gstreamer
     pipewire-session-manager
   )
-
+  provides=(gst-plugin-pipewire)
+  conflicts=(gst-plugin-pipewire)
   mv gst/* "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
@@ -526,7 +545,9 @@ package_pipewire-zeroconf-ldac() {
     openssl libcrypto.so
     opus libopus.so
   )
-
+  provides=(pipewire-zeroconf)
+  conflicts=(pipewire-zeroconf)
+  
   mv zeroconf/* "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
@@ -541,6 +562,8 @@ package_pipewire-v4l2-ldac() {
     pipewire-session-manager
     sh
   )
+  provides=(pipewire-v4l2)
+  conflicts=(pipewire-v4l2)
 
   mv v4l2/* "$pkgdir"
 
@@ -558,7 +581,9 @@ package_pipewire-x11-bell-ldac() {
     libx11
     libxfixes
   )
-
+  provides=(pipewire-x11-bell)
+  conflicts=(pipewire-x11-bell)
+  
   mv x11-bell/* "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
@@ -568,10 +593,14 @@ package_pipewire-session-manager-ldac() {
   pkgdesc="Session manager for PipeWire (default provider)"
   license=(CC0-1.0)
   depends=(wireplumber)
+  provides=(pipewire-session-manager)
+  conflicts=(pipewire-session-manager)
 }
 
 package_pulse-native-provider-ldac() {
   pkgdesc="PulseAudio sound server (default provider)"
   license=(CC0-1.0)
   depends=(pipewire-pulse)
+  provides=(pulse-native-provider)
+  conflicts=(pulse-native-provider)
 }
