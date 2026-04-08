@@ -1,0 +1,26 @@
+pkgbase = vgalizer-git
+	pkgdesc = Lightweight GPU-accelerated audio-reactive DJ visualizer (git master)
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/Hornfisk/vgalizer
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = vulkan-icd-loader
+	depends = alsa-lib
+	depends = fontconfig
+	depends = libxkbcommon
+	optdepends = libpulse: PulseAudio capture via parec (PA: device prefix)
+	optdepends = pipewire: native PipeWire capture via pw-cat (PW: device prefix)
+	optdepends = vulkan-radeon: Vulkan driver for AMD GPUs
+	optdepends = vulkan-intel: Vulkan driver for Intel GPUs
+	optdepends = nvidia-utils: Vulkan driver for NVIDIA GPUs
+	provides = vgalizer
+	provides = vje
+	conflicts = vgalizer
+	conflicts = vje
+	source = vgalizer::git+https://github.com/Hornfisk/vgalizer.git
+	sha256sums = SKIP
+
+pkgname = vgalizer-git
