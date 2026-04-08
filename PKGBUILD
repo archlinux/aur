@@ -3,7 +3,7 @@ options=(!strip)  # Don't strip libs because there aren't any
 
 pkgname=hydrus
 _pkgname=hydrus
-pkgver=666
+pkgver=667
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -17,6 +17,7 @@ depends=(python python-opencv python-beautifulsoup4 python-yaml
          python-service-identity  # required by twisted for https hostname verification
          qt6-multimedia  # https://aur.archlinux.org/packages/hydrus#comment-914337
          qt6-svg  # https://aur.archlinux.org/packages/hydrus#comment-923550
+         qt6-charts
          pyside6)
 makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
@@ -37,9 +38,10 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'qt6-webengine: to display PDF thumbnails'
             # 'python-pyparsing: currently unused'
             # 'speedcopy: may speed up file transfers'
-            'swftools: to display SWF thumbnails')
+            'swftools: to display SWF thumbnails'
+            'python-pillow-jpegxl-plugin: to display JXL images')
 conflicts=(hydrus-docs-dummy)
-source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=4341333772bfd71413d985e5c06c3616d2f13396"
+source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=8ab3e0044ec87fcea31b1808214f4cb809a0e61c"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
