@@ -45,10 +45,6 @@ prepare() {
 build() {
 	cd "${_name}"
 
-	# Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
-	# from incorrectly using a parent git checkout info.
-	# https://github.com/pypa/build/issues/384#issuecomment-947675975
-	export GIT_CEILING_DIRECTORIES="${PWD}/.."
 	export NVCC_CCBIN="${NVCC_CCBIN}"
 	export CFLAGS='-DGLOG_USE_GLOG_EXPORT'
 	export CCFLAGS='-DGLOG_USE_GLOG_EXPORT'
