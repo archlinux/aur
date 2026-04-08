@@ -1,14 +1,14 @@
 pkgbase = openaudible-bin
 	pkgdesc = a cross-platform audiobook manager designed for Audible users. Manage all your audiobooks with this easy-to-use desktop application
-	pkgver = 4.7.4
+	pkgver = 4.8
 	pkgrel = 1
 	url = https://openaudible.org
 	arch = x86_64
 	license = Apache
 	depends = desktop-file-utils
 	depends = webkit2gtk
-	source = https://github.com/openaudible/openaudible/releases/download/v4.7.4/OpenAudible_4.7.4_x86_64.deb
-	sha512sums = a56d10c491749d049cb8cc0651630b4b458bad51bdc02dc5a694817f88876a3616ff59eaa64c7adaf40ee385bdef79c3d59dfc636552d970e5d82d9732614cbd
+	source = https://github.com/openaudible/openaudible/releases/download/v4.8/OpenAudible_4.8_x86_64.deb
+	sha512sums = 1ced879f393e3210f5d3bd5217305af518181647c431946e51cf77db68351cd03f9733cd81e050b309f39e9bfe7db743de9dc35fd9e5a85bbebcc6d0fd349222
 
 
 pkgname = openaudible-bin
