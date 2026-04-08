@@ -3,7 +3,7 @@
 # 注意：这是一个非官方维护的社区版本。
 
 pkgname=hapi-git
-pkgver=0.16.5
+pkgver=0.16.6
 pkgrel=1
 pkgdesc="App for agentic coding - access coding agent anywhere (Built from source)"
 arch=('x86_64' 'aarch64')
