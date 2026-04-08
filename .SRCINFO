@@ -1,0 +1,22 @@
+pkgbase = echobuf
+	pkgdesc = Instant audio sampling for Linux — continuously buffers system audio, save the last N seconds to WAV on demand
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/KohlJary/echobuf
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python>=3.11
+	depends = python-numpy
+	depends = python-soundfile
+	depends = python-pulsectl
+	optdepends = python-pystray: system tray icon
+	optdepends = python-pillow: system tray icon
+	optdepends = python-gobject: system tray icon (appindicator backend)
+	optdepends = python-pynput: built-in global hotkey support
+	source = https://files.pythonhosted.org/packages/source/e/echobuf/echobuf-0.4.0.tar.gz
+	sha256sums = 5b995d240c2472423ff6e988bb4803b7db498a3fcc649c633a597bcfe8312488
+
+pkgname = echobuf
