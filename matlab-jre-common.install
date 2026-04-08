@@ -1,0 +1,7 @@
+post_install() {
+  /usr/share/libalpm/scripts/matlab-jre --install
+}
+
+post_upgrade() {
+  post_install
+}

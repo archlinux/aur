@@ -3,5 +3,6 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!*.install
 !*.hook
 !*.script

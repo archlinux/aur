@@ -1,13 +1,18 @@
 pkgbase = matlab-jre-meta
 	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = R2025b
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.mathworks.com/support/requirements/openjdk.html
 	arch = any
 	license = 0BSD
 
+pkgname = matlab-jre-common
+	pkgdesc = A high-level language for numerical computation and visualization (JRE, common)
+	depends = bash
+
 pkgname = matlab-jre8-meta
 	pkgdesc = A high-level language for numerical computation and visualization (JRE8, meta)
+	depends = matlab-jre-common>=R2025b-4
 	depends = java-environment=8
 	provides = matlab-r2020a-jre-meta=R2025b
 	provides = matlab-r2020a-jre=R2025b
@@ -24,6 +29,7 @@ pkgname = matlab-jre8-meta
 
 pkgname = matlab-jre21-meta
 	pkgdesc = A high-level language for numerical computation and visualization (JRE21, meta)
+	depends = matlab-jre-common>=R2025b-4
 	depends = java-environment=21
 	provides = matlab-r2024b-jre-meta=R2025b
 	provides = matlab-r2024b-jre=R2025b
@@ -36,6 +42,7 @@ pkgname = matlab-jre21-meta
 
 pkgname = matlab-jre11-meta
 	pkgdesc = A high-level language for numerical computation and visualization (JRE11, meta)
+	depends = matlab-jre-common>=R2025b-4
 	depends = java-environment=11
 	provides = matlab-r2023a-jre-meta=R2025b
 	provides = matlab-r2023a-jre=R2025b
@@ -44,6 +51,7 @@ pkgname = matlab-jre11-meta
 
 pkgname = matlab-jre17-meta
 	pkgdesc = A high-level language for numerical computation and visualization (JRE17, meta)
+	depends = matlab-jre-common>=R2025b-4
 	depends = java-environment=17
 	provides = matlab-r2024a-jre-meta=R2025b
 	provides = matlab-r2024a-jre=R2025b
