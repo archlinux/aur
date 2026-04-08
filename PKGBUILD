@@ -4,7 +4,7 @@
 pkgname=throne-git
 _pkgname=${pkgname%-git}
 _srcname=Throne
-pkgver=1.1.1.r49.ga77ad37
+pkgver=1.1.1.r71.g5bd6cb2
 pkgrel=1
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -70,7 +70,7 @@ build() {
 		-ldflags "-linkmode=external -w -s -X 'github.com/sagernet/sing-box/constant.Version=${VERSION_SINGBOX}' -X 'internal/godebug.defaultGODEBUG=multipathtcp=0' -checklinkname=0" \
 		-mod=readonly \
 		-modcacherw \
-		-tags "with_clash_api,with_gvisor,with_quic,with_wireguard,with_utls,with_dhcp,with_tailscale,badlinkname,tfogo_checklinkname0"
+		-tags "with_clash_api,with_gvisor,with_quic,with_wireguard,with_utls,with_dhcp,with_tailscale,badlinkname,tfogo_checklinkname0,with_purego,with_naive_outbound"
 }
 
 package() {
