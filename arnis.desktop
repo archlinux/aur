@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Arnis
-Comment=Generate cities from real life in Minecraft
-Icon=arnis
-Exec=arnis
-Categories=Game;Utility;Geoscience
-Keywords=OSM;OpenStreetMap;Tauri;Rust;Minecraft
-StartupWMClass=arnis

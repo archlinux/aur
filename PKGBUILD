@@ -1,45 +1,49 @@
-# Maintainer: Sebaguardian <sebaguardian13@gmail.com>
-# Maintainer: Adam Perkowski <adas1per@protonmail.com>
+# Maintainer: Echo J. <aidas957 at gmail dot com>
+# Contributor: Sebaguardian <sebaguardian13@gmail.com>
+# Contributor: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
+
+# shellcheck shell=bash disable=SC2034,SC2164
 
 pkgname=arnis
 pkgver=2.2.0
 pkgrel=1
 pkgdesc='Generate any location from the real world in Minecraft'
 arch=('x86_64')
-url="https://github.com/louis-e/$pkgname"
+url="https://github.com/louis-e/${pkgname}"
 license=('Apache-2.0')
-source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/louis-e/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
-  "$pkgname.desktop"
-)
-md5sums=('d4bd8fb901f9caba8baf861298c88715'
-         '39de309ef06e34528513e607d903acea')
+depends=('cairo' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme'
+         'libsoup3' 'wayland' 'webkit2gtk-4.1')
 makedepends=('cargo')
-depends=('gtk3' 'webkit2gtk-4.1' 'libsoup3' 'cairo' 'gcc-libs' 'glibc' 'openssl' 'glib2' 'gdk-pixbuf2' 'wayland')
+conflicts=("${pkgname}-bin" "${pkgname}-git")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('d4bd8fb901f9caba8baf861298c88715')
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+    cd "${pkgname}-${pkgver}"
+
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	cargo build --release --frozen
+    cd "${pkgname}-${pkgver}"
+
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
 }
 
-package() { 
-  install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+package() {
+    cd "${pkgname}-${pkgver}"
 
-	cd "$pkgname-$pkgver"
-	install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
-  install -Dm644 'icons/icon.png' "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-  install -Dm644 'icons/128x128.png' "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+
+    # Desktop integration files
+    install -Dm644 "src/gui/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 icons/icon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    install -Dm644 icons/128x128.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
 }
 
-# vim: ts=2 sw=2 et:
+# vim: ts=4 sw=4 et:
