@@ -73,13 +73,13 @@ echo "[4/5] Updating PKGBUILD and .SRCINFO..."
 sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" PKGBUILD
 sed -i "s/^pkgrel=.*/pkgrel=${NEW_PKGREL}/" PKGBUILD
 
-rm -rf src/ pkg/ "$PKGNAME"*.pkg.tar.* 2>/dev/null || true
+rm -rf src/ pkg/
 makepkg --printsrcinfo >.SRCINFO
 
 echo "[5/5] Committing and pushing..."
-git add PKGBUILD .SRCINFO
-if git diff --cached --quiet; then
-    echo ">>> 没有 PKGBUILD/.SRCINFO 更改，跳过提交"
+git add -u
+if git diff --quiet && git diff --cached --quiet; then
+    echo ">>> 没有更改，跳过提交"
 else
     git commit -m "update to version $NEW_VER-$NEW_PKGREL"
 fi

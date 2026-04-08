@@ -44,7 +44,7 @@ post_install() {
     systemctl daemon-reload
     # Write version file for pkgver
     if [ -f /opt/astrbot/.version ]; then
-        cp /opt/astrbot/.version /var/lib/astrbot/.version 2>/dev/null || true
+        cp /opt/astrbot/.version /var/lib/astrbot/.version
     fi
 
     echo "-------------------------------------------------------------------"
@@ -61,7 +61,6 @@ post_install() {
     echo "【常用管理】"
     echo "  sudo astrbotctl list / stop / status <实例名>"
     echo "  sudo astrbotctl reset <实例名>   # 重置配置"
-    echo "  sudo astrbotctl update <实例名>   # 更新代码+环境+重启"
     echo ""
     echo "【备份与恢复】"
     echo "  astrbotctl export <实例名>              # 导出"
@@ -72,6 +71,10 @@ post_install() {
     echo "  数据目录：     /var/lib/astrbot/<实例名>"
     echo "  配置文件：     /etc/astrbot/<实例名>.conf"
     echo "  服务日志：     journalctl -u astrbot@<实例名> -f"
+    echo ""
+    echo "【注意事项】"
+    echo "  如果前端登录页出现 405 错误（/api/auth/login/challenge）"
+    echo "  请运行 sudo pacman -Syu 重建 AUR 包以更新到最新代码"
     echo "-------------------------------------------------------------------"
 }
 
@@ -81,7 +84,7 @@ post_upgrade() {
     systemctl daemon-reload
     # Write version file for pkgver
     if [ -f /opt/astrbot/.version ]; then
-        cp /opt/astrbot/.version /var/lib/astrbot/.version 2>/dev/null || true
+        cp /opt/astrbot/.version /var/lib/astrbot/.version
     fi
 
     echo "-------------------------------------------------------------------"
@@ -94,12 +97,12 @@ post_upgrade() {
     echo "【更新代码】"
     echo "  sudo pacman -Syu  # 通过本包更新代码"
     echo ""
-    echo "【更新实例（推荐）】"
-    echo "  sudo astrbotctl update <实例名>           # 更新代码+重建环境+重启"
-    echo "  sudo astrbotctl update --all             # 更新所有实例"
-    echo ""
     echo "【如遇异常】"
-    echo "  如果环境异常，可运行 sudo astrbotctl update <实例名> 重建"
+    echo "  如果环境异常，可运行 sudo pacman -Syu 重建 AUR 包"
+    echo ""
+    echo "【注意事项】"
+    echo "  如果前端登录页出现 405 错误（/api/auth/login/challenge）"
+    echo "  请运行 sudo pacman -Syu 重建 AUR 包以更新到最新代码"
     echo "-------------------------------------------------------------------"
 }
 
