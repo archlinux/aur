@@ -1,6 +1,6 @@
 pkgbase = ghostty-nightly-bin
 	pkgdesc = Fast, native, feature-rich terminal emulator pushing modern features
-	pkgver = 20260407.r15774.gee236e9
+	pkgver = 20260408.r15781.g853183e
 	pkgrel = 1
 	url = https://github.com/ghostty-org/ghostty
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = ghostty-nightly-bin
 	depends = pixman
 	depends = wayland
 	depends = zlib
-	source = ghostty-nightly-bin-20260407.r15774.gee236e9-1-x86_64.tar.zst::https://github.com/jpenilla/ghostty-nightly-bin/releases/download/nightly/ghostty-nightly-bin-x86_64.tar.zst
-	source = ghostty-terminfo-nightly-bin-20260407.r15774.gee236e9-1-x86_64.tar.zst::https://github.com/jpenilla/ghostty-nightly-bin/releases/download/nightly/ghostty-terminfo-nightly-bin-x86_64.tar.zst
-	source = ghostty-shell-integration-nightly-bin-20260407.r15774.gee236e9-1-x86_64.tar.zst::https://github.com/jpenilla/ghostty-nightly-bin/releases/download/nightly/ghostty-shell-integration-nightly-bin-x86_64.tar.zst
-	sha256sums = faed4c468a5a768eba51736b52041333e7278a0e5fc8403cf3c88bd888b52289
-	sha256sums = deeab5f0f88adbb58fadf2c8b348ccaeadc2cb45f5f41daabd37632bf158af49
-	sha256sums = 27660de65e4c22bdef065253822195398a4fa7a66eda8aa06dbfaa7e8cadcd28
+	source = ghostty-nightly-bin-20260408.r15781.g853183e-1-x86_64.tar.zst::https://github.com/jpenilla/ghostty-nightly-bin/releases/download/nightly/ghostty-nightly-bin-x86_64.tar.zst
+	source = ghostty-terminfo-nightly-bin-20260408.r15781.g853183e-1-x86_64.tar.zst::https://github.com/jpenilla/ghostty-nightly-bin/releases/download/nightly/ghostty-terminfo-nightly-bin-x86_64.tar.zst
+	source = ghostty-shell-integration-nightly-bin-20260408.r15781.g853183e-1-x86_64.tar.zst::https://github.com/jpenilla/ghostty-nightly-bin/releases/download/nightly/ghostty-shell-integration-nightly-bin-x86_64.tar.zst
+	sha256sums = 9437fbbb2e4c72d95e4a1c534ec278cd7f21d91644764fef1ecaf2d6da42bdc9
+	sha256sums = eb47eeb435f73ee717da8845045073def2e2724c091942ba8821af2d8f65b120
+	sha256sums = d5480a1d5af624380977843625e14a54f37a95d7fcdb16dad1a2e62ff479e5f8
 
 pkgname = ghostty-nightly-bin
 	depends = bzip2
@@ -47,20 +47,20 @@ pkgname = ghostty-nightly-bin
 	depends = zlib
 	depends = ghostty-shell-integration-nightly-bin
 	depends = ghostty-terminfo-nightly-bin
-	provides = ghostty=20260407.r15774.gee236e9
+	provides = ghostty=20260408.r15781.g853183e
 	conflicts = ghostty
 	conflicts = ghostty-git
 
 pkgname = ghostty-shell-integration-nightly-bin
 	pkgdesc = Shell integration scripts for ghostty
 	depends = 
-	provides = ghostty-shell-integration=20260407.r15774.gee236e9
+	provides = ghostty-shell-integration=20260408.r15781.g853183e
 	conflicts = ghostty-shell-integration
 	conflicts = ghostty-shell-integration-git
 
 pkgname = ghostty-terminfo-nightly-bin
 	pkgdesc = Terminfo for ghostty
 	depends = 
-	provides = ghostty-terminfo=20260407.r15774.gee236e9
+	provides = ghostty-terminfo=20260408.r15781.g853183e
 	conflicts = ghostty-terminfo
 	conflicts = ghostty-terminfo-git
