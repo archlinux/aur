@@ -1,6 +1,6 @@
 pkgbase = python-blackjax
 	pkgdesc = Bayesian Inference library designed for ease of use, speed and modularity.
-	pkgver = 1.3
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/blackjax-devs/blackjax
 	arch = any
@@ -11,12 +11,14 @@ pkgbase = python-blackjax
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
-	depends = python-fastprogress
 	depends = python-jax
 	depends = python-jaxlib
+	depends = python-numpy
 	depends = python-optax
+	depends = python-scipy
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/b/blackjax/blackjax-1.3.tar.gz
-	sha256sums = 6814d09aa963b821c961844a61ac5b9925f21d19ad2ebc741320ceae0d4dbcb5
+	optdepends = python-fastprogress: progress bars
+	source = https://files.pythonhosted.org/packages/source/b/blackjax/blackjax-1.5.tar.gz
+	sha256sums = c4a9898d4f5340894301cd382c28d72790e38847edaf4cfc9584dbd47bd205e1
 
 pkgname = python-blackjax
