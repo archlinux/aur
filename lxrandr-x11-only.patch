@@ -1,0 +1,271 @@
+diff --git a/src/lxrandr.c b/src/lxrandr.c
+index 477ffa5..8a9da70 100644
+--- a/src/lxrandr.c
++++ b/src/lxrandr.c
+@@ -74,6 +74,8 @@ static Monitor* LVDS = NULL;
+ static GtkWidget* dlg = NULL;
+ static guint timer;
+ 
++static gboolean use_wlr_randr = FALSE;
++
+ /* Disable, not used
+ static void monitor_free( Monitor* m )
+ {
+@@ -99,8 +101,162 @@ static const char* get_human_readable_name( Monitor* m )
+     return m->name;
+ }
+ 
++static gboolean use_wlr_randr_backend()
++{
++    const char* wayland_display = g_getenv("WAYLAND_DISPLAY");
++
++    return wayland_display && *wayland_display;
++}
++
++static gboolean get_wlr_randr_info()
++{
++    gchar **lines, **line;
++    char* output = NULL;
++    int status;
++    Monitor* m = NULL;
++    int imode = 0;
++    gboolean in_modes = FALSE;
++
++    if (!g_spawn_command_line_sync("wlr-randr", &output, NULL, &status, NULL) || status)
++    {
++        g_free(output);
++        return FALSE;
++    }
++
++    lines = g_strsplit(output, "\n", -1);
++    for (line = lines; *line; ++line)
++    {
++        GRegex* regex;
++        GMatchInfo* match = NULL;
++
++        if (!**line)
++            continue;
++
++        regex = g_regex_new("^([-.a-zA-Z]+[-.0-9]*) +\"", 0, 0, NULL);
++        if (g_regex_match(regex, *line, 0, &match))
++        {
++            m = g_new0(Monitor, 1);
++            m->active_mode = m->active_rate = -1;
++            m->pref_mode = m->pref_rate = -1;
++            m->placement = PLACEMENT_DEFAULT;
++            m->name = g_match_info_fetch(match, 1);
++
++            if (!LVDS && (g_str_has_prefix(m->name, "eDP") ||
++                          g_str_has_prefix(m->name, "LVDS") ||
++                          g_str_has_prefix(m->name, "PANEL")))
++                LVDS = m;
++
++            monitors = g_slist_append(monitors, m);
++            imode = 0;
++            in_modes = FALSE;
++
++            g_match_info_free(match);
++            g_regex_unref(regex);
++            continue;
++        }
++        g_match_info_free(match);
++        g_regex_unref(regex);
++
++        if (!m)
++            continue;
++
++        regex = g_regex_new("^  Enabled: +(yes|no)$", 0, 0, NULL);
++        if (g_regex_match(regex, *line, 0, &match))
++        {
++            gchar* enabled = g_match_info_fetch(match, 1);
++            if (g_strcmp0(enabled, "yes") != 0)
++            {
++                m->active_mode = -1;
++                m->active_rate = -1;
++            }
++            g_free(enabled);
++            in_modes = FALSE;
++            g_match_info_free(match);
++            g_regex_unref(regex);
++            continue;
++        }
++        g_match_info_free(match);
++        g_regex_unref(regex);
++
++        if (g_strcmp0(*line, "  Modes:") == 0)
++        {
++            in_modes = TRUE;
++            continue;
++        }
++
++        regex = g_regex_new("^  Position: +(-?[0-9]+),(-?[0-9]+)$", 0, 0, NULL);
++        if (g_regex_match(regex, *line, 0, &match))
++        {
++            gchar* sx = g_match_info_fetch(match, 1);
++            gchar* sy = g_match_info_fetch(match, 2);
++            int x = (int)g_ascii_strtoll(sx, NULL, 10);
++            int y = (int)g_ascii_strtoll(sy, NULL, 10);
++
++            if (x < 0 || y < 0 || (x == 0 && y == 0))
++                m->placement = PLACEMENT_DEFAULT;
++            else if (x == 0)
++                m->placement = PLACEMENT_BELOW;
++            else if (y == 0)
++                m->placement = PLACEMENT_RIGHT;
++
++            g_free(sx);
++            g_free(sy);
++            in_modes = FALSE;
++            g_match_info_free(match);
++            g_regex_unref(regex);
++            continue;
++        }
++        g_match_info_free(match);
++        g_regex_unref(regex);
++
++        if (!in_modes)
++            continue;
++
++        regex = g_regex_new("^    ([0-9]+x[0-9]+) px(?:, +([0-9.]+) Hz)?(?: +\\(([^)]*)\\))?$", 0, 0, NULL);
++        if (g_regex_match(regex, *line, 0, &match))
++        {
++            gchar* resolution = g_match_info_fetch(match, 1);
++            gchar* rate = g_match_info_fetch(match, 2);
++            gchar* flags = g_match_info_fetch(match, 3);
++            char** strv = g_new0(char*, 3);
++
++            strv[0] = g_strdup(resolution);
++            strv[1] = rate && *rate ? g_strdup(rate) : g_strdup("0");
++
++            m->mode_lines = g_slist_append(m->mode_lines, strv);
++
++            if (flags && g_strstr_len(flags, -1, "preferred"))
++            {
++                m->pref_mode = imode;
++                m->pref_rate = 0;
++            }
++            if (flags && g_strstr_len(flags, -1, "current"))
++            {
++                m->active_mode = imode;
++                m->active_rate = 0;
++            }
++
++            imode++;
++
++            g_free(resolution);
++            g_free(rate);
++            g_free(flags);
++        }
++        g_match_info_free(match);
++        g_regex_unref(regex);
++    }
++
++    g_strfreev(lines);
++    g_free(output);
++
++    return monitors != NULL;
++}
++
+ static gboolean get_xrandr_info()
+ {
++    if (use_wlr_randr)
++        return get_wlr_randr_info();
++
+     GRegex* regex;
+     GMatchInfo* match;
+     int status, i;
+@@ -415,7 +571,7 @@ static GString* get_command_xrandr_info()
+     GSList* l;
+     GString *cmd = g_string_sized_new( 1024 );
+ 
+-    g_string_assign( cmd, "sh -c 'xrandr" );
++    g_string_assign( cmd, use_wlr_randr ? "sh -c 'wlr-randr" : "sh -c 'xrandr" );
+ 
+     for( l = monitors; l; l = l->next )
+     {
+@@ -426,9 +582,15 @@ static GString* get_command_xrandr_info()
+         // if the monitor is turned on
+         if (m->try_mode >= 0)
+         {
++            if (use_wlr_randr)
++                g_string_append(cmd, " --on");
++
+             if( m->try_mode < 1 ) // auto resolution
+             {
+-                g_string_append( cmd, " --auto" );
++                if (use_wlr_randr)
++                    g_string_append(cmd, " --preferred");
++                else
++                    g_string_append(cmd, " --auto");
+             }
+             else
+             {
+@@ -456,14 +618,24 @@ static GString* get_command_xrandr_info()
+ 
+                 if( m->try_rate >= 1 ) // not auto refresh rate
+                 {
+-                    g_string_append( cmd, " --rate " );
+                     model = gtk_combo_box_get_model(GTK_COMBO_BOX(m->rate_combo));
+                     text_column = gtk_combo_box_get_entry_text_column(GTK_COMBO_BOX(m->rate_combo));
+                     path = gtk_tree_path_new_from_indices(m->try_rate, -1);
+                     gtk_tree_model_get_iter(model, &iter, path);
+                     gtk_tree_model_get(model, &iter, text_column, &text, -1);
+                     gtk_tree_path_free(path);
+-                    g_string_append(cmd, text);
++
++                    if (use_wlr_randr)
++                    {
++                        g_string_append(cmd, ",");
++                        g_string_append(cmd, text);
++                        g_string_append(cmd, "Hz");
++                    }
++                    else
++                    {
++                        g_string_append(cmd, " --rate ");
++                        g_string_append(cmd, text);
++                    }
+                     g_free(text);
+                 }
+             }
+@@ -485,7 +657,10 @@ static GString* get_command_xrandr_info()
+                     g_string_append(cmd, " --below ");
+                     break;
+                 case PLACEMENT_DEFAULT:
+-                    g_string_append(cmd, " --same-as ");
++                    if (!use_wlr_randr)
++                        g_string_append(cmd, " --same-as ");
++                    else
++                        continue;
+                 }
+                 g_string_append(cmd, LVDS->name);
+             }
+@@ -508,7 +683,10 @@ static GString* get_command_xrandr_info()
+                     g_string_append(cmd, " --below ");
+                     break;
+                 case PLACEMENT_DEFAULT:
+-                    g_string_append(cmd, " --same-as ");
++                    if (!use_wlr_randr)
++                        g_string_append(cmd, " --same-as ");
++                    else
++                        continue;
+                 }
+                 g_string_append(cmd, first->name);
+             }
+@@ -549,7 +727,7 @@ static void save_configuration()
+ 
+     g_key_file_set_string( kf, grp, "Type", "Application" );
+     g_key_file_set_string( kf, grp, "Name", _("LXRandR autostart") );
+-    g_key_file_set_string( kf, grp, "Comment", _("Start xrandr with settings done in LXRandR") );
++    g_key_file_set_string( kf, grp, "Comment", _("Start display setup with settings done in LXRandR") );
+     g_key_file_set_string( kf, grp, "Exec", cmd->str );
+     g_key_file_set_string( kf, grp, "NotShowIn", "GNOME;KDE;XFCE;MATE;Budgie;COSMIC;Enlightenment;LXQt;X-Cinnamon;" );
+ 
+@@ -772,6 +950,8 @@ int main(int argc, char** argv)
+ 
+     gtk_init( &argc, &argv );
+ 
++    use_wlr_randr = use_wlr_randr_backend();
++
+     if( ! get_xrandr_info() )
+     {
+         dlg = gtk_message_dialog_new( NULL,
