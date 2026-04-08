@@ -1,0 +1,4 @@
+[octo-bin]
+source = "github"
+github = "atpija/octo"
+use_latest_release = true
