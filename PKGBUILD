@@ -2,7 +2,7 @@
 
 pkgname=bodo_connect-git
 _pkgname=${pkgname%-git}
-pkgver=v0.7.0.r0.gfeb976e
+pkgver=v0.9.1.r0.gb442079
 pkgrel=1
 pkgdesc="A library for mapping/connecting to your hosts in the whole world wide web."
 arch=(x86_64 armv7)
@@ -26,13 +26,13 @@ pkgver() {
 build() {
   cd "${_pkgname}"
   if command -v rustup > /dev/null 2>&1; then
-    RUSTFLAGS="-C target-cpu=native" rustup run nightly \
+    RUSTFLAGS="-C target-cpu=native" rustup run stable \
       cargo build --release
-  elif rustc --version | grep -q nightly; then
+  elif rustc --version | grep -q stable; then
     RUSTFLAGS="-C target-cpu=native" \
-      cargo +nightly build --release
+      cargo +stable build --release
   else
-    cargo +nightly build --release
+    cargo +stable build --release
   fi
 }
 

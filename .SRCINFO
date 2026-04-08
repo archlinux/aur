@@ -1,6 +1,6 @@
 pkgbase = bodo_connect-git
 	pkgdesc = A library for mapping/connecting to your hosts in the whole world wide web.
-	pkgver = v0.7.0.r0.gfeb976e
+	pkgver = v0.9.1.r0.gb442079
 	pkgrel = 1
 	url = https://github.com/topongo/bodo_connect
 	arch = x86_64
