@@ -1,21 +1,21 @@
-# Maintainer: Michael Lass <bevan@bi-co.net>
+# Maintainer: Jonathing <me@jonathing.me>
+# Contributor: Michael Lass <bevan@bi-co.net>
+
+# This PKGBUILD is a copy from jdk17-temurin, the maintainer of which has been added as a contributor.
 
 # This PKGBUILD heavily borrows from java-openjdk in [extra] maintained by:
 # Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Guillaume ALAUX <guillaume@archlinux.org>
 
-# This PKGBUILD is maintained on github:
-# https://github.com/michaellass/AUR
-
-_majorver=17
-_completever=17.0.18
-_updatever=8
+_majorver=16
+_completever=16.0.2
+_updatever=7
 pkgrel=1
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
 [ $_majorver != $_completever ] && _versuffix=U
 
-pkgname=jdk17-temurin
+pkgname=jdk16-temurin
 pkgdesc="Temurin ${_majorver} (OpenJDK ${_majorver} Java binaries by Adoptium, formerly AdoptOpenJDK)"
 arch=('x86_64')
 url='https://adoptium.net/'
@@ -49,17 +49,17 @@ backup=(etc/java-${_majorver}-temurin/logging.properties
         etc/java-${_majorver}-temurin/security/policy/unlimited/default_local.policy
         etc/java-${_majorver}-temurin/security/policy/unlimited/default_US_export.policy
         etc/java-${_majorver}-temurin/sound.properties)
-install=install_jdk17-temurin.sh
+install=install_jdk16-temurin.sh
 options=(!strip)
 
 source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}${_versuffix}-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('0c94cbb54325c40dcf026143eb621562017db5525727f2d9131a11250f72c450'
-            'ae076317d93a389cc0c893fd9ec6769ae860c2cc01f8c8bed3f4ee476c73e625'
-            'dc278160ca7df32bcfab0a5420c09eaf6f4602d30f57b6c5bedb0f60062c5228'
-            'd0913ae3b9f469f8567432b0867222d66f50008c313f5a0882d15994ba19ec01')
+sha256sums=('323d6d7474a359a28eff7ddd0df8e65bd61554a8ed12ef42fd9365349e573c2c'
+            '5949ceb2792cb48d47bf443522c0df267b1971239d6dad5602447687eb08a537'
+            '4524a364a540174dcca8071f5cf53279af5a7cf82da56ddd682e46ebad7db07a'
+            'bd0c58bba9898ed362d4a220d42476455df9ed393854d7469444864e25fc02ab')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-temurin
 _jdkdir=jdk-${_tag_ver}
