@@ -1,6 +1,6 @@
 pkgbase = doltgresql-bin
 	pkgdesc = Version Controlled PostgreSQL
-	pkgver = 0.56.0
+	pkgver = 0.56.1
 	pkgrel = 1
 	url = https://github.com/dolthub/doltgresql
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = doltgresql-bin
 	license = Apache-2.0
 	provides = doltgres
 	conflicts = doltgresql
-	source = README-0.56.0.md::https://raw.githubusercontent.com/dolthub/doltgresql/v0.56.0/README.md
+	source = README-0.56.1.md::https://raw.githubusercontent.com/dolthub/doltgresql/v0.56.1/README.md
 	sha256sums = 02eca416f9bc62b96ec75364b11cca7d6f95e7c7d7ced61ed6c9b9e3a667d0c7
-	source_x86_64 = doltgresql-x86_64-0.56.0.tgz::https://github.com/dolthub/doltgresql/releases/download/v0.56.0/doltgresql-linux-amd64.tar.gz
-	sha256sums_x86_64 = aaca0e6df51227a8fa47be834a2cddab29ec4ade0c2d136ed8765ef066c23732
-	source_aarch64 = doltgresql-aarch64-0.56.0.tgz::https://github.com/dolthub/doltgresql/releases/download/v0.56.0/doltgresql-linux-arm64.tar.gz
-	sha256sums_aarch64 = 6505518d95e8f8ff2cf3175aa132a91055a5ca2ce693263ac4be634be86b7573
+	source_x86_64 = doltgresql-x86_64-0.56.1.tgz::https://github.com/dolthub/doltgresql/releases/download/v0.56.1/doltgresql-linux-amd64.tar.gz
+	sha256sums_x86_64 = fc5d66977a48675efb08d8f9b1d413cd2844c57a58d3b175b53d7d70d3dc2bfc
+	source_aarch64 = doltgresql-aarch64-0.56.1.tgz::https://github.com/dolthub/doltgresql/releases/download/v0.56.1/doltgresql-linux-arm64.tar.gz
+	sha256sums_aarch64 = a30001994a9ae0613211da1b2fedb66e515733d6b6c5e27d58a802f455e4e046
 
 pkgname = doltgresql-bin
