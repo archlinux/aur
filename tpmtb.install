@@ -2,9 +2,8 @@ post_install() {
   cat <<'EOF'
 
 ==> tpmtb: TPM Trust Bundle
-    Verify that your TPM was manufactured by a trusted vendor by checking its
-    Endorsement Key (EK) certificate against manufacturer CA certificates.
-
+    Verify that your TPM is genuine by checking its Endorsement Key (EK)
+    certificate against the manufacturer root CAs.
     This bundle is unrelated to the system TLS trust store (ca-certificates);
     it only establishes trust in TPM hardware identity, not network connections.
 
