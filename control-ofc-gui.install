@@ -1,0 +1,8 @@
+post_install() {
+    echo ":: Launch Control-OFC from your application menu, or run:"
+    echo "   control-ofc-gui"
+    echo ""
+    echo ":: The control-ofc-daemon service must be running for full functionality."
+    echo ":: Use --demo to launch in demo mode without the daemon:"
+    echo "   control-ofc-gui --demo"
+}
