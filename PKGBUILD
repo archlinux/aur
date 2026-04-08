@@ -1,6 +1,6 @@
 # Maintainer: Zeffuro <Jeffroiscool@gmail.com>
 pkgname=zeff-boy-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A Game Boy, Game Boy Color, and NES emulator written in Rust"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "LICENSE-MIT::https://raw.githubusercontent.com/Zeffuro/zeff-boy/v${pkgver}/LICENSE-MIT"
     "LICENSE-APACHE::https://raw.githubusercontent.com/Zeffuro/zeff-boy/v${pkgver}/LICENSE-APACHE"
 )
-sha256sums=('SKIP'
+sha256sums=('d9ed3df0307bb28b6e61e0e28ba6075bcccd6ad1a85e862e2cc7bd976bf1f7e4'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -26,4 +26,3 @@ package() {
     install -Dm644 "LICENSE-MIT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
     install -Dm644 "LICENSE-APACHE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
 }
-
