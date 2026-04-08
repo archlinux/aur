@@ -2,7 +2,7 @@
 
 pkgname=bazaar-git
 _pkgname=bazaar
-pkgver=0.7.12.r69.gc7ebdb5
+pkgver=0.7.13.r83.g98f4a39
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)"
 arch=('x86_64')
@@ -37,32 +37,19 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
   "bazaar::git+https://github.com/kolunmi/bazaar.git"
-  "blueprint-compiler::git+https://gitlab.gnome.org/GNOME/blueprint-compiler.git#tag=v0.20.2"
 )
-sha256sums=('SKIP'
-            'eadb585547af0decf2c7c1d0299cdc3cccf01209c297af4d26449213451c395b')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd bazaar
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-
-}
-
-prepare() {
-  cd bazaar
-  mkdir -p subprojects
-
-  # use bp compiler from source
-  ln -sf "$srcdir/blueprint-compiler" subprojects/blueprint-compiler
+  cd "${_pkgname}"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  # avoid subproject download
-  meson setup --prefix=/usr --buildtype=release --wrap-mode=nodownload bazaar bazaar-build
-  ninja -C bazaar-build
+  meson setup "${_pkgname}" build --prefix=/usr --buildtype=release
+  meson compile -C build
 }
 
 package() {
-  # skip subprojects
-  DESTDIR="$pkgdir" meson install -C bazaar-build --skip-subprojects
+  meson install -C build --destdir "${pkgdir}"
 }
