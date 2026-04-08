@@ -1,0 +1,18 @@
+pkgbase = ii-material-sddm-git
+	pkgdesc = Material Design 3 SDDM theme inspired by the ii lockscreen from end-4/dots-hyprland
+	pkgver = r.1
+	pkgrel = 1
+	url = https://github.com/ToRvaLDz/ii-material-sddm
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = sddm
+	optdepends = qt6-5compat: blur effects
+	optdepends = acl: automatic matugen color/wallpaper sync
+	optdepends = ttf-google-sans: clock and UI font
+	provides = ii-material-sddm
+	conflicts = ii-material-sddm
+	source = ii-material-sddm-git::git+https://github.com/ToRvaLDz/ii-material-sddm.git
+	sha256sums = SKIP
+
+pkgname = ii-material-sddm-git
