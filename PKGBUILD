@@ -9,7 +9,7 @@ depends=('mingw-w64-vtk' 'mingw-w64-qt5-base' 'mingw-w64-qt5-tools' 'mingw-w64-q
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'mingw-w64-boost' 'protobuf')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("${url}/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.xz")
-md5sums=('10af21e53573ddfb53ede2dce4f4e467')
+md5sums=('10de18a57e03673a9ca4b69954d4a6da')
 
 _architectures="x86_64-w64-mingw32"
 
