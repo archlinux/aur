@@ -1,0 +1,16 @@
+pkgbase = grimoire-git
+	pkgdesc = Terminal-based flashcard drill system with persistent mastery tracking
+	pkgver = 0.1.0.r2.e201689
+	pkgrel = 1
+	url = https://github.com/AngeloNicolson/grimoire
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = ncurses
+	provides = grimoire
+	conflicts = grimoire
+	source = grimoire-git::git+https://github.com/AngeloNicolson/grimoire.git
+	sha256sums = SKIP
+
+pkgname = grimoire-git
