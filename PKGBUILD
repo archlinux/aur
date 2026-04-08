@@ -4,7 +4,7 @@
 pkgname=tauon-music-box-git
 _pkgname=tauonmb
 _gitname=Tauon
-pkgver=8.2.3.r37.e4f499ff
+pkgver=9.1.2.r29.26b37c8e
 pkgrel=1
 pkgdesc='A modern music player'
 arch=('x86_64' 'aarch64')
@@ -93,6 +93,12 @@ build() {
 package() {
 	cd "${pkgname%-git}"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
+
+	for dir in src/tauon/locale/*; do
+		install -Dm644 \
+			"${dir}/LC_MESSAGES/"*.mo \
+			-t "${pkgdir}/usr/share/locale/$(basename "${dir}")/LC_MESSAGES"
+	done
 
 	install -Dm644 "extra/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 	install -Dm644 "extra/${_pkgname}-symbolic.svg" -t "${pkgdir}/usr/share/icons/hicolor/symbolic/apps"
