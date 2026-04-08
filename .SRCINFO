@@ -1,0 +1,30 @@
+pkgbase = halo-ai-core
+	pkgdesc = Bare-metal AI stack installer for AMD Strix Halo (gfx1151) — ROCm, llama.cpp, Lemonade SDK, Gaia SDK, Caddy
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/stampby/halo-ai-core
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = openssh
+	depends = curl
+	depends = wget
+	depends = cmake
+	depends = make
+	depends = nodejs
+	depends = npm
+	depends = caddy
+	depends = rocm-hip-sdk
+	depends = rocm-opencl-sdk
+	depends = hip-runtime-amd
+	depends = rocminfo
+	depends = rocwmma
+	depends = vulkan-headers
+	depends = vulkan-icd-loader
+	depends = vulkan-radeon
+	provides = halo-ai-core
+	conflicts = halo-ai
+	source = halo-ai-core::git+https://github.com/stampby/halo-ai-core.git#branch=main
+	sha256sums = SKIP
+
+pkgname = halo-ai-core
