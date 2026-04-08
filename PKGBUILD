@@ -1,5 +1,5 @@
 pkgname=verde-bin
-pkgver=0.1.23
+pkgver=0.1.21
 pkgrel=1
 pkgdesc='Desktop GUI for coding agents like Codex and OpenCode'
 arch=('x86_64')
@@ -48,7 +48,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/JonathanRiche/verde/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '88a63fdb90f812cdb9fa1bcb14df6c2c1c4fa420f1b197f3a92135089ac89465'
+  '1b25ffa06664056fa0aa7075ec997f145f216ae8155f210e4be7e182b654baeb'
   '9952749c80ab34ca65ef1b4e8653dcf5760361aecc44dfd7dc398d991e7d9f3e'
 )
 
