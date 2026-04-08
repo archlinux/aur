@@ -1,6 +1,6 @@
 pkgbase = linux-cachyos-native
 	pkgdesc = Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements.
-	pkgver = 6.19.10
+	pkgver = 6.19.11
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
@@ -24,13 +24,13 @@ pkgbase = linux-cachyos-native
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-6.19.10-1/cachyos-6.19.10-1.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-6.19.11-2/cachyos-6.19.11-2.tar.gz
 	source = config
 	source = dkms-clang.patch
 	source = https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-595.58.03.tar.xz
 	source = 0002-Add-IBT-support.patch
 	source = 0001-bore-cachy.patch
-	b2sums = 847c8880077da33ae9c896293ba0e587ad4c3cd187e2be0c35616bc25c9115cbfa07263345d8e6100b00becb668c23cb7ee4dac457eead21795823eae25a287b
+	b2sums = b38be031a72888d32ffd1c95ac36417836e373e95d7f86d33d9e32f4583b4acc86de19c6e62294a1836d8ebb8410e27c714b5580f2101b4b0e88ba2d9eecb13b
 	b2sums = d5e6bc73a829d717a88e667ca41daace7695ca5a29631f3753af18e2de973e63e08d8102b0f705486f5540b512840721244e3ab629692c63b9362e728f7e4bf1
 	b2sums = ea26c88950fc06b6ffab93b30e3beacc7d26571a70262334ca8b001dc7899bf96b47d703fbaa7f4e47765c3dafccc23c58a4d4da2169b8ee50012afcb7a1dd96
 	b2sums = b58125ff5d71fb45fc30b8128d492c5a91c4df293157a42848f7ba38e91eb284d491fdc6801e514c243330b19b7ece116733d3caa2c1129725c420d4267f3df7
@@ -53,7 +53,7 @@ pkgname = linux-cachyos-native
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
-	provides = linux-cachyos-lto=6.19.10-1
+	provides = linux-cachyos-lto=6.19.11-1
 	replaces = linux-cachyos-lto
 
 pkgname = linux-cachyos-native-headers
@@ -64,13 +64,13 @@ pkgname = linux-cachyos-native-headers
 	depends = llvm
 	depends = lld
 	provides = LINUX-HEADERS
-	provides = linux-cachyos-lto-headers=6.19.10-1
+	provides = linux-cachyos-lto-headers=6.19.11-1
 	replaces = linux-cachyos-lto-headers
 
 pkgname = linux-cachyos-native-nvidia-open
 	pkgdesc = nvidia open modules of 595.58.03 driver for the linux-cachyos-native kernel
 	license = MIT AND GPL-2.0-only
-	depends = linux-cachyos-native=6.19.10-1
+	depends = linux-cachyos-native=6.19.11-1
 	depends = nvidia-utils=595.58.03
 	depends = libglvnd
 	provides = NVIDIA-MODULE
