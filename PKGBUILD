@@ -1,7 +1,7 @@
 # Maintainer: Daniil Nikolaev <your@email>
 
 pkgname=cop
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Utility that prints file content and copies it to clipboard"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DaniilNikolaev-uv/cop/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4443a3e0d7fc178d163084f041155e7ec6448c88410f0751369b80126f30adc0')
+sha256sums=('4ff7d5cfeac434913a9619fc916fe9d90737aa51c331329b296583c40642387b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
