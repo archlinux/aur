@@ -1,6 +1,6 @@
 pkgbase = lima
 	pkgdesc = Linux virtual machines, typically on macOS, for running containerd.
-	pkgver = 2.0.3
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/lima-vm/lima
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lima
 	makedepends = make
 	provides = lima
 	conflicts = lima-bin
-	source = lima-2.0.3.tar.gz::https://github.com/lima-vm/lima/archive/v2.0.3.tar.gz
-	sha256sums = 55625e642de492827e6cf7740c095822ef8193458211e286f17a3c11ebf50a93
+	source = lima-2.1.1.tar.gz::https://github.com/lima-vm/lima/archive/v2.1.1.tar.gz
+	sha256sums = c1cb9f2a5d35715937bbf21566d58f89fc221ab285a42ddcc30fd6fdaab2c15a
 
 pkgname = lima
