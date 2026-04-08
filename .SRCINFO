@@ -1,13 +1,13 @@
 pkgbase = wtq-bin
 	pkgdesc = Enable Quake-style dropdown for (almost) any application.
-	pkgver = 2.0.19
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/flyingpie/windows-terminal-quake
 	arch = x86_64
 	license = MIT
 	depends = libappindicator-gtk3
 	depends = webkit2gtk-4.1
-	source = wtq-bin-2.0.19.tar.gz::https://github.com/flyingpie/windows-terminal-quake/releases/download/v2.0.19/linux-x64_self-contained.tar.gz
-	sha256sums = 60605edec5208ac4d03c6b5b357f8c53588f224d2adb56512ac1e3a00483c1a6
+	source = wtq-bin-2.1.0.tar.gz::https://github.com/flyingpie/windows-terminal-quake/releases/download/v2.1.0/linux-x64_self-contained.tar.gz
+	sha256sums = 3594709c15d16f40d079dd8c7960a6c4200d55c9e62889ce93576fcee070205d
 
 pkgname = wtq-bin
