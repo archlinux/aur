@@ -1,6 +1,6 @@
 # wiksr
 
-Terminal instant answer browser. Ask questions directly from your terminal — gets answers from DuckDuckGo Instant Answers, falling back to Wikipedia.
+Terminal instant answer browser. Ask questions or type terms into your terminal and receive a brief summary or definition.
 
 ## Usage
 
