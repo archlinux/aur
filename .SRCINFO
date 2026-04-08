@@ -1,7 +1,7 @@
 pkgbase = fp
 	pkgdesc = fp (FilterPath) is the filter equivalent for the Unix test util
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cyqsimon/fp
 	arch = x86_64
 	arch = i686

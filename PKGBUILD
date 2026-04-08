@@ -3,7 +3,7 @@
 pkgname=fp
 _pkgname=filterpath
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="fp (FilterPath) is the filter equivalent for the Unix test util"
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://github.com/cyqsimon/fp"
@@ -26,5 +26,8 @@ build() {
 package() {
   cd ${_pkgname}-${pkgver}
   install -Dm755 target/release/fp "${pkgdir}/usr/bin/fp"
+  install -Dm644 target/release/build/${_pkgname}-*/out/fp.bash "${pkgdir}/usr/share/bash-completion/completions/fp"
+  install -Dm644 target/release/build/${_pkgname}-*/out/fp.fish "${pkgdir}/usr/share/fish/vendor_completions.d/fp.fish"
+  install -Dm644 target/release/build/${_pkgname}-*/out/_fp "${pkgdir}/usr/share/zsh/site-functions/_fp"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
