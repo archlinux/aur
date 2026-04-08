@@ -1,6 +1,6 @@
 pkgbase = changed
 	pkgdesc = Lightweight system tuning changelog daemon for Arch Linux (git version)
-	pkgver = 0.5.9.r0.ga4f767d
+	pkgver = 0.5.9.r1.gc29b0e6
 	pkgrel = 1
 	url = https://github.com/l3afyb0y/changed
 	arch = x86_64

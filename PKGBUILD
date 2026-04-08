@@ -1,7 +1,7 @@
 # Hand-maintained PKGBUILD for Arch packaging.
 # Maintainer: Parker - l3afyb0y/upstream dev
 pkgname=changed
-pkgver=0.5.9.r0.ga4f767d
+pkgver=0.5.9.r1.gc29b0e6
 pkgrel=1
 pkgdesc="Lightweight system tuning changelog daemon for Arch Linux (git version)"
 arch=('x86_64')
