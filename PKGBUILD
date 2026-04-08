@@ -1,7 +1,7 @@
 # Maintainer: Starry Wang <starry.wang@suse.com>
 pkgname=hangar-bin
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Command line utility for container images"
 arch=("x86_64" "aarch64")
@@ -43,7 +43,7 @@ build() {
 package() {
     cd ${srcdir}/hangar_Linux*/
     # Binary
-    install -Dm755 hangar ${pkgdir}/usr/local/bin/hangar
+    install -Dm755 hangar ${pkgdir}/usr/bin/hangar
     # Completions
 	install -Dm644 dist/completions/bash/hangar ${pkgdir}/usr/share/bash-completion/completions/hangar
 	install -Dm644 dist/completions/zsh/_hangar ${pkgdir}/usr/share/zsh/site-functions/_hangar

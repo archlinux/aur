@@ -1,7 +1,7 @@
 pkgbase = hangar-bin
 	pkgdesc = Command line utility for container images
 	pkgver = 1.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cnrancher/hangar
 	arch = x86_64
 	arch = aarch64
