@@ -1,0 +1,18 @@
+pkgbase = orateur-desktop-bin
+	pkgdesc = Orateur speech-assistant status overlay (Tauri)
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/orateurhq/orateur
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = alsa-lib
+	depends = libappindicator-gtk3
+	depends = hicolor-icon-theme
+	provides = orateur-desktop
+	conflicts = orateur-desktop
+	source_x86_64 = orateur-desktop-bin-0.2.2.deb::https://github.com/orateurhq/orateur/releases/download/desktop-v0.2.2/Orateur_0.2.2_amd64.deb
+	sha256sums_x86_64 = fd41d22cb7eed6e5d6c31d1369cb73b886d5ef89c3f53b2068f55ebc4a04983a
+
+pkgname = orateur-desktop-bin
