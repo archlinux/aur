@@ -6,7 +6,7 @@ _appname=ihj
 pkgname=${_gitname}
 pkgdesc="An fzf-inspired issue tracker with pluggable providers, vim mode, and LLM-assisted backlog refinement"
 
-pkgver=0.5.11
+pkgver=0.5.17
 pkgrel=1
 epoch=1
 _gitversion=v${pkgver}
@@ -23,7 +23,7 @@ makedepends=('go')
 depends=('glibc')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_gitauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('db7c5b1a7ad7e53f7b29f750e616c1801627be11df222b189cba212e91d1b37d')
+sha256sums=('dbbf32f68f708311542352ec1453c0f39e5608227a80cfb960240db38db3c597')
 
 
 prepare() {
