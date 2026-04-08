@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Kute
+Comment=A minimal music player for Arch Linux / Hyprland
+Exec=kute-bin
+Icon=kute
+Categories=AudioVideo;
+StartupNotify=true
+Terminal=false
+StartupWMClass=Kute
