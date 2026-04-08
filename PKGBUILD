@@ -6,7 +6,7 @@
 
 _pkgname=linutil
 pkgname="$_pkgname-bin"
-pkgver=2026.01.22
+pkgver=2026.03.06
 pkgrel=1
 pkgdesc="Distro-agnostic toolbox designed to simplify everyday Linux tasks"
 arch=('x86_64' 'aarch64')
@@ -23,16 +23,16 @@ source_aarch64=("$_pkgname-$pkgver::$url/releases/download/$pkgver/$_pkgname-aar
   "$_pkgname-$pkgver.desktop::$_url_raw/refs/tags/$pkgver/$_pkgname.desktop"
   "LICENSE-$pkgver::$_url_raw/refs/tags/$pkgver/LICENSE"
   "README-$pkgver.md::$_url_raw/refs/tags/$pkgver/README.md")
-sha256sums_x86_64=('5be9d4059f53ff49a4fe793dd3ec88f31d32d256fa421d7744b32bf68e0582a3'
-                   '513b5df85842d709232c120b869f86ca8be9794a9144be5d54c7d8a9c95c2975'
-                   'e62a5bed2b3a5f80421827168ff10ff35388b39cf313d0a00e1f8cff841902a9'
-                   '8d353e5a8bc69b891e948bd02afc9c05c0aff00c69279ca32f7b654b387792d6'
-                   '79b3eb560ee97ff2aff5f6e0d2c15956bb06990cadf9796bd208d91db6b69477')
-sha256sums_aarch64=('5be9d4059f53ff49a4fe793dd3ec88f31d32d256fa421d7744b32bf68e0582a3'
-                    '513b5df85842d709232c120b869f86ca8be9794a9144be5d54c7d8a9c95c2975'
-                    'e62a5bed2b3a5f80421827168ff10ff35388b39cf313d0a00e1f8cff841902a9'
-                    '8d353e5a8bc69b891e948bd02afc9c05c0aff00c69279ca32f7b654b387792d6'
-                    '79b3eb560ee97ff2aff5f6e0d2c15956bb06990cadf9796bd208d91db6b69477')
+sha256sums_x86_64=('8ded20c258a3eea77f8450666ba6628aee4b0e73d00b32f719a45b9a157f60e1'
+  '513b5df85842d709232c120b869f86ca8be9794a9144be5d54c7d8a9c95c2975'
+  'e62a5bed2b3a5f80421827168ff10ff35388b39cf313d0a00e1f8cff841902a9'
+  '8d353e5a8bc69b891e948bd02afc9c05c0aff00c69279ca32f7b654b387792d6'
+  '9581de97fa8c8f99db8559e4a0638f25c88675a7c6173bd57e30e74e0089f5e0')
+sha256sums_aarch64=('8ded20c258a3eea77f8450666ba6628aee4b0e73d00b32f719a45b9a157f60e1'
+  '513b5df85842d709232c120b869f86ca8be9794a9144be5d54c7d8a9c95c2975'
+  'e62a5bed2b3a5f80421827168ff10ff35388b39cf313d0a00e1f8cff841902a9'
+  '8d353e5a8bc69b891e948bd02afc9c05c0aff00c69279ca32f7b654b387792d6'
+  '9581de97fa8c8f99db8559e4a0638f25c88675a7c6173bd57e30e74e0089f5e0')
 depends=('git' 'pacman')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
 conflicts=("$_pkgname")
