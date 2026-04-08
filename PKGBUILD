@@ -4,7 +4,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 _pkgname=rJava
-_pkgver=1.0-16
+_pkgver=1.0-18
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ makedepends=(
   patchelf
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('842985261aeaeece3dd543c537d90dc8')
-b2sums=('29509ac1d410a6525b0edcdd509b02d878033da8947b0a084cc75711d5dec5bdb7e5a4c8ab57658ee4ccac5ffe704cacec631b419e488c703565af27faf55553')
+md5sums=('0e18ef3ee05425927ef5ec229e86ad7b')
+b2sums=('f4c56b60a49b9eb80b87633e8b4037a726ce51efde981465687e711f4a7891c77fd13e019bf768abfb6133d6ef70d076d01ff85450c59a78b9770d30e50789e6')
 
 
 build() {
