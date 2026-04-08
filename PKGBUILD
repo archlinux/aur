@@ -1,6 +1,6 @@
 # Maintainer: Jan Wąsak <jan@wasak.dev>
 pkgname=swell
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='TUI audio client for podcasts, internet radio, and Tidal'
 arch=('x86_64')
@@ -9,6 +9,7 @@ options=(!lto)
 license=('MIT')
 depends=('alsa-lib' 'openssl' 'gcc-libs')
 makedepends=('cargo' 'git')
+optdepends=('jq: rofi integration' 'rofi: launcher integration')
 source=("git+https://codeberg.org/wasak/swell.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
@@ -28,6 +29,7 @@ build() {
 package() {
     cd "$pkgname"
     install -Dm755 "target/release/swell" "$pkgdir/usr/bin/swell"
+    install -Dm755 "swell-rofi" "$pkgdir/usr/bin/swell-rofi"
     install -Dm644 "swell.desktop" "$pkgdir/usr/share/applications/swell.desktop"
     install -Dm644 "swell.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/swell.svg"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
