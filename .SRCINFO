@@ -1,6 +1,6 @@
 pkgbase = psysonic
 	pkgdesc = Desktop music player for Subsonic API-compatible servers (Navidrome, Gonic, etc.)
-	pkgver = 1.34.5
+	pkgver = 1.34.6
 	pkgrel = 1
 	url = https://github.com/Psychotoxical/psysonic
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = psysonic
 	depends = gtk3
 	depends = openssl
 	depends = alsa-lib
-	source = psysonic-1.34.5.tar.gz::https://github.com/Psychotoxical/psysonic/archive/refs/tags/v1.34.5.tar.gz
+	source = psysonic-1.34.6.tar.gz::https://github.com/Psychotoxical/psysonic/archive/refs/tags/v1.34.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = psysonic
