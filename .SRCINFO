@@ -1,0 +1,16 @@
+pkgbase = snry-shell-bin
+	pkgdesc = Modern Wayland desktop shell for Hyprland
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/sonroyaalmerol/snry-shell
+	license = MIT
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = hyprland
+	conflicts = snry-shell
+	provides = snry-shell
+	arch = x86_64
+	source_x86_64 = https://github.com/sonroyaalmerol/snry-shell/releases/download/v0.6.1/snry-shell_0.6.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 059efdefb54efbe24a5bd12b36b96be320bf8e93a9f8f263635806a61a284cd8
+	
+pkgname = snry-shell-bin
