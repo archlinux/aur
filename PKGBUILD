@@ -5,36 +5,39 @@
 
 pkgname=pmount
 pkgver=0.9.23
-pkgrel=17
+pkgrel=18
 pkgdesc='mount removable devices as normal user'
 arch=(i686 x86_64 armv7h)
 url=https://salsa.debian.org/debian/pmount
-license=(GPL2)
-_pkgvermin=7
-_pkgver=$pkgver-$_pkgvermin
-_pkgname=$pkgname-debian-$_pkgver
+license=('GPL-3.0-or-later')
+_debver=$pkgver-10
+_commit=9646fcb8460b3ec05fc67a442aba152f5e772e92
+_pkgname=$pkgname-$_commit
 
 depends=('sysfsutils>=2.0.0-1' util-linux)
 makedepends=('intltool>=0.21')
 backup=(etc/pmount.allow)
 source=(
-    $url/-/archive/debian/$_pkgver/$_pkgname.tar.gz
+    $_pkgname.tar.gz::$url/-/archive/$_commit/$_pkgname.tar.gz
     0001-fix-debug-segfault.patch
-    0002-support-exfat.patch
-    0003-fix-luks-fail.patch
 )
-sha256sums=(
-    259d5994e4580ea4c0171c1534e5111c503a605d62e1a2d4d4bbd5018f99d727
-    e19eda4987b41f1b76281b980b56239b386539938d70e5b4a40b286bff789b93
-    6c90da5d992deea70334acaf6781df9d538887bd3d1b62e36a9449e0708006c0
-    67a6a773ff063df11b2bed1637e4046de63b226909f237705c45bef8ee398a2f
-)
+sha256sums=('8d73169ebbca4aaf44acae81ed4e20ba0a6d76bc4c580563d4cbbda44458732e'
+            'e19eda4987b41f1b76281b980b56239b386539938d70e5b4a40b286bff789b93')
 
 prepare() {
     cd "$srcdir"/$_pkgname
     patch -p1 < $srcdir/0001-fix-debug-segfault.patch
-    patch -p1 < $srcdir/0002-support-exfat.patch
-    patch -p1 < $srcdir/0003-fix-luks-fail.patch
+
+    local debian_patch
+    for debian_patch in \
+        04-fix-implicit-function-declaration.patch \
+        05-exfat-support.patch \
+        06-C99-implicit-function-declaration-fixes.patch \
+        07-Add-probing-for-Btrfs.patch \
+        08-Support-btlkOpen-alongside-of-luksOpen.patch \
+        09-Probe-for-f2fs.patch; do
+        patch -Np1 < "debian/patches/${debian_patch}"
+    done
 }
 
 build() {
