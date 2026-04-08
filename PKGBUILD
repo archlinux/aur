@@ -1,20 +1,19 @@
 #Maintainer: Toni Sagrista Selles <tsagrista@ari.uni-heidelberg.de>
 pkgname=gaiasky
-pkgver=3.7.1
-pkgrel=2
+pkgver=3.7.2
+pkgrel=1
 epoch=3
-_versionstr=3.7.1.5ec0279b3
+_versionstr=3.7.2.d859c5d9e
 _srcname="$pkgname-${_versionstr//_/-}"
 pkgdesc="Open source 3D universe simulator for desktop and VR with support for more than a billion objects"
 arch=(x86_64)
 url="https://gaiasky.space"
 license=('MPL')
-depends=( 'java-runtime>=25'
-		  'xorg-xrandr')
+depends=('java-runtime>=25' 'xorg-xrandr')
 changelog=releasenotes.txt
 source=("https://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/${_versionstr//_/-}/$pkgname-${_versionstr//_/-}.tar.gz")
 noextract=()
-sha256sums=('f90c2947b152a3956f24d00cf64515188892eb94b5c90421a83b27a878221deb')
+sha256sums=("4aad3b1144baeca236d7f422e06c9ad78825de6c3071faffc03905bbbcf93453")
 validpgpkeys=()
 
 prepare() {

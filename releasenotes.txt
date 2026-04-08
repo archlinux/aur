@@ -1,101 +1,147 @@
-# Gaia Sky 3.7.1
+# Gaia Sky 3.7.2
+
+This release brings some exciting new features and very many bug fixes.
 
 ## Features
-- Volume rendering and galaxies:
-	- Support true volume rendering using 3D textures loaded from `.raw` files.
-	- Add infrastructure to use volumes with up to 4 3D textures. Add sample example shader that renders each volume as emissive.
-	- Improve particle-based Milky Way dataset to enhance volumetric appearance, and ditch dithering method for occlusion.
-	- Add `halfResolutionBuffer` attribute to all objects; when it is true, the objects get derived through a different set of render lists that will end up rendered to a lower resolution buffer.
-	- Billboard set texture(s) defined now in data descriptor files.
-	- Use 3-way combine filter to blend full and half resolution layer. Prevent nested datasets from publishing a catalog info.
-- PBR shaders:
-	- Blinn-Phong specular model to Cook-Torrance PBR BRDF. Add proper PBR functions (GGX distribution, Smith geometry, Fresnel-Schlick). Energy conservation via Fresnel (`kS + kD = 1`).
-	- Lambertian diffuse divided by PI for energy conservation.
-	- Add early exit when light is behind surface.
-	- Fix light accumulation in PBR pipeline, making sure that energy is conserved properly, albedo only affects the final color once, and ambient lighting is treated as another light source before albedo.
-	- Ambient occlusion rework to follow a physical light interaction model.
-	- Separation of light types into indirect (ambient) light and direct light. Move per-light occlusion processing to the light processing block.
-	- Metallic workflow revisited. Use proper Fresnel calculation. Pass metallic/roughness values in light processing method in PBR lib.
-	- Rearrange shadows to be computed per-light instead of globally.
-	- Add `thinSurface` flag to materials and implement proper diffuse scattering (for rings and other volumetric materials).
-	- Redistribute PBR and math GLSL libraries.
-	- Enable model bodies other than moons (i.e. spacecraft, satellites, etc.) to be eclipsed by planets.
-- Anaglyph and 3D stereo modes:
-	- Implement adaptive stereo separation and expose user controls
-	- Add new anaglyph modes: red/cyan Dubois-style, amber/blue, and amber/blue Dubois style. Improve regular red/cyan method with a separate gamma operation on each channel that boosts red and mutes green. Part of [#874](https://codeberg.org/gaiasky/gaiasky/issues/874).
-	- Add green/magenta anaglyph profile, and its Dubois-style variant.
-	- Add stereo profile selector at the bottom of the stereo GUI. Update "Back" button style, move buttons to the left.
-- Virtual Reality:
-	- Improve handling of OpenXR swapchain to avoid reattaching a texture to a frame buffer every frame. This increases performance.
-	- Move desktop mirroring to separate pass to remove synchronicity with VR compositor. Improves performance.
-	- Add VR demo mode, where all VR controller buttons are disabled, and only forward/backward movement is allowed. This prevents common pitfalls during demonstrations where the user is not acquainted with the VR controls.
-	- Add check boxes to toggle VR demo mode and mirror to desktop to the welcome GUI and preferences window.
-- Eclipses and occlusion:
-	- Add diffraction effect in Eclipses.
-	- Improve eclipse shadow rendering by artificially darkening the umbra and penumbra.
-- Atmospheric scattering system:
-	- Move entire atmospheric scattering computation from vertex to fragment shaders, both for ground and sky. This enables a drastic reduction of the model complexity for atmospheres.
-	- Normalize atmospheric scattering parameters to inner radius, as in the original implementation by Sean O'Neil. This grounds the scattering algorithm physically and makes it more reliable. Needs new parameters in base dataset.
-- Rendering engine:
-	- Update default number of samples per orbit from 100 to 200.
-	- Use instanced rendering for orbital elements groups, improving performance.
-	- Increase maximum back-buffer scale from 4 to 8.
-- Add new localized enum type:
-	- Convert stereoscopic mode select box to use localized profile names.
-	- Use localized enum type for galaxy channel type and distribution.
-- UI/UX:
- 	- Interactive UI accent color feature to replace old static theme system.
-	- Add labels to individual visibility panel. Object labels can now be toggled on/off individually and at dataset level. Part of [#875](https://codeberg.org/gaiasky/gaiasky/issues/875).
-	- Add logarithmic scale to (plus) sliders.
-	- Add new slider variant with option to show button to reset slider state to original value.
-	- Improve layout of 'About' window, update BMFTR icon, add hyperlink capabilities to `OwnImage` widgets.
-	- Rework layout of welcome GUI by properly aligning elements vertically and resizing the Gaia Sky icon.
-	- Update translation files for Bulgarian, Catalan, Deutsch, Spanish, French, and Turkish: add missing keys, fix typos and errors, ensure UI layout consistency.
-- Add multiple mirrors for both data descriptor and data repository. At startup, Gaia Sky makes HEAD requests in sequence to each mirror of both lists until we find one that responds. This one is the 'selected mirror' for the session. Fixes [#871](https://codeberg.org/gaiasky/gaiasky/issues/871).
-- Improve object debug feature to include non-focusable entities, and to enable the modification of enum-type attributes.
-- Improve keyboard navigation by adding modifier keys that enable vertical rotations, camera pitches, and camera rolls. Part of [#876](https://codeberg.org/gaiasky/gaiasky/issues/876).
-- Move default output location for procedural textures from `$data/default-data/tex/procedural` to `$data/procedural-planet-textures`.
-- Add API calls to get non-indexed entities.
-- Release notes attribute in dataset descriptor is now a string array.
+
+- New billboard shading types, for particle groups. We have added three shading types to particle groups:
+	- `Plain` -- plain emissive color shading.
+	- `Billboard lighting` -- billboards are uniformly lit depending on light and view directions.
+	- `Spherical lighting` -- billboards are lit using Phong model, computing per-fragment normals with an assumed spherical volume.
+
+- Orbital element groups refactor: We have merged orbital element groups into regular particle groups, consolidating the data model and gaining all the particle group goodies: filtering, indexing, focusing, texturing, and shading types.
+	- Updated FPR asteroids catalog -- new version of FPR SSOs to use spherical lighting and textured particles.
+	- Add support for particle-based rings in ringed planets. This includes a number of refactorings and improvements.
+	- Saturn rings -- new dataset containing 1.5 million particles of dust and rock in the rings of Saturn. They rotate realistically, as they were generated with physically plausible orbital elements.
+	- Diffuse scattering -- added the diffuse scattering property to particle groups, used in conjunction to global ambient light setting.
+	- Enable asteroids and other particle groups to use a different epoch per particle.
+	- Add experimental custom loader for orbital elements groups to load the data directly from VOTable.
+	- Add script to convert state vectors to Keplerian elements in VOTable, and then another to convert a VOTable to the Gaia Sky JSON format for asteroids/sso.
+
+
+- Star glow effect rework:
+	- Add time-dependent polar mask to star glow effect. Update default star/glow texture indices and glow factor.
+	- Separate star from glow texture in settings. Add image next to select boxes to provide visual feedback about the selected textures.
+
+- Better handling of name conflicts in catalogs and datasets:
+	- Add name conflicts window to inform the user of index conflicts in the current session. Fixes [#904](https://codeberg.org/gaiasky/gaiasky/issues/904).
+	- Dataset updates (base data, NBG, FPR SSO, nebulae) to try to mitigate name conflicts.
+
+- Internationalization and translations:
+	- Simplified Chinese translation, by BCY-SuiCi. Part of [#885](https://codeberg.org/gaiasky/gaiasky/issues/885).
+	- Italian translation, by Roberto Zacco.
+	- Japanese translation (WIP), by Yauchi Hiromasa.
+	- Update and complete translation files: Slovenian, Turkish, Russian.
+
+- User interface updates:
+	- Move from static font files to `gdx-freetype` library. This enables us to support CJK languages and more. Part of [#885](https://codeberg.org/gaiasky/gaiasky/issues/885).
+	- Remove monospace fonts from Gaia Sky UI and skin. They are used very sporadically and are not really needed. Part of [#885](https://codeberg.org/gaiasky/gaiasky/issues/885).
+	- Maintain aspect ratio of background image in welcome and loading GUIs by letterboxing.
+	- Add 'copy to clipboard' button to log window. Add text and icons to all buttons in the window.
+	- Read contributors from CONTRIBUTORS.md file instead of hardcoding the data in About Window.
+	- Add mastodon and bsky icons and links in about window. Add tooltips with funding agencies' names.
+	- Update splash image. Add dark background to central table in loading GUI.
+	- Add 'overwrite' check box to file export dialogs.
+	- Use degrees for min/max particle size in dataset visual settings dialog.
+	- Improve reset sliders (sliders that have a button to reset their value).
+	- Sliders are now able to connect to an event in order to auto-update their state and publish updates.
+	- Move planetarium and cubemap settings to sliders from free-text input fields.
+	- Remember last camera file name in keyframes window to avoid having to enter it every time.
+	- Show notification on log export.
+	- Use reset sliders in settings window, and camera/visual settings panes.
+	- Use logarithmic slider for stereo screen distance setting.
+	- Remove 'settings' from tabs in preferences dialog.
+	- Add checkbox to pull current cloud data for supported objects. This is the activation control for the pre-existing `url` parameter in cloud components.
+	- Add arrows to base character set.
+
+- Stereoscopic and anaglyph 3D:
+	- Add custom anaglyph mode that uses user-defined colors. Implement custom anaglyph in backend filter. Part of [#874](https://codeberg.org/gaiasky/gaiasky/issues/874).
+	- Add UI controls to settings dialog to select left and right colors in custom anaglyph mode. Part of [#874](https://codeberg.org/gaiasky/gaiasky/issues/874).
+	- Add stereo comfort multiplier to stereo GUI.
+
+- Camcorder and OptFlowCam export:
+	- Add new setting to automatically hide the user interface on camera file playback.
+	- Replace `pipenv` with `uv` for dependency management for the OptFlowCam script. It is much faster. Part of [#894](https://codeberg.org/gaiasky/gaiasky/issues/894).
+	- Update OptFlowCam readme with new method (not yet implemented). Part of [#894](https://codeberg.org/gaiasky/gaiasky/issues/894).
+
+- Post-processing updates:
+	- Remove threshold in bloom effect.
+	- Update maximum glow factor.
+
+- Dataset management:
+	- Add mechanism to mark datasets as obsolete or outdated whenever a newer, better dataset comes around.
+	- Add `replaces` and `replacedBy` properties to dataset descriptors, so that the user can be informed about newer datasets that replace old, outdated ones.
+	- Cross-check `replaces` and `replacedBy` fields in local and server datasets.
+
+- Other minor things:
+	- Add (optional) color variability to variable stars. This is part of the preparations for Gaia DR4 datasets.
+	- Remove point shaders and point cloud renderer setting. Defaults to "Quality billboards".
 
 ## Bug Fixes
-- Incorrect initialization of third wavelength in procedural surface generation window (atmosphere tab).
-- Hard edges in specular channel of procedural planet generation due to binary operation.
-- Planetary surface procedural generation window automatic reload on focus change crashes when target object uses cubemaps due to selected tab index.
-- Fix orientation of fast bill-boarding GLSL snippet, which rotated the billboards upside down.
-- Replace linear `fov/ref` ratio with the trigonometric `tan(fov/2)/tan(ref/2)` to ensure that the FOV factor correctly maps the geometric change in the view frustum, improving accuracy for general scaling, visibility culling, and label resizing across all zoom levels.
-- Remove abstract render system state flags in favor of continuous parameter update.
-- Restore default depth buffer mode for billboard set labels.
-- Disable motion trails for non-star particles.
-- Backgrounds not using 9-patch method, resulting in spilled colors in some widgets' backgrounds.
-- Clamp completion values in billboard datasets between 0 and 1.
-- Use constant for internet connection check URL instead of hardcoded string.
-- Panning view must not modify rotation matrix of star corona. Only position changes have this effect now.
-- VR shutdown sequence rework by making sure no resource is destroyed when inactive. This fixes the Linux JVM crash on exit.
-- Small fixes in speed scaling for VR.
-- Take into account windows-style paths when building LUT table in procedural generation window. Fixes [#867](https://codeberg.org/gaiasky/gaiasky/issues/867).
-- Initial presentation of procedural generation window for planets that do not have procedural surfaces enabled is blank.
-- Default biome LUT file had wrong extension.
-- Delete old dataset version before update. Otherwise, old files are not removed and sometimes conflict with wildcard definitions in descriptor files.
-- Use current monitor when going to full screen mode. Save refresh rate and bit depth of preferred full screen mode. Part of [#864](https://codeberg.org/gaiasky/gaiasky/issues/864).
-- Move translucent models (ring) to `MODEL_PIX_TRANSPARENT` render group, and move it right after main `MODEL_PIX`. Disable depth mask for translucent materials, i.e., rings. Create `MODEL_SCENE_UI` at the end of the pipeline for in-scene UI elements (VR UI). Fixes [#862](https://codeberg.org/gaiasky/gaiasky/issues/862).
-- Use real km-to-unit conversion in tessellation control shader.
-- Pass right units in body distance to tessellation shaders. Improve tessellation level determination function.
-- Clouds are not affected by eclipses. The shader code that implemented the eclipse projection on the cloud layer has been reviewed and fixed.
+
+There are a huge quantity of bug fixes in this release:
+
+- Prevent applying accent color to color pickers and other pure-color widgets.
+- Star glow texture not updated correctly. Saving preferences prompted a full reload of all post processing effects.
+- Improve index conflict priority handling, and rework logging to make it more informative. Part of [#904](https://codeberg.org/gaiasky/gaiasky/issues/904).
+- Use 'umbra' and 'penumbra' in Catalan translation instead of the common names 'ombra' and 'penombra'.
+- Prevent smoothed distance to go to NaN in natural camera. This breaks the speed scaling computation. Fixes [#902](https://codeberg.org/gaiasky/gaiasky/issues/902).
+- Adapt look-up texture path names to internal format using backslash instead of forward slash. Fixes crash in Windows. Part of [#902](https://codeberg.org/gaiasky/gaiasky/issues/902).
+- Regression in 3.7.1 where Error Dialog crashes at startup due to incorrect sprite shader and skin initialization.
+- Check children list before getting child by name, prevents NPE.
+- Make sure `set.indices` is initialized when rendering labels. This is not always the case in datasets loaded on the fly, leading to a crash.
+- Correct actual penumbra line color (green -> yellow) in translation files.
+- Add on-demand ray-marching effects to all targets (screen, screenshots, frame output). This fixes screenshots and frame output using advanced mode not showing dynamically loaded ray-marching effects.
+- Correct off-by-one error in `ParticleSetUpdaterTask` SORT2 stage.
+- Use component type localized names in error messages in search dialog. Fixes [#901](https://codeberg.org/gaiasky/gaiasky/issues/901).
+- Detect the supported maximum vertex shader storage blocks in the method that checks if compute shaders are supported. If the number is zero, we mark compute shaders as not supported and fall back to the CPU method.
+- Disable go-to button for unindexed particle groups.
+- Goto operation uses interactive camera for particle sets (provisional hack).
+- Fix regression where the light glow effect was inconsistent and disappeared sometimes for some stars.
+- Wrong format in `notif.catalog.loaded` key in German translation file.
+- Hardcoding component type to all invisible objects results in unpredictable behaviour. Only set the component type to ray-marching objects (i.e. have a ray-marching shader attached).
+- Solid angle determination for (some) particle sets.
+- Remove `pack()` from top info interface notify method. Part of [#898](https://codeberg.org/gaiasky/gaiasky/issues/898).
+- Updating localized names does nothing if the new language does not have a name for the object. In this case, we need to remove the current localized name (if any, and if it is different than the default, English). Otherwise, the names for certain objects remain in the previous language rather than the default.
+- Remove raymarching component from invisible archetypes that do not have ray-marching enabled. This routes them to the invisible extractor correctly now.
+- Use HTTPS to check internet connection wiht fedoraproject.org.
+- Dataset manager window: expand filter input field, remove top padding in datasets list.
+- Typos in objects translation files: Ophiuc**H**us and Antar**C**tica.
+- Guard `keyStringToKeyCode()` execution against null strings. Fixes [#896](https://codeberg.org/gaiasky/gaiasky/issues/896).
+- Light glow texture aspect ratio in stereo half-width modes (cross-eye, parallel view).
+- Resolve camera path discontinuities in CatmullRom interpolation in OptFlowCam. Fixes [#895](https://codeberg.org/gaiasky/gaiasky/issues/895).
+- Unique file name method is missing the period '.' between file name and extension.
+- Log window contents not updated after loading is finished. To mend this, we have moved the log history from notifications interface to console logger, and made some further changes.
+- Delay `GatewayServer` start (scripting) until the end of the loading pipeline, when the scene is already initialized and the Gaia Sky state is actually ready. Fixes [#893](https://codeberg.org/gaiasky/gaiasky/issues/893), [#891](https://codeberg.org/gaiasky/gaiasky/issues/891).
+- Set line width to 1 for particle sets rendered as wireframe models.
+- State vectors to elements converter overrides past epochs, so all output epochs are the same.
+- Clicking buttons on gamepad UI does not work.
+- Frame buffer size cuts bottom of VR UI.
+- Remove unused I18n `key=value` pairs from all translation files.
+- Capture `InvalidPathException`s thrown by windows paths. Mark current location red when the path is malformed, or the location does not exist. Fixes [#887](https://codeberg.org/gaiasky/gaiasky/issues/887).
+- Getting `git` version/revision to work everywhere.
+- Reverse state of object visibility in camera info pane to match icon state.
+- Reverse open/closed eye icon in eye-toggle button. Fixes wrong state in datasets pane.
 
 ## Performance Improvements
-- Use instanced rendering for billboard groups to save on VRAM memory transfers and boost performance.
-- Marginal performance gains in billboard rotation shader.
+
+- Remove light glow pass where a dedicated occlusion texture is rendered separately using opaque models and billboard stars to an off-screen frame buffer, to be used later in the light glow post-processing effect. Now, we directly use the default render buffer and a little bit of shader magic. Tests indicate this is enough, and works with asteroids/particles and all other opaque bodies. Performance is better, since we skip an additional render pass.
+
+## Code Refactoring
+
+- Abstract `GenericDialog` and the new `GenericScreen` as `IScreen` to unify gamepad and keyboard listeners. New `GenericScreen` is a variant of `GenericDialog` that takes up the full viewport instead of rendering to a dialog window.
+- Extract CPU computation of Keplerian elements from orbit component into utility class. This allows us to use it for the new `ParticleKepler` type.
+- Simplify naming scheme of fonts to adapt to `gdx-freetype`. Update skin JSON file. Remove skin JSON generation from texture packer utility.
 
 ## Build System
-- Increase minimum and maximum heap size for the VR launcher to 4 and 10 GB.
-- Update to LibGDX 1.14.0, which requires quite a few changes in how object pools are handled.
-- Remove ZGC Generational flag, add compact object headers flag to Install4j and Gradle for free memory savings with Java 25+.
+
+- Upgrade to Gradle 9.4.1.
+- Upgrade to JDK 25.0.2+10 for release packages and AppImage. Update metainfo file.
+- Fix AUR package Java dependency to >=25.
+- AUR package: Use HTTPS for the `PKGBUILD` script. Remove MD5 checksum. Remove `.install` file.
 
 ## Documentation
-- Update documentation theme and refactor its structure.
-- Add pointer to DeepWiki Gaia Sky codebase documentation in the readme file.
-- Create `wiki.json` for deepwiki/devin.
-
-## Merge Requests
-- Merge branch 'volumerendering'
+- Use `close()` instead of `shutdown()` at the end of scripts in the javadocs.
+- Add Simplified Chinise, Japanese, and Italian translators to contributors list.
+- Add several class-level javadoc blocks.
+- Add section on object name translation in `CONTRIBUTING.md` file.
