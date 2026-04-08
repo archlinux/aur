@@ -3,7 +3,7 @@
 pkgname=astrbot-git
 _pkgname=astrbot
 pkgver=4.22.2.r607.gba7ace4b
-pkgrel=1
+pkgrel=2
 pkgdesc="Agentic IM Chatbot infrastructure (multi-instance, astrbotctl only)"
 arch=('any')
 url="https://github.com/AstrBotDevs/AstrBot"
@@ -47,6 +47,9 @@ package() {
     shopt -s dotglob
     cp -a "$srcdir"/AstrBot-*/* "$pkgdir/opt/astrbot/"
     shopt -u dotglob
+
+    # Normalize directory permissions (upstream uses 775, we want 755)
+    find "$pkgdir/opt/astrbot" -type d -exec chmod 755 {} +
 
     # Store version inside the application directory
     echo "$pkgver" >"$pkgdir/opt/astrbot/.version"
