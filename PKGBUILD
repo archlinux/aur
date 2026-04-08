@@ -1,7 +1,8 @@
+#Maintainer: vyzu <vyzu AT vyzu DOT net>
 pkgname=argus-bin
 _pkgname=argus
-pkgver=0.29.3
-pkgrel=4
+pkgver=0.29.4
+pkgrel=1
 pkgdesc='Lightweight monitor to notify of new software releases via Gotify/Slack/other messages and/or WebHooks.'
 arch=('x86_64' 'aarch64')
 url='https://release-argus.io/'
@@ -19,8 +20,8 @@ sha256sums=('7ea09ebc9ae76e3b57c47a566b26ee11e0aab12dde11c3aa594fd3d351df5d22'
             '73e249a0bf4ad7f14d28371001307882b33d17f6a34116449c3a84ff0bd768c7'
             '73699eccca0aa9e134ea6e930ac87ab8441108fdd9d950b662ea4dc1c4a7ad9e'
             'b0da219ff1c738c17e449984702740870cdb2d369e7dc50e655f5d2ae83e7287')
-sha256sums_x86_64=('3a663a095f81abc8101f84721a7a8bfc710e923cf93710cea1800a9038228204')
-sha256sums_aarch64=('191b9c6e3bed5b224249b2d612a13fd17908939ad7c960b8f0f372473b1d7052')
+sha256sums_x86_64=('3527ad740d1741b32dfb00d697c8ec1f9fd5d7ebf4a965d62e67c93a00e6bdbf')
+sha256sums_aarch64=('b96465e1cb891c686fa2f668e07495e1c84cf8c76bdc4e9b57eb91fd157d289f')
 
 declare -xA _arches
 _arches['x86_64']=amd64
