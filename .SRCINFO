@@ -1,6 +1,6 @@
 pkgbase = linuxshot-git
 	pkgdesc = ShareX-inspired screenshot and upload tool for Linux
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/TaintedAngel/linuxshot
 	arch = any

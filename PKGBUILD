@@ -1,6 +1,6 @@
 # Maintainer: TaintedAngel <lordmaxking42@gmail.com>
 pkgname=linuxshot-git
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="ShareX-inspired screenshot and upload tool for Linux"
 arch=('any')
