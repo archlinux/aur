@@ -1,7 +1,7 @@
 # Maintainer: 00ein00 <ein420@proton.me>
 pkgname=f2p-evo
 _pkgname=f2p-evo
-pkgver=0.3.32.r186.g95e3c78 # auto-updated
+pkgver=0.3.37.r193.g8fa624c # auto-updated
 pkgrel=1
 pkgdesc="F2P Evo — unofficial Hytale launcher (Rust + Tauri 2 + Vue 3) with multiplayer, mods, chat, and auto-updates"
 arch=('x86_64')
