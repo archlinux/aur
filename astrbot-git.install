@@ -73,8 +73,7 @@ post_install() {
     echo "  服务日志：     journalctl -u astrbot@<实例名> -f"
     echo ""
     echo "【注意事项】"
-    echo "  如果前端登录页出现 405 错误（/api/auth/login/challenge）"
-    echo "  请运行 sudo pacman -Syu 重建 AUR 包以更新到最新代码"
+    echo "  修改管理员密码：sudo astrbotctl admin <实例名>"
     echo "-------------------------------------------------------------------"
 }
 
@@ -101,8 +100,7 @@ post_upgrade() {
     echo "  如果环境异常，可运行 sudo pacman -Syu 重建 AUR 包"
     echo ""
     echo "【注意事项】"
-    echo "  如果前端登录页出现 405 错误（/api/auth/login/challenge）"
-    echo "  请运行 sudo pacman -Syu 重建 AUR 包以更新到最新代码"
+    echo "  修改管理员密码：sudo astrbotctl admin <实例名>"
     echo "-------------------------------------------------------------------"
 }
 

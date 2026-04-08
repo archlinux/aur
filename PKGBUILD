@@ -2,8 +2,8 @@
 
 pkgname=astrbot-git
 _pkgname=astrbot
-pkgver=4.22.2.r607.gba7ace4b
-pkgrel=5
+pkgver=4.22.2.r612.g3cd48ad1
+pkgrel=1
 pkgdesc="Agentic IM Chatbot infrastructure (multi-instance, astrbotctl only)"
 arch=('any')
 url="https://github.com/AstrBotDevs/AstrBot"
