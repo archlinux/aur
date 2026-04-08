@@ -6,7 +6,7 @@ pkgver=1.1.5
 pkgrel=1
 pkgdesc="A more powerful JSONPath implementation in modern python"
 arch=("any")
-url="https://github.com/zhangxianbing/${_pkgname}"
+url="https://github.com/sean2077/${_pkgname}"
 license=('MIT')
 depends=("python")
 makedepends=(
@@ -17,7 +17,7 @@ makedepends=(
     "uv"
 )
 source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('e94d043015bbe978047bc17df46916aafae7c92d37302f0c0135239932116253')
 
 build() {
     cd "${_pkgname}"
