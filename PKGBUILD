@@ -2,7 +2,7 @@
 pkgname=selene-player-git
 _pkgname=selene-player
 pkgver=0.5.0.r0.g4decef3
-pkgrel=0
+pkgrel=1
 pkgdesc="A feature complete music player and metadata editor"
 
 url="https://codeberg.org/CrypticCreator/Selene"
@@ -12,7 +12,7 @@ license=("MIT")
 arch=(x86_64)
 
 makedepends=('git' 'cargo')
-depends=()
+depends=('libwebp')
 
 source=("${_pkgname}::git+${_git}")
 
