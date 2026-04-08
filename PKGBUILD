@@ -1,6 +1,6 @@
 # Maintainer: weversonl
 pkgname=gnome-quick-share
-pkgver=0.12.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Quick Share client for GNOME"
 arch=('x86_64')
@@ -40,27 +40,27 @@ package() {
 
   # Desktop entry
   install -dm755 "$pkgdir/usr/share/applications"
-  install -Dm644 "$srcdir/$pkgname/app/gtk/data/io.github.weversonl.GnomeQS.desktop" \
-    "$pkgdir/usr/share/applications/io.github.weversonl.GnomeQS.desktop"
+  install -Dm644 "$srcdir/$pkgname/app/gtk/data/io.github.weversonl.GnomeQuickShare.desktop" \
+    "$pkgdir/usr/share/applications/io.github.weversonl.GnomeQuickShare.desktop"
 
   # AppStream metadata
-  install -Dm644 "$srcdir/$pkgname/app/gtk/data/io.github.weversonl.GnomeQS.metainfo.xml" \
-    "$pkgdir/usr/share/metainfo/io.github.weversonl.GnomeQS.metainfo.xml"
+  install -Dm644 "$srcdir/$pkgname/app/gtk/data/io.github.weversonl.GnomeQuickShare.metainfo.xml" \
+    "$pkgdir/usr/share/metainfo/io.github.weversonl.GnomeQuickShare.metainfo.xml"
 
   # GSettings schema
-  install -Dm644 "$srcdir/$pkgname/app/gtk/data/io.github.weversonl.GnomeQS.gschema.xml" \
-    "$pkgdir/usr/share/glib-2.0/schemas/io.github.weversonl.GnomeQS.gschema.xml"
+  install -Dm644 "$srcdir/$pkgname/app/gtk/data/io.github.weversonl.GnomeQuickShare.gschema.xml" \
+    "$pkgdir/usr/share/glib-2.0/schemas/io.github.weversonl.GnomeQuickShare.gschema.xml"
 
   # Icons
   _icondir="$srcdir/$pkgname/app/gtk/data/icons"
-  install -Dm644 "$_icondir/32x32.png"      "$pkgdir/usr/share/icons/hicolor/32x32/apps/io.github.weversonl.GnomeQS.png"
-  install -Dm644 "$_icondir/128x128.png"    "$pkgdir/usr/share/icons/hicolor/128x128/apps/io.github.weversonl.GnomeQS.png"
-  install -Dm644 "$_icondir/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256@2/apps/io.github.weversonl.GnomeQS.png"
-  install -Dm644 "$_icondir/tray_mono.png"  "$pkgdir/usr/share/icons/hicolor/32x32/apps/io.github.weversonl.GnomeQS-symbolic.png"
-  install -Dm644 "$_icondir/hicolor/scalable/actions/io.github.weversonl.GnomeQS-airdrop-symbolic.svg" \
-    "$pkgdir/usr/share/icons/hicolor/scalable/actions/io.github.weversonl.GnomeQS-airdrop-symbolic.svg"
-  install -Dm644 "$_icondir/hicolor/scalable/status/io.github.weversonl.GnomeQS-tray-symbolic.svg" \
-    "$pkgdir/usr/share/icons/hicolor/scalable/status/io.github.weversonl.GnomeQS-tray-symbolic.svg"
+  install -Dm644 "$_icondir/32x32.png"      "$pkgdir/usr/share/icons/hicolor/32x32/apps/io.github.weversonl.GnomeQuickShare.png"
+  install -Dm644 "$_icondir/128x128.png"    "$pkgdir/usr/share/icons/hicolor/128x128/apps/io.github.weversonl.GnomeQuickShare.png"
+  install -Dm644 "$_icondir/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256@2/apps/io.github.weversonl.GnomeQuickShare.png"
+  install -Dm644 "$_icondir/tray_mono.png"  "$pkgdir/usr/share/icons/hicolor/32x32/apps/io.github.weversonl.GnomeQuickShare-symbolic.png"
+  install -Dm644 "$_icondir/hicolor/scalable/actions/io.github.weversonl.GnomeQuickShare-airdrop-symbolic.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/actions/io.github.weversonl.GnomeQuickShare-airdrop-symbolic.svg"
+  install -Dm644 "$_icondir/hicolor/scalable/status/io.github.weversonl.GnomeQuickShare-tray-symbolic.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/status/io.github.weversonl.GnomeQuickShare-tray-symbolic.svg"
 
   # Locales
   for lang in pt_BR; do
