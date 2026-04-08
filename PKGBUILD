@@ -45,8 +45,6 @@ prepare() {
 build() {
 	cd "${_name}"
 
-	sed -i -e 's|torch/types.h|torch/library.h|g' xformers/csrc/attention/attention.cpp
-
 	# Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
 	# from incorrectly using a parent git checkout info.
 	# https://github.com/pypa/build/issues/384#issuecomment-947675975
