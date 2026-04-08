@@ -1,7 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=poutine
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="boostsecurityio/poutine"
 arch=('x86_64' 'aarch64')
