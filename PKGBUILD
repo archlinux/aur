@@ -2,7 +2,7 @@
 # Maintainer:  Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=gomplate-bin
-pkgver=4.3.3
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='A flexible commandline tool for template rendering. Supports lots of local and remote datasources'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('gomplate')
 provides=('gomplate')
 source=("${pkgname}-${pkgver}::https://github.com/hairyhenderson/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}_linux-amd64"
         'LICENSE::https://raw.githubusercontent.com/hairyhenderson/'${pkgname%-bin}'/main/LICENSE')
-sha256sums=('ca281666e86f2f09218c1653e1908f572c0e349e9de64cb4ea93ade9333f0596'
+sha256sums=('084469b46bd5d7da3acd7a8255fac1fb31d3fe054d717c3d4850f14624fbb177'
             '57e484ef5a7e1055b3b7268a7d74fd63941ce76ff6a5c41adb0c19e5bd026067')
 
 package() {
