@@ -3,7 +3,7 @@
 _pkgname=mdcx
 pkgname="${_pkgname}-git"
 epoch=1
-pkgver=r391.5f0b12d
+pkgver=r394.af2dd81
 pkgrel=1
 pkgdesc="Movie metadata scraper"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -32,7 +32,7 @@ depends=(
     "xcb-util-renderutil"
     "xcb-util-wm"
 )
-makedepends=("git" "python" "uv")
+makedepends=("git" "python313" "uv")
 source=("${_pkgname}::git+${url}.git"
         "${_pkgname}.desktop"
         "${_pkgname}.png")
@@ -48,6 +48,7 @@ pkgver() {
 build() {
     cd "${_pkgname}"
     uv sync \
+        --python=/usr/bin/python3.13 \
         --frozen \
         --no-cache \
         --no-editable \

@@ -1,6 +1,6 @@
 pkgbase = mdcx-git
 	pkgdesc = Movie metadata scraper
-	pkgver = r391.5f0b12d
+	pkgver = r394.af2dd81
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/sqzw-x/mdcx
@@ -14,7 +14,7 @@ pkgbase = mdcx-git
 	arch = riscv64
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = python
+	makedepends = python313
 	makedepends = uv
 	depends = at-spi2-core
 	depends = cairo
