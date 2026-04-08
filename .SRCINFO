@@ -1,0 +1,17 @@
+pkgbase = sortiz-git
+	pkgdesc = TUI sorting algorithm visualizer with smooth animations and full theme support
+	pkgver = r5.7b21b16
+	pkgrel = 1
+	url = https://github.com/PR0M4XIMUS/sortiz
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = sortiz
+	conflicts = sortiz
+	source = sortiz-git::git+https://github.com/PR0M4XIMUS/sortiz.git
+	sha256sums = SKIP
+
+pkgname = sortiz-git
