@@ -861,6 +861,8 @@ def draw_main_menu(stdscr):
 
 
 def main(stdscr):
+    stdscr.clear()
+    curses.curs_set(0)
     curses.start_color()
     try:
         curses.use_default_colors()
@@ -900,13 +902,48 @@ def main(stdscr):
         h, w = stdscr.getmaxyx()
 
         if h < 20:
-            msg = "Window too small! Press 7 to exit."
-            try:
-                stdscr.addstr(0, 0, msg)
-            except:
-                pass
+            stdscr.clear()
+            curses.curs_set(0)
+            # Define the message lines individually to manage centering
+            msg_lines = [
+                "╔══════════════════════════════════════╗",
+                "║                 TRY                  ║",
+                "║                                      ║",
+                "║ https://github.com/NVitschDEV/SNAKE  ║",
+                "║                                      ║",
+                "║  ███████╗██╗   ██╗██████╗  ██████╗   ║",
+                "║  ██╔════╝██║   ██║██╔══██╗██╔═══██╗  ║",
+                "║  ███████╗██║   ██║██║  ██║██║   ██║  ║",
+                "║  ╚════██║██║   ██║██║  ██║██║   ██║  ║",
+                "║  ███████║╚██████╔╝██████╔╝╚██████╔╝  ║",
+                "║  ╚══════╝ ╚═════╝ ╚═════╝  ╚═════╝   ║",
+                "║                                      ║",
+                "║        but this window is too        ║",
+                "║                 small                ║",
+                "╚══════════════════════════════════════╝",
+                "            (Press $ to exit)           ",
+            ]
+
+            # Calculate starting Y to center the block vertically
+            start_y = max(0, (h - len(msg_lines)) // 2)
+
+            for i, line in enumerate(msg_lines):
+                # Calculate starting X for each line to center it horizontally
+                start_x = max(0, (w - len(line)) // 2)
+                try:
+                    # Only draw if the line fits on the current screen height
+                    if start_y + i < h:
+                        stdscr.addstr(
+                            start_y + i,
+                            start_x,
+                            line,
+                            curses.color_pair(1) | curses.A_BOLD,
+                        )
+                except curses.error:
+                    pass
             stdscr.refresh()
-            if stdscr.getch() in [ord("7"), 27]:
+            key = stdscr.getch()
+            if key in [ord("$"), 27]:
                 break
             continue
 
@@ -947,7 +984,7 @@ def main(stdscr):
                     stdscr,
                     appointments,
                     date_key,
-                    cal_bottom + 1,
+                    cal_bottom + 2,  # <--- Added spacing here (changed +1 to +2)
                     start_x=table_x,
                     width=68,
                 )
@@ -974,6 +1011,36 @@ def main(stdscr):
                     appointments[date_key] = []
                 appointments[date_key].append(appt.strip())
                 save_appointments(appointments)
+        elif key in [ord("e"), ord("E")]:
+            if appointments.get(date_key):
+                idx_str = prompt_input(
+                    stdscr, f"Edit appt # for {date_key}: ", h - 2, 2
+                )
+                if idx_str.isdigit():
+                    idx = int(idx_str) - 1
+                    if 0 <= idx < len(appointments[date_key]):
+                        old_val = appointments[date_key][idx]
+                        new_val = prompt_input(
+                            stdscr,
+                            f"New text (Enter for '{old_val[:10]}...'): ",
+                            h - 2,
+                            2,
+                        )
+                        if new_val.strip():
+                            appointments[date_key][idx] = new_val.strip()
+                            save_appointments(appointments)
+        elif key in [ord("d"), ord("D")]:
+            if appointments.get(date_key):
+                idx_str = prompt_input(
+                    stdscr, f"Delete appt # for {date_key}: ", h - 2, 2
+                )
+                if idx_str.isdigit():
+                    idx = int(idx_str) - 1
+                    if 0 <= idx < len(appointments[date_key]):
+                        appointments[date_key].pop(idx)
+                        if not appointments[date_key]:
+                            del appointments[date_key]
+                        save_appointments(appointments)
         elif key == ord("1"):
             add_mode(stdscr, todos, theme_id)
         elif key == ord("2"):
