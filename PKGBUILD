@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A modern, intuitive media player inspired by PotPlayer"
 arch=('x86_64')
 url="https://github.com/Ahurein/rein_player"
-license=('MIT')
+license=('unknown')
 depends=('mpv' 'gtk3')
 provides=('reinplayer')
 conflicts=('reinplayer')
@@ -15,7 +15,7 @@ options=('!strip')
 source=("${url}/releases/download/v${pkgver}/reinplayer_linux_amd64_portable.tar.gz"
   "reinplayer.desktop")
 sha256sums=('22ea42e7104a5a1ccb973cfb90f535644c606954a0d7da85d98db870e3b33380'
-            '987436b55ab2c9622f5dff6084a48e5ef39ed0fbf160596d492cec066f01e042')
+  '987436b55ab2c9622f5dff6084a48e5ef39ed0fbf160596d492cec066f01e042')
 
 package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"
