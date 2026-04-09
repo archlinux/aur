@@ -2,7 +2,7 @@
 
 pkgname=streamrip
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A scriptable stream downloader for Qobuz, Tidal, Deezer and SoundCloud.'
 arch=(any)
 url='https://github.com/nathom/streamrip'
@@ -46,5 +46,5 @@ build() {
 
 package() {
   cd streamrip
-  python -m installer -d "$pkgdir" dist/*.whl
+  python -m installer -d "$pkgdir" dist/streamrip-$pkgver-*.whl
 }
