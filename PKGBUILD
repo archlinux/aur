@@ -1,6 +1,6 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=hister-git
-pkgver=0.11.0.r97.g902fe0f
+pkgver=0.12.0.r0.gd442be8
 pkgrel=1
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites (git)"
 arch=('x86_64' 'aarch64')
