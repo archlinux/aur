@@ -8,7 +8,7 @@ pkgbase = python-mempalace
 	depends = python
 	provides = mempalace
 	conflicts = mempalace
-	source = mempalace-3.0.0.tar.gz::https://github.com/milla-jovovich/mempalace/archive/refs/tags/v3.0.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/m/mempalace/mempalace-3.0.0.tar.gz
 	sha256sums = 64f7c22d0fc50e26d0cd7746325e091e041f8863182e09c47b688bde070925c6
 
 pkgname = python-mempalace

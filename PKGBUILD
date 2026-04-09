@@ -28,7 +28,7 @@ conflicts=('mempalace')
 # No makedepends needed beyond python (venv and pip are stdlib/bundled).
 makedepends=()
 
-source=("${pkgname:7}-$pkgver.tar.gz::https://github.com/milla-jovovich/mempalace/archive/refs/tags/v$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${pkgname:7:1}/${pkgname:7}/${pkgname:7}-$pkgver.tar.gz")
 sha256sums=('64f7c22d0fc50e26d0cd7746325e091e041f8863182e09c47b688bde070925c6')
 
 build() {
