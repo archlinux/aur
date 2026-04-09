@@ -1,8 +1,8 @@
 pkgbase = python-telethon-git
 	pkgdesc = Pure Python 3 Telegram client library, asyncio version
-	pkgver = 1.6.2.r44.g34a8140f
+	pkgver = 1.42.0.r24.g09ef6976
 	pkgrel = 1
-	url = https://github.com/LonamiWebs/Telethon/
+	url = https://codeberg.org/Lonami/Telethon
 	arch = any
 	license = MIT
 	makedepends = git
@@ -14,8 +14,7 @@ pkgbase = python-telethon-git
 	conflicts = python-telethon
 	conflicts = python-telethon-aio-git
 	options = !emptydirs
-	source = git+https://github.com/LonamiWebs/Telethon.git
+	source = git+https://codeberg.org/Lonami/Telethon.git
 	md5sums = SKIP
 
 pkgname = python-telethon-git
-

@@ -1,17 +1,17 @@
 # Maintainer: novenary <streetwalkermc@gmail.com>
 pkgname=python-telethon-git
-pkgver=1.6.2.r44.g34a8140f
+pkgver=1.42.0.r24.g09ef6976
 pkgrel=1
 pkgdesc="Pure Python 3 Telegram client library, asyncio version"
 arch=('any')
-url="https://github.com/LonamiWebs/Telethon/"
+url="https://codeberg.org/Lonami/Telethon"
 license=('MIT')
 depends=('python' 'python-pyaes' 'python-rsa')
 makedepends=('git' 'python-setuptools')
 provides=('python-telethon')
 conflicts=('python-telethon' 'python-telethon-aio-git')
 options=(!emptydirs)
-source=("git+https://github.com/LonamiWebs/Telethon.git")
+source=("git+https://codeberg.org/Lonami/Telethon.git")
 md5sums=('SKIP')
 
 pkgver() {
