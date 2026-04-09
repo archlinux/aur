@@ -1,7 +1,7 @@
 # Maintainer: CrypticCreator <crypticcreator@noreply.codeberg.org>
 pkgname=selene-player-git
 _pkgname=selene-player
-pkgver=v0.5.2.r0.g1818fcd
+pkgver=v0.5.3.r0.g1537009
 pkgrel=0
 pkgdesc="A feature complete music player and metadata editor"
 
