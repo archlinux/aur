@@ -1,6 +1,6 @@
-# Maintained and written by the author, Michel Dusseault <mike dot dusseault at gmail dot com>
+# Maintainer: Michel Dusseault <mike dot dusseault at gmail dot com>
 pkgname=qmentat
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Mental arithmetic practice application"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/RealGrep/QMentat"
 license=('GPL3')
 depends=('qt6-base' 'gmp')
 makedepends=('qt6-tools')
-source=('git+https://github.com/RealGrep/QMentat.git#tag=v1.0.1')
+source=('git+https://github.com/RealGrep/QMentat.git#tag=v1.1.0')
 sha256sums=('SKIP')
 
 build() {
