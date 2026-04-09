@@ -1,6 +1,6 @@
 pkgbase = stashpak
 	pkgdesc = Build Portable packages with ease.
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/Kimiblock/stashpak
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = stashpak
 	depends = devtools
 	depends = git
 	optdepends = devtools-cn-git: Arch Linux CN build prefixes
-	source = source::git+https://github.com/Kimiblock/stashpak.git#tag=0.4.0
-	sha256sums = 70454e813af0f234a036ce6f2e27a12fc740f8f71925d9b07d56c8ef8f653397
+	source = source::git+https://github.com/Kimiblock/stashpak.git#tag=0.5.0
+	sha256sums = ad064386ed1beea8003eae5206f2ed30b6d81995d27496bce7f7520c3b29e598
 
 pkgname = stashpak
