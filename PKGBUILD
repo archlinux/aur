@@ -2,7 +2,8 @@
 
 pkgname=elyprismlauncher
 pkgver=11.0.0_pre3
-pkgrel=1
+_pkgver=11.0.0-pre3
+pkgrel=2
 pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts"
 arch=('x86_64')
 url="https://github.com/ElyPrismLauncher/Launcher"
@@ -18,18 +19,18 @@ optdepends=('glfw: to use system GLFW libraries'
             'java-runtime=8: support for Minecraft versions < 1.17'
             'flite: minecraft voice narration'
 )
-source=("https://github.com/ElyPrismLauncher/Launcher/releases/download/${pkgver}/PineconeMC-${pkgver}.tar.gz")
+source=("https://github.com/ElyPrismLauncher/Launcher/releases/download/${_pkgver}/PineconeMC-${_pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build()
 {
-	cd PineconeMC-${pkgver}
+	cd PineconeMC-${_pkgver}
 	cmake -DCMAKE_INSTALL_PREFIX=/usr --preset linux
 	cmake --build build --config Release -j$(nproc)
 }
 
 package()
 {
-	cd PineconeMC-${pkgver}
+	cd PineconeMC-${_pkgver}
 	DESTDIR="${pkgdir}" cmake --install build --config Release
 }
