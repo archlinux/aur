@@ -1,13 +1,13 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=grimmory
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Self hosted ebook reader"
 arch=('x86_64')
 url="https://opencollective.com/grimmory"
 license=('AGPL-3.0')
 backup=("etc/grimmory/grimmory.conf")
-depends=('jdk25-openjdk' 'mariadb' 'fontconfig' 'ttf-dejavu')
+depends=('jdk25-openjdk' 'mariadb' 'fontconfig' 'ttf-dejavu' 'kepubify')
 makedepends=('yarn')
 conflicts=('booklore')
 optdepends=('apache' 'nginx' 'caddy')

@@ -1,7 +1,7 @@
 pkgbase = grimmory
 	pkgdesc = Self hosted ebook reader
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opencollective.com/grimmory
 	arch = x86_64
 	license = AGPL-3.0
@@ -10,6 +10,7 @@ pkgbase = grimmory
 	depends = mariadb
 	depends = fontconfig
 	depends = ttf-dejavu
+	depends = kepubify
 	optdepends = apache
 	optdepends = nginx
 	optdepends = caddy
