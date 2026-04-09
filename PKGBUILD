@@ -3,7 +3,7 @@
 _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.114.0
+pkgver=1.115.0
 _electronversion=39
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications.(Prebuilt and System-wide Electron edition)"
@@ -50,9 +50,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
 sha256sums=('dc5406ddd35ed5e3be39fe0a5a460f061aff3d296dc70124fd3eface8444c947'
             'c418b7c5c17b3771f53541b46ed1eff461de5871e2c7c177546e2577d480594f')
-sha256sums_aarch64=('856bc4890170a0ea3d6a919f37c607f6c5ff331a9f5db26d76550e92f2728acb')
-sha256sums_armv7h=('3183fec6237e571a9cdbf6f02b16259c064b1d5d0303a116c3aeeb2411bfb9ad')
-sha256sums_x86_64=('a5f5426a09eeef50623a2330619b5e00caf4d73b450ad6b1f6b8957c45dad7c3')
+sha256sums_aarch64=('aac15d8013ef3c052416f27edeac75fcf1af5fdfe678428e5fc97d8a4904f1f6')
+sha256sums_armv7h=('179557bc5c17f22cbe83f663e610be33fd67f9efe0534dd480a1785bb9f017f5')
+sha256sums_x86_64=('ae38f9d082b156b91684237e1d6ac0f7cf3203ff91eb9dce2d72ea5d127ac42c')
 pkgver() {
     cd "${srcdir}/usr/share/${_appname}/resources/app"
     grep '"version": ' package.json | awk '{print $2}' | tr -d '"' | tr -d ','
