@@ -1,11 +1,11 @@
 pkgbase = python-agent-rtfm-bin
 	pkgdesc = Local documentation retrieval service for agent-assisted development (prebuilt)
 	pkgver = 0.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/phlppbmm/rtfm
 	arch = any
 	license = MIT
-	makedepends = python-pip
+	makedepends = uv
 	makedepends = python-installer
 	depends = python>=3.11
 	provides = python-agent-rtfm
