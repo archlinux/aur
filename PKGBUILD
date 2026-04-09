@@ -4,7 +4,7 @@ pkgver=2.4.0
 pkgrel=1
 pkgdesc='Modal TUI for tracking home projects, maintenance schedules and vendor quotes'
 arch=('x86_64' 'aarch64')
-url='https://github.com/cpcloud/micasa'
+url='https://github.com/micasa-dev/micasa'
 license=('Apache-2.0')
 provides=('micasa')
 conflicts=('micasa')
@@ -16,6 +16,6 @@ sha256sums_aarch64=('d1b8c1f9fd56b0c044ae5c0cc442dc9f5913d56372eec073a4f590992e4
 package() {
     install -Dm755 micasa "${pkgdir}/usr/bin/micasa"
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<'EOF'
-Apache License 2.0 - See https://github.com/cpcloud/micasa/blob/main/LICENSE
+Apache License 2.0 - See https://github.com/micasa-dev/micasa/blob/main/LICENSE
 EOF
 }
