@@ -1,6 +1,6 @@
 pkgbase = python-agent-rtfm
 	pkgdesc = Local documentation retrieval service for agent-assisted development
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/phlppbmm/rtfm
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-agent-rtfm
 	provides = python-agent-rtfm
 	conflicts = python-agent-rtfm-bin
 	conflicts = python-agent-rtfm-git
-	source = https://pypi.io/packages/source/a/agent-rtfm/agent_rtfm-0.2.0.tar.gz
+	source = https://pypi.io/packages/source/a/agent-rtfm/agent_rtfm-0.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-agent-rtfm
