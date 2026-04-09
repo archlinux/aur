@@ -1,7 +1,7 @@
 pkgbase = python-vmware-vcenter
 	pkgdesc = VMware vCenter Server Python API Bindings
 	pkgver = 9.0.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.org/project/vmware-vcenter/
 	arch = any
 	license = MIT
