@@ -68,8 +68,8 @@ build() {
 }
 
 package() {
+  cd "$srcdir"/paraview/
   for _arch in ${_architectures}; do
-    cd "$srcdir"/paraview/build-${_arch}
     DESTDIR="$pkgdir" cmake --install build-${_arch}
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
