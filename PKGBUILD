@@ -2,13 +2,13 @@
 # Contributor: Joel Snape <aur@sna.pe>
 
 pkgname=rehex
-pkgver=0.63.4
+pkgver=0.64.0
 pkgrel=1
 pkgdesc="A cross-platform (Windows, Linux, Mac) hex editor for reverse engineering, and everything else"
 arch=('x86_64')
 url="https://github.com/solemnwarning/rehex"
 license=('GPL2')
-depends=('jansson' 'capstone' 'wxwidgets-gtk3' 'lua>=5.3' 'botan')
+depends=('jansson' 'capstone' 'wxwidgets-gtk3' 'lua>=5.5' 'botan')
 makedepends=('zip' 'perl-template-toolkit' 'busted' 'git')
 source=("$pkgname-$pkgver::git+https://github.com/solemnwarning/rehex.git#tag=$pkgver"
         "rehex.patch")
