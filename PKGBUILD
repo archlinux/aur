@@ -7,7 +7,7 @@ url='https://github.com/StudiCraft/paga'
 license=('Apache-2.0')
 makedepends=('cargo')
 install=paga.install
-source=("https://github.com/StudiCraft/paga/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('d54f44cf80bf6961da2d425e2f5e7951cdef940196553352889bf98960d452c6')
 
 build() {
@@ -18,4 +18,5 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/paga" "$pkgdir/usr/bin/paga"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
