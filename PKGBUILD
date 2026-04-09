@@ -2,11 +2,11 @@
 # Maintainer: Sheikh Limon <sheikhlimon404@gmail.com>
 
 pkgname=goose-desktop-bin
-pkgver=1.29.1
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="Goose Desktop (prebuilt .deb repack) — an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64')
-url="https://github.com/block/goose"
+url="https://github.com/aaif-goose/goose"
 license=('Apache-2.0')
 provides=('goose-desktop')
 conflicts=('goose-desktop')     # conflict only with the source-built variant, not with codename-goose-bin
@@ -14,7 +14,7 @@ depends=('glibc')
 options=(!strip)
 # tip: replace SKIP with the real SHA256 (use updpkgsums)
 source=("goose_${pkgver}_amd64.deb::https://github.com/block/goose/releases/download/v${pkgver}/goose_${pkgver}_amd64.deb")
-sha256sums=('49f48383b1af98bbd58c5b5d1d583829a6442791ebbd357a29a6310c216693bb')
+sha256sums=('9c634defae6192248201ff73be012caa74b3614d6cb3c7f31bf324dfa8886008')
 
 build() { :; }
 
