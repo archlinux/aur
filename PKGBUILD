@@ -1,18 +1,20 @@
-# Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
-
+# Maintainer: Suletta Mercury <hazfen@proton.me>
 pkgname=segfault
-pkgver=1.0.0
-pkgrel=2
-pkgdesc="Do nothing, just segfault"
-arch=('any')
-source=('segfault.c')
-sha256sums=('8910b2701d952ded02de19b762bcc6606abc7997ea49ef9222107b8bae29b1c5')
+pkgver=1.0
+pkgrel=1
+pkgdesc="program to trigger segfault by dereferencing a nullptr"
+arch=('x86_64')
+url="https://github.com/asticassiasuletta/segfault"
+license=('MIT')
+depends=('glibc')
+source=("main.c")
+sha256sums=('05138eee82afc95c9bcbbdc999519097691063e1ae43ce774c5fd4b7a1821a59')
+options=('!debug' '!strip')
 
 build() {
-  cd "${srcdir}"
-  gcc segfault.c -o segfault
+	gcc main.c -o "$pkgname"
 }
 
 package() {
-  install -Dm755 segfault "${pkgdir}"/usr/bin/segfault
+	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

@@ -1,0 +1,14 @@
+pkgbase = segfault
+	pkgdesc = program to trigger segfault by dereferencing a nullptr
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/asticassiasuletta/segfault
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	options = !debug
+	options = !strip
+	source = main.c
+	sha256sums = 05138eee82afc95c9bcbbdc999519097691063e1ae43ce774c5fd4b7a1821a59
+
+pkgname = segfault
