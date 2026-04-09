@@ -1,0 +1,21 @@
+pkgbase = ruah
+	pkgdesc = Multiple agents, one repo, no stepping on each other
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/levi-tc/ruah
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	depends = git
+	provides = ruah
+	noextract = ruah-0.4.3.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = https://registry.npmjs.org/@levi-tc/ruah/-/ruah-0.4.3.tgz
+	b2sums = 1c556d83d15aef86e1e89cb15443488dde01f25ac7707cd951654d4b3459affa3fbcc3e8217387fce583d7fb088063a4e9e9960f79aae825fedef5633c536c4c
+
+pkgname = ruah
