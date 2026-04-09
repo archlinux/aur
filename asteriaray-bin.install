@@ -1,6 +1,6 @@
-# TUN without interactive sudo: sing-box needs cap_net_admin (+ bind for mixed inbound).
+# TUN without interactive sudo: Xray needs cap_net_admin (+ bind for inbound listeners).
 post_install() {
-  setcap cap_net_admin,cap_net_bind_service+ep /opt/asteriaray/sing-box 2>/dev/null || true
+  setcap cap_net_admin,cap_net_bind_service+ep /opt/asteriaray/xray 2>/dev/null || true
 }
 
 post_upgrade() {
