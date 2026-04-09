@@ -1,0 +1,12 @@
+pkgbase = nyrra-foundry-cli-bin
+	pkgdesc = Foundry DevOps automation CLI
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/nyrra-labs/nyrra-foundry-cli
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = github-cli
+	provides = nyrra-foundry-cli
+	conflicts = nyrra-foundry-cli
+
+pkgname = nyrra-foundry-cli-bin
