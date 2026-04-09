@@ -10,8 +10,12 @@ depends=('gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 'webkit2gtk-4.1')
 makedepends=('bun' 'cmake' 'npm' 'rust')
 conflicts=('athas-bin')
 _source_name=athas
-source=("${_source_name}-${pkgver}.tar.gz::https://github.com/athasdev/athas/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('73e91ca7668a8f7b1eadf538e87a31d6d67c333e20d99b3effd2789a493b6646')
+source=("${_source_name}-${pkgver}.tar.gz::https://github.com/athasdev/athas/archive/refs/tags/v${pkgver}.tar.gz"
+        '0001-add-missing-js-deps-and-swift-cli-override.patch'
+        '0002-add-packaging-tree-sitter-bootstrap-script.patch')
+sha256sums=('73e91ca7668a8f7b1eadf538e87a31d6d67c333e20d99b3effd2789a493b6646'
+            '2ac0748e17a5971f6a47f3f6acfd7f01b7b1287e473576a0a28d706613b4f939'
+            'bc65eec041814fbab5b7e4336d633abe6975227cd630e92ddf07f69a3624e492')
 
 _builddir="${_source_name}-${pkgver}"
 
@@ -27,6 +31,11 @@ prepare() {
 
 	local cargo_home="${srcdir}/cargo"
 
+	rm -f scripts/bootstrap-tree-sitter-cli.sh
+
+	patch -Np1 < "${srcdir}/0001-add-missing-js-deps-and-swift-cli-override.patch"
+	patch -Np1 < "${srcdir}/0002-add-packaging-tree-sitter-bootstrap-script.patch"
+
 	export CARGO_HOME="${cargo_home}"
 	mkdir -p "${cargo_home}"
 }
@@ -36,9 +45,6 @@ build() {
 
 	local cargo_home="${srcdir}/cargo"
 	local cargo_target="${srcdir}/target"
-	local ts_cli_arch
-	local ts_cli_version
-	local swift_ts_cli_version
 
 	export CFLAGS="${CFLAGS/-flto=auto/}"
 	export CXXFLAGS="${CXXFLAGS/-flto=auto/}"
@@ -51,29 +57,7 @@ build() {
 	export CXXFLAGS="${CXXFLAGS} -std=gnu++20"
 
 	npm install --legacy-peer-deps --install-strategy=nested --ignore-scripts
-	npm install --legacy-peer-deps --install-strategy=nested --no-save \
-		nanoid@5.1.7 \
-		vscode-languageserver-types@3.17.5 \
-		tailwindcss@4.2.2 \
-		pdfjs-dist@5.6.205
-
-	case "${CARCH}" in
-		x86_64) ts_cli_arch=x64 ;;
-		aarch64) ts_cli_arch=arm64 ;;
-		*) printf 'Unsupported architecture for tree-sitter-cli bootstrap: %s\n' "${CARCH}" >&2; return 1 ;;
-	 esac
-
-	ts_cli_version=$(node -p "require('./node_modules/tree-sitter-cli/package.json').version")
-	curl -fL "https://github.com/tree-sitter/tree-sitter/releases/download/v${ts_cli_version}/tree-sitter-linux-${ts_cli_arch}.gz" -o node_modules/tree-sitter-cli/tree-sitter.gz
-	gunzip -f node_modules/tree-sitter-cli/tree-sitter.gz
-	chmod 755 node_modules/tree-sitter-cli/tree-sitter
-
-	swift_ts_cli_version=$(node -p "require('./node_modules/tree-sitter-swift/node_modules/tree-sitter-cli/package.json').version")
-	if [[ "${swift_ts_cli_version}" != "${ts_cli_version}" ]]; then
-		curl -fL "https://github.com/tree-sitter/tree-sitter/releases/download/v${swift_ts_cli_version}/tree-sitter-linux-${ts_cli_arch}.gz" -o node_modules/tree-sitter-swift/node_modules/tree-sitter-cli/tree-sitter.gz
-		gunzip -f node_modules/tree-sitter-swift/node_modules/tree-sitter-cli/tree-sitter.gz
-		chmod 755 node_modules/tree-sitter-swift/node_modules/tree-sitter-cli/tree-sitter
-	fi
+	bash scripts/bootstrap-tree-sitter-cli.sh "${CARCH}"
 
 	npm rebuild tree-sitter-swift
 	bun scripts/postinstall.ts
