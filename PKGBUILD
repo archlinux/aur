@@ -1,6 +1,6 @@
 # Maintainer: zefarie <zefarie@users.noreply.github.com>
 pkgname=flux-explorer
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Lightweight file explorer built with Tauri v2 and Rust for Linux"
 arch=('x86_64')
