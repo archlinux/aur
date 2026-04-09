@@ -1,18 +1,18 @@
 pkgbase = python-pybtex
 	pkgdesc = A BibTeX-compatible bibliography processor written in Python
 	pkgver = 0.26.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pybtex.org
 	arch = any
-	license = GPL
+	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	depends = python-setuptools
 	depends = python-yaml
 	depends = python-latexcodec
+	depends = python-importlib-metadata
 	source = https://pypi.io/packages/source/p/pybtex/pybtex-0.26.1.tar.gz
 	sha256sums = 2e5543bea424e60e9e42eef70bff597be48649d8f68ba061a7a092b2477d5464
 
