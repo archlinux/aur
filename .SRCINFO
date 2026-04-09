@@ -1,0 +1,19 @@
+pkgbase = store-bin
+	pkgdesc = Manages dotfile symlinks from a single repository without requiring a mirrored target directory layout
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/cushycush/store
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = store
+	conflicts = store
+	options = !strip
+	source_x86_64 = store-x86_64-1.1.0.tgz::https://github.com/cushycush/store/releases/download/v1.1.0/store_1.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d55856db3c0e52c585ea2707d141fdc07f10316888bb2067293c9a1bf01d3b55
+	source_aarch64 = store-aarch64-1.1.0.tgz::https://github.com/cushycush/store/releases/download/v1.1.0/store_1.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 262bcc15d7cb36e681ce98d8c75ee947bdf9ab04a3267317219999f97b1c99f8
+
+pkgname = store-bin

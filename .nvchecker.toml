@@ -1,0 +1,5 @@
+[store-bin]
+source = "github"
+github = "cushycush/store"
+use_latest_release = true
+prefix = "v"
