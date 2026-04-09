@@ -24,7 +24,7 @@ pkgname=(
   pipewire-session-manager-ldac
   pulse-native-provider-ldac
 )
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 epoch=1
 pkgdesc="Low-latency audio/video router and processor with ldac decoder support"
@@ -79,12 +79,13 @@ checkdepends=(
 source=(
   "git+https://gitlab.freedesktop.org/pipewire/pipewire.git#tag=$pkgver"
 )
-b2sums=('SKIP')
+b2sums=('fc4426c8d637d93e5b23eb6d53e79ca060b777a49659412dc0e1cd519890d93b1f63a35ab57288f33a54faefd3395b259fcaa52686b0f0e5ba8037b92cfb77de')
+
 
 prepare() {
   cd pipewire
   # From https://gitlab.archlinux.org/archlinux/packaging/packages/pipewire commit ddff36ce2d4136e5c39c8385a33672289bbc1e5f
-  # Fix build 
+  # Fix build
   git cherry-pick -n fb47e739d9f605772b5098421a809537c108d30c
 
 }
@@ -295,7 +296,7 @@ package_alsa-card-profiles-ldac() {
   license=(LGPL-2.1-or-later)
   provides=(alsa-card-profiles-ldac alsa-card-profiles)
   conflicts=(alsa-card-profiles)
-  
+
   mv acp/* "$pkgdir"
 }
 
@@ -371,7 +372,7 @@ package_pipewire-alsa-ldac() {
   )
   provides=(pipewire-alsa-ldac pipewire-alsa)
   conflicts=(pipewire-alsa)
-  
+
   mkdir -p "$pkgdir/etc/alsa/conf.d"
   ln -st "$pkgdir/etc/alsa/conf.d" \
     /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf
@@ -393,7 +394,7 @@ package_pipewire-ffado-ldac() {
   )
   provides=(pipewire-ffado-ldac pipewire-ffado-ldac)
   conflicts=(pipewire-ffado)
-  
+
   mv ffado/* "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
@@ -412,8 +413,8 @@ package_pipewire-jack-client-ldac() {
   )
   provides=(pipewire-jack-client-ldac pipewire-jack-client)
   conflicts=(pipewire-jack)
-  
-  
+
+
   mv jack-client/* "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
@@ -449,7 +450,7 @@ package_pipewire-jack-ldac() {
     jack libjack.so libjacknet.so libjackserver jack2 pipewire-jack
      )
   replaces=(jack2)
-  
+
   mv jack/* "$pkgdir"
 
   install -Dm644 /dev/null \
@@ -544,7 +545,7 @@ package_pipewire-zeroconf-ldac() {
   )
   provides=(pipewire-zeroconf-ldac pipewire-zeroconf)
   conflicts=(pipewire-zeroconf)
-  
+
   mv zeroconf/* "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
@@ -580,7 +581,7 @@ package_pipewire-x11-bell-ldac() {
   )
   provides=(pipewire-x11-bell-ldac pipewire-x11-bell)
   conflicts=(pipewire-x11-bell)
-  
+
   mv x11-bell/* "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
