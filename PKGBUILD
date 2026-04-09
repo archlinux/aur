@@ -3,7 +3,7 @@
 ## GPG key: https://greenbone.net/GBCommunitySigningKey.asc
 
 pkgname=gsad
-pkgver=25.0.1
+pkgver=25.1.0
 pkgrel=1
 pkgdesc='server talking to the Greenbone Vulnerability Management daemon (gvmd)'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=('logrotate: for rotating logs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
         "gsad.tmpfiles")
-sha256sums=('1cfc21d03b74b472e1df2e3fa222e7cd87237fb7426faf3bd5bc4a7038d5fd9f'
+sha256sums=('cea2a08859f78883e9299652673a6f08d79fb4f591ee5cad6eca2779ca64538a'
             'SKIP'
             '9d978e755f969c8635f1f729b38c2c116e20a954925322c33df1859cb3031f60')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # Greenbone Community Feed integrity key
