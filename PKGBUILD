@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-runner
-pkgver=2.20.3
+pkgver=2.21.0
 pkgrel=1
 pkgdesc='runner provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('elephant-runner')
 provides=('elephant-runner')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('abf48f9fd3601e56dd211028f59b9ced9d6979aeb46c1d8b7d8bbd073f8e5a20')
+sha256sums=('7631900b656511ccd3e82e832c4feaab3796f4e074e7829d91dd1bd2402f5c16')
 
 build() {
     cd elephant-${pkgver}/internal/providers/runner
