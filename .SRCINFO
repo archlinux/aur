@@ -1,6 +1,6 @@
 pkgbase = quark-quick-access
 	pkgdesc = Quick access application for Proton Pass using pass-cli
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/umtdg/quark
 	install = quark-quick-access.install
@@ -18,7 +18,7 @@ pkgbase = quark-quick-access
 	depends = proton-pass-cli-bin
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/umtdg/quark/releases/download/v0.2.0/Quark_0.2.0_amd64.deb
-	sha256sums = 34854425267146531104bedc4ec94f1d9b05e21c74e33ffe51251dce6e6bd81f
+	source = https://github.com/umtdg/quark/releases/download/v0.2.2/Quark_0.2.2_amd64.deb
+	sha256sums = 5006413c749451162d045f93e063e81c76f5afe2f7c5f4f4bd2e6ae16faf58e5
 
 pkgname = quark-quick-access
