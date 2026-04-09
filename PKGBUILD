@@ -1,23 +1,34 @@
 # Maintainer: Rashesh Padia
 pkgname=collabora-office
-pkgver=25.04.9.2
+pkgver=26.04.2.1
 pkgrel=1
+_source_tag=cp-26.04.2-1
+_source_dir=online.mirror-${_source_tag}
 pkgdesc='Collabora Office - Qt6 desktop document editor powered by Collabora Online'
 arch=('x86_64')
 url='https://collaboraoffice.com'
 license=('MPL-2.0')
 depends=(
+    'qt6-base'
     'qt6-webengine'
     'qt6-declarative'
+    'qt6-websockets'
     'dbus'
+    'fontconfig'
+    'libcap'
     'libpng'
+    'openssl'
+    'pam'
     'zlib'
     'zstd'
     'hicolor-icon-theme'
-    'poco'
 )
 makedepends=(
     'git'
+    'autoconf'
+    'automake'
+    'libtool'
+    'pkgconf'
     'qt6-tools'
     'cppunit'
     'python'
@@ -37,27 +48,20 @@ optdepends=(
 )
 options=('!strip' '!debug')
 source=(
-    "git+https://github.com/CollaboraOnline/online.git#branch=distro/collabora/coda-25.04"
-    "https://github.com/Rash419/collabora-core-assets/releases/download/co-25.04.9-2/core-co-25.04-assets.tar.gz"
-    "https://www.collaboraoffice.com/downloads/collabora-office-brand/collabora-office-brand-25.04.9.3.tar.gz"
+    "online-${_source_tag}.tar.gz::https://github.com/CollaboraOnline/online.mirror/archive/refs/tags/${_source_tag}.tar.gz"
+    "https://github.com/Rash419/collabora-core-assets/releases/download/cp-26.04.2-1/core-co-26.04-assets.tar.gz"
+    "https://www.collaboraoffice.com/downloads/collabora-office-brand/collabora-office-brand-26.04.2.1.tar.gz"
 )
-sha256sums=('SKIP'
-            '9f6d731cf39bef97737ea87561ba1d0b892fa08e5acf89827b886dcc45a3e1db'
-            'c6eb6d1b05612653d261e0dbe4b9fe0fb8eff660cdf39f858c7d0723068d6fa7')
+sha256sums=('7701031ffd4736e55658dd371b2e42d9f0dc262628398536f0d3d960926cfdd5'
+            'fb91e40eaa52cbfc824f2a1d62b3f87093567284d1f22a5979415e0623afb6c8'
+            '321112b8f29d338ca9530dc604448c9eb465c4f9308468722f16a95fc6f830a8')
 
 build() {
-    cd online
-
-    # Remove stale Qt5 moc files so BUILT_SOURCES regenerates them
-    # with the Qt6 moc. Done here (not prepare) so it runs on rebuilds.
-    rm -f qt/bridge.moc.cpp qt/DBusService.moc.cpp
+    cd "$_source_dir"
 
     ./autogen.sh
 
-    # MOC= forces Qt6 moc. The coda-25.04 branch's AC_PATH_PROG searches
-    # $PATH first and finds /usr/bin/moc (Qt5) before the Qt6 paths.
     ./configure \
-        MOC=/usr/lib/qt6/moc \
         --prefix=/usr \
         --enable-qtapp \
         --disable-ssl \
@@ -70,15 +74,15 @@ build() {
 }
 
 package() {
-    cd online
+    cd "$_source_dir"
     make DESTDIR="$pkgdir" install
 
-    # Install pre-built LibreOffice core runtime
+    # Install pre-built Collabora Office engine runtime
     install -d "$pkgdir/usr/lib/collabora-office"
     cp -a "$srcdir/instdir"/* "$pkgdir/usr/lib/collabora-office/"
 
     # License
-    install -Dm644 "$srcdir/online/COPYING" \
+    install -Dm644 "$srcdir/$_source_dir/COPYING" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Install Collabora Office branding (online/browser UI theme and assets)
