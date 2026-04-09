@@ -1,0 +1,5 @@
+[portrm-bin]
+source = "github"
+github = "abhishekayu/portrm"
+use_latest_release = true
+prefix = "v"

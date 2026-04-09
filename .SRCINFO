@@ -1,0 +1,25 @@
+pkgbase = portrm-bin
+	pkgdesc = Inspect active ports, understand the processes behind them, kill port conflicts, and recover broken dev environments.
+	pkgver = 2.2.4
+	pkgrel = 1
+	url = https://github.com/abhishekayu/portrm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ptrm
+	conflicts = portrm
+	conflicts = ptrm
+	conflicts = ptrm-bin
+	options = !strip
+	source = README-2.2.4.md::https://raw.githubusercontent.com/abhishekayu/portrm/v2.2.4/README.md
+	source = LICENSE-2.2.4::https://raw.githubusercontent.com/abhishekayu/portrm/v2.2.4/LICENSE
+	sha256sums = f21ff3403cb8589976b943519a6ab690ce19c4bdf4b53862ba47463473610ef6
+	sha256sums = e79807d9d2297965ba899fd926e6818b0270d596d57bb960c7fe399bec3cc10f
+	source_x86_64 = portrm-x86_64-2.2.4.tgz::https://github.com/abhishekayu/portrm/releases/download/v2.2.4/portrm-linux-amd64.tar.gz
+	sha256sums_x86_64 = cefe7d10fd568424f571a1975dcf71157a02a36437da2ea20792deb15d62e9d1
+	source_aarch64 = portrm-aarch64-2.2.4.tgz::https://github.com/abhishekayu/portrm/releases/download/v2.2.4/portrm-linux-arm64.tar.gz
+	sha256sums_aarch64 = c363e765875506d1c5527a27f8a9940468958f43cc15e9434ed33f5fccdff871
+
+pkgname = portrm-bin
