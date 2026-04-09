@@ -4,7 +4,7 @@
 # Contributor: envolution
 
 pkgname=harsh-bin
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="CLI habit tracking for geeks"
 
@@ -16,7 +16,7 @@ provides=('harsh')
 conflicts=('harsh')
 
 source_x86_64=("${pkgname}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/harsh_Linux_${arch[0]}.tar.gz")
-sha256sums_x86_64=('f00e7fe36cc1c5f07e019e81f5ffda9d9844308119f176738156a8eb2a4487dd')
+sha256sums_x86_64=('276e2c22f667764341044d810da0db092608fc343ad240ca7a8244d1fd8f0048')
 
 package() {
     install -Dm755 harsh -t "${pkgdir}/usr/bin/"
