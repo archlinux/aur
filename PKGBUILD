@@ -2,7 +2,7 @@
 # Maintainer: AnDee
 
 pkgname=asgardex-appimage
-pkgver=1.42.1
+pkgver=1.43.0
 pkgrel=1
 pkgdesc="Professional Multi-Chain Trading Platform"
 arch=('x86_64')
