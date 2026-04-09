@@ -1,6 +1,6 @@
 # Maintainer: Ricky Banks <your@email.com>
 pkgname=niri-display-manager
-pkgver=0.3.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="GUI display manager for the Niri Wayland window manager"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=(
     'niri: the Wayland compositor this tool manages'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('acf443b80c85c70ac43eccf4fa4d9eddb924e74c412b06318510a36ac16d211a')
+sha256sums=('22131cc7056a9738886b17e4eeff2f83798d46035b91730635a3c55558c7748b')
 
 build() {
     cd "niri_display_manager-$pkgver"
@@ -36,7 +36,7 @@ package() {
     cp -r qml "$pkgdir/usr/share/niri-display-manager/"
 
     # Desktop entry
-    install -Dm644 packaging/flatpak/io.github.rickycbanks.NiriDisplayManager.desktop \
+    install -Dm644 packaging/io.github.rickycbanks.NiriDisplayManager.desktop \
         "$pkgdir/usr/share/applications/io.github.rickycbanks.NiriDisplayManager.desktop"
 
     # App icon
