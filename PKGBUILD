@@ -24,6 +24,13 @@ makedepends=(
   python-setuptools
   python-wheel
 )
+provides=(
+  python-${_name}
+  python-${_name}-rocm
+)
+conflicts=(
+  python-${_name}
+)
 install='python-flash-attention-rocm.install'
 source=(
   "git+https://github.com/Dao-AILab/flash-attention#tag=v${pkgver}"

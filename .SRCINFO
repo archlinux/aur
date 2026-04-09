@@ -17,6 +17,9 @@ pkgbase = python-flash-attention-rocm-triton
 	depends = python-pytorch-rocm
 	depends = python-triton
 	depends = python-tqdm
+	provides = python-flash-attention
+	provides = python-flash-attention-rocm
+	conflicts = python-flash-attention
 	source = git+https://github.com/Dao-AILab/flash-attention#tag=v2.8.3
 	sha256sums = 1be6e9eb9daa3a0294c164031fd15d026bcabadd89c5210a760f9f5f9e121ffd
 
