@@ -3,7 +3,7 @@
 pkgname=taglib1
 _name=taglib
 pkgver=1.13.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Library for reading and editing the meta-data of several popular audio formats - version 1"
 arch=(x86_64)
 url="https://taglib.org/"
@@ -13,8 +13,8 @@ license=(
   MPL-1.1
 )
 depends=(
-  gcc-libs
   glibc
+  libgcc
   sh
   zlib
 )
@@ -35,6 +35,7 @@ build() {
     -D CMAKE_INSTALL_PREFIX=/usr
     -D BUILD_SHARED_LIBS=ON
     -D CMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG"
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
     -S $_name-$pkgver
     -W no-dev
   )
