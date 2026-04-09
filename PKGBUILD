@@ -1,7 +1,7 @@
 # Maintainer: phlppbmm <philipp.baumm@gmx.net>
 pkgname=python-agent-rtfm-bin
 pkgver=0.1.1
-pkgrel=11
+pkgrel=12
 pkgdesc="Local documentation retrieval service for agent-assisted development (prebuilt)"
 arch=('x86_64')
 url="https://github.com/phlppbmm/rtfm"
@@ -35,7 +35,9 @@ build() {
     # resolution failures in AUR helpers.
     uv pip install \
         --target="${srcdir}/bundle" \
+        --only-binary=:all: \
         --no-compile \
+        --python-version=3.13 \
         chromadb
 }
 
