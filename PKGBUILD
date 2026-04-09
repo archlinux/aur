@@ -1,7 +1,7 @@
 # Maintainer: Frezzydy <frezzydygaming@gmail.com>
 
 pkgname=vimcord-git
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="A Terminal UI Discord Client in Rust (latest)"
 arch=('i686' 'x86_64' 'aarch64')
