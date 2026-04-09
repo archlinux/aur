@@ -7,7 +7,7 @@ pkgrel=4
 pkgdesc="A cross-platform GUI wrapper for NextTrace. Bringing you the familiar traceroute experience."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Archeb/opentrace"
-license=('GPL3')
+license=('GPL-3.0-only')
 options=('!debug')
 depends=('nexttrace' 'webkit2gtk-4.1')
 
