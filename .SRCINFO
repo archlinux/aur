@@ -1,7 +1,7 @@
 pkgbase = pear-desktop-arjix-git
 	pkgdesc = Extension for music player
 	pkgver = 3.11.4.r48.g1fe490f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ArjixWasTaken/pear-desktop
 	install = pear-desktop.install
 	arch = x86_64

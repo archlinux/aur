@@ -3,7 +3,7 @@
 pkgname=pear-desktop-arjix-git
 _app_id=com.github.th_ch.youtube_music
 pkgver=3.11.4.r48.g1fe490f
-pkgrel=1
+pkgrel=2
 _nodeversion=24
 _electronversion=40
 pkgdesc="Extension for music player"
@@ -69,11 +69,11 @@ build() {
 
 package() {
   cd "${pkgname%-arjix-git}"
-  install -Dm644 pack/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/${pkgname%-git}/"
-  cp -r pack/linux-unpacked/resources/app.asar.unpacked "$pkgdir/usr/lib/${pkgname%-git}"
+  install -Dm644 pack/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/${pkgname%-arjix-git}/"
+  cp -r pack/linux-unpacked/resources/app.asar.unpacked "$pkgdir/usr/lib/${pkgname%-arjix-git}"
 
   install -Dm755 "$srcdir/${pkgname%-arjix-git}.sh" "$pkgdir/usr/bin/${pkgname%-arjix-git}"
   install -Dm644 "$srcdir/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 assets/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.png"
-  install -Dm644 license -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
+  install -Dm644 license -t "$pkgdir/usr/share/licenses/${pkgname%-arjix-git}/"
 }
