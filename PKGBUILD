@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-blur-my-shell-git
-pkgver=70.r0.g2296e81
+pkgver=72.r1.g89599d7
 pkgrel=1
 pkgdesc="Extension that adds a blur look to different parts of the GNOME Shell"
 arch=('any')
@@ -11,6 +11,7 @@ makedepends=(
   'git'
   'jq'
 )
+optdepends=('gnome-rounded-blur: help fix the corners issue found while using dynamic blur')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/aunetx/blur-my-shell.git')

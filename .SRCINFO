@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-blur-my-shell-git
 	pkgdesc = Extension that adds a blur look to different parts of the GNOME Shell
-	pkgver = 70.r0.g2296e81
+	pkgver = 72.r1.g89599d7
 	pkgrel = 1
 	url = https://github.com/aunetx/blur-my-shell
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = gnome-shell-extension-blur-my-shell-git
 	makedepends = git
 	makedepends = jq
 	depends = gnome-shell
+	optdepends = gnome-rounded-blur: help fix the corners issue found while using dynamic blur
 	provides = gnome-shell-extension-blur-my-shell
 	conflicts = gnome-shell-extension-blur-my-shell
 	source = git+https://github.com/aunetx/blur-my-shell.git
