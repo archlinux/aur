@@ -1,0 +1,5 @@
+[rgitui-bin]
+source = "github"
+github = "noahbclarkson/rgitui"
+use_latest_release = true
+prefix = "v"
