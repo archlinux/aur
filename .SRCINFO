@@ -20,8 +20,11 @@ pkgbase = glfw-wayland-minecraft-cursorfix
 	depends = libxkbcommon
 	depends = libgl
 	provides = glfw=3.4
+	provides = glfw-wayland=3.4
+	provides = glfw-x11=3.4
 	conflicts = glfw
 	conflicts = glfw-wayland
+	conflicts = glfw-x11
 	conflicts = glfw-wayland-minecraft-libdecoration
 	source = https://github.com/glfw/glfw/archive/3.4.tar.gz
 	source = 0001-Key-Modifiers-Fix.patch

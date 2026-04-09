@@ -18,8 +18,8 @@ arch=('x86_64')
 url="https://github.com/BoyOrigin/glfw-wayland"
 license=('custom:ZLIB')
 depends=('wayland' 'libxkbcommon' 'libgl')
-conflicts=('glfw' 'glfw-wayland' 'glfw-wayland-minecraft-libdecoration')
-provides=("glfw=$pkgver")
+conflicts=('glfw' 'glfw-wayland' 'glfw-x11' 'glfw-wayland-minecraft-libdecoration')
+provides=("glfw=$pkgver" "glfw-wayland=$pkgver" "glfw-x11=$pkgver")
 makedepends=('mesa' 'cmake' 'doxygen' 'vulkan-headers' 'vulkan-icd-loader'
              'extra-cmake-modules' 'wayland-protocols' 'libxi' 'libxrandr'
              'libxcursor' 'libxinerama')
