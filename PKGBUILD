@@ -12,10 +12,10 @@ _pkgname="Black-Magic-Probe-Book"
 _pkgver=${pkgver}
 pkgdesc="Black Magic Debug Probe utilities (compuphase)"
 arch=("x86_64" "i686")
-url="https://github.com/compuphase/Black-Magic-Probe-Book"
+url="https://codeberg.org/compuphase/Black-Magic-Probe-Book"
 license=("Apache-2.0")
 depends=('nuklear' 'glfw' 'libusb' 'libbsd' 'zlib' 'gtk3')
-source=("https://github.com/compuphase/Black-Magic-Probe-Book/archive/refs/tags/v${pkgver}.tar.gz")
+source=("https://github.com/compuphase/Black-Magic-Probe-Book/archive/v${pkgver}.tar.gz")
 noextract=()
 
 sha256sums=('731d9820fde1fd343399fe79a46425a0d864b91a840a01c22e433d1e1e023118')
