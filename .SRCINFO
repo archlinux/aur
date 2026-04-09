@@ -1,14 +1,14 @@
 pkgbase = things-cloud-tools-bin
 	pkgdesc = CLI and background sync tools for Things Cloud
 	pkgver = 0.1.0
-	pkgrel = 1
-	url = https://github.com/arthursoares/things-cloud-sdk
+	pkgrel = 2
+	url = https://github.com/szcharlesji/things-cloud-sdk
 	install = things-cloud-tools-bin.install
 	arch = x86_64
 	license = MIT
 	depends = bash
 	depends = systemd
-	source = https://github.com/arthursoares/things-cloud-sdk/releases/download/v0.1.0/things-cloud-tools_0.1.0_linux_amd64.tar.gz
+	source = https://github.com/szcharlesji/things-cloud-sdk/releases/download/v0.1.0/things-cloud-tools_0.1.0_linux_amd64.tar.gz
 	source = things-cloud-tools-bin.install
 	sha256sums = 49634ccc09a7209a093ac9ee97cfac0f8782b4804445627947b0df603d42ecf3
 	sha256sums = SKIP
