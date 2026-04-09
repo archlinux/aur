@@ -7,7 +7,7 @@ pkgname=(
     lckfb-logicalpi-fpga-{g,z}1-meta
     lckfb-dqx-ra6e2-meta
 )
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 epoch=
 pkgdesc="立创开发板元包 / LCKFB Development Board meta package"
@@ -100,6 +100,7 @@ package_lckfb-taishanpi-meta() {
 
         # Third-party rockchip tools
         xrock
+        rkdeveloptool-gui
 
         # Android debug
         android-file-transfer
@@ -117,7 +118,6 @@ package_lckfb-taishanpi-meta() {
         buildroot-meta
 
         # ch34x driver
-        ch34x-dkms
         ch343ser-dkms
 
         # Android debug
