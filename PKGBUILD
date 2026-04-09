@@ -1,6 +1,6 @@
 # Maintainer: Codewire <hello@codewire.sh>
 pkgname=codewire-bin
-pkgver=0.3.14
+pkgver=0.3.15
 pkgrel=1
 pkgdesc="Persistent process server for AI coding agents"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('codewire')
 conflicts=('codewire')
 source_x86_64=("https://github.com/codewiresh/codewire/releases/download/v${pkgver}/cw-v${pkgver}-x86_64-unknown-linux-musl")
 source_aarch64=("https://github.com/codewiresh/codewire/releases/download/v${pkgver}/cw-v${pkgver}-aarch64-unknown-linux-gnu")
-sha256sums_x86_64=('aea7dc3f34ff0dcc4ba7a2802b13e046c8d2e43704452fa1f14e04f3cccb6546')
-sha256sums_aarch64=('83458f4bc149674653644b4fb65f67d3e1fd628d836645ca9c90c22677376566')
+sha256sums_x86_64=('49262134db073421eda0624ecbf1e0a97d1b313874a464418754bd8ed57023f7')
+sha256sums_aarch64=('5423ff2c17e496721842b0f489556cd498bad20f7f27bf8dc0b592e7648a171a')
 
 package() {
   install -Dm755 "cw-v${pkgver}-"* "${pkgdir}/usr/local/bin/cw"
