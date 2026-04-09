@@ -1,16 +1,16 @@
 pkgbase = libvc
 	pkgdesc = vCard library.
-	pkgver = 012
+	pkgver = 013
 	pkgrel = 1
 	url = https://github.com/libvc/libvc
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	depends = glibc
-	source = libvc-012.tar.gz::https://github.com/libvc/libvc/archive/v012.tar.gz
-	source = libvc-012.tar.gz.sig::https://github.com/libvc/libvc/releases/download/v012/v012.tar.gz.sig
+	source = libvc-013.tar.gz::https://github.com/libvc/libvc/archive/v013.tar.gz
+	source = libvc-013.tar.gz.sig::https://github.com/libvc/libvc/releases/download/v013/v013.tar.gz.sig
 	validpgpkeys = 3F464391498FE874BDB5D98F2124AA1983785C90
-	md5sums = 240ce64dd508ac1b8eefe0f7ea1148d0
+	md5sums = f0cc94c3bc0ab6f42ff6c40f2c587a40
 	md5sums = SKIP
 
 pkgname = libvc

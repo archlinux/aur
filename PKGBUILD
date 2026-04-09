@@ -3,12 +3,12 @@
 # Contributor: Jeff Mickey <j@codemac.net>
 
 pkgname=libvc
-pkgver=012
+pkgver=013
 pkgrel=1
 pkgdesc="vCard library."
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgname/$pkgname"
-license=("LGPL")
+license=("LGPL-2.1-or-later")
 depends=('glibc')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
@@ -34,5 +34,5 @@ package() {
 	make DESTDIR=${pkgdir} install
 }
 
-md5sums=('240ce64dd508ac1b8eefe0f7ea1148d0'
+md5sums=('f0cc94c3bc0ab6f42ff6c40f2c587a40'
          'SKIP')
