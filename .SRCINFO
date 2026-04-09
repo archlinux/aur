@@ -1,0 +1,11 @@
+pkgbase = nyrra-signals-bin
+	pkgdesc = Signal exploration TUI
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/nyrra-labs/nyrra-signals
+	arch = x86_64
+	makedepends = github-cli
+	provides = nyrra-signals
+	conflicts = nyrra-signals
+
+pkgname = nyrra-signals-bin
