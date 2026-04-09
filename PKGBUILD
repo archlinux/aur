@@ -2,7 +2,7 @@
 
 pkgname=mks-git
 _pkgname=MKS-interpreter
-pkgver=0.r38.g9773477
+pkgver=0.r39.g2c3cb0b
 pkgrel=1
 pkgdesc="Small experimental scripting language and interpreter written in C"
 arch=('x86_64')
