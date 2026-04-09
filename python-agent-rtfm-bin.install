@@ -1,0 +1,11 @@
+post_install() {
+    if ! python -c "from rtfm.cli import cli" 2>/dev/null; then
+        echo "WARNING: rtfm failed to import. Your system may need a full upgrade:"
+        echo "  sudo pacman -Syu"
+        echo "This typically happens when shared libraries (abseil-cpp, grpcio) are out of sync."
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
