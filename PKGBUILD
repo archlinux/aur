@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r2077.c85bb2e7
+pkgver=r2085.ffd52e5a
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -30,14 +30,14 @@ build() {
 	# Get rid of any leftover build files (in case makepkg.conf changed).
 	rm -rf ./arch
 	if ! [[ ${_ksh_pgo} == 1 || ${_ksh_pgo} == yes || ${_ksh_pgo} == true ]] || [[ $CC == clang ]]; then
-		export CCFLAGS=${CFLAGS}  # bin/package uses CCFLAGS rather than CFLAGS.
-		./bin/package make        # Build ksh (no -j flag because that's still experimental).
+		export CCFLAGS="${CFLAGS}"  # bin/package uses CCFLAGS rather than CFLAGS.
+		./bin/package make          # Build ksh (no -j flag because that's still experimental).
 	else
 		# Optional and experimental: Compile ksh with profile guided optimization (making
 		# use of the regression tests) if ${_ksh_pgo} is enabled.
 		# Only GCC has been successfully tested; Clang is completely unsupported.
-		local save_ccflags=${CFLAGS}
-		local save_ldflags=${LDFLAGS}
+		local save_ccflags="${CFLAGS}"
+		local save_ldflags="${LDFLAGS}"
 		# Obtain the number of CPU cores.
 		local -i cores=$(bin/package host cpu)
 		# Create a temporary directory to use for PGO
