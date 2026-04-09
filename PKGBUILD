@@ -46,6 +46,11 @@ build() {
     export FLASH_ATTENTION_FORCE_BUILD=TRUE
     export FLASH_ATTENTION_SKIP_CUDA_BUILD=FALSE
 
+    # By default all supported achitectures are build. Uncomment this export to limit it.
+    # See https://developer.nvidia.com/cuda/gpus
+    # export FLASH_ATTN_CUDA_ARCHS="80;90;100;110;120"
+    # export FLASH_ATTN_CUDA_ARCHS="86"
+
     cd $_name-$pkgver
     python setup.py build_ext
     python -m build -nw
