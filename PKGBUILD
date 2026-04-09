@@ -1,6 +1,6 @@
 # Maintainer: abyss <viewerofall on GitHub>
 pkgname=woven
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Wayland workspace overlay — plugin system, control panel, AI namer, bar widgets"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
     'cmake'             # mlua vendored Lua build
 )
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/viewerofall/woven/releases/download/v$pkgver/v$pkgver.tar.gz")
-sha256sums=('6575e1cbc690b0877f77a3efa51df95714fc3d2a16877e7f8153aa5d914e1566')
+sha256sums=('9cac024dd4220f4c35882d6f598e2bf3dce337c01ec59482600b9ef23e2cc00e')
 
 prepare() {
     cd "$srcdir/$pkgname-v$pkgver"
