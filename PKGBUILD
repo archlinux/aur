@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dtw
-_pkgver=1.23-1
+_pkgver=1.23-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Dynamic Time Warping Algorithms"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r-proxy
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6357b1e4be790f937be706a7f4b0f38b')
-b2sums=('4727177a909e8cae2bb6cf68e9ac1c2f5a485577f5f7d1a54cb4c0615419df88411e573dcab9e34cf53470999f633f4d979f2c76140819dbf5dc84d0f65e3d63')
+md5sums=('498ff42ae0824781ed7d0f83ee413719')
+b2sums=('24544e46e1b2bd247dbce45ea63b312bbe59e6638319814040aa1c072cac4cf4e18abe2cbc3990b0be312b49eb0ce11dc44342ddea76eb23d00374cb281e85f2')
 
 build() {
   mkdir build
