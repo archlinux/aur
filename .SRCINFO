@@ -1,0 +1,26 @@
+pkgbase = cliphist-tui-git
+	pkgdesc = A wayland clipboard TUI based on fzf and cliphist. Use chafa for image preview.
+	pkgver = v1.2.0.r45.gcb9040d
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/cliphist-tui
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fzf
+	depends = cliphist
+	depends = wl-clipboard
+	depends = ffmpegthumbnailer
+	depends = chafa
+	depends = bash
+	provides = cliphist-tui
+	provides = shorinclip
+	provides = shorinclip-git
+	conflicts = cliphist-tui
+	conflicts = shorinclip
+	conflicts = shorinclip-git
+	replaces = shorinclip
+	replaces = shorinclip-git
+	source = git+https://github.com/SHORiN-KiWATA/cliphist-tui.git
+	sha256sums = SKIP
+
+pkgname = cliphist-tui-git
