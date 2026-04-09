@@ -1,6 +1,6 @@
 pkgbase = gnome-quick-share
 	pkgdesc = Quick Share client for GNOME
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/weversonl/gnome-quick-share
 	arch = x86_64

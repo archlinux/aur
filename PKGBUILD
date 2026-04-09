@@ -1,6 +1,6 @@
 # Maintainer: weversonl
 pkgname=gnome-quick-share
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Quick Share client for GNOME"
 arch=('x86_64')
