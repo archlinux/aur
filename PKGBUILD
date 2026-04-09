@@ -1,17 +1,17 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=miro-pdf
 _pkgname=miro
-pkgver=0.7.3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A native pdf viewer for Windows and Linux (Wayland/X11) with configurable keybindings."
 arch=('x86_64')
 url="https://github.com/vincent-uden/miro"
 license=('AGPL-3.0-or-later')
-depends=('glibc' 'gcc-libs' 'fontconfig')
+depends=('glibc' 'libstdc++' 'libgcc' 'fontconfig')
 makedepends=('cargo' 'clang')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 install=$pkgname.install
-sha256sums=('92f495aeb7bb904e641b9a12bcf5e913108a868284552bc6d9e888afd03c8f01')
+sha256sums=('db4274e2e3acf5fe453ea1ee00b743ce0d6d857664947c8a4cce7064abd20a05')
 validpgpkeys=()
 
 prepare() {

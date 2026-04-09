@@ -1,6 +1,6 @@
 pkgbase = miro-pdf
 	pkgdesc = A native pdf viewer for Windows and Linux (Wayland/X11) with configurable keybindings.
-	pkgver = 0.7.3
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/vincent-uden/miro
 	install = miro-pdf.install
@@ -9,9 +9,10 @@ pkgbase = miro-pdf
 	makedepends = cargo
 	makedepends = clang
 	depends = glibc
-	depends = gcc-libs
+	depends = libstdc++
+	depends = libgcc
 	depends = fontconfig
-	source = https://github.com/vincent-uden/miro/archive/refs/tags/v0.7.3.tar.gz
-	sha256sums = 92f495aeb7bb904e641b9a12bcf5e913108a868284552bc6d9e888afd03c8f01
+	source = https://github.com/vincent-uden/miro/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = db4274e2e3acf5fe453ea1ee00b743ce0d6d857664947c8a4cce7064abd20a05
 
 pkgname = miro-pdf
