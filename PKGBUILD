@@ -1,6 +1,6 @@
 # Maintainer: dougefresh dchimento@gmail.com
 pkgname=kiro-generator-bin
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Kiro agent configuration generator"
 arch=('x86_64')
