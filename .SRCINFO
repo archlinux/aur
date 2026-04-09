@@ -1,14 +1,14 @@
-pkgbase = swm
-	pkgdesc = Simple Window Manager - minimalistic X11 tiling window manager
-	pkgver = 0.2
+pkgbase = tmenu
+	pkgdesc = Minimal X11 menu launcher - dmenu alternative in <250 lines of C
+	pkgver = 0.1
 	pkgrel = 1
-	url = https://github.com/tinyopsec/swm
+	url = https://github.com/tinyopsec/tmenu
 	arch = x86_64
 	license = MIT
 	makedepends = make
 	makedepends = gcc
 	depends = libx11
-	source = swm-0.2.tar.gz::https://github.com/tinyopsec/swm/archive/main.tar.gz
+	source = tmenu-0.1.tar.gz::https://github.com/tinyopsec/tmenu/archive/main.tar.gz
 	sha256sums = SKIP
 
-pkgname = swm
+pkgname = tmenu

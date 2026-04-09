@@ -1,11 +1,11 @@
 # Maintainer: tinyopsec <anon@proton.me>
 
-pkgname=swm
-pkgver=0.2
+pkgname=tmenu
+pkgver=0.1
 pkgrel=1
-pkgdesc="Simple Window Manager - minimalistic X11 tiling window manager"
+pkgdesc="Minimal X11 menu launcher - dmenu alternative in <250 lines of C"
 arch=('x86_64')
-url="https://github.com/tinyopsec/swm"
+url="https://github.com/tinyopsec/tmenu"
 license=('MIT')
 depends=('libx11')
 makedepends=('make' 'gcc')
@@ -13,11 +13,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/main.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-main"
+  cd tmenu-main
   make
 }
 
 package() {
-  cd "$pkgname-main"
+  cd tmenu-main
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
