@@ -9,7 +9,7 @@ license=('MIT')
 depends=(
     'python'
     'python-fastapi'
-    'python-uvicorn'
+    'uvicorn'
     'python-chromadb'
     'python-gitpython'
     'python-httpx'
