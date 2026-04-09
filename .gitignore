@@ -1,0 +1,5 @@
+CLAUDE.md
+*.pkg.tar.zst
+*.tar.gz
+pkg/
+src/
