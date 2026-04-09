@@ -1,6 +1,6 @@
 pkgbase = protonmail-bridge-free
 	pkgdesc = Integrate ProtonMail account with any program that supports IMAP and SMTP
-	pkgver = 3.24.0
+	pkgver = 3.24.1
 	pkgrel = 1
 	url = https://github.com/ProtonMail/proton-bridge
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = protonmail-bridge-free
 	makedepends = qt6-declarative
 	makedepends = qt6-svg
 	makedepends = sentry-native
-	source = protonmail-bridge-free::git+https://github.com/ProtonMail/proton-bridge#tag=v3.24.0
+	source = protonmail-bridge-free::git+https://github.com/ProtonMail/proton-bridge#tag=v3.24.1
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/protonmail-bridge/-/raw/03d60b89cfb30580ad1bb8bc5c86e28348fa6ad2/protonmail-bridge.service
 	source = remove-vcpkg-dependency.patch
 	source = fix-wayland-icon.patch
@@ -31,7 +31,7 @@ pkgbase = protonmail-bridge-free
 	source = 3.patch::https://github.com/mnixry/proton-bridge/commit/0276c2eb378647ee035a677c169b41dec9991bab.diff
 	source = 4.patch::https://github.com/mnixry/proton-bridge/commit/286c87f7e416e237927ffed7afec823996ce58d5.diff
 	source = 5.patch::https://github.com/mnixry/proton-bridge/commit/e1f61f262548c50b2ca9bd88f9c2e54160bf5bc3.diff
-	sha256sums = a9ac4624b784eacb9fba3497e5ff63ee882f0f1a2bb4f10baf23ffa1d9598aa5
+	sha256sums = 7fc0e3b7daa463b71fd962c52b1de63d98016ea065444c3faa57092d4318e31e
 	sha256sums = 5d273f1245fec8549a3daa3fe76e22bb6c23957cf5bcb51c24f878e19c7a5692
 	sha256sums = 87c01adf8bfc3d3f4ee346d0bc83997a8b8e83104a7d5e53b91de58e3b13b3d7
 	sha256sums = 869bcdb550e2899de1fffec8288fffea8c5ce1949322982d6c22f744814aed9c
