@@ -2,8 +2,8 @@
 
 pkgname=elyprismlauncher
 pkgver=11.0.0_pre3
-_pkgver=11.0.0-pre3
-pkgrel=2
+_pkgver=11.0.0
+pkgrel=3
 pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts"
 arch=('x86_64')
 url="https://github.com/ElyPrismLauncher/Launcher"
