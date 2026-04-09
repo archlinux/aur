@@ -10,7 +10,7 @@ pkgbase = mks-git
 	depends = glibc
 	provides = mks
 	conflicts = mks
-	source = git+https://github.com/MilakyS/MKS-interpreter.git
+	source = MKS-interpreter::git+https://github.com/MilakyS/MKS-interpreter.git
 	sha256sums = SKIP
 
 pkgname = mks-git

@@ -1,4 +1,4 @@
-# Maintainer: MilakyS <your@email>
+# Maintainer: MilakyS <155958845+MilakyS@users.noreply.github.com>
 
 pkgname=mks-git
 _pkgname=MKS-interpreter
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('git' 'cmake')
 provides=('mks')
 conflicts=('mks')
-source=("git+https://github.com/MilakyS/MKS-interpreter.git")
+source=("$_pkgname::git+https://github.com/MilakyS/MKS-interpreter.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -31,7 +31,5 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/build/mks_run" "$pkgdir/usr/bin/mks"
-  install -Dm644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/$_pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  DESTDIR="$pkgdir" cmake --install "$srcdir/build"
 }
