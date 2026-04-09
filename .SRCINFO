@@ -1,6 +1,6 @@
 pkgbase = gowall-bin
 	pkgdesc = A tool to convert a Wallpaper's color scheme - palette
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/Achno/gowall
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gowall-bin
 	depends = glibc
 	provides = gowall
 	conflicts = gowall
-	source_x86_64 = gowall-amd64-linux.tar.gz::https://github.com/Achno/gowall/releases/download/v0.2.3/gowall-amd64-linux.tar.gz
-	sha256sums_x86_64 = 4b19d65d8ef61ffcfdf6629eedbd89623cd77bc3cffb406b4634e1ae51ee8004
+	source_x86_64 = gowall-amd64-linux.tar.gz::https://github.com/Achno/gowall/releases/download/v0.2.4/gowall-amd64-linux.tar.gz
+	sha256sums_x86_64 = dab486d5028e5f790fbd92dd26022ac5670b0d01adef4bd632ba7115c2d34ad3
 
 pkgname = gowall-bin

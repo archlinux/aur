@@ -1,6 +1,6 @@
 # Maintainer: Bardiya <bardiyafeili@gmail.com>
 pkgname=gowall-bin
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A tool to convert a Wallpaper's color scheme - palette"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source_x86_64=(
   "gowall-amd64-linux.tar.gz::https://github.com/Achno/gowall/releases/download/v${pkgver}/gowall-amd64-linux.tar.gz"
 )
 sha256sums_x86_64=(
-  '4b19d65d8ef61ffcfdf6629eedbd89623cd77bc3cffb406b4634e1ae51ee8004'
+  'dab486d5028e5f790fbd92dd26022ac5670b0d01adef4bd632ba7115c2d34ad3'
 )
 
 package() {
