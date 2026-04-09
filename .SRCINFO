@@ -1,0 +1,14 @@
+pkgbase = chrome-devtools-mcp
+	pkgdesc = MCP server for Chrome DevTools
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/ChromeDevTools/chrome-devtools-mcp
+	arch = any
+	license = Apache-2.0
+	depends = nodejs
+	optdepends = ffmpeg: experimental screencast support
+	options = !debug
+	source = chrome-devtools-mcp-0.21.0.tgz::https://registry.npmjs.org/chrome-devtools-mcp/-/chrome-devtools-mcp-0.21.0.tgz
+	sha512sums = 77e8aaad199cc294455774380d1085d8b0a8abe582454dc684848a43dbfc83ed42d9487cba98f7bab923c4d3b84088e104c2187a2fd54353902c571e6f2f343a
+
+pkgname = chrome-devtools-mcp
