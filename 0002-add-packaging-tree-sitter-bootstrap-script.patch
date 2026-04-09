@@ -1,0 +1,32 @@
+diff --git a/scripts/bootstrap-tree-sitter-cli.sh b/scripts/bootstrap-tree-sitter-cli.sh
+new file mode 100755
+index 0000000..dd70466
+--- /dev/null
++++ b/scripts/bootstrap-tree-sitter-cli.sh
+@@ -0,0 +1,26 @@
++#!/usr/bin/env bash
++set -euo pipefail
++
++case "${1:-$(uname -m)}" in
++  x86_64|amd64) _ts_arch=x64 ;;
++  aarch64|arm64) _ts_arch=arm64 ;;
++  *)
++    printf 'Unsupported tree-sitter-cli architecture: %s\n' "${1:-$(uname -m)}" >&2
++    exit 1
++    ;;
++esac
++
++bootstrap_tree_sitter_cli() {
++  local pkgdir="$1"
++  local version
++
++  version=$(node -p "require('./${pkgdir}/package.json').version")
++
++  curl -fL "https://github.com/tree-sitter/tree-sitter/releases/download/v${version}/tree-sitter-linux-${_ts_arch}.gz" \
++    -o "${pkgdir}/tree-sitter.gz"
++  gunzip -f "${pkgdir}/tree-sitter.gz"
++  chmod 755 "${pkgdir}/tree-sitter"
++}
++
++bootstrap_tree_sitter_cli "node_modules/tree-sitter-cli"
++bootstrap_tree_sitter_cli "node_modules/tree-sitter-swift/node_modules/tree-sitter-cli"

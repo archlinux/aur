@@ -1,0 +1,39 @@
+--- a/package.json
++++ b/package.json
+@@ -60,6 +60,8 @@
+     "immer": "^10.2.0",
+     "lucide-react": "^0.525.0",
+     "material-file-icons": "^2.4.0",
++    "nanoid": "^5.1.7",
++    "pdfjs-dist": "^5.6.205",
+     "react": "^19.2.1",
+     "react-dom": "^19.2.1",
+     "react-pdf": "^10.3.0",
+@@ -68,6 +70,7 @@
+     "use-debounce": "^10.0.6",
+     "use-sync-external-store": "^1.6.0",
+     "usehooks-ts": "^3.1.1",
++    "vscode-languageserver-types": "^3.17.5",
+     "vscode-languageserver-protocol": "^3.17.5",
+     "web-tree-sitter": "^0.25.10",
+     "zustand": "^5.0.9"
+@@ -93,6 +96,7 @@
+     "concurrently": "^9.2.1",
+     "lint-staged": "^16.2.7",
+     "simple-git-hooks": "^2.13.1",
++    "tailwindcss": "^4.2.2",
+     "tree-sitter-bash": "^0.23.0",
+     "tree-sitter-c": "^0.23.0",
+     "tree-sitter-c-sharp": "^0.23.0",
+@@ -126,6 +130,11 @@
+     "typescript-language-server": "^4.4.1",
+     "vite": "^7.2.6"
+   },
++  "overrides": {
++    "tree-sitter-swift": {
++      "tree-sitter-cli": "0.23.2"
++    }
++  },
+   "simple-git-hooks": {
+     "pre-commit": "bunx lint-staged",
+     "pre-push": "bun check:all",
