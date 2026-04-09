@@ -2,7 +2,7 @@
 # Contributor: tarball <bootctl@gmail.com>
 
 pkgname=etesync-knotes
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 arch=('x86_64')
 url='https://codeberg.org/Josselin_Beaumont/Etesync-Knotes'
@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=('cmake')
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('ac42d057b6eaa4ab90fe97a4b1d8df8b5d3afbc4d2f502880e0eda915651e8388c745df5bdb85f8f942bf3b6c6c6266104ff6171e403a92a73b53d195348c360')
+sha512sums=('4baf28b2e435ba1844858854bb4559563e1efc80a5a9ec297d9fd09fb9f776f7e8dd11e181c9ef5ba27cd5a23ca01342f99059b4a58d333a8dc4b659a62fd7f6')
 
 build() {
   cd $pkgname
