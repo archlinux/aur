@@ -9,7 +9,7 @@ url="https://github.com/Tsangares/stopwatch"
 license=('MIT')
 depends=('python' 'python-gobject' 'gtk3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Tsangares/$_reponame/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8f016fd22f0f878e3997cdcb7093ef4aaaa2c5aca075387f0c81b3e0e182dae3')
+sha256sums=('c9447d345f6021633fe142a9cf18b9a714ffdd0c1da74b077d6335a002126c61')
 
 package() {
     cd "$srcdir/$_reponame-$pkgver"

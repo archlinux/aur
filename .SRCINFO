@@ -9,6 +9,6 @@ pkgbase = awesome-stopwatch
 	depends = python-gobject
 	depends = gtk3
 	source = awesome-stopwatch-1.0.0.tar.gz::https://github.com/Tsangares/stopwatch/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 8f016fd22f0f878e3997cdcb7093ef4aaaa2c5aca075387f0c81b3e0e182dae3
+	sha256sums = c9447d345f6021633fe142a9cf18b9a714ffdd0c1da74b077d6335a002126c61
 
 pkgname = awesome-stopwatch
