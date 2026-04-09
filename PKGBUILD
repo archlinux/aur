@@ -4,7 +4,7 @@ pkgbase=kcgroups-dmemcg
 pkgname=('kcgroups-dmemcg' 'plasma-foreground-booster-dmemcg')
 _tag=dmemcg-experimental
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE library to manipulate cgroups (and boost foreground apps) - fork adding dmem cgroup support"
 arch=('i686' 'x86_64')
 url="https://github.com/pixelcluster/kcgroups"
@@ -48,6 +48,7 @@ package_kcgroups-dmemcg() {
 }
 
 package_plasma-foreground-booster-dmemcg() {
+    depends=('kcgroups-dmemcg')
     cd "plasma-foreground-booster-build"
     make DESTDIR="${pkgdir}" install
 }
