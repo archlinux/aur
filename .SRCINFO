@@ -1,7 +1,7 @@
 pkgbase = shorin-niri-git
 	pkgdesc = Shorin Niri Desktop Environment (Core Configs & Installer)
 	pkgver = r1.1234567
-	pkgrel = 20
+	pkgrel = 21
 	url = https://github.com/SHORiN-KiWATA/shorin-niri
 	arch = any
 	license = GPL
@@ -28,7 +28,7 @@ pkgbase = shorin-niri-git
 	depends = awww
 	depends = waybar
 	depends = matugen
-	depends = shorinclip-git
+	depends = cliphist-tui-git
 	optdepends = breeze-cursors: Cursor theme
 	optdepends = mpv: Media player
 	optdepends = noto-fonts: Base fonts

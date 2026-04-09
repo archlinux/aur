@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=20
+pkgrel=21
 pkgdesc="Shorin Niri Desktop Environment (Core Configs & Installer)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -12,7 +12,7 @@ depends=(
     'bash' 'curl'
     'niri' 'mako' 'polkit-gnome' 'xdg-desktop-portal-gnome' 'xwayland-satellite' 'swayidle'
     'fuzzel-ime-git' 'libnotify' 'brightnessctl' 'cava' 'cliphist' 'wl-clipboard' 
-    'grim' 'slurp' 'hyprlock' 'hyprpicker' 'swayosd' 'awww' 'waybar' 'matugen' 'shorinclip-git'
+    'grim' 'slurp' 'hyprlock' 'hyprpicker' 'swayosd' 'awww' 'waybar' 'matugen' 'cliphist-tui-git'
 )
 
 # 可选依赖：仅供 pacman 和网页展示参考，实际由 shorinniri 脚本全自动比对安装
