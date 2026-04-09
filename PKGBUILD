@@ -7,6 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/snipeship/ccflare"
 license=('MIT')
 makedepends=('bun' 'git')
+options=('!strip')
 provides=('ccflare')
 conflicts=('ccflare')
 source=("${pkgname}::git+https://github.com/snipeship/ccflare.git")

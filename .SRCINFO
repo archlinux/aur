@@ -10,6 +10,7 @@ pkgbase = ccflare-git
 	makedepends = git
 	provides = ccflare
 	conflicts = ccflare
+	options = !strip
 	source = ccflare-git::git+https://github.com/snipeship/ccflare.git
 	sha256sums = SKIP
 
