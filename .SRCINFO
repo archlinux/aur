@@ -1,0 +1,15 @@
+pkgbase = clocko-git
+	pkgdesc = A clock tool written in Go
+	pkgver = r19.ca4d98d
+	pkgrel = 1
+	url = https://codeberg.org/b1u3rchie/Clocko
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = clocko::git+https://codeberg.org/b1u3rchie/Clocko.git
+	sha256sums = SKIP
+
+pkgname = clocko-git
