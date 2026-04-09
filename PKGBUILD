@@ -7,16 +7,16 @@ arch=('any')
 url="https://github.com/phlppbmm/rtfm"
 license=('MIT')
 depends=(
-    'python>=3.11'
+    'python'
     'python-fastapi'
-    'uvicorn'
+    'python-uvicorn'
     'python-chromadb-bin'
     'python-onnxruntime-cpu'
     'python-gitpython'
     'python-httpx'
     'python-click'
     'python-rich'
-    'python-pyyaml'
+    'python-yaml'
     'python-html2text'
     'python-beautifulsoup4'
     'python-lxml'
@@ -25,9 +25,9 @@ depends=(
 makedepends=('python-installer')
 provides=('python-agent-rtfm')
 conflicts=('python-agent-rtfm' 'python-agent-rtfm-git')
-install=python-agent-rtfm-bin.install
-_wheel="agent_rtfm-0.2.0${pkgver}-py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py3/a/agent_rtfm/${_wheel}")
+install=python-agent-rtfm.install
+_wheel="agent_rtfm-${pkgver}-py3-none-any.whl"
+source=("${_wheel}::https://files.pythonhosted.org/packages/py3/a/agent_rtfm/agent_rtfm-${pkgver}-py3-none-any.whl")
 sha256sums=('SKIP')
 noextract=("${_wheel}")
 
