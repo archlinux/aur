@@ -1,5 +1,5 @@
 pkgname=boringtun-git
-pkgver=0.5.2.r18.ge1d6360
+pkgver=0.7.0.r2.gfa97920
 pkgrel=1
 pkgdesc="Userspace WireGuard® Implementation in Rust"
 arch=('x86_64' 'i686' 'aarch64')
@@ -12,6 +12,7 @@ provides=('boringtun')
 conflicts=('boringtun')
 source=($pkgname::git+https://github.com/cloudflare/boringtun.git)
 sha256sums=('SKIP')
+options=('!lto')
 
 pkgver() {
 	cd $pkgname
@@ -20,7 +21,7 @@ pkgver() {
 
 build() {
 	cd $pkgname
-	cargo build --release
+	cargo build --frozen --release --bin boringtun-cli
 }
 
 package() {
