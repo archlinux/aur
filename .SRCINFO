@@ -1,7 +1,7 @@
 pkgbase = posthog-cli
 	pkgdesc = The command line interface for PostHog
-	pkgver = 0.7.4
-	pkgrel = 3
+	pkgver = 0.7.5
+	pkgrel = 1
 	url = https://github.com/PostHog/posthog
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = posthog-cli
 	depends = glibc
 	depends = libgcc
 	options = !lto
-	source = posthog-cli-v0.7.4.tar.gz::https://github.com/PostHog/posthog/archive/refs/tags/posthog-cli%2Fv0.7.4.tar.gz
-	sha256sums = 23d53664ad6f0b2cc309162f1bedf0a1055a1bb718f98443d99c53048bd126a8
+	source = posthog-cli-v0.7.5.tar.gz::https://github.com/PostHog/posthog/archive/refs/tags/posthog-cli%2Fv0.7.5.tar.gz
+	sha256sums = 9d078bdbe009f98cfa3c8a5bad8b6daae305c4f45e66df4b500614038579a65a
 
 pkgname = posthog-cli
