@@ -1,0 +1,16 @@
+pkgbase = ccflare-git
+	pkgdesc = Open-source proxy server for the Anthropic Claude API with monitoring, load balancing, and rate limiting
+	pkgver = r197.6889212
+	pkgrel = 1
+	url = https://github.com/snipeship/ccflare
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = bun
+	makedepends = git
+	provides = ccflare
+	conflicts = ccflare
+	source = ccflare-git::git+https://github.com/snipeship/ccflare.git
+	sha256sums = SKIP
+
+pkgname = ccflare-git
