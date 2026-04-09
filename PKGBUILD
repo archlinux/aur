@@ -1,21 +1,26 @@
 # Contributor: Gleb Liutsko <gleb@liutsko.ru>
+# Contributor: Aleksey Ksenzov <aksenzov@gmail.com>
 
 pkgname=1c-connect
-pkgver=5.0.5.707
+pkgver=5.4.2
 pkgrel=1
 pkgdesc="A solution for support services, consultations or service centers."
 arch=('any')
-url="https://1c-connect.com/ru/"
+url="https://connect.ru"
 license=('custom')
-depends=()
+depends=(libxcrypt-compat)
 makedepends=()
 checkdepends=()
+
 source=('1c-connect.tar.gz::https://updates.1c-connect.com/desktop/distribs/1C-Connect-Linux-x64.tar.gz'
         '1c-connect.desktop'
         'connect.sh')
+
 noextract=('1c-connect.tar.gz')
-sha256sums=('d7695803c49b0869d418e3d1d24c66e32bc3a283ed9badb51522a492d87c6819'
-            'SKIP' 'SKIP')
+
+sha256sums=('21dc6a44f75788b5dd03c3058de0d5aca7989e53a11ce4d10124458b4aa02943'
+            '410d43e52f8f4a895268dcf612404df52b38b310eb39c64f40f3f32002d4c553'
+            '48b91c95db0dbe98f7f99808b0633dc1cf44bfdd37349dfd374f37f9fada3c05')
 
 prepare() {
     cd "$srcdir"

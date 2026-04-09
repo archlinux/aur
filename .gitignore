@@ -1,0 +1,25 @@
+# Ignore everything by default
+*
+
+# Un-ignore the files required for version control and packaging
+## Core AUR package metadata.
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+
+## License files for compliance.
+!LICENSE
+!/LICENSES/*
+
+## Helper scripts and assets that are common for package source.
+!*.install
+!*.changelog
+!*.patch
+!*.desktop
+!*.sh
+!*.toml
+
+## PGP signatures for source file verification.
+!*.asc
+!/keys/gpg/*.asc
+
