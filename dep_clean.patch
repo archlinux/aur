@@ -1,0 +1,28 @@
+diff --git a/ElmerGUI/CMakeLists.txt b/ElmerGUI/CMakeLists.txt
+index df7c6cf9a..edae5f8d5 100644
+--- a/ElmerGUI/CMakeLists.txt
++++ b/ElmerGUI/CMakeLists.txt
+@@ -142,11 +142,20 @@ IF(WITH_OCC)
+ ENDIF()
+ 
+ IF(WITH_VTK)
+-  FIND_PACKAGE(VTK REQUIRED)
+ 
+-  # We do not use Java wrappings and they make linking very difficult when
+-  # building Debian/Ubuntu packages
+-  LIST(REMOVE_ITEM VTK_LIBRARIES VTK::Java)
++  FIND_PACKAGE(VTK COMPONENTS
++    CommonCore
++    CommonDataModel
++    FiltersCore
++    FiltersFlowPaths
++    FiltersGeometry
++    FiltersModeling
++    GUISupportQt
++    IOXML
++    RenderingAnnotation
++    RenderingCore
++    RenderingFreeType
++  REQUIRED)
+ 
+   INCLUDE(testVTKcapabilities)
