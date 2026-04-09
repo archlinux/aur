@@ -33,8 +33,8 @@ build() {
   cd "Steam-Manifest-Downloader-${pkgver}/src-tauri"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  # Disable LTO — rust-lld on Arch cannot link ring/zstd-sys native objects with LTO enabled
-  export CARGO_PROFILE_RELEASE_LTO=false
+  # Force GNU linker — rust-lld cannot link ring/zstd-sys native assembly objects
+  export RUSTFLAGS="-C link-arg=-fuse-ld=bfd"
   cargo build --frozen --release
 }
 
