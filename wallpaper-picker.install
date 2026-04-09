@@ -1,0 +1,51 @@
+# Pacman install hook for wallpaper-picker
+
+post_install() {
+    # Update desktop database for menu integration
+    update-desktop-database "${pkgdir}/usr/share/applications/" 2>/dev/null || true
+    
+    # Update icon cache
+    gtk-update-icon-cache -t "${pkgdir}/usr/share/icons/hicolor" 2>/dev/null || true
+    
+    # Create user config directory if it doesn't exist
+    if [[ ! -d "$HOME/.config/wallpaper-picker" ]]; then
+        mkdir -p "$HOME/.config/wallpaper-picker"
+        cat > "$HOME/.config/wallpaper-picker/config" <<'EOFCONFIG'
+# Wallpaper Picker Configuration
+MONITOR=""
+AUTO_DETECT_MONITOR="yes"
+DEFAULT_WALLPAPER_DIR="$HOME/Videos/wallpapers"
+ENABLE_AUDIO="no"
+LOOP_MODE="inf"
+SLIDESHOW_INTERVAL=30
+SLIDESHOW_SHUFFLE="no"
+THUMBNAIL_ENABLED="yes"
+CACHE_THUMBNAILS="yes"
+NOTIFICATIONS_ENABLED="yes"
+PREVIEW_ENABLED="yes"
+PREVIEW_TIMEOUT=3
+EOFCONFIG
+        echo "Created default configuration in ~/.config/wallpaper-picker/config"
+    fi
+    
+    echo ""
+    echo -e "\033[1;36m╔══════════════════════════════════════════════════╗\033[0m"
+    echo -e "\033[1;36m║        Wallpaper Picker v${pkgver} Installed           ║\033[0m"
+    echo -e "\033[1;36m╚══════════════════════════════════════════════════╝\033[0m"
+    echo ""
+    echo "  Run 'wallpaper-picker --help' for usage"
+    echo "  Run 'wallpaper-picker doctor' to check dependencies"
+    echo "  Search for 'Wallpaper Picker' in your app menu"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ""
+    echo "Wallpaper Picker has been uninstalled."
+    echo "Your configuration in ~/.config/wallpaper-picker/ was preserved."
+    echo ""
+}

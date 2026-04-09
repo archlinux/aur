@@ -1,0 +1,23 @@
+pkgbase = wallpaper-picker
+	pkgdesc = A sleek, feature-rich video wallpaper manager for Arch Linux/Hyprland
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/5h4d0wn1k/wallpaper-picker
+	install = wallpaper-picker.install
+	arch = any
+	license = MIT
+	depends = bash>=4.0
+	depends = mpvpaper
+	depends = fzf
+	depends = mpv
+	depends = jq
+	optdepends = gtk4: For GUI support
+	optdepends = python-gobject: For GUI support
+	optdepends = ffmpeg: For video thumbnails and metadata
+	optdepends = libnotify: Desktop notifications
+	provides = wallpaper-picker
+	conflicts = wallpaper-picker-git
+	source = wallpaper-picker-2.0.0.tar.gz::https://github.com/5h4d0wn1k/wallpaper-picker/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 26314498a44869c41223fc747e508d04e7859dbd8cec5f583bfc1c6a295b75cf
+
+pkgname = wallpaper-picker
