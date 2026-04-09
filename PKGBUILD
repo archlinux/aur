@@ -37,17 +37,17 @@ sha256sums_x86_64=('5136aa17006fa25cc7fa328fceb51c17020f858be19bf3eccedbe6b067bc
 sha256sums_aarch64=('eb3a665acc326e06dc0a639f21a0b9f27474bb0d9aeabae963624714866b9f49')
 
 package(){
-	chmod +x ./GitFourchette-${pkgver}-${arch}.AppImage
-    ./GitFourchette-${pkgver}-${arch}.AppImage --appimage-extract
-    site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-    install -d "$pkgdir/$site_packages"
-	install -Dm644 squashfs-root/usr/share/applications/${_pkgname}.desktop \
-	    -t "$pkgdir"/usr/share/applications/
-	install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png \
-	    -t "$pkgdir"/usr/share/icons/hicolor/256x256/apps/
-	cp -r --preserve=mode squashfs-root/opt/python3.14/lib/python3.14/site-packages/gitfourchette \
-	    "$pkgdir/$site_packages"
-	cat << EOF > "${_pkgname}.py"
+  chmod +x ./GitFourchette-${pkgver}-${arch}.AppImage
+  ./GitFourchette-${pkgver}-${arch}.AppImage --appimage-extract
+  site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir/$site_packages"
+  install -Dm644 squashfs-root/usr/share/applications/${_pkgname}.desktop \
+    -t "$pkgdir"/usr/share/applications/
+  install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png \
+    -t "$pkgdir"/usr/share/icons/hicolor/256x256/apps/
+  cp -r --preserve=mode squashfs-root/opt/python3.14/lib/python3.14/site-packages/gitfourchette \
+    "$pkgdir/$site_packages"
+  cat << EOF > "${_pkgname}.py"
 #!/usr/bin/python3
 import sys
 from gitfourchette.__main__ import main
