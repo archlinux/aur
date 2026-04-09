@@ -3,7 +3,7 @@
 # Contributor: Aleks Clark <aleks dot clark at gmail dot com>
 
 pkgname='xcrush-bin'
-pkgver=2026.04.09.1
+pkgver=2026.04.09.3
 pkgrel=1
 pkgdesc='Unofficial build tool for creating custom Crush distributions with plugins'
 url='https://github.com/aleksclark/crush-modules'
@@ -13,10 +13,10 @@ provides=('xcrush')
 conflicts=('crush-modules')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/aleksclark/crush-modules/releases/download/${pkgver}/xcrush_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('e89713122504785e8fc74247cfa15b0e5e63a4ef565cece9c573ee0882a021df')
+sha256sums_aarch64=('1aeff040b6f8d835e1a301586bf8b7a5b0848836b327cb2122e439f32ffe3269')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/aleksclark/crush-modules/releases/download/${pkgver}/xcrush_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('64aebfc23f8ebc433d4a1544654e2474228a13dff049b8c1e54ee7b779f6cd5d')
+sha256sums_x86_64=('ef069b3c19bf7ac29bc15bcb438eeb0e20d2c04d0af4fa7591003090362a7534')
 
 package() {
   # bin
