@@ -1,6 +1,6 @@
 # Maintainer: Wibo Kuipers <wibo@w-kuipers.com>
 pkgname=alphadb-bin
-pkgver=1.0.0_beta.40
+pkgver=1.0.0_beta.41
 pkgrel=1
 pkgdesc="SQL Database Version Management"
 arch=('x86_64')
