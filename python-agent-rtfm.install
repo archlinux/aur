@@ -1,0 +1,16 @@
+post_install() {
+    echo ":: Run 'rtfm init' to create ~/.rtfm/config.yaml"
+    echo ":: Then run 'rtfm ingest' to index documentation"
+    echo "::"
+    echo ":: To start the server automatically:"
+    echo "::   systemctl --user daemon-reload"
+    echo "::   systemctl --user enable --now rtfm"
+    echo "::"
+    echo ":: To auto-update docs on boot:"
+    echo "::   systemctl --user enable rtfm-update"
+}
+
+post_upgrade() {
+    echo ":: rtfm has been upgraded."
+    echo ":: If using systemd, the server will restart automatically."
+}

@@ -1,0 +1,13 @@
+[Unit]
+Description=Update rtfm documentation indexes
+Before=rtfm.service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rtfm update
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
