@@ -1,7 +1,7 @@
 pkgbase = mpd-current-json
 	pkgdesc = Print current MPD song and status as JSON
 	pkgver = 3.1.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://codeberg.org/useless-utils/mpd-current-json
 	arch = x86_64
 	license = Unlicense
