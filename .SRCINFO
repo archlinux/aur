@@ -1,0 +1,27 @@
+pkgbase = octa-bin
+	pkgdesc = A modular multi-format data viewer and editor (pre-compiled)
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/thorstenfoltz/octa
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libxcb
+	depends = libxkbcommon
+	depends = openssl
+	depends = fontconfig
+	depends = freetype2
+	depends = harfbuzz
+	depends = fribidi
+	depends = libjpeg-turbo
+	depends = openjpeg2
+	depends = gumbo-parser
+	depends = jbig2dec
+	depends = mujs
+	provides = octa
+	conflicts = octa
+	options = !debug
+	source = octa-0.1.3-linux-x86_64.tar.gz::https://github.com/thorstenfoltz/octa/releases/download/0.1.3/octa-0.1.3-linux-x86_64.tar.gz
+	sha256sums = ab4239451c62eb0ee8855606466b5cb7d684ac35eaa896fc1bce571eceab47c6
+
+pkgname = octa-bin
