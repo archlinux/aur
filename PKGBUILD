@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imfile-git
 _pkgname=imFile
-pkgver=1.1.4.r2.gf01e573
+pkgver=2.0.4.r0.g83b91f1
 _electronversion=41
 _nodeversion=24
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(
 makedepends=(
     'npm'
     'git'
-    'yarn'
+    'pnpm'
     'nvm'
     'gendesk'
     'curl'
@@ -75,25 +75,27 @@ prepare() {
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    local HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
+    HOME="${srcdir}/.electron-gyp"
+    {
+        export PNPM_LINK_WORKSPACE_PACKAGES=true
+        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_SHAMEFULLY_HOIST=true
+        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+        export PNPM_NODE_LINKER=hoisted
+        export PNPM_NETWORK_CONCURRENCY=32
+    }
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            export YARN_REGISTRY="https://registry.npmmirror.com"
-            export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
-            export YARN_PLUGINS_FOLDER="${srcdir}/.yarn/plugins"
-            export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
-            export YARN_USE_HARDLINKS=true
-            # export YARN_BUILD_FROM_SOURCE=true
-            export YARN_LINK_WORKSPACE_PACKAGES=true
-            export YARN_FETCH_RETRIES=3
-            export YARN_FETCH_RETRY_TIMEOUT=10000
-            export YARN_NETWORK_CONCURRENCY=32
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            # Use proxy for GitHub API and downloads in sync-go-aria2 script
+            sed -i "s|https://api.github.com/|https://wget.la/https://api.github.com/|g" scripts/sync-go-aria2.mjs
+            sed -i "s|https://github.com/|https://wget.la/https://github.com/|g" scripts/sync-go-aria2.mjs
         }
-        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
-        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     _ensure_local_nvm
     case "${CARCH}" in
@@ -108,17 +110,18 @@ prepare() {
             ;;
     esac
     ln -sf "/usr/bin/aria2c" "${srcdir}/${pkgname//-/.}/extra/linux/${_replace_dir_name}/engine/aria2c"
-    find ./ -type f -name "yarn.lock" -exec sed -i "s/${_replace_dir_name}/x64/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=production     yarn run build:github
+    sed -i "s/'darwin', 'win32', 'linux'/'linux'/g" scripts/sync-go-aria2.mjs
+    NODE_ENV=development    pnpm install --frozen-lockfile
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     _ensure_local_nvm
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config=electron-builder.json
+    NODE_ENV=production     pnpm run sync-go-aria2
+    NODE_ENV=production     pnpm -c exec "node .electron-vue/build.js"
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config=electron-builder.json"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
