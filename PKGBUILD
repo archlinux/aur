@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=hledger-textual
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc='terminal user interface for managing hledger journal transactions'
 arch=(any)
@@ -17,7 +17,7 @@ makedepends=(python-{build,installer,wheel}
              python-uv-build)
 _archive="${pkgname/-/_}-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('ae9f7b74853e45e7b5c006b1e43440b77c62ff9aeabd8fd3da70abcc5e900927')
+sha256sums=('bf1dabc030645b7103a365e219e186d2ebb7df84ae9107c9a88ebd39fb1fef68')
 
 prepare () {
 	cd "$_archive"
