@@ -13,6 +13,6 @@ pkgbase = teru
 	optdepends = xclip: clipboard support on X11
 	optdepends = wl-clipboard: clipboard support on Wayland
 	source = teru-0.3.7.tar.gz::https://github.com/nicholasglazer/teru/archive/v0.3.7.tar.gz
-	sha256sums = 4ae27d5a60d06337907bb73c93be58e6b8058eb334b52f1ac7ca72bb8d3ba5c2
+	sha256sums = 669d99626cbfaa2fb942867db2ffac902ee5a0b8d753e4ab09438ec58cda5314
 
 pkgname = teru
