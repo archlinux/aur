@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.9.22
-_electronversion=32
+pkgver=0.9.23
+_electronversion=41
 _nodever=24
 pkgrel=1
 pkgdesc="New full-featured desktop email, chat and video conference client.(Use system-wide electron)"
@@ -22,8 +22,12 @@ makedepends=(
     'yarn'
     'jq'
 )
-source=("${pkgname}.sh")
-sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+source=(
+    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}.sh"
+)
+sha256sums=('b2c1394addf7a5eb9aeb7363994bf885892d5b91a8b041bfcd2a4d1a0c7a804e'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -36,12 +40,6 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
-    cd "${srcdir}"
-    git clone \
-        --depth 1 \
-        --branch "v${pkgver}" \
-        "${_ghurl}" \
-        "${pkgname}-${pkgver}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
@@ -63,23 +61,22 @@ prepare() {
     mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo -e '\n'
-            echo 'registry "https://registry.npmmirror.com"'
-            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
-            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo "cacheFolder "${srcdir}"/.yarn/cache"
-            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
-            echo "globalFolder "${srcdir}"/.yarn/global"
-            echo 'useHardlinks true'
-            #echo 'buildFromSource true'
-            echo 'linkWorkspacePackages true'
-            echo 'fetchRetries 3'
-            echo 'fetchRetryTimeout 10000'
-        } >> .yarnrc
+            export YARN_REGISTRY="https://registry.npmmirror.com"
+            export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
+            export YARN_PLUGINS_FOLDER="${srcdir}/.yarn/plugins"
+            export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
+            export YARN_USE_HARDLINKS=true
+            # export YARN_BUILD_FROM_SOURCE=true
+            export YARN_LINK_WORKSPACE_PACKAGES=true
+            export YARN_FETCH_RETRIES=3
+            export YARN_FETCH_RETRY_TIMEOUT=10000
+            export YARN_NETWORK_CONCURRENCY=32
+        }
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
         echo '[url "https://github.moeyy.xyz/https://github.com/"]' >> "${srcdir}/${pkgname}-${pkgver}/app/.gitconfig"
         echo '    insteadof = https://github.com/' >> "${srcdir}/${pkgname}-${pkgver}/app/.gitconfig"
-        echo app lib desktop desktop/backend runner | xargs -n 1 cp .yarnrc
     fi
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}-${pkgver}/app/build"
