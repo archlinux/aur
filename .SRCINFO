@@ -9,7 +9,6 @@ pkgbase = turso
 	makedepends = libaegis
 	makedepends = libgit2
 	makedepends = mimalloc
-	makedepends = oniguruma
 	makedepends = simsimd
 	depends = oniguruma
 	options = !lto

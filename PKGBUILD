@@ -8,7 +8,7 @@ license=('MIT')
 arch=('x86_64')
 options=(!lto)
 depends=(oniguruma)
-makedepends=(cargo libaegis libgit2 mimalloc oniguruma simsimd)
+makedepends=(cargo libaegis libgit2 mimalloc simsimd)
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/source.tar.gz")
 sha256sums=('ae847eb2609faf2462b1638ee91657ee66b441049c98fcc737b8160a501de124')
 
