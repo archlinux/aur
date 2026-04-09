@@ -1,9 +1,6 @@
-Thu, 19 Mar 2026 17:17:29 +0000 Kathara Team <******@kathara.org>
+Thu, 09 Apr 2026 17:46:39 +0000 Kathara Team <******@kathara.org>
 
-* Release v3.8.1
-    * Add a configurable setting to manage volume mounting behavior
-    * Remove `--xterm` parameter from `vstart`/`lstart` commands
-    * Remove the `pyuv` dependency
-    * Add a timeout while checking for new releases on GitHub
-    * Add a timeout while checking for new versions of Docker images
+* Release v3.8.3
+    * Add possibility to keep collision domains when undeploying a network scenario
+    * Fix tmux DeprecatedError
     * Minor fixes
