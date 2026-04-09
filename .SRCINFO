@@ -1,17 +1,17 @@
 pkgbase = python-simplesat
 	pkgdesc = SAT solver for use in Enstaller, based on the MiniSat implementation
-	pkgver = 0.8.2
-	pkgrel = 8
+	pkgver = 0.9.2
+	pkgrel = 1
 	url = https://github.com/enthought/sat-solver
 	arch = any
-	license = MIT
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-attrs
 	depends = python-okonomiyaki
 	depends = python-six
-	source = git+https://github.com/enthought/sat-solver.git#tag=v0.8.2
+	source = git+https://github.com/enthought/sat-solver.git#tag=fa938f3de5da124d4f662211c4bf21699eb4c5a2
 	sha512sums = SKIP
 
 pkgname = python-simplesat
