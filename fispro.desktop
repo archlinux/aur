@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=FisPro
+Comment=Fuzzy inference systems software
+Exec=fispro
+Icon=fispro
+Terminal=false
+Categories=Science;Education;
+StartupNotify=true

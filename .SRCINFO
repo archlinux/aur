@@ -1,0 +1,25 @@
+pkgbase = fispro
+	pkgdesc = Fuzzy inference systems software
+	pkgver = 3.8
+	pkgrel = 5
+	url = https://www.fispro.org/
+	arch = x86_64
+	license = CECILL-2.1
+	makedepends = jdk8-openjdk
+	makedepends = maven
+	depends = bash
+	depends = cblas
+	depends = gsl
+	depends = java-runtime=8
+	depends = libx11
+	depends = libglvnd
+	depends = libxext
+	options = !makeflags
+	source = fispro-3.8-sources.zip::https://www.fispro.org/download/install/sources/fispro-3.8-sources.zip
+	source = fispro.desktop
+	source = fispro-launcher.sh
+	sha256sums = 4d6b7da7a6214061e9b5ddf7f46e5d7046c8cb7316d916f81636a1bd47f4dcce
+	sha256sums = d218790c1dcd8f02527589705eafdf9b1ccfac3099726e77d2b3abb457bd1669
+	sha256sums = ddf23354d057f0f5c6ce8a5d76762938c449b7ab4c8282890d5d67f5bb5aee20
+
+pkgname = fispro
