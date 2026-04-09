@@ -1,0 +1,4 @@
+[websocketd-bin]
+source = "github"
+github = "barakplasma/websocketd"
+use_latest_release = true

@@ -1,23 +1,50 @@
-# Maintainer: wenLiangcan <boxeed at gmail dot com>
-# Maintainer: tee < teeaur at duck dot com >
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: wenLiangcan <boxeed at gmail dot com>
+# Contributor: tee < teeaur at duck dot com >
 
-_pkgname=websocketd
-pkgname=websocketd-bin
-pkgver=0.4.1
-pkgrel=1
+_gitauthor=barakplasma
+_gitname=websocketd
+_appname=${_gitname}
+pkgname=${_appname}-bin
 pkgdesc="Like inetd, but for WebSockets. Turn any application that uses STDIO/STDOUT into a WebSocket server."
-arch=('x86_64' 'i686' 'arm')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-url="https://github.com/joewalnes/websocketd"
+
+pkgver=0.4.2
+pkgrel=1
+_gitversion=${pkgver}
+
+arch=('x86_64' 'i686' 'aarch64')
+_barch=('linux_amd64' 'linux_386' 'linux_arm64')
+
+_ghurl="https://github.com/${_gitauthor}/${_gitname}"
+_ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
+url=${_ghurl}
+
 license=('BSD-2-Clause')
-source_i686=("https://github.com/joewalnes/websocketd/releases/download/v${pkgver}/websocketd-${pkgver}-linux_386.zip")
-source_x86_64=("https://github.com/joewalnes/websocketd/releases/download/v${pkgver}/websocketd-${pkgver}-linux_amd64.zip")
-sha256sums_x86_64=('7f3d70598cb6596328ab4193419515e220696f3451f05b8173156d28c324a113')
-sha256sums_i686=('563606e3465283114ab9e28bcdd2f48e12b237e4c1f5857cede5b9eb9be124f4')
+
+depends=('glibc')
+provides=("${_appname}")
+conflicts=("${_appname}")
+
+options=(!strip)
+
+source=("README-${pkgver}.md::${_ghurlraw}/README.md"
+		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_gitversion}_${_barch[0]}.tar.gz")
+source_i686=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_gitversion}_${_barch[1]}.tar.gz")
+source_aarch64=("${_appname}-${arch[2]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_gitversion}_${_barch[2]}.tar.gz")
+sha256sums=('2eb09d819b06741f2240a3035fdd23d1ce49b05dcd40bcb4d59fbfe9f1c3a952'
+            '4ff156fac66b6f7e5801a90e06dea6fd13a7b10327cb60aad6a49f36c26650f0')
+sha256sums_x86_64=('4c2c14622bb5603c688499fad3945f256de103f924763bc3904443a36ed5f890')
+sha256sums_i686=('8a383c492c83c413e8511ba1ac762b53e4b54584751f0b93322024ffc1e56318')
+sha256sums_aarch64=('b8fe2fb460882cf2382e9f53dd6fca130a78774648a24f0797f6ec074afdec13')
+
 
 package() {
-    cd "${srcdir}"
-    install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "${srcdir}/" || exit
+
+	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
