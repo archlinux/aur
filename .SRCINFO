@@ -1,6 +1,6 @@
 pkgbase = wallpaper-picker
-	pkgdesc = A sleek, feature-rich video wallpaper manager for Hyprland/Wayland
-	pkgver = 2.1.0
+	pkgdesc = A sleek, feature-rich video wallpaper manager for Arch Linux/Hyprland
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/5h4d0wn1k/wallpaper-picker
 	install = wallpaper-picker.install
@@ -17,7 +17,7 @@ pkgbase = wallpaper-picker
 	optdepends = libnotify: Desktop notifications
 	provides = wallpaper-picker
 	conflicts = wallpaper-picker-git
-	source = wallpaper-picker-2.1.0.tar.gz::https://github.com/5h4d0wn1k/wallpaper-picker/archive/refs/tags/v2.1.0.tar.gz
+	source = wallpaper-picker-2.0.0.tar.gz::https://github.com/5h4d0wn1k/wallpaper-picker/archive/refs/tags/v2.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = wallpaper-picker
