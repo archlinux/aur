@@ -1,6 +1,6 @@
 # Maintainer: Sidharth Arya
 pkgname=sailer
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A Wayland compositor written in Zig, built on wlroots"
 arch=('x86_64')
