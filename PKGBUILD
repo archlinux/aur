@@ -6,7 +6,7 @@
 
 pkgname=dstask
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Git-powered terminal-based todo/note manager with full markdown note for each task'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64' )
 url='https://github.com/naggie/dstask'
@@ -54,7 +54,7 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm0755 -t "$pkgdir/usr/bin" dstask{,-import}
-  install -Dm0755 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md doc/*.md
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md doc/*.md
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
   install -Dm0644 _completions.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"

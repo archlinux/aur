@@ -1,7 +1,7 @@
 pkgbase = dstask
 	pkgdesc = Git-powered terminal-based todo/note manager with full markdown note for each task
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/naggie/dstask
 	arch = aarch64
 	arch = armv6h
