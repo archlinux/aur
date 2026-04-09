@@ -1,6 +1,6 @@
 # Maintainer: mrdotx <klassiker@gmx.de>
 pkgname=rustymeter
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='A rust-based egui application to operate your OWON XDM multimeters from your PC without the need for NI VISA'
 url='https://github.com/markusdd/rusty_meter'
@@ -14,7 +14,7 @@ source_x86_64=(
     'rustymeter.desktop'
     'chart-line-solid.svg'
 )
-b2sums_x86_64=('3fbf5dbe40388aa9b5c4af436010295b8f6afcf571cf7cf227aedd84a375f4e199d4eadd3a9dbc5c230621a7a5b69cb37fa104d5b5cdca898cd5acaf4f8e1018'
+b2sums_x86_64=('9d335b9c49a9105ac03a28cf29acf02081ae0db56aae301a06074229e0f32d7f1c51dfb31cf450ade402c7391aa9aa85298f63b07fb458cd0887fe5bf32a6432'
                '5b721e6d68aa982f14fcadbd2ce303be60d2a172075181e8aecb5991d6407555584c5ec527357aab0fcd0bdb1b503199f5e35d3049fd876520758a09dce9e640'
                '115bd531bf8d9560c4c43d398fa0067ea0450a91cb8fbdb9a078dbedcc761cff586e6bd36b83e6aa5eb85e62349d58651271dacff59f4504241645930ddfbb99')
 
