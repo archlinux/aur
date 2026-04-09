@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Codebase Viewer
+GenericName=Codebase Viewer
+Comment=Scan, explore, and document/export large codebases
+Exec=codebase-viewer %U
+Icon=codebase-viewer
+Categories=Development;
+Keywords=development;
+StartupWMClass=codebase-viewer
+Terminal=false

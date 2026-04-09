@@ -1,0 +1,5 @@
+[codebase-viewer-bin]
+source = "github"
+github = "noahbclarkson/codebase_viewer"
+use_latest_release = true
+prefix = "v"

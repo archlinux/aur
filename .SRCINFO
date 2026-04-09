@@ -1,0 +1,24 @@
+pkgbase = codebase-viewer-bin
+	pkgdesc = Scan, explore, and document/export large codebases
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/noahbclarkson/codebase_viewer
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = hicolor-icon-theme
+	provides = codebase-viewer
+	conflicts = codebase-viewer
+	options = !strip
+	source = APPLICATION.desktop
+	source = METAINFO.xml
+	source = ICON.png
+	sha256sums = 6f834952398511ef2fe1fbca1521181752bdd4cc28355205e253f7fe145e52b0
+	sha256sums = 990fa050f1dd3851a5f3e4f2211903434348418d9844c280266b36dc5d1c97c4
+	sha256sums = 6357fd8b31e14b1b2deeac1e4396c97b9979b97d5c31781001a54da22e59ea78
+	source_x86_64 = codebase-viewer-x86_64-0.3.0.tgz::https://github.com/noahbclarkson/codebase_viewer/releases/download/v0.3.0/codebase_viewer-v0.3.0-linux-x64-gnu.tar.gz
+	sha256sums_x86_64 = 59360ff7eb522004105dfbea2d0737c71f0d815dfcbbb11fba5fae0430b8dad2
+
+pkgname = codebase-viewer-bin

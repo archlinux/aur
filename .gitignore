@@ -1,0 +1,8 @@
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.desktop
+!*.xml
+!*.png

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.codebase-viewer.app</id>
+  <name>codebase-viewer</name>
+  <summary>Scan, explore, and document/export large codebases</summary>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <developer id="com.github.noahbclarkson">
+    <name>Noah Clarkson</name>
+  </developer>
+  <description>
+    <p>Codebase Viewer is a cross-platform desktop application—written entirely in Rust—that lets you scan, explore, and document large codebases with millisecond-level responsiveness.</p>
+  </description>
+  <launchable type="desktop-id">codebase-viewer.desktop</launchable>
+  <url type="homepage">https://github.com/noahbclarkson/codebase_viewer</url>
+  <url type="bugtracker">https://github.com/noahbclarkson/codebase_viewer/issues</url>
+  <content_rating type="oars-1.1" />
+  <provides>
+    <binary>codebase-viewer</binary>
+  </provides>
+  <releases>
+    <release version="0.3.0" date="2025-12-23">
+      <description>
+        <p>First public release.</p>
+      </description>
+    </release>
+  </releases>
+</component>
