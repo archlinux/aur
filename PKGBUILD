@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=goofcord-bin
 _pkgname=GoofCord
-pkgver=2.1.1
-_electronversion=40
+pkgver=2.2.0
+_electronversion=41
 pkgrel=1
 pkgdesc="Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -26,9 +26,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${url}/releases/download/v
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('4e7f66aa93929feee2db20f14f871e7ddcc69236b0ecfb79a19ade9b859daf51'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('0f66e668eafa873310e69074b5d8e82d7e120bc1433247bd87f9f2b611335efa')
-sha256sums_armv7h=('60771d56a22eefe77fa2a67d3a13ead721f8e9d824dbaf8066b2d949816523db')
-sha256sums_x86_64=('9bb3b2c3d536a4925c526767dd99e8920a5fb318a171c40f61341f4aed5ee01a')
+sha256sums_aarch64=('121c97e80fb966af2b480c25e69eabde3c7e1405f5e4e032f07c1f3a1e7988cf')
+sha256sums_armv7h=('b53f55ebc9e809d97283b065d5edb7df3a20d14f0b21309fc2aa594c1bbda8ce')
+sha256sums_x86_64=('20700a065cb4dbea3e232c7191d8bd5f5fea7147c042d5c5ba732c88e4ed2aac')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
