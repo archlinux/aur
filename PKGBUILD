@@ -1,14 +1,15 @@
 # Maintainer:
-# Contributor: Figue <ffigue at gmail dot com>
+# Contributor: jessienab <git at nabein dot me>
+# Based on script written by Figue
 
 : ${_install_path:=usr/lib}
 
 _pkgname="icecat"
 pkgname="$_pkgname-bin"
-pkgver=140.3.1
+pkgver=140.9.0
 pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
-url="https://icecatbrowser.org"
+url="https://git.nabein.me/icecat-bin"
 license=('MPL-2.0')
 arch=('x86_64')
 
@@ -17,13 +18,13 @@ conflicts=("$_pkgname")
 
 options=('!strip' '!debug')
 
-_dl_url="https://icecatbrowser.org/assets/icecat/$pkgver"
+_dl_url="https://codeberg.org/jessienab/icecat-bin/releases/download/$pkgver/"
 _dl_file="icecat-$pkgver.en-US.linux-$CARCH.tar.xz"
 
-noextract=("$_dl_file")
+noextract=("$_dl_url/$_dl_file")
 
 source=("$_dl_url/$_dl_file")
-sha256sums=('c71d19313bc2636dd926da366010fe387dcd0b51a39cfe1958c907d75420a8b0')
+sha256sums=('5f22ada7377591d7dfe980ed0cc78060ebff76a495c2fde7faaba452788477bb')
 
 package() {
   depends=(
