@@ -1,0 +1,20 @@
+pkgbase = csco-launcher-git
+	pkgdesc = Community Launcher for Classic Offensive (CS:CO)
+	pkgver = r1.gabcdef0
+	pkgrel = 1
+	url = https://github.com/Skoczi/csco_launcher
+	arch = x86_64
+	license = custom:unknown
+	makedepends = git
+	makedepends = npm
+	makedepends = nodejs
+	depends = electron
+	depends = libxss
+	depends = nss
+	provides = csco-launcher
+	conflicts = csco-launcher
+	install = csco-launcher.install
+	source = csco-launcher-git::git+https://codeberg.org/Skoczi/csco-launcher
+	sha256sums = SKIP
+
+pkgname = csco-launcher-git
