@@ -18,7 +18,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mordup/ctfl/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('58680791c1a9307a85d87a11e800989288ff9f6acfb8941e6b6e709dee73d4d0')
+sha256sums=('2f1278e2ef4bd0663d262c0ca290f17b1df2a5502ddcd917020ac9fc2bc7f1de')
 
 build() {
     cd "$pkgname-$pkgver"
