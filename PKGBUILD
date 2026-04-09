@@ -10,7 +10,7 @@ pkgver=2026.03.30
 pkgrel=1
 _gitversion=latest
 
-arch=('x86_64')
+arch=('any')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -29,8 +29,9 @@ source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 		"DESIGN-${pkgver}.md::${_ghurlraw}/DESIGN.md"
 		"FEATURES-${pkgver}.md::${_ghurlraw}/FEATURES.md"
 		"ABOUT-${pkgver}.md::${_ghurlraw}/docs/help/about.md"
-		"TUTORIAL-${pkgver}.md::${_ghurlraw}/docs/help/tutorial.md")
-source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}")
+		"TUTORIAL-${pkgver}.md::${_ghurlraw}/docs/help/tutorial.md"
+		"CHANGELOG-${pkgver}.md::${_ghurlraw}/docs/help/changelog.md"
+		"${_appname}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}")
 sha256sums=('9f3273e5e01858ed10ab7a253cbd6b1abd7259bd9b4b3fd1dfafc3bf902e89c3'
             '4c67db3163792b16db3ea273f0af2dcc654c7d913b17953cefab2b01d5781098'
             '179b824a6a0258adde909aebf0f0b320a2495cbb655ad69d614c7a65803c4252'
@@ -38,15 +39,17 @@ sha256sums=('9f3273e5e01858ed10ab7a253cbd6b1abd7259bd9b4b3fd1dfafc3bf902e89c3'
             '757e6fa391078cd3ab8b522b14021740e4a03f065173ad2fb7ece812fb0075b8'
             '4af4d7b4e5fe3a64e0b41ccd9d8691e1f74708682b1bb7945a8fd65f3935843f'
             '2c1d40500aec7391a4a692bdfb121b5bedbac96789387cac34519a530fe1c33f'
-            'b69a054e50829ddbc1f1d7aaa8aa6d3cfac9eb52c2ac85463e488bc30dc9bc46')
-sha256sums_x86_64=('baf4c3f1eaf42496e5727e92634c3f049ba655c7334d095bfcc961499ca016f7')
+            'b69a054e50829ddbc1f1d7aaa8aa6d3cfac9eb52c2ac85463e488bc30dc9bc46'
+            '7cd4231b0dae8ffbcebef6e8dd4c499e55269b9dc08868b5546c52aad6f6eec2'
+            'baf4c3f1eaf42496e5727e92634c3f049ba655c7334d095bfcc961499ca016f7')
 
 
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_appname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 "${_appname}-${pkgver}" "${pkgdir}/usr/bin/${_appname}"
 
+	install -Dm644 "CHANGELOG-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 	install -Dm644 "TUTORIAL-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/TUTORIAL.md"
 	install -Dm644 "FEATURES-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/FEATURES.md"
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
