@@ -5,8 +5,8 @@ pkgbase="${pkgname}"
 _upstreamname=OpenLinkHub
 _binlocation=/usr/bin/"${pkgname%-*}"
 _applocation=/var/lib/"${pkgname%-*}"
-_tag=0.8.3
-pkgver=0.8.3
+_tag=0.8.4
+pkgver=0.8.4
 pkgrel=3
 pkgdesc="Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs. [Latest Release - source]"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(
 	"${pkgname%-*}".tmpfiles
 )
 noextract=()			
-sha256sums=('35530a4a8aba11aef42a4d2ccf3667c67fe41487f6b45d250e04d864f6721aec'
+sha256sums=('98cceda66aeab57caca702ec4dcdab35fcc839ac0aa6f8e0915f027c7c67434c'
             '7b6cc5e43cfe1dcb13683cbf9925c1d2f253c633513750b47fa04303128fcf52'
             '8c9f747bc6484290cb97b40e5904dc02cce2672e59e0f6ad720a1cd6a7b9d900'
             '858fd197e13a6bc2756e090f622adcac0d02d20007c366d0dff93258898e256e'
