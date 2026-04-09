@@ -1,0 +1,18 @@
+pkgbase = uli-git
+	pkgdesc = Universal Linux Installer co-developed with Antigravity
+	pkgver = 0.1.0.alpha
+	pkgrel = 1
+	url = https://github.com/Mizumo-prjkt/uli
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	depends = qt6-base
+	depends = libarchive
+	depends = dbus
+	depends = libisoburn
+	depends = yaml-cpp
+	source = uli-git-0.1.0.alpha.tar.gz::https://github.com/Mizumo-prjkt/uli/archive/refs/tags/v0.1.0.alpha.tar.gz
+	sha256sums = SKIP
+
+pkgname = uli-git
