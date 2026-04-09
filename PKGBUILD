@@ -18,10 +18,7 @@ sha256sums=('acb43e6cc199efd937527b5bfb701e1470bde576ea92c98d7ee203a0b94ca158'
 build() {
   cd "${srcdir}/suricata_exporter-${pkgver}"
   export CGO_ENABLED=0
-  export GOPROXY="https://mirrors.aliyun.com/goproxy,https://proxy.golang.org,direct"
-  export GOSUMDB="sum.golang.org"
   export GOFLAGS="-trimpath -mod=readonly -modcacherw"
-  export GODEBUG=netdns=cgo
   go build \
     -ldflags "-s -w -X main.version=v${pkgver}" \
     -o suricata_exporter \
