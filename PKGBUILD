@@ -1,6 +1,6 @@
 # Maintainer: Mathis <999frostz@gmail.com>
 pkgname=screenix-bin
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Professional screen recorder with smooth zoom effects"
 arch=('x86_64')
@@ -18,6 +18,7 @@ depends=(
   'gst-plugins-good'
   'gst-libav'
   'ffmpeg'
+  'xdotool'
   'pipewire'
   'wireplumber'
   'xdg-desktop-portal'
