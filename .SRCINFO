@@ -1,0 +1,11 @@
+pkgbase = hn-filelock-zig-bin
+	pkgdesc = Simple file lock tool written in Zig
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hnchengzong/hn-filelock-zig
+	arch = x86_64
+	license = MIT
+	source = https://github.com/hnchengzong/hn-filelock-zig/releases/download/v0.1.0/hn-filelock-zig-x86_64-v0.1.0.pkg.tar.zst
+	sha256sums = e642ce2c72dafb78831d9b03dcb4029938174e0ae570d897990635af19524cb2
+
+pkgname = hn-filelock-zig-bin
