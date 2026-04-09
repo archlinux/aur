@@ -3,13 +3,13 @@
 
 pkgname=opentrace-bin
 pkgver=1.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform GUI wrapper for NextTrace. Bringing you the familiar traceroute experience."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Archeb/opentrace"
 license=('GPL3')
 options=('!debug')
-depends=('nexttrace' 'webkit2gtk')
+depends=('nexttrace' 'webkit2gtk-4.1')
 
 provides=('opentrace')
 conflicts=('opentrace')
@@ -32,16 +32,25 @@ latestver() {
 package() {
   # Create target directory
   install -dm755 "${pkgdir}/opt/${pkgname}"
-  
-  # Copy files
-  cp -r "${srcdir}"/* "${pkgdir}/opt/${pkgname}"
+
+  # Copy only the extracted app payload, not helper sources or downloaded archives.
+  local _item
+  for _item in "${srcdir}"/*; do
+    case "${_item##*/}" in
+      opentrace.desktop|logo.png|"${pkgname}-${pkgver}")
+        continue
+        ;;
+    esac
+    cp -r "${_item}" "${pkgdir}/opt/${pkgname}"
+  done
 
   # Remove bundled NextTrace to use system dependency
   rm -f "${pkgdir}/opt/${pkgname}/nexttrace"
 
-  # Create binary symlink
+  # Launch from the install directory so .NET can resolve its bundled assemblies.
   install -dm755 "${pkgdir}/usr/bin"
-  ln -sf "/opt/${pkgname}/OpenTrace" "${pkgdir}/usr/bin/opentrace"
+  printf '%s\n' '#!/bin/sh' "cd /opt/${pkgname} || exit 1" 'exec ./OpenTrace "$@"' > "${pkgdir}/usr/bin/opentrace"
+  chmod 755 "${pkgdir}/usr/bin/opentrace"
   
   # Install desktop file and icon
   install -Dm644 "opentrace.desktop" "${pkgdir}/usr/share/applications/opentrace.desktop"
