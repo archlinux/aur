@@ -1,14 +1,12 @@
-#!/usr/bin/env python
-
 import curses
-import os
+import pathlib
 import pickle
 import random
-import time
 
-PICKLE_FILE = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "snake_high_score.pkl"
-)
+data_dir = pathlib.Path.home() / ".local" / "share" / "pysnake"
+data_dir.mkdir(parents=True, exist_ok=True)
+PICKLE_FILE = data_dir / "snake_high_score.pkl"
+
 score = 0
 highscore = 0
 
@@ -44,11 +42,9 @@ def init_colors():
 
 
 def draw_border(win, sh, sw):
-    """Draw a beautiful double-line border around the game area"""
     win.addch(0, 0, "╔", curses.color_pair(4) | curses.COLOR_BLUE)
     win.addch(0, sw - 1, "╗", curses.color_pair(4) | curses.COLOR_BLUE)
     win.addch(sh - 1, 0, "╚", curses.color_pair(4) | curses.COLOR_BLUE)
-
     try:
         win.addch(sh - 1, sw - 1, "╝", curses.color_pair(4) | curses.COLOR_BLUE)
     except curses.error:
@@ -96,7 +92,6 @@ def draw_header(win, sw, score, high_score):
 
 
 def show_game_over(win, sh, sw, score, high_score):
-    """Display animated game over screen"""
     center_y, center_x = sh // 2, sw // 2
     messages = [
         "╔══════════════════════════════╗",
@@ -125,7 +120,6 @@ def show_game_over(win, sh, sw, score, high_score):
 
 
 def show_start_screen(win, sh, sw):
-    """Display a beautiful start screen"""
     win.clear()
     draw_border(win, sh, sw)
     title_lines = [
@@ -151,10 +145,7 @@ def show_start_screen(win, sh, sw):
             else curses.color_pair(4)
         )
         win.addstr(start_y + i, x, line, color)
-    instructions = [
-        "Use Arrow Keys or WASD to move",
-        "Press SPACE to start, Q to quit",
-    ]
+    instructions = ["Use Arrow Keys or WASD to move", "Press SPACE to start, Q to quit"]
     for i, inst in enumerate(instructions):
         win.addstr(
             start_y + len(title_lines) + 2 + i,
@@ -163,7 +154,6 @@ def show_start_screen(win, sh, sw):
             curses.color_pair(6),
         )
     win.refresh()
-    # Wait for input
     while True:
         key = win.getch()
         if key == ord(" "):
@@ -174,7 +164,7 @@ def show_start_screen(win, sh, sw):
 
 def main(stdscr):
     global highscore
-    curses.curs_set(0)  # Hide cursor
+    curses.curs_set(0)
     init_colors()
     sh, sw = stdscr.getmaxyx()
     win = curses.newwin(sh, sw, 0, 0)
@@ -189,8 +179,7 @@ def main(stdscr):
         draw_border(win, sh, sw)
         min_y, max_y = 1, sh - 2
         min_x, max_x = 1, sw - 2
-        snake_y = sh // 2
-        snake_x = sw // 4
+        snake_y, snake_x = sh // 2, sw // 4
         snake = [
             [snake_y, snake_x],
             [snake_y, snake_x - 1],
@@ -200,8 +189,7 @@ def main(stdscr):
         ]
         food = [sh // 2, sw // 2]
         frame = 0
-        key = curses.KEY_RIGHT
-        last_key = curses.KEY_RIGHT
+        key = last_key = curses.KEY_RIGHT
         score = 0
         while True:
             frame += 1
@@ -228,26 +216,24 @@ def main(stdscr):
                     key = curses.KEY_RIGHT
                     last_key = key
                 elif next_key == ord("q"):
-                    exit()
+                    return
                 elif next_key == ord(" "):
-                    # Pause the game
-                    paused_text = "PAUSED"
-                    text_x = (sw - len(paused_text)) // 2
                     win.addstr(
                         sh // 2,
-                        text_x,
-                        paused_text,
+                        (sw - 6) // 2,
+                        "PAUSED",
                         curses.color_pair(5) | curses.A_BOLD,
                     )
                     win.refresh()
                     win.nodelay(0)
                     while True:
-                        pause_key = win.getch()
-                        if pause_key == ord(" "):
+                        pk = win.getch()
+                        if pk == ord(" "):
                             break
-                        elif pause_key == ord("q"):
-                            exit()
+                        elif pk == ord("q"):
+                            return
                     win.timeout(100)
+
             new_head = [snake[0][0], snake[0][1]]
             if key == curses.KEY_DOWN:
                 new_head[0] += 1
@@ -257,6 +243,7 @@ def main(stdscr):
                 new_head[1] -= 1
             elif key == curses.KEY_RIGHT:
                 new_head[1] += 1
+
             if (
                 new_head[0] < min_y
                 or new_head[0] > max_y
@@ -265,25 +252,25 @@ def main(stdscr):
                 or new_head in snake
             ):
                 if score > high_score:
-                    high_score = score
-                    highscore = score
+                    high_score = highscore = score
                     save_highscore()
                 show_game_over(win, sh, sw, score, high_score)
-                time.sleep(1)
-                win.nodelay(0)
-                restart_key = win.getch()
-                if restart_key == ord("q"):
-                    exit()
-                elif restart_key == ord("r"):
-                    curses.wrapper(main)
-                else:
-                    exit()
+                restart = False
+                while True:
+                    pk = win.getch()
+                    if pk == ord("r"):
+                        restart = True  # Set flag to restart
+                        break
+                    elif pk == ord("q"):
+                        return
+                if restart:
+                    break  # Break inner gameplay loop to reach outer reset loop
+
             snake.insert(0, new_head)
             if snake[0] == food:
                 score += 10
                 if score > high_score:
-                    high_score = score
-                    highscore = score
+                    high_score = highscore = score
                     save_highscore()
                 while True:
                     food = [
@@ -295,6 +282,7 @@ def main(stdscr):
             else:
                 tail = snake.pop()
                 win.addch(tail[0], tail[1], " ")
+
             win.clear()
             draw_border(win, sh, sw)
             draw_header(win, sw, score, high_score)
