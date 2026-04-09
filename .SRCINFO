@@ -1,14 +1,14 @@
 pkgbase = minefetch
 	pkgdesc = Download Minecraft mods (In Rust)
-	pkgver = 1.6.4
-	pkgrel = 2
+	pkgver = 1.6.10
+	pkgrel = 1
 	url = https://github.com/KirillkoTankisto/minefetch
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
-	source_x86_64 = https://github.com/KirillkoTankisto/minefetch/releases/download/beta_1.6.4/minefetch-1.6.4-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 03afe2d77b42083f0214b05a2505982143997a3a07db5a6b3df4021a5fa9e460
-	source_aarch64 = https://github.com/KirillkoTankisto/minefetch/releases/download/beta_1.6.4/minefetch-1.6.4-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 4bf5c88b9067f03aa1243d417be59b89b711d4b0ccdecd4f943612e62c80a889
+	source_x86_64 = https://github.com/KirillkoTankisto/minefetch/releases/download/beta_1.6.10/minefetch-1.6.10-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 7fa02e74c524d767073cd1aa22b273da9bab8a9cd3973d0c9deaac1e549c3342
+	source_aarch64 = https://github.com/KirillkoTankisto/minefetch/releases/download/beta_1.6.10/minefetch-1.6.10-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = ff510c6107f5f8950f924633856eda8066941360c99bd6668c4ff0c59990ccc5
 
 pkgname = minefetch
