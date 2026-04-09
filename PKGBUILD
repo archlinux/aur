@@ -13,19 +13,21 @@ depends=('python-einops' 'python-pytorch-cuda')
 makedepends=('ninja' 'python-build' 'python-installer' 'python-packaging'
              'python-psutil' 'python-setuptools' 'python-wheel')
 optdepends=()
-cutlass_commit_full=dc4817921edda44a549197ff3a9dcf5df0636e7b
-cutlass_commit=${cutlass_commit_full:0:8}
-source=("$_name-$pkgver.tar.gz::https://github.com/Dao-AILab/$_name/archive/refs/tags/v$pkgver.tar.gz"
-        "cutlass-${cutlass_commit}.tar.gz::https://github.com/NVIDIA/cutlass/archive/${cutlass_commit_full}.tar.gz")
-sha256sums=('61cd5e91507ad7f04dc7c207d8bc8bfb1e43b56b806e51febbc27faeaee208ba'
-            'f2a3a9df5e6f010c8b02716aa2644a6f071827fafa606fac5f5241cab6a1ab56')
-
+source=(
+  "git+https://github.com/Dao-AILab/flash-attention#tag=v${pkgver}"
+  "git+https://github.com/NVIDIA/cutlass"
+)
+sha256sums=('1be6e9eb9daa3a0294c164031fd15d026bcabadd89c5210a760f9f5f9e121ffd'
+            'SKIP')
 
 prepare() {
-    ln -sf cutlass-$cutlass_commit_full cutlass-$cutlass_commit
+  cd $_name
 
-    rm -rfv $_name-$pkgver/csrc/cutlass
-    ln -sf ../../cutlass-$cutlass_commit_full $_name-$pkgver/csrc/cutlass
+  git submodule init
+  git config submodule."csrc/cutlass".url "${srcdir}/cutlass"
+  # Disable ck, it's only for ROCm gfx9
+  git config submodule."csrc/composable_kernel".update none
+  git -c protocol.file.allow=always submodule update --init
 }
 
 build() {
@@ -46,13 +48,13 @@ build() {
     # Fix glog build errors.
     export CFLAGS='-DGLOG_USE_GLOG_EXPORT'
 
-    cd $_name-$pkgver
+    cd $_name
     # Add --skip-dependency-check to avoid the ninja python package requirement.
     python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
-  cd $_name-$pkgver
+  cd $_name
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   python -m installer --compile-bytecode=1 --destdir=$pkgdir dist/flash_attn-$pkgver-*.whl
 }

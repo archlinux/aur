@@ -14,9 +14,9 @@ pkgbase = python-flash-attention
 	makedepends = python-wheel
 	depends = python-einops
 	depends = python-pytorch-cuda
-	source = flash-attention-2.8.3.tar.gz::https://github.com/Dao-AILab/flash-attention/archive/refs/tags/v2.8.3.tar.gz
-	source = cutlass-dc481792.tar.gz::https://github.com/NVIDIA/cutlass/archive/dc4817921edda44a549197ff3a9dcf5df0636e7b.tar.gz
-	sha256sums = 61cd5e91507ad7f04dc7c207d8bc8bfb1e43b56b806e51febbc27faeaee208ba
-	sha256sums = f2a3a9df5e6f010c8b02716aa2644a6f071827fafa606fac5f5241cab6a1ab56
+	source = git+https://github.com/Dao-AILab/flash-attention#tag=v2.8.3
+	source = git+https://github.com/NVIDIA/cutlass
+	sha256sums = 1be6e9eb9daa3a0294c164031fd15d026bcabadd89c5210a760f9f5f9e121ffd
+	sha256sums = SKIP
 
 pkgname = python-flash-attention
