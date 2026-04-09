@@ -1,0 +1,13 @@
+pkgbase = ptyxis-wrapper
+	pkgdesc = A wrapper for Ptyxis, ensuring compatibility with applications expecting gnome-terminal.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/chergert/ptyxis
+	arch = any
+	license = GPL
+	depends = bash
+	depends = ptyxis
+	provides = gnome-terminal
+	conflicts = gnome-terminal
+
+pkgname = ptyxis-wrapper
