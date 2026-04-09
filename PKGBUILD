@@ -1,7 +1,7 @@
 # Maintainer: phlppbmm <philipp.baumm@gmx.net>
 pkgname=python-agent-rtfm-bin
 pkgver=0.1.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Local documentation retrieval service for agent-assisted development (prebuilt)"
 arch=('any')
 url="https://github.com/phlppbmm/rtfm"
@@ -22,7 +22,6 @@ depends=(
     'python-numpy'
     'python-scipy'
     'python-sympy'
-    'python-yaml'
     'python-requests'
     'python-zipp'
 )
@@ -31,45 +30,30 @@ provides=('python-agent-rtfm')
 conflicts=('python-agent-rtfm' 'python-agent-rtfm-git')
 options=('!strip')
 
-# Packages already provided by Arch repos — exclude from wheel download
-# to avoid file conflicts with pacman-managed packages
-_excluded=(
-    fastapi uvicorn gitpython httpx click rich pyyaml html2text
-    beautifulsoup4 lxml markdownify numpy scipy sympy pyyaml
-    requests urllib3 certifi charset-normalizer idna zipp
-    sniffio anyio starlette typing-extensions annotated-types
-    pydantic pydantic-core jinja2 markupsafe pygments markdown-it-py
-    mdurl websockets httptools watchfiles python-dotenv
-    smmap gitdb wrapt deprecated humanfriendly coloredlogs
-    python-dateutil six pyasn1 pyasn1-modules rsa oauthlib
-    requests-oauthlib cachetools google-auth mpmath
-)
-
 build() {
-    _exclude_args=""
-    for pkg in "${_excluded[@]}"; do
-        _exclude_args="${_exclude_args} --no-binary :none:"
-    done
-
-    # Download only wheels not available in Arch repos
-    uv pip download \
-        --dest="${srcdir}/wheels" \
-        --python-version "$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')" \
-        --platform manylinux_2_17_x86_64 \
-        --platform linux_x86_64 \
-        --python-platform linux \
+    uv pip install \
+        --target="${srcdir}/target" \
+        --no-compile \
         "agent-rtfm==${pkgver}"
-
-    # Remove wheels that conflict with system packages
-    for pkg in "${_excluded[@]}"; do
-        rm -f "${srcdir}/wheels/${pkg//-/_}"*.whl
-        rm -f "${srcdir}/wheels/${pkg}"*.whl
-    done
 }
 
 package() {
-    for whl in "${srcdir}/wheels/"*.whl; do
-        [ -f "$whl" ] || continue
-        python -m installer --destdir="${pkgdir}" "$whl"
+    _pyver=$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+    _syspkg="/usr/lib/python${_pyver}/site-packages"
+    _destpkg="${pkgdir}${_syspkg}"
+    mkdir -p "${_destpkg}"
+
+    # Only install dirs/files that don't already exist in system site-packages
+    for item in "${srcdir}/target/"*; do
+        name=$(basename "$item")
+        if [ ! -e "${_syspkg}/${name}" ]; then
+            cp -a "$item" "${_destpkg}/"
+        fi
     done
+
+    # Ensure the rtfm CLI script is installed
+    install -dm755 "${pkgdir}/usr/bin"
+    if [ -d "${srcdir}/target/bin" ]; then
+        install -m755 "${srcdir}/target/bin/"* "${pkgdir}/usr/bin/"
+    fi
 }
