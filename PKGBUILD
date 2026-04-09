@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=19
+pkgrel=20
 pkgdesc="Shorin Niri Desktop Environment (Core Configs & Installer)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -12,7 +12,7 @@ depends=(
     'bash' 'curl'
     'niri' 'mako' 'polkit-gnome' 'xdg-desktop-portal-gnome' 'xwayland-satellite' 'swayidle'
     'fuzzel-ime-git' 'libnotify' 'brightnessctl' 'cava' 'cliphist' 'wl-clipboard' 
-    'grim' 'slurp' 'hyprlock' 'hyprpicker' 'swayosd' 'awww' 'waybar' 'matugen' 'shorinclip-git' 'clipsync-git'
+    'grim' 'slurp' 'hyprlock' 'hyprpicker' 'swayosd' 'awww' 'waybar' 'matugen' 'shorinclip-git'
 )
 
 # 可选依赖：仅供 pacman 和网页展示参考，实际由 shorinniri 脚本全自动比对安装
@@ -35,7 +35,7 @@ optdepends=(
     'wlsunset: Gamma adjustment' 'pavucontrol: Audio control' 'downgrade: Package downgrade'
     'strace: System call tracer' 'xdg-terminal-exec: XDG terminal' 'kitty: Terminal emulator' 'firefox: Web browser'
     'fastfetch: System info' 'btop: Resource monitor' 'gdu: Disk usage' 'opencode: Code opener'
-    'shorin-contrib-git: Shorin tools' 'ddcutil-service: DDC util'
+    'shorin-contrib-git: Shorin tools' 'clipsync-git: Clipboard sync' 'ddcutil-service: DDC util'
     'python-pywalfox: Firefox theming' 'waypaper-git: Wallpaper setter' 'niri-sidebar-git: Sidebar'
     'wl-longshot-git: Screenshot tool' 'shorin-screenrec-menu-git: Screen record menu'
     'fcitx5: Input method' 'fcitx5-configtool: Fcitx5 config' 'fcitx5-gtk: Fcitx5 GTK' 'fcitx5-qt: Fcitx5 QT'
