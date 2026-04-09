@@ -17,8 +17,10 @@ package() {
         --root="${pkgdir}" \
         --prefix=/usr \
         --break-system-packages \
+        --ignore-installed \
         --no-warn-script-location \
         --disable-pip-version-check \
         --no-cache-dir \
+        --no-compile \
         "agent-rtfm==${pkgver}"
 }
