@@ -1,50 +1,48 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-git
 pkgver=r4.0dabc1d
-pkgrel=14
-pkgdesc="Shorin DMS Niri desktop environment (Dependencies & Dotfiles)"
+pkgrel=16
+pkgdesc="Shorin DMS Niri desktop environment (Core Configs & Installer)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
 license=('GPL')
 provides=('shorin-dms-niri-meta' 'shorin-dms-niri-dotfiles-git')
 conflicts=('shorin-dms-niri-meta' 'shorin-dms-niri-dotfiles-git')
+
+# 核心底线依赖：桌面环境能够成功启动的必需品
 depends=(
-
-    'bash'
-    
-    # core
-    'dms-shell' 'xdg-desktop-portal-gnome' 'niri' 'xwayland-satellite' 'satty' 'slurp' 'libnotify' 
-    'imv' 'mpv' 'firefox' 'power-profiles-daemon'
-
-    # fonts
-    'noto-fonts' 'noto-fonts-cjk' 'noto-fonts-emoji' 
-    
-    # shell tool
-    'cups-pk-helper' 'kimageformats' 'niri-sidebar-git' 'cava' 'cliphist'
-    'wl-clipboard' 'dgop' 'dsearch-bin' 'qt5-multimedia'
-    
-    # File Manager
-    'ffmpegthumbnailer' 'gvfs-smb' 'nautilus-open-any-terminal' 'file-roller'
-    'gnome-keyring' 'gst-plugins-base' 'gst-plugins-good' 'gst-libav' 'nautilus'
-    'xdg-desktop-portal-gtk' 'thunar' 'tumbler' 'poppler-glib'
-    'thunar-archive-plugin' 'thunar-volman' 'gvfs-mtp' 'gvfs-gphoto2'
-    'webp-pixbuf-loader' 'libgsf'
-
-    # Terminal Setup
-    'kitty' 'xdg-terminal-exec' 'bat' 'fuzzel' 'wf-recorder' 'wl-screenrec-git' 
-    'ttf-jetbrains-maple-mono-nf-xx-xx' 'eza' 'zoxide' 'starship' 'jq' 'fish'
-    'timg' 'imagemagick' 'shorin-contrib-git' 'fastfetch' 'gdu' 'btop' 'opencode' 'shorin-screenrec-menu-git'
-
-    # Flatpak & Theme
-    'flatpak' 'bazaar' 'matugen' 'adw-gtk-theme' 'python-pywalfox' 'nwg-look' 'breeze-cursors'
-    
-    # input method
-    'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'fcitx5-rime' 'rime-ice-git' 'rime-wubi'
+    'bash' 'dms-shell' 'xdg-desktop-portal-gnome' 'niri' 'xwayland-satellite'
+    'libnotify' 'power-profiles-daemon' 'wl-clipboard' 'cliphist' 'cava'
+    'dgop' 'dsearch-bin' 'qt5-multimedia' 'cups-pk-helper' 'kimageformats'
 )
+
+# 可选依赖：仅作为展示和 pacman 的参考。实际安装由 shorindms 脚本接管
+optdepends=(
+    'satty: Screenshot editor' 'slurp: Region selector' 'imv: Image viewer' 'mpv: Video player' 'firefox: Web browser'
+    'noto-fonts: Fonts' 'noto-fonts-cjk: CJK fonts' 'noto-fonts-emoji: Emoji fonts'
+    'niri-sidebar-git: Niri sidebar component'
+    'ffmpegthumbnailer: Thumbnails' 'gvfs-smb: SMB support' 'nautilus-open-any-terminal: Nautilus extension'
+    'file-roller: Archive manager' 'gnome-keyring: Keyring service' 'gst-plugins-base: GStreamer'
+    'gst-plugins-good: GStreamer' 'gst-libav: GStreamer' 'nautilus: File manager'
+    'xdg-desktop-portal-gtk: GTK portal' 'thunar: File manager' 'tumbler: Thumbnail service'
+    'poppler-glib: PDF rendering' 'thunar-archive-plugin: Thunar plugin' 'thunar-volman: Thunar volume manager'
+    'gvfs-mtp: MTP support' 'gvfs-gphoto2: PTP support' 'webp-pixbuf-loader: WebP support' 'libgsf: File format support'
+    'kitty: Terminal emulator' 'xdg-terminal-exec: XDG terminal' 'bat: Cat clone' 'fuzzel: App launcher'
+    'wf-recorder: Screen recorder' 'wl-screenrec-git: Screen recorder' 'ttf-jetbrains-maple-mono-nf-xx-xx: Custom font'
+    'eza: ls replacement' 'zoxide: cd replacement' 'starship: Shell prompt' 'jq: JSON processor' 'fish: Shell'
+    'timg: Image viewer in terminal' 'imagemagick: Image manipulation' 'shorin-contrib-git: Shorin tools'
+    'fastfetch: System info' 'gdu: Disk usage' 'btop: Resource monitor' 'opencode: Code opener'
+    'shorin-screenrec-menu-git: Screen record menu' 'flatpak: Package management' 'bazaar: Version control'
+    'matugen: Material You colors' 'adw-gtk-theme: GTK theme' 'python-pywalfox: Firefox theme tool'
+    'nwg-look: GTK settings' 'breeze-cursors: Cursor theme' 'fcitx5: Input method framework'
+    'fcitx5-configtool: Fcitx5 GUI' 'fcitx5-gtk: Fcitx5 GTK' 'fcitx5-qt: Fcitx5 QT' 'fcitx5-rime: Fcitx5 Rime'
+    'rime-ice-git: Rime dict' 'rime-wubi: Rime Wubi'
+)
+
 makedepends=('git')
 
 source=("git+https://github.com/SHORiN-KiWATA/shorin-dms-niri.git")
-sha256sums=('SKIP') # 只剩一个 SKIP
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/shorin-dms-niri"
@@ -57,7 +55,7 @@ package() {
     local target_dir="$pkgdir/usr/share/shorin-dms-niri"
     install -dm755 "$target_dir"
     
-    # 1. 拷贝 dotfiles
+    # 拷贝 dotfiles
     if [[ -d "dotfiles" ]]; then
         cp -a dotfiles/. "$target_dir/"
     else
@@ -65,11 +63,11 @@ package() {
         exit 1
     fi
 
-    # 2. 从 Git 仓库内部安装 shorindms CLI 工具
+    # 安装 shorindms CLI 工具
     if [[ -f "shorindms" ]]; then
         install -Dm755 shorindms "$pkgdir/usr/bin/shorindms"
     else
-        echo "Error: 'shorindms' script not found in the git repository root."
+        echo "Error: 'shorindms' script not found."
         exit 1
     fi
 
