@@ -1,0 +1,4 @@
+[r-quick-share]
+source = "git"
+git = "https://github.com/Martichou/rquickshare.git"
+prefix = "v"
