@@ -1,7 +1,7 @@
 pkgbase = python-agent-rtfm
 	pkgdesc = Local documentation retrieval service for agent-assisted development
 	pkgver = 0.1.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/phlppbmm/rtfm
 	arch = any
 	license = MIT
@@ -21,6 +21,9 @@ pkgbase = python-agent-rtfm
 	depends = python-beautifulsoup4
 	depends = python-lxml
 	depends = python-markdownify
+	provides = python-agent-rtfm
+	conflicts = python-agent-rtfm-bin
+	conflicts = python-agent-rtfm-git
 	source = https://pypi.io/packages/source/a/agent-rtfm/agent_rtfm-0.1.1.tar.gz
 	sha256sums = SKIP
 

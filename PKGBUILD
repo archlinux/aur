@@ -1,7 +1,7 @@
 # Maintainer: phlppbmm <philipp.baumm@gmx.net>
 pkgname=python-agent-rtfm
 pkgver=0.1.1
-pkgrel=3
+pkgrel=1
 pkgdesc="Local documentation retrieval service for agent-assisted development"
 arch=('any')
 url="https://github.com/phlppbmm/rtfm"
@@ -22,6 +22,8 @@ depends=(
     'python-markdownify'
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling')
+provides=('python-agent-rtfm')
+conflicts=('python-agent-rtfm-bin' 'python-agent-rtfm-git')
 source=("https://pypi.io/packages/source/a/agent-rtfm/agent_rtfm-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
