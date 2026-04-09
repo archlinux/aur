@@ -2,7 +2,7 @@
 # Contributor: 欠陥電気 <misaka13514@gmail.com>
 
 pkgname=pnpm-shell-completion
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='Complete your pnpm command fastly.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/g-plane/pnpm-shell-completion'
 license=('MIT')
 depends=('glibc' 'gcc-libs')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/pnpm-shell-completion_$arch-unknown-linux-gnu.tar.gz")
-sha256sums=('fbbcfcd8c5c691ed9125593a82eb6d894cc4c7080685191a5c6297b1a01373b8')
+sha256sums=('eae0a5ab8dc26e296a9735753cfb569e7e2bcd9f29a686294ac6f68871b0e712')
 
 package() {
   install -Dm755 -t $pkgdir/usr/bin pnpm-shell-completion
