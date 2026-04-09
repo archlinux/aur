@@ -2,7 +2,7 @@
 pkgname=leshade-bin
 _pkgname=leshade
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An ReShade manager for linux."
 arch=('x86_64')
 url="https://github.com/Ishidawg/LeShade"
@@ -20,7 +20,7 @@ _appimage="LeShade-x86_64.AppImage"
 noextract=("${_appimage}")
 source=(
 "https://github.com/Ishidawg/LeShade/releases/download/${pkgver}/${_appimage}"
-"LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE"
+"${pkgname}-LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE"
 )
 sha256sums=('753b03f7c15a2f3cb03444baf48823161c944fcbcdf45316edaac0a1051880d4'
             'a7b8f406ed4e1a5311d51a1967f91e569a6c0ce815c2bf74956d926613dd61a3')
@@ -51,7 +51,7 @@ package() {
 	# Create a symbolic link for the AppRun
 	ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/${_pkgname}"
 	# License
-	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/${pkgname}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	# Permissions
 	chmod -R u+rwX,go+rX,go-w "${pkgdir}/opt/${_pkgname}"
 }
