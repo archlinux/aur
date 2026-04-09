@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=ESO AddOn Manager
+Comment=Cross platform addon manager for the Elder Scrolls Online.
+Exec=eso-addon-manager
+Type=Application
+Icon=com.arviceblot.eso-addon-manager
+Categories=Game;Utility;
