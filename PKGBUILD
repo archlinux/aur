@@ -3,18 +3,18 @@
 pkgbase=lucide-font
 pkgname=({eot,ttf,woff,woff2}-"${pkgbase}")
 _fontname=Lucide
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Beautiful & consistent icon toolkit made by the community.'
 arch=("any")
 url="https://lucide.dev"
 _ghurl="https://github.com/lucide-icons/lucide"
-licenses=('ISC')
+license=('ISC')
 source=(
     "${pkgbase}-${pkgver}.zip::${_ghurl}/releases/download/${pkgver}/${pkgbase}-${pkgver}.zip"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/lucide-icons/lucide/${pkgver}/LICENSE"
 )
-sha256sums=('cf6bf3f7ad6913971507fed85e1150d52730b44ed969a0858792cebafcd62c8e'
+sha256sums=('32beec9fcb0cd07e86329cfc1735886bf2f888351bf929422000478d38278371'
             'b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57')
 function _package {
     local _pkgname=$1
@@ -28,8 +28,9 @@ function _package {
     local font
     for font in "${fonts[@]}"; do
         install -Dm644 "${font}" "${pkgdir}/usr/share/fonts/${installdir}"
-        install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${ext}-${pkgbase}/LICENSE"
     done
+    # Install license for each sub-package
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 for _pkgname in "${pkgname[@]}"; do
     eval "function package_${_pkgname}() { _package ${_pkgname}; }"
