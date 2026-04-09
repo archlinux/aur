@@ -1,0 +1,24 @@
+pkgbase = asus-hub-bin
+	pkgdesc = The unofficial MyAsus alternative for Linux
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Traciges/Asus-Hub
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk4
+	depends = libadwaita
+	optdepends = libkscreen: OLED flicker-free dimming
+	optdepends = qt6-tools: KWin and KDE integration
+	optdepends = kconfig: OLED Pixel Refresh in KDE
+	optdepends = iio-sensor-proxy: Ambient light sensor for auto backlight
+	optdepends = swayidle: Keyboard backlight idle timer
+	optdepends = asusctl: Battery care, fan profiles, FN key mod
+	optdepends = wireplumber: Volume control & boost
+	optdepends = easyeffects: Audio sound profiles
+	optdepends = glib2: Touchpad toggle on GNOME
+	provides = asus-hub
+	conflicts = asus-hub
+	source_x86_64 = asus-hub.deb::https://github.com/Traciges/Asus-Hub/releases/download/v1.0.1/asus-hub_1.0.1-1_amd64.deb
+	sha256sums_x86_64 = 9b5266463cd6b9e3a8596a5c3ba3d5d5e91806f06826f98499152d98a6b83060
+
+pkgname = asus-hub-bin
