@@ -1,6 +1,6 @@
 pkgbase = pulse-bin
 	pkgdesc = A lightweight, real-time network traffic monitor for Linux written in modern C++
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ArpNova/pulse
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = pulse-bin
 	provides = pulse
 	conflicts = pulse
 	options = !strip
-	source = README-0.1.1.md::https://raw.githubusercontent.com/ArpNova/pulse/v0.1.1/README.md
-	source = LICENSE-0.1.1::https://raw.githubusercontent.com/ArpNova/pulse/v0.1.1/LICENSE
-	sha256sums = c8d192fea474ba724e4852be5aa8573483d70e6baec63ee6e71e9077b491cf24
+	source = README-0.2.0.md::https://raw.githubusercontent.com/ArpNova/pulse/v0.2.0/README.md
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/ArpNova/pulse/v0.2.0/LICENSE
+	sha256sums = 3158313312989a4dd8586c70d14386dd439e9dbff0e177e4750f969351d34d61
 	sha256sums = d4c35a50692bdc2280e3bffbd0fa0bd2f923fba5544c472deecc5c7114ac8a92
-	source_x86_64 = pulse-x86_64-0.1.1::https://github.com/ArpNova/pulse/releases/download/v0.1.1/pulse
-	sha256sums_x86_64 = d17badf1bebd1c8903cc565d1288c0314f181d9967cc695e9ecf3ba4ccca0dbd
+	source_x86_64 = pulse-x86_64-0.2.0::https://github.com/ArpNova/pulse/releases/download/v0.2.0/pulse
+	sha256sums_x86_64 = be034526f8c697262d7da59e5f7ee6ff5e631e29858da461e23c200ec021c897
 
 pkgname = pulse-bin
