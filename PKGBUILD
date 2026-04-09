@@ -2,7 +2,7 @@
 
 pkgname=nvcomp
 pkgver=5.2.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA nvCOMP is a high-speed data compression and decompression library optimized for NVIDIA GPUs."
 url="https://developer.nvidia.com/nvcomp"
 arch=('x86_64')
@@ -18,6 +18,7 @@ package() {
     mkdir -p "$pkgdir/usr"
     cp -r include "$pkgdir/usr"
     cp -r lib "$pkgdir/usr"
+    cp -r bin "$pkgdir/usr"
 
     install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }

@@ -1,7 +1,7 @@
 pkgbase = nvcomp
 	pkgdesc = NVIDIA nvCOMP is a high-speed data compression and decompression library optimized for NVIDIA GPUs.
 	pkgver = 5.2.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.nvidia.com/nvcomp
 	arch = x86_64
 	license = custom
