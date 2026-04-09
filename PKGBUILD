@@ -3,14 +3,14 @@
 _pkgsuffix=bin
 _pkgauthor=abenz1267
 _pkgname=elephant
-_pkgproviders=(websearch unicode todo symbols runner providerlist menus files desktopapplications clipboard calc archlinuxpkgs bluetooth windows snippets niriactions nirisessions bookmarks 1password dnfpackages bitwarden wireplumber)
+_pkgproviders=(websearch unicode todo symbols runner providerlist menus files desktopapplications clipboard calc archlinuxpkgs bluetooth windows snippets niriactions nirisessions bookmarks 1password dnfpackages bitwarden wireplumber playerctl)
 
 pkgbase=${_pkgname}-${_pkgsuffix}
 pkgname=(${_pkgname}-all-${_pkgsuffix} ${_pkgname}-${_pkgsuffix} $(for provider in ${_pkgproviders[@]}; do echo ${_pkgname}-${provider}-${_pkgsuffix} ; done))
 
 _packages=(${pkgname[@]})
 
-pkgver=2.20.3
+pkgver=2.21.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -34,29 +34,30 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v
                $(for provider in ${_pkgproviders[@]}; do echo "${provider}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${provider}-linux-${_barch[0]}.tar.gz" ; done))
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '77c380f4172541442054e2c23c2c0c1d0184b453ee52a26e352c1460972b65f1')
-sha256sums_x86_64=('a78abbeafc13af61d68ba6427429216e8cb39af4687d658ab6065a4cec028e98'
-                   'a71c383605ddc3c6fd371f1fd92bc46e51f13fcf6fb0bdeb8ab47b9c6363528e'
-                   '9800b6005e31071b26a740823d80b1ee06544de572ad728a050396cb7bef40d8'
-                   'cb6a5610babaf9219cbe1616497f93dd943241e127e16539dc29c7bb8ff48e77'
-                   'da19d68452c2c4bc536ce67103ca47fe326962c3d670159640f457077e8c5255'
-                   '6ecf62df0ee69fcb5d87d371422640b699a783f38a39c3f06754feb2803bb205'
-                   'c9a95d708965ae312204b403e69563bec2b04ad0ed0a462ea8d902c980afd40b'
-                   'b4794be59b5deed50034180d09b9a2fc83939153e786f9a6326b1bc02733ea93'
-                   '39109b9cbd24bf2e51fc2ab88b4165203c4f24079773518dae8616a149ea2078'
-                   '066abe040896a13b04230a0a1acf304e0b3e4c000da01e8f66971cf585ec2566'
-                   '6ea3c03d3e960a53cc2ee05572506072c8ea9f8b66cb5546d77937ec92cdb65d'
-                   'b000933599bb3a861731451add1ab2b5910101a31e0217e1867786c0fc03856a'
-                   '11e011497fc58664e3ff98f04cc238f757abbb90a271e668ad6d6adffed21baa'
-                   '581b6b477a503b1ba957bf5a5f8d59a03f87aad8d54780920a227a5d2840d4e2'
-                   'df71b621eb59bc3ad443522fcffef44057a706dfd506291694c2e4cc4b67a252'
-                   'fe4b56713c848ed9d546d46e4c7d4f30bf1805e6426274547819eea68699c5c9'
-                   '359289046f939bb908b83c48a23756604a6e76ed4c2017eb6d1c44e789bcd128'
-                   '40dbc4034778ecda2a8cf41ac23948bfeadf0463350668947a93570d03ad64b3'
-                   '26372fbe1140b751bee748e25837b34e44d5c3274eef201198df6f7374f810f4'
-                   'c72a46e147339efebf9b93070ed102af76c9d8280a4a2470b601d4940b078495'
-                   '95b4f971c1962d47ffacca5301956e45ba4b271ebfade5c3fe372fd72ad13c54'
-                   'f11a1e41ce2f710c3540f8bc0805dc17f6e7b33ceb98f665968fc6612b7007c4'
-                   '339f21df9e976671f67fdcb78118ea7a726ca63ff66949ff94ed4f1135f8b560')
+sha256sums_x86_64=('42d847bbb171abd5ed89db8d61d60acc895d0d04fa304552e4fa295c1e3f6cea'
+                   'c49cd4fe71d13923a3231509d3de7cfc0bc4c69f14d89583e25e011f406f4708'
+                   '40e47f96456db63bb37ca8edadb7b6c7570d10cf6aab1ee1f97dc53792cb2334'
+                   'b194075d35b34869ccb819933ff8ad545aaeeec65646b7bf0b1af41379ff2d43'
+                   '79b5ae243d1eea3789790a5ae26ec3beb3744c63ab8eee86befadaff0d95c6a3'
+                   '13f444b7d658a942ec1ce9e489110334469c63872b266604ae4ec2bc60b66e45'
+                   '2fdc4d25bb263a976d8da87a9ac10d3077b4232c1fdbe7a76e7255613ceb6294'
+                   '866fdc3cd33778f371a9ef16108e7419c102494e26aeef2525c59cb9ac08412d'
+                   '0fde611d275456ea0de83f0dc2c0484a51c8ecf0b12cfde6b255b26154c737d0'
+                   '2455b4056fed56255fb7cb7e0c3746176d299eef8bbef643953e1663c3281f83'
+                   '70749bd5c2935ed2836abfb36838f562b984e596c24346c04c71f78a23ee7e03'
+                   '183fbddab9c0e378e2e6cf62a3e117992d51194d53f7daa296a33599eca43870'
+                   '4f6f1cac5f9696bc78e2aeaf177a5e984291760a92fad27914fd0b96a618e5cd'
+                   '40e7d279783fb91d0db7e6730ae85fb1e6f2dcf62b84c709202bf0b6bbbb6a62'
+                   '6cd204ef069d98f0afb21c25102d237340cbf2d9275cd1b09c6bced709945229'
+                   '0df07612acf7e17f2754c109b3a8517b056eadfbf60bb399d6c40b2cd0708f9b'
+                   '3e9211c4b78c4d1f71fe2d361cf5cfac8f1e2377b79462fec987287c06856d0d'
+                   'a0aa71bfa051e9a2c879c6b696031a9161bff5f4aed07c4ee2483cd8119a0602'
+                   '2dfadad577062e2347f43fa2ca01ae0c4221f254663f06ca74fc5aa4086bc1cc'
+                   '4a34ca7fb7d9b1c691daa5d012b8c4a81c52f7c446265b6806eff955d277f1fd'
+                   '15110126c02899ff7d8ac26f6d381091458e7d4cddd9d47df019fe5aeb695f83'
+                   '07dc60577d5a437392409b2c729c91cef21aa20717e3aea22af7c1a8118f6b8f'
+                   '1cc06efe1661b754586daa407ad9ebb3956d8b2f30601f487e5defc4d47d5784'
+                   '121b13e8cf26201846d4681cf420ea5b2b50d30b822989ba3a4fcb861bc78cf8')
 
 case $CARCH in
     ${arch[0]})
@@ -397,3 +398,18 @@ package_elephant-wireplumber-bin() {
 
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+package_elephant-playerctl-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}" "playerctl")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
