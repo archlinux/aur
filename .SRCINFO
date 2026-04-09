@@ -1,0 +1,18 @@
+pkgbase = phantom-gpu
+	pkgdesc = A CLI tool to dynamically disconnect NVIDIA GPUs from the PCI bus to save battery.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aceforaryan/PhantomGPU
+	arch = any
+	license = MIT
+	depends = bash
+	depends = psmisc
+	depends = pciutils
+	depends = kmod
+	depends = systemd
+	source = phantom-gpu-1.0.0.tar.gz::https://github.com/aceforaryan/PhantomGPU/archive/refs/tags/v1.0.0.tar.gz
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = phantom-gpu
