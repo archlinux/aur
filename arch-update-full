@@ -14,23 +14,63 @@ MAGENTA_NEON='\033[1;35m'
 RED_NEON='\033[1;31m'
 WHITE_NEON='\033[1;37m'
 GRAY='\033[0;90m'
-
+COLUMNS=$(tput cols)
+LARGURA_BOX=64
 
 # --- [SISTEMA] MODO SENTINELA: INTERCEPÇÃO SILENCIOSA ---
-if [[ "$1" == "--check" ]]; then
-    UPDATES_PACMAN=$(checkupdates 2>/dev/null | wc -l)
-    
-    [ -x "$(command -v yay)" ] && HELPER="yay" || HELPER="paru"
-    UPDATES_AUR=$($HELPER -Qu 2>/dev/null | wc -l)
-    
-    TOTAL=$((UPDATES_PACMAN + UPDATES_AUR))
-    
-    if [ "$TOTAL" -gt 0 ]; then
-        notify-send -u critical -a "Arch Update Full" \
-        "🛡️ REFORÇOS DISPONÍVEIS" \
-        "Existem $TOTAL pacotes aguardando.\nAbra o terminal para atualizar."
+CHECK_FOR_UPDATES() {
+   
+   # --- 1. DETECÇÃO DO HELPER AUR (Prioridade YAY) ---
+    if command -v yay &> /dev/null; then
+        AUR_HELPER="yay"
+    elif command -v paru &> /dev/null; then
+        AUR_HELPER="paru"
+    else
+        AUR_HELPER=""
     fi
-    exit 0 # Mata a execução aqui para não gerar logs ou carregar interface
+   
+    # Conta atualizações (Silencioso)
+    U_PACMAN=$(checkupdates 2>/dev/null | wc -l)
+   U_AUR=0
+    if [ -n "$AUR_HELPER" ]; then
+        U_AUR=$($AUR_HELPER -Qu 2>/dev/null | wc -l)
+    fi
+    U_FLAT=$(command -v flatpak &>/dev/null && flatpak remote-ls --updates 2>/dev/null | wc -l || echo 0)
+    U_SNAP=$(command -v snap &>/dev/null && snap refresh --list 2>/dev/null | grep -c '^[^Name]' || echo 0)
+
+    TOTAL=$((U_PACMAN + U_AUR + U_FLAT + U_SNAP))
+
+    if [ "$TOTAL" -gt 0 ]; then
+        notify-send "🛡️ SENTINEL v3.6" "Atenção: $TOTAL atualizações pendentes.\nInicie o  script arch update full para reforçar o sistema." -u normal
+    fi
+}
+
+# Este bloco intercepta a chamada do Systemd Timer a cada 3 horas
+if [[ "$1" == "--check" ]]; then
+    # Verifica se a função existe para evitar erro de execução
+    if declare -f CHECK_FOR_UPDATES > /dev/null; then
+        CHECK_FOR_UPDATES
+    else
+     
+        U_PACMAN=$(checkupdates 2>/dev/null | wc -l)
+        
+        
+        [ -x "$(command -v yay)" ] && H="yay" || H="paru"
+        U_AUR=$($H -Qu 2>/dev/null | wc -l)
+        
+      
+        U_FLAT=$(command -v flatpak &>/dev/null && flatpak remote-ls --updates 2>/dev/null | wc -l || echo 0)
+        U_SNAP=$(command -v snap &>/dev/null && snap refresh --list 2>/dev/null | grep -c '^[^Name]' || echo 0)
+
+        TOTAL=$((U_PACMAN + U_AUR + U_FLAT + U_SNAP))
+
+        if [ "$TOTAL" -gt 0 ]; then
+            notify-send -u critical -a "Arch Update Full" \
+            "🛡️ REFORÇOS DISPONÍVEIS" \
+            "Existem $TOTAL pacotes aguardando (Core/AUR/Apps).\nAbra o terminal para atualizar."
+        fi
+    fi
+    exit 0 # Mata a execução aqui para não carregar a interface visual ou logs
 fi
 
 
@@ -63,6 +103,10 @@ exec > >(tee -i "$LOG_ATUAL") 2>&1
 echo -e "${GRAY_NEON}--- INICIANDO REGISTRO DE SESSÃO: $DATA_LOG ---${NC}"
 
 
+
+
+
+
 # --- [SISTEMA] PROTOCOLO DE AUTO-INSTALAÇÃO DA SENTINELA ---
 SETUP_SENTINEL() {
     local SERVICE_DIR="$HOME/.config/systemd/user"
@@ -84,14 +128,14 @@ ExecStart=$SCRIPT_PATH --check
 WantedBy=default.target
 EOF
 
-    # Cria o arquivo de Timer (12 horas)
+    # Cria o arquivo de Timer (3 horas)
     cat <<EOF > "$SERVICE_DIR/arch-sentinel.timer"
 [Unit]
-Description=Roda o Sentinela a cada 12 horas
+Description=Roda o Sentinela a cada 3 horas
 
 [Timer]
 OnBootSec=10min
-OnUnitActiveSec=12h
+OnUnitActiveSec=3h
 Persistent=true
 
 [Install]
@@ -107,7 +151,7 @@ EOF
 SETUP_SENTINEL
 
 
-# --- CABEÇALHO: ARCH UPDATE FULL v3.5 (BLOCK EDITION) ---
+# --- CABEÇALHO: ARCH UPDATE FULL v3.6 (BLOCK EDITION) ---
 clear
 echo -e "${NEON_BLUE}"
 echo "  █████╗ ██████╗  ██████╗██╗  ██╗    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗"
@@ -123,7 +167,7 @@ echo -e "                              ${NEON_BLUE}██╔══╝  ██║
 echo -e "                              ${NEON_BLUE}██║     ╚██████╔╝███████╗███████╗${NC}"
 echo -e "                              ${NEON_BLUE}╚═╝      ╚═════╝ ╚══════╝╚══════╝${NC}"
 echo ""
-echo -e "  ${PINK_NEON}─────────────────── ${YELLOW_NEON}VERSION 3.5 ${PINK_NEON} ────────────────────${NC}"
+echo -e "  ${PINK_NEON}─────────────────── ${YELLOW_NEON}VERSION 3.6 ${PINK_NEON} ────────────────────${NC}"
 echo -e "  ${PINK_NEON}>> UPDATING • AUTOMATING • SECURING <<${NC}"
 echo ""
 echo -e "  ${NEON_BLUE}[ MODULES: ROLLING_SYNC | AUR_INJECTION | INTEGRITY_AUDIT ]${NC}"
@@ -137,20 +181,30 @@ status_msg() {
     echo -e "${GRAY_NEON}------------------------------------------------------------${NC}"
 }
 
+
 # ---  VERIFICAÇÃO DE ESPAÇO EM DISCO ---
 CHECK_DISK_SPACE() {
     
+    TEXTO_DISK=" ANALYZING STORAGE: CHECKING DISK INTEGRITY RESERVE"
+    TAM_TEXTO=${#TEXTO_DISK}
+    ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
+
+
+    echo -e "\n${NEON_BLUE}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
+    printf "${NEON_BLUE}║${NC}${PINK_NEON}%s%*s${NC}${NEON_BLUE}║${NC}\n" "$TEXTO_DISK" "$ESPACOS" ""
+    echo -e "${NEON_BLUE}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
+
     FREE_SPACE=$(df -BG / | awk 'NR==2 {print $4}' | sed 's/G//')
     
-    status_msg "DISK_INTEGRITY_RESERVE"
     
+
     if [ "$FREE_SPACE" -lt 5 ]; then
         echo -e "${RED_NEON}[CRÍTICO] Espaço insuficiente: Apenas ${FREE_SPACE}GB livres.${NC}"
         echo -e "${YELLOW_NEON}[SUGESTÃO] Limpando cache do pacman para tentar liberar espaço...${NC}"
         sudo paccache -rk 1
         
-        
-     FREE_SPACE=$(df -BG / | awk 'NR==2 {print $4}' | sed 's/G//')
+       
+        FREE_SPACE=$(df -BG / | awk 'NR==2 {print $4}' | sed 's/G//')
         if [ "$FREE_SPACE" -lt 5 ]; then
             echo -e "${RED_NEON}[ERRO FATAL] Espaço ainda insuficiente (${FREE_SPACE}GB). Abortando para evitar corrupção.${NC}"
             echo "[LOG] Abortando por falta de espaço em $(date)" >> "$LOG_ATUAL"
@@ -161,9 +215,7 @@ CHECK_DISK_SPACE() {
     fi
 }
 
-
 CHECK_DISK_SPACE
-
 
 
 # 1. OTIMIZAÇÃO DE ESPELHOS (MIRRORS)
@@ -209,34 +261,71 @@ else
     echo -e "${YELLOW_NEON}[AVISO]${NC} Nenhum helper AUR (YAY/PARU) encontrado. Pulando setor."
 fi
 
-# Execução se houver um helper definido
+# --- Execução com Helper ---
 if [ -n "$AUR_HELPER" ]; then
-    echo -e "\n${NEON_BLUE}╔════════════════════════════════════════════════════════════╗${NC}"
-    echo -e "${NEON_BLUE}║${NC} ${PINK_NEON}INJECTING AUR DATA STREAMS: UPDATING VIA $(echo $AUR_HELPER | tr '[:lower:]' '[:upper:]')     ${NC} ${NEON_BLUE}║${NC}"
-    echo -e "${NEON_BLUE}╚════════════════════════════════════════════════════════════╝${NC}"
+  
+    TEXTO=" INJECTING AUR DATA STREAMS: UPDATING VIA $(echo $AUR_HELPER | tr '[:lower:]' '[:upper:]')"
+    
+   
+    TAM_TEXTO=${#TEXTO}
+    ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
+    
+    echo -e "\n${NEON_BLUE}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
+    
+    
+    printf "${NEON_BLUE}║${NC}${PINK_NEON}%s%*s${NC}${NEON_BLUE}║${NC}\n" "$TEXTO" "$ESPACOS" ""
+    
+    echo -e "${NEON_BLUE}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
+
     $AUR_HELPER -Syu --noconfirm
 fi
 
 
 # 4. ATUALIZAÇÃO DE FLATPAKS (DETECÇÃO AUTOMÁTICA)
 if command -v flatpak &> /dev/null; then
-    echo -e "\n${PINK_NEON}╔════════════════════════════════════════════════════════════╗${NC}"
-    echo -e "${PINK_NEON}║${NC} ${NEON_BLUE}SCANNING SANDBOX: UPDATING FLATPAK REPOSITORIES      ${NC} ${PINK_NEON}║${NC}"
-    echo -e "${PINK_NEON}╚════════════════════════════════════════════════════════════╝${NC}"
+    
+    TEXTO_FP=" SCANNING SANDBOX: UPDATING FLATPAK REPOSITORIES"
+    TAM_TEXTO=${#TEXTO_FP}
+    ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
+
+
+    echo -e "\n${PINK_NEON}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
+    
+ 
+    printf "${PINK_NEON}║${NC}${NEON_BLUE}%s%*s${NC}${PINK_NEON}║${NC}\n" "$TEXTO_FP" "$ESPACOS" ""
+    
+
+    echo -e "${PINK_NEON}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
+
+   
     flatpak update -y
+    
 else
     echo -e "${GRAY_NEON}[INFO] Flatpak environment not detected. Skipping sector.${NC}"
 fi
 
+
 # 5. ATUALIZAÇÃO DE SNAPS (DETECÇÃO AUTOMÁTICA)
 if command -v snap &> /dev/null; then
-    echo -e "\n${YELLOW_NEON}╔════════════════════════════════════════════════════════════╗${NC}"
-    echo -e "${YELLOW_NEON}║${NC} ${NEON_BLUE}STABILIZING SNAP PACKAGES: REFRESHING ALL SNAPS       ${NC} ${YELLOW_NEON}║${NC}"
-    echo -e "${YELLOW_NEON}╚════════════════════════════════════════════════════════════╝${NC}"
+   
+    TEXTO_SNAP=" STABILIZING SNAP PACKAGES: REFRESHING ALL SNAPS"
+    TAM_TEXTO=${#TEXTO_SNAP}
+    ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
+
+  
+    echo -e "\n${YELLOW_NEON}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
+    
+    
+    printf "${YELLOW_NEON}║${NC}${NEON_BLUE}%s%*s${NC}${YELLOW_NEON}║${NC}\n" "$TEXTO_SNAP" "$ESPACOS" ""
+    
+    
+    echo -e "${YELLOW_NEON}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
+
     sudo snap refresh
 else
     echo -e "${GRAY_NEON}[INFO] Snap environment not detected. Skipping sector.${NC}"
 fi
+
 
 # ---  AUDITORIA DE NÚCLEO (REBOOT CHECK) ---
 CHECK_REBOOT_NEEDED() {
@@ -256,8 +345,6 @@ CHECK_REBOOT_NEEDED() {
     fi
 }
 
-
-CHECK_REBOOT_NEEDED
 
 
 # 6. LIMPEZA DE ÓRFÃOS
@@ -280,10 +367,22 @@ fi
 
 
 # 8. AUDITORIA DE INTEGRIDADE (OPCIONAL)
-echo -e "\n${YELLOW_NEON}╔════════════════════════════════════════════════════════════╗${NC}"
-echo -e "${YELLOW_NEON}║${NC} ${NEON_BLUE}INTEGRITY SCAN: DO YOU WANT TO AUDIT SYSTEM FILES?        ${NC} ${YELLOW_NEON}║${NC}"
-echo -e "${YELLOW_NEON}╚════════════════════════════════════════════════════════════╝${NC}"
+
+TEXTO_AUDIT=" INTEGRITY SCAN: DO YOU WANT TO AUDIT SYSTEM FILES?"
+TAM_TEXTO=${#TEXTO_AUDIT}
+ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
+
+# Topo da Caixa (Amarelo Neon)
+echo -e "\n${YELLOW_NEON}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
+
+# Miolo alinhado milimetricamente
+printf "${YELLOW_NEON}║${NC}${NEON_BLUE}%s%*s${NC}${YELLOW_NEON}║${NC}\n" "$TEXTO_AUDIT" "$ESPACOS" ""
+
+# Rodapé da Caixa
+echo -e "${YELLOW_NEON}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
+
 read -p "(s/N): " escolha_auditoria
+
 
 if [[ "$escolha_auditoria" =~ ^[Ss]$ ]]; then
     status_msg "SYSTEM_INTEGRITY_CHECK"
@@ -346,7 +445,7 @@ NOTIFY_FINISH
 CHECK_REBOOT_NEEDED
 
 echo -e "\n${GRAY_NEON}------------------------------------------------------------${NC}"
-echo -e "${CYAN_NEON}              MENU DE ENCERRAMENTO - v3.5${NC}"
+echo -e "${CYAN_NEON}              MENU DE ENCERRAMENTO - v3.6${NC}"
 echo -e "${GRAY_NEON}------------------------------------------------------------${NC}"
 
 echo -e "${MAGENTA_NEON}(A)${NC} ${WHITE}Encerrar sessão e fechar terminal${NC} ${CYAN_NEON}(Kill Switch)${NC}"

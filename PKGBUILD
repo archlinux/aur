@@ -1,13 +1,18 @@
 # Mantenedor: Setimo <gustavo.gianeli@hotmail.com>
 pkgname=arch-update-full
-pkgver=3.5
-pkgrel=2.5
+pkgver=3.6
+pkgrel=1
 pkgdesc="Protocolo Sentinela: Automação de updates (Pacman/AUR/Flatpak/Snap) e auditoria."
 arch=('any')
 url="https://github.com/GustavoGianeli/arch-update-full"
 license=('MIT')
-depends=('pacman' 'flatpak' 'bash' 'libnotify') 
-optdepends=('yay: Injeção AUR' 'snapd: Suporte Snap' 'reflector: Mirror Sync')
+depends=('pacman' 'bash' 'libnotify' 'pacman-contrib' 'libnotify' 'wget' 'curl') 
+optdepends=('yay: Para suporte a atualizações do AUR (preferencial)'
+  'paru: Para suporte a atualizações do AUR (alternativo)'
+  'flatpak: Para detecção e atualização de pacotes Flatpak'
+  'snapd: Para detecção e atualização de pacotes Snap'
+  'reflector: Para otimização automática da lista de mirrors'
+)
 
 # --- ADICIONADO O ÍCONE NO SOURCE ---
 source=("arch-update-full" 
@@ -15,9 +20,9 @@ source=("arch-update-full"
         "logoarchupdatefull.png")
 
 # Use 'updpkgsums' para preencher isso automaticamente
-sha256sums=('133e2cf3949daa9155b023eb05db65e2edd37f78d78d7882ea418eb03d19008d'
+sha256sums=('e776f5b5d07edc7ac2d5d6030f3524703a29d61b98e29e7b47eebca0e0cec136'
             'c67f2145975aef77b7bc07a71ff334593df456ffe8155175f177f0e73f4f47cd'
-            'efacea25c42c5656350fa9a1ec9a0bd528f4ca3305457c6d82814472f178862b')
+            'e0732656a868f19e30dd46069bc68389962facc464470f3238de188e8fffcaa5')
 
 package() {
   # 1. Instala o script executável
