@@ -99,6 +99,10 @@ prepare() {
 
     git -c protocol.file.allow=always submodule update
 
+    # Fix wlroots build with newer libinput (unhandled LIBINPUT_SWITCH_KEYPAD_SLIDE)
+    sed -i '/switch (libinput_event_switch_get_switch(sevent)) {/a\\t\tdefault:\n\t\t\tbreak;' \
+        subprojects/wlroots/backend/libinput/switch.c
+
     meson subprojects download
 
     # Fix wlroots dependency override issue
