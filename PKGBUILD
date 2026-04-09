@@ -2,7 +2,7 @@
 
 pkgbase=libcudf
 pkgname=(libcudf python-pylibcudf)
-pkgver=26.02.01
+pkgver=26.04.00
 pkgrel=1
 pkgdesc="cuDF - GPU DataFrame Library"
 url="https://github.com/rapidsai/cudf"
@@ -18,7 +18,7 @@ source=(
     "missing-include.patch"
 )
 sha256sums=(
-    '4ee6bc2f41e0406e1c0e9c40e08e42580dfb2173bea4ad94d3d1af8f6b3f0166'
+    'c59d3c28f147e7f6b9e3050790b06a41e966eafd046cce55534a2135baf235af'
     '565ea2d0c080a97e990091ef3d695d7e8a16d041cb8475a43a6aa7f6e346738b'
     'cbe0e91241bb6394b1f45218c048833d67d5d4d2c875c2ae894c0f48a56ee9e7'
     '496341c903486a9fef4fcd52ebbd0cbf33b5e1d6113279cdbc22771cfbcd91ea'
