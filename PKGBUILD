@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=solidtime-bin
 _pkgname=Solidtime
-pkgver=0.1.4
+pkgver=0.1.5
 _electronversion=38
-pkgrel=2
+pkgrel=1
 pkgdesc="Desktop Application for Solidtime - The modern open-source time-tracker.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -28,8 +28,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-x86_64.rpm")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('15283678330155148c3077337af72515568bd22f89483cf4a82d441623af6b8a')
-sha256sums_x86_64=('c6b051aa3e1553b169ec8fc041bf255ddce5f782a7dfc49c00ed57933a35a726')
+sha256sums_aarch64=('ae0fc560f4cbc539773c4399ac0adf2667da5e7b3cb58f7cafb9087c6aa3273e')
+sha256sums_x86_64=('83a27073bca2d579b3ede57bf2c9c09cf652b650b28e1d7b8390b600b171b710')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
