@@ -7,7 +7,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-REPO="block/goose"
+REPO="aaif-goose/goose"
 PKGBUILD_FILE="PKGBUILD"
 
 echo -e "${GREEN}Fetching latest release from GitHub API...${NC}"
