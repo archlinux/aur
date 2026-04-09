@@ -18,15 +18,11 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    export GODEBUG=netdns=cgo
-    # Use Aliyun mirror primarily to avoid IPv6 timeout
-    export GOPROXY="https://mirrors.aliyun.com/goproxy,https://proxy.golang.org,direct"
     go build -o "$pkgname" .
 }
 
 check() {
     cd "$pkgname-$pkgver"
-    export GOPROXY="https://mirrors.aliyun.com/goproxy,https://proxy.golang.org,direct"
     go test ./...
 }
 
