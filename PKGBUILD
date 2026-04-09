@@ -1,27 +1,41 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="open-video-downloader-appimage"
-pkgver=2.4.10
-pkgrel=3
-pkgdesc="A cross-platform GUI for youtube-dl made in Electron and node.js"
-arch=('x86_64')
-url="https://github.com/StefanLobbenmeier/youtube-dl-gui"
-license=('AGPL3')
-conflicts=("${pkgname%-appimage}" "youtube-dl-gui")
-depends=('zlib' 'glibc' 'python-mutagen')
-options=('!strip')
-_install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Open-Video-Downloader-${pkgver}.AppImage")
-sha256sums=('e99cf7780eebbe74a1e45cbac822f965c7e7299193adce39b37240d75d8e2389')
-    
+# Maintainer: Bryan Joshua Pedini <bryan [at] pedini [dot] dev>
+
+_pkgname="open-video-downloader"
+_srcname="youtube-dl-gui"
+_srcmntr="jely2002"
+
+pkgname="${_pkgname}-appimage"
+pkgver="3.2.0"
+pkgrel="1"
+pkgdesc="A cross-platform GUI for youtube-dl made in Rust with Tauri and Vue + Typescript"
+url="https://github.com/${_srcmntr}/${_srcname}"
+arch=("x86_64")
+license=("AGPL3")
+options=("!strip" "!debug")
+_archive="${_pkgname}-${pkgver}.AppImage"
+source=(
+  "${_archive}::https://github.com/${_srcmntr}/${_srcname}/releases/download/app-v${pkgver}/Open.Video.Downloader_${pkgver}_amd64.AppImage"
+  "${_pkgname}.desktop"
+  "${_pkgname}.png"
+)
+conflicts=("open-video-downloader")
+provides=("open-video-downloader")
+
+sha256sums=(
+  "dffee4cfef50e8edb9be4136d5650b123e49b8a1ffd959ff3d2c42502fc391e3"
+  "217d02211a51853d920e53558cd9cbd7a753ba9f2036ddaa0ec4e00a77351b6c"
+  "188992cbe106d0dd6e7b9c219020118a1246c3657c828f86e463617c3d6214cb"
+)
+
 prepare() {
-    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|youtube-dl-gui|${pkgname%-appimage}|g;s|X-utility|Utility|g" \
-        -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+  sed -i -e '/^X-AppImage-/d' "${srcdir}/${_pkgname}.desktop"
 }
-    
+
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-appimage}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm755 "${srcdir}/${_archive}" \
+    "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "$srcdir/${_pkgname}.desktop" \
+    "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 "$srcdir/${_pkgname}.png" \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
 }

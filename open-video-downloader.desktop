@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=
+Comment=Download videos from all over the web.
+Exec=open-video-downloader
+StartupWMClass=open-video-downloader
+Icon=open-video-downloader
+Name=Open Video Downloader
+Terminal=false
+Type=Application
+
+X-AppImage-Name=Open_Video_Downloader
+X-AppImage-Version=UNKNOWN
+X-AppImage-Arch=x86_64
