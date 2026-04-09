@@ -3,7 +3,7 @@
 _pkgbase=asus-hub
 pkgname="$_pkgbase-bin"
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The unofficial MyAsus alternative for Linux'
 arch=('x86_64')
 url='https://github.com/Traciges/Asus-Hub'
@@ -20,11 +20,11 @@ optdepends=('libkscreen: OLED flicker-free dimming'
 						'glib2: Touchpad toggle on GNOME')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
-source_x86_64=("$_pkgbase.deb::https://github.com/Traciges/Asus-Hub/releases/download/v$pkgver/asus-hub_$pkgver-1_amd64.deb")
-sha256sums_x86_64=('9b5266463cd6b9e3a8596a5c3ba3d5d5e91806f06826f98499152d98a6b83060')
+source_x86_64=("$_pkgbase-$pkgver.deb::https://github.com/Traciges/Asus-Hub/releases/download/v$pkgver/asus-hub_$pkgver-1_amd64.deb")
+sha256sums_x86_64=('f87e44f3fe02a0f62740765e1783d7fb1632576fc3f4377258e79473234e90df')
 
 prepare() {
-	bsdtar -xf "$_pkgbase.deb"
+	bsdtar -xf "$_pkgbase-$pkgver.deb"
 }
 
 package() {
