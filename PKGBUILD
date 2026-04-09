@@ -1,6 +1,6 @@
 # Maintainer: rzhli tayuebuliuhen@gmail.com
 pkgname='ftnn-desktop'
-pkgver='16.10.15508'
+pkgver='16.11.15608'
 pkgrel=1
 pkgdesc="Futu，富途，股票软件"
 arch=('x86_64')
