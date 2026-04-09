@@ -1,19 +1,23 @@
 # Maintainer: Olivier Le Moal <mail at olivierlemoal dot fr>
 # Contributor: Jan Ypma <jan at ypmania dot nl>
 pkgname=jjazzlab-bin
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc="A complete and open application dedicated to backing tracks generation."
 arch=('x86_64' 'aarch64')
 url="https://www.jjazzlab.org/"
-depends=('fluidsynth')
+depends=('java-runtime=25' 'fluidsynth')
 license=('LGPL-2.1-or-later')
 source=("https://github.com/jjazzboss/JJazzLab/releases/download/${pkgver}/JJazzLab-${pkgver}-linux-x64.tar.xz" "jjazzlab.desktop")
-sha256sums=('fd70e69aeee8234c8ef469306f7da4df4fe2c89aa33d2b8aa6ce4081f9f68886'
+sha256sums=('a787af28ec127bdd19aa5333efca75a8a14f7327e226948048b2b271b9ec1947'
             '0c11ad2c50439741a43629e551b9134e51b043c8c5250e1f47768dc9b443a034')
 
 package() {
   cd "${srcdir}/JJazzLab-${pkgver}"
+
+  # Let's use the system JDK instead of the bundled one
+  rm -r jdk
+  sed -i 's/^jdkhome="jdk"$/jdkhome="\/usr\/lib\/jvm\/java-25-openjdk\/"/' etc/jjazzlab.conf
 
   install -d "${pkgdir}/opt/jjazzlab"
   cp -rp * "${pkgdir}/opt/jjazzlab"
