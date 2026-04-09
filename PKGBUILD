@@ -2,7 +2,7 @@
 
 pkgname=reinplayer-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, intuitive media player inspired by PotPlayer"
 arch=('x86_64')
 url="https://github.com/Ahurein/rein_player"
@@ -31,5 +31,5 @@ package() {
 
   # Install desktop entry and application icon
   install -Dm644 "${srcdir}/reinplayer.desktop" "${pkgdir}/usr/share/applications/reinplayer.desktop"
-  install -Dm644 "${srcdir}/data/flutter_assets/assets/icons/potplayer-icon.png" "${pkgdir}/usr/share/pixmaps/reinplayer.png"
+  install -Dm644 "${srcdir}/data/flutter_assets/assets/images/reinplayer.png" "${pkgdir}/usr/share/pixmaps/reinplayer.png"
 }

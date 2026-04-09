@@ -1,7 +1,7 @@
 pkgbase = reinplayer-bin
 	pkgdesc = A modern, intuitive media player inspired by PotPlayer
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ahurein/rein_player
 	arch = x86_64
 	license = unknown
