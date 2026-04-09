@@ -15,8 +15,10 @@ cleanup() {
 trap cleanup EXIT
 
 echo "Getting current 'gnome-extra' package group..."
-# Get packages in gnome-extra group and sort them
-pacman -Sg gnome-extra | cut -d' ' -f2 | sort > "$NEW_DEPENDS_FILE"
+# Get packages in gnome-extra group, deduplicate them, and sort them.
+# pacman -Sg can list the same package more than once when multiple repos
+# provide the same group entry.
+pacman -Sg gnome-extra | cut -d' ' -f2 | sort -u > "$NEW_DEPENDS_FILE"
 
 echo "Extracting current depends from PKGBUILD..."
 # Extract current depends from PKGBUILD (between 'depends=(' and ')')
@@ -25,7 +27,7 @@ sed -n '/^depends=(/,/^)/p' "$PKGBUILD_FILE" | \
     grep -v '^)' | \
     sed 's/^[[:space:]]*//' | \
     sed 's/[[:space:]]*$//' | \
-    sort > "$CURRENT_DEPENDS_FILE"
+    sort -u > "$CURRENT_DEPENDS_FILE"
 
 echo "Comparing package lists..."
 if diff -q "$CURRENT_DEPENDS_FILE" "$NEW_DEPENDS_FILE" > /dev/null; then
