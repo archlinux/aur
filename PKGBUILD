@@ -1,4 +1,5 @@
-# Maintainer: 5h4d0wn1k <https://github.com/5h4d0wn1k>
+# Maintainer: shadowarch <https://github.com/5h4d0wn1k>
+# Contributor: shadowarch <https://github.com/5h4d0wn1k>
 
 pkgname=wallpaper-picker
 pkgver=2.0.0

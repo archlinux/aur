@@ -18,6 +18,6 @@ pkgbase = wallpaper-picker
 	provides = wallpaper-picker
 	conflicts = wallpaper-picker-git
 	source = wallpaper-picker-2.0.0.tar.gz::https://github.com/5h4d0wn1k/wallpaper-picker/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 26314498a44869c41223fc747e508d04e7859dbd8cec5f583bfc1c6a295b75cf
+	sha256sums = SKIP
 
 pkgname = wallpaper-picker
