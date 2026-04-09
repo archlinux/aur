@@ -50,7 +50,7 @@ prepare() {
 build() {
     cd lectern
     export RUSTUP_TOOLCHAIN=stable
-    cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_SKIP_RPATH=ON
     cmake --build build -j$(nproc)
 }
 
