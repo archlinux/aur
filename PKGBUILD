@@ -3,7 +3,7 @@
 # Contributor: Antoine Damhet <antoine.damhet@lse.epita.fr>
 
 pkgname=b4
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc='Helper utility to work with patches made available via a public-inbox archive like lore.kernel.org.'
 license=('GPL-2.0-or-later')
@@ -34,7 +34,7 @@ source=(
     "git+https://github.com/mricon/b4.git#tag=v${pkgver}?signed"
 )
 validpgpkeys=('DE0E66E32F1FDD0902666B96E63EDCA9329DD07E')
-sha256sums=('f103ef7df53ac37df840ddf784873096d590a17752c86bcbaf2a903613210202')
+sha256sums=('4cfc23a1bfe57dff3340ca36e541bec64b150a8b9ea06164e267636d67d909e6')
 
 build() {
     cd "$pkgname"
