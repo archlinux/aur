@@ -1,7 +1,7 @@
 pkgbase = libtermkey
 	pkgdesc = Library for easy processing of keyboard entry from terminal-based programs
 	pkgver = 0.22
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.leonerd.org.uk/code/libtermkey
 	arch = x86_64
 	license = MIT
