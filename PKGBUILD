@@ -1,37 +1,32 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=android_translation_layer
-_pkgname=${pkgname//-/_}
-pkgver=r932.9de91586
-pkgrel=1
-_commit=9de91586994af5078decda17db92ce50c5673951
+_upstream_pkgname=${pkgname//-/_}
+pkgver=20260326.162e93fd
+pkgrel=2
+_commit=162e93fd08257632a785bea7e4e70343e582e9fe
 pkgdesc='A translation layer for running Android apps on a Linux system'
 url='https://gitlab.com/android_translation_layer/android_translation_layer'
 arch=(x86_64 aarch64 armv7h)
 license=('GPL-3.0-or-later')
-# libopensles-standalone is not strictly required but some Android applications depend on it
+# Upstream does not publish tags or releases; pin the current default-branch
+# snapshot instead of tracking a moving checkout in this non -git package.
 depends=(
   alsa-lib
   art_standalone
   bionic_translation
-  cairo
   ffmpeg
+  fontconfig
   gcc-libs
-  gdk-pixbuf2
-  glib2
   glibc
-  graphene
   gtk4
   gtk4-layer-shell
-  harfbuzz
+  java-runtime
   libdrm
   libglvnd
   libgudev
   libopensles-standalone
   libportal
-  libsoup3
-  pango
-  skia-sharp-atl
   sqlite
   vulkan-icd-loader
   wayland
@@ -44,18 +39,17 @@ makedepends=(
   jdk8-openjdk
   meson
   openxr
-  vulkan-headers
   wayland-protocols
 )
-source=("${pkgname}-${_commit}.tar.gz::${url}/-/archive/${_commit}/${pkgname}-${_commit}.tar.gz")
-sha256sums=('810bfe751d4348158679b9f8ffbbbcce00b59f97c5dbc50ef8819beb1ae0c2a6')
+source=("${_upstream_pkgname}-${_commit}.tar.gz::${url}/-/archive/${_commit}/${_upstream_pkgname}-${_commit}.tar.gz")
+sha256sums=('529cbc911622d6181898a7b390a7967108a627ac2c2cb4193f814b6e8090ffe3')
 
 prepare() {
-  meson subprojects download --sourcedir="${pkgname}-${_commit}"
+  meson subprojects download --sourcedir="${_upstream_pkgname}-${_commit}"
 }
 
 build() {
-  arch-meson "${pkgname}-${_commit}" build
+  arch-meson "${_upstream_pkgname}-${_commit}" build
   meson compile -C build
 }
 
@@ -64,6 +58,6 @@ check() {
 }
 
 package() {
-  depends+=(java-runtime)
   meson install --no-rebuild -C build --destdir "${pkgdir}"
+  chown -R root:root "${pkgdir}"
 }
