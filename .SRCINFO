@@ -1,0 +1,21 @@
+pkgbase = rclone-browser-qt6
+	pkgdesc = Simple cross-platform GUI for rclone
+	pkgver = 1.9.0
+	pkgrel = 4
+	url = https://github.com/kRHYME7/RcloneBrowser
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	depends = qt6-base
+	depends = rclone
+	provides = rclone-browser
+	conflicts = rclone-browser
+	conflicts = rclone-browser-git
+	source = rclone-browser-qt6-1.9.0.tar.gz::https://github.com/kRHYME7/RcloneBrowser/archive/refs/tags/v1.9.0.tar.gz
+	sha256sums = 8b5f0afa7fdfe438febe5e4f7e5959ba7cba926edd28821689985cd68a061b47
+
+pkgname = rclone-browser-qt6
