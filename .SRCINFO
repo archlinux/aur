@@ -8,15 +8,15 @@ pkgbase = python-agent-rtfm
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatchling
-	depends = python>=3.11
+	depends = python
 	depends = python-fastapi
-	depends = uvicorn
+	depends = python-uvicorn
 	depends = python-chromadb
 	depends = python-gitpython
 	depends = python-httpx
 	depends = python-click
 	depends = python-rich
-	depends = python-pyyaml
+	depends = python-yaml
 	depends = python-html2text
 	depends = python-beautifulsoup4
 	depends = python-lxml
@@ -24,7 +24,7 @@ pkgbase = python-agent-rtfm
 	provides = python-agent-rtfm
 	conflicts = python-agent-rtfm-bin
 	conflicts = python-agent-rtfm-git
-	source = https://pypi.io/packages/source/a/agent-rtfm/agent_rtfm-0.2.0tar.gz
+	source = https://pypi.io/packages/source/a/agent-rtfm/agent_rtfm-0.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-agent-rtfm

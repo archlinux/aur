@@ -7,15 +7,15 @@ arch=('any')
 url="https://github.com/phlppbmm/rtfm"
 license=('MIT')
 depends=(
-    'python>=3.11'
+    'python'
     'python-fastapi'
-    'uvicorn'
+    'python-uvicorn'
     'python-chromadb'
     'python-gitpython'
     'python-httpx'
     'python-click'
     'python-rich'
-    'python-pyyaml'
+    'python-yaml'
     'python-html2text'
     'python-beautifulsoup4'
     'python-lxml'
@@ -24,15 +24,16 @@ depends=(
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 provides=('python-agent-rtfm')
 conflicts=('python-agent-rtfm-bin' 'python-agent-rtfm-git')
-source=("https://pypi.io/packages/source/a/agent-rtfm/agent_rtfm-0.2.0${pkgver}.tar.gz")
+source=("https://pypi.io/packages/source/a/agent-rtfm/agent_rtfm-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "agent_rtfm-0.2.0${pkgver}"
+    cd "agent_rtfm-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "agent_rtfm-0.2.0${pkgver}"
+    cd "agent_rtfm-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 "${srcdir}/agent_rtfm-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
