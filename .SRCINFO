@@ -1,0 +1,18 @@
+pkgbase = fish-exa-git
+	pkgdesc = exa aliases for fish
+	pkgver = r26.92e5bcb
+	pkgrel = 1
+	url = https://github.com/gazorby/fish-exa
+	install = fish-exa.install
+	arch = any
+	groups = fish-plugins
+	license = MIT
+	makedepends = git
+	provides = fish-exa
+	conflicts = fish-exa
+	source = fish-exa-git::git+https://github.com/gazorby/fish-exa
+	sha256sums = SKIP
+
+pkgname = fish-exa-git
+	depends = fish
+	depends = exa

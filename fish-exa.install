@@ -1,0 +1,15 @@
+post_install() {
+    echo ':: To install the functions, run __fish_exa_install as a user'
+    echo ':: NOTE: To uninstall this package, first run __fish_exa_uninstall'
+    echo ':: You can refresh the functions by running __fish_exa_update'
+}
+
+post_upgrade() {
+    echo ':: You may need to refresh the functions with __fish_exa_update'
+}
+
+pre_remove() {
+    echo ':: WARNING: Make sure you ran __fish_exa_uninstall first'
+    echo ':: Uninstalling the package does not remove the functions'
+}
+
