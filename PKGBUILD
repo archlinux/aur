@@ -1,6 +1,6 @@
 # Maintainer: Dániel Sipka <no1msd@users.noreply.github.com>
 pkgname=seance
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Scrolling terminal multiplexer for running multiple AI coding agents side by side'
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
     "$pkgname-$pkgver-src.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-src.tar.gz"
 )
 sha256sums=(
-    '56d4959493da72ffb07d1f24588e8ade32c0c28b19ec2043c37d9d82307afcda'
+    '4636a1cf247f81d4e32c788cc746cd0552b61b3c963f619cde20ab18ab953e7c'
 )
 
 prepare() {
