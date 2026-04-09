@@ -2,7 +2,7 @@
 # Maintainer: Clément PÉAU <clement dot peau at gmail dot com>
 
 pkgname='lazydocker-ng-bin'
-pkgver=0.27.2
+pkgver=0.28.0
 pkgrel=1
 pkgdesc='The continuation of lazydocker the simple terminal UI for docker, written in Go'
 url='https://github.com/peauc/lazydocker-ng/'
@@ -12,16 +12,16 @@ provides=('lazydocker-ng')
 conflicts=('lazydocker-ng')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/peauc/lazydocker-ng/releases/download/v${pkgver}/lazydocker-ng_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('7caeba08374dec70ce490ae81c95f62a9ac012d4b7f1244d26de0b2e83ab5ff2')
+sha256sums_aarch64=('091d93b3009cfd8454e592fe5424a1f50941b61dcce74ab9b59444d095a579a5')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/peauc/lazydocker-ng/releases/download/v${pkgver}/lazydocker-ng_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('8d4d3f88ca1df5e8a2662256d9ac78565d00e2008d7f37a0bf72dbc2142bde7d')
+sha256sums_armv7h=('445a128432af4cd34c941279f72af6ab73bb822a8bce1dcbb72d47a4dc51e472')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/peauc/lazydocker-ng/releases/download/v${pkgver}/lazydocker-ng_${pkgver}_Linux_x86.tar.gz")
-sha256sums_i686=('491091b7d7accc460f2bea084793118a88d64a2520e592fbb7382ee753cc3a02')
+sha256sums_i686=('b09677895dbf338143b83e21bb25ef36a1ae74006595faa7e07ec589e8d4c748')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/peauc/lazydocker-ng/releases/download/v${pkgver}/lazydocker-ng_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('eb4066843b1e86d6df662c9500278ea43c7b624ac2f6906f52d9cf1ec46fa7ec')
+sha256sums_x86_64=('66f6968c1a1730f8f49d4a797357fb0210a6736b04aa25fd56e12a8af562409b')
 
 package() {
   install -Dm755 "./lazydocker-ng" "${pkgdir}/usr/bin/lazydocker-ng"
