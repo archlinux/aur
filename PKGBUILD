@@ -1,8 +1,8 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=filestash-git
-pkgver=r2240.e7d9911f
-pkgrel=5
+pkgver=r2258.ac7cf2b6
+pkgrel=1
 pkgdesc="Universal file management platform / storage-agnostic Dropbox alternative"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mickael-kerjean/filestash"
@@ -109,9 +109,6 @@ func init() {\
   }' server/common/constants.go
 
     # Generate Go code - must run from repository root where go.mod is
-    export GOPROXY="https://mirrors.aliyun.com/goproxy,https://proxy.golang.org,direct"
-    export GOPATH="${srcdir}/go"
-    export GODEBUG=netdns=cgo
     go generate -x ./server/...
 }
 
@@ -123,10 +120,8 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-    export GOPROXY="https://mirrors.aliyun.com/goproxy,https://proxy.golang.org,direct"
 
     # Build with fts5 tag for SQLite full-text search
-    export GODEBUG=netdns=cgo
     go build \
         -buildmode=pie \
         -trimpath \
