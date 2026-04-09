@@ -1,0 +1,20 @@
+pkgbase = solarxr-cli-git
+	pkgdesc = A command-line tool for interfacing with the SlimeVR server
+	pkgver = r27.f319d3c
+	pkgrel = 1
+	url = https://github.com/notpeelz/solarxr-cli
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	depends = openxr
+	provides = solarxr-cli
+	provides = solarxr-input
+	conflicts = solarxr-cli
+	conflicts = solarxr-input
+	options = !lto
+	backup = etc/xdg/solarxr-input/config.json
+	source = solarxr-cli::git+https://github.com/notpeelz/solarxr-cli.git
+	sha256sums = SKIP
+
+pkgname = solarxr-cli-git
