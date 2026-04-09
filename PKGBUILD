@@ -1,10 +1,9 @@
-# Maintainer: shadowarch <https://github.com/5h4d0wn1k>
-# Contributor: shadowarch <https://github.com/5h4d0wn1k>
+# Maintainer: 5h4d0wn1k <https://github.com/5h4d0wn1k>
 
 pkgname=wallpaper-picker
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="A sleek, feature-rich video wallpaper manager for Arch Linux/Hyprland"
+pkgdesc="A sleek, feature-rich video wallpaper manager for Hyprland/Wayland"
 arch=('any')
 url="https://github.com/5h4d0wn1k/wallpaper-picker"
 license=('MIT')
@@ -69,6 +68,8 @@ package() {
     # Install documentation
     install -Dm644 README.md \
         "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 ROADMAP.md \
+        "${pkgdir}/usr/share/doc/${pkgname}/ROADMAP.md"
     install -Dm644 LICENSE \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
