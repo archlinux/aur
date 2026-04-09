@@ -1,0 +1,22 @@
+pkgbase = remoteterm-meshcore
+	pkgdesc = Web interface for MeshCore mesh radio networks
+	pkgver = 3.9.0
+	pkgrel = 1
+	url = https://github.com/jkingsman/Remote-Terminal-for-MeshCore
+	install = remoteterm-meshcore.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = uv
+	makedepends = nodejs
+	makedepends = npm
+	depends = python
+	backup = etc/remoteterm-meshcore/remoteterm.env
+	source = remoteterm-meshcore-3.9.0.tar.gz::https://github.com/jkingsman/Remote-Terminal-for-MeshCore/archive/refs/tags/3.9.0.tar.gz
+	source = remoteterm-meshcore.service
+	source = remoteterm.env
+	sha256sums = 0574461dc7df4f19d5b4e64125565cf7ab1f8d1a1df67f80cd0f8ca3bb270e04
+	sha256sums = d65dc4d60776ecf3798591c44d8ead1e8da81ae947a99dfac2893d9b6ffac794
+	sha256sums = da49e9da23df743b4ba2465e3cc0e87d8d7be21820d3ce3fc55918a33cb407cc
+
+pkgname = remoteterm-meshcore

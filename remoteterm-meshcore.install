@@ -1,0 +1,24 @@
+pre_install() {
+  getent group  remoteterm > /dev/null || groupadd -r remoteterm
+  getent passwd remoteterm > /dev/null || \
+    useradd -r -g remoteterm -d /var/lib/remoteterm-meshcore -s /sbin/nologin \
+      -c "RemoteTerm for MeshCore" remoteterm
+}
+
+pre_upgrade() {
+  pre_install
+}
+
+post_install() {
+  echo "==> Set your radio connection (serial, TCP, or BLE) in"
+  echo "==>   /etc/remoteterm-meshcore/remoteterm.env"
+  echo "==> Start the service with: systemctl enable --now remoteterm-meshcore"
+  echo "==> The web UI will be at http://localhost:8000"
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  if systemctl is-active --quiet remoteterm-meshcore; then
+    systemctl restart remoteterm-meshcore
+  fi
+}

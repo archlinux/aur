@@ -1,0 +1,29 @@
+[Unit]
+Description=RemoteTerm for MeshCore
+Documentation=https://github.com/jkingsman/Remote-Terminal-for-MeshCore
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=remoteterm
+Group=remoteterm
+WorkingDirectory=/opt/remoteterm-meshcore
+EnvironmentFile=/etc/remoteterm-meshcore/remoteterm.env
+ExecStart=/opt/remoteterm-meshcore/.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
+Restart=on-failure
+RestartSec=5s
+
+StateDirectory=remoteterm-meshcore
+
+# Hardening
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
+
+# Serial port access (uucp group on Arch)
+SupplementaryGroups=uucp
+
+[Install]
+WantedBy=multi-user.target
