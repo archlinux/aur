@@ -1,6 +1,6 @@
 pkgbase = kute-bin
 	pkgdesc = A minimal music player for Wayland
-	pkgver = 1.1.4
+	pkgver = 1.5
 	pkgrel = 2
 	url = https://github.com/H33aven/kute
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = kute-bin
 	makedepends = imagemagick
 	depends = electron
 	depends = nodejs
-	source = kute-1.1.4.tar.gz::https://github.com/H33aven/kute/archive/v1.1.4.tar.gz
+	source = kute-1.5.tar.gz::https://github.com/H33aven/kute/archive/v1.5.tar.gz
 	source = kute.desktop
 	source = kute.png::https://raw.githubusercontent.com/H33aven/kute/main/kute.png
-	sha256sums = f11fcbfce54a98479433c56378ca17da348c158d734acc0df675613fe42f4c66
+	sha256sums = 1b614c5d9a392d04b94a02ceb65d773daf17ec78ae5c4cba399e24426ff6fc4c
 	sha256sums = e57da3bf9ff1ed0602ca3f048321128e619a2fd5f9cc45f7344a8aec90d376c9
 	sha256sums = cff8a12ac9522adf676ac96f3586d9d85f007abb061281a66ea958a0e1347378
 
