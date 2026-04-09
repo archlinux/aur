@@ -1,0 +1,16 @@
+pkgbase = opencode-qwencode-oauth
+	pkgdesc = Qwen OAuth authentication plugin for opencode with multi-account rotation
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/mseptiaan/opencode-qwencode-oauth
+	install = opencode-qwencode-oauth.install
+	arch = any
+	license = MIT
+	depends = opencode
+	depends = npm
+	conflicts = opencode-qwencode-oauth-debug
+	options = !debug
+	source = opencode-qwencode-oauth-1.0.3.tar.gz::https://github.com/mseptiaan/opencode-qwencode-oauth/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = b0c39512bd41d5f0ea3721e171beaf2a16b82ba756271defb3414550c6192e0f
+
+pkgname = opencode-qwencode-oauth
