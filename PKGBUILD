@@ -100,6 +100,7 @@ prepare() {
 
   # NOTE these submodules are currenly only used by MacOS builds - ignore them for now:
   # NOTE: submodules/hunspell, submodules/libssh, submodules/openssl-cmake, submodules/zlib
+  # TODO: see if submodules/wx-config-msys2 can be skipped too
   git submodule --quiet deinit submodules/hunspell;  # MacOS only
   git submodule --quiet deinit submodules/libssh;  # MacOS only
   git submodule --quiet deinit submodules/openssl-cmake;  # MacOS only
@@ -150,6 +151,10 @@ build() {
     -DCOPY_WX_LIBS=0 \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 
+
+  # ninja: improved progress reporting
+  NINJA_STATUS="%p %f/%t: %u/%r/%s: %e %o %W: ";
+  export NINJA_STATUS;
 
   # build
   cmake --build "${BUILD_DIR}"
