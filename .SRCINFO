@@ -1,6 +1,6 @@
 pkgbase = aionui
 	pkgdesc = Free, local, open-source 24/7 Cowork app and OpenClaw for Gemini CLI, Claude Code, Codex, OpenCode, Qwen Code, Goose CLI, Auggie, and more.(Use system-wide electron)
-	pkgver = 1.9.8
+	pkgver = 1.9.9
 	pkgrel = 1
 	url = https://www.aionui.com/
 	arch = aarch64
@@ -16,9 +16,9 @@ pkgbase = aionui
 	depends = python
 	depends = libsecret
 	conflicts = aionui-bin
-	source = aionui-1.9.8::git+https://github.com/iOfficeAI/AionUi.git#tag=v1.9.8
+	source = aionui-1.9.9::git+https://github.com/iOfficeAI/AionUi.git#tag=v1.9.9
 	source = aionui.sh
-	sha256sums = 5e5ff9a124e509f11534e5ea503e9ec577af21ca46d872c7b28cfe4b7494d6f2
+	sha256sums = 8fadd7b67001661f96fd4951b439b68d7939066df9afd125de0e6396ab075ae4
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = aionui
