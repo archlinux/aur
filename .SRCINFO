@@ -1,6 +1,6 @@
 pkgbase = cai
 	pkgdesc = CLI tool that generates concise git commit messages from diffs or commit history using large language models
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/thorstenfoltz/cai
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = cai
 	depends = python-requests
 	depends = python-typer
 	depends = git
-	source = cai-0.11.1.tar.gz::https://github.com/thorstenfoltz/cai/archive/refs/tags/0.11.1.tar.gz
-	sha256sums = 8790391ff39f6c83e71eac6764b5a31dcc45c846507e09f73ea7a1eaee12c625
+	source = cai-0.11.2.tar.gz::https://github.com/thorstenfoltz/cai/archive/refs/tags/0.11.2.tar.gz
+	sha256sums = 4c3ee1f0c5def38094e4c046ce1aea703bb834b0c479bcd2f692a61921784fe5
 
 pkgname = cai
