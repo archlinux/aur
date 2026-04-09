@@ -1,6 +1,6 @@
 pkgbase = plasma-settings-git
 	pkgdesc = Settings application for Plasma Mobile
-	pkgver = 26.02.0.r15.ge48387f
+	pkgver = 26.02.0.r16.g00b2aba
 	pkgrel = 1
 	url = https://www.plasma-mobile.org/
 	arch = any
