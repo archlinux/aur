@@ -1,6 +1,6 @@
 # Maintainer: Papaya <me@papayadev.net>
 pkgname=lectern-git
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A configurable, cross-platform markdown viewer'
 arch=('x86_64')
@@ -9,19 +9,20 @@ license=('LicenseRef-MIT-Commons-Clause')
 depends=(
     'gcc-libs'
     'glibc'
-    'libglvnd'
-    'libxkbcommon'
-    'wayland'
+    'qt6-base'
+    'qt6-svg'
+    'qt6-wayland'
     'xdg-desktop-portal'
     'xdg-desktop-portal-impl'
 )
 makedepends=(
     'cargo'
+    'cmake'
     'git'
 )
 optdepends=(
+    'noto-fonts-emoji: color emoji rendering'
     'xorg-server: X11 support'
-    'libx11: X11 support'
 )
 provides=('lectern')
 conflicts=('lectern')
@@ -36,12 +37,12 @@ pkgver() {
     if [ -n "$desc" ]; then
         echo "$desc" | sed 's/^v//;s/-/.r/;s/-/./g'
     else
-        printf '0.1.0.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+        printf '0.2.0.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     fi
 }
 
 prepare() {
-    cd lectern
+    cd lectern/parser
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -49,22 +50,18 @@ prepare() {
 build() {
     cd lectern
     export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
-}
-
-check() {
-    cd lectern
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo test --frozen
+    cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build -j$(nproc)
 }
 
 package() {
     cd lectern
 
     # Binary
-    install -Dm755 "target/release/lectern" "$pkgdir/usr/bin/lectern"
+    install -Dm755 "build/lectern" "$pkgdir/usr/bin/lectern"
+
+    # Parser library
+    install -Dm755 "build/liblectern_parser.so" "$pkgdir/usr/lib/liblectern_parser.so"
 
     # Desktop entry
     install -Dm644 "assets/lectern.desktop" "$pkgdir/usr/share/applications/lectern.desktop"
