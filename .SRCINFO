@@ -1,6 +1,6 @@
 pkgbase = narsil-nvidia-bin
 	pkgdesc = A terminal-based system resource monitor — GPU-aware (NVIDIA), Braille charts, per-char label inversion
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Pommersche92/narsil
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = narsil-nvidia-bin
 	conflicts = narsil
 	conflicts = narsil-bin
 	conflicts = narsil-nvidia
-	source = https://github.com/Pommersche92/narsil/releases/download/v0.1.0/narsil-nvidia-0.1.0-x86_64.tar.gz
-	sha256sums = c55e388a1c08daffdf8204a6bc2272f1a6570ab7f07c406f2c8d1f5579e3f32c
+	source = https://github.com/Pommersche92/narsil/releases/download/v0.2.0/narsil-nvidia-0.2.0-x86_64.tar.gz
+	sha256sums = 81f2a2f22e2d0496ee9efb4f0739ba73799025d9d2b1a530cdeddec229049423
 
 pkgname = narsil-nvidia-bin
