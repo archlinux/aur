@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="audiosource"
-pkgver=1.2
+pkgver=1.5
 pkgrel=1
 pkgdesc="Use an Android device as a USB microphone"
 url="https://github.com/gdzx/audiosource"
@@ -12,7 +12,7 @@ depends=("android-tools"
          "libpulse"
          "python")
 source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/audiosource")
-b2sums=('8be2f55d4111709c3abc07fae85d07cad7d8d58b750ad085183d8965bd0926591088a48d31670a94adc5953b67bd8a5914a60257e13d9efeabe6a8b121801de6')
+b2sums=('b03bb02fed416f268c47c359536f05b9d5764233f1c9818990d17b8c5f52fae8e51e3cc6288101fd4de59a875f9fa1252986107986b7acabaf8906c54d805532')
 options=("!strip")
 
 package(){
