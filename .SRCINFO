@@ -1,0 +1,21 @@
+pkgbase = steam-manifest-downloader
+	pkgdesc = Download Steam game depots and manifests via a modern Tauri GUI
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/MCbabel/Steam-Manifest-Downloader
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = patchelf
+	makedepends = librsvg
+	makedepends = file
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = openssl
+	source = steam-manifest-downloader-1.3.0.tar.gz::https://github.com/MCbabel/Steam-Manifest-Downloader/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 5e2ad3ea9bb89b25904125ba90b10ee3bd1ecfe94b36f034e28585e3acdfc13d
+
+pkgname = steam-manifest-downloader
