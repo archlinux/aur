@@ -1,6 +1,6 @@
 pkgbase = penguinsnap
 	pkgdesc = Screenshot and OCR tool for Linux
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/rursache/PenguinSnap
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = penguinsnap
 	depends = tesseract-data-eng
 	depends = spectacle
 	depends = wl-clipboard
-	source = penguinsnap-1.0.0.tar.gz::https://codeload.github.com/rursache/PenguinSnap/tar.gz/v1.0.0
-	sha256sums = 1fe50a2eec5ebc8239f017bc1b0ca28247d3d672d803e01d3b1d4a126c822e90
+	source = penguinsnap-1.1.0.tar.gz::https://codeload.github.com/rursache/PenguinSnap/tar.gz/v1.1.0
+	sha256sums = 5369e33d0085c39d7ab87717e5b069b2a6934b81672463ce833b45f2bd16ca7b
 
 pkgname = penguinsnap
