@@ -1,55 +1,45 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=17
-pkgdesc="Shorin Niri Desktop Environment (Dependencies & Dotfiles)"
+pkgrel=18
+pkgdesc="Shorin Niri Desktop Environment (Core Configs & Installer)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
 license=('GPL')
 
+# 核心依赖：桌面能够成功运行的底线包，以及脚本执行必须的工具
 depends=(
     'bash' 'curl'
-    
-    # --- Desktop Core ---
-    'niri' 'mako' 'polkit-gnome' 'xdg-desktop-portal-gnome' 'xwayland-satellite' 'swayidle' 'breeze-cursors'
-    'fuzzel-ime-git' 'libnotify' 'mpv'
+    'niri' 'mako' 'polkit-gnome' 'xdg-desktop-portal-gnome' 'xwayland-satellite' 'swayidle'
+    'fuzzel-ime-git' 'libnotify' 'brightnessctl' 'cava' 'cliphist' 'wl-clipboard' 
+    'grim' 'slurp' 'hyprlock' 'hyprpicker' 'swayosd' 'awww' 'waybar' 'matugen' 'shorinclip-git'
+)
 
-    # --- base fonts ---
-    'noto-fonts' 'noto-fonts-cjk' 'noto-fonts-emoji' 
-    
-    # --- File Manager & Core Utils ---
-    'nautilus' 'thunar' 'file-roller' 'gvfs-smb' 'gvfs-mtp' 'gvfs-gphoto2' 
-    'nautilus-open-any-terminal' 'gnome-keyring' 'tumbler' 'poppler-glib' 
-    'ffmpegthumbnailer' 'webp-pixbuf-loader' 'libgsf' 'xdg-desktop-portal-gtk'
-    'gst-plugins-base' 'gst-plugins-good' 'gst-libav' 'thunar-archive-plugin' 'thunar-volman'
-    
-    # --- Standard Packages (From List) ---
-    'bat' 'bazaar' 'bluetui' 'brightnessctl' 'cava' 'cliphist' 'clipnotify' 
-    'wl-clipboard' 'xclip' 'eza' 'fish' 'starship' 'zoxide' 'grim' 'slurp' 
-    'satty' 'wf-recorder' 'wl-screenrec-git' 'hyprlock' 'hyprpicker' 'chafa' 
-    'timg' 'imv' 'imagemagick' 'waifu2x-ncnn-vulkan' 'jq' 'nwg-look' 
-    'pacman-contrib' 'swayosd' 'awww' 'ttf-jetbrains-mono-nerd' 'waybar' 
-    'wlsunset' 'pavucontrol' 'downgrade' 'strace' 'xdg-terminal-exec' 'kitty' 'firefox'
-
-    'fastfetch' 'btop' 'gdu' 'opencode'
-
-    # --- AUR Packages (From List) ---
-    'shorin-contrib-git'
-    'clipsync-git'
-    'shorinclip-git'
-    'ddcutil-service'
-    'matugen'
-    'python-pywalfox'
-    'ttf-jetbrains-maple-mono-nf-xx-xx'
-    'ttf-lxgw-wenkai-screen'
-    'waypaper-git'
-    'niri-sidebar-git'
-    'wl-longshot-git'
-    'shorin-screenrec-menu-git'
-
-    # -- input method
-    'fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'fcitx5-rime' 'rime-ice-git' 'rime-wubi'
-
+# 可选依赖：仅供 pacman 和网页展示参考，实际由 shorinniri 脚本全自动比对安装
+optdepends=(
+    'breeze-cursors: Cursor theme' 'mpv: Media player'
+    'noto-fonts: Base fonts' 'noto-fonts-cjk: CJK fonts' 'noto-fonts-emoji: Emoji fonts'
+    'ttf-jetbrains-mono-nerd: Nerd fonts' 'ttf-jetbrains-maple-mono-nf-xx-xx: Custom font' 'ttf-lxgw-wenkai-screen: Chinese font'
+    'nautilus: File manager' 'thunar: Alternative file manager' 'file-roller: Archive manager'
+    'gvfs-smb: SMB support' 'gvfs-mtp: MTP support' 'gvfs-gphoto2: PTP support'
+    'nautilus-open-any-terminal: Nautilus terminal extension' 'gnome-keyring: Keyring service'
+    'tumbler: Thumbnail service' 'poppler-glib: PDF rendering' 'ffmpegthumbnailer: Video thumbnails'
+    'webp-pixbuf-loader: WebP support' 'libgsf: File format support' 'xdg-desktop-portal-gtk: GTK portal'
+    'gst-plugins-base: GStreamer' 'gst-plugins-good: GStreamer' 'gst-libav: GStreamer'
+    'thunar-archive-plugin: Thunar plugin' 'thunar-volman: Thunar volume manager'
+    'bat: Cat clone' 'bazaar: Version control' 'bluetui: Bluetooth TUI' 'clipnotify: Clipboard notify'
+    'xclip: X11 clipboard' 'eza: ls replacement' 'fish: Shell' 'starship: Shell prompt' 'zoxide: cd replacement'
+    'satty: Screenshot editor' 'wf-recorder: Screen recorder' 'wl-screenrec-git: Screen recorder'
+    'chafa: Terminal image viewer' 'timg: Terminal image viewer' 'imv: Image viewer' 'imagemagick: Image tools'
+    'waifu2x-ncnn-vulkan: Image upscaler' 'jq: JSON processor' 'nwg-look: GTK settings' 'pacman-contrib: Pacman tools'
+    'wlsunset: Gamma adjustment' 'pavucontrol: Audio control' 'downgrade: Package downgrade'
+    'strace: System call tracer' 'xdg-terminal-exec: XDG terminal' 'kitty: Terminal emulator' 'firefox: Web browser'
+    'fastfetch: System info' 'btop: Resource monitor' 'gdu: Disk usage' 'opencode: Code opener'
+    'shorin-contrib-git: Shorin tools' 'clipsync-git: Clipboard sync' 'ddcutil-service: DDC util'
+    'python-pywalfox: Firefox theming' 'waypaper-git: Wallpaper setter' 'niri-sidebar-git: Sidebar'
+    'wl-longshot-git: Screenshot tool' 'shorin-screenrec-menu-git: Screen record menu'
+    'fcitx5: Input method' 'fcitx5-configtool: Fcitx5 config' 'fcitx5-gtk: Fcitx5 GTK' 'fcitx5-qt: Fcitx5 QT'
+    'fcitx5-rime: Fcitx5 Rime' 'rime-ice-git: Rime dict' 'rime-wubi: Rime wubi'
 )
 makedepends=('git')
 
@@ -67,7 +57,7 @@ package() {
     local target_dir="$pkgdir/usr/share/shorin-niri"
     install -dm755 "$target_dir"
     
-    # 将 dotfiles 里面的内容拷贝到 target_dir
+    # 拷贝 dotfiles
     if [[ -d "dotfiles" ]]; then
         cp -a dotfiles/. "$target_dir/"
     else
@@ -75,7 +65,7 @@ package() {
         exit 1
     fi
 
-    # [新增] 将 Wallpapers 拷贝到独立的共享目录，防止影响 dotfiles 同步逻辑
+    # 拷贝 Wallpapers 到独立的共享目录
     local wp_dir="$pkgdir/usr/share/shorin-niri-wallpapers"
     install -dm755 "$wp_dir"
     if [[ -d "Wallpapers" ]]; then
@@ -88,7 +78,7 @@ package() {
     if [[ -f "shorinniri" ]]; then
         install -Dm755 shorinniri "$pkgdir/usr/bin/shorinniri"
     else
-        echo "Error: 'shorinniri' script not found in the git repository root."
+        echo "Error: 'shorinniri' script not found."
         exit 1
     fi
 
