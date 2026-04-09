@@ -1,11 +1,11 @@
 # Maintainer: Jai Brown (AUR: JaINTP) <dev [at] jaintp [dot] com>
 
 _pkgname=devpod
-_pkgver=0.18.6
+_pkgver=0.19.0
 _image_url="https://github.com/skevetter/devpod/releases/download/v${_pkgver}/DevPod_linux_amd64.AppImage"
 
 pkgname="${_pkgname}-community-appimage"
-pkgver=0.18.6
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Codespaces but open-source, client-only, and unopinionated - community fork (AppImage version)"
 arch=('x86_64')
@@ -39,7 +39,7 @@ provides=("devpod" "devpod-cli")
 conflicts=("devpod" "devpod-bin" "devpod-cli-bin")
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::${_image_url}")
-sha256sums_x86_64=('2b26b6276dca6e482dd414751d93dae818ac2ef3f4512663ebf2fa4c1bb6072c')
+sha256sums_x86_64=('d759bd89f145edb52e4b4833999109dc6236c98a2b49f3dd2694a06894e55855')
 
 _appimage="${_pkgname}-${pkgver}-${CARCH}.AppImage"
 noextract=("${_appimage}")
