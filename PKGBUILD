@@ -1,9 +1,9 @@
-# Maintainer: witt <1989161762 at qq dot com>
+# Maintainer: EEEntity <eeentity at hotmail dot com>
 
 pkgname=bongo-cat
-pkgver=0.9.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="BongoCat 是一个可爱地互动桌面宠物应用，让你的桌面充满乐趣！"
+pkgdesc="BongoCat 是一个可爱的互动桌面宠物应用，让你的桌面充满乐趣！"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ayangweb/BongoCat"
 license=('MIT')
@@ -21,8 +21,8 @@ source_aarch64=(
   "${pkgname%-bin}-${pkgver}_arm64.deb::${url}/releases/download/v${pkgver}/BongoCat_${pkgver}_arm64.deb"
 )
 sha256sums=('1a164304cda4e01afc74bed12c93ef7d366958bf596d66477e63d315e42a23ce')
-sha256sums_x86_64=('4aaf7ca925d43a92c5605dc6bbdbd8396e52d8aa62a60a53063b8b756a9ecc87')
-sha256sums_aarch64=('990cf13116e4576dd844b93f2a82eceb1c938d425856b2c12f81c8509f684b9e')
+sha256sums_x86_64=('a471460afbdc1926386a100ba8b9a048a7005015e8be48d8a26caeaeffcf827a')
+sha256sums_aarch64=('96b52331550f0709f882a048936ca608397534b90864748a8d2874247d19a9b6')
 
 build() {
   mkdir -p "build/";
