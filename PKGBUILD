@@ -7,15 +7,15 @@ arch=('any')
 url="https://github.com/phlppbmm/rtfm"
 license=('MIT')
 depends=(
-    'python>=3.11'
+    'python'
     'python-fastapi'
-    'uvicorn'
+    'python-uvicorn'
     'python-chromadb'
     'python-gitpython'
     'python-httpx'
     'python-click'
     'python-rich'
-    'python-pyyaml'
+    'python-yaml'
     'python-html2text'
     'python-beautifulsoup4'
     'python-lxml'
@@ -41,4 +41,5 @@ build() {
 package() {
     cd "${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
