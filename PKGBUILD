@@ -1,4 +1,4 @@
-# Maintainer: Unknown <unknown@example.com>
+# Maintainer: Jai Brown (AUR: JaINTP) <dev [at] jaintp [dot] com>
 pkgname=python-mempalace
 pkgver=3.0.0
 pkgrel=1
