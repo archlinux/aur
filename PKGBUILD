@@ -1,6 +1,6 @@
 pkgname=things-cloud-tools-bin
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='CLI and background sync tools for Things Cloud'
 arch=('x86_64')
 url='https://github.com/szcharlesji/things-cloud-sdk'
@@ -8,16 +8,16 @@ license=('MIT')
 depends=('bash' 'systemd')
 install='things-cloud-tools-bin.install'
 source=(
-  "https://github.com/szcharlesji/things-cloud-sdk/releases/download/v0.1.0/things-cloud-tools_0.1.0_linux_amd64.tar.gz"
+  "https://github.com/szcharlesji/things-cloud-sdk/releases/download/v0.1.1/things-cloud-tools_0.1.1_linux_amd64.tar.gz"
   "things-cloud-tools-bin.install"
 )
 sha256sums=(
-  '49634ccc09a7209a093ac9ee97cfac0f8782b4804445627947b0df603d42ecf3'
+  '05ae4c04a9c9ead07edd2ad128320b1df7a135efd7dccc9b5691de0a32c8af57'
   'SKIP'
 )
 
 package() {
-  cd "$srcdir/things-cloud-tools_0.1.0_linux_amd64"
+  cd "$srcdir/things-cloud-tools_0.1.1_linux_amd64"
 
   install -Dm755 bin/things-cli "$pkgdir/usr/bin/things-cli"
   install -Dm755 bin/thingsync "$pkgdir/usr/bin/thingsync"
