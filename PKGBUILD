@@ -33,7 +33,8 @@ source=(
     "$_pkgname.svg::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/pdfapps.svg"
 )
 sha256sums=(
-    'd3d2f367014d34830243f982e7d8e27b8a07e0c644a8ff158412e05406050784'
+    '3ad529ec1f02ba515e722becc28029d7ced68480d2a0e60d58811fe5c0d68f19'
+    '3ad529ec1f02ba515e722becc28029d7ced68480d2a0e60d58811fe5c0d68f19'
     'SKIP'
     'SKIP'
     'SKIP'
