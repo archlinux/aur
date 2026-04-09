@@ -1,7 +1,7 @@
 # Maintainer: phlppbmm <philipp.baumm@gmx.net>
 pkgname=python-chromadb-bin
 pkgver=1.5.7
-pkgrel=5
+pkgrel=6
 pkgdesc="AI-native open-source embedding database (prebuilt)"
 arch=('x86_64')
 url="https://github.com/chroma-core/chroma"
@@ -12,7 +12,6 @@ depends=(
     'python-bcrypt'
     'python-fastapi'
     'python-grpcio'
-    'abseil-cpp>=20260107'
     'python-httpx'
     'python-jsonschema'
     'python-kubernetes'
