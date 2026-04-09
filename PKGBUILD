@@ -1,35 +1,31 @@
 pkgname=jasp-desktop
-pkgver=0.96.0.16.g9116257a9
-pkgrel=1
-pkgdesc="JASP Desktop (development branch) with private Boost 1.88 and librdata under /opt/jasp-desktop"
+pkgver=0.96.0.38.gb498d5368
+pkgrel=2
+pkgdesc="JASP Desktop (development branch)"
 arch=('x86_64')
 url="https://github.com/jasp-stats/jasp-desktop"
 license=('GPL3')
 
 depends=(
-  'qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-positioning' 'qt6-webchannel' 'qt6-webengine'
-  'r' 'glpk' 'jsoncpp' 'libarchive' 'openssl' 'curl' 'sqlite' 'zlib' 'libfreexl' 'readstat'
+  'qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-positioning' 'qt6-webchannel' 'qt6-webengine' 'boost-libs'
+  'r' 'librdata-git' 'jags' 'glpk' 'jsoncpp' 'libarchive' 'openssl' 'curl' 'sqlite' 'zlib' 'libfreexl' 'readstat'
 )
+
 makedepends=(
   'git' 'cmake' 'ninja' 'gcc' 'gcc-fortran' 'make' 'pkgconf' 'patchelf' 'autoconf' 'automake'
-  'libtool' 'bison' 'flex' 'gettext' 'blas' 'lapack'
-  'ccache'
+  'libtool' 'bison' 'flex' 'gettext' 'blas' 'lapack' 'ccache'
 )
+
+optdepends=('v8: for jaspProcess support')
 
 source=(
   "git+https://github.com/jasp-stats/jasp-desktop.git#branch=development"
-  "https://archives.boost.io/release/1.88.0/source/boost_1_88_0.tar.bz2"
-  "git+https://github.com/WizardMac/librdata.git"
   "org.jaspstats.JASP.desktop"
 )
-sha256sums=(
-  'SKIP'
-  '46d9d2c06637b219270877c9e16155cbd015b6dc84349af064c088e9b5b12f7b'
-  'SKIP'
-  'SKIP'
-)
 
-_boostsrc="boost_1_88_0"
+sha256sums=('SKIP'
+            '6415669f39de6484ce9a6a368caf69bb1db13b2e0e0388a15243bb09484f0d37')
+
 _jasp_prefix="/opt/jasp-desktop"
 
 pkgver() {
@@ -44,103 +40,64 @@ pkgver() {
 check_env() {
   if [[ -z "${GITHUB_PAT:-}" ]]; then
     echo "==> ERROR: GITHUB_PAT is not set."
-    echo "==> ERROR: Please export GITHUB_PAT=\"REAL\" before running makepkg."
+    echo "==> ERROR: Please export GITHUB_PAT=your_github_pat before running makepkg."
     echo "Aborting due to missing required environment variable."
     exit 1
   fi
 
-  : "${GITHUB_PAT_DEV:=DUMMY}"
-  export GITHUB_PAT_DEV
+  : "${GITHUB_PAT_DEF:=DUMMY}"
+  export GITHUB_PAT_DEF
 }
 
 prepare() {
   check_env
 
   cd "${srcdir}/jasp-desktop"
+
   git submodule sync --recursive
   git submodule update --init --recursive --jobs "$(nproc)"
 
-  cd "${srcdir}/${_boostsrc}"
-  ./bootstrap.sh \
-    --prefix="${srcdir}/boost-staging" \
-    --with-libraries=system,filesystem,thread,date_time,regex,program_options,container,container_hash \
-    --with-toolset=gcc
-
-  cd "${srcdir}/librdata"
-  export ACLOCAL_PATH="/usr/share/gettext/m4:/usr/share/aclocal"
-  ./autogen.sh
+  # allows detection of host boost-libs
+  sed -i 's/COMPONENTS system/COMPONENTS/' Tools/CMake/Libraries.cmake
 }
 
 build() {
-  export CC="ccache gcc"
-  export CXX="ccache g++"
-  export FC="ccache gfortran"
-  export F77="ccache gfortran"
+  # Set compiler launcher to use ccache
   export CMAKE_C_COMPILER_LAUNCHER=ccache
   export CMAKE_CXX_COMPILER_LAUNCHER=ccache
   export CMAKE_Fortran_COMPILER_LAUNCHER=ccache
 
-  cd "${srcdir}/${_boostsrc}"
-  rm -rf "${srcdir}/build-boost"
-  ./b2 \
-    --prefix="${srcdir}/boost-staging" \
-    --build-dir="${srcdir}/build-boost" \
-    -j"$(nproc)" \
-    cxxflags="-fPIC" \
-    install
+  # Set compiler flags
+  export CFLAGS="${CFLAGS} -fPIC"
+  export CXXFLAGS="${CXXFLAGS} -fPIC"
+  export FCFLAGS="${FCFLAGS} -fPIC"
+  export FFLAGS="${FFLAGS} -fPIC"
 
-  cd "${srcdir}/librdata"
-  ./configure --prefix="${srcdir}/librdata-staging"
-  make -j"$(nproc)"
+  # Navigate to the source directory
+  cd "${srcdir}/jasp-desktop" || return
 
-  export BOOST_ROOT="${srcdir}/boost-staging"
-  export Boost_ROOT="${srcdir}/boost-staging"
-  export BOOST_INCLUDEDIR="${srcdir}/boost-staging/include"
-  export BOOST_LIBRARYDIR="${srcdir}/boost-staging/lib"
-
-  export CMAKE_PREFIX_PATH="${srcdir}/boost-staging"
-  export PKG_CONFIG_PATH="${srcdir}/boost-staging/lib/pkgconfig"
-
-  export LIBRARY_PATH="${srcdir}/boost-staging/lib:${LIBRARY_PATH}"
-  export LD_LIBRARY_PATH="${srcdir}/boost-staging/lib:${LD_LIBRARY_PATH}"
-
-  cd "${srcdir}/jasp-desktop"
+  # Clean previous build directory
   rm -rf "${srcdir}/build"
+
+  # Run CMake to configure the build
   cmake -S . -B "${srcdir}/build" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="${_jasp_prefix}" \
-    -DCMAKE_PREFIX_PATH="${srcdir}/boost-staging" \
-    -DBoost_ROOT="${srcdir}/boost-staging" \
-    -DBOOST_ROOT="${srcdir}/boost-staging" \
-    -DBoost_NO_SYSTEM_PATHS=ON \
-    -DBoost_NO_BOOST_CMAKE=ON \
-    -DBoost_ADDITIONAL_VERSIONS="1.88.0;1.88" \
     -DLINUX_LOCAL_BUILD=ON \
-    -DCMAKE_C_COMPILER_LAUNCHER=ccache \
-    -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-    -DCMAKE_Fortran_COMPILER_LAUNCHER=ccache \
     -Wno-dev
 
+  # Build the project using Ninja
   ninja -C "${srcdir}/build"
 
-  # SIMPLest FIX: CMake only needs this directory to exist
+  # Create necessary directories for the build
   mkdir -p "${srcdir}/build/Modules"/{binary_pkgs,manifests,module_libs,Tools}
 
-  cd "${srcdir}/jasp-desktop/Tools"
+  # Run additional build scripts
+  cd "${srcdir}/jasp-desktop/Tools" || return
   Rscript buildAllDefaultJaspModules.R
 }
 
 package() {
-  cd "${srcdir}/${_boostsrc}"
-  ./b2 \
-    --prefix="${pkgdir}${_jasp_prefix}" \
-    --build-dir="${srcdir}/build-boost" \
-    --layout=system \
-    install
-
-  cd "${srcdir}/librdata"
-  make DESTDIR="${pkgdir}" install
-
   cd "${srcdir}"
   DESTDIR="${pkgdir}" ninja -C build install
 
