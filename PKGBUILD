@@ -1,9 +1,10 @@
-# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Evangelos Foutras <foutrelis@archlinux.org>
 # Contributor : Aaron Griffin <aaron@archlinux.org>
 
 pkgname=slim-themes
 pkgver=1.2.3
-pkgrel=10
+pkgrel=11
 pkgdesc="Themes Pack for Simple Login Manager"
 arch=('any')
 url="https://sourceforge.net/projects/slim.berlios/"

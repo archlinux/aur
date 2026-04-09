@@ -1,7 +1,7 @@
 pkgbase = slim-themes
 	pkgdesc = Themes Pack for Simple Login Manager
 	pkgver = 1.2.3
-	pkgrel = 10
+	pkgrel = 11
 	url = https://sourceforge.net/projects/slim.berlios/
 	arch = any
 	license = GPL
