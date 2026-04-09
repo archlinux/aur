@@ -1,6 +1,6 @@
 pkgbase = workbuddy-bin
 	pkgdesc = Work Smart，Not Hard
-	pkgver = 4.8.2.24695016
+	pkgver = 4.9.1.25024097
 	pkgrel = 1
 	url = https://www.codebuddy.ai/agents
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = workbuddy-bin
 	makedepends = npm
 	makedepends = libicns
 	depends = electron
-	source = https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-4.8.2.24695016-aee737ca.dmg
+	source = https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-4.9.1.25024097-2ff879d4.dmg
 	source = WorkBuddy.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
