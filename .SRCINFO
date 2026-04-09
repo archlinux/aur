@@ -2,7 +2,7 @@ pkgbase = yukigram-desktop
 	pkgdesc = A Fork of 64Gram,A Telegram Desktop fork
 	pkgver = 6.4.1
 	pkgrel = 1
-	url = https://github.com/yukigram/yukigram/
+	url = https://github.com/yukigram/yukigram-legacy
 	arch = x86_64
 	license = GPL3
 	makedepends = boost
@@ -49,7 +49,7 @@ pkgbase = yukigram-desktop
 	optdepends = webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1
 	optdepends = webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (Wayland only)
 	optdepends = xdg-desktop-portal: desktop integration
-	source = yukigram::git+https://github.com/yukigram/yukigram.git#tag=9389a17dc3570f30b150acf6f87107a39deee7ca
+	source = yukigram::git+https://github.com/yukigram/yukigram-legacy.git#tag=9389a17dc3570f30b150acf6f87107a39deee7ca
 	source = git+https://github.com/tdlib/td.git#tag=6d74326c5ce53aeb52496f157f0080d9b8515970
 	sha512sums = SKIP
 	sha512sums = SKIP
