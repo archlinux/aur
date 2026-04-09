@@ -1,0 +1,23 @@
+pkgbase = awesometree
+	pkgdesc = Workspace manager: window management + Zed + git worktrees
+	pkgver = 2026.4.8
+	pkgrel = 1
+	url = https://github.com/aleksclark/awesometree
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = pkg-config
+	depends = gtk3
+	depends = vulkan-icd-loader
+	depends = wayland
+	depends = libxkbcommon
+	depends = libxcb
+	depends = freetype2
+	depends = fontconfig
+	depends = openssl
+	source = awesometree-2026.4.8.tar.gz::https://github.com/aleksclark/awesometree/archive/refs/tags/v2026.4.8.tar.gz
+	sha256sums = 09fa159ba787f9a38559c34a3e5cf005f61afd3583d34ae776edf9862d31ae11
+
+pkgname = awesometree
