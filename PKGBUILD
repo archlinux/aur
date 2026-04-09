@@ -1,3 +1,6 @@
+# vim:ts=2:sw=2:expandtab
+# Maintainer: peelz <peelz.dev+arch@gmail.com>
+
 _commit="0236a05f265f3fbeeb1c71083acbb486878da064"
 _solarxr_commit="fa2895b19a53d9b1686de8c2a6efe2b3e9ca4fc6"
 _pkgname="slimevr-server"
