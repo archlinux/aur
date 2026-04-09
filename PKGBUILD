@@ -20,7 +20,7 @@ optdepends=(
     'niri: the Wayland compositor this tool manages'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('22131cc7056a9738886b17e4eeff2f83798d46035b91730635a3c55558c7748b')
+sha256sums=('c26a0ffe5ccd45871d65b527fa09023a9aa5cb39e52e4c15e81a3f9da710b944')
 
 build() {
     cd "niri_display_manager-$pkgver"
