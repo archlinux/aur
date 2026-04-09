@@ -1,0 +1,18 @@
+pkgbase = nebula-drm-git
+	pkgdesc = DRM-based color temperature tool with solar position for COSMIC DE
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/rmarquis/nebula-drm
+	install = nebula-drm.install
+	arch = x86_64
+	license = MIT
+	makedepends = zig
+	makedepends = git
+	depends = libdrm
+	provides = nebula-drm
+	conflicts = nebula-drm
+	backup = etc/nebula-drm.conf
+	source = nebula-drm::git+https://github.com/rmarquis/nebula-drm.git
+	sha256sums = SKIP
+
+pkgname = nebula-drm-git

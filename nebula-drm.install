@@ -1,0 +1,9 @@
+post_install() {
+    echo "==> Edit /etc/nebula-drm.conf to set your location and temperatures."
+    echo "==> Then enable the service:"
+    echo "      systemctl enable --now nebula-drm"
+}
+
+post_upgrade() {
+    post_install
+}
