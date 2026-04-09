@@ -1,6 +1,6 @@
 # Maintainer: realSUDO <github.com/realSUDO>
 pkgname=typeape
-pkgver=1.0.0
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Fast, minimal terminal typing speed test'
 arch=('x86_64')

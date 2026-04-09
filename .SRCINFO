@@ -1,6 +1,6 @@
 pkgbase = typeape
 	pkgdesc = Fast, minimal terminal typing speed test
-	pkgver = 1.0.0
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/realSUDO/typeape
 	arch = x86_64
