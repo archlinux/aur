@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-git
 pkgver=2.0.8
-pkgrel=1
+pkgrel=3
 pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
 arch=('x86_64')
 url="https://github.com/ZoeyErinBauer/Shelly-ALPM"
@@ -103,6 +103,8 @@ EOF
   install -Dm644 Shelly.Gtk/Assets/shellylogo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly.png"
   install -Dm644 Shelly.Gtk/Assets/svg/flatpak-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/flatpak-symbolic.svg"
   install -Dm644 Shelly.Gtk/Assets/svg/arch-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/arch-symbolic.svg"
+  install -Dm644 Shelly.Gtk/Assets/shellylogo-tray.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-tray.png"
+  install -Dm644 Shelly.Gtk/Assets/shellylogo-tray.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-update.png"
 
   # Install fish shell completions
   install -Dm644 shelly.fish "$pkgdir/usr/share/fish/vendor_completions.d/shelly.fish"
