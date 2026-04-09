@@ -1,6 +1,6 @@
 # Maintainer: phlppbmm <philipp.baumm@gmx.net>
 pkgname=python-agent-rtfm-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Local documentation retrieval service for agent-assisted development (prebuilt)"
 arch=('any')
