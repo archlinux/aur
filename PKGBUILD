@@ -1,13 +1,13 @@
 # Maintainer: Conor Finn <finnconor@gmail.com>
 pkgname=ccflare-git
 pkgver=r197.6889212
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source proxy server for the Anthropic Claude API with monitoring, load balancing, and rate limiting"
-arch=('x86_64' 'aarch64')
+arch=('any')
 url="https://github.com/snipeship/ccflare"
 license=('MIT')
-makedepends=('bun' 'git')
-options=('!strip')
+depends=('bun')
+makedepends=('git')
 provides=('ccflare')
 conflicts=('ccflare')
 source=("${pkgname}::git+https://github.com/snipeship/ccflare.git")
@@ -20,14 +20,33 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
-    bun install
-    bun run build
-    cd apps/server && bun run build
+    bun install --frozen-lockfile
+    bun run build:dashboard
 }
 
 package() {
     cd "${pkgname}"
-    install -Dm755 apps/tui/dist/ccflare "${pkgdir}/usr/bin/ccflare"
-    install -Dm755 apps/server/dist/ccflare-server "${pkgdir}/usr/bin/ccflare-server"
+
+    # Install source to /usr/lib/ccflare
+    install -dm755 "${pkgdir}/usr/lib/ccflare"
+    cp -a apps packages node_modules package.json bun.lock tsconfig.json "${pkgdir}/usr/lib/ccflare/"
+
+    # Wrapper scripts
+    install -dm755 "${pkgdir}/usr/bin"
+
+    cat > "${pkgdir}/usr/bin/ccflare" << 'EOF'
+#!/bin/sh
+cd /usr/lib/ccflare
+exec bun run apps/tui/src/main.ts "$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/ccflare"
+
+    cat > "${pkgdir}/usr/bin/ccflare-server" << 'EOF'
+#!/bin/sh
+cd /usr/lib/ccflare
+exec bun run apps/server/src/server.ts "$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/ccflare-server"
+
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
