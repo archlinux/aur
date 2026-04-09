@@ -49,7 +49,6 @@ build() {
     # export FLASH_ATTN_CUDA_ARCHS="86"
 
     cd $_name-$pkgver
-    python setup.py build_ext
     # Add --skip-dependency-check to avoid the ninja python package requirement.
     python -m build --wheel --no-isolation --skip-dependency-check
 }
