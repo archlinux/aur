@@ -16,6 +16,10 @@ pkgbase = athas
 	depends = webkit2gtk-4.1
 	conflicts = athas-bin
 	source = athas-0.4.4.tar.gz::https://github.com/athasdev/athas/archive/refs/tags/v0.4.4.tar.gz
+	source = 0001-add-missing-js-deps-and-swift-cli-override.patch
+	source = 0002-add-packaging-tree-sitter-bootstrap-script.patch
 	sha256sums = 73e91ca7668a8f7b1eadf538e87a31d6d67c333e20d99b3effd2789a493b6646
+	sha256sums = 2ac0748e17a5971f6a47f3f6acfd7f01b7b1287e473576a0a28d706613b4f939
+	sha256sums = bc65eec041814fbab5b7e4336d633abe6975227cd630e92ddf07f69a3624e492
 
 pkgname = athas
