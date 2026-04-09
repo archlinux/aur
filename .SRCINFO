@@ -1,26 +1,23 @@
 pkgbase = mingw-w64-frei0r-plugins
 	pkgdesc = Collection of video effect plugins (mingw-w64)
-	pkgver = 2.5.6
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://frei0r.dyne.org/
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = mingw-w64-gcc
-	makedepends = mingw-w64-cairo
 	makedepends = mingw-w64-cmake
-	makedepends = mingw-w64-gavl
-	makedepends = mingw-w64-opencv
 	makedepends = git
+	depends = mingw-w64-cairo
 	depends = mingw-w64-crt
-	optdepends = mingw-w64-cairo: cairoaffineblend, cairoblend, cairogradient, cairoimagegrid and mirr0r plugins
-	optdepends = mingw-w64-gavl: rgbparade, scale0tilt and vectorscope plugins
-	optdepends = mingw-w64-opencv: facebl0r and facedetect plugins
+	depends = mingw-w64-gavl
+	depends = mingw-w64-opencv
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !debug
-	source = git+https://github.com/dyne/frei0r#tag=v2.5.6
+	source = git+https://github.com/dyne/frei0r#tag=v3.0.0
 	validpgpkeys = 6113D89CA825C5CEDD02C87273B35DA54ACB7D10
-	b2sums = 246ca3f9e7bbed04e339e343e1ee6ee367ef6ecb8d78f9b5a48f94e1b0088498144b4f2cb503084b8650bd5338e6812564b4bc1adb3c9ccb7e8a50366223eeda
+	b2sums = 4ef72aa8cc09e16d93780e1d71e4bb5d01e9c53393bbc6e1394b399c29f28ed6d9bc53f3dcb5899181075d0cdc22f5fbd287c29e8cde030c465672eef3cad654
 
 pkgname = mingw-w64-frei0r-plugins
