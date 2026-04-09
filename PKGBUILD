@@ -17,12 +17,10 @@ cutlass_commit_full=dc4817921edda44a549197ff3a9dcf5df0636e7b
 cutlass_commit=${cutlass_commit_full:0:8}
 source=("$_name-$pkgver.tar.gz::https://github.com/Dao-AILab/$_name/archive/refs/tags/v$pkgver.tar.gz"
         "cutlass-${cutlass_commit}.tar.gz::https://github.com/NVIDIA/cutlass/archive/${cutlass_commit_full}.tar.gz"
-        '0001-setup.py-Add-DGLOG_USE_GLOG_EXPORT-flag.patch'
-        '0002-setup.py-Remove-ninja-from-setup_requires.patch')
+        '0001-setup.py-Add-DGLOG_USE_GLOG_EXPORT-flag.patch')
 sha256sums=('61cd5e91507ad7f04dc7c207d8bc8bfb1e43b56b806e51febbc27faeaee208ba'
             'f2a3a9df5e6f010c8b02716aa2644a6f071827fafa606fac5f5241cab6a1ab56'
-            '3ebe511837ed96ec1447cac932acac6f9cfd742e5f0330891d7ebb1ed390b83d'
-            'd4cb7adf04b757213192e08c0ca3338339768115b1adc2856d625d633915b069')
+            '3ebe511837ed96ec1447cac932acac6f9cfd742e5f0330891d7ebb1ed390b83d')
 
 
 prepare() {
@@ -33,7 +31,6 @@ prepare() {
 
     cd $_name-$pkgver
     patch -p 1 -i "${srcdir}/0001-setup.py-Add-DGLOG_USE_GLOG_EXPORT-flag.patch"
-    patch -p 1 -i "${srcdir}/0002-setup.py-Remove-ninja-from-setup_requires.patch"
 }
 
 build() {
@@ -53,7 +50,8 @@ build() {
 
     cd $_name-$pkgver
     python setup.py build_ext
-    python -m build -nw
+    # Add --skip-dependency-check to avoid the ninja python package requirement.
+    python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
