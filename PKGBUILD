@@ -40,26 +40,26 @@ prepare() {
 }
 
 build() {
-    # By doing this the build will only consume below 40GB of system memory.
-    export MAX_JOBS=4
+  # By doing this the build will only consume below 40GB of system memory.
+  export MAX_JOBS=4
 
-    export CUDA_HOME=/opt/cuda
+  export CUDA_HOME=/opt/cuda
 
-    # Force building FA locally for CUDA (no ROCM).
-    export FLASH_ATTENTION_FORCE_BUILD=TRUE
-    export FLASH_ATTENTION_SKIP_CUDA_BUILD=FALSE
+  # Force building FA locally for CUDA (no ROCM).
+  export FLASH_ATTENTION_FORCE_BUILD=TRUE
+  export FLASH_ATTENTION_SKIP_CUDA_BUILD=FALSE
 
-    # By default all supported achitectures are build. Uncomment this export to limit it.
-    # See https://developer.nvidia.com/cuda/gpus
-    # export FLASH_ATTN_CUDA_ARCHS="80;90;100;110;120"
-    # export FLASH_ATTN_CUDA_ARCHS="86"
+  # By default all supported achitectures are build. Uncomment this export to limit it.
+  # See https://developer.nvidia.com/cuda/gpus
+  # export FLASH_ATTN_CUDA_ARCHS="80;90;100;110;120"
+  # export FLASH_ATTN_CUDA_ARCHS="86"
 
-    # Fix glog build errors.
-    export CFLAGS='-DGLOG_USE_GLOG_EXPORT'
+  # Fix glog build errors.
+  export CFLAGS='-DGLOG_USE_GLOG_EXPORT'
 
-    cd $_name
-    # Add --skip-dependency-check to avoid the ninja python package requirement.
-    python -m build --wheel --no-isolation --skip-dependency-check
+  cd $_name
+  # Add --skip-dependency-check to avoid the ninja python package requirement.
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
