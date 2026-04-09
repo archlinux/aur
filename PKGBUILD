@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=('gnome-shell')
 makedepends=('glib2' 'intltool')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha512sums=('190e1d6e48aa026eb5c1870138003503dbe76008d28765be6352a6013115db6bf3715fc79ba4bd5273c178a0cd08e529500f66b2df8d33a404c49aef0f6b4d6e')
+sha512sums=('c34506fb0e944ae119a41378aa6ccf8cc6489f559d0168c411970ad2a49ec69217dcc90a98caf3a1b61f2de5cc1b2e10a8d9bd8eb84f76c964c5f5ac410bc928')
 
 build() {
     cd "$pkgname-$pkgver"
