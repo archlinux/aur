@@ -2,7 +2,7 @@
 # Maintainer: Nick Heyer <nick@heyer.app>
 
 pkgname='greetdeez-bin'
-pkgver=1.0.51
+pkgver=1.0.52
 pkgrel=1
 pkgdesc='Minimal, hackable display manager greeter for greetd — Go + Svelte 5 + webkit2gtk'
 url='https://github.com/nickheyer/greetdeez'
@@ -15,10 +15,10 @@ backup=('etc/greetd/greetd.toml' 'etc/greetd/greetdeez.conf')
 install=greetdeez.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nickheyer/GreetDeez/releases/download/v${pkgver}/greetdeez_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('ad2fd167f8eaf86ccee830d6c6887e77b197414178e1791d1cba280c768851de')
+sha256sums_aarch64=('5f5a3cdcba286c2a3009416029954f2dfee609b724912eee377686575e82056f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nickheyer/GreetDeez/releases/download/v${pkgver}/greetdeez_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('6e9738830e6f9ad9aced8722bbaceb2c8c147a59bbc6059eb20519c21a725ff9')
+sha256sums_x86_64=('ea6f9e6a918b85a0e1f09a013e0a7ab981f785768ce845508317ffeeeaa9e43f')
 
 package() {
   install -Dm755 greetdeez "${pkgdir}/usr/bin/greetdeez"
