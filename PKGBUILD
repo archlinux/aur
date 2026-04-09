@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r76578.e47cdc6b63e
+pkgver=r76835.b544e42809e
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -35,6 +35,7 @@ depends=(
   sqlite
   ttf-liberation
   woff2
+  mimalloc
   
   angle # AUR
   simdutf-git # 'simdutf' is v6, we need v7.
