@@ -1,0 +1,15 @@
+pkgbase = nilwall-bin
+	pkgdesc = GTK4 wallpaper manager for Hyprland
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/jedrzejratajczak/nil
+	arch = x86_64
+	license = MIT
+	depends = gtk4
+	depends = gtk4-layer-shell
+	provides = nilwall
+	conflicts = nilwall
+	source = nilwall-0.2.0.tar.gz::https://github.com/jedrzejratajczak/nil/releases/download/v0.2.0/nil-v0.2.0-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = nilwall-bin
