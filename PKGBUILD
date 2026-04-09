@@ -19,6 +19,7 @@ makedepends=(
   'meson'
   'ninja'
   'wayland-protocols'
+  'wlr-protocols'
 )
 optdepends=(
   'pipewire: sound effects via pw-play'
