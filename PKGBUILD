@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 
-_upstreamver='3.2.0'
+_upstreamver='3.2.2'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='fastmcp'
@@ -9,7 +9,7 @@ _pypi_package='fastmcp'
 
 pkgname="python-${_pypi_package}"
 pkgver="${_upstreamver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="The fast, Pythonic way to build MCP servers and clients."
 arch=('any')
 url='https://github.com/jlowin/fastmcp'
@@ -20,7 +20,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 optdepends=()
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('d4830b8ffc3592d3d9c76dc0f398904cf41f04910e41a0de38cc1004e0903bef')
+sha256sums=('a5351ec8c098844a8d508a53e484b362f5357b890596aaf233ac9686a796a62f')
 
 
 build() {
