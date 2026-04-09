@@ -1,7 +1,7 @@
 pkgbase = shorin-dms-niri-git
 	pkgdesc = Shorin DMS Niri desktop environment (Core Configs & Installer)
 	pkgver = r4.0dabc1d
-	pkgrel = 16
+	pkgrel = 17
 	url = https://github.com/SHORiN-KiWATA/shorin-dms-niri
 	arch = any
 	license = GPL
@@ -83,6 +83,7 @@ pkgbase = shorin-dms-niri-git
 	optdepends = fcitx5-rime: Fcitx5 Rime
 	optdepends = rime-ice-git: Rime dict
 	optdepends = rime-wubi: Rime Wubi
+	optdepends = clipsync-git: x11 wayland clipboard sync
 	provides = shorin-dms-niri-meta
 	provides = shorin-dms-niri-dotfiles-git
 	conflicts = shorin-dms-niri-meta

@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-git
 pkgver=r4.0dabc1d
-pkgrel=16
+pkgrel=17
 pkgdesc="Shorin DMS Niri desktop environment (Core Configs & Installer)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -13,7 +13,7 @@ conflicts=('shorin-dms-niri-meta' 'shorin-dms-niri-dotfiles-git')
 depends=(
     'bash' 'dms-shell' 'xdg-desktop-portal-gnome' 'niri' 'xwayland-satellite'
     'libnotify' 'power-profiles-daemon' 'wl-clipboard' 'cliphist' 'cava'
-    'dgop' 'dsearch-bin' 'qt5-multimedia' 'cups-pk-helper' 'kimageformats'
+    'dgop' 'dsearch-bin' 'qt5-multimedia' 'cups-pk-helper' 'kimageformats' 
 )
 
 # 可选依赖：仅作为展示和 pacman 的参考。实际安装由 shorindms 脚本接管
@@ -37,6 +37,7 @@ optdepends=(
     'nwg-look: GTK settings' 'breeze-cursors: Cursor theme' 'fcitx5: Input method framework'
     'fcitx5-configtool: Fcitx5 GUI' 'fcitx5-gtk: Fcitx5 GTK' 'fcitx5-qt: Fcitx5 QT' 'fcitx5-rime: Fcitx5 Rime'
     'rime-ice-git: Rime dict' 'rime-wubi: Rime Wubi'
+    'clipsync-git: x11 wayland clipboard sync'
 )
 
 makedepends=('git')
