@@ -27,7 +27,7 @@ provides=('python-agent-rtfm')
 conflicts=('python-agent-rtfm' 'python-agent-rtfm-git')
 install=python-agent-rtfm.install
 _wheel="agent_rtfm-${pkgver}-py3-none-any.whl"
-source=("${_wheel}::https://files.pythonhosted.org/packages/py3/a/agent_rtfm/agent_rtfm-${pkgver}-py3-none-any.whl")
+source=("${_wheel}::https://files.pythonhosted.org/packages/4f/92/88658a648af84aadf7c19d204703b4b755acd67ab1d248f1da417350fb63/agent_rtfm-0.2.1-py3-none-any.whl")
 sha256sums=('SKIP')
 noextract=("${_wheel}")
 
