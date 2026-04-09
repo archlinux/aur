@@ -1,7 +1,7 @@
 # Maintainer: Cogumelo cogumelo@tutamail.com
 pkgname=imageviewer
 pkgver=1.9.0
-pkgrel=7
+pkgrel=8
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 pkgdesc="Simple, cross-platform image viewer"
