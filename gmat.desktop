@@ -1,8 +1,8 @@
 [Desktop Entry]
 Comment=General Mission Analysis Tool
-Exec=/opt/GMAT/R2025a/bin/GMAT-R2025a
-Icon=/opt/GMAT/R2025a/data/graphics/icons/GMATLogo.png
-Name=GMAT R2025a
-Path=/opt/GMAT/R2025a/bin
+Exec=/opt/GMAT/R2026a/bin/GMAT-R2026a
+Icon=/opt/GMAT/R2026a/data/graphics/icons/GMATLogo.png
+Name=GMAT R2026a
+Path=/opt/GMAT/R2026a/bin
 StartupNotify=true
 Type=Application

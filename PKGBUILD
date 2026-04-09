@@ -1,7 +1,7 @@
 # Maintainer: Haoda Wang <haoda.wang@jpl.nasa.gov>
 
 pkgname=gmat-bin
-pkgver=2025a
+pkgver=2026a
 pkgrel=1
 pkgdesc="An open-source space mission analysis tool"
 arch=('x86_64')
@@ -31,6 +31,6 @@ package(){
 }
 
 sha512sums=(
-  '5b8e36b85e3c1b409971114b601d049fc5c6341fdafe06e35d57b4d0c13739a602ae9be61d3e47b7ed919ebc94c21f33d045a3d90c8daaea5aae477f9236bcf2'
+  'da2481274955d0c1170ffa9135f0310dce2a02459721e6fb54e01cad6391807578af9f82851e68b176ddb7c2206c6551cf918a92074090fc2d6d7583ee070b7b'
   "SKIP"
 )
