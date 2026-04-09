@@ -1,7 +1,7 @@
 pkgbase = athas
 	pkgdesc = Lightweight code editor built with React, TypeScript, and Tauri
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://athas.dev
 	arch = x86_64
 	arch = aarch64

@@ -1,7 +1,7 @@
 # Maintainer: Juan Roa <hello@juanroa.dev>
 pkgname=athas
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight code editor built with React, TypeScript, and Tauri"
 arch=('x86_64' 'aarch64')
 url="https://athas.dev"
@@ -63,7 +63,7 @@ build() {
 	bun scripts/postinstall.ts
 	npm run typecheck
 	npx vite build
-	cargo build --release --locked --manifest-path src-tauri/Cargo.toml --bin athas
+	npx tauri build --no-bundle --ignore-version-mismatches
 }
 
 package() {
