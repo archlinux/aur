@@ -1,0 +1,14 @@
+pkgbase = otf-new-computer-modern
+	pkgdesc = NewComputerModern provides a huge extension of Knuth's ComputerModern fonts in 10 and 8pt including a Book weight. It supports many more languages, extends the possibilities for Latin, and includes Mathematics in Regular and Book weight.
+	pkgver = 7.1.1
+	pkgrel = 1
+	url = https://git.gnu.org.ua/newcm.git/
+	arch = any
+	license = custom:GFL
+	depends = fontconfig
+	source = https://download.gnu.org.ua/release/newcm/newcm-7.1.1.txz
+	source = http://tug.org/fonts/licenses/GUST-FONT-LICENSE.txt
+	sha256sums = 27ba53922256ebb339a9b1e4e07252ee8e832738b4be6228e4adcaa9a9a76583
+	sha256sums = 49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050
+
+pkgname = otf-new-computer-modern
