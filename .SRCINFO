@@ -1,0 +1,18 @@
+pkgbase = reinplayer-bin
+	pkgdesc = A modern, intuitive media player inspired by PotPlayer
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Ahurein/rein_player
+	arch = x86_64
+	license = MIT
+	depends = mpv
+	depends = gtk3
+	provides = reinplayer
+	conflicts = reinplayer
+	options = !strip
+	source = https://github.com/Ahurein/rein_player/releases/download/v1.1.0/reinplayer_linux_amd64_portable.tar.gz
+	source = reinplayer.desktop
+	sha256sums = 22ea42e7104a5a1ccb973cfb90f535644c606954a0d7da85d98db870e3b33380
+	sha256sums = 987436b55ab2c9622f5dff6084a48e5ef39ed0fbf160596d492cec066f01e042
+
+pkgname = reinplayer-bin

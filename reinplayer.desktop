@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ReinPlayer
+Comment=A modern, intuitive media player inspired by PotPlayer
+Exec=/usr/bin/reinplayer %U
+Terminal=false
+Type=Application
+Icon=reinplayer
+Categories=AudioVideo;Video;Player;
+StartupNotify=true
