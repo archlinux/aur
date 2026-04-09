@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-core
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc='Core daemon for the Owlry application launcher — manages plugins, providers, and search'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-core-v$pkgver.tar.gz")
-b2sums=('6bd1b55d55e209e9dbbbf31101521a43e2a3bce465c16098d0aca5d781dffa955251583c6748bcb5f79b135f3d0774cb1d48ac6113ffc9ed06f8f95ef87446fc')
+b2sums=('be68489a6148ed3fb12c257994d1c1293a82b9cc2dd1f9a86cfdc780d27c0d07ed31b309b1119525880d605910f653ba7c35b49ae0472cb5a944bb39d36ebaa2')
 
 prepare() {
     cd "owlry"
