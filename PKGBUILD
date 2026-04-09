@@ -1,7 +1,7 @@
 # Maintainer: phlppbmm <philipp.baumm@gmx.net>
 pkgname=python-chromadb-bin
 pkgver=1.5.7
-pkgrel=6
+pkgrel=7
 pkgdesc="AI-native open-source embedding database (prebuilt)"
 arch=('x86_64')
 url="https://github.com/chroma-core/chroma"
@@ -51,5 +51,30 @@ noextract=(${source[@]##*/})
 package() {
     for whl in "${srcdir}/"*.whl; do
         python -m installer --destdir="${pkgdir}" "$whl"
+    done
+
+    # Remove packages bundled in wheels that are already provided by
+    # official Arch repo dependencies — prevents file conflicts AND
+    # ABI mismatches (e.g. grpcio linked against wrong abseil-cpp)
+    _pyver=$(python -c 'import sys;print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+    _sp="${pkgdir}/usr/lib/python${_pyver}/site-packages"
+    for pkg in \
+        grpc grpcio google/protobuf googleapis_common_protos \
+        numpy scipy sympy mpmath \
+        pydantic pydantic_core pydantic_settings \
+        importlib_resources importlib_metadata \
+        requests urllib3 certifi charset_normalizer idna \
+        oauthlib requests_oauthlib \
+        httpx httpcore sniffio anyio \
+        click rich pygments markdown_it_py mdurl \
+        yaml pyyaml orjson jsonschema \
+        typing_extensions zipp tqdm overrides wrapt deprecated \
+        tenacity bcrypt kubernetes \
+        starlette fastapi uvicorn dotenv \
+        typer shellingham annotated_doc \
+        opentelemetry \
+        flatbuffers protobuf google
+    do
+        rm -rf "${_sp}/${pkg}" "${_sp}/${pkg}"*.dist-info
     done
 }
