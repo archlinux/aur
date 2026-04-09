@@ -1,17 +1,17 @@
 pkgbase = vlsm-interfacing-bin
 	pkgdesc = Viral Load Sample Management - Machine Interfacing.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/deforay/vlsm-interfacing
 	arch = x86_64
 	license = MIT
 	depends = electron41
-	provides = vlsm-interfacing=4.0.0
+	provides = vlsm-interfacing=4.0.1
 	conflicts = vlsm-interfacing
-	source = vlsm-interfacing-4.0.0.deb::https://github.com/deforay/vlsm-interfacing/releases/download/v4.0.0/vlsm-interfacing-4.0.0-linux-amd64.deb
-	source = LICENSE-4.0.0.md::https://raw.githubusercontent.com/deforay/vlsm-interfacing/v4.0.0/LICENSE.md
+	source = vlsm-interfacing-4.0.1.deb::https://github.com/deforay/vlsm-interfacing/releases/download/v4.0.1/vlsm-interfacing-4.0.1-linux-amd64.deb
+	source = LICENSE-4.0.1.md::https://raw.githubusercontent.com/deforay/vlsm-interfacing/v4.0.1/LICENSE.md
 	source = vlsm-interfacing.sh
-	sha256sums = bf30c6a7eefcee35e7d77d3342685f348a76d66613030130ec86e8f9a67f0bbb
+	sha256sums = 8d05e28d37b66e09d3eb30c92c042c87827da55dd9ac52eec850e573c4669b6f
 	sha256sums = 00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
