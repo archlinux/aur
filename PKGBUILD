@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-git
 _pkgname=Mustang
-pkgver=0.9.17.r8.g89f2b3d
-_electronversion=32
+pkgver=0.9.23.r1.g23c1fb2
+_electronversion=41
 _nodeversion=24
 pkgrel=1
 pkgdesc="New full-featured desktop email, chat and video conference client.(Use system-wide electron)"
