@@ -34,7 +34,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   # Force GNU linker — rust-lld cannot link ring/zstd-sys native assembly objects
-  export RUSTFLAGS="-C link-arg=-fuse-ld=bfd"
+  export RUSTFLAGS="-C link-arg=-fuse-ld=bfd -C link-arg=-Wl,--copy-dt-needed-entries"
   cargo build --frozen --release
 }
 
