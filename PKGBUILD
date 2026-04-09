@@ -10,14 +10,12 @@ depends=('python' 'python-chromadb' 'python-yaml')
 provides=('mempalace')
 conflicts=('mempalace')
 makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-wheel')
-source=("${pkgname:7}-$pkgver.tar.gz::https://github.com/milla-jovovich/mempalace/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('36b9aa15fdbdf1e1514ff645861e983fcb0d119e105fae4a7fa73cf5ce8372e8')
-
+source=("https://files.pythonhosted.org/packages/source/${pkgname:7:1}/${pkgname:7}/${pkgname:7}-$pkgver.tar.gz")
+sha256sums=('64f7c22d0fc50e26d0cd7746325e091e041f8863182e09c47b688bde070925c6')
 build() {
   cd "${pkgname:7}-$pkgver"
   python -m build --wheel --no-isolation
 }
-
 package() {
   cd "${pkgname:7}-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
