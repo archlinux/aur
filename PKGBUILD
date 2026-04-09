@@ -1,6 +1,6 @@
 # Maintainer: Amin Aimeur <m.amin.aimeur@gmail.com>
 pkgname=echonoting-bin
-pkgver=0.2.5
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="AI meeting notes with live transcription"
 arch=('x86_64')
@@ -9,12 +9,12 @@ license=('MIT')
 depends=('webkit2gtk-4.1' 'libpulse' 'alsa-lib' 'fuse2')
 provides=('echonoting')
 conflicts=('echonoting')
-source=("EchoNoting_0.2.5_amd64.AppImage::https://github.com/AimeurAmin/echonoting-releases/releases/download/desktop-v${pkgver}/EchoNoting_0.2.5_amd64.AppImage")
-sha256sums=('1b7630078fc89076612fc49f3fa333ef247b6a9df772e9377ec25012bd226948')
-noextract=("EchoNoting_0.2.5_amd64.AppImage")
+source=("EchoNoting_0.2.8_amd64.AppImage::https://github.com/AimeurAmin/echonoting-releases/releases/download/desktop-v${pkgver}/EchoNoting_0.2.8_amd64.AppImage")
+sha256sums=('e218df9f5138374c9f62341ff8e70436ce9f10ae4585bcd4088bdcad6d6ce363')
+noextract=("EchoNoting_0.2.8_amd64.AppImage")
 
 package() {
-  install -Dm755 "${srcdir}/EchoNoting_0.2.5_amd64.AppImage" \
+  install -Dm755 "${srcdir}/EchoNoting_0.2.8_amd64.AppImage" \
     "${pkgdir}/opt/echonoting/EchoNoting.AppImage"
 
   install -dm755 "${pkgdir}/usr/bin"
@@ -36,8 +36,8 @@ package() {
 
   # Extract the bundled icon from the AppImage so the launcher shows it
   cd "${srcdir}"
-  chmod +x "EchoNoting_0.2.5_amd64.AppImage"
-  ./"EchoNoting_0.2.5_amd64.AppImage" --appimage-extract '*.png' >/dev/null 2>&1 || true
+  chmod +x "EchoNoting_0.2.8_amd64.AppImage"
+  ./"EchoNoting_0.2.8_amd64.AppImage" --appimage-extract '*.png' >/dev/null 2>&1 || true
   if [ -d squashfs-root ]; then
     ICON=$(find squashfs-root -iname 'echonoting*256*.png' 2>/dev/null | head -1)
     if [ -z "$ICON" ]; then
