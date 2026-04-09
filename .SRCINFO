@@ -31,8 +31,10 @@ pkgbase = collabora-office
 	options = !strip
 	options = !debug
 	source = git+https://github.com/CollaboraOnline/online.git#branch=distro/collabora/coda-25.04
-	source = https://github.com/CollaboraOnline/online/releases/download/for-code-assets/core-co-25.04-assets.tar.gz
+	source = https://github.com/Rash419/collabora-core-assets/releases/download/co-25.04.9-2/core-co-25.04-assets.tar.gz
+	source = https://www.collaboraoffice.com/downloads/collabora-office-brand/collabora-office-brand-25.04.9.3.tar.gz
 	sha256sums = SKIP
-	sha256sums = 4c0b9eec039b58ca930fbc05454d438d9031e597ef984495124d1b810a37790d
+	sha256sums = 9f6d731cf39bef97737ea87561ba1d0b892fa08e5acf89827b886dcc45a3e1db
+	sha256sums = c6eb6d1b05612653d261e0dbe4b9fe0fb8eff660cdf39f858c7d0723068d6fa7
 
 pkgname = collabora-office

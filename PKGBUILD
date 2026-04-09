@@ -38,10 +38,12 @@ optdepends=(
 options=('!strip' '!debug')
 source=(
     "git+https://github.com/CollaboraOnline/online.git#branch=distro/collabora/coda-25.04"
-    "https://github.com/CollaboraOnline/online/releases/download/for-code-assets/core-co-25.04-assets.tar.gz"
+    "https://github.com/Rash419/collabora-core-assets/releases/download/co-25.04.9-2/core-co-25.04-assets.tar.gz"
+    "https://www.collaboraoffice.com/downloads/collabora-office-brand/collabora-office-brand-25.04.9.3.tar.gz"
 )
 sha256sums=('SKIP'
-            '4c0b9eec039b58ca930fbc05454d438d9031e597ef984495124d1b810a37790d')
+            '9f6d731cf39bef97737ea87561ba1d0b892fa08e5acf89827b886dcc45a3e1db'
+            'c6eb6d1b05612653d261e0dbe4b9fe0fb8eff660cdf39f858c7d0723068d6fa7')
 
 build() {
     cd online
@@ -78,6 +80,13 @@ package() {
     # License
     install -Dm644 "$srcdir/online/COPYING" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Install Collabora Office branding (online/browser UI theme and assets)
+    local _brand="$srcdir/collabora-office-brand"
+    cp -a "$_brand/online-theme" \
+        "$pkgdir/usr/lib/collabora-office/share/theme_definitions/online/"
+    cp -a "$_brand"/branding* "$_brand"/images "$_brand"/welcome \
+        "$pkgdir/usr/share/coolwsd/browser/dist/"
 
     # Remove bundled dictionaries; the app uses system hunspell dicts
     rm -rf "$pkgdir/usr/lib/collabora-office/share/extensions"/dict-*
