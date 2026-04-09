@@ -1,0 +1,20 @@
+pkgbase = flux-explorer
+	pkgdesc = Lightweight file explorer built with Tauri v2 and Rust for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zefarie/flux-explorer
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = ffmpeg
+	depends = poppler
+	source = flux-explorer-0.1.0.tar.gz::https://github.com/zefarie/flux-explorer/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = flux-explorer
