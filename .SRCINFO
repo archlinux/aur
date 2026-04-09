@@ -1,14 +1,14 @@
 pkgbase = deta-surf
 	pkgdesc = Deta Surf, an AI notebook that brings all your files and the web directly into your stream of thought.
-	pkgver = 1.3.0_beta.0.x86
+	pkgver = 1.4.6_beta.0
 	pkgrel = 1
 	url = https://deta.surf
 	arch = x86_64
 	license = Apache-2.0
 	depends = glibc
-	source = deta-surf-1.3.0_beta.0.x86.AppImage::https://assets.deta.surf/releases/259957125/linux-x64/download
+	source = deta-surf-1.4.6_beta.0.AppImage::https://github.com/deta/surf/releases/download/1.4.6-beta.0/Surf-1.4.6-beta.0.x86_64.AppImage
 	source = deta-surf.desktop
-	sha256sums = 0afac1174c7ac11dc2939688dbed71379c38b3aa9f4f7a1fdc6ce1344ad53c83
+	sha256sums = 568b314e1c65afd0979343ea685d1bdc844bfa06795a3b6d13450409539f452c
 	sha256sums = SKIP
 
 pkgname = deta-surf
