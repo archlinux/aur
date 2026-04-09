@@ -1,0 +1,25 @@
+pkgbase = cliprithm-bin
+	pkgdesc = Prebuilt Cliprithm AppImage packaged for Arch Linux
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/BOTOOM/Cliprithm
+	arch = x86_64
+	license = MIT
+	depends = ffmpeg
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	optdepends = xdg-desktop-portal: improved desktop integration for file dialogs and portals
+	provides = cliprithm
+	conflicts = cliprithm
+	noextract = Cliprithm_1.2.1_amd64.AppImage
+	source = Cliprithm_1.2.1_amd64.AppImage::https://github.com/BOTOOM/Cliprithm/releases/download/cliprithm-v1.2.1/Cliprithm_1.2.1_amd64.AppImage
+	source = cliprithm.png::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.2.1/src-tauri/icons/128x128.png
+	source = LICENSE::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.2.1/LICENSE
+	sha256sums = f65c110352d8d7294cf4c10bb23e21bde86e5eea49eda8343babda658fff9b19
+	sha256sums = c7f874d897675e666ae09da79dfefeed2aa5bf9f51da33bf931050c5087b6a80
+	sha256sums = d90660ef692577f22ad72ccabe19ff6d10c4047d5a8345bf748f0c044932b52c
+
+pkgname = cliprithm-bin
