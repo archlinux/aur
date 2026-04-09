@@ -1,0 +1,16 @@
+diff --unified --recursive Microsoft.CodeAnalysis.LanguageServer.old/Program.cs Microsoft.CodeAnalysis.LanguageServer.new/Program.cs
+--- Microsoft.CodeAnalysis.LanguageServer.old/Program.cs	2026-04-09 12:38:55.244038229 +0000
++++ Microsoft.CodeAnalysis.LanguageServer.new/Program.cs	2026-04-09 12:41:45.495425674 +0000
+@@ -91,7 +91,11 @@
+     var assemblyLoader = new CustomExportAssemblyLoader(extensionManager, loggerFactory);
+     var typeRefResolver = new ExtensionTypeRefResolver(assemblyLoader, loggerFactory);
+ 
+-    var cacheDirectory = Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location)!, "cache");
++    // var cacheDirectory = Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location)!, "cache");
++    var cacheDirectory = Path.Combine(
++        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
++        ".cache",
++        "roslyn-language-server");
+ 
+     using var exportProvider = await LanguageServerExportProviderBuilder.CreateExportProviderAsync(AppContext.BaseDirectory, extensionManager, assemblyLoader, serverConfiguration.DevKitDependencyPath, cacheDirectory, loggerFactory, cancellationToken);
+ 
