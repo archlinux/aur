@@ -2,7 +2,7 @@
 
 _pkgbase=asus-hub
 pkgname="$_pkgbase-bin"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='The unofficial MyAsus alternative for Linux'
 arch=('x86_64')
