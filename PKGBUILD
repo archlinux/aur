@@ -35,14 +35,11 @@ depends=('libxcursor'
          'libxml2'
          'libmtp'
          'libusb'
-         'nas'
          'udisks2'
          # includes core, gui, widgets, network, xml, dbus, pritnsupport
+         'qt5-multimedia'
          'qt5-base'
-         'qt5-x11extras'
-         # replacements for bundled libraries in opt/2X/Client/lib/
-         # libavcodec.so.58, libavutil.so.56
-         'ffmpeg4.4')
+         'qt5-x11extras')
 makedepends=()
 optdepends=()
 provides=()
@@ -75,7 +72,7 @@ package() {
         "/${_opt}/bin/appserverclient"
 
     # libraries
-    install -D -t "${_dest}/lib/" 'lib/lib2xsupport.so.21' 'lib/libmtp-prl.so' 'lib/libwebview.so'
+    install -D -t "${_dest}/lib/" lib/*.so*
 
     # license
     install -D -m644 -t "${_dest}/doc/" 'doc/EULA.txt' 
