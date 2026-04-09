@@ -1,7 +1,7 @@
 # Maintainer: MihaiStreames <72852703+MihaiStreames@users.noreply.github.com>
 pkgname=python-ghlang
 _pypiname=ghlang
-pkgver=2.5.4
+pkgver=2.5.5
 pkgrel=1
 pkgdesc="Generate pretty charts for your GitHub language stats."
 arch=(any)
@@ -28,7 +28,7 @@ optdepends=(
 	'tokount: local directory analysis with ghlang local'
 )
 source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/${_pypiname}-$pkgver.tar.gz")
-sha256sums=('57eb0af0a04e804128e3f8b252fd10bd286ef53c8cd7636479195cc50276b5e4')
+sha256sums=('cc13d61510a720836d649aa891df5e241fc861728a1cd8538c06400b6307a816')
 
 build() {
 	cd "$srcdir/$_pypiname-$pkgver"
