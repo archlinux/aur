@@ -1,7 +1,7 @@
 pkgbase = echonoting-bin
 	pkgdesc = AI meeting notes with live transcription
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AimeurAmin/echonoting-releases
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,8 @@ pkgbase = echonoting-bin
 	provides = echonoting
 	conflicts = echonoting
 	noextract = EchoNoting_0.2.8_amd64.AppImage
+	options = !strip
+	options = !debug
 	source = EchoNoting_0.2.8_amd64.AppImage::https://github.com/AimeurAmin/echonoting-releases/releases/download/desktop-v0.2.8/EchoNoting_0.2.8_amd64.AppImage
 	sha256sums = e218df9f5138374c9f62341ff8e70436ce9f10ae4585bcd4088bdcad6d6ce363
 
