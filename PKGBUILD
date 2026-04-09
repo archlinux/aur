@@ -1,11 +1,11 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 # Contributor: Daniel Bershatsky <bepshatsky@yandex.ru>
 
-pkgname=python-flash-attention
-_pkgname=${pkgname#python-}
+_name=flash-attention
+pkgname=python-${_name}
 pkgver=2.8.3
 pkgrel=1
-pkgdesc='Fast and memory-efficient exact attention'
+pkgdesc='Fast and memory-efficient exact attention. CUDA version.'
 arch=('x86_64')
 url='https://github.com/Dao-AILab/flash-attention'
 license=('BSD-3-Clause')
@@ -15,7 +15,7 @@ makedepends=('ninja' 'python-build' 'python-installer' 'python-packaging'
 optdepends=()
 cutlass_commit_full=dc4817921edda44a549197ff3a9dcf5df0636e7b
 cutlass_commit=${cutlass_commit_full:0:8}
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/Dao-AILab/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
+source=("$_name-$pkgver.tar.gz::https://github.com/Dao-AILab/$_name/archive/refs/tags/v$pkgver.tar.gz"
         "cutlass-${cutlass_commit}.tar.gz::https://github.com/NVIDIA/cutlass/archive/${cutlass_commit_full}.tar.gz"
         '0001-setup.py-Add-DGLOG_USE_GLOG_EXPORT-flag.patch'
         '0002-setup.py-Remove-ninja-from-setup_requires.patch')
@@ -28,10 +28,10 @@ sha256sums=('61cd5e91507ad7f04dc7c207d8bc8bfb1e43b56b806e51febbc27faeaee208ba'
 prepare() {
     ln -sf cutlass-$cutlass_commit_full cutlass-$cutlass_commit
 
-    rm -rfv $_pkgname-$pkgver/csrc/cutlass
-    ln -sf ../../cutlass-$cutlass_commit_full $_pkgname-$pkgver/csrc/cutlass
+    rm -rfv $_name-$pkgver/csrc/cutlass
+    ln -sf ../../cutlass-$cutlass_commit_full $_name-$pkgver/csrc/cutlass
 
-    cd $_pkgname-$pkgver
+    cd $_name-$pkgver
     patch -p 1 -i "${srcdir}/0001-setup.py-Add-DGLOG_USE_GLOG_EXPORT-flag.patch"
     patch -p 1 -i "${srcdir}/0002-setup.py-Remove-ninja-from-setup_requires.patch"
 }
@@ -46,14 +46,13 @@ build() {
     export FLASH_ATTENTION_FORCE_BUILD=TRUE
     export FLASH_ATTENTION_SKIP_CUDA_BUILD=FALSE
 
-    cd $_pkgname-$pkgver
+    cd $_name-$pkgver
     python setup.py build_ext
     python -m build -nw
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $_name-$pkgver
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  python -m installer --compile-bytecode=1 --destdir=$pkgdir \
-    dist/flash_attn-$pkgver-*.whl
+  python -m installer --compile-bytecode=1 --destdir=$pkgdir dist/flash_attn-$pkgver-*.whl
 }
