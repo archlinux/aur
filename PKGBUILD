@@ -2,7 +2,7 @@
 _pkgname=gotify_tray
 pkgname="${_pkgname//_/-}-bin"
 pkgver=0.5.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Cross-platform desktop client for receiving messages from a Gotify server.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/seird/gotify-tray"
@@ -38,7 +38,7 @@ prepare() {
     " "${srcdir}/usr/share/applications/${_pkgname//_/}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" -t "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname//_/}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"

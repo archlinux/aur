@@ -1,7 +1,7 @@
 pkgbase = gotify-tray-bin
 	pkgdesc = Cross-platform desktop client for receiving messages from a Gotify server.(Prebuilt version)
 	pkgver = 0.5.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/seird/gotify-tray
 	arch = x86_64
 	license = GPL-3.0-only
