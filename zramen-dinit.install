@@ -1,0 +1,31 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+note() {
+    printf "\n${blue}==>${yellow} NOTE:${bold} $1${all_off}\n\n"
+}
+
+msg() {
+    printf "    $1\n"
+}
+
+msg_n() {
+    printf "    $1\n\n"
+}
+
+post_install() {
+    note  "Default settings are commented out in the config file."
+    msg_n "Please edit ${bold}/etc/dinit.d/config/zramen.conf${all_off} to suit your needs."
+    msg_n "Kernel tweaks (sysctl) have been applied in ${bold}/etc/sysctl.d/99-zramen.conf${all_off}"
+    msg   "To enable and start the service immediately, run:"
+    msg   "${bold}dinitctl enable zramen${all_off}"
+    msg_n "${bold}dinitctl start zramen${all_off}"
+    msg   "To check logs (RAM buffer), run:"
+    msg_n "${bold}dinitctl catlog zramen${all_off}"
+}
+
+post_upgrade() {
+    post_install
+}
