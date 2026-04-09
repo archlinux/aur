@@ -5,7 +5,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=slack-cli
-pkgver=3.15.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Command-line interface for building apps on the Slack Platform."
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/slackapi/slack-cli/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('ed4fb64e93c7fe1966c5e4060408e316fe9dac9909624c81889fdf8dd845ff3d20163e25a7cd48336880f8d51393cf629fd2a72e8a6a936d9236fadc270c7d72')
+b2sums=('650b2d3b386fe9b510c15e42381d48e6850838086300d01fce90e406eb0921e00493ba160229eade29c310ed2ae5a3ca7ba252a5e368f48b288b52e88455ecd2')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -29,7 +29,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build -o build/$pkgname -ldflags="-X github.com/slackapi/slack-cli/internal/pkg/version.Version=v${pkgver}"
+  go build -o build/$pkgname -ldflags="-X github.com/slackapi/slack-cli/internal/version.Version=v${pkgver}"
 }
 
 check() {
