@@ -33,6 +33,8 @@ build() {
   cd "Steam-Manifest-Downloader-${pkgver}/src-tauri"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # Use thin LTO instead of fat LTO to avoid linker issues with ring/zstd-sys assembly objects
+  export CARGO_PROFILE_RELEASE_LTO=thin
   cargo build --frozen --release
 }
 
