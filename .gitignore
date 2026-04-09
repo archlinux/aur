@@ -1,5 +1,0 @@
-*.pkg.tar.zst
-src/
-pkg/
-*.zip
-*.sha256
