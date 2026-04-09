@@ -2,7 +2,7 @@
 # Maintainer: Paulo Matias <matias@ufscar.br>
 
 pkgname=bluespec-git
-pkgver=r970.9bd39e6f
+pkgver=r996.71db9d68
 pkgrel=1
 pkgdesc='Bluespec Compiler (BSC)'
 arch=('x86_64')
@@ -34,7 +34,7 @@ build(){
   CXXFLAGS+=" -ffat-lto-objects"
 
   cd "$srcdir/bsc"
-  make GHC="ghc -dynamic" GHCJOBS=4 GHCRTSFLAGS='+RTS -M5G -A128m -RTS' install-src
+  make GHC="ghc -dynamic" GHCJOBS=4 install-src
   make install-doc
 }
 
