@@ -1,6 +1,6 @@
 pkgbase = mssql-tools
 	pkgdesc = Microsoft SQL Server Tools for Linux
-	pkgver = 18.6.1.1
+	pkgver = 18.6.2.1
 	pkgrel = 1
 	url = https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver16
 	install = mssql-tools.install
@@ -10,11 +10,11 @@ pkgbase = mssql-tools
 	depends = msodbcsql
 	optdepends = mssql-server: Enter T-SQL statements to an SQL Server database
 	options = !strip
-	source_x86_64 = https://packages.microsoft.com/rhel/9.0/prod/Packages/m/mssql-tools18-18.6.1.1-1.x86_64.rpm
-	sha256sums_x86_64 = 55878228ecf6035b34a296467c50dcefe8e987a1d77c94b9cc8f5abf5d01e51e
-	sha512sums_x86_64 = 1462e41d104e76a1016b3ff18d90886a4e89f8c71ef6bb61cc95a69fe71d6c0be49266a9aef51f001189dd0f0f30f06b70252425122fedb9bc82e83ee5ac7d71
-	source_aarch64 = https://packages.microsoft.com/rhel/9.0/prod/Packages/m/mssql-tools18-18.6.1.1-1.aarch64.rpm
-	sha256sums_aarch64 = ee43f97d8e414b22642f77d892e48bc8211f0497fc49289167433bd66f30739e
-	sha512sums_aarch64 = 5f399d5502b580825b68b841dc2bc1409ff7a9e500f124cd03edcfee32efd1115ae6fffe1b68ff30b46bd3f204fdc750004ab599dacc4b47eef71ccb98a223c5
+	source_x86_64 = https://packages.microsoft.com/rhel/9.0/prod/Packages/m/mssql-tools18-18.6.2.1-1.x86_64.rpm
+	sha256sums_x86_64 = fe1ba0ee8e848a54d69dd95aabb3372a1de1fb06a30abfb863d983d0026fb8d7
+	sha512sums_x86_64 = 8ec8c5806083f9c7e37e2a9e642b2265e825955f413b8529467ce4b41adc5a260d9917262ef1c989d0242fc179708e34df58860da07776b4f9931b65202ce4da
+	source_aarch64 = https://packages.microsoft.com/rhel/9.0/prod/Packages/m/mssql-tools18-18.6.2.1-1.aarch64.rpm
+	sha256sums_aarch64 = cfa174a06dd59fdd340d6824d2c633fd2d978bd026da382510227a1acd0927a5
+	sha512sums_aarch64 = 7c823ac8bc8213f7eb077c80de0f50861374f6059be38bd52a3f47f3e667eeaf42c51af0f081988877af6858952f3181f3b3c7db06776907130a96b6a2ef745f
 
 pkgname = mssql-tools
