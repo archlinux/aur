@@ -27,14 +27,3 @@
  
  # Always include cuVS for spectral clustering enhancements
  include(cmake/thirdparty/get_cuvs.cmake)
-@@ -501,6 +499,10 @@
-         rmm::rmm
-         raft::raft
-         $<BUILD_LOCAL_INTERFACE:CUDA::toolkit>
-+	CUDA::cublas
-+  	CUDA::curand
-+  	CUDA::cusolver
-+  	CUDA::cusparse
-     PRIVATE
-         ${COMPILED_RAFT_LIB}
-         ${CUVS_LIB}

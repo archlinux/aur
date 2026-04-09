@@ -2,7 +2,7 @@
 
 pkgbase=cugraph
 pkgname=(cugraph python-pylibcugraph python-cugraph)
-pkgver=26.02.00
+pkgver=26.04.00
 pkgrel=1
 pkgdesc="cuGraph - RAPIDS Graph Analytics Library"
 url="https://github.com/rapidsai/cugraph"
@@ -17,8 +17,8 @@ source=(
     "missing-pkg.patch"
 )
 sha256sums=(
-    '7e35247be4dc3f4268edf485ceed2ea6924fb2cffa07ce9f9872105fb04b1e07'
-    '9afe11657749039c436c564fa8a24b0e51ba02b24ac49e45c7a02ffc4b98ddde'
+    '9310b697e03f2f397860934bee6da23e8daaeac7d73356d39c9c3443b6639b11'
+    '2cbe2f24dd6056fad0fa1861b69b25cf6502dd248602319aa687b7e7fd7ce2ea'
     'cf9d3bbb9ac0a12c4883059ce23531c3f10886f65c8d2b4559fd7c5193d3940c'
     '25da2d862c4ceb202e45e5a36d2ce4fa977e45d91757160407c808ac5b6b8054'
 )
