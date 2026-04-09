@@ -1,0 +1,8 @@
+post_install() {
+  chown -R puppet:puppet /opt/puppetlabs/server \
+    /var/log/puppetlabs/puppetserver
+}
+
+post_upgrade() {
+  post_install
+}
