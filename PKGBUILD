@@ -1,6 +1,6 @@
 # Maintainer: SergBrowns <https://github.com/SergBrowns>
 pkgname=phantom-browser-bin
-pkgver=155.6.1
+pkgver=155.6.2
 pkgrel=1
 pkgdesc="Privacy-focused Firefox fork with built-in DPI bypass, VPN (VLESS+REALITY), RKN blocklist sync and ad blocker"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=('phantom-browser')
 conflicts=('phantom-browser')
 
 source_x86_64=("phantom-${pkgver}.tar.xz::https://github.com/SergBrowns/phantom-browser/releases/download/v${pkgver}/phantom-${pkgver}.tar.xz")
-sha256sums_x86_64=('aa927d815053ed23a8d951075f14cc226754ebf4422e99f7f7c1bff2ca4afbdf')
+sha256sums_x86_64=('d26058c0d70d6f8a0e1c782a4fac6326e147ce6485ec62eecaaa03e03ae84192')
 
 package() {
     # Install browser files
