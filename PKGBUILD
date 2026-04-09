@@ -1,6 +1,6 @@
 # Maintainer: Mees Fatels
 pkgname=emm-git
-pkgver=r22.3e6a3cb
+pkgver=r25.2b3772b
 pkgrel=1
 pkgdesc="Eidolon Minion Manager - Modular Go-based CLI/TUI for AI"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -20,6 +20,8 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
+  # Ensure the source directory is writable before starting
+  chmod -R +w . 2>/dev/null || true
   export GOPATH="$srcdir/gopath"
   go mod download
 }
@@ -39,4 +41,7 @@ package() {
   cd "$pkgname"
   install -Dm755 emm "$pkgdir/usr/bin/emm"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  
+  # Make the entire srcdir writable so AUR helpers can clean the cache afterwards.
+  chmod -R +w "$srcdir" 2>/dev/null || true
 }
