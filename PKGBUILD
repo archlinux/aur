@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.10.12
+pkgver=0.10.13
 pkgrel=1
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
@@ -50,7 +50,7 @@ optdepends=(
   'waypipe: Wayland application forwarding for SSH connections'
 )
 source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0a61966531d3dc2b44ce9b048fb33e5361f29da307eadfc1707e36ac7f0c105b')
+sha256sums=('ff0a94458241c9f7d5257aaffeb90e2fcac6e51b1e49f598dc9db9f230a0cc8d')
 
 prepare() {
   cd "RustConn-$pkgver"
@@ -64,8 +64,8 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release \
-    -p rustconn --features adw-1-8 \
-    -p rustconn-cli
+    -p "$pkgname" --features adw-1-8 \
+    -p "$pkgname"-cli
 }
 
 check() {
@@ -93,7 +93,7 @@ package() {
   done
 
   for po_file in po/*.po; do
-    [ -f "$po_file" ] || continue
+    [ -f "${po_file}" ] || continue
     lang=$(basename "${po_file}" .po)
     install -d "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES"
     msgfmt -o "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/$pkgname.mo" "${po_file}"
