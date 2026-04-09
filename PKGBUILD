@@ -1,7 +1,7 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-git
-pkgver=r381.ae9c918
+pkgver=r429.f8ed615
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=(
 	mesa
 	opus
 	shaderc
+	wayland
 )
 provides=(moonshine)
 conflicts=(moonshine)
@@ -35,7 +36,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	cargo build --release
+	cargo build --release --workspace
 }
 
 package() {
@@ -44,6 +45,6 @@ package() {
 	install -Dm755 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 dist/moonshine.service "$pkgdir/usr/lib/systemd/user/moonshine.service"
 	install -Dm644 dist/60-moonshine.rules "$pkgdir/usr/lib/udev/rules.d/60-moonshine.rules"
-	install -Dm755 dist/vulkan-layers/libVkLayer_FROG_gamescope_wsi_x86_64.so "$pkgdir/usr/lib/moonshine/vulkan-layers/libVkLayer_FROG_gamescope_wsi_x86_64.so"
-	install -Dm644 dist/vulkan-layers/VkLayer_moonshine_gamescope_wsi.x86_64.json "$pkgdir/usr/share/vulkan/implicit_layer.d/VkLayer_moonshine_gamescope_wsi.x86_64.json"
+	install -Dm755 target/release/libmoonshine_wsi.so "$pkgdir/usr/lib/moonshine/vulkan-layers/libmoonshine_wsi.so"
+	install -Dm644 dist/VkLayer_moonshine_wsi.json "$pkgdir/usr/share/vulkan/implicit_layer.d/VkLayer_moonshine_wsi.json"
 }
