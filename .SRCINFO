@@ -1,6 +1,6 @@
 pkgbase = autopush-rs
 	pkgdesc = Push Server in Rust
-	pkgver = 1.81.1
+	pkgver = 1.81.2
 	pkgrel = 1
 	url = https://github.com/mozilla-services/autopush-rs
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = autopush-rs
 	conflicts = autopush-rs
 	conflicts = sunup-server
 	options = !lto
-	source = git+https://github.com/mozilla-services/autopush-rs.git#tag=1.81.1
-	sha256sums = 9593269ba9c5e394facef2c233be7a471a0d7ed5d5483e983b45f353dfdaf994
+	source = git+https://github.com/mozilla-services/autopush-rs.git#tag=1.81.2
+	sha256sums = 1b18c67bc2c089622c1f448a2abf404722ed799b731c25ea3a646e5b5752219f
 
 pkgname = autopush-rs
