@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.18.r160.g874e8f42
+pkgver=1.1.0.r322.gc0acb76f
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -35,6 +35,7 @@ sha256sums=('SKIP')
 options=(!lto)
 provides=("scx-scheds=$pkgver")
 conflicts=("scx-scheds")
+replaces=('scx-cake')
 
 _backports=(
 )
@@ -85,7 +86,6 @@ build() {
      --all-features \
      --workspace \
      --exclude scx_rlfifo \
-     --exclude scx_wd40 \
      --exclude scx_mitosis \
      --exclude scxcash \
      --exclude xtask \
