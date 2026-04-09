@@ -3,7 +3,7 @@
 _pkgbase=asus-hub
 pkgname="$_pkgbase"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The unofficial MyAsus alternative for Linux'
 arch=('x86_64')
 url='https://github.com/Traciges/Asus-Hub'
@@ -22,7 +22,7 @@ makedepends=('git' 'cargo')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=("$_pkgbase::git+https://github.com/Traciges/Asus-Hub.git#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('944a96ad97cb071e50afd140558eb3ac40af494a4b503719654c02ffa49c531b')
 
 prepare() {
 	cd "$_pkgbase"

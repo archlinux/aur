@@ -1,7 +1,7 @@
 pkgbase = asus-hub
 	pkgdesc = The unofficial MyAsus alternative for Linux
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Traciges/Asus-Hub
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -21,6 +21,6 @@ pkgbase = asus-hub
 	provides = asus-hub
 	conflicts = asus-hub
 	source = asus-hub::git+https://github.com/Traciges/Asus-Hub.git#tag=v1.0.1
-	sha256sums = SKIP
+	sha256sums = 944a96ad97cb071e50afd140558eb3ac40af494a4b503719654c02ffa49c531b
 
 pkgname = asus-hub
