@@ -1,0 +1,5 @@
+post_install() {
+    echo "Paga has been installed!"
+    echo "Paga is Work In Progress (WIP)"
+    echo "Please note the app is just for learning purposes and will expand later."
+}
