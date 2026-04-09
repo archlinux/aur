@@ -16,11 +16,9 @@ optdepends=()
 cutlass_commit_full=dc4817921edda44a549197ff3a9dcf5df0636e7b
 cutlass_commit=${cutlass_commit_full:0:8}
 source=("$_name-$pkgver.tar.gz::https://github.com/Dao-AILab/$_name/archive/refs/tags/v$pkgver.tar.gz"
-        "cutlass-${cutlass_commit}.tar.gz::https://github.com/NVIDIA/cutlass/archive/${cutlass_commit_full}.tar.gz"
-        '0001-setup.py-Add-DGLOG_USE_GLOG_EXPORT-flag.patch')
+        "cutlass-${cutlass_commit}.tar.gz::https://github.com/NVIDIA/cutlass/archive/${cutlass_commit_full}.tar.gz")
 sha256sums=('61cd5e91507ad7f04dc7c207d8bc8bfb1e43b56b806e51febbc27faeaee208ba'
-            'f2a3a9df5e6f010c8b02716aa2644a6f071827fafa606fac5f5241cab6a1ab56'
-            '3ebe511837ed96ec1447cac932acac6f9cfd742e5f0330891d7ebb1ed390b83d')
+            'f2a3a9df5e6f010c8b02716aa2644a6f071827fafa606fac5f5241cab6a1ab56')
 
 
 prepare() {
@@ -28,9 +26,6 @@ prepare() {
 
     rm -rfv $_name-$pkgver/csrc/cutlass
     ln -sf ../../cutlass-$cutlass_commit_full $_name-$pkgver/csrc/cutlass
-
-    cd $_name-$pkgver
-    patch -p 1 -i "${srcdir}/0001-setup.py-Add-DGLOG_USE_GLOG_EXPORT-flag.patch"
 }
 
 build() {
@@ -47,6 +42,9 @@ build() {
     # See https://developer.nvidia.com/cuda/gpus
     # export FLASH_ATTN_CUDA_ARCHS="80;90;100;110;120"
     # export FLASH_ATTN_CUDA_ARCHS="86"
+
+    # Fix glog build errors.
+    export CFLAGS='-DGLOG_USE_GLOG_EXPORT'
 
     cd $_name-$pkgver
     # Add --skip-dependency-check to avoid the ninja python package requirement.
