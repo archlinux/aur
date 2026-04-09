@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-xwayland-indicator
-pkgver=50.0
+pkgver=50.1
 pkgrel=1
 pkgdesc="Determine whether a window in GNOME uses xwayland"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=(
   'npm'
 )
 source=("git+https://codeberg.org/swsnr/gnome-shell-extension-xwayland-indicator.git#tag=v$pkgver")
-sha256sums=('0616fba27b8e7013ae3c8c36005c91150ffcec3de2dd397cff961ebfebcc356e')
+sha256sums=('e1084e3555b62b689729a571e0def05afe1c2a179139594725893b5641db75c3')
 
 build() {
   cd "$pkgname"
