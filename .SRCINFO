@@ -1,14 +1,14 @@
 pkgbase = oyasumi-bin
 	pkgdesc = Oyasumi (VR Sleeping Utilities)
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/sofoxe1/OyasumiVR
 	arch = x86_64
 	license = MIT
-	source = oyasumi-bin-25.6.12-0.7.2.tar.gz::https://github.com/sofoxe1/OyasumiVR/releases/download/oyasumivr-v25.6.12-linux-v0.7.2/oyasumi-linux.tar.zst
+	source = oyasumi-bin-25.6.12-0.7.3.tar.gz::https://github.com/sofoxe1/OyasumiVR/releases/download/oyasumivr-v25.6.12-linux-v0.7.3/oyasumi-linux.tar.zst
 	source = oyasumivr.desktop
 	source = oyasumivr@128x128.png
-	sha256sums = 8967e38e0b9b4072644d33201988b71b7fa960a812cd28a833d12a1b6ec6038b
+	sha256sums = f5c0de2d61420e154d6adb153e6b2ae4773b284b376d58cce54ce29f6db849b1
 	sha256sums = 55b55fa249b95fca609073c22780c5eb0c3ced1f45717e872817e947a3897045
 	sha256sums = 7925098c33d2ebb44f28ef96a3cc92590010acacbee4d6ea45f1af2b81a3ae2c
 
