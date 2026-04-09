@@ -1,6 +1,6 @@
 # Maintainer: Sidharth Arya
 pkgname=sailer
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A Wayland compositor written in Zig, built on wlroots"
 arch=('x86_64')
@@ -38,6 +38,7 @@ package() {
     # Binaries
     install -Dm755 zig-out/bin/sailer "$pkgdir/usr/bin/sailer"
     install -Dm755 zig-out/bin/sailer-mcp "$pkgdir/usr/bin/sailer-mcp"
+    install -Dm755 zig-out/bin/sailer-msg "$pkgdir/usr/bin/sailer-msg"
 
     # Wayland session desktop entry
     install -Dm644 contrib/sailer.desktop "$pkgdir/usr/share/wayland-sessions/sailer.desktop"
