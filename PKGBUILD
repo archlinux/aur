@@ -1,7 +1,7 @@
 # Maintainer: phlppbmm <philipp.baumm@gmx.net>
 pkgname=python-agent-rtfm-bin
 pkgver=0.1.1
-pkgrel=17
+pkgrel=18
 pkgdesc="Local documentation retrieval service for agent-assisted development (prebuilt)"
 arch=('any')
 url="https://github.com/phlppbmm/rtfm"
@@ -12,6 +12,8 @@ depends=(
     'uvicorn'
     'python-chromadb-bin'
     'python-onnxruntime-cpu'
+    'python-grpcio>=1.71'
+    'abseil-cpp>=20260107'
     'python-gitpython'
     'python-httpx'
     'python-click'
