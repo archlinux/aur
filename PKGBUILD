@@ -4,7 +4,7 @@ pkgname=gitfourchette-bin
 _pkgname=gitfourchette
 
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 
 pkgdesc="The comfortable Qt-based Git GUI"
@@ -15,12 +15,18 @@ depends=(
   hicolor-icon-theme
   python-certifi
   python-pygit2
-  python-pygments
   python-pyqt6
+  git
+)
+optdepends=(
+  "python-pygments: syntax highlighting"
+  "python-mfusepy: mount a git tree as FUSE filesystem"
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
+# Would be nice to remove architecture dependency completely,
+# but appimages are arch specific and have to execute to be extracted.
 source_aarch64=(
   ${url}/releases/download/v${pkgver}/GitFourchette-${pkgver}-${arch}.AppImage
 )
@@ -46,9 +52,8 @@ package(){
 import sys
 from gitfourchette.__main__ import main
 if __name__ == '__main__':
-    if sys.argv[0].endswith('.exe'):
-        sys.argv[0] = sys.argv[0][:-4]
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
     sys.exit(main())
 EOF
-    install -Dm755 ${_pkgname}.py "$pkgdir"/usr/bin/${_pkgname}
+  install -Dm755 ${_pkgname}.py "$pkgdir"/usr/bin/${_pkgname}
 }

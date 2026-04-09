@@ -1,7 +1,7 @@
 pkgbase = gitfourchette-bin
 	pkgdesc = The comfortable Qt-based Git GUI
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorio/gitfourchette
 	arch = x86_64
 	arch = aarch64
@@ -9,13 +9,15 @@ pkgbase = gitfourchette-bin
 	depends = hicolor-icon-theme
 	depends = python-certifi
 	depends = python-pygit2
-	depends = python-pygments
 	depends = python-pyqt6
+	depends = git
+	optdepends = python-pygments: syntax highlighting
+	optdepends = python-mfusepy: mount a git tree as FUSE filesystem
 	provides = gitfourchette
 	conflicts = gitfourchette
 	source_x86_64 = https://github.com/jorio/gitfourchette/releases/download/v1.7.0/GitFourchette-1.7.0-x86_64.AppImage
 	sha256sums_x86_64 = 5136aa17006fa25cc7fa328fceb51c17020f858be19bf3eccedbe6b067bc77cf
 	source_aarch64 = https://github.com/jorio/gitfourchette/releases/download/v1.7.0/GitFourchette-1.7.0-x86_64.AppImage
-	sha256sums_aarch64 = 5136aa17006fa25cc7fa328fceb51c17020f858be19bf3eccedbe6b067bc77cf
+	sha256sums_aarch64 = eb3a665acc326e06dc0a639f21a0b9f27474bb0d9aeabae963624714866b9f49
 
 pkgname = gitfourchette-bin
