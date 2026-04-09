@@ -2,13 +2,13 @@
 
 pkgname=caligula-git
 _pkgname=${pkgname%-git}
-pkgver=0.4.8.r11.g574f1f3
-pkgrel=2
+pkgver=0.4.10.r12.g00b2e3d
+pkgrel=1
 pkgdesc="A user-friendly, lightweight TUI for disk imaging"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/ifd3f/${_pkgname}"
 license=('GPL-3.0-or-later')
-depends=('gcc-libs')
+depends=('libgcc' 'xz')
 makedepends=('git' 'cargo')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
@@ -23,21 +23,23 @@ pkgver() {
 
 prepare() {
 	cd "${_pkgname}/"
+	sed -i '/^xz2 =/s/"static"//' Cargo.toml
+
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
 	cd "${_pkgname}/"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	RUSTFLAGS="--cfg tracing_unstable" cargo build --frozen --release --all-features
+	cargo build --frozen --release --all-features
 }
 
 check() {
 	cd "${_pkgname}/"
 	export RUSTUP_TOOLCHAIN=stable
-	RUSTFLAGS="--cfg tracing_unstable" cargo test --frozen --all-features
+	cargo test --frozen --all-features
 }
 
 package() {
