@@ -1,13 +1,13 @@
 # Maintainer: nathan marchiori <nathan.marchiori@gmail.com>
 pkgname="drawy-git"
-pkgver=r464.c2ab5a6
-pkgrel=4
+pkgver=r1123.84d5c47e
+pkgrel=1
 pkgdesc="an infinite whiteboard tool"
 arch=("x86_64")
 url="https://invent.kde.org/graphics/drawy"
 license=('GPL-3.0-only')
-depends=('qt6-base>=6.9' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'zstd' 'kcoreaddons' 'kcrash' 'kwidgetsaddons' 'kconfig')
-makedepends=('git' 'cmake' 'qt6-tools' 'gcc' 'vulkan-headers' 'extra-cmake-modules')
+depends=('qt6-base>=6.9' 'glibc' 'hicolor-icon-theme'  'zstd' 'kcoreaddons' 'kcrash' 'kwidgetsaddons' 'kconfig' 'kiconthemes' 'ki18n' 'kconfigwidgets' 'kcolorscheme' 'kxmlgui' 'syntax-highlighting' 'libgcc' 'libstdc++')
+makedepends=('git' 'cmake' 'qt6-tools' 'gcc' 'vulkan-headers' 'extra-cmake-modules' 'ninja')
 provides=('drawy' 'drawy-debug')
 source=('drawy-git::git+https://invent.kde.org/graphics/drawy')
 sha256sums=("SKIP")
@@ -19,11 +19,15 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=ON -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON
-	cmake --build build --config Release
+	cmake --preset release -DCMAKE_SKIP_RPATH=ON -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
+	cmake --build build-release
 }
 
 package() {
 	cd "$pkgname"
-	cmake --install build --prefix "$pkgdir/usr"
+	cmake --install build-release --prefix "$pkgdir/usr"
+	if [ -d "$pkgdir/usr/DrawyCore" ]; then
+		mkdir -p "$pkgdir/usr/include"
+		mv "$pkgdir/usr/DrawyCore" "$pkgdir/usr/include/"
+	fi
 }
