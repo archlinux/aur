@@ -16,6 +16,7 @@ package() {
     PIP_CONFIG_FILE=/dev/null pip install \
         --root="${pkgdir}" \
         --prefix=/usr \
+        --break-system-packages \
         --no-warn-script-location \
         --disable-pip-version-check \
         --no-cache-dir \
