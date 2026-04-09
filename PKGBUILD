@@ -1,7 +1,7 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=aylurs-gtk-shell-git
 _pkgname=ags
-pkgver=3.1.1.r0.ge169694
+pkgver=3.1.2.r0.gbbee2f1
 pkgrel=2
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
@@ -20,21 +20,14 @@ optdepends=('libastal-meta: provides all astal libs, needed for eg bluetooth, au
             'dart-sass: required for compilation of scss to css'
             'gtk-layer-shell: required when using gtk3'
            )
-source=("git+${url}.git" "gnim.patch")
-sha256sums=('SKIP'
-            '3cb617318848fe0f253abc92c360dc8e5656a0ea13617831c3535cc324d38d9a')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 provides=('aylurs-gtk-shell')
 conflicts=('aylurs-gtk-shell')
 
 pkgver(){
   cd $srcdir/$_pkgname
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd $srcdir/$_pkgname
-  npm install
-  patch -Np1 -i ../gnim.patch
 }
 
 build() {
@@ -45,6 +38,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   export GOPATH="$srcdir"
+  npm install
   arch-meson build
   meson compile -C build
 }
