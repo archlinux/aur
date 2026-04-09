@@ -4,7 +4,7 @@
 # Requires Plasma 6.6+ (KF6 6.6, Qt 6.6, KWin 6.6).
 
 pkgname=plasmazones
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 pkgdesc='Window tiling and autotiling for KDE Plasma'
 arch=('x86_64')
@@ -37,7 +37,7 @@ optdepends=(
 )
 conflicts=('plasmazones-bin' 'plasmazones-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d79c5c55ca216dfa8b5e3759c2b196a8e854b1aed8451f665bf9a58c6b7e7ab4')
+sha256sums=('0357f1cadb1c40c9c3cd0c7cd2259be5e48030ac7db850bec5517bb747a12b92')
 install=plasmazones.install
 
 build() {
