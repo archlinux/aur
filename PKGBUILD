@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=146.0.7680.177
+pkgver=147.0.7727.55
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -70,7 +70,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-138-nodejs-version-check.patch
         chromium-145-fix-SYS_SECCOMP.patch
         chromium-146-drop-unknown-clang-flag.patch
-        chromium-146-apply-upstream-libmuck-fix.patch
+        chromium-147-revert-clang-no-lifetime-dse-flag.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         enable-widevine-arm64.patch
@@ -78,13 +78,13 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         glibc-2.42-baud-rate-fix.patch
         # ungoogled-chromium-xdg patches
         no-omnibox-suggestion-autocomplete.patch)
-sha256sums=('e66465f7b26c91dfa06b31aba3c56f6e65edac6b227c6bd2edc04535ef8966cb'
-            '0b3e5d4f6c723bfde22ce8878d5102aff4c8cdc72b71cb8003ca949dc17782c1'
+sha256sums=('57594966be592efdb9fe6491f5a834de237f5c7decdca5eb1f7d7a5d38dd54e9'
+            '167f12552e356abc229c5fc99ec670021e9ce171fe5dc995985855c6d1635d63'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
             '24535c314c7e70c52bcf409aaf604728bfc5b5c97e60087e630e1f7233b9e12d'
-            '06299959918481caf2c27bcb1841088967d9855acc22970ffcaa75e0cb218f0e'
+            'c382830318c5b37826ecf44f3ba9def6be8affdad1bce819ecb83f3222ff4b3a'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '9c766b82d1143cb3413fe2057361bd2655e46287eacc2c6d6f8504b4c255647a'
@@ -176,8 +176,8 @@ prepare() {
   # clang++: error: unknown argument: '-fsanitize-ignore-for-ubsan-feature=array-bounds'
   patch -Np1 -i ../chromium-146-drop-unknown-clang-flag.patch
 
-  # https://chromium-review.googlesource.com/c/chromium/src/+/7487414
-  patch -Np1 -i ../chromium-146-apply-upstream-libmuck-fix.patch
+  # Causes a build failure with our clang version
+  patch -Np1 -i ../chromium-147-revert-clang-no-lifetime-dse-flag.patch
 
   # https://crbug.com/456218403
   patch -Np1 -i ../chromium-145-fix-SYS_SECCOMP.patch
