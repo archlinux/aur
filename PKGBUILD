@@ -1,22 +1,22 @@
 # Maintainer: phlppbmm <philipp.baumm@gmx.net>
 pkgname=python-agent-rtfm-bin
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Local documentation retrieval service for agent-assisted development (prebuilt)"
 arch=('any')
 url="https://github.com/phlppbmm/rtfm"
 license=('MIT')
 depends=('python>=3.11')
-makedepends=('python-pip' 'python-installer')
+makedepends=('python-installer')
 provides=('python-agent-rtfm')
 conflicts=('python-agent-rtfm' 'python-agent-rtfm-git')
 options=('!strip')
 
 build() {
-    pip download \
+    python -m venv "${srcdir}/venv"
+    "${srcdir}/venv/bin/pip" download \
         --dest="${srcdir}/wheels" \
         --no-cache-dir \
-        --break-system-packages \
         "agent-rtfm==${pkgver}"
 }
 
