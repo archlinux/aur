@@ -1,0 +1,17 @@
+pkgbase = python-agent-rtfm-bin
+	pkgdesc = Local documentation retrieval service for agent-assisted development (prebuilt)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/phlppbmm/rtfm
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	depends = python>=3.11
+	provides = python-agent-rtfm
+	conflicts = python-agent-rtfm
+	conflicts = python-agent-rtfm-git
+	source = https://pypi.io/packages/py3/a/agent_rtfm/agent_rtfm-0.1.1-py3-none-any.whl
+	sha256sums = SKIP
+	noextract = agent_rtfm-0.1.1-py3-none-any.whl
+
+pkgname = python-agent-rtfm-bin
