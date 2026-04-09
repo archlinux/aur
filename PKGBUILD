@@ -1,17 +1,17 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=14.0.1
+pkgver=14.0.2
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'icu' 'zlib')
-makedepends=('bun' 'rustup')
+makedepends=('bun' 'rustup' 'zig')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/can1357/oh-my-pi/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9c7070ce74e5965eb37f34350b29679e56949de95449275b1b72c105b4358e71')
+sha256sums=('1d0a8c48ec2d0b227741f145537423084eb429ffacfda61e6114933753b8350f')
 
 build() {
     cd "${srcdir}/oh-my-pi-${pkgver}"
@@ -45,7 +45,7 @@ build() {
     install -Dm755 "${_modern_target}/${_rust_target}/release/libpi_natives.so" \
         "packages/natives/native/pi_natives.linux-x64-modern.node"
 
-    bun --cwd=packages/coding-agent run build:binary
+    bun --cwd=packages/coding-agent run build
 }
 
 package() {
