@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Handle signals for better action response
 
+## [2.17.0] - 2026-04-09
+
+### Fixed
+- Favorite toggle UX
+
 ## [2.17.0] - 2026-04-08
 
 ### Added
