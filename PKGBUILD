@@ -2,7 +2,7 @@
 pkgname=python-typed-ffmpeg-compatible
 _origpkgname=typed_ffmpeg_compatible
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern Python FFmpeg wrappers offer comprehensive support for complex filters, complete with detailed typing and documentation."
 arch=("x86_64")
 url='https://pypi.org/project/typed-ffmpeg-compatible/'
@@ -25,5 +25,4 @@ package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
