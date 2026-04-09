@@ -1,13 +1,13 @@
 pkgbase = oplnova
 	pkgdesc = A game manager for Open PS2 Loader (OPL)
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 2
 	url = https://code.weexnes.dev/oplnova
 	arch = x86_64
 	license = GPL3
 	makedepends = dotnet-sdk
 	options = !strip
-	source = oplnova-1.7.1.tar.gz::https://code.weexnes.dev/~downloads/projects/1/archives?revision=refs/tags/1.7.1&format=tgz
+	source = oplnova-1.7.2.tar.gz::https://code.weexnes.dev/~downloads/projects/1/archives?revision=refs/tags/1.7.2&format=tgz
 	sha256sums = SKIP
 
 pkgname = oplnova

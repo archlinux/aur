@@ -1,7 +1,7 @@
 # Maintainer: WeeXnes <weexnes@weexnes.dev>
 
 pkgname=oplnova
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=2
 pkgdesc="A game manager for Open PS2 Loader (OPL)"
 arch=('x86_64')
