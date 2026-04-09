@@ -1,14 +1,14 @@
 pkgbase = rcu-bin
 	pkgdesc = reMarkable Connection Utility (RCU)
-	pkgver = 4.0.33
+	pkgver = 4.0.34
 	pkgrel = 1
 	url = http://www.davisr.me/projects/rcu/
 	arch = x86_64
 	license = AGPL3
 	options = !strip
-	source = local://rcu-4.0.33-archlinux.tar.gz
+	source = local://rcu-4.0.34-archlinux.tar.gz
 	source = rcu.desktop
-	sha256sums = a07237aaa7ca3c89a242f3f4a1ad20d92d8f6caaa6e0c5eb548c542bca8b1a6d
+	sha256sums = 2f9ae6456966cb56acfdc014ec1bfa736e28ed3485dba91a3c2e46aa0d6256e9
 	sha256sums = b2c876686d260b2b55553e00d0870e55d1f4fd23b60ba88e6767770e4aae1c5c
 
 pkgname = rcu-bin
