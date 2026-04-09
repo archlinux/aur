@@ -1,7 +1,7 @@
 pkgbase = elyprismlauncher-bin
 	pkgdesc = Prism Launcher fork with integrated support for Ely.by accounts (binary version)
 	pkgver = 11.0.0_pre3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ElyPrismLauncher/Launcher
 	arch = x86_64
 	license = GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1
@@ -29,8 +29,8 @@ pkgbase = elyprismlauncher-bin
 	optdepends = flite: minecraft voice narration
 	provides = elyprismlauncher
 	conflicts = elyprismlauncher
-	noextract = PineconeMC-Linux-Qt6-Portable-11.0.0.tar.gz
-	source = https://github.com/ElyPrismLauncher/Launcher/releases/download/11.0.0/PineconeMC-Linux-Qt6-Portable-11.0.0.tar.gz
+	noextract = ElyPrismLauncher-Linux-Qt6-Portable-11.0.0_pre2.tar.gz
+	source = https://github.com/ElyPrismLauncher/Launcher/releases/download/11.0.0-pre2/PineconeMC-Linux-Qt6-Portable-11.0.0-pre2.tar.gz
 	sha256sums = SKIP
 
 pkgname = elyprismlauncher-bin
