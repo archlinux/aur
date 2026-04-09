@@ -1,6 +1,6 @@
 pkgbase = max-bin
 	pkgdesc = MAX messenger.
-	pkgver = 26.11.0.54111
+	pkgver = 26.12.0.54213
 	pkgrel = 1
 	url = https://max.ru
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = max-bin
 	depends = libxinerama
 	depends = libxcomposite
 	depends = xcb-util-wm
+	depends = xcb-util-cursor
 	depends = libva
 	depends = libvdpau
 	depends = libnotify
@@ -20,7 +21,7 @@ pkgbase = max-bin
 	conflicts = max
 	options = !strip
 	options = !debug
-	source_x86_64 = https://download.max.ru/linux/rpm/el/9/x86_64/MAX-26.11.0.54111.rpm
-	sha256sums_x86_64 = 26bb0cd5e3bd13f8637dc0e3bcc092ce740aa294fc2288e606efd066582b3e72
+	source_x86_64 = https://download.max.ru/linux/rpm/el/9/x86_64/MAX-26.12.0.54213.rpm
+	sha256sums_x86_64 = 694f100ec378060c3748da08e3488aae3fa50a10b7243e4a3a8f9c6470e925b3
 
 pkgname = max-bin
