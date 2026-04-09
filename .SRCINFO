@@ -1,0 +1,15 @@
+pkgbase = hyprvoid
+	pkgdesc = A highly customizable window minimization manager built for Hyprland.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/noahsub/hyprvoid
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = dotnet-sdk
+	makedepends = patchelf
+	depends = hyprland
+	depends = grim
+	source = git+https://github.com/noahsub/hyprvoid.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = hyprvoid
