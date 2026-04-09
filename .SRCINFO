@@ -1,6 +1,6 @@
 pkgbase = gmat-bin
 	pkgdesc = An open-source space mission analysis tool
-	pkgver = 2025a
+	pkgver = 2026a
 	pkgrel = 1
 	url = https://gmat.atlassian.net/wiki/spaces/GW/overview
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = gmat-bin
 	conflicts = gmat
 	options = !strip
 	options = emptydirs
-	source = https://downloads.sourceforge.net/project/gmat/GMAT/GMAT-R2025a/gmat-ubuntu-x64-R2025a.tar.gz
+	source = https://downloads.sourceforge.net/project/gmat/GMAT/GMAT-R2026a/gmat-ubuntu-x64-R2026a.tar.gz
 	source = gmat.desktop
-	sha512sums = 5b8e36b85e3c1b409971114b601d049fc5c6341fdafe06e35d57b4d0c13739a602ae9be61d3e47b7ed919ebc94c21f33d045a3d90c8daaea5aae477f9236bcf2
+	sha512sums = da2481274955d0c1170ffa9135f0310dce2a02459721e6fb54e01cad6391807578af9f82851e68b176ddb7c2206c6551cf918a92074090fc2d6d7583ee070b7b
 	sha512sums = SKIP
 
 pkgname = gmat-bin
