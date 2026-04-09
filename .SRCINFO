@@ -1,6 +1,6 @@
 pkgbase = r-emmeans
 	pkgdesc = Estimated Marginal Means, aka Least-Squares Means
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=emmeans
 	arch = any
@@ -35,8 +35,8 @@ pkgbase = r-emmeans
 	optdepends = r-tibble
 	optdepends = r-xtable
 	optdepends = r-robmixglm
-	source = https://cran.r-project.org/src/contrib/emmeans_2.0.2.tar.gz
-	md5sums = 26de266c7a7079a5dd07634d4dca8479
-	b2sums = 8d841ff89baac95aa31c7bc37a730675bff446395f499e82fd5d76f86c753df6bec60d9304854b4d4cc9779ee52ac716c76db0e43fe7877b4eca10615e4b17e1
+	source = https://cran.r-project.org/src/contrib/emmeans_2.0.3.tar.gz
+	md5sums = c3c8ea41048fcd0a221b5eba254affcd
+	b2sums = d15c250c1e642c7bdfe649b0b6cde268fcbd1c2ee6e58ff3037275239a9747a2610696fb91e302a73c34407736d3119df1a0e7466bbbd1df70390734a005fdb1
 
 pkgname = r-emmeans
