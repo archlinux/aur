@@ -1,0 +1,12 @@
+[Unit]
+Description=rtfm documentation retrieval server
+After=network.target rtfm-update.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rtfm serve
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

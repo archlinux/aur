@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = python-agent-rtfm
+Target = python-agent-rtfm-bin
+Target = python-agent-rtfm-git
+
+[Action]
+Description = Restarting rtfm server...
+When = PostTransaction
+Exec = /usr/bin/systemctl --global restart rtfm.service
+NeedsTargets
