@@ -2,8 +2,8 @@
 
 _pkgbase=asus-hub
 pkgname="$_pkgbase-git"
-pkgver=1.0.1.r5.g82a0b1e
-pkgrel=1
+pkgver=1.0.2.r0.g73855af
+pkgrel=2
 pkgdesc='The unofficial MyAsus alternative for Linux'
 arch=('x86_64')
 url='https://github.com/Traciges/Asus-Hub'
@@ -46,7 +46,7 @@ package() {
 	cd "$_pkgbase"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgbase"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/de.guido.asus-hub.desktop"
-	install -Dm0644 -T "assets/trayicon.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/de.guido.asus-hub.png"
+	install -Dm0644 -T "assets/trayicon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/de.guido.asus-hub.png"
 	install -Dm0644 -t "$pkgdir/usr/share/metainfo/" "packaging/de.guido.asus-hub.metainfo.xml"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgbase/" LICENSE
 }

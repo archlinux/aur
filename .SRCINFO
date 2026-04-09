@@ -1,7 +1,7 @@
 pkgbase = asus-hub-git
 	pkgdesc = The unofficial MyAsus alternative for Linux
-	pkgver = 1.0.1.r5.g82a0b1e
-	pkgrel = 1
+	pkgver = 1.0.2.r0.g73855af
+	pkgrel = 2
 	url = https://github.com/Traciges/Asus-Hub
 	arch = x86_64
 	license = GPL-3.0-or-later
