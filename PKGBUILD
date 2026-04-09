@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=encrypt0r-bin
-pkgver=3.12.66
+pkgver=3.12.68
 _electronversion=39
 pkgrel=1
 pkgdesc="App to encrypt and decrypt your files with a passphrase, powered by electron.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kunalnagar/encrypt0r/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('da6c7b437dd53eabae26526feca8aa77dfe4267fdfdca81d49ab46902d912ea3'
+sha256sums=('18278eb9f3b6fa6fe3b35baa6901b3f69b4f7038e510ce63e1d776e7a670e4f8'
             'dd8cfe4d2d540a3c670cf0aa6c95e9076e8949d7c50d04495feb0a6ce9d82cc3'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
