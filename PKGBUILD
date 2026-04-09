@@ -29,6 +29,15 @@ build() {
     ./gradlew :composeApp:packageReleaseUberJarForCurrentOS --no-daemon
 }
 
+check() {
+    cd "${srcdir}/${_reponame}-${pkgver}"
+
+    export GRADLE_USER_HOME="${srcdir}/.gradle"
+    export API_ENDPOINT="https://ubaa.mofrp.top:2021"
+
+    ./gradlew :composeApp:jvmTest --no-daemon
+}
+
 package() {
     cd "${srcdir}/${_reponame}-${pkgver}"
 
