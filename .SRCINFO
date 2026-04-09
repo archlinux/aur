@@ -9,6 +9,7 @@ pkgbase = wlime-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = wayland-protocols
+	makedepends = wlr-protocols
 	depends = gtk3
 	depends = gtk-layer-shell
 	depends = libpinyin
