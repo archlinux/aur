@@ -14,7 +14,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
 
-source=("https://github.com/INCY-DEV/incy-platforms/releases/download/desktop-v2.0.9/incy-linux-x64.pkg.tar.zst")
+source=("${pkgname}-${pkgver}.pkg.tar.zst::https://github.com/INCY-DEV/incy-platforms/releases/download/desktop-v${pkgver}/incy-linux-x64.pkg.tar.zst")
 
 sha256sums=('a4e508ccb58b332b99102e96a47149a944d12b7d78b5063ee5e46d74726c7b96')
 
