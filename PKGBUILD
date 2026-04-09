@@ -1,6 +1,6 @@
 # Maintainer: amigoDcyber <your-email@gmail.com>
 pkgname=oniondownoda
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="🧅 A beautiful TUI for downloading files from .onion URLs over Tor"
 arch=('x86_64')
