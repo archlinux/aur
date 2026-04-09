@@ -1,13 +1,26 @@
 pkgbase = python-agent-rtfm
 	pkgdesc = Local documentation retrieval service for agent-assisted development
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/phlppbmm/rtfm
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
 	depends = python>=3.11
-	depends = python-pip
-	optdepends = uv: faster install and runtime
+	depends = python-fastapi
+	depends = uvicorn
+	depends = python-chromadb
+	depends = python-gitpython
+	depends = python-httpx
+	depends = python-click
+	depends = python-rich
+	depends = python-pyyaml
+	depends = python-html2text
+	depends = python-beautifulsoup4
+	depends = python-lxml
+	depends = python-markdownify
 	source = https://pypi.io/packages/source/a/agent-rtfm/agent_rtfm-0.1.1.tar.gz
 	sha256sums = SKIP
 
