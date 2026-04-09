@@ -1,7 +1,7 @@
 pkgbase = popup-translate
 	pkgdesc = Translate any text you select on your Linux Desktop with a keyboard-shortcut (please set in Settings/Keyboard) to your default system-language or English
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/schinfo/popup-translate
 	arch = any
 	license = GPL2
