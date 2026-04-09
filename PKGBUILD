@@ -1,6 +1,6 @@
 # Maintainer: Christopher Sieh (stelzo) <stelzo@steado.de>
 pkgname=minot
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=4
 pkgdesc="A versatile toolset for debugging and verifying stateful robot perception software."
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ conflicts=('minot-coord' 'wind-rat' 'librat')
 
 build() {
   export CARGO_TARGET_DIR="$srcdir/target"
-  cargo build --release --locked --no-default-features --features embed-ratpub,embed-coord
+  cargo build --release --locked --no-default-features --features embed-mt-pubsub,embed-coord
 
   cd "$srcdir/$pkgname-$pkgver/docs/" && zensical build --clean && cd -
 
