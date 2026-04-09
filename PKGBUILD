@@ -1,6 +1,6 @@
 # Maintainer: Gurov <gurov@disroot.org>
 pkgname=spout
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="The missing link between your screenshot tool and the internet"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('rust' 'cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Gur0v/spout/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8b5b58d85350e59ccfcf8ad5f9fd08de79896beae93e58aa1d0c5d33a2951289')
+sha256sums=('e60b1637abb43a736922ff9c654a28da91915f5c08dca8655bab69abef5275ba')
 
 build() {
     cd "$pkgname-$pkgver"
