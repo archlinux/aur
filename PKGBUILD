@@ -1,7 +1,7 @@
 # Maintainer: Hornfisk <billgateway@protonmail.com>
 pkgname=vgalizer-git
 _pkgname=vgalizer
-pkgver=r41.8e1a854
+pkgver=r43.8e027d5
 pkgrel=1
 pkgdesc="Lightweight GPU-accelerated audio-reactive DJ visualizer (git master)"
 arch=('x86_64')
