@@ -1,0 +1,16 @@
+post_install() {
+  cat <<'EOF'
+Run:
+  things-setup
+
+That command:
+  - prompts for your Things credentials
+  - writes ~/.config/things-cloud/env
+  - enables the background sync timer
+  - runs the first sync
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
