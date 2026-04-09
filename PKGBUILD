@@ -3,14 +3,14 @@
 pkgname=libcutl
 pkgver=1.11.0
 _xsdver=4.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A C++ utility library'
 arch=(x86_64)
 url='https://www.codesynthesis.com/projects/libcutl/'
 license=(MIT)
 makedepends=(build2)
-depends=(gcc-libs
-         glibc)
+depends=(glibc
+         libgcc)
 source=(https://www.codesynthesis.com/download/xsd/$_xsdver/$pkgname-$pkgver.tar.gz)
 sha256sums=('bb78ff87d6cb1a2544543ffe7941f0aeb8f9dcaf7dd46e9acef3e032ed7881dc')
 

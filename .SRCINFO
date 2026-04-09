@@ -1,13 +1,13 @@
 pkgbase = libcutl
 	pkgdesc = A C++ utility library
 	pkgver = 1.11.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.codesynthesis.com/projects/libcutl/
 	arch = x86_64
 	license = MIT
 	makedepends = build2
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	source = https://www.codesynthesis.com/download/xsd/4.2/libcutl-1.11.0.tar.gz
 	sha256sums = bb78ff87d6cb1a2544543ffe7941f0aeb8f9dcaf7dd46e9acef3e032ed7881dc
 
