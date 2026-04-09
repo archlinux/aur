@@ -1,5 +1,5 @@
-pkgbase = python-flash-attention
-	pkgdesc = Fast and memory-efficient exact attention. CUDA version.
+pkgbase = python-flash-attention-rocm-ck
+	pkgdesc = Fast and memory-efficient exact attention. ROCm Composable Kernel version (gfx9 only).
 	pkgver = 2.8.3
 	pkgrel = 1
 	url = https://github.com/Dao-AILab/flash-attention
@@ -13,10 +13,14 @@ pkgbase = python-flash-attention
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-einops
-	depends = python-pytorch-cuda
+	depends = python-pytorch-rocm
+	provides = python-flash-attention
+	provides = python-flash-attention-rocm
+	conflicts = python-flash-attention
+	conflicts = python-flash-attention-rocm-triton
 	source = git+https://github.com/Dao-AILab/flash-attention#tag=v2.8.3
-	source = git+https://github.com/NVIDIA/cutlass
+	source = git+https://github.com/ROCm/composable_kernel
 	sha256sums = 1be6e9eb9daa3a0294c164031fd15d026bcabadd89c5210a760f9f5f9e121ffd
 	sha256sums = SKIP
 
-pkgname = python-flash-attention
+pkgname = python-flash-attention-rocm-ck
