@@ -1,0 +1,4 @@
+[complgen]
+source = "git"
+git = "https://github.com/adaszko/complgen.git"
+prefix = "v"

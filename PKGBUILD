@@ -2,7 +2,7 @@
 # Contributor: Torsten Keßler <tpkessler at archlinux dot org>
 
 pkgname=complgen
-pkgver=0.7.4
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Generate bash/fish/zsh completions from a single declarative grammar"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('601b991998de5755344a7993b8227bce811d9307b7e9f2882fafe78ef8b742ed958b2ec764ce938e7c6ab79b13376bdada953549bebc23c88850e6c0a2d5f3af')
+b2sums=('9130091cc5677760fc7b8ef2b80424bc214efa8e8798c6d9f4694876b7c044a5e587a5826231b561c25f4d23eebfa31f9f275bd42a5b35ba6009442b460e7a8e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
