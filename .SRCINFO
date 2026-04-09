@@ -7,6 +7,7 @@ pkgbase = ladybird
 	license = BSD-2-Clause
 	makedepends = autoconf-archive
 	makedepends = automake
+	makedepends = cargo
 	makedepends = cmake
 	makedepends = git
 	makedepends = libtool
