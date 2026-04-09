@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imfile-bin
 _pkgname=imFile
-pkgver=2.0.3
+pkgver=2.0.4
 _electronversion=41
 pkgrel=1
 pkgdesc="A full-featured download manager.Forked from motrix.(Prebuilt version.Use system-wide electron)"
@@ -35,9 +35,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('f60775e705e2c7418665ac2c7f386d28cc2927df98a440ced1703a7ed3ca86b7'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('b6e567e950d9e4cfe0ca0bfe72ad4de7ee870ceebf48f1ac4e79c9dadd479a10')
-sha256sums_armv7h=('faf9ea751bb05aa675eb559f4aa9ee2316600719ea955e40b83539cb00031631')
-sha256sums_x86_64=('0ef1a76a14e566fb402eadfd00561bc52a811aaecc18c8f2e6966e9012760b4e')
+sha256sums_aarch64=('02b68bc2304c16a12526bcf2d68bcb5918d0c9bb8eed90a633e9ff02b38d6630')
+sha256sums_armv7h=('85c02d7fa7ada206d49d072a6c465a3eeb3aab40fcf0cb5a58cbeb7c4bcb7ea7')
+sha256sums_x86_64=('299d2d5cca1af994e24be3dcd2b532b56356b4e76093847a2122311e7ab8128e')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
