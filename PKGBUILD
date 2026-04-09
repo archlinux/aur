@@ -1,15 +1,16 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-lua
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Lua scripting runtime for Owlry — enables user-created Lua plugins"
 arch=('x86_64')
 url="https://somegit.dev/Owlibou/owlry"
 license=('GPL-3.0-or-later')
-depends=('owlry-core' 'openssl')
+depends=('gcc-libs' 'lua54')
+optdepends=('owlry-core: daemon that loads this runtime')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-lua-v$pkgver.tar.gz")
-b2sums=('648171ce688761babb7ada9ec96cb248fab5563cc45599f660f21e166bfb4db689cff22b82f3a1f2ae256dd54fb3d3f4d5a8acaf6a728976d42ee511e1f25e5f')
+b2sums=('6bd1b55d55e209e9dbbbf31101521a43e2a3bce465c16098d0aca5d781dffa955251583c6748bcb5f79b135f3d0774cb1d48ac6113ffc9ed06f8f95ef87446fc')
 
 _cratename=owlry-lua
 
@@ -23,14 +24,14 @@ build() {
     cd "owlry"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build -p $_cratename --frozen --release
+    cargo build -p $_cratename --frozen --release --no-default-features
 }
 
 check() {
     cd "owlry"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo test -p $_cratename --frozen --lib
+    cargo test -p $_cratename --frozen --no-default-features --lib
 }
 
 package() {
