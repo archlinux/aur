@@ -1,3 +1,4 @@
+# Maintainer: Agil Mammadov <mammadovagil at tutamail dot com>
 # Maintainer: Baptiste Jonglez <archlinux at bitsofnetworks dot org>
 # Contributor: Patrice Peterson <runiq at archlinux dot us>
 
