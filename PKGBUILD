@@ -2,9 +2,9 @@
 # Co-Maintainer: Davide Girardi <davidegirardi googlesmtp>
 # Contributor: Davbo <dave@davbo.org>
 pkgname=x3270
-pkgver=4.4ga6
+pkgver=4.5ga5
 pkgrel=1
-pkgpath=04.04
+pkgpath=04.05
 pkgdesc="An IBM 3270 terminal emulator for the X Window System"
 arch=('i686' 'x86_64')
 url="http://x3270.bgp.nu/"
@@ -16,7 +16,7 @@ install=x3270.install
 source=(http://x3270.bgp.nu/download/$pkgpath/suite3270-$pkgver-src.tgz
         x3270.desktop)
 
-sha256sums=('8438eee59795cd3bfbf1963053369b9aa30af6b85e4d927b7254d24e992433b1'
+sha256sums=('01576fa58598ccdd3d366febfaef61e3d1de93eb60a93f9ac6ba5faf84144c6f'
             'bb3f1a301ca4f6d6d4f4cafe451945a55a9af7995d712a0f314fc58dfb16da6f')
 
 build() {
