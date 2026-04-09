@@ -9,10 +9,19 @@ pkgdesc='Fast and memory-efficient exact attention. CUDA version.'
 arch=('x86_64')
 url='https://github.com/Dao-AILab/flash-attention'
 license=('BSD-3-Clause')
-depends=('python-einops' 'python-pytorch-cuda')
-makedepends=('ninja' 'python-build' 'python-installer' 'python-packaging'
-             'python-psutil' 'python-setuptools' 'python-wheel')
-optdepends=()
+depends=(
+  python-einops
+  python-pytorch-cuda
+)
+makedepends=(
+  ninja
+  python-build
+  python-installer
+  python-packaging
+  python-psutil
+  python-setuptools
+  python-wheel
+)
 source=(
   "git+https://github.com/Dao-AILab/flash-attention#tag=v${pkgver}"
   "git+https://github.com/NVIDIA/cutlass"
