@@ -1,0 +1,45 @@
+pkgbase = openconnect-fortinet-saml-git
+	pkgdesc = Open client for Cisco AnyConnect VPN with Fortinet SAML authentication support
+	pkgver = 9.12.r267.g9716621
+	pkgrel = 1
+	epoch = 1
+	url = https://gitlab.com/tkolo/openconnect/-/tree/fortinet-saml-auth
+	arch = x86_64
+	license = LGPL2.1
+	checkdepends = python-flask
+	makedepends = git
+	makedepends = intltool
+	makedepends = python
+	depends = libxml2
+	depends = gnutls
+	depends = libproxy
+	depends = vpnc
+	depends = krb5
+	depends = lz4
+	depends = pcsclite
+	depends = stoken
+	depends = tpm2-tss
+	depends = oath-toolkit
+	depends = libproxy
+	depends = libp11-kit
+	depends = xdg-utils
+	depends = libstoken.so
+	depends = libtss2-esys.so
+	depends = libtss2-mu.so
+	depends = libtss2-tctildr.so
+	depends = libxml2.so
+	depends = libproxy.so
+	depends = libhogweed.so
+	depends = libp11-kit.so
+	depends = libpskc.so
+	depends = libgssapi_krb5.so
+	depends = libpcsclite.so
+	optdepends = python: tncc-wrapper
+	provides = openconnect=9.12
+	provides = libopenconnect.so
+	conflicts = openconnect
+	options = !emptydirs
+	source = openconnect-fortinet-saml-git::git+https://gitlab.com/tkolo/openconnect.git#branch=fortinet-saml-auth
+	sha256sums = SKIP
+
+pkgname = openconnect-fortinet-saml-git
