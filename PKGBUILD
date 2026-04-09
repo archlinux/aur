@@ -2,7 +2,7 @@
 
 pkgname=ubaa
 _reponame=UBAA
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 _javaversion=21
 pkgdesc="Cross-platform Compose Multiplatform client for Beihang University campus services"
@@ -16,7 +16,7 @@ conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('b3ee50199f196a2965e16560244f18d5fafade06d1100646686b0671ca04e056'
+sha256sums=('d2435e316bed5576cf7e6bf3bc9b3c0a24721d6bb853f2e4d767bd00d1a70b8b'
             '79ce57a57321f1844d3f43c1f779d14e6ce95c60d6eb5adbffd0df3703f400e9'
             '6f9e5fb5a184b2ca77382cc00c65fd0ca1e38cf71b72dd419aa88d4efdbf4eaa')
 
