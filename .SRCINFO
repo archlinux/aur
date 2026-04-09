@@ -1,6 +1,6 @@
 pkgbase = hyprsaver
 	pkgdesc = A Wayland-native screensaver for Hyprland — fractal shaders on wlr-layer-shell overlays
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/maravexa/hyprsaver
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = hyprsaver
 	depends = mesa
 	optdepends = hypridle: idle daemon for automatic activation
 	optdepends = hyprlock: lock screen to pair with hyprsaver
-	source = hyprsaver-0.2.0.tar.gz::https://github.com/maravexa/hyprsaver/archive/v0.2.0.tar.gz
-	sha256sums = baabd1007ceb81d699b0a740f2e0a8f7a8f729878907b88a95a6b34dc1be6868
+	source = hyprsaver-0.3.0.tar.gz::https://github.com/maravexa/hyprsaver/archive/v0.3.0.tar.gz
+	sha256sums = 00962662c4fcba27efee213dbcfea1e64ab911bbeaa22b88929cac4d39d5a085
 
 pkgname = hyprsaver
