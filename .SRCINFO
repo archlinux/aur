@@ -1,6 +1,6 @@
 pkgbase = lucidglyph
 	pkgdesc = Carefully tuned adjustments designed to improve font rendering on Linux systems packaged for Arch Linux.
-	pkgver = 0.13.1
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/maximilionus/lucidglyph
 	arch = any
@@ -9,12 +9,9 @@ pkgbase = lucidglyph
 	depends = fontconfig
 	depends = pam
 	depends = freetype2
-	source = lucidglyph::git+https://github.com/maximilionus/lucidglyph#tag=v0.13.1
-	source = 0001-make-DEST_ENVIRONMENT-dynamic.patch
+	source = lucidglyph.zip::https://github.com/maximilionus/lucidglyph/archive/refs/tags/v0.14.0.zip
 	validpgpkeys = B7E510C142B88F4B
-	md5sums = SKIP
-	md5sums = b4790600c5d775a5fb78df11f02f924a
-	sha512sums = SKIP
-	sha512sums = 4662263480f0378b83cc19b98eda0ae1f0f7ca70fb8cb23c8899e3b830d9ea854fdf98d5f8903861d2af5ea4a7605ad8595287a8cca46e7323860f27a222fe79
+	md5sums = c58ba9d67b40538e96fd46e9c1782973
+	sha512sums = e8b9b5db578ab2d8c074c22478f3b160b72d0ddcc2a2bd5b64c3f3c8ce0adc3fa5ad359a3a7bf5f6444d5b3d673a5b2027909b3ef8cb220da47049b5849ddee3
 
 pkgname = lucidglyph
