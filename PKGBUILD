@@ -34,7 +34,7 @@ source=(
     "$pkgname-$pkgver-src.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-src.tar.gz"
 )
 sha256sums=(
-    'c2d9237885642329138a5a26690f5950418bb12b22d1494900661be0858563d8'
+    '9ce87ec5c1bb2af01623ec33454aded964629a0a292e8d4e984baa2a5bdc8265'
 )
 
 prepare() {
