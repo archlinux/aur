@@ -1,0 +1,21 @@
+pkgbase = searchfox-cli-git
+	pkgdesc = CLI tool for querying the searchfox.org code search engine
+	pkgver = 0.10.11.r0.ga767d65
+	pkgrel = 1
+	url = https://github.com/padenot/searchfox-cli
+	arch = x86_64
+	arch = aarch64
+	arch = loong64
+	license = Apache-2.0 OR MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	provides = searchfox-cli
+	conflicts = searchfox-cli
+	options = !lto
+	source = git+https://github.com/padenot/searchfox-cli.git
+	sha256sums = SKIP
+
+pkgname = searchfox-cli-git
