@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=AgentHub
+GenericName=Multi-agent conversation hub
+Comment=Chat with multiple AI agents side by side
+Exec=agenthub %U
+Icon=agenthub
+Terminal=false
+Type=Application
+Categories=Development;Utility;Network;Chat;
+StartupWMClass=AgentHub
+Keywords=agent;chat;ai;llm;multi-agent;

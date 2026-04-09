@@ -1,0 +1,37 @@
+pkgbase = agenthub-git
+	pkgdesc = Multi-agent conversation hub with an Electron desktop shell and bundled Next.js backend
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Albaloola/AgentHub
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = nodejs>=20
+	makedepends = npm
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = cairo
+	depends = gtk3
+	depends = libdrm
+	depends = libxkbcommon
+	depends = libnotify
+	depends = libsecret
+	depends = mesa
+	depends = nspr
+	depends = nss
+	depends = pango
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	provides = agenthub=0.1.0.r0.g0000000
+	conflicts = agenthub
+	conflicts = agenthub-bin
+	options = !strip
+	options = !debug
+	source = agenthub::git+https://github.com/Albaloola/AgentHub.git
+	source = agenthub.sh
+	source = agenthub.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = agenthub-git
