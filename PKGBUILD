@@ -1,16 +1,16 @@
-# Maintainer: Konstantin Gizdov <arch at kge dot pw>
-# Contributor: Frank Siegert <frank dot siegert at googlemail dot com>
+# Maintainer: Frank Siegert <frank dot siegert at googlemail dot com>
+# Contributor: Konstantin Gizdov <arch at kge dot pw>
 
 pkgbase=hepmc
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 _pkgname=HepMC3
 pkgver=3.3.1
-pkgrel=8
+pkgrel=9
 pkgdesc="A particle physics package for storing collision events from Monte Carlo generators"
 arch=('x86_64')
 url="https://hepmc.web.cern.ch/"
 license=('GPL3')
-makedepends=('cmake' 'doxygen' 'gcc-fortran' 'graphviz' 'hepmc2' 'pythia8' 'python' 'root' 'protobuf' 'cern-vdt')
+makedepends=('cmake' 'doxygen' 'gcc-fortran' 'graphviz' 'pythia8' 'python' 'root' 'protobuf' 'cern-vdt')
 source=("${pkgbase}-${pkgver}.tar.gz::https://hepmc.web.cern.ch/${pkgbase}/releases/${_pkgname}-${pkgver}.tar.gz"
         0001-HepMC3ViewerFrame.cc-fix-build-with-recent-Graphviz.patch)
 sha256sums=('08240160b0f28dc3293aa4d61ce65e2d67cd597acf6faca439f2e46625f7e793'
@@ -65,7 +65,7 @@ package_hepmc() {
     glibc
   )
   optdepends=(
-    'hpmc-docs: for documentation'
+    'hepmc-docs: for documentation'
     'pythia8: Pythia support'
     'python: Python interface'
     'root: ROOT I/O'
