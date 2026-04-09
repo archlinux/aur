@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=hyprfm-git
-pkgver=r235.gf98eebb
+pkgver=r236.g3d0c5c6
 pkgrel=1
 pkgdesc="A lightweight Qt6/QML file manager for Hyprland"
 arch=('x86_64' 'aarch64')
