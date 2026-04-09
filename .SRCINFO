@@ -13,7 +13,6 @@ pkgbase = csco-launcher-git
 	depends = nss
 	provides = csco-launcher
 	conflicts = csco-launcher
-	install = csco-launcher.install
 	source = csco-launcher-git::git+https://codeberg.org/Skoczi/csco-launcher
 	sha256sums = SKIP
 
