@@ -1,7 +1,7 @@
 pkgbase = android-sources
 	pkgdesc = Android SDK Sources, latest API
 	pkgver = 37.0_r01
-	pkgrel = 3
+	pkgrel = 4
 	url = https://developer.android.com/studio/index.html
 	arch = any
 	license = LicenseRef-custom
@@ -12,6 +12,6 @@ pkgbase = android-sources
 	source = https://dl.google.com/android/repository/source-37.0_r01.zip
 	source = package.xml
 	sha256sums = 285295b766d9c31dda50cb051ef664673105dd34f63bc6d753bb89925e1d7dd7
-	sha256sums = 4914ed5a2d5f00b058f5366f6174a02170af4f62206ee63e573fbda431bfa0a8
+	sha256sums = 44eb5646ebd375126ba14f3b1019623d9e0dfbbf414f18ab326fe6c60793958a
 
 pkgname = android-sources
