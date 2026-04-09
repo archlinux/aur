@@ -1,7 +1,7 @@
 # Maintainer: phlppbmm <philipp.baumm@gmx.net>
 pkgname=python-agent-rtfm-bin
 pkgver=0.1.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Local documentation retrieval service for agent-assisted development (prebuilt)"
 arch=('any')
 url="https://github.com/phlppbmm/rtfm"
@@ -51,10 +51,12 @@ package() {
         fi
     done
 
-    # Only install the rtfm script, skip all other bin scripts
-    # (they belong to dependency packages managed by pacman)
+    # Write a clean entry point script (the uv-generated one has wrong paths)
     install -dm755 "${pkgdir}/usr/bin"
-    if [ -f "${srcdir}/target/bin/rtfm" ]; then
-        install -m755 "${srcdir}/target/bin/rtfm" "${pkgdir}/usr/bin/rtfm"
-    fi
+    cat > "${pkgdir}/usr/bin/rtfm" << 'SCRIPT'
+#!/usr/bin/env python
+from rtfm.cli import cli
+cli()
+SCRIPT
+    chmod 755 "${pkgdir}/usr/bin/rtfm"
 }
