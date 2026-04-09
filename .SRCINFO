@@ -5,7 +5,7 @@ pkgbase = config-file-validator
 	url = https://github.com/Boeing/config-file-validator
 	arch = x86_64
 	license = Apache 2.0
-	makedepends = go>=1.26.2
+	makedepends = go>=1.26.1
 	makedepends = git
 	makedepends = sed
 	depends = glibc

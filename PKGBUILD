@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/Boeing/config-file-validator"
 license=('Apache 2.0')
 depends=('glibc')
-makedepends=('go>=1.26.2' 'git' 'sed')
+makedepends=('go>=1.26.1' 'git' 'sed')
 source=("git+https://github.com/Boeing/config-file-validator.git")
 sha256sums=('SKIP')
 md5sums=('SKIP')
