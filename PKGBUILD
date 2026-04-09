@@ -1,8 +1,8 @@
 # Maintainer: robserob <robin at robserob.dk>
 pkgname=vpinfe
-pkgver=1.1.51
+pkgver=1.1.53
 pkgrel=1
-epoch=17
+epoch=18
 pkgdesc="A vpinball frontend for Linux, Mac, and Windows"
 arch=('any')
 url="https://github.com/superhac/vpinfe"
@@ -12,7 +12,7 @@ conflicts=('vpinfe')
 source=("${pkgname}-${pkgver}.zip::https://github.com/superhac/vpinfe/archive/refs/tags/v${pkgver}.zip" 
         'vpinfe.desktop' 
         'vpinfe.png')
-sha256sums=('1cb6ef5914a3b17252735f4694057ef2d1399b4d5d66fb869f940727e6a1ee23'
+sha256sums=('b3ce956d511114a9e135c27b429fba261c6f3d2f1b493065fa335cc15c7765ff'
             'd0c22bc258c3fbee04a31378454246f25a3360cf48e870fcb374559de6b4a072'
             '7e7e1b0854ffcf745d9cf5a643cb005bb3c1c21f58ef50dc9c889eef5e9b92bd')
 
