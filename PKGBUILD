@@ -11,7 +11,7 @@ optdepends=('xclip: clipboard support on X11'
             'wl-clipboard: clipboard support on Wayland')
 makedepends=('zig>=0.16')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nicholasglazer/teru/archive/v$pkgver.tar.gz")
-sha256sums=('669d99626cbfaa2fb942867db2ffac902ee5a0b8d753e4ab09438ec58cda5314')
+sha256sums=('02361fcd9f875f784a7c60a9dc9e28acdb580c04c6372e2d3548772b7886076c')
 
 build() {
     cd "$pkgname-$pkgver"
