@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-_tag=3.16.22.sk1
+_tag=3.16.23.sk1
 pkgver="$_tag"
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
