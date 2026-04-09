@@ -1,3 +1,13 @@
+2026.04.09, v19.12.1
+
+feature:
+- 5bd03215 docker: io: add PREFIX
+
+2026.04.09, v19.12.0
+
+feature:
+- 13b15b7b docker: io: palabra
+
 2026.04.07, v19.11.14
 
 feature:
