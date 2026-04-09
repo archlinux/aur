@@ -59,11 +59,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-
-  # Remove dev-only react-scan script (breaks desktop build validator,
-  # which doesn't recognise protocol-relative URLs as external)
-  sed -i '/<script.*react-scan.*<\/script>/d' apps/web/index.html
-
   bun install --frozen-lockfile
 }
 
