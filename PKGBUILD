@@ -12,20 +12,20 @@ url="https://github.com/jorio/gitfourchette"
 license=("GPL-3.0")
 
 depends=(
-    hicolor-icon-theme
-    python-certifi
-    python-pygit2
-    python-pygments
-    python-pyqt6
+  hicolor-icon-theme
+  python-certifi
+  python-pygit2
+  python-pygments
+  python-pyqt6
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 source_aarch64=(
-    ${url}/releases/download/v${pkgver}/GitFourchette-${pkgver}-${arch}.AppImage
+  ${url}/releases/download/v${pkgver}/GitFourchette-${pkgver}-${arch}.AppImage
 )
 source_x86_64=(
-    ${url}/releases/download/v${pkgver}/GitFourchette-${pkgver}-${arch}.AppImage
+  ${url}/releases/download/v${pkgver}/GitFourchette-${pkgver}-${arch}.AppImage
 )
 sha256sums_x86_64=('5136aa17006fa25cc7fa328fceb51c17020f858be19bf3eccedbe6b067bc77cf')
 sha256sums_aarch64=('eb3a665acc326e06dc0a639f21a0b9f27474bb0d9aeabae963624714866b9f49')
