@@ -1,6 +1,6 @@
 pkgbase = vgalizer-git
 	pkgdesc = Lightweight GPU-accelerated audio-reactive DJ visualizer (git master)
-	pkgver = r38.6c3e82b
+	pkgver = r40.9af9529
 	pkgrel = 1
 	url = https://github.com/Hornfisk/vgalizer
 	arch = x86_64
