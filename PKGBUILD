@@ -1,7 +1,7 @@
 # Maintainer: phlppbmm <philipp.baumm@gmx.net>
 pkgname=python-chromadb-bin
 pkgver=1.5.7
-pkgrel=3
+pkgrel=4
 pkgdesc="AI-native open-source embedding database (prebuilt)"
 arch=('x86_64')
 url="https://github.com/chroma-core/chroma"
@@ -32,7 +32,7 @@ depends=(
     'python-build'
     'python-chroma-hnswlib'
     'python-pydantic-settings'
-    'python-importlib-resources'
+    'python-importlib_resources'
 )
 makedepends=('python-installer')
 provides=('python-chromadb')

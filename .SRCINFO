@@ -1,7 +1,7 @@
 pkgbase = python-chromadb-bin
 	pkgdesc = AI-native open-source embedding database (prebuilt)
 	pkgver = 1.5.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/chroma-core/chroma
 	arch = x86_64
 	license = Apache-2.0
@@ -31,7 +31,7 @@ pkgbase = python-chromadb-bin
 	depends = python-build
 	depends = python-chroma-hnswlib
 	depends = python-pydantic-settings
-	depends = python-importlib-resources
+	depends = python-importlib_resources
 	provides = python-chromadb
 	conflicts = python-chromadb
 	source = https://files.pythonhosted.org/packages/e4/30/c81b33b2d8d3d03c4ca7364348e03e6e80d15b36dd6bd1ca6c22e03a89f5/chromadb-1.5.7-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
