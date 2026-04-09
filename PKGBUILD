@@ -1,6 +1,6 @@
 # Maintainer: Mina Maher <mina.maher88@hotmail.com>
 pkgname=logitune
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Logitech device configurator for Linux — per-app profiles, button remapping, DPI, gestures"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'ninja' 'qt6-tools')
 optdepends=('gnome-shell: per-app profile switching on GNOME'
              'gnome-shell-extension-appindicator: tray icon on GNOME')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6c4bbea0593c6cc696e7f8b406c996715921374f09f39ae566dc4bc7ab283e77')
+sha256sums=('31cc9454187695f4af79851c7bd4f4b56acefb709ce05c3180f80e01d8c93f5c')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" -G Ninja \

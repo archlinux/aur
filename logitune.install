@@ -15,12 +15,14 @@ post_install() {
     _de=$(printenv XDG_CURRENT_DESKTOP 2>/dev/null | tr '[:upper:]' '[:lower:]')
     case "$_de" in
         *gnome*)
-            echo "    GNOME detected:"
-            echo "    - The focus tracking extension installs on first run."
-            echo "      Log out and back in after the first launch."
-            echo "    - For tray icon support, install AppIndicator:"
-            echo "      gnome-extensions install appindicatorsupport@rgcjonas.gmail.com"
-            echo "      (or install 'gnome-shell-extension-appindicator' from your repos)"
+            echo "    GNOME users:"
+            echo ""
+            echo "    For tray icon support, install and enable AppIndicator:"
+            echo "      sudo pacman -S gnome-shell-extension-appindicator"
+            echo "      gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com"
+            echo ""
+            echo "    Log out and back in after first launch for per-app"
+            echo "    profile switching and tray icon to take effect."
             echo ""
             ;;
     esac
