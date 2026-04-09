@@ -22,7 +22,6 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
-  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/13103.patch | patch -p1
 }
 
 build() {
