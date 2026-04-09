@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
-# Maintainer: Konstantin Gizdov <arch at kge dot pw>
 # Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
+# Contributor: Konstantin Gizdov <arch at kge dot pw>
 # Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=nccl
