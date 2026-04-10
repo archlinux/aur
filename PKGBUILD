@@ -2,8 +2,8 @@
 _appname=affine
 pkgname="${_appname}-canary-bin"
 _pkgname=AFFiNE-canary
-_pkgver=2026.3.30
-_subver=canary.932
+_pkgver=2026.4.10
+_subver=canary.928
 pkgver="${_pkgver}_${_subver}"
 _electronversion=39
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${_pkgver}-${_subver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b2f8cd8cbce8c0210153af5793dc0450397aa525dad88a12b2c1954a8604e64a'
+sha256sums=('ca8d0761e622eddba13c07355b9de567c13728fa418c55a3aa56497223620141'
             '1cdeca52d4f740361f103926144eb8b3f265975b2337d4e27b3313f72465897f'
             'c107c8088fe42bce6def95d313cfe7b5984d3bb2c1608b67f855327da45f497b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
@@ -51,14 +51,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	find "${srcdir}/usr/lib/${pkgname%-bin}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
-    if find "${srcdir}/usr/lib/${pkgname%-bin}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/usr/lib/${pkgname%-bin}/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
-            fi
-        done
-    fi
+    cp -a "${srcdir}/usr/lib/${pkgname%-bin}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/LICENSE-MIT-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
