@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=this.path
-_pkgver=2.7.1
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-rprojroot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c64db518a528737a4e87df63c1974140')
-b2sums=('fcfb4d3bb2c51784a63ac4b2b476e7626dfe6a21e33cd643e792b1a3d100e3692f97b1c06cfa24392a4e879dbdb5766301ef4fa5981e651bec3d8428f8ee373c')
+md5sums=('8335a514c8043f7d299acc1a822c573c')
+b2sums=('65ec443fb25c54eae67d1982e28491f11982c1773dbfe43f8ecfb25d439cffa67bb37b81a63c5e0cd8ea68575007e46688bf4b66bfda0363bc29cfd060b10b26')
 
 build() {
   mkdir build
