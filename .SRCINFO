@@ -1,6 +1,6 @@
 pkgbase = coacd
 	pkgdesc = Approximate Convex Decomposition for 3D Meshes
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://colin97.github.io/CoACD/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = coacd
 	depends = libgcc
 	optdepends = python-trimesh: for Python bindings
 	options = !lto
-	source = https://github.com/SarahWeiii/CoACD/archive/refs/tags/1.0.9.tar.gz
-	sha256sums = cb805bc667eaebb0e5444ad5248d14a1d79d8b982c1d40991e03aa0871f0aaf1
+	source = https://github.com/SarahWeiii/CoACD/archive/refs/tags/1.0.10.tar.gz
+	sha256sums = e43873d3ebe647cb720ce28d5167c888ff5401c4c8c38666bee25cf7f04abe40
 
 pkgname = coacd

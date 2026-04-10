@@ -1,5 +1,5 @@
 pkgname=coacd
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Approximate Convex Decomposition for 3D Meshes"
 license=('MIT')
@@ -10,12 +10,10 @@ optdepends=('python-trimesh: for Python bindings')
 makedepends=(cmake cdt)
 options=(!lto)
 source=("https://github.com/SarahWeiii/CoACD/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('cb805bc667eaebb0e5444ad5248d14a1d79d8b982c1d40991e03aa0871f0aaf1')
+sha256sums=('e43873d3ebe647cb720ce28d5167c888ff5401c4c8c38666bee25cf7f04abe40')
 
 prepare () {
   cd CoACD-$pkgver
-  # clip.cpp:3:10: fatal error: include/CDTUtils.h: No such file or directory
-  curl -L https://github.com/SarahWeiii/CoACD/pull/95.patch | patch -p1
 }
 
 build() {
