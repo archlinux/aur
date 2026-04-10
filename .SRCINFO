@@ -11,7 +11,9 @@ pkgbase = paws-lv2-git
 	makedepends = cmake
 	makedepends = make
 	makedepends = lv2
+	makedepends = qt5-base
 	depends = lv2
+	depends = qt5-base
 	source = git+https://codeberg.org/zynskeyfolf/paws-lv2
 	sha256sums = SKIP
 

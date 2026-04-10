@@ -7,8 +7,8 @@ arch=('x86_64')
 url="https://zynskey.nekoweb.org/paws"
 license=('GPL-3.0-or-later')
 groups=('lv2-plugins' 'pro-audio')
-depends=('lv2')
-makedepends=('git' 'cmake' 'make' 'lv2')
+depends=('lv2' 'qt5-base')
+makedepends=('git' 'cmake' 'make' 'lv2' 'qt5-base')
 source=("git+https://codeberg.org/zynskeyfolf/paws-lv2")
 sha256sums=(SKIP)
 
