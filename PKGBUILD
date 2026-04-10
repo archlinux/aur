@@ -70,11 +70,11 @@ package(){
 
    # Make cnijlmon3 happy with libxml2.so.16(that does work trust)
    
-   sudo ln "/lib/libxml2.so.16 "/libxml2.so.2"
+   ln -s "/usr/lib/libxml2.so.16" "${pkgdir}/usr/lib/libxml2.so.2"
 
    # Add .ppd file
 
-   sudo mv "./${_ppdFile}" "/usr/share/cups/model/canonmg3000.ppd"
+   install -Dm644 "./${_ppdFile}" "${pkgdir}/usr/share/cups/model/canonmg3000.ppd"
 
    # Install license files
 
@@ -84,8 +84,4 @@ package(){
 
    install -vDm 644 "${srcdir}/${pkgname}-scangear.desktop" "${pkgdir}/usr/share/applications/${pkgname}-scangear.desktop"
    install -vDm 644 "${srcdir}/${pkgname}-scangear-icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}-scangear-icon.png"
-
-   # Start CUPS service with systemctl (change if you use a non-systemd init system)
-
-   sudo systemctl enable --now cups.service
 }
