@@ -1,0 +1,16 @@
+pkgbase = scrape-tool-bin
+	pkgdesc = Custom scrape tool for mass scraping of any website
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/VoidWalker-00/Scrape_Tool
+	arch = x86_64
+	license = custom:unlicensed
+	depends = nodejs
+	depends = chromium
+	depends = webkit2gtk-4.1
+	provides = scrape-tool
+	conflicts = scrape-tool
+	source = scrape-tool-bin-0.1.0.deb::https://github.com/VoidWalker-00/Scrape_Tool/releases/download/v0.1.0/Scrape.Tool_0.1.0_amd64.deb
+	sha256sums = fbf233163a02b6d630211f3fa2e4893c27b0045f42f7c8e68de5467b20740827
+
+pkgname = scrape-tool-bin
