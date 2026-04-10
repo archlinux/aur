@@ -1,6 +1,6 @@
 pkgbase = promtail-git
 	pkgdesc = Promtail - Logshipper for Loki
-	pkgver = 3.7.1
+	pkgver = 3.6.10
 	pkgrel = 1
 	url = https://github.com/grafana/loki
 	arch = x86_64
