@@ -1,11 +1,9 @@
 pkgbase = rclone-studip-git
 	pkgdesc = Rclone with a Stud.IP backend
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/Mewsen/rclone-studip-backend-oot
-	arch = x86_64
-	arch = aarch64
-	arch = i686
+	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = go
@@ -13,7 +11,7 @@ pkgbase = rclone-studip-git
 	provides = rclone
 	conflicts = rclone
 	conflicts = rclone-git
-	source = rclone-studip-git-1.2.0::git+https://github.com/Mewsen/rclone-studip-backend-oot.git#tag=v1.2.0
+	source = rclone-studip-git-1.2.1::git+https://github.com/Mewsen/rclone-studip-backend-oot.git#tag=v1.2.1
 	sha256sums = SKIP
 
 pkgname = rclone-studip-git
