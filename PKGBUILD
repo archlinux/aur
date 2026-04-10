@@ -1,6 +1,6 @@
 # Maintainer: phlppbmm <philipp.baumm@gmx.net>
 pkgname=python-agent-rtfm-bin
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Local documentation retrieval service for agent-assisted development (prebuilt)"
 arch=('any')
@@ -27,7 +27,7 @@ provides=('python-agent-rtfm')
 conflicts=('python-agent-rtfm' 'python-agent-rtfm-git')
 install=python-agent-rtfm.install
 _wheel="agent_rtfm-${pkgver}-py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/01/2e/509e48d0a6a35377b3cf9fd381616006fe258daeb880df452fa7d1d7f12b/agent_rtfm-0.2.3-py3-none-any.whl")
+source=("https://files.pythonhosted.org/packages/c4/0d/0555c668dbb537a60af9d87cdd0bf23dd20f1c1ad636d762ce3bcd085fd6/agent_rtfm-0.2.4-py3-none-any.whl")
 sha256sums=('SKIP')
 noextract=("${_wheel}")
 
