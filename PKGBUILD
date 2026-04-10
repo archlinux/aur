@@ -5,7 +5,7 @@ _pkgname=tsm
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal Session Manager"
 
-pkgver=0.7.1
+pkgver=0.6.5
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -37,8 +37,8 @@ sha256sums=('2b87bf7de1f8d01aa9b6d406e29cf45a5c326657faccff7eaacd7a04399e1a64'
             '4bf5b22c37c22a9cd4abdf62b587497ccfaa07d6bb81a6a5bae5aee49822a981'
             'bcb89d7b1ac89a301e67d8037c6d9f85608ac0d4964750a1d38a9b2350eed1fd'
             '7190508bd9b199df1d32751427986bcefa67f8800492fb4d6cff82cba9bca025')
-sha256sums_x86_64=('ee79e7c04b7595bb223ed4843be7b7370a5646636df184a9361b3b737aa0ff03')
-sha256sums_aarch64=('506456135db4176199c552c7fd523d473d935a911a7dd721b85449b51cc9e78f')
+sha256sums_x86_64=('84eeeba595f50a0325439b578c88758e4d4e511d3e1bdaaf191f1ccbb921a525')
+sha256sums_aarch64=('206714b97825068c93b846252e8486d532b7244ac5be578bcd035958c99396cc')
 
 
 case ${CARCH} in
