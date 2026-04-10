@@ -3,7 +3,7 @@
 pkgbase=openixsuit-bin
 pkgname=openixsuit-bin
 _pkgname=OpenixSuit
-pkgver=0.4.3
+pkgver=0.4.5
 pkgrel=1
 arch=('x86_64')
 _name=${_pkgname}_${pkgver}_amd64
@@ -34,7 +34,7 @@ url="https://github.com/YuzukiTsuru/OpenixSuit"
 install=${pkgname}.install
 source=("${url}/releases/download/v${pkgver}/${_name}.deb"
     ${pkgname}.install)
-sha256sums=('69f4c8234efb4c37cfe15f324bb4aea1e9a9f4f9d0c8386ee32dd112b7fdf8ea'
+sha256sums=('15029e01c5417a126ce9f75bf1a25d1dfd73ae77a58b2c3cb638238b56df3ba4'
             '763f59e338643858260b27c93c510541616de1f81f4b7946c9dc81116bbba33f')
 # noextract=()
 
