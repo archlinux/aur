@@ -40,16 +40,20 @@ new_pkgrel=$((current_pkgrel + 1))
 sed -i "s/^pkgrel=.*/pkgrel=$new_pkgrel/" PKGBUILD
 info "pkgrel: $current_pkgrel → $new_pkgrel"
 
-# 4. 构建并安装
+# 4. 同步 .SRCINFO，避免 AUR 前端和 AUR helper 读到过期元数据
+info "更新 .SRCINFO..."
+makepkg --printsrcinfo > .SRCINFO
+
+# 5. 构建并安装
 info "构建并安装..."
 makepkg -si --noconfirm
 
-# 5. 提交更改
+# 6. 提交更改
 info "提交更改..."
 git add -A
 git commit -m "chore(aur): bump pkgrel to $new_pkgrel" || true
 
-# 6. 推送到 AUR
+# 7. 推送到 AUR
 info "推送到 AUR..."
 git push origin master
 

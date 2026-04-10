@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Mimic-Node Maintenance Daily
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=1h
+Persistent=true
+Unit=mimic-node.service
+
+[Install]
+WantedBy=timers.target

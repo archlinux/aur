@@ -1,6 +1,6 @@
 # Maintainer: LightJunction <lightjunction.me@gmail.com>
 pkgname=mimic-node-git
-pkgrel=10
+pkgrel=11
 pkgdesc="A stealthy, systemless sing-box node manager (Rust implementation)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/LIghtJUNction/Mimic-Node"
@@ -10,8 +10,15 @@ makedepends=('git' 'rust' 'cargo')
 provides=('mimic-node')
 conflicts=('mimic-node')
 install='mimic-node.install'
-source=('git+https://github.com/LIghtJUNction/Mimic-Node.git')
-sha256sums=('SKIP')
+# Upstream no longer ships mimic-node.timer, but its install flow still expects it.
+source=(
+    'git+https://github.com/LIghtJUNction/Mimic-Node.git'
+    'mimic-node.timer'
+)
+sha256sums=(
+    'SKIP'
+    'e06c13f4ae1ec63371e7db816ace19c7f62156196305da0ff5bcda73dfbfb94a'
+)
 
 pkgver=r68.a36085b
 
@@ -42,6 +49,7 @@ package() {
     install -Dm644 "overlay/etc/systemd/system/mimic-node.path" "$pkgdir/etc/systemd/system/mimic-node.path"
     install -Dm644 "overlay/etc/systemd/system/mimic-node-deploy.service" "$pkgdir/etc/systemd/system/mimic-node-deploy.service"
     install -Dm644 "overlay/etc/systemd/system/mimic-node-mount.service" "$pkgdir/etc/systemd/system/mimic-node-mount.service"
+    install -Dm644 "$srcdir/mimic-node.timer" "$pkgdir/etc/systemd/system/mimic-node.timer"
     install -Dm644 "overlay/etc/systemd/system/sing-box.service.d/mimic-overlay.conf" "$pkgdir/etc/systemd/system/sing-box.service.d/mimic-overlay.conf"
     install -Dm644 "overlay/usr/share/mimic-node/sni.txt" "$pkgdir/usr/share/mimic-node/sni.txt"
     install -dm700 "$pkgdir/var/lib/mimic-node"
