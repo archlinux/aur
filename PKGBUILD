@@ -9,7 +9,7 @@
 # Contributor: Marijan Smetko <msmetko@msmetko.xyz>
 
 pkgname=android-studio-canary
-pkgver=2025.3.4.3
+pkgver=2025.3.4.4
 pkgrel=1
 pkgdesc="The Official Android IDE (Canary branch)"
 arch=('i686' 'x86_64')
@@ -20,9 +20,9 @@ depends=('freetype2' 'libxrender' 'libxtst')
 optdepends=('gtk2: GTK+ look and feel'
             'libgl: emulator support')
 options=('!strip')
-source=("https://edgedl.me.gvt1.com/android/studio/ide-zips/2025.3.4.3/android-studio-panda4-canary3-linux.tar.gz"
+source=("https://edgedl.me.gvt1.com/android/studio/ide-zips/2025.3.4.4/android-studio-panda4-canary4-linux.tar.gz"
         "$pkgname.desktop")
-sha256sums=('f1fa87754e883ee4667097826503aa50f81f8a577d93df2c2e737bedd9761ecf'
+sha256sums=('b0f189b8e9b94fb119579861389b1973b3fc0935f2bfd03a93cda13351991a96'
             '12ff377490cff386ba7b3ab9c94adfc2ca99515fdfad4773813268217dcd56b7')
 
 if [ "$CARCH" = "i686" ]; then
