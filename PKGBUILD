@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=samplomatic
 pkgname=python-${_name}
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="A library that helps you sample randomizations of your quantum circuits"
 arch=(any)
@@ -38,7 +38,7 @@ optdepends=(
     "python-pylatexenc: LaTeX"
 )
 source=($_name::git+https://github.com/Qiskit/$_name.git#tag=$pkgver)
-b2sums=('14485ba66578e74f20ffaa73c3bab14a93f99ad7212c2d89ce30df05258d08c7449b515b529c8aeafe332ab2a8ab4486b03ded48c962579f3a0a85d74572be65')
+b2sums=('d16737343fe917a35f06795ef48d6ceda82fbe487e570e1e6165e014184f9363a5a5923721f0285d0ad080d4576de27d7a1778793474fa8f41b9a3b6adbf99e8')
 
 build() {
     cd $_name
