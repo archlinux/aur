@@ -1,0 +1,5 @@
+[pointer-rs-bin]
+source = "github"
+github = "isene/pointer"
+use_latest_release = true
+prefix = "v"
