@@ -5,7 +5,7 @@ _pkgname=hmon
 pkgname=${_pkgname}-bin
 pkgdesc="Real-time system resource monitoring tool"
 
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,7 +24,7 @@ depends=('glibc' 'libgcc' 'libstdc++' 'ncurses')
 option=(!strip)
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('5056f8ce27d7404a2007302cf3efdf88434c7954ce8b961eb2f2182d1e9e0dbc')
+sha256sums_x86_64=('907e219b0112adb27cd7c88af42ee8aef264cee68b890a5da52aa47e094b9d23')
 
 
 case ${CARCH} in
