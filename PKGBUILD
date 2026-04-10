@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-dialer-git
-pkgver=6.5.90.r48.g7d23274
+pkgver=6.5.90.r49.g13eb7ae
 pkgrel=1
 pkgdesc="Dialer for Plasma Mobile"
 arch=(any)
