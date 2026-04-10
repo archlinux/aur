@@ -1,8 +1,8 @@
 # Maintainer: Victor Sosa <victorsosadev@gmail.com>
 
 pkgname=vswaybar-studio
-pkgver=1.4.0
-pkgrel=1
+pkgver=1.4.1
+pkgrel=2
 pkgdesc="A visual configuration editor for Waybar — build, style and preview your bar in real time"
 arch=('any')
 url="https://github.com/victorsosaMx/vsWaybar-Studio"
@@ -18,7 +18,7 @@ optdepends=(
     'matugen: palette generation from wallpaper image (Styling tab)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/victorsosaMx/vsWaybar-Studio/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('58f2be5043c3daf029e49d9607b3d4bcdab6853619770f043255ed1226f48d00')
+sha256sums=('9ae8c5ad7b04d358ec12ca966c0f470be248b4c3406c104cc3187aa66e3a2f0c')
 
 package() {
     cd "vsWaybar-Studio-$pkgver"

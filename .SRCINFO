@@ -1,7 +1,7 @@
 pkgbase = vswaybar-studio
 	pkgdesc = A visual configuration editor for Waybar — build, style and preview your bar in real time
-	pkgver = 1.4.0
-	pkgrel = 1
+	pkgver = 1.4.1
+	pkgrel = 2
 	url = https://github.com/victorsosaMx/vsWaybar-Studio
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = vswaybar-studio
 	depends = webkit2gtk-4.1
 	depends = waybar
 	optdepends = matugen: palette generation from wallpaper image (Styling tab)
-	source = vswaybar-studio-1.4.0.tar.gz::https://github.com/victorsosaMx/vsWaybar-Studio/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = 58f2be5043c3daf029e49d9607b3d4bcdab6853619770f043255ed1226f48d00
+	source = vswaybar-studio-1.4.1.tar.gz::https://github.com/victorsosaMx/vsWaybar-Studio/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = 9ae8c5ad7b04d358ec12ca966c0f470be248b4c3406c104cc3187aa66e3a2f0c
 
 pkgname = vswaybar-studio
