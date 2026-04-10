@@ -1,0 +1,41 @@
+diff --git a/meson.build b/meson.build
+index 5ebd8b7..c449408 100644
+--- a/meson.build
++++ b/meson.build
+@@ -22,7 +22,7 @@ if get_option('use_qt_version') == 'qt5'
+ 	QtDeps = dependency(
+ 		'qt5',
+ 		modules: [ 'Core', 'Gui', 'WaylandClient', 'XkbCommonSupport' ],
+-		private_headers: [ 'Gui', 'WaylandClient', 'XkbCommonSupport' ],
++		private_headers: true,
+ 	)
+ 
+ 	# Nothing
+@@ -36,7 +36,7 @@ elif get_option('use_qt_version') == 'qt6'
+ 	QtDeps = dependency(
+ 		'qt6',
+ 		modules: [ 'Core', 'Gui', 'WaylandClient' ],
+-		private_headers: [ 'Gui', 'WaylandClient', 'WaylandGlobalPrivate' ],
++		private_headers: true,
+ 	)
+ 
+ 	qmake = find_program( [ 'qmake-qt6', 'qmake6' ], required: true )
+diff --git a/src/SessionLockImpl.cpp b/src/SessionLockImpl.cpp
+index 7f2fd5f..12a65bf 100644
+--- a/src/SessionLockImpl.cpp
++++ b/src/SessionLockImpl.cpp
+@@ -26,6 +26,7 @@
+ #include <QDebug>
+ #include <QWindow>
+ 
++#include <qpa/qwindowsysteminterface.h>
+ #include <wayland-client.h>
+ 
+ #include <wayqt/WayQtUtils.hpp>
+@@ -78,5 +79,5 @@ void SessionLockSurfaceImpl::configureCallback( void *data, struct ::ext_session
+     #endif
+ 
+     /** Commit the buffer */
+-    sls->handleExpose( QRect( QPoint(), QSize((int)width, (int)height ) ) );
++    QWindowSystemInterface::handleExposeEvent( sls->mWindow->window(), QRect( QPoint(), QSize((int)width, (int)height ) ) );
+ }
