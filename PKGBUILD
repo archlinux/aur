@@ -1,12 +1,15 @@
 pkgname=wallrift-git
-pkgver=1.0.0
+pkgver=e9081c7
 pkgrel=1
+
 pkgdesc="Wayland wallpaper engine with smooth cursor-based parallax effect"
 arch=('x86_64')
 url="https://github.com/saber-88/wallrift"
 license=('MIT')
+
 depends=('wayland' 'libxkbcommon' 'libglvnd')
 makedepends=('git' 'cmake' 'make' 'gcc')
+
 provides=('wallrift')
 conflicts=('wallrift')
 
@@ -14,27 +17,33 @@ source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --tags --always || echo "r$(git rev-list --count HEAD)"
+  cd "$srcdir/$pkgname"
+
+  git describe --tags --long --always 2>/dev/null | sed 's/^v//;s/-/./g' || \
+    echo "r$(git rev-list --count HEAD)"
 }
 
 build() {
-  cd "$pkgname"
-  cmake -B build -S .
+  cd "$srcdir/$pkgname"
+
+  cmake -B build -S . \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
   cmake --build build
 }
 
 package() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
 
-  # Install binaries
+  # binaries
   install -Dm755 build/wallrift "$pkgdir/usr/bin/wallrift"
   install -Dm755 build/wallrift-daemon "$pkgdir/usr/bin/wallrift-daemon"
 
-  # Install shaders
+  # shaders
   install -d "$pkgdir/usr/share/wallrift/shaders"
-  cp -r shaders/* "$pkgdir/usr/share/wallrift/shaders/"
+  cp -r shaders/. "$pkgdir/usr/share/wallrift/shaders/"
 
-  # Install license
+  # license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
