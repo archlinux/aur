@@ -2,4 +2,4 @@ pkg/
 src/
 
 openscreen-bin-*.pkg.tar.zst
-openscreen.tar.gz
+openscreen-*.tar.gz

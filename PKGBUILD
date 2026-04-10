@@ -1,8 +1,8 @@
 # Maintainer: AImixAE <AImixAE[at]outlook[dot]com>
 
 pkgname=openscreen-bin
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
 arch=('any')
 url="https://github.com/siddharthvaddem/openscreen"
@@ -15,35 +15,35 @@ provides=()
 conflicts=('openscreen-appimage')
 options=(!debug !strip)
 source=(
-    "openscreen.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+    "openscreen-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "$url/raw/refs/heads/main/LICENSE"
     "openscreen.desktop"
     "openscreen"
 )
-sha256sums=('ea95cd708c13b4ea2ff2ec8bf7edfca10f2f3f7d95f638d455fa2130db7f5744' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('d9bc4d43242533cf15a0c10f8d2e527c95bccf8a2a28b7b88f39a632adfbc327' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
-	(
+    (
         cd "openscreen-$pkgver"
         npm i
-	)
+    )
 
-	if [[ -d "openscreen-$pkgver/release" ]]; then
+    if [[ -d "openscreen-$pkgver/release" ]]; then
         echo "==> Clearing release dir"
         rm -r "openscreen-$pkgver/release"
     fi
 }
 
 build() {
-	(
+    (
         cd "openscreen-$pkgver"
         npm run build
-	)
+    )
 
-	app=$(find $srcdir/openscreen-$pkgver/release -regex ".*\.AppImage")
-	appdir=$(dirname $app)
+    app=$(find $srcdir/openscreen-$pkgver/release -regex ".*\.AppImage")
+    appdir=$(dirname $app)
 
-	chmod +x "$app"
+    chmod +x "$app"
     (
         cd "$appdir"
         "$app" --appimage-extract
@@ -52,16 +52,16 @@ build() {
 
 check() {
     app=$(find $srcdir/openscreen-$pkgver/release -regex ".*\.AppImage")
-	appdir=$(dirname $app)
+    appdir=$(dirname $app)
 
-	[[ -f "$app" ]]
+    [[ -f "$app" ]]
 }
 
 package() {
     app=$(find $srcdir/openscreen-$pkgver/release -regex ".*\.AppImage")
-	appdir=$(dirname $app)
+    appdir=$(dirname $app)
 
-	install -Dm755 "$srcdir/openscreen" "$pkgdir/usr/bin/openscreen"
+    install -Dm755 "$srcdir/openscreen" "$pkgdir/usr/bin/openscreen"
     install -Dm755 "$app" "$pkgdir/opt/openscreen/Openscreen.AppImage"
     install -Dm755 "$srcdir/openscreen.desktop" "$pkgdir/usr/share/applications/openscreen.desktop"
 
