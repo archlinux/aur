@@ -44,7 +44,7 @@ fi
 
 echo "[3/5] Computing new version (lightweight clone)..."
 
-OLD_VER=$(awk -F= '/^pkgver=/{gsub(/"|'"'"'/, "", $2); print $2; exit}' PKGBUILD)
+OLD_VER=$(awk -F= '/^pkgver=/{gsub(/"|'"'"'/, "", $2); print $2; exit}' PKGBUILD | head -1)
 OLD_PKGREL=$(awk -F= '/^pkgrel=/{gsub(/"|'"'"'/, "", $2); print $2; exit}' PKGBUILD)
 
 # Use a bare, blob-filtered clone to get commit history without downloading file contents.
@@ -69,7 +69,8 @@ else
 fi
 
 echo "[4/5] Updating PKGBUILD and .SRCINFO..."
-sed -i "s/^pkgver=.*/pkgver=${NEW_VER}/" PKGBUILD
+# Replace only the static pkgver= line (not pkgver() function), then bump pkgrel
+sed -i "1,/^pkgver=/{s/^pkgver=.*/pkgver=${NEW_VER}/}" PKGBUILD
 sed -i "s/^pkgrel=.*/pkgrel=${NEW_PKGREL}/" PKGBUILD
 
 rm -rf src/ pkg/
