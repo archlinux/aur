@@ -4,7 +4,7 @@
 pkgname=coolterm-bin
 _pkgname=CoolTerm
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GUI serial port terminal application (no terminal emulation).Prebuilt version."
 arch=(
 	'aarch64'
@@ -21,9 +21,8 @@ depends=(
 	'python-psutil'
 	'libunwind'
 )
-source=(
-	"${pkgname%-bin}.sh"
-)
+options=('!strip')
+source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/${_pkgname}RaspberryPi64Bit.zip")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/${_pkgname}RaspberryPi.zip")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/${_pkgname}Linux32Bit.zip")
