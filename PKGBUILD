@@ -1,7 +1,7 @@
 # Maintainer: Mistan Khomdram <mistankhomdram@gmail.com>
 pkgname=lazychad
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An intelligent, highly-aesthetic Neovim wrapper built on NvChad"
 arch=('any')
 url="https://github.com/MistanKh/LazyChad"
@@ -24,6 +24,7 @@ package() {
 
   # Install the wrapper binary
   install -Dm755 bin/lazychad "$pkgdir/usr/bin/lazychad"
+  install -Dm755 bin/lazychad-deps "$pkgdir/usr/bin/lazychad-deps"
 
   # Install the Neovim configuration files
   install -dm755 "$pkgdir/usr/share/lazychad"
