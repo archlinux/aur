@@ -1,0 +1,14 @@
+pkgbase = aic8800d80-wifi-bt-git-dkms
+	pkgdesc = Kernel modules for WIFI AX900 8800d80 / Tenda
+	pkgver = 1.0.0
+	pkgrel = 6
+	url = https://github.com/shenmintao/aic8800d80
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	conflicts = aic8800d80
+	source = git+https://github.com/shenmintao/aic8800d80.git#branch=bluetooth
+	sha512sums = SKIP
+
+pkgname = aic8800d80-wifi-bt-git-dkms
