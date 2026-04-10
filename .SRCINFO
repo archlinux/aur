@@ -1,6 +1,6 @@
 pkgbase = teru
 	pkgdesc = AI-first terminal emulator, multiplexer, and tiling manager
-	pkgver = 0.3.9
+	pkgver = 0.3.10
 	pkgrel = 1
 	url = https://teru.sh
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = teru
 	depends = wayland
 	optdepends = xclip: clipboard support on X11
 	optdepends = wl-clipboard: clipboard support on Wayland
-	source = teru-0.3.9.tar.gz::https://github.com/nicholasglazer/teru/archive/v0.3.9.tar.gz
-	sha256sums = 2502117d5ee2aaf17985cc5f8d434d7d01589c4154394aa2758a41e6043a946a
+	source = teru-0.3.10.tar.gz::https://github.com/nicholasglazer/teru/archive/v0.3.10.tar.gz
+	sha256sums = 72ea3e67a578ca2dd41ee6e59f1a7ea77cc332d72e50bf33a7680c21cd51980b
 
 pkgname = teru
