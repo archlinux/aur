@@ -1,0 +1,9 @@
+/dma_ip_drivers
+/pkg
+/src
+
+*.tar
+*.gz
+*.zst
+*.xz
+

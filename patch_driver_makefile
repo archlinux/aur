@@ -1,0 +1,13 @@
+diff --git a/QDMA/linux-kernel/driver/Makefile b/QDMA/linux-kernel/driver/Makefile
+index 1d073f4..178c8c8 100755
+--- a/QDMA/linux-kernel/driver/Makefile
++++ b/QDMA/linux-kernel/driver/Makefile
+@@ -189,7 +189,7 @@ else # bundled install
+ 	docs_install_path ?= $(install_path)/doc
+ endif
+ 
+-$(shell rm -f $(srcdir)/src/libqdma; ln -fs $(srcdir)/libqdma $(srcdir)/src;)
++$(shell rm -rf $(srcdir)/src/libqdma; ln -fs $(srcdir)/libqdma $(srcdir)/src;)
+ 
+ .PHONY: eval.mak
+ 

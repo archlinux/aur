@@ -1,0 +1,16 @@
+diff --git a/QDMA/linux-kernel/driver/libqdma/qdma_access/qdma_access_common.h b/QDMA/linux-kernel/driver/libqdma/qdma_access/qdma_access_common.h
+index 03371e7..3fd324f 100755
+--- a/QDMA/linux-kernel/driver/libqdma/qdma_access/qdma_access_common.h
++++ b/QDMA/linux-kernel/driver/libqdma/qdma_access/qdma_access_common.h
+@@ -71,7 +71,11 @@ static inline uint32_t get_trailing_zeros(uint64_t value)
+ 
+ #define FIELD_SHIFT(mask)       get_trailing_zeros(mask)
+ #define FIELD_SET(mask, val)    ((val << FIELD_SHIFT(mask)) & mask)
++
++// Conflict with linux macro
++#ifndef FIELD_GET
+ #define FIELD_GET(mask, reg)    ((reg & mask) >> FIELD_SHIFT(mask))
++#endif
+ 
+ 
+ /* CSR Default values */

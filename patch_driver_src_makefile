@@ -1,0 +1,32 @@
+diff --git a/QDMA/linux-kernel/driver/src/Makefile b/QDMA/linux-kernel/driver/src/Makefile
+index bb309d9..e229eda 100755
+--- a/QDMA/linux-kernel/driver/src/Makefile
++++ b/QDMA/linux-kernel/driver/src/Makefile
+@@ -44,7 +44,7 @@ $(info ARCH = $(ARCH).)
+ 
+ MOD_NAME := qdma$(PFVF_TYPE)
+ 
+-EXTRA_CFLAGS += -DLINUX -D__KERNEL__ -DMODULE -O2 -pipe -Wall -Werror
++EXTRA_CFLAGS += -DLINUX -D__KERNEL__ -DMODULE -O2 -pipe -Wall -Werror -Wno-error=empty-body
+ EXTRA_CFLAGS += $(FLAGS) $(CPPFLAGS) $(EXTRA_FLAGS)
+ EXTRA_CFLAGS += -I$(srcdir)/../include
+ EXTRA_CFLAGS += -I$(KSRC)/../include
+@@ -54,6 +54,9 @@ EXTRA_CFLAGS += -I$(srcdir)/../libqdma/qdma_access/eqdma_cpm5_access
+ EXTRA_CFLAGS += -I$(srcdir)/../libqdma/qdma_access/qdma_cpm4_access
+ EXTRA_CFLAGS += -I.
+ 
++ccflags-y := $(EXTRA_CFLAGS)
++#export CFLAGS_MODULE := $(EXTRA_CFLAGS)
++
+ # linux >= 3.13 genl_ops become part of the genl_family. And although
+ # genl_register_family_with_ops() is still retained until kernel 4.10,
+ # its prototype changed from a extern function to a define.
+@@ -80,7 +83,7 @@ ifneq ($(shell $(grep) -c 'READ_ONCE' $(KINC)/linux/compiler.h),0)
+   ccflags-y += -D__READ_ONCE_DEFINED__
+ endif
+ 
+-$(info EXTRA_FLAGS = $(EXTRA_FLAGS).)
++$(info EXTRA_CFLAGS = $(EXTRA_CFLAGS).)
+ $(info ccflags-y = $(ccflags-y).)
+ #EXTRA_CFLAGS += -DDEBUG
+ 

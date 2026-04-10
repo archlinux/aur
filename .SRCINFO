@@ -1,0 +1,28 @@
+pkgbase = xilinx-qdma-git
+	pkgdesc = Xilinx QDMA
+	pkgver = 20260226
+	pkgrel = 1
+	url = https://xilinx.github.io/dma_ip_drivers/master/QDMA/linux-kernel/html/index.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = linux-headers=6.19.10.arch1-1
+	makedepends = git
+	depends = linux=6.19.10.arch1-1
+	depends = libaio
+	source = git+https://github.com/Xilinx/dma_ip_drivers.git
+	source = patch_access_common_h
+	source = patch_app_dmaxfer
+	source = patch_driver_makefile
+	source = patch_driver_src_makefile
+	source = patch_driver_xdev_h
+	source = patch_makefile
+	sha256sums = SKIP
+	sha256sums = 35d2c2b2dae14426e40fcd7b8f8f06513283356b40a8cfbd2b76c0a718250ca9
+	sha256sums = 130b0a798d950bba2234774e5a76db5114cc968e3a742edd39e42b0b69ce4f28
+	sha256sums = 892b02660a049562697f71f443767a12c25da5303969af059d865b099b174dee
+	sha256sums = 6ab905e563132ab3937379a7c1457b141b0eeddf037b2b85b8534a1c122a42f5
+	sha256sums = b19c92ec8c1bb33186823f4c4a60d1408f1f7be77990642678f4f53f1097e382
+	sha256sums = 4e2123697e3327dc9ddbd99c0589abb02eddcc1d9e5fad7813ccbe628e1b566b
+
+pkgname = xilinx-qdma-git

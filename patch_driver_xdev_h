@@ -1,0 +1,17 @@
+diff --git a/QDMA/linux-kernel/driver/libqdma/xdev.h b/QDMA/linux-kernel/driver/libqdma/xdev.h
+index fd31128..50bc5f7 100755
+--- a/QDMA/linux-kernel/driver/libqdma/xdev.h
++++ b/QDMA/linux-kernel/driver/libqdma/xdev.h
+@@ -24,6 +24,12 @@
+  * @brief This file contains the declarations for QDMA PCIe device
+  *
+  */
++
++// Conflict with linux macro
++#ifdef FIELD_GET
++#undef FIELD_GET
++#endif
++
+ #include <linux/types.h>
+ #include <linux/dma-mapping.h>
+ #include <linux/interrupt.h>
