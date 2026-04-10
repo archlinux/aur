@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-boot-options
-pkgver=26.04
+pkgver=26.04.1
 pkgrel=2
 pkgdesc="GUI for managing boot options and UEFI settings"
 arch=('x86_64' 'i686')
@@ -9,8 +9,8 @@ license=('GPL3')
 depends=('qt6-base' 'polkit')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 optdepends=('grub: GRUB configuration support' 'plymouth: bootsplash themes' 'uefi-manager: UEFI manager integration')
-source=("https://github.com/MX-Linux/mx-boot-options/archive/refs/tags/26.04.tar.gz")
-sha256sums=('e028e61913aa7d1f928fb5d8bc03af40ec180f94b02a3319be6b79011bdd254d')
+source=("https://github.com/MX-Linux/mx-boot-options/archive/refs/tags/26.04.1.tar.gz")
+sha256sums=('06fe72421efae65faf4adabeb07ed36a28634ba6dba488bd638589cc97bb0123')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
