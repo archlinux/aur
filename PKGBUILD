@@ -1,6 +1,6 @@
 # Maintainer: Lucasion <https://github.com/LucasionGS>
 pkgname=ionix-file-manager-git
-pkgver=r7.7409f6a
+pkgver=r8.0a32e32
 pkgrel=1
 pkgdesc="A terminal file manager with Kitty graphics protocol support"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -26,6 +26,10 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     go build -trimpath -mod=readonly -o bin/ifm .
+
+    # During build, for some reason, a library gets readonly files.
+    # We need to make them writable so that makepkg can clean up after itself.
+    chmod -R u+w "${GOPATH}/pkg/mod"
 }
 
 package() {
