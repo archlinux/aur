@@ -2,28 +2,28 @@
 pkgname=dots-hyprland-fork-git
 pkgver=1.0
 pkgrel=1
-pkgdesc='Your fork of dots-hyprland'
+pkgdesc='dots-hyprland fork - Hyprland config framework'
 arch=(any)
 url='https://github.com/LIghtJUNction/dots-hyprland'
 license=(MIT)
 depends=(
   hyprland
   quickshell
+  fish
+  starship
 )
 makedepends=(git)
 source=("git+https://github.com/LIghtJUNction/dots-hyprland.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  git -C "$srcdir/dots-hyprland" describe --tags 2>/dev/null | sed 's/^v//;s/-/./g' || printf "0.0.0"
-}
-
-build() {
   cd dots-hyprland
+  git describe --tags 2>/dev/null | sed 's/^v//;s/-/./g' || printf "0.0.0"
 }
 
 package() {
   cd dots-hyprland
   mkdir -p "$pkgdir/usr/share/dots-hyprland"
-  cp -r . "$pkgdir/usr/share/dots-hyprland/"
+  cp -r dots/.config dots/.local sdata "$pkgdir/usr/share/dots-hyprland/"
+  install -Dm755 sdata/subcmd-install/3.files.sh "$pkgdir/usr/share/dots-hyprland/install.sh"
 }

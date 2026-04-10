@@ -1,5 +1,5 @@
 pkgbase = dots-hyprland-fork-git
-	pkgdesc = Your fork of dots-hyprland
+	pkgdesc = dots-hyprland fork - Hyprland config framework
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/dots-hyprland
@@ -7,6 +7,8 @@ pkgbase = dots-hyprland-fork-git
 	license = MIT
 	depends = hyprland
 	depends = quickshell
+	depends = fish
+	depends = starship
 	makedepends = git
 	source = git+https://github.com/LIghtJUNction/dots-hyprland.git
 	sha256sums = SKIP
