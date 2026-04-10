@@ -1,13 +1,15 @@
-pkgbase = aur
-	pkgdesc = ArchLinux Package Manager helper
-	pkgver = 0.1.2
+pkgbase = qianyu-bin
+	pkgdesc = Description of Qianyu
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/avelino/aur
+	url = https://github.com/tiesen243/qianyu
 	arch = x86_64
 	license = MIT
-	depends = curl
-	depends = pacman
-	options = !emptydirs
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	options = !strip
+	source_x86_64 = qianyu-bin-0.2.0.AppImage::https://github.com/tiesen243/qianyu/releases/download/%40qianyu%2Fdesktop%400.2.0/qianyu-0.2.0-ubuntu-latest.AppImage
+	sha256sums_x86_64 = 6f828129243b66e7e1f80c313412a37e7338798a170e45d0ce57dbd1e02758fe
 
-pkgname = aur
-
+pkgname = qianyu-bin
