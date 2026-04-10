@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=imsprog-git
-pkgver=1.8.2.r2.ga58ef3c
+pkgver=1.8.2.r37.g0c08947
 pkgrel=1
-pkgdesc="MSProg - software for CH341A-based programmers to work with I2C, SPI and MicroWire EEPROM/Flash chips"
+pkgdesc="I2C, MicroWire and SPI EEPROM/Flash chip Programmer - is a program to read, write EEPROM chips use the CH341A programmer device and CH347T programmer device"
 arch=($CARCH)
 url="https://github.com/bigbigmdm/IMSProg"
 license=('GPL-3.0-only')
@@ -26,6 +26,7 @@ makedepends=(
 optdepends=(
   "ezp-chip-data-editor: QT based editor chip database for EZP2019, EZP2019+, EZP2020, EZP2023, EZP2025, MinPro programmer devices"
   "sfp-master: SFP-module programmer for CH341a devices"
+  "zenity: Display graphical dialog boxes from shell scripts"
 )
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
