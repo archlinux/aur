@@ -4,7 +4,7 @@
 pkgname=python-tree-sitter-c
 _gitpkgname=tree-sitter-c
 pkgver=0.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python Bindings for tree-sitter-c'
 arch=('x86_64')
 url='https://github.com/tree-sitter/tree-sitter-c'
@@ -41,10 +41,13 @@ prepare() {
 }
 
 build() {
+	cd "${srcdir}/${_gitpkgname}-${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
 package() {
+	cd "${srcdir}/${_gitpkgname}-${pkgver}"
+
 	python -I -m installer --destdir="${pkgdir}" dist/*.whl
 	install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 	install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
