@@ -1,0 +1,94 @@
+post_install() {
+  _go_automate_configure_user_bridge
+}
+
+post_upgrade() {
+  _go_automate_configure_user_bridge
+}
+
+pre_remove() {
+  _go_automate_disable_user_bridge
+}
+
+_go_automate_configure_user_bridge() {
+  local unit="go-automate-home-assistant-bridge.service"
+
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl --global enable "$unit" >/dev/null 2>&1 || true
+  fi
+
+  if [ -n "${SUDO_USER:-}" ] && [ "$SUDO_USER" != "root" ]; then
+    _go_automate_enable_for_user "$SUDO_USER" "$unit"
+  fi
+
+  cat <<'EOF'
+go-automate: installed user service go-automate-home-assistant-bridge.service
+
+- Enabled globally for future logins with systemd user sessions.
+- If the installing user has an active user systemd session, the service was started for that user as well.
+- Home Assistant config is read from ~/.config/go-automate/config.yml for each user.
+
+If the service is not running yet for your current session, run:
+  systemctl --user daemon-reload
+  systemctl --user enable --now go-automate-home-assistant-bridge.service
+EOF
+}
+
+_go_automate_enable_for_user() {
+  local user="$1"
+  local unit="$2"
+  local uid
+  local runtime_dir
+  local bus_path
+
+  uid="$(id -u "$user" 2>/dev/null)" || return 0
+  runtime_dir="/run/user/$uid"
+  bus_path="$runtime_dir/bus"
+
+  if [ ! -S "$bus_path" ]; then
+    return 0
+  fi
+
+  runuser -u "$user" -- env \
+    XDG_RUNTIME_DIR="$runtime_dir" \
+    DBUS_SESSION_BUS_ADDRESS="unix:path=$bus_path" \
+    systemctl --user daemon-reload >/dev/null 2>&1 || return 0
+
+  runuser -u "$user" -- env \
+    XDG_RUNTIME_DIR="$runtime_dir" \
+    DBUS_SESSION_BUS_ADDRESS="unix:path=$bus_path" \
+    systemctl --user enable --now "$unit" >/dev/null 2>&1 || return 0
+}
+
+_go_automate_disable_user_bridge() {
+  local unit="go-automate-home-assistant-bridge.service"
+
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl --global disable "$unit" >/dev/null 2>&1 || true
+  fi
+
+  if [ -n "${SUDO_USER:-}" ] && [ "$SUDO_USER" != "root" ]; then
+    _go_automate_disable_for_user "$SUDO_USER" "$unit"
+  fi
+}
+
+_go_automate_disable_for_user() {
+  local user="$1"
+  local unit="$2"
+  local uid
+  local runtime_dir
+  local bus_path
+
+  uid="$(id -u "$user" 2>/dev/null)" || return 0
+  runtime_dir="/run/user/$uid"
+  bus_path="$runtime_dir/bus"
+
+  if [ ! -S "$bus_path" ]; then
+    return 0
+  fi
+
+  runuser -u "$user" -- env \
+    XDG_RUNTIME_DIR="$runtime_dir" \
+    DBUS_SESSION_BUS_ADDRESS="unix:path=$bus_path" \
+    systemctl --user disable --now "$unit" >/dev/null 2>&1 || return 0
+}
