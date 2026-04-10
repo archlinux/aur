@@ -2,19 +2,19 @@
 # Contributor: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-advanced-scene-switcher
-pkgver=1.32.6
-pkgrel=2
+pkgver=1.33.1
+pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/advanced-scene-switcher.395/"
 license=(GPL-2.0-or-later)
 depends=(
-  "obs-studio>=30.1" "glibc" "gcc-libs" "alsa-lib" "jack" "leptonica"
-  "procps-ng" "libx11" "opencv" "qt6-base" "tesseract" "simde"
+  "obs-studio>=31.1.1" "glibc" "gcc-libs" "alsa-lib" "jack" "leptonica"
+  "procps-ng" "libx11" "opencv" "qt6-base" "tesseract" "paho-mqtt-cpp"
 )
 makedepends=(
   "cmake" "git" "asio" "curl" "libxss" "libxtst"
-  "openssl" "websocketpp" "nlohmann-json" 
+  "openssl" "websocketpp" "nlohmann-json" "simde"
   #"cpp-httplib"
   #"openvr" Windows-only for now
 )
@@ -25,31 +25,31 @@ optdepends=(
   "openssl: Needed for Twitch features"
   #"openvr: OpenVR features" Windows-only
 )
-options=('debug')
 source=(
   "$pkgname::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=$pkgver"
-  "libremidi::git+https://github.com/jcelerier/libremidi.git"
+  "libremidi::git+https://github.com/celtera/libremidi.git#tag=v5.4.3"
   "cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git"
+  "date::git+https://github.com/HowardHinnant/date.git"
    # https://github.com/crow-translate/crow-translate/tree/c295226520c8af26493500a08908dbc765337576/cmake
   "DetectLibraryType.cmake"
   "FindLeptonica.cmake" 
   "FindTesseract.cmake"
 )
-sha256sums=(
-  "SKIP"
-  "SKIP"
-  "SKIP"
-  "81fccf8bcfadaf3bc6c1a67321376a1d37e20be05284660bdee6f61ef64ee8f7"
-  "21444991ea07c75ebe4b78d10ab58e96326b2371147bb3c639ad4311026d1501"
-  "908aee4fccba9ef2ff9796e22a8ccd7eff5bb7f74feca409feca474e038bf843"
-)
+sha256sums=('63ad03419d5f6340ab527f2d6cb9b7ad1c9716bcd900452f5eb213b3645dbd1b'
+            '96c3583ca49180c35091be66b9a670af88aafe842c1cf948c9b6e79bea2e0269'
+            'SKIP'
+            'SKIP'
+            '81fccf8bcfadaf3bc6c1a67321376a1d37e20be05284660bdee6f61ef64ee8f7'
+            '21444991ea07c75ebe4b78d10ab58e96326b2371147bb3c639ad4311026d1501'
+            '908aee4fccba9ef2ff9796e22a8ccd7eff5bb7f74feca409feca474e038bf843')
 
 prepare() {
   cd $pkgname
 
   git config submodule.deps/libremidi.url $srcdir/libremidi
   git config submodule.deps/cpp-httplib.url $srcdir/cpp-httplib
-  git -c protocol.file.allow=always submodule update deps/libremidi deps/cpp-httplib
+  git config submodule.deps/date.url $srcdir/date
+  git -c protocol.file.allow=always submodule update deps/libremidi deps/cpp-httplib deps/date
 
   sed -i 's/find_qt(/find_package(Qt6 /g' CMakeLists.txt
   sed -i 's/find_qt(/find_package(Qt6 /g' cmake/common/advss_helpers.cmake
@@ -61,15 +61,6 @@ prepare() {
   sed -i 's/find_package(Tesseract)/find_package(Tesseract REQUIRED)/g' plugins/video/CMakeLists.txt
   cp $srcdir/*.cmake cmake/common/.
   sed -i 's/::libtesseract/::Tesseract/g' plugins/video/CMakeLists.txt
-
-  #sed -i 's|set(CPP_HTTPLIB_DIR "${ADVSS_SOURCE_DIR}/deps/cpp-httplib")|find_package(httplib REQUIRED)|g' plugins/twitch/CMakeLists.txt
-  #sed -i 's|EXISTS "${CPP_HTTPLIB_DIR}/CMakeLists.txt"|httplib_FOUND|g' plugins/twitch/CMakeLists.txt
-  #sed -i 's|add_subdirectory("${CPP_HTTPLIB_DIR}"|#add_subdirectory("${CPP_HTTPLIB_DIR}"|g' plugins/twitch/CMakeLists.txt
-  #sed -i 's|EXCLUDE_FROM_ALL|#aEXCLUDE_FROM_ALL|g' plugins/twitch/CMakeLists.txt
-
-  # Fix building issue by updating libremidi
-  cd deps/libremidi
-  git checkout v4.5.0
 }
 
 build() {
@@ -77,7 +68,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations" \
+    -DCMAKE_CXX_FLAGS="-w" \
     -Wno-dev
 
   cmake --build build
