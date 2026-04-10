@@ -25,13 +25,14 @@ backup=('etc/default/puppetserver'
         'etc/puppetlabs/puppetserver/request-logging.xml'
         'etc/puppetlabs/puppetserver/services.d/ca.cfg')
 install="${pkgname}.install"
+_hiera_eyaml_ver=5.0.0
 source=("${pkgname}-${pkgver}.tar.gz::https://artifacts.voxpupuli.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('d24cfa2c8d3538b9649c16b59f8fae3c3ca77c62459a0a6377e8be7de29070650e635a9dfa4439fab8c46c044bdf8262ef1f10b2dffdd2d2a8473b455594eafb')
 
 prepare() {
   cd "puppetserver-${pkgver}"
 
-  echo 'hiera-eyaml 5.0.0' >> ext/build-scripts/jruby-gem-list.txt
+  echo "hiera-eyaml ${_hiera_eyaml_ver}" >> ext/build-scripts/jruby-gem-list.txt
   sed -i 's:sysconfig:default:' ext/redhat/puppetserver.service
   sed -i "s:\[/opt/puppetlabs/puppet/lib/ruby/vendor_ruby\]:\[$( ruby -e \
     'puts RbConfig::CONFIG["vendorlibdir"]' ),$( ruby -e \
