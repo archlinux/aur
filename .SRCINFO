@@ -1,6 +1,6 @@
 pkgbase = wechat
 	pkgdesc = Fixes and optional sandbox for WeChat.
-	pkgver = 10
+	pkgver = 11
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Kraftland/portable
@@ -21,7 +21,9 @@ pkgbase = wechat
 	options = !strip
 	source = portable-config
 	source = wechat.desktop
+	source = config.toml
 	md5sums = 6e5d2bd14439b5d1bd8c8e6e0fab7850
-	md5sums = 878532d4a6784a87063be0c398aa3399
+	md5sums = 21b13aec8705319309c9e903e114c5b0
+	md5sums = 50297b0994298d8062365e99f598d244
 
 pkgname = wechat
