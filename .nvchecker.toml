@@ -1,0 +1,5 @@
+[scroll-rs-bin]
+source = "github"
+github = "isene/scroll"
+use_latest_release = true
+prefix = "v"
