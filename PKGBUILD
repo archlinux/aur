@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-tilingshell
 pkgver=17.3
-pkgrel=1
+pkgrel=2
 _nodeversion=24
 pkgdesc="Extend GNOME Shell with advanced tiling window management."
 arch=('any')
@@ -9,12 +9,13 @@ url="https://github.com/domferr/tilingshell"
 license=('GPL-2.0-or-later')
 depends=('gnome-shell')
 makedepends=(
+  'git'
   'jq'
   'nvm'
   'zip'
 )
-source=("tilingshell-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('803951b4f05e605360082474146a54d74722af6ef7f84c5cb587f468e0b231b9')
+source=("git+https://github.com/domferr/tilingshell.git#tag=$pkgver")
+sha256sums=('9c307b719aafbbf4a6e8c1424584162505e1a9a9395306cf92d97e6ac1859e38')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -28,11 +29,14 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  cd "tilingshell-$pkgver"
+  cd tilingshell
 
-  # Fix upstream dependency conflict
-  # https://github.com/domferr/tilingshell/issues/495
-  sed -i 's/"esbuild": "^0.25.10"/"esbuild": "^0.27.0"/g' package.json
+  # add GNOME 50 support and update packages
+  git cherry-pick -n e7e40e76d25f7deceacb3327f1c91c25b1a5e981
+
+  # fix: restore Super key activation for tiling mode
+  # https://github.com/domferr/tilingshell/pull/506
+  git cherry-pick -n b44528cce32b0749e1b9abb53604bc26613b85f3
 
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
@@ -41,14 +45,14 @@ prepare() {
 }
 
 build() {
-  cd "tilingshell-$pkgver"
+  cd tilingshell
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   npm run build:package
 }
 
 package() {
-  cd "tilingshell-$pkgver"
+  cd tilingshell
   _uuid=$(jq -r .uuid resources/metadata.json)
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
