@@ -1,12 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=sunxi-blobs-git
-pkgver=r146.fa44656
-pkgrel=12
+pkgver=r152.574c151
+pkgrel=2
 pkgdesc="The goal of this project is to understand the various blobs provided by Allwinner for their sunxi series of ARM SoCs."
 arch=('any')
 url="https://github.com/smaeul/sunxi-blobs"
-license=('Custom')
+license=('LicenseRef-custom')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
