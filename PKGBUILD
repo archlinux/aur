@@ -1,8 +1,8 @@
 # Maintainer: Parsiad Azimzadeh <parsiad.azimzadeh at gmail dot com>
 
 pkgname=openai-codex-desktop
-pkgver=26.325.31654
-pkgrel=1
+pkgver=0
+pkgrel=2
 pkgdesc="OpenAI Codex desktop app"
 arch=('x86_64')
 url="https://developers.openai.com/codex/app/"
@@ -42,7 +42,7 @@ noextract=(
 )
 
 sha256sums=(
-  'e2829d864466c146ef9dec5e82ebb07effa8447851dd661b5307b007dae92c37'
+  'SKIP'
   '0a3cd0554b063c3185b9912ef7059b84455a2e411d637faa0166fef9fefa04c2'
   'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
   '5649a319d0fff30cc003d9298e8af36e1d65e060c29b5046d9213979b503d0b8'
