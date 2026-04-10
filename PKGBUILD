@@ -3,12 +3,12 @@
 pkgname=linux-arctis-manager-legacy
 _pkgname=Linux-Arctis-Manager-Legacy
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A replacement for SteelSeries GG software, to manage your Arctis device on Linux! (Legacy) "
 arch=('x86_64')
 url="https://github.com/elegos/Linux-Arctis-Manager-Legacy/"
 license=('GPL-3.0-only')
-# depends=(python-dbus-next python-pyusb python-pyqt6)
+depends=(python-dbus-next python-pyusb python-pyqt6 python-installer)
 makedepends=(python-pipenv)
 checkdepends=()
 source=("https://github.com/elegos/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
