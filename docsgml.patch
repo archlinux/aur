@@ -1,0 +1,30 @@
+--- a/doc/manual/en/manual-en.sgml
++++ b/doc/manual/en/manual-en.sgml
+@@ -189,7 +189,7 @@
+ 				favourite editor.</para>
+ 
+ 			<para>As mentioned above, there must be a small C program compiled. If you use Perl
+-				5.8 and/or Linux, you could skip this step. For this, just execute 
++      5.8 and/or Linux, you could skip this step. For this, just execute </para>
+ 
+ 			<para>
+ 				<prompt>$ </prompt>
+@@ -1024,6 +1024,7 @@
+ 				the value <literal>on</literal>. In the debug mode (see <xref
+ 				linkend="debug">) this option has no effect.</para>
+ 		
++    </sect3>
+ 		<sect3 id="debug">
+ 			<title>Error messages</title>
+ 			
+--- a/doc/manual/it/manual-it.sgml
++++ b/doc/manual/it/manual-it.sgml
+@@ -1079,7 +1079,7 @@
+             <row>
+               <entry>ISO-8859-4</entry>
+               <entry><literal>latin4</literal></entry>
+-              <entry>Lingue Europa sud-orientale ed altre lingue/entry>
++              <entry>Lingue Europa sud-orientale ed altre lingue</entry>
+             </row>
+             <row>
+               <entry>ISO-8859-9</entry>

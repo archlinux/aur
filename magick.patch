@@ -1,0 +1,14 @@
+--- a/muttprint	2026-04-10 14:38:18.745875383 +1200
++++ b/muttprint	2026-04-10 14:39:28.470016043 +1200
+@@ -1207,9 +1207,9 @@
+ 		and fatalError "Could not convert XF-Raw into XF-XBM:\n".
+ 			"Maybe 'uncompface' not installed:\n$!";
+ 	
+-	system ("convert $Temp{xf_xbm} $Temp{xf_eps}")
++	system ("magick $Temp{xf_xbm} $Temp{xf_eps}")
+ 		and fatalError "Could not convert XF-XBM into XF-EPS:\n".
+-			"Maybe 'convert' not installed: $!";
++			"Maybe 'magick' not installed: $!";
+ 	
+ 	$Config{'PENGUIN'} = $Temp{xf_eps};
+ 

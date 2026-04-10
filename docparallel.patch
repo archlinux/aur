@@ -1,0 +1,40 @@
+--- a/doc/manual/de/Makefile.am
++++ b/doc/manual/de/Makefile.am
+@@ -1,3 +1,5 @@
++.NOTPARALLEL:
++
+ docdir = $(datadir)/doc/muttprint
+
+ do_subst = sed -e 's,\#\#DOCDIR\#\#,$(docdir),g' \
+--- a/doc/manual/en/Makefile.am
++++ b/doc/manual/en/Makefile.am
+@@ -1,3 +1,5 @@
++.NOTPARALLEL:
++
+ docdir = $(datadir)/doc/muttprint
+
+ do_subst = sed -e 's,\#\#DOCDIR\#\#,$(docdir),g' \
+--- a/doc/manual/es/Makefile.am
++++ b/doc/manual/es/Makefile.am
+@@ -1,3 +1,5 @@
++.NOTPARALLEL:
++
+ docdir = $(datadir)/doc/muttprint
+
+ do_subst = sed -e 's,\#\#DOCDIR\#\#,$(docdir),g' \
+--- a/doc/manual/it/Makefile.am
++++ b/doc/manual/it/Makefile.am
+@@ -1,3 +1,5 @@
++.NOTPARALLEL:
++
+ docdir = $(datadir)/doc/muttprint
+
+ do_subst = sed -e 's,\#\#DOCDIR\#\#,$(docdir),g' \
+--- a/doc/manual/sl/Makefile.am
++++ b/doc/manual/sl/Makefile.am
+@@ -1,3 +1,5 @@
++.NOTPARALLEL:
++
+ docdir = $(datadir)/doc/muttprint
+
+ do_subst = sed -e 's,\#\#DOCDIR\#\#,$(docdir),g' \

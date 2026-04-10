@@ -1,0 +1,11 @@
+--- a/langinfo/muttprint-langinfo.h	2003-09-21 17:57:09.000000000 +0200
++++ b/langinfo/muttprint-langinfo.h	2026-04-07 09:35:45.673335255 +0200
+@@ -1,7 +1,4 @@
+-/* since we have not a C99 compiler on all systems */ 
+-typedef int bool;
+-#define false 0
+-#define true  1
++#include <stdbool.h>
+
+ /* functions */
+ void    print_help     (void);
