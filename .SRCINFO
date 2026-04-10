@@ -10,6 +10,6 @@ pkgbase = cyphergatevpn-bin
 	provides = cyphergate-vpn
 	conflicts = cyphergate-vpn
 	source = https://github.com/Cypher-Monarch/CypherGate/releases/download/v2.0.0/CypherGate-Linux-v2.0.0.tar.xz
-	sha256sums = 876f0000cb9d4b0d6f0da918923249adc6a801ad853048d859e5df47ed553c17
+	sha256sums = 9cc874c6435ed73399a28c2164526a8070dfd77f546fd65d61a955c9d283a9d0
 
 pkgname = cyphergatevpn-bin
