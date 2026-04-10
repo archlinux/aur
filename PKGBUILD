@@ -1,7 +1,3 @@
-# Maintainer: Chizuru-Kagurazaka <chizuru-mtf@outlook.com>
-# Maintainer: bilibili_xiaok <the_xiaok@qq.com>
-# Maintainer: Volodia Kraplich <v1mkss.m@gmail.com>
-# Maintainer: PrismLinux Team
 #         ⢠⣦⡀⠘⠁⢀⣴⣾ ⢀⡄
 #       ⠛ ⣸⣿⣿⣄⢰⣿⣿⣿⡄⢀⣀⣀⣀⡀⢾⠆⠐⠂⢄
 #    ⠰⣤⣄⡀ ⢿⣿⣿⣿⣧⡹⣿⣿⡇⣿⣿⣿⡿⠁
@@ -15,11 +11,14 @@
 #  ⣀⣀ ⠄⠐⠈ ⣾⣿⣿⠿ ⣿⣿⣿⡿ ⠉⠻⢿
 #         ⠛⠉ ⢀⡀⠘⣿⠟ ⢠⡀
 #            ⠈⠁
+# Maintainer: Chizuru-Kagurazaka <chizuru-mtf@outlook.com>
+# Maintainer: bilibili_xiaok <the_xiaok@qq.com>
+# Maintainer: Volodia Kraplich <v1mkss.m@gmail.com>
 pkgname=xmcl-launcher
 pkgver=0.54.4
 pkgrel=1
 pkgdesc="X Minecraft Launcher - A modern, open-source Minecraft Launcher with modpack, resource, and instance management"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://xmcl.app/"
 license=('MIT')
 provides=('xmcl')
@@ -39,31 +38,17 @@ options=('!strip' '!debug')
 
 source=("xmcl.desktop" "xmcl.png")
 source_x86_64=("xmcl-${pkgver}-x64.tar.xz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/xmcl-${pkgver}-x64.tar.xz")
-source_aarch64=("xmcl-${pkgver}-arm64.tar.xz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/xmcl-${pkgver}-arm64.tar.xz")
 
 sha256sums=('01407037620c1f763c16c64006c5e5457b23d3e3734b212ed543cbe3bf576a2d'
             '312763b5fa502280a694a78fd1e55a400b345e7d571020ee863e67db8f1eaec4')
 sha256sums_x86_64=('547fd1b91449c660fcb7716215e5e2448cb0e821ae78c6a042aa72793c29d27b')
-sha256sums_aarch64=('a598b8684f58e4be672292621b0d93632cacf1f6a0028b2f33a880712a17d80e')
 
 prepare() {
-  # Extract the appropriate archive based on architecture
-  if [[ "$CARCH" == "x86_64" ]]; then
-    bsdtar -xf "xmcl-${pkgver}-x64.tar.xz"
-  elif [[ "$CARCH" == "aarch64" ]]; then
-    bsdtar -xf "xmcl-${pkgver}-arm64.tar.xz"
-  fi
+  bsdtar -xf "xmcl-${pkgver}-x64.tar.xz"
 }
 
 package() {
-  # Determine the extracted directory name based on architecture
-  if [[ "$CARCH" == "x86_64" ]]; then
-    _extracted_dir="xmcl-${pkgver}-x64"
-  elif [[ "$CARCH" == "aarch64" ]]; then
-    _extracted_dir="xmcl-${pkgver}-arm64"
-  fi
-
-  cd "${_extracted_dir}"
+  cd "xmcl-${pkgver}-x64"
 
   # Install application files
   install -dm755 "${pkgdir}/opt/xmcl"
@@ -84,10 +69,10 @@ package() {
 
   sed -i 's|^Exec=.*|Exec=/usr/bin/xmcl %U|' "${pkgdir}/usr/share/applications/xmcl.desktop"
 
-  # Create wrapper script with Flatpak-like optimizations
+  # Create wrapper script
   install -dm755 "${pkgdir}/usr/bin"
 
-  cat > "${pkgdir}/usr/bin/xmcl" <<EOF
+  cat > "${pkgdir}/usr/bin/xmcl" <<'EOF'
 #!/usr/bin/env bash
 
 # Fix audio spatial positioning and latency
@@ -96,6 +81,12 @@ export PULSE_LATENCY_MSEC=60
 
 # AppImage compatibility mode for Electron logic
 export APPIMAGE=1
+
+# Minescript support: Ensure Python is accessible from Minecraft's subprocess
+# Minescript looks for /usr/bin/python3 by default on Linux
+if command -v python3 &>/dev/null; then
+  export PATH="/usr/bin:${PATH}"
+fi
 
 # Default flags for better hardware support
 OPTS=(
@@ -107,12 +98,12 @@ OPTS=(
 )
 
 # Auto-detect Wayland: enable IME support
-if [[ "\$XDG_SESSION_TYPE" == "wayland" ]]; then
+if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
     OPTS+=("--enable-wayland-ime")
 fi
 
 # Pass specific flags first, then arguments (like URLs)
-exec /opt/xmcl/xmcl "\${OPTS[@]}" "\$@"
+exec /opt/xmcl/xmcl "${OPTS[@]}" "$@"
 EOF
 
   # Set proper permissions
