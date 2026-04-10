@@ -10,7 +10,7 @@
 
 pkgname=hmcl-bin
 pkgver=3.12.4
-pkgrel=1
+pkgrel=2
 install=.install
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
@@ -47,6 +47,6 @@ package() {
   for _icon in 32:icon.png 64:icon@2x.png 128:icon@4x.png 256:icon@8x.png; do
     _iconfile=${_icon#*:}
     _icon=${_icon%:*}
-    install -Dm644 "assets/img/${_iconfile}" "${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${pkgname}.png"
+    install -Dm644 "${_iconfile}" "${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${pkgname}.png"
   done
 }
