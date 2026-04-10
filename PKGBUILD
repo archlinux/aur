@@ -2,13 +2,13 @@
 
 pkgname=fbgemm
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Facebook General Matrix-Matrix Multiplication (CPU-Only)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pytorch/FBGEMM"
 license=('BSD-3-Clause')
 
-provides=('libfbgemm' 'libcpuinfo')
+provides=('libfbgemm' 'libcpuinfo' 'libasmjit')
 depends=(
 'blas'
 )
@@ -34,6 +34,7 @@ prepare() {
 	ln -sr ../asmjit-a3199e8857792cd10b7589ff5d58343d2c9008ea external/asmjit
 	ln -sr ../cpuinfo external/cpuinfo
 build_args=(
+  -DCMAKE_INSTALL_PREFIX=/usr
   -DFBGEMM_USE_SANITIZER=address
   -DFBGEMM_LIBRARY_TYPE=shared
   -DPYTHON_EXECUTABLE=`which python3`
@@ -55,5 +56,6 @@ check() {
 package_fbgemm() {
 	cd FBGEMM-${pkgver}
 	cmake --install build --prefix ${pkgdir}/usr
+	install -D build/asmjit/libasmjit.a ${pkgdir}/usr/lib/libasmjit.a
 	install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
