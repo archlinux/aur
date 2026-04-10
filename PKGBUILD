@@ -1,6 +1,6 @@
-_pkgver=1.1.7
+_pkgver=1.1.8-beta.1
 pkgname=truckers-tool-linux-bin
-pkgver=1.1.7
+pkgver=1.1.8beta1
 pkgrel=1
 pkgdesc="A web-based save editor for ETS2 and ATS on Linux (Desktop App)"
 arch=('x86_64')
