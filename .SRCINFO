@@ -1,0 +1,14 @@
+pkgbase = rscm-bin
+	pkgdesc = Reproduceable System Configuration Manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rscm-community/rscm
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = rscm
+	conflicts = rscm
+	source = rscm-bin-0.1.0.tar.xz::https://github.com/rscm-community/rscm/releases/download/v0.1.0/rscm-v0.1.0-x86_64.tar.xz
+	sha256sums = 80ac3a613adde9762234e297c0aa25d43f81aba66f2f8301271897ae7166e089
+
+pkgname = rscm-bin
