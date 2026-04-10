@@ -1,0 +1,19 @@
+pkgbase = phantun-git
+	pkgdesc = Transforms UDP stream into (fake) TCP streams.
+	pkgver = 0.8.1.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/dndx/phantun
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	provides = phantun
+	conflicts = phantun
+	options = !lto
+	source = git+https://github.com/dndx/phantun.git
+	sha256sums = SKIP
+
+pkgname = phantun-git
