@@ -2,17 +2,19 @@
 
 pkgname=astrbot-git
 _pkgname=astrbot
-pkgver=4.22.2.r631.gec363aaa
-pkgrel=10
+_srcname=AstrBot
+pkgver=4.22.2.r632.g8946a90af
+pkgrel=1
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$srcdir/$_srcname"
   # Shallow clones lack tag history; unshallow to get full history for describe
-  git fetch --depth=999999 origin dev 2>/dev/null || true
+  git fetch --depth=999999 --tags origin dev 2>/dev/null || true
   # Try annotated tags first; fall back to commit-based versioning
   local _ver
   if _ver=$(git describe --long --tags 2>/dev/null); then
-    printf '%s' "${_ver#v}"
+    # Normalize git describe output like v4.22.2-66-gaa279f0c4 -> 4.22.2.r66.gaa279f0c4
+    printf '%s' "$_ver" | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g'
   else
     # No tags reachable — use commit count + short hash
     printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -56,11 +58,10 @@ install=astrbot-git.install
 package() {
     install -dm755 "$pkgdir/opt/astrbot"
 
-    # Git shallow clone extracts to AstrBot (no -dev suffix)
-    # We use a glob and cp -a to ensure hidden files like .env aren't missed
-    # if they exist, though standard shopt might be needed. Shopt is available in bash.
+    # The VCS source extracts to AstrBot/, while the package name stays lowercase.
+    # Use dotglob so hidden files are included in the application payload.
     shopt -s dotglob
-    cp -a "$srcdir"/AstrBot/* "$pkgdir/opt/astrbot/"
+    cp -a "$srcdir"/"$_srcname"/* "$pkgdir/opt/astrbot/"
     shopt -u dotglob
 
     # Store version inside the application directory
