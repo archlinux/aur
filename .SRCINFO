@@ -24,7 +24,7 @@ pkgbase = openvox
 	depends = ruby-getoptlong
 	depends = ruby-syslog
 	depends = ruby-shadow
-	provides = puppet
+	provides = puppet=8
 	conflicts = puppet
 	conflicts = puppet5
 	conflicts = puppet6

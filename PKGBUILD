@@ -89,7 +89,7 @@ sha512sums=('c8088a8792dbbaf5382779f04dc9727ca0af0d5668829b929882f5382ac2120f874
             'cf73509b4b66f307bfe5027814ec7b26173773f568f3b98286b8d1b8334b3f539f62151ac8fb7036be44b84e9d20c1805cd86177ffe1ab0924ed53407e4538ab'
             '47fafc95cc9aba258cfd8919707366072a50f8a99b59f540c2531e1a367e8c9230070f8b9e7ae5c9ed4f536e05116234ed02ea431b6e48f61c82ce6dd92ebd9b')
 conflicts=('puppet' 'puppet5' 'puppet6' 'hiera')
-provides=('puppet')
+provides=("puppet=${pkgver%%.*}")
 replaces=('hiera')
 
 prepare() {
