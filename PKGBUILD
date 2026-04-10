@@ -4,14 +4,14 @@
 pkgname=python-tree-sitter-javascript
 _gitpkgname=tree-sitter-javascript
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python Bindings for tree-sitter-javascript'
 arch=('x86_64')
 url='https://github.com/tree-sitter/tree-sitter-javascript'
 license=('MIT')
 depends=(
 	'python'
-	'tree-sitter-javascript'
+	"tree-sitter-javascript=${pkgver}"
 	'python-tree-sitter'
 	'tree-sitter'
 )
