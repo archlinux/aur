@@ -1,7 +1,7 @@
 pkgname=wami-bin
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="WAMI is a user-friendly command line tool designed in Rust language, powered by Cargo, to assist individuals who struggle with remembering the names of the various programs they utilize. This open-source program aims to simplify the process of finding the most suitable programs for specific tasks."
+pkgdesc="Helps you find and remember the names of programs for specific tasks"
 arch=('x86_64')
 url="https://github.com/evait-security/wami"
 license=('MIT')
