@@ -1,20 +1,22 @@
 pkgbase = miniupnpd-git
 	pkgdesc = Lightweight UPnP IGD daemon (git)
-	pkgver = 2.3.3.r5.g49991e0
+	pkgver = 2.3.10.r16.gf83b5e2
 	pkgrel = 1
 	url = http://miniupnp.free.fr
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = lsb-release
+	makedepends = libcap-ng
 	makedepends = procps-ng
+	makedepends = util-linux
 	depends = glibc
 	depends = iptables
-	depends = net-tools
-	depends = util-linux
-	depends = sh
-	provides = miniupnpd=2.3.3.r5.g49991e0
+	depends = libcap-ng.so
+	depends = libnetfilter_conntrack
+	depends = util-linux-libs
+	provides = miniupnpd=2.3.10.r16.gf83b5e2
 	conflicts = miniupnpd
 	backup = etc/miniupnpd/miniupnpd.conf
 	source = git+https://github.com/miniupnp/miniupnp.git

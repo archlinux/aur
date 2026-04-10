@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=miniupnpd-git
-pkgver=2.3.3.r5.g49991e0
+pkgver=2.3.10.r16.gf83b5e2
 pkgrel=1
 pkgdesc="Lightweight UPnP IGD daemon (git)"
 arch=('i686' 'x86_64')
 url="http://miniupnp.free.fr"
-license=('BSD')
-depends=('glibc' 'iptables' 'net-tools' 'util-linux' 'sh')
-makedepends=('git' 'lsb-release' 'procps-ng')
+license=('BSD-3-Clause')
+depends=('glibc' 'iptables' 'libcap-ng.so' 'libnetfilter_conntrack' 'util-linux-libs')
+makedepends=('git' 'lsb-release' 'libcap-ng' 'procps-ng' 'util-linux')
 provides=("miniupnpd=$pkgver")
 conflicts=('miniupnpd')
 backup=('etc/miniupnpd/miniupnpd.conf')
@@ -22,7 +22,7 @@ pkgver() {
   cd "miniupnp"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^miniupnpd_[0-9_]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^miniupnpd_//;s/_/./g'
 }
@@ -31,8 +31,11 @@ build() {
   cd "miniupnp/miniupnpd"
 
   ./configure \
+    --firewall=iptables \
+    --igd2 \
     --ipv6 \
-    --leasefile
+    --leasefile \
+    --vendorcfg
   make
 }
 
@@ -41,7 +44,7 @@ package() {
 
   make \
     DESTDIR="$pkgdir" \
-    SBININSTALLDIR="/usr/bin" \
+    SBINDIR="/usr/bin" \
     install
 
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/miniupnpd"
