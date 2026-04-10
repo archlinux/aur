@@ -7,6 +7,7 @@ pkgbase = paga
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
+	depends = gcc-libs
 	source = paga-0.1.0.tar.gz::https://github.com/StudiCraft/paga/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = d54f44cf80bf6961da2d425e2f5e7951cdef940196553352889bf98960d452c6
 

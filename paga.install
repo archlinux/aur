@@ -1,5 +1,13 @@
 post_install() {
-    echo "Paga has been installed!"
-    echo "Paga is Work In Progress (WIP)"
-    echo "Please note the app is just for learning purposes and will expand later."
+    # Using tput for bold text to make your WIP message stand out
+    bold=$(tput bold)
+    normal=$(tput sgr0)
+
+    echo "${bold}Paga has been installed!${normal}" [cite: 2]
+    echo "Paga is Work In Progress (WIP)" [cite: 3]
+    echo "Please note the app is just for learning purposes and will expand later." [cite: 3]
+}
+
+post_upgrade() {
+    post_install
 }
