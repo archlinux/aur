@@ -1,4 +1,4 @@
-# Maintainer: DeepChirp <DeepChirp@outlook.com>
+# Maintainer: DeepChirp <deepchirp@archlinuxcn.org>
 # The Chinese version of the game files were obtained from <https://tieba.baidu.com/p/6642167515>
 
 pkgname=gemcraft-lost-chapter-labyrinth-zh
