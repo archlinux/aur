@@ -11,7 +11,7 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=fjordlauncher
-pkgver=10.0.5.0
+pkgver=11.0.0.0
 pkgrel=1
 pkgdesc="Prism Launcher fork with support for alternative auth servers"
 arch=(x86_64)
@@ -20,8 +20,6 @@ license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.
 depends=(
   glibc
   mesa-utils
-  gcc-libs
-  java-runtime
   libarchive
   libgl
   pciutils
@@ -34,41 +32,55 @@ depends=(
   hicolor-icon-theme
   tomlplusplus
   cmark
+  libstdc++
+  libgcc
 )
-makedepends=(cmake extra-cmake-modules git jdk17-openjdk ninja scdoc ghc-filesystem gamemode)
-optdepends=('glfw: to use system GLFW libraries'
-            'openal: to use system OpenAL libraries'
-            'visualvm: Profiling support'
-            'xorg-xrandr: for older minecraft versions'
-            'orca: minecraft screen reader'
-            'flite: minecraft voice narration')
+makedepends=(
+  cmake
+  extra-cmake-modules
+  git
+  jdk17-openjdk
+  ninja
+  scdoc
+  gamemode
+  vulkan-headers
+)
+optdepends=(
+  'glfw: to use system GLFW libraries'
+  'openal: to use system OpenAL libraries'
+  'visualvm: Profiling support'
+  'xorg-xrandr: for older minecraft versions'
+  'orca: minecraft screen reader'
+  'flite: minecraft voice narration'
+  'java-runtime: use system java versions'
+)
 source=("https://github.com/unmojang/FjordLauncher/releases/download/$pkgver/FjordLauncher-$pkgver.tar.gz"
-        {lionshead,batch,mdi}.license)
-b2sums=('f143138dd5c50629457016cfe38cae3b5215c88618531b52e2e126e35ee5119337ebc2855dbf5396136739b8090b80779c49116ddb4f3054ee5758deca9f6f41'
-        'be4289832af95b1cd6e721dc16b84a034533de9718d9b43a49bd08dd6fe4e28eaa15228bfb311867b18fddbda1c9fc4c91f04c6d5c1a3bcc39aaa5161425e3ba'
-        '356248a6b86f06d260e0920b49d34034f79f9bc504c7fdc1849d929d2ff9b169e693a8269a2c0b34656b3802970d9b8be41a92b35177eaa3c4ccc89a702f5c9d'
-        'b35c447cd9223e096a2bb75e0741a7d0a3a1606af54c957e4f276f4e6861a9b3f06ae1d646137e8d2f24ba2238c9967c76eff8cc631a68d7e48e376056982cc6')
+  {lionshead,batch,mdi}.license)
+b2sums=('dbdde7326a62f7811286fbb36954391d835f23cca1867577da4d729efd8aefbb8c7ebf3eeafcba4f558ac096cbd4ec055c1bad4193f1c7eedf9dbaad2d8f456d'
+  'be4289832af95b1cd6e721dc16b84a034533de9718d9b43a49bd08dd6fe4e28eaa15228bfb311867b18fddbda1c9fc4c91f04c6d5c1a3bcc39aaa5161425e3ba'
+  '356248a6b86f06d260e0920b49d34034f79f9bc504c7fdc1849d929d2ff9b169e693a8269a2c0b34656b3802970d9b8be41a92b35177eaa3c4ccc89a702f5c9d'
+  'b35c447cd9223e096a2bb75e0741a7d0a3a1606af54c957e4f276f4e6861a9b3f06ae1d646137e8d2f24ba2238c9967c76eff8cc631a68d7e48e376056982cc6')
 
 build() {
-  cd FjordLauncher-$pkgver
-
   export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
 
-  cmake -DCMAKE_BUILD_TYPE= \
-    -GNinja \
-    -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DLauncher_BUILD_PLATFORM="archlinux" \
-    -DLauncher_QT_VERSION_MAJOR="6" \
-    -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
-    -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
-    -Bbuild -S.
+  local cmake_options=(
+    -B build
+    -S "FjordLauncher-$pkgver"
+    -G Ninja
+    -D Launcher_BUILD_PLATFORM=archlinux
+    -D Launcher_ENABLE_JAVA_DOWNLOADER=ON
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+  )
+
+  cmake "${cmake_options[@]}"
   cmake --build build
 }
 
 check() {
-  cd FjordLauncher-$pkgver/build
-  ctest .
+  ctest --test-dir build
 }
 
 package() {
@@ -77,11 +89,7 @@ package() {
   install -Dm644 batch.license -t "$pkgdir"/usr/share/licenses/$pkgname/
   install -Dm644 mdi.license -t "$pkgdir"/usr/share/licenses/$pkgname/
 
-  cd FjordLauncher-$pkgver/build
-  DESTDIR="$pkgdir" cmake --install .
-
-  mv "${pkgdir}/usr/share/mime/packages/modrinth-mrpack-mime.xml" \
-     "${pkgdir}/usr/share/mime/packages/fjordlauncher-modrinth-mrpack-mime.xml"
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 # vim:set ts=2 sw=2 et:
