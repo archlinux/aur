@@ -1,4 +1,5 @@
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Helder Señoron <heldersenoron at tutamail dot com>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=manuskript
 pkgver=0.17.0
