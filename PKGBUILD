@@ -3,7 +3,7 @@
 
 _pkgname=randfill
 pkgname=$_pkgname-git
-pkgver=0.1.0.r4.7bdfd61
+pkgver=0.1.0.r6.b4ad05a
 pkgrel=1
 pkgdesc="Overwrite files with cryptographically secure random data"
 arch=('any')
