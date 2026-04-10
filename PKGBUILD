@@ -1,6 +1,6 @@
 # Maintainer: Daniel Garcia <dgarcia@kabr.org>
 pkgname=kittenspaceagency-bin
-pkgver=2026.4.5.3999
+pkgver=2026.4.6.4036
 pkgrel=1
 epoch=
 pkgdesc="Kitten Space Agency - EXPERIMENTAL"
