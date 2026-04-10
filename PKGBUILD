@@ -30,15 +30,11 @@ sha256sums=('7cabe6a0aa59849f84914a2da33320611a2fcf5896b94ff957cfade8a325deb6'
             '5241265a9ea992cec4534eafa3d5b9b43fadf38d3bf47b8c3c0ad5a09bc689a7')
 
 prepare(){
+   # apply the patches
    cd "${pkgname}-${_mainver}"
-   patch -p1 < ../muttprint_0.73-4.diff
-   patch -p1 < ../regex.patch
-   patch -p1 < ../two_edge.patch
-   patch -p1 < ../filespeck.patch
-   patch -p1 < ../bool.patch
-   patch -p1 < ../magick.patch
-   patch -p1 < ../docparallel.patch
-   patch -p1 < ../docsgml.patch
+   for _file in ../*.{patch,diff} ; do
+     patch -p1 < ../"${_file}"
+   done
 
    # fix sample configs
    find . -type f -name 'sample*' -exec sed -i 's/-P$PRINTER/-p$PRINTER/' {} \;
@@ -47,14 +43,13 @@ prepare(){
      magick BabyTuX.eps -flop BabyTuX.eps
      for i in BabyTuX_color.eps BabyTuX.eps Debian_color.eps Debian.eps \
        Gentoo.eps Gentoo_color.eps ; do \
-       magick $i $(basename $i .eps).png; \
+       magick "$i" $(basename $i .eps).png; \
      done && \
      magick penguin.eps penguin.jpg
 }
 
 build() {
    cd "${pkgname}-${_mainver}"
-
    aclocal
    automake --add-missing --copy
    autoconf
