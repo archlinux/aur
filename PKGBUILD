@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="rayforge"
-pkgver=1.4.1
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A software for laser cutters and engravers"
 arch=(
@@ -13,6 +13,33 @@ license=(
   'MIT'
 )
 depends=(
+  'python>=3.10'
+  'python-aiohttp>=3.13.5'
+  'python-asyncudp>=0.11.0'
+  'python-blinker>=1.9.0'
+  'python-ezdxf>=1.4.2'
+  'python-gitpython>=3.1.44'
+  'python-numpy>=2.3.4'
+  'python-opencv'
+  'python-platformdirs>=4.3.6'
+  'python-pluggy>=1.6.0'
+  'python-cairo>=1.28.0'
+  'python-pyclipper>=1.3.0.post6'
+  'python-gobject>=3.50.0'
+  'python-pymupdf>=1.27.2.2'
+  'python-opengl>=3.1.10'
+  # 'python-opengl-accelerate>=3.1.10' ???
+  'python-pypdf>=6.9.2'
+  'python-pyserial-asyncio>=0.6'
+  'python-pyvips>=3.0.0'
+  'python-yaml>=6.0.2'
+  'python-scipy>=1.16.3'
+  'python-semver>=3.0.2'
+  'python-svgelements>=1.9.6'
+  'python-trimesh>=4.6.8'
+  'python-vtracer>=0.6.11'
+  'python-websockets>=14.2'
+
   'gdk-pixbuf2'
   'glib2'
   'graphene'
@@ -21,32 +48,7 @@ depends=(
   'libadwaita'
   'librsvg'
   'pango'
-  'python>=3.10'
-  'python-aiohttp>=3.13.3'
-  'python-asyncudp>=0.11.0'
-  'python-blinker>=1.9.0'
-  'python-cairo>=1.28.0'
-  'python-ezdxf>=1.3.5'
-  'python-gitpython>=3.1.44'
-  'python-gobject>=3.50.0'
-  'python-numpy>=2.3.4'
-  'python-opencv'
-  'python-opengl>=3.1.10'
-  # 'python-opengl-accelerate>=3.1.10' ???
-  'python-platformdirs>=4.3.6'
-  'python-pluggy>=1.6.0'
-  'python-pyclipper>=1.3.0.post6'
-  'python-pymupdf'
-  'python-pypdf>=6.7.0'
   'python-pyserial'
-  'python-pyserial-asyncio>=0.6'
-  'python-pyvips>=3.0.0'
-  'python-scipy>=1.16.3'
-  'python-semver>=3.0.2'
-  'python-svgelements>=1.9.6'
-  'python-vtracer>=0.6.11'
-  'python-websockets>=14.2'
-  'python-yaml>=6.0.2'
 )
 makedepends=(
   'git'
@@ -70,7 +72,7 @@ _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=${pkgver}"
 )
-sha256sums=('3e675d35d16021bf68692a9b9caffa1e0bcb21c9b2fc38b524ed285472a8d530')
+sha256sums=('528687bde40390278416b2d612e54b58b85427c66e2cb2f527ed26489f3ba025')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
@@ -79,7 +81,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_pkgsrc}"
-  pytest -k "not test_font_config and not test_pdf"
+  pytest
 }
 
 package() {
