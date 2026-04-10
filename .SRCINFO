@@ -1,0 +1,18 @@
+pkgbase = tock-rs-bin
+	pkgdesc = Terminal calendar app written in Rust
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/isene/tock
+	arch = x86_64
+	license = Unlicense
+	depends = glibc
+	depends = libgcc
+	provides = tock
+	conflicts = tock-rs
+	options = !strip
+	source = README-0.1.2.md::https://raw.githubusercontent.com/isene/tock/v0.1.2/README.md
+	sha256sums = 2b7aba5efde281dd427a87939d176e917ba4a4499f1f3715cb586c3f6375dd64
+	source_x86_64 = tock-x86_64-0.1.2::https://github.com/isene/tock/releases/download/v0.1.2/tock-v0.1.2-linux-x86_64
+	sha256sums_x86_64 = 598d3947dfe67cae8a98a6b288a96310d8d48c7e343dcc09d0ec3cfeaf381903
+
+pkgname = tock-rs-bin
