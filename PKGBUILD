@@ -1,13 +1,15 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-pkgname=ruah
-pkgauthor=levi-tc
-pkgver=0.4.3
+pkgname=ruah-orch
+pkgauthor=ruah-dev
+pkgver=1.0.4
 pkgrel=1
 
-_npmname=${pkgname}
+_npmname=cli
 _npmauthor=@${pkgauthor}
 _npmver=${pkgver}
+
+_appname=${pkgname%-orch}
 
 pkgdesc="Multiple agents, one repo, no stepping on each other"
 
@@ -17,14 +19,15 @@ license=("MIT")
 
 depends=("nodejs" "git")
 makedepends=("npm" "jq")
-provides=("${pkgname}")
+provides=("${_appname}")
+replaces=("${_appname}")
 
 options=(!strip emptydirs staticlibs zipman)
 
 source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=("${_npmname}-${_npmver}.tgz")
 
-b2sums=('1c556d83d15aef86e1e89cb15443488dde01f25ac7707cd951654d4b3459affa3fbcc3e8217387fce583d7fb088063a4e9e9960f79aae825fedef5633c536c4c')
+b2sums=('a0faf1263b589adc6e3d7d165461f7270a8cd34b4d13100922dba5716e98b8c045ce20d262b6788e9b2207909db1df07401bd956309e040cc896baae40b0b381')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
