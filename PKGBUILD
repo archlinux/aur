@@ -1,7 +1,7 @@
 pkgname=(cartesi-machine cartesi-machine-emulator cartesi-machine-linux-image cartesi-machine-rootfs-image)
 pkgdesc="Cartesi Machine emulator for RISC-V Linux systems"
-pkgver=0.19.0
-pkgrel=7
+pkgver=0.20.0
+pkgrel=1
 arch=(any)
 url='https://github.com/cartesi/machine-emulator'
 license=(LGPL-3.0)
@@ -10,16 +10,15 @@ options=(!lto staticlibs)
 _pkgver_emulator=$pkgver
 _pkgver_linux=0.20.0
 _pkgver_linux_kernel=6.5.13-ctsi-1-v${_pkgver_linux}
-_pkgver_tools=0.17.1
+_pkgver_tools=0.17.2
 source=("machine-emulator-${_pkgver_emulator}.tar.gz::https://github.com/cartesi/machine-emulator/archive/v$_pkgver_emulator.tar.gz"
         "https://github.com/cartesi/machine-emulator/releases/download/v${_pkgver_emulator}/add-generated-files.diff"
         "https://github.com/cartesi/machine-linux-image/releases/download/v${_pkgver_linux}/linux-${_pkgver_linux_kernel}.bin"
         "https://github.com/cartesi/machine-guest-tools/releases/download/v${_pkgver_tools}/rootfs-tools.ext2")
-sha256sums=('1a33fb7e0dd7030656ddbb214dcd2f5a569f64e906edb20f149b66b34e1e0dd3'
-            'a892e2d9f5c331f5e80bcb5db4133e7db625aa4d14ffdf9467b75c4c34d1744f'
+sha256sums=('3746abb72d45dd2388f79fc24b048fe306db8e1f9f7e072176e51b95c4453949'
+            'd9c2afcefc2759e7cd37bbedc83d54c81515f0fddb671103b489b8789aee33bb'
             '65dd100ff6204346ac2f50f772721358b5c1451450ceb39a154542ee27b4c947'
-            'e5d1f7c449e24314e0bcea1446e1c754a737aa7685b8c8d285a5e7eefa6b8044')
-
+            '675a49e3c9bada29f25d5b559707b34553b94280c03f44ccb8203c2cf453b541')
 prepare() {
   cd machine-emulator-${_pkgver_emulator}
   patch -Np1 < ../add-generated-files.diff
