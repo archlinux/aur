@@ -5,11 +5,11 @@ pkgrel=1
 pkgdesc="AUR helper that doesnt use git at all"
 arch=('any')
 url="https://tklab.eu1.netbird.services/file/My stuff/"
-license=('GNU')
+license=('GPL-3.0')
 source=("akg")
 sha256sums=('SKIP')
 depends=('bash')
 
 package() {
-	install -Dm644 ./akg "$pkgdir/usr/bin/akg"
+	install -Dm755 ./akg "$pkgdir/usr/bin/akg"
 }
