@@ -9,11 +9,12 @@ pkgbase = cava-bg
 	makedepends = cargo
 	makedepends = pkg-config
 	makedepends = wayland-protocols
+	makedepends = git
 	depends = cava
 	depends = wayland
 	depends = libxkbcommon
 	depends = gcc-libs
-	source = cava-bg-0.1.4.tar.gz::https://github.com/leriart/cava-bg/archive/refs/tags/0.1.4.tar.gz
+	source = git+https://github.com/leriart/cava-bg.git
 	sha256sums = SKIP
 
 pkgname = cava-bg
