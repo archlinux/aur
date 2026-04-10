@@ -1,0 +1,14 @@
+pkgbase = dots-hyprland-fork-git
+	pkgdesc = Your fork of dots-hyprland
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/dots-hyprland
+	arch = any
+	license = MIT
+	depends = hyprland
+	depends = quickshell
+	makedepends = git
+	source = git+https://github.com/LIghtJUNction/dots-hyprland.git
+	sha256sums = SKIP
+
+	pkgname = dots-hyprland-fork-git
