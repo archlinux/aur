@@ -1,7 +1,7 @@
 # Maintainer: AImixAE <AImixAE[at]outlook[dot]com>
 
 pkgname=openscreen-appimage
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
 arch=('x86_64')

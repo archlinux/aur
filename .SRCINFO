@@ -1,6 +1,6 @@
 pkgbase = openscreen-appimage
 	pkgdesc = Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio.
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/siddharthvaddem/openscreen
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = openscreen-appimage
 	conflicts = openscreen-bin
 	options = !debug
 	options = !strip
-	source = https://github.com/siddharthvaddem/openscreen/releases/download/v1.2.0/Openscreen-Linux-latest.AppImage
+	source = https://github.com/siddharthvaddem/openscreen/releases/download/v1.3.0/Openscreen-Linux-latest.AppImage
 	source = https://github.com/siddharthvaddem/openscreen/raw/refs/heads/main/LICENSE
 	source = openscreen.desktop
 	source = openscreen
