@@ -1,7 +1,7 @@
 pkgbase = firedragon-catppuccin-next
 	pkgdesc = Upcoming FireDragon v13
-	pkgver = 13.0.0_rc.5
-	pkgrel = 2
+	pkgver = 13.0.0_rc.6
+	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/firedragon/firedragon13
 	arch = x86_64
 	arch = aarch64
@@ -69,10 +69,10 @@ pkgbase = firedragon-catppuccin-next
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
-	source = firedragon-v13.0.0-rc.5.source.tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.5/downloads/firedragon.source.tar.zst
+	source = firedragon-v13.0.0-rc.6.source.tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.6/downloads/firedragon.source.tar.zst
 	source = fix-wasm32-wasi-target.patch
 	source = 0023-bgo-969412-glibc-2.43.patch
-	sha256sums = 5a1b30b61b0014d94118cb50e6dd9319dc53e0755ec83f474e5126285f7905b9
+	sha256sums = f861b5370775ebe0aacc981a526d9090b1ece8d11035b52116b24478ea49c985
 	sha256sums = f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124
 	sha256sums = 25e8f2e706aa837f5b6e3c003a6c7f42b07f0a7366d10f9e0d5ad38053767aae
 
