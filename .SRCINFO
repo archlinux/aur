@@ -1,0 +1,17 @@
+pkgbase = ionix-file-manager-git
+	pkgdesc = A terminal file manager with Kitty graphics protocol support
+	pkgver = r4.368e834
+	pkgrel = 1
+	url = https://github.com/LucasionGS/ionix-file-manager
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = ifm
+	conflicts = ifm
+	source = ionix-file-manager-git::git+https://github.com/LucasionGS/ionix-file-manager.git
+	sha256sums = SKIP
+
+pkgname = ionix-file-manager-git
