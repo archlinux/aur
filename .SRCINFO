@@ -1,13 +1,13 @@
 pkgbase = vim-startuptime
 	pkgdesc = Vim plugin for profiling startup time
-	pkgver = 4.5.0
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://github.com/dstein64/vim-startuptime
 	arch = any
 	groups = vim-plugins
 	license = MIT
-	source = vim-startuptime-4.5.0.tar.gz::https://github.com/dstein64/vim-startuptime/archive/v4.5.0.tar.gz
-	sha256sums = c30fbe2a0b23460fe6fb6939e16f23dc5388eecb4d690d8d859babe37ef71ba2
+	source = vim-startuptime-4.6.0.tar.gz::https://github.com/dstein64/vim-startuptime/archive/v4.6.0.tar.gz
+	sha256sums = f040546a929a943cfbbfe55e267f22f2b6d5d5097b944057e9a1e093e30ce4d0
 
 pkgname = vim-startuptime
 	depends = vim-plugin-runtime
