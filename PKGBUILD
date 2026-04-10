@@ -4,7 +4,7 @@
 pkgname=python-tree-sitter-markdown
 _gitpkgname=tree-sitter-markdown
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python Bindings for tree-sitter-markdown'
 arch=('x86_64')
 url='https://github.com/tree-sitter-grammars/tree-sitter-markdown'
