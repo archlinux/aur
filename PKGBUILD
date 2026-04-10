@@ -3,13 +3,16 @@
 
 _basename=gperftools
 pkgname=lib32-$_basename
-pkgver=2.17.2
+pkgver=2.18.1
 pkgrel=1
 pkgdesc="Fast, multi-threaded malloc and nifty performance analysis tools (32-bit)"
 arch=('x86_64')
 url="https://github.com/gperftools/gperftools"
 license=('BSD-3-Clause')
-depends=('gperftools' 'lib32-gcc-libs' 'lib32-libunwind')
+depends=(
+          'gperftools'
+          'lib32-libunwind'
+)
 provides=('libtcmalloc.so'
           'libprofiler.so'
           'libtcmalloc_debug.so'
@@ -17,7 +20,7 @@ provides=('libtcmalloc.so'
           'libtcmalloc_minimal.so'
           'libtcmalloc_minimal_debug.so')
 source=(https://github.com/gperftools/gperftools/releases/download/$_basename-$pkgver/$_basename-$pkgver.tar.gz)
-sha256sums=('bb172a54312f623b53d8b94cab040248c559decdb87574ed873e80b516e6e8eb')
+sha256sums=('d18d919175f9e4d740ace6b52f0f4f91284160c454e91b36ffd6456282a02206')
 
 build() {
   export CC='gcc -m32'

@@ -1,12 +1,11 @@
 pkgbase = lib32-gperftools
 	pkgdesc = Fast, multi-threaded malloc and nifty performance analysis tools (32-bit)
-	pkgver = 2.17.2
+	pkgver = 2.18.1
 	pkgrel = 1
 	url = https://github.com/gperftools/gperftools
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = gperftools
-	depends = lib32-gcc-libs
 	depends = lib32-libunwind
 	provides = libtcmalloc.so
 	provides = libprofiler.so
@@ -14,7 +13,7 @@ pkgbase = lib32-gperftools
 	provides = libtcmalloc_and_profiler.so
 	provides = libtcmalloc_minimal.so
 	provides = libtcmalloc_minimal_debug.so
-	source = https://github.com/gperftools/gperftools/releases/download/gperftools-2.17.2/gperftools-2.17.2.tar.gz
-	sha256sums = bb172a54312f623b53d8b94cab040248c559decdb87574ed873e80b516e6e8eb
+	source = https://github.com/gperftools/gperftools/releases/download/gperftools-2.18.1/gperftools-2.18.1.tar.gz
+	sha256sums = d18d919175f9e4d740ace6b52f0f4f91284160c454e91b36ffd6456282a02206
 
 pkgname = lib32-gperftools
