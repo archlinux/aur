@@ -1,13 +1,13 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.5
+_pkgver=13.0.0-rc.6
 
 __pkgname=$_pkgname
 
 pkgname=$__pkgname-next
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 pkgdesc="Upcoming FireDragon v13"
 url="https://gitlab.com/garuda-linux/firedragon/firedragon13"
 arch=(x86_64 aarch64)
@@ -88,7 +88,7 @@ source=(
   fix-wasm32-wasi-target.patch
   0023-bgo-969412-glibc-2.43.patch
 )
-sha256sums=('5a1b30b61b0014d94118cb50e6dd9319dc53e0755ec83f474e5126285f7905b9'
+sha256sums=('f861b5370775ebe0aacc981a526d9090b1ece8d11035b52116b24478ea49c985'
             'f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124'
             '25e8f2e706aa837f5b6e3c003a6c7f42b07f0a7366d10f9e0d5ad38053767aae')
 
