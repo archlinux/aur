@@ -5,7 +5,7 @@ _pkgname=tsm
 pkgname=${_pkgname}
 pkgdesc="Terminal Session Manager"
 
-pkgver=0.6.2
+pkgver=0.6.5
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,7 +26,7 @@ depends=('glibc' 'ghostty')
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_pkgvername}.tar.gz")
-sha256sums=('e6a92e12257b4ebc1ed6807de2a1bce3509d64451ed49648dfbcda3705e2d368')
+sha256sums=('4e3179d2b4a0c6f21996fbe530b03683be340fca9824d81631b86eb9545dca51')
 
 
 prepare() {
