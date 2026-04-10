@@ -1,3 +1,4 @@
-2.41.5-1 [2026-04-01]
-- [Windows][BugFix] Fixed a SYSTEM service registry mismatch and added a task creation fallback.
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 146.0.7680.177.
+2.42.0-1 [2026-04-09]
+- [Desktop][UI] Added dark mode support for themed dashboards.
+- [Windows][BugFix] Fixed relaunch behaviour in system-level update.
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 147.0.7727.56/57.
