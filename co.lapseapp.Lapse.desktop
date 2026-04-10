@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Lapse
+GenericName=Flashcard Study App
+Comment=A spaced repetition flashcard app
+Exec=lapse
+Icon=lapse
+Categories=Education;
+Keywords=flashcards;spaced repetition;study;
+StartupNotify=true
+Terminal=false
