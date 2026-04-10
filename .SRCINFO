@@ -1,0 +1,17 @@
+pkgbase = capsule-bin
+	pkgdesc = Cross-platform media capture and compression application with real-time GUI preview
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://capsule.ooo/
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = ffmpeg
+	provides = capsule
+	conflicts = capsule
+	noextract = Capsule.AppImage
+	options = !strip
+	options = !debug
+	source = Capsule.AppImage::https://github.com/kamryn404/Capsule/releases/download/v0.6.0/Capsule.appimage
+	sha256sums = 436bf4c3ffe5b18353eda2fc3a508a563090c082cc450d10d39ae741e5c497a2
+
+pkgname = capsule-bin
