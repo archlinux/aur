@@ -1,0 +1,21 @@
+pkgbase = cardwire-git
+	pkgdesc = GPU manager for Linux using eBPF LSM hooks
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/Luytan/cardwire
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	makedepends = clang
+	makedepends = libbpf
+	depends = glibc
+	depends = gcc-libs
+	depends = dbus
+	depends = hwdata
+	provides = cardwire
+	conflicts = cardwire
+	source = cardwire::git+https://github.com/Luytan/cardwire.git
+	sha256sums = SKIP
+
+pkgname = cardwire-git
