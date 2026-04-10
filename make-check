@@ -9,10 +9,10 @@ cd -P -- "$pkgdir" || exit 1  # Allow to be called from any directory
 if [[ -d src ]]; then makepkg -ef
 else makepkg -f; fi
 
+shellcheck PKGBUILD
 shopt -s nullglob
 for specimen in PKGBUILD *pkg.tar*; do
-  echo "++ namcap of $specimen"
-  namcap "$specimen"
+  echo "++ namcap of $specimen"; namcap "$specimen"
 done
 makepkg --printsrcinfo >| .SRCINFO && echo "Updated .SRCINFO" >&2
 git clean -dffix --exclude .agents  # ff is required to include dirs with a .git file

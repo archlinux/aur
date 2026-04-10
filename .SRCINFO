@@ -1,7 +1,7 @@
 pkgbase = pixeldrain-jkawamoto-git
 	pkgdesc = Pixeldrain client (pd) from jkawamoto/go-pixeldrain main branch
 	pkgver = 0.8.0.r0.g4457aba
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jkawamoto/go-pixeldrain
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,9 @@ pkgbase = pixeldrain-jkawamoto-git
 	makedepends = git
 	depends = glibc
 	provides = pixeldrain-jkawamoto
+	provides = pixeldrain-pd
 	conflicts = pixeldrain-jkawamoto
+	conflicts = pixeldrain-pd
 	source = git+https://github.com/jkawamoto/go-pixeldrain.git
 	sha256sums = SKIP
 
