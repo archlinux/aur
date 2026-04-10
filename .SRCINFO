@@ -1,6 +1,6 @@
 pkgbase = warp-terminal-autoup-bin
 	pkgdesc = Warp, the Rust-based terminal for developers and teams
-	pkgver = 0.2026.03.25.08.24.stable_09
+	pkgver = 0.2026.04.08.08.36.stable_02
 	pkgrel = 1
 	url = https://warp.dev
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = warp-terminal-autoup-bin
 	optdepends = zenity: for file dialogs in Gnome
 	optdepends = kdialog: for file dialogs in KDE
 	optdepends = org.freedesktop.secrets: for securely storing passwords
-	provides = warp-terminal=0.2026.03.25.08.24.stable_09
+	provides = warp-terminal=0.2026.04.08.08.36.stable_02
 	conflicts = warp-terminal
-	noextract = warp-terminal-v0.2026.03.25.08.24.stable_09-1-x86_64.pkg.tar.zst
+	noextract = warp-terminal-v0.2026.04.08.08.36.stable_02-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = warp-terminal-v0.2026.03.25.08.24.stable_09-1-x86_64.pkg.tar.zst::https://releases.warp.dev/stable/v0.2026.03.25.08.24.stable_09/warp-terminal-v0.2026.03.25.08.24.stable_09-1-x86_64.pkg.tar.zst
-	sha256sums = 15c78c17d7c0cf85cc0702ff880690773fde9529d2e43355d6e681cb9044c127
+	source = warp-terminal-v0.2026.04.08.08.36.stable_02-1-x86_64.pkg.tar.zst::https://releases.warp.dev/stable/v0.2026.04.08.08.36.stable_02/warp-terminal-v0.2026.04.08.08.36.stable_02-1-x86_64.pkg.tar.zst
+	sha256sums = c7b6ce656194bcb0f4e4aafa92f1eb52a650a48e287012fc10a187a920128e94
 
 pkgname = warp-terminal-autoup-bin
