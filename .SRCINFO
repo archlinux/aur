@@ -1,6 +1,6 @@
 pkgbase = octa
 	pkgdesc = A modular multi-format data viewer and editor
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/thorstenfoltz/octa
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = octa
 	depends = mujs
 	conflicts = octa-bin
 	options = !lto
-	source = octa-0.1.4.tar.gz::https://github.com/thorstenfoltz/octa/archive/0.1.4.tar.gz
-	sha256sums = 0f7962e6a11acf7405d1d0f143fe6860d695d9f335335200cbfd2c6982c81bae
+	source = octa-0.1.5.tar.gz::https://github.com/thorstenfoltz/octa/archive/0.1.5.tar.gz
+	sha256sums = 84ad0a0da05ca66f92c1116816c2d970756523464a5524b3494c61a4ffea234c
 
 pkgname = octa
