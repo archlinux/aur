@@ -1,13 +1,13 @@
 pkgbase = profanity-git
 	pkgdesc = A console based jabber client.
-	pkgver = 6749.4e956410
+	pkgver = 7904.89fce43c0
 	pkgrel = 1
 	url = http://profanity-im.github.io
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = autoconf-archive
+	makedepends = meson
 	depends = curl
 	depends = expat
 	depends = libgcrypt
