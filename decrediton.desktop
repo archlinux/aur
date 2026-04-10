@@ -1,11 +1,13 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=Decrediton
+GenericName=Decred Wallet
 Comment=Decrediton the Decred wallet
 Exec=decrediton %U
 Terminal=false
 Type=Application
-Icon=decred
+Icon=decrediton
 MimeType=x-scheme-handler/decred;
 Categories=Office;Finance;
-
+Keywords=decred;dcr;crypto;wallet;blockchain;
+StartupWMClass=decrediton
+StartupNotify=true
