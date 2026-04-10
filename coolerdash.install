@@ -41,6 +41,9 @@ post_install() {
     rm -rf /etc/systemd/system/cc-plugin-coolerdash.service.d
     rm -f /usr/lib/udev/rules.d/99-coolerdash.rules
 
+    # Ensure correct permissions on config.json
+    chmod 600 /etc/coolercontrol/plugins/coolerdash/config.json 2>/dev/null || true
+
     systemctl daemon-reload
 
     # Restart plugin service directly if it already exists (reinstall case)
@@ -66,6 +69,9 @@ post_upgrade() {
     rm -rf /etc/systemd/system/cc-plugin-coolerdash.service.d
     rm -f /usr/lib/udev/rules.d/99-coolerdash.rules
 
+    # Ensure correct permissions on config.json
+    chmod 600 /etc/coolercontrol/plugins/coolerdash/config.json 2>/dev/null || true
+
     systemctl daemon-reload
 
     # Restart plugin
@@ -75,6 +81,8 @@ post_upgrade() {
 
     echo "================================================================"
     echo "CoolerDash upgraded successfully."
+    echo "Note: config.json is preserved. If a new template was shipped,"
+    echo "      compare it with /etc/coolercontrol/plugins/coolerdash/config.json.pacnew"
     echo "================================================================"
 }
 
