@@ -1,37 +1,45 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=probe-rs-git
-pkgver=0.31.0.r70.gedc1381
-pkgrel=1
+pkgver=0.31.0.r117.g7115a8b
+pkgrel=2
 pkgdesc="A debugging toolset and library for debugging embedded ARM and RISC-V targets on a separate host"
 arch=($CARCH)
 url="https://github.com/probe-rs/probe-rs"
 license=('Apache-2.0 AND MIT')
-provides=(${pkgname%-git}
+provides=(
+    ${pkgname%-git}
     cargo-embed
     cargo-flash
     rtthost
     smoke_tester
     target-gen
-    xtask)
-conflicts=(${pkgname%-git}
+    xtask
+)
+conflicts=(
+    ${pkgname%-git}
     cargo-embed
     cargo-flash
     rtthost
     smoke_tester
     target-gen
-    xtask)
+    xtask
+)
 replaces=()
-depends=(gcc-libs
+depends=(
     glibc
+    libgcc
     libusb
     libftdi
-    systemd-libs)
-makedepends=(git
+    systemd-libs
+)
+makedepends=(
+    git
     rust
     cmake
     openssl
-    pkgconf)
+    pkgconf
+)
 backup=()
 options=(!lto !debug)
 install=
@@ -81,6 +89,7 @@ package() {
 
     export RUSTUP_TOOLCHAIN=stable
     #     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
+    install -Dm644 LICENSE* -t "${pkgdir}"/usr/share/licenses/${pkgname}/
     find target/release \
         -maxdepth 1 \
         -executable \
