@@ -1,0 +1,26 @@
+post_install() {
+  local SRCDIR="/usr/share/dots-hyprland"
+  local BACKUP_DIR="$SRCDIR/.backup"
+
+  mkdir -p "$BACKUP_DIR"
+  [[ -d "$HOME/.config/hypr" ]] && cp -r "$HOME/.config/hypr" "$BACKUP_DIR/"
+  [[ -d "$HOME/.config/quickshell" ]] && cp -r "$HOME/.config/quickshell" "$BACKUP_DIR/"
+  [[ -d "$HOME/.config/fish" ]] && cp -r "$HOME/.config/fish" "$BACKUP_DIR/"
+  [[ -d "$HOME/.config/starship.toml" ]] && cp -r "$HOME/.config/starship.toml" "$BACKUP_DIR/"
+  [[ -d "$HOME/.local/share/wlogout" ]] && cp -r "$HOME/.local/share/wlogout" "$BACKUP_DIR/"
+
+  cp -r "$SRCDIR/dots/.config/"* "$HOME/.config/"
+  cp -r "$SRCDIR/dots/.local/"* "$HOME/.local/share/"
+
+  echo "Deployed to ~/.config and ~/.local"
+  echo "Backup available at $BACKUP_DIR"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "Configs remain in ~/.config and ~/.local"
+  echo "Manual cleanup: rm -rf ~/.config/dots-hyprland ~/.local/share/dots-hyprland"
+}
