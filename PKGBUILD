@@ -105,7 +105,6 @@ makedepends=(
   glib2-devel
   glslang 
   gnutls                lib32-gnutls
-  gst-plugins-base-libs lib32-gst-plugins-base-libs
   gtk3                  lib32-gtk3
   libgphoto2
   libpulse              lib32-libpulse
