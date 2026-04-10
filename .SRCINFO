@@ -1,6 +1,6 @@
 pkgbase = netbird-proxy
 	pkgdesc = WireGuard-based overlay network: reverse proxy service
-	pkgver = 0.67.4
+	pkgver = 0.68.1
 	pkgrel = 1
 	url = https://github.com/netbirdio/netbird
 	install = netbird-proxy.install
@@ -13,10 +13,10 @@ pkgbase = netbird-proxy
 	depends = glibc
 	depends = ca-certificates
 	backup = etc/netbird-proxy/proxy.env
-	source = netbird-0.67.4.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.67.4.tar.gz
+	source = netbird-0.68.1.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.68.1.tar.gz
 	source = netbird-proxy.service
 	source = proxy.env
-	sha256sums = 019449719d236f02febe854b3ee0f4876ca07107196a418bee8f7b9bb8b7285e
+	sha256sums = 9439da9f83de3a123008511f40d8efbf53129289873727d70fa0d67c43381189
 	sha256sums = 912d342970f04c169ca2f832a4080cd0206b8721c54d11f35ade4b7b96e38a43
 	sha256sums = 5292c2354ab73a0b326649a2a592115546de0468ecaf046d47d9f3aa21252ce2
 
