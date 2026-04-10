@@ -21,7 +21,7 @@ pkgbase = canon-pixma-mg3000-complete-fixed
 	source = canon-pixma-mg3000-complete-scangear-fixed-icon.png
 	md5sums = 9fde0c1def36fbd38b4d08cd22a2b7a8
 	md5sums = 833f71781ba733fec84f4eb06d468fb4
-	md5sums = 26ebae4fc269fa9d3efa56373345921f
+	md5sums = 600ae23b06d0801f55fafcbb9d160235
 	md5sums = 3feefd413092d7152f47b7451ba79efe
 
 pkgname = canon-pixma-mg3000-complete-fixed
