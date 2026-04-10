@@ -4,7 +4,7 @@ _pkgname=filecxx
 pkgname=filecentipede-bin
 _zhsname='文件蜈蚣'
 pkgver=2.82
-pkgrel=16
+pkgrel=17
 pkgdesc="Cross-platform internet upload/download manager for HTTP(S), FTP(S), SSH, magnet-link, BitTorrent, m3u8, ed2k, and online videos. WebDAV client, FTP client, SSH client.(Prebuilt version)"
 arch=('x86_64')
 url="http://www.filecxx.com/"
@@ -16,6 +16,7 @@ depends=(
     'qt5-svg'
     'pcre'
     'libbsd'
+    'musl'
 )
 makedepends=(
     'gendesk'
