@@ -1,6 +1,6 @@
 pkgbase = kerminal
 	pkgdesc = Modern Terminal Emulator & SSH Manager
-	pkgver = 2.6.1
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://github.com/klpod221/kerminal
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = kerminal
 	depends = libsoup3
 	depends = gdk-pixbuf2
 	depends = hicolor-icon-theme
-	source = git+https://github.com/klpod221/kerminal.git#tag=v2.6.1
+	source = git+https://github.com/klpod221/kerminal.git#tag=v2.6.2
 	source = kerminal.desktop
-	sha256sums = a36c9b667e811a76697db093469b288dd4f9b7fb7244178e146e7bb9e274ac51
+	sha256sums = 25895fbd72756cc465989773d6d36e2c01b7d0dd653300e9868150f0cc7409ea
 	sha256sums = 2012d68d4a1a7672497eaad7db0d398356e230e588344038d7151d4eeee9d3f6
 
 pkgname = kerminal
