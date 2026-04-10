@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-another-window-session-manager-git
-pkgver=50.r7.gfa5b91b
+pkgver=51.r1.gcf23fef
 pkgrel=1
 pkgdesc="A GNOME shell extension to close open windows gracefully and save them as a session."
 arch=('any')
@@ -21,8 +21,10 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
 source=('git+https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager.git'
+        'https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager/pull/132.patch'
         '60-awsm-ydotool-uinput.rules')
 sha256sums=('SKIP'
+            'dd1342d38e618986b0ce4c16c3625b25c3a0957fee0ddc45fefb15bc89f3f796'
             '9f3e96fd1d964f3e6564e0ef859f5e4f5b59059aa89b2654bb3fe2c9abed4f27')
 
 pkgver() {
@@ -32,6 +34,9 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+
+  # GNOME 50
+  patch -Np1 -i ../132.patch
 }
 
 build() {
