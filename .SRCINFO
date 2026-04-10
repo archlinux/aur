@@ -1,6 +1,6 @@
 pkgbase = buildbox
 	pkgdesc = A set of tools for remote worker build execution
-	pkgver = 1.2.40
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://buildgrid.build
 	arch = x86_64
@@ -16,10 +16,11 @@ pkgbase = buildbox
 	makedepends = nlohmann-json
 	makedepends = tomlplusplus
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
 	depends = abseil-cpp
+	depends = curl
 	depends = fuse3
-	depends = google-glog
 	depends = grpc
 	depends = openssl
 	depends = protobuf
@@ -31,7 +32,7 @@ pkgbase = buildbox
 	conflicts = buildbox-casd
 	conflicts = buildbox-fuse
 	conflicts = buildbox-run-bubblewrap
-	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox.git#tag=1.2.40
+	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox.git#tag=1.4.3
 	sha256sums = SKIP
 
 pkgname = buildbox

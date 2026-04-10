@@ -1,6 +1,6 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 pkgname=buildbox
-pkgver=1.2.40
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A set of tools for remote worker build execution"
 arch=(x86_64)
@@ -8,10 +8,11 @@ url="https://buildgrid.build"
 license=(Apache-2.0)
 depends=(
   'glibc'
-  'gcc-libs'
+  'libgcc'
+  'libstdc++'
   'abseil-cpp'
+  'curl'
   'fuse3'
-  'google-glog'
   'grpc'
   'openssl'
   'protobuf'
