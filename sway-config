@@ -1,0 +1,7 @@
+exec "qtgreet; swaymsg exit"
+
+bindsym Mod4+shift+e exec swaynag -t warning -m 'Exit qtgreet?' -b 'Yes' 'swaymsg exit'
+
+seat seat0 xcursor_theme Adwaita 24
+
+include /etc/sway/config.d/*

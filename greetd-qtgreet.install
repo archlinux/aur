@@ -1,5 +1,20 @@
 post_install() {
-    echo "The greetd setup needs to be changed for QtGreet to work!"
-    echo "Edit /etc/greetd/config.toml and make the change mentioned below."
-    echo 'Under [default_session], set command = "sway --config /etc/qtgreet/sway.cfg"'
+cat <<'EOF'
+qtgreet requires a Wayland compositor to run.
+
+A ready-to-use Sway example configuration was installed to:
+  /usr/share/doc/greetd-qtgreet/examples/greetd-config.toml
+  /usr/share/doc/greetd-qtgreet/examples/sway-config
+
+To use that setup:
+  1. Install the optional dependency: sway
+  2. Copy/adapt the example files into /etc/greetd/
+  3. Restart greetd
+
+You can also run qtgreet under another compositor such as cage, labwc, or Hyprland.
+EOF
+}
+
+post_upgrade() {
+  post_install
 }

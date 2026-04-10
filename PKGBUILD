@@ -1,59 +1,69 @@
 # Maintainer: Dan Johansen <strit@archlinux.org>
-# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor: Librewish <librewish@gmail.com?
+# Co-Maintainer: smiley <smiley@aur.archlinux.org>
 
-pkgname=('greetd-qtgreet')
-_pkgname=QtGreet
+pkgname=greetd-qtgreet
 pkgver=2.0.4
-pkgrel=4
-pkgdesc='Qt based greeter for greetd'
-arch=('aarch64' 'x86_64')
-url="https://gitlab.com/marcusbritanicus/${_pkgname}"
+pkgrel=3
+pkgdesc='Qt-based greeter for greetd'
+arch=('x86_64' 'aarch64')
+url='https://gitlab.com/marcusbritanicus/QtGreet'
 license=('GPL-3.0-only')
+install="$pkgname.install"
 depends=(
-        'python'
-        'greetd'
-        'dfl-applications'
-        'dfl-login1'
-        'dfl-wayqt'
-        'dfl-utils'
-        'libxkbcommon'
-        'hicolor-icon-theme'
-        'wayland'
-        'mpv'
-        'python-pyqt6'
-        'qt6-base'
-        'sway'
-)
-optdepends=(
-            'wayfire: for wayfire support'
-            'labwc: for labwc support'
+  'greetd'
+  'qt6-base'
+  'qt6-wayland'
+  'dfl-applications'
+  'dfl-ipc'
+  'dfl-login1'
+  'dfl-utils'
+  'dfl-wayqt'
+  'mpv'
 )
 makedepends=(
-            'meson'
-            'ninja'
+  'meson'
+  'ninja'
+  'pkgconf'
 )
-backup=(
-       "etc/qtgreet/config.ini"
-       "etc/qtgreet/sway.cfg"
-       "etc/qtgreet/users.conf"
-       "etc/qtgreet/wayfire.ini"
+optdepends=(
+  'cage: lightweight compositor for running qtgreet'
+  'hyprland: Wayland compositor for running qtgreet'
+  'labwc: lightweight wlroots compositor for running qtgreet'
+  'sway: example Wayland compositor for running qtgreet'
 )
-install=${pkgname}.install
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('be7ead0355f9f3ee367c70bac659569c024679f1e1306535f6b0970ff0c438fc')
+conflicts=(
+  'greetd-qtgreet-git'
+  'greetd-qtgreet-qt5-git'
+)
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/QtGreet-v$pkgver.tar.gz"
+  'greetd-config.toml'
+  'sway-config'
+)
+sha256sums=(
+  'be7ead0355f9f3ee367c70bac659569c024679f1e1306535f6b0970ff0c438fc'
+  '3c2cd9dcdf57ff30b996adc1c3075197e33f944ac0f662b0cee86e728d2b925f'
+  '9c3e4ba5eeaacbce65880c1f8b801a4e6a8a65816fd1f38bce31a2be8aa8a3c4'
+)
+
+_srcdir="QtGreet-v$pkgver"
 
 build() {
-  cd "${_pkgname}-v${pkgver}"
-  echo "Building QT6 version..."
-  meson setup .build --prefix=/usr -Duse_qt_version=qt6 --buildtype=release
-  ninja -C .build
+  local meson_options=(
+    --prefix /usr
+    --buildtype plain
+    -Ddynpath=/var/lib/qtgreet
+  )
+
+  meson setup build "$_srcdir" "${meson_options[@]}"
+  meson compile -C build
 }
 
-package_greetd-qtgreet() {
-  cd "${_pkgname}-v${pkgver}"
-  DESTDIR="${pkgdir}" ninja -C .build install
-  install -d 755 "${pkgdir}/var/lib/qtgreet"
-  chown greeter:greeter "${pkgdir}/var/lib/qtgreet"
-  echo "At least one of wayfire, sway or labwc is required"
+package() {
+  DESTDIR="$pkgdir" meson install -C build
+
+  install -Dm644 "$srcdir/greetd-config.toml" \
+    "$pkgdir/usr/share/doc/$pkgname/examples/greetd-config.toml"
+  install -Dm644 "$srcdir/sway-config" \
+    "$pkgdir/usr/share/doc/$pkgname/examples/sway-config"
 }
