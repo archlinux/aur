@@ -1,7 +1,7 @@
 ## Maintainer: khanhas <xuankhanh963@gmail.com>, itsmeow <itsmeow@itsmeow.dev>
 pkgname=spicetify-cli
 pkgver=2.43.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tool to customize Spotify client'
 arch=('x86_64' 'i686')
 url='https://github.com/spicetify/cli'

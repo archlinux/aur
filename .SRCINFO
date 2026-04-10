@@ -1,7 +1,7 @@
 pkgbase = spicetify-cli
 	pkgdesc = Command-line tool to customize Spotify client
 	pkgver = 2.43.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spicetify/cli
 	arch = x86_64
 	arch = i686
