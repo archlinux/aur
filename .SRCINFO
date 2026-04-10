@@ -1,4 +1,4 @@
-pkgbase = bkp
+pkgbase = bkp-bin
 	pkgdesc = A simple backup utility written in Go
 	pkgver = 0.1
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = bkp
 	source = https://github.com/nfgferreira/bkp/releases/download/v0.1/bkp
 	sha256sums = SKIP
 
-pkgname = bkp
+pkgname = bkp-bin
