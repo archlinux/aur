@@ -1,7 +1,7 @@
 # Maintainer: Dmitriy Geels <dmitriy.geels at gmail dot com>
 
 pkgname=certbot-dns-dynadot
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A certbot DNS plugin to obtain certificates using dynadot."
 arch=("any")
