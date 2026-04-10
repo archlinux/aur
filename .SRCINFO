@@ -1,6 +1,6 @@
 pkgbase = cjvs-bin
 	pkgdesc = 仓颉Cangjie版本切换工具
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/ystyle/cjvs
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cjvs-bin
 	depends = tar
 	provides = cjvs
 	conflicts = cjvs
-	source = https://github.com/ystyle/cjvs/releases/download/v0.3.6/cjvs_v0.3.6_linux_amd64.zip
-	sha256sums = dd56f9f934ebfa03da2f50448fc835b1757b08337f01c297f5565b55631e950a
+	source = https://github.com/ystyle/cjvs/releases/download/v0.3.7/cjvs_v0.3.7_linux_amd64.zip
+	sha256sums = 2ab9e41f1dd6a7d10266d9be3871ba6a2508bd47eaef0637f781f9859edb0547
 
 pkgname = cjvs-bin
