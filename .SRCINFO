@@ -1,17 +1,17 @@
 pkgbase = nodejs-whistle
 	pkgdesc = HTTP, HTTP2, HTTPS, Websocket debugging proxy
-	pkgver = 2.10.1
+	pkgver = 2.10.2
 	pkgrel = 1
 	url = https://wproxy.org
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = whistle-2.10.1.tgz
-	source = https://registry.npmjs.org/whistle/-/whistle-2.10.1.tgz
+	noextract = whistle-2.10.2.tgz
+	source = https://registry.npmjs.org/whistle/-/whistle-2.10.2.tgz
 	source = whistle.desktop
 	source = nodejs-whistle.png::https://raw.githubusercontent.com/avwo/whistle/master/biz/webui/htdocs/img/whistle.png
-	sha1sums = fb120803b24e799e48d0d4ac5f246d4bb8ea998f
+	sha1sums = 4aa24f7d655264b0b8a0de0bdbe91137b99855b8
 	sha1sums = ad7056273ff8d5c2798b4ab870f5981288a67c60
 	sha1sums = 74d44892ab7cac4c4b3f56b24158605ede05c984
 
