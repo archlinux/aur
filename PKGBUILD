@@ -8,7 +8,7 @@
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
 pkgver=2026.4.1
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('any')
 url='https://home-assistant.io/'
@@ -54,6 +54,7 @@ b2sums=('b618568fd8f5b82d67f55874702fd3b3ba613eea6d7ade2ac3d90b7ed96e07e3668f71b
 prepare() {
   # update version in service file
   sed "s/@VERSION@/${pkgver}/" -i home-assistant.service
+  sed -ie '18iExecStartPre=/var/lib/hass/.venv/bin/python -m pip install aiohasupervisor>=0.4.0' home-assistant.service
 
   # allow any setuptools version to be used
   # also fix FTBFS due to requiring a later version of setuptools
