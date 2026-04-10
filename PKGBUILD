@@ -14,7 +14,7 @@ pkgname=('systemd-liberated-git'
          'systemd-liberated-tests-git'
          'systemd-liberated-ukify-git')
 pkgdesc='systemd fork with surveillance enablement removed (git version)'
-pkgver=261.r87283
+pkgver=261.r87873
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -127,7 +127,6 @@ build() {
     -Dversion-tag="${pkgver}-${pkgrel}-arch"
     -Dvcs-tag=true
     -Dshared-lib-tag="${pkgver}-${pkgrel}"
-    -Dmode=developer
 
     -Dapparmor=enabled
     -Dbootloader=enabled

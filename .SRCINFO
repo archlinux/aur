@@ -1,6 +1,6 @@
 pkgbase = systemd-liberated-git
 	pkgdesc = systemd fork with surveillance enablement removed (git version)
-	pkgver = 261.r87283
+	pkgver = 261.r87873
 	pkgrel = 1
 	url = https://github.com/Jeffrey-Sardina/systemd
 	arch = x86_64
@@ -101,7 +101,7 @@ pkgname = systemd-liberated-git
 	license = CC0-1.0
 	license = GPL-2.0-or-later
 	license = MIT-0
-	depends = systemd-liberated-libs-git=261.r87283
+	depends = systemd-liberated-libs-git=261.r87873
 	depends = acl
 	depends = libacl.so
 	depends = bash
@@ -137,7 +137,7 @@ pkgname = systemd-liberated-git
 	optdepends = apparmor: additional security features
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-liberated-sysvcompat-git: symlink package to provide sysvinit binaries
-	optdepends = systemd-liberated-ukify-git=261.r87283: combine kernel and initrd into a signed Unified Kernel Image
+	optdepends = systemd-liberated-ukify-git=261.r87873: combine kernel and initrd into a signed Unified Kernel Image
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: systemd-journal-upload, machinectl pull-tar and pull-raw
 	optdepends = gnutls: systemd-journal-gatewayd and systemd-journal-remote
@@ -150,10 +150,10 @@ pkgname = systemd-liberated-git
 	optdepends = libp11-kit: support PKCS#11
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=261.r87283
-	provides = udev=261.r87283
-	provides = systemd=261.r87283
-	provides = systemd-git=261.r87283
+	provides = systemd-tools=261.r87873
+	provides = udev=261.r87873
+	provides = systemd=261.r87873
+	provides = systemd-git=261.r87873
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -194,8 +194,8 @@ pkgname = systemd-liberated-libs-git
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = systemd-libs=261.r87283
-	provides = systemd-libs-git=261.r87283
+	provides = systemd-libs=261.r87873
+	provides = systemd-libs-git=261.r87873
 	conflicts = libsystemd
 	conflicts = systemd-libs
 	conflicts = systemd-libs-git
@@ -203,42 +203,42 @@ pkgname = systemd-liberated-libs-git
 
 pkgname = systemd-liberated-resolvconf-git
 	pkgdesc = systemd resolvconf replacement — liberated fork (git version)
-	depends = systemd-liberated-git=261.r87283
+	depends = systemd-liberated-git=261.r87873
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=261.r87283
-	provides = systemd-resolvconf-git=261.r87283
+	provides = systemd-resolvconf=261.r87873
+	provides = systemd-resolvconf-git=261.r87873
 	conflicts = resolvconf
 	conflicts = systemd-resolvconf
 	conflicts = systemd-resolvconf-git
 
 pkgname = systemd-liberated-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd — liberated fork (git version)
-	depends = systemd-liberated-git=261.r87283
-	provides = systemd-sysvcompat=261.r87283
-	provides = systemd-sysvcompat-git=261.r87283
+	depends = systemd-liberated-git=261.r87873
+	provides = systemd-sysvcompat=261.r87873
+	provides = systemd-sysvcompat-git=261.r87873
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = systemd-sysvcompat-git
 
 pkgname = systemd-liberated-tests-git
 	pkgdesc = systemd tests — liberated fork (git version)
-	depends = systemd=261.r87283
-	provides = systemd-tests=261.r87283
-	provides = systemd-tests-git=261.r87283
+	depends = systemd=261.r87873
+	provides = systemd-tests=261.r87873
+	provides = systemd-tests-git=261.r87873
 	conflicts = systemd-tests
 	conflicts = systemd-tests-git
 
 pkgname = systemd-liberated-ukify-git
 	pkgdesc = Combine kernel and initrd into a signed UKI — liberated fork (git version)
-	depends = systemd-liberated-git=261.r87283
+	depends = systemd-liberated-git=261.r87873
 	depends = binutils
 	depends = python-cryptography
 	depends = python-pefile
 	optdepends = python-pillow: Show the size of splash image
 	optdepends = sbsigntools: Sign the embedded kernel
 	provides = ukify
-	provides = systemd-ukify=261.r87283
-	provides = systemd-ukify-git=261.r87283
+	provides = systemd-ukify=261.r87873
+	provides = systemd-ukify-git=261.r87873
 	conflicts = systemd-ukify
 	conflicts = systemd-ukify-git
