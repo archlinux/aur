@@ -4,7 +4,6 @@
 /cache
 minecraft-launcher-core-node
 x-minecraft-launcher
-xmcl-*.pacman
 *.asar
 *.tar.xz
 *.pkg.tar.zst

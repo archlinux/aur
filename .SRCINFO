@@ -4,7 +4,6 @@ pkgbase = xmcl-launcher
 	pkgrel = 1
 	url = https://xmcl.app/
 	arch = x86_64
-	arch = aarch64
 	license = MIT
 	makedepends = curl
 	makedepends = libarchive
@@ -29,7 +28,5 @@ pkgbase = xmcl-launcher
 	sha256sums = 312763b5fa502280a694a78fd1e55a400b345e7d571020ee863e67db8f1eaec4
 	source_x86_64 = xmcl-0.54.4-x64.tar.xz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.54.4/xmcl-0.54.4-x64.tar.xz
 	sha256sums_x86_64 = 547fd1b91449c660fcb7716215e5e2448cb0e821ae78c6a042aa72793c29d27b
-	source_aarch64 = xmcl-0.54.4-arm64.tar.xz::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.54.4/xmcl-0.54.4-arm64.tar.xz
-	sha256sums_aarch64 = a598b8684f58e4be672292621b0d93632cacf1f6a0028b2f33a880712a17d80e
 
 pkgname = xmcl-launcher
