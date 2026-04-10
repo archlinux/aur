@@ -1,0 +1,26 @@
+pkgbase = python-c6-mc6-git
+	pkgdesc = MC6 — Mercury V1 altimeter flight configuration tool for FC6
+	pkgver = r1.ea7980d
+	pkgrel = 1
+	url = https://github.com/kevin-rao1/FC6-Ground-Tools
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyserial
+	depends = python-requests
+	depends = networkmanager
+	provides = python-c6-mc6
+	conflicts = python-c6-mc6
+	conflicts = python-c6-mercuryconfig
+	conflicts = python-c6-mercuryconfig-git
+	replaces = python-c6-mercuryconfig-git
+	source = python-c6-mc6-git::git+https://github.com/kevin-rao1/FC6-Ground-Tools.git
+	sha256sums = SKIP
+
+pkgname = python-c6-mc6-git
