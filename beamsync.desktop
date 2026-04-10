@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=BeamSync
+Comment=Fast, local peer-to-peer file transfer
+Exec=beamsync
+Icon=beamsync
+Terminal=false
+Categories=Network;FileTransfer;Utility;
