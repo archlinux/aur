@@ -13,14 +13,7 @@ install='mimic-node.install'
 source=('git+https://github.com/LIghtJUNction/Mimic-Node.git')
 sha256sums=('SKIP')
 
-prepare() {
-    if [ ! -d "$srcdir/Mimic-Node" ]; then
-        git clone --depth 1 https://github.com/LIghtJUNction/Mimic-Node.git "$srcdir/Mimic-Node"
-    fi
-    cd "$srcdir/Mimic-Node"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
+pkgver=r68.a36085b
 
 pkgver() {
     cd "$srcdir/Mimic-Node"
@@ -28,17 +21,14 @@ pkgver() {
 }
 
 build() {
-    export CARGO_TARGET_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/cargo-target"
     cd "$srcdir/Mimic-Node"
     export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
     cargo build --release --frozen --all-features
 }
 
 check() {
     cd "$srcdir/Mimic-Node"
     export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
     cargo test --release --frozen --all-features -- --skip test_check_fails_when_singbox_returns_nonzero
 }
 
