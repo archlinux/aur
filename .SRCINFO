@@ -1,6 +1,6 @@
 pkgbase = nilpower-bin
 	pkgdesc = GTK4 power menu overlay for Hyprland
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/jedrzejratajczak/nil
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nilpower-bin
 	depends = gtk4-layer-shell
 	provides = nilpower
 	conflicts = nilpower
-	source = nilpower-0.2.0.tar.gz::https://github.com/jedrzejratajczak/nil/releases/download/v0.2.0/nil-v0.2.0-x86_64.tar.gz
+	source = nilpower-0.3.0.tar.gz::https://github.com/jedrzejratajczak/nil/releases/download/v0.3.0/nil-v0.3.0-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = nilpower-bin
