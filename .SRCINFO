@@ -1,6 +1,6 @@
 pkgbase = neomd-bin
 	pkgdesc = A minimal email TUI where you read with Markdown and write in Neovim
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/ssp-data/neomd
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = neomd-bin
 	license = MIT
 	provides = neomd
 	conflicts = neomd
-	source_x86_64 = neomd-x86_64-0.5.2.tgz::https://github.com/ssp-data/neomd/releases/download/v0.5.2/neomd_0.5.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = e681b6fcf6e08b55214d96845bce5572ee216cee6148f1cdb7788642b8e9ef8f
-	source_aarch64 = neomd-aarch64-0.5.2.tgz::https://github.com/ssp-data/neomd/releases/download/v0.5.2/neomd_0.5.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 00946b812da52ef7e0e6c508ac591580a58439a39dd105b7735ed15e3f66c957
+	source_x86_64 = neomd-x86_64-0.5.3.tgz::https://github.com/ssp-data/neomd/releases/download/v0.5.3/neomd_0.5.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6bc4ac1d0bcb407eee4b711c6101118de56a1063bfb7c2fa129eaee0471e8a9f
+	source_aarch64 = neomd-aarch64-0.5.3.tgz::https://github.com/ssp-data/neomd/releases/download/v0.5.3/neomd_0.5.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = ba5608d19b78f83c6cdb7af554a5f9c4ce45f288f8a23da5e6eec2fc9bbd9a8a
 
 pkgname = neomd-bin
