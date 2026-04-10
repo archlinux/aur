@@ -1,0 +1,17 @@
+#!/bin/bash
+# Convenience script for package maintainers -- this file is NOT installed nor run by paru, yay, etc.
+set -eu  # Bail if unexpected things happen
+unset PACMAN; PATH=/usr/bin:$PATH
+
+pkgdir=${0%%/*}  # dirname $0
+cd -P -- "$pkgdir" || exit 1  # Allow to be called from any directory
+
+if [[ -d src ]]; then makepkg -ef
+else makepkg -f; fi
+
+shopt -s nullglob
+for specimen in PKGBUILD *pkg.tar*; do
+  echo "++ namcap of $specimen"
+  namcap "$specimen"
+done
+makepkg --printsrcinfo >| .SRCINFO && echo "Updated .SRCINFO" >&2

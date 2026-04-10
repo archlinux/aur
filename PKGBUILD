@@ -3,7 +3,7 @@
 
 pkgname=pixeldrain-jkawamoto-git
 pkgver=0.8.0.r0.g4457aba
-pkgrel=3
+pkgrel=4
 pkgdesc='Pixeldrain client (pd) from jkawamoto/go-pixeldrain main branch'
 arch=('x86_64')
 _reponame=go-pixeldrain
