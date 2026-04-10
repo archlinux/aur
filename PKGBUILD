@@ -7,8 +7,8 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2026.4.0
-pkgrel=2
+pkgver=2026.4.1
+pkgrel=1
 epoch=1
 arch=('any')
 url='https://home-assistant.io/'
@@ -40,12 +40,12 @@ source=(
   'home-assistant.sysusers'
   'home-assistant.tmpfiles'
 )
-sha512sums=('de45e6dd1c8937de710bd762d70c410b83f840020ff4d37e0c8a907ab8e9ae0fa61eed8a83fcf3c820fb580522ec13bad8ccafdc4e95715a8ea481c0800ced98'
+sha512sums=('42c4e3dfdeccc4d85056118e4b6ede71ad3d2bf2b8aac903a4a8a00d2e0f6cb4b439b6d6a1d7ed41288baa4dfeb3c524aa7a4b7037626cb5ecf5fc5a2ea057e2'
             '1157121d245b6c7471048144e04325b5e1fc422e5ea5b45dc63c3d5d7efd2757a6930514fb35d4e0b8650b7541ef0fadf8f0eba12586d380d931c502e3acfeb4'
             '0a421907c1f53426fa42245bd90823e7d0d2ccbd11cc479a87f9d7cfd5d96bf3de37d10865c00233ef175e6274d4b2bf31cf7915870eb29b279a575235373647'
             'ec05b47011adea19ee71a7793968c20a95648f45e581dab1462faec85ff31d968acd5eac35729e52c46a7eeb046a2961093283160167622d4da9773562ec8273'
             '8babcf544c97ec5ad785014f0b0d5dca556a2f5157dadcbe83d49d4669b74f6349e274810ec9a028fcec208c6c8fbbe6b3899d2933b56163b9e506570879a3ad')
-b2sums=('2bbb0dcf67eac3c16b05136f5251960584773d726f3073815c68c2892b0c8839678113e36957402cefe39c069b8bde778f46ae92f0755fb4adf6eb55e0fdba73'
+b2sums=('b618568fd8f5b82d67f55874702fd3b3ba613eea6d7ade2ac3d90b7ed96e07e3668f71b7c34f78208ffcd64c226315e1efa372062be5a1228174377f52ab8db8'
         '913c766df2ed4a4f5984c3ea75746e380f370ba9b3d6009d329b2089d1f00a538a18608f037593d43bbbc3f9a2c88d2290dfdef3a15094575c28b5a55e8ec1a9'
         '20b1847203eb236c58ce29b6d502fbad2804479dc31edc8f6a5da0a5a0bfaa22519f7262afe503d06c6c2efd26ee7819a549efb0096b661ed6eb277b441533f9'
         '8a023a2215712044fb5115d1b81e55fad2c74f2e836cfe7f3f1e7c3778e4903c25ba7e429aedfd74b566be542aa50ea0d486b616c6d5b0315d993a9599e454f8'
@@ -54,7 +54,6 @@ b2sums=('2bbb0dcf67eac3c16b05136f5251960584773d726f3073815c68c2892b0c8839678113e
 prepare() {
   # update version in service file
   sed "s/@VERSION@/${pkgver}/" -i home-assistant.service
-  sed -ie '18iExecStartPre=/var/lib/hass/.venv/bin/python -m pip install aiohasupervisor>=0.4.0' home-assistant.service
 
   # allow any setuptools version to be used
   # also fix FTBFS due to requiring a later version of setuptools
