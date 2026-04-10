@@ -1,0 +1,23 @@
+post_install() {
+    cat << "EOF"
+
+To use the streamlink-ttvlol plugin, you need to symlink it to the streamlink's plugins directory:
+
+ln -s /usr/share/streamlink-ttvlol/twitch.py ~/.local/share/streamlink/plugins/twitch.py
+
+If you don't have a plugins directory, create it first:
+
+mkdir -p ~/.local/share/streamlink/plugins/
+
+EOF
+}
+
+post_remove() {
+    cat << "EOF"
+
+To remove the streamlink-ttvlol plugin, simply delete the symlink:
+
+rm ~/.local/share/streamlink/plugins/twitch.py
+
+EOF
+}
