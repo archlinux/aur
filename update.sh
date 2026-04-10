@@ -77,8 +77,8 @@ rm -rf src/ pkg/
 makepkg --printsrcinfo >.SRCINFO
 
 echo "[5/5] Committing and pushing..."
-# git add -u stages all changes to tracked files (PKGBUILD, .install, astrbotctl, etc.)
-git add -u
+# git add PKGBUILD .SRCINFO to catch both tracked and new files
+git add PKGBUILD .SRCINFO
 if git diff --quiet && git diff --cached --quiet; then
     echo ">>> 没有更改，跳过提交"
 else
