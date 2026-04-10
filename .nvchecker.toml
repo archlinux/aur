@@ -1,0 +1,5 @@
+[drill-search]
+source = "git"
+git = "https://github.com/yatima1460/Drill.git"
+prefix = "release-"
+exclude_regex = ".*(2019|1|5|2.).*"

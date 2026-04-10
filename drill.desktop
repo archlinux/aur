@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Drill
+Comment=
+Keywords=
+Exec=drill
+Terminal=false
+Icon=drill
+Type=Application
+Categories=Utilities;
+StartupNotify=false
+StartupWMClass=

@@ -1,19 +1,25 @@
 pkgbase = drill-search
-	pkgdesc = Search files without indexing, but clever crawling
-	pkgver = 571+100+g04683dbf
-	pkgrel = 3
+	pkgdesc = Very fast file searcher without indexing
+	pkgver = 46
+	pkgrel = 1
+	epoch = 1
 	url = https://drill.software
-	arch = x86_64
+	arch = any
 	license = GPL-2.0-or-later
-	makedepends = dmd
-	makedepends = dub
-	makedepends = git
-	depends = bash
-	depends = gtk3
-	depends = xdg-utils
+	checkdepends = python-pytest-qt
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pyqt6
+	depends = python-sortedcontainers
 	conflicts = drill-search-cli
 	conflicts = drill-search-gtk
-	source = git+https://github.com/yatima1460/Drill.git#commit=04683dbf0d40510543db748c0a3c1a88524c5f8d
-	sha256sums = SKIP
+	source = Drill-46.tar.gz::https://drill.software/archive/refs/tags/release-46.tar.gz
+	source = drill.sh
+	source = drill.desktop
+	sha256sums = bbd317dcc507dfd392cba90d1b6787dc1f63d87baeffa04d681b2e85fe85a5e2
+	sha256sums = 255aec49f9d963f712313474a17eb6225c4da0ecbdf0a7c2eae178272224fb6c
+	sha256sums = 6f3aeb8c5b0a61cf8e7ca419879885e7fb901abc3fbd601d3a267fb1b42cc988
 
 pkgname = drill-search
