@@ -2,14 +2,14 @@
 # Maintainer: insmtr <insmtr@insmtr.cn>
 
 pkgname=openlist
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="A new AList Fork to Anti Trust Crisis"
 arch=($CARCH)
 url="https://github.com/OpenListTeam/OpenList"
 license=('AGPL-3.0-only')
 depends=('glibc')
-makedepends=('git' 'go' 'curl' 'jq' 'tar')
+makedepends=('git' 'go' 'curl' 'jq' 'tar' 'gzip')
 provides=(${pkgname})
 conflicts=(${pkgname})
 backup=('etc/openlist/config.json')
@@ -22,7 +22,7 @@ source=("$pkgname::git+https://github.com/OpenListTeam/OpenList.git#tag=v${pkgve
     "openlist.install")
 install=openlist.install
 options=(!debug)
-sha256sums=('3f63223e4be387e63757b3550dc999a84239b2e9567ff82be00ed19596ba6e5d'
+sha256sums=('9bccfa7c2fd107d0fb859169f157e6595e295735f4b0f5f9077e6caf5fc06ad0'
             '9259caae294aebb88e0e25f83074e090f3581556c05548544739edf88c028537'
             '4bc1ccc08f17f5c9ce0fe7fc600ea9d5e1b034d52a776244c627bc13a3fa401d'
             'fe9c68aa8a6a27477049c839cb5818ba3ddbd88c6813dd2eacea73da70807905'
