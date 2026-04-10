@@ -3,7 +3,7 @@
 
 pkgname=netbsd-pkgsrc
 _pkgname=pkgsrc
-pkgver=2025Q4
+pkgver=2026Q1
 pkgrel=1
 pkgdesc="The NetBSD Packages Collection (pkgsrc)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ package() {
   echo "export MANPATH=/usr/pkg/man:${MANPATH}" >> "${pkgdir}/etc/profile.d/pkgsrc.sh"
 }
 
-sha512sums=('58ae78c2ebc0f8b72447ca8c74bb25270ac12d4301deb73679615f3ed42869f021457eb9386b912c4844278e1ed800237d28c069fc6a4e5b67a290d97e52e455'
+sha512sums=('a579179d2a121546c1dc4df0369fafceb05b73004b7b2a9fe5d6d5c0a4b71de655c8fdf0861cd08dae14ff7eb55f07fa22a87cd92497f691800ce09c7e3b621a'
             '78f634baef190d4a52187e69344e50ae9544c95bd6243ebb22af727092edbb61c021ec38de1a85e38b08cb046b71bdbf6cc869af2d9a6365cb93c92e342dfe96')
 
 
