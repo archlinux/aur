@@ -1,0 +1,5 @@
+[bare-shell]
+source = "github"
+github = "isene/bare"
+use_latest_release = true
+prefix = "v"

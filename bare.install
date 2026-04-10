@@ -1,0 +1,14 @@
+post_install() {
+  grep -qx /bin/bare /etc/shells || echo /bin/bare >> /etc/shells
+  grep -qx /usr/bin/bare /etc/shells || echo /usr/bin/bare >> /etc/shells
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  sed -i -r '/^(\/usr)?\/bin\/bare$/d' etc/shells
+}
+
+# vim:set ts=2 sw=2 et:
