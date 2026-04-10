@@ -15,3 +15,4 @@ for specimen in PKGBUILD *pkg.tar*; do
   namcap "$specimen"
 done
 makepkg --printsrcinfo >| .SRCINFO && echo "Updated .SRCINFO" >&2
+git clean -dffix --exclude .agents  # ff is required to include dirs with a .git file
