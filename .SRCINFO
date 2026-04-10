@@ -1,0 +1,21 @@
+pkgbase = tauritavern-bin
+	pkgdesc = A Tauri-based frontend for SillyTavern (Binary repackaged for Arch Linux)
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/Darkatse/TauriTavern/releases
+	arch = x86_64
+	license = AGPL-3.0
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = libsecret
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	provides = tauritavern
+	conflicts = tauritavern
+	options = !debug
+	source = https://github.com/Darkatse/TauriTavern/releases/download/v1.6.3/TauriTavern_1.6.3_amd64.deb
+	md5sums = f06170b0506bd308d63e248fc7d7857c
+
+pkgname = tauritavern-bin
