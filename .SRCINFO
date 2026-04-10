@@ -1,0 +1,19 @@
+pkgbase = pineconemc-launcher-bin
+	pkgdesc = A fork of Prism Launcher with integrated Ely.by support
+	pkgver = 11.0.0
+	pkgrel = 1
+	url = https://github.com/ElyPrismLauncher/Launcher
+	arch = x86_64
+	license = GPL3
+	makedepends = squashfs-tools
+	depends = fuse2
+	depends = java-runtime
+	depends = zlib
+	provides = pineconemc-launcher
+	conflicts = pineconemc-launcher
+	conflicts = pineconemc-launcher-git
+	options = !strip
+	source = pineconemc.AppImage::https://github.com/ElyPrismLauncher/Launcher/releases/download/11.0.0/PineconeMC-Linux-x86_64.AppImage
+	sha256sums = 9e9097e7df6c4eab3722ae57d013e0133a62f5044306fafe305bafee48d57c3b
+
+pkgname = pineconemc-launcher-bin
