@@ -1,0 +1,3 @@
+#!/bin/sh
+
+python /usr/share/kicad/scripting/plugins/InteractiveHtmlBom/generate_interactive_bom.py "$@"
