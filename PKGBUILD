@@ -1,7 +1,7 @@
 # Maintainer: Mark Wells <contact at markwells dot dev>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=keeper-secrets-manager-helper
-pkgver=1.0.7
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Keeper Secrets Manager SDK helper module"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("https://files.pythonhosted.org/packages/source/k/keeper_secrets_manager_helper/keeper_secrets_manager_helper-$pkgver.tar.gz")
-sha512sums=('657156b9b213a55e0d4a6f4abd8b8dae001d1dabc367b166e50b7549089ee11492a24513af8c8215fdf52a741efe7ee796724e716051adfbedf83a61d23cb921')
+sha512sums=('e207c43e7cb75c4c55d37aac264b051e8720bb5c8099a14f7cd723f2f0b3c1536048c57e2472217fa33ef8bcd6f2d5f6531303c99d609cdf1fea34a846db880f')
 
 build() {
     cd "keeper_secrets_manager_helper-$pkgver"
