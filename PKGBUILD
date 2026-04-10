@@ -2,7 +2,7 @@
 # Maintainer: tarampampam <murmur at cats dot rulez>
 
 pkgname='tinifier-bin'
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc='CLI tool for compressing images using the TinyPNG'
 url='https://github.com/tarampampam/tinifier'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('tinifier')
 conflicts=('tinifier')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tarampampam/tinifier/releases/download/v5.1.1/tinifier-linux-arm64.tar.gz")
-sha256sums_aarch64=('48f228cef739b2713129b23b342b2ff6d66d6432ab66b4a9ae0a9b7d5a66a23a')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tarampampam/tinifier/releases/download/v${pkgver}/tinifier-linux-arm64.tar.gz")
+sha256sums_aarch64=('3f799fdf04c72d4dc651abe64a1496b28f558d2d7e575fe939af7fa79243bd17')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tarampampam/tinifier/releases/download/v5.1.1/tinifier-linux-amd64.tar.gz")
-sha256sums_x86_64=('c0355027af936c05f4f1d979debf1b55c07acaf1f3c013fda3a81738af5be2f1')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tarampampam/tinifier/releases/download/v${pkgver}/tinifier-linux-amd64.tar.gz")
+sha256sums_x86_64=('68ae736a01d5a9852bec9fdcd507a976012d4c3067158259ef3704a659c8fe65')
 
 package() {
   install -Dm755 "./tinifier" "${pkgdir}/usr/bin/tinifier"
