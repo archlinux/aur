@@ -1,6 +1,6 @@
 # Maintainer: Mykhailo Aleksieiev <nekohepott@larpdhq.org>
 pkgname=gogofetch-git
-pkgver=r73.ca31300
+pkgver=r74.138397a
 pkgrel=1
 pkgdesc="Fetch written in Go with image support"
 arch=('x86_64')
@@ -42,4 +42,8 @@ package() {
 
     chmod 755 "$pkgdir/usr/share/gogofetch/logos"
     chmod 644 "$pkgdir/usr/share/gogofetch/logos/"*.png
+}
+
+post_upgrade() {
+    echo "! It is recommended to run 'gogofetch --reset-config' after upgrading gogofetch-git to get the latest config."
 }
