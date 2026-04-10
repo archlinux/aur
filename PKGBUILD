@@ -5,7 +5,7 @@
 # pacman -Qip pkgname
 # namcap PKGBUILD
 # namcap pkgname.pkg.tar.zst
-pkgname=bkp
+pkgname=bkp-bin
 pkgver=0.1
 pkgrel=1
 pkgdesc="A simple backup utility written in Go"
