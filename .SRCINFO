@@ -1,32 +1,10 @@
 pkgbase = zen-browser
-	pkgdesc = Experience tranquillity while browsing the web without people tracking you
+	pkgdesc = Firefox-based web browser repackaged from upstream release artifacts
 	pkgver = 1.19.6b
-	pkgrel = 1
-	url = https://zen-browser.app/
+	pkgrel = 2
+	url = https://zen-browser.app
 	arch = x86_64
 	license = MPL-2.0
-	makedepends = git
-	makedepends = pnpm
-	makedepends = rsync
-	makedepends = cbindgen
-	makedepends = clang
-	makedepends = diffutils
-	makedepends = imake
-	makedepends = lld
-	makedepends = llvm
-	makedepends = mesa
-	makedepends = nasm
-	makedepends = nodejs
-	makedepends = python
-	makedepends = rust
-	makedepends = unzip
-	makedepends = wasi-compiler-rt
-	makedepends = wasi-libc
-	makedepends = wasi-libc++
-	makedepends = wasi-libc++abi
-	makedepends = xorg-server-xvfb
-	makedepends = yasm
-	makedepends = zip
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = bash
@@ -35,13 +13,14 @@ pkgbase = zen-browser
 	depends = ffmpeg
 	depends = fontconfig
 	depends = freetype2
-	depends = gcc-libs
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
 	depends = gtk3
 	depends = hicolor-icon-theme
+	depends = libgcc
 	depends = libpulse
+	depends = libstdc++
 	depends = libx11
 	depends = libxcb
 	depends = libxcomposite
@@ -61,43 +40,13 @@ pkgbase = zen-browser
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	noextract = firefox-149.0.source.tar.xz
-	options = !emptydirs
-	options = !lto
-	options = !makeflags
+	conflicts = zen-browser-bin
+	noextract = zen-browser-1.19.6b-x86_64.tar.xz
+	options = !strip
 	options = !debug
-	source = git+https://github.com/zen-browser/desktop.git#tag=1.19.6b
-	source = https://archive.mozilla.org/pub/firefox/releases/149.0/source/firefox-149.0.source.tar.xz
-	source = firefox-l10n::git+https://github.com/mozilla-l10n/firefox-l10n
+	source = zen-browser-1.19.6b-x86_64.tar.xz::https://github.com/zen-browser/desktop/releases/download/1.19.6b/zen.linux-x86_64.tar.xz
 	source = zen-browser.desktop
-	source = 0003-do-not-disable-system-extensions.zen.patch
-	source = 0004-fix-package-json.zen.patch
-	source = 0005-source-firefox-language-packs.patch
-	sha256sums = SKIP
-	sha256sums = b861fdee999d9b6404e1e865d6f707c41b4bded1b5ea62affc176288c1484b8a
-	sha256sums = SKIP
-	sha256sums = 523fba56892357a1b37811021e06d548cb94af58948294a436c566581e7454a9
-	sha256sums = 36bff2af04da55da0cc71f960d921889ccf21c11fcd8343087c144dfcc50f10a
-	sha256sums = 803c3f456abfc1acd963b594cf684aed2453534e7ab951abc38efa0351b648a1
-	sha256sums = 7702c197f5509e4ec7e744f74105cc8339b631e37f7a0b41bf3070bf3ccc92a7
+	sha256sums = 87978f0854fc279191b4f95a41bdb0c5b7df6f6b6c1d986c97ef75915cd6686c
+	sha256sums = af16fec9a88cbfffee34a6a4eb5b3074931477fcefee252840d77cf146568851
 
 pkgname = zen-browser
-	provides = zen-browser=1.19.6b
-
-pkgname = zen-browser-i18n-zh-cn
-	pkgdesc = Language pack for Zen Browser (zh-CN)
-	arch = any
-	depends = zen-browser>=1.19.6b
-	optdepends = 
-
-pkgname = zen-browser-i18n-zh-tw
-	pkgdesc = Language pack for Zen Browser (zh-TW)
-	arch = any
-	depends = zen-browser>=1.19.6b
-	optdepends = 
-
-pkgname = zen-browser-i18n-ja
-	pkgdesc = Language pack for Zen Browser (ja)
-	arch = any
-	depends = zen-browser>=1.19.6b
-	optdepends = 
