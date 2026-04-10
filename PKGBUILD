@@ -3,16 +3,17 @@ _pkgname=cheesecutter
 _gitname=CheeseCutter
 
 pkgname=cheesecutter-git
-pkgver=2.9.beta.3.r30.g84450d3
+pkgver=2.10.r0.g85323d8
 pkgrel=1
 pkgdesc="Tracker program for composing music for the C64 SID chip"
 arch=('x86_64')
 url="https://github.com/theyamo/${_gitname}"
-license=('GPL2')
-depends=('glibc' 'gcc-libs' 'hicolor-icon-theme')
-makedepends=('acme' 'gcc-d' 'git')
+license=('GPL-2.0-only')
+depends=('glibc' 'libgcc' 'libstdc++' 'hicolor-icon-theme' 'sdl2-compat')
+makedepends=('acme' 'git' 'ldc')
+#makedepends=('acme' 'gcc-d' 'git' 'ldc')
 provides=('cheesecutter')
-conflicts=('cheesecutter' 'cheesecutter-stereo')
+conflicts=('cheesecutter-stereo')
 source=("git+${url}")
 sha256sums=('SKIP')
 
@@ -23,8 +24,8 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_gitname}"
-    sed -i -r 's/^COMFLAGS=.*/COMFLAGS=-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now/' Makefile
-    make release
+    #sed -i -r 's/^COMFLAGS=.*/COMFLAGS=-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now/' Makefile
+    make
 }
 
 package() {
