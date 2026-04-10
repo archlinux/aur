@@ -2,8 +2,8 @@
 
 pkgname=opentubex-git
 _pkgname=OpenTubeX
-pkgver=r10128.3c6ce6f83
-pkgrel=2
+pkgver=r10273.08b241344
+pkgrel=1
 pkgdesc='A fork of the open source desktop YouTube player FreeTube with additional features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/OpenTubeX/OpenTubeX"
@@ -44,5 +44,5 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "./_icons/icon.svg" "$pkgdir/usr/share/pixmaps/opentubex.svg"
   cd ..
-  install -Dm644 "opentubex.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "opentubex.desktop" "$pkgdir/usr/share/applications/opentubex.desktop"
 }
