@@ -1,6 +1,6 @@
 pkgbase = csco-launcher-git
 	pkgdesc = Community Launcher for Classic Offensive (CS:CO)
-	pkgver = r1.gabcdef0
+	pkgver = r2.gabcdef0
 	pkgrel = 1
 	url = https://github.com/Skoczi/csco_launcher
 	arch = x86_64
