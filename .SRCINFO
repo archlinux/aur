@@ -1,0 +1,16 @@
+pkgbase = supersigil-bin
+	pkgdesc = CLI tool and verification framework for spec-driven development
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jonisavo/supersigil
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = supersigil
+	conflicts = supersigil
+	source_x86_64 = https://github.com/jonisavo/supersigil/releases/download/v0.1.0/supersigil-0.1.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 85e4c1e16684c3f2eb5cbfd3277e1d82b03dff14eb5a60d271e3e09b7059100c
+	source_aarch64 = https://github.com/jonisavo/supersigil/releases/download/v0.1.0/supersigil-0.1.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 87f12a9b5b16ac5d30add8e67e42627a20618a7946771d486d3faad6c6a363d5
+
+pkgname = supersigil-bin
