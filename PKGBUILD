@@ -4,7 +4,7 @@ _pkgname="open-video-downloader"
 _srcname="youtube-dl-gui"
 _srcmntr="jely2002"
 
-pkgname="${_pkgname}"
+pkgname="${_pkgname}-bin"
 pkgver="3.2.0"
 pkgrel="1"
 pkgdesc="A cross-platform GUI for youtube-dl made in Rust with Tauri and Vue + Typescript"
