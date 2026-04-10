@@ -4,6 +4,21 @@ pkgname=astrbot-git
 _pkgname=astrbot
 pkgver=4.22.2.r613.g33f54aae
 pkgrel=1
+
+pkgver() {
+  cd "$_pkgname"
+  # Shallow clones lack tag history; unshallow to get full history for describe
+  git fetch --depth=999999 origin dev 2>/dev/null || true
+  # Try annotated tags first; fall back to commit-based versioning
+  local _ver
+  if _ver=$(git describe --long --tags 2>/dev/null); then
+    printf '%s' "${_ver#v}"
+  else
+    # No tags reachable — use commit count + short hash
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
+}
+
 pkgdesc="Agentic IM Chatbot infrastructure (multi-instance, astrbotctl only)"
 arch=('any')
 url="https://github.com/AstrBotDevs/AstrBot"
@@ -15,7 +30,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 source=(
-    "$_pkgname-$pkgver.tar.gz::https://github.com/AstrBotDevs/AstrBot/archive/refs/heads/dev.tar.gz"
+    "git+https://github.com/AstrBotDevs/AstrBot.git#branch=dev&depth=1"
     "astrbotctl"
     "astrbotctl.functions"
     "astrbot@.service"
@@ -41,15 +56,12 @@ install=astrbot-git.install
 package() {
     install -dm755 "$pkgdir/opt/astrbot"
 
-    # GitHub tarball extracts to AstrBot-dev
+    # Git shallow clone extracts to AstrBot (no -dev suffix)
     # We use a glob and cp -a to ensure hidden files like .env aren't missed
     # if they exist, though standard shopt might be needed. Shopt is available in bash.
     shopt -s dotglob
-    cp -a "$srcdir"/AstrBot-*/* "$pkgdir/opt/astrbot/"
+    cp -a "$srcdir"/AstrBot/* "$pkgdir/opt/astrbot/"
     shopt -u dotglob
-
-    # Normalize directory permissions (upstream uses 775, we want 755)
-    find "$pkgdir/opt/astrbot" -type d -exec chmod 755 {} +
 
     # Store version inside the application directory
     echo "$pkgver" >"$pkgdir/opt/astrbot/.version"
