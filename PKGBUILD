@@ -1,18 +1,19 @@
 # Maintainer: Himalian <Himalian9227@proton.me>, phucvinh57 <npvinh0507@gmail.com>
 pkgname=biopass-bin
-pkgver=1.0.1
-pkgrel=5
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="An alternative to Windows Hello/Howdy"
 arch=('x86_64' 'aarch64')
 url="https://github.com/TickLabVN/biopass"
 license=('MIT')
-depends=('curl' 'yaml-cpp' 'fprintd' 'webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme' 'gst-plugins-good' 'pam')
+depends=('curl' 'fprintd' 'webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme' 'gst-plugins-good' 'pam')
+makedepends=('patchelf')
 provides=('biopass')
 conflicts=('biopass')
 source_x86_64=("biopass_${pkgver}_amd64.deb::https://github.com/TickLabVN/biopass/releases/download/${pkgver}/biopass_${pkgver}_amd64.deb")
 source_aarch64=("biopass_${pkgver}_arm64.deb::https://github.com/TickLabVN/biopass/releases/download/${pkgver}/biopass_${pkgver}_arm64.deb")
-sha256sums_x86_64=('8e12a77aa5e472f69074053071dc3d75685445c501f9a583559ab721c3d2213d')
-sha256sums_aarch64=('61e5744106140d8493be6d94f882d80fa60ac342f072905a6598270a433e0bf8')
+sha256sums_x86_64=('e03f23e1245fd806786c0e08e3d8dddd6aa214815a959b3a38b2b802534e8436')
+sha256sums_aarch64=('225e7fbea0828fe88868fcb5e54beca7b664e6c263f6ad064412549b8960ef95')
 options=(!strip !debug)
 backup=('etc/ld.so.conf.d/biopass.conf')
 install=biopass-bin.install
@@ -31,6 +32,8 @@ prepare() {
 }
 
 package() {
+  local helper_path
+
   # Handle /usr/local if it exists (moving to /usr)
   if [ -d usr/local ]; then
     cp -a usr/local/* usr/
@@ -52,8 +55,16 @@ package() {
     find "${pkgdir}/etc" -type f -exec chmod 644 {} +
   fi
 
-  # biopass-helper is installed at /usr/bin/biopass-helper, but
-  # libbiopass_pam.so requires /usr/local/bin/biopass-helper
-  install -d "${pkgdir}/usr/local/bin"
-  ln -s /usr/bin/biopass-helper "${pkgdir}/usr/local/bin/biopass-helper"
+  helper_path="${pkgdir}/usr/bin/biopass-helper"
+  if [ ! -f "${helper_path}" ]; then
+    printf 'Expected helper binary missing: %s\n' "${helper_path}" >&2
+    return 1
+  fi
+
+  # The published 1.0.3 bundles still embed CI build paths in RUNPATH. Replace
+  # them with the packaged native lib location used by the helper and face libs.
+  patchelf --set-rpath /usr/lib/biopass "${helper_path}"
+  for so_file in "${pkgdir}"/usr/lib/biopass/libbiopass_*.so; do
+    patchelf --set-rpath /usr/lib/biopass "${so_file}"
+  done
 }
