@@ -1,15 +1,23 @@
 pkgbase = qianyu-bin
-	pkgdesc = Description of Qianyu
+	pkgdesc = Qianyu desktop app
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/tiesen243/qianyu
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	depends = zlib
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
 	depends = hicolor-icon-theme
-	depends = fuse2
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
 	options = !strip
+	options = !emptydirs
+	sha256sums = SKIP
 	source_x86_64 = qianyu-bin-0.2.0.AppImage::https://github.com/tiesen243/qianyu/releases/download/%40qianyu%2Fdesktop%400.2.0/qianyu-0.2.0-ubuntu-latest.AppImage
-	sha256sums_x86_64 = 6f828129243b66e7e1f80c313412a37e7338798a170e45d0ce57dbd1e02758fe
 
 pkgname = qianyu-bin
