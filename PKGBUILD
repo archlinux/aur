@@ -2,7 +2,7 @@
 # Maintainer: tarampampam <murmur at cats dot rulez>
 
 pkgname='tinifier'
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc='CLI tool for compressing images using the TinyPNG'
 url='https://github.com/tarampampam/tinifier'
@@ -11,8 +11,8 @@ license=('MIT')
 provides=('tinifier')
 conflicts=('tinifier')
 makedepends=('go')
-source=("${pkgname}_${pkgver}.tar.gz::https://github.com/tarampampam/tinifier/releases/download/v5.1.1/tinifier_v5.1.1_sources.tar.gz")
-sha256sums=('b556332222fe601a29cdb83f351b9f3d1b1bc1d6fc851e94d9b4e8ba64722e4f')
+source=("${pkgname}_${pkgver}.tar.gz::https://github.com/tarampampam/tinifier/releases/download/v${pkgver}/tinifier_v${pkgver}_sources.tar.gz")
+sha256sums=('fc2d78ae26ea16d163f85239f336d2f4f4fbfc6358397617f21974a39e6cf4d8')
 prepare() {
   go mod download
 }
