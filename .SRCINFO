@@ -3,7 +3,6 @@ pkgbase = tpmtb-git
 	pkgver = 0.7.0.r1.gf7d9b79
 	pkgrel = 1
 	url = https://github.com/loicsikidi/tpm-ca-certificates
-	install = tpmtb.install
 	arch = x86_64
 	arch = aarch64
 	license = BSD-3-Clause

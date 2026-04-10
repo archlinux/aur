@@ -1,4 +1,4 @@
-# Maintainer: Strykar <strykar@localhost>
+# Maintainer: Strykar <strykar@hotmail.com>
 pkgname=tpmtb-git
 pkgver=0.7.0.r1.gf7d9b79
 pkgrel=1
@@ -9,7 +9,6 @@ license=('BSD-3-Clause')
 depends=('ca-certificates')
 optdepends=('tpm2-tools: extract EK certificate from TPM for verification')
 makedepends=('go' 'git')
-install=tpmtb.install
 provides=('tpmtb')
 conflicts=('tpmtb')
 source=("${pkgname}::git+https://github.com/loicsikidi/tpm-ca-certificates.git")
@@ -44,7 +43,6 @@ package() {
   install -Dm755 tpmtb "${pkgdir}/usr/bin/tpmtb"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # Shell completions
   ./tpmtb completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/tpmtb"
   ./tpmtb completion zsh  | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_tpmtb"
   ./tpmtb completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/tpmtb.fish"
