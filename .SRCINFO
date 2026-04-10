@@ -1,6 +1,6 @@
 pkgbase = my-dystopian-robot-girlfriend-bin
 	pkgdesc = 18+ game developed by IncontinentCell
-	pkgver = 0.95.16
+	pkgver = 0.96.5
 	pkgrel = 1
 	url = https://incontinentcell.itch.io/factorial-omega
 	arch = x86_64
