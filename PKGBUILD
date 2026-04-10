@@ -5,14 +5,14 @@
 # https://github.com/harshv5094
 
 pkgname=linutil
-pkgver=2026.03.06
+pkgver=2026.04.07
 pkgrel=1
 pkgdesc="Distro-agnostic toolbox designed to simplify everyday Linux tasks"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ChrisTitusTech/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('60d1b57945039ec443d169231f6ee9378dc3b9bd5c41c544d1ca430ef7b53e89')
+sha256sums=('112b0e2874a699ade899942949465153c90b1a92a74c2e92fcb6a51c3c0a50a2')
 makedepends=('cargo')
 depends=('git' 'pacman' 'tree-sitter' 'tree-sitter-bash' 'gcc-libs' 'glibc')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
