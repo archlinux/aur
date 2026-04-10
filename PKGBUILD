@@ -1,6 +1,6 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner-git
-pkgver=4.14.5.r10
+pkgver=4.14.5.r11
 pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
@@ -12,7 +12,7 @@ license=(
   'GPL2'
 )
 source=(
-  "git+$url.git#commit=fd47bad9"
+  "git+$url.git#commit=5b254ea9?recursive=1"
 )
 sha256sums=(
   'SKIP'
@@ -66,7 +66,6 @@ install=rog-perf-tuner-git.install
 
 prepare() {
     cd "$srcdir/RogPerfTuner"
-    git submodule update --init --recursive
 
     if [[ ! -d "${HOME}/.local/share/pnpm" ]]; then
         echo "Setup for pnpm..."
