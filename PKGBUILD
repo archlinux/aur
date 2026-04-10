@@ -10,7 +10,7 @@ depends=('alsa-lib' 'ncurses' 'sqlite')
 makedepends=('git')
 provides=('djcmd')
 conflicts=('djcmd')
-source=("git+https://github.com/djcmd-project/djcmd.git")
+source=("djcmd::git+https://github.com/djcmd-project/djcmd.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
