@@ -1,6 +1,6 @@
 pkgbase = djcmd-git
 	pkgdesc = A full-featured terminal DJ application for Linux
-	pkgver = r1.0
+	pkgver = r57.7335ea3
 	pkgrel = 1
 	url = https://github.com/djcmd-project/djcmd
 	arch = x86_64

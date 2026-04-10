@@ -1,6 +1,6 @@
 # Maintainer: daedalao <daedalao@daedalaomain>
 pkgname=djcmd-git
-pkgver=r1.0
+pkgver=r57.7335ea3
 pkgrel=1
 pkgdesc="A full-featured terminal DJ application for Linux"
 arch=('x86_64' 'aarch64' 'armv7h' 'powerpc' 'ppc64le')
