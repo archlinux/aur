@@ -1,7 +1,7 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiorii-git
 _pkgname=Shiori
-pkgver=1.0.2
+pkgver=1.0.3.r0.g27c82c8
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust"
 arch=('x86_64')

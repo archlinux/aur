@@ -1,6 +1,6 @@
 pkgbase = shiorii-git
 	pkgdesc = Modern offline-first eBook library manager built with Tauri, React, and Rust
-	pkgver = 1.0.2
+	pkgver = 1.0.3.r0.g27c82c8
 	pkgrel = 1
 	url = https://github.com/vinayydv3695/Shiori
 	arch = x86_64
