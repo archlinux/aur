@@ -6,7 +6,7 @@
 
 _pkgname=linutil
 pkgname="$_pkgname-git"
-pkgver=2026.04.07+ra301c34f
+pkgver=2026.04.09+097d6279
 pkgrel=1
 pkgdesc="Distro-agnostic toolbox designed to simplify everyday Linux tasks"
 arch=('x86_64' 'aarch64')
