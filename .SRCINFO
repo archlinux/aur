@@ -1,6 +1,6 @@
 pkgbase = all-repository-fonts
 	pkgdesc = Meta package for all fonts in the official repositories.
-	pkgver = 20251220
+	pkgver = 20260410
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/all-repository-fonts/
 	arch = any
@@ -122,7 +122,6 @@ pkgbase = all-repository-fonts
 	depends = ttf-go-nerd
 	depends = ttf-hack
 	depends = ttf-hack-nerd
-	depends = ttf-hanazono
 	depends = ttf-hannom
 	depends = ttf-heavydata-nerd
 	depends = ttf-iawriter-nerd
