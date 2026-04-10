@@ -1,4 +1,4 @@
-Maintainer: Skoczi <skoczi_real@gmail.com>
+# Maintainer: Skoczi <skoczi_real@gmail.com>
 pkgname=csco-launcher-git
 pkgver=r1.gabcdef0
 pkgrel=1
