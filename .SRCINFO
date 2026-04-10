@@ -1,6 +1,6 @@
 pkgbase = rustconn
 	pkgdesc = Modern connection manager for Linux with GTK4/Wayland-native interface.
-	pkgver = 0.10.14
+	pkgver = 0.10.15
 	pkgrel = 1
 	url = https://github.com/totoshko88/RustConn
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = rustconn
 	optdepends = tigervnc: External VNC client fallback
 	optdepends = virt-viewer: External SPICE client fallback
 	optdepends = waypipe: Wayland application forwarding for SSH connections
-	source = RustConn-0.10.14.tar.gz::https://github.com/totoshko88/RustConn/archive/refs/tags/v0.10.14.tar.gz
-	sha256sums = f7bbd91e496ab73b94d8031d4c8df8f0c27ffa7d38b0adb11cc3300dacc01917
+	source = RustConn-0.10.15.tar.gz::https://github.com/totoshko88/RustConn/archive/refs/tags/v0.10.15.tar.gz
+	sha256sums = 923799c4190ed833fcb4ce0dfa4347b306221db4efe2b00b5162120454535d02
 
 pkgname = rustconn
