@@ -1,13 +1,15 @@
 pkgbase = vim-lexima
 	pkgdesc = Vim plugin for auto-closing parentheses
-	pkgver = 1.2.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/cohama/lexima.vim
 	arch = any
 	groups = vim-plugins
-	license = unknown
-	depends = vim-plugin-runtime
-	source = vim-lexima-1.2.0.tar.gz::https://github.com/cohama/lexima.vim/archive/v1.2.0.tar.gz
-	sha256sums = 79236c7cfe426cf28846c2f34dd48c7c34c13c79853f8f65d9453fcd97c38b3f
+	license = MIT
+	source = vim-lexima-2.1.0.tar.gz::https://github.com/cohama/lexima.vim/archive/v2.1.0.tar.gz
+	source = LICENSE
+	sha256sums = ac89b625c26f40364d5cfdc795a44dfb5a78e295e4a5a278578002239035f515
+	sha256sums = ec13c28254d4d06fd6660e6e7f9a3636f8c899f2ea53442a0789baaba29bf4bb
 
 pkgname = vim-lexima
+	depends = vim-plugin-runtime
