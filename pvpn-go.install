@@ -1,4 +1,8 @@
 post_install() {
+  # Create the 'pvpn' group so unprivileged clients can talk to the
+  # daemon socket (mode 0660, root:pvpn).
+  getent group pvpn >/dev/null || groupadd -r pvpn
+
   # Auto-detect the real user (yay/paru set SUDO_USER)
   local _user="${SUDO_USER:-}"
   if [ -z "$_user" ]; then
@@ -12,16 +16,22 @@ post_install() {
     systemctl daemon-reload
     systemctl enable --now pvpnd
     echo ":: pVPN daemon enabled for user '$_user'"
+    echo ":: Add your user to the 'pvpn' group to use pvpn/pvpnctl without sudo:"
+    echo "   sudo usermod -aG pvpn $_user   # then log out/in or run 'newgrp pvpn'"
     echo ":: Run 'pvpn' to start the TUI"
   else
     echo ":: Could not detect your username."
     echo ":: Run this to finish setup:"
     echo "   echo -e '[Service]\nEnvironment=SUDO_USER=YOUR_USERNAME' | sudo tee /etc/systemd/system/pvpnd.service.d/user.conf"
     echo "   sudo systemctl daemon-reload && sudo systemctl enable --now pvpnd"
+    echo "   sudo usermod -aG pvpn YOUR_USERNAME"
   fi
 }
 
 post_upgrade() {
+  # Ensure the group exists for users upgrading from pre-0.2.0.
+  getent group pvpn >/dev/null || groupadd -r pvpn
+
   systemctl daemon-reload
   systemctl restart pvpnd 2>/dev/null || true
   echo ":: pVPN daemon restarted"
@@ -33,6 +43,17 @@ pre_remove() {
 
 post_remove() {
   rm -rf /etc/systemd/system/pvpnd.service.d
+
+  # Drop the 'pvpn' group if it's empty. Non-fatal if it still has
+  # members — user may want to keep it for some reason.
+  if getent group pvpn >/dev/null; then
+    local _members
+    _members=$(getent group pvpn | awk -F: '{print $4}')
+    if [ -z "$_members" ]; then
+      groupdel pvpn 2>/dev/null || true
+    fi
+  fi
+
   echo ":: Config in ~/.config/pvpn/ and session data in ~/.local/share/pvpn/"
   echo "   were NOT removed. Delete manually if desired."
 }

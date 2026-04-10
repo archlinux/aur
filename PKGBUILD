@@ -1,9 +1,9 @@
 # Maintainer: Paul Goessmann <paul.goessmann@proton.me>
 pkgname=pvpn-go
-pkgver=0.1.7
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Proton VPN client with TUI for Linux (WireGuard + Stealth)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/YourDoritos/pVPN'
 license=('GPL-3.0-or-later')
 depends=('glibc')
