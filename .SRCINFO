@@ -1,7 +1,7 @@
 pkgbase = aurivo-bin
 	pkgdesc = Aurivo Media Player (prebuilt AppImage)
 	pkgver = 2.0.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aurivo.app
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = aurivo-bin
 	options = !debug
 	source = Aurivo-2.0.29-linux-x86_64.AppImage::https://github.com/muhammed-aurivo-dev/Aurivo-Medya-Player-Linux/releases/download/v2.0.29/Aurivo-2.0.29-linux-x86_64.AppImage
 	source = com.aurivo.mediaplayer.png::https://raw.githubusercontent.com/muhammed-aurivo-dev/Aurivo-Medya-Player-Linux/main/icons/aurivo_512.png
-	sha256sums = 8e1516b5cc1ed4e58bee9ee2c40738af8e4b6228aaabcfb8bdd8ebb95e1fe9c1
+	sha256sums = 93d17038e8f3e4c660377d17cf51194ea4f2e18c2d90212a518a1852158984d0
 	sha256sums = da02e29b849870a9852e9020c0df9532a84ae81c53d3f073fa633d679d80b43f
 
 pkgname = aurivo-bin
