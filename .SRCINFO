@@ -1,0 +1,20 @@
+pkgbase = python-tree-sitter-c
+	pkgdesc = Python Bindings for tree-sitter-c
+	pkgver = 0.24.1
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-c
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = tree-sitter-c=0.24.1
+	depends = python-tree-sitter
+	depends = tree-sitter
+	noextract = tree-sitter-c-0.24.1.tar.gz
+	source = tree-sitter-c-0.24.1.tar.gz::https://github.com/tree-sitter/tree-sitter-c/releases/download/v0.24.1/tree-sitter-c.tar.gz
+	b2sums = a1f92aa5d9553c36d1f9a2c876bf983b64f7ae511291c94671e2c67058a5deaed74663f0e7498b2e9964e91028a9be2d179c59ab9ee82dc4c6cbec413c5d6bf9
+
+pkgname = python-tree-sitter-c
