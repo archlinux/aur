@@ -1,6 +1,6 @@
 # Maintainer: jakeb-grant
 pkgname=pane-fm-git
-pkgver=0.1.7.r2.g4c10ba6
+pkgver=0.1.8.r0.g781f00b
 pkgrel=1
 pkgdesc="A themeable file manager built with Tauri and Svelte"
 arch=('x86_64')
@@ -43,6 +43,11 @@ package() {
     install -Dm755 "src-tauri/target/release/pane-fm" "$pkgdir/usr/bin/pane-fm"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+    # App icon
+    install -Dm644 "src-tauri/icons/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/pane-fm.png"
+    install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/pane-fm.png"
+    install -Dm644 "src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/pane-fm.png"
 
     # Desktop entry
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/pane-fm.desktop" <<EOF
