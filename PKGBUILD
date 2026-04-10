@@ -1,7 +1,7 @@
 # Maintainer: v0idhrt <https://github.com/v0idhrt>
 pkgname=disarmed-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="VPN client with sing-box backend"
 arch=('x86_64')
 url="https://github.com/v0idhrt/disarmed"

@@ -1,7 +1,7 @@
 pkgbase = disarmed-bin
 	pkgdesc = VPN client with sing-box backend
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/v0idhrt/disarmed
 	install = disarmed-bin.install
 	arch = x86_64
