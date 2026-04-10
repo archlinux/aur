@@ -1,6 +1,6 @@
 pkgbase = go-size-analyzer-bin
 	pkgdesc = A tool for analyzing the dependencies in compiled Golang binaries
-	pkgver = 1.12.0
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://gsa.zxilly.dev
 	arch = aarch64
@@ -8,9 +8,9 @@ pkgbase = go-size-analyzer-bin
 	license = AGPL-3.0-only
 	provides = go-size-analyzer
 	conflicts = go-size-analyzer
-	source_aarch64 = https://github.com/Zxilly/go-size-analyzer/releases/download/v1.12.0/go-size-analyzer_1.12.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = fef2e266360373b444f30370297d8d0ba620ea25ce134917ec9ee77e427d82f3
-	source_x86_64 = https://github.com/Zxilly/go-size-analyzer/releases/download/v1.12.0/go-size-analyzer_1.12.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = cb252bcd62243e2842fee8083f842908899b99439841dcad58f919086c7c16e3
+	source_aarch64 = https://github.com/Zxilly/go-size-analyzer/releases/download/v1.12.2/go-size-analyzer_1.12.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 54b47182812167e0c0f86cf4c59ff45205f0118d16c3c02f5c04867d0ffd91d1
+	source_x86_64 = https://github.com/Zxilly/go-size-analyzer/releases/download/v1.12.2/go-size-analyzer_1.12.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = cd70929815af6d39c8430fc515796997a3f45bb94ce7b987c1ebe6732f715e1b
 
 pkgname = go-size-analyzer-bin
