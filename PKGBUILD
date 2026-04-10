@@ -1,6 +1,6 @@
 # Maintainer: Lucasion <https://github.com/LucasionGS>
 pkgname=ionix-file-manager-git
-pkgver=r8.0a32e32
+pkgver=r9.53c52a5
 pkgrel=1
 pkgdesc="A terminal file manager with Kitty graphics protocol support"
 arch=('x86_64' 'aarch64' 'armv7h')
