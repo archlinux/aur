@@ -6,8 +6,8 @@
 
 pkgname=python-textual-image
 _pkgname=textual-image
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="Render images in the terminal with Textual and Rich"
 arch=('any')
 url="https://github.com/lnqs/textual-image"
@@ -34,7 +34,7 @@ checkdepends=(
 )
 source=("git+https://github.com/lnqs/${_pkgname}#tag=v${pkgver}")
 license=('LGPL-3.0-only')
-sha256sums=('4dd9dc862b6e0d369117af41bdc4a2412b0773d16af131699a0fa91c62370601')
+sha256sums=('b7ac06829c6c12f2df6be1c842ef11497e45861aa8edb9b78d19da78a0463630')
 
 build() {
   cd "$_pkgname"
