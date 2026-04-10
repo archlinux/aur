@@ -1,5 +1,5 @@
 pkgname=oh-my-pi-git
-pkgver=v13.10.0.r0186a0d8
+pkgver=v13.10.1.r5817130cd3
 pkgrel=1
 pkgdesc="AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more (git build)"
 arch=('x86_64' 'aarch64')
@@ -26,12 +26,12 @@ prepare() {
 
 build() {
   cd "oh-my-pi"
-  bun install:dev
+  bun install
   rustup install nightly
   rustup default nightly
-  bun build:native
+  bun run build:native
   cd packages/coding-agent
-  bun build:binary
+  bun run build
   sha1sum dist/omp
   pwd
 }
