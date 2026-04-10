@@ -1,0 +1,88 @@
+post_install() {
+  cat <<'EOF'
+
+==> tpm-trust: TPM Authenticity Verifier
+    Validates your TPM's Endorsement Key (EK) certificate against a trusted
+    bundle of manufacturer root CAs. All operations are read-only — nothing
+    is written to the TPM. Requires TPM 2.0 and an internet connection on
+    first run (to download the trust bundle and CRLs).
+
+  QUICK START
+  -----------
+  1. Verify your TPM is genuine:
+
+       tpm-trust audit
+
+     On Linux, sudo is requested automatically if TPM access requires it.
+     Exit code 0 = trusted, 1 = untrusted or error.
+
+  2. Verbose output (shows each validation step):
+
+       tpm-trust audit --verbose
+
+  3. Skip CRL revocation checking (offline or if CRL endpoints are down):
+
+       tpm-trust audit --skip-revocation-check
+
+  4. Audit a specific key type:
+
+       tpm-trust audit rsa-2048
+       tpm-trust audit ecc-nist-p256
+
+     Available key types:
+       rsa-2048, rsa-3072, rsa-4096
+       ecc-nist-p256, ecc-nist-p384, ecc-nist-p521, ecc-sm2-p256
+
+  INSPECT CERTIFICATES
+  --------------------
+  5. List all EK certificates available in the TPM:
+
+       tpm-trust certificates list
+
+  6. Display a specific EK certificate:
+
+       tpm-trust certificates get rsa-2048
+       tpm-trust certificates get rsa-2048 --format pem
+       tpm-trust certificates get rsa-2048 --short
+       tpm-trust certificates get rsa-2048 --bundle    # full chain
+
+  TPM INFORMATION
+  ---------------
+  7. Display TPM hardware details (vendor, firmware, algorithms, PCR banks):
+
+       tpm-trust info
+       tpm-trust info --format json
+
+  TROUBLESHOOTING
+  ---------------
+  - "no EK certificates available in TPM":
+    Your TPM's NV storage has no pre-provisioned EK cert. AMD and Intel
+    fTPMs fall back to fetching the cert from the manufacturer's URL
+    automatically. Other vendors may not support this.
+
+  - "unsupported manufacturer":
+    The manufacturer's root CA is not yet in tpm-ca-certificates. Open an
+    issue at: https://github.com/loicsikidi/tpm-ca-certificates/issues/new
+
+  - "TPM is not genuine":
+    The EK certificate did not chain to any trusted manufacturer root.
+    This could indicate a counterfeit TPM, a provisioning error, or a
+    manufacturer not yet included in the trust bundle.
+
+  - Permission errors:
+    tpm-trust needs access to /dev/tpmrm0. It will request sudo
+    automatically, or you can add your user to the tss group:
+      sudo usermod -aG tss $USER
+    Then log out and back in.
+
+  - The trust bundle auto-updates on each run. You do not need to
+    update tpm-trust to get the latest manufacturer root CAs.
+
+  See: https://github.com/loicsikidi/tpm-trust
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

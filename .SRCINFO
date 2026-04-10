@@ -1,0 +1,18 @@
+pkgbase = tpm-trust-git
+	pkgdesc = Verify TPM authenticity by validating its EK certificate against manufacturer root CAs
+	pkgver = 0.3.0rc9.r0.g4c0308e
+	pkgrel = 1
+	url = https://github.com/loicsikidi/tpm-trust
+	install = tpm-trust.install
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = go
+	makedepends = git
+	depends = ca-certificates
+	provides = tpm-trust=0.3.0rc9.r0.g4c0308e
+	conflicts = tpm-trust
+	source = tpm-trust-git::git+https://github.com/loicsikidi/tpm-trust.git
+	sha256sums = SKIP
+
+pkgname = tpm-trust-git
