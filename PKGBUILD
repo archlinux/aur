@@ -7,7 +7,7 @@
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
 pkgrel=1
-pkgver=2.7.2
+pkgver=2.7.3
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
@@ -74,7 +74,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 	'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
 	'https://download.geonames.org/export/dump/admin2Codes.txt'
 	'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
-sha256sums=('762903e71e63357f722fade032d629600af4b004514694e303e08da44780fe80'
+sha256sums=('5febf239001d0810897f5c782b5c9edeb3cc411b9568bdaeead098003da435b4'
             'cc061fc006d2e60ace2b3b4844c8e3d7ffda0164a0579dae2beb479d86dce7f0'
             'd1297cc2e222b4679dda9e972d39a9e8d3e65cd9b2f9fb762e27dc5781d5a65f'
             'e56fe5f8abb55f93117cd8b5e1214d06a21a9f8e0458607040c5c5e364b0a164'
