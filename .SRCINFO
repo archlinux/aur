@@ -1,6 +1,6 @@
 pkgbase = fjordlauncher-git
 	pkgdesc = Prism Launcher fork with support for alternative auth servers
-	pkgver = 10.0.1.1.r0.g9fcf3ce8d
+	pkgver = 11.0.0.0.r3.g2907c217f
 	pkgrel = 1
 	url = https://github.com/unmojang/FjordLauncher
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = fjordlauncher-git
 	makedepends = git
 	makedepends = jdk17-openjdk
 	makedepends = scdoc
+	makedepends = vulkan-headers
 	depends = cmark
 	depends = gcc-libs
 	depends = glibc

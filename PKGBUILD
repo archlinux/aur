@@ -11,7 +11,7 @@
 
 pkgname=fjordlauncher-git
 _pkgname=${pkgname%-git}
-pkgver=10.0.1.1.r0.g9fcf3ce8d
+pkgver=11.0.0.0.r3.g2907c217f
 pkgrel=1
 pkgdesc='Prism Launcher fork with support for alternative auth servers'
 arch=(i686 x86_64 aarch64)
@@ -43,6 +43,7 @@ makedepends=(
   git
   jdk17-openjdk
   scdoc
+  vulkan-headers
 )
 optdepends=(
   'glfw: to use system GLFW libraries'
@@ -88,6 +89,9 @@ build() {
     -DLauncher_BUILD_PLATFORM="archlinux" \
     -DLauncher_APP_BINARY_NAME="${_pkgname}" \
     -DLauncher_QT_VERSION_MAJOR="6" \
+    -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
+    -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
     -Wno-dev
   cmake --build build
 }
@@ -103,7 +107,4 @@ package() {
   install -Dm644 lionshead.license -t "$pkgdir"/usr/share/licenses/$pkgname/
   install -Dm644 batch.license -t "$pkgdir"/usr/share/licenses/$pkgname/
   install -Dm644 mdi.license -t "$pkgdir"/usr/share/licenses/$pkgname/
-
-  mv "${pkgdir}/usr/share/mime/packages/modrinth-mrpack-mime.xml" \
-     "${pkgdir}/usr/share/mime/packages/fjordlauncher-modrinth-mrpack-mime.xml"
 }
