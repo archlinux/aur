@@ -1,0 +1,108 @@
+diff --git a/cli/commands/upgrade.ts b/cli/commands/upgrade.ts
+deleted file mode 100644
+index 279f073..0000000
+--- a/cli/commands/upgrade.ts
++++ /dev/null
+@@ -1,82 +0,0 @@
+-import {
+-  Provider,
+-  UpgradeCommand,
+-  UpgradeOptions,
+-} from "https://deno.land/x/cliffy@v0.25.7/command/upgrade/mod.ts";
+-import { Versions } from "https://deno.land/x/cliffy@v0.25.7/command/upgrade/provider.ts";
+-
+-const UPGRADE_URL = "https://fabricmc.net/cli";
+-const COMMAND_NAME = "fabric";
+-
+-export function upgradeCommand() {
+-  const command = new UpgradeCommand({
+-    provider: new UpdateProvider(),
+-  })
+-    .description("Upgrade Fabric CLI tools executable to latest version");
+-
+-  command.removeOption("--version");
+-  command.removeOption("--force");
+-  command.removeOption("--list-versions");
+-  return command;
+-}
+-
+-class UpdateProvider extends Provider {
+-  name = COMMAND_NAME;
+-
+-  // Code edited from the default Provider
+-  override async upgrade(
+-    {}: UpgradeOptions,
+-  ): Promise<void> {
+-    const args = [
+-      "install",
+-      "--force",
+-      "--reload",
+-      "--quiet",
+-      "--global",
+-      "-A",
+-      "--name",
+-      COMMAND_NAME,
+-      UPGRADE_URL,
+-    ];
+-
+-    const command = new Deno.Command(Deno.execPath(), {
+-      args,
+-    });
+-
+-    const { success, stderr } = await command.output();
+-
+-    if (!success) {
+-      await Deno.stderr.write(stderr);
+-      throw new Error(
+-        `Failed to upgrade ${COMMAND_NAME}!`,
+-      );
+-    }
+-
+-    console.info(
+-      `Successfully upgraded!`,
+-    );
+-  }
+-
+-  override getVersions(_: string): Promise<Versions> {
+-    return Promise.resolve({
+-      latest: "latest",
+-      versions: ["latest"],
+-    });
+-  }
+-
+-  override getRepositoryUrl(_: string): string {
+-    throw new Error("Method not implemented.");
+-  }
+-
+-  override getRegistryUrl(_: string, __: string): string {
+-    throw new Error("Method not implemented.");
+-  }
+-
+-  override isOutdated(
+-    _: string,
+-    __: string,
+-    ___: string,
+-  ): Promise<boolean> {
+-    return Promise.resolve(true);
+-  }
+-}
+diff --git a/cli/main.ts b/cli/main.ts
+index 616788c..641aadb 100755
+--- a/cli/main.ts
++++ b/cli/main.ts
+@@ -7,7 +7,6 @@ import {
+   CompletionsCommand,
+ } from "https://deno.land/x/cliffy@v0.25.7/command/mod.ts";
+ import { initCommand } from "./commands/init.ts";
+-import { upgradeCommand } from "./commands/upgrade.ts";
+ 
+ // Replaced by esbuild.
+ declare let __VERSION__: string;
+@@ -24,7 +23,6 @@ if (import.meta.main) {
+       Deno.exit(0);
+     })
+     .command("init", initCommand())
+-    .command("upgrade", upgradeCommand())
+     .command("completions", new CompletionsCommand());
+ 
+   await cmd.parse();
