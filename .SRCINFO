@@ -1,0 +1,17 @@
+pkgbase = paga-bin
+	pkgdesc = Terminal pager, alternative to more/less (pre-compiled binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/StudiCraft/paga
+	install = paga.install
+	arch = x86_64
+	license = Apache-2.0
+	depends = gcc-libs
+	provides = paga
+	conflicts = paga
+	source = paga-0.1.0::https://github.com/StudiCraft/paga/releases/download/v0.1.0/paga
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/StudiCraft/paga/v0.1.0/LICENSE
+	sha256sums = f0abcd19f705b3f0bb6667dd6f7104d87e86f890959fb00bf6b1575e58c6bda4
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+
+pkgname = paga-bin
