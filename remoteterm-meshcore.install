@@ -1,14 +1,3 @@
-pre_install() {
-  getent group  remoteterm > /dev/null || groupadd -r remoteterm
-  getent passwd remoteterm > /dev/null || \
-    useradd -r -g remoteterm -d /var/lib/remoteterm-meshcore -s /sbin/nologin \
-      -c "RemoteTerm for MeshCore" remoteterm
-}
-
-pre_upgrade() {
-  pre_install
-}
-
 post_install() {
   echo "==> Set your radio connection (serial, TCP, or BLE) in"
   echo "==>   /etc/remoteterm-meshcore/remoteterm.env"
@@ -17,8 +6,30 @@ post_install() {
 }
 
 post_upgrade() {
-  systemctl daemon-reload
-  if systemctl is-active --quiet remoteterm-meshcore; then
-    systemctl restart remoteterm-meshcore
+  # Clean orphaned __pycache__ dirs left by the previous Python version
+  find /opt/remoteterm-meshcore -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
+
+  # Skip systemd operations in chroots/containers where the binary may exist
+  # but PID 1 is not systemd.
+  if [ -d /run/systemd/system ] && command -v systemctl &>/dev/null; then
+    systemctl daemon-reload || true
+    if systemctl is-active --quiet remoteterm-meshcore; then
+      systemctl restart remoteterm-meshcore || true
+    fi
   fi
+}
+
+pre_remove() {
+  if [ -d /run/systemd/system ] && command -v systemctl &>/dev/null; then
+    systemctl disable --now remoteterm-meshcore 2>/dev/null || true
+  fi
+}
+
+post_remove() {
+  if [ -d /run/systemd/system ] && command -v systemctl &>/dev/null; then
+    systemctl daemon-reload
+  fi
+
+  echo "==> Database and config remain in /var/lib/remoteterm-meshcore/, remoteterm user retained."
+  echo "==> To fully clean up: sudo rm -rf /var/lib/remoteterm-meshcore"
 }
