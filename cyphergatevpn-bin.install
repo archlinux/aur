@@ -1,0 +1,10 @@
+post_install() {
+  echo "==> Enabling CypherGate daemon..."
+  echo "Run the following command:"
+  echo "  sudo systemctl enable --now cyphergated.service"
+}
+
+post_upgrade() {
+  echo "==> If needed, restart the daemon:"
+  echo "  sudo systemctl restart cyphergated.service"
+}
