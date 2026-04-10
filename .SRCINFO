@@ -1,0 +1,22 @@
+pkgbase = rush-bin
+	pkgdesc = Fast terminal shell written in Rust
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/isene/rush
+	install = rush.install
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = glibc
+	depends = libgcc
+	provides = rush
+	conflicts = rush
+	options = !strip
+	source = README-0.1.4.md::https://raw.githubusercontent.com/isene/rush/v0.1.4/README.md
+	sha256sums = a7c7583d9a641a30f94eb00a173a50ff1416f68ae8d785f9ba318de466d5a37f
+	source_x86_64 = rush-x86_64-0.1.4::https://github.com/isene/rush/releases/download/v0.1.4/rush-linux-x86_64
+	sha256sums_x86_64 = 9b80382fb892ce157823d62b9c7d6f6ab1c9a2721b0880e9433245adf0fb67b3
+	source_aarch64 = rush-aarch64-0.1.4::https://github.com/isene/rush/releases/download/v0.1.4/rush-linux-aarch64
+	sha256sums_aarch64 = 307127422495f24f16cbfc1a9a9380a1d5f8c92929372bf93dadddbff8a04ce8
+
+pkgname = rush-bin

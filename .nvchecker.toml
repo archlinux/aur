@@ -1,0 +1,5 @@
+[rush-bin]
+source = "github"
+github = "isene/rush"
+use_latest_release = true
+prefix = "v"
