@@ -1,2 +1,3 @@
+- Fix multi identities not correctly retaining non-synced identities when edited on another system
 - Fix powershell command failure detection being broken in some places, leading to various issues in powershell environments
 - Fix NullPointer when executing automated browser actions
