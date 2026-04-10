@@ -6,7 +6,7 @@ conflicts=('aic8800d80')
 pkgver='1.0.0'
 pkgrel='6'
 
-pkgdesc="Kernel modules for WIFI AX900 8800d80 / Tenda"
+pkgdesc="Kernel modules for AIC8800D80 USB dongle WIFI AX900 with BT5.4"
 arch=('any')
 makedepends=("git")
 depends=("dkms")
