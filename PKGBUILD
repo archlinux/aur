@@ -14,6 +14,9 @@ source=('git+https://github.com/LIghtJUNction/Mimic-Node.git')
 sha256sums=('SKIP')
 
 prepare() {
+    if [ ! -d "$srcdir/Mimic-Node" ]; then
+        git clone --depth 1 https://github.com/LIghtJUNction/Mimic-Node.git "$srcdir/Mimic-Node"
+    fi
     cd "$srcdir/Mimic-Node"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
