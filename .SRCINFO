@@ -1,4 +1,4 @@
-pkgbase = ferret
+pkgbase = ferret-scanner
 	pkgdesc = Ferret out secrets and vulnerabilities in your API collections
 	pkgver = 0.1.2
 	pkgrel = 1
@@ -8,7 +8,7 @@ pkgbase = ferret
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = ferret-0.1.2.tar.gz::https://github.com/BitsBob/ferret/archive/v0.1.2.tar.gz
+	source = ferret-scanner-0.1.2.tar.gz::https://github.com/BitsBob/ferret/archive/v0.1.2.tar.gz
 	sha256sums = 0d38a98dc55bf6e8d24081bbb1917e02ed14bba225cd7a638a62d7cb050b92e4
 
-pkgname = ferret
+pkgname = ferret-scanner

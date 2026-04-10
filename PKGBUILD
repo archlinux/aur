@@ -1,7 +1,7 @@
 # Maintainer: Audey Godfrey-Prewett
 # audeygodfrey@gmail.com
 
-pkgname=ferret
+pkgname=ferret-scanner
 pkgver=0.1.2
 pkgrel=1
 pkgdesc='Ferret out secrets and vulnerabilities in your API collections'
