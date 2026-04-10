@@ -1,6 +1,6 @@
 # Maintainer: Jedrzej Ratajczak <mrozelek@gmail.com>
 pkgname=nilwidgets-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="GTK4 system monitoring widgets for Hyprland"
 arch=('x86_64')
