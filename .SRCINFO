@@ -1,6 +1,6 @@
 pkgbase = sipgate
 	pkgdesc = sipgate App - Telephony desktop application for sipgate customers
-	pkgver = 2.33.9
+	pkgver = 2.35.0
 	pkgrel = 1
 	url = https://sipgate.de/app
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = sipgate
 	makedepends = dpkg
 	provides = sipgate
 	conflicts = sipgate-app-clinq
-	noextract = sipgate-2.33.9-amd64.deb
+	noextract = sipgate-2.35.0-amd64.deb
 	options = !debug
-	source = https://desktop.download.sipgate.com/sipgate-2.33.9-amd64.deb
+	source = https://desktop.download.sipgate.com/sipgate-2.35.0-amd64.deb
 	source = run-sipgate-desktop.sh
-	b2sums = b4cc7639c68544f9cd8bf161b9b68f1a6114f9e2d8ded1b553db1aaef5102a0ecfc433b73d1f8464e8857b80c544fdb0849858d871ffb92a15e0d56dc4cb5085
+	b2sums = e39f8953653e15a2af0c404c474c33456151c644deba7d12ff1be98633053e357c732ed22e6c8150554375c42a94b6b0dba06ae7cfa24d91f6d69fd309eaeed9
 	b2sums = c9bc2f241256f04ea1f30fc6a79af35927054d09541ab37f96a8374dc1c96cebddf3774d8a9c9fa39cd9f031cde559f670dddc040b815c1106945f7f7e4d4cad
 
 pkgname = sipgate
