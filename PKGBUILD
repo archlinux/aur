@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=asak
-pkgver=0.3.5
-pkgrel=2
+pkgver=0.3.7
+pkgrel=1
 pkgdesc="A cross-platform audio recording/playback tool"
 arch=('x86_64')
 url="https://github.com/chaosprint/asak"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'alsa-lib' 'jack2')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('4e5b7b26f671887af1b0c582333d4c26b75d52dfb8f4e661195a8f839becf669b2603fe82550e4bfb157dfea1e93255400b1dcb0b13f2284eb3339f4fad90eba')
+sha512sums=('f10e3d4884a3150a73f1fad2ebfddd26927fa03b19a34b00ca6f26de228dcab96568090dbb449e5a0fe134bc769eff13a0f6a66f27fda3f49dc9f50f84a7349c')
 
 prepare() {
   cd "$pkgname-$pkgver"
