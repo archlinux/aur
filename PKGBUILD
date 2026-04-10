@@ -1,6 +1,6 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=simplearchiver
-pkgver=2.7.4
+pkgver=2.7.5
 pkgrel=1
 pkgdesc="An alternative to tar"
 arch=(x86_64)
