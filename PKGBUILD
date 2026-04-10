@@ -3,7 +3,7 @@
 
 pkgname=hmcl-beta-bin
 pkgver=3.13.0.339
-pkgrel=2
+pkgrel=3
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
@@ -21,10 +21,10 @@ source=("hmcl.desktop"
 sha256sums=('ef5edb4285293c77162374e15f01f3540c7f511f6d9ab5b7244c4b01eb8512de'
             '296914106dac2d07c9ce2bc92a91568830534332e9bf7554ea591f22efa357df'
             '9ba8de88261fab281ba017c5596b63bb871c6ef029981c557673b0b6aec0d2ce'
-            'd8293e012941c08ab0f9f21c803ebbd7e7de2498a0dc75eeb2b17a718fb389d2'
-            '2b5a5fa9033f524d06dfcbb1ca3ce2b4d4ec87e90d626a8956e3b8141cb075fc'
-            '76ef1d81982bfaffc8ce9143a6c11516e4d1aa0bd7283e9185f561e458f5da75'
-            'ed0aa74dc0deb3d3ebb0801376c2d153d1989537ab39deb8a81b7eb33b0f52a6')
+            'dfdb316c25f8c6f1329b095ca84ee842680451f0ae061c3cac7b97d6129f9348'
+            'ca7bbdd406643d82a97fccd2a50d35f71f8f37b55907d8a816981177add0b99b'
+            '6bdcccd199d0475e8c937f46f211e3a2b22722c8fc2c00e2704e08447feec0cb'
+            '3d280c9f1ebcfd7407426f98cd988ab5729c4a12f14f83b67c9e4d2bdb5ace38')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
 
