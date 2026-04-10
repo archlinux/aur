@@ -1,6 +1,6 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=promtool
-pkgver=3.10.0
+pkgver=3.11.1
 pkgrel=1
 pkgdesc='Tooling for the Prometheus monitoring system'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go')
 conflicts=('prometheus')
 source=("prometheus-v$pkgver.tar.gz::https://github.com/prometheus/prometheus/archive/v$pkgver.tar.gz")
-sha256sums=('a3d01efaf82edfd074f9fc48399969bcf22f22b8fb4353dfbbcc79cb2a03e579')
+sha256sums=('8832e2fed21f3945ba93659de35a4f3c4e170201b579d96a94f3dd69a9c7410b')
 options=(!lto)
 
 build() {
