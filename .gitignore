@@ -4,7 +4,8 @@
 !.SRCINFO
 !.nvchecker.toml
 !LICENSE
-!LICENSES
+!LICENSES/
+!LICENSES/*
 !PKGBUILD
 !REUSE.toml
 !vim-keybindings.patch
