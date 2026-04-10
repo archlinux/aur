@@ -1,0 +1,24 @@
+pkgbase = disarmed-bin
+	pkgdesc = VPN client with sing-box backend
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/v0idhrt/disarmed
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = disarmed
+	conflicts = disarmed
+	conflicts = disarmed-git
+	options = !strip
+	source = disarmed-bin-0.2.0.AppImage::https://github.com/v0idhrt/disarmed/releases/download/v0.2.0/disarmed_0.2.0_amd64.AppImage
+	source = disarmed-bin-0.2.0-daemon::https://github.com/v0idhrt/disarmed/releases/download/v0.2.0/disarmed-daemon
+	source = disarmed.desktop
+	source = LICENSE::https://raw.githubusercontent.com/v0idhrt/disarmed/main/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = disarmed-bin

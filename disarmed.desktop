@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=disarmed
+Comment=VPN client with sing-box backend
+Exec=disarmed %u
+Icon=disarmed
+Type=Application
+Categories=Network;VPN;
+Keywords=vpn;proxy;sing-box;
+StartupWMClass=disarmed
