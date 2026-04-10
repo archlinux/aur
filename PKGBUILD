@@ -1,7 +1,7 @@
-# Maintainer: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
+# Maintainer: Gabriel M. Dutra <gabrieldutra@tutanota.com>
 
 pkgname=kubespy
-pkgver=0.6.0
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Tools for observing Kubernetes resources in real time"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source_x86_64=(
     "kubespy::https://github.com/pulumi/kubespy/releases/download/v${pkgver}/kubespy-v${pkgver}-linux-amd64.tar.gz"
 )
 sha256sums_x86_64=(
-    'ef3c8aa133abd6a160692d9381932017b7e2511d2dbb124af0eaea5148f4776e'
+    'a1e9a38fd9afddeaec6c5c992aee8cb9ddaeabf9d6f122241754426a79d9b86e'
 )
 options=(!strip)
 
