@@ -1,6 +1,6 @@
 # Maintainer: Nick Lozon <nicklozon@gmail.com>
 pkgname=spr-bin
-pkgver=0.17.1
+pkgver=0.17.3
 pkgrel=1
 pkgdesc="Stacked Pull Requests on GitHub"
 arch=('x86_64')
@@ -9,13 +9,13 @@ license=('MIT')
 depends=('git')
 provides=('spr')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ejoffe/spr/releases/download/v${pkgver}/spr_linux_x86_64.tar.gz")
-sha256sums=('33e0c04e39b89380ee84d36924594761137a65dd4e150f6136a943c7da24058e')
+sha256sums=('83e97b4e7d4a55898bc1a0a28fef14cb95c5757a59791b34487e2f06a8052a10')
 
 package() {
-    cd "$srcdir"
-    
-    # Install binaries to /usr/bin
-    install -Dm755 git-amend "$pkgdir/usr/bin/git-amend"
-    install -Dm755 git-spr "$pkgdir/usr/bin/git-spr"
-    install -Dm755 spr_reword_helper "$pkgdir/usr/bin/spr_reword_helper"
+  cd "$srcdir"
+
+  # Install binaries to /usr/bin
+  install -Dm755 git-amend "$pkgdir/usr/bin/git-amend"
+  install -Dm755 git-spr "$pkgdir/usr/bin/git-spr"
+  install -Dm755 spr_reword_helper "$pkgdir/usr/bin/spr_reword_helper"
 }
