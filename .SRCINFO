@@ -1,7 +1,7 @@
 pkgbase = xc-manager-git
 	pkgdesc = Command vaulting and a Zsh logic engine for command templating and $BUFFER injection
-	pkgver = v0.7.1.r6.gd0be61e
-	pkgrel = 2
+	pkgver = v0.8.0.r0.g44dc239
+	pkgrel = 1
 	url = https://github.com/Rakosn1cek/xc-manager
 	arch = any
 	license = MIT
