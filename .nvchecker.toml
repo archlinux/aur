@@ -2,4 +2,4 @@
 source = "github"
 github = "programmersd21/bangen"
 use_latest_release = true
-prefix = "v"
+prefix = ""
