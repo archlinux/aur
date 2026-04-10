@@ -1,4 +1,4 @@
-# Maintainer: DeepChirp <DeepChirp@outlook.com>
+# Maintainer: DeepChirp <deepchirp@archlinuxcn.org>
 pkgname=easyeffects-digitalone1-presets-git
 _origin=EasyEffects-Presets
 pkgver=r76.347dc4d
