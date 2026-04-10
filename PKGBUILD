@@ -7,6 +7,7 @@ pkgdesc="Foundry DevOps automation CLI"
 arch=('x86_64')
 url="https://github.com/nyrra-labs/nyrra-foundry-cli"
 license=('Apache-2.0')
+install="${pkgname}.install"
 makedepends=('github-cli')
 provides=('nyrra-foundry-cli')
 conflicts=('nyrra-foundry-cli')
