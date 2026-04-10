@@ -13,7 +13,7 @@ depends=('gtk3' 'hidapi' 'rivalcfg' 'librsvg')
 makedepends=('cargo' 'rust')
 # Use GitHub release tarball (uploaded by the workflow)
 source=("https://github.com/ChadAPSheridan/RivalCfgGuiGTK/releases/download/v1.2.1/RivalCfgGuiGTK-1.2.1.tar.gz")
-sha256sums=(1c1c032f1045b79ee77a9a0b030ddfd39605f8b67a7d032a4a5b0a6f660d805c)  # Replace with the actual checksum
+sha256sums=(aaca1649f954fd0338f437978b09feb10bc14a4f079ffbd8fa23048b369abb90)  # Replace with the actual checksum
 
 build() {
   cd "$srcdir/RivalCfgGuiGTK-$pkgver"
