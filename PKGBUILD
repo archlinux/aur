@@ -1,7 +1,7 @@
 # Maintainer: tiesen243 <tiesen243@tiesen.id.vn>
 
 pkgname=qianyu-bin
-pkgver=0.2.0
+pkgver=0.2.0-2
 pkgrel=1
 pkgdesc="Qianyu desktop app"
 arch=('x86_64')
