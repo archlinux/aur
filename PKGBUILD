@@ -11,16 +11,16 @@
 # Python site-packages clean.
 
 pkgname=python-mempalace
-pkgver=3.0.0
-pkgrel=3
+pkgver=3.1.0
+pkgrel=6
 pkgdesc='The highest-scoring AI memory system, with 30x context compression and a temporal knowledge graph.'
 arch=('any')
 url='https://github.com/milla-jovovich/mempalace'
 license=('MIT')
 
-# Only depend on the Python interpreter itself; all Python library deps are
-# vendored inside the virtualenv at /opt/mempalace/.
-depends=('python')
+# We depend on the system onnxruntime-cuda to ensure compatibility with 
+# the system's CUDA version (especially for CUDA 13+).
+depends=('python' 'python-onnxruntime-cuda')
 
 provides=('mempalace')
 conflicts=('mempalace')
@@ -29,11 +29,11 @@ conflicts=('mempalace')
 makedepends=()
 
 source=("https://files.pythonhosted.org/packages/source/${pkgname:7:1}/${pkgname:7}/${pkgname:7}-$pkgver.tar.gz")
-sha256sums=('64f7c22d0fc50e26d0cd7746325e091e041f8863182e09c47b688bde070925c6')
+sha256sums=('13dd0d47fb4d5b3dc17993e1e2e058144979469dd5ebd5eef34808681d6dd3d2')
 
 build() {
     # Create a virtualenv and install mempalace + all its dependencies via pip.
-    # Using --no-cache-dir to avoid polluting the build environment.
+    # Using --system-site-packages to leverage the system's onnxruntime-cuda.
     python -m venv --system-site-packages "${srcdir}/venv"
     "${srcdir}/venv/bin/pip" install --no-cache-dir "mempalace==${pkgver}"
 }
@@ -44,7 +44,6 @@ package() {
     cp -a "${srcdir}/venv"/* "${pkgdir}/opt/mempalace/"
 
     # Fix shebang and path references from build-time srcdir to final /opt path.
-    # virtualenv hardcodes absolute paths, so we need to rewrite them.
     local _srcvenv="${srcdir}/venv"
     local _dstvenv="/opt/mempalace"
 
@@ -54,6 +53,20 @@ package() {
     # Rewrite shebangs and path refs in all bin/ scripts
     find "${pkgdir}${_dstvenv}/bin" -type f -exec \
         sed -i "s|${_srcvenv}|${_dstvenv}|g" {} +
+
+    # Patch ChromaDB to disable DnnlExecutionProvider which is broken in current Arch packages.
+    # This ensures it correctly falls back to CUDA or CPU without fatal errors.
+    local _ef_file=$(find "${pkgdir}${_dstvenv}/lib" -name "onnx_mini_lm_l6_v2.py")
+    if [ -f "${_ef_file}" ]; then
+        sed -i '/"CoreMLExecutionProvider" in self._preferred_providers/,+2a \
+\
+        if (\
+            self._preferred_providers\
+            and "DnnlExecutionProvider" in self._preferred_providers\
+        ):\
+            # remove DnnlExecutionProvider from the list, it is broken in some Arch packages.\
+            self._preferred_providers.remove("DnnlExecutionProvider")' "${_ef_file}"
+    fi
 
     # Install a wrapper script to /usr/bin/ so 'mempalace' is on PATH
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/mempalace" <<'WRAPPER'
