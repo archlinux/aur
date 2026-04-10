@@ -1,0 +1,21 @@
+pkgbase = proxypin-bin-fixed
+	pkgdesc = ProxyPin binary with KDE6 compatibility fixes and runtime fixes (unofficial)
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://github.com/wanghongenpin/network_proxy_flutter
+	arch = x86_64
+	license = Apache-2.0
+	depends = ca-certificates
+	depends = gtk3
+	depends = kde-cli-tools
+	depends = zenity
+	provides = proxypin-bin=1.2.6
+	conflicts = proxypin-bin
+	conflicts = proxypin-bin-debug
+	options = !debug
+	source = proxypin-1.2.6.deb::https://github.com/wanghongenpin/network_proxy_flutter/releases/download/v1.2.6/ProxyPin-Linux.deb
+	source = proxypin.sh
+	sha256sums = d030cb5cd770270c0d4825ff5eaa41f4cf27d4244192f15aca3e4cd3c9889729
+	sha256sums = fced32536801d7664c542f9f37bc8978a12c3d4342ee424ff23353c4e9a1251d
+
+pkgname = proxypin-bin-fixed
