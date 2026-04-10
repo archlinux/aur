@@ -2,8 +2,8 @@
 # Contributor: StaticNullException <aurcontact@teto.party>
 
 pkgname=zen-browser
-pkgver=1.19.6b
-pkgrel=4
+pkgver=1.19.8b
+pkgrel=1
 pkgdesc='Firefox-based web browser built from upstream release source snapshot'
 url='https://zen-browser.app'
 arch=('x86_64')
@@ -64,7 +64,7 @@ makedepends=(
   zip
 )
 optdepends=(
-  'hunspell-en_US: Spell checking, American English'
+  '7a17bf92f0030e1100df8a42fe981a07cb6a599750c8c26661f92ca60247733f'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
   'onnxruntime: Local machine learning features such as smart tab groups'
@@ -79,6 +79,9 @@ options=(
 )
 
 _srcroot='zen-source'
+# Keep versioned GitHub release URLs here. Do not switch this to /latest/ in an
+# AUR package; use .nvchecker.toml or update-zen-browser-release.sh to refresh
+# pkgver and checksums deterministically.
 source=(
   "$_srcroot-$pkgver.tar.zst::https://github.com/zen-browser/desktop/releases/download/$pkgver/zen.source.tar.zst"
   "$pkgname.desktop"
