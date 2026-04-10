@@ -13,7 +13,7 @@ conflicts=('beamsync')
 # Pull directly from our official v2.3 release binary we just uploaded!
 source=("https://github.com/PranavAgarkar07/BeamSync/releases/download/v${pkgver}/BeamSync"
         "beamsync.desktop")
-sha256sums=('28e40fcd5258b62a5f7fec24dd25f9dac8aa93b7908c7a59c880e5f6856235c0'
+sha256sums=('120c3086d89dc28a5d9442f3ba9bc2696f2de6208b9e0256904ae3528d30990d'
             '897fa734e9806ccd7354c72979196f563c55119152999b1b94d03231ee0d96a1')
 
 package() {
