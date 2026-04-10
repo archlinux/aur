@@ -1,0 +1,4 @@
+[giff]
+source = "git"
+git = "https://github.com/bahdotsh/giff.git"
+prefix = "v"

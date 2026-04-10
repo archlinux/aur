@@ -1,0 +1,17 @@
+pkgbase = giff
+	pkgdesc = A terminal-based Git diff viewer with interactive rebase capabilities
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/bahdotsh/giff
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = git
+	depends = gcc-libs
+	depends = libgcc_s.so
+	depends = glibc
+	source = https://github.com/bahdotsh/giff/archive/v1.2.0/giff-1.2.0.tar.gz
+	sha256sums = 475d192ad861e7bba5b881d9ce12459e7b918ad20c9214324a76271092c4a13c
+
+pkgname = giff
