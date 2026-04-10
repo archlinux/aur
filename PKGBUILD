@@ -10,7 +10,7 @@
 
 pkgname=hmcl-bin
 pkgver=3.12.4
-pkgrel=2
+pkgrel=3
 install=.install
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
@@ -30,10 +30,10 @@ source=("hmcl.desktop"
 sha256sums=('9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b'
             'fe8c663bd3aaee7c70dff4da75781a078993c665e5492883d708e46658e6c0ec'
             '0b12ecdeb316fbe14617b595f443086feebd66b9d5d8c69d1070ff34cc97048c'
-            '1b61f9271ea1c2ae981c27247153e4010fc12b23148d202755bbc77ec094abc0'
-            'cce5b43a6877c96ace74fda96ab6585bb8eedb62025ba7aaad9f912090142e6a'
-            'bc25f188eb36f4ebe96960ef650cdb02f1ada7b2acdba0c53fa6290771644b05'
-            '5ed767d3a3fbe6ab65ad931ba5a743abb538d2b276e14d149d2973dadcc5946f')
+            '8fcf46efaa5e7e1ecde943b11cb65ae7c827933699d0274df4382421b19af054'
+            '16ad1c9d42db302aa745fb343ab935dc51c0640e39be50e0095ebfc6036816b6'
+            '3ab644efc6d2765cfcb9bb3833548d45d0d6aeba8b7da1dd08c70db267d6dfdb'
+            '37a6b52938af13a4eaa8c045f9bc19a181bb7ef49e1f6827e6bc07839d19eb33')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
 
