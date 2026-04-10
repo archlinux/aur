@@ -3,7 +3,7 @@
 pkgname=astrbot-git
 _pkgname=astrbot
 pkgver=4.22.2.r631.gec363aaa
-pkgrel=1
+pkgrel=10
 
 pkgver() {
   cd "$_pkgname"
