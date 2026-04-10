@@ -6,7 +6,7 @@
 pkgbase=rsbackup
 pkgname=('rsbackup' 'rsbackup-graph')
 pkgver=10.0
-pkgrel=7
+pkgrel=8
 pkgdesc="rsync-based backup utility"
 arch=('x86_64' 'aarch64')
 url="https://www.greenend.org.uk/rjk/rsbackup"
