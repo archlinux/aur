@@ -1,17 +1,17 @@
 pkgname=ebyt
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Minimal X11 activity tracker"
 arch=('x86_64')
 url='https://github.com/barjo/ebyt'
 license=('Apache-2.0')
 depends=('libx11' 'libxi' 'sqlite')
-makedepends=('zig>=0.14.0')
+makedepends=('zig>=0.15.0')
 provides=('ebyt')
 conflicts=('ebyt-bin')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/barjo/ebyt/archive/v$pkgver.tar.gz")
-sha256sums=('64d311eff4c0ef9f094c321b19265e45189b5c5424e084e14b4c201be77c635a')
+sha256sums=('4c55846bb62277f8b4e710d399d76464d5b09289f2b78ea8ae7b700d583b6193')
 
 build() {
     cd "$pkgname-$pkgver"
