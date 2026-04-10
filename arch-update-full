@@ -13,104 +13,45 @@ CYAN_NEON='\033[1;36m'
 MAGENTA_NEON='\033[1;35m'
 RED_NEON='\033[1;31m'
 WHITE_NEON='\033[1;37m'
-GRAY='\033[0;90m'
 COLUMNS=$(tput cols)
 LARGURA_BOX=64
 
-# --- [SISTEMA] MODO SENTINELA: INTERCEPÇÃO SILENCIOSA ---
+
+
+# --- [SISTEMA] MODO SENTINELA: APENAS CHECAGEM ---
+
 CHECK_FOR_UPDATES() {
-   
-   # --- 1. DETECÇÃO DO HELPER AUR (Prioridade YAY) ---
-    if command -v yay &> /dev/null; then
-        AUR_HELPER="yay"
-    elif command -v paru &> /dev/null; then
-        AUR_HELPER="paru"
-    else
-        AUR_HELPER=""
-    fi
-   
-    # Conta atualizações (Silencioso)
+    AUR_H=$(command -v yay || command -v paru)
+    
     U_PACMAN=$(checkupdates 2>/dev/null | wc -l)
-   U_AUR=0
-    if [ -n "$AUR_HELPER" ]; then
-        U_AUR=$($AUR_HELPER -Qu 2>/dev/null | wc -l)
-    fi
+    U_AUR=0
+    [[ -n "$AUR_H" ]] && U_AUR=$($AUR_H -Qu 2>/dev/null | wc -l)
     U_FLAT=$(command -v flatpak &>/dev/null && flatpak remote-ls --updates 2>/dev/null | wc -l || echo 0)
     U_SNAP=$(command -v snap &>/dev/null && snap refresh --list 2>/dev/null | grep -c '^[^Name]' || echo 0)
 
     TOTAL=$((U_PACMAN + U_AUR + U_FLAT + U_SNAP))
 
     if [ "$TOTAL" -gt 0 ]; then
-        notify-send "🛡️ SENTINEL v3.6" "Atenção: $TOTAL atualizações pendentes.\nInicie o  script arch update full para reforçar o sistema." -u normal
+        notify-send -u normal -a "Arch Update Full" \
+        "🛡️ SENTINELA: Reforços Detectados" \
+        "Existem $TOTAL pacotes pendentes.\nAbra o app Arch Update Full ou \nno terminal para iniciar o Protocolo Sentinela."
     fi
 }
 
-# Este bloco intercepta a chamada do Systemd Timer a cada 3 horas
+# --- INTERCEPTADOR DE SINAL ---
 if [[ "$1" == "--check" ]]; then
-    # Verifica se a função existe para evitar erro de execução
-    if declare -f CHECK_FOR_UPDATES > /dev/null; then
+    
+    if ping -c 1 -W 7 8.8.8.8 &>/dev/null; then
         CHECK_FOR_UPDATES
-    else
-     
-        U_PACMAN=$(checkupdates 2>/dev/null | wc -l)
-        
-        
-        [ -x "$(command -v yay)" ] && H="yay" || H="paru"
-        U_AUR=$($H -Qu 2>/dev/null | wc -l)
-        
-      
-        U_FLAT=$(command -v flatpak &>/dev/null && flatpak remote-ls --updates 2>/dev/null | wc -l || echo 0)
-        U_SNAP=$(command -v snap &>/dev/null && snap refresh --list 2>/dev/null | grep -c '^[^Name]' || echo 0)
-
-        TOTAL=$((U_PACMAN + U_AUR + U_FLAT + U_SNAP))
-
-        if [ "$TOTAL" -gt 0 ]; then
-            notify-send -u critical -a "Arch Update Full" \
-            "🛡️ REFORÇOS DISPONÍVEIS" \
-            "Existem $TOTAL pacotes aguardando (Core/AUR/Apps).\nAbra o terminal para atualizar."
-        fi
     fi
-    exit 0 # Mata a execução aqui para não carregar a interface visual ou logs
+    exit 0
 fi
-
-
-# --- CONFIGURAÇÃO DE LOGS ROTATIVOS ---
-LOG_DIR="$HOME/.logs_arch_update_full"
-mkdir -p "$LOG_DIR"  
-
-DATA_LOG=$(date "+%Y-%m-%d_%H-%M-%S")
-LOG_ATUAL="$LOG_DIR/update_$DATA_LOG.log"
-
-# Função para Limpeza (FIFO - Keep 7)
-rotate_logs() {
-    
-    LOG_COUNT=$(ls -1 "$LOG_DIR"/update_*.log 2>/dev/null | wc -l)
-    
-    if [ "$LOG_COUNT" -ge 7 ]; then
-      
-        OLD_LOG=$(ls -1t "$LOG_DIR"/update_*.log | tail -n 1)
-        rm "$OLD_LOG"
-        echo -e "${GRAY_NEON}[LOG_SYSTEM] Ciclo de rotação ativo. Log antigo removido: $(basename "$OLD_LOG")${NC}"
-    fi
-}
-
-
-rotate_logs
-
-
-exec > >(tee -i "$LOG_ATUAL") 2>&1
-
-echo -e "${GRAY_NEON}--- INICIANDO REGISTRO DE SESSÃO: $DATA_LOG ---${NC}"
-
-
-
-
-
 
 # --- [SISTEMA] PROTOCOLO DE AUTO-INSTALAÇÃO DA SENTINELA ---
 SETUP_SENTINEL() {
     local SERVICE_DIR="$HOME/.config/systemd/user"
-    local SCRIPT_PATH=$(realpath "$0") # Descobre onde o script está no seu SSD
+    local SCRIPT_PATH
+SCRIPT_PATH=$(realpath "$0") # Descobre onde o script está no seu SSD
     
     mkdir -p "$SERVICE_DIR"
 
@@ -151,7 +92,43 @@ EOF
 SETUP_SENTINEL
 
 
-# --- CABEÇALHO: ARCH UPDATE FULL v3.6 (BLOCK EDITION) ---
+
+
+
+# --- CONFIGURAÇÃO DE LOGS ROTATIVOS ---
+LOG_DIR="$HOME/.logs_arch_update_full"
+mkdir -p "$LOG_DIR"  
+
+DATA_LOG=$(date "+%Y-%m-%d_%H-%M-%S")
+LOG_ATUAL="$LOG_DIR/update_$DATA_LOG.log"
+
+# Função para Limpeza logs (FIFO - Keep 7)
+rotate_logs() {
+    local LOG_COUNT
+    local OLD_LOG
+
+    LOG_COUNT=$(find "$LOG_DIR" -maxdepth 1 -name "update_*.log" 2>/dev/null | wc -l)
+    
+    if [ "$LOG_COUNT" -ge 7 ]; then
+        OLD_LOG=$(find "$LOG_DIR" -maxdepth 1 -name "update_*.log" -type f -printf '%T@ %p\n' | sort -n | head -n 1 | cut -d' ' -f2-)
+        
+        if [ -n "$OLD_LOG" ]; then
+            rm "$OLD_LOG"
+            echo -e "${RED_NEON}[LOG_SYSTEM] Ciclo de rotação ativo. Log antigo removido: $(basename "$OLD_LOG")${NC}"
+        fi
+    fi
+}
+
+
+rotate_logs
+
+
+exec > >(tee -i "$LOG_ATUAL") 2>&1
+
+echo -e "${GRAY_NEON}--- INICIANDO REGISTRO DE SESSÃO: $DATA_LOG ---${NC}"
+
+
+# --- CABEÇALHO: ARCH UPDATE FULL v3.7 (BLOCK EDITION) ---
 clear
 echo -e "${NEON_BLUE}"
 echo "  █████╗ ██████╗  ██████╗██╗  ██╗    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗"
@@ -167,7 +144,7 @@ echo -e "                              ${NEON_BLUE}██╔══╝  ██║
 echo -e "                              ${NEON_BLUE}██║     ╚██████╔╝███████╗███████╗${NC}"
 echo -e "                              ${NEON_BLUE}╚═╝      ╚═════╝ ╚══════╝╚══════╝${NC}"
 echo ""
-echo -e "  ${PINK_NEON}─────────────────── ${YELLOW_NEON}VERSION 3.6 ${PINK_NEON} ────────────────────${NC}"
+echo -e "  ${PINK_NEON}─────────────────── ${YELLOW_NEON}VERSION 3.7 ${PINK_NEON} ────────────────────${NC}"
 echo -e "  ${PINK_NEON}>> UPDATING • AUTOMATING • SECURING <<${NC}"
 echo ""
 echo -e "  ${NEON_BLUE}[ MODULES: ROLLING_SYNC | AUR_INJECTION | INTEGRITY_AUDIT ]${NC}"
@@ -242,7 +219,7 @@ if [ -n "$YAY_INSTALLED" ] && [ -n "$PARU_INSTALLED" ]; then
     echo -e "${NEON_BLUE}Qual você deseja utilizar para esta sessão?${NC}"
     echo -e "  ${PINK_NEON}(1)${NC} YAY"
     echo -e "  ${PINK_NEON}(2)${NC} PARU"
-    read -n 1 -p "[ESCOLHA]: " AUR_CHOICE
+    read -rn 1 -p "[ESCOLHA]: " AUR_CHOICE
     echo ""
 
     case $AUR_CHOICE in
@@ -329,19 +306,31 @@ fi
 
 # ---  AUDITORIA DE NÚCLEO (REBOOT CHECK) ---
 CHECK_REBOOT_NEEDED() {
-    
     local CRITICAL_PACKAGES="linux|nvidia|mesa|ucode|systemd|wayland|xorg"
     
-    TODAY=$(date "+%Y-%m-%d")
-    REBOOT_REASON=$(grep "$TODAY" /var/log/pacman.log | grep -E "upgraded ($CRITICAL_PACKAGES)" | awk '{print $4}' | sort -u | tr '\n' ' ')
+    
+    BOOT_TIME=$(uptime -s)
+    BOOT_TIMESTAMP=$(date -d "$BOOT_TIME" +%s)
 
-    if [ -n "$REBOOT_REASON" ]; then
+    REBOOT_REQUIRED=false
+    REBOOT_REASON=""
+
+    
+    while read -r line; do
+        UPDATE_TIME=$(echo "$line" | cut -d' ' -f1,2 | tr -d '[]')
+        UPDATE_TIMESTAMP=$(date -d "$UPDATE_TIME" +%s)
+        
+        if [ "$UPDATE_TIMESTAMP" -gt "$BOOT_TIMESTAMP" ]; then
+            PKG_NAME=$(echo "$line" | awk '{print $4}')
+            REBOOT_REASON+="$PKG_NAME "
+            REBOOT_REQUIRED=true
+        fi
+    done < <(grep "$(date "+%Y-%m-%d")" /var/log/pacman.log | grep -E "upgraded ($CRITICAL_PACKAGES)")
+
+    if [ "$REBOOT_REQUIRED" = true ]; then
         echo -e "\n${RED_NEON}[⚠️  ALERTA DE INTEGRIDADE]${NC}"
-        echo -e "${YELLOW_NEON}Componentes críticos foram alterados:${NC} ${WHITE_NEON}$REBOOT_REASON${NC}"
-        echo -e "${PINK_NEON}>> RECOMENDAÇÃO: Reinicie o sistema imediatamente para carregar os novos drivers/kernel.${NC}"
-        REBOOT_REQUIRED=true
-    else
-        REBOOT_REQUIRED=false
+        echo -e "${YELLOW_NEON}Componentes críticos foram alterados APÓS o boot:${NC} ${WHITE_NEON}$REBOOT_REASON${NC}"
+        echo -e "${PINK_NEON}>> RECOMENDAÇÃO: Reinicie o sistema para aplicar as mudanças. <<${NC}"
     fi
 }
 
@@ -351,7 +340,7 @@ CHECK_REBOOT_NEEDED() {
 status_msg "PURGING_RESIDUAL_FRAGMENTS (ORPHANS)"
 ORPHANS=$(pacman -Qdtq)
 if [ -n "$ORPHANS" ]; then
-    sudo pacman -Rns $ORPHANS --noconfirm
+    sudo pacman -Rns "$ORPHANS" --noconfirm
     echo -e "${GREEN_NEON}[SUCCESS]${NC} Residual data erased."
 else
     echo -e "${YELLOW_NEON}[INFO]${NC} No fragments found in sectors."
@@ -381,7 +370,7 @@ printf "${YELLOW_NEON}║${NC}${NEON_BLUE}%s%*s${NC}${YELLOW_NEON}║${NC}\n" "$
 # Rodapé da Caixa
 echo -e "${YELLOW_NEON}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
 
-read -p "(s/N): " escolha_auditoria
+read -rp "(s/N): " escolha_auditoria
 
 
 if [[ "$escolha_auditoria" =~ ^[Ss]$ ]]; then
@@ -419,7 +408,7 @@ echo ""
 echo -e "      ${ASSINATURA_COR}© [2026] ARCH UPDATER PROTOCOL | by Gustavo Gianeli (Sétimo)${NC}"
 echo ""
 
-## --- PROTOCOLO DE ENCERRAMENTO INTERATIVO v4.0 ---
+## --- PROTOCOLO DE ENCERRAMENTO INTERATIVO v3.7 ---
 echo -e "\n${CYAN_NEON}--------------------------------------------------------------------------------------${NC}"
 echo -e "${MAGENTA_NEON}   >> STATUS: SECURE | O QUE DESEJA FAZER AGORA ? <<${NC}"
 echo -e "${CYAN_NEON}--------------------------------------------------------------------------------------${NC}"
@@ -441,11 +430,11 @@ NOTIFY_FINISH() {
 # --- [SISTEMA] NOTIFICAÇÃO E AUDITORIA FINAL ---
 NOTIFY_FINISH
 
-# Chama a função que criamos para escanear o log do Pacman
+
 CHECK_REBOOT_NEEDED
 
 echo -e "\n${GRAY_NEON}------------------------------------------------------------${NC}"
-echo -e "${CYAN_NEON}              MENU DE ENCERRAMENTO - v3.6${NC}"
+echo -e "${CYAN_NEON}              MENU DE ENCERRAMENTO - v3.7${NC}"
 echo -e "${GRAY_NEON}------------------------------------------------------------${NC}"
 
 echo -e "${MAGENTA_NEON}(A)${NC} ${WHITE}Encerrar sessão e fechar terminal${NC} ${CYAN_NEON}(Kill Switch)${NC}"
@@ -461,27 +450,27 @@ fi
 
 echo ""
 echo -ne "${CYAN_NEON}[ESCOLHA]:${NC} "
-read -n 1 OPCAO
+read -rn 1 OPCAO
 echo ""
 
 case $OPCAO in
-    [Aa]|[aa])
+    [Aa])
         echo -e "${RED_NEON}[!] Encerrando conexão e fechando hardware...${NC}"
         sleep 0.5
         kill -9 "$(ps -o ppid= -p $$)"
         ;;
-    [Bb]|[bb])
+    [Bb])
         echo -e "${YELLOW_NEON}[!] Sessão em modo leitura. Analise os logs.${NC}"
         echo -ne "${WHITE}Pressione ${MAGENTA_NEON}[ENTER]${NC} para encerrar o terminal...${NC}"
-        read
+        read -r _
         kill -9 $PPID
         ;;
-   [Cc]|[cc])
+   [Cc])
         echo -e "${GREEN_NEON}[!] Protocolo encerrado. Invocando Shell persistente...${NC}"
         echo -e "${GRAY_NEON}------------------------------------------------------------${NC}"
         /bin/bash
         ;;
-    [Dd]|[dd])
+    [Dd])
         echo -e "${RED_NEON}[!] INICIANDO PROTOCOLO DE REBOOT...${NC}"
         sleep 2
         sudo reboot
