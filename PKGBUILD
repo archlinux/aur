@@ -1,6 +1,6 @@
 # Maintainer: Jedrzej Ratajczak <mrozelek@gmail.com>
 pkgname=nilgreeter-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Minimal GTK4 greeter for greetd on Hyprland"
 arch=('x86_64')
