@@ -1,0 +1,5 @@
+[kastrup-rs-bin]
+source = "github"
+github = "isene/kastrup"
+use_latest_release = true
+prefix = "v"

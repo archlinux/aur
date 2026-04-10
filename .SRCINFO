@@ -1,0 +1,21 @@
+pkgbase = kastrup-rs-bin
+	pkgdesc = Unified messaging hub written in Rust
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/isene/kastrup
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = glibc
+	depends = libgcc
+	provides = kastrup
+	conflicts = kastrup-rs
+	options = !strip
+	source = README-0.1.10.md::https://raw.githubusercontent.com/isene/kastrup/v0.1.10/README.md
+	sha256sums = 9980b760e3a760ab744eac23d8c4ee9d73d5ba1dba1ebe54339e4ff5a164aa33
+	source_x86_64 = kastrup-x86_64-0.1.10::https://github.com/isene/kastrup/releases/download/v0.1.10/kastrup-linux-x86_64
+	sha256sums_x86_64 = 1f8809cc69b681b2cb3a335b5a5ecb5487e4d66aa58c48f557a779875e7fbaa6
+	source_aarch64 = kastrup-aarch64-0.1.10::https://github.com/isene/kastrup/releases/download/v0.1.10/kastrup-linux-aarch64
+	sha256sums_aarch64 = 217b072adaa4454526f2c7ecbbba15e9603f372552fc288fdf99b10f94a31afd
+
+pkgname = kastrup-rs-bin
