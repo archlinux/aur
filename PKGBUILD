@@ -1,7 +1,7 @@
 # Maintainer: Victor Sosa <victorsosadev@gmail.com>
 
 pkgname=vswaybar-studio
-pkgver=1.2.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A visual configuration editor for Waybar — build, style and preview your bar in real time"
 arch=('any')
@@ -11,18 +11,14 @@ depends=(
     'python'
     'python-gobject'
     'python-cairo'
+    'webkit2gtk-4.1'
     'waybar'
 )
 optdepends=(
-    'matugen: palette generation from wallpaper image'
-    'swaync: notification center module support'
-    'wlogout: power menu module support'
-    'kitty: terminal emulator for the updates module'
-    'pavucontrol: audio control (pulseaudio module on-click)'
-    'network-manager-applet: network settings (network module on-click)'
+    'matugen: palette generation from wallpaper image (Styling tab)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/victorsosaMx/vsWaybar-Studio/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3e8474232b103bc5343d72bb6bdbe0c3d928ba133016c5b19934f8cf1e5918cd')
+sha256sums=('58f2be5043c3daf029e49d9607b3d4bcdab6853619770f043255ed1226f48d00')
 
 package() {
     cd "vsWaybar-Studio-$pkgver"
@@ -37,7 +33,8 @@ package() {
     install -Dm644 README.md              "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 CHANGELOG.md           "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 
-    # weather scripts (bundled defaults loaded by the app when user files don't exist)
+    # bundled scripts (installed by the app to ~/.config/waybar/scripts/ on demand)
+    install -Dm755 vsbar.py               "$pkgdir/usr/share/$pkgname/vsbar.py"
     install -Dm644 weather.py             "$pkgdir/usr/share/$pkgname/weather.py"
     install -Dm755 weather.sh             "$pkgdir/usr/share/$pkgname/weather.sh"
     install -Dm644 weather.conf.template  "$pkgdir/usr/share/$pkgname/weather.conf.template"

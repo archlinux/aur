@@ -1,6 +1,6 @@
 pkgbase = vswaybar-studio
 	pkgdesc = A visual configuration editor for Waybar — build, style and preview your bar in real time
-	pkgver = 1.2.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/victorsosaMx/vsWaybar-Studio
 	arch = any
@@ -8,14 +8,10 @@ pkgbase = vswaybar-studio
 	depends = python
 	depends = python-gobject
 	depends = python-cairo
+	depends = webkit2gtk-4.1
 	depends = waybar
-	optdepends = matugen: palette generation from wallpaper image
-	optdepends = swaync: notification center module support
-	optdepends = wlogout: power menu module support
-	optdepends = kitty: terminal emulator for the updates module
-	optdepends = pavucontrol: audio control (pulseaudio module on-click)
-	optdepends = network-manager-applet: network settings (network module on-click)
-	source = vswaybar-studio-1.2.1.tar.gz::https://github.com/victorsosaMx/vsWaybar-Studio/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = 3e8474232b103bc5343d72bb6bdbe0c3d928ba133016c5b19934f8cf1e5918cd
+	optdepends = matugen: palette generation from wallpaper image (Styling tab)
+	source = vswaybar-studio-1.4.0.tar.gz::https://github.com/victorsosaMx/vsWaybar-Studio/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = 58f2be5043c3daf029e49d9607b3d4bcdab6853619770f043255ed1226f48d00
 
 pkgname = vswaybar-studio
