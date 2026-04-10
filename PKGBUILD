@@ -82,6 +82,6 @@ package(){
    
    # Install entry in application menu, including icon
 
-   install -vDm 644 "${srcdir}/${pkgname}-scangear.desktop" "${pkgdir}/usr/share/applications/${pkgname}-scangear.desktop"
-   install -vDm 644 "${srcdir}/${pkgname}-scangear-icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}-scangear-icon.png"
+   install -vDm 644 "${srcdir}/canon-pixma-mg3000-complete-scangear-fixed.desktop" "${pkgdir}/usr/share/applications/${pkgname}-scangear.desktop"
+   install -vDm 644 "${srcdir}/canon-pixma-mg3000-complete-scangear-fixed-icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}-scangear-icon.png"
 }
