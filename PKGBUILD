@@ -9,6 +9,17 @@ url='https://github.com/generalaction/emdash'
 license=('Apache-2.0')
 depends=('alsa-lib' 'gtk3' 'libsecret' 'nss')
 makedepends=('git' 'nodejs' 'pnpm')
+optdepends=(
+    'claude-code: Claude Code agent'
+    'cline-cli: Cline agent'
+    'cursor-bin: Cursor agent'
+    'gemini-cli-git: Gemini CLI agent'
+    'github-copilot-cli: GitHub Copilot agent'
+    'hermes-agent: Hermes agent'
+    'kimi-cli: Kimi agent'
+    'opencode-git: OpenCode agent'
+    'qwen-code-bin: Qwen Code agent'
+)
 options=('!strip' '!debug')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")

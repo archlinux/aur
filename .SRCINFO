@@ -12,6 +12,15 @@ pkgbase = emdash-git
 	depends = gtk3
 	depends = libsecret
 	depends = nss
+	optdepends = claude-code: Claude Code agent
+	optdepends = cline-cli: Cline agent
+	optdepends = cursor-bin: Cursor agent
+	optdepends = gemini-cli-git: Gemini CLI agent
+	optdepends = github-copilot-cli: GitHub Copilot agent
+	optdepends = hermes-agent: Hermes agent
+	optdepends = kimi-cli: Kimi agent
+	optdepends = opencode-git: OpenCode agent
+	optdepends = qwen-code-bin: Qwen Code agent
 	provides = emdash=0.4.47.r18.g44ff202
 	conflicts = emdash
 	options = !strip
