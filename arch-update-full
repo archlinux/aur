@@ -316,16 +316,20 @@ CHECK_REBOOT_NEEDED() {
     REBOOT_REASON=""
 
     
-    while read -r line; do
-        UPDATE_TIME=$(echo "$line" | cut -d' ' -f1,2 | tr -d '[]')
-        UPDATE_TIMESTAMP=$(date -d "$UPDATE_TIME" +%s)
+   while read -r line; do
+       
+        UPDATE_TIME=$(echo "$line" | awk '{print $1}' | tr -d '[]')
         
-        if [ "$UPDATE_TIMESTAMP" -gt "$BOOT_TIMESTAMP" ]; then
+        UPDATE_TIMESTAMP=$(date -d "$UPDATE_TIME" +%s 2>/dev/null) || continue
+        
+        
+        if [[ -n "$UPDATE_TIMESTAMP" && "$UPDATE_TIMESTAMP" -gt "$BOOT_TIMESTAMP" ]]; then
+           
             PKG_NAME=$(echo "$line" | awk '{print $4}')
             REBOOT_REASON+="$PKG_NAME "
             REBOOT_REQUIRED=true
         fi
-    done < <(grep "$(date "+%Y-%m-%d")" /var/log/pacman.log | grep -E "upgraded ($CRITICAL_PACKAGES)")
+    done < <(grep "$(date "+%Y-%m-%d")" /var/log/pacman.log | grep -E "upgraded.*($CRITICAL_PACKAGES)")
 
     if [ "$REBOOT_REQUIRED" = true ]; then
         echo -e "\n${RED_NEON}[⚠️  ALERTA DE INTEGRIDADE]${NC}"
