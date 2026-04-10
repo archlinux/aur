@@ -1,19 +1,23 @@
 pkgname=gimp-plugin-id-photo
-pkgver=20180606
+pkgver=20250817
 pkgrel=1
 pkgdesc="id photo for documents gimp plugin"
-arch=(i686 x86_64)
-url="http://gimp-id-photo.ru/"
+arch=(any)
+url="https://gimp-id-photo.ru/instruction_manual.html"
 license=('GPL3')
-depends=('python2' 'gimp' 'python2-gimp')
-source=(http://gimp-id-photo.ru/files/id_photo_for_GIMP-2.10.x.zip)
-sha256sums=('2572260925f8fa4353dee1d7c460cc15d4529d5f5a5713ef4b2560d59e710fb3')
+depends=('python' 'gimp')
+source=("source.tar.gz::https://github.com/karabanov/gimp-id-photo/archive/refs/heads/copilot/fix-86d4b524-8ebf-4fbb-bd3c-e6877223c59d.tar.gz")
+sha256sums=(c1569adb475ef21ec79c66bc81f890b879b4d6a34d46e9cc43051a1eaf3bd745)
+noextract=(source.tar.gz)
 
 prepare() {
-  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' id_photo_BETA.py
+  mkdir -p "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname"
+  tar -xf ../source.tar.gz --strip-components=1
 }
 
 package() {
-  cd "$srcdir"
-  install -Dm0755 id_photo_BETA.py $pkgdir/usr/lib/gimp/2.0/plug-ins/id_photo_BETA.py
+  cd "$srcdir/$pkgname"
+  install -Dm0755 gimp-id-photo.py $pkgdir/usr/lib/gimp/2.0/plug-ins/gimp-id-photo.py
+  install -Dm0755 gimp-id-photo.py $pkgdir/usr/lib/gimp/3.0/plug-ins/gimp-id-photo/gimp-id-photo.py
 }

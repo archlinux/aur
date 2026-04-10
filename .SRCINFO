@@ -1,16 +1,14 @@
 pkgbase = gimp-plugin-id-photo
 	pkgdesc = id photo for documents gimp plugin
-	pkgver = 20180606
+	pkgver = 20250817
 	pkgrel = 1
-	url = http://gimp-id-photo.ru/
-	arch = i686
-	arch = x86_64
+	url = https://gimp-id-photo.ru/instruction_manual.html
+	arch = any
 	license = GPL3
-	depends = python2
+	depends = python
 	depends = gimp
-	depends = python2-gimp
-	source = http://gimp-id-photo.ru/files/id_photo_for_GIMP-2.10.x.zip
-	sha256sums = 2572260925f8fa4353dee1d7c460cc15d4529d5f5a5713ef4b2560d59e710fb3
+	noextract = source.tar.gz
+	source = source.tar.gz::https://github.com/karabanov/gimp-id-photo/archive/refs/heads/copilot/fix-86d4b524-8ebf-4fbb-bd3c-e6877223c59d.tar.gz
+	sha256sums = c1569adb475ef21ec79c66bc81f890b879b4d6a34d46e9cc43051a1eaf3bd745
 
 pkgname = gimp-plugin-id-photo
-
