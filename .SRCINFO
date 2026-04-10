@@ -1,6 +1,6 @@
 pkgbase = gns3-gui-2
 	pkgdesc = GNS3 network simulator. Graphical user interface package.
-	pkgver = 2.2.57
+	pkgver = 2.2.58
 	pkgrel = 1
 	url = https://github.com/GNS3/gns3-gui
 	arch = any
@@ -22,11 +22,11 @@ pkgbase = gns3-gui-2
 	optdepends = wireshark-qt: Live packet capture
 	provides = gns3-gui
 	conflicts = gns3-gui
-	source = gns3-gui-2.2.57.tar.gz::https://github.com/GNS3/gns3-gui/archive/v2.2.57.tar.gz
+	source = gns3-gui-2.2.58.tar.gz::https://github.com/GNS3/gns3-gui/archive/v2.2.58.tar.gz
 	source = gns3.desktop
 	source = fix_requirements_for_Arch.patch
-	sha256sums = 2027689d6355bbc347165bccb388972060ee6e22d92d6e551b85347322f9ffd2
+	sha256sums = 49d5f3b671fa84fe69a3f94ec928ad592d867ceaf7d8998d4cfc577d9b75c2d7
 	sha256sums = 51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166
-	sha256sums = 7e638900e945f282908046220fd9e68fb89fa00afd0b020f658d9243cd62f837
+	sha256sums = a6d9ab5473e229d59aac56c5edf4cb17d3d01acba5864f063a0aa2d846f3c846
 
 pkgname = gns3-gui-2
