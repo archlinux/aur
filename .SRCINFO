@@ -1,6 +1,6 @@
 pkgbase = python-tree-sitter-markdown
-	pkgdesc = Markdown Grammar for tree-sitter
-	pkgver = 0.5.0
+	pkgdesc = Python Bindings for tree-sitter-markdown
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/tree-sitter-grammars/tree-sitter-markdown
 	arch = x86_64
@@ -11,9 +11,13 @@ pkgbase = python-tree-sitter-markdown
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = glibc
 	depends = python
-	source = tree-sitter-markdown-0.5.0.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-markdown/releases/download/v0.5.0/tree-sitter-markdown.tar.gz
-	sha512sums = d4a7818ad84c0ad73e4a4357faae595f1e76720c0ea18128726669176f703163cc718e9f94b4f890bf1eafc6c76ad0b304ca6a0c09e3ba439c46e27df73fc9b9
+	depends = tree-sitter-markdown=0.5.3
+	depends = python-tree-sitter
+	depends = tree-sitter
+	source = tree-sitter-markdown-0.5.3.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-markdown/releases/download/v0.5.3/tree-sitter-markdown.tar.gz
+	source = fix_setup.py_expecting_other_layout.patch
+	b2sums = 969e45c659a2ce808f8f35c494b7c81ce5ecf0d696aaaf46b8cf01eb13cc2fcad825607317627ed4c4d03d40539ff52cb44b90307b2d9da7483f7daad0bf9a07
+	b2sums = 3122159a879874f82029a5176fac732df9aaab0aafbba77294cf3a41955f8737ad587da85b6d9af016fd8faeea9f782d3510a7cbc859dba955c02cda729d7c06
 
 pkgname = python-tree-sitter-markdown

@@ -1,0 +1,94 @@
+--- orig/setup.py	2026-02-26 18:04:51.000000000 +0000
++++ new/setup.py	2026-04-10 20:03:33.701896344 +0000
+@@ -10,9 +10,11 @@
+ 
+ class Build(build):
+     def run(self):
+-        if path.isdir("queries"):
+-            dest = path.join(self.build_lib, "tree_sitter_markdown", "queries")
+-            self.copy_tree("queries", dest)
++        for subdir in ("tree-sitter-markdown", "tree-sitter-markdown-inline"):
++            queries_dir = path.join(subdir, "queries")
++            if path.isdir(queries_dir):
++                dest = path.join(self.build_lib, "tree_sitter_markdown", subdir, "queries")
++                self.copy_tree(queries_dir, dest)
+         super().run()
+ 
+ 
+@@ -22,8 +24,6 @@
+             ext.extra_compile_args = ["-std=c11", "-fvisibility=hidden"]
+         else:
+             ext.extra_compile_args = ["/std:c11", "/utf-8"]
+-        if path.exists("src/scanner.c"):
+-            ext.sources.append("src/scanner.c")
+         if ext.py_limited_api:
+             ext.define_macros.append(("Py_LIMITED_API", "0x030A0000"))
+         super().build_extension(ext)
+@@ -40,16 +40,22 @@
+ class EggInfo(egg_info):
+     def find_sources(self):
+         super().find_sources()
+-        self.filelist.recursive_include("queries", "*.scm")
+-        self.filelist.include("src/tree_sitter/*.h")
++        self.filelist.recursive_include("tree-sitter-markdown/queries", "*.scm")
++        self.filelist.recursive_include("tree-sitter-markdown-inline/queries", "*.scm")
++        self.filelist.include("tree-sitter-markdown/src/tree_sitter/*.h")
++        self.filelist.include("tree-sitter-markdown-inline/src/tree_sitter/*.h")
+ 
+ 
+ setup(
+     packages=find_packages("bindings/python"),
+     package_dir={"": "bindings/python"},
+     package_data={
+-        "tree_sitter_markdown": ["*.pyi", "py.typed"],
+-        "tree_sitter_markdown.queries": ["*.scm"],
++        "tree_sitter_markdown": [
++            "*.pyi",
++            "py.typed",
++            "tree-sitter-markdown/queries/*.scm",
++            "tree-sitter-markdown-inline/queries/*.scm",
++        ],
+     },
+     ext_package="tree_sitter_markdown",
+     ext_modules=[
+@@ -57,13 +63,19 @@
+             name="_binding",
+             sources=[
+                 "bindings/python/tree_sitter_markdown/binding.c",
+-                "src/parser.c",
++                "tree-sitter-markdown/src/parser.c",
++                "tree-sitter-markdown/src/scanner.c",
++                "tree-sitter-markdown-inline/src/parser.c",
++                "tree-sitter-markdown-inline/src/scanner.c",
+             ],
+             define_macros=[
+                 ("PY_SSIZE_T_CLEAN", None),
+                 ("TREE_SITTER_HIDE_SYMBOLS", None),
+             ],
+-            include_dirs=["src"],
++            include_dirs=[
++                "tree-sitter-markdown/src",
++                "tree-sitter-markdown-inline/src",
++            ],
+             py_limited_api=not get_config_var("Py_GIL_DISABLED"),
+         )
+     ],
+--- orig/bindings/python/tree_sitter_markdown/__init__.py	2026-02-26 18:04:51.000000000 +0000
++++ new/bindings/python/tree_sitter_markdown/__init__.py	2026-04-10 20:03:33.702048295 +0000
+@@ -2,7 +2,7 @@
+ 
+ from importlib.resources import files as _files
+ 
+-from ._binding import language
++from ._binding import inline_language, language
+ 
+ 
+ def _get_query(name, file):
+@@ -29,6 +29,7 @@
+ 
+ __all__ = [
+     "language",
++    "inline_language",
+     "HIGHLIGHTS_QUERY",
+     "INJECTIONS_QUERY",
+     "LOCALS_QUERY",

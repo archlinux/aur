@@ -1,47 +1,49 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: RubenKelevra <rubenkelevra@gmail.com>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=python-tree-sitter-markdown
 _gitpkgname=tree-sitter-markdown
-pkgver=0.5.0
+pkgver=0.5.3
 pkgrel=1
-pkgdesc='Markdown Grammar for tree-sitter'
+pkgdesc='Python Bindings for tree-sitter-markdown'
 arch=('x86_64')
 url='https://github.com/tree-sitter-grammars/tree-sitter-markdown'
 license=('MIT')
 depends=(
-  'glibc'
-  'python'
+	'python'
+	"tree-sitter-markdown=${pkgver}"
+	'python-tree-sitter'
+	'tree-sitter'
 )
 makedepends=(
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
+	'python-build'
+	'python-installer'
+	'python-setuptools'
+	'python-wheel'
 )
 checkdepends=(
-  'python-pytest' 'python-tree-sitter'
+	'python-pytest'
+	'python-tree-sitter'
 )
 
 source=(
-  "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-markdown/releases/download/v${pkgver}/tree-sitter-markdown.tar.gz"
+	"${_gitpkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_gitpkgname}.tar.gz"
+	'fix_setup.py_expecting_other_layout.patch'
 )
 
-sha512sums=('d4a7818ad84c0ad73e4a4357faae595f1e76720c0ea18128726669176f703163cc718e9f94b4f890bf1eafc6c76ad0b304ca6a0c09e3ba439c46e27df73fc9b9')
+b2sums=('969e45c659a2ce808f8f35c494b7c81ce5ecf0d696aaaf46b8cf01eb13cc2fcad825607317627ed4c4d03d40539ff52cb44b90307b2d9da7483f7daad0bf9a07'
+        '3122159a879874f82029a5176fac732df9aaab0aafbba77294cf3a41955f8737ad587da85b6d9af016fd8faeea9f782d3510a7cbc859dba955c02cda729d7c06')
+
+prepare() {
+	patch -Np1 < fix_setup.py_expecting_other_layout.patch
+}
 
 build() {
-  echo >&2 'Building wheel'
-  python -m build --wheel --no-isolation
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  echo >&2 'Packaging the wheel'
-  python -I -m installer --destdir="${pkgdir}" dist/*.whl
-
-  echo >&2 'Packaging the documentation'
-  install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
-    README.md
-
-  echo >&2 'Packaging the license'
-  install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
-    LICENSE
+	python -I -m installer --destdir="${pkgdir}" dist/*.whl
+	install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
+	install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
