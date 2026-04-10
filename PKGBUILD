@@ -1,12 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=clvk-git
-pkgver=r769.78aa08a
+pkgver=r787.1d39a3a
 pkgrel=1
 pkgdesc="Experimental implementation of OpenCL 3.0 on Vulkan"
 arch=("x86_64")
 url="https://github.com/kpet/clvk"
 license=('Apache-2.0')
-depends=("vulkan-icd-loader" "ocl-icd" "ncurses" "gcc-libs" "zstd" "zlib")
+depends=("vulkan-icd-loader" "zstd" "spirv-tools" "libstdc++" "glibc" "libgcc")
 makedepends=("gcc" "git" "cmake" "python" "opencl-headers" "spirv-headers" 
 "spirv-tools" "spirv-llvm-translator" "vulkan-headers" "ninja")
 provides=("clvk" "opencl-driver")
