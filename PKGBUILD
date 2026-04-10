@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='ecsta'
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='ECS Task Assistant tool'
 url='https://github.com/fujiwara/ecsta'
@@ -11,8 +11,8 @@ depends=()
 conflicts=()
 source_aarch64=("${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_arm64.tar.gz")
 source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_aarch64=('74842e24dfd289ee8a6a2344021d47a1223baa90130217618674828edcabf98f')
-sha256sums_x86_64=('5ebca3f4304a38a6805f92159742cd8b6fab60babf132e6024a0ac981e8ffdfa')
+sha256sums_aarch64=('f1bacb65987c99491d448c2dda0daa5ca3ef87f5949566d2eaeb4350d2a4f61c')
+sha256sums_x86_64=('f88642d9957379b448eed75e70a20fb2c95acf15132ecea9b0226801953c756d')
 
 package() {
   install -Dm644 ${srcdir}/README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
