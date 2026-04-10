@@ -16,7 +16,7 @@
 # Maintainer: Volodia Kraplich <v1mkss.m@gmail.com>
 pkgname=xmcl-launcher
 pkgver=0.54.4
-pkgrel=1
+pkgrel=2
 pkgdesc="X Minecraft Launcher - A modern, open-source Minecraft Launcher with modpack, resource, and instance management"
 arch=('x86_64')
 url="https://xmcl.app/"
