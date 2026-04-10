@@ -39,82 +39,82 @@ arch=(x86_64)
 options=(!staticlibs !lto !debug pestrip)
 license=(LGPL-2.1-or-later)
 depends=(
-  attr            lib32-attr
+  attr
   desktop-file-utils
-  fontconfig      lib32-fontconfig
-  freetype2       lib32-freetype2
-  libgcc          lib32-gcc-libs
-  gettext         lib32-gettext
-  glib2           lib32-glib2
-  glibc           lib32-glibc
-  libpcap         lib32-libpcap
-  libunwind       lib32-libunwind
-  libx11          lib32-libx11
-  libxcursor      lib32-libxcursor
-  libxext         lib32-libxext
-  libxkbcommon    lib32-libxkbcommon
-  libxi           lib32-libxi
-  libxrandr       lib32-libxrandr
-  systemd-libs    lib32-systemd
-  wayland         lib32-wayland
+  fontconfig
+  freetype2
+  libgcc
+  gettext
+  glib2
+  glibc
+  libpcap
+  libunwind
+  libx11
+  libxcursor
+  libxext
+  libxkbcommon
+  libxi
+  libxrandr
+  systemd-libs
+  wayland
 )
 makedepends=(
-  alsa-lib              lib32-alsa-lib
+  alsa-lib
   ffmpeg
   git
-  gnutls                lib32-gnutls
-  gst-plugins-base-libs lib32-gst-plugins-base-libs
-  libcups               lib32-libcups
+  gnutls
+  gst-plugins-base-libs
+  libcups
   libgphoto2
-  libpulse              lib32-libpulse
-  libva                 lib32-libva
-  libxcomposite         lib32-libxcomposite
-  libxinerama           lib32-libxinerama
-  libxxf86vm            lib32-libxxf86vm
-  mesa                  lib32-mesa
+  libpulse
+  libva
+  libxcomposite
+  libxinerama
+  libxxf86vm
+  mesa
   mingw-w64-gcc
   opencl-headers
-  opencl-icd-loader     lib32-opencl-icd-loader
-  pcsclite              lib32-pcsclite
+  opencl-icd-loader
+  pcsclite
   perl
   python
   samba
   sane
-  sdl2                  lib32-sdl2
+  sdl2
   unixodbc
   unzip
-  v4l-utils             lib32-v4l-utils
+  v4l-utils
   vulkan-headers
-  vulkan-icd-loader     lib32-vulkan-icd-loader
+  vulkan-icd-loader
 )
 optdepends=(
-  alsa-lib              lib32-alsa-lib
-  alsa-plugins          lib32-alsa-plugins
-  cups                  lib32-libcups
+  alsa-lib
+  alsa-plugins
+  cups
   dosbox
   ffmpeg
-  gnutls                lib32-gnutls
+  gnutls
   gst-plugins-bad
-  gst-plugins-base      lib32-gst-plugins-base
-  gst-plugins-base-libs lib32-gst-plugins-base-libs
-  gst-plugins-good      lib32-gst-plugins-good
+  gst-plugins-base
+  gst-plugins-base-libs
+  gst-plugins-good
   gst-plugins-ugly
-  gstreamer             lib32-gstreamer
+  gstreamer
   libgphoto2
-  libpulse              lib32-libpulse
-  libusb                lib32-libusb
-  libva                 lib32-libva
-  libxcomposite         lib32-libxcomposite
-  libxinerama           lib32-libxinerama
-  opencl-icd-loader     lib32-opencl-icd-loader
-  pcsclite              lib32-pcsclite
+  libpulse
+  libusb
+  libva
+  libxcomposite
+  libxinerama
+  opencl-icd-loader
+  pcsclite
   perl
   samba
   sane
-  sdl2                  lib32-sdl2
+  sdl2
   unixodbc
-  v4l-utils             lib32-v4l-utils
-  vulkan-icd-loader     lib32-vulkan-icd-loader
+  v4l-utils
+  vulkan-icd-loader
 )
 optdepends+=(
   NTSYNC-MODULE
@@ -125,8 +125,8 @@ install=wine.install
 
 prepare() {
   # Get rid of old build dirs
-  rm -rf $pkgname-{32,64}-build
-  mkdir $pkgname-{32,64}-build
+  rm -rf $pkgname-64-build
+  mkdir $pkgname-64-build
 
   cd $pkgname
   git config user.email "wine@cachyos.org"
@@ -168,8 +168,8 @@ build() {
 
   export CFLAGS="$COMMON_FLAGS -mcmodel=small $LTO_CFLAGS"
   export CXXFLAGS="$COMMON_FLAGS -mcmodel=small -std=c++17 $LTO_CFLAGS"
-  export CROSSCFLAGS="$COMMON_FLAGS -mcmodel=small"
-  export CROSSCXXFLAGS="$COMMON_FLAGS -mcmodel=small -std=c++17"
+  export CROSSCFLAGS="$COMMON_FLAGS"
+  export CROSSCXXFLAGS="$COMMON_FLAGS -std=c++17"
   export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/share/pkgconfig"
   cd "$srcdir/$pkgname-64-build"
   ../$pkgname/configure \
@@ -185,42 +185,13 @@ build() {
     --without-oss \
     --disable-lsteamclient \
     --disable-tests \
-    --enable-win64 \
-    --enable-build-id
-
-  make
-
-  export CFLAGS="$COMMON_FLAGS -mstackrealign $LTO_CFLAGS"
-  export CXXFLAGS="$COMMON_FLAGS -mstackrealign -std=c++17 $LTO_CFLAGS"
-  export CROSSCFLAGS="$COMMON_FLAGS -mstackrealign"
-  export CROSSCXXFLAGS="$COMMON_FLAGS -mstackrealign -std=c++17"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
-  cd "$srcdir/$pkgname-32-build"
-  ../$pkgname/configure \
-    --prefix=/usr \
-    --libdir=/usr/lib \
-    --with-x \
-    --with-wayland \
-    --with-gstreamer \
-    --with-freetype \
-    --with-mingw \
-    --with-alsa \
-    --without-ffmpeg \
-    --without-oss \
-    --disable-lsteamclient \
-    --disable-tests \
-    --with-wine64="$srcdir/$pkgname-64-build" \
+    --enable-archs=x86_64,i386 \
     --enable-build-id
 
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-32-build"
-  make prefix="$pkgdir/usr" \
-    libdir="$pkgdir/usr/lib" \
-    dlldir="$pkgdir/usr/lib/wine" install
-
   cd "$srcdir/$pkgname-64-build"
   make prefix="$pkgdir/usr" \
     libdir="$pkgdir/usr/lib" \
