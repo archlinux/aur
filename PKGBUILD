@@ -1,8 +1,8 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 
 pkgname=kora-icon-theme
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)"
 arch=("any")
 url="https://github.com/bikass/kora"
@@ -16,19 +16,12 @@ optdepends=(
     "hicolor-icon-theme: fallback Freedesktop.org Hicolor icon theme"
     "breeze-icons: fallback Breeze icon theme for Plasma Desktop"
     "adwaita-icon-theme: fallback Adwaita icon theme for Gnome Desktop")
-source=("https://github.com/bikass/kora/archive/v$pkgver.tar.gz" "https://github.com/bikass/kora/commit/de281d21dcc7a5707ec9ccbbc62fe533adaf304e.diff")
-sha256sums=('6f9c4334377f210fd2ac53602e5e844ec7efdcd509168d531403df36de71da70'
-            'b479db42088f7125c313c801dad286c8bef94f924c873b811d3e8048c388b8e2')
+source=("https://github.com/bikass/kora/archive/v$pkgver.tar.gz")
+sha256sums=('4b191c778aa7f270b819df19bdee25b47aece2cf4ecae46779429b9e07e55f14')
 
 _iconpath=usr/share/icons
 _iconcache=icon-theme.cache
 _iconnewcachescript=create-new-icon-theme.cache.sh
-
-prepare() {
-    cd "$srcdir/kora-$pkgver"
-
-    patch -p1 < "$srcdir/de281d21dcc7a5707ec9ccbbc62fe533adaf304e.diff"
-}
 
 package() {
     cd "$srcdir/kora-$pkgver"
