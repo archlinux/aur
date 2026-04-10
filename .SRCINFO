@@ -1,0 +1,20 @@
+pkgbase = hyprcrop-bin
+	pkgdesc = A fast, Hyprland-native screenshot tool written in Rust
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/ry2x/hyprcrop
+	arch = x86_64
+	license = MIT
+	depends = slurp
+	depends = wl-clipboard
+	depends = hyprland
+	depends = libnotify
+	depends = pipewire
+	provides = hyprcrop
+	conflicts = hyprcrop
+	source = LICENSE-0.4.2::https://github.com/ry2x/hyprcrop/raw/v0.4.2/LICENSE
+	sha256sums = 7730947ada4144f1f707fa00247da2dca12e3ef8cb22c9939d42f032595a5e74
+	source_x86_64 = hyprcrop-0.4.2::https://github.com/ry2x/hyprcrop/releases/download/v0.4.2/hyprcrop
+	sha256sums_x86_64 = 927086648f68c255c2ed1dfe7e512195ce727566b1d3e0fa1b602bdabf89449f
+
+pkgname = hyprcrop-bin
