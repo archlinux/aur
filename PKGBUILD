@@ -26,8 +26,8 @@ fi
 makedepends=('deb2targz' 'sed')
 source=('http://gdlp01.c-wss.com/gds/9/0100008399/01/cnijfilter2-5.40-1-deb.tar.gz'
 	'http://gdlp01.c-wss.com/gds/2/0100008402/01/scangearmp2-3.40-1-deb.tar.gz'
-        "${pkgname}-scangear.desktop"
-        "${pkgname}-scangear-icon.png")
+        "canon-pixma-mg3000-complete-scangear-fixed.desktop"
+        "canon-pixma-mg3000-complete-scangear-fixed-icon.png")
 
 md5sums=('9fde0c1def36fbd38b4d08cd22a2b7a8'
 	 '833f71781ba733fec84f4eb06d468fb4'
