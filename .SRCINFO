@@ -1,6 +1,6 @@
 pkgbase = keeper-secrets-manager-cli
 	pkgdesc = Command line tool for Keeper Secrets Manager
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Keeper-Security/secrets-manager
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = keeper-secrets-manager-cli
 	depends = python-update-checker
 	depends = python-psutil
 	depends = python-boto3
-	source = https://files.pythonhosted.org/packages/source/k/keeper_secrets_manager_cli/keeper_secrets_manager_cli-1.2.0.tar.gz
-	sha512sums = 3406e37302fa3065c747da3e741714f2fe80afe84e0d10687aa69ded7661d86b798dea1180fdf50024575a73842c5211b1d7f977f0a3c2a1257b541cce461fe7
+	source = https://files.pythonhosted.org/packages/source/k/keeper_secrets_manager_cli/keeper_secrets_manager_cli-1.3.0.tar.gz
+	sha512sums = 9f718072e6e047f635e2ea9bb217ae54eb69abccdae075a0aa53da3f788a1e4fb26438eb69e52ed7cd17a4701f8b0df7b6dc41b1d5a2726fa9ea09c61bd38e8b
 
 pkgname = keeper-secrets-manager-cli

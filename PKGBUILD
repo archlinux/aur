@@ -1,7 +1,7 @@
 # Maintainer: Mark Wells <contact at markwells dot dev>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=keeper-secrets-manager-cli
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Command line tool for Keeper Secrets Manager"
 arch=('any')
@@ -28,7 +28,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("https://files.pythonhosted.org/packages/source/k/keeper_secrets_manager_cli/keeper_secrets_manager_cli-$pkgver.tar.gz")
-sha512sums=('3406e37302fa3065c747da3e741714f2fe80afe84e0d10687aa69ded7661d86b798dea1180fdf50024575a73842c5211b1d7f977f0a3c2a1257b541cce461fe7')
+sha512sums=('9f718072e6e047f635e2ea9bb217ae54eb69abccdae075a0aa53da3f788a1e4fb26438eb69e52ed7cd17a4701f8b0df7b6dc41b1d5a2726fa9ea09c61bd38e8b')
 
 build() {
     cd "keeper_secrets_manager_cli-$pkgver"
