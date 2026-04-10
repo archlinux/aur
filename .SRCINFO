@@ -1,0 +1,18 @@
+pkgbase = pachub
+	pkgdesc = A powerful Pacman/AUR front end using GTK4 and libadwaita
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/mrks1469/PacHub
+	arch = any
+	license = GPL3
+	depends = python
+	depends = gtk4
+	depends = libadwaita
+	depends = python-gobject
+	optdepends = yay: AUR support
+	optdepends = paru: AUR support
+	options = !strip
+	source = pachub-2.0.tar.gz::https://github.com/mrks1469/PacHub/archive/refs/tags/Pachub_2.0.tar.gz
+	sha256sums = 00e662bf012ae93e639693f6a3de006609968a4260e1f2880fb944ef0ac4a876
+
+pkgname = pachub
