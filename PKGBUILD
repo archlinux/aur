@@ -10,7 +10,7 @@ makedepends=('git' 'rust' 'cargo')
 provides=('mimic-node')
 conflicts=('mimic-node')
 install='mimic-node.install'
-source=("git+https://github.com/LIghtJUNction/Mimic-Node.git")
+source=('git+https://github.com/LIghtJUNction/Mimic-Node.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -36,37 +36,21 @@ check() {
     cd "$srcdir/Mimic-Node"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    # TODO: re-enable tests after fixing race condition in test_check_fails_when_singbox_returns_nonzero
     cargo test --release --frozen --all-features -- --skip test_check_fails_when_singbox_returns_nonzero
 }
 
 package() {
     cd "$srcdir/Mimic-Node"
 
-    # Install Rust binary
     install -Dm755 "target/release/mimictl" "$pkgdir/usr/bin/mimictl"
-
-    # Install Helper Script (Shell)
     install -Dm755 "overlay/usr/bin/mimic-mount" "$pkgdir/usr/bin/mimic-mount"
-
-    # Install configuration defaults
     install -Dm644 "overlay/usr/share/mimic-node/default/config.json" "$pkgdir/usr/share/mimic-node/default/config.json"
-
-    # Install systemd units
     install -Dm644 "overlay/etc/systemd/system/mimic-node.service" "$pkgdir/etc/systemd/system/mimic-node.service"
     install -Dm644 "overlay/etc/systemd/system/mimic-node.path" "$pkgdir/etc/systemd/system/mimic-node.path"
     install -Dm644 "overlay/etc/systemd/system/mimic-node-deploy.service" "$pkgdir/etc/systemd/system/mimic-node-deploy.service"
     install -Dm644 "overlay/etc/systemd/system/mimic-node-mount.service" "$pkgdir/etc/systemd/system/mimic-node-mount.service"
-
-    # Install systemd drop-in
     install -Dm644 "overlay/etc/systemd/system/sing-box.service.d/mimic-overlay.conf" "$pkgdir/etc/systemd/system/sing-box.service.d/mimic-overlay.conf"
-
-    # Install shared data
     install -Dm644 "overlay/usr/share/mimic-node/sni.txt" "$pkgdir/usr/share/mimic-node/sni.txt"
-
-    # Create state directory for overlayfs
     install -dm700 "$pkgdir/var/lib/mimic-node"
-
-    # Install License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
