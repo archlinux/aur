@@ -1,7 +1,7 @@
 pkgbase = elio
 	pkgdesc = Terminal-native file manager with rich previews, inline images, and mouse support
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MiguelRegueiro/elio
 	arch = x86_64
 	license = MIT

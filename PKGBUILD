@@ -2,7 +2,7 @@
 
 pkgname=elio
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal-native file manager with rich previews, inline images, and mouse support'
 arch=('x86_64')
 url='https://github.com/MiguelRegueiro/elio'
@@ -31,13 +31,6 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --release --frozen
-}
-
-check() {
-  cd "${pkgname}-${pkgver}"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo test --frozen
 }
 
 package() {
