@@ -4,8 +4,8 @@ pkgname=cli
 pkgver=1.2.0
 pkgrel=1
 pkgdesc="Command Line Interface definition language for C++"
-url="www.codesynthesis.com/projects/cli/"
-arch=('i686' 'x86_64')
+url="https://www.codesynthesis.com/projects/cli/"
+arch=('x86_64')
 depends=('build2' 'libcutl')
 options=('!libtool')
 license=('MIT')
@@ -13,7 +13,6 @@ source=("https://pkg.cppget.org/1/stable/${pkgname}/${pkgname}-${pkgver}.tar.gz"
 sha256sums=('86f79382b61269915b204e30b8e13d66634eb1dd4034c42bf7015d18ab50b572')
 
 prepare() {
-
 	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
 
 	bpkg create -d odb-gcc-${GPPVER} cc \
@@ -27,7 +26,6 @@ prepare() {
 }
 
 build() {
-
 	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
 	cd "${srcdir}/odb-gcc-${GPPVER}"
 
