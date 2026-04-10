@@ -4,7 +4,6 @@ pkgbase = qianyu-bin
 	pkgrel = 1
 	url = https://github.com/tiesen243/qianyu
 	arch = x86_64
-	arch = aarch64
 	license = MIT
 	depends = cairo
 	depends = desktop-file-utils
@@ -17,7 +16,7 @@ pkgbase = qianyu-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	sha256sums = SKIP
 	source_x86_64 = qianyu-bin-0.2.0.AppImage::https://github.com/tiesen243/qianyu/releases/download/%40qianyu%2Fdesktop%400.2.0/qianyu-0.2.0-ubuntu-latest.AppImage
+	sha256sums_x86_64 = SKIP
 
 pkgname = qianyu-bin
