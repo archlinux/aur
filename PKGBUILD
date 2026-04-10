@@ -22,21 +22,20 @@ conflicts=('hmcl')
 replaces=('hmcl-stable-bin')
 source=("hmcl.desktop"
         "hmcl-launch-script"
-        "${pkgname}-${pkgver}-${pkgrel}.jar::https://github.com/HMCL-dev/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.jar")
+        "${pkgname}-${pkgver}-${pkgrel}.jar::https://github.com/HMCL-dev/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.jar"
+        "icon.png::https://github.com/HMCL-dev/HMCL/blob/main/HMCL/src/main/resources/assets/img/icon.png"
+        "icon@2x.png::https://github.com/HMCL-dev/HMCL/blob/main/HMCL/src/main/resources/assets/img/icon@2x.png"
+        "icon@4x.png::https://github.com/HMCL-dev/HMCL/blob/main/HMCL/src/main/resources/assets/img/icon@4x.png"
+        "icon@8x.png::https://github.com/HMCL-dev/HMCL/blob/main/HMCL/src/main/resources/assets/img/icon@8x.png")
 sha256sums=('9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b'
             'fe8c663bd3aaee7c70dff4da75781a078993c665e5492883d708e46658e6c0ec'
-            '0b12ecdeb316fbe14617b595f443086feebd66b9d5d8c69d1070ff34cc97048c')
+            '0b12ecdeb316fbe14617b595f443086feebd66b9d5d8c69d1070ff34cc97048c'
+            '1b61f9271ea1c2ae981c27247153e4010fc12b23148d202755bbc77ec094abc0'
+            'cce5b43a6877c96ace74fda96ab6585bb8eedb62025ba7aaad9f912090142e6a'
+            'bc25f188eb36f4ebe96960ef650cdb02f1ada7b2acdba0c53fa6290771644b05'
+            '5ed767d3a3fbe6ab65ad931ba5a743abb538d2b276e14d149d2973dadcc5946f')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
-
-prepare() {
-  # extract icons from jar
-  # Thanks to @Misaka13514
-  local _iconfile
-  for _iconfile in icon.png icon@2x.png icon@4x.png icon@8x.png; do
-    jar -xf "${pkgname}-${pkgver}-${pkgrel}.jar" "assets/img/${_iconfile}"
-  done
-}
 
 package() {
   install -Dm644 "${pkgname}-${pkgver}-${pkgrel}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
