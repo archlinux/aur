@@ -1,16 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stremio-enhanced-bin
 _pkgname=Stremio.Enhanced
-pkgver=1.1.1
+pkgver=1.1.2
 _electronversion=41
-pkgrel=2
+pkgrel=1
 pkgdesc="An Electron-based Stremio client with plugins and themes support. It runs the Stremio Service automatically and loads the web version of Stremio.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
 )
 url="https://discord.gg/jDsgcehrp7"
-_ghurl="https://github.com/REVENGE977/stremio-enhanced-community"
+_ghurl="https://github.com/REVENGE977/stremio-enhanced"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -19,15 +19,15 @@ depends=(
     'ffmpeg'
 )
 source=(
-    "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/REVENGE977/stremio-enhanced-community/v${pkgver}/LICENSE.md"
+    "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/REVENGE977/stremio-enhanced/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('ed5f1a7791770773ed4aa8ba31fa28b3bb2cc1a263e0ed1997c290a6248a896a'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('7c92209f3fef05900df3827dcdf3d3d919d372a8278e632147b3d2eb1087c248')
-sha256sums_x86_64=('e7b5a88750ffde0b49a9422871b24391d41bd0b50f7c1184b3362602877b7911')
+sha256sums_aarch64=('0b37c094913fca99d033e2d7bcfa6fcd1898709df6ed6ce1db46ceda7cef4507')
+sha256sums_x86_64=('bb06e0965848616a09efed79b739d4a6fb17708f9edfde08e61b2b01f703d01c')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
