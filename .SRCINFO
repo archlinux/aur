@@ -11,7 +11,7 @@ pkgbase = astrbot-git
 	depends = certbot
 	provides = astrbot
 	conflicts = astrbot
-	source = git+https://github.com/AstrBotDevs/AstrBot.git#branch=dev%26depth=1
+	source = git+https://github.com/AstrBotDevs/AstrBot.git#branch=dev
 	source = astrbotctl
 	source = astrbotctl.functions
 	source = astrbot@.service
