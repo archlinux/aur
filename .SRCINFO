@@ -1,6 +1,6 @@
 pkgbase = gns3-server-2
 	pkgdesc = GNS3 network simulator, Server package
-	pkgver = 2.2.57
+	pkgver = 2.2.58
 	pkgrel = 1
 	url = https://github.com/GNS3/gns3-server
 	install = gns3-server.install
@@ -30,11 +30,11 @@ pkgbase = gns3-server-2
 	optdepends = ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces
 	provides = gns3-server
 	conflicts = gns3-server
-	source = gns3-server-2.2.57.tar.gz::https://github.com/GNS3/gns3-server/archive/v2.2.57.tar.gz
+	source = gns3-server-2.2.58.tar.gz::https://github.com/GNS3/gns3-server/archive/v2.2.58.tar.gz
 	source = gns3-server@.service
 	source = fix_requirements_for_Arch.patch
-	sha256sums = c871023a99423f8670a9693d03f72384cf09de905524cca3f8693cb27751bd3c
+	sha256sums = 10a3184167a3018b190b19bfb236b803d5c46cc1aed2db57f3fb342dcb675e68
 	sha256sums = b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f
-	sha256sums = bb35a842e91d86c4f330263f9ef432b8455c36453d37e1b3916ba8637ed65317
+	sha256sums = ece9f3143fe1d52bcd80290a49537dab985a325c8d7c330dbf2f8310b414b392
 
 pkgname = gns3-server-2
