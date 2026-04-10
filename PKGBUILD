@@ -9,15 +9,17 @@ license=('GPL-3.0-only')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
 provides=('disarmed')
 conflicts=('disarmed' 'disarmed-git')
+install=disarmed-bin.install
 options=('!strip')
 
 source=(
     "${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/disarmed_${pkgver}_amd64.AppImage"
     "${pkgname}-${pkgver}-daemon::${url}/releases/download/v${pkgver}/disarmed-daemon"
     "disarmed.desktop"
+    "disarmed.service"
     "LICENSE::https://raw.githubusercontent.com/v0idhrt/disarmed/main/LICENSE"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
@@ -29,9 +31,9 @@ package() {
     install -Dm755 "${srcdir}/squashfs-root/usr/bin/disarmed" \
         "${pkgdir}/usr/bin/disarmed"
 
-    # Daemon binary
+    # Daemon binary — GUI's find_binary() searches PATH for "disarmedd"
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}-daemon" \
-        "${pkgdir}/usr/bin/disarmed-daemon"
+        "${pkgdir}/usr/bin/disarmedd"
 
     # Shared libraries from AppImage
     find "${srcdir}/squashfs-root/usr/lib" -name "*.so*" -exec \
@@ -59,6 +61,13 @@ package() {
                 "${pkgdir}/usr/share/icons/hicolor/128x128/apps/disarmed.png"
         fi
     fi
+
+    # Systemd service
+    install -Dm644 "${srcdir}/disarmed.service" \
+        "${pkgdir}/usr/lib/systemd/system/disarmed.service"
+
+    # Config directory
+    install -dm755 "${pkgdir}/etc/disarmed"
 
     # License
     install -Dm644 "${srcdir}/LICENSE" \

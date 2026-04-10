@@ -1,0 +1,20 @@
+post_install() {
+    systemctl daemon-reload
+    systemctl enable --now disarmed.service
+    echo ":: disarmed daemon started and enabled on boot"
+    echo ":: Launch the GUI from your application menu"
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl restart disarmed.service
+    echo ":: disarmed daemon restarted"
+}
+
+pre_remove() {
+    systemctl disable --now disarmed.service
+}
+
+post_remove() {
+    systemctl daemon-reload
+}
