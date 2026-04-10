@@ -1,7 +1,7 @@
 # Maintainer: Uthopik <josearrillaga@ik.me>
 pkgname=astronex-bin
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Appimage version in python2 of Astronex. An astrology program for calculating and drawing charts according to the API Method. Used in Huber method"
 arch=('x86_64')
 url="https://github.com/Uthopik/astronex-appimage"
@@ -17,7 +17,7 @@ source=("${_appimage}::${url}/releases/download/v1.2/${_appimage}"
         "astronex.svg")
 
 # RECUERDA: Genera estos hashes con 'sha256sum' para cada archivo
-sha256sums=('9a04d6ca1bc9b6be9f8e8c72d1443e044af480dea1098dd4783a3dff9d701e88'
+sha256sums=('137252f075af779034e1da6242f4921389a1b925e6af5c013bccc46f5d9432cc'
             'da62d673e47b995ea4fa7d9ee1600fd5ea953b440388ad278a2b4d07362273a1'
             '5989875f29c8fabdccfc1be4c488a314e3154af9f539ab8e579b17dc52ec7145')
 
