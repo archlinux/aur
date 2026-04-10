@@ -30,7 +30,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 source=(
-    "git+https://github.com/AstrBotDevs/AstrBot.git#branch=dev&depth=1"
+    "git+https://github.com/AstrBotDevs/AstrBot.git#branch=dev%26depth=1"
     "astrbotctl"
     "astrbotctl.functions"
     "astrbot@.service"
