@@ -1,13 +1,13 @@
 pkgbase = rimsort-bin
 	pkgdesc = A Mod Manager For Rimworld game
 	pkgver = v1.0.76
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RimSort/RimSort
 	arch = x86_64
 	license = GPL3
 	conflicts = rimsort-git
 	options = !strip
-	source = rimsort-bin-v1.0.76.zip::https://github.com/oceancabbage/RimSort/releases/download/v1.0.76/RimSort-v1.0.76-Ubuntu-24.04_x86_64.zip
+	source = rimsort-bin-v1.0.76-2.zip::https://github.com/oceancabbage/RimSort/releases/download/v1.0.76/RimSort-v1.0.76-Ubuntu-24.04_x86_64.zip
 	source = RimSort.desktop
 	source = launch-script.sh
 	sha512sums = acdd3d45af47f1869c93e072addcc415193653bbd4d246462d02c62463f2ba15ae23bb7c207e40d96e1b765a7602b43dee87e63507b60d15e29e10ce30f5adc1

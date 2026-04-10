@@ -1,0 +1,7 @@
+update.sh
+
+/pkg/
+/src/
+
+rimsort-bin*.zip
+rimsort-bin*.tar.zst
