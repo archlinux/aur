@@ -12,7 +12,7 @@ depends=(python-dbus-next python-pyusb python-pyqt6 python-installer)
 makedepends=(python-pipenv)
 checkdepends=()
 source=("https://github.com/elegos/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('581d370106b458fe3d4952df202864714b53d463e795525d04fec186782fd266')
+sha256sums=('6bb09e43b5c8f58c9553469e6691ca703b0b3d6a4a82f5a3f8bc1a68a46ca8fb')
 
 prepare(){
 	cd "$_pkgname-$pkgver"
