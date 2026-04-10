@@ -12,6 +12,9 @@ optdepends=('xdg-utils: Allows for opening directories in default file manager')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('f7f577c90e9b6e502ab05891f83f657038beded57bd6d09ab4421f87bc2542dd')
 
+prepare() {
+  mv "cli-${pkgver}" "${pkgname}-${pkgver}"
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
