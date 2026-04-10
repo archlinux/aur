@@ -1,10 +1,10 @@
-# Maintainer: Oskar Gerlicz Kowalczuk <oskar@gerlicz.space>
+# Maintainer: Oskar Gerlciz Kowalczuk
 # Contributor: StaticNullException <aurcontact@teto.party>
 
 pkgname=zen-browser
 pkgver=1.19.6b
-pkgrel=2
-pkgdesc='Firefox-based web browser repackaged from upstream release artifacts'
+pkgrel=3
+pkgdesc='Firefox-based web browser built from upstream release source snapshot'
 url='https://zen-browser.app'
 arch=('x86_64')
 license=('MPL-2.0')
@@ -40,48 +40,172 @@ depends=(
   pango
   ttf-font
 )
+makedepends=(
+  cbindgen
+  clang
+  diffutils
+  imake
+  jack
+  lld
+  llvm
+  mesa
+  nasm
+  nodejs
+  onnxruntime
+  python
+  rust
+  unzip
+  wasi-compiler-rt
+  wasi-libc
+  wasi-libc++
+  wasi-libc++abi
+  xorg-server-xvfb
+  yasm
+  zip
+)
 optdepends=(
   'hunspell-en_US: Spell checking, American English'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
+  'onnxruntime: Local machine learning features such as smart tab groups'
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
 )
 conflicts=('zen-browser-bin')
-options=('!strip' '!debug')
+options=(
+  !emptydirs
+  !lto
+  !makeflags
+)
 
-# GitHub release 305108021, asset 388071577. GitHub release assets are mutable,
-# so the checksum intentionally pins the exact artifact and fails closed on
-# upstream re-rolls.
+_srcroot='zen-source'
 source=(
-  "$pkgname-$pkgver-x86_64.tar.xz::https://github.com/zen-browser/desktop/releases/download/$pkgver/zen.linux-x86_64.tar.xz"
+  "$_srcroot-$pkgver.tar.zst::https://github.com/zen-browser/desktop/releases/download/$pkgver/zen.source.tar.zst"
   "$pkgname.desktop"
+  'https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/main/0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch'
+  'https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/main/0003-Bug-2016618-Fix-Linux-sandbox-build-breakage-on-glib.patch'
+  'https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/main/0004-Use-wasm32-wasip1-target.patch'
 )
 sha256sums=(
-  '87978f0854fc279191b4f95a41bdb0c5b7df6f6b6c1d986c97ef75915cd6686c'
+  'c1f79f8aeb8b6900be16b03ffc2adaf4568c084e817c938e7732d91a86a76300'
   'af16fec9a88cbfffee34a6a4eb5b3074931477fcefee252840d77cf146568851'
+  '7e8ee1997aa0c6db7de6fe5da0bca88b5c1c3aa2db0b18950e24e5cbe4df8d84'
+  'bf4a7667fb7d7a64795a6ea3d34515c55f46e42872fd3c5a8e8e99964bb3c4e8'
+  '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
 )
-noextract=("$pkgname-$pkgver-x86_64.tar.xz")
+noextract=("$_srcroot-$pkgver.tar.zst")
+
+prepare() {
+  rm -rf "$srcdir/$_srcroot"
+  mkdir -p "$srcdir/$_srcroot" "$srcdir/mozbuild"
+  bsdtar -xf "$srcdir/$_srcroot-$pkgver.tar.zst" -C "$srcdir/$_srcroot"
+
+  cd "$srcdir/$_srcroot"
+
+  patch -Np1 -i "$srcdir/0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
+  patch -Np1 -i "$srcdir/0003-Bug-2016618-Fix-Linux-sandbox-build-breakage-on-glib.patch"
+  patch -Np1 -i "$srcdir/0004-Use-wasm32-wasip1-target.patch"
+
+  cat >"$srcdir/mozconfig" <<EOF
+ac_add_options --enable-application=browser
+mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
+
+ac_add_options --prefix=/usr
+ac_add_options --enable-release
+ac_add_options --enable-hardening
+ac_add_options --enable-optimize
+ac_add_options --enable-rust-simd
+ac_add_options --enable-linker=lld
+ac_add_options --disable-install-strip
+ac_add_options --disable-bootstrap
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
+
+# Branding
+ac_add_options --enable-official-branding
+ac_add_options --enable-update-channel=release
+ac_add_options --with-distribution-id=org.archlinux
+ac_add_options --with-unsigned-addon-scopes=app,system
+ac_add_options --allow-addon-sideload
+export MOZILLA_OFFICIAL=1
+export MOZ_APP_REMOTINGNAME=zen-browser
+
+# System libraries
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+
+# Features
+ac_add_options --enable-alsa
+ac_add_options --enable-jack
+ac_add_options --enable-crashreporter
+ac_add_options --disable-updater
+ac_add_options --disable-tests
+EOF
+}
+
+build() {
+  cd "$srcdir/$_srcroot"
+
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
+  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
+  export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
+  export MOZ_NOSPAM=1
+
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
+
+  ulimit -n 4096
+
+  echo 'Building instrumented browser...'
+  cat >.mozconfig "$srcdir/mozconfig" - <<'EOF'
+ac_add_options --enable-profile-generate=cross
+EOF
+  ./mach build --priority normal
+
+  echo 'Profiling instrumented browser...'
+  ./mach package
+  LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
+    dbus-run-session \
+    xvfb-run -s '-screen 0 1920x1080x24 -nolisten local' \
+    ./mach python build/pgo/profileserver.py
+
+  test -s merged.profdata
+  test -s jarlog
+
+  echo 'Removing instrumented browser...'
+  ./mach clobber objdir
+
+  echo 'Building optimized browser...'
+  cat >.mozconfig "$srcdir/mozconfig" - <<EOF
+ac_add_options --enable-lto=cross,full
+ac_add_options --enable-profile-use=cross
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+EOF
+  ./mach build --priority normal
+}
 
 package() {
-  local _archive="$srcdir/$pkgname-$pkgver-x86_64.tar.xz"
-  local _appdir="$pkgdir/usr/lib/$pkgname"
+  cd "$srcdir/$_srcroot"
+
+  DESTDIR="$pkgdir" ./mach install
+
+  local _launcher='zen-browser'
+  local _appdir="$pkgdir/usr/lib/$_launcher"
   local _size
 
-  install -d "$pkgdir/usr/lib"
-  bsdtar -xf "$_archive" -C "$pkgdir/usr/lib"
-  mv "$pkgdir/usr/lib/zen" "$_appdir"
+  if [[ -d "$pkgdir/usr/lib/zen" && ! -d "$_appdir" ]]; then
+    mv "$pkgdir/usr/lib/zen" "$_appdir"
+  fi
 
-  rm -f \
-    "$_appdir/updater" \
-    "$_appdir/updater.ini" \
-    "$_appdir/update-settings.ini"
-
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<'EOF'
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_launcher" <<'EOF'
 #!/bin/sh
 exec /usr/lib/zen-browser/zen "$@"
 EOF
-  ln -s "$pkgname" "$pkgdir/usr/bin/zen"
+  ln -s "$_launcher" "$pkgdir/usr/bin/zen"
+
+  ln -srv "$pkgdir/usr/lib/libonnxruntime.so" -t "$_appdir"
 
   install -Dm644 "$srcdir/$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
@@ -89,7 +213,7 @@ EOF
   for _size in 16 32 48 64 128; do
     install -Dm644 \
       "$_appdir/browser/chrome/icons/default/default${_size}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$pkgname.png"
+      "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$_launcher.png"
   done
 
   install -Dm644 /dev/stdin \
@@ -115,7 +239,7 @@ about=Zen Browser for Arch Linux
 
 [Preferences]
 app.distributor=archlinux
-app.distributor.channel=$pkgname
+app.distributor.channel=$_launcher
 app.partner.archlinux=archlinux
 EOF
 
@@ -126,6 +250,11 @@ EOF
   }
 }
 EOF
+
+  rm -f \
+    "$_appdir/updater" \
+    "$_appdir/updater.ini" \
+    "$_appdir/update-settings.ini"
 
   if [[ -e "$_appdir/libnssckbi.so" ]]; then
     ln -sf ../libnssckbi.so "$_appdir/libnssckbi.so"
