@@ -2,7 +2,7 @@
 
 _pkgname='undock'
 pkgname="${_pkgname}-bin"
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Extract contents of a container image in a local folder'
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('288cb0ab9fa1237ba8389e3116645fb83963998fffc260df736d114be7e9068f')
-sha256sums_aarch64=('120d0c0399b3a54c03e64628acd51ab477cc245c6b17944c6086a306d6170fdb')
+sha256sums_x86_64=('6e1e20f2599d28ab59edb67a2ad5211277bf33e3a32cbaa9a2d5fe288f0f0fb2')
+sha256sums_aarch64=('809fed57bc926432fefb226900d6cb4a4656f5a21c933016720acd4b1fffe967')
 options=("!strip")
 
 package() {
