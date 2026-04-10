@@ -1,0 +1,31 @@
+pkgbase = openfact
+	pkgdesc = Collect and display system facts
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = https://github.com/OpenVoxProject/openfact
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = ruby-rdoc
+	depends = dmidecode
+	depends = pciutils
+	depends = ruby
+	depends = ruby-base64
+	depends = ruby-hocon
+	depends = ruby-sys-filesystem
+	depends = ruby-thor
+	depends = virt-what
+	optdepends = puppet: retrieve puppet facts
+	provides = facter
+	conflicts = cpp-hocon
+	conflicts = leatherman
+	conflicts = libwhereami
+	conflicts = facter
+	replaces = cpp-hocon
+	replaces = leatherman
+	replaces = libwhereami
+	source = git+https://github.com/OpenVoxProject/openfact.git#tag=5.6.0
+	sha512sums = d776f533403cd7b6720e5ac0b7b8e528aef8c057124c65d86d3841056332a937f1ccb4a729bcb6e4e2a8e68c3cd95d93972b1c0dee452bda267b13672b0f3195
+	b2sums = 67c1ecd1ed1a7228f1a91bf90e6e4deae150f5664b2168387e5723847121dad68a01394d1e89517a687db5d01395a4864bb95bd38b5b0bf079816c272bf6d461
+
+pkgname = openfact
