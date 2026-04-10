@@ -1,0 +1,3 @@
+[htop]
+source = "git"
+git = "https://github.com/htop-dev/htop.git"

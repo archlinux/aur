@@ -2,5 +2,9 @@
 !.gitignore
 
 !.SRCINFO
+!.nvchecker.toml
+!LICENSE
+!LICENSES
 !PKGBUILD
+!REUSE.toml
 !vim-keybindings.patch

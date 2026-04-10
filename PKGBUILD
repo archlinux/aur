@@ -2,12 +2,12 @@
 
 _pkgname=htop
 pkgname="${_pkgname}-vim"
-pkgver=3.4.1
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='Interactive process viewer with a Vim keybindings patch'
 arch=('x86_64')
 url='https://htop.dev/'
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('libcap' 'libcap.so' 'libnl' 'ncurses' 'libncursesw.so')
 makedepends=('lm_sensors')
 optdepends=('lm_sensors: show cpu temperatures'
@@ -19,13 +19,13 @@ options=('!emptydirs')
 source=("https://github.com/htop-dev/htop/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'vim-keybindings.patch'
 )
-sha256sums=('af9ec878f831b7c27d33e775c668ec79d569aa781861c995a0fbadc1bdb666cf'
-            '90677646e98e4463d0fe48272e36d6e92ce74b192c6cec60065b10ab63576ddf')
+sha256sums=('cf0e72abf670ff3547d9130e129d2a97a657a5b20c74132c17502c817babbb41'
+            'd12e380f204f75399f20edf6c6b1ae46f6e83303941519fc787ca3774a30e19d')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-  patch -Np1 < ../vim-keybindings.patch
 
+  patch -Np1 < ../vim-keybindings.patch
   autoreconf -fi
 }
 
@@ -35,9 +35,11 @@ build() {
   ./configure \
       --prefix=/usr \
       --sysconfdir=/etc \
-      --enable-cgroup \
+      --enable-affinity \
+      --enable-capabilities \
       --enable-delayacct \
       --enable-openvz \
+      --enable-sensors \
       --enable-unicode \
       --enable-vserver
 
@@ -45,5 +47,7 @@ build() {
 }
 
 package() {
-  make -C "${_pkgname}-${pkgver}" DESTDIR="${pkgdir}" install
+  cd "${_pkgname}-${pkgver}"
+
+  make DESTDIR="${pkgdir}" install
 }
