@@ -3,7 +3,7 @@
 pkgbase=python-cdflib
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="A python module for reading NASA's Common Data Format (cdf) files Resources"
 arch=('any')
@@ -14,15 +14,15 @@ makedepends=('python-setuptools-scm'
              'python-installer'
              'mkdocs-material'
              'mkdocs-material-extensions'
-             'mkdocstrings-python')  # pymdown-extensions <- material-extensions, mkdocstrings
-#checkdepends=('python-pytest-cov'
-#              'python-pytest-remotedata'
+             'mkdocstrings-python'
+             'python-black')  # pymdown-extensions <- material-extensions, mkdocstrings
+checkdepends=('python-pytest-cov'
+              'python-pytest-remotedata'
 #             'python-pytest-xdist'
-#              'python-xarray'
-#              'python-astropy'
-#              'python-hypothesis'
-#              'python-netcdf4'
-#             )
+              'python-xarray'
+              'python-astropy'
+              'python-hypothesis'
+              'python-netcdf4')
 #             'python-netcdf4')  # netcdf4 needs remote-data
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/mms1_fpi_brst_l2_des-moms_20151016130334_v3.3.0.cdf"
@@ -68,7 +68,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_k0_spha_20210121_v01.cdf"
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_k0_spha_20210121_v01.nc")
 #       'fix-module-import.patch')
-md5sums=('901f1e45af1da92b79247feaab0223ac')
+md5sums=('d29ca7e6cfdf0b5a68446bb876538ffa')
 #        'ba680f74500be6839d3fe232e6a22eb1'
 #        '0239191dd5d8400aaf68ff5a6ee4de0d'
 #        '269b0b2dae018ffa3e7442349e65b0ad'
@@ -115,9 +115,9 @@ md5sums=('901f1e45af1da92b79247feaab0223ac')
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   ln -rs ${srcdir}/*.cdf .
-#   ln -rs ${srcdir}/*.nc .
-#   ln -rs ${srcdir}/*.ncdf .
+   ln -rs ${srcdir}/*.cdf .
+   ln -rs ${srcdir}/*.nc .
+   ln -rs ${srcdir}/*.ncdf .
 ##  sed -i "/language\ = /s/None/'en'/" doc/conf.py
     sed -i '$a use_directory_urls: false' mkdocs.yml
 }
@@ -130,11 +130,11 @@ build() {
     mkdocs build
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#    # Can't skip remotedata after 1.3.3
-#    pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #--remote-data # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 # --remote-data
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+    # Can't skip remotedata with 1.3.3-1.3.8
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 # --remote-data
+}
 
 package_python-cdflib() {
     depends=('python>=3.9' 'python-numpy>=1.21')
