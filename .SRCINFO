@@ -1,7 +1,7 @@
 pkgbase = pineconemc-launcher-bin
 	pkgdesc = A fork of Prism Launcher with integrated Ely.by support
 	pkgver = 11.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ElyPrismLauncher/Launcher
 	arch = x86_64
 	license = GPL3
