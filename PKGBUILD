@@ -2,7 +2,7 @@
 # Contributor: peelz <peelz.dev+arch@gmail.com>
 
 pkgname="xrizer-multilib-git"
-pkgver=ba56af9
+pkgver=r302.dd7f121
 pkgrel=1
 pkgdesc="Reimplementation of OpenVR, translating calls to OpenXR. (32-bit support)"
 arch=("x86_64")
@@ -24,8 +24,8 @@ makedepends=(
   "clang"
   "shaderc"
 )
-provides=("xrizer")
-conflicts=("xrizer")
+provides=("xrizer" "xrizer-common")
+conflicts=("xrizer" "xrizer-common")
 source=(
   "${pkgname}::git+${url}.git"
 )
@@ -36,7 +36,7 @@ options=("!lto")
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --long --tags --abbrev=7 --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')"
 }
 
 prepare() {
