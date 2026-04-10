@@ -1,4 +1,4 @@
-# Maintainer: DeepChirp <DeepChirp@outlook.com>
+# Maintainer: DeepChirp <deepchirp@archlinuxcn.org>
 pkgname=easyeffects-jtrv-presets-git
 _origin=EasyEffects-Presets
 pkgver=r11.e4a1ff4
