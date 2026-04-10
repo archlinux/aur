@@ -2,13 +2,13 @@
 
 pkgbase=cuopt
 pkgname=(cuopt python-cuopt)
-pkgver=26.02.00
+pkgver=26.04.00
 pkgrel=1
 pkgdesc="NVIDIA cuOpt is an open-source GPU-accelerated optimization engine delivering near real-time solutions for complex decision-making challenges."
 url="https://github.com/NVIDIA/cuopt"
 arch=('x86_64')
 license=('Apache-2.0')
-depends=('cuda' 'rmm' 'libraft' 'argparse' 'cudss')
+depends=('cuda' 'rmm' 'libraft' 'argparse' 'cudss' 'protobuf')
 makedepends=('cuda' 'python-setuptools' 'cmake' 'python-scikit-build-core' 'python-rapids-build-backend' 'ninja' 'cython' 'gcc')
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz" 
@@ -16,8 +16,8 @@ source=(
     "missing-pkg.patch"
 )
 sha256sums=(
-    '4dd647cddf0c674548a0ffd4598ab3684a609f173f2defa325cceb67beeffa1c'
-    'bc77344200404f4e139a64a611412fa9c8aa69354c4fac46173257dc245a37bf'
+    '135ec7765e8cccacb13194447ae3bba02abfd8ace86c688eede418ec05d4ef44'
+    'cd09e2c36a87ce8a92860fc0b5f3d0820873776f1cd1f87523223db3e10cc386'
     '0d7efedb556324377fd1f5a6d8508ae1a168e67139fcc4c8af91f2af1aedb93b'
 )
 
@@ -30,8 +30,8 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgbase-$pkgver"
-    export CXXFLAGS+=" -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER"
-    export CUDAFLAGS+=" -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER"
+    export CXXFLAGS+=" -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER -Wno-error=cpp"
+    export CUDAFLAGS+=" -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER -Wno-error=cpp"
     cmake -B build -S cpp \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \

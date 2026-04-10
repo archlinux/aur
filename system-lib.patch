@@ -1,6 +1,6 @@
---- cpp/CMakeLists.txt	2025-10-15 02:44:24.000000000 +0800
-+++ cpp/CMakeLists.txt.new	2025-10-15 21:43:13.800374220 +0800
-@@ -86,7 +86,7 @@
+--- cpp/CMakeLists.txt	2026-04-10 04:42:11.000000000 +0800
++++ cpp/CMakeLists.txt.new	2026-04-10 16:30:34.549921110 +0800
+@@ -75,7 +75,7 @@
  set(CUOPT_CUDA_FLAGS "")
  
  if(CMAKE_COMPILER_IS_GNUCXX)
@@ -8,10 +8,10 @@
 +  list(APPEND CUOPT_CXX_FLAGS -Wno-error=deprecated-declarations)
  endif(CMAKE_COMPILER_IS_GNUCXX)
  
- # To use sanitizer with cuda runtime, one must follow a few steps:
-@@ -179,7 +179,9 @@
-   include(cmake/thirdparty/get_rmm.cmake)
-   include(cmake/thirdparty/get_raft.cmake)
+ # Papilo pulls in Boost.Multiprecision float128 support, which expects quadmath.h from the GCC
+@@ -234,7 +234,9 @@
+     set_target_properties(rmm PROPERTIES CXX_VISIBILITY_PRESET default)
+   endif()
  else()
 -  find_package(CCCL REQUIRED)
 +  find_package(nvtx3 REQUIRED)
@@ -20,9 +20,9 @@
    find_package(RMM REQUIRED)
    find_package(RAFT REQUIRED)
  endif()
-@@ -204,9 +207,7 @@
+@@ -279,9 +281,7 @@
+ set(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS_SAVED})
  
- FetchContent_MakeAvailable(papilo)
  
 -include(${rapids-cmake-dir}/cpm/rapids_logger.cmake)
  # generate logging macros
@@ -30,3 +30,19 @@
  create_logger_macros(CUOPT "cuopt::default_logger()" include/cuopt)
  
  find_package(CUDSS REQUIRED)
+@@ -310,13 +310,13 @@
+ if(TARGET protobuf::protoc)
+   get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION_RELEASE)
+   if(NOT _PROTOBUF_PROTOC)
+-    get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION)
++	  get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION_NONE)
+   endif()
+ else()
+   find_package(protobuf CONFIG REQUIRED)
+   get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION_RELEASE)
+   if(NOT _PROTOBUF_PROTOC)
+-    get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION)
++	  get_target_property(_PROTOBUF_PROTOC protobuf::protoc IMPORTED_LOCATION_NONE)
+   endif()
+ endif()
+ 
