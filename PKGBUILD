@@ -2,12 +2,12 @@
 
 pkgname=libpdfium-nojs
 pkgver=7727.r1.b34626f5fd
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
 license=('BSD')
-depends=('freetype2' 'lcms2' 'libjpeg' 'openjpeg2' 'icu')
+depends=('freetype2' 'lcms2' 'libjpeg' 'openjpeg2' 'icu' 'harfbuzz')
 conflicts=('libpdfium-bin')
 provides=('libpdfium')
 makedepends=('git' 'python' 'gn' 'ninja' 'fast_float')
