@@ -1,7 +1,8 @@
-# Maintainer: Foxma <foxma at fermentedfox dot co dot uk>
+# Maintainer: Andreas Kling <arch@akling.org>
+# Contributor: Foxma <foxma at fermentedfox dot co dot uk>
 
 pkgname=mixing-station
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='Mixer remote control for multiple mixers'
 arch=('any')
@@ -11,20 +12,20 @@ depends=('jre21-openjdk' 'zenity')
 replaces=('mixing-station-pc' 'mixing-station-pc-bin')
 conflicts=('mixing-station-pc' 'mixing-station-pc-bin')
 source=(
-  "$pkgname-$pkgver-$pkgrel.zip::https://mixingstation.app/backend/api/web/download/update/mixing-station-pc/release"
+  "$pkgname-$pkgver-$pkgrel.zip::https://mixingstation.app/backend/api/web/download/archive/mixing-station-pc/update/$pkgver"
   'mixing-station'
   'copyright.txt'
   'ms-icon.png::https://mixingstation.app/ms-docs/assets/ms.png'
   'mixing-station.desktop')
 sha256sums=(
-  SKIP                                                               # release.zip
+  '1ee746e2eed95dc3514b943def0e3bb023ddcfce2db2a526b7ba7caadf61be00' # release.zip
   'd8e6726a3f4dc7bb63e649e461966fb4f2d65cab6b0b2feaa47938f530a92c87' # mixing-station
   'a5d350e62b37f9394944421d94aaa1a823f396a0e76727cb37898029bc5d77bf' # copyright.txt
   '2a9b5fedbaf45ff7c7822b9cfc6dd50541b68ca39545611814f034608c2f9a00' # ms-icon.png
   '0ebe311c4f614552cab7bacd4d5b67677ab2d09a89ceb49d10cb8f05c06297f7' # mixing-station.desktop
 )
 package() {
-  # Java Script
+  # Java jar file
   install -m 0755 -d "$pkgdir/usr/share/java/mixing-station"
   install -m 0644 "mixing-station-desktop.jar" "$pkgdir/usr/share/java/mixing-station/mixing-station.jar"
 
