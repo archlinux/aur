@@ -1,0 +1,12 @@
+pkgbase = bkp
+	pkgdesc = A simple backup utility written in Go
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/nfgferreira/bkp
+	arch = x86_64
+	license = GPL-1.0-or-later
+	depends = glibc
+	source = https://github.com/nfgferreira/bkp/releases/download/v0.1/bkp
+	sha256sums = SKIP
+
+pkgname = bkp
