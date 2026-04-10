@@ -1,6 +1,6 @@
 # Maintainer: Rankyn Bass <rankyn@proton.me>
 pkgname=xivlauncher-rb
-pkgver=1.3.1.2
+pkgver=1.4.0.1
 pkgrel=1
 epoch=2
 pkgdesc="Custom launcher for Final Fantasy XIV Online with RB Patches!"
@@ -27,10 +27,9 @@ depends=(
     'libpcap'
     'desktop-file-utils'
 )
-makedepends=('dotnet-sdk>=9' 'git')
+makedepends=('dotnet-sdk>=10' 'git')
 optdepends=(
     'steam'
-    'lib32-sdl2'
     'lib32-attr'
     'lib32-fontconfig'
     'lib32-lcms2'
