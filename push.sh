@@ -17,7 +17,7 @@ fi
 # Check version
 if [ "${pkgver}" = "${oldver}" ] && [ -z "${FORCE_REBUILD}" ]; then
   echo >/dev/stderr "Error: same (old) version specified - update aborted"
-  exit 1
+  exit
 fi
 
 # Get variables from PKGBUILD
