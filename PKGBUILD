@@ -13,12 +13,15 @@ conflicts=('hyprcrop')
 
 
 source_x86_64=("hyprcrop-${pkgver}::${url}/releases/download/v${pkgver}/hyprcrop")
-source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
+source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE"
+        "README-${pkgver}::${url}/raw/v${pkgver}/README.md")
 
-sha256sums=('7730947ada4144f1f707fa00247da2dca12e3ef8cb22c9939d42f032595a5e74')
+sha256sums=('7730947ada4144f1f707fa00247da2dca12e3ef8cb22c9939d42f032595a5e74'
+            '47814798acc66cab04a10042a7430067d8ea74b3728404ea05fe8b83aa51cb19')
 sha256sums_x86_64=('927086648f68c255c2ed1dfe7e512195ce727566b1d3e0fa1b602bdabf89449f')
 
 package() {
     install -Dm755 "${srcdir}/hyprcrop-${pkgver}" "${pkgdir}/usr/bin/hyprcrop"
+    install -Dm644 "${srcdir}/README-${pkgver}" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
