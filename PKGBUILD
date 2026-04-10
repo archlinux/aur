@@ -13,15 +13,15 @@ install='mimic-node.install'
 source=('git+https://github.com/LIghtJUNction/Mimic-Node.git')
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "$srcdir/Mimic-Node"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 prepare() {
     cd "$srcdir/Mimic-Node"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+pkgver() {
+    cd "$srcdir/Mimic-Node"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
