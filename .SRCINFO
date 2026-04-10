@@ -1,0 +1,21 @@
+pkgbase = python-tree-sitter-typescript
+	pkgdesc = Python Bindings for tree-sitter-typescript
+	pkgver = 0.23.2
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-typescript
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-tree-sitter
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = tree-sitter-typescript=0.23.2
+	depends = python-tree-sitter
+	depends = tree-sitter
+	source = tree-sitter-typescript-0.23.2.tar.xz::https://github.com/tree-sitter/tree-sitter-typescript/releases/download/v0.23.2/tree-sitter-typescript.tar.xz
+	b2sums = 8f62dd7c42c950a5ecb8ad75e96346ea2676b9046888e4acd823fa9b485f0b2ac292e9134afa6482ab316da68a14a7a588c3339aa3b1a676406a98c54b3147dd
+
+pkgname = python-tree-sitter-typescript
