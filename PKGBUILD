@@ -4,7 +4,7 @@
 pkgname=fragview-git
 _gitname=fragview
 pkgver=0.1.3.2.gc0ab8dc
-pkgrel=1
+pkgrel=2
 pkgdesc="Analyze disk content and files fragmentation by displaying its map"
 arch=('x86_64')
 url="https://github.com/i-rinat/fragview"
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" .
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_POLICY_VERSION_MINIMUM=3.5 .
   make
 }
 
