@@ -12,7 +12,7 @@
 
 pkgname=python-mempalace
 pkgver=3.1.0
-pkgrel=6
+pkgrel=1
 pkgdesc='The highest-scoring AI memory system, with 30x context compression and a temporal knowledge graph.'
 arch=('any')
 url='https://github.com/milla-jovovich/mempalace'
