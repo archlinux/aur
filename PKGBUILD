@@ -13,7 +13,7 @@ optdepends=(
     'checkupdates: check available updates'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2bd5375e1807a75c4818afba5f063ec1f9f0a561027e7b3a1cf3061669b5aa92')
+sha256sums=('d1658aa41408a0c43bbbe142e9fbd7fa0a458c2aeed436f695273f866d61a5af')
 
 package() {
     cd "$srcdir/jay-$pkgver"
