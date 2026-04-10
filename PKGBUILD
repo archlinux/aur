@@ -13,9 +13,9 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_minecraft_ver="26.1.1"
+_minecraft_ver="26.1.2"
 _fabric_ver="1.1.1"
-_fabric_loader_ver="0.18.6"
+_fabric_loader_ver="0.19.1"
 _mng_ver=1.0.4
 
 pkgname="fabric-server"
