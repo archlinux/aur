@@ -13,7 +13,6 @@ pkgbase = fcitx5-vinput-bin
 	depends = pipewire
 	depends = qt6-base
 	depends = systemd-libs
-	depends = vosk-api
 	provides = fcitx5-vinput
 	conflicts = fcitx5-vinput
 	options = !strip
