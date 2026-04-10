@@ -1,0 +1,26 @@
+pkgbase = docking-bin
+	pkgdesc = A lightweight, feature-rich dock for Linux written in Python with GTK 3 and Cairo
+	pkgver = 1.9.9
+	pkgrel = 1
+	url = https://github.com/edumucelli/docking
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = gtk3
+	depends = libwnck3
+	depends = networkmanager
+	depends = gstreamer
+	depends = librsvg
+	depends = hicolor-icon-theme
+	depends = adwaita-icon-theme
+	provides = docking
+	conflicts = docking
+	source_x86_64 = docking-1.9.9-x86_64.pkg.tar.zst::https://github.com/edumucelli/docking/releases/download/v1.9.9/docking-1.9.9-linux-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = bb1e0740b5ac913b94be10b85aa25c0c6f832f4b90f94780048a7434151da126
+	source_aarch64 = docking-1.9.9-aarch64.pkg.tar.xz::https://github.com/edumucelli/docking/releases/download/v1.9.9/docking-1.9.9-linux-aarch64.pkg.tar.xz
+	sha256sums_aarch64 = e40fe294b8897fbfaf4b6bcc9c30f86fb089e4e8a0ec86c796870fc588f04e1d
+
+pkgname = docking-bin
