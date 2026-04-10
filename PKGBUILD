@@ -1,13 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgbase=source2viewer-bin
 pkgname=(source2viewer-bin source2viewer-cli-bin)
-pkgver=18.0
+pkgver=19.1
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
 license=('MIT' 'CC-BY-2.5')
-depends=('glibc' 'gcc-libs' 'zlib')
 makedepends=('gendesk')
 options=(!strip !debug)
 install=$pkgname.install
@@ -16,19 +15,20 @@ source_x86_64=(cli-linux-x64-${pkgver}.zip::"$url/releases/download/$pkgver/cli-
 "Source2Viewer-${pkgver}.exe::$url/releases/download/$pkgver/Source2Viewer.exe")
 source_armv7h=(cli-linux-arm-${pkgver}.zip::"$url/releases/download/$pkgver/cli-linux-arm.zip")
 source_aarch64=(cli-linux-arm64-${pkgver}.zip::"$url/releases/download/$pkgver/cli-linux-arm64.zip")
-sha256sums=('a2a49fcbd2478700de36a57c2f7ae444ce5d7549a173a74ed0be549d453d9faa')
-sha256sums_x86_64=('280abfef0d6a8104481458928c9777bcf66b5f2971adff14fe3b99775f497cc6'
-                   '53c86235d9736f62e7d4b5c038f667ecd0e89b11e2f94fa5d7ad192dedd686cd')
-sha256sums_armv7h=('e4908468cf5ae5f43eb66aae635fb88cf33fb2a2bd1c00623ad81202e2b076b2')
-sha256sums_aarch64=('2349cb0ab240afbee57a368b9be0cbbd9ff12caa97bc8e3d9c17f8636533f3be')
+sha256sums=('4502bb0437eed369cd7f8c74653d3731c466c7e07184b3d277f710db0d704ed6')
+sha256sums_x86_64=('071f293b88d59f866692fe12689d216af8a02f3d746a7fc269c0ca38646c961b'
+                   '6098e0d19abf4d292ca50603532e2cc44ef3047a30c62f2d855cfa7d6cffc425')
+sha256sums_armv7h=('e90c44d4b31dfbd06754d1deac7f2d16c4e8d1c743481bff93c051eb0e6cf0e1')
+sha256sums_aarch64=('9d4e985141247dc39f45867f0caf70fc9aea5405786c90b665d5b49fe0527007')
 
 
 package_source2viewer-cli-bin() {
-	depends=(glibc gcc-libs)
+	depends=(glibc libstdc++ libgcc)
 	provides=(${pkgname::-4})
 	conflicts=(${pkgname::-4})
 	cd "$srcdir"
 	install -Dm755 Source2Viewer-CLI "$pkgdir/usr/bin/${pkgbase::-3}cli"
+	install -Dm644 ValveResourceFormat-${pkgver}/LICENSE -t "$pkgdir/usr/share/licenses/${pkgname}"
 }
 
 
@@ -80,6 +80,8 @@ EOF
 
 	install -Dm644 "$srcdir/ValveResourceFormat-$pkgver/Misc/Icons/source2viewer.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname::-4}.png"
 	install -Dm644 "$srcdir/${pkgname::-4}.desktop" "$pkgdir/usr/share/applications/${pkgname::-4}.desktop"
+
+	install -Dm644 "$srcdir/ValveResourceFormat-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/${pkgname}"
 
 	install -dm755 "$pkgdir/usr/share/mime/packages"
 	cat >> "$pkgdir/usr/share/mime/packages/${pkgname}.xml" <<EOF
