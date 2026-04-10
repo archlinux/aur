@@ -1,0 +1,30 @@
+_instdir="/opt/mworks-syslab"
+_julia="${_instdir}/Tools/julia-1.10.10/bin/julia"
+_precompile_jl="${_instdir}/Install/config/precompile.jl"
+
+post_install() {
+    echo "==> 预编译 Julia 库，请稍候（预计数分钟）..."
+    JULIA_DEPOT_PATH="${_instdir}/.julia" \
+    JULIA_CONDAPKG_BACKEND=Null \
+    PYTHON_JULIAPKG_OFFLINE=yes \
+    PYTHON="${_instdir}/.julia/miniforge3/bin/python" \
+        "${_julia}" "${_precompile_jl}"
+
+    echo ""
+    echo "==> MWORKS.Syslab 已安装至 ${_instdir}"
+    echo ""
+    echo "==> 帮助文档："
+    echo "    Syslab 内置帮助中心在 Linux 上存在已知 bug，点击无响应。"
+    echo "    可通过桌面菜单中的「Syslab 帮助文档」快捷方式，"
+    echo "    或直接在浏览器中打开以下地址访问："
+    echo "      file://${_instdir}/Docs/Help/homepage/index.html"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # 删除安装目录以清理残留的预编译缓存（compiled/）和运行时日志（logs/）
+    rm -rf "${_instdir}"
+}

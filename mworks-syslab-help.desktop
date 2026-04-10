@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Syslab 帮助文档
+Name[zh_CN]=Syslab 帮助文档
+Comment=打开 MWORKS.Syslab 帮助文档
+Exec=xdg-open file:///opt/mworks-syslab/Docs/Help/homepage/index.html
+Icon=/opt/mworks-syslab/Bin/resources/app/resources/linux/code.png
+Terminal=false
+Categories=Documentation;Education;
