@@ -2,19 +2,18 @@
 _pkgname=ValveResourceFormat
 pkgbase=source2viewer
 pkgname=(source2viewer source2viewer-cli)
-pkgver=18.0
+pkgver=19.1
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
 license=('MIT' 'CC-BY-2.5')
-depends=('glibc' 'gcc-libs' 'zlib' 'wine' 'bash' 'hicolor-icon-theme' 'dotnet-runtime')
 makedepends=('dotnet-sdk-bin' 'gendesk')
 options=(!strip !debug)
 conflicts=('valveresourceformat')
 replaces=('valveresourcefromat')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a2a49fcbd2478700de36a57c2f7ae444ce5d7549a173a74ed0be549d453d9faa')
+sha256sums=('4502bb0437eed369cd7f8c74653d3731c466c7e07184b3d277f710db0d704ed6')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
@@ -51,6 +50,7 @@ build() {
 
 package_source2viewer() {
 	install=$pkgbase.install
+	depends=('bash' 'hicolor-icon-theme' 'dotnet-runtime-bin' 'wine')
 	install -Dm644 "$srcdir/$_pkgname-$pkgver/GUI/bin/Release/win-x64/publish/Source2Viewer.exe" "$pkgdir/usr/lib/$pkgname/$pkgname.exe"
 	install -dm755 "$pkgdir/usr/bin"
 	cat >> "$pkgdir/usr/bin/$pkgname" <<-EOF
@@ -79,6 +79,8 @@ EOF
 	install -Dm644 "$srcdir/$_pkgname-$pkgver/Misc/Icons/source2viewer.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
 	install -Dm644 "$srcdir/source2viewer.desktop" "$pkgdir/usr/share/applications/source2viewer.desktop"
 
+	install -Dm644 "$srcdir/$_pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/${pkgname}"
+
 	install -dm755 "$pkgdir/usr/share/mime/packages"
 	cat >> "$pkgdir/usr/share/mime/packages/${pkgname}.xml" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
@@ -97,7 +99,8 @@ EOF
 }
 
 package_source2viewer-cli() {
-	depends=('glibc' 'gcc-libs')
+	depends=('glibc' 'libgcc' 'libstdc++')
 	cd "$srcdir/$_pkgname-$pkgver/CLI/bin/Release/linux-x64/publish"
 	install -Dm755 Source2Viewer-CLI "$pkgdir/usr/bin/${pkgbase}-cli"
+	install -Dm644 "$srcdir/$_pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/${pkgname}"
 }
