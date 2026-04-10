@@ -1,4 +1,4 @@
-# Maintainer: DeepChirp <DeepChirp@outlook.com>
+# Maintainer: DeepChirp <deepchirp@archlinuxcn.org>
 
 pkgname=rustnet-git
 _pkgname=${pkgname%-git}
