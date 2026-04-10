@@ -24,6 +24,6 @@ pkgver() {
 package() {
   cd dots-hyprland
   mkdir -p "$pkgdir/usr/share/dots-hyprland"
-  cp -r dots/.config dots/.local sdata "$pkgdir/usr/share/dots-hyprland/"
-  install -Dm755 sdata/subcmd-install/3.files.sh "$pkgdir/usr/share/dots-hyprland/install.sh"
+  cp -r setup dots/.config dots/.local sdata "$pkgdir/usr/share/dots-hyprland/"
+  chmod +x "$pkgdir/usr/share/dots-hyprland/setup"
 }
