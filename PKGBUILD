@@ -18,7 +18,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd dots-hyprland
-  git describe --tags 2>/dev/null | sed 's/^v//;s/-/./g' || printf "0.0.0"
+  local v
+  v="$(git describe --tags 2>/dev/null | sed 's/^v//;s/-/./g')"
+  printf '%s' "${v:-0.0.0}"
 }
 
 package() {
