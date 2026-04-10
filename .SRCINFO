@@ -1,0 +1,15 @@
+pkgbase = altsendme-bin
+	pkgdesc = File transfert doesn't need to be complicated
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/tonyantony300/alt-sendme
+	arch = x86_64
+	license = AGPL-3.0-only
+	source = alt-sendme::https://github.com/LeVraiKing/altsendme-bin/releases/download/v0.3.4/alt-sendme
+	source = alt-sendme.desktop::https://raw.githubusercontent.com/LeVraiKing/altsendme-bin/master/alt-sendme.desktop
+	source = alt-sendme.png::https://raw.githubusercontent.com/LeVraiKing/altsendme-bin/master/alt-sendme.png
+	sha256sums = b0ebc11fc54b393e316c4e83796d7e3ab1b47aa99601ca355b793c0d912e4684
+	sha256sums = SKIP
+	sha256sums = e56868ca6cc967ec7c2260fc976c3172f19116843d598b54a28eb2a608131b27
+
+pkgname = altsendme-bin
