@@ -2,7 +2,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos
-_srctag=10.0-20260330
+_srctag=10.0-20260407
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
@@ -240,7 +240,9 @@ prepare() {
         meson
         nvidia-libs/dxvk-nvapi
         nvidia-libs/nvcuda
+        nvidia-libs/nvcuda32
         nvidia-libs/nvenc
+        nvidia-libs/nvenc32
         nvidia-libs/wine-nvml
         nvidia-libs/wine-nvoptix
         openvr
@@ -343,7 +345,7 @@ package() {
         $(find "${_monodir}" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-b2sums=('0a93432951e879a30ab355ff069cc4d87cd4de005ef23480f04ede9c7ea4ecf4157d891a9b2abc64fb7e067daa026b9272f8c910146f574d0765ff370af8d2cd'
+b2sums=('5d0da76c71c86b645eb6c0dff1bbb8edb7a977f0ace54fecc271889f272515ff32c47567572ed3fd2a7e4276f96482fa3ee73c78047649bb643385124fdfb222'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
         '9ca53dee272470806432c61587080e6dc04fd9eaafde4f55f5d57d5557ec6859d77a74b74c9e3f472da04b8ace9609f0927573faab368a25249c76b3e37e65c1'
