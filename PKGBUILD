@@ -44,6 +44,4 @@ EOF
   install -dm755 "${pkgdir}/usr/bin"
   ln -s ../lib/nyrra-foundry-cli/nyrra-foundry-cli \
     "${pkgdir}/usr/bin/nyrra-foundry-cli"
-  ln -s ../lib/nyrra-foundry-cli/nyrra-foundry-cli \
-    "${pkgdir}/usr/bin/npc"
 }
