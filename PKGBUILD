@@ -2,7 +2,7 @@
 # Maintainer: VeryBaaad <verybaaad@outlook.com>
 
 pkgname=randfill
-pkgver=0.1.0.r0.f667e6b
+pkgver=0.1.1.r0.f3f2e71
 pkgrel=1
 pkgdesc="Overwrite files with cryptographically secure random data"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('git' 'cargo')
 conflicts=("randfill-git")
 options=('!debug')
-source=("$pkgname::git+https://github.com/OpenHelloMiddle/RandFill.git#tag=0.1.0")
+source=("$pkgname::git+https://github.com/OpenHelloMiddle/RandFill.git#tag=0.1.1")
 sha256sums=('SKIP')
 
 prepare() {

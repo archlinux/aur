@@ -1,6 +1,6 @@
 pkgbase = randfill
 	pkgdesc = Overwrite files with cryptographically secure random data
-	pkgver = 0.1.0.r0.f667e6b
+	pkgver = 0.1.1.r0.f3f2e71
 	pkgrel = 1
 	url = https://github.com/OpenHelloMiddle/RandFill
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = randfill
 	makedepends = cargo
 	conflicts = randfill-git
 	options = !debug
-	source = randfill::git+https://github.com/OpenHelloMiddle/RandFill.git#tag=0.1.0
+	source = randfill::git+https://github.com/OpenHelloMiddle/RandFill.git#tag=0.1.1
 	sha256sums = SKIP
 
 pkgname = randfill
