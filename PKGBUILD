@@ -1,6 +1,6 @@
 pkgname=omaclip-bin
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Desktop clipboard manager with secure mesh sync — peers auto-discover and share clipboards across your local network"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rhemvi/omaclip"
@@ -21,8 +21,8 @@ source=("appicon.png::${url}/releases/download/v${pkgver}/appicon.png"
 sha256sums=('d2cc30c8cb442f9d0b73af1a8f8494fb76d92c2abdcff5279cce493a0237061b'
             '436671e03fa1c9439db7bf106dc1b5bb3d9936976029df57d729517c412b8f81'
             '84ae19cfc0f1defbad548c2aade37bdfc417efb1b70070ae72e0d35af4c0bac4')
-sha256sums_x86_64=('26c3413fa78bd521c97e52164fa390ee4728233d5354539dc837e766aeba7672')
-sha256sums_aarch64=('3cd560ca8a0b37357b1b4dbfe70311de8567c38a72f8fad30c178ae008f2c849')
+sha256sums_x86_64=('b58d165f5274f46f01cdc10cccec98ae74785cdbf40ed8b7b2d2f89723d4da34')
+sha256sums_aarch64=('f625a541acff6cb73c3c84f18c2b617a906ee139db5963aed31ddf094f1c5d9e')
 
 package() {
   if [ "$CARCH" = "x86_64" ]; then
