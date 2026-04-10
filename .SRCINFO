@@ -1,6 +1,6 @@
 pkgbase = networkmanager-ssh
 	pkgdesc = OpenSSH VPN support for NetworkManager
-	pkgver = 1.4.2
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/danfruehauf/NetworkManager-ssh
 	arch = x86_64
@@ -14,9 +14,7 @@ pkgbase = networkmanager-ssh
 	depends = networkmanager
 	depends = openssh
 	depends = sshpass
-	source = networkmanager-ssh::git+https://github.com/danfruehauf/NetworkManager-ssh.git#tag=1.4.2
-	source = nm-ssh-service.name
-	md5sums = af163df4f8ade5d26a7eeed1b1414acf
-	md5sums = df217faa2823494c3fd83e778540e880
+	source = networkmanager-ssh::git+https://github.com/danfruehauf/NetworkManager-ssh.git#tag=1.4.4
+	md5sums = 7ff409d26bf8e922fcc0d95e8c908944
 
 pkgname = networkmanager-ssh

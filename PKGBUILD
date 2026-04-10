@@ -3,7 +3,7 @@
 # Contributor: lyoko, Tom Nguyen
 
 pkgname=networkmanager-ssh
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="OpenSSH VPN support for NetworkManager"
 arch=('x86_64')
@@ -13,10 +13,8 @@ depends=('gtk3' 'libnm' 'libnma' 'libsecret' 'networkmanager' 'openssh' 'sshpass
 makedepends=('git' 'intltool')
 optdepends=()
 
-source=(${pkgname}::"git+https://github.com/danfruehauf/NetworkManager-ssh.git#tag=${pkgver}"
-        "nm-ssh-service.name")
-md5sums=('af163df4f8ade5d26a7eeed1b1414acf'
-         'df217faa2823494c3fd83e778540e880')
+source=(${pkgname}::"git+https://github.com/danfruehauf/NetworkManager-ssh.git#tag=${pkgver}")
+md5sums=('7ff409d26bf8e922fcc0d95e8c908944')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
@@ -38,8 +36,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"
-  install -Dm644 nm-ssh-service.name "$pkgdir/usr/lib/NetworkManager/VPN/nm-ssh-service.name"
   cd "${srcdir}/${pkgname}"
   make DESTDIR="${pkgdir}/" INSTALL="install -p" CP="cp -p" install
 }
