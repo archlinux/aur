@@ -4,14 +4,14 @@
 pkgname=python-tree-sitter-python
 _gitpkgname=tree-sitter-python
 pkgver=0.25.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Python Bindings for tree-sitter-python'
 arch=('x86_64')
 url='https://github.com/tree-sitter/tree-sitter-python'
 license=('MIT')
 depends=(
 	'python'
-	'tree-sitter-python'
+	"tree-sitter-python=${pkgver}"
 	'python-tree-sitter'
 	'tree-sitter'
 )
