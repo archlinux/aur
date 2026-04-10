@@ -1,0 +1,13 @@
+pkgbase = ddctui
+	pkgdesc = A TUI for controlling monitor settings via DDC/CI (ddcutil)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/UMCEKO/ddctui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = ddcutil
+	source = ddctui-0.1.0.tar.gz::https://github.com/UMCEKO/ddctui/archive/v0.1.0.tar.gz
+	sha256sums = 201a16d5512d763907a54d3769e3479a93a4ad07b2fa10504613fd29c9de8187
+
+pkgname = ddctui
