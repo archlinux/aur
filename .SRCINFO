@@ -1,6 +1,6 @@
 pkgbase = dredge-bin
 	pkgdesc = Backed-up personal encrypted vault for the terminal
-	pkgver = 0.9.8
+	pkgver = 0.9.10
 	pkgrel = 1
 	url = https://github.com/DeprecatedLuar/dredge-cargo
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = dredge-bin
 	provides = dredge
 	conflicts = dredge
 	conflicts = dredge-cargo
-	source = README-0.9.8.md::https://raw.githubusercontent.com/DeprecatedLuar/dredge-cargo/v0.9.8/README.md
+	source = README-0.9.10.md::https://raw.githubusercontent.com/DeprecatedLuar/dredge-cargo/v0.9.10/README.md
 	source = LICENSE
-	sha256sums = 42c8e35367453dcf76146f180c1023b7cf6cbf86838e3da4fa92143b0779a02d
+	sha256sums = 9a2806678470b26a0cde4bf00b24eac3d918f6614b7a3e5400d3b78070a8ec5a
 	sha256sums = ce37bb083947186acb712a9cb01d81357f3b303b35db4119519361ee198b4b3e
-	source_x86_64 = dredge-x86_64-0.9.8::https://github.com/DeprecatedLuar/dredge-cargo/releases/download/v0.9.8/dredge_linux_amd64
-	sha256sums_x86_64 = c848f23cb5d80e28594479dcb76d04ae641c54c2d84a4394bee174869126c1f2
-	source_aarch64 = dredge-aarch64-0.9.8::https://github.com/DeprecatedLuar/dredge-cargo/releases/download/v0.9.8/dredge_linux_arm64
-	sha256sums_aarch64 = 86160cfaa8d767c49197fb2dc4a872a4400afb9c259c504b35134bf4aa7fe088
+	source_x86_64 = dredge-x86_64-0.9.10::https://github.com/DeprecatedLuar/dredge-cargo/releases/download/v0.9.10/dredge_linux_amd64
+	sha256sums_x86_64 = c4e3326b7b4846cece9c97494c1b851496fb72b6fd6a482ee6cc4614f9cd753c
+	source_aarch64 = dredge-aarch64-0.9.10::https://github.com/DeprecatedLuar/dredge-cargo/releases/download/v0.9.10/dredge_linux_arm64
+	sha256sums_aarch64 = 912e2f7869ba2d0c1650f98968958cf61f3b33f2665c79f838a1ffef13b38452
 
 pkgname = dredge-bin
