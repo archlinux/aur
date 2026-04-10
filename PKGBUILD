@@ -2,7 +2,7 @@
 
 pkgname=kazumi-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.0.6
+pkgver="2.0.7"
 pkgrel=1
 pkgdesc="基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕"
 arch=('x86_64')
@@ -11,17 +11,22 @@ license=('GPL-3.0-or-later')
 depends=('libayatana-appindicator' 'xdg-user-dirs' 'webkit2gtk-4.1')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Predidit/Kazumi/releases/download/${pkgver}/Kazumi_linux_${pkgver}_amd64.tar.gz"
-	"https://raw.githubusercontent.com/Predidit/Kazumi/refs/tags/${pkgver}/assets/linux/io.github.Predidit.Kazumi.desktop")
-sha256sums=('SKIP'
-            'SKIP')
+source=("kazumi-2.0.7.deb::https://github.com/Predidit/Kazumi/releases/download/2.0.7/Kazumi_linux_2.0.7_amd64.deb")
+sha512sums=('ac8eed90d80e23bfebd3ba6f9025f58e83d60a4e84f47fe28588f5731ce240ad71487ad5c17fdd511f49e6d06a5bd4bc66d58aa677f2eb3bd30daa6ee6cb25a3')
 
 package() {
-    install -d "${pkgdir}/opt/Kazumi" "${pkgdir}/usr/bin"
-    cp -a "${_pkgname}" data lib "${pkgdir}/opt/Kazumi/"
-    ln -s "/opt/Kazumi/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    local _debdir="${srcdir}/deb-extract"
+    local _datadir="${srcdir}/deb-data"
+    local _data_archive
 
-    local _app_id="io.github.Predidit.Kazumi"
-    install -Dm644 "${_app_id}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 data/flutter_assets/assets/images/logo/logo_linux.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_app_id}.png"
+    rm -rf "${_debdir}" "${_datadir}"
+    mkdir -p "${_debdir}" "${_datadir}"
+
+    cd "${_debdir}"
+    ar x "${srcdir}/${_pkgname}-${pkgver}.deb"
+
+    _data_archive=$(printf '%s\n' data.tar.*)
+    bsdtar -xf "${_data_archive}" -C "${_datadir}"
+
+    cp -a "${_datadir}/." "${pkgdir}/"
 }
