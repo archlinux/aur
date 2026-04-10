@@ -1,6 +1,6 @@
 # Maintainer: Jedrzej Ratajczak <mrozelek@gmail.com>
 pkgname=nilwall-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="GTK4 wallpaper manager for Hyprland"
 arch=('x86_64')
