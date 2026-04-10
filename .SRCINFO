@@ -1,6 +1,6 @@
 pkgbase = millisecond-bin
 	pkgdesc = Optimize your Linux system for low latency audio
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/gaheldev/Millisecond
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = millisecond-bin
 	depends = dconf
 	provides = millisecond
 	conflicts = millisecond
-	source = https://github.com/gaheldev/Millisecond/releases/download/v0.2.1/millisecond_v0.2.1.deb
-	sha256sums = b32776504a8e323cff3077ee7dec9ba96ee517a9f5847b929965db13fa20008a
+	source = https://github.com/gaheldev/Millisecond/releases/download/v0.2.3/millisecond_v0.2.3.deb
+	sha256sums = 62607e702e698d43f4133d4ab57549617c705a20ee39a9a1427a361aa0fa9ff9
 
 pkgname = millisecond-bin
