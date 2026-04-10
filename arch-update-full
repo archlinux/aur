@@ -42,46 +42,42 @@ CHECK_FOR_UPDATES() {
     {
         echo "--- CHECK INICIADO EM: $(date) ---"
         
-        
-        local AUR_H
-        local U_PACMAN
-        local U_AUR
-        local U_FLAT
-        local U_SNAP
-        local TOTAL
-
+        local AUR_H U_PACMAN U_AUR U_FLAT U_SNAP TOTAL
         
         AUR_H=$(command -v yay || command -v paru)
         
-        U_PACMAN=$(checkupdates 2>/dev/null | wc -l)
+        # 1. PACMAN - Limpeza de espaços agressiva
+        U_PACMAN=$(checkupdates 2>/dev/null | wc -l | tr -d '[:space:]')
+        : "${U_PACMAN:=0}"
         
+        # 2. AUR
         U_AUR=0
         if [[ -n "$AUR_H" ]]; then
-            U_AUR=$($AUR_H -Qu 2>/dev/null | wc -l)
-            U_AUR=${U_AUR:-0}
+            U_AUR=$($AUR_H -Qu 2>/dev/null | wc -l | tr -d '[:space:]')
         fi
+        : "${U_AUR:=0}"
         
+        # 3. FLATPAK
         U_FLAT=0
         if command -v flatpak &>/dev/null; then
-           
-            U_FLAT=$(flatpak remote-ls --updates 2>/dev/null | wc -l)
-            U_FLAT=${U_FLAT:-0}
+            U_FLAT=$(flatpak remote-ls --updates 2>/dev/null | wc -l | tr -d '[:space:]')
         fi
+        : "${U_FLAT:=0}"
 
+        # 4. SNAP
         U_SNAP=0
         if command -v snap &>/dev/null; then
-            
-            U_SNAP=$(snap refresh --list 2>/dev/null | grep -c '^[^Name]' || echo 0)
-            U_SNAP=${U_SNAP:-0}
+            U_SNAP=$(snap refresh --list 2>/dev/null | grep -c '^[^Name]' | tr -d '[:space:]')
         fi
+        : "${U_SNAP:=0}"
 
-        TOTAL=$((U_PACMAN + U_AUR + U_FLAT + U_SNAP))
+        # SOMA SEGURA
+        TOTAL=$(( U_PACMAN + U_AUR + U_FLAT + U_SNAP ))
 
         echo "Pacman: $U_PACMAN | AUR: $U_AUR | Flatpak: $U_FLAT | Snap: $U_SNAP"
         echo "Total: $TOTAL"
 
         if [ "$TOTAL" -gt 0 ]; then
-           
             notify-send -u normal -a "Arch Update Full" \
             "🛡️ SENTINELA: Reforços Detectados" \
             "Existem $TOTAL pacotes pendentes.\nExecute o Arch Update Full para atualizar."
@@ -124,7 +120,7 @@ EOF
 Description=Roda o Sentinela a cada 3 horas
 
 [Timer]
-OnBootSec=10min
+OnBootSec=7min
 OnUnitActiveSec=3h
 Persistent=true
 
@@ -137,15 +133,15 @@ EOF
     systemctl --user enable --now arch-sentinel.timer >/dev/null 2>&1
 }
 
-# --- INTERCEPTADOR DE SINAL ---
+# --- INTERCEPTADOR DE SINAL (MODO SENTINELA) ---
 if [[ "$1" == "--check" ]]; then
     if ping -c 1 -W 7 8.8.8.8 &>/dev/null; then
         CHECK_FOR_UPDATES
     fi
-    exit 0 
-else
-    SETUP_SENTINEL
+    exit 0
 fi
+
+SETUP_SENTINEL
 
 
 
@@ -184,7 +180,7 @@ exec > >(tee -i "$LOG_ATUAL") 2>&1
 echo -e "${GRAY_NEON}--- INICIANDO REGISTRO DE SESSÃO: $DATA_LOG ---${NC}"
 
 
-# --- CABEÇALHO: ARCH UPDATE FULL v3.7-3 (BLOCK EDITION) ---
+# --- CABEÇALHO: ARCH UPDATE FULL v3.7-4 (BLOCK EDITION) ---
 clear
 echo -e "${NEON_BLUE}"
 echo "  █████╗ ██████╗  ██████╗██╗  ██╗    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗"
@@ -200,7 +196,7 @@ echo -e "                              ${NEON_BLUE}██╔══╝  ██║
 echo -e "                              ${NEON_BLUE}██║     ╚██████╔╝███████╗███████╗${NC}"
 echo -e "                              ${NEON_BLUE}╚═╝      ╚═════╝ ╚══════╝╚══════╝${NC}"
 echo ""
-echo -e "  ${PINK_NEON}─────────────────── ${YELLOW_NEON}VERSION 3.7-3 ${PINK_NEON} ────────────────────${NC}"
+echo -e "  ${PINK_NEON}─────────────────── ${YELLOW_NEON}VERSION 3.7-4 ${PINK_NEON} ────────────────────${NC}"
 echo -e "  ${PINK_NEON}>> UPDATING • AUTOMATING • SECURING <<${NC}"
 echo ""
 echo -e "  ${NEON_BLUE}[ MODULES: ROLLING_SYNC | AUR_INJECTION | INTEGRITY_AUDIT ]${NC}"
@@ -468,7 +464,7 @@ echo ""
 echo -e "      ${ASSINATURA_COR}© [2026] ARCH UPDATER PROTOCOL | by Gustavo Gianeli (Sétimo)${NC}"
 echo ""
 
-## --- PROTOCOLO DE ENCERRAMENTO INTERATIVO v3.7-3 ---
+## --- PROTOCOLO DE ENCERRAMENTO INTERATIVO v3.7-4 ---
 echo -e "\n${CYAN_NEON}--------------------------------------------------------------------------------------${NC}"
 echo -e "${MAGENTA_NEON}   >> STATUS: SECURE | O QUE DESEJA FAZER AGORA ? <<${NC}"
 echo -e "${CYAN_NEON}--------------------------------------------------------------------------------------${NC}"
@@ -494,7 +490,7 @@ NOTIFY_FINISH
 CHECK_REBOOT_NEEDED
 
 echo -e "\n${GRAY_NEON}------------------------------------------------------------${NC}"
-echo -e "${CYAN_NEON}              MENU DE ENCERRAMENTO - v3.7-3${NC}"
+echo -e "${CYAN_NEON}              MENU DE ENCERRAMENTO - v3.7-4${NC}"
 echo -e "${GRAY_NEON}------------------------------------------------------------${NC}"
 
 echo -e "${MAGENTA_NEON}(A)${NC} ${WHITE}Encerrar sessão e fechar terminal${NC} ${CYAN_NEON}(Kill Switch)${NC}"
