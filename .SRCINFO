@@ -8,9 +8,9 @@ pkgbase = jjazzlab-bin
 	license = LGPL-2.1-or-later
 	depends = java-runtime=25
 	depends = fluidsynth
-	source = https://github.com/jjazzboss/JJazzLab/releases/download/5.2/JJazzLab-5.2-linux-x64.tar.xz
+	source = https://github.com/jjazzboss/JJazzLab/releases/download/5.2/JJazzLab-5.2a-linux-x64.tar.xz
 	source = jjazzlab.desktop
-	sha256sums = a787af28ec127bdd19aa5333efca75a8a14f7327e226948048b2b271b9ec1947
+	sha256sums = 377bfea20703d74ad3610733f3bb1e5699ba00e7e8c13bfcbf922512b1573fe5
 	sha256sums = 0c11ad2c50439741a43629e551b9134e51b043c8c5250e1f47768dc9b443a034
 
 pkgname = jjazzlab-bin

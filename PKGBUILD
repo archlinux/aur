@@ -2,14 +2,15 @@
 # Contributor: Jan Ypma <jan at ypmania dot nl>
 pkgname=jjazzlab-bin
 pkgver=5.2
+_pkgsubver=a
 pkgrel=1
 pkgdesc="A complete and open application dedicated to backing tracks generation."
 arch=('x86_64' 'aarch64')
 url="https://www.jjazzlab.org/"
 depends=('java-runtime=25' 'fluidsynth')
 license=('LGPL-2.1-or-later')
-source=("https://github.com/jjazzboss/JJazzLab/releases/download/${pkgver}/JJazzLab-${pkgver}-linux-x64.tar.xz" "jjazzlab.desktop")
-sha256sums=('a787af28ec127bdd19aa5333efca75a8a14f7327e226948048b2b271b9ec1947'
+source=("https://github.com/jjazzboss/JJazzLab/releases/download/${pkgver}/JJazzLab-${pkgver}${_pkgsubver}-linux-x64.tar.xz" "jjazzlab.desktop")
+sha256sums=('377bfea20703d74ad3610733f3bb1e5699ba00e7e8c13bfcbf922512b1573fe5'
             '0c11ad2c50439741a43629e551b9134e51b043c8c5250e1f47768dc9b443a034')
 
 package() {
