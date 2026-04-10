@@ -1,0 +1,14 @@
+pkgbase = streamdown
+	pkgdesc = A streaming markdown renderer for modern terminals
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/fed-stew/streamdown-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = oniguruma
+	source = streamdown-0.1.4.tar.gz::https://github.com/fed-stew/streamdown-rs/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = e5bee6e0a7498706d030f76a2bcb3dc30beed28a2ee4e2938cb465c4408d1609
+
+pkgname = streamdown
