@@ -1,6 +1,6 @@
 pkgbase = lazychad-git
 	pkgdesc = An intelligent, highly-aesthetic Neovim wrapper built on NvChad
-	pkgver = 1.0.0
+	pkgver = r24.bfca7f5
 	pkgrel = 1
 	url = https://github.com/MistanKh/LazyChad
 	arch = any
