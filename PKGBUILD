@@ -8,21 +8,37 @@
 
 pkgname="gtypist"
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal typing tutor"
-arch=('x86_64')
+arch=(
+  'aarch64'
+  'x86_64'
+)
 url="https://www.gnu.org/software/gtypist/gtypist.html"
-license=('GPL-3.0-or-later')
-depends=('glibc' 'ncurses' 'perl')
-makedepends=('help2man')
+license=(
+  'GPL-3.0-or-later'
+)
+depends=(
+  'glibc'
+  'ncurses'
+  'perl'
+)
+makedepends=(
+  'help2man'
+)
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::https://ftp.gnu.org/gnu/${pkgname}/${_pkgsrc}.tar.gz"
-        # "${_pkgsrc}.tar.gz.sig::https://ftp.gnu.org/gnu/${pkgname}/${_pkgsrc}.tar.gz.sig"
-        "${pkgname}_ncurses_is_ncursesw.patch")
-sha256sums=('09fdea05597b9c44e28dd795b8c9eb79a6afe4d02fef19ea6eb9956bc0813413'
+source=(
+  "https://ftp.gnu.org/gnu/${pkgname}/${_pkgsrc}.tar.xz"
+  "https://ftp.gnu.org/gnu/${pkgname}/${_pkgsrc}.tar.xz.sig"
+  "${pkgname}_ncurses_is_ncursesw.patch"
+)
+sha256sums=('ca618054e91f1ed5ef043fcc43500bbad701c959c31844d4688ff22849ac252d'
+            'SKIP'
             '9de7d6ef0bafc559a50011ca1ad4f66d43e955016f03475488b09e9dd7b08740')
-# validpgpkeys=('F8F09C0B79F90A20F953FB1CA6D813D8C94AFA52'  # Tim Marston <edam@waxworlds.org>
-#               '02AEC665007301C280C5C43A0FB807D2E7C7C96C') # 
+validpgpkeys=(
+  # 'F8F09C0B79F90A20F953FB1CA6D813D8C94AFA52' # Tim Marston <edam@waxworlds.org>
+  '02AEC665007301C280C5C43A0FB807D2E7C7C96C' # Mihai Gătejescu <mgatejescu@pm.me>
+)
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -30,9 +46,12 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
-  ./autogen.sh \
+  local configure_options=(
     --prefix='/usr'
+  )
+
+  cd "${srcdir}/${_pkgsrc}"
+  ./autogen.sh "${configure_options[@]}"
 }
 
 package() {
@@ -40,10 +59,7 @@ package() {
   make prefix="${pkgdir}/usr" install
 
   install -vDm644 "README"    "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -vDm644 "AUTHORS"   "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
   install -vDm644 "ChangeLog" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG"
   install -vDm644 "NEWS"      "${pkgdir}/usr/share/doc/${pkgname}/NEWS"
-  install -vDm644 "QUESTIONS" "${pkgdir}/usr/share/doc/${pkgname}/QUESTIONS"
-  install -vDm644 "THANKS"    "${pkgdir}/usr/share/doc/${pkgname}/THANKS"
   install -vDm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }

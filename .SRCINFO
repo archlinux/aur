@@ -1,17 +1,21 @@
 pkgbase = gtypist
 	pkgdesc = Universal typing tutor
 	pkgver = 2.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/gtypist/gtypist.html
+	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = help2man
 	depends = glibc
 	depends = ncurses
 	depends = perl
-	source = gtypist-2.10.1.tar.gz::https://ftp.gnu.org/gnu/gtypist/gtypist-2.10.1.tar.gz
+	source = https://ftp.gnu.org/gnu/gtypist/gtypist-2.10.1.tar.xz
+	source = https://ftp.gnu.org/gnu/gtypist/gtypist-2.10.1.tar.xz.sig
 	source = gtypist_ncurses_is_ncursesw.patch
-	sha256sums = 09fdea05597b9c44e28dd795b8c9eb79a6afe4d02fef19ea6eb9956bc0813413
+	validpgpkeys = 02AEC665007301C280C5C43A0FB807D2E7C7C96C
+	sha256sums = ca618054e91f1ed5ef043fcc43500bbad701c959c31844d4688ff22849ac252d
+	sha256sums = SKIP
 	sha256sums = 9de7d6ef0bafc559a50011ca1ad4f66d43e955016f03475488b09e9dd7b08740
 
 pkgname = gtypist
