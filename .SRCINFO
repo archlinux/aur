@@ -10,7 +10,7 @@ pkgbase = lean-ctx-bin
 	conflicts = lean-ctx
 	source = lean-ctx-3.0.0.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.0.0/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/yvgude/lean-ctx/v3.0.0/LICENSE
-	sha256sums = 8614300ad67984901d9f2bb5b8ea590831d90dff725eb295cddb0bc2e65c0a65
+	sha256sums = b6ec496deb660b6e54ba21e61986277a9d60caea18a51188a5ef1be425a00bfd
 	sha256sums = SKIP
 
 pkgname = lean-ctx-bin
