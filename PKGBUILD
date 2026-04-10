@@ -7,6 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/soyeb-jim285/hyprfm"
 license=('MIT')
 depends=(
+    'glib2'
     'qt6-base'
     'qt6-declarative'
     'qt6-svg'
@@ -24,7 +25,7 @@ makedepends=(
 )
 optdepends=(
     'wl-clipboard: clipboard support via wl-copy and wl-paste'
-    'glib2: local and trash file operations via gio'
+    'bat: syntax-highlighted text previews'
     'gvfs: remote filesystem support via gio/gvfs (sftp, ftp, dav, etc.)'
     'gvfs-smb: SMB/CIFS remote browsing support'
     'ffmpeg: video file thumbnail previews'
@@ -81,10 +82,14 @@ package() {
     cp -r "${pkgname}/src/qml" "${pkgdir}/usr/share/hyprfm/src/qml"
 
     # Install desktop entry and icon
-    install -Dm644 "${pkgname}/dist/hyprfm.desktop" \
-        "${pkgdir}/usr/share/applications/hyprfm.desktop"
-    install -Dm644 "${pkgname}/dist/hyprfm.svg" \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/hyprfm.svg"
+    install -Dm644 "${pkgname}/dist/io.github.soyeb_jim285.HyprFM.desktop" \
+        "${pkgdir}/usr/share/applications/io.github.soyeb_jim285.HyprFM.desktop"
+    install -Dm644 "${pkgname}/dist/io.github.soyeb_jim285.HyprFM.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.soyeb_jim285.HyprFM.svg"
+
+    # Install metainfo
+    install -Dm644 "${pkgname}/dist/io.github.soyeb_jim285.HyprFM.metainfo.xml" \
+        "${pkgdir}/usr/share/metainfo/io.github.soyeb_jim285.HyprFM.metainfo.xml"
 
     # Install license
     install -Dm644 "${pkgname}/LICENSE" \
