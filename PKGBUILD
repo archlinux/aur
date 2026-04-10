@@ -5,13 +5,13 @@
 
 pkgname=openvox-server
 pkgver=8.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Server automation framework and application'
 arch=('any')
 url='https://github.com/OpenVoxProject/openvox-server'
 license=('APACHE')
 depends=('ruby' 'puppet>=6' 'java-runtime-headless=21' 'logrotate' 'jruby'
-         'facter' 'net-tools')
+         'openfact' 'net-tools')
 conflicts=('puppetserver')
 provides=('puppetserver')
 backup=('etc/default/puppetserver'
@@ -36,7 +36,7 @@ prepare() {
   sed -i 's:sysconfig:default:' ext/redhat/puppetserver.service
   sed -i "s:\[/opt/puppetlabs/puppet/lib/ruby/vendor_ruby\]:\[$( ruby -e \
     'puts RbConfig::CONFIG["vendorlibdir"]' ),$( ruby -e \
-    'puts Gem.default_dir' )/gems/facter-$( facter -v )/lib\]:" \
+    'puts Gem.default_dir' )/gems/openfact-$( facter -v )/lib\]:" \
     "ext/config/conf.d/puppetserver.conf"
   sed -i "s:/opt/puppetlabs/puppet/lib/ruby/vendor_gems:$( ruby -e \
     'puts Gem.default_dir' ):" \

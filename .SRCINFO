@@ -1,7 +1,7 @@
 pkgbase = openvox-server
 	pkgdesc = Server automation framework and application
 	pkgver = 8.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenVoxProject/openvox-server
 	install = openvox-server.install
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = openvox-server
 	depends = java-runtime-headless=21
 	depends = logrotate
 	depends = jruby
-	depends = facter
+	depends = openfact
 	depends = net-tools
 	provides = puppetserver
 	conflicts = puppetserver
