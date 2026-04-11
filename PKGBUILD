@@ -12,7 +12,7 @@ optdepends=()
 provides=('lem-editor' 'lem')
 conflicts=('lem' 'lem-git')
 source=("https://github.com/lem-project/lem/releases/download/v${pkgver}/lem-ubuntu-x86-64-v${pkgver}.tar.gz")
-sha256sums=('1fad7b3b30368cec65dada1dedd2af1f392118b122a419432a480db309ec8f5b')
+sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 
 package() {
     # Extract and install the lem binary
