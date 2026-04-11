@@ -1,7 +1,7 @@
 pkgbase = tuiweather
 	pkgdesc = Simple TUI app for showing weather
 	pkgver = 0.2.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Detalexpl/TuiWeather
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,6 @@ pkgbase = tuiweather
 	depends = gcc-libs
 	depends = glibc
 	source = tuiweather-0.2.30.tar.gz::https://github.com/Detalexpl/TuiWeather/archive/refs/tags/0.2.30.tar.gz
-	sha256sums = ad0d100c9ed241fbd3d5eb93ce67e48ed3c904716c289daaa39d8a231ee61d15
+	sha256sums = 936f0520cb0543c9e8b6607f56fc8c480acbfd2d2ec4900fd6249987aed59dfc
 
 pkgname = tuiweather
