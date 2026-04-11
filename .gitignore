@@ -1,0 +1,17 @@
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.deb
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+*.ttf
+*-LICENSE.txt
+
+pkg/
+src/
