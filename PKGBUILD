@@ -5,7 +5,7 @@ _pkgname=jiq
 pkgname=${_pkgname}-ai-bin
 pkgdesc="Interactive JSON query tool with real-time output and AI assistant"
 
-pkgver=3.21.0
+pkgver=3.21.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ depends=('glibc' 'gcc-libs' 'jq')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-gnu.tar.xz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('84280509e25b703221cfb2bf2c695a20470dc4eda19e9e7f13d0bd9f9e7eb1cc')
-sha256sums_aarch64=('4df86b3f815b45b88f1789773209779ac57fe4d48e16dfc1ac2b39187efa53dc')
+sha256sums_x86_64=('caf7423e9a2d633acdc554eeff7881a8b99210d86193901f23d511be0a9cf78f')
+sha256sums_aarch64=('a99d1cbc592277c66d0a75ea9cbfea94d8e1f32b6e2e5f42f25bf6c48521ee6e')
 
 
 
