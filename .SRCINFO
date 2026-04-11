@@ -1,0 +1,22 @@
+pkgbase = winrun
+	pkgdesc = Windows PE loader for Linux
+	pkgver = 0.1.0.r2.g84455b0
+	pkgrel = 1
+	url = https://github.com/runtime-erop/winrun
+	install = winrun.install
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = wayland
+	makedepends = libinput
+	makedepends = systemd
+	depends = glibc
+	optdepends = linux: provides /dev/uinput via uinput module
+	provides = winrun
+	conflicts = winrun-git
+	source = winrun::git+https://github.com/runtime-erop/winrun.git
+	sha256sums = SKIP
+
+pkgname = winrun
