@@ -1,6 +1,6 @@
 pkgbase = r-performanceanalytics
 	pkgdesc = Econometric Tools for Performance and Risk Analysis
-	pkgver = 2.0.8
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=PerformanceAnalytics
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = r-performanceanalytics
 	optdepends = r-robustbase
 	optdepends = r-rpese
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/PerformanceAnalytics_2.0.8.tar.gz
-	sha256sums = 64e209808038e1037f01a6f4e1f9d6a6a852c886765c619d2b5a66c583675ec3
+	source = https://cran.r-project.org/src/contrib/PerformanceAnalytics_2.1.0.tar.gz
+	sha256sums = fc801d39382818cd3a7052326b45d078302aef4d290c85dab83498ed4516d58d
 
 pkgname = r-performanceanalytics

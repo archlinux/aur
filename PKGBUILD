@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PerformanceAnalytics
-_pkgver=2.0.8
+_pkgver=2.1.0
 pkgname=r-${_pkgname,,}
-pkgver=2.0.8
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Econometric Tools for Performance and Risk Analysis'
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('64e209808038e1037f01a6f4e1f9d6a6a852c886765c619d2b5a66c583675ec3')
+sha256sums=('fc801d39382818cd3a7052326b45d078302aef4d290c85dab83498ed4516d58d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
