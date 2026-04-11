@@ -1,8 +1,8 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-git
-pkgver=2.0.8
-pkgrel=3
+pkgver=2.0.9
+pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
 arch=('x86_64')
 url="https://github.com/ZoeyErinBauer/Shelly-ALPM"
@@ -92,7 +92,7 @@ EOF
 Name=Shelly Notifications
 Comment=Notification service for Shelly package manager
 Exec=/usr/bin/shelly-notifications
-Icon=shelly
+Icon=shelly-tray
 Type=Application
 Categories=System;Utility;
 Terminal=false
@@ -104,7 +104,7 @@ EOF
   install -Dm644 Shelly.Gtk/Assets/svg/flatpak-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/flatpak-symbolic.svg"
   install -Dm644 Shelly.Gtk/Assets/svg/arch-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/arch-symbolic.svg"
   install -Dm644 Shelly.Gtk/Assets/shellylogo-tray.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-tray.png"
-  install -Dm644 Shelly.Gtk/Assets/shellylogo-tray.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-update.png"
+  install -Dm644 Shelly.Gtk/Assets/shellylogo-update.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-update.png"
 
   # Install fish shell completions
   install -Dm644 shelly.fish "$pkgdir/usr/share/fish/vendor_completions.d/shelly.fish"
