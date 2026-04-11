@@ -31,6 +31,6 @@ pkgbase = rgitui-bin
 	sha256sums = 1d7798802d4b382ba42cada0dd1324b6c86ad1a3c2cf2b3e01b12428f4a3669f
 	sha256sums = 9a52a1c5efd55e9c7d7b6d09e81d72101b44f7a490367c7771c0c22059e28248
 	source_x86_64 = rgitui-x86_64-0.1.6.tgz::https://github.com/noahbclarkson/rgitui/releases/download/v0.1.6/rgitui-0.1.6-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 0ca4d888c5c7d7179d03bb1b6cc0e9a57d10a2fcb1001257edba1284281384b7
+	sha256sums_x86_64 = fbf1fda795fda444ff013b1374941e4bb391f45a0f0cc57b703e178b1e387905
 
 pkgname = rgitui-bin
