@@ -32,7 +32,7 @@ source=("${pkgname}-${pkgver}.deb::https://github.com/cjpais/Handy/releases/down
 b2sums=('e13f0e22bbda552556be2b5aacf4acf384072c08d7cd39a1cc0f8083699ac9eb0e452fefc01f93eaf3b4aa51fab540315da9f8ce327818614ba401d813c7e9a6'
         '48678eca5b87a0b59038c8b343d84073207bca4390ad40ac81f2f96dc553cc66453f0f6331749d4686aa7153875bdaf2e08b2adf2bef023ee6044518955a7950')
 
-package(){
+package() {
     bsdtar -xf "data.tar.gz" -C "${pkgdir}"
 
     install -D -m 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
