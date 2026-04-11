@@ -1,0 +1,6 @@
+src/
+pkg/
+kubesolo/
+
+*.zst
+*.log
