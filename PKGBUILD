@@ -1,13 +1,13 @@
 # Maintainer: Lucia <bordiyan20035@gmail.com>
 pkgname=opensourcetree-git
-pkgver=1.2.8
+pkgver=1.2.10
 pkgrel=1
 pkgdesc="SourceTree-inspired Git GUI built with PyQt6"
 arch=('any')
-url="https://github.com/7Lucia7Lokidottir7/OpenSourceTree"
+url="https://github.com/Lucia7Lunadottir/OpenSourceTree"
 license=('GPL-3.0-only')
+
 depends=(
-    'python'
     'python-pyqt6'
     'python-numpy'
     'python-pygments'
@@ -15,8 +15,12 @@ depends=(
 )
 optdepends=(
     'git-lfs: Git Large File Storage support'
+    'konsole: for interactive SSH authentication in terminal'
+    'xterm: alternative terminal for SSH auth'
 )
+
 makedepends=('git')
+
 provides=('opensourcetree')
 conflicts=('opensourcetree')
 source=("opensourcetree::git+$url.git")
@@ -30,32 +34,28 @@ pkgver() {
 }
 
 package() {
-    cd "$srcdir/opensourcetree"
+    local _src="$srcdir/opensourcetree"
+    local _lib="$pkgdir/usr/lib/opensourcetree"
+    install -dm755 "$_lib"
 
-    local _dest="$pkgdir/opt/opensourcetree"
-    install -dm755 "$_dest"
+    install -Dm644 "$_src/main.py"    "$_lib/main.py"
+    install -Dm644 "$_src/style.qss"  "$_lib/style.qss"
 
-    # Основные файлы приложения
-    install -m644 main.py   "$_dest/"
-    install -m644 style.qss "$_dest/"
+    cp -a "$_src/app"     "$_lib/"
+    cp -a "$_src/assets"  "$_lib/"
+    cp -a "$_src/locales" "$_lib/"
 
-    # Python-пакет, ресурсы и локали
-    cp -r app     "$_dest/"
-    cp -r assets  "$_dest/"
-    cp -r locales "$_dest/"
+    find "$_lib" -name '__pycache__' -exec rm -rf {} + 2>/dev/null || true
 
-    # Иконка
-    install -m644 OpenSourceTreeIcon.png "$_dest/"
-    install -Dm644 OpenSourceTreeIcon.png \
-        "$pkgdir/usr/share/pixmaps/opensourcetree.png"
-
-    # .desktop-файл
-    install -Dm644 opensourcetree.desktop \
-        "$pkgdir/usr/share/applications/opensourcetree.desktop"
-
-    # Лаунчер
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/opensourcetree" << 'EOF'
 #!/bin/bash
-exec python3 /opt/opensourcetree/main.py "$@"
+cd /usr/lib/opensourcetree/
+exec python3 main.py "$@"
 EOF
+
+    install -Dm644 "$_src/OpenSourceTreeIcon.png" \
+        "$pkgdir/usr/share/pixmaps/opensourcetree.png"
+
+    install -Dm644 "$_src/opensourcetree.desktop" \
+        "$pkgdir/usr/share/applications/opensourcetree.desktop"
 }
