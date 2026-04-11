@@ -1,6 +1,6 @@
 pkgbase = kmux-git
 	pkgdesc = tmux client based on Konsole
-	pkgver = 26.04.0.r0.g9e058a6
+	pkgver = 26.04.0.r1.gc73353e
 	pkgrel = 1
 	url = https://github.com/futpib/kmux
 	arch = x86_64
