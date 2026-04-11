@@ -3,14 +3,13 @@
 _name=bluez-qt
 pkgname=${_name}5
 pkgver=5.116.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt wrapper for Bluez 5 DBus API'
 arch=(x86_64)
-url='https://community.kde.org/Frameworks'
-license=(GPL2)
-depends=(qt5-base bluez)
-makedepends=(extra-cmake-modules qt5-declarative)
-optdepends=('qt5-declarative: QML bindings')
+url='https://invent.kde.org/frameworks/bluez-qt'
+license=('LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-scancode-kde-accepted-lgpl')
+depends=(qt5-base qt5-declarative bluez)
+makedepends=(extra-cmake-modules)
 conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
@@ -28,4 +27,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  install -Dm644 "$_name-$pkgver/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt" \
+    "$pkgdir/usr/share/licenses/$pkgname/LicenseRef-scancode-kde-accepted-lgpl.txt"
 }
