@@ -1,7 +1,7 @@
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgbase=linux-wsl2-waydroid
-pkgver=6.6.123.2
+pkgver=6.18.20.1
 pkgrel=1
 pkgdesc='Linux WSL2'
 url='https://github.com/microsoft/WSL2-Linux-Kernel'
@@ -72,7 +72,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
+  make KCFLAGS="-Wno-int-conversion" all
   make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
