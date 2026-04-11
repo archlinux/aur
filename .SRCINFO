@@ -1,6 +1,6 @@
 pkgbase = zyplayer-appimage
 	pkgdesc = 跨平台桌面端视频资源播放器,免费高颜值
-	pkgver = 3.4.3
+	pkgver = 3.4.4
 	pkgrel = 1
 	url = https://github.com/Hiram-Wong/ZyPlayer
 	arch = aarch64
@@ -13,9 +13,9 @@ pkgbase = zyplayer-appimage
 	conflicts = zyfun
 	replaces = zyplayer
 	options = !strip
-	source_aarch64 = zyfun-3.4.3-aarch64.AppImage::https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.4.3/zyfun-linux-3.4.3-arm64.AppImage
-	sha256sums_aarch64 = ed43b29f112696f8e8ba295a37d70e07c89d1d1aabc254df6c68b4c56aa89136
-	source_x86_64 = zyfun-3.4.3-x86_64.AppImage::https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.4.3/zyfun-linux-3.4.3-x86_64.AppImage
-	sha256sums_x86_64 = 2b7b286cc04f6c390a6deba835ba2a6c73078c9b58b12cae379bedff55e0c2cb
+	source_aarch64 = zyfun-3.4.4-aarch64.AppImage::https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.4.4/zyfun-linux-3.4.4-arm64.AppImage
+	sha256sums_aarch64 = 14c58b586fc39b9019d73df672b39a0c01956242a2754dd8b86a0d666914764d
+	source_x86_64 = zyfun-3.4.4-x86_64.AppImage::https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.4.4/zyfun-linux-3.4.4-x86_64.AppImage
+	sha256sums_x86_64 = 58ddc723d49f722021e9a957874adf4bf202eba958fa18d761dd1d61c1689c12
 
 pkgname = zyfun-appimage
