@@ -6,7 +6,7 @@ pkgdesc="GUI git client written in Qt."
 arch=('x86_64' 'i686')
 url="https://github.com/bokic/gitmaster"
 license=('LGPL-3.0-only')
-depends=('qt6-base' 'qt6-svg' 'libgit2' 'hicolor-icon-theme')
+depends=('qt6-base' 'qt6-svg' 'libgit2' 'hicolor-icon-theme' 'libstdc++' 'glibc' 'libgcc')
 makedepends=('cmake' 'ninja')
 options=(!debug strip)
 
