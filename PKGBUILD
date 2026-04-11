@@ -2,14 +2,14 @@
 pkgname="liteloader-qqnt-bin"
 _pkgname="LiteLoaderQQNT"
 pkgver=1.4.1
-pkgrel=1
-
+pkgrel=2
 pkgdesc="轻量, 简洁, 开源的 QQNT 插件加载器"
 arch=('any')
 url="https://github.com/LiteLoaderQQNT/LiteLoaderQQNT"
 license=('MIT')
 depends=("linuxqq")
-conflicts=("linuxqq-appimage" "liteloader-qqnt")
+optdepends=('liteloader-qqnt-patcher: for patching LinuxQQ')
+conflicts=("liteloader-qqnt")
 provides=("liteloader-qqnt")
 
 source=("LiteLoaderQQNT-${pkgver}.zip::${url}/releases/download/${pkgver}/${_pkgname}.zip")
