@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pear-desktop-git
 _app_id=com.github.th_ch.youtube_music
-pkgver=3.11.0.r302.g4356cea
+pkgver=3.11.0.r393.g8bd86e8
 pkgrel=1
 _nodeversion=24
-_electronversion=40
+_electronversion=41
 pkgdesc="Extension for music player"
 arch=('x86_64')
 url="https://github.com/pear-devs/pear-desktop"
@@ -69,7 +69,7 @@ build() {
 package() {
   cd "${pkgname%-git}"
   install -Dm644 pack/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/${pkgname%-git}/"
-  cp -r pack/linux-unpacked/resources/app.asar.unpacked "$pkgdir/usr/lib/${pkgname%-git}"
+  cp -a pack/linux-unpacked/resources/app.asar.unpacked "$pkgdir/usr/lib/${pkgname%-git}"
 
   install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
   install -Dm644 "$srcdir/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
