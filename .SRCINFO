@@ -1,7 +1,7 @@
 pkgbase = pinact
 	pkgdesc = CLI to pin GitHub Actions and Reusable Workflows to full hashes
 	pkgver = 3.9.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/suzuki-shunsuke/pinact
 	arch = x86_64
 	arch = aarch64
