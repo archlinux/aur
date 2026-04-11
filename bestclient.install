@@ -1,0 +1,6 @@
+post_install() {
+chmod -R 777 /opt/bestclient
+}
+post_upgrade() {
+chmod -R 777 /opt/bestclient
+}
