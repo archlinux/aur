@@ -3,7 +3,7 @@
 pkgname=serial-studio
 _pkgname=Serial-Studio
 pkgver=3.2.7
-pkgrel=1
+pkgrel=3
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=($CARCH)
 url="https://github.com/Serial-Studio/Serial-Studio"
@@ -48,6 +48,8 @@ noextract=()
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}"
+    sed -i -e 's/^X-AppImage.*//g' app/deploy/linux/serial-studio-gpl3.desktop
 }
 
 build() {

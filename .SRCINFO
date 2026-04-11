@@ -1,7 +1,7 @@
 pkgbase = serial-studio
 	pkgdesc = Multi-purpose serial data visualization & processing program
 	pkgver = 3.2.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Serial-Studio/Serial-Studio
 	arch = x86_64
 	license = GPL-3.0-only
