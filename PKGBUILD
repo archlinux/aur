@@ -21,7 +21,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/harryr307/Kernel-Plus-Plus/-/archive/b${pkgver}/Kernel-Plus-Plus-b${pkgver}.zip")
 noextract=()
-sha256sums=('058f93ef3b82ee9e66914e3b501c8df0c3a61a04862ed3f689306490dc9aaddc')
+sha256sums=('f69554b0049504381ed6cc9af35b87696f38bdd5e4d356e1ceb9eb820b81c59f')
 validpgpkeys=()
 
 build() {
