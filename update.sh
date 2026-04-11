@@ -331,11 +331,10 @@ main() {
         exit 0
     fi
 
-    if ! commit_changes; then
-        log_warn "No changes to commit"
-        exit 0
-    fi
+    # Commit any changes (if there are any)
+    commit_changes || log_info "No new changes to commit"
 
+    # Always push, even if no new changes (there might be old commits ahead of AUR)
     if push_to_aur; then
         log_success "Update workflow completed successfully!"
         log_info "Changes published to AUR"
