@@ -1,0 +1,22 @@
+pkgbase = twig-bin
+	pkgdesc = Lightweight Git GUI with native Wayland support — lighter than the rest
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hoxton314/git-twig
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = twig
+	conflicts = twig
+	conflicts = twig-git
+	options = !strip
+	source_x86_64 = twig-bin-0.1.0.AppImage::https://github.com/hoxton314/git-twig/releases/download/v0.1.0/twig_0.1.0_amd64.AppImage
+	source_x86_64 = twig.desktop::https://github.com/hoxton314/git-twig/releases/download/v0.1.0/twig.desktop
+	source_x86_64 = twig.png::https://github.com/hoxton314/git-twig/releases/download/v0.1.0/twig.png
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+
+pkgname = twig-bin
