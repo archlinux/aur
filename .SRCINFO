@@ -1,6 +1,6 @@
 pkgbase = kmux-git
 	pkgdesc = tmux client based on Konsole
-	pkgver = 26.04.0.r1.gc73353e
+	pkgver = 26.04.0.r3.g6e8f348
 	pkgrel = 1
 	url = https://github.com/futpib/kmux
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = kmux-git
 	depends = kpty
 	depends = ktextwidgets
 	depends = qt6-multimedia
+	depends = tmux
 	optdepends = keditbookmarks: to manage bookmarks
-	optdepends = tmux: for tmux integration
 	provides = kmux=26.04.0
 	conflicts = kmux
 	source = kmux::git+https://github.com/futpib/kmux.git#branch=master

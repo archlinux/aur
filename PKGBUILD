@@ -2,7 +2,7 @@
 
 _pkgname="kmux"
 pkgname="$_pkgname-git"
-pkgver=26.04.0.r1.gc73353e
+pkgver=26.04.0.r3.g6e8f348
 pkgrel=1
 pkgdesc='tmux client based on Konsole'
 url="https://github.com/futpib/$_pkgname"
