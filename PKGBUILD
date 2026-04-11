@@ -11,9 +11,13 @@ license=(GPL-3.0-or-later)
 arch=(x86_64)
 depends=(wayland-compositor
          greetd
-         gcc-libs
+         cairo
+         libgcc
+         gdk-pixbuf2
+         glib2
          glibc
-         gtk4)
+         gtk4
+         pango)
 provides=(greetd-greeter)
 backup=("etc/greetd/${_pkgname,,}.toml")
 makedepends=(cargo git)
@@ -26,29 +30,29 @@ conflicts=("greetd-${_pkgname,,}")
 replaces=(regreet-git)
 
 pkgver() {
-    cd "$_pkgname"
+	cd "$_pkgname"
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
-    cd "$_pkgname"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cd "$_pkgname"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$_pkgname"
-    cargo build --frozen --release --all-features
+	cd "$_pkgname"
+	cargo build --frozen --release --all-features
 }
 
 check() {
-    cd "$_pkgname"
-    cargo test --frozen --all-features
+	cd "$_pkgname"
+	cargo test --frozen --all-features
 }
 
 package() {
-    cd "$_pkgname"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname,,}"
-    install -Dm0644 -t "$pkgdir/etc/greetd/" ../"${_pkgname,,}.toml"
-    install -Dm0644 -t "$pkgdir/usr/share/doc/greetd-${_pkgname,,}/" "${_pkgname,,}.sample.toml"
-    install -Dm0644 systemd-tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/${_pkgname,,}.conf"
+	cd "$_pkgname"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname,,}"
+	install -Dm0644 -t "$pkgdir/etc/greetd/" ../"${_pkgname,,}.toml"
+	install -Dm0644 -t "$pkgdir/usr/share/doc/greetd-${_pkgname,,}/" "${_pkgname,,}.sample.toml"
+	install -Dm0644 systemd-tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/${_pkgname,,}.conf"
 }
