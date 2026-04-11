@@ -3,22 +3,22 @@
 pkgname=astrbot-git
 _pkgname=astrbot
 _srcname=AstrBot
-pkgver=4.22.2.r632.g8946a90af
+pkgver=4.22.2.r632.g8946a90a
 pkgrel=1
 
 pkgver() {
-  cd "$srcdir/$_srcname"
-  # Shallow clones lack tag history; unshallow to get full history for describe
-  git fetch --depth=999999 --tags origin dev 2>/dev/null || true
-  # Try annotated tags first; fall back to commit-based versioning
-  local _ver
-  if _ver=$(git describe --long --tags 2>/dev/null); then
-    # Normalize git describe output like v4.22.2-66-gaa279f0c4 -> 4.22.2.r66.gaa279f0c4
-    printf '%s' "$_ver" | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g'
-  else
-    # No tags reachable — use commit count + short hash
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  fi
+    cd "$srcdir/$_srcname"
+    # Shallow clones lack tag history; unshallow to get full history for describe
+    git fetch --depth=999999 --tags origin dev 2>/dev/null || true
+    # Try annotated tags first; fall back to commit-based versioning
+    local _ver
+    if _ver=$(git describe --long --tags 2>/dev/null); then
+        # Normalize git describe output like v4.22.2-66-gaa279f0c4 -> 4.22.2.r66.gaa279f0c4
+        printf '%s' "$_ver" | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g'
+    else
+        # No tags reachable — use commit count + short hash
+        printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    fi
 }
 
 pkgdesc="Agentic IM Chatbot infrastructure (multi-instance, astrbotctl only)"
