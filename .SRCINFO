@@ -1,0 +1,19 @@
+pkgbase = fire-cli
+	pkgdesc = Terminal fire animation written in Rust
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/horizonwiki/fire
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = Apache
+	makedepends = cargo
+	depends = gcc-libs
+	options = !debug
+	source = fire-cli-0.1.2.tar.gz::https://github.com/horizonwiki/fire/archive/refs/tags/0.1.2.tar.gz
+	source = LICENSE-fire::https://raw.githubusercontent.com/horizonwiki/fire/master/LICENSE
+	sha256sums = b4f299ba7075b92a94198d31279cffae3d922bd9366ac139ccb8b93e5ce07f7e
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+
+pkgname = fire-cli
