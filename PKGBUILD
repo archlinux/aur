@@ -1,45 +1,48 @@
-# Maintainer: Claude <noreply@anthropic.com>
+# Maintainer: orange-guo
 # Packaging Repo: https://github.com/orange-guo/aur-packages
 
 pkgname=vibe-kanban-bin
-_pkgname=vibe-kanban
-pkgver=0.1.41
-_binary_tag=v0.0.148-20260109183532
+pkgver=0.1.42
 pkgrel=1
-pkgdesc="Vibe Kanban - AI-powered Kanban board (Binary)"
-arch=('x86_64')
-url="https://vibekanban.com"
-license=('Proprietary')
-provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
+pkgdesc=Vibe\ Kanban\ -\ AI-powered\ Kanban\ board\ \(Binary\)
+arch=(x86_64 )
+url=https://vibekanban.com
+license=(Proprietary )
 depends=()
-makedepends=('unzip')
-options=('!strip')
-
+makedepends=(unzip )
+options=(\!strip )
+provides=(vibe-kanban )
+conflicts=(vibe-kanban )
 install=vibe-kanban-bin.install
+source=(vibe-kanban.service )
+sha256sums=('48b6d94e9693f7098ad7d3786ff08b648ce08ab8fcfe8ff13cff97906a12a33f')
+sha256sums_x86_64=('7803f3b0f444f4f293ac31910e86a4d5d42e2c0c279e7135af069d66c90c5e40')
+source_x86_64=(vibe-kanban-bin-0.1.42.zip::https://npm-cdn.vibekanban.com/binaries/v0.1.42-20260410131124/linux-x64/vibe-kanban.zip )
 
-source=("https://npm-cdn.vibekanban.com/binaries/${_binary_tag}/linux-x64/${_pkgname}.zip"
-        "vibe-kanban.service")
-sha256sums=('47ab440ace65374bf74c006832339c7b698c094c6e26af38a6f98c407f84b1a5'
-            '48b6d94e9693f7098ad7d3786ff08b648ce08ab8fcfe8ff13cff97906a12a33f')
+_binary_source_path=vibe-kanban
+_install_bin_path=/usr/bin/vibe-kanban
+_service_file=vibe-kanban.service
+_service_install_path=/usr/lib/systemd/user/vibe-kanban.service
+_doc_files=()
+_license_files=()
+_binary_tag=v0.1.42-20260410131124
 
 package() {
-    cd "${srcdir}"
+    install -Dm755 "${srcdir}/${_binary_source_path}" "${pkgdir}${_install_bin_path}"
 
-    # Install binary
-    install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    local doc_file
+    for doc_file in "${_doc_files[@]}"; do
+        [ -f "${srcdir}/${doc_file}" ] || continue
+        install -Dm644 "${srcdir}/${doc_file}" "${pkgdir}/usr/share/doc/${pkgname}/$(basename "${doc_file}")"
+    done
 
-    # Install systemd service
-    if [ -f "vibe-kanban.service" ]; then
-        install -Dm644 "vibe-kanban.service" "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
+    local license_file
+    for license_file in "${_license_files[@]}"; do
+        [ -f "${srcdir}/${license_file}" ] || continue
+        install -Dm644 "${srcdir}/${license_file}" "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${license_file}")"
+    done
+
+    if [ -n "${_service_file}" ] && [ -f "${srcdir}/${_service_file}" ]; then
+        install -Dm644 "${srcdir}/${_service_file}" "${pkgdir}${_service_install_path}"
     fi
-
-    # Install license if available (Wait, where is the license?)
-    # The zip only had the binary. The npm package had LICENSE.
-    # The binary zip doesn't have LICENSE?
-    # I should check if LICENSE is separate.
-    # If not, I might need to download it separately or skip it.
-    # Previous PKGBUILD checked "if [ -f LICENSE ]".
-    # Since I'm not using NPM package, I don't have LICENSE file extracted.
-    # I will omit it for now or source it from somewhere else.
 }
