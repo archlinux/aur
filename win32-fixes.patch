@@ -1,0 +1,1217 @@
+diff --git a/gavl/absdiff.c b/gavl/absdiff.c
+index a7a5f1c..bdb8fb9 100644
+--- a/gavl/absdiff.c
++++ b/gavl/absdiff.c
+@@ -20,7 +20,7 @@
+ 
+ 
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <stdlib.h>
+ #include <math.h>
+ #include "c/colorspace_tables.h"
+diff --git a/gavl/array.c b/gavl/array.c
+index b1b00a2..c10cce7 100644
+--- a/gavl/array.c
++++ b/gavl/array.c
+@@ -348,9 +348,18 @@ void gavl_array_destroy(gavl_array_t * arr)
+   free(arr);
+   }
+ 
++// windows qsort_s has wrong compare argument order and void return value
++#ifdef __MINGW32__
++void gavl_array_sort(gavl_array_t * arr, int (*compare)(void *, const void *, const void * data), void * data)
++#else
+ void gavl_array_sort(gavl_array_t * arr, int (*compare)(const void *, const void *, void * data), void * data)
++#endif
+   {
++#ifdef __MINGW32__
++  qsort_s(arr->entries, arr->num_entries, sizeof(*arr->entries), compare, data);
++#else
+   qsort_r(arr->entries, arr->num_entries, sizeof(*arr->entries), compare, data);
++#endif
+   }
+ 
+ /* String array */
+diff --git a/gavl/audioframe.c b/gavl/audioframe.c
+index e4b2e5f..efda489 100644
+--- a/gavl/audioframe.c
++++ b/gavl/audioframe.c
+@@ -27,7 +27,7 @@
+ #include <string.h>
+ 
+ #include <config.h>
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <accel.h>
+ #include <bswap.h>
+ 
+diff --git a/gavl/audiooptions.c b/gavl/audiooptions.c
+index 6f38e67..d48cedf 100644
+--- a/gavl/audiooptions.c
++++ b/gavl/audiooptions.c
+@@ -27,7 +27,7 @@
+ #include <stdio.h>  
+ #endif
+ 
+-#include "gavl.h"
++#include "gavl/gavl.h"
+ #include "config.h"
+ #include "audio.h"
+ #include <accel.h>
+diff --git a/gavl/c/interleave_c.c b/gavl/c/interleave_c.c
+index 6624f4d..24a9cc1 100644
+--- a/gavl/c/interleave_c.c
++++ b/gavl/c/interleave_c.c
+@@ -23,7 +23,7 @@
+ #include <string.h>
+ #include <stdio.h>
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <audio.h>
+ #include <interleave.h>
+ 
+diff --git a/gavl/c/volume_c.c b/gavl/c/volume_c.c
+index 09f0c0e..50c1ac7 100644
+--- a/gavl/c/volume_c.c
++++ b/gavl/c/volume_c.c
+@@ -20,7 +20,7 @@
+ 
+ 
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <volume.h>
+ #include <float_cast.h>
+ 
+diff --git a/gavl/colorspace.c b/gavl/colorspace.c
+index 090a99b..54a377f 100644
+--- a/gavl/colorspace.c
++++ b/gavl/colorspace.c
+@@ -20,7 +20,7 @@
+ 
+ 
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <config.h>
+ #include <video.h>
+ #include <colorspace.h>
+diff --git a/gavl/cputest.c b/gavl/cputest.c
+index 2781d51..dec24bf 100644
+--- a/gavl/cputest.c
++++ b/gavl/cputest.c
+@@ -20,7 +20,7 @@
+ 
+ 
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <config.h>
+ #include <accel.h>
+ 
+diff --git a/gavl/http.c b/gavl/http.c
+index 0523388..e080895 100644
+--- a/gavl/http.c
++++ b/gavl/http.c
+@@ -19,6 +19,10 @@
+  * *****************************************************************/
+ 
+ #define _GNU_SOURCE      // timegm und strcasecmp (modern)
++			 //
++#ifdef __MINGW32__
++#define _POSIX_THREAD_SAFE_FUNCTIONS
++#endif
+ 
+ #include <time.h>
+ #include <string.h>
+@@ -688,10 +692,17 @@ int64_t gavl_http_header_get_time(const gavl_dictionary_t * h, const char * name
+   if(!(var = gavl_dictionary_get_string_i(h, name)))
+     return 0;
+ 
++  //FIXME
++#if 0
+   if(!strptime(var, "%a, %d %b %Y %H:%M:%S GMT", &tm))
+     return 0;
++#endif
+   
++#ifdef __MINGW32__
++  return mktime(&tm);
++#else
+   return timegm(&tm);
++#endif
+   }
+ 
+ void gavl_http_header_set_date(gavl_dictionary_t * h, const char * name)
+diff --git a/gavl/httpclient.c b/gavl/httpclient.c
+index 2e18c33..b35e67e 100644
+--- a/gavl/httpclient.c
++++ b/gavl/httpclient.c
+@@ -25,7 +25,11 @@
+ #include <stdlib.h>
+ #include <time.h>
+ #include <pthread.h>
++#ifdef __MINGW32__
++#include "/usr/i686-w64-mingw32/include/io.h"
++#else
+ #include <unistd.h>
++#endif
+ 
+ #include <config.h>
+ 
+@@ -178,7 +182,11 @@ static int store_cache(gavl_http_client_t * c)
+     return 0;
+   
+   if(!(cache_control = gavl_dictionary_get_string_i(&c->resp, "Cache-Control")) ||
++#ifdef __MINGW32__
++     strstr(strlwr((char *)cache_control), "no-store"))
++#else
+      strcasestr(cache_control, "no-store"))
++#endif
+     return 0;
+   
+   mtime = gavl_http_header_get_time(&c->resp, "Last-Modified");
+@@ -192,12 +200,20 @@ static int store_cache(gavl_http_client_t * c)
+ 
+   cur = time(NULL);
+   
++#ifdef __MINGW32__
++  if((pos = strstr(strlwr((char *)cache_control), "max-age=")))
++#else
+   if((pos = strcasestr(cache_control, "max-age=")))
++#endif
+     {
+     pos += strlen("max-age=");
+     maxage = strtoll(pos, NULL, 10);
+     }
++#ifdef __MINGW32__
++  else if(!strstr(strlwr((char *)cache_control), "no-cache") && mtime)
++#else
+   else if(!strcasestr(cache_control, "no-cache") && mtime)
++#endif
+     {
+     /* Guess max age */
+     maxage = (cur - mtime) / 10;
+diff --git a/gavl/hw.c b/gavl/hw.c
+index e1dbfd0..89c72de 100644
+--- a/gavl/hw.c
++++ b/gavl/hw.c
+@@ -32,8 +32,8 @@
+ 
+ #define LOG_DOMAIN "hw_context"
+ 
+-#include <hw_dmabuf.h>
+-#include <hw_shm.h>
++#include <gavl/hw_dmabuf.h>
++#include <gavl/hw_shm.h>
+ 
+ 
+ static void ensure_formats(gavl_hw_context_t * ret)
+diff --git a/gavl/hw_dmabuf.c b/gavl/hw_dmabuf.c
+index c168357..5238a5c 100644
+--- a/gavl/hw_dmabuf.c
++++ b/gavl/hw_dmabuf.c
+@@ -22,13 +22,17 @@
+ 
+ #include <stdlib.h>
+ #include <stdio.h>
++#ifndef __MINGW32__
+ #include <unistd.h> // close()
+ #include <fcntl.h>
+ #include <sys/ioctl.h>
++#endif
+ #include <string.h>
+ #include <errno.h>
+ 
++#ifndef __MINGW32__
+ #include <sys/mman.h>
++#endif
+ 
+ #include <config.h>
+ 
+diff --git a/gavl/hw_shm.c b/gavl/hw_shm.c
+index adf5243..d7ee097 100644
+--- a/gavl/hw_shm.c
++++ b/gavl/hw_shm.c
+@@ -18,14 +18,15 @@
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  * *****************************************************************/
+ 
+-
+-
+ #include <stdlib.h>
+ #include <string.h>
+ 
+ #include <gavl/gavl.h>
+ #include <hw_private.h>
+-#include <hw_shm.h>
++#include <gavl/hw_shm.h>
++
++//FIXME
++#ifdef HAVE_SHM
+ 
+ #include <gavlshm.h>
+ 
+@@ -166,3 +167,9 @@ void
+ gavl_hw_destroy_video_frame(gavl_hw_context_t * ctx,
+                             gavl_video_frame_t * frame);
+ */
++#else // No SHM
++gavl_hw_context_t * gavl_hw_ctx_create_shm()
++  {
++  return NULL;
++  }
++#endif
+diff --git a/gavl/io.c b/gavl/io.c
+index 417bf19..e550d16 100644
+--- a/gavl/io.c
++++ b/gavl/io.c
+@@ -33,7 +33,7 @@
+ #include <gavl/log.h>
+ #define LOG_DOMAIN "io"
+ 
+-#include <io.h>
++#include <gavl/io.h>
+ #include <io_private.h>
+ 
+ 
+diff --git a/gavl/memcpy.c b/gavl/memcpy.c
+index 98cbd50..194d7c1 100644
+--- a/gavl/memcpy.c
++++ b/gavl/memcpy.c
+@@ -58,7 +58,7 @@
+ #include <stdio.h>
+ 
+ #include <config.h>
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <accel.h>
+ 
+ #include <inttypes.h>
+diff --git a/gavl/mmx/mmx_macros.h b/gavl/mmx/mmx_macros.h
+index f4e63e2..4cf13ac 100644
+--- a/gavl/mmx/mmx_macros.h
++++ b/gavl/mmx/mmx_macros.h
+@@ -21,7 +21,7 @@
+ 
+ 
+ #include <config.h>
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <video.h>
+ #include <colorspace.h>
+  
+diff --git a/gavl/psnr.c b/gavl/psnr.c
+index 4961d1a..d5517c7 100644
+--- a/gavl/psnr.c
++++ b/gavl/psnr.c
+@@ -20,7 +20,7 @@
+ 
+ 
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <stdlib.h>
+ #include <math.h>
+ #include "c/colorspace_tables.h"
+diff --git a/gavl/shm.c b/gavl/shm.c
+index 55f4ab7..41f97d8 100644
+--- a/gavl/shm.c
++++ b/gavl/shm.c
+@@ -21,6 +21,9 @@
+ 
+ #include <config.h>
+ 
++//FIXME
++#ifdef HAVE_SHM
++
+ #include <inttypes.h>
+ #include <errno.h>
+ #include <stdio.h>
+@@ -216,3 +219,4 @@ void gavl_shm_destroy(gavl_shm_t * shm)
+   free(shm);
+   }
+ 
++#endif
+diff --git a/gavl/socket.c b/gavl/socket.c
+index d81e068..fca1639 100644
+--- a/gavl/socket.c
++++ b/gavl/socket.c
+@@ -48,15 +48,24 @@
+ #include <sys/sendfile.h>
+ #endif
+ 
++#ifdef __MINGW32__
++#include <ws2tcpip.h>
++#include <afunix.h>
++#else
+ #include <netinet/tcp.h> // IPPROTO_TCP, TCP_MAXSEG
++#endif
+ 
+ #include <unistd.h>
+ 
++#ifndef __MINGW32__
+ #include <netdb.h> /* gethostbyname */
++#endif
+ 
+ #include <fcntl.h>
++#ifndef __MINGW32__
+ #include <sys/socket.h>
+ #include <sys/un.h>
++#endif
+ 
+ 
+ #include <gavl/gavl.h>
+@@ -96,8 +105,13 @@ static int create_socket(int domain, int type, int protocol)
+ 
+ int gavl_socket_get_errno(int fd)
+   {
++#ifdef __MINGW32__
++  char err = 0;
++  int err_len;
++#else
+   int err = 0;
+   socklen_t err_len;
++#endif
+ 
+   err_len = sizeof(err);
+   if(getsockopt(fd, SOL_SOCKET, SO_ERROR, &err, &err_len))
+@@ -203,14 +217,24 @@ int gavl_socket_connect_unix(const char * name)
+   struct sockaddr_un addr;
+   int addr_len;
+   int ret;
++#ifdef __MINGW32__
++  ret = create_socket(AF_UNIX, SOCK_STREAM, 0);
++#else
+   ret = create_socket(PF_LOCAL, SOCK_STREAM, 0);
++#endif
+   if(ret < 0)
+     {
+     gavl_log(GAVL_LOG_ERROR, LOG_DOMAIN, "Cannot create unix socket: %s", strerror(errno));
+     return -1;
+     }
+ 
++#ifdef __MINGW32__
++  addr.sun_family = AF_UNIX;
++  # define SUN_LEN(ptr) (offsetof (struct sockaddr_un, sun_path)                \
++                        + strlen ((ptr)->sun_path))
++#else
+   addr.sun_family = AF_LOCAL;
++#endif
+   strncpy(addr.sun_path, name, sizeof(addr.sun_path));
+   addr.sun_path[sizeof (addr.sun_path) - 1] = '\0';
+   addr_len = SUN_LEN(&addr);
+@@ -301,7 +325,11 @@ int gavl_listen_socket_create_inet(gavl_socket_address_t * addr,
+   
+   if(flags & GAVL_SOCKET_REUSEADDR)
+     {
++#ifdef __MINGW32__
++    const char optval = 1;
++#else
+     int optval = 1;
++#endif
+     setsockopt(ret, SOL_SOCKET, SO_REUSEADDR,
+                &optval, sizeof(optval));
+     }
+@@ -354,14 +382,22 @@ int gavl_listen_socket_create_unix(const char * name,
+ 
+   struct sockaddr_un addr;
+   int addr_len;
++#ifdef __MINGW32__
++  ret = create_socket(AF_UNIX, SOCK_STREAM, 0);
++#else
+   ret = create_socket(PF_LOCAL, SOCK_STREAM, 0);
++#endif
+   if(ret < 0)
+     {
+     gavl_log(GAVL_LOG_ERROR, LOG_DOMAIN, "Cannot create unix server socket: %s", strerror(errno));
+     return -1;
+     }
+ 
++#ifdef __MINGW32__
++  addr.sun_family = AF_UNIX;
++#else
+   addr.sun_family = AF_LOCAL;
++#endif
+   strncpy (addr.sun_path, name, sizeof(addr.sun_path));
+   addr.sun_path[sizeof (addr.sun_path) - 1] = '\0';
+   addr_len = SUN_LEN(&addr);
+@@ -417,7 +453,11 @@ void gavl_listen_socket_destroy(int sock)
+   socklen_t len = sizeof(addr);
+   
+   if(!getsockname(sock, &addr.addr, &len) &&
++#ifdef __MINGW32__
++     (addr.addr.sa_family == AF_UNIX))
++#else
+      (addr.addr.sa_family == AF_LOCAL))
++#endif
+     {
+     if(unlink(addr.addr_un.sun_path))
+       {
+@@ -443,7 +483,11 @@ int gavl_socket_read_data_noblock(int fd, uint8_t * data, int len)
+ 
+   //  fprintf(stderr, "read_data_noblock 2 %d\n", len);
+   
++#ifdef __MINGW32__
++  result = recv(fd, (char *)data, len, 0);
++#else
+   result = recv(fd, data, len, 0);
++#endif
+ 
+   //  fprintf(stderr, "read_data_noblock 3 %d\n", result);
+ 
+@@ -463,7 +507,11 @@ int gavl_socket_write_data_nonblock(int fd, const uint8_t * data, int len)
+     {
+     return 0;
+     }
++#ifdef __MINGW32__
++  result = send(fd, (char*)data, len, MSG_NOSIGNAL);
++#else
+   result = send(fd, data, len, MSG_DONTWAIT | MSG_NOSIGNAL);
++#endif
+ 
+   if(!result)
+     {
+@@ -493,9 +541,17 @@ int gavl_socket_read_data(int fd, uint8_t * data, int len, int milliseconds)
+       }
+ 
+     if(milliseconds < 0)
++#ifdef __MINGW32__
++      result = recv(fd, (char*)(data + bytes_read), len - bytes_read, MSG_WAITALL);
++#else
+       result = recv(fd, data + bytes_read, len - bytes_read, MSG_WAITALL);
++#endif
+     else
++#ifdef __MINGW32__
++      result = recv(fd, (char*)(data + bytes_read), len - bytes_read, 0);
++#else
+       result = recv(fd, data + bytes_read, len - bytes_read, MSG_DONTWAIT);
++#endif
+     
+     if(result < 0)
+       {
+@@ -544,7 +600,11 @@ int gavl_socket_is_unix(int fd)
+   if(getsockname(fd, (struct sockaddr*)&us, &slen) == -1)
+     return 0;
+ 
++#ifdef __MINGW32__
++  if(us.ss_family == AF_UNIX)
++#else
+   if(us.ss_family == AF_LOCAL)
++#endif
+     return 1;
+   else
+     return 0;
+@@ -560,7 +620,11 @@ int gavl_socket_is_local(int fd)
+   if(getsockname(fd, (struct sockaddr*)&us, &slen) == -1)
+     return 1;
+ 
++#ifdef __MINGW32__
++  if(slen == 0 || us.ss_family == AF_UNIX)
++#else
+   if(slen == 0 || us.ss_family == AF_LOCAL)
++#endif
+     return 1;
+ 
+ #if 1
+@@ -649,7 +713,11 @@ int gavl_socket_send_file(int fd, const char * filename,
+     }
+ #endif
+   
++#ifdef __MINGW32__
++  if(getsockopt(fd, IPPROTO_TCP, TCP_MAXSEG, (char *)&buf_size, &size_len))
++#else
+   if(getsockopt(fd, IPPROTO_TCP, TCP_MAXSEG, &buf_size, &size_len))
++#endif
+     buf_size = 576 - 40;
+ 
+   bytes_written = 0;
+@@ -686,6 +754,10 @@ int gavl_socket_send_file(int fd, const char * filename,
+ 
+ int gavl_socket_send_fds(int socket, const int * fds, int n)
+   {
++//FIXME
++#ifdef __MINGW32__
++  return 0;
++#else
+   struct msghdr msg = {0};
+   struct cmsghdr *cmsg;
+   char payload = '\0';
+@@ -713,10 +785,15 @@ int gavl_socket_send_fds(int socket, const int * fds, int n)
+     }
+   else
+     return 1;
++#endif
+   }
+ 
+ int gavl_socket_recv_fds(int socket, int * fds, int n)
+   {
++//FIXME
++#ifdef __MINGW32__
++  return 0;
++#else
+   struct msghdr msg = {0};
+   struct cmsghdr *cmsg;
+   char buf[CMSG_SPACE(GAVL_MAX_PLANES * sizeof(int))], dup[256];
+@@ -739,6 +816,7 @@ int gavl_socket_recv_fds(int socket, int * fds, int n)
+   memcpy (fds, (int *) CMSG_DATA(cmsg), n * sizeof(int));
+ 
+   return 1;
++#endif
+   }
+ 
+ int gavl_udp_socket_create(gavl_socket_address_t * addr)
+@@ -783,7 +861,11 @@ int gavl_udp_socket_set_multicast_interface(int fd, gavl_socket_address_t * inte
+     {
+     struct sockaddr_in * a = (struct sockaddr_in *)&interface_addr->addr;
+     
++#ifdef __MINGW32__
++    if(setsockopt(fd, IPPROTO_IP, IP_MULTICAST_IF, (const char*)&a->sin_addr, sizeof(a->sin_addr)) < 0) 
++#else
+     if(setsockopt(fd, IPPROTO_IP, IP_MULTICAST_IF, &a->sin_addr, sizeof(a->sin_addr)) < 0) 
++#endif
+       {
+       gavl_log(GAVL_LOG_ERROR, LOG_DOMAIN, "Setting multicast interface failed: %s", strerror(errno));
+       return 0;
+@@ -832,7 +914,12 @@ int gavl_udp_socket_create_multicast(gavl_socket_address_t * multicast_addr,
+ #else
+   memset(&bind_addr, 0, sizeof(bind_addr));
+   gavl_socket_address_set(&bind_addr, "0.0.0.0",
++//FIXME
++#ifdef __MINGW32__
++                          gavl_socket_address_get_port(multicast_addr), SOCK_DGRAM);
++#else
+                           gavl_socket_address_get_port(addr), SOCK_DGRAM);
++#endif
+   err = bind(ret, (struct sockaddr*)&bind_addr.addr, bind_addr.len);
+ #endif
+   //  err = bind(ret, (struct sockaddr*)&addr->addr, addr->len);
+@@ -860,7 +947,11 @@ int gavl_udp_socket_create_multicast(gavl_socket_address_t * multicast_addr,
+     else
+       req.imr_interface.s_addr = htonl(INADDR_ANY);
+     
++#ifdef __MINGW32__
++    if(setsockopt(ret, IPPROTO_IP, IP_ADD_MEMBERSHIP, (const char*)&req, sizeof(req)))
++#else
+     if(setsockopt(ret, IPPROTO_IP, IP_ADD_MEMBERSHIP, &req, sizeof(req)))
++#endif
+       {
+       gavl_log(GAVL_LOG_ERROR, LOG_DOMAIN, "Cannot join multicast group: %s",
+              strerror(errno));
+@@ -875,7 +966,11 @@ int gavl_udp_socket_create_multicast(gavl_socket_address_t * multicast_addr,
+     return -1;
+     }
+   
++#ifdef __MINGW32__
++  setsockopt(ret, IPPROTO_IP, IP_MULTICAST_LOOP, (const char*)&loop, sizeof(loop));
++#else
+   setsockopt(ret, IPPROTO_IP, IP_MULTICAST_LOOP, &loop, sizeof(loop));
++#endif
+   
+   return ret;
+   }
+@@ -887,10 +982,19 @@ int gavl_udp_socket_receive(int fd, uint8_t * data, int data_size,
+   ssize_t result;
+ 
+   if(addr)  
++#ifdef __MINGW32__
++    result = recvfrom(fd, (char*)data, data_size, 0 /* int flags */,
++                      (struct sockaddr *)&addr->addr, &len);
++#else
+     result = recvfrom(fd, data, data_size, 0 /* int flags */,
+                       (struct sockaddr *)&addr->addr, &len);
++#endif
+   else
++#ifdef __MINGW32__
++    result = recv(fd, (char*)data, data_size, 0);
++#else
+     result = recv(fd, data, data_size, 0);
++#endif
+ 
+   if(result < 0)
+     gavl_log(GAVL_LOG_ERROR, LOG_DOMAIN, "UDP Receive failed");
+@@ -903,10 +1007,19 @@ int gavl_udp_socket_send(int fd, const uint8_t * data, int data_size,
+                        gavl_socket_address_t * addr)
+   {
+   if(addr)
++#ifdef __MINGW32__
++    return (sendto(fd, (char*)data, data_size, 0 /* int flags */,
++                   (struct sockaddr *)&addr->addr, addr->len) == data_size);
++#else
+     return (sendto(fd, data, data_size, 0 /* int flags */,
+                    (struct sockaddr *)&addr->addr, addr->len) == data_size);
++#endif
+   else
++#ifdef __MINGW32__
++    return (send(fd, (char*)data, data_size, 0) == data_size);
++#else
+     return (send(fd, data, data_size, 0) == data_size);
++#endif
+   }
+ 
+ /* Unix domain server sockets including filename management and cleanup procedures */
+@@ -935,7 +1048,11 @@ int gavl_socket_is_disconnected(int fd, int timeout)
+   uint8_t buf;
+   
+   if(gavl_fd_can_read(fd, 0) &&
++#ifdef __MINGW32__
++     (recv(fd, (char*)&buf, 1, MSG_PEEK) <= 0))
++#else
+      (recv(fd, &buf, 1, MSG_PEEK) <= 0))
++#endif
+     return 1;
+   else
+     return 0;
+diff --git a/gavl/socketaddress.c b/gavl/socketaddress.c
+index 2a7a6b3..3d4cd1a 100644
+--- a/gavl/socketaddress.c
++++ b/gavl/socketaddress.c
+@@ -31,15 +31,24 @@
+ #endif
+ 
+ #include <sys/time.h>
++#ifndef __MINGW32__
+ #include <netinet/in.h>
++#endif
+ 
+ #include <sys/types.h>
++#ifdef __MINGW32__
++#include <ws2tcpip.h>
++#include <afunix.h>
++#else
+ #include <sys/socket.h>
+ #include <netdb.h> /* gethostbyname */
++#endif
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdio.h>
++#ifndef __MINGW32__
+ #include <arpa/inet.h> // inet_ntop
++#endif
+ #include <errno.h>
+ #include <pthread.h>
+ 
+@@ -473,6 +482,7 @@ int gavl_socket_get_address(int sock, gavl_socket_address_t * local,
+   return 1;
+   }
+ 
++#ifdef HAVE_IFADDRS_H  
+ static int addr_match(struct ifaddrs * a, int flags)
+   {
+   if((a->ifa_flags & IFF_LOOPBACK) && !(flags & GAVL_NI_LOOPBACK))
+@@ -499,6 +509,7 @@ static int addr_match(struct ifaddrs * a, int flags)
+ 
+   return 0;
+   }
++#endif
+ 
+ gavl_socket_address_t ** gavl_get_network_interfaces(int flags)
+   {
+diff --git a/gavl/time.c b/gavl/time.c
+index 2d61ee9..cc488cb 100644
+--- a/gavl/time.c
++++ b/gavl/time.c
+@@ -22,6 +22,11 @@
+ 
+ #include <config.h>
+ 
++#ifdef __MINGW32__
++#define _GNU_SOURCE
++#define _POSIX_THREAD_SAFE_FUNCTIONS
++#endif
++
+ #include <sys/time.h>
+ #include <sys/types.h>
+ #include <unistd.h>
+@@ -41,7 +46,7 @@
+ #include <errno.h>
+ #endif
+ 
+-#include <gavltime.h>
++#include <gavl/gavltime.h>
+ #include <arith128.h>
+ 
+ 
+@@ -365,7 +370,11 @@ int gavl_time_parse_iso8601(const char * str, gavl_time_t * ret)
+   tm.tm_sec    = sec;
+   tm.tm_isdst  = 0;
+   
++#ifdef __MINGW32__
++  t = mktime(&tm);
++#else
+   t = timegm(&tm);
++#endif
+   t -= (tz_hour * 60 + tz_minute) * 60;
+ 
+   *ret = t;
+diff --git a/gavl/timecode.c b/gavl/timecode.c
+index f751f70..63010dc 100644
+--- a/gavl/timecode.c
++++ b/gavl/timecode.c
+@@ -25,7 +25,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ 
+ #define BITMASK(nbits,shift) (((1LL<<nbits)-1)<<shift)
+ 
+diff --git a/gavl/timer.c b/gavl/timer.c
+index b2dc0e1..6ecaddf 100644
+--- a/gavl/timer.c
++++ b/gavl/timer.c
+@@ -32,7 +32,7 @@
+ #endif
+ #include <sys/time.h>
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ 
+ #ifdef HAVE_CLOCK_MONOTONIC
+ 
+diff --git a/gavl/trackinfo.c b/gavl/trackinfo.c
+index 243e790..892095d 100644
+--- a/gavl/trackinfo.c
++++ b/gavl/trackinfo.c
+@@ -2206,7 +2206,11 @@ gavl_dictionary_t * gavl_get_track_by_id_nc(gavl_dictionary_t * dict, const char
+   return NULL;
+   }
+ 
++#ifdef __MINGW32__
++static int compare_metadata_string(void * data, const void * p1, const void * p2)
++#else
+ static int compare_metadata_string(const void * p1, const void * p2, void * data)
++#endif
+   {
+   const char * s1;
+   const char * s2;
+@@ -2232,8 +2236,14 @@ void gavl_sort_tracks_by_label(gavl_array_t * arr)
+ 
+ 
+ 
++#ifdef __MINGW32__
++static int compare_metadata_int_reverse(void * data,
++		                        const void * p1,
++                                        const void * p2)
++#else
+ static int compare_metadata_int_reverse(const void * p1,
+                                         const void * p2, void * data)
++#endif
+   {
+   int i1 = 0;
+   int i2 = 0;
+@@ -2257,8 +2267,14 @@ void gavl_sort_tracks_by_bitrate(gavl_array_t * arr)
+   gavl_array_sort(arr, compare_metadata_int_reverse, GAVL_META_BITRATE);
+   }
+ 
++#ifdef __MINGW32__
++static int compare_quality(void * data,
++		           const void * p1,
++                           const void * p2)
++#else
+ static int compare_quality(const void * p1,
+                            const void * p2, void * data)
++#endif
+   {
+   int i1 = 0;
+   int i2 = 0;
+diff --git a/gavl/utils.c b/gavl/utils.c
+index 8a78e89..f55b6c4 100644
+--- a/gavl/utils.c
++++ b/gavl/utils.c
+@@ -36,6 +36,10 @@
+ #include <sys/types.h>
+ #include <fcntl.h>
+ 
++#ifdef __MINGW32__
++#include <winsock2.h>
++#include <wininet.h>
++#endif
+ 
+ #include <gavl/gavl.h>
+ #include <gavl/utils.h>
+@@ -702,6 +706,10 @@ void gavl_simplify_rational(int * num, int * den)
+ 
+ int gavl_num_cpus()
+   {
++//FIXME win32 cpu count
++#ifdef __MINGW32__
++  return 1;
++#else
+   cpu_set_t mask;
+ 
+   if(sched_getaffinity(0, sizeof(cpu_set_t), &mask) == -1)
+@@ -712,6 +720,7 @@ int gavl_num_cpus()
+     return 1;
+     }
+   return CPU_COUNT(&mask);
++#endif
+   }
+ 
+ #undef LOG_DOMAIN
+@@ -770,6 +779,10 @@ int gavl_fd_can_write(int fd, int milliseconds)
+ 
+ int gavl_fd_set_block(int fd, int block)
+   {
++//FIXME windows support
++#ifdef __MINGW32__
++  return 0;
++#else
+   int flags;
+ 
+   if(!block)
+@@ -786,19 +799,31 @@ int gavl_fd_set_block(int fd, int block)
+     return 0;
+     }
+   return 1;
++#endif
+   }
+ 
+ int gavl_fd_get_block(int fd)
+   {
++//FIXME windows support
++#ifdef __MINGW32__
++  return 0;
++#else
+   return !(fcntl(fd, F_GETFL, 0) & O_NONBLOCK);
++#endif
+   }
+ 
+ 
+ int gavl_host_is_us(const char * hostname)
+   {
++#ifdef __MINGW32__
++  char str[INTERNET_MAX_HOST_NAME_LENGTH+1];
++
++  gethostname(str, INTERNET_MAX_HOST_NAME_LENGTH+1);
++#else
+   char str[HOST_NAME_MAX+1];
+ 
+   gethostname(str, HOST_NAME_MAX+1);
++#endif
+ 
+   if(!strcmp(hostname, str))
+     return 1;
+@@ -866,7 +891,11 @@ int gavl_ensure_directory(const char * dir, int priv)
+       if(!priv)
+         mode |= S_IRGRP|S_IXGRP|S_IROTH|S_IXOTH;
+       
++#ifdef __MINGW32__
++      if(mkdir(subpath) == -1)
++#else
+       if(mkdir(subpath, mode) == -1)
++#endif
+         {
+         gavl_log(GAVL_LOG_ERROR, LOG_DOMAIN, "Creating directory %s failed: %s",
+                subpath, strerror(errno));
+diff --git a/gavl/videoframe.c b/gavl/videoframe.c
+index 1a3bebb..a83189f 100644
+--- a/gavl/videoframe.c
++++ b/gavl/videoframe.c
+@@ -20,7 +20,7 @@
+ 
+ 
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ 
+ #include <video.h>
+ #include <config.h>
+diff --git a/gavl/videooptions.c b/gavl/videooptions.c
+index 5823337..15df0da 100644
+--- a/gavl/videooptions.c
++++ b/gavl/videooptions.c
+@@ -27,11 +27,11 @@
+ #include <stdio.h>  
+ #endif
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <config.h>
+ #include <video.h>
+ #include <accel.h>
+-#include <utils.h>
++#include <gavl/utils.h>
+ 
+ /***************************************************
+  * Default Options
+diff --git a/gavl/volume.c b/gavl/volume.c
+index c51c1b9..1d79712 100644
+--- a/gavl/volume.c
++++ b/gavl/volume.c
+@@ -25,7 +25,7 @@
+ #include <math.h>
+ 
+ #include <config.h>
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <volume.h>
+ 
+ static void set_factor_i(gavl_volume_control_t * v)
+diff --git a/include/audio.h b/include/audio.h
+index d5724cc..68cf34f 100644
+--- a/include/audio.h
++++ b/include/audio.h
+@@ -27,7 +27,7 @@
+ /* Private structures for the audio converter */
+ 
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <samplerate.h>
+ 
+ #include "config.h"
+diff --git a/include/gavl/gavlsocket.h b/include/gavl/gavlsocket.h
+index 1afd0f3..1fc352e 100644
+--- a/include/gavl/gavlsocket.h
++++ b/include/gavl/gavlsocket.h
+@@ -27,7 +27,11 @@
+ #include <inttypes.h>
+ 
+ #include <sys/types.h>
++#ifdef __MINGW32__
++#include <winsock2.h>
++#else
+ #include <sys/socket.h>
++#endif
+ 
+ #include <gavl/gavl.h>
+ 
+diff --git a/include/gavl/value.h b/include/gavl/value.h
+index 863b338..9791614 100644
+--- a/include/gavl/value.h
++++ b/include/gavl/value.h
+@@ -433,7 +433,11 @@ void gavl_array_splice_array_nocopy(gavl_array_t * arr,
+ 
+ // uses qsort(3)
+ GAVL_PUBLIC
++#ifdef __MINGW32__
++void gavl_array_sort(gavl_array_t * arr, int (*compare)(void *, const void *, const void * priv), void * priv);
++#else
+ void gavl_array_sort(gavl_array_t * arr, int (*compare)(const void *, const void *, void * priv), void * priv);
++#endif
+ 
+ GAVL_PUBLIC
+ void gavl_dictionary_append_string_array_nocopy(gavl_dictionary_t * d,
+diff --git a/include/video.h b/include/video.h
+index c1e76cc..e42643e 100644
+--- a/include/video.h
++++ b/include/video.h
+@@ -23,7 +23,7 @@
+ #ifndef VIDEO_H_INCLUDED
+ #define VIDEO_H_INCLUDED
+ 
+-#include <hw.h>
++#include <gavl/hw.h>
+ 
+ /* Private structures for the video converter */
+ 
+diff --git a/src/benchmark.c b/src/benchmark.c
+index 900463a..c0f5583 100644
+--- a/src/benchmark.c
++++ b/src/benchmark.c
+@@ -22,15 +22,17 @@
+ 
+ 
+ #include <config.h>
+-#include <gavl.h>
+-#include <gavldsp.h>
++#include <gavl/gavl.h>
++#include <gavl/gavldsp.h>
+ #include <accel.h> /* Private header */
+ 
+ 
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdio.h>
++#ifndef __MINGW32__
+ #include <unistd.h>
++#endif
+ 
+ #include <sys/time.h>
+ #include <time.h>
+diff --git a/src/blend_test.c b/src/blend_test.c
+index b37f83d..361d773 100644
+--- a/src/blend_test.c
++++ b/src/blend_test.c
+@@ -22,7 +22,7 @@
+ 
+ 
+ #include <stdlib.h>
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <gavl/gavl_version.h>
+ //#include "colorspace.h" // Common routines
+ #include <stdio.h>
+diff --git a/src/colorspace_test.c b/src/colorspace_test.c
+index d2fb50e..90f22c4 100644
+--- a/src/colorspace_test.c
++++ b/src/colorspace_test.c
+@@ -20,11 +20,13 @@
+ 
+ 
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ //#include "colorspace.h" // Common routines
+ #include <stdio.h>
+ #include <png.h>
++#ifndef __MINGW32__
+ #include <unistd.h>
++#endif
+ #include <stdlib.h>
+ 
+ #include <accel.h>
+diff --git a/src/colorspace_time.c b/src/colorspace_time.c
+index 5b242f1..56cddb9 100644
+--- a/src/colorspace_time.c
++++ b/src/colorspace_time.c
+@@ -23,7 +23,7 @@
+ #include <sys/time.h>
+ #include <unistd.h>
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <accel.h>
+ 
+ //#include "colorspace.h"
+diff --git a/src/convolvetest.c b/src/convolvetest.c
+index 1f0fe73..88c25b7 100644
+--- a/src/convolvetest.c
++++ b/src/convolvetest.c
+@@ -22,7 +22,7 @@
+ 
+ 
+ #include <stdlib.h>
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ //#include "colorspace.h" // Common routines
+ #include <stdio.h>
+ #include <pngutil.h>
+diff --git a/src/deinterlace_time.c b/src/deinterlace_time.c
+index 850a65c..d9e7503 100644
+--- a/src/deinterlace_time.c
++++ b/src/deinterlace_time.c
+@@ -22,7 +22,7 @@
+ 
+ #include <sys/time.h>
+ #include <stdlib.h>
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ //#include "colorspace.h" // Common routines
+ #include <stdio.h>
+ #include <string.h>
+diff --git a/src/deinterlacetest.c b/src/deinterlacetest.c
+index b12f854..af6e4cb 100644
+--- a/src/deinterlacetest.c
++++ b/src/deinterlacetest.c
+@@ -22,7 +22,7 @@
+ 
+ 
+ #include <stdlib.h>
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <stdio.h>
+ #include <pngutil.h>
+ #include <accel.h>
+diff --git a/src/fill_test.c b/src/fill_test.c
+index 3a7d0a6..bc8ce52 100644
+--- a/src/fill_test.c
++++ b/src/fill_test.c
+@@ -22,7 +22,7 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ //#include "colorspace.h" // Common routines
+ #include <stdio.h>
+ #include <png.h>
+diff --git a/src/orientationtest.c b/src/orientationtest.c
+index d4a53b6..3aabb20 100644
+--- a/src/orientationtest.c
++++ b/src/orientationtest.c
+@@ -25,12 +25,12 @@
+ #include <config.h>
+ 
+ 
+-#include <gavl.h>
+-#include <utils.h>
++#include <gavl/gavl.h>
++#include <gavl/utils.h>
+ 
+ #include "pngutil.h"
+ 
+-#include <log.h>
++#include <gavl/log.h>
+ #define LOG_DOMAIN "orientationtest"
+ 
+ static const struct
+diff --git a/src/pixelformat_penalty.c b/src/pixelformat_penalty.c
+index 73f3370..b66a62a 100644
+--- a/src/pixelformat_penalty.c
++++ b/src/pixelformat_penalty.c
+@@ -20,7 +20,7 @@
+ 
+ 
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <stdio.h>
+ 
+ int main(int argc, char ** argv)
+diff --git a/src/pngutil.c b/src/pngutil.c
+index b4ddf4d..4c810a4 100644
+--- a/src/pngutil.c
++++ b/src/pngutil.c
+@@ -22,7 +22,7 @@
+ 
+ #include <png.h>
+ #include <stdio.h>
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <gavl/gavl_version.h>
+ #include <pngutil.h>
+ #include <stdlib.h>
+diff --git a/src/scale_time.c b/src/scale_time.c
+index ee4755f..88eed3f 100644
+--- a/src/scale_time.c
++++ b/src/scale_time.c
+@@ -21,7 +21,7 @@
+ 
+ #include <sys/time.h>
+ #include <stdlib.h>
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ //#include "colorspace.h" // Common routines
+ #include <stdio.h>
+ #include <string.h>
+diff --git a/src/scaletest.c b/src/scaletest.c
+index 03d7a6b..4139633 100644
+--- a/src/scaletest.c
++++ b/src/scaletest.c
+@@ -21,7 +21,7 @@
+ 
+ 
+ #include <stdlib.h>
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <gavl/gavl_version.h>
+ //#include "colorspace.h" // Common routines
+ #include <stdio.h>
+diff --git a/src/volume_test.c b/src/volume_test.c
+index 0a295b5..cbe7f47 100644
+--- a/src/volume_test.c
++++ b/src/volume_test.c
+@@ -20,7 +20,7 @@
+ 
+ 
+ 
+-#include <gavl.h>
++#include <gavl/gavl.h>
+ #include <stdio.h>
+ #include <math.h>
+ #include <string.h>

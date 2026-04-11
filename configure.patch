@@ -1,33 +1,111 @@
-diff -ruN gavl-1.4.0/configure patched/configure
---- gavl-1.4.0/configure	2012-06-08 13:49:51.000000000 +0200
-+++ patched/configure	2023-12-07 16:46:25.036667046 +0100
-@@ -11189,10 +11189,9 @@
- $as_echo_n "checking for CLOCK_MONOTONIC... " >&6; }
+diff --git a/configure.ac b/configure.ac
+index 8782ef4..656b2f2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -68,8 +68,8 @@ AC_C_BIGENDIAN(,,AC_MSG_ERROR("Cannot detect endianness"))
  
- if test "$cross_compiling" = yes; then :
--  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
--$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
--as_fn_error "cannot run test program while cross compiling
--See \`config.log' for more details." "$LINENO" 5; }
-+  { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: warning: in \`$ac_pwd':" >&5
-+printf "%s\n" "$as_me: warning: in \`$ac_pwd':" >&2;}
-+printf "%s\n" "ignoring test program while cross compiling" >&6;}
+ LIBGAVL_CFLAGS=""
+ case "$host_os" in 
+-        darwin*)
+-        LIBGAVl_LIBS=""
++        darwin*|mingw*)
++        LIBGAVL_LIBS="-liconv"
+         ;;
+         *)
+         LIBGAVL_LIBS="-lrt"
+@@ -142,11 +142,11 @@ AC_CHECK_FUNCS([memalign posix_memalign strdup vasprintf isatty sched_setaffinit
+ dnl
+ dnl getaddrinfo_a
+ dnl
+-ANL_LIBS=""
+-OLD_LIBS=$LIBS
+-LIBS="$LIBS -lanl"
+-AC_CHECK_FUNC(getaddrinfo_a, LIBGAVL_LIBS="${LIBGAVL_LIBS} -lanl", AC_MSG_ERROR("getaddrinfo_a not found in libanl"))
+-LIBS=$OLD_LIBS
++dnl ANL_LIBS=""
++dnl OLD_LIBS=$LIBS
++dnl LIBS="$LIBS -lanl"
++dnl AC_CHECK_FUNC(getaddrinfo_a, LIBGAVL_LIBS="${LIBGAVL_LIBS} -lanl", AC_MSG_ERROR("getaddrinfo_a not found in libanl"))
++dnl LIBS=$OLD_LIBS
+ 
+ 
+ 
+@@ -158,10 +158,12 @@ AH_TEMPLATE([HAVE_DRM], [Is libdrm available?])
+ 
+ have_drm="false"
+ 
+-PKG_CHECK_MODULES(DRM, libdrm, have_drm="true")
++dnl PKG_CHECK_MODULES(DRM, libdrm, have_drm="true")
+ 
+ dnl AC_CHECK_HEADERS([drm/drm_fourcc.h libdrm/drm_fourcc.h], have_drm="true")
+ 
++AM_CONDITIONAL(HAVE_DRM, test x$have_drm = xtrue)
++
+ if test "x$have_drm" = "xtrue"; then
+ AC_DEFINE([HAVE_DRM])
+ fi
+@@ -335,7 +337,8 @@ dnl
+ dnl Output variables
+ dnl
+ 
+-AM_CPPFLAGS='-I$(top_srcdir)/include -I$(top_srcdir)/include/gavl -I$(top_builddir)/include'
++dnl AM_CPPFLAGS='-I$(top_srcdir)/include -I$(top_srcdir)/include/gavl -I$(top_builddir)/include'
++AM_CPPFLAGS='-I$(top_srcdir)/include -I$(top_builddir)/include'
+ AC_SUBST(AM_CPPFLAGS)
+ 
+ LIBGAVL_CFLAGS="$LIBGAVL_CFLAGS -D__GAVL__ -D_FILE_OFFSET_BITS=64"
+diff --git a/gavl/Makefile.am b/gavl/Makefile.am
+index ceb1650..7f0fc05 100644
+--- a/gavl/Makefile.am
++++ b/gavl/Makefile.am
+@@ -64,6 +64,14 @@ hw_egl_cflags =
+ hw_egl_libs = 
+ endif
+ 
++if HAVE_DRM
++drm_cflags = @DRM_CFLAGS@
++drm_libs = @DRM_LIBS@
++else
++drm_cflags = 
++drm_libs = 
++endif
++
+ if HAVE_V4L2
+ hw_v4l2_sources = hw_v4l2.c
  else
-   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
- /* end confdefs.h.  */
-diff -ruN gavl-1.4.0/configure.ac patched/configure.ac
---- gavl-1.4.0/configure.ac	2012-06-08 13:49:47.000000000 +0200
-+++ patched/configure.ac	2023-12-07 16:46:11.283333712 +0100
-@@ -177,8 +177,12 @@
-     HAVE_CLOCK_MONOTONIC="true"
+@@ -74,11 +82,10 @@ endif
  
-   ],
-+  [
-     # program could not be run
-     AC_MSG_RESULT(no)
-+  ],
-+  [
-+  ]
- )
+ AM_CFLAGS = \
+ @LIBGAVL_CFLAGS@ \
+-@DRM_CFLAGS@ \
++${drm_cflags} \
+ $(hw_libva_cflags) \
+ $(hw_gl_cflags) \
+-$(hw_egl_cflags) \
+--I/usr/include
++$(hw_egl_cflags)
  
- if test "x$HAVE_CLOCK_MONOTONIC" = "xtrue"; then
+ SUBDIRS = \
+ hq \
+@@ -217,7 +224,7 @@ hq/libgavl_hq.la \
+ libgdither/libgdither.la \
+ libsamplerate/libsamplerate.la \
+ @LIBGAVL_LIBS@ \
+-@DRM_LIBS@ \
++${drm_libs} \
+ $(hw_libva_libs) \
+ $(hw_gl_libs) \
+ $(hw_egl_libs) \
+diff --git a/src/Makefile.am b/src/Makefile.am
+index f55c6c9..327399e 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -47,7 +47,7 @@ benchmark_SOURCES = benchmark.c
+ benchmark_LDADD = ../gavl/libgavl.la @RT_LIBS@
+ 
+ charset_SOURCES = charset.c
+-charset_LDADD = ../gavl/libgavl.la
++charset_LDADD = ../gavl/libgavl.la -liconv
+ 
+ volume_test_SOURCES = volume_test.c
+ volume_test_LDADD = -lm ../gavl/libgavl.la

@@ -1,0 +1,83 @@
+diff --git a/m4/check_funcs.m4 b/m4/check_funcs.m4
+index 909c55d..47256b8 100644
+--- a/m4/check_funcs.m4
++++ b/m4/check_funcs.m4
+@@ -82,22 +82,24 @@ dnl
+ 
+ OLD_LIBS=$LIBS
+ 
+-have_GL="true"
+-AC_SEARCH_LIBS([glBegin], [GL], [], AC_MSG_ERROR([OpenGL not found]), [])
++dnl have_GL="true"
++dnl AC_SEARCH_LIBS([glBegin], [GL], [], AC_MSG_ERROR([OpenGL not found]), [])
+ 
+-if test "x$have_GL" = "xtrue"; then
+-AC_LINK_IFELSE([AC_LANG_SOURCE([[#include <GL/gl.h>
+-				 int main()
+-				 {
+-				 if(0)
+-				   glBegin(GL_QUADS); return 0;
+-				 } ]])],
+-	       [],AC_MSG_ERROR([Linking OpenGL program failed]))
+-fi
++dnl if test "x$have_GL" = "xtrue"; then
++dnl AC_LINK_IFELSE([AC_LANG_SOURCE([[#include <GL/gl.h>
++dnl 				 int main()
++dnl 				 {
++dnl 				 if(0)
++dnl 				   glBegin(GL_QUADS); return 0;
++dnl 				 } ]])],
++dnl 	       [],AC_MSG_ERROR([Linking OpenGL program failed]))
++dnl fi
+ 
+-GL_LIBS=$LIBS
++dnl GL_LIBS=$LIBS
+ 
+-LIBS="$OLD_LIBS"
++dnl LIBS="$OLD_LIBS"
++
++have_GL="false"
+ 
+ dnl
+ dnl Check for EGL
+@@ -105,22 +107,24 @@ dnl
+ 
+ OLD_LIBS=$LIBS
+ 
+-have_EGL="true"
+-AC_SEARCH_LIBS([eglGetCurrentDisplay], [GL EGL], [], AC_MSG_ERROR([EGL not found]), [])
+-
+-if test "x$have_GL" = "xtrue"; then
+-AC_LINK_IFELSE([AC_LANG_SOURCE([[#include <EGL/egl.h>
+-				 int main()
+-				 {
+-				 if(0)
+-				   eglGetCurrentDisplay();
+-				 return 0;
+-				 }
+-				 ]])],
+-               [],AC_MSG_ERROR([Linking EGL program failed]))
+-fi
+-
+-EGL_LIBS=$LIBS
++dnl have_EGL="true"
++dnl AC_SEARCH_LIBS([eglGetCurrentDisplay], [GL EGL], [], AC_MSG_ERROR([EGL not found]), [])
++dnl
++dnl if test "x$have_GL" = "xtrue"; then
++dnl AC_LINK_IFELSE([AC_LANG_SOURCE([[#include <EGL/egl.h>
++dnl 				 int main()
++dnl 				 {
++dnl 				 if(0)
++dnl 				   eglGetCurrentDisplay();
++dnl 				 return 0;
++dnl 				 }
++dnl 				 ]])],
++dnl                [],AC_MSG_ERROR([Linking EGL program failed]))
++dnl fi
++
++dnl EGL_LIBS=$LIBS
++
++have_EGL="false"
+ 
+ LIBS="$OLD_LIBS"
+ 

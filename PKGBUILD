@@ -6,49 +6,46 @@
 
 pkgname=mingw-w64-gavl
 _pkgname=gavl
-pkgver=1.4.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Low level library, upon which multimedia APIs can be built (mingw-w64)'
 arch=('any')
-url='https://gmerlin.sourceforge.net/'
-license=('GPL')
-depends=('mingw-w64-crt')
+url='https://github.com/bplaum/gavl'
+license=(GPL-2.0-or-later)
+depends=(
+  mingw-w64-crt
+  mingw-w64-nettle
+  mingw-w64-gnutls
+)
 options=(!strip !buildflags staticlibs !debug)
-makedepends=('mingw-w64-configure')
-source=("https://downloads.sourceforge.net/gmerlin/$_pkgname-$pkgver.tar.gz"
+makedepends=(
+  mingw-w64-configure
+  mingw-w64-libpng
+  git
+)
+source=("git+https://github.com/bplaum/gavl.git#tag=v$pkgver"
         "configure.patch"
-        "x86_64_cputest.patch"
-        "libtool.patch"
-        "string-include-fix.patch")
-sha256sums=('51aaac41391a915bd9bad07710957424b046410a276e7deaff24a870929d33ce'
-            'df2a64a3698856035c603bb28529208dc36b0d685c338a726c149d1157a6a0df'
-            '86a7411fb43a6bb335661b1f38d6315efb3dc57cfafb274c911ee4a433837d1f'
-            '7cc4329580294fbf62ec892acd56a43b4d914e86d534f658964a5b5ea256bf6e'
-            'b8bc33f33066acb2fb14fd9899153149afd78c94cdbcc5fbf317530b13d55373')
+        "opengl.patch"
+        "win32-fixes.patch")
+b2sums=('da715487e58cc2bc2d2c49579161f964c1d1151bde589b2a1fad8b00c7a1e40fd582ae643c16f20b522ddc7bec6ebeb6254050dfc0278f8b74d1b37b80023b86'
+        '249ec03073750ccdf7caaa19a35bb990ebfd1a37b164c4222eace89fa0a2f48319bc2562f02614899fcf90d3eb65b41ad5299fbff0f02d031e1fe2d5f6dad9c4'
+        '2d8a3426f14cec024dcee40f5ee83e605de836aae2dd7f6fd19f92dcb9402727d78abaa625c2851b9a3fc253789b371657740339d70aaa966e009f00d84208a4'
+        '7ad862678a9424891559f3ccd620ba1b5fc8206f43e078d4f2e50a137b25365bff2a9af7cfd936861dc2545acf3fbd949bbbba2e747572d3ee67bacebb953a9c')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd $_pkgname-$pkgver
-  # ignore test program for clock monotonic
-  # (maybe change to running with wine?)
-  patch -Np1 -i "${srcdir}/configure.patch"
-  # 64 bit assembly throws an error. Use fall back to pure C.
-  patch -Np1 -i "${srcdir}/x86_64_cputest.patch"
-  # add file magic for 64 bit
-  patch -Np1 -i "${srcdir}/libtool.patch"
-  # add missing string.h include
-  patch -Np1 -i "${srcdir}/string-include-fix.patch"
+  cd $_pkgname
 
-  # Fix build
-  sed -i 's|volume_test_LDADD = ../gavl/libgavl.la|volume_test_LDADD = -lm ../gavl/libgavl.la|' src/Makefile.{am,in}
-  sed -i 's/LDFLAGS="$GMERLIN_DEP_RPATH"/LDFLAGS="$LDFLAGS $GMERLIN_DEP_RPATH"/' configure{,.ac}
-  sed -i 's|-Xlinker --out-implib -Xlinker \$lib|-Wl,--out-implib .libs/libgavl.dll.a|' aclocal.m4
-  sed -i 's|-Xlinker --out-implib -Xlinker \$lib|-Wl,--out-implib .libs/libgavl.dll.a|' configure
+  patch -Np1 -i "${srcdir}/configure.patch"
+  patch -Np1 -i "${srcdir}/opengl.patch"
+  patch -Np1 -i "${srcdir}/win32-fixes.patch"
+
+  autoreconf -fi
 }
 
 build() {
   for _arch in ${_architectures}; do
-    mkdir -p ${srcdir}/$_pkgname-$pkgver/build-${_arch} && cd ${srcdir}/$_pkgname-$pkgver/build-${_arch}
+    mkdir -p ${srcdir}/$_pkgname/build-${_arch} && cd ${srcdir}/$_pkgname/build-${_arch}
 
     export LDFLAGS="-lssp"
 
@@ -59,7 +56,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd ${srcdir}/$_pkgname-$pkgver/build-${_arch}
+    cd ${srcdir}/$_pkgname/build-${_arch}
 
     # install shared libraries
     mkdir -p ${pkgdir}/usr/${_arch}/bin
