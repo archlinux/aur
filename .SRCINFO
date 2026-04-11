@@ -1,6 +1,6 @@
 pkgbase = netsplitter
 	pkgdesc = Advanced Linux Network Namespace Isolation & QoS Bufferbloat Automation Framework
-	pkgver = 0.1.1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/batuh007/-NetSplitter-
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = netsplitter
 	optdepends = curl: Network testing
 	provides = netsplitter
 	conflicts = netsplitter-git
-	source = netsplitter-0.1.1.tar.gz::https://github.com/batuh007/-NetSplitter-/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = bd99403ec6168224ac19d10fc492fbe488c9b664dbe39be9f506a3669c400b8a
+	source = netsplitter-0.1.0.tar.gz::https://github.com/batuh007/-NetSplitter-/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 9b1987f75b2928c08df55a2acc2f33bb57036f3e333c7f0cb05176b688711397
 
 pkgname = netsplitter
