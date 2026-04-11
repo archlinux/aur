@@ -1,0 +1,13 @@
+pkgbase = spine-trial
+	pkgdesc = 2D skeletal animation tool by Esoteric Software (Trial)
+	pkgver = 4.3.64.beta
+	pkgrel = 1
+	url = https://esotericsoftware.com
+	arch = x86_64
+	license = custom
+	depends = xorg-xrandr
+	options = !strip
+	source = SpineTrial.tar.gz::https://jp.esotericsoftware.com/launcher/linux
+	sha256sums = SKIP
+
+pkgname = spine-trial

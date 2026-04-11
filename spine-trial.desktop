@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Spine Trial
+GenericName=2D Animation Tool
+Comment=2D skeletal animation tool by Esoteric Software (Trial)
+Exec=spine-trial
+Icon=spine-trial
+Categories=Graphics;2DGraphics;
+Keywords=animation;spine;2d;skeletal;
+StartupNotify=true
+StartupWMClass=Spine
