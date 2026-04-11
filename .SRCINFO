@@ -1,0 +1,13 @@
+pkgbase = ttf-share-tech-mono-regular
+	pkgdesc = A font inspired by the fallout games, found on reddit by user @Inevitable-Moose-952 and designed by Carrois Apostrophe.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Share+Tech+Mono?preview.script=Latn
+	arch = any
+	license = OFL
+	depends = fontconfig
+	depends = xorg-mkfontscale
+	source = ShareTechMono-Regular.ttf
+	sha256sums = 911a85f56c44e8a712458513e6972a3e296ee9a84e70754462d03de3f3609c2b
+
+pkgname = ttf-share-tech-mono-regular
