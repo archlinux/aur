@@ -1,6 +1,6 @@
 # Maintainer: Joni Savolainen <joni@savolainen.io>
 pkgname=supersigil-lsp-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Language server for Supersigil spec documents (binary release)"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('supersigil-lsp')
 options=(!debug)
 source_x86_64=("${url}/releases/download/v${pkgver}/supersigil-lsp-${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/supersigil-lsp-${pkgver}-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('fa23b42bfa8ed09835e7646842ca46db7804a15709977969525de6bf79ce9eba')
-sha256sums_aarch64=('04b7d0b035e82bf889d4e82e3597fa45bf08987bc5fa8d0ce61c435a73fc9cc6')
+sha256sums_x86_64=('65dd7e6925c92c249270bf5a5c81a313ce7ee6cae4561b1843c277106dae44e1')
+sha256sums_aarch64=('944e61b4dbfb13b1bc204d9b7e1925b0ebf3f30f6d2401377ab1e6e2d4307c4a')
 
 package() {
     install -Dm755 supersigil-lsp "${pkgdir}/usr/bin/supersigil-lsp"
