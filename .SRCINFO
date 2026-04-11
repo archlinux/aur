@@ -1,8 +1,8 @@
 pkgbase = undr
 	pkgdesc = C library with multiple utilities
 	pkgver = 0.1.0
-	pkgrel = 1
-	url = https://github.com/javiorfo/undr
+	pkgrel = 2
+	url = https://codeberg.org/caskstrength/undr
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = undr
 	depends = openssl
 	provides = undr
 	conflicts = undr
-	source = undr::git+https://github.com/javiorfo/undr.git#tag=0.1.0
-	sha256sums = 23e8530c28a18eeeade1245769e9301dce797285f70d00dbfcfe836ea41853e5
+	source = undr::git+https://codeberg.org/caskstrength/undr.git#tag=0.1.0
+	sha512sums = 81ea553ec94e5b56461d7ae22992a627d24634ab185648317b7be58a2c28c946ffa2bfdc28304c351d1451c85d50b8bdca3a7a84e5d75671eadd47a417b24253
 
 pkgname = undr

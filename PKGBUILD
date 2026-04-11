@@ -2,17 +2,17 @@
 
 pkgname=undr
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C library with multiple utilities"
 arch=('x86_64' 'aarch64')
-url="https://github.com/javiorfo/undr"
+url="https://codeberg.org/caskstrength/undr"
 license=('MIT')
 depends=('glibc' 'openssl')
 makedepends=('git' 'gcc' 'make')
 provides=('undr')
 conflicts=('undr')
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha256sums=('23e8530c28a18eeeade1245769e9301dce797285f70d00dbfcfe836ea41853e5')
+sha512sums=('81ea553ec94e5b56461d7ae22992a627d24634ab185648317b7be58a2c28c946ffa2bfdc28304c351d1451c85d50b8bdca3a7a84e5d75671eadd47a417b24253')
 
 build() {
   cd "${pkgname}"
