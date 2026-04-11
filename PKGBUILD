@@ -26,7 +26,7 @@ optdepends=(
 makedepends=('python-installer' 'uv')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1a50bf1a4b52fbbbfc96bbaf53b961fb8c36a20d3238d92f288c4009e153bb05')
+sha256sums=('d4f0275cd764587965edfbda41784ed6c78f0dc1d10233cb7aa646e6c0798abc')
 
 build() {
     cd "Arctis-Sound-Manager-$pkgver"
@@ -83,6 +83,8 @@ RULES
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user/arctis-manager.service" <<'SERVICE'
 [Unit]
 Description=Arctis Sound Manager
+After=pipewire.service pipewire-pulse.service
+Wants=pipewire.service
 StartLimitInterval=1min
 StartLimitBurst=5
 
@@ -111,11 +113,15 @@ RestartSec=3
 WantedBy=default.target
 SERVICE
 
-    # PipeWire configs (shared, copied to user dir on first run)
+    # PipeWire configs (shared, copied to user dir on first run by asm-setup)
     install -Dm644 scripts/pipewire/10-arctis-virtual-sinks.conf \
         "$pkgdir/usr/share/$pkgname/pipewire/10-arctis-virtual-sinks.conf"
     install -Dm644 scripts/pipewire/sink-virtual-surround-7.1-hesuvi.conf \
         "$pkgdir/usr/share/$pkgname/pipewire/sink-virtual-surround-7.1-hesuvi.conf"
+
+    # filter-chain.service (for distros that don't ship one; Arch ships it via pipewire-audio)
+    install -Dm644 scripts/filter-chain.service \
+        "$pkgdir/usr/share/$pkgname/filter-chain.service"
 
     # Device configs
     install -Dm644 src/arctis_sound_manager/devices/*.yaml \
