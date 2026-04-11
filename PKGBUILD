@@ -2,7 +2,7 @@
 pkgname=idescriptor-git
 _pkgname=iDescriptor
 pkgver=r263.6d86243
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open-source, and cross-platform iDevice management tool."
 arch=('x86_64')
 url="https://github.com/iDescriptor/iDescriptor"
@@ -40,11 +40,13 @@ depends=(
     'gst-plugins-bad'
     'gst-plugins-ugly'
     'gst-libav'
+    'sqlite'
 )
 makedepends=(
     'git'
     'cmake'
     'go'
+    'rust'
 )
 options=('!debug')
 source=("git+https://github.com/iDescriptor/iDescriptor.git")
