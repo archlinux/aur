@@ -1,12 +1,13 @@
 # Maintainer: Joni Savolainen <joni@savolainen.io>
 pkgname=supersigil
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="CLI tool and verification framework for spec-driven development"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jonisavo/supersigil"
 license=('MIT' 'Apache-2.0')
 makedepends=('cargo' 'pnpm' 'nodejs')
+options=(!debug)
 optdepends=('supersigil-lsp: language server for editor integration')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')

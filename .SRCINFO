@@ -1,6 +1,6 @@
 pkgbase = supersigil
 	pkgdesc = CLI tool and verification framework for spec-driven development
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/jonisavo/supersigil
 	arch = x86_64
@@ -11,7 +11,8 @@ pkgbase = supersigil
 	makedepends = pnpm
 	makedepends = nodejs
 	optdepends = supersigil-lsp: language server for editor integration
-	source = supersigil-0.1.1.tar.gz::https://github.com/jonisavo/supersigil/archive/refs/tags/v0.1.1.tar.gz
+	options = !debug
+	source = supersigil-0.2.0.tar.gz::https://github.com/jonisavo/supersigil/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = supersigil
