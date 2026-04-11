@@ -307,20 +307,22 @@ main() {
     local version="${release_info%|*}"
     log_info "Latest stable release: v$version"
 
-    # Check if version changed and update PKGBUILD if needed
-    if ! update_pkgbuild_version "$release_info"; then
-        log_success "No updates needed - package is already up-to-date"
-        exit 0
-    fi
+    # Check if SHA changed and update PKGBUILD if needed
+    local sha_changed=false
+    if update_pkgbuild_version "$release_info"; then
+        sha_changed=true
 
-    # Generate .SRCINFO
-    generate_srcinfo
+        # Generate .SRCINFO
+        generate_srcinfo
 
-    # Validate the package before committing
-    if ! validate_package; then
-        log_error "Package validation failed - aborting update"
-        log_error "Fix the issues in PKGBUILD and try again"
-        exit 1
+        # Validate the package before committing
+        if ! validate_package; then
+            log_error "Package validation failed - aborting update"
+            log_error "Fix the issues in PKGBUILD and try again"
+            exit 1
+        fi
+    else
+        log_info "No new nightly build available"
     fi
 
     # Commit and push
