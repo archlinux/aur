@@ -17,7 +17,7 @@ license=("MIT")
 depends=("aspnet-runtime" "aspnet-targeting-pack" "bash" "bitcoin-daemon" "dotnet-sdk" "postgresql")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha512sums=("92a0c02b12f79aeed5742bf5d1d906f47ecce341bea800087002ad0c4d468d425bdd02a7a466e7c1f2a777f1801c59e73ddb25ea339dc17dc52213148dd91a56"
+sha512sums=("8cdd538dabe6e0b7772cfa77b195e3cfddaf4f97d8ae68da485fd00d03b7b15e63304356715a8489f01fed351fb2b00bd69c4316a36a40737aa2cb193b4d557d"
     "ce7e68b099de73f0a09d231e6c3ada98c5440b58c57d229fcc20fd4e3b18e2bd445c810960e828893be1a3bb8f6c954ba7c4b40f82caa84a9115bb5e752a1453")
 
 build()
