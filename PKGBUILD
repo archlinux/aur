@@ -5,7 +5,7 @@ _pkgname=bine
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal Binary Editor"
 
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,8 +26,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.zip::${url}/releases/download/$
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.zip")
 sha256sums=('975993bec9e15d5e59b80565a5a0b9ed798eb0fa6f46fa4eb0e6b41c432651ab'
             'b9c765c824debb23c52f8b4324c2682934b89d969adbccb801e662921e8c55a9')
-sha256sums_x86_64=('eb38c4b8cd57ff80e5af701508bc2e0c308c05cec4f29094d328ddb2028f1d79')
-sha256sums_i686=('c0372972890bb5ffa0fe46a1b7370fc196cb9d806b03ac5b7948a37cf139ea02')
+sha256sums_x86_64=('106a283b5c477a3ea452716ca0b69a6b3dd18665636d0ac0aeedac40cce43455')
+sha256sums_i686=('0bd6b94c44927501ed1c70acbb656e259e865de47d712b241fc4537a7fd18dc0')
 
 
 package() {
