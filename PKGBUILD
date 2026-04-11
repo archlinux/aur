@@ -10,16 +10,15 @@ url='https://www.opera.com/gx'
 license=('LicenseRef-opera')
 options=(!strip !zipman)
 backup=('etc/opera-gx/default')
-provides=('www-browser')
-conflicts=('opera-gx' 'opera-gx-stable')
-
+provides=('opera-gx-browser')
+conflicts=('opera-gx-bin' 'opera-gx-stable' 'opera-gx-stable-ffmpeg-codecs')
+replaces=('opera-gx-bin' 'opera-gx-stable' 'opera-gx-stable-ffmpeg-codecs')
 depends=(
     'alsa-lib'
     'atk'
     'at-spi2-atk'
     'at-spi2-core'
     'cairo'
-    'cups'
     'curl'
     'dbus'
     'expat'
@@ -27,6 +26,7 @@ depends=(
     'glib2'
     'glibc'
     'gnupg'
+    'gtk3'
     'hicolor-icon-theme'
     'libcups'
     'libnotify'
@@ -45,6 +45,7 @@ depends=(
     'pango'
     'systemd-libs'
     'ttf-font'
+    'xdg-utils'
 )
 
 optdepends=(
@@ -55,8 +56,8 @@ optdepends=(
 
 _nwjs_ffmpeg_version=0.108.0
 
-_upstream_pkg='opera-gx-stable'
-_debfile="${_upstream_pkg}_${pkgver}_amd64.deb"
+_upstream_deb_pkg='opera-gx-stable'
+_debfile="${_upstream_deb_pkg}_${pkgver}_amd64.deb"
 _deburl="https://get.opera.com/pub/opera_gx/${pkgver}/linux/${_debfile}"
 _ffmpeg_zip="${_nwjs_ffmpeg_version}-linux-x64.zip"
 
@@ -138,11 +139,11 @@ package() {
         "$pkgdir/etc/opera-gx/default"
 
     rm -f "$pkgdir/usr/bin/opera-gx"
-    rm -f "$pkgdir/usr/bin/${_upstream_pkg}"
+    rm -f "$pkgdir/usr/bin/${_upstream_deb_pkg}"
     install -Dm755 "$srcdir/opera-gx" \
         "$pkgdir/usr/bin/opera-gx"
 
-    ln -sf opera-gx "$pkgdir/usr/bin/${_upstream_pkg}"
+    ln -sf opera-gx "$pkgdir/usr/bin/${_upstream_deb_pkg}"
 
     local desktop_dir="$pkgdir/usr/share/applications"
     if [[ -d "$desktop_dir" ]]; then

@@ -1,3 +1,4 @@
 - This package is designed to install alongside the regular Opera browser.
 - It integrates nwjs-ffmpeg-prebuilt so streaming sites work out of the box.
 - It normalizes the installed path to /usr/lib/opera-gx and uses /etc/opera-gx/default.
+- Use of unified and AUR-compliant naming for the package.
