@@ -4,8 +4,8 @@
 # then please put 'unknown'.
 # Maintainer: Franciszek Żebrowski <frazeb09@gmail.com>
 pkgname=tuiweather
-pkgver=0.2.30
-pkgrel=2
+pkgver=0.2.31
+pkgrel=1
 epoch=
 pkgdesc="Simple TUI app for showing weather"
 arch=('x86_64')
