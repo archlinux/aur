@@ -1,11 +1,13 @@
 pkgbase = oplire
+	pkgdesc = Reset OpenCode rate limit by managing Cloudflare WARP tunnel
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/BerkeOruc/oplire
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	source = oplire-0.1.0.tar.gz::https://github.com/BerkeOruc/oplire/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
 pkgname = oplire
-pkgver = 0.1.0
-pkgrel = 1
-pkgdesc = Reset OpenCode rate limit by managing Cloudflare WARP tunnel
-url = https://github.com/BerkeOruc/oplire
-arch = x86_64
-license = MIT
-makedepends = cargo
-depends = glibc
-source = oplire-0.1.0.tar.gz::https://github.com/BerkeOruc/oplire/archive/v0.1.0.tar.gz
