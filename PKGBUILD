@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=spdx-license-list-data
-pkgver=3.27.0
+pkgver=3.28.0
 pkgrel=1
 pkgdesc='Various data formats for the SPDX License List including RDFa, HTML, Text, and JSON'
 url='https://spdx.github.io/license-list-data/'
@@ -9,8 +9,8 @@ license=('CC0-1.0')
 arch=('any')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/spdx/license-list-data/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7a1eade71449d2ff3ae42957452f6e3a660a3704b477d0e72afc2b43be94c907')
-b2sums=('38e6890e33f2197a020d0153e9a24fce3f71f0dd0d4ae74aa4e72ce8e3458bf35e26a3903945d96d9256638a7ccf02af78c88265d144712e16d360c82044b8f2')
+sha256sums=('52375a91b28b5f6f3142c4b3a555086482f1e09be68c4fa7fdbf377d37afa340')
+b2sums=('8d69628a747b894776e77e9cf05f2efaca71f35c18de5d22d31a60ae52426fb2fc0d3fb67e492919343328612ceccee41433f38826212628d35d33d9260d2647')
 
 package() {
   cd "license-list-data-$pkgver"
