@@ -1,0 +1,22 @@
+pkgname=cutefish-meta
+pkgver=0.8
+pkgrel=1
+pkgdesc='Metapackage for Cutefish desktop environment'
+arch=(any)
+url='https://cutefish-ubuntu.github.io/'
+license=(GPL-3.0-or-later)
+depends=(
+  cutefish-calculator
+  cutefish-core
+  cutefish-dock
+  cutefish-filemanager
+  cutefish-icons
+  cutefish-launcher
+  cutefish-qt-plugins
+  cutefish-screenlocker
+  cutefish-screenshot
+  cutefish-settings
+  cutefish-statusbar
+  cutefish-terminal
+  cutefish-wallpapers
+)
