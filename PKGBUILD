@@ -1,5 +1,5 @@
 pkgname=openaether
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Local AI desktop agent for Arch Linux and Hyprland"
 arch=('x86_64')
