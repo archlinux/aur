@@ -1,5 +1,5 @@
 pkgname=openaether
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Local AI desktop agent for Arch Linux and Hyprland"
 arch=('x86_64')
@@ -22,6 +22,8 @@ depends=(
     'python-platformdirs'
     'python-pip'
     'tesseract'
+    'python-json5'
+    'ollama'
 )
 makedepends=('python-pip')
 install=openaether.install
