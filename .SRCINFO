@@ -1,6 +1,6 @@
 pkgbase = supersigil-bin
-	pkgdesc = CLI tool and verification framework for spec-driven development
-	pkgver = 0.1.1
+	pkgdesc = CLI tool and verification framework for spec-driven development (binary release)
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/jonisavo/supersigil
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = supersigil-bin
 	optdepends = supersigil-lsp-bin: language server for editor integration
 	provides = supersigil
 	conflicts = supersigil
-	source_x86_64 = https://github.com/jonisavo/supersigil/releases/download/v0.1.1/supersigil-0.1.1-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = cf717963adb250a75d740b98ae392932c4b81beb25c236cbc28c1e3f8e67e394
-	source_aarch64 = https://github.com/jonisavo/supersigil/releases/download/v0.1.1/supersigil-0.1.1-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 07cae9fc18008757bd989111daf045f83af2e2efd685c558d1258f8d11ee650c
+	options = !debug
+	source_x86_64 = https://github.com/jonisavo/supersigil/releases/download/v0.2.0/supersigil-0.2.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = a7eeb038417c327e2b3d7d003e3bb811f7e3405071707f3a10677068445484c6
+	source_aarch64 = https://github.com/jonisavo/supersigil/releases/download/v0.2.0/supersigil-0.2.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 0bb0e7e703dd0aeb3918240e30101a5b52709b87487b48671f25c3de99af92a3
 
 pkgname = supersigil-bin
