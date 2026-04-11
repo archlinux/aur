@@ -1,0 +1,6 @@
+pkg/
+src/
+booru-viewer/
+*.pkg.tar.*
+*.tar.gz
+*.log

@@ -1,0 +1,27 @@
+pkgbase = booru-viewer-git
+	pkgdesc = Local booru image browser with Qt6 GUI (Danbooru, Gelbooru, e621, and more)
+	pkgver = 0.2.5.r7.gc91326b
+	pkgrel = 1
+	url = https://git.pax.moe/pax/booru-viewer
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-httpx
+	depends = python-h2
+	depends = python-pillow
+	depends = pyside6
+	depends = python-mpv
+	depends = mpv
+	provides = booru-viewer
+	conflicts = booru-viewer
+	source = booru-viewer::git+https://git.pax.moe/pax/booru-viewer.git
+	source = booru-viewer.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = booru-viewer-git

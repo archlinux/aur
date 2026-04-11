@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Booru Viewer
+GenericName=Booru Image Browser
+Comment=Browse booru imageboards with Qt6
+Exec=booru-viewer
+Icon=booru-viewer
+Terminal=false
+Type=Application
+Categories=Graphics;Network;Viewer;
+Keywords=booru;danbooru;gelbooru;e621;imageboard;
