@@ -1,52 +1,70 @@
-# Maintainer: Your Name <youremail@example.com>
+# Maintainer: orange-guo
 # Packaging Repo: https://github.com/orange-guo/aur-packages
 
-# ---------------------------------------------------------------------------
-# [更新指南]
-# 每次发布新版本时，请更新以下变量:
-# 1. pkgver: 修改为新版本号
-# 2. pkgrel: 如果是新版本，重置为 1；如果是同一版本修复 PKGBUILD，则递增
-# 3. sha256sums: 运行 'updpkgsums' 自动更新，或者手动计算填入
-# ---------------------------------------------------------------------------
-
 pkgname=antigravity-tools-bin
-_pkgname="Antigravity.Tools"
-_repouser="lbjlaq"
-_reponame="Antigravity-Manager"
-
 pkgver=4.1.31
-pkgrel=1
+pkgrel=2
+pkgdesc=Professional\ Antigravity\ Account\ Manager\ \&\ Switcher\ \(Binary\ from\ GitHub\)
+arch=(x86_64 )
+url=https://github.com/lbjlaq/Antigravity-Manager
+license=(custom:CC-BY-NC-SA-4.0 )
+depends=(gtk3 webkit2gtk-4.1 libappindicator-gtk3 openssl )
+makedepends=()
+options=(\!strip )
+provides=(antigravity-tools )
+conflicts=(antigravity-tools )
 
-pkgdesc="Professional Antigravity Account Manager & Switcher (Binary from GitHub)"
-arch=('x86_64')
-url="https://github.com/${_repouser}/${_reponame}"
-license=('custom:CC-BY-NC-SA-4.0')
-depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'openssl')
-provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
+source=(LICENSE )
+sha256sums=('6f0afc78b16f446941c6201dcc0a53e1d19dcb96b9fc2ccb497b1bf029aa3512')
+sha256sums_x86_64=('18b88ab5f66bed09679dd4e352fc53b5bed6b9c9324b65f0e21891ad9d6b8658')
+source_x86_64=(antigravity-tools-bin-4.1.31.deb::https://github.com/lbjlaq/Antigravity-Manager/releases/download/v4.1.31/Antigravity.Tools_4.1.31_amd64.deb )
 
-# 下载源
-source=("${pkgname}-${pkgver}.deb::https://github.com/${_repouser}/${_reponame}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
-        "LICENSE")
+_deb_source_file=antigravity-tools-bin-4.1.31.deb
+_deb_relocate_usr_local=true
+_service_file=''
+_service_install_path=''
+_doc_files=()
+_license_files=(LICENSE )
 
-# [需更新] 校验和
-# 运行 'updpkgsums' 命令可以自动更新此处的值，无需手动修改
-sha256sums=('18b88ab5f66bed09679dd4e352fc53b5bed6b9c9324b65f0e21891ad9d6b8658'
-            '6f0afc78b16f446941c6201dcc0a53e1d19dcb96b9fc2ccb497b1bf029aa3512')
 
-options=('!strip')
+prepare() {
+    rm -rf "${srcdir}/_deb_extract" "${srcdir}/_deb_root"
+    mkdir -p "${srcdir}/_deb_extract" "${srcdir}/_deb_root"
+
+    bsdtar -xf "${srcdir}/${_deb_source_file}" -C "${srcdir}/_deb_extract"
+
+    local data_archives=("${srcdir}/_deb_extract"/data.tar.*)
+    [ -e "${data_archives[0]}" ] || {
+        echo "Missing data.tar.* inside Debian package" >&2
+        return 1
+    }
+
+    bsdtar -xf "${data_archives[0]}" -C "${srcdir}/_deb_root"
+}
 
 package() {
-    # 1. 解压 data.tar.gz (这是 deb 包里的核心文件)
-    tar -xf data.tar.gz -C "${pkgdir}"
+    install -d "${pkgdir}"
+    cp -a "${srcdir}/_deb_root/." "${pkgdir}/"
 
-    # 2. 修正路径: Debian 包通常用 /usr/local，Arch 需要移动到 /usr
-    if [ -d "${pkgdir}/usr/local" ]; then
+    if [ "${_deb_relocate_usr_local}" = true ] && [ -d "${pkgdir}/usr/local" ]; then
+        install -d "${pkgdir}/usr"
         cp -a "${pkgdir}/usr/local/." "${pkgdir}/usr/"
         rm -rf "${pkgdir}/usr/local"
     fi
 
-    # 3. 安装许可证
-    # 将项目根目录下的 LICENSE 文件安装到系统标准位置
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    local doc_file
+    for doc_file in "${_doc_files[@]}"; do
+        [ -f "${srcdir}/${doc_file}" ] || continue
+        install -Dm644 "${srcdir}/${doc_file}" "${pkgdir}/usr/share/doc/${pkgname}/$(basename "${doc_file}")"
+    done
+
+    local license_file
+    for license_file in "${_license_files[@]}"; do
+        [ -f "${srcdir}/${license_file}" ] || continue
+        install -Dm644 "${srcdir}/${license_file}" "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${license_file}")"
+    done
+
+    if [ -n "${_service_file}" ] && [ -f "${srcdir}/${_service_file}" ]; then
+        install -Dm644 "${srcdir}/${_service_file}" "${pkgdir}${_service_install_path}"
+    fi
 }
