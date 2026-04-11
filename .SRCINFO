@@ -1,7 +1,7 @@
 pkgbase = rarbg-selfhosted
 	pkgdesc = A self-hosted Torznab API for the RARBG backup, compatible with Prowlarr, Radarr, Sonarr etc.
 	pkgver = 0.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mgdigital/rarbg-selfhosted
 	install = rarbg-selfhosted.install
 	arch = x86_64

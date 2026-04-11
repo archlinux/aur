@@ -2,7 +2,7 @@
 
 pkgname=rarbg-selfhosted
 pkgver=0.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc='A self-hosted Torznab API for the RARBG backup, compatible with Prowlarr, Radarr, Sonarr etc.'
 arch=('x86_64')
 url='https://github.com/mgdigital/rarbg-selfhosted'
@@ -20,8 +20,8 @@ install=rarbg-selfhosted.install
 
 prepare(){
     cd "$pkgname-$pkgver"
-    export GOPATH="${srcdir}"
-    go mod download
+    export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
+    go mod download -modcacherw
 }
 
 build() {
@@ -36,6 +36,9 @@ build() {
   go build \
     -ldflags "-linkmode external -extldflags $LDFLAGS" \
     -o $pkgname
+
+  # Clean up deps
+  go clean -modcache
 }
 
 package() {
