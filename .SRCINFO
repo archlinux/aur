@@ -1,6 +1,6 @@
 pkgbase = sleipnirgroup-sleipnir-git
 	pkgdesc = Reverse mode autodiff library, interior-point method, and NLP solver DSL
-	pkgver = 0.3.3.r14.gcd27694
+	pkgver = 0.5.2.r1.g6f45b4f
 	pkgrel = 1
 	url = https://github.com/SleipnirGroup/Sleipnir
 	arch = x86_64
