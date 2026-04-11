@@ -1,0 +1,23 @@
+pkgbase = simple-whatsapp-git
+	pkgdesc = Minimal WhatsApp Web client for Linux (Tauri/WebKitGTK)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Novaturiente/simple-whatsapp
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = librsvg
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = wl-clipboard
+	depends = libayatana-appindicator
+	optdepends = gst-plugins-good: audio/video playback in WhatsApp Web
+	optdepends = gst-plugins-base: GStreamer base plugins
+	provides = simple-whatsapp
+	conflicts = simple-whatsapp
+	source = git+https://github.com/Novaturiente/simple-whatsapp.git
+	sha256sums = SKIP
+
+pkgname = simple-whatsapp-git
