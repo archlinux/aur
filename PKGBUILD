@@ -5,11 +5,11 @@
 _name=networkmanager-qt
 pkgname=${_name}5
 pkgver=5.116.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt wrapper for NetworkManager API'
 arch=(x86_64)
-url='https://community.kde.org/Frameworks'
-license=(LGPL)
+url='https://invent.kde.org/frameworks/networkmanager-qt'
+license=('LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-scancode-kde-accepted-lgpl')
 depends=(networkmanager qt5-base)
 makedepends=(extra-cmake-modules)
 conflicts=("$_name<5.111")
@@ -28,4 +28,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  install -Dm644 "$_name-$pkgver/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt" \
+    "$pkgdir/usr/share/licenses/$pkgname/LicenseRef-scancode-kde-accepted-lgpl.txt"
 }

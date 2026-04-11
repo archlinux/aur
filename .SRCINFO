@@ -1,11 +1,11 @@
 pkgbase = networkmanager-qt5
 	pkgdesc = Qt wrapper for NetworkManager API
 	pkgver = 5.116.0
-	pkgrel = 2
-	url = https://community.kde.org/Frameworks
+	pkgrel = 3
+	url = https://invent.kde.org/frameworks/networkmanager-qt
 	arch = x86_64
 	groups = kf5
-	license = LGPL
+	license = LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-scancode-kde-accepted-lgpl
 	makedepends = extra-cmake-modules
 	depends = networkmanager
 	depends = qt5-base
