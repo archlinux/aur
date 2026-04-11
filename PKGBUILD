@@ -3,7 +3,7 @@
 pkgname=bevy-cli-git
 _pkgname=bevy_cli
 pkgver=v0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Bevy CLI tool and linter."
 arch=('aarch64' 'x86_64')
 url="https://github.com/TheBevyFlock/bevy_cli"
