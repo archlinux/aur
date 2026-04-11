@@ -1,6 +1,6 @@
 # Maintainer: Shape Machine <tusk.gnome@shapemachine.xyz>
 pkgname=tusk-gnome-bin
-pkgver=2026.04.10.01
+pkgver=2026.04.11.00
 pkgrel=1
 pkgdesc='PostgreSQL client for GNOME'
 arch=('any')
@@ -17,9 +17,9 @@ depends=(
 )
 provides=('tusk-gnome')
 conflicts=('tusk-gnome')
-_fullver=2026.04.10-01
+_fullver=2026.04.11-00
 source=("$pkgname-$_fullver.pkg.tar.zst::https://github.com/Shape-Machine/tusk-gnome/releases/download/v$_fullver/tusk-gnome-$_fullver-any.pkg.tar.zst")
-sha256sums=('f6e0ecdcc774c5ab25f78b7e3592b7f50aa3046b342f3fca9302e39e63c88b95')
+sha256sums=('be6d7b7766ab0307dde42251f194884b7c1b2ba8d3f209d6317107ced99055b7')
 
 package() {
     cp -r "$srcdir/usr" "$pkgdir/"
