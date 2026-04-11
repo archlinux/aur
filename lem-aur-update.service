@@ -1,0 +1,14 @@
+[Unit]
+Description=Update Lem AUR Package
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=thomas
+WorkingDirectory=/home/thomas/lem-aur-build
+ExecStart=/home/thomas/lem-aur-build/update.sh
+StandardOutput=journal
+StandardError=journal
+# Prevent timeout for Docker builds
+TimeoutStartSec=300

@@ -1,0 +1,20 @@
+# Build outputs
+/output/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+
+# Pacman/makepkg artifacts
+*.src.tar.gz
+src/
+pkg/
+
+# System files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.iml

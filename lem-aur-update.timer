@@ -1,0 +1,15 @@
+[Unit]
+Description=Daily Lem AUR Package Update
+Requires=lem-aur-update.service
+
+[Timer]
+# Run daily at 2 AM local time
+OnCalendar=*-*-* 02:00:00
+# Run 5 minutes after boot if missed
+Persistent=true
+# Run service immediately on boot (useful for testing)
+# Uncomment to enable:
+# OnBootSec=1min
+
+[Install]
+WantedBy=timers.target
