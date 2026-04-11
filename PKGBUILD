@@ -1,6 +1,6 @@
 # Maintainer: Tobias Brox <t-arch@tobixen.no>
 pkgname=thrash-protect
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Simple-Stupid user-space program protecting a linux host from thrashing."
 url="https://github.com/tobixen/thrash-protect"
@@ -17,4 +17,4 @@ package() {
   make PREFIX=$pkgdir/usr INSTALL_ROOT=$pkgdir version=$pkgver install
   rm "$pkgdir/usr/sbin"
 }
-sha256sums=('26346fe3b33c47ca386e33a98b5b21d9dd823bf893026b25a795caaef9b49d07')
+sha256sums=('9dfbfd05c22d9f50b56ed25097e2ca5fc308e2036711ce43a15673759a9973c7')
