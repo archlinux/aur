@@ -1,6 +1,6 @@
 pkgbase = cat-browser-git
 	pkgdesc = cat browser is an internet browser made for people who love cats
-	pkgver = 0.5.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/anamelessguy1/cat-browser
 	arch = x86_64
