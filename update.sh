@@ -116,11 +116,8 @@ update_pkgbuild_version() {
     return 0  # Update was made
 }
 
-# Generate .SRCINFO using Docker
-generate_srcinfo() {
-    log_info "Generating .SRCINFO using Docker..."
-
-    # Build the Docker image if needed
+# Build the Docker image if needed
+ensure_docker_image() {
     if ! docker image inspect "$DOCKER_IMAGE" &> /dev/null; then
         log_info "Building Docker image..."
         docker build -t "$DOCKER_IMAGE" "$SCRIPT_DIR" || {
@@ -128,6 +125,13 @@ generate_srcinfo() {
             exit 1
         }
     fi
+}
+
+# Generate .SRCINFO using Docker
+generate_srcinfo() {
+    log_info "Generating .SRCINFO using Docker..."
+
+    ensure_docker_image
 
     # Run makepkg --printsrcinfo in Docker
     docker run --rm \
@@ -139,6 +143,49 @@ generate_srcinfo() {
     }
 
     log_success ".SRCINFO generated"
+}
+
+# Validate the package builds successfully
+validate_package() {
+    log_info "Validating package build..."
+
+    ensure_docker_image
+
+    # Create a temporary build directory
+    local temp_build="/tmp/lem-build-test-$$"
+    mkdir -p "$temp_build"
+
+    # Copy PKGBUILD and .SRCINFO to temp directory
+    cp "$SCRIPT_DIR/PKGBUILD" "$temp_build/"
+    cp "$SCRIPT_DIR/.SRCINFO" "$temp_build/"
+
+    # Build the package in Docker
+    log_info "Building package in Docker (this may take a minute)..."
+    docker run --rm \
+        -v "$temp_build:/build" \
+        "$DOCKER_IMAGE" \
+        -c "cd /build && makepkg -sf --noconfirm 2>&1" > /tmp/build-output-$$.log 2>&1 || {
+        log_error "Package build failed!"
+        cat /tmp/build-output-$$.log
+        rm -rf "$temp_build" /tmp/build-output-$$.log
+        return 1
+    }
+
+    # Check if package file was created
+    local pkg_file=$(ls "$temp_build"/lem-editor-*.pkg.tar.zst 2>/dev/null | head -1)
+    if [ -z "$pkg_file" ]; then
+        log_error "Package file not found after build"
+        cat /tmp/build-output-$$.log
+        rm -rf "$temp_build" /tmp/build-output-$$.log
+        return 1
+    fi
+
+    log_success "Package built successfully: $(basename $pkg_file)"
+
+    # Clean up
+    rm -rf "$temp_build" /tmp/build-output-$$.log
+
+    return 0
 }
 
 # Verify git is set up
@@ -237,6 +284,13 @@ main() {
 
     # Generate .SRCINFO
     generate_srcinfo
+
+    # Validate the package before committing
+    if ! validate_package; then
+        log_error "Package validation failed - aborting update"
+        log_error "Fix the issues in PKGBUILD and try again"
+        exit 1
+    fi
 
     # Commit and push
     if ! commit_changes; then
