@@ -1,7 +1,7 @@
 # Maintainer: MiguVT <contacto@miguvt.com>
 pkgname=lution
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Third-party bootstrapper for Sober runtime - Bloxstrap clone for Linux"
 arch=('any')
 url="https://github.com/Wookhq/Lution"
@@ -83,7 +83,7 @@ Name=Lution
 GenericName=Roblox Bootstrapper
 Comment=Bloxstrap clone for Linux - Upgrade your Sober experience
 Exec=lution
-Icon=lution
+Icon=/usr/share/pixmaps/lution.png
 Terminal=false
 Type=Application
 Categories=Game;Utility;
@@ -98,6 +98,8 @@ DESKTOP
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
     install -Dm644 "src/Lution/files/lution1.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+    install -Dm644 "src/Lution/files/lution1.png" \
+        "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
     # Install license
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
