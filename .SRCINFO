@@ -1,17 +1,26 @@
 pkgbase = indicator-bulletin-git
-	pkgdesc = Clipboard manager featuring pinned items and infinite & searchable history.
-	pkgver = r13.f27ac20
-	pkgrel = 1
+	pkgdesc = GTK Clipboard manager featuring pinned items and infinite & searchable history.
+	pkgver = r14.db35de6
+	pkgrel = 2
 	url = https://github.com/SergKolo/indicator-bulletin
+	install = indicator-bulletin.install
 	arch = any
 	license = MIT
-	depends = zenity
+	makedepends = git
 	depends = python
-	depends = libappindicator-gtk3
+	depends = python-gobject
+	depends = libayatana-appindicator
+	depends = libnotify
+	depends = gtk3
+	depends = zenity
+	depends = xdg-utils
+	optdepends = gnome-shell-extension-appindicator: For AppIndicator support in GNOME Shell
+	optdepends = libdbusmenu-gtk3: For better menu support in some environments
+	optdepends = wl-clipboard: For potential clipboard support on Wayland
+	optdepends = xclip: Fallback clipboard support for X11/XWayland
 	provides = indicator-bulletin
 	conflicts = indicator-bulletin
 	source = git+https://github.com/SergKolo/indicator-bulletin.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = indicator-bulletin-git
-

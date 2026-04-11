@@ -1,0 +1,12 @@
+post_install() {
+  echo ">>> GNOME users: You must have an AppIndicator extension enabled"
+  echo ">>> for the tray icon to appear (e.g., gnome-shell-extension-appindicator)."
+  echo ""
+  echo ">>> Wayland users: If the clipboard is not working, try running with:"
+  echo ">>> GDK_BACKEND=x11 indicator-bulletin"
+  echo ">>> and ensure 'wl-clipboard' and 'xclip' are installed."
+}
+
+post_upgrade() {
+  post_install
+}
