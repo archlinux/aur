@@ -1,0 +1,3 @@
+#!/bin/bash
+# PyWebView veya varsayılan tarayıcıyı 'app' modunda kullanarak açar
+python -c "import webview; webview.create_window('ScholarFlow', 'https://scholarflow.mefkuz.com', width=1200, height=800); webview.start()"

@@ -1,7 +1,7 @@
 pkgbase = scholarflow
-	pkgdesc = Google Gemini destekli, modern tasarımlı akademik asistan ve üretkenlik paketi.
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgdesc = Google Gemini destekli, modern tasarımlı akademik asistan (GUI Sürümü)
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://scholarflow.mefkuz.com/
 	install = scholarflow.install
 	arch = any
@@ -9,7 +9,12 @@ pkgbase = scholarflow
 	makedepends = git
 	depends = nodejs
 	depends = npm
+	depends = python-pywebview
 	source = git+https://github.com/mefkuz/ScholarFlow.git
+	source = scholarflow-gui
+	source = scholarflow.desktop
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = scholarflow
