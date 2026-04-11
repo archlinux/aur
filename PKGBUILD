@@ -12,16 +12,16 @@ options=(!lto)
 source=(
   rarbg-selfhosted-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
   rarbg-selfhosted.service
-  )
+)
 sha256sums=('6aa61545d50dd301104bd52fefe458bff7dece0339dec6d2e1b15419b823e318'
-            'b93a74382119cb82cd06973954e31fa6fe6ae33c07ae9d941d14941654309ce5')
+  'b93a74382119cb82cd06973954e31fa6fe6ae33c07ae9d941d14941654309ce5')
 
 install=rarbg-selfhosted.install
 
-prepare(){
-    cd "$pkgname-$pkgver"
-    export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
-    go mod download -modcacherw
+prepare() {
+  cd "$pkgname-$pkgver"
+  export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
+  go mod download -modcacherw
 }
 
 build() {
@@ -47,4 +47,3 @@ package() {
   install -Dm644 trackers.txt -t "${pkgdir}"/usr/share/${pkgname}
   install -Dm644 ../rarbg-selfhosted.service -t "$pkgdir"/usr/lib/systemd/system/
 }
-
