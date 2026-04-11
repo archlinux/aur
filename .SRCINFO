@@ -11,6 +11,6 @@ pkgbase = jay-bin
 	optdepends = reflector: mirror optimization support
 	optdepends = checkupdates: check available updates
 	source = jay-bin-3.4.tar.gz::https://github.com/xmlzitos154/jay/archive/v3.4.tar.gz
-	sha256sums = 77a48790d5bf4546ba5cbedb7ff2bae671f50063ed7989228b76ae778141ffc4
+	sha256sums = 01a9c143b90fd7f99a6ea75b2f5ab532754b4873740710c4c87d8fb09ccc96cf
 
 pkgname = jay-bin
