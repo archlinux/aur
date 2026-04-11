@@ -1,15 +1,12 @@
 post_install() {
-  echo "==> Running LazyChad post-installation setup..."
-  # Run the dependency script to handle Node/Python/Rust non-pacman providers
-  /usr/bin/lazychad-deps
-  
   echo "==> LazyChad has been successfully installed."
   echo "==> Type 'lchad' to start."
+  echo "==> IMPORTANT: Run 'lazychad-deps' as your normal user to complete setup (Node/Python/Rust)."
 }
 
 post_upgrade() {
-  echo "==> Running LazyChad post-upgrade setup..."
-  /usr/bin/lazychad-deps
+  echo "==> LazyChad has been successfully upgraded."
+  echo "==> IMPORTANT: Run 'lazychad-deps' as your normal user to update toolchain."
 }
 
 post_remove() {
