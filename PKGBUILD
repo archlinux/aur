@@ -2,9 +2,9 @@
 
 _pkgname="kmux"
 pkgname="$_pkgname-git"
-pkgver=26.04.0.r74.g5c9dcb7
+pkgver=26.04.0.r76.g030dd49
 pkgrel=1
-pkgdesc='KDE terminal emulator with tmux integration (like iTerm2)'
+pkgdesc='tmux client based on Konsole'
 url="https://github.com/futpib/$_pkgname"
 license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
 arch=('x86_64')

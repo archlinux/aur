@@ -1,6 +1,6 @@
 pkgbase = kmux-git
-	pkgdesc = KDE terminal emulator with tmux integration (like iTerm2)
-	pkgver = 26.04.0.r74.g5c9dcb7
+	pkgdesc = tmux client based on Konsole
+	pkgver = 26.04.0.r76.g030dd49
 	pkgrel = 1
 	url = https://github.com/futpib/kmux
 	arch = x86_64
