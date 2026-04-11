@@ -6,5 +6,6 @@ pkgbase = aur-kein-git
 	arch = any
 	license = GPL-3.0
 	source = akg
+	depends = bash
 	sha256sums = SKIP
 pkgname = aur-kein-git
