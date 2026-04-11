@@ -23,6 +23,11 @@ sha256sums=('462a981bd15fd4a43142ed214507d404d061de9639d004ef86b362f040d2212c'
 prepare() {
   rm -rf build
   mkdir build
+  cd "$srcdir/$pkgname-$pkgver"
+
+  # Replace deprecated boost::asio types and methods in the simplestream plugin
+  sed -i 's/io_service/io_context/g' plugins/simplestream/simplestream.cc
+  sed -i 's/address::from_string/make_address/g' plugins/simplestream/simplestream.cc
 }
 build() {
   cd build
