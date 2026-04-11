@@ -1,13 +1,13 @@
 pkgbase = jellyfin2samsung-bin
 	pkgdesc = One-click install of Jellyfin on your Samsung TV — fully compatible with all Tizen versions!
-	pkgver = 2.2.0.4
+	pkgver = 2.2.0.7
 	pkgrel = 1
 	url = https://jellyfin2samsung.madebypatrick.nl/
 	arch = x86_64
 	license = MIT
 	options = !strip
 	options = !debug
-	source = jellyfin2samsung-bin_2.2.0.4.deb::https://github.com/Jellyfin2Samsung/Samsung-Jellyfin-Installer/releases/download/v2.2.0.4/Jellyfin2Samsung-v2.2.0.4-linux-x64.deb
+	source = jellyfin2samsung-bin_2.2.0.7.deb::https://github.com/Jellyfin2Samsung/Samsung-Jellyfin-Installer/releases/download/v2.2.0.7/Jellyfin2Samsung-v2.2.0.7-linux-x64.deb
 	sha256sums = 85fbfa27534e0b6693c4d53af2fbd9196bd018a286906fe130541a4efdc897c0
 
 pkgname = jellyfin2samsung-bin
