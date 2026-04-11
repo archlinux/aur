@@ -13,9 +13,9 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
 source=(
-	"$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-linux-x64.tar.gz"
-	"LICENSE_$pkgver::$_rawurl/LICENSE"
-	"ferrite_$pkgver.desktop::$_rawurl/assets/icons/linux/ferrite.desktop"
+  "$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-linux-x64.tar.gz"
+  "LICENSE_$pkgver::$_rawurl/LICENSE"
+  "ferrite_$pkgver.desktop::$_rawurl/assets/icons/linux/ferrite.desktop"
   "ferrite_16_$pkgver.png::$_rawurl/assets/icons/linux/16x16/ferrite.png"
   "ferrite_32_$pkgver.png::$_rawurl/assets/icons/linux/32x32/ferrite.png"
   "ferrite_48_$pkgver.png::$_rawurl/assets/icons/linux/48x48/ferrite.png"
