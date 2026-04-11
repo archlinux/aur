@@ -1,6 +1,6 @@
 pkgbase = infofetch
 	pkgdesc = infofetch is a simple neofetch-like system information tool written in C.
-	pkgver = 1.2
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/NTMPO/infofetch
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = infofetch
 	arch = armv7h
 	license = MIT
 	depends = glibc
-	source = infofetch-1.2.tar.gz::https://github.com/NTMPO/infofetch/archive/refs/tags/v1.2.tar.gz
-	sha256sums = 0b2ce9809088d50d3f0cdc8d0821503bbebc3e3842e204d801eda8422f4c0616
+	source = infofetch-1.3.1.tar.gz::https://github.com/NTMPO/infofetch/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 1ee98a717fd5b79f70cb18ac8785a0b9de45c37aa7d4193ac5657e430464f3cf
 
 pkgname = infofetch
