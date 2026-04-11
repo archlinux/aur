@@ -29,7 +29,11 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd simple-whatsapp
-    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "0.1.0.r$(git rev-list --count HEAD).$(git rev-parse --short=7 HEAD)"
+    if git describe --long --tags --abbrev=7 2>/dev/null; then
+        git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        printf '0.1.0.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    fi
 }
 
 prepare() {
