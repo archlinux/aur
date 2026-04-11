@@ -1,0 +1,30 @@
+# Downstream workaround for VMware/vmwgfx linux-dmabuf import failures.
+#
+# Keep this patch in sync with wlroots 0.20.x and drop it once upstream
+# handles drmCloseBufferHandle(EINVAL) on vmwgfx without turning the import
+# sanity check into a fatal DMA-BUF failure.
+
+diff --git a/types/wlr_linux_dmabuf_v1.c b/types/wlr_linux_dmabuf_v1.c
+index 3165e880..fcf3fdad 100644
+--- a/types/wlr_linux_dmabuf_v1.c
++++ b/types/wlr_linux_dmabuf_v1.c
+@@ -220,8 +220,17 @@ static bool check_import_dmabuf(struct wlr_dmabuf_attributes *attribs, void *dat
+			return false;
+		}
+		if (drmCloseBufferHandle(linux_dmabuf->main_device_fd, handle) != 0) {
+-			wlr_log_errno(WLR_ERROR, "Failed to close buffer handle for plane %d", i);
+-			return false;
++			wlr_log_errno(WLR_ERROR,
++				"Failed to close buffer handle for plane %d, disabling future DMA-BUF import checks", i);
++
++			/*
++			 * main_device_fd is only used for DMA-BUF sanity checks. If closing an
++			 * imported GEM handle fails, keeping the FD around can leak handles on
++			 * subsequent checks. Close it and skip future checks instead.
++			 */
++			close(linux_dmabuf->main_device_fd);
++			linux_dmabuf->main_device_fd = -1;
++			break;
+		}
+	}
+	return true;
