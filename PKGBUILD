@@ -1,27 +1,23 @@
 # Maintainer: Thomas Ramfjord <your-email@example.com>
 pkgname=lem-editor
-# Using nightly build since stable releases don't have precompiled binaries
-pkgver=nightly.$(date +%Y%m%d)
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A Lisp-based text editor for the modern world"
 arch=('x86_64')
 url="https://github.com/lem-project/lem"
 license=('MIT')
-depends=('fuse2')  # Required for AppImage
+depends=()
 makedepends=()
 optdepends=()
 provides=('lem-editor' 'lem')
 conflicts=('lem' 'lem-git')
-source=("lem-appimage::https://github.com/lem-project/lem/releases/download/nightly-latest/Lem-x86_64.AppImage")
-sha256sums=('f4ce7a02c51bcf7fa3c388f1ef22b8acd9e48222869e5a5a63350440111e6da9')
-
-prepare() {
-    chmod +x "lem-appimage"
-}
+source=("https://github.com/lem-project/lem/releases/download/v${pkgver}/lem-ubuntu-x86-64-v${pkgver}.tar.gz")
+sha256sums=('1fad7b3b30368cec65dada1dedd2af1f392118b122a419432a480db309ec8f5b')
 
 package() {
-    install -Dm755 "lem-appimage" "${pkgdir}/usr/bin/lem"
+    # Extract and install the lem binary
+    install -Dm755 "lem" "${pkgdir}/usr/bin/lem"
 
-    # Create a symlink for consistency
+    # Create a symlink for the -editor variant
     ln -sf /usr/bin/lem "${pkgdir}/usr/bin/lem-editor" || true
 }
