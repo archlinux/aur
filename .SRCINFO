@@ -1,5 +1,5 @@
 pkgbase = python-flash-attention-rocm-triton
-	pkgdesc = Fast and memory-efficient exact attentiontriton. ROCm Triton version.
+	pkgdesc = Fast and memory-efficient exact attention. ROCm Triton version.
 	pkgver = 2.8.3
 	pkgrel = 1
 	url = https://github.com/Dao-AILab/flash-attention
