@@ -1,0 +1,10 @@
+[gnome-shell-extension-ubuntu-dock]
+source = "git"
+git = "https://github.com/micheleg/dash-to-dock.git"
+branch = "ubuntu-dock"
+include_regex = "ubuntu-dock-\\d+ubuntu\\d"
+from_pattern = "ubuntu-dock-(\\d+ubuntu\\d)"
+to_pattern = "\\1"
+
+
+
