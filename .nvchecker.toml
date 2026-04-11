@@ -1,0 +1,3 @@
+[python-celery]
+source = "pypi"
+pypi = "celery"

@@ -1,4 +1,5 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Marcin Kolenda <marcinkolenda419@gmail.com>
 # Contributor: Valentin Haloiu <vially.ichb+aur@gmail.com>
 # Contributor: Lukas Linhart <bugs@almad.net>
@@ -6,8 +7,8 @@
 # Contributor: apkawa <apkawa@gmail.com>
 
 pkgname=python-celery
-pkgver=5.4.0
-pkgrel=2
+pkgver=5.6.3
+pkgrel=1
 pkgdesc='Distributed Asynchronous Task Queue'
 arch=('any')
 url='http://celeryproject.org/'
@@ -35,7 +36,7 @@ checkdepends=('python-pytest-celery' 'python-pytest-subtests' 'python-pytest-tim
 source=("https://pypi.io/packages/source/c/celery/celery-$pkgver.tar.gz"
         celery@.service celery.tmpfiles.d)
 options=('!emptydirs')
-sha512sums=('e59b62878f7da0af79be13df816e899c948f71f1063643baaabc1244dd44fd3114a5b3d724c010307ca8091c6b4343a4322213bc6154b843b79893b8f772476c'
+sha512sums=('778cadc45a19e0afba4c0a148e86415afcef3ddf71683cda12c89ec8061e09aabe182c163cc238b8c4e4101b884589f9c54d3608cdad3eda80d525ecd8f925e9'
             '3c6c9dbdacca2de12d49c03526b34797fd867c14d04115af0d1fda64d2848a5d3f64ceb6d284be319a81d932dc86e69c157b6f5f859f2fa213fc2f43a6052c65'
             '67279b75c3b44d065811c9c90aee006296164000912d5bb97c74956b26ee4ad4f0847e846052a896d379848b869c849300367e676d3f689cf29e3a0c7ae5310b')
 
