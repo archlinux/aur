@@ -259,23 +259,31 @@ usage() {
 Usage: $0 [OPTIONS]
 
 Options:
-  --dry-run    Test the update without committing or pushing to AUR
-  --help       Show this help message
+  --dry-run       Test the update without committing or pushing to AUR
+  --test-build    Build locally and test the binary (no push)
+  --help          Show this help message
 
 Examples:
   $0              # Full update with push to AUR
-  $0 --dry-run    # Test only (no commit/push)
+  $0 --dry-run    # Check for updates (no commit/push)
+  $0 --test-build # Build locally and test binary
 EOF
 }
 
 # Main workflow
 main() {
     # Parse arguments
+    local test_build=false
     while [[ $# -gt 0 ]]; do
         case $1 in
             --dry-run)
                 DRY_RUN=true
                 log_info "DRY RUN MODE - no changes will be pushed"
+                shift
+                ;;
+            --test-build)
+                test_build=true
+                log_info "TEST BUILD MODE - building locally without pushing"
                 shift
                 ;;
             --help)
@@ -289,6 +297,16 @@ main() {
                 ;;
         esac
     done
+
+    # If test-build mode, just build and test locally
+    if [ "$test_build" = true ]; then
+        log_info "Building package locally..."
+        ensure_docker_image
+        validate_package
+        log_success "Package built successfully!"
+        log_info "Run: makepkg -sf to rebuild locally"
+        exit 0
+    fi
 
     log_info "Starting Lem AUR package update workflow..."
 
