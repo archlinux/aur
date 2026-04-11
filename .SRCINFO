@@ -16,12 +16,10 @@ pkgbase = mtproto.zig
 	source = https://github.com/sleep3r/mtproto.zig/archive/v0.16.0.tar.gz
 	source = mtproto-proxy.sysusers
 	source = mtproto-proxy.service
-	source = mtproto-monitor.service
 	source = mtproto-proxy.toml
 	sha256sums = 17e0d62cf214a78f972c4a4dbf0e3c41049c3eadbf649cea1759b350a735a797
 	sha256sums = d58880e0feeef1e9f157bd7469760e391bccf940a3cb8e1795dbb9bf0434c4d7
 	sha256sums = 262a7da689f7710ad69953291f2baf42e681868a451bad4d346a9c674ea6705f
-	sha256sums = d2081ca0a94892a538c145f2f429fe9f45d55b389d4622e87bbf436207301946
 	sha256sums = a089d6059846f1513ce566225c37b256ae2ac3cd9b18e0d85d1d473f3d067c90
 
 pkgname = mtproto.zig
