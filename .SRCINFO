@@ -1,6 +1,6 @@
 pkgbase = ruah-orch
 	pkgdesc = Multiple agents, one repo, no stepping on each other
-	pkgver = 1.0.4
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/ruah-dev/ruah-orch
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = ruah-orch
 	depends = git
 	provides = ruah
 	replaces = ruah
-	noextract = cli-1.0.4.tgz
+	noextract = cli-1.1.1.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = https://registry.npmjs.org/@ruah-dev/cli/-/cli-1.0.4.tgz
-	b2sums = a0faf1263b589adc6e3d7d165461f7270a8cd34b4d13100922dba5716e98b8c045ce20d262b6788e9b2207909db1df07401bd956309e040cc896baae40b0b381
+	source = https://registry.npmjs.org/@ruah-dev/cli/-/cli-1.1.1.tgz
+	b2sums = 86a86b90cb3883759a413fbf44a4736cc730917762d7ee10f19440ce36ecfe590bced6f0ed475efb24cd777ff49f2d920c111fa78a91113f5039aceb1efe6b1f
 
 pkgname = ruah-orch

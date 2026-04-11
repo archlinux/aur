@@ -2,7 +2,7 @@
 
 pkgname=ruah-orch
 pkgauthor=ruah-dev
-pkgver=1.0.4
+pkgver=1.1.1
 pkgrel=1
 
 _npmname=cli
@@ -27,7 +27,7 @@ options=(!strip emptydirs staticlibs zipman)
 source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=("${_npmname}-${_npmver}.tgz")
 
-b2sums=('a0faf1263b589adc6e3d7d165461f7270a8cd34b4d13100922dba5716e98b8c045ce20d262b6788e9b2207909db1df07401bd956309e040cc896baae40b0b381')
+b2sums=('86a86b90cb3883759a413fbf44a4736cc730917762d7ee10f19440ce36ecfe590bced6f0ed475efb24cd777ff49f2d920c111fa78a91113f5039aceb1efe6b1f')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
