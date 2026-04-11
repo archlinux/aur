@@ -1,7 +1,7 @@
 pkgbase = skeema
 	pkgdesc = Declarative pure-SQL schema management for MySQL and MariaDB
 	pkgver = 1.13.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/skeema/skeema
 	arch = x86_64
 	arch = aarch64

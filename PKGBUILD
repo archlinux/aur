@@ -2,7 +2,7 @@
 
 pkgname=skeema
 pkgver=1.13.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Declarative pure-SQL schema management for MySQL and MariaDB'
 arch=(x86_64 aarch64)
 url='https://github.com/skeema/skeema'
@@ -16,7 +16,7 @@ sha256sums=('05d259e214d81908880b7d3b3c0b99cecc8674e8df4220474863c5003a9ac215')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  export GOPATH="${srcdir}/go"
+  export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
   go mod download
 }
 
@@ -32,8 +32,8 @@ build() {
 
   go build -o "build/$pkgname" .
 
-  # Make sure go path is writable so it can be cleaned up
-  chmod -R u+w "${srcdir}/go"
+  # Clean up deps
+  go clean -modcache
 }
 
 package() {
