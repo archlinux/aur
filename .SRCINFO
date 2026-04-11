@@ -1,0 +1,17 @@
+pkgbase = zapup
+	pkgdesc = The Zap programming language version manager
+	pkgver = 1.1.0.g7735703
+	pkgrel = 1
+	url = https://github.com/Maqi-x/zapup
+	arch = x86_64
+	license = GNU GPL v3
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = libssh2
+	depends = openssl
+	depends = zlib
+	source = git+https://github.com/Maqi-x/zapup.git
+	sha256sums = SKIP
+
+pkgname = zapup
