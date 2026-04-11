@@ -32,7 +32,6 @@ package() {
     # Scripts
     install -Dm755 popup.py "$pkgdir/usr/share/waybar-ycal/popup.py"
     install -Dm755 bar.py   "$pkgdir/usr/share/waybar-ycal/bar.py"
-    install -Dm755 sync.py  "$pkgdir/usr/share/waybar-ycal/sync.py"
 
     # Fix toggle.sh fallback path for system install
     sed 's|$HOME/.config/waybar-ycal/popup.py|/usr/share/waybar-ycal/popup.py|g' \
