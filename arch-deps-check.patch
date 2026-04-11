@@ -4,7 +4,7 @@
     local -a depfiles=()
     local -a missing=()
  
-+   # On Arch Linux, rely on PKGBUILD depends; skip Debian dpkg-based check
++   # Dont check for debian deps on arch (patched by rpi-image-gen aur)
 +   if [[ -f /etc/arch-release ]]; then
 +      return 0
 +   fi
