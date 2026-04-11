@@ -77,6 +77,10 @@ EOF
     install -Dm644 "$srcdir/openaether.desktop" \
         "$pkgdir/usr/share/applications/openaether.desktop"
 
+    # Icon
+    install -Dm644 "$srcdir/OpenAether-$pkgver/openaether.svg" \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/openaether.svg"
+
     # systemd service für SearXNG
     install -dm755 "$pkgdir/usr/lib/systemd/system"
     cat > "$pkgdir/usr/lib/systemd/system/openaether-searxng.service" << 'EOF'
