@@ -1,7 +1,7 @@
 pkgbase = gradia
 	pkgdesc = Make your screenshots ready for the world.
 	pkgver = 1.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlexanderVanhee/Gradia
 	arch = x86_64
 	license = GPL-3.0-only
@@ -28,7 +28,9 @@ pkgbase = gradia
 	options = !debug
 	source = gradia-1.12.1.zip::https://github.com/AlexanderVanhee/Gradia/archive/9b70a5c3ced86a469d8750a452a68ebd7e983051.zip
 	source = gradia_ocr.patch
+	source = image_stack.patch
 	sha256sums = e0cfe26530e05e6542e184446be35cc22d5785852bd6221baaf129177183d6b3
 	sha256sums = 770b874fed71ec84a6a190b6e931be9189f512b4433eaef8996dca32644472d7
+	sha256sums = 6a1e1e08216c19db9e823a0c014b33a273b0690f7adff71fb5281242f1ee8a1b
 
 pkgname = gradia
