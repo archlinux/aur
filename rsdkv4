@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+# If your game name equals the folder name:
+Game="$(basename "$SCRIPT_DIR")"
+# Or hardcode instead:
+# Game="MyGame"
+cd "$SCRIPT_DIR"
+
+export LD_LIBRARY_PATH="/usr/lib/RSDKv4:${LD_LIBRARY_PATH:-}"
+exec /usr/lib/RSDKv4/RSDKv4 "$@"
