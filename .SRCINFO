@@ -1,10 +1,10 @@
 pkgbase = nvuv
 	pkgdesc = CLI tool for undervolting NVIDIA gpu
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/doums/nvuv
 	arch = x86_64
-	license = Apache-2.0
+	license = Apache-2.0 WITH Commons-Clause
 	makedepends = zig-master
 	depends = glibc
 	depends = nvidia-utils
@@ -12,7 +12,7 @@ pkgbase = nvuv
 	conflicts = nvuv
 	options = !debug
 	backup = etc/nvuv/nvuv.toml
-	source = nvuv-0.1.0.tar.gz::https://github.com/doums/nvuv/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 8a85fd5c55f93d56594016182a9ad2f3ca75685e05b96792b586e5ac9483340a
+	source = nvuv-0.1.1.tar.gz::https://github.com/doums/nvuv/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 5054b31682d475b91cf597cd81a6765a6b8f43cf310901ba418b4bf4d36f121c
 
 pkgname = nvuv
