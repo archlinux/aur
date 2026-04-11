@@ -1,0 +1,5 @@
+[gobs-cli-bin]
+source = "github"
+github = "onyx-and-iris/gobs-cli"
+use_latest_release = true
+prefix = "v"
