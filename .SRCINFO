@@ -1,13 +1,13 @@
 pkgbase = phantun-dkms
 	pkgdesc = Kernel module re-implementation of phantun, transform UDP streams into fake-TCP streams
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/bjin/phantun-dkms
 	arch = any
 	license = GPL-2.0-only
 	makedepends = curl
 	depends = dkms
-	source = https://github.com/bjin/phantun-dkms/releases/download/v0.1.1/phantun-dkms_0.1.1.tar.gz
-	sha256sums = 442395993a98d59245eb698bebf3be6157c37b98cabe7533f974520ec59ade4d
+	source = https://github.com/bjin/phantun-dkms/releases/download/v0.1.2/phantun-dkms_0.1.2.tar.gz
+	sha256sums = 850107892f19684aa44a6a343f0d0095f3779be9be1f0e998b63e839d1d57338
 
 pkgname = phantun-dkms
