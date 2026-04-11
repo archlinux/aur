@@ -1,5 +1,6 @@
 # Maintainer: fabse
 # Contributor: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: envolution
 
 pkgname=llama.cpp
 pkgver=b8762
