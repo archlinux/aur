@@ -1,6 +1,6 @@
 pkgbase = ethos-lang
 	pkgdesc = The Ethos Programming Language Compiler
-	pkgver = 0.3.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/AmanCode22/ethos-lang
 	arch = x86_64
