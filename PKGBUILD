@@ -2,7 +2,7 @@
 
 pkgname=teleport-client
 pkgver=18.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure - Client-only (tsh, tctl)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
@@ -16,8 +16,8 @@ sha256sums=('26822b4dbfba8daa672686c235cdff6714c75c9598fdedc8e26ebd20de1aa2ad')
 
 prepare() {
     cd "${pkgname%-*}-${pkgver}"
-    export GOPATH="${srcdir}/go"
-    go mod download -modcacherw
+    export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
+    go mod download
 }
 
 build() {
@@ -31,8 +31,8 @@ build() {
 
     make build/tsh build/tctl
 
-    # Make sure go path is writable so it can be cleaned up
-    chmod -R u+w "${srcdir}/go"
+    # Clean up deps
+    go clean -modcache
 }
 
 package() {
