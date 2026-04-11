@@ -1,6 +1,6 @@
 # Maintainer: MCB-SMART-BOY <mcb2720838051@gmail.com>
 pkgname=gridix-bin
-pkgver=3.8.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Fast, secure, cross-platform database management tool with Helix/Vim keybindings"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("gridix-linux-x86_64-${pkgver}.tar.gz::https://github.com/MCB-SMART-BOY/
         "gridix-${pkgver}.desktop::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/v${pkgver}/gridix.desktop"
         "gridix-icon-${pkgver}.png::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/v${pkgver}/assets/branding/gridix-icon.png"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/MCB-SMART-BOY/Gridix/v${pkgver}/LICENSE")
-sha256sums=('4232deb85430fa587971aec937da10ff00175a161c7cad30838f852f47dc566a'
+sha256sums=('294a145142f7c6663df623e84bb1cfdfee4229ece75f79123640e355e949b3e4'
             '3a87bbb77f4a98ff45f21d3648fc5fe761352fdef4d2e82233bb96095a7b83cf'
             '5fb40df52c427b365f594d56110e21346288936f2bc2aa2b461783a1be8c35ea'
             '01132d0ac431cc5a8f34ea8ba055deb6f68d7034d8ed6f821b827f4b9195aae4')
