@@ -1,0 +1,5 @@
+[quien]
+source = "github"
+github = "retlehs/quien"
+prefix = "v"
+use_latest_release = true
