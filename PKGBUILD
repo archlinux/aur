@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='1.3.0'
+_upstreamver='1.3.2'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='fargv'
@@ -19,7 +19,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 # source=("${_pypi_package//-/_}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('a0f15242ae171ce64c675e45c7d163f64894c561387c25ea77b65a1bf63c2b2e')
+sha256sums=('f0912b4b0c4a631cd05a125f2074476ddec6ded592dd2366b2ea0a5268451b8f')
 
 
 build() {

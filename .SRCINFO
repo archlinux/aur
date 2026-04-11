@@ -1,6 +1,6 @@
 pkgbase = python-fargv
 	pkgdesc = A very easy to use argument parser for Python scripts
-	pkgver = 1.3.0
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/anguelos/fargv
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-fargv
 	makedepends = python-hatchling
 	depends = python
 	depends = python-userpath
-	source = https://files.pythonhosted.org/packages/source/f/fargv/fargv-1.3.0.tar.gz
-	sha256sums = a0f15242ae171ce64c675e45c7d163f64894c561387c25ea77b65a1bf63c2b2e
+	source = https://files.pythonhosted.org/packages/source/f/fargv/fargv-1.3.2.tar.gz
+	sha256sums = f0912b4b0c4a631cd05a125f2074476ddec6ded592dd2366b2ea0a5268451b8f
 
 pkgname = python-fargv
