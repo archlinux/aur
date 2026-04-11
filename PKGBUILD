@@ -1,7 +1,7 @@
 # Maintainer: tuxxx <nzb_tuxxx@proton.me>
 
 pkgname=nzb-monkey-go-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="NZBLNK-URI handler supporting SABnzbd, NZBGet & Synology DS (Go-based)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "${url}/releases/download/v${pkgver}/nzb-monkey-go_v${pkgver}-linux-amd64.zip"
     "com.github.tensai75.nzb-monkey-go.desktop"
 )
-sha256sums=('0e4ea7cdf222d994632f6a6efdda2f3a1b7bc77838c9036b6f68fb0add1036a6'
+sha256sums=('2ee4e45e2b187069ffdbf4daaff72481e0b7c8f338b423872a9899594513d0bd'
             'dbf841f7241af6719283123df580f798f7bb27a8f26a28b3af1f64ed7e50a395')
 
 package() {
