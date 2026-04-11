@@ -1,3 +1,9 @@
+2026.04.11, v19.12.2
+
+feature:
+- 2ce11fa2 docker: io: get rid of haskell: to slow install
+- aa741232 docker: io: rizin, yara
+
 2026.04.09, v19.12.1
 
 feature:
