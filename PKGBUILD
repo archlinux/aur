@@ -2,7 +2,7 @@
 
 _binname="gsa"
 pkgname="go-size-analyzer"
-pkgver=1.12.2
+pkgver=1.12.3
 pkgrel=1
 pkgdesc="A tool for analyzing the dependencies in compiled Golang binaries"
 arch=(
@@ -24,7 +24,7 @@ _pkgsrc="${pkgname}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('d8d88753b0425616ca25f0011d6972e4888973217d790171cfefcd13a1725ccbd55546feaa24b31aa910cac863bed2f698afc0de444f29c1746eb52d4caf4063')
+b2sums=('efa2873524a52a3e03657ce675f82976366454f2c493a13d740aa37dd0d07a39e573fa1176e2dc6158f4d32da0ae9d5782f64e1d5bcd7973b9b56ad8b26280d0')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
