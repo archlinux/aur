@@ -4,12 +4,12 @@ pkgname=astrbot-git
 _pkgname=astrbot
 _srcname=AstrBot
 pkgver=4.22.2.r633.g7543dd2e
-pkgrel=12
+pkgrel=13
 
 pkgver() {
     cd "$srcdir/$_srcname"
-    # Shallow clones lack tag history; unshallow to get full history for describe
-    git fetch --depth=999999 --tags origin dev 2>/dev/null || true
+    # Fetch all tags from origin/dev to support describe on all release tags
+    git fetch --tags origin dev 2>/dev/null || true
     # Try annotated tags first; fall back to commit-based versioning
     local _ver
     if _ver=$(git describe --long --tags 2>/dev/null); then
@@ -32,7 +32,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 source=(
-    "git+https://github.com/AstrBotDevs/AstrBot.git#branch=dev#depth=999999"
+    "git+https://github.com/AstrBotDevs/AstrBot.git#branch=dev"
     "astrbotctl"
     "astrbotctl.functions"
     "astrbot@.service"
