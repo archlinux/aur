@@ -1,0 +1,22 @@
+pkgbase = ascendara-bin
+	pkgdesc = Game launcher that downloads, installs, and manages games automatically
+	pkgver = 10.3.0
+	pkgrel = 1
+	url = https://github.com/Ascendara/ascendara
+	arch = x86_64
+	license = MIT
+	depends = nss
+	depends = gtk3
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	provides = ascendara=10.3.0
+	conflicts = ascendara
+	noextract = ascendara-10.3.0.AppImage
+	options = !strip
+	options = !debug
+	source = ascendara-10.3.0.AppImage::https://github.com/Ascendara/ascendara/releases/download/10.3.0/Ascendara-10.3.0.AppImage
+	source = LICENSE-10.3.0::https://raw.githubusercontent.com/Ascendara/ascendara/10.3.0/LICENSE
+	sha256sums = ae93e6628bf480a3acfe174f695ac2480c4abd3a823b103fa3252b442b3cefde
+	sha256sums = d77e5497eec76e92aa08602f8540d2259a59406cb8a42db90519a67cd6a6c5d7
+
+pkgname = ascendara-bin
