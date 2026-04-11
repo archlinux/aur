@@ -1,5 +1,3 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
@@ -8,11 +6,11 @@
 
 # Maintainer: Harry Roberts <harryroberts306@gmail.com>
 pkgname=nextdots-cli-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r7.f022c22
+pkgver=r11.6516cf7
 pkgrel=1
 pkgdesc="The CLI for my NEXTDOTS"
 arch=(any)
-url="https://github.com/DESKEDIT/nextGPLdots-cli.git"
+url="https://gitlab.com/harryr307/nextdots-cli.git"
 license=('unknown')
 groups=()
 depends=('bash')
@@ -23,7 +21,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/DESKEDIT/nextdots-cli.git')
+source=('git+https://gitlab.com/harryr307/nextdots-cli.git')
 noextract=()
 sha256sums=('SKIP')
 
