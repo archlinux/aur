@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=OpenAether
+Comment=Local AI desktop agent for Arch Linux
+Exec=openaether
+Icon=openaether
+Terminal=false
+Type=Application
+Categories=Utility;

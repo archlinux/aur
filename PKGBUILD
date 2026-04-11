@@ -1,0 +1,96 @@
+pkgname=openaether
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Local AI desktop agent for Arch Linux and Hyprland"
+arch=('x86_64')
+url="https://github.com/Qsenja/OpenAether"
+license=('Apache-2.0')
+depends=(
+    'python'
+    'nodejs'
+    'npm'
+    'electron'
+    'bubblewrap'
+    'docker'
+    'python-websockets'
+    'python-requests'
+    'python-beautifulsoup4'
+    'python-pillow'
+    'python-yaml'
+    'python-httpx'
+    'python-psutil'
+    'tesseract'
+)
+makedepends=('python-pip')
+install=openaether.install
+source=(
+    "$pkgname-$pkgver.tar.gz::https://github.com/Qsenja/OpenAether/archive/v$pkgver.tar.gz"
+    "openaether.desktop"
+)
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+    cd "$srcdir/OpenAether-$pkgver/frontend"
+    npm install
+}
+
+package() {
+    cd "$srcdir/OpenAether-$pkgver"
+
+    # App nach /opt
+    install -dm755 "$pkgdir/opt/openaether"
+    cp -r . "$pkgdir/opt/openaether/"
+
+    # Python deps die nicht in den offiziellen Repos sind
+    pip install \
+        ollama \
+        pytesseract \
+        --target "$pkgdir/opt/openaether/backend/lib" \
+        --no-deps
+
+    # Startskript
+    install -dm755 "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/openaether" << 'EOF'
+#!/bin/bash
+# SearXNG starten falls nicht läuft
+if ! docker ps --format '{{.Names}}' | grep -q "^searxng$"; then
+    echo "[OpenAether] Starting SearXNG..."
+    docker run -d \
+        --name searxng \
+        --restart always \
+        -p 8888:8080 \
+        searxng/searxng 2>/dev/null || true
+    # JSON format aktivieren
+    sleep 2
+    docker exec searxng sed -i 's/formats:/formats:\n  - json/' \
+        /etc/searxng/settings.yml 2>/dev/null || true
+    docker restart searxng 2>/dev/null || true
+fi
+
+cd /opt/openaether/frontend
+exec electron . "$@"
+EOF
+    chmod +x "$pkgdir/usr/bin/openaether"
+
+    # .desktop
+    install -Dm644 "$srcdir/openaether.desktop" \
+        "$pkgdir/usr/share/applications/openaether.desktop"
+
+    # systemd service für SearXNG
+    install -dm755 "$pkgdir/usr/lib/systemd/system"
+    cat > "$pkgdir/usr/lib/systemd/system/openaether-searxng.service" << 'EOF'
+[Unit]
+Description=OpenAether SearXNG Search Instance
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/docker start searxng
+ExecStop=/usr/bin/docker stop searxng
+
+[Install]
+WantedBy=multi-user.target
+EOF
+}
