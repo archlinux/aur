@@ -15,7 +15,7 @@ pkgbase = spacedrive-clean
 	conflicts = spacedrive-bin
 	conflicts = spacedrive-git
 	options = !strip
-	source = spacedrive-clean-0.4.3.deb::https://github.com/spacedriveapp/spacedrive/releases/download/0.4.3/Spacedrive-linux-x86_64.deb
+	source = spacedrive-clean-0.4.3.tar.gz::https://github.com/spacedriveapp/spacedrive/releases/download/0.4.3/Spacedrive-Updater-darwin-aarch64.tar.gz
 	sha256sums = 30b0801cd2c9ffd6dd0812c106cb2ba64f7cbaf2937c7b3d606c66c49d75fe86
 
 pkgname = spacedrive-clean
