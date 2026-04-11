@@ -1,7 +1,7 @@
 # Maintainer: Robert Wolff <mahlzahn@posteo.de>
 pkgname=censor
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='PDF document redaction for the GNOME desktop'
 arch=(x86_64)
 url='https://codeberg.org/censor/Censor'
@@ -14,7 +14,7 @@ makedepends=(meson
              ninja)
 checkdepends=(appstream-glib)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=(37c07d707dfdceae70f43da6bfec406b811a96a3cd20c1c948586e953caa6398)
+sha256sums=(fc8dc1cc765872338eb42f4c00b99467705fd36f77b9ad9f3e9029a056409a83)
 validpgpkeys=()
 
 blddir="$(pwd)/$pkgname-$pkgver-$pkgrel-build"
