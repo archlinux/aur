@@ -15,8 +15,8 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
 source=(
-	$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/${pkgname%-bin}-$pkgver-x86_64-unknown-linux-musl.tar.gz
-	"LICENSE_$pkgver::$_rawurl/LICENSE"
+  $pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/${pkgname%-bin}-$pkgver-x86_64-unknown-linux-musl.tar.gz
+  "LICENSE_$pkgver::$_rawurl/LICENSE"
 )
 
 sha256sums=('7ea93d081565f33a312d00134c541f2da7c70a0a02544d6585490e6a0a41fead'
