@@ -1,7 +1,7 @@
 # Maintainer: Senqaii <batuh007@gmail.com>
 pkgname=netsplitter-git
-pkgver=0.1.0.r0.g820ff9b
-pkgrel=9
+pkgver=0.1.r0.g820ff9b
+pkgrel=1
 pkgdesc="Advanced Linux Network Namespace Isolation & QoS Bufferbloat Automation Framework"
 arch=('any')
 url="https://github.com/batuh007/-NetSplitter-"
@@ -29,7 +29,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/netsplitter"
-    printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
@@ -40,9 +40,7 @@ package() {
     cp -r netsplitter/ "$pkgdir/opt/netsplitter/"
     install -Dm755 run.py "$pkgdir/opt/netsplitter/run.py"
 
-    # Launcher wrapper script — runs as NORMAL USER (no sudo wrapping!)
-    # The app internally calls sudo for specific commands, which are
-    # whitelisted in /etc/sudoers.d/netsplitter below.
+    # Launcher wrapper script — runs as NORMAL USER
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/netsplitter" << 'EOF'
 #!/bin/bash
@@ -51,36 +49,23 @@ EOF
     chmod 755 "$pkgdir/usr/bin/netsplitter"
 
     # Granular Passwordless Sudo Rules
-    # Only the specific system commands NetSplitter needs are whitelisted.
-    # The GUI runs as normal user — no root wrapping needed.
     install -dm755 "$pkgdir/etc/sudoers.d"
     cat > "$pkgdir/etc/sudoers.d/netsplitter" << 'SUDOEOF'
 # NetSplitter — passwordless access to network management commands
-# Network namespace & interface management
 ALL ALL=(ALL) NOPASSWD: /usr/bin/ip
-# Traffic control (QoS: fq_codel, CAKE, etc.)
 ALL ALL=(ALL) NOPASSWD: /usr/bin/tc
-# Kernel parameter tuning (BBR, TCP buffers, etc.)
-ALL ALL=(ALL) NOPASSWD: /usr/sbin/sysctl
-# DNS config file writing
+ALL ALL=(ALL) NOPASSWD: /usr/bin/sysctl
 ALL ALL=(ALL) NOPASSWD: /usr/bin/tee
-# NIC hardware offload & interrupt coalescing
 ALL ALL=(ALL) NOPASSWD: /usr/bin/ethtool
-# DHCP inside network namespaces
 ALL ALL=(ALL) NOPASSWD: /usr/bin/dhcpcd
-# Process cleanup (curl speedtest teardown)
 ALL ALL=(ALL) NOPASSWD: /usr/bin/pkill
-# Directory creation for DNS namespace config
 ALL ALL=(ALL) NOPASSWD: /usr/bin/mkdir
-# WiFi power save control (optional)
 ALL ALL=(ALL) NOPASSWD: /usr/bin/iw
-# CPU governor (optional)
 ALL ALL=(ALL) NOPASSWD: /usr/bin/cpupower
-# Process priority for GameMode
 ALL ALL=(ALL) NOPASSWD: /usr/bin/renice
 ALL ALL=(ALL) NOPASSWD: /usr/bin/ionice
-# Shell execution for namespace commands
 ALL ALL=(ALL) NOPASSWD: /usr/bin/bash
+ALL ALL=(ALL) NOPASSWD: /usr/bin/systemctl
 SUDOEOF
     chmod 440 "$pkgdir/etc/sudoers.d/netsplitter"
 
