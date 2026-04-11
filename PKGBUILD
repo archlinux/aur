@@ -1,6 +1,6 @@
 # Maintainer: Aman Adlakha <amanady125@gmail.com>
 pkgname=ethos-forge
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="The Ethos Package Manager"
 arch=('x86_64' 'aarch64')
