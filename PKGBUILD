@@ -1,7 +1,7 @@
 # Maintainer: FTS427 <FTS427@outlook.com>
 # Contributor: EndstoneMC <hello@endstone.dev>
 pkgname=python-endstone-git
-pkgver=0.11.0
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="High-level Plugin API for Bedrock Dedicated Servers (BDS), in both Python and C++"
 arch=('x86_64')
