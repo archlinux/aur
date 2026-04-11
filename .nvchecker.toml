@@ -1,0 +1,4 @@
+[svg_to_ico]
+source = "github"
+github = "Ortham/svg_to_ico"
+use_max_tag = true
