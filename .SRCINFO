@@ -1,0 +1,21 @@
+pkgbase = hw-monitor
+	pkgdesc = A lightweight hardware monitor built with Tauri
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/husseinhareb/hw-monitor
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = cairo
+	depends = glib2
+	depends = dbus
+	depends = hicolor-icon-theme
+	optdepends = nvidia-utils: NVIDIA GPU monitoring
+	conflicts = hw-monitor-git
+	options = !strip
+	options = !debug
+	source = hw-monitor-0.0.3.deb::https://github.com/husseinhareb/hw-monitor/releases/download/v0.0.3/hw-monitor_0.0.3_amd64.deb
+	sha256sums = 2ce9e32c3c0c22d93df97f34559dbd2e84cd03f41f11da827a4530607354955f
+
+pkgname = hw-monitor
