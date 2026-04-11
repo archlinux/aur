@@ -1,7 +1,7 @@
 # Maintainer: Mefkuz <mefkuz@mefkuz.com>
 pkgname=scholarflow
-pkgver=1.2.0
-pkgrel=6
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Google Gemini destekli, modern tasarımlı yerel akademik asistan (GUI Sürümü)"
 arch=('any')
 url="https://github.com/mefkuz/scholarflow-gui"
