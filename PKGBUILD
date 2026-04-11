@@ -1,6 +1,6 @@
 pkgname=taskers-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Agent-first terminal workspace (latest published Linux bundle)'
 arch=('x86_64')
 url='https://github.com/OneNoted/taskers'
