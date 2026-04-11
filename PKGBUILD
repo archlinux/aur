@@ -1,6 +1,6 @@
 # Maintainer: wasdxl <xiaotianjuewo@foxmail.com>
 pkgname=tauritavern-bin
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="A Tauri-based frontend for SillyTavern (Binary repackaged for Arch Linux)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ conflicts=('tauritavern')
 
 source=("https://github.com/Darkatse/TauriTavern/releases/download/v${pkgver}/TauriTavern_${pkgver}_amd64.deb")
 
-md5sums=('f06170b0506bd308d63e248fc7d7857c')
+md5sums=('c31d7f45c6777136137e83fbca14ba06')
 
 package() {
     cd "${srcdir}"
