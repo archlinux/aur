@@ -2,7 +2,7 @@
 
 _pkgname=ptex
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc='Per-Face Texture Mapping for Production Rendering (mingw-w64)'
 url='http://ptex.us/'
@@ -19,7 +19,7 @@ optdepends=()
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/wdas/${_pkgname}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('6b4b55f562a0f9492655fcb7686ecc335a2a4dacc1de9f9a057a32f3867a9d9e')
+sha256sums=('dd95fbea4b50e9e68fd042f540fb83157a0ff25053066c3439d4527de3621d34')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
