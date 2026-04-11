@@ -3,7 +3,7 @@
 _cratesio_package='weathery'
 
 pkgname="${_cratesio_package}"
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A terminal weather app with animated cityscapes"
 
@@ -21,7 +21,7 @@ makedepends=('rust')
 
 # source=("${pkgname}-${pkgver}.crate::https://crates.io/api/v1/crates/${_cratesio_package}/${pkgver}/download")
 source=("${pkgname}-${pkgver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5b90b2e024579885902c3d1598171db19aadb626d1af93274cbad4d013082423')
+sha256sums=('92b9074c87d1b6ed7871fd6f6903e3e0dccddbe0c0176b0bdcf2ac3cde3ed5be')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver} || exit 1
