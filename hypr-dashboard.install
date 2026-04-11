@@ -1,3 +1,0 @@
-post_install() {
-  echo "[Dashboard] Done! Run 'hypr-dashboard' to launch."
-}
