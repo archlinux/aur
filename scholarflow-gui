@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+import webview
+import os
+import sys
+import threading
+import http.server
+import socketserver
+import socket
+import time
+
+def find_free_port():
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.bind(('', 0))
+        return s.getsockname()[1]
+
+def start_server(path, port):
+    os.chdir(path)
+    handler = http.server.SimpleHTTPRequestHandler
+    with socketserver.TCPServer(("", port), handler) as httpd:
+        print(f"Serving at port {port}")
+        httpd.serve_forever()
+
+def on_closing(window):
+    # Ask the user if they want to export their data before closing
+    # Use localized message
+    title = "ScholarFlow"
+    message = "Kapatmadan önce verilerinizi dışa aktarmak (yedeklemek) ister misiniz?\n\n(Not: Verileriniz yerel depolamada saklanır ancak tarayıcı geçmişi silinirse kaybolabilir.)"
+    
+    # Show confirmation dialog
+    result = window.create_confirmation_dialog(title, message)
+    
+    if result:
+        # If user clicks "Yes", trigger the JS export function
+        window.evaluate_js("if(window.scholarflow) window.scholarflow.exportUserData()")
+        # Give a small delay for the download to start
+        time.sleep(1)
+    
+    return True # Allow closing
+
+if __name__ == "__main__":
+    # Get the directory of the script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # Path to the build directory (Vite dist)
+    possible_paths = [
+        os.path.join(script_dir, "dist"),
+        "/usr/share/webapps/scholarflow"
+    ]
+    
+    dist_path = None
+    for path in possible_paths:
+        if os.path.exists(path):
+            dist_path = path
+            break
+            
+    if not dist_path:
+        print(f"Error: Build directory not found. Please run 'npm run build' first or ensure the app is installed correctly.")
+        sys.exit(1)
+
+    port = find_free_port()
+    
+    # Start the server in a daemon thread
+    t = threading.Thread(target=start_server, args=(dist_path, port))
+    t.daemon = True
+    t.start()
+
+    # Create persistent storage directory
+    storage_dir = os.path.expanduser("~/.local/share/scholarflow")
+    if not os.path.exists(storage_dir):
+        os.makedirs(storage_dir, exist_ok=True)
+
+    # Open the webview
+    window = webview.create_window('ScholarFlow', f'http://localhost:{port}', width=1200, height=800)
+    
+    # Register close event
+    window.events.closing += on_closing
+    
+    # Start the app with a persistent storage path
+    webview.start(storage_path=storage_dir)
