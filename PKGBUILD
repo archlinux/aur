@@ -88,6 +88,7 @@ prepare() {
 }
 
 build() {
+  export CMAKE_BUILD_PARALLEL_LEVEL=${MAKEFLAGS#-j}
   cmake -S td -B td/build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX="$PWD/td/install" \
