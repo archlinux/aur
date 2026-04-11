@@ -1,6 +1,6 @@
 # Maintainer: sunkhan
 pkgname=decibell
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Decentralized text, voice chat, and streaming app"
 arch=('x86_64')
