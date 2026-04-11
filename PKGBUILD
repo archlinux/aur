@@ -1,5 +1,5 @@
 pkgname=openaether
-pkgver=0.1.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Local AI desktop agent for Arch Linux and Hyprland"
 arch=('x86_64')
@@ -46,7 +46,8 @@ package() {
         ollama \
         pytesseract \
         --target "$pkgdir/opt/openaether/backend/lib" \
-        --no-deps
+        --no-deps \
+        --break-system-packages
 
     # Startskript
     install -dm755 "$pkgdir/usr/bin"
@@ -76,6 +77,10 @@ EOF
     install -Dm644 "$srcdir/openaether.desktop" \
         "$pkgdir/usr/share/applications/openaether.desktop"
 
+    # Icon
+    install -Dm644 openaether.svg \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/openaether.svg"
+
     # systemd service für SearXNG
     install -dm755 "$pkgdir/usr/lib/systemd/system"
     cat > "$pkgdir/usr/lib/systemd/system/openaether-searxng.service" << 'EOF'
@@ -93,4 +98,8 @@ ExecStop=/usr/bin/docker stop searxng
 [Install]
 WantedBy=multi-user.target
 EOF
+
+    # Ensure user-writable directories are not created in /opt
+    # Runtime dirs are handled by the app itself via platformdirs
+    chmod -R 755 "$pkgdir/opt/openaether"
 }
