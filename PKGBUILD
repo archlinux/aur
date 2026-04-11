@@ -10,10 +10,10 @@ license=('MIT')
 depends=('fuse2')  # Required for AppImage
 makedepends=()
 optdepends=()
-provides=('lem')
-conflicts=('lem-git')
+provides=('lem-editor' 'lem')
+conflicts=('lem' 'lem-git')
 source=("lem-appimage::https://github.com/lem-project/lem/releases/download/nightly-latest/Lem-x86_64.AppImage")
-sha256sums=('SKIP')
+sha256sums=('f4ce7a02c51bcf7fa3c388f1ef22b8acd9e48222869e5a5a63350440111e6da9')
 
 prepare() {
     chmod +x "lem-appimage"
