@@ -1,14 +1,13 @@
 pkgbase = xnviewmp-system-libs
 	pkgdesc = An efficient multimedia viewer, browser and converter (using system libraries).
 	pkgver = 1.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xnview.com/en/xnviewmp/
 	arch = x86_64
 	license = custom
 	depends = qt5-location
 	depends = qt5-multimedia
 	depends = qt5-quickcontrols2
-	depends = qt5-sensors
 	depends = qt5-svg
 	depends = qt5-x11extras
 	depends = libc++
