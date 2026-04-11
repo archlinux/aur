@@ -2,7 +2,7 @@
 
 pkgname=ansible-builder
 pkgver=3.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="An Ansible execution environment builder"
 arch=('any')
 url="https://github.com/ansible/ansible-builder"
@@ -32,7 +32,6 @@ b2sums=('d34372ae84688db8ce5788de269212be96fe531b66053c8c812b70519a928ef8b0004be
 
 build() {
     cd "${pkgname}"
-    export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
     python -m build --wheel --no-isolation --skip-dependency-check
 }
 
