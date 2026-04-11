@@ -1,12 +1,12 @@
 # Maintainer: Pinak Dhabu <thepinak503@duck.com>
 pkgname=echomind
 pkgver=0.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="AI-powered CLI tool with multiple provider support, streaming, and interactive mode"
 arch=('x86_64' 'aarch64')
 url="https://github.com/thepinak503/echomind"
 license=('MIT')
-depends=('openssl' 'gcc-libs' 'glibc')
+depends=('openssl' 'gcc-libs' 'glibc' 'alsa-lib')
 makedepends=('rust' 'cargo' 'clang')
 optdepends=(
   'jq: for JSON output formatting'

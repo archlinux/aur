@@ -1,7 +1,7 @@
 pkgbase = echomind
 	pkgdesc = AI-powered CLI tool with multiple provider support, streaming, and interactive mode
 	pkgver = 0.3.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/thepinak503/echomind
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = echomind
 	depends = openssl
 	depends = gcc-libs
 	depends = glibc
+	depends = alsa-lib
 	optdepends = jq: for JSON output formatting
 	optdepends = xclip: clipboard support (X11)
 	optdepends = xsel: clipboard support alternative (X11)
