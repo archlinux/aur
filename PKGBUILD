@@ -1,7 +1,7 @@
 # Maintainer: damachin3 (damachine3 at proton dot me)
 # Website: https://github.com/damachine/coolerdash
 pkgname=coolerdash-git
-pkgver=3.1.0.r0.g75cf82a
+pkgver=3.1.1.r0.g0a0b182
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -12,9 +12,10 @@ url="https://github.com/damachine/coolerdash"
 license=('MIT')
 depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'ttf-roboto')
 makedepends=('gcc' 'make' 'pkg-config' 'git')
-backup=('etc/coolercontrol/plugins/coolerdash/config.json')
+backup=('etc/coolercontrol/plugins/coolerdash/config.json'
+        'etc/coolercontrol/plugins/coolerdash/credentials.json')
 install=coolerdash.install
-_commit=75cf82a6b9f43397a30f377ef1caf69ea031f66f
+_commit=0a0b182354120d95f512faec629cce67406b904f
 source=("coolerdash-git::git+https://github.com/damachine/coolerdash.git#commit=${_commit}")
 sha256sums=('SKIP') # SKIP for git repo source builds
 

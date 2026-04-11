@@ -43,6 +43,7 @@ post_install() {
 
     # Ensure correct permissions on config.json
     chmod 600 /etc/coolercontrol/plugins/coolerdash/config.json 2>/dev/null || true
+    chmod 600 /etc/coolercontrol/plugins/coolerdash/credentials.json 2>/dev/null || true
 
     systemctl daemon-reload
 
@@ -58,6 +59,8 @@ post_install() {
 
     echo "================================================================"
     echo "CoolerDash installed successfully."
+    echo "Set your Access Token in the CoolerDash Settings UI."
+    echo "The token is auto-persisted to credentials.json on startup."
     echo "================================================================"
 }
 
@@ -71,6 +74,7 @@ post_upgrade() {
 
     # Ensure correct permissions on config.json
     chmod 600 /etc/coolercontrol/plugins/coolerdash/config.json 2>/dev/null || true
+    chmod 600 /etc/coolercontrol/plugins/coolerdash/credentials.json 2>/dev/null || true
 
     systemctl daemon-reload
 
@@ -83,6 +87,7 @@ post_upgrade() {
     echo "CoolerDash upgraded successfully."
     echo "Note: config.json is preserved. If a new template was shipped,"
     echo "      compare it with /etc/coolercontrol/plugins/coolerdash/config.json.pacnew"
+    echo "Note: credentials.json is never overwritten by updates."
     echo "================================================================"
 }
 
