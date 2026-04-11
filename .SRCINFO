@@ -1,0 +1,26 @@
+pkgbase = hpsahba-dkms
+	pkgdesc = Kernel patches to enable HBA mode on some HP Smart Array controllers for linux-lts
+	pkgver = 6.18.r41.0a57a52
+	pkgrel = 1
+	url = https://github.com/im-0/hpsahba
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	depends = linux-lts>=6.18
+	depends = linux-lts-headers>=6.18
+	depends = linux-lts<6.19.0
+	depends = linux-lts-headers<6.19.0
+	optdepends = hpsahba
+	provides = hpsahba-dkms
+	conflicts = hpsahba-dkms
+	source = hpsahba-dkms::git+https://github.com/im-0/hpsahba.git#commit=0a57a528dd5cd52214df91e4e9efd197aaa07d68
+	source = hpsa.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/scsi/hpsa.h?h=linux-6.18.y
+	source = hpsa.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/scsi/hpsa.c?h=linux-6.18.y
+	source = hpsa_cmd.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/scsi/hpsa_cmd.h?h=linux-6.18.y
+	sha256sums = 5afb2ac1c652f483b3c26fc6add1aa0adfcc6432f2be010bcc76fcf91cb343db
+	sha256sums = 250c9f7d47b511280d049faae15029a94e7da05a197573aabcd42f72ccb81920
+	sha256sums = 453fc03714d74a440726de5b0daddd72552c2aa4e0c760ed6a774ede21e18c3f
+	sha256sums = 421bde2da8b1cac0dcd09a317d6ebb1f28319dca484830991a58e4f8ef0ae34a
+
+pkgname = hpsahba-dkms
