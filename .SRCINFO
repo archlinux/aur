@@ -1,0 +1,13 @@
+pkgbase = cachefetch-bin
+	pkgdesc = Get cache file sizes in your computer. Cross-platform Linux, Windows, MacOS supported.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ErenayDev/cachefetch
+	arch = x86_64
+	license = MIT
+	source = cachefetch-bin-0.1.0.tar.gz::https://github.com/ErenayDev/cachefetch/releases/download/v0.1.0/cachefetch-x86_64-unknown-linux-gnu-0.1.0.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/ErenayDev/cachefetch/v0.1.0/LICENSE
+	sha256sums = cda99295ccd58bd96b1821f41f729b177189fa186ebb5c5273d93024c797cd01
+	sha256sums = SKIP
+
+pkgname = cachefetch-bin
