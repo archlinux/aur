@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur [at] kokakiwi dot com>
 
 pkgname=fnox
-pkgver=1.15.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Manage secrets with encryption or cloud providers - or both'
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jdx/fnox/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5addb23a6e41086cf06dfa45b11d5babd9c7951cdd226d49e839f1ee1192c991')
-b2sums=('3ee4e33322db7cb896eb0ec03f137a28349dcd16df37ded8ff011424e411d9a37638bf7ad354070c353b68cab17737a92851a05b03b8ab45d52a4809a150aa9f')
+sha256sums=('2eff69f2e9388cf0735ee1ddd525e1645f577403483d34fa475d11870e79ab85')
+b2sums=('404e52e13bfc07489ef7cfa5933c0b74fd8256bcb40c267a832f632b652261e533dc35dfd8522bd9b189dffeb4620731a7feef65af6f5aa8f12f7814821a5965')
 options=('!lto')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
