@@ -1,5 +1,5 @@
 #!/bin/bash
-# Update Lem AUR package with latest nightly release and publish to AUR
+# Update Lem AUR package with latest AppImage and publish to AUR
 
 set -e
 
@@ -31,7 +31,7 @@ log_warn() {
 
 # Check for required tools
 check_tools() {
-    local required_tools=("git" "curl" "docker")
+    local required_tools=("git" "curl" "docker" "sha256sum")
     for tool in "${required_tools[@]}"; do
         if ! command -v "$tool" &> /dev/null; then
             log_error "Required tool '$tool' not found"
@@ -40,29 +40,58 @@ check_tools() {
     done
 }
 
-# Get the latest Lem release tag
-get_latest_release() {
-    log_info "Fetching latest Lem release..."
-    curl -s "https://api.github.com/repos/lem-project/lem/releases" | \
-        jq -r '.[] | select(.assets | length > 0) | .tag_name' | \
-        head -1
+# Get the latest AppImage SHA256
+get_latest_sha() {
+    log_info "Fetching latest AppImage and calculating SHA256..."
+
+    local appimage_url="https://github.com/lem-project/lem/releases/download/nightly-latest/Lem-x86_64.AppImage"
+    local temp_file="/tmp/lem-appimage-latest.AppImage"
+
+    # Download the AppImage
+    curl -sL -o "$temp_file" "$appimage_url" || {
+        log_error "Failed to download AppImage"
+        return 1
+    }
+
+    # Calculate SHA256
+    sha256sum "$temp_file" | awk '{print $1}'
+
+    # Clean up
+    rm -f "$temp_file"
 }
 
-# Update PKGBUILD with new version
-update_pkgbuild() {
-    local release_tag="$1"
+# Update PKGBUILD with new SHA if changed
+update_pkgbuild_sha() {
+    local new_sha="$1"
 
-    # For nightly builds, just increment pkgrel on the same date
-    # For future stable releases, update version as needed
-    log_info "Checking if PKGBUILD needs updating..."
+    log_info "Checking if SHA has changed..."
+
+    # Get current SHA from PKGBUILD
+    local current_sha=$(grep "^sha256sums=" "$SCRIPT_DIR/PKGBUILD" | grep -oP "(?<=\(').*(?='\))" | head -1)
+
+    if [ "$current_sha" = "SKIP" ] || [ -z "$current_sha" ]; then
+        current_sha="(empty/SKIP)"
+    fi
+
+    if [ "$current_sha" = "$new_sha" ]; then
+        log_info "SHA unchanged: $new_sha"
+        return 1  # No update needed
+    fi
+
+    log_info "SHA changed!"
+    log_info "Old SHA: $current_sha"
+    log_info "New SHA: $new_sha"
+
+    # Update the SHA in PKGBUILD (use | as delimiter to avoid issues with SHA content)
+    sed -i "s|^sha256sums=.*|sha256sums=('$new_sha')|" "$SCRIPT_DIR/PKGBUILD"
 
     # Update pkgrel (increment patch version)
     local current_pkgrel=$(grep "^pkgrel=" "$SCRIPT_DIR/PKGBUILD" | cut -d= -f2)
     local new_pkgrel=$((current_pkgrel + 1))
-
     sed -i "s/^pkgrel=.*/pkgrel=$new_pkgrel/" "$SCRIPT_DIR/PKGBUILD"
 
-    log_success "Updated pkgrel to $new_pkgrel"
+    log_success "Updated SHA and pkgrel to $new_pkgrel"
+    return 0  # Update was made
 }
 
 # Generate .SRCINFO using Docker
@@ -80,15 +109,9 @@ generate_srcinfo() {
 
     # Run makepkg --printsrcinfo in Docker
     docker run --rm \
-        -v "$SCRIPT_DIR/PKGBUILD:/build/PKGBUILD:ro" \
-        -v "$SCRIPT_DIR/.SRCINFO:/build/.SRCINFO" \
+        -v "$SCRIPT_DIR:/build" \
         "$DOCKER_IMAGE" \
-        -c "
-            cp /build/PKGBUILD .
-            cp /build/.SRCINFO . 2>/dev/null || true
-            makepkg --printsrcinfo > .SRCINFO
-            cp .SRCINFO /build/.SRCINFO
-        " || {
+        -c "cd /build && makepkg --printsrcinfo > .SRCINFO" || {
         log_error "Failed to generate .SRCINFO"
         exit 1
     }
@@ -119,23 +142,26 @@ commit_changes() {
     cd "$SCRIPT_DIR"
 
     # Check if there are changes to commit
-    if ! git diff --quiet PKGBUILD .SRCINFO 2>/dev/null; then
-        git add PKGBUILD .SRCINFO
-
-        local commit_msg="Update Lem package"
-        # Check git status for exact changes
-        if git diff --cached PKGBUILD | grep -q "pkgrel"; then
-            commit_msg="Bump pkgrel for latest release"
-        fi
-
-        git commit -m "$commit_msg" || {
-            log_warn "No changes to commit or commit failed"
-        }
-
-        log_success "Changes committed"
-    else
+    if git diff --quiet PKGBUILD .SRCINFO 2>/dev/null; then
         log_info "No changes to commit"
+        return 1
     fi
+
+    git add PKGBUILD .SRCINFO
+
+    local commit_msg="Update Lem package to latest AppImage"
+    # Check git status for exact changes
+    if git diff --cached PKGBUILD | grep -q "sha256sums"; then
+        commit_msg="Update Lem AppImage to latest nightly build"
+    fi
+
+    git commit -m "$commit_msg" || {
+        log_warn "Commit failed"
+        return 1
+    }
+
+    log_success "Changes committed"
+    return 0
 }
 
 # Push to AUR
@@ -147,12 +173,13 @@ push_to_aur() {
     # Check if AUR remote exists
     if ! git remote get-url aur &> /dev/null; then
         log_warn "AUR remote not configured. Set up with:"
-        echo "    git remote add aur ssh://aur@aur.archlinux.org/lem.git"
+        echo "    git remote add aur ssh://aur@aur.archlinux.org/lem-editor.git"
         log_warn "Skipping push to AUR"
         return 1
     fi
 
-    git push aur main || {
+    # AUR requires master branch
+    git push aur main:master || {
         log_error "Failed to push to AUR"
         return 1
     }
@@ -168,24 +195,31 @@ main() {
     check_tools
     verify_git_setup
 
-    local latest_release
-    latest_release=$(get_latest_release)
+    # Get the latest SHA
+    local latest_sha
+    latest_sha=$(get_latest_sha)
 
-    if [ -z "$latest_release" ]; then
-        log_error "Could not determine latest release"
+    if [ -z "$latest_sha" ]; then
+        log_error "Could not download AppImage or calculate SHA"
         exit 1
     fi
 
-    log_info "Latest release: $latest_release"
+    log_info "Latest AppImage SHA: $latest_sha"
 
-    # Update PKGBUILD
-    update_pkgbuild "$latest_release"
+    # Check if SHA changed and update PKGBUILD if needed
+    if ! update_pkgbuild_sha "$latest_sha"; then
+        log_success "No updates needed - package is already up-to-date"
+        exit 0
+    fi
 
     # Generate .SRCINFO
     generate_srcinfo
 
     # Commit and push
-    commit_changes
+    if ! commit_changes; then
+        log_warn "No changes to commit"
+        exit 0
+    fi
 
     if push_to_aur; then
         log_success "Update workflow completed successfully!"
