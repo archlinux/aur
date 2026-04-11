@@ -2,7 +2,7 @@
 pkgname=pacsea-bin
 pkgver=0.8.1
 _tag="v$pkgver"
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Firstp1ck/Pacsea"
@@ -47,7 +47,6 @@ source_x86_64=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${
 source_aarch64=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/pacsea-aarch64")
 sha256sums=('3a89523ea08704b4a30efc31b1f99cea9ec7193d89952c10a7cd5b21d77422e3')
 sha256sums_x86_64=('26c6ee6f9868fd988732039931d3049e816dd6fee7f7a8ac7eb7ca10b36503b2')
-# Replace with a real sum (e.g. updpkgsums) after the release includes asset pacsea-aarch64.
 sha256sums_aarch64=('1de184460187a8b2c69356ffc998fd2ae1302f6a7fde4c197a18255069c40023')
 noextract=('Pacsea')
 
