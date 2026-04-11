@@ -40,57 +40,79 @@ check_tools() {
     done
 }
 
-# Get the latest AppImage SHA256
-get_latest_sha() {
-    log_info "Fetching latest AppImage and calculating SHA256..."
+# Get the latest stable release version and SHA256
+get_latest_release_info() {
+    log_info "Fetching latest stable release..."
 
-    local appimage_url="https://github.com/lem-project/lem/releases/download/nightly-latest/Lem-x86_64.AppImage"
-    local temp_file="/tmp/lem-appimage-latest.AppImage"
+    # Get the latest stable release tag (e.g., v2.1.0, v2.3.0)
+    local latest_tag
+    latest_tag=$(curl -s "https://api.github.com/repos/lem-project/lem/releases" | \
+        jq -r '.[] | select(.tag_name | startswith("v")) | select(.prerelease == false) | .tag_name' | \
+        head -1)
 
-    # Download the AppImage
-    curl -sL -o "$temp_file" "$appimage_url" || {
-        log_error "Failed to download AppImage"
+    if [ -z "$latest_tag" ]; then
+        log_error "Could not determine latest stable release"
+        return 1
+    fi
+
+    # Remove 'v' prefix to get version number
+    local version="${latest_tag#v}"
+
+    # Construct download URL for Linux tarball
+    local download_url="https://github.com/lem-project/lem/releases/download/${latest_tag}/lem-ubuntu-x86-64-${latest_tag}.tar.gz"
+    local temp_file="/tmp/lem-${version}.tar.gz"
+
+    log_info "Downloading v${version}..."
+
+    # Download the tarball
+    curl -sL -o "$temp_file" "$download_url" || {
+        log_error "Failed to download release tarball from $download_url"
+        rm -f "$temp_file"
         return 1
     }
 
     # Calculate SHA256
-    sha256sum "$temp_file" | awk '{print $1}'
+    local sha256
+    sha256=$(sha256sum "$temp_file" | awk '{print $1}')
+
+    # Output version and SHA
+    echo "$version|$sha256"
 
     # Clean up
     rm -f "$temp_file"
 }
 
-# Update PKGBUILD with new SHA if changed
-update_pkgbuild_sha() {
-    local new_sha="$1"
+# Update PKGBUILD with new version and SHA if changed
+update_pkgbuild_version() {
+    local version_sha="$1"
+    local new_version="${version_sha%|*}"
+    local new_sha="${version_sha#*|}"
 
-    log_info "Checking if SHA has changed..."
+    log_info "Checking if version has changed..."
 
-    # Get current SHA from PKGBUILD
-    local current_sha=$(grep "^sha256sums=" "$SCRIPT_DIR/PKGBUILD" | grep -oP "(?<=\(').*(?='\))" | head -1)
+    # Get current version from PKGBUILD
+    local current_version=$(grep "^pkgver=" "$SCRIPT_DIR/PKGBUILD" | cut -d= -f2)
 
-    if [ "$current_sha" = "SKIP" ] || [ -z "$current_sha" ]; then
-        current_sha="(empty/SKIP)"
-    fi
-
-    if [ "$current_sha" = "$new_sha" ]; then
-        log_info "SHA unchanged: $new_sha"
+    if [ "$current_version" = "$new_version" ]; then
+        log_info "Version unchanged: $new_version"
         return 1  # No update needed
     fi
 
-    log_info "SHA changed!"
-    log_info "Old SHA: $current_sha"
+    log_info "New version available!"
+    log_info "Old version: $current_version"
+    log_info "New version: $new_version"
     log_info "New SHA: $new_sha"
 
-    # Update the SHA in PKGBUILD (use | as delimiter to avoid issues with SHA content)
+    # Update version
+    sed -i "s/^pkgver=.*/pkgver=$new_version/" "$SCRIPT_DIR/PKGBUILD"
+
+    # Update SHA (use | as delimiter to avoid issues with SHA content)
     sed -i "s|^sha256sums=.*|sha256sums=('$new_sha')|" "$SCRIPT_DIR/PKGBUILD"
 
-    # Update pkgrel (increment patch version)
-    local current_pkgrel=$(grep "^pkgrel=" "$SCRIPT_DIR/PKGBUILD" | cut -d= -f2)
-    local new_pkgrel=$((current_pkgrel + 1))
-    sed -i "s/^pkgrel=.*/pkgrel=$new_pkgrel/" "$SCRIPT_DIR/PKGBUILD"
+    # Reset pkgrel to 1 for new version
+    sed -i "s/^pkgrel=.*/pkgrel=1/" "$SCRIPT_DIR/PKGBUILD"
 
-    log_success "Updated SHA and pkgrel to $new_pkgrel"
+    log_success "Updated to v$new_version with pkgrel=1"
     return 0  # Update was made
 }
 
@@ -195,19 +217,20 @@ main() {
     check_tools
     verify_git_setup
 
-    # Get the latest SHA
-    local latest_sha
-    latest_sha=$(get_latest_sha)
+    # Get the latest release info (version and SHA)
+    local release_info
+    release_info=$(get_latest_release_info)
 
-    if [ -z "$latest_sha" ]; then
-        log_error "Could not download AppImage or calculate SHA"
+    if [ -z "$release_info" ]; then
+        log_error "Could not fetch latest release information"
         exit 1
     fi
 
-    log_info "Latest AppImage SHA: $latest_sha"
+    local version="${release_info%|*}"
+    log_info "Latest stable release: v$version"
 
-    # Check if SHA changed and update PKGBUILD if needed
-    if ! update_pkgbuild_sha "$latest_sha"; then
+    # Check if version changed and update PKGBUILD if needed
+    if ! update_pkgbuild_version "$release_info"; then
         log_success "No updates needed - package is already up-to-date"
         exit 0
     fi
