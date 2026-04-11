@@ -10,14 +10,15 @@ pkgbase = rill
 	makedepends = zig
 	depends = wayland
 	depends = river
+	depends = libxkbcommon
 	optdepends = alacritty: Default terminal emulator
 	optdepends = wireplumber: Default audio manager
 	optdepends = awww: Default wallpaper manager
 	optdepends = wl-clip-persist: Used in default configuration
 	noextract = zig-wayland.zip::https://codeberg.org/ifreund/zig-wayland/archive/v0.5.0.zip
-	source = https://codeberg.org/lzj15/rill/archive/v0.5.0.tar.gz
+	source = https://codeberg.org/lzj15/rill/archive/0.5.0.tar.gz
 	source = zig-wayland.zip::https://codeberg.org/ifreund/zig-wayland/archive/v0.5.0.zip
-	sha256sums = 56ff76abb108943eb4da06bcdd31be2f1628eb2ad3896a616558958ab67be31e
+	sha256sums = e11a26eef4c1254a634edc12414bc541c583784a286b0a0b1e8e3626ab3e7797
 	sha256sums = 816d6d9fffeb596244e5467b60f5b21575ba779e441a27dcc63ce5f6a5a09841
 
 pkgname = rill
