@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bitwarden-bin
 pkgver=2026.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure and free password manager for all of your devices."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://bitwarden.com"
 license=('GPL-3.0-only')
 depends=(
@@ -19,13 +19,29 @@ depends=(
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 install="${pkgname%-bin}.install"
-source=("https://github.com/bitwarden/clients/releases/download/desktop-v$pkgver/Bitwarden-$pkgver-amd64.deb"
-        "${pkgname%-bin}.sh")
-sha512sums=('f9d7446b6afb994f5a5c704ee53c467044bf796c48e59627df21de38a7bbb3b868ebfb10450bcebbeaf18157c0f865f00eb8669077aa5fda18243dc34e78f1e5'
-            'b263968cafae65e2456f1ba6bc9fad3c2e5b502ef74b519866c9d028059442f56bf0579cdad9fd74e30d4352e05f72fc9b8e045d80bd49f0a43c113215431014')
+source=("${pkgname%-bin}.sh")
+source_x86_64=("https://github.com/bitwarden/clients/releases/download/desktop-v$pkgver/Bitwarden-$pkgver-amd64.deb")
+source_aarch64=("https://github.com/bitwarden/clients/releases/download/desktop-v$pkgver/${pkgname%-bin}_${pkgver}_arm64.tar.gz")
+noextract=("${pkgname%-bin}_${pkgver}_arm64.tar.gz")
+sha256sums=('685a3279ba62b5ea90ec279b57644da747c4a83dcb67fd41bac3c25420dbb642')
+sha256sums_x86_64=('41df25b79e61381463d3901347c7a2927874d8229a174efdbac5b9115f184e40')
+sha256sums_aarch64=('d0ad123773c8816f1125f0fd15b43c6732ad0d04c873b7d69e3f9bdcfcfc7ecc')
 
 package() {
-	bsdtar xf data.tar.xz -C "$pkgdir"
+  if [ $CARCH == "aarch64" ]; then
+    install -d "$pkgdir/opt/Bitwarden"
+    bsdtar xf "${pkgname%-bin}_${pkgver}_arm64.tar.gz" -C "$pkgdir/opt/Bitwarden/"
+    install -d "$pkgdir/usr/share/applications"
+    ln -s "/opt/Bitwarden/resources/com.${pkgname%-bin}.desktop.desktop" \
+      "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
+    for i in 16 32 64 128 256 512 1024; do
+      install -d "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
+      ln -s "/opt/Bitwarden/resources/icons/${i}x${i}.png" \
+        "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname%-bin}.png"
+    done
+  else
+    bsdtar xf data.tar.xz -C "$pkgdir"
+  fi
 
   chmod 04755 "$pkgdir/opt/Bitwarden/chrome-sandbox"
 
@@ -35,5 +51,5 @@ package() {
   desktop-file-edit --set-key=Exec --set-value="${pkgname%-bin} %U" \
     "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
 
-	install -Dm755 "${pkgname%-bin}.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
+  install -Dm755 "${pkgname%-bin}.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
 }
