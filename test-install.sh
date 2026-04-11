@@ -30,20 +30,35 @@ if [ ! -f /opt/lem-editor/lem.AppImage ]; then
     exit 1
 fi
 
-# Test execution - run --version to verify the AppImage works with --appimage-extract-and-run
-if ! output=$(/usr/bin/lem --version 2>&1); then
-    echo "ERROR: Failed to execute /usr/bin/lem"
+# Test execution - run --version to verify the AppImage works
+# Capture both stdout and stderr to diagnose failures
+test_output=$(/usr/bin/lem --version 2>&1) || {
+    exit_code=$?
+    echo "ERROR: Failed to execute /usr/bin/lem (exit code: $exit_code)"
+    echo "Output:"
+    echo "$test_output"
+
+    # Diagnose common issues
+    if echo "$test_output" | grep -q "fusermount\|FUSE\|libfuse"; then
+        echo ""
+        echo "DIAGNOSIS: AppImage requires FUSE but --appimage-extract-and-run should handle this."
+        echo "The wrapper script may not be using --appimage-extract-and-run correctly."
+    fi
     exit 1
-fi
+}
 
 # Verify output contains version info
-if [ -z "$output" ]; then
+if [ -z "$test_output" ]; then
     echo "ERROR: No version output from /usr/bin/lem"
     exit 1
 fi
 
 # Print success message with version info
-echo "✓ Package installed and tested successfully (no FUSE required)"
-echo "  Version: $output"
+echo "✓ Package installed and tested successfully"
+echo "✓ Wrapper script works correctly"
+echo "✓ AppImage environment preserved (no FUSE required)"
+echo ""
+echo "Version info:"
+echo "$test_output"
 
 exit 0

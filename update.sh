@@ -182,16 +182,17 @@ validate_package() {
     log_info "Testing package installation on fresh Arch image..."
 
     local install_test_log="/tmp/install-test-$$.log"
-    docker run --rm \
+    if ! docker run --rm \
         -v "$pkg_file:/tmp/lem-editor.pkg.tar.zst:ro" \
         -v "$SCRIPT_DIR/test-install.sh:/test-install.sh:ro" \
         archlinux:latest \
-        bash /test-install.sh > "$install_test_log" 2>&1 || {
+        bash /test-install.sh > "$install_test_log" 2>&1; then
         log_error "Package installation or execution failed!"
-        cat "$install_test_log"
+        log_error "Test output:"
+        cat "$install_test_log" | sed 's/^/  /'
         rm -rf "$temp_build" "$install_test_log" /tmp/build-output-$$.log
         return 1
-    }
+    fi
 
     log_success "Package installed and tested successfully"
 
