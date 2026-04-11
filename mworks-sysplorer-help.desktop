@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sysplorer 帮助文档
+Name[zh_CN]=Sysplorer 帮助文档
+Comment=打开 MWORKS.Sysplorer 帮助文档
+Exec=xdg-open file:///opt/mworks-sysplorer/Docs/homepage/index.html
+Icon=/opt/mworks-sysplorer/Install/config/logo.png
+Terminal=false
+Categories=Documentation;Education;

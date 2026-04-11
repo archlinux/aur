@@ -1,0 +1,90 @@
+_instdir="/opt/mworks-sysplorer"
+
+post_install() {
+    echo ""
+    echo "==> MWORKS.Sysplorer 已安装至 ${_instdir}"
+    echo ""
+    echo "==> 帮助文档："
+    echo "    Sysplorer 内置帮助中心在 Linux 上存在已知 bug，点击无响应。"
+    echo "    可通过桌面菜单中的「Sysplorer 帮助文档」快捷方式，"
+    echo "    或直接在浏览器中打开以下地址访问："
+    echo "      file://${_instdir}/Docs/homepage/index.html"
+    echo ""
+    echo "==> 【可选】配置 Sysplorer MCP 服务器："
+    echo "    ${_instdir}/Tools/sysplorer_mcp/install_mcp.sh -d ${_instdir}"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    # 获取实际用户的家目录
+    local _user_home
+    if [ -n "$SUDO_USER" ]; then
+        _user_home=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+    else
+        _user_home="$HOME"
+    fi
+
+    # 清理 MCP 配置（删除三个客户端配置文件中的 sysplorer_mcp 条目）
+    echo "==> 正在清理 Sysplorer MCP 配置..."
+    python3 - "$_user_home" << 'PYEOF'
+import sys, json, os
+
+home = sys.argv[1]
+claude_path   = os.path.join(home, ".claude.json")
+opencode_path = os.path.join(home, ".config", "opencode", "opencode.json")
+codex_path    = os.path.join(home, ".codex", "config.toml")
+
+def clean_json(path, parent_key):
+    """从 JSON 文件中删除 parent_key 下的 sysplorer_mcp / mworks_mcp 条目"""
+    if not os.path.exists(path):
+        return
+    with open(path, "r", encoding="utf-8") as f:
+        cfg = json.load(f)
+    changed = any(cfg.get(parent_key, {}).pop(k, None) is not None
+                  for k in ("sysplorer_mcp", "mworks_mcp"))
+    if changed:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(cfg, f, indent=2, ensure_ascii=False)
+            f.write("\n")
+        print(f"  已清理: {path}")
+
+def clean_toml(path):
+    """从 TOML 文件中删除 [mcp_servers.sysplorer_mcp] / [mcp_servers.mworks_mcp] 块"""
+    if not os.path.exists(path):
+        return
+    with open(path, "r", encoding="utf-8") as f:
+        body = f.read()
+    original = body
+    for key in ("sysplorer_mcp", "mworks_mcp"):
+        header = f"[mcp_servers.{key}]"
+        lines = body.splitlines()
+        out, i = [], 0
+        while i < len(lines):
+            if lines[i].strip() == header:
+                i += 1
+                while i < len(lines) and not lines[i].lstrip().startswith("["):
+                    i += 1
+                continue
+            out.append(lines[i])
+            i += 1
+        body = "\n".join(out)
+    if body != original:
+        with open(path, "w", encoding="utf-8", newline="\n") as f:
+            f.write(body)
+        print(f"  已清理: {path}")
+
+clean_json(claude_path,   "mcpServers")
+clean_json(opencode_path, "mcp")
+clean_toml(codex_path)
+PYEOF
+
+    local _cache_dir="${_user_home}/MWORKS_Sysplorer_Cache"
+    if [ -d "$_cache_dir" ]; then
+        echo "==> 正在清理 Sysplorer 缓存目录..."
+        rm -rf "$_cache_dir"
+        echo "  已清理: ${_cache_dir}"
+    fi
+}
