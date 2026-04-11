@@ -1,6 +1,6 @@
 pkgbase = uutils-coreutils-git
 	pkgdesc = Rust rewrite of coreutils
-	pkgver = 0.7.0.r46.gde5e4f5
+	pkgver = 0.8.0.r41.g56210f1
 	pkgrel = 1
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
@@ -15,8 +15,12 @@ pkgbase = uutils-coreutils-git
 	conflicts = uutils-coreutils
 	conflicts = coreutils
 	source = uutils-coreutils::git+https://github.com/uutils/coreutils.git
+	source = tee.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11686.patch
+	source = yes-boost.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11458.patch
 	source = https://github.com/uutils/coreutils/releases/download/latest-commit/docs.tar.zst
 	b2sums = SKIP
-	b2sums = SKIP
+	b2sums = dbec4e3bffcee0989fe954dc5ffe0fdf537a9c9eb637a2c5c48baa108b731526887a1c93489fef2470d874a0da7fd8ecc83e2b2b88327d39ca577204de4829f6
+	b2sums = f1e2d0dd807e42815d48ffc6c25cabcdd3fac3d32568c4f90656ae623842d1f0e77f3fc393bc589e1ce9e7fa6f78749694cb72d5be38769ce694cc7f08eb1ff7
+	b2sums = 95b64a22c40ec2cd357334c6ddedef7ba05f8b30b43535fefdad4c5dad7aaf27f37ba928c3930b55fca2993312f27574d90546dfb7f8a8efcd7688fe955a74b4
 
 pkgname = uutils-coreutils-git
