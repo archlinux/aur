@@ -2,7 +2,7 @@
 # Package name uses -bin suffix (AUR convention for pre-built binaries)
 
 pkgname=connectlnx-bin
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Cross-platform LAN file transfer app built with Kotlin Multiplatform"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('connectlnx')
 provides=('connectlnx')
 
 source=("connectlnx-${pkgver}.deb::https://github.com/3DBarath/connectlnx-releases/releases/download/v${pkgver}/connectlnx_${pkgver}_amd64.deb")
-sha256sums=('63d4e2539352cce9e0025c337d0e52f66f39872c51da11db0d668f497161da4e')  # ← Replace with: sha256sum connectlnx_1.0.0_amd64.deb
+sha256sums=('c55f6a4a6e2b7cffb747a782206c50c05234879c05e02bd977a316743172381d')  # ← Replace with: sha256sum connectlnx_1.0.0_amd64.deb
 
 package() {
     cd "$srcdir"
