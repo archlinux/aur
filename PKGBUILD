@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=folder-color-nemo
 _pkgname=${pkgname%-nemo}
-pkgver=0.4.1
-pkgrel=5
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Change your folder color in Nemo"
 arch=('any')
 url="https://github.com/costales/folder-color"
@@ -17,16 +17,19 @@ makedepends=(
   'python-wheel'
 )
 conflicts=('folder-color-bzr' 'folder-color-common')
-_commit=67428606aa802e624b5b783f9f06f8bd724ae56c  # 0.4.1
+_commit=45480ec319c3ba5032f0a5e89d2af728d9dd464f
 source=("git+https://github.com/costales/folder-color.git#commit=${_commit}")
-sha256sums=('SKIP')
+sha256sums=('244a8b2ab1581c9d7f557b9d419940dd623102481b2a20a10e2f8ea676ca6bcf')
+
+prepare() {
+  cd "${_pkgname}"
+  git clean -dfx
+}
 
 build() {
   cd "${_pkgname}"
-  git clean -dfx
-
   pushd install-scripts
-  ./nemo.sh GTK3
+  ./nemo.sh
   popd
 
   python -m build --wheel --no-isolation
@@ -35,6 +38,9 @@ build() {
 package() {
   cd "${_pkgname}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -d "$pkgdir/usr/share/icons"
+  cp -r icons/* "$pkgdir/usr/share/icons/"
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   mv "${pkgdir}${site_packages}/usr/share/nemo-python" "$pkgdir/usr/share/"
