@@ -8,8 +8,10 @@ url="https://esotericsoftware.com"
 license=('custom')
 depends=('xorg-xrandr')
 options=('!strip')
-source=("SpineTrial.tar.gz::https://jp.esotericsoftware.com/launcher/linux")
-sha256sums=('SKIP')
+source=("SpineTrial.tar.gz::https://jp.esotericsoftware.com/launcher/linux"
+        "SpineTrial.ico")
+sha256sums=('SKIP'
+            'SKIP')
 
 package() {
     install -dm755 "${pkgdir}/opt/spine-trial"
@@ -23,13 +25,15 @@ exec /opt/spine-trial/SpineTrial.sh "$@"
 EOF
     chmod +x "${pkgdir}/usr/bin/spine-trial"
 
+    install -Dm644 "${srcdir}/SpineTrial.ico" "${pkgdir}/usr/share/pixmaps/spine-trial.ico"
+
     install -dm755 "${pkgdir}/usr/share/applications"
     cat > "${pkgdir}/usr/share/applications/spine-trial.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
 Name=Spine Trial
 Exec=spine-trial
-Icon=spine-trial
+Icon=/usr/share/pixmaps/spine-trial.ico
 Categories=Graphics;
 EOF
 }
