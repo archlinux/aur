@@ -2,7 +2,7 @@
 
 pkgname=sql-tap
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch SQL traffic in real-time with a TUI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mickamy/sql-tap"
@@ -14,7 +14,7 @@ sha256sums=('99e76c7c4ec24337cb47953326198f219ef1b4b8ddbcb19c862184191ba0209d')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  export GOPATH="$srcdir/go"
+  export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
   go mod download
 }
 
@@ -28,8 +28,8 @@ build() {
   go build -ldflags="-linkmode=external -X main.version=$pkgver" -o "$pkgname" .
   go build -ldflags="-linkmode=external -X main.version=$pkgver" -o "${pkgname}d" "./cmd/${pkgname}d"
 
-  # Make sure go path is writable so it can be cleaned up
-  chmod -R u+w "$srcdir/go"
+  # Clean up deps
+  go clean -modcache
 }
 
 package() {
