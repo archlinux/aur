@@ -1,0 +1,13 @@
+diff -Npur a/wordbook/meson.build b/wordbook/meson.build
+--- a/wordbook/meson.build	2026-04-11 10:21:42.647313128 -0600
++++ b/wordbook/meson.build	2026-04-11 10:35:20.208438103 -0600
+@@ -54,9 +54,3 @@ wordbook_sources = [
+ ]
+ 
+ install_data(wordbook_sources, install_dir: moduledir)
+-
+-install_subdir(
+-  join_paths(meson.project_source_root(), 'subprojects/wn/wn'),
+-  install_dir: pkgdatadir,
+-  exclude_directories: ['__pycache__']
+-)
