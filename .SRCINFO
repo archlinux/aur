@@ -1,7 +1,7 @@
 pkgbase = hypr-dashboard
 	pkgdesc = A Hyprland Dashboard script that tiles btop, glava, fastfetch, and tty-clock
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ivanimmanuel-dev/Hypr-Dashboard
 	arch = any
 	license = MIT
