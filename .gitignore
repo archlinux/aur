@@ -1,0 +1,8 @@
+# Build artifacts
+src/
+pkg/
+*.pkg.tar.*
+*.log
+
+# Cloned sources
+opensourcetree/
