@@ -1,0 +1,14 @@
+pkgbase = archavenger-bin
+	pkgdesc = Archavenger is a simple tool for cleaning up Arch Linux package repositories. (prebuilt binary)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/kobe-koto/archavenger
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = bun
+	provides = archavenger
+	conflicts = archavenger
+	source = archavenger-bin-0.0.1.min.js::https://github.com/kobe-koto/archavenger/releases/download/v0.0.1/archavenger.min.js
+	sha256sums = ee02f00b661bf4aa6f242115d5e92dbedfc09cba6a95ddbf39bbd7a856c74a24
+
+pkgname = archavenger-bin
