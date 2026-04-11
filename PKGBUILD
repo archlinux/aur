@@ -37,6 +37,7 @@ depends=(
 )
 makedepends=(
 	'boost'
+	'boost-libs'
 	'cbindgen'
 	'cmake'
 	#'git'
@@ -64,7 +65,7 @@ build() {
 	tar -zcf "libloot.tar.gz" ./pkg/
 
 	# https://github.com/loot/loot?tab=readme-ov-file#cmake-variables
-	# TODO(Martim): Fix minizip, minizip-ng is not checked for
+	# TODO(Martin): Fix minizip, minizip-ng is not checked for
 	#               and minizip does not have cmake files as they were added in 2025-02 for which there is no release
 	# REQUIRE_FIND_PACKAGE definitions are there to prevent dependencies being gotten off network instead of system
 	cmake -B build \
