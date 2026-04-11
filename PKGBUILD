@@ -1,38 +1,53 @@
-# Maintainer: redponike <proton dot me>
+# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
+# Contributor: redponike <proton dot me>
 # Contributor: Gavin Lloyd <gavinhungry@gmail.com>
 
-pkgname=mixbench-cuda-git
-pkgver=0.224.v0.04.13.g597b700
+pkgname=mixbench-rocm-git
+pkgver=0.228.v0.04.17.g32edeca
 pkgrel=1
-pkgdesc="GPU benchmark tool for evaluating GPUs on mixed operational intensity kernels (CUDA implementation)"
+pkgdesc="GPU benchmark tool for evaluating GPUs on mixed operational intensity kernels (ROCm implementation)"
 url="https://github.com/ekondis/mixbench"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 arch=('x86_64')
-makedepends=('git' 'cmake')
-depends=()
-source=("${pkgname}::git+${url}.git#branch=master")
+makedepends=(
+  git
+  cmake
+  ninja
+  rocm-hip-sdk
+)
+depends=(
+  hip-runtime-amd
+  libstdc++
+  glibc
+  libgcc
+)
+_srcname="ekondis-mixbench"
+source=("${_srcname}::git+${url}.git#branch=master")
 sha256sums=('SKIP')
 
-warn_build_references() {
-  /bin/true
-}
-
 pkgver () {
-  cd "${srcdir}/${pkgname}"
+  cd "${_srcname}"
   echo "0.$(git rev-list --count HEAD).$(git describe --always --tags | sed 's|-|.|g')"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${_srcname}"
 
-  cmake -B build -S mixbench-cuda \
-    -DCMAKE_BUILD_TYPE=None \
-    -Wno-dev
-
-  make -C build
+  local cmake_options=(
+    -B build
+    -G Ninja
+    -S mixbench-hip
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=None
+    # -fcf-protection is not supported by HIP, see (Related docs were removed in version 6.2.4)
+    # https://rocm.docs.amd.com/projects/llvm-project/en/docs-6.2.2/reference/rocmcc.html#support-status-of-other-clang-options
+    -D CMAKE_CXX_FLAGS="${CXXFLAGS} -fcf-protection=none"
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build"
-  install -Dm755 "mixbench-cuda" "${pkgdir}/usr/bin/mixbench-cuda"
+  cd "${_srcname}"
+  install -Dm755 "build/mixbench-hip" "${pkgdir}/usr/bin/mixbench-hip"
 }

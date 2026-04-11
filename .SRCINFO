@@ -1,13 +1,19 @@
-pkgbase = mixbench-cuda-git
-	pkgdesc = GPU benchmark tool for evaluating GPUs on mixed operational intensity kernels (CUDA implementation)
-	pkgver = 0.224.v0.04.13.g597b700
+pkgbase = mixbench-rocm-git
+	pkgdesc = GPU benchmark tool for evaluating GPUs on mixed operational intensity kernels (ROCm implementation)
+	pkgver = 0.228.v0.04.17.g32edeca
 	pkgrel = 1
 	url = https://github.com/ekondis/mixbench
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = cmake
-	source = mixbench-cuda-git::git+https://github.com/ekondis/mixbench.git#branch=master
+	makedepends = ninja
+	makedepends = rocm-hip-sdk
+	depends = hip-runtime-amd
+	depends = libstdc++
+	depends = glibc
+	depends = libgcc
+	source = ekondis-mixbench::git+https://github.com/ekondis/mixbench.git#branch=master
 	sha256sums = SKIP
 
-pkgname = mixbench-cuda-git
+pkgname = mixbench-rocm-git
