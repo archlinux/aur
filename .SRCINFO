@@ -1,6 +1,6 @@
 pkgbase = patchance
 	pkgdesc = A modern graphical patchbay for JACK
-	pkgver = 1.3.2
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/Houston4444/Patchance
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = patchance
 	depends = python-pyliblo
 	depends = qt6-svg
 	optdepends = python-pyalsa: ALSA ports connection support
-	source = https://github.com/Houston4444/Patchance/releases/download/v1.3.2/Patchance-1.3.2-source.tar.gz
-	sha256sums = 5e838637154a7b46ad2c13e1f3a3b657bd6fbab0b389cab00688010d0e5c9224
+	source = https://github.com/Houston4444/Patchance/releases/download/v1.4.0/Patchance-1.4.0-source.tar.gz
+	sha256sums = 53bfe5fb3cfc4f5726104630afaf0df89e86fcad2b6c91662943af79e56fee4c
 
 pkgname = patchance
