@@ -1,7 +1,7 @@
 # Maintainer: pxlwh <pxlwh@aur>
 pkgname=booru-viewer-git
 _pkgname=booru-viewer
-pkgver=0.2.5.r7.gc91326b
+pkgver=0.2.5.r9.g0aa3d81
 pkgrel=1
 pkgdesc="Local booru image browser with Qt6 GUI (Danbooru, Gelbooru, e621, and more)"
 arch=('any')
@@ -10,7 +10,6 @@ license=('MIT')
 depends=(
   'python'
   'python-httpx'
-  'python-h2'
   'python-pillow'
   'pyside6'
   'python-mpv'
