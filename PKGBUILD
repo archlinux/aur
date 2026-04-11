@@ -8,7 +8,7 @@ pkgname=(
   gdm-multiseat
   libgdm-multiseat
 )
-pkgver=49.1
+pkgver=50.0
 pkgrel=1
 pkgdesc="Display manager and login screen with multiseat support"
 url="https://gitlab.gnome.org/GNOME/gdm"
@@ -18,22 +18,20 @@ depends=(
   accountsservice
   audit
   bash
-  gcc-libs
   gdk-pixbuf2
   glib2
   glibc
   gnome-session
   gnome-shell
-  gtk3
   json-glib
   keyutils
   libcanberra
+  libgcc
   libgudev
-  libx11
   libxau
   libxcb
-  libxdmcp
   pam
+  polkit
   systemd
   systemd-libs
   upower
@@ -47,14 +45,6 @@ makedepends=(
   meson
   plymouth
   yelp-tools
-#  xorg-server
-#  xorg-xhost
-#  xorg-xrdb
-)
-optdepends=(
-  'xorg-server: X session support'
-  'xorg-xhost: X session support'
-  'xorg-xrdb: X session support'
 )
 checkdepends=(check)
 source=(
@@ -62,9 +52,9 @@ source=(
   0001-Xsession-Don-t-start-ssh-agent-by-default.patch
   291.patch
 )
-b2sums=('f572859eeedc982b41819a0181baccdd3e1d8a364de4f9cf0335f0ad59678d95857478276537bc61839728076cf4150383fa2158d4a52847de9ba99a2b191826'
+b2sums=('5c3784315c8718aabe6c4abacfca3bc00ac8d028f2a0442d397496633f1e0af44ac4dd156d8b2025212b68a43b3d837d32423aa82cc2be7d565f2445c8144839'
         'f7e868fdd7cc121433de1572583eb728f4d186cd4f52c6d6c8f2ccf4a3cf781144ff71f704f13571ddb97a1ff4ec55cfa3df25d38737ad19da21e84ddc2d3ee4'
-        '0264316685d58b04ec28dbfa72d3be9e082b59b504ef68df1e7eabc3c6e0cd44c5dbd9bf595207090d94c624f9f7aefd2b958431212549a12989a7859743f654')
+        '3e29d50e6f96a7d56f40fae808ba25147a4c4114bae4fb48b1f7c9c698359dcca95d3eae65f9c288f4667b3f94a56f05761d36ea0e32898723c3453ec9e491db')
 
 prepare() {
   cd gdm
@@ -80,7 +70,6 @@ build() {
     -D default-pam-config=arch
     -D default-path="/usr/local/bin:/usr/local/sbin:/usr/bin"
     -D gdm-xsession=true
-    -D ipv6=true
     -D run-dir=/run/gdm
     -D selinux=disabled
   )
@@ -128,6 +117,7 @@ package_gdm-multiseat() {
   install -Dm644 /dev/stdin usr/lib/sysusers.d/gdm.conf <<END
 g gdm 120 -
 END
+  mkdir -p var/lib/gdm
 
   install -Dm644 /dev/stdin usr/share/glib-2.0/schemas/30_org.archlinux.gdm.gschema.override <<END
 [org.gnome.login-screen]
@@ -144,9 +134,9 @@ package_libgdm-multiseat() {
   pkgdesc+=" - support library"
   depends=(
     dconf
-    gcc-libs
     glib2
     glibc
+    libgcc
     libg{lib,object,io}-2.0.so
     libsystemd.so
     systemd-libs
