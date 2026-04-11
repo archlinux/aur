@@ -8,7 +8,7 @@ pkgbase = hawser-git
 	license = MIT
 	makedepends = go
 	makedepends = git
-	conflicts = hawser-git
+	conflicts = hawser
 	source = git+https://github.com/Finsys/hawser.git
 	sha256sums = SKIP
 
