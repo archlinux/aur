@@ -23,7 +23,8 @@ prepare() {
 package() {
     # Install the extracted binary (no FUSE dependency needed)
     # The AppImage extracts to squashfs-root/ directory
-    install -Dm755 "squashfs-root/usr/bin/lem" "${pkgdir}/usr/bin/lem"
+    # Install the actual executable directly to /usr/bin/lem
+    install -Dm755 "squashfs-root/usr/libexec/lem.real" "${pkgdir}/usr/bin/lem"
 
     # Create a symlink for the -editor variant
     ln -sf /usr/bin/lem "${pkgdir}/usr/bin/lem-editor" || true

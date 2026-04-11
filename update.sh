@@ -167,8 +167,8 @@ validate_package() {
         return 1
     }
 
-    # Check if package file was created
-    local pkg_file=$(ls "$temp_build"/lem-editor-*.pkg.tar.zst 2>/dev/null | head -1)
+    # Check if package file was created (exclude debug package)
+    local pkg_file=$(ls "$temp_build"/lem-editor-nightly*.pkg.tar.zst 2>/dev/null | grep -v debug | head -1)
     if [ -z "$pkg_file" ]; then
         log_error "Package file not found after build"
         cat /tmp/build-output-$$.log
@@ -178,8 +178,25 @@ validate_package() {
 
     log_success "Package built successfully: $(basename $pkg_file)"
 
+    # Test installation on a fresh Arch container without build dependencies
+    log_info "Testing package installation on fresh Arch image..."
+
+    local install_test_log="/tmp/install-test-$$.log"
+    docker run --rm \
+        -v "$pkg_file:/tmp/lem-editor.pkg.tar.zst:ro" \
+        -v "$SCRIPT_DIR/test-install.sh:/test-install.sh:ro" \
+        archlinux:latest \
+        bash /test-install.sh > "$install_test_log" 2>&1 || {
+        log_error "Package installation or execution failed!"
+        cat "$install_test_log"
+        rm -rf "$temp_build" "$install_test_log" /tmp/build-output-$$.log
+        return 1
+    }
+
+    log_success "Package installed and tested successfully"
+
     # Clean up
-    rm -rf "$temp_build" /tmp/build-output-$$.log
+    rm -rf "$temp_build" "$install_test_log" /tmp/build-output-$$.log
 
     return 0
 }
