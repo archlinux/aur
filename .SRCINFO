@@ -1,6 +1,7 @@
 pkgbase = spine-trial
+	pkgdesc = 2D skeletal animation tool by Esoteric Software (Trial)
 	pkgver = 4.3.64.beta
-	pkgrel = 3
+	pkgrel = 4
 	url = https://esotericsoftware.com
 	arch = x86_64
 	license = custom
