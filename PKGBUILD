@@ -4,13 +4,13 @@
 
 pkgname=forgit
 pkgver=26.04.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility tool powered by fzf for using git interactively"
 arch=('any')
 url="https://github.com/wfxr/forgit"
 license=('MIT')
 groups=('fish-plugins' 'zsh-plugins')
-depends=('bash' 'fzf>=0.49.0' 'git')
+depends=('bash' 'fzf>=0.60.0' 'git')
 optdepends=(
 	'zsh: supported shell'
 	'fish: supported shell'
