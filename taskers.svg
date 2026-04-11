@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Taskers</title>
+  <desc id="desc">Icon for the Taskers agent-first terminal workspace app</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+  <rect x="12" y="12" width="232" height="232" rx="44" fill="url(#bg)"/>
+  <rect x="36" y="44" width="44" height="168" rx="22" fill="#0b1220" stroke="#334155" stroke-width="4"/>
+  <circle cx="58" cy="80" r="10" fill="#22c55e"/>
+  <circle cx="58" cy="128" r="10" fill="#60a5fa"/>
+  <circle cx="58" cy="176" r="10" fill="#f59e0b"/>
+  <rect x="100" y="52" width="120" height="152" rx="24" fill="#0b1220" stroke="#475569" stroke-width="4"/>
+  <path d="M126 102l22 22-22 22" fill="none" stroke="url(#accent)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M166 154h28" fill="none" stroke="#e2e8f0" stroke-width="14" stroke-linecap="round"/>
+  <rect x="112" y="182" width="96" height="10" rx="5" fill="#334155"/>
+</svg>
