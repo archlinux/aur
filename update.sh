@@ -104,14 +104,15 @@ update_pkgbuild_version() {
     log_info "New version: $new_version"
     log_info "New SHA: $new_sha"
 
-    # Update version
-    sed -i "s/^pkgver=.*/pkgver=$new_version/" "$SCRIPT_DIR/PKGBUILD"
+    # Use awk to safely update the PKGBUILD
+    awk -v ver="$new_version" -v sha="$new_sha" '
+        /^pkgver=/ { print "pkgver=" ver; next }
+        /^sha256sums=/ { print "sha256sums=('"'"'" sha "'"'"')"; next }
+        /^pkgrel=/ { print "pkgrel=1"; next }
+        { print }
+    ' "$SCRIPT_DIR/PKGBUILD" > "$SCRIPT_DIR/PKGBUILD.tmp"
 
-    # Update SHA (use | as delimiter to avoid issues with SHA content)
-    sed -i "s|^sha256sums=.*|sha256sums=('$new_sha')|" "$SCRIPT_DIR/PKGBUILD"
-
-    # Reset pkgrel to 1 for new version
-    sed -i "s/^pkgrel=.*/pkgrel=1/" "$SCRIPT_DIR/PKGBUILD"
+    mv "$SCRIPT_DIR/PKGBUILD.tmp" "$SCRIPT_DIR/PKGBUILD"
 
     log_success "Updated to v$new_version with pkgrel=1"
     return 0  # Update was made
