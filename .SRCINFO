@@ -1,0 +1,16 @@
+pkgbase = bevy-cli-git
+	pkgdesc = A Bevy CLI tool and linter.
+	pkgver = v0.6.0
+	pkgrel = 1
+	url = https://github.com/TheBevyFlock/bevy_cli
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = bevy
+	conflicts = bevy-cli
+	source = git+https://github.com/TheBevyFlock/bevy_cli
+	sha256sums = SKIP
+
+pkgname = bevy-cli-git
