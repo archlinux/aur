@@ -1,7 +1,7 @@
 # Maintainer: Senqaii <batuh007@gmail.com>
 pkgname=netsplitter-git
 pkgver=0.1.0.r0.g820ff9b
-pkgrel=5
+pkgrel=6
 pkgdesc="Advanced Linux Network Namespace Isolation & QoS Bufferbloat Automation Framework"
 arch=('any')
 url="https://github.com/batuh007/-NetSplitter-"
