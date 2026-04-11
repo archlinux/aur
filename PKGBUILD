@@ -15,8 +15,8 @@ source=("https://github.com/lem-project/lem/releases/download/v${pkgver}/lem-ubu
 sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 
 package() {
-    # Extract and install the lem binary
-    install -Dm755 "lem" "${pkgdir}/usr/bin/lem"
+    # Extract and install the lem binary from the nested directory
+    install -Dm755 "lem-v${pkgver}/lem" "${pkgdir}/usr/bin/lem"
 
     # Create a symlink for the -editor variant
     ln -sf /usr/bin/lem "${pkgdir}/usr/bin/lem-editor" || true
