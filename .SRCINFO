@@ -1,0 +1,25 @@
+pkgbase = mingw-w64-python314t-bin
+	pkgdesc = The Python programming language (native MSVC version) (mingw-w64)
+	pkgver = 3.14.4
+	pkgrel = 1
+	url = http://www.python.org/
+	arch = any
+	license = PSF
+	makedepends = mingw-w64-tools
+	makedepends = mingw-w64-binutils
+	depends = mingw-w64-openssl
+	optdepends = mingw-w64-wine: runtime support
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	options = !debug
+	source = https://www.python.org/ftp/python/3.14.4/python-3.14.4-amd64.exe
+	source = https://www.python.org/ftp/python/3.14.4/python-3.14.4.exe
+	source = https://www.python.org/ftp/python/3.14.4/Python-3.14.4.tgz
+	source = wine-python.sh
+	sha256sums = b571567bd11ea98fd7a2cf85791d2c8557a63b1e04e9d1dae665a275cac87f1b
+	sha256sums = 67bef323d951363d06aa73cbbb8a372303c96912b512778ce48fbf9a521cbbfe
+	sha256sums = b4c059d5895f030e7df9663894ce3732bfa1b32cd3ab2883980266a45ce3cb3b
+	sha256sums = a76a4715e87d3ed4aca6babc8715de8de94513dae4c683c1681551c43698b5ae
+
+pkgname = mingw-w64-python314t-bin

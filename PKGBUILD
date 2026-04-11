@@ -1,0 +1,68 @@
+pkgname=mingw-w64-python314t-bin
+pkgver=3.14.4
+_pybasever=314t
+_exever=3.${_pybasever:1}
+pkgrel=1
+pkgdesc="The Python programming language (native MSVC version) (mingw-w64)"
+arch=('any')
+license=('PSF')
+url="http://www.python.org/"
+depends=('mingw-w64-openssl')
+optdepends=('mingw-w64-wine: runtime support')
+makedepends=('mingw-w64-tools' 'mingw-w64-binutils')
+options=('staticlibs' '!buildflags' '!strip' '!debug')
+source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-amd64.exe"
+        "https://www.python.org/ftp/python/${pkgver}/python-${pkgver}.exe"
+        "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tgz"
+        wine-python.sh)
+sha256sums=('b571567bd11ea98fd7a2cf85791d2c8557a63b1e04e9d1dae665a275cac87f1b'
+            '67bef323d951363d06aa73cbbb8a372303c96912b512778ce48fbf9a521cbbfe'
+            'b4c059d5895f030e7df9663894ce3732bfa1b32cd3ab2883980266a45ce3cb3b'
+            'a76a4715e87d3ed4aca6babc8715de8de94513dae4c683c1681551c43698b5ae')
+
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+build() {
+  cd "${srcdir}/Python-${pkgver}"
+  for _arch in ${_architectures}; do
+    target=""
+    if test "${_arch}" = x86_64-w64-mingw32
+    then
+      target="-amd64"
+    fi
+    mkdir -p "build-${_arch}" && pushd "build-${_arch}"
+    rm -rf ~/.wine-${_arch}/ || true
+    du -sh "${srcdir}"/../python-${pkgver}${target}.exe
+    ${_arch}-wine "${srcdir}"/../python-${pkgver}${target}.exe /quiet InstallAllUsers=0 PrependPath=0 TargetDir="C:\python${_pybasever}" Include_freethreaded=1
+    cp ~/.wine-${_arch}/drive_c/python${_pybasever}/python${_pybasever}.dll .
+    cp ~/.wine-${_arch}/drive_c/python${_pybasever}/python${_exever}.exe .
+    cp -r ~/.wine-${_arch}/drive_c/python${_pybasever}/DLLs .
+    cp -r ~/.wine-${_arch}/drive_c/python${_pybasever}/Lib .
+    gendef python${_pybasever}.dll
+    ${_arch}-dlltool --dllname python${_pybasever}.dll --def python${_pybasever}.def --output-lib libpython${_pybasever}.dll.a
+    sed "s|@TRIPLE@|${_arch}|g;s|@PYVER@|${_pybasever}|g;s|python${_pybasever}.exe|python${_exever}.exe|g" "${srcdir}"/wine-python.sh > ${_arch}-python${_pybasever}-bin
+    popd
+  done
+}
+
+package() {
+  for _arch in ${_architectures}; do
+    cd "${srcdir}/Python-${pkgver}/build-${_arch}"
+    install -d "$pkgdir"/usr/${_arch}/lib
+    install -m644 libpython*.a "$pkgdir"/usr/${_arch}/lib
+    install -d "$pkgdir"/usr/${_arch}/bin
+    install -d "$pkgdir"/usr/${_arch}/include/python${_pybasever}
+    cp -r ../Include/* "$pkgdir"/usr/${_arch}/include/python${_pybasever}
+    chmod a+r -R "$pkgdir"/usr/${_arch}/include
+    chmod a+x "$pkgdir"/usr/${_arch}/include/python${_pybasever}/{cpython,internal}
+    install -m644 ../PC/pyconfig.h "$pkgdir"/usr/${_arch}/include/python${_pybasever}/pyconfig.h
+    install -m755 python*.dll "$pkgdir"/usr/${_arch}/bin
+    install -d "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
+    install -m644 DLLs/*.pyd "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
+    cp -r Lib/* "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
+    install -m755 python${_exever}.exe "$pkgdir"/usr/${_arch}/bin/python${_exever}.exe
+    install -d "$pkgdir"/usr/bin
+    install -m755 ${_arch}-python${_pybasever}-bin "$pkgdir"/usr/bin
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+  done
+}
