@@ -1,7 +1,7 @@
 pkgbase = fingerprint-chromium-bin
 	pkgdesc = Fingerprint Chromium (Ungoogled Chromium with fingerprinting protection)
 	pkgver = 144.0.7559.132
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/adryfish/fingerprint-chromium
 	arch = x86_64
 	license = BSD

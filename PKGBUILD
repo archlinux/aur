@@ -3,16 +3,19 @@
 
 pkgname=fingerprint-chromium-bin
 pkgver=144.0.7559.132
-pkgrel=2
+pkgrel=3
 pkgdesc=Fingerprint\ Chromium\ \(Ungoogled\ Chromium\ with\ fingerprinting\ protection\)
 arch=(x86_64 )
 url=https://github.com/adryfish/fingerprint-chromium
 license=(BSD )
 depends=(gtk3 nss alsa-lib xdg-utils libxss ttf-liberation )
 makedepends=()
+checkdepends=()
+optdepends=()
 options=(\!strip )
 provides=(fingerprint-chromium )
 conflicts=(fingerprint-chromium )
+validpgpkeys=()
 
 source=()
 sha256sums_x86_64=('79bad4c8eda407ebfd8ae7d7ce62034c06d118b1db9640ef82e42f63d2ae6d2e')
