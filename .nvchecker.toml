@@ -1,0 +1,5 @@
+[obs-cmd-bin]
+source = "github"
+github = "grigio/obs-cmd"
+use_latest_release = true
+prefix = "v"

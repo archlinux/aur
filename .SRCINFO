@@ -1,0 +1,20 @@
+pkgbase = obs-cmd-bin
+	pkgdesc = A minimal OBS CLI for obs-websocket v5
+	pkgver = 0.31.3
+	pkgrel = 1
+	url = https://github.com/grigio/obs-cmd
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = obs-cmd
+	conflicts = obs-cmd
+	options = !strip
+	source = README-0.31.3.md::https://raw.githubusercontent.com/grigio/obs-cmd/v0.31.3/README.md
+	source = LICENSE-0.31.3::https://raw.githubusercontent.com/grigio/obs-cmd/v0.31.3/LICENSE
+	sha256sums = 81c36d24bdc202963eb7b641f318641a5ddd8a26fec3549afc0c8febffd324db
+	sha256sums = ba4889412c2cfdd1c0b7d0453202de9264a90a7665a0cd799e6c1ec2f3c062c3
+	source_x86_64 = obs-cmd-x86_64-0.31.3.tgz::https://github.com/grigio/obs-cmd/releases/download/v0.31.3/obs-cmd-x64-linux.tar.gz
+	sha256sums_x86_64 = 116b7b937e53a191a674c5f66b0bf2533614bcbe3c8efa74f07f1705defadc8a
+
+pkgname = obs-cmd-bin
