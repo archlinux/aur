@@ -1,7 +1,7 @@
 pkgbase = forgit
 	pkgdesc = Utility tool powered by fzf for using git interactively
 	pkgver = 26.04.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wfxr/forgit
 	install = forgit.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = forgit
 	groups = zsh-plugins
 	license = MIT
 	depends = bash
-	depends = fzf>=0.49.0
+	depends = fzf>=0.60.0
 	depends = git
 	optdepends = zsh: supported shell
 	optdepends = fish: supported shell
