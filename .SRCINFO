@@ -23,7 +23,6 @@ pkgbase = loot
 	depends = spdlog
 	depends = tomlplusplus
 	depends = zlib
-	optdepends = vulkan-headers: Optional build dependency
 	source = loot-0.29.0.tar.gz::https://github.com/loot/loot/archive/0.29.0.tar.gz
 	sha256sums = 766934e8041f53c62279a48e7ce4c88f41bc39765502b22be3438811c36e6054
 

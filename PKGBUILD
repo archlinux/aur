@@ -45,9 +45,7 @@ makedepends=(
 	'rust'
 	'svg_to_ico'
 )
-optdepends=(
-	'vulkan-headers: Optional build dependency'
-)
+#optdepends=('vulkan-headers: Optional build dependency')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('766934e8041f53c62279a48e7ce4c88f41bc39765502b22be3438811c36e6054')
 
