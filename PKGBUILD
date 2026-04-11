@@ -2,7 +2,7 @@
 pkgname=lem
 # Using nightly build since stable releases don't have precompiled binaries
 pkgver=nightly.$(date +%Y%m%d)
-pkgrel=1
+pkgrel=2
 pkgdesc="A Lisp-based text editor for the modern world"
 arch=('x86_64')
 url="https://github.com/lem-project/lem"

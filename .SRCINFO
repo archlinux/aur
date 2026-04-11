@@ -1,7 +1,7 @@
 pkgbase = lem
 	pkgdesc = A Lisp-based text editor for the modern world
 	pkgver = nightly.20260411
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lem-project/lem
 	arch = x86_64
 	license = MIT
