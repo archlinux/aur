@@ -1,1 +1,5 @@
-*.tar.gz
+*
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!streamlit-logo-fix.patch

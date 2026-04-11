@@ -1,0 +1,17 @@
+--- a/src/Lution/modules/utils/sidebar.py
++++ b/src/Lution/modules/utils/sidebar.py
+@@ -16,7 +16,12 @@ def InitSidebar():
+     #     lutionlogo = f.read()
+ 
+     # st.logo(lutionlogo, size="large")
+     st.sidebar.image(lutiontext, width=200)  # Adjust width as needed
+-    st.logo(image="files/lution1.svg", icon_image="files/lution1.svg")
++    try:
++        st.logo(image="files/lution1.png", icon_image="files/lution1.png")
++    except Exception:
++        # Compatibility fallback for Streamlit versions that reject st.logo input types.
++        st.sidebar.image("files/lution1.png", width=42)
++
+     st.sidebar.markdown("<h2>Lution</h2>", unsafe_allow_html=True)
+     st.sidebar.badge("Stable", icon=":material/check:", color="green")
+     st.sidebar.caption("Version 0.3.2")
