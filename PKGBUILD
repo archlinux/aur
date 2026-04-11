@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=speedofsound
 _app_id="io.$pkgname.SpeedOfSound"
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 _java_ver=25
 pkgdesc="Voice typing for the Linux desktop."
@@ -13,7 +13,7 @@ depends=(
   'alsa-plugins'
   'gstreamer'
   'gtk4'
-  "java-runtime=${_java_ver}"
+  "java-runtime>=${_java_ver}"
   'libadwaita'
 )
 makedepends=(
@@ -23,7 +23,7 @@ makedepends=(
   'meson'
 )
 source=("git+https://github.com/zugaldia/speedofsound.git#tag=v$pkgver")
-sha256sums=('c0abd6b18e6924698e79ffc574e8a4929d87826d12179002a6f0509aaf4bdc70')
+sha256sums=('bab39762e8839d203c1d023cc2ce530d8e02494651b77b04cad9b9e214b4b3c1')
 
 prepare() {
   cd "$pkgname"
@@ -35,6 +35,7 @@ prepare() {
 build() {
   cd "$pkgname"
   ./gradlew -Dorg.gradle.daemon=false build
+
   arch-meson . build
   meson compile -C build
 }
