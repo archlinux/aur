@@ -1,0 +1,13 @@
+pkgbase = quien
+	pkgdesc = A better WHOIS lookup tool
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/retlehs/quien
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = quien-0.1.1.tar.gz::https://github.com/retlehs/quien/archive/v0.1.1.tar.gz
+	sha256sums = 5a7c9bb64bd4543026e833dce435fc4b68fae9d9a59a437930d6bb27167288ed
+
+pkgname = quien
