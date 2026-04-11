@@ -1,10 +1,9 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=privatebin-cli
-_binname=privatebin
 _bindate=$(date --rfc-3339=date)
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A powerful CLI for creating and managing PrivateBin pastes with ease'
 arch=(x86_64 aarch64)
 url='https://github.com/gearnode/privatebin'
@@ -18,9 +17,9 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('cf11851f5e76d7b8d2b90dd662eb0a3dd03cd71f10cad01fb2f81ecf23d303b2')
 
 prepare() {
-  cd "$_binname-$pkgver"
-  export GOPATH="${srcdir}/go"
-  go mod download -modcacherw
+  cd "${pkgname%-*}-$pkgver"
+  export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
+  go mod download
 
   # Man
   pandoc --standalone --to man -M footer=$pkgver doc/privatebin.1.md -o privatebin.1
@@ -30,7 +29,7 @@ prepare() {
 }
 
 build() {
-  cd "$_binname-$pkgver"
+  cd "${pkgname%-*}-$pkgver"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -41,15 +40,15 @@ build() {
     -ldflags "-X 'main.version=$pkgver'
         -X 'main.commit=$pkgrel'
         -X 'main.date=$_bindate'" \
-    -o $_binname cmd/privatebin/main.go cmd/privatebin/cfg.go
+    -o "${pkgname%-*}" cmd/privatebin/main.go cmd/privatebin/cfg.go
 
-  # Make sure go path is writable so it can be cleaned up
-  chmod -R u+w "${srcdir}/go"
+  # Clean up deps
+  go clean -modcache
 }
 
 package() {
-  cd "$_binname-$pkgver"
-  install -Dm755 "$_binname" "$pkgdir/usr/bin/$_binname"
+  cd "${pkgname%-*}-$pkgver"
+  install -Dm755 "${pkgname%-*}" "$pkgdir/usr/bin/${pkgname%-*}"
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
