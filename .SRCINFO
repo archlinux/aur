@@ -1,0 +1,15 @@
+pkgbase = hawser
+	pkgdesc = The agent for Dockhand
+	pkgver = 0.2.39
+	pkgrel = 1
+	url = https://dockhand.pro/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	conflicts = hawser-git
+	source = git+https://github.com/Finsys/hawser.git#tag=v0.2.39
+	sha256sums = SKIP
+
+pkgname = hawser
