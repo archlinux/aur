@@ -1,11 +1,11 @@
 # Maintainer: futpib
 
-_pkgname="konsole"
-pkgname="$_pkgname-tmux-git"
-pkgver=25.12.2.r69.g5865591
+_pkgname="kmux"
+pkgname="$_pkgname-git"
+pkgver=26.04.0.r74.g5c9dcb7
 pkgrel=1
 pkgdesc='KDE terminal emulator with tmux integration (like iTerm2)'
-url="https://github.com/futpib/konsole"
+url="https://github.com/futpib/$_pkgname"
 license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
 arch=('x86_64')
 
