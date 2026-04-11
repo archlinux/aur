@@ -9,7 +9,7 @@ license=('custom')
 depends=('xorg-xrandr')
 options=('!strip')
 source=("SpineTrial.tar.gz::https://jp.esotericsoftware.com/launcher/linux"
-        "SpineTrial.ico")
+        "spine_badge.svg::http://esotericsoftware.com/files/branding/spine_badge.svg")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -25,7 +25,7 @@ exec /opt/spine-trial/SpineTrial.sh "$@"
 EOF
     chmod +x "${pkgdir}/usr/bin/spine-trial"
 
-    install -Dm644 "${srcdir}/SpineTrial.ico" "${pkgdir}/usr/share/pixmaps/spine-trial.ico"
+    install -Dm644 "${srcdir}/spine_badge.svg" "${pkgdir}/usr/share/pixmaps/spine-trial.svg"
 
     install -dm755 "${pkgdir}/usr/share/applications"
     cat > "${pkgdir}/usr/share/applications/spine-trial.desktop" <<'EOF'
@@ -33,7 +33,7 @@ EOF
 Type=Application
 Name=Spine Trial
 Exec=spine-trial
-Icon=/usr/share/pixmaps/spine-trial.ico
+Icon=spine-trial
 Categories=Graphics;
 EOF
 }

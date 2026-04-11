@@ -8,6 +8,8 @@ pkgbase = spine-trial
 	depends = xorg-xrandr
 	options = !strip
 	source = SpineTrial.tar.gz::https://jp.esotericsoftware.com/launcher/linux
+	source = spine_badge.svg::http://esotericsoftware.com/files/branding/spine_badge.svg
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = spine-trial
