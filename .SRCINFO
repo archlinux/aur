@@ -1,0 +1,14 @@
+pkgbase = lino-bin
+	pkgdesc = A sleek and fast text editor
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/bhattaraiprayogdb-eng/lino
+	arch = x86_64
+	license = MIT
+	depends = libxkbcommon
+	provides = lino
+	conflicts = lino
+	source = lino::https://github.com/bhattaraiprayogdb-eng/lino/releases/download/v0.10.1/lino
+	sha256sums = 3cfe57b60bdb27cba802ca5b3652d9281a978cf3f58b275a709ec73ab400b129
+
+pkgname = lino-bin
