@@ -1,6 +1,6 @@
 # Maintainer: uwuclxdy <https://github.com/uwuclxdy>
 pkgname=larpshell-git
-pkgver=r65.aefb680
+pkgver=r72.b614217
 pkgrel=1
 pkgdesc='Convert natural language to shell commands using an LLM'
 arch=('x86_64')
