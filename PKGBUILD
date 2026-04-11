@@ -12,8 +12,7 @@ __pkgname=konform
 _ffsrcver=140.9.1
 _ffbuild=1
 _l10n_commit=e4f894a4eef5c492c83a860a4ff16c8ed361445c
-_moz_build_id=20260106170501
-_lwrelver=100
+_lwrelver=101
 pkgver="${_ffsrcver}.${_lwrelver}"
 pkgrel=1
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
@@ -146,7 +145,7 @@ source=(
   "0003-update-rust-bindgen-to-fix-clang22-build.patch.xz"
   "0004-skia-m142-update.patch.xz"
 )
-sha256sums=('a25b0a821bfc96c13bc0abdce559373616778dd259a709d108d7273ccb76f318'
+sha256sums=('779c22c11c5df82e30661b4046eed632a2d5bd96e83290efc2480d24a248bd08'
             '45d2e6c2b3aa4f52815d1a8a4a93e013d19e86e1b06480f13db9e6fdd7148dc2'
             'SKIP'
             '52d638394dcc3254c70b550340bffb0ade63bd35f155eaee12e0000a51ef939b'
@@ -177,16 +176,16 @@ prepare() {
   mkdir -p "${_lw_srcdir}/lw"
   mv "../firefox-l10n-${_l10n_commit}" "${_lw_srcdir}/lw/l10n"
 
+  export KONFORM_MOZ_BUILD_ID="$(grep '^buildID=' config/linux_info.txt  | cut -d= -f2)"
+  export MOZ_BUILD_DATE="${KONFORM_MOZ_BUILD_ID}"
+
   python3 scripts/librewolf-patches.py "${_ffsrcver}" "${_lwrelver}"
 
   ## </srcprep>
 
   cd $_lw_srcdir
-
   mv mozconfig ../mozconfig || true
 
-  export KONFORM_MOZ_BUILD_ID="${_moz_build_id}"
-  export MOZ_BUILD_DATE="${KONFORM_MOZ_BUILD_ID}"
   cat >>../mozconfig <<END
 ##### main archlinux-firefox 136
 ac_add_options --enable-hardening
@@ -298,10 +297,10 @@ build() {
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  #hardcoded build time for additional fingerprint protection
-  export KONFORM_MOZ_BUILD_ID="${_moz_build_id}"
+  # export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
+  #hardcoded build timestamp for fingerprint protection defense-in-depth
+  export KONFORM_MOZ_BUILD_ID="$(grep '^buildID=' config/linux_info.txt  | cut -d= -f2)"
   export MOZ_BUILD_DATE="${KONFORM_MOZ_BUILD_ID}"
-  #export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   export MOZ_NOSPAM=1
   export MOZ_REQUIRE_SIGNING=
 
