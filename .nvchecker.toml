@@ -1,6 +1,6 @@
 [zig-mach-bin]
-source = "jq"
-url = "https://machengine.org/zig/index.json"
+source = 'jq'
+url = 'https://pkg.hexops.org/zig/index.json'
 filter = '."mach-latest"."version"'
 from_pattern = '-'
 to_pattern = ''
