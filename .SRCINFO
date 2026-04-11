@@ -1,11 +1,12 @@
 pkgbase = wordbook
 	pkgdesc = A dictionary application built for GNOME.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apps.gnome.org/Wordbook
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = blueprint-compiler
+	makedepends = git
 	makedepends = meson
 	depends = espeak-ng
 	depends = gtk4
@@ -21,6 +22,6 @@ pkgbase = wordbook
 	source = subproject.patch
 	sha256sums = 529065472166c2992afa289280849a0190c2506dee3fc5ed6646db277aa20a69
 	sha256sums = 31f4af16c54b532fd5484d4cc33aee588a31bb5b70683ae8197842fde5b586bc
-	sha256sums = 71ee389e54a5b2f7ea2d1511bfaa6eb50efc0615ef50a4b45190044e17e5aa9f
+	sha256sums = 135e9a631a0f11e65dd48d7d419efecc72b05969c3f211929684986dedb345cb
 
 pkgname = wordbook

@@ -1,7 +1,34 @@
+diff -Npur a/meson.build b/meson.build
+--- a/meson.build	2026-04-10 23:50:38.000000000 -0600
++++ b/meson.build	2026-04-11 11:44:29.172076035 -0600
+@@ -49,15 +49,6 @@ else
+   application_id = base_id
+ endif
+ 
+-git = find_program('git', required: false)
+-wn_version = 'unknown'
+-if git.found()
+-  wn_res = run_command(git, '-C', join_paths(meson.project_source_root(), 'subprojects/wn'), 'rev-parse', '--short', 'HEAD', check: false)
+-  if wn_res.returncode() == 0
+-    wn_version = wn_res.stdout().strip()
+-  endif
+-endif
+-
+ subdir('data')
+ subdir('wordbook')
+ subdir('po')
 diff -Npur a/wordbook/meson.build b/wordbook/meson.build
---- a/wordbook/meson.build	2026-04-11 10:21:42.647313128 -0600
-+++ b/wordbook/meson.build	2026-04-11 10:35:20.208438103 -0600
-@@ -54,9 +54,3 @@ wordbook_sources = [
+--- a/wordbook/meson.build	2026-04-10 23:50:38.000000000 -0600
++++ b/wordbook/meson.build	2026-04-11 11:44:53.090729528 -0600
+@@ -14,7 +14,6 @@ conf.set_quoted('localedir', join_paths(
+ conf.set_quoted('pkgdatadir', pkgdatadir)
+ conf.set('datadir', get_option('datadir'))
+ conf.set('prefix', get_option('prefix'))
+-conf.set('WN_FILE_VERSION', wn_version)
+ 
+ configure_file(
+   input: 'wordbook.in',
+@@ -54,9 +53,3 @@ wordbook_sources = [
  ]
  
  install_data(wordbook_sources, install_dir: moduledir)

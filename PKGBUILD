@@ -3,7 +3,7 @@
 # Contributor: Mufeed Ali <lastweakness@tuta.io>
 pkgname=wordbook
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 _wordnet_ver=2025
 pkgdesc="A dictionary application built for GNOME."
 arch=('any')
@@ -21,6 +21,7 @@ depends=(
 )
 makedepends=(
   'blueprint-compiler'
+  'git'
   'meson'
 )
 source=("Wordbook-$pkgver.tar.gz::https://github.com/mufeedali/Wordbook/archive/refs/tags/$pkgver.tar.gz"
@@ -29,7 +30,7 @@ source=("Wordbook-$pkgver.tar.gz::https://github.com/mufeedali/Wordbook/archive/
 noextract=("english-wordnet-${_wordnet_ver}-plus.xml.gz")
 sha256sums=('529065472166c2992afa289280849a0190c2506dee3fc5ed6646db277aa20a69'
             '31f4af16c54b532fd5484d4cc33aee588a31bb5b70683ae8197842fde5b586bc'
-            '71ee389e54a5b2f7ea2d1511bfaa6eb50efc0615ef50a4b45190044e17e5aa9f')
+            '135e9a631a0f11e65dd48d7d419efecc72b05969c3f211929684986dedb345cb')
 
 prepare() {
   cd "Wordbook-$pkgver"
@@ -37,10 +38,15 @@ prepare() {
   # Generate offline Wordnet database
   python scripts/generate-wn-db.py \
     --source-file "$srcdir/english-wordnet-${_wordnet_ver}-plus.xml.gz" \
-    --output wn.db.zst
+    --output "wn-${_wordnet_ver}.db.zst"
 
-  # Don't install empty subproject folder
+  # Don't use git to generate commit hash of unused subproject and 
+  # don't install empty subproject folder
   patch -Np1 -i ../subproject.patch
+
+  # Set WN_FILE_VERSION to Wordnet version 
+  # instead of commit hash of unused subproject
+  sed -i "s/@WN_FILE_VERSION@/${_wordnet_ver}/g" "$pkgname/constants.py"
 }
 
 build() {
@@ -56,5 +62,5 @@ package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
 
   cd "Wordbook-$pkgver"
-  install -Dm644 wn.db.zst -t "$pkgdir/usr/share/$pkgname/"
+  install -Dm644 "wn-${_wordnet_ver}.db.zst" -t "$pkgdir/usr/share/$pkgname/"
 }
