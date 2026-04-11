@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=folder-color-nautilus
 _pkgname=${pkgname%-nautilus}
-pkgver=0.4.1
-pkgrel=3
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Change your folder color in Nautilus"
 arch=('any')
 url="https://github.com/costales/folder-color"
@@ -17,18 +17,21 @@ makedepends=(
   'python-wheel'
 )
 conflicts=('folder-color-bzr' 'folder-color-common')
-_commit=67428606aa802e624b5b783f9f06f8bd724ae56c  # 0.4.1
+_commit=45480ec319c3ba5032f0a5e89d2af728d9dd464f
 source=("git+https://github.com/costales/folder-color.git#commit=${_commit}")
-sha256sums=('f1d36bbef81a356f9d84324b39d5201256204a23754d79ceeb441798c755bd03')
+sha256sums=('244a8b2ab1581c9d7f557b9d419940dd623102481b2a20a10e2f8ea676ca6bcf')
 
-build() {
+prepare() {
   cd "${_pkgname}"
   git clean -dfx
 
   pushd install-scripts
-  ./nautilus.sh GTK4
+  ./nautilus.sh
   popd
+}
 
+build() {
+  cd "${_pkgname}"
   python -m build --wheel --no-isolation
 }
 
