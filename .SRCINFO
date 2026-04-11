@@ -1,7 +1,7 @@
 pkgbase = cursus
 	pkgdesc = Writes your commands history into an sqlite db
 	pkgver = 2.0.24
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/n0r1sk/cursus
 	arch = x86_64
 	license = Apache

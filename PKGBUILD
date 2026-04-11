@@ -2,7 +2,7 @@
 
 pkgname=cursus
 pkgver=2.0.24
-pkgrel=2
+pkgrel=3
 pkgdesc='Writes your commands history into an sqlite db'
 arch=('x86_64')
 url='https://gitlab.com/n0r1sk/cursus'
@@ -16,9 +16,8 @@ sha256sums=('f7cf3c4ad4ccf04979993822a7dd6f0d733b6d74599a611acc2832c265cad82e')
 
 prepare(){
     cd "$pkgname-v$pkgver"
-    export GOPATH="${srcdir}/go"
-    export GOFLAGS=-modcacherw
-    go mod download
+    export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
+    go mod download -modcacherw
 }
 
 build() {
@@ -31,6 +30,9 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   go build -o $pkgname
+
+  # Clean up deps
+  go clean -modcache
 }
 
 package() {
