@@ -2,9 +2,9 @@
 pkgname=pacsea-bin
 pkgver=0.8.1
 _tag="v$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Firstp1ck/Pacsea"
 license=('MIT')
 options=('!strip')
@@ -42,10 +42,13 @@ optdepends=(
 
 provides=("pacsea=${pkgver}")
 conflicts=('pacsea' 'pacsea-git')
-source=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/pacsea"
-        "Pacsea-${_tag}.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('4d28f58b677646a669b71c568118de6fbe35fe26f44f6f4e433f223899db79bd'
-            'e7ce0b1098d4cb37aabc8b880e57d55a4b799eab831b020dd5bebc5d7cf0965a')
+source=("Pacsea-${_tag}.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/${_tag}.tar.gz")
+source_x86_64=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/pacsea")
+source_aarch64=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/pacsea-aarch64")
+sha256sums=('3a89523ea08704b4a30efc31b1f99cea9ec7193d89952c10a7cd5b21d77422e3')
+sha256sums_x86_64=('26c6ee6f9868fd988732039931d3049e816dd6fee7f7a8ac7eb7ca10b36503b2')
+# Replace with a real sum (e.g. updpkgsums) after the release includes asset pacsea-aarch64.
+sha256sums_aarch64=('1de184460187a8b2c69356ffc998fd2ae1302f6a7fde4c197a18255069c40023')
 noextract=('Pacsea')
 
 prepare() {
@@ -56,10 +59,10 @@ prepare() {
     ls -la "$srcdir/" || true
     return 1
   fi
-  
+
   # Verify the binary is executable and not corrupted
   chmod +x "$binary_path"
-  
+
   # Check ELF magic bytes directly (more reliable than file command)
   local magic_bytes
   magic_bytes=$(head -c 4 "$binary_path" 2>/dev/null | od -A n -t x1 | tr -d ' \n' || echo "")
@@ -70,6 +73,26 @@ prepare() {
     error "Try cleaning your build cache and rebuilding"
     return 1
   fi
+
+  local machine_line machine
+  machine_line=$(readelf -h "$binary_path" 2>/dev/null | grep -m1 '^[[:space:]]*Machine:') || true
+  machine="${machine_line#*:}"
+  machine="${machine#"${machine%%[![:space:]]*}"}"
+
+  case "$CARCH" in
+    x86_64)
+      if [[ "$machine" != *'X86-64'* ]]; then
+        error "Expected x86_64 binary (Machine: Advanced Micro Devices X86-64), got: ${machine_line:-unknown}"
+        return 1
+      fi
+      ;;
+    aarch64)
+      if [[ "$machine" != *'AArch64'* ]]; then
+        error "Expected AArch64 binary, got: ${machine_line:-unknown}"
+        return 1
+      fi
+      ;;
+  esac
 }
 
 package() {
@@ -78,10 +101,10 @@ package() {
   install -Dm755 "$srcdir/Pacsea" "$pkgdir/usr/bin/pacsea"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  
+
   # Install i18n configuration
   install -Dm644 "config/i18n.yml" "$pkgdir/usr/share/pacsea/config/i18n.yml"
-  
+
   # Install locale files
   install -d "$pkgdir/usr/share/pacsea/locales"
   install -m644 config/locales/*.yml "$pkgdir/usr/share/pacsea/locales/"
