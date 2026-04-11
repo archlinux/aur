@@ -46,19 +46,19 @@ source_${_carch}=(
 )"
 done
 sha256sums_aarch64=('4801ddd0fe720e5b0c177230caa2301ed3ce2e3701beec6c18888b49244c1a5a'
-                    'f2ab712bf54727a17a3443375c743a6bf107f61fecd50cb13013aa3875bb8e97')
+                    'SKIP')
 sha256sums_i686=('6d9fd848262ab2c30b2025576fa4698bcee38a694efae22c3daa599a13de2cde'
-                 'ef5f70823971c1aa72f856249d5a3e3c80ad57cde768f5f3dd6d73773e7bd591')
+                 'SKIP')
 sha256sums_riscv64=('f70af6f2f8408ab25f7033259e7acf01eb3ce6b584ec9001d981b2b2a2648390'
-                    'b7cadcd54ce5e8051ab3ce432deb8444f8669a512c07003add6dcf85126028e7')
+                    'SKIP')
 sha256sums_x86_64=('ab4e7bf6358a63e50aeec2243547b63791c75523685ad458d0c339448d723a88'
-                   '27c466f6cb962b195aa3d76751c470c7032166a9f0fc63cf8518f1e4cd597244')
+                   'SKIP')
 sha256sums_powerpc64le=('ed57b42dcb718348d13472686347b4f17afacd87cb839483e718e776af2182d6'
-                        '501540668770657ca6d4dc2b1e2ae34b5b5a53538b701a49d4353189393f2b3e')
+                        'SKIP')
 sha256sums_loong64=('6c9d70ffa4d254103aab7fa5e9bb7abdc605c45a144fb736129f22d5cec78e8c'
-                    '7f791578f904996217fd5ac1c5123f36596b970428b8d65a3a9b53856c075cc4')
+                    'SKIP')
 sha256sums_armv7h=('a431a24f43431a8f8d646fbe984b6310c4ec9d124be30916a20ea056d22d19e9'
-                   '4362cf19f8ed753c620d12fc9ff83f645e4e59aaf01b23ed2736445c35699e9c')
+                   'SKIP')
 
 verify() {
   # https://ziglang.org/download/
