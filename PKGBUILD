@@ -1,6 +1,6 @@
 # Maintainer: Raj Bhandari <rajbhandari9761@gmail.com>
 pkgname=dlx-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Universal CLI downloader for videos (yt-dlp), torrents, and files (aria2c)"
 arch=('any')
