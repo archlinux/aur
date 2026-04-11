@@ -16,7 +16,7 @@
 pkgname=loot
 # https://github.com/loot/loot/releases
 pkgver=0.29.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
 url="https://loot.github.io"

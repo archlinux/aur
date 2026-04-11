@@ -1,11 +1,12 @@
 pkgbase = loot
 	pkgdesc = A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games
 	pkgver = 0.29.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://loot.github.io
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = boost
+	makedepends = boost-libs
 	makedepends = cbindgen
 	makedepends = cmake
 	makedepends = python
