@@ -1,6 +1,6 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=promptfoo
-pkgver=0.121.3
+pkgver=0.121.4
 pkgrel=1
 pkgdesc="Test and evaluate LLM outputs - AI red teaming, pentesting, and vulnerability scanning"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('715a58483df1bbd174e2bc31e0b069c83c1bba25563c8adfba5796b2e161c7a9')
+sha256sums=('cbac9508feb538fc253133f3a9198f175b1b9cbe04333b470cfb276a14bdc4fa')
 
 package() {
     npm install -g --ignore-scripts --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
