@@ -1,0 +1,24 @@
+pkgbase = luna-ai-reborn
+	pkgdesc = Luna AI Reborn — Hacker-style voice AI desktop assistant for Linux. Voice, YouTube, brightness, live data.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Arunachalam-gojosaturo/luna-ai-reborn
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python>=3.10
+	depends = python-pyqt6
+	depends = mpv
+	depends = python-pip
+	optdepends = ffmpeg: ffplay audio fallback
+	optdepends = python-pygame: pygame audio fallback
+	optdepends = brightnessctl: brightness control
+	optdepends = yt-dlp: YouTube playback
+	optdepends = xdotool: X11 input control
+	optdepends = ydotool: Wayland input control
+	optdepends = python-speechrecognition: voice input
+	optdepends = python-pyaudio: microphone support
+	source = luna-ai-reborn-1.0.0.tar.gz::https://github.com/Arunachalam-gojosaturo/luna-ai-reborn/archive/v1.0.0.tar.gz
+	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+
+pkgname = luna-ai-reborn
