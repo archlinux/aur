@@ -5,7 +5,7 @@
 # Maintainer: Franciszek Żebrowski <frazeb09@gmail.com>
 pkgname=tuiweather
 pkgver=0.2.28
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Simple TUI app for showing weather"
 arch=('x86_64')
@@ -37,18 +37,18 @@ prepare() {
 
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "TuiWeather-$pkgver"
   cargo build --frozen --release --all-features
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "TuiWeather-$pkgver"
   cargo test --frozen --workspace
 }
 package() {
-  cd "$pkgname-$pkgver"
+  cd "TuiWeather-$pkgver"
   # Instaluje plik wykonywalny do /usr/bin/
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "target/release/TuiWeather" "$pkgdir/usr/bin/TuiWeather"
   
   # Instaluje licencję (wymagane w Archu, jeśli to np. MIT)
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

@@ -1,7 +1,7 @@
 pkgbase = tuiweather
 	pkgdesc = Simple TUI app for showing weather
 	pkgver = 0.2.28
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Detalexpl/TuiWeather
 	arch = x86_64
 	license = MIT
