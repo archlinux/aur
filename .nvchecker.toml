@@ -1,0 +1,4 @@
+[sc64deployer]
+source = "git"
+git = "https://github.com/Polprzewodnikowy/SummerCart64.git"
+prefix = "v"
