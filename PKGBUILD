@@ -3,7 +3,7 @@
 # Contributor: Pang LAN <wopanglan@gmail.com>
 
 pkgname=opencommit
-pkgver=3.2.18
+pkgver=3.2.19
 pkgrel=1
 pkgdesc='Auto-generate meaningful commits in a second. Killing lame commits with AI'
 arch=(any)
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(nodejs)
 makedepends=(jq npm)
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('d0bcdb8fc3c1cb3ba5c68d5a634c3b46785af639089573eadbd363ac031615f6153455aad031213eab14c8900707e9b8c2f0d40f96f9ed9d1c0528d14195601b')
+b2sums=('35cd632d32f04dc0070c8efa27c8c09431c7910b2fdf0be0c5062e8ec2967981cc8203a2578a60712324ed4cdb766a28eafa89f06427f45c722a10a791971525')
 
 prepare() {
     cd $pkgname-$pkgver
