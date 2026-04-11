@@ -2,9 +2,9 @@
 _pkgname=pear-desktop
 pkgname=pear-desktop-noads-git
 _app_id=com.github.th_ch.youtube_music
-pkgver=3.11.0.r357.g73f08fd
+pkgver=3.11.0.r389.g6aa7cdb
 pkgrel=1
-_electronversion=42
+_electronversion=43
 pkgdesc="Extension for music player - tweaked to ruin required submission to our capitalist overseers in exchange for pleasant noises."
 arch=('x86_64')
 url="https://github.com/pear-devs/pear-desktop"
@@ -25,7 +25,7 @@ source=('git+https://github.com/pear-devs/pear-desktop.git'
         "$_pkgname.sh"
         "${_app_id}.desktop")
 sha256sums=('SKIP'
-            'e9ec2e31c47dfb7be5127ca803e423e3e0b41df7fbfb0ed791932f89791e7470'
+            'bf77b9390f6657d6b58613600cc76178da9ffa97cce55b8d0ba50b4c2ab7f996'
             '19a3c15cb705d56c205bdcd3d473545226b641952ed87677afd5b6c70a5573b4')
 
 pkgver() {
@@ -37,6 +37,7 @@ prepare() {
   cd "$_pkgname"
   git revert f5175a6 || true
   git restore -SW README.md
+  sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/$_pkgname.sh"
 }
 
 build() {
