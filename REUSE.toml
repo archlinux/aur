@@ -1,0 +1,20 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    ".gitignore",
+    "kubesolo.env",
+    "kubesolo-tmpfiles.conf",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "kubesolo.service",
+]
+SPDX-FileCopyrightText = "upstream contributors"
+SPDX-License-Identifier = "MIT"

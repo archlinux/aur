@@ -1,0 +1,16 @@
+[Unit]
+Description=Kubesolo Service
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/default/kubesolo
+ExecStart=/usr/bin/kubesolo $KUBESOLO_ARGS
+Restart=always
+RestartSec=3
+OOMScoreAdjust=-500
+LimitNOFILE=65535
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
