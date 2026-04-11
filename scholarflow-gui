@@ -6,6 +6,7 @@ import threading
 import http.server
 import socketserver
 import socket
+import time
 
 def find_free_port():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -18,11 +19,30 @@ def start_server(path, port):
     with socketserver.TCPServer(("", port), handler) as httpd:
         httpd.serve_forever()
 
+def on_closing(window):
+    # Ask the user if they want to export their data before closing
+    # Yes = Export and Exit
+    # No = Just Exit
+    title = "ScholarFlow - Çıkış"
+    message = "Uygulamadan çıkmadan önce verilerinizi yedeklemek (dışa aktarmak) ister misiniz?\n\n'Evet' derseniz verileriniz indirilecek ve uygulama kapanacaktır.\n'Hayır' derseniz verileriniz indirilmeden uygulama kapanacaktır."
+    
+    result = window.create_confirmation_dialog(title, message)
+    
+    if result:
+        # User clicked "Yes" (Evet) - Trigger export
+        print("[ScholarFlow] Exporting data before exit...")
+        window.evaluate_js("if(window.scholarflow) window.scholarflow.exportUserData()")
+        # Small delay to allow the browser to handle the download trigger
+        time.sleep(1.5)
+    
+    # In both cases (Yes or No), we allow the window to close
+    # The 'not responding' issue is usually because this function takes too long 
+    # or blocks the UI thread. We'll ensure it finishes.
+    return True
+
 if __name__ == "__main__":
-    # Get the directory of the script
     script_dir = os.path.dirname(os.path.abspath(__file__))
     
-    # Path to the build directory (Vite dist)
     possible_paths = [
         os.path.join(script_dir, "dist"),
         "/usr/share/webapps/scholarflow"
@@ -39,21 +59,19 @@ if __name__ == "__main__":
 
     port = find_free_port()
     
-    # Start the server in a daemon thread
     t = threading.Thread(target=start_server, args=(dist_path, port))
     t.daemon = True
     t.start()
 
-    # Create persistent storage directory
     storage_dir = os.path.expanduser("~/.local/share/scholarflow")
     os.makedirs(storage_dir, exist_ok=True)
 
-    # Open the webview
-    webview.create_window('ScholarFlow', f'http://localhost:{port}', width=1200, height=800)
+    window = webview.create_window('ScholarFlow', f'http://localhost:{port}', width=1200, height=800)
     
-    # Start webview
-    # We removed all event handlers and blocking calls to prevent "not responding" errors
+    # Re-enable the closing event with the confirmation dialog
+    window.events.closing += on_closing
+    
     webview.start(storage_path=storage_dir)
     
-    # Force kill the process on exit to ensure all threads (like the HTTP server) are terminated
+    # Force exit to clean up all threads
     os._exit(0)
