@@ -11,7 +11,7 @@ post_install() {
     echo "    $ cd /usr/share/webapps/scholarflow"
     echo "    $ pm2 start ecosystem.config.cjs"
     echo ""
-    echo " Kendi Gemini API anahtarınızı girmeyi unutmayın!"
+    echo " Detaylı Bilgi için read me dosyasını okuyun!"
     echo -e "\e[1;34m=======================================================================\e[0m"
 }
 
