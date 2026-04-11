@@ -1,7 +1,7 @@
 # Maintainer: Senqaii <batuh007@gmail.com>
 pkgname=netsplitter
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Advanced Linux Network Namespace Isolation & QoS Bufferbloat Automation Framework"
 arch=('any')
 url="https://github.com/batuh007/-NetSplitter-"
@@ -25,7 +25,7 @@ optdepends=(
 provides=('netsplitter')
 conflicts=('netsplitter-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/batuh007/-NetSplitter-/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('180fa25f09654821d2542043b385bbcc94572b4bf1f31aa0779314affb1dd93d')
+sha256sums=('d9349581ac41dd483699f46df8680eb63358f28c9eb397cd2471a6c1f69309bb')
 
 package() {
     cd "./-NetSplitter--${pkgver}"
