@@ -1,11 +1,10 @@
 pkgbase = lution
 	pkgdesc = Third-party bootstrapper for Sober runtime - Bloxstrap clone for Linux
-	pkgver = 0.3.0r
-	pkgrel = 2
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = https://github.com/Wookhq/Lution
 	arch = any
 	license = MIT
-	makedepends = git
 	depends = python
 	depends = pyside6
 	depends = python-requests
@@ -15,9 +14,8 @@ pkgbase = lution
 	depends = python-rich
 	depends = python-toml
 	optdepends = rsync: For faster and smarter updates of the user directory
-	provides = lution
 	conflicts = lution-git
-	source = lution-0.3.0r.tar.gz::https://github.com/Wookhq/Lution/archive/refs/tags/stable-v0.3.0r.tar.gz
-	sha256sums = f8ba90af5a84c5715387e40c977135a59148a5999bb2d83a88b317053ddf85f5
+	source = lution-0.3.2.tar.gz::https://github.com/Wookhq/Lution/archive/refs/tags/stable-v0.3.2.tar.gz
+	sha256sums = 33bc5a523d481dbb97bd56839cda1344772e42a61a3e8ebf9f4a3c32595d6198
 
 pkgname = lution

@@ -21,7 +21,7 @@ optdepends=(
 )
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/stable-v${pkgver}.tar.gz")
-sha256sums=('f8ba90af5a84c5715387e40c977135a59148a5999bb2d83a88b317053ddf85f5')
+sha256sums=('33bc5a523d481dbb97bd56839cda1344772e42a61a3e8ebf9f4a3c32595d6198')
 
 package() {
     cd "Lution-stable-v${pkgver}"
