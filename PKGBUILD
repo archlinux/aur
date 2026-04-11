@@ -2,7 +2,7 @@
 pkgname=folder-color-nautilus
 _pkgname=${pkgname%-nautilus}
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Change your folder color in Nautilus"
 arch=('any')
 url="https://github.com/costales/folder-color"
@@ -24,14 +24,14 @@ sha256sums=('244a8b2ab1581c9d7f557b9d419940dd623102481b2a20a10e2f8ea676ca6bcf')
 prepare() {
   cd "${_pkgname}"
   git clean -dfx
-
-  pushd install-scripts
-  ./nautilus.sh
-  popd
 }
 
 build() {
   cd "${_pkgname}"
+  pushd install-scripts
+  ./nautilus.sh
+  popd
+
   python -m build --wheel --no-isolation
 }
 
