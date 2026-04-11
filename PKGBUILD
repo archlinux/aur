@@ -12,8 +12,8 @@ depends=(systemd)
 options=('!debug')
 backup=("boot/loader/entries/grml-full.conf")
 source=(
-	https://download.grml.org/grml-full-"${pkgver}"-amd64.iso
-	grml-full.conf
+  https://download.grml.org/grml-full-"${pkgver}"-amd64.iso
+  grml-full.conf
 )
 noextract=(grml-full-"${pkgver}"-amd64.iso)
 
@@ -23,9 +23,9 @@ sha256sums=('fa862fe611be9ea176593b129fcfbd741a0da648e95886db7db4f2ded7d360d3'
 prepare() {
   cd "${srcdir}"
   bsdtar xf grml-full-"${pkgver}"-amd64.iso \
-	boot/grmlfullamd64/vmlinuz \
- 	boot/grmlfullamd64/initrd.img \
-   	live/grml-full-amd64/grml-full-amd64.squashfs
+    boot/grmlfullamd64/vmlinuz \
+    boot/grmlfullamd64/initrd.img \
+    live/grml-full-amd64/grml-full-amd64.squashfs
 }
 
 package() {
