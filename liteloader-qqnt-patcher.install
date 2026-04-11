@@ -1,26 +1,39 @@
 post_install() {
+    echo "[i] Installing default alpm hooks"
+    ln -vs /usr/lib/liteloader-qqnt-patcher/libalpm-hooks/liteloader-qqnt-patcher-notify.hook /usr/share/libalpm/hooks/liteloader-qqnt-patcher.hook
+
     echo ">>> 'liteloader-qqnt-patcher' was installed."
-    echo ">>> To apply the patch for FIRST TIME, you SHOULD run:"
+    echo ">>> To apply the patch for the FIRST TIME, you SHOULD run:"
     echo "sudo liteloader-qqnt-patcher apply"
     echo ""
-    echo ">>> You SHOULD run this command after every LinuxQQ update (Target file modified):"
+    echo ">>> You SHOULD run this command after every LinuxQQ update (target file modified):"
     echo "sudo liteloader-qqnt-patcher upgrade"
-    echo ">>> We'll try to notify you but not guranteed."
+    echo ">>> We'll try to notify you, but it's not guaranteed."
     echo ""
     echo ">>> To REVERT the patch, please run:"
     echo "sudo liteloader-qqnt-patcher restore"
+    echo ""
+    echo ">> If you need to enable automatic patching, run:"
+    echo "sudo liteloader-qqnt-patcher set_alpmhook_patch"
+    echo ">> If you want to go back to the notify hook, run:"
+    echo "sudo liteloader-qqnt-patcher set_alpmhook_notify"
 }
 
 post_upgrade() {
     post_install
     echo ""
-    echo ">>> This is an upgrade of 'liteloader-qqnt-patcher', you may need to run these following commands: "
+    echo ">>> This is an upgrade of 'liteloader-qqnt-patcher'. You may need to run the following commands:"
     echo "sudo liteloader-qqnt-patcher restore"
     echo "sudo liteloader-qqnt-patcher upgrade"
 }
 
+pre_remove() {
+    echo "[i] Removing liteloader-qqnt-patcher alpm hook"
+    rm -vf /usr/share/libalpm/hooks/liteloader-qqnt-patcher.hook
+}
+
 post_remove() {
     echo ">>> 'liteloader-qqnt-patcher' was removed."
-    echo ">>> Check the LinuxQQ with pacman -Qkk and reinstall it if needed."
-    echo ">>> You may delete all the backup files (*.LLQQNT.bak), or restore them manually."
+    echo ">>> Check LinuxQQ with pacman -Qkk and reinstall it if needed."
+    echo ">>> You may delete all backup files (*.LLQQNT.bak), or restore them manually."
 }

@@ -5,4 +5,5 @@
 !liteloader-qqnt-patcher.sh
 !liteloader-qqnt-patcher.install
 !liteloader-qqnt-patcher-notify.hook
+!liteloader-qqnt-patcher-patch.hook
 !LiteLoaderQQNT.js

@@ -1,0 +1,15 @@
+[Trigger]
+Type=Path
+Operation=Install
+Operation=Upgrade
+Target=opt/QQ/resources/app/package.json
+
+[Trigger]
+Type=Package
+Operation=Upgrade
+Target=liteloader-qqnt-patcher
+
+ [Action]
+Description=Patching QQ for LiteLoaderQQNT...
+When=PostTransaction
+Exec=/usr/bin/liteloader-qqnt-patcher upgrade
