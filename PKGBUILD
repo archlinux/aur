@@ -29,7 +29,7 @@ backup=('etc/mtproto-proxy.toml')
 install='mtproto-proxy.install'
 build () {
 	cd "$pkgname-$pkgver"
-	make release
+	make build
 }
 package() {
 	cd "$pkgname-$pkgver"
