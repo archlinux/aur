@@ -19,15 +19,26 @@ diff --git a/dist/src/bridge.js b/dist/src/bridge.js
 index 859805e..86f8c5c 100644
 --- a/dist/src/bridge.js
 +++ b/dist/src/bridge.js
-@@ -150,8 +150,8 @@ function writeReadySignal() {
+@@ -148,19 +148,19 @@ function writeReadySignal() {
+     process.stdout.write("READY\n");
+ }
+ export function buildTransportArgs() {
+-    const args = ["-y", "chrome-devtools-mcp@latest", "--isolated"];
++    const args = ["--isolated"];
+     if (process.env.CHROME_DEVTOOLS_AXI_HEADED !== "1") {
+         args.push("--headless");
+     }
+     const extraChromeArgs = process.env.CHROME_DEVTOOLS_AXI_CHROME_ARGS;
+     if (extraChromeArgs) {
+         for (const arg of extraChromeArgs.trim().split(/\s+/)) {
+             args.push(`--chrome-arg=${arg}`);
+         }
+     }
+     return args;
  }
  function createTransport() {
-     return new StdioClientTransport({
--        command: "npx",
--        args: ["-y", "chrome-devtools-mcp@latest", "--headless", "--isolated"],
-+        command: "chrome-devtools-mcp",
-+        args: ["--headless", "--isolated"],
-     });
+-    return new StdioClientTransport({ command: "npx", args: buildTransportArgs() });
++    return new StdioClientTransport({ command: "chrome-devtools-mcp", args: buildTransportArgs() });
  }
  function createBridgeClient() {
 diff --git a/dist/src/client.js b/dist/src/client.js

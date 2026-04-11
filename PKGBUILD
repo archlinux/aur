@@ -1,8 +1,8 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=chrome-devtools-axi
-pkgver=0.1.13
-pkgrel=1
+pkgver=0.1.14
+pkgrel=2
 pkgdesc="AXI-compliant chrome-devtools-mcp wrapper with contextual suggestions"
 arch=('any')
 url="https://github.com/kunchenguid/chrome-devtools-axi"
@@ -14,8 +14,8 @@ source=(
   "${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz"
   "${pkgname}-runtime.patch"
 )
-sha512sums=('465adc1e2de553d7102a328c6e0bbf2c83b78d9214de40aa076e59b70232715e58f4c80e04e568a51d005556b582ccb910a2df9ef6ab6984d51246b87951ea6f'
-            '5566576a575b6d1933b89f6f541c38b7a53c50137851272c1de165b9ed5d02bcfde791b7aad71e52c951b498f5b5908be5f6923836412ae46344416a9b6645e1')
+sha512sums=('f1c2d3948836f64f2cdbc1e5cbb78f7c3fbc6a58c70af5c9eff981b5e97a373d3d38a26befc46240346acbc833cd6380d89b06f21de5bb0c1edfecd6cb743a00'
+            'ec4f86f355168c32ed153eaa50f90ffecc8b9249579b1bab1dfecee48651806e7fa43a7a2214ebbf1904a3823bc596bb87779e18bc8b89c258f0a1de1b006b43')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${pkgname}/latest" | jq -r '.version'
