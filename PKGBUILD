@@ -2,7 +2,7 @@
 pkgname=ascendara-bin
 _pkgname=ascendara
 pkgver=10.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Game launcher that downloads, installs, and manages games automatically"
 arch=('x86_64')
 url="https://github.com/Ascendara/ascendara"
@@ -37,7 +37,8 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/$_pkgname" <<EOF
 #!/bin/sh
-exec /opt/$_pkgname/AppRun --no-sandbox "\$@"
+export LD_LIBRARY_PATH="/opt/$_pkgname/usr/lib\${LD_LIBRARY_PATH:+:\$LD_LIBRARY_PATH}"
+exec "/opt/$_pkgname/$_pkgname" --no-sandbox "\$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/$_pkgname"
 

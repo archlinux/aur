@@ -1,7 +1,7 @@
 pkgbase = ascendara-bin
 	pkgdesc = Game launcher that downloads, installs, and manages games automatically
 	pkgver = 10.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ascendara/ascendara
 	arch = x86_64
 	license = MIT
