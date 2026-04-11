@@ -5,13 +5,14 @@ declare srcdir
 
 pkgname="liteloader-qqnt-patcher"
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A patcher for LiteLoaderQQNT"
 arch=('any')
 url="https://github.com/LiteLoaderQQNT/LiteLoaderQQNT"
 license=('MIT')
 depends=("liteloader-qqnt")
 provides=("liteloader-qqnt-patcher")
+conflicts=("linuxqq-appimage")
 install=liteloader-qqnt-patcher.install
 
 source=("LiteLoaderQQNT.js"
@@ -19,9 +20,9 @@ source=("LiteLoaderQQNT.js"
         "liteloader-qqnt-patcher-notify.hook"
         "liteloader-qqnt-patcher-patch.hook")
 sha256sums=('07739e1313a47ba3fa22d30ecf295afe1603cc8401d370fe22aa8dfc8da8c0c7'
-            '0de5d058c5fcbccd587e5f20471f9864a731fb7716408529cb2f5779ca1296c8'
-            '43047c31ad3cccb42cfc54705d1ffcdc93aaff4ef12bc8998836f329fa187ceb'
-            'ac9278718f9c2442e8a628975accf42475eb9eef24c1cfa42a321ea8fa75c170')
+            'd3c7a6a22e08ff1ccc550c759dced749b6e0ef8709e7bd9ab290c176f8f29944'
+            'b91c982d04843c76bc7d0f04a095dc707c87ecceb7c6cce4e8db61af60c596ed'
+            '604f6b8face943aa02c067e1f38cd8eafd1647c2c40c37be147c8d64acec3257')
 
 package() {
     install -Dm755 "${srcdir}/liteloader-qqnt-patcher.sh" -T "${pkgdir}/usr/bin/liteloader-qqnt-patcher"
