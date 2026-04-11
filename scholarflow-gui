@@ -21,21 +21,10 @@ def start_server(path, port):
         httpd.serve_forever()
 
 def on_closing(window):
-    # Ask the user if they want to export their data before closing
-    # Use localized message
-    title = "ScholarFlow"
-    message = "Kapatmadan önce verilerinizi dışa aktarmak (yedeklemek) ister misiniz?\n\n(Not: Verileriniz yerel depolamada saklanır ancak tarayıcı geçmişi silinirse kaybolabilir.)"
-    
-    # Show confirmation dialog
-    result = window.create_confirmation_dialog(title, message)
-    
-    if result:
-        # If user clicks "Yes", trigger the JS export function
-        window.evaluate_js("if(window.scholarflow) window.scholarflow.exportUserData()")
-        # Give a small delay for the download to start
-        time.sleep(1)
-    
-    return True # Allow closing
+    # Fixed the "not responding" issue by removing the blocking confirmation dialog
+    # and relying on the exposed JS functions for user-triggered export
+    print("[ScholarFlow] Application closing...")
+    return True # Allow closing without blocking
 
 if __name__ == "__main__":
     # Get the directory of the script
