@@ -16,7 +16,7 @@
 pkgname=loot
 # https://github.com/loot/loot/releases
 pkgver=0.29.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
 url="https://loot.github.io"
@@ -77,6 +77,9 @@ build() {
 		-DCMAKE_INSTALL_RPATH="/opt/${pkgname}"
 		#-DLIBLOOT_URL="${srcdir}/${pkgname}-${pkgver}/libloot.tar.gz" \
 	cmake --build build
+
+	# Build translations
+	python scripts/po_to_mo.py
 }
 
 package() {
@@ -91,4 +94,13 @@ package() {
 	install -Dm644 "${_builddir}/../resources/icons/loot.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.loot.loot.svg"
 	# Install desktop entry
 	install -Dm644 "${_builddir}/../resources/linux/io.github.loot.loot.desktop" "${pkgdir}/usr/share/applications/io.github.loot.loot.desktop"
+
+	# Install translations
+	# en directory has no translation file
+	rm -rf ${_builddir}/../resources/l10n/en
+	for dir in "${_builddir}/../resources/l10n/"*/; do
+		install -Dm644 \
+			"${dir}/LC_MESSAGES/"*.mo \
+			-t "${pkgdir}/usr/share/locale/$(basename "${dir}")/LC_MESSAGES"
+	done
 }
