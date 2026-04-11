@@ -30,11 +30,10 @@ if [ ! -f /opt/lem-editor/lem.AppImage ]; then
     exit 1
 fi
 
-# Test execution - run --version to verify the AppImage works
-# Capture both stdout and stderr to diagnose failures
+# Test 1: Version output (quick test)
 test_output=$(/usr/bin/lem --version 2>&1) || {
     exit_code=$?
-    echo "ERROR: Failed to execute /usr/bin/lem (exit code: $exit_code)"
+    echo "ERROR: Failed to run /usr/bin/lem --version (exit code: $exit_code)"
     echo "Output:"
     echo "$test_output"
 
@@ -44,19 +43,44 @@ test_output=$(/usr/bin/lem --version 2>&1) || {
         echo "DIAGNOSIS: AppImage requires FUSE but --appimage-extract-and-run should handle this."
         echo "The wrapper script may not be using --appimage-extract-and-run correctly."
     fi
+    if echo "$test_output" | grep -q "not found\|cannot open shared"; then
+        echo ""
+        echo "DIAGNOSIS: Missing library or dependency detected."
+        echo "The AppImage requires system libraries that are not installed."
+    fi
     exit 1
 }
 
-# Verify output contains version info
 if [ -z "$test_output" ]; then
     echo "ERROR: No version output from /usr/bin/lem"
     exit 1
 fi
 
+# Test 2: Try to initialize the editor (more thorough test)
+# Use timeout and /dev/null input to prevent hanging, capture errors
+init_output=$(timeout 2 /usr/bin/lem < /dev/null 2>&1) || {
+    exit_code=$?
+    # Exit code 124 is timeout (expected for interactive app), other codes indicate errors
+    if [ $exit_code -ne 124 ]; then
+        echo "ERROR: Editor failed to initialize (exit code: $exit_code)"
+        echo "Output:"
+        echo "$init_output"
+
+        # Diagnose the failure
+        if echo "$init_output" | grep -q "not found\|cannot open shared\|No such file"; then
+            echo ""
+            echo "DIAGNOSIS: Missing system dependency or library file."
+            echo "Check that all required libraries are installed."
+        fi
+        exit 1
+    fi
+}
+
 # Print success message with version info
 echo "✓ Package installed and tested successfully"
 echo "✓ Wrapper script works correctly"
 echo "✓ AppImage environment preserved (no FUSE required)"
+echo "✓ All dependencies available"
 echo ""
 echo "Version info:"
 echo "$test_output"
