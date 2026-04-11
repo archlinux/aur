@@ -1,6 +1,6 @@
 pkgbase = xremap-niri-bin
-	pkgdesc = Dynamic key remapper for X11 and Wayland
-	pkgver = 0.15.0
+	pkgdesc = Dynamic key remapper for X11 and Wayland (Niri Wayland Version)
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://github.com/xremap/xremap
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = xremap-niri-bin
 	license = MIT
 	provides = xremap
 	options = !debug
-	source = LICENSE-0.15.0::https://raw.githubusercontent.com/xremap/xremap/v0.15.0/LICENSE
+	source = LICENSE-0.15.1::https://raw.githubusercontent.com/xremap/xremap/v0.15.1/LICENSE
 	sha256sums = 60365594c733128ba50f05de00c4a6f07fed0a6e8bbd93817f39ded3980f7343
-	source_x86_64 = xremap-niri-bin-0.15.0-x86_64.zip::https://github.com/xremap/xremap/releases/download/v0.15.0/xremap-linux-x86_64-niri.zip
-	sha256sums_x86_64 = c23b95b88f61dba585d678035ba3ef25fdc8b9355d66e3927407d8d7ae98f014
-	source_aarch64 = xremap-niri-bin-0.15.0-aarch64.zip::https://github.com/xremap/xremap/releases/download/v0.15.0/xremap-linux-aarch64-niri.zip
-	sha256sums_aarch64 = 00bd99b59766d5848f3cccc76e69f2d01abc8d79f3b1d994ed10aba7053997c4
+	source_x86_64 = xremap-niri-bin-0.15.1-x86_64.zip::https://github.com/xremap/xremap/releases/download/v0.15.1/xremap-linux-x86_64-niri.zip
+	sha256sums_x86_64 = bf63e41fbd77d6da93b2cc2e6389f5fc7458e19dae0e3d0a4d31ebbb730fcc36
+	source_aarch64 = xremap-niri-bin-0.15.1-aarch64.zip::https://github.com/xremap/xremap/releases/download/v0.15.1/xremap-linux-aarch64-niri.zip
+	sha256sums_aarch64 = 11f44f8416489207bc5efeb1c0d917109a00de05045adb2bfeeff846c4c081b1
 
 pkgname = xremap-niri-bin
