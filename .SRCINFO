@@ -1,7 +1,7 @@
 pkgbase = netsplitter-git
 	pkgdesc = Advanced Linux Network Namespace Isolation & QoS Bufferbloat Automation Framework
 	pkgver = 0.1.0.r0.g820ff9b
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/batuh007/-NetSplitter-
 	arch = any
 	license = custom:Proprietary

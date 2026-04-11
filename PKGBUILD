@@ -1,7 +1,7 @@
 # Maintainer: Senqaii <batuh007@gmail.com>
 pkgname=netsplitter-git
 pkgver=0.1.0.r0.g820ff9b
-pkgrel=7
+pkgrel=8
 pkgdesc="Advanced Linux Network Namespace Isolation & QoS Bufferbloat Automation Framework"
 arch=('any')
 url="https://github.com/batuh007/-NetSplitter-"
@@ -51,13 +51,13 @@ xhost +si:localuser:root &>/dev/null || true
 # Force X11 backend for Qt6 so legacy X11 tray proxy handles the tray icon!
 export QT_QPA_PLATFORM=xcb
 # Preserve environment and run silently
-exec sudo -E /usr/bin/python3 /opt/netsplitter/run.py "$@"
+exec sudo -E /usr/bin/python3 /opt/netsplitter/run.py
 EOF
     chmod 755 "$pkgdir/usr/bin/netsplitter"
 
     # Passwordless Sudo Rule (Fixes password prompt on every startup)
     install -dm755 "$pkgdir/etc/sudoers.d"
-    echo "ALL ALL=(ALL) SETENV: NOPASSWD: /usr/bin/python3 /opt/netsplitter/run.py" > "$pkgdir/etc/sudoers.d/netsplitter"
+    echo "ALL ALL=(ALL) SETENV: NOPASSWD: /usr/bin/python3 /opt/netsplitter/run.py *" > "$pkgdir/etc/sudoers.d/netsplitter"
     chmod 440 "$pkgdir/etc/sudoers.d/netsplitter"
 
     # Install icons into XDG hicolor theme
