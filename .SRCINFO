@@ -1,5 +1,5 @@
 pkgbase = webclaw-bin
-	pkgdesc = Universal test runner with auto-detection for 11 languages
+	pkgdesc = Fast, local-first web content extraction for LLMs
 	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://github.com/0xMassi/webclaw

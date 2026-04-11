@@ -4,7 +4,7 @@ _gitauthor=0xMassi
 _gitname=webclaw
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Universal test runner with auto-detection for 11 languages"
+pkgdesc="Fast, local-first web content extraction for LLMs"
 
 pkgver=0.3.11
 pkgrel=1
