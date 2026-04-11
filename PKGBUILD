@@ -1,7 +1,7 @@
 # Maintainer: rileyaft <riley.aft at outlook dot com>
 
 pkgname=librepods-git
-pkgver=nightly.d9469c2.r72.gfd33528
+pkgver=nightly.d9469c2.r78.g1f2d707
 # additonally pulls from pkgver()
 pkgrel=1
 pkgdesc="Apple exclusive AirPods Pro 2 features for Linux (unofficial package)"
@@ -35,7 +35,10 @@ pkgver() {
 
 prepare() { # Done to avoid large download in other subdirectories
     cd "$srcdir"
-    git clone --filter=blob:none --sparse "$url" "${pkgname}"
+    git clone --filter=blob:none --sparse "$url" "${pkgname}" || (
+        cd "$srcdir/$pkgname"
+        git pull
+    )
     cd "${pkgname}"
     git sparse-checkout set linux
 }
@@ -51,5 +54,6 @@ build() {
 package() {
     cd "$srcdir/${pkgname}/linux/build"
     install -Dm755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+    install -Dm755 "${pkgname%-git}-ctl" "$pkgdir/usr/bin/${pkgname%-git}-ctl"
     install -Dm644 "$srcdir/${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
