@@ -1,13 +1,13 @@
 pkgbase = narsil-bin
 	pkgdesc = A terminal-based system resource monitor — GPU-aware, Braille charts, per-char label inversion
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Pommersche92/narsil
 	arch = x86_64
 	license = GPL-3.0-only
 	provides = narsil
 	conflicts = narsil
-	source = https://github.com/Pommersche92/narsil/releases/download/v0.2.0/narsil-0.2.0-x86_64.tar.gz
-	sha256sums = 4ca456cec75794f3d9c8996c6ac65ceb8aba2a4fe78e50cacd999045ea10260d
+	source = https://github.com/Pommersche92/narsil/releases/download/v0.3.0/narsil-0.3.0-x86_64.tar.gz
+	sha256sums = d53727f2ebe1fb74e94d379fe0a8cca706f7737629fe328ef6996432fa269e44
 
 pkgname = narsil-bin

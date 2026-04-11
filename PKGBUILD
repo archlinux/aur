@@ -1,6 +1,6 @@
 # Maintainer: Raimo Geisel <raimog92@protonmail.com>
 pkgname=narsil-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A terminal-based system resource monitor — GPU-aware, Braille charts, per-char label inversion"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 provides=('narsil')
 conflicts=('narsil')
 source=("https://github.com/Pommersche92/narsil/releases/download/v$pkgver/narsil-$pkgver-x86_64.tar.gz")
-sha256sums=('4ca456cec75794f3d9c8996c6ac65ceb8aba2a4fe78e50cacd999045ea10260d')
+sha256sums=('d53727f2ebe1fb74e94d379fe0a8cca706f7737629fe328ef6996432fa269e44')
 
 package() {
     cd "narsil-$pkgver"
