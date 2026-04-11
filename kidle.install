@@ -1,0 +1,13 @@
+post_install() {
+	echo ":: kidle: enable the system service:"
+	echo "   sudo systemctl enable --now kidle"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	echo ":: kidle: disabling system service"
+	systemctl disable kidle 2>/dev/null || true
+}
