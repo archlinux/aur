@@ -1,7 +1,7 @@
 pkgbase = sqldef
 	pkgdesc = Idempotent schema management for MySQL, PostgreSQL, SQLite, and SQL Server
 	pkgver = 3.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sqldef/sqldef
 	arch = x86_64
 	arch = aarch64
