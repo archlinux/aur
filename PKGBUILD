@@ -21,7 +21,6 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    export RUSTFLAGS="-C linker=gcc"
     cargo build --release
 }
 
