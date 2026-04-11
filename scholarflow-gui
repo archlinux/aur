@@ -6,7 +6,6 @@ import threading
 import http.server
 import socketserver
 import socket
-import time
 
 def find_free_port():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -17,14 +16,7 @@ def start_server(path, port):
     os.chdir(path)
     handler = http.server.SimpleHTTPRequestHandler
     with socketserver.TCPServer(("", port), handler) as httpd:
-        print(f"Serving at port {port}")
         httpd.serve_forever()
-
-def on_closing(window):
-    # Fixed the "not responding" issue by removing the blocking confirmation dialog
-    # and relying on the exposed JS functions for user-triggered export
-    print("[ScholarFlow] Application closing...")
-    return True # Allow closing without blocking
 
 if __name__ == "__main__":
     # Get the directory of the script
@@ -43,7 +35,6 @@ if __name__ == "__main__":
             break
             
     if not dist_path:
-        print(f"Error: Build directory not found. Please run 'npm run build' first or ensure the app is installed correctly.")
         sys.exit(1)
 
     port = find_free_port()
@@ -55,14 +46,14 @@ if __name__ == "__main__":
 
     # Create persistent storage directory
     storage_dir = os.path.expanduser("~/.local/share/scholarflow")
-    if not os.path.exists(storage_dir):
-        os.makedirs(storage_dir, exist_ok=True)
+    os.makedirs(storage_dir, exist_ok=True)
 
     # Open the webview
-    window = webview.create_window('ScholarFlow', f'http://localhost:{port}', width=1200, height=800)
+    webview.create_window('ScholarFlow', f'http://localhost:{port}', width=1200, height=800)
     
-    # Register close event
-    window.events.closing += on_closing
-    
-    # Start the app with a persistent storage path
+    # Start webview
+    # We removed all event handlers and blocking calls to prevent "not responding" errors
     webview.start(storage_path=storage_dir)
+    
+    # Force kill the process on exit to ensure all threads (like the HTTP server) are terminated
+    os._exit(0)
