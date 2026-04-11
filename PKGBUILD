@@ -1,18 +1,20 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
+# curl "https://releases.zigtools.org/v1/zls/select-version?zig_version=$(zig-mach version | tr -d '\n' | jq -sRr @uri)&compatibility=full" | jq
+
 _basename="zls"
 _suffix="-mach"
 pkgname="${_basename}${_suffix}"
-pkgver=0.14.0dev.336+a9e651a2
+pkgver=0.16.0dev.300+f391142c
 _pkgver="${pkgver//dev/-dev}"
-pkgrel=3
+pkgrel=1
 pkgdesc="A language server for Zig"
 arch=(
   'aarch64'     # 'aarch64'
   'armv7h'      # 'arm'
-  # 'loong64'     # 'loongarch64'
+  'loong64'     # 'loongarch64'
   # 'powerpc64le' # 'powerpc64le'
-  # 'riscv64'     # 'riscv64'
+  'riscv64'     # 'riscv64'
   # 's390x'       # 's390x'
   'i686'        # 'x86'
   'x86_64'      # 'x86_64'
@@ -31,26 +33,22 @@ makedepends=(
 )
 _zigdepends=(
   # zls
-  "known-folders-1cceeb70e77dec941a4178160ff6c8d05a74de6f.tar.gz::https://github.com/ziglibs/known-folders/archive/1cceeb70e77dec941a4178160ff6c8d05a74de6f.tar.gz"
-  "diffz-ef45c00d655e5e40faf35afbbde81a1fa5ed7ffb.tar.gz::https://github.com/ziglibs/diffz/archive/ef45c00d655e5e40faf35afbbde81a1fa5ed7ffb.tar.gz"
-  "zig-lsp-codegen-25b7b6676e00edb803c2b8398821b70f0f827c92.tar.gz::https://github.com/zigtools/zig-lsp-codegen/archive/25b7b6676e00edb803c2b8398821b70f0f827c92.tar.gz"
-  "tracy-0.11.1.tar.gz::https://github.com/wolfpld/tracy/archive/refs/tags/v0.11.1.tar.gz"
+  "known-folders-175f5596b3d2ee3c658282bb07885580895a0e73.tar.gz::https://github.com/ziglibs/known-folders/archive/175f5596b3d2ee3c658282bb07885580895a0e73.tar.gz"
+  "diffz-d93d5737d2c19a2fb279c8dcaa80a4ce35529a3b.tar.gz::https://github.com/ziglibs/diffz/archive/d93d5737d2c19a2fb279c8dcaa80a4ce35529a3b.tar.gz"
+  "lsp-kit-ec325a3c33d1da7708cf513355208f74d9560580.tar.gz::https://github.com/zigtools/lsp-kit/archive/ec325a3c33d1da7708cf513355208f74d9560580.tar.gz"
+  "tracy-0.13.1.tar.gz::https://github.com/wolfpld/tracy/archive/refs/tags/v0.13.1.tar.gz"
 )
 _pkgsrc="${_url##*/}"
 source=(
   "${_basename}-versioned.sh"
   "${_pkgsrc}::git+${_url}.git#commit=${pkgver##*+}"
-  "${_zigdepends[@]}"
+  # "${_zigdepends[@]}"
 )
-noextract=(
-  "${_zigdepends[@]%%::*}"
-)
+# noextract=(
+#   "${_zigdepends[@]%%::*}"
+# )
 sha256sums=('b9e70d344290a58c6e8199a22232fbd2a8789cf76ddf0574f0a4ea647299ea68'
-            '145169b90d6e383f29226964f6958187ca84e15a6fdde002b96eea3a5ccccb39'
-            '0ecaa2d606744e72d38a4251bd6ffb81c36b39bd3c9449d302b0b709c22110a0'
-            '1dd8f4678171bfd2476aa74743e48bce10aad2b90c2df038d3ac6b0ef37fc3ba'
-            'f559a194f33ac2946fcf92cc7fe1f9d9feaf6aee0d092648695fd4f5375b271a'
-            '2c11ca816f2b756be2730f86b0092920419f3dabc7a7173829ffd897d91888a1')
+            '9d420af9bed20385f7bfd99a0221423011f7a75a3bb749684d3565bcb703d613')
 
 prepare() {
   cd "${srcdir}"
@@ -58,9 +56,10 @@ prepare() {
       -e "s|@@ZLS_PATH@@|/usr/lib/${pkgname}|g" \
       -i "${_basename}-versioned.sh"
 
-  for dep in "${_zigdepends[@]}"; do
-    zig-mach fetch --global-cache-dir ./zig-global-cache "${dep%%::*}"
-  done
+  # cd "${_pkgsrc}"
+  # for _zigdepend in "${_zigdepends[@]}"; do
+  #   "zig${_suffix}" fetch --global-cache-dir "${srcdir}/zig-global-cache" "${srcdir}/${_zigdepend%%::*}"
+  # done
 }
 
 build() {
@@ -69,7 +68,7 @@ build() {
     --prefix /usr
     --search-prefix /usr
     --global-cache-dir "${srcdir}/zig-global-cache"
-    --system "${srcdir}/zig-global-cache/p"
+    # --system "${srcdir}/zig-global-cache/p"
     --verbose
     -Dtarget=native-linux.6.15-gnu.2.42
     -Dcpu=baseline
@@ -78,27 +77,27 @@ build() {
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  DESTDIR="build" zig-mach build "${zig_options[@]}"
+  DESTDIR="build" "zig${_suffix}" build "${zig_options[@]}"
 }
 
-# check() {
-#   export PATH="/opt/zig${_suffix}:$PATH"
-#   local zig_options=(
-#     --summary all
-#     --prefix /usr
-#     --search-prefix /usr
-#     --global-cache-dir "${srcdir}/zig-global-cache"
-#     --system "${srcdir}/zig-global-cache/p"
-#     --verbose
-#     -Dtarget=native-linux.6.15-gnu.2.41
-#     -Dcpu=baseline
-#     -Doptimize=ReleaseSafe
-#     -Dpie=true
-#   )
+check() {
+  export PATH="/opt/zig${_suffix}:$PATH"
+  local zig_options=(
+    --summary all
+    --prefix /usr
+    --search-prefix /usr
+    --global-cache-dir "${srcdir}/zig-global-cache"
+    # --system "${srcdir}/zig-global-cache/p"
+    --verbose
+    -Dtarget=native-linux.6.15-gnu.2.41
+    -Dcpu=baseline
+    -Doptimize=ReleaseSafe
+    -Dpie=true
+  )
 
-#   cd "${srcdir}/${_pkgsrc}"
-#   DESTDIR="check" zig-mach build test "${zig_options[@]}"
-# }
+  cd "${srcdir}/${_pkgsrc}"
+  DESTDIR="check" "zig${_suffix}" build test "${zig_options[@]}"
+}
 
 package() {
   cd "${srcdir}"
