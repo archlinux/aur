@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=lution
-pkgver=0.3.0r
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="Third-party bootstrapper for Sober runtime - Bloxstrap clone for Linux"
 arch=('any')
 url="https://github.com/Wookhq/Lution"
