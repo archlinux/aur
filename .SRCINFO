@@ -1,6 +1,6 @@
 pkgbase = python-pywal16
 	pkgdesc = Generate and change color-schemes on the fly (fork that uses 16 colors)
-	pkgver = 3.8.14
+	pkgver = 3.8.15
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/eylles/pywal16
@@ -33,7 +33,7 @@ pkgbase = python-pywal16
 	provides = python-pywal
 	conflicts = pywal
 	conflicts = python-pywal
-	source = pywal16-3.8.14-1-1.tar.gz::https://github.com/eylles/pywal16/archive/refs/tags/3.8.14.tar.gz
-	sha256sums = 7f56a7d00b1c0b9c5b44b846d83d0f7ad0b2c6c0c4e6f628d9c7381031743294
+	source = pywal16-3.8.15-1-1.tar.gz::https://github.com/eylles/pywal16/archive/refs/tags/3.8.15.tar.gz
+	sha256sums = cd3e4588c453b844dd222d861b52b7a7c88a3396b3e104300ef1db27b9492b1d
 
 pkgname = python-pywal16
