@@ -1,6 +1,6 @@
 pkgbase = xero-music
 	pkgdesc = Terminal music player written in Rust with album art and synced lyrics
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://codeberg.org/Xero-music/Xero
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = xero-music
 	depends = glibc
 	optdepends = libsixel: sixel album-art rendering via img2sixel
 	optdepends = kitty: kitty icat integration for album-art rendering
-	source = xero-music-1.0.0.tar.gz::https://codeberg.org/Xero-music/Xero/archive/v1.0.0.tar.gz
-	sha256sums = ecc03f64ae9961ff0a3324b0cca5036862d17caec85c25d14f06a39a5bb4a83c
+	source = xero-music-1.0.1.tar.gz::https://codeberg.org/Xero-music/Xero/archive/v1.0.1.tar.gz
+	sha256sums = 6774207e9a5d94939d1ab7aad584b509a7bef09be726c11bf4f36d9956f4ba08
 
 pkgname = xero-music
