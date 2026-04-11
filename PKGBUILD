@@ -12,7 +12,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'mesa' 'libappindicator-gtk3
 options=('!strip')
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://github.com/Tymon3310/pipette-desktop/releases/download/v${pkgver}/Pipette-linux-x86_64.AppImage")
-sha256sums=('6cee179c8cacf4c747c86d4c5a53b96cbfbd7c72776b5c55ae6a7a9b2b326b8a')
+sha256sums=('9c1e1d0682474dcf86d3852cabbc68a94a4a272755a0908d281957e97107f174')
 
 prepare() {
   cd "$srcdir"
