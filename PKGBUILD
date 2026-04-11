@@ -42,7 +42,7 @@ depends=(
 	)
 makedepends+=('git' 'intltool>=0.40.1'
              'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'
-             'alsa-lib' 'curl' 'ghostscript' 'libxpm' 'webkit2gtk'
+             'alsa-lib' 'curl' 'ghostscript' 'libxpm' 'webkit2gtk-4.1'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib'
              'gjs' 'python-gobject' 'python-packaging' 'luajit' 'meson'
              'glib2-devel'
@@ -55,7 +55,7 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'curl: for URI support'
             'ghostscript: for postscript support'
             'libxpm: XPM support'
-            'webkit2gtk: HTML renderer and web content engine'
+            'webkit2gtk-4.1: HTML renderer and web content engine'
             'libheif: HEIF support'
             'libwebp: WebP support'
             'libmng: MNG support'
