@@ -1,0 +1,16 @@
+pkgbase = duat-git
+	pkgdesc = A modern, very customizable text editor, configured in rust
+	pkgver = v0.10.0
+	pkgrel = 1
+	url = https://github.com/AhoyISki/duat
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	provides = duat
+	conflicts = duat
+	source = git+https://github.com/AhoyISki/duat
+	sha256sums = SKIP
+
+pkgname = duat-git
