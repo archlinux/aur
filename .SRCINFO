@@ -1,7 +1,7 @@
 pkgbase = teleport-client-17
 	pkgdesc = Modern SSH server for teams managing distributed infrastructure - Client-only 17.X branch (tsh, tctl)
 	pkgver = 17.7.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gravitational/teleport
 	arch = x86_64
 	arch = armv7h
