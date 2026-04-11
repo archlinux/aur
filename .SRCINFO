@@ -1,6 +1,6 @@
 pkgbase = openaether
 	pkgdesc = Local AI desktop agent for Arch Linux and Hyprland
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Qsenja/OpenAether
 	install = openaether.install
@@ -21,7 +21,7 @@ pkgbase = openaether
 	depends = python-httpx
 	depends = python-psutil
 	depends = tesseract
-	source = openaether-0.1.1.tar.gz::https://github.com/Qsenja/OpenAether/archive/v0.1.1.tar.gz
+	source = openaether-0.1.2.tar.gz::https://github.com/Qsenja/OpenAether/archive/v0.1.2.tar.gz
 	source = openaether.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
