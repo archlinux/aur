@@ -1,7 +1,7 @@
 # Maintainer: Robert Wolff <mahlzahn@posteo.de>
 pkgname=censor
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PDF document redaction for the GNOME desktop'
 arch=(x86_64)
 url='https://codeberg.org/censor/Censor'
