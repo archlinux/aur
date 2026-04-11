@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-daemon
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Hardware fan control daemon for Linux (OpenFan, hwmon, GPU)"
 arch=('x86_64')
@@ -12,7 +12,11 @@ backup=('etc/control-ofc/daemon.toml')
 install=control-ofc-daemon.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cee81621b2e9f75fd1bffd7210485c31b62b0c25ebbdc451b1d4ff0f8a61639f')
+# Placeholder — recomputed post-tag-push. The release workflow
+# (.github/workflows/release-aur.yml) will fail until this matches the
+# GitHub tarball hash. Fix with a follow-up "fix: update PKGBUILD
+# checksum for v1.1.1" commit, same pattern as commit a1d2b7b.
+sha256sums=('738b8a0872a656112a43996395d5908c8827c416a115a45c911df64d0c38fdc8')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -48,6 +52,11 @@ package() {
 
     # Default config
     install -Dm644 packaging/daemon.toml.example "$pkgdir/etc/control-ofc/daemon.toml"
+
+    # Profile drop-in directory (admin-owned, GUI reads from here after copy).
+    # The daemon's own runtime state lives under /var/lib/control-ofc/, which
+    # systemd creates via StateDirectory= in the unit file.
+    install -dm755 "$pkgdir/etc/control-ofc/profiles"
 
     # udev rules (template — user must fill in VID/PID for their device)
     install -Dm644 packaging/99-control-ofc.rules "$pkgdir/usr/lib/udev/rules.d/99-control-ofc.rules"
