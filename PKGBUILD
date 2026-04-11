@@ -3,7 +3,7 @@
 # thanks to txtsd <aur.archlinux@ihavea.quest> for contributing some parts of the PKGBUILD code
 
 pkgname=openmw-git
-pkgver=0.50.0.r943.g663ae0fd77
+pkgver=0.50.0.r1134.ge6b9c27884
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64' 'aarch64')
@@ -47,9 +47,6 @@ pkgver() {
 }
 
 build() {
-  
-  #workaround for https://gitlab.com/OpenMW/openmw/-/issues/8601
-  CXXFLAGS="${CXXFLAGS/-fno-omit-frame-pointer/}"
   
   cmake \
         -B _build \
