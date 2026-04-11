@@ -9,7 +9,7 @@ pkgname=(
   psqldef
 )
 pkgver=3.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Idempotent schema management for MySQL, PostgreSQL, SQLite, and SQL Server'
 arch=(x86_64 aarch64)
 url='https://github.com/sqldef/sqldef'
@@ -23,8 +23,8 @@ sha256sums=('be2e152c220b1eb96fc3df393609829aed9c61b0991e4a32f21c7b97538ebaee')
 
 prepare() {
   cd "$pkgbase-$pkgver"
-  export GOPATH="${srcdir}/go"
-  go mod download -modcacherw
+  export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
+  go mod download
 }
 
 build() {
@@ -42,8 +42,8 @@ build() {
     go build -o "build/$_bin" "cmd/$_bin/$_bin.go"
   done
 
-  # Make sure go path is writable so it can be cleaned up
-  chmod -R u+w "${srcdir}/go"
+  # Clean up deps
+  go clean -modcache
 }
 
 package_mysqldef() {
