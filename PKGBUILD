@@ -2,7 +2,7 @@
 pkgname=booru-viewer-git
 _pkgname=booru-viewer
 pkgver=0.2.6.r0.gaf0d8fa
-pkgrel=1
+pkgrel=2
 pkgdesc="Local booru image browser with Qt6 GUI (Danbooru, Gelbooru, e621, and more)"
 arch=('any')
 url="https://git.pax.moe/pax/booru-viewer"
@@ -21,6 +21,11 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-hatchling'
+)
+optdepends=(
+  'qt6-wayland: native Wayland support (recommended on Hyprland, Sway, GNOME Wayland)'
+  'plasma-integration: KDE Plasma theme and palette integration'
+  'kdialog: native KDE file dialogs (pairs with plasma-integration)'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
