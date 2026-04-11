@@ -1,0 +1,27 @@
+pkgbase = bestclient
+	pkgdesc = DDRaceNetwork modification that adds new feauters
+	pkgver = 1.4.3
+	pkgrel = 1
+	install = bestclient.install
+	arch = x86_64
+	checkdepends = gmock
+	depends = freetype2
+	depends = opusfile
+	depends = curl
+	depends = glew
+	depends = wavpack
+	depends = ffmpeg
+	depends = libnotify
+	depends = miniupnpc
+	depends = sqlite
+	depends = mariadb-libs
+	depends = vulkan-icd-loader
+	optdepends = ddnet-maps-git: All the maps used on the official DDNet Servers.
+	optdepends = discord-game-sdk: Enable rich presence in Discord desktop client.
+	backup = usr/share/ddnet/data/autoexec_server.cfg
+	source = https://github.com/RoflikBEST/bestdownload/releases/download/v1.4.3/bestclient.tar.xz
+	source = bestclient.png
+	sha256sums = 14e1b03583a7dfceff0371c168ce0e87d5d2a1bc81168212a2993984d6d3ea2d
+	sha256sums = a118504f690407019294b39bea26920e2cddee94c032a1e5fae1ea216c9ea64f
+
+pkgname = bestclient
