@@ -15,5 +15,5 @@ md5sums=('936dd3ac49df6726c2d43d1f6f606389')
 package() {
 	cd "BambooTracker-v${pkgver}-linux-64bit"
 	install -m 755 -Dt "${pkgdir}/usr/bin" bin/*
-    cp -dr --preserve=mode,timestamp share "${pkgdir}/usr/share" 
+    	cp -dr --preserve=mode,timestamp share "${pkgdir}/usr/share" 
 }
