@@ -1,7 +1,7 @@
 pkgbase = hpsahba-dkms
 	pkgdesc = Kernel patches to enable HBA mode on some HP Smart Array controllers for linux-lts
 	pkgver = 6.18.r41.0a57a52
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/im-0/hpsahba
 	arch = any
 	license = GPL-2.0-only

@@ -3,7 +3,7 @@
 pkgname=hpsahba-dkms
 _targetkernelver=6.18
 pkgver=6.18.r41.0a57a52
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel patches to enable HBA mode on some HP Smart Array controllers for linux-lts"
 arch=('any')
 url="https://github.com/im-0/hpsahba"
@@ -35,10 +35,12 @@ prepare() {
 	for PATCH in "${pkgname}"/kernel/5.18-patchset-v2/*.patch; do
 		patch --follow-symlinks --no-backup-if-mismatch -Np3 < "${PATCH}"
 	done
+
+	sed -i 's/PACKAGE_NAME=.*/PACKAGE_NAME="hpsahba"/' "${pkgname}"/contrib/dkms/dkms.conf
 }
 
 package() {
 	for FILE in hpsa.c hpsa.h hpsa_cmd.h ${pkgname}/contrib/dkms/{dkms.conf,Makefile}; do 
-		install -Dm644 "${FILE}" -t "${pkgdir}/usr/src/hpsahba"
+		install -Dm644 "${FILE}" -t "${pkgdir}/usr/src/hpsahba-1.0"
 	done
 }
