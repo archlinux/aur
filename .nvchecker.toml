@@ -1,0 +1,3 @@
+[python-fargv]
+source = "pypi"
+pypi = "fargv"
