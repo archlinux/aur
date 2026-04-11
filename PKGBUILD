@@ -1,5 +1,5 @@
 pkgname=xbelite2-dkms
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc='Xbox Elite Series 2 controller driver and configurator for Linux'
 arch=('x86_64')
