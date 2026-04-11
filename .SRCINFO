@@ -1,6 +1,6 @@
 pkgbase = mindwtr
 	pkgdesc = Mind Like Water: A complete Getting Things Done (GTD) productivity system
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/dongdongbh/Mindwtr
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = mindwtr
 	depends = libayatana-appindicator
 	depends = libsoup3
 	depends = webkit2gtk-4.1
-	source = git+https://github.com/dongdongbh/Mindwtr.git#tag=v0.8.1
+	source = git+https://github.com/dongdongbh/Mindwtr.git#tag=v0.8.2
 	source = mindwtr.desktop
-	sha256sums = 864cd3fdffe41dd559095e1f3c28f75c54e570996bcf9b00255c00212aebb2c3
+	sha256sums = 1b6445a585f17f7679f7ccc849cc1924ac705cd232194a2e692d5592ab061d95
 	sha256sums = c283dc386b122df8db1157a2f74e7cfd780ab65133ab8fef6c74b2179f85161c
 
 pkgname = mindwtr
