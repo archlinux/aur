@@ -3,7 +3,7 @@
 
 pkgname=zen-browser
 pkgver=1.19.8b
-pkgrel=1
+pkgrel=2
 pkgdesc='Firefox-based web browser built from upstream release source snapshot'
 url='https://zen-browser.app'
 arch=('x86_64')
@@ -64,7 +64,6 @@ makedepends=(
   zip
 )
 optdepends=(
-  '7a17bf92f0030e1100df8a42fe981a07cb6a599750c8c26661f92ca60247733f'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
   'onnxruntime: Local machine learning features such as smart tab groups'
@@ -90,7 +89,7 @@ source=(
   'https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/main/0004-Use-wasm32-wasip1-target.patch'
 )
 sha256sums=(
-  'c1f79f8aeb8b6900be16b03ffc2adaf4568c084e817c938e7732d91a86a76300'
+  '7a17bf92f0030e1100df8a42fe981a07cb6a599750c8c26661f92ca60247733f'
   'af16fec9a88cbfffee34a6a4eb5b3074931477fcefee252840d77cf146568851'
   '7e8ee1997aa0c6db7de6fe5da0bca88b5c1c3aa2db0b18950e24e5cbe4df8d84'
   'bf4a7667fb7d7a64795a6ea3d34515c55f46e42872fd3c5a8e8e99964bb3c4e8'
@@ -117,7 +116,8 @@ ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
-ac_add_options --enable-rust-simd
+# encoding_rs simd-accel opts out of Rust's stable compatibility story and
+# has started breaking with newer stable compilers in release snapshots.
 ac_add_options --enable-linker=lld
 ac_add_options --disable-install-strip
 ac_add_options --disable-bootstrap
