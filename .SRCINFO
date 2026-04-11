@@ -10,6 +10,7 @@ pkgbase = wallrift-git
 	makedepends = make
 	makedepends = gcc
 	depends = wayland
+	depends = wayland-cursor
 	depends = libxkbcommon
 	depends = libglvnd
 	provides = wallrift

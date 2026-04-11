@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/saber-88/wallrift"
 license=('MIT')
 
-depends=('wayland' 'libxkbcommon' 'libglvnd')
+depends=('wayland' 'wayland-cursor' 'libxkbcommon' 'libglvnd')
 makedepends=('git' 'cmake' 'make' 'gcc')
 
 provides=('wallrift')
