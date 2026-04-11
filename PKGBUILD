@@ -1,7 +1,7 @@
 # Maintainer: Senqaii <batuh007@gmail.com>
 pkgname=netsplitter-git
 pkgver=0.1.0.r0.g820ff9b
-pkgrel=8
+pkgrel=9
 pkgdesc="Advanced Linux Network Namespace Isolation & QoS Bufferbloat Automation Framework"
 arch=('any')
 url="https://github.com/batuh007/-NetSplitter-"
@@ -14,8 +14,6 @@ depends=(
     'iptables'
     'dhcpcd'
     'ethtool'
-    'polkit'
-    'xorg-xhost'
 )
 optdepends=(
     'mtr: Advanced traceroute hop analysis'
@@ -42,22 +40,48 @@ package() {
     cp -r netsplitter/ "$pkgdir/opt/netsplitter/"
     install -Dm755 run.py "$pkgdir/opt/netsplitter/run.py"
 
-    # Launcher wrapper script (uses sudo to preserve user session for tray/GUI)
+    # Launcher wrapper script — runs as NORMAL USER (no sudo wrapping!)
+    # The app internally calls sudo for specific commands, which are
+    # whitelisted in /etc/sudoers.d/netsplitter below.
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/netsplitter" << 'EOF'
 #!/bin/bash
-# Allow root to connect to user's X server (bypasses Wayland tray restrictions)
-xhost +si:localuser:root &>/dev/null || true
-# Force X11 backend for Qt6 so legacy X11 tray proxy handles the tray icon!
-export QT_QPA_PLATFORM=xcb
-# Preserve environment and run silently
-exec sudo -E /usr/bin/python3 /opt/netsplitter/run.py
+exec /usr/bin/python3 /opt/netsplitter/run.py "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/netsplitter"
 
-    # Passwordless Sudo Rule (Fixes password prompt on every startup)
+    # Granular Passwordless Sudo Rules
+    # Only the specific system commands NetSplitter needs are whitelisted.
+    # The GUI runs as normal user — no root wrapping needed.
     install -dm755 "$pkgdir/etc/sudoers.d"
-    echo "ALL ALL=(ALL) SETENV: NOPASSWD: /usr/bin/python3 /opt/netsplitter/run.py *" > "$pkgdir/etc/sudoers.d/netsplitter"
+    cat > "$pkgdir/etc/sudoers.d/netsplitter" << 'SUDOEOF'
+# NetSplitter — passwordless access to network management commands
+# Network namespace & interface management
+ALL ALL=(ALL) NOPASSWD: /usr/bin/ip
+# Traffic control (QoS: fq_codel, CAKE, etc.)
+ALL ALL=(ALL) NOPASSWD: /usr/bin/tc
+# Kernel parameter tuning (BBR, TCP buffers, etc.)
+ALL ALL=(ALL) NOPASSWD: /usr/sbin/sysctl
+# DNS config file writing
+ALL ALL=(ALL) NOPASSWD: /usr/bin/tee
+# NIC hardware offload & interrupt coalescing
+ALL ALL=(ALL) NOPASSWD: /usr/bin/ethtool
+# DHCP inside network namespaces
+ALL ALL=(ALL) NOPASSWD: /usr/bin/dhcpcd
+# Process cleanup (curl speedtest teardown)
+ALL ALL=(ALL) NOPASSWD: /usr/bin/pkill
+# Directory creation for DNS namespace config
+ALL ALL=(ALL) NOPASSWD: /usr/bin/mkdir
+# WiFi power save control (optional)
+ALL ALL=(ALL) NOPASSWD: /usr/bin/iw
+# CPU governor (optional)
+ALL ALL=(ALL) NOPASSWD: /usr/bin/cpupower
+# Process priority for GameMode
+ALL ALL=(ALL) NOPASSWD: /usr/bin/renice
+ALL ALL=(ALL) NOPASSWD: /usr/bin/ionice
+# Shell execution for namespace commands
+ALL ALL=(ALL) NOPASSWD: /usr/bin/bash
+SUDOEOF
     chmod 440 "$pkgdir/etc/sudoers.d/netsplitter"
 
     # Install icons into XDG hicolor theme
@@ -87,27 +111,4 @@ Categories=Network;System;
 Keywords=network;optimization;gaming;qos;namespace;
 EOF
     chmod 644 "$pkgdir/usr/share/applications/netsplitter.desktop"
-
-    # Polkit policy
-    install -dm755 "$pkgdir/usr/share/polkit-1/actions"
-    cat > "$pkgdir/usr/share/polkit-1/actions/org.netsplitter.policy" << 'EOF'
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE policyconfig PUBLIC
- "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
- "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
-<policyconfig>
-  <action id="org.netsplitter.run">
-    <description>Run NetSplitter with elevated privileges</description>
-    <message>NetSplitter requires root access for network namespace management</message>
-    <defaults>
-      <allow_any>auth_admin</allow_any>
-      <allow_inactive>auth_admin</allow_inactive>
-      <allow_active>auth_admin_keep</allow_active>
-    </defaults>
-    <annotate key="org.freedesktop.policykit.exec.path">/opt/netsplitter/run.py</annotate>
-    <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
-  </action>
-</policyconfig>
-EOF
-    chmod 644 "$pkgdir/usr/share/polkit-1/actions/org.netsplitter.policy"
 }

@@ -1,7 +1,7 @@
 pkgbase = netsplitter-git
 	pkgdesc = Advanced Linux Network Namespace Isolation & QoS Bufferbloat Automation Framework
 	pkgver = 0.1.0.r0.g820ff9b
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/batuh007/-NetSplitter-
 	arch = any
 	license = custom:Proprietary
@@ -12,8 +12,6 @@ pkgbase = netsplitter-git
 	depends = iptables
 	depends = dhcpcd
 	depends = ethtool
-	depends = polkit
-	depends = xorg-xhost
 	optdepends = mtr: Advanced traceroute hop analysis
 	optdepends = iw: WiFi power save control
 	optdepends = cpupower: CPU governor management
