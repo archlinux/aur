@@ -12,6 +12,6 @@ sha256sums=('65c43fed825fe0bbf42d6454531bc55a15512384d8b98ca82519b5c2b5ec0392')
 
 package() {
   cd "$srcdir/Hypr-Dashboard-1.1.0"
-  install -Dm755 dashboard.sh "$pkgdir/usr/local/bin/hypr-dashboard"
+  install -Dm755 dashboard.sh "$pkgdir/usr/bin/hypr-dashboard"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
