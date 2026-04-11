@@ -1,7 +1,7 @@
 # Maintainer: NGDtuanh <ntanhpro1221@gmail.com>
 pkgname=spine-trial
 pkgver=4.3.64.beta
-pkgrel=4
+pkgrel=5
 pkgdesc="2D skeletal animation tool by Esoteric Software (Trial)"
 arch=('x86_64')
 url="https://esotericsoftware.com"
