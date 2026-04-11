@@ -1,5 +1,5 @@
 pkgbase = pam-parallel-fprint
-	pkgdesc = PAM module that allows for fingerprint and password auth at the same time
+	pkgdesc = PAM module allowing for fprintd and password authentication in parallel
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/SelimCifci/PAM-Parallel-Fprint
