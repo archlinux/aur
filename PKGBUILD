@@ -2,7 +2,7 @@
 # Contributor: Berke Oruc <berke@oruc.dev>
 
 pkgname=oplire
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Reset OpenCode rate limit by managing Cloudflare WARP tunnel"
 arch=('x86_64')
