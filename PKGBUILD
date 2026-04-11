@@ -3,12 +3,12 @@
 pkgname=rill-git
 _pkgname=rill
 pkgdesc="A minimalist scrolling window manager for River"
-pkgver=09f5267
-pkgrel=5
+pkgver=fd25ffd
+pkgrel=6
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/lzj15/rill"
 license=('MIT')
-depends=('wayland' 'river')
+depends=('wayland' 'river' 'libxkbcommon')
 makedepends=('zig' 'wayland-protocols')
 install=rill.install
 source=(git+$url.git
