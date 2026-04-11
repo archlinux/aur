@@ -1,0 +1,51 @@
+diff --git a/crates/taskers-ghostty/build.rs b/crates/taskers-ghostty/build.rs
+index 9ee3e8d..8aa43a6 100644
+--- a/crates/taskers-ghostty/build.rs
++++ b/crates/taskers-ghostty/build.rs
+@@ -4,6 +4,8 @@ use std::{
+     process::Command,
+ };
+ 
++const SKIP_BUILD_RUNTIME_EMBED_ENV: &str = "TASKERS_GHOSTTY_SKIP_BUILD_RUNTIME_EMBED";
++
+ fn main() {
+     println!("cargo:rustc-check-cfg=cfg(taskers_ghostty_bridge)");
+     println!("cargo:rerun-if-changed=build.rs");
+@@ -24,6 +26,13 @@ fn main() {
+     if let Ok(target) = env::var("TARGET") {
+         println!("cargo:rustc-env=TASKERS_BUILD_TARGET={target}");
+     }
++
++    if env::var_os(SKIP_BUILD_RUNTIME_EMBED_ENV).is_some() {
++        println!(
++            "cargo:warning=skipping build-time Ghostty runtime embedding because {SKIP_BUILD_RUNTIME_EMBED_ENV} is set"
++        );
++        return;
++    }
+ 
+     let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").expect("manifest dir"));
+     let workspace_root = manifest_dir
+diff --git a/scripts/build_linux_bundle.sh b/scripts/build_linux_bundle.sh
+index e898f4f..1d8b8dd 100755
+--- a/scripts/build_linux_bundle.sh
++++ b/scripts/build_linux_bundle.sh
+@@ -8,6 +8,8 @@ asset_name="taskers-linux-bundle-v${version}-${target}.tar.xz"
+ stage_dir="$(mktemp -d "${TMPDIR:-/tmp}/taskers-linux-bundle.XXXXXX")"
+ prefix_dir="$stage_dir/prefix"
+ bundle_dir="$stage_dir/bundle"
++bundle_rustflags="${RUSTFLAGS:-}"
++bundle_rustflags="${bundle_rustflags:+$bundle_rustflags }--remap-path-prefix=${repo_root}=."
+ 
+ cleanup() {
+   rm -rf "$stage_dir"
+@@ -18,7 +20,9 @@ trap cleanup EXIT
+ 
+ (
+   cd "$repo_root"
+-  cargo build --release -p taskers --bin taskers --bin taskers-gtk --bin taskersctl --bin taskers-terminald
++  TASKERS_GHOSTTY_SKIP_BUILD_RUNTIME_EMBED=1 \
++    RUSTFLAGS="$bundle_rustflags" \
++    cargo build --release -p taskers --bin taskers --bin taskers-gtk --bin taskersctl --bin taskers-terminald
+ )
+ 
+ (
