@@ -11,6 +11,7 @@ _qodercli() {
         'rm:Remove concurrent job(s)'
         'feedback:Submit feedback with optional images'
         'help:Help about any command'
+        'install:Install qodercli to the standard location'
         'mcp:Manage MCP (Model Context Protocol) servers'
         'status:Show account and CLI status'
         'update:Check remote version and self-update to the latest release'
@@ -68,6 +69,7 @@ _qodercli() {
                 rm)
                     _arguments \
                         '(- *)'{-h,--help}'[Show help]' \
+                        {-f,--force}'[Force remove a running job by terminating its process]' \
                         '--kubeconfig[Kubeconfig of the kubernetes job]:file:_files' \
                         '--namespace[Namespace of the kubernetes job]:namespace:' \
                         {-v,--version}'[Show version]' \
@@ -78,7 +80,9 @@ _qodercli() {
                     _arguments \
                         '(- *)'{-h,--help}'[Show help]' \
                         {-c,--content}'[Feedback content]:content:' \
+                        '--email[Contact email address]:email:' \
                         '*'{-i,--images}'[Image file paths]:file:_files' \
+                        '--json[Output result in JSON format]' \
                         {-s,--session}'[Session ID]:session_id:' \
                         '--workdir[Working directory]:directory:_directories' \
                         {-v,--version}'[Show version]' \
@@ -103,6 +107,14 @@ _qodercli() {
                     ;;
                 update)
                     ;;
+                install)
+                    _arguments \
+                        '(- *)'{-h,--help}'[Show help]' \
+                        '--force[Overwrite existing installation of the same version]' \
+                        '--quiet[Suppress progress output]' \
+                        {-v,--version}'[Show version]' \
+                        {-w,--workspace}'[Current working directory]:directory:_directories'
+                    ;;
                 mcp)
                     _arguments -C \
                         '(- *)'{-h,--help}'[Show help]' \
@@ -123,7 +135,7 @@ _qodercli() {
                                         '*'{-e,--env}'[Set environment variables]:env:' \
                                         '*'{-H,--header}'[Set HTTP headers]:header:' \
                                         {-s,--scope}'[Configuration scope]:scope:(local user project)' \
-                                        {-t,--transport}'[Transport type]:transport:(stdio sse http)' \
+                                        {-t,--transport}'[Transport type]:transport:(stdio sse http streamable-http)' \
                                         {-v,--version}'[Show version]' \
                                         {-w,--workspace}'[Current working directory]:directory:_directories' \
                                         '1:name:' \

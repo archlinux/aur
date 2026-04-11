@@ -13,7 +13,7 @@ _qodercli() {
         cword=$COMP_CWORD
     fi
 
-    local -r subcommands="commit jobs rm feedback help mcp status update"
+    local -r subcommands="commit jobs rm feedback help install mcp status update"
     local -r mcp_subcommands="add auth get list remove"
 
     local -r model_choices="auto efficient gmodel kmodel lite mmodel performance q35model qmodel ultimate"
@@ -21,7 +21,7 @@ _qodercli() {
     local -r input_format_choices="text stream-json"
     local -r max_output_tokens_choices="16k 32k"
     local -r scope_choices="local user project"
-    local -r transport_choices="stdio sse http"
+    local -r transport_choices="stdio sse http streamable-http"
 
     # Determine which subcommand (if any) has been given
     local subcmd="" mcp_subcmd=""
@@ -130,10 +130,10 @@ _qodercli() {
             COMPREPLY=($(compgen -W "-a --all -h --help -v --version -w --workspace" -- "$cur"))
             ;;
         rm)
-            COMPREPLY=($(compgen -W "-h --help --kubeconfig --namespace -v --version -w --workspace" -- "$cur"))
+            COMPREPLY=($(compgen -W "-f --force -h --help --kubeconfig --namespace -v --version -w --workspace" -- "$cur"))
             ;;
         feedback)
-            COMPREPLY=($(compgen -W "-c --content -h --help -i --images -s --session --workdir -v --version -w --workspace" -- "$cur"))
+            COMPREPLY=($(compgen -W "-c --content --email -h --help -i --images --json -s --session --workdir -v --version -w --workspace" -- "$cur"))
             ;;
         commit)
             COMPREPLY=($(compgen -W "-h --help -m --message -v --version -w --workspace" -- "$cur"))
@@ -145,6 +145,9 @@ _qodercli() {
             COMPREPLY=($(compgen -W "-h --help -o --output -v --version -w --workspace" -- "$cur"))
             ;;
         update)
+            ;;
+        install)
+            COMPREPLY=($(compgen -W "--force -h --help --quiet -v --version -w --workspace" -- "$cur"))
             ;;
         mcp)
             case "$mcp_subcmd" in

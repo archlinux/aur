@@ -9,7 +9,7 @@ function __qodercli_no_subcommand
     set -l cmd (commandline -opc)
     for word in $cmd[2..]
         switch $word
-            case commit jobs rm feedback help mcp status update
+            case commit jobs rm feedback help install mcp status update
                 return 1
         end
     end
@@ -66,6 +66,7 @@ complete -c qodercli -n __qodercli_no_subcommand -a jobs -d 'List concurrent job
 complete -c qodercli -n __qodercli_no_subcommand -a rm -d 'Remove concurrent job(s)'
 complete -c qodercli -n __qodercli_no_subcommand -a feedback -d 'Submit feedback with optional images'
 complete -c qodercli -n __qodercli_no_subcommand -a help -d 'Help about any command'
+complete -c qodercli -n __qodercli_no_subcommand -a install -d 'Install qodercli to the standard location'
 complete -c qodercli -n __qodercli_no_subcommand -a mcp -d 'Manage MCP servers'
 complete -c qodercli -n __qodercli_no_subcommand -a status -d 'Show account and CLI status'
 complete -c qodercli -n __qodercli_no_subcommand -a update -d 'Self-update to the latest release'
@@ -103,6 +104,7 @@ complete -c qodercli -n '__qodercli_using_subcommand jobs' -s v -l version -d 'S
 complete -c qodercli -n '__qodercli_using_subcommand jobs' -s w -l workspace -r -F -d 'Current working directory'
 
 # === rm ===
+complete -c qodercli -n '__qodercli_using_subcommand rm' -s f -l force -d 'Force remove a running job'
 complete -c qodercli -n '__qodercli_using_subcommand rm' -s h -l help -d 'Show help'
 complete -c qodercli -n '__qodercli_using_subcommand rm' -l kubeconfig -r -F -d 'Kubeconfig of the kubernetes job'
 complete -c qodercli -n '__qodercli_using_subcommand rm' -l namespace -r -d 'Namespace of the kubernetes job'
@@ -111,8 +113,10 @@ complete -c qodercli -n '__qodercli_using_subcommand rm' -s w -l workspace -r -F
 
 # === feedback ===
 complete -c qodercli -n '__qodercli_using_subcommand feedback' -s c -l content -r -d 'Feedback content'
+complete -c qodercli -n '__qodercli_using_subcommand feedback' -l email -r -d 'Contact email address'
 complete -c qodercli -n '__qodercli_using_subcommand feedback' -s h -l help -d 'Show help'
 complete -c qodercli -n '__qodercli_using_subcommand feedback' -s i -l images -r -F -d 'Image file paths'
+complete -c qodercli -n '__qodercli_using_subcommand feedback' -l json -d 'Output result in JSON format'
 complete -c qodercli -n '__qodercli_using_subcommand feedback' -s s -l session -r -d 'Session ID'
 complete -c qodercli -n '__qodercli_using_subcommand feedback' -l workdir -r -F -d 'Working directory'
 complete -c qodercli -n '__qodercli_using_subcommand feedback' -s v -l version -d 'Show version'
@@ -125,7 +129,7 @@ complete -c qodercli -n '__qodercli_using_subcommand commit' -s v -l version -d 
 complete -c qodercli -n '__qodercli_using_subcommand commit' -s w -l workspace -r -F -d 'Working directory'
 
 # === help ===
-complete -c qodercli -n '__qodercli_using_subcommand help' -a 'commit jobs rm feedback help mcp status update' -d 'Command'
+complete -c qodercli -n '__qodercli_using_subcommand help' -a 'commit jobs rm feedback help install mcp status update' -d 'Command'
 
 # === status ===
 complete -c qodercli -n '__qodercli_using_subcommand status' -s h -l help -d 'Show help'
@@ -134,6 +138,13 @@ complete -c qodercli -n '__qodercli_using_subcommand status' -s v -l version -d 
 complete -c qodercli -n '__qodercli_using_subcommand status' -s w -l workspace -r -F -d 'Current working directory'
 
 # === update (no flags) ===
+
+# === install ===
+complete -c qodercli -n '__qodercli_using_subcommand install' -l force -d 'Overwrite existing installation of the same version'
+complete -c qodercli -n '__qodercli_using_subcommand install' -s h -l help -d 'Show help'
+complete -c qodercli -n '__qodercli_using_subcommand install' -l quiet -d 'Suppress progress output'
+complete -c qodercli -n '__qodercli_using_subcommand install' -s v -l version -d 'Show version'
+complete -c qodercli -n '__qodercli_using_subcommand install' -s w -l workspace -r -F -d 'Current working directory'
 
 # === mcp subcommands ===
 complete -c qodercli -n '__qodercli_using_subcommand mcp; and __qodercli_mcp_no_subcommand' -a add -d 'Add a new MCP server'
@@ -150,7 +161,7 @@ complete -c qodercli -n '__qodercli_using_mcp_subcommand add' -s e -l env -r -d 
 complete -c qodercli -n '__qodercli_using_mcp_subcommand add' -s H -l header -r -d 'Set HTTP headers'
 complete -c qodercli -n '__qodercli_using_mcp_subcommand add' -s h -l help -d 'Show help'
 complete -c qodercli -n '__qodercli_using_mcp_subcommand add' -s s -l scope -r -a 'local user project' -d 'Configuration scope'
-complete -c qodercli -n '__qodercli_using_mcp_subcommand add' -s t -l transport -r -a 'stdio sse http' -d 'Transport type'
+complete -c qodercli -n '__qodercli_using_mcp_subcommand add' -s t -l transport -r -a 'stdio sse http streamable-http' -d 'Transport type'
 complete -c qodercli -n '__qodercli_using_mcp_subcommand add' -s v -l version -d 'Show version'
 complete -c qodercli -n '__qodercli_using_mcp_subcommand add' -s w -l workspace -r -F -d 'Current working directory'
 
