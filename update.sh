@@ -43,18 +43,18 @@ check_tools() {
 
 # Get the latest stable release version and SHA256
 get_latest_release_info() {
-    log_info "Fetching latest stable release..."
-
     # Get the latest stable release tag (e.g., v2.1.0, v2.3.0)
     local latest_tag
-    latest_tag=$(curl -s "https://api.github.com/repos/lem-project/lem/releases" | \
-        jq -r '.[] | select(.tag_name | startswith("v")) | select(.prerelease == false) | .tag_name' | \
+    latest_tag=$(curl -s "https://api.github.com/repos/lem-project/lem/releases" 2>/dev/null | \
+        jq -r '.[] | select(.tag_name | startswith("v")) | select(.prerelease == false) | .tag_name' 2>/dev/null | \
         head -1)
 
     if [ -z "$latest_tag" ]; then
         log_error "Could not determine latest stable release"
         return 1
     fi
+
+    log_info "Fetching latest stable release: $latest_tag" >&2
 
     # Remove 'v' prefix to get version number
     local version="${latest_tag#v}"
@@ -63,10 +63,10 @@ get_latest_release_info() {
     local download_url="https://github.com/lem-project/lem/releases/download/${latest_tag}/lem-ubuntu-x86-64-${latest_tag}.tar.gz"
     local temp_file="/tmp/lem-${version}.tar.gz"
 
-    log_info "Downloading v${version}..."
+    log_info "Downloading v${version}..." >&2
 
     # Download the tarball
-    curl -sL -o "$temp_file" "$download_url" || {
+    curl -sL -o "$temp_file" "$download_url" 2>/dev/null || {
         log_error "Failed to download release tarball from $download_url"
         rm -f "$temp_file"
         return 1
@@ -74,9 +74,9 @@ get_latest_release_info() {
 
     # Calculate SHA256
     local sha256
-    sha256=$(sha256sum "$temp_file" | awk '{print $1}')
+    sha256=$(sha256sum "$temp_file" 2>/dev/null | awk '{print $1}')
 
-    # Output version and SHA
+    # Output ONLY version and SHA to stdout (no log messages!)
     echo "$version|$sha256"
 
     # Clean up
