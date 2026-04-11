@@ -2,11 +2,11 @@
 
 pkgname=reinplayer-bin
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern, intuitive media player inspired by PotPlayer"
 arch=('x86_64')
 url="https://github.com/Ahurein/rein_player"
-license=('unknown')
+license=('GPL3')
 depends=('mpv' 'gtk3')
 provides=('reinplayer')
 conflicts=('reinplayer')
