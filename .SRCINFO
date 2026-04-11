@@ -1,13 +1,13 @@
 pkgbase = pupdate-bin
 	pkgdesc = Pupdate, a thing for updating your Analogue Pocket, binary release
-	pkgver = 4.8.2
+	pkgver = 4.9.1
 	pkgrel = 1
 	url = https://mattpannella.github.io/pupdate
 	arch = x86_64
 	license = Apache
 	provides = pupdate
 	options = !strip
-	source = pupdate-bin-4.8.2.zip::https://github.com/mattpannella/pupdate/releases/download/4.8.2/pupdate_linux.zip
-	sha256sums = 16612aa4f2226c721ff2051dfb61a66889a0b51adbe1b691498a97add266436f
+	source = pupdate-bin-4.9.1.zip::https://github.com/mattpannella/pupdate/releases/download/4.9.1/pupdate_linux.zip
+	sha256sums = 3d28acbcd1368c138cc416c4fe6daa7e96def6e0fb51f45742a8c0e8612510b5
 
 pkgname = pupdate-bin
