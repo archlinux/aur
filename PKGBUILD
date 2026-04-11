@@ -18,7 +18,7 @@ validpgpkeys=(5AA3BC334FD7E3369E7C77B291C559DBE4C9123B)
 source=(
     "${url}/releases/download/v${pkgver}/termite-${pkgver}.tar.lz"{,.asc}
     vte.patch
-    )
+)
 b2sums=('97a11784f4ed1bd602578e11f91f11b882d6f7750a0c51a56d5560c7bbf83b1df3af79a64965c436130a6248ecf9fb86dd58c4d4bd6e5b70408a70815bdb5d32'
         'SKIP'
         '180e50f2650a3630b2148a5102bf1b793e3c4a2babdf8728cca29d4deed17419ba4b16c6c5be29d7c9628765ad367a969099533c22dd3d12ff5603c833818725')
@@ -31,12 +31,12 @@ prepare() {
     patch -p1 < ../vte.patch
 }
 
-build () {
-	rm -rf _build
-	arch-meson --wrap-mode=forcefallback _build "${pkgname}-${pkgver}"
-	meson compile -C _build
+build()  {
+  rm -rf _build
+  arch-meson --wrap-mode=forcefallback _build "${pkgname}-${pkgver}"
+  meson compile -C _build
 }
 
-package () {
-	meson install -C _build --skip-subprojects vte --destdir "${pkgdir}"
+package()  {
+  meson install -C _build --skip-subprojects vte --destdir "${pkgdir}"
 }
