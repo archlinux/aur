@@ -3,7 +3,7 @@
 pkgname=orchestrator
 pkgver=3.2.6
 _pkgrelease=-20
-pkgrel=1
+pkgrel=2
 pkgdesc='MySQL replication topology management and HA'
 arch=(x86_64)
 url='https://github.com/percona/orchestrator'
@@ -17,8 +17,8 @@ sha256sums=('6da51cc11944ccfd084bf491383ed0cd007cc1d1b6070480ed9ca4523d8dceee')
 
 prepare() {
   cd "$pkgname-$pkgver-$_pkgrelease"
-  export GOPATH="${srcdir}"
-  go mod download
+  export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
+  go mod download -modcacherw
 }
 
 build() {
@@ -35,6 +35,9 @@ build() {
   go build \
     -ldflags "-X 'main.AppVersion=$pkgver-$_pkgrelease'" \
     -o bin/$pkgname ./go/cmd/orchestrator/main.go
+
+  # Clean up deps
+  go clean -modcache
 }
 
 package() {
