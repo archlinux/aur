@@ -1,5 +1,5 @@
 pkgname=openaether
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Local AI desktop agent for Arch Linux and Hyprland"
 arch=('x86_64')
@@ -19,6 +19,8 @@ depends=(
     'python-yaml'
     'python-httpx'
     'python-psutil'
+    'python-platformdirs'
+    'python-pip'
     'tesseract'
 )
 makedepends=('python-pip')
@@ -37,23 +39,18 @@ prepare() {
 package() {
     cd "$srcdir/OpenAether-$pkgver"
 
-    # App nach /opt
+    # Install app to /opt
     install -dm755 "$pkgdir/opt/openaether"
     cp -r . "$pkgdir/opt/openaether/"
 
-    # Python deps die nicht in den offiziellen Repos sind
-    pip install \
-        ollama \
-        pytesseract \
-        --target "$pkgdir/opt/openaether/backend/lib" \
-        --no-deps \
-        --break-system-packages
+    # The venv creation is handled in openaether.install post_install
+    # to ensure absolute paths match the target system.
 
-    # Startskript
+    # Entry point script
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/openaether" << 'EOF'
 #!/bin/bash
-# SearXNG starten falls nicht läuft
+# Start SearXNG if not already running
 if ! docker ps --format '{{.Names}}' | grep -q "^searxng$"; then
     echo "[OpenAether] Starting SearXNG..."
     docker run -d \
@@ -61,7 +58,7 @@ if ! docker ps --format '{{.Names}}' | grep -q "^searxng$"; then
         --restart always \
         -p 8888:8080 \
         searxng/searxng 2>/dev/null || true
-    # JSON format aktivieren
+    # Enable JSON format
     sleep 2
     docker exec searxng sed -i 's/formats:/formats:\n  - json/' \
         /etc/searxng/settings.yml 2>/dev/null || true
@@ -81,7 +78,7 @@ EOF
     install -Dm644 "$srcdir/OpenAether-$pkgver/openaether.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/openaether.svg"
 
-    # systemd service für SearXNG
+    # systemd service for SearXNG
     install -dm755 "$pkgdir/usr/lib/systemd/system"
     cat > "$pkgdir/usr/lib/systemd/system/openaether-searxng.service" << 'EOF'
 [Unit]
