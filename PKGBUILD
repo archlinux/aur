@@ -6,7 +6,7 @@ pkgdesc="A Lisp-based text editor for the modern world"
 arch=('x86_64')
 url="https://github.com/lem-project/lem"
 license=('MIT')
-depends=('fuse2')
+depends=()
 makedepends=()
 optdepends=()
 provides=('lem-editor' 'lem')
@@ -16,11 +16,14 @@ sha256sums=('f4ce7a02c51bcf7fa3c388f1ef22b8acd9e48222869e5a5a63350440111e6da9')
 
 prepare() {
     chmod +x "lem-appimage"
+    # Extract AppImage (no FUSE required)
+    ./lem-appimage --appimage-extract > /dev/null 2>&1
 }
 
 package() {
-    # Install the self-contained AppImage
-    install -Dm755 "lem-appimage" "${pkgdir}/usr/bin/lem"
+    # Install the extracted binary (no FUSE dependency needed)
+    # The AppImage extracts to squashfs-root/ directory
+    install -Dm755 "squashfs-root/lem" "${pkgdir}/usr/bin/lem"
 
     # Create a symlink for the -editor variant
     ln -sf /usr/bin/lem "${pkgdir}/usr/bin/lem-editor" || true
