@@ -13,10 +13,10 @@ makedepends=(go)
 source=("dmarc-cat-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('886bf33ba60d601de74a1e9d437a8e09eea5c03a05b09c0f685fa02d1c174bba')
 
-prepare(){
-    cd "$pkgname-$pkgver"
-    export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
-    go mod download -modcacherw
+prepare() {
+  cd "$pkgname-$pkgver"
+  export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
+  go mod download -modcacherw
 }
 
 build() {
