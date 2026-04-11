@@ -3,16 +3,19 @@
 
 pkgname=vibe-kanban-bin
 pkgver=0.1.42
-pkgrel=1
+pkgrel=2
 pkgdesc=Vibe\ Kanban\ -\ AI-powered\ Kanban\ board\ \(Binary\)
 arch=(x86_64 )
 url=https://vibekanban.com
 license=(Proprietary )
 depends=()
 makedepends=(unzip )
+checkdepends=()
+optdepends=()
 options=(\!strip )
 provides=(vibe-kanban )
 conflicts=(vibe-kanban )
+validpgpkeys=()
 install=vibe-kanban-bin.install
 source=(vibe-kanban.service )
 sha256sums=('48b6d94e9693f7098ad7d3786ff08b648ce08ab8fcfe8ff13cff97906a12a33f')
