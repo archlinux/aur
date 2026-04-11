@@ -1,7 +1,7 @@
 # Maintainer: NGDtuanh <ntanhpro1221@gmail.com>
 pkgname=spine-trial
 pkgver=4.3.64.beta
-pkgrel=5
+pkgrel=6
 pkgdesc="2D skeletal animation tool by Esoteric Software (Trial)"
 arch=('x86_64')
 url="https://esotericsoftware.com"
@@ -21,7 +21,6 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/spine-trial" <<'EOF'
 #!/bin/sh
-export GDK_DPI_SCALE=${SPINE_SCALE:-1.5}
 exec /opt/spine-trial/SpineTrial.sh "$@"
 EOF
     chmod +x "${pkgdir}/usr/bin/spine-trial"
