@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=motrix-next-bin
-pkgver=3.4.5
+pkgver=3.6.9
 pkgrel=1
 pkgdesc="A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust"
 arch=('x86_64')
