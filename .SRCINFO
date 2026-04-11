@@ -1,16 +1,19 @@
 pkgbase = turnon
 	pkgdesc = Turn on devices in your local network
-	pkgver = 2.9.6
-	pkgrel = 2
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = https://codeberg.org/swsnr/turnon
 	arch = x86_64
 	arch = aarch64
 	license = EUPL-1.2
-	makedepends = rust
-	makedepends = cargo
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = python-wheel
 	makedepends = git
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-build
 	makedepends = blueprint-compiler
-	makedepends = just
 	depends = libadwaita
 	depends = gtk4
 	depends = hicolor-icon-theme
@@ -19,7 +22,9 @@ pkgbase = turnon
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
-	source = git+https://codeberg.org/swsnr/turnon.git#tag=v2.9.6
-	md5sums = a0b947230aa3293b8198b2ae5a9a25d6
+	depends = python-gobject
+	depends = python-packaging
+	source = source::git+https://codeberg.org/swsnr/turnon.git#tag=v3.0.1
+	md5sums = 802f1f4160e111f2c6e822d43cbc7dd6
 
 pkgname = turnon
