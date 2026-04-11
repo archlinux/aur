@@ -1,0 +1,5 @@
+[gitsocial-bin]
+source = "github"
+github = "gitsocial-org/gitsocial"
+use_latest_release = true
+prefix = "v"
