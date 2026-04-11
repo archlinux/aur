@@ -3,8 +3,8 @@
 pkgname=libloot
 _pkgname=loot
 # https://github.com/loot/libloot/releases
-pkgver=0.28.3
-pkgrel=2
+pkgver=0.29.3
+pkgrel=1
 pkgdesc="A library for the Load Order Optimisation Tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
 url="https://loot.github.io"
@@ -23,7 +23,7 @@ makedepends=(
 	#'uv' # docs
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('5becb26d1f84a22f58772fbf840f3688468274e11cb7895fa79af730b57df242')
+sha256sums=('6a4a604580aaa5239c9733601441e37cf4658bac634316d310b6c77ed05dbc1c')
 build() {
 	# Build docs - Doxygen needs to be installed for C++
 	# They are half a gig, so they are disabled
@@ -36,7 +36,7 @@ build() {
 	# https://github.com/loot/libloot/tree/master/cpp#build
 	cmake -B build . \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo
-	cmake --build build --target loot
+	cmake --build build --parallel
 }
 
 package() {
