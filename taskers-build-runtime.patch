@@ -1,8 +1,48 @@
+diff --git a/crates/taskers-app/src/main.rs b/crates/taskers-app/src/main.rs
+index dcc7d7972e..3d6115b0f3 100644
+--- a/crates/taskers-app/src/main.rs
++++ b/crates/taskers-app/src/main.rs
+@@ -34,7 +34,7 @@
+ use taskers_domain::{AppModel, NotificationDeliveryState, NotificationId, SignalKind};
+ use taskers_ghostty::{
+     BackendChoice, EmbeddedTerminalAppearance, GhosttyHost, GhosttyHostOptions,
+-    ensure_runtime_installed,
++    ensure_runtime_installed, runtime_terminfo_dir,
+ };
+ use taskers_host::{DiagnosticCategory, DiagnosticRecord, DiagnosticsSink, TaskersHost};
+ use taskers_runtime::{
+@@ -1360,6 +1360,7 @@
+             },
+         ),
+     };
++    maybe_export_bundled_terminfo(&mut shell_launch);
+     shell_launch
+         .env
+         .insert("TASKERS_SOCKET".into(), socket_path.display().to_string());
+@@ -1410,6 +1411,18 @@
+     }
+ }
+ 
++fn maybe_export_bundled_terminfo(shell_launch: &mut ShellLaunchSpec) {
++    if let Some(path) = runtime_terminfo_dir() {
++        // Startup scrubs inherited terminal env so the app doesn't inherit the
++        // parent emulator's terminfo. Re-inject Taskers' own bundled terminfo
++        // so embedded Ghostty panes still boot on systems without a global
++        // xterm-ghostty entry.
++        shell_launch
++            .env
++            .insert("TERMINFO".into(), path.display().to_string());
++    }
++}
++
+ fn smoke_runtime_path_overrides() -> Result<RuntimePathOverrides> {
+     let timestamp = SystemTime::now()
+         .duration_since(UNIX_EPOCH)
 diff --git a/crates/taskers-ghostty/build.rs b/crates/taskers-ghostty/build.rs
-index 9ee3e8d..8aa43a6 100644
+index 3ad289e058..634813f48c 100644
 --- a/crates/taskers-ghostty/build.rs
 +++ b/crates/taskers-ghostty/build.rs
-@@ -4,6 +4,8 @@ use std::{
+@@ -4,6 +4,8 @@
      process::Command,
  };
  
@@ -11,25 +51,146 @@ index 9ee3e8d..8aa43a6 100644
  fn main() {
      println!("cargo:rustc-check-cfg=cfg(taskers_ghostty_bridge)");
      println!("cargo:rerun-if-changed=build.rs");
-@@ -24,6 +26,13 @@ fn main() {
-     if let Ok(target) = env::var("TARGET") {
+@@ -25,6 +27,13 @@
          println!("cargo:rustc-env=TASKERS_BUILD_TARGET={target}");
      }
-+
+ 
 +    if env::var_os(SKIP_BUILD_RUNTIME_EMBED_ENV).is_some() {
 +        println!(
 +            "cargo:warning=skipping build-time Ghostty runtime embedding because {SKIP_BUILD_RUNTIME_EMBED_ENV} is set"
 +        );
 +        return;
 +    }
- 
++
      let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").expect("manifest dir"));
      let workspace_root = manifest_dir
+         .ancestors()
+@@ -54,6 +63,10 @@
+             .join("libtaskers_ghostty_bridge.so")
+             .display()
+     );
++    println!(
++        "cargo:rustc-env=TASKERS_GHOSTTY_BUILD_TERMINFO_DIR={}",
++        install_dir.join("share").join("terminfo").display()
++    );
+     println!("cargo:rustc-cfg=taskers_ghostty_bridge");
+ }
+ 
+diff --git a/crates/taskers-ghostty/src/lib.rs b/crates/taskers-ghostty/src/lib.rs
+index c105811153..9de0717ee5 100644
+--- a/crates/taskers-ghostty/src/lib.rs
++++ b/crates/taskers-ghostty/src/lib.rs
+@@ -11,5 +11,5 @@
+ pub use bridge::{GhosttyBridgeInfo, GhosttyError, GhosttyHost};
+ pub use runtime::{
+     RuntimeBootstrap, RuntimeBootstrapError, configure_runtime_environment,
+-    ensure_runtime_installed,
++    ensure_runtime_installed, runtime_terminfo_dir,
+ };
+diff --git a/crates/taskers-ghostty/src/runtime.rs b/crates/taskers-ghostty/src/runtime.rs
+index 03a716dc7d..a2a9913697 100644
+--- a/crates/taskers-ghostty/src/runtime.rs
++++ b/crates/taskers-ghostty/src/runtime.rs
+@@ -195,6 +195,30 @@
+         .filter(|path| path.exists())
+ }
+ 
++pub fn runtime_terminfo_dir() -> Option<PathBuf> {
++    if let Some(path) = env::var_os("TERMINFO")
++        .map(PathBuf::from)
++        .filter(|path| terminfo_dir_is_usable(path))
++    {
++        return Some(path);
++    }
++
++    if let Some(path) = explicit_runtime_dir()
++        .and_then(|root| sibling_terminfo_dir(&root))
++        .filter(|path| terminfo_dir_is_usable(path))
++    {
++        return Some(path);
++    }
++
++    if let Some(path) = build_runtime_terminfo_dir() {
++        return Some(path);
++    }
++
++    default_installed_runtime_dir()
++        .and_then(|root| sibling_terminfo_dir(&root))
++        .filter(|path| terminfo_dir_is_usable(path))
++}
++
+ fn unpack_bundle<R: Read>(reader: R, staging_root: &Path) -> Result<(), RuntimeBootstrapError> {
+     let decoder = XzDecoder::new(reader);
+     let mut archive = Archive::new(decoder);
+@@ -259,6 +283,12 @@
+         .filter(|path| path.exists())
+ }
+ 
++fn build_runtime_terminfo_dir() -> Option<PathBuf> {
++    option_env!("TASKERS_GHOSTTY_BUILD_TERMINFO_DIR")
++        .map(PathBuf::from)
++        .filter(|path| terminfo_dir_is_usable(path))
++}
++
+ fn set_runtime_environment_vars(path: &Path) {
+     unsafe {
+         env::set_var("GHOSTTY_RESOURCES_DIR", path);
+@@ -286,6 +316,14 @@
+     )
+ }
+ 
++fn sibling_terminfo_dir(runtime_dir: &Path) -> Option<PathBuf> {
++    runtime_dir.parent().map(|root| root.join("terminfo"))
++}
++
++fn terminfo_dir_is_usable(path: &Path) -> bool {
++    path.join(TERMINFO_GHOSTTY_PATH).exists() || path.join(TERMINFO_XTERM_GHOSTTY_PATH).exists()
++}
++
+ fn replace_directory(source: &Path, destination: &Path) -> Result<(), RuntimeBootstrapError> {
+     if let Some(parent) = destination.parent() {
+         fs::create_dir_all(parent).map_err(|error| RuntimeBootstrapError::CreateDir {
+@@ -322,7 +360,7 @@
+ mod tests {
+     use super::{
+         RUNTIME_VERSION_FILE, RuntimeBootstrap, ensure_runtime_installed, runtime_bridge_path,
+-        runtime_resources_dir,
++        runtime_resources_dir, runtime_terminfo_dir,
+     };
+     use std::{env, fs, path::Path};
+     use tar::Builder;
+@@ -412,6 +450,26 @@
+             Some(runtime_dir.join("lib").join("libtaskers_ghostty_bridge.so"))
+         );
+         assert_eq!(runtime_resources_dir(), Some(runtime_dir));
++        assert_eq!(runtime_terminfo_dir(), Some(terminfo_dir));
++    }
++
++    #[test]
++    fn runtime_terminfo_dir_follows_explicit_runtime_dir() {
++        let temp = tempdir().expect("tempdir");
++        let runtime_dir = temp.path().join("taskers").join("ghostty");
++        let terminfo_dir = temp.path().join("taskers").join("terminfo");
++        fs::create_dir_all(&runtime_dir).expect("runtime dir");
++        fs::create_dir_all(terminfo_dir.join("x")).expect("terminfo dir");
++        fs::write(terminfo_dir.join("x").join("xterm-ghostty"), b"fake terminfo")
++            .expect("write fake terminfo");
++
++        let _guard = EnvGuard::set([
++            ("TASKERS_GHOSTTY_RUNTIME_DIR", Some(runtime_dir.as_os_str())),
++            ("TERMINFO", None),
++            ("XDG_DATA_HOME", None),
++        ]);
++
++        assert_eq!(runtime_terminfo_dir(), Some(terminfo_dir));
+     }
+ 
+     #[test]
 diff --git a/scripts/build_linux_bundle.sh b/scripts/build_linux_bundle.sh
-index e898f4f..1d8b8dd 100755
+index 674983299d..91d305353f 100755
 --- a/scripts/build_linux_bundle.sh
 +++ b/scripts/build_linux_bundle.sh
-@@ -8,6 +8,8 @@ asset_name="taskers-linux-bundle-v${version}-${target}.tar.xz"
+@@ -10,6 +10,8 @@
  stage_dir="$(mktemp -d "${TMPDIR:-/tmp}/taskers-linux-bundle.XXXXXX")"
  prefix_dir="$stage_dir/prefix"
  bundle_dir="$stage_dir/bundle"
@@ -38,7 +199,7 @@ index e898f4f..1d8b8dd 100755
  
  cleanup() {
    rm -rf "$stage_dir"
-@@ -18,7 +20,9 @@ trap cleanup EXIT
+@@ -18,7 +20,9 @@
  
  (
    cd "$repo_root"
