@@ -3,7 +3,7 @@
 pkgname=astrbot-git
 _pkgname=astrbot
 _srcname=AstrBot
-pkgver=4.22.2.r632.g8946a90a
+pkgver=4.22.2.r633.g7543dd2e
 pkgrel=1
 
 pkgver() {
@@ -32,7 +32,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 source=(
-    "git+https://github.com/AstrBotDevs/AstrBot.git#branch=dev"
+    "git+https://github.com/AstrBotDevs/AstrBot.git#branch=dev#depth=999999"
     "astrbotctl"
     "astrbotctl.functions"
     "astrbot@.service"
