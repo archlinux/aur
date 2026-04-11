@@ -1,57 +1,50 @@
-# Maintainer: Claude <noreply@anthropic.com>
+# Maintainer: orange-guo
 # Packaging Repo: https://github.com/orange-guo/aur-packages
 
 pkgname=cli-proxy-api-bin
-_pkgname=cli-proxy-api
-_repouser="router-for-me"
-_reponame="CLIProxyAPI"
-pkgver=6.9.21
+pkgver=6.9.22
 pkgrel=1
-pkgdesc="Proxy server providing OpenAI/Gemini/Claude compatible API interfaces (Binary)"
-arch=('x86_64' 'aarch64')
-url="https://github.com/${_repouser}/${_reponame}"
-license=('MIT')
-provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
-
-# Disable stripping as the binary is pre-compiled and may lack symbols
-options=('!strip')
-
+pkgdesc=Proxy\ server\ providing\ OpenAI/Gemini/Claude\ compatible\ API\ interfaces\ \(Binary\)
+arch=(x86_64 aarch64 )
+url=https://github.com/router-for-me/CLIProxyAPI
+license=(MIT )
+depends=()
+makedepends=()
+options=(\!strip )
+provides=(cli-proxy-api )
+conflicts=(cli-proxy-api )
 install=cli-proxy-api-bin.install
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/${_repouser}/${_reponame}/releases/download/v${pkgver}/${_reponame}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('a76abe22cb35bb6e41e0416b42b4d1d69c9ab2e197d52e48c0ffd12bee80dfd8')
-sha256sums_aarch64=('e153f285a224818970f5a87ccfba6a665f7a4e35ae6bc41865a075d7c06e9280')
+source=(cli-proxy-api.service )
+sha256sums=('e303e0a3dc106f83aac76b1d2a7dfd891bbeccf5b668bbfb559cc69beb53cf2e')
+sha256sums_x86_64=('eacb25f6c294ffbe27916c2ebd52d22d776fbb9fe44ec851e6d66ccfef4f1249')
+sha256sums_aarch64=('44e183144e06b2e0cd4eaa16e6dabccb35ef89fdd79e193c443dd7d606735c98')
+source_x86_64=(cli-proxy-api-bin-6.9.22-x86_64.tar.gz::https://github.com/router-for-me/CLIProxyAPI/releases/download/v6.9.22/CLIProxyAPI_6.9.22_linux_amd64.tar.gz )
+source_aarch64=(cli-proxy-api-bin-6.9.22-aarch64.tar.gz::https://github.com/router-for-me/CLIProxyAPI/releases/download/v6.9.22/CLIProxyAPI_6.9.22_linux_arm64.tar.gz )
 
-source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/${_repouser}/${_reponame}/releases/download/v${pkgver}/${_reponame}_${pkgver}_linux_arm64.tar.gz")
+_binary_source_path=cli-proxy-api
+_install_bin_path=/usr/bin/cli-proxy-api
+_service_file=cli-proxy-api.service
+_service_install_path=/usr/lib/systemd/user/cli-proxy-api.service
+_doc_files=(config.example.yaml )
+_license_files=(LICENSE )
+
 
 package() {
-    # Binary name is cli-proxy-api inside the tarball
-    install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${srcdir}/${_binary_source_path}" "${pkgdir}${_install_bin_path}"
 
-    # Install example config
-    install -Dm644 "${srcdir}/config.example.yaml" "${pkgdir}/usr/share/doc/${pkgname}/config.example.yaml"
+    local doc_file
+    for doc_file in "${_doc_files[@]}"; do
+        [ -f "${srcdir}/${doc_file}" ] || continue
+        install -Dm644 "${srcdir}/${doc_file}" "${pkgdir}/usr/share/doc/${pkgname}/$(basename "${doc_file}")"
+    done
 
-    # Create systemd service file
-    cat <<EOF > "${srcdir}/${_pkgname}.service"
-[Unit]
-Description=CLIProxyAPI Service
-After=network.target
+    local license_file
+    for license_file in "${_license_files[@]}"; do
+        [ -f "${srcdir}/${license_file}" ] || continue
+        install -Dm644 "${srcdir}/${license_file}" "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${license_file}")"
+    done
 
-[Service]
-Type=simple
-ExecStart=/usr/bin/${_pkgname} --config %h/.cli-proxy-api/config.yaml
-Restart=always
-RestartSec=10
-
-[Install]
-WantedBy=default.target
-EOF
-
-    install -Dm644 "${srcdir}/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
-
-    # Install license if available
-    if [ -f "${srcdir}/LICENSE" ]; then
-        install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    if [ -n "${_service_file}" ] && [ -f "${srcdir}/${_service_file}" ]; then
+        install -Dm644 "${srcdir}/${_service_file}" "${pkgdir}${_service_install_path}"
     fi
 }
-
