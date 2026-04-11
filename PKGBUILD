@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
 	cd $pkgname
-	cargo build --frozen --release --bin boringtun-cli
+	cargo build --release --bin boringtun-cli
 }
 
 package() {
