@@ -19,7 +19,7 @@ pkgver() {
   git describe --long --always | sed 's/^v//; s/-/.r/; s/-/./'
 }
 
-prepare(){
+prepare() {
   cd "$srcdir/$pkgname"
   export GOPATH="${srcdir}/go"
   go mod download -modcacherw
