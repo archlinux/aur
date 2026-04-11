@@ -1,0 +1,17 @@
+pkgbase = qmk-light-bin
+	pkgdesc = CLI tool to control VIA/QMK keyboard backlight brightness
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/njkevlani/qmk-light
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = hidapi
+	provides = qmk-light
+	conflicts = qmk-light
+	source_x86_64 = https://github.com/njkevlani/qmk-light/releases/download/v0.0.3/qmk-light-linux-amd64
+	sha256sums_x86_64 = 29a49add810a55574f823ebd3e261798dffdf10bb60cf3755a1418e2942e0aa8
+	source_aarch64 = https://github.com/njkevlani/qmk-light/releases/download/v0.0.3/qmk-light-linux-arm64
+	sha256sums_aarch64 = 196fb566707687c498a6b7638a48e069a85cba5fc54eb7aaa508fadbec134def
+
+pkgname = qmk-light-bin
