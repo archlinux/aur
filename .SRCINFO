@@ -1,8 +1,9 @@
 pkgbase = scholarflow
 	pkgdesc = Google Gemini destekli, modern tasarımlı akademik asistan ve üretkenlik paketi.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://scholarflow.mefkuz.com/
+	install = scholarflow.install
 	arch = any
 	license = MIT
 	makedepends = git
