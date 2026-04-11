@@ -1,21 +1,19 @@
 pkgbase = python-wn
 	pkgdesc = Wordnet interface library
-	pkgver = 0.14.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://wn.readthedocs.io
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-benchmark
-	checkdepends = python-starlette
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
 	depends = python-httpx
-	optdepends = python-starlette
-	source = wn-0.14.0.tar.gz::https://github.com/goodmami/wn/archive/refs/tags/v0.14.0.tar.gz
-	sha256sums = b842d761368440fcbb0da832074968ed4250dbf9fc8b6034961509fe1325a525
+	source = wn-1.1.0.tar.gz::https://github.com/goodmami/wn/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = b5f7a9706b4cdb0cd364f1d184e381793d2d694e32fbb6cbddbb5bf4a5c67dcc
 
 pkgname = python-wn
