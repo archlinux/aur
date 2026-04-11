@@ -14,7 +14,7 @@ depends=(
   'libsoup3'
   'libgee'
   'json-glib'
-  'libqrencode'
+  'qrencode'
   'gdk-pixbuf2'
   'cairo'
   'libadwaita'
@@ -28,7 +28,7 @@ makedepends=(
   'pkg-config'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gabutakut/gabutdm/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('da7f654c029f7fc16d185aba9d0db83254e9cae2eac717920bbb6ab5c2b4a45d')
+sha256sums=('6531ecadf079a381dd5e550eb7b1b0e044c298a5a7b0e70abe32414a2a0b3a14')
 
 build() {
   cd "$pkgname-$pkgver"
