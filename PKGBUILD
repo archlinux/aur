@@ -1,5 +1,5 @@
 # Maintainer: Thomas Ramfjord <your-email@example.com>
-pkgname=lem
+pkgname=lem-editor
 # Using nightly build since stable releases don't have precompiled binaries
 pkgver=nightly.$(date +%Y%m%d)
 pkgrel=2
