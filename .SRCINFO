@@ -1,6 +1,6 @@
 pkgbase = qwen-code-bin
 	pkgdesc = Open-source AI agent based on Gemini CLI by QwenLM
-	pkgver = 0.14.2
+	pkgver = 0.14.3
 	pkgrel = 1
 	url = https://github.com/QwenLM/qwen-code
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = qwen-code-bin
 	provides = qwen
 	conflicts = qwen-code
 	conflicts = qwen
-	source = qwen-code-0.14.2.tgz::https://registry.npmjs.org/@qwen-code/qwen-code/-/qwen-code-0.14.2.tgz
+	source = qwen-code-0.14.3.tgz::https://registry.npmjs.org/@qwen-code/qwen-code/-/qwen-code-0.14.3.tgz
 	source = system-defaults.json
-	sha256sums = 9c30e7277f0e751b7b923a13f672b428e20d0923180231b399e0ffcd00a44407
+	sha256sums = cb5968d5e128a8840a81ea9072150eb39c852b1cd92ba386dd4635ccd2e64b73
 	sha256sums = 729be4baa7cd839aa383910df26d15111d2af1e4c5415f5bb01ff949881fe8cb
 
 pkgname = qwen-code-bin
