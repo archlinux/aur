@@ -4,7 +4,7 @@ post_install() {
   /usr/bin/lazychad-deps
   
   echo "==> LazyChad has been successfully installed."
-  echo "==> Type 'lazychad' to start."
+  echo "==> Type 'lchad' to start."
 }
 
 post_upgrade() {
