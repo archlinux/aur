@@ -1,6 +1,6 @@
 pkgbase = python-pingouin
 	pkgdesc = Statistical package for Python
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://pingouin-stats.org/build/html/index.html
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-pingouin
 	depends = python-pandas-flavor
 	depends = python-tabulate
 	depends = python-mpmath
-	source = https://files.pythonhosted.org/packages/source/p/pingouin/pingouin-0.6.0.tar.gz
-	sha256sums = f9a522ab1c13c72dcf74e4e040e1896a328aa06eeebf9c8b0276ea24dbf53c33
+	source = https://files.pythonhosted.org/packages/source/p/pingouin/pingouin-0.6.1.tar.gz
+	sha256sums = df5ac1f057ef257c07cf0e0785ac8fb9ace923ba1b0ef775886914d674a9f63d
 
 pkgname = python-pingouin

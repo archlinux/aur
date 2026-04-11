@@ -2,7 +2,7 @@
 
 pkgname=python-pingouin
 _name=${pkgname#python-}
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Statistical package for Python'
 arch=(any)
@@ -24,7 +24,7 @@ depends=(
 makedepends=(python-build python-installer python-wheel python-setuptools)
 checkdepends=(python-pytest)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('f9a522ab1c13c72dcf74e4e040e1896a328aa06eeebf9c8b0276ea24dbf53c33')
+sha256sums=('df5ac1f057ef257c07cf0e0785ac8fb9ace923ba1b0ef775886914d674a9f63d')
 
 
 build() {
