@@ -6,24 +6,31 @@
 # Expects the package file at: /tmp/lem-editor.pkg.tar.zst
 # Verifies:
 #   1. Package installs without errors
-#   2. Binary is executable
-#   3. Binary runs and returns version info
+#   2. Wrapper script exists and is executable
+#   3. AppImage runs via --appimage-extract-and-run without FUSE
+#   4. Binary returns version info
 
 set -e
 
 # Update package databases
 pacman -Sy --noconfirm > /dev/null 2>&1
 
-# Install the package
+# Install the package (no FUSE dependency needed)
 pacman -U --noconfirm /tmp/lem-editor.pkg.tar.zst > /dev/null 2>&1
 
-# Verify binary exists and is executable
+# Verify wrapper script exists and is executable
 if [ ! -x /usr/bin/lem ]; then
-    echo "ERROR: /usr/bin/lem is not executable or doesn't exist"
+    echo "ERROR: /usr/bin/lem wrapper script does not exist or is not executable"
     exit 1
 fi
 
-# Test execution - run --version to verify the binary works
+# Verify AppImage exists
+if [ ! -f /opt/lem-editor/lem.AppImage ]; then
+    echo "ERROR: /opt/lem-editor/lem.AppImage does not exist"
+    exit 1
+fi
+
+# Test execution - run --version to verify the AppImage works with --appimage-extract-and-run
 if ! output=$(/usr/bin/lem --version 2>&1); then
     echo "ERROR: Failed to execute /usr/bin/lem"
     exit 1
@@ -36,7 +43,7 @@ if [ -z "$output" ]; then
 fi
 
 # Print success message with version info
-echo "✓ Package installed and tested successfully"
+echo "✓ Package installed and tested successfully (no FUSE required)"
 echo "  Version: $output"
 
 exit 0
