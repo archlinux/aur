@@ -1,7 +1,7 @@
 pkgbase = scholarflow
 	pkgdesc = Google Gemini destekli, modern tasarımlı yerel akademik asistan (GUI Sürümü)
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mefkuz/scholarflow-gui
 	install = scholarflow.install
 	arch = any
