@@ -1,0 +1,19 @@
+pkgbase = tilt-tui-git
+	pkgdesc = Terminal UI for Tilt (OpenTUI / Solid)
+	pkgver = r110.6f9578a
+	pkgrel = 1
+	url = https://github.com/andycmaj/tilt-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = bun
+	depends = glibc
+	optdepends = tilt-bin: Tilt CLI (expected on PATH for full functionality)
+	provides = tilt-tui
+	conflicts = tilt-tui
+	options = !strip
+	options = !debug
+	source = tilt-tui::git+https://github.com/andycmaj/tilt-tui.git#branch=main
+	sha256sums = SKIP
+
+pkgname = tilt-tui-git
