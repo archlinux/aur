@@ -7,6 +7,7 @@ import http.server
 import socketserver
 import socket
 import time
+import json
 
 def find_free_port():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -19,25 +20,53 @@ def start_server(path, port):
     with socketserver.TCPServer(("", port), handler) as httpd:
         httpd.serve_forever()
 
+class Api:
+    def __init__(self):
+        self.window = None
+
+    def set_window(self, window):
+        self.window = window
+
+    def save_file(self, content):
+        """Opens a save file dialog and writes the content to the selected path."""
+        try:
+            # Generate default filename
+            filename = f"scholarflow_backup_{time.strftime('%Y%m%d')}.json"
+            
+            # Open save file dialog
+            file_path = self.window.create_file_dialog(
+                webview.SAVE_DIALOG, 
+                directory=os.path.expanduser("~"), 
+                save_filename=filename,
+                file_types=('JSON files (*.json)', 'All files (*.*)')
+            )
+            
+            if file_path:
+                # webview dialog returns a tuple on some platforms, a string on others
+                if isinstance(file_path, (list, tuple)):
+                    file_path = file_path[0]
+                
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    # Content is already a JSON string from JS
+                    f.write(content)
+                return True
+            return False
+        except Exception as e:
+            print(f"[ScholarFlow] Save error: {e}")
+            return False
+
 def on_closing(window):
-    # Ask the user if they want to export their data before closing
-    # Yes = Export and Exit
-    # No = Just Exit
     title = "ScholarFlow - Çıkış"
-    message = "Uygulamadan çıkmadan önce verilerinizi yedeklemek (dışa aktarmak) ister misiniz?\n\n'Evet' derseniz verileriniz indirilecek ve uygulama kapanacaktır.\n'Hayır' derseniz verileriniz indirilmeden uygulama kapanacaktır."
+    message = "Uygulamadan çıkmadan önce verilerinizi yedeklemek (dışa aktarmak) ister misiniz?\n\n'Evet' derseniz bir konum seçip verilerinizi kaydedebilirsiniz.\n'Hayır' derseniz uygulama doğrudan kapanacaktır."
     
     result = window.create_confirmation_dialog(title, message)
     
     if result:
-        # User clicked "Yes" (Evet) - Trigger export
-        print("[ScholarFlow] Exporting data before exit...")
-        window.evaluate_js("if(window.scholarflow) window.scholarflow.exportUserData()")
-        # Small delay to allow the browser to handle the download trigger
-        time.sleep(1.5)
+        # User clicked "Yes" - Trigger the enhanced JS export which uses pywebview save dialog
+        window.evaluate_js("if(window.scholarflow) window.scholarflow.triggerExport()")
+        # Wait a bit longer for the dialog to be handled
+        time.sleep(0.5)
     
-    # In both cases (Yes or No), we allow the window to close
-    # The 'not responding' issue is usually because this function takes too long 
-    # or blocks the UI thread. We'll ensure it finishes.
     return True
 
 if __name__ == "__main__":
@@ -66,12 +95,17 @@ if __name__ == "__main__":
     storage_dir = os.path.expanduser("~/.local/share/scholarflow")
     os.makedirs(storage_dir, exist_ok=True)
 
-    window = webview.create_window('ScholarFlow', f'http://localhost:{port}', width=1200, height=800)
+    api = Api()
+    window = webview.create_window(
+        'ScholarFlow', 
+        f'http://localhost:{port}', 
+        width=1200, 
+        height=800,
+        js_api=api
+    )
+    api.set_window(window)
     
-    # Re-enable the closing event with the confirmation dialog
     window.events.closing += on_closing
     
     webview.start(storage_path=storage_dir)
-    
-    # Force exit to clean up all threads
     os._exit(0)
