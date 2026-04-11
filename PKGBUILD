@@ -2,7 +2,7 @@
 pkgname=pacsea-bin
 pkgver=0.8.1
 _tag="v$pkgver"
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Firstp1ck/Pacsea"
@@ -73,21 +73,27 @@ prepare() {
     return 1
   fi
 
-  local machine_line machine
-  machine_line=$(readelf -h "$binary_path" 2>/dev/null | grep -m1 '^[[:space:]]*Machine:') || true
-  machine="${machine_line#*:}"
-  machine="${machine#"${machine%%[![:space:]]*}"}"
+  # e_machine at offset 18–19 (little-endian) — avoids readelf/grep (locale, PATH, output shape).
+  # EM_X86_64=62, EM_AARCH64=183 (elf.h).
+  local em_lo em_hi emachine
+  em_lo=$(od -An -t u1 -j 18 -N 1 "$binary_path" | tr -d ' \n')
+  em_hi=$(od -An -t u1 -j 19 -N 1 "$binary_path" | tr -d ' \n')
+  if [[ -z "$em_lo" || -z "$em_hi" ]]; then
+    error "Could not read ELF e_machine from binary (file too short or unreadable?)"
+    return 1
+  fi
+  emachine=$((10#$em_lo + 10#$em_hi * 256))
 
   case "$CARCH" in
     x86_64)
-      if [[ "$machine" != *'X86-64'* ]]; then
-        error "Expected x86_64 binary (Machine: Advanced Micro Devices X86-64), got: ${machine_line:-unknown}"
+      if ((emachine != 62)); then
+        error "Expected x86_64 binary (e_machine=62), got e_machine=$emachine"
         return 1
       fi
       ;;
     aarch64)
-      if [[ "$machine" != *'AArch64'* ]]; then
-        error "Expected AArch64 binary, got: ${machine_line:-unknown}"
+      if ((emachine != 183)); then
+        error "Expected AArch64 binary (e_machine=183), got e_machine=$emachine"
         return 1
       fi
       ;;
