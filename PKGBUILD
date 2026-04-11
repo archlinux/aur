@@ -15,8 +15,8 @@
 
 pkgname=loot
 # https://github.com/loot/loot/releases
-pkgver=0.28.0
-pkgrel=4
+pkgver=0.29.0
+pkgrel=1
 pkgdesc="A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
 url="https://loot.github.io"
@@ -25,20 +25,25 @@ depends=(
 	'fmt'
 	'icu'
 	'hicolor-icon-theme'
+	'minizip-ng'
+	#'minizip-git'
 	'ogdf' # AUR
 	'onetbb'
 	'qt6-base'
 	'libloot'
 	'spdlog'
 	'tomlplusplus'
-	'zlib-ng')
+	'zlib'
+)
 makedepends=(
-	'git'
 	'boost'
 	'cbindgen'
 	'cmake'
+	#'git'
 	'python'
-	'rust')
+	'rust'
+	'svg_to_ico'
+)
 optdepends=(
 	'vulkan-headers: Optional build dependency'
 )
@@ -46,7 +51,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
 	'LOOT.desktop'
 )
-sha256sums=('098ed7b27e9036dfd9e23dc3c3232ae9c0f6dac1886ad860ba71475084437bb2'
+sha256sums=('766934e8041f53c62279a48e7ce4c88f41bc39765502b22be3438811c36e6054'
             '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb')
 
 prepare() {
@@ -68,7 +73,6 @@ build() {
 	# REQUIRE_FIND_PACKAGE definitions are there to prevent dependencies being gotten off network instead of system
 	cmake -B build \
 		-DCMAKE_REQUIRE_FIND_PACKAGE_libloot=ON \
-		-DCMAKE_REQUIRE_FIND_PACKAGE_ZLIB=ON \
 		-DCMAKE_REQUIRE_FIND_PACKAGE_MINIZIP=OFF \
 		-DCMAKE_REQUIRE_FIND_PACKAGE_tomlplusplus=ON \
 		-DCMAKE_REQUIRE_FIND_PACKAGE_fmt=ON \
