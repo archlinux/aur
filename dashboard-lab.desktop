@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=dashboard-LAB
+Comment=Local-first AI workspace dashboard
+GenericName=AI Dashboard
+Exec=dashboard-lab %U
+Icon=dashboard-lab
+Type=Application
+Categories=Utility;Development;
+Terminal=false
+StartupWMClass=dashboard-lab
+StartupNotify=true
+MimeType=x-scheme-handler/dashboard-lab;
