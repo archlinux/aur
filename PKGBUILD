@@ -4,27 +4,22 @@ _pkgsubn='aic8800d80'
 pkgname='aic8800d80-wifi-bt-git-dkms'
 conflicts=('aic8800d80')
 pkgver='1.0.0'
-pkgrel='6'
-
+pkgrel='7'
 pkgdesc="Kernel modules for AIC8800D80 USB dongle WIFI AX900 with BT5.4"
 arch=('any')
 makedepends=("git")
 depends=("dkms")
 url="https://github.com/shenmintao/aic8800d80"
 license=('GPL-2.0-only')
+source=('git+https://github.com/shenmintao/aic8800d80.git#branch=bluetooth')
+sha512sums=('SKIP')
 
-source=(
-  'git+https://github.com/shenmintao/aic8800d80.git#branch=bluetooth'
-)
-sha512sums=(
-  'SKIP'
-)
-
-build() {
-  cd "${srcdir}"
+pkgver() {
+  git rev-list --count HEAD
 }
 
 package() {
+  cd "${srcdir}"
   # Copy udev rules
   install -dm 755 "${pkgdir}/usr/lib/udev/rules.d"
   install -m 644 "${srcdir}/${_pkgsubn}/aic.rules" "${pkgdir}/usr/lib/udev/rules.d/"
