@@ -7,7 +7,7 @@ fi
 
 FILE="$1.tar.gz"
 
-if curl --fail "https://git.sr.ht/~aeldit/lbn/archive/$1.tar.gz" -o "$FILE"; then
+if curl --fail "https://git.sr.ht/~aeldit/lbn/archive/$FILE" -o "$FILE"; then
     echo "Success"
     CHECKSUM=$(sha256sum "$FILE" | cut -d' ' -f1)
     # Update PKGBUILD's contents
