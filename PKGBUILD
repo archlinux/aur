@@ -3,16 +3,19 @@
 
 pkgname=cli-proxy-api-bin
 pkgver=6.9.22
-pkgrel=1
+pkgrel=2
 pkgdesc=Proxy\ server\ providing\ OpenAI/Gemini/Claude\ compatible\ API\ interfaces\ \(Binary\)
 arch=(x86_64 aarch64 )
 url=https://github.com/router-for-me/CLIProxyAPI
 license=(MIT )
 depends=()
 makedepends=()
+checkdepends=()
+optdepends=()
 options=(\!strip )
 provides=(cli-proxy-api )
 conflicts=(cli-proxy-api )
+validpgpkeys=()
 install=cli-proxy-api-bin.install
 source=(cli-proxy-api.service )
 sha256sums=('e303e0a3dc106f83aac76b1d2a7dfd891bbeccf5b668bbfb559cc69beb53cf2e')
