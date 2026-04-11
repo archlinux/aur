@@ -6,9 +6,8 @@ pkgrel=1
 pkgdesc='Kernel module re-implementation of phantun, transform UDP streams into fake-TCP streams'
 arch=('any')
 url='https://github.com/bjin/phantun-dkms'
-license=('GPL-2.0-only')
+license=('GPL-2.0-or-later')
 depends=('dkms')
-makedepends=('curl')
 source=("https://github.com/bjin/phantun-dkms/releases/download/v${pkgver}/phantun-dkms_${pkgver}.tar.gz")
 sha256sums=("850107892f19684aa44a6a343f0d0095f3779be9be1f0e998b63e839d1d57338")
 
