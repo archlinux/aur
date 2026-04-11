@@ -14,11 +14,11 @@ source=("$url/archive/v${pkgver}.tar.gz")
 sha256sums=('774c0ba9596f3231c846dad096f61d7e2906f6fad38c031bf6c01bb8d6c0a338')
 
 package() {
-    cd ${pkgname}-${pkgver}
-    make \
-        PREFIX="/usr"       \
-        SYSCONFDIR="/etc"   \
-        DESTDIR="${pkgdir}" \
-        install
-    install -D -m644 "./LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  cd ${pkgname}-${pkgver}
+  make \
+    PREFIX="/usr" \
+    SYSCONFDIR="/etc" \
+    DESTDIR="${pkgdir}" \
+    install
+  install -D -m644 "./LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
