@@ -19,7 +19,7 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm755 target/release/oplire-reset "$pkgdir/usr/bin/oplire-reset"
+    install -Dm755 target/release/oplire "$pkgdir/usr/bin/oplire"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
