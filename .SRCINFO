@@ -1,0 +1,14 @@
+pkgbase = lem
+	pkgdesc = A Lisp-based text editor for the modern world
+	pkgver = nightly.20260411
+	pkgrel = 1
+	url = https://github.com/lem-project/lem
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	provides = lem
+	conflicts = lem-git
+	source = lem-appimage::https://github.com/lem-project/lem/releases/download/nightly-latest/Lem-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = lem
