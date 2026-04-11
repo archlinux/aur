@@ -14,29 +14,31 @@ source=("${pkgname%-*}-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('29961aa0b789306e0927ffa83f45a952deb1d07a315406beda77f8299eb31eaf')
 
 prepare() {
-    cd "${pkgname%%-*}-${pkgver}"
-    export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
-    go mod download
+  cd "${pkgname%%-*}-${pkgver}"
+  export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
+  go mod download
 }
 
 build() {
-    cd "${pkgname%%-*}-${pkgver}"
+  cd "${pkgname%%-*}-${pkgver}"
 
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export ADDFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export ADDFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    make build/tsh build/tctl
+  make build/tsh build/tctl
 
-    # Clean up deps
-    go clean -modcache
+  # Clean up deps
+  go clean -modcache
 }
 
 package() {
-    cd "${pkgname%%-*}-${pkgver}"
+  cd "${pkgname%%-*}-${pkgver}"
 
-    install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl-17"
-    install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh-17"
+  install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl-17"
+  install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh-17"
 }
+
+# vim: tabstop=2 shiftwidth=2 expandtab
