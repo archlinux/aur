@@ -1,12 +1,13 @@
 # Maintainer: Joni Savolainen <joni@savolainen.io>
 pkgname=supersigil-lsp
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Language server for Supersigil spec documents"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jonisavo/supersigil"
 license=('MIT' 'Apache-2.0')
 makedepends=('cargo')
+options=(!debug)
 source=("supersigil-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
