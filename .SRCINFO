@@ -1,0 +1,12 @@
+pkgbase = gitxplain
+	pkgdesc = AI-powered Git commit explainer CLI
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/guruswarupa/gitxplain
+	arch = any
+	license = MIT
+	depends = nodejs
+	source = https://registry.npmjs.org/gitxplain/-/gitxplain-0.1.9.tgz
+	sha256sums = <SHA256_PLACEHOLDER>
+
+pkgname = gitxplain
