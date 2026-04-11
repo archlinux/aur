@@ -7,16 +7,16 @@ pkgdesc='Wordlist-based password generator'
 url="https://github.com/ulif/diceware"
 depends=('python')
 makedepends=(
-    'python-build' 'python-installer' 'python-wheel' 'python-setuptools'
-    'python-sphinx'
-    'python-sphinx_rtd_theme'
-    'python-docutils'
-    'git'
-    )
+  'python-build' 'python-installer' 'python-wheel' 'python-setuptools'
+  'python-sphinx'
+  'python-sphinx_rtd_theme'
+  'python-docutils'
+  'git'
+)
 checkdepends=(
-    'python-pytest'
-    'python-pytest-cov'
-    'python-coverage'
+  'python-pytest'
+  'python-pytest-cov'
+  'python-coverage'
 )
 license=('GPL-3.0-or-later')
 arch=('any')
@@ -48,4 +48,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et
-
