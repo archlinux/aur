@@ -1,0 +1,15 @@
+--- internal/config/config.go.orig	2026-04-11 15:51:19.369226607 +0200
++++ internal/config/config.go	2026-04-11 15:51:53.432936381 +0200
+@@ -278,12 +278,6 @@
+ 	// Update package defaults.
+ 	c.Propagate()
+ 
+-	// Show support information.
+-	if !c.Sponsor() {
+-		log.Info(MsgSponsor)
+-		log.Info(MsgSignUp)
+-	}
+-
+ 	// Show log message.
+ 	log.Debugf("config: successfully initialized [%s]", time.Since(start))
+ 	c.ready.Store(true)

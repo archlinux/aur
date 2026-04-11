@@ -6,95 +6,113 @@ pkgname=photoprism
 pkgver=260305
 _commit=fad9d5395
 _pkgver="${pkgver}-${_commit}"
-pkgrel=1
+_onnxver=1.24.1
+pkgrel=2
 pkgdesc="AI-Powered Photos App for the Decentralized Web"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/${pkgname}/${pkgname}"
 license=('AGPL-3.0-or-later')
 depends=(glibc glib2 libvips tensorflow)
 makedepends=(go npm findutils)
 optdepends=("darktable: for RAW to JPEG conversion"
-            "ffmpeg: for video transcoding and thumbnail extraction"
-            "libva: for video transcoding"
-            "imagemagick: for image conversion"
-            "libheif: for HEIC/HEIF image conversion"
-            "mariadb: for MySQL database driver"
-            "perl-image-exiftool: for extracting metadata"
-            "rawtherapee: for RAW to JPEG conversion")
+	"ffmpeg: for video transcoding and thumbnail extraction"
+	"libva: for video transcoding"
+	"imagemagick: for image conversion"
+	"libheif: for HEIC/HEIF image conversion"
+	"mariadb: for MySQL database driver"
+	"perl-image-exiftool: for extracting metadata"
+	"rawtherapee: for RAW to JPEG conversion")
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
-        "https://dl.${pkgname}.app/tensorflow/facenet.zip"
-        "https://dl.${pkgname}.app/tensorflow/nasnet.zip"
-        "https://dl.${pkgname}.app/tensorflow/nsfw.zip"
-        "${pkgname}-import."{service,timer}
+	"https://dl.${pkgname}.app/onnx/runtime/v1.24.1/onnxruntime-linux-x64-${_onnxver}.tgz"
+	"https://dl.${pkgname}.app/onnx/models/scrfd_500m_bnkps_shape640x640.onnx"
+	"https://dl.${pkgname}.app/tensorflow/facenet.zip"
+	"https://dl.${pkgname}.app/tensorflow/nasnet.zip"
+	"https://dl.${pkgname}.app/tensorflow/nsfw.zip"
+	"${pkgname}-import."{service,timer}
 	"${pkgname}-vision."{service,timer}
-        "${pkgname}."{service,sysusers,tmpfiles,user.service}
-        "defaults.yml")
+	"${pkgname}."{service,sysusers,tmpfiles,user.service}
+	"defaults.yml"
+	"01-internal-config-config_go.patch")
 backup=("etc/${pkgname}/defaults.yml")
 conflicts=('photoprism-facenet' 'photoprism-nasnet' 'photoprism-nsfw')
 replaces=('photoprism-facenet' 'photoprism-nasnet' 'photoprism-nsfw')
 b2sums=('aafc65293f863fe0501373d29084fa7a4d75a7c4d0b4d9b81fef55aa81772875031c2849a5d0aba73713d4bde5ef886ee55315b2fe60abdfb5e604005a8d68c5'
-        'ae3fe8162773ca9c84be2ea49dbc33e8a381d25cbbb51660c9f7a0764b89128eb8b40aceb10272e2579f277f76b8622d1f366e38e7c290266280c1db268365c5'
-        '846cc4ce2d8c170c6442cf1f3a235d49744ff704300b619947bd425861ac4312d5465c749fd1179e4c25163d3a3428cd31359b7ea1521fa6edab81dba88074a0'
-        'ca264c8ba2f999490c1335767286ddfe42a92d8606c371f17b5aa3f333bda3ade9c4f2451f7df7489946c9ae503f82351879a9876cd80e036a7991945e1242ec'
-        'f5a06fd26f15afa7b71bd66afba800488fad697567754b6efc0d20f55955c043ba817d280b1d80c901ccbfcf085f11ad289624946bcd4bf2c3f3ee963a431c2d'
-        'e75033ee265dddf39cb4f0d1cfc1e86a540da37c9787e3c13040b6fc039437d6684be3b59d63f001864f98f46afd49847b86b4fc6bedf891be87881a4bb83cf0'
-        '438f6206adaf7b1beccda7b65ea71ecc45c29b4443942b823ad4652dde40d0cdbb8d5b7e3476aaf0643e5ad4369377ae9df0682bf73ca7d2af419c3820b2ef20'
-        '8b54d90d8ee721c555c3650f8c1041a5068a65aa847c0f768ce5d05a917b60e961b332fc8608ee7f3b0b8928e0606e49e85b5f3baa1e3b85d00b7decdf9f29da'
-        '3896b95ddda233270591e673f564bb3c7c537f9140d9ad0451259249d0bd956daf2b2cc70c3ba7fbd2971e97e126e13ecde368388c8e160708fbccad206c5d55'
-        '02a752c8dda9c1611cac8119cf603bb8147dda1aa68fabaa9be61952e1839132d190691a68a01d0443d3750f76319a9e77e7fb9f175d5dbd0f527e5e4529ede8'
-        'f8ad9373b97b6f5bda10caa193ae3f6700f8e15d82f30a2c8ad0fec02c5c25c3ad1f62ae524aa5e28b07312016d31c2918a3a9a3b172e61128fe054b129eecbe'
-        '96d8d89499adfd1e3fba1b729133f3a01dbe16b2cb11deacc7e0e69620530c8f28e19911b16368816d98ce8e4ffa9645e8cb0429c82314179c335e736db87198'
-        'eda69ac2d568534e3f5ca89605f68114dc034bc6c31c9a0edbdec14b79165aa9dd2f1183276cde40f0a69cd6e511b2c1250617103dc3d1ee8e0074469be7e93b')
+	'53eddc3cd406b0cb51c73d9f093f28a16ed227b81978d10b8c541fcc4c9119ae928a8290fef378edd68ae4f5c7c5b6ea5ceb54fe393a3a34c28322261e0ce02e'
+	'2cafc2c00eabba8dee5e63982c4c642c5df00975c568b37d3cff81f0da94c8db746ea3fc31c4a98086527ed2db86b2ff48c36551163d0457001913eddfdbddc4'
+	'ae3fe8162773ca9c84be2ea49dbc33e8a381d25cbbb51660c9f7a0764b89128eb8b40aceb10272e2579f277f76b8622d1f366e38e7c290266280c1db268365c5'
+	'846cc4ce2d8c170c6442cf1f3a235d49744ff704300b619947bd425861ac4312d5465c749fd1179e4c25163d3a3428cd31359b7ea1521fa6edab81dba88074a0'
+	'ca264c8ba2f999490c1335767286ddfe42a92d8606c371f17b5aa3f333bda3ade9c4f2451f7df7489946c9ae503f82351879a9876cd80e036a7991945e1242ec'
+	'f5a06fd26f15afa7b71bd66afba800488fad697567754b6efc0d20f55955c043ba817d280b1d80c901ccbfcf085f11ad289624946bcd4bf2c3f3ee963a431c2d'
+	'e75033ee265dddf39cb4f0d1cfc1e86a540da37c9787e3c13040b6fc039437d6684be3b59d63f001864f98f46afd49847b86b4fc6bedf891be87881a4bb83cf0'
+	'438f6206adaf7b1beccda7b65ea71ecc45c29b4443942b823ad4652dde40d0cdbb8d5b7e3476aaf0643e5ad4369377ae9df0682bf73ca7d2af419c3820b2ef20'
+	'8b54d90d8ee721c555c3650f8c1041a5068a65aa847c0f768ce5d05a917b60e961b332fc8608ee7f3b0b8928e0606e49e85b5f3baa1e3b85d00b7decdf9f29da'
+	'3896b95ddda233270591e673f564bb3c7c537f9140d9ad0451259249d0bd956daf2b2cc70c3ba7fbd2971e97e126e13ecde368388c8e160708fbccad206c5d55'
+	'02a752c8dda9c1611cac8119cf603bb8147dda1aa68fabaa9be61952e1839132d190691a68a01d0443d3750f76319a9e77e7fb9f175d5dbd0f527e5e4529ede8'
+	'f8ad9373b97b6f5bda10caa193ae3f6700f8e15d82f30a2c8ad0fec02c5c25c3ad1f62ae524aa5e28b07312016d31c2918a3a9a3b172e61128fe054b129eecbe'
+	'96d8d89499adfd1e3fba1b729133f3a01dbe16b2cb11deacc7e0e69620530c8f28e19911b16368816d98ce8e4ffa9645e8cb0429c82314179c335e736db87198'
+	'eda69ac2d568534e3f5ca89605f68114dc034bc6c31c9a0edbdec14b79165aa9dd2f1183276cde40f0a69cd6e511b2c1250617103dc3d1ee8e0074469be7e93b'
+	'e91d9a583d6eb7c2f31f0348885e5f8360c2f442ea800d0afbb627612fd84de2a705eebfa8782d9556b2f8af00fc15d16238e2ecc5700fd9373c693e209c8af8')
 
 prepare() {
-    export GOPATH="$srcdir/go"
-    export GOFLAGS="-modcacherw -mod=readonly"
+	export GOPATH="$srcdir/go"
+	export GOFLAGS="-modcacherw -mod=readonly"
 
-    cd "$pkgname-$_pkgver"
-    go mod download
-    npm --prefix=frontend install --cache "$srcdir/npm-cache"
+	cd "$pkgname-$_pkgver"
+
+	for p in "$srcdir/"*.patch; do
+		patch -p0 <$p
+	done
+
+	go mod download
+
+	npm --prefix=frontend install --cache "$srcdir/npm-cache"
 }
 
 build() {
-    export CGO_CFLAGS="$CFLAGS -I/usr/include/tensorflow"
-    export CGO_CPPFLAGS="$CPPFLAGS"
-    export CGO_CXXFLAGS="$CXXFLAGS"
-    export NODE_ENV=production
-    export GOPATH="$srcdir/go"
+	export CGO_CFLAGS="$CFLAGS -I/usr/include/tensorflow"
+	export CGO_CPPFLAGS="$CPPFLAGS"
+	export CGO_CXXFLAGS="$CXXFLAGS"
+	export NODE_ENV=production
+	export GOPATH="$srcdir/go"
 
-    cd "$pkgname-$_pkgver"
-    local buildid="$_pkgver-$(uname -s)-$(uname -m)"
-    local ldflags="
+	cd "$pkgname-$_pkgver"
+	local buildid="$_pkgver-$(uname -s)-$(uname -m)"
+	local ldflags="
 	-s -w \
 	-linkmode external \
-	-extldflags '$LDFLAGS' \
+	-extldflags '$LDFLAGS -Wl,-rpath=/usr/lib/photoprism' \
 	-X main.version=$buildid
     "
-    go build \
-	-trimpath \
-	-buildmode=pie \
-	-mod=readonly \
-	-modcacherw \
-	-ldflags "$ldflags" \
-	-o "$pkgname" \
-	"./cmd/$pkgname/$pkgname.go"
-    
-    npm --prefix=frontend run build
+	go build \
+		-trimpath \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "$ldflags" \
+		-o "$pkgname" \
+		"./cmd/$pkgname/$pkgname.go"
+
+	npm --prefix=frontend run build
 }
 
 package() {
-    find {facenet,nasnet,nsfw} -type f -exec install -Dm644 {} "$pkgdir/usr/share/$pkgname/"{} \;
+	install -Dm755 "$srcdir/onnxruntime-linux-x64-$_onnxver/lib/libonnxruntime.so.$_onnxver" -t "$pkgdir/usr/lib/photoprism"
+	ln -s "libonnxruntime.so.$_onnxver" "$pkgdir/usr/lib/photoprism/libonnxruntime.so.1"
+	ln -s libonnxruntime.so.1 "$pkgdir/usr/lib/photoprism/libonnxruntime.so"
 
-    install -Dm644 "$pkgname-import".* "$pkgname-vision".* "$pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
-    install -Dm644 "$pkgname.sysusers"     	"$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-    install -Dm644 "$pkgname.tmpfiles"     	"$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-    install -Dm644 "$pkgname.user.service" 	"$pkgdir/usr/lib/systemd/user/$pkgname.service"
-    install -Dm644 "defaults.yml"            	"$pkgdir/etc/$pkgname/defaults.yml"
+	find {facenet,nasnet,nsfw} -type f -exec install -Dm644 {} "$pkgdir/usr/share/$pkgname/"{} \;
+	install -Dm644 scrfd*.onnx -t "$pkgdir/usr/share/$pkgname/scrfd"
 
-    cd "$pkgname-$_pkgver"
-    install -Dm755 "$pkgname"              	"$pkgdir/usr/bin/$pkgname"
-    install -Dm644 LICENSE		     -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 "$pkgname-import".* "$pkgname-vision".* "$pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+	install -Dm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+	install -Dm644 "$pkgname.user.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
+	install -Dm644 "defaults.yml" "$pkgdir/etc/$pkgname/defaults.yml"
 
-    cd assets
-    find {locales,profiles,static,templates} -type f -exec install -Dm644 {} "$pkgdir/usr/share/$pkgname/"{} \;
+	cd "$pkgname-$_pkgver"
+	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+
+	cd assets
+	find {locales,profiles,static,templates} -type f -exec install -Dm644 {} "$pkgdir/usr/share/$pkgname/"{} \;
 }
