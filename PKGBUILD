@@ -3,16 +3,19 @@
 
 pkgname=antigravity-tools-bin
 pkgver=4.1.31
-pkgrel=2
+pkgrel=3
 pkgdesc=Professional\ Antigravity\ Account\ Manager\ \&\ Switcher\ \(Binary\ from\ GitHub\)
 arch=(x86_64 )
 url=https://github.com/lbjlaq/Antigravity-Manager
 license=(custom:CC-BY-NC-SA-4.0 )
 depends=(gtk3 webkit2gtk-4.1 libappindicator-gtk3 openssl )
 makedepends=()
+checkdepends=()
+optdepends=()
 options=(\!strip )
 provides=(antigravity-tools )
 conflicts=(antigravity-tools )
+validpgpkeys=()
 
 source=(LICENSE )
 sha256sums=('6f0afc78b16f446941c6201dcc0a53e1d19dcb96b9fc2ccb497b1bf029aa3512')
