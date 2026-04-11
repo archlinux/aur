@@ -61,7 +61,7 @@ package() {
     install -m644 "${srcdir}/${pkgname}/README.md" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/README.md"
     install -m644 "${srcdir}/${pkgname}/VERSION" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/VERSION"
     install -m644 "${srcdir}/${pkgname}/CHANGELOG.md" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/CHANGELOG.md"
-    install -m666 "${srcdir}/${pkgname}/etc/coolercontrol/plugins/coolerdash/config.json" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/config.json"
+    install -m600 "${srcdir}/${pkgname}/etc/coolercontrol/plugins/coolerdash/config.json" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/config.json"
 
     install -dm755 "${pkgdir}/etc/coolercontrol/plugins/coolerdash/ui"
     install -m644 "${srcdir}/${pkgname}/etc/coolercontrol/plugins/coolerdash/ui/index.html" "${pkgdir}/etc/coolercontrol/plugins/coolerdash/ui/index.html"
