@@ -1,7 +1,7 @@
 pkgbase = nodejs-bindings
 	pkgdesc = Helper module for loading your native module's .node file
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/TooTallNate/node-bindings
 	arch = any
 	license = MIT

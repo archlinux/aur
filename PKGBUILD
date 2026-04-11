@@ -11,7 +11,7 @@ noextract=("${_pkgname}-${pkgver}.tgz")
 sha256sums=('d77781178c5bd89a91b1f6c5556acd511b1b5927eb13e2ad8189cac29eeb0907')
 arch=(any)
 pkgver=1.5.0
-pkgrel=1
+pkgrel=3
 source=(
 	"${_pkgname}-${pkgver}.tgz"::"https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"
 )
@@ -19,5 +19,3 @@ function package() {
 	npm i -g --prefix "${pkgdir}/usr" "${srcdir}/${_pkgname}-${pkgver}.tgz"
 	find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 }
-
-
