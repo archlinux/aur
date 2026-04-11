@@ -1,8 +1,8 @@
 # Maintainer: SpeedyNote Team <info@speedynote.org>
 
 pkgname=speedynote
-pkgver=1.3.5
-_tagver=1.3.5
+pkgver=1.4.0
+_tagver=1.4.0
 pkgrel=1
 pkgdesc="Fast note-taking app with PDF annotation, export, and multi-platform sync"
 arch=('x86_64' 'aarch64')
@@ -39,7 +39,7 @@ conflicts=('speedynote-bin' 'speedynote-git' 'speedynote-src')
 
 # Source from GitHub release
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('dd4cdb0989599f04620300ca4e924a39cb633c1d1a85393422e3f9bc89587df3')
+sha256sums=('4e923ec1c5be91ce99350de2ab7f64cddd96ea11a60277135dcac0a08b826d5b')
 
 build() {
     cd "SpeedyNote-${_tagver}"
