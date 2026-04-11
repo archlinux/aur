@@ -2,13 +2,13 @@
 
 pkgname=hpsahba-git
 pkgver=r41.0a57a52
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to enable/disable HBA mode on some HP Smart Array controllers"
 arch=('x86_64')
 url="https://github.com/im-0/hpsahba"
 license=('GPL-2.0')
-depends=(pandoc)
-makedepends=(git)
+depends=()
+makedepends=(git pandoc)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+${url}.git#branch=master")
