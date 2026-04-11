@@ -1,6 +1,6 @@
 # Maintainer: Ishidaw <willianscagol@gmail.com>
 pkgname=leshade-git
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="Official build for Leshade. An ReShade Manager for Linux"
 arch=('any')
