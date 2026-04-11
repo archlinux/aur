@@ -2,6 +2,8 @@
 
 This is a step-by-step walkthrough to get your Lem package live on AUR.
 
+**Total time: ~10 minutes**
+
 ## Phase 1: SSH Setup (5 minutes)
 
 ### Step 1.1: Generate SSH Key
@@ -61,33 +63,27 @@ git config user.email "your@email.com"
 
 ---
 
-## Phase 3: Create AUR Package (3 minutes)
+## Phase 3: Push to AUR (2 minutes)
 
-### Step 3.1: Create Package on AUR Website
+The AUR creates packages automatically on first git push. No web form needed.
 
-1. Visit https://aur.archlinux.org/packages/new
-2. Package name: `lem`
-3. Click "Create"
-
-Wait for confirmation page.
-
-### Step 3.2: Add AUR Remote to Your Git
+### Step 3.1: Add AUR Remote to Your Git
 
 ```bash
 cd /home/thomas/lem-aur-build
 git remote add aur ssh://aur@aur.archlinux.org/lem.git
 ```
 
-### Step 3.3: Push Your Package
+### Step 3.2: Push Your Package
 
 ```bash
 cd /home/thomas/lem-aur-build
 git push -u aur main:master
 ```
 
-**Important:** AUR uses `master` branch, not `main`.
+**Important:** AUR uses `master` branch, not `main`. Your package will be automatically created.
 
-### Step 3.4: Verify It Worked
+### Step 3.3: Verify It Worked
 
 Visit: https://aur.archlinux.org/packages/lem
 
@@ -101,6 +97,8 @@ You should see:
 ---
 
 ## Phase 4: Set Up Automation (Optional but Recommended)
+
+After your push succeeds and the package appears on AUR, set up automation:
 
 ### Option A: Systemd Timer (Recommended)
 
@@ -148,8 +146,12 @@ After Phase 3, verify everything works:
 - [ ] SSH key working: `ssh aur@aur.archlinux.org` says "welcome"
 - [ ] Git configured: `git config user.name` shows your name
 - [ ] AUR remote added: `git remote -v` shows `aur@aur.archlinux.org`
+- [ ] Git push succeeded (no errors)
 - [ ] Package created: https://aur.archlinux.org/packages/lem exists
 - [ ] Files visible: PKGBUILD and .SRCINFO on package page
+
+**If step 3.2 fails:**
+Use the web form backup: https://aur.archlinux.org/submit
 
 ---
 

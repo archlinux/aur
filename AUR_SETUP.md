@@ -40,32 +40,40 @@ You have two options depending on whether this is a new or existing package:
 
 ### Option A: New Package (First Time)
 
-1. Initialize the repository locally:
+1. Add the AUR remote to your local repository:
 ```bash
 cd /home/thomas/lem-aur-build
-git init
-git add PKGBUILD .SRCINFO
-git commit -m "Initial commit: Lem nightly AppImage package"
-```
-
-2. Create the package on AUR:
-   - Visit https://aur.archlinux.org/packages/new
-   - Enter package name: `lem`
-   - Click "Create"
-
-3. Add the AUR remote:
-```bash
 git remote add aur ssh://aur@aur.archlinux.org/lem.git
 ```
 
-4. Push to AUR:
+2. Push to AUR:
 ```bash
 git push -u aur main:master
 ```
 
-Note: AUR uses `master` branch, not `main`.
+Note: AUR uses `master` branch, not `main`. The package will be automatically created on first push.
 
-### Option B: Adopting Existing Abandoned Package
+**If push fails with "fatal: remote repository not found":**
+- Verify your SSH key is added to AUR account
+- Make sure you can connect: `ssh aur@aur.archlinux.org`
+- Try creating via web form as backup (see Option C below)
+
+### Option B: Web Form Request (If Git Push Fails)
+
+If the direct git push doesn't work, you can request package creation via the web form:
+
+1. Visit https://aur.archlinux.org/submit
+2. Fill out the form:
+   - Package name: `lem`
+   - Package category: Select appropriate category
+   - Click "Submit"
+3. Wait for confirmation that the package was created
+4. Then push your code:
+```bash
+git push -u aur main:master
+```
+
+### Option C: Adopting Existing Abandoned Package
 
 If a `lem` package already exists on AUR but is unmaintained:
 
