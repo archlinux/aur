@@ -1,0 +1,20 @@
+pkgbase = webclaw-bin
+	pkgdesc = Universal test runner with auto-detection for 11 languages
+	pkgver = 0.3.11
+	pkgrel = 1
+	url = https://github.com/0xMassi/webclaw
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	depends = glibc
+	depends = libgcc
+	provides = webclaw
+	provides = webclaw-mcp
+	conflicts = webclaw
+	options = !strip
+	source_x86_64 = webclaw-x86_64-0.3.11.tgz::https://github.com/0xMassi/webclaw/releases/download/v0.3.11/webclaw-v0.3.11-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 766360af408e909da599e5f64f274006c2d364e8d7748e121287761a6cbc83fd
+	source_aarch64 = webclaw-aarch64-0.3.11.tgz::https://github.com/0xMassi/webclaw/releases/download/v0.3.11/webclaw-v0.3.11-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4eb3fe6514d46288791f5bd46975dc5dfaf03d2dce6100b1c4e2bc82a6ad4233
+
+pkgname = webclaw-bin

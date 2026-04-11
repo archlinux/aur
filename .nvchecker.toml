@@ -1,0 +1,5 @@
+[webclaw-bin]
+source = "github"
+github = "0xMassi/webclaw"
+use_latest_release = true
+prefix = "v"
