@@ -1,6 +1,6 @@
 # Maintainer: Senqaii <batuh007@gmail.com>
 pkgname=netsplitter
-pkgver=0.1.0
+pkgver=0.1
 pkgrel=1
 pkgdesc="Advanced Linux Network Namespace Isolation & QoS Bufferbloat Automation Framework"
 arch=('any')
@@ -25,10 +25,10 @@ optdepends=(
 provides=('netsplitter')
 conflicts=('netsplitter-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/batuh007/-NetSplitter-/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9b1987f75b2928c08df55a2acc2f33bb57036f3e333c7f0cb05176b688711397')
+sha256sums=('51b7bd53b5cf1449f8a18f39c8965bdc48ffdd0287a21c6fdfe48613e356724b')
 
 package() {
-    cd "-NetSplitter--${pkgver}"
+    cd "./-NetSplitter--${pkgver}"
 
     # Install main application
     install -dm755 "$pkgdir/opt/netsplitter"
