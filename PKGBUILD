@@ -1,6 +1,6 @@
 # Maintainer: Parker Rowen <gitporker@gmail.com>
 pkgname=wl-clipboard-git
-pkgver=2.2.1
+pkgver=2.3
 pkgrel=1
 pkgdesc="Command-line copy/paste utilities for Wayland"
 arch=('i686' 'x86_64')
