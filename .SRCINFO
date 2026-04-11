@@ -1,5 +1,5 @@
 pkgbase = synfetch-git
-	pkgdesc = A fast and customizable system info tool with a synthwave theme
+	pkgdesc = A fast and customizable system info tool with a synthwave theme and live mode
 	pkgver = r1.abcdef
 	pkgrel = 1
 	url = https://github.com/SXSLVT/synfetch
@@ -11,7 +11,7 @@ pkgbase = synfetch-git
 	optdepends = pciutils: Better for accurate GPU detection
 	provides = synfetch
 	conflicts = synfetch
-	source = synfetch-git::git+https://github.com/SXSLVT/synfetch.git
+	source = synfetch::git+https://github.com/SXSLVT/synfetch.git
 	sha256sums = SKIP
 
 pkgname = synfetch-git
