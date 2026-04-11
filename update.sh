@@ -104,15 +104,24 @@ update_pkgbuild_version() {
     log_info "New version: $new_version"
     log_info "New SHA: $new_sha"
 
-    # Use awk to safely update the PKGBUILD
+    # Use awk to safely update the PKGBUILD to a temp file
+    local temp_pkgbuild=$(mktemp)
     awk -v ver="$new_version" -v sha="$new_sha" '
         /^pkgver=/ { print "pkgver=" ver; next }
         /^sha256sums=/ { print "sha256sums=('"'"'" sha "'"'"')"; next }
         /^pkgrel=/ { print "pkgrel=1"; next }
         { print }
-    ' "$SCRIPT_DIR/PKGBUILD" > "$SCRIPT_DIR/PKGBUILD.tmp"
+    ' "$SCRIPT_DIR/PKGBUILD" > "$temp_pkgbuild" 2>/dev/null
 
-    mv "$SCRIPT_DIR/PKGBUILD.tmp" "$SCRIPT_DIR/PKGBUILD"
+    # Verify the temp file was created and has content
+    if [ ! -s "$temp_pkgbuild" ]; then
+        log_error "Failed to update PKGBUILD"
+        rm -f "$temp_pkgbuild"
+        return 1
+    fi
+
+    # Replace the original with the updated version
+    mv "$temp_pkgbuild" "$SCRIPT_DIR/PKGBUILD"
 
     log_success "Updated to v$new_version with pkgrel=1"
     return 0  # Update was made
