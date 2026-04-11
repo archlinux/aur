@@ -1,8 +1,8 @@
 # Maintainer: Syner <ploscarusynxy@gmail.com>
 pkgname=synfetch-git
-pkgver=r999.0000000
+pkgver=r0
 pkgrel=1
-pkgdesc="A simple, debloated and blazingly fast system fetch written in pure bash with beautiful synthwave aesthetic"
+pkgdesc="A fast and highly customizable neofetch-like system information tool with a synthwave theme and live mode"
 arch=('any')
 url="https://github.com/SXSLVT/synfetch"
 license=('GPL3')

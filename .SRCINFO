@@ -1,6 +1,6 @@
 pkgbase = synfetch-git
-	pkgdesc = A simple, debloated and blazingly fast system fetch written in pure bash with beautiful synthwave aesthetic
-	pkgver = r999.0000000
+	pkgdesc = A fast and highly customizable neofetch-like system information tool with a synthwave theme and live mode
+	pkgver = r0
 	pkgrel = 1
 	url = https://github.com/SXSLVT/synfetch
 	arch = any
