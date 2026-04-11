@@ -1,5 +1,5 @@
 # Maintainer: Keyain <paolozz325@gmail.com>
-pkgname=ttf-share-tech-mono-regular
+pkgname=ttf-share-tech-mono
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A font inspired by the fallout games, found on reddit by user @Inevitable-Moose-952 and designed by Carrois Apostrophe."
