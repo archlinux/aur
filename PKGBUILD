@@ -2,7 +2,7 @@
 # Maintainer: k0kubun <takashikkbn@gmail.com>
 pkgname=xremap-gnome-bin
 pkgdesc='Dynamic key remapper for X11 and Wayland (Gnome Wayland Version)'
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 
 provides=('xremap')
@@ -14,10 +14,10 @@ source=("LICENSE")
 sha256sums=("60365594c733128ba50f05de00c4a6f07fed0a6e8bbd93817f39ded3980f7343")
 
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/k0kubun/xremap/releases/download/v$pkgver/xremap-linux-x86_64-gnome.zip")
-sha256sums_x86_64=('195c9f97b78843b681660f0e1e3d903bb3602cbad368ecfe9c9234f3493379ba')
+sha256sums_x86_64=('a2ebbc4f05e461eedb7f0bb8c832f94466f682025dabf772758f29882f705a96')
 
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/k0kubun/xremap/releases/download/v$pkgver/xremap-linux-aarch64-gnome.zip")
-sha256sums_aarch64=('45f8e7b6cd854448e991835371bca65af835dfaca3e52c2bddfdf1502ad64b54')
+sha256sums_aarch64=('4a917526db718433284cd08045eb14eb3c1b7da157e28d37ae047023acc77221')
 
 package() {
 	cd "$srcdir/"
@@ -28,5 +28,5 @@ package() {
 	install -Dm644 fish_completions "${pkgdir}/usr/share/fish/vendor_completions.d/xremap.fish"
 	install -Dm644 bash_completions "${pkgdir}/usr/share/bash-completion/completions/xremap"
 	install -Dm755 xremap "${pkgdir}/usr/bin/xremap"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/xremap-gnome-bin/LICENSE"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
