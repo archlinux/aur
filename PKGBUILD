@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-daemon
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Hardware fan control daemon for Linux (OpenFan, hwmon, GPU)"
 arch=('x86_64')
@@ -8,15 +8,16 @@ url="https://github.com/Plan-B-Development/control-ofc-daemon"
 license=('MIT')
 depends=('glibc' 'systemd-libs')
 makedepends=('rust' 'cargo')
-backup=('etc/control-ofc/daemon.toml')
+backup=('etc/control-ofc/daemon.toml'
+        'etc/control-ofc/profiles/quiet.json')
 install=control-ofc-daemon.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # Placeholder — recomputed post-tag-push. The release workflow
 # (.github/workflows/release-aur.yml) will fail until this matches the
 # GitHub tarball hash. Fix with a follow-up "fix: update PKGBUILD
-# checksum for v1.1.1" commit, same pattern as commit a1d2b7b.
-sha256sums=('738b8a0872a656112a43996395d5908c8827c416a115a45c911df64d0c38fdc8')
+# checksum for v1.1.2" commit, same pattern as commit a1d2b7b.
+sha256sums=('f18c9c5b2064d9b05e336c3f36b959d9ed729f762a0f71c0a6e8d9dac2cf6197')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -58,8 +59,19 @@ package() {
     # systemd creates via StateDirectory= in the unit file.
     install -dm755 "$pkgdir/etc/control-ofc/profiles"
 
-    # udev rules (template — user must fill in VID/PID for their device)
-    install -Dm644 packaging/99-control-ofc.rules "$pkgdir/usr/lib/udev/rules.d/99-control-ofc.rules"
+    # Example profile — safe to ship (empty members list, drives no fans).
+    # Gives first-run users a working schema reference. Covered by backup=()
+    # so pacman preserves user edits across upgrades (.pacnew pattern).
+    install -Dm644 packaging/profiles/quiet.json "$pkgdir/etc/control-ofc/profiles/quiet.json"
+
+    # Optional udev rules example (documentation only).
+    # The daemon auto-detects the OpenFan controller on /dev/ttyACM* and
+    # /dev/ttyUSB* at startup — no udev rule is required for normal operation.
+    # Ship the rule as a reference for users who want a stable
+    # /dev/control-ofc-controller symlink; they copy it into
+    # /etc/udev/rules.d/ and fill in their VID/PID.
+    install -Dm644 packaging/99-control-ofc.rules \
+        "$pkgdir/usr/share/doc/$pkgname/99-control-ofc.rules.example"
 
     # License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
