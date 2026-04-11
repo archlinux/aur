@@ -2,25 +2,24 @@
 
 _pkgname=draupnir
 pkgname="${_pkgname}"
-pkgver=2.9.0
-pkgrel=1
+pkgver=3.0.0
+pkgrel=2
 pkgdesc="A Matrix moderation bot"
 arch=('x86_64')
-options=(!debug !zipman !purge !lto)
+options=(!debug !zipman !purge lto)
 url="https://github.com/the-draupnir-project/Draupnir"
 license=('AFL-3.0' 'Apache-2.0' 'CC-BY-SA-4.0' 'CC0-1.0')
-makedepends=('git' 'go' 'gcc' 'yarn' 'python' 'nodejs-lts-jod' corepack)
-#depends=("python" "gcc" "nodejs" "node-gyp" "nodejs-matrix-bot-sdk" "nodejs-js-yaml" "nodejs-config" "nodejs-matrix-protection-suite" "nodejs-matrix-protection-suite-for-matrix-bot-sdk" "nodejs-sentry-node" "nodejs-matrix-basic-types" "nodejs-typescript-result" "nodejs-html-to-text" "nodejs-jsdom" "nodejs-typebox" "nodejs-interface-manager" "nodejs-better-sqlite3" "nodejs-body-parser" "nodejs-express" "nodejs-matrix-appservice-bridge" "nodejs-pg")
-depends=("python" "gcc" "nodejs-lts-jod" "node-gyp" "nodejs-bindings")
+makedepends=('git' 'gcc' 'nodejs-lts-krypton' corepack npm)
+depends=("nodejs-lts-krypton" "node-gyp" "nodejs-bindings")
 conflicts=("${_pkgname}")
 source=(
 	"${_pkgname}::git+https://github.com/the-draupnir-project/Draupnir.git#tag=v$(echo ${pkgver} | sed 's|_|-|g')"
 )
-sha256sums=('d3beb3dc2ecbaa59fa779919a67d12d2e6895b9acaeb03d7401fc1a19962e47d')
+sha256sums=('d5324dae4677c98747d457a0d84ed9be753a34f673516df57263f74ac371f8af')
 
 function prepare() {
 	cd "${_pkgname}"
-	yarn
+	npm ci
 }
 #function pkgver() {
 #	cd "${srcdir}/${_pkgname}"
@@ -29,23 +28,17 @@ function prepare() {
 
 function build() {
 	cd "${_pkgname}"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	yarn build
+	npm run build
 }
 
 function package() {
 	cd "${srcdir}/${_pkgname}"
 	install -d "${pkgdir}/usr/lib/"
-	cp -a "${srcdir}/${_pkgname}/lib" "${pkgdir}/usr/lib/${_pkgname}"
+	cp -a "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib/"
 	install -Dm600 "${srcdir}/${_pkgname}/config/default.yaml" "${pkgdir}/etc/draupnir/config.yaml"
-	cp -a "${srcdir}/${_pkgname}/node_modules" "${pkgdir}/usr/lib/draupnir"
 	echo '''#!/usr/bin/bash
 	cd /usr/lib/draupnir
-	node /usr/lib/draupnir/index.js --draupnir-config /etc/draupnir/config.yaml''' >start.sh
+	node --enable-source-maps /usr/lib/draupnir/apps/draupnir/dist/index.js --draupnir-config /etc/draupnir/config.yaml''' >start.sh
 	install -Dm755 start.sh "${pkgdir}/usr/bin/draupnir"
 }
 
