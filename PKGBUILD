@@ -1,7 +1,7 @@
 # Maintainer: coldbrxthe <rocattjust@gmail.com>
 pkgname=rs-pug-git
 pkgver=r.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Terminal YouTube music player with mpv, yt-dlp and Lua plugin support"
 arch=('x86_64')
 url="https://github.com/JustRoccat/rs-pug"
@@ -21,8 +21,11 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    cargo build --release
+    # Dodajemy flagi, które pomogą linkerowi znaleźć symbole Lua
+    export RUSTFLAGS="-C link-arg=-Wl,--allow-shlib-undefined"
+    cargo build --release --locked
 }
+
 
 package() {
     cd "$pkgname"
