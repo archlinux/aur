@@ -1,6 +1,6 @@
 pkgbase = greetd-regreet-git
 	pkgdesc = Clean and customizable greeter for greetd
-	pkgver = 0.2.0.r0.c75486b
+	pkgver = 0.3.0.r0.70d8715
 	pkgrel = 1
 	url = https://github.com/rharish101/ReGreet
 	install = greetd-regreet-git.install
@@ -17,6 +17,8 @@ pkgbase = greetd-regreet-git
 	depends = glibc
 	depends = gtk4
 	depends = pango
+	depends = dbus
+	depends = accountsservice
 	provides = greetd-greeter
 	conflicts = greetd-regreet
 	replaces = regreet-git
