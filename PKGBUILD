@@ -1,16 +1,19 @@
-# Maintainer: Syner ploscarusynxy@gmail.com
-
+# Maintainer: Syner <ploscarusynxy@gmail.com>
 pkgname=synfetch-git
-pkgver=r1.0.0
+pkgver=r999.0000000
 pkgrel=1
-pkgdesc="Universal blazingly fast system fetch script written in bash with ASCII art for many Linux distros and macOS"
+pkgdesc="A simple, debloated and blazingly fast system fetch written in pure bash with beautiful synthwave aesthetic"
 arch=('any')
 url="https://github.com/SXSLVT/synfetch"
-license=('MIT')
+license=('GPL3')
 depends=('bash')
-makedepends=('git')
+optdepends=(
+  'pciutils: for more accurate GPU detection'
+  'nvidia-utils: for better NVIDIA GPU usage monitoring'
+)
 provides=('synfetch')
 conflicts=('synfetch')
+
 source=("git+https://github.com/SXSLVT/synfetch.git")
 sha256sums=('SKIP')
 
@@ -21,5 +24,6 @@ pkgver() {
 
 package() {
   cd "${srcdir}/synfetch"
-  install -Dm755 synfetch "${pkgdir}/usr/bin/synfetch"
+  install -Dm755 synfetch "${pkgdir}/usr/local/bin/synfetch"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md" 2>/dev/null || true
 }

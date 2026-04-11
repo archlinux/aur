@@ -1,12 +1,13 @@
 pkgbase = synfetch-git
-	pkgdesc = Universal blazingly fast system fetch script written in bash with ASCII art for many Linux distros and macOS
-	pkgver = r1.0.0
+	pkgdesc = A simple, debloated and blazingly fast system fetch written in pure bash with beautiful synthwave aesthetic
+	pkgver = r999.0000000
 	pkgrel = 1
 	url = https://github.com/SXSLVT/synfetch
 	arch = any
-	license = MIT
-	makedepends = git
+	license = GPL3
 	depends = bash
+	optdepends = pciutils: for more accurate GPU detection
+	optdepends = nvidia-utils: for better NVIDIA GPU usage monitoring
 	provides = synfetch
 	conflicts = synfetch
 	source = git+https://github.com/SXSLVT/synfetch.git
