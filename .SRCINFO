@@ -1,0 +1,26 @@
+pkgbase = netsplitter-git
+	pkgdesc = Advanced Linux Network Namespace Isolation & QoS Bufferbloat Automation Framework
+	pkgver = 0.1.0.r0.g820ff9b
+	pkgrel = 1
+	url = https://github.com/batuh007/-NetSplitter-
+	arch = any
+	license = custom:Proprietary
+	depends = python
+	depends = python-pyqt6
+	depends = qt6-svg
+	depends = iproute2
+	depends = iptables
+	depends = dhcpcd
+	depends = ethtool
+	depends = polkit
+	optdepends = mtr: Advanced traceroute hop analysis
+	optdepends = iw: WiFi power save control
+	optdepends = cpupower: CPU governor management
+	optdepends = vnstat: Network traffic statistics
+	optdepends = curl: Network testing
+	provides = netsplitter
+	conflicts = netsplitter
+	source = netsplitter::git+https://github.com/batuh007/-NetSplitter-.git
+	sha256sums = SKIP
+
+pkgname = netsplitter-git
