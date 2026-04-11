@@ -3,9 +3,9 @@
 
 pkgname=argc
 pkgver=1.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An elegant command-line argument parser"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/sigoden/argc"
 license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')

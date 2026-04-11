@@ -1,9 +1,10 @@
 pkgbase = argc
 	pkgdesc = An elegant command-line argument parser
 	pkgver = 1.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sigoden/argc
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	license = Apache-2.0
 	makedepends = cargo
