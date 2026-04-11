@@ -75,19 +75,18 @@ update_pkgbuild_version() {
     local new_version="${version_sha%|*}"
     local new_sha="${version_sha#*|}"
 
-    log_info "Checking if version has changed..."
+    log_info "Checking if SHA has changed..."
 
-    # Get current version from PKGBUILD
-    local current_version=$(grep "^pkgver=" "$SCRIPT_DIR/PKGBUILD" | cut -d= -f2)
+    # Get current SHA from PKGBUILD
+    local current_sha=$(grep "^sha256sums=" "$SCRIPT_DIR/PKGBUILD" | grep -oP "(?<=\(').*(?='\))" | head -1)
 
-    if [ "$current_version" = "$new_version" ]; then
-        log_info "Version unchanged: $new_version"
+    if [ "$current_sha" = "$new_sha" ]; then
+        log_info "SHA unchanged: $new_sha"
         return 1  # No update needed
     fi
 
-    log_info "New version available!"
-    log_info "Old version: $current_version"
-    log_info "New version: $new_version"
+    log_info "New nightly build available!"
+    log_info "Old SHA: $current_sha"
     log_info "New SHA: $new_sha"
 
     # Use awk to safely update the PKGBUILD to a temp file
@@ -109,7 +108,7 @@ update_pkgbuild_version() {
     # Replace the original with the updated version
     mv "$temp_pkgbuild" "$SCRIPT_DIR/PKGBUILD"
 
-    log_success "Updated to v$new_version with pkgrel=1"
+    log_success "Updated nightly build with new SHA"
     return 0  # Update was made
 }
 
