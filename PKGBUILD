@@ -30,10 +30,16 @@ package() {
     cd "waybar-ycal"
 
     # Scripts
-    install -Dm755 popup.py  "$pkgdir/usr/share/waybar-ycal/popup.py"
-    install -Dm755 bar.py    "$pkgdir/usr/share/waybar-ycal/bar.py"
-    install -Dm755 sync.py   "$pkgdir/usr/share/waybar-ycal/sync.py"
-    install -Dm755 toggle.sh "$pkgdir/usr/share/waybar-ycal/toggle.sh"
+    install -Dm755 popup.py "$pkgdir/usr/share/waybar-ycal/popup.py"
+    install -Dm755 bar.py   "$pkgdir/usr/share/waybar-ycal/bar.py"
+    install -Dm755 sync.py  "$pkgdir/usr/share/waybar-ycal/sync.py"
+
+    # Fix toggle.sh fallback path for system install
+    sed 's|$HOME/.config/waybar-ycal/popup.py|/usr/share/waybar-ycal/popup.py|g' \
+        toggle.sh > "$pkgdir/usr/share/waybar-ycal/toggle.sh"
+    chmod 755 "$pkgdir/usr/share/waybar-ycal/toggle.sh"
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Systemd user service pointing to installed path
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user/waybar-ycal.service" <<EOF
