@@ -5,6 +5,7 @@ set -e
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DOCKER_IMAGE="lem-aur-builder"
+DRY_RUN=false
 
 # Colors for output
 RED='\033[0;31m'
@@ -257,8 +258,43 @@ push_to_aur() {
     return 0
 }
 
+# Print usage
+usage() {
+    cat << EOF
+Usage: $0 [OPTIONS]
+
+Options:
+  --dry-run    Test the update without committing or pushing to AUR
+  --help       Show this help message
+
+Examples:
+  $0              # Full update with push to AUR
+  $0 --dry-run    # Test only (no commit/push)
+EOF
+}
+
 # Main workflow
 main() {
+    # Parse arguments
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            --dry-run)
+                DRY_RUN=true
+                log_info "DRY RUN MODE - no changes will be pushed"
+                shift
+                ;;
+            --help)
+                usage
+                exit 0
+                ;;
+            *)
+                log_error "Unknown option: $1"
+                usage
+                exit 1
+                ;;
+        esac
+    done
+
     log_info "Starting Lem AUR package update workflow..."
 
     check_tools
@@ -293,6 +329,13 @@ main() {
     fi
 
     # Commit and push
+    if [ "$DRY_RUN" = true ]; then
+        log_warn "DRY RUN: Skipping commit and push"
+        log_info "Changes would be committed and pushed to AUR"
+        log_success "Dry run completed successfully!"
+        exit 0
+    fi
+
     if ! commit_changes; then
         log_warn "No changes to commit"
         exit 0
