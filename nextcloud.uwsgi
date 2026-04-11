@@ -1,0 +1,83 @@
+[uwsgi]
+procname-master = %n
+# change to php to use latest PHP
+plugins = php_legacy
+master = true
+socket = /run/%n/%n.sock
+# uncomment for a stats socket, that can be used with uwsgitop
+# stats = /run/%n/%n-stats.sock
+uid = nextcloud
+gid = nextcloud
+processes = 10
+cheaper = 4
+cheaper-step = 1
+idle = 600
+die-on-idle = true
+
+; reload whenever this config file changes
+touch-reload = %p
+
+cloud_data_dir = /var/lib/nextcloud/data
+cloud_writable_apps_dir = /var/lib/nextcloud/apps
+php_modules_dir = /usr/lib/php-legacy/modules
+chdir = %(cloud_data_dir)
+
+php-allowed-ext = .php
+php-docroot = /usr/share/webapps/%n
+php-index = index.php
+php-set = date.timezone=Europe/Berlin
+php-set = open_basedir=%(cloud_data_dir):%(cloud_writable_apps_dir):/var/lib/%n:/tmp/:/usr/share/webapps/%n:/etc/webapps/%n:/dev/urandom:%(php_modules_dir):/run/redis/redis.sock:/var/log/%n/%n.log:/proc/meminfo
+php-set = session.save_path=/tmp
+php-set = session.gc_maxlifetime  21600
+php-set = session.gc_divisor  500
+php-set = session.gc_probability  1
+php-set = post_max_size=1000M
+php-set = upload_max_filesize=1000M
+php-set = always_populate_raw_post_data=-1
+php-set = max_input_time=120
+php-set = max_execution_time=60
+php-set = memory_limit=768M
+php-set = zend_extension=opcache
+php-set = opcache.enable=1
+php-set = opcache.enable_cli=1
+php-set = opcache.interned_strings_buffer=8
+php-set = opcache.max_accelerated_files=10000
+php-set = opcache.memory_consumption=128
+php-set = opcache.save_comments=1
+php-set = opcache.revalidate_freq=1
+
+# uncomment if php-apcu is installed and used
+# php-set = extension=apcu
+php-set = extension=bcmath
+php-set = extension=bz2
+php-set = extension=curl
+php-set = extension=exif
+php-set = extension=ftp
+php-set = extension=gd
+php-set = extension=gmp
+# uncomment if php-imagick is installed and used
+# php-set = extension=imagick
+php-set = extension=intl
+php-set = extension=iconv
+php-set = extension=ldap
+# uncomment if php-memcached is installed and used
+# php-set = extension=memcached
+php-set = extension=pdo_mysql
+# uncomment if php-pgsql is installed and used
+# php-set = extension=pdo_pgsql
+php-set = extension=pdo_sqlite
+# uncomment if php-igbinary is installed and used
+# php-set = extension=igbinary
+# uncomment if php-redis is installed and used (requires php-igbinary)
+# php-set = extension=redis
+php-set = extension=sockets
+php-set = extension=sysvsem
+# uncomment if php-xsl is installed and used
+# php-set = extension=xsl
+php-set = extension=zip
+
+# change the URL to your own address and uncomment to run a webcron job every five minutes
+# cron = -5 -1 -1 -1 -1 curl --silent https://change.me.tld/cron.php 1>/dev/null
+
+# uncomment to run a cron job every five minutes
+# cron = -5 -1 -1 -1 -1 php-legacy -f /usr/share/webapps/%n/cron.php

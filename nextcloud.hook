@@ -10,4 +10,4 @@ Target = nextcloud-app-*
 [Action]
 Description = Updating Nextcloud installation
 When = PostTransaction
-Exec = /usr/bin/runuser -u http -- /usr/bin/php /usr/share/webapps/nextcloud/occ upgrade
+Exec = /usr/bin/occ upgrade

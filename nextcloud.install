@@ -1,0 +1,16 @@
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  if (( "$(vercmp "$2" '21.0.0-6')" < 0 )); then
+    printf "WARNING: Major changes introduced to package!\n"
+    printf "         The application is now run as its own user - nextcloud.\n"
+    printf "         Default directories for runtime, state and log files are provided.\n"
+    printf "         A convenience wrapper around occ is provided in /usr/bin/occ.\n"
+    # directories below /usr/share/webapps/nextcloud are still group-owned by the
+    # nextcloud user due to nextcloud < 21.0.0
+    find /usr/share/webapps/nextcloud -type d -exec chgrp root {} \;
+  fi
+  if (( "$(vercmp "$2" '22.0.0-1')" < 0 )); then
+    printf "NOTE: The application's .htaccess file is now located in /etc/webapps/nextcloud/.\n"
+  fi
+}

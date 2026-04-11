@@ -1,0 +1,7 @@
+[Unit]
+Description=Nextcloud; run cron.php
+
+[Service]
+KillMode=mixed
+User=nextcloud
+ExecStart=/usr/bin/php-legacy -f /usr/share/webapps/nextcloud/cron.php
