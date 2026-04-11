@@ -1,7 +1,7 @@
 pkgbase = loot
 	pkgdesc = A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games
 	pkgver = 0.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://loot.github.io
 	arch = x86_64
 	license = GPL-3.0-only
@@ -24,8 +24,6 @@ pkgbase = loot
 	depends = zlib
 	optdepends = vulkan-headers: Optional build dependency
 	source = loot-0.29.0.tar.gz::https://github.com/loot/loot/archive/0.29.0.tar.gz
-	source = LOOT.desktop
 	sha256sums = 766934e8041f53c62279a48e7ce4c88f41bc39765502b22be3438811c36e6054
-	sha256sums = 3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb
 
 pkgname = loot

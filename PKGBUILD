@@ -16,7 +16,7 @@
 pkgname=loot
 # https://github.com/loot/loot/releases
 pkgver=0.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
 url="https://loot.github.io"
@@ -47,12 +47,8 @@ makedepends=(
 optdepends=(
 	'vulkan-headers: Optional build dependency'
 )
-source=(
-	"${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
-	'LOOT.desktop'
-)
-sha256sums=('766934e8041f53c62279a48e7ce4c88f41bc39765502b22be3438811c36e6054'
-            '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('766934e8041f53c62279a48e7ce4c88f41bc39765502b22be3438811c36e6054')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
@@ -93,7 +89,7 @@ package() {
 	ln -s "/opt/${pkgname}/LOOT" "${pkgdir}/usr/bin"
 
 	# Install the icon
-	install -Dm644 "${_builddir}/../resources/icons/loot.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/loot.svg"
+	install -Dm644 "${_builddir}/../resources/icons/loot.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.loot.loot.svg"
 	# Install desktop entry
-	install -Dm644 "${srcdir}/LOOT.desktop" "${pkgdir}/usr/share/applications/LOOT.desktop"
+	install -Dm644 "${_builddir}/../resources/linux/io.github.loot.loot.desktop" "${pkgdir}/usr/share/applications/io.github.loot.loot.desktop"
 }
