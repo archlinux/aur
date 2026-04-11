@@ -1,0 +1,17 @@
+pkgbase = niri-scratchpad-rs-git
+	pkgdesc = Dynamic & Static Scratchpad Management for Niri
+	pkgver = v2.1
+	pkgrel = 1
+	url = https://github.com/argosnothing/niri-scratchpad-rs
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	provides = niri-scratchpad
+	conflicts = niri-scratchpad
+	conflicts = niri-scratchpad-rs
+	source = git+https://github.com/argosnothing/niri-scratchpad-rs
+	sha256sums = SKIP
+
+pkgname = niri-scratchpad-rs-git
