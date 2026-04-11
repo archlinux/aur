@@ -1,7 +1,7 @@
 # Maintainer: Joe <joe@kitsunehosting.net>
 
 pkgname=rpi-image-gen
-pkgver=2.2.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Tool to generate highly customised software images for Raspberry Pi devices"
 arch=('x86_64' 'aarch64')
@@ -49,9 +49,9 @@ source=(
   "registry.defs::https://raw.githubusercontent.com/raspberrypi/rpi-image-gen/master/registry.defs"
 )
 sha256sums=(
-  'b027516515e4e3f5da11da2f008e9f0f2df416ddf3054b62d447c495497525f5'
+  '31fcfd83730ed6ef7cdd9c4ba37b8a1e2971629970631d6f0be73d5d561f11a9'
   'a1f05ec1f2553e229466d08a719ee5bc5523d9a78580dec646bd9ffa475aa416'
-  'ef604a194ad49d848966e3b6127d1f6b23a3be20c222f4f5758da497715fb64b'
+  '9542b75c64541aae24f2b11810f7cdebeaa62194c95e0b592ff859cf0fd738d6'
 )
 
 prepare() {
