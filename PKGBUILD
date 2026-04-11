@@ -28,7 +28,7 @@ makedepends=(
   'pkg-config'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gabutakut/gabutdm/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('cf3d588fdd414bd9dfb9c4f31625563e550269b37d7c203e09535b306928eb2d')
+sha256sums=('da7f654c029f7fc16d185aba9d0db83254e9cae2eac717920bbb6ab5c2b4a45d')
 
 build() {
   cd "$pkgname-$pkgver"
