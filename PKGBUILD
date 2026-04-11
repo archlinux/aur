@@ -1,29 +1,33 @@
-# Maintainer: Syner <ploscarusynxy@gmail.com>
+# Maintainer: Syner <your-email-here>
 pkgname=synfetch-git
-pkgver=r0
+pkgver=r1.abcdef
 pkgrel=1
-pkgdesc="A fast and highly customizable neofetch-like system information tool with a synthwave theme and live mode"
+pkgdesc="A fast and customizable system info tool with a synthwave theme"
 arch=('any')
 url="https://github.com/SXSLVT/synfetch"
 license=('GPL3')
 depends=('bash')
+makedepends=('git')
 optdepends=(
-  'pciutils: for more accurate GPU detection'
-  'nvidia-utils: for better NVIDIA GPU usage monitoring'
+  'nvidia-utils: Better NVIDIA GPU usage monitoring'
+  'pciutils: Better for accurate GPU detection'
 )
 provides=('synfetch')
 conflicts=('synfetch')
-
-source=("git+https://github.com/SXSLVT/synfetch.git")
+source=("${pkgname}::git+https://github.com/SXSLVT/synfetch.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/synfetch"
+  cd "${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/synfetch"
-  install -Dm755 synfetch "${pkgdir}/usr/local/bin/synfetch"
-  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md" 2>/dev/null || true
+  cd "${pkgname}"
+  
+  # Install the main script to /usr/bin (NOT /usr/local/bin)
+  install -Dm755 synfetch "${pkgdir}/usr/bin/synfetch"
+  
+  # Install license
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
