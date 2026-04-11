@@ -2,17 +2,17 @@
 
 pkgname=jwtd
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal TUI for decoding JWT "
 arch=('x86_64')
-url="https://github.com/javiorfo/jwtd"
+url="https://codeberg.org/caskstrength/jwtd"
 license=('MIT')
 depends=('ncurses' 'openssl' 'undr')
 makedepends=('git' 'gcc')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha512sums=('5ebc26f9ec24579906bc2821e8c372fa2f7d99a5e85b819f52a48a1b27b99ed5b01d78ce811910a3130b9d929e1889ac31198c4544d453d41865eaaf27da4860')
+sha512sums=('6b28fef3378cc2a98d0564b86552955c139b8606e75f0303e7a6a6a19869524bdc34a3e34cd464c17eae1aa3d9c5fc213d19fd013dcebb8eb2a150d5f3371327')
 
 build() {
   cd "$pkgname"
