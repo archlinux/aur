@@ -1,0 +1,43 @@
+pkgbase = photoprism-tensorflow-bin
+	pkgdesc = AI-Powered Photos App for the Decentralized Web (tensorflow libraries)
+	pkgver = 2.18.0
+	pkgrel = 1
+	url = https://github.com/photoprism/photoprism
+	arch = x86_64
+	license = Apache-2.0
+	provides = photoprism-tensorflow
+	noextract = libtensorflow-amd64-none-2.18.0.tar.gz
+	noextract = libtensorflow-amd64-avx512-2.18.0.tar.gz
+	noextract = libtensorflow-amd64-vnni-2.18.0.tar.gz
+	noextract = libtensorflow-amd64-avx2-2.18.0.tar.gz
+	noextract = libtensorflow-amd64-avx-2.18.0.tar.gz
+	noextract = libtensorflow-amd64-ssse3-2.18.0.tar.gz
+	noextract = libtensorflow-amd64-gpu-2.18.0.tar.gz
+	source = libtensorflow-amd64-none-2.18.0.tar.gz::https://dl.photoprism.app/tensorflow/amd64/libtensorflow-amd64-2.18.0.tar.gz
+	source = https://dl.photoprism.app/tensorflow/amd64/libtensorflow-amd64-avx512-2.18.0.tar.gz
+	source = https://dl.photoprism.app/tensorflow/amd64/libtensorflow-amd64-vnni-2.18.0.tar.gz
+	source = https://dl.photoprism.app/tensorflow/amd64/libtensorflow-amd64-avx2-2.18.0.tar.gz
+	source = https://dl.photoprism.app/tensorflow/amd64/libtensorflow-amd64-avx-2.18.0.tar.gz
+	source = https://dl.photoprism.app/tensorflow/amd64/libtensorflow-amd64-ssse3-2.18.0.tar.gz
+	source = https://dl.photoprism.app/tensorflow/amd64/libtensorflow-amd64-gpu-2.18.0.tar.gz
+	sha256sums = b8ed0768b249c410d44a3b22dc9275ca6a03bd849d915098d1cb126438003bf1
+	sha256sums = 84564f451d6404f85f343a7894082e3d5e749126e1f3493614233862114f9344
+	sha256sums = 2b18484d856fef4d986370758dccb6ed3585f0d9be42765d6c031d471278f4f0
+	sha256sums = 91eff1195e4932e2d6731f6c0de77431d87d5395030194942790d92087d7b119
+	sha256sums = 213014d87a1fea4bbff0021fcb8c0462c32915afac4e05de44cb65dbfa990a96
+	sha256sums = 12bd624bbc0833e2c9478aa2fefa29067d119c0c27b90d328fb94fcf00e48a80
+	sha256sums = 6ca25aae03548cf76f6f68f00bdf53ec39710f08cee23bf6419b9e6e27feca5c
+
+pkgname = photoprism-tensorflow-bin
+
+pkgname = photoprism-tensorflow-avx512-bin
+
+pkgname = photoprism-tensorflow-vnni-bin
+
+pkgname = photoprism-tensorflow-avx2-bin
+
+pkgname = photoprism-tensorflow-avx-bin
+
+pkgname = photoprism-tensorflow-ssse3-bin
+
+pkgname = photoprism-tensorflow-cuda-bin
