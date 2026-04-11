@@ -1,0 +1,5 @@
+[gobump-bin]
+source = "github"
+github = "x-motemen/gobump"
+use_latest_release = true
+prefix = "v"

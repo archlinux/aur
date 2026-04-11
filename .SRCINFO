@@ -1,0 +1,18 @@
+pkgbase = gobump-bin
+	pkgdesc = Bumps up Go program version
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/x-motemen/gobump
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = go
+	provides = gobump
+	conflicts = gobump
+	source_x86_64 = https://github.com/x-motemen/gobump/releases/download/v0.3.0/gobump_v0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = bbf104fb83d9dc53b1a1c2a7e57f1b425d889dd0d198697537e363e4feca2222
+	source_aarch64 = https://github.com/x-motemen/gobump/releases/download/v0.3.0/gobump_v0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = c2aa36213db878ef0c4c2cdcb30913379523cb00bc056398994a348b6b998fb8
+
+pkgname = gobump-bin
