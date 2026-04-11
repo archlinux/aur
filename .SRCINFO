@@ -23,6 +23,6 @@ pkgbase = gabutdm-master
 	depends = ffmpeg
 	depends = aria2
 	source = gabutdm-master-2.8.8.tar.gz::https://github.com/gabutakut/gabutdm/archive/refs/tags/2.8.8.tar.gz
-	sha256sums = 756feec598bce1585d9462ca6b91d3550acaa0a7021095b38c6037eecfa7234d
+	sha256sums = 9b7e99eb611148aaa8f633f2466c441dfe1b8d50e777e453829a6140b92da047
 
 pkgname = gabutdm-master
