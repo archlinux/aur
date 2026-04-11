@@ -2,7 +2,7 @@
 
 pkgname=ansible-builder
 pkgver=3.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An Ansible execution environment builder"
 arch=('any')
 url="https://github.com/ansible/ansible-builder"
@@ -20,22 +20,23 @@ makedepends=(
     'python-setuptools'
     'python-setuptools-scm'
     'python-wheel'
+    'git'
 )
 optdepends=(
     'ansible: check official ansible collections'
     'docker: To use docker as a container runtime'
     'podman: To use podman as a container runtime'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('e0246b44815cf9429111320276098626719a86ed2873fdd23bf573952e7c3c10ed88d8d3b1db20dfaa328e7d5e6b72cc0235198308c7c6a0ff3e6cc1f8429784')
+source=("$pkgname::git+$url.git#tag=$pkgver")
+b2sums=('d34372ae84688db8ce5788de269212be96fe531b66053c8c812b70519a928ef8b0004beff0a56264660c7575ce3645d7b4bc6d2a40a7bacff6aaf1629b143f4f')
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}"
     export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
     python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
