@@ -1,9 +1,5 @@
-- Make connection filter apply after typing to provide a better user experience
-- Fix yubikey and pkcs#11 integration being broken with wrong environment variable setup
-- Improve hcloud docs and clarify sync behaviour for config
-- Fix tailnet integration not properly switching between tailnets with the same account
-- Fix kubectl check failing when adding a new cluster even though it was installed
-- Fix freeze when connecting to remote Windows systems when the PTB had been used for connecting before
-- Fix exception when copying empty file browser selection
-- Fix exception when opening terminal in file browser overview
-- Fix various translations
+- Fix multi identities not correctly retaining non-synced identities when edited on another system
+- Multi identities now show and preserve the order of inaccessible identities as well
+- Fix powershell command failure detection being broken in some places, leading to various issues in powershell environments
+- Fix NullPointer when executing automated browser actions
+- Fix rare storage race condition
