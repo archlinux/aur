@@ -1,0 +1,21 @@
+pkgbase = ws63flash-git
+	pkgdesc = HiSilicon WS63 chip flashing tool
+	pkgver = v0.3.1.r0.ge1d359e
+	pkgrel = 1
+	url = https://github.com/goodspeed34/ws63flash
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	makedepends = make
+	makedepends = musl
+	depends = glibc
+	depends = gcc-libs
+	source = git+https://github.com/goodspeed34/ws63flash.git
+	sha256sums = SKIP
+
+pkgname = ws63flash-git
