@@ -1,4 +1,5 @@
-# Maintainer: tarball <bootctl@gmail.com>
+# Maintainer: none
+# Contributor: tarball <bootctl@gmail.com>
 # Contributor: Matt Harrison <matt@harrison.us.com>
 # Contributor: Dwayne Bent <dbb@dbb.io>
 
