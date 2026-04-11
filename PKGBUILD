@@ -5,7 +5,7 @@
 
 pkgname=jpilot
 pkgver=2.0.3
-pkgrel=4
+pkgrel=5
 pkgGitHubCommit=870eef8
 pkgdesc="A desktop organizer application for the Palm Pilot"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -20,8 +20,9 @@ build() {
 	cd "${srcdir}"/juddmon-$pkgname-$pkgGitHubCommit
 
 	./autogen.sh --prefix=/usr --disable-pl-test --disable-gtktest
-	#sed 's/return Contact_add_blob(c, blob);/return Contact_add_blob(c, (void*)blob);/' jp-contact.c > /tmp/jp-contact.c
-	sed 's/#include "jp-pi-contact.h"/\/*#include "jp-pi-contact.h"*\//' jp-contact.c > /tmp/jp-contact.c
+	# sed command provided by Cylgalad
+	sed -e 's/return Contact_add_blob(c, blob);/return Contact_add_blob(c, (void*)blob);/' \
+	    -e 's/^#include "jp-pi-contact.h"/\/\/ #include "jp-pi-contact.h"/' jp-contact.c > /tmp/jp-contact.c
 	mv /tmp/jp-contact.c .
 	make
 }

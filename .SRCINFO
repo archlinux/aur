@@ -1,7 +1,7 @@
 pkgbase = jpilot
 	pkgdesc = A desktop organizer application for the Palm Pilot
 	pkgver = 2.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/juddmon/jpilot/
 	arch = i686
 	arch = x86_64
