@@ -2,7 +2,7 @@
 # Contributor: Sergey A <murlakatamenka@disroot.org>
 pkgname=falcond
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Linux gaming performance daemon"
 arch=('x86_64')
 url="https://git.pika-os.com/general-packages/falcond"
@@ -14,7 +14,7 @@ depends=(
   'sudo'
 )
 makedepends=('zig')
-optdepends=('scx-scheds: SCX Scheduler Integration')
+optdepends=('scx-tools: SCX Scheduler Integration')
 conflicts=('gamemode')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
