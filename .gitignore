@@ -3,3 +3,4 @@
 *.tar.gz
 *.pkg.tar.*
 *.zip
+*.onnx
