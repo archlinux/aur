@@ -1,4 +1,5 @@
 # Maintainer: Berke Oruc <berke@oruc.dev>
+# Contributor: Berke Oruc <berke@oruc.dev>
 
 pkgname=oplire
 pkgver=0.1.0
@@ -14,7 +15,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "$pkgname-$pkgver"
-    cargo build --release
+    cargo build --release --locked
 }
 
 package() {
