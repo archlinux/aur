@@ -1,7 +1,8 @@
 # Maintainer: yhtez <yhtez@protonmail.com>
 pkgname=olympus
-pkgver=25.12.05.01
-_commit=2959f60fc33a0bd5c3a6805f439bf69c02b3bbfe
+pkgver=26.03.21.01
+_buildid=5524
+_commit=cd3c4695cf4be1f1aa59211fcc183f603e6c6343
 pkgrel=1
 pkgdesc='Everest installer / mod manager for Celeste'
 arch=('x86_64')
@@ -16,7 +17,7 @@ source=("git+https://github.com/EverestAPI/Olympus.git#commit=$_commit"
         "git+https://github.com/LPGhatguy/luajit-request.git"
         "git+https://github.com/maddie480/lua-subprocess.git#commit=786303cd172bf8eb8f88c5998603875f3c33974c"
         "git+https://github.com/Vexatos/nativefiledialog.git#commit=bea4560b9269bdc142fef946ccd8682450748958")
-sha256sums=('35d66c13a4c83e02bf8ba11ce80b36fc38a6a4547f8491d8f0dc6c1c824589ed'
+sha256sums=('561aad0061ebf3e610af9bea2d09e20d03534d8ddd18c193b69751a597e169a8'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -32,14 +33,14 @@ prepare() {
     git config submodule.src/luajit-request.url "$srcdir/luajit-request"
     git -c protocol.file.allow=always submodule update
 
-    printf "%s" "$pkgver" > src/version.txt
+    printf "%s-arch-%s-%.5s" "$pkgver" "$_buildid" "$_commit" > src/version.txt
 }
 
 build() {
     cd "$srcdir/Olympus"
 
-    dotnet build --configuration Release sharp/Olympus.Sharp.sln
-    dotnet publish --configuration Release sharp/Olympus.Sharp.sln --output sharp/publish
+    dotnet build --configuration Release sharp/Olympus.Sharp.csproj
+    dotnet publish --configuration Release sharp/Olympus.Sharp.csproj -p:PublishTrimmed=false --output sharp/publish
 
     cd "$srcdir/lua-subprocess"; luarocks make --lua-version=5.1 --tree="$srcdir/Olympus/luarocks" --deps-mode=none --no-manifest subprocess-scm-1.rockspec
     cd "$srcdir/nativefiledialog"; luarocks make --lua-version=5.1 --tree="$srcdir/Olympus/luarocks" --deps-mode=none --no-manifest lua/nfd-scm-1.rockspec \
