@@ -3,12 +3,13 @@
 # Contributor: ccat3z <c0ldcat3z@gmail.com>
 # Contributor: heavysink <winstonwu91 at gmail>
 
-softname=miktex
-pkgname=$softname-git
-conflicts=(miktex)
-pkgver=26.2
-pkgrel=1
-pkgdesc="a distribution of the TeX/LaTeX typesetting system"
+_pkgname=miktex
+
+pkgname=$_pkgname-git
+conflicts=("${_pkgname}")
+pkgver=26.2.2.g245424e08
+pkgrel=2
+pkgdesc="A distribution of the TeX/LaTeX typesetting system."
 arch=('x86_64')
 url="https://miktex.org"
 license=('custom:MiKTeX License')
@@ -18,12 +19,21 @@ depends=('apr' 'boost-libs' 'apr-util' 'bzip2' 'cairo' 'expat' 'fontconfig' 'fre
          'poppler' 'popt' 'potrace' 'uriparser' 'hicolor-icon-theme' 'zziplib' 'poppler-qt6'
          'qt6-declarative' 'qt6-5compat' 'mpfi')
 makedepends=('cmake' 'coreutils' 'fop' 'sed' 'libxslt' 'qt6-tools' 'boost')
-source=("https://github.com/MiKTeX/miktex/archive/${pkgver}.tar.gz")
-md5sums=('7639d606db2387d7099185a992532516')
+
+_url="https://github.com/MiKTeX/${_pkgname}"
+_pkgsrc="${_pkgname}"
+source=("${_pkgsrc}::git+${_url}.git")
+md5sums=('SKIP')
+
 options=('!buildflags')
 
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  git describe | sed 's/-/./g'
+}
+
 prepare() {
-    cd "$srcdir/$softname-$pkgver"
+    cd "$srcdir/$_pkgname"
     find . -name "*.h" -exec sed -i 's|log4cxx/rollingfileappender.h|log4cxx/rolling/rollingfileappender.h|g' {} +
     find . -name "*.cpp" -exec sed -i 's|log4cxx/rollingfileappender.h|log4cxx/rolling/rollingfileappender.h|g' {} +
     cp cmake/modules/FindPOPPLER_QT5.cmake cmake/modules/FindPOPPLER_QT6.cmake
@@ -33,7 +43,7 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$softname-$pkgver"
+    cd "$srcdir/$_pkgname"
     [ -d build ] || mkdir build
     cd build
     cmake   -DCMAKE_BUILD_TYPE='None' -DCMAKE_INSTALL_PREFIX=/opt/miktex \
@@ -45,16 +55,16 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$softname-$pkgver/build"
+    cd "$srcdir/$_pkgname/build"
     make DESTDIR="$pkgdir/" install
  
-    cd "$srcdir/$softname-$pkgver"
-    install -vDm644 "README.md"    "${pkgdir}/usr/share/doc/${softname}/README.md"
-    install -vDm644 "HACKING.md"   "${pkgdir}/usr/share/doc/${softname}/HACKING.md"
-    install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${softname}/CHANGELOG.md"
-    install -vDm644 "COPYING.md"   "${pkgdir}/usr/share/licenses/${softname}/COPYING.md"
+    cd "$srcdir/$_pkgname"
+    install -vDm644 "README.md"    "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+    install -vDm644 "HACKING.md"   "${pkgdir}/usr/share/doc/${_pkgname}/HACKING.md"
+    install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${_pkgname}/CHANGELOG.md"
+    install -vDm644 "COPYING.md"   "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING.md"
 
-    cd "${pkgdir}/opt/${softname}"
+    cd "${pkgdir}/opt/${_pkgname}"
     find "share" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/{}" \;
     find "man"   -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/{}" \;
     rm -rf "share" "man"
@@ -69,7 +79,7 @@ package() {
     cd "${pkgdir}/usr/share/polkit-1/actions"
     sed -i 's|/usr/bin|/opt/miktex/bin|' "miktex-console.policy"
 
-    cd "${pkgdir}/opt/${softname}/bin"
+    cd "${pkgdir}/opt/${_pkgname}/bin"
     for _gsu in pkexec kdesu gksu; do
         ln -s "/usr/bin/${_gsu}" "${_gsu}"
     done
