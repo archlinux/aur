@@ -1,7 +1,7 @@
 pkgbase = xero-music
 	pkgdesc = Terminal music player written in Rust with album art and synced lyrics
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Xero-music/Xero
 	arch = x86_64
 	license = GPL-3.0-or-later

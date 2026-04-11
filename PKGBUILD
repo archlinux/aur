@@ -1,6 +1,6 @@
 pkgname=xero-music
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal music player written in Rust with album art and synced lyrics'
 arch=('x86_64')
 url='https://codeberg.org/Xero-music/Xero'
@@ -16,13 +16,16 @@ sha256sums=('8192008ca5c177e889c0ed5e2ef351b8c4c1158eaa7a398afb5d138154f69b2e')
 
 build() {
   cd "$srcdir/xero"
+  export CARGO_TARGET_DIR="$srcdir/target-$pkgver-$pkgrel"
   cargo build --release --locked
 }
 
 package() {
   cd "$srcdir/xero"
 
-  install -Dm755 target/release/xero-music "$pkgdir/usr/bin/xero-music"
+  export CARGO_TARGET_DIR="$srcdir/target-$pkgver-$pkgrel"
+
+  install -Dm755 "$CARGO_TARGET_DIR/release/xero-music" "$pkgdir/usr/bin/xero-music"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 examples/xero.example.toml \
     "$pkgdir/usr/share/doc/$pkgname/xero.example.toml"
