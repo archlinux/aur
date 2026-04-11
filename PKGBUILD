@@ -2,7 +2,7 @@
 
 pkgname=dmarc-cat
 pkgver=0.15.0
-pkgrel=13
+pkgrel=14
 pkgdesc='Decode the report sent by various email providers following the DMARC spec'
 arch=('x86_64')
 url='https://github.com/keltia/dmarc-cat'
@@ -16,7 +16,7 @@ sha256sums=('886bf33ba60d601de74a1e9d437a8e09eea5c03a05b09c0f685fa02d1c174bba')
 prepare(){
     cd "$pkgname-$pkgver"
     export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
-    go mod download
+    go mod download -modcacherw
 }
 
 build() {
