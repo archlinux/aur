@@ -2,21 +2,18 @@
 
 _pkgname=run-or-raise
 pkgname="gnome-shell-extension-${_pkgname}"
-pkgver=41
+pkgver=44
 pkgrel=1
-# Upstream repo does not tag releases, manually determine commit for now
-# https://github.com/KEIII/gnome-shell-panel-date-format/issues/28
-_pkgsha=35dc593a424de1b4694dc996d4d23b331acc12aa
 pkgdesc='Launch or focus the window or define custom shortcuts in a text file'
 arch=('any')
 url="https://github.com/CZ-NIC/${_pkgname}"
 license=('GPLv3')
 depends=('gnome-shell')
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${_pkgsha}.tar.gz")
-sha256sums=('de0afa204e80f05a4168db0d856d7ce2f58ffcc176e116ad16a8a0d31f6349a6')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('004ac1ae852b307002dad400d3b35338137fe795ebb819ce99d1d5656344a902')
 
 package() {
-    cd "${_pkgname}-${_pkgsha}"
+    cd "${_pkgname}-${pkgver}"
 
     local _extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
     local _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
