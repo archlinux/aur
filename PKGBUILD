@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 pkgname=rescached
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://git.sr.ht/~shulhan/rescached"
@@ -26,7 +26,7 @@ backup=(
 
 prepare() {
 	cd "$pkgname-v$pkgver"
-	export GOPATH="${srcdir}/go"
+	export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
 	go mod download
 }
 
@@ -39,8 +39,8 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 	make
 
-	# Make sure go path is writable so it can be cleaned up
-	chmod -R u+w "${srcdir}/go"
+	# Clean up deps
+  go clean -modcache
 }
 
 package() {

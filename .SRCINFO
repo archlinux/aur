@@ -1,7 +1,7 @@
 pkgbase = rescached
 	pkgdesc = Resolver/DNS cache daemon
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~shulhan/rescached
 	arch = i686
 	arch = x86_64
