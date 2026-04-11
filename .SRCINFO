@@ -1,16 +1,18 @@
 pkgbase = lightpanda
-pkgdesc = Headless browser designed for AI and automation - 11x faster than Chrome, 9x less memory
-pkgver = 0.2.5
-pkgrel = 1
-url = https://lightpanda.io
-license = AGPL-3.0-only
-arch = x86_64
-arch = aarch64
-provides = lightpanda
-source_x86_64 = https://github.com/lightpanda-io/browser/releases/download/v0.2.5/lightpanda-x86_64-linux
-sha256sums_x86_64 = SKIP
-source_aarch64 = https://github.com/lightpanda-io/browser/releases/download/v0.2.5/lightpanda-aarch64-linux
-sha256sums_aarch64 = SKIP
+	pkgdesc = Headless browser designed for AI and automation - 11x faster than Chrome, 9x less memory
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = https://lightpanda.io
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = zig>=0.15.2
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = python3
+	provides = lightpanda
+	source = lightpanda_0.2.8.tar.gz::https://github.com/lightpanda-io/browser/archive/refs/tags/0.2.8.tar.gz
+	sha256sums = dc97be0dc802321a8d272c42d4300e0c890aa3e3ce6d60f09e6c2275287056c0
 
 pkgname = lightpanda
-pkgdesc = Headless browser designed for AI and automation
