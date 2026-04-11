@@ -1,6 +1,6 @@
 pkgbase = supersigil-lsp-bin
 	pkgdesc = Language server for Supersigil spec documents (binary release)
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/jonisavo/supersigil
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = supersigil-lsp-bin
 	provides = supersigil-lsp
 	conflicts = supersigil-lsp
 	options = !debug
-	source_x86_64 = https://github.com/jonisavo/supersigil/releases/download/v0.4.0/supersigil-lsp-0.4.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = af8c2f18d87d4e8e40c7a00c48deed149a2123b274e4369a6e6e29273feccc24
-	source_aarch64 = https://github.com/jonisavo/supersigil/releases/download/v0.4.0/supersigil-lsp-0.4.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = fdf5cf640710e1b9e2c5e48c182d842cf1c47b2ab0d7d1057977644bb9b8aad2
+	source_x86_64 = https://github.com/jonisavo/supersigil/releases/download/v0.5.0/supersigil-lsp-0.5.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 7dc113429c9dcaefd5c87aefe457adabb029cb78459a495ea21f724c30490e85
+	source_aarch64 = https://github.com/jonisavo/supersigil/releases/download/v0.5.0/supersigil-lsp-0.5.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 107c2146b8e08b00d7dfed9431f4d346f7d92dc5346299b331dc654f213acb46
 
 pkgname = supersigil-lsp-bin
