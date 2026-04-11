@@ -2,7 +2,7 @@
 pkgname=elan-bin
 _pkgname=elan
 _pkgname_caps=ELAN
-pkgver="7.0"
+pkgver="7.1"
 pkgrel=1
 pkgdesc="A video and audio annotation tool"
 arch=('x86_64')
@@ -26,7 +26,7 @@ depends=(
 license=('GPL-3.0-or-later')
 source=("https://www.mpi.nl/tools/${_pkgname}/${_pkgname_caps}_${pkgver//\./\-}_linux.tar.gz"
         "${_pkgname}.desktop")
-sha256sums=('e04d41a06c5abddafeb846421f538062c5c422b7845accfe8081e4c0cc7ddf72'
+sha256sums=('ab0095ccb4dca8439d76da6cb14d22613c446d6edf021729ca454f65d9c77b94'
             '918720769c986b0183b563596da1a8a9da039eb1196132b224b3b110d8233394')
 
 package() {
