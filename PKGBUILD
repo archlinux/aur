@@ -1,7 +1,7 @@
 # Maintainer: ry2x
 
 pkgname=hyprcrop-bin
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="A fast, Hyprland-native screenshot tool written in Rust"
 arch=('x86_64')
@@ -17,8 +17,8 @@ source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE"
         "README-${pkgver}::${url}/raw/v${pkgver}/README.md")
 
 sha256sums=('7730947ada4144f1f707fa00247da2dca12e3ef8cb22c9939d42f032595a5e74'
-            '47814798acc66cab04a10042a7430067d8ea74b3728404ea05fe8b83aa51cb19')
-sha256sums_x86_64=('927086648f68c255c2ed1dfe7e512195ce727566b1d3e0fa1b602bdabf89449f')
+            'ed4c05107b8bf6c745483591a5246e1741ce9e7505379c28721004148fca5e53')
+sha256sums_x86_64=('33691822e1ef2e7ecdd3ce2fc07002bad60eff4a306499272159b5f600e3c310')
 
 package() {
     install -Dm755 "${srcdir}/hyprcrop-${pkgver}" "${pkgdir}/usr/bin/hyprcrop"
