@@ -14,5 +14,5 @@ sha256sums=('f4ec3c9f9d54633511251834ce98d409464fb1c0d970f9c865a880e1160db30f')
 
 package() {
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/"
-  install -Dm755  "${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
+  install -Dm755 "${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
 }
