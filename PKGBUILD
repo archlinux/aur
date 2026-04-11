@@ -1,7 +1,7 @@
 # Maintainer: coldbrxthe <rocattjust@gmail.com>
 pkgname=rs-pug-git
 pkgver=r.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Terminal YouTube music player with mpv, yt-dlp and Lua plugin support"
 arch=('x86_64')
 url="https://github.com/JustRoccat/rs-pug"
@@ -21,10 +21,11 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    # To jest najbardziej niezawodna kombinacja flag dla mlua na Arch Linux
-    export RUSTFLAGS="-C link-arg=-ldl -C link-arg=-lpthread"
+    # To jest oficjalnie zalecany sposób naprawy błędów linkowania mlua na Archu
+    export RUSTFLAGS="-C link-args=-Wl,-E"
     cargo build --release --locked
 }
+
 
 
 
