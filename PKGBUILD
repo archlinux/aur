@@ -1,12 +1,12 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_llvm=19
+_llvm=21
 _basename="zig"
 _suffix="-mach"
 pkgname="${_basename}${_suffix}"
-pkgver=0.14.0dev.2577+271452d22
+pkgver=0.16.0dev.3142+5ccfeb926
 _pkgver="${pkgver//dev/-dev}"
-pkgrel=4
+pkgrel=1
 pkgdesc="General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=(
   # 'aarch64'     # 'aarch64'
@@ -23,8 +23,8 @@ license=(
   'MIT'
 )
 depends=(
-  'gcc-libs'
   'glibc'
+  'libstdc++'
 
   # "clang>=${_llvm}"
   # "lld>=${_llvm}"
@@ -50,10 +50,10 @@ options=(
 )
 _pkgsrc="${_basename}-${_pkgver}"
 source=(
-  "https://pkg.machengine.org/zig/${_pkgsrc}.tar.xz"
-  "https://pkg.machengine.org/zig/${_pkgsrc}.tar.xz.minisig"
+  "https://pkg.hexops.org/zig/${_pkgsrc}.tar.xz"
+  "https://pkg.hexops.org/zig/${_pkgsrc}.tar.xz.minisig"
 )
-sha256sums=('a979e021e3be89f45eccf6d081032da03afc674db753ab400ad8c85b7ee3c089'
+sha256sums=('7f0fcafcad7b32c0959b374bad725e9b9d120223ee517988ea9a067efce26a20'
             'SKIP')
 
 verify() {
@@ -67,13 +67,14 @@ verify() {
 
 build() {
   local cmake_options=(
-    -G 'Unix Makefiles'
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
+    -G 'Unix Makefiles'
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
 
+    -D ZIG_VERSION:STRING="${_pkgver}"
     -D ZIG_PIE:BOOL=ON
     -D ZIG_SHARED_LLVM:BOOL=ON
     -D ZIG_USE_LLVM_CONFIG:BOOL=ON
@@ -83,7 +84,7 @@ build() {
 
   cd "${srcdir}"
   cmake "${cmake_options[@]}"
-  cmake --build "${_pkgsrc}/build"
+  cmake --build "${cmake_options[1]}"
 
   cd "${_pkgsrc}"
   DESTDIR="./fakeinstall" cmake --install "build"
