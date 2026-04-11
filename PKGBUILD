@@ -1,7 +1,7 @@
 # Maintainer: fabse
 
 pkgname=bevy-cli-git
-_pkgname=bevy-cli
+_pkgname=bevy_cli
 pkgver=v0.6.0
 pkgrel=1
 pkgdesc="A Bevy CLI tool and linter."
