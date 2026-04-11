@@ -16,10 +16,10 @@ sha256sums=('62b44d9589cf256262240cb49667ef5ce63d36f9de50578321f148329d539a2d')
 
 build() {
   cd "$pkgname-$pkgver"
-	python setup.py build
+  python setup.py build
 }
 
 package() {
   cd "$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir"
 }
