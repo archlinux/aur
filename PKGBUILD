@@ -1,7 +1,7 @@
 # Maintainer: coldbrxthe <rocattjust@gmail.com>
 pkgname=rs-pug-git
 pkgver=r.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Terminal YouTube music player with mpv, yt-dlp and Lua plugin support"
 arch=('x86_64')
 url="https://github.com/JustRoccat/rs-pug"
@@ -21,10 +21,11 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    # Ta flaga wymusza na linkerze dołączenie wszystkich symboli, co rozwiązuje problem z mlua-vendored
-    export RUSTFLAGS="-C link-args=-Wl,--no-as-needed"
+    # To jest najbardziej niezawodna kombinacja flag dla mlua na Arch Linux
+    export RUSTFLAGS="-C link-arg=-ldl -C link-arg=-lpthread"
     cargo build --release --locked
 }
+
 
 
 package() {
