@@ -2,8 +2,8 @@
 # Contributor: futrime <https://github.com/futrime>
 pkgname=lip-git
 _pkgname=lip
-pkgver=0.34.4.r390.gfc7972e
-pkgrel=1
+pkgver=0.34.4
+pkgrel=2
 pkgdesc="A general package installer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/futrime/lip"
@@ -11,9 +11,9 @@ license=('GPL3')
 conflicts=('lip-bin')
 options=(!strip)
 makedepends=('dotnet-sdk' 'dotnet-runtime' 'dotnet-host' 'git')
-source=("$pkgname::git+${url}.git#tag=v0.34.4"
+source=("$pkgname::git+${url}.git#tag=v$pkgver"
         "lip.1")
-sha256sums=('skip'
+sha256sums=('SKIP'
             '341f8366713c3463d309d7db58b4b4f1ac270a03afe5714ddd3bc2195d293cfd')
 pkgver() {
     cd "$pkgname"
@@ -42,7 +42,7 @@ build() {
 }
 package() {
     install -Dm 644 "$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
-    install -Dm 755 "$pkgname/bin/lip" "$pkgdir/usr/bin/$_pkgname"
-    install -Dm 755 "$pkgname/bin/lipd" "$pkgdir/usr/bin/${_pkgname}d"
+    install -Dm 755 "$pkgname/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm 755 "$pkgname/bin/${_pkgname}d" "$pkgdir/usr/bin/${_pkgname}d"
     install -Dm 644 "$pkgname/COPYING" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
