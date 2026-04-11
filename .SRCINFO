@@ -1,6 +1,6 @@
 pkgbase = bootrecov
 	pkgdesc = TUI/CLI helper to manage mirrored /boot backups and GRUB recovery entries
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/marang/bootrecov
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bootrecov
 	makedepends = go
 	depends = rclone
 	depends = grub
-	source = bootrecov-0.1.1.tar.gz::https://github.com/marang/bootrecov/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 0108faf0e69d374788c1d8dee106d37d454d4c6047e26daef515c9bb8bd12055
+	source = bootrecov-0.1.2.tar.gz::https://github.com/marang/bootrecov/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 6fba126c76e6c89d7500b8f9a12e1b9e28f2a6cad9273de1e5667d5fbcef2b67
 
 pkgname = bootrecov

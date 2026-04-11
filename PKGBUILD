@@ -1,6 +1,6 @@
 # Maintainer: Markus <github@marang.dev>
 pkgname=bootrecov
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='TUI/CLI helper to manage mirrored /boot backups and GRUB recovery entries'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('rclone' 'grub')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0108faf0e69d374788c1d8dee106d37d454d4c6047e26daef515c9bb8bd12055')
+sha256sums=('6fba126c76e6c89d7500b8f9a12e1b9e28f2a6cad9273de1e5667d5fbcef2b67')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
