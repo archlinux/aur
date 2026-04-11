@@ -1,7 +1,7 @@
 # Maintainer: coldbrxthe <rocattjust@gmail.com>
 pkgname=rs-pug-git
 pkgver=r.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Terminal YouTube music player with mpv, yt-dlp and Lua plugin support"
 arch=('x86_64')
 url="https://github.com/JustRoccat/rs-pug"
@@ -21,8 +21,8 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    # Dodajemy flagi, które pomogą linkerowi znaleźć symbole Lua
-    export RUSTFLAGS="-C link-arg=-Wl,--allow-shlib-undefined"
+    # Ta flaga wymusza na linkerze dołączenie wszystkich symboli, co rozwiązuje problem z mlua-vendored
+    export RUSTFLAGS="-C link-args=-Wl,--no-as-needed"
     cargo build --release --locked
 }
 
