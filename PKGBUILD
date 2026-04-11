@@ -4,7 +4,7 @@ pkgname=astrbot-git
 _pkgname=astrbot
 _srcname=AstrBot
 pkgver=4.22.2.r633.g7543dd2e
-pkgrel=14
+pkgrel=15
 
 pkgver() {
     cd "$srcdir/$_srcname"
