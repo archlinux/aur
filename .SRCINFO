@@ -1,12 +1,11 @@
 pkgbase = wordbook
 	pkgdesc = A dictionary application built for GNOME.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.gnome.org/Wordbook
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = blueprint-compiler
-	makedepends = git
 	makedepends = meson
 	depends = espeak-ng
 	depends = gtk4
@@ -17,10 +16,10 @@ pkgbase = wordbook
 	depends = python-rapidfuzz
 	depends = python-wn
 	noextract = english-wordnet-2025-plus.xml.gz
-	source = git+https://github.com/mufeedali/Wordbook.git#tag=1.0.0
+	source = Wordbook-1.0.0.tar.gz::https://github.com/mufeedali/Wordbook/archive/refs/tags/1.0.0.tar.gz
 	source = https://github.com/globalwordnet/english-wordnet/releases/download/2025-edition/english-wordnet-2025-plus.xml.gz
 	source = subproject.patch
-	sha256sums = f07186be17bdc65515a3677430ac05f7b5c7ee7a0cc03dfdb4bf0514a5fc2467
+	sha256sums = 529065472166c2992afa289280849a0190c2506dee3fc5ed6646db277aa20a69
 	sha256sums = 31f4af16c54b532fd5484d4cc33aee588a31bb5b70683ae8197842fde5b586bc
 	sha256sums = 71ee389e54a5b2f7ea2d1511bfaa6eb50efc0615ef50a4b45190044e17e5aa9f
 
