@@ -10,8 +10,7 @@ url="https://codeberg.org/caskstrength/passcualito"
 license=('MIT')
 makedepends=('go' 'git')
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha512sums=('d92f7e6d07abf631340950dbe5ab5c287cf2623945a910c4b2938909c550d6279cd614285de13dd532e83bdded10cd2c2d95f1401d72173fdf
-1924d4703bb2d3')
+sha512sums=('d92f7e6d07abf631340950dbe5ab5c287cf2623945a910c4b2938909c550d6279cd614285de13dd532e83bdded10cd2c2d95f1401d72173fdf1924d4703bb2d3')
 conflicts=("${pkgname}")
 
 build() {
