@@ -5,7 +5,7 @@
 # Contributor: Alessio Sergi <asergi@archlinux.us>
 
 pkgname=lib32-libsodium
-pkgver=1.0.21
+pkgver=1.0.22
 pkgrel=1
 pkgdesc='A modern, portable, easy to use crypto library'
 arch=(x86_64)
@@ -17,9 +17,9 @@ depends=(
 )
 makedepends=(git)
 provides=('libsodium.so')
-_tag=d24faf56214469b354b01c8ba36257e04737101e
+_tag=bc5892beb87c388e123baa7c8f4862f30d9206a7
 source=(git+https://github.com/jedisct1/libsodium.git#tag=${_tag})
-b2sums=('fdc16dc401d4f4461fcb9befd6b8744b352e39b6e7613d0db3fc90785d758d22921f91cb912995e04ff1a7708c8a2356398b610cdbde0bc0ddd6de95d3dcb664')
+b2sums=('6711197c82da7bfaf6afd5e2a9895c28fb070325adfec7d0b687d9185febf217fadb18422ce397f3d39ee8b2b563685950fb5ee13d5d3e25e6a56ba81ca7fc82')
 
 prepare() {
   cd libsodium
