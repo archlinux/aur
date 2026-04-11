@@ -17,24 +17,24 @@ source=("${pkgname%-*}::git+https://github.com/OpenAnnePro/AnnePro2-Tools.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname%-*}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-*}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "${pkgname%-*}"
-	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --target $(rustc --print host-tuple)
+  cd "${pkgname%-*}"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target $(rustc --print host-tuple)
 }
 
 build() {
-	cd "${pkgname%-*}"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release
+  cd "${pkgname%-*}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
 }
 
 package() {
-	cd "${pkgname%-*}"
-	install -Dm 755 target/release/annepro2_tools -t "${pkgdir}/usr/bin"
+  cd "${pkgname%-*}"
+  install -Dm 755 target/release/annepro2_tools -t "${pkgdir}/usr/bin"
 }
