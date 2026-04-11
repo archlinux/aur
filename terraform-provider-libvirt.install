@@ -1,0 +1,30 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	if [ 0 -gt "$(vercmp "$2" 0.9.1)" ]; then
+		cat <<-'EOF'
+			v0.9.1
+			    Migration Guide: 0.9.0 → v0.9.1
+
+				https://github.com/dmacvicar/terraform-provider-libvirt/releases/tag/v0.9.1
+		EOF
+	fi
+
+	if [ 0 -gt "$(vercmp "$2" 0.9.0)" ]; then
+		cat <<-'EOF'
+			v0.9.0
+			    ⚠️ ⚠️ ⚠️ ⚠️ This version of the provider breaks compatibility ⚠️ ⚠️ ⚠️ ⚠️
+
+				https://github.com/dmacvicar/terraform-provider-libvirt/releases/tag/v0.9.0
+		EOF
+	fi
+
+	if [ 0 -gt "$(vercmp "$2" 0.8.0)" ]; then
+		cat <<-'EOF'
+			v0.8.0
+				Breaking changes
+					DNS is enabled by default, like in libvirt. #1100
+					Wait intervals for polling libvirt are reduced, making everything faster (including testsuite)
+		EOF
+	fi
+}

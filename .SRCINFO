@@ -1,7 +1,8 @@
 pkgbase = terraform-provider-libvirt
-	pkgver = v0.7.6
+	pkgver = v0.9.7
 	pkgrel = 2
 	url = https://github.com/dmacvicar/terraform-provider-libvirt
+	install = terraform-provider-libvirt.install
 	arch = x86_64
 	license = Apache
 	checkdepends = go
@@ -9,7 +10,7 @@ pkgbase = terraform-provider-libvirt
 	makedepends = go
 	depends = libvirt
 	depends = cdrtools
-	source = terraform-provider-libvirt-v0.7.6.tar.gz::https://github.com/dmacvicar/terraform-provider-libvirt/archive/refs/tags/v0.7.6.tar.gz
+	source = terraform-provider-libvirt-v0.9.7.tar.gz::https://github.com/dmacvicar/terraform-provider-libvirt/archive/refs/tags/v0.9.7.tar.gz
 	sha256sums = 03a8305b3f2361dc8a147ac4ea0897ca3cc66387ef4e7346d2233324135e1b8c
 
 pkgname = terraform-provider-libvirt

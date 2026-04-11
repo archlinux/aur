@@ -6,17 +6,18 @@
 
 pkgname=({terraform,opentofu}-provider-libvirt)
 _pkgname="$pkgname"
-_pkgver=0.7.6
+_pkgver=0.9.7
 pkgver="v${_pkgver}"
-pkgrel=2
+pkgrel=1
 arch=("x86_64")
 url="https://github.com/dmacvicar/${_pkgname}"
 license=("Apache")
 depends=("libvirt" "cdrtools")
 makedepends=("git" "go")
 checkdepends=("go")
+install=${pkgname}.install
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=(03a8305b3f2361dc8a147ac4ea0897ca3cc66387ef4e7346d2233324135e1b8c)
+sha256sums=(94b859477830e8d0d7a6a8a0fa5ac714b714e114d90242d2a285dc3b4905a03f)
 
 build() {
     cd "${_pkgname}-${_pkgver}"
@@ -28,7 +29,7 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     unset LDFLAGS
-    make
+    make build
 }
 
 check() {
@@ -39,10 +40,8 @@ check() {
 _package_common() {
     cd "${_pkgname}-${_pkgver}"
 
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-
-    install -Dm644 {CHANGELOG,README,docs/migration-13}.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-    cp -r website/docs "$pkgdir/usr/share/doc/${pkgname}"
+    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+    cp -r docs "$pkgdir/usr/share/doc/${pkgname}"
 }
 
 package_terraform-provider-libvirt() {
