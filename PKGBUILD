@@ -14,10 +14,10 @@ options=(!lto)
 source=("$url/-/archive/v$pkgver/${pkgname}-v$pkgver.tar.bz2")
 sha256sums=('f7cf3c4ad4ccf04979993822a7dd6f0d733b6d74599a611acc2832c265cad82e')
 
-prepare(){
-    cd "$pkgname-v$pkgver"
-    export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
-    go mod download -modcacherw
+prepare() {
+  cd "$pkgname-v$pkgver"
+  export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
+  go mod download -modcacherw
 }
 
 build() {
