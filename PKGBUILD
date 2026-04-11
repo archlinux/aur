@@ -1,6 +1,6 @@
 pkgname=taskers-git
 pkgver=0.6.0.r0.g6ad8cc4
-pkgrel=2
+pkgrel=3
 pkgdesc='Agent-first terminal workspace (dev branch build)'
 arch=('x86_64')
 url='https://github.com/OneNoted/taskers'
@@ -24,7 +24,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  'd38029fc615ad4ee3286268d10ea1424af423ea85019376af99f09ed3e860cca'
+  '25f42f5b60c6a60bc8e43c97b62de4b224a1ba5e676fcf3ba737ab9a2c781b9e'
   '2902765627b7976f589ea4edf50f2468b45900225197b452e70f9bbae4eaa476'
   '83c76f0c92d4c1a2f13e70fb1f18da089a01726ecbb2b7a67bae9ad0a677778b'
   '019a8646c7b6b93cb375ca012e5e8cf615f2d6b164f404e8b2a99b0d7d1a2936'

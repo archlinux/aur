@@ -1,8 +1,16 @@
 diff --git a/crates/taskers-app/src/main.rs b/crates/taskers-app/src/main.rs
-index dcc7d7972e..3d6115b0f3 100644
+index dcc7d7972e..b8e839dfcc 100644
 --- a/crates/taskers-app/src/main.rs
 +++ b/crates/taskers-app/src/main.rs
-@@ -34,7 +34,7 @@
+@@ -16,6 +16,7 @@
+     future::pending,
+     io::{self, Write},
+     net::TcpListener,
++    os::unix::fs::MetadataExt,
+     path::{Path, PathBuf},
+     process::{Command, Stdio},
+     rc::Rc,
+@@ -34,7 +35,7 @@
  use taskers_domain::{AppModel, NotificationDeliveryState, NotificationId, SignalKind};
  use taskers_ghostty::{
      BackendChoice, EmbeddedTerminalAppearance, GhosttyHost, GhosttyHostOptions,
@@ -11,15 +19,68 @@ index dcc7d7972e..3d6115b0f3 100644
  };
  use taskers_host::{DiagnosticCategory, DiagnosticRecord, DiagnosticsSink, TaskersHost};
  use taskers_runtime::{
-@@ -1360,6 +1360,7 @@
+@@ -756,12 +757,28 @@
+         return;
+     }
+ 
++    #[cfg(feature = "dev-trace")]
++    safe_eprintln(format!(
++        "[dev-trace] process_pending_notifications: {} pending",
++        pending.len()
++    ));
++
+     for notification in pending {
+-        let delivery = if prefs.suppress_when_visible
+-            && notification_target_visible(&model, window, &notification)
+-        {
++        let visible = prefs.suppress_when_visible
++            && notification_target_visible(&model, window, &notification);
++        let delivery = if visible {
++            #[cfg(feature = "dev-trace")]
++            safe_eprintln(format!(
++                "[dev-trace] notification SUPPRESSED (pane visible): id={} title={:?}",
++                notification.id, notification.title
++            ));
+             NotificationDeliveryState::Suppressed
+         } else {
++            #[cfg(feature = "dev-trace")]
++            safe_eprintln(format!(
++                "[dev-trace] notification SHOWN: id={} title={:?} body={:?}",
++                notification.id, notification.title, notification.body
++            ));
+             let desktop = gio::Notification::new(&notification.title);
+             if let Some(body) = &notification.body {
+                 desktop.set_body(Some(body));
+@@ -1360,6 +1377,15 @@
              },
          ),
      };
 +    maybe_export_bundled_terminfo(&mut shell_launch);
++    publish_shell_environment(&shell_launch);
++    let root_x11_guest_lane = should_force_software_gl(
++        std::env::var_os("DISPLAY").is_some(),
++        std::env::var_os("WAYLAND_DISPLAY").is_some(),
++        is_running_as_root(),
++        std::env::var_os("LIBGL_ALWAYS_SOFTWARE").is_some(),
++    );
++    maybe_enable_software_gl(&mut startup_notes, root_x11_guest_lane);
      shell_launch
          .env
          .insert("TASKERS_SOCKET".into(), socket_path.display().to_string());
-@@ -1410,6 +1411,18 @@
+@@ -1368,6 +1394,12 @@
+             "Smoke mode with mock terminal backend skips the terminal session sidecar.".into(),
+         );
+         None
++    } else if root_x11_guest_lane {
++        startup_notes.push(
++            "Root-launched X11 guest session skips terminal sidecar attach and uses direct shells because the attach CLI exits immediately in this environment."
++                .into(),
++        );
++        None
+     } else {
+         match ensure_terminal_session_daemon(&terminal_socket_path) {
+             Ok(()) => {
+@@ -1410,6 +1442,59 @@
      }
  }
  
@@ -35,14 +96,143 @@ index dcc7d7972e..3d6115b0f3 100644
 +    }
 +}
 +
++fn publish_shell_environment(shell_launch: &ShellLaunchSpec) {
++    let shell = shell_launch.program.display().to_string();
++    if std::env::var_os("TASKERS_REAL_SHELL").is_none() {
++        unsafe {
++            std::env::set_var("TASKERS_REAL_SHELL", &shell);
++        }
++    }
++    if std::env::var_os("SHELL").is_none() {
++        unsafe {
++            std::env::set_var("SHELL", &shell);
++        }
++    }
++}
++
++fn maybe_enable_software_gl(startup_notes: &mut Vec<String>, should_force: bool) {
++    if should_force {
++        unsafe {
++            std::env::set_var("LIBGL_ALWAYS_SOFTWARE", "1");
++        }
++        startup_notes.push(
++            "Enabled LIBGL_ALWAYS_SOFTWARE=1 for a root-launched X11 session to keep Ghostty rendering in virtualized desktops."
++                .into(),
++        );
++    }
++}
++
++fn should_force_software_gl(
++    display_present: bool,
++    wayland_present: bool,
++    running_as_root: bool,
++    libgl_already_set: bool,
++) -> bool {
++    display_present && !wayland_present && running_as_root && !libgl_already_set
++}
++
++fn is_running_as_root() -> bool {
++    std::fs::metadata("/proc/self")
++        .map(|metadata| metadata.uid() == 0)
++        .unwrap_or(false)
++}
++
  fn smoke_runtime_path_overrides() -> Result<RuntimePathOverrides> {
      let timestamp = SystemTime::now()
          .duration_since(UNIX_EPOCH)
+@@ -2472,10 +2557,13 @@
+ #[cfg(test)]
+ mod startup_tests {
+     use super::{
+-        RuntimePathOverrides, looks_like_dev_install, should_defer_initial_sync,
++        RuntimePathOverrides, looks_like_dev_install, maybe_export_bundled_terminfo,
++        should_defer_initial_sync,
+         should_skip_terminal_sidecar_in_smoke, smoke_runtime_path_overrides,
++        should_force_software_gl,
+     };
+-    use std::path::Path;
++    use std::{collections::BTreeMap, path::Path, path::PathBuf};
++    use taskers_runtime::ShellLaunchSpec;
+ 
+     #[test]
+     fn initial_sync_waits_for_real_allocation() {
+@@ -2542,4 +2630,71 @@
+         assert!(!should_skip_terminal_sidecar_in_smoke(None));
+         unsafe { std::env::remove_var("TASKERS_TERMINAL_BACKEND") };
+     }
++
++    #[test]
++    fn software_gl_defaults_only_for_root_x11_when_unset() {
++        assert!(should_force_software_gl(true, false, true, false));
++        assert!(!should_force_software_gl(true, true, true, false));
++        assert!(!should_force_software_gl(false, false, true, false));
++        assert!(!should_force_software_gl(true, false, false, false));
++        assert!(!should_force_software_gl(true, false, true, true));
++    }
++
++    #[test]
++    fn packaged_runtime_terminfo_is_reinjected_after_scrub() {
++        let temp = tempfile::tempdir().expect("tempdir");
++        let runtime_dir = temp.path().join("taskers").join("ghostty");
++        let terminfo_dir = temp.path().join("taskers").join("terminfo");
++        std::fs::create_dir_all(&runtime_dir).expect("runtime dir");
++        std::fs::create_dir_all(terminfo_dir.join("x")).expect("terminfo dir");
++        std::fs::write(terminfo_dir.join("x").join("xterm-ghostty"), b"fake terminfo")
++            .expect("write terminfo");
++
++        let _guard = EnvGuard::set([
++            ("TASKERS_GHOSTTY_RUNTIME_DIR", Some(runtime_dir.clone())),
++            ("TERMINFO", None),
++            ("XDG_DATA_HOME", None),
++        ]);
++
++        let mut shell_launch = ShellLaunchSpec {
++            program: PathBuf::from("/bin/sh"),
++            args: Vec::new(),
++            env: BTreeMap::new(),
++        };
++        maybe_export_bundled_terminfo(&mut shell_launch);
++
++        assert_eq!(
++            shell_launch.env.get("TERMINFO").map(String::as_str),
++            Some(terminfo_dir.to_string_lossy().as_ref())
++        );
++    }
++
++    struct EnvGuard {
++        saved: Vec<(&'static str, Option<std::ffi::OsString>)>,
++    }
++
++    impl EnvGuard {
++        fn set<const N: usize>(entries: [(&'static str, Option<PathBuf>); N]) -> Self {
++            let mut saved = Vec::with_capacity(N);
++            for (key, value) in entries {
++                saved.push((key, std::env::var_os(key)));
++                match value {
++                    Some(value) => unsafe { std::env::set_var(key, value) },
++                    None => unsafe { std::env::remove_var(key) },
++                }
++            }
++            Self { saved }
++        }
++    }
++
++    impl Drop for EnvGuard {
++        fn drop(&mut self) {
++            for (key, value) in self.saved.drain(..).rev() {
++                match value {
++                    Some(value) => unsafe { std::env::set_var(key, value) },
++                    None => unsafe { std::env::remove_var(key) },
++                }
++            }
++        }
++    }
+ }
 diff --git a/crates/taskers-ghostty/build.rs b/crates/taskers-ghostty/build.rs
-index 3ad289e058..634813f48c 100644
+index 3ad289e058..b17837f036 100644
 --- a/crates/taskers-ghostty/build.rs
 +++ b/crates/taskers-ghostty/build.rs
-@@ -4,6 +4,8 @@
+@@ -4,11 +4,14 @@
      process::Command,
  };
  
@@ -51,7 +241,13 @@ index 3ad289e058..634813f48c 100644
  fn main() {
      println!("cargo:rustc-check-cfg=cfg(taskers_ghostty_bridge)");
      println!("cargo:rerun-if-changed=build.rs");
-@@ -25,6 +27,13 @@
+     println!("cargo:rerun-if-changed=../../vendor/ghostty/build.zig");
+     println!("cargo:rerun-if-changed=../../vendor/ghostty/src/taskers_bridge.zig");
++    println!("cargo:rerun-if-changed=../../vendor/ghostty/src/taskers_bridge_glibc_compat.c");
+     println!("cargo:rerun-if-changed=../../vendor/ghostty/src/taskers_bridge_build_info.zig");
+     println!("cargo:rerun-if-changed=../../vendor/ghostty/include/taskers_ghostty_bridge.h");
+     println!("cargo:rerun-if-changed=../../vendor/ghostty/src/apprt.zig");
+@@ -25,6 +28,13 @@
          println!("cargo:rustc-env=TASKERS_BUILD_TARGET={target}");
      }
  
@@ -65,7 +261,7 @@ index 3ad289e058..634813f48c 100644
      let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").expect("manifest dir"));
      let workspace_root = manifest_dir
          .ancestors()
-@@ -54,6 +63,10 @@
+@@ -54,6 +64,10 @@
              .join("libtaskers_ghostty_bridge.so")
              .display()
      );
@@ -88,7 +284,7 @@ index c105811153..9de0717ee5 100644
 +    ensure_runtime_installed, runtime_terminfo_dir,
  };
 diff --git a/crates/taskers-ghostty/src/runtime.rs b/crates/taskers-ghostty/src/runtime.rs
-index 03a716dc7d..a2a9913697 100644
+index 03a716dc7d..361687c359 100644
 --- a/crates/taskers-ghostty/src/runtime.rs
 +++ b/crates/taskers-ghostty/src/runtime.rs
 @@ -195,6 +195,30 @@
@@ -159,13 +355,18 @@ index 03a716dc7d..a2a9913697 100644
      };
      use std::{env, fs, path::Path};
      use tar::Builder;
-@@ -412,6 +450,26 @@
+@@ -412,6 +450,7 @@
              Some(runtime_dir.join("lib").join("libtaskers_ghostty_bridge.so"))
          );
          assert_eq!(runtime_resources_dir(), Some(runtime_dir));
 +        assert_eq!(runtime_terminfo_dir(), Some(terminfo_dir));
-+    }
-+
+     }
+ 
+     #[test]
+@@ -437,6 +476,25 @@
+         );
+     }
+ 
 +    #[test]
 +    fn runtime_terminfo_dir_follows_explicit_runtime_dir() {
 +        let temp = tempdir().expect("tempdir");
@@ -183,11 +384,13 @@ index 03a716dc7d..a2a9913697 100644
 +        ]);
 +
 +        assert_eq!(runtime_terminfo_dir(), Some(terminfo_dir));
-     }
- 
-     #[test]
++    }
++
+     fn write_bundle(source_dir: &Path, bundle_path: &Path) {
+         let file = fs::File::create(bundle_path).expect("create bundle");
+         let encoder = XzEncoder::new(file, 9);
 diff --git a/scripts/build_linux_bundle.sh b/scripts/build_linux_bundle.sh
-index 674983299d..91d305353f 100755
+index 674983299d..12ef06748a 100755
 --- a/scripts/build_linux_bundle.sh
 +++ b/scripts/build_linux_bundle.sh
 @@ -10,6 +10,8 @@
@@ -210,3 +413,11 @@ index 674983299d..91d305353f 100755
  )
  
  (
+@@ -29,6 +33,7 @@
+     -Dgtk-wayland=false \
+     -Dstrip=true \
+     -Di18n=false \
++    -Dcpu=baseline \
+     "-Dversion-string=$ghostty_version" \
+     --summary none \
+     --prefix "$prefix_dir"
