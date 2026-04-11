@@ -1,0 +1,148 @@
+--- dxf-thumbnailer.py
++++ dxf-thumbnailer.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ #***************************************************************************
+ #*                                                                         *
+@@ -30,7 +30,7 @@
+ '''
+ Linux DXF thumbnailer.
+ 
+-This application generates a 128x128px PNG image showing the contents of a DXF
++This application generates a 512x512px PNG image showing the contents of a DXF
+ file. In order to speed up the image generation process, only a few types of
+ entities are read, so complex files might not get rendered accurately or even
+ fail to render.
+@@ -39,13 +39,49 @@
+ as a thumbnailer for dxf file type (mime type: image/x-dxf).
+ '''
+ 
+-import sys, getopt, gnomevfs, Image, ImageDraw
+-
+-opt,par = getopt.getopt(sys.argv[1:],'-s:')
+-inpfile = gnomevfs.get_local_path_from_uri(par[0])
+-outfile = par[1]
+-# inpfile = par[0]
+-# outfile = 'test.png'
++import os
++import sys
++import getopt
++from urllib.parse import urlparse, unquote
++
++from PIL import Image, ImageDraw
++
++
++def local_path_from_uri(arg):
++    """Normally receive file:// anyway so this is more portable"""
++    if arg.startswith("file:"):
++        parsed = urlparse(arg)
++        return unquote(parsed.path or "")
++    return arg
++
++
++DEFAULT_THUMB = 512
++
++opts, par = getopt.getopt(sys.argv[1:], "s:", ["size="])
++thumb = DEFAULT_THUMB
++for o, a in opts:
++    if o in ("-s", "--size"):
++        try:
++            thumb = int(a)
++        except ValueError:
++            print("error: -s/--size must be an integer", file=sys.stderr)
++            sys.exit(2)
++        if thumb < 1:
++            print("error: size must be at least 1", file=sys.stderr)
++            sys.exit(2)
++
++if not par:
++    print(
++        "usage: dxf-thumbnailer [-s N|--size=N] <input.dxf> [output.png]",
++        file=sys.stderr,
++    )
++    sys.exit(2)
++inpfile = local_path_from_uri(par[0])
++if len(par) >= 2:
++    outfile = par[1]
++else:
++    root, _ = os.path.splitext(inpfile)
++    outfile = root + ".png"
+ 
+ try:
+     objects = []
+@@ -156,49 +192,49 @@
+                     if num > ymax: ymax = num
+                 store = None
+ 
+-    print len(objects),"objects"
+-    print "bounding box",xmin,ymin,xmax,ymax
++    print(len(objects), "objects")
++    print("bounding box", xmin, ymin, xmax, ymax)
+     
+     sizex = xmax-xmin
+     sizey = ymax-ymin
+-    image = Image.new('RGB',(128,128))
++    image = Image.new("RGB", (thumb, thumb))
+     draw = ImageDraw.Draw(image)
+ 
+-    draw.rectangle((0,0,128,128),fill='#ffffff')
++    draw.rectangle((0, 0, thumb, thumb), fill="#ffffff")
+     
+     for ob in objects:
+-        print "drawing",ob
++        print("drawing", ob)
+         if ob[0] == 'line':
+-            x1 = int(((ob[1]-xmin)/sizex)*128)
+-            y1 = 128-int(((ob[2]-ymin)/sizey)*128)
+-            x2 = int(((ob[3]-xmin)/sizex)*128)
+-            y2 = 128-int(((ob[4]-ymin)/sizey)*128)
+-            draw.line((x1,y1,x2,y2),fill=0)
++            x1 = int(((ob[1] - xmin) / sizex) * thumb)
++            y1 = thumb - int(((ob[2] - ymin) / sizey) * thumb)
++            x2 = int(((ob[3] - xmin) / sizex) * thumb)
++            y2 = thumb - int(((ob[4] - ymin) / sizey) * thumb)
++            draw.line((x1, y1, x2, y2), fill=0)
+         elif ob[0] == 'polyline':
+-            x1 = int(((ob[1]-xmin)/sizex)*128)
+-            y1 = 128-int(((ob[2]-ymin)/sizey)*128)
++            x1 = int(((ob[1] - xmin) / sizex) * thumb)
++            y1 = thumb - int(((ob[2] - ymin) / sizey) * thumb)
+             done = False
+             for p in ob[3:]:
+                 if not done:
+                     lp = p
+                 else:
+-                    x2 = int(((lp-xmin)/sizex)*128)
+-                    y2 = 128-int(((p-ymin)/sizey)*128)
+-                    draw.line((x1,y1,x2,y2),fill=0)
++                    x2 = int(((lp - xmin) / sizex) * thumb)
++                    y2 = thumb - int(((p - ymin) / sizey) * thumb)
++                    draw.line((x1, y1, x2, y2), fill=0)
+                     x1 = x2
+                     y1 = y2
+                 done = not(done)
+         elif ob[0] == 'circle':
+-            x1 = int((((ob[1]-ob[3])-xmin)/sizex)*128)
+-            y1 = 128-int((((ob[2]-ob[3])-ymin)/sizey)*128)
+-            x2 = int((((ob[1]+ob[3])-xmin)/sizex)*128)
+-            y2 = 128-int((((ob[2]+ob[3])-ymin)/sizey)*128)
+-            draw.ellipse((x1,y2,x2,y1),outline=0)
++            x1 = int((((ob[1] - ob[3]) - xmin) / sizex) * thumb)
++            y1 = thumb - int((((ob[2] - ob[3]) - ymin) / sizey) * thumb)
++            x2 = int((((ob[1] + ob[3]) - xmin) / sizex) * thumb)
++            y2 = thumb - int((((ob[2] + ob[3]) - ymin) / sizey) * thumb)
++            draw.ellipse((x1, y2, x2, y1), outline=0)
+         elif ob[0] == 'arc':
+-            x1 = int((((ob[1]-ob[3])-xmin)/sizex)*128)
+-            y1 = 128-int((((ob[2]-ob[3])-ymin)/sizey)*128)
+-            x2 = int((((ob[1]+ob[3])-xmin)/sizex)*128)
+-            y2 = 128-int((((ob[2]+ob[3])-ymin)/sizey)*128)
++            x1 = int((((ob[1] - ob[3]) - xmin) / sizex) * thumb)
++            y1 = thumb - int((((ob[2] - ob[3]) - ymin) / sizey) * thumb)
++            x2 = int((((ob[1] + ob[3]) - xmin) / sizex) * thumb)
++            y2 = thumb - int((((ob[2] + ob[3]) - ymin) / sizey) * thumb)
+             start = int(ob[4])
+             end = int(ob[5])
+             draw.arc((x1,y2,x2,y1),start,end,fill=0)

@@ -1,0 +1,4 @@
+[Thumbnailer Entry]
+TryExec=/usr/bin/dxf-thumbnailer
+Exec=/usr/bin/dxf-thumbnailer -s %s %i %o
+MimeType=image/vnd.dxf;image/x-dxf;

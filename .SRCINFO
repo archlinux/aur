@@ -1,0 +1,17 @@
+pkgbase = dxf-thumbnailer
+	pkgdesc = Freedesktop thumbnailer for DXF CAD files (Python, by Yorik van Havre)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://yorik.uncreated.net/archive/scripts/dxf-thumbnailer.py
+	arch = any
+	license = GPL-2.0-or-later
+	depends = python
+	depends = python-pillow
+	source = dxf-thumbnailer.py::https://yorik.uncreated.net/archive/scripts/dxf-thumbnailer.py
+	source = dxf-thumbnailer.patch
+	source = dxf.thumbnailer
+	sha256sums = 6e9527b3581aa4431bd19cde29d2c8d40494191cde253bfc387e865c3f49bb8f
+	sha256sums = 31046005b795f832d67919940dcb03c7a7a1dd2051dee7e97e53422039f193f2
+	sha256sums = fa5202bfb72406a9bdbda4efa1fe7c45ddb6aa2101fdddd400c4688e4ffba874
+
+pkgname = dxf-thumbnailer
