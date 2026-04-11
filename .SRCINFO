@@ -1,0 +1,16 @@
+pkgbase = quien-bin
+	pkgdesc = A better WHOIS lookup tool
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/retlehs/quien
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = quien
+	conflicts = quien
+	source_x86_64 = quien-amd64-0.1.1.tar.gz::https://github.com/retlehs/quien/releases/download/v0.1.1/quien_linux_amd64.tar.gz
+	sha256sums_x86_64 = 17a8e93cab293bacc3c7fc191a63354ac6390088a1381bfb273b4a017820b98a
+	source_aarch64 = quien-arm64-0.1.1.tar.gz::https://github.com/retlehs/quien/releases/download/v0.1.1/quien_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4ab8d29c9105b3b7aa334df7b59f34ce11d3e5702b154ff46338a0baa82eea5c
+
+pkgname = quien-bin
