@@ -1,0 +1,16 @@
+pkgbase = ron-lsp-git
+	pkgdesc = An LSP and CLI for RON files that provides autocomplete, diagnostics, go to definition, code actions, and hover support based on Rust type annotations
+	pkgver = v0.1.3
+	pkgrel = 1
+	url = https://github.com/jasonjmcghee/ron-lsp
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = ron-lsp
+	conflicts = ron-lsp
+	source = git+https://github.com/jasonjmcghee/ron-lsp
+	sha256sums = SKIP
+
+pkgname = ron-lsp-git
