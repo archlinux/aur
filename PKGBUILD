@@ -1,12 +1,12 @@
 pkgname=rustmius-bin
 _pkgname=rustmius
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Une alternative locale complète à Termius pour Linux (GTK4)"
 arch=('x86_64')
 url="https://github.com/Cleboost/Rustmius"
 license=('MIT')
-depends=('libadwaita' 'gtk4' 'vte4')
+depends=('gtk4' 'vte4')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
@@ -18,7 +18,7 @@ source=(
 
 sha256sums=('1498673b59f13bdd2a5beb43d72fc8e9330599324f9a4d70bd52e1d303ad9959'
             'c8c9adc6e26cc54f2b8d8ce41a093b71b5e9e4338d6e278803d87d2a6e94422d'
-            '039e842bf0d81d136aa0fac2fd7e8ad9ce3e61abcc1f0cef96af06082ff561e8')
+            'e7e4715eb8bcb62bca4f43200d25a39d3630b4a9973c3b4b69dce534ecb17fb6')
 
 package() {
     install -Dm755 "$_pkgname-$pkgver-x86_64" "$pkgdir/usr/bin/$_pkgname"
