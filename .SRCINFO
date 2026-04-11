@@ -1,7 +1,7 @@
 pkgbase = sonicthehedgehog
 	pkgdesc = Sonic the Hedgehog game powered by the rsdkv4 engine.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitlab.com/linuxbombay/sonicthehedgehog
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = sonicthehedgehog
 	depends = wget
 	depends = sdl2
 	depends = unzip
+	depends = zenity
 	depends = yad
 	source = https://gitlab.com/linuxbombay/sonicthehedgehog/-/archive/1.0.3/sonicthehedgehog-1.0.3.tar
 	sha256sums = f96cd496410c24e524033e33f6e222be70ba84de630c06dedfdf74c05542679b
