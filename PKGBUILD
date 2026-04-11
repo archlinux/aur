@@ -1,6 +1,6 @@
 # Maintainer:  <cradlemann@gmail.com>
 pkgname=hfdownloader
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Simple go utility to download HuggingFace Models and Datasets"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ makedepends=('go')
 provides=("hfdownloader")
 conflicts=("hfdownloader-git")
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('417799deee66d043b9d2634645a1a566')
-sha256sums=('ace4d5a78abc1fe768126ac6ff3a5d40f8cbd8f97faa7446f78d032c3addb2bc')
+md5sums=('62b379c3f433a0b3cffe9865e1b00b3b')
+sha256sums=('0c656989f40a7c2d4a918854d27224ca720f8df0228449be8cb59b5887053ced')
 _dirname=HuggingFaceModelDownloader
 
 build() {
