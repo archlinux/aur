@@ -4,7 +4,7 @@
 
 pkgname=llama.cpp
 pkgver=b8762
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggml-org/llama.cpp'
