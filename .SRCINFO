@@ -1,0 +1,18 @@
+pkgbase = hyprconfig-gui-git
+	pkgdesc = C++ Dear ImGui GUI editor for Hyprland configuration files
+	pkgver = r1.master
+	pkgrel = 1
+	url = https://github.com/mehmetbayoglu/hyprconfig-gui
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc
+	depends = glfw
+	depends = mesa
+	provides = hyprconfig-gui
+	conflicts = hyprconfig-gui
+	source = git+https://github.com/mehmetbayoglu/hyprconfig-gui.git
+	sha256sums = SKIP
+
+pkgname = hyprconfig-gui-git
