@@ -1,0 +1,19 @@
+pkgbase = wondershaper-gui
+	pkgdesc = A professional graphical user interface for the wondershaper CLI tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/am-lambov/wondershaper-gui
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = wondershaper
+	depends = tk
+	depends = python
+	depends = polkit
+	source = wondershaper-gui-1.0.0.tar.gz::https://github.com/am-lambov/wondershaper-gui/archive/v1.0.0.tar.gz
+	sha256sums = e16514d4745b1ee27329bcec3c3e1577ba8fb01ef85b381123274920f1509f7a
+
+pkgname = wondershaper-gui
