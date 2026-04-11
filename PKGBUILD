@@ -3,7 +3,7 @@
 pkgname=privatebin-cli
 _bindate=$(date --rfc-3339=date)
 pkgver=2.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A powerful CLI for creating and managing PrivateBin pastes with ease'
 arch=(x86_64 aarch64)
 url='https://github.com/gearnode/privatebin'
@@ -18,8 +18,6 @@ sha256sums=('cf11851f5e76d7b8d2b90dd662eb0a3dd03cd71f10cad01fb2f81ecf23d303b2')
 
 prepare() {
   cd "${pkgname%-*}-$pkgver"
-  export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
-  go mod download
 
   # Man
   pandoc --standalone --to man -M footer=$pkgver doc/privatebin.1.md -o privatebin.1
@@ -30,6 +28,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-*}-$pkgver"
+  export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
