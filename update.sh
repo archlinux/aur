@@ -41,33 +41,16 @@ check_tools() {
     done
 }
 
-# Get the latest stable release version and SHA256
+# Get the latest nightly AppImage SHA256
 get_latest_release_info() {
-    # Get the latest stable release tag (e.g., v2.1.0, v2.3.0)
-    local latest_tag
-    latest_tag=$(curl -s "https://api.github.com/repos/lem-project/lem/releases" 2>/dev/null | \
-        jq -r '.[] | select(.tag_name | startswith("v")) | select(.prerelease == false) | .tag_name' 2>/dev/null | \
-        head -1)
+    log_info "Fetching latest nightly-latest AppImage..." >&2
 
-    if [ -z "$latest_tag" ]; then
-        log_error "Could not determine latest stable release"
-        return 1
-    fi
+    local download_url="https://github.com/lem-project/lem/releases/download/nightly-latest/Lem-x86_64.AppImage"
+    local temp_file="/tmp/lem-nightly-latest.AppImage"
 
-    log_info "Fetching latest stable release: $latest_tag" >&2
-
-    # Remove 'v' prefix to get version number
-    local version="${latest_tag#v}"
-
-    # Construct download URL for Linux tarball
-    local download_url="https://github.com/lem-project/lem/releases/download/${latest_tag}/lem-ubuntu-x86-64-${latest_tag}.tar.gz"
-    local temp_file="/tmp/lem-${version}.tar.gz"
-
-    log_info "Downloading v${version}..." >&2
-
-    # Download the tarball
+    # Download the AppImage
     curl -sL -o "$temp_file" "$download_url" 2>/dev/null || {
-        log_error "Failed to download release tarball from $download_url"
+        log_error "Failed to download nightly-latest AppImage from $download_url"
         rm -f "$temp_file"
         return 1
     }
@@ -76,8 +59,11 @@ get_latest_release_info() {
     local sha256
     sha256=$(sha256sum "$temp_file" 2>/dev/null | awk '{print $1}')
 
+    # Get current date for version string
+    local date_stamp=$(date +%Y%m%d)
+
     # Output ONLY version and SHA to stdout (no log messages!)
-    echo "$version|$sha256"
+    echo "nightly.${date_stamp}|$sha256"
 
     # Clean up
     rm -f "$temp_file"
