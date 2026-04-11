@@ -1,24 +1,27 @@
-_name=Telethon
 pkgname=python-telethon
-pkgver=1.42.0
-pkgrel=1
+pkgver=1.43.0
+pkgrel=2
 pkgdesc="Full-featured Telegram client library for Python 3"
 arch=(any)
-url="https://github.com/LonamiWebs/Telethon"
-license=('MIT')
+url="https://telethon.dev"
+license=(MIT)
 depends=('python-pyaes' 'python-rsa')
-makedepends=('python-setuptools' 'python-build' 'python-installer')
-optdepends=('python-cryptg: alternative crypto library' 'python-pysocks: socks proxy support' 'python-python-socks: socks proxy support' 'python-hachoir: parse media metadata for uploading' 'python-pillow: resize photos for uploading')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/telethon-1.42.0.tar.gz")
-sha256sums=('032e95511261d5ead719f75494c6c85ece2ce71816b54f3c65d6ccc371d6994d')
+makedepends=('python-hatchling' 'python-build' 'python-installer')
+optdepends=('python-cryptg: alternative crypto library'
+            'python-python-socks: socks proxy support'
+            'python-hachoir: parse media metadata for uploading'
+            'python-pillow: resize photos for uploading'
+            'python-isal: faster zlib and gzip compression')
+source=("https://codeberg.org/Lonami/Telethon/archive/v${pkgver}.tar.gz")
+sha256sums=('bf99ddd3b7fb20bf8b5ad95a8e4343cb7825162dfa1491689fab44e0aad2c3a9')
 
 build() {
-  cd "$srcdir/telethon-1.42.0"
+  cd "$srcdir/telethon"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/telethon-1.42.0"
+  cd "$srcdir/telethon"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
