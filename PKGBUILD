@@ -1,6 +1,6 @@
 # Maintainer: Joni Savolainen <joni@savolainen.io>
 pkgname=supersigil-lsp
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Language server for Supersigil spec documents"
 arch=('x86_64' 'aarch64')
