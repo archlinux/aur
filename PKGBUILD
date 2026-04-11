@@ -5,7 +5,7 @@
 # Maintainer: Franciszek Żebrowski <frazeb09@gmail.com>
 pkgname=tuiweather
 pkgver=0.2.30
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Simple TUI app for showing weather"
 arch=('x86_64')
@@ -25,7 +25,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-sha256sums=('ad0d100c9ed241fbd3d5eb93ce67e48ed3c904716c289daaa39d8a231ee61d15')
+sha256sums=('936f0520cb0543c9e8b6607f56fc8c480acbfd2d2ec4900fd6249987aed59dfc')
 validpgpkeys=()
 
 
