@@ -1,0 +1,19 @@
+pkgbase = rs-pug-git
+	pkgdesc = Terminal YouTube music player with mpv, yt-dlp and Lua plugin support
+	pkgver = r.1
+	pkgrel = 1
+	url = https://github.com/coldbrxthe/rs-pug
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = mpv
+	depends = yt-dlp
+	optdepends = mpv-mpris: MPRIS/playerctl support
+	provides = rs-pug
+	conflicts = rs-pug
+	source = rs-pug-git::git+https://github.com/coldbrxthe/rs-pug.git
+	sha256sums = SKIP
+
+pkgname = rs-pug-git
