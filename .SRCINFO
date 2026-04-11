@@ -1,6 +1,6 @@
 pkgbase = serial-studio
 	pkgdesc = Multi-purpose serial data visualization & processing program
-	pkgver = 3.2.6
+	pkgver = 3.2.7
 	pkgrel = 1
 	url = https://github.com/Serial-Studio/Serial-Studio
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = serial-studio
 	makedepends = git
 	makedepends = ninja
 	makedepends = openssl
+	makedepends = qt6-5compat
 	makedepends = qt6-quick3d
 	makedepends = qt6-tools
 	makedepends = pkgconf
@@ -18,8 +19,8 @@ pkgbase = serial-studio
 	depends = libgcc
 	depends = libstdc++
 	depends = qt6-base
-	depends = qt6-5compat
 	depends = qt6-declarative
+	depends = qt6-canvaspainter
 	depends = qt6-connectivity
 	depends = qt6-graphs
 	depends = qt6-serialport
@@ -30,7 +31,7 @@ pkgbase = serial-studio
 	provides = serial-studio
 	conflicts = Serial-Studio
 	conflicts = serial-studio
-	source = serial-studio::git+https://github.com/Serial-Studio/Serial-Studio.git#tag=v3.2.6
-	sha256sums = c92a9bf800cfa28e4b23a87fc18884669e3d80d4dbbd86d1f3735d8416a4267d
+	source = serial-studio::git+https://github.com/Serial-Studio/Serial-Studio.git#tag=v3.2.7
+	sha256sums = 6d794732e24e07547934a927e0cf9292a7f307d56b0868a142333d71412ac5d5
 
 pkgname = serial-studio

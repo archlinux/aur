@@ -2,7 +2,7 @@
 
 pkgname=serial-studio
 _pkgname=Serial-Studio
-pkgver=3.2.6
+pkgver=3.2.7
 pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=($CARCH)
@@ -16,8 +16,8 @@ depends=(
     libgcc
     libstdc++
     $_qt-base
-    $_qt-5compat
     $_qt-declarative
+    $_qt-canvaspainter 
     $_qt-connectivity
     $_qt-graphs
     $_qt-serialport
@@ -30,6 +30,7 @@ makedepends=(
     git
     ninja
     openssl
+    $_qt-5compat
     $_qt-quick3d
     $_qt-tools
     pkgconf
@@ -42,7 +43,7 @@ backup=()
 options=()
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('c92a9bf800cfa28e4b23a87fc18884669e3d80d4dbbd86d1f3735d8416a4267d')
+sha256sums=('6d794732e24e07547934a927e0cf9292a7f307d56b0868a142333d71412ac5d5')
 noextract=()
 
 prepare() {
@@ -66,7 +67,7 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname}"
-    install -vDm644 /LICENSE.* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm644 LICENSE.* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -vDm644 LICENSES/* -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES/"
     install -vDm755 build/app/serial-studio-gpl3 -t "${pkgdir}/usr/bin/"
     install -vDm644 app/deploy/linux/serial-studio-gpl3.desktop -t "${pkgdir}/usr/share/applications/"
