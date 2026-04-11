@@ -16,6 +16,7 @@ depends=(
   'kpty'
   'ktextwidgets'
   'qt6-multimedia'
+  'tmux'
 )
 makedepends=(
   'extra-cmake-modules>=5.240.0'
@@ -25,7 +26,6 @@ makedepends=(
 )
 optdepends=(
   'keditbookmarks: to manage bookmarks'
-  'tmux: for tmux integration'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
