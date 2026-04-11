@@ -1,6 +1,6 @@
 pkgbase = tuxmanager
 	pkgdesc = A Linux Task Manager alternative built with Qt6
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/benapetr/TuxManager
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = tuxmanager
 	depends = libgcc
 	depends = libstdc++
 	depends = qt6-base
-	source = tuxmanager-1.0.2.tar.gz::https://github.com/benapetr/TuxManager/archive/v1.0.2.tar.gz
-	sha256sums = 8b2de657a867ff4f89b50cfa2b2e9361c77a10d43b704409d2a06cbc87c247a6
+	source = tuxmanager-1.0.3.tar.gz::https://github.com/benapetr/TuxManager/archive/v1.0.3.tar.gz
+	sha256sums = 2d7edaa35f955741d35e4bef7c73f2b8bbb453c8c72890a52c048e8421966b2c
 
 pkgname = tuxmanager
