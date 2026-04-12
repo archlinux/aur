@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/dogbonewish/fluxer-tui"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'nasm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dogbonewish/fluxer-tui/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('5024193a96d64494634b19356c414fb68b791dc1ad995e99117b526e036df6b1')
 
@@ -16,13 +16,16 @@ prepare() {
     cd "$srcdir/fluxer-tui-$pkgver"
     # Force native gcc instead of x86_64-linux-gnu-gcc (fixes ring crate linking)
     mkdir -p .cargo
-    printf '[target.x86_64-unknown-linux-gnu]\nlinker = "gcc"\n' > .cargo/config.toml
+    cat > .cargo/config.toml <<EOF
+[target.x86_64-unknown-linux-gnu]
+linker = "gcc"
+EOF
 }
 
 build() {
     cd "$srcdir/fluxer-tui-$pkgver"
     rm -rf target/
-    CC=gcc AR=gcc-ar cargo build --release --locked
+    cargo build --release --locked
 }
 
 package() {
