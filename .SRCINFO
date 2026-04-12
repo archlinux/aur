@@ -1,0 +1,20 @@
+pkgbase = screensink
+	pkgdesc = KDE Plasma 6 daemon that routes window audio to the sink of the screen it's on
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/asaventon/screensink
+	install = screensink.install
+	arch = any
+	license = GPL-2.0-or-later
+	depends = kwin
+	depends = plasma-workspace
+	depends = plasma5support
+	depends = python-gobject
+	depends = python-pydbus
+	depends = python-pulsectl
+	depends = pipewire
+	depends = wireplumber
+	source = screensink-0.1.tar.gz::https://gitlab.com/asaventon/screensink/-/archive/v0.1/screensink-v0.1.tar.gz
+	sha256sums = 22c8552f13df69603ae2c8517e95cd4c4eeb827e9718bc90f221e7133f2a017e
+
+pkgname = screensink

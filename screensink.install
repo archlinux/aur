@@ -1,0 +1,30 @@
+post_install() {
+    echo ""
+    echo "==> screensink: post-install setup required (run as your normal user):"
+    echo ""
+    echo "  1. Copy the config template:"
+    echo "       mkdir -p ~/.config/screensink"
+    echo "       cp /usr/share/doc/screensink/config.example.toml ~/.config/screensink/config.toml"
+    echo "     Then edit it with your screen→sink mappings:"
+    echo "       Screen names:  kscreen-doctor -o | grep Output"
+    echo "       Sink names:    pactl list sinks short"
+    echo ""
+    echo "  2. Enable the KWin script in:"
+    echo "       System Settings → Window Management → KWin Scripts → Screensink"
+    echo "     Or from a terminal:"
+    echo "       kwriteconfig6 --file kwinrc --group Plugins --key screensinkEnabled true"
+    echo "       qdbus6 org.kde.KWin /KWin reconfigure"
+    echo ""
+    echo "  3. Enable and start the daemon:"
+    echo "       systemctl --user enable --now screensink"
+    echo ""
+    echo "  4. Watch logs:  journalctl --user -u screensink -f"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> screensink: upgraded. Restart the daemon to apply changes:"
+    echo "      systemctl --user restart screensink"
+    echo ""
+}
