@@ -1,12 +1,12 @@
 pkgbase = thrash-protect
 	pkgdesc = Simple-Stupid user-space program protecting a linux host from thrashing.
-	pkgver = 1.1.0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/tobixen/thrash-protect
 	arch = any
 	license = GPL
 	depends = python
-	source = https://github.com/tobixen/thrash-protect/archive/v1.1.0.tar.gz
-	sha256sums = 9dfbfd05c22d9f50b56ed25097e2ca5fc308e2036711ce43a15673759a9973c7
+	source = https://github.com/tobixen/thrash-protect/archive/v1.1.2.tar.gz
+	sha256sums = 3cec6468b64ff1d7afe68ba45088f6c926fc4b7cee0ae3eefb22bdfa86689c54
 
 pkgname = thrash-protect
