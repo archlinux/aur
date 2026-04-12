@@ -2,29 +2,16 @@
 pkgname=kittenspaceagency-bin
 pkgver=2026.4.10.4057
 pkgrel=1
-epoch=
 pkgdesc="Kitten Space Agency - EXPERIMENTAL"
 arch=('x86_64')
 url="https://ksa-linux.ahwoo.com"
 license=('custom')
-groups=()
 depends=('glibc' 'gcc-libs' 'dotnet-runtime-10.0')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
 options=(!strip)
-install=
-changelog=
 source=("setup_ksa_v${pkgver}.tar.gz::$url/download?file=setup_ksa_v${pkgver}.tar.gz"
-	"kittenspaceagency.png")
-noextract=()
+    "kittenspaceagency.png")
 sha256sums=('SKIP'
-            'SKIP')
-validpgpkeys=()
+    'SKIP')
 
 package() {
     install -dm755 "$pkgdir/opt/kittenspaceagency"
@@ -41,18 +28,18 @@ package() {
     chmod 755 "$pkgdir/opt/kittenspaceagency/Brutal.Monitor.Subprocess"
 
     # Launcher
-    install -Dm755 /dev/stdin "$pkgdir/usr/bin/kittenspaceagency" << 'EOF'
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/kittenspaceagency" <<'EOF'
 #!/bin/bash
 cd /opt/kittenspaceagency
 exec ./KSA "$@"
 EOF
 
-        # Install icon
+    # Install icon
     install -Dm644 "$srcdir/kittenspaceagency.png" \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/kittenspaceagency.png"
 
     # Install desktop entry
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/kittenspaceagency.desktop" << 'EOF'
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/kittenspaceagency.desktop" <<'EOF'
 [Desktop Entry]
 Name=Kitten Space Agency
 Comment=Experimental build of Kitten Space Agency
@@ -65,4 +52,3 @@ StartupNotify=true
 EOF
 
 }
-
