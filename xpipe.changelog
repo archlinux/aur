@@ -1,5 +1,2 @@
-- Fix multi identities not correctly retaining non-synced identities when edited on another system
-- Multi identities now show and preserve the order of inaccessible identities as well
-- Fix powershell command failure detection being broken in some places, leading to various issues in powershell environments
-- Fix NullPointer when executing automated browser actions
-- Fix rare storage race condition
+- Add integration for Passwork password manager
+- Fix Hetzner cloud entry always showing up in connection search
