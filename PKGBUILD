@@ -27,6 +27,11 @@ build() {
   make
 }
 
+check() {
+  cd "$srcdir/${pkgname%-git}"
+  make check
+}
+
 package() {
   cd "$srcdir/${pkgname%-git}"
   make DESTDIR=$pkgdir install
