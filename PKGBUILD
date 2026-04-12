@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/dogbonewish/fluxer-tui"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('rust' 'cargo' 'git' 'clang' 'nasm')
+makedepends=('rust' 'cargo' 'git' 'nasm')
 provides=('fluxer-tui')
 conflicts=('fluxer-tui')
 source=("fluxer-tui::git+https://github.com/dogbonewish/fluxer-tui.git")
@@ -29,7 +29,7 @@ prepare() {
 build() {
     cd "fluxer-tui"
     rm -rf target/
-    CC=gcc AR=ar cargo build --release --locked
+    cargo build --release --locked
 }
 
 package() {

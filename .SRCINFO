@@ -8,7 +8,6 @@ pkgbase = fluxer-tui-git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
-	makedepends = clang
 	makedepends = nasm
 	depends = gcc-libs
 	provides = fluxer-tui
