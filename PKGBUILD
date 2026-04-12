@@ -6,12 +6,12 @@
 
 _pkgname="xone"
 pkgname="xone-dkms-git"
-pkgver=0.4.12.r0.gee5af99
+pkgver=0.5.8.r0.gf2aa9fe
 pkgrel=2
 pkgdesc='Modern Linux driver for Xbox One and Xbox Series X|S controllers'
 url="https://github.com/dlundqvist/xone"
 license=('GPL-2.0-or-later')
-arch=('x86_64')
+arch=('any')
 
 depends=(
   'dkms'
