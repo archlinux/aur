@@ -1,9 +1,9 @@
 # Maintainer: artist for Sonic-DE
 
 pkgname=sonic-sysguard-library
-pkgver=6.6.3
+pkgver=6.6.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 pkgdesc='Library for Sonic-DE to retrieve information on the current status of computer hardware'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-sysguard-library'
@@ -49,5 +49,4 @@ package() {
   setcap CAP_NET_RAW=+ep "$pkgdir"/usr/lib/ksysguard/ksgrd_network_helper
 }
 
-sha256sums=('97626413278f514ed641fdb3c380dcce90621567365345f3979d492feee0f9ce')
-
+sha256sums=('df31961add8a39b8e3febcb546bc37608244e77bfeb223a194f365f9287ea343')
