@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://github.com/liixini/skwd-daemon'
 license=('MIT')
 makedepends=('cargo' 'gcc' 'pkgconf')
-depends=('gcc-libs')
+depends=('gcc-libs' 'sqlite')
 optdepends=(
   'ffmpeg: video wallpaper thumbnail extraction and conversion'
   'ollama: local LLM for automated wallpaper tagging'
