@@ -12,7 +12,7 @@ optdepends=('libnotify: desktop notifications on auth expiry'
 conflicts=('waybar-claude-usage')
 provides=('waybar-claude-usage')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mryll/claudebar/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('054b56235190427c7c95e32a4893df89ab3e61dadc62e77ceec3b912ae54c964')
+sha256sums=('05b886c4f55eff2f25c469bff3cf36e54dad042f3d6d11d619081d758f088c55')
 
 package() {
     cd "$pkgname-$pkgver"
