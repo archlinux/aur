@@ -3,8 +3,8 @@
 # Contributor: lukpod
 
 pkgname=amule-git
-pkgver=2.3.3.r60.9ceeaa68b
-pkgrel=1.1
+pkgver=2.3.3.r109.b59c2f300
+pkgrel=1
 pkgdesc="Client for the eD2k and Kad networks"
 arch=(x86_64)
 url="https://amule.org/"
@@ -15,12 +15,10 @@ provides=(amule amule-daemon)
 conflicts=(amule)
 source=("git+https://github.com/amule-project/amule.git"
         #git+https://repo.or.cz/amule.git
-		amule-specify_cmake3.5.patch
-        amule-boost1.89.patch
+		#amule-specify_cmake3.5.patch
+        #amule-boost1.89.patch
         amuled.systemd amuleweb.systemd amule.sysusers amule.tmpfiles)
 sha256sums=('SKIP'
-            '008c0dcd838e951730b2609ddf5bf1e4dae60ae3ff8cbd7eba2c0ea866bb2ed1'
-            '3fc375d4f0afd56ee9e861a15e14339489efbed9faebbbd408121d689bb3cfc7'
             '20ac6b60c5f3bf49c0b080dfc02409da3c9d01b154344188008c6a75ca69681e'
             'f4f43b1154ddccc9036a4291a58c6715f097b171fec62ea7aead0c9d9fa654f2'
             'c4ca658ab4105b3b90e0bb3efcc8121eca1c4d873787db1ed4f637925c16d502'
@@ -28,8 +26,8 @@ sha256sums=('SKIP'
 
 prepare() {
   cd amule
-  patch -Np1 -i ../amule-specify_cmake3.5.patch
-  patch -Np1 -i ../amule-boost1.89.patch
+  #patch -Np1 -i ../amule-specify_cmake3.5.patch
+  #patch -Np1 -i ../amule-boost1.89.patch
 }
 
 pkgver() {
