@@ -1,7 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=trice
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="🟢 super fast 🚀 tiny 🐥 𝘾 printf-look-and-feel ✍ trace code, in ⚡ interrupts ⚡ too ‼️, and real-time PC 💻 logging 👀"
 arch=('x86_64' 'aarch64')
