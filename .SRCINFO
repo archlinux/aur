@@ -1,0 +1,18 @@
+pkgbase = naruto-git
+	pkgdesc = Smart AUR helper CLI (development version)
+	pkgver = r3.ebb81c1
+	pkgrel = 1
+	url = https://github.com/assapir/naruto
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = pnpm
+	depends = nodejs
+	provides = naruto
+	conflicts = naruto
+	options = !debug
+	source = git+https://github.com/assapir/naruto.git
+	sha256sums = SKIP
+
+pkgname = naruto-git

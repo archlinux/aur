@@ -1,0 +1,6 @@
+/naruto/
+/pkg/
+/src/
+/*.pkg.tar.*
+/*.src.tar.*
+/*.log
