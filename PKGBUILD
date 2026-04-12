@@ -1,6 +1,6 @@
 # Maintainer: MCB-SMART-BOY <mcb2720838051@gmail.com>
 pkgname=gridix
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Fast, secure, cross-platform database management tool with Helix/Vim keybindings"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('gtk3' 'xdotool')
 makedepends=('cargo' 'git' 'clang' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MCB-SMART-BOY/Gridix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f1f02c1dbb2f4aa3a2a063c68b317ef531f694e0cb20fef5aa2aff3d70df9779')
+sha256sums=('831f21de81668f2c5731a9d222a9fb3bbfd22ca254b94cfb450f3df50d9f8975')
 
 prepare() {
     cd "Gridix-$pkgver"
