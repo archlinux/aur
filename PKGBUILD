@@ -2,7 +2,7 @@
 # shellcheck shell=bash
 
 pkgname=sddm-hyprland
-pkgver=0.r22.g3c5fab5
+pkgver=0.r23.gfcd3e58
 pkgrel=1
 pkgdesc="SDDM Wayland configuration for running the greeter on Hyprland"
 arch=('any')
