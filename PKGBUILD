@@ -2,17 +2,17 @@
 
 pkgname=chunghwa-post-webatm
 epoch=1
-pkgver=1.2406.11.1
+pkgver=1.2508.12.1
 pkgrel=1
 pkgdesc='WebATM plugin for Chunghwa Post (中華郵政 WebATM 元件)'
 arch=(any)
 url='https://webatm.post.gov.tw/'
 license=(unknown)
-depends=(gnutls pcsclite sh)
+depends=(gnutls pcsclite sh wine)
 makedepends=(msitools gendesk perl-image-exiftool p7zip imagemagick)
 source=("ATMSetup-$pkgver.msi"::"https://webatm.post.gov.tw/postatm/cab/ATMSetup.msi"
         "$pkgname")
-sha256sums=('8e72448a6cc78821ea5d7e84ce92399fc2a26ad9226effb403396af68db3c615'
+sha256sums=('32f83b1c0830c492311f0cb6eb0f3b76db5f65496322f73c5560b750a47dfa4b'
             '2a21dba5dea4132d3693cf3d6332cee2f3a0be650f0e19e76ece27cd834abb75')
 
 prepare() {
@@ -36,10 +36,6 @@ build() {
 }
 
 package() {
-  # Per https://bugs.winehq.org/show_bug.cgi?id=54661, 32-bit winscard.dll will be supported through wow64 thunks
-  # Keep wine-wow64 here, so that this package can be built with only official packages
-  depends+=(wine-wow64)
-
   install -Dm755 $pkgname -t "$pkgdir"/usr/bin
   install -Dm644 ATMXHRService.exe -t "$pkgdir"/usr/share/$pkgname
   install -Dm644 cert.pem -t "$pkgdir"/usr/share/$pkgname
