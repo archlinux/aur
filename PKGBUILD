@@ -1,6 +1,6 @@
 # Maintainer: Igor Kalicinski <igorkalicinski@gmail.com>
 pkgname=twig-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Lightweight Git GUI with native Wayland support — lighter than the rest"
 arch=('x86_64')
@@ -11,14 +11,19 @@ provides=('twig')
 conflicts=('twig' 'twig-git')
 options=('!strip')
 
-source_x86_64=("$pkgname-$pkgver.AppImage::https://github.com/hoxton314/git-twig/releases/download/v${pkgver}/Twig_${pkgver}_amd64.AppImage"
+source_x86_64=("$pkgname-$pkgver.deb::https://github.com/hoxton314/git-twig/releases/download/v${pkgver}/Twig_${pkgver}_amd64.deb"
                "twig.desktop::https://github.com/hoxton314/git-twig/releases/download/v${pkgver}/twig.desktop"
                "twig.png::https://github.com/hoxton314/git-twig/releases/download/v${pkgver}/twig.png")
 sha256sums_x86_64=('SKIP' 'SKIP' 'SKIP')
 
+prepare() {
+  ar x "$pkgname-$pkgver.deb"
+  tar xf data.tar.gz
+}
+
 package() {
-  # Install AppImage binary
-  install -Dm755 "$pkgname-$pkgver.AppImage" "$pkgdir/usr/bin/twig"
+  # Install binary (dynamically linked, uses system WebKitGTK)
+  install -Dm755 "usr/bin/twig" "$pkgdir/usr/bin/twig"
 
   # Install desktop entry
   install -Dm644 "twig.desktop" "$pkgdir/usr/share/applications/twig.desktop"
