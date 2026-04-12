@@ -1,19 +1,19 @@
 # Maintainer: Elias Elwyn <a@jthvai.net>
 
 pkgname=perl-debug-adapter
-pkgver=1.0.13
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Debug Adapter Protocol server for Perl'
 license=('MIT')
 
 url='https://github.com/Nihilus118/perl-debug-adapter'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Nihilus118/perl-debug-adapter/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5a72f6245e67b5476c3ed0df4c319c34476ebc42fcc232581a942428da9b31fa')
+sha256sums=('cd637e2075aabe91044593899e0d4277bb3bb315c6d7db646cfa5b09150a3ac2')
 
 arch=(any)
 depends=(nodejs perl perl-padwalker sh)
 # makedepends=(npm)
-# https://github.com/nodejs/corepack#utility-commands
+makedepends=(corepack)
 _npm="corepack npm"
 
 build() {
