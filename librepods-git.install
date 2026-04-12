@@ -14,8 +14,19 @@ post_install() {
 monitor.bluez.properties = {
   # Enable dummy AVRCP player for proper media control support
   # This is required for AirPods and other devices to send play/pause/skip commands
+  bluez5.dummy-avrcp-player = true
 }
 EOF
+        systemctl --user restart wireplumber
+    fi
+}
+
+post_upgrade() {
+    # fix missing avrcp field for existing installs
+    local conf_file="$HOME/.config/wireplumber/wireplumber.conf.d/51-bluez-avrcp.conf"
+    if [ -f "$conf_file" ] && ! grep -q "bluez5.dummy-avrcp-player" "$conf_file"; then
+        echo "    Updating 51-bluez-avrcp.conf to include missing avrcp field..."
+        sed -i '/monitor.bluez.properties = {/a \  bluez5.dummy-avrcp-player = true' "$conf_file"
         systemctl --user restart wireplumber
     fi
 }
