@@ -1,6 +1,6 @@
 # Maintainer: mrksn <17046820+mrksn@users.noreply.github.com>
 pkgname=streamdockd-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="StreamDock daemon — USB HID driver + web control UI for StreamDock macro pads"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     "sdk-${_sdk_commit}.tar.gz::https://github.com/MiraboxSpace/StreamDock-Device-SDK/archive/${_sdk_commit}.tar.gz"
 )
 sha256sums=(
-    '58e432f5aeca9c1a4bc242f1e8b238d6b80e444fc1964a6b925fb5b086536c75'
+    '4448748e7a7d6351c06892ec5443e92b96ed7b8c5727b5a616d8505668fccd6d'
     '4c9db9f155fbaa8747914c36e12cf90e485b05c5a57bdf173a79ee1746c66266'
 )
 
