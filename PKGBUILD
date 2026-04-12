@@ -1,7 +1,7 @@
 # Maintainer: Juan Roa <hello@juanroa.dev>
 pkgname=athas
-pkgver=0.4.4
-pkgrel=2
+pkgver=0.4.5
+pkgrel=1
 pkgdesc="Lightweight code editor built with React, TypeScript, and Tauri"
 arch=('x86_64' 'aarch64')
 url="https://athas.dev"
@@ -13,8 +13,8 @@ _source_name=athas
 source=("${_source_name}-${pkgver}.tar.gz::https://github.com/athasdev/athas/archive/refs/tags/v${pkgver}.tar.gz"
         '0001-add-missing-js-deps-and-swift-cli-override.patch'
         '0002-add-packaging-tree-sitter-bootstrap-script.patch')
-sha256sums=('73e91ca7668a8f7b1eadf538e87a31d6d67c333e20d99b3effd2789a493b6646'
-            '2ac0748e17a5971f6a47f3f6acfd7f01b7b1287e473576a0a28d706613b4f939'
+sha256sums=('813c9b0a6159c38c4a3e1126d01126870b153e677e660a223920e1d943d6905e'
+            '8f74e00d2051ff1a330b8cb18757ce29742c6c228b888e32d02eb7b821355e89'
             'bc65eec041814fbab5b7e4336d633abe6975227cd630e92ddf07f69a3624e492')
 
 _builddir="${_source_name}-${pkgver}"
@@ -45,10 +45,14 @@ build() {
 
 	local cargo_home="${srcdir}/cargo"
 	local cargo_target="${srcdir}/target"
+	local debug_prefix="/usr/src/debug/${pkgname}"
 
 	export CFLAGS="${CFLAGS/-flto=auto/}"
 	export CXXFLAGS="${CXXFLAGS/-flto=auto/}"
 	export LDFLAGS="${LDFLAGS/-flto=auto/}"
+	export CFLAGS="${CFLAGS} -ffile-prefix-map=${srcdir}=${debug_prefix}"
+	export CXXFLAGS="${CXXFLAGS} -ffile-prefix-map=${srcdir}=${debug_prefix}"
+	export RUSTFLAGS="${RUSTFLAGS:+${RUSTFLAGS} }--remap-path-prefix=${srcdir}=${debug_prefix}"
 	export CARGO_HOME="${cargo_home}"
 	export CARGO_TARGET_DIR="${cargo_target}"
 	export npm_config_fetch_retries=5
