@@ -1,6 +1,6 @@
 # Maintainer: yagybaba <https://github.com/yagybaba>
 pkgname=waybar-ycal
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Google Calendar + Tasks popup widget for Waybar on Wayland"
 arch=('any')
