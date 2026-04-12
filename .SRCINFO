@@ -1,6 +1,6 @@
 pkgbase = libodd-git
 	pkgdesc = a troll
-	pkgver = r2.074b1ec
+	pkgver = r4.154cd88
 	pkgrel = 1
 	url = https://github.com/TheOddCell/libodd
 	arch = any
