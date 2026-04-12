@@ -1,0 +1,13 @@
+post_install() {
+  echo ">>> Enable the daemon with:"
+  echo ">>>   systemctl --user enable --now skwd-daemon.service"
+}
+
+post_upgrade() {
+  echo ">>> Restart the daemon with:"
+  echo ">>>   systemctl --user restart skwd-daemon.service"
+}
+
+pre_remove() {
+  echo ">>> Disabling skwd-daemon service..."
+}

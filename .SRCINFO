@@ -1,0 +1,18 @@
+pkgbase = skwd-daemon
+	pkgdesc = Daemon for Skwd Shell, a collection of Quickshell programs and widgets
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/liixini/skwd-daemon
+	install = skwd-daemon.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	optdepends = ffmpeg: video wallpaper thumbnail extraction and conversion
+	optdepends = ollama: local LLM for automated wallpaper tagging
+	optdepends = steamcmd: Steam Workshop Wallpaper Engine downloads
+	optdepends = linux-wallpaperengine: Wallpaper Engine scene rendering
+	source = skwd-daemon::git+https://github.com/liixini/skwd-daemon.git
+	sha256sums = SKIP
+
+pkgname = skwd-daemon
