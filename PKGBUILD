@@ -1,5 +1,5 @@
 pkgname=nodotify
-pkgver=2.2.0
+pkgver=2.2.7
 pkgrel=1
 pkgdesc="t.me/nodotify | music player"
 arch=('x86_64')
