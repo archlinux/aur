@@ -3,8 +3,8 @@
 
 pkgname=idescriptor
 _srcname=iDescriptor
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="A free, open-source, and cross-platform iDevice management tool"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/${_srcname}/${_srcname}"
@@ -42,13 +42,16 @@ depends=(
 	'gst-plugins-bad'
 	'gst-plugins-ugly'
 	'gst-libav'
+	'sqlite'
 )
-makedepends=('git' 'cmake' 'go')
+makedepends=('git' 'cargo' 'cmake' 'go')
 source=("git+${url}.git#tag=v${pkgver}"
 	"git+https://github.com/iDescriptor/uxplay.git"
 	"git+https://github.com/uncor3/libipatool-go.git"
+	"git+https://github.com/uncor3/idevice.git"
 	"git+https://github.com/libZQT/ZUpdater.git")
-sha256sums=('8f77628776d3f32cfa76bb77dfed37e0f72ea6cee43276dfef9c5c2b62c3736c'
+sha256sums=('fae4d5bd3f86c5268ce6d6f286eb8c9d403472ad4912a0d8e159cbb82bae7da5'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -60,8 +63,13 @@ prepare() {
 	git submodule init
 	git config submodule.lib/uxplay.url "${srcdir}/uxplay"
 	git config submodule.lib/ipatool-go.url "${srcdir}/libipatool-go"
+	git config submodule.lib/idevice-rs.url "${srcdir}/idevice"
 	git config submodule.lib/zupdater.url "${srcdir}/ZUpdater"
 	git -c protocol.file.allow=always submodule update
+
+	pushd src/rust
+	cargo fetch --locked --target host-tuple
+	popd
 
 	cd lib/ipatool-go
 	export GOPATH="${srcdir}"
@@ -69,6 +77,9 @@ prepare() {
 }
 
 build() {
+	export CFLAGS+=" -ffat-lto-objects"
+	export CXXFLAGS+=" -ffat-lto-objects"
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	local cmake_options=(
 		-B build
 		-S "${_srcname}"
