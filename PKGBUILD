@@ -11,11 +11,6 @@ makedepends=('git')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
   cd "$pkgname"
 
