@@ -1,10 +1,11 @@
 pkgbase = animeko-appimage
 	pkgdesc = 集找番、追番、看番的一站式弹幕追番平台
 	pkgver = 5.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-ani/animeko/
 	arch = x86_64
 	license = AGPL-3.0-or-later
+	makedepends = gcc
 	depends = vlc-plugin-ffmpeg
 	depends = vlc-plugin-dvb
 	depends = vlc-plugin-pulse
@@ -14,6 +15,10 @@ pkgbase = animeko-appimage
 	conflicts = animeko
 	noextract = ani-5.4.3-linux-x86_64.appimage
 	options = !strip
+	source = animeko-wrapper.sh
+	source = animeko-setenv-fix.c
+	sha256sums = SKIP
+	sha256sums = SKIP
 	source_x86_64 = https://github.com/open-ani/animeko/releases/download/v5.4.3/ani-5.4.3-linux-x86_64.appimage
 	sha256sums_x86_64 = f82590829855c70d6ad6010c1a4c88c62fdbbc284d2be5a66c938e1b49fd0344
 
