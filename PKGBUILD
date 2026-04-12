@@ -1,6 +1,6 @@
 # Maintainer: jaoppb <joaopedroperes06@gmail.com>
 pkgname=cranky-git
-pkgver=0.1.2.r0.g1234567
+pkgver=0.2.0.r0.g1234567
 pkgrel=1
 pkgdesc="A minimalist, performant, and modular bar for Hyprland (git version)"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$pkgname"
 	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "0.1.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+		printf "0.2.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
