@@ -1,4 +1,4 @@
-pkgver=0.1.2
+pkgver=0.2.0
 # Maintainer: James Condron <james@zero-internet.org.uk>
 pkgname=threes
 pkgrel=1
@@ -16,7 +16,7 @@ source=(
     "threes.service"
     "10-config.env"
 )
-sha256sums=('380ae81eea12cf4c61d1f869b0faa8171435ccdb03a3b4b22db73ad05747ba41'
+sha256sums=('13db390881057fa5ba8e58c2e2820e3573cef44f2ad662aed0a67e836112bb63'
             'db96ac71314885e915fc97f54bb5d391fb982dc3f9e6204513e1090153ec5bfa'
             '66048b51f4a8a524f4325c9229997796c45efc804520c627ab4df4551d98008b')
 
