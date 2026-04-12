@@ -1,8 +1,8 @@
 # Maintainer: MiguelRegueiro
 
 pkgname=elio
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Terminal-native file manager with rich previews, inline images, and mouse support'
 arch=('x86_64')
 url='https://github.com/elio-fm/elio'
@@ -19,7 +19,7 @@ optdepends=(
   'libarchive: archive and ISO listing fallback through bsdtar'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://crates.io/api/v1/crates/${pkgname}/${pkgver}/download")
-sha256sums=('a03521ddfde748a4454e9b1f0288ea69d8fb37f62d0331a79fa11f5a9ada01ae')
+sha256sums=('593ef72c525bd05e871e6b59e83e39459d3334d94df6d1c442df29d9867d8921')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
