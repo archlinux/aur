@@ -1,6 +1,6 @@
 pkgbase = libosmocore
 	pkgdesc = Osmocom core libraries
-	pkgver = 1.11.3
+	pkgver = 1.13.1
 	pkgrel = 1
 	url = https://osmocom.org/projects/libosmocore/
 	arch = armv7h
@@ -27,7 +27,7 @@ pkgbase = libosmocore
 	provides = libosmousb.so=0-64
 	provides = libosmovty.so=13-64
 	conflicts = libosmocore-git
-	source = https://downloads.osmocom.org/releases/libosmocore/libosmocore-1.11.3.tar.bz2
-	sha256sums = 58052b6f9c0582afc33ff5f213fea0d2f00123fb12a52baf7415ca90020753f4
+	source = https://downloads.osmocom.org/releases/libosmocore/libosmocore-1.13.1.tar.bz2
+	sha256sums = b985aeec75f3340a59fb5ab1cb798a92a15de2ffa46d2ce8281c433b9cbed794
 
 pkgname = libosmocore
