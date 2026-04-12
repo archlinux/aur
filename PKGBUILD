@@ -1,4 +1,4 @@
-# Maintainer: <your name here>
+# Maintainer: zeakz <zeakz@protonmail.com>
 # Based on systemd-git by Thorsten Toepper <atsutane-aur at freethoughts dot de>
 # Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Based on core/systemd by Christian Hesse <mail@eworm.de>
