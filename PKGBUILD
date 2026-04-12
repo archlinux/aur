@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://github.com/liixini/skwd-daemon'
 license=('MIT')
 makedepends=('cargo' 'gcc' 'pkgconf')
-depends=('gcc-libs' 'sqlite')
+depends=('gcc-libs')
 optdepends=(
   'ffmpeg: video wallpaper thumbnail extraction and conversion'
   'ollama: local LLM for automated wallpaper tagging'
@@ -33,6 +33,7 @@ build() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export CFLAGS="${CFLAGS//-flto*([^ ])/}"
   cargo build --frozen --release
 }
 
