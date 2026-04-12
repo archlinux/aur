@@ -4,7 +4,7 @@
 pkgname=dosbox-staging-git
 _pkgname=dosbox-staging
 pkgver=0.82.0.alpha.3587.g48c98ed84
-pkgrel=1
+pkgrel=2
 pkgdesc="A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems"
 arch=('x86_64')
 url="https://github.com/dosbox-staging/dosbox-staging"
