@@ -1,6 +1,6 @@
 # Maintainer: Ilyas Turki <ilyasturki at gmail dot com>
 pkgname=dircmp
-pkgver=1.0.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Terminal TUI for comparing two directories side by side"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('rclone: remote directory support')
 conflicts=('dircmp-bin')
 source=("https://registry.npmjs.org/@ilyasturki/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('3425a5c247455bec366df67c9c131f54edb12222cd6eecd1631fc3f9d2033e31')
+sha256sums=('b0300ac5a8e7c6334589caa6f0170e9e95826fc44147f9338ce793102c2aca97')
 
 package() {
     npm install -g \
