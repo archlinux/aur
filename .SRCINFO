@@ -1,7 +1,7 @@
 pkgbase = gruvbox-plus-icon-theme-git
 	pkgdesc = Icon theme based on Gruvbox color scheme
-	pkgver = 5.3.1.r196.gc82d485
-	pkgrel = 2
+	pkgver = 6.3.0.r2120.gd176a49
+	pkgrel = 1
 	url = https://github.com/SylEleuth/gruvbox-plus-icon-pack
 	arch = any
 	license = GPL3
