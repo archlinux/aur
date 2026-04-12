@@ -1,5 +1,5 @@
 pkgname=dcr
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Cargo-like utility to manage C/C++ projects"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=(
   'clang: build C/C++ projects with Clang'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5c201e0860b3c6f6d8fbcfa48e9f72a8f070e9a9aaa4106dd1d2b32edc33acfc')
+sha256sums=('70db466a7a41a129bebbe7052f1952e9171920a577e61f04e19414d66f165b86')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
