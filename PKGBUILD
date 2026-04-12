@@ -1,15 +1,15 @@
 # Maintainer: Marco R. <thomasschmidt45@gmx.net>
 pkgname=friendiqa
-pkgver=0.6.9
+pkgver=0.7
 pkgrel=1
 pkgdesc="Client for social network Friendica"
 arch=('any')
-url="https://git.friendi.ca/lubuwest/Friendiqa"
+url="https://codeberg.org/lubuwest/Friendiqa"
 license=('GPL3')
 makedepends=('cmake')
-depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia' 'qt6-networkauth')
-source=("$pkgname-$pkgver.tar.gz::https://git.friendi.ca/lubuwest/Friendiqa/archive/v${pkgver}.tar.gz")
-md5sums=('501d776b29ef1e6110cf384aaa1ca2bb') #generate with 'makepkg -g'
+depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia' 'qt6-networkauth' 'qt6-imageformats')
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/lubuwest/Friendiqa/archive/v${pkgver}.tar.gz")
+md5sums=('f124144f084612797ea501f6b027f96c') #generate with 'makepkg -g'
 
 build() {
   cmake -B build -S "friendiqa\src" \
