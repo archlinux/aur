@@ -2,7 +2,7 @@
 
 _pkgname="kmux"
 pkgname="$_pkgname-git"
-pkgver=26.04.0.r3.g6e8f348
+pkgver=26.04.0.r26.g7666762
 pkgrel=1
 pkgdesc='tmux client based on Konsole'
 url="https://github.com/futpib/$_pkgname"
@@ -66,7 +66,7 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCMAKE_INSTALL_LIBDIR='lib'
+    -DKDE_INSTALL_LIBDIR='lib'
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
