@@ -1,0 +1,20 @@
+pkgbase = rmpv-git
+	pkgdesc = MPD → MPV bridge + YouTube streamer
+	pkgver = r22.9cd67a0
+	pkgrel = 1
+	url = https://github.com/Trifalic47/rmpv
+	install = rmpv.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = mpv
+	depends = yt-dlp
+	depends = mpc
+	depends = mpd
+	depends = rmpc
+	provides = rmpv
+	conflicts = rmpv
+	source = rmpv-git::git+https://github.com/Trifalic47/rmpv.git
+	sha256sums = SKIP
+
+pkgname = rmpv-git
