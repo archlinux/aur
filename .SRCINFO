@@ -8,6 +8,8 @@ pkgbase = vita-presence-rs
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
+	provides = vita-presence-rs
+	conflicts = vita-presence-rs-bin
 	source = vita-presence-rs-0.1.0.tar.gz::https://github.com/krypt0graphy/vita-presence-rs/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = c8662a300cc44e2a2cae80e66c6fa61a3d3e6e86f7cc9906f0928c0f6f77cd5b
 
