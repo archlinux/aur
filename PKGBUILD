@@ -2,7 +2,7 @@
 
 _plug=fpng
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r7.544029c
+pkgver=r13.0a5ac6b
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("${_plug}::git+https://github.com/Mikewando/vsfpng.git"
   '0001-Add-R73-compatibility-build-option.patch')
 b2sums=(
   'SKIP'
-  '964363a77ffe1c41e24eba4aa256637ed0d877749b8132c06b5f0ac9fb92526878273690deb08b9a2a1165cb0ef2c1276a14656c79a804997908f8d80c078b61'
+  'f286611f00604b40350f8ec9437cb0377eb4d72319b1228c5ce802fb3756335e683c1a62863923ffa695eae43fe4056e1a9a8cab4245e7c2e55437b59072a4b3'
 )
 
 pkgver() {

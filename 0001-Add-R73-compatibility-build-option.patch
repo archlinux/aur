@@ -1,14 +1,14 @@
-From 8204f3ce4746c66166107bddc035701eb8a3f877 Mon Sep 17 00:00:00 2001
+From a378efbd4189954656297c58377338acd8ff348c Mon Sep 17 00:00:00 2001
 From: quietvoid <tcChlisop0@gmail.com>
 Date: Sat, 4 Apr 2026 21:07:12 -0400
 Subject: [PATCH] Add R73 compatibility build option
 
 ---
  .gitmodules       |  3 ---
- meson.build       | 20 +++++++++++++++++---
+ meson.build       | 28 ++++++++++++++++++++++------
  meson_options.txt |  5 +++++
  vapoursynth       |  1 -
- 4 files changed, 22 insertions(+), 7 deletions(-)
+ 4 files changed, 27 insertions(+), 10 deletions(-)
  delete mode 100644 .gitmodules
  create mode 100644 meson_options.txt
  delete mode 160000 vapoursynth
@@ -23,10 +23,10 @@ index 283b917..0000000
 -	path = vapoursynth
 -	url = https://github.com/vapoursynth/vapoursynth.git
 diff --git a/meson.build b/meson.build
-index 0e1d351..c4b97a4 100644
+index ff48dd0..7db152b 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -40,13 +40,27 @@ libs += static_library('fpng',
+@@ -40,17 +40,33 @@ libs += static_library('fpng',
      cpp_args: fpng_cpp_args
  )
  
@@ -57,6 +57,15 @@ index 0e1d351..c4b97a4 100644
    link_with: libs,
    gnu_symbol_visibility: 'hidden'
  )
+ 
+-py.install_sources(
+-  'python/vsfpng.py'
+-)
++if not vs_compat
++  py.install_sources(
++    'python/vsfpng.py'
++  )
++endif
 diff --git a/meson_options.txt b/meson_options.txt
 new file mode 100644
 index 0000000..3c86e52
