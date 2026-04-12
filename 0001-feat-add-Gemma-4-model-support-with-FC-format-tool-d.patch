@@ -1,0 +1,586 @@
+From 191032015c2b6f529ee413898365a955ccf643f5 Mon Sep 17 00:00:00 2001
+From: Ewout van Mansom <ewout@vanmansom.name>
+Date: Sat, 11 Apr 2026 22:07:36 +0200
+Subject: [PATCH 1/4] feat: add Gemma 4 model support with FC-format tool
+ descriptions
+
+Add Gemma 4 provider transform (Google FC calling format), system prompt
+adjustments for structured tool calling, essential tool filtering for
+context-limited models, and shortDescription/shortHint fields on all
+tools for concise FC-format presentation.
+---
+ packages/opencode/src/provider/transform.ts |   3 +
+ packages/opencode/src/session/prompt.ts     |  98 +++++++++++--
+ packages/opencode/src/session/system.ts     | 148 ++++++++++++++++++++
+ packages/opencode/src/tool/bash.ts          |   2 +
+ packages/opencode/src/tool/codesearch.ts    |   2 +
+ packages/opencode/src/tool/glob.ts          |   2 +
+ packages/opencode/src/tool/grep.ts          |   2 +
+ packages/opencode/src/tool/ls.ts            |   2 +
+ packages/opencode/src/tool/lsp.ts           |   2 +
+ packages/opencode/src/tool/plan.ts          |   2 +
+ packages/opencode/src/tool/question.ts      |   2 +
+ packages/opencode/src/tool/read.ts          |   2 +
+ packages/opencode/src/tool/skill.ts         |   2 +
+ packages/opencode/src/tool/task.ts          |   2 +
+ packages/opencode/src/tool/todo.ts          |   2 +
+ packages/opencode/src/tool/tool.ts          |   2 +
+ packages/opencode/src/tool/webfetch.ts      |   2 +
+ packages/opencode/src/tool/websearch.ts     |   2 +
+ 18 files changed, 267 insertions(+), 12 deletions(-)
+
+diff --git a/packages/opencode/src/provider/transform.ts b/packages/opencode/src/provider/transform.ts
+index 111832099..e1b8b6472 100644
+--- a/packages/opencode/src/provider/transform.ts
++++ b/packages/opencode/src/provider/transform.ts
+@@ -325,6 +325,7 @@ export namespace ProviderTransform {
+     const id = model.id.toLowerCase()
+     if (id.includes("qwen")) return 0.55
+     if (id.includes("claude")) return undefined
++    if (id.includes("gemma-4") || id.includes("gemma4")) return 1.0
+     if (id.includes("gemini")) return 1.0
+     if (id.includes("glm-4.6")) return 1.0
+     if (id.includes("glm-4.7")) return 1.0
+@@ -342,6 +343,7 @@ export namespace ProviderTransform {
+   export function topP(model: Provider.Model) {
+     const id = model.id.toLowerCase()
+     if (id.includes("qwen")) return 1
++    if (id.includes("gemma-4") || id.includes("gemma4")) return 0.95
+     if (["minimax-m2", "gemini", "kimi-k2.5", "kimi-k2p5", "kimi-k2-5"].some((s) => id.includes(s))) {
+       return 0.95
+     }
+@@ -354,6 +356,7 @@ export namespace ProviderTransform {
+       if (["m2.", "m25", "m21"].some((s) => id.includes(s))) return 40
+       return 20
+     }
++    if (id.includes("gemma-4") || id.includes("gemma4")) return 64
+     if (id.includes("gemini")) return 64
+     return undefined
+   }
+diff --git a/packages/opencode/src/session/prompt.ts b/packages/opencode/src/session/prompt.ts
+index 7f0a014ab..44f158df2 100644
+--- a/packages/opencode/src/session/prompt.ts
++++ b/packages/opencode/src/session/prompt.ts
+@@ -13,13 +13,14 @@ import { type Tool as AITool, tool, jsonSchema, type ToolExecutionOptions, asSch
+ import { SessionCompaction } from "./compaction"
+ import { Bus } from "../bus"
+ import { ProviderTransform } from "../provider/transform"
+-import { SystemPrompt } from "./system"
++import { SystemPrompt, isGemma4, isSmallGemma4 } from "./system"
+ import { Instruction } from "./instruction"
+ import { Plugin } from "../plugin"
+ import PROMPT_PLAN from "../session/prompt/plan.txt"
+ import BUILD_SWITCH from "../session/prompt/build-switch.txt"
+ import MAX_STEPS from "../session/prompt/max-steps.txt"
+ import { ToolRegistry } from "../tool/registry"
++import { flattenToolSchema, expandToolCallArgs, type FlattenMap } from "../provider/gemma4-tool-format"
+ import { MCP } from "../mcp"
+ import { LSP } from "../lsp"
+ import { FileTime } from "../file/time"
+@@ -385,26 +386,83 @@ NOTE: At any point in time through this workflow you should feel free to ask the
+             ),
+         })
+ 
++        // Essential tools for small Gemma 4 models (E4B/E2B)
++        const gemma4EssentialTools = new Set([
++          // File operations
++          "bash", "read", "write", "edit", "multiedit", "apply_patch",
++          // Go AST tools (go_inspect, go_fix, and all go_* edit tools)
++          "go_inspect", "go_fix",
++          // Search & discovery
++          "glob", "grep", "ls",
++          // UI state management
++          "todowrite", "question", "plan_exit", "plan_enter", "task", "skill",
++        ])
++        // All go_* tools are essential for Gemma 4 (individual edit tools)
++        const isGemma4Essential = (id: string) =>
++          gemma4EssentialTools.has(id) || id.startsWith("go_")
++        const useGemma4Concise = isGemma4(input.model)
++        const useGemma4Restricted = isSmallGemma4(input.model)
++
++        // Strip parameter descriptions and metadata from schemas for Gemma 4
++        function stripSchemaForGemma4(schema: Record<string, any>): Record<string, any> {
++          const result: Record<string, any> = {}
++          for (const [k, v] of Object.entries(schema)) {
++            if (k === "description" || k === "examples" || k === "default" || k === "minimum" || k === "maximum") continue
++            if (k === "properties" && typeof v === "object") {
++              const props: Record<string, any> = {}
++              for (const [pk, pv] of Object.entries(v as Record<string, any>)) {
++                props[pk] = stripSchemaForGemma4(pv as Record<string, any>)
++              }
++              result[k] = props
++            } else {
++              result[k] = v
++            }
++          }
++          return result
++        }
++
+         for (const item of yield* registry.tools({
+           modelID: ModelID.make(input.model.api.id),
+           providerID: input.model.providerID,
+           agent: input.agent,
+         })) {
+-          const schema = ProviderTransform.schema(input.model, z.toJSONSchema(item.parameters))
+-          tools[item.id] = tool({
++          // Skip non-essential tools for small Gemma 4 models
++          if (useGemma4Restricted && !isGemma4Essential(item.id)) continue
++
++          let schema = ProviderTransform.schema(input.model, z.toJSONSchema(item.parameters))
++          let description = item.description
++
++          if (useGemma4Concise) {
++            description = item.shortDescription ?? (description?.split(/[.\n]/)[0]?.trim().slice(0, 80) || "")
++            schema = stripSchemaForGemma4(schema)
++          }
++
++          // Flatten nested object/array parameters to basic types
++          let itemFlattenMap: FlattenMap | undefined
++          const { flattenedSchema, flattenMap: fm } = flattenToolSchema(schema)
++          if (fm.size > 0) {
++            schema = flattenedSchema
++            itemFlattenMap = fm
++          }
++
++          const t = tool({
+             id: item.id as any,
+-            description: item.description,
++            description,
+             inputSchema: jsonSchema(schema as any),
+             execute(args, options) {
++              // Expand flat args back to nested structure before executing
++              const expanded = itemFlattenMap
++                ? expandToolCallArgs(args as Record<string, unknown>, itemFlattenMap)
++                : args
+               return Effect.runPromise(
+                 Effect.gen(function* () {
+-                  const ctx = context(args, options)
++                  const ctx = context(expanded, options)
+                   yield* plugin.trigger(
+                     "tool.execute.before",
+                     { tool: item.id, sessionID: ctx.sessionID, callID: ctx.callID },
+-                    { args },
++                    { args: expanded },
+                   )
+-                  const result = yield* Effect.promise(() => item.execute(args, ctx))
++                  const result = yield* Effect.promise(() => item.execute(expanded, ctx))
+                   const output = {
+                     ...result,
+                     attachments: result.attachments?.map((attachment) => ({
+@@ -416,7 +474,7 @@ NOTE: At any point in time through this workflow you should feel free to ask the
+                   }
+                   yield* plugin.trigger(
+                     "tool.execute.after",
+-                    { tool: item.id, sessionID: ctx.sessionID, callID: ctx.callID, args },
++                    { tool: item.id, sessionID: ctx.sessionID, callID: ctx.callID, args: expanded },
+                     output,
+                   )
+                   if (options.abortSignal?.aborted) {
+@@ -427,6 +485,9 @@ NOTE: At any point in time through this workflow you should feel free to ask the
+               )
+             },
+           })
++          // Attach shortHint for Gemma 4 system prompt builder (not used by AI SDK)
++          if (item.shortHint) (t as any).shortHint = item.shortHint
++          tools[item.id] = t
+         }
+ 
+         for (const [key, item] of Object.entries(yield* mcp.tools())) {
+@@ -434,20 +495,33 @@ NOTE: At any point in time through this workflow you should feel free to ask the
+           if (!execute) continue
+ 
+           const schema = yield* Effect.promise(() => Promise.resolve(asSchema(item.inputSchema).jsonSchema))
+-          const transformed = ProviderTransform.schema(input.model, schema)
++          let transformed = ProviderTransform.schema(input.model, schema)
++
++          // Flatten nested MCP tool parameters to basic types
++          let mcpFlattenMap: FlattenMap | undefined
++          const { flattenedSchema: mcpFlat, flattenMap: mcpFm } = flattenToolSchema(transformed)
++          if (mcpFm.size > 0) {
++            transformed = mcpFlat
++            mcpFlattenMap = mcpFm
++          }
++
+           item.inputSchema = jsonSchema(transformed)
+           item.execute = (args, opts) =>
+             Effect.runPromise(
+               Effect.gen(function* () {
+-                const ctx = context(args, opts)
++                // Expand flat args back to nested structure for MCP server
++                const expanded = mcpFlattenMap
++                  ? expandToolCallArgs(args as Record<string, unknown>, mcpFlattenMap)
++                  : args
++                const ctx = context(expanded, opts)
+                 yield* plugin.trigger(
+                   "tool.execute.before",
+                   { tool: key, sessionID: ctx.sessionID, callID: opts.toolCallId },
+-                  { args },
++                  { args: expanded },
+                 )
+                 yield* Effect.promise(() => ctx.ask({ permission: key, metadata: {}, patterns: ["*"], always: ["*"] }))
+                 const result: Awaited<ReturnType<NonNullable<typeof execute>>> = yield* Effect.promise(() =>
+-                  execute(args, opts),
++                  execute(expanded, opts),
+                 )
+                 yield* plugin.trigger(
+                   "tool.execute.after",
+diff --git a/packages/opencode/src/session/system.ts b/packages/opencode/src/session/system.ts
+index 09788f3cd..6c7eb4d98 100644
+--- a/packages/opencode/src/session/system.ts
++++ b/packages/opencode/src/session/system.ts
+@@ -15,9 +15,157 @@ import type { Provider } from "@/provider/provider"
+ import type { Agent } from "@/agent/agent"
+ import { Permission } from "@/permission"
+ import { Skill } from "@/skill"
++import { existsSync, readdirSync } from "fs"
++import { join } from "path"
++import { generateGoAstSystemPrompt } from "@/provider/gemma4-go-ast-knowledge"
++
++export function isGemma4(model: Provider.Model): boolean {
++  const id = model.api.id.toLowerCase()
++  return id.includes("gemma-4") || id.includes("gemma4")
++}
++
++export function isSmallGemma4(model: Provider.Model): boolean {
++  const id = model.api.id.toLowerCase()
++  return isGemma4(model) && /gemma.?4.*(e[24]b|[24]b)/i.test(id)
++}
++
++function truncateDescription(desc: string): string {
++  const firstSentence = desc.split(/[.\n]/)[0].trim()
++  return firstSentence.length > 80 ? firstSentence.slice(0, 77) + "..." : firstSentence
++}
++
++export function buildGemma4SystemPrompt(
++  builtinTools: { id: string; description?: string; shortDescription?: string; shortHint?: string }[],
++  mcpTools: Record<string, { description?: string }>,
++): string {
++  const lines: string[] = []
++
++  lines.push("You are an expert software engineer running inside OpenCode, an agentic code editor.")
++  lines.push("You work autonomously on programming tasks by using your tools.")
++  lines.push("")
++
++  lines.push("You operate in one of two modes:")
++  lines.push("- BUILD mode: Execute tasks autonomously. Use all tools to implement, test, and verify changes.")
++  lines.push("- PLAN mode: Form a plan without editing files. Only use read-only tools. Call the plan_exit tool when the plan is complete.")
++  lines.push("The current mode is indicated before each conversation turn.")
++  lines.push("")
++
++  lines.push("You have tools. Each item listed below is a tool you can call.")
++  lines.push("To accomplish tasks, call these tools by name with the required parameters.")
++  lines.push("Do not describe what you would do — call the tool and do it.")
++  lines.push("")
++
++  const hasLsp = builtinTools.some((t) => t.id === "lsp")
++  const hasMcp = Object.keys(mcpTools).length > 0
++
++  lines.push("Your tools:")
++  for (const tool of builtinTools) {
++    const hint = tool.shortHint ?? tool.shortDescription ?? truncateDescription(tool.description ?? "")
++    lines.push(`- ${tool.id}: ${hint}`)
++  }
++  lines.push("")
++
++  if (hasMcp) {
++    lines.push("Additional tools from MCP servers:")
++    for (const [id, tool] of Object.entries(mcpTools)) {
++      const desc = tool.description || "No description provided"
++      lines.push(`- ${id}: ${truncateDescription(desc)}`)
++    }
++    lines.push("")
++  }
++
++  lines.push("Task tracking:")
++  lines.push("- Call the todowrite tool to create a task list at the start of every task.")
++  lines.push("- Call the todowrite tool to update todo status (in_progress/completed) as you complete each step.")
++  lines.push("- The user sees your todo progress in the UI.")
++  lines.push("")
++
++  let step = 0
++  lines.push("Workflow:")
++  lines.push(`${++step}. Understand the task. Call the question tool if truly ambiguous.`)
++  lines.push(`${++step}. Call the todowrite tool to create todos listing your planned steps.`)
++  lines.push(`${++step}. Call the glob tool and grep tool to find relevant files and patterns.`)
++  lines.push(`${++step}. Call the read tool to read the files you need to understand.`)
++  if (hasLsp) {
++    lines.push(`${++step}. Call the lsp tool to understand the code: find symbol definitions, references, types, and call hierarchies before making changes.`)
++  }
++  lines.push(`${++step}. Call the edit tool for targeted changes, the write tool for new files, the bash tool for commands.`)
++  lines.push(`${++step}. Call the bash tool to run tests, lint, or typecheck to verify changes.`)
++  lines.push(`${++step}. If something fails, diagnose the error and fix it. Do not give up.`)
++  lines.push(`${++step}. Call the todowrite tool to update todos as you complete each step.`)
++  lines.push(`${++step}. Report concisely what you did.`)
++  lines.push("")
++
++  lines.push("Rules:")
++  if (hasLsp) {
++    lines.push("- Always call the read tool and the lsp tool before calling the edit tool. Understand the code before modifying it.")
++  } else {
++    lines.push("- Always call the read tool before calling the edit tool. Understand the code before modifying it.")
++  }
++  lines.push("- Prefer the edit tool over the write tool for existing files. Only create files when necessary.")
++  lines.push("- Make minimum changes. Do not refactor unrelated code.")
++  lines.push("- Follow existing code style, naming conventions, and patterns.")
++  lines.push("- Call the glob tool, grep tool, and read tool instead of the bash tool for file operations.")
++  lines.push("- Call multiple independent tools in parallel when possible.")
++  lines.push("- Never force-push, never commit secrets, never run destructive git commands via the bash tool.")
++  if (hasLsp) {
++    lines.push("- Call the lsp tool for code navigation: find definitions, references, and symbols.")
++  }
++  lines.push("- Call the task tool to delegate complex subtasks to subagents.")
++  lines.push("- Be concise. Lead with the answer, not the reasoning.")
++
++  // Append Go AST knowledge docs when Go files are present in the workspace.
++  // Check go.mod at worktree root, working directory, and one level deep.
++  // Also check for .go files in the working directory.
++  if (detectGoProject()) {
++    lines.push("")
++    lines.push(generateGoAstSystemPrompt())
++  }
++
++  return lines.join("\n")
++}
++
++function hasGoFilesInDir(dir: string, depth: number): boolean {
++  if (depth < 0) return false
++  try {
++    for (const entry of readdirSync(dir, { withFileTypes: true })) {
++      if (entry.name.startsWith(".") || entry.name === "node_modules" || entry.name === "vendor") continue
++      if (entry.isFile() && (entry.name === "go.mod" || entry.name.endsWith(".go"))) return true
++      if (entry.isDirectory() && depth > 0 && hasGoFilesInDir(join(dir, entry.name), depth - 1)) return true
++    }
++  } catch {
++    // Permission denied or similar — skip
++  }
++  return false
++}
++
++function detectGoProject(): boolean {
++  // Check working directory and worktree for go.mod or .go files,
++  // scanning up to 3 levels deep (handles monorepos).
++  if (hasGoFilesInDir(Instance.directory, 3)) return true
++  // Also check worktree root if different, but skip "/" (non-git projects)
++  const wt = Instance.worktree
++  if (wt !== Instance.directory && wt !== "/" && hasGoFilesInDir(wt, 3)) return true
++  return false
++}
++
++export function getGemma4ModeIndicator(mode: "plan" | "build"): string {
++  return mode === "plan"
++    ? "[PLAN MODE ACTIVE] Do not edit files. Form a plan and call the plan_exit tool when done."
++    : "[BUILD MODE ACTIVE] Execute autonomously."
++}
+ 
+ export namespace SystemPrompt {
+   export function provider(model: Provider.Model) {
++    if (isGemma4(model)) {
++      // Gemma 4 uses a dynamic system prompt built at call time with resolved tools.
++      // Return a minimal placeholder here; the full prompt is built in llm.ts
++      // when tools are available via buildGemma4SystemPrompt().
++      return [
++        "You are an expert software engineer running inside OpenCode, an agentic code editor. "
++        + "You work autonomously on programming tasks by using your tools."
++      ]
++    }
+     if (model.api.id.includes("gpt-4") || model.api.id.includes("o1") || model.api.id.includes("o3"))
+       return [PROMPT_BEAST]
+     if (model.api.id.includes("gpt")) {
+diff --git a/packages/opencode/src/tool/bash.ts b/packages/opencode/src/tool/bash.ts
+index 365fda329..970cb7f94 100644
+--- a/packages/opencode/src/tool/bash.ts
++++ b/packages/opencode/src/tool/bash.ts
+@@ -468,6 +468,8 @@ export const BashTool = Tool.define("bash", async () => {
+       .replaceAll("${chaining}", chain)
+       .replaceAll("${maxLines}", String(Truncate.MAX_LINES))
+       .replaceAll("${maxBytes}", String(Truncate.MAX_BYTES)),
++    shortDescription: "Run a shell command for builds, tests, or system operations",
++    shortHint: "Call the bash tool to run shell commands. Use it for builds, tests, git, docker, or system tasks. Pass the command string as the 'command' parameter.",
+     parameters: Parameters,
+     async execute(params, ctx) {
+       const cwd = params.workdir ? await resolvePath(params.workdir, Instance.directory, shell) : Instance.directory
+diff --git a/packages/opencode/src/tool/codesearch.ts b/packages/opencode/src/tool/codesearch.ts
+index 28dd4eb49..31b34d941 100644
+--- a/packages/opencode/src/tool/codesearch.ts
++++ b/packages/opencode/src/tool/codesearch.ts
+@@ -35,6 +35,8 @@ interface McpCodeResponse {
+ 
+ export const CodeSearchTool = Tool.define("codesearch", {
+   description: DESCRIPTION,
++  shortDescription: "Search the web for code examples and documentation",
++  shortHint: "Call the codesearch tool to search the web for code examples and API documentation. Pass a 'query' describing what you need.",
+   parameters: z.object({
+     query: z
+       .string()
+diff --git a/packages/opencode/src/tool/glob.ts b/packages/opencode/src/tool/glob.ts
+index a2611246c..29f3b267d 100644
+--- a/packages/opencode/src/tool/glob.ts
++++ b/packages/opencode/src/tool/glob.ts
+@@ -9,6 +9,8 @@ import { assertExternalDirectory } from "./external-directory"
+ 
+ export const GlobTool = Tool.define("glob", {
+   description: DESCRIPTION,
++  shortDescription: "Find files matching a glob pattern like **/*.ts",
++  shortHint: "Call the glob tool to find files by pattern. Pass a glob 'pattern' like **/*.ts or src/**/*.py. Optionally pass 'path' to limit the search directory.",
+   parameters: z.object({
+     pattern: z.string().describe("The glob pattern to match files against"),
+     path: z
+diff --git a/packages/opencode/src/tool/grep.ts b/packages/opencode/src/tool/grep.ts
+index 82e7ac166..7e0568be3 100644
+--- a/packages/opencode/src/tool/grep.ts
++++ b/packages/opencode/src/tool/grep.ts
+@@ -14,6 +14,8 @@ const MAX_LINE_LENGTH = 2000
+ 
+ export const GrepTool = Tool.define("grep", {
+   description: DESCRIPTION,
++  shortDescription: "Search file contents for a regex pattern",
++  shortHint: "Call the grep tool to search file contents with regex. Pass a 'pattern' to search for. Use 'path' to limit scope, 'include' to filter file types, and '-i' for case-insensitive.",
+   parameters: z.object({
+     pattern: z.string().describe("The regex pattern to search for in file contents"),
+     path: z.string().optional().describe("The directory to search in. Defaults to the current working directory."),
+diff --git a/packages/opencode/src/tool/ls.ts b/packages/opencode/src/tool/ls.ts
+index b848e969b..8acde8ca7 100644
+--- a/packages/opencode/src/tool/ls.ts
++++ b/packages/opencode/src/tool/ls.ts
+@@ -37,6 +37,8 @@ const LIMIT = 100
+ 
+ export const ListTool = Tool.define("list", {
+   description: DESCRIPTION,
++  shortDescription: "List files in a directory tree",
++  shortHint: "Call the list tool to list files in a directory tree. Pass the directory 'path'.",
+   parameters: z.object({
+     path: z.string().describe("The absolute path to the directory to list (must be absolute, not relative)").optional(),
+     ignore: z.array(z.string()).describe("List of glob patterns to ignore").optional(),
+diff --git a/packages/opencode/src/tool/lsp.ts b/packages/opencode/src/tool/lsp.ts
+index 52aef0f9e..6e33e96ce 100644
+--- a/packages/opencode/src/tool/lsp.ts
++++ b/packages/opencode/src/tool/lsp.ts
+@@ -22,6 +22,8 @@ const operations = [
+ 
+ export const LspTool = Tool.define("lsp", {
+   description: DESCRIPTION,
++  shortDescription: "Code intelligence: definitions, references, symbols, types",
++  shortHint: "Call the lsp tool to understand code in various programming languages. It provides code intelligence via Language Server Protocol. Pass 'operation' (goToDefinition, findReferences, hover, documentSymbol, workspaceSymbol, goToImplementation, incomingCalls, outgoingCalls), 'filePath', 'line', and 'character'. Call the lsp tool before modifying code to understand symbol definitions, references, types, and call hierarchies.",
+   parameters: z.object({
+     operation: z.enum(operations).describe("The LSP operation to perform"),
+     filePath: z.string().describe("The absolute or relative path to the file"),
+diff --git a/packages/opencode/src/tool/plan.ts b/packages/opencode/src/tool/plan.ts
+index e91bc3faa..239868c1b 100644
+--- a/packages/opencode/src/tool/plan.ts
++++ b/packages/opencode/src/tool/plan.ts
+@@ -18,6 +18,8 @@ async function getLastModel(sessionID: SessionID) {
+ 
+ export const PlanExitTool = Tool.define("plan_exit", {
+   description: EXIT_DESCRIPTION,
++  shortDescription: "Signal that the plan is complete for user review",
++  shortHint: "Call the plan_exit tool when your plan is complete and ready for user review.",
+   parameters: z.object({}),
+   async execute(_params, ctx) {
+     const session = await Session.get(ctx.sessionID)
+diff --git a/packages/opencode/src/tool/question.ts b/packages/opencode/src/tool/question.ts
+index 23c9b35c8..743b94986 100644
+--- a/packages/opencode/src/tool/question.ts
++++ b/packages/opencode/src/tool/question.ts
+@@ -19,6 +19,8 @@ export const QuestionTool = Tool.defineEffect<typeof parameters, Metadata, Quest
+ 
+     return {
+       description: DESCRIPTION,
++      shortDescription: "Ask the user a question when genuinely ambiguous",
++      shortHint: "Call the question tool when you need user input. Pass a 'questions' array with question text and answer options. Only use when genuinely ambiguous.",
+       parameters,
+       async execute(params: z.infer<typeof parameters>, ctx: Tool.Context<Metadata>) {
+         const answers = await question
+diff --git a/packages/opencode/src/tool/read.ts b/packages/opencode/src/tool/read.ts
+index f963b415b..8bc09cfc7 100644
+--- a/packages/opencode/src/tool/read.ts
++++ b/packages/opencode/src/tool/read.ts
+@@ -217,6 +217,8 @@ export const ReadTool = Tool.defineEffect(
+ 
+     return {
+       description: DESCRIPTION,
++      shortDescription: "Read file contents before editing or to understand code",
++      shortHint: "Call the read tool to read file or directory contents. Always call read before editing any file. Pass the file path as 'filePath'. Use 'offset' and 'limit' for large files.",
+       parameters,
+       async execute(params: z.infer<typeof parameters>, ctx) {
+         return Effect.runPromise(run(params, ctx).pipe(Effect.orDie))
+diff --git a/packages/opencode/src/tool/skill.ts b/packages/opencode/src/tool/skill.ts
+index 276f3931d..924847ed6 100644
+--- a/packages/opencode/src/tool/skill.ts
++++ b/packages/opencode/src/tool/skill.ts
+@@ -34,6 +34,8 @@ export const SkillTool = Tool.define("skill", async () => {
+ 
+   return {
+     description,
++    shortDescription: "Load a specialized skill for domain-specific work",
++    shortHint: "Call the skill tool to load a specialized skill. Pass the skill 'name' to activate domain-specific instructions.",
+     parameters: Parameters,
+     async execute(params: z.infer<typeof Parameters>, ctx) {
+       const skill = await Skill.get(params.name)
+diff --git a/packages/opencode/src/tool/task.ts b/packages/opencode/src/tool/task.ts
+index b97b53bb9..2354c5c74 100644
+--- a/packages/opencode/src/tool/task.ts
++++ b/packages/opencode/src/tool/task.ts
+@@ -169,6 +169,8 @@ export const TaskTool = Tool.defineEffect(
+ 
+     return {
+       description: DESCRIPTION,
++      shortDescription: "Delegate a complex subtask to a subagent",
++      shortHint: "Call the task tool to delegate complex subtasks to a specialized subagent. Pass a 'description' and 'prompt' for what the subagent should do, and 'subagent_type' to choose the agent.",
+       parameters,
+       async execute(params: z.infer<typeof parameters>, ctx) {
+         return Effect.runPromise(run(params, ctx))
+diff --git a/packages/opencode/src/tool/todo.ts b/packages/opencode/src/tool/todo.ts
+index 92318164c..b7fc0a56b 100644
+--- a/packages/opencode/src/tool/todo.ts
++++ b/packages/opencode/src/tool/todo.ts
+@@ -19,6 +19,8 @@ export const TodoWriteTool = Tool.defineEffect<typeof parameters, Metadata, Todo
+ 
+     return {
+       description: DESCRIPTION_WRITE,
++      shortDescription: "Track task progress with a structured todo list",
++      shortHint: "Call the todowrite tool to track your progress. Pass a 'todos' array with {content, status} objects. Set status to 'pending', 'in_progress', or 'completed'. Create todos at the start of every task and update them as you work.",
+       parameters,
+       async execute(params: z.infer<typeof parameters>, ctx: Tool.Context<Metadata>) {
+         await ctx.ask({
+diff --git a/packages/opencode/src/tool/tool.ts b/packages/opencode/src/tool/tool.ts
+index ae347341c..0b6162907 100644
+--- a/packages/opencode/src/tool/tool.ts
++++ b/packages/opencode/src/tool/tool.ts
+@@ -29,6 +29,8 @@ export namespace Tool {
+   export interface Def<Parameters extends z.ZodType = z.ZodType, M extends Metadata = Metadata> {
+     id: string
+     description: string
++    shortDescription?: string
++    shortHint?: string
+     parameters: Parameters
+     execute(
+       args: z.infer<Parameters>,
+diff --git a/packages/opencode/src/tool/webfetch.ts b/packages/opencode/src/tool/webfetch.ts
+index 559afd677..b86a3ab58 100644
+--- a/packages/opencode/src/tool/webfetch.ts
++++ b/packages/opencode/src/tool/webfetch.ts
+@@ -11,6 +11,8 @@ const MAX_TIMEOUT = 120 * 1000 // 2 minutes
+ 
+ export const WebFetchTool = Tool.define("webfetch", {
+   description: DESCRIPTION,
++  shortDescription: "Fetch and read content from a URL",
++  shortHint: "Call the webfetch tool to fetch and read content from a URL. Pass the 'url' to fetch. Use 'format' to choose markdown, text, or html output.",
+   parameters: z.object({
+     url: z.string().describe("The URL to fetch content from"),
+     format: z
+diff --git a/packages/opencode/src/tool/websearch.ts b/packages/opencode/src/tool/websearch.ts
+index c0f1c8d10..89aca6dd9 100644
+--- a/packages/opencode/src/tool/websearch.ts
++++ b/packages/opencode/src/tool/websearch.ts
+@@ -61,6 +61,8 @@ export const WebSearchTool = Tool.define("websearch", async () => {
+     get description() {
+       return DESCRIPTION.replace("{{year}}", new Date().getFullYear().toString())
+     },
++    shortDescription: "Search the web for current information",
++    shortHint: "Call the websearch tool to search the web for current information. Pass a 'query' string. Use when you need recent documentation or answers beyond your training data.",
+     parameters: Parameters,
+     async execute(params, ctx) {
+       await ctx.ask({
+-- 
+2.53.0
+

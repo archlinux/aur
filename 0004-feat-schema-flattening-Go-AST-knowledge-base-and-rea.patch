@@ -1,0 +1,2304 @@
+From 137ced168cd4cdaca351efe8dc920d53742ac74b Mon Sep 17 00:00:00 2001
+From: Ewout van Mansom <ewout@vanmansom.name>
+Date: Sat, 11 Apr 2026 22:09:02 +0200
+Subject: [PATCH 4/4] feat: schema flattening, Go AST knowledge base, and
+ reasoning control
+
+Add gemma4-tool-format.ts to flatten nested JSON schemas to basic types
+for FC-format compatibility. Add gemma4-go-ast-knowledge.ts with operation
+registry examples and value encoding rules. Adjust LLM and compaction
+to support Gemma 4 reasoning/thinking token handling.
+---
+ packages/opencode/goast/e2e_test.go           | 347 ++++++
+ packages/opencode/goast/fix.go                |  67 ++
+ packages/opencode/goast/fix_test.go           |  58 +
+ packages/opencode/goast/normalize.go          |  91 ++
+ packages/opencode/goast/prompt.go             |   7 +
+ packages/opencode/goast/values.go             |  67 +-
+ packages/opencode/goast/values_test.go        |  13 +-
+ .../src/provider/gemma4-go-ast-knowledge.ts   | 990 ++++++++++++++++++
+ .../src/provider/gemma4-tool-format.ts        | 317 ++++++
+ packages/opencode/src/session/compaction.ts   |  10 +-
+ packages/opencode/src/session/llm.ts          |  90 +-
+ packages/opencode/src/tool/go-ast-edit.ts     |  27 +-
+ 12 files changed, 2072 insertions(+), 12 deletions(-)
+ create mode 100644 packages/opencode/src/provider/gemma4-go-ast-knowledge.ts
+ create mode 100644 packages/opencode/src/provider/gemma4-tool-format.ts
+
+diff --git a/packages/opencode/goast/e2e_test.go b/packages/opencode/goast/e2e_test.go
+index 404a2cd23..75115294f 100644
+--- a/packages/opencode/goast/e2e_test.go
++++ b/packages/opencode/goast/e2e_test.go
+@@ -1957,3 +1957,350 @@ func TestLlamaComplexRefactorMVC(t *testing.T) {
+ 		t.Logf("Repository has %d methods — MVC pattern successfully applied", newMethods)
+ 	}
+ }
++
++// ============================================================================
++// Part 3: Sanitization unit tests
++// ============================================================================
++
++func TestSanitizeIdentifier(t *testing.T) {
++	tests := []struct {
++		input, want string
++	}{
++		{"handlerFunc", "handlerFunc"},
++		{"handlerFunc,handlerFunc", "handlerFunc"},
++		{"handlerFunc,func:", "handlerFunc"},
++		{"name,garbage,more", "name"},
++		{"valid_name123", "valid_name123"},
++		{"has spaces", "hasspaces"},
++		{"has;commas,and;semicolons", "hascommas"},
++		{"", ""},
++		{"_private", "_private"},
++		{"123invalid", "invalid"},
++	}
++	for _, tt := range tests {
++		got := SanitizeIdentifier(tt.input)
++		if got != tt.want {
++			t.Errorf("SanitizeIdentifier(%q) = %q, want %q", tt.input, got, tt.want)
++		}
++	}
++}
++
++func TestParseToolCallJSON_FilePathRecovery(t *testing.T) {
++	// When the model puts a function name as filePath, it should be moved to target
++	raw := map[string]interface{}{
++		"filePath": "handlerFunc",
++		"func":     "fmt.Println",
++	}
++	op := ParseToolCallJSON(raw)
++	if op.File != "" {
++		t.Errorf("expected empty file, got %q", op.File)
++	}
++	if op.Target != "handlerFunc" {
++		t.Errorf("expected target=handlerFunc, got %q", op.Target)
++	}
++}
++
++func TestParseToolCallJSON_CommaStuffedFieldValues(t *testing.T) {
++	// When the model stuffs multiple params into one field value
++	raw := map[string]interface{}{
++		"filePath": "main.go,target:handleRequest",
++		"func":     "fmt.Println",
++	}
++	op := ParseToolCallJSON(raw)
++	if op.File != "main.go" {
++		t.Errorf("expected file=main.go, got %q", op.File)
++	}
++	if op.Target != "handleRequest" {
++		t.Errorf("expected target=handleRequest, got %q", op.Target)
++	}
++}
++
++func TestParseToolCallJSON_SanitizesNames(t *testing.T) {
++	// Comma-stuffed name should be sanitized
++	raw := map[string]interface{}{
++		"filePath": "main.go",
++		"name":     "handlerFunc,handlerFunc",
++	}
++	op := ParseToolCallJSON(raw)
++	if op.Name != "handlerFunc" {
++		t.Errorf("expected name=handlerFunc, got %q", op.Name)
++	}
++}
++
++// ============================================================================
++// Part 4: TCP→HTTP Refactoring E2E Test
++// ============================================================================
++
++// scaffoldTCPServer creates a simple TCP server for the model to refactor to HTTP.
++func scaffoldTCPServer(t *testing.T) (dir string, mainFile string) {
++	t.Helper()
++	dir = t.TempDir()
++
++	mainGo := `package main
++
++import (
++	"fmt"
++	"io"
++	"net"
++	"time"
++)
++
++const listenAddr = ":8080"
++
++func main() {
++	listener, err := net.Listen("tcp", listenAddr)
++	if err != nil {
++		panic(err)
++	}
++	defer listener.Close()
++	fmt.Println("TCP server listening on", listenAddr)
++	for {
++		conn, err := listener.Accept()
++		if err != nil {
++			fmt.Println("accept error:", err)
++			continue
++		}
++		go handleConnection(conn)
++	}
++}
++
++func handleConnection(conn net.Conn) {
++	defer conn.Close()
++	conn.SetDeadline(time.Now().Add(30 * time.Second))
++	buf := make([]byte, 1024)
++	n, err := conn.Read(buf)
++	if err != nil && err != io.EOF {
++		return
++	}
++	response := fmt.Sprintf("Echo: %s", buf[:n])
++	conn.Write([]byte(response))
++}
++`
++	goMod := "module github.com/example/tcpserver\n\ngo 1.22\n"
++
++	os.WriteFile(filepath.Join(dir, "go.mod"), []byte(goMod), 0644)
++	mainFile = filepath.Join(dir, "main.go")
++	os.WriteFile(mainFile, []byte(mainGo), 0644)
++	return dir, mainFile
++}
++
++// TestLlamaTCPtoHTTPRefactor: model refactors a TCP server to use net/http.
++// Validates the full tool chain with the new normalizations and error messages.
++func TestLlamaTCPtoHTTPRefactor(t *testing.T) {
++	if !llamaAvailable() {
++		t.Skip("llama.cpp server not available at " + llamaServerURL)
++	}
++
++	_, mainFile := scaffoldTCPServer(t)
++
++	// Inspect main.go to provide AST context
++	ir := inspectFile(t, mainFile)
++	inspectJSON, _ := json.Marshal(ir)
++
++	prompt := "I have a TCP echo server in " + mainFile + ". Here is its AST structure:\n\n" +
++		string(inspectJSON) + "\n\n" +
++		"Refactor this to be an HTTP server using net/http:\n" +
++		"1. Add import for net/http\n" +
++		"2. Delete the handleConnection function\n" +
++		"3. Create a new handleHTTP function with parameters w:http.ResponseWriter,r:*http.Request\n" +
++		"4. Add a call to fmt.Fprintf(w, \"Hello HTTP\") inside handleHTTP\n" +
++		"5. Clear the main function body\n" +
++		"6. Add http.HandleFunc(\"/\", handleHTTP) in main\n" +
++		"7. Add http.ListenAndServe(\":8080\", nil) in main\n\n" +
++		"Use the Go AST editing tools. Work step by step, one tool call at a time."
++
++	messages := []chatMessage{
++		{Role: "system", Content: goAstSystemPrompt()},
++		{Role: "user", Content: prompt},
++	}
++
++	var ops []string
++	var successEdits, failedEdits int
++	consecutiveFails := 0
++	maxTurns := 20
++
++	for turn := 0; turn < maxTurns; turn++ {
++		resp := sendChat(t, chatRequest{
++			Model:       gemmaE2BModel,
++			Messages:    messages,
++			Tools:       goAstTools(),
++			Temperature: 0.1,
++			MaxTokens:   1024,
++		})
++
++		if len(resp.Choices) == 0 {
++			t.Logf("Turn %d: no choices", turn+1)
++			break
++		}
++		msg := resp.Choices[0].Message
++
++		if len(msg.ToolCalls) == 0 {
++			t.Logf("Turn %d: model finished — %s", turn+1, truncate(msg.Content, 300))
++			break
++		}
++
++		sanitizedCalls := make([]toolCall, len(msg.ToolCalls))
++		for i, tc := range msg.ToolCalls {
++			sanitizedCalls[i] = tc
++			var check json.RawMessage
++			if json.Unmarshal([]byte(tc.Function.Arguments), &check) != nil {
++				sanitizedCalls[i].Function.Arguments = `{"error":"malformed"}`
++			}
++		}
++		messages = append(messages, chatMessage{
++			Role:      "assistant",
++			ToolCalls: sanitizedCalls,
++		})
++
++		turnHadSuccess := false
++
++		for _, tc := range msg.ToolCalls {
++			t.Logf("Turn %d: %s(%s)", turn+1, tc.Function.Name, truncate(tc.Function.Arguments, 400))
++
++			var result string
++
++			switch {
++			case tc.Function.Name == "go_inspect":
++				var args map[string]interface{}
++				json.Unmarshal([]byte(tc.Function.Arguments), &args)
++				fp, _ := args["filePath"].(string)
++				if fp == "" {
++					fp = mainFile
++				}
++				r, err := inspect(fp)
++				if err != nil {
++					errB, _ := json.Marshal(map[string]string{"error": err.Error()})
++					result = string(errB)
++				} else {
++					j, _ := json.Marshal(r)
++					result = string(j)
++				}
++				ops = append(ops, "inspect")
++				turnHadSuccess = true
++
++			case tc.Function.Name == "go_fix":
++				var args map[string]interface{}
++				json.Unmarshal([]byte(tc.Function.Arguments), &args)
++				fp, _ := args["filePath"].(string)
++				if fp == "" {
++					fp = mainFile
++				}
++				r, err := fix(fp)
++				if err != nil {
++					errB, _ := json.Marshal(map[string]string{"error": err.Error()})
++					result = string(errB)
++				} else {
++					j, _ := json.Marshal(r)
++					result = string(j)
++				}
++				ops = append(ops, "fix")
++				turnHadSuccess = true
++
++			case strings.HasPrefix(tc.Function.Name, "go_"):
++				var rawCheck map[string]interface{}
++				if err := json.Unmarshal([]byte(tc.Function.Arguments), &rawCheck); err != nil {
++					errB, _ := json.Marshal(map[string]string{
++						"error": "malformed tool call arguments: " + err.Error(),
++						"hint":  "Arguments must be valid JSON.",
++					})
++					result = string(errB)
++					ops = append(ops, "FAIL:parse:"+err.Error())
++					failedEdits++
++					break
++				}
++				op := parseToolCallOp(t, tc, "")
++				if op.File == "" {
++					op.File = mainFile
++				}
++				r, err := edit(op)
++				if err != nil {
++					errB, _ := json.Marshal(map[string]string{
++						"error": err.Error(),
++						"hint":  "filePath must be a .go file path. target is the function/type name. Required params: check the tool description.",
++					})
++					result = string(errB)
++					ops = append(ops, "FAIL:"+op.Op+":"+err.Error())
++					failedEdits++
++				} else {
++					if r.Content != "" {
++						os.WriteFile(op.File, []byte(r.Content), 0644)
++					}
++					result = r.Diff
++					if result == "" {
++						result = "No changes."
++					}
++					ops = append(ops, "OK:"+op.Op+":"+op.Target+":"+op.Name)
++					successEdits++
++					turnHadSuccess = true
++				}
++
++			default:
++				result = `{"error":"unknown tool"}`
++			}
++
++			if len(result) > 3000 {
++				result = result[:3000] + "\n...(truncated)"
++			}
++
++			messages = append(messages, chatMessage{
++				Role:       "tool",
++				Content:    result,
++				ToolCallID: tc.ID,
++			})
++		}
++
++		if turnHadSuccess {
++			consecutiveFails = 0
++		} else {
++			consecutiveFails++
++			if consecutiveFails >= 3 {
++				t.Logf("Turn %d: breaking — %d consecutive failed turns", turn+1, consecutiveFails)
++				break
++			}
++		}
++	}
++
++	// ---- Verification ----
++	t.Logf("=== Operations: %d total, %d ok, %d failed ===", len(ops), successEdits, failedEdits)
++	for i, op := range ops {
++		t.Logf("  [%d] %s", i+1, op)
++	}
++
++	if successEdits == 0 {
++		t.Fatal("model made no successful edits — refactoring did not start")
++	}
++
++	// main.go must still be valid Go
++	content, err := os.ReadFile(mainFile)
++	if err != nil {
++		t.Fatalf("read main.go: %v", err)
++	}
++	errs := parseErrors(mainFile, content)
++	if len(errs) > 0 {
++		t.Errorf("main.go has parse errors after refactoring:\n%v", errs)
++		t.Logf("File content:\n%s", string(content))
++	}
++
++	// Verify HTTP-related changes
++	src := string(content)
++	t.Logf("=== Final source ===\n%s", src)
++
++	if !strings.Contains(src, "net/http") {
++		t.Error("expected net/http import after refactoring")
++	}
++	if strings.Contains(src, "net.Listen") || strings.Contains(src, "listener.Accept") {
++		t.Log("Warning: TCP listener code still present — partial refactoring")
++	}
++	if strings.Contains(src, "http.HandleFunc") || strings.Contains(src, "http.ListenAndServe") || strings.Contains(src, "http.Handle") {
++		t.Log("HTTP server setup detected — refactoring successful")
++	} else {
++		t.Error("expected HTTP server setup (http.HandleFunc or http.ListenAndServe)")
++	}
++
++	// Inspect final state
++	finalInspect := inspectFile(t, mainFile)
++	t.Logf("Functions after refactoring:")
++	for _, fn := range finalInspect.Functions {
++		t.Logf("  %s", fn.Signature)
++	}
++}
+diff --git a/packages/opencode/goast/fix.go b/packages/opencode/goast/fix.go
+index cc2ca46a3..c891046a8 100644
+--- a/packages/opencode/goast/fix.go
++++ b/packages/opencode/goast/fix.go
+@@ -141,6 +141,12 @@ func applyFixes(src string, errs []scanner.Error) (string, []string) {
+ 		case fixTrailingSemicolon(lines, lineIdx, line, &fixes):
+ 			modified[lineIdx] = true
+ 
++		// fixCorruptedIdentifier must run before fixMissingSemicolon and
++		// fixStatementsOnSameLine — those would incorrectly split the line
++		// at the comma position in "type Config,Config struct {".
++		case fixCorruptedIdentifier(lines, lineIdx, line, col, e.Msg, &fixes):
++			modified[lineIdx] = true
++
+ 		case fixStatementsOnSameLine(lines, lineIdx, line, col, e.Msg, &fixes):
+ 			modified[lineIdx] = true
+ 
+@@ -332,6 +338,67 @@ func fixExpectedComma(lines []string, idx int, line string, col int, msg string,
+ 	return true
+ }
+ 
++// fixCorruptedIdentifier handles identifiers that have been corrupted by the
++// model stuffing commas or other invalid characters into names.
++// Pattern: "func handlerFunc,handlerFunc(" → "func handlerFunc("
++// Pattern: "type Config,Config struct" → "type Config struct"
++func fixCorruptedIdentifier(lines []string, idx int, line string, col int, msg string, fixes *[]string) bool {
++	// Match errors caused by commas in identifiers:
++	// "expected '('" — comma in function name: func name,name(
++	// "expected ';'" or "expected type" — comma in type name: type Name,Name struct
++	// "found ','" — comma where identifier expected
++	isRelevant := strings.Contains(msg, "expected '('") ||
++		strings.Contains(msg, "expected ';'") ||
++		strings.Contains(msg, "expected type") ||
++		strings.Contains(msg, "found ','")
++	if !isRelevant {
++		return false
++	}
++
++	// Look for "func name,name(" or "func name,garbage("
++	reFuncComma := regexp.MustCompile(`(func\s+(?:\([^)]+\)\s+)?)(\w+),\S*(\s*\()`)
++	if reFuncComma.MatchString(line) {
++		lines[idx] = reFuncComma.ReplaceAllString(line, "${1}${2}${3}")
++		*fixes = append(*fixes, fmt.Sprintf("line %d: removed comma-stuffed duplicate from function name", idx+1))
++		return true
++	}
++
++	// Look for "type Name,Name struct" or "type Name,Name interface"
++	reTypeComma := regexp.MustCompile(`(type\s+)(\w+),\S*(\s+(?:struct|interface))`)
++	if reTypeComma.MatchString(line) {
++		lines[idx] = reTypeComma.ReplaceAllString(line, "${1}${2}${3}")
++		*fixes = append(*fixes, fmt.Sprintf("line %d: removed comma-stuffed duplicate from type name", idx+1))
++		return true
++	}
++
++	// For "found ','" errors — the comma itself is the problem.
++	// Check if the previous line has a comma-stuffed identifier pattern.
++	if strings.Contains(msg, "found ','") && idx > 0 {
++		prevLine := lines[idx-1]
++		// Check previous line for type/func comma patterns too
++		if reTypeComma.MatchString(prevLine) {
++			lines[idx-1] = reTypeComma.ReplaceAllString(prevLine, "${1}${2}${3}")
++			*fixes = append(*fixes, fmt.Sprintf("line %d: removed comma-stuffed duplicate from type name", idx))
++			return true
++		}
++		if reFuncComma.MatchString(prevLine) {
++			lines[idx-1] = reFuncComma.ReplaceAllString(prevLine, "${1}${2}${3}")
++			*fixes = append(*fixes, fmt.Sprintf("line %d: removed comma-stuffed duplicate from function name", idx))
++			return true
++		}
++	}
++
++	// Generic: comma inside what should be an identifier, before ( or {
++	reGeneric := regexp.MustCompile(`(\w+),\w+(\s*[({])`)
++	if reGeneric.MatchString(line) {
++		lines[idx] = reGeneric.ReplaceAllString(line, "${1}${2}")
++		*fixes = append(*fixes, fmt.Sprintf("line %d: removed comma-stuffed identifier fragment", idx+1))
++		return true
++	}
++
++	return false
++}
++
+ // --- Helpers ---
+ 
+ func extractIndent(line string) string {
+diff --git a/packages/opencode/goast/fix_test.go b/packages/opencode/goast/fix_test.go
+index c3ca750fd..ce0b2d5b0 100644
+--- a/packages/opencode/goast/fix_test.go
++++ b/packages/opencode/goast/fix_test.go
+@@ -234,6 +234,64 @@ func foo() {
+ 	}
+ }
+ 
++func TestFixCorruptedIdentifier(t *testing.T) {
++	// Model comma-stuffed a function name: "func handlerFunc,handlerFunc("
++	src := `package main
++
++func handlerFunc,handlerFunc(w http.ResponseWriter, r *http.Request) {
++}
++`
++	p := writeTempGo(t, src)
++	result, err := fix(p)
++	if err != nil {
++		t.Fatal(err)
++	}
++	if !result.Success {
++		t.Fatalf("expected success, got remaining errors: %v", result.RemainingErrs)
++	}
++
++	got, _ := os.ReadFile(p)
++	// The comma-stuffed name should be cleaned up
++	if strings.Contains(string(got), "handlerFunc,handlerFunc") {
++		t.Error("corrupted function name still present")
++	}
++	// Should contain just "handlerFunc" once as the function name
++	if !strings.Contains(string(got), "func handlerFunc(") {
++		t.Errorf("expected 'func handlerFunc(' in output, got:\n%s", string(got))
++	}
++	errs := parseErrors(p, got)
++	if len(errs) > 0 {
++		t.Errorf("still has parse errors: %v\nFile:\n%s", errs, string(got))
++	}
++}
++
++func TestFixCorruptedTypeName(t *testing.T) {
++	// Model comma-stuffed a type name: "type Config,Config struct"
++	src := `package main
++
++type Config,Config struct {
++	Port int
++}
++`
++	p := writeTempGo(t, src)
++	result, err := fix(p)
++	if err != nil {
++		t.Fatal(err)
++	}
++	if !result.Success {
++		t.Fatalf("expected success, got remaining errors: %v", result.RemainingErrs)
++	}
++
++	got, _ := os.ReadFile(p)
++	if strings.Contains(string(got), "Config,Config") {
++		t.Error("corrupted type name still present")
++	}
++	errs := parseErrors(p, got)
++	if len(errs) > 0 {
++		t.Errorf("still has parse errors: %v\nFile:\n%s", errs, string(got))
++	}
++}
++
+ func TestFixProducesDiff(t *testing.T) {
+ 	src := `package main
+ 
+diff --git a/packages/opencode/goast/normalize.go b/packages/opencode/goast/normalize.go
+index 8459423b0..ab29edd6d 100644
+--- a/packages/opencode/goast/normalize.go
++++ b/packages/opencode/goast/normalize.go
+@@ -3,6 +3,7 @@ package main
+ import (
+ 	"encoding/json"
+ 	"strings"
++	"unicode"
+ )
+ 
+ // KnownOps is the set of valid operation names. Each maps to an individual
+@@ -31,6 +32,61 @@ var KnownOps = map[string]bool{
+ 	"gopls_rename": true, "organize_imports": true,
+ }
+ 
++// SanitizeIdentifier cleans a Go identifier that may have been corrupted by
++// the model. Handles comma-stuffed values ("handlerFunc,handlerFunc" → "handlerFunc")
++// and strips characters invalid in Go identifiers.
++func SanitizeIdentifier(s string) string {
++	if s == "" {
++		return s
++	}
++	// Take first comma-separated value — model sometimes doubles or comma-stuffs.
++	if idx := strings.IndexByte(s, ','); idx > 0 {
++		s = s[:idx]
++	}
++	s = strings.TrimSpace(s)
++	// Strip characters that aren't valid in Go identifiers.
++	// Track whether we've started the identifier (seen a letter/underscore)
++	// so we skip leading digits.
++	var buf strings.Builder
++	started := false
++	for _, r := range s {
++		if r == '_' || unicode.IsLetter(r) {
++			buf.WriteRune(r)
++			started = true
++		} else if started && unicode.IsDigit(r) {
++			buf.WriteRune(r)
++		}
++	}
++	result := buf.String()
++	if result == "" {
++		return s // Return original if sanitization removed everything
++	}
++	return result
++}
++
++// sanitizeCommaStuffedField takes a field value that may contain embedded
++// key:value pairs from the model cramming multiple params into one field.
++// Returns the cleaned value and any extracted extra key:value pairs.
++// Example: "handlerFunc,func:fmt.Println" → "handlerFunc", [("func","fmt.Println")]
++func sanitizeCommaStuffedField(val string) (string, []fieldPair) {
++	if !strings.Contains(val, ",") {
++		return val, nil
++	}
++	parts := strings.Split(val, ",")
++	clean := parts[0]
++	var extras []fieldPair
++	for _, part := range parts[1:] {
++		k, v, ok := strings.Cut(part, ":")
++		if ok && k != "" {
++			extras = append(extras, fieldPair{k: strings.TrimSpace(k), v: strings.TrimSpace(v)})
++		}
++		// If no colon, it might be a duplicated value — ignore it
++	}
++	return clean, extras
++}
++
++type fieldPair struct{ k, v string }
++
+ // ParseToolCallJSON converts raw JSON arguments from a model's tool call into
+ // an Operation struct. It handles model confusion patterns such as using the op
+ // name as a JSON key instead of as the value of the "op" field.
+@@ -44,6 +100,24 @@ func ParseToolCallJSON(raw map[string]interface{}) Operation {
+ 		delete(raw, "filePath")
+ 	}
+ 
++	// Pre-clean: detect comma-stuffed field values and extract embedded params.
++	// Example: {"file":"handlerFunc,func:fmt.Println"} → file=handlerFunc + func=fmt.Println
++	for key, val := range raw {
++		s, ok := val.(string)
++		if !ok || key == "args" || key == "params" || key == "returns" || key == "valueArgs" || key == "tag" || key == "text" || key == "directive" || key == "constraint" {
++			continue // These fields legitimately contain commas
++		}
++		cleaned, extras := sanitizeCommaStuffedField(s)
++		if len(extras) > 0 {
++			raw[key] = cleaned
++			for _, kv := range extras {
++				if _, exists := raw[kv.k]; !exists {
++					raw[kv.k] = kv.v
++				}
++			}
++		}
++	}
++
+ 	// Use json round-trip: the Operation struct has json tags matching
+ 	// every field name, so this handles all standard fields in one step.
+ 	data, _ := json.Marshal(raw)
+@@ -51,6 +125,23 @@ func ParseToolCallJSON(raw map[string]interface{}) Operation {
+ 	json.Unmarshal(data, &op)
+ 	op.Mode = "edit"
+ 
++	// Sanitize identifier fields — prevent file corruption from comma-stuffed
++	// or invalid-character names like "handlerFunc,handlerFunc".
++	op.Name = SanitizeIdentifier(op.Name)
++	op.FieldName = SanitizeIdentifier(op.FieldName)
++	op.ReceiverVar = SanitizeIdentifier(op.ReceiverVar)
++	op.Method = SanitizeIdentifier(op.Method)
++	op.MethodName = SanitizeIdentifier(op.MethodName)
++
++	// Fix filePath/target confusion: if file doesn't look like a .go file path,
++	// the model probably put a function/type name there instead.
++	if op.File != "" && !strings.HasSuffix(op.File, ".go") && !strings.Contains(op.File, "/") && !strings.Contains(op.File, "\\") {
++		if op.Target == "" {
++			op.Target = op.File
++		}
++		op.File = "" // Will be caught by the caller with a helpful error
++	}
++
+ 	// Detect comma-stuffed op: "op":"insert_assign_call,target:X,vars:Y"
+ 	// The model sometimes crams multiple params into the op field as CSV.
+ 	// Extract the real op name (before first comma) and parse extra pairs.
+diff --git a/packages/opencode/goast/prompt.go b/packages/opencode/goast/prompt.go
+index dd52fb180..96169aba4 100644
+--- a/packages/opencode/goast/prompt.go
++++ b/packages/opencode/goast/prompt.go
+@@ -598,6 +598,9 @@ func generatePrompt() *PromptResult {
+ 	sb.WriteString(`You have Go AST editing tools. Each tool performs one AST operation on a Go source file.
+ Always call go_inspect first to understand the file structure before editing.
+ 
++IMPORTANT: Every tool call requires filePath — the file system path to the .go file (e.g. main.go, internal/server/server.go).
++The target parameter is DIFFERENT — it identifies WHICH declaration inside the file to edit (e.g. main, Server.Start, Config.Port).
++
+ Value encoding uses kind:content format:
+ - Identifiers: ident:err, ident:ctx, ident:x
+ - Nil: nil
+@@ -610,6 +613,10 @@ Value encoding uses kind:content format:
+ Target uses dotted paths: FuncName, Type.Method, Struct.Field, Func.if[N], Func.for[N], Func.if[N].else
+ When multiple declarations share the same name, append #N: Shape#2 targets the 2nd Shape.
+ 
++Example: Create a function and add a statement to it (two separate tool calls):
++  1. go_create_function(filePath="main.go", name="handleRequest", params="w:http.ResponseWriter,r:*http.Request")
++  2. go_insert_call(filePath="main.go", target="handleRequest", func="fmt.Fprintf", args="ident:w,string:OK")
++
+ `)
+ 
+ 	// Group tools by category for the system prompt
+diff --git a/packages/opencode/goast/values.go b/packages/opencode/goast/values.go
+index e487be9c9..8157c940c 100644
+--- a/packages/opencode/goast/values.go
++++ b/packages/opencode/goast/values.go
+@@ -27,7 +27,8 @@ func ParseFlatValue(s string) (ast.Expr, error) {
+ 	// Split on first colon
+ 	idx := strings.IndexByte(s, ':')
+ 	if idx < 0 {
+-		return nil, fmt.Errorf("invalid flat value (no kind): %q", s)
++		// No kind prefix — try to infer the kind from the value itself.
++		return inferFlatValue(s)
+ 	}
+ 
+ 	kind := s[:idx]
+@@ -71,10 +72,72 @@ func ParseFlatValue(s string) (ast.Expr, error) {
+ 		return &ast.CallExpr{Fun: fn}, nil
+ 
+ 	default:
+-		return nil, fmt.Errorf("unknown value kind: %q", kind)
++		// Unknown kind — the model may have omitted the kind prefix.
++		// Check if the whole string (kind:content) looks like a value without proper prefix.
++		return inferFlatValue(s)
+ 	}
+ }
+ 
++// inferFlatValue tries to guess the type of a value when the model omits the
++// kind: prefix. Common patterns from Gemma 4:
++//   - ":8080" or "/path" → string literal
++//   - "handleHTTP" or "ctx" → identifier
++//   - "42" or "3.14" → number literal
++//   - "s.field" → selector
++func inferFlatValue(s string) (ast.Expr, error) {
++	s = strings.TrimSpace(s)
++	if s == "" {
++		return nil, fmt.Errorf("empty value")
++	}
++
++	// Looks like a number?
++	if len(s) > 0 && (s[0] >= '0' && s[0] <= '9' || (s[0] == '-' && len(s) > 1)) {
++		if strings.Contains(s, ".") {
++			return &ast.BasicLit{Kind: token.FLOAT, Value: s}, nil
++		}
++		return &ast.BasicLit{Kind: token.INT, Value: s}, nil
++	}
++
++	// Has a dot and starts with a letter? Likely a selector: s.field, cfg.Port
++	if strings.Contains(s, ".") && len(s) > 0 && isLetter(s[0]) {
++		parts := strings.SplitN(s, ".", 2)
++		if len(parts) == 2 && isGoIdent(parts[0]) && isGoIdent(parts[1]) {
++			return &ast.SelectorExpr{
++				X:   ast.NewIdent(parts[0]),
++				Sel: ast.NewIdent(parts[1]),
++			}, nil
++		}
++	}
++
++	// Starts with a letter or underscore and is a valid Go identifier? → ident
++	if isGoIdent(s) {
++		return ast.NewIdent(s), nil
++	}
++
++	// Everything else → string literal (covers ":8080", "/path", "Hello World", etc.)
++	return &ast.BasicLit{Kind: token.STRING, Value: fmt.Sprintf("%q", s)}, nil
++}
++
++func isLetter(b byte) bool {
++	return (b >= 'a' && b <= 'z') || (b >= 'A' && b <= 'Z') || b == '_'
++}
++
++func isGoIdent(s string) bool {
++	if s == "" {
++		return false
++	}
++	if !isLetter(s[0]) {
++		return false
++	}
++	for i := 1; i < len(s); i++ {
++		c := s[i]
++		if !isLetter(c) && !(c >= '0' && c <= '9') {
++			return false
++		}
++	}
++	return true
++}
++
+ // ParseFlatValues parses a comma-separated string of flat values.
+ func ParseFlatValues(s string) ([]ast.Expr, error) {
+ 	if s == "" {
+diff --git a/packages/opencode/goast/values_test.go b/packages/opencode/goast/values_test.go
+index 01aec43b5..4e22b2cbe 100644
+--- a/packages/opencode/goast/values_test.go
++++ b/packages/opencode/goast/values_test.go
+@@ -286,9 +286,16 @@ func TestParseFlatValueErrors(t *testing.T) {
+ 		t.Error("expected error for empty value")
+ 	}
+ 
+-	_, err = ParseFlatValue("unknown:foo")
+-	if err == nil {
+-		t.Error("expected error for unknown kind")
++	// "unknown:foo" now falls through to inferFlatValue which treats it as a string.
++	// This is intentional — the model often omits kind prefixes.
++	expr, err := ParseFlatValue("unknown:foo")
++	if err != nil {
++		t.Errorf("expected unknown:foo to be inferred as string, got error: %v", err)
++	} else {
++		lit, ok := expr.(*ast.BasicLit)
++		if !ok || lit.Kind != token.STRING {
++			t.Errorf("expected string literal for unknown:foo, got %T", expr)
++		}
+ 	}
+ 
+ 	_, err = ParseFlatValue("ident:")
+diff --git a/packages/opencode/src/provider/gemma4-go-ast-knowledge.ts b/packages/opencode/src/provider/gemma4-go-ast-knowledge.ts
+new file mode 100644
+index 000000000..8100d3704
+--- /dev/null
++++ b/packages/opencode/src/provider/gemma4-go-ast-knowledge.ts
+@@ -0,0 +1,990 @@
++/**
++ * Go AST operation registry and runtime knowledge generators for Gemma 4.
++ *
++ * All knowledge documents are generated dynamically from the registry.
++ * No static markdown files — the registry is the single source of truth.
++ * All tool call examples use wrapToolCall() from gemma4-tool-format.ts.
++ */
++
++import { wrapToolCall, Gemma4Tokens } from "./gemma4-tool-format"
++
++// ---------------------------------------------------------------------------
++// Operation Registry
++// ---------------------------------------------------------------------------
++
++export interface OpDef {
++  op: string
++  description: string
++  hint: string
++  required: string[]
++  optional: string[]
++  exampleParams: Record<string, unknown>
++}
++
++export interface CategoryDef {
++  name: string
++  operations: OpDef[]
++  programmingConcept: string
++  golangSyntax: string
++}
++
++export const GO_AST_REGISTRY: CategoryDef[] = [
++  // ---- Category 1: Declaration Creation ----
++  {
++    name: "Declaration Creation",
++    operations: [
++      {
++        op: "create_function",
++        description: "Create a new empty function. Fill body with insert_* ops.",
++        hint: "name, params (name:type,...), returns (type,...)",
++        required: ["name"],
++        optional: ["params", "returns", "anchor", "position"],
++        exampleParams: { op: "create_function", name: "NewConfig", params: "path:string", returns: "*Config,error" },
++      },
++      {
++        op: "create_method",
++        description: "Create a new empty method with a receiver. Fill body with insert_* ops.",
++        hint: "receiverType, receiverVar, name, params, returns",
++        required: ["name", "receiverType", "receiverVar"],
++        optional: ["params", "returns", "anchor", "position"],
++        exampleParams: { op: "create_method", receiverType: "*Server", receiverVar: "s", name: "Start", params: "ctx:context.Context", returns: "error" },
++      },
++      {
++        op: "create_struct",
++        description: "Create a new empty struct type. Add fields with add_struct_field.",
++        hint: "name",
++        required: ["name"],
++        optional: ["anchor", "position"],
++        exampleParams: { op: "create_struct", name: "Config" },
++      },
++      {
++        op: "create_interface",
++        description: "Create a new empty interface type. Add methods with add_interface_method.",
++        hint: "name",
++        required: ["name"],
++        optional: ["anchor", "position"],
++        exampleParams: { op: "create_interface", name: "Handler" },
++      },
++      {
++        op: "create_type_alias",
++        description: "Create type Name = TargetType.",
++        hint: "name, targetType",
++        required: ["name", "targetType"],
++        optional: ["anchor", "position"],
++        exampleParams: { op: "create_type_alias", name: "HandlerFunc", targetType: "func(http.ResponseWriter, *http.Request)" },
++      },
++      {
++        op: "create_named_type",
++        description: "Create type Name UnderlyingType (e.g. type Duration int64).",
++        hint: "name, underlyingType",
++        required: ["name", "underlyingType"],
++        optional: ["anchor", "position"],
++        exampleParams: { op: "create_named_type", name: "Duration", underlyingType: "int64" },
++      },
++      {
++        op: "add_const",
++        description: "Add a constant. Use valueSpec for literals, valueFunc+valueArgs for calls.",
++        hint: "name, valueSpec OR valueFunc+valueArgs, type?, block?",
++        required: ["name"],
++        optional: ["type", "valueSpec", "valueFunc", "valueArgs", "block"],
++        exampleParams: { op: "add_const", name: "DefaultPort", type: "int", valueSpec: "int:8080" },
++      },
++      {
++        op: "add_var",
++        description: "Add a package-level variable.",
++        hint: "name, valueSpec OR valueFunc+valueArgs, type?, block?",
++        required: ["name"],
++        optional: ["type", "valueSpec", "valueFunc", "valueArgs", "block"],
++        exampleParams: { op: "add_var", name: "ErrNotFound", valueFunc: "errors.New", valueArgs: "string:not found" },
++      },
++      {
++        op: "delete",
++        description: "Delete any top-level declaration including its doc comments.",
++        hint: "target",
++        required: ["target"],
++        optional: [],
++        exampleParams: { op: "delete", target: "OldHandler" },
++      },
++    ],
++    programmingConcept: `Source code is organized into declarations — named things at the top level of a file.
++
++A function is a named block of code that can be called. It has a name, parameters (inputs), return types (outputs), and a body (the code inside).
++A method is a function attached to a type via a receiver.
++A struct is a type that groups related fields together.
++An interface is a type that defines a set of method signatures.
++A constant is a named value that never changes.
++A variable is a named value that can change.
++A type alias creates a new name for an existing type.
++A named type creates a distinct type from an underlying type.
++
++To create any of these, use the appropriate create_* or add_* operation. To remove one, use delete.`,
++    golangSyntax: `Go declarations:
++
++func NewConfig(path string) (*Config, error) { }
++func (s *Server) Start(ctx context.Context) error { }
++type Config struct { }
++type Handler interface { }
++type HandlerFunc = func(http.ResponseWriter, *http.Request)
++type Duration int64
++const DefaultPort int = 8080
++var ErrNotFound = errors.New("not found")`,
++  },
++
++  // ---- Category 2: Function/Method Signature ----
++  {
++    name: "Signature Editing",
++    operations: [
++      {
++        op: "add_parameter",
++        description: "Add a parameter to a function/method signature.",
++        hint: "target, name, type, position? (first/last/after), anchor?",
++        required: ["target", "name", "type"],
++        optional: ["position", "anchor"],
++        exampleParams: { op: "add_parameter", target: "NewConfig", name: "logger", type: "*log.Logger", position: "last" },
++      },
++      {
++        op: "remove_parameter",
++        description: "Remove a parameter by dotted name: Func.ParamName.",
++        hint: "target (Func.Param)",
++        required: ["target"],
++        optional: [],
++        exampleParams: { op: "remove_parameter", target: "NewConfig.logger" },
++      },
++      {
++        op: "set_return_types",
++        description: "Set return types. Empty string = no returns.",
++        hint: "target, returns (comma-separated types)",
++        required: ["target", "returns"],
++        optional: [],
++        exampleParams: { op: "set_return_types", target: "NewConfig", returns: "*Config,error" },
++      },
++      {
++        op: "change_receiver",
++        description: "Change the receiver type of a method.",
++        hint: "target, receiverType (*T or T), receiverVar?",
++        required: ["target", "receiverType"],
++        optional: ["receiverVar"],
++        exampleParams: { op: "change_receiver", target: "Server.Start", receiverType: "*Server", receiverVar: "s" },
++      },
++      {
++        op: "set_function_name",
++        description: "Rename just the function/method name (does not rename call sites).",
++        hint: "target, name",
++        required: ["target", "name"],
++        optional: [],
++        exampleParams: { op: "set_function_name", target: "Server.Start", name: "Run" },
++      },
++    ],
++    programmingConcept: `A function signature defines the function's interface: its name, what inputs it accepts (parameters), and what outputs it produces (return types).
++
++Parameters are name-type pairs listed in parentheses after the function name.
++Return types are listed after the parameters. Multiple return types are wrapped in parentheses.
++A method receiver is a special first parameter that attaches the method to a type.`,
++    golangSyntax: `Go function signatures:
++
++func NewConfig(path string) (*Config, error)     // function with params and returns
++func NewConfig(path string, logger *log.Logger)   // added parameter
++func (s *Server) Start(ctx context.Context) error // method with pointer receiver
++func (s Server) String() string                   // method with value receiver`,
++  },
++
++  // ---- Category 3: Function/Method Body ----
++  {
++    name: "Body Statements",
++    operations: [
++      {
++        op: "clear_body",
++        description: "Remove all statements from a function body.",
++        hint: "target",
++        required: ["target"],
++        optional: [],
++        exampleParams: { op: "clear_body", target: "Server.Start" },
++      },
++      {
++        op: "remove_statement",
++        description: "Remove a statement by 0-based index in the function body.",
++        hint: "target, index",
++        required: ["target", "index"],
++        optional: [],
++        exampleParams: { op: "remove_statement", target: "Server.Start", index: 2 },
++      },
++      {
++        op: "insert_call",
++        description: "Insert a function call statement: func(args...).",
++        hint: "target, func, args? (kind:val,...), position?, index?",
++        required: ["target", "func"],
++        optional: ["args", "position", "index"],
++        exampleParams: { op: "insert_call", target: "main", func: "fmt.Println", args: "string:hello world", position: "last" },
++      },
++      {
++        op: "insert_method_call",
++        description: "Insert a method call statement: receiver.method(args...).",
++        hint: "target, receiver, method, args?, position?, index?",
++        required: ["target", "receiver", "method"],
++        optional: ["args", "position", "index"],
++        exampleParams: { op: "insert_method_call", target: "Server.Start", receiver: "s", method: "init", position: "first" },
++      },
++      {
++        op: "insert_assign_call",
++        description: "Insert vars := func(args...) or vars = func(args...).",
++        hint: "target, vars (name,...), func, short?, args?, position?, index?",
++        required: ["target", "vars", "func"],
++        optional: ["short", "args", "position", "index"],
++        exampleParams: { op: "insert_assign_call", target: "NewConfig", vars: "data,err", short: true, func: "os.ReadFile", args: "ident:path", position: "first" },
++      },
++      {
++        op: "insert_assign_value",
++        description: "Insert varName = value (simple assignment).",
++        hint: "target, varName, valueSpec (kind:val), position?, index?",
++        required: ["target", "varName", "valueSpec"],
++        optional: ["position", "index"],
++        exampleParams: { op: "insert_assign_value", target: "Server.Start", varName: "s.running", valueSpec: "true", position: "last" },
++      },
++      {
++        op: "insert_var_decl",
++        description: "Insert var name Type inside a function body.",
++        hint: "target, varName, varType, position?, index?",
++        required: ["target", "varName", "varType"],
++        optional: ["position", "index"],
++        exampleParams: { op: "insert_var_decl", target: "NewConfig", varName: "cfg", varType: "Config", position: "first" },
++      },
++      {
++        op: "insert_return",
++        description: "Insert return statement with optional values.",
++        hint: "target, values? (kind:val,...), position?, index?",
++        required: ["target"],
++        optional: ["values", "position", "index"],
++        exampleParams: { op: "insert_return", target: "NewConfig", values: "addr:cfg,nil", position: "last" },
++      },
++      {
++        op: "insert_if",
++        description: "Insert if left op right { } with empty body.",
++        hint: "target, condLeft, operator, condRight, position?, index?",
++        required: ["target", "condLeft", "operator", "condRight"],
++        optional: ["position", "index"],
++        exampleParams: { op: "insert_if", target: "NewConfig", condLeft: "ident:err", operator: "!=", condRight: "nil", position: "at_index", index: 1 },
++      },
++      {
++        op: "insert_if_init",
++        description: "Insert if vars := func(args); left op right { } with init statement.",
++        hint: "target, initVars, initFunc, initArgs?, condLeft, operator, condRight, position?, index?",
++        required: ["target", "initVars", "initFunc", "condLeft", "operator", "condRight"],
++        optional: ["initArgs", "position", "index"],
++        exampleParams: { op: "insert_if_init", target: "Server.Start", initVars: "err", initFunc: "s.validate", condLeft: "ident:err", operator: "!=", condRight: "nil", position: "first" },
++      },
++      {
++        op: "insert_for_range",
++        description: "Insert for key, value := range iterable { } with empty body.",
++        hint: "target, key?, value?, iterable (kind:val), position?, index?",
++        required: ["target", "iterable"],
++        optional: ["key", "value", "position", "index"],
++        exampleParams: { op: "insert_for_range", target: "Server.Start", key: "_", value: "client", iterable: "selector:s.clients", position: "last" },
++      },
++      {
++        op: "insert_defer",
++        description: "Insert defer func(args...).",
++        hint: "target, func, args?, position?, index?",
++        required: ["target", "func"],
++        optional: ["args", "position", "index"],
++        exampleParams: { op: "insert_defer", target: "NewConfig", func: "f.Close", position: "at_index", index: 1 },
++      },
++      {
++        op: "insert_go",
++        description: "Insert go func(args...) goroutine launch.",
++        hint: "target, func, args?, position?, index?",
++        required: ["target", "func"],
++        optional: ["args", "position", "index"],
++        exampleParams: { op: "insert_go", target: "Server.Start", func: "s.serve", args: "ident:ln", position: "last" },
++      },
++      {
++        op: "insert_error_check",
++        description: "Insert if errVar != nil { return values... } — shorthand for if + return.",
++        hint: "target, errVar, returnValues (kind:val,...), position?, index?",
++        required: ["target", "errVar", "returnValues"],
++        optional: ["position", "index"],
++        exampleParams: { op: "insert_error_check", target: "NewConfig", errVar: "err", returnValues: "nil,ident:err", position: "at_index", index: 1 },
++      },
++      {
++        op: "push_arg",
++        description: "Append an argument to a call expression at stmtIndex. callIndex targets a call within return/assign.",
++        hint: "target, stmtIndex, arg (kind:val), callIndex?",
++        required: ["target", "stmtIndex", "arg"],
++        optional: ["callIndex"],
++        exampleParams: { op: "push_arg", target: "Server.Start", stmtIndex: 0, arg: "selector:s.port" },
++      },
++      {
++        op: "set_else",
++        description: "Add an empty else block to an if statement at stmtIndex.",
++        hint: "target, stmtIndex",
++        required: ["target", "stmtIndex"],
++        optional: [],
++        exampleParams: { op: "set_else", target: "NewConfig", stmtIndex: 1 },
++      },
++    ],
++    programmingConcept: `A function body is a sequence of statements executed in order. Each statement is one instruction.
++
++Common statement types:
++- Function call: execute a function, e.g. fmt.Println("hello")
++- Method call: call a method on a receiver, e.g. s.init()
++- Assignment: store a value, e.g. data, err := os.ReadFile(path)
++- Return: exit the function with values, e.g. return nil, err
++- If: conditional execution, e.g. if err != nil { return err }
++- For-range: iterate over a collection, e.g. for _, item := range items { }
++- Defer: schedule code to run when the function exits
++- Go: launch a concurrent goroutine
++- Variable declaration: declare a typed variable, e.g. var cfg Config
++
++Statements are added one at a time. Position controls where: first, last, at_index (0-based).
++Compound statement bodies (inside if/for) are targeted with dotted paths: Func.if[N], Func.for[N], Func.if[N].else.`,
++    golangSyntax: `Go statements:
++
++// Function call
++fmt.Println("hello world")
++
++// Method call
++s.init()
++
++// Assignment with function call (short := or long =)
++data, err := os.ReadFile(path)
++s.running = true
++
++// Variable declaration inside function
++var cfg Config
++
++// Return with values
++return &cfg, nil
++
++// If statement
++if err != nil {
++    return nil, err
++}
++
++// If with init statement
++if err := s.validate(); err != nil {
++    return err
++}
++
++// For-range loop
++for _, client := range s.clients {
++    client.Close()
++}
++
++// Defer (runs when function exits)
++defer f.Close()
++
++// Goroutine
++go s.serve(ln)
++
++// Error check pattern (if err != nil { return ... })
++data, err := os.ReadFile(path)
++if err != nil {
++    return nil, err
++}`,
++  },
++
++  // ---- Category 4: Struct Field Editing ----
++  {
++    name: "Struct Fields",
++    operations: [
++      {
++        op: "add_struct_field",
++        description: "Add a field to a struct.",
++        hint: "target (struct), fieldName, fieldType, tag?, position?, anchor?",
++        required: ["target", "fieldName", "fieldType"],
++        optional: ["tag", "position", "anchor"],
++        exampleParams: { op: "add_struct_field", target: "Config", fieldName: "Port", fieldType: "int", tag: "`json:\"port\"`" },
++      },
++      {
++        op: "remove_struct_field",
++        description: "Remove a field from a struct.",
++        hint: "target (Struct.Field)",
++        required: ["target"],
++        optional: [],
++        exampleParams: { op: "remove_struct_field", target: "Config.Port" },
++      },
++      {
++        op: "set_field_type",
++        description: "Change the type of a struct field.",
++        hint: "target (Struct.Field), fieldType",
++        required: ["target", "fieldType"],
++        optional: [],
++        exampleParams: { op: "set_field_type", target: "Config.Port", fieldType: "uint16" },
++      },
++      {
++        op: "set_field_name",
++        description: "Rename a struct field.",
++        hint: "target (Struct.Field), fieldName",
++        required: ["target", "fieldName"],
++        optional: [],
++        exampleParams: { op: "set_field_name", target: "Config.Port", fieldName: "ListenPort" },
++      },
++      {
++        op: "set_struct_tag",
++        description: "Set or update one struct tag key. Other keys are preserved.",
++        hint: "target (Struct.Field), tagKey, tagValue",
++        required: ["target", "tagKey", "tagValue"],
++        optional: [],
++        exampleParams: { op: "set_struct_tag", target: "Config.Port", tagKey: "json", tagValue: "port,omitempty" },
++      },
++      {
++        op: "remove_struct_tag",
++        description: "Remove one tag key, or the entire tag (omit tagKey).",
++        hint: "target (Struct.Field), tagKey?",
++        required: ["target"],
++        optional: ["tagKey"],
++        exampleParams: { op: "remove_struct_tag", target: "Config.Port", tagKey: "json" },
++      },
++    ],
++    programmingConcept: `A struct groups related data into named fields. Each field has a name, a type, and optionally a tag.
++
++Struct tags are metadata attached to fields, used by libraries for serialization (JSON, database mapping, etc.).
++Tags use a key:"value" format inside backticks: \`json:"port" db:"port_num"\`
++
++Fields can be added, removed, renamed, retyped, and their tags can be set or removed individually.`,
++    golangSyntax: `Go struct fields:
++
++type Config struct {
++    Port    int    \`json:"port"\`
++    Host    string \`json:"host,omitempty"\`
++    handler http.Handler
++}
++
++// Tags use key:"value" format in backticks
++// Common tag keys: json, db, yaml, xml, mapstructure`,
++  },
++
++  // ---- Category 5: Interface Editing ----
++  {
++    name: "Interface Editing",
++    operations: [
++      {
++        op: "add_interface_method",
++        description: "Add a method signature to an interface.",
++        hint: "target (interface), methodName, params, returns",
++        required: ["target", "methodName"],
++        optional: ["params", "returns"],
++        exampleParams: { op: "add_interface_method", target: "Handler", methodName: "ServeHTTP", params: "w:http.ResponseWriter,r:*http.Request", returns: "" },
++      },
++      {
++        op: "remove_interface_method",
++        description: "Remove a method from an interface.",
++        hint: "target (Interface.Method)",
++        required: ["target"],
++        optional: [],
++        exampleParams: { op: "remove_interface_method", target: "Handler.ServeHTTP" },
++      },
++      {
++        op: "add_interface_embed",
++        description: "Embed another interface type.",
++        hint: "target (interface), embedType",
++        required: ["target", "embedType"],
++        optional: [],
++        exampleParams: { op: "add_interface_embed", target: "Handler", embedType: "io.Closer" },
++      },
++    ],
++    programmingConcept: `An interface defines a set of method signatures that a type must implement. Interfaces enable polymorphism — different types can satisfy the same interface.
++
++Embedding includes all methods from another interface. For example, embedding io.Reader adds the Read method.`,
++    golangSyntax: `Go interfaces:
++
++type Handler interface {
++    ServeHTTP(w http.ResponseWriter, r *http.Request)
++    io.Closer  // embed: includes Close() error
++}`,
++  },
++
++  // ---- Category 6: Import Management ----
++  {
++    name: "Import Management",
++    operations: [
++      {
++        op: "add_import",
++        description: "Add an import path. Use alias for named imports.",
++        hint: "path, alias?",
++        required: ["path"],
++        optional: ["alias"],
++        exampleParams: { op: "add_import", path: "fmt" },
++      },
++      {
++        op: "remove_import",
++        description: "Remove an import path. Use this to clean up unused imports.",
++        hint: "path",
++        required: ["path"],
++        optional: [],
++        exampleParams: { op: "remove_import", path: "os" },
++      },
++    ],
++    programmingConcept: `Imports make external packages available in the file. Each import specifies a package path.
++
++An alias gives an import a different local name (e.g. import pb "google.golang.org/protobuf").
++Common imports: "fmt" (formatting), "os" (operating system), "net/http" (HTTP), "context", "errors", "strings", "strconv", "io", "log".`,
++    golangSyntax: `Go imports:
++
++import "fmt"                              // single import
++import (                                  // grouped imports
++    "fmt"
++    "os"
++    pb "google.golang.org/protobuf"       // aliased import
++    _ "net/http/pprof"                    // blank import (side effects only)
++)`,
++  },
++
++  // ---- Category 7: Const/Var Editing ----
++  {
++    name: "Const/Var Editing",
++    operations: [
++      {
++        op: "set_const_value",
++        description: "Change the value of a constant.",
++        hint: "target, valueSpec OR valueFunc+valueArgs",
++        required: ["target"],
++        optional: ["valueSpec", "valueFunc", "valueArgs"],
++        exampleParams: { op: "set_const_value", target: "DefaultPort", valueSpec: "int:9090" },
++      },
++      {
++        op: "set_var_value",
++        description: "Change the value of a variable.",
++        hint: "target, valueSpec OR valueFunc+valueArgs",
++        required: ["target"],
++        optional: ["valueSpec", "valueFunc", "valueArgs"],
++        exampleParams: { op: "set_var_value", target: "ErrNotFound", valueFunc: "errors.New", valueArgs: "string:resource not found" },
++      },
++      {
++        op: "set_const_type",
++        description: "Change the type annotation of a constant.",
++        hint: "target, type",
++        required: ["target", "type"],
++        optional: [],
++        exampleParams: { op: "set_const_type", target: "DefaultPort", type: "uint16" },
++      },
++      {
++        op: "set_var_type",
++        description: "Change the type annotation of a variable.",
++        hint: "target, type",
++        required: ["target", "type"],
++        optional: [],
++        exampleParams: { op: "set_var_type", target: "ErrNotFound", type: "error" },
++      },
++      {
++        op: "remove_var",
++        description: "Remove a variable from its block.",
++        hint: "target",
++        required: ["target"],
++        optional: [],
++        exampleParams: { op: "remove_var", target: "ErrNotFound" },
++      },
++      {
++        op: "remove_const",
++        description: "Remove a constant from its block.",
++        hint: "target",
++        required: ["target"],
++        optional: [],
++        exampleParams: { op: "remove_const", target: "DefaultPort" },
++      },
++    ],
++    programmingConcept: `Constants and variables store named values at the package level.
++
++A constant's value is fixed at compile time and cannot change.
++A variable's value can change at runtime.
++Both can have explicit types and values. Values use flat encoding: int:42, string:hello, nil, ident:x.
++For function call values (e.g. errors.New("not found")), use valueFunc + valueArgs instead of valueSpec.`,
++    golangSyntax: `Go constants and variables:
++
++const DefaultPort int = 8080
++const MaxRetries = 3                      // type inferred
++var ErrNotFound = errors.New("not found") // function call value
++var globalLogger *log.Logger              // typed, no initial value
++
++const (   // const block
++    StatusOK    = 200
++    StatusError = 500
++)`,
++  },
++
++  // ---- Category 8: Package/File Level ----
++  {
++    name: "Package/File",
++    operations: [
++      {
++        op: "set_package",
++        description: "Change the package name.",
++        hint: "name",
++        required: ["name"],
++        optional: [],
++        exampleParams: { op: "set_package", name: "server" },
++      },
++      {
++        op: "set_build_constraint",
++        description: "Set or replace the //go:build constraint line.",
++        hint: "constraint",
++        required: ["constraint"],
++        optional: [],
++        exampleParams: { op: "set_build_constraint", constraint: "linux && amd64" },
++      },
++      {
++        op: "add_generate_directive",
++        description: "Add a //go:generate directive.",
++        hint: "directive, anchor?, position?",
++        required: ["directive"],
++        optional: ["anchor", "position"],
++        exampleParams: { op: "add_generate_directive", directive: "stringer -type=Color" },
++      },
++    ],
++    programmingConcept: `Every Go file starts with a package declaration. All files in the same directory must have the same package name.
++
++Build constraints control which files are compiled on which platforms.
++Generate directives trigger code generation tools.`,
++    golangSyntax: `Go file-level declarations:
++
++//go:build linux && amd64
++
++package server
++
++//go:generate stringer -type=Color`,
++  },
++
++  // ---- Category 9: Comments/Documentation ----
++  {
++    name: "Comments",
++    operations: [
++      {
++        op: "set_doc_comment",
++        description: "Set or replace the doc comment above a declaration.",
++        hint: "target, text",
++        required: ["target", "text"],
++        optional: [],
++        exampleParams: { op: "set_doc_comment", target: "Server", text: "Server handles incoming HTTP requests." },
++      },
++      {
++        op: "remove_doc_comment",
++        description: "Remove the doc comment from a declaration.",
++        hint: "target",
++        required: ["target"],
++        optional: [],
++        exampleParams: { op: "remove_doc_comment", target: "Server" },
++      },
++      {
++        op: "add_line_comment",
++        description: "Add an inline comment at the end of a declaration's line.",
++        hint: "target, text",
++        required: ["target", "text"],
++        optional: [],
++        exampleParams: { op: "add_line_comment", target: "DefaultPort", text: "default HTTP port" },
++      },
++    ],
++    programmingConcept: `Comments document code. Doc comments appear directly above a declaration and are used by documentation tools.
++
++Line comments appear at the end of a line of code.
++All comments use // prefix in Go.`,
++    golangSyntax: `Go comments:
++
++// Server handles incoming HTTP requests.
++type Server struct { }
++
++const DefaultPort = 8080 // default HTTP port`,
++  },
++
++  // ---- Category 10: Refactoring ----
++  {
++    name: "Refactoring",
++    operations: [
++      {
++        op: "rename",
++        description: "Rename all references to target within the file.",
++        hint: "target, newName",
++        required: ["target", "newName"],
++        optional: [],
++        exampleParams: { op: "rename", target: "Server", newName: "HTTPServer" },
++      },
++      {
++        op: "extract_interface",
++        description: "Generate an interface from a struct type's exported methods.",
++        hint: "target, interfaceName",
++        required: ["target", "interfaceName"],
++        optional: [],
++        exampleParams: { op: "extract_interface", target: "Server", interfaceName: "ServerInterface" },
++      },
++    ],
++    programmingConcept: `Refactoring restructures code without changing its behavior.
++
++Renaming changes the name of a declaration and all its references within the file.
++Extracting an interface creates a new interface type from a struct's public methods.`,
++    golangSyntax: `Go refactoring examples:
++
++// Before rename: Server → HTTPServer
++type Server struct { }       →  type HTTPServer struct { }
++func (s *Server) Start()     →  func (s *HTTPServer) Start()
++
++// Extract interface from struct methods
++type ServerInterface interface {
++    Start(ctx context.Context) error
++    Stop() error
++}`,
++  },
++]
++
++// ---------------------------------------------------------------------------
++// Workflow Examples
++// ---------------------------------------------------------------------------
++
++export interface WorkflowDef {
++  name: string
++  description: string
++  steps: { description: string; params: Record<string, unknown> }[]
++}
++
++export const GO_AST_WORKFLOWS: WorkflowDef[] = [
++  {
++    name: "Create a function that reads a config file",
++    description: "Create NewConfig(path string) (*Config, error) that reads a file and returns the config.",
++    steps: [
++      { description: "Create the function", params: { op: "create_function", name: "NewConfig", params: "path:string", returns: "*Config,error" } },
++      { description: "Read the file", params: { op: "insert_assign_call", target: "NewConfig", vars: "data,err", short: true, func: "os.ReadFile", args: "ident:path", position: "first" } },
++      { description: "Check for error", params: { op: "insert_error_check", target: "NewConfig", errVar: "err", returnValues: "nil,ident:err", position: "at_index", index: 1 } },
++      { description: "Declare config var", params: { op: "insert_var_decl", target: "NewConfig", varName: "cfg", varType: "Config", position: "at_index", index: 2 } },
++      { description: "Unmarshal JSON", params: { op: "insert_assign_call", target: "NewConfig", vars: "err", short: false, func: "json.Unmarshal", args: "ident:data,addr:cfg", position: "at_index", index: 3 } },
++      { description: "Check unmarshal error", params: { op: "insert_error_check", target: "NewConfig", errVar: "err", returnValues: "nil,ident:err", position: "at_index", index: 4 } },
++      { description: "Return result", params: { op: "insert_return", target: "NewConfig", values: "addr:cfg,nil", position: "last" } },
++      { description: "Add import", params: { op: "add_import", path: "encoding/json" } },
++    ],
++  },
++  {
++    name: "Add a method with error handling",
++    description: "Add a Start method to Server that listens on a port.",
++    steps: [
++      { description: "Create the method", params: { op: "create_method", receiverType: "*Server", receiverVar: "s", name: "Start", params: "ctx:context.Context", returns: "error" } },
++      { description: "Format address", params: { op: "insert_assign_call", target: "Server.Start", vars: "addr", short: true, func: "fmt.Sprintf", args: "string::%d,selector:s.port", position: "first" } },
++      { description: "Start listener", params: { op: "insert_assign_call", target: "Server.Start", vars: "ln,err", short: true, func: "net.Listen", args: "string:tcp,ident:addr", position: "at_index", index: 1 } },
++      { description: "Check error", params: { op: "insert_error_check", target: "Server.Start", errVar: "err", returnValues: "ident:err", position: "at_index", index: 2 } },
++      { description: "Store listener", params: { op: "insert_assign_value", target: "Server.Start", varName: "s.listener", valueSpec: "ident:ln", position: "at_index", index: 3 } },
++      { description: "Return nil", params: { op: "insert_return", target: "Server.Start", values: "nil", position: "last" } },
++    ],
++  },
++  {
++    name: "Create a struct with fields and tags",
++    description: "Create a Config struct with JSON-tagged fields.",
++    steps: [
++      { description: "Create the struct", params: { op: "create_struct", name: "Config" } },
++      { description: "Add Host field", params: { op: "add_struct_field", target: "Config", fieldName: "Host", fieldType: "string", tag: "`json:\"host\"`" } },
++      { description: "Add Port field", params: { op: "add_struct_field", target: "Config", fieldName: "Port", fieldType: "int", tag: "`json:\"port\"`" } },
++      { description: "Add doc comment", params: { op: "set_doc_comment", target: "Config", text: "Config holds server configuration." } },
++    ],
++  },
++  {
++    name: "Clean up unused imports",
++    description: "Remove unused imports reported by the Go language server.",
++    steps: [
++      { description: "Remove unused os import", params: { op: "remove_import", path: "os" } },
++      { description: "Remove unused time import", params: { op: "remove_import", path: "time" } },
++    ],
++  },
++]
++
++// ---------------------------------------------------------------------------
++// Generator: Tool Call Syntax
++// ---------------------------------------------------------------------------
++
++/**
++ * Generate a tool call example using the individual tool name (go_<op>) instead
++ * of the monolithic go_edit. Strips the "op" field from exampleParams and adds
++ * filePath so every example shows the correct parameter pattern.
++ */
++function wrapOpToolCall(op: OpDef): string {
++  const { op: _op, ...cleanParams } = op.exampleParams
++  return wrapToolCall(`go_${op.op}`, { filePath: "main.go", ...cleanParams })
++}
++
++/** Same as wrapOpToolCall but for workflow steps that have an op field in params. */
++function wrapStepToolCall(params: Record<string, unknown>): string {
++  const { op, ...cleanParams } = params
++  const withFile = cleanParams.filePath ? cleanParams : { filePath: "main.go", ...cleanParams }
++  return wrapToolCall(`go_${op as string}`, withFile)
++}
++
++export function generateToolCallSyntax(): string {
++  const lines: string[] = []
++  lines.push("When you call a tool, use this format:")
++  lines.push(`${Gemma4Tokens.toolCallStart}call:tool_name{param1:value1,param2:value2}${Gemma4Tokens.toolCallEnd}`)
++  lines.push("")
++  lines.push(`String values must be wrapped in ${Gemma4Tokens.quote} delimiters:`)
++  lines.push(`${Gemma4Tokens.toolCallStart}call:go_insert_call{filePath:${Gemma4Tokens.quote}main.go${Gemma4Tokens.quote},target:${Gemma4Tokens.quote}main${Gemma4Tokens.quote},func:${Gemma4Tokens.quote}fmt.Println${Gemma4Tokens.quote}}${Gemma4Tokens.toolCallEnd}`)
++  lines.push("")
++  lines.push("IMPORTANT: filePath is the file system path (e.g. main.go). target is the declaration inside the file (e.g. main, Server.Start).")
++  return lines.join("\n")
++}
++
++// ---------------------------------------------------------------------------
++// Generator: Operation Reference
++// ---------------------------------------------------------------------------
++
++export function generateGoAstReference(): string {
++  const lines: string[] = []
++  lines.push("Go AST editing tools reference:")
++  lines.push("")
++
++  for (const cat of GO_AST_REGISTRY) {
++    lines.push(`## ${cat.name}`)
++    lines.push("")
++    for (const op of cat.operations) {
++      lines.push(`go_${op.op}: ${op.description}`)
++      lines.push(`  Required: ${op.required.join(", ") || "(none)"}`)
++      if (op.optional.length > 0) {
++        lines.push(`  Optional: ${op.optional.join(", ")}`)
++      }
++      lines.push(`  Example: ${wrapOpToolCall(op)}`)
++      lines.push("")
++    }
++  }
++
++  return lines.join("\n")
++}
++
++// ---------------------------------------------------------------------------
++// Generator: Workflow Examples
++// ---------------------------------------------------------------------------
++
++export function generateGoAstWorkflows(): string {
++  const lines: string[] = []
++  lines.push("Multi-step workflow examples:")
++  lines.push("")
++
++  for (const wf of GO_AST_WORKFLOWS) {
++    lines.push(`### ${wf.name}`)
++    lines.push(wf.description)
++    lines.push("")
++    for (let i = 0; i < wf.steps.length; i++) {
++      const step = wf.steps[i]!
++      lines.push(`Step ${i + 1}: ${step.description}`)
++      lines.push(wrapStepToolCall(step.params))
++      lines.push("")
++    }
++  }
++
++  return lines.join("\n")
++}
++
++// ---------------------------------------------------------------------------
++// Generator: Quick Reference Table
++// ---------------------------------------------------------------------------
++
++export function generateQuickReference(): string {
++  const lines: string[] = []
++  lines.push("Go AST tools quick reference:")
++  lines.push("")
++
++  for (const cat of GO_AST_REGISTRY) {
++    lines.push(`${cat.name}:`)
++    for (const op of cat.operations) {
++      lines.push(`  go_${op.op} — ${op.hint}`)
++    }
++    lines.push("")
++  }
++
++  return lines.join("\n")
++}
++
++// ---------------------------------------------------------------------------
++// Generator: Programming Concepts
++// ---------------------------------------------------------------------------
++
++export function generateProgrammingConcepts(): string {
++  const lines: string[] = []
++  lines.push("Programming concepts for Go AST editing:")
++  lines.push("")
++
++  for (const cat of GO_AST_REGISTRY) {
++    lines.push(`## ${cat.name}`)
++    lines.push("")
++    lines.push(cat.programmingConcept)
++    lines.push("")
++    lines.push("Examples:")
++    for (const op of cat.operations) {
++      lines.push(wrapOpToolCall(op))
++    }
++    lines.push("")
++  }
++
++  return lines.join("\n")
++}
++
++// ---------------------------------------------------------------------------
++// Generator: Go Syntax Guide
++// ---------------------------------------------------------------------------
++
++export function generateGolangSyntax(): string {
++  const lines: string[] = []
++  lines.push("Go syntax reference with tool call examples:")
++  lines.push("")
++
++  for (const cat of GO_AST_REGISTRY) {
++    lines.push(`## ${cat.name}`)
++    lines.push("")
++    lines.push(cat.golangSyntax)
++    lines.push("")
++    lines.push("Produce this with:")
++    for (const op of cat.operations) {
++      lines.push(wrapOpToolCall(op))
++    }
++    lines.push("")
++  }
++
++  // Static reference tables
++  lines.push("## Common Go Types")
++  lines.push("")
++  lines.push("string, int, int64, float64, bool, error, byte, rune")
++  lines.push("[]byte, []string, map[string]string, map[string]interface{}")
++  lines.push("*T (pointer), []T (slice), chan T (channel)")
++  lines.push("context.Context, io.Reader, io.Writer, http.Handler")
++  lines.push("")
++
++  lines.push("## Common Import Paths")
++  lines.push("")
++  lines.push("fmt, os, io, log, errors, strings, strconv, bytes")
++  lines.push("context, sync, time, math, sort, regexp")
++  lines.push("net, net/http, net/url, path, path/filepath")
++  lines.push("encoding/json, encoding/xml, encoding/base64")
++  lines.push("database/sql, html/template, text/template")
++  lines.push("")
++
++  // Flat value encoding reference
++  lines.push("## Flat Value Encoding")
++  lines.push("")
++  lines.push("All values in Go AST tools use kind:content format:")
++  lines.push("  ident:name   → identifier (e.g. ident:err)")
++  lines.push("  nil          → nil literal")
++  lines.push("  true / false → boolean literals")
++  lines.push("  int:N        → integer (e.g. int:42)")
++  lines.push("  float:N      → float (e.g. float:3.14)")
++  lines.push("  string:text  → string literal (e.g. string:hello)")
++  lines.push("  selector:a.b → dotted access (e.g. selector:s.Port)")
++  lines.push("  addr:name    → address-of (e.g. addr:cfg → &cfg)")
++  lines.push("  call:func    → zero-arg call (e.g. call:fmt.Errorf)")
++  lines.push("")
++  lines.push("Multiple values are comma-separated: nil,ident:err")
++  lines.push("Parameters use name:type format: ctx:context.Context,id:string")
++
++  return lines.join("\n")
++}
++
++// ---------------------------------------------------------------------------
++// Generator: Combined System Prompt
++// ---------------------------------------------------------------------------
++
++export function generateGoAstSystemPrompt(): string {
++  const sections: string[] = []
++
++  sections.push("# Go AST Editing Guide")
++  sections.push("")
++  sections.push("Use go_inspect to understand a file's structure, then call the appropriate editing tool (e.g. go_create_function, go_add_struct_field) to modify it.")
++  sections.push("Each tool call makes ONE atomic change. Build complex edits with multiple calls.")
++  sections.push("All parameters are basic types only: strings, numbers, booleans. No arrays, no objects.")
++  sections.push("")
++
++  sections.push(generateQuickReference())
++  sections.push(generateGoAstReference())
++  sections.push(generateGoAstWorkflows())
++  sections.push(generateGolangSyntax())
++  sections.push(generateProgrammingConcepts())
++
++  return sections.join("\n")
++}
+diff --git a/packages/opencode/src/provider/gemma4-tool-format.ts b/packages/opencode/src/provider/gemma4-tool-format.ts
+new file mode 100644
+index 000000000..49d25cfa7
+--- /dev/null
++++ b/packages/opencode/src/provider/gemma4-tool-format.ts
+@@ -0,0 +1,317 @@
++/**
++ * Gemma 4 tool format utilities.
++ *
++ * - Token constants and wrapToolCall() produce native-format examples
++ *   for system prompt knowledge documents (Gemma 4-specific).
++ * - flattenToolSchema() / expandToolCallArgs() flatten nested tool
++ *   parameters to basic types (model-independent, always active).
++ *
++ * This module does NOT build full prompts, format tool declarations
++ * for the model, or parse model output — the Jinja template and
++ * PEG parser handle those server-side.
++ */
++
++// ---------------------------------------------------------------------------
++// Token constants matching LiteRT-LM's Gemma4DataProcessorConfig
++// ---------------------------------------------------------------------------
++
++export const Gemma4Tokens = {
++  toolCallStart: "<|tool_call>",
++  toolCallEnd: "<tool_call|>",
++  quote: '<|"|>',
++} as const
++
++// ---------------------------------------------------------------------------
++// Value formatting for wrapToolCall() internals
++// ---------------------------------------------------------------------------
++
++export function formatValue(value: unknown): string {
++  if (value === null || value === undefined) return "null"
++  if (typeof value === "string") return `${Gemma4Tokens.quote}${value}${Gemma4Tokens.quote}`
++  if (typeof value === "number" || typeof value === "boolean") return String(value)
++  if (Array.isArray(value)) return `[${value.map(formatValue).join(",")}]`
++  if (typeof value === "object") {
++    const entries = Object.entries(value as Record<string, unknown>)
++    const parts = entries.map(([k, v]) => `${k}:${formatValue(v)}`)
++    return `{${parts.join(",")}}`
++  }
++  return String(value)
++}
++
++// ---------------------------------------------------------------------------
++// wrapToolCall — format a tool call example in native Gemma 4 format.
++// Used by gemma4-go-ast-knowledge.ts generators to produce examples
++// in system prompt knowledge documents.
++// ---------------------------------------------------------------------------
++
++export function wrapToolCall(name: string, args: Record<string, unknown>): string {
++  const entries = Object.entries(args)
++  const parts = entries.map(([k, v]) => `${k}:${formatValue(v)}`)
++  return `${Gemma4Tokens.toolCallStart}call:${name}{${parts.join(",")}}${Gemma4Tokens.toolCallEnd}`
++}
++
++// ---------------------------------------------------------------------------
++// Schema flattening — model-independent, always active.
++// Converts nested object/array parameters to basic types so the server
++// never sees nested arguments in tool definitions.
++// ---------------------------------------------------------------------------
++
++// eslint-disable-next-line @typescript-eslint/no-explicit-any
++export type JsonSchema = Record<string, any>
++
++export type FlattenEntry =
++  | { kind: "object"; prefix: string; children: string[] }
++  | { kind: "array_of_primitives"; key: string; itemType: string }
++  | { kind: "array_of_objects"; key: string; childKeys: string[] }
++
++export type FlattenMap = Map<string, FlattenEntry>
++
++/**
++ * Resolve the effective type of a JSON Schema node, handling anyOf/oneOf
++ * nullable unions like `{ anyOf: [{type:"string"}, {type:"null"}] }`.
++ */
++function resolveSchemaType(schema: JsonSchema): string | undefined {
++  if (schema.type) return schema.type as string
++  const union = (schema.anyOf ?? schema.oneOf) as JsonSchema[] | undefined
++  if (union) {
++    const nonNull = union.filter((s) => s.type !== "null")
++    if (nonNull.length === 1) return nonNull[0]!.type as string | undefined
++  }
++  return undefined
++}
++
++/**
++ * Flatten a JSON Schema's top-level properties so every parameter is a
++ * basic type (string, number, boolean). Nested objects get their
++ * properties promoted with underscore-separated prefixes. Arrays become
++ * comma-separated or pipe-separated strings.
++ *
++ * Returns the flattened schema and a FlattenMap describing how to reverse.
++ */
++export function flattenToolSchema(schema: JsonSchema): {
++  flattenedSchema: JsonSchema
++  flattenMap: FlattenMap
++} {
++  const properties = (schema.properties ?? {}) as Record<string, JsonSchema>
++  const required = new Set((schema.required ?? []) as string[])
++  const flatProps: Record<string, JsonSchema> = {}
++  const flatRequired: string[] = []
++  const flattenMap: FlattenMap = new Map()
++
++  for (const [key, prop] of Object.entries(properties)) {
++    const type = resolveSchemaType(prop)
++
++    if (type === "object" && prop.properties) {
++      // Promote child properties with prefix: parent_child
++      const childProps = prop.properties as Record<string, JsonSchema>
++      const childRequired = new Set((prop.required ?? []) as string[])
++      const children: string[] = []
++      for (const [ck, cv] of Object.entries(childProps)) {
++        const flatKey = `${key}_${ck}`
++        children.push(ck)
++        flatProps[flatKey] = { ...cv }
++        if (required.has(key) && childRequired.has(ck)) {
++          flatRequired.push(flatKey)
++        }
++      }
++      flattenMap.set(key, { kind: "object", prefix: key, children })
++    } else if (type === "array") {
++      const items = prop.items as JsonSchema | undefined
++      if (!items) {
++        // Unknown array — serialize as JSON string
++        flatProps[key] = { type: "string", description: `${prop.description ?? key} (JSON array)` }
++        flattenMap.set(key, { kind: "array_of_primitives", key, itemType: "json" })
++      } else {
++        const itemType = resolveSchemaType(items)
++        if (itemType === "object" && items.properties) {
++          // Array of objects → each child property becomes a pipe-separated string.
++          // Items within each object are comma-separated. Objects are pipe-separated.
++          // e.g. questions[0].options = [{label:"A",description:"a"},{label:"B",description:"b"}]
++          //   → questions_options_label = "A,B"  questions_options_description = "a,b"
++          // For outer array: questions[0].question="Q1" questions[1].question="Q2"
++          //   → questions_question = "Q1|Q2"
++          const childProps = items.properties as Record<string, JsonSchema>
++          const childKeys: string[] = []
++          for (const [ck, cv] of Object.entries(childProps)) {
++            const flatKey = `${key}_${ck}`
++            const childType = resolveSchemaType(cv as JsonSchema)
++            childKeys.push(ck)
++            if (childType === "array" && (cv as JsonSchema).items) {
++              // Nested array inside array item (e.g. questions[].options[])
++              const innerItems = (cv as JsonSchema).items as JsonSchema
++              const innerType = resolveSchemaType(innerItems)
++              if (innerType === "object" && innerItems.properties) {
++                // Array of objects inside array of objects
++                // Flatten inner object properties too
++                const innerProps = innerItems.properties as Record<string, JsonSchema>
++                for (const [ik, iv] of Object.entries(innerProps)) {
++                  const innerFlatKey = `${key}_${ck}_${ik}`
++                  flatProps[innerFlatKey] = {
++                    type: "string",
++                    description: `${(iv as JsonSchema).description ?? ik} (per item comma-separated, items pipe-separated)`,
++                  }
++                }
++                // Don't add the intermediate key
++                childKeys.pop()
++                for (const ik of Object.keys(innerProps)) {
++                  childKeys.push(`${ck}_${ik}`)
++                }
++              } else {
++                flatProps[flatKey] = {
++                  type: "string",
++                  description: `${(cv as JsonSchema).description ?? ck} (per item comma-separated, items pipe-separated)`,
++                }
++              }
++            } else if (childType === "boolean") {
++              flatProps[flatKey] = {
++                type: "string",
++                description: `${(cv as JsonSchema).description ?? ck} (pipe-separated booleans: true|false|true)`,
++              }
++            } else {
++              flatProps[flatKey] = {
++                type: "string",
++                description: `${(cv as JsonSchema).description ?? ck} (pipe-separated values)`,
++              }
++            }
++          }
++          flattenMap.set(key, { kind: "array_of_objects", key, childKeys })
++          if (required.has(key)) {
++            // At least the first child key is required
++            flatRequired.push(`${key}_${childKeys[0]}`)
++          }
++        } else {
++          // Array of primitives → comma-separated string
++          flatProps[key] = {
++            type: "string",
++            description: `${prop.description ?? key} (comma-separated)`,
++          }
++          flattenMap.set(key, { kind: "array_of_primitives", key, itemType: itemType ?? "string" })
++          if (required.has(key)) flatRequired.push(key)
++        }
++      }
++    } else {
++      // Basic type — pass through
++      flatProps[key] = prop
++      if (required.has(key)) flatRequired.push(key)
++    }
++  }
++
++  return {
++    flattenedSchema: {
++      type: "object",
++      properties: flatProps,
++      required: flatRequired.length > 0 ? flatRequired : undefined,
++      additionalProperties: schema.additionalProperties,
++    },
++    flattenMap,
++  }
++}
++
++/**
++ * Expand flat tool call arguments back to their nested structure.
++ */
++export function expandToolCallArgs(
++  flatArgs: Record<string, unknown>,
++  flattenMap: FlattenMap,
++): Record<string, unknown> {
++  const result: Record<string, unknown> = {}
++  const consumed = new Set<string>()
++
++  for (const [origKey, entry] of flattenMap) {
++    if (entry.kind === "object") {
++      const obj: Record<string, unknown> = {}
++      let hasAny = false
++      for (const child of entry.children) {
++        const flatKey = `${entry.prefix}_${child}`
++        if (flatKey in flatArgs) {
++          obj[child] = flatArgs[flatKey]
++          consumed.add(flatKey)
++          hasAny = true
++        }
++      }
++      if (hasAny) result[origKey] = obj
++    } else if (entry.kind === "array_of_primitives") {
++      const val = flatArgs[entry.key]
++      consumed.add(entry.key)
++      if (val === undefined || val === "") {
++        result[origKey] = []
++      } else if (entry.itemType === "json") {
++        try {
++          result[origKey] = JSON.parse(String(val))
++        } catch {
++          result[origKey] = [String(val)]
++        }
++      } else {
++        const parts = String(val).split(",").map((s) => s.trim())
++        result[origKey] = parts.map((p) => coerceValue(p, entry.itemType))
++      }
++    } else if (entry.kind === "array_of_objects") {
++      // Reconstruct array of objects from pipe-separated child values
++      const childValues: Record<string, string[]> = {}
++      let maxLen = 0
++      for (const childKey of entry.childKeys) {
++        const flatKey = `${entry.key}_${childKey}`
++        const val = flatArgs[flatKey]
++        consumed.add(flatKey)
++        // Also consume nested keys like questions_options_label
++        for (const fk of Object.keys(flatArgs)) {
++          if (fk.startsWith(`${entry.key}_${childKey}_`)) {
++            consumed.add(fk)
++          }
++        }
++        if (val !== undefined && val !== "") {
++          const parts = String(val).split("|")
++          childValues[childKey] = parts
++          maxLen = Math.max(maxLen, parts.length)
++        }
++      }
++      const arr: Record<string, unknown>[] = []
++      for (let i = 0; i < maxLen; i++) {
++        const obj: Record<string, unknown> = {}
++        for (const childKey of entry.childKeys) {
++          const parts = childValues[childKey]
++          if (parts && i < parts.length) {
++            // Check if this child key has nested children (e.g. options_label, options_description)
++            if (childKey.includes("_")) {
++              // This is a flattened nested array-of-objects property
++              const [arrKey, ...rest] = childKey.split("_")
++              const propName = rest.join("_")
++              if (!obj[arrKey!]) obj[arrKey!] = []
++              const innerArr = obj[arrKey!] as Record<string, unknown>[]
++              const innerParts = parts[i]!.split(",").map((s) => s.trim())
++              for (let j = 0; j < innerParts.length; j++) {
++                if (!innerArr[j]) innerArr[j] = {}
++                innerArr[j]![propName] = innerParts[j]
++              }
++            } else {
++              obj[childKey] = parts[i]!.trim()
++            }
++          }
++        }
++        if (Object.keys(obj).length > 0) arr.push(obj)
++      }
++      result[origKey] = arr
++    }
++  }
++
++  // Pass through any non-flattened args
++  for (const [key, val] of Object.entries(flatArgs)) {
++    if (!consumed.has(key)) {
++      result[key] = val
++    }
++  }
++
++  return result
++}
++
++function coerceValue(val: string, type: string): unknown {
++  switch (type) {
++    case "integer":
++    case "number":
++      return Number(val)
++    case "boolean":
++      return val === "true"
++    default:
++      return val
++  }
++}
+diff --git a/packages/opencode/src/session/compaction.ts b/packages/opencode/src/session/compaction.ts
+index 975327198..58e3522fd 100644
+--- a/packages/opencode/src/session/compaction.ts
++++ b/packages/opencode/src/session/compaction.ts
+@@ -19,6 +19,7 @@ import { Effect, Layer, ServiceMap } from "effect"
+ import { makeRuntime } from "@/effect/run-service"
+ import { InstanceState } from "@/effect/instance-state"
+ import { isOverflow as overflow } from "./overflow"
++import { isGemma4 } from "./system"
+ 
+ export namespace SessionCompaction {
+   const log = Log.create({ service: "session.compaction" })
+@@ -216,7 +217,14 @@ When constructing the summary, try to stick to this template:
+ [Construct a structured list of relevant files that have been read, edited, or created that pertain to the task at hand. If all the files in a directory are relevant, include the path to the directory.]
+ ---`
+ 
+-        const prompt = compacting.prompt ?? [defaultPrompt, ...compacting.context].join("\n\n")
++        // Rule 3: For Gemma 4, add reasoning summary instruction to capture key
++        // conclusions from thinking blocks. The summary is injected as regular text
++        // in subsequent turns (not inside <|channel> tokens).
++        const gemma4ReasoningPrompt = isGemma4(model)
++          ? `\n\nIMPORTANT: The conversation may contain the model's internal reasoning/thinking blocks. Extract the key conclusions and decisions from these reasoning blocks and include them under a "## Previous reasoning summary" section. Do not include raw thinking tokens or channel markers — summarize the reasoning as plain text. Focus on decisions made, approaches chosen, and conclusions reached that are relevant for continuing the work.`
++          : ""
++
++        const prompt = compacting.prompt ?? [defaultPrompt + gemma4ReasoningPrompt, ...compacting.context].join("\n\n")
+         const msgs = structuredClone(messages)
+         yield* plugin.trigger("experimental.chat.messages.transform", {}, { messages: msgs })
+         const modelMessages = yield* MessageV2.toModelMessagesEffect(msgs, model, { stripMedia: true })
+diff --git a/packages/opencode/src/session/llm.ts b/packages/opencode/src/session/llm.ts
+index 22fc9b1d5..d0309e29c 100644
+--- a/packages/opencode/src/session/llm.ts
++++ b/packages/opencode/src/session/llm.ts
+@@ -12,7 +12,7 @@ import { Instance } from "@/project/instance"
+ import type { Agent } from "@/agent/agent"
+ import type { MessageV2 } from "./message-v2"
+ import { Plugin } from "@/plugin"
+-import { SystemPrompt } from "./system"
++import { SystemPrompt, isGemma4, isSmallGemma4, buildGemma4SystemPrompt, getGemma4ModeIndicator } from "./system"
+ import { Flag } from "@/flag/flag"
+ import { Permission } from "@/permission"
+ import { PermissionID } from "@/permission/schema"
+@@ -202,6 +202,52 @@ export namespace LLM {
+ 
+     const tools = await resolveTools(input)
+ 
++    // For Gemma 4 models, rebuild the system prompt with resolved tool information
++    if (isGemma4(input.model)) {
++      const toolEntries = Object.entries(tools).map(([id, t]) => ({
++        id,
++        description: (t as any).description as string | undefined,
++        shortHint: (t as any).shortHint as string | undefined,
++      }))
++      // Separate MCP tools (those with '/' in the ID) from built-in tools
++      // For small Gemma 4 models (E4B/E2B), exclude LSP and MCP tools from the system prompt
++      const isSmall = isSmallGemma4(input.model)
++      const builtinTools = toolEntries
++        .filter((t) => !t.id.includes("/"))
++        .filter((t) => !(isSmall && t.id === "lsp"))
++      const mcpToolMap: Record<string, { description?: string }> = {}
++      if (!isSmall) {
++        for (const t of toolEntries.filter((t) => t.id.includes("/"))) {
++          mcpToolMap[t.id] = { description: t.description }
++        }
++      }
++      const gemma4Prompt = buildGemma4SystemPrompt(builtinTools, mcpToolMap)
++      const modeIndicator = getGemma4ModeIndicator(input.agent.name === "plan" ? "plan" : "build")
++      // Rule 5: Adaptive thought efficiency via system instructions.
++      // When thinking effort is "low", add instruction to reduce thinking tokens.
++      const variantName = input.user.model.variant?.toLowerCase() ?? ""
++      const thinkingEffortInstruction = variantName === "low"
++        ? "\n\nKeep your internal reasoning brief and focused. Avoid restating the problem. Jump directly to the solution approach."
++        : ""
++      // Replace the system prompt with the Gemma 4-specific one
++      system.length = 0
++      system.push(gemma4Prompt + thinkingEffortInstruction + "\n\n" + modeIndicator)
++      // Rebuild messages with new system prompt
++      if (!isOpenaiOauth) {
++        messages.length = 0
++        messages.push(
++          ...system.map((x): ModelMessage => ({ role: "system", content: x })),
++          ...input.messages,
++        )
++      }
++
++      // Gemma 4 reasoning control (Rules 1-2):
++      // Strip reasoning from completed prior assistant turns.
++      // Preserve reasoning in the last assistant turn if it contains tool calls
++      // (active tool-calling turn — the model needs its reasoning chain).
++      stripReasoningFromCompletedTurns(messages)
++    }
++
+     // LiteLLM and some Anthropic proxies require the tools parameter to be present
+     // when message history contains tool calls, even if no tools are being used.
+     // Add a dummy tool that is never called to satisfy this validation.
+@@ -413,4 +459,46 @@ export namespace LLM {
+     }
+     return false
+   }
++
++  /**
++   * Gemma 4 reasoning control (Rules 1-2 from Google's prompt formatting guide).
++   *
++   * Rule 1: Strip reasoning/thinking content from completed prior assistant turns
++   * to prevent context bloat and degraded model performance.
++   *
++   * Rule 2: Preserve reasoning in the last assistant turn if it contains tool calls
++   * (active tool-calling turn) — the model needs its reasoning chain for deciding
++   * subsequent tool calls within the same logical turn.
++   *
++   * A turn is "completed" if it's not the last assistant message, or if it's the
++   * last assistant message without pending tool calls.
++   */
++  function stripReasoningFromCompletedTurns(messages: ModelMessage[]): void {
++    // Find the last assistant message index
++    let lastAssistantIdx = -1
++    for (let i = messages.length - 1; i >= 0; i--) {
++      if (messages[i]!.role === "assistant") {
++        lastAssistantIdx = i
++        break
++      }
++    }
++
++    for (let i = 0; i < messages.length; i++) {
++      const msg = messages[i]!
++      if (msg.role !== "assistant") continue
++      if (!Array.isArray(msg.content)) continue
++
++      // Rule 2: preserve reasoning in the last assistant turn if it has tool calls
++      if (i === lastAssistantIdx) {
++        const hasTools = msg.content.some((p: any) => p.type === "tool-call")
++        if (hasTools) continue // Active tool-calling turn — preserve reasoning
++      }
++
++      // Rule 1: strip reasoning from this completed turn
++      const filtered = msg.content.filter((p: any) => p.type !== "reasoning")
++      if (filtered.length < msg.content.length) {
++        msg.content = filtered as typeof msg.content
++      }
++    }
++  }
+ }
+diff --git a/packages/opencode/src/tool/go-ast-edit.ts b/packages/opencode/src/tool/go-ast-edit.ts
+index 6268f6324..dcaedd38a 100644
+--- a/packages/opencode/src/tool/go-ast-edit.ts
++++ b/packages/opencode/src/tool/go-ast-edit.ts
+@@ -81,18 +81,35 @@ function buildSchema(params: ToolParam[]): z.ZodObject<any> {
+ 
+ /** Create a Tool.define() for one operation from the registry. */
+ function defineGoOp(info: ToolInfo) {
++  // Determine which params are required for this operation (for error hints).
++  const requiredParams = info.params.filter((p) => p.required).map((p) => p.name)
++
+   return Tool.define(info.name, {
+     description: info.description,
+-    shortDescription: info.description.split(".")[0],
+     parameters: buildSchema(info.params),
+     async execute(params: Record<string, unknown>, ctx: any) {
+-      const filePath = path.isAbsolute(params.filePath as string)
+-        ? (params.filePath as string)
+-        : path.join(Instance.directory, params.filePath as string)
++      const rawFilePath = params.filePath as string
++      if (!rawFilePath) {
++        throw new Error(
++          `${info.name}: missing filePath parameter. ` +
++          `filePath must be the file system path to the .go file (e.g. main.go, internal/server/server.go). ` +
++          `Required params for ${info.name}: filePath, ${requiredParams.join(", ")}`,
++        )
++      }
++      const filePath = path.isAbsolute(rawFilePath)
++        ? rawFilePath
++        : path.join(Instance.directory, rawFilePath)
+       await assertExternalDirectory(ctx, filePath)
+ 
+       if (!filePath.endsWith(".go")) {
+-        throw new Error(`${info.name} only works on .go files`)
++        // The model likely put a function/target name as filePath
++        const hint = requiredParams.includes("target")
++          ? ` Did you mean target="${rawFilePath}"? target is the declaration name inside the file.`
++          : ""
++        throw new Error(
++          `${info.name}: filePath "${rawFilePath}" is not a .go file. ` +
++          `filePath must be the file system path (e.g. main.go, internal/server/server.go).${hint}`,
++        )
+       }
+ 
+       let diff = ""
+-- 
+2.53.0
+
