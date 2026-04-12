@@ -1,14 +1,14 @@
 pkgbase = nbfc-qt
 	pkgdesc = Graphical User Interface (GUI) for NBFC-Linux (Qt-based)
-	pkgver = 0.4.3
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/nbfc-linux/nbfc-qt
 	arch = any
 	license = GPL-3.0-only
 	makedepends = python3
-	depends = nbfc-linux>=0.3.17
+	depends = nbfc-linux>=0.4.0
 	depends = python-pyqt6
-	source = https://github.com/nbfc-linux/nbfc-qt/archive/refs/tags/0.4.3.tar.gz
-	sha256sums = 5eeb289b8b67bfdf88f3bf2614500a17dd30307d5ee683bf92e80d091b08e4de
+	source = https://github.com/nbfc-linux/nbfc-qt/archive/refs/tags/0.5.1.tar.gz
+	sha256sums = 26f351be423e2fb1c913df7dd65b0a4ea367588489716799d32f61e286b64e99
 
 pkgname = nbfc-qt
