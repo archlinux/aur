@@ -1,0 +1,18 @@
+pkgbase = nxpp
+	pkgdesc = Header-only C++20 graph utilities on top of Boost Graph Library
+	pkgver = 1.0.21
+	pkgrel = 1
+	url = https://github.com/Mik1810/nxpp
+	arch = any
+	license = MIT
+	makedepends = cmake
+	depends = boost
+	source = nxpp-1.0.21.tar.gz::https://github.com/Mik1810/nxpp/archive/refs/tags/v1.0.21.tar.gz
+	sha256sums = 1b69cc47d1f50273aa8bc996936788ea40d42f6be63f400289fa85fcd636bd0d
+
+pkgname = nxpp
+	pkgdesc = Header-only C++20 graph utilities on top of Boost Graph Library
+	url = https://github.com/Mik1810/nxpp
+	arch = any
+	license = MIT
+	depends = boost
