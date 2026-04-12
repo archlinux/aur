@@ -1,0 +1,21 @@
+pkgbase = lycan-git
+	pkgdesc = Lightweight PWA manager for Linux desktops
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/tutkuofnight/lycan
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkg-config
+	depends = webkit2gtk
+	depends = gtk3
+	depends = glib2
+	depends = openssl
+	provides = lycan
+	conflicts = lycan
+	source = git+https://github.com/tutkuofnight/lycan.git
+	sha256sums = SKIP
+
+pkgname = lycan-git
