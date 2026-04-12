@@ -1,0 +1,79 @@
+From cf61f177fe7c893f921c022e5a276c7ea48a3fd0 Mon Sep 17 00:00:00 2001
+From: Ewout van Mansom <ewout@vanmansom.name>
+Date: Sat, 11 Apr 2026 09:20:35 +0200
+Subject: [PATCH 6/6] server : add Gemma 4 reasoning control in web UI
+
+Auto-enable excludeReasoningFromContext when Gemma 4 chat format
+(peg-gemma4) is detected. This implements Rule 1 from Google's
+prompt formatting guide: strip thinking from completed prior
+turns before sending subsequent requests.
+
+Add isGemma4 getter on server store, export for use in chat store.
+Pre-encode cache warming also respects the auto-detection.
+Non-Gemma models are completely unaffected.
+---
+ tools/server/webui/src/lib/stores/chat.svelte.ts   |  7 ++++---
+ tools/server/webui/src/lib/stores/server.svelte.ts | 11 +++++++++++
+ 2 files changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/tools/server/webui/src/lib/stores/chat.svelte.ts b/tools/server/webui/src/lib/stores/chat.svelte.ts
+index 650f35c13..95dadf106 100644
+--- a/tools/server/webui/src/lib/stores/chat.svelte.ts
++++ b/tools/server/webui/src/lib/stores/chat.svelte.ts
+@@ -18,7 +18,7 @@ import { conversationsStore } from '$lib/stores/conversations.svelte';
+ import { config } from '$lib/stores/settings.svelte';
+ import { agenticStore } from '$lib/stores/agentic.svelte';
+ import { mcpStore } from '$lib/stores/mcp.svelte';
+-import { contextSize, isRouterMode } from '$lib/stores/server.svelte';
++import { contextSize, isRouterMode, isGemma4 } from '$lib/stores/server.svelte';
+ import {
+ 	selectedModelName,
+ 	modelsStore,
+@@ -735,7 +735,7 @@ class ChatStore {
+ 						assistantMessage,
+ 						streamedContent,
+ 						effectiveModel,
+-						!!config().excludeReasoningFromContext
++						!!(config().excludeReasoningFromContext || isGemma4())
+ 					);
+ 				}
+ 			},
+@@ -1573,7 +1573,8 @@ class ChatStore {
+ 
+ 		if (currentConfig.disableReasoningParsing) apiOptions.disableReasoningParsing = true;
+ 
+-		if (currentConfig.excludeReasoningFromContext) apiOptions.excludeReasoningFromContext = true;
++		// Auto-enable reasoning exclusion for Gemma 4 (Rule 1: strip thoughts between turns)
++		if (currentConfig.excludeReasoningFromContext || isGemma4()) apiOptions.excludeReasoningFromContext = true;
+ 
+ 		if (hasValue(currentConfig.temperature))
+ 			apiOptions.temperature = Number(currentConfig.temperature);
+diff --git a/tools/server/webui/src/lib/stores/server.svelte.ts b/tools/server/webui/src/lib/stores/server.svelte.ts
+index 48874bf1b..d67243cb5 100644
+--- a/tools/server/webui/src/lib/stores/server.svelte.ts
++++ b/tools/server/webui/src/lib/stores/server.svelte.ts
+@@ -62,6 +62,16 @@ class ServerStore {
+ 		return this.role === ServerRole.MODEL;
+ 	}
+ 
++	/**
++	 * Detects if the loaded model uses Gemma 4 chat format (peg-gemma4).
++	 * Used to auto-enable reasoning exclusion from context per Google's
++	 * prompt formatting guide (Rule 1: strip thoughts between turns).
++	 */
++	get isGemma4(): boolean {
++		const fmt = this.props?.default_generation_settings?.params?.chat_format;
++		return fmt === 'peg-gemma4';
++	}
++
+ 	/**
+ 	 *
+ 	 *
+@@ -156,3 +166,4 @@ export const defaultParams = () => serverStore.defaultParams;
+ export const contextSize = () => serverStore.contextSize;
+ export const isRouterMode = () => serverStore.isRouterMode;
+ export const isModelMode = () => serverStore.isModelMode;
++export const isGemma4 = () => serverStore.isGemma4;
+-- 
+2.53.0
+

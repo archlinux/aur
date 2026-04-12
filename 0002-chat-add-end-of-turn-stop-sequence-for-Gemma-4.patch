@@ -1,0 +1,33 @@
+From a1ed6379ae71160eb111709b21e8446d3c24455b Mon Sep 17 00:00:00 2001
+From: Ewout van Mansom <ewout@vanmansom.name>
+Date: Wed, 8 Apr 2026 14:32:16 +0200
+Subject: [PATCH 2/6] chat : add end-of-turn stop sequence for Gemma 4
+
+Add <turn|> to additional_stops in common_chat_params_init_gemma4.
+Without this stop sequence, the model can generate tool calls
+indefinitely because no token signals the end of the model's turn
+after tool call completion.
+
+Fixes #21375
+---
+ common/chat.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/common/chat.cpp b/common/chat.cpp
+index 3f3b06330..6507ebd5b 100644
+--- a/common/chat.cpp
++++ b/common/chat.cpp
+@@ -1104,6 +1104,10 @@ static common_chat_params common_chat_params_init_gemma4(const common_chat_templ
+         "<|turn>",
+     };
+ 
++    data.additional_stops = {
++        "<turn|>",
++    };
++
+     auto has_tools           = inputs.tools.is_array() && !inputs.tools.empty();
+     auto has_response_format = !inputs.json_schema.is_null() && inputs.json_schema.is_object();
+     auto include_grammar     = has_response_format || (has_tools && inputs.tool_choice != COMMON_CHAT_TOOL_CHOICE_NONE);
+-- 
+2.53.0
+

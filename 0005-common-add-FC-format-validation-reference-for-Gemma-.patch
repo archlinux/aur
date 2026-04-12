@@ -1,0 +1,1114 @@
+From e003889234dac111f1b90c3929ca3c6bd6c620b3 Mon Sep 17 00:00:00 2001
+From: Ewout van Mansom <ewout@vanmansom.name>
+Date: Sat, 11 Apr 2026 09:12:45 +0200
+Subject: [PATCH 5/6] common : add FC format validation reference for Gemma 4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Add fc-format.h/.cpp with C++ functions matching LiteRT-LM's
+fc_tool_format_utils pattern. Used as a validation reference in
+tests to verify the Jinja template and PEG parser produce correct
+Gemma 4 native format. Built only for test targets.
+
+Generation: fc_format_tool_declaration() converts JSON Schema to
+native declaration:name{...} format. fc_format_tool_response()
+formats tool responses. fc_format_value() handles all value types.
+
+Add validation tests: fc_format_value (all types), tool declaration,
+tool call args, tool response, wrap helpers, and PEG parser
+round-trip (fc_wrap_tool_call output → PEG parser → recovers
+original JSON args).
+
+Update Gemma 4 Jinja templates to latest upstream from HuggingFace.
+Fix interleaved template test for reasoning_format=NONE behavior.
+---
+ common/fc-format.cpp                          | 370 ++++++++++++++++++
+ common/fc-format.h                            |  52 +++
+ .../google-gemma-4-31B-it-interleaved.jinja   | 202 ++++++----
+ tests/CMakeLists.txt                          |   2 +-
+ tests/test-chat.cpp                           | 301 +++++++++++++-
+ 5 files changed, 847 insertions(+), 80 deletions(-)
+ create mode 100644 common/fc-format.cpp
+ create mode 100644 common/fc-format.h
+
+diff --git a/common/fc-format.cpp b/common/fc-format.cpp
+new file mode 100644
+index 000000000..862fb7fbc
+--- /dev/null
++++ b/common/fc-format.cpp
+@@ -0,0 +1,370 @@
++// FC format utility functions for Gemma 4 native tool format.
++// See fc-format.h for documentation.
++
++#include "fc-format.h"
++
++#include <algorithm>
++#include <set>
++#include <sstream>
++
++using ordered_json = nlohmann::ordered_json;
++
++// ---------------------------------------------------------------------------
++// fc_format_value — recursive value formatter matching LiteRT-LM
++// ---------------------------------------------------------------------------
++
++std::string fc_format_value(const ordered_json & value, const fc_format_config & cfg) {
++    if (value.is_null()) {
++        return "null";
++    }
++    if (value.is_boolean()) {
++        return value.get<bool>() ? "true" : "false";
++    }
++    if (value.is_number_integer()) {
++        return std::to_string(value.get<int64_t>());
++    }
++    if (value.is_number_float()) {
++        // Use dump() to preserve the original representation (e.g. 3.14, 1.5e10)
++        return value.dump();
++    }
++    if (value.is_string()) {
++        return cfg.quote + value.get<std::string>() + cfg.quote;
++    }
++    if (value.is_array()) {
++        std::string result = "[";
++        bool first = true;
++        for (const auto & item : value) {
++            if (!first) result += ',';
++            first = false;
++            result += fc_format_value(item, cfg);
++        }
++        result += ']';
++        return result;
++    }
++    if (value.is_object()) {
++        std::string result = "{";
++        bool first = true;
++        for (auto it = value.begin(); it != value.end(); ++it) {
++            if (!first) result += ',';
++            first = false;
++            result += it.key() + ':' + fc_format_value(it.value(), cfg);
++        }
++        result += '}';
++        return result;
++    }
++    return value.dump();
++}
++
++// ---------------------------------------------------------------------------
++// fc_format_schema_property — JSON Schema property → native declaration
++// ---------------------------------------------------------------------------
++
++// Resolve nullable unions: {anyOf:[{type:"string"},{type:"null"}]} → "string"
++static std::string resolve_schema_type(const ordered_json & schema) {
++    if (schema.contains("type")) {
++        const auto & t = schema["type"];
++        if (t.is_string()) {
++            return t.get<std::string>();
++        }
++        if (t.is_array()) {
++            // e.g. ["string", "null"] → pick the non-null type
++            for (const auto & item : t) {
++                if (item.is_string() && item.get<std::string>() != "null") {
++                    return item.get<std::string>();
++                }
++            }
++        }
++    }
++    // anyOf / oneOf nullable pattern
++    for (const char * key : {"anyOf", "oneOf"}) {
++        if (schema.contains(key) && schema[key].is_array()) {
++            for (const auto & variant : schema[key]) {
++                if (variant.contains("type") && variant["type"].is_string() && variant["type"] != "null") {
++                    return variant["type"].get<std::string>();
++                }
++            }
++        }
++    }
++    return "object"; // default fallback
++}
++
++static std::string to_upper(const std::string & s) {
++    std::string result = s;
++    for (auto & c : result) {
++        c = static_cast<char>(std::toupper(static_cast<unsigned char>(c)));
++    }
++    return result;
++}
++
++// Format the parameters block of a single schema property.
++// Produces the inner content: description:<|"|>...<|"|>,type:<|"|>TYPE<|"|>
++// plus nested properties/items/enum/nullable/required as needed.
++static std::string format_property_inner(const ordered_json & schema, const fc_format_config & cfg) {
++    std::string result;
++    bool add_comma = false;
++
++    // description
++    if (schema.contains("description") && schema["description"].is_string()) {
++        result += "description:" + cfg.quote + schema["description"].get<std::string>() + cfg.quote;
++        add_comma = true;
++    }
++
++    std::string type = resolve_schema_type(schema);
++    std::string type_upper = to_upper(type);
++
++    // enum (for STRING types)
++    if (type_upper == "STRING" && schema.contains("enum") && schema["enum"].is_array()) {
++        if (add_comma) result += ',';
++        add_comma = true;
++        result += "enum:" + fc_format_value(schema["enum"], cfg);
++    }
++
++    // items (for ARRAY types)
++    if (type_upper == "ARRAY" && schema.contains("items") && schema["items"].is_object()) {
++        if (add_comma) result += ',';
++        add_comma = true;
++        const auto & items = schema["items"];
++        result += "items:{";
++
++        bool items_comma = false;
++        // Render items sub-fields in sorted order to match Jinja template dictsort
++        std::vector<std::string> item_keys;
++        for (auto it = items.begin(); it != items.end(); ++it) {
++            item_keys.push_back(it.key());
++        }
++        std::sort(item_keys.begin(), item_keys.end());
++
++        for (const auto & ik : item_keys) {
++            if (items[ik].is_null()) continue;
++            if (items_comma) result += ',';
++            items_comma = true;
++
++            if (ik == "properties" && items[ik].is_object()) {
++                result += "properties:{";
++                // Get required list for items
++                std::set<std::string> items_required;
++                if (items.contains("required") && items["required"].is_array()) {
++                    for (const auto & r : items["required"]) {
++                        if (r.is_string()) items_required.insert(r.get<std::string>());
++                    }
++                }
++                bool prop_comma = false;
++                // Sort property keys to match Jinja dictsort
++                std::vector<std::string> sorted_props;
++                for (auto pit = items[ik].begin(); pit != items[ik].end(); ++pit) {
++                    sorted_props.push_back(pit.key());
++                }
++                std::sort(sorted_props.begin(), sorted_props.end());
++                for (const auto & pk : sorted_props) {
++                    if (prop_comma) result += ',';
++                    prop_comma = true;
++                    result += pk + ":{" + format_property_inner(items[ik][pk], cfg) + "}";
++                }
++                result += "}";
++            } else if (ik == "required" && items[ik].is_array()) {
++                result += "required:[";
++                bool req_comma = false;
++                for (const auto & r : items[ik]) {
++                    if (req_comma) result += ',';
++                    req_comma = true;
++                    result += cfg.quote + r.get<std::string>() + cfg.quote;
++                }
++                result += "]";
++            } else if (ik == "type") {
++                if (items[ik].is_string()) {
++                    result += "type:" + cfg.quote + to_upper(items[ik].get<std::string>()) + cfg.quote;
++                } else if (items[ik].is_array()) {
++                    result += "type:[";
++                    bool tc = false;
++                    for (const auto & ti : items[ik]) {
++                        if (tc) result += ',';
++                        tc = true;
++                        result += cfg.quote + to_upper(ti.get<std::string>()) + cfg.quote;
++                    }
++                    result += "]";
++                }
++            } else {
++                result += ik + ":" + fc_format_value(items[ik], cfg);
++            }
++        }
++        result += "}";
++    }
++
++    // nullable
++    if (schema.contains("nullable") && schema["nullable"].is_boolean() && schema["nullable"].get<bool>()) {
++        if (add_comma) result += ',';
++        add_comma = true;
++        result += "nullable:true";
++    }
++
++    // nested properties (for OBJECT types)
++    if (type_upper == "OBJECT") {
++        if (schema.contains("properties") && schema["properties"].is_object()) {
++            if (add_comma) result += ',';
++            add_comma = true;
++            result += "properties:{";
++            // Get required set
++            std::set<std::string> req_set;
++            if (schema.contains("required") && schema["required"].is_array()) {
++                for (const auto & r : schema["required"]) {
++                    if (r.is_string()) req_set.insert(r.get<std::string>());
++                }
++            }
++            bool prop_comma = false;
++            // Sort to match Jinja dictsort
++            std::vector<std::string> sorted_props;
++            for (auto it = schema["properties"].begin(); it != schema["properties"].end(); ++it) {
++                sorted_props.push_back(it.key());
++            }
++            std::sort(sorted_props.begin(), sorted_props.end());
++            for (const auto & pk : sorted_props) {
++                if (prop_comma) result += ',';
++                prop_comma = true;
++                result += pk + ":{" + format_property_inner(schema["properties"][pk], cfg) + "}";
++            }
++            result += "}";
++        }
++        // required list for object
++        if (schema.contains("required") && schema["required"].is_array()) {
++            if (add_comma) result += ',';
++            add_comma = true;
++            result += "required:[";
++            bool req_comma = false;
++            for (const auto & r : schema["required"]) {
++                if (req_comma) result += ',';
++                req_comma = true;
++                result += cfg.quote + r.get<std::string>() + cfg.quote;
++            }
++            result += "]";
++        }
++    }
++
++    // type (always last per Jinja template: type:<|"|>TYPE<|"|>)
++    if (add_comma) result += ',';
++    result += "type:" + cfg.quote + type_upper + cfg.quote;
++
++    return result;
++}
++
++std::string fc_format_schema_property(const std::string & name, const ordered_json & schema, const fc_format_config & cfg) {
++    return name + ":{" + format_property_inner(schema, cfg) + "}";
++}
++
++// ---------------------------------------------------------------------------
++// fc_format_tool_declaration — OpenAI tool → native declaration
++// ---------------------------------------------------------------------------
++
++std::string fc_format_tool_declaration(const ordered_json & tool, const fc_format_config & cfg) {
++    const auto & func = tool["function"];
++    std::string result = "declaration:" + func["name"].get<std::string>();
++    result += "{description:" + cfg.quote + func["description"].get<std::string>() + cfg.quote;
++
++    if (func.contains("parameters") && func["parameters"].is_object()) {
++        const auto & params = func["parameters"];
++        result += ",parameters:{";
++
++        // properties
++        if (params.contains("properties") && params["properties"].is_object()) {
++            result += "properties:{";
++            // Sort to match Jinja dictsort
++            std::vector<std::string> sorted_props;
++            for (auto it = params["properties"].begin(); it != params["properties"].end(); ++it) {
++                sorted_props.push_back(it.key());
++            }
++            std::sort(sorted_props.begin(), sorted_props.end());
++            bool prop_comma = false;
++            for (const auto & pk : sorted_props) {
++                if (prop_comma) result += ',';
++                prop_comma = true;
++                result += pk + ":{" + format_property_inner(params["properties"][pk], cfg) + "}";
++            }
++            result += "},";
++        }
++
++        // required
++        if (params.contains("required") && params["required"].is_array()) {
++            result += "required:[";
++            bool req_comma = false;
++            for (const auto & r : params["required"]) {
++                if (req_comma) result += ',';
++                req_comma = true;
++                result += cfg.quote + r.get<std::string>() + cfg.quote;
++            }
++            result += "],";
++        }
++
++        // type
++        if (params.contains("type") && params["type"].is_string()) {
++            result += "type:" + cfg.quote + to_upper(params["type"].get<std::string>()) + cfg.quote;
++        }
++
++        result += "}";
++    }
++
++    // response (optional)
++    if (func.contains("response") && func["response"].is_object()) {
++        const auto & resp = func["response"];
++        result += ",response:{";
++        if (resp.contains("description") && resp["description"].is_string()) {
++            result += "description:" + cfg.quote + resp["description"].get<std::string>() + cfg.quote + ",";
++        }
++        if (resp.contains("type") && resp["type"].is_string()) {
++            result += "type:" + cfg.quote + to_upper(resp["type"].get<std::string>()) + cfg.quote;
++        }
++        result += "}";
++    }
++
++    result += "}";
++    return result;
++}
++
++// ---------------------------------------------------------------------------
++// fc_format_tool_call_args — JSON args → native key:value pairs
++// ---------------------------------------------------------------------------
++
++std::string fc_format_tool_call_args(const ordered_json & args, const fc_format_config & cfg) {
++    std::string result;
++    bool first = true;
++    for (auto it = args.begin(); it != args.end(); ++it) {
++        if (!first) result += ',';
++        first = false;
++        result += it.key() + ':' + fc_format_value(it.value(), cfg);
++    }
++    return result;
++}
++
++// ---------------------------------------------------------------------------
++// fc_format_tool_response — tool result → native format
++// ---------------------------------------------------------------------------
++
++std::string fc_format_tool_response(const std::string & name, const ordered_json & content, const fc_format_config & cfg) {
++    std::string result = "response:" + name + "{";
++    if (content.is_object()) {
++        bool first = true;
++        for (auto it = content.begin(); it != content.end(); ++it) {
++            if (!first) result += ',';
++            first = false;
++            result += it.key() + ':' + fc_format_value(it.value(), cfg);
++        }
++    } else {
++        result += "value:" + fc_format_value(content, cfg);
++    }
++    result += '}';
++    return result;
++}
++
++// ---------------------------------------------------------------------------
++// Wrap helpers
++// ---------------------------------------------------------------------------
++
++std::string fc_wrap_tool_declaration(const ordered_json & tool, const fc_format_config & cfg) {
++    return cfg.tool_start + fc_format_tool_declaration(tool, cfg) + cfg.tool_end;
++}
++
++std::string fc_wrap_tool_call(const std::string & name, const ordered_json & args, const fc_format_config & cfg) {
++    return cfg.tool_call_start + "call:" + name + "{" + fc_format_tool_call_args(args, cfg) + "}" + cfg.tool_call_end;
++}
++
++std::string fc_wrap_tool_response(const std::string & name, const ordered_json & content, const fc_format_config & cfg) {
++    return cfg.response_start + fc_format_tool_response(name, content, cfg) + cfg.response_end;
++}
+diff --git a/common/fc-format.h b/common/fc-format.h
+new file mode 100644
+index 000000000..dd122d8ea
+--- /dev/null
++++ b/common/fc-format.h
+@@ -0,0 +1,52 @@
++// FC format utility functions for Gemma 4 native tool format.
++//
++// These functions mirror LiteRT-LM's fc_tool_format_utils and serve as a
++// **validation reference** in tests — they are NOT used in the production
++// pipeline. The Jinja template and PEG parser handle all format conversion
++// at runtime; these functions verify their output matches LiteRT-LM.
++//
++// Reference: https://github.com/google-ai-edge/LiteRT-LM
++
++#pragma once
++
++#include <nlohmann/json.hpp>
++#include <string>
++
++// Configuration matching LiteRT-LM's Gemma4DataProcessorConfig
++struct fc_format_config {
++    std::string tool_start      = "<|tool>";
++    std::string tool_end        = "<tool|>";
++    std::string tool_call_start = "<|tool_call>";
++    std::string tool_call_end   = "<tool_call|>";
++    std::string response_start  = "<|tool_response>";
++    std::string response_end    = "<tool_response|>";
++    std::string quote           = "<|\"|>";
++};
++
++// Recursive value formatter (mirrors LiteRT-LM's FormatValueAsFc).
++// Strings are wrapped in <|"|> delimiters, numbers/booleans are raw,
++// objects use {key:value,...} with bare keys, arrays use [item,...].
++std::string fc_format_value(const nlohmann::ordered_json & value, const fc_format_config & cfg = {});
++
++// JSON Schema property → native format parameter declaration.
++// Produces: name:{description:<|"|>...<|"|>,type:<|"|>TYPE<|"|>}
++// where TYPE is UPPERCASE (STRING, INTEGER, NUMBER, BOOLEAN, OBJECT, ARRAY).
++std::string fc_format_schema_property(const std::string & name, const nlohmann::ordered_json & schema, const fc_format_config & cfg = {});
++
++// Tool definition (OpenAI format) → native declaration.
++// Input: {"type":"function","function":{"name":"...","description":"...","parameters":{...}}}
++// Output: declaration:name{description:<|"|>...<|"|>,parameters:{...}}
++std::string fc_format_tool_declaration(const nlohmann::ordered_json & tool, const fc_format_config & cfg = {});
++
++// Tool call arguments (JSON object) → native format key-value pairs.
++// Output: key:<|"|>value<|"|>,key2:42
++std::string fc_format_tool_call_args(const nlohmann::ordered_json & args, const fc_format_config & cfg = {});
++
++// Tool response → native format.
++// Output: response:name{key:value,...} or response:name{value:<|"|>text<|"|>}
++std::string fc_format_tool_response(const std::string & name, const nlohmann::ordered_json & content, const fc_format_config & cfg = {});
++
++// Wrap helpers — add surrounding tokens.
++std::string fc_wrap_tool_declaration(const nlohmann::ordered_json & tool, const fc_format_config & cfg = {});
++std::string fc_wrap_tool_call(const std::string & name, const nlohmann::ordered_json & args, const fc_format_config & cfg = {});
++std::string fc_wrap_tool_response(const std::string & name, const nlohmann::ordered_json & content, const fc_format_config & cfg = {});
+diff --git a/models/templates/google-gemma-4-31B-it-interleaved.jinja b/models/templates/google-gemma-4-31B-it-interleaved.jinja
+index 9df8d8dd2..98da08eb6 100644
+--- a/models/templates/google-gemma-4-31B-it-interleaved.jinja
++++ b/models/templates/google-gemma-4-31B-it-interleaved.jinja
+@@ -6,49 +6,20 @@
+         {%- if key not in standard_keys -%}
+             {%- if ns.found_first %},{% endif -%}
+             {%- set ns.found_first = true -%}
+-            {#- Safe type extraction: handle missing type, array type ["string", "null"], or plain string -#}
+-            {%- if 'type' in value -%}
+-                {%- if value['type'] is iterable and value['type'] is not string -%}
+-                    {%- set value_type = value['type'] | reject('equalto', 'null') | first | default('string') -%}
+-                {%- else -%}
+-                    {%- set value_type = value['type'] -%}
+-                {%- endif -%}
+-            {%- else -%}
+-                {%- set value_type = 'string' -%}
+-            {%- endif -%}
+             {{ key }}:{
+             {%- if value['description'] -%}
+                 description:<|"|>{{ value['description'] }}<|"|>
+                 {%- set add_comma = true -%}
+             {%- endif -%}
+-            {%- if value['nullable'] %}
+-                {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}
+-                nullable:true
+-            {%- endif -%}
+-            {%- if value_type | upper == 'STRING' -%}
++            {%- if value['type'] | upper == 'STRING' -%}
+                 {%- if value['enum'] -%}
+                     {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}
+                     enum:{{ format_argument(value['enum']) }}
+                 {%- endif -%}
+-            {%- elif value_type | upper == 'OBJECT' -%}
+-                ,properties:{
+-                {%- if value['properties'] is defined and value['properties'] is mapping -%}
+-                    {{- format_parameters(value['properties'], value['required'] | default([])) -}}
+-                {%- elif value is mapping -%}
+-                    {{- format_parameters(value, value['required'] | default([])) -}}
+-                {%- endif -%}
+-                }
+-                {%- if value['required'] -%}
+-                    ,required:[
+-                    {%- for item in value['required'] | default([]) -%}
+-                        <|"|>{{- item -}}<|"|>
+-                        {%- if not loop.last %},{% endif -%}
+-                    {%- endfor -%}
+-                    ]
+-                {%- endif -%}
+-            {%- elif value_type | upper == 'ARRAY' -%}
++            {%- elif value['type'] | upper == 'ARRAY' -%}
+                 {%- if value['items'] is mapping and value['items'] -%}
+-                    ,items:{
++                    {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}
++                    items:{
+                     {%- set ns_items = namespace(found_first=false) -%}
+                     {%- for item_key, item_value in value['items'] | dictsort -%}
+                         {%- if item_value is not none -%}
+@@ -81,8 +52,34 @@
+                     }
+                 {%- endif -%}
+             {%- endif -%}
++            {%- if value['nullable'] %}
++                {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}
++                nullable:true
++            {%- endif -%}
++            {%- if value['type'] | upper == 'OBJECT' -%}
++                {%- if value['properties'] is defined and value['properties'] is mapping -%}
++                    {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}
++                    properties:{
++                    {{- format_parameters(value['properties'], value['required'] | default([])) -}}
++                    }
++                {%- elif value is mapping -%}
++                    {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}
++                    properties:{
++                    {{- format_parameters(value, value['required'] | default([])) -}}
++                    }
++                {%- endif -%}
++                {%- if value['required'] -%}
++                    {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}
++                    required:[
++                    {%- for item in value['required'] | default([]) -%}
++                        <|"|>{{- item -}}<|"|>
++                        {%- if not loop.last %},{% endif -%}
++                    {%- endfor -%}
++                    ]
++                {%- endif -%}
++            {%- endif -%}
+             {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}
+-            type:<|"|>{{ value_type | upper }}<|"|>}
++            type:<|"|>{{ value['type'] | upper }}<|"|>}
+         {%- endif -%}
+     {%- endfor -%}
+ {%- endmacro -%}
+@@ -103,11 +100,7 @@
+             ],
+         {%- endif -%}
+         {%- if params['type'] -%}
+-            {%- if params['type'] is iterable and params['type'] is not string -%}
+-                type:<|"|>{{- params['type'] | reject('equalto', 'null') | first | default('object') | upper -}}<|"|>}
+-            {%- else -%}
+-                type:<|"|>{{- params['type'] | upper -}}<|"|>}
+-            {%- endif -%}
++            type:<|"|>{{- params['type'] | upper -}}<|"|>}
+         {%- endif -%}
+     {%- endif -%}
+     {%- if 'response' in tool_data['function'] -%}
+@@ -116,13 +109,8 @@
+         {%- if response_declaration['description'] -%}
+             description:<|"|>{{- response_declaration['description'] -}}<|"|>,
+         {%- endif -%}
+-        {%- if response_declaration['type'] is iterable and response_declaration['type'] is not string -%}
+-            {%- set resp_type = response_declaration['type'] | reject('equalto', 'null') | first | default('object') -%}
+-        {%- else -%}
+-            {%- set resp_type = response_declaration['type'] | default('object') -%}
+-        {%- endif -%}
+-        {%- if resp_type | upper == 'OBJECT' -%}
+-            type:<|"|>{{- resp_type | upper -}}<|"|>}
++        {%- if response_declaration['type'] | upper == 'OBJECT' -%}
++            type:<|"|>{{- response_declaration['type'] | upper -}}<|"|>}
+         {%- endif -%}
+     {%- endif -%}
+     }
+@@ -169,7 +157,22 @@
+     {{- ns.result | trim -}}
+ {%- endmacro -%}
+ 
+-{%- set ns = namespace(prev_message_type=None, last_user_message=-1) -%}
++{%- macro format_tool_response_block(tool_name, response) -%}
++    {{- '<|tool_response>' -}}
++    {%- if response is mapping -%}
++        {{- 'response:' + tool_name + '{' -}}
++        {%- for key, value in response | dictsort -%}
++            {{- key -}}:{{- format_argument(value, escape_keys=False) -}}
++            {%- if not loop.last %},{% endif -%}
++        {%- endfor -%}
++        {{- '}' -}}
++    {%- else -%}
++        {{- 'response:' + tool_name + '{value:' + format_argument(response, escape_keys=False) + '}' -}}
++    {%- endif -%}
++    {{- '<tool_response|>' -}}
++{%- endmacro -%}
++
++{%- set ns = namespace(prev_message_type=None) -%}
+ {%- set loop_messages = messages -%}
+ {{- bos_token -}}
+ {#- Handle System/Tool Definitions Block -#}
+@@ -199,29 +202,43 @@
+     {{- '<turn|>\n' -}}
+ {%- endif %}
+ 
+-{#- Find last user message -#}
+-{%- for message in loop_messages -%}
+-    {%- if message['role'] == 'user' -%}
+-        {%- set ns.last_user_message = loop.index0 -%}
++{#- Pre-scan: find last user message index for reasoning guard -#}
++{%- set ns_turn = namespace(last_user_idx=-1) -%}
++{%- for i in range(loop_messages | length) -%}
++    {%- if loop_messages[i]['role'] == 'user' -%}
++        {%- set ns_turn.last_user_idx = i -%}
+     {%- endif -%}
+ {%- endfor -%}
+ 
+ {#- Loop through messages -#}
+ {%- for message in loop_messages -%}
++    {%- if message['role'] != 'tool' -%}
++    {%- set ns.prev_message_type = None -%}
+     {%- set role = 'model' if message['role'] == 'assistant' else message['role'] -%}
+-        {%- if not (ns.prev_message_type == 'tool_response' and message['tool_calls']) -%}
++    {#- Detect continuation: suppress duplicate <|turn>model when previous non-tool message was also assistant -#}
++    {%- set prev_nt = namespace(role=None, found=false) -%}
++    {%- if loop.index0 > 0 -%}
++        {%- for j in range(loop.index0 - 1, -1, -1) -%}
++            {%- if not prev_nt.found -%}
++                {%- if loop_messages[j]['role'] != 'tool' -%}
++                    {%- set prev_nt.role = loop_messages[j]['role'] -%}
++                    {%- set prev_nt.found = true -%}
++                {%- endif -%}
++            {%- endif -%}
++        {%- endfor -%}
++    {%- endif -%}
++    {%- set continue_same_model_turn = (role == 'model' and prev_nt.role == 'assistant') -%}
++    {%- if not continue_same_model_turn -%}
+         {{- '<|turn>' + role + '\n' }}
+-        {%- endif -%}
++    {%- endif -%}
+ 
+-        {%- set ns.prev_message_type = None -%}
++    {#- Render reasoning/reasoning_content as thinking channel -#}
++    {%- set thinking_text = message.get('reasoning') or message.get('reasoning_content') -%}
++    {%- if thinking_text and loop.index0 > ns_turn.last_user_idx and message.get('tool_calls') -%}
++        {{- '<|channel>thought\n' + thinking_text + '\n<channel|>' -}}
++    {%- endif -%}
+ 
+             {%- if message['tool_calls'] -%}
+-                {#- Preserve reasoning between tool calls for model turns that come after the last user turn -#} 
+-                {%- if message['reasoning_content'] and loop.index0 > ns.last_user_message -%}
+-                  {{- '<|channel>thought\n' -}}
+-                  {{- message['reasoning_content'] -}}
+-                  {{- '<channel|>' -}}
+-                {%- endif -%}
+                 {%- for tool_call in message['tool_calls'] -%}
+                     {%- set function = tool_call['function'] -%}
+                     {{- '<|tool_call>call:' + function['name'] + '{' -}}
+@@ -240,23 +257,49 @@
+                 {%- set ns.prev_message_type = 'tool_call' -%}
+             {%- endif -%}
+ 
+-            {%- if message['tool_responses'] -%}
+-                {#- Tool Response handling -#}
++            {%- set ns_tr_out = namespace(flag=false) -%}
++            {%- if message.get('tool_responses') -%}
++                {#- Legacy: tool_responses embedded on the assistant message (Google/Gemma native) -#}
+                 {%- for tool_response in message['tool_responses'] -%}
+-                    {{- '<|tool_response>' -}}
+-                    {%- if tool_response['response'] is mapping -%}
+-                        {{- 'response:' + tool_response['name'] | default('unknown') + '{' -}}
+-                        {%- for key, value in tool_response['response'] | dictsort -%}
+-                            {{- key -}}:{{- format_argument(value, escape_keys=False) -}}
+-                            {%- if not loop.last %},{% endif -%}
+-                        {%- endfor -%}
+-                        {{- '}' -}}
++                    {{- format_tool_response_block(tool_response['name'] | default('unknown'), tool_response['response']) -}}
++                    {%- set ns_tr_out.flag = true -%}
++                    {%- set ns.prev_message_type = 'tool_response' -%}
++                {%- endfor -%}
++            {%- elif message.get('tool_calls') -%}
++                {#- OpenAI Chat Completions: forward-scan consecutive role:tool messages -#}
++                {%- set ns_tool_scan = namespace(stopped=false) -%}
++                {%- for k in range(loop.index0 + 1, loop_messages | length) -%}
++                    {%- if ns_tool_scan.stopped -%}
++                    {%- elif loop_messages[k]['role'] != 'tool' -%}
++                        {%- set ns_tool_scan.stopped = true -%}
+                     {%- else -%}
+-                        {{- 'response:' + tool_response['name'] | default('unknown') + '{value:' + format_argument(tool_response['response'], escape_keys=False) + '}' -}}
++                        {%- set follow = loop_messages[k] -%}
++                        {#- Resolve tool_call_id to function name -#}
++                        {%- set ns_tname = namespace(name=follow.get('name') | default('unknown')) -%}
++                        {%- for tc in message['tool_calls'] -%}
++                            {%- if tc.get('id') == follow.get('tool_call_id') -%}
++                                {%- set ns_tname.name = tc['function']['name'] -%}
++                            {%- endif -%}
++                        {%- endfor -%}
++                        {#- Handle content as string or content-parts array -#}
++                        {%- set tool_body = follow.get('content') -%}
++                        {%- if tool_body is string -%}
++                            {{- format_tool_response_block(ns_tname.name, tool_body) -}}
++                        {%- elif tool_body is sequence and tool_body is not string -%}
++                            {%- set ns_txt = namespace(s='') -%}
++                            {%- for part in tool_body -%}
++                                {%- if part.get('type') == 'text' -%}
++                                    {%- set ns_txt.s = ns_txt.s + (part.get('text') | default('')) -%}
++                                {%- endif -%}
++                            {%- endfor -%}
++                            {{- format_tool_response_block(ns_tname.name, ns_txt.s) -}}
++                        {%- else -%}
++                            {{- format_tool_response_block(ns_tname.name, tool_body) -}}
++                        {%- endif -%}
++                        {%- set ns_tr_out.flag = true -%}
++                        {%- set ns.prev_message_type = 'tool_response' -%}
+                     {%- endif -%}
+-                    {{- '<tool_response|>' -}}
+                 {%- endfor -%}
+-                {%- set ns.prev_message_type = 'tool_response' -%}
+             {%- endif -%}
+ 
+             {%- if message['content'] is string -%}
+@@ -286,16 +329,19 @@
+                 {%- endfor -%}
+             {%- endif -%}
+ 
+-        {%- if not (message['tool_responses'] and not message['content']) -%}
++        {%- if ns.prev_message_type == 'tool_call' and not ns_tr_out.flag -%}
++            {{- '<|tool_response>' -}}
++        {%- elif not (ns_tr_out.flag and not message.get('content')) -%}
+             {{- '<turn|>\n' -}}
+         {%- endif -%}
++    {%- endif -%}
+ {%- endfor -%}
+ 
+ {%- if add_generation_prompt -%}
+-    {%- if ns.prev_message_type != 'tool_response' -%}
++    {%- if ns.prev_message_type != 'tool_response' and ns.prev_message_type != 'tool_call' -%}
+         {{- '<|turn>model\n' -}}
+-    {%- endif -%}
+-    {%- if not enable_thinking | default(false) -%}
+-        {{- '<|channel>thought\n<channel|>' -}}
++        {%- if not enable_thinking | default(false) -%}
++            {{- '<|channel>thought\n<channel|>' -}}
++        {%- endif -%}
+     {%- endif -%}
+ {%- endif -%}
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index cd4bc5ef1..522d7df0c 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -154,7 +154,7 @@ if (NOT WIN32 OR NOT BUILD_SHARED_LIBS)
+     llama_build_and_test(test-grammar-parser.cpp)
+     llama_build_and_test(test-grammar-integration.cpp)
+     llama_build_and_test(test-llama-grammar.cpp)
+-    llama_build_and_test(test-chat.cpp WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
++    llama_build_and_test(test-chat.cpp ../common/fc-format.cpp WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
+     # TODO: disabled on loongarch64 because the ggml-ci node lacks Python 3.8
+     if (NOT ${CMAKE_SYSTEM_PROCESSOR} MATCHES "loongarch64")
+         llama_build_and_test(test-json-schema-to-grammar.cpp   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
+diff --git a/tests/test-chat.cpp b/tests/test-chat.cpp
+index fc05de854..158851638 100644
+--- a/tests/test-chat.cpp
++++ b/tests/test-chat.cpp
+@@ -10,6 +10,7 @@
+ #include "chat-auto-parser.h"
+ #include "chat.h"
+ #include "common.h"
++#include "fc-format.h"
+ #include "ggml.h"
+ #include "log.h"
+ 
+@@ -2148,12 +2149,13 @@ static void test_template_output_peg_parsers(bool detailed_debug) {
+             .run();
+ 
+         // Empty thinking block followed by tool call (reasoning_format=NONE)
++        // With NONE, thinking blocks are not stripped — they appear as content.
+         tst.test(
+                 "<|channel>thought\n<channel|>"
+                 "<|tool_call>call:get_time{city:<|\"|>Paris<|\"|>}<tool_call|>")
+             .tools({ get_time_tool })
+             .reasoning_format(COMMON_REASONING_FORMAT_NONE)
+-            .expect(message_with_tool_calls("get_time", R"({"city": "Paris"})"))
++            .expect(message_with_content_and_tool_call("<|channel>thought\n<channel|>", "get_time", R"({"city": "Paris"})"))
+             .run();
+ 
+         // Parallel tool calls with mixed value types
+@@ -3931,6 +3933,297 @@ static void test_msg_diffs_compute() {
+     }
+ }
+ 
++// ---------------------------------------------------------------------------
++// FC format validation tests — verify fc-format.h/cpp produces output matching
++// the Jinja template and can round-trip through the PEG parser.
++// ---------------------------------------------------------------------------
++
++static void test_fc_format_value() {
++    LOG_DBG("%s\n", __func__);
++    fc_format_config cfg;
++
++    // String
++    assert_equals(std::string(R"(<|"|>hello<|"|>)"), fc_format_value(json("hello"), cfg));
++    // Integer
++    assert_equals(std::string("42"), fc_format_value(json(42), cfg));
++    // Negative integer
++    assert_equals(std::string("-7"), fc_format_value(json(-7), cfg));
++    // Float
++    assert_equals(std::string("3.14"), fc_format_value(json(3.14), cfg));
++    // Boolean true
++    assert_equals(std::string("true"), fc_format_value(json(true), cfg));
++    // Boolean false
++    assert_equals(std::string("false"), fc_format_value(json(false), cfg));
++    // Null
++    assert_equals(std::string("null"), fc_format_value(json(nullptr), cfg));
++    // Array
++    assert_equals(
++        std::string(R"([<|"|>a<|"|>,<|"|>b<|"|>])"),
++        fc_format_value(json::array({"a", "b"}), cfg));
++    // Empty array
++    assert_equals(std::string("[]"), fc_format_value(json::array(), cfg));
++    // Object (ordered_json preserves insertion order)
++    {
++        json obj = json::object();
++        obj["theme"] = "dark";
++        obj["count"] = 3;
++        assert_equals(
++            std::string(R"({theme:<|"|>dark<|"|>,count:3})"),
++            fc_format_value(obj, cfg));
++    }
++    // Empty object
++    assert_equals(std::string("{}"), fc_format_value(json::object(), cfg));
++    // Nested object
++    {
++        json inner = json::object();
++        inner["x"] = 1;
++        json outer = json::object();
++        outer["nested"] = inner;
++        assert_equals(std::string("{nested:{x:1}}"), fc_format_value(outer, cfg));
++    }
++}
++
++static void test_fc_format_tool_declaration() {
++    LOG_DBG("%s\n", __func__);
++    fc_format_config cfg;
++
++    // Simple tool with one string param
++    {
++        json tool = {
++            { "type", "function" },
++            { "function", {
++                { "name", "get_time" },
++                { "description", "Get the current time in a city" },
++                { "parameters", {
++                    { "type", "object" },
++                    { "properties", {
++                        { "city", {
++                            { "type", "string" },
++                            { "description", "City name" },
++                        }},
++                    }},
++                    { "required", json::array({ "city" }) },
++                }},
++            }},
++        };
++        std::string result = fc_format_tool_declaration(tool, cfg);
++        assert_equals(std::string(
++            R"(declaration:get_time{description:<|"|>Get the current time in a city<|"|>,parameters:{properties:{city:{description:<|"|>City name<|"|>,type:<|"|>STRING<|"|>}},required:[<|"|>city<|"|>],type:<|"|>OBJECT<|"|>}})"),
++            result);
++    }
++
++    // Tool with integer param
++    {
++        json tool = {
++            { "type", "function" },
++            { "function", {
++                { "name", "special_function" },
++                { "description", "I'm special" },
++                { "parameters", {
++                    { "type", "object" },
++                    { "properties", {
++                        { "arg1", {
++                            { "type", "integer" },
++                            { "description", "The arg." },
++                        }},
++                    }},
++                    { "required", json::array({ "arg1" }) },
++                }},
++            }},
++        };
++        std::string result = fc_format_tool_declaration(tool, cfg);
++        assert_equals(std::string(
++            R"(declaration:special_function{description:<|"|>I'm special<|"|>,parameters:{properties:{arg1:{description:<|"|>The arg.<|"|>,type:<|"|>INTEGER<|"|>}},required:[<|"|>arg1<|"|>],type:<|"|>OBJECT<|"|>}})"),
++            result);
++    }
++}
++
++static void test_fc_format_tool_call_args() {
++    LOG_DBG("%s\n", __func__);
++    fc_format_config cfg;
++
++    // String arg
++    {
++        json args = json::object();
++        args["city"] = "London";
++        assert_equals(std::string(R"(city:<|"|>London<|"|>)"), fc_format_tool_call_args(args, cfg));
++    }
++    // Integer arg
++    {
++        json args = json::object();
++        args["arg1"] = 42;
++        assert_equals(std::string("arg1:42"), fc_format_tool_call_args(args, cfg));
++    }
++    // Boolean arg
++    {
++        json args = json::object();
++        args["enabled"] = true;
++        assert_equals(std::string("enabled:true"), fc_format_tool_call_args(args, cfg));
++    }
++    // Multiple args
++    {
++        json args = json::object();
++        args["city"] = "Paris";
++        args["units"] = "celsius";
++        assert_equals(
++            std::string(R"(city:<|"|>Paris<|"|>,units:<|"|>celsius<|"|>)"),
++            fc_format_tool_call_args(args, cfg));
++    }
++    // Empty args
++    assert_equals(std::string(""), fc_format_tool_call_args(json::object(), cfg));
++    // Nested object arg
++    {
++        json config = json::object();
++        config["theme"] = "dark";
++        config["count"] = 3;
++        json args = json::object();
++        args["config"] = config;
++        assert_equals(
++            std::string(R"(config:{theme:<|"|>dark<|"|>,count:3})"),
++            fc_format_tool_call_args(args, cfg));
++    }
++    // Array arg
++    {
++        json args = json::object();
++        args["todos"] = json::array({"buy milk", "walk dog"});
++        assert_equals(
++            std::string(R"(todos:[<|"|>buy milk<|"|>,<|"|>walk dog<|"|>])"),
++            fc_format_tool_call_args(args, cfg));
++    }
++}
++
++static void test_fc_format_tool_response() {
++    LOG_DBG("%s\n", __func__);
++    fc_format_config cfg;
++
++    // String response
++    assert_equals(
++        std::string(R"(response:get_time{value:<|"|>14:30 UTC<|"|>})"),
++        fc_format_tool_response("get_time", json("14:30 UTC"), cfg));
++
++    // Object response
++    {
++        json resp = json::object();
++        resp["time"] = "14:30";
++        resp["zone"] = "UTC";
++        assert_equals(
++            std::string(R"(response:get_time{time:<|"|>14:30<|"|>,zone:<|"|>UTC<|"|>})"),
++            fc_format_tool_response("get_time", resp, cfg));
++    }
++
++    // Null response
++    assert_equals(
++        std::string("response:func{value:null}"),
++        fc_format_tool_response("func", json(nullptr), cfg));
++}
++
++static void test_fc_wrap_helpers() {
++    LOG_DBG("%s\n", __func__);
++    fc_format_config cfg;
++
++    // wrap_tool_call
++    {
++        json args = json::object();
++        args["city"] = "London";
++        assert_equals(
++            std::string(R"(<|tool_call>call:get_time{city:<|"|>London<|"|>}<tool_call|>)"),
++            fc_wrap_tool_call("get_time", args, cfg));
++    }
++
++    // wrap_tool_response
++    assert_equals(
++        std::string(R"(<|tool_response>response:get_time{value:<|"|>14:30<|"|>}<tool_response|>)"),
++        fc_wrap_tool_response("get_time", json("14:30"), cfg));
++}
++
++static void test_fc_format_peg_round_trip() {
++    LOG_DBG("%s\n", __func__);
++    fc_format_config cfg;
++
++    // Generate native format tool calls with fc_format, then parse with PEG parser.
++    // The PEG parser should recover the original JSON arguments.
++    auto tst = peg_tester("models/templates/google-gemma-4-31B-it.jinja");
++
++    // String arg round-trip
++    {
++        json args = json::object();
++        args["city"] = "London";
++        std::string native = fc_wrap_tool_call("get_time", args, cfg);
++        // Strip the tokens to get just the model output
++        std::string model_output = native;
++        tst.test(model_output)
++            .tools({ get_time_tool })
++            .expect(message_with_tool_calls("get_time", R"({"city": "London"})"))
++            .run();
++    }
++
++    // Integer arg round-trip
++    {
++        json args = json::object();
++        args["arg1"] = 42;
++        std::string model_output = fc_wrap_tool_call("special_function", args, cfg);
++        tst.test(model_output)
++            .tools({ special_function_tool })
++            .expect(message_with_tool_calls("special_function", R"({"arg1": 42})"))
++            .run();
++    }
++
++    // Boolean arg round-trip
++    {
++        json args = json::object();
++        args["enabled"] = true;
++        std::string model_output = fc_wrap_tool_call("toggle", args, cfg);
++        tst.test(model_output)
++            .tools({ toggle_tool })
++            .expect(message_with_tool_calls("toggle", R"({"enabled": true})"))
++            .run();
++    }
++
++    // Nested object round-trip
++    {
++        json config = json::object();
++        config["theme"] = "dark";
++        config["count"] = 3;
++        json args = json::object();
++        args["config"] = config;
++        std::string model_output = fc_wrap_tool_call("set_config", args, cfg);
++        tst.test(model_output)
++            .tools({ config_tool })
++            .expect(message_with_tool_calls("set_config", R"({"config":{"theme":"dark","count":3}})"))
++            .run();
++    }
++
++    // Array arg round-trip
++    {
++        json args = json::object();
++        args["todos"] = json::array({"buy milk", "walk dog"});
++        std::string model_output = fc_wrap_tool_call("todo_list", args, cfg);
++        tst.test(model_output)
++            .tools({ todo_list })
++            .expect(message_with_tool_calls("todo_list", R"({"todos":["buy milk","walk dog"]})"))
++            .run();
++    }
++
++    // Parallel tool calls round-trip
++    {
++        json args1 = json::object();
++        args1["city"] = "London";
++        json args2 = json::object();
++        args2["city"] = "Paris";
++        std::string model_output =
++            fc_wrap_tool_call("get_time", args1, cfg) +
++            fc_wrap_tool_call("get_weather", args2, cfg);
++        tst.test(model_output)
++            .tools({ get_time_tool, get_weather_tool })
++            .parallel_tool_calls(true)
++            .expect_tool_calls({
++                { "get_time", R"({"city": "London"})", "" },
++                { "get_weather", R"({"city": "Paris"})", "" },
++            })
++            .run();
++    }
++}
++
+ int main(int argc, char ** argv) {
+     bool detailed_debug    = false;
+     bool only_run_filtered = false;
+@@ -3994,6 +4287,12 @@ int main(int argc, char ** argv) {
+         test_msgs_oaicompat_json_conversion();
+         test_tools_oaicompat_json_conversion();
+         test_developer_role_to_system_workaround();
++        test_fc_format_value();
++        test_fc_format_tool_declaration();
++        test_fc_format_tool_call_args();
++        test_fc_format_tool_response();
++        test_fc_wrap_helpers();
++        test_fc_format_peg_round_trip();
+         test_template_output_peg_parsers(detailed_debug);
+         std::cout << "\n[chat] All tests passed!" << '\n';
+     }
+-- 
+2.53.0
+

@@ -1,0 +1,88 @@
+From c73fe16e4a15cb977e65bf035993f8200beceeb5 Mon Sep 17 00:00:00 2001
+From: Ewout van Mansom <ewout@vanmansom.name>
+Date: Wed, 8 Apr 2026 14:35:53 +0200
+Subject: [PATCH 4/6] tests : add Gemma 4 edge case tests for tool calls and
+ thinking
+
+Add test cases for Gemma 4 tool call parsing covering:
+- String values containing { and } inside <|"|> delimiters
+- Thinking block followed by tool call
+- Parallel tool calls with mixed value types
+- Empty thinking block with tool call (reasoning_format=NONE)
+- Nested objects with special characters in string values
+---
+ tests/test-chat.cpp | 58 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 58 insertions(+)
+
+diff --git a/tests/test-chat.cpp b/tests/test-chat.cpp
+index 1d3a77bc0..fc05de854 100644
+--- a/tests/test-chat.cpp
++++ b/tests/test-chat.cpp
+@@ -2120,6 +2120,64 @@ static void test_template_output_peg_parsers(bool detailed_debug) {
+             .run();
+     }
+ 
++    {
++        // Google Gemma 4 interleaved — edge case tests
++        auto tst = peg_tester("models/templates/google-gemma-4-31B-it-interleaved.jinja");
++
++        // String value containing JSON braces inside <|"|> delimiters
++        tst.test(
++                "<|tool_call>call:python{code:<|\"|>{\"key\": \"value\"}<|\"|>}<tool_call|>")
++            .tools({ python_tool })
++            .expect(message_with_tool_calls("python", R"({"code":"{\"key\": \"value\"}"})"))
++            .run();
++
++        // String value containing lone curly braces
++        tst.test(
++                "<|tool_call>call:python{code:<|\"|>if x > 0 { return x; }<|\"|>}<tool_call|>")
++            .tools({ python_tool })
++            .expect(message_with_tool_calls("python", R"({"code":"if x > 0 { return x; }"})"))
++            .run();
++
++        // Thinking block followed by tool call
++        tst.test(
++                "<|channel>thought\nLet me check the time in London.\n<channel|>"
++                "<|tool_call>call:get_time{city:<|\"|>London<|\"|>}<tool_call|>")
++            .tools({ get_time_tool })
++            .reasoning_format(COMMON_REASONING_FORMAT_AUTO)
++            .expect(message_with_reasoning_and_tool_call("Let me check the time in London.\n", "get_time", R"({"city": "London"})"))
++            .run();
++
++        // Empty thinking block followed by tool call (reasoning_format=NONE)
++        tst.test(
++                "<|channel>thought\n<channel|>"
++                "<|tool_call>call:get_time{city:<|\"|>Paris<|\"|>}<tool_call|>")
++            .tools({ get_time_tool })
++            .reasoning_format(COMMON_REASONING_FORMAT_NONE)
++            .expect(message_with_tool_calls("get_time", R"({"city": "Paris"})"))
++            .run();
++
++        // Parallel tool calls with mixed value types
++        tst.test(
++                "<|tool_call>call:get_time{city:<|\"|>London<|\"|>}<tool_call|>"
++                "<|tool_call>call:special_function{arg1:42}<tool_call|>"
++                "<|tool_call>call:toggle{enabled:true}<tool_call|>")
++            .tools({ get_time_tool, special_function_tool, toggle_tool })
++            .parallel_tool_calls(true)
++            .expect_tool_calls({
++                { "get_time", R"({"city": "London"})", "" },
++                { "special_function", R"({"arg1": 42})", "" },
++                { "toggle", R"({"enabled": true})", "" },
++            })
++            .run();
++
++        // Tool call with nested object containing strings with special chars
++        tst.test(
++                "<|tool_call>call:set_config{config:{theme:<|\"|>dark & bold<|\"|>,count:3}}<tool_call|>")
++            .tools({ config_tool })
++            .expect(message_with_tool_calls("set_config", R"({"config":{"theme":"dark & bold","count":3}})"))
++            .run();
++    }
++
+     {
+         // Qwen-QwQ-32B (reasoning model)
+         auto tst = peg_tester("models/templates/Qwen-QwQ-32B.jinja");
+-- 
+2.53.0
+

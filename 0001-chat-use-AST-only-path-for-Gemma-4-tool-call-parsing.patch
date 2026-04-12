@@ -1,0 +1,79 @@
+From 76398ed1a6ff4a08036e5bf5095ce9be0907cdec Mon Sep 17 00:00:00 2001
+From: Ewout van Mansom <ewout@vanmansom.name>
+Date: Wed, 8 Apr 2026 14:27:53 +0200
+Subject: [PATCH 1/6] chat : use AST-only path for Gemma 4 tool call parsing
+
+Ensure the Gemma 4 PEG mapper handles all tool-related AST nodes
+directly via gemma4_to_json, without falling back to the base mapper's
+normalize_container_value / normalize_gemma4_to_json character-scanning
+heuristics. This fixes incorrect parsing of tool call arguments
+containing braces inside string values (e.g. JSON strings in tool args).
+
+Also adds whitespace-only reasoning cleanup and defaults empty tool
+arguments to "{}" for consistency.
+
+Fixes #21384
+---
+ common/chat-peg-parser.cpp | 32 ++++++++++++++++++++++++++------
+ 1 file changed, 26 insertions(+), 6 deletions(-)
+
+diff --git a/common/chat-peg-parser.cpp b/common/chat-peg-parser.cpp
+index 624dee22f..5ceec7309 100644
+--- a/common/chat-peg-parser.cpp
++++ b/common/chat-peg-parser.cpp
+@@ -866,10 +866,24 @@ common_peg_parser common_chat_peg_builder::standard_json_tools(
+     return force_tool_calls ? section : optional(section);
+ }
+ 
+-void common_chat_peg_gemma4_mapper::from_ast(const common_peg_ast_arena & arena, const common_peg_parse_result & result) {
+-    for (const auto & node : result.nodes) {
++void common_chat_peg_gemma4_mapper::from_ast(const common_peg_ast_arena & arena, const common_peg_parse_result & parse_result_arg) {
++    for (const auto & node : parse_result_arg.nodes) {
+         visit(arena, node);
+     }
++
++    // Discard whitespace-only reasoning content (e.g. from empty thinking blocks)
++    if (!result.reasoning_content.empty()) {
++        bool all_whitespace = true;
++        for (char c : result.reasoning_content) {
++            if (c != ' ' && c != '\n' && c != '\r' && c != '\t') {
++                all_whitespace = false;
++                break;
++            }
++        }
++        if (all_whitespace) {
++            result.reasoning_content.clear();
++        }
++    }
+ }
+ 
+ static std::string gemma4_to_json(const common_peg_ast_arena & arena, common_peg_ast_id id) {
+@@ -984,15 +998,21 @@ void common_chat_peg_gemma4_mapper::visit(const common_peg_ast_arena & arena, co
+         auto name_id = arena.find_by_tag(node, "tool-name");
+         auto args_id = arena.find_by_tag(node, "tool-args");
+ 
+-        if (name_id != COMMON_PEG_INVALID_AST_ID && args_id != COMMON_PEG_INVALID_AST_ID) {
++        if (name_id != COMMON_PEG_INVALID_AST_ID) {
+             const auto & name_node = arena.get(name_id);
+-            const auto & args_node = arena.get(args_id);
+ 
+             if (!name_node.is_partial) {
+                 common_chat_tool_call call;
+                 call.name = std::string(name_node.text);
+-                if (!args_node.children.empty()) {
+-                    call.arguments = gemma4_to_json(arena, args_node.children[0]);
++                if (args_id != COMMON_PEG_INVALID_AST_ID) {
++                    const auto & args_node = arena.get(args_id);
++                    if (!args_node.children.empty()) {
++                        call.arguments = gemma4_to_json(arena, args_node.children[0]);
++                    } else {
++                        call.arguments = "{}";
++                    }
++                } else {
++                    call.arguments = "{}";
+                 }
+                 result.tool_calls.push_back(call);
+             }
+-- 
+2.53.0
+
