@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=tg-ws-proxy
-Comment=Local SOCKS5 proxy server for partial bypassing of Telegram loading
+Comment=Local MTProto proxy server for partial bypassing of Telegram loading
 Exec=/usr/bin/tg-ws-proxy
 Icon=tg-ws-proxy
 Terminal=false

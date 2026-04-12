@@ -1,5 +1,5 @@
 [Unit]
-Description=Local SOCKS5 proxy server for partial bypassing of Telegram loading
+Description=Local MTProto proxy server for partial bypassing of Telegram loading
 After=graphical-session.target
 PartOf=graphical-session.target
 

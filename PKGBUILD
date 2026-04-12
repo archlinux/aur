@@ -1,6 +1,6 @@
 # Maintainer: gogamlg3
 pkgname=tg-ws-proxy-git
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Local MTProto proxy server for partial bypassing of Telegram loading"
 arch=("x86_64")
@@ -24,7 +24,7 @@ build() {
 
   python -m venv --system-site-packages .venv
   .venv/bin/pip install --upgrade pip
-  .venv/bin/pip install ".[linux]"
+  .venv/bin/pip install "."
   .venv/bin/pip install "pyinstaller"
   .venv/bin/pyinstaller --noconfirm packaging/linux.spec
 
