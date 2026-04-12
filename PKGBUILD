@@ -1,7 +1,7 @@
 # Maintainer: Alexander Tarasov <a.tevg@ya.ru>
 pkgname=pwsp-bin
 _pkgname=pipewire-soundpad
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=2
 pkgdesc="Lets you play audio files through your microphone (Pre-built binaries)"
 arch=('x86_64')
