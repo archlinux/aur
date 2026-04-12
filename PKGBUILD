@@ -2,7 +2,7 @@
 
 _pkgbase=asustor-platform-driver
 pkgname=asustor-platform-driver-dkms-git
-pkgver=49.20f84ae
+pkgver=56.cb392fc
 pkgrel=1
 pkgdesc="asustor nas driver"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('git')
 provides=($_pkgbase)
 conflicts=('it87-frankcrawford-dkms-git' 'it87-dkms-git')
 
-source=("$_pkgbase::https://github.com/mafredri/asustor-platform-driver.git")
+source=("$_pkgbase::git+https://github.com/mafredri/asustor-platform-driver.git")
 sha256sums=('SKIP')
 
 pkgver() {
