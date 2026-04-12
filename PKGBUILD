@@ -1,6 +1,6 @@
 pkgname=inspectors-desktop
-_tag=v0.1.0-alpha.2
-pkgver=0.1.0alpha2
+_tag=v0.1.0-alpha.3
+pkgver=0.1.0alpha3
 pkgrel=1
 pkgdesc='Linux-first Tauri operator app for the Agent Computer Use Platform'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glib-networking' 'gtk3' 'libsoup3' 'nodejs>=22' 'webkit2gtk-4.1')
 makedepends=('cargo' 'pkgconf')
 conflicts=('inspectors-desktop-git')
 source=("$pkgname-$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('a265e6a70e261d0eb3d81735dc3ea4016daec66066ab651cffaf04c723d3ceed')
+sha256sums=('08439dd7c4f9a3e19bf7782ad21a3e3f28b21c02b2cbd7b85560edab5c959d39')
 
 build() {
   cd "$srcdir/inspectors-${_tag#v}"
