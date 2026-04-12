@@ -1,7 +1,7 @@
-pkgbase = qtkeychain
-	pkgdesc = Provides support for secure credentials storage
+pkgbase = qtkeychain-qt5
+	pkgdesc = Provides support for secure credentials storage (Qt5 version)
 	pkgver = 0.15.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/frankosterfeld/qtkeychain
 	arch = x86_64
 	license = BSD-3-Clause
@@ -30,12 +30,3 @@ pkgname = qtkeychain-qt5
 	provides = qtkeychain
 	conflicts = qtkeychain
 	replaces = qtkeychain
-
-pkgname = qtkeychain-qt6
-	depends = glib2
-	depends = glibc
-	depends = libgcc
-	depends = libstdc++
-	depends = org.freedesktop.secrets
-	depends = qt6-base
-	optdepends = kwallet: kwallet backend

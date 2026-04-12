@@ -1,13 +1,13 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintaner: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 # Contributor: Teo Mrnjavac <teo@kde.org>
 
-pkgbase=qtkeychain
-pkgname=(qtkeychain-qt5
-         qtkeychain-qt6)
+pkgname=qtkeychain-qt5
+_pkgname=qtkeychain
 pkgver=0.15.0
-pkgrel=3
-pkgdesc='Provides support for secure credentials storage'
+pkgrel=4
+pkgdesc='Provides support for secure credentials storage (Qt5 version)'
 arch=(x86_64)
 url='https://github.com/frankosterfeld/qtkeychain'
 license=(BSD-3-Clause)
@@ -26,14 +26,9 @@ source=(git+https://github.com/frankosterfeld/qtkeychain#tag=$pkgver)
 sha256sums=('0ffe67e46fa4a99da93c1f13090a7e153dfe1cee25b9ef269f85a504834360db')
 
 build() {
-  cmake -B build-qt5 -S $pkgbase \
+  cmake -B build-qt5 -S $_pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build-qt5
-
-  cmake -B build-qt6 -S $pkgbase \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_WITH_QT6=ON
-  cmake --build build-qt6
 }
 
 package_qtkeychain-qt5() {
@@ -44,13 +39,5 @@ package_qtkeychain-qt5() {
   replaces=(qtkeychain)
 
   DESTDIR="$pkgdir" cmake --install build-qt5
-  install -Dm644 $pkgbase/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-}
-
-package_qtkeychain-qt6() {
-  depends+=(qt6-base)
-  optdepends=('kwallet: kwallet backend')
-
-  DESTDIR="$pkgdir" cmake --install build-qt6
-  install -Dm644 $pkgbase/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 $_pkgname/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
