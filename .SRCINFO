@@ -10,6 +10,7 @@ pkgbase = skwd-wall
 	depends = quickshell
 	depends = qt6-multimedia
 	depends = qt6-declarative
+	depends = qt6-imageformats
 	depends = awww
 	depends = mpvpaper
 	depends = matugen

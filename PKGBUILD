@@ -11,6 +11,7 @@ depends=(
   'quickshell'
   'qt6-multimedia'
   'qt6-declarative'
+  'qt6-imageformats'
   'awww'
   'mpvpaper'
   'matugen'
