@@ -4,7 +4,7 @@ pkgver=1.1
 pkgrel=1
 pkgdesc='Mesh optimization library that makes meshes smaller and faster to render'
 arch=(x86_64)
-url='https://github.com/zeux/meshoptimizer'
+url='https://meshoptimizer.org'
 license=(MIT)
 makedepends=(cmake)
 # gltfpack-bin in AUR
