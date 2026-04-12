@@ -21,11 +21,10 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    # Wymuszamy na linkerze dołączenie CAŁEJ biblioteki statycznej Lua
-    # Flaga --whole-archive sprawia, że żadne symbole nie zostaną pominięte
-    export RUSTFLAGS="-C link-arg=-Wl,--whole-archive -C link-arg=-llua -C link-arg=-Wl,--no-whole-archive"
+    # Usuwamy RUSTFLAGS, pozwalamy Cargo samemu obsłużyć Lua
     cargo build --release --locked
 }
+
 
 
 
