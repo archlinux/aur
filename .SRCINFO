@@ -1,6 +1,6 @@
 pkgbase = libodd-git
 	pkgdesc = a troll
-	pkgver = r4.154cd88
+	pkgver = r2.074b1ec
 	pkgrel = 1
 	url = https://github.com/TheOddCell/libodd
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = libodd-git
 	makedepends = binutils
 	makedepends = coreutils
 	provides = libodd
+	options = staticlibs
 	source = libodd-git::git+https://github.com/TheOddCell/libodd
 	sha256sums = SKIP
 

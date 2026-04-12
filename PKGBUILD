@@ -1,6 +1,6 @@
 # Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=libodd-git
-pkgver=r4.154cd88
+pkgver=r2.074b1ec
 pkgrel=1
 pkgdesc="a troll"
 arch=('any')
@@ -12,6 +12,7 @@ provides=('libodd')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 conflicts=()
+options=('staticlibs')
 
 pkgver() {
   cd "$srcdir/$pkgname"
