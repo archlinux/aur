@@ -1,9 +1,9 @@
 # Maintainer: artist for Sonic-DE
 
 pkgname=sonic-interface-libraries
-pkgver=6.6.3.1
+pkgver=6.6.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 pkgdesc='Sonic-DE library and runtime components'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-interface-libraries'
@@ -49,5 +49,4 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 }
 
-sha256sums=('d34abb2e5998483217472074f11cb4c1f216fc8f56bd6d67f6e5888101ff6a92')
-
+sha256sums=('e104c91356880e7930b79c9d233ef507c77855e5640ad4abdd7ba012c1a26977')
