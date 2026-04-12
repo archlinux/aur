@@ -28,7 +28,8 @@ prepare() {
 
 build() {
     cd "fluxer-tui"
-    cargo build --release --locked
+    rm -rf target/
+    CC=gcc AR=ar cargo build --release --locked
 }
 
 package() {
