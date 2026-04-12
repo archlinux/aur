@@ -1,6 +1,6 @@
 pkgbase = python-textual-image
 	pkgdesc = Render images in the terminal with Textual and Rich
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/lnqs/textual-image
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-textual-image
 	depends = python-rich
 	depends = python-typing_extensions
 	optdepends = python-numpy: sixel encoding optimization
-	source = git+https://github.com/lnqs/textual-image#tag=v0.11.0
-	sha256sums = b7ac06829c6c12f2df6be1c842ef11497e45861aa8edb9b78d19da78a0463630
+	source = git+https://github.com/lnqs/textual-image#tag=v0.12.0
+	sha256sums = 2d097627ce4656c80d2631939c87b61021471da70d87359894d6bf2bd250f6ae
 
 pkgname = python-textual-image
