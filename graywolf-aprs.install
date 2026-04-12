@@ -1,0 +1,27 @@
+post_install() {
+  systemd-sysusers
+  systemctl daemon-reload
+  echo ""
+  echo "==> Graywolf installed."
+  echo ""
+  echo "  Enable and start the service:"
+  echo "    systemctl enable --now graywolf-aprs.service"
+  echo ""
+  echo "  Set a web UI password:"
+  echo "    sudo -u graywolf-aprs graywolf auth set-password --user admin --config /var/lib/graywolf-aprs/graywolf.db"
+  echo ""
+  echo "  Web UI: http://localhost:8080"
+  echo ""
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  if systemctl is-active --quiet graywolf-aprs.service; then
+    systemctl restart graywolf-aprs.service
+  fi
+}
+
+pre_remove() {
+  systemctl stop graywolf-aprs.service 2>/dev/null || true
+  systemctl disable graywolf-aprs.service 2>/dev/null || true
+}
