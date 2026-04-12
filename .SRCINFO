@@ -1,0 +1,21 @@
+pkgbase = cachydpi
+	pkgdesc = System-wide DPI bypass tool for Linux — GoodbyeDPI alternative
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/byalphas/cachydpi
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = libnetfilter_queue
+	depends = libnfnetlink
+	depends = libmnl
+	depends = nftables
+	backup = etc/cachydpi/config.toml
+	backup = etc/cachydpi/blacklist.txt
+	source = cachydpi-1.0.0.tar.gz::https://github.com/byalphas/cachydpi/archive/v1.0.0.tar.gz
+	sha256sums = dde09621a5fb84af11c7befcceeea9855d4075f0677ba164a49a9710e01f0464
+
+pkgname = cachydpi
