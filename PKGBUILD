@@ -10,7 +10,7 @@ depends=('wayland' 'libxkbcommon' 'fontconfig' 'dbus')
 optdepends=('uwsm: for systemd session management')
 makedepends=('cargo' 'pkg-config')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('773b6f5a6d67718748ae81190c096727b5d30e2c6be32b8fc5c609f7bd380690')
+sha256sums=('f4acac9da94557c1a3c0972c7daa07e0c2e5d2d41491ee644550625bb13738b7')
 
 prepare() {
 	cd "$pkgname-$pkgver"
