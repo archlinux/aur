@@ -13,7 +13,7 @@ optdepends=(
   'kitty: kitty icat integration for album-art rendering'
 )
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/Xero-music/Xero/archive/v$pkgver.tar.gz")
-sha256sums=('1a688381f3d0063111f0a9a6923a854ab06ba902ff64770b764af4a546b1873c')
+sha256sums=('d74491719e61fb152c4b3253e4c6e262294af821a4b5e123b76ec1ede1442f2c')
 
 build() {
   cd "$srcdir/xero"
