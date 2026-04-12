@@ -1,6 +1,6 @@
 pkgbase = osmo-upf
 	pkgdesc = Osmocom implementation of the 3GPP UPF (User Plane Function)
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmo-upf
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = osmo-upf
 	depends = talloc
 	conflicts = osmo-upf-git
 	backup = etc/osmocom/osmo-upf.cfg
-	source = https://downloads.osmocom.org/releases/osmo-upf/osmo-upf-0.3.0.tar.bz2
-	sha256sums = 5db79e93316b21c743d72e1a988d24882c6dfd090c19c95d32e8b582acd7eb34
+	source = https://downloads.osmocom.org/releases/osmo-upf/osmo-upf-0.4.0.tar.bz2
+	sha256sums = 122ff0be5747718a469b13734a3b4bc1f6e2ebae527e2b0ed03f79954572d273
 
 pkgname = osmo-upf

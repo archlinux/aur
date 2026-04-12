@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=osmo-upf
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Osmocom implementation of the 3GPP UPF (User Plane Function)"
 url="https://osmocom.org/projects/osmo-upf"
@@ -15,7 +15,7 @@ depends=('libosmocore'
 conflicts=("${pkgname%}-git")
 backup=('etc/osmocom/osmo-upf.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('5db79e93316b21c743d72e1a988d24882c6dfd090c19c95d32e8b582acd7eb34')
+sha256sums=('122ff0be5747718a469b13734a3b4bc1f6e2ebae527e2b0ed03f79954572d273')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
