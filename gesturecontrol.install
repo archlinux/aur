@@ -1,0 +1,31 @@
+post_install() {
+    echo ""
+    echo "  Gesture Control installed."
+    echo ""
+    echo "  The tray icon will appear on your next login and run first-time setup"
+    echo "  automatically (creates a Python venv and downloads the MediaPipe model)."
+    echo ""
+    echo "  To start it now without logging out:"
+    echo ""
+    echo "    gesturecontrol-tray &"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "  Gesture Control upgraded."
+    echo ""
+    echo "  If this update added new pip dependencies, re-run setup:"
+    echo ""
+    echo "    gesturecontrol-setup"
+    echo ""
+    echo "  Then restart any running services:"
+    echo ""
+    echo "    systemctl --user restart gestureControl.service gestureControl-actions.service"
+    echo ""
+}
+
+pre_remove() {
+    systemctl --user stop    gestureControl.service gestureControl-actions.service 2>/dev/null || true
+    systemctl --user disable gestureControl.service gestureControl-actions.service 2>/dev/null || true
+}
