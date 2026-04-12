@@ -1,0 +1,16 @@
+pkgbase = sddm-hyprland
+	pkgdesc = SDDM Wayland configuration for running the greeter on Hyprland
+	pkgver = 0.r22.g3c5fab5
+	pkgrel = 1
+	url = https://github.com/HyDE-Project/sddm-hyprland
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = sddm
+	depends = hyprland
+	depends = layer-shell-qt5
+	depends = jq
+	source = sddm-hyprland::git+https://github.com/HyDE-Project/sddm-hyprland.git
+	sha256sums = SKIP
+
+pkgname = sddm-hyprland
