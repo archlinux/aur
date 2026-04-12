@@ -1,6 +1,6 @@
 pkgbase = python-quicktions
 	pkgdesc = Fast fractions data type for rational numbers
-	pkgver = 1.22
+	pkgver = 1.23
 	pkgrel = 1
 	url = https://github.com/scoder/quicktions
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-quicktions
 	makedepends = cython
 	depends = python
 	depends = glibc
-	source = quicktions-1.22.tar.gz::https://github.com/scoder/quicktions/archive/1.22.tar.gz
-	sha512sums = 7e1f72d6dcf8945aa42eb753aac8878e59909cc13def94e35e399112f1c739ed218fca2019ab59cb5a57aff781d9688e34fcdf629d59ba903306a654e4008e05
+	source = quicktions-1.23.tar.gz::https://github.com/scoder/quicktions/archive/1.23.tar.gz
+	sha512sums = e0eb061868b18e0dee3b07e45195a92fd3fdd7d651b45b84d5727307cbd5e6967ab00aac1e0306236455b47cbd99faf491363ed6d39d6791220ee6ae0a4939f3
 
 pkgname = python-quicktions
