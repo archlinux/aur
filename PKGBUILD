@@ -7,7 +7,7 @@ _pkgname=jid
 pkgname=${_pkgname}-bin
 pkgdesc="JSON Incremental Digger"
 
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -28,11 +28,11 @@ source_i686=("${_pkgname}-${arch[0]}-${pkgver}.zip::${url}/releases/download/${_
 source_x86_64=("${_pkgname}-${arch[1]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}.zip")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[2]}.zip")
 
-sha256sums=('33e23ebe03a2ccdbd130f756e080483a9812e5b2764711ef2ba037efc8551b3d'
+sha256sums=('55df4cafaed09779fc86d697f5327c02c70fb699c02713bee5f830dc89a4b8d6'
             '3db4ceef736801baccfff1bc4d6ea64dc889dcc43cfc49151907ab98538f8c2d')
-sha256sums_i686=('75bdef25a23a4cd3533281ea7d8f0418ae32a1982884a2f7978b724ef00bc801')
-sha256sums_x86_64=('4bce81954d7dabf5f930d72496cfb4825816633988edd54804966b37e7464a6c')
-sha256sums_aarch64=('f9bbce9ee6a9fe1c21881e3fb4d00d8169177873f74354a873b3f5cc05c4e990')
+sha256sums_i686=('dcd0cd7e232e8797ddf39b35eaba00aebcfef322682cb0a0169a8e9dee59a651')
+sha256sums_x86_64=('bed4bae81afe2ade4dfd997c1829b5de8e43eff2e057c3c463e76aef35614491')
+sha256sums_aarch64=('7cfb53fc09a44225dbc55adf1330639556f543292a33858dbb812680450d2449')
 
 
 package() {
