@@ -1,8 +1,8 @@
-# Maintainer: Max Hefley <your@email.com>
+# Maintainer: Max Hefley <Mizuna737@gmail.com>
 
 pkgname=gesturecontrol
 pkgver=r1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hand gesture recognition: webcam → MediaPipe → D-Bus signals → configurable actions"
 arch=('any')
 url="https://github.com/Mizuna737/gesturecontrol"
@@ -54,7 +54,7 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     for script in gestureControl gestureControl-config gestureControl-actions gestureControl-tray; do
         wrapper="$pkgdir/usr/bin/${script,,}"
-        printf '#!/bin/sh\nexec /usr/share/%s/%s.py "$@"\n' "$pkgname" "$script" > "$wrapper"
+        printf '#!/bin/sh\nexec python3 /usr/share/%s/%s.py "$@"\n' "$pkgname" "$script" > "$wrapper"
         chmod 755 "$wrapper"
     done
 
