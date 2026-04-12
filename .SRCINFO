@@ -1,0 +1,19 @@
+pkgbase = counter-strike-1.6
+	pkgdesc = Community Launcher for Counter-Strike 1.6
+	pkgver = r1.gabcdef0
+	pkgrel = 1
+	url = https://github.com/Skoczi/cs_1.6_linux
+	arch = x86_64
+	license = custom:unknown
+	makedepends = git
+	makedepends = npm
+	makedepends = nodejs
+	depends = electron
+	depends = libxss
+	depends = nss
+	provides = counter-strike-1.6
+	conflicts = counter-strike-1.6
+	source = counter-strike-1.6::git+https://codeberg.org/Skoczi/csco-launcher
+	sha256sums = SKIP
+
+pkgname = counter-strike-1.6
