@@ -1,7 +1,7 @@
 # Maintainer: Laoyou2333 <laoyou2333 at confidesk dot com>
 pkgname=astral-bin
-pkgver=2.7.7
-pkgrel=3
+pkgver=2.7.8
+pkgrel=1
 pkgdesc="Astral is a modern cross-platform web application built on EasyTier, designed to simplify the creation and management of P2P network connections and virtual private networks."
 arch=('x86_64')
 url="https://Astral.fan"
@@ -10,7 +10,7 @@ provide=('astral')
 depends=('gcc-libs' 'glibc' 'polkit' 'bash' 'libayatana-appindicator')
 makedepends=('tar')
 source=("https://github.com/ldoubil/astral/releases/download/v${pkgver}/astral-linux-x64.tar.gz" "https://github.com/ldoubil/astral/raw/refs/heads/main/assets/icon.ico" "Astral.desktop")
-sha256sums=('c85e7254114d8bd15dd2bbcf572c46c52613f58ccc77be5cc477fc89fffb5da9' 'd0e0314aa2aafc676ad7d3ddab38b173ed70cede661840d82756aaf85d3f36ca' '41b3f3f0e5b6df838d8a670e4c64bd7fd4bb531147bb59f46a86d22e189d8c19')
+sha256sums=('3536b6af87b4b40ce9993a3b7ad18fe59273a2edc81f2fa12bc51999682d9860' 'd0e0314aa2aafc676ad7d3ddab38b173ed70cede661840d82756aaf85d3f36ca' '41b3f3f0e5b6df838d8a670e4c64bd7fd4bb531147bb59f46a86d22e189d8c19')
 
 package() {
     mkdir -p ${pkgdir}/opt/astral
