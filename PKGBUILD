@@ -3,8 +3,8 @@
 # shellcheck disable=SC2148,SC2034,SC2154,SC2164
 
 pkgname=open-android-backup
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc='A complete, easy to use script that lets you locally backup and restore your Android device.'
 arch=(i686 x86_64)
 license=(GPL-3.0-only)
@@ -22,7 +22,7 @@ optdepends=(
   'zenity: display graphical dialogs'
 )
 source=("${pkgname}-${pkgver}.zip::https://github.com/mrrfv/${pkgname}/releases/download/v${pkgver}/Open_Android_Backup_v${pkgver}_Bundle.zip")
-sha512sums=('d526316ddf1e21d96f7ef8102f769ce396fb6026e29d4ab28af76d3f0a9d5ea3f3aa47732b701a545f3eb51623e525a4f2f801cbac83b923fff5ac62804fca92')
+sha512sums=('cbd3b966222054a7c0a5b428e8157284a8547a296d906cb4d1256278c9318c76e62bae6c9edd6ccd54ae9c339eb704ee062ef2cc27016f08ec0d6a0e93d9ddf9')
 
 package () {
   mkdir -p "${pkgdir}/opt/${pkgname}"
