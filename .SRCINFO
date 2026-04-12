@@ -19,3 +19,4 @@ pkgbase = ai-quota-waybar-git
 	sha256sums = SKIP
 
 pkgname = ai-quota-waybar-git
+
