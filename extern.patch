@@ -1,0 +1,181 @@
+diff --git a/i8086emu/src/i8086gui.c b/i8086emu/src/i8086gui.c
+index a526d14..fedddf7 100644
+--- a/i8086emu/src/i8086gui.c
++++ b/i8086emu/src/i8086gui.c
+@@ -42,8 +42,25 @@
+ #include "i8086gui_util.h"
+ #include "i8086gui_paint.h"
+ 
+-G_CONST_RETURN gchar *filename;		//Datei Name
+-GtkWidget *file_selection_box; 		//Box für File-Open Dialog
++GtkWidget *window=NULL;
++GtkWidget *leds=NULL;
++GtkWidget *anz=NULL;
++GtkWidget *flaglabel=NULL;
++GtkWidget *reglabel=NULL;
++GtkWidget *statusbar=NULL;
++GtkWidget *memviewer=NULL;
++GtkWidget *disasmviewer=NULL;
++GtkWidget *memSpinButton=NULL;
++GtkWidget *runbutton=NULL;
++GtkWidget *tracebutton=NULL;
++GtkWidget *stepoverbutton=NULL;
++GtkWidget *runmenuitem=NULL;
++GtkWidget *tracemenuitem=NULL;
++GtkWidget *stepovermenuitem=NULL;
++GtkWidget *memTextField=NULL;
++
++static G_CONST_RETURN gchar *filename;		//Datei Name
++static GtkWidget *file_selection_box; 		//Box für File-Open Dialog
+ 
+ //Autor: FB 
+ //Fenster Schliessen
+diff --git a/i8086emu/src/i8086gui.h b/i8086emu/src/i8086gui.h
+index 46be968..fc0dbd7 100644
+--- a/i8086emu/src/i8086gui.h
++++ b/i8086emu/src/i8086gui.h
+@@ -31,22 +31,22 @@
+ #include <gtk/gtk.h>
+ #include <glib.h>
+ 
+-GtkWidget *window;	//Haupt Fenster
+-GtkWidget *leds;
+-GtkWidget *anz;
+-GtkWidget *flaglabel;
+-GtkWidget *reglabel;
+-GtkWidget *statusbar;
+-GtkWidget *memviewer;
+-GtkWidget *disasmviewer;
+-GtkWidget *memSpinButton;
+-GtkWidget *runbutton;
+-GtkWidget *tracebutton;
+-GtkWidget *stepoverbutton;
+-GtkWidget *runmenuitem;
+-GtkWidget *tracemenuitem;
+-GtkWidget *stepovermenuitem;
+-GtkWidget *memTextField;
++extern GtkWidget *window;	//Haupt Fenster
++extern GtkWidget *leds;
++extern GtkWidget *anz;
++extern GtkWidget *flaglabel;
++extern GtkWidget *reglabel;
++extern GtkWidget *statusbar;
++extern GtkWidget *memviewer;
++extern GtkWidget *disasmviewer;
++extern GtkWidget *memSpinButton;
++extern GtkWidget *runbutton;
++extern GtkWidget *tracebutton;
++extern GtkWidget *stepoverbutton;
++extern GtkWidget *runmenuitem;
++extern GtkWidget *tracemenuitem;
++extern GtkWidget *stepovermenuitem;
++extern GtkWidget *memTextField;
+ 
+ void destroy(GtkWidget *widget, GdkEvent *event, gpointer user_data);
+ 
+diff --git a/i8086emu/src/i8086gui_emufuncs.c b/i8086emu/src/i8086gui_emufuncs.c
+index 7a34e40..788599a 100644
+--- a/i8086emu/src/i8086gui_emufuncs.c
++++ b/i8086emu/src/i8086gui_emufuncs.c
+@@ -42,18 +42,19 @@
+ #include "i8086util.h"
+ #include "i8086emufuncs.h"
+ 
++char *selectedRow=NULL;
+ 
+ // unsigned short startAdr=0x0100;
+-char canRun;
++static char canRun;
+ 
+ /* Anzahl der bereits gemachten Schleifendurchlaeufe */
+ /* im Run-Modus */
+-unsigned int clocks=0;
+-unsigned int debugger_update_interval=0;
++static unsigned int clocks=0;
++static unsigned int debugger_update_interval=0;
+ 
+ //enthält Tastencode aktuell gedrückter Taste an der emulierten Tastatur, 0 <> keine
+-unsigned char currentKeyboardKey=0;
+-i8086msgFunc *guiOldPortSignalOutHandler=NULL;
++static unsigned char currentKeyboardKey=0;
++static i8086msgFunc *guiOldPortSignalOutHandler=NULL;
+ 
+ 
+ //Autor Prof. Geiler
+diff --git a/i8086emu/src/i8086gui_emufuncs.h b/i8086emu/src/i8086gui_emufuncs.h
+index 93d4c16..2bc7238 100644
+--- a/i8086emu/src/i8086gui_emufuncs.h
++++ b/i8086emu/src/i8086gui_emufuncs.h
+@@ -60,6 +60,6 @@ char *stringcat(const char *s, ...);
+ void i8086guiLoadBinFile(const char *filename, unsigned int adr);
+ void i8086guiLoadConfig(const char *filename);
+ 
+-char *selectedRow;//akutell ausgewaehlte reihe im breakpoints dialogfenster
++extern char *selectedRow;//akutell ausgewaehlte reihe im breakpoints dialogfenster
+ 
+ #endif /* _i8086_GUI_EMUFUNCS_H_ */
+diff --git a/i8086emu/src/i8086gui_paint.c b/i8086emu/src/i8086gui_paint.c
+index b6dd4d9..5d4a30e 100644
+--- a/i8086emu/src/i8086gui_paint.c
++++ b/i8086emu/src/i8086gui_paint.c
+@@ -42,10 +42,13 @@
+ #include "disasm/disasm.h"
+ #include "i8086config.h"
+ 
+-unsigned char selectReg=0;	//Zu änderndes Register für Change Reg
+-GtkWidget *valuetextfield;
+-GtkWidget *adrtextfield;
+-gchar *text_buffer;		//Text Buffer für Help
++GtkWidget *bpadrtextbox=NULL;
++GtkListStore *store=NULL;
++
++static unsigned char selectReg=0;	//Zu änderndes Register für Change Reg
++static GtkWidget *valuetextfield;
++static GtkWidget *adrtextfield;
++static gchar *text_buffer;		//Text Buffer für Help
+ 
+ //Autor: FB 
+ //Led's zeichnen
+diff --git a/i8086emu/src/i8086gui_paint.h b/i8086emu/src/i8086gui_paint.h
+index c4412ea..55d59b4 100644
+--- a/i8086emu/src/i8086gui_paint.h
++++ b/i8086emu/src/i8086gui_paint.h
+@@ -83,8 +83,8 @@ void on_memtextfield_change_value(GtkWidget  *widget, GdkRectangle *allocation,
+ void changeMemReg (GtkWidget *widget,gpointer rm);
+ void setBreakpoint(GtkWindow  *widget,gpointer callback_data);
+ void updateTree();
+-GtkWidget *bpadrtextbox;
+-GtkListStore *store;
++extern GtkWidget *bpadrtextbox;
++extern GtkListStore *store;
+ 
+ void about_win(GtkWindow  *widget);
+ void help_win(GtkWindow  *widget);
+diff --git a/i8086emu/src/i8086gui_util.c b/i8086emu/src/i8086gui_util.c
+index 29c80a2..36e516d 100644
+--- a/i8086emu/src/i8086gui_util.c
++++ b/i8086emu/src/i8086gui_util.c
+@@ -44,6 +44,8 @@
+ #include <windows.h>
+ #endif
+ 
++unsigned int *breakpoints=NULL;
++unsigned char bpelements='\0';
+ 
+ int i8086getFontHeight(GtkWidget *widget)
+ {
+diff --git a/i8086emu/src/i8086gui_util.h b/i8086emu/src/i8086gui_util.h
+index 82dc6ac..a9915f1 100644
+--- a/i8086emu/src/i8086gui_util.h
++++ b/i8086emu/src/i8086gui_util.h
+@@ -31,8 +31,8 @@
+ int i8086getFontHeight(GtkWidget *widget);
+ int i8086getTextWidth(GtkWidget *widget, const char *text);
+ void i8086guiClearText(GtkWidget *text);
+-unsigned int *breakpoints;
+-unsigned char bpelements;
++extern unsigned int *breakpoints;
++extern unsigned char bpelements;
+ 
+ 
+ unsigned char addBp(unsigned int bpoint);

@@ -1,0 +1,21 @@
+diff -rauN a/i8086emu/src/i8086text.c b/i8086emu/src/i8086text.c
+--- a/i8086emu/src/i8086text.c	2025-10-30 12:59:42.473853696 +0100
++++ b/i8086emu/src/i8086text.c	2025-10-30 13:04:24.088043191 +0100
+@@ -370,7 +370,7 @@
+   if (hParam==0)
+     printLeds(0);
+   if (hParam>143 && hParam<159)
+-    printDisplay(0);
++    printDisplay();
+   
+   if (oldPortHandler)
+     oldPortHandler(mtyp, hParam, lParam);
+@@ -469,7 +469,7 @@
+   mvwprintw(cmdWin, 2, 1, ":");
+   wrefresh(cmdWin);
+   
+-  wscanw(cmdWin, "%s", &str);
++  wscanw(cmdWin, "%s", str);
+   
+   file = fopen(str, "wb");
+   if (file==NULL)

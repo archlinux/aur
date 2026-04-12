@@ -16,9 +16,11 @@ pkgbase = i8086emu-git
 	source = i8086emu.desktop
 	source = https://sourceforge.net/p/i8086emu/patches/9/attachment/extern.patch
 	source = https://sourceforge.net/p/i8086emu/patches/_discuss/thread/5e30f26d55/b83c/attachment/fmt.patch
+	source = compilation.patch
 	sha512sums = SKIP
 	sha512sums = c0501f63012b74fb8e48cdef3c27ac52546308b82cf6a97527e36ef2ea6cee0ff874c804745252b678d13932e0e1aeaa48812189c5d7599a36484a30d453d81e
 	sha512sums = 05c6354741db54ed335bb0f4519b4693add6d2c0780170311f773b05207e28fcb0ce8aadd4d1160429752d94e8d5afe13e1175478421ea1624571801d96f948a
 	sha512sums = b3cd89c20c38c581c12ebad5ae09f4f48fbd4eeef0e80c37be774b0156a06eb435483e7e1563796d60a06112d80383d0b2a146bf24246d7701577da44bf989d3
+	sha512sums = 23b36265c9f4f8e39d0128e78d9b8648c85cbf7dfa4a73e3acf1f86eb70e84e7eb1183b81d8d709cd6b092bb2c3b3b99f0068ab49db95164f2b5ec487893d208
 
 pkgname = i8086emu-git

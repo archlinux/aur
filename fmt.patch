@@ -1,0 +1,12 @@
+diff --git a/i8086emu/src/i8086gui_error.c b/i8086emu/src/i8086gui_error.c
+index 2126842..082b335 100644
+--- a/i8086emu/src/i8086gui_error.c
++++ b/i8086emu/src/i8086gui_error.c
+@@ -40,6 +40,7 @@ void i8086guiShowMessage(GtkWindow *parent, const char *msg, int mode)
+                                    GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                    mode,
+                                    GTK_BUTTONS_CLOSE,
++                                   "%s",
+                                    msg);
+ 
+   gtk_dialog_run(GTK_DIALOG(dialog));
