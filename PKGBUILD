@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-daemon
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Hardware fan control daemon for Linux (OpenFan, hwmon, GPU)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # (.github/workflows/release-aur.yml) will fail until this matches the
 # GitHub tarball hash. Fix with a follow-up "fix: update PKGBUILD
 # checksum for v1.1.2" commit, same pattern as commit a1d2b7b.
-sha256sums=('f18c9c5b2064d9b05e336c3f36b959d9ed729f762a0f71c0a6e8d9dac2cf6197')
+sha256sums=('7d931c8af4e6ab6de46607fe850857b98c0a853259c5293e9c41390b9190e894')
 
 prepare() {
     cd "$pkgname-$pkgver"
