@@ -1,6 +1,4 @@
 [lexbor]
-source = "github"
-github = "lexbor/lexbor"
-use_latest_release = true
+source = "git"
+git = "https://github.com/lexbor/lexbor.git"
 prefix = "v"
-verify_cert = true

@@ -1,50 +1,43 @@
-# Maintainer: David Wu <daichuan at dwu21 dot net>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: David Wu <daichuan at dwu21 dot net>
 
-pkgname='lexbor'
-pkgdesc='An in-development browser engine with minimal dependencies'
-arch=('x86_64')
+pkgname=lexbor
+pkgver=3.0.0
+pkgrel=1
+pkgdesc='A set of fast, standards-compliant tools for working with modern web technologies — HTML parsing, CSS processing, URL handling, and more.'
+arch=(x86_64)
 url='https://lexbor.com'
 license=('Apache-2.0')
-
 depends=(glibc)
-
 makedepends=(
   git
   cmake
 )
-
-pkgver='2.6.0'
-_tag='e142a9b495064cd718cf442ffe23b51ea089d9d6' # git rev-parse tags/v2.6.0
-pkgrel='1'
-source=("git+https://github.com/lexbor/lexbor.git#tag=${_tag}")
-
-sha256sums=('4f63bc194a5859ff4894f8f8903f2041b63309b6ddf9fb21540103d7679f8afd')
-b2sums=('dfa8669fbff1370e658aceaec5eb3a26b1fc0397ebfeb3e064c28109c10f4b51ab50317fb4e96193e61784d9c7006aa7ff1e59390671362b71360aec4895aa0f')
+source=("git+https://github.com/lexbor/lexbor.git#tag=v${pkgver}")
+sha256sums=('b738cffc343868268d59109be5a1378dc854bfc06ddd5564954060398d3016e6')
 
 build() {
-  cmake -B "${srcdir}/build" -S "${srcdir}/${pkgname}" \
+  cmake -S "${pkgname}" -B build \
     -DLEXBOR_BUILD_SHARED=ON \
     -DLEXBOR_BUILD_STATIC=OFF \
     -DLEXBOR_BUILD_TESTS=ON \
     -DLEXBOR_BUILD_TESTS_CPP=ON \
     -DLEXBOR_INSTALL_HEADERS=ON \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev
 
-  cd "${srcdir}/build"
-  make
+  cmake --build build
 }
 
 check() {
-  cd "${srcdir}/build"
-  make test
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}/" install
+  DESTDIR="${pkgdir}" cmake --install build
 
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
 
-  install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" NOTICE
-  install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" NOTICE
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }

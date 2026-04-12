@@ -1,6 +1,6 @@
 pkgbase = lexbor
-	pkgdesc = An in-development browser engine with minimal dependencies
-	pkgver = 2.6.0
+	pkgdesc = A set of fast, standards-compliant tools for working with modern web technologies — HTML parsing, CSS processing, URL handling, and more.
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://lexbor.com
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = lexbor
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
-	source = git+https://github.com/lexbor/lexbor.git#tag=e142a9b495064cd718cf442ffe23b51ea089d9d6
-	sha256sums = 4f63bc194a5859ff4894f8f8903f2041b63309b6ddf9fb21540103d7679f8afd
-	b2sums = dfa8669fbff1370e658aceaec5eb3a26b1fc0397ebfeb3e064c28109c10f4b51ab50317fb4e96193e61784d9c7006aa7ff1e59390671362b71360aec4895aa0f
+	source = git+https://github.com/lexbor/lexbor.git#tag=v3.0.0
+	sha256sums = b738cffc343868268d59109be5a1378dc854bfc06ddd5564954060398d3016e6
 
 pkgname = lexbor
