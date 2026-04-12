@@ -1,7 +1,7 @@
 # Maintainer: Mr.Zero88 <huesmann.mats+aur@gmail.com>
 
 pkgname=xr-passthrough-layer-git
-pkgver=dfa8de0
+pkgver=r26.dfa8de0
 pkgrel=1
 pkgdesc="A OpenXR API layer adding camera passthrough support"
 arch=('x86_64')
@@ -18,7 +18,7 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/xr-passthrough-layer"
-  git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')"
 }
 
 build() {
