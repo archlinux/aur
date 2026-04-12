@@ -1,0 +1,17 @@
+pkgbase = nitrotpm-tools
+	pkgdesc = A collection of utilities for working with NitroTPM attestation
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/aws/NitroTPM-Tools
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = cmake
+	makedepends = nasm
+	depends = tpm2-tss
+	options = !lto
+	source = nitrotpm-tools-1.1.0.tar.gz::https://github.com/aws/NitroTPM-Tools/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = d410c4c8772c3d3ac60b4dd632135a8d45f0e8fdbfd1b255694e12313f53697b
+
+pkgname = nitrotpm-tools
