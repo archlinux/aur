@@ -1,6 +1,6 @@
 pkgbase = openmw-vr-git
 	pkgdesc = An open-source engine reimplementation for the role-playing game Morrowind, fork with OpenXR VR support.
-	pkgver = r29818.cac0667193
+	pkgver = r36876.543172e8c0
 	pkgrel = 1
 	url = https://gitlab.com/madsbuvi/openmw
 	arch = i686

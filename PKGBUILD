@@ -2,7 +2,7 @@
 # Contributor: Sandy Carter <bwrsandman@gmail.com>
 
 pkgname=openmw-vr-git
-pkgver=r29818.cac0667193
+pkgver=r36876.543172e8c0
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind, fork with OpenXR VR support."
 arch=('i686' 'x86_64')
@@ -45,7 +45,9 @@ build() {
         -DOPENMW_USE_SYSTEM_BULLET=OFF \
         -DBUILD_OPENMW_VR=ON \
         -GNinja \
-        -Bbuild
+        -Bbuild \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+
   ninja -C build
 }
 
