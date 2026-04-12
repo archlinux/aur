@@ -2,7 +2,7 @@
 
 pkgbase=sherpa-onnx
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=1.12.37
+pkgver=1.12.38
 pkgrel=1
 pkgdesc="Speech-to-text, text-to-speech, speaker diarization, speech enhancement, source separation, and VAD using next-gen Kaldi with onnxruntime without Internet connection."
 arch=("x86_64" "aarch64" "arm" "riscv64")
@@ -23,7 +23,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "pa_stable_v190700_20210406.tgz::http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz"
         "simple-sentencepiece-0.7.tar.gz::https://github.com/pkufool/simple-sentencepiece/archive/refs/tags/v0.7.tar.gz"
         "websocketpp-b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip::https://github.com/zaphoyd/websocketpp/archive/b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip")
-sha256sums=('fb797b1549d7b3368dc961ef51e60f268e986414492c2bb8438851e9106c982f'
+sha256sums=('361b2682755bc1a841e23393cabbb589da0c589ee2dc5221598e043d3a795e2d'
             'cbcaaba0f66722787b1a7c33afe1befb3a012b5af3ad7da7ff0f6b8c9b7a8a5b'
             'b93c667d1b69265cdb4d9f30ec21f8facbbe8b307cf34c0b9942834c6d4fdbe2'
             '70cbf4050e7a014aae19140b05e57249da4720f56128459fbe3a93beaf971ae6'
@@ -44,7 +44,6 @@ prepare() {
         ln -sf ../"${file}" "${file}"
     done
     sed -i "s|include(cargs)|find_package(Cargs CONFIG REQUIRED)|" c-api-examples/CMakeLists.txt
-    sed -i "s|    ./|    lib/pkgconfig|" CMakeLists.txt
     echo 'find_package(pybind11 REQUIRED)' > cmake/pybind11.cmake
 }
 
@@ -76,6 +75,7 @@ package_sherpa-onnx() {
     DESTDIR="${pkgdir}" cmake --install build_bin
     install -Dm644 {README,CHANGELOG}.md -t "${pkgdir}/usr/share/doc/${pkgname}"
     rm -rf "${pkgdir}/usr/share/vim"        "${pkgdir}/usr/lib/pkgconfig/espeak-ng.pc"
+    mv "${pkgdir}/usr/sherpa-onnx.pc"       "${pkgdir}/usr/lib/pkgconfig"
 }
 
 package_python-sherpa-onnx() {
