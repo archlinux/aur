@@ -1,11 +1,11 @@
 pkgbase = icinga-php-thirdparty
 	pkgdesc = Bundle for all 3rd party PHP libraries used by Icinga Web products
-	pkgver = 0.14.0
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://github.com/Icinga/icinga-php-thirdparty
 	arch = any
-	license = MIT
-	source = icinga-php-thirdparty-0.14.0.tar.gz::https://github.com/Icinga/icinga-php-thirdparty/archive/refs/tags/v0.14.0.tar.gz
-	sha256sums = 9d101cbef0b07aefe2c58e4016beed884a8da28083b78550123681952f548fd5
+	license = Apache-2.0 AND BSD-3-Clause AND ISC AND LGPL-2.1-only AND LGPL-2.1-or-later AND LGPL-3.0-or-later
+	source = icinga-php-thirdparty-0.15.2.tar.gz::https://github.com/Icinga/icinga-php-thirdparty/archive/refs/tags/v0.15.2.tar.gz
+	sha256sums = 37d6bd4b001c080fcfb1dbe5fc081af6d6ebfaa078e775ae9e61f916f5fc50ac
 
 pkgname = icinga-php-thirdparty
