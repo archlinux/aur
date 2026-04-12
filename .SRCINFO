@@ -1,7 +1,7 @@
 pkgbase = quien
 	pkgdesc = A better WHOIS lookup tool
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/retlehs/quien
 	arch = x86_64
 	arch = aarch64

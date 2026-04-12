@@ -2,7 +2,8 @@
 
 pkgname=quien
 pkgver=0.4.1
-pkgrel=1
+_builddate=$(date --rfc-3339=date)
+pkgrel=2
 pkgdesc="A better WHOIS lookup tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/retlehs/quien"
@@ -24,9 +25,11 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  go build -o ${pkgname}
+  go build \
+    -ldflags="-linkmode=external -X main.version=$pkgver -X main.commit=$pkgrel -X main.date=$_builddate" \
+    -o ${pkgname}
 
   # Clean up deps
   go clean -modcache
