@@ -1,6 +1,6 @@
 # Maintainer: jao <jao@example.com>
 pkgname=cranky-bin
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A minimalist, performant, and modular bar for Hyprland (pre-built binary)"
 arch=('x86_64')
