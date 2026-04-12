@@ -15,6 +15,7 @@
 [![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Linux-orange)](https://archlinux.org/)
+[![GitHub](https://img.shields.io/badge/GitHub-bishnu7babu-black?logo=github)](https://github.com/bishnu7babu/csrf-brute)
 
 > ⚠️ **For authorized penetration testing and security research only. Do not use against systems you don't own or have explicit permission to test.**
 
@@ -52,7 +53,7 @@ yay -S csrf-brute
 ### Manual Install
 
 ```bash
-git clone https://github.com/yourusername/csrf-brute.git
+git clone https://github.com/bishnu7babu/csrf-brute.git
 cd csrf-brute
 pip install -r requirements.txt
 python csrf_brute.py --help
@@ -156,6 +157,7 @@ Unauthorized use against systems without consent is **illegal** and violates com
 
 **Bishnu Babu** ([@bishnu7babu](https://github.com/bishnu7babu))
 
+- 🐙 GitHub: [github.com/bishnu7babu/csrf-brute](https://github.com/bishnu7babu/csrf-brute)
 - 🌐 Portfolio: [bishnu-babu-portfolio.vercel.app](https://bishnu-babu-portfolio.vercel.app)
 - 📦 AUR: [csrf-brute](https://aur.archlinux.org/packages/csrf-brute)
 
