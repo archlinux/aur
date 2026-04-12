@@ -43,5 +43,6 @@ package() {
     mv "$pkgdir"/usr/bin/${_pkgname} "$pkgdir"/usr/bin/$pkgname
     
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 editor/misc/style/* -t "${pkgdir}/usr/share/${pkgname}/style/"
 }
 
