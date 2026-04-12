@@ -16,6 +16,8 @@ depends=(
 'gtk4'
 'gstreamer'
 'gst-plugins-base'
+'gst-plugins-good'
+'gst-plugins-bad'
 'gst-plugin-gtk4'
 'python-requests'
 )
