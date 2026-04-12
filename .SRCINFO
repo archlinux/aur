@@ -1,6 +1,6 @@
 pkgbase = fheroes2
 	pkgdesc = Recreation of the Heroes of Might and Magic II game engine
-	pkgver = 1.1.14
+	pkgver = 1.1.15
 	pkgrel = 1
 	url = https://ihhub.github.io/fheroes2/
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = fheroes2
 	optdepends = python: extract animation resources from GOG CD image
 	optdepends = wget: download demo version files (alternative to curl)
 	optdepends = unzip: unpack demo version files
-	source = fheroes2-1.1.14.tar.gz::https://github.com/ihhub/fheroes2/archive/1.1.14.tar.gz
-	sha256sums = 754fac793547789e52b8b449416a2d141fb2e473c77cc7fffb8b20870a846daa
+	source = fheroes2-1.1.15.tar.gz::https://github.com/ihhub/fheroes2/archive/1.1.15.tar.gz
+	sha256sums = f69c103da4eb1028e84fd87878fa71275651b52cef9f01716e2a870a6aa01c63
 
 pkgname = fheroes2
