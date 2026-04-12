@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <https://rys.rs/contact>
 pkgname=tts-mod-vault
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Cross-platform Tabletop Simulator mod backup & download tool'
 arch=('x86_64')
 url='https://github.com/markomijic/TTS-Mod-Vault'
@@ -10,7 +10,6 @@ depends=('gtk3')
 makedepends=(
 	'flutter'
 	'git'
-	'imagemagick'
 )
 options=('!strip')
 source=(
@@ -34,11 +33,6 @@ build() {
 	flutter config --enable-linux-desktop
 	flutter pub get
 	flutter build linux --release
-
-	# We only have 1024x1024 PNG source and DEs generally need less smaller sizes than that
-	magick convert assets/icon/tts_mod_vault_icon.png -resize 512x512 assets/icon/tts_mod_vault_512.png
-	magick convert assets/icon/tts_mod_vault_icon.png -resize 256x256 assets/icon/tts_mod_vault_256.png
-	magick convert assets/icon/tts_mod_vault_icon.png -resize 128x128 assets/icon/tts_mod_vault_128.png
 }
 
 package() {
@@ -50,11 +44,14 @@ package() {
 	install -dm755 "${pkgdir}/usr/bin"
 	ln -s "/opt/${pkgname}/tts_mod_vault" "${pkgdir}/usr/bin/${pkgname}"
 
-	# Install the icon
-	install -Dm644 "assets/icon/tts_mod_vault_icon.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/tts_mod_vault.png"
-	install -Dm644 "assets/icon/tts_mod_vault_512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/tts_mod_vault.png"
-	install -Dm644 "assets/icon/tts_mod_vault_256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/tts_mod_vault.png"
-	install -Dm644 "assets/icon/tts_mod_vault_128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/tts_mod_vault.png"
+	# Install the icons
+	install -Dm644 "macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/tts_mod_vault.png"
+	install -Dm644 "macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png"  "${pkgdir}/usr/share/icons/hicolor/512x512/apps/tts_mod_vault.png"
+	install -Dm644 "macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_256.png"  "${pkgdir}/usr/share/icons/hicolor/256x256/apps/tts_mod_vault.png"
+	install -Dm644 "macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_128.png"  "${pkgdir}/usr/share/icons/hicolor/128x128/apps/tts_mod_vault.png"
+	install -Dm644 "macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_64.png"   "${pkgdir}/usr/share/icons/hicolor/64x64/apps/tts_mod_vault.png"
+	install -Dm644 "macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_32.png"   "${pkgdir}/usr/share/icons/hicolor/32x32/apps/tts_mod_vault.png"
+	install -Dm644 "macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_16.png"   "${pkgdir}/usr/share/icons/hicolor/16x16/apps/tts_mod_vault.png"
 	# Install desktop entry
 	install -Dm644 "${srcdir}/tts-mod-vault.desktop" "${pkgdir}/usr/share/applications/tts-mod-vault.desktop"
 }
