@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=osmo-uecups
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Osmocom UE simulation control/user plane separation"
 url="https://osmocom.org/projects/osmo-uecups/wiki"
@@ -15,7 +15,7 @@ depends=('jansson'
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-uecups-daemon.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('72e256d4eb6757f2aee90049dbe4dd5484dbf76c89e0586a4b657769d3a90629')
+sha256sums=('c7b73fb631a8cb58eac045b695f98df19c61f8f8d441573db3bd2a606b985a1f')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"

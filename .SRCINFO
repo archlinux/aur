@@ -1,6 +1,6 @@
 pkgbase = osmo-uecups
 	pkgdesc = Osmocom UE simulation control/user plane separation
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmo-uecups/wiki
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = osmo-uecups
 	depends = libosmo-netif
 	conflicts = osmo-uecups-git
 	backup = etc/osmocom/osmo-uecups-daemon.cfg
-	source = https://downloads.osmocom.org/releases/osmo-uecups/osmo-uecups-0.2.2.tar.bz2
-	sha256sums = 72e256d4eb6757f2aee90049dbe4dd5484dbf76c89e0586a4b657769d3a90629
+	source = https://downloads.osmocom.org/releases/osmo-uecups/osmo-uecups-0.3.0.tar.bz2
+	sha256sums = c7b73fb631a8cb58eac045b695f98df19c61f8f8d441573db3bd2a606b985a1f
 
 pkgname = osmo-uecups
