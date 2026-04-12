@@ -1,7 +1,7 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
 # Unstable build from GitHub releases: https://github.com/openlyst/builds/releases
 pkgname=klit-unstable
-pkgver=10.0.0
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="E926 API client (unstable build from GitHub)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('klit')
 conflicts=('klit')
 options=('!strip')
-source=("klit-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-71/klit-10.0.0-2026-03-11-linux-x64.zip")
+source=("klit-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-90/klit-9.0.1-2026-04-12-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
