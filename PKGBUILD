@@ -6,12 +6,11 @@ pkgname='epics-base'
 pkgver=7.0.10
 pkgrel=1
 pkgdesc="Experimental Physics and Industrial Control System"
-arch=('any')
+arch=('x86_64')
 url="https://epics-controls.org"
-license=('custom:EPICS Open License')
+license=('LicenseRef-EPICS-Open-License')
 groups=('epics')
 depends=('readline' 'ncurses' 'perl')
-makedepends=('patch')
 source=("https://epics-controls.org/download/base/base-${pkgver}.tar.gz"{,.asc}
         '01_install_permissions.patch'
         '02_no_rpath.patch'
@@ -95,7 +94,7 @@ package() {
     done
 
     # install include files and link them to the system include path
-    install -dm644 "${pkgdir}/usr/include/epics"
+    install -dm755 "${pkgdir}/usr/include/epics"
     cp -r include "${EPICS_BASE}"
     ln -sr -t "${pkgdir}/usr/include/epics" "${EPICS_BASE}/include"
 
@@ -107,20 +106,19 @@ package() {
     done
 
     # install pkgconfig files to the system path
-    install -Dm755 -t "${pkgdir}/usr/lib/pkgconfig" lib/pkgconfig/epics-base{,"-${EPICS_HOST_ARCH}"}.pc
+    install -Dm644 -t "${pkgdir}/usr/lib/pkgconfig" lib/pkgconfig/epics-base{,"-${EPICS_HOST_ARCH}"}.pc
 
     # install docs
-    install -dm644 "${pkgdir}/usr/share/doc/epics"
+    install -dm755 "${pkgdir}/usr/share/doc/epics"
     cp -r html "${pkgdir}/usr/share/doc/epics"
 
     # install LICENSE file
     install -Dm644 "${srcdir}/base-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # install a env file to set the EPICS_HOST_ARCH and EPICS_BASE
-    install -dm755 "${pkgdir}/usr/lib/environment.d"
-    echo "# Entries in this file set the host environment for EPICS" >"${pkgdir}/usr/lib/environment.d/10-epics-base.conf"
-    echo "EPICS_HOST_ARCH=\"${EPICS_HOST_ARCH}\"" >>"${pkgdir}/usr/lib/environment.d/10-epics-base.conf"
-    echo "EPICS_BASE=\"/usr/lib/epics\"" >>"${pkgdir}/usr/lib/environment.d/10-epics-base.conf"
+    printf '# Entries in this file set the host environment for EPICS\nEPICS_HOST_ARCH="%s"\nEPICS_BASE="/usr/lib/epics"\n' \
+        "${EPICS_HOST_ARCH}" |
+        install -Dm644 /dev/stdin "${pkgdir}/usr/lib/environment.d/10-epics-base.conf"
 
     # Patch epics config_site local install location to current folder (.)
     sed -i "s|${srcdir}/staging/usr/lib/epics|./usr/lib/epics|g" "${pkgdir}/usr/lib/epics/configure/CONFIG_SITE.local"
