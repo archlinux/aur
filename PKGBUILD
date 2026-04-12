@@ -1,8 +1,8 @@
 # Maintainer: Atanas Lambov <am.lambov@gmail.com>
 pkgname=wondershaper-gui
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="A professional graphical user interface for the wondershaper CLI tool"
+pkgrel=2
+pkgdesc="A simple graphical user interface for wondershaper"
 arch=('any')
 url="https://github.com/am-lambov/wondershaper-gui"
 license=('MIT')

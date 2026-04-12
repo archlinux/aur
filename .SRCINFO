@@ -1,7 +1,7 @@
 pkgbase = wondershaper-gui
-	pkgdesc = A professional graphical user interface for the wondershaper CLI tool
+	pkgdesc = A simple graphical user interface for wondershaper
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/am-lambov/wondershaper-gui
 	arch = any
 	license = MIT
