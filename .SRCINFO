@@ -1,6 +1,6 @@
 pkgbase = devpod-community-appimage
 	pkgdesc = Codespaces but open-source, client-only, and unopinionated - community fork (AppImage version)
-	pkgver = 0.19.2
+	pkgver = 0.19.3
 	pkgrel = 1
 	url = https://github.com/skevetter/devpod
 	install = devpod-community-appimage.install
@@ -28,9 +28,9 @@ pkgbase = devpod-community-appimage
 	conflicts = devpod
 	conflicts = devpod-bin
 	conflicts = devpod-cli-bin
-	noextract = devpod-0.19.2-x86_64.AppImage
+	noextract = devpod-0.19.3-x86_64.AppImage
 	options = !strip
-	source_x86_64 = devpod-0.19.2-x86_64.AppImage::https://github.com/skevetter/devpod/releases/download/v0.19.2/DevPod_linux_amd64.AppImage
-	sha256sums_x86_64 = 750d1ff5b5e334220cfd910d5a0e29e1af33a567f20475545f16c0e4f3463635
+	source_x86_64 = devpod-0.19.3-x86_64.AppImage::https://github.com/skevetter/devpod/releases/download/v0.19.3/DevPod_linux_amd64.AppImage
+	sha256sums_x86_64 = 7dbe324035709b3f2a9a89af0171d2c6ea96bd0549816a78142f7e591e9873a2
 
 pkgname = devpod-community-appimage
