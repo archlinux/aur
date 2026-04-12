@@ -7,29 +7,31 @@
 # Contributor: maus25 <mirko378@gmail.com>
 
 pkgname=gnome-shell-pomodoro
-pkgver=0.28.1
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
 url='https://github.com/gnome-pomodoro/gnome-pomodoro'
 license=('GPL3')
-depends=('gobject-introspection' 'glib2' 'gom' 'gtk3' 'cairo' 'glibc' 'libpeas' 'sqlite' 'gstreamer' 'libcanberra')
+depends=('gobject-introspection' 'glib2' 'gom' 'gtk3' 'cairo' 'glibc' 'libpeas' 'sqlite' 'gstreamer' 'libcanberra' 'libpeas-2')
 makedepends=('meson' 'vala')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/focustimerhq/FocusTimer/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ab8136fe4e585941d67dbb7a81e2442285a0cbeead47fb1c99a37ffd473a4e53')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/focustimerhq/FocusTimer/archive/refs/tags/$pkgver.tar.gz"
+        "fix-vala-0.56.19.patch")
+sha256sums=('1d8d6adcb83d74ae5c05a9caa988bf5dd0c2876af83d3df3588d27f2ee5cf9ab'
+            '6cc8938546654e4ca37e7501d97e3d9fc485589e2c7895eeb3b1cc63a386e8cc')
 
 prepare() {
-  cd "$srcdir/FocusTimer-$pkgver"
+    cd "$srcdir/FocusTimer-$pkgver"
+    patch -Np1 -i "$srcdir/fix-vala-0.56.19.patch"
 }
 
 build() {
-  cd "$srcdir/FocusTimer-$pkgver"
-  arch-meson build
-  meson compile -C build
+    cd "$srcdir/FocusTimer-$pkgver"
+    arch-meson build
+    meson compile -C build
 }
 
 package() {
-  cd "$srcdir/FocusTimer-$pkgver"
-  meson install -C build --destdir "$pkgdir"
+    cd "$srcdir/FocusTimer-$pkgver"
+    meson install -C build --destdir "$pkgdir"
 }
-

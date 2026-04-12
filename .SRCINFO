@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-pomodoro
 	pkgdesc = A time management utility for GNOME based on the pomodoro technique
-	pkgver = 0.28.1
-	pkgrel = 2
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://github.com/gnome-pomodoro/gnome-pomodoro
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,10 @@ pkgbase = gnome-shell-pomodoro
 	depends = sqlite
 	depends = gstreamer
 	depends = libcanberra
-	source = gnome-shell-pomodoro-0.28.1.tar.gz::https://github.com/focustimerhq/FocusTimer/archive/refs/tags/0.28.1.tar.gz
-	sha256sums = ab8136fe4e585941d67dbb7a81e2442285a0cbeead47fb1c99a37ffd473a4e53
+	depends = libpeas-2
+	source = gnome-shell-pomodoro-1.0.tar.gz::https://github.com/focustimerhq/FocusTimer/archive/refs/tags/1.0.tar.gz
+	source = fix-vala-0.56.19.patch
+	sha256sums = 1d8d6adcb83d74ae5c05a9caa988bf5dd0c2876af83d3df3588d27f2ee5cf9ab
+	sha256sums = 6cc8938546654e4ca37e7501d97e3d9fc485589e2c7895eeb3b1cc63a386e8cc
 
 pkgname = gnome-shell-pomodoro
