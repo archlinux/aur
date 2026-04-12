@@ -2,7 +2,7 @@
 
 pkgname=elio-bin
 _pkgname=elio
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Terminal-native file manager with rich previews, inline images, and mouse support (prebuilt binary)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   'libarchive: archive and ISO listing fallback through bsdtar'
 )
 source=("${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('fc7ae6355887f06c3449342f986dddeed4a80de6ac35439cd091b2aacb322dd0')
+sha256sums=('eeef87d374fd3f1bf92aada02739ca2b3d1be66fbed8aaa15b2700ceb675011c')
 
 package() {
   cd "${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu"
