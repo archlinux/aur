@@ -1,7 +1,7 @@
 # Maintainer: Yahya Toubali <your-email@example.com>
 
 pkgname=trae-bin
-pkgver=2.3.13344
+pkgver=2.3.18717
 pkgrel=1
 pkgdesc="AI-powered IDE by ByteDance - The Real AI Engine for code development"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=('trae')
 conflicts=('trae')
 install=trae-bin.install
 
-source_x86_64=("Trae-linux-x64.deb::https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.13344/linux/Trae-linux-x64.deb")
-source_aarch64=("Trae-linux-arm64.deb::https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.13344/linux/Trae-linux-arm64.deb")
+source_x86_64=("Trae-linux-x64.deb::https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.18717/linux/Trae-linux-x64.deb")
+source_aarch64=("Trae-linux-arm64.deb::https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.18717/linux/Trae-linux-arm64.deb")
 
 sha256sums_x86_64=('6af50c118c57acdae151419f02bf6090ab509489611803844b50731c93e9ecae')
 sha256sums_aarch64=('444d80d65ea01b7dde6c1bc92c377273fd9dc10ec84b2cf474096cdfc1873a64')
