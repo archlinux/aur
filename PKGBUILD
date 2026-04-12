@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=android-messages-desktop
-pkgver=5.7.1
-pkgrel=3
-_nodeversion=22
-_electronversion=36
+pkgver=6.0.0
+pkgrel=1
+_nodeversion=24
+_electronversion=41
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
 url="https://github.com/OrangeDrangon/android-messages-desktop"
@@ -12,16 +12,14 @@ depends=("electron${_electronversion}")
 makedepends=(
   'git'
   'nvm'
-  'yarn'
+  'pnpm'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
-        "$pkgname.desktop"
-        'webpack.patch')
-sha256sums=('89c0dac8d82d090f3c0d9b70a152c03a54256a2d825deed32c7dc5c2ab8d9ef6'
+        "$pkgname.desktop")
+sha256sums=('d0283de674b7fd8ce4fee07372ee2c683d9ea88c186f58d2152a1cbc24c4cb98'
             'e8b021832cbf8a6759f7808f5e667c91dbb6d8d1f973ea0bc6578c2c52674bcb'
-            '1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a'
-            'b97acd894dd4c1dcfae17791d789011e08356c84bd72f6c4758d6616ee7f75fd')
+            '1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -40,9 +38,6 @@ prepare() {
   nvm install "${_nodeversion}"
 
   sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/$pkgname.sh"
-
-  # https://github.com/OrangeDrangon/android-messages-desktop/issues/504
-  patch -Np1 -i ../webpack.patch
 }
 
 build() {
@@ -50,11 +45,11 @@ build() {
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
-  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
+  export PNPM_HOME="$srcdir/pnpm-home"
   _ensure_local_nvm
-  yarn install --frozen-lockfile
-  yarn build
-  yarn electron-builder --config electron-builder.js --linux --x64 --dir \
+  pnpm install
+  pnpm build
+  pnpm electron-builder --config electron-builder.js --linux --x64 --dir \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
