@@ -1,6 +1,6 @@
 pkgbase = hw-monitor
 	pkgdesc = A lightweight hardware monitor built with Tauri
-	pkgver = 0.0.3
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/husseinhareb/hw-monitor
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = hw-monitor
 	conflicts = hw-monitor-git
 	options = !strip
 	options = !debug
-	source = hw-monitor-0.0.3.deb::https://github.com/husseinhareb/hw-monitor/releases/download/v0.0.3/hw-monitor_0.0.3_amd64.deb
-	sha256sums = 2ce9e32c3c0c22d93df97f34559dbd2e84cd03f41f11da827a4530607354955f
+	source = hw-monitor-0.3.1.deb::https://github.com/husseinhareb/hw-monitor/releases/download/v0.3.1/hw-monitor_0.3.1_amd64.deb
+	sha256sums = SKIP
 
 pkgname = hw-monitor
