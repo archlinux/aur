@@ -1,6 +1,6 @@
 pkgbase = graywolf-aprs
 	pkgdesc = APRS radio transceiver, digipeater, and Internet gateway
-	pkgver = 0.7.18
+	pkgver = 0.7.19
 	pkgrel = 1
 	url = https://github.com/chrissnell/graywolf
 	install = graywolf-aprs.install
@@ -13,7 +13,7 @@ pkgbase = graywolf-aprs
 	makedepends = nodejs
 	makedepends = npm
 	depends = glibc
-	source = graywolf-0.7.18.tar.gz::https://github.com/chrissnell/graywolf/archive/v0.7.18.tar.gz
+	source = graywolf-0.7.19.tar.gz::https://github.com/chrissnell/graywolf/archive/v0.7.19.tar.gz
 	source = graywolf-aprs.service
 	source = graywolf-aprs.sysusers
 	sha256sums = SKIP

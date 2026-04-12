@@ -1,6 +1,6 @@
 # Maintainer: Chris Snell
 pkgname=graywolf-aprs
-pkgver=0.7.18
+pkgver=0.7.19
 pkgrel=1
 pkgdesc='APRS radio transceiver, digipeater, and Internet gateway'
 arch=('x86_64' 'aarch64')
@@ -58,3 +58,4 @@ package() {
   install -Dm644 "${srcdir}/graywolf-aprs.sysusers" \
     "${pkgdir}/usr/lib/sysusers.d/graywolf-aprs.conf"
 }
+
