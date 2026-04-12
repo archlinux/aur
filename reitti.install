@@ -6,6 +6,14 @@ post_install() {
 }
 
 post_upgrade() {
+  if (( $(vercmp $2 4.0.0-1) < 0 )); then
+    echo ""
+    echo "reitti no longer requires a rabbitmq instance since the dependency has been removed upstream."
+    echo "The tile cache needs to be updated as well, please check:"
+    echo "https://www.dedicatedcode.com/projects/reitti/4.0/upgrade/"
+    echo "https://github.com/dedicatedcode/reitti/blob/main/docker/tiles-cache/nginx.conf"
+    echo ""
+  fi
   if (( $(vercmp $2 3.4.1-2) < 0 )); then
     echo ""
     echo "reitti now expects users to provide a TILE_CACHE environment variable, see /usr/share/doc/reitti/examples/nginx.conf"

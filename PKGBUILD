@@ -1,8 +1,8 @@
 # Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 
 pkgname=reitti
-pkgver=3.4.1
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 _jdkver=24 # https://github.com/dedicatedcode/reitti/blob/main/pom.xml#L17
 pkgdesc="Comprehensive personal location tracking and analysis"
 arch=(any)
@@ -11,7 +11,6 @@ license=('MIT')
 makedepends=("git" "java-environment>=${_jdkver}" "maven")
 optdepends=(
   "postgis"
-  "rabbitmq"
   "valkey"
   "photon-geocoder: reverse geocoding"
   "nominatim: reverse geocoding"
@@ -27,14 +26,14 @@ source=("git+${url}#tag=v${pkgver}"
         "reitti.conf"
         "reitti-nginx.conf"
         "application-systemd.properties")
-sha256sums=('a380dfc9b048d7664cfc9209341ba7a6aa425a5a3a4922e7ba8a52a06604afd7'
-            'ec5c1f3997c72ee68e675abd2693791b530f793fcc9ceb99d6f0cf10d5948a7a'
+sha256sums=('a5f6f8131dab232e9193451f090393f85ab4935939c2b3c96165fb03bfd55766'
+            '3d582f661224646b5f453ae0984af7d36233ce5ff531a526f622e07877f8d2df'
             'b2304c791f5d40c8427bdb329653edbbfedf871d1e2e1b7ef2bf96cf0367a3a0'
             '6d3fa7035e4f59b5b30a487d01358d8af24bc3d4d8f030e5d2d6512155ddb92e'
             'f7367d266964e57be18f0452c260a02811834989dce3a6696e0104b05d194465'
-            '986f6cc144bdac4186b3fa7a7d3c702814b704227afd9e68b14101ff460052e0'
-            '1272c89757eabb31e0d34e2bc14a2b6deda8c32e01165847ceefb608acbeed35'
-            '9ddd967b4cb8618cf2c10cf2e1671084b66fc5ae19b621b217b788233373a7ad')
+            '111aa410f60e33551c3729368536e53a690792aa1bedf99c5e833d5c51ef4fa7'
+            'e7966e8aa5d7f20a1a1982588d29b02b91f4f2807aeadd6c9837ba575cec69d2'
+            '6f05dc261ccccf6bdc5ddde476e3fa04f99a44aa1a5d2fd7979499a554224d3f')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
