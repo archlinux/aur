@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=mmand
-_pkgver=1.6.3
+_pkgver=1.7.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Mathematical Morphology in Any Number of Dimensions"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -22,8 +22,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9716940ae9f4a9e9ad3a8c4e889728a7')
-b2sums=('6a98fa2b93bcd543aede6201e80ff2ff78145e5f8f9f20d7700bb5a8d56a4bbce6287fa2f41682ecd22739c39a064689211b34c84f38daf990a7d31f59d5dea2')
+md5sums=('1e43ee7150370a42964c34f665f5f6db')
+b2sums=('3fa4ea597cfdc1af0a152741f1fb229082b876dd8f4b9d9cdb0e953679316ead157e68d4f755ed799ceb566a3d785fca44937b6a061dcfb8942cf1d44dd5d5a1')
 
 build() {
   mkdir build
