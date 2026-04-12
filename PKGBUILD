@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('cairo' 'pam' 'gdk-pixbuf2' 'libxkbcommon')
 makedepends=('rust' 'cargo' 'pkg-config')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('ca210149801a7b7041ce772e6cb92406804db442c92669c1ad78e3f08955938d')
+sha256sums=('667b12f67b297d424ac7d7e57ef8a3d4b0b6fa6271eb69f5c36ed9caabc01365')
 
 build() {
   cd "$pkgname"

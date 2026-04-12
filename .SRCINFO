@@ -13,6 +13,6 @@ pkgbase = rustlock
 	depends = gdk-pixbuf2
 	depends = libxkbcommon
 	source = https://github.com/JorySeverijnse/rustlock/archive/v1.1.tar.gz
-	sha256sums = ca210149801a7b7041ce772e6cb92406804db442c92669c1ad78e3f08955938d
+	sha256sums = 667b12f67b297d424ac7d7e57ef8a3d4b0b6fa6271eb69f5c36ed9caabc01365
 
 pkgname = rustlock
