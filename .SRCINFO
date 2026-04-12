@@ -1,0 +1,13 @@
+pkgbase = shellcap
+	pkgdesc = A passive terminal activity tracker that summarizes what you did yesterday
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/NOT16180/recap
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	source = shellcap-0.1.0.crate::https://static.crates.io/crates/shellcap/shellcap-0.1.0.crate
+	sha256sums = f4fc1a36a0bff5412cf23dc7a4b4d8e85e3da265f04293bfc07547c16e629c25
+
+pkgname = shellcap
