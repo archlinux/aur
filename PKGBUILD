@@ -12,16 +12,16 @@ source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('667b12f67b297d424ac7d7e57ef8a3d4b0b6fa6271eb69f5c36ed9caabc01365')
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   cargo build --release --locked
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   # Install PAM configuration
-  install -Dm644 "pam.d/wayrustlock" "$pkgdir/etc/pam.d/rustlock"
+  install -Dm644 "pam.d/rustlock" "$pkgdir/etc/pam.d/rustlock"
 
   # Install documentation
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
