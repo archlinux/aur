@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=meshoptimizer
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Mesh optimization library that makes meshes smaller and faster to render'
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=(cmake)
 provides=(gltfpack)
 conflicts=(gltfpack)
 source=("https://github.com/zeux/meshoptimizer/archive/v$pkgver.tar.gz")
-sha256sums=('30d1c3651986b2074e847b17223a7269c9612ab7f148b944250f81214fed4993')
+sha256sums=('b787011f81b4b3069c2f9065b7c191efdd4189a49be32ba5282dd5579f05261a')
 
 build() {
     mkdir -p build && cd build
