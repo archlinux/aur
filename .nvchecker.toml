@@ -1,0 +1,4 @@
+[thunderbird-conversations]
+source = "git"
+git = "https://github.com/thunderbird-conversations/thunderbird-conversations.git"
+prefix = "v"

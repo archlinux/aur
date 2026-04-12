@@ -1,0 +1,6 @@
+pkg
+src
+node_modules
+*.log
+*.tar.zst
+*.tar.gz
