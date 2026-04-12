@@ -1,0 +1,21 @@
+pkgbase = ter-music-cn
+	pkgdesc = Terminal based music player
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/YXZL985/ter-music
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	depends = ffmpeg
+	depends = ncurses
+	depends = libao
+	depends = libmad
+	depends = libid3tag
+	source = ter-music::git+https://gitee.com/yanxi-bamboo-forest/ter-music.git#branch=master
+	sha256sums = SKIP
+
+pkgname = ter-music-cn
