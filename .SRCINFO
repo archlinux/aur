@@ -15,6 +15,7 @@ pkgbase = cnmplayer-git
 	depends = chromaprint
 	depends = fftw
 	depends = cava
+	depends = chafa
 	optdepends = ttf-nerd-fonts-symbols: For icons and spectrum visualizer
 	optdepends = ttf-jetbrains-mono-nerd: Recommended monospace font
 	provides = cnmplayer
