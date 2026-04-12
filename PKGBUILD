@@ -14,6 +14,7 @@ sha256sums=('5024193a96d64494634b19356c414fb68b791dc1ad995e99117b526e036df6b1')
 
 build() {
     cd "$srcdir/fluxer-tui-$pkgver"
+    export CC=gcc
     cargo build --release --locked
 }
 
