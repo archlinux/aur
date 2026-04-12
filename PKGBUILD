@@ -1,13 +1,13 @@
 pkgname=animeko-appimage
 _pkgname=animeko
-pkgver="5.3.2"
+pkgver="5.4.3"
 pkgrel=1
 pkgdesc='集找番、追番、看番的一站式弹幕追番平台'
 arch=('x86_64')
 url='https://github.com/open-ani/animeko/'
 license=('AGPL-3.0-or-later')
-source_x86_64=("https://d2.myani.org/v${pkgver//_/-}/ani-${pkgver//_/-}-linux-${CARCH}.appimage")
-sha512sums_x86_64=('02a1b92eb8f9442b05115b1a108437a55def97aa4d201f2664c9720c129a0053657020984334e8ab91349082e61111e60db99d600a8c8e15182ba496e8eec7b7')
+source_x86_64=("https://github.com/open-ani/animeko/releases/download/v${pkgver//_/-}/ani-${pkgver//_/-}-linux-${CARCH}.appimage")
+sha256sums_x86_64=('f82590829855c70d6ad6010c1a4c88c62fdbbc284d2be5a66c938e1b49fd0344')
 depends=('vlc-plugin-ffmpeg' 'vlc-plugin-dvb' 'vlc-plugin-pulse' 'gvfs' 'fuse2')
 conflicts=('animeko')
 provides=('animeko')
@@ -32,4 +32,3 @@ package() {
 
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
-
