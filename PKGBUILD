@@ -3,7 +3,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=panwriter
-pkgver=0.8.9
+pkgver=0.8.10
 pkgrel=1
 pkgdesc='Markdown editor with pandoc integration and paginated preview'
 arch=('x86_64')
@@ -17,13 +17,12 @@ depends=(
     'nss'
 )
 makedepends=('gendesk')
-#noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/mb21/panwriter/releases/download/v${pkgver}/PanWriter-${pkgver}.AppImage")
-sha256sums=('a2b4257c00ba75d139adf5152c712a15e3e88120d2a559330447c9aed0e6ce4c')
+sha256sums=('993a889f169423dfceca71c719d87486baeb070494bc55295c9fa8d5420ae941')
 
 package() {
-  chmod 755 ./${pkgname}-${pkgver}.AppImage
-  ./${pkgname}-${pkgver}.AppImage --appimage-extract
+  chmod 755 "${pkgname}-${pkgver}.AppImage"
+  ./"${pkgname}-${pkgver}.AppImage" --appimage-extract
   install -Dm644 squashfs-root/usr/share/icons/hicolor/512x512/apps/panwriter.png "${pkgdir}/usr/share/pixmaps/panwriter.png"
   gendesk -f -n --pkgname "${pkgname}" \
           --pkgdesc "$pkgdesc" \
