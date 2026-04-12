@@ -7,28 +7,19 @@ arch=('any')
 url='https://github.com/liixini/skwd-wall'
 license=('MIT')
 depends=(
+  'skwd-daemon'
   'quickshell'
   'qt6-multimedia'
   'qt6-declarative'
-  'curl'
-  'sqlite'
-  'ffmpeg'
-  'imagemagick'
-  'inotify-tools'
+  'awww'
+  'mpvpaper'
   'matugen'
   'ttf-nerd-fonts-symbols'
   'ttf-roboto'
-  'jq'
 )
-optdepends=(
-  'awww: static wallpaper application on non-KDE Wayland'
-  'mpvpaper: video/gif wallpaper on non-KDE Wayland'
-  'ollama: Local LLM for automated tagging'
-  'steamcmd: Steam Workshop Wallpaper Engine downloads'
-  'linux-wallpaperengine: Wallpaper Engine scene support'
-)
+
 install="${pkgname}.install"
-source=("${pkgname}::git+https://github.com/liixini/skwd-wall.git")
+source=("${pkgname}::git+https://github.com/liixini/skwd-wall.git#branch=experimental/rust-refactor")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -42,7 +33,7 @@ package() {
   local _sharedir="$pkgdir/usr/share/skwd-wall"
 
   install -dm755 "$_sharedir"
-  cp -a shell.qml daemon.qml qml/ "$_sharedir/"
+  cp -a shell.qml qml/ "$_sharedir/"
 
   install -dm755 "$_sharedir/data"
   cp -a data/matugen/ "$_sharedir/data/"
@@ -50,7 +41,6 @@ package() {
   install -Dm644 data/config.json.example "$_sharedir/data/config.json.example"
 
   install -Dm644 data/skwd-wall.desktop "$pkgdir/usr/share/applications/skwd-wall.desktop"
-  install -Dm644 data/skwd-wall.service "$pkgdir/usr/lib/systemd/user/skwd-wall.service"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
