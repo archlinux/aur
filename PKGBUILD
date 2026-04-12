@@ -2,7 +2,7 @@
 pkgname=idescriptor-git
 _pkgname=iDescriptor
 pkgver=r263.6d86243
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, open-source, and cross-platform iDevice management tool."
 arch=('x86_64')
 url="https://github.com/iDescriptor/iDescriptor"
@@ -46,7 +46,7 @@ makedepends=(
     'git'
     'cmake'
     'go'
-    'rust'
+    'cargo'
 )
 options=('!debug')
 source=("git+https://github.com/iDescriptor/iDescriptor.git")
@@ -60,6 +60,8 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
   git submodule update --init --recursive
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --manifest-path src/rust/Cargo.toml
 }
 
 build() {

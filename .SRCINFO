@@ -1,14 +1,14 @@
 pkgbase = idescriptor-git
 	pkgdesc = A free, open-source, and cross-platform iDevice management tool.
 	pkgver = r263.6d86243
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/iDescriptor/iDescriptor
 	arch = x86_64
 	license = AGPL3-or-later
 	makedepends = git
 	makedepends = cmake
 	makedepends = go
-	makedepends = rust
+	makedepends = cargo
 	depends = libimobiledevice>=1.4.0
 	depends = libtatsu>=1.0.5
 	depends = libimobiledevice-glue
