@@ -1,0 +1,6 @@
+[bi]
+source = "github"
+github = "fygar256/bi"
+use_latest_release = true
+from_pattern = 'v([0-9.]*)-stable'
+to_pattern = '\1'

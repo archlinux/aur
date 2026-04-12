@@ -1,21 +1,36 @@
-pkgname=bi
-pkgver=3.4.4.5
-pkgrel=1
-pkgdesc="Binary editor like vI"
-arch=('any')
-url="https://github.com/fygar256/bi"
-license=('MIT')
-depends=('python')
-source=("https://github.com/fygar256/bi/archive/refs/heads/v$pkgver.zip")
-sha256sums=('565db35e5b5bfac2f81f2b1dea20dc0b38cd4e07bed3639c65b403a3e6cae378')
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-build() {
-  echo "bi"
-}
+_gitauthor=fygar256
+_gitname=bi
+_appname=${_gitname}
+pkgname=${_appname}
+pkgdesc="Binary editor like vI"
+
+pkgver=3.5.1.65
+pkgrel=1
+_gitversion=v${pkgver}-stable
+
+_ghurl="https://github.com/${_gitauthor}/${_gitname}"
+_ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
+url=${_ghurl}
+
+arch=('any')
+license=('MIT')
+
+depends=('python')
+
+source=("${_appname}-${pkgver}.zip::${_ghurl}/archive/refs/tags/${_gitversion}.zip")
+sha256sums=('e27bda972d9e65de09a34fa3c9d28cf018a6b9fd27ef3548519c5cb4a1cb90a0')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 bi.py "$pkgdir/usr/bin/bi"
-  install -Dm644 "$srcdir/$pkgname-$pkgver/${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "${srcdir}/${_appname}-${pkgver}-stable/" || exit
+
+	install -Dm755 "${_appname}.py" "${pkgdir}/usr/bin/${_appname}"
+
+	install -Dm644 "${_appname}.1.gz" "${pkgdir}/usr/share/man/man1/${_appname}.1.gz"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
