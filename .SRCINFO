@@ -10,6 +10,7 @@ pkgbase = skwd-daemon
 	makedepends = gcc
 	makedepends = pkgconf
 	depends = gcc-libs
+	depends = imagemagick
 	optdepends = ffmpeg: video wallpaper thumbnail extraction and conversion
 	optdepends = ollama: local LLM for automated wallpaper tagging
 	optdepends = steamcmd: Steam Workshop Wallpaper Engine downloads
