@@ -1,5 +1,6 @@
-# Maintainer: Donald Webster <fryfrog@gmail.com>
-# Contributor : anish [ at ] gatech [dot] edu
+# Maintainer: Jeff Keyte <jeff@keyte.me>
+# Contributor: Donald Webster <fryfrog@gmail.com>
+# Contributor: anish [ at ] gatech [dot] edu
 
 pkgname=dump978-fa-git
 _gitname=dump978
