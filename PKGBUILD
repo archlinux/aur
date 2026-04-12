@@ -1,15 +1,16 @@
 # Maintainer: vielfrass
 # Maintainer: Jef Roosens
+# Maintainer: WeeXnes <weexnes@weexnes.dev>
 # Contributor: Logan Magee <mageelog@gmail.com>
 
 # Commit hashes for the latest release in the v & vc repositories
 # Using the direct downloads for the commits greatly reduces the time needed to
 # pull down the sources, as the vlang repository is >100MB.
-_v_commit_sha=b9e5757236a948c71cdac5ba913a9d42f1349963
-_vc_commit_sha=30f2d6ee52d8e1e7f5653454262bf32f297607da
+_v_commit_sha=0c3183c55b39534f9bb0d2f796bb575d39c9d229
+_vc_commit_sha=f461dfebcdfac3c75fdf28fec80c07f0a7a9a53d
 
 pkgname=vlang
-pkgver=0.4.11
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64' 'aarch64')
@@ -23,11 +24,10 @@ makedepends=('git' 'libx11')
 conflicts=('v')
 source=("v-${pkgver}.zip::https://github.com/vlang/v/archive/${_v_commit_sha}.zip"
         "vc-${pkgver}.zip::https://github.com/vlang/vc/archive/${_vc_commit_sha}.zip")
-sha256sums=('5a496eafa7879f77d19dd133ca4c16350e7be347a67ee580637a4e9df1bba824'
-            '5fd1d28f5fadb4a2b0cc2b5a7d3bf50e814b11a5e4977428aff5ee5a0c7d64db')
-sha512sums=('7622cc8a5dda3ca904458b5b2e8538011557d74cfc6f1d0ee7c28732969ad86c97763578fa310e0487f37973879acaa5b160106683c3320c0a79d7f775c48fc4'
-            '97efb44ca666e0b51ca793b7ca2fa81f103c3952a2b008868ffdd49f68a4f118ebad9b30cc00310f21cc6ab91934726bd5742c81e9e5cf6cd2efb9c9fd4f1af3')
-
+sha256sums=('9f2a5bcad2f2053335d25b0dc4f57a096d6370d5669526c657a7959270181082'
+            'a6e58504ae55b4fc11a42317f47734daf35631b1eb1b0c03f906fc26ac448f53')
+sha512sums=('85caac911aeb849f15f0efbe61228bb60af33a9b51a6da54e992ee8e1bb5db67e343980ad916ee75b08d56399bafa3b98a1ada7ee7a11a3de5c4f6dd97a7332a'
+            'd23ecc68f054e5182155b4d854ec9e817d9d8152aec19dd1636e7852ae4701d4f28be45d2a5ac96a61463eaf9d0cb6c01c5b72b7f7b2c097bce7722cbf838f47')
 prepare() {
     # In case the previous directory still exists
     rm -rf "v-${_v_commit_sha}/vc"
