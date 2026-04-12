@@ -4,9 +4,9 @@ pkgname=xilinx-qdma-git
 pkgver=20260226
 pkgrel=1
 arch=('i686' 'x86_64')
-pkgdesc='Xilinx QDMA'
+pkgdesc='Xilinx PCI Express Multi Queue DMA (QDMA) driver for high-performance direct memory access (DMA) via PCI Express with UltraScale+ devices and beyond'
 url='https://xilinx.github.io/dma_ip_drivers/master/QDMA/linux-kernel/html/index.html'
-license=('BSD')
+license=('BSD-3-Clause AND GPL-2.0-only')
 
 # Note : Dependency is on currently running kernel, which the compilation based on, NOT on the kernel package installed
 _local_linux_version=$(uname -r | sed -r 's/(-arch)/.arch/')
@@ -68,6 +68,8 @@ pkgver() {
 build() {
 	cd "${srcdir}/dma_ip_drivers/QDMA/linux-kernel"
 
+	# Disable LTO as this triggers errors
+
 	CFLAGS="${CFLAGS//-flto=auto}"
 	CXXFLAGS="${CXXFLAGS//-flto=auto}"
 	LDFLAGS="${LDFLAGS//-flto=auto}"
@@ -97,6 +99,13 @@ package() {
 		apps_install_path="${pkgdir}/usr/bin" \
 		docs_install_path="${pkgdir}/usr/share/man/man8" \
 		install
+
+	# Install licenses
+	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 bsd_license.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 license.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
 }
 
