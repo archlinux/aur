@@ -1,0 +1,19 @@
+pkgbase = counter-strike-global-offensive
+	pkgdesc = Community Launcher for Counter-Strike: Global Offensive
+	pkgver = r1.gabcdef0
+	pkgrel = 1
+	url = https://github.com/Skoczi/csgo_linux
+	arch = x86_64
+	license = custom:unknown
+	makedepends = git
+	makedepends = npm
+	makedepends = nodejs
+	depends = electron
+	depends = libxss
+	depends = nss
+	provides = counter-strike-global-offensive
+	conflicts = counter-strike-1.6
+	source = counter-strike-global-offensive::git+https://codeberg.org/Skoczi/csco-launcher
+	sha256sums = SKIP
+
+pkgname = counter-strike-global-offensive
