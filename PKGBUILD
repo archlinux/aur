@@ -1,4 +1,5 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: anenasa <anenasaa@yahoo.com>
+# Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=chunghwa-post-webatm
 epoch=1
