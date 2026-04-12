@@ -1,0 +1,15 @@
+pkgbase = plasma6-applets-arch-power-switch-git
+	pkgdesc = Plasma 6 power menu plasmoid with customizable panel icon
+	pkgver = 1.0.0.r0
+	pkgrel = 1
+	url = https://github.com/dechros/arch-power-switch
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = plasma-workspace
+	provides = plasma6-applets-arch-power-switch
+	conflicts = plasma6-applets-arch-power-switch
+	source = git+https://github.com/dechros/arch-power-switch.git
+	sha256sums = SKIP
+
+pkgname = plasma6-applets-arch-power-switch-git
