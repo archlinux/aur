@@ -16,12 +16,8 @@ sha256sums=('074b583121bc30930923486d26656bb5c1ace85b9a33a7d0f5cd87cccc52fc4a'
 package() {
     install -dm755 "$pkgdir/opt/kittenspaceagency"
 
-    # Extract tarball
-    tar -xf "$srcdir/setup_ksa_v${pkgver}.tar.gz" -C "$pkgdir/opt/kittenspaceagency"
-
     # Flatten linux-x64
-    cp -a "$pkgdir/opt/kittenspaceagency/linux-x64/." "$pkgdir/opt/kittenspaceagency/"
-    rm -r "$pkgdir/opt/kittenspaceagency/linux-x64"
+    cp -a "$srcdir/linux-x64/." "$pkgdir/opt/kittenspaceagency/"
 
     # Fix permissions
     chmod 755 "$pkgdir/opt/kittenspaceagency/KSA"
