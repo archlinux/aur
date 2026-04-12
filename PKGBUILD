@@ -4,9 +4,9 @@
 pkgname=dotter-rs
 _pkgname=dotter
 pkgver=0.13.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A dotfile manager and templater written in Rust"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/SuperCuber/dotter"
 license=('Unlicense')
 conflicts=("$_pkgname")
