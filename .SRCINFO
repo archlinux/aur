@@ -1,6 +1,6 @@
 pkgbase = sddm-hyprland
 	pkgdesc = SDDM Wayland configuration for running the greeter on Hyprland
-	pkgver = 0.r23.gfcd3e58
+	pkgver = 0.r24.g27a6d9c
 	pkgrel = 1
 	url = https://github.com/HyDE-Project/sddm-hyprland
 	arch = any

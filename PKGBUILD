@@ -2,7 +2,7 @@
 # shellcheck shell=bash
 
 pkgname=sddm-hyprland
-pkgver=0.r23.gfcd3e58
+pkgver=0.r24.g27a6d9c
 pkgrel=1
 pkgdesc="SDDM Wayland configuration for running the greeter on Hyprland"
 arch=('any')
@@ -29,11 +29,12 @@ package() {
 	install -Dm644 src/hyprland.conf "${pkgdir}/usr/share/hypr/sddm/hyprland.conf"
 	install -Dm644 src/hyprprefs.conf "${pkgdir}/usr/share/hypr/sddm/hyprprefs.conf"
 
-	# Optional override location referenced by the shipped hyprland.conf.
-	install -Dm644 src/hyprland.conf "${pkgdir}/etc/sddm.conf.d/hypr/hyprland.conf"
-
 	install -Dm644 src/sddm-hyprland.conf "${pkgdir}/etc/sddm.conf.d/sddm-hyprland.conf"
 	install -Dm644 src/sddm-user.conf "${pkgdir}/etc/sddm.conf.d/sddm-user.conf"
+
+	# Fix CompositorCommand to point to the installed path
+	sed -i 's|CompositorCommand=.*|CompositorCommand=Hyprland -c /usr/share/hypr/sddm/hyprland.conf|' \
+		"${pkgdir}/etc/sddm.conf.d/sddm-hyprland.conf"
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
