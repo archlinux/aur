@@ -1,5 +1,5 @@
-pkgbase = ngircd
-	pkgdesc = Next Generation IRC Daemon (without ident support)
+pkgbase = ngircd-pam
+	pkgdesc = Next Generation IRC Daemon PAM support (without ident support)
 	pkgver = 27
 	pkgrel = 1
 	url = https://ngircd.barton.de/
@@ -15,4 +15,4 @@ pkgbase = ngircd
 	sha256sums = fd38ef21339daf81d6af4a630ba3b2de51a1b42c181843ee77635a5a661fe73c
 	sha256sums = f02e30f6864ba1130bcc85bedc44ad782687f572c06f10e0501b0ddcf532b404
 
-pkgname = ngircd
+pkgname = ngircd-pam

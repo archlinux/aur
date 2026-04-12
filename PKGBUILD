@@ -1,5 +1,5 @@
 # Maintainer: Gyf Ooya <gyfooya@gmail.com>
-pkgname=ngircd
+pkgname=ngircd-pam
 pkgver=27
 pkgrel=1
 pkgdesc="Next Generation IRC Daemon PAM support (without ident support)"
