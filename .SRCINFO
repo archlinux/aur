@@ -1,0 +1,18 @@
+pkgbase = ashrwm-git
+	pkgdesc = a minimal yet functional river window manager with tiling/grid layout and more!
+	pkgver = 20260409.r1
+	pkgrel = 1
+	url = https://github.com/shadowash8/ashrwm
+	arch = x86_64
+	license = MIT
+	makedepends = zig
+	makedepends = git
+	depends = river
+	depends = janet
+	provides = ashrwm
+	conflicts = ashrwm
+	options = !debug
+	source = ashrwm-git::git+https://github.com/shadowash8/ashrwm
+	sha256sums = SKIP
+
+pkgname = ashrwm-git
