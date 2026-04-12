@@ -19,9 +19,15 @@ pkgver() {
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd "fluxer-tui"
+    # Force native gcc instead of x86_64-linux-gnu-gcc (fixes ring crate linking)
+    mkdir -p .cargo
+    printf '[target.x86_64-unknown-linux-gnu]\nlinker = "gcc"\n' > .cargo/config.toml
+}
+
 build() {
     cd "fluxer-tui"
-    export CC=gcc
     cargo build --release --locked
 }
 
