@@ -1,8 +1,8 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=wacli
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="WhatsApp CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/steipete/wacli"
