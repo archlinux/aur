@@ -1,0 +1,22 @@
+pkgbase = inspectors-desktop-git
+	pkgdesc = Linux-first Tauri operator app for the Agent Computer Use Platform
+	pkgver = 0.1.0alpha1.r55.g8f35d3a
+	pkgrel = 1
+	url = https://github.com/OneNoted/inspectors
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = glib-networking
+	depends = gtk3
+	depends = libsoup3
+	depends = nodejs>=22
+	depends = webkit2gtk-4.1
+	provides = inspectors-desktop
+	conflicts = inspectors-desktop
+	source = inspectors-desktop-git::git+https://github.com/OneNoted/inspectors.git
+	sha256sums = SKIP
+
+pkgname = inspectors-desktop-git
