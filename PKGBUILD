@@ -2,7 +2,7 @@
 pkgname=pipeweaver-app
 _pkgbase=pipeweaver
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An application wrapper for the Pipeweaver UI"
 arch=('x86_64')
 url="https://github.com/pipeweaver/pipeweaver"
@@ -13,6 +13,13 @@ makedepends=('git' 'rust' 'cargo')
 source=("$_pkgbase-$pkgver.tar.gz::https://github.com/pipeweaver/pipeweaver/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('5f52f54d5064b20c0aaa6600d8b846896ef2a0e0acb9d56dab1da0a10f553547e96f5e88bbb6e53f68a86d1030a5614a0ec67f0f6842fd03887df106eb1453b8')
 options=('!lto') # build fails with lto enabled
+
+prepare() {
+    cd "$_pkgbase-$pkgver"
+
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked
+}
 
 build() {
     cd "$_pkgbase-$pkgver"
