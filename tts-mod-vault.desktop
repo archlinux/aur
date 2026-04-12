@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=TTS Mod Vault
+Comment=Cross-platform Tabletop Simulator mod backup & download tool
+Categories=Utility;
+
+Icon=tts_mod_vault
+Exec=tts_mod_vault
+Terminal=false
