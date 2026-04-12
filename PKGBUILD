@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-mgw
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Osmocom's Media Gateway for 2G and 3G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmo-mgw/"
@@ -13,7 +13,7 @@ provides=('libosmo-mgcp-client.so=14-64')
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-mgw.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('6e6e9fff31c82a3c8c39b090c614d3d480717bdc27a717a20105ced4140def19')
+sha256sums=('8bd9808fbae50d21bd111a92cb9ea4cef92d651c166f1655da913118a66510ab')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
