@@ -5,7 +5,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=slack-cli
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Command-line interface for building apps on the Slack Platform."
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/slackapi/slack-cli/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('650b2d3b386fe9b510c15e42381d48e6850838086300d01fce90e406eb0921e00493ba160229eade29c310ed2ae5a3ca7ba252a5e368f48b288b52e88455ecd2')
+b2sums=('68486928dbdf28233d21bc95b433ac71050024eb5e86bc22e0f16129c8ad5ea86ec2e993d37a4459451464526c052865e647dd65a653281e7a5541929c02af41')
 
 prepare(){
   cd "$pkgname-$pkgver"
