@@ -1,14 +1,19 @@
 # Maintainer: Vadim Yanitskiy <axilirator@gmail.com>
 
 pkgname=gr-iridium-git
-pkgver=r362.0c9defb
+pkgver=r382.a09b254
 pkgrel=1
 epoch=1
 pkgdesc="Gnuradio blocks and tools for receiving Iridium transmissions"
 arch=('any')
 url="https://github.com/muccc/gr-iridium"
 license=('GPL3')
-depends=('gnuradio' 'gnuradio-osmosdr' 'python')
+depends=('gnuradio'
+         'gnuradio-osmosdr'
+         'libsndfile'
+         'libvolk'
+         'python'
+         'pybind11')
 makedepends=('git' 'cmake' 'boost')
 provides=('gr-iridium')
 source=('git+https://github.com/muccc/gr-iridium')
