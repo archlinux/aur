@@ -1,4 +1,5 @@
 pkgname=inspectors-desktop-git
+epoch=1
 pkgver=0.0.0.r0.g0000000
 pkgrel=1
 pkgdesc='Linux-first Tauri operator app for the Agent Computer Use Platform'
