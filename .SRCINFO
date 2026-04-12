@@ -11,7 +11,7 @@ pkgbase = kittenspaceagency-bin
 	options = !strip
 	source = setup_ksa_v2026.4.10.4057.tar.gz::https://ksa-linux.ahwoo.com/download?file=setup_ksa_v2026.4.10.4057.tar.gz
 	source = kittenspaceagency.png
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 074b583121bc30930923486d26656bb5c1ace85b9a33a7d0f5cd87cccc52fc4a
+	sha256sums = 4e10dedc70614419a5a2354642556d15fe331565d0d94a4fa41ab04dd8b24486
 
 pkgname = kittenspaceagency-bin
