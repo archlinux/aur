@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=SyncLyrics
+Comment=Premium Desktop Lyrics Player
+Exec=synclyrics
+Icon=synclyrics
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Player;
+Keywords=Music;Lyrics;Karaoke;
