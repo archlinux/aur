@@ -1,0 +1,33 @@
+From f2596d251b1fa3219ca9959e2530b5ab0c36f63c Mon Sep 17 00:00:00 2001
+From: Nepellion <nepellion@proton.me>
+Date: Sat, 11 Apr 2026 22:39:15 +0200
+Subject: [PATCH] Dirty hack: Add native resolution to display edid identifier,
+ making the outputs of dual-mode monitors distinct for output
+ configuration/layouting purposes
+
+---
+ src/utils/edid.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/utils/edid.cpp b/src/utils/edid.cpp
+index a2a0d11f36..a40c6a8496 100644
+--- a/src/utils/edid.cpp
++++ b/src/utils/edid.cpp
+@@ -295,6 +295,14 @@ Edid::Edid(QByteArrayView data)
+         }
+     }
+ 
++    // Dirty hack to make the identifier unique to "mode" of dual-mode monitors,
++    // which often report the same EDID for both modes.
++    // This is needed to avoid confusion in the output configuration store.
++    // I didn't see any other identifier that would be different between the modes of a dual-mode monitor.
++    if (m_nativeResolution) {
++        m_identifier = m_identifier + " " + QByteArray::number(m_nativeResolution->width()) + "x" + QByteArray::number(m_nativeResolution->height());
++    }
++
+     m_isValid = true;
+     di_info_destroy(info);
+ }
+-- 
+2.53.0
+
