@@ -1,0 +1,17 @@
+post_install() {
+  echo ""
+  echo "╔══════════════════════════════════════╗"
+  echo "║         rmpv installed!              ║"
+  echo "║                                      ║"
+  echo "║  Run this once to finish setup:      ║"
+  echo "║    rmpv-setup                        ║"
+  echo "║                                      ║"
+  echo "║  It will copy mpv + rmpc configs     ║"
+  echo "║  and ask for your Music dir path.    ║"
+  echo "╚══════════════════════════════════════╝"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
