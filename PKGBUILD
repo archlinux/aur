@@ -1,10 +1,10 @@
 pkgname=postsrsd
 pkgver=2.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix"
 arch=('i686' 'x86_64' 'armv7h')
 depends=('glibc' 'systemd')
-makedepends=('cmake' 'help2man')
+makedepends=('cmake' 'git' 'help2man')
 optdepends=('redis: Store envelope senders in Redis')
 backup=("etc/$pkgname/$pkgname.conf" "etc/$pkgname/$pkgname.secret" "etc/$pkgname/$pkgname")    #last entry is legacy from version 1
 url="https://github.com/roehling/$pkgname"
@@ -16,7 +16,7 @@ sha256sums=('49e3699f30f6f5f92b34da931c525c8f1e3e93c00be2c11d64329eea1d428d14'
             'f0e50360ee5761ab4ccd550e32a386d33fd07b30228b8450d199594e67bdf767'
             'f3d61362ed64e9ad33427b23b471c028b613b7eedd51dc01a203c8ba1c0e3427'
             '8613b3c1a6eec65d0137d97781c8919a84879c49be137b48f8bd29ee3b96cd08'
-            '83ab819747c46f4bf4e660558cfe5390800fd00fde62f19cd1b4fb2a2d8b9e88')
+            'cb5bd6ef34ffb959a2bf545a6b7936d43a5140ca1c023462957a9f061da533bc')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
