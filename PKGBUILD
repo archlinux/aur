@@ -6,12 +6,12 @@ pkgbase=python-pylru
 pkgname=('python-pylru')
 _name=pylru
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A least recently used (LRU) cache implementation"
 arch=('any')
 url="https://github.com/jlhutch/pylru"
 license=('GPL-2.0-only')
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel)
 options=(!emptydirs)
 source=("${_name}-${pkgver}.tar.gz::https://github.com/jlhutch/pylru/archive/v${pkgver}.tar.gz"
          https://github.com/jlhutch/pylru/pull/34/commits/a0eb3c80d258b2524c67d362f2a5ac4ee9695fec.patch)
@@ -27,13 +27,13 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package_python-pylru() {
   depends=('python')
 
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --skip-build --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
