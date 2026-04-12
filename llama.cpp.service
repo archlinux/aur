@@ -1,5 +1,5 @@
 [Unit]
-Description=Llama.cpp Server
+Description=llama.cpp Server
 After=syslog.target network.target local-fs.target remote-fs.target nss-lookup.target
 
 [Service]
