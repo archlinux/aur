@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-flexi-dock
 	pkgdesc = GNOME Shell extension to provide a flexible applications dock with panel mode support
-	pkgver = 6
+	pkgver = 7
 	pkgrel = 1
 	url = https://github.com/hardpixel/flexi-dock
 	arch = any
 	license = GPL
 	depends = gnome-shell
 	conflicts = gnome-shell-extension-flexi-dock-git
-	source = gnome-shell-extension-flexi-dock-6.zip::https://github.com/hardpixel/flexi-dock/releases/download/v6/flexi-dock-v6.zip
-	md5sums = b591dc3166ec8e8d5fb53c8014337b44
+	source = gnome-shell-extension-flexi-dock-7.zip::https://github.com/hardpixel/flexi-dock/releases/download/v7/flexi-dock-v7.zip
+	md5sums = a235c7fe17f2c82b634886415e323f2e
 
 pkgname = gnome-shell-extension-flexi-dock
