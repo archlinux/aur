@@ -2,7 +2,7 @@
 
 _pkgname=pystring
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='C++ functions matching the interface and behavior of python string methods with std::string (mingw-w64)'
 arch=(any)
@@ -11,19 +11,12 @@ license=('BSD-3-Clause')
 makedepends=('mingw-w64-cmake')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
-source=(
-	"$_pkgname-$pkgver.tar.gz::https://github.com/imageworks/pystring/archive/v${pkgver}.tar.gz"
-	'BuildPystring.cmake')
-sha256sums=('49da0fe2a049340d3c45cce530df63a2278af936003642330287b68cefd788fb'
-            '29c25f4faaa2b0e7bb7132d07c93e0cea577af1ae3d657714ec3db8077f8b2e2')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/imageworks/pystring/archive/v${pkgver}.tar.gz")
+sha256sums=('63c30c251b8017c897bd923826f400aee1d6e4f1c22ffbbd2104f150522a2040')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' )
-
-prepare() {
-	cp -f 'BuildPystring.cmake' "$_srcdir/CMakeLists.txt"
-}
 
 build() {
 	for _arch in ${_architectures}; do
