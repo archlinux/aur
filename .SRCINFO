@@ -1,6 +1,6 @@
 pkgbase = python-cuqipy
 	pkgdesc = Computational Uncertainty Quantification for Inverse problems in Python
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/CUQI-DTU/CUQIpy
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-cuqipy
 	depends = python-scipy
 	depends = python-arviz
 	depends = python-tqdm
-	source = CUQIpy-1.5.0.tar.gz::https://github.com/CUQI-DTU/CUQIpy/archive/v1.5.0.tar.gz
-	sha512sums = 90b46aa1c089abef788b3f1887079f151c766c426ac1c453b42acba1e398c8a0dbc6e59776e32a5d940ba6e2a04b90f9d10701af1e203c20e48843c5818b22e3
+	source = CUQIpy-1.5.1.tar.gz::https://github.com/CUQI-DTU/CUQIpy/archive/v1.5.1.tar.gz
+	sha512sums = 816bd36897accf98dd5e0fb8f3d059e119ab73aacf19d1889da5fe314eca29dd2b350c92fa1d4d7cbe42c47909cd112d0e9a7f336de121329d4093cab2cb346f
 
 pkgname = python-cuqipy
