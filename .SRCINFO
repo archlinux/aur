@@ -1,16 +1,13 @@
 pkgbase = python-banal
 	pkgdesc = Commons of banal micro-functions for Python.
-	pkgver = 1.0.6
-	pkgrel = 3
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/pudo/banal
 	arch = any
 	license = MIT
-	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = python
-	source = python-banal-1.0.6.tar.gz::https://files.pythonhosted.org/packages/source/b/banal/banal-1.0.6.tar.gz
-	sha256sums = 2fe02c9305f53168441948f4a03dfbfa2eacc73db30db4a93309083cb0e250a5
+	source = banal-1.1.0-py3-none-any.whl::https://files.pythonhosted.org/packages/da/87/c6d008dceb17670f7e0fa6a0031456f56076d30e42128b92f5f517de3048/banal-1.1.0-py3-none-any.whl
+	sha256sums = 0aa79cc784291ea94882f7022799fee419c7d20e81369f527519f95fe025a285
 
 pkgname = python-banal
