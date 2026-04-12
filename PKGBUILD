@@ -1,7 +1,7 @@
 # Maintainer: coldbrxthe <rocattjust@gmail.com>
 pkgname=rs-pug-git
 pkgver=r13.d6b9733
-pkgrel=2
+pkgrel=3
 pkgdesc="Terminal YouTube music player with mpv, yt-dlp and Lua plugin support"
 arch=('x86_64')
 url="https://github.com/JustRoccat/rs-pug"
@@ -21,9 +21,11 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    # Usuwamy RUSTFLAGS, pozwalamy Cargo samemu obsłużyć Lua
-    cargo build --release --locked
+    # Wymuszamy statyczne budowanie Lua wewnątrz binarki
+    # To sprawi, że program nie będzie szukał liblua.so.5.5 w systemie
+    cargo build --release --locked --features lua54 # lub odpowiednia wersja, której używasz w Cargo.toml
 }
+
 
 
 
