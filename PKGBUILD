@@ -1,4 +1,4 @@
-# Maintainer: Yahya Toubali <your-email@example.com>
+# Maintainer: Yahya Toubali <me@yahyatoubali.me>
 
 pkgname=trae-bin
 pkgver=2.3.18717
