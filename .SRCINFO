@@ -9,14 +9,13 @@ pkgbase = ai-quota-waybar-git
 	depends = bash
 	depends = jq
 	depends = curl
+	depends = waybar
 	optdepends = claude-code: Claude Code quota tracking
 	optdepends = codex: Codex CLI quota tracking
-	optdepends = gemini-cli: Gemini CLI quota tracking
-	optdepends = waybar: status bar host
+	optdepends = gemini-cli-git: Gemini CLI quota tracking
 	provides = ai-quota-waybar
 	conflicts = ai-quota-waybar
-	source = ai-quota-waybar::git+https://github.com/komagata/ai-quota-waybar.git
+	source = ai-quota-waybar::git+https://github.com/komagata/ai-quota-waybar.git#branch=main
 	sha256sums = SKIP
 
 pkgname = ai-quota-waybar-git
-
