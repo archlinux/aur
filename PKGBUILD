@@ -25,7 +25,7 @@ optdepends=('brightnessctl: Laptop display brightness control'
 makedepends=(go)
 _archive="$_pkg1-$pkgver"
 source=("https://github.com/Heroblaze2310/bms-shell/raw/main/BakraDEMaterialShell-1.0.3.tar.gz")
-sha256sums=('073132dadd4b7067193e6ad1c5791d0acb27307518df55a341cbb62da9a05918')
+sha256sums=('SKIP')
 
 build() {
 	cd "$_archive/core"

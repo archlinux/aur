@@ -21,7 +21,7 @@ pkgbase = bms-shell
 	optdepends = qt6ct: Qt6 application theming
 	optdepends = wl-clipboard: Copy functionality for PIDs and other elements
 	source = https://github.com/Heroblaze2310/bms-shell/raw/main/BakraDEMaterialShell-1.0.3.tar.gz
-	sha256sums = 073132dadd4b7067193e6ad1c5791d0acb27307518df55a341cbb62da9a05918
+	sha256sums = SKIP
 
 pkgname = bms-shell
 	depends = dgop
