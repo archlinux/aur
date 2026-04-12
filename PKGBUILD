@@ -2,7 +2,7 @@
 pkgname=marble-marcher-ce
 _pkgtag=1.4.6
 pkgver=${_pkgtag//[-v]/}
-pkgrel=2
+pkgrel=3
 pkgdesc="A video game demo that uses a fractal physics engine and fully procedural rendering to produce beautiful and unique gameplay unlike anything you've seen before."
 arch=('x86_64')
 license=('GPL2')
@@ -49,7 +49,14 @@ package() {
 
     # Main binary symlink
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/usr/share/${pkgname}/MarbleMarcher" "${pkgdir}/usr/bin/${pkgname}"
+    cat >"${pkgdir}/usr/bin/${pkgname}" <<EOF
+#!/bin/sh
+set -e
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/opt/sfml2/lib"
+cd /usr/share/${pkgname}
+exec /usr/share/${pkgname}/MarbleMarcher
+EOF
+    chmod +x "${pkgdir}/usr/bin/${pkgname}"
 
     # Desktop Entry
     mkdir -p "${pkgdir}/usr/share/applications"

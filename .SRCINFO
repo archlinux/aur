@@ -1,7 +1,7 @@
 pkgbase = marble-marcher-ce
 	pkgdesc = A video game demo that uses a fractal physics engine and fully procedural rendering to produce beautiful and unique gameplay unlike anything you've seen before.
 	pkgver = 1.4.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/WAUthethird/Marble-Marcher-Community-Edition
 	arch = x86_64
 	license = GPL2
