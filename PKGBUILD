@@ -1,6 +1,6 @@
 # Maintainer: loteran <https://github.com/loteran>
 pkgname=arctis-sound-manager
-pkgver=1.0.27
+pkgver=1.0.34
 pkgrel=1
 pkgdesc="Linux GUI for SteelSeries Arctis headsets — all GG/Sonar features: mixer, EQ, ANC, mic processing, surround"
 arch=('any')
@@ -9,13 +9,12 @@ license=('GPL-3.0-or-later')
 depends=(
     'python>=3.10'
     'pyside6'
-    'python-dbus-next'
-    'python-pulsectl'
     'python-pyudev'
     'python-pyusb'
     'python-ruamel-yaml'
     'pipewire'
     'pipewire-pulse'
+    'wireplumber'
     'libusb'
     'libpulse'
 )
@@ -26,7 +25,7 @@ optdepends=(
 makedepends=('python-installer' 'uv')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9035f773e15d3302a9e8cfebf9806878b901c0b3581747e3bfdb9e11d82a467b')
+sha256sums=('7f014d0a259ae50d23ada35465450934cd6c933a0b716a0bee0113dd428a0cf4')
 
 build() {
     cd "Arctis-Sound-Manager-$pkgver"
@@ -38,6 +37,9 @@ package() {
 
     # Install Python package
     python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # Bundle dbus-next and pulsectl (not in official Arch repos)
+    pip install --root="$pkgdir" --prefix=/usr --no-deps dbus-next pulsectl
 
     # udev rules
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/udev/rules.d/91-steelseries-arctis.rules" <<'RULES'
@@ -130,4 +132,8 @@ SERVICE
     # AppStream metainfo
     install -Dm644 src/arctis_sound_manager/desktop/com.github.loteran.arctis-sound-manager.metainfo.xml \
         "$pkgdir/usr/share/metainfo/com.github.loteran.arctis-sound-manager.metainfo.xml"
+
+    # First-run autostart (triggers asm-setup on first graphical login)
+    install -Dm644 debian/asm-first-run.desktop \
+        "$pkgdir/etc/xdg/autostart/asm-first-run.desktop"
 }

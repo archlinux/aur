@@ -1,42 +1,68 @@
 post_install() {
-    echo "==> Arctis Sound Manager installed!"
-    echo ""
-    echo "  Run the setup script to deploy PipeWire configs and download"
-    echo "  the virtual surround HRIR file:"
-    echo ""
-    echo "    asm-setup"
-    echo ""
-    echo "  Then enable the services:"
-    echo ""
-    echo "    systemctl --user daemon-reload"
-    echo "    systemctl --user enable --now arctis-manager.service"
-    echo "    systemctl --user enable --now arctis-video-router.service"
-    echo "    systemctl --user enable --now filter-chain.service"
-    echo ""
-    echo "  Launch the GUI:"
-    echo ""
-    echo "    asm-gui"
-    echo ""
-
     # Reload udev rules
     udevadm control --reload-rules 2>/dev/null || true
     udevadm trigger 2>/dev/null || true
+
+    REAL_USER="${SUDO_USER:-}"
+
+    # Ensure an AUR helper is available (yay or paru).
+    # dbus-next is bundled so ASM works without one, but having an AUR helper
+    # is useful for future updates and other AUR packages.
+    if [ -n "$REAL_USER" ]; then
+        if ! su -l "$REAL_USER" -c "command -v yay >/dev/null 2>&1 || command -v paru >/dev/null 2>&1"; then
+            echo "==> No AUR helper found — installing yay-bin for ${REAL_USER}..."
+            if su -l "$REAL_USER" -c "command -v git >/dev/null 2>&1"; then
+                su -l "$REAL_USER" -c "
+                    git clone --depth=1 https://aur.archlinux.org/yay-bin.git /tmp/_asm_yay_install &&
+                    cd /tmp/_asm_yay_install &&
+                    makepkg -si --noconfirm
+                " && rm -rf /tmp/_asm_yay_install \
+                  || echo "  [!] yay install failed — run manually: git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si"
+            else
+                echo "  git not found. Install yay manually:"
+                echo "    sudo pacman -S git base-devel"
+                echo "    git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si"
+            fi
+        fi
+    fi
+
+    # Run asm-setup immediately if the installing user has an active D-Bus session.
+    # Falls back to /etc/xdg/autostart/asm-first-run.desktop on next login otherwise.
+    if [ -n "$REAL_USER" ]; then
+        REAL_UID=$(id -u "$REAL_USER")
+        XDG_RUNTIME_DIR="/run/user/$REAL_UID"
+        DBUS_SOCKET="$XDG_RUNTIME_DIR/bus"
+        if [ -S "$DBUS_SOCKET" ]; then
+            echo "==> Running asm-setup for ${REAL_USER}..."
+            su -l "$REAL_USER" -c \
+                "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS=unix:path=$DBUS_SOCKET asm-setup" \
+                || echo "  [!] asm-setup failed — run manually: asm-setup"
+        else
+            echo "==> No active session found — asm-setup will run on next login."
+        fi
+    fi
+
+    echo "==> Arctis Sound Manager installed!"
+    echo ""
 }
 
 post_upgrade() {
-    post_install
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger 2>/dev/null || true
+    echo "==> Arctis Sound Manager upgraded to $(pacman -Q arctis-sound-manager | awk '{print $2}')."
+    echo ""
 }
 
 post_remove() {
+    udevadm control --reload-rules 2>/dev/null || true
+
     echo "==> To clean up user configs:"
     echo ""
     echo "    systemctl --user disable --now arctis-manager.service"
     echo "    systemctl --user disable --now arctis-video-router.service"
     echo "    rm -rf ~/.config/arctis_manager"
     echo "    rm -f ~/.config/pipewire/pipewire.conf.d/10-arctis-virtual-sinks.conf"
-    echo "    rm -f ~/.config/pipewire/pipewire.conf.d/sink-virtual-surround-7.1-hesuvi.conf"
+    echo "    rm -f ~/.config/pipewire/filter-chain.conf.d/sink-virtual-surround-7.1-hesuvi.conf"
     echo "    rm -rf ~/.config/pipewire/filter-chain.conf.d/sonar-*.conf"
     echo ""
-
-    udevadm control --reload-rules 2>/dev/null || true
 }
