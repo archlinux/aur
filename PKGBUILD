@@ -2,16 +2,16 @@
 
 pkgname=zswap-cli-git
 _pkgname="${pkgname%-git}"
-pkgver=0.9.1.r14.g224fdea
-pkgrel=2
+pkgver=1.1.2.r8.gb753e1d
+pkgrel=1
 pkgdesc="Command-line tool to control ZSwap Linux kernel module"
 arch=('x86_64')
 url="https://github.com/xvitaly/${_pkgname}"
 license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=('boost' 'fmt' 'sdbus-cpp' 'systemd')
-makedepends=('cmake' 'gcc' 'git' 'ninja' 'pandoc')
+depends=('boost-libs' 'fmt' 'sdbus-cpp' 'systemd')
+makedepends=('boost' 'cmake' 'gcc' 'git' 'ninja' 'pandoc')
 optdepends=('semver: Semantic versioning for C++')
 backup=('etc/zswap-cli/zswap-cli.conf')
 source=("${_pkgname}::git+$url")
