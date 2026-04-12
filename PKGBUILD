@@ -2,7 +2,7 @@
 # Co-Maintainer: Robert Zhou <meep (dot) aur (at) meepzh (dot) com>
 
 pkgname=adsklicensing
-pkgver=16.2.6.21
+pkgver=16.2.7.22
 pkgrel=1
 pkgdesc='Autodesk License Checking Software'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('adskidentitymanager>=1.18' 'openssl-1.1')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("manual://adsklicensing${pkgver}-0-0.x86_64.rpm")
-b2sums=('c83b3ad0dcf86580f42806a07ea03b43a3aca22515c83b89fb925a195b93b11b45185e65778b22b80d8761e5678cae8d9f43cf1976d41c576447bfb12eae8df7')
+b2sums=('3e1c939177c66acbbe047994570576bb7468b3141df04acba993bce5f25c38a72e2b607be40813730bc5b9ecf846c8955a6cbdf186df4a95502ac422950c302e')
 
 options=(!strip)
 install='adsklicensing.install'
