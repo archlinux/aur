@@ -1,6 +1,6 @@
 pkgbase = faktory-bin
 	pkgdesc = High-performance job processing for the polyglot enterprise
-	pkgver = 1.9.3
+	pkgver = 1.9.4
 	pkgrel = 1
 	url = https://github.com/contribsys/faktory
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = faktory-bin
 	provides = faktory
 	conflicts = faktory
 	conflicts = faktory-git
-	source = faktory-bin-1.9.3.deb::https://github.com/contribsys/faktory/releases/download/v1.9.3/faktory_1.9.3-1_amd64.deb
-	sha256sums = 10a6c7efd7f435c1b0f38887df7ab3a35c3f6d47d56bead1add53e6bb057be9b
+	source = faktory-bin-1.9.4.deb::https://github.com/contribsys/faktory/releases/download/v1.9.4/faktory_1.9.4-1_amd64.deb
+	sha256sums = 713d8f5fde484a7eb4ed1948e0e95e2d037f5df037f94f5e542e472b8ec6f771
 
 pkgname = faktory-bin
