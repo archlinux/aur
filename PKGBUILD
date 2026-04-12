@@ -5,13 +5,13 @@ pkgrel=1
 pkgdesc="Lightweight Git GUI with native Wayland support — lighter than the rest"
 arch=('x86_64')
 url="https://github.com/hoxton314/git-twig"
-license=('MIT')
+license=('AGPL-3.0-only')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
 provides=('twig')
 conflicts=('twig' 'twig-git')
 options=('!strip')
 
-source_x86_64=("$pkgname-$pkgver.AppImage::https://github.com/hoxton314/git-twig/releases/download/v${pkgver}/twig_${pkgver}_amd64.AppImage"
+source_x86_64=("$pkgname-$pkgver.AppImage::https://github.com/hoxton314/git-twig/releases/download/v${pkgver}/Twig_${pkgver}_amd64.AppImage"
                "twig.desktop::https://github.com/hoxton314/git-twig/releases/download/v${pkgver}/twig.desktop"
                "twig.png::https://github.com/hoxton314/git-twig/releases/download/v${pkgver}/twig.png")
 sha256sums_x86_64=('SKIP' 'SKIP' 'SKIP')
