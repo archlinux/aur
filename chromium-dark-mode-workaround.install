@@ -1,0 +1,14 @@
+post_install() {
+    echo "==> To start the workaround daemon, run:"
+    echo "    systemctl --user enable --now chromium-dark-mode-workaround"
+}
+
+post_upgrade() {
+    echo "==> To restart the workaround daemon, run:"
+    echo "    systemctl --user restart chromium-dark-mode-workaround"
+}
+
+post_remove() {
+    echo "==> To clean up, run:"
+    echo "    systemctl --user disable --now chromium-dark-mode-workaround"
+}

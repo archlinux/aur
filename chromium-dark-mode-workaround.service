@@ -1,0 +1,10 @@
+[Unit]
+Description=Chromium dark mode workaround
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/chromium-dark-mode-workaround
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
