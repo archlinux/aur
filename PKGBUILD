@@ -1,8 +1,8 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=proxelar-bin
 _pkgname=proxelar
-pkgver=0.4.2
-pkgrel=3
+pkgver=0.4.3
+pkgrel=1
 pkgdesc='Programmable MITM proxy that intercepts HTTP/HTTPS traffic. With a TUI, terminal, and web GUI interface'
 arch=('x86_64' 'aarch64')
 url='https://github.com/emanuele-em/proxelar'
@@ -16,8 +16,8 @@ source_x86_64=("${_pkgname}-bin-${pkgver}.tar.gz::$url/releases/download/v$pkgve
 source_aarch64=("${_pkgname}-bin-${pkgver}.tar.gz::$url/releases/download/v$pkgver/proxelar-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 source=("LICENSE::https://raw.githubusercontent.com/emanuele-em/${_pkgname}/refs/tags/v$pkgver/LICENSE-MIT")
 sha256sums=('7beed5740a54fe01210a251507d55576e32522b292af5eb9d74a4fbd5545d365')
-sha256sums_x86_64=('98225860a8064c7850ea6dd554b1efdca14351eccee6c2696dbb8b1b27ae1830')
-sha256sums_aarch64=('0c261a3b2e30cd4da16f6db89fcc86edef54a94e66d22adea40acb4e2abbf2ae')
+sha256sums_x86_64=('873877a14762a8e5e81c2db3c9c1f175b73a4b3287ddedd27affce890453eb28')
+sha256sums_aarch64=('fd2b7d72a76b02004a5ba83b3a630c66e03819ea6fe4749d355291a1421ef28a')
 
 package() {
     install -Dm0755 proxelar "$pkgdir/usr/bin/proxelar"
