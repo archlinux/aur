@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-iuh
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)"
 url="http://osmocom.org/projects/osmohnbgw"
@@ -21,7 +21,7 @@ provides=('libosmo-hnbap.so=0-64'
           'libosmo-sabp.so=1-64')
 conflicts=("${pkgname}-git")
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('bdfc66226612089399e3d02d961f0a4ed3f75c82642b6f218c36d274666cbc33')
+sha256sums=('996d4b7aab89785356e5949e4789ac474083fe370739fe34fb1b6c536527a8fd')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
