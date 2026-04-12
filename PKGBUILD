@@ -5,7 +5,7 @@
 
 # Maintainer: BYK <bykdev@proton.me>
 pkgname=basecalc-git
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="BaseCalc is a base calculator made in C with GTK4."
 arch=('x86_64')
@@ -39,13 +39,7 @@ package() {
 	cd BaseCalc
 	mkdir -p ${pkgdir}/opt/${pkgname}
 	cp -rf * ${pkgdir}/opt/${pkgname}
-	DESTDIR="${pkgdir}" cmake --install build
-	echo -e "Creating Desktop Entry.\n"
-	echo -e "Filling Desktop Entry.\n"
-	echo -e "[Desktop Entry]\nType=Application\nVersion=$pkgver\nName=BaseCalc\nComment=A Base Calculator.\nExec=BaseCalc\nIcon=/usr/share/icons/BaseCalc.svg\nTerminal=false\nCategories=Utility;Development;" > BaseCalc.desktop
 	echo -e "Installing.\n"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-	install -Dm644 BaseCalc.desktop "${pkgdir}/usr/share/applications/BaseCalc.desktop"
+	DESTDIR="${pkgdir}" cmake --install build
 	echo "Complete!"
 }
