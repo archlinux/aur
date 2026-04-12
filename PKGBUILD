@@ -1,6 +1,6 @@
 # Maintainer: Assaf Sapir <assaf@example.com>
 pkgname=naruto-git
-pkgver=r14.2488502
+pkgver=r15.8ebb0c4
 pkgrel=1
 pkgdesc="Smart AUR helper CLI (development version)"
 arch=('x86_64' 'aarch64')

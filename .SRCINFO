@@ -1,6 +1,6 @@
 pkgbase = naruto-git
 	pkgdesc = Smart AUR helper CLI (development version)
-	pkgver = r14.2488502
+	pkgver = r15.8ebb0c4
 	pkgrel = 1
 	url = https://github.com/assapir/naruto
 	arch = x86_64
