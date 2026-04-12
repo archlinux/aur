@@ -1,0 +1,17 @@
+# Maintainer: tutkuofnight <https://github.com/tutkuofnight>
+pkgname=lycan-bin
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Lightweight PWA manager for Linux desktops"
+arch=('x86_64')
+url="https://github.com/tutkuofnight/lycan"
+license=('MIT')
+depends=('webkit2gtk' 'gtk3' 'glib2' 'openssl')
+provides=('lycan')
+conflicts=('lycan' 'lycan-git')
+source=("https://github.com/tutkuofnight/lycan/releases/download/v${pkgver}/lycan-v${pkgver}-x86_64-linux.tar.gz")
+sha256sums=('50bf9061f557c3e28fa3358ade2bb296336c53bd027fbd3355d5751f02d2e764')
+
+package() {
+    install -Dm755 "lycan" "$pkgdir/usr/bin/lycan"
+}
