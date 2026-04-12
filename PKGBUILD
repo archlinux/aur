@@ -10,7 +10,6 @@ pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
 license=('MIT')
-depends=(intel-oneapi-base-toolkit)
 makedepends=(
   cmake
   git
