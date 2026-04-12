@@ -1,6 +1,6 @@
 pkgbase = jellyfin-desktop-git
 	pkgdesc = Jellyfin Desktop Client
-	pkgver = 0.r320.b70205a
+	pkgver = 0.r327.ee1758c
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/jellyfin/jellyfin-desktop
@@ -15,7 +15,6 @@ pkgbase = jellyfin-desktop-git
 	makedepends = wayland-protocols
 	depends = jellyfin-desktop-libcef-bin
 	depends = jellyfin-desktop-libmpv-git
-	depends = sdl3
 	depends = systemd-libs
 	provides = jellyfin-desktop
 	conflicts = jellyfin-desktop

@@ -1,6 +1,6 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellyfin-desktop-git
-pkgver=0.r320.b70205a
+pkgver=0.r397.040f38c
 pkgrel=1
 epoch=1
 license=('GPL-2.0-only')
@@ -10,7 +10,6 @@ url="https://github.com/jellyfin/jellyfin-desktop"
 depends=(
     'jellyfin-desktop-libcef-bin'
     'jellyfin-desktop-libmpv-git'
-    'sdl3'
     'systemd-libs'
 )
 makedepends=(
