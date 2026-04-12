@@ -132,7 +132,7 @@ package_pipewire-ldac() {
     LGPL-2.1-or-later
   )
   depends=(
-    "libpipewire-ldac=$epoch:$pkgver-$pkgrel" lib$_pwname.so
+    libpipewire lib$_pwname.so
     dbus libdbus-1.so
     gcc-libs
     glib2 libglib-2.0.so
@@ -142,27 +142,26 @@ package_pipewire-ldac() {
     systemd-libs libsystemd.so libudev.so
   )
   optdepends=(
-    'gst-plugin-pipewire: GStreamer plugin'
-    'pipewire-alsa: ALSA configuration'
-    'pipewire-audio: Audio support'
-    'pipewire-docs: Documentation'
-    'pipewire-ffado: FireWire support'
-    'pipewire-jack-client: PipeWire as JACK client'
-    'pipewire-jack: JACK replacement'
-    'pipewire-libcamera: Libcamera support'
-    'pipewire-pulse: PulseAudio replacement'
-    'pipewire-roc: ROC streaming'
-    'pipewire-session-manager: Session manager'
-    'pipewire-v4l2: V4L2 interceptor'
-    'pipewire-x11-bell: X11 bell'
-    'pipewire-zeroconf: Zeroconf support'
+    'gst-plugin-pipewire-ldac: GStreamer plugin'
+    'pipewire-alsa-ldac: ALSA configuration'
+    'pipewire-audio-ldac: Audio support'
+    'pipewire-docs-ldac: Documentation'
+    'pipewire-ffado-ldac: FireWire support'
+    'pipewire-jack-client-ldac: PipeWire as JACK client'
+    'pipewire-jack-ldac: JACK replacement'
+    'pipewire-libcamera-ldac: Libcamera support'
+    'pipewire-pulse-ldac: PulseAudio replacement'
+    'pipewire-roc-ldac: ROC streaming'
+    'pipewire-session-manager-ldac: Session manager'
+    'pipewire-v4l2-ldac: V4L2 interceptor'
+    'pipewire-x11-bell-ldac: X11 bell'
+    'pipewire-zeroconf-ldac: Zeroconf support'
     'realtime-privileges: realtime privileges with rt module'
     'rtkit: realtime privileges with rtkit module'
   )
-  provides=("pipewire=${pkgver}")
-  conflicts=(
-    'pipewire'
-  )	
+  provides=(pipewire-ldac pipewire)
+  conflicts=(pipewire)
+
   install=pipewire-ldac.install
 
   meson install -C build --destdir "$pkgdir"
@@ -283,8 +282,8 @@ package_libpipewire-ldac() {
     glibc
     gcc-libs
   )
-  provides=("libpipewire=${pkgver}" libpipewire-ldac lib$_pwname.so)
-  conflicts=('libpipewire')
+  provides=(libpipewire-ldac libpipewire lib$_pwname.so)
+  conflicts=(libpipewire)
 
   mv lib/* "$pkgdir"
 
@@ -294,7 +293,7 @@ package_libpipewire-ldac() {
 package_alsa-card-profiles-ldac() {
   pkgdesc+=" - ALSA card profiles"
   license=(LGPL-2.1-or-later)
-  provides=(alsa-card-profiles)
+  provides=(alsa-card-profiles-ldac alsa-card-profiles)
   conflicts=(alsa-card-profiles)
   
   mv acp/* "$pkgdir"
@@ -316,7 +315,7 @@ package_pipewire-libcamera-ldac() {
     libcamera libcamera-base.so libcamera.so
     pipewire
   )
-  provides=(pipewire-libcamera)
+  provides=(pipewire-libcamera-ldac pipewire-libcamera)
   conflicts=(pipewire-libcamera)
 
   mv libcamera/* "$pkgdir"
@@ -327,8 +326,8 @@ package_pipewire-libcamera-ldac() {
 package_pipewire-audio-ldac() {
   pkgdesc+=" - Audio support"
   depends=(
-    "libpipewire=$epoch:$pkgver-$pkgrel" lib$_pwname.so
-    "pipewire=$epoch:$pkgver-$pkgrel"
+    libpipewire lib$_pwname.so
+    pipewire
     alsa-card-profiles
     alsa-lib libasound.so
     bluez-libs libbluetooth.so
@@ -351,7 +350,7 @@ package_pipewire-audio-ldac() {
     systemd-libs
     webrtc-audio-processing-1 libwebrtc-audio-processing-1.so
   )
-  provides=(pipewire-audio)
+  provides=(pipewire-audio-ldac pipewire-audio)
   conflicts=(pipewire-audio)
 
   mv audio/* "$pkgdir"
@@ -366,11 +365,11 @@ package_pipewire-audio-ldac() {
 package_pipewire-alsa-ldac() {
   pkgdesc+=" - ALSA configuration"
   depends=(
-    "pipewire-audio=$epoch:$pkgver-$pkgrel"
-    "pipewire=$epoch:$pkgver-$pkgrel"
+    pipewire-audio
+    pipewire
     pipewire-session-manager
   )
-  provides=(pipewire-alsa)
+  provides=(pipewire-alsa-ldac pipewire-alsa)
   conflicts=(pipewire-alsa)
   
   mkdir -p "$pkgdir/etc/alsa/conf.d"
@@ -386,13 +385,13 @@ package_pipewire-alsa-ldac() {
 package_pipewire-ffado-ldac() {
   pkgdesc+=" - FireWire support"
   depends=(
-    "libpipewire=$epoch:$pkgver-$pkgrel" lib$_pwname.so
-    "pipewire-audio=$epoch:$pkgver-$pkgrel"
-    "pipewire=$epoch:$pkgver-$pkgrel"
+    libpipewire lib$_pwname.so
+    pipewire-audio
+    pipewire
     glibc
     libffado libffado.so
   )
-  provides=(pipewire-ffado)
+  provides=(pipewire-ffado-ldac pipewire-ffado-ldac)
   conflicts=(pipewire-ffado)
   
   mv ffado/* "$pkgdir"
@@ -403,15 +402,15 @@ package_pipewire-ffado-ldac() {
 package_pipewire-jack-client-ldac() {
   pkgdesc+=" - PipeWire as JACK client"
   depends=(
-    "libpipewire=$epoch:$pkgver-$pkgrel" lib$_pwname.so
-    "pipewire-audio=$epoch:$pkgver-$pkgrel"
-    "pipewire=$epoch:$pkgver-$pkgrel"
+    libpipewire lib$_pwname.so
+    pipewire-audio
+    pipewire
     dbus libdbus-1.so
     gcc-libs
     glibc
     jack libjack.so
   )
-  provides=(pipewire-jack)
+  provides=(pipewire-jack-client-ldac pipewire-jack-client)
   conflicts=(pipewire-jack)
   
   
@@ -428,9 +427,9 @@ package_pipewire-jack-ldac() {
     LGPL-2.1-or-later
   )
   depends=(
-    "libpipewire=$epoch:$pkgver-$pkgrel" lib$_pwname.so
-    "pipewire-audio=$epoch:$pkgver-$pkgrel"
-    "pipewire=$epoch:$pkgver-$pkgrel"
+    libpipewire lib$_pwname.so
+    pipewire-audio
+    pipewire
     glibc
     pipewire-session-manager
     sh
@@ -443,15 +442,13 @@ package_pipewire-jack-ldac() {
     libjack.so
     libjacknet.so
     libjackserver.so
-    pipewire-jack-client
-    "pipewire-jack=${pkgver}"
-  )
-  conflicts=(
-    jack
-    jack2
-    pipewire-jack-client
+    pipewire-jack-ldac
     pipewire-jack
   )
+  conflicts=(
+    jack libjack.so libjacknet.so libjackserver jack2 pipewire-jack
+     )
+  replaces=(jack2)
   
   mv jack/* "$pkgdir"
 
@@ -467,9 +464,9 @@ package_pipewire-jack-ldac() {
 package_pipewire-pulse-ldac() {
   pkgdesc+=" - PulseAudio replacement"
   depends=(
-    "libpipewire=$epoch:$pkgver-$pkgrel" lib$_pwname.so
-    "pipewire-audio=$epoch:$pkgver-$pkgrel"
-    "pipewire=$epoch:$pkgver-$pkgrel"
+    libpipewire lib$_pwname.so
+    pipewire-audio
+    pipewire
     avahi libavahi-{client,common}.so
     dbus libdbus-1.so
     dconf
@@ -480,8 +477,8 @@ package_pipewire-pulse-ldac() {
     pipewire-session-manager
     systemd-libs libsystemd.so
   )
-  provides=(pulse-native-provider pipewire-pulse)
-  conflicts=(pulseaudio pipewire-pulse)
+  provides=(pulse-native-provider-ldac pulse-native-provider pipewire-pulse-ldac pipewire-pulse)
+  conflicts=(pulse-native-provider pulseaudio pipewire-pulse)
   install=pipewire-pulse.install
 
   mv pulse/* "$pkgdir"
@@ -498,9 +495,9 @@ package_pipewire-pulse-ldac() {
 package_pipewire-roc-ldac() {
   pkgdesc+=" - ROC streaming support"
   depends=(
-    "libpipewire=$epoch:$pkgver-$pkgrel" lib$_pwname.so
-    "pipewire-audio=$epoch:$pkgver-$pkgrel"
-    "pipewire=$epoch:$pkgver-$pkgrel"
+    libpipewire lib$_pwname.so
+    pipewire-audio
+    pipewire
     gcc-libs
     glibc
     roc-toolkit libroc.so
@@ -516,9 +513,9 @@ package_pipewire-roc-ldac() {
 package_gst-plugin-pipewire-ldac() {
   pkgdesc="Multimedia graph framework - pipewire plugin"
   depends=(
-    "libpipewire=$epoch:$pkgver-$pkgrel" lib$_pwname.so
-    "pipewire-audio=$epoch:$pkgver-$pkgrel"
-    "pipewire=$epoch:$pkgver-$pkgrel"
+    libpipewire lib$_pwname.so
+    pipewire-audio
+    pipewire
     gcc-libs
     glib2 libg{lib,object}-2.0.so
     glibc
@@ -526,7 +523,7 @@ package_gst-plugin-pipewire-ldac() {
     gstreamer
     pipewire-session-manager
   )
-  provides=(gst-plugin-pipewire)
+  provides=(gst-plugin-pipewire-ldac gst-plugin-pipewire)
   conflicts=(gst-plugin-pipewire)
   mv gst/* "$pkgdir"
 
@@ -536,16 +533,16 @@ package_gst-plugin-pipewire-ldac() {
 package_pipewire-zeroconf-ldac() {
   pkgdesc+=" - Zeroconf support"
   depends=(
-    "libpipewire=$epoch:$pkgver-$pkgrel" lib$_pwname.so
-    "pipewire-audio=$epoch:$pkgver-$pkgrel"
-    "pipewire=$epoch:$pkgver-$pkgrel"
+    libpipewire lib$_pwname.so
+    pipewire-audio
+    pipewire
     avahi libavahi-{client,common}.so
     gcc-libs
     glibc
     openssl libcrypto.so
     opus libopus.so
   )
-  provides=(pipewire-zeroconf)
+  provides=(pipewire-zeroconf-ldac pipewire-zeroconf)
   conflicts=(pipewire-zeroconf)
   
   mv zeroconf/* "$pkgdir"
@@ -556,13 +553,13 @@ package_pipewire-zeroconf-ldac() {
 package_pipewire-v4l2-ldac() {
   pkgdesc+=" - V4L2 interceptor"
   depends=(
-    "libpipewire=$epoch:$pkgver-$pkgrel" lib$_pwname.so
-    "pipewire=$epoch:$pkgver-$pkgrel"
+    libpipewire lib$_pwname.so
+    pipewire
     glibc
     pipewire-session-manager
     sh
   )
-  provides=(pipewire-v4l2)
+  provides=(pipewire-v4l2-ldac pipewire-v4l2)
   conflicts=(pipewire-v4l2)
 
   mv v4l2/* "$pkgdir"
@@ -573,15 +570,15 @@ package_pipewire-v4l2-ldac() {
 package_pipewire-x11-bell-ldac() {
   pkgdesc+=" - X11 bell"
   depends=(
-    "libpipewire=$epoch:$pkgver-$pkgrel" lib$_pwname.so
-    "pipewire-audio=$epoch:$pkgver-$pkgrel"
-    "pipewire=$epoch:$pkgver-$pkgrel"
+    libpipewire lib$_pwname.so
+    pipewire-audio
+    pipewire
     glibc
     libcanberra libcanberra.so
     libx11
     libxfixes
   )
-  provides=(pipewire-x11-bell)
+  provides=(pipewire-x11-bell-ldac pipewire-x11-bell)
   conflicts=(pipewire-x11-bell)
   
   mv x11-bell/* "$pkgdir"
@@ -593,7 +590,7 @@ package_pipewire-session-manager-ldac() {
   pkgdesc="Session manager for PipeWire (default provider)"
   license=(CC0-1.0)
   depends=(wireplumber)
-  provides=(pipewire-session-manager)
+  provides=(pipewire-session-manager-ldac pipewire-session-manager)
   conflicts=(pipewire-session-manager)
 }
 
@@ -601,6 +598,6 @@ package_pulse-native-provider-ldac() {
   pkgdesc="PulseAudio sound server (default provider)"
   license=(CC0-1.0)
   depends=(pipewire-pulse)
-  provides=(pulse-native-provider)
+  provides=(pulse-native-provider-ldac pulse-native-provider)
   conflicts=(pulse-native-provider)
 }
