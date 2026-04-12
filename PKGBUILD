@@ -83,6 +83,7 @@ source=(
   "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   0001-Merge-pull-request-28016-from-heitbaum-giflib.patch
+  0002-backport-NFS-replace-nfs_create-with-nfs_open2.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -103,7 +104,8 @@ b2sums=('SKIP'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
-        'c0c955f886e0ef7f4c98f6119a264318ce9220ada5e0279600b6e9058a7141e5a98176dd3f982058039e2c1e502f2589cb9bfe5b340a99d31d2b1dc481a2ca6f')
+        'c0c955f886e0ef7f4c98f6119a264318ce9220ada5e0279600b6e9058a7141e5a98176dd3f982058039e2c1e502f2589cb9bfe5b340a99d31d2b1dc481a2ca6f'
+        '0ef981f4d062be66c021efd7c264abb48c8efe31a09d64cee052e7ad55af6772e4db8915d12d642f0bca5296f29bdebd2e0f4907ec1ca77726717d3862091454')
 
 pkgver() {
   cd "$_gitname"
@@ -117,6 +119,7 @@ prepare() {
   cd "$_gitname"
   
   patch -p1 -i ../0001-Merge-pull-request-28016-from-heitbaum-giflib.patch
+  patch -p1 -i ../0002-backport-NFS-replace-nfs_create-with-nfs_open2.patch
 
   rm -rf system/certs # remove not needed cacert
 
