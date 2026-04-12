@@ -1,6 +1,6 @@
 pkgbase = pypy3-platformdirs
 	pkgdesc = A small Python package for determining appropriate platform-specific dirs
-	pkgver = 4.9.4
+	pkgver = 4.9.6
 	pkgrel = 1
 	url = https://github.com/tox-dev/platformdirs
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = pypy3-platformdirs
 	makedepends = pypy3-installer
 	makedepends = pypy3-hatch-vcs
 	depends = pypy3
-	source = platformdirs-4.9.4.tar.gz::https://github.com/tox-dev/platformdirs/archive/4.9.4.tar.gz
-	sha512sums = 9d1aa0f38cd10a42ec55fc9737865fd47e4c5d49904a8afffb60dd5417dc060aa174bac83caa366f7c5ed7e42f5c43c18db4b348104f669412f70ce669486959
+	source = platformdirs-4.9.6.tar.gz::https://github.com/tox-dev/platformdirs/archive/4.9.6.tar.gz
+	sha512sums = f693b977d22a4acd49bd2a0b2efecb1a40e8c51d604a5ac5fbf4f7c4646607a2150047ef53ada89987ff4f89a67e8c1c25b32ea493f8ad62736f9f8f143b7036
 
 pkgname = pypy3-platformdirs
