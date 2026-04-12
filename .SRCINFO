@@ -1,0 +1,20 @@
+pkgbase = anvil-editor
+	pkgdesc = Multi-pane tiling editor inspired by Plan9 Acme
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/jeffwilliams/anvil
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = libx11
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = glibc
+	depends = wayland
+	depends = libxfixes
+	depends = libxcursor
+	depends = libxkbcommon-x11
+	source = https://github.com/jeffwilliams/anvil/archive/refs/tags/v0.7.tar.gz
+	sha256sums = ab1ed054117e6d987ae0b4ff172a0718b74cec048dbc43418e74c441fdd342f6
+
+pkgname = anvil-editor
