@@ -7,7 +7,7 @@ qt="qt${QT_VER}"
 
 pkgname=openboard-git
 _fragment="#branch=master"
-pkgver=1.7.6.r1.g95e69454
+pkgver=1.7.7.r1.g30d120ce
 pkgrel=1
 pkgdesc="Interactive whiteboard software for schools and universities (development version current master)"
 arch=('x86_64' 'i686')
@@ -21,10 +21,9 @@ depends+=(quazip-${qt})  #drop internal quazip and use system one.
 depends+=(poppler) #replace internal xpdf with poppler and drop freetype/xpdf from deps
 makedepends=(git cmake ${qt}-tools)
 source=("git+https://github.com/OpenBoard-org/OpenBoard.git${_fragment}"
-		"poppler_26.02.patch::https://github.com/OpenBoard-org/OpenBoard/pull/1434.patch"
         )
 sha256sums=('SKIP'
-            '3a3f5f31efd4fbd156cd828a771f800dbeb6c8b4d0b5382a052829165098eb11')
+            )
 
 pkgver() {
   cd "$srcdir/OpenBoard"
@@ -32,7 +31,7 @@ pkgver() {
 }
 
 prepare() {
-  git -C "$srcdir"/OpenBoard apply -v "$srcdir"/poppler_26.02.patch
+  :
 }
 
 build() {
