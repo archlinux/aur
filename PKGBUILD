@@ -1,7 +1,7 @@
 # Maintainer: graysky <therealgraysky AT protonmail DOT com>
 
 pkgname=clean-chroot-manager
-pkgver=3.0
+pkgver=3.01
 pkgrel=1
 pkgdesc='Wrapper for managing clean chroot builds with local repo therein.'
 arch=(any)
@@ -9,7 +9,7 @@ url='https://github.com/graysky2/clean-chroot-manager'
 license=(MIT)
 depends=(devtools rsync libarchive pacman bc)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/graysky2/clean-chroot-manager/archive/v$pkgver.tar.gz")
-b2sums=('71b12a8f88f55f800f73b7294067475fbee63eeaedd51513389d25d529a1178543a73f4eb6101f58318822cb270909d9d680d254a37c614749c00c0fe7ef88a3')
+b2sums=('d738a3f023a6d77a3c3f8d508bfded4aa46ff8531522f881c0eb050206aa7c15669ae1588d4d514fbca23ada633ae6cc809c5d4a8cc1e1e887e9375f3ae7f0ea')
 install=ccm.install
 
 build() {
