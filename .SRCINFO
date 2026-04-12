@@ -1,0 +1,14 @@
+pkgbase = rime-nguphing
+	pkgdesc = A Standardized Shanghainese (Wu Language) Input Method for RIME engine
+	pkgver = 0.0.0.20260124
+	pkgrel = 1
+	url = https://github.com/saeziae/rime_nguphing
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = librime
+	depends = rime-luna-pinyin
+	depends = rime-stroke
+	source = https://github.com/saeziae/rime_nguphing/archive/07d833c3e4d033527d7176e4a9cee8a4f3503bba/rime_nguphing-07d833c3e4d033527d7176e4a9cee8a4f3503bba.tar.gz
+	sha256sums = 38e753d0227ceb0c222dc3ba49448062130fd87b37ad11a9cb8b4eec6ccb49d8
+
+pkgname = rime-nguphing
