@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-sip-connector
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Gateway between the MNCC Interface of OsmoMSC and OsmoNITB and an external SIP trunk"
 url="https://osmocom.org/projects/osmo-sip-conector"
@@ -12,7 +12,7 @@ depends=('libosmocore' 'talloc' 'sofia-sip')
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-sip-connector.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('84d10643b895c001777d027abc18dcef3552281fbfdba751cbfc96f16643a04c')
+sha256sums=('a5559732023b11a531e5fbb0880f0927819583a57dc8565b01e9a5f3ba926af3')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
