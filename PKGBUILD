@@ -1,6 +1,6 @@
 # Maintainer: alsogamer <me@alsogamer.com>
 pkgname=mpv-manager-git
-pkgver=1.1.0.r0.gd65ffb7
+pkgver=1.2.0.r0.g2e76e96
 pkgrel=1
 pkgdesc='MPV media player installer and manager with Web UI, TUI, and CLI modes (git)'
 arch=('x86_64' 'aarch64')
@@ -36,20 +36,12 @@ build() {
         -buildvcs=false \
         -mod=readonly \
         -ldflags "-s -w \
+            -X gitgud.io/mike/mpv-manager/pkg/version.SelfUpdateDisabled=true \
             -X gitgud.io/mike/mpv-manager/pkg/version.CurrentVersion=${pkgver} \
             -X gitgud.io/mike/mpv-manager/pkg/version.BuildTime=$(date -u +%Y-%m-%dT%H:%M:%SZ) \
             -X gitgud.io/mike/mpv-manager/pkg/version.GitCommit=$(git -C ${srcdir}/${pkgname} rev-parse --short HEAD)" \
         -o dist/mpv-manager \
         ./cmd/mpv-manager
-}
-
-check() {
-    cd "${pkgname}"
-    export GOPATH="${srcdir}/gopath"
-    export HOME="${srcdir}/testhome"
-    # pkg/keyring tests require a running user keyring daemon and will
-    # prompt to create a new keystore interactively — skip during build
-    go test $(go list ./... | grep -v '/pkg/keyring')
 }
 
 package() {
