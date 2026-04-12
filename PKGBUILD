@@ -3,8 +3,8 @@
 # Contributor: 2GMon <t_2gmon@yahoo.co.jp>
 
 pkgname=mikutter
-pkgver=5.1.1
-pkgrel=2
+pkgver=5.1.2
+pkgrel=1
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
 url="http://mikutter.hachune.net/"
@@ -17,7 +17,7 @@ source=(
 https://mikutter.hachune.net/bin/$pkgname-$pkgver.tar.gz
 mikutter.desktop
 )
-sha256sums=('ddff538aae249bd636604128bac1ccb526a4ed5c32f00b45d3c3c1dbcdb655de'
+sha256sums=('ac5d5cc386dd03d544d34a2fd2e5c73e38985eb2fcbe98e7137931de04bb6433'
             '698cbd105c91296c92003352e2e66015a6db33ead5ae629a5441fdea7e67607f')
 _gemdir="vendor/bundle/ruby/`ruby -e'print Gem.dir.match(/^.+\/(.+?)$/)[1]'`"
 
