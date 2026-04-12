@@ -5,7 +5,7 @@
 _pkgname=mudita-center
 pkgname="${_pkgname}"-appimage
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Mudita Center Electron App. Expand and update the features of Mudita Pure, while using your computer."
 arch=('x86_64')
 url="https://mudita.com/products/software-apps/mudita-center/"
@@ -38,8 +38,8 @@ package() {
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/mudita-center.desktop"\
-            "${pkgdir}/usr/share/applications/mudita-center.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/Mudita Center.desktop"\
+            "${pkgdir}/usr/share/applications/Mudita Center.desktop"
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/"
