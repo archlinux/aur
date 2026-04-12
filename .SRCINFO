@@ -1,6 +1,6 @@
 pkgbase = inspectors-desktop
 	pkgdesc = Linux-first Tauri operator app for the Agent Computer Use Platform
-	pkgver = 0.1.0alpha3
+	pkgver = 0.1.0alpha4
 	pkgrel = 1
 	url = https://github.com/OneNoted/inspectors
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = inspectors-desktop
 	depends = webkit2gtk-4.1
 	conflicts = inspectors-desktop-git
 	options = !lto
-	source = inspectors-desktop-v0.1.0-alpha.3.tar.gz::https://github.com/OneNoted/inspectors/archive/refs/tags/v0.1.0-alpha.3.tar.gz
-	sha256sums = 08439dd7c4f9a3e19bf7782ad21a3e3f28b21c02b2cbd7b85560edab5c959d39
+	source = inspectors-desktop-v0.1.0-alpha.4.tar.gz::https://github.com/OneNoted/inspectors/archive/refs/tags/v0.1.0-alpha.4.tar.gz
+	sha256sums = f0dd8089094f9c276cf7aca08f4e7b5fa6ba55591a3d80c75393af4bb09695cc
 
 pkgname = inspectors-desktop
