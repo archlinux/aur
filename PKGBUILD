@@ -5,7 +5,7 @@
 _pkgname=mudita-center
 pkgname="${_pkgname}"-appimage
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mudita Center Electron App. Expand and update the features of Mudita Pure, while using your computer."
 arch=('x86_64')
 url="https://mudita.com/products/software-apps/mudita-center/"
@@ -28,7 +28,7 @@ prepare() {
 build() {
     # Adjust .desktop so it will work outside of AppImage container
     sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
-        "squashfs-root/mudita-center.desktop"
+        "squashfs-root/Mudita Center.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
 }
