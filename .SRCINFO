@@ -1,13 +1,15 @@
 pkgbase = libosmo-asn1-tcap-git
 	pkgdesc = Utility library for ASN.1 of TCAP (SS7)
-	pkgver = r23.a92fd1a
+	pkgver = 0.2.1.r5.d888f1b
 	pkgrel = 1
 	url = https://gitea.osmocom.org/ss7-in-c/libosmo-asn1-tcap
 	arch = x86_64
 	arch = i686
+	license = GPL-2.0-or-later
 	makedepends = git
-	provides = libosmo-asn1-tcap=r23.a92fd1a
-	provides = libosmo-asn1-tcap.so=0-64
+	depends = talloc
+	provides = libosmo-asn1-tcap=0.2.1.r5.d888f1b
+	provides = libosmo-asn1-tcap.so=1-64
 	conflicts = libosmo-asn1-tcap
 	source = git+https://gitea.osmocom.org/ss7-in-c/libosmo-asn1-tcap
 	sha256sums = SKIP
