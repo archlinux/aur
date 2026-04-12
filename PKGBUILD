@@ -28,12 +28,8 @@ build() {
   bundle config --local path "vendor/bundle"
   bundle config --local without "test"
 
-  # Workaround for build failure with gcc 15
-  bundle config --local build.gio2 "--with-cflags=-Wno-incompatible-pointer-types"
-  bundle config --local build.glib2 "--with-cflags=-Wno-incompatible-pointer-types"
-  bundle config --local build.gtk3 "--with-cflags=-Wno-incompatible-pointer-types"
-  bundle config --local build.gobject-introspection "--with-cflags=-Wno-incompatible-pointer-types"
-  bundle config --local build.pango "--with-cflags=-Wno-incompatible-pointer-types"
+  # Update gtk3 gem to fix build failure with gcc 15
+  sed -i "s/gem 'gtk3', '4.2.1'/gem 'gtk3', '4.3.6'/" plugin/gtk3/Gemfile
 
   bundle install
 
