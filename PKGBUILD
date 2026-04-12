@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 
 pkgname=fcitx5-pinyin-moegirl
-pkgver=20260315
+pkgver=20260412
 pkgrel=1
 pkgdesc="Fcitx 5 Pinyin Dictionary from moegirl.org wiki"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/outloudvi/mw2fcitx"
 license=('MIT' 'CC-BY-NC-SA-3.0')
 source=("moegirl-${pkgver}.dict::${url}/releases/download/${pkgver}/moegirl.dict"
         "LICENSE")
-sha256sums=('62737502b1f28a45749000eab87da4c2993b72989729c2fa6305315495e540a3'
+sha256sums=('62c759539e9d074a35a55ed2246d7f48c85284ca199a2489e778d2b1ba61f609'
             'bd205072137049f94d14a2059a5635f41f29732f515c4b387d2f20c0b425ffd6')
 
 package() {
