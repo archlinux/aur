@@ -1,9 +1,9 @@
 # Maintainer: artist for Artix Linux
 
-pkgname=sonic-screen-library 
-pkgver=6.6.3
+pkgname=sonic-screen-library
+pkgver=6.6.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 pkgdesc='Screen management library for SonicDE Workspaces'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-screen-library'
@@ -18,7 +18,7 @@ makedepends=(extra-cmake-modules
 groups=(sonicde)
 conflicts=(libkscreen)
 provides=(libkscreen)
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
@@ -31,4 +31,4 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 }
 
-sha256sums=('ea5bc8072838655f0db0efe128b924efa6d86a1b251bcfbf352df386f47396af')
+sha256sums=('b6160c2709ad6d5d6d7265161062a53e921c191d017c4638945193aa27c2c913')
