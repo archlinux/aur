@@ -1,7 +1,7 @@
 # Maintainer: David Jetelina <sour.soap5197@jtl.email>
 # namcap: ignore deps
 pkgname=tofuref
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="TUI for the OpenTofu provider registry"
 arch=('any')
@@ -29,7 +29,7 @@ makedepends=(
   'python-wheel'
 )
 source=("tofuref-$pkgver.tar.gz::https://github.com/djetelina/tofuref/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4d96533491a2092795e48d36195838338ff5f8fac39b2fd25ef338799eb1f237')
+sha256sums=('cd01f8ecd3d057250bf3c3f0a84019272ccadc7d518b438238be8e4f159d4862')
 
 build() {
   cd "tofuref-$pkgver"
