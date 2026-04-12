@@ -4,7 +4,7 @@
 
 pkgname=naps2-bin
 pkgver=8.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible."
 arch=("aarch64" "x86_64")
 url="https://www.naps2.com"
@@ -12,6 +12,7 @@ license=("GPL-2.0-or-later")
 depends=("sane" "gtk3")
 optdepends=(
   "sane-airscan: airscan support"
+  "dotnet-runtime-9.0: for debugging purposes libmscordaccore.so: .NET DAC core library"
 )
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
