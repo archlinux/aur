@@ -21,7 +21,8 @@ prepare() {
 
 build() {
     cd "$srcdir/fluxer-tui-$pkgver"
-    cargo build --release --locked
+    rm -rf target/
+    CC=gcc AR=gcc-ar cargo build --release --locked
 }
 
 package() {
