@@ -1,45 +1,36 @@
-# Maintainer: Giorgi Kobakhidze <gk@koba.pvt.ge>
-# Contributor: Alexandria Pettit <alxpettit@gmail.com>
-# Contributor: Kyle Keen <keenerd@gmail.com>
-# Contributor: Mateusz Herych <heniekk@gmail.com>
-# Contributor: Alexander Rødseth <rodseth@gmail.com>
-
-pkgname=ngircd-pam
-pkgver=26.1
-pkgrel=5
-pkgdesc="Next Generation IRC Daemon compiled with PAM support"
+# Maintainer: Gyf Ooya <gyfooya@gmail.com>
+pkgname=ngircd
+pkgver=27
+pkgrel=1
+pkgdesc="Next Generation IRC Daemon PAM support (without ident support)"
 arch=('x86_64')
-backup=(etc/ngircd.conf)
 url="https://ngircd.barton.de/"
-license=('GPL')
-conflicts=('ngircd')
-depends=('openssl' 'libident' 'zlib' 'pam')
-source=("https://ngircd.barton.de/pub/ngircd/ngircd-$pkgver.tar.gz"{,.sig}
-        ngircd.service)
-sha256sums=('41e1b1c6326c667a6a07799c34175b5406e78ec3b19b4b780046c8d3f532706e'
-            'SKIP'
+license=('GPL-2.0-or-later')
+depends=('openssl' 'zlib' 'glibc' 'pam')
+backup=('etc/ngircd.conf')
+
+source=("https://ngircd.barton.de/pub/ngircd/ngircd-$pkgver.tar.gz"
+        "ngircd.service")
+sha256sums=('fd38ef21339daf81d6af4a630ba3b2de51a1b42c181843ee77635a5a661fe73c'
             'f02e30f6864ba1130bcc85bedc44ad782687f572c06f10e0501b0ddcf532b404')
-validpgpkeys=('F5B9F52ED90920D2520376A2C24A0F637E364856') # Alexander Barton <alex@barton.de>
 
 build() {
   cd "$srcdir/ngircd-$pkgver"
-
-  ./configure --prefix=/usr \
-  	--sysconfdir=/etc \
-  	--sbindir=/usr/bin \
-  	--mandir=/usr/share/man \
-  	--with-ident \
-  	--with-openssl \
-  	--with-pam \
-  	--enable-ipv6
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --sbindir=/usr/bin \
+    --mandir=/usr/share/man \
+    --without-ident \
+    --with-openssl \
+    --with-pam \
+    --enable-ipv6
   make
 }
 
 package() {
   cd "$srcdir/ngircd-$pkgver"
-
   make DESTDIR="$pkgdir" install
-  install -Dm644 ../ngircd.service "$pkgdir/usr/lib/systemd/system/ngircd.service"
+  install -Dm644 "$srcdir/ngircd.service" \
+    "$pkgdir/usr/lib/systemd/system/ngircd.service"
 }
-
-# vim:set ts=2 sw=2 et:
