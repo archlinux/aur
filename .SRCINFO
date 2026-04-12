@@ -1,0 +1,15 @@
+pkgbase = keyboard-chattering-fix-git
+	pkgdesc = A tool for blocking mechanical keyboard chattering on Linux using libevdev.
+	pkgver = r23.5bb686b
+	pkgrel = 1
+	url = https://github.com/finkrer/KeyboardChatteringFix-Linux
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-evdev
+	provides = keyboard-chattering-fix
+	source = git+https://github.com/finkrer/KeyboardChatteringFix-Linux.git
+	sha256sums = SKIP
+
+pkgname = keyboard-chattering-fix-git
