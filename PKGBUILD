@@ -7,7 +7,7 @@ pkgdesc='Input-based dynamic FPS limiter for Linux using MangoHud control socket
 arch=('x86_64')
 url='https://github.com/farnoy/mangochill'
 license=('MIT')
-depends=('acl')
+depends=('acl' 'xorg-xprop')
 optdepends=('mangohud-mangochill: MangoHud-based FPS limiting'
             'gamescope: Gamescope-based FPS limiting')
 makedepends=('git' 'rust' 'cargo' 'capnproto')

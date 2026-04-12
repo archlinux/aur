@@ -11,6 +11,7 @@ pkgbase = mangochill-git
 	makedepends = cargo
 	makedepends = capnproto
 	depends = acl
+	depends = xorg-xprop
 	optdepends = mangohud-mangochill: MangoHud-based FPS limiting
 	optdepends = gamescope: Gamescope-based FPS limiting
 	provides = mangochill
