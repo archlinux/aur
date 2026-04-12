@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-snapshot
-pkgver=26.04arch
+pkgver=26.04.1arch
 pkgrel=1
 pkgdesc="A tool for creating live ISO images from running systems"
 arch=('x86_64' 'i686')
@@ -11,8 +11,8 @@ makedepends=('cmake' 'ninja' 'qt6-tools')
 conflicts=('mx-remaster-live-files')
 replaces=('mx-remaster-live-files')
 provides=('mx-remaster-live-files=1.0.0')
-source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.04arch.tar.gz")
-sha256sums=('7c5152b1ab0d6bfc52ac3fbdbb04492b7d54bb2c7bdc6e5265122f03cea0872c')
+source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.04.1arch.tar.gz")
+sha256sums=('5d6981b0a40cb2be5b7612299cb872f1be12bed0cae4a0d17bbc3a1d65b7ba2d')
 
 build() {
     cd "${srcdir}"/mx-snapshot*-"${pkgver}"
