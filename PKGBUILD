@@ -1,11 +1,14 @@
-# $Id: PKGBUILD 278826 2016-10-15 00:15:40Z heftig $
-# Contributor (original patch code): Jan de Groot <jgc@archlinux.org>
+# Contributor (maintainer of official Nautilus package): Fabian Bornschein <fabiscafe@archlinux.org>
+# Contributor (maintainer of official Nautilus package): Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor (contributor to official Nautilus package): Jan de Groot <jgc@archlinux.org>
+# Contributor (original typeahead patch code): Jan de Groot <jgc@archlinux.org>
 # Contributor (original package maintainer): Ian Hernández <badwolfie@archlinux.info>
-# Contributor (updated Xavier's patch for 43.2): Bryan Lai <bryanlais@gmail.com>
-# Contributor (updated Xavier's patch for 44.1): DragoonAethis <dragoon@dragonic.eu>
-# Contributor (updated Xavier's patch for 49.0): Kevin MacMartin <prurigro@gmail.com>
-# Contributor (fix for backspace going to parent folder): Jeremy Bicha <jbicha@debian.org>
-# Contributor (current patch code): Xavier Claessens <xavier.claessens@collabora.com>
+# Contributor (current typeahead patch code): Xavier Claessens <xavier.claessens@collabora.com>
+# Contributor (updated Xavier's typeahead patch for 43.2): Bryan Lai <bryanlais@gmail.com>
+# Contributor (updated Xavier's typeahead patch for 44.1): DragoonAethis <dragoon@dragonic.eu>
+# Contributor (updated Xavier's typeahead patch for 49.0): Kevin MacMartin <prurigro@gmail.com>
+# Contributor (updated Xavier's typeahead patch for 50.0): Daniel Rudolf <archlinux.org@daniel-rudolf.de>
+# Contributor (backspace patch code): Jeremy Bicha <jbicha@debian.org>
 # Maintainer: Albert Vaca Cintora <albertvaka@gmail.com>
 
 pkgbase=nautilus-typeahead
@@ -14,19 +17,21 @@ pkgname=(
   libnautilus-extension-typeahead
 )
 packager="Albert Vaca Cintora <albertvaka@gmail.com>"
-pkgver=49.2
+pkgver=50.1
 pkgrel=1
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://apps.gnome.org/Nautilus/"
 arch=(x86_64)
-license=(GPL)
+license=(GPL-3.0-or-later)
 depends=(
   cairo
   dconf
-  gcc-libs
   gdk-pixbuf2
+  gexiv2
   glib2
   glibc
+  glycin
+  glycin-gtk4
   gnome-autoar
   gnome-desktop-4
   graphene
@@ -38,7 +43,7 @@ depends=(
   icu
   libadwaita
   libcloudproviders
-  libgexiv2
+  libgcc
   libportal
   libportal-gtk4
   libx11
@@ -50,33 +55,47 @@ depends=(
 )
 makedepends=(
   appstream
+  blueprint-compiler
   git
+  glib2-devel
   gobject-introspection
   meson
   ninja
   pkgconfig
-  glib2-devel
 )
-_commit=087b13ab7537cd864c96fda34938af8ec81f9cf0
 source=(
-  "git+https://gitlab.gnome.org/albertvaka/nautilus.git#commit=$_commit"
+  "git+https://gitlab.gnome.org/GNOME/nautilus.git#tag=${pkgver/[a-z]/.&}"
+  "0001-Restore-backspace-for-going-to-parent-folder.patch"
+  "0002-Restore-typeahead-support-for-keyboard-navigation.patch"
+  "post.install"
 )
-b2sums=('SKIP')
+b2sums=(
+  '7a69b11b6053a22858a000a8d0b0a39085b061dce6e5dab792fde58b5bed7f8464f2ef4aaadc1d83056f7ceff948b3c40f433f5fa4fb2d3c5865adf74b666460'
+  'b9af0c0c3c9e233d13a1287d5f5fa7b159cff5532ccd589791c4916f34c69cc27755207cbec1c0a87ccce7a273d3e7d3f9c1d756e2a6bedae0124f30a214fef0'
+  '36aa7c865278fae3a9444f367cbe8104e3806bd35b580096a12d8af6e95db40c0d3a93ef7e02b4d2dcc46fd9a2dd8b6706d8089e815ead0efc8c3ed7cb8b672a'
+  '7ba197c2e65108ab49c1795c44264181c3c6b8f7d6641d1b1353690202c915e0aed574f45467924f6fb67a65f9487a3c0e24252633066e25b4d2c0dac3609245'
+)
+validpgpkeys=(
+  6B211753AC950672287226800538577822AE4B17 # António Fernandes <antoniof@gnome.org>
+  550660707A6F40376B9B9F8D504A78811E6160CC # Corey Berla <corey@berla.me>
+)
 
 prepare() {
   cd nautilus
-  # Enable type-ahead behavior by default
-  awk -i inplace '/type-ahead-search/{c++;} c==1 && /true/{sub("true", "false"); c++;} 1' data/org.gnome.nautilus.gschema.xml
+
+  # Apply typeahead patches
+  for p in ../????-*.patch; do
+    patch -Np1 -i "$p"
+  done
+
+  # Enable typeahead behavior by default
+  gawk -i inplace '/type-ahead-search/{c++;} c==1 && /true/{sub("true", "false"); c++;} 1' data/org.gnome.nautilus.gschema.xml
 }
 
 build() {
-  if [ -e build ] ; then
-      rm -r build
-  fi
-
   local meson_options=(
     -D docs=false
-    -D packagekit=false
+    -D selinux=disabled
   )
 
   arch-meson nautilus build "${meson_options[@]}"
@@ -95,8 +114,8 @@ _pick() {
 
 package_nautilus-typeahead() {
   depends+=(
-    'libnautilus-extension-typeahead'
-    'graphene'
+    libnautilus-extension.so
+    libnautilus-extension-typeahead
   )
   optdepends=(
     'nautilus-sendto: Share files from the right click menu'
@@ -119,11 +138,17 @@ package_nautilus-typeahead() {
 package_libnautilus-extension-typeahead() {
   pkgdesc="Extension interface for Nautilus"
   depends=(
-    gcc-libs
     glib2
+    glibc
+    libgcc
   )
-  conflicts=(libnautilus-extension libnautilus-extension.so)
-  provides=(libnautilus-extension libnautilus-extension.so)
+  conflicts=(libnautilus-extension)
+  provides=(
+    libnautilus-extension
+    libnautilus-extension.so
+  )
 
   mv libne/* "$pkgdir"
 }
+
+# vim:set sw=2 sts=-1 et:
