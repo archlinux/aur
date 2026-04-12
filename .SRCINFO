@@ -1,6 +1,6 @@
 pkgbase = osmo-cbc
 	pkgdesc = Osmocom Cell Broadcast Centre
-	pkgver = 0.5.1
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmo-cbc
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = osmo-cbc
 	provides = libosmo-sbcap.so=2-64
 	conflicts = osmo-cbc-git
 	backup = etc/osmocom/osmo-cbc.cfg
-	source = https://downloads.osmocom.org/releases/osmo-cbc/osmo-cbc-0.5.1.tar.bz2
+	source = https://downloads.osmocom.org/releases/osmo-cbc/osmo-cbc-0.5.3.tar.bz2
 	source = LICENSE-MIT
-	sha256sums = 6fdf354c211a1639111f6a9a19e9f6a4da91828ee2264d07e53758b2698cba7b
+	sha256sums = a8958c7310d7a2227c504ec1ee14b77e36bf4d7d55e43e3d8a852acf747ccc69
 	sha256sums = 323c587d0ccf10e376f8bf9a7f31fb4ca6078105194b42e0b1e0ee2bc9bde71f
 
 pkgname = osmo-cbc
