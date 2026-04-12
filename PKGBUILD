@@ -1,6 +1,6 @@
 # Maintainer: TheOddCell <rayfb.to.1@gmail.com>
 pkgname=libodd-git
-pkgver=r2.074b1ec
+pkgver=r4.154cd88
 pkgrel=1
 pkgdesc="a troll"
 arch=('any')
