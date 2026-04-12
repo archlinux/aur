@@ -1,10 +1,10 @@
 pkgbase = rustlock
 	pkgdesc = A high-performance Wayland screen locker written in Rust, inspired by swaylock-effects
-	pkgver = 0.1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/JorySeverijnse/rustlock
 	arch = x86_64
-	license = AGPL3
+	license = GPL-3.0-or-later
 	makedepends = rust
 	makedepends = cargo
 	makedepends = pkg-config
@@ -12,7 +12,7 @@ pkgbase = rustlock
 	depends = pam
 	depends = gdk-pixbuf2
 	depends = libxkbcommon
-	source = git+https://github.com/JorySeverijnse/rustlock.git
-	sha256sums = 3475c412e118c21d8a51b50f439b58267fc784e18a15edfc9f95a4f24ecd9038
+	source = https://github.com/JorySeverijnse/rustlock/archive/v1.1.tar.gz
+	sha256sums = ca210149801a7b7041ce772e6cb92406804db442c92669c1ad78e3f08955938d
 
 pkgname = rustlock
