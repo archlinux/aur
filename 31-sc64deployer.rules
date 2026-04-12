@@ -1,0 +1,2 @@
+# SummerCart64
+SUBSYSTEM="usb", ATTRS{product}=="SC64", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6014", TAG+="uaccess"

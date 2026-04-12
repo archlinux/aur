@@ -6,6 +6,7 @@ path = [
     ".SRCINFO",
     ".nvchecker.toml",
     "devendor-libs.patch",
+    "31-sc64deployer.rules",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
