@@ -4,7 +4,7 @@
 pkgname=yukigram-desktop
 pkgver=6.7.5
 pkgrel=3
-pkgdesc='A Fork of 64Gram,A Telegram Desktop fork'
+pkgdesc='A patch-based Telegram Desktop fork,with features from 64Gram'
 arch=('x86_64')
 url="https://github.com/yukigram/yukigram"
 license=('GPL3')
