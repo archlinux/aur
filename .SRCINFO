@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-papirus-folders-colorizer
 	pkgdesc = A GNOME shell extension that automatically syncs your Papirus folder icons with your GNOME Accent Color.
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
 	url = https://github.com/NiffirgkcaJ/papirus-folders-colorizer
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-papirus-folders-colorizer
 	makedepends = jq
 	depends = gnome-shell
 	depends = papirus-folders
-	source = git+https://github.com/NiffirgkcaJ/papirus-folders-colorizer.git#tag=v4
-	sha256sums = 1b042b61c9ae20eb2f94fbe5e489d1c4550ac941fbe71a54c7df457e65b44ed1
+	source = git+https://github.com/NiffirgkcaJ/papirus-folders-colorizer.git#tag=v5
+	sha256sums = 484f1bf6cbafb36b3c6502601912aa7139324db77d6796877b1a2099ca32caab
 
 pkgname = gnome-shell-extension-papirus-folders-colorizer
