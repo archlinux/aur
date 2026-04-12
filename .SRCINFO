@@ -1,0 +1,14 @@
+pkgbase = magic-pack
+	pkgdesc = A CLI tool for compressing and decompressing files with multiple formats
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = https://github.com/zondatw/magic-pack
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = magic-pack-0.10.4.tar.gz::https://github.com/zondatw/magic-pack/archive/refs/tags/v0.10.4.tar.gz
+	sha256sums = 75ce9f75db90b32972d3eb4e1ff3da00f82fb59872194a2a621fe9f8c06a955a
+
+pkgname = magic-pack
