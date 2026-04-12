@@ -1,0 +1,22 @@
+pkgbase = streamdockd-bin
+	pkgdesc = StreamDock daemon — USB HID driver + web control UI for StreamDock macro pads
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mrksn/streamdockd
+	arch = x86_64
+	license = MIT
+	depends = python>=3.10
+	depends = python-pillow
+	depends = python-pyudev
+	depends = gcc-libs
+	depends = systemd-libs
+	optdepends = librsvg: SVG icon support via rsvg-convert (recommended)
+	optdepends = imagemagick: alternative SVG icon support
+	optdepends = inkscape: alternative SVG icon support
+	options = !strip
+	source = streamdockd-1.0.0.tar.gz::https://github.com/mrksn/streamdockd/archive/refs/tags/v1.0.0.tar.gz
+	source = sdk-bc08f2cffceb03b01adda185d056c8e8c824a480.tar.gz::https://github.com/MiraboxSpace/StreamDock-Device-SDK/archive/bc08f2cffceb03b01adda185d056c8e8c824a480.tar.gz
+	sha256sums = 58e432f5aeca9c1a4bc242f1e8b238d6b80e444fc1964a6b925fb5b086536c75
+	sha256sums = 4c9db9f155fbaa8747914c36e12cf90e485b05c5a57bdf173a79ee1746c66266
+
+pkgname = streamdockd-bin
