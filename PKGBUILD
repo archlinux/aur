@@ -1,19 +1,20 @@
-# Maintainer: Eldred Habert <arch@eldred.fr>
+# Maintainer: Adrian Siekierka <kontakt@asie.pl>
+# Contributor: Eldred Habert <arch@eldred.fr>
 # Contributor: kleines Filmröllchen <kleines@filmroellchen.eu>
 
-pkgname=mesen2-git
-pkgver=r3343.af9eda35
+pkgname=mesen-ce-git
+pkgver=r3573.85cb76e9
 pkgrel=1
-pkgdesc="Multi-system emulator (NES, SNES, Game Boy and PC Engine)"
+pkgdesc="Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS)"
 arch=('x86_64')
-url="https://www.mesen.ca"
+url="https://github.com/nesdev-org/MesenCE"
 license=('GPL3')
 depends=(libevdev sdl2)
 makedepends=(dotnet-sdk-8.0 git zip clang coreutils)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!strip !debug) # Reportedly, these break with C#..?
-source=(${pkgname%-git}::'git+https://github.com/SourMesen/Mesen2.git')
+source=(${pkgname%-git}::'git+https://github.com/nesdev-org/MesenCE.git')
 sha256sums=('SKIP')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
@@ -27,7 +28,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	MAKEFLAGS="${MAKEFLAGS} -j$(nproc)" make  LTO=true SYSTEM_LIBEVDEV=true STATICLINK=false USE_AOT=true # Uses Clang by default, which speeds up emulation by about 40%.
+	MAKEFLAGS="${MAKEFLAGS} -j$(nproc)" make LTO=true SYSTEM_LIBEVDEV=true STATICLINK=false USE_AOT=true # Uses Clang by default, which speeds up emulation by about 40%.
 }
 
 package() {
