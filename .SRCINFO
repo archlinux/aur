@@ -1,0 +1,20 @@
+pkgbase = whispers-bin
+	pkgdesc = Local-first speech-to-text dictation for Wayland (prebuilt release bundle)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/OneNoted/whispers
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = noto-fonts
+	depends = wl-clipboard
+	optdepends = python: experimental faster-whisper and NeMo runtimes
+	provides = whispers
+	conflicts = whispers
+	conflicts = whispers-git
+	source = whispers-bin-0.2.1.tar.gz::https://github.com/OneNoted/whispers/releases/download/v0.2.1/whispers-0.2.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = b5f1ce5d1e66cece42bb5129c0eb7ab93cc118a7e705847a4a1c8e75cd60ad1e
+
+pkgname = whispers-bin
