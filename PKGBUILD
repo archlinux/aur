@@ -1,29 +1,43 @@
 # Maintainer: Shorin <shorin@example.com>
 _pkgname=clipsync
 pkgname=clipsync-git
-pkgver=v1.1.0.r9.9bdda3f
-pkgrel=4
-pkgdesc="Clipboard synchronization script for Wayland Compositor (X11 <--> Wayland)"
-arch=('any')
+pkgver=0.1.0.r1.g1a2b3c4 
+pkgrel=1
+pkgdesc="Clipboard synchronization daemon for Wayland Compositor (X11 <--> Wayland)"
+arch=('x86_64' 'aarch64')
 url="https://github.com/SHORiN-KiWATA/clipsync"
 license=('MIT')
-depends=('xclip' 'wl-clipboard' 'clipnotify')
-makedepends=('git')
+depends=('xclip' 'wl-clipboard' 'clipnotify' 'gcc-libs' 'glibc')
+makedepends=('git' 'cargo')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+${url}.git")
-sha256sums=('SKIP') 
+
+# ====== 重点修改这里 ======
+source=("$_pkgname::git+${url}.git#branch=rust")
+# ========================
+
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    printf "v1.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
+prepare() {
+    cd "$_pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd "$_pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
+}
+
 package() {
     cd "$_pkgname"
-
-    # 1. 安装 3 个脚本到 /usr/bin
-    install -Dm755 clipsync     "${pkgdir}/usr/bin/clipsync"
-
-    # 2. 安装 Systemd 服务
+    install -Dm755 "target/release/clipsync" "${pkgdir}/usr/bin/clipsync"
     install -Dm644 clipsync.service "${pkgdir}/usr/lib/systemd/user/clipsync.service"
 }
