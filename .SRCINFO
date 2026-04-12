@@ -1,0 +1,16 @@
+pkgbase = archiveopds
+	pkgdesc = OPDS-server for INPX catalogs and external ZIP-files
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://git.derfenix.pro/derfenix/archiveopds
+	install = archiveopds.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = glibc
+	options = !lto
+	source = archiveopds-1.0.9.tar.gz::https://git.derfenix.pro/derfenix/archiveopds/archive/v1.0.9.tar.gz
+	sha256sums = 50df591688d61ce19ffef8cdce810377ebde579a820b1d00b7a2efeda8b794b9
+
+pkgname = archiveopds
