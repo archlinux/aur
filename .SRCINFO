@@ -1,7 +1,7 @@
 pkgbase = streamdockd-bin
 	pkgdesc = StreamDock daemon — USB HID driver + web control UI for StreamDock macro pads
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrksn/streamdockd
 	arch = x86_64
 	license = MIT
