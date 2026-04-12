@@ -4,7 +4,7 @@ pkgname=('linux-xanmod-x64v3' 'linux-xanmod-x64v3-headers')
 pkgver=6.19.12
 _xanmod=1
 pkgrel=1
-pkgdesc='XanMod Linux kernel optimized for x86-64-v3 (kernel + headers)'
+pkgdesc='XanMod Linux kernel optimized for x86-64-v3'
 arch=('x86_64')
 url='https://xanmod.org/'
 license=('GPL-2.0-only')
@@ -30,8 +30,6 @@ makedepends=(
 source=(
   "https://gitlab.com/xanmod/linux/-/archive/${pkgver}-xanmod${_xanmod}/linux-${pkgver}-xanmod${_xanmod}.tar.bz2"
 )
-
-validpgpkeys=('A509E685CA6460C8E76F67812FE95BE743E321FB')
 
 sha256sums=('ac06a50a48bf7270cdfee12663706b05e237a04c3e7b8674cc8905c7e409b1cc')
 
@@ -78,7 +76,7 @@ build() {
   [[ -f modules.builtin ]] && sed -i 's|^\./||' modules.builtin
 }
 
-_package_kernel() {
+package_linux-xanmod-x64v3() {
   pkgdesc='The XanMod Linux kernel and modules for x86-64-v3'
   depends=('coreutils' 'kmod' 'mkinitcpio')
 
@@ -105,7 +103,7 @@ _package_kernel() {
   printf '%s\n' "${pkgbase}" > "${pkgdir}/usr/lib/modules/${_kernver}/pkgbase"
 
   install -d "${pkgdir}/etc/mkinitcpio.d"
-  cat > "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset" << EOF2
+  cat > "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset" << EOF
 ALL_config="/etc/mkinitcpio.conf"
 ALL_kver="/boot/vmlinuz-${pkgbase}"
 
@@ -114,13 +112,13 @@ PRESETS=('default' 'fallback')
 default_image="/boot/initramfs-${pkgbase}.img"
 fallback_options="-S autodetect"
 fallback_image="/boot/initramfs-${pkgbase}-fallback.img"
-EOF2
+EOF
 
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/source"
 }
 
-_package_headers() {
+package_linux-xanmod-x64v3-headers() {
   pkgdesc='Headers and build scripts for XanMod Linux x86-64-v3'
 
   cd "${srcdir}/${_srcname}"
@@ -167,12 +165,4 @@ _package_headers() {
   \) -prune -exec rm -rf {} +
 
   ln -s build "${pkgdir}/usr/lib/modules/${_kernver}/source"
-}
-
-package_linux-xanmod-x64v3() {
-  _package_kernel
-}
-
-package_linux-xanmod-x64v3-headers() {
-  _package_headers
 }
