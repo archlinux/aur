@@ -1,4 +1,4 @@
-[r-quick-share]
+[r-quick-share-bin]
 source = "git"
 git = "https://github.com/Martichou/rquickshare.git"
 prefix = "v"
