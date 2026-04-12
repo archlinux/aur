@@ -5,8 +5,8 @@
 pkgname=llama.cpp-vulkan-gemma4
 _pkgname=${pkgname%%-vulkan-gemma4}
 pkgver=b8763
-pkgrel=1
-pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
+pkgrel=2
+pkgdesc="Port of Facebook's LLaMA model in C/C++ (Vulkan, Gemma 4 model fixes)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggml-org/llama.cpp'
 license=('MIT')

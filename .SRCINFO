@@ -1,7 +1,7 @@
 pkgbase = llama.cpp-vulkan-gemma4
-	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)
+	pkgdesc = Port of Facebook's LLaMA model in C/C++ (Vulkan, Gemma 4 model fixes)
 	pkgver = b8763
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
 	arch = armv7h
