@@ -1,7 +1,7 @@
 # Maintainer: BarbUk <julien.virey@gmail.com>
 
 pkgname=rackpeek
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='CLI tool to discover, manage, and document your IT infrastructure and home lab.'
 arch=(x86_64 aarch64)
@@ -15,7 +15,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/${url##*/}-$pkgver.tar.gz"
 )
 sha256sums=('14cd89ed266911aff4d52d76bb976a4cb3ad602cbbc939785a72fd3e45cd4c01'
-            '5addf6b4e04949d59d6a602675e6e6e224094970c855bbd2caab5e4d69be535e')
+            '5f05bb9e301694389c291a7bc45700b7852df62a5d7b77d58dbe428205796c8e')
 install=$pkgname.install
 
 case ${CARCH} in
@@ -40,7 +40,7 @@ build() {
     --runtime linux-$_CARCH \
     -o "$_artifacts" \
     /p:PublishSingleFile=true /p:Version=$pkgver /p:DebugSymbols=false \
-    && dotnet build-server shutdown # Build servers do not terminate automatically
+                                                                       && dotnet build-server shutdown # Build servers do not terminate automatically
 }
 
 package() {
