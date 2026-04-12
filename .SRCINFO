@@ -1,7 +1,7 @@
 pkgbase = elio
 	pkgdesc = Terminal-native file manager with rich previews, inline images, and mouse support
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/elio-fm/elio
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = elio
 	optdepends = resvg: SVG rasterization
 	optdepends = 7zip: archive and comic archive preview fallback
 	optdepends = libarchive: archive and ISO listing fallback through bsdtar
+	conflicts = elio-bin
 	options = !lto
 	source = elio-1.0.0.tar.gz::https://crates.io/api/v1/crates/elio/1.0.0/download
 	sha256sums = a03521ddfde748a4454e9b1f0288ea69d8fb37f62d0331a79fa11f5a9ada01ae

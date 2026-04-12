@@ -2,13 +2,14 @@
 
 pkgname=elio
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Terminal-native file manager with rich previews, inline images, and mouse support'
 arch=('x86_64')
 url='https://github.com/elio-fm/elio'
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
+conflicts=('elio-bin')
 options=('!lto')
 optdepends=(
   'poppler: PDF metadata and rendered page previews'
