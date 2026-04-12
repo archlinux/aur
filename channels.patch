@@ -1,0 +1,53 @@
+diff '--color=auto' -aur src.old/telegnome-0.3.7/src/default-channels.cfg src/telegnome-0.3.7/src/default-channels.cfg
+--- src.old/telegnome-0.3.7/src/default-channels.cfg	2025-03-28 12:16:04.000000000 +0100
++++ src/telegnome-0.3.7/src/default-channels.cfg	2026-04-12 09:33:28.845043318 +0200
+@@ -21,22 +21,36 @@
+ [cz]
+ Name=Teletext ČT, Czech Republic
+ Description=Czech teletext
+-PageURL=http://www.ceskatelevize.cz/services/teletext/picture.php?channel=CT1&page=%03d
++PageURL=https://api-teletext.ceskatelevize.cz/services-old/teletext/picture.php?channel=CT2&page=%03d
+ Country=cz
+ 
+-[fi-yle]
+-Name=YLE Teksti-TV, Finland
+-Description=Finnish teletext (YLE)
+-PageURL=http://www.yle.fi/tekstitv/images/P%03d_01.gif
+-SubpageURL=http://www.yle.fi/tekstitv/images/P%03d_%02d.gif
+-Country=fi
++[at-orf1]
++Name=ORF1, Austria
++Description=Austrian teletext (ORF1)
++PageURL=https://appmeta.orf.at/teletext/orf1/%03d_0001.png
++SubpageURL=https://appmeta.orf.at/teletext/orf1/%03d_%04d.png
++Country=at
+ 
+-[fi-mtv]
+-Name=MTV3 Tekstikanava, Finland
+-Description=Finnish teletext (MTV3)
+-PageURL=http://www.mtvtekstikanava.fi/new2008/images/%03d-01.gif
+-SubpageURL=http://www.mtvtekstikanava.fi/new2008/images/%03d-%02d.gif
+-Country=fi
++[at-orf2]
++Name=ORF2, Austria
++Description=Austrian teletext (ORF2)
++PageURL=https://appmeta.orf.at/teletext/orf2/%03d_0001.png
++SubpageURL=https://appmeta.orf.at/teletext/orf2/%03d_%04d.png
++Country=at
++
++[at-orfiii]
++Name=ORF III, Austria
++Description=Austrian teletext (ORF III)
++PageURL=https://appmeta.orf.at/teletext/orfiii/%03d_0001.png
++SubpageURL=https://appmeta.orf.at/teletext/orfiii/%03d_%04d.png
++Country=at
++
++[at-orfsport]
++Name=ORF Sport+, Austria
++Description=Austrian teletext (ORF Sport+)
++PageURL=https://appmeta.orf.at/teletext/sportplus/%03d_0001.png
++SubpageURL=https://appmeta.orf.at/teletext/sportplus/%03d_%04d.png
++Country=at
+ 
+ [hu]
+ Name=MTV1, Hungary
