@@ -15,11 +15,9 @@ optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
 provides=(coreutils)
 conflicts=({uutils-,}coreutils)
 source=("${pkgname%-git}::git+${url}.git"
-"tee.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11686.patch"
 "yes-boost.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11458.patch"
 "${url}/releases/download/latest-commit/docs.tar.zst")
 b2sums=('SKIP'
-        'dbec4e3bffcee0989fe954dc5ffe0fdf537a9c9eb637a2c5c48baa108b731526887a1c93489fef2470d874a0da7fd8ecc83e2b2b88327d39ca577204de4829f6'
         'f1e2d0dd807e42815d48ffc6c25cabcdd3fac3d32568c4f90656ae623842d1f0e77f3fc393bc589e1ce9e7fa6f78749694cb72d5be38769ce694cc7f08eb1ff7'
         'SKIP')
 pkgver() {
@@ -33,7 +31,6 @@ export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no" # Use old rust's panic
 [ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS='-Zbuild-std=std,panic_abort --config=profile.release.panic=\"immediate-abort\" -Zpanic-immediate-abort'
 package(){
   cd ${pkgname%-git}
-  git apply -v -p1 ../tee.patch
   git apply -v -p1 ../yes-boost.patch
   unset optdepends
   export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release MULTICALL=y LN="ln -f" MANPAGES=n COMPLETIONS=n #LOCALES=n
