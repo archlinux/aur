@@ -1,14 +1,16 @@
 # Maintainer: Stephanie M. shteppi@dorcus.digital
 # AUR Package for Fluxer TUI (git version)
 pkgname=fluxer-tui-git
-pkgver=0.6.9.r0.g0000000
-pkgrel=1
+pkgver=0.7.0.r0.g0000000
+pkgrel=3
 pkgdesc="A terminal-based chat client for the Fluxer messaging platform (git version)"
 arch=('x86_64')
 url="https://github.com/dogbonewish/fluxer-tui"
 license=('MIT')
+# ring (via rustls) + Arch default LTO flags: see fluxer-tui PKGBUILD / ring#1444
+options=('!lto')
 depends=('gcc-libs')
-makedepends=('rust' 'cargo' 'git' 'nasm')
+makedepends=('cargo' 'git' 'nasm')
 provides=('fluxer-tui')
 conflicts=('fluxer-tui')
 source=("fluxer-tui::git+https://github.com/dogbonewish/fluxer-tui.git")
@@ -17,13 +19,6 @@ sha256sums=('SKIP')
 pkgver() {
     cd "fluxer-tui"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "fluxer-tui"
-    # Force native gcc instead of x86_64-linux-gnu-gcc (fixes ring crate linking)
-    mkdir -p .cargo
-    printf '[target.x86_64-unknown-linux-gnu]\nlinker = "gcc"\n' > .cargo/config.toml
 }
 
 build() {
