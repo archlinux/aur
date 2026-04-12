@@ -1,8 +1,8 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=steamclip
-pkgver=4.5
-pkgrel=2
+pkgver=4.6
+pkgrel=1
 pkgdesc='A simple PYTHON script to convert Steam recordings to .mp4 files'
 arch=(any)
 url=https://github.com/Nastas95/SteamClip
@@ -15,14 +15,8 @@ depends=(
 	python-pyqt6
 	python-requests
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        https://github.com/Nastas95/SteamClip/commit/df56098d262ad94c8526b30d0175c61396a21c01.patch)
-sha256sums=('2758be726eb23859e7a610ce22c427ab93f645f8d212890473d834806130d16a'
-            'cef49c8f37e65f1b76c4058338fafd8ee8240db2720d4961f6f4ac65f856cf21')
-
-prepare() {
-    patch -d "SteamClip-${pkgver}" -Np1 -i ../df56098d262ad94c8526b30d0175c61396a21c01.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ecb2ccd5d601e8c64bbbdc1f4487c76edaddc1277a6544bc53e6d49b14f379d7')
 
 package() {
     install -Dm755 "SteamClip-${pkgver}/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
