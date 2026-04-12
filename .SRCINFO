@@ -1,0 +1,17 @@
+pkgbase = tuxmeter-bin
+	pkgdesc = An open source AI subscription limit tracker for Linux
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/debba/tuxmeter
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libsecret
+	provides = tuxmeter
+	conflicts = tuxmeter
+	source = tuxmeter_0.0.1_amd64.deb::https://github.com/debba/tuxmeter/releases/download/v0.0.1/tuxmeter_0.0.1_amd64.deb
+	sha256sums = SKIP
+
+pkgname = tuxmeter-bin
