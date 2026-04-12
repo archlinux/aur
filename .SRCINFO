@@ -1,0 +1,19 @@
+pkgbase = counter-strike-source-git 
+	pkgdesc = Community Launcher for Counter-Strike: Source (CSS) 
+	pkgver = r1.gabcdef0
+	pkgrel = 1
+	url = https://github.com/Skoczi/css_linux
+	arch = x86_64
+	license = custom:unknown
+	makedepends = git
+	makedepends = npm
+	makedepends = nodejs
+	depends = electron
+	depends = libxss
+	depends = nss
+	provides = csco-launcher
+	conflicts = csco-launcher
+	source = csco-launcher-git::git+https://codeberg.org/Skoczi/csco-launcher
+	sha256sums = SKIP
+
+pkgname = counter-strike-source-git 
