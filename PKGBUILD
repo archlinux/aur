@@ -2,7 +2,7 @@
 
 _gpuarch=gfx1151
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
-pkgver=7.13.0a20260409
+pkgver=7.13.0a20260411
 pkgrel=1
 pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
 arch=('x86_64')
@@ -34,7 +34,7 @@ provides=("${_rocm_packages[@]}" "rocm=${pkgver}")
 conflicts=("${_rocm_packages[@]}" "rocm")
 options=('!strip' '!debug')
 source=("${url}/tarball/therock-dist-linux-${_gpuarch}-${pkgver}.tar.gz")
-sha256sums=('f9768de1d5f20dda18ea7fee82ea6325c5f5cf6cadbe3a8deb1784201d430623')
+sha256sums=('878f390c2a922e34b614a7390bcc9cc4fdba3c0bf8b17d7f8b8e91d749aacb40')
 
 package() {
     local _tarball_name=$(basename "${source[0]}")
