@@ -1,0 +1,22 @@
+pkgbase = huiontablet-frego
+	pkgdesc = Official Huion Tablet Frego Driver
+	pkgver = 15.0.0.C162
+	pkgrel = 1
+	url = https://www.huion.com/download/
+	install = huiontablet-frego.install
+	arch = x86_64
+	license = custom:LGPL
+	depends = libx11
+	depends = libxext
+	depends = libxrandr
+	depends = libxtst
+	depends = libxrender
+	depends = libxkbcommon
+	depends = libxcb
+	depends = dbus
+	depends = gcc-libs
+	depends = xdotool
+	options = !strip
+	options = !debug
+
+pkgname = huiontablet-frego

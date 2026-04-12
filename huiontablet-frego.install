@@ -1,0 +1,47 @@
+# Pre-install: kill running huion processes
+pre_install() {
+    echo "Stopping Huion driver processes..."
+    killall huiontablet 2>/dev/null || true
+    killall huionCore 2>/dev/null || true
+}
+
+# Post-install: reload udev rules
+post_install() {
+    echo "Reloading udev rules..."
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger 2>/dev/null || true
+    
+    echo ""
+    echo "==> HuionTablet driver installed successfully."
+    echo "==> Please reboot your system or replug your tablet for the driver to work."
+    echo "==> You can launch the driver from your application menu or by running:"
+    echo "==>   /usr/lib/huiontablet/huiontablet.sh"
+}
+
+# Pre-remove: kill running huion processes
+pre_remove() {
+    echo "Stopping Huion driver processes..."
+    killall huiontablet 2>/dev/null || true
+    killall huionCore 2>/dev/null || true
+}
+
+# Post-remove: reload udev rules and clean up
+post_remove() {
+    echo "Reloading udev rules..."
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger 2>/dev/null || true
+
+    # Clean up user-specific PID and log files
+    rm -f /home/*/.HuionCore.pid 2>/dev/null || true
+    rm -f /home/*/.DriverUI.pid 2>/dev/null || true
+    rm -f /home/*/.huion.log 2>/dev/null || true
+
+    echo "HuionTablet has been uninstalled."
+}
+
+# Post-upgrade: reload udev rules
+post_upgrade() {
+    echo "Reloading udev rules..."
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger 2>/dev/null || true
+}
