@@ -1,7 +1,7 @@
 pkgname=xero-music
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
-pkgdesc='Terminal music player written in Rust with album art and synced lyrics'
+pkgdesc='TUI music player written in Rust with album art and synced lyrics'
 arch=('x86_64')
 url='https://codeberg.org/Xero-music/Xero'
 license=('GPL-3.0-or-later')
@@ -13,7 +13,7 @@ optdepends=(
   'kitty: kitty icat integration for album-art rendering'
 )
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/Xero-music/Xero/archive/v$pkgver.tar.gz")
-sha256sums=('d74491719e61fb152c4b3253e4c6e262294af821a4b5e123b76ec1ede1442f2c')
+sha256sums=('f13cea841b8f45a39d11b30c2f4aa7cf49b9d6d7b4647b214209d48305316b41')
 
 build() {
   cd "$srcdir/xero"
