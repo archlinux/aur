@@ -1,7 +1,7 @@
 pkgbase = pinnacle-comp
 	pkgdesc = A Wayland compositor inspired by AwesomeWM
 	pkgver = 0.2.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pinnacle-comp/pinnacle
 	arch = x86_64
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = pinnacle-comp
 	depends = xorg-xwayland
 	depends = protobuf
 	depends = lua
-	depends = lua-cqueues
+	depends = lua54-cqueues
 	depends = lua-http
 	depends = lua-protobuf
 	depends = lua-posix

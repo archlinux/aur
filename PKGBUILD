@@ -3,7 +3,7 @@
 pkgname=pinnacle-comp
 _pkgname=pinnacle
 pkgver=0.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A Wayland compositor inspired by AwesomeWM"
 arch=(x86_64 aarch64)
 url="https://github.com/pinnacle-comp/$_pkgname"
@@ -21,7 +21,7 @@ depends=(
     protobuf
     # Lua API
     lua
-    lua-cqueues
+    lua54-cqueues
     lua-http
     lua-protobuf
     lua-posix
