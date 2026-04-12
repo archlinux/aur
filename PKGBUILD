@@ -1,7 +1,8 @@
 # Maintainer: John Boyd <boyd8444@sdf.org>
+
 pkgname=librdata-git
 pkgver=r125.33bd276
-pkgrel=1
+pkgrel=2
 pkgdesc="RData file parser library"
 arch=('x86_64')
 url="https://github.com/WizardMac/librdata"
@@ -18,8 +19,9 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/librdata"
-  export ACLOCAL_PATH="/usr/share/gettext/m4:/usr/share/aclocal"
-  ./autogen.sh
+  if [[ ! -f configure ]]; then
+    autoreconf -fi
+  fi
 }
 
 build() {
@@ -38,3 +40,4 @@ package() {
   make DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
