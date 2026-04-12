@@ -1,15 +1,14 @@
 pkgname=netchecker
-pkgver=v1.0.1
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Simple network checker with JSON configuration"
 arch=('any')
 url="https://github.com/radlesner/netchecker"
 license=('GPL-2.0')
 depends=('bash' 'jq' 'iputils')
-makedepends=('git')
 
-source=("$pkgname::git+$url")
-md5sums=('SKIP')
+source=("$pkgname::git+$url#tag=v$pkgver")
+sha256sums=('SKIP')
 
 package() {
   cd "$pkgname"
