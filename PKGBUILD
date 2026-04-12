@@ -13,6 +13,9 @@ sha256sums=('667b12f67b297d424ac7d7e57ef8a3d4b0b6fa6271eb69f5c36ed9caabc01365')
 
 build() {
   cd "$pkgname-$pkgver"
+  export RUSTFLAGS="-C linker=gcc"
+  export CFLAGS=""
+  export LDFLAGS=""
   cargo build --release --locked
 }
 
