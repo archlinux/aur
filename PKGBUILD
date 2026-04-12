@@ -12,7 +12,7 @@ optdepends=('libnotify: desktop notifications on session expiry'
 conflicts=('waybar-codex-usage')
 provides=('waybar-codex-usage')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mryll/codexbar/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3fa1feb7bdaf8485e05f66b44acf30524a665f14c93615b49a1c6a459def27e5')
+sha256sums=('bd37ae07843515e248a61f56aa3d1eab86376c8f5ffc26aa9ce894cb4e0b8029')
 
 package() {
     cd "$pkgname-$pkgver"
