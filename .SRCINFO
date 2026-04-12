@@ -1,6 +1,6 @@
 pkgbase = hyprquery-git
 	pkgdesc = CLI utility to query Hyprland config values
-	pkgver = 0.0.0
+	pkgver = 0.r53.g12124aa
 	pkgrel = 1
 	url = https://github.com/HyDE-Project/hyprquery
 	arch = x86_64
