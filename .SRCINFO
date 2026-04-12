@@ -1,6 +1,6 @@
 pkgbase = vlang-bin
 	pkgdesc = Simple compiled language for developing maintainable software (binary release)
-	pkgver = 0.4.12
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://vlang.io
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = vlang-bin
 	provides = vlang
 	conflicts = vlang
 	options = !strip
-	source = vlang-0.4.12.zip::https://github.com/vlang/v/releases/download/0.4.12/v_linux.zip
+	source = vlang-0.5.1.zip::https://github.com/vlang/v/releases/download/0.5.1/v_linux.zip
 	sha256sums = 9d32751ec36b89b9f8107d8e7e3affd148e54934d169712123def3ed134ddced
 
 pkgname = vlang-bin

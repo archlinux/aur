@@ -1,11 +1,12 @@
 # Maintainer: envolution
+# Maintainer: WeeXnes <weexnes@weexnes.dev>
 # Contributor: Jef Roosens
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 _pkgname=vlang
 pkgname=vlang-bin
-pkgver=0.4.12
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Simple compiled language for developing maintainable software (binary release)'
 arch=('x86_64')
@@ -21,7 +22,7 @@ optdepends=('glfw: Needed for graphics support'
   'glfw: Graphics support'
   'openssl: Needed for http support')
 source=("${_pkgname}-${pkgver}.zip::https://github.com/vlang/v/releases/download/${pkgver}/v_linux.zip")
-sha256sums=('9d32751ec36b89b9f8107d8e7e3affd148e54934d169712123def3ed134ddced')
+sha256sums=('0c35c79343b308e0415619d8e6d8da340c6a24c18331123553cc686ffb18abf4')
 
 build() {
   cd v
