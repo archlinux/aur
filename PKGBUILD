@@ -3,7 +3,7 @@
 
 pkgname=dump978-fa-git
 _gitname=dump978
-pkgver=7.2.r0.g6782809
+pkgver=10.2.r0.ge827042
 pkgrel=1
 epoch=1
 pkgdesc="FlightAware/Mutability fork of dump978, a simple Mode S decoder for RTLSDR devices."
@@ -16,17 +16,24 @@ backup=('etc/default/dump978')
 source=('dump978::git+https://github.com/flightaware/dump978'
         'dump978.default'
         'dump978.sysusers'
-	'dump978.service')
+        'dump978.service'
+        'dump978-boost-1.90-compat.patch')
 provides=("dump978=${pkgver}" "dump978-fa=${pkgver}")
 conflicts=('dump978' 'dump978-fa')
 
 sha256sums=('SKIP'
             '95b98905c6dc330392244aee324c13900392a09088d3075b69fb08df150f6930'
             '722bd9ee0bb6dad3f15e0e8c0d92c6fe405e6670ee150f6d799f124417ea30d7'
-            'c95d8557432900d49bfa6f366419e9df22a5629a3c1f86135c15a8c28a6d4335')
+            'c95d8557432900d49bfa6f366419e9df22a5629a3c1f86135c15a8c28a6d4335'
+            'f24ff764519043273e0ea8c429dd590eb071c5a16fa179eb7f1e92672b84b9af')
 pkgver() {
   cd "${srcdir}/${_gitname}"
   git describe --long --tags --match=v* | sed 's/dev.//g' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${_gitname}"
+  patch -p1 < "${srcdir}/dump978-boost-1.90-compat.patch"
 }
 
 build() {

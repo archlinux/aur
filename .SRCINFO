@@ -1,6 +1,6 @@
 pkgbase = dump978-fa-git
 	pkgdesc = FlightAware/Mutability fork of dump978, a simple Mode S decoder for RTLSDR devices.
-	pkgver = 7.2.r0.g6782809
+	pkgver = 10.2.r0.ge827042
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/flightaware/dump978
@@ -15,8 +15,8 @@ pkgbase = dump978-fa-git
 	depends = bladerf>=2.0.2
 	depends = soapyrtlsdr
 	depends = boost-libs
-	provides = dump978=7.2.r0.g6782809
-	provides = dump978-fa=7.2.r0.g6782809
+	provides = dump978=10.2.r0.ge827042
+	provides = dump978-fa=10.2.r0.ge827042
 	conflicts = dump978
 	conflicts = dump978-fa
 	backup = etc/default/dump978
@@ -24,9 +24,11 @@ pkgbase = dump978-fa-git
 	source = dump978.default
 	source = dump978.sysusers
 	source = dump978.service
+	source = dump978-boost-1.90-compat.patch
 	sha256sums = SKIP
 	sha256sums = 95b98905c6dc330392244aee324c13900392a09088d3075b69fb08df150f6930
 	sha256sums = 722bd9ee0bb6dad3f15e0e8c0d92c6fe405e6670ee150f6d799f124417ea30d7
 	sha256sums = c95d8557432900d49bfa6f366419e9df22a5629a3c1f86135c15a8c28a6d4335
+	sha256sums = f24ff764519043273e0ea8c429dd590eb071c5a16fa179eb7f1e92672b84b9af
 
 pkgname = dump978-fa-git
