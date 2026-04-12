@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-bubblemail
 	pkgdesc = New and unread mail indicator (Local, Imap, Pop3, Gmail, Yahoo mail...) for gnome shell
-	pkgver = 27
+	pkgver = 29
 	pkgrel = 0
 	url = https://framagit.org/razer/bubblemail-gnome-shell/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-bubblemail
 	depends = dconf
 	depends = gnome-shell
 	depends = bubblemail
-	source = https://framagit.org/razer/bubblemail-gnome-shell/-/archive/v27/bubblemail-gnome-shell-v27.tar.bz2
-	sha256sums = d241acdbf8d82f1ae0910bfc5cfc7872e1fdb2331415257fbe20d65965bcdfc3
+	source = https://framagit.org/razer/bubblemail-gnome-shell/-/archive/v29/bubblemail-gnome-shell-v29.tar.bz2
+	sha256sums = 591082e12fee74bb616c5750c47dc714dcb7bab1547fb28288e3c1548d7e351b
 
 pkgname = gnome-shell-extension-bubblemail
