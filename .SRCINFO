@@ -1,15 +1,15 @@
 pkgbase = fluxer-tui
 	pkgdesc = A terminal-based chat client for the Fluxer messaging platform
-	pkgver = 0.6.9
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/dogbonewish/fluxer-tui
 	arch = x86_64
 	license = MIT
-	makedepends = rust
 	makedepends = cargo
 	makedepends = nasm
 	depends = gcc-libs
-	source = fluxer-tui-0.6.9.tar.gz::https://github.com/dogbonewish/fluxer-tui/archive/refs/tags/v0.6.9.tar.gz
-	sha256sums = 5024193a96d64494634b19356c414fb68b791dc1ad995e99117b526e036df6b1
+	options = !lto
+	source = fluxer-tui-0.7.0.tar.gz::https://github.com/dogbonewish/fluxer-tui/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = bcfcadd5f0a64d4dea9e5f3ee09816272b8b3520f30c8cb4a6c1a58dc3412019
 
 pkgname = fluxer-tui
