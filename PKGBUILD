@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <https://rys.rs/contact>
 pkgname=tts-mod-vault
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Cross-platform Tabletop Simulator mod backup & download tool'
 arch=('x86_64')
 url='https://github.com/markomijic/TTS-Mod-Vault'
@@ -42,7 +42,7 @@ package() {
 	cp -a build/linux/x64/release/bundle/. "${pkgdir}/opt/${pkgname}/"
 
 	install -dm755 "${pkgdir}/usr/bin"
-	ln -s "/opt/${pkgname}/tts_mod_vault" "${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/opt/${pkgname}/tts_mod_vault" "${pkgdir}/usr/bin/tts_mod_vault"
 
 	# Install the icons
 	install -Dm644 "macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/tts_mod_vault.png"
