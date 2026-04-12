@@ -1,19 +1,23 @@
 pkgbase = graywolf
-	pkgdesc = An oopensource placement tool
-	pkgver = 0.1.6
+	pkgdesc = APRS radio transceiver, digipeater, and Internet gateway
+	pkgver = 0.7.18
 	pkgrel = 1
-	url = https://github.com/rubund/graywolf/
-	arch = i686
+	url = https://github.com/chrissnell/graywolf
+	install = graywolf.install
 	arch = x86_64
-	license = GPL
-	makedepends = cmake
-	makedepends = gsl
-	depends = bash
-	depends = libx11
-	provides = libycadgraywolf.so
-	options = !makeflags
-	source = https://github.com/rubund/graywolf/archive/0.1.6.zip
-	sha512sums = 896665580c822c7b505e06e443a4b5e6e14c4061fee9addef87ffbd93cdf9841ba1d770f843d98e4fdd210bf61df4496dbc6b3ae7b8834ae3d564a8e5f72403a
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = go
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	depends = glibc
+	source = graywolf-0.7.18.tar.gz::https://github.com/chrissnell/graywolf/archive/v0.7.18.tar.gz
+	source = graywolf.service
+	source = graywolf.sysusers
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = graywolf
-
