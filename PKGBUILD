@@ -19,7 +19,6 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/Observer-$pkgver/app"
     # Set environment variables to fix ring crate compilation
     export CC=gcc
     export CXX=g++
@@ -30,6 +29,14 @@ build() {
     export CXXFLAGS="-fPIC -O2"
     export LDFLAGS="-Wl,-z,now -Wl,-z,relro"
     export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS="-C target-cpu=native"
+
+    # Build the observe CLI sidecar first
+    cargo build --release --manifest-path "$srcdir/Observer-$pkgver/cli/Cargo.toml"
+    mkdir -p "$srcdir/Observer-$pkgver/app/desktop/binaries"
+    cp "$srcdir/Observer-$pkgver/cli/target/release/observe" \
+       "$srcdir/Observer-$pkgver/app/desktop/binaries/observe-x86_64-unknown-linux-gnu"
+
+    cd "$srcdir/Observer-$pkgver/app"
     # Disable signing for packaging
     unset TAURI_SIGNING_PRIVATE_KEY
     unset TAURI_SIGNING_PRIVATE_KEY_PASSWORD
@@ -42,8 +49,9 @@ build() {
 
 package() {
     cd "$srcdir/Observer-$pkgver"
-    # Install the binary directly from the release build
+    # Install the binaries
     install -Dm755 "app/desktop/target/release/app" "$pkgdir/usr/bin/observer-ai"
+    install -Dm755 "cli/target/release/observe" "$pkgdir/usr/bin/observe"
     
     # Install the static files that Tauri expects
     install -dm755 "$pkgdir/usr/lib/Observer/_up_"
