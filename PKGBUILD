@@ -1,6 +1,6 @@
 # Maintainer: Assaf Sapir <assaf@example.com>
 pkgname=naruto-git
-pkgver=r3.ebb81c1
+pkgver=r14.2488502
 pkgrel=1
 pkgdesc="Smart AUR helper CLI (development version)"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/naruto"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  # Ignore the checked-in AUR metadata so CI sync commits do not bump pkgver.
+  local paths=('.' ':(exclude)aur/naruto-git/**')
+  printf "r%s.%s" \
+    "$(git rev-list --count HEAD -- "${paths[@]}")" \
+    "$(git log -1 --format=%h -- "${paths[@]}")"
 }
 
 build() {
