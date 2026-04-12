@@ -1,9 +1,9 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=workbuddy-bin
-pkgver=4.9.1.25024097
+pkgver=4.9.3.25145143
 pkgrel=1
-_commit=2ff879d4
+_commit=f10cab22
 pkgdesc="Work Smart，Not Hard"
 arch=('x86_64' 'aarch64')
 url="https://www.codebuddy.ai/agents"
@@ -31,9 +31,15 @@ prepare() {
 }
 
 build() {
-	npm install @vscode/sqlite3 @vscode/ripgrep @vscode/spdlog --no-save
+	npm install @vscode/ripgrep --no-save
 	cp -a node_modules/* WorkBuddy/WorkBuddy.app/Contents/Resources/app/node_modules/
 	icns2png -x WorkBuddy/WorkBuddy.app/Contents/Resources/WorkBuddy.icns
+	cd WorkBuddy/WorkBuddy.app/Contents/Resources/app
+	for mod in @vscode/sqlite3 @vscode/spdlog;do
+		cd node_modules/${mod}
+		node-gyp rebuild
+		cd -
+	done
 }
 
 package() {
