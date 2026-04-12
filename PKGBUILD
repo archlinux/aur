@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
-pkgver=1.2.110
+pkgver=1.2.111
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -18,6 +18,7 @@ optdepends=(
     'codecserver-softmbe: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec'
     'codecserver-mbelib-module: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec'
     'codec2: demodulate FreeDV digital transmissions'
+    'radae-decoder-git: demodulate FreeDV RADEv1 digital voice transmissions'
     'm17-cxx-demod: demodulate M17 digital voice signals'
     'wsjtx: decode FT8, FST4, FST4, Q65 digital modes'
     'msk144decoder: decode the MSK144 digimode'
@@ -26,6 +27,7 @@ optdepends=(
     'js8call: decode JS8'
     'dream-nox: decode DRM broadcasts'
     'dump1090: decode Mode-S and ADS-B traffic'
+    'dump978: decoding UAT airplane communications'
     'rtl_433: decode various signals in the ISM bands'
     'dumphfdl: decoding HFDL airplane communications'
     'dumpvdl2-git: decoding VDL Mode 2 airplane communications'
@@ -37,7 +39,8 @@ optdepends=(
     'dablin: decode DAB broadcast signals'
     'satdump: receive weather satellite transmissions'
     'nrsc5: decode HDRadio broadcasts'
-    'csdr-cwskimmer: decode multiple CW signals at once'
+    'csdr-skimmer: decode multiple CW signals at once'
+    'radiosonde_auto_rx: decode radiosonde data'
     # tools
     'imagemagick: automatically convert received images to the PNG format'
     'sox: sound processing tools'
@@ -50,6 +53,7 @@ optdepends=(
     'soapyrtlsdr: provides additional support for rtl-sdr devices, such as the direct sampling mod'
     'soapysdrplay: interfacing with SDRPlay devices'
     'soapymiri-git: interfacing with Mirics-based hardware (MSi001 + MSi2500)'
+    'soapy-malahit-rr: interfacing with Malahit devices'
     'soapyhackrf: interfacing with HackRF devices'
     'libperseus-sdr: use the Microtelecom Perseus HF receiver'
     'soapyairspy: interfacing with Airspy devices (Airspy R2, Airspy Mini)'
@@ -73,7 +77,7 @@ source=(
     'openwebrx-plus.sysusers'
     'openwebrx-plus.tmpfiles'
 )
-sha256sums=('8f8094c74c22be7ecc6c488d1d6d51b27b9422dbc32cd1170fbf52096f7c0e4b'
+sha256sums=('d1b5ff2335c0c900302059acf0cc0c874bf68e0b64e3d73ee2618ca1bd9f62cb'
             '4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997'
             'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade')
 provides=('openwebrx')
