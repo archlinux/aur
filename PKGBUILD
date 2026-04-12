@@ -9,7 +9,7 @@
 pkgname=jellyfin-desktop-libmpv-git
 _gitname=mpv
 epoch=1
-pkgver=0.r54492.410d8ae
+pkgver=0.r54872.283e5c5
 pkgrel=1
 pkgdesc='libmpv for jellyfin-desktop'
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=('git'
 provides=('jellyfin-desktop-libmpv')
 replaces=('jellyfin-desktop-cef-libmpv-git')
 options=('!emptydirs')
-source=('git+https://github.com/andrewrabert/mpv#branch=libmpv-vulkan-gpu-next'
+source=('git+https://github.com/andrewrabert/mpv#branch=cef-mpv'
         'find-deps.py')
 sha256sums=('SKIP'
             '1ba780ede4a28b68ae5b7ab839958ff91ed01d3c6c1d24cce8a5dd24492f8d2b')
@@ -76,7 +76,6 @@ package() {
   install -Dm644 "$srcdir/$_gitname/include/mpv/client.h" "$pkgdir/opt/jellyfin-desktop/libmpv/include/mpv/client.h"
   install -Dm644 "$srcdir/$_gitname/include/mpv/render.h" "$pkgdir/opt/jellyfin-desktop/libmpv/include/mpv/render.h"
   install -Dm644 "$srcdir/$_gitname/include/mpv/render_gl.h" "$pkgdir/opt/jellyfin-desktop/libmpv/include/mpv/render_gl.h"
-  install -Dm644 "$srcdir/$_gitname/include/mpv/render_vk.h" "$pkgdir/opt/jellyfin-desktop/libmpv/include/mpv/render_vk.h"
   install -Dm644 "$srcdir/$_gitname/include/mpv/stream_cb.h" "$pkgdir/opt/jellyfin-desktop/libmpv/include/mpv/stream_cb.h"
 
   # Update dependencies automatically based on dynamic libraries
