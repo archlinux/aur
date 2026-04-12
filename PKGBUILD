@@ -4,7 +4,7 @@
 
 _lang=eng-rus
 pkgname="dict-freedict-${_lang}"
-_pkgver=2024.10.10
+_pkgver=2025.11.23
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="English -> Russian dictionary for dictd et al. from FreeDict.org"
@@ -16,7 +16,7 @@ makedepends=('freedict-tools')
 # Install file from dict-gcide (https://aur.archlinux.org/cgit/aur.git/tree/dict-gcide.install?h=dict-gcide)
 install="${pkgname}.install"
 source=("https://download.freedict.org/dictionaries/${_lang}/${_pkgver}/freedict-${_lang}-${_pkgver}.src.tar.xz")
-sha512sums=('bfb68bd4fce32785a73e504d827599360963d801757b55d527994eb54cbaeb295d5d43738d295a4be12bfe8584a29ade2283a8a6b11ca8c655614b5e32a44511')
+sha512sums=('fdee5ebdbe59c2a4293b875def3befdfddd990f95ecd10eb289eff22d815ed6d31267ca4695af66811ef368dd72b16342210475e044c995831e7931ce0e4bcfe')
 
 build()
 {
