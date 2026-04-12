@@ -1,0 +1,21 @@
+pkgbase = ai-quota-waybar-git
+	pkgdesc = Waybar custom module showing AI CLI tool (Claude Code / Codex / Gemini) quota usage
+	pkgver = r1.5ed5cb1
+	pkgrel = 1
+	url = https://github.com/komagata/ai-quota-waybar
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = jq
+	depends = curl
+	optdepends = claude-code: Claude Code quota tracking
+	optdepends = codex: Codex CLI quota tracking
+	optdepends = gemini-cli: Gemini CLI quota tracking
+	optdepends = waybar: status bar host
+	provides = ai-quota-waybar
+	conflicts = ai-quota-waybar
+	source = ai-quota-waybar::git+https://github.com/komagata/ai-quota-waybar.git
+	sha256sums = SKIP
+
+pkgname = ai-quota-waybar-git
