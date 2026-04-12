@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=iconic
-pkgver=2025.9.1
+pkgver=2026.4.1
 pkgrel=1
 pkgdesc="An application made for GNOME written in Rust to easily add images on top of folders"
 arch=('x86_64')
@@ -16,14 +16,13 @@ makedepends=(
   'cargo'
   'meson'
 )
-options=('!lto')
 source=("Iconic-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e76a0e4951bd1845b3f4ddc8d3f289b2c464185e9401c3e4f65dd537aaed0841')
+sha256sums=('ef372467332f421d78e0615ceeeebe574396f25b27cf3a1a69028166155a81f1')
 
 prepare() {
   cd "Iconic-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target host-tuple
 
   # This is not a Flatpak
   sed -i 's|app/share|usr/share|g' \
@@ -31,6 +30,8 @@ prepare() {
 }
 
 build() {
+  CFLAGS+=" -ffat-lto-objects"
+  CXXFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "Iconic-$pkgver" build
   meson compile -C build

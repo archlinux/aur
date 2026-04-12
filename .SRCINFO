@@ -1,6 +1,6 @@
 pkgbase = iconic
 	pkgdesc = An application made for GNOME written in Rust to easily add images on top of folders
-	pkgver = 2025.9.1
+	pkgver = 2026.4.1
 	pkgrel = 1
 	url = https://github.com/youpie/Iconic
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = iconic
 	depends = gtk4
 	depends = libadwaita
 	depends = libxml2
-	options = !lto
-	source = Iconic-2025.9.1.tar.gz::https://github.com/youpie/Iconic/archive/refs/tags/v2025.9.1.tar.gz
-	sha256sums = e76a0e4951bd1845b3f4ddc8d3f289b2c464185e9401c3e4f65dd537aaed0841
+	source = Iconic-2026.4.1.tar.gz::https://github.com/youpie/Iconic/archive/refs/tags/v2026.4.1.tar.gz
+	sha256sums = ef372467332f421d78e0615ceeeebe574396f25b27cf3a1a69028166155a81f1
 
 pkgname = iconic
