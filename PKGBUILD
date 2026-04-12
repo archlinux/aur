@@ -34,10 +34,6 @@ build() {
     pushd ./editor
     go build -ldflags="-linkmode external -X main.buildVersion=$pkgver -extldflags \"${LDFLAGS}\"" -o ../build ./cmd/...
     popd
-    
-    pushd ./extras
-    go build -ldflags="-linkmode external -X main.buildVersion=$pkgver -extldflags \"${LDFLAGS}\"" -o ../build ./cmd/...
-    popd
 }
 
 package() {
