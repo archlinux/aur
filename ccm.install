@@ -3,7 +3,7 @@
 
 post_upgrade() {
   # define the versions for which a change is needed
-	for test in 2.101-1 2.201-1 2.202-1 2.208-1 2.212-1 2.213-1 2.221-1 2.224-1 2.237-1 2.239-1; do
+	for test in 2.101-1 2.201-1 2.202-1 2.208-1 2.212-1 2.213-1 2.221-1 2.224-1 2.237-1 2.239-1 3.0-1; do
 		if [ "$(vercmp $2 $test)" -lt 0 ]; then
       cat <<END
 
