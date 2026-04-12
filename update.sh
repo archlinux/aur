@@ -155,6 +155,7 @@ cmd mv "$pkgbuild_tmp" PKGBUILD
 
 cmd makepkg || fail "makepkg failed"
 cmd makepkg --printsrcinfo >.SRCINFO  || fail "failed to regenerate .SRCINFO"
+cmd pkg/oh-my-pi/usr/bin/omp --version || fail "failed to run omp --version"
 cmd git add PKGBUILD .SRCINFO
 cmd git --no-pager diff --cached
 
