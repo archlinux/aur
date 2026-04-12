@@ -1,0 +1,31 @@
+pkgbase = linux-xanmod-x64v3
+	pkgdesc = XanMod Linux kernel optimized for x86-64-v3 (kernel + headers)
+	pkgver = 6.19.12
+	pkgrel = 1
+	url = https://xanmod.org/
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = bc
+	makedepends = bison
+	makedepends = cpio
+	makedepends = flex
+	makedepends = gettext
+	makedepends = inetutils
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = perl
+	makedepends = python
+	makedepends = rsync
+	makedepends = tar
+	makedepends = xz
+	makedepends = zstd
+	options = !debug
+	options = !strip
+	source = https://gitlab.com/xanmod/linux/-/archive/6.19.12-xanmod1/linux-6.19.12-xanmod1.tar.bz2
+	validpgpkeys = A509E685CA6460C8E76F67812FE95BE743E321FB
+	sha256sums = ac06a50a48bf7270cdfee12663706b05e237a04c3e7b8674cc8905c7e409b1cc
+
+pkgname = linux-xanmod-x64v3
+
+pkgname = linux-xanmod-x64v3-headers
