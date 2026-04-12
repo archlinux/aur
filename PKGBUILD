@@ -3,8 +3,8 @@
 # Contributor: envolution
 
 pkgname=llama.cpp
-pkgver=b8762
-pkgrel=2
+pkgver=b8763 # renovate: datasource=github-releases depName=ggml-org/llama.cpp
+pkgrel=3
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggml-org/llama.cpp'
@@ -29,7 +29,7 @@ optdepends=(
   'python-gguf: needed for convert_hf_to_gguf.py'
 )
 provides=(${pkgname})
-conflicts=(${pkgname} libggml ggml stable-diffusion.cpp)
+conflicts=(${pkgname} libggml ggml)
 options=(lto !debug)
 backup=("etc/conf.d/llama.cpp")
 source=(
@@ -37,7 +37,7 @@ source=(
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('00645848b60c180a78b0437d6231b90cc1d4b248180d7f221d7286eb686cbb26'
+sha256sums=('5bdb48d76549e11c0fbdc2a058538f1dd881830efc3fd5e44a11bf32d2bb2d70'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
