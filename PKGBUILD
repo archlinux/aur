@@ -1,13 +1,9 @@
 # Maintainer:
 # Contributor: Christian Boxdörfer <christian.boxdoerfer@posteo.de>
 
-## links
-# https://cboxdoerfer.github.io/fsearch
-# https://github.com/cboxdoerfer/fsearch
-
 _pkgname="fsearch"
 pkgname="$_pkgname-git"
-pkgver=0.2.3.r185.gd4ff61a
+pkgver=0.2.3.r294.g92caee8
 pkgrel=1
 pkgdesc="A fast graphical file search utility"
 url="https://github.com/cboxdoerfer/fsearch"
@@ -21,6 +17,7 @@ depends=(
 )
 makedepends=(
   'git'
+  'glib2-devel'
   'itstool'
   'meson'
 )
