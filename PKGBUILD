@@ -14,7 +14,7 @@ conflicts=('cranky')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/cranky-v${pkgver}-x86_64.tar.gz"
         "cranky.service::${url}/raw/main/contrib/systemd/cranky.service"
         "cranky-uwsm.service::${url}/raw/main/contrib/systemd/cranky-uwsm.service")
-sha256sums=('a31fd00c47461ec39a693ee4590b1cf44cd58405ac98fc44e13afe3f19e931f2'
+sha256sums=('d116b8dcfbcc2d592862570783a035ce68e6c925ec66eab06e5d1b3ce322be07'
             'c741f785ec0ec981755f59f33234c6ff6d350bfd9854755066625848a37a5407'
             'f5a71825ceef498bc0b9087a8f63ecfe6a383c927441babed21d3024a3d8bafe')
 
