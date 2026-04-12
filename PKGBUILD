@@ -6,7 +6,7 @@ pkgdesc='Daemon for Skwd Shell, a collection of Quickshell programs and widgets'
 arch=('x86_64')
 url='https://github.com/liixini/skwd-daemon'
 license=('MIT')
-makedepends=('cargo')
+makedepends=('cargo' 'gcc' 'pkgconf')
 depends=('gcc-libs')
 optdepends=(
   'ffmpeg: video wallpaper thumbnail extraction and conversion'
