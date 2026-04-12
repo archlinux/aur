@@ -1,0 +1,24 @@
+pkgbase = ie-r
+	pkgdesc = Instant Eyedropper Reborn — pixel-perfect color picker
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/miaupaw/ie-r
+	arch = x86_64
+	license = custom
+	makedepends = rust
+	makedepends = cargo
+	makedepends = clang
+	makedepends = pkg-config
+	depends = wayland
+	depends = pipewire
+	depends = libxkbcommon
+	depends = dbus
+	depends = fontconfig
+	depends = libx11
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxi
+	source = ie-r-0.1.0.tar.gz::https://github.com/miaupaw/ie-r/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = da97ea5e36f819511d5416b0bb81751fb8274c9e4e785c4117810624737d5729
+
+pkgname = ie-r
