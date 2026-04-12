@@ -3,14 +3,14 @@
 
 pkgname=dosbox-staging-git
 _pkgname=dosbox-staging
-pkgver=0.82.0.alpha.3568.g56f682e59
+pkgver=0.82.0.alpha.3587.g48c98ed84
 pkgrel=1
 pkgdesc="A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/dosbox-staging/dosbox-staging"
 license=('GPL2')
 depends=('sdl2-compat' 'sdl2_net' 'sdl2_image' 'opusfile' 'libslirp' 'alsa-lib' 'iir1' 'speexdsp' 'fluidsynth' 'munt' 'libpng' 'zlib-ng' 'libglvnd')
-makedepends=('meson' 'ninja' 'cmake')
+makedepends=('cmake' 'ninja' 'vcpkg')
 provides=("dosbox" "dosbox-staging")
 conflicts=("${provides[@]}")
 source=(
@@ -21,7 +21,8 @@ md5sums=(
 )
 
 prepare() {
-  mkdir -p "${srcdir}/${_pkgname}/resources/shaders/misc"
+  cd "${srcdir}/${_pkgname}"
+  CMAKE_INSTALL_PREFIX=/usr cmake --preset=release-linux
 }
 
 pkgver() {
@@ -30,7 +31,8 @@ pkgver() {
 }
 
 build() {
-  arch-meson build "${_pkgname}"
+  cd ${srcdir}/${_pkgname}
+  CMAKE_INSTALL_PREFIX=/usr cmake --build --preset=release-linux
 
   # Add current commit info to the README
   sed -i "s|%GIT_COMMIT%|$(git rev-parse main)|" "${srcdir}/${_pkgname}/docs/README.template"
@@ -40,7 +42,8 @@ build() {
 
 package() {
   # install all files
-  meson install -C build --destdir "${pkgdir}" --skip-subprojects libpng
+  cd ${srcdir}/${_pkgname}
+  CMAKE_INSTALL_PREFIX=/usr DESTDIR="${pkgdir}" cmake --install build/release-linux
 
   # dosbox-staging documents
   install -Dm 644 "${srcdir}/${_pkgname}/docs/README.template" "${pkgdir}/usr/share/doc/${_pkgname}/README"
