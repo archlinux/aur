@@ -8,7 +8,7 @@
 pkgname=emacs-lucid
 pkgver=30.2
 _pkgver_major=${pkgver/.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -70,10 +70,23 @@ options=(!strip)
 validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B'  # Eli Zaretskii <eliz@gnu.org>
               'CEA1DE21AB108493CC9C65742E82323B8F4353EE') # Stefan Kangas <stefankangas@gmail.com>
 _source_url_prefix="ftp://ftp.gnu.org/gnu/emacs"
-source=(${_source_url_prefix}/emacs-$pkgver.tar.xz
-        ${_source_url_prefix}/emacs-$pkgver.tar.xz.sig)
+source=(
+    ${_source_url_prefix}/emacs-$pkgver.tar.xz
+    ${_source_url_prefix}/emacs-$pkgver.tar.xz.sig
+    01_all_treesit-0.26.patch
+    02_all_ts-query-pred.patch
+)
 b2sums=('9163ba6bfab1010a156c669ac085ad363545d73e3ffac21c710b14b618df61a4c6a80a50fd3fa81d852c2ccace5080e614b679606fa584e28509f99ad6196784'
-        'SKIP')
+        'SKIP'
+        '6a4a556ff6e47234c34e6d9b47fd7b51b47f0b66a4a1e6672b604555d48275de7c06afd105b9c4abf9a34eb1fc2148178e97434b9ae92b0345137dc849d5895c'
+        '6f54ca35f5703a248a3db3b39d9666ee28424cdb7240bd0c7a612f387e1cedf9142b6f5b54d00f11b63b97f28d18d763c47b664c36be00e7b07e17cb741712b1')
+
+prepare() {
+  pushd emacs-${pkgver}
+  patch -Np1 < ../01_all_treesit-0.26.patch
+  patch -Np1 < ../02_all_ts-query-pred.patch
+  popd
+}
 
 build() {
   cd "$srcdir"/emacs-$pkgver
