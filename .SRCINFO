@@ -1,7 +1,7 @@
 pkgbase = sonic-keybind-daemon
 	pkgdesc = Daemon for Sonic-DE providing Global Keyboard Shortcut (Accelerator) functionality
-	pkgver = 6.6.3
-	pkgrel = 5
+	pkgver = 6.6.4
+	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-globalacceld
 	arch = x86_64
 	groups = sonicde
@@ -25,7 +25,7 @@ pkgbase = sonic-keybind-daemon
 	provides = kglobalacceld
 	conflicts = kglobalacceld
 	replaces = kglobalacceld
-	source = sonic-keybind-daemon-6.6.3.tar.gz::https://github.com/Sonic-DE/sonic-globalacceld/archive/refs/tags/6.6.3.tar.gz
-	sha256sums = ced39bb68b0d7517f582ef50f44b95a994324b2876c0c52f7dae10ba38cff25d
+	source = sonic-keybind-daemon-6.6.4.tar.gz::https://github.com/Sonic-DE/sonic-globalacceld/archive/refs/tags/6.6.4.tar.gz
+	sha256sums = 83aa0196fae72af999a08efe2fd290f07506398062e29cfa81d33201f6ec4139
 
 pkgname = sonic-keybind-daemon
