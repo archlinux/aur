@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Icinga Web 2 Interface"
 license=('GPL')
 arch=('any')
-depends=('php-legacy' 'icinga-php-library>=0.9.0' 'icinga-php-thirdparty>=0.11.0')
+depends=('php-interpreter' 'icinga-php-library>=0.9.0' 'icinga-php-thirdparty>=0.11.0')
 optdepends=('php-legacy-gd: export data to PDF'
             'php-legacy-imagick: graphs in PDF exports'
             'php-legacy-intl: support for internationalization'
