@@ -7,6 +7,7 @@ pkgdesc="A better WHOIS lookup tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/retlehs/quien"
 license=('MIT')
+depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('5a7c9bb64bd4543026e833dce435fc4b68fae9d9a59a437930d6bb27167288ed')
