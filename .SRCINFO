@@ -1,7 +1,7 @@
 pkgbase = clipsync-git
 	pkgdesc = Clipboard synchronization daemon for Wayland Compositor (X11 <--> Wayland)
-	pkgver = 0.1.0.r1.g1a2b3c4
-	pkgrel = 1
+	pkgver = r20.ecbf735
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/clipsync
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = clipsync-git
 	depends = glibc
 	provides = clipsync
 	conflicts = clipsync
-	source = clipsync::git+https://github.com/SHORiN-KiWATA/clipsync.git#branch=rust
+	source = clipsync::git+https://github.com/SHORiN-KiWATA/clipsync.git
 	sha256sums = SKIP
 
 pkgname = clipsync-git

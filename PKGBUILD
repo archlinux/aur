@@ -1,8 +1,8 @@
 # Maintainer: Shorin <shorin@example.com>
 _pkgname=clipsync
 pkgname=clipsync-git
-pkgver=0.1.0.r1.g1a2b3c4 
-pkgrel=1
+pkgver=r20.ecbf735 
+pkgrel=2
 pkgdesc="Clipboard synchronization daemon for Wayland Compositor (X11 <--> Wayland)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SHORiN-KiWATA/clipsync"
@@ -12,8 +12,7 @@ makedepends=('git' 'cargo')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-# ====== 重点修改这里 ======
-source=("$_pkgname::git+${url}.git#branch=rust")
+source=("$_pkgname::git+${url}.git")
 # ========================
 
 sha256sums=('SKIP')
