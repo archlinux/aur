@@ -1,4 +1,37 @@
+_migrate_taskeract_linux_dns() {
+  local legacy_conf="/etc/systemd/resolved.conf.d/taskeract.conf"
+  local delegate_conf="/etc/systemd/dns-delegate.d/taskeract.dns-delegate"
+  local systemd_version=""
+
+  if ! command -v systemctl >/dev/null 2>&1; then
+    return 0
+  fi
+
+  systemd_version="$(systemctl --version 2>/dev/null | awk 'NR==1 { print $2 }')"
+  if ! [ "${systemd_version}" -ge 258 ] 2>/dev/null; then
+    return 0
+  fi
+
+  # Only migrate existing Taskeract DNS registrations. Fresh installs still let
+  # the app opt the user into DNS setup explicitly.
+  if [ ! -f "${legacy_conf}" ] && [ ! -f "${delegate_conf}" ]; then
+    return 0
+  fi
+
+  mkdir -p /etc/systemd/dns-delegate.d
+  cat > "${delegate_conf}" <<'DNSEOF'
+[Delegate]
+DNS=127.0.0.1:5453
+Domains=~tact
+DefaultRoute=no
+DNSEOF
+  rm -f "${legacy_conf}"
+  systemctl restart systemd-resolved >/dev/null 2>&1 || true
+}
+
 post_install() {
+  _migrate_taskeract_linux_dns
+
   # Grant CAP_NET_BIND_SERVICE so Taskeract can bind to port 443 for .tact domains.
   if command -v setcap >/dev/null 2>&1; then
     setcap cap_net_bind_service=+ep /usr/bin/taskeract || true
