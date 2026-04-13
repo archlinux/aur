@@ -1,0 +1,3 @@
+[nodejs-ramadan-cli]
+source = "npm"
+npm = "ramadan-cli"
