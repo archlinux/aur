@@ -1,33 +1,39 @@
-#
-# Thank you to piernov & greyltc for previously maintaining.
-#
-# Software Author: Paul Daniels <pldaniels@gmail.com>
-# Maintainer: Sokoloft <sokoloft@protonmail.com>
-#
+# Software Author: Paul Daniels <pldaniels nospamat gmail nospamdot com>
+# Maintainer: Sokoloft <sokoloft nospamat protonmail nospamdot com>
+# Contributor: Greyson Christoforo <grey nospamat christoforo nospamdot net>
+# Contributor: piernov <piernov nospamat piernov nospamdot org>
 
 pkgname=flexbv-bin
-pkgver=5.1244
-pkgrel=2
-pkgdesc="Visualize and interact with boardview (.brd) files."
+pkgver=5.3081
+pkgrel=1
+pkgdesc="Paid version of the FlexBV boardview software"
 arch=("x86_64")
 url="https://pldaniels.com/flexbv5/"
 license=("custom")
-makedepends=("gendesk")
+makedepends=("patchelf")
+depends=("glibc" "gcc-libs" "zlib" "fontconfig" "gtk3" "glib2")
+conflicts=("flexbv-free-bin")
 
-source=("https://pldaniels.com/flexbv5/free/FlexBVFree-${pkgver}-linux.tar.gz"
-	"https://pldaniels.com/flexbv5/assets/flexbv-free-icon.svg"
+source=("flexbv-std-${pkgver}-linux-x86_64.tar.gz::https://pldaniels.com/flexbv5/releases/flexbv-std-${pkgver}-linux-x86_64.tar.gz"
 	LICENSE.txt)
-sha256sums=('1a12d17e64f5bd260074e5db46901e628f9ac5555e0c2b5f1b7a5db8df510b7d'
-            'e19c10e335eb9ba4278317c5f0f07f25e9051f0bcd3b6bb0fb85b3b2ee73124e'
-            '12f5872b4bfed1620dd57e213ac2dd18b9fe02753ef70ebc89f10b6d72244e23')
 
-prepare() {
-	gendesk -n --pkgname "flexbv" --pkgdesc "${pkgdesc}" --exec="flexbv" --name "FlexBV Free" --icon "${pkgname}.svg" --categories "Science"
-}
+sha512sums=('8ae847639f565da31a433633ab5ce661fc87ef07563bfe60e1a36273dd07b55be0c27a8d227ae8b29c0f17d504fa66c237fd94578d3393f93bf8838eb18893fd'
+            '59a94b3310a23c5a8e365e24efe35e70178315d1380aace442b3173fc3245d8f2b6bf90c58939854084afcfcd9c541bb1376e8b1387d00e5829ff5ecc460088a')
+b2sums=('6cde7f757c87444eb20522690a0ec0a2daa76ec755b2ee855aac206e62c8616be487bbed709491de4025debecdf95b0fbcd3a33a6d1d6fe227dffd697b6e0ddb'
+        '1acf0bb1e9d993edd94338ff377d3907e6fb9251747676ca41e828bec059c58564ef7730e03f11ca85d160a39b55e0e38f20020fa6d2b3ffd17b97a322805afa')
 
 package() {
-	install -Dm644 "flexbv.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm644 "flexbv-free-icon.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
-	install -Dm755 "FlexBVFree-${pkgver}-linux/flexbv" "${pkgdir}/usr/bin/flexbv"
-	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/flexbv/LICENSE"
+
+	cd "flexbv-std-${pkgver}-linux-x86_64"
+	install -Dm755 "flexbv" "${pkgdir}/usr/bin/flexbv"
+	install -Dm755 "fbvpdf5" "${pkgdir}/usr/bin/fbvpdf5"
+	install -Dm755 "libpdfium.so" "${pkgdir}/usr/lib/flexbv/libpdfium.so"
+	patchelf --set-rpath "/usr/lib/flexbv" "$pkgdir/usr/bin/fbvpdf5"
+
+	cd "share"
+	install -Dm644 "applications/flexbv.desktop" "${pkgdir}/usr/share/applications/flexbv.desktop"
+	install -Dm644 "icons/hicolor/scalable/apps/flexbv.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/flexbv.svg"
+	install -Dm644 "appdata/flexbv.appdata.xml" "${pkgdir}/usr/share/metainfo/flexbv.appdata.xml"
+	install -Dm644 "mime/packages/flexbv.xml" "${pkgdir}/usr/share/mime/packages/flexbv.xml"
 }
