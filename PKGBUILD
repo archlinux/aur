@@ -1,6 +1,6 @@
 # Maintainer: printwithbrackets <your@email.com>
 pkgname=addpath-git
-pkgver=0.1.r0.g$(git rev-parse --short HEAD)
+pkgver=0.0.0
 pkgrel=1
 pkgdesc="Hunt down executables not in your PATH and fix it"
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/./g'
 }
 
 package() {
