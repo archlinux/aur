@@ -2,10 +2,10 @@
 
 pkgname=azdrawing
 pkgver=1.5
-pkgrel=11
+pkgrel=12
 pkgdesc='Painting software for line art and comics.'
 arch=('i686' 'x86_64')
-url='http://azsky2.html.xdomain.jp/soft/azdrawing.html'
+url='https://azelpg.gitlab.io/azsky2/soft/azdrawing.html'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'fontconfig' 'libjpeg-turbo' 'libx11' 'libxext' 'libxft' 'libxi')
 makedepends=('libxfixes')
