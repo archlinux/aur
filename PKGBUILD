@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=webgal-terre-bin
 _appname=WebGAL_Terre
-pkgver=4.5.18
+pkgver=4.5.19
 _electronversion=29
 pkgrel=1
 pkgdesc="Galgame Editing. Redefined(Prebuilt version) / 视觉小说编辑，再进化"
@@ -37,8 +37,8 @@ source=(
 )
 sha256sums=('1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
             'd51d809af628cc8292bd430a4847adb4adefa9d4b0aee00a55a84ff9630e167c')
-sha256sums_aarch64=('99be2d959529c5f22dc57e571f49cc459ac0e1bd0d72aab435349ef399b9d982')
-sha256sums_x86_64=('e032230384ca8fc48fb77b26adffc9f89198463763b254c33c5e9dbdfb5810de')
+sha256sums_aarch64=('767fba942d4b9a8664f7e74f4b7f0a7d7c7f61036a7a86977993f38d93fbc4aa')
+sha256sums_x86_64=('a5afd586a70e70c49d96bfce4d654a3fe4f3bef07b2caeedb323a28cc707d412')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/release/assets/templates/WebGAL_Electron_Template/webgal-electron-project" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -64,7 +64,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/release/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/release/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${pkgdir}/usr/lib/${pkgname%-bin}/assets/templates/WebGAL_Android_Template/app/src/main/ic_launcher-playstore.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
