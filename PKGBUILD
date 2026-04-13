@@ -11,7 +11,7 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=fjordlauncher
-pkgver=11.0.0.0
+pkgver=11.0.2.0
 pkgrel=1
 pkgdesc="Prism Launcher fork with support for alternative auth servers"
 arch=(x86_64)
@@ -56,7 +56,7 @@ optdepends=(
 )
 source=("https://github.com/unmojang/FjordLauncher/releases/download/$pkgver/FjordLauncher-$pkgver.tar.gz"
   {lionshead,batch,mdi}.license)
-b2sums=('dbdde7326a62f7811286fbb36954391d835f23cca1867577da4d729efd8aefbb8c7ebf3eeafcba4f558ac096cbd4ec055c1bad4193f1c7eedf9dbaad2d8f456d'
+b2sums=('282330968402009682a488870eb29a23f7f82235797f0b6ae3247ba36abb1734975031c38fd24cf713d86e451b9eb0841a4e77ec1cab63eed4bfb73ff9a8baec'
   'be4289832af95b1cd6e721dc16b84a034533de9718d9b43a49bd08dd6fe4e28eaa15228bfb311867b18fddbda1c9fc4c91f04c6d5c1a3bcc39aaa5161425e3ba'
   '356248a6b86f06d260e0920b49d34034f79f9bc504c7fdc1849d929d2ff9b169e693a8269a2c0b34656b3802970d9b8be41a92b35177eaa3c4ccc89a702f5c9d'
   'b35c447cd9223e096a2bb75e0741a7d0a3a1606af54c957e4f276f4e6861a9b3f06ae1d646137e8d2f24ba2238c9967c76eff8cc631a68d7e48e376056982cc6')
