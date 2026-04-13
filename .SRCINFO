@@ -1,6 +1,6 @@
 pkgbase = openring-rs
 	pkgdesc = A tool for generating a webring from Atom/RSS feeds, written in Rust
-	pkgver = 0.5.7
+	pkgver = 0.5.8
 	pkgrel = 1
 	url = https://github.com/lukehsiao/openring-rs
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = openring-rs
 	depends = gcc-libs
 	provides = openring
 	conflicts = openring
-	source = openring-rs-0.5.7.tar.gz::https://github.com/lukehsiao/openring-rs/archive/v0.5.7.tar.gz
-	sha256sums = 505c04e08a527deb6d11f3f453ff0aedff6be9ff5dbda3712ca3fa4a670d307e
+	options = !debug
+	options = !lto
+	source = openring-rs-0.5.8.tar.gz::https://github.com/lukehsiao/openring-rs/archive/v0.5.8.tar.gz
+	sha256sums = 67722b4b85b662d00951432423dde0c7aa73751b3cf7f17935e35593dbf93a6c
 
 pkgname = openring-rs
