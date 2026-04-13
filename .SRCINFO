@@ -1,21 +1,21 @@
 pkgbase = windows95-bin
 	pkgdesc = 💩🚀 Windows 95 in Electron. Runs on macOS, Linux, and Windows.(Prebuilt version.Use system-wide electron)
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/felixrieseberg/windows95
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron41
-	provides = windows95=5.0.0
+	provides = windows95=5.0.1
 	conflicts = windows95
 	options = !strip
 	options = !emptydirs
 	source = windows95.sh
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = windows95-5.0.0-aarch64.rpm::https://github.com/felixrieseberg/windows95/releases/download/v5.0.0/windows95-5.0.0-1.arm64.rpm
-	sha256sums_aarch64 = 33141864471bc26575ed55100ac3070d8369f8f860a23610c4b4ff781be26308
-	source_x86_64 = windows95-5.0.0-x86_64.rpm::https://github.com/felixrieseberg/windows95/releases/download/v5.0.0/windows95-5.0.0-1.x86_64.rpm
-	sha256sums_x86_64 = a461721727b3589962712e96bcc721674c0775a02935e3386f39c8fb57129c49
+	source_aarch64 = windows95-5.0.1-aarch64.rpm::https://github.com/felixrieseberg/windows95/releases/download/v5.0.1/windows95-5.0.1-1.arm64.rpm
+	sha256sums_aarch64 = b50dc9747c63e8fb514fce0555a98ac25e02cb4458fd1fcac760808100e3256c
+	source_x86_64 = windows95-5.0.1-x86_64.rpm::https://github.com/felixrieseberg/windows95/releases/download/v5.0.1/windows95-5.0.1-1.x86_64.rpm
+	sha256sums_x86_64 = 198f9addf8d1f6922cde2c279be3ebcdadd9b29f2276aed9a613f307ad6de2e9
 
 pkgname = windows95-bin
