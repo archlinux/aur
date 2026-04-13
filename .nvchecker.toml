@@ -1,0 +1,5 @@
+[python-markovify]
+source = "github"
+github = "jsvine/markovify"
+use_max_tag = true
+prefix = "v"

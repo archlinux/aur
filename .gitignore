@@ -3,3 +3,4 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
+!.nvchecker.toml
