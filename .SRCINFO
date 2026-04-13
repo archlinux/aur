@@ -1,6 +1,6 @@
 pkgbase = nomore403
 	pkgdesc = 🚫 Advanced tool for security researchers to bypass 403/40X restrictions through smart techniques and adaptive request manipulation. Fast. Precise. Effective.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/devploit/nomore403
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nomore403
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/devploit/nomore403.git#tag=v2.0.0
+	source = git+https://github.com/devploit/nomore403.git#tag=v2.0.1
 	sha256sums = SKIP
 
 pkgname = nomore403
