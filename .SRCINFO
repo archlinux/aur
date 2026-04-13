@@ -1,0 +1,19 @@
+pkgbase = binaryobjectscanner-bin
+	pkgdesc = Protection, packer, and archive scanning library
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = https://github.com/SabreTools/BinaryObjectScanner
+	arch = x86_64
+	license = MIT
+	provides = binaryobjectscanner
+	conflicts = binaryobjectscanner
+	options = !strip
+	options = !debug
+	source = https://github.com/SabreTools/BinaryObjectScanner/releases/download/3.6.0/ProtectionScan_3.6.0_net10.0_linux-x64_release.zip
+	source = https://raw.githubusercontent.com/SabreTools/BinaryObjectScanner/master/README.md
+	source = https://raw.githubusercontent.com/SabreTools/BinaryObjectScanner/master/LICENSE
+	sha256sums = 0150e9d3c7439980d3ab99a85a50feef0fc15e6e9e382435a7d8ca560b5f2ce3
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = binaryobjectscanner-bin
