@@ -1,7 +1,7 @@
 # Maintainer: Tanishq (Trifalic47) <trifalicapt@gmail.com>
 pkgname=rmpv-git
 pkgver=r33.17e0018
-pkgrel=3
+pkgrel=5
 pkgdesc="Terminal-based mpv YouTube/music player with yt-dlp streaming and download support"
 arch=('any')
 url="https://github.com/Trifalic47/rmpv"
@@ -24,15 +24,17 @@ package() {
   cd "$pkgname"
 
   # ── Binaries ──────────────────────────────────────────
-  for _bin in rmpv rmpv-play rmpv-search; do
-    install -Dm755 "bin/$_bin" "$pkgdir/usr/bin/$_bin"
-  done
+  # Standard install for the scripts in bin/
+  install -d "$pkgdir/usr/bin"
+  install -m755 bin/rmpv bin/rmpv-play bin/rmpv-search scripts/rmpv-setup.sh -t "$pkgdir/usr/bin/"
 
-  # ── Setup script ──────────────────────────────────────
-  install -Dm755 scripts/rmpv-setup.sh "$pkgdir/usr/bin/rmpv-setup"
+  # Rename the setup script to match your command preference
+  mv "$pkgdir/usr/bin/rmpv-setup.sh" "$pkgdir/usr/bin/rmpv-setup"
 
   # ── Data files (Templates) ────────────────────────────
-  find dots -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/rmpv/{}" \;
+  # This avoids the 'cd' error by using the full path
+  install -d "$pkgdir/usr/share/rmpv"
+  cp -ra dots "$pkgdir/usr/share/rmpv/"
 
   # ── License & Documentation ───────────────────────────
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
