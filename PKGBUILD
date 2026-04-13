@@ -9,7 +9,7 @@
 
 pkgbase=wps-office-cn
 pkgname=('wps-office-cn' 'wps-office-mime-cn' 'wps-office-mui-zh-cn')
-pkgver=12.1.2.25838
+pkgver=12.1.2.25882
 pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) CN version - an office productivity suite"
 #arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ options=('!emptydirs')
 # https://gitlab.com/cwittlut/wps-tsk/-/blob/main/tsk.sh?ref_type=heads by Ryan Tsien
 # https://pastebin.com/29TeRUMj by Asuka Minato
 _get_source_url() {
-    local furl="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/${pkgver##*.}/wps-office_${pkgver}.AK.preread.sw_648473_$1.deb"
+    local furl="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/${pkgver##*.}/wps-office_${pkgver}.AK.preread.sw.Personal_662820_$1.deb"
     local uri="${furl#https://wps-linux-personal.wpscdn.cn}"
     local secrityKey='7f8faaaa468174dc1c9cd62e5f218a5b'
     local timestamp10=$(date '+%s')
@@ -37,7 +37,7 @@ _get_source_url() {
 source_x86_64=("wps-office_${pkgver}_amd64.deb::$(_get_source_url amd64)")
 #source_aarch64=("wps-office_${pkgver}_arm64.deb::https://pubwps-wps365-obs.wpscdn.cn/download/Linux/21176/wps-office_${pkgver}.AK.preload.sw_arm64.deb")
 #source=('fix-wps-python-parse.patch')
-sha256sums_x86_64=('4ba2cf5d4e38e29f1e0e58d95d37a7900ca3f16c80a11deaff51f3845a8982f7')
+sha256sums_x86_64=('65d62d07cde619b9db8e1ef01d102ddfb41f67517fe5ea0551c6584cd8461947')
 
 prepare() {
     bsdtar -xpf data.tar.xz
