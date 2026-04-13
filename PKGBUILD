@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=windows95-git
 _pkgname='Windows 95'
-pkgver=4.0.0.r1.g35f7c33
-_electronversion=34
+pkgver=5.0.0.r0.g35c82c5
+_electronversion=41
 _nodeversion=22
 pkgrel=1
 pkgdesc="💩🚀 Windows 95 in Electron. Runs on macOS, Linux, and Windows.(Use system-wide electron)"
@@ -23,6 +23,7 @@ makedepends=(
     'gendesk'
     'yarn'
     'libicns'
+    'jq'
 )
 options=(
     '!emptydirs'
@@ -34,7 +35,7 @@ source=(
 )
 sha256sums=('SKIP'
             '9385f8f72be41b975c4e6a5f3c25ac5dc8bf4bf71ec75dff71aa91836767601f'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -47,7 +48,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+}
 prepare() {
+    cd "${srcdir}/${pkgname//-/.}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -55,32 +63,35 @@ prepare() {
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-git}.sh"
-    _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     install -Dm755 -d "${srcdir}/${pkgname//-/.}/images"
     cp "${srcdir}/usr/lib/${pkgname%-git}/resources/app/images/"* "${srcdir}/${pkgname//-/.}/images"
-    cd "${srcdir}/${pkgname//-/.}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
+    local HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo -e '\n'
-            echo 'registry "https://registry.npmmirror.com"'
-            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
-            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo "cacheFolder "${srcdir}"/.yarn/cache"
-            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
-            echo "globalFolder "${srcdir}"/.yarn/global"
-            echo 'useHardlinks true'
-            #echo 'buildFromSource true'
-            echo 'linkWorkspacePackages true'
-            echo 'fetchRetries 3'
-            echo 'fetchRetryTimeout 10000'
-        } >> .yarnrc
+            export YARN_REGISTRY="https://registry.npmmirror.com"
+            export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
+            export YARN_PLUGINS_FOLDER="${srcdir}/.yarn/plugins"
+            export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
+            export YARN_USE_HARDLINKS=true
+            # export YARN_BUILD_FROM_SOURCE=true
+            export YARN_LINK_WORKSPACE_PACKAGES=true
+            export YARN_FETCH_RETRIES=3
+            export YARN_FETCH_RETRY_TIMEOUT=10000
+            export YARN_NETWORK_CONCURRENCY=32
+        }
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
+    _ensure_local_nvm
     icns2png -x assets/icon.icns -o assets
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i -e '
@@ -92,6 +103,8 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     sed -i '/makers: \[/i\
 	plugins: [\
@@ -107,7 +120,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/out/${pkgname%-git}-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -a "${srcdir}/${pkgname//-/.}/out/${pkgname%-git}-linux-"*"/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     _icon_sizes=(256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname//-/.}/assets/icon_${_icons}x32.png" \
