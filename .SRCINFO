@@ -1,13 +1,12 @@
 pkgbase = ocaml-curl
 	pkgdesc = OCaml bindings to libcurl
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ygrek.org/p/ocurl
-	arch = i686
 	arch = x86_64
-	arch = armv7h
 	license = MIT
 	makedepends = ocaml
+	makedepends = ocaml-findlib
 	makedepends = dune
 	makedepends = ocaml-lwt
 	makedepends = pkg-config
