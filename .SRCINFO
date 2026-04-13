@@ -1,0 +1,14 @@
+pkgbase = och
+	pkgdesc = Helper script for some OpenClaw TUI gaps
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/shbernal/och
+	arch = any
+	license = MIT
+	depends = bash
+	depends = jq
+	depends = moreutils
+	source = och-0.1.0.tar.gz::https://github.com/shbernal/och/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = d8ffc0a8e171b1c8ce42a76ad9e55cc146fff1afd4bb368e531313167e049674
+
+pkgname = och
