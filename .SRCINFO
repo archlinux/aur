@@ -1,0 +1,18 @@
+pkgbase = nano-ffmpeg-bin
+	pkgdesc = Wraps the full power of FFmpeg in a beautiful, keyboard-driven terminal dashboard
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dgr8akki/nano-ffmpeg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = ffmpeg
+	provides = nano-ffmpeg
+	conflicts = nano-ffmpeg
+	options = !strip
+	source_x86_64 = nano-ffmpeg-x86_64-0.1.0.tgz::https://github.com/dgr8akki/nano-ffmpeg/releases/download/v0.1.0/nano-ffmpeg_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 36631ba041ad02e0476d94422d1d60997067397d67d8c123920fcb156b44a096
+	source_aarch64 = nano-ffmpeg-aarch64-0.1.0.tgz::https://github.com/dgr8akki/nano-ffmpeg/releases/download/v0.1.0/nano-ffmpeg_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6bb43dcea56fc54d5fa76a6250763c62d92e517e4ef252dd5f43163d1ff6f1e6
+
+pkgname = nano-ffmpeg-bin

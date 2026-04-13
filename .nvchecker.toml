@@ -1,0 +1,5 @@
+[nano-ffmpeg-bin]
+source = "github"
+github = "dgr8akki/nano-ffmpeg"
+use_latest_release = true
+prefix = "v"
