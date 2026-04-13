@@ -9,7 +9,7 @@ pkgbase = addpath-git
 	depends = python
 	provides = addpath
 	conflicts = addpath
-	source = addpath::git+https://github.com/printwithbrackets/addpath.git
+	source = addpath::git+https://github.com/printwithbrackets/addpath.git#branch=master
 	sha256sums = SKIP
 
 pkgname = addpath-git

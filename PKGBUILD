@@ -12,7 +12,7 @@ provides=('addpath')
 conflicts=('addpath')
 _pkgname=addpath
 
-source=("${_pkgname}::git+https://github.com/printwithbrackets/addpath.git")
+source=("${_pkgname}::git+https://github.com/printwithbrackets/addpath.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
