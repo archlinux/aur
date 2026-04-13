@@ -12,8 +12,8 @@ conflicts=('oryx-bench')
 
 source_x86_64=("https://github.com/enriquefft/oryx-bench/releases/download/v${pkgver}/oryx-bench-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("https://github.com/enriquefft/oryx-bench/releases/download/v${pkgver}/oryx-bench-v${pkgver}-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
+sha256sums_x86_64=('5690fb606f3ac2f747658376dd33d4d40ed02ec82c6554c5c8942886b6f7c019')
+sha256sums_aarch64=('50ce394c4bf576f831dededea4316a0dc8805fb118255502d0a9312a13a17a96')
 
 package() {
     install -Dm755 oryx-bench "${pkgdir}/usr/bin/oryx-bench"
