@@ -1,6 +1,6 @@
 pkgbase = python-sgl-kernel
 	pkgdesc = Compiled CUDA kernels for the SGLang serving framework
-	pkgver = 0.3.21
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/sgl-project/sglang/tree/main/sgl-kernel
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = python-sgl-kernel
 	depends = python-pytorch
 	depends = cuda
 	options = !strip
-	source = sglang-0.5.9.tar.gz::https://github.com/sgl-project/sglang/archive/refs/tags/v0.5.9.tar.gz
+	source = sglang-0.5.10.tar.gz::https://github.com/sgl-project/sglang/archive/refs/tags/v0.5.10.tar.gz
 	source = remove-thc-atomics.patch
-	sha256sums = 5905242df108f4b6be1784192e7a9d0504e6251872d497a61cfc1fac2410bbad
+	sha256sums = c22459f7c7fbe9540860a4df5b064b6f41029dca93d7f57dc8a221b0b398e2b0
 	sha256sums = SKIP
 
 pkgname = python-sgl-kernel

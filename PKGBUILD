@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=python-sgl-kernel
 _pkgname=sgl-kernel
-_sglang_ver=0.5.9
-pkgver=0.3.21
+_sglang_ver=0.5.10
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Compiled CUDA kernels for the SGLang serving framework'
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
 options=('!strip')
 source=("sglang-${_sglang_ver}.tar.gz::https://github.com/sgl-project/sglang/archive/refs/tags/v${_sglang_ver}.tar.gz"
         'remove-thc-atomics.patch')
-sha256sums=('5905242df108f4b6be1784192e7a9d0504e6251872d497a61cfc1fac2410bbad'
+sha256sums=('c22459f7c7fbe9540860a4df5b064b6f41029dca93d7f57dc8a221b0b398e2b0'
             'SKIP')
 
 prepare() {
