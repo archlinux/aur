@@ -1,14 +1,14 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellyfin-desktop-git
-pkgver=0.r397.040f38c
-pkgrel=1
+pkgver=0.r408.bdd2dc0
+pkgrel=2
 epoch=1
 license=('GPL-2.0-only')
 pkgdesc="Jellyfin Desktop Client"
 arch=('x86_64')
 url="https://github.com/jellyfin/jellyfin-desktop"
 depends=(
-    'jellyfin-desktop-libcef-bin'
+    'cef'
     'jellyfin-desktop-libmpv-git'
     'systemd-libs'
 )
@@ -38,7 +38,6 @@ build() {
 
     cmake -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
-        -DEXTERNAL_CEF_DIR=/opt/jellyfin-desktop/libcef \
         -DEXTERNAL_MPV_DIR=/opt/jellyfin-desktop/libmpv
 
     cmake --build build
