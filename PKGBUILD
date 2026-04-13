@@ -5,7 +5,7 @@ _pkgname=tmpo
 pkgname=${_pkgname}-bin
 pkgdesc="A minimal CLI time tracker for developers"
 
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('d7f984c5d292d6fe0b514af96a6db5ec501cd038dc8d3e2dcf2033de61e4c58b')
-sha256sums_aarch64=('16ce904ff12dae650b2db11a912e6e82860ebcd97fb787ca6ff9ed412e1755ac')
+sha256sums_x86_64=('2746f04f52628641fd1324b407ab859a75fda6e96e59f4977f2bfb3d41c4f62b')
+sha256sums_aarch64=('8533b7b0fb54c0b2a885da92b2c8e3192ee9c4dcb729a4752a7d5b1474275999')
 
 
 package() {
