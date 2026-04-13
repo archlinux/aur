@@ -1,6 +1,6 @@
 pkgbase = project-graph-nightly-bin
 	pkgdesc = A simple tool to create topology diagrams.
-	pkgver = r667
+	pkgver = r668
 	pkgrel = 1
 	url = https://github.com/LiRenTech/project-graph
 	install = project-graph-nightly-bin.install
@@ -20,7 +20,7 @@ pkgbase = project-graph-nightly-bin
 	conflicts = project-graph-git
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/LiRenTech/project-graph/releases/download/nightly/Project.Graph_0.0.0-nightly.667_amd64.deb
-	sha256sums_x86_64 = 389ce1961631f0e1870166e8f4260730703d429a1e762adb5bdaf895ef0d2d1d
+	source_x86_64 = https://github.com/LiRenTech/project-graph/releases/download/nightly/Project.Graph_0.0.0-nightly.668_amd64.deb
+	sha256sums_x86_64 = 3feaa3cdf6d2390d86af75612495108c973161b7e34efba462b803c60acbf640
 
 pkgname = project-graph-nightly-bin
