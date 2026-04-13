@@ -1,0 +1,18 @@
+pkgbase = wch-ch56x-isp
+	pkgdesc = Simple WCH MCU tool to flash over usb (compatible with WCH CH569 & CH565)
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/hydrausb3/wch-ch56x-isp
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = custom: none
+	depends = libusb
+	source = wch-ch56x-isp::git+https://github.com/hydrausb3/wch-ch56x-isp.git#tag=v0.3.1
+	source = cargs::git+https://github.com/likle/cargs.git#commit=5949a20a926e902931de4a32adaad9f19c76f251
+	source = 69-wch-ch56x-isp.rules
+	sha256sums = 22fe733384d7480ed7ee65e13240e2b50799c5c2a7a3c2b007d450c1ec3c97fa
+	sha256sums = 6153f3866d6589486656fcfda1b415df0e5012e2fbeacaf0ef59ddad76ee5f6c
+	sha256sums = f66025433686b5220155edf7b9f8e6c5649ee8ce27e2ac1bb633ffbf02c3fb77
+
+pkgname = wch-ch56x-isp

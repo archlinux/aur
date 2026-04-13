@@ -1,0 +1,2 @@
+#Ch56x in bootloader mode
+ACTION!="remove", SUBSYSTEMS=="usb", ATTRS{idVendor}=="4348", ATTRS{idProduct}=="55e0", MODE="0660", TAG+="uaccess"
