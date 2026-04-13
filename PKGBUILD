@@ -1,15 +1,15 @@
 # Maintainer: Zonda Yang <u226699@gmail.com>
 pkgname=magic-pack
-pkgver=0.10.4
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A CLI tool for compressing and decompressing files with multiple formats"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zondatw/magic-pack"
 license=('MIT')
-depends=()
-makedepends=('rust' 'cargo')
+depends=('zstd')
+makedepends=('rust' 'cargo' 'zstd')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zondatw/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('75ce9f75db90b32972d3eb4e1ff3da00f82fb59872194a2a621fe9f8c06a955a')
+sha256sums=('d20a992e91b94cbaa434cf4bab1bfa12da5fc4d3ebafda2e84770aab62fd63b8')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -21,7 +21,8 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --release --frozen
+    export RUSTFLAGS="-C linker=cc"
+cargo build --release --frozen
 }
 
 package() {
