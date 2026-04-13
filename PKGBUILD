@@ -1,7 +1,7 @@
 # Maintainer: sunkhan
 pkgname=decibell
 pkgver=0.3.9
-pkgrel=1
+pkgrel=4
 pkgdesc="Decentralized text, voice chat, and streaming app"
 arch=('x86_64')
 url="https://github.com/sunkhan/decibell"
@@ -10,51 +10,61 @@ depends=(
     'webkit2gtk-4.1'
     'libappindicator-gtk3'
     'librsvg'
+    'gtk3'
+    'dbus'
     'pipewire'
     'libpipewire'
-    'dbus'
-    'gtk3'
+    'gst-plugins-base-libs'
+    'ffmpeg'
+    'opus'
+)
+makedepends=(
+    'rust'
+    'cargo'
+    'nodejs'
+    'npm'
+    'protobuf'
+    'pkgconf'
+    'clang'
 )
 provides=('decibell')
 conflicts=('decibell-bin' 'decibell-git')
-options=('!strip')
+options=('!strip' '!lto')
 source=(
-    "${pkgname}-${pkgver}.AppImage::https://github.com/sunkhan/decibell/releases/download/v${pkgver}/Decibell_${pkgver}_amd64.AppImage"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/sunkhan/decibell/archive/refs/tags/v${pkgver}.tar.gz"
     "decibell.desktop"
 )
 sha256sums=('SKIP' 'SKIP')
 
-prepare() {
-    chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname}-${pkgver}.AppImage" --appimage-extract
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}/tauri-client"
 
-    # Remove bundled audio libs that conflict with host PipeWire/ALSA stack
-    cd "${srcdir}/squashfs-root/usr/lib"
-    rm -f libpulse*.so* libpipewire*.so* libasyncns*.so*
+    # Install frontend deps
+    npm ci
+
+    # Build via the Tauri CLI so the binary is compiled in production mode
+    # (uses frontendDist, not devUrl) and links against system libs.
+    npm run tauri build -- --no-bundle
 }
 
 package() {
-    # Install extracted app to /opt preserving original layout
-    install -d "${pkgdir}/opt/decibell"
-    cp -a "${srcdir}/squashfs-root/usr" "${pkgdir}/opt/decibell/"
-    cp -a "${srcdir}/squashfs-root/AppRun" "${pkgdir}/opt/decibell/" 2>/dev/null || true
-    cp -a "${srcdir}/squashfs-root/AppRun.wrapped" "${pkgdir}/opt/decibell/" 2>/dev/null || true
-    cp -a "${srcdir}/squashfs-root/apprun-hooks" "${pkgdir}/opt/decibell/" 2>/dev/null || true
+    cd "${srcdir}/${pkgname}-${pkgver}/tauri-client"
 
-    # Symlink lib at top level (binary uses relative path ././lib/...)
-    ln -s usr/lib "${pkgdir}/opt/decibell/lib"
+    # Binary — installed to libexec and wrapped so we can pin env vars
+    install -Dm755 "src-tauri/target/release/decibell" \
+        "${pkgdir}/usr/lib/decibell/decibell"
 
-    # Launcher script
+    # Launcher wrapper: force X11 (WebKitGTK on Wayland crashes)
     install -d "${pkgdir}/usr/bin"
-    cat > "${pkgdir}/usr/bin/decibell" << 'LAUNCHER'
+    cat > "${pkgdir}/usr/bin/decibell" <<'LAUNCHER'
 #!/bin/sh
-export APPDIR="/opt/decibell"
-export LD_LIBRARY_PATH="/opt/decibell/usr/lib:/opt/decibell/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}"
-export GDK_PIXBUF_MODULE_FILE="/opt/decibell/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache"
-export GSETTINGS_SCHEMA_DIR="/opt/decibell/usr/share/glib-2.0/schemas:${GSETTINGS_SCHEMA_DIR}"
+# WebKitGTK on Wayland crashes; force X11.
 export GDK_BACKEND=x11
-cd /opt/decibell
-exec /opt/decibell/usr/bin/decibell "$@"
+# WebKitGTK's DMABuf renderer fails to allocate GBM buffers on many
+# Mesa/NVIDIA setups ("Failed to create GBM buffer ... Invalid argument"),
+# resulting in a blank window. Fall back to the classic renderer.
+export WEBKIT_DISABLE_DMABUF_RENDERER=1
+exec /usr/lib/decibell/decibell "$@"
 LAUNCHER
     chmod 755 "${pkgdir}/usr/bin/decibell"
 
@@ -62,11 +72,18 @@ LAUNCHER
     install -Dm644 "${srcdir}/decibell.desktop" \
         "${pkgdir}/usr/share/applications/decibell.desktop"
 
-    # Icons
-    cd "${srcdir}/squashfs-root"
-    for icon in usr/share/icons/hicolor/*/apps/decibell.png; do
-        size_dir="$(echo "$icon" | grep -oP 'hicolor/\K[^/]+')"
-        install -Dm644 "$icon" \
-            "${pkgdir}/usr/share/icons/hicolor/${size_dir}/apps/decibell.png"
+    # Icons — Tauri keeps sized PNGs in src-tauri/icons/
+    for size in 32 64 128 256; do
+        src=""
+        case "$size" in
+            32)  src="src-tauri/icons/32x32.png" ;;
+            64)  src="src-tauri/icons/64x64.png" ;;
+            128) src="src-tauri/icons/128x128.png" ;;
+            256) src="src-tauri/icons/128x128@2x.png" ;;
+        esac
+        if [ -f "$src" ]; then
+            install -Dm644 "$src" \
+                "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/decibell.png"
+        fi
     done
 }
