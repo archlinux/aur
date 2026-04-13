@@ -1,0 +1,19 @@
+pkgbase = gpu-ratemeter-git
+	pkgdesc = Simple GPU throughput / fill-rate benchmark tool from Mesa
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/mesa/gpu-ratemeter
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = mesa
+	depends = libdrm
+	depends = vulkan-icd-loader
+	source = git+https://gitlab.freedesktop.org/mesa/gpu-ratemeter.git
+	sha256sums = SKIP
+
+pkgname = gpu-ratemeter-git
