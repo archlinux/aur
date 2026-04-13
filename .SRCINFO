@@ -1,6 +1,6 @@
 pkgbase = jupyterlab-language-pack-de-de
 	pkgdesc = German (Germany) language pack for JupyterLab
-	pkgver = 4.5.post2
+	pkgver = 4.5.post3
 	pkgrel = 1
 	url = https://github.com/jupyterlab/language-packs/tree/master/language-packs/jupyterlab-language-pack-de-DE
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = jupyterlab-language-pack-de-de
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/j/jupyterlab_language_pack_de_de/jupyterlab_language_pack_de_de-4.5.post2.tar.gz
-	sha256sums = 6c0bfbae0eb87c34a8136db03b9b011d3c8e6ae7b9d45cde388166386e744b5a
+	source = https://files.pythonhosted.org/packages/source/j/jupyterlab_language_pack_de_de/jupyterlab_language_pack_de_de-4.5.post3.tar.gz
+	sha256sums = 78dbc5727f1b384a65c66f0c322eed0972ceda9a83787d39a10653d928b1e1a4
 
 pkgname = jupyterlab-language-pack-de-de
