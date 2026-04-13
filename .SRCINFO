@@ -1,6 +1,6 @@
 pkgbase = amphitheatre-desktop-bin
 	pkgdesc = Open source GUI application that enables you to interact with Amphitheatre.(Prebuilt version)
-	pkgver = 0.11.3
+	pkgver = 0.11.4
 	pkgrel = 1
 	url = https://github.com/amphitheatre-app/desktop
 	arch = aarch64
@@ -9,13 +9,13 @@ pkgbase = amphitheatre-desktop-bin
 	license = Apache-2.0
 	depends = glibc>=2.38
 	depends = libgcc
-	provides = amphitheatre-desktop=0.11.3
+	provides = amphitheatre-desktop=0.11.4
 	conflicts = amphitheatre-desktop
-	source_aarch64 = amphitheatre-desktop-0.11.3-aarch64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.3/amphitheatre-desktop-linux-arm64.rpm
-	sha256sums_aarch64 = d2afb90d6ea4c9e847e0104d8a2d196eeec99c377ace7cc836bdfddd0a769d3e
-	source_i686 = amphitheatre-desktop-0.11.3-i686.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.3/amphitheatre-desktop-linux-i386.rpm
-	sha256sums_i686 = b3d598dcb5b121d2b4652467019be6a9af52d60325d59ab6a0641f9194c8d2f6
-	source_x86_64 = amphitheatre-desktop-0.11.3-x86_64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.3/amphitheatre-desktop-linux-amd64.rpm
-	sha256sums_x86_64 = 46b9e39e04761df91675a9259d7ff29cc0840bad29e8df2a724181cd1450b4bd
+	source_aarch64 = amphitheatre-desktop-0.11.4-aarch64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.4/amphitheatre-desktop-linux-arm64.rpm
+	sha256sums_aarch64 = 67c3c940a99729869df87e43ee0c2e3673570e3803a5d4c1213b573868cff74c
+	source_i686 = amphitheatre-desktop-0.11.4-i686.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.4/amphitheatre-desktop-linux-i386.rpm
+	sha256sums_i686 = e2e1d5d1b959c7d5c4e4c0603e8b5240eb69e33bcf926f80011662108800ba4a
+	source_x86_64 = amphitheatre-desktop-0.11.4-x86_64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.4/amphitheatre-desktop-linux-amd64.rpm
+	sha256sums_x86_64 = 468a2a96e198f0f978215f62cf85176834e6c16e2c4e52119c5013f61c18dc67
 
 pkgname = amphitheatre-desktop-bin
