@@ -1,0 +1,17 @@
+pkgbase = nazar-blocker
+	pkgdesc = System tray application for protection from the evil eye
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SubhanGadirli/nazar-blocker-gtk
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-IOSL
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gettext
+	depends = gtk3
+	depends = libayatana-appindicator
+	source = nazar-blocker-1.0.tar.gz::https://github.com/SubhanGadirli/nazar-blocker-gtk/archive/v1.0.tar.gz
+	sha256sums = 65f2c2cf1a6a66244c2b54dc9719ab8b468316841b8a75052bb2c4500f12361e
+
+pkgname = nazar-blocker
