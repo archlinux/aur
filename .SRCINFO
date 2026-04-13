@@ -1,7 +1,7 @@
 pkgbase = open-goal-launcher
 	pkgdesc = A launcher for the OpenGOAL Project to simplify usage and installation
 	pkgver = 2.9.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/open-goal/launcher
 	arch = any
 	license = ISC
@@ -13,7 +13,7 @@ pkgbase = open-goal-launcher
 	makedepends = yarn
 	makedepends = npm
 	depends = gtk3
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = openssl
 	depends = appmenu-gtk-module
 	depends = libappindicator-gtk3
