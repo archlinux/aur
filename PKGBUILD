@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imfile-bin
 _pkgname=imFile
-pkgver=2.0.4
+pkgver=2.0.5
 _electronversion=41
 pkgrel=1
 pkgdesc="A full-featured download manager.Forked from motrix.(Prebuilt version.Use system-wide electron)"
@@ -35,11 +35,11 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('f60775e705e2c7418665ac2c7f386d28cc2927df98a440ced1703a7ed3ca86b7'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('02b68bc2304c16a12526bcf2d68bcb5918d0c9bb8eed90a633e9ff02b38d6630')
-sha256sums_armv7h=('85c02d7fa7ada206d49d072a6c465a3eeb3aab40fcf0cb5a58cbeb7c4bcb7ea7')
-sha256sums_x86_64=('299d2d5cca1af994e24be3dcd2b532b56356b4e76093847a2122311e7ab8128e')
+sha256sums_aarch64=('e115b44572fd972526dd17a4a9e5ff47b014acb65b71b5bda6107f0d8df9bd0e')
+sha256sums_armv7h=('e92168b360f1acebdc156453c0f21b83052c64dbfe9edbb1f20b178ca3b714c1')
+sha256sums_x86_64=('de49d0e65a17a13f70afd8245c012afedba633d83fd46ef1937d2bfe19a0104f')
 _get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}.bin" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
@@ -58,14 +58,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    find "${srcdir}/opt/${_pkgname}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
-    if find "${srcdir}/opt/${_pkgname}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/opt/${_pkgname}/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
-            fi
-        done
-    fi
+    cp -a "${srcdir}/opt/${_pkgname}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
