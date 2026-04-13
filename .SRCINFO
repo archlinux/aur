@@ -1,6 +1,6 @@
 pkgbase = falco-git
 	pkgdesc = Cloud native runtime security
-	pkgver = 0.43.0.r42.g8a4c9e23
+	pkgver = 0.43.0.rc1.r47.g6c202330
 	pkgrel = 1
 	url = https://falco.org/
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = falco-git
 	depends = libbpf
 	depends = bpf
 	depends = nlohmann-json
+	depends = falco-plugin-container
 	provides = falco
 	conflicts = falco
 	conflicts = falco-bin
