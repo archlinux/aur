@@ -1,0 +1,12 @@
+pkgbase = frotxt
+	pkgdesc = A vim-like terminal text editor written in Python
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/frotxt
+	arch = any
+	license = MIT
+	depends = python
+	source = frotxt.py
+	sha256sums = SKIP
+
+pkgname = frotxt
