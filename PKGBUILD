@@ -12,7 +12,7 @@
 # ──────────────────────────────────────────────────────────────────────────────
 
 pkgname=cpp-gen-bin
-pkgver=0.0.12
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Modern C++ project generator with CMake, package managers, IDE configurations and development tools'
 arch=('x86_64' 'i686')
@@ -29,8 +29,8 @@ source_i686=(
   "${pkgname}-${pkgver}-i686.tar.gz::https://github.com/matpdev/cpp-gen/releases/download/v${pkgver}/cpp-gen_${pkgver}_linux_386.tar.gz"
 )
 
-sha256sums_x86_64=('2370c684174c17757e03050db803de13e62794f65168c9c7dc436080ae62399d')
-sha256sums_i686=('8ef326fb2771ed3b3003a8f4594816861c8e2bcf37985f0ffa5fcad98a9fdb8b')
+sha256sums_x86_64=('0e577d4b74365697dee147d9b462330cbc2cd18727878850ccccf38a91a1a856')
+sha256sums_i686=('a2f2c341128fcfdb00746a61532ebe1e13e3243fe928ee4f7ca1b61119aebed5')
 
 package() {
   cd "${srcdir}"
