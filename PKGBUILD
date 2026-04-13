@@ -2,7 +2,7 @@
 
 pkgname=nanocoder
 pkgauthor=Nano-Collective
-pkgver=1.24.1
+pkgver=1.25.1
 pkgrel=1
 
 _npmname=nanocoder
@@ -27,7 +27,7 @@ source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${pkgname}-${pkg
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
 noextract=("${pkgname}-${pkgver}.tgz")
 
-b2sums=('1b348498d1a3f77ac94d290b2d8cc89d34526102a55c4e9a040edfbe29ce5935a151a5a9d04939d10bf11a8bd99ec501bb1166117a550901aa87455d87ca40b4'
+b2sums=('cf9b425459f2241a32fc228a01f4589bd9047112edfc418d6f5b497ee570f0fa05e561be6b37c7250ffa3d6b902689f857e8942548e535b94004b0d2f9184c7a'
         'fdaff9ee8715190d0f68b017f8b935bf555d098e184b30c0582bc83c2c79b15f61a05c04dae9cf30ff149d5ab8d428696143bdd4dfc1807c92cf701500a6f8e9'
         'c5f376c25c2c829847e6cadc183170cfe60bafcebef471f809d52830a7de8e7a934bce753afc90039a1bee32fa11b2715fa4b29ece13cc37ad55a26178f58c4a')
 
