@@ -1,7 +1,7 @@
 pkgbase = python-pysvn
 	pkgdesc = The Pythonic interface to Subversion
 	pkgver = 1.9.25
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pysvn.sourceforge.io/
 	arch = i686
 	arch = x86_64

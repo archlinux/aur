@@ -7,7 +7,7 @@
 pkgname=python-pysvn
 _name=${pkgname#python-}
 pkgver=1.9.25
-pkgrel=2
+pkgrel=3
 pkgdesc="The Pythonic interface to Subversion"
 url="https://pysvn.sourceforge.io/"
 depends=('apr' 'python' 'subversion')
@@ -35,15 +35,13 @@ prepare() {
 build() {
   cd "$_name-$pkgver"
 
-  echo "========================"
-  pwd
   python setup.py build
 }
 
 check() {
   cd "$_name-$pkgver/Tests"
 
-  LC_ALL=en_US.UTF-8 make
+  LC_ALL=C.UTF-8 make
 }
 
 package() {
