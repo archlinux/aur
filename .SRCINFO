@@ -1,0 +1,19 @@
+pkgbase = termus
+	pkgdesc = Small, fast terminal music player
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/ming2k/termus
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = gcc
+	depends = ncurses
+	depends = glibc
+	source = git+https://github.com/ming2k/termus.git#tag=v1.0.4
+	sha256sums = SKIP
+
+pkgname = termus
