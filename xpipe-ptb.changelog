@@ -1,1 +1,2 @@
 - Fix PTB communication being broken
+- Fix tailscale not switching properly between the same tailnet with multiple accounts
