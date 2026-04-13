@@ -12,6 +12,7 @@ pkgbase = adw-network
 	depends = gdk-pixbuf2
 	depends = networkmanager
 	provides = adw-network
+	provides = adwaita-network
 	conflicts = adw-network-bin
 	options = !debug
 	options = strip
