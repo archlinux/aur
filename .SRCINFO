@@ -1,6 +1,6 @@
 pkgbase = ltg
 	pkgdesc = Listen To Get, The Free LRC generating script.
-	pkgver = 1.0.0
+	pkgver = 1.0rel
 	pkgrel = 1
 	arch = any
 	license = MIT

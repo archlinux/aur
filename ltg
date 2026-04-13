@@ -1,0 +1,80 @@
+#!/bin/bash
+
+echo -e "--- ltg (BETA) ---"
+echo -e "This is my first actual AUR package. This project was vibe coded (I don't know bash)."
+echo -e "I do not own any of the dependencies."
+echo -e "Contact: Email: usernaem.cc@gmail.com | GitHub: ultrakillinginvr | Discord: zanderdingusishere"
+echo -e "-----------------"
+sleep 2
+
+# Ensure directory exists
+DEFAULT_DIR="$HOME/.generated_lrcs"
+mkdir -p "$DEFAULT_DIR"
+
+kill_self() {
+    echo "Attempting to terminate script (PID: $$)..." >&2 # Log to stderr
+    kill -- -$$ # Terminate the process group of the script
+    exit 0 # Fallback, though kill should handle it
+}
+
+songrec listen | while read -r line; do
+    if [[ -n "$line" ]]; then
+        artist="${line%% - *}"
+        title="${line#* - }"
+        
+        clear
+        echo "Now playing: $title by $artist"
+        
+        # Fetch lyrics using robust URL encoding
+        LYRICS=$(curl -s --get "https://lrclib.net/api/get" \
+            --data-urlencode "artist_name=$artist" \
+            --data-urlencode "track_name=$title" | \
+            jq -r '.syncedLyrics // .plainLyrics // "No lyrics found"')
+        
+        echo "$LYRICS"
+
+        if [[ "$LYRICS" == "No lyrics found" ]]; then
+            echo -e "\nNo lyrics found for this song. Exit with ^C as in Ctrl+C"
+            # As per user request, removed automatic exit for this case.
+            # If user wants to exit, they should press Ctrl+C.
+        else
+            # Prompt for save
+            echo -e "\n[S] Save | [C] Custom Path | [N] Next Song | [Q] Quit"
+            read -r -n 1 -t 10 choice < /dev/tty
+            
+            case "$choice" in
+                s|S)
+                    SAVE_PATH="$DEFAULT_DIR/${artist}_${title}.lrc"
+                    if [[ -f "$SAVE_PATH" ]]; then
+                        echo -e "\nError: File '$SAVE_PATH' already exists. Exiting."
+                        kill_self
+                    fi
+                    echo "$LYRICS" > "$SAVE_PATH"
+                    echo -e "\nSaved to $SAVE_PATH"
+                    kill_self
+                    ;;
+                c|C)
+                    echo -e "\n"
+                    read -r -p "Enter custom directory: " CUSTOM_DIR < /dev/tty
+                    mkdir -p "$CUSTOM_DIR"
+                    SAVE_PATH="$CUSTOM_DIR/${artist}_${title}.lrc"
+                    if [[ -f "$SAVE_PATH" ]]; then
+                        echo -e "\nError: File '$SAVE_PATH' already exists. Exiting."
+                        kill_self
+                    fi
+                    echo "$LYRICS" > "$SAVE_PATH"
+                    echo "Saved to $SAVE_PATH"
+                    kill_self
+                    ;;
+                q|Q)
+                    echo -e "\nExiting..."
+                    kill_self
+                    ;;
+                *)
+                    echo -e "\nContinuing to listen..."
+                    ;;
+            esac
+        fi
+    fi
+done
+
