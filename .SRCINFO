@@ -1,10 +1,12 @@
 pkgbase = systemd-manager-tui-bin
-	pkgdesc = Terminal UI for managing systemd services
+	pkgdesc = A TUI application for managing systemd services
 	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/matheus-git/systemd-manager-tui
 	arch = x86_64
 	license = MIT
+	depends = glibc
+	depends = libgcc
 	provides = systemd-manager-tui
 	conflicts = systemd-manager-tui
 	options = !strip
