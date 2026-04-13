@@ -2,7 +2,7 @@
 
 pkgname=sharkey
 pkgver=2025.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A Sharkish microblogging platform'
 url='https://activitypub.software/TransFem-org/Sharkey'
 license=('AGPL')
@@ -17,7 +17,7 @@ source=('sharkey.sysusers'
         'sharkey.service'
         )
 sha512sums=('73bf054122fc6a0372deee3f0613f3432bc59c6a55e30277a9e202de325af1150b8f491877a5792e38d5a61c56a34d6cf88b8396b4989f5ddafc64ad59ecc91c'
-            'a02f0f29a216d43671f795faa99cfc72413173d7e3977e247f1d1cea0421a3b6d435300cc5e7c66ea2fab3581f7749ab9cf967c205ff1d6869b6408c04e6b394'
+            'd1da614d615f13293219a1e91fce03f64ab1286ccb3006bf76b82f0e3a79d47ad47b19ca6430c6d0dc6cce05d20e6a505272c9c0e0074cbb3f99b4b55df89889'
             '6f6f20b017191f452081051a279eda28ad938bf1a46ffa29377fcd4c059240f52e070a95a6facff10115e672c69971b122df1c739361364741779b30c46f408c')
 build() {
     git clone --recurse-submodules -b stable https://activitypub.software/TransFem-org/Sharkey.git

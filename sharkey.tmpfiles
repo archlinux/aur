@@ -1,2 +1,3 @@
 d /var/lib/sharkey         740 sharkey sharkey -
 d /var/lib/sharkey/Sharkey 740 sharkey sharkey -
+d /run/sharkey             755 sharkey sharkey -
