@@ -1,6 +1,6 @@
 pkgbase = lssh-bin
 	pkgdesc = A list-based SSH/SCP/SFTP client supporting single and parallel connections, local bashrc usage on remote machines, and advanced proxying
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/blacknon/lssh
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = lssh-bin
 	provides = lsmon
 	provides = lsshell
 	conflicts = lssh
-	source_x86_64 = https://github.com/blacknon/lssh/releases/download/v0.8.0/lssh_0.8.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = d364f86a577c628fafb917c63442e1a0d8be1fa052719e89e141f0bd794cff43
+	source_x86_64 = https://github.com/blacknon/lssh/releases/download/v0.9.0/lssh_0.9.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8ef2d5fb249c4e7fd9b9543a9d935a18e8a84a2028fa493518460286765fcb4c
 
 pkgname = lssh-bin
