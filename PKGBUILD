@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=prek
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="⚡ Better 'pre-commit', re-engineered in Rust"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 makedepends=('git' 'rust' 'libxml2')
 checkdepends=('cargo-nextest')
 options=('!lto')
-_commit='bb412c08089c21c2a6aeec2e8d0cac64b56adf7c'
+_commit='3a9b9fe4ac5f202ca0202d195c3ba5ce4c9bb81c'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
