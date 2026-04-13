@@ -1,6 +1,6 @@
 # Maintainer: AMVZEN 
 pkgname=synclyrics
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A premium desktop lyrics player for Linux with karaoke mode and audio visualizer"
 arch=('any')
