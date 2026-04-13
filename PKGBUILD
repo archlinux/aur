@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=boxbuddy
 _app_id=io.github.dvlv.boxbuddyrs
-pkgver=2.5.7
+pkgver=2.5.8
 pkgrel=1
 pkgdesc="A Graphical Interface for Distrobox"
 arch=('x86_64')
@@ -14,12 +14,12 @@ depends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Dvlv/BoxBuddyRS/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('614ad5fc36f730bcf75f0f9de16f20220e85e2ab60bfa3d6e6b11fe913b56c27')
+sha256sums=('5204e956a74fb2dbb99fb3b03fcaf665192b21cdbd8a4be749ab36c1f115286b')
 
 prepare() {
   cd "BoxBuddyRS-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
+  cargo fetch --locked --target host-tuple
 
   # Correct paths
   sed -i 's|{data_home}/locale|/usr/share/locale|g' src/utils.rs
