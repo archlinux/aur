@@ -2,7 +2,7 @@
 
 pkgname=fokus
 pkgver=2.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A minimalist terminal‐based focus timer and stopwatch with daily logging, built in Rust"
 arch=('x86_64')
 url="https://sr.ht/~fijarom/fokus/"
@@ -22,4 +22,5 @@ package() {
   install -Dm755 "$srcdir/$pkgname/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$srcdir/$pkgname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 "$srcdir/$pkgname/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$srcdir/$pkgname/assets/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
 }
