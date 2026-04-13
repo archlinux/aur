@@ -1,0 +1,17 @@
+pkgbase = cpuinfo-pytorch-git
+	pkgdesc = CPU INFOrmation library (x86/x86-64/ARM/ARM64, PyTorch/cpuinfo)
+	pkgver = r838.7607ca5
+	pkgrel = 1
+	url = https://github.com/pytorch/cpuinfo
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	provides = cpuinfo-pytorch
+	conflicts = cpuinfo-pytorch
+	source = git+https://github.com/pytorch/cpuinfo.git
+	sha256sums = SKIP
+
+pkgname = cpuinfo-pytorch-git
