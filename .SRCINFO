@@ -1,6 +1,6 @@
 pkgbase = rauncher-wayland
 	pkgdesc = Application launcher for Linux Wayland desktop
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/h3poteto/rauncher
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = rauncher-wayland
 	depends = hicolor-icon-theme
 	provides = rauncher-wayland
 	conflicts = rauncher-x11
-	source = https://github.com/h3poteto/rauncher/archive/refs/tags/v0.2.1.tar.gz
-	md5sums = 2b1f5a9a9d26b4b9f7f984b03ca80f57
+	source = https://github.com/h3poteto/rauncher/archive/refs/tags/v0.3.0.tar.gz
+	md5sums = 327e5e400f0077b2f12c53f8ff6f0407
 
 pkgname = rauncher-wayland
