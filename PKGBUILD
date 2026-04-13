@@ -2,7 +2,7 @@
 # Co-Maintainer: Noctiro <noctiro@gmail.com>
 
 pkgname=keyguard
-pkgver=20260328
+pkgver=20260410
 pkgrel=1
 pkgdesc="Keyguard is an alternative client for the Bitwarden® platform & KeePass (KDBX), created to provide the best user experience possible."
 arch=('any')
