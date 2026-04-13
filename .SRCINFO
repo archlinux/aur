@@ -1,6 +1,6 @@
 pkgbase = rmpv-git
 	pkgdesc = MPD → MPV bridge + YouTube streamer
-	pkgver = r22.9cd67a0
+	pkgver = r29.84c2c53
 	pkgrel = 1
 	url = https://github.com/Trifalic47/rmpv
 	install = rmpv.install

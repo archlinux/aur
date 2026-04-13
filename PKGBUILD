@@ -1,6 +1,6 @@
-# Maintainer: Trifalic47 trifalicapt@gmail.com
+# Maintainer: Tanishq (Trifalic47) <trifalicapt@gmail.com>
 pkgname=rmpv-git
-pkgver=r22.9cd67a0
+pkgver=r29.84c2c53
 pkgrel=1
 pkgdesc="MPD → MPV bridge + YouTube streamer"
 arch=('any')
