@@ -18,6 +18,7 @@ pkgbase = hyprland-share-picker-preview-git
 	depends = qt6-base
 	depends = hyprutils
 	depends = wayland
+	options = !debug
 	source = git+https://github.com/SamSaffron/xdg-desktop-portal-hyprland.git#branch=better-picker
 	sha256sums = SKIP
 

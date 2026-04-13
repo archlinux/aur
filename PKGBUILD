@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://github.com/SamSaffron/xdg-desktop-portal-hyprland"
 license=('BSD-3-Clause')
 depends=('qt6-base' 'hyprutils' 'wayland')
+options=(!debug)
 makedepends=('meson' 'ninja' 'hyprwayland-scanner' 'wayland-protocols' 'hyprland-protocols'
              'libpipewire' 'sdbus-cpp' 'hyprlang' 'libdrm' 'mesa')
 source=("git+https://github.com/SamSaffron/xdg-desktop-portal-hyprland.git#branch=better-picker")
