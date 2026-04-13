@@ -9,7 +9,7 @@
 
 : ${_build_level:=1}
 
-: ${_cksum:=837a5abd98e46078a0ae1400e2daad89ece45cc3209037b09c2265dab2393553}
+: ${_cksum:=a23c92faf3657385c2c6b5f4edd8f81b808907ebe603fa30699eae224da55f59}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -21,7 +21,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.18.20
+pkgver=6.18.22
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -276,13 +276,17 @@ _package-headers() {
   while read -rd '' file; do
     case "$(file -Sib "$file")" in
       application/x-sharedlib\;*) # Libraries (.so)
-        strip -v $STRIP_SHARED "$file" ;;
+        strip -v $STRIP_SHARED "$file"
+        ;;
       application/x-archive\;*) # Libraries (.a)
-        strip -v $STRIP_STATIC "$file" ;;
+        strip -v $STRIP_STATIC "$file"
+        ;;
       application/x-executable\;*) # Binaries
-        strip -v $STRIP_BINARIES "$file" ;;
+        strip -v $STRIP_BINARIES "$file"
+        ;;
       application/x-pie-executable\;*) # Relocatable binaries
-        strip -v $STRIP_SHARED "$file" ;;
+        strip -v $STRIP_SHARED "$file"
+        ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
