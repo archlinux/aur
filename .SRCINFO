@@ -1,0 +1,20 @@
+pkgbase = riscv-none-elf-gcc-ch56x-bin
+	pkgdesc = Cross compiler for RISC-V (xPack, with support of WCH RISCV CH56x, hydrausb3 fork)
+	pkgver = 12.2.0_2
+	pkgrel = 1
+	url = https://github.com/hydrausb3/riscv-none-elf-gcc-xpack
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	depends = libmpc
+	provides = xpack-riscv-none-elf-gcc
+	provides = riscv-none-elf-gdb
+	provides = riscv-none-elf-binutils
+	provides = riscv-none-elf-newlib
+	conflicts = xpack-riscv-none-elf-gcc
+	options = !emptydirs
+	options = !strip
+	source_x86_64 = https://github.com/hydrausb3/riscv-none-elf-gcc-xpack/releases/download/12.2.0-1/xpack-riscv-none-elf-gcc-12.2.0-2-linux-x64.tar.gz
+	sha256sums_x86_64 = f67a957765c876a405cb9a4a88ae700b9eb6770c6195b1c32003a31b3c50bb97
+
+pkgname = riscv-none-elf-gcc-ch56x-bin
