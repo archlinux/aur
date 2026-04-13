@@ -1,0 +1,18 @@
+pkgbase = nss-altfiles
+	pkgdesc = NSS module to look up users and other maps from /usr/lib
+	pkgver = 2.23.0
+	pkgrel = 1
+	url = https://github.com/flatcar/nss-altfiles
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	depends = glibc
+	source = https://github.com/flatcar/nss-altfiles/archive/v2.23.0.tar.gz
+	source = 0003-deprecate-RES_USE_INET6.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nss-altfiles
