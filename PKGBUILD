@@ -9,7 +9,7 @@ _enable_qt=true
 
 _pkgname=audacious-plugins
 pkgname="$_pkgname-git"
-pkgver=4.4.r0.gb29776eee
+pkgver=4.5.1.r88.gf00109c94
 pkgrel=1
 epoch=1
 pkgdesc="Plugins for Audacious (git version)"
