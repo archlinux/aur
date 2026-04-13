@@ -30,26 +30,21 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/zidle"
-	# Nessuna patch necessaria
 }
 
 build() {
 	cd "$srcdir/zidle"
-	# Nessuna compilazione necessaria per Python/Zsh
 }
 
 check() {
 	cd "$srcdir/zidle"
-	# Nessun test automatizzato fornito
 }
 
 package() {
 	cd "$srcdir/zidle"
-	
-	# Installa i sorgenti del programma nella root standard di Arch (/usr/share/zidle)
+	# Installs sources in the standard arch root directory (/usr/share/zidle)
 	install -d "$pkgdir/usr/share/zidle"
 	cp -r core config scenes zsh zidle.plugin.zsh "$pkgdir/usr/share/zidle/"
 
-	# Assicura le istruzioni della licenza come da guideline
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/zidle/LICENSE"
 }
