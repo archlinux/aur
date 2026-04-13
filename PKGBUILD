@@ -13,7 +13,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="26.1.1_0.12.1_0.29.2-1" # <mcver_installerver_loaderver-pkgrelease>
+_ver="26.1.2_0.12.1_0.29.2-1" # <mcver_installerver_loaderver-pkgrelease>
 # installer ver can be gotten at https://meta.quiltmc.org/v3/versions/installer
 # loader ver can be gotten at https://meta.quiltmc.org/v3/versions/loader
 # stay on stable loader+installer releases for the time being.
@@ -43,7 +43,7 @@ pkgdesc="Minecraft Quilt server unit files, script, and jar"
 arch=("any")
 url="https://quiltmc.org"
 license=("Apache-2.0")
-depends=("java-runtime-headless>=21" "tmux" "sudo" "bash" "awk" "sed" "tar")
+depends=("java-runtime-headless>=25" "tmux" "sudo" "bash" "awk" "sed" "tar")
 optdepends=("netcat: required in order to suspend an idle server")
 backup=("etc/conf.d/${_quilt_name}")
 install="quilt-server.install"
