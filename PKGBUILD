@@ -4,7 +4,7 @@ _pkgname=aTrust
 _debname="cn.com.sangfor.${pkgname%-bin}"
 pkgver=2.5.16.30
 _electronversion=9
-pkgrel=1
+pkgrel=2
 pkgdesc="Sangfor ssl sdp client.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://www.sangfor.com/"
@@ -56,6 +56,9 @@ prepare() {
     " "${srcdir}/usr/share/applications/${_debname}.desktop"
     rm -rf \
         "${srcdir}/usr/share/sangfor/${_pkgname}/resources/lib/libstdc++.so.6" \
+        "${srcdir}/usr/share/sangfor/${_pkgname}/resources/lib/libqxcb.so" \
+        "${srcdir}/usr/share/sangfor/${_pkgname}/resources/lib/libxcb.so.1" \
+        "${srcdir}/usr/share/sangfor/${_pkgname}/resources/lib/ libxcb-xinerama.so.0" \
         "${srcdir}/usr/share/sangfor/${_pkgname}/uem/lib/libstdc++.so.6"
     install -Dm644 "${srcdir}/bsod_checker.js" "${srcdir}/usr/share/sangfor/${_pkgname}/resources/app/src/service/bsod_checker.js"
 }
