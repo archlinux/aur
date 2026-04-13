@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=scenario-rs-gui-bin
-pkgver=0.6.1
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A powerful automation tool for executing remote commands and transferring files via SSH.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/st4s1k/scenario-rs"
-license=('LicenseRef-unknown')
+license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -16,7 +16,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('b79a1d62bf19fddbb0bb56f8fff97f09ba90d2929976a67f7c150500344b7ae4')
+sha256sums=('6d3187cbd6df87fadabbb19e11e6c8ba9aec37de555d0dc14c5f8aeeab0dc96c')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     _icon_sizes=(32x32 128x128 256x256@2)
