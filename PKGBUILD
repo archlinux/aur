@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.7.5.r1.g4aa9a83
+pkgver=1.7.5.r110.g282d59a
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -26,6 +26,7 @@ checkdepends=('appstream')
 optdepends=(
   'gamemode: required for GameMode feature in Tweaks tab'
   'git: for ReShade shader cloning'
+  'mesa-utils: Detect GPU model via glxinfo'
   'pascube: Run pasCube (beta)'
   'protontricks: required for Wine prefix managewr'
   'vkbasalt: Configure vkBasalt'
