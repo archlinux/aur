@@ -1,0 +1,61 @@
+pkgbase = java25-openjfx
+	pkgdesc = Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version
+	pkgver = 25.29
+	pkgrel = 1
+	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
+	arch = x86_64
+	arch = x86_64_v3
+	license = GPL-2.0-only WITH Classpath-exception-2.0
+	makedepends = alsa-lib
+	makedepends = ant
+	makedepends = cairo
+	makedepends = cmake
+	makedepends = ffmpeg
+	makedepends = freetype2
+	makedepends = gdk-pixbuf2
+	makedepends = glib2
+	makedepends = gperf
+	makedepends = gtk3
+	makedepends = java-environment-openjdk=21
+	makedepends = java-environment-openjdk=25
+	makedepends = libgl
+	makedepends = libx11
+	makedepends = libxtst
+	makedepends = libxxf86vm
+	makedepends = pango
+	makedepends = perl
+	makedepends = python
+	makedepends = unzip
+	makedepends = zip
+	options = !lto
+	source = java25-openjfx-25.29.tar.gz::https://github.com/openjdk/jfx/archive/refs/tags/25+29.tar.gz
+	source = java25-openjfx-gradle.properties
+	source = java25-openjfx-flags.patch
+	source = java25-openjfx-profile.sh
+	source = java25-openjfx-profile.csh
+	source = java25-openjfx-env.sh
+	b2sums = f2c669b10c23d291ed9fbada59cd21ee25b4cebf429c712c1a24f20ffc08102840091ebb5f4c35da53a18d67b45d8f9a37d7a40172b2fa7637950a30cfcdd105
+	b2sums = 0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f
+	b2sums = 5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3
+	b2sums = 490b45c4761248cad1e9194566f80c6fa2155268653bb758224b214d86fc92735d893332fc5dfdf914ac58a770491193cf5f9a9bd67f018b81122965bbc0d684
+	b2sums = f0afa911a4e705b9cb0a9d8837247cede3e8854afc10c955c9a21d04082f6698f5d795865ddea147ce3047f2efb9e756f4c7b9cd6df762b40e1be1cbf16ebd38
+	b2sums = 5e706a82299b464aef4563f634f6820e28187f6c7d50d3dd32882c951a990970cd3204103585981cbab6d3a57f53fdcfdb227ef81b2bc07fc3c537020d0adaa1
+
+pkgname = java25-openjfx
+	depends = java-runtime-openjdk>=25
+	depends = libgl
+	depends = libx11
+	depends = libxtst
+	optdepends = gtk3: GTK3 support
+	provides = java-openjfx=25
+	conflicts = java-openjfx
+
+pkgname = java25-openjfx-doc
+	arch = any
+	provides = java-openjfx-doc=25
+	conflicts = java-openjfx-doc
+
+pkgname = java25-openjfx-src
+	arch = any
+	provides = java-openjfx-src=25
+	conflicts = java-openjfx-src
