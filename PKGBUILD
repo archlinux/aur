@@ -7,7 +7,7 @@ pkgdesc="CLI tool for managing iKuai routers — network, VPN, firewall, users, 
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/ikuaidev/${pkgname}"
 license=("MIT")
-makedepends=("go")
+makedepends=("go" "unzip")
 source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip")
 sha256sums=('131b94abdc6d1baf898656c44c145362ee9e87f9ca238a47f196428334892558')
 

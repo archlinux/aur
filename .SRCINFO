@@ -13,6 +13,7 @@ pkgbase = ikuai-cli
 	arch = riscv64
 	license = MIT
 	makedepends = go
+	makedepends = unzip
 	source = ikuai-cli-1.0.1.zip::https://github.com/ikuaidev/ikuai-cli/archive/refs/tags/v1.0.1.zip
 	sha256sums = 131b94abdc6d1baf898656c44c145362ee9e87f9ca238a47f196428334892558
 
