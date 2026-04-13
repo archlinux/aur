@@ -1,7 +1,7 @@
 # Maintainer: Max Hefley <Mizuna737@gmail.com>
 
 pkgname=gesturecontrol
-pkgver=r12.35a09de
+pkgver=r13.e85d117
 pkgrel=2
 pkgdesc="Hand gesture recognition: webcam → MediaPipe → D-Bus signals → configurable actions"
 arch=('any')
