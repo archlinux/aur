@@ -1,6 +1,6 @@
 pkgbase = addpath-git
 	pkgdesc = Hunt down executables not in your PATH and fix it
-	pkgver = r1.g0000000
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/printwithbrackets/addpath
 	arch = any
