@@ -16,10 +16,9 @@ provides=(coreutils)
 conflicts=({uutils-,}coreutils)
 source=("${pkgname%-git}::git+${url}.git"
 "yes-boost.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11458.patch"
+"head-fuse-fake-stat.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11620.patch"
 "${url}/releases/download/latest-commit/docs.tar.zst")
-b2sums=('SKIP'
-        'f1e2d0dd807e42815d48ffc6c25cabcdd3fac3d32568c4f90656ae623842d1f0e77f3fc393bc589e1ce9e7fa6f78749694cb72d5be38769ce694cc7f08eb1ff7'
-        'SKIP')
+b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 pkgver() {
   cd ${pkgname%-git}
   git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -32,6 +31,7 @@ export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no" # Use old rust's panic
 package(){
   cd ${pkgname%-git}
   git apply -v -p1 ../yes-boost.patch
+  git apply -v -p1 ../head-fuse-fake-stat.patch
   unset optdepends
   export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release MULTICALL=y LN="ln -f" MANPAGES=n COMPLETIONS=n #LOCALES=n
   make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname" #"sum shred shuf factor"
