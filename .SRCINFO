@@ -1,6 +1,6 @@
 pkgbase = inspircd
 	pkgdesc = Modular Internet Relay Chat (IRC) server
-	pkgver = 4.10.0
+	pkgver = 4.10.1
 	pkgrel = 1
 	url = https://github.com/inspircd/inspircd
 	install = inspircd.install
@@ -32,7 +32,7 @@ pkgbase = inspircd
 	optdepends = re2: m_regex_re2
 	optdepends = sqlite: m_sqlite3
 	optdepends = yyjson: m_log_json
-	source = inspircd-4.10.0.tar.gz::https://github.com/inspircd/inspircd/archive/v4.10.0.tar.gz
-	sha256sums = 2db2fb8572437c8f333061cff47c9aea6cc2ba54ad2824b962940cf1b15cc49c
+	source = inspircd-4.10.1.tar.gz::https://github.com/inspircd/inspircd/archive/v4.10.1.tar.gz
+	sha256sums = c41474dd2b094e86cde6295266192f4234ce98a4c6046c827bfbd53b7bba0f77
 
 pkgname = inspircd
