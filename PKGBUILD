@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop-git
 _pkgname='NVM Desktop'
-pkgver=alpha.r0.g8ad318b
-_nodeversion=22
+pkgver=4.3.2.r2.g7c743ec
+_nodeversion=24
 pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
 arch=('any')
