@@ -1,0 +1,14 @@
+pkgbase = python-gmsh-bin
+	pkgdesc = Python package of the official Gmsh app and SDK
+	pkgver = 4.15.2
+	pkgrel = 1
+	url = https://pypi.org/project/gmsh/
+	arch = x86_64
+	license = GPL2
+	makedepends = python-installer
+	depends = python
+	noextract = gmsh-4.15.2-py2.py3-none-manylinux_2_24_x86_64.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/g/gmsh/gmsh-4.15.2-py2.py3-none-manylinux_2_24_x86_64.whl
+	sha256sums = 4076a948ce22625330d1413d4982e22b5c69fc2f0f7951f5df64c778cf54108c
+
+pkgname = python-gmsh-bin
