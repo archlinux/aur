@@ -11,7 +11,7 @@
 # Python site-packages clean.
 
 pkgname=python-mempalace
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='The highest-scoring AI memory system, with 30x context compression and a temporal knowledge graph.'
 arch=('any')
@@ -29,7 +29,7 @@ conflicts=('mempalace')
 makedepends=()
 
 source=("https://files.pythonhosted.org/packages/source/${pkgname:7:1}/${pkgname:7}/${pkgname:7}-$pkgver.tar.gz")
-sha256sums=('13dd0d47fb4d5b3dc17993e1e2e058144979469dd5ebd5eef34808681d6dd3d2')
+sha256sums=('0774df8aae2311431e4a769ad346257d8665a36a075b96bb60f5314815893f82')
 
 build() {
     # Create a virtualenv and install mempalace + all its dependencies via pip.
