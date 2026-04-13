@@ -2,7 +2,7 @@
 # Created with assistance from Claude (Anthropic)
 pkgname=vykar-gui-bin
 pkgver=0.12.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop GUI for Vykar backup — Slint-based, with system tray and scheduled backups"
 arch=('x86_64')
 options=('!debug')

@@ -1,7 +1,7 @@
 pkgbase = vykar-gui-bin
 	pkgdesc = Desktop GUI for Vykar backup — Slint-based, with system tray and scheduled backups
 	pkgver = 0.12.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/borgbase/vykar
 	arch = x86_64
 	license = GPL-3.0-only
