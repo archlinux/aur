@@ -12,7 +12,7 @@
 
 : ${_build_level:=1}
 
-: ${_cksum=20039d7b6b256c08be2f8fac43c3ff9a620308c703c643cf2f80c3910b9bd59b}
+: ${_cksum=ce5c4f1205f9729286b569b037649591555f31ca1e03cc504bd3b70b8e58a8d5}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -24,7 +24,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.19.11
+pkgver=6.19.12
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -56,17 +56,17 @@ makedepends=(
 options=('!debug' '!strip')
 
 _dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux'
-_srctag=$(
-  curl -sSfL --max-redirs 3 --no-progress-meter "$_dl_url_arch/-/tags?sort=updated_desc&search=${pkgver}&format=atom" \
+_pkgver_tag=$(
+  curl -sfL --max-redirs 3 --no-progress-meter "$_dl_url_arch/-/tags?sort=updated_desc&search=${pkgver}&format=atom" \
     | grep -Eo "${pkgver//./\\.}.arch[0-9]+-[0-9]+" \
     | sort -rV | head -1
 )
-: ${_srctag:=main}
+: ${_pkgver_tag:=main}
 
 _srcname=linux-$pkgver
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar".{xz,sign}
-  "config-$pkgver"::"$_dl_url_arch/-/raw/$_srctag/config.x86_64"
+  "config-$pkgver"::"$_dl_url_arch/-/raw/$_pkgver_tag/config.x86_64"
 )
 sha256sums=(
   "${_cksum:-SKIP}"
@@ -95,8 +95,8 @@ if [[ "${_build_arch_patch::1}" == "t" ]]; then
 
   _dl_url_arch='https://github.com/archlinux/linux'
   _srctag=$(
-    curl -sSfL --max-redirs 3 --no-progress-meter "$_dl_url_arch/tags.atom" \
-      | grep -Eom1 "v${_pkgver}\S*-arch[0-9]+" \
+    curl -sfL --max-redirs 3 --no-progress-meter "$_dl_url_arch/tags.atom" \
+      | grep -Eo "v${_pkgver}\S*-arch[0-9]+" \
       | sort -rV | head -1
   )
   : ${_srctag:=v${pkgver}-arch1}
@@ -287,13 +287,17 @@ _package-headers() {
   while read -rd '' file; do
     case "$(file -Sib "$file")" in
       application/x-sharedlib\;*) # Libraries (.so)
-        strip -v $STRIP_SHARED "$file" ;;
+        strip -v $STRIP_SHARED "$file"
+        ;;
       application/x-archive\;*) # Libraries (.a)
-        strip -v $STRIP_STATIC "$file" ;;
+        strip -v $STRIP_STATIC "$file"
+        ;;
       application/x-executable\;*) # Binaries
-        strip -v $STRIP_BINARIES "$file" ;;
+        strip -v $STRIP_BINARIES "$file"
+        ;;
       application/x-pie-executable\;*) # Relocatable binaries
-        strip -v $STRIP_SHARED "$file" ;;
+        strip -v $STRIP_SHARED "$file"
+        ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
