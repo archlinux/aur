@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # https://www.hoptodesk.com/changelog
 pkgname=hoptodesk-bin
-pkgver=1.45.10
+pkgver=1.45.20
 pkgrel=1
 pkgdesc="A free remote desktop tool that allows users to share their screens and remotely control access to their computers and devices."
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/${pkgname%-bin}.deb"
 )
-sha256sums=('SKIP')
+sha256sums=('623cf99d10939543242a6cf6b17ea843f79ae20bfc281f83cb9c8bd2f48cea59')
 pkgver() {
     cd "${srcdir}/usr/share/applications"
     grep "Version=" "${pkgname%-bin}.desktop" | grep -v "X-Desktop" | sed "s/Version=//g"
