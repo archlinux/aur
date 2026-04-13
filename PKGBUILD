@@ -2,7 +2,7 @@
 _appname=typora
 pkgname="${_appname}-free-with-plugin"
 _pkgname=Typora
-pkgver=1.17.5
+pkgver=1.17.6
 _typoraver=0.11.18
 _electronversion=13
 pkgrel=1
@@ -32,7 +32,7 @@ source=(
 )
 source_aarch64=("${pkgname}-${_typoraver}-aarch64.deb::${_dlurl}/releases/download/v${_typoraver}/${_appname}_${_typoraver}_arm64.deb")
 source_x86_64=("${pkgname}-${_typoraver}-x86_64.deb::${_dlurl}/releases/download/v${_typoraver}/${_appname}_${_typoraver}_amd64.deb")
-sha256sums=('aca961775dd3e72b2a3d4b3eaa68233ea262384e8fc4732eaae7896ed6051b57')
+sha256sums=('764ca67eb42b9e773f756189f7fedf2eb1b0cb4d88cbcfd7598f1a56ae524c31')
 sha256sums_aarch64=('12ad46732c4da7d9414701c584fee942baf83b89165563f18ba03d859eb59ad8')
 sha256sums_x86_64=('a202935a754c4b7344cc947db143e12885e4a716ca5f70f607f0318c346bb6c6')
 prepare() {
