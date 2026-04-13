@@ -1,0 +1,8 @@
+post_install() {
+  echo "==> To enable fast-syntax-highlighting, add this line to your ~/.zshrc:"
+  echo "source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+}
+
+post_upgrade() {
+  post_install
+}

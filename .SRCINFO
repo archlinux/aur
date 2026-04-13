@@ -1,0 +1,13 @@
+pkgbase = fast-syntax-highlighting-git
+	pkgdesc = Fast syntax highlighting for Zsh (git version)
+	pkgver = r917.3d574cc
+	pkgrel = 1
+	url = https://github.com/zdharma-continuum/fast-syntax-highlighting
+	install = fast-syntax-highlighting-git.install
+	arch = any
+	license = MIT
+	depends = zsh
+	source = git+https://github.com/zdharma-continuum/fast-syntax-highlighting.git
+	md5sums = SKIP
+
+pkgname = fast-syntax-highlighting-git
