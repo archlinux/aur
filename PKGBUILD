@@ -3,8 +3,8 @@
 
 pkgbase=cubeb
 pkgname=('cubeb' 'cubeb-docs')
-pkgver=20260123
-_commit=484857522c73318c06f18ba0a3e17525fa98c608
+pkgver=20260406
+_commit=626d7d9f906e9f3cfb70be9e58af0f5a5f399a74
 pkgrel=1
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i686' 'pentium4' 'x86_64')
@@ -17,7 +17,7 @@ source=(git+$url#commit=$_commit
 	git+https://github.com/arsenm/sanitizers-cmake.git
 	git+https://github.com/mozilla/cubeb-coreaudio-rs.git
 	git+https://github.com/mozilla/cubeb-pulse-rs.git)
-b2sums=('50e3ecbdc35898fef39e1ba85a53a01121f8cb6b4be323532e0e41ecdfa33b5be1d29444d75adbaeb79dad42a8bcb000630986bc849d332b7eeb2c4567b42c07'
+b2sums=('39d9d1d41241c25ac0a7a697d6cebf072c2558fded2d9fda2147e9f29ccacd876da4f6e61f9fe43ee9a9a72c1c47a8657b713ec825682441b208fe2607400011'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -59,7 +59,7 @@ package_cubeb() {
     'alsa-lib: for ALSA backend'
     'jack: for JACK backend'
     'sndio: for sndio backend')
-    depends+=('libspeexdsp.so' 'glibc' 'gcc-libs' 'libpulse')
+    depends+=('libspeexdsp.so' 'glibc' 'libgcc' 'libstdc++' 'libpulse')
     provides+=("$pkgname=$pkgver" 'libcubeb.so')
 
     cd "$srcdir"
