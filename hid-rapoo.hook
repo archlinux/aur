@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = hid-rapoo-dkms
+
+[Action]
+Description = Loading hid-rapoo kernel module...
+When = PostTransaction
+Depends = dkms
+Exec = /usr/bin/modprobe hid_rapoo
