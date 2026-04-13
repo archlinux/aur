@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hihat
-pkgver=2.0.0
+pkgver=2.0.1
 _electronversion=26
 _nodeversion=20
 pkgrel=1
@@ -23,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('500491541a9b7668d19a17554367995193f8c003a83e7a8ac7abf619ec97d9a3'
+sha256sums=('5be3f237f3de4d48337346b09575d133d8d5fd828145d34484ee4c56cd27e507'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -81,6 +81,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+    cp -a "${srcdir}/${pkgname}-${pkgver}/release/build/linux-"*"/resources/". "${pkgdir}/usr/lib/${pkgname}/"
 	find "${srcdir}/${pkgname}-${pkgver}/release/build/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" {} +
     if find "${srcdir}/${pkgname}-${pkgver}/release/build/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
         for _subdir in "${srcdir}/${pkgname}-${pkgver}/release/build/linux-"*"/resources/"*; do
