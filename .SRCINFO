@@ -1,6 +1,6 @@
 pkgbase = whispers-bin
 	pkgdesc = Local-first speech-to-text dictation for Wayland (prebuilt release bundle)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/OneNoted/whispers
 	arch = x86_64
@@ -14,7 +14,9 @@ pkgbase = whispers-bin
 	provides = whispers
 	conflicts = whispers
 	conflicts = whispers-git
-	source = whispers-bin-0.2.1.tar.gz::https://github.com/OneNoted/whispers/releases/download/v0.2.1/whispers-0.2.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = b5f1ce5d1e66cece42bb5129c0eb7ab93cc118a7e705847a4a1c8e75cd60ad1e
+	conflicts = whispers-cuda-bin
+	conflicts = whispers-cuda-git
+	source = whispers-bin-0.2.2.tar.gz::https://github.com/OneNoted/whispers/releases/download/v0.2.2/whispers-0.2.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 3726ba66b418a98ab7945e02498a94cbc034bb92fdcab23ff2d8b793bb8c2368
 
 pkgname = whispers-bin
