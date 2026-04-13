@@ -1,14 +1,14 @@
 pkgbase = wails
 	pkgdesc = Create desktop apps using Go and Web Technologies
 	pkgver = 2.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wailsapp/wails
+	install = wails.install
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
 	depends = npm
-	depends = webkit2gtk
 	depends = gtk3
 	optdepends = docker
 	source = https://github.com/wailsapp/wails/archive/v2.12.0/wails-2.12.0.tar.gz
