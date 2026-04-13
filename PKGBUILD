@@ -1,9 +1,9 @@
-# Maintainer: Inkurey22 <inkurey22.tr@proton.me>
-# Contributor: Reyshyram <reyshyram@gmail.com>
+# Maintainer: Reyshyram <reyshyram@gmail.com>
+# Contributor: Inkurey22 <inkurey22.tr@proton.me>
 
 pkgname=epiclang-bin
 _pkgname=epiclang
-pkgver=20251021115803
+pkgver=20260407090709
 pkgrel=1
 pkgdesc="Script to call clang with Epitech's C style checking extension"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('binutils')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-sha256sums=('2033365f69ff075c76e247ee64ffa904696e0da2bffe501f0b34ec074c9fed81')
+sha256sums=('07dab38dd884a2e5d63bef39c2cf76e43bf5d540d27878039f38c6a8d78ad321')
 
 source=("${_pkgname}-${pkgver}.deb::https://ppa.launchpadcontent.net/epitech/ppa/ubuntu/pool/main/e/epiclang/epiclang_${pkgver}_amd64.deb")
 
