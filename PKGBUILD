@@ -1,7 +1,7 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=bosectl-qt-git
 _pkgname=bosectl-qt
-pkgver=0.1.0.r0.g0000000
+pkgver=0.3.0.r0.g0000000
 pkgrel=1
 pkgdesc="Qt6 system tray app for controlling Bose headphones via the BMAP protocol (git version)"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    printf "0.1.0.r%s.g%s" \
+    printf "0.3.0.r%s.g%s" \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short HEAD)"
 }
