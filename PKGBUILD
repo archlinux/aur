@@ -3,7 +3,7 @@ pkgname=stremio-enhanced-bin
 _pkgname=Stremio.Enhanced
 pkgver=1.1.3
 _electronversion=41
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron-based Stremio client with plugins and themes support. It runs the Stremio Service automatically and loads the web version of Stremio.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -25,7 +25,7 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('5a3a8e170b3a5f190f50b65dccdf8629a225fd3826fc010e616eb1ec364e8d46'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+            'ffabf433bef2fde70ebd519422e9255bcfe3af604735cbfe3a3df62bcf0668e5')
 sha256sums_aarch64=('39915692b4f1196c6227796dee7a3bafc8ca6ce41a165f074cf28225413a003f')
 sha256sums_x86_64=('2dbe2d04847c10de91498ee5cc4158c0b87031e08247cac60e2b2f66a961fb40')
 _get_electron_version() {
@@ -48,6 +48,8 @@ prepare() {
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _get_electron_version
+    # Fix permissions for extracted files
+    chmod -R 755 "${srcdir}/squashfs-root/resources"
     # Only replace the Exec command, keep original StartupWMClass and other fields
     sed -i -e "
         s/^Exec=.*/Exec=${pkgname%-bin} %U/g
