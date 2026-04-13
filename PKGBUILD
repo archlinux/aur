@@ -1,6 +1,6 @@
 # Maintainer: Alex Alexander <alex.alexander@gmail.com>
 pkgname=claude-spaces
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="tmux-based session picker for Claude Code"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('bash' 'tmux' 'jq')
 optdepends=('claude-code: Claude Code CLI')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wired/claude-spaces/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c0b8b9f1a467c26e973e0eb699e9e9094f7d4f911fe881cc9e76f18764ffbd49')
+sha256sums=('690d2e711d7b07af82046b3d04dc220195986fb62539802f70aebeac2f6e448e')
 
 package() {
   cd "$pkgname-$pkgver"
