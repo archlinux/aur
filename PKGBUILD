@@ -1,7 +1,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname="ingress2gateway"
 # renovate: datasource=github-releases depName=kubernetes-sigs/ingress2gateway
-pkgver=0.5.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="translate Ingress and provider-specific resources (CRDs) to Gateway API resources."
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('6afffb36873af934f1499d68ea73d432bb711a3025e8f3f5ab330162798ce871')
-b2sums=('07bc4af899f0146fb64690fc523089a70cc071bde7b901f5a7783ed3c2c8deaed3b948f49d5661b8eedf6399122b6ee88472353ba94cc2be13be4c978e5ac21a')
+sha256sums=('741f21ed50470f531d474e35253b8ba5aff6fc13e1ad8ca64049ece5cf1faae1')
+b2sums=('5c5200957f863eecc08c5c42efd1a06b301216aab7a8c84e0bb2c02cad02f36ce994e996ce0b2c83a3426101977d3220ea911e40674c719974cdb91d8a801e44')
 
 build() {
   local _x _commit
@@ -45,7 +45,8 @@ build() {
 
 check() {
   cd "${pkgname}-${pkgver}"
-  go test -short ./...
+  # exclude e2e tests
+  go test -short ./pkg/...
 }
 
 package() {
