@@ -1,15 +1,15 @@
 pkgbase = dreampotato-bin
 	pkgdesc = An emulator for the Dreamcast VMU
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/RikkiGibson/DreamPotato
 	arch = x86_64
 	license = MIT
 	provides = dreampotato
 	options = !strip
-	source = https://github.com/RikkiGibson/DreamPotato/releases/download/v0.2.0/DreamPotato-Linux-x64-v0.2.0.zip
+	source = https://github.com/RikkiGibson/DreamPotato/releases/download/v0.3.0/DreamPotato-Linux-x64-v0.3.0.zip
 	source = dreampotato.desktop
-	sha256sums = b7ca4a3a821cfb6b252db4bbfc74a2b06de39a85a809210e0dc74e70462e65dc
+	sha256sums = 8752244e187e89fc4cb9577c8e7c022e43bb04a48694fbc0e084db66df1ac5f2
 	sha256sums = 274b696ef5ee780082ff5e0e3743aee11e8ea4d14a2c4abea491b68c0c4ce1bd
 
 pkgname = dreampotato-bin
