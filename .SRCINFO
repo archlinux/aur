@@ -1,5 +1,5 @@
 pkgbase = flexbv-free-bin
-	pkgdesc = Viewer for PCB layouts
+	pkgdesc = Free version of the FlexBV boardview software
 	pkgver = 5.3081
 	pkgrel = 1
 	url = https://pldaniels.com/flexbv5/

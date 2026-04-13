@@ -6,7 +6,7 @@
 pkgname=flexbv-free-bin
 pkgver=5.3081
 pkgrel=1
-pkgdesc="Viewer for PCB layouts"
+pkgdesc="Free version of the FlexBV boardview software"
 arch=("x86_64")
 url="https://pldaniels.com/flexbv5/"
 license=("custom")
