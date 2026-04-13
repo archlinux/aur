@@ -1,0 +1,19 @@
+pkgbase = firefox-browser-bin
+	pkgdesc = Firefox Browser is a free and open-source web browser developed by the Mozilla Foundation.
+	pkgver = r1.gabcdef0
+	pkgrel = 1
+	url = https://github.com/Skoczi/firefox-browser-bin
+	arch = x86_64
+	license = custom:unknown
+	makedepends = git
+	makedepends = npm
+	makedepends = nodejs
+	depends = electron
+	depends = libxss
+	depends = nss
+	provides = firefox-browser-bin
+	conflicts = firefox-browser-bin
+	source = firefox-browser-bin::git+https://codeberg.org/Skoczi/csco-launcher
+	sha256sums = SKIP
+
+pkgname = firefox-browser-bin
