@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=plasma-weather-plus
-pkgver=4.6
+pkgver=4.7
 pkgrel=1
 epoch=1
 pkgdesc="Weather widget for KDE Plasma with meteogram and extensive customization"
@@ -11,7 +11,7 @@ depends=('plasma-workspace' 'plasma5support' 'libplasma' 'kirigami'
          'kcmutils' 'qt6-declarative' 'qt6-5compat')
 makedepends=('gettext')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('db36d1c8b16d69dd689d5ade8465872c2226bd6b72c61edc0592ce2732c40fcf')
+sha256sums=('8996c1f02675f2947c28c7a773dd4f65e564a1019eaf1ba54f67623aa4c3ea36')
 
 _plasmoid=weather.widget.plus
 
