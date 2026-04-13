@@ -2,14 +2,14 @@
 _pkgname=rquickshare-git
 pkgname=r-quick-share-git
 pkgver=0.11.5.r4.g378d8ae
-pkgrel=1
+pkgrel=2
 pkgdesc=" Rust implementation of NearbyShare/QuickShare from Android for Linux and macOS."
 arch=(x86_64)
 url="https://github.com/Martichou/rquickshare"
 license=('GPL-3.0-or-later')
 provides=(${pkgname::-4})
 conflicts=(${pkgname::-4})
-depends=('glibc' 'glib2' 'gdk-pixbuf2' 'hicolor-icon-theme' 'gtk3' 'webkit2gtk-4.1' 'dbus' 'gcc-libs' 'libsoup3' 'cairo')
+depends=('glibc' 'glib2' 'gdk-pixbuf2' 'hicolor-icon-theme' 'gtk3' 'webkit2gtk-4.1' 'dbus' 'libgcc' 'libsoup3' 'cairo')
 makedepends=('cargo' 'pnpm' 'git' 'protobuf')
 source=("${pkgname::-4}::git+$url.git")
 sha256sums=('SKIP')
