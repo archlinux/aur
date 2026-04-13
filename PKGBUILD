@@ -1,4 +1,4 @@
-# Maintainer: Seu Nome <seu@email>
+# Maintainer: NidoBr <nidobrcontato@gmail.com>
 
 pkgname=gpu-ratemeter-git
 pkgver=20260413
