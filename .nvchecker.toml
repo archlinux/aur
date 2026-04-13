@@ -1,0 +1,5 @@
+[python-cs50]
+source = "github"
+github = "cs50/python-cs50"
+use_max_tag = true
+prefix = "v"
