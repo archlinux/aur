@@ -1,0 +1,13 @@
+pkgbase = foxlib
+	pkgdesc = Header-only C++20 library for branchless fixed-point tick processing
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Jennyfirrr/FoxLIB
+	arch = any
+	license = MIT
+	makedepends = cmake
+	optdepends = openssl: for websocket header
+	source = foxlib-0.1.0.tar.gz::https://github.com/Jennyfirrr/FoxLIB/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = foxlib
