@@ -1,0 +1,24 @@
+pkgbase = openring-rs-bin
+	pkgdesc = A tool for generating a webring from Atom/RSS feeds, written in Rust (prebuilt binary)
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://github.com/lukehsiao/openring-rs
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = BlueOak-1.0.0
+	depends = gcc-libs
+	provides = openring
+	provides = openring-rs=0.5.7
+	conflicts = openring
+	conflicts = openring-rs
+	source = openring-rs-0.5.7.tar.gz::https://github.com/lukehsiao/openring-rs/archive/v0.5.7.tar.gz
+	sha256sums = 505c04e08a527deb6d11f3f453ff0aedff6be9ff5dbda3712ca3fa4a670d307e
+	source_x86_64 = https://github.com/lukehsiao/openring-rs/releases/download/v0.5.7/openring-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 00ae846fc130f8b05f42d6494b4e40a087b1f7d34ebd3152fd12d83d4fbaa188
+	source_aarch64 = https://github.com/lukehsiao/openring-rs/releases/download/v0.5.7/openring-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4c22fd8fb7ab165d80b0f3af63504e55d7a6409c5cff94bc5e71bd2c84b43f06
+	source_armv7h = https://github.com/lukehsiao/openring-rs/releases/download/v0.5.7/openring-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = 49656a45ce227d79fb5edccce9603eeb3d2dff7acf5345d005ffbe36924ad543
+
+pkgname = openring-rs-bin
