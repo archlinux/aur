@@ -1,7 +1,7 @@
 # Maintainer: Enbeon <actuallyenbeon at gmail dot com>
 pkgname=megadot
-pkgver=4.5.1_m.8
-pkgrel=3
+pkgver=4.5.1_m.9
+pkgrel=1
 pkgdesc="MegaCrit fork of Godot Engine"
 arch=('any')
 url="https://megadot.megacrit.com/"
@@ -16,7 +16,7 @@ source=(
 	"megadot.desktop"
 	"godot_icon.png::https://godotengine.org/assets/press/icon_color.png"
 )
-sha256sums=('600545c11c08a2de0be7d6ac29a93ec102af63fd8382de89283e4a4a76dd53a4'
+sha256sums=('017a21c45b85c5f9ce8c8727423b6ec56bc4e80b14f96ac078eb7263610e6106'
             '4301b5e7bf07816ae7c39bba9974085638f09789601926b1083b52140acc84b0'
             'bee26e95a693369df0fe8c6e942063fec108bb29eed29c7351902ed8cea9ce28'
             'cc881332ee52deb4f4e9ae13a523fc7df06a0c2fd31bbb17fafa5931f2ab72d6')
