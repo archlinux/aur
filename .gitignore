@@ -16,4 +16,6 @@
 pkg/
 src/
 
+*.git/
+
 # End of https://www.toptal.com/developers/gitignore/api/archlinuxpackages
