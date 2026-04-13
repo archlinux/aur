@@ -1,3 +1,19 @@
+2026.04.12, v19.12.5
+
+feature:
+- 1cfc1a6f docker: io: only amd64
+
+2026.04.12, v19.12.4
+
+feature:
+- 3c2b5658 docker: io: haskell
+- d37f8cd3 docker: io: palabra: node
+
+2026.04.12, v19.12.3
+
+feature:
+- cb6cabd4 docker: io: PALABRA_DIR
+
 2026.04.11, v19.12.2
 
 feature:
