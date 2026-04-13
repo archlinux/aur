@@ -1,6 +1,6 @@
 pkgbase = bare-shell
 	pkgdesc = Interactive shell in x86_64 Linux assembly
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/isene/bare
 	install = bare.install
@@ -11,7 +11,7 @@ pkgbase = bare-shell
 	depends = bash
 	provides = bare
 	options = !strip
-	source = git+https://github.com/isene/bare.git#tag=v0.2.6
-	sha256sums = ba594b28056c8ceda64d28477f98bcdc20f1df66402511280e176ddbec3f827a
+	source = git+https://github.com/isene/bare.git#tag=v0.2.7
+	sha256sums = d167ead746e1c30e7e6777794fd7af10b598192f3a2863ac6e45462feb51c106
 
 pkgname = bare-shell
