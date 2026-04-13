@@ -1,7 +1,11 @@
 post_install() {
   # Create the 'pvpn' group so unprivileged clients can talk to the
-  # daemon socket (mode 0660, root:pvpn).
+  # daemon socket and access config/data files (mode 0660/0750, root:pvpn).
   getent group pvpn >/dev/null || groupadd -r pvpn
+
+  # Create system directories for config and data
+  install -dm750 -o root -g pvpn /etc/pvpn
+  install -dm750 -o root -g pvpn /var/lib/pvpn
 
   # Auto-detect the real user (yay/paru set SUDO_USER)
   local _user="${SUDO_USER:-}"
@@ -9,28 +13,69 @@ post_install() {
     _user=$(logname 2>/dev/null || echo "")
   fi
 
+  # Migrate config and session from old user-home paths (pre-v0.3.0)
   if [ -n "$_user" ] && [ "$_user" != "root" ]; then
-    mkdir -p /etc/systemd/system/pvpnd.service.d
-    printf '[Service]\nEnvironment=SUDO_USER=%s\n' "$_user" \
-      > /etc/systemd/system/pvpnd.service.d/user.conf
-    systemctl daemon-reload
-    systemctl enable --now pvpnd
-    echo ":: pVPN daemon enabled for user '$_user'"
+    local _home
+    _home=$(eval echo "~${_user}")
+    if [ ! -f /etc/pvpn/config.toml ] && [ -f "${_home}/.config/pvpn/config.toml" ]; then
+      cp "${_home}/.config/pvpn/config.toml" /etc/pvpn/config.toml
+      chown root:pvpn /etc/pvpn/config.toml
+      chmod 0660 /etc/pvpn/config.toml
+      echo ":: Migrated config from ${_home}/.config/pvpn/config.toml"
+    fi
+    if [ ! -f /var/lib/pvpn/session.enc ] && [ -f "${_home}/.local/share/pvpn/session.enc" ]; then
+      cp "${_home}/.local/share/pvpn/session.enc" /var/lib/pvpn/session.enc
+      chown root:pvpn /var/lib/pvpn/session.enc
+      chmod 0660 /var/lib/pvpn/session.enc
+      echo ":: Migrated session from ${_home}/.local/share/pvpn/session.enc"
+    fi
+  fi
+
+  systemctl daemon-reload
+  systemctl enable --now pvpnd
+
+  echo ":: pVPN daemon enabled"
+  if [ -n "$_user" ] && [ "$_user" != "root" ]; then
     echo ":: Add your user to the 'pvpn' group to use pvpn/pvpnctl without sudo:"
     echo "   sudo usermod -aG pvpn $_user   # then log out/in or run 'newgrp pvpn'"
-    echo ":: Run 'pvpn' to start the TUI"
-  else
-    echo ":: Could not detect your username."
-    echo ":: Run this to finish setup:"
-    echo "   echo -e '[Service]\nEnvironment=SUDO_USER=YOUR_USERNAME' | sudo tee /etc/systemd/system/pvpnd.service.d/user.conf"
-    echo "   sudo systemctl daemon-reload && sudo systemctl enable --now pvpnd"
-    echo "   sudo usermod -aG pvpn YOUR_USERNAME"
   fi
+  echo ":: Run 'pvpn' to start the TUI"
 }
 
 post_upgrade() {
-  # Ensure the group exists for users upgrading from pre-0.2.0.
+  # Ensure the group and directories exist for users upgrading from pre-0.3.0.
   getent group pvpn >/dev/null || groupadd -r pvpn
+  install -dm750 -o root -g pvpn /etc/pvpn
+  install -dm750 -o root -g pvpn /var/lib/pvpn
+
+  # Clean up old SUDO_USER drop-in from pre-v0.3.0
+  if [ -f /etc/systemd/system/pvpnd.service.d/user.conf ]; then
+    rm -f /etc/systemd/system/pvpnd.service.d/user.conf
+    rmdir /etc/systemd/system/pvpnd.service.d 2>/dev/null || true
+    echo ":: Removed obsolete SUDO_USER drop-in"
+  fi
+
+  # Migrate config and session from old user-home paths
+  local _user="${SUDO_USER:-}"
+  if [ -z "$_user" ]; then
+    _user=$(logname 2>/dev/null || echo "")
+  fi
+  if [ -n "$_user" ] && [ "$_user" != "root" ]; then
+    local _home
+    _home=$(eval echo "~${_user}")
+    if [ ! -f /etc/pvpn/config.toml ] && [ -f "${_home}/.config/pvpn/config.toml" ]; then
+      cp "${_home}/.config/pvpn/config.toml" /etc/pvpn/config.toml
+      chown root:pvpn /etc/pvpn/config.toml
+      chmod 0660 /etc/pvpn/config.toml
+      echo ":: Migrated config from ${_home}/.config/pvpn/config.toml"
+    fi
+    if [ ! -f /var/lib/pvpn/session.enc ] && [ -f "${_home}/.local/share/pvpn/session.enc" ]; then
+      cp "${_home}/.local/share/pvpn/session.enc" /var/lib/pvpn/session.enc
+      chown root:pvpn /var/lib/pvpn/session.enc
+      chmod 0660 /var/lib/pvpn/session.enc
+      echo ":: Migrated session from ${_home}/.local/share/pvpn/session.enc"
+    fi
+  fi
 
   systemctl daemon-reload
   systemctl restart pvpnd 2>/dev/null || true
@@ -54,6 +99,7 @@ post_remove() {
     fi
   fi
 
-  echo ":: Config in ~/.config/pvpn/ and session data in ~/.local/share/pvpn/"
+  echo ":: Config in /etc/pvpn/ and data in /var/lib/pvpn/"
   echo "   were NOT removed. Delete manually if desired."
+  echo ":: Old config may still exist in ~/.config/pvpn/ and ~/.local/share/pvpn/"
 }

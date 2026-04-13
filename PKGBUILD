@@ -1,6 +1,6 @@
 # Maintainer: Paul Goessmann <paul.goessmann@proton.me>
 pkgname=pvpn-go
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Proton VPN client with TUI for Linux (WireGuard + Stealth)'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('go>=1.22' 'git')
 install=pvpn-go.install
-backup=()
+backup=('etc/pvpn/config.toml')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
