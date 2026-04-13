@@ -1,16 +1,16 @@
 pkgbase = supermodel-bin
 	pkgdesc = Give your AI coding agent a map of your codebase
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://supermodeltools.com
 	license = MIT
 	conflicts = supermodel
 	provides = supermodel
 	arch = aarch64
-	source_aarch64 = https://github.com/supermodeltools/cli/releases/download/v0.5.1/supermodel_linux_arm64.tar.gz
-	sha256sums_aarch64 = 534d2e9bd0a1512fbb351798d57b6152ab0d719d698ccf486b16f6e82040ee1c
+	source_aarch64 = https://github.com/supermodeltools/cli/releases/download/v0.6.0/supermodel_linux_arm64.tar.gz
+	sha256sums_aarch64 = cb84b0f9c5b6ddd81e849410127d8652b7aa426f81557a045e781b1af66008e6
 	arch = x86_64
-	source_x86_64 = https://github.com/supermodeltools/cli/releases/download/v0.5.1/supermodel_linux_amd64.tar.gz
-	sha256sums_x86_64 = d270c4860f3716c314fda7cd2ea3e1224f2ab6e0d930f63d2b0ce781b57cfd3f
+	source_x86_64 = https://github.com/supermodeltools/cli/releases/download/v0.6.0/supermodel_linux_amd64.tar.gz
+	sha256sums_x86_64 = bf6f3dc8fe53c34fa9e078d87619a93df4b07371655f04fc8354922e66bfa96a
 	
 pkgname = supermodel-bin
