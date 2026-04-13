@@ -8,8 +8,8 @@ pkgbase = python-sacred
 	license = MIT
 	checkdepends = python-pymongo
 	makedepends = python-distribute
-	source = https://github.com/IDSIA/sacred/archive/0.8.5.tar.gz
-	md5sums = 52100236980a79c4c66cd1ab8568ada8
+	source = https://github.com/IDSIA/sacred/archive/0.8.7.tar.gz
+	md5sums = 4f677bca570a4e33b047a73ac4460b95
 
 pkgname = python-sacred
 	depends = python
