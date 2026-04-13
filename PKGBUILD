@@ -1,7 +1,7 @@
 # Maintainer: Steven Seifried <gitlab@canox.net>
 
 pkgname=tuxedo-control-center-bin
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=2
 pkgdesc="A tool to help you control performance, energy, fan and comfort settings on TUXEDO laptops. "
 arch=(x86_64)
@@ -14,9 +14,9 @@ options=(!strip !debug)
 install=${pkgname}.install
 
 source=(https://rpm.tuxedocomputers.com/fedora/43/x86_64/base/tuxedo-control-center_${pkgver}.rpm tuxedo-control-center-bin.install)
-sha256sums=('2d0a9ad5ee270f8a4ff44795fb7c4bd886a60a47c4fd441cf56e512c67332bca'
+sha256sums=('bc08a7878ff47aadcc9c18d3285e415fef5018aadf3609b63e69b38935db400f'
             'fef8f708ff4ba19921f167ff9bffd2536cc0c128dfe418a30f7e5e0d04fca6e3')
-sha512sums=('8cc1f88f6b208c78567daa4c1feff9f9a9d3f8d46f1974ec32b02a0be1d8b24e7044ff24ced43b61c77d322e10089274f3f39d486af7adb7268351b93742205b'
+sha512sums=('09e19b4a52f41527fa8abb5b80c9dcbd791ba93bb2f7bd9b0f7940480773616c18daef80424b98a2c27cb58deebd5eb36174220317c8ced35c8d923c63fe2339'
             'b70d3412f07c72d6de2cf18e75a184741d8f5db7f144c4d8e8c0dde752e197d831fc8f8b6c095c9b6387ff97b36567f9cf5167dbb23ebc392f7b3cc47a78111a')
 
 package() {
