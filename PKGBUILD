@@ -1,6 +1,6 @@
 # Maintainer: Daniel Serrano Armenta (AnabasaSoft) <anabasasoft@gmail.com>
 pkgname=sign-and-seal
-pkgver=1.13.4
+pkgver=v1.14
 pkgrel=1
 pkgdesc="Simple PDF Signer for Linux (Sign & Seal) - Compiled from source"
 arch=('x86_64')
@@ -50,11 +50,11 @@ build() {
     echo "--- Instalando dependencias de compilación con pip ---"
     # Usamos las rutas directas para no depender de 'source activate'
     ./build_env/bin/pip install --upgrade pip
-    ./build_env/bin/pip install pyinstaller pymupdf PyQt6 Pillow
+    ./build_env/bin/pip install pyinstaller pymupdf PyQt6 Pillow opencv-python-headless numpy qrcode "pyhanko[crypto]"
 
     echo "--- Compilando binario ---"
     # Llamamos al pyinstaller del entorno virtual
-    ./build_env/bin/pyinstaller --clean --onefile --noconsole \
+    ./build_env/bin/pyinstaller --clean --onefile --noconsole --hidden-import=cv2 \
         --name "SignAndSeal" \
         --add-data "sign_and_seal_icon.png:." \
         sign_and_seal.py
