@@ -1,6 +1,6 @@
 # Maintainer: Mistan Khomdram <mistankhomdram@gmail.com>
 pkgname=lazychad
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="An intelligent, highly-aesthetic Neovim wrapper built on NvChad"
 arch=('any')
@@ -30,7 +30,7 @@ package() {
 
   # Install the Neovim configuration files
   install -dm755 "$pkgdir/usr/share/lazychad"
-  cp -a init.lua lua "$pkgdir/usr/share/lazychad/"
+  cp -a init.lua lua .version "$pkgdir/usr/share/lazychad/"
   
   # Install documentation and license
   install -Dm644 README.md "$pkgdir/usr/share/doc/lazychad/README.md"
