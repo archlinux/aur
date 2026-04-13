@@ -1,6 +1,6 @@
 pkgbase = open-orpheus
 	pkgdesc = An open-source implementation of Netease Cloud Music's Orpheus browser host.
-	pkgver = 0.3.1
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/YUCLing/open-orpheus
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = open-orpheus
 	depends = mesa
 	depends = libxcb
 	depends = kde-cli-tools
-	source = open-orpheus_0.3.1_amd64.deb::https://github.com/YUCLing/open-orpheus/releases/download/v0.3.1/open-orpheus_0.3.1_amd64.deb
-	sha256sums = c4667641b367cd05777a0ad983f10c24b300351ddc6dfd04773ae273f68352cf
+	source = open-orpheus_0.4.1_amd64.deb::https://github.com/YUCLing/open-orpheus/releases/download/v0.4.1/open-orpheus_0.4.1_amd64.deb
+	sha256sums = bab9773f789bbb4a4074cec569e0ce12e02a0f9022706e1f978e3d6a9ea2f66e
 
 pkgname = open-orpheus
