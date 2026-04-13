@@ -2,8 +2,8 @@
 
 pkgname=releng-tool
 _pkgpyname=releng_tool
-pkgver=2.11.0
-_pkgtarget=v2.11
+pkgver=3.0.0
+_pkgtarget=v3.0
 pkgrel=1
 pkgdesc='A tool to create packages for select runtime environments
  (e.g. embedded targets)'
@@ -12,10 +12,10 @@ arch=(any)
 license=(BSD-2-Clause)
 depends=(
   python
-  python-installer
 )
 makedepends=(
   python-build
+  python-installer
   python-setuptools
   python-wheel
 )
@@ -39,6 +39,7 @@ optdepends=(
   'python-certifi: support using Mozilla'\''s CA Bundle for Bazaar cloning'
   'python-flit: support for Python packages using Flit'
   'python-hatch: support for Python packages using Hatch'
+  'python-installer: support for installing Python packages'
   'python-matplotlib: support for PDF generation of build statistics'
   'python-numpy: support for PDF generation of build statistics'
   'python-pdm: support for Python packages using PDM'
@@ -58,8 +59,8 @@ source=(
   $_base_url/$_pkgtarget/$_pkgpyname-$pkgver.tar.gz.asc
 )
 sha512sums=(
-  ea746e9eaf28d5908a7fd8c677d8b0f387a1c76debfdc613fb2348ceb0e00c728fec994bab59e74b73f9dd2c2ffabcf0741c7fdd36d1bdfd06cb7485e90f24c3
-  9502ff0b169160e93f5c2e981e1445564d30a43cd41d28e85a956c1bf05671f3587485230e7887900563daa3727e491dcaa1f941ad54efedfae7ea0f4dee7a53
+  70274176443313b18ee80375bfeebfc3d0cd430cca86d9e6a9984af36e06ea6bafd7c1465f5b233e16421e225887cb68925347b5ded77781066657f4a81216c3
+  53e2d0f694e1ebe391410da19399adf00c2e4557240b68c09469d841127d0904327abfa06556622e48e3033e77131ac1d9903bbae982dc9aa0572ffc0b4707fa
 )
 validpgpkeys=(D04A27BA9305DBBD354E653902D3C27B922CCC13)
 
