@@ -1,0 +1,37 @@
+changequote(`[[', `]]')dnl
+define([[PLIST]], [[_PLUGINS_]])dnl
+pkgbase=falco-plugins-git
+_pkgname=plugins
+pkgname=(patsubst(PLIST, [[\([^ ]+\)]], [[falco-plugin-\1-git]]))
+pkgver=0.6.4
+pkgrel=1
+arch=('x86_64')
+url="https://github.com/falcosecurity/plugins"
+license=('Apache-2.0')
+makedepends=('git' 'go' 'make')
+source=('git+https://github.com/falcosecurity/plugins.git')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/.*\/v//;s/.*\///;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$srcdir/$_pkgname"
+patsubst(PLIST, [[\([^ ]+\)]], [[
+  echo "Building plugin: \1"
+  cd "$srcdir/$_pkgname/plugins/\1"
+  make lib\1.so
+]])
+}
+
+patsubst(PLIST, [[\([^ ]+\)]], [[
+package_falco-plugin-\1-git() {
+  pkgdesc="Falco plugin for \1"
+  provides=("falco-plugin-\1")
+  conflicts=("falco-plugin-\1")
+  cd "$srcdir/$_pkgname/plugins/\1"
+  install -Dm755 "lib\1.so" "$pkgdir/usr/share/falco/plugins/lib\1.so"
+}
+]])

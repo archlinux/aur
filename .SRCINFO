@@ -1,0 +1,26 @@
+pkgbase = falco-plugins-git
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/falcosecurity/plugins
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	source = git+https://github.com/falcosecurity/plugins.git
+	sha256sums = SKIP
+
+pkgname = falco-plugin-container-git
+	pkgdesc = Falco plugin for container
+	provides = falco-plugin-container
+	conflicts = falco-plugin-container
+
+pkgname = falco-plugin-json-git
+	pkgdesc = Falco plugin for json
+	provides = falco-plugin-json
+	conflicts = falco-plugin-json
+
+pkgname = falco-plugin-k8saudit-git
+	pkgdesc = Falco plugin for k8saudit
+	provides = falco-plugin-k8saudit
+	conflicts = falco-plugin-k8saudit
