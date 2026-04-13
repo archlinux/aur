@@ -1,0 +1,4 @@
+post_install() {
+    echo -e "\e[1;34m==>\e[1;37m Playwright has been configured to use Arch Linux system browsers automatically."
+    echo -e "\e[1;34m==>\e[1;37m Please \e[1;33mrestart your terminal\e[1;37m or run \e[1;33msource /etc/profile.d/playwright.sh\e[1;37m to apply the environment variables.\e[0m"
+}
