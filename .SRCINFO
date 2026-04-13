@@ -1,7 +1,7 @@
 pkgbase = qodercli-bin
 	pkgdesc = Qoder Agentic CLI - Advanced AI coding agent from Alibaba
 	pkgver = 0.1.42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qoder.com/cli
 	arch = x86_64
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = qodercli-bin
 	source = qodercli.bash
 	source = qodercli.zsh
 	source = qodercli.fish
-	sha256sums = 26cb7fb86ccb40248e7eae7c3c35c1daabaeac8a720b86e36e51a4e48f354a58
+	sha256sums = c2e7273832fc4b22ef54ed02f12d422bf9b910eebe2bdee5930bdde93a9ffec6
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
