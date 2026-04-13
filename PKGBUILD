@@ -5,7 +5,7 @@ _pkgname=localias
 pkgname=${_pkgname}-bin
 pkgdesc="Local reverse proxy -- stable '.localhost' URLs for development"
 
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,9 +23,9 @@ conflicts=("${_pkgname}")
 source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums=('8c00c08225d294a092f6de73dba5ccb3c2eb89ea0a9050d3e09075d8f7817981')
-sha256sums_x86_64=('1afd11c2b54ec10cad081c120109ed5df7c614dc7e8f18304aea5f0b7914554b')
-sha256sums_aarch64=('cf037257e2e2077095fb1a175d68813c50d084350e024599c426c0d4e3cb6db4')
+sha256sums=('896f6e0b7d1c1779ceef25014f7fee0e106d37729bdd8250a6ca4f0bd5cf9a99')
+sha256sums_x86_64=('e8547ff9e93af36f0ab98fe8de70be0b4c92bc9bf5ea048a8897287ed984ebf3')
+sha256sums_aarch64=('800ff00da1f0c07e4e282cca8396b3698f9555883c3afd8bb93b1f2cca1a1c52')
 
 
 package() {
