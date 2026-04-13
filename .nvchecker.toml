@@ -1,5 +1,6 @@
 [fastchess]
 source = "github"
 github = "Disservin/fastchess"
-use_max_tag = true
-prefix = "v"
+use_latest_release = true
+from_pattern = 'v([0-9.]*)-alpha'
+to_pattern = '\1'
