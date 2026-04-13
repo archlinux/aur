@@ -1,0 +1,17 @@
+pkgbase = nighterrors-bin
+	pkgdesc = Ultra-light Rust Wayland blue-light filter daemon for Hyprland, Niri, and wlroots compositors
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/OneNoted/nighterrors
+	arch = x86_64
+	license = Apache
+	depends = gcc-libs
+	depends = glibc
+	depends = wayland
+	provides = nighterrors=0.1.0
+	conflicts = nighterrors
+	conflicts = nighterrors-git
+	source = nighterrors-0.1.0-x86_64-unknown-linux-gnu.tar.xz::https://github.com/OneNoted/nighterrors/releases/download/v0.1.0/nighterrors-0.1.0-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 57469a790ab2026252a993ef2e4bf1b5e7436090706d092093388b3dcc3d702e
+
+pkgname = nighterrors-bin
