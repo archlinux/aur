@@ -3,7 +3,7 @@
 _gitname="meshcore-open"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
-pkgver=alpha6+185.r393.20260304.7d8e049
+pkgver=alpha7+134.r649.20260409.cac6abf
 pkgrel=1
 pkgdesc="Open-source Flutter client for MeshCore LoRa mesh networking devices."
 groups=('meshcore')
@@ -41,11 +41,11 @@ makedepends=(
   'git'
 
   # the Flutter tool
-  'flutter-tool'
-  'dart'
+  'flutter-tool>=3.41'         # Recommended: Use 'arch4edu' repository (https://wiki.archlinux.org/title/Unofficial_user_repositories#arch4edu).
+  'dart>=3.11'                 # Recommended: Use 'extra/dart'.
   'ninja'
   # the Flutter linux files
-  'flutter-target-linux'
+  'flutter-target-linux>=3.41' # Recommended: Use 'arch4edu' repository (https://wiki.archlinux.org/title/Unofficial_user_repositories#arch4edu).
   # used for packaging
   'cmake'
 
@@ -79,8 +79,8 @@ source=(
   "${_pkgname}.desktop"
 )
 sha256sums=(
-  'SKIP'
-  '693903df45168de884191be566334fad4c5bd829b36f7e6c33440cf2efa79c5a'
+  'SKIP'                                                              # Main 'meshcore-open' source.
+  '693903df45168de884191be566334fad4c5bd829b36f7e6c33440cf2efa79c5a'  # '.desktop' file.
 )
 
 case "${CARCH}" in
