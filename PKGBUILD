@@ -1,13 +1,13 @@
 # Maintainer: Anysets <anysets@qq.com>
 pkgname=spark-store
-pkgver=5.0.0_beta3
-pkgrel=2
+pkgver=5.0.0_beta4
+pkgrel=1
 pkgdesc="A community powered app store."
 arch=('x86_64' 'aarch64')
 url="https://www.spark-app.store/"
 license=('GPL3')
-_tag_pkgver=5.0.0beta3
-_deb_pkgver=5.0.0~beta3.1
+_tag_pkgver=5.0.0beta4
+_deb_pkgver=5.0.0~beta4
 depends=(
     nss
     libxss
@@ -32,11 +32,11 @@ install=spark-store.install
 options=(!strip !debug)
 source_x86_64=("https://gitee.com/spark-store-project/spark-store/releases/download/${_tag_pkgver}/spark-store_${_deb_pkgver}_amd64.deb")
 source_aarch64=("https://gitee.com/spark-store-project/spark-store/releases/download/${_tag_pkgver}/spark-store_${_deb_pkgver}_arm64.deb")
-sha256sums_x86_64=('ef87fd6ec6fa816016797ca9bf47c267c899fcff3dab08f355c98c1c44fbd8d7')
-sha256sums_aarch64=('57f6780c593974646ede99f1e1c007b35d00471820abb9e22b802384c489bc62')
+sha256sums_x86_64=('e87d3b2b4ca4afd83c57e209373954ce8b9f1b9174341173fda6ed6eee5d6c29')
+sha256sums_aarch64=('42910c277e66fb46470c335e74ea55799460dcc84daa5638a4501ad6da760750')
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
-    sed -i '2i\exit 0' "${pkgdir}/opt/durapps/spark-store/bin/aptss" || true
+    # sed -i '2i\exit 0' "${pkgdir}/opt/durapps/spark-store/bin/aptss" || true
 
     # spark-store postinst
     install -d "$pkgdir/usr/bin"
