@@ -1,37 +1,33 @@
-pkgname=urxvt-tabbedex-git
-pkgver=0.4.r9.g49c1541
+# Maintainer: Pavan Rikhi <pavan.rikhi@gmail.com>
+
+_gitname=urxvt-tabbedex
+pkgname=${_gitname}-git
+pkgver=26.16.1.r1.gfb0056c
 pkgrel=1
 
 pkgdesc="A tabbed extension for rxvt-unicode with several enhancements"
-url='http://github.com/stepb/urxvt-tabbedex'
 arch=("any")
-license=("GPL")
+url="https://github.com/mina86/${_gitname}"
+license=("GPL-3.0-or-later")
 
 depends=('rxvt-unicode')
-makedepends=('git')
+makedepends=('git' 'perl')
+provides=("${_gitname}")
+conflicts=("${_gitname}")
 
-provides=('urxvt-tabbedex')
-conflicts=('urxvt-tabbedex')
-
+source=("git+${url}.git")
+sha512sums=('SKIP')
 install=urxvt-tabbedex-git.install
-source=('git+https://github.com/stepb/urxvt-tabbedex.git'
-        '0001-make-urxvt-tabbedex-work-with-perl-5.18.patch'
-        'urxvt-tabbedex-git.install')
-
-md5sums=('SKIP'
-         '92d581a40779da3127c88fdc7d10257f'
-         '6ea57fa7db9cc912b3759f1ef8c064b0')
 
 pkgver() {
-	cd urxvt-tabbedex
-	git describe --tags --long | sed 's/^tabbedex-//; s/-/-r/; s/-/./g'
+    cd "${_gitname}"
+    git describe --tags --long | sed 's/^v//; s/-/-r/; s/-/./g'
 }
 
-prepare() {
-	cd urxvt-tabbedex
-	git apply ../0001-make-urxvt-tabbedex-work-with-perl-5.18.patch
+build() {
+    make -C "${srcdir}/${_gitname}"
 }
 
 package() {
-	install -Dm644 urxvt-tabbedex/tabbedex "$pkgdir"/usr/lib/urxvt/perl/tabbedex
+    make -C "${srcdir}/${_gitname}" DESTDIR="${pkgdir}" install
 }
