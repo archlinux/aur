@@ -1,0 +1,23 @@
+pkgbase = lazyspotify-bin
+	pkgdesc = Terminal Spotify client bundled with a patched go-librespot daemon
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dubeyKartikay/lazyspotify
+	arch = x86_64
+	license = MIT
+	license = GPL3
+	depends = alsa-lib
+	depends = flac
+	depends = glibc
+	depends = libogg
+	depends = libvorbis
+	optdepends = gnome-keyring: Secret Service keyring provider
+	optdepends = keepassxc: Secret Service keyring provider
+	optdepends = kwallet: Secret Service keyring provider
+	optdepends = wl-clipboard: clipboard integration on Wayland
+	optdepends = xclip: clipboard integration on X11
+	optdepends = xsel: clipboard integration on X11
+	source = lazyspotify-v0.1.0-arch-amd64.tar.gz::https://github.com/dubeyKartikay/lazyspotify/releases/download/v0.1.0/lazyspotify-v0.1.0-arch-amd64.tar.gz
+	sha256sums = 002ffece2b215599a9a424237755813781a7efa32054f1015b508cdd03783242
+
+pkgname = lazyspotify-bin
