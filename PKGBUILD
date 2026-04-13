@@ -1,5 +1,5 @@
 pkgname=adw-network
-pkgver=0.1.5
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Modern network management application for GNOME (build from source)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('adw-network-bin')
 options=('!debug' 'strip')
 
 source=("git+https://github.com/PlayRood32/adw-network.git#tag=v${pkgver}")
-sha256sums=('7707c5179f0b4525525473d3923ac228ed2167a6710ed4f6c5a7ee6bf94b603c')
+sha256sums=('578c3bde81d631aa06cf359d5b5d299d80df3f645101627582ae2a0a17bc519e')
 
 build() {
     cd "${srcdir}/adw-network"
