@@ -4,8 +4,10 @@ wiksr - Terminal instant answer browser
 Uses local ollama AI + Wikipedia for quick Q&A.
 """
 
+import argparse
 import gzip
 import json
+import os
 import re
 import sys
 from urllib.request import urlopen, Request
@@ -21,8 +23,8 @@ except ImportError:
 
 console = Console(width=min(100, Console().width))
 
-OLLAMA_API   = "http://localhost:11434/api/chat"
-OLLAMA_MODEL = "deepseek-r1:1.5b"
+OLLAMA_API         = "http://localhost:11434/api/chat"
+OLLAMA_MODEL_DEFAULT = "deepseek-r1:1.5b"
 
 WIKI_SEARCH  = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch={}&srlimit=1&format=json"
 WIKI_SUMMARY = "https://en.wikipedia.org/api/rest_v1/page/summary/{}"
@@ -48,10 +50,10 @@ def fetch(url: str) -> bytes | None:
         return None
 
 
-def ollama_search(query: str) -> tuple[str, str] | tuple[None, None]:
+def ollama_search(query: str, model: str) -> tuple[str, str] | tuple[None, None]:
     """Query local ollama. Returns (answer, label) or (None, None)."""
     payload = json.dumps({
-        "model": OLLAMA_MODEL,
+        "model": model,
         "stream": False,
         "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
@@ -76,7 +78,7 @@ def ollama_search(query: str) -> tuple[str, str] | tuple[None, None]:
     text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
 
     if text:
-        return text, f"Answer  [dim]via ollama ({OLLAMA_MODEL})[/dim]"
+        return text, f"Answer  [dim]via ollama ({model})[/dim]"
     return None, None
 
 
@@ -107,15 +109,31 @@ def wiki_search(query: str) -> tuple[str, str] | tuple[None, None]:
     return None, None
 
 
-def search(query: str) -> tuple[str, str] | tuple[None, None]:
-    result, label = ollama_search(query)
+def search(query: str, model: str) -> tuple[str, str] | tuple[None, None]:
+    result, label = ollama_search(query, model)
     if result:
         return result, label
     return wiki_search(query)
 
 
 def main():
-    console.print("[bold cyan]wiksr[/bold cyan]  [dim]instant answers — q to quit[/dim]\n")
+    parser = argparse.ArgumentParser(
+        prog="wiksr",
+        description="Terminal instant answer browser (ollama + Wikipedia)",
+    )
+    parser.add_argument(
+        "--model", "-m",
+        default=os.environ.get("WIKSR_MODEL", OLLAMA_MODEL_DEFAULT),
+        metavar="MODEL",
+        help="ollama model to use (default: %(default)s). "
+             "Can also be set via the WIKSR_MODEL env var.",
+    )
+    args = parser.parse_args()
+
+    console.print(
+        f"[bold cyan]wiksr[/bold cyan]  "
+        f"[dim]instant answers — q to quit — model: {args.model}[/dim]\n"
+    )
 
     while True:
         try:
@@ -131,7 +149,7 @@ def main():
             break
 
         with console.status("[dim]Thinking...[/dim]", spinner="dots"):
-            result, label = search(query)
+            result, label = search(query, args.model)
 
         if result:
             console.print(
