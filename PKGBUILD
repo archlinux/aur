@@ -3,7 +3,7 @@ pkgname=lotti-bin
 _pkgname=Lotti
 _debname="com.matthiasn.${pkgname%-bin}"
 pkgver=0.9.950_3915
-pkgrel=1
+pkgrel=2
 pkgdesc="Achieve your goals and keep your data private with Lotti. This life tracking app is designed to help you stay motivated and on track, all while keeping your personal information safe and secure. Now with on-device speech recognition.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/matthiasn/lotti"
@@ -25,9 +25,6 @@ depends=(
     'gstreamer'
     'gst-plugins-base-libs'
 )
-makedepends=(
-    'gendesk'
-)
 source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/${pkgver//_/+}/linux.x64.tar.gz"
     "${pkgname%-bin}.sh"
@@ -40,6 +37,7 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
+    install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.tar.gz" -C "${srcdir}/usr/lib/${pkgname%-bin}"
     sed -i "s/Icon=${_debname}/Icon=${pkgname%-bin}/g" -i "${srcdir}/usr/lib/${pkgname%-bin}/share/applications/${_debname}.desktop"
 }
