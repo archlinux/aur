@@ -1,0 +1,19 @@
+post_install() {
+    ldconfig
+    # Создаём symlink для обратной совместимости
+    if [ ! -e /usr/lib/libxdo.so.3 ]; then
+        ln -sf libxdo.so.4 /usr/lib/libxdo.so.3
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    ldconfig
+    # Удаляем symlink только если мы его создали
+    if [ -L /usr/lib/libxdo.so.3 ]; then
+        rm -f /usr/lib/libxdo.so.3
+    fi
+}
