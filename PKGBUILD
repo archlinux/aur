@@ -4,7 +4,7 @@
 pkgname=photoqt-bin
 _pkgname=photoqt
 pkgver=5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface (binary release)"
 arch=('x86_64')
 url="http://photoqt.org/"
@@ -14,7 +14,7 @@ provides=('photoqt' 'photoqt-bin-debug')
 depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'qt6-location' 'qt6-positioning' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'mpv' 'resvg>=0.43.0' 'python-pychromecast' 'qt6-webengine' 'zxing-cpp' 'lcms2' 'openmp' 'yaml-cpp' 'qca-qt6')
 optdepends=('photoqt-extensions-bin: Official extensions for PhotoQt')
 source=(https://photoqt.org/downloads/bin/$_pkgname-$pkgver-$pkgrel.tar.gz)
-sha256sums=('09739357905dd7ec40a13ab895d8d928f3edd64db179e8d967d2a6e19e3e8720')
+sha256sums=('7dded4752404ecdcda0b95e026b1c7ea65c16ce0307a8df5d7440dd64c8fe018')
 
   # PhotoQt configured with:
   #
