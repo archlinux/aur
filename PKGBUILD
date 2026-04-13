@@ -1,6 +1,6 @@
 # Maintainer: Matthias Schlich
 pkgname=solarust
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A terminal animation of a randomly generated solar system, written in Rust"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/the-unknown/solarust"
 license=('Apache-2.0')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/the-unknown/solarust/archive/v$pkgver.tar.gz")
-sha256sums=('24b735512997ffb79d16b5d38ece13a6effeef62cac33a9eafd98dfd36306c27')
+sha256sums=('413a583eab311b1448006735ebdc540f1c85118a860445be1c0313e47af4ba28')
 
 prepare() {
     cd "$pkgname-$pkgver"
