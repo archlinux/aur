@@ -1,6 +1,6 @@
 # Maintainer: Thorsten Foltz <thorsten.foltz@live.com>
 pkgname=octa
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A modular multi-format data viewer and editor"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo' 'clang' 'cmake' 'nasm' 'pkgconf')
 conflicts=('octa-bin')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('7f302fef5efda73431aca2c6beb3f848a8b88024150e7903e5792c0c54ddc742')
+sha256sums=('342973a87234fc4b544aa7b08945214d967e03857dadaf938f06dde470902bd7')
 
 prepare() {
     cd "$pkgname-$pkgver"
