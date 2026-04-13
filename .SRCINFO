@@ -1,0 +1,13 @@
+pkgbase = claudelytics-bin
+	pkgdesc = A CLI tool to analyze Claude Code usage patterns and token costs
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/nwiizo/claudelytics
+	arch = x86_64
+	license = MIT
+	provides = claudelytics
+	conflicts = claudelytics
+	source = https://github.com/nwiizo/claudelytics/releases/download/v0.6.1/claudelytics-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 8718e9d6a5fea456d7a3a1de80deb465f06f21f08c22b5d5d354d66be447a717
+
+pkgname = claudelytics-bin
