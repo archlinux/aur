@@ -1,8 +1,8 @@
 # Maintainer: Gavin Ridley <gavin dot keith dot ridley at gmail dot com>
 # Maintainer: Luke Labrie-Cleary <luke dot cleary at copenhagenatomics dot com>
 pkgname=openmc-git
-pkgver=v0.14.0.r5.g9830efaf2
-pkgrel=4
+pkgver=v0.15.3.r151.gfd1bc26af
+pkgrel=1
 pkgdesc="The OpenMC project aims to provide a fully-featured Monte Carlo particle 
 		 transport code based on modern methods."
 arch=('x86_64')
@@ -34,7 +34,7 @@ depends=(
 	openssh
 	dagmc-git
 	nuclear-data
-	python-cad_to_openmc
+	python-cad_to_openmc-git
     hdf5
 	python-setuptools-scm
 	python-endf
