@@ -1,0 +1,5 @@
+[s3tui]
+source = "github"
+github = "softberries/s3tui"
+use_max_tag = true
+prefix = "v"
