@@ -33,7 +33,7 @@ build() {
 
 package() {
   #cd "$srcdir"
-  tar -xvf "${srcdir}/Happ.linux.x64.pkg.tar.zst" -C "${pkgdir}"
+  tar -xvf "${srcdir}/$pkgname-$pkgver.Happ.linux.x64.pkg.tar.zst"
   cd "$pkgdir"
   
   rm .INSTALL
@@ -42,6 +42,6 @@ package() {
  # pacman -U --noconfirm ./Happ.linux.x64.pkg.tar.zst
   # Копируем необходимые файлы в каталог пакета
  # echo "Extracting the data.tar.zst..."
-#bsdtar -xf data.tar.zst -C "$pkgdir/"
+#bsdtar -xf data.tar.zst -C "$pkgdir/
 }
 
