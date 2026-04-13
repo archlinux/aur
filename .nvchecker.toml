@@ -1,0 +1,5 @@
+[python-datauri]
+source = "github"
+github = "fcurella/python-datauri"
+use_max_tag = true
+prefix = "v"
