@@ -1,0 +1,4 @@
+[vim-bufexplorer]
+source = "git"
+git = "https://github.com/jlanzarotta/bufexplorer.git"
+prefix = "v"
