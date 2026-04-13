@@ -1,13 +1,12 @@
 # Maintainer: Stephanie M. shteppi@dorcus.digital
 # AUR Package for Fluxer TUI (git version)
 pkgname=fluxer-tui-git
-pkgver=0.7.0.r0.g0000000
-pkgrel=3
+pkgver=0.7.1.r0.g0000000
+pkgrel=1
 pkgdesc="A terminal-based chat client for the Fluxer messaging platform (git version)"
 arch=('x86_64')
 url="https://github.com/dogbonewish/fluxer-tui"
 license=('MIT')
-# ring (via rustls) + Arch default LTO flags: see fluxer-tui PKGBUILD / ring#1444
 options=('!lto')
 depends=('gcc-libs')
 makedepends=('cargo' 'git' 'nasm')
@@ -24,6 +23,7 @@ pkgver() {
 build() {
     cd "fluxer-tui"
     rm -rf target/
+    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=bfd"
     cargo build --release --locked
 }
 
