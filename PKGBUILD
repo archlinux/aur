@@ -1,15 +1,14 @@
 # Maintainer: yum13241 <coolcrew45 at disroot dot org>
 
 pkgname=elyprismlauncher
-pkgver=11.0.0_pre3
-_pkgver=11.0.0
-pkgrel=3
+pkgver=11.0.2
+pkgrel=1
 pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts"
 arch=('x86_64')
 url="https://github.com/ElyPrismLauncher/Launcher"
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1')
 depends=(glibc mesa-utils gcc-libs java-runtime libarchive libgl pciutils qrencode qt6-base qt6-imageformats qt6-networkauth qt6-svg zlib hicolor-icon-theme tomlplusplus cmark)
-makedepends=(cmake extra-cmake-modules git jdk17-openjdk ninja scdoc ghc-filesystem gamemode vulkan-headers)
+makedepends=(cmake extra-cmake-modules git jdk8-temurin ninja scdoc ghc-filesystem gamemode vulkan-headers)
 provides=('elyprismlauncher')
 conflicts=('elyprismlauncher')
 optdepends=('glfw: to use system GLFW libraries'
@@ -19,18 +18,19 @@ optdepends=('glfw: to use system GLFW libraries'
             'java-runtime=8: support for Minecraft versions < 1.17'
             'flite: minecraft voice narration'
 )
-source=("https://github.com/ElyPrismLauncher/Launcher/releases/download/${_pkgver}/PineconeMC-${_pkgver}.tar.gz")
+source=("https://github.com/ElyPrismLauncher/Launcher/releases/download/${pkgver}/PineconeMC-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build()
 {
-	cd PineconeMC-${_pkgver}
+	export PATH="/usr/lib/jvm/java-8-temurin/bin:$PATH"
+	cd PineconeMC-${pkgver}
 	cmake -DCMAKE_INSTALL_PREFIX=/usr --preset linux
 	cmake --build build --config Release -j$(nproc)
 }
 
 package()
 {
-	cd PineconeMC-${_pkgver}
+	cd PineconeMC-${pkgver}
 	DESTDIR="${pkgdir}" cmake --install build --config Release
 }
