@@ -15,7 +15,7 @@ optdepends=(
   'xsel: clipboard integration on X11'
 )
 source=("lazyspotify-v${pkgver}-arch-amd64.tar.gz::https://github.com/dubeyKartikay/lazyspotify/releases/download/v0.1.0/lazyspotify-v0.1.0-arch-amd64.tar.gz")
-sha256sums=('002ffece2b215599a9a424237755813781a7efa32054f1015b508cdd03783242')
+sha256sums=('358a9ad4fbab086e660024b3c3f6ba91a913896c51718f2adb1e2f4f42aac3a4')
 
 package() {
   install -Dm755 "${srcdir}/lazyspotify-v${pkgver}-arch-amd64/lazyspotify" "${pkgdir}/usr/bin/lazyspotify"
