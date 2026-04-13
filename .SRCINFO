@@ -1,6 +1,6 @@
 pkgbase = bkmr
 	pkgdesc = A Unified CLI Tool for Bookmark, Snippet, and Knowledge Management
-	pkgver = 7.6.0
+	pkgver = 7.6.1
 	pkgrel = 1
 	url = https://github.com/sysid/bkmr
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = bkmr
 	depends = glibc
 	depends = openssl
 	options = !lto
-	source = bkmr-7.6.0.tar.gz::https://github.com/sysid/bkmr/archive/v7.6.0.tar.gz
-	sha256sums = ff94196f04dac1e15fd9a1882a4f28a06a39295cf85a69e47d9d596193da11cc
+	source = bkmr-7.6.1.tar.gz::https://github.com/sysid/bkmr/archive/v7.6.1.tar.gz
+	sha256sums = d7c348b5462a6052ff1fcdeaaecbf862033b06506592179b1b1e8ac260783a2e
 
 pkgname = bkmr
