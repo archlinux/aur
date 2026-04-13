@@ -11,7 +11,6 @@ makedepends=(git cmake libxslt)
 optdepends=('cellframe-node: Support for local node management')
 options=(!debug)
 source=(git+https://gitlab.demlabs.net/cellframe/${pkgname}.git#commit=6176e61cd651dae36e84899b05f10cafaaa01063
-		fix-seed-restoration.patch
         $pkgname-tmpfiles.conf)
 provides=("cellframe-wallet")
 install=$pkgname.install
