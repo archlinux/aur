@@ -1,0 +1,17 @@
+pkgbase = lazyagent-bin
+	pkgdesc = See what your ai agents are doing
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/chojs23/lazyagent
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lazyagent
+	conflicts = lazyagent
+	options = !strip
+	source_x86_64 = lazyagent-x86_64-0.1.3.tgz::https://github.com/chojs23/lazyagent/releases/download/v0.1.3/lazyagent_0.1.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = ea45bf6108277ddd9d2081e9303cf2987216daf3552a35d9ce85aedac62dd3ad
+	source_aarch64 = lazyagent-aarch64-0.1.3.tgz::https://github.com/chojs23/lazyagent/releases/download/v0.1.3/lazyagent_0.1.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = c734fac19a950a998ba932b8ab2ed207bb020e805299ca971c8a69a61f610455
+
+pkgname = lazyagent-bin

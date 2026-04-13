@@ -1,0 +1,5 @@
+[lazyagent-bin]
+source = "github"
+github = "chojs23/lazyagent"
+use_latest_release = true
+prefix = "v"
