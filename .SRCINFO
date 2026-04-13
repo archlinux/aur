@@ -1,0 +1,14 @@
+pkgbase = rmap
+	pkgdesc = sehr quick network scanner
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/PndaMan/rmap
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = openssl
+	source = rmap-1.1.0.tar.gz::https://github.com/PndaMan/rmap/archive/v1.1.0.tar.gz
+	sha256sums = 6afaa179f08bdc04aa9a2bf371f67f8654f2372aef69f7ad0646b3383ff6ee7e
+
+pkgname = rmap
