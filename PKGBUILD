@@ -1,9 +1,8 @@
 # Maintainer: yum13241 <coolcrew45 at disroot dot org>
 
 pkgname=elyprismlauncher-bin
-pkgver=11.0.0_pre3
-_pkgver=11.0.0
-pkgrel=3
+pkgver=11.0.2
+pkgrel=1
 pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts (binary version)"
 arch=('x86_64')
 url="https://github.com/ElyPrismLauncher/Launcher"
@@ -18,14 +17,14 @@ optdepends=('glfw: to use system GLFW libraries'
             'java-runtime=8: support for Minecraft versions < 1.17'
             'flite: minecraft voice narration'
 )
-source=("https://github.com/ElyPrismLauncher/Launcher/releases/download/${_pkgver}/PineconeMC-Linux-Qt6-Portable-${_pkgver}.tar.gz")
-noextract=("ElyPrismLauncher-Linux-Qt6-Portable-${pkgver}.tar.gz")
+source=("https://github.com/ElyPrismLauncher/Launcher/releases/download/${pkgver}/PineconeMC-Linux-Qt6-Portable-${pkgver}.tar.gz")
+noextract=("PineconeMC-Linux-Qt6-Portable-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 package()
 {
 	install -d "${pkgdir}/usr"
-	tar -C "${pkgdir}/usr" -xvf PineconeMC-Linux-Qt6-Portable-${_pkgver}.tar.gz
+	tar -C "${pkgdir}/usr" -xvf PineconeMC-Linux-Qt6-Portable-${pkgver}.tar.gz
 	
 	# We must now remove the bundled libraries and the portable flag.
 	rm -rf "${pkgdir}"/usr/manifest.txt
