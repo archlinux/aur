@@ -1,13 +1,15 @@
 # Maintainer: Tanishq (Trifalic47) <trifalicapt@gmail.com>
 pkgname=rmpv-git
 pkgver=r33.17e0018
-pkgrel=1
-pkgdesc="Terminal-based mpv YouTube/music player with rmpc integration"
+pkgrel=2
+pkgdesc="Terminal-based mpv YouTube/music player with yt-dlp streaming and download support"
 arch=('any')
 url="https://github.com/Trifalic47/rmpv"
 license=('MIT')
-depends=('mpv' 'yt-dlp' 'mpc' 'mpd' 'rmpc' 'rofi')
+# rmpc removed from depends to prevent installation failure
+depends=('mpv' 'yt-dlp' 'mpc' 'mpd' 'rofi')
 makedepends=('git')
+optdepends=('rmpc: for rmpc integration support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+${url}.git")
@@ -22,7 +24,6 @@ package() {
   cd "$pkgname"
 
   # ── Binaries ──────────────────────────────────────────
-  # Using a loop makes it cleaner and easier to maintain
   for _bin in rmpv rmpv-play rmpv-search; do
     install -Dm755 "bin/$_bin" "$pkgdir/usr/bin/$_bin"
   done
@@ -31,11 +32,15 @@ package() {
   install -Dm755 scripts/rmpv-setup.sh "$pkgdir/usr/bin/rmpv-setup"
 
   # ── Data files (Templates) ────────────────────────────
-  # Avoid 'cp -r' directly into pkgdir when possible to ensure correct 
-  # directory permissions (755) and file permissions (644)
+  # Using find to preserve structure and set correct permissions
+  # This creates /usr/share/rmpv/dots/...
   find dots -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/rmpv/{}" \;
 
   # ── License & Documentation ───────────────────────────
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Ensure the license is installed (Standard AUR requirement for MIT)
+  if [ -f LICENSE ]; then
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  fi
 }
