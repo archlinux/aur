@@ -1,21 +1,43 @@
-# Maintainer: David Birks <david@birks.dev>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: David Birks <david@birks.dev>
 
-pkgname=systemd-manager-tui-bin
-pkgver=1.2.0
-pkgrel=2
-pkgdesc="Terminal UI for managing systemd services"
+_gitauthor=matheus-git
+_gitname=systemd-manager-tui
+_appname=${_gitname}
+pkgname=${_appname}-bin
+pkgdesc="A TUI application for managing systemd services"
+
+pkgver=1.2.4
+pkgrel=1
+_gitversion=v${pkgver}
+
 arch=('x86_64')
-url="https://github.com/matheus-git/systemd-manager-tui"
+
+_ghurl="https://github.com/${_gitauthor}/${_gitname}"
+_ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
+url=${_ghurl}
+
 license=('MIT')
-depends=()
-options=('!debug')
-provides=('systemd-manager-tui')
-source=(
-  "https://github.com/matheus-git/systemd-manager-tui/releases/download/v${pkgver}/systemd-manager-tui"
-)
-sha256sums=('885aa9db3d24eadb53d2da00099f76de7cbfd30c2969ee2dd3c1a543cf90a4da')
+
+provides=("${_appname}")
+conflicts=("${_appname}")
+
+options=(!strip)
+
+source=("README-${pkgver}.md::${_ghurlraw}/README.md"
+		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
+source_x86_64=("${_appname}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}")
+sha256sums=('0f905726241c59bb0bd0353310bbb15c3c3abcfb60327a7be5a42269e36c12b2'
+            '206b0efe09be5fb152102c47679ebb83a522e4bea18db16cd524a52e23a50db7')
+sha256sums_x86_64=('63a977112f97462d55a4e41fc0280d32b3f801c3b9f0fad329cd79843c7ae1ec')
+
 
 package() {
-  install -Dm755 "${srcdir}/systemd-manager-tui" "${pkgdir}/usr/bin/systemd-manager-tui"
-}
+	cd "${srcdir}/" || exit
 
+	install -Dm755 "${_appname}-${pkgver}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
