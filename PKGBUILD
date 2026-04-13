@@ -5,13 +5,13 @@
 
 pkgname=kri
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, compact & very fast text editor'
 arch=('x86_64')
 url="https://github.com/ikozyris/$pkgname"
 license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1a35c33c44be9c7063c040928f8c32d6d4eac2023de7560a207dbb3dce6e57fd')
+sha256sums=('1b363108e330b9cff438ca9b1c4af6a48882efae4a86c9af3c9d3fbec450038e')
 makedepends=('gcc' 'make')
 depends=('gcc-libs' 'glibc' 'ncurses')
 
