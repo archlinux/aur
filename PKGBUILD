@@ -1,23 +1,24 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Carlos Aznarán <caznaranl@uni.pe>
-# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Bruno Galeotti <bgaleotti at gmail dot com>
+
 pkgname=clocker
-pkgver=1.23.1
-pkgrel=2
+pkgver=1.25.0
+pkgrel=1
 pkgdesc="Tracks project hours"
-arch=('x86_64' 'i686' 'arm' 'armv6' 'armv7h' 'aarch64')
+arch=('any')
 url="https://github.com/substack/${pkgname}"
-license=(MIT)
-depends=(gcc-libs glibc nodejs)
-makedepends=(npm)
+license=('MIT')
+depends=('nodejs')
+makedepends=('npm' 'python')
 source=(${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)
-sha512sums=('b9b9a16495efe6e271ed945b003b9b79e420fe7041087a33a8ad741ef5be9ebfb084f5b548fdd78242b37c19d50201f3454e4770b25f34ef040c9a9522c39d4b')
+sha512sums=('bac766fb314c352492e4923ae9d46ed964c6c91a8c4ee80140c1bcc9b6c227f40eb1f0f6e6e0741f835f8285aea25637049198299922ce7cabccc6e28875b51c')
 
 package() {
   export NODE_ENV=production
 
-  npm install -g --build-from-source --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${pkgname}-${pkgver}.tgz"
+  npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${pkgname}-${pkgver}.tgz"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/" "${pkgdir}/usr/share/doc/${pkgname}/"
   ln -s "/usr/lib/node_modules/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
   ln -s "/usr/lib/node_modules/${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/"
