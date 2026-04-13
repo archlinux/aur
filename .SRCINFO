@@ -1,7 +1,7 @@
 pkgbase = proton-cachyos
 	pkgdesc = A compatibility tool for Steam Play based on Wine and additional components, experimental branch with extra CachyOS flavour
-	pkgver = 10.0.20260407
-	pkgrel = 3
+	pkgver = 10.0.20260408
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/CachyOS/proton-cachyos
 	install = proton-cachyos.install
@@ -232,13 +232,13 @@ pkgbase = proton-cachyos
 	options = emptydirs
 	options = pestrip
 	backup = usr/share/steam/compatibilitytools.d/proton-cachyos/user_settings.py
-	source = proton-cachyos::git+https://github.com/CachyOS/proton-cachyos.git#tag=cachyos-10.0-20260407-native
+	source = proton-cachyos::git+https://github.com/CachyOS/proton-cachyos.git#tag=cachyos-10.0-20260408-native
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86_64.tar.xz
 	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-10.4.1/wine-mono-10.4.1-x86.tar.xz
 	source = https://github.com/madewokherd/xalia/releases/download/xalia-0.4.8/xalia-0.4.8-net48-mono.zip
 	source = compatibilitytool.vdf.template
-	b2sums = a01dfef993920763928df599e228e4d9e18d61095fe7c6b8b154cf0b817aa8f00abb4d1a311f98fd43223bc2d46dda0626a2762f9abdf0b090eb4f9118db5a4c
+	b2sums = 8bc676e4be4aaba7838c01c56bf82ce1af7d946d8c4592c5913fbffbd68e241f3575083b86bc307c0fbf6ec653598679b0b92b7591ef4ebc9da75a05523831d2
 	b2sums = 2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9
 	b2sums = 62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0
 	b2sums = 9ca53dee272470806432c61587080e6dc04fd9eaafde4f55f5d57d5557ec6859d77a74b74c9e3f472da04b8ace9609f0927573faab368a25249c76b3e37e65c1
