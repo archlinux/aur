@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
 _pkgname=NVM-Desktop
-pkgver=4.3.1
+pkgver=4.3.2
 _nvmdver="${pkgver}"
-_nodeversion=22
+_nodeversion=24
 pkgrel=1
 pkgdesc="Node Version Manager Desktop - A desktop application to manage multiple active node.js versions."
 arch=(
@@ -34,9 +34,9 @@ source_x86_64=("nvmd-${_nvmdver}-x86_64::${_nvmdurl}/releases/download/v${_nvmdv
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('5f8f153b47964501371c044bfc66ba1557c37412662e07557b4fafaf741f1520')
-sha256sums_aarch64=('6abbfa6dd9879a6b630a37665184e584539e0813d64633e1021dd38f7ba2d381')
-sha256sums_x86_64=('2db655c304670fcd95d2098ebd632b2c40498c818fabc1d222197b23dd2ffc84')
+sha256sums=('b9a73084a2d425d8d0724c0a37a3bd08ace17e1f4e42032dc98401c678956946')
+sha256sums_aarch64=('2e58dced0a6f90f73c8a20cf2df7b2e0c14f20a852f54e58faea3f658f4bd93f')
+sha256sums_x86_64=('47bc6baf5e3cbbdc84a1359c327b565ec757e56aa806e9379b6302f249701252')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
