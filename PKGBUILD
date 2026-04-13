@@ -1,15 +1,18 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 # Contributor: Karmanyaah Malhotra <karmanyaahm@gmail.com>
 
-pkgname=gotify-dunst-git
+_pkgname=gotify-dunst
+pkgname=${_pkgname}-git
 pkgver=r32.d79a3d8
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple script for receiving Gotify message notifications via dunst'
 arch=('any')
 url='https://github.com/ztpnk/gotify-dunst'
 license=('GPL-3.0-only')
 depends=('python3' 'python-setproctitle' 'python-websocket-client' 'libnotify')
 makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/ztpnk/gotify-dunst")
 sha512sums=('SKIP')
 
