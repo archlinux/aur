@@ -1,0 +1,15 @@
+pkgbase = cert-checker
+	pkgdesc = simple validity checker for website certificates
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/mrtoadie/go-check-cert
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = base-devel
+	depends = glibc
+	source = git+https://github.com/mrtoadie/go-check-cert.git
+	sha256sums = SKIP
+
+pkgname = cert-checker
