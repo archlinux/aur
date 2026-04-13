@@ -35,7 +35,7 @@ EOF
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/kittenspaceagency.png"
 
     # Install desktop entry
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/kittenspaceagency.desktop" <<'EOF'
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/kittenspaceagency.desktop" <<EOF
 [Desktop Entry]
 Name=Kitten Space Agency
 Comment=Experimental build of Kitten Space Agency
@@ -45,6 +45,7 @@ Terminal=false
 Type=Application
 Categories=Game;
 StartupNotify=true
+StartupWMClass=Kitten Space Agency (KSA) v$pkgver
 EOF
 
 }
