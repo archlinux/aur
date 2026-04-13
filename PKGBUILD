@@ -1,7 +1,7 @@
 # Maintainer: Olivier Poitrey <rs@nextdns.io>
 # Contributor: Guillaume Lefranc <guillaume@signal18.io>
 pkgname=nextdns
-pkgver=1.47.1
+pkgver=1.47.2
 pkgrel=1
 pkgdesc='NextDNS DNS/53 to DoH Proxy'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -26,4 +26,4 @@ package() {
     install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
 }
 
-sha256sums=('3356b283a8eeb675efee8163854c83c65d1dbb7743bac04db696751290f8ee64')
+sha256sums=('d4a57f07f51a58ab57f8ff872678fc81be76c3985011ef0960b156df361ea44a')

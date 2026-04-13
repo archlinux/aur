@@ -1,6 +1,6 @@
 pkgbase = nextdns
 	pkgdesc = NextDNS DNS/53 to DoH Proxy
-	pkgver = 1.47.1
+	pkgver = 1.47.2
 	pkgrel = 1
 	url = https://github.com/nextdns/nextdns
 	install = nextdns.install
@@ -11,7 +11,7 @@ pkgbase = nextdns
 	license = MIT
 	makedepends = go
 	options = !lto
-	source = https://github.com/nextdns/nextdns/archive/v1.47.1.tar.gz
-	sha256sums = 3356b283a8eeb675efee8163854c83c65d1dbb7743bac04db696751290f8ee64
+	source = https://github.com/nextdns/nextdns/archive/v1.47.2.tar.gz
+	sha256sums = d4a57f07f51a58ab57f8ff872678fc81be76c3985011ef0960b156df361ea44a
 
 pkgname = nextdns
