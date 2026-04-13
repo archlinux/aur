@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=edac-utils
-pkgver=0.17
+pkgver=0.18
 pkgrel=1
 pkgdesc="Userspace helper for kernel EDAC drivers (Error Detection and Correction)"
 arch=($CARCH)
@@ -23,7 +23,7 @@ backup=()
 options=()
 install=
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
-sha256sums=('8a1bfb3c9b74d614e1bd924b8f707161d008b8cd9b13e72b88f72420d8c7c0ab')
+sha256sums=('1d98f6fb9b1d56d19c73303d2a50d10e235f6380e5cdc65050d04c8862f300c4')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
@@ -64,4 +64,5 @@ StandardOutput=journal
 [Install]
 WantedBy=multi-user.target
 EOF
+    rm -rf "${pkgdir}/etc/init.d"
 }
