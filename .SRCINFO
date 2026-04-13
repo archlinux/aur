@@ -1,17 +1,14 @@
 pkgbase = equivs
 	pkgdesc = Circumvent Debian package dependencies
-	pkgver = 2.0.9
+	pkgver = 2.3.2
 	pkgrel = 1
-	url = http://packages.debian.org/sid/equivs
+	url = https://salsa.debian.org/perl-team/modules/packages/equivs
 	arch = any
-	license = GPL
-	depends = debhelper
-	depends = dpkg
-	depends = fakeroot
-	depends = make
+	license = GPL-2.0-only
+	makedepends = git
 	depends = perl
-	source = http://httpredir.debian.org/debian/pool/main/e/equivs/equivs_2.0.9_all.deb
-	md5sums = 4b3ac16cb43543742ed8d6be6ba62ac1
+	depends = bash
+	source = git+https://salsa.debian.org/perl-team/modules/packages/equivs.git/#tag=debian/2.3.2
+	sha512sums = 91dad2c87d19c1b34f75a1f6b13b9f05b31f2b02a3feef11ce6f13a0e089cfd2e1d2e1c930b626bdfe92468719df18f5b528acc6e32cdda4d9904c1a8a1297ff
 
 pkgname = equivs
-
