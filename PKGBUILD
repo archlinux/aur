@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/Trifalic47/rmpv"
 license=('MIT')
 
-depends=('mpv' 'yt-dlp' 'mpc' 'mpd')
+depends=('mpv' 'yt-dlp' 'mpc' 'mpd' 'rofi')
 optdepends=('rmpc: TUI interface')
 
 makedepends=('git')

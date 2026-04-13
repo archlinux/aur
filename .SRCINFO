@@ -1,6 +1,6 @@
 pkgbase = rmpv-git
 	pkgdesc = Terminal-based mpv YouTube/music player with rmpc integration
-	pkgver = r29.84c2c53
+	pkgver = r31.0a3f8c2
 	pkgrel = 1
 	url = https://github.com/Trifalic47/rmpv
 	install = rmpv.install
@@ -11,6 +11,7 @@ pkgbase = rmpv-git
 	depends = yt-dlp
 	depends = mpc
 	depends = mpd
+	depends = rofi
 	optdepends = rmpc: TUI interface
 	provides = rmpv
 	conflicts = rmpv
