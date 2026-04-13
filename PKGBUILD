@@ -1,5 +1,5 @@
 pkgname=xero-music
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='TUI music player written in Rust with album art and synced lyrics'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
   'kitty: kitty icat integration for album-art rendering'
 )
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/Xero-music/Xero/archive/v$pkgver.tar.gz")
-sha256sums=('caff6ed5d2b923f1ec7a93dca75ea4213801d79dac117ce3b87c7a45d10d293e')
+sha256sums=('0b231bee3f1de49890b5c2bfe3326ff0500a6bd4275544f142d1ca36b1965c4f')
 
 build() {
   cd "$srcdir/xero"
