@@ -1,26 +1,24 @@
-# Maintainer: Karmanyaah Malhotra <karmanyaahm@gmail.com>
+# Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Contributor: Karmanyaah Malhotra <karmanyaahm@gmail.com>
+
 pkgname=gotify-dunst-git
-pkgver=r14.72d83a9f
-pkgrel=1
-pkgdesc="A simple script for receiving Gotify message notifications via dunst."
+pkgver=r32.d79a3d8
+pkgrel=2
+pkgdesc='A simple script for receiving Gotify message notifications via dunst'
 arch=('any')
-url="https://github.com/ztpnk/gotify-dunst"
-license=('GPL3')
-depends=('python3' 'python-websocket-client' 'libnotify')
+url='https://github.com/ztpnk/gotify-dunst'
+license=('GPL-3.0-only')
+depends=('python3' 'python-setproctitle' 'python-websocket-client' 'libnotify')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/ztpnk/gotify-dunst")
-noextract=()
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
+  cd $pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-VCS}"
-
-	make DESTDIR="$pkgdir/" install
-
+  cd $pkgname
+  make DESTDIR="$pkgdir" install
 }

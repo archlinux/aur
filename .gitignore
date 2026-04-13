@@ -1,1 +1,4 @@
-test
+*.pkg.tar*
+pkg
+src
+gotify-dunst-git
