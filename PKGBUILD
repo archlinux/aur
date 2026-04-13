@@ -14,11 +14,11 @@ sha256sums=('SKIP')
 
 
 build() {
-    cd "$srcdir/"
-    # if the project uses Go‑Modules (go.mod exists):
-    go mod tidy
-    #go build -v -o "go-check-cert/$pkgname/"
-    go build -v -o "go-check-cert/"
+    cd "$srcdir/go-check-cert"
+
+    # Option A: Build von Root mit Pfadangabe (empfohlen)
+    # Finde das cmd-Verzeichnis und baue daraus
+    go build -ldflags="-s -w" -o "$pkgname" ./cmd
 }
 
 package() {
