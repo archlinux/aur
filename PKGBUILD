@@ -2,7 +2,7 @@
 # Maintainer: Son Roy Almerol <github@snry.me>
 
 pkgname='snry-shell-bin'
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Modern Wayland desktop shell for Hyprland'
 url='https://github.com/sonroyaalmerol/snry-shell'
@@ -13,7 +13,7 @@ conflicts=('snry-shell')
 depends=('gtk4' 'gtk4-layer-shell' 'hyprland')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/sonroyaalmerol/snry-shell/releases/download/v${pkgver}/snry-shell_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('134831a3e0bc01a1a403bfee0c77fba2679a1bde851e75ff623930b137eccc15')
+sha256sums_x86_64=('cfd6807754f69ffe727073d1baaba3915823e56cf5e738438585720065f71091')
 
 package() {
   install -Dm755 "./snry-shell" "${pkgdir}/usr/bin/snry-shell"

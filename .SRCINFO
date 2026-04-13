@@ -1,6 +1,6 @@
 pkgbase = snry-shell-bin
 	pkgdesc = Modern Wayland desktop shell for Hyprland
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/sonroyaalmerol/snry-shell
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = snry-shell-bin
 	conflicts = snry-shell
 	provides = snry-shell
 	arch = x86_64
-	source_x86_64 = https://github.com/sonroyaalmerol/snry-shell/releases/download/v0.8.0/snry-shell_0.8.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 134831a3e0bc01a1a403bfee0c77fba2679a1bde851e75ff623930b137eccc15
+	source_x86_64 = https://github.com/sonroyaalmerol/snry-shell/releases/download/v0.8.1/snry-shell_0.8.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = cfd6807754f69ffe727073d1baaba3915823e56cf5e738438585720065f71091
 	
 pkgname = snry-shell-bin
