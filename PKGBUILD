@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ulogviewer-bin
 _pkgname=ULogViewer
-pkgver=4.1.6.1012
+pkgver=4.1.7.411
 pkgrel=1
 pkgdesc="Universal Log Viewer,supports reading, parsing and analysing various type of logs.(Prebuilt version)"
 arch=(
@@ -36,8 +36,8 @@ source=(
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
             '08c0a423317a93a254a6d6fbcb0575e8dde202ce46f5126dbf03eb58e02c8851')
-sha256sums_aarch64=('91000f126f77ab9ed21baaf3ae21c9e58eaa6b94a98750933a55998d4ee8805d')
-sha256sums_x86_64=('5ebbf96c897ede1663d2cd55cc101d9d9b08a27cd562653682b8760c9ae20603')
+sha256sums_aarch64=('a3e0db2b299687a728f5a14c9d4320a51290e0af3b284111b8eac1b890375454')
+sha256sums_x86_64=('505c8172e31552316973e85eba180070b59476f270a453e0b4ab6e8ca89880ee')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
