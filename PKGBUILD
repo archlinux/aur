@@ -7,7 +7,7 @@
 pkgname=python-pysvn
 _name=${pkgname#python-}
 pkgver=1.9.25
-pkgrel=1
+pkgrel=2
 pkgdesc="The Pythonic interface to Subversion"
 url="https://pysvn.sourceforge.io/"
 depends=('apr' 'python' 'subversion')
@@ -25,15 +25,18 @@ prepare() {
   # Remove bundled libs
   rm -rf Import
 
-  # build with fixed module name and no RPATH
+  # Fix problems caused by case-insensitive requirement for CXX folder
+  sed -i "s@--pycxx-dir=.@--pycxx-dir=$(pwd)@" "$srcdir/fix-setup.py.patch"
   patch -p1 -i "$srcdir/fix-setup.py.patch"
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-  ln -s /usr/include/python$python_version/cxx Source/CXX
+  ln -s /usr/include/python$python_version/cxx ./CXX || echo 'link already exists'
 }
 
 build() {
   cd "$_name-$pkgver"
 
+  echo "========================"
+  pwd
   python setup.py build
 }
 
