@@ -22,6 +22,8 @@ prepare() {
     chmod +rw "launcher-${pkgver}"
     cd "launcher-${pkgver}"
     yarn install
+    # Align JS plugin versions with Rust crate versions
+    yarn add @tauri-apps/plugin-fs@^2.5.0 @tauri-apps/plugin-dialog@^2.7.0
     cd src-tauri
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
