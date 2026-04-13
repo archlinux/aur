@@ -8,7 +8,7 @@ pkgdesc="Python clipboard manager"
 arch=("any")
 url="https://github.com/mrichar1/clipster"
 license=("AGPL")
-depends=("python" "python-gobject" "python-pip" "libwnck3")
+depends=("python" "python-gobject" "python-pip" "libwnck3" "python-vcs-versioning")
 makedepends=("git" "python-setuptools")
 source=("${pkgname}-${pkgver}::git+https://github.com/mrichar1/clipster.git#tag=${pkgver}")
 sha256sums=("SKIP")
