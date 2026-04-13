@@ -1,8 +1,8 @@
 diff --git a/meson.build b/meson.build
-index 1bcb424..8bdb580 100644
+index 596d2b8..46334c8 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -156,8 +156,6 @@ endif
+@@ -178,8 +178,6 @@ endif
  
  # Various helper libraries, subprojects, and scripts common to all builds
  fs = import('fs')
@@ -11,21 +11,30 @@ index 1bcb424..8bdb580 100644
  bin2s = files('tools/bin2s.py')
  call_bin2s = files('tools/callBin2S.py')
  if host_machine.system() == 'horizon'
-@@ -210,7 +208,7 @@ if host_machine.system() != 'gba' and host_machine.system() != 'n3ds'
-         soloud = dependency('SoLoud', static : true, default_options : ['default_library=static'], fallback : ['SoLoud', 'soloud_dep'])
+@@ -254,7 +252,7 @@ if host_machine.system() != 'gba' and host_machine.system() != 'n3ds'
      else
          # Other required dependencies
--        openmpt = dependency('openmpt', static : true, default_options : ['default_library=static'], fallback : ['openmpt', 'openmpt_dep'])
-+        openmpt = dependency('libopenmpt', static : true, default_options : ['default_library=static'], fallback : ['openmpt', 'openmpt_dep'])
-         tilengine = dependency('Tilengine', static : true, default_options : ['default_library=static'], fallback : ['Tilengine', 'tilengine_dep'])
-         if host_machine.system() == 'darwin'
-             sdl2_dep = subproject('sdl2', default_options : ['use_audio_jack=disabled', 'default_library=static', 'test=false']).get_variable('sdl2_dep')
-@@ -218,7 +216,7 @@ if host_machine.system() != 'gba' and host_machine.system() != 'n3ds'
-         else
-             if not get_option('portmaster')
-                 sdl2_dep = dependency('sdl2', static : true, default_options : ['default_library=static', 'test=false'], fallback : ['sdl2', 'sdl2_dep'])
--                sdl_mixer = dependency('sdl2_mixer', static : true, default_options : ['default_library=static'], fallback : ['sdl2_mixer', 'sdl2_mixer_dep'])
-+                sdl_mixer = dependency('SDL2_mixer', static : true, default_options : ['default_library=static'], fallback : ['sdl2_mixer', 'sdl2_mixer_dep'])
-             else
-                 sdl2_dep = dependency('sdl2', static : false, default_options : ['default_library=shared', 'test=false'], fallback : ['sdl2', 'sdl2_dep'])
-                 sdl_mixer = dependency('sdl2_mixer', static : false, default_options : ['default_library=shared'], fallback : ['sdl2_mixer', 'sdl2_mixer_dep'])
+         openmpt = dependency(
+-            'openmpt',
++            'libopenmpt',
+             static: true,
+             default_options: ['default_library=static'],
+             fallback: ['openmpt', 'openmpt_dep'],
+@@ -289,7 +287,7 @@ if host_machine.system() != 'gba' and host_machine.system() != 'n3ds'
+                     fallback: ['sdl2', 'sdl2_dep'],
+                 )
+                 sdl_mixer = dependency(
+-                    'sdl2_mixer',
++                    'SDL2_mixer',
+                     static: true,
+                     default_options: ['default_library=static'],
+                     fallback: ['sdl2_mixer', 'sdl2_mixer_dep'],
+@@ -331,7 +329,7 @@ if host_machine.system() != 'gba' and host_machine.system() != 'n3ds'
+     ]
+     if host_machine.system() != 'emscripten'
+         datachannel = dependency(
+-            'libdatachannel',
++            'LibDataChannel',
+             fallback: ['libdatachannel', 'libdatachannel_dep'],
+         )
+         dependencies += datachannel
