@@ -2,7 +2,7 @@
 
 pkgname=python-download
 _name=${pkgname//-/_}
-pkgver=0.0.4
+pkgver=0.0.4.1
 pkgrel=1
 epoch=
 pkgdesc="Python for download."
@@ -30,7 +30,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('1da69f5f8e1cef94a55d7f5d3da08c61fcf7c90f701e53424b80530536e2a339')
+sha256sums=('f60a4029f8e28ec0720a40dc39986f9afb01dda2c339f6c21c3a87ebc96f19a1')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
