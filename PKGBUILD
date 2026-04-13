@@ -1,8 +1,8 @@
 # Maintainer: GooseStation contributors
 
 _pkgname=goosestation-libretro
-_upstream_commit=d9522353f01a6bcbf5162613f7fe74027e233388
-_overlay_commit=720f41f306232696983a85307b824c20aa87feae
+_upstream_commit=5e7be496a2d0480aaabbe9746a1a4576b469d301
+_overlay_commit=d9522353f01a6bcbf5162613f7fe74027e233388
 _overlay_raw="https://codeberg.org/hueponik/goosestation-overlay/raw/commit/${_overlay_commit}/games-emulation/goosestation-libretro/files"
 pkgname=${_pkgname}
 pkgver=0+git.${_upstream_commit:0:9}
