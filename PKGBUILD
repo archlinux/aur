@@ -2,7 +2,7 @@
 pkgname=quickpdfjoin-bin
 _pkgname='Quick PDF Join'
 _appname=QuickPdfJoin
-pkgver=1.2026.02.09
+pkgver=1.2026.04.10
 pkgrel=1
 pkgdesc="Quick PDF Join is a cross-platform application that joins multiple PDF files together.(Prebuilt version)"
 arch=(
@@ -32,8 +32,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/${_pkgname// /}_Linux_x64.tar.gz")
 source=("${pkgname%-bin}.sh")
 sha256sums=('6aca7dfd3abf71dd91e7b5d6a6d78084c8d52cf5df2564d3889b07e6621940c4')
-sha256sums_aarch64=('bc7a7a76625c75a92ca491699c845832aff6e191f5ee5a180c391ac51fbdb613')
-sha256sums_x86_64=('9d8cd7ebf4610bd873150156d449c2510a8fd7ec1bef28431e9573f48721faa9')
+sha256sums_aarch64=('86c42b834a798e77a602c9400a03d09603f0da4c7de6ca90e19d8eb347fe0bf7')
+sha256sums_x86_64=('b0004522c5df100bd37c590478912f86d199bb5bfc0091876ecd5b8c567cb359')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
