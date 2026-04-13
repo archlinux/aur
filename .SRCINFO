@@ -1,0 +1,23 @@
+pkgbase = mira-git
+	pkgdesc = Unit test runner for Rime schemas
+	pkgver = 0.2.0.r39.g53dd587
+	pkgrel = 1
+	url = https://github.com/rimeinn/mira
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = librime
+	depends = yaml-cpp
+	depends = lua54
+	depends = argparse
+	provides = mira
+	conflicts = mira
+	source = git+https://github.com/rimeinn/mira.git
+	sha256sums = SKIP
+
+pkgname = mira-git
