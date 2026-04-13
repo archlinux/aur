@@ -2,7 +2,7 @@
 
 pkgname=python-startfile
 _name=${pkgname//-/_}
-pkgver=0.0.2.1
+pkgver=0.0.3
 pkgrel=1
 epoch=
 pkgdesc="Python startfile."
@@ -24,7 +24,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('ead9f2029a2237d143145371ece37711b67a9e1c283afc2b73bfa67ae68c69c3')
+sha256sums=('875a5a29bbebb35b0453463e9e2c650f664b49cc89e919fc86edb01488158459')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"

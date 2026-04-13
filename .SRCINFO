@@ -1,6 +1,6 @@
 pkgbase = python-startfile
 	pkgdesc = Python startfile.
-	pkgver = 0.0.2.1
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://pypi.org/project/python-startfile
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-startfile
 	conflicts = python-startfile
 	options = !strip
 	options = !debug
-	source = python_startfile-0.0.2.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_startfile/python_startfile-0.0.2.1.tar.gz
-	sha256sums = ead9f2029a2237d143145371ece37711b67a9e1c283afc2b73bfa67ae68c69c3
+	source = python_startfile-0.0.3.tar.gz::https://files.pythonhosted.org/packages/source/p/python_startfile/python_startfile-0.0.3.tar.gz
+	sha256sums = 875a5a29bbebb35b0453463e9e2c650f664b49cc89e919fc86edb01488158459
 
 pkgname = python-startfile
