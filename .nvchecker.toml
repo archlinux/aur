@@ -1,0 +1,3 @@
+[ripencli]
+source = "npm"
+npm = "ripencli"
