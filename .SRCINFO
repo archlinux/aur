@@ -26,6 +26,6 @@ pkgbase = xilinx-qdma-git
 	sha256sums = 5751c45e82f9c20b1f5f407f4f74a2214ba9fabde209176960ae8dce62fd1867
 	sha256sums = 5be29e1916e604dac0f808b728bd2fbfec6102a6e2b8cf0cc8a47de7c4525ccc
 	sha256sums = b19c92ec8c1bb33186823f4c4a60d1408f1f7be77990642678f4f53f1097e382
-	sha256sums = 4e2123697e3327dc9ddbd99c0589abb02eddcc1d9e5fad7813ccbe628e1b566b
+	sha256sums = 395d581f1bd23ae35aab0a627292703f489aa094eddbab89a80b0bfd20dd4e7e
 
 pkgname = xilinx-qdma-git
