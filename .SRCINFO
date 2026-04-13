@@ -1,6 +1,6 @@
 pkgbase = binaryninja-free
 	pkgdesc = An interactive decompiler, disassembler, debugger, and binary analysis platform.
-	pkgver = 5.2.8722
+	pkgver = 5.3.9434
 	pkgrel = 1
 	url = https://binary.ninja
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = binaryninja-free
 	depends = qt6-base
 	depends = libxml2-legacy
 	optdepends = gtk-update-icon-cache: icon support
-	source = binaryninja-free-5.2.8722.zip::https://github.com/Vector35/binaryninja-api/releases/download/stable%2F5.2.8722/binaryninja_free_linux.zip
+	source = binaryninja-free-5.3.9434.zip::https://github.com/Vector35/binaryninja-api/releases/download/stable%2F5.3.9434/binaryninja_free_linux.zip
 	source = binaryninja-free.png
 	source = binaryninja-free.desktop
-	sha256sums = 62506bfc27637afecb598fd5b0a82ffe2df31e3e18478f515faf739a18627bb5
+	sha256sums = 92789c0bd3e1f75b1a03d80e74eb7ea8d3a95e19f7915557774a0ad402674926
 	sha256sums = 4f318001e7d39279ce063ef42077bae03e95c112aa203a4be3ea3d913c34327e
 	sha256sums = 5bb9303307372e946f0fe0fcd328ca475bd0c951013f3f85206410f34ed59636
 
