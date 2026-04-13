@@ -19,7 +19,7 @@ source=(
   "icon.png::https://raw.githubusercontent.com/PlayRood32/adw-network/main/data/icons/hicolor/scalable/apps/icon.png"
 )
 
-sha256sums=('88ca75c72b2c04e5d82a40439a4ed436bf60ce284c3d0ec73b37c4d0ed22829b'
+sha256sums=('ca18a80b4c3551647a75300b286cea0ea2f1a8c216270e384d29624ba50a50ae'
             '87e22132167fdb6372cf4fbdf1a60a0449e8ef1e5889d1a156a8eb540c069038'
             '518a328abee19239ba5f20bcbfe3f15c474bc5c18b8adcb37c9793ecf7c640cc')
 
