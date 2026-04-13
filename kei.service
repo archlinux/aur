@@ -1,0 +1,10 @@
+[Unit]
+Description = Sync iCloud photo library
+Wants=networkd-wait-online.service
+After=networkd-wait-online.service
+
+[Service]
+ExecStart = /usr/bin/kei sync
+
+[Install]
+WantedBy = default.target
