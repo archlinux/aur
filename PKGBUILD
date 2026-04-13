@@ -2,7 +2,7 @@
 
 pkgname=ecss-elph-bin
 _pkgname=ecss-elph
-pkgver=2.14.3.11
+pkgver=2.14.4.14
 pkgrel=1
 pkgdesc="An application to extend the functionality of an ECSS-10 enabled telephone set and use it as a software SIP client"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core" 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://archive.eltex.org/ssw/jammy/elph/pool/main/e/${_pkgname}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('f22412d2b2e6f8e66cbf7a993233f53b358727121a271b579d549a7e9f046fb5')
+sha256sums=('e4f1236423845fe988877ed97b1be15f9049afba4d6604fddddfbdc9520fe36f')
 
 prepare() {
   tar -xvf data.tar.zst
