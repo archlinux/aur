@@ -12,6 +12,6 @@ pkgbase = clean-chroot-manager
 	depends = pacman
 	depends = bc
 	source = clean-chroot-manager-3.01.tar.gz::https://github.com/graysky2/clean-chroot-manager/archive/v3.01.tar.gz
-	b2sums = 94f3de2e7c64d47221e7ad2561a5277e5b548c6dad3741cf8ce7b9ce366696b79f9238cd9ad6606900179025def87172f1f9b2a5f1188283f7e2fda1bfee7fdf
+	b2sums = c1ea1a0060d0b2ec55685b345abf6a81a81f670f865354f71d4ca675739cf1390fb75fdd22e25756ebf2f189336240c9db153b0a70de04f9e486d5c4598cf69e
 
 pkgname = clean-chroot-manager
