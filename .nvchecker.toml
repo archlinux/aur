@@ -1,0 +1,5 @@
+["nob.h"]
+source = "github"
+github = "tsoding/nob.h"
+use_max_tag = true
+prefix = "v"
