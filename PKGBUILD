@@ -3,7 +3,7 @@
 
 pkgname=clipster
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python clipboard manager"
 arch=("any")
 url="https://github.com/mrichar1/clipster"
