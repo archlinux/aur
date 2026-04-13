@@ -2,8 +2,8 @@
 
 pkgname=python-filewrap
 _name=${pkgname//-/_}
-pkgver=0.2.9
-pkgrel=3
+pkgver=0.2.9.1
+pkgrel=1
 epoch=
 pkgdesc="Python file wrappers."
 arch=('any')
@@ -28,7 +28,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('2125b024d87eca90bdc05947ac89ebc8bb2cab3400e9f99c8abe330a6d843236')
+sha256sums=('c3ce7a7533535a4c7de687e25ebf2f5bc5bc692fe8a349392929b0bdf991e400')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
