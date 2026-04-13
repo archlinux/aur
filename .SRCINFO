@@ -1,0 +1,17 @@
+pkgbase = park-bin
+	pkgdesc = Universal test runner with auto-detection for 11 languages
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/mr-vaibh/park
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = park
+	conflicts = park
+	options = !strip
+	source_x86_64 = park-x86_64-1.0.2.tgz::https://github.com/mr-vaibh/park/releases/download/v1.0.2/park_1.0.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6963e7a684d6da6e4bf852ef9c74344877e2f00edb4bf4950c8eeabf9d9f330b
+	source_aarch64 = park-aarch64-1.0.2.tgz::https://github.com/mr-vaibh/park/releases/download/v1.0.2/park_1.0.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 01884ce41dcc9ca7d93012a2ae69815b45236012cd7c904510c7916cae008c95
+
+pkgname = park-bin

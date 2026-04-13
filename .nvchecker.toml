@@ -1,0 +1,5 @@
+[park-bin]
+source = "github"
+github = "mr-vaibh/park"
+use_latest_release = true
+prefix = "v"
