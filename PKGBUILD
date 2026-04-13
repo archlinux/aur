@@ -1,6 +1,6 @@
 # Maintainer: Jan Wąsak <jan@wasak.dev>
 pkgname=swell
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='TUI audio client for podcasts, internet radio, and Tidal'
 arch=('x86_64')
