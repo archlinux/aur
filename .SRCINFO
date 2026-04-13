@@ -1,13 +1,13 @@
 pkgbase = wiksr
 	pkgdesc = Terminal instant answer browser using local AI (ollama) and Wikipedia
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-rich
 	optdepends = ollama: local AI answers instead of Wikipedia fallback
 	source = wiksr.py
-	sha256sums = 9ae8aa8f2450b7ea8e20a71ab3c0abbb63293f96f3915542c754ac6acea4972c
+	sha256sums = f3d40639cc7d71425db7b8415ca8cba392f5b7379615cbaf30dc564d21ee1570
 
 pkgname = wiksr

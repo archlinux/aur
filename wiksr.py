@@ -23,8 +23,10 @@ except ImportError:
 
 console = Console(width=min(100, Console().width))
 
-OLLAMA_API         = "http://localhost:11434/api/chat"
+OLLAMA_API           = "http://localhost:11434/api/chat"
 OLLAMA_MODEL_DEFAULT = "deepseek-r1:1.5b"
+TIMEOUT_DEFAULT      = 60
+SOURCE_DEFAULT       = "auto"  # auto | ai | wiki
 
 WIKI_SEARCH  = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch={}&srlimit=1&format=json"
 WIKI_SUMMARY = "https://en.wikipedia.org/api/rest_v1/page/summary/{}"
@@ -50,7 +52,7 @@ def fetch(url: str) -> bytes | None:
         return None
 
 
-def ollama_search(query: str, model: str) -> tuple[str, str] | tuple[None, None]:
+def ollama_search(query: str, model: str, timeout: int) -> tuple[str, str] | tuple[None, None]:
     """Query local ollama. Returns (answer, label) or (None, None)."""
     payload = json.dumps({
         "model": model,
@@ -67,9 +69,9 @@ def ollama_search(query: str, model: str) -> tuple[str, str] | tuple[None, None]
         headers={**HEADERS, "Content-Type": "application/json"},
     )
     try:
-        with urlopen(req, timeout=60) as resp:
+        with urlopen(req, timeout=timeout) as resp:
             data = json.loads(resp.read())
-    except (URLError, json.JSONDecodeError):
+    except (URLError, json.JSONDecodeError, TimeoutError):
         return None, None
 
     text = data.get("message", {}).get("content", "").strip()
@@ -109,8 +111,13 @@ def wiki_search(query: str) -> tuple[str, str] | tuple[None, None]:
     return None, None
 
 
-def search(query: str, model: str) -> tuple[str, str] | tuple[None, None]:
-    result, label = ollama_search(query, model)
+def search(query: str, model: str, timeout: int, source: str) -> tuple[str, str] | tuple[None, None]:
+    if source == "ai":
+        return ollama_search(query, model, timeout)
+    if source == "wiki":
+        return wiki_search(query)
+    # auto: try AI, fall back to Wikipedia
+    result, label = ollama_search(query, model, timeout)
     if result:
         return result, label
     return wiki_search(query)
@@ -126,13 +133,37 @@ def main():
         default=os.environ.get("WIKSR_MODEL", OLLAMA_MODEL_DEFAULT),
         metavar="MODEL",
         help="ollama model to use (default: %(default)s). "
-             "Can also be set via the WIKSR_MODEL env var.",
+             "Env: WIKSR_MODEL",
+    )
+    parser.add_argument(
+        "--timeout", "-t",
+        type=int,
+        default=int(os.environ.get("WIKSR_TIMEOUT", TIMEOUT_DEFAULT)),
+        metavar="SECONDS",
+        help="max seconds to wait for ollama before falling back to Wikipedia "
+             "(default: %(default)s). Env: WIKSR_TIMEOUT",
+    )
+    parser.add_argument(
+        "--source", "-s",
+        choices=["auto", "ai", "wiki"],
+        default=os.environ.get("WIKSR_SOURCE", SOURCE_DEFAULT),
+        metavar="SOURCE",
+        help="answer source: auto (AI then Wikipedia), ai (AI only), "
+             "wiki (Wikipedia only) (default: %(default)s). Env: WIKSR_SOURCE",
     )
     args = parser.parse_args()
 
+    source_hint = {
+        "auto": f"ollama ({args.model}) → Wikipedia",
+        "ai":   f"ollama ({args.model}) only",
+        "wiki": "Wikipedia only",
+    }[args.source]
+
     console.print(
         f"[bold cyan]wiksr[/bold cyan]  "
-        f"[dim]instant answers — q to quit — model: {args.model}[/dim]\n"
+        f"[dim]instant answers — q to quit — {source_hint}"
+        + (f" — timeout: {args.timeout}s" if args.source != "wiki" else "")
+        + "[/dim]\n"
     )
 
     while True:
@@ -149,7 +180,7 @@ def main():
             break
 
         with console.status("[dim]Thinking...[/dim]", spinner="dots"):
-            result, label = search(query, args.model)
+            result, label = search(query, args.model, args.timeout, args.source)
 
         if result:
             console.print(
