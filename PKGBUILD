@@ -10,13 +10,14 @@ url="https://${_pkgname}.org"
 license=('MPL-2.0')
 depends=(
 	'fontconfig'
-	'gcc-libs'
 	'glib2'
 	'glibc'
 	'gst-plugins-bad-libs'
 	'gst-plugins-base-libs'
 	'gstreamer'
 	'hicolor-icon-theme'
+	'libgcc'
+	'libstdc++'
 	'systemd-libs'
 	'zlib'
 )
