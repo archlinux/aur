@@ -1,0 +1,19 @@
+pkgbase = zen-bin
+	pkgdesc = Zen is a free and open-source web browser developed by the Vivaldi Technologies.
+	pkgver = r1.gabcdef0
+	pkgrel = 1
+	url = https://github.com/Skoczi/zen-bin
+	arch = x86_64
+	license = custom:unknown
+	makedepends = git
+	makedepends = npm
+	makedepends = nodejs
+	depends = electron
+	depends = libxss
+	depends = nss
+	provides = zen-bin
+	conflicts = zen-bin
+	source = zen-bin::git+https://codeberg.org/Skoczi/csco-launcher
+	sha256sums = SKIP
+
+pkgname = zen-bin
