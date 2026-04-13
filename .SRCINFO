@@ -1,0 +1,12 @@
+pkgbase = gimp-stroke-arrows
+	pkgdesc = Stroke one or several paths as arrows
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/Scallact/gimp-stroke-arrows
+	arch = any
+	license = GPL-3.0
+	depends = gimp
+	source = https://github.com/Scallact/gimp-stroke-arrows/archive/v0.8/gimp-stroke-arrows-0.8.tar.gz
+	sha256sums = 3a0a746d92e4ee1ec0ace07d4224daff1d483d1cd447539708e7a95142b8ada4
+
+pkgname = gimp-stroke-arrows
