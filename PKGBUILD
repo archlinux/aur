@@ -1,6 +1,6 @@
 # Maintainer: printwithbrackets <your@email.com>
 pkgname=addpath-git
-pkgver=0.0.0
+pkgver=5.1738388
 pkgrel=1
 pkgdesc="Hunt down executables not in your PATH and fix it"
 arch=('any')
@@ -12,14 +12,19 @@ provides=('addpath')
 conflicts=('addpath')
 _pkgname=addpath
 
-source=("${_pkgname}::git+https://github.com/printwithbrackets/addpath.git#branch=master")
+source=("${_pkgname}::git+https://github.com/printwithbrackets/addpath.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/./g'
-}
+  cd "$srcdir/addpath" || exit 1
 
+  ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+
+  # fallback safety (prevents empty pkgver errors)
+  [ -n "$ver" ] || ver="0"
+
+  echo "$ver"
+}
 package() {
     cd "$srcdir/$_pkgname"
     install -Dm755 addpath.py "$pkgdir/usr/bin/addpath"
