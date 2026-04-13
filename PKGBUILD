@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=loof
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A modern, cross-platform replacement for lsof written in Rust, featuring an interactive TUI mode with fuzzy search"
 arch=($CARCH)

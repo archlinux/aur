@@ -1,6 +1,6 @@
 pkgbase = loof
 	pkgdesc = A modern, cross-platform replacement for lsof written in Rust, featuring an interactive TUI mode with fuzzy search
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/uk0/lsof
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = loof
 	conflicts = loof
 	options = !lto
 	options = !debug
-	source = loof::git+https://github.com/uk0/lsof.git#tag=v0.1.0
+	source = loof::git+https://github.com/uk0/lsof.git#tag=v0.2.0
 	sha256sums = f0ef8cc54a75b36903e3b9ba63da26e801bb1eba6e234bd88a5a9a8214bf41e7
 
 pkgname = loof
