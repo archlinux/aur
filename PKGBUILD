@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=quien-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='A better WHOIS lookup tool'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=(
 source_aarch64=(
   ${pkgname%-bin}-arm64-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}_linux_arm64.tar.gz
 )
-sha256sums_x86_64=('92c39956a6c9fb738d506784e80a7a4e77d415aafd5de41794b443bb839ebacd')
-sha256sums_aarch64=('3b7bcbe48e4afa1cc50f8527ea038eb3db8a2966b269809f0e634895b1390adb')
+sha256sums_x86_64=('be6d0f82f87a11682db283e31344941ae5b7760c7f4f2601b17f933f347b45c4')
+sha256sums_aarch64=('9fcd16141a300918ac3e2062e33e12ecf3bbf61fd9229d23e7368c0a881079e9')
 
 package() {
   install -Dm755 ${pkgname%-bin} "${pkgdir}/usr/bin/${pkgname%-bin}"
