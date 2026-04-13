@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A simple TUI for serving local LLM models. Pick a model, pick a backend, serve it"
 
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('227b2d0785b65e2c36875861300b1c040c54dd3f9a627e688dbd6aad74dccc53')
-sha256sums_aarch64=('150888f7a364af6c182fa0cb69ae42cf0634e4614859057296a3962f72fd99c7')
+sha256sums_x86_64=('2384baca180c3c53b6e78c5a40a57c6114f404dba34a823a3999523891253c5e')
+sha256sums_aarch64=('9e4cfe4697059aad7a12ef20647568a6513e2342652174a38c8b756aaad65d99')
 
 
 case ${CARCH} in
