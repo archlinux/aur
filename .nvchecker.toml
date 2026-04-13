@@ -1,0 +1,5 @@
+[checkmake]
+source = "github"
+github = "mrtazz/checkmake"
+prefix = "v"
+use_latest_release = true
