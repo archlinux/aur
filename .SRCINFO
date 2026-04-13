@@ -1,0 +1,20 @@
+pkgbase = runex
+	pkgdesc = Cross-shell abbreviation engine that expands short tokens into full commands
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/ShortArrow/runex
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	provides = runex
+	source = runex-0.1.10.crate::https://crates.io/api/v1/crates/runex/0.1.10/download
+	source = LICENSE
+	sha256sums = 119f4ab08cc64f99cd2c6b772557e93f4c4221b716998ab87ff9a89ca82fa835
+	sha256sums = 19614dcc7dc2af82331a66d30ab79d5674be3ce73ef853ed76e1743b2830f4d0
+
+pkgname = runex
