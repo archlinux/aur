@@ -1,7 +1,7 @@
 # Maintainer: Zesko
 pkgname="limine-dracut-support-git"
 _pkgname="limine-entry-tool"
-pkgver=r560.f7a3b5f
+pkgver=r602.d9b54ee
 pkgrel=1
 pkgdesc="Install kernels for the Limine bootloader."
 arch=('x86_64' 'aarch64')
@@ -57,11 +57,24 @@ build() {
 
 package() {
 	cd "$srcdir/${_pkgname}"
-	src_path="install/arch-linux/${pkgname%-git}"
-	install -dm 755 "$src_path/usr/share/limine-entry-tool.d/"
-	install -dm 755 "$src_path/etc/limine-entry-tool.d/"
-	install -Dm 755 build/native/nativeCompile/limine-entry-tool "$src_path/usr/lib/limine/"
-	install -dm 755 "$src_path/usr/share/doc/${pkgname%-git}/"
-	cp -r README.md CHANGELOG.md "$src_path/usr/share/doc/${pkgname%-git}/"
-	cp -r "$src_path/usr" "$src_path/etc" "$pkgdir"
+	local src="install/arch-linux"
+
+	# directories
+	install -dm 755 \
+		"$pkgdir/usr/share/doc/limine-entry-tool" \
+		"$pkgdir/etc/boot/hooks/pre.d" \
+		"$pkgdir/etc/boot/hooks/post.d" \
+		"$pkgdir/usr/lib/limine"
+
+	# docs
+	install -Dm 644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/limine-entry-tool/"
+
+	# package files
+	cp -a "$src/limine-entry-tool/etc" "$src/limine-entry-tool/usr" "$pkgdir/"
+	cp -a "$src/limine-dracut-support/etc" "$src/limine-dracut-support/usr" "$pkgdir/"
+	install -Dm 755 "build/native/nativeCompile/limine-entry-tool" "$pkgdir/usr/lib/limine/limine-entry-tool"
+
+	# limine hook symlinks
+	ln -sf /usr/bin/limine-reset-enroll "$pkgdir/etc/boot/hooks/pre.d/10-limine-reset-enroll"
+	ln -sf /usr/bin/limine-enroll-config "$pkgdir/etc/boot/hooks/post.d/90-limine-enroll-config"
 }
