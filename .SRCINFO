@@ -1,0 +1,18 @@
+pkgbase = edac-utils
+	pkgdesc = Userspace helper for kernel EDAC drivers (Error Detection and Correction)
+	pkgver = 0.17
+	pkgrel = 1
+	url = https://github.com/grondo/edac-utils
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = sh
+	depends = glibc
+	depends = perl
+	depends = sysfsutils
+	provides = edac-utils
+	conflicts = edac-utils
+	source = edac-utils::git+https://github.com/grondo/edac-utils.git#tag=0.17
+	sha256sums = 8a1bfb3c9b74d614e1bd924b8f707161d008b8cd9b13e72b88f72420d8c7c0ab
+
+pkgname = edac-utils
