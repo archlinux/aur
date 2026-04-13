@@ -1,0 +1,5 @@
+[deadbranch]
+source = "github"
+github = "armgabrielyan/deadbranch"
+use_max_tag = true
+prefix = "v"
