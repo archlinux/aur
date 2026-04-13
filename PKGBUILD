@@ -2,7 +2,7 @@
 # Maintainer: Emmanuel Gautier <emmanuel@cerberauth.com>
 
 pkgname='openapi-oathkeeper-bin'
-pkgver=0.7.15
+pkgver=0.7.16
 pkgrel=1
 pkgdesc='Generate Ory Oathkeeper access rules from an OpenAPI 3 contract.'
 url='https://github.com/cerberauth/openapi-oathkeeper'
@@ -12,16 +12,16 @@ provides=('openapi-oathkeeper')
 conflicts=('openapi-oathkeeper')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cerberauth/openapi-oathkeeper/releases/download/v${pkgver}/openapi-oathkeeper_Linux_arm64.tar.gz")
-sha256sums_aarch64=('6159bf62a16706e83116154ae0145047acb1e37a08bddb70b527c2fa93a6d22c')
+sha256sums_aarch64=('fb6c839e02dd76552a42f3e222660a0735cb59c4bbcd3a76ad0b4aaae8ee1ce0')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/cerberauth/openapi-oathkeeper/releases/download/v${pkgver}/openapi-oathkeeper_Linux_armv7.tar.gz")
-sha256sums_armv7h=('13ec6359357f06e721c3ddab523ea93e73bbff6adb318b4efb8640dcdd3dd932')
+sha256sums_armv7h=('ac15f8eebd70cb81c15ce550cd27a194ca38ca7157259f998c2ee2c9f748e884')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/cerberauth/openapi-oathkeeper/releases/download/v${pkgver}/openapi-oathkeeper_Linux_i386.tar.gz")
-sha256sums_i686=('99446d39aeb40427858058ab72ffd574dc24ff9931d44c275ffae0fe58c20ca0')
+sha256sums_i686=('b85900036aa24b294ba2baee04ee019b1c79a1fadddc78e08fc8d19661f9a448')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cerberauth/openapi-oathkeeper/releases/download/v${pkgver}/openapi-oathkeeper_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('1153d7b33c5867a10ebae575da7a8fc9f69285d38cfd40661b1aad314745b403')
+sha256sums_x86_64=('c6bbc0df15979d44601308ae8d18a77964e1c4f9664ef3905ce20dfb9b73f034')
 
 package() {
   install -Dm755 "./openapi-oathkeeper" "${pkgdir}/usr/bin/openapi-oathkeeper"
