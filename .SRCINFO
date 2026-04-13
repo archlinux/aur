@@ -1,15 +1,17 @@
 pkgbase = checkmake
-	pkgdesc = Experimental linter/analyzer for makefiles
-	pkgver = 0.2.2
+	pkgdesc = Linter/analyzer for Makefiles
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/mrtazz/checkmake
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
-	makedepends = git
 	makedepends = go
 	makedepends = pandoc
+	depends = glibc
 	conflicts = checkmake-git
-	source = git+https://github.com/mrtazz/checkmake.git#commit=575315c
-	sha256sums = SKIP
+	conflicts = checkmake-bin
+	source = checkmake-0.3.2.tar.gz::https://github.com/mrtazz/checkmake/archive/v0.3.2.tar.gz
+	sha256sums = 450412ba6500ef7c4c8a0150a5e1a3d2e76591ce9f37609bcbd5508298ad9bef
 
 pkgname = checkmake
