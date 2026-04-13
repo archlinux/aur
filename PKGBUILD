@@ -9,7 +9,7 @@
 
 _pkgname=Flexget
 pkgname=${_pkgname,,}
-pkgver=3.19.10
+pkgver=3.19.11
 pkgrel=1
 pkgdesc="A program aimed to automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 arch=(any)
@@ -115,7 +115,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.user.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('c24030b160157c5b8de840719338b56fd228eabf605143666d1c835e70b7c2df'
+sha256sums=('715de0ea1b2cd639e754e5407281c7a534709f409d28aa24d75d48da5a5915ca'
             'b7578417ab5f671def7021133ae68900d82aaa81b5e80a2fec4d85e46eb1f8e9'
             'b9d354f6095aafe7a29cb8e90239b662a2584903a85fe3770f2b99bb8bdfff4a'
             '799921777b3714f074deaafbdd241ea7b99a0eccd65931708fd81457286f4f49'
@@ -137,11 +137,12 @@ check() {
     ## There are actually a large number of test errors currently, but they are still forcibly packaged. 
     ## Please pay attention to distinguishing whether the errors affect your settings.
     echo "==> Running tests..."
-    echo "==> There are actually a large number of test errors currently, but still forcibly packaged..."
-    echo "==> Please pay attention to distinguishing whether the errors affect your settings..."
+    echo "==> This tests related to the optional features will be skipped: "
+    echo "==> archives, decompress, ftp, matrix, plex_watchlist, sftp, sns, subtitle, telegram, transmission"
+    sleep 3
     export PYTHONPATH="$PWD/tmp_install$_site_packages/:$PYTHONPATH:$PWD/tests"
-    pytest -k "not (test_archives or test_decompress or test_telegram \
-        or test_plex_watchlist or test_sftp or test_sns or test_subtitle_list)" || true
+    pytest -k "not (test_archives or test_check_subtitles or test_decompress or test_ftp or test_matrix or test_plex_watchlist or \
+        test_sftp or test_sns or test_subtitle_list or test_telegram or test_transmission)" || true
 }
 
 package() {
