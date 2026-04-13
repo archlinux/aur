@@ -1,5 +1,5 @@
 pkgbase = park-bin
-	pkgdesc = Universal test runner with auto-detection for 11 languages
+	pkgdesc = Pause a process and free its TCP port. Resume later, same PID and memory intact. Ctrl+Z for servers.
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/mr-vaibh/park

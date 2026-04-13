@@ -4,7 +4,7 @@ _gitauthor=mr-vaibh
 _gitname=park
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Universal test runner with auto-detection for 11 languages"
+pkgdesc="Pause a process and free its TCP port. Resume later, same PID and memory intact. Ctrl+Z for servers."
 
 pkgver=1.0.2
 pkgrel=1
