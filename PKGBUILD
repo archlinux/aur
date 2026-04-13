@@ -8,7 +8,7 @@ url="https://github.com/the-unknown/solarust"
 license=('Apache-2.0')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/the-unknown/solarust/archive/v$pkgver.tar.gz")
-sha256sums=('413a583eab311b1448006735ebdc540f1c85118a860445be1c0313e47af4ba28')
+sha256sums=('f2cf017216ac58202e4010106bcf7ca0cad87cfb5bcb4bbd089bcdd29093dda8')
 
 prepare() {
     cd "$pkgname-$pkgver"
