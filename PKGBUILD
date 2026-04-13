@@ -6,7 +6,7 @@ _pkgname=cljfmt
 pkgname=${_pkgname}-bin
 pkgdesc="A formatter for Clojure code"
 
-pkgver=0.16.3
+pkgver=0.16.4
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -26,10 +26,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE.txt")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
-sha256sums=('400317d21fc5dfcb875871956d162b61afd9d6004951b2d741bb02c8b9b0e4c3'
+sha256sums=('64ecd3f76f19701912be077cdc17fa51f18e607f4d6ae3b8542628bd48a18b36'
             'ba4c1321665d624f1739b1e739b8688064a13526662c054602a787d5ab0a8d5a')
-sha256sums_x86_64=('382462be37087c20acd2cd57d54e90ef3e4c9ecb0bc3b024d00337167592fcab')
-sha256sums_aarch64=('17460edc3a0aabb7d55610559a99cb01e96665f2e53b662933b76d4e83bf43f6')
+sha256sums_x86_64=('02945f2d06f52ec8c28c33b197acc7ffe72642295fde135899820fb88c000bb5')
+sha256sums_aarch64=('15ea231fd36d2bb9eff904b065aa19167e2bcc48372208bbca81ffc7f24e083b')
 
 
 package() {
