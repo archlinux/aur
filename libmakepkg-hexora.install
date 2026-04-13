@@ -1,0 +1,49 @@
+post_install() {
+  cat >&2 << 'EOF'
+
+    ##                                                          ##
+    ## If you are going to run makepkg in a chroot, make sure   ##
+    ## to install the `libmakepkg-hexora` package there, too.   ##
+    ##                                                          ##
+    ## You can use arch-nspawn for this like so:                ##
+    ##                                                          ##
+          arch-nspawn /path/to/your/chroot/root pacman -Syu \
+              libmakepkg-hexora
+    ##                                                          ##
+
+EOF
+}
+
+
+post_upgrade() {
+  cat >&2 << 'EOF'
+
+    ##                                                          ##
+    ## If you are going to run makepkg in a chroot, make sure   ##
+    ## to install or upgrade `libmakepkg-hexora` there, too.    ##
+    ##                                                          ##
+    ## You can use arch-nspawn for this like so:                ##
+    ##                                                          ##
+          arch-nspawn /path/to/your/chroot/root pacman -Syu \
+              libmakepkg-hexora
+    ##                                                          ##
+
+EOF
+}
+
+
+post_remove() {
+  cat >&2 << 'EOF'
+
+    ##                                                          ##
+    ## If you have `libmakepkg-hexora` installed in a chroot,   ##
+    ## make sure to uninstall it from the chroot, too.          ##
+    ##                                                          ##
+    ## You can use arch-nspawn for this like so:                ##
+    ##                                                          ##
+          arch-nspawn /path/to/your/chroot/root pacman -R \
+              libmakepkg-hexora
+    ##                                                          ##
+
+EOF
+}

@@ -1,8 +1,9 @@
 pkgbase = libmakepkg-hexora
 	pkgdesc = Drop-in that enables makepkg to scan upstream Python sources for suspicious patterns using Hexora
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/auerhuhn/libmakepkg-hexora
+	install = libmakepkg-hexora.install
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = python-myst-parser
@@ -14,7 +15,7 @@ pkgbase = libmakepkg-hexora
 	depends = moreutils
 	options = !debug
 	options = !strip
-	source = libmakepkg-hexora-0.1.0.tar.gz::https://gitlab.archlinux.org/auerhuhn/libmakepkg-hexora/-/archive/v0.1.0/libmakepkg-hexora-v0.1.0.tar.gz
-	sha512sums = a4e08c7fdd87ae3d3432b538e695ceeceb491af1bb787f114241ae5aec5d715d96b827e5f700c54932ee9c9edd20527aa0f0fcc7a0224b5aae682f001675cc4c
+	source = libmakepkg-hexora-0.2.0.tar.gz::https://gitlab.archlinux.org/auerhuhn/libmakepkg-hexora/-/archive/v0.2.0/libmakepkg-hexora-v0.2.0.tar.gz
+	sha512sums = bf3be3e9db06bcdd946865f33729e38f0b80934aa2adbed5ff3e8dc9b312fc6c38603fc51a69a94a3cd6cd7b79c2e3da4003eb1a5bd591b6bdf51aad8139dbd6
 
 pkgname = libmakepkg-hexora
