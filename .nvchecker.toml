@@ -1,0 +1,5 @@
+[trackd]
+source = "github"
+github = "tyggja/trackd"
+use_latest_release = true
+prefix = "v"
