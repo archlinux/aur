@@ -1,5 +1,8 @@
 jellex changelog
 
+20231023 v0.5.7
+- Hardcode prompt-toolkit version
+
 20220731 v0.5.6
 - Add `__main__.py` for `python -m jellex` use cases
 
