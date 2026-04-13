@@ -1,0 +1,13 @@
+pkgbase = ltg
+	pkgdesc = Listen To Get, The Free LRC generating script.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = songrec
+	depends = curl
+	depends = jq
+	source = ltg
+	sha256sums = SKIP
+
+pkgname = ltg
