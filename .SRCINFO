@@ -1,6 +1,6 @@
 pkgbase = python-sacred
 	pkgdesc = Sacred is a tool to configure, organize, log and reproduce computational experiments.
-	pkgver = 0.8.5
+	pkgver = 0.8.7
 	pkgrel = 0
 	epoch = 0
 	url = https://github.com/IDSIA/sacred
