@@ -7,7 +7,7 @@ pkgname=(
   $pkgbase-server
   $pkgbase-ui
 )
-pkgver=0.68.1
+pkgver=0.68.2
 pkgrel=1
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
@@ -23,20 +23,12 @@ _ui_depends=(
 makedepends=('go' "${_ui_depends[@]}")
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz"
         "netbird-server.service")
-sha256sums=('9439da9f83de3a123008511f40d8efbf53129289873727d70fa0d67c43381189'
+sha256sums=('ad4afc40731c699cebc925a7933bcd494579c7a7fe4d2f11d784aa8a858a9d2b'
             '6e42973058b2db1a167ac110692d02c57b93d29ce6f68d8d5f8b91babcd856c9')
 
 prepare() {
   cd "$srcdir/$pkgbase-$pkgver"
   mkdir -p build
-
-  # temporary fix for Go 1.26
-  local old new
-  old=gvisor.dev/gvisor@v0.0.0-20251031020517-ecfcdd2f171c
-  new=gvisor.dev/gvisor@v0.0.0-20260219192049-0f2374377e89
-  go mod edit -replace $old=$new
-  go mod tidy
-
   go mod download -x
 }
 
