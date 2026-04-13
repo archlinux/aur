@@ -2,9 +2,9 @@
 # Contributor: John K Luebs <jkl at johnluebs com>
 # Contributor: Hugo Osvaldo Barrera <hugo@osvaldobarrera.com.ar>
 pkgname=ocamlfuse
-pkgver=2.7.1
-pkgrel=15
-_pkgcommit=03db0d5856a88be0e264bbf16a813cf37890003c
+pkgver=2.7.2
+pkgrel=1
+_pkgcommit=841a90058f7d43c29f6abe779ff879ee4288685a
 pkgdesc="An ocaml binding for fuse."
 arch=('x86_64')
 url='https://github.com/astrada/ocamlfuse/'
@@ -21,7 +21,7 @@ makedepends=(
 )
 options=('staticlibs')
 source=("$pkgname-$pkgver.zip::https://github.com/astrada/$pkgname/archive/$_pkgcommit.zip")
-sha256sums=('f3bcc6b9587a4d1222af0e4076cef11ad5f29d27e662550cfb34b232a69f0235')
+sha256sums=('ef0b0da3957a557a71c3dff7254653303136a8e118b40f2e7cdf494be050c8ea')
 
 build() {
 	cd ${srcdir}/${pkgname}-${_pkgcommit}
