@@ -2,7 +2,7 @@
 pkgname=rmpv-git
 pkgver=r29.84c2c53
 pkgrel=1
-pkgdesc="MPD → MPV bridge + YouTube streamer"
+pkgdesc="RMPV - terminal-based mpv YouTube/music player with rmpc integration, yt-dlp streaming, and download support"
 arch=('any')
 url="https://github.com/Trifalic47/rmpv"
 license=('MIT')
