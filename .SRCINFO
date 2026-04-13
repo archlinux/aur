@@ -1,6 +1,6 @@
 pkgbase = shadps4-git
 	pkgdesc = Sony PlayStation 4 emulator (CLI)
-	pkgver = 0.15.0.r19.g060703f
+	pkgver = 0.15.0.r72.gcead66d
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = aarch64
@@ -38,18 +38,19 @@ pkgbase = shadps4-git
 	depends = miniz>=3.1
 	depends = pugixml>=1.14
 	depends = sdl3>=3.3.5
+	depends = sdl3_image
 	depends = sdl3_mixer
 	optdepends = renderdoc: for graphics debugging
 	optdepends = shadps4-qtlauncher: for official Qt GUI
 	optdepends = vulkan-validation-layers: for vulkan debugging
-	provides = shadps4=0.15.0.r19.g060703f
+	provides = shadps4=0.15.0.r72.gcead66d
 	conflicts = shadps4
 	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git
 	source = shadps4-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git
 	source = shadps4-hwinfo::git+https://github.com/shadps4-emu/ext-hwinfo.git
 	source = shadps4-imgui::git+https://github.com/shadps4-emu/ext-imgui.git
 	source = shadps4-libatrac9::git+https://github.com/shadps4-emu/ext-LibAtrac9.git
-	source = shadps4-libusb::git+https://github.com/shadps4-emu/ext-libusb.git
+	source = shadps4-libusb::git+https://github.com/shadexternals/libusb.git
 	source = shadps4-sirit::git+https://github.com/shadps4-emu/sirit.git
 	source = shadps4-tracy::git+https://github.com/shadps4-emu/tracy.git
 	source = aac::git+https://android.googlesource.com/platform/external/aac.git
@@ -71,6 +72,7 @@ pkgname = shadps4-git
 	depends = miniz>=3.1
 	depends = pugixml>=1.14
 	depends = sdl3>=3.3.5
+	depends = sdl3_image
 	depends = sdl3_mixer
 	depends = libavcodec.so
 	depends = libavformat.so
