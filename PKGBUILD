@@ -1,7 +1,7 @@
 # Maintainer: Sam Saffron <sam.saffron@gmail.com>
 pkgname=hyprland-share-picker-preview-git
 pkgver=1.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom hyprland share picker with improved UI (window previews, workspace sorting)"
 arch=('x86_64')
 url="https://github.com/SamSaffron/xdg-desktop-portal-hyprland"
