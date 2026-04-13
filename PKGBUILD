@@ -3,7 +3,7 @@
 # Contributor: Supermodel <abe@supermodel.software>
 
 pkgname='supermodel-bin'
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Give your AI coding agent a map of your codebase'
 url='https://supermodeltools.com'
@@ -13,10 +13,10 @@ provides=('supermodel')
 conflicts=('supermodel')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/supermodeltools/cli/releases/download/v${pkgver}/supermodel_linux_arm64.tar.gz")
-sha256sums_aarch64=('a582dd17ca3098dbea3a2791f0c3474dc21e365bbac07caca60bacdb9e884be8')
+sha256sums_aarch64=('534d2e9bd0a1512fbb351798d57b6152ab0d719d698ccf486b16f6e82040ee1c')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/supermodeltools/cli/releases/download/v${pkgver}/supermodel_linux_amd64.tar.gz")
-sha256sums_x86_64=('06890e4a4def6aa31679f72fb50529faed12da40c970415be969fde769ccf137')
+sha256sums_x86_64=('d270c4860f3716c314fda7cd2ea3e1224f2ab6e0d930f63d2b0ce781b57cfd3f')
 
 package() {
   install -Dm755 "./supermodel" "${pkgdir}/usr/bin/supermodel"
