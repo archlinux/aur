@@ -1,0 +1,20 @@
+pkgbase = binkit-bin
+	pkgdesc = A modular toolbox for analyzing, disassembling, and patching binary formats
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/matheus-git/binkit
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = binkit
+	conflicts = binkit
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/matheus-git/binkit/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/matheus-git/binkit/v0.1.0/LICENSE
+	sha256sums = d90c1cf3891632227d053cbba62385cd3f3d3626e5db02da154b37396a208774
+	sha256sums = 580ee551bd40bafa3f22e6da8a60e586cec0b36f2c39508b4e03aa8b2a463845
+	source_x86_64 = binkit-0.1.0::https://github.com/matheus-git/binkit/releases/download/v0.1.0/binkit
+	sha256sums_x86_64 = e19f9f8bbf129cb8d206ef7b9eb418027c2292577793928f07635cca329553e3
+
+pkgname = binkit-bin

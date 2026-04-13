@@ -1,0 +1,5 @@
+[binkit-bin]
+source = "github"
+github = "matheus-git/binkit"
+use_latest_release = true
+prefix = "v"
