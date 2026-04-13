@@ -1,0 +1,21 @@
+pkgbase = ccbuddy
+	pkgdesc = Pixel crab desktop pet for Wayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mucahitzor/ccbuddy
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = gtk3
+	depends = gtk-layer-shell
+	conflicts = ccbuddy-git
+	source = ccbuddy-0.1.0.tar.gz::https://github.com/mucahitzor/ccbuddy/releases/download/v0.1.0/ccbuddy-0.1.0.tar.gz
+	sha256sums = e2395f2d6945c4b00cdf1a53538f5d3e6a1013137a505aa67ce092d838f304bd
+
+pkgname = ccbuddy
