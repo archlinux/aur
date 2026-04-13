@@ -1,5 +1,5 @@
 pkgname=iopenpod
-pkgver=1.0.43
+pkgver=1.0.44
 pkgrel=1
 pkgdesc="Open source iPod sync tool - manage your iPod without iTunes"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=(
 source=("https://github.com/TheRealSavi/iOpenPod/archive/refs/tags/v${pkgver}.tar.gz")
 source+=("disable-autoupdater.patch")
 sha256sums=(
-    e1a5a58e2a4dece09bd9837e739fb5e13e72c5b7db86cdf92ee21d2c7cabb639
+    304b72f102f4c90c02d5ebc81de6f222af9687d6e0113d825921d928ca8eceab
     SKIP
 )
 
