@@ -12,7 +12,8 @@ depends=(
 	blas
 	lapack
 	cython
-	hdf5
+	hdf5-openmpi
+	openmpi
 )
 makedepends=(
 	git
@@ -41,9 +42,11 @@ build() {
 					  -DENABLE_FORTRAN=OFF \
 					  -DENABLE_BLASLAPACK=OFF \
 					  -DBUILD_SHARED_LIBS=ON \
-					  -DBUILD_SHARED_LIBS=ON \
 					  -DCMAKE_INSTALL_PREFIX=/opt/MOAB \
-					  -DHDF5_ROOT=/usr
+					  -DHDF5_ROOT=/usr \
+					  -DENABLE_MPI=ON \
+					  -DMPI_C_COMPILER=mpicc \
+					  -DMPI_CXX_COMPILER=mpicxx
 
 	_ccores=$(nproc)
 	# check if _ccores is a positive integer, if not, serial build
