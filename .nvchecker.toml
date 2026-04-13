@@ -1,0 +1,5 @@
+[lfk-bin]
+source = "github"
+github = "janosmiko/lfk"
+use_latest_release = true
+prefix = "v"
