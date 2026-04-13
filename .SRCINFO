@@ -18,7 +18,6 @@ pkgbase = cellframe-wallet
 	provides = cellframe-wallet
 	options = !debug
 	source = git+https://gitlab.demlabs.net/cellframe/cellframe-wallet.git#commit=6176e61cd651dae36e84899b05f10cafaaa01063
-	source = fix-seed-restoration.patch
 	source = cellframe-wallet-tmpfiles.conf
 	sha256sums = SKIP
 	sha256sums = 234159e616751b8f1f76001e0f305ef6e5ba6121adfe8cc6a583618b96227d35
