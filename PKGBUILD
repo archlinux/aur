@@ -2,7 +2,7 @@
 
 pkgname=hummingbird-player
 _pkgname=hummingbird
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Modern music player written in Rust using GPUI with a focus on design and performance"
 arch=(x86_64 aarch64)
@@ -32,7 +32,7 @@ makedepends=(cargo
              cargo-cntp-bundle-git)
 options=(!debug)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/hummingbird-player/hummingbird/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=(c78214b77bbd5c08024daadf477a268e6d4a046c851873c292689d944aa386ae)
+sha256sums=(80dece173bce4220eb282c049aa9232ecdb8290bfeae9bc6bad2bcfaafbc4fe0)
 
 prepare() {
 	cd "$_pkgname-$pkgver"

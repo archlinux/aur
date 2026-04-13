@@ -1,6 +1,6 @@
 pkgbase = hummingbird-player
 	pkgdesc = Modern music player written in Rust using GPUI with a focus on design and performance
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/hummingbird-player/hummingbird
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = hummingbird-player
 	depends = zstd
 	depends = libzstd.so
 	options = !debug
-	source = hummingbird-0.2.0.tar.gz::https://github.com/hummingbird-player/hummingbird/archive/refs/tags/0.2.0.tar.gz
-	sha256sums = c78214b77bbd5c08024daadf477a268e6d4a046c851873c292689d944aa386ae
+	source = hummingbird-0.3.0.tar.gz::https://github.com/hummingbird-player/hummingbird/archive/refs/tags/0.3.0.tar.gz
+	sha256sums = 80dece173bce4220eb282c049aa9232ecdb8290bfeae9bc6bad2bcfaafbc4fe0
 
 pkgname = hummingbird-player
