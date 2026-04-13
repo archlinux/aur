@@ -1,6 +1,6 @@
 # Maintainer: Boof2015 <contact@novaml.ai>
 pkgname=astra-music-bin
-pkgver=0.5.1.beta
+pkgver=0.5.2.beta
 pkgrel=1
 pkgdesc="Audiophile music player with advanced visualization"
 arch=('x86_64')
@@ -8,10 +8,11 @@ url="https://github.com/Boof2015/astra"
 license=('GPL-3.0-only')
 provides=('astra')
 conflicts=('astra')
+depends=('fuse2')
 options=(!strip !debug)
-source=("astra-0.5.1.beta.AppImage::https://github.com/Boof2015/astra/releases/download/v0.5.1-beta/Astra-0.5.1-beta-Linux.AppImage")
+source=("astra-0.5.2.beta.AppImage::https://github.com/Boof2015/astra/releases/download/v0.5.2-beta/Astra-0.5.2-beta-Linux.AppImage")
 noextract=("astra-${pkgver}.AppImage")
-sha256sums=('f3cc609249e59d9a4890476d5d8e0814c33a8d626bcfe78ebc24878f950ae503')
+sha256sums=('b11dbda87833588f8e10b93b8abb50129ff0d63cb175baa1673c1bee2dd74288')
 
 prepare() {
   cd "${srcdir}"
@@ -23,6 +24,8 @@ prepare() {
 
 package() {
   local _appdir="${srcdir}/squashfs-root"
+  local _appimage_source="${srcdir}/astra-${pkgver}.AppImage"
+  local _appimage_target="${pkgdir}/opt/astra/astra.AppImage"
   local _desktop_path="${pkgdir}/usr/share/applications/astra.desktop"
   local _desktop_source
   local _icon_source
@@ -31,11 +34,10 @@ package() {
   local _icon_installed=0
   local _root_icon
 
-  install -dm755 "${pkgdir}/opt/astra"
-  cp -a "${_appdir}/." "${pkgdir}/opt/astra/"
+  install -Dm755 "${_appimage_source}" "${_appimage_target}"
 
   install -dm755 "${pkgdir}/usr/bin"
-  printf '%s\n' '#!/bin/sh' 'exec /opt/astra/AppRun "$@"' > "${pkgdir}/usr/bin/astra"
+  printf '%s\n' '#!/bin/sh' 'exec /opt/astra/astra.AppImage --no-sandbox "$@"' > "${pkgdir}/usr/bin/astra"
   chmod 755 "${pkgdir}/usr/bin/astra"
 
   _desktop_source="$(find "${_appdir}" -type f -iname '*.desktop' | LC_ALL=C sort | head -n 1)"

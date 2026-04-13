@@ -1,16 +1,17 @@
 pkgbase = astra-music-bin
 	pkgdesc = Audiophile music player with advanced visualization
-	pkgver = 0.5.1.beta
+	pkgver = 0.5.2.beta
 	pkgrel = 1
 	url = https://github.com/Boof2015/astra
 	arch = x86_64
 	license = GPL-3.0-only
+	depends = fuse2
 	provides = astra
 	conflicts = astra
-	noextract = astra-0.5.1.beta.AppImage
+	noextract = astra-0.5.2.beta.AppImage
 	options = !strip
 	options = !debug
-	source = astra-0.5.1.beta.AppImage::https://github.com/Boof2015/astra/releases/download/v0.5.1-beta/Astra-0.5.1-beta-Linux.AppImage
-	sha256sums = f3cc609249e59d9a4890476d5d8e0814c33a8d626bcfe78ebc24878f950ae503
+	source = astra-0.5.2.beta.AppImage::https://github.com/Boof2015/astra/releases/download/v0.5.2-beta/Astra-0.5.2-beta-Linux.AppImage
+	sha256sums = b11dbda87833588f8e10b93b8abb50129ff0d63cb175baa1673c1bee2dd74288
 
 pkgname = astra-music-bin
