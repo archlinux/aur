@@ -1,0 +1,5 @@
+[python-repomatic]
+source = "github"
+github = "kdeldycke/repomatic"
+use_max_tag = true
+prefix = "v"
