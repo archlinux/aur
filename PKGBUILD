@@ -1,7 +1,7 @@
 # Maintainer: Ruben Deisenroth (Discord: Rubosplay#0815) <ruben.deisenroth@stud.tu-darmstadt.de>
 
 pkgname=latex-tuda-ci-logos-sanity
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Logos for TUDa-CI from Technische Universität Darmstadt - Sane Version that automatically fetches the logo from the corporate design book instead of relying on the user to download them"
 arch=("any")
@@ -12,7 +12,7 @@ conflicts=("latex-tuda-ci-logos")
 provides=("latex-tuda-ci-logos")
 makedepends=("librsvg" "inkscape>=1.3")
 source=("das_bild_der_tu_darmstadt.pdf::https://www.tu-darmstadt.de/media/medien_stabsstelle_km/services/medien_cd/das_bild_der_tu_darmstadt.pdf")
-sha256sums=('92e42e15f7a880308d3bfef593fa9dea0a28f8bba73057c7e81c64f042049f43')
+sha256sums=('6dbfd0054e8a91565b97b2399f864a91f2fc49ed0449b2923bdeac3d6b633398')
 
 # Build Package
 package() {
@@ -24,7 +24,7 @@ package() {
     # Also for some reason, the logo isn't quite black, so we fix that as well
     sed -i 's/#000000/#1d1d1bff/g' p1_i.svg
     # now we extract the logo from the SVG and export the logo as PDF
-    if ! rsvg-convert -f pdf -o tuda_logo.pdf p1_i.svg --export-id=g23; then
+    if ! rsvg-convert -f pdf -o tuda_logo.pdf p1_i.svg --export-id=g20; then
         echo "Warning: PDF conversion failed."
         echo "This may be due to ImageMagick's security policy settings."
         echo "To fix this, modify /etc/ImageMagick-6/policy.xml as follows:"

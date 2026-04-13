@@ -1,6 +1,6 @@
 pkgbase = latex-tuda-ci-logos-sanity
 	pkgdesc = Logos for TUDa-CI from Technische Universität Darmstadt - Sane Version that automatically fetches the logo from the corporate design book instead of relying on the user to download them
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://www.ulb.tu-darmstadt.de/finden_nutzen/medien_nutzen/dokumente_erstellen/latex/index.en.jsp
 	arch = any
@@ -10,6 +10,6 @@ pkgbase = latex-tuda-ci-logos-sanity
 	provides = latex-tuda-ci-logos
 	conflicts = latex-tuda-ci-logos
 	source = das_bild_der_tu_darmstadt.pdf::https://www.tu-darmstadt.de/media/medien_stabsstelle_km/services/medien_cd/das_bild_der_tu_darmstadt.pdf
-	sha256sums = 92e42e15f7a880308d3bfef593fa9dea0a28f8bba73057c7e81c64f042049f43
+	sha256sums = 6dbfd0054e8a91565b97b2399f864a91f2fc49ed0449b2923bdeac3d6b633398
 
 pkgname = latex-tuda-ci-logos-sanity
