@@ -1,6 +1,6 @@
 pkgbase = altarik-launcher-bin
 	pkgdesc = A Minecraft custom launcher developped to launch the game with our own modpack.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://altarik.fr/
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = altarik-launcher-bin
 	makedepends = gendesk
 	makedepends = imagemagick
 	depends = electron40
-	provides = altarik-launcher=2.3.2
+	provides = altarik-launcher=2.3.3
 	conflicts = altarik-launcher
-	source = altarik-launcher-2.3.2.zip::https://github.com/AltarikMC/Launcher/releases/download/2.3.2/Altarik.Launcher-linux-x64-2.3.2.zip
-	source = LICENSE-2.3.2::https://raw.githubusercontent.com/AltarikMC/Launcher/2.3.2/LICENSE
-	source = altarik-launcher-2.3.2.ico::https://raw.githubusercontent.com/AltarikMC/Launcher/2.3.2/icon.ico
+	source = altarik-launcher-2.3.3.zip::https://github.com/AltarikMC/Launcher/releases/download/2.3.3/Altarik.Launcher-linux-x64-2.3.3.zip
+	source = LICENSE-2.3.3::https://raw.githubusercontent.com/AltarikMC/Launcher/2.3.3/LICENSE
+	source = altarik-launcher-2.3.3.ico::https://raw.githubusercontent.com/AltarikMC/Launcher/2.3.3/icon.ico
 	source = altarik-launcher.sh
-	sha256sums = f50e023121a0550d2fc3b576d5ee6ae1403196737536d687b6af6a0ba6a28716
+	sha256sums = d42103f478f4321a176c006a29f3a1c67a86bea3174bab6b94ec9d32ac9733f0
 	sha256sums = 3a3a7d8474ca58bf2620f0a95275445faf654df7d4061afc209458b5fc8f8a2c
 	sha256sums = 5dbc783060b213ca39548ace82bbc9a2ffa35031b70728027a7a8e14dad2260a
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
