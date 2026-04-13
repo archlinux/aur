@@ -26,6 +26,7 @@ source=(
 	"patch_app_dmaxfer"
 	"patch_driver_makefile"
 	"patch_driver_src_makefile"
+	"patch_driver_thread_c"
 	"patch_driver_xdev_h"
 	"patch_makefile"
 )
@@ -34,25 +35,23 @@ sha256sums=(
 	'35d2c2b2dae14426e40fcd7b8f8f06513283356b40a8cfbd2b76c0a718250ca9'
 	'130b0a798d950bba2234774e5a76db5114cc968e3a742edd39e42b0b69ce4f28'
 	'892b02660a049562697f71f443767a12c25da5303969af059d865b099b174dee'
-	'6ab905e563132ab3937379a7c1457b141b0eeddf037b2b85b8534a1c122a42f5'
+	'5751c45e82f9c20b1f5f407f4f74a2214ba9fabde209176960ae8dce62fd1867'
+	'5be29e1916e604dac0f808b728bd2fbfec6102a6e2b8cf0cc8a47de7c4525ccc'
 	'b19c92ec8c1bb33186823f4c4a60d1408f1f7be77990642678f4f53f1097e382'
 	'4e2123697e3327dc9ddbd99c0589abb02eddcc1d9e5fad7813ccbe628e1b566b'
 )
 
+# LTO triggers errors, disable it
+options=('!lto')
+
 prepare() {
 	cd "${srcdir}/dma_ip_drivers"
 
-	# Files that need a patch:
-	# QDMA/linux-kernel/Makefile
-	# QDMA/linux-kernel/apps/dma-xfer/dmaxfer.c
-	# QDMA/linux-kernel/driver/Makefile
-	# QDMA/linux-kernel/driver/libqdma/qdma_access/qdma_access_common.h
-	# QDMA/linux-kernel/driver/libqdma/xdev.h
-	# QDMA/linux-kernel/driver/src/Makefile
 
 	# Note : command to create/update a patch file
 	# git -C src/dma_ip_drivers/ diff <source_file> > <patch_file>
 
+	# Apply patches
 	for f in ../patch_* ; do
 		patch -p1 < $f
 	done
@@ -67,16 +66,6 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/dma_ip_drivers/QDMA/linux-kernel"
-
-	# Disable LTO as this triggers errors
-
-	CFLAGS="${CFLAGS//-flto=auto}"
-	CXXFLAGS="${CXXFLAGS//-flto=auto}"
-	LDFLAGS="${LDFLAGS//-flto=auto}"
-
-	CFLAGS="${CFLAGS} -fno-lto"
-	CXXFLAGS="${CXXFLAGS} -fno-lto"
-	LDFLAGS="${LDFLAGS} -fno-lto"
 
 	# Important : the Makefiles do not support parallel jobs
 	# Note : Not sure at this stage if specifying future install paths are necessary
@@ -101,11 +90,7 @@ package() {
 		install
 
 	# Install licenses
-	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -Dm644 bsd_license.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -Dm644 license.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" bsd_license.txt license.txt COPYING LICENSE
 
 }
 

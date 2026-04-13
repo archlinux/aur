@@ -1,16 +1,7 @@
 diff --git a/QDMA/linux-kernel/driver/src/Makefile b/QDMA/linux-kernel/driver/src/Makefile
-index bb309d9..e229eda 100755
+index bb309d9..a58f25e 100755
 --- a/QDMA/linux-kernel/driver/src/Makefile
 +++ b/QDMA/linux-kernel/driver/src/Makefile
-@@ -44,7 +44,7 @@ $(info ARCH = $(ARCH).)
- 
- MOD_NAME := qdma$(PFVF_TYPE)
- 
--EXTRA_CFLAGS += -DLINUX -D__KERNEL__ -DMODULE -O2 -pipe -Wall -Werror
-+EXTRA_CFLAGS += -DLINUX -D__KERNEL__ -DMODULE -O2 -pipe -Wall -Werror -Wno-error=empty-body
- EXTRA_CFLAGS += $(FLAGS) $(CPPFLAGS) $(EXTRA_FLAGS)
- EXTRA_CFLAGS += -I$(srcdir)/../include
- EXTRA_CFLAGS += -I$(KSRC)/../include
 @@ -54,6 +54,9 @@ EXTRA_CFLAGS += -I$(srcdir)/../libqdma/qdma_access/eqdma_cpm5_access
  EXTRA_CFLAGS += -I$(srcdir)/../libqdma/qdma_access/qdma_cpm4_access
  EXTRA_CFLAGS += -I.

@@ -1,5 +1,5 @@
 diff --git a/QDMA/linux-kernel/Makefile b/QDMA/linux-kernel/Makefile
-index 08340f6..bb584c0 100755
+index 08340f6..889ceb9 100755
 --- a/QDMA/linux-kernel/Makefile
 +++ b/QDMA/linux-kernel/Makefile
 @@ -116,11 +116,9 @@ clean:
@@ -13,7 +13,7 @@ index 08340f6..bb584c0 100755
 -
 +	@echo "installing kernel modules to $(kernel_install_path) ..."
 +	@mkdir -p -m 755 $(kernel_install_path)
-+	@install -v -m 644 $(bin_dir)/*.ko $(kernel_install_path)
++	@install -v -m 755 $(bin_dir)/*.ko $(kernel_install_path)
  
  .PHONY: install-apps
  install-apps:

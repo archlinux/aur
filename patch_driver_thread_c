@@ -1,0 +1,14 @@
+diff --git a/QDMA/linux-kernel/driver/libqdma/thread.c b/QDMA/linux-kernel/driver/libqdma/thread.c
+index 5a326c7..f6c3b98 100755
+--- a/QDMA/linux-kernel/driver/libqdma/thread.c
++++ b/QDMA/linux-kernel/driver/libqdma/thread.c
+@@ -38,9 +38,6 @@ int qdma_kthread_dump(struct qdma_kthread *thp, char *buf, int buflen,
+ 	len += snprintf(buf, buflen, "%s, cpu %u, work %u.\n",
+ 			thp->name, thp->cpu, thp->work_cnt);
+ 
+-	if (detail)
+-		;
+-
+ 	unlock_thread(thp);
+ 
+ 	buf[len] = '\0';
