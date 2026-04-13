@@ -1,6 +1,6 @@
 # Maintainer: Eran Sandler <eran@sandler.co.il>
 pkgname=hyprmon-bin
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=2
 pkgdesc="A multi-monitor profile manager for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ source=('hyprmon.desktop' 'hyprmon.png')
 source_x86_64=("hyprmon-${pkgver}-linux-amd64::${url}/releases/download/v${pkgver}/hyprmon-linux-amd64.tar.gz")
 source_aarch64=("hyprmon-${pkgver}-linux-arm64::${url}/releases/download/v${pkgver}/hyprmon-linux-arm64.tar.gz")
 sha256sums=('SKIP' 'SKIP')
-sha256sums_x86_64=('ef43e4c609c4e2742effcf5cc4e2cc09647aaf8a56468521b959652da383bb9f')
-sha256sums_aarch64=('93096d590b86b081fb6236e748196e5de3e00ff49c052f27b24dca619da50a88')
+sha256sums_x86_64=('8aa94d9d23dff04ac393b3a873cbecf7ea8bcdcc707f8793ad31375e2769b39e')
+sha256sums_aarch64=('6f1073892f98cb83f3351887eb5f961a5e17c4a087b6bfa1b08194372fb82da8')
 
 package() {
     cd "$srcdir"
