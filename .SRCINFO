@@ -1,0 +1,13 @@
+pkgbase = excalidraw-desktop-bin
+	pkgdesc = Unofficial, offline-first desktop client for Excalidraw on Windows, macOS, and Linux.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mistweaverco/excalidraw-desktop
+	arch = x86_64
+	license = MIT
+	provides = excalidraw-desktop
+	conflicts = excalidraw-desktop
+	source_x86_64 = excalidraw-desktop-bin-0.1.0.tar.gz::https://github.com/mistweaverco/excalidraw-desktop/releases/download/v0.1.0/excalidraw-desktop_amd64.deb
+	sha256sums_x86_64 = 161f55cdf06e0b4f6b8c37f23875af66929ae56bfcffbe9395771df2c701c0c2
+
+pkgname = excalidraw-desktop-bin
