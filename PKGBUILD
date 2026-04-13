@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=data-peek
 _pkgname=Data-Peek
-pkgver=0.19.0
+pkgver=0.19.1
 _electronversion=38
 _nodeversion=24
 pkgrel=1
@@ -97,6 +97,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+    cp -a "${srcdir}/${pkgname}-${pkgver}/apps/desktop/dist/linux-"*"/resources/". "${pkgdir}/usr/lib/${pkgname}/"
 	find "${srcdir}/${pkgname}-${pkgver}/apps/desktop/dist/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" {} +
     if find "${srcdir}/${pkgname}-${pkgver}/apps/desktop/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
         for _subdir in "${srcdir}/${pkgname}-${pkgver}/apps/desktop/dist/linux-"*"/resources/"*; do
