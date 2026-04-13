@@ -1,6 +1,6 @@
 # Maintainer: Sanchit Samuel <your-email@example.com>
 pkgname=mount-manager
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Manage disk partitions and automount configurations via /etc/fstab"
 arch=('x86_64')
