@@ -1,7 +1,7 @@
 # Maintainer: GooseStation contributors
 
 _pkgname=goosestation-libretro
-_upstream_commit=9b0a4ec559ae83bfdb14685932b036ad7c1701be
+_upstream_commit=5e7be496a2d0480aaabbe9746a1a4576b469d301
 _overlay_commit=720f41f306232696983a85307b824c20aa87feae
 _overlay_raw="https://codeberg.org/hueponik/goosestation-overlay/raw/commit/${_overlay_commit}/games-emulation/goosestation-libretro/files"
 pkgname=${_pkgname}
@@ -12,7 +12,7 @@ arch=('x86_64' 'aarch64')
 url='https://codeberg.org/hueponik/goosestation-overlay'
 license=('CC-BY-NC-ND-4.0')
 depends=(
-  'cpuinfo-pytorch'
+  'cpuinfo-pytorch-git'
   'freetype2'
   'libjpeg-turbo'
   'libpng'
@@ -63,8 +63,8 @@ source=(
   "WebPConfig.cmake::${_overlay_raw}/lib/cmake/WebP/WebPConfig.cmake"
   "zstdConfig.cmake::${_overlay_raw}/lib/cmake/zstd/zstdConfig.cmake"
 )
-sha256sums=('0e15abf28021e41defab8b95f7342e56485d21e44d8e0488c035599c5e32f391'
-            '149c9fa00ed91d618e9305ad5ce8d3b8cc6c5d8e64eb26f0680257bc7120461c'
+sha256sums=('5ba5c07c054b3b005d82aeafdc46803fc9e2af77a591d3577b64b0a1086792d7'
+            'dae400fc7a433cb04db62f736852f93d9458e94e3fc5bc467aadc51fbe516672'
             '8817fa840f8496a37d130d43bcbc55bcb51c23b7db4e93f438a0f46fd51b6ce9'
             '4dd7690b6e83a236cd073b6f1a00006bac5182f1c22b612d816cbe6556bda66d'
             '03b2a16d41adec09e8b2e82cb17ea8cac45dec4d9aae904d057062f75c354ca4'
