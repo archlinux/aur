@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-entry-tool"
-pkgver="1.33.0"
+pkgver="1.34.0"
 pkgrel=1
 pkgdesc="Entry management for the Limine bootloader."
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ depends=(
 makedepends=('git' 'gradle')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-entry-tool')
-sha256sums=('b7795b38d2dd6ba79791f620586eb6bf50e7a4ef41d0b1fd47a67e76948b438a')
+sha256sums=('e3c0220d1496d841da195b24e88bee6e018f2611c72f38bd63e66d55f96a7ca4')
 sha256sums_x86_64=('e0be791c8fda4d03b6b0a0cb824fef3149736170057b3a515252b44419606af0')
 sha256sums_aarch64=('b4580d9f223d0a4b3a1757e58b18ff4c1db950e67e105fc5cb741457d2384a71')
 
@@ -44,11 +44,24 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname}"
-	src_path="install/arch-linux/${pkgname}"
-	install -dm 755 "$src_path/usr/share/limine-entry-tool.d/"
-	install -dm 755 "$src_path/etc/limine-entry-tool.d/"
-	install -Dm 755 build/native/nativeCompile/limine-entry-tool "$src_path/usr/lib/limine/"
-	install -dm 755 "$src_path/usr/share/doc/${pkgname}/"
-	cp -r README.md CHANGELOG.md "$src_path/usr/share/doc/${pkgname}/"
-	cp -r "$src_path/usr" "$src_path/etc" "$pkgdir"
+	local src="install/arch-linux"
+
+	# directories
+	install -dm 755 \
+		"$pkgdir/usr/share/doc/limine-entry-tool" \
+		"$pkgdir/etc/boot/hooks/pre.d" \
+		"$pkgdir/etc/boot/hooks/post.d" \
+		"$pkgdir/usr/lib/limine"
+
+	# docs
+	install -Dm 644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/limine-entry-tool/"
+
+	# files
+	cp -a "$src/limine-entry-tool/etc" "$src/limine-entry-tool/usr" "$pkgdir/"
+	install -Dm 755 "build/native/nativeCompile/limine-entry-tool" "$pkgdir/usr/lib/limine/"
+
+	# limine hook symlinks
+	ln -sf /usr/bin/limine-reset-enroll "$pkgdir/etc/boot/hooks/pre.d/10-limine-reset-enroll"
+	ln -sf /usr/bin/limine-enroll-config "$pkgdir/etc/boot/hooks/post.d/90-limine-enroll-config"
 }
+
