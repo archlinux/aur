@@ -1,6 +1,6 @@
 pkgbase = slipnet-bin
 	pkgdesc = Android VPN client with DNS tunneling (DNSTT, NoizDNS & Slipstream), NaiveProxy, SSH, Tor, and DoH support — featuring a built-in DNS scanner.
-	pkgver = 2.4.1
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/anonvector/SlipNet
 	arch = aarch64
@@ -8,9 +8,9 @@ pkgbase = slipnet-bin
 	license = custom
 	provides = slipnet
 	conflicts = slipnet
-	source_aarch64 = slipnet-2.4.1linux-aarch64::https://github.com/anonvector/SlipNet/releases/download/v2.4.1/slipnet-linux-arm64
-	sha256sums_aarch64 = 2813e7f827ff54da793a0549bbd0e5922124ee364369e6966d67dec327fde74f
-	source_x86_64 = slipnet-2.4.1-linux-x86_64::https://github.com/anonvector/SlipNet/releases/download/v2.4.1/slipnet-linux-amd64
-	sha256sums_x86_64 = 447a98fa4bbdfa47cb05d5b067cef5c5276bb9a83dc6fa985e82f9f8582b734e
+	source_aarch64 = slipnet-2.5.0linux-aarch64::https://github.com/anonvector/SlipNet/releases/download/v2.5.0/slipnet-linux-arm64
+	sha256sums_aarch64 = 6b1e3c3ef141199bc91386ffd6a6fb94c5df566186883fc1859b0c88c40c9d49
+	source_x86_64 = slipnet-2.5.0-linux-x86_64::https://github.com/anonvector/SlipNet/releases/download/v2.5.0/slipnet-linux-amd64
+	sha256sums_x86_64 = 89247aad68a0cfb89772b6e634fa70b7fdec5695f0c497540364165afbf2a02f
 
 pkgname = slipnet-bin
