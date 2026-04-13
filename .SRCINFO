@@ -1,12 +1,12 @@
 pkgbase = sciqlop-appimage
 	pkgdesc = An ergonomic and efficient application to browse and label in situ plasma measurements from multi-mission satellite data
-	pkgver = 0.10.5
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/SciQLop/SciQLop
 	arch = x86_64
 	license = GPL3
 	options = !strip
-	source = sciqlop-appimage-0.10.5.AppImage::https://github.com/SciQLop/SciQLop/releases/download/v0.10.5/SciQLop-x86_64-v0.10.5.AppImage
-	sha256sums = 813becef920487325468cc1742d09043f353a0e32b6296a04e0137ffce3d815f
+	source = sciqlop-appimage-0.11.2.AppImage::https://github.com/SciQLop/SciQLop/releases/download/v0.11.2/SciQLop-x86_64-v0.11.2.AppImage
+	sha256sums = e567e6d74e2123a09ea142c051b751b45e0be725d6d12967d7f04ef64390a2c1
 
 pkgname = sciqlop-appimage
