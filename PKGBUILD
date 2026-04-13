@@ -1,6 +1,6 @@
 # Maintainer: printwithbrackets <your@email.com>
 pkgname=addpath-git
-pkgver=1.0.0
+pkgver=0.1.r0.g$(git rev-parse --short HEAD)
 pkgrel=1
 pkgdesc="Hunt down executables not in your PATH and fix it"
 arch=('any')
