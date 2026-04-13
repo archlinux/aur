@@ -1,0 +1,24 @@
+pkgbase = tdesktop-nolimit
+	pkgdesc = Telegram Desktop with no account limit
+	pkgver = 5.11.1
+	pkgrel = 1
+	url = https://github.com/IRRatium/tdesktop-nolimit
+	arch = x86_64
+	license = GPL3
+	depends = hunspell
+	depends = ffmpeg
+	depends = hicolor-icon-theme
+	depends = lz4
+	depends = minizip
+	depends = openal
+	depends = ttf-opensans
+	depends = xcb-util-keysyms
+	depends = qt6-imageformats
+	depends = qt6-svg
+	depends = qt6-wayland
+	provides = telegram-desktop
+	conflicts = telegram-desktop
+	source = tdesktop-nolimit-5.11.1.tar.gz::https://github.com/IRRatium/tdesktop-nolimit/archive/refs/heads/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = tdesktop-nolimit
