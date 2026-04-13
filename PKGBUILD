@@ -5,7 +5,7 @@ pkgbase="python-sacred"
 pkgname=("python-sacred")
 _pkgname="sacred"
 
-pkgver=0.8.5
+pkgver=0.8.7
 pkgrel=0
 epoch=0
 
@@ -17,11 +17,12 @@ license=('MIT')
 makedepends=('python-distribute')
 checkdepends=('python-pymongo')
 source=("${url}/archive/${pkgver}.tar.gz")
-md5sums=('57c7ea61c94d5d5a64c53d0ad3723f6c')
+md5sums=('4f677bca570a4e33b047a73ac4460b95')
 
 build() {
   msg "Building Python 3"
   cd "$srcdir/$_pkgname-$pkgver"
+  sed -i 's/pkgutil.find_loader/importlib.util.find_spec/' sacred/utils.py ##### PATCH
   python setup.py build
 }
 
@@ -31,7 +32,7 @@ build() {
 # }
 
 package_python-sacred() {
-  depends=('python' 'python-docopt' 'python-wrapt' 'python-jsonpickle' 'python-mock' 'python-munch' 'python-py' 'python-pbr' 'python-pytest' 'python-py-cpuinfo' 'python-gitpython')
+  depends=('python' 'python-docopt' 'python-wrapt' 'python-jsonpickle' 'python-munch' 'python-py' 'python-pbr' 'python-pytest' 'python-py-cpuinfo' 'python-gitpython')
   optdepends=('python-numpy' 'python-pymongo')
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build

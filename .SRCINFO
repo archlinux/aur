@@ -9,14 +9,13 @@ pkgbase = python-sacred
 	checkdepends = python-pymongo
 	makedepends = python-distribute
 	source = https://github.com/IDSIA/sacred/archive/0.8.5.tar.gz
-	md5sums = 57c7ea61c94d5d5a64c53d0ad3723f6c
+	md5sums = 52100236980a79c4c66cd1ab8568ada8
 
 pkgname = python-sacred
 	depends = python
 	depends = python-docopt
 	depends = python-wrapt
 	depends = python-jsonpickle
-	depends = python-mock
 	depends = python-munch
 	depends = python-py
 	depends = python-pbr
