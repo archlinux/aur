@@ -4,6 +4,7 @@
 #from https://docs.openmc.org/en/stable/examples/post-processing.html
 ################################################################################
 import openmc
+import os
 
 # materials
 # 1.6 enriched fuel
@@ -32,7 +33,7 @@ materials = openmc.Materials([fuel, water, cladding])
 materials.export_to_xml()
 
 #Geometry
-h5m_filepath = 'dagmc.h5m'
+h5m_filepath = os.environ['HOME'] + "/.cache/yay/openmc-git/dagmc.h5m"
 graveyard=openmc.Sphere(r=10000,boundary_type='vacuum')
 cad_univ = openmc.DAGMCUniverse(filename=h5m_filepath,auto_geom_ids=True,universe_id=996 )
 cad_cell = openmc.Cell(cell_id=997 , region= -graveyard, fill= cad_univ)
