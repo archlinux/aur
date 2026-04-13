@@ -1,0 +1,19 @@
+pkgbase = python-complexipy
+	pkgdesc = Blazingly fast cognitive complexity analysis for Python, written in Rust.
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = https://github.com/rohaquinlop/complexipy
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-maturin
+	makedepends = python-pytest
+	depends = python
+	depends = python-tomli
+	depends = python-typer
+	source = python-complexipy-5.2.0.tar.gz::https://github.com/rohaquinlop/complexipy/archive/refs/tags/5.2.0.tar.gz
+	md5sums = e124fd712e3f3efeb51830a3531c4972
+
+pkgname = python-complexipy
