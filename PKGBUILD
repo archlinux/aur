@@ -10,7 +10,7 @@ _buildstamp='Arch Linux'
 
 _pkgname=audacious
 pkgname="$_pkgname-git"
-pkgver=4.4.r0.g9777eefed
+pkgver=4.5.1.r38.gf888cd736
 pkgrel=1
 epoch=1
 pkgdesc="Lightweight, advanced audio player focused on audio quality (git version)"
@@ -49,6 +49,5 @@ build() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  install -Dm644 $_pkgname/contrib/audacious.appdata.xml -t "$pkgdir/usr/share/metainfo"
   install -Dm644 $_pkgname/COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
