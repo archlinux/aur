@@ -14,6 +14,6 @@ pkgbase = xero-music
 	optdepends = kitty: kitty icat integration for album-art rendering
 	options = !lto
 	source = xero-music-1.0.9.tar.gz::https://codeberg.org/Xero-music/Xero/archive/v1.0.9.tar.gz
-	sha256sums = 86e49409165f8bb6cf9b3ec5a3941033026cf849f1469c7b332d0e877d0579b5
+	sha256sums = caff6ed5d2b923f1ec7a93dca75ea4213801d79dac117ce3b87c7a45d10d293e
 
 pkgname = xero-music
