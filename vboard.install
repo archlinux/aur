@@ -1,0 +1,25 @@
+post_install() {
+  if [[ -x /usr/share/vboard/scripts/meson-post-install.sh ]]; then
+    if ! /usr/share/vboard/scripts/meson-post-install.sh /usr/share/vboard/scripts /usr; then
+      printf '%s\n' 'vboard: warning: post-install integration was not completed; see /usr/share/vboard/uinput.md'
+    fi
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  local rule=/etc/udev/rules.d/70-vboard-uinput.rules
+
+  if [[ -e "$rule" ]]; then
+    rm -f "$rule"
+    if command -v udevadm >/dev/null 2>&1; then
+      udevadm control --reload-rules >/dev/null 2>&1 || true
+      if [[ -e /dev/uinput ]]; then
+        udevadm trigger --subsystem-match=misc --sysname-match=uinput >/dev/null 2>&1 || true
+      fi
+    fi
+  fi
+}
