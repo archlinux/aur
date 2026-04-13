@@ -1,0 +1,5 @@
+[meta-package-manager]
+source = "github"
+github = "kdeldycke/meta-package-manager"
+use_max_tag = true
+prefix = "v"
