@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='1.0.2'
+_upstreamver='1.0.3'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='withoutbg'
@@ -22,7 +22,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 #source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a035fc2026e75c6b9ca9b4cf630ad0e52207df69b4a5d1d1f4d6b81c92b2ea6a')
+sha256sums=('4f3197ea8c62bdf146f1146ad5941532f70b4d74f3d02d82cc5b51797642001b')
 
 
 build() {
