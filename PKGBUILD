@@ -1,13 +1,14 @@
 # Maintainer: JanJan74 <JanJan74@aur.archlinux.org>
 pkgname=wiksr
 pkgver=1.0
-pkgrel=1
-pkgdesc="Terminal instant answer browser using DuckDuckGo and Wikipedia"
+pkgrel=2
+pkgdesc="Terminal instant answer browser using local AI (ollama) and Wikipedia"
 arch=('any')
 license=('MIT')
 depends=('python' 'python-rich')
+optdepends=('ollama: local AI answers instead of Wikipedia fallback')
 source=("wiksr.py")
-sha256sums=('9d3eb08d6672116c4ee476baa37fa63fed3959f043047e2ab13cc17745432d32')
+sha256sums=('5cc943d4e6c122a568bd89f737dc202d512cf9f7d073a3c5a32f120778b04773')
 
 package() {
     install -Dm755 wiksr.py "$pkgdir/usr/local/bin/wiksr"

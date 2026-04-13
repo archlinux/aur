@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
 wiksr - Terminal instant answer browser
-Uses DuckDuckGo Instant Answer API + Wikipedia for quick Q&A.
+Uses local ollama AI + Wikipedia for quick Q&A.
 """
 
 import gzip
 import json
+import re
 import sys
 from urllib.request import urlopen, Request
 from urllib.parse import quote_plus
@@ -20,18 +21,25 @@ except ImportError:
 
 console = Console(width=min(100, Console().width))
 
-DDG_API      = "https://api.duckduckgo.com/?q={}&format=json&no_html=1&skip_disambig=1"
+OLLAMA_API   = "http://localhost:11434/api/chat"
+OLLAMA_MODEL = "deepseek-r1:1.5b"
+
 WIKI_SEARCH  = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch={}&srlimit=1&format=json"
 WIKI_SUMMARY = "https://en.wikipedia.org/api/rest_v1/page/summary/{}"
 
+HEADERS = {"User-Agent": "wiksr/1.0 terminal-browser"}
+
+SYSTEM_PROMPT = (
+    "You are a concise encyclopedia assistant. "
+    "Answer in 2-4 sentences. No markdown, no lists, plain prose only. "
+    "If you don't know, say so briefly."
+)
+
 
 def fetch(url: str) -> bytes | None:
-    req = Request(url, headers={
-        "User-Agent": "wiksr/1.0 terminal-browser",
-        "Accept-Encoding": "gzip",
-    })
+    req = Request(url, headers={**HEADERS, "Accept-Encoding": "gzip"})
     try:
-        with urlopen(req, timeout=10) as resp:
+        with urlopen(req, timeout=15) as resp:
             raw = resp.read()
             if resp.info().get("Content-Encoding") == "gzip":
                 raw = gzip.decompress(raw)
@@ -40,28 +48,35 @@ def fetch(url: str) -> bytes | None:
         return None
 
 
-def ddg_search(query: str) -> tuple[str, str] | tuple[None, None]:
-    raw = fetch(DDG_API.format(quote_plus(query)))
-    if not raw:
-        return None, None
+def ollama_search(query: str) -> tuple[str, str] | tuple[None, None]:
+    """Query local ollama. Returns (answer, label) or (None, None)."""
+    payload = json.dumps({
+        "model": OLLAMA_MODEL,
+        "stream": False,
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user",   "content": query},
+        ],
+    }).encode()
+
+    req = Request(
+        OLLAMA_API,
+        data=payload,
+        headers={**HEADERS, "Content-Type": "application/json"},
+    )
     try:
-        data = json.loads(raw)
-    except json.JSONDecodeError:
+        with urlopen(req, timeout=60) as resp:
+            data = json.loads(resp.read())
+    except (URLError, json.JSONDecodeError):
         return None, None
 
-    if data.get("Answer"):
-        return data["Answer"], data.get("AnswerType", "Answer")
+    text = data.get("message", {}).get("content", "").strip()
 
-    if data.get("AbstractText"):
-        src = data.get("AbstractSource", "")
-        label = f"Answer  [dim]via {src}[/dim]" if src else "Answer"
-        return data["AbstractText"], label
+    # deepseek-r1 wraps reasoning in <think>…</think> — strip it
+    text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
 
-    if data.get("Definition"):
-        src = data.get("DefinitionSource", "")
-        label = f"Definition  [dim]via {src}[/dim]" if src else "Definition"
-        return data["Definition"], label
-
+    if text:
+        return text, f"Answer  [dim]via ollama ({OLLAMA_MODEL})[/dim]"
     return None, None
 
 
@@ -93,7 +108,7 @@ def wiki_search(query: str) -> tuple[str, str] | tuple[None, None]:
 
 
 def search(query: str) -> tuple[str, str] | tuple[None, None]:
-    result, label = ddg_search(query)
+    result, label = ollama_search(query)
     if result:
         return result, label
     return wiki_search(query)
@@ -115,7 +130,7 @@ def main():
             console.print("[dim]Bye.[/dim]")
             break
 
-        with console.status("[dim]Searching...[/dim]", spinner="dots"):
+        with console.status("[dim]Thinking...[/dim]", spinner="dots"):
             result, label = search(query)
 
         if result:
