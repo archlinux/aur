@@ -2,7 +2,7 @@
 pkgname=hermes-agent
 pkgver=0.9.0
 _tagver=2026.4.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
@@ -54,7 +54,8 @@ build() {
 
   # Install Node.js dependencies
   [ -f "package.json" ] && npm install
-
+  # Build frontend
+  [ -d "web" ] && cd web && npm install && npm run build && cd ..
   # Build Python wheel
   python -m build --wheel --no-isolation
 }
