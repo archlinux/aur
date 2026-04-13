@@ -1,7 +1,7 @@
 pkgbase = rill-git
 	pkgdesc = A minimalist scrolling window manager for River
-	pkgver = fd25ffd
-	pkgrel = 6
+	pkgver = fde2189
+	pkgrel = 7
 	url = https://codeberg.org/lzj15/rill
 	install = rill.install
 	arch = x86_64
@@ -19,9 +19,12 @@ pkgbase = rill-git
 	provides = rill
 	conflicts = rill
 	noextract = zig-wayland.zip::https://codeberg.org/ifreund/zig-wayland/archive/v0.5.0.zip
+	noextract = zig-xbkcommon.tar.gz::https://codeberg.org/ifreund/zig-xkbcommon/archive/v0.4.0.tar.gz
 	source = git+https://codeberg.org/lzj15/rill.git
 	source = zig-wayland.zip::https://codeberg.org/ifreund/zig-wayland/archive/v0.5.0.zip
+	source = zig-xbkcommon.tar.gz::https://codeberg.org/ifreund/zig-xkbcommon/archive/v0.4.0.tar.gz
 	sha256sums = SKIP
 	sha256sums = 816d6d9fffeb596244e5467b60f5b21575ba779e441a27dcc63ce5f6a5a09841
+	sha256sums = e6df77d511cf9402f6ac08455c8d1fb727b6c3d66191e246671f62e5db083c49
 
 pkgname = rill-git
