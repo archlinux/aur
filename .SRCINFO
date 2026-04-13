@@ -1,7 +1,7 @@
 pkgbase = pv-migrate
 	pkgdesc = kubectl plugin to easily migrate the contents of one Kubernetes PersistentVolumeClaim to another
 	pkgver = 3.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/utkuozdemir/pv-migrate
 	arch = x86_64
 	groups = kubectl-plugins
