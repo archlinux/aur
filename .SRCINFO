@@ -1,0 +1,15 @@
+pkgbase = addpath-git
+	pkgdesc = Hunt down executables not in your PATH and fix it
+	pkgver = r1.g0000000
+	pkgrel = 1
+	url = https://github.com/printwithbrackets/addpath
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	provides = addpath
+	conflicts = addpath
+	source = addpath::git+https://github.com/printwithbrackets/addpath.git
+	sha256sums = SKIP
+
+pkgname = addpath-git
