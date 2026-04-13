@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter-cli-github-bin
 _pkgname=tree-sitter
-pkgver=0.26.5
+pkgver=0.26.8
 pkgrel=1
 pkgdesc="An incremental parsing system for programming tools"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -24,10 +24,10 @@ source_i686=("${pkgname}-${pkgver}-i686.gz::${_url}-x86.gz")
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v${pkgver}/LICENSE")
 
 sha256sums=('c5cfb43042b6b72045f4ba997834d0a7786d2793d91680868b5815b39f14fc78')
-sha256sums_x86_64=('d38d9a22ef398489e1eb291b2dea41467487020fe8280c2311dbbad9ba663a34')
-sha256sums_aarch64=('519e8648004a725a3bb566bdb3f3134946df4c9d7fcda6be5cf67d237d2b0921')
-sha256sums_armv7h=('640ab413e8a2d414ed74dbb57353bfb985d6bd859dbfef9e1a755c829b411b91')
-sha256sums_i686=('8b97c3e2b763d993a87ae583f5e0c4dec8f27a3f998a82ea818eab2ce527cbb3')
+sha256sums_x86_64=('9754a32800f0b970152782df177b4a47c711e34e651a7aceb384d8bd29fa136e')
+sha256sums_aarch64=('e339d6533b20830dd1666fe320aff85d301b3f59964a3836870b77f4827f9a17')
+sha256sums_armv7h=('a33544fdc074a590b7f24ec7e1d93a3f1d2b36ef8db2c4f842bd68b9637f2e95')
+sha256sums_i686=('be598dac017c57475fb16919f4ea6357f185af0e6f8872eea5d1da5e6c3d313b')
 
 package() {
   local _bin="${pkgname}-${pkgver}-${CARCH}"

@@ -1,6 +1,6 @@
 pkgbase = tree-sitter-cli-github-bin
 	pkgdesc = An incremental parsing system for programming tools
-	pkgver = 0.26.5
+	pkgver = 0.26.8
 	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter
 	arch = x86_64
@@ -10,18 +10,18 @@ pkgbase = tree-sitter-cli-github-bin
 	license = MIT
 	depends = gcc-libs
 	optdepends = nodejs: for the generate subcommand
-	provides = tree-sitter-cli=0.26.5
+	provides = tree-sitter-cli=0.26.8
 	conflicts = tree-sitter-cli
 	options = !debug
-	source = LICENSE-0.26.5::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.26.5/LICENSE
+	source = LICENSE-0.26.8::https://raw.githubusercontent.com/tree-sitter/tree-sitter/v0.26.8/LICENSE
 	sha256sums = c5cfb43042b6b72045f4ba997834d0a7786d2793d91680868b5815b39f14fc78
-	source_x86_64 = tree-sitter-cli-github-bin-0.26.5-x86_64.gz::https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.5/tree-sitter-linux-x64.gz
-	sha256sums_x86_64 = d38d9a22ef398489e1eb291b2dea41467487020fe8280c2311dbbad9ba663a34
-	source_aarch64 = tree-sitter-cli-github-bin-0.26.5-aarch64.gz::https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.5/tree-sitter-linux-arm64.gz
-	sha256sums_aarch64 = 519e8648004a725a3bb566bdb3f3134946df4c9d7fcda6be5cf67d237d2b0921
-	source_armv7h = tree-sitter-cli-github-bin-0.26.5-armv7h.gz::https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.5/tree-sitter-linux-arm.gz
-	sha256sums_armv7h = 640ab413e8a2d414ed74dbb57353bfb985d6bd859dbfef9e1a755c829b411b91
-	source_i686 = tree-sitter-cli-github-bin-0.26.5-i686.gz::https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.5/tree-sitter-linux-x86.gz
-	sha256sums_i686 = 8b97c3e2b763d993a87ae583f5e0c4dec8f27a3f998a82ea818eab2ce527cbb3
+	source_x86_64 = tree-sitter-cli-github-bin-0.26.8-x86_64.gz::https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-linux-x64.gz
+	sha256sums_x86_64 = 9754a32800f0b970152782df177b4a47c711e34e651a7aceb384d8bd29fa136e
+	source_aarch64 = tree-sitter-cli-github-bin-0.26.8-aarch64.gz::https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-linux-arm64.gz
+	sha256sums_aarch64 = e339d6533b20830dd1666fe320aff85d301b3f59964a3836870b77f4827f9a17
+	source_armv7h = tree-sitter-cli-github-bin-0.26.8-armv7h.gz::https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-linux-arm.gz
+	sha256sums_armv7h = a33544fdc074a590b7f24ec7e1d93a3f1d2b36ef8db2c4f842bd68b9637f2e95
+	source_i686 = tree-sitter-cli-github-bin-0.26.8-i686.gz::https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-linux-x86.gz
+	sha256sums_i686 = be598dac017c57475fb16919f4ea6357f185af0e6f8872eea5d1da5e6c3d313b
 
 pkgname = tree-sitter-cli-github-bin
