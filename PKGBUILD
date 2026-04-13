@@ -32,10 +32,12 @@ options=('!strip' '!debug')
 
 _pkgsrc="$_pkgname-$_commit"
 _pkgext="tar.gz"
-source=("$_pkgname-$pkgver-${_commit::7}.$_pkgext"::"$url/-/archive/$_commit/$_pkgname-$_commit.$_pkgext")
+source=("$_pkgname-$pkgver-${_commit::7}.$_pkgext"::"https://legacy.git.ryujinx.app/ryubing/ryujinx/-/archive/$_commit/$_pkgname-$_commit.$_pkgext")
 sha256sums=('SKIP')
 
 prepare() {
+  sed -E -e 's&(https://)(git\.ryujinx\.app/api/v4/projects/[0-9]+/packages/nuget/index\.json)&\1legacy.\2&g' -i "$_pkgsrc"/nuget.config
+
   cp "$_pkgsrc"/global.json global.json
 }
 

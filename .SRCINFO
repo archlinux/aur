@@ -15,7 +15,7 @@ pkgbase = ryujinx
 	depends = wayland
 	options = !strip
 	options = !debug
-	source = ryujinx-1.3.3-e2143d4.tar.gz::https://git.ryujinx.app/ryubing/ryujinx/-/archive/e2143d43bcb6762340d8a01f20e7b5fdf104f02f/ryujinx-e2143d43bcb6762340d8a01f20e7b5fdf104f02f.tar.gz
+	source = ryujinx-1.3.3-e2143d4.tar.gz::https://legacy.git.ryujinx.app/ryubing/ryujinx/-/archive/e2143d43bcb6762340d8a01f20e7b5fdf104f02f/ryujinx-e2143d43bcb6762340d8a01f20e7b5fdf104f02f.tar.gz
 	sha256sums = SKIP
 
 pkgname = ryujinx
