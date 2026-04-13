@@ -46,13 +46,6 @@ build() {
 package() {
     cd jellyfin-desktop
 
-    # Pin cef dependency to the exact version used at build time.
-    # The wrapper is statically linked, so the API hash baked into the binary
-    # must match the runtime libcef.so — a version mismatch causes a fatal error.
-    local _cef_ver
-    _cef_ver=$(pacman -Q cef | awk '{print $2}')
-    depends+=("cef=${_cef_ver}")
-
     install -dm755 "$pkgdir/opt/jellyfin-desktop"
 
     # Main binary
