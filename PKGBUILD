@@ -2,16 +2,15 @@
 pkgname=rmpv-git
 pkgver=r33.17e0018
 pkgrel=1
-pkgdesc="RMPV - terminal-based mpv YouTube/music player with rmpc integration, yt-dlp streaming, and download support"
+pkgdesc="Terminal-based mpv YouTube/music player with rmpc integration"
 arch=('any')
 url="https://github.com/Trifalic47/rmpv"
 license=('MIT')
 depends=('mpv' 'yt-dlp' 'mpc' 'mpd' 'rmpc' 'rofi')
 makedepends=('git')
-provides=('rmpv')
-conflicts=('rmpv')
-install=rmpv.install
-source=("$pkgname::git+https://github.com/Trifalic47/rmpv.git")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,19 +21,21 @@ pkgver() {
 package() {
   cd "$pkgname"
 
-  # ── binaries ──────────────────────────────────────────
-  install -Dm755 bin/rmpv        "$pkgdir/usr/bin/rmpv"
-  install -Dm755 bin/rmpv-play   "$pkgdir/usr/bin/rmpv-play"
-  install -Dm755 bin/rmpv-search "$pkgdir/usr/bin/rmpv-search"
+  # ── Binaries ──────────────────────────────────────────
+  # Using a loop makes it cleaner and easier to maintain
+  for _bin in rmpv rmpv-play rmpv-search; do
+    install -Dm755 "bin/$_bin" "$pkgdir/usr/bin/$_bin"
+  done
 
-  # ── setup script (user runs once after install) ───────
+  # ── Setup script ──────────────────────────────────────
   install -Dm755 scripts/rmpv-setup.sh "$pkgdir/usr/bin/rmpv-setup"
 
-  # ── dotfile templates → /usr/share/rmpv/dots ─────────
-  # copying entire dots/ tree so rmpv-setup can cp -r it to ~/.config
-  install -d "$pkgdir/usr/share/rmpv"
-  cp -r dots "$pkgdir/usr/share/rmpv/dots"
+  # ── Data files (Templates) ────────────────────────────
+  # Avoid 'cp -r' directly into pkgdir when possible to ensure correct 
+  # directory permissions (755) and file permissions (644)
+  find dots -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/rmpv/{}" \;
 
-  # ── readme ────────────────────────────────────────────
-  install -Dm644 README.md "$pkgdir/usr/share/doc/rmpv/README.md"
+  # ── License & Documentation ───────────────────────────
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

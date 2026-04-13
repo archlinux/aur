@@ -1,9 +1,8 @@
 pkgbase = rmpv-git
-	pkgdesc = RMPV - terminal-based mpv YouTube/music player with rmpc integration, yt-dlp streaming, and download support
+	pkgdesc = Terminal-based mpv YouTube/music player with rmpc integration
 	pkgver = r33.17e0018
 	pkgrel = 1
 	url = https://github.com/Trifalic47/rmpv
-	install = rmpv.install
 	arch = any
 	license = MIT
 	makedepends = git
