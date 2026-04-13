@@ -1,16 +1,22 @@
 # Maintainer: Tanishq (Trifalic47) <trifalicapt@gmail.com>
 pkgname=rmpv-git
-pkgver=r29.84c2c53
+pkgver=r31.0a3f8c2
 pkgrel=1
-pkgdesc="RMPV - terminal-based mpv YouTube/music player with rmpc integration, yt-dlp streaming, and download support"
-arch=('any')
+pkgdesc="Terminal-based mpv YouTube/music player with rmpc integration"
+arch=('x86_64')
 url="https://github.com/Trifalic47/rmpv"
 license=('MIT')
-depends=('mpv' 'yt-dlp' 'mpc' 'mpd' 'rmpc')
+
+depends=('mpv' 'yt-dlp' 'mpc' 'mpd')
+optdepends=('rmpc: TUI interface')
+
 makedepends=('git')
+
 provides=('rmpv')
 conflicts=('rmpv')
+
 install=rmpv.install
+
 source=("$pkgname::git+https://github.com/Trifalic47/rmpv.git")
 sha256sums=('SKIP')
 
@@ -22,19 +28,14 @@ pkgver() {
 package() {
   cd "$pkgname"
 
-  # ── binaries ──────────────────────────────────────────
   install -Dm755 bin/rmpv        "$pkgdir/usr/bin/rmpv"
   install -Dm755 bin/rmpv-play   "$pkgdir/usr/bin/rmpv-play"
   install -Dm755 bin/rmpv-search "$pkgdir/usr/bin/rmpv-search"
 
-  # ── setup script (user runs once after install) ───────
   install -Dm755 scripts/rmpv-setup.sh "$pkgdir/usr/bin/rmpv-setup"
 
-  # ── dotfile templates → /usr/share/rmpv/dots ─────────
-  # copying entire dots/ tree so rmpv-setup can cp -r it to ~/.config
   install -d "$pkgdir/usr/share/rmpv"
   cp -r dots "$pkgdir/usr/share/rmpv/dots"
 
-  # ── readme ────────────────────────────────────────────
   install -Dm644 README.md "$pkgdir/usr/share/doc/rmpv/README.md"
 }
