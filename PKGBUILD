@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=quien
-pkgver=0.6.0
+pkgver=0.6.1
 _builddate=$(date --rfc-3339=date)
 pkgrel=1
 pkgdesc="A better WHOIS lookup tool"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b4fb45f2b4e73533ee212b17d6e556caecb113e18d1a4b85b27cef859913e618')
+sha256sums=('13b0788797d3dc9e743a3dd64ff79fe228af009f8e0649e5fae85a9b36f6b9db')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
