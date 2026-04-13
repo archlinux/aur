@@ -10,8 +10,8 @@ pkgbase = oryx-bench-bin
 	provides = oryx-bench
 	conflicts = oryx-bench
 	source_x86_64 = https://github.com/enriquefft/oryx-bench/releases/download/v0.1.0/oryx-bench-v0.1.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 5690fb606f3ac2f747658376dd33d4d40ed02ec82c6554c5c8942886b6f7c019
+	sha256sums_x86_64 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 	source_aarch64 = https://github.com/enriquefft/oryx-bench/releases/download/v0.1.0/oryx-bench-v0.1.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 50ce394c4bf576f831dededea4316a0dc8805fb118255502d0a9312a13a17a96
+	sha256sums_aarch64 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = oryx-bench-bin
