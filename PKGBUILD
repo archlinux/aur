@@ -18,7 +18,7 @@ sha256sums=('732f78c979d4a8df5a95202496e346888d6951f77a274788e01f8c4c5199a094'
 
 build() {
   cd "nmrs-gui-v$pkgver"
-  cargo build --release --locked
+  cargo build --release
 }
 
 package() {
