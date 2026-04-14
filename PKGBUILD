@@ -2,11 +2,11 @@
 
 _rockname=losc
 pkgbase=lua-$_rockname
-pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua54-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=1.0.1
 _rockrel=1
 _pkgref=12691509e066eded1a2c9fbf480b68ba9b697c2a
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Sound Control (OSC) for lua/luajit'
 arch=(any)
 url="https://github.com/davidgranstrom/losc"
@@ -33,7 +33,7 @@ _package() {
 }
 
 package_lua-losc() {
-	_package 5.4
+	_package 5.5
 	depends=(lua)
 }
 
@@ -50,4 +50,14 @@ package_lua52-losc() {
 package_lua53-losc() {
 	_package 5.3
 	depends=(lua53)
+}
+
+package_lua53-losc() {
+	_package 5.3
+	depends=(lua53)
+}
+
+package_lua54-losc() {
+	_package 5.4
+	depends=(lua54)
 }
