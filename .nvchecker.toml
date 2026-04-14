@@ -1,0 +1,5 @@
+[sorting-visualizer]
+source = "github"
+github = "KrishnaSSH/sorting-visualizer"
+use_latest_release = true
+prefix = "v"
