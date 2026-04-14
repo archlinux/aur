@@ -27,10 +27,6 @@ package() {
     #install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 
     # copy the actual built binary
-    #install -m755 "$srcdir/go-check-cert/$pkgname" \
-    #               "$pkgdir/usr/bin/$pkgname"
-
-    # copy config file
-    #install -m644 "$srcdir/kvm-configurator/kvm-configurator/oslist.yaml" \
-    #               "$pkgdir/usr/share/doc/$pkgname/oslist.yaml"
+    install -m755 "$srcdir/go-check-cert/$pkgname" \
+                   "$pkgdir/usr/bin/$pkgname"
 }
