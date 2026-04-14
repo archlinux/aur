@@ -1,7 +1,7 @@
 pkgbase = cliphist-tui-git
 	pkgdesc = A wayland clipboard TUI based on fzf and cliphist. Use chafa for image preview.
 	pkgver = r49.g745410d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SHORiN-KiWATA/cliphist-tui
 	arch = x86_64
 	license = MIT
