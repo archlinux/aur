@@ -1,7 +1,7 @@
 # Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
 
 pkgname=things3-cloud
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Command-line client for Things 3 using the Things Cloud API"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 options=('!lto')
 conflicts=('things3-cloud-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/evanpurkhiser/things3-cloud/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('65facfefc321ca667cb575ca8354c6aab49dbaf4fd92bfa115630d1d4074b96a')
+sha256sums=('21cfc6001ff945d65d2f673ed177f8ef38790999733f46b3f8678f54fc1ed773')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -23,5 +23,11 @@ package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	install -Dm755 target/release/things3 "${pkgdir}/usr/bin/things3"
+	install -Dm644 <("${pkgdir}/usr/bin/things3" completions bash) \
+		"${pkgdir}/usr/share/bash-completion/completions/things3"
+	install -Dm644 <("${pkgdir}/usr/bin/things3" completions zsh) \
+		"${pkgdir}/usr/share/zsh/site-functions/_things3"
+	install -Dm644 <("${pkgdir}/usr/bin/things3" completions fish) \
+		"${pkgdir}/usr/share/fish/vendor_completions.d/things3.fish"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
