@@ -1,7 +1,7 @@
 # Maintainer: Craig McLure <craig@mclure.net>
 pkgname=pipeweaver
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="An audio management tool for Linux built on top of PipeWire, designed specifically with streaming and broadcasting in mind."
 arch=('x86_64')
 url="https://github.com/pipeweaver/pipeweaver"
@@ -10,7 +10,7 @@ depends=('pipewire')
 makedepends=('git' 'rust' 'cargo' 'clang' 'npm')
 optdepends=('pipeweaver-app: An application wrapper for the Pipeweaver UI')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pipeweaver/pipeweaver/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('5f52f54d5064b20c0aaa6600d8b846896ef2a0e0acb9d56dab1da0a10f553547e96f5e88bbb6e53f68a86d1030a5614a0ec67f0f6842fd03887df106eb1453b8')
+sha512sums=('3a7ab37e85401d2e361f419b49db028270e0afcea292a196965688b3127fa3da00dede96ed80ba4f93f41c3702d5351589d263e57ac7dcaa8b4df5dc750b5e40')
 options=(!lto)
 
 prepare() {
