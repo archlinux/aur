@@ -1,6 +1,6 @@
 pkgname=mira-git
 pkgver=0.2.0.r39.g53dd587
-pkgrel=1
+pkgrel=2
 pkgdesc='Unit test runner for Rime schemas'
 arch=('x86_64' 'aarch64')
 url='https://github.com/rimeinn/mira'
@@ -8,7 +8,7 @@ license=('MIT')
 depends=(
   'librime'
   'yaml-cpp'
-  'lua54'
+  'lua'
   'argparse'
 )
 makedepends=(
@@ -33,7 +33,7 @@ pkgver() {
 build() {
   arch-meson mira build \
     --buildtype=release \
-    -Dlua_version=5.4
+    -Dlua_version=5.5
   meson compile -C build
 }
 
