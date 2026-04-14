@@ -1,6 +1,6 @@
 # Maintainer: Prabhat Kumar <hi@prbhtkumr.xyz>
 pkgname=gaur
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A beautiful, interactive TUI for Arch Linux package management"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=(
     'reflector: mirror list updates'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/prbhtkumr/gaur/archive/v$pkgver.tar.gz")
-sha256sums=('2e5b9170533e0f1bb997afdbdc960ef0b06dd653e9fec80d67d31b5bbcf49ffd')
+sha256sums=('153aa8ec5724d8506ec4ad621173f12346fbd7a28d89e057665283de8b1abc3d')
 
 prepare() {
     cd "$pkgname-$pkgver"
