@@ -1,0 +1,24 @@
+pkgbase = neve
+	pkgdesc = Standalone language for system configuration, builds, and shell automation
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/MCB-SMART-BOY/Neve
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = gcc-libs
+	depends = libgit2
+	depends = libssh2
+	depends = openssl
+	depends = zlib
+	depends = xz
+	provides = neve=2.0.0
+	conflicts = neve-bin
+	conflicts = neve-git
+	source = neve-2.0.0.tar.gz::https://github.com/MCB-SMART-BOY/Neve/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = ad0a93cacbf82e1d31c7671ea0d81e62519842931e19724bcc3f2354d2f6ac74
+
+pkgname = neve
