@@ -1,6 +1,6 @@
 pkgbase = okapi-bin
 	pkgdesc = Find lines across files by regex and edit them all at once with your vim
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/nk9/okapi
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = okapi-bin
 	depends = ripgrep
 	provides = okapi
 	conflicts = okapi
-	source = README-0.4.1.md::https://raw.githubusercontent.com/nk9/okapi/v0.4.1/README.md
-	source = LICENSE-0.4.1::https://raw.githubusercontent.com/nk9/okapi/v0.4.1/LICENSE
-	sha256sums = 3790e85af7c227d2e4e0a88822b671f21510aecacd77c95c0adf41daa6922e7f
+	source = README-0.5.0.md::https://raw.githubusercontent.com/nk9/okapi/v0.5.0/README.md
+	source = LICENSE-0.5.0::https://raw.githubusercontent.com/nk9/okapi/v0.5.0/LICENSE
+	sha256sums = 426c2695de8acf8f31c8b92ab9a980c687ec7983bf7004c2d318ccc635e9a67a
 	sha256sums = a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9
-	source_x86_64 = okapi-x86_64-0.4.1.tgz::https://github.com/nk9/okapi/releases/download/v0.4.1/okapi-v0.4.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = bac05d904ffec2b659f834ff34cf7afe7d968915b539a63791ebe360e2219237
+	source_x86_64 = okapi-x86_64-0.5.0.tgz::https://github.com/nk9/okapi/releases/download/v0.5.0/okapi-v0.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e530e476e04f7cd3b5be1bb15755e44a132bab771148f502048c194523726842
 
 pkgname = okapi-bin
