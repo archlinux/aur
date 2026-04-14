@@ -2,7 +2,7 @@
 
 pkgname=markdown-lsp
 pkgdesc='Simple LSP for Markdown files written in Rust'
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 url=https://github.com/harehare/mq-edit
 license=(MIT)
@@ -10,7 +10,7 @@ arch=(x86_64)
 depends=(glibc)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('425aefa349f96d455c108aa0369ed7949882c73dcb82e06db9fb35e00598ff2b')
+sha256sums=('9c5228ae15387beb29a4dbc98aa1d9ff883669ead6e7e57bf4ba5444d5fd8895')
 
 prepare () {
 	cd "mq-edit-$pkgver/crates/$pkgname"
