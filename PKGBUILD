@@ -1,7 +1,7 @@
 # Maintainer: GANPI <some.kind@of.mail>
 pkgname=yarc-launcher-bin
 _binname=${pkgname%-bin}
-pkgver=1.2.0
+pkgver=1.3.0
 _appimage=YARC.Launcher\_$pkgver\_amd64.AppImage
 pkgrel=1
 pkgdesc='The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)'
@@ -16,7 +16,6 @@ depends=(
 	hicolor-icon-theme
 	libsoup3
 	openssl
-	pango
 	webkit2gtk-4.1
 )
 optdepends=(
@@ -32,7 +31,7 @@ source=(
 	https://raw.githubusercontent.com/YARC-Official/YARC-Launcher/master/LICENSE
 )
 sha256sums=(
-	fe924d7005a806daddda617519add79f85201c4c513d831d6d530cf6e913abb5
+	cbb5f7bc790d268b1a15a4593334ffb6bebf31a9c27ad2f6654dae31bb4bd16c
 	c4660da2255accdcdee8346b065fc7e4e6b354c5e61d05f3c1c19ff62acd0c01
 )
 
@@ -49,10 +48,16 @@ prepare() {
 package() {
 	cd squashfs-root/
 
-	# udev rule (in-game)
+	# udev rules (in-game)
 	install -dm755 $pkgdir/etc/udev/rules.d/
-
+	# - access to HID devices
 	echo 'KERNEL=="hidraw*", TAG+="uaccess"' > $pkgdir/etc/udev/rules.d/69-hid.rules
+	# - improved compatibility of the XBOX 360 Wireless Adapter
+	printf "%s\n" \
+	'SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="0291", MODE="0666"' \
+	'SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02a9", MODE="0666"' \
+	'SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="0719", MODE="0666"' \
+	> $pkgdir/etc/udev/rules.d/99-yarg-libusb.rules
 
 	# binary
 	install -Dm755 usr/bin/$_binname -t $pkgdir/usr/bin/
