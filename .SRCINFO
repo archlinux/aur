@@ -1,6 +1,6 @@
 pkgbase = straumr-bin
 	pkgdesc = CLI tool for managing, saving, and sending HTTP requests across workspaces
-	pkgver = 2026.4.14.32
+	pkgver = 2026.4.14.33
 	pkgrel = 1
 	url = https://github.com/albinalm/Straumr
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = straumr-bin
 	provides = straumr
 	conflicts = straumr
 	options = !debug
-	source = straumr-bin-2026.4.14.32.tar.gz::https://github.com/albinalm/Straumr/releases/download/v2026.4.14.32/straumr-2026.4.14.32-linux-x64.tar.gz
-	sha256sums = 5a86c2226784012a087873191a47e64c7e770191ebadb2af56223f33915ea653
+	source = straumr-bin-2026.4.14.33.tar.gz::https://github.com/albinalm/Straumr/releases/download/v2026.4.14.33/straumr-2026.4.14.33-linux-x64.tar.gz
+	sha256sums = 782a142e45c299de5a7c2774d5f6a54deb91d999e93d26aa4804ef17a0301c96
 
 pkgname = straumr-bin
