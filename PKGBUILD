@@ -2,7 +2,7 @@
 
 pkgdesc='A terminal user interface that extracts and displays tasks from notes files'
 pkgname=taskfinder
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 url="https://codeberg.org/kdwarn/$pkgname"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(gcc-libs
          glibc)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3dfc951d060b131c3df12e05b2a2a21c58151708e049eeef8f3dac3503b9f23f')
+sha256sums=('da53f6640592d4129e63ad9eb5f6259f09c9bab3a1d5e322f8b4cefe71aa502d')
 
 prepare() {
 	cd "$pkgname"
@@ -31,7 +31,11 @@ build() {
 
 check() {
 	_srcenv
-	cargo test --frozen --all-features
+	local skipped=(
+		# 2.15.0 links to 2.14.0 release docs
+		tests::readme_contains_current_version_tag
+	)
+	cargo test --frozen --all-features -- ${skipped[@]/#/--skip }
 }
 
 package() {
