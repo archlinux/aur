@@ -7,7 +7,7 @@
 
 pkgname=recoil-engine-rc
 pkgver=VERSION
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful free cross-platform RTS game engine. (GitHub — latest Release Candidate tag). \
 This version is used for public engine testing in BAR — Join the Discord if you want to help"
 arch=('x86_64')
@@ -25,7 +25,7 @@ license=('GPL-2.0-or-later')
 depends=('curl' 'sdl2' 'devil' 'p7zip' 'openal' 'libogg' 'libvorbis' 'libunwind' 'freetype2' 'glew' 'minizip' 'fontconfig' 'jsoncpp' )
 makedepends=('git' 'curl' 'jq'
              'ccache' ### curently wont build without
-             'ninja' 'socat' 'python-pip' 'cmake3'
+             'ninja' 'socat' 'python-pip' 'cmake3-bin'
 #            'clang' 'lld' ### Only needed if you want to build with the included clang toolchain
              'compdb' 'gflags')
 optdepends=('bar-lobby' 'bar-lobby-git')
