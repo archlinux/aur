@@ -1,37 +1,43 @@
 # Maintainer: Jaeho Cho <jaehho@github>
 pkgname=hypr-wallpaper-git
 _pkgname=hypr-wallpaper
-pkgver=1.0.0
+_repo=hypr-tools
+pkgver=0.0.0
 pkgrel=1
-pkgdesc='SQLite-backed, quality-gated, time-aware wallpaper manager and TUI for Hyprland'
-arch=('any')
-url='https://github.com/jaehho/hypr-wallpaper'
+pkgdesc='Per-monitor wallpaper manager and ratatui TUI for Hyprland (Rust)'
+arch=('x86_64')
+url='https://github.com/jaehho/hypr-tools'
 license=('MIT')
-depends=('hyprland' 'python' 'jq' 'sqlite' 'curl' 'socat' 'libnotify' 'xdg-utils')
+depends=('hyprland' 'sqlite' 'libnotify')
 optdepends=(
-    'swww: wallpaper setter daemon'
-    'rofi: GUI menu mode'
+    'awww: wayland wallpaper daemon backend'
+    'kitty: terminal for the TUI (any terminal works)'
 )
-makedepends=('git')
+makedepends=('git' 'rust' 'cargo')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
+    cd "$_repo"
     git describe --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
-prepare() {
-    cd "$_pkgname"
-    git submodule update --init --recursive
+build() {
+    cd "$_repo"
+    cargo build --release --locked --bin hypr-wallpaper
+}
+
+check() {
+    cd "$_repo"
+    cargo test --release --locked -p hypr-wallpaper -p hypr-ipc
 }
 
 package() {
-    cd "$_pkgname"
-    make DESTDIR="$pkgdir" PREFIX=/usr install-bin
+    cd "$_repo"
+    install -Dm755 target/release/hypr-wallpaper "$pkgdir/usr/bin/hypr-wallpaper"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 config/config     "$pkgdir/usr/share/$_pkgname/config.default"
-    install -Dm644 config/rules.toml "$pkgdir/usr/share/$_pkgname/rules.toml.default"
+    install -Dm644 config/hypr-wallpaper.config.toml "$pkgdir/usr/share/$_pkgname/config.toml.default"
+    install -Dm644 config/hypr-wallpaper.rules.toml  "$pkgdir/usr/share/$_pkgname/rules.toml.default"
 }
