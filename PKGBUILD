@@ -1,8 +1,8 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=websitino-bin
-pkgver=0.2.8
-pkgrel=4
+pkgver=0.2.9
+pkgrel=1
 pkgdesc="A lightweight static file server for local development"
 arch=('x86_64')
 url="https://github.com/trikko/websitino"
@@ -21,7 +21,7 @@ latestver() {
 }
 
 source=("websitino-${pkgver}::https://trikko.github.io/websitino/linux/websitino")
-sha256sums=('1c603c6ad893aebc3f27154e3adde8de191bffb8ed5be6cecb56ed1fffc54c38')
+sha256sums=('514616b1414b7eaa94ff5275f3a62b9921b5382e145d8bbc457bbd3dc0649d7c')
 
 prepare() {
   chmod +x "${srcdir}/websitino-${pkgver}"
