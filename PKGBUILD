@@ -3,7 +3,7 @@
 
 pkgname=cli-proxy-api-bin
 pkgver=6.9.24
-pkgrel=1
+pkgrel=2
 pkgdesc=Proxy\ server\ providing\ OpenAI/Gemini/Claude\ compatible\ API\ interfaces\ \(Binary\)
 arch=(x86_64 aarch64 )
 url=https://github.com/router-for-me/CLIProxyAPI
@@ -26,6 +26,9 @@ source_aarch64=(cli-proxy-api-bin-6.9.24-aarch64.tar.gz::https://github.com/rout
 
 _binary_source_path=cli-proxy-api
 _install_bin_path=/usr/bin/cli-proxy-api
+_wrapper_source_path=''
+_wrapper_install_path=''
+_wrapper_mode=755
 _service_file=cli-proxy-api.service
 _service_install_path=/usr/lib/systemd/user/cli-proxy-api.service
 _doc_files=(config.example.yaml )
@@ -34,6 +37,10 @@ _license_files=(LICENSE )
 
 package() {
     install -Dm755 "${srcdir}/${_binary_source_path}" "${pkgdir}${_install_bin_path}"
+
+    if [ -n "${_wrapper_source_path}" ] && [ -n "${_wrapper_install_path}" ]; then
+        install -Dm${_wrapper_mode} "${srcdir}/${_wrapper_source_path}" "${pkgdir}${_wrapper_install_path}"
+    fi
 
     local doc_file
     for doc_file in "${_doc_files[@]}"; do
