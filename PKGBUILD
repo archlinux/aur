@@ -1,7 +1,6 @@
 # Maintainer: Arunachalam-gojosaturo <cutyarunachalam1@gmail.com>
-
 pkgname=luna-ai-reborn
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Luna AI Reborn — Hacker-style voice AI desktop assistant for Linux. Voice, YouTube, brightness, live data."
 arch=('any')
@@ -12,13 +11,9 @@ depends=(
     'python>=3.10'
     'python-pyqt6'
     'mpv'
-    'python-requests'
-    'python-beautifulsoup4'
-    'python-psutil'
 )
 optdepends=(
     'ffmpeg: ffplay audio fallback'
-    'python-pygame: pygame audio fallback'
     'brightnessctl: brightness control'
     'yt-dlp: YouTube playback'
     'xdotool: X11 input control'
@@ -26,27 +21,56 @@ optdepends=(
     'python-speechrecognition: voice input'
     'python-pyaudio: microphone support'
 )
+makedepends=('python-pip' 'python-build' 'python-installer')
 
-makedepends=('python-pip')
-
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Arunachalam-gojosaturo/luna-ai-reborn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('734ba2e1d62337b85d01cfab61cd86060928bffeb537d4c8543c3426c6933e64')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Arunachalam-gojosaturo/luna-ai-reborn/archive/v$pkgver.tar.gz")
+sha256sums=('YOUR_HASH')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    local SRCDIR
+    SRCDIR=$(find "$srcdir" -maxdepth 1 -mindepth 1 -type d | head -1)
 
     # Install app files
     install -dm755 "$pkgdir/opt/luna-ai-reborn"
-    cp -r . "$pkgdir/opt/luna-ai-reborn/"
+    cp -r "$SRCDIR"/. "$pkgdir/opt/luna-ai-reborn/"
 
-    # Optional Python deps (fallback, non-critical)
-    TMPDIR=/tmp pip install --no-deps --quiet \
+    # Install ALL Python deps properly
+    install -dm755 "$pkgdir/opt/luna-ai-reborn/deps"
+    TMPDIR=/tmp pip install \
         --target="$pkgdir/opt/luna-ai-reborn/deps" \
-        edge-tts google-genai groq 2>/dev/null || true
+        --no-deps \
+        --upgrade \
+        --quiet \
+        edge-tts \
+        groq \
+        google-genai \
+        requests \
+        psutil \
+        pygame \
+        beautifulsoup4 \
+        yt-dlp \
+        aiohttp \
+        certifi \
+        tabulate \
+        typing-extensions \
+        httpx \
+        anyio \
+        sniffio \
+        2>/dev/null || true
 
-    # Launcher
+    # Install with deps this time for anything that failed
+    TMPDIR=/tmp pip install \
+        --target="$pkgdir/opt/luna-ai-reborn/deps" \
+        --upgrade \
+        --quiet \
+        groq \
+        google-genai \
+        edge-tts \
+        2>/dev/null || true
+
+    # Global launcher
     install -dm755 "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/luna" << 'EOF'
+    cat > "$pkgdir/usr/bin/luna" << 'LAUNCHEOF'
 #!/usr/bin/env bash
 export DISPLAY="${DISPLAY:-:0}"
 export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
@@ -54,14 +78,14 @@ export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-1}"
 export QT_QPA_PLATFORM="${QT_QPA_PLATFORM:-wayland}"
 export MOZ_ENABLE_WAYLAND=1
 export TMPDIR=/tmp
-PYTHONPATH="/opt/luna-ai-reborn/deps:$PYTHONPATH"
-exec python "/opt/luna-ai-reborn/main.py" "$@"
-EOF
+export PYTHONPATH="/opt/luna-ai-reborn/deps:${PYTHONPATH:-}"
+exec python /opt/luna-ai-reborn/main.py "$@"
+LAUNCHEOF
     chmod +x "$pkgdir/usr/bin/luna"
 
-    # Desktop entry
+    # .desktop entry
     install -dm755 "$pkgdir/usr/share/applications"
-    cat > "$pkgdir/usr/share/applications/luna-ai-reborn.desktop" << 'EOF'
+    cat > "$pkgdir/usr/share/applications/luna-ai-reborn.desktop" << 'DESKTOPEOF'
 [Desktop Entry]
 Name=Luna AI Reborn
 Comment=Hacker AI assistant with voice control
@@ -69,8 +93,8 @@ Exec=luna
 Terminal=false
 Type=Application
 Categories=Utility;AI;
-EOF
+DESKTOPEOF
 
-    # License
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/luna-ai-reborn/LICENSE" 2>/dev/null || true
+    install -Dm644 "$SRCDIR/LICENSE" \
+        "$pkgdir/usr/share/licenses/luna-ai-reborn/LICENSE" 2>/dev/null || true
 }
