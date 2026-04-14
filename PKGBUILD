@@ -2,7 +2,7 @@
 
 _pkgname=openjph
 pkgname=mingw-w64-${_pkgname}
-pkgver=0.26.3
+pkgver=0.27.0
 pkgrel=1
 pkgdesc='Open-source implementation of JPEG2000 Part-15 (mingw-w64)'
 url='https://github.com/aous72/OpenJPH'
@@ -17,14 +17,12 @@ source=(
 	'62450e6cc3110731bee703719145f852610ce632.patch'
 	'77f287df698ecddcfa44c5080ed7ed2069714ec4.patch'
 )
-sha256sums=('29de006da7f1e8cf0cd7c3ec424cf29103e465052c00b5a5f0ccb7e1f917bb3f'
+sha256sums=('f6768e927d8e4e4884a2efcf500a88d1b6714a48d69516332a9256803a3c8343'
             '1542ae0f12957dd20dc81b26197be2d1fab1a251493be3c64888d7a034c78ec7'
             'a7c57736232b778f77564862495d46be5a7349f379b2330d0342efe7ca7ffdb3')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
-	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
-	-DCMAKE_C_FLAGS_RELEASE='-DNDEBUG' )
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=None )
 _srcdir="OpenJPH-${pkgver}"
 
 prepare() {
