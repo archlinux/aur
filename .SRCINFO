@@ -5,13 +5,16 @@ pkgbase = gaomontablet-m5-driver
 	url = https://www.gaomon.cn/
 	install = gaomontablet-m5-driver.install
 	arch = x86_64
-	license = custom
+	license = 0BSD
+	license = LGPL
 	depends = xdotool
 	depends = libx11
 	depends = libxext
 	depends = libxtst
 	options = !strip
 	source = https://driver.gaomon.cn/download/Driver/Linux/GaomonTablet_LinuxDriver_v16.0.0.37.x86_64.tar.xz
+	source = LICENSE
 	sha256sums = d3db3cad152049e6913ae744f497686a8c4b61ef91fe664c84ffe55ebc96bd01
+	sha256sums = 150b7f86555bd68e638ababa1895ba2e5caed4efaa380235b00db6f5b59ac1d9
 
 pkgname = gaomontablet-m5-driver
