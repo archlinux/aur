@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qsoc-git
-pkgver=r772.2eb7c33
-pkgrel=3
+pkgver=1.0.2.r0.ga0ef7a7
+pkgrel=1
 epoch=
 pkgdesc="QSoC - Quick System on Chip Studio"
 arch=($CARCH)
@@ -11,9 +11,11 @@ license=('Apache-2.0')
 _qt=qt6
 groups=()
 depends=(
+    fmt
     glibc
     libgcc
     libstdc++
+    hicolor-icon-theme
     $_qt-base
     yaml-cpp
     # AUR
