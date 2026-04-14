@@ -4,7 +4,7 @@
 pkgname=python-banal
 _pkg="${pkgname#python-}"
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Commons of banal micro-functions for Python."
 license=('MIT')
 arch=('any')
@@ -15,7 +15,16 @@ source=("banal-$pkgver-py3-none-any.whl::https://files.pythonhosted.org/packages
 sha256sums=('0aa79cc784291ea94882f7022799fee419c7d20e81369f527519f95fe025a285')
 
 latestver() {
-	curl -fsSL "https://pypi.org/pypi/${_pkg}/json" | jq -r '.info.version'
+	curl -fsSL "https://pypi.org/pypi/${_pkg}/json" |
+		jq -r --arg pkg "${_pkg}" '
+			.releases
+			| to_entries[]
+			| . as $release
+			| select(any($release.value[]?; .filename == ($pkg + "-" + $release.key + "-py3-none-any.whl")))
+			| $release.key
+		' |
+		sort -V |
+		tail -1
 }
 
 package() {
