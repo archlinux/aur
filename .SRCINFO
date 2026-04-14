@@ -1,0 +1,16 @@
+pkgbase = wax-clipboard
+	pkgdesc = Clipboard manager for Wayland / Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/NBAFrigge/wax
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = wl-clipboard
+	optdepends = wofi: interactive picker
+	optdepends = rofi: interactive picker
+	source = wax-clipboard::git+https://github.com/NBAFrigge/wax
+	sha256sums = SKIP
+
+pkgname = wax-clipboard
