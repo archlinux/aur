@@ -1,55 +1,37 @@
 # Maintainer: Ben Towali <ben@bentowali.com>
 
 pkgname=raindrop
-pkgver='5.7.3'
+pkgver='5.7.6'
 pkgrel=1
 pkgdesc="All-in-one bookmark manager"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://raindrop.io"
 license=('MIT')
 depends=()
 makedepends=('git' 'nodejs' 'npm')
 provides=(raindrop)
-source=('raindrop::git+https://github.com/raindropio/desktop#tag=v5.7.3'
-	'git+https://github.com/raindropio/app'
-	'remove-sentry.patch'
-	'raindrop.desktop')
-sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+
+source_x86_64=('raindrop-amd64.deb::https://github.com/raindropio/desktop/releases/download/v5.7.6/Raindrop-amd64.deb')
+sha256sums_x86_64=('79ffd91214a1889e9ad9d8b39b7e09b9a45d59ac87cf399cad19b058175b757d')
+
+source_arm64=('raindrop-arm64.dev::https://github.com/raindropio/desktop/releases/download/v5.7.6/Raindrop-arm64.deb')
+sha256sums_aarch64=('0ae5332738b2e4dd9b29788602cfa81a7bdb5f89f6427313e77b7fd020da5beb')
 
 prepare() {
-	cd ${pkgname}
-	git submodule init
-	git config submodule.webapp.url "${srcdir}/app"
-	git -c protocol.file.allow=always submodule update
-	cd webapp
-	# Remove sentry because it requires an API key
-	git apply "${srcdir}/remove-sentry.patch"
-}
-
-build() {
-	cd "${pkgname}"
-	npm i
-	npm run build:linux
+  echo "Extracting .deb"
+  mkdir "${pkgname}-data"
+  tar -xf data.tar.xz -C raindrop-data
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+  cd "${pkgname}-data"
 
-	# Make necessary directories
-	install -d "${pkgdir}/opt/${pkgname}"
-	install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/opt/${pkgname}"
 
-	# Install Files
-	## Copy electron app
-	cp -r "dist/linux-unpacked/." "${pkgdir}/opt/${pkgname}"
-	## Desktop Entry
-	install -Dm644 "../${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	## Symlink binary
-	ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin"
-	## License
-	install -Dm644 "webapp/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-	## Icons
-	for _icons in 16 32 48 64 128 256 512; do
-		install -Dm644 "build/linux/${_icons}x${_icons}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname}.png"
+  cp -r opt/Raindrop.io/. "${pkgdir}/opt/${pkgname}"
+  install -Dm644 "usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  for _icons in 16 32 48 64 128 256 512; do
+		install -Dm644 "usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname}.png"
 	done
 }

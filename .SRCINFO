@@ -1,21 +1,17 @@
 pkgbase = raindrop
 	pkgdesc = All-in-one bookmark manager
-	pkgver = 5.7.3
+	pkgver = 5.7.6
 	pkgrel = 1
 	url = https://raindrop.io
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = nodejs
 	makedepends = npm
 	provides = raindrop
-	source = raindrop::git+https://github.com/raindropio/desktop#tag=v5.7.3
-	source = git+https://github.com/raindropio/app
-	source = remove-sentry.patch
-	source = raindrop.desktop
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	source_x86_64 = raindrop-amd64.deb::https://github.com/raindropio/desktop/releases/download/v5.7.6/Raindrop-amd64.deb
+	sha256sums_x86_64 = 79ffd91214a1889e9ad9d8b39b7e09b9a45d59ac87cf399cad19b058175b757d
+	sha256sums_aarch64 = 0ae5332738b2e4dd9b29788602cfa81a7bdb5f89f6427313e77b7fd020da5beb
 
 pkgname = raindrop
