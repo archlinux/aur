@@ -1,0 +1,15 @@
+pkgbase = hyprlev-git
+	pkgdesc = Hyprlev Hyprland rice and configuration pack
+	pkgver = r49.ed30c63
+	pkgrel = 1
+	url = https://github.com/Pikalev15/hyprlev
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	provides = hyprlev
+	conflicts = hyprlev
+	source = git+https://github.com/Pikalev15/hyprlev.git
+	sha256sums = SKIP
+
+pkgname = hyprlev-git
