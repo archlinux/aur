@@ -9,8 +9,8 @@
 pkgname=jellyfin-desktop-libmpv-git
 _gitname=mpv
 epoch=1
-pkgver=0.r54872.283e5c5
-pkgrel=1
+pkgver=0.r54873.aa910a7
+pkgrel=2
 pkgdesc='libmpv for jellyfin-desktop'
 arch=('x86_64')
 license=('GPL-2.0-or-later')
