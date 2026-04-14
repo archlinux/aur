@@ -1,6 +1,6 @@
 pkgbase = yamtrack
 	pkgdesc = Self-hosted media tracker
-	pkgver = 0.25.0
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://github.com/FuzzyGrim/Yamtrack
 	install = yamtrack.install
@@ -12,10 +12,10 @@ pkgbase = yamtrack
 	optdepends = nginx: reverse proxy
 	optdepends = caddy: reverse proxy
 	optdepends = traefik: reverse proxy
-	provides = yamtrack=0.25.0
+	provides = yamtrack=0.25.1
 	conflicts = yamtrack-git
 	backup = etc/yamtrack/yamtrack.env
-	source = yamtrack-0.25.0.tar.gz::https://github.com/FuzzyGrim/Yamtrack/archive/refs/tags/v0.25.0.tar.gz
+	source = yamtrack-0.25.1.tar.gz::https://github.com/FuzzyGrim/Yamtrack/archive/refs/tags/v0.25.1.tar.gz
 	source = 0001-arch-state-dir-and-whitenoise.patch
 	source = yamtrack.sysusers
 	source = yamtrack.env
@@ -26,7 +26,7 @@ pkgbase = yamtrack
 	source = yamtrack-celery.service
 	source = yamtrack-celery-beat.service
 	source = yamtrack-manage
-	sha256sums = aaf6b5ce228560216f1c77b765766aa2adbf83d6baaf62c8e30259cb2654a579
+	sha256sums = 65362bb41006c7465d32a3eb0e0f090e692f7f3185b3081cd5728ce9ab97f158
 	sha256sums = 491b49f33107a36727db4fd181b5f1da1d43a564737a3656d90d3acc22816a36
 	sha256sums = b802edf0f341b2ec008eedb79b1f4b4c7cec4b89428765a20fa6dd5db30e3a48
 	sha256sums = 1caecf3ac52fd3c0a9c2ada54d4130aba03ff454185c6b10f04f4cf514c4a3b7
