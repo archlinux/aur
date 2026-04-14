@@ -1,6 +1,6 @@
 pkgbase = webone
 	pkgdesc = HTTP 1.x proxy that makes old web browsers usable again in the Web 2.0 world
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/atauenis/webone
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = webone
 	source = webone.tmpfiles
 	sha256sums = 1eccc0c99a8c19519299c817766584d4d0f8f889b5d9f9ef60b6f7fb4afd9435
 	sha256sums = 84afa16b03edf86ef4d0c3234b7a64af1f8bd4e82d5027bf622656571a73f679
-	source_x86_64 = https://github.com/atauenis/webone/releases/download/v0.18.0/webone.0.18.0.linux-amd64.rpm
-	sha256sums_x86_64 = 50d06d05a56200580ed8b5284695396488bb969736a60facf710a04b9ed5d133
+	source_x86_64 = https://github.com/atauenis/webone/releases/download/v0.18.1/webone.0.18.1.linux-amd64.rpm
+	sha256sums_x86_64 = 7802a9e2b870f2000d333db0de54e8de29b068c51efc2b3c6ed6620e8106328a
 
 pkgname = webone
