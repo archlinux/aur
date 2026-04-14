@@ -1,6 +1,6 @@
 # Maintainer: Enriquefft <https://github.com/Enriquefft>
 pkgname=oryx-bench-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='ZSA Oryx keyboard layout manager — pull, lint, generate, build, and flash QMK firmware'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ depends=('docker')
 provides=('oryx-bench')
 conflicts=('oryx-bench')
 
-source_x86_64=("https://github.com/enriquefft/oryx-bench/releases/download/v${pkgver}/oryx-bench-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
-source_aarch64=("https://github.com/enriquefft/oryx-bench/releases/download/v${pkgver}/oryx-bench-v${pkgver}-aarch64-unknown-linux-musl.tar.gz")
+source_x86_64=("https://github.com/enriquefft/oryx-bench/releases/download/v${pkgver}/oryx-bench-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("https://github.com/enriquefft/oryx-bench/releases/download/v${pkgver}/oryx-bench-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums_x86_64=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 sha256sums_aarch64=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 

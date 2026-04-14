@@ -1,6 +1,6 @@
 pkgbase = oryx-bench-bin
 	pkgdesc = ZSA Oryx keyboard layout manager — pull, lint, generate, build, and flash QMK firmware
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/enriquefft/oryx-bench
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = oryx-bench-bin
 	depends = docker
 	provides = oryx-bench
 	conflicts = oryx-bench
-	source_x86_64 = https://github.com/enriquefft/oryx-bench/releases/download/v0.1.0/oryx-bench-v0.1.0-x86_64-unknown-linux-musl.tar.gz
+	source_x86_64 = https://github.com/enriquefft/oryx-bench/releases/download/v0.2.0/oryx-bench-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-	source_aarch64 = https://github.com/enriquefft/oryx-bench/releases/download/v0.1.0/oryx-bench-v0.1.0-aarch64-unknown-linux-musl.tar.gz
+	source_aarch64 = https://github.com/enriquefft/oryx-bench/releases/download/v0.2.0/oryx-bench-v0.2.0-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = oryx-bench-bin
