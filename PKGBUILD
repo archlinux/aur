@@ -10,7 +10,7 @@ depends=('python' 'nmap' 'qt6-base' 'python-pyqt6' 'polkit')
 makedepends=('git' 'python-pip' 'python-virtualenv')
 
 provides=('legion-gui')
-conflicts=('legion' 'legion-gui-git' 'legion-gui-arch' 'legion-arch' 'legion-gui-arch-git')
+conflicts=('legion' 'legion-gui-git')
 
 source=(
   "git+https://github.com/hackman238/legion.git"
