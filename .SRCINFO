@@ -23,14 +23,4 @@ pkgbase = arctis-sound-manager
 	source = arctis-sound-manager-1.0.38.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/archive/refs/tags/v1.0.38.tar.gz
 	sha256sums = 082afecd8c1b170103f8cc6d64c6bedbf594f3fb38354b988a4fbead17f99c57
 
-	keywords = steelseries
-	keywords = arctis
-	keywords = nova
-	keywords = nova-pro
-	keywords = headset
-	keywords = sonar
-	keywords = equalizer
-	keywords = pipewire
-	keywords = audio
-
 pkgname = arctis-sound-manager
