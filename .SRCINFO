@@ -1,0 +1,24 @@
+pkgbase = yt-dvr
+	pkgdesc = A service to automatically record livestreams from various platforms, backed by yt-dlp
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://pypi.org/project/yt-dvr/
+	arch = any
+	license = AGPL
+	makedepends = python-pip
+	depends = python
+	depends = python-pathvalidate
+	depends = python-dateutil
+	depends = python-quart
+	depends = python-typed-ffmpeg
+	depends = yt-dlp
+	depends = ffmpeg
+	noextract = yt_dvr-0.2.1-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/ab/0b/960428062474cdab97bc5c9e5b0251bebd9d340825b9423dd5d55ae851b5/yt_dvr-0.2.1-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = e9ecebe4c08d952d9b03dcc94fdd52d8
+	md5sums = ed23444cac663d14a07faeec0fcf63f5
+
+pkgname = yt-dvr
