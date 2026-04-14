@@ -1,0 +1,5 @@
+[rustlens-bin]
+source = "github"
+github = "yashksaini-coder/Rustlens"
+use_latest_release = true
+prefix = "v"
