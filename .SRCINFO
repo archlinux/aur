@@ -1,6 +1,6 @@
 pkgbase = wayfire-git
 	pkgdesc = 3D wayland compositor
-	pkgver = 0.10.0.r2.g41fc08d0
+	pkgver = 0.10.1.r110.g93d22c82
 	pkgrel = 1
 	url = https://github.com/WayfireWM/wayfire
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = wayfire-git
 	depends = wayland
 	depends = wayland-protocols
 	depends = libdisplay-info
-	depends = wlroots0.19
+	depends = wlroots0.20
 	optdepends = xorg-xeyes
 	provides = wayfire
 	provides = wayland-compositor

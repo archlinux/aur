@@ -3,7 +3,7 @@
 # Co-Maintainer: Christopher Snowhill <kode54@gmail.com>
 _wfconfig_version=0.7
 pkgname=wayfire-git
-pkgver=0.10.0.r2.g41fc08d0
+pkgver=0.10.1.r110.g93d22c82
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=(
          'pkgconf' 'xcb-util-errors' 'xcb-util-renderutil'
          'xcb-util-wm' 'wayland' 'wayland-protocols'
          'libdisplay-info'
-         'wlroots0.19'
+         'wlroots0.20'
 )
 makedepends=('git' 'meson' 'ninja' 'cmake' 'vulkan-headers' 'doctest'
              'pkgconf' 'wayland-protocols' 'libxml2'
