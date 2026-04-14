@@ -1,0 +1,16 @@
+pkgbase = den
+	pkgdesc = CLI tool for capturing and organizing project notes and context
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/RaghavGohil/den
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	source = den-0.1.0.tar.gz::https://github.com/RaghavGohil/den/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = den
