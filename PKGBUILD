@@ -1,6 +1,6 @@
 # Maintainer: Éric NICOLAS <ccjmne@gmail.com>
 pkgname=xray-oci-git
-pkgver=v1.3.1.r0.98a29c8
+pkgver=v1.4.1.r1.a9aa593
 pkgrel=1
 pkgdesc="A blazing fast Docker (or any OCI-compliant) image layer inspector"
 arch=('any')
