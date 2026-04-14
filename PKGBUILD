@@ -13,6 +13,7 @@ conflicts=("${_pkgname}" "${_pkgname}-bin")
 depends=(
     'gtk4'
     'gtk4-layer-shell'
+    'gtksourceview5'
     'libpulse'
     'fftw'
     'libpipewire'
@@ -59,6 +60,7 @@ package() {
     cd "${_pkgname}"
 
     install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "target/release/${_pkgname}-settings" "${pkgdir}/usr/bin/${_pkgname}-settings"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -dm755 "${pkgdir}/usr/share/wayle/icons"
@@ -73,4 +75,8 @@ package() {
     install -Dm644 wayle.fish "${pkgdir}/usr/share/fish/vendor_completions.d/wayle.fish"
 
     install -Dm644 resources/wayle.service "${pkgdir}/usr/lib/systemd/user/wayle.service"
+    install -Dm644 resources/com.wayle.settings.desktop \
+        "${pkgdir}/usr/share/applications/com.wayle.settings.desktop"
+    install -Dm644 resources/wayle-settings.svg \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wayle-settings.svg"
 }

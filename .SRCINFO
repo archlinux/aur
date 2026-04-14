@@ -10,6 +10,7 @@ pkgbase = wayle-git
 	makedepends = rust
 	depends = gtk4
 	depends = gtk4-layer-shell
+	depends = gtksourceview5
 	depends = libpulse
 	depends = fftw
 	depends = libpipewire
