@@ -1,11 +1,13 @@
 pkgbase = salmon
 	pkgdesc = Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments
-	pkgver = 1.10.3
-	pkgrel = 9
+	pkgver = 1.11.4
+	pkgrel = 1
 	url = https://combine-lab.github.io/salmon/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = boost>=1.55
+	makedepends = catch2
+	makedepends = mimalloc
 	makedepends = cmake
 	makedepends = eigen
 	makedepends = unzip
@@ -14,28 +16,42 @@ pkgbase = salmon
 	makedepends = bzip2
 	makedepends = python-sphinx
 	makedepends = libdivide
+	makedepends = git
 	depends = intel-tbb
+	depends = libgcc
+	depends = libstdc++
 	depends = bzip2
 	depends = jemalloc
+	depends = htslib
 	depends = boost-libs
 	depends = gcc-libs
 	depends = xz
 	depends = zlib
+	depends = zlib-ng
 	depends = glibc
 	depends = libgff
-	depends = staden-io_lib
 	options = !emptydirs
-	source = salmon-1.10.3.tar.gz::https://github.com/COMBINE-lab/salmon/archive/v1.10.3.tar.gz
-	source = pufferfish.zip::https://github.com/COMBINE-lab/pufferfish/archive/salmon-v1.10.3.zip
-	source = patch-external_pufferfish_external_twopaco_graphconstructor_assemblyedgeconstructor.patch
-	source = patch-external_pufferfish_external_twopaco_graphconstructor_candidateoccurence.patch
-	source = patch-external_pufferfish_src_PuffAligner.patch
-	source = use-system-stadeniolib.patch
-	sha256sums = a053fba63598efc4ade3684aa2c8e8e2294186927d4fcdf1041c36edc2aa0871
-	sha256sums = 52b6699de0d33814b73edb3455175568c2330d8014be017dce7b564e54134860
-	sha256sums = 67ab9ba34e8447998f1ff97b2f83ea43f445bc2375962a4ca18ac2901c41d23e
-	sha256sums = 47721fc7e9e90a3573e792b2d58998694e5c8fb841393957287e25bd06a23cd8
-	sha256sums = 5101c84958cc83a152f9fe6bb69f676f2327dd7b89eca5c6027af7e8cfc70c9e
-	sha256sums = 6faffda82b537ce17948cae11f15e5f88e0cf40ababc30b6debf52b32a2dde32
+	source = salmon-1.11.4.tar.gz::https://github.com/COMBINE-lab/salmon/archive/v1.11.4.tar.gz
+	source = pufferfish::git+https://github.com/COMBINE-lab/pufferfish.git#commit=ace68c1c022816ba8c50a1a07c5d08f2abd597d6
+	source = sshash::git+https://github.com/rob-p/sshash.git#commit=c11d0f03fa33880bc152df64d528f1896601502b
+	source = pthash::git+https://github.com/jermp/pthash.git#commit=e04a1920ffeae9e7d876acd0362cab79605f7af3
+	source = bits::git+https://github.com/jermp/bits.git#commit=f5498a856f13e657d62c78afa22448c16d335972
+	source = doctest::git+https://github.com/doctest/doctest.git#commit=ae7a13539fb71f270b87eb2e874fbac80bc8dda2
+	source = essentials::git+https://github.com/jermp/essentials.git#commit=9da682ff4809ed6a45b81a6785313a9b60e50699
+	source = cmd_line_parser::git+https://github.com/jermp/cmd_line_parser.git#commit=89ab616e01b50dcf492cd5a8e0b4973e65e636bc
+	source = mm_file::git+https://github.com/jermp/mm_file.git#commit=5b5291360488095ce3617c48af0f5145fdf9e710
+	source = xxHash::git+https://github.com/Cyan4973/xxHash.git#commit=d4ad85e4afaad5c780f54db1dc967fff5a869ffd
+	source = FQFeeder::git+https://github.com/rob-p/FQFeeder.git#commit=f5b08d1002351c192b69048ac9f6cf4c7c116265
+	sha256sums = 9410904fa787f1f9aca635626fcdca08f3af9b02f820963f9439e80fb56d23b8
+	sha256sums = 96c9f9d339a3ede0f33006a153994e2ed25ab4aa94a3384c8d08f2e6e17f340c
+	sha256sums = 9e87ba229be12cd5832298fd3da0333e5706ab8ca996a01323fcc65d28dcd121
+	sha256sums = 02964606fba93939b3783a36f5bb8d7fbd45445187b1efecc3451bdd4b8e196d
+	sha256sums = 2265ab353dcbffcde02347752595d9fedb03cae1d3e813059a70db5e0f93cc86
+	sha256sums = e5044b134640bbc1344f03ad919806d9856ac2973f6bdb80cdb0da67c7d701e6
+	sha256sums = 1f78df3905e4b5497be89ccba3d6465ffc22a72cf87afbf8484b5998f53e3758
+	sha256sums = a0a5ffd61def371da5bc7f1d8874b79e112458a437f56f69e566867fbcfce93a
+	sha256sums = 87047f06a8547abf8d5388ca3cc3fd087dfb5f1ecc561ac6c378a74c69ec93fc
+	sha256sums = 4bea37fc445b659987e0e8d311cab0bd1b6fefdcbac255b353454d5b57b4c3df
+	sha256sums = 5852bc4d5386e8fc9ee1a7a47e36fe7791b0f2053084989d02f2103102dbc1b7
 
 pkgname = salmon
