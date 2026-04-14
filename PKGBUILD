@@ -3,7 +3,7 @@
 # Maintainer: jetexe <aur at jetexe dot net>
 
 pkgname='describe-commit'
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='CLI tool that leverages AI to generate commit messages based on changes made in a Git repository'
 url='https://github.com/tarampampam/describe-commit'
@@ -13,8 +13,8 @@ provides=('describe-commit')
 conflicts=('describe-commit')
 depends=('git')
 makedepends=('go')
-source=("${pkgname}_${pkgver}.tar.gz::https://github.com/tarampampam/describe-commit/releases/download/v0.1.9/describe-commit_v0.1.9_sources.tar.gz")
-sha256sums=('1ea455e0ac98ae5628c627f0e430d231e10cd5cddd05f6fbf1bcffe016d3a9cb')
+source=("${pkgname}_${pkgver}.tar.gz::https://github.com/tarampampam/describe-commit/releases/download/v${pkgver}/describe-commit_v${pkgver}_sources.tar.gz")
+sha256sums=('534b9232c1b4a68b67751c14541d38e80fb5dde6c4247ffeb58a57a00a3d5217')
 prepare() {
   go mod download
 }
