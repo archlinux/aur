@@ -1,19 +1,21 @@
 pkgbase = python-ibm-quantum-schemas
 	pkgdesc = IBM Quantum API Schemas
-	pkgver = 0.5.20260320
+	pkgver = 0.6.20260414
 	pkgrel = 1
 	url = https://github.com/Qiskit/ibm-quantum-schemas
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	depends = python-pybase64
 	depends = python-pydantic
 	depends = python-qiskit
 	depends = python-samplomatic
-	source = ibm-quantum-schemas::git+https://github.com/Qiskit/ibm-quantum-schemas.git#tag=0.5.20260320
-	b2sums = 0d0aa11b1c51c5f175f02c5a5a5acc213256b588d396be3d07b8935d882549e271c9cbd93f35d3def08c9e936c5fea34f09b5022ceadeda603321cdcc3148ad8
+	source = ibm-quantum-schemas::git+https://github.com/Qiskit/ibm-quantum-schemas.git#tag=0.6.20260414
+	b2sums = 5466f2bcd68c68babcf644c50a57f0d9413fade98e7c3f9618dcf0348e141b8c623e09c6f342830f94f7acab2dbb88e4ad2d135085127566de8abd983c089de0
 
 pkgname = python-ibm-quantum-schemas
