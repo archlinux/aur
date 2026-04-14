@@ -3,7 +3,7 @@
 # shellcheck disable=SC2148,SC2034,SC2154,SC2164
 # Maintainer: Frederik “Freso” S. Olesen <archlinux at freso.dk>
 pkgname=obs-vertical-canvas
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='Add vertical canvas to OBS'
 arch=('x86_64' 'x86_64_v3')
@@ -12,7 +12,7 @@ license=('GPL-2.0-or-later')
 depends=('obs-studio>=31.1')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Aitum/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('38d2e82be3bdf45bdc35611cf1aef0cbbfb4590389211722c2032b1cffcd03288fa7ebd0a50caaf5671f7c80d5874910361a7976b51b00628caa3a177478e21a')
+b2sums=('73e1f60684ba8a2436f8e939802c02b19d73ce9e24d097cf435cac757244d05dcafbc7b3386157fa3fd364932ea89b43cbe7a8774e517a35598c1350cbed819a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
