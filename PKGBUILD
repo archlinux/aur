@@ -21,10 +21,10 @@ optdepends=(
     'python-speechrecognition: voice input'
     'python-pyaudio: microphone support'
 )
-makedepends=('python-pip' 'python-build' 'python-installer')
+makedepends=('python-pip')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Arunachalam-gojosaturo/luna-ai-reborn/archive/v$pkgver.tar.gz")
-sha256sums=('YOUR_HASH')
+sha256sums=('bebc4a9eec1200ebe667312a60e4e634745f06039d4ce94cc8a2c0efe22c9d09')
 
 package() {
     local SRCDIR

@@ -6,8 +6,6 @@ pkgbase = luna-ai-reborn
 	arch = any
 	license = MIT
 	makedepends = python-pip
-	makedepends = python-build
-	makedepends = python-installer
 	depends = python>=3.10
 	depends = python-pyqt6
 	depends = mpv
@@ -19,6 +17,6 @@ pkgbase = luna-ai-reborn
 	optdepends = python-speechrecognition: voice input
 	optdepends = python-pyaudio: microphone support
 	source = luna-ai-reborn-1.0.1.tar.gz::https://github.com/Arunachalam-gojosaturo/luna-ai-reborn/archive/v1.0.1.tar.gz
-	sha256sums = YOUR_HASH
+	sha256sums = bebc4a9eec1200ebe667312a60e4e634745f06039d4ce94cc8a2c0efe22c9d09
 
 pkgname = luna-ai-reborn
