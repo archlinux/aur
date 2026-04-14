@@ -1,0 +1,13 @@
+pkgbase = mcjoin-git
+	pkgdesc = A simple and easy-to-use tool to test IPv4 and IPv6 multicast
+	pkgver = v2.12.r2.2bc37c7
+	pkgrel = 1
+	url = https://github.com/troglobit/mcjoin
+	arch = x86_64
+	license = ISC
+	provides = mcjoin
+	conflicts = mcjoin
+	source = git+https://github.com/troglobit/mcjoin
+	sha256sums = SKIP
+
+pkgname = mcjoin-git
