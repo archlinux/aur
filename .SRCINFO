@@ -1,0 +1,16 @@
+pkgbase = tomlq
+	pkgdesc = Tool for getting data from TOML files
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/cryptaliagy/tomlq
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = libgcc
+	provides = tq
+	provides = tq-rs
+	options = !lto
+	source = tomlq-0.2.2.tar.gz::https://github.com/cryptaliagy/tomlq/archive/0.2.2.tar.gz
+	sha256sums = 2a9cff8827dd0d3213470e9a333645492c4d8fe0a733439cc42db4c7b1fc6292
+
+pkgname = tomlq
