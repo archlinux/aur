@@ -3,7 +3,7 @@
 
 pkgname=vibe-kanban-bin
 pkgver=0.1.42
-pkgrel=2
+pkgrel=3
 pkgdesc=Vibe\ Kanban\ -\ AI-powered\ Kanban\ board\ \(Binary\)
 arch=(x86_64 )
 url=https://vibekanban.com
@@ -24,6 +24,9 @@ source_x86_64=(vibe-kanban-bin-0.1.42.zip::https://npm-cdn.vibekanban.com/binari
 
 _binary_source_path=vibe-kanban
 _install_bin_path=/usr/bin/vibe-kanban
+_wrapper_source_path=''
+_wrapper_install_path=''
+_wrapper_mode=755
 _service_file=vibe-kanban.service
 _service_install_path=/usr/lib/systemd/user/vibe-kanban.service
 _doc_files=()
@@ -32,6 +35,10 @@ _binary_tag=v0.1.42-20260410131124
 
 package() {
     install -Dm755 "${srcdir}/${_binary_source_path}" "${pkgdir}${_install_bin_path}"
+
+    if [ -n "${_wrapper_source_path}" ] && [ -n "${_wrapper_install_path}" ]; then
+        install -Dm${_wrapper_mode} "${srcdir}/${_wrapper_source_path}" "${pkgdir}${_wrapper_install_path}"
+    fi
 
     local doc_file
     for doc_file in "${_doc_files[@]}"; do
