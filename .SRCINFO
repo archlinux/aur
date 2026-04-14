@@ -1,14 +1,14 @@
 pkgbase = counts
 	pkgdesc = A tool for ad hoc profiling
-	pkgver = 1.0.6
-	pkgrel = 3
+	pkgver = 1.0.7
+	pkgrel = 1
 	url = https://github.com/nnethercote/counts
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
 	license = Unlicense
 	makedepends = cargo
-	source = counts-1.0.6.tar.gz::https://github.com/nnethercote/counts/archive/refs/tags/1.0.6.tar.gz
-	sha256sums = 4d3394b32afa98b91fd624a9c4df690d07fa1d6559cd87bb82a4bde6131fbc5f
+	source = counts-1.0.7.tar.gz::https://github.com/nnethercote/counts/archive/refs/tags/1.0.7.tar.gz
+	sha256sums = a5685538819838ba2fba0b78d11b5d80e37753b9015735f71f0c2065442fe9d8
 
 pkgname = counts
