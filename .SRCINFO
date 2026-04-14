@@ -1,0 +1,15 @@
+pkgbase = waycal
+	pkgdesc = A tiny Waybar calendar popup for wlr-layer-shell compositors
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/forrestknight/waycal
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk4
+	depends = gtk4-layer-shell
+	source = waycal-0.1.0.tar.gz::https://github.com/forrestknight/waycal/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 48d11efbf085639fc81f7f78c24116fafaf55178a0bb809898320098365bbdfa
+
+pkgname = waycal
