@@ -12,7 +12,7 @@ source=("gophertube-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/GopherTube-$pkgver"
+  cd "$srcdir/gophertube-$pkgver"
   export CGO_ENABLED=0
   export GO111MODULE=on
   go mod download
@@ -23,6 +23,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/GopherTube-$pkgver"
+  cd "$srcdir/gophertube-$pkgver"
   install -Dm755 gophertube "$pkgdir/usr/bin/gophertube"
 }
