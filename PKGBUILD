@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync"
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="Automatically syncs Limine snapshot entries with Snapper snapshots."
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ optdepends=(
 makedepends=('git' 'gradle')
 backup=(etc/limine-snapper-sync.conf)
 conflicts=('limine-snapper-sync-git')
-sha256sums=('3e5103af1e01b0419182347f7302f050ed3d3737e9c0a246a5091b543286f417')
+sha256sums=('07334d866c1fbebb7ea7051e932fb461d76df3a7b01c973d48e6e3b535998d77')
 sha256sums_x86_64=('e0be791c8fda4d03b6b0a0cb824fef3149736170057b3a515252b44419606af0')
 sha256sums_aarch64=('b4580d9f223d0a4b3a1757e58b18ff4c1db950e67e105fc5cb741457d2384a71')
 
@@ -51,9 +51,19 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname}"
-	src_path="install/arch-linux/"
-	install -Dm 755 "build/native/nativeCompile/${pkgname}" "$src_path/usr/lib/limine/"
-	install -dm 755 "$src_path/usr/share/doc/limine-snapper-sync/"
-	cp -r README.md CHANGELOG.md "$src_path/usr/share/doc/limine-snapper-sync/"
-	cp -r "$src_path/usr" "$src_path/etc" "$pkgdir"
+	local src="install/arch-linux"
+
+	# directories
+	install -dm 755 \
+		"$pkgdir/usr/share/doc/limine-snapper-sync" \
+		"$pkgdir/etc/boot/hooks/pre.d" \
+		"$pkgdir/etc/boot/hooks/post.d" \
+		"$pkgdir/usr/lib/limine"
+
+	# docs
+	install -Dm 644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/limine-snapper-sync/"
+
+	# files
+	cp -a "$src/etc" "$src/usr" "$pkgdir/"
+	install -Dm 755 "build/native/nativeCompile/limine-snapper-sync" "$pkgdir/usr/lib/limine/"
 }
