@@ -1,6 +1,6 @@
 pkgbase = piliplus-bin
 	pkgdesc = A Bilibili third-party client built with Flutter. | 使用Flutter开发的BiliBili第三方客户端
-	pkgver = 2.0.3.2
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/bggRGjQaUbCoE/PiliPlus
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = piliplus-bin
 	conflicts = piliplus-git
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/bggRGjQaUbCoE/PiliPlus/releases/download/2.0.3.2/PiliPlus_linux_2.0.3%2B4841_amd64.tar.gz
-	sha256sums_x86_64 = 45f9bac999a3a9eee53f4debcea1c5fd0b6613fc21af1265c52edc0390c09642
+	source_x86_64 = https://github.com/bggRGjQaUbCoE/PiliPlus/releases/download/2.0.4/PiliPlus_linux_2.0.4%2B4848_amd64.tar.gz
+	sha256sums_x86_64 = 6c136e6ec7f6baf636b48b60adaaa9160ba87b5124809aadf89050152a22abe9
 
 pkgname = piliplus-bin
