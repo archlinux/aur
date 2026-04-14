@@ -1,6 +1,6 @@
 # maintainer: krishnassh <krishna.pytech@gmail.com>
 pkgname=gophertube
-pkgver=2.8.1
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="minimal terminal youtube client"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('mpv' 'yt-dlp')
 makedepends=('go' 'git')
 source=("gophertube-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('4e33b5509bb70483aafbc684255c8dfe6225d1719623f40f0cfff94f1ba48ba1')
 
 build() {
   cd "$srcdir/gophertube-$pkgver"
