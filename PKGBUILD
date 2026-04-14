@@ -84,7 +84,7 @@ sha512sums=(
 prepare() {
   cd tdesktop-$pkgver-full/
   patch -Np1 -d Telegram/lib_base -i "$srcdir"/tdesktop-fix-minizip-includes.patch
-  cat "$srcdir"/yukigram-6.7.5.2/tdesktop/cur/*.patch | patch -Np1
+  cat "$srcdir"/yukigram-${pkgver}.${pkgrel}/tdesktop/cur/*.patch | patch -Np1
 }
 
 build() {
