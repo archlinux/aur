@@ -2,7 +2,7 @@
 # Build from upstream git source.
 
 pkgname=kwin-effects-glass-git
-pkgver=r528.dc9fb85
+pkgver=r564.a2f8a79
 pkgrel=1
 pkgdesc="Fork of Plasma 6 blur effect with force blur, rounded corners, refraction (Wayland 6.6+)"
 arch=(x86_64)
@@ -18,13 +18,13 @@ source=("${pkgname}::git+https://github.com/4v3ngR/kwin-effects-glass.git")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "${startdir}/src/${pkgname}"
+  cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  local _build="${startdir}/build"
-  cmake -B "$_build" -S "${startdir}/src/${pkgname}" \
+  local _build="${srcdir}/build"
+  cmake -B "$_build" -S "${srcdir}/${pkgname}" \
     -W no-dev \
     -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_INSTALL_PREFIX=/usr
@@ -32,5 +32,5 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install "${startdir}/build"
+  DESTDIR="${pkgdir}" cmake --install "${srcdir}/build"
 }
