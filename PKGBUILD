@@ -6,7 +6,7 @@
 # Contributor: Justin Coffman <jcoffman at datasecu dot red>
 
 pkgname=byobu
-pkgver=6.14
+pkgver=6.15
 pkgrel=1
 pkgdesc='Enhanced tmux'
 arch=(any)
@@ -16,7 +16,7 @@ depends=(libnewt python tmux)
 makedepends=(gettext git setconf)
 source=("git+https://github.com/dustinkirkland/byobu#tag=$pkgver"
         "byobu-6.14-fix-double-install.patch")
-b2sums=('ed5627709175ab1c719cb94906035b2e2df31bccd48760450632a8700422e9bf6a418dc6e2feb8c95da3e77b3741c00b8eed09824b73e4c1db075679f322a81d'
+b2sums=('99c4971c0c7a958dd16e046e9c25f9ab6ee5f88b2dc0d12fd16f7fa5ef0546d077f1e1393c370d1fc4733e3f07cbcb88b8c5750a69eff869d87a68635810648f'
         '14da0443aeb3fb306c1f4bc139c74cc65e561b8b9b818efb2ffef877ed2aa37a039dda2620e090f58afdd910201e0036d91f3868d913ccdaa42006778072a1f8')
 
 prepare() {
