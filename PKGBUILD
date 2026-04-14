@@ -1,8 +1,9 @@
 # Contributor: Andrey Vihrov <andrey.vihrov at gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+# Contributor: gamestime102 < >
 
 pkgname=quake3-rally
-pkgver=0.0.1.2
+pkgver=0.3
 pkgrel=1
 epoch=1
 pkgdesc="A car driving and car combat game based on the Quake III Arena engine"
@@ -10,7 +11,7 @@ arch=('any')
 url="https://sourceforge.net/projects/q3rallysa/"
 license=('GPL2')
 depends=('ioquake3' 'desktop-file-utils')
-source=("https://downloads.sourceforge.net/project/q3rallysa/Q3Rally%20v${pkgver}/q3rally_v${pkgver//./}_linux64.zip"
+source=("https://downloads.sourceforge.net/project/q3rallysa/Q3Rally%20v${pkgver}/Q3Rally_v${pkgver}c_linux64.zip"
         "q3rally"
         "q3rally.desktop")
 sha256sums=('0055d3cd1a7d849fe948833d245262ee8c33da5d350c45cddb3bbbb1478fd28b'

@@ -1,6 +1,6 @@
 pkgbase = quake3-rally
 	pkgdesc = A car driving and car combat game based on the Quake III Arena engine
-	pkgver = 0.0.1.2
+	pkgver = 0.3
 	pkgrel = 1
 	epoch = 1
 	url = https://sourceforge.net/projects/q3rallysa/
@@ -8,7 +8,7 @@ pkgbase = quake3-rally
 	license = GPL2
 	depends = ioquake3
 	depends = desktop-file-utils
-	source = https://downloads.sourceforge.net/project/q3rallysa/Q3Rally%20v0.0.1.2/q3rally_v0012_linux64.zip
+	source = https://sourceforge.net/projects/q3rallysa/files/Q3Rally%20v0.3/Q3Rally_v0.3c_linux64.zip
 	source = q3rally
 	source = q3rally.desktop
 	sha256sums = 0055d3cd1a7d849fe948833d245262ee8c33da5d350c45cddb3bbbb1478fd28b
