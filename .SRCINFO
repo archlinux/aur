@@ -1,6 +1,6 @@
 pkgbase = gvm-tools
 	pkgdesc = greenbone-vulnerability-manager tools
-	pkgver = 25.4.9
+	pkgver = 26.0.0
 	pkgrel = 1
 	url = https://github.com/greenbone/gvm-tools
 	arch = any
@@ -9,12 +9,12 @@ pkgbase = gvm-tools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-poetry-core
+	makedepends = python-hatchling
 	depends = python-gvm
-	source = gvm-tools-25.4.9.tar.gz::https://github.com/greenbone/gvm-tools/archive/refs/tags/v25.4.9.tar.gz
-	source = https://github.com/greenbone/gvm-tools/releases/download/v25.4.9/gvm-tools-25.4.9.tar.gz.asc
+	source = gvm-tools-26.0.0.tar.gz::https://github.com/greenbone/gvm-tools/archive/refs/tags/v26.0.0.tar.gz
+	source = https://github.com/greenbone/gvm-tools/releases/download/v26.0.0/gvm-tools-26.0.0.tar.gz.asc
 	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
-	sha512sums = cf0b2c896fe9c1fd7457fc134f0244dc1ad60e1a5938cf1390887a0547af653c99609616e64b9058f6bac1753f6524c72ea230ef49fa74e03973c7a437cf69b1
+	sha512sums = fa1407cab93fa380c922c76be18bcc8e95091c456033e532bd11d4b14e1a9fb8f515d17d0eb0aaa5572a9e9c384afd2f1e1657ed4a6ecbb489a7948e6b33dbe1
 	sha512sums = SKIP
 
 pkgname = gvm-tools
