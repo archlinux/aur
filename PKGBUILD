@@ -1,11 +1,11 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 # Contributor: Filipe Bertelli <filipebertelli@tutanota.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Bruce Zhang
 
 pkgname=electron-fiddle
 _pkgname=fiddle
-pkgver=0.38.0
+pkgver=0.39.0
 pkgrel=1
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64' 'aarch64' 'armhf')
@@ -17,7 +17,7 @@ makedepends=('git' 'npm' 'nodejs-lts' 'yarn')
 provides=("$pkgname" "$pkgname")
 conflicts=("$pkgname-bin" "$pkgname-git")
 source=("$_pkgname-$pkgver.src.tar.gz::https://github.com/electron/fiddle/archive/v$pkgver.tar.gz")
-sha256sums=('99b53161c2a1e12c2ae0abc60d64c07f14f663dbd42ba761a99e6cb23c5b2ca4')
+sha256sums=('dd0671ac53e88a660950129b8843fdfae6646cc57432696072a2096c70e29f12')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
