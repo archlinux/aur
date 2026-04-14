@@ -1,0 +1,22 @@
+pkgbase = mmdebstrap-git
+	pkgdesc = create a Debian chroot
+	pkgver = 1.5.7.r3.77ec9be
+	pkgrel = 1
+	url = https://gitlab.mister-muffin.de/josch/mmdebstrap
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = apt
+	depends = python
+	depends = perl
+	optdepends = debian-archive-keyring: Debian PKI support
+	optdepends = ubuntu-keyring: Ubuntu PKI support
+	optdepends = qemu-user-static: foreign-architecture support
+	optdepends = qemu-user-static-binfmt: foreign-architecture support
+	optdepends = arch-test: foreign-architecture support
+	provides = mmdebstrap
+	conflicts = mmdebstrap
+	source = mmdebstrap::git+https://gitlab.mister-muffin.de/josch/mmdebstrap.git
+	sha256sums = SKIP
+
+pkgname = mmdebstrap-git
