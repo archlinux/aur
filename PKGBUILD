@@ -1,6 +1,6 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname=nuclei-git
-pkgver=3.6.2.r158.g6eda56f38
+pkgver=3.7.1.r6248.f893b6c
 pkgrel=1
 pkgdesc="Fast and customizable vulnerability scanner, git version"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(
 )
 makedepends=(
   'git'
-  'go>=1.24.2'
+  'go>=1.25.7'
 )
 optdepends=()
 provides=("nuclei")
@@ -21,7 +21,8 @@ b2sums=('SKIP')
 
 pkgver() {
   cd nuclei
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag="$(git tag -l 'v*' | grep -v '^v\.' | sort -V | tail -1 | sed 's/^v//')"
+  printf "%s.r%s.%s" "$_tag" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
