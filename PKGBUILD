@@ -1,7 +1,7 @@
 # Maintainer: Huipeng <cheng.huipeng@outlook.com>
 pkgname=qodercli-bin
-pkgver=0.1.42
-pkgrel=2
+pkgver=0.1.43
+pkgrel=1
 pkgdesc="Qoder Agentic CLI - Advanced AI coding agent from Alibaba"
 arch=('x86_64' 'aarch64')
 url="https://qoder.com/cli"
@@ -13,10 +13,10 @@ conflicts=('qoder-cli')
 # Binary tarballs from manifest
 # https://download.qoder.com/qodercli/channels/manifest.json
 source_x86_64=(
-  "qodercli_0.1.42_linux_amd64.tar.gz::https://download.qoder.com/qodercli/releases/0.1.42/qodercli_0.1.42_linux_amd64.tar.gz"
+  "qodercli_0.1.43_linux_amd64.tar.gz::https://download.qoder.com/qodercli/releases/0.1.43/qodercli_0.1.43_linux_amd64.tar.gz"
 )
 source_aarch64=(
-  "qodercli_0.1.42_linux_arm64.tar.gz::https://download.qoder.com/qodercli/releases/0.1.42/qodercli_0.1.42_linux_arm64.tar.gz"
+  "qodercli_0.1.43_linux_arm64.tar.gz::https://download.qoder.com/qodercli/releases/0.1.43/qodercli_0.1.43_linux_arm64.tar.gz"
 )
 
 # We include a local LICENSE file (downloaded from https://qoder.com/product-service)
@@ -28,8 +28,8 @@ source+=(
   "qodercli.fish"
 )
 
-sha256sums_x86_64=('977f74384b9bcfd1ede19e18ae4659f82dad622e8516f493a101897371e46c64')
-sha256sums_aarch64=('a399f34496cc10d5c5a5c8b1f7782fb39f3998e613584d9ff2752f855fe9422a')
+sha256sums_x86_64=('920792ff689da7a3f4ecb5c228d1ec7c4aa8c7c5450c16302762c808f795c5bc')
+sha256sums_aarch64=('de0d3c64bd47f7625487219e5de6402c7c8d8899d4d711a2cd8a1e3da910b1ef')
 sha256sums=('c2e7273832fc4b22ef54ed02f12d422bf9b910eebe2bdee5930bdde93a9ffec6'
              'SKIP'
              'SKIP'
