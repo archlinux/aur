@@ -14,7 +14,9 @@ depends=('ioquake3' 'desktop-file-utils')
 source=("https://github.com/Q3Rally-Team/q3rally/releases/download/v${pkgver}/q3rally_v${pkgver}_patch_linux64.zip"
         "q3rally"
         "q3rally.desktop")
-sha256sums=('9710ded1c40e040f6d06608a25e13c1c847852c1416630a7efff1badb0be257b')
+sha256sums=('9710ded1c40e040f6d06608a25e13c1c847852c1416630a7efff1badb0be257b'
+            'ca5268f09d285eed22000312a065871fab43a02fe3ae82f60d0706002552c611'
+            'f8b1d85e3dc3e0a07cf5991141e5a8f327dd6f5fa173cfa3ce911298daa90db9')
 
 check() {
   desktop-file-validate q3rally.desktop
