@@ -5,5 +5,5 @@ Exec=/opt/time-desktop/Time
 Icon=time-desktop
 Terminal=false
 Type=Application
-MimeType=x-scheme-handler/timeapp
+MimeType=x-scheme-handler/timeapp;
 Categories=Utility;
