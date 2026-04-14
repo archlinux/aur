@@ -15,7 +15,7 @@ source=("https://github.com/Q3Rally-Team/q3rally/releases/download/v${pkgver}/q3
         "q3rally"
         "q3rally.desktop")
 sha256sums=('9710ded1c40e040f6d06608a25e13c1c847852c1416630a7efff1badb0be257b'
-            'ca5268f09d285eed22000312a065871fab43a02fe3ae82f60d0706002552c611'
+            '7ead77f8a3bc699efcb746a98d5414250e080c27a656b16dd883a9484cb79f8a'
             'f8b1d85e3dc3e0a07cf5991141e5a8f327dd6f5fa173cfa3ce911298daa90db9')
 
 check() {
@@ -23,7 +23,7 @@ check() {
 }
 
 package() {
-  cd Q3Rally
+  cd q3rally_v0.7c_patch_linux64
 
   rm -f baseq3r/*.so
 
