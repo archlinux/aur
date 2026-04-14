@@ -1,0 +1,14 @@
+pkgbase = harness
+	pkgdesc = Minimal agent loop in bash
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/wedow/harness
+	arch = any
+	license = MIT
+	depends = bash
+	depends = curl
+	depends = jq
+	source = harness-0.1.0.tar.gz::https://github.com/wedow/harness/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = a587236c7598ea71b114073bb6e0d5505c5c1f44146d5bfa69310b3361a20e3e
+
+pkgname = harness
