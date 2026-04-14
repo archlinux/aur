@@ -10,7 +10,7 @@ conflicts=(librewolf)
 __pkgname=librewolf
 _pkgname=LibreWolf
 epoch=1
-pkgver=148.0.2_3
+pkgver=149.0.2_2
 _fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
 _librewolfver="${pkgver#*_}"
 _firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
@@ -110,22 +110,22 @@ options=(
 install='librewolf.install'
 source=(
   https://codeberg.org/api/packages/librewolf/generic/librewolf-source/$_firefoxver-$_librewolfver/librewolf-$_firefoxver-$_librewolfver.source.tar.gz{,.sig}
-  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/fdd14cc14c10c23980b7d707e8f98af4a6d17577/0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
-  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/d82490f5db9d55f3e5e61b640c6618ab209aa06b/0004-Fix-sandbox-to-build-with-glibc-2.43.patch
-  llvm22.1-wasi.patch
+  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/b210375c92e767950ec8ec8bdceda555e969ee21/0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/b210375c92e767950ec8ec8bdceda555e969ee21/0003-Bug-2016618-Fix-Linux-sandbox-build-breakage-on-glib.patch
+  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/b210375c92e767950ec8ec8bdceda555e969ee21/0004-Use-wasm32-wasip1-target.patch
   $__pkgname.desktop
   "default192x192.png"
   allow_dark.patch
 )
 
-sha256sums=('e00c0de9330b6655fbfa2e31540d5f02248f6b1959bbece384d4afb1a0d6efa7'
+sha256sums=('4f182ca27f11fd35aa2fb62ca099ff0533bfce2190a719d3b601eab86f7d3317'
 			'SKIP'
-			'83857f3531688885b62be0b06583f6815f236edbc43a942830395ec3cbdc7934'
-			'8d2182ae8660474ac567482fe6658af77f3b402314e361c846528ae171586245'
-			'a0f78d15c710917f4677842e4175694fb0dd470b51b4fe40bda96e1a9ea332a6'
+			'7e8ee1997aa0c6db7de6fe5da0bca88b5c1c3aa2db0b18950e24e5cbe4df8d84'
+			'bf4a7667fb7d7a64795a6ea3d34515c55f46e42872fd3c5a8e8e99964bb3c4e8'
+			'28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
             '3d6ac59ae9d5ba4c9fe15f95c1338fa68214dec6119f8432336403e3be50f8ae'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
-            '46b35c05bc4a4ef581b9e75a6f76d75827a35e4b0b8433df5cb32241cb603601')
+            '41ac0e7f0bec434f92db83e385dfdd4f11c055c387317aaedc8664d68e4b8de4')
 validpgpkeys=('662E3CDD6FE329002D0CA5BB40339DD82B12EF16') # https://rpm.librewolf.net/pubkey.gpg
 
 prepare() {
@@ -202,14 +202,13 @@ fi
 
   # upstream Arch fixes
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
-  patch -Np1 -i ../0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=2016618
-  patch -Np1 -i ../0004-Fix-sandbox-to-build-with-glibc-2.43.patch
+  patch -Np1 -i ../0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
 
-  # fix building with llvm > 22.1
-  # this will probably break on manjaro, as they are behind with llvm versions
-  # so if you are on manjaro: comment this out? ^^
-  patch -Np1 -i ../llvm22.1-wasi.patch
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=2016618
+  patch -Np1 -i ../0003-Bug-2016618-Fix-Linux-sandbox-build-breakage-on-glib.patch
+
+  # Fix build with Clang 22
+  patch -Np1 -i ../0004-Use-wasm32-wasip1-target.patch
 }
 
 
