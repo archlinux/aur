@@ -1,0 +1,5 @@
+[sorting-algorithm-visualizer]
+source = "github"
+github = "66-m/sorting-visualizer"
+use_latest_release = true
+prefix = "v"

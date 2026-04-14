@@ -1,0 +1,23 @@
+pkgbase = sorting-algorithm-visualizer
+	pkgdesc = See and hear Sorting Algorithms in Real Time: 22 Algorithms, 30 Visuals
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/66-m/sorting-visualizer
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = bash
+	depends = java-runtime-common
+	provides = sorting-algorithm-visualizer
+	conflicts = sorting-algorithm-visualizer
+	noextract = sorting-algorithm-visualizer-2.0.4.jar
+	options = !strip
+	source = README-2.0.4.md::https://raw.githubusercontent.com/66-m/sorting-visualizer/v2.0.4/README.md
+	source = LICENSE-2.0.4::https://raw.githubusercontent.com/66-m/sorting-visualizer/v2.0.4/LICENSE
+	source = sorting-algorithm-visualizer.sh
+	sha256sums = 39bfc71f5dfe7f5e964c4777b5989d89703cad9bb9462d6dae870d6235b7506e
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	sha256sums = 42a812e7a9588065c0c72d4e12e20b70b5b48e721e413d72260d846d16477dec
+	source_x86_64 = sorting-algorithm-visualizer-2.0.4.jar::https://github.com/66-m/sorting-visualizer/releases/download/v2.0.4/sorting-visualizer.jar
+	sha256sums_x86_64 = 954ec14f3a3534a8cdfa30d9d4a71825dba24c6d1206669250c144802fbf39e7
+
+pkgname = sorting-algorithm-visualizer
