@@ -1,4 +1,5 @@
-# Maintainer: KrishnaSSH krishna.pytech@gmail.com
+# maintainer: krishnassh <krishna.pytech@gmail.com>
+
 pkgname=gophertube
 pkgver=2.8.1
 pkgrel=1
@@ -7,6 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/KrishnaSSH/GopherTube"
 license=('GPL3')
 
+depends=('mpv' 'yt-dlp')
 makedepends=('go' 'git')
 
 source=("gophertube::git+$url.git#tag=v$pkgver")
@@ -16,8 +18,14 @@ build() {
   cd "$srcdir/gophertube"
 
   export CGO_ENABLED=0
+  export GO111MODULE=on
 
-  go build -ldflags "-X gophertube/internal/app.version=$pkgver" -o gophertube .
+  go mod download
+
+  go build \
+    -trimpath \
+    -ldflags "-s -w -X gophertube/internal/app.version=$pkgver" \
+    -o gophertube .
 }
 
 package() {

@@ -1,5 +1,5 @@
 pkgbase = gophertube
-	pkgdesc = Minimal terminal YouTube client with mpv, fzf, and chafa previews
+	pkgdesc = minimal terminal youtube client
 	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/KrishnaSSH/GopherTube
@@ -9,9 +9,8 @@ pkgbase = gophertube
 	makedepends = go
 	makedepends = git
 	depends = mpv
-	depends = fzf
-	depends = chafa
-	source = gophertube-2.8.1.tar.gz::https://github.com/KrishnaSSH/GopherTube/archive/refs/tags/v2.8.1.tar.gz
+	depends = yt-dlp
+	source = gophertube::git+https://github.com/KrishnaSSH/GopherTube.git#tag=v2.8.1
 	sha256sums = SKIP
 
 pkgname = gophertube
