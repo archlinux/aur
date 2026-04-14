@@ -1,6 +1,6 @@
 pkgbase = gpu-t-git
 	pkgdesc = GPU-T is a modern desktop utility built with .NET and Avalonia UI designed to provide detailed information about your video card and GPU
-	pkgver = 0.1.2.r3.gf047522
+	pkgver = 0.1.4.r1.gdef2aee
 	pkgrel = 1
 	url = https://github.com/lseurttyuu/GPU-T
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = gpu-t-git
 	makedepends = git
 	makedepends = dotnet-host
 	makedepends = dotnet-sdk-9.0
+	makedepends = clang
+	makedepends = zlib
 	depends = dotnet-runtime-9.0
 	depends = vulkan-tools
 	depends = clinfo
@@ -24,8 +26,6 @@ pkgbase = gpu-t-git
 	provides = gpu-t
 	conflicts = gpu-t
 	source = git+https://github.com/lseurttyuu/GPU-T.git
-	source = gpu-t.desktop
 	sha256sums = SKIP
-	sha256sums = ca8bc029dac44cd957b2f72d2acbb7381317968d0cde8ddbc6f0a677a05a63b5
 
 pkgname = gpu-t-git
