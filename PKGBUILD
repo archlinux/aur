@@ -1,7 +1,7 @@
 # Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
 
 pkgname=things3-cloud-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Command-line client for Things 3 using the Things Cloud API (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source=("LICENSE::https://raw.githubusercontent.com/evanpurkhiser/things3-cloud/
 source_x86_64=("things3-linux-amd64::https://github.com/evanpurkhiser/things3-cloud/releases/download/v${pkgver}/things3-linux-amd64")
 source_aarch64=("things3-linux-arm64::https://github.com/evanpurkhiser/things3-cloud/releases/download/v${pkgver}/things3-linux-arm64")
 sha256sums=('8d46b8b792405bf7c37e14a1825649a9013f999e595f9fbe68b4aea7ab098bd5')
-sha256sums_x86_64=('7fff9d5b943ffdb92e318abb462cafe1c02048e1c00efc5195b70813df43058e')
-sha256sums_aarch64=('12314b811acc7ef7c3b7405a15df3d07a0f9784e2583d65f00760fcd8dc6f9eb')
+sha256sums_x86_64=('415bcd884d843a68136ee7bba67dac7541495cb9846cc0dbb5e3fb118c4f1f81')
+sha256sums_aarch64=('9623e35773bcf99fbec0b60a0004f29419f8ee66ef788c4db329e7e3d483f7b2')
 
 package() {
 	local _bin
