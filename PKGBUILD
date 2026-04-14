@@ -1,5 +1,4 @@
 # maintainer: krishnassh <krishna.pytech@gmail.com>
-
 pkgname=gophertube
 pkgver=2.8.1
 pkgrel=1
@@ -7,21 +6,16 @@ pkgdesc="minimal terminal youtube client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/KrishnaSSH/GopherTube"
 license=('GPL3')
-
 depends=('mpv' 'yt-dlp')
 makedepends=('go' 'git')
-
-source=("gophertube::git+$url.git#tag=v$pkgver")
+source=("gophertube-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/gophertube"
-
+  cd "$srcdir/GopherTube-$pkgver"
   export CGO_ENABLED=0
   export GO111MODULE=on
-
   go mod download
-
   go build \
     -trimpath \
     -ldflags "-s -w -X gophertube/internal/app.version=$pkgver" \
@@ -29,7 +23,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/gophertube"
-
+  cd "$srcdir/GopherTube-$pkgver"
   install -Dm755 gophertube "$pkgdir/usr/bin/gophertube"
 }

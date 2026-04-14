@@ -10,7 +10,7 @@ pkgbase = gophertube
 	makedepends = git
 	depends = mpv
 	depends = yt-dlp
-	source = gophertube::git+https://github.com/KrishnaSSH/GopherTube.git#tag=v2.8.1
+	source = gophertube-2.8.1.tar.gz::https://github.com/KrishnaSSH/GopherTube/archive/refs/tags/v2.8.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = gophertube
