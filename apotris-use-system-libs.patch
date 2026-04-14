@@ -1,5 +1,5 @@
 diff --git a/meson.build b/meson.build
-index 596d2b8..46334c8 100644
+index 596d2b8..ca66591 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -178,8 +178,6 @@ endif
@@ -38,3 +38,12 @@ index 596d2b8..46334c8 100644
              fallback: ['libdatachannel', 'libdatachannel_dep'],
          )
          dependencies += datachannel
+@@ -411,8 +409,6 @@ if host_machine.system() != 'gba' and host_machine.system() != 'n3ds'
+ 
+     if meson.get_compiler('c').get_id() != 'clang'
+         link_args = [
+-            '-static-libgcc',
+-            '-static-libstdc++',
+         ]
+     else
+         link_args = []
