@@ -3,7 +3,7 @@
 
 pkgname=hamclock-bigger
 pkgver=4.22
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (2400x1440 version)"
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -24,10 +24,12 @@ changelog=
 source=(
   "https://github.com/fang64/hamclock/archive/refs/tags/v$pkgver.tar.gz"
   "hamclock.desktop"
+  "url-change.patch"
 )
 noextract=()
 sha256sums=('3d577561eaa716ebd1b941e3e6abb4763c9a7f68c5f8917b8adb8cf7dd74fa06'
-            'df56e16e9bfab4a6259fd8e9fdffbe8f8d24ff395d2d27434dfd4bfe4adfa85d')
+            'df56e16e9bfab4a6259fd8e9fdffbe8f8d24ff395d2d27434dfd4bfe4adfa85d'
+            '0f846f80e8d3ff5c73737a84da8aed019bc1c727737144db807f46e216d61ab5')
 validpgpkeys=()
 
 prepare() {
@@ -49,6 +51,9 @@ prepare() {
 	# Do not check for/install updates
 	# UPDATE: No longer needed just need a definition in the Makefile
 	# patch -Np1 -i ../no-updates.patch
+
+  # Change server from clearskyinstitute.com to hamclock.com by default
+  patch -Np1 -i ../url-change.patch
 }
 
 build() {
