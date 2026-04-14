@@ -1,4 +1,5 @@
 # Maintainer: fabse
+# Contributor: repsac
 
 pkgname=llama-swap
 pkgver=v201 # renovate: datasource=github-releases depName=mostlygeek/llama-swap
