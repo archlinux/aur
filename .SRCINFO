@@ -1,6 +1,6 @@
 pkgbase = cronet-go-bin
 	pkgdesc = Go bindings for naiveproxy
-	pkgver = 143.0.7499.109_2
+	pkgver = 147.0.7727.49_1
 	pkgrel = 1
 	url = https://github.com/SagerNet/cronet-go
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = cronet-go-bin
 	options = !debug
 	source = LICENSE
 	sha256sums = 2f02b7486bcfa90d115c71a20437f3906b6fd5bef81c5dc0efd341399e89d0fd
-	source_x86_64 = libcronet-linux-143.0.7499.109_2-x86_64.so::https://github.com/SagerNet/cronet-go/releases/download/143.0.7499.109-2/libcronet-linux-amd64.so
-	sha256sums_x86_64 = 436fbbea68293ca4b844e0d24bd61dc7e7d55ef08af47ab85b6d0f99f05f2129
-	source_armv7h = libcronet-linux-143.0.7499.109_2-armv7h.so::https://github.com/SagerNet/cronet-go/releases/download/143.0.7499.109-2/libcronet-linux-arm.so
-	sha256sums_armv7h = d82e7eafb94664f9ca9a14dee38b8a5c569e31a77e6c3728ab3d80856b8e6146
-	source_aarch64 = libcronet-linux-143.0.7499.109_2-aarch64.so::https://github.com/SagerNet/cronet-go/releases/download/143.0.7499.109-2/libcronet-linux-arm64.so
-	sha256sums_aarch64 = 288341d94a086696e586002044f3167b4930867458d96741e19e8046429ae45c
+	source_x86_64 = libcronet-linux-147.0.7727.49_1-x86_64.so::https://github.com/SagerNet/cronet-go/releases/download/v147.0.7727.49-1/libcronet-linux-amd64.so
+	sha256sums_x86_64 = 55c35e93dff3ab2174b9a338adbc99f5bd1dc54347f8aa605f44f129db30dd80
+	source_armv7h = libcronet-linux-147.0.7727.49_1-armv7h.so::https://github.com/SagerNet/cronet-go/releases/download/v147.0.7727.49-1/libcronet-linux-arm.so
+	sha256sums_armv7h = 0a3142e1b019981992b28c7abe521c2a6d56f8cbfe3a2a0f4faa37acb90eb23e
+	source_aarch64 = libcronet-linux-147.0.7727.49_1-aarch64.so::https://github.com/SagerNet/cronet-go/releases/download/v147.0.7727.49-1/libcronet-linux-arm64.so
+	sha256sums_aarch64 = 9c47a5d8377a6baa9fc6723b25a7f8d0a78dee0ed6fee41d29d43b278056263a
 
 pkgname = cronet-go-bin
