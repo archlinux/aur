@@ -3,7 +3,7 @@
 _name="odoo18"
 pkgname="$_name-nightly"
 pkgver=18.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Odoo. Open Source Apps To Grow Your Business."
 url="https://odoo.com/"
 arch=("any")
@@ -44,7 +44,7 @@ prepare() {
 build() {
 	cd "odoo-$pkgver"
 	python3.12 -m venv --clear venv
-	venv/bin/pip install --upgrade pip build installer wheel
+	venv/bin/pip install --upgrade pip build installer wheel setuptools
 	venv/bin/pip install -r requirements.txt
 
 	venv/bin/python3.12 -m build --no-isolation --wheel
