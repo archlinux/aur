@@ -17,8 +17,8 @@ options=(!debug !lto)
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate    
     $_ctlname-$_ctlver.tar.gz::https://static.crates.io/crates/$_ctlname/$_ctlname-$_ctlver.crate)
-sha256sums=('30324c03ba954f769dce37389d20f9328683646db3f4e18eecbe41ce81215720'
-            'f7bcb3ff49956a1729677e08849bd9a3dae1ad1aec4727b89c1bc52a6455a34c')
+sha256sums=('203bd8a9a2088c6b19887945ee4b184e0e45a10f0b6ee8115caba8b57edd2313'
+            '4515d62d02b411ffd83ce1c8c095bdd7be904a00c301822b84db16660650ee7e')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=1.86.0
