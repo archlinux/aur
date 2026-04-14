@@ -26,8 +26,8 @@ pkgbase = goosestation-libretro
 	provides = goosestation-libretro
 	conflicts = goosestation-libretro
 	source = duckstation-5e7be496a2d0480aaabbe9746a1a4576b469d301.tar.gz::https://github.com/stenzek/duckstation/archive/5e7be496a2d0480aaabbe9746a1a4576b469d301.tar.gz
-	source = goosify.sh::https://codeberg.org/hueponik/goosestation-overlay/raw/commit/58d3c731ad47325ba653cfa4a0531fba07dc1c60/games-emulation/goosestation-libretro/files/goosify.sh
+	source = goosify.sh::https://codeberg.org/hueponik/goosestation-overlay/raw/commit/119a1b5277bc777ceaab6180321851e896dbe118/games-emulation/goosestation-libretro/files/goosify.sh
 	sha256sums = 5ba5c07c054b3b005d82aeafdc46803fc9e2af77a591d3577b64b0a1086792d7
-	sha256sums = cb5f685277e991a4fa3a28fe995d986dd0ffbed0a784165e3b1db91e3e966b70
+	sha256sums = 6704b6d2b1cb895ce319805172d6f51605484ed282860257d215bf64129abcf8
 
 pkgname = goosestation-libretro

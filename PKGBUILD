@@ -3,7 +3,7 @@
 _pkgname=goosestation-libretro
 _upstream_commit=5e7be496a2d0480aaabbe9746a1a4576b469d301
 _duckstation_srcdir="duckstation-${_upstream_commit}"
-_overlay_commit=58d3c731ad47325ba653cfa4a0531fba07dc1c60
+_overlay_commit=119a1b5277bc777ceaab6180321851e896dbe118
 _overlay_raw="https://codeberg.org/hueponik/goosestation-overlay/raw/commit/${_overlay_commit}/games-emulation/goosestation-libretro/files"
 pkgname=${_pkgname}
 pkgver=0+git.${_upstream_commit:0:9}
@@ -42,7 +42,7 @@ source=(
   "goosify.sh::${_overlay_raw}/goosify.sh"
 )
 sha256sums=('5ba5c07c054b3b005d82aeafdc46803fc9e2af77a591d3577b64b0a1086792d7'
-            'cb5f685277e991a4fa3a28fe995d986dd0ffbed0a784165e3b1db91e3e966b70')
+            '6704b6d2b1cb895ce319805172d6f51605484ed282860257d215bf64129abcf8')
 
 prepare() {
   cd "duckstation-${_upstream_commit}"
