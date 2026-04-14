@@ -2,7 +2,7 @@
 
 _name=twofactor_webauthn
 pkgname=nextcloud-app-twofactor-webauthn
-pkgver=2.4.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="WebAuthn Two-Factor Provider for Nextcloud"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud-releases/${_name}/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz")
-sha512sums=('61cd457d624c3cf2f4aadb0dd1a82e874a24c56e57a3448d2f0105bef4d5d589c45755151ff9219c6cf8ffac9c84f5d2b4268cf66e32266065372e3228c676d3')
+sha512sums=('73832938ba09cf343b5fb3a625ef9db7a19ec49bc2539336efff8a620bdbd0f9f4aded1a52cf63539249c00beb618ae2d514791b448872bdccf08ecd653b7ccb')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
