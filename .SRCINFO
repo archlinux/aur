@@ -15,7 +15,7 @@ pkgbase = optimus-manager-git
 	depends = dbus-python
 	depends = glxinfo
 	depends = NVIDIA-MODULE
-	depends = python=3.14.3
+	depends = python=3.14.4
 	depends = xorg-xrandr
 	optdepends = gdm-prime: needed if your login screen is gdm
 	optdepends = bbswitch: alternatively switches GPUs by using standard Optimus ACPI calls
