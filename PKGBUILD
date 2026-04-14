@@ -70,7 +70,7 @@ SYSUSERS
 
 build() {
   cd "$srcdir/mangochill"
-  cargo build --release --locked --bin mangochill-server --bin mangochill-client
+  cargo build --release --locked --features log/release_max_level_debug --bin mangochill-server --bin mangochill-client
 }
 
 package() {
