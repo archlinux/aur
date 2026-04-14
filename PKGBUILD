@@ -1,9 +1,9 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=workbuddy-bin
-pkgver=4.9.3.25145143
+pkgver=4.9.6.25479271
 pkgrel=1
-_commit=f10cab22
+_commit=21f0d738
 pkgdesc="Work Smart，Not Hard"
 arch=('x86_64' 'aarch64')
 url="https://www.codebuddy.ai/agents"
@@ -27,14 +27,15 @@ sha256sums=('SKIP'
 
 prepare() {
     7z x WorkBuddy-darwin-x64-${pkgver}-${_commit}.dmg
-    mkdir -p node_modules
+    mkdir -p WorkBuddy/WorkBuddy.app/Contents/Resources/node_modules
 }
 
 build() {
-	npm install @vscode/ripgrep --no-save
-	cp -a node_modules/* WorkBuddy/WorkBuddy.app/Contents/Resources/app/node_modules/
-	icns2png -x WorkBuddy/WorkBuddy.app/Contents/Resources/WorkBuddy.icns
-	cd WorkBuddy/WorkBuddy.app/Contents/Resources/app
+	cd WorkBuddy/WorkBuddy.app/Contents/Resources
+	npm install @vscode/ripgrep --omit=dev
+	cp -a node_modules/* app/node_modules/
+	icns2png -x WorkBuddy.icns
+	cd app
 	for mod in @vscode/sqlite3 @vscode/spdlog;do
 		cd node_modules/${mod}
 		node-gyp rebuild
@@ -43,13 +44,14 @@ build() {
 }
 
 package() {
+    install -D WorkBuddy.desktop ${pkgdir}/usr/share/applications/workbuddy.desktop
+    cd WorkBuddy/WorkBuddy.app/Contents/Resources
     install -D WorkBuddy_512x512x32.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/WorkBuddy.png
     install -D WorkBuddy_1024x1024x32.png ${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/WorkBuddy.png
-    install -D WorkBuddy.desktop ${pkgdir}/usr/share/applications/workbuddy.desktop
     install -d ${pkgdir}/usr/lib/workbuddy
     install -d ${pkgdir}/usr/share/licenses/workbuddy
-    mv WorkBuddy/WorkBuddy.app/Contents/Resources/app/*txt ${pkgdir}/usr/share/licenses/workbuddy/
-    cp -a WorkBuddy/WorkBuddy.app/Contents/Resources/app/* ${pkgdir}/usr/lib/workbuddy/
+    mv app/*txt ${pkgdir}/usr/share/licenses/workbuddy/
+    cp -a app/* ${pkgdir}/usr/lib/workbuddy/
     install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/workbuddy" <<EOF
 #!/usr/bin/bash
 exec electron /usr/lib/workbuddy/out/main.js "\$@"
