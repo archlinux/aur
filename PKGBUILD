@@ -10,10 +10,10 @@ fi
 
 _pkgname="ryujinx"
 pkgname="$_pkgname-canary"
-pkgver=1.3.264
+pkgver=1.3.269
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
-url="https://git.ryujinx.app/ryubing/ryujinx"
+url="https://git.ryujinx.app/projects/Ryubing"
 license=('MIT')
 arch=('x86_64')
 
@@ -36,9 +36,9 @@ makedepends=(
 options=('!strip' '!debug')
 
 _source_ryujinx() {
-  _pkgsrc="${_pkgname}-Canary-$_pkgver"
+  _pkgsrc="ryubing"
   _pkgext="tar.gz"
-  source=("${_pkgsrc,,}.$_pkgext"::"$url/-/archive/${_tag:-$_pkgver}/$_pkgsrc.$_pkgext")
+  source=("${_pkgname}-canary-$_pkgver.$_pkgext"::"$url/archive/Canary-$_pkgver.$_pkgext")
   sha256sums=('SKIP')
 }
 
@@ -111,11 +111,10 @@ _update_version() {
   fi
 
   local _response _pkgver_new
-  _response=$(curl -Ssf -L --max-redirs 3 "$url/-/tags?format=atom")
+  _response=$(curl -Ssf -L --max-redirs 3 "$url/tags.atom")
   _tag=$(
     printf '%s' "$_response" \
-      | grep -E '/tags/Canary-([0-9\.]+)"' \
-      | sed -E 's&^.*/tags/(Canary-[0-9\.]+)".*$&\1&' \
+      | grep -Po '/tag/\KCanary-([0-9\.]+)' \
       | sort -rV | head -1
   )
   _pkgver_new="${_tag#Canary-}"
