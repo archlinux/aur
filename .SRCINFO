@@ -1,10 +1,11 @@
 pkgbase = seance
 	pkgdesc = Scrolling terminal multiplexer for running multiple AI coding agents side by side
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/no1msd/seance
 	arch = x86_64
 	license = MIT
+	options = !debug
 	makedepends = zig>=0.15.2
 	makedepends = ncurses
 	makedepends = pkg-config

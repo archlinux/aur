@@ -1,7 +1,7 @@
 # Maintainer: Dániel Sipka <no1msd@users.noreply.github.com>
 pkgname=seance
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Scrolling terminal multiplexer for running multiple AI coding agents side by side'
 arch=('x86_64')
 url='https://github.com/no1msd/seance'
@@ -29,6 +29,8 @@ makedepends=(
     'ncurses'
     'pkg-config'
 )
+
+options=(!debug)
 
 source=(
     "$pkgname-$pkgver-src.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-src.tar.gz"
