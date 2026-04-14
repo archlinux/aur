@@ -2,7 +2,7 @@
 
 pkgname=openai-codex-desktop
 pkgver=0
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenAI Codex desktop app"
 arch=('x86_64')
 url="https://developers.openai.com/codex/app/"
@@ -24,7 +24,7 @@ makedepends=(
 )
 
 _electron_major=39
-_better_sqlite3_ver=12.5.0
+_better_sqlite3_ver=12.8.0
 _node_pty_ver=1.1.0
 
 source=(
@@ -43,7 +43,7 @@ noextract=(
 
 sha256sums=(
   'SKIP'
-  '0a3cd0554b063c3185b9912ef7059b84455a2e411d637faa0166fef9fefa04c2'
+  '2602a5726d0a9d8e6be407c59bc125e605110eda8e3b04e7ef8d6ddf762c9122'
   'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
   '5649a319d0fff30cc003d9298e8af36e1d65e060c29b5046d9213979b503d0b8'
   '89be393152cc170cbe41fbf53ecd9e6b26e552b8036c637f0b852c7a3ed75b72'
