@@ -16,6 +16,8 @@ conflicts=("${_pkgname}")
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 options=('!debug')
+install="${pkgname}.install"
+backup=("etc/ashrwm/config.janet")
 
 pkgver() {
   cd "${srcdir}"
@@ -34,4 +36,5 @@ package() {
 	
     install -Dm755 "zig-out/bin/ashrwm" "${pkgdir}/usr/bin/ashrwm"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "example/config.janet" "${pkgdir}/etc/ashrwm/config.janet"
 }

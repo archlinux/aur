@@ -3,6 +3,7 @@ pkgbase = ashrwm-git
 	pkgver = 20260409.r1
 	pkgrel = 1
 	url = https://github.com/shadowash8/ashrwm
+	install = ashrwm-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = zig
@@ -12,6 +13,7 @@ pkgbase = ashrwm-git
 	provides = ashrwm
 	conflicts = ashrwm
 	options = !debug
+	backup = etc/ashrwm/config.janet
 	source = ashrwm-git::git+https://github.com/shadowash8/ashrwm
 	sha256sums = SKIP
 
