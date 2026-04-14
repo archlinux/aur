@@ -1,5 +1,5 @@
 pkgname=legion-gui-git
-pkgver=0.5.2.r690.5ec45b0
+pkgver=0.6.0.r0.0000000
 pkgrel=1
 pkgdesc="Legion GUI (Sparta successor) - Arch fixes by pacmaN (altbox.de)"
 arch=('any')
@@ -21,7 +21,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd legion
-  printf "0.5.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "0.6.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
