@@ -6,6 +6,7 @@ pkgbase = dexter-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = sqlite
 	provides = dexter
 	conflicts = dexter
 	source_x86_64 = dexter_Linux_x86_64-v0.5.3.tar.gz::https://github.com/remoteoss/dexter/releases/download/v0.5.3/dexter_Linux_x86_64.tar.gz

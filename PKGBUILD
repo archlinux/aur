@@ -7,6 +7,7 @@ pkgdesc="A fast, full-featured Elixir LSP optimized for large Elixir codebases"
 arch=('x86_64' 'aarch64')
 url="https://github.com/remoteoss/dexter"
 license=('MIT')
+depends=('sqlite')
 provides=('dexter')
 conflicts=('dexter')
 
