@@ -1,6 +1,6 @@
 # Maintainer: Luke Hsiao <luke@hsiao.dev>
 pkgname=openring-rs
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc='A tool for generating a webring from Atom/RSS feeds, written in Rust'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -9,7 +9,7 @@ license=('BlueOak-1.0.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 provides=('openring')
-conflicts=('openring')
+conflicts=('openring' 'openring-rs-bin')
 # !lto: Arch enables LTO by default in makepkg.conf; it breaks the link of
 #   *-sys crates that ship pre-compiled C/asm objects (here: aws-lc-sys, pulled
 #   transitively via reqwest -> rustls -> aws-lc-rs).
@@ -17,7 +17,7 @@ conflicts=('openring')
 #   subpackage is noise for AUR distribution.
 options=(!debug !lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lukehsiao/openring-rs/archive/v$pkgver.tar.gz")
-sha256sums=('67722b4b85b662d00951432423dde0c7aa73751b3cf7f17935e35593dbf93a6c')
+sha256sums=('d51a7adf5617e4443465262ee2970e280804c4d2c8d1c2e035058b2ebc19cac0')
 
 prepare() {
     cd "$pkgname-$pkgver"
