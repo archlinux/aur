@@ -22,7 +22,7 @@ optdepends=(
     'noise-suppression-for-voice: ClearCast AI Noise Cancellation (rnnoise)'
     'swh-plugins: Noise Gate and Compressor for mic processing'
 )
-makedepends=('python-installer' 'python-pip' 'uv')
+makedepends=('python-installer' 'uv')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('d1f2cc8bc97d2f76082a57c0ae844a7278d05782c8b5e0e2fba73490c58e343e')
@@ -39,7 +39,7 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     # Bundle dbus-next and pulsectl (not in official Arch repos)
-    pip download --no-deps --dest bundled dbus-next pulsectl
+    python -m pip download --no-deps --dest bundled dbus-next pulsectl
     for whl in bundled/*.whl; do
         python -m installer --destdir="$pkgdir" "$whl"
     done

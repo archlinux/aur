@@ -7,7 +7,6 @@ pkgbase = arctis-sound-manager
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python-installer
-	makedepends = python-pip
 	makedepends = uv
 	depends = python>=3.10
 	depends = pyside6
