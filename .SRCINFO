@@ -1,5 +1,5 @@
 pkgbase = legion-gui
-	pkgdesc = Legion GUI (Sparta successor/fork) from Kali - Arch/CachyOS package by pacmaN (altbox.de)
+	pkgdesc = Legion GUI (Sparta successor) packaged for Arch/CachyOS with compatibility fixes
 	pkgver = 0.6.0.r0.0000000
 	pkgrel = 1
 	url = https://github.com/hackman238/legion

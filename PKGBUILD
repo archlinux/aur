@@ -1,7 +1,7 @@
 pkgname=legion-gui
 pkgver=0.6.0.r0.0000000
 pkgrel=1
-pkgdesc="Legion GUI (Sparta successor/fork) from Kali - Arch/CachyOS package by pacmaN (altbox.de)"
+pkgdesc="Legion GUI (Sparta successor) packaged for Arch/CachyOS with compatibility fixes"
 arch=('any')
 url="https://github.com/hackman238/legion"
 license=('GPL3')
