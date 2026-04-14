@@ -1,7 +1,7 @@
 # Maintainer: Kenneth Shaw <kenshaw at gmail dot com>
 # Maintainer: codekoala <arch@cloudlery.com>
 pkgname=omnictl-bin
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="CLI for Omni - SaaS-simple Kubernetes management platform by Sidero Labs"
 arch=('x86_64' 'aarch64')
@@ -14,9 +14,9 @@ source=("omni-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 source_x86_64=("omnictl-${pkgver}::$url/releases/download/v$pkgver/omnictl-linux-amd64")
 source_aarch64=("omnictl-${pkgver}::$url/releases/download/v$pkgver/omnictl-linux-arm64")
 
-sha256sums=('a9ccb6cd2fb489d2ec0b5f11bf2f830ebff58e86a548eff00f5f0027403afa82')
-sha256sums_x86_64=('f44e21b871208109228f701a6e04b80a54faea19206ee2cfa5d272052902f44b')
-sha256sums_aarch64=('f44e21b871208109228f701a6e04b80a54faea19206ee2cfa5d272052902f44b')
+sha256sums=('b15545f4e431a42b3b4b751d9d9b1aa87d0eb9f0fccc04c973e5cf3ed5bcca82')
+sha256sums_x86_64=('df26f96d803ce32117dd54b5e1cd02c14639089960e31022b15548ef06dba5a1')
+sha256sums_aarch64=('df26f96d803ce32117dd54b5e1cd02c14639089960e31022b15548ef06dba5a1')
 
 package() {
     install -Dm755 "omnictl-${pkgver}" "${pkgdir}/usr/bin/omnictl"
