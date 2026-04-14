@@ -4,7 +4,7 @@
 
 pkgname=zotero-git
 _pkgname="${pkgname%-git}"
-pkgver=8.0.2.r121.g8af91b0
+pkgver=9.0.0.r8.gad4bb17
 pkgrel=1
 pkgdesc="A free, easy-to-use tool to help you collect, organize, cite, and share your research sources, git version"
 arch=('x86_64' 'i686')
