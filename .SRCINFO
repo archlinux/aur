@@ -1,6 +1,6 @@
 pkgbase = litellm
 	pkgdesc = Library to easily interface with LLM API providers.
-	pkgver = 1.83.3
+	pkgver = 1.83.7
 	pkgrel = 1
 	url = https://github.com/BerriAI/litellm
 	arch = any
@@ -60,7 +60,7 @@ pkgbase = litellm
 	optdepends = python-grpcio: grpc
 	optdepends = python-google-cloud-aiplatform: google
 	provides = python-litellm
-	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.83.3.tar.gz
-	sha256sums = 38a452f708f9bb682fdfc3607aa44d68cfe936bf4a18683b0cdc5fb476424a6f
+	source = https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.83.7.tar.gz
+	sha256sums = e2f2cb99df2e2b2eab63f1354faa45c88dd7c8d40c18eb648afb1b349c689633
 
 pkgname = litellm
