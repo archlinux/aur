@@ -2,7 +2,7 @@
 # Maintainer: Daniel Milde <daniel / milde.cz>
 
 pkgname=winbox
-pkgver=4.0.1
+pkgver=4.1
 pkgrel=1
 pkgdesc='Mikrotik RouterOS GUI Configurator'
 url='https://mikrotik.com/download'
@@ -22,7 +22,7 @@ depends=('fontconfig'
          'zlib')
 source=("WinBox-${pkgver}.zip::https://download.mikrotik.com/routeros/winbox/${pkgver}/WinBox_Linux.zip"
         "${pkgname}.desktop")
-sha256sums=('8ec2d08929fd434c4b88881f3354bdf60b057ecd2fb54961dd912df57e326a70'
+sha256sums=('28d35b661c321f5b618936546b7edf6593292549ed4a9584788dadff39a54d8f'
             '2880ba075a3a5d75113707bbf642bd6018f0eb40a2d725d6adfe8d5d2ee14425')
 
 package() {
