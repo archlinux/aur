@@ -1,0 +1,22 @@
+pkgbase = vulnapi-bin
+	pkgdesc = Scan your APIs for security vulnerabilities and weaknesses.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/cerberauth/vulnapi
+	license = MIT
+	conflicts = vulnapi
+	provides = vulnapi
+	arch = aarch64
+	source_aarch64 = https://github.com/cerberauth/vulnapi/releases/download/v0.9.0/vulnapi_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 3d897018367291ec12a4c6c43a92a80feb190514b1fb23c0a4ecf762acae7442
+	arch = armv7h
+	source_armv7h = https://github.com/cerberauth/vulnapi/releases/download/v0.9.0/vulnapi_Linux_armv7.tar.gz
+	sha256sums_armv7h = 0779b20a1da08bb85ea6eb9082d1a0b61f697e0ca96281a15594e06f93f2c2c7
+	arch = i686
+	source_i686 = https://github.com/cerberauth/vulnapi/releases/download/v0.9.0/vulnapi_Linux_i386.tar.gz
+	sha256sums_i686 = adfcc03fa009da9185a032ac834c73f81a1b98dce6a6ee3b3a8eba81dba3842f
+	arch = x86_64
+	source_x86_64 = https://github.com/cerberauth/vulnapi/releases/download/v0.9.0/vulnapi_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ecbba17c9e6860be81dab3b4955103176b06a38026007ccf3af964660c998f4e
+	
+pkgname = vulnapi-bin
