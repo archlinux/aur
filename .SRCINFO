@@ -1,0 +1,13 @@
+pkgbase = digest
+	pkgdesc = Rust CLI tool for generating repository digests with directory trees and concatenated source output.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/iktrnch/git-digest
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	source = digest-0.1.0.tar.gz::https://github.com/iktrnch/git-digest/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = dabf367d679b57991d88bf4053e5a36a678c55d12e8cc83042795ab8a6489fc9
+
+pkgname = digest
