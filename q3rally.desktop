@@ -2,7 +2,7 @@
 Type=Application
 Version=1.0
 Name=Q3Rally
-Comment=A car driving and car combat game
+Comment=Open-source survival racing game on the ioquake3 engine.
 Icon=quake3
 Exec=q3rally
 Terminal=false
