@@ -1,7 +1,7 @@
 pkgbase = workbuddy-bin
 	pkgdesc = Work Smart，Not Hard
 	pkgver = 4.9.6.25479271
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.codebuddy.ai/agents
 	arch = x86_64
 	arch = aarch64

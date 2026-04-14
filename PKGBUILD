@@ -2,7 +2,7 @@
 
 pkgname=workbuddy-bin
 pkgver=4.9.6.25479271
-pkgrel=1
+pkgrel=2
 _commit=21f0d738
 pkgdesc="Work Smart，Not Hard"
 arch=('x86_64' 'aarch64')
@@ -32,15 +32,9 @@ prepare() {
 
 build() {
 	cd WorkBuddy/WorkBuddy.app/Contents/Resources
-	npm install @vscode/ripgrep --omit=dev
+	npm install @vscode/ripgrep @vscode/sqlite3 @vscode/spdlog --omit=dev
 	cp -a node_modules/* app/node_modules/
 	icns2png -x WorkBuddy.icns
-	cd app
-	for mod in @vscode/sqlite3 @vscode/spdlog;do
-		cd node_modules/${mod}
-		node-gyp rebuild
-		cd -
-	done
 }
 
 package() {
