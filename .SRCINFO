@@ -1,6 +1,6 @@
 pkgbase = jverein
 	pkgdesc = A club management plugin for jameica.
-	pkgver = 4.1.4
+	pkgver = 4.1.5
 	pkgrel = 1
 	url = https://openjverein.github.io/
 	install = jverein.install
@@ -10,7 +10,7 @@ pkgbase = jverein
 	depends = java-runtime>=1.5
 	depends = jameica>=2.12
 	depends = hibiscus>=2.12
-	source = jverein-4.1.4.zip::https://github.com/openjverein/jverein/releases/download/4.1.4/jverein.4.1.4.zip
-	sha256sums = e6a2f71df8e9e52e580902678c524fc3c1f311ffe99d85669d81f0aa22e9672f
+	source = jverein-4.1.5.zip::https://github.com/openjverein/jverein/releases/download/4.1.5/jverein.4.1.5.zip
+	sha256sums = f4b21b6ae830dd96366c24eb7033be7876ef34ea32fc059b198692665b77458c
 
 pkgname = jverein
