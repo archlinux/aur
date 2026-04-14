@@ -1,7 +1,7 @@
 # Maintainer: Himalian <Himalian9227@proton.me>, phucvinh57 <npvinh0507@gmail.com>
 pkgname=biopass-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An alternative to Windows Hello/Howdy"
 arch=('x86_64' 'aarch64')
 url="https://github.com/TickLabVN/biopass"
