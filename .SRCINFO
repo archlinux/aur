@@ -1,0 +1,15 @@
+pkgbase = codeinput
+	pkgdesc = A powerful CLI tool for parsing, analyzing, and managing CODEOWNERS files
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeinput.com/cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc
+	depends = openssl
+	makedepends = cargo
+	source = codeinput-0.1.0.tar.gz::https://github.com/code-input/cli/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = codeinput
