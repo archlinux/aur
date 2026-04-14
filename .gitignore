@@ -1,0 +1,9 @@
+.SRCINFO
+PKGBUILD
+legion-gui.desktop
+legion-gui-launcher
+pkg/
+src/
+legion/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
