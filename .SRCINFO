@@ -1,6 +1,6 @@
 pkgbase = fluxer-tui-git
 	pkgdesc = A terminal-based chat client for the Fluxer messaging platform (git version)
-	pkgver = 0.7.1.r0.g0000000
+	pkgver = 0.7.2.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/dogbonewish/fluxer-tui
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Stephanie M. shteppi@dorcus.digital
 # AUR Package for Fluxer TUI (git version)
 pkgname=fluxer-tui-git
-pkgver=0.7.1.r0.g0000000
+pkgver=0.7.2.r0.g0000000
 pkgrel=1
 pkgdesc="A terminal-based chat client for the Fluxer messaging platform (git version)"
 arch=('x86_64')
