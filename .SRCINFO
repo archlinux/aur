@@ -1,0 +1,21 @@
+pkgbase = anilist-tui
+	pkgdesc = A terminal user interface for browsing and managing your AniList anime/manga library
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/pndpti/anilist-tui
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-textual
+	depends = python-httpx
+	depends = python-html2text
+	depends = python-textual-image
+	depends = python-pillow
+	source = anilist_tui-0.1.2.tar.gz::https://github.com/pndpti/anilist-tui/releases/download/v0.1.2/anilist_tui-0.1.2.tar.gz
+	sha256sums = 9e62266217f62b0d1e323a0136eabd313539ddb46e2e1fe68413eecc33708ed5
+
+pkgname = anilist-tui
