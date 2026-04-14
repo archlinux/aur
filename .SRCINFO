@@ -1,5 +1,5 @@
 pkgbase = legion-gui-git
-	pkgdesc = Legion GUI (Sparta successor) - Arch fixes by pacmaN (altbox.de)
+	pkgdesc = MOVED: use 'legion-gui' (Arch fixes by pacmaN / altbox.de)
 	pkgver = 0.6.0.r0.0000000
 	pkgrel = 1
 	url = https://github.com/hackman238/legion
