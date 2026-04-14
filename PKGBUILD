@@ -2,7 +2,7 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=ghdl-llvm-git
-pkgver=6.0.0dev.r10078.g56a4d3e4a
+pkgver=7.0.0dev.r10904.g3dcaf42a5
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='VHDL simulator - LLVM back-end'
@@ -25,6 +25,8 @@ source=(
 	"ghdl::git+https://github.com/ghdl/ghdl.git"
 )
 sha256sums=('SKIP')
+
+options=('!lto')
 
 pkgver() {
 	cd "${srcdir}/ghdl"

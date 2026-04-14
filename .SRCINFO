@@ -1,6 +1,6 @@
 pkgbase = ghdl-llvm-git
 	pkgdesc = VHDL simulator - LLVM back-end
-	pkgver = 6.0.0dev.r10078.g56a4d3e4a
+	pkgver = 7.0.0dev.r10904.g3dcaf42a5
 	pkgrel = 1
 	url = https://github.com/ghdl/ghdl
 	arch = x86_64
@@ -19,11 +19,12 @@ pkgbase = ghdl-llvm-git
 	makedepends = clang
 	depends = gcc-ada
 	optdepends = python-pyghdl: python bindings and utilities
-	provides = ghdl=6.0.0dev.r10078.g56a4d3e4a
-	provides = ghdl-git=6.0.0dev.r10078.g56a4d3e4a
+	provides = ghdl=7.0.0dev.r10904.g3dcaf42a5
+	provides = ghdl-git=7.0.0dev.r10904.g3dcaf42a5
 	conflicts = ghdl
 	conflicts = ghdl-gcc-git
 	conflicts = ghdl-mcode-git
+	options = !lto
 	source = ghdl::git+https://github.com/ghdl/ghdl.git
 	sha256sums = SKIP
 
