@@ -9,8 +9,6 @@ license=('GPL3')
 depends=('python' 'nmap' 'qt6-base' 'python-pyqt6' 'polkit')
 makedepends=('git' 'python-pip' 'python-virtualenv')
 
-provides=('legion-gui')
-conflicts=('legion')
 
 source=(
   "git+https://github.com/hackman238/legion.git"
@@ -80,15 +78,8 @@ package() {
   find "$pkgdir/opt/legion-gui/venv/bin" -maxdepth 1 -type l -name "*thon" ! -name "python" ! -name "python3*" -delete 2>/dev/null || true
 
 
-  # Wrapper: /usr/bin/legion
+
   install -d "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/legion" <<'WRAP'
-#!/usr/bin/env bash
-set -euo pipefail
-cd /opt/legion-gui
-exec ./venv/bin/python ./legion.py "$@"
-WRAP
-  chmod 755 "$pkgdir/usr/bin/legion"
 
   # Polkit Launcher + Darkmode (X11/GTK3)
   install -m755 "$srcdir/legion-gui-launcher" "$pkgdir/usr/bin/legion-gui"
