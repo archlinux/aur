@@ -1,0 +1,18 @@
+pkgbase = flatalias
+	pkgdesc = Turn Flatpak application IDs into simple shell commands with Flatalias.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/PhrozenByte/flatalias
+	arch = any
+	license = GPL-3.0-only
+	makedepends = findutils
+	makedepends = sed
+	depends = bash
+	depends = coreutils
+	depends = awk
+	depends = fzf
+	depends = flatpak
+	source = flatalias-1.0.0.tar.gz::https://github.com/PhrozenByte/flatalias/archive/v1.0.0.tar.gz
+	sha256sums = 144da7a83f944f8b778e89a3bb68a919b279e13d5de5f0fc8c9108ae71cd9b89
+
+pkgname = flatalias
