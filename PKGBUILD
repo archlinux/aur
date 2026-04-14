@@ -10,6 +10,7 @@ makedepends=('git')
 provides=('hyprlev')
 conflicts=('hyprlev')
 
+install=hyprlev-git.install
 source=("git+https://github.com/Pikalev15/hyprlev.git")
 sha256sums=('SKIP')
 

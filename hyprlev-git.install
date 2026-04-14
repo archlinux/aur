@@ -1,0 +1,5 @@
+post_install() {
+    echo "Hyprlev installed successfully."
+    echo "Run: hyprlev-install"
+}
+
