@@ -22,11 +22,10 @@ build() {
 }
 
 package() {
-    # create target directories within the sandbox root ($pkgdir).
+    # Ziel‑Verzeichnisse innerhalb des Sandbox‑Root ($pkgdir) anlegen
     install -dm755 "$pkgdir/usr/bin"
-    #install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 
-    # copy the actual built binary
-    install -m755 "$srcdir/go-check-cert/$pkgname" \
+    # Das tatsächlich gebaute Binary kopieren
+    install -m755 "$srcdir/go-check-cert/cert-checker" \
                    "$pkgdir/usr/bin/$pkgname"
 }
