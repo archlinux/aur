@@ -2,7 +2,7 @@
 pkgname=leshade-bin
 _pkgname=leshade
 pkgver=2.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An ReShade manager for linux."
 arch=('x86_64')
 url="https://github.com/Ishidawg/LeShade"

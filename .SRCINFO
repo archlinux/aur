@@ -1,7 +1,7 @@
 pkgbase = leshade-bin
 	pkgdesc = An ReShade manager for linux.
 	pkgver = 2.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ishidawg/LeShade
 	arch = x86_64
 	license = MIT
