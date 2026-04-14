@@ -1,5 +1,5 @@
 [nnote]
 source="github"
 github="stiermid/nnote"
-use_latest_relase=true
+use_max_tag=true
 prefix="v"
