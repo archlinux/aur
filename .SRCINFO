@@ -1,0 +1,21 @@
+pkgbase = sigil-shot-git
+	pkgdesc = Lean X11 screenshot tool for Arch-family systems
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/veasman/sigil
+	arch = x86_64
+	license = MIT
+	makedepends = base-devel
+	makedepends = git
+	makedepends = pkgconf
+	depends = libx11
+	depends = libxrandr
+	depends = libxrender
+	depends = libpng
+	depends = xclip
+	conflicts = sigil
+	conflicts = sigil-git
+	source = git+https://github.com/veasman/sigil.git
+	sha256sums = SKIP
+
+pkgname = sigil-shot-git
