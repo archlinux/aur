@@ -1,0 +1,13 @@
+pkgbase = sing-geosite-rule-set-git
+	pkgdesc = Geosite Rule Sets for sing-box
+	pkgver = 20260414013320
+	pkgrel = 1
+	url = https://github.com/SagerNet/sing-geosite
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	provides = sing-geosite-rule-set=20260414013320
+	source = sing-geosite-rule-set-git::git+https://github.com/SagerNet/sing-geosite
+	sha256sums = SKIP
+
+pkgname = sing-geosite-rule-set-git
