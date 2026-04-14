@@ -1,7 +1,7 @@
 # Maintainer: Stephanie M. shteppi@dorcus.digital
 # AUR Package for Fluxer TUI (release version)
 pkgname=fluxer-tui
-pkgver=0.7.2
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="A terminal-based chat client for the Fluxer messaging platform"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!lto')
 depends=('gcc-libs')
 makedepends=('cargo' 'nasm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dogbonewish/fluxer-tui/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('41b8d8a8d241389702b2c8d5ae0b14dc8448469ce0bc15912a1d1276223cc48c')
+sha256sums=('5c032192c93a6b7ccf5d1fad360ddcc89e3a4fa44f331c0e312b55386624632e')
 
 build() {
     cd "$srcdir/fluxer-tui-$pkgver"
