@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=mujoco
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Multi-Joint dynamics with Contact. A general purpose physics simulator."
 arch=($CARCH)
@@ -24,7 +24,7 @@ makedepends=(
   'mold'
 )
 source=("${pkgname}::git+https://github.com/deepmind/mujoco.git#tag=$pkgver")
-sha256sums=('65a40542819b5e39f408392228e4038af77257274162badd312e8558b3cfa73c')
+sha256sums=('a6680e32d1c1441e9cc6a145701ed347660cce5d472265d65d7cd74190af8ffc')
 
 build() {
   cd "${pkgname}"
