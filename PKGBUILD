@@ -2,7 +2,7 @@
 
 _name=gpoddersync
 pkgname=nextcloud-app-gpoddersync
-pkgver=3.13.3
+pkgver=3.16.0
 pkgrel=1
 pkgdesc="gpodder.net api for Nextcloud"
 arch=(any)
@@ -12,8 +12,8 @@ makedepends=(nextcloud yq)
 groups=(nextcloud-apps)
 options=(!strip)
 source=($pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_name.tar.gz)
-sha256sums=('0cd2dc4a7633fd1d7adc478f9e6b64ca4e0201943c1977aad89d1c95df52d776')
-b2sums=('e3f809b7dd02e866f778cf4d7c87f7ae06b8413bb2a36629cf1e0877a049d016d6f59817fbdcfad5081945e4282a097e83aef3369158df054d727ed9dc83885b')
+sha256sums=('f4171755ab99585966957b67c1d4a8e712126e186cb1aedaa39ba52a9ce23a75')
+b2sums=('0ef11e9f0a7ae123fce9b5190c6a30cb6983892f12f64f3645f4853ffabe9d7088bc3732a250d27ee68309b3186f74e28798b72afe02a9ea7b2a1ace9140afef')
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
