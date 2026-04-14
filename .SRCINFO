@@ -1,6 +1,6 @@
 pkgbase = lean-ctx-bin
 	pkgdesc = Context Engineering Layer for AI Coding — 36 intelligent tools, 8 read modes, 90+ shell patterns, neural token optimization, persistent knowledge, multi-agent orchestration. Reduces AI costs by 60-99%. (pre-built binary)
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://leanctx.com
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = lean-ctx-bin
 	depends = gcc-libs
 	provides = lean-ctx
 	conflicts = lean-ctx
-	source = lean-ctx-3.1.0.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.1.0/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/yvgude/lean-ctx/v3.1.0/LICENSE
-	sha256sums = 43b853d7a6dd8a515a400c890cb8cdfbd71d05cd5027e419ab46d1e69f9954ee
+	source = lean-ctx-3.1.1.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.1.1/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/yvgude/lean-ctx/v3.1.1/LICENSE
+	sha256sums = f5fcb2251c507e4a6c664311eb2186205a2f24e72227966c05e17f92d3926c2e
 	sha256sums = SKIP
 
 pkgname = lean-ctx-bin
