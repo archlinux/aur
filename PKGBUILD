@@ -3,9 +3,9 @@
 # Contributor: Davide Poderini <davide at poder dot in>
 
 pkgname=kak-tree-sitter
-pkgver=3.2.0
+pkgver=3.2.1
 _ctlname=ktsctl
-_ctlver=3.1.1
+_ctlver=3.1.2
 pkgrel=1
 pkgdesc='tree-sitter meets Kakoune '
 arch=('x86_64')
@@ -31,7 +31,7 @@ prepare() {
 }
 
 build() {
-    export RUSTUP_TOOLCHAIN=1.86.0
+    export RUSTUP_TOOLCHAIN=1.88.0
     export CARGO_TARGET_DIR=target
     
     printf "\n%s\n" "Building kak-tree-sitter" 
