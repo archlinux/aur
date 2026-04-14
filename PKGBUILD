@@ -1,7 +1,7 @@
 # Maintainer: Repeater <fakeroration@gmail.com>
 pkgname=omniget-git
 _pkgname=${pkgname%-git}
-pkgver=0.3.6.r1.32c91a3
+pkgver=0.4.0.r48.6b954a2
 pkgrel=1
 options=('!buildflags')
 pkgdesc="Free,open source desktop app for downloading videos and media from the internet"
@@ -32,6 +32,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_pkgname"
+  export OMNIGET_I18N_STRICT=0
 	pnpm tauri build --no-bundle
 }
 
