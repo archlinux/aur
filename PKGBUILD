@@ -2,7 +2,7 @@
 # Contributor: Dr. Abiira Nathan <nabiira2by2@gmail.com>
 
 pkgname=solidc-git
-pkgver=1.10.3.r0.gca5e38b
+pkgver=1.10.4.r0.ga560653
 pkgrel=1
 pkgdesc="A robust C library for data structures, concurrency, and utilities."
 arch=('x86_64' 'aarch64')
@@ -42,8 +42,4 @@ check() {
 package() {
   cd solidc
   DESTDIR="${pkgdir}" cmake --install build
-
-  # Install README and License
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
