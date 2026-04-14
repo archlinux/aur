@@ -2,7 +2,7 @@
 # Maintainer: Obedience Corp <contact@obediencecorp.com>
 
 pkgname='camp-graph-bin'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Knowledge graph visualization plugin for the camp CLI'
 url='https://github.com/Obedience-Corp/camp-graph'
@@ -12,10 +12,10 @@ provides=('camp-graph')
 conflicts=('camp-graph')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Obedience-Corp/camp-graph/releases/download/v${pkgver}/camp-graph-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('dce1fbcd0a11d7d1c7b63e1aca3c7bbd5085a2698970bf94df02a62aa0d3c188')
+sha256sums_aarch64=('8e543ed8c9b4e88094ae85af59901fd8a42c5c650b62e9f16d8424c4179818a5')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Obedience-Corp/camp-graph/releases/download/v${pkgver}/camp-graph-${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('2862c1db8dfc3011be481d54165ae05aa9087a520ba3f9954828e213965048c2')
+sha256sums_x86_64=('7ccbd84aa9752fad65e2b0129bc07c985b515812a88c6b4018f2079ba9712a53')
 
 package() {
   install -Dm755 "./camp-graph" "${pkgdir}/usr/bin/camp-graph"
