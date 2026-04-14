@@ -1,6 +1,5 @@
-# diff -Nau freenginx-1.28.0/src/os/unix/ngx_setproctitle.c freenginx-1.28.0_patched/src/os/unix/ngx_setproctitle.c >freenginx/ngx_setproctitle.c.patch
---- freenginx-1.28.0/src/os/unix/ngx_setproctitle.c	2025-04-22 05:53:54.000000000 -0300
-+++ freenginx-1.28.0_patched/src/os/unix/ngx_setproctitle.c	2026-04-02 13:21:45.266731702 -0300
+--- freenginx-1.30.0/src/os/unix/ngx_setproctitle.c	2026-04-14 05:23:27.000000000 -0300
++++ freenginx-1.30.0_patched/src/os/unix/ngx_setproctitle.c	2026-04-14 20:30:11.150573362 -0300
 @@ -89,7 +89,7 @@
  
      ngx_os_argv[1] = NULL;
