@@ -1,4 +1,4 @@
-# Maintainer: OneNoted <38808968+OneNoted@users.noreply.github.com>
+# Maintainer: Jonatan Jonasson <notes@madeingotland.com>
 
 pkgname=libggml-cuda-bin
 _upstream_pkgname=ggml
@@ -33,4 +33,3 @@ sha256sums=('a39a820b28db14a343158fdd28a0480527817bca014974c8d320fd9ce8de1b05')
 package() {
   bsdtar -xf "${srcdir}/${_asset_name}" -C "${pkgdir}"
 }
-
