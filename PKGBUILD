@@ -29,7 +29,6 @@ depends=(
   'libxi'
   'libxrender'
   'libxtst'
-  'java-runtime>=21'
 )
 
 package() {

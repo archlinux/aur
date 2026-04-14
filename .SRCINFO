@@ -12,7 +12,6 @@ pkgbase = tritium-launcher-bin
 	depends = libxi
 	depends = libxrender
 	depends = libxtst
-	depends = java-runtime>=21
 	source = tritium-launcher-bin-0.1.5.tar.gz::https://github.com/Tritium-Launcher/Launcher/releases/download/v0.1.5/tritium-linux-x64.tar.gz
 	source = tritium-launcher-bin.desktop
 	source = tritium-launcher.png
