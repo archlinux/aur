@@ -1,6 +1,6 @@
 pkgbase = kl-bin
 	pkgdesc = An interactive Kubernetes log viewer for your terminal.
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/robinovitch61/kl
 	license = MIT
@@ -8,13 +8,13 @@ pkgbase = kl-bin
 	conflicts = kl
 	provides = kl
 	arch = aarch64
-	source_aarch64 = https://github.com/robinovitch61/kl/releases/download/v0.9.0/kl_0.9.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 560b085beb324e49e274f6e17661b8bc07e7978c2c417739317317b33e0fa246
+	source_aarch64 = https://github.com/robinovitch61/kl/releases/download/v0.9.1/kl_0.9.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ec86fe5d2cbf6c9960afb50251016ecc4e6257ff0d96313341e3f972897c9be6
 	arch = i686
-	source_i686 = https://github.com/robinovitch61/kl/releases/download/v0.9.0/kl_0.9.0_Linux_i386.tar.gz
-	sha256sums_i686 = 005d302521d4872ae7ec9f2b1af6409b8a2b9f7728b5f55b4536cd9d4304def5
+	source_i686 = https://github.com/robinovitch61/kl/releases/download/v0.9.1/kl_0.9.1_Linux_i386.tar.gz
+	sha256sums_i686 = 2b2642c8aa6ef85b07f2df176883e10d0052213a8ede093701f9e91b8663febd
 	arch = x86_64
-	source_x86_64 = https://github.com/robinovitch61/kl/releases/download/v0.9.0/kl_0.9.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 6e6a9cb8363e1a43a32c409891742907b1eb66d7d72b766c5db7c38d5804c434
+	source_x86_64 = https://github.com/robinovitch61/kl/releases/download/v0.9.1/kl_0.9.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 2fb308cbc9dc0fd85a5fb4233e209d986fd55f7a7d774713c7583dbfc83ae2e9
 	
 pkgname = kl-bin
