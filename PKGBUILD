@@ -18,9 +18,9 @@ pkgrel=4
 arch=('i686' 'x86_64')
 url='https://pidgin.im/'
 license=('GPL-2.0-or-later')
-#makedepends=('startup-notification' 'libxss' 'nss' 'libsasl' 'libsm'
-#             'libidn' 'python' 'hicolor-icon-theme' 'arc-icon-theme' 'tk' 'libnsl' 'ca-certificates'
-#             'intltool' 'libxcrypt' 'perl' 'quilt' 'gtk2')
+makedepends=('startup-notification' 'libxss' 'nss' 'libsasl' 'libsm'
+             'libidn' 'python' 'hicolor-icon-theme' 'arc-icon-theme' 'tk' 'libnsl' 'ca-certificates'
+             'intltool' 'libxcrypt' 'perl' 'quilt' 'gtk2')
 source=(https://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/${_pkgbase}-${pkgver}.tar.bz2
         https://deb.debian.org/debian/pool/main/p/pidgin/pidgin_${_debver}-${_debrel}.debian.tar.xz
         https://git.hyperbola.info:50100/packages/extra.git/plain/pidgin/privacy.patch)
