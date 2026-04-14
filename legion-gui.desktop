@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Legion GUI
+Comment=Legion GUI for Arch
+Exec=legion-gui
+Icon=legion-gui
+Terminal=false
+Categories=Security;Network;
