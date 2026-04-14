@@ -1,7 +1,7 @@
 # Maintainer: Jas Singh <singh.jaskir@outlook.com>
 
 pkgname=wayle
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A configurable desktop shell for Wayland compositors"
 arch=('x86_64')
@@ -11,6 +11,7 @@ conflicts=("${pkgname}-bin" "${pkgname}-git")
 depends=(
     'gtk4'
     'gtk4-layer-shell'
+    'gtksourceview5'
     'libpulse'
     'fftw'
     'libpipewire'
@@ -31,7 +32,7 @@ optdepends=(
 )
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bf2cc9294b0f7a85bd9a9514452db692b251fa5588528c391cc5137e78ac3bee')
+sha256sums=('6bddea66c5012d781205ffc62c5e52ca3d8d80e90001e899279750054c928870')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -50,6 +51,7 @@ package() {
     cd "${pkgname}-${pkgver}"
 
     install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "target/release/${pkgname}-settings" "${pkgdir}/usr/bin/${pkgname}-settings"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -dm755 "${pkgdir}/usr/share/wayle/icons"
@@ -64,4 +66,8 @@ package() {
     install -Dm644 wayle.fish "${pkgdir}/usr/share/fish/vendor_completions.d/wayle.fish"
 
     install -Dm644 resources/wayle.service "${pkgdir}/usr/lib/systemd/user/wayle.service"
+    install -Dm644 resources/com.wayle.settings.desktop \
+        "${pkgdir}/usr/share/applications/com.wayle.settings.desktop"
+    install -Dm644 resources/wayle-settings.svg \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wayle-settings.svg"
 }
