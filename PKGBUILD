@@ -1,39 +1,44 @@
 # Maintainer: Erffy <https://github.com/erffy>
 
 _pkgbase="zig-waybar-contrib"
-pkgname="$_pkgbase"
-pkgver=1.4.2
-pkgrel=6
-pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring'
+pkgname="${_pkgbase}"
+pkgver=26.04.14
+pkgrel=1
+pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring (Stable binary version)'
 arch=('x86_64')
 url="https://codeberg.org/erffy/$_pkgbase"
 license=('GPL3')
 provides=("zig-waybar-contrib=$pkgver")
 conflicts=('zig-waybar-contrib')
-depends=('fakeroot')
-makedepends=('git' 'zig>=0.15.0')
 optdepends=(
-  'rocm-smi-lib: AMD GPU Backend'
-  'amdsmi: AMD GPU Backend'
-  'cuda: NVIDIA GPU Backend'
+  'fakeroot: updates module'
 )
-source=("$_pkgbase::git+$url.git#tag=$pkgver")
-md5sums=('SKIP')
-
-build() {
-  cd "$_pkgbase"
-  
-  zig build -Drelease
-}
+source=(
+  "zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.04.14/zig-waybar-contrib-release-26.04.14.zip"
+  "config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.04.14/config.waybar.jsonc"
+  "LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.04.14/LICENSE"
+)
+md5sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 
 package() {
-  cd "$_pkgbase"
-  
-  for bin in zig-out/bin/*; do
-    [[ -x "$bin" && -f "$bin" ]] || continue
-    install -Dm755 $bin "$pkgdir/usr/bin/waybar-module-$bin"
+  cd "$srcdir"
+
+  # Extract release artifact into a staging directory
+  install -d binaries
+  bsdtar -xf zig-waybar-contrib.zip -C binaries
+
+  # Install each binary under the waybar-module- prefix
+  for bin in binaries/*; do
+    install -Dm755 "$bin" "$pkgdir/usr/bin/waybar-module-$(basename "$bin")"
   done
-  
+
+  # Patch the placeholder path in the bundled config
+  sed -i 's|{{EXECUTABLE_PATH}}|/usr/bin|g' config.waybar.jsonc
+
   install -Dm644 config.waybar.jsonc "$pkgdir/usr/share/$_pkgbase/config.jsonc"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 }
