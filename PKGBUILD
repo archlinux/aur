@@ -1,4 +1,4 @@
-# Maintainer: OneNoted <38808968+OneNoted@users.noreply.github.com>
+# Maintainer: Jonatan Jonasson <notes@madeingotland.com>
 
 pkgname=whisper.cpp-cuda-bin
 _upstream_pkgname=whisper.cpp
@@ -34,4 +34,3 @@ sha256sums=('c9970a080ca277fad0a5929c726c3fb7f437746e7d5da11910cccdca641156d5')
 package() {
   bsdtar -xf "${srcdir}/${_asset_name}" -C "${pkgdir}"
 }
-
