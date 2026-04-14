@@ -2,7 +2,7 @@
 # Previous maintainer: Wasabi <wasabithumbs@gmail.com>
 pkgname=open-goal-launcher
 _binname=OpenGOAL-Launcher
-pkgver="2.9.0"
+pkgver="2.9.1"
 pkgrel=1
 pkgdesc="A launcher for the OpenGOAL Project to simplify usage and installation"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=('curl' 'wget' 'file' 'cargo' 'nodejs>=18.18.0' 'yarn' 'npm')
 conflicts=('open-goal-launcher-bin')
 _tarball="v${pkgver}.tar.gz"
 source=("https://github.com/open-goal/launcher/archive/refs/tags/${_tarball}" "${pkgname}.desktop")
-md5sums=("23fe80f87b7fdc3964d1a39aa99dcad6" "SKIP")
+md5sums=("88af24b4202d9e0b0c465a49543bb84b" "SKIP")
 options=(!strip)
 
 prepare() {
@@ -22,8 +22,6 @@ prepare() {
     chmod +rw "launcher-${pkgver}"
     cd "launcher-${pkgver}"
     yarn install
-    # Align JS plugin versions with Rust crate versions
-    yarn add @tauri-apps/plugin-fs@^2.5.0 @tauri-apps/plugin-dialog@^2.7.0
     cd src-tauri
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
