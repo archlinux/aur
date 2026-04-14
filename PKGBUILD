@@ -5,12 +5,14 @@ pkgrel=1
 pkgdesc="Official Gaomon Tablet Linux Driver (M5 V2)"
 arch=('x86_64')
 url="https://www.gaomon.cn/"
-license=('custom')
+license=('0BSD' 'LGPL')
 depends=('xdotool' 'libx11' 'libxext' 'libxtst')
 options=('!strip')
 install="${pkgname}.install"
-source=("https://driver.gaomon.cn/download/Driver/Linux/GaomonTablet_LinuxDriver_v${pkgver}.x86_64.tar.xz")
-sha256sums=('d3db3cad152049e6913ae744f497686a8c4b61ef91fe664c84ffe55ebc96bd01')
+source=("https://driver.gaomon.cn/download/Driver/Linux/GaomonTablet_LinuxDriver_v${pkgver}.x86_64.tar.xz"
+        "LICENSE")
+sha256sums=('d3db3cad152049e6913ae744f497686a8c4b61ef91fe664c84ffe55ebc96bd01'
+            '150b7f86555bd68e638ababa1895ba2e5caed4efaa380235b00db6f5b59ac1d9')
 
 package() {
     cd "${srcdir}"
@@ -47,6 +49,8 @@ package() {
         "${pkgdir}/usr/share/pixmaps/gaomontablet.png"
 
     # License
+    install -Dm644 "${srcdir}/LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 gaomon/gaomontablet/LGPL \
         "${pkgdir}/usr/share/licenses/${pkgname}/LGPL"
 
