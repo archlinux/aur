@@ -1,7 +1,7 @@
 # Maintainer: jhideki
 pkgname='pywal-spicetify'
-pkgver=0.1.1
-pkgrel=4
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Apply wal colors to spicetify"
 arch=('x86_64')
 url="https://github.com/jhideki/pywal-spicetify"
