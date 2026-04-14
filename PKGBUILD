@@ -1,0 +1,27 @@
+# Maintainer: DeepChirp <deepchirp@archlinuxcn.org>
+# Contributor: everyx <lunt.luo#gmail.com>
+
+pkgname=sing-geoip-rule-set-git
+pkgver=20260412
+provides=("sing-geoip-rule-set=${pkgver}")
+pkgrel=1
+pkgdesc="GeoIP Rule Sets for sing-box"
+arch=(any)
+url="https://github.com/SagerNet/sing-geoip"
+license=(GPL-3.0-or-later)
+makedepends=('git')
+
+source=("${pkgname}::git+${url}")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    git tag --list --sort=-version:refname | head -n 1
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  git switch rule-set
+
+  install -Dm644 *.srs -t "${pkgdir}/usr/share/sing-box/rule-set"
+}

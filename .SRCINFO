@@ -1,0 +1,13 @@
+pkgbase = sing-geoip-rule-set-git
+	pkgdesc = GeoIP Rule Sets for sing-box
+	pkgver = 20260412
+	pkgrel = 1
+	url = https://github.com/SagerNet/sing-geoip
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	provides = sing-geoip-rule-set=20260412
+	source = sing-geoip-rule-set-git::git+https://github.com/SagerNet/sing-geoip
+	sha256sums = SKIP
+
+pkgname = sing-geoip-rule-set-git
