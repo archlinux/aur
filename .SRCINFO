@@ -1,0 +1,18 @@
+pkgbase = prism-tui-bin
+	pkgdesc = Terminal user interface for PrismLauncher
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/OneNoted/Prism-TUI
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = prism-tui=0.3.0
+	conflicts = prism-tui
+	conflicts = prism-tui-git
+	source = https://github.com/OneNoted/Prism-TUI/releases/download/v0.3.0/prism-tui-v0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE::https://github.com/OneNoted/Prism-TUI/raw/v0.3.0/LICENSE
+	sha256sums = f1e47b2eefc4dc1cf13f2bf7fcd92dbf3d6d3fa95652b63143704f434b9e3d14
+	sha256sums = b65db193e1889c2fc3529ddacbc78678a56394c1873804ae38267885da984b16
+
+pkgname = prism-tui-bin
