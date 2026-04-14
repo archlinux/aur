@@ -11,7 +11,7 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=openvox
-pkgver=8.25.0
+pkgver=8.26.0
 pkgrel=1
 pkgdesc='Server automation framework and application'
 arch=('any')
@@ -77,7 +77,7 @@ source=("${pkgname}-${pkgver}::git+https://github.com/OpenVoxProject/openvox#tag
         "zfs_core::git+https://github.com/OpenVoxProject/puppetlabs-zfs_core#tag=${_zfs_tag}"
         "zone_core::git+https://github.com/OpenVoxProject/puppetlabs-zone_core#tag=${_zone_tag}"
         )
-sha512sums=('c8088a8792dbbaf5382779f04dc9727ca0af0d5668829b929882f5382ac2120f874dcdf90840e7876b9394325b614f2215a3ecc829073385ead90ccd0e8388c4'
+sha512sums=('a2f5b91c82d13759b1fc7c470d5d437aaa204ec1888918563ac2b6b5b81088fd5eca30c25145f7de32ccfb7f2aac087d372515a740af07b2c1d12c76bc4799d4'
             '6ebc4603db2e702623070f1703d3e82a25c689b8c149c3328660ab43d74bfa49c5853aa14d267b48c9f91d12bd4a96579bcf3184f8881a57748763484892bf90'
             '584093f64216becfeeb45514c9308c7df6819b39b93489790656f6e206c52abb7ed7077a9630c3f0aa2a6b9a6e57502f84cb1a862c03df325f2d97772773c4ce'
             '2bcb93ea1d9d6312205aa1975b1e233414d7bd9c713fb2e59a04f2f3ca436b89dde5b3070b3899fc0a3b5259866c6f3039c06517041d56d73dba08926e7afbec'
