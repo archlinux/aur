@@ -1,4 +1,4 @@
-Maintainer: RonGus <rongus760@gmail.com>
+# Maintainer: RonGus <rongus760@gmail.com>
 pkgname=jentlememes-launcher-bin
 pkgver=1.1.0
 pkgrel=1

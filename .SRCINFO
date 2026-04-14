@@ -1,5 +1,5 @@
 pkgbase = jentlememes-launcher-bin
-	pkgdesc = JentleMemes Minecraft launcher (official prebuilt AppImage, repackaged)
+	pkgdesc = JentleMemes Minecraft launcher (prebuilt pacman package from upstream releases)
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/rongus760-ship-it/JentleMemes-Launcher
@@ -9,11 +9,13 @@ pkgbase = jentlememes-launcher-bin
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = libayatana-appindicator
+	depends = gdk-pixbuf2
+	depends = openssl
 	depends = hicolor-icon-theme
 	provides = jentlememes-launcher
 	conflicts = jentlememes-launcher
 	options = !strip
-	source = jentlememes-launcher_1.1.0_amd64.AppImage::https://github.com/rongus760-ship-it/JentleMemes-Launcher/releases/download/v1.1.0/jentlememes-launcher_1.1.0_amd64.AppImage
-	sha256sums = 673c19060a7513935f01955d4839fc7558d96b929f90adc83e3fad61e6401601
+	source = jentlememes-launcher-bin-1.1.0-1-x86_64.pkg.tar.zst::https://github.com/rongus760-ship-it/JentleMemes-Launcher/releases/download/v1.1.0/jentlememes-launcher-bin-1.1.0-1-x86_64.pkg.tar.zst
+	sha256sums = SKIP
 
 pkgname = jentlememes-launcher-bin
