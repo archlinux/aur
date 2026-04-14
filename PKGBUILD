@@ -3,20 +3,18 @@
 # Contributor: gamestime102 < >
 
 pkgname=quake3-rally
-pkgver=0.3
+pkgver=0.7c
 pkgrel=1
 epoch=1
-pkgdesc="A car driving and car combat game based on the Quake III Arena engine"
+pkgdesc="Open-source survival racing game on the ioquake3 engine."
 arch=('any')
-url="https://sourceforge.net/projects/q3rallysa/"
+url="https://github.com/Q3Rally-Team/q3rally/"
 license=('GPL2')
 depends=('ioquake3' 'desktop-file-utils')
-source=("https://downloads.sourceforge.net/project/q3rallysa/Q3Rally%20v${pkgver}/Q3Rally_v${pkgver}c_linux64.zip"
+source=("https://github.com/Q3Rally-Team/q3rally/releases/download/v${pkgver}/q3rally_v${pkgver}_patch_linux64.zip"
         "q3rally"
         "q3rally.desktop")
-sha256sums=('0055d3cd1a7d849fe948833d245262ee8c33da5d350c45cddb3bbbb1478fd28b'
-            'ca5268f09d285eed22000312a065871fab43a02fe3ae82f60d0706002552c611'
-            'f8b1d85e3dc3e0a07cf5991141e5a8f327dd6f5fa173cfa3ce911298daa90db9')
+sha256sums=('9710ded1c40e040f6d06608a25e13c1c847852c1416630a7efff1badb0be257b')
 
 check() {
   desktop-file-validate q3rally.desktop
