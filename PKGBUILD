@@ -1,6 +1,6 @@
 # Maintainer: Stephane Wetterwald <stephane.wetterwald@gmail.com>
 pkgname=cheatbind
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Wayland keyboard shortcuts overlay — parses compositor config and displays a styled cheatsheet"
 arch=('any')
