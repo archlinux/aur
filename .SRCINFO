@@ -1,6 +1,6 @@
 pkgbase = sing-box-glibc-bin
 	pkgdesc = The universal proxy platform (CGO binary version)
-	pkgver = 1.13.7
+	pkgver = 1.13.8
 	pkgrel = 1
 	url = https://github.com/SagerNet/sing-box
 	arch = x86_64
@@ -28,11 +28,11 @@ pkgbase = sing-box-glibc-bin
 	sha256sums = 927315d96d5681a1c019de450b2bb4de3d0e56e6db4fd619dc13c925b37e5405
 	sha256sums = 77d1b5fbcfe27e3effbe382c574f3bde140ca4eb18fab76faa31e147f74b7f71
 	sha256sums = 44f3e5d85740b26c9f4d5cbbddfced42fce98bdf6fd8d28e1480b93c9edf18d6
-	source_x86_64 = sing-box-1.13.7-linux-amd64-glibc.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.13.7/sing-box-1.13.7-linux-amd64-glibc.tar.gz
-	sha256sums_x86_64 = 2a993d5c36ad804e3a03e949602aa63e8993ac307b7421973b8edd6efe9eaa89
-	source_armv7h = sing-box-1.13.7-linux-armv7-glibc.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.13.7/sing-box-1.13.7-linux-armv7-glibc.tar.gz
-	sha256sums_armv7h = d7a20cbaba88855aa0bc3a101a523d39b4e71ce4a8b1853758c8106ef2f186ad
-	source_aarch64 = sing-box-1.13.7-linux-arm64-glibc.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.13.7/sing-box-1.13.7-linux-arm64-glibc.tar.gz
-	sha256sums_aarch64 = 363b8523c2fc2ddc743449b8aefd3cdb3bf1c88b4d4f982d1b69c8d487c804a1
+	source_x86_64 = sing-box-1.13.8-linux-amd64-glibc.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.13.8/sing-box-1.13.8-linux-amd64-glibc.tar.gz
+	sha256sums_x86_64 = 766abdefb4c0e62fbfed6fe2d2502731afb8fa578fae6219bd62982a66741341
+	source_armv7h = sing-box-1.13.8-linux-armv7-glibc.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.13.8/sing-box-1.13.8-linux-armv7-glibc.tar.gz
+	sha256sums_armv7h = 5172b4daf0053fa1381c7592ee480f329e875a0fc6cda8de20364e3a1e52f750
+	source_aarch64 = sing-box-1.13.8-linux-arm64-glibc.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.13.8/sing-box-1.13.8-linux-arm64-glibc.tar.gz
+	sha256sums_aarch64 = 0ad8ffcf1b8463322ef7c6b11dd16767fc0bffe181190206bebb4cb04b4997e8
 
 pkgname = sing-box-glibc-bin
