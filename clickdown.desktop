@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ClickDown
+GenericName=ClickUp Terminal Client
+Comment=A fast and responsive ClickUp desktop client
+Exec=clickdown
+Icon=clickdown
+Terminal=true
+Categories=Utility;Development;
+Keywords=clickup;task;management;terminal;tui;
