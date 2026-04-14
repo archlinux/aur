@@ -1,6 +1,6 @@
 # Maintainer: c3rt1fiedd <aur.c3rt@gmail.com>
 pkgname=pineconemc-launcher-bin
-pkgver=11.0.0
+pkgver=11.0.2
 pkgrel=2
 pkgdesc="A fork of Prism Launcher with integrated Ely.by support"
 depends=('fuse2' 'java-runtime' 'zlib')
