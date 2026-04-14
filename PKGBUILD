@@ -1,28 +1,40 @@
 # Maintainer: Josef Zoller <josef@walterzollerpiano.com>
 pkgname=zed-preview-bin
 pkgver=0.232.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter"
 arch=('x86_64' 'aarch64')
 url="https://zed.dev"
 license=('GPL-3.0-or-later' 'AGPL-3.0-or-later' 'Apache-2.0')
 depends=('alsa-lib' 'libasound.so'
+         'curl' # 'libcurl.so'
          'fontconfig'
-         'gcc-libs'
-         'glibc'
-         'libxcb'
-         'libxkbcommon'
-         'libxkbcommon-x11'
-         'openssl' 'libssl.so'
+         'glibc' # 'libc.so' 'libm.so' 'libresolv.so'
+         'libgcc' 'libgcc_s.so'
+         # 'libgit2' 'libgit2.so'
+         'libstdc++' 'libstdc++.so'
+         # 'libxau' 'libXau.so'
+         'libxcb' # 'libxcb.so' 'libxcb-xkb.so'
+         # 'libxdmcp' 'libXdmcp.so'
+         'libxkbcommon' # 'libxkbcommon.so'
+         'libxkbcommon-x11' # 'libxkbcommon-x11.so'
+         'nodejs>=18'
+         'netcat'
+         'npm'
+         'openssl' # 'libcrypto.so' 'libssl.so'
          'sqlite'
          'vulkan-driver'
          'vulkan-icd-loader'
          'vulkan-tools'
          'wayland'
-         'zlib' 'libz.so')
+         'zlib' 'libz.so'
+         'zstd' # 'libzstd.so'
+)
 optdepends=('clang: improved C/C++ language support'
             'eslint: improved Javascript language support'
-            'rust-analyzer: improved Rust language support')
+            'pyright: improved Python language support'
+            'rust-analyzer: improved Rust language support'
+            'org.freedesktop.secrets: to keep you logged into your Zed account')
 provides=("${pkgname%-preview-bin}=$pkgver")
 conflicts=("${pkgname%-preview-bin}")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/api/releases/preview/$pkgver/zed-linux-x86_64.tar.gz")
