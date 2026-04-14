@@ -1,0 +1,17 @@
+pkgbase = gaomontablet-m5-driver
+	pkgdesc = Official Gaomon Tablet Linux Driver (M5 V2)
+	pkgver = 16.0.0.37
+	pkgrel = 1
+	url = https://www.gaomon.cn/
+	install = gaomontablet-m5-driver.install
+	arch = x86_64
+	license = custom
+	depends = xdotool
+	depends = libx11
+	depends = libxext
+	depends = libxtst
+	options = !strip
+	source = https://driver.gaomon.cn/download/Driver/Linux/GaomonTablet_LinuxDriver_v16.0.0.37.x86_64.tar.xz
+	sha256sums = d3db3cad152049e6913ae744f497686a8c4b61ef91fe664c84ffe55ebc96bd01
+
+pkgname = gaomontablet-m5-driver

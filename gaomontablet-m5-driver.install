@@ -1,0 +1,23 @@
+post_install() {
+    echo "========================================================================"
+    echo "Gaomon Tablet Driver installed successfully."
+    echo ""
+    echo "To start the driver, launch 'GaoMonTablet' from your application menu,"
+    echo "or run directly:"
+    echo "    /usr/lib/gaomontablet/gaomontablet.sh"
+    echo ""
+    echo "Bluetooth users: if you plan to use the tablet via Bluetooth, set"
+    echo "    UserspaceHID=true"
+    echo "in /etc/bluetooth/input.conf"
+    echo ""
+    echo "Wayland note: the driver's graphical interface requires XWayland."
+    echo ""
+    echo "Reload udev rules and trigger for the tablet to be recognized:"
+    echo "    sudo udevadm control --reload-rules && sudo udevadm trigger"
+    echo "or simply reboot."
+    echo "========================================================================"
+}
+
+post_upgrade() {
+    post_install
+}
