@@ -3,13 +3,13 @@
 # Previous maintainer did not add their details here.
 pkgname=librewolf-extension-plasma-integration
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE plasma browser integration extension for Librewolf"
 arch=("any")
 url="https://community.kde.org/Plasma/Browser_Integration"
 license=("GPL-3.0-only")
 depends=("plasma-browser-integration" "librewolf")
-makedepends=("web-ext")
+makedepends=("web-ext" "git")
 source=("$pkgname-$pkgver::git+https://invent.kde.org/plasma/plasma-browser-integration.git#tag=browser/$pkgver")
 sha256sums=('SKIP')
 
