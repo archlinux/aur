@@ -15,7 +15,6 @@ pkgbase = legion-gui
 	depends = polkit
 	provides = legion-gui
 	conflicts = legion
-	conflicts = legion-gui-git
 	source = git+https://github.com/hackman238/legion.git
 	source = legion-gui.desktop
 	source = legion-gui-launcher
