@@ -1,6 +1,6 @@
 pkgbase = rclone-manager
 	pkgdesc = User-friendly GUI for Rclone
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/Zarestia-Dev/rclone-manager
 	arch = x86_64
@@ -15,13 +15,14 @@ pkgbase = rclone-manager
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
 	optdepends = rclone: for cloud storage operations,
 	optdepends = fuse3: for mounting remote filesystems
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/v0.2.3/RClone.Manager_0.2.3_amd64.deb
-	sha256sums_x86_64 = 6b1f6634e7a34c83758fa6bfd140bce58d269332f33a8f621e6868b5691dabfe
-	source_aarch64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/v0.2.3/RClone.Manager_0.2.3_arm64.deb
-	sha256sums_aarch64 = 074dac73cfda30b56b0cb302ea495bf5bd07519fa6a05d0fb627453e63f58007
+	source_x86_64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/v0.2.4/RClone.Manager_0.2.4_amd64.deb
+	sha256sums_x86_64 = 88d69044560212e9f0bbaaec17f442f52adaddf0341b6df60415e90ede8d749a
+	source_aarch64 = https://github.com/Zarestia-Dev/rclone-manager/releases/download/v0.2.4/RClone.Manager_0.2.4_arm64.deb
+	sha256sums_aarch64 = 2e1b8713c0f1cd23b09da8d1ae382998e3bea7ba0471ada22493d710c1bbf224
 
 pkgname = rclone-manager

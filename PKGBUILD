@@ -1,21 +1,21 @@
 # Maintainer: Hakan İSMAİL <hakanismail53@gmail.com>
 pkgname=rclone-manager
 appname='RClone.Manager'
-releasetag=0.2.3
-pkgver=0.2.3
+releasetag=0.2.4
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="User-friendly GUI for Rclone"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Zarestia-Dev/rclone-manager"
 license=('GPL-3.0-or-later')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'libayatana-appindicator')
 optdepends=('rclone: for cloud storage operations', 'fuse3: for mounting remote filesystems')
 options=('!strip' '!debug')
 # install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${releasetag}/${appname}_${pkgver}_amd64.deb")
 source_aarch64=("${url}/releases/download/v${releasetag}/${appname}_${pkgver}_arm64.deb")
-sha256sums_x86_64=('6b1f6634e7a34c83758fa6bfd140bce58d269332f33a8f621e6868b5691dabfe')
-sha256sums_aarch64=('074dac73cfda30b56b0cb302ea495bf5bd07519fa6a05d0fb627453e63f58007')
+sha256sums_x86_64=('88d69044560212e9f0bbaaec17f442f52adaddf0341b6df60415e90ede8d749a')
+sha256sums_aarch64=('2e1b8713c0f1cd23b09da8d1ae382998e3bea7ba0471ada22493d710c1bbf224')
 package() {
   tar -xvf data.tar.gz -C "${pkgdir}"
 }
