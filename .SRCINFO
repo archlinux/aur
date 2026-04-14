@@ -1,0 +1,25 @@
+pkgbase = tritium-launcher-bin
+	pkgdesc = Minecraft Launcher IDE for Modpack Developers
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/Tritium-Launcher/Launcher
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = glibc
+	depends = libx11
+	depends = libxext
+	depends = libxi
+	depends = libxrender
+	depends = libxtst
+	depends = java-runtime>=21
+	source = tritium-launcher-bin-0.1.5.tar.gz::https://github.com/Tritium-Launcher/Launcher/releases/download/v0.1.5/tritium-linux-x64.tar.gz
+	source = tritium-launcher-bin.desktop
+	source = tritium-launcher.png
+	source = tritium-launcher.svg
+	sha256sums = 2f2e76cc3bd13e63bdc6d1ada6004ea4d5581e0083e0b5e64b794fe9c66f40bc
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tritium-launcher-bin

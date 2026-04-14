@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Tritium
+Comment=Minecraft Launcher IDE for Modpack Developers
+Exec=tritium-launcher
+Icon=tritium-launcher
+Categories=Development;
+Terminal=false
