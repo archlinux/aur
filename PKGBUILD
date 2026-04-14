@@ -1,5 +1,5 @@
 pkgname=legion-gui
-pkgver=0.6.0.r0.0000000
+pkgver=0.6.0.r690.5ec45b0
 pkgrel=1
 pkgdesc="Legion GUI (Sparta successor) packaged for Arch/CachyOS with compatibility fixes"
 arch=('any')
@@ -55,6 +55,10 @@ package() {
   # App nach /opt
   install -d "$pkgdir/opt/legion-gui"
   cp -a . "$pkgdir/opt/legion-gui"
+
+  # Fix: remove unicode symlink (e.g. "𝜋thon") that breaks bsdtar UTF-8 path translation
+  find "$pkgdir/opt/legion-gui/venv/bin" -maxdepth 1 -type l -name "*thon" ! -name "python" ! -name "python3*" -delete 2>/dev/null || true
+
 
   # Wrapper: /usr/bin/legion
   install -d "$pkgdir/usr/bin"
