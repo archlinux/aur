@@ -3,12 +3,12 @@
 # Contributor: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 pkgname=salmon
 pkgver=1.11.4
-pkgrel=1
+pkgrel=3
 pkgdesc="Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments"
 arch=('x86_64')
 url="https://combine-lab.github.io/$pkgname/"
 license=('GPL-3.0-only')
-depends=('intel-tbb' 'libgcc' 'libstdc++' 'bzip2' 'jemalloc' 'htslib' 'boost-libs' 'gcc-libs' 'xz' 'zlib' 'zlib-ng' 'glibc' 'libgff')
+depends=('intel-tbb' 'libgcc' 'libstdc++' 'bzip2' 'htslib' 'boost-libs' 'gcc-libs' 'xz' 'zlib' 'zlib-ng' 'glibc' 'libgff')
 makedepends=('boost>=1.55' 'catch2' 'mimalloc' 'cmake' 'eigen' 'unzip' 'cereal' 'curl' 'bzip2' 'python-sphinx' 'libdivide' 'git')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/COMBINE-lab/$pkgname/archive/v$pkgver.tar.gz"
