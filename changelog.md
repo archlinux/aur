@@ -1,3 +1,14 @@
+2026.04.15, v19.13.0
+
+fix:
+- 48693d9e docker: io: XDG_CACHE_HOME
+
+feature:
+- 4b2395c5 cloudcmd: Ctrl + L: logout
+- 977a8aaa docker: io: strace: add
+- 7d0098fd docker: io: XDG_CACHE_HOME=/tmp/cache
+- a89e901b actions: docker: io: add
+
 2026.04.12, v19.12.5
 
 feature:
