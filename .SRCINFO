@@ -1,4 +1,4 @@
-pkgbase = jlu-drcom
+pkgbase = jlu-drcom-bin
 	pkgdesc = 吉林大学校园网客户端
 	pkgver = 1.2.0
 	pkgrel = 1
@@ -8,4 +8,4 @@ pkgbase = jlu-drcom
 	source = https://github.com/hnchengzong/jlu-drcom/releases/download/v1.2.0/jlu-drcom-1.2.0.tar.xz
 	sha256sums = df8889956dde63b47f5a85b175b55b265ea2533bf9939636d8a8da38b709e2f0
 
-pkgname = jlu-drcom
+pkgname = jlu-drcom-bin

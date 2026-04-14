@@ -1,5 +1,5 @@
 # Maintainer: hnchengzong
-pkgname=jlu-drcom
+pkgname=jlu-drcom-bin
 pkgver=1.2.0
 pkgrel=1
 pkgdesc="吉林大学校园网客户端"
@@ -11,7 +11,7 @@ makedepends=()
 source=("https://github.com/hnchengzong/jlu-drcom/releases/download/v$pkgver/jlu-drcom-$pkgver.tar.xz")
 sha256sums=('df8889956dde63b47f5a85b175b55b265ea2533bf9939636d8a8da38b709e2f0')   
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/jlu-drcom-$pkgver"
 
   install -d "$pkgdir/opt/drclient/translator"
 
