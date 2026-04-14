@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=typedunits
 pkgname=python-${_pkgname}
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A fast units and dimensions library with support for static dimensionality checking and protobuffer serialization"
 arch=(x86_64)
@@ -23,7 +23,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=($_pkgname::git+https://github.com/quantumlib/TypedUnits#tag=v$pkgver)
-b2sums=('05e6c21997fc725dde8b5bcf218c7ad023d49f9ee8ee0954a2e5d22b4125e2be9f3fd3105cac0ef312ecdd8cfba9f6064bfdd2f8dfe32ae1768ed7064f7d3b6d')
+b2sums=('a1eb5710f7696ed9bc1f925edd0837eb534c83e24a7ede8f4e0e03c3e4a96c3db480d0401e4dce20dc731ab0e78e1a48356f3cac84f284a77f89972f06db8d24')
 
 build() {
     cd $_pkgname
