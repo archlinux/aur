@@ -2,7 +2,7 @@
 
 pkgname=nextcloud-app-twofactor-gateway
 _name=twofactor_gateway
-pkgver=2.0.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Second factor provider using an external messaging gateway (SMS, Telegram, Signal)"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://github.com/nextcloud/twofactor_gateway"
 license=('AGPL-3.0-or-later')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud/twofactor_gateway/releases/download/v${pkgver}/twofactor_gateway.tar.gz")
-sha512sums=('a88fc0d338245038368a09b1110509189bcc5c90508def5af6bf40bdb7e3bce35137abf50bb77bb1af17854b62ade097f4c8323a77459513128f3308ca982ee7')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('744f2d3f3d53962c13ed681738bffb0c2b35749e4e9bfa4a4d14f17f9a85a2c7ccaa2aae40e8656b78183875785eaadcbd9b2550dfc84c7a39dc75430ed251d4')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
@@ -56,7 +56,7 @@ check() {
 
 package() {
   install -vdm 755 "$pkgdir/usr/share/webapps/nextcloud/apps/"
-  cp -av $_name "$pkgdir/usr/share/webapps/nextcloud/apps/"
-  cd $_name
+  cp -av $_name-$pkgver "$pkgdir/usr/share/webapps/nextcloud/apps/${_name}"
+  cd $_name-$pkgver
   _nextcloud_app_package
 }
