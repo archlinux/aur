@@ -8,6 +8,7 @@ pkgbase = gnome-pomodoro-extension
 	license = GPL3
 	makedepends = meson
 	makedepends = vala
+	makedepends = patch
 	depends = glib2
 	depends = gtk4
 	depends = libadwaita
@@ -21,6 +22,8 @@ pkgbase = gnome-pomodoro-extension
 	depends = cairo
 	depends = gobject-introspection
 	source = gnome-pomodoro-extension-1.0.tar.gz::https://github.com/focustimerhq/FocusTimer/archive/1.0.tar.gz
+	source = fix_vala_0.56.19.patch
 	sha256sums = 1d8d6adcb83d74ae5c05a9caa988bf5dd0c2876af83d3df3588d27f2ee5cf9ab
+	sha256sums = aec1b93639d491d376ceea6231b2418a9f73327f93085394b8526bc7a83196dd
 
 pkgname = gnome-pomodoro-extension
