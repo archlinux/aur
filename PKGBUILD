@@ -28,7 +28,7 @@ build(){
   cd updfparser
   make BUILD_STATIC=1 BUILD_SHARED=0
   cd ../libgourou
-  CXXFLAGS="-I../updfparser/include" BUILD_SHARED=1 BUILD_UTILS=1 make UPDFPARSERLIB=../updfparser/libupdfparser.a
+  CXXFLAGS="-I../updfparser/include" BUILD_SHARED=1 BUILD_UTILS=1 make UPDFPARSERLIB=../updfparser/libupdfparser.a DEBUG=1
 
 }
 
