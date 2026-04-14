@@ -1,6 +1,6 @@
 # Maintainer: rikkichy
 pkgname=openwave
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Linux control application for the Elgato Wave XLR"
 arch=('any')
@@ -30,6 +30,5 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Docs
-    install -Dm644 docs/protocol.md "$pkgdir/usr/share/doc/$pkgname/protocol.md"
-    install -Dm644 docs/findings.md "$pkgdir/usr/share/doc/$pkgname/findings.md"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
