@@ -1,0 +1,5 @@
+[abcm2ps]
+source = "github"
+github = "lewdlime/abcm2ps"
+use_max_tag = true
+prefix = "v"

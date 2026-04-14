@@ -1,0 +1,44 @@
+diff -uNr abcm2ps-8.14.15.orig/abcparse.c abcm2ps-8.14.15/abcparse.c
+--- abcm2ps-8.14.15.orig/abcparse.c	2024-01-08 08:15:18.000000000 +0100
++++ abcm2ps-8.14.15/abcparse.c	2026-04-14 10:57:59.399925144 +0200
+@@ -16,6 +16,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <strings.h>
+ #include <ctype.h>
+ 
+ #include "abcm2ps.h"
+diff -uNr abcm2ps-8.14.15.orig/format.c abcm2ps-8.14.15/format.c
+--- abcm2ps-8.14.15.orig/format.c	2024-01-08 08:15:18.000000000 +0100
++++ abcm2ps-8.14.15/format.c	2026-04-14 10:57:59.401497235 +0200
+@@ -14,6 +14,7 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <strings.h>
+ #include <ctype.h>
+ 
+ #include "abcm2ps.h"
+diff -uNr abcm2ps-8.14.15.orig/front.c abcm2ps-8.14.15/front.c
+--- abcm2ps-8.14.15.orig/front.c	2024-01-08 08:15:18.000000000 +0100
++++ abcm2ps-8.14.15/front.c	2026-04-14 10:57:59.401852525 +0200
+@@ -14,6 +14,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <strings.h>
+ #include <ctype.h>
+ #include <regex.h>
+ 
+diff -uNr abcm2ps-8.14.15.orig/parse.c abcm2ps-8.14.15/parse.c
+--- abcm2ps-8.14.15.orig/parse.c	2024-01-08 08:15:18.000000000 +0100
++++ abcm2ps-8.14.15/parse.c	2026-04-14 10:54:10.539829418 +0200
+@@ -15,6 +15,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <strings.h>
+ #include <time.h>
+ #include <ctype.h>
+ #include <regex.h>
