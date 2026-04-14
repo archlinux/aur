@@ -2,7 +2,7 @@
 # Maintainer: Chandler Klüser <chandler.kluser@gmail.com>
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 pkgname=amiberry
-pkgver=8.1.4
+pkgver=8.1.5
 pkgrel=1
 pkgdesc="Optimized Amiga emulator"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('glibc' 'git' 'cmake' 'ninja')
 provides=("amiberry=${pkgver}")
 conflicts=('amiberry-git' 'amiberry-lite')
 source=(${pkgname%}::"git+https://github.com/BlitterStudio/amiberry.git#tag=v$pkgver")
-sha256sums=('ffb75e8cf481709e8b1101747b14db52bf8184f05a1223badbd2004eb7db0a0b')
+sha256sums=('179c600e45081238223c540bf437e748d52ac0dfcc34c12a51aa8c84757a91b1')
 
 build() {
   cd ${pkgname}
