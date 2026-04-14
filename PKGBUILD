@@ -39,7 +39,7 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     # Bundle dbus-next and pulsectl (not in official Arch repos)
-    uv pip install --no-deps --root "$pkgdir" --prefix /usr dbus-next pulsectl
+    uv pip install --no-deps --python /usr/bin/python --prefix "$pkgdir/usr" dbus-next pulsectl
 
     # udev rules
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/udev/rules.d/91-steelseries-arctis.rules" <<'RULES'
