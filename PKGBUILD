@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-c-sharp
-pkgver=0.23.3
+pkgver=0.23.4
 pkgrel=1
 pkgdesc="C# grammar for tree-sitter"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-c-sharp.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter/tree-sitter-c-sharp/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('49ee95b06f4f26b829516f452e115b818919f89ffe1cd8ca34a178a36dd43229')
+sha256sums=('3d0930ccf4ab6cba584584a1899c6b4285e96521d70438a965e5b0f9a450fe93')
 
 
 build() {
