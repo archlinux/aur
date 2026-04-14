@@ -1,0 +1,6 @@
+pkg/
+src/
+way-thumbsense/
+*.pkg.tar.zst
+*.pkg.tar
+*.log

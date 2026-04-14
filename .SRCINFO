@@ -1,0 +1,18 @@
+pkgbase = way-thumbsense-git
+	pkgdesc = ThumbSense for Linux/Wayland — hold a virtual key while touching the trackpad (git)
+	pkgver = r6.g8f8215f
+	pkgrel = 1
+	url = https://github.com/nagamine-git/way-thumbsense
+	install = way-thumbsense.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = way-thumbsense
+	conflicts = way-thumbsense
+	source = way-thumbsense::git+https://github.com/nagamine-git/way-thumbsense.git
+	sha256sums = SKIP
+
+pkgname = way-thumbsense-git
