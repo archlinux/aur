@@ -34,8 +34,8 @@ pkgbase = leshade-bin
 	options = !strip
 	options = !emptydirs
 	options = !libtool
-	source = https://github.com/Ishidawg/LeShade/releases/download/2.4.4/LeShade-x86_64.AppImage
-	source = leshade-bin-LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE
+	source = leshade-2.4.4-LeShade-x86_64.AppImage::https://github.com/Ishidawg/LeShade/releases/download/2.4.4/LeShade-x86_64.AppImage
+	source = leshade-2.4.4-LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE
 	sha256sums = 41d01cc8728be0f5024171f15cdb600979fa52df3c57427492910699e5125809
 	sha256sums = a7b8f406ed4e1a5311d51a1967f91e569a6c0ce815c2bf74956d926613dd61a3
 

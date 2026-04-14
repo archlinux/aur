@@ -19,8 +19,8 @@ options=('!strip' '!emptydirs' '!libtool')
 _appimage="LeShade-x86_64.AppImage"
 noextract=("${_appimage}")
 source=(
-"https://github.com/Ishidawg/LeShade/releases/download/${pkgver}/${_appimage}"
-"${pkgname}-LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE"
+"${_pkgname}-${pkgver}-${_appimage}::https://github.com/Ishidawg/LeShade/releases/download/${pkgver}/${_appimage}"
+"${_pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE"
 )
 sha256sums=('41d01cc8728be0f5024171f15cdb600979fa52df3c57427492910699e5125809'
             'a7b8f406ed4e1a5311d51a1967f91e569a6c0ce815c2bf74956d926613dd61a3')
@@ -28,8 +28,8 @@ sha256sums=('41d01cc8728be0f5024171f15cdb600979fa52df3c57427492910699e5125809'
 prepare() {
 	# Extract AppImage
 	cd "${srcdir}"
-	chmod +x "${_appimage}"
-	./"${_appimage}" --appimage-extract
+	chmod +x "${_pkgname}-${pkgver}-${_appimage}"
+	./"${_pkgname}-${pkgver}-${_appimage}" --appimage-extract
 	cd "${srcdir}/squashfs-root/"
 	# Change the exec name
 	sed -i -e "s/Exec=LeShade/Exec=leshade/" "${_pkgname}.desktop"
@@ -51,7 +51,7 @@ package() {
 	# Create a symbolic link for the AppRun
 	ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/${_pkgname}"
 	# License
-	install -Dm644 "${srcdir}/${pkgname}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	# Permissions
 	chmod -R u+rwX,go+rX,go-w "${pkgdir}/opt/${_pkgname}"
 }
