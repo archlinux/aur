@@ -1,5 +1,5 @@
 pkgbase = rmpv-git
-	pkgdesc = A lightweight terminal-based music + video controller using mpv + yt-dlp + mpc + rmpc Built for fast media playback, YouTube streaming, and CLI control. It could also play local as well as youtube songs
+	pkgdesc = Lightweight CLI frontend for mpv integrating yt-dlp and MPD tools, supporting local playback and YouTube streaming
 	pkgver = r34.6578a3c
 	pkgrel = 2
 	url = https://github.com/Trifalic47/rmpv
