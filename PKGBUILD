@@ -7,22 +7,22 @@
 _electron=electron
 pkgbase=element-desktop-git
 pkgname=(element-web-git element-desktop-git)
-pkgver=1.12.2.r43.gd6e50598cd
+pkgver=1.12.15.r248.g23b11aaf86
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client — "
 arch=(x86_64)
 url="https://element.io"
 license=('Apache-2.0')
-makedepends=(npm git yarn python python-setuptools rust tcl ${_electron} nodejs sqlcipher libxcrypt-compat)
+makedepends=(npm git pnpm python python-setuptools rust tcl ${_electron} nodejs sqlcipher libxcrypt-compat)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-_giturl="git+https://github.com/vector-im"
+_giturl="git+https://github.com/element-hq"
+
 source=("element-web::${_giturl}/element-web.git"
-        "element-desktop::${_giturl}/element-desktop.git"
         io.element.Element.desktop
         element-desktop.sh)
+
 sha512sums=('SKIP'
-            'SKIP'
             '72966c7067a18a9b19d6164354f4b8622aaa1c5cc29591c5a406018873613747613642a758fdfe9ce09cb0a85085117d1ab8e1131dc36c9ff5bfb4d21ef410c3'
             '246f102c5768855deb155e6c33fc53f69ddec6d211db4eef8730cfba6e41bb01cc0b8983c2411c42872a5b768310d2495f919268f9420cacc2a12ad4e4ff11eb')
 
@@ -41,32 +41,34 @@ prepare() {
   sed -i "s|@ELECTRON@|${_electron}|" element-desktop.sh
 
   cd element-web
-  yarn install --no-fund
 
-  cd ../element-desktop
-  sed -i 's|"target": "deb"|"target": "dir"|' package.json
-  sed -i 's|"https://packages.element.io/desktop/update/"|null|' element.io/release/config.json
-  yarn install --no-fund
+  sed -i 's|"target": "deb"|"target": "dir"|' apps/desktop/package.json
+  sed -i 's|"https://packages.element.io/desktop/update/"|null|' apps/desktop/element.io/release/config.json
+
+  pnpm install
 }
 
 build() {
-  cd element-web
-  yarn --offline build
+  # Navigate directly into the webapp directory to build the web target
+  cd "$srcdir/element-web/apps/web"
+  pnpm build
 
-  cd ../element-desktop
-  yarn run build:ts
-  yarn run build:res
-  yarn run electron-builder --publish=never
+  # Navigate into the desktop directory to build the desktop wrapper
+  cd ../desktop
+  pnpm run build:ts
+  pnpm run build:res
+  pnpm exec electron-builder --publish=never
 }
 
 package_element-web-git() {
-  url='https://github.com/vector-im/element-web'
+  url='https://github.com/element-hq/element-web'
   pkgdesc+="web version."
   #replaces=(riot-web vector-web)
   provides=(element-web)
   conflicts=(element-web)
 
-  cd element-web
+  # Shift context to apps/web for packaging
+  cd element-web/apps/web
 
   install -d "${pkgdir}"/{usr/share/webapps,etc/webapps}/element
 
@@ -77,7 +79,7 @@ package_element-web-git() {
 }
 
 package_element-desktop-git() {
-  url='https://github.com/vector-im/element-desktop'
+  url='https://github.com/element-hq/element-web/tree/develop/apps/desktop'
   pkgdesc+="desktop version."
   #replaces=(riot-desktop)
   depends=("element-web-git=${pkgver}" ${_electron} libsecret)
@@ -85,7 +87,8 @@ package_element-desktop-git() {
   conflicts=(element-desktop)
   backup=("etc/element/config.json")
 
-  cd element-desktop
+  # Shift context to apps/desktop for packaging
+  cd element-web/apps/desktop
 
   install -d "${pkgdir}"{/usr/lib/element/,/etc/webapps/element}
 
@@ -98,9 +101,9 @@ package_element-desktop-git() {
   install -Dm644 element.io/release/config.json -t "${pkgdir}"/etc/element
 
   # Required extras
-  install -Dm644 ../io.element.Element.desktop -t "${pkgdir}"/usr/share/applications/
-  install -Dm755 ../${pkgname%-git}.sh "${pkgdir}"/usr/bin/${pkgname%-git}
+  install -Dm644 ../../../io.element.Element.desktop -t "${pkgdir}"/usr/share/applications/
+  install -Dm755 ../../../${pkgname%-git}.sh "${pkgdir}"/usr/bin/${pkgname%-git}
 
   # Icons
-  install -Dm644 ../element-web/res/themes/element/img/logos/element-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/io.element.Element.svg
+  install -Dm644 ../web/res/themes/element/img/logos/element-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/io.element.Element.svg
 }

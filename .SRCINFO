@@ -1,13 +1,13 @@
 pkgbase = element-desktop-git
 	pkgdesc = Glossy Matrix collaboration client —
-	pkgver = 1.12.2.r43.gd6e50598cd
+	pkgver = 1.12.15.r248.g23b11aaf86
 	pkgrel = 1
 	url = https://element.io
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	makedepends = git
-	makedepends = yarn
+	makedepends = pnpm
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = rust
@@ -18,25 +18,23 @@ pkgbase = element-desktop-git
 	makedepends = libxcrypt-compat
 	provides = element-web
 	conflicts = element-web
-	source = element-web::git+https://github.com/vector-im/element-web.git
-	source = element-desktop::git+https://github.com/vector-im/element-desktop.git
+	source = element-web::git+https://github.com/element-hq/element-web.git
 	source = io.element.Element.desktop
 	source = element-desktop.sh
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 72966c7067a18a9b19d6164354f4b8622aaa1c5cc29591c5a406018873613747613642a758fdfe9ce09cb0a85085117d1ab8e1131dc36c9ff5bfb4d21ef410c3
 	sha512sums = 246f102c5768855deb155e6c33fc53f69ddec6d211db4eef8730cfba6e41bb01cc0b8983c2411c42872a5b768310d2495f919268f9420cacc2a12ad4e4ff11eb
 
 pkgname = element-web-git
 	pkgdesc = Glossy Matrix collaboration client — web version.
-	url = https://github.com/vector-im/element-web
+	url = https://github.com/element-hq/element-web
 	provides = element-web
 	conflicts = element-web
 
 pkgname = element-desktop-git
 	pkgdesc = Glossy Matrix collaboration client — desktop version.
-	url = https://github.com/vector-im/element-desktop
-	depends = element-web-git=1.12.2.r43.gd6e50598cd
+	url = https://github.com/element-hq/element-web/tree/develop/apps/desktop
+	depends = element-web-git=1.12.15.r248.g23b11aaf86
 	depends = electron
 	depends = libsecret
 	provides = element-desktop
