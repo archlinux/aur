@@ -2,7 +2,7 @@
 
 pkgname=tdns-bin
 _pkgname=tdns
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 
 pkgdesc="A powerful, lightweight CLI to manage Technitium DNS server via HTTP API endpoint"
@@ -17,7 +17,7 @@ source=(
     "tdns-LICENSE::https://raw.githubusercontent.com/mbevc1/tdns/refs/tags/v${pkgver}/LICENSE"
 )
 sha256sums=(
-    'ac9cfafb17e7e829d2e9a112ea8f440b03ee0829d9a0d7a22e52ad00f7560ba7'
+    '83fa35b38b9c2d119d83b486c25e1d665e5c9afa2e515350e112c398858da25a'
     '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
 )
 
