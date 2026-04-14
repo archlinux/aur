@@ -1,6 +1,6 @@
 # Maintainer: Aria Quinlan <hello@aria.coffee>
 pkgname=mo-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A Markdown viewer that opens .md files in a browser with live-reload'
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('mo')
 source_x86_64=("${url}/releases/download/v${pkgver}/mo_v${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/mo_v${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('243e3a8fa08dfec69d8bcb8260a4f7e14d3b68d1bef01e18d8ca370121555c40')
-sha256sums_aarch64=('cc337d133db788cf34646af3e01d2952b46b1fcebca6e3be06c7d9503d905d4b')
+sha256sums_x86_64=('b386a7511dbd9d2eebce7fdaf9a3e8926b8b53b727863b50beff5151e05be4f7')
+sha256sums_aarch64=('e1dff3a5c765a819056aa611c6985cd9f9f72d9a89cd40b30ef05da1930cb489')
 
 package() {
     install -Dm755 mo "${pkgdir}/usr/bin/mo"
