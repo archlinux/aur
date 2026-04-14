@@ -10,9 +10,11 @@ pkgbase = way-thumbsense-git
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
-	provides = way-thumbsense
+	provides = way-thumbsense=r6.g8f8215f
 	conflicts = way-thumbsense
 	source = way-thumbsense::git+https://github.com/nagamine-git/way-thumbsense.git
+	source = 99-uinput.rules
 	sha256sums = SKIP
+	sha256sums = 85abd3fb5c0351281a3e4a6001f138c251d791c92c0c45baf984fefa1bdb58c7
 
 pkgname = way-thumbsense-git

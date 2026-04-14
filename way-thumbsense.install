@@ -2,14 +2,12 @@ post_install() {
     cat <<'EOF'
 
 ==> way-thumbsense requires read access to /dev/input/event* and write
-    access to /dev/uinput. The recommended setup:
+    access to /dev/uinput.
 
     1. Add yourself to the 'input' group:
          sudo usermod -aG input "$USER"
 
-    2. Allow the 'input' group to access /dev/uinput via udev rule:
-         echo 'KERNEL=="uinput", GROUP="input", MODE="0660", OPTIONS+="static_node=uinput"' | \
-             sudo tee /etc/udev/rules.d/99-uinput.rules
+    2. Reload udev rules (the uinput rule is already installed):
          sudo udevadm control --reload-rules
          sudo udevadm trigger
 
@@ -21,9 +19,5 @@ EOF
 }
 
 post_upgrade() {
-    :
-}
-
-post_remove() {
-    :
+    post_install
 }

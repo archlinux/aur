@@ -9,11 +9,17 @@ url="https://github.com/nagamine-git/way-thumbsense"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
-source=("${_pkgname}::git+https://github.com/nagamine-git/way-thumbsense.git")
-sha256sums=('SKIP')
+source=(
+    "${_pkgname}::git+https://github.com/nagamine-git/way-thumbsense.git"
+    "99-uinput.rules"
+)
+sha256sums=(
+    'SKIP'
+    '85abd3fb5c0351281a3e4a6001f138c251d791c92c0c45baf984fefa1bdb58c7'
+)
 
 pkgver() {
     cd "${_pkgname}"
@@ -40,6 +46,8 @@ check() {
 }
 
 package() {
+    install -Dm644 "99-uinput.rules" "${pkgdir}/usr/lib/udev/rules.d/99-uinput.rules"
+
     cd "${_pkgname}"
     install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"

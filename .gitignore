@@ -4,3 +4,5 @@ way-thumbsense/
 *.pkg.tar.zst
 *.pkg.tar
 *.log
+*.tar.gz
+*.sig
