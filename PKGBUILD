@@ -1,0 +1,24 @@
+# Maintainer: Pierre Le Gall
+
+pkgname=dexter-bin
+pkgver=0.5.3
+pkgrel=1
+pkgdesc="A fast, full-featured Elixir LSP optimized for large Elixir codebases"
+arch=('x86_64' 'aarch64')
+url="https://github.com/remoteoss/dexter"
+license=('MIT')
+provides=('dexter')
+conflicts=('dexter')
+
+source_x86_64=("dexter_Linux_x86_64-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/dexter_Linux_x86_64.tar.gz")
+source_aarch64=("dexter_Linux_arm64-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/dexter_Linux_arm64.tar.gz")
+
+sha256sums_x86_64=('5d2df2120b13f5c872745de4e319e1f654551c04ad562804f2df0e722850b12a')
+sha256sums_aarch64=('f421d5fdc16025b4beeab49fe6f7354c3620e21bece59180eec7d718eab49908')
+
+package() {
+    case "$CARCH" in
+        x86_64)  install -Dm755 dexter_Linux_x86_64/dexter "$pkgdir/usr/bin/dexter" ;;
+        aarch64) install -Dm755 dexter_Linux_arm64/dexter  "$pkgdir/usr/bin/dexter" ;;
+    esac
+}
