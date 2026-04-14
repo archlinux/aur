@@ -1,0 +1,10 @@
+post_upgrade() {
+    echo ""
+    echo "==> WARNING: ttune may have breaking config changes since the last release."
+    echo "==> If ttune behaves unexpectedly, back up and remove your old config:"
+    echo ""
+    echo "      mv ~/.config/ttune ~/.config/ttune.bak"
+    echo ""
+    echo "==> ttune will regenerate a fresh default config on next launch."
+    echo ""
+}
