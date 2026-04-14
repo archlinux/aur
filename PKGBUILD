@@ -6,7 +6,7 @@
 _pkgbase="dddvb"
 pkgname="dddvb-dkms"
 pkgdesc="Official Digital Devices driver package as DKMS"
-pkgver=0.9.40a
+pkgver=0.9.41
 pkgrel=1
 arch=("any")
 url="https://github.com/DigitalDevices/dddvb"
@@ -17,7 +17,7 @@ conflicts=('digitaldevices-dvb-drivers' 'dvbsky-dvb-drivers' 'technotrend-dvb-dr
 provides=('dddvb-dkms')
 install="${pkgname}.install"
 source=("https://github.com/DigitalDevices/$_pkgbase/archive/$pkgver.tar.gz")
-sha256sums=('9a827c5ff265374c6cd4f1b245f355b336383b90061013b1bd9b955f53d3eb6d')
+sha256sums=('356e54fb48437550b95caadb905af49db4c4621c2375cc3f236c3d8f6aa2ea3a')
 
 prepare() {
   cd "$srcdir"
@@ -26,7 +26,6 @@ prepare() {
   echo 'AUTOINSTALL="yes"' >> dkms.conf
   echo 'CHECK_MODULE_VERSION="no"' >> dkms.conf
   echo 'MAKE="make"' >> dkms.conf
-  echo 'CLEAN="make clean"' >> dkms.conf
 
   cd "$srcdir/$_pkgbase-$pkgver"
   sed -i '/apps/d' Makefile
