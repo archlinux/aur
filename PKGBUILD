@@ -2,7 +2,7 @@
 
 _name=audioplayer
 pkgname=nextcloud-app-audioplayer
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Audio Player for Nextcloud and ownCloud"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://rello.github.io/audioplayer"
 license=('AGPL-3.0-or-later')
 makedepends=('nextcloud' 'yq')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Rello/audioplayer/archive/${pkgver}.tar.gz")
-sha512sums=('6dbc2c6aac0c8348940fe5b269f14144525aed49cc79b451996b8d9436f443d06d6d3dea5f62b167d55e19a92a606fd8251f6a01477c8540a9d475c6ceac258a')
+sha512sums=('2916e8026628a27b4f88b7fea34f6ae1ada9033789500ce1b15ad1cf7a3a3a9035e63fbb7224e2f42901538059c7ceac32a74ecf4d1059794e0c024ee78419dd')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
