@@ -2,7 +2,7 @@
 
 pkgname=ethoscope-node
 pkgver=r2231.gbf320832
-pkgrel=8
+pkgrel=9
 pkgdesc="A platform for monitoring animal behaviour in real time from a raspberry pi"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
@@ -64,6 +64,8 @@ package() {
   ln -s /opt/ethoscope/services/ethoscope_backup_unified.service ./
   ln -s /opt/ethoscope/services/ethoscope_backup_video.service ./
   ln -s /opt/ethoscope/services/virtuascope.service ./
+  ln -s /opt/ethoscope/services/ethoscope_mirror_fetch.service ./
+  ln -s /opt/ethoscope/services/ethoscope_mirror_fetch.timer ./
 
   # Note: Python packages are installed via pip in the .install script
   # This generates .egg-info metadata and registers console script entry points

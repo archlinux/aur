@@ -19,8 +19,10 @@ post_install() {
 
     echo "enabling NODE specific systemd service files"
     systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup_unified.service ethoscope_backup_video.service
+    echo "enabling periodic refresh of the local bare mirror from upstream"
+    systemctl enable --now ethoscope_mirror_fetch.timer
     echo "enabling the GIT server on the node and NTP service"
-    systemctl enable git-daemon.socket ntpd.service 
+    systemctl enable git-daemon.socket ntpd.service
     
     #changing hostname on node
     hostnamectl set-hostname node
@@ -57,8 +59,8 @@ post_upgrade() {
 # arg 1:  the old package version
 pre_remove() {
     echo "disabling systemd service files"
-    systemctl stop ethoscope_node.service ethoscope_update_node.service ethoscope_backup_unified.service ethoscope_backup_video.service
-    systemctl disable ethoscope_node.service ethoscope_update_node.service ethoscope_backup_unified.service ethoscope_backup_video.service
+    systemctl stop ethoscope_node.service ethoscope_update_node.service ethoscope_backup_unified.service ethoscope_backup_video.service ethoscope_mirror_fetch.timer
+    systemctl disable ethoscope_node.service ethoscope_update_node.service ethoscope_backup_unified.service ethoscope_backup_video.service ethoscope_mirror_fetch.timer
     systemctl stop git-daemon.socket ntpd.service
     systemctl disable git-daemon.socket ntpd.service
 
