@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=SlimeVR
+Icon=slimevr
+Exec=slimevr --skip-server-if-running
+GenericName=Full-body tracking
+Comment=An app for facilitating full-body tracking in virtual reality
+Keywords=FBT;VR;Steam;VRChat;IMU

@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+
+exec -a "$0" electron \
+  --require /usr/lib/slimevr/argv-patch.js \
+  -- \
+  /usr/lib/slimevr "$@"

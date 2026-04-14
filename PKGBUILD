@@ -1,7 +1,7 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit="0236a05f265f3fbeeb1c71083acbb486878da064"
+_commit="dfba37e6986661e98a07c17b1c0fb81883ee3223"
 _solarxr_commit="fa2895b19a53d9b1686de8c2a6efe2b3e9ca4fc6"
 _pkgname="slimevr-server"
 pkgbase="${_pkgname}"
@@ -9,7 +9,7 @@ pkgname=(
   "slimevr-server"
   "slimevr-gui"
 )
-pkgver="18.2.0"
+pkgver="19.0.0"
 pkgrel="1"
 pkgdesc="Server for SlimeVR Full Body Tracking System"
 arch=("x86_64")
@@ -19,20 +19,25 @@ makedepends=(
   "git"
   "pnpm"
   "npm"
-  "rust"
   "libgit2"
-  "gtk3"
-  "webkit2gtk-4.1"
+  "asar"
+  "electron"
   "java-runtime-headless-openjdk=17"
 )
 depends=()
 source=(
   "slimevr-server::git+${url}.git#commit=${_commit}"
   "solarxr-protocol::git+https://github.com/SlimeVR/SolarXR-Protocol.git#commit=${_solarxr_commit}"
+  "slimevr-gui-bin"
   "slimevr-server-bin"
   "slimevr-server.service"
+  "slimevr.desktop"
+  "argv-patch.js"
 )
 sha512sums=(
+  "SKIP"
+  "SKIP"
+  "SKIP"
   "SKIP"
   "SKIP"
   "SKIP"
@@ -52,7 +57,11 @@ build() {
   (
     # export LIBGIT2_NO_VENDOR=1
     pnpm install
-    pnpm run skipbundler --config "$(./gui/scripts/gitversion.mjs)"
+    cd gui
+    pnpm build
+    pnpm package --dir \
+      -c.electronDist="/usr/lib/electron" \
+      -c.electronVersion="$(cat /usr/lib/electron/version)"
   )
 
   (
@@ -63,28 +72,31 @@ build() {
 
 package_slimevr-gui() {
   depends+=(
-    "gtk3"
-    "webkit2gtk-4.1"
-    "java-runtime-headless-openjdk=17"
+    "electron"
+    "nodejs"
   )
   pkgdesc="GUI for SlimeVR Full Body Tracking System"
 
-  install -Dm 755 \
-    "${srcdir}/slimevr-server/target/release/slimevr" \
+  install -Dm755 \
+    "${srcdir}/slimevr-gui-bin" \
     "${pkgdir}/usr/bin/slimevr"
 
-  install -Dm 644 \
-    "${srcdir}/slimevr-server/gui/src-tauri/icons/icon.svg" \
-    "${pkgdir}/usr/share/icons/slimevr.svg"
+  install -Dm644 \
+    "${srcdir}/slimevr-server/gui/electron/resources/icons/icon.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/slimevr.svg"
 
-  install -Dm 644 \
-    "${srcdir}/slimevr-server/gui/src-tauri/dev.slimevr.SlimeVR.desktop" \
+  install -Dm644 \
+    "${srcdir}/slimevr.desktop" \
     -t "${pkgdir}/usr/share/applications"
 
-  sed -i '
-    s~{{exec}}~/usr/bin/slimevr~g;
-    s~{{icon}}~slimevr~g;
-  ' "${pkgdir}/usr/share/applications/dev.slimevr.SlimeVR.desktop"
+  install -Dm644 \
+    "${srcdir}/argv-patch.js" \
+    -t "${pkgdir}/usr/lib/slimevr"
+
+  install -dm755 "${pkgdir}/usr/lib/slimevr"
+  asar extract \
+    "${srcdir}/slimevr-server/gui/dist/artifacts/linux/linux-unpacked/resources/app.asar" \
+    "${pkgdir}/usr/lib/slimevr"
 }
 
 package_slimevr-server() {
@@ -107,7 +119,7 @@ package_slimevr-server() {
     -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
   install -Dm644 \
-    "${srcdir}/slimevr-server/gui/src-tauri/69-slimevr-devices.rules" \
+    "${srcdir}/slimevr-server/gui/electron/resources/69-slimevr-devices.rules" \
     -t "${pkgdir}/usr/lib/udev/rules.d"
 
   install -Dm644 \
