@@ -1,8 +1,9 @@
 # Maintainer: Tanishq (Trifalic47) <trifalicapt@gmail.com>
 pkgname=rmpv-git
 pkgver=r34.6578a3c
-pkgrel=1
-pkgdesc="Terminal-based mpv YouTube/music player with yt-dlp streaming and download support"
+pkgrel=2
+# pkgdesc="Terminal-based mpv YouTube/music player with yt-dlp streaming and download support"
+pkgdesc="A lightweight terminal-based music + video controller using mpv + yt-dlp + mpc + rmpc Built for fast media playback, YouTube streaming, and CLI control. It could also play local as well as youtube songs"
 arch=('any')
 url="https://github.com/Trifalic47/rmpv"
 license=('MIT')
