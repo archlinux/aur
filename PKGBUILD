@@ -3,19 +3,19 @@
 pkgbase="linux-pf"
 _suffix=""
 pkgname=(${pkgbase}${_suffix} ${pkgbase}-headers${_suffix})
-_rev=02e0bbadf5862353546f83a7946400da117b4883
-pkgver=6.19.pf5
+_rev=c1369a0b61cece067f60dfd55c61f16b05abad87
+pkgver=7.0.pf1
 pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
 url=https://pfkernel.natalenko.name
 license=(GPL-2.0-only)
-makedepends=(bc cpio gettext libelf pahole perl python rust rust-bindgen rust-src tar xz)
+makedepends=(bc binutils cpio gettext glibc libelf libgcc openssl pahole perl python rust rust-bindgen rust-src tar xxhash xz zlib zstd)
 options=(!debug !strip)
 source=(https://codeberg.org/pf-kernel/linux/archive/${_rev}.tar.gz
 		config)
 b2sums=(SKIP
-		'087edfe138c32f20488b0b734045659bafe3f7a09e215df39ad2bb1504f1b798856cbd0385a3c2624e8eebcfa9493feade794c5e7233bae3b21b1c20d2c66d0a')
+		'1d5cae5729b62f0b7abc2ba2f34d1a8243c8f6620270cc1a8f52edb3fea316c6897fb71a22fcc73df0000d034dfcf57d1af34b16f493c4feef1a8c8240e0393f')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
@@ -55,8 +55,9 @@ _package() {
 				'ksmbd-tools: userspace tools for the ksmbd kernel SMB server'
 				'linux-firmware: firmware images needed for some devices'
 				'scx-scheds: to use sched-ext schedulers'
+				'v4l2loopback-utils: utilities to control v4l2loopback devices'
 				'wireless-regdb: to set the correct wireless channels of your country')
-	provides=(linux-pf KSMBD-MODULE NTSYNC-MODULE OVPN-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+	provides=(linux-pf KSMBD-MODULE NTSYNC-MODULE V4L2LOOPBACK-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 	replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
 	cd linux
@@ -80,7 +81,7 @@ _package() {
 
 _package-headers() {
 	pkgdesc="Headers and scripts for building modules for the ${pkgdesc}"
-	depends=(pahole)
+	depends=(binutils glibc libelf libgcc openssl pahole xxhash zlib zstd)
 	provides=(LINUX-HEADERS linux-pf-headers)
 
 	cd linux
