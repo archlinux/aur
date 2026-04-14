@@ -1,0 +1,19 @@
+pkgbase = ghfetch-rs-git
+	pkgdesc = GitHub stats in the terminal, neofetch-style (development snapshot)
+	pkgver = 0.1.0.r15.gc22fbc6
+	pkgrel = 1
+	url = https://github.com/OneNoted/ghfetch
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	provides = ghfetch
+	conflicts = ghfetch
+	conflicts = ghfetch-rs-bin
+	source = ghfetch::git+https://github.com/OneNoted/ghfetch.git#branch=main
+	sha256sums = SKIP
+
+pkgname = ghfetch-rs-git
