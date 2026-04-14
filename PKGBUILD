@@ -1,16 +1,16 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Flexible terminal-based text editor'
 pkgname=mle
-pkgver=1.7.2
+pkgver=1.8.1
 pkgrel=1
 url='https://github.com/adsr/mle'
 license=(Apache)
 arch=(x86_64)
 conflicts=(mle-git)
-depends=(pcre2 lua)
+depends=(pcre2 lua54)
 makedepends=(uthash)
-source=("${url}/archive/v${pkgver}.tar.gz")
-b2sums=('a1a29e97245e5604608039b25f8f5c2e9bb27939f795d52d61fa57e679731c06680e75b0fe0dbe80dca511899422d757da0ba73023e2ecf8d937455fa621a78a')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+b2sums=('7248ab752fc5eeff9df09bedb79958123593798f7ba64f7615f481270f3d27f1de563587ae716849ba0e86e7937eb8a7fc9fecde0f104db1360141ba9e25afd9')
 
 prepare () {
 	# The Arch Linux Lua package does not have an include/lua5.4 subdir,
