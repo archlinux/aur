@@ -1,18 +1,50 @@
 # Maintainer: hnchengzong
-pkgname=jlu-drcom-bin
-pkgver=1.1.0
+pkgname=jlu-drcom
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="吉林大学校园网登录认证客户端"
+pkgdesc="吉林大学校园网客户端"
 arch=('x86_64')
 url="https://github.com/hnchengzong/jlu-drcom"
 license=('MIT')
-source=("https://github.com/hnchengzong/jlu-drcom/releases/download/v${pkgver}/jlu-drcom-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('7023806bbeaf4fa4955956b28c7e2abcc210c3c64c55110273424b41a8cc30e3')
-
+depends=()
+makedepends=()
+source=("https://github.com/hnchengzong/jlu-drcom/releases/download/v$pkgver/jlu-drcom-$pkgver.tar.xz")
+sha256sums=('df8889956dde63b47f5a85b175b55b265ea2533bf9939636d8a8da38b709e2f0')   
 package() {
-    true
-}
+  cd "$srcdir/$pkgname-$pkgver"
 
-prepare() {
-    cp -f "${srcdir}/jlu-drcom-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" "${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
+  install -d "$pkgdir/opt/drclient/translator"
+
+  install -Dm755 DrClientLinux "$pkgdir/opt/drclient/DrClientLinux"
+  install -Dm644 libjpeg.so.62 "$pkgdir/opt/drclient/libjpeg.so.62"
+  install -Dm644 libpng12.so.0 "$pkgdir/opt/drclient/libpng12.so.0"
+  install -Dm644 DrClientLinux.rcc "$pkgdir/opt/drclient/DrClientLinux.rcc"
+  install -Dm644 translator/localizer_chs.qm "$pkgdir/opt/drclient/translator/localizer_chs.qm"
+  install -Dm755 drcomauthsvr "$pkgdir/opt/drclient/drcomauthsvr"
+  install -Dm644 drcomauthsvr.drsc "$pkgdir/opt/drclient/drcomauthsvr.drsc"
+  install -Dm644 drcomrulesvr.drsc "$pkgdir/opt/drclient/drcomrulesvr.drsc"
+
+  install -Dm755 hn-install.sh "$pkgdir/opt/drclient/hn-install.sh"
+  install -Dm755 hostinfo.sh "$pkgdir/opt/drclient/getinfo.sh"
+  install -Dm755 pppoe-status "$pkgdir/opt/drclient/pppoe-status.sh"
+
+  chown root:root "$pkgdir/opt/drclient/drcomauthsvr"
+  chmod 4755 "$pkgdir/opt/drclient/drcomauthsvr"
+
+  install -d "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/jlu-drcom" << 'EOF'
+#!/bin/sh
+cd /opt/drclient || exit 1
+exec ./DrClientLinux "$@"
+EOF
+
+  cat > "$pkgdir/usr/bin/jlu-config" << 'EOF'
+#!/bin/sh
+cd /opt/drclient || exit 1
+export LD_LIBRARY_PATH=/opt/drclient:$LD_LIBRARY_PATH
+exec /opt/drclient/hn-install.sh "$@"
+EOF
+
+  chmod 755 "$pkgdir/usr/bin/jlu-drcom"
+  chmod 755 "$pkgdir/usr/bin/jlu-config"
 }

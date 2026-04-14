@@ -1,11 +1,11 @@
-pkgbase = jlu-drcom-bin
-	pkgdesc = 吉林大学校园网登录认证客户端
-	pkgver = 1.1.0
+pkgbase = jlu-drcom
+	pkgdesc = 吉林大学校园网客户端
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/hnchengzong/jlu-drcom
 	arch = x86_64
 	license = MIT
-	source = https://github.com/hnchengzong/jlu-drcom/releases/download/v1.1.0/jlu-drcom-1.1.0-1-x86_64.pkg.tar.zst
-	sha256sums = 7023806bbeaf4fa4955956b28c7e2abcc210c3c64c55110273424b41a8cc30e3
+	source = https://github.com/hnchengzong/jlu-drcom/releases/download/v1.2.0/jlu-drcom-1.2.0.tar.xz
+	sha256sums = df8889956dde63b47f5a85b175b55b265ea2533bf9939636d8a8da38b709e2f0
 
-pkgname = jlu-drcom-bin
+pkgname = jlu-drcom
