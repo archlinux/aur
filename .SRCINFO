@@ -1,35 +1,27 @@
 pkgbase = lyrica
 	pkgdesc = Linux desktop lyrics widget focused on simplicity and integration.
-	pkgver = 0.14
+	pkgver = 0.22
 	pkgrel = 1
 	url = https://github.com/chiyuki0325/lyrica/
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = jq
-	depends = zlib
-	depends = dbus
-	depends = gcc-libs
-	depends = glibc
-	depends = openssl
-	depends = qt6-declarative
-	depends = qt6-websockets
-	depends = libplasma
-	depends = kirigami
-	depends = plasma5support
-	optdepends = python-websockets: Run examples/lyrica_obs_plugin.py
-	optdepends = python: Run examples/lyrica_obs_plugin.py
-	optdepends = obs-studio: Run examples/lyrica_obs_plugin.py
 	options = !lto
-	source = lyrica-0.14.tar.gz::https://github.com/chiyuki0325/lyrica/archive/refs/tags/v0.14.tar.gz
-	sha256sums = a54596c5a42f0feb7fa952110aee001ac4d115c551a9aefd5a7bb3e4c25b3553
+	source = lyrica-0.22.tar.gz::https://github.com/chiyuki0325/lyrica/archive/refs/tags/v0.22.tar.gz
+	sha256sums = 7c78190eca5b0faa39699234eabdd38035bfdb495b72415238e596e28aea75d8
 
 pkgname = lyrica
 	depends = zlib
-	depends = dbus
-	depends = gcc-libs
+	depends = libgcc
 	depends = glibc
 	depends = openssl
+	depends = zstd
+
+pkgname = plasma-applet-lyrica
+	pkgdesc = Linux desktop lyrics widget focused on simplicity and integration. (Plasma6 applet frontend)
+	arch = any
+	depends = lyrica=0.22
 	depends = qt6-declarative
 	depends = qt6-websockets
 	depends = libplasma
@@ -37,4 +29,10 @@ pkgname = lyrica
 	depends = plasma5support
 	depends = psmisc
 	depends = bash
-	depends = hicolor-icon-theme
+
+pkgname = obs-plugin-lyrica
+	pkgdesc = Linux desktop lyrics widget focused on simplicity and integration. (frontend script for OBS Studio)
+	arch = any
+	depends = lyrica=0.22
+	depends = python-websockets
+	depends = obs-studio
