@@ -12,9 +12,9 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/GopherTube-$pkgver"
+  cd "$srcdir"
   export CGO_ENABLED=0
-  go build -ldflags "-X main.version=$pkgver" -o gophertube main.go
+  go build -ldflags "-X gophertube/internal/app.version=$pkgver" -o gophertube .
 }
 
 package() {
