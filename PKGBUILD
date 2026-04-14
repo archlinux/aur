@@ -1,6 +1,6 @@
 # Maintainer: Luke Hsiao <luke@hsiao.dev>
 pkgname=openring-rs-bin
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc='A tool for generating a webring from Atom/RSS feeds, written in Rust (prebuilt binary)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -16,10 +16,10 @@ source_x86_64=("$_relurl/openring-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_relurl/openring-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7h=("$_relurl/openring-armv7-unknown-linux-gnueabihf.tar.gz")
 
-sha256sums=('67722b4b85b662d00951432423dde0c7aa73751b3cf7f17935e35593dbf93a6c')
-sha256sums_x86_64=('512986235d1d25511d94c86958897264e497726e1639d24c8f10affbee8738ed')
-sha256sums_aarch64=('0fbc9892cf3bcb6e211b41a9192b5761e81008b175feb4966a9e2778123fc295')
-sha256sums_armv7h=('8e388d40b2b10ff49b2de042c44d6a857958abcc7bbb7902fecad5e186677cee')
+sha256sums=('d51a7adf5617e4443465262ee2970e280804c4d2c8d1c2e035058b2ebc19cac0')
+sha256sums_x86_64=('d0a7022aea9cd6219cf06e358ff438b71a46151cd9615040794b0e7dbc580012')
+sha256sums_aarch64=('3076341399947a6b517dec7ae5244c68ef6191b954ef9e2f66e88ff22d107528')
+sha256sums_armv7h=('b49f6f63b9d5b3345506cc33e5d92b213313d8bf802ae3c809a934aec2b8180a')
 
 package() {
     install -Dm755 "$srcdir/openring" "$pkgdir/usr/bin/openring"
