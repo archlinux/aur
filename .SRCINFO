@@ -1,0 +1,25 @@
+pkgbase = vwm-git
+	pkgdesc = Lightweight tiling window manager for X11
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/veasman/vwm
+	arch = x86_64
+	license = MIT
+	makedepends = base-devel
+	makedepends = git
+	makedepends = pkgconf
+	depends = libx11
+	depends = libxcb
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	depends = libxft
+	depends = fontconfig
+	depends = cairo
+	depends = libxrender
+	depends = libxext
+	provides = vwm
+	conflicts = vwm
+	source = git+https://github.com/veasman/vwm.git
+	sha256sums = SKIP
+
+pkgname = vwm-git
