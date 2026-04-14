@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-quick-lofi
+	pkgdesc = Play lofi music and other sounds, locally or online, on your GNOME desktop with just a click!
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/EuCaue/gnome-shell-extension-quick-lofi
+	arch = any
+	license = GPL-3.0-only
+	makedepends = jq
+	depends = gnome-shell
+	depends = mpv
+	source = https://github.com/EuCaue/gnome-shell-extension-quick-lofi/releases/download/v1.7.0/quick-lofi@eucaue.zip
+	source = https://raw.githubusercontent.com/EuCaue/gnome-shell-extension-quick-lofi/refs/heads/master/LICENSE
+	sha256sums = 8f544d6ff53989811bae5c8e75cc29343853cd9b1e513f8ae20119f017eb08ee
+	sha256sums = d9b35296af104bd3ee62939b8d80ab8db7fe0aa61b30d2fe14acb2704904d299
+
+pkgname = gnome-shell-extension-quick-lofi
