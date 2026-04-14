@@ -1,6 +1,6 @@
 pkgbase = openwave
 	pkgdesc = Linux control application for the Elgato Wave XLR
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/rikkichy/openwave
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = openwave
 	depends = libadwaita
 	depends = libusb
 	depends = pipewire
-	source = openwave-0.1.1.tar.gz::https://github.com/rikkichy/openwave/archive/refs/tags/v0.1.1.tar.gz
+	source = openwave-0.1.2.tar.gz::https://github.com/rikkichy/openwave/archive/refs/tags/v0.1.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = openwave
