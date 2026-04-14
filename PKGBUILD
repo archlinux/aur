@@ -4,8 +4,8 @@
 
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
-_pkgver=3.8.3
-pkgver=3.8.3.r12.ga3b567515
+_pkgver=3.9.0.2
+pkgver=3.9.0.2.r12.g6a2e27502
 pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
@@ -13,7 +13,7 @@ license=(GPL-2.0-or-later)
 arch=(x86_64)
 depends=(glibc # libm.so libc.so
          gmp # libgmp.so
-         lua
+         lua54
          zlib)
 makedepends=(ghc
              git
