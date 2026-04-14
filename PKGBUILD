@@ -2,7 +2,7 @@
 _pkgname=clipsync
 pkgname=clipsync-git
 pkgver=r20.ecbf735 
-pkgrel=2
+pkgrel=3
 pkgdesc="Clipboard synchronization daemon for Wayland Compositor (X11 <--> Wayland)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SHORiN-KiWATA/clipsync"
