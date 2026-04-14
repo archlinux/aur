@@ -1,6 +1,6 @@
 # Maintainer: Himalian <Himalian9227@proton.me>, phucvinh57 <npvinh0507@gmail.com>
 pkgname=biopass-bin
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="An alternative to Windows Hello/Howdy"
 arch=('x86_64' 'aarch64')
@@ -61,7 +61,7 @@ package() {
     return 1
   fi
 
-  # The published 1.0.3 bundles still embed CI build paths in RUNPATH. Replace
+  # The published 1.1.0 bundles still embed CI build paths in RUNPATH. Replace
   # them with the packaged native lib location used by the helper and face libs.
   patchelf --set-rpath /usr/lib/biopass "${helper_path}"
   for so_file in "${pkgdir}"/usr/lib/biopass/libbiopass_*.so; do

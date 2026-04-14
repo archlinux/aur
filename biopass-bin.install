@@ -1,36 +1,38 @@
+_biopass_run_config_migration() {
+  helper="/usr/bin/biopass-helper"
+  if [ ! -x "${helper}" ]; then
+    return 0
+  fi
+
+  while IFS=: read -r username _ _ _ _ home _; do
+    [ -n "${username}" ] || continue
+    [ -n "${home}" ] || continue
+
+    config_path="${home}/.config/com.ticklab.biopass/config.yaml"
+    if [ -f "${config_path}" ]; then
+      echo ">>> Biopass: migrating config schema for user '${username}'"
+      "${helper}" migrate --username "${username}" || true
+    fi
+  done < /etc/passwd
+}
+
 _biopass_run_post_install() {
   script="/usr/share/com.ticklab.biopass/download_models.sh"
-  target_user=""
 
   if command -v ldconfig >/dev/null 2>&1; then
     ldconfig
   fi
 
-  if [ -n "${SUDO_USER:-}" ] && [ "${SUDO_USER}" != "root" ]; then
-    target_user="${SUDO_USER}"
-  elif [ -n "${DOAS_USER:-}" ] && [ "${DOAS_USER}" != "root" ]; then
-    target_user="${DOAS_USER}"
-  else
-    login_name="$(logname 2>/dev/null || true)"
-    if [ -n "${login_name}" ] && [ "${login_name}" != "root" ]; then
-      target_user="${login_name}"
-    fi
-  fi
+  _biopass_run_config_migration
 
   if [ ! -f "${script}" ]; then
     echo ">>> Biopass: model downloader not found at ${script}"
     return
   fi
 
-  if [ -n "${target_user}" ]; then
-    echo ">>> Biopass: downloading AI models for ${target_user}"
-    SUDO_USER="${target_user}" bash "${script}" || \
-      echo ">>> Biopass: automatic model download failed; run ${script} as your normal user."
-  else
-    echo ">>> Biopass: could not determine the desktop user for automatic model download."
-    echo ">>> Biopass: run this once as your normal user:"
-    echo ">>>   ${script}"
-  fi
+  echo ">>> Biopass: running model downloader"
+  bash "${script}" || \
+    echo ">>> Biopass: automatic model download failed; run ${script} as your normal user."
 }
 
 post_install() {
