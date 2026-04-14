@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export NPM_CONFIG_PREFIX="${NPM_CONFIG_PREFIX:-/nonexistent}"
+export DISABLE_AUTOUPDATER="${DISABLE_AUTOUPDATER:-1}"
+
+exec /usr/lib/claude-code-stable-bin/claude "$@"
