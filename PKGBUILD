@@ -56,7 +56,27 @@ package() {
   install -d "$pkgdir/opt/legion-gui"
   cp -a . "$pkgdir/opt/legion-gui"
 
+  # Fix: remove build-path refs ($srcdir) from venv
+  if test -f "$pkgdir/opt/legion-gui/venv/pyvenv.cfg"; then
+    sed -i -E "s#^prompt = .*#prompt = legion-gui#g" "$pkgdir/opt/legion-gui/venv/pyvenv.cfg" 2>/dev/null || true
+    sed -i -E "s#(/[^ ]+/src/[^ ]+)#/opt/legion-gui#g" "$pkgdir/opt/legion-gui/venv/pyvenv.cfg" 2>/dev/null || true
+    fi
+
+  # Fix: drop venv console scripts that embed $srcdir in shebangs (keep python only)
+  find "$pkgdir/opt/legion-gui/venv/bin" -maxdepth 1 -type f ! -name "python" ! -name "python3*" -delete 2>/dev/null || true
+
+
   # Fix: remove unicode symlink (e.g. "𝜋thon") that breaks bsdtar UTF-8 path translation
+
+    # Cleanup: strip tests/caches/tools to reduce package size (runtime-safe)
+    rm -rf "$pkgdir/opt/legion-gui/venv/lib/python3.14/site-packages/pandas/tests" 2>/dev/null || true
+    rm -rf "$pkgdir/opt/legion-gui/venv/lib/python3.14/site-packages/numpy/tests" 2>/dev/null || true
+    rm -rf "$pkgdir/opt/legion-gui/venv/lib/python3.14/site-packages/pip" 2>/dev/null || true
+    rm -rf "$pkgdir/opt/legion-gui/venv/lib/python3.14/site-packages/setuptools" 2>/dev/null || true
+    rm -rf "$pkgdir/opt/legion-gui/venv/lib/python3.14/site-packages/wheel" 2>/dev/null || true
+    find "$pkgdir/opt/legion-gui/venv" -type d -name "__pycache__" -prune -exec rm -rf {} + 2>/dev/null || true
+    find "$pkgdir/opt/legion-gui/venv" -type f -name "*.pyc" -delete 2>/dev/null || true
+
   find "$pkgdir/opt/legion-gui/venv/bin" -maxdepth 1 -type l -name "*thon" ! -name "python" ! -name "python3*" -delete 2>/dev/null || true
 
 
