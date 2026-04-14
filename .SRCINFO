@@ -7,6 +7,7 @@ pkgbase = arctis-sound-manager
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python-installer
+	makedepends = python-pip
 	makedepends = uv
 	depends = python>=3.10
 	depends = pyside6
@@ -22,15 +23,5 @@ pkgbase = arctis-sound-manager
 	optdepends = swh-plugins: Noise Gate and Compressor for mic processing
 	source = arctis-sound-manager-1.0.36.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/archive/refs/tags/v1.0.36.tar.gz
 	sha256sums = d1f2cc8bc97d2f76082a57c0ae844a7278d05782c8b5e0e2fba73490c58e343e
-
-	keywords = steelseries
-	keywords = arctis
-	keywords = nova
-	keywords = nova-pro
-	keywords = headset
-	keywords = sonar
-	keywords = equalizer
-	keywords = pipewire
-	keywords = audio
 
 pkgname = arctis-sound-manager
