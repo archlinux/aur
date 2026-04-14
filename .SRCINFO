@@ -1,0 +1,17 @@
+pkgbase = codeinput-bin
+	pkgdesc = A powerful CLI tool for parsing, analyzing, and managing CODEOWNERS files
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeinput.com/cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = codeinput
+	conflicts = codeinput
+	options = !strip
+	source_x86_64 = https://github.com/code-input/cli/releases/download/v0.1.0/ci-linux-x86_64
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/code-input/cli/releases/download/v0.1.0/ci-linux-aarch64
+	sha256sums_aarch64 = SKIP
+
+pkgname = codeinput-bin
