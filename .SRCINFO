@@ -1,6 +1,6 @@
 pkgbase = lfk-bin
 	pkgdesc = A lightning-fast, keyboard-focused, yazi-inspired terminal user interface for navigating and managing Kubernetes clusters
-	pkgver = 0.9.11
+	pkgver = 0.9.12
 	pkgrel = 1
 	url = https://github.com/janosmiko/lfk
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lfk-bin
 	provides = lfk
 	conflicts = lfk
 	options = !strip
-	source_x86_64 = lfk-x86_64-0.9.11.tgz::https://github.com/janosmiko/lfk/releases/download/v0.9.11/lfk_0.9.11_linux_amd64.tar.gz
-	sha256sums_x86_64 = 33bec4b6a9c8e5d9e9898eccbe2190546a0f4b5088b7690868171a43c8e69bc5
-	source_aarch64 = lfk-aarch64-0.9.11.tgz::https://github.com/janosmiko/lfk/releases/download/v0.9.11/lfk_0.9.11_linux_arm64.tar.gz
-	sha256sums_aarch64 = 193ccde5795b090ae63829e947a381b2cbf73f4306d54e338eb092acc69a53dc
+	source_x86_64 = lfk-x86_64-0.9.12.tgz::https://github.com/janosmiko/lfk/releases/download/v0.9.12/lfk_0.9.12_linux_amd64.tar.gz
+	sha256sums_x86_64 = ee19b002e43aaf2147400aac368c8b4d14830b5ec42f679b6fc018d2c01098f7
+	source_aarch64 = lfk-aarch64-0.9.12.tgz::https://github.com/janosmiko/lfk/releases/download/v0.9.12/lfk_0.9.12_linux_arm64.tar.gz
+	sha256sums_aarch64 = b82ad8de37715dc32c6535b6b7c74718e5f8807fdbf51c929dee339cf845f2f4
 
 pkgname = lfk-bin
