@@ -3,7 +3,7 @@
 # Part of : CV4PVE Suite - https://www.corsinvest.it/cv4pve
 
 pkgname=cv4pve-autosnap
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Automatic snapshot tool for Proxmox VE — schedule and manage VM/LXC snapshots with retention policies"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,9 +18,9 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://github.com/Corsinvest/c
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://github.com/Corsinvest/cv4pve-autosnap/releases/download/v${pkgver}/cv4pve-autosnap-linux-arm64.zip")
 source_armv7h=("${pkgname}-${pkgver}-armv7h.zip::https://github.com/Corsinvest/cv4pve-autosnap/releases/download/v${pkgver}/cv4pve-autosnap-linux-arm.zip")
 
-sha256sums_x86_64=('897da50301d5245703b4c1843a7828975cfa1fbec48010aba431b0d0dd40d5a8')
-sha256sums_aarch64=('df373dcc593cf1352dc2f728754ba2795923594a10c6bec34c7d19e710be63c9')
-sha256sums_armv7h=('2fa875240331e9d20b376085316d5b57694c465ac54a66ed89a9860eb26e1bc7')
+sha256sums_x86_64=('a09d55c1ce20e0e71090553b364d48f1b4a6344d0db4d757000270f015e1e6eb')
+sha256sums_aarch64=('2b274b0aece7c9362d6354bd84206e16e2e22c815c0481cfd647c96fead36cd7')
+sha256sums_armv7h=('c1104cf7216c54b4e4e43ff2987dc2f3712956bf2d27e8e93e02e084a82ce241')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
