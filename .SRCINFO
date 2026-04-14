@@ -1,7 +1,7 @@
 pkgbase = zmx-bin
 	pkgdesc = Session persistence for terminal processes
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neurosnap/zmx
 	arch = x86_64
 	arch = aarch64

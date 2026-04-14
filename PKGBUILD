@@ -6,7 +6,7 @@ pkgname=${_pkgname}-bin
 pkgdesc="Session persistence for terminal processes"
 
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 _pkgvername=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -36,9 +36,9 @@ sha256sums_aarch64=('2e3fc2a6257408626634480e5a684cc24e72b34f813d08b008a359f950e
 build() {
 	cd "${srcdir}/" || exit
 
-	./${_pkgname} --completions bash > ${_pkgname}.bash
-	./${_pkgname} --completions zsh > ${_pkgname}.zsh
-	./${_pkgname} --completions fish > ${_pkgname}.fish
+	./${_pkgname} completions bash > ${_pkgname}.bash
+	./${_pkgname} completions zsh > ${_pkgname}.zsh
+	./${_pkgname} completions fish > ${_pkgname}.fish
 }
 
 package() {
