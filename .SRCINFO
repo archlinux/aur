@@ -1,16 +1,19 @@
 pkgbase = dota2-minify-bin
 	pkgdesc = Dota 2 Mod Patcher & Toolkit — prebuilt binary
 	pkgver = 1.13.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Egezenn/dota2-minify
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = 7zip
+	makedepends = icoutils
 	depends = freetype2
 	depends = fontconfig
 	depends = hicolor-icon-theme
 	provides = dota2-minify
 	conflicts = dota2-minify
-	options = !strip
+	conflicts = dota2-minify-rc-bin
+	noextract = dota2-minify-bin-1.13.1.zip
 	source = dota2-minify-bin-1.13.1.zip::https://github.com/Egezenn/dota2-minify/releases/download/Minify-v1.13.1/Minify-v1.13.1-linux.zip
 	sha256sums = de11fb082b5f8cfac06457b0f1b23d51fb2d01b501927e44b913ab6b333a29a1
 
