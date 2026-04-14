@@ -1,0 +1,14 @@
+pkgbase = pkgtui
+	pkgdesc = Terminal UI for Arch Linux package management via pacman and yay
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/StepanKomis/pkgtui
+	arch = any
+	license = custom:unlicense
+	depends = python
+	depends = fzf
+	optdepends = yay: AUR package support (required for AUR search and install)
+	source = pkgtui-1.0.0.tar.gz::https://github.com/StepanKomis/pkgtui/archive/v1.0.0.tar.gz
+	sha256sums = 59bf2cdd35e3ed22a678b958da6dab89c5e7bd815adce753694969256c5a55f4
+
+pkgname = pkgtui
