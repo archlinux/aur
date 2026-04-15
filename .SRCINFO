@@ -1,6 +1,6 @@
 pkgbase = roam
 	pkgdesc = Roam: Your Cloud HQ
-	pkgver = 208.0.0.beta001
+	pkgver = 209.0.0.beta001
 	pkgrel = 1
 	url = https://ro.am
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = roam
 	depends = org.freedesktop.secrets
 	depends = libpulse
 	options = !debug
-	source_x86_64 = https://download.ro.am/Roam/8a86d88cfc9da3551063102e9a4e2a83/linux/debian/binary/208.0.0-beta001-roam_208.0.0-beta001_amd64.deb
-	sha256sums_x86_64 = 454b18471cd6760a5764bf386d855fc4235370797758c77de5abe4e5bd3babcd
-	source_aarch64 = https://download.ro.am/Roam/8a86d88cfc9da3551063102e9a4e2a83/linux/debian/binary/208.0.0-beta001-roam_208.0.0-beta001_arm64.deb
-	sha256sums_aarch64 = 5536f0643993adbb99dd4cee9fe6a4986d37dbe09cc4c5cf5bbea7f68fb9910a
+	source_x86_64 = https://download.ro.am/Roam/8a86d88cfc9da3551063102e9a4e2a83/linux/debian/binary/209.0.0-beta001-roam_209.0.0-beta001_amd64.deb
+	sha256sums_x86_64 = fcf935a7b6f993c53117f6d293181cb3376cebcb03374ced38e8dbe1d8276ca1
+	source_aarch64 = https://download.ro.am/Roam/8a86d88cfc9da3551063102e9a4e2a83/linux/debian/binary/209.0.0-beta001-roam_209.0.0-beta001_arm64.deb
+	sha256sums_aarch64 = cf622c8da135f0c85aea17eb5d625228019eb38c86608c00d32afe465d1cb873
 
 pkgname = roam
