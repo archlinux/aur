@@ -2,7 +2,7 @@
 
 pkgname=dota2-minify-bin
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dota 2 Mod Patcher & Toolkit — prebuilt binary"
 arch=('x86_64')
 url="https://github.com/Egezenn/dota2-minify"
@@ -41,18 +41,36 @@ package() {
     done
   )
 
-  # The frozen binary calls os.chdir() to its own directory on startup
-  # (line 8 of __main__.py), overriding the launcher's CWD.
-  # It then creates config/ and logs/ dirs there (lines 13-14).
-  # Pre-create these as world-writable so any user can write.
-  install -dm1777 "${pkgdir}/usr/share/dota2-minify/config"
-  install -dm1777 "${pkgdir}/usr/share/dota2-minify/logs"
+  # Minify changes into the directory of its own executable and writes runtime
+  # state there, including downloaded helper binaries like Source2Viewer-CLI.
+  # Keep the packaged tree under /usr/share read-only and run from a per-user
+  # copy instead.
+  install -dm755 "${pkgdir}/usr/share/dota2-minify/config"
+  install -dm755 "${pkgdir}/usr/share/dota2-minify/logs"
+  install -dm755 "${pkgdir}/usr/share/dota2-minify/bin/rescomproot"
 
   # Create launcher
   install -dm755 "${pkgdir}/usr/bin"
   cat >"${pkgdir}/usr/bin/dota2-minify" <<'EOF'
 #!/bin/sh
-exec /usr/share/dota2-minify/Minify "$@"
+set -eu
+
+system_root=/usr/share/dota2-minify
+runtime_root="${XDG_DATA_HOME:-$HOME/.local/share}/dota2-minify"
+runtime_version="1.13.1-2"
+version_file="$runtime_root/.package-version"
+
+mkdir -p "$runtime_root" "$runtime_root/config" "$runtime_root/logs"
+
+if [ ! -x "$runtime_root/Minify" ] || [ ! -f "$version_file" ] || [ "$(cat "$version_file")" != "$runtime_version" ]; then
+  tar -C "$system_root" \
+    --exclude='./config' \
+    --exclude='./logs' \
+    -cf - . | tar -C "$runtime_root" -xf -
+  printf '%s\n' "$runtime_version" > "$version_file"
+fi
+
+exec "$runtime_root/Minify" "$@"
 EOF
   chmod 755 "${pkgdir}/usr/bin/dota2-minify"
 
