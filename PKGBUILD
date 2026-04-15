@@ -12,20 +12,20 @@ depends=(
   'tesseract'
   'leptonica'
   'zstd'
-  'slop'   # X11 region selection
-  'maim'   # X11 screenshot
-  'slurp'  # Wayland region selection
-  'grim'   # Wayland screenshot
+  'oniguruma'
+  'slop'
+  'maim'
+  'slurp'
+  'grim'
 )
 
-makedepends=('cargo')
+makedepends=('cargo' 'pkgconf')
 
 source=("$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('89733efd739c73d0ee694b059d871c9beb1cfacdd9de021a6e553882f29011db')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  export RUSTFLAGS="-C link-args=-lonig -lzstd"
   cargo build --release --locked
 }
 
