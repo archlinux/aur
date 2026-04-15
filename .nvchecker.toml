@@ -1,0 +1,5 @@
+[drop-bin]
+source = "github"
+github = "wrr/drop"
+use_latest_release = true
+prefix = "v"
