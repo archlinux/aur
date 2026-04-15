@@ -3,7 +3,7 @@
 # Contributor: Sematre <sematre at gmx dot de>
 
 pkgname="yt-dlp-drop-in"
-pkgver=2025.10.22
+pkgver=2026.03.17
 pkgrel=1
 pkgdesc='Provide both youtube-dl command and python imports using yt-dlp'
 url="https://aur.archlinux.org/packages/yt-dlp-drop-in"
