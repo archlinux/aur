@@ -1,5 +1,5 @@
 pkgname=gitcomet
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Fast, resource-efficient Git GUI written in Rust"
 arch=('x86_64')
@@ -18,8 +18,8 @@ source=(
   "gitcomet-v$pkgver-linux-x86_64.tar.gz::https://github.com/Auto-Explore/GitComet/releases/download/v$pkgver/gitcomet-v$pkgver-linux-x86_64.tar.gz"
   "gitcomet-source-v$pkgver.tar.gz::https://github.com/Auto-Explore/GitComet/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('e8a448615374142434163e3c2560cd360405dd68c10739901e14c9af26877c43'
-            '15b06c0c08222541d4fd1edda128b719e15f6b66990d317610d43fa653355cac')
+sha256sums=('6e6b8820054a3c0716dd49c690b6d715f9a27154e287857c24710cce936cf6be'
+            '5a4e6c39bedc1338c26373f1a950cce008e60fdfbef20817db72523e93984920')
 
 package() {
   install -D -m755 "gitcomet-v$pkgver-linux-x86_64/gitcomet" "$pkgdir/usr/bin/gitcomet"
