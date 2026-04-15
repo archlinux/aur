@@ -2,13 +2,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 
 ## options
-: ${_electron_version=}
+: ${_electron_version=41}
 : ${_nodeversion=}
 : ${_install_path:=usr/share}
 
 _pkgname="thorium-reader"
 pkgname="$_pkgname"
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 url="https://github.com/edrlab/thorium-reader"
@@ -25,7 +25,7 @@ makedepends=(
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
-sha256sums=('356fe7c9888d5990fb498abe87d77139b3ff486f833d9326476cec56fd97f765')
+sha256sums=('732f8e347ccd6e655b530451e571daf15db6da336e79812d80b19ca1bdd0f49f')
 
 _nvm_env() {
   export HOME="$SRCDEST/node-home"

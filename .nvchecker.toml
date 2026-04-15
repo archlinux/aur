@@ -1,0 +1,5 @@
+[thorium-reader]
+source = "git"
+git = "https://github.com/edrlab/thorium-reader.git"
+prefix = "v"
+ignored = "4.2.10"
