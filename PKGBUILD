@@ -3,7 +3,7 @@
 # Maintainer: Evandro Begati <evandroalb at gmail dot com>
 
 pkgname=bitrix24
-pkgver=21.0.28.90
+pkgver=22.0.28.91
 pkgrel=1
 pkgdesc="Bitrix24 unified workspace app (CRM, comms, tasks, and more)"
 arch=("x86_64")
