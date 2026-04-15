@@ -3,7 +3,7 @@
 # Contributor: oscareczek <oscareczek at gmail dot com>
 pkgname=pcbox-qt5-git
 pkgver=5.3
-pkgrel=1
+pkgrel=3
 pkgdesc='An emulator for classic IBM PC clones (Built with qt5)'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://pcbox-emu.xyz/'
@@ -44,7 +44,7 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
-    for i in 16x16 20x20 24x24 32x32 48x48 64x64 72x72 128x128 192x192 256x256 512x512; do
+    for i in 16x16 20x20 24x24 32x32 48x48 64x64 72x72 128x128 256x256 512x512; do
         install -Dm644 "$srcdir/$pkgname/src/unix/assets/$i/net.pcbox.PCBox.png" -t "$pkgdir/usr/share/icons/hicolor/$i/apps"
     done
     mkdir "${pkgdir}/usr/share/applications"
