@@ -2,7 +2,7 @@
 pkgname=thiefmd
 _app_id="com.github.kmwallio.$pkgname"
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter"
 arch=('x86_64' 'aarch64')
 url="https://thiefmd.com"
@@ -91,4 +91,9 @@ package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
 
   ln -s "/usr/bin/com.github.kmwallio.$pkgname" "$pkgdir/usr/bin/$pkgname"
+
+  # Correct symbolic icon location
+  install -Dm644 "ThiefMD/data/icons/symbolic/${_app_id}.svg" -t \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/"
+  rm -r "$pkgdir/usr/share/icons/hicolor/symbolicxsymbolic/"
 }

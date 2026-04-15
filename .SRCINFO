@@ -1,7 +1,7 @@
 pkgbase = thiefmd
 	pkgdesc = The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://thiefmd.com
 	arch = x86_64
 	arch = aarch64
