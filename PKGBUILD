@@ -1,7 +1,7 @@
 # Maintainer: Winícius Cota <winicius.cota@gmail.com>
 pkgname=python-datafiles
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="File-based ORM for dataclasses."
 arch=('any')
 url="https://github.com/jacebrowning/datafiles"
@@ -14,17 +14,11 @@ depends=('python'
          'python-parse'
          'python-ruamel-yaml'
          'python-tomlkit')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
-source=("https://files.pythonhosted.org/packages/61/76/6937ed351391dbfab0ea3bb3e52be8499de033009a2d211fe95f5c2dde77/datafiles-${pkgver}.tar.gz")
-sha256sums=('432498336b57aaa9e3427f3c2cf0c558b980a01d825661da9df61076b3b84f8e')
-
-build() {
-    cd "datafiles-${pkgver}"
-    python -m build --wheel --no-isolation
-}
+makedepends=('python-installer')
+source=("https://files.pythonhosted.org/packages/e7/20/77ffd95cab96a5db9460d9a038d2d5c49c1e18995e7735a2e92e9cb1798e/datafiles-${pkgver}-py3-none-any.whl")
+noextract=("datafiles-${pkgver}-py3-none-any.whl")
+sha256sums=('3c4b50339b698ef7096f7244233e80c5686838f0dcd4c77bfe7e0e52ddea75de')
 
 package() {
-    cd "datafiles-${pkgver}"
-    python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    python -m installer --destdir="$pkgdir" "$srcdir/datafiles-${pkgver}-py3-none-any.whl"
 }

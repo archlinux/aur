@@ -1,14 +1,11 @@
 pkgbase = python-datafiles
 	pkgdesc = File-based ORM for dataclasses.
 	pkgver = 2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jacebrowning/datafiles
 	arch = any
 	license = MIT
-	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-poetry-core
 	depends = python
 	depends = python-cached-property
 	depends = python-classproperties
@@ -17,7 +14,8 @@ pkgbase = python-datafiles
 	depends = python-parse
 	depends = python-ruamel-yaml
 	depends = python-tomlkit
-	source = https://files.pythonhosted.org/packages/61/76/6937ed351391dbfab0ea3bb3e52be8499de033009a2d211fe95f5c2dde77/datafiles-2.5.tar.gz
-	sha256sums = 432498336b57aaa9e3427f3c2cf0c558b980a01d825661da9df61076b3b84f8e
+	noextract = datafiles-2.5-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/e7/20/77ffd95cab96a5db9460d9a038d2d5c49c1e18995e7735a2e92e9cb1798e/datafiles-2.5-py3-none-any.whl
+	sha256sums = 3c4b50339b698ef7096f7244233e80c5686838f0dcd4c77bfe7e0e52ddea75de
 
 pkgname = python-datafiles
