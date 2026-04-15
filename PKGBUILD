@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.39.r18774.c6f5abe59f
+pkgver=0.0.40.r19204.4ffeee0344
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64 aarch64)
@@ -114,6 +114,7 @@ build() {
     -DUSE_SYSTEM_PROTOBUF=OFF \
     -DUSE_SYSTEM_PUGIXML=ON \
     -DUSE_SYSTEM_OPENCV=ON \
+    -DUSE_DISCORD_RPC=ON \
     -DUSE_SDL=ON \
     -DUSE_SYSTEM_SDL=ON \
     -DBUILD_LLVM=OFF \
