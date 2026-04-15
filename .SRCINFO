@@ -1,7 +1,7 @@
 pkgbase = tmenu
 	pkgdesc = Minimal X11 menu launcher - dmenu alternative in <250 lines of C
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tinyopsec/tmenu
 	arch = x86_64
 	arch = aarch64
