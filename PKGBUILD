@@ -1,5 +1,5 @@
 pkgname=hyprlev-git
-pkgver=r49.ed30c63
+pkgver=0.01.5
 pkgrel=1
 pkgdesc="Hyprlev Hyprland rice and configuration pack"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/hyprlev"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    git describe --tags --abbrev=0 | sed 's/^v//'
 }
 
 package() {

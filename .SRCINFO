@@ -1,6 +1,6 @@
 pkgbase = hyprlev-git
 	pkgdesc = Hyprlev Hyprland rice and configuration pack
-	pkgver = r49.ed30c63
+	pkgver = 0.01.5
 	pkgrel = 1
 	url = https://github.com/Pikalev15/hyprlev
 	install = hyprlev-git.install
