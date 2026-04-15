@@ -14,7 +14,7 @@ source=("https://github.com/Q3Rally-Team/q3rally/releases/download/v${pkgver}/Q3
         "q3rally"
         "q3rally.desktop")
 sha256sums=('d6f688a202440a3e65c70727ab7bde4d6ca5a27f3048c4ed69af0f73860503f8'
-            '834a31ad41941717818f78cee12c803ad013699ec0b1dbc67650dab17af63ec0'
+            'ccb555feb894c45ee9445fefbd9dda1da9c340839047e9b11e624ed699696283'
             '8a68880e44f1ca45a6c3ac1838ca116d27edb6bec36f773aa5d9d1cef02c43bc')
 
 check() {
