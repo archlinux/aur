@@ -3,7 +3,7 @@
 # Part of : CV4PVE Suite - https://www.corsinvest.it/cv4pve
 
 pkgname=cv4pve-report
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Report tool for Proxmox VE — exports full infrastructure inventory to Excel"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,9 +18,9 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://github.com/Corsinvest/c
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://github.com/Corsinvest/cv4pve-report/releases/download/v${pkgver}/cv4pve-report-linux-arm64.zip")
 source_armv7h=("${pkgname}-${pkgver}-armv7h.zip::https://github.com/Corsinvest/cv4pve-report/releases/download/v${pkgver}/cv4pve-report-linux-arm.zip")
 
-sha256sums_x86_64=('164e4cc4d83e5ac72880ef43c7f32b761571a51db1db66de74a3c355e8997b4b')
-sha256sums_aarch64=('47f27e9a626b07c34fe753007d99f942c62bd4fdd880fa3db554ac5cb05f8499')
-sha256sums_armv7h=('4b7432baab8cda7ad6f6ebddcd71d3c39dee64352689bd6a10d0a685c68ff1d6')
+sha256sums_x86_64=('b634397627829733ef64963132d0e01292dcd607012c1c1217d6c89fa7b4f66c')
+sha256sums_aarch64=('3384f9e4efc4f6a31f93c9d40e36ecfad08be605cbc600568f1d004baff5982f')
+sha256sums_armv7h=('6f150098b19852f9da8c295070e61a66415f709352afb3b0a7b9c81ce36f4fa1')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
