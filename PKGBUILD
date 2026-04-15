@@ -21,5 +21,8 @@ sha256sums_aarch64=('e278ac185b8f6e6a7236e17495731c39bbf0f7625aa402fd9f068850b7b
 package() {
     cd $srcdir
 
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+
 	install -Dm755 ${_pkgname} "$pkgdir"/usr/bin/${_pkgname}
 }
