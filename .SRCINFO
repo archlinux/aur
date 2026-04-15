@@ -14,5 +14,4 @@ pkgbase = python-juliacall
 	sha512sums = 091d9cc2b60ae934938fe9ad1e5826d8ff6d51337c6c72a9e5c457b4efd82ee15f6cf52744943cb07d7694247bbaf303bac5de355674038a9d1317082288e348
 
 
-
 pkgname = python-juliacall
