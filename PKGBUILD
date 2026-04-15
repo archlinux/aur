@@ -31,6 +31,7 @@ build() {
         cd "plasma-bigscreen"
         cmake -B build \
               -DCMAKE_INSTALL_PREFIX="/usr" \
+              -DCMAKE_INSTALL_LIBEXECDIR=lib \
               -DCMAKE_BUILD_TYPE=Release 
 
 	cmake --build build --target all
