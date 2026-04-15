@@ -5,8 +5,8 @@
 
 _pkgname="mindustry"
 pkgbase="$_pkgname-git"
-pkgver=155.4.r20.g6850704
-pkgrel=1
+pkgver=157.1.r0.g3193fd8
+pkgrel=2
 pkgdesc="A sandbox tower defense game"
 url="https://github.com/Anuken/Mindustry"
 license=('GPL-3.0-only')
@@ -76,7 +76,22 @@ Terminal=false
 END
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/${pkgname%$_pkgtype}" << END
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+_java_ver=${_java_ver}
+_best=""
+for d in /usr/lib/jvm/java-*-openjdk; do
+  if [ -d "\$d" ]; then
+    n=\$(grep -Pom1 'java-\K[0-9]+' <<< "\$d")
+    if (( \$n >= \${_java_ver} )); then
+      _best="\$d"
+      break
+    fi
+  fi
+done
+if [ -n "\$_best" ]; then
+  export JAVA_HOME="\$_best"
+fi
+
 exec /usr/bin/java -jar /usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar "\$@"
 END
 
