@@ -2,14 +2,14 @@ pkgbase = b-tui
 	pkgdesc = A simple TUI wrapper for bluetoothctl, built with Rust and Ratatui.
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/antonio/b-tui
+	url = https://github.com/IovAnto/b-tui
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
 	depends = bluez-utils
 	depends = dbus
-	source = b-tui-0.1.0.tar.gz::https://github.com/antonio/b-tui/archive/v0.1.0.tar.gz
-	sha256sums = SKIP
+	source = b-tui-0.1.0.tar.gz::https://github.com/IovAnto/b-tui/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
 
 pkgname = b-tui
