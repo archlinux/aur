@@ -8,8 +8,8 @@ url="https://github.com/wenyinos/NsCDE-zh"
 license=('GPL')
 depends=('libxext' 'libx11' 'libxpm' 'stalonetray' 'xsettingsd' 'fvwm3' 'glibc' 'ksh'
 'imagemagick' 'xorg-xprop' 'xorg-xrdb' 'xorg-xset' 'xorg-xdpyinfo' 'xorg-xrefresh'
-'xorg-xmodmap' 'xorg-xrandr' 'gcc' 'xterm' 'python3' 'python-pyxdg' 'python-yaml'
-'python-psutil' 'python-qtpy' 'xdotool' 'xdg-utils' 'gettext' 'groff' 'ttf-dejavu' 'noto-fonts-cjk'
+'xorg-xmodmap' 'xorg-xrandr' 'xterm' 'python3' 'python-pyxdg' 'python-yaml'
+'python-psutil' 'python-pyqt5' 'xdotool' 'xdg-utils' 'gettext' 'groff' 'ttf-dejavu' 'noto-fonts-cjk'
 'qterminal' 'pcmanfm-qt' 'gvim' 'pavucontrol-qt' 'arandr' 'kcalc')
 makedepends=('xorgproto' 'autoconf' 'automake')
 optdepends=('xclip: Copy screen, window of area shot to X11 clipboard'
@@ -25,7 +25,7 @@ optdepends=('xclip: Copy screen, window of area shot to X11 clipboard'
 # options=()
 provides=('nscde-zh')
 source=($pkgname-$pkgver.tar.gz::https://github.com/wenyinos/NsCDE-zh/archive/refs/tags/v${pkgver}_zh.tar.gz)
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 build() {
   cd "NsCDE-zh-${pkgver}_zh"
