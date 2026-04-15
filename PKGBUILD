@@ -1,23 +1,17 @@
 # Maintainer: Winícius Cota <winicius.cota@gmail.com>
 pkgname=python-universal-startfile
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform version of 'os.startfile' from the standard library."
 arch=('any')
 url="https://github.com/jacebrowning/universal-startfile"
 license=('MIT')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
-source=("https://files.pythonhosted.org/packages/34/7a/5a79196105931ca9fef9c8c3d45de0ec33e6de6240ba17ef9b025eb4e8ec/universal_startfile-${pkgver}.tar.gz")
-sha256sums=('927546329a05e497306fd71af59e93371a8ec535c44cbbd30ce42cf10f41f422')
-
-build() {
-    cd "universal_startfile-${pkgver}"
-    python -m build --wheel --no-isolation
-}
+makedepends=('python-installer')
+source=("https://files.pythonhosted.org/packages/26/3c/17a8c3422aebcaa914e486983376dc6a518e205b672328568dc37b2e84b1/universal_startfile-${pkgver}-py3-none-any.whl")
+noextract=("universal_startfile-${pkgver}-py3-none-any.whl")
+sha256sums=('5de70f9773bc392fe7c93013d0c05b2cc1beec60b9220e909cf8e9411b15d262')
 
 package() {
-    cd "universal_startfile-${pkgver}"
-    python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    python -m installer --destdir="$pkgdir" "$srcdir/universal_startfile-${pkgver}-py3-none-any.whl"
 }

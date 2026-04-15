@@ -1,16 +1,14 @@
 pkgbase = python-universal-startfile
 	pkgdesc = A cross-platform version of 'os.startfile' from the standard library.
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jacebrowning/universal-startfile
 	arch = any
 	license = MIT
-	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-poetry-core
 	depends = python
-	source = https://files.pythonhosted.org/packages/34/7a/5a79196105931ca9fef9c8c3d45de0ec33e6de6240ba17ef9b025eb4e8ec/universal_startfile-0.4.tar.gz
-	sha256sums = 927546329a05e497306fd71af59e93371a8ec535c44cbbd30ce42cf10f41f422
+	noextract = universal_startfile-0.4-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/26/3c/17a8c3422aebcaa914e486983376dc6a518e205b672328568dc37b2e84b1/universal_startfile-0.4-py3-none-any.whl
+	sha256sums = 5de70f9773bc392fe7c93013d0c05b2cc1beec60b9220e909cf8e9411b15d262
 
 pkgname = python-universal-startfile
