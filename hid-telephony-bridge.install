@@ -1,22 +1,39 @@
 post_install() {
-    echo ""
-    echo ">>> hid-telephony-bridge: USB HID Telephony mute bridge"
-    echo ">>>"
-    echo ">>> 1. Add your user to the 'input' group:"
-    echo ">>>      sudo usermod -aG input \$USER"
-    echo ">>>    Then re-login, or use 'newgrp input' to apply immediately."
-    echo ">>>"
-    echo ">>> 2. Enable the systemd user service:"
-    echo ">>>      systemctl --user enable --now hid-telephony-bridge.service"
-    echo ">>>"
-    echo ">>> Default device: Shure MV7+ (VID: 14ed, PID: 1019)"
-    echo ">>> For other devices, create a systemd drop-in override:"
-    echo ">>>      systemctl --user edit hid-telephony-bridge.service"
-    echo ">>>    Then add:"
-    echo ">>>      [Service]"
-    echo ">>>      ExecStart="
-    echo ">>>      ExecStart=/usr/bin/hid-telephony-bridge --vid XXXX --pid XXXX --verbose"
-    echo ""
+    cat <<'EOF'
+
+>>> hid-telephony-bridge: USB HID Telephony mute bridge
+>>>
+>>> 1. Add your user to the 'input' group:
+>>>      sudo usermod -aG input $USER
+>>>    Then re-login, or run: newgrp input
+>>>
+>>> 2. Enable the service:
+>>>      systemctl --user enable --now hid-telephony-bridge.service
+>>>
+>>> Works out of the box with the Shure MV7+ (VID: 14ed, PID: 1019).
+>>>
+>>> --- Using a different HID Telephony mic? ---
+>>>
+>>> a) Find your VID:PID:
+>>>      lsusb | grep -i <your-mic-brand>
+>>>
+>>> b) Add a udev rule (replace XXXX:XXXX with your VID:PID):
+>>>      echo 'SUBSYSTEM=="hidraw", ATTRS{idVendor}=="XXXX", ATTRS{idProduct}=="XXXX", MODE="0660", GROUP="input", TAG+="uaccess"' | sudo tee /etc/udev/rules.d/90-my-telephony-mic.rules
+>>>      sudo udevadm control --reload-rules
+>>>      sudo udevadm trigger --subsystem-match=hidraw
+>>>
+>>> c) Tell the daemon to use it:
+>>>      systemctl --user edit hid-telephony-bridge.service
+>>>    Add:
+>>>      [Service]
+>>>      ExecStart=
+>>>      ExecStart=/usr/bin/hid-telephony-bridge --vid XXXX --pid XXXX --verbose
+>>>
+>>> d) Restart:
+>>>      systemctl --user daemon-reload
+>>>      systemctl --user restart hid-telephony-bridge
+
+EOF
 }
 
 post_upgrade() {
@@ -24,14 +41,13 @@ post_upgrade() {
 }
 
 pre_remove() {
-    echo ""
-    echo ">>> hid-telephony-bridge is being removed. Stop and disable the"
-    echo ">>> service in your user session BEFORE removal, or clean up after:"
-    echo ">>>"
-    echo ">>>      systemctl --user disable --now hid-telephony-bridge.service"
-    echo ">>>"
-    echo ">>> The 'input' group membership is kept intact in case you use it"
-    echo ">>> for other devices. Remove it manually if you no longer need it:"
-    echo ">>>      sudo gpasswd -d \$USER input"
-    echo ""
+    cat <<'EOF'
+
+>>> Stop the service before removal (pacman can't touch user services):
+>>>      systemctl --user disable --now hid-telephony-bridge.service
+>>>
+>>> Your 'input' group membership is kept. Remove it manually if unused:
+>>>      sudo gpasswd -d $USER input
+
+EOF
 }
