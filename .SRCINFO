@@ -1,0 +1,18 @@
+pkgbase = nano-ffmpeg
+	pkgdesc = Simple TUI for FFmpeg written in Go
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dgr8akki/nano-ffmpeg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = ffmpeg
+	provides = nano-ffmpeg
+	conflicts = nano-ffmpeg-bin
+	conflicts = nano-ffmpeg-git
+	options = !debug
+	source = nano-ffmpeg-0.1.1.tar.gz::https://github.com/dgr8akki/nano-ffmpeg/archive/v0.1.1.tar.gz
+	sha256sums = 8a25822a9c459b7d2a128ee49ad6a6470169e8bd154408bd1654867b63c0718e
+
+pkgname = nano-ffmpeg
