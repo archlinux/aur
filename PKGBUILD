@@ -1,6 +1,6 @@
 # Maintainer: Robin H. <robin@blckct.io>
 pkgname=alfaview
-pkgver=9.26.3
+pkgver=9.26.4
 pkgrel=1
 pkgdesc='High quality audio video conferencing for professional online meetings and live classes'
 arch=('x86_64')
@@ -9,20 +9,19 @@ license=('unknown')
 # not sure about the deps, copy-pasted from debian package (feedback required)
 depends=('ttf-roboto' 'libsecret' 'xdg-utils' 'freetype2' 'fontconfig' 'gst-plugins-good' 'gst-plugins-bad' 'libxfixes' 'alsa-lib' 'libxkbcommon' 'dbus' 'libpulse')
 options=('!strip')
-conflicts=('alfaview-beta')
 provides=("alfaview=${pkgver}")
 install="$pkgname.install"
 source=("https://assets.alfaview.com/stable/linux/deb/${pkgname}_${pkgver}.deb")
 noextract=("${pkgname}_${pkgver}.deb")
-sha256sums=('1d9cab1be5c3c34189b67ec08e65d7350ce6d9c6135823f314946407a0c3b9ae')
+sha256sums=('3ab66cd8a06b822df7b49139ebffc1980b6dbd15d924083f71abfecc64933584')
 
 prepare() {
-	mkdir -p deb-data
-	bsdtar -O -xf "${pkgname}_${pkgver}.deb" data.tar.xz | bsdtar -C ./deb-data -xJf -
+  mkdir -p deb-data
+  bsdtar -O -xf "${pkgname}_${pkgver}.deb" data.tar.xz | bsdtar -C ./deb-data -xJf -
 }
 
 package() {
-	mv deb-data/* "${pkgdir}/"
-	mkdir -p "${pkgdir}/usr/bin"
-	ln -sf /opt/alfaview/alfaview "${pkgdir}/usr/bin/alfaview"
+  mv deb-data/* "${pkgdir}/"
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -sf /opt/alfaview/alfaview "${pkgdir}/usr/bin/alfaview"
 }
