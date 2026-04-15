@@ -2,7 +2,7 @@
 # Contributor: jimzrt <jimzrt1@gmail.com>
 
 pkgname=apprenticevrsrc-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A modern, cross-platform desktop application designed for managing and sideloading content onto Meta Quest devices"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source_aarch64=("${url}/releases/download/v${pkgver}/apprenticevr-${pkgver}-${CA
 sha256sums=('af5874b444ce6a5b0abc0be3da23446cb239c37979440d0e9149871021a15ece'
             '3bb4054b9cfcc259e110ee6cded02c473b86068444a0a0534a7709928de82d90'
             'c2bcf1dbb3b608655baacddcf3a19532053532f3f21422faa52d9071fd46707b')
-sha256sums_x86_64=('c8e5099c89b7e5a9ffb821dc72248f436aba58a6bd16e5992314041f831ae7df')
-sha256sums_aarch64=('c8e5099c89b7e5a9ffb821dc72248f436aba58a6bd16e5992314041f831ae7df')
+sha256sums_x86_64=('b9248c241e9140581e252d4bd6283bbcf58424ca6de8a63503c3a88e011ea6d1')
+sha256sums_aarch64=('b9248c241e9140581e252d4bd6283bbcf58424ca6de8a63503c3a88e011ea6d1')
 
 prepare() {
     chmod +x "${srcdir}/apprenticevr-${pkgver}-${CARCH}.AppImage"
@@ -51,4 +51,18 @@ EOF
     # Install icon
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/apprenticevr.png"
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/apprenticevr.png"
+}
+
+post_install() {
+    update-desktop-database -q
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    update-desktop-database -q
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 }
