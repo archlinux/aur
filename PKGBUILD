@@ -2,12 +2,12 @@
 _pkgname=DepotDownloader
 pkgname=steamdepotdownloader-bin
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam depot downloader utilizing the SteamKit2 library."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/SteamRE/DepotDownloader"
 license=('GPL-2.0-only')
-depends=('glibc' 'gcc-libs' 'zlib')
+depends=('glibc' 'libgcc' 'libstdc++')
 provides=(${pkgname::20})
 conflicts=(${pkgname::20})
 source=("$url/archive/refs/tags/DepotDownloader_${pkgver}.tar.gz")
