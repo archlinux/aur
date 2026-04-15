@@ -1,14 +1,20 @@
 pkgbase = xflr5
 	pkgdesc = An analysis tool for airfoils, wings and planes operating at low Reynolds Numbers.
-	pkgver = 6.61.r1481
+	pkgver = 6.62.r1505
 	pkgrel = 1
 	url = http://www.xflr5.tech/xflr5.htm
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = subversion
 	depends = qt5-base
-	source = xflr5::svn+https://svn.code.sf.net/p/xflr5/code/#revision=1481
+	depends = libgcc
+	depends = glibc
+	depends = libglvnd
+	depends = libstdc++
+	source = xflr5-6.62::svn+https://svn.code.sf.net/p/xflr5/code/trunk#revision=1505
+	source = desktop-file.patch
 	sha256sums = SKIP
+	sha256sums = 807ae293ae3aff263676e38a326a83dc2abed5aaba2e327f2eb42e873bfb7506
 
 pkgname = xflr5
