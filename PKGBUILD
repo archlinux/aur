@@ -1,7 +1,7 @@
 # Maintainer: goll <adrian.goll+aur[at]gmail>
 # Contributor: George Woodall <georgewoodall82@gmail.com>
 pkgname=bambustudio-bin
-pkgver=02.05.00.67
+pkgver=02.05.03.62
 pkgrel=1
 pkgdesc="PC Software for BambuLab's 3D printers"
 arch=("x86_64")
@@ -11,10 +11,10 @@ conflicts=('bambustudio' 'bambustudio-git' 'squashfuse')
 depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'gst-libav' 'webkit2gtk')
 makedepends=('fuse2' 'patchelf')
 # Thanks so much for generating random image names Bambu, much appreciated, keeps you on your toes or something I guess...
-source=("bambustudio-${pkgver}.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v${pkgver}/Bambu_Studio_linux_fedora-v${pkgver/67/66}.AppImage"
+source=("bambustudio-${pkgver}.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v${pkgver}/Bambu_Studio_linux_fedora-v${pkgver/62/61}.AppImage"
 	"BambuStudio.desktop"
 	"bambu-studio")
-sha256sums=('c9dbabc1a1b1dfe01f03ae28635399ed7dd1a0b8ea6d9732bf2d91a39381b0ad'
+sha256sums=('7ded69108d10ab9e858cb6731b7893477ac26534a6d36778ae3fa6fabcc14c14'
             'SKIP'
             'SKIP')
 
