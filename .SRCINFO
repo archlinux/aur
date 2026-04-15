@@ -1,0 +1,17 @@
+pkgbase = arnavs-wordle-solver-git
+	pkgdesc = A Wordle solver.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Arnav814/wordle-solver-v3
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = ncurses>=6.4.4
+	source = git+https://github.com/Arnav814/wordle-solver-v3#branch=main
+	sha256sums = SKIP
+
+pkgname = arnavs-wordle-solver-git
