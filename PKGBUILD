@@ -2,7 +2,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=yoctopuce
-pkgver=2.1.6320
+pkgver=2.1.12708
 pkgrel=1
 pkgdesc="C++ library for interfacing with Yoctopuce devices"
 arch=($CARCH)
@@ -14,26 +14,35 @@ depends=(
 	glibc
 	libusb
 )
-makedepends=(java-runtime)
-provides=('libyocto.so' 'libyapi.so')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-	'LICENSE'
+makedepends=(
+	cmake
+	git
+	java-runtime
 )
-sha256sums=('7dbe35f15029750247b8d175e64fc21f6577f72446a039ae684f85081157feab'
+provides=('libyocto.so' 'libyapi.so')
+source=(
+	"${pkgname}::git+$url.git#tag=v$pkgver"
+	LICENSE
+)
+sha256sums=('dbf59c6ead8b92a43bc2065459e05938278d45bc183aaec222ab40b42920073e'
             '2b22a5342677bd71e40e9fadab57146a8662ded89e97ac98b8726fb9a0e22e30')
+
+prepare() {
+	git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build() {
 	export CFLAGS+=" ${CPPFLAGS}"
 	export CXXFLAGS+=" ${CPPFLAGS}"
 	export LDFLAGS+=" ${LDFLAGS}"
 
-	make -C "${srcdir}/yoctolib_cpp-$pkgver/Binaries"
+	make -C "${srcdir}/$pkgname/Binaries"
 }
 
 package() {
 	# 	local x86_64=64bits i686=32bits armv7h=armhf
 	install -Dm644 ${srcdir}/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	cd "${srcdir}/yoctolib_cpp-$pkgver"
+	cd "${srcdir}/$pkgname"
 	# 	install -Dm644 "Binaries/linux/${CARCH}/"libyocto.so.* -t "$pkgdir/usr/lib/"
 	# 	install -Dm644 "Binaries/linux/${CARCH}/yapi/"libyapi.so.* -t "$pkgdir/usr/lib/"
 	declare -A libs

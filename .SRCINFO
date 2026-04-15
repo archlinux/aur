@@ -1,20 +1,22 @@
 pkgbase = yoctopuce
 	pkgdesc = C++ library for interfacing with Yoctopuce devices
-	pkgver = 2.1.6320
+	pkgver = 2.1.12708
 	pkgrel = 1
 	url = https://github.com/yoctopuce/yoctolib_cpp
 	arch = x86_64
 	groups = yoctopuce-libs
 	license = LicenseRef-custom
+	makedepends = cmake
+	makedepends = git
 	makedepends = java-runtime
 	depends = gcc-libs
 	depends = glibc
 	depends = libusb
 	provides = libyocto.so
 	provides = libyapi.so
-	source = yoctopuce-2.1.6320.tar.gz::https://github.com/yoctopuce/yoctolib_cpp/archive/v2.1.6320.tar.gz
+	source = yoctopuce::git+https://github.com/yoctopuce/yoctolib_cpp.git#tag=v2.1.12708
 	source = LICENSE
-	sha256sums = 7dbe35f15029750247b8d175e64fc21f6577f72446a039ae684f85081157feab
+	sha256sums = dbf59c6ead8b92a43bc2065459e05938278d45bc183aaec222ab40b42920073e
 	sha256sums = 2b22a5342677bd71e40e9fadab57146a8662ded89e97ac98b8726fb9a0e22e30
 
 pkgname = yoctopuce
