@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=kafkio-bin
 pkgver=2.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI application for managing and using Apache Kafka clusters"
 arch=('x86_64')
 url="https://kafkio.com"
@@ -10,6 +10,7 @@ depends=('java-runtime>=17' 'gtk3' 'libxtst' 'libxrender' 'alsa-lib')
 optdepends=('libxrandr: for multi-monitor support')
 provides=('kafkio')
 conflicts=('kafkio')
+DLAGENTS=('https::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u')
 source=("${pkgname}-${pkgver}.tar.gz::https://kafkio.com/download/kafkio/${pkgver}/KafkIO-linux-${pkgver}-x64.tar.gz"
         "kafkio.desktop"
         "kafkio.install"

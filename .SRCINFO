@@ -1,7 +1,7 @@
 pkgbase = kafkio-bin
 	pkgdesc = A GUI application for managing and using Apache Kafka clusters
 	pkgver = 2.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kafkio.com
 	arch = x86_64
 	license = custom
