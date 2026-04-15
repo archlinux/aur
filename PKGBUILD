@@ -2,7 +2,7 @@
 
 pkgname=nono-ai
 _pkgname=nono
-pkgver=0.35.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc='Secure, kernel-enforced sandbox for AI agents, MCP servers and LLM workloads using Landlock'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ provides=('nono')
 conflicts=('nono')
 options=(!lto)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/always-further/nono/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d58391e55ee893cda5b468c5e9a0c5cca0e425e816d7a3c358e696c1a3272114')
+sha256sums=('d5efb1cde828d2a59f0041c91f88a8c48787641fc82776548db622e328828902')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
