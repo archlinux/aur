@@ -1,8 +1,9 @@
 pkgbase = aur-check-rebuild
 	pkgdesc = Pacman hook to check and launch rebuild of AUR packages affected by updates
-	pkgver = 1.0.3
-	pkgrel = 1
+	pkgver = 1.0.4
+	pkgrel = 2
 	url = https://github.com/Emiliopg91/aur-check-rebuild
+	install = aur-check-rebuild.install
 	arch = x86_64
 	license = GPL-2
 	depends = alacritty
@@ -10,7 +11,7 @@ pkgbase = aur-check-rebuild
 	depends = python-dataclasses-json
 	depends = python-pip
 	depends = python-psutil
-	source = git+https://github.com/Emiliopg91/aur-check-rebuild.git#tag=1.0.3-1
+	source = git+https://github.com/Emiliopg91/aur-check-rebuild.git#tag=1.0.4-2
 	sha256sums = SKIP
 
 pkgname = aur-check-rebuild

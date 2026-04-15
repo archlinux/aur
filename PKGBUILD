@@ -1,10 +1,6 @@
-# Maintainer: Jelle van der Waa <jelle@archlinux.org>
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
-# Contributor: Sébastien Luttringer
-
 pkgname=aur-check-rebuild
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Pacman hook to check and launch rebuild of AUR packages affected by updates'
 arch=('x86_64')
 url='https://github.com/Emiliopg91/aur-check-rebuild'
@@ -22,6 +18,7 @@ source=(
 sha256sums=(
   'SKIP'
 )
+install=${pkgname}.install
 
 prepare() {
     if [[ ! -d "${HOME}/.local/share/pnpm" ]]; then
