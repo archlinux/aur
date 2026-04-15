@@ -1,8 +1,8 @@
 # Maintainer: orange-guo
-# Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/fingerprint-chromium-bin
+# Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/fingerprint-chromium-bin
 pkgname=fingerprint-chromium-bin
 pkgver=144.0.7559.132
-pkgrel=4
+pkgrel=5
 pkgdesc=Fingerprint\ Chromium\ \(Ungoogled\ Chromium\ with\ fingerprinting\ protection\)
 arch=(x86_64 )
 url=https://github.com/adryfish/fingerprint-chromium
