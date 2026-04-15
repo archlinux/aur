@@ -1,0 +1,12 @@
+post_install() {
+	# The frozen binary calls os.chdir() to its install dir and writes to
+	# bin/rescomproot, config/, and logs/ at runtime.
+	# Pacman forces 755 on directories, so we set sticky+world-writable here.
+	chmod 1777 /usr/share/dota2-minify/bin
+	chmod 1777 /usr/share/dota2-minify/config
+	chmod 1777 /usr/share/dota2-minify/logs
+}
+
+post_upgrade() {
+	post_install
+}
