@@ -1,0 +1,20 @@
+pkgbase = bclone-git
+	pkgdesc = rclone with Alist, Alldebrid, iCloud Photos, Teldrive and Terabox support
+	pkgver = nightly.r0.gf11ee0176
+	pkgrel = 1
+	url = https://github.com/BenjiThatFoxGuy/bclone
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	optdepends = fuse3: for rclone mount
+	provides = rclone
+	provides = bclone
+	conflicts = rclone
+	conflicts = bclone
+	source = git+https://github.com/BenjiThatFoxGuy/bclone.git
+	sha256sums = SKIP
+
+pkgname = bclone-git
