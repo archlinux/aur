@@ -1,12 +1,13 @@
 pkgname=legion-gui
 pkgver=0.5.2.r0.4a662fb
-pkgrel=2
+pkgrel=3
 pkgdesc="Legion GUI (Sparta successor), ported from Kali Linux for Arch Linux"
 arch=('any')
 url="https://gitlab.com/kalilinux/packages/legion"
 license=('GPL3')
 backup=('etc/legion.conf')
 depends=('python' 'polkit' 'nmap' 'xterm' 'xdg-utils' 'python-colorama' 'python-pandas' 'python-pyfiglet' 'python-pyqt6' 'python-qasync' 'python-requests' 'python-rich' 'python-service-identity' 'python-six' 'python-sqlalchemy' 'python-termcolor' 'python-urllib3')
+optdepends=('nikto: web server scanning actions' 'whatweb: web fingerprinting actions' 'smtp-user-enum-git: SMTP enumeration actions' 'eyewitness: webpage screenshots')
 makedepends=('git' 'patch' 'perl')
 source=('git+https://gitlab.com/kalilinux/packages/legion.git#branch=kali/master' 'legion-gui.desktop' 'legion-gui-launcher')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
@@ -22,6 +23,7 @@ prepare() {
   patch -Np1 -i debian/patches/fix-typo-in-ssh-user-list.patch
 
   sed -i 's|^texteditor-path=.*|texteditor-path=/usr/bin/xdg-open|' legion.conf
+  sed -i "s|smtp-user-enum -M|smtp-user-enum.pl -M|" legion.conf
   perl -0pi -e 's/from pyShodan import PyShodan\n/try:\n    from pyShodan import PyShodan\nexcept ImportError:\n    PyShodan = None\n/' scripts/python/pyShodan.py
   perl -0pi -e 's/        try:\n            pyShodanObj = PyShodan\(\)\n/        try:\n            if PyShodan is None:\n                print("pyShodan module not installed.")\n                return {}\n            pyShodanObj = PyShodan()\n/' scripts/python/pyShodan.py
 }
