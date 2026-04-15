@@ -4,15 +4,16 @@
 
 pkgname=aur-check-rebuild
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pacman hook to check and launch rebuild of AUR packages affected by updates'
 arch=('x86_64')
 url='https://github.com/Emiliopg91/aur-check-rebuild'
 license=('GPL-2')
 depends=(
+  'alacritty'
   'python'
-  'python-psutil'
   'python-pip'
+  'python-psutil'
 )
 source=(
   "git+$url.git#tag=$pkgver-$pkgrel"
@@ -29,7 +30,7 @@ prepare() {
 }
 
 build() {
-    pip install --break-system-packages asyncio pyyaml
+    pip install --break-system-packages pyyaml
 }
 
 package() {
