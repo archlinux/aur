@@ -1,17 +1,16 @@
 pkgbase = quake3-rally
 	pkgdesc = Open-source survival racing game on the ioquake3 engine.
-	pkgver = 0.7c
-	pkgrel = 1
-	epoch = 1
+	pkgver = 0.7
+        pkgrel=1
 	url = https://github.com/Q3Rally-Team/q3rally/
 	arch = any
 	license = GPL2
 	depends = ioquake3
 	depends = desktop-file-utils
-	source = https://github.com/Q3Rally-Team/q3rally/releases/download/v0.7c/q3rally_v0.7c_patch_linux64.zip
+	source = https://github.com/Q3Rally-Team/q3rally/releases/download/v0.7/Q3rally_v0.7_linux64.zip
 	source = q3rally
 	source = q3rally.desktop
-	sha256sums = 9710ded1c40e040f6d06608a25e13c1c847852c1416630a7efff1badb0be257b
+	sha256sums = d6f688a202440a3e65c70727ab7bde4d6ca5a27f3048c4ed69af0f73860503f8
         sha256sums = ca5268f09d285eed22000312a065871fab43a02fe3ae82f60d0706002552c611
         sha256sums = f8b1d85e3dc3e0a07cf5991141e5a8f327dd6f5fa173cfa3ce911298daa90db9
 

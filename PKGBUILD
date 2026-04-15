@@ -3,18 +3,18 @@
 # Contributor: gamestime102 < >
 
 pkgname=quake3-rally
-pkgver=0.7c
+pkgver=0.7
 pkgrel=1
 pkgdesc="Open-source survival racing game on the ioquake3 engine."
 arch=('x86_64')
 url="https://github.com/Q3Rally-Team/q3rally.git"
 license=('GPL2')
 depends=('ioquake3' 'desktop-file-utils')
-source=("https://github.com/Q3Rally-Team/q3rally/releases/download/v${pkgver}/q3rally_v${pkgver}_patch_linux64.zip"
+source=("https://github.com/Q3Rally-Team/q3rally/releases/download/v${pkgver}/Q3rally_v${pkgver}_linux64.zip"
         "q3rally"
         "q3rally.desktop")
-sha256sums=('9710ded1c40e040f6d06608a25e13c1c847852c1416630a7efff1badb0be257b'
-            '04be595145fda0eddba714f1f6bc45119ff9b2a85a2b6aa487b54e02026b8883'
+sha256sums=('d6f688a202440a3e65c70727ab7bde4d6ca5a27f3048c4ed69af0f73860503f8'
+            '834a31ad41941717818f78cee12c803ad013699ec0b1dbc67650dab17af63ec0'
             '8a68880e44f1ca45a6c3ac1838ca116d27edb6bec36f773aa5d9d1cef02c43bc')
 
 check() {
@@ -22,7 +22,7 @@ check() {
 }
 
 package() {
-  cd q3rally_v0.7c_patch_linux64
+  cd q3rally_v0.7_patch_linux64
 
   rm -f baseq3r/*.so
 
