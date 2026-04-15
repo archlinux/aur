@@ -1,6 +1,6 @@
 pkgbase = tsarr-bin
 	pkgdesc = Type-safe TypeScript SDK and CLI for Servarr APIs
-	pkgver = 2.7.3
+	pkgver = 2.7.4
 	pkgrel = 1
 	url = https://github.com/robbeverhelst/tsarr
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = tsarr-bin
 	license = MIT
 	provides = tsarr
 	conflicts = tsarr
-	source_x86_64 = https://github.com/robbeverhelst/tsarr/releases/download/v2.7.3/tsarr-linux-x64
-	source_aarch64 = https://github.com/robbeverhelst/tsarr/releases/download/v2.7.3/tsarr-linux-arm64
-	sha256sums_x86_64 = 7d659b9a11ef6ca292e9aedde210b1a83f9ef221bfcac9221d63631305f3dacc
-	sha256sums_aarch64 = 0c68996187f9ff68bd1c91a5957124d8a96c9894be65bc6dfc871abfb197a9ad
+	source_x86_64 = https://github.com/robbeverhelst/tsarr/releases/download/v2.7.4/tsarr-linux-x64
+	source_aarch64 = https://github.com/robbeverhelst/tsarr/releases/download/v2.7.4/tsarr-linux-arm64
+	sha256sums_x86_64 = d5523189ed26d47d4dd2bd31ac62a875cb567dd088ddcb3fced2ac00dc3ffdb6
+	sha256sums_aarch64 = e4a5506d79d99d823a695069ff8f433d986e5aa9a1860dc0168feec39bf0f068
 
 pkgname = tsarr-bin
