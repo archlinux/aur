@@ -1,0 +1,4 @@
+[jaf-api]
+source = "github"
+github = "g"
+use_max_tag = "true"

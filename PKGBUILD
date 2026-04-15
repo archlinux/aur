@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=jaf-api
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=2
 pkgdesc="Jakarta Activation Specification project"
 arch=(any)
@@ -9,7 +9,7 @@ license=(BSD-3-Clause)
 depends=(java-runtime)
 makedepends=(java-environment maven)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('0ee7a1b44b789360fdfc3b1cd474f5b201ef31c34850cd8ccf68afc38679ab4740066e7a68bbef1c91ca56cde8b8bbb6b74d1f799494e134bf0519f50c31165e')
+sha512sums=('76dcfb22a96aa8099dae4d7a6b96230ee79a3a7b4a7874867e3f4f22ddef4d55b74e6f1edfa8cecc844eb6545ddbd45222e2cc7f3cf23c27cc1c97cfc40cf3db')
 _M2_REPO=$(mktemp -d)
 
 build() {
