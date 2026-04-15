@@ -1,21 +1,21 @@
-# Maintainer: pinkdad <pinkdad@proton.me>
+# Maintainer: LeBlusz <pyrowski5@wp.pl>
 pkgname=grooveauthor-bin
-pkgver=1.1.2
-pkgrel=3
+pkgver=1.1.4
+pkgrel=1
 pkgdesc="A free open-source editor for authoring StepMania charts"
 arch=('x86_64')
 url="https://github.com/PerryAsleep/GrooveAuthor"
 license=('MIT')
-depends=('dotnet-runtime-8.0' 'fontconfig' 'gcc-libs' 'glibc')
+depends=('dotnet-runtime-10.0' 'fontconfig' 'gcc-libs' 'glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/PerryAsleep/GrooveAuthor/releases/latest/download/GrooveAuthor-v$pkgver-linux-x64.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/PerryAsleep/GrooveAuthor/refs/tags/v$pkgver/LICENSE")
-sha256sums=('c402319025928aad0cb9c7934720ed6b2e528cf77c12a7ec676e5723294eeca0'
-            'aaf15363b40ddcddc5a479a3dfcea7f04df7f919baf11d4ea5645b9a50987c4c')
+sha256sums=('b0129033a4c7d8235a1e35b504b7d3e40060a1b51074c4f7949634492cdcdd1d'
+            '3b31d89c6433541f91e7c6b4707b449fa412cdeed74e1b44f7ba47160565c650')
 
 prepare() {
   tar -xf "$srcdir/$pkgname-$pkgver.tar.gz" -C "$srcdir"
 }
-
+i
 package() {
   install -d "$pkgdir/opt/grooveauthor"
   cp -r --preserve=mode,timestamps "$srcdir/grooveauthor" "$pkgdir/opt"
