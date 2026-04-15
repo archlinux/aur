@@ -1,0 +1,5 @@
+[ipinfo-cli-bin]
+source = "github"
+github = "ipinfo/cli"
+use_latest_release = true
+prefix = "ipinfo-"
