@@ -1,6 +1,6 @@
 # Maintainer: mrksn <17046820+mrksn@users.noreply.github.com>
 pkgname=streamdockd-bin
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="StreamDock daemon — USB HID driver + web control UI for StreamDock macro pads"
 arch=('x86_64')
@@ -28,8 +28,10 @@ source=(
     "streamdockd-${pkgver}.tar.gz::https://github.com/mrksn/streamdockd/archive/refs/tags/v${pkgver}.tar.gz"
     "sdk-${_sdk_commit}.tar.gz::https://github.com/MiraboxSpace/StreamDock-Device-SDK/archive/${_sdk_commit}.tar.gz"
 )
-sha256sums=('4c33c60cdc0698ba40c09b4d50869c9571a5842e9a9815f2e1b8adf49e838622'
-            '4c9db9f155fbaa8747914c36e12cf90e485b05c5a57bdf173a79ee1746c66266')
+sha256sums=(
+    '0c3f0c5265e24d789e68af54985eb1fd2ef5e015d0932b23f0e293f99cc8469b'
+    '4c9db9f155fbaa8747914c36e12cf90e485b05c5a57bdf173a79ee1746c66266'
+)
 
 # ── Build (nothing to compile) ───────────────────────────────────────────────
 build() {
@@ -62,7 +64,7 @@ package() {
     cp "$sdk_src/img/"* "$lib/img/"
 
     # 2. Daemon modules → /usr/lib/streamdockd/
-    for f in streamdockd.py config.py icon_manager.py widgets.py device.py server.py; do
+    for f in streamdockd.py config.py icon_manager.py widgets.py device.py server.py scene.py; do
         install -m644 "$pkg_src/$f" "$lib/$f"
     done
 
