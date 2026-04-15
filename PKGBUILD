@@ -1,7 +1,7 @@
 # Maintainer: AnabasaSoft <tu_correo@ejemplo.com>
 pkgname=fastfetch-configurator
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Herramienta gráfica para crear, editar y visualizar configuraciones de Fastfetch"
 arch=('x86_64')
 url="https://github.com/AnabasaSoft/fastfetch-configurator"
@@ -13,16 +13,17 @@ sha256sums=('4244c51652f64846b05ee2c5c94392ac8d37c8d243e770493fe3126484bd1179')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    
-    # Instalamos las dependencias de Python que no están empaquetadas en los repositorios base de Arch
-    # de forma temporal solo para la compilación
-    python -m venv venv
+
+    # Creamos un entorno virtual que pueda ver PyQt6 y Pillow instalados en el sistema
+    python -m venv --system-site-packages venv
     source venv/bin/activate
-    pip install ansi2html
-    
-    # Compilamos el binario
+
+    # Instalamos pyinstaller localmente para que sea capaz de "ver" ansi2html
+    pip install pyinstaller ansi2html
+
+    # Compilamos el binario (ahora usará el pyinstaller local del venv)
     pyinstaller --noconsole --onefile --icon=icono.png --add-data "icono.png:." --name fastfetch-config main.py
-    
+
     deactivate
 }
 
