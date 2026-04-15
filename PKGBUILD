@@ -1,6 +1,6 @@
 # Maintainer: Bacem Abidi <abidi.bacem.ab.25@gmail.com>
 pkgname=auroradownloader
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=2
 pkgdesc="Your all in one web based music manager"
 arch=('any')
@@ -14,8 +14,11 @@ depends=(
 makedepends=()
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Bacem-Abidi/AuroraDownloader/archive/refs/tags/$pkgver.tar.gz"
-        "$pkgname.service")
+        "$pkgname.service"
+        "$pkgname.install")
+install="$pkgname.install"
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 package() {
@@ -37,6 +40,9 @@ package() {
     # 4. Fix shebangs – replace build‑time paths with the final venv path
     find venv/bin -type f -exec sed -i '1s|^#!.*python.*|#!/opt/auroradownloader/venv/bin/python|' {} \;
 
-    # 5. Install user systemd service
-    install -Dm644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
+    # 5. Install systemd service
+    install -Dm644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+
+    # 6. Create log directory (ownership will be set in .install)
+    install -d "$pkgdir/var/log/$pkgname"
 }
