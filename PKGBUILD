@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc="Ruby wrapper for SDL 2.x"
 arch=('any')
 url="https://github.com/ohai/ruby-sdl2"
-license=('MIT')
+license=('LGPL')
 depends=('ruby' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf')
 makedepends=('git' 'ruby-rake')
-source=("git+${url}.git#commit=6ebccec7072bb8286d8020c49d2e099142402c6c")
-sha256sums=('5e777b847ead7765fb2096bea2b5c9c5fea480f955403dd34474139fb67734c5')
+source=("git+${url}.git#commit=e92eee29a50ed972f30a1788f71b9368186152cc")
+sha256sums=('1989786780f3f426b2b9a0f4cc028c5a884fd50052a6dd3df4031fa79cdfcaed')
 
 pkgver() {
   cd "$srcdir/${pkgname}"
