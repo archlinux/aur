@@ -1,13 +1,13 @@
-pkgbase = lune-bin
+pkgbase = lune-cli-bin
 	pkgdesc = Lune CLI (prebuilt binary)
 	pkgver = 0.0.0
 	pkgrel = 1
 	url = https://github.com/gentij/lune
 	arch = x86_64
 	license = MIT
-	provides = lune
 	conflicts = lune
+	conflicts = lune-bin
 	source = https://github.com/gentij/lune/releases/download/v0.0.0/lune_linux_amd64.tar.gz
 	sha256sums = SKIP
 
-pkgname = lune-bin
+pkgname = lune-cli-bin
