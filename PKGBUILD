@@ -6,8 +6,8 @@
 
 pkgname=python-vunit_hdl
 _pkg="${pkgname#python-}"
-pkgver=4.7.0
-pkgrel=3
+pkgver=4.7.1
+pkgrel=1
 pkgdesc='Unit Testing Framework for VHDL/SystemVerilog'
 arch=('any')
 url='https://github.com/vunit/vunit'
@@ -18,8 +18,8 @@ optdepends=('ghdl: VHDL simulator'
             'nvc: VHDL simulator')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/${_pkg}/${_pkg}-${pkgver}.tar.gz"
         "$pkgname-fix-install.diff")
-sha256sums=('a25fb991babd2ea851966e0dbdc5f4d8f649ab3e650e3012983b29fd5d18f22d'
-            '42595142a253ccb115d5cdb33d07cd21dfd0ea52f365ae104d5cc82b63d96522')
+sha256sums=('3a6f0e19eaa1e79899676aa4cdce95ec8f649002362c4458c3e0412d0f7d0912'
+            'a914037dc44c47dc8f4c64f5559f1f2bfec418acdf812714321fd48ddb99498d')
 
 prepare() {
   patch -Np1 -d "$_pkg-$pkgver" < "$pkgname-fix-install.diff"
