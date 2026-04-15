@@ -3,7 +3,7 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 
 _pkgname=mvtnorm
-_pkgver=1.3-6
+_pkgver=1.3-7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-qrng
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('225241dcf5cf27ffd78c5f4b6941257d')
-b2sums=('1c6001a20f86c8cb9d24a330d77fbbbfb068769299dd8110ee09f0e9208f90505d1a154a28c67e8df882431e862f9e4a37c9f0abf1f88fb7cd34523b318a3396')
+md5sums=('512d4804037e5b1905aeab5cc99aaf22')
+b2sums=('c23085da14e59914b877715eb8331e3e49818bb87e6ebc651cb6f3f2bd7204345335c96087a670a92203188b1d448bc1a427524aac0db92c6017a032d9937d02')
 
 build() {
   mkdir build
