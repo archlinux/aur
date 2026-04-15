@@ -45,7 +45,7 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
-    for i in 16x16 20x20 24x24 32x32 48x48 64x64 72x72 128x128 256x256 512x512; do 
+    for i in 16x16 20x20 24x24 32x32 48x48 64x64 72x72 128x128 256x256; do 
         install -Dm644 "$srcdir/$pkgname/src/unix/assets/$i/net.86box.86Box.png" -t "$pkgdir/usr/share/icons/hicolor/$i/apps"
     done
     mkdir "$pkgdir/usr/share/applications"
