@@ -1,0 +1,24 @@
+post_install() {
+    echo ""
+    echo ">>> hid-telephony-bridge: USB HID Telephony mute bridge"
+    echo ">>>"
+    echo ">>> 1. Add your user to the 'input' group:"
+    echo ">>>      sudo usermod -aG input \$USER"
+    echo ">>>    Then re-login, or use 'newgrp input' to apply immediately."
+    echo ">>>"
+    echo ">>> 2. Enable the systemd user service:"
+    echo ">>>      systemctl --user enable --now hid-telephony-bridge.service"
+    echo ">>>"
+    echo ">>> Default device: Shure MV7+ (VID: 14ed, PID: 1019)"
+    echo ">>> For other devices, create a systemd drop-in override:"
+    echo ">>>      systemctl --user edit hid-telephony-bridge.service"
+    echo ">>>    Then add:"
+    echo ">>>      [Service]"
+    echo ">>>      ExecStart="
+    echo ">>>      ExecStart=/usr/bin/hid-telephony-bridge --vid XXXX --pid XXXX --verbose"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
