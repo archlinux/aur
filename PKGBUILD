@@ -17,12 +17,12 @@
 #   • Mount your local Windows C: drive 
 #   • Copy every font listed below from C:\Windows\Fonts
 #   • Copy license.rtf
-#   • Unmount cleanly when finished
+#   • Unmount when finished
 
 
 pkgbase=ttf-ms-win11-auto-local
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
-pkgver=10.0.26200.8037
+pkgver=10.0.26200.8246
 pkgrel=1
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
@@ -189,7 +189,7 @@ prepare() {
 
     echo "All files copied successfully"
 	
-	mount-windows umount
+    mount-windows umount
 }
 
 _package() {
