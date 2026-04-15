@@ -1,6 +1,6 @@
   # Maintainer: Kevin Roleke <kevin@zerogon.consulting>
   pkgname=gpufetch
-  pkgver=0.3.0
+  pkgver=0.3.1
   pkgrel=1
   pkgdesc="A minimal GPU monitor for your terminal"
   arch=('any')
