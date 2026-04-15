@@ -1,8 +1,8 @@
 # Maintainer: orange-guo
-# Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/cli-proxy-api-bin
+# Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/cli-proxy-api-bin
 pkgname=cli-proxy-api-bin
 pkgver=6.9.25
-pkgrel=1
+pkgrel=2
 pkgdesc=Proxy\ server\ providing\ OpenAI/Gemini/Claude\ compatible\ API\ interfaces\ \(Binary\)
 arch=(x86_64 aarch64 )
 url=https://github.com/router-for-me/CLIProxyAPI
