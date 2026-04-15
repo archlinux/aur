@@ -1,0 +1,23 @@
+pkgbase = quadrate
+	pkgdesc = Stack-based programming language that compiles to native code via LLVM
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://git.sr.ht/~klahr/quadrate
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = clang
+	makedepends = llvm
+	makedepends = git
+	depends = llvm-libs
+	depends = jansson
+	depends = openssl
+	optdepends = readline: for quadrepl interactive shell
+	optdepends = python: for LSP server
+	options = !debug
+	options = !lto
+	source = quadrate-0.4.4::git+https://git.sr.ht/~klahr/quadrate#tag=0.4.4
+	sha256sums = SKIP
+
+pkgname = quadrate
