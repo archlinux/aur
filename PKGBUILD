@@ -29,7 +29,7 @@ _release_tag='v1.2.1'
 _download_url='https://github.com/JianGangLi/ClipShare'
 
 source=("${_archive}::${_download_url}/releases/download/${_release_tag}/${_archive}")
-sha256sums=('2ee711555a36d90143a70ee8b78c60d742867a2f3adb8295cae1eb74f69a14e5')
+sha256sums=('f5e23eed514a7c4cbc19ef2dc68b1d0ef758eb4392f491ca270844d9c28c46c4')
 
 package() {
   install -d "${pkgdir}/opt/clipshare"
