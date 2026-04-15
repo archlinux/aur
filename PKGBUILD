@@ -4,7 +4,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 _base=HDFView
 pkgname=${_base,,}
-pkgver=3.3.2
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="A visual tool for browsing and editing HDF4 and HDF5 files"
 arch=(x86_64)
