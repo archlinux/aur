@@ -1,21 +1,24 @@
 pkgbase = bluetuith
 	pkgdesc = TUI-based bluetooth manager
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
+	epoch = 1
 	url = https://github.com/bluetuith-org/bluetuith
 	arch = x86_64
 	arch = i686
-	arch = arm
-	arch = aarch64
-	arch = armv6h
+	arch = pentium4
 	arch = armv7h
+	arch = aarch64
 	license = MIT
+	makedepends = go>=1.25
 	makedepends = git
-	makedepends = go
 	depends = bluez
 	depends = dbus
 	optdepends = bluez-obex: send and receive files via OBEX
-	source = bluetuith::git+https://github.com/bluetuith-org/bluetuith.git#tag=v0.2.6
-	sha256sums = 9d4acc3633685f3d5dc67308d8770734178bcaae228abe61ef837ec5a69a3b65
+	optdepends = networkmanager: PANU network tethering
+	optdepends = modemmanager: DUN network tethering
+	optdepends = pulse-native-provider: device audio profile management
+	source = bluetuith-0.2.6::git+https://github.com/bluetuith-org/bluetuith#tag=v0.2.6
+	b2sums = 639a2ee6b28cd9a08806644d5c97e54614757f912a5df3265dc5f36b3709b039b2e3ab26d31f023cf761de1c2a6321336978a4343a68435f3cfd1fc00e3ac21a
 
 pkgname = bluetuith
