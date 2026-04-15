@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=rpg
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Modern Postgres terminal written in Rust with built-in DBA diagnostics and AI assistant"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'cmake')
 provides=('rpg')
 conflicts=('rpg')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/NikolayS/rpg/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ca3e1ef352ccaad81eddfaed5d26e5ffe5af63db95278279d48c0c2f7659902a')
+sha256sums=('2bd3d300d14928c0b856a06db1cebe55d73a3cc5fdc58efce281a00819e826bf')
 
 prepare() {
     cd "${pkgname}-${pkgver}"

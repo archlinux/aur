@@ -1,6 +1,6 @@
 pkgbase = rpg
 	pkgdesc = Modern Postgres terminal written in Rust with built-in DBA diagnostics and AI assistant
-	pkgver = 0.10.2
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/NikolayS/rpg
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = rpg
 	depends = gcc-libs
 	provides = rpg
 	conflicts = rpg
-	source = rpg-0.10.2.tar.gz::https://github.com/NikolayS/rpg/archive/refs/tags/v0.10.2.tar.gz
-	sha256sums = ca3e1ef352ccaad81eddfaed5d26e5ffe5af63db95278279d48c0c2f7659902a
+	source = rpg-0.11.0.tar.gz::https://github.com/NikolayS/rpg/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = 2bd3d300d14928c0b856a06db1cebe55d73a3cc5fdc58efce281a00819e826bf
 
 pkgname = rpg
