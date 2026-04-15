@@ -1,7 +1,7 @@
 pkgbase = claude-code-stable-bin
 	pkgdesc = Claude Code terminal-based AI coding assistant (stable binary release)
 	pkgver = 2.1.92
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/anthropics/claude-code
 	install = claude-code-stable-bin.install
 	arch = x86_64
