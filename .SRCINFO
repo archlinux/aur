@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: © 2026 Patrick X. Gray <patrick@xgray.io>
+# SPDX-License-Identifier: 0BSD
+pkgbase = python-huggingface_hub
+	pkgdesc = The official Python client for the Hugging Face Hub
+	pkgver = 1.10.2
+	pkgrel = 1
+	url = https://github.com/huggingface/huggingface_hub
+	arch = any
+	license = Apache 2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.6
+	depends = python-filelock
+	depends = python-fsspec
+	depends = python-httpx
+	depends = python-packaging
+	depends = python-pyaml
+	depends = python-tqdm
+	depends = python-typer
+	depends = python-typing_extensions
+	provides = python-huggingface_hub=1.10.2
+	source = https://files.pythonhosted.org/packages/source/h/huggingface_hub/huggingface_hub-1.10.2.tar.gz
+	sha256sums = 4b276f820483b709dc86a53bcb8183ea496b8d8447c9f7f88a115a12b498a95f
+
+pkgname = python-huggingface_hub
