@@ -22,7 +22,7 @@ license=('GPL')
 groups=()
 provides=("$_name")
 conflicts=("$_name")
-depends=('cgal' 'ceres-solver' 'gflags' 'metis' 'openimageio' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base' 'flann')
+depends=('cgal' 'ceres-solver' 'gflags' 'metis' 'openimageio' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' qt5-{base,svg} 'flann')
 makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx' )
 if [ "$_BUILD_CUDA" == "ON" ] ; then 
   depends+=('onnxruntime-cuda' 'protobuf')

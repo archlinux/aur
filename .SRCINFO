@@ -25,6 +25,7 @@ pkgbase = colmap-git
 	depends = libjpeg
 	depends = boost-libs
 	depends = qt5-base
+	depends = qt5-svg
 	depends = flann
 	depends = onnxruntime-cpu
 	depends = protobuf
