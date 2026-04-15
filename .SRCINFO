@@ -1,6 +1,6 @@
 pkgbase = imagefinish
 	pkgdesc = A PyQt6 image editor inspired by Photoshop
-	pkgver = v1.2.4
+	pkgver = v1.2.5
 	pkgrel = 1
 	url = https://github.com/Lucia7Lunadottir/Image-Finish
 	arch = any
