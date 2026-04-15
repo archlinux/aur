@@ -1,22 +1,23 @@
-pkgbase = text-extractor
-	pkgdesc = A lightweight OCR tool that captures any region of your screen and extracts text (Wayland + X11 support)
-	pkgver = 0.1.0
-	pkgrel = 3
+pkgbase = MonteCapcho
+	pkgdesc = A Rust-based text extractor using Tesseract OCR and Iced GUI
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/Top-g-hash/Monte-Capcho
 	arch = x86_64
 	license = MIT
 	license = Apache
 	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = oniguruma
 	depends = tesseract
 	depends = leptonica
 	depends = zstd
+	depends = oniguruma
+	depends = slop
+	depends = maim
 	depends = slurp
 	depends = grim
-	depends = maim
-	depends = slop
-	depends = copyq
-	source = text-extractor-0.1.0.tar.gz
-	sha256sums = SKIP
+	source = MonteCapcho-0.1.1.tar.gz
+	sha256sums = 3d672f62882ee488533d2d4886f97de66b31e30a2e54cfc30c60eeb9805af34c
 
-pkgname = text-extractor
-
+pkgname = MonteCapcho

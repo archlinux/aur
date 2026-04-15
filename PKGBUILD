@@ -22,7 +22,7 @@ depends=(
 makedepends=('cargo' 'pkgconf' 'oniguruma')
 
 source=("MonteCapcho-$pkgver.tar.gz")
-sha256sums=('c98a1d519f8cfd7cf463452f5f7f258a45307f8258062dc44c594b4dba9c3ea3')
+sha256sums=('3d672f62882ee488533d2d4886f97de66b31e30a2e54cfc30c60eeb9805af34c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
