@@ -18,6 +18,6 @@ pkgbase = montecapcho
 	depends = slurp
 	depends = grim
 	source = montecapcho-0.1.1.tar.gz::https://github.com/Top-g-hash/Monte-Capcho/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 3d672f62882ee488533d2d4886f97de66b31e30a2e54cfc30c60eeb9805af34c
+	sha256sums = d2431716f356b3fa40f13149424ccd4c17ef0228e01294077077e91e57a100f7
 
 pkgname = montecapcho
