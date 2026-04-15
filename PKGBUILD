@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=telemt-bin
-pkgver=3.3.39
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='MTProxy for Telegram on Rust + Tokio'
 arch=('x86_64' 'aarch64')
@@ -29,9 +29,9 @@ sha256sums=('c18e6fce5574fb3c5a19c38e2cc875e9101172c98a67aa1b87004752325994e1'
             '5f0c01dd2395bae6fdb86dd84dc4db5c677b339627b46abd3ca7549c92305bf0'
             '24a9a6c5804d970753641643eaa8f4514886892f3e415cf06fe6d693cda353fb'
             '2caa1b711c8d16cbdb4276bde9160b113f4c0e4d360953b14aa464a55bfa7a3b'
-            '5c2e8adedc3c056e62c5eaaa26bdc517f2ff3859c4b4ea41ceafe7eca173ed63')
-sha256sums_x86_64=('85c53917fbd0ee20fcec9cbb844c5d0311573393bed98bb2a7b15d5837667513')
-sha256sums_aarch64=('29674568a790bf0b05bd27948350a400f1b2d0048f73ffdc4bc51fda842f238f')
+            'd2e5d0a178037def566afb5edfb62325de98ecf85c76fe4852200b85b0d36637')
+sha256sums_x86_64=('df3402a2389debdfc3292291747350859c03c05eaadfe8b9b1b2fa607314193b')
+sha256sums_aarch64=('42381593111f10f84465414041daa04504f12f553051b415936fb4d869c0fed2')
 
 latestver() {
     gh api --paginate repos/telemt/telemt/releases \
