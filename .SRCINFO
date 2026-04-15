@@ -1,0 +1,13 @@
+pkgbase = rage-gothic-cursor-theme
+	pkgdesc = Rage Gothic — X11/Wayland cursor theme (dark + light variants)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1280103
+	arch = any
+	license = custom
+	source = rage-gothic-cursor-theme-gothic-1.0.tar::https://github.com/veasman/kara-cursor-mirror/releases/download/v1/Rage-Gothic.tar.gz
+	source = rage-gothic-cursor-theme-gothic-light-1.0.tar::https://github.com/veasman/kara-cursor-mirror/releases/download/v1/Rage-Gothic-Light.tar.gz
+	sha256sums = 8bf0401068ad8e89a0ec04881a3cd08db38de3aa7ca51a360048187b736a6dd3
+	sha256sums = 50f3ce556405a38db686a19f5c82a2b248e078d5932f3c8eb182fe0b73b585f9
+
+pkgname = rage-gothic-cursor-theme
