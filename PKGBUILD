@@ -1,7 +1,7 @@
 # Maintainer: Keon Cachia <keonfarrugia@gmail.com>
 pkgname=rill
 pkgver=0.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A minimalist scrolling window manager for River"
 arch=('x86_64')
 url="https://codeberg.org/lzj15/rill"
@@ -13,7 +13,8 @@ source=(https://codeberg.org/lzj15/rill/archive/"$pkgver".tar.gz
 	zig-wayland.zip::https://codeberg.org/ifreund/zig-wayland/archive/v0.5.0.zip
 	zig-xkbcommon.tar.gz::https://codeberg.org/ifreund/zig-xkbcommon/archive/v0.4.0.tar.gz)
 sha256sums=('e11a26eef4c1254a634edc12414bc541c583784a286b0a0b1e8e3626ab3e7797'
-            '816d6d9fffeb596244e5467b60f5b21575ba779e441a27dcc63ce5f6a5a09841')
+            '816d6d9fffeb596244e5467b60f5b21575ba779e441a27dcc63ce5f6a5a09841'
+            'e6df77d511cf9402f6ac08455c8d1fb727b6c3d66191e246671f62e5db083c49')
 optdepends=('alacritty: Default terminal emulator'
 	    'wireplumber: Default audio manager'
 	    'awww: Default wallpaper manager'
