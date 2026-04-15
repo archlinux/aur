@@ -1,6 +1,6 @@
 pkgname=cpp-ps1
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ base PS1 function, useful for programmers'
 arch=('x86_64')
 url='https://github.com/Emiliopg91/cpp-ps1'
@@ -8,6 +8,8 @@ license=('GPL-2')
 depends=(
   'git'
   'libgit2'
+)
+makedepends=(
   'clang'
 )
 source=(
