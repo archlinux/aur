@@ -9,6 +9,10 @@ license=('0BSD' 'LGPL')
 depends=('xdotool' 'libx11' 'libxext' 'libxtst')
 options=('!strip')
 install="${pkgname}.install"
+
+# add referer in order to download Official Driver
+DLAGENTS=('https::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -e "https://www.gaomon.cn/download" -o %o %u')
+
 source=("https://driver.gaomon.cn/download/Driver/Linux/GaomonTablet_LinuxDriver_v${pkgver}.x86_64.tar.xz"
         "LICENSE")
 sha256sums=('d3db3cad152049e6913ae744f497686a8c4b61ef91fe664c84ffe55ebc96bd01'
