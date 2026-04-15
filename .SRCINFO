@@ -1,16 +1,16 @@
 pkgbase = grooveauthor-bin
 	pkgdesc = A free open-source editor for authoring StepMania charts
-	pkgver = 1.1.2
-	pkgrel = 3
+	pkgver = 1.1.4
+	pkgrel = 1
 	url = https://github.com/PerryAsleep/GrooveAuthor
 	arch = x86_64
 	license = MIT
-	depends = dotnet-runtime-8.0
+	depends = dotnet-runtime-10.0
 	depends = fontconfig
 	depends = gcc-libs
 	depends = glibc
-	source = grooveauthor-bin-1.1.2.tar.gz::https://github.com/PerryAsleep/GrooveAuthor/releases/latest/download/GrooveAuthor-v1.1.2-linux-x64.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/PerryAsleep/GrooveAuthor/refs/tags/v1.1.2/LICENSE
+	source = grooveauthor-bin-1.1.4.tar.gz::https://github.com/PerryAsleep/GrooveAuthor/releases/latest/download/GrooveAuthor-v1.1.4-linux-x64.tar.gz
+	source = GA-LICENSE::https://raw.githubusercontent.com/PerryAsleep/GrooveAuthor/refs/tags/v1.1.4/LICENSE
 	sha256sums = c402319025928aad0cb9c7934720ed6b2e528cf77c12a7ec676e5723294eeca0
 	sha256sums = aaf15363b40ddcddc5a479a3dfcea7f04df7f919baf11d4ea5645b9a50987c4c
 
