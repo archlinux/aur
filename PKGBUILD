@@ -1,16 +1,17 @@
 pkgname=aur-check-rebuild
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Pacman hook to check and launch rebuild of AUR packages affected by updates'
 arch=('x86_64')
 url='https://github.com/Emiliopg91/aur-check-rebuild'
 license=('GPL-2')
 depends=(
   'alacritty'
+  'pacman'
   'python'
   'python-dataclasses-json'
-  'python-pip'
   'python-psutil'
+  'python-yaml'
 )
 source=(
   "git+$url.git#tag=$pkgver-$pkgrel"
@@ -19,17 +20,6 @@ sha256sums=(
   'SKIP'
 )
 install=${pkgname}.install
-
-prepare() {
-    if [[ ! -d "${HOME}/.local/share/pnpm" ]]; then
-        echo "Setup for pnpm..."
-        SHELL=/bin/bash pnpm setup
-    fi
-}
-
-build() {
-    pip install --break-system-packages pyyaml
-}
 
 package() {
   cd "$srcdir/aur-check-rebuild"
