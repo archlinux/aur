@@ -1,7 +1,7 @@
 # Maintainer: Eric Jingryd <tidynest@proton.me>
 
 pkgname=hypr-keybind-manager
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Secure keybinding manager for Hyprland with conflict detection'
 arch=('x86_64' 'aarch64')
