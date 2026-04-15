@@ -2,7 +2,7 @@
 
 pkgname=miniupnpd-git
 pkgver=2.3.10.r16.gf83b5e2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight UPnP IGD daemon (git)"
 arch=('i686' 'x86_64')
 url="http://miniupnp.free.fr"
@@ -50,8 +50,6 @@ package() {
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/miniupnpd"
   install -Dm644 "$srcdir/miniupnpd.service" -t "$pkgdir/usr/lib/systemd/system"
 
-  sed -i 's:/s\?bin/iptables:/usr/bin/iptables:
-          s:eth0:"`cat /etc/miniupnpd/miniupnpd.conf | '"awk -F= '/^ext_ifname/ { print \$2 }'"'`":' "$pkgdir/etc/miniupnpd"/*.sh
   sed -i -e "s/^uuid=[-0-9a-f]*/uuid=00000000-0000-0000-0000-000000000000/
              s/make genuuid/uuidgen/" "$pkgdir/etc/miniupnpd/miniupnpd.conf"
 
