@@ -1,6 +1,6 @@
 # Maintainer: Mambuco <gabriele.giambrone@icloud.com>
 pkgname=votetracker-bin
-pkgver=2.8.2
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="School grade management application (italian school system) (pre-built binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("VoteTracker-Linux-${pkgver}::https://github.com/mambucodev/votetracker/
         "icon-128.png::${_icon_base}/icon-128.png"
         "icon-256.png::${_icon_base}/icon-256.png"
         "icon-512.png::${_icon_base}/icon-512.png")
-sha256sums=('50e12207ce68c4440f0967e0dc9c9cccf4d22e0f5d8173a0d0cea5906ed68fc8'
+sha256sums=('f83b9ca29d8b42897fad6787ffabc72b90fec00f9399d7da603d861a71d579dd'
             '5839ccfa311dae0df31d59145935fb0454e1cefef18e5d36b1ce2fa322d0b2a5'
             '945f4770522d41ad609f497b7673b6e3c9f2a3749a19b0d5e821ab7c7fe74b78'
             '0a7a56ccfe2fb8b5af1854368ebabe531eb07cb8bf8d43c3edf867637860e840'
