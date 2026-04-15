@@ -1,6 +1,6 @@
 # Maintainer: ewgsta <ewgst@proton.me>
 pkgname=weeb-cli
-pkgver=2.14.0
+pkgver=2.14.2
 pkgrel=1
 pkgdesc="No browser, no ads, no distractions. Just you and an unparalleled anime viewing experience."
 arch=('any')
