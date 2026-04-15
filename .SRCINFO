@@ -1,7 +1,7 @@
 pkgbase = libgff
 	pkgdesc = GFF/GTF parsing from gffread as a library
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/COMBINE-lab/libgff
 	arch = x86_64
 	license = BSL-1.0
