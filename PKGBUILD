@@ -1,9 +1,9 @@
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 pkgname=ludo-bin
-pkgver=0.19.0
+pkgver=0.22.3
 pkgrel=1
 pkgdesc="Ludo is a minimalist frontend for emulators"
-arch=('x86_64' 'armv7h')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/libretro/ludo"
 license=('GPL3')
 depends=(
@@ -17,16 +17,20 @@ source=(
 )
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/libretro/ludo/releases/download/v${pkgver}/Ludo-Linux-x11-x86_64-${pkgver}.tar.gz")
 source_armv7h=("${pkgname}-${pkgver}-armv7h.tar.gz::https://github.com/libretro/ludo/releases/download/v${pkgver}/Ludo-Linux-x11-arm-${pkgver}.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/libretro/ludo/releases/download/v${pkgver}/Ludo-Linux-x11-arm64-${pkgver}.tar.gz")
 sha256sums=('c7ee8acced118b64c6edd54260bc31a976ef551337dcf57d2e45cbfafbe8c84b'
             '139eedd5dd868717b46032cd9773bc63b692237c37e6da4450357a3f56a18042')
-sha256sums_x86_64=('efe9c077089ebbcfe886e88c35314eb9bef573b780be5d7c7110c8ca78f2d417')
-sha256sums_armv7h=('691aa77b6d3246fbc504e5fb398284e858abe60217adac691321cf7bd2b7ecbc')
+sha256sums_x86_64=('e00ad7bdbac1033896fb8519e9435b31042e015643f72ded1a5ea630747fd575')
+sha256sums_armv7h=('1b26e3475e752453502fc94adb9251a9338e0dbd5ed0f0137d903608892aa95d')
+sha256sums_aarch64=('0f2aa028a9fd2626a159ff1b5310c2d53311a9dbbd5aff49d9374b7eb63a727e')
 
 package() {
   _ARCH=""
 
   if [ $arch == "armv7h" ]; then
     _ARCH="arm"
+  elif [ $arch == "aarch64" ]; then
+    _ARCH="arm64"
   else
     _ARCH="$arch"
   fi
