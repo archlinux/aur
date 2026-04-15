@@ -1,7 +1,7 @@
 pkgbase = springcraft
 	pkgdesc = Modern CLI scaffolder for Spring Boot projects
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com
 	arch = x86_64
 	license = MIT

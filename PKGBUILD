@@ -1,7 +1,7 @@
-# Maintainer: fmitesh007 <markhackit@gmail.com>
+ # Maintainer: fmitesh007 <markhackit@gmail.com>
 pkgname=springcraft
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern CLI scaffolder for Spring Boot projects"
 arch=('x86_64')
 url="https://github.com"
