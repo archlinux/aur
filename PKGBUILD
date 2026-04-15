@@ -5,7 +5,7 @@ _pkgname=tetro-tui
 pkgname=${_pkgname}-bin
 pkgdesc="A cross-platform terminal game where tetrominos fall and stack"
 
-pkgver=2.1.0
+pkgver=3.0.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername%.0}_${_barch[0]}.zip")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername%.0}_${_barch[1]}.zip")
-sha256sums=('6646ae69eed28a3da3e1e6e42d2391d473ca3566390428e124653c2e84026055'
+sha256sums=('5d3558f81407339487eb958b5eb41b84a189c30dc85e5c405cf9bbccba62b9d2'
             'b23d5471464616610a171c68ec3b23a127b52fc17c33a119c1eb997d1a00149b')
-sha256sums_x86_64=('7a8c97ad458b6a1657171e43e86873261aeddf1acf3cae9169b25f5a61360934')
-sha256sums_aarch64=('cab8664b394e6a42d5d836358801c270a2b0815735ba7db1c16576a510f5dc55')
+sha256sums_x86_64=('8834616ab1b12d468864159fb635ac5f9b51c193ccfbb58ca7ebbb1fea374b71')
+sha256sums_aarch64=('5b0c0969f2cca36df7ce47971c836d0b9871559226d9e8682f417d5d9d8900c4')
 
 
 case ${CARCH} in
