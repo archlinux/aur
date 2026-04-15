@@ -1,3 +1,4 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Name=OpenSourceTree
 Name[en]=OpenSourceTree
@@ -47,7 +48,7 @@ Keywords[uk]=git;система контролю версій;репозитор
 Keywords[zh]=git;版本控制;仓库;提交;分支;
 Keywords[ja]=git;バージョン管理;リポジトリ;コミット;ブランチ;
 
-Exec=opensourcetree
+Exec=/usr/bin/opensourcetree
 Icon=opensourcetree
 Terminal=false
 Type=Application
