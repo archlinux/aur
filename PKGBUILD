@@ -1,3 +1,5 @@
+# Maintainer: EliasofWaffle <eliascontato@protonmail.com>
+
 pkgname=libspatialaudio
 pkgver=0.4
 pkgrel=1
