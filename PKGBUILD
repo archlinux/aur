@@ -2,13 +2,13 @@
 _pkgname=DepotDownloader
 pkgname=steamdepotdownloader
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam depot downloader utilizing the SteamKit2 library."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/SteamRE/DepotDownloader"
 license=('GPL-2.0-only')
-depends=('glibc' 'gcc-libs' 'zlib' 'dotnet-runtime')
-makedepends=('dotnet-sdk') #Dotnet 9
+depends=('glibc' 'libgcc' 'libstdc++' 'zlib' 'dotnet-runtime')
+makedepends=('dotnet-sdk-9.0') #Dotnet 9
 source=("$url/archive/refs/tags/DepotDownloader_${pkgver}.tar.gz")
 sha256sums=('2f09a0aaf003ee01fce44ec9acc0371441172e27d544eb7ccbe7974c01f47f42')
 options=('!strip')
