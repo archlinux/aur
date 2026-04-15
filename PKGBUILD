@@ -24,9 +24,9 @@
 : ${_build_limit_cores:=false}
 
 ## update
-_icver="140.9.0"
-_commit="10a8be3fcf725ed01ffb7279ec27c2fba55dd2d2" # 140.9.0
-_ffsum="b972b2a4c17244d51c10123cbd6c936e2cf26ebc29eb724570d285c283e9e92c"
+_icver="140.9.1"
+_commit="f3595923458a5255f61a3853bd83bb5f004dc3bc" # 140.9.1
+_ffsum="45d2e6c2b3aa4f52815d1a8a4a93e013d19e86e1b06480f13db9e6fdd7148dc2"
 
 ## package
 _pkgname="icecat"
@@ -126,13 +126,19 @@ _pkgext="tar.gz"
 source=(
   "$_pkgsrc_gnuzilla"::"git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=$_commit"
   "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"
+
+  # fix for python 3.14
   5fcff175718cd308bc6d6f2996de14eb8a93e2a2.patch
   23efd75219786d71acff0b4e7c1b0de297b84c4e.patch
   b68b1f93a6e31188486458f32fbe37811257604f.patch
   d4b3eb4f76e81f18c53863b1d55ee146d6ec7d10.patch
   dbf9702ed87ea5c88c2a1ee615998532ac8f10cc.patch
+
+  # Fix for glibc 2.43
   0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
   0002-Fix-sandbox-to-build-with-glibc-2.43.patch
+
+  # Fix for clang 22
   0003-Use-wasm32-wasip1-target.patch
   0004-update-rust-bindgen-to-fix-clang22-build.patch.xz
   0005-skia-m142-update.patch.xz
@@ -345,28 +351,24 @@ END
 mk_add_options MOZ_PARALLEL_BUILD=${_cores:-4}
 END
   fi
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.xz}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]]; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
+    fi
+  done
 )
 
 build() (
   _prepare_icecat
 
   cd "$_pkgsrc"
-
-  # fix for python 3.14
-  patch -Np1 -i ../5fcff175718cd308bc6d6f2996de14eb8a93e2a2.patch
-  patch -Np1 -i ../23efd75219786d71acff0b4e7c1b0de297b84c4e.patch
-  patch -Np1 -i ../b68b1f93a6e31188486458f32fbe37811257604f.patch
-  patch -Np1 -i ../d4b3eb4f76e81f18c53863b1d55ee146d6ec7d10.patch
-  patch -Np1 -i ../dbf9702ed87ea5c88c2a1ee615998532ac8f10cc.patch
-
-  # Fix for glibc 2.43
-  patch -Np1 -i ../0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
-  patch -Np1 -i ../0002-Fix-sandbox-to-build-with-glibc-2.43.patch
-
-  # Fix for clang 22
-  patch -Np1 -i ../0003-Use-wasm32-wasip1-target.patch
-  xzcat ../0004-update-rust-bindgen-to-fix-clang22-build.patch.xz | patch -B .patchorigin -Np1 -F100
-  xzcat ../0005-skia-m142-update.patch.xz | patch -B .patchorigin -Np1
 
   export RUSTUP_TOOLCHAIN=stable
 

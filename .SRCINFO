@@ -1,6 +1,6 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox ESR browser
-	pkgver = 140.9.0
+	pkgver = 140.9.1
 	pkgrel = 2
 	url = https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git
 	arch = x86_64
@@ -55,14 +55,14 @@ pkgbase = icecat
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	noextract = firefox-140.9.0esr.source.tar.xz
+	noextract = firefox-140.9.1esr.source.tar.xz
 	options = !debug
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = gnuzilla::git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=10a8be3fcf725ed01ffb7279ec27c2fba55dd2d2
-	source = https://archive.mozilla.org/pub/firefox/releases/140.9.0esr/source/firefox-140.9.0esr.source.tar.xz
+	source = gnuzilla::git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=f3595923458a5255f61a3853bd83bb5f004dc3bc
+	source = https://archive.mozilla.org/pub/firefox/releases/140.9.1esr/source/firefox-140.9.1esr.source.tar.xz
 	source = 5fcff175718cd308bc6d6f2996de14eb8a93e2a2.patch
 	source = 23efd75219786d71acff0b4e7c1b0de297b84c4e.patch
 	source = b68b1f93a6e31188486458f32fbe37811257604f.patch
@@ -74,7 +74,7 @@ pkgbase = icecat
 	source = 0004-update-rust-bindgen-to-fix-clang22-build.patch.xz
 	source = 0005-skia-m142-update.patch.xz
 	sha256sums = SKIP
-	sha256sums = b972b2a4c17244d51c10123cbd6c936e2cf26ebc29eb724570d285c283e9e92c
+	sha256sums = 45d2e6c2b3aa4f52815d1a8a4a93e013d19e86e1b06480f13db9e6fdd7148dc2
 	sha256sums = 10e928127276c934a51c053d3f7ceb247344afd2e82186e12c4f188dd743bc49
 	sha256sums = 6479aa1df3fda931d0e261edaffdcac2d162c0166c5cfd6adf6f45ccf632b852
 	sha256sums = 7b6f7c2906a4fb4b83c5f8e6be2cd873c3d99b1f1c4e6b98887364d26fee88de
