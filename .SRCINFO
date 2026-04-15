@@ -1,13 +1,13 @@
-pkgbase = taskforge-bin
-  pkgdesc = Taskforge CLI (prebuilt binary)
-  pkgver = 0.0.0
-  pkgrel = 1
-  url = https://github.com/gentij/taskforge
-  arch = x86_64
-  license = custom
-  provides = taskforge
-  conflicts = taskforge
-  source = taskforge::https://github.com/gentij/taskforge/releases/download/v0.0.0/taskforge_linux_amd64
-  sha256sums = SKIP
+pkgbase = lune-bin
+	pkgdesc = Lune CLI (prebuilt binary)
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/gentij/lune
+	arch = x86_64
+	license = MIT
+	provides = lune
+	conflicts = lune
+	source = https://github.com/gentij/lune/releases/download/v0.0.0/lune_linux_amd64.tar.gz
+	sha256sums = SKIP
 
-pkgname = taskforge-bin
+pkgname = lune-bin

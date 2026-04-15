@@ -1,15 +1,15 @@
-pkgname=taskforge-bin
+pkgname=lune-bin
 pkgver=0.0.0
 pkgrel=1
-pkgdesc="Taskforge CLI (prebuilt binary)"
+pkgdesc="Lune CLI (prebuilt binary)"
 arch=('x86_64')
-url="https://github.com/gentij/taskforge"
-license=('custom')
-provides=('taskforge')
-conflicts=('taskforge')
-source=("taskforge::https://github.com/gentij/taskforge/releases/download/v${pkgver}/taskforge_linux_amd64")
+url="https://github.com/gentij/lune"
+license=('MIT')
+provides=('lune')
+conflicts=('lune')
+source=("https://github.com/gentij/lune/releases/download/v${pkgver}/lune_linux_amd64.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-  install -Dm755 "${srcdir}/taskforge" "${pkgdir}/usr/bin/taskforge"
+  install -Dm755 "${srcdir}/lune" "${pkgdir}/usr/bin/lune"
 }
