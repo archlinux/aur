@@ -1,6 +1,6 @@
 pkgbase = ruby-hiera-eyaml
 	pkgdesc = OpenSSL Encryption backend for Hiera
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/voxpupuli/hiera-eyaml
 	arch = any
@@ -10,10 +10,9 @@ pkgbase = ruby-hiera-eyaml
 	depends = ruby
 	depends = ruby-optimist
 	depends = ruby-highline
-	noextract = hiera-eyaml-5.0.0.gem
+	noextract = hiera-eyaml-5.0.1.gem
 	options = !emptydirs
-	source = hiera-eyaml-5.0.0::git+https://github.com/voxpupuli/hiera-eyaml?signed#tag=v5.0.0
-	validpgpkeys = C10B6298A584A5632E254DA304D659E6BF1C4CC0
-	sha256sums = 4677d185970235e4581d26ffdfbc569db2ec130eb08b5bd6ca74e5f550660db3
+	source = hiera-eyaml-5.0.1::git+https://github.com/voxpupuli/hiera-eyaml#tag=v5.0.1
+	sha256sums = b5de3026205a554909238ca3a34c341896622a1534fdea0d9ee80e9f46c85c24
 
 pkgname = ruby-hiera-eyaml
