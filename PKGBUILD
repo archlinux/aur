@@ -3,7 +3,7 @@
 pkgname=altirrasdl-git
 pkgver=r192.31e6f58
 pkgrel=1
-pkgdesc="Altirra, an 8-bit Atari computer emulator, native SDL"
+pkgdesc="An 8-bit Atari computer emulator, native SDL"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ilmenit/AltirraSDL"
 license=('GPL2')
