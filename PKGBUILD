@@ -8,7 +8,7 @@ pkgbase=${_pkgbase}-bin
 pkgname=(${_pkgbase}-bin ${_pkgbase}-tui-bin)
 pkgdesc="Like direnv, but for aliases. Define aliases per project, per toolchain, or globally — and load the right ones automatically."
 
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -30,13 +30,13 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.txz::${url}/releases/download/$
                "${_pkgname}-tui-${arch[0]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname%%-rs}-tui-${_barch[0]}.tar.xz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname%%-rs}-${_barch[1]}.tar.xz"
                 "${_pkgname}-tui-${arch[1]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname%%-rs}-tui-${_barch[1]}.tar.xz")
-sha256sums=('baea335c0c35a7f4daaf6f190b8db4ee47af6867ea6f1a7c052f085cfaec5d8e'
-            'fea2c218c3e3a2e08c58925c42a83748b342516ba987e448d03f70b483c3a0dd'
-            '9fc069e13fd9cbb0ee4a46f086f1cc9fa8c06629a34533c8938bf162e25d26ec')
-sha256sums_x86_64=('851905c466563787e3004e3c44aaa29f6738aadd3a8fa87c0ab1ddf822081b66'
-                   '6785b9d0714626e7501bc95cd22e60dc95b7101a4bbb44022a30d4be85b25f08')
-sha256sums_aarch64=('869909a4354128aaed896053adf00f4d1728ee3108ffae86871d71e95361b9fa'
-                    '9ce4b5b3f3d9d5d5d43b0e05d18c0a3543ede65981f5b2013bb6e4fa683d07b6')
+sha256sums=('185b0a57d3124a3529293dfc45a73fdd1619c7a6ce013c1afe8878e6a28e923b'
+            'e57b3dcc6599ccbcec48b041af6dc6f4341bb65a9e72cb5ed2a08a9fcdb8fc3b'
+            '05ee2ae5a80aa72f6a64860f0337069cd691f1a462d6955a9863c06a5b359b07')
+sha256sums_x86_64=('f535c38e4b4e6ecf2fe8963ed9ba21c8c4899b5f7d8ebd5ede88dd45281b712a'
+                   '0c9208cb41580251a433e5064938843ca53bb25f9e503cc78efdba0dacae86c6')
+sha256sums_aarch64=('064c840c719d577280b925c044d0c29335698de17664f025ae8e8206bde29a6e'
+                    '38ae12b639fad4d13933a0b36256a8fecae21ceddf78f64a61d39a9d0ba5bcb3')
 
 
 case ${CARCH} in
