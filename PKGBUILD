@@ -1,5 +1,5 @@
 pkgname=openwork-bin
-pkgver=0.11.206
+pkgver=0.11.207
 pkgdesc='Unofficial OpenWork binary package with Arch-specific launcher fixes'
 arch=('x86_64')
 url='https://github.com/different-ai/openwork'
@@ -17,7 +17,7 @@ depends=(
   'webkit2gtk-4.1'
 )
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/openwork-desktop-linux-amd64.deb")
-sha256sums=('60bafb4d6e014a6f177db4c897e26952741e916360533b0599bfc39d42637c03')
+sha256sums=('4e2d2380dfa8dbfe79c3d4327905126dc03049c8e5520648b73bb2c9fcb2278d')
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
