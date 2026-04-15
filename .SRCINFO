@@ -1,0 +1,25 @@
+pkgbase = bclone-bin
+	pkgdesc = rclone with Alist, Alldebrid, iCloud Photos, Teldrive and Terabox support
+	pkgver = 1.73.3
+	pkgrel = 1
+	url = https://github.com/BenjiThatFoxGuy/bclone
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = glibc
+	optdepends = fuse3: for rclone mount
+	provides = rclone
+	provides = bclone
+	conflicts = rclone
+	conflicts = bclone
+	source = https://raw.githubusercontent.com/BenjiThatFoxGuy/bclone/refs/tags/v1.73.3/COPYING
+	sha256sums = SKIP
+	source_x86_64 = https://github.com/BenjiThatFoxGuy/bclone/releases/download/v1.73.3/rclone-v1.73.3-linux-amd64.zip
+	sha256sums_x86_64 = 0d23270f03e546c5e9f4e71304b1202f8a3e989490f619b2a7c514ea817c7cd2
+	source_aarch64 = https://github.com/BenjiThatFoxGuy/bclone/releases/download/v1.73.3/rclone-v1.73.3-linux-arm64.zip
+	sha256sums_aarch64 = ec74c86c78edb5f84d230e20d44ec353270b5ba2644ec97fe4c39b4fe1c97b9b
+	source_armv7h = https://github.com/BenjiThatFoxGuy/bclone/releases/download/v1.73.3/rclone-v1.73.3-linux-arm-v7.zip
+	sha256sums_armv7h = 06b62f6fc68a00f146fafa2648e28770faa8e0dcc6ce554aa604c19b7ab4a385
+
+pkgname = bclone-bin
