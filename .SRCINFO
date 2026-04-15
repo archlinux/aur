@@ -1,0 +1,11 @@
+pkgbase = vxneon-cursor-theme
+	pkgdesc = JY xNeon — neon X11/Wayland cursor theme (alpha)
+	pkgver = 0.24
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/999909
+	arch = any
+	license = custom
+	source = vxneon-cursor-theme-0.24.tar.gz::https://github.com/veasman/kara-cursor-mirror/releases/download/v1/157292-vxNeon024.tar.gz
+	sha256sums = ccdf8f3643a438f86d367afb845d1dc6e65f33338ffeb9a611cf3aca088354a6
+
+pkgname = vxneon-cursor-theme
