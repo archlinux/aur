@@ -1,0 +1,16 @@
+#!/bin/sh
+
+post_install() {
+  echo ""
+  echo "This hook will look for AUR packages that requires rebuild to keep working due to ABI changes in shared libraries."
+  echo ""
+  echo "You can change the behaviour editing the following file"
+  echo "    /usr/share/aur-check-rebuild/settings.json"
+  echo ""
+  echo "Logs can be found here"
+  echo "    /var/log/aur-check-rebuild.log"
+  echo ""
+}
+post_upgrade() {
+  post_install
+}
