@@ -7,7 +7,15 @@ pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & lo
 arch=('x86_64')
 url="https://codeberg.org/trougnouf/cfait"
 license=('GPL3')
-depends=('fontconfig' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'libxcb' 'vulkan-driver')
+depends=(
+    'fontconfig'
+    'libx11'
+    'libxcursor'
+    'libxi'
+    'libxrandr'
+    'libxkbcommon'
+    'wayland'
+)
 makedepends=('cargo' 'git')
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -49,3 +57,4 @@ package() {
   install -Dm644 "assets/cfait.desktop" "$pkgdir/usr/share/applications/cfait.desktop"
   install -Dm644 "assets/cfait.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/cfait.svg"
 }
+
