@@ -7,7 +7,7 @@
   url="https://github.com/kevinroleke/gpufetch"
   license=('MIT')
   depends=('python')
-  makedepends=('python-build' 'python-installer' 'python-wheel')
+  makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
   source=("https://files.pythonhosted.org/packages/source/g/gpufetch/gpufetch-${pkgver}.tar.gz")
   sha256sums=('365fd7906865a1f09f9fd74c2ebea052c2466b8163abcd214051bf5f9d639ea5')
 
