@@ -1,6 +1,6 @@
 pkgbase = sideband
 	pkgdesc = Communicate with people or LXMF-compatible systems over Reticulum networks
-	pkgver = 1.8.2
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://unsigned.io/software/Sideband.html
 	arch = any
@@ -8,23 +8,23 @@ pkgbase = sideband
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = hicolor-icon-theme
 	depends = python>=3.13
+	depends = python-rns>=1.1.5
+	depends = python-lxmf>=0.9.4
+	depends = python-lxst>=0.4.6
+	depends = python-kivy>=2.3.0
+	depends = python-numpy>=2.0.0
+	depends = python-pillow>=10.2.0
+	depends = python-mistune>=3.0.2
+	depends = python-qrcode
+	depends = python-pycodec2>=4.1.0
 	depends = python-audioop-lts>=0.2.1
+	depends = hicolor-icon-theme
 	depends = python-cryptography
 	depends = python-dbus
 	depends = python-dnspython
-	depends = python-kivy>=2.3.0
-	depends = python-lxmf>=0.9.3
-	depends = python-lxst>=0.4.5
-	depends = python-mistune>=3.0.2
-	depends = python-numpy>=2.0.0
-	depends = python-pillow>=10.2.0
 	depends = python-prompt_toolkit
-	depends = python-pycodec2>=4.1.0
-	depends = python-qrcode
 	depends = python-requests
-	depends = python-rns>=1.0.4
 	depends = python-sh
 	depends = python-typing_extensions
 	depends = xclip
@@ -33,9 +33,9 @@ pkgbase = sideband
 	optdepends = python-watchdog: auto reload kv or py
 	optdepends = python-pysocks: proxying of MQTT connection
 	optdepends = python-firebase: FireBase data collection
-	provides = python-sbapp=1.8.2
+	provides = python-sbapp=1.9.0
 	conflicts = python-sbapp
-	source = Sideband-1.8.2.tar.gz::https://github.com/markqvist/Sideband/archive/refs/tags/1.8.2.tar.gz
-	sha256sums = c6ef0adeb15794b7219cb8f9f915b7d34bed1421e86f3bf6538f12a34e97fdb7
+	source = https://github.com/markqvist/Sideband/archive/refs/tags/1.9.0/Sideband-1.9.0.tar.gz
+	sha256sums = f373e02904d2a072ba1904a91197d118c56c8a45b6c4305bec16acaf43d570e1
 
 pkgname = sideband

@@ -2,7 +2,7 @@
 
 _Name="Sideband"
 pkgname="${_Name,,}"
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Communicate with people or LXMF-compatible systems over Reticulum networks"
 arch=(
@@ -14,26 +14,26 @@ license=(
   'CC-BY-NC-SA-4.0'
 )
 depends=(
-  'hicolor-icon-theme'
   'python>=3.13'
-  'python-audioop-lts>=0.2.1'
+  'python-rns>=1.1.5'
+  'python-lxmf>=0.9.4'
+  'python-lxst>=0.4.6'
+  'python-kivy>=2.3.0'
+  'python-numpy>=2.0.0'
+  'python-pillow>=10.2.0'
+  'python-mistune>=3.0.2'
+  'python-qrcode'
+  # 'python-materialyoucolor>=2.0.7'
   # 'python-beautifulsoup4'
+  'python-pycodec2>=4.1.0'
+  'python-audioop-lts>=0.2.1'
+
+  'hicolor-icon-theme'
   'python-cryptography'
   'python-dbus'
   'python-dnspython'
-  'python-kivy>=2.3.0'
-  'python-lxmf>=0.9.3'
-  'python-lxst>=0.4.5'
-  # 'python-materialyoucolor>=2.0.7'
-  'python-mistune>=3.0.2'
-  'python-numpy>=2.0.0'
-  'python-pillow>=10.2.0'
   'python-prompt_toolkit'
-  # 'python-pyaudio'
-  'python-pycodec2>=4.1.0'
-  'python-qrcode'
   'python-requests'
-  'python-rns>=1.0.4'
   'python-sh'
   'python-typing_extensions'
   'xclip'
@@ -58,11 +58,11 @@ conflicts=(
 )
 _pkgsrc="${_url##*/}-${pkgver}"
 source=(
-  "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
+  "${_url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('c6ef0adeb15794b7219cb8f9f915b7d34bed1421e86f3bf6538f12a34e97fdb7')
+sha256sums=('f373e02904d2a072ba1904a91197d118c56c8a45b6c4305bec16acaf43d570e1')
 
-build () {
+build() {
   cd "${srcdir}/${_pkgsrc}"
   python -m build --wheel --no-isolation
 }
