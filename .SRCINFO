@@ -1,0 +1,16 @@
+pkgbase = altirrasdl-git
+	pkgdesc = Altirra, an 8-bit Atari computer emulator
+	pkgver = r192.31e6f58
+	pkgrel = 1
+	url = https://github.com/ilmenit/AltirraSDL
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	depends = sdl3
+	depends = sdl3_image
+	optdepends = librashader
+	source = git+https://github.com/ilmenit/AltirraSDL.git
+	sha256sums = SKIP
+
+pkgname = altirrasdl-git
