@@ -6,7 +6,7 @@ pkgbase = choria-cm
 	arch = any
 	license = Apache-2.0
 	makedepends = go
-	source = choria-cm-0.0.22.tar.gz::https://github.com/choria-io/ccm/archive/v0.0.22.tar.gz
-	sha256sums = 55da8e43a79733f22df138291f7dba08309ae7400c9526e6417ec97c92a9feeb
+	source = choria-cm-0.0.26.tar.gz::https://github.com/choria-io/ccm/archive/v0.0.26.tar.gz
+	sha256sums = 325ce8f336c38a205d84a3c1988e5a231581551c16cbf090905bda6c57b7d0b9
 
 pkgname = choria-cm
