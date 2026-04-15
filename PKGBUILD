@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=pods
-pkgver=2.4.0
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="Manage your Podman containers"
+pkgdesc="Manage your Podman/Docker containers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/marhkb/pods"
 license=('GPL-3.0-or-later')
@@ -11,7 +11,6 @@ depends=(
   'gtk4'
   'gtksourceview5'
   'libadwaita'
-  'podman'
   'vte4'
 )
 makedepends=(
@@ -20,13 +19,17 @@ makedepends=(
   'meson'
 )
 checkdepends=('appstream-glib')
+optdepends=(
+  'docker: Docker container support'
+  'podman: Podman container support'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c5d147ef7945b42f70840432a75446625d7423e816dc368aad930dd721a3baf5')
+sha256sums=('c98f922ce7822a524a447eb3ffbc02e74c27b1bd3c6e66b3f10ecddbee226eb3')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc --print host-tuple)"
+  cargo fetch --target host-tuple
 }
 
 build() {

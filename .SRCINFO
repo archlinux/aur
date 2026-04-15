@@ -1,6 +1,6 @@
 pkgbase = pods
-	pkgdesc = Manage your Podman containers
-	pkgver = 2.4.0
+	pkgdesc = Manage your Podman/Docker containers
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/marhkb/pods
 	arch = x86_64
@@ -13,9 +13,10 @@ pkgbase = pods
 	depends = gtk4
 	depends = gtksourceview5
 	depends = libadwaita
-	depends = podman
 	depends = vte4
-	source = pods-2.4.0.tar.gz::https://github.com/marhkb/pods/archive/v2.4.0.tar.gz
-	sha256sums = c5d147ef7945b42f70840432a75446625d7423e816dc368aad930dd721a3baf5
+	optdepends = docker: Docker container support
+	optdepends = podman: Podman container support
+	source = pods-3.0.0.tar.gz::https://github.com/marhkb/pods/archive/v3.0.0.tar.gz
+	sha256sums = c98f922ce7822a524a447eb3ffbc02e74c27b1bd3c6e66b3f10ecddbee226eb3
 
 pkgname = pods
