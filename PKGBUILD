@@ -7,7 +7,7 @@
 pkgbase=nvidia-utils
 pkgname=('nvidia-utils' 'opencl-nvidia' 'nvidia-open-dkms')
 pkgver=595.58.03
-pkgrel=1
+pkgrel=2
 arch=('aarch64' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -22,7 +22,8 @@ source=('nvidia-drm-outputclass.conf'
         'systemd-suspend-override.conf'
         'nvidia-sleep.conf'
         "https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/${_pkg_open}.tar.xz"
-        0002-Add-IBT-support.patch)
+        0002-Add-IBT-support.patch
+        kernel-7.0.patch)
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '1bcf2c6ee71686c0d32625e746ec8c0f7cf42fc63c76c3076ff2526b2661e8b9e9f76eaa2c4b213c7cc437a6f06006cc07672c4974d7f4515b2de2fd7c47a891'
             'f8f071f5a46c1a5ce5188e104b017808d752e61c0c20de1466feb5d693c0b55a5586314411e78cc2ab9c0e16e2c67afdd358da94c0c75df1f8233f54c280762c'
@@ -30,7 +31,8 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
             '7656de9f7a6e63fdced00ac3a0d3286bf0c830654d3c934702a496fac5bfc4560eedd57271c8299f8fc3f7f1b3afc27c1e29c0b6abce6428806862fef8373835'
             'def5aeba1c35cc4bef4f92b707cca73ae822d0d23aec55eb05d04f3591970d2c673a50bacd4e6b7ebd64f9326d24121bebe00d525f743e40d3a4244ebd17de85'
-            '3c4d87686cc79f09feca29df1a8c1973412b48077870b0d3424d575500234e9522b93df53bb6ecd72afd8dc69ecb4a8e7bd3e206080348d30a48c00e62f42943')
+            '3c4d87686cc79f09feca29df1a8c1973412b48077870b0d3424d575500234e9522b93df53bb6ecd72afd8dc69ecb4a8e7bd3e206080348d30a48c00e62f42943'
+            'a1c9f0b5d5e2c0e8687a71df241b35616bf92d0137c863f7e13a0973cf9fbb25a148a4bcabbdfd83c6e0944b69a733021907796143f0f60ad1c877cdb74b4826')
 sha512sums_aarch64=('4dd1544019df01bbb6e7640aeab32b32801e45f36604eee4143992c3b1710960927d55f05ee831058c4a8af861f698c450f7d2f93077fcb652b48f53743acd2b')
 sha512sums_x86_64=('d38e184805230ab1dc7065c49814d92c7033cf0e078e2cec919baef05d8ea297d061fb45a8fec608e7b2823f756568df3cbe1b08d75e8581c55a380413018499')
 
@@ -53,6 +55,7 @@ prepare() {
 
     # Kernel-open
     patch -Np1 -i "${srcdir}/0002-Add-IBT-support.patch" -d "${srcdir}/${_pkg_open}"
+    patch -Np1 -i "${srcdir}/kernel-7.0.patch" -d "${srcdir}/${_pkg_open}"
 
     # Attempt to make builds reproducible
     sed -i "s/^  HOSTNAME.*/  HOSTNAME = echo archlinux/" "${srcdir}/${_pkg_open}/utils.mk"
