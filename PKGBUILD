@@ -1,6 +1,6 @@
 # Maintainer: Joinsider <public@joinside.de>
 pkgname=dhbw-next-git
-pkgver=1.0.6
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='DHBW Horb Studenten App - Desktop application for DHBW Stuttgart students'
 arch=('x86_64' 'aarch64')
