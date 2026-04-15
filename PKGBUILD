@@ -1,5 +1,5 @@
 pkgname=powercurve-git
-pkgver=0.2.0.r584.35e3fd0
+pkgver=0.2.1.r589.7cc4cb8
 pkgrel=1
 pkgdesc="Lightweight desktop power management daemon with configurable fan curves"
 arch=('x86_64' 'aarch64')
