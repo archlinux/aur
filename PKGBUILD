@@ -1,7 +1,7 @@
 # Maintainer: Carlos Eduardo <carana2099@gmail.com>
 pkgbase=xchpst
 pkgname=(xchpst xchpst-compat)
-pkgver=0.8.2
+pkgver=0.8.5
 pkgrel=1
 epoch=
 pkgdesc="A backwards-compatible chpst implementation with new hardening options using namespaces and capabilities"
@@ -13,7 +13,7 @@ depends=(libcap)
 makedepends=('make')
 source=("https://gitlab.com/init-tools/xchpst/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
 noextract=()
-sha256sums=('63929a5a188e4c9cac5b011600d6d75748401c9975c61440c08d82ed32aa94bc')
+sha256sums=('bc8aa05a3a20c04d48cc2ac4f49b663bfef5e0ae7d02d9980f219fe909127029')
 validpgpkeys=()
 
 prepare() {
