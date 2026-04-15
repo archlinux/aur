@@ -23,6 +23,9 @@ check() {
     cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m pytest test
+  ll test
+  test-env/bin/pip install -e test/juliapkg_test_editable_setuptools
+  test-env/bin/python -m pytest test
 }
 
 package() {
