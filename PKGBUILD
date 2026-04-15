@@ -2,23 +2,15 @@
 pkgname=koishi-komeiji-cursor-theme
 pkgver=1.0
 pkgrel=1
-pkgdesc="Koishi Komeiji X11/Wayland cursor theme"
+pkgdesc="Koishi Komeiji — X11/Wayland cursor theme (Touhou Project)"
 arch=('any')
 url="https://www.gnome-look.org/p/1847757"
 license=('custom')
-# TODO before pushing to AUR:
-#   1. Visit the gnome-look page above, click download, copy the CDN URL.
-#   2. Paste it as the `source=()` entry below.
-#   3. Run `updpkgsums` to populate sha256sums.
-#   4. Verify EXTRACT_DIR matches the top-level directory name inside
-#      the archive (inspect with `tar -tf` or `unzip -l`).
-source=("koishi-komeiji.tar.gz::https://REPLACE_ME_WITH_REAL_DOWNLOAD_URL")
-sha256sums=('SKIP')
-
-EXTRACT_DIR="KoishiKomeiji"
+source=("$pkgname-$pkgver.zip::https://github.com/veasman/kara-cursor-mirror/releases/download/v1/Koishi.zip")
+sha256sums=('6d98538495e298ab2c27892a403dc2177e6637a2953545d8bbc0eeec86c705f9')
 
 package() {
-	mkdir -p "$pkgdir/usr/share/icons"
-	cp -r "$srcdir/$EXTRACT_DIR" "$pkgdir/usr/share/icons/" 2>/dev/null \
-		|| cp -r "$srcdir"/*/ "$pkgdir/usr/share/icons/"
+	install -dm755 "$pkgdir/usr/share/icons"
+	cp -r "$srcdir/Koishi" "$pkgdir/usr/share/icons/Koishi"
+	chmod -R u=rwX,go=rX "$pkgdir/usr/share/icons/Koishi"
 }

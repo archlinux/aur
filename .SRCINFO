@@ -1,0 +1,11 @@
+pkgbase = koishi-komeiji-cursor-theme
+	pkgdesc = Koishi Komeiji — X11/Wayland cursor theme (Touhou Project)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1847757
+	arch = any
+	license = custom
+	source = koishi-komeiji-cursor-theme-1.0.zip::https://github.com/veasman/kara-cursor-mirror/releases/download/v1/Koishi.zip
+	sha256sums = 6d98538495e298ab2c27892a403dc2177e6637a2953545d8bbc0eeec86c705f9
+
+pkgname = koishi-komeiji-cursor-theme
