@@ -1,7 +1,7 @@
 # Maintainer: robertfoster; keshavnrj
 
 pkgname=orion-desktop
-pkgver=2.0.0
+pkgver=4.1.0 # renovate: datasource=snapcraft depName=orion-desktop
 pkgrel=1
 pkgdesc="A powerful, lightweight, fast BitTorrent client, with beautiful user experience and fastest video and audio streaming capabilities"
 arch=('x86_64')
@@ -9,15 +9,17 @@ url="https://snapcraft.io/orion-desktop"
 license=('PROPRIETARY')
 options=('!strip')
 depends=(
-  'qt5-base'
-  'qt5-webkit'
+  'qt6-base'
+  'qt6-webview'
   'mpv'
 )
 makedepends=('squashfs-tools' 'jq')
-sha256sums=( SKIP
-            '25f7ceaaec37eb9c287abeb839ba2036738eb363079e321c2bd410fa48301dd6'
-            'b6ab9a851b0ce68e22dadc9c93cd004d40633042da5fc3dd1c40b1414a8f9e32'
-            '4991a25e728da947d59c31d9a790f2edaf04ae073bd267ea2ffcf519fe12f274')
+sha256sums=(
+  '32f7e5e1deb6fe08177028cfb6571ad9ac2021021c71dc841f1b093a89769b1b'
+  '25f7ceaaec37eb9c287abeb839ba2036738eb363079e321c2bd410fa48301dd6'
+  '71420954985d07f63c8195d5e6ff12c55ac366d99fd3024846bbdc8463af2579'
+  '4991a25e728da947d59c31d9a790f2edaf04ae073bd267ea2ffcf519fe12f274'
+)
 
 DLAGENTS+=("snap::${BASH_SOURCE[0]%/*}/snap-dlagent.sh %u %o")
 source=("${pkgname}-${pkgver}.squashfs::snap://api.snapcraft.io/v2/snaps/info/orion-desktop"
