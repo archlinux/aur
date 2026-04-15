@@ -1,4 +1,4 @@
-pkgbase = brushshe-git
+pkgbase = brushshe
 	pkgdesc = Simple and user-friendly raster graphics editor with add-on support
 	pkgver = r442.80893e0
 	pkgrel = 1
@@ -13,7 +13,7 @@ pkgbase = brushshe-git
 	optdepends = wl-clipboard: clipboard support on Wayland
 	provides = brushshe
 	conflicts = brushshe
-	source = brushshe-git::git+https://github.com/limafresh/Brushshe.git
+	source = brushshe::git+https://github.com/limafresh/Brushshe.git
 	sha256sums = SKIP
 
-pkgname = brushshe-git
+pkgname = brushshe

@@ -1,5 +1,6 @@
-# Maintainer: Your Name <youremail@domain.com>
-pkgname=brushshe-git
+# Maintainer: sfs <sfslinux@gmail.com>
+
+pkgname=brushshe
 pkgver=r442.80893e0
 pkgrel=1
 pkgdesc="Simple and user-friendly raster graphics editor with add-on support"
@@ -33,7 +34,7 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/brushshe" << 'EOF'
 #!/bin/sh
-exec python /usr/share/brushshe-git/main.py "$@"
+exec python /usr/share/brushshe/main.py "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/brushshe"
     
@@ -42,12 +43,57 @@ EOF
     cat > "$pkgdir/usr/share/applications/brushshe.desktop" << 'EOF'
 [Desktop Entry]
 Type=Application
+Version=1.0
 Name=Brushshe
-Comment=Simple raster graphics editor
-Exec=brushshe
+Comment=Painting app
+GenericName=Drawing Application
+GenericName[uk]=Програма для малювання
+GenericName[ru]=Программа для рисования
+GenericName[en]=Drawing Application
+GenericName[es]=Aplicación de Dibujo
+GenericName[fr]=Application de Dessin
+GenericName[de]=Zeichenanwendung
+GenericName[it]=Applicazione di Disegno
+GenericName[pt]=Aplicativo de Desenho
+GenericName[ja]=描画アプリケーション
+GenericName[zh_CN]=绘图应用
+GenericName[zh_TW]=繪圖應用
+GenericName[ar]=تطبيق الرسم
+GenericName[hi]=ड्राइंग एप्लिकेशन
+GenericName[ko]=그리기 애플리케이션
+GenericName[pl]=Aplikacja do Rysowania
+GenericName[tr]=Çizim Uygulaması
+GenericName[nl]=Tekentoepassing
+GenericName[sv]=Ritapplikation
+GenericName[cs]=Kreslicí Aplikace
+GenericName[sk]=Kresliaca Aplikácia
+Comment=Painting app
+Comment[uk]=Програма для малювання
+Comment[ru]=Программа для рисования
+Comment[en]=Painting application
+Comment[es]=Aplicación de pintura
+Comment[fr]=Application de peinture
+Comment[de]=Mal-App
+Comment[it]=Applicazione di pittura
+Comment[pt]=Aplicativo de pintura
+Comment[ja]=ペイントアプリ
+Comment[zh_CN]=绘画应用
+Comment[zh_TW]=繪畫應用
+Comment[ar]=تطبيق الرسم
+Comment[hi]=पेंटिंग ऐप
+Comment[ko]=페인팅 앱
+Comment[pl]=Aplikacja do malowania
+Comment[tr]=Boyama uygulaması
+Comment[nl]=Schilder-app
+Comment[sv]=Målapp
+Comment[cs]=Malířská aplikace
+Comment[sk]=Maľovacia aplikácia
+Exec=brushshe %f
 Icon=brushshe
-Categories=Graphics;2DGraphics;RasterGraphics;
 Terminal=false
+Categories=Graphics;
+StartupWMClass=Brushshe
+MimeType=image/png;image/jpeg;image/gif;image/bmp;image/vnd.ms-dds;image/x-bmp;image/x-eps;image/x-icns;image/x-icon;image/im;image/mpo;image/x-pcx;image/x-portable-pixmap;image/x-sgi;image/x-tga;image/tiff;image/webp;
 EOF
     
     # Install icon
