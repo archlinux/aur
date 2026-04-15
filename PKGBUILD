@@ -1,7 +1,7 @@
 # Maintainer: nardholio <nardholio@gmail.com>
 
 pkgname=ruby-sdl2
-pkgver=0.3.6.r3.g6ebccec
+pkgver=0.3.6.r8.ge92eee2
 pkgrel=1
 pkgdesc="Ruby wrapper for SDL 2.x"
 arch=('any')

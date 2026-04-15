@@ -1,6 +1,6 @@
 pkgbase = ruby-sdl2
 	pkgdesc = Ruby wrapper for SDL 2.x
-	pkgver = 0.3.6.r3.g6ebccec
+	pkgver = 0.3.6.r8.ge92eee2
 	pkgrel = 1
 	url = https://github.com/ohai/ruby-sdl2
 	arch = any
