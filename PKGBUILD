@@ -1,4 +1,7 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
+
+# The following people have contributed to keepassxc-git package
+# Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 # Contributor: Daniel Landau <daniel@landau.fi>
 # Contributor: Maxqia <contrib@maxqia.com>
 
@@ -8,13 +11,13 @@
 # Contributor: Alucryd <alucryd at gmail dot com>
 # Contributor: Paolo Stivanin <admin at polslinux dot it>
 
-pkgname=keepassxc-git
-_gitname=keepassxc
-pkgver=2.7.1.r483.g15ac8ac4f
+pkgname=keepasschi-git
+_gitname=keepasschi
+pkgver=r4736.gd3ea5c1
 pkgrel=1
-pkgdesc="Cross-platform community-driven port of KeePass Password Safe"
+pkgdesc="Modern, secure, and open-source password manager (aka KeePassχ; fork of KeePassXC)"
 arch=('i686' 'x86_64')
-url="https://github.com/keepassxreboot/keepassxc"
+url="https://keepasschi.org/"
 license=('GPL2')
 depends=('qt5-base' 'qt5-x11extras' 'qt5-translations' 'qt5-imageformats'
          'libxtst' 'shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils'
@@ -22,16 +25,21 @@ depends=('qt5-base' 'qt5-x11extras' 'qt5-translations' 'qt5-imageformats'
          'zlib' 'botan' 'argon2')
 makedepends=('git' 'intltool' 'cmake' 'qt5-tools' 'asciidoctor')
 checkdepends=('xorg-server-xvfb' 'xclip')
-provides=('org.freedesktop.secrets' "keepassxc=$pkgver")
-conflicts=('keepassxc')
-replaces=('keepassx-http' 'keepassx-reboot-git')
+provides=('org.freedesktop.secrets' "keepasschi=$pkgver")
+conflicts=(
+    'keepasschi'
+    # the next two are hopefully temporary, but at the moment KeePassχ still uses a lot of the same file paths as KeePassXC
+    'keepassxc'
+    'keepassxc-git'
+)
 options=(!emptydirs)
-source=(git+https://github.com/keepassxreboot/keepassxc.git#branch=develop)
+source=(git+https://codeberg.org/keepasschi/keepasschi.git)
 md5sums=('SKIP')
 
 pkgver() {
     cd "${_gitname}"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    # git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {

@@ -1,8 +1,8 @@
-pkgbase = keepassxc-git
-	pkgdesc = Cross-platform community-driven port of KeePass Password Safe
-	pkgver = 2.7.1.r483.g15ac8ac4f
+pkgbase = keepasschi-git
+	pkgdesc = Modern, secure, and open-source password manager (aka KeePassχ; fork of KeePassXC)
+	pkgver = r4736.gd3ea5c1
 	pkgrel = 1
-	url = https://github.com/keepassxreboot/keepassxc
+	url = https://keepasschi.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -30,12 +30,12 @@ pkgbase = keepassxc-git
 	depends = botan
 	depends = argon2
 	provides = org.freedesktop.secrets
-	provides = keepassxc=2.7.1.r483.g15ac8ac4f
+	provides = keepasschi=r4736.gd3ea5c1
+	conflicts = keepasschi
 	conflicts = keepassxc
-	replaces = keepassx-http
-	replaces = keepassx-reboot-git
+	conflicts = keepassxc-git
 	options = !emptydirs
-	source = git+https://github.com/keepassxreboot/keepassxc.git#branch=develop
+	source = git+https://codeberg.org/keepasschi/keepasschi.git
 	md5sums = SKIP
 
-pkgname = keepassxc-git
+pkgname = keepasschi-git
