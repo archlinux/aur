@@ -18,7 +18,7 @@ source=(
     "git+https://github.com/HailToDodongo/tiny3d.git"
     "pyrite64.desktop"
 )
-sha512sums=('a548820c814d3ca10ad1f6c5b1a32c9006215cba5f8a21132392cbd831b0f7bc7e34b3c4d2f4568563e932e756fc418e457f682504e060101d89a2e9fcea4cae'
+sha512sums=('cd360d251c61aa6e98c75035d8fbd925ced3aa24f57cc2436ae1178411814ba9970be8e8c5e8a63abdb69226bacfb6111c4bf6f8ea502b4d2e65d251652e397d'
             'SKIP'
             '93ad15d8490fd331b400788bf8485d3f03f3c3b8c78b25df24e3f806ef632a6fb2545dc6333476184a13a19a7dd3c20e4ae999ddf577cb4110a068c7e91673e0'
             'SKIP'
