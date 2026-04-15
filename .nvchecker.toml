@@ -1,0 +1,3 @@
+[auggie-bin]
+source = "npm"
+npm = "@augmentcode/auggie"

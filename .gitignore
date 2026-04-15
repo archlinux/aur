@@ -1,0 +1,22 @@
+# Build artifacts
+pkg/
+src/
+npm-cache/
+
+# Source archives
+*.tgz
+*.tar.gz
+
+# Package files
+*.pkg.tar.*
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
