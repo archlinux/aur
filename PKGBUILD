@@ -6,4 +6,4 @@ pkgdesc="[Replaced by otf-, deleting soon] GitHub's Monaspace with different var
 arch=('any')
 url='https://github.com/aaronliu0130/monaspice'
 license=('OFL-1.1-RFN')
-depends=('otf-monaspace-huhanme-nerd-font-bin')
+depends=('otf-monaspice-huhanme-nerd-font-bin')

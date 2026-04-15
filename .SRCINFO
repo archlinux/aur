@@ -5,6 +5,6 @@ pkgbase = ttf-monaspice-huhanme-nerd-font-bin
 	url = https://github.com/aaronliu0130/monaspice
 	arch = any
 	license = OFL-1.1-RFN
-	depends = otf-monaspace-huhanme-nerd-font-bin
+	depends = otf-monaspice-huhanme-nerd-font-bin
 
 pkgname = ttf-monaspice-huhanme-nerd-font-bin
