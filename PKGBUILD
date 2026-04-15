@@ -26,12 +26,13 @@ prepare() {
     node <<'EOF_NODE'
 const fs = require('fs');
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+
 delete pkg.overrides;
-if (pkg.devDependencies) pkg.devDependencies.vite = '^6.0.0';
+
 fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
 EOF_NODE
 
-    npm install
+npm install --legacy-peer-deps
 }
 
 build() {
