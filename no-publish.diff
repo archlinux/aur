@@ -1,5 +1,5 @@
---- distribution.js.old    2024-05-16 10:13:58.328775776 +0000
-+++ distribution.js.new    2024-05-16 10:13:32.759370789 +0000
+--- distribution.cjs.old    2024-05-16 10:13:58.328775776 +0000
++++ distribution.cjs.new    2024-05-16 10:13:32.759370789 +0000
 @@ -367,6 +367,7 @@
          await fs.promises.rename(launcherScript, sourceExecutable);
        },

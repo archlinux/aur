@@ -6,11 +6,11 @@ pkgname=(
   'mullvad-vpn-daemon-beta'
 )
 pkgbase=mullvad-vpn-beta
-_pkgver=2026.1
-_channel=stable
+_pkgver=2026.2
+_channel=beta
 _rel=1
-#pkgver=${_pkgver}.${_channel}${_rel}  # beta
-pkgver=${_pkgver}.${_channel}  # stable
+pkgver=${_pkgver}.${_channel}${_rel}  # beta
+#pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=24
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
@@ -35,19 +35,19 @@ makedepends=(
   'typescript'
 )
 source=(
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git"
   "git+https://github.com/mullvad/wireguard-go.git"
   'no-rpm.diff'
   'no-publish.diff'
   "${pkgbase%-beta}.sh"
 )
-sha256sums=('b5c5c74c294966c87283e344d7b660f2544cc89e5a1052aef52ddf43afa068db'
+sha256sums=('a46c595c3714f60d05d9d818e895e036674b2c58833b4e7400144f700082cfe1'
             'SKIP'
             'SKIP'
-            '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
-            '968967efff8e9588f15c382825b609cf89d54c47e0632e92e9ef2354aa46f31b'
+            'f3976a76352b09677487569a8538819fd393dbd6c8dbc6345f3022a08054faa9'
+            '0cd7bccb05af010cc26cb0a0bb91cb68f279c4d64d7ace35e1902f020bf50311'
             '2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
               '7ED98188F8F9AFF15D49E41BEB8D8AD83E8DA7BC' # David Lönnhager <david.l@mullvad.net>
@@ -74,10 +74,10 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   # Disable building rpm
-  patch --strip=1 desktop/packages/${pkgbase%-beta}/tasks/distribution.js < ../no-rpm.diff
+  patch --strip=1 desktop/packages/${pkgbase%-beta}/tasks/distribution.cjs < ../no-rpm.diff
 
   # Disable publishing for CIs
-  patch --strip=1 desktop/packages/${pkgbase%-beta}/tasks/distribution.js < ../no-publish.diff
+  patch --strip=1 desktop/packages/${pkgbase%-beta}/tasks/distribution.cjs < ../no-publish.diff
 
   # Create wireguard-go build directory
   mkdir -p "build/lib/$CARCH-unknown-linux-gnu"
@@ -86,7 +86,7 @@ prepare() {
   mkdir -p build/shell-completions
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
+  cargo fetch --locked --target host-tuple
 
   pushd "desktop/packages/${pkgbase%-beta}"
   export npm_config_cache="$srcdir/npm_cache"

@@ -1,5 +1,5 @@
---- distribution-a.js	2025-01-22 11:23:24.887768757 -0700
-+++ distribution-b.js	2025-01-22 11:26:52.834919598 -0700
+--- distribution-a.cjs	2025-01-22 11:23:24.887768757 -0700
++++ distribution-b.cjs	2025-01-22 11:26:52.834919598 -0700
 @@ -187,10 +187,6 @@
            target: 'deb',
            arch: getLinuxTargetArch(),
