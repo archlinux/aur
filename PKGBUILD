@@ -14,6 +14,5 @@ sha256sums=("4767d54e7b85d6dd4f971f5054e48c8038b076be71943e40104108bb4cfcdc1a")
 package() {
     cd "$srcdir"
     install -Dm755 "cava-bg" "$pkgdir/usr/bin/cava-bg"
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/cava-bg/README.md"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/cava-bg/LICENSE"
 }
