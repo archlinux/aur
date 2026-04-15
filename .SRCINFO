@@ -1,6 +1,6 @@
 pkgbase = libgnunetchat
 	pkgdesc = GNUnet chat library
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = http://gnunet.org
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = libgnunetchat
 	conflicts = libgnunetchat-git
 	options = !makeflags
 	options = !buildflags
-	source = https://ftp.gnu.org/gnu/gnunet/libgnunetchat-0.6.1.tar.gz
-	source = https://ftp.gnu.org/gnu/gnunet/libgnunetchat-0.6.1.tar.gz.sig
+	source = https://ftp.gnu.org/gnu/gnunet/libgnunetchat-0.7.0.tar.gz
+	source = https://ftp.gnu.org/gnu/gnunet/libgnunetchat-0.7.0.tar.gz.sig
 	validpgpkeys = 3D11063C10F98D14BD24D1470B0998EF86F59B6A
-	sha256sums = 14e7feaa4efbf301f90b7a3d1be54c147c88dd437ac9e565443c3e2074999b57
+	sha256sums = ca25c6055768bf1dbeb7bf2e955042290441c04693479ff64f040468494d77f7
 	sha256sums = SKIP
 
 pkgname = libgnunetchat
