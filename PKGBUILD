@@ -1,13 +1,13 @@
 # Maintainer: Lukas Grumlik - Rakosn1cek
 pkgname=xc-manager-git
 _pkgname=xc-manager
-pkgver=v0.8.0.r0.g44dc239
+pkgver=0.9.0.r0.g44dc239
 pkgrel=1
-pkgdesc="Command vaulting and a Zsh logic engine for command templating and \$BUFFER injection"
+pkgdesc="Secure command vaulting and Zsh logic engine for templating and \$BUFFER injection"
 arch=('any')
 url="https://github.com/Rakosn1cek/xc-manager"
 license=('MIT')
-depends=('zsh' 'fzf' 'curl')
+depends=('zsh' 'fzf' 'curl' 'gnupg')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -16,7 +16,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  # This cleans up the 'v' prefix from the tag for Arch versioning standards
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

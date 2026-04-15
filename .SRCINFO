@@ -1,6 +1,6 @@
 pkgbase = xc-manager-git
-	pkgdesc = Command vaulting and a Zsh logic engine for command templating and $BUFFER injection
-	pkgver = v0.8.0.r0.g44dc239
+	pkgdesc = Secure command vaulting and Zsh logic engine for templating and $BUFFER injection
+	pkgver = 0.9.0.r0.g44dc239
 	pkgrel = 1
 	url = https://github.com/Rakosn1cek/xc-manager
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = xc-manager-git
 	depends = zsh
 	depends = fzf
 	depends = curl
+	depends = gnupg
 	provides = xc-manager
 	conflicts = xc-manager
 	source = git+https://github.com/Rakosn1cek/xc-manager.git
