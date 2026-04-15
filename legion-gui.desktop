@@ -1,8 +1,11 @@
 [Desktop Entry]
 Type=Application
 Name=Legion GUI
-Comment=Legion GUI for Arch
+GenericName=Network Penetration Testing Tool
+Comment=Semi-automated network penetration testing tool
 Exec=legion-gui
 Icon=legion-gui
 Terminal=false
-Categories=Security;Network;
+Categories=Network;Security;
+Keywords=legion;sparta;recon;scanner;kali;
+StartupNotify=true
