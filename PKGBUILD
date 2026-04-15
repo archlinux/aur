@@ -1,8 +1,8 @@
 # Maintainer: orange-guo
 # Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/cli-proxy-api-bin
 pkgname=cli-proxy-api-bin
-pkgver=6.9.25
-pkgrel=2
+pkgver=6.9.26
+pkgrel=1
 pkgdesc=Proxy\ server\ providing\ OpenAI/Gemini/Claude\ compatible\ API\ interfaces\ \(Binary\)
 arch=(x86_64 aarch64 )
 url=https://github.com/router-for-me/CLIProxyAPI
@@ -18,10 +18,10 @@ validpgpkeys=()
 install=cli-proxy-api-bin.install
 source=(cli-proxy-api.service )
 sha256sums=('e303e0a3dc106f83aac76b1d2a7dfd891bbeccf5b668bbfb559cc69beb53cf2e')
-sha256sums_x86_64=('36125378f0b7a82c36390de5160c87494b9850e9ecc24e97e6f507f055ab8c3f')
-sha256sums_aarch64=('16293d86ae2ab940b8f26cb48928a73406bbc4ef9898cdf5fa1e794fa7a0e427')
-source_x86_64=(cli-proxy-api-bin-6.9.25-x86_64.tar.gz::https://github.com/router-for-me/CLIProxyAPI/releases/download/v6.9.25/CLIProxyAPI_6.9.25_linux_amd64.tar.gz )
-source_aarch64=(cli-proxy-api-bin-6.9.25-aarch64.tar.gz::https://github.com/router-for-me/CLIProxyAPI/releases/download/v6.9.25/CLIProxyAPI_6.9.25_linux_arm64.tar.gz )
+sha256sums_x86_64=('abb489b4caf9b0331cb0720fe2a766829313e8284210a9f4123655936a65a933')
+sha256sums_aarch64=('36b8877c52377ffafcb830c2aeccc4e585dc7715823ecc0b8cd4a415ef63f9b6')
+source_x86_64=(cli-proxy-api-bin-6.9.26-x86_64.tar.gz::https://github.com/router-for-me/CLIProxyAPI/releases/download/v6.9.26/CLIProxyAPI_6.9.26_linux_amd64.tar.gz )
+source_aarch64=(cli-proxy-api-bin-6.9.26-aarch64.tar.gz::https://github.com/router-for-me/CLIProxyAPI/releases/download/v6.9.26/CLIProxyAPI_6.9.26_linux_arm64.tar.gz )
 
 _binary_source_path=cli-proxy-api
 _install_bin_path=/usr/bin/cli-proxy-api
