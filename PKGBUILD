@@ -10,8 +10,8 @@ depends=('xdotool' 'libx11' 'libxext' 'libxtst')
 options=('!strip')
 install="${pkgname}.install"
 
-# add referer in order to download Official Driver
-DLAGENTS=('https::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -e "https://www.gaomon.cn/download" -o %o %u')
+# add UA and Referer in order to download Official Driver
+DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -A Mozilla/5.0 -e https://www.gaomon.cn/download -o %o %u')
 
 source=("https://driver.gaomon.cn/download/Driver/Linux/GaomonTablet_LinuxDriver_v${pkgver}.x86_64.tar.xz"
         "LICENSE")
