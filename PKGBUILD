@@ -22,7 +22,7 @@ check() {
 }
 
 package() {
-  cd Q3rally_v0.7_linux64
+  cd Q3rally
 
   rm -f baseq3r/*.so
 
