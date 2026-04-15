@@ -1,0 +1,11 @@
+pkgbase = skyrim-cursor-theme
+	pkgdesc = Skyrim — X11/Wayland cursor theme by ru5tyshark
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1369496
+	arch = any
+	license = custom
+	source = skyrim-cursor-theme-1.0.tar.bz2::https://github.com/veasman/kara-cursor-mirror/releases/download/v1/Skyrim-by-ru5tyshark-cursors.tar.bz2
+	sha256sums = b3cc8295b3a9579ef3102a2fb95a5a4c38e9a52ac100ba30b274add07d30f9fc
+
+pkgname = skyrim-cursor-theme

@@ -2,28 +2,24 @@
 pkgname=skyrim-cursor-theme
 pkgver=1.0
 pkgrel=1
-pkgdesc="Skyrim-inspired X11/Wayland cursor theme"
+pkgdesc="Skyrim — X11/Wayland cursor theme by ru5tyshark"
 arch=('any')
 url="https://www.gnome-look.org/p/1369496"
 license=('custom')
-# TODO before pushing to AUR:
-#   1. Visit the gnome-look page above and click the download button.
-#   2. Copy the direct CDN URL for the archive (files.gnome-look.org / opendesktop CDN).
-#   3. Paste it below as the `source=()` entry.
-#   4. Run `updpkgsums` to fill in sha256sums.
-#   5. Verify the archive extracts into a directory whose name matches
-#      the SKYRIM_DIR variable in package() below (check with `tar -tf`).
-source=("skyrim-cursors.tar.gz::https://REPLACE_ME_WITH_REAL_DOWNLOAD_URL")
-sha256sums=('SKIP')
-
-# Theme directory name inside the extracted archive. Adjust after
-# inspecting the tarball contents.
-SKYRIM_DIR="Skyrim"
+source=("$pkgname-$pkgver.tar.bz2::https://github.com/veasman/kara-cursor-mirror/releases/download/v1/Skyrim-by-ru5tyshark-cursors.tar.bz2")
+sha256sums=('b3cc8295b3a9579ef3102a2fb95a5a4c38e9a52ac100ba30b274add07d30f9fc')
 
 package() {
-	mkdir -p "$pkgdir/usr/share/icons"
-	# Common layouts: a single top-level directory OR multiple variant
-	# directories. Copy everything and let pacman own the install paths.
-	cp -r "$srcdir/$SKYRIM_DIR" "$pkgdir/usr/share/icons/" 2>/dev/null \
-		|| cp -r "$srcdir"/*/ "$pkgdir/usr/share/icons/"
+	install -dm755 "$pkgdir/usr/share/icons"
+	# Upstream ships the theme under "Skyrim-by-ru5tyshark-cursors/". Rename
+	# to "Skyrim" on install so gtk-cursor-theme-name / XCURSOR_THEME can
+	# reference the short form. Upstream also bundles alternate hand-*.tar.bz2
+	# variants at the top level — leave those out of the install; users who
+	# want them can grab the archive from gnome-look.
+	cp -r "$srcdir/Skyrim-by-ru5tyshark-cursors" "$pkgdir/usr/share/icons/Skyrim"
+	# Strip non-theme extras shipped in the tarball root.
+	rm -f "$pkgdir/usr/share/icons/Skyrim"/*.tar.bz2 \
+	      "$pkgdir/usr/share/icons/Skyrim"/*.png \
+	      "$pkgdir/usr/share/icons/Skyrim"/*.desktop
+	chmod -R u=rwX,go=rX "$pkgdir/usr/share/icons/Skyrim"
 }
