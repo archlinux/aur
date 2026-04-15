@@ -1,0 +1,17 @@
+pkgbase = codebase-memory-mcp-bin
+	pkgdesc = High-performance code intelligence MCP server with persistent knowledge graph
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/DeusData/codebase-memory-mcp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = codebase-memory-mcp
+	conflicts = codebase-memory-mcp
+	conflicts = codebase-memory-mcp-git
+	source_x86_64 = codebase-memory-mcp-x86_64.tar.gz::https://github.com/DeusData/codebase-memory-mcp/releases/download/v0.6.0/codebase-memory-mcp-linux-amd64.tar.gz
+	sha512sums_x86_64 = 222407a2784a493493668ec884eb55cc3dd2989afdccc82bf376aa76f185ebfc444458d72a58d434f85dbcd6db66f216b3128e538017a8afb730ec8f1500c08b
+	source_aarch64 = codebase-memory-mcp-aarch64.tar.gz::https://github.com/DeusData/codebase-memory-mcp/releases/download/v0.6.0/codebase-memory-mcp-linux-arm64.tar.gz
+	sha512sums_aarch64 = e6db8b19eb4bc3cb263260c58da3d88c4a9f922b1b3623de024668b746e46439cec53ae8d633c52bdb0f764f19f0f0a44c56c09cd194ba3ab93eeb0c1efdcfc0
+
+pkgname = codebase-memory-mcp-bin
