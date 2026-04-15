@@ -1,6 +1,6 @@
 # Maintainer: Miguel Revilla Rodríguez <migrev at gmail dot com>
 pkgname=opencode-qwencode-oauth
-pkgver=1.0.3
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Qwen OAuth authentication plugin for opencode with multi-account rotation"
 arch=('any')
@@ -17,7 +17,7 @@ latestver() {
 }
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b0c39512bd41d5f0ea3721e171beaf2a16b82ba756271defb3414550c6192e0f')
+sha256sums=('364751606658675ca7a75414cb8a895c1bb0385b77860870e05aaa46475a3799')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
