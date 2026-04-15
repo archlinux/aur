@@ -1,0 +1,5 @@
+[easydocker-bin]
+source = "github"
+github = "joao-zanutto/easydocker"
+use_latest_release = true
+prefix = "v"
