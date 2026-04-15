@@ -1,0 +1,27 @@
+pkgbase = gitmun-bin
+  pkgdesc = A cross-platform Git GUI built with Tauri
+  pkgver = 0.2.6
+  pkgrel = 1
+  url = https://github.com/cst8t/gitmun
+  install = gitmun.install
+  arch = x86_64
+  license = GPL-3.0-only
+  provides = gitmun
+  conflicts = gitmun
+  depends = cairo
+  depends = desktop-file-utils
+  depends = gdk-pixbuf2
+  depends = git
+  depends = glib2
+  depends = gtk-update-icon-cache
+  depends = gtk3
+  depends = hicolor-icon-theme
+  depends = libsoup3
+  depends = pango
+  depends = webkit2gtk-4.1
+  source = LICENSE.gitmun
+  source_x86_64 = https://github.com/cst8t/gitmun/releases/download/v0.2.6/Gitmun_0.2.6_amd64.deb
+  sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+  sha256sums_x86_64 = 4d8a541899d7da1f8f696f6b90ea8ee9c8ab0195ae9eb5a635823905eb292a3b
+
+pkgname = gitmun-bin
