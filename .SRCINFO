@@ -1,7 +1,7 @@
 pkgbase = pi
 	pkgdesc = AI coding agent for the terminal — minimal, extensible and optimized for tool use
 	pkgver = 0.67.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badlogic/pi-mono
 	arch = x86_64
 	arch = aarch64

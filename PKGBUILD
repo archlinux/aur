@@ -3,7 +3,7 @@
 _pkgname=pi-mono
 pkgname=pi
 pkgver=0.67.2
-pkgrel=1
+pkgrel=2
 pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool use"
 arch=('x86_64' 'aarch64')
 url="https://github.com/badlogic/pi-mono"
@@ -25,7 +25,12 @@ prepare() {
 
   mkdir -p "$npm_config_cache"
 
-  npm ci --ignore-scripts --cache "$npm_config_cache"
+  npm ci --ignore-scripts --cache "$npm_config_cache" \
+    --workspace packages/tui \
+    --workspace packages/ai \
+    --workspace packages/agent \
+    --workspace packages/coding-agent \
+    --include-workspace-root
 }
 
 build() {
@@ -38,7 +43,12 @@ build() {
   npm --prefix packages/agent run build
   npm --prefix packages/coding-agent run build
 
-  npm prune --omit=dev --ignore-scripts --cache "$npm_config_cache"
+  npm prune --omit=dev --ignore-scripts --cache "$npm_config_cache" \
+    --workspace packages/tui \
+    --workspace packages/ai \
+    --workspace packages/agent \
+    --workspace packages/coding-agent \
+    --include-workspace-root
 }
 
 package() {
@@ -67,6 +77,11 @@ package() {
   cp -a packages/coding-agent/dist packages/coding-agent/docs packages/coding-agent/examples \
     packages/coding-agent/package.json packages/coding-agent/README.md packages/coding-agent/CHANGELOG.md \
     "$pkgdir/$mod_dir/packages/coding-agent/"
+
+  rm -rf "$pkgdir/$mod_dir/node_modules/koffi"
+  rm -f "$pkgdir/$mod_dir/node_modules/@mariozechner/pi" \
+        "$pkgdir/$mod_dir/node_modules/@mariozechner/pi-mom" \
+        "$pkgdir/$mod_dir/node_modules/@mariozechner/pi-web-ui"
 
   ln -s "$mod_dir/packages/coding-agent/dist/cli.js" "$pkgdir/usr/bin/pi"
 
