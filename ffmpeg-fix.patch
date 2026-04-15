@@ -1,0 +1,11 @@
+--- a/Cargo.toml	2006-07-23 18:21:28.000000000 -0700
++++ b/Cargo.toml	2026-04-15 05:40:29.624429316 -0700
+@@ -28,7 +28,7 @@
+ ffmpeg-build = ["ffmpeg-next/build"]
+ 
+ [dependencies]
+-ffmpeg-next = { version = "=8.0.0", default-features = false, features = ["codec", "format", "software-scaling"] }
++ffmpeg-next = { version = "=8.1.0", default-features = false, features = ["codec", "format", "software-scaling"] }
+ wide = "=1.1.1"
+ clap = { version = "=4.5.31", features = ["derive"] }
+ anyhow = "=1.0.95"
