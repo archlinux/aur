@@ -2,7 +2,7 @@
 
 pkgname=bili-live-hime
 _upstream=bili-live-hime
-pkgver=0.5.1
+pkgver=0.5.2
 _tag="LiveHime-v${pkgver}"
 pkgrel=1
 pkgdesc="bilibili官方直播姬的轻量化替代工具"
@@ -13,7 +13,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libnm' 'libayatana-appindicator' 'openssl')
 makedepends=('nodejs' 'npm' 'rust' 'cargo')
 conflicts=('bili-live-hime-git')
 source=("${_upstream}-${_tag}.tar.gz::https://github.com/Rsplwe/${_upstream}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('29764e777de2670fe1bf1d36111ff13ea5ee1e2d5ea2466d4158122e48730fae')
+sha256sums=('9652247a9ff68f8f468adaf660591844bbcb4e4a2745b6f0d51b41aff66ac030')
 
 prepare() {
     cd "${srcdir}/${_upstream}-${_tag}"
