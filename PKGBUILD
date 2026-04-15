@@ -2,16 +2,21 @@
 # Contributor: Zeph <zeph33@gmail.com>
 # Contributor: LSUtigers3131
 
+: ${_use_jemalloc:=0}
+
 _pkgname=pamac
 pkgname=${_pkgname}-all
 pkgver=11.7.4
 _commit=188905011b64f385c72c5c8f795237bf894390fa
-pkgrel=1
+pkgrel=2
 pkgdesc='A GUI frontend for libalpm (everything in one package - snap, flatpak, appindicator, aur, appstream)'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/manjaro/$_pkgname"
 license=('GPL-3.0-or-later')
 depends=('libnotify' 'libpamac-full' 'libhandy' 'libadwaita' 'pamac-cli')
+if ((_use_jemalloc)); then
+	depends+=('jemalloc')
+fi
 optdepends=(
 	'polkit-kde-agent: authentication agent for KDE'
 	'polkit-qt5: Qt5 based authentication agent'
@@ -29,7 +34,7 @@ _srcdir="$_pkgname"
 
 pkgver() {
   cd "$_srcdir"
-  git describe --tags --abbrev=7 | sed 's/^v//;s/-/+/g'
+  git describe --tags --abbrev=7 | sed 's/^v//;s/-/./g'
 }
 
 prepare() {
@@ -39,7 +44,15 @@ prepare() {
 }
 
 build() {
-	arch-meson "$_srcdir" 'build' -Denable-fake-gnome-software=false
+	local opts=(
+		-Denable-fake-gnome-software=false
+	)
+	if ((_use_jemalloc)); then
+		opts+=(-Djemalloc=true)
+	else
+		opts+=(-Djemalloc=false)
+	fi
+	arch-meson "$_srcdir" 'build' "${opts[@]}"
 	meson compile -C 'build'
 }
 
