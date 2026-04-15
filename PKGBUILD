@@ -3,7 +3,7 @@
 
 pkgname=rotki
 pkgver=1.42.1
-pkgrel=2
+pkgrel=1
 pkgdesc='A portfolio tracking, analytics, accounting and management application that protects your privacy'
 arch=('x86_64' 'aarch64')
 url='https://rotki.com'
