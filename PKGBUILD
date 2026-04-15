@@ -20,10 +20,11 @@ python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-cd ${_base}-${pkgver}
-python -m venv --system-site-packages test-env
-test-env/bin/python -m installer dist/*.whl
-test-env/bin/python -m pytest test
+    cd ${_base}-${pkgver}
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/pip install -e test/juliapkg_test_editable_setuptools
+    test-env/bin/python -m pytest test
 }
 
 package() {
