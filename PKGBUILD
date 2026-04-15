@@ -3,7 +3,7 @@
 
 pkgname=megacmd
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 url="https://github.com/meganz/MEGAcmd"
 arch=('x86_64')
@@ -90,7 +90,7 @@ package() {
   done
 
   # Documentation
-  install -Dm644 README.md UserGuide.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -Dm644 README.md UserGuide.md build/megacmd/megacmd.changes -t "${pkgdir}/usr/share/doc/${pkgname}/"
   install -Dm644 contrib/docs/*.md -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
 
   # License

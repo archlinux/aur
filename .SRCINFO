@@ -1,7 +1,7 @@
 pkgbase = megacmd
 	pkgdesc = MEGA Command Line Interactive and Scriptable Application
 	pkgver = 2.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meganz/MEGAcmd
 	arch = x86_64
 	license = LicenseRef-megacmd
@@ -18,7 +18,7 @@ pkgbase = megacmd
 	depends = sqlite
 	depends = zlib
 	depends = fuse2
-	source = megacmd-2.5.2-1.tar.gz::https://github.com/meganz/MEGAcmd/archive/2.5.2_Linux.tar.gz
+	source = megacmd-2.5.2-2.tar.gz::https://github.com/meganz/MEGAcmd/archive/2.5.2_Linux.tar.gz
 	source = mega-sdk-fae76a36d60484657fbdf442b7b917ccc4fbad77.tar.gz::https://github.com/meganz/sdk/archive/fae76a36d60484657fbdf442b7b917ccc4fbad77.tar.gz
 	source = fix-icu-linking.patch::https://github.com/meganz/sdk/pull/2768.patch
 	sha512sums = 14bae79eb8b6562bceab7be625cca71fc01f44dc4cdb72b443289e085fd87381c97f8867d9c44866c37354d83449df014b632bc30e7f00e895253f71fb7bd8d1
