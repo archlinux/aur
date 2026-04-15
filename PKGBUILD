@@ -53,6 +53,9 @@ package() {
     install -d "${pkgdir}/usr/share/java/${pkgname%-git}/"
     cp -r "${app_dir}/." "${pkgdir}/usr/share/java/${pkgname%-git}/"
 
+    # Link system cacerts to use OS updated certificates instead of the bundled static ones
+    ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/usr/share/java/${pkgname%-git}/lib/runtime/lib/security/cacerts"
+
     # Create a wrapper script in /usr/bin
     install -d "${pkgdir}/usr/bin"
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" <<EOF
