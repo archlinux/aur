@@ -1,6 +1,6 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 pkgname=lektra-git
-pkgver=0.6.5.r59.g28de7b0
+pkgver=0.6.9
 pkgrel=1
 pkgdesc="High-performance PDF reader that prioritizes screen space and control"
 arch=('x86_64')
@@ -34,8 +34,7 @@ build() {
 
     cmake -S . -B build \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DENABLE_LLM_SUPPORT=OFF
+        -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build
 }
 
