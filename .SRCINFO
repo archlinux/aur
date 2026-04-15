@@ -1,7 +1,7 @@
 pkgbase = bitrix24
 	pkgdesc = Bitrix24 unified workspace app (CRM, comms, tasks, and more)
 	pkgver = 22.0.28.91
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bitrix24.com/apps/desktop.php
 	arch = x86_64
 	license = custom
