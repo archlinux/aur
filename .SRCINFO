@@ -1,20 +1,18 @@
 pkgbase = python-gitman
 	pkgdesc = A language-agnostic dependency manager using Git.
 	pkgver = 3.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jacebrowning/gitman
 	arch = any
 	license = MIT
-	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-poetry-core
 	depends = python
 	depends = python-datafiles
 	depends = python-minilog
 	depends = python-universal-startfile
 	depends = git
-	source = https://files.pythonhosted.org/packages/d5/6b/b914d3e047f85307d1bb87367d4363bcf265cc75e794fdb1fb9665a41f60/gitman-3.8.1.tar.gz
-	sha256sums = 7f05c37042093c0d8e77bfc0e323007a92c4629f86497a42220e87530fc3850
+	noextract = gitman-3.8.1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/9e/04/67940d75602b66e7d7726d7841e2d8e927060f8a8e47f81afc3da4afd991/gitman-3.8.1-py3-none-any.whl
+	sha256sums = b9c0d0e614a0769f1a907b0290c6f4b203dffb4eb2de9d17c470f4d472ebd203
 
 pkgname = python-gitman
