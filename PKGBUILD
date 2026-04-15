@@ -2,16 +2,17 @@
 
 pkgname=chinesechess-git
 _pkgname=ChineseChess
-pkgver=7.1.r0.ge41cf0e
+pkgver=7.4.r1.gb5c6d07
 pkgrel=1
 pkgdesc="Cross-platform and online battle platform game based on Qt: Chinese Chess. Also known as:『Xiangqi』『中国象棋』"
 arch=($CARCH)
 license=('GPL-3.0-only')
 _qt=qt6
 depends=(
-    gcc-libs
     glibc
     hicolor-icon-theme
+    libgcc
+    libstdc++
     $_qt-base
     $_qt-multimedia
 )
