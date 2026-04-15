@@ -2,7 +2,7 @@
 : ${aur_llamacpp_build_universal:=false}
 _pkgname="llama.cpp"
 pkgname=${_pkgname}-vulkan-git
-pkgver=b8766.r2.1e9d771e2c
+pkgver=b8799.r5.a6206958d2
 pkgrel=1
 _build_number=0
 _commit_id=
@@ -15,6 +15,7 @@ makedepends=(
   git
   openssl
   vulkan-headers
+  spirv-headers
 )
 optdepends=(
 'python-gguf: needed for convert_hf_to_gguf.py'

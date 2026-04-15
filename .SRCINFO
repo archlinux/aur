@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-vulkan-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with Vulkan optimizations)
-	pkgver = b8766.r2.1e9d771e2c
+	pkgver = b8799.r5.a6206958d2
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = llama.cpp-vulkan-git
 	makedepends = git
 	makedepends = openssl
 	makedepends = vulkan-headers
+	makedepends = spirv-headers
 	optdepends = python-gguf: needed for convert_hf_to_gguf.py
 	optdepends = python-numpy: needed for convert_hf_to_gguf.py
 	optdepends = python-safetensors: needed for convert_hf_to_gguf.py
