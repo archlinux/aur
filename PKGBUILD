@@ -2,8 +2,8 @@
 ##If you spot any issues, please don't hesitate to email me.
 ##Email: pony at just-a-pony dot net
 pkgname=yukigram-desktop
-pkgver=6.7.5
-pkgrel=5
+pkgver=6.7.6
+pkgrel=0
 pkgdesc='A patch-based Telegram Desktop fork,with features from 64Gram'
 arch=('x86_64')
 url="https://github.com/yukigram/yukigram"
@@ -70,21 +70,23 @@ source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
   "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
   tdesktop-fix-minizip-includes.patch
-  "https://github.com/yukigram/yukigram/archive/refs/tags/v${pkgver}.${pkgrel}.tar.gz"
+  #"https://github.com/yukigram/yukigram/archive/refs/tags/v${pkgver}.${pkgrel}.tar.gz"
+  "https://github.com/yukigram/yukigram/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
 sha512sums=(
-  '1072ae1d527cc0b894cbb06b4700a886e8907b222fc5960efe9d016fe73c08f22e4d3cddd42c51284d2c70b64151542020f6dafdd0f1b81d670ca6560bf79cc3'
+  'b3f77e752bfb3a1b527fe29b7a8381ada1f53589f694121e17212fcee99ce7de404e979a6437ea807f55ac7e4d3b2e8b5c24da346cb3b66274223a4aca49f600'
   SKIP
   'd9765588e92f154d83b95dc2840207bf22b26b6ca37b4d5cdfdb5e27a00c9e1ebcc9cd475a96bbcc5b02c24f6892320e009f843aa6b172a1820814b952a772eb'
-  '900c98bb083e6022eb98c28e68dc03ab8f23e9c0887db16b5857607f256ff6abbfc73d1ff14ee6eff0e774a4a29ae7c421209b83d9c6b38b5f32a18a50b452ff'
+  '91874fa7ccd128c3dd988e71c8491512ff5a73172be82efbdcbf1b1144dda958fd7d443ebc39357ae9fc8d96a9fb6e462dab9872d3aa9df7e6f8c9eeb4a3a858'
 )
 
 
 prepare() {
   cd tdesktop-$pkgver-full/
   patch -Np1 -d Telegram/lib_base -i "$srcdir"/tdesktop-fix-minizip-includes.patch
-  cat "$srcdir"/yukigram-${pkgver}.${pkgrel}/tdesktop/cur/*.patch | patch -Np1
+  #cat "$srcdir"/yukigram-${pkgver}.${pkgrel}/tdesktop/cur/*.patch | patch -Np1
+  cat "$srcdir"/yukigram-${pkgver}/tdesktop/cur/*.patch | patch -Np1
 }
 
 build() {
