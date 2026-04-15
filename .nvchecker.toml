@@ -1,0 +1,5 @@
+[tedit-bin]
+source = "github"
+github = "RobertFlexx/tedit"
+use_latest_release = true
+prefix = "version-"
