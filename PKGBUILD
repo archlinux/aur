@@ -3,7 +3,7 @@
 # Contributor: oscareczek <oscareczek at gmail dot com>
 pkgname=pcbox-git
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An emulator for classic IBM PC clones (Built with qt6)'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://pcbox-emu.xyz/'
@@ -39,7 +39,7 @@ build() {
         arm7h)    _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-armv7.cmake ;;
         aarch64)  _NDR=on;  _TOOLCHAIN=cmake/flags-gcc-aarch64.cmake ;;
     esac
-    LDFLAGS='-z now' cmake -S"${pkgname}" -Bbuild --preset regular --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=on -DNEW_DYNAREC="$_NDR"
+    LDFLAGS='-z now' cmake -S"${pkgname}" -Bbuild --preset regular --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=on -DNEW_DYNAREC=ON
     cmake --build build
 }
 
