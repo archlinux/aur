@@ -1,7 +1,7 @@
 # Maintainer: Artyom Kalin <kalin.a.v20031@gmail.com>
 
 pkgname=pacrs
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='pacman wrapper with CLI inspired by zypper and apt'
 url='https://codeberg.org/zeroten/pacrs'
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 makedepends=('cargo')
 depends=('git' 'pacman' 'libalpm.so>=16')
 optdepends=('paru: AUR support')
-sha256sums=('ec09c170177828bbd05c96ff848d8815e4f5313f9389eab5f8838c7bd1c8afac')
+sha256sums=('ca4b5f8b6994b1a955e791a46f17d3739e301572879a6219cc39c092dc748d7b')
 
 prepare() {
   cd "$pkgname"
