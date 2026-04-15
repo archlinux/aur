@@ -1,6 +1,6 @@
 # Maintainer: Stefan Mayer-Popp <stefan@mayer-popp.de>
 pkgname=hid-telephony-bridge
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="USB HID Telephony mute bridge for Linux/PipeWire (default: Shure MV7+)"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/fuxx/hid-telephony-bridge"
 license=('GPL-3.0-only')
 depends=('python' 'pipewire-pulse')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ed63b187eabdd6b3e54d9754bb9cfcb5091c15860e12046f43af1848e4ce8efd')
+sha256sums=('7ac694c527e7c11140b8164551d762fbe305ea53d34f1817cf0ac1b6aba87e28')
 install=hid-telephony-bridge.install
 
 package() {

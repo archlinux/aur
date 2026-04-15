@@ -22,3 +22,16 @@ post_install() {
 post_upgrade() {
     post_install
 }
+
+pre_remove() {
+    echo ""
+    echo ">>> hid-telephony-bridge is being removed. Stop and disable the"
+    echo ">>> service in your user session BEFORE removal, or clean up after:"
+    echo ">>>"
+    echo ">>>      systemctl --user disable --now hid-telephony-bridge.service"
+    echo ">>>"
+    echo ">>> The 'input' group membership is kept intact in case you use it"
+    echo ">>> for other devices. Remove it manually if you no longer need it:"
+    echo ">>>      sudo gpasswd -d \$USER input"
+    echo ""
+}
