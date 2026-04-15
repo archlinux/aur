@@ -1,0 +1,16 @@
+pkgbase = python-minilog
+	pkgdesc = Minimalistic wrapper for Python logging.
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/jacebrowning/minilog
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	source = https://files.pythonhosted.org/packages/e3/c9/6d4dc9bcd4b97ed89f482eeec0e6bb025942744689215dc2a4ed50415ea4/minilog-2.3.1.tar.gz
+	sha256sums = 4b602572c3bcdd2d8f00d879f635c0de9e632d5d0307e131c91074be8acf444e
+
+pkgname = python-minilog
