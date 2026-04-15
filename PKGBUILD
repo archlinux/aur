@@ -1,6 +1,6 @@
 # Maintainer: Atharva Surwase <atharvasurwase@gmail.com>
 
-pkgname=MonteCapcho
+pkgname=montecapcho
 pkgver=0.1.1
 pkgrel=1
 pkgdesc="A Rust-based text extractor using Tesseract OCR and Iced GUI"

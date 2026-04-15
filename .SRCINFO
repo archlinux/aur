@@ -1,4 +1,4 @@
-pkgbase = MonteCapcho
+pkgbase = montecapcho
 	pkgdesc = A Rust-based text extractor using Tesseract OCR and Iced GUI
 	pkgver = 0.1.1
 	pkgrel = 1
@@ -17,7 +17,7 @@ pkgbase = MonteCapcho
 	depends = maim
 	depends = slurp
 	depends = grim
-	source = MonteCapcho-0.1.1.tar.gz::https://github.com/Top-g-hash/Monte-Capcho/archive/refs/tags/v0.1.1.tar.gz
+	source = montecapcho-0.1.1.tar.gz::https://github.com/Top-g-hash/Monte-Capcho/archive/refs/tags/v0.1.1.tar.gz
 	sha256sums = 3d672f62882ee488533d2d4886f97de66b31e30a2e54cfc30c60eeb9805af34c
 
-pkgname = MonteCapcho
+pkgname = montecapcho
