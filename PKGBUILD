@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 _base=air
 pkgname=${_base}-bin
-pkgver=1.65.0
+pkgver=1.65.1
 pkgrel=1
 pkgdesc="Live reload for Go apps"
 url="https://github.com/${_base}-verse/${_base}"
@@ -14,9 +14,9 @@ provides=("${_base}")
 source_x86_64=("${_base}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_base}_${pkgver}_linux_amd64.tar.gz")
 source_i686=("${_base}-${pkgver}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_base}_${pkgver}_linux_386.tar.gz")
 source_aarch64=("${_base}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_base}_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('a183a6eed53a072e07623d53524e39442bd2275c36903f10e1797be69a5244a2')
-sha256sums_i686=('efe2d1c989af9c4bc0ec3f21ed4966161509788b1ad1ae7559f27e041b42a04d')
-sha256sums_aarch64=('e9ab24fd2f406601e7a4195c9b205ef1b0b7e0cf1bf0c38cd764570e0dd5a5f3')
+sha256sums_x86_64=('b6305247efd2f1b7606e7cbc3038dd60f556028d5396a0132d7890e0eebf0dec')
+sha256sums_i686=('3d242181c7f3453096828da21c0c69e79689d40817f0ef2c1e0b2a8abd41ba5c')
+sha256sums_aarch64=('6a4cd96847515cebf3758c175c9ae70f7b6457888f65e29fa9f81c87e402e254')
 
 package() {
   install -Dvm755 ${_base} -t "${pkgdir}/usr/bin"
