@@ -3,7 +3,7 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2633.762d3308
+pkgver=r2643.cb8bf953
 pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
@@ -14,10 +14,8 @@ depends=('bash' 'cairo' 'gdk-pixbuf2' 'glibc' 'glib2' 'gtk2' 'libgcc' 'gtkglext'
 makedepends=('cmake' 'git' 'make' 'svn' 'unzip' 'wget')
 optdepends=('gtk3: compile and run netradiant with gtk3, it works but with some drawbacks')
 provides=('netradiant' 'h2data' 'q2map' 'q3data' 'q3map2' 'qdata3')
-source=("${pkgname}::git+https://gitlab.com/xonotic/netradiant.git"
-        "git+https://github.com/DaemonEngine/crunch.git")
-sha256sums=('SKIP'
-            'SKIP')
+source=("${pkgname}::git+https://gitlab.com/xonotic/netradiant.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}/"
@@ -25,13 +23,9 @@ pkgver() {
 }
 
 prepare() {
-    # Fetch the Crunch submodule
-    cd "${srcdir}/${pkgname}"
-    git submodule init
-    git config submodule.libs/crunch.url "${srcdir}/crunch"
-    git -c protocol.file.allow=always submodule update
+    cd "${srcdir}/${pkgname}/"
 
-    # Fix the unzip include
+    # Fix the unzip include, see https://gitlab.com/xonotic/netradiant/-/work_items/203
     sed -i 's|#include <unzip.h>|#include <minizip/unzip.h>|' tools/quake3/common/vfs.c
 }
 
@@ -66,7 +60,6 @@ package() {
 
     cmake --install build
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "../crunch/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/crunch/license.txt"
     
     # Running update-mime-database will erase the map mime type anyway
     rm -r "${pkgdir}/usr/share/mime/"
