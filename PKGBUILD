@@ -1,20 +1,20 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-dim
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Default IMproved -- An improvement of Vim's default colorscheme"
 arch=('any')
 url="https://github.com/jeffkreeftmeijer/vim-dim"
-license=('unknown')
+license=('LicenseRef-Unknown')
 groups=('vim-plugins')
-depends=('vim-plugin-runtime')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c135506f1300f8738ba79cad8c35d963ede9f8e82ba64ec7305a7a53a0691a97')
+sha256sums=('6ad9d76c7e57f22c90e94b860a99b567a155a565f9c0be48068530df4dbdd632')
 
 package() {
-  cd "$pkgname-$pkgver"
-  find colors \
-    -type f -exec install -Dvm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
-  install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+    depends=('vim-plugin-runtime')
+    cd "$pkgname-$pkgver"
+    find colors \
+      -type f -exec install -Dvm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+    install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
