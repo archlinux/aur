@@ -1,7 +1,7 @@
 # Maintainer: solaraquarion <shlomochoina@gmail.com>
 
 pkgname=domterm-git
-pkgver=3.2.0.r0.g460360c0
+pkgver=3.2.0.r24.g227162d
 pkgrel=1
 pkgdesc="Terminal emulator capable of display html and images from command output"
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=()
 conflicts=(qtdomterm)
 makedepends=('git' 'vim' 'asciidoctor' 'zip' 'json-c' 'rust' 'jq' 'libsoup' 'atk' 'gtk3'
              'webkit2gtk' 'libappindicator-gtk3' 'java-openjfx')
-depends=(qt5-webengine libwebsockets java-runtime webkit2gtk-4.1)
+depends=(qt6-webengine libwebsockets java-runtime webkit2gtk-4.1)
 source=('git+https://github.com/PerBothner/DomTerm.git')
 md5sums=('SKIP')
 
@@ -22,7 +22,7 @@ pkgver(){
 build() {
     cd "$srcdir"/DomTerm
     autoreconf -vfi
-    ./configure --with-qt --with-libwebsockets --with-javafx --with-wry --prefix=/usr --libexecdir=/usr/lib
+    ./configure --without-qt --with-libwebsockets --with-javafx --with-wry --prefix=/usr --libexecdir=/usr/lib
     make V=1
 }
 
