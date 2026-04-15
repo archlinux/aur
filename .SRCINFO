@@ -1,17 +1,22 @@
 pkgbase = store-bin
 	pkgdesc = Manages dotfile symlinks from a single repository without requiring a mirrored target directory layout
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/cushycush/store
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = glibc
 	provides = store
 	conflicts = store
 	options = !strip
-	source_x86_64 = store-x86_64-1.1.0.tgz::https://github.com/cushycush/store/releases/download/v1.1.0/store_1.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = d55856db3c0e52c585ea2707d141fdc07f10316888bb2067293c9a1bf01d3b55
-	source_aarch64 = store-aarch64-1.1.0.tgz::https://github.com/cushycush/store/releases/download/v1.1.0/store_1.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 262bcc15d7cb36e681ce98d8c75ee947bdf9ab04a3267317219999f97b1c99f8
+	source = README-1.1.1.md::https://raw.githubusercontent.com/cushycush/store/v1.1.1/README.md
+	source = LICENSE-1.1.1::https://raw.githubusercontent.com/cushycush/store/v1.1.1/LICENSE
+	sha256sums = 1ddf75936e746381ed36d0c2c8415839ec5e61817f0278de85c2eb48339dda44
+	sha256sums = c4c73cfe3e7d8e4cae57635b5d7bde8f256d5eb8e5766ce80b22b0cf3de9cca5
+	source_x86_64 = store-x86_64-1.1.1.zip::https://github.com/cushycush/store/releases/download/v1.1.1/store-v1.1.1-linux-amd64.zip
+	sha256sums_x86_64 = 607588e14e8f1085f506d809ed13eb95807c5485dfe8e685a64151595c875ae6
+	source_aarch64 = store-aarch64-1.1.1.zip::https://github.com/cushycush/store/releases/download/v1.1.1/store-v1.1.1-linux-arm64.zip
+	sha256sums_aarch64 = a2602c2535ea6b54e9f9f089eb822c87197bc4b22bc92704aa8e1931e90b95b0
 
 pkgname = store-bin

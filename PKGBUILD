@@ -6,12 +6,12 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Manages dotfile symlinks from a single repository without requiring a mirrored target directory layout"
 
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
-_barch=('linux_amd64' 'linux_arm64')
+_barch=('linux-amd64' 'linux-arm64')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -19,16 +19,37 @@ url=${_ghurl}
 
 license=('MIT')
 
+depends=('glibc')
 provides=("${_appname}")
 conflicts=("${_appname}")
 
 options=(!strip)
 
-source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
-source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('d55856db3c0e52c585ea2707d141fdc07f10316888bb2067293c9a1bf01d3b55')
-sha256sums_aarch64=('262bcc15d7cb36e681ce98d8c75ee947bdf9ab04a3267317219999f97b1c99f8')
+source=("README-${pkgver}.md::${_ghurlraw}/README.md"
+		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.zip")
+source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.zip")
+sha256sums=('1ddf75936e746381ed36d0c2c8415839ec5e61817f0278de85c2eb48339dda44'
+            'c4c73cfe3e7d8e4cae57635b5d7bde8f256d5eb8e5766ce80b22b0cf3de9cca5')
+sha256sums_x86_64=('607588e14e8f1085f506d809ed13eb95807c5485dfe8e685a64151595c875ae6')
+sha256sums_aarch64=('a2602c2535ea6b54e9f9f089eb822c87197bc4b22bc92704aa8e1931e90b95b0')
 
+
+case ${CARCH} in
+	${arch[0]})
+		_CARCH=${_barch[0]}
+	;;
+
+	${arch[1]})
+		_CARCH=${_barch[1]}
+	;;
+esac
+
+prepare() {
+	cd "${srcdir}/" || exit
+
+	mv "${_gitname}-${_gitversion}-${_CARCH}" "${_appname}"
+}
 
 build() {
 	cd "${srcdir}/" || exit
@@ -47,7 +68,7 @@ package() {
 	install -D -m644 "${_appname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_appname}"
 	install -D -m644 "${_appname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_appname}.fish"
 
-	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
