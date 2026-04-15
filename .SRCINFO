@@ -1,6 +1,6 @@
 pkgbase = oniondownoda
 	pkgdesc = 🧅 A beautiful TUI for downloading files from .onion URLs over Tor
-	pkgver = 0.1.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/amigoDcyber/OnionDownOda
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = oniondownoda
 	makedepends = rust
 	makedepends = cargo
 	depends = tor
-	source = oniondownoda-0.1.1.tar.gz::https://github.com/amigoDcyber/OnionDownOda/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = SKIP
+	source = oniondownoda-2.0.0.tar.gz::https://github.com/amigoDcyber/OnionDownOda/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = c23a38a8d42ed7957dcbfcb96fc2f876e57c3de4171f32307180dcba4eee2fbd
 
 pkgname = oniondownoda
