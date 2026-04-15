@@ -1,7 +1,7 @@
 # Maintainer: Anand Pant
 
 pkgname=nyrra-signals-bin
-pkgver=0.0.11
+pkgver=0.0.14
 pkgrel=1
 pkgdesc="Signal exploration TUI"
 arch=('x86_64')
@@ -12,9 +12,9 @@ provides=('nyrra-signals')
 conflicts=('nyrra-signals')
 
 # Public PKGBUILD, private release asset. Users need GitHub access to the org.
-_release_asset='nyrra-signals_v0.0.11_linux_amd64.tar.gz'
+_release_asset='nyrra-signals_v0.0.14_linux_amd64.tar.gz'
 _asset="nyrra-signals_v${pkgver}_linux_amd64.tar.gz"
-_sha256='b76deb8ab9063e4b4987af2d1e3c5fea0682b721726f46dd3f1a39124bb39d9d'
+_sha256='857929d0594a6ca49e5d8d32e5a2863edd641b733b9f27174de93e4a6f62c9ba'
 
 prepare() {
   gh release download "v${pkgver}" \
