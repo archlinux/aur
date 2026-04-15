@@ -1,5 +1,5 @@
 pkgname=nff
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="An nftables firewall tool built in Python. Not as robust as direct nftables usage but nice to load static rules similar to ufw"
 arch=('any')
@@ -13,6 +13,7 @@ source=("v${pkgver}.tar.gz::https://github.com/CodeKing710/nff/archive/refs/tags
 sha256sums=('add1d33042865c362114848b59f7f8a0174037f1f3d7bc63c8adb34a39602d5c')
 
 package() {
+  cd "$srcdir/${pkgname}-${pkgver}"
   # Create necessary directories
   install -d "$pkgdir/usr/share/nff"
   install -d "$pkgdir/usr/bin"
