@@ -19,13 +19,14 @@ depends=(
   'grim'
 )
 
-makedepends=('cargo' 'pkgconf')
+makedepends=('cargo' 'pkgconf' 'oniguruma')
 
 source=("$pkgname-$pkgver.tar.gz")
 sha256sums=('89733efd739c73d0ee694b059d871c9beb1cfacdd9de021a6e553882f29011db')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  export RUSTONIG_SYSTEM_LIBONIG=1
   cargo build --release --locked
 }
 
