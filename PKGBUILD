@@ -1,6 +1,6 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 pkgname=okapi
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Find lines across files by regex and edit them all at once with your $EDITOR"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cargo' 'git')
 depends=('ripgrep')
 source=(git+${url}.git#tag=v${pkgver})
-sha256sums=('c04f86ea4057fde6155568ba3af0f6393a126729d8b4a514f22b36ce7e8afff1')
+sha256sums=('ec46f9a12774ff7e7592801765c0c5a68e63a88b7c3f868f58b05950b4bbb9f9')
 
 prepare() {
 	cd "$pkgname"
