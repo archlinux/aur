@@ -67,28 +67,20 @@ Terminal=false
 END
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/${pkgname%$_pkgtype}" << END
-#!/usr/bin/env sh
-
-_wanted="/usr/lib/jvm/java-${_java_ver}-openjdk"
-if [ -d "\$_wanted" ]; then
-  JAVA_HOME="\$_wanted"
-else
-  _best=""
-  for d in /usr/lib/jvm/java-*-openjdk; do
-    if [ -d "\$d" ]; then
-      n=\$(grep -Pom1 'java-\K[0-9.]+' <<< "\$d")
-      if (( \$n > ${_java_ver} )); then
-        _best="\$d"
-      fi
+#!/usr/bin/env bash
+_java_ver=${_java_ver}
+_best=""
+for d in /usr/lib/jvm/java-*-openjdk; do
+  if [ -d "\$d" ]; then
+    n=\$(grep -Pom1 'java-\K[0-9]+' <<< "\$d")
+    if (( \$n >= \${_java_ver} )); then
+      _best="\$d"
+      break
     fi
-  done
-  if [ -n "\$_best" ]; then
-    JAVA_HOME="\$_best"
   fi
-fi
-
-if [ -n "\$JAVA_HOME" ]; then
-  export JAVA_HOME
+done
+if [ -n "\$_best" ]; then
+  export JAVA_HOME="\$_best"
 fi
 
 exec /usr/bin/java -jar /usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar "\$@"
