@@ -1,8 +1,8 @@
 # Maintainer: orange-guo
-# Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/wlroots0.20-vmwgfx
+# Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/wlroots0.20-vmwgfx
 pkgname=wlroots0.20-vmwgfx
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc=Modular\ Wayland\ compositor\ library\ with\ a\ vmwgfx\ compatibility\ patch
 arch=(x86_64 )
 url=https://gitlab.freedesktop.org/wlroots/wlroots
