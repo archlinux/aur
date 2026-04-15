@@ -1,0 +1,42 @@
+From ee444a5b89d87fab881e4021933659558dc36c83 Mon Sep 17 00:00:00 2001
+From: ThePuzzlemaker <tpzker@thepuzzlemaker.info>
+Date: Wed, 15 Apr 2026 02:02:54 -0500
+Subject: [PATCH] Use guile2.2
+
+---
+ bootstrap    | 4 ++--
+ configure.ac | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/bootstrap b/bootstrap
+index 092b065..fb7283a 100755
+--- a/bootstrap
++++ b/bootstrap
+@@ -11,9 +11,9 @@ datadir=${XDG_DATA_HOME:-~/.local/share}
+ mkdir -p "$datadir"/akku/keys.d
+ cp akku-archive-*.gpg "$datadir"/akku/keys.d
+ 
+-if ! [ -f "$datadir"/akku/index.db ] && is_executable guile; then
++if ! [ -f "$datadir"/akku/index.db ] && is_executable guile2.2; then
+     echo "Trying to get the index with Guile. Will retry with Chez Scheme if it fails."
+-    .akku/env guile -l "private/r6rs-guile.scm" --no-auto-compile bin/akku.sps update || true
++    .akku/env guile2.2 -l "private/r6rs-guile.scm" --no-auto-compile bin/akku.sps update || true
+ fi
+ 
+ [ -f "$datadir"/akku/index.db ] || .akku/env bin/akku.sps update
+diff --git a/configure.ac b/configure.ac
+index abdf09f..d6f8875 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,7 +8,7 @@ AC_PATH_PROG([GIT], [git], [])
+ AC_PATH_PROG([CURL], [curl], [])
+ dnl AC_SEARCH_LIBS([curl_easy_init], [curl])
+ 
+-GUILE_PKG([3.0 2.2])
++GUILE_PKG([2.2])
+ GUILE_PROGS
+ if test "x$GUILD" = "x"; then
+    AC_MSG_ERROR(['guild' binary not found; please check your guile installation.])
+-- 
+2.53.0
+

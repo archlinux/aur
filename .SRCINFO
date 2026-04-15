@@ -1,0 +1,24 @@
+pkgbase = akku-git
+	pkgdesc = Language package manager for Scheme
+	pkgver = 1.1.0+r345+g5e57de0e1
+	pkgrel = 1
+	url = https://akkuscm.org/
+	arch = any
+	license = GPL3
+	makedepends = pkg-config
+	makedepends = make
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = xz
+	depends = git
+	depends = curl
+	depends = guile2.2
+	provides = akku
+	conflicts = akku
+	options = !strip
+	source = git+https://gitlab.com/akkuscm/akku.git
+	source = 0001-Use-guile2.2.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = akku-git
