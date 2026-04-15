@@ -1,14 +1,18 @@
 pkgbase = tmenu
 	pkgdesc = Minimal X11 menu launcher - dmenu alternative in <250 lines of C
-	pkgver = 0.1
-	pkgrel = 1
+	pkgver = 1.1
+	pkgrel = 2
 	url = https://github.com/tinyopsec/tmenu
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = riscv64
 	license = MIT
 	makedepends = make
 	makedepends = gcc
 	depends = libx11
-	source = tmenu-0.1.tar.gz::https://github.com/tinyopsec/tmenu/archive/main.tar.gz
+	source = tmenu-1.1.tar.gz::https://github.com/tinyopsec/tmenu/archive/main.tar.gz
 	sha256sums = SKIP
 
 pkgname = tmenu

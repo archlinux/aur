@@ -1,10 +1,8 @@
-# Maintainer: tinyopsec <anon@proton.me>
-
 pkgname=tmenu
-pkgver=0.1
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 pkgdesc="Minimal X11 menu launcher - dmenu alternative in <250 lines of C"
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'armv7h' 'i686' 'riscv64')
 url="https://github.com/tinyopsec/tmenu"
 license=('MIT')
 depends=('libx11')
@@ -13,11 +11,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/main.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd tmenu-main
+  cd "$srcdir/tmenu-main"
   make
 }
 
 package() {
-  cd tmenu-main
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  cd "$srcdir/tmenu-main"
+  install -Dm755 tmenu "$pkgdir/usr/bin/tmenu"
 }
