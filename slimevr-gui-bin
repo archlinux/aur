@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/bash
 
 exec -a "$0" electron \
   --require /usr/lib/slimevr/argv-patch.js \
