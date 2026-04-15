@@ -1,8 +1,8 @@
 # Maintainer: orange-guo
-# Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/vibe-kanban-bin
+# Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/vibe-kanban-bin
 pkgname=vibe-kanban-bin
 pkgver=0.1.42
-pkgrel=4
+pkgrel=5
 pkgdesc=Vibe\ Kanban\ -\ AI-powered\ Kanban\ board\ \(Binary\)
 arch=(x86_64 )
 url=https://vibekanban.com
