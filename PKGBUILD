@@ -2,7 +2,7 @@
 # Maintainer: slouowzee <slouowzee@gmail.com>
 
 pkgname='kapi-bin'
-pkgver=1.0.0_beta.5
+pkgver=1.0.0_beta.6
 pkgrel=1
 pkgdesc='A Go-based interactive TUI CLI for project scaffolding'
 url='https://github.com/slouowzee/kapi'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('KAPI')
 conflicts=('KAPI')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/slouowzee/KAPI/releases/download/v1.0.0-beta.5/KAPI_linux_arm64.tar.gz")
-sha256sums_aarch64=('4b2c01747a62f6c36995206159638cb468beeabe40624da3d445c06267b2df70')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/slouowzee/KAPI/releases/download/v1.0.0-beta.6/KAPI_linux_arm64.tar.gz")
+sha256sums_aarch64=('274dcec511b4ba4d61ef5bbfedf77a9acb1fdc8944c742631a6f343603858e74')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/slouowzee/KAPI/releases/download/v1.0.0-beta.5/KAPI_linux_amd64.tar.gz")
-sha256sums_x86_64=('a94be240bf5285168ed5cb047cfa49af527d3da9c3ce2a3118d09c937b84ce29')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/slouowzee/KAPI/releases/download/v1.0.0-beta.6/KAPI_linux_amd64.tar.gz")
+sha256sums_x86_64=('55c6d1108e7c23b705f488594ae238a30bd087b8267d7fabe5b6c8850a838146')
 
 package() {
   install -Dm755 "./kapi" "${pkgdir}/usr/bin/kapi"
