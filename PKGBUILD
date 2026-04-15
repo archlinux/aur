@@ -33,7 +33,7 @@ build() {
 package() {
   cd "$srcdir/Monte-Capcho-$pkgver"
 
-  install -Dm755 target/release/MonteCapcho \
+  install -Dm755 target/release/text-extractor \
     "$pkgdir/usr/bin/MonteCapcho"
 
   install -Dm644 fonts/ocr-icons.toml \
