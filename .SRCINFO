@@ -1,0 +1,18 @@
+pkgbase = maplet-bin
+	pkgdesc = A terminal-native tool that integrates static analysis with dynamic execution tracing for python projects
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/abhinavdevarakonda/maplet
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = maplet
+	conflicts = maplet
+	options = !strip
+	source_x86_64 = maplet-x86_64-0.1.0.tgz::https://github.com/abhinavdevarakonda/maplet/releases/download/v0.1.0/maplet_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 92593bd4d7356da2f769138cbb759d56b8fc4277c481d4076df5207f07fcab6e
+	source_aarch64 = maplet-aarch64-0.1.0.tgz::https://github.com/abhinavdevarakonda/maplet/releases/download/v0.1.0/maplet_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 64fbef7b13b495cb567f8a26586af9356f316c5632b99be1ec9fc6aa1de60463
+
+pkgname = maplet-bin

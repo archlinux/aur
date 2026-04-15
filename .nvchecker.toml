@@ -1,0 +1,5 @@
+[maplet-bin]
+source = "github"
+github = "abhinavdevarakonda/maplet"
+use_latest_release = true
+prefix = "v"
