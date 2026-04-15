@@ -1,6 +1,6 @@
 pkgbase = fastnet-bin
 	pkgdesc = FastNet -- Goal: Make a full-platform speed measurement software! - TUI
-	pkgver = 0.7.5
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://www.koolcenter.com/t/topic/9148
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fastnet-bin
 	conflicts = fastnet
 	options = !debug
 	options = !strip
-	source = https://fw0.koolcenter.com/binary/fastnet/fastnet-binary-0.7.5.tar.gz
-	sha256sums = 15d2beee307af62e8756fa5c4e7e2c2a4c2e381d935102e0927e181de26719a2
+	source = https://fw0.koolcenter.com/binary/fastnet/fastnet-binary-raw-0.7.6.tar.gz
+	sha256sums = 98a4272ea1b086f7ff7ef09e666283f4e37eb6b8c6ede8ba5d4ca87cf5f2b361
 
 pkgname = fastnet-bin
