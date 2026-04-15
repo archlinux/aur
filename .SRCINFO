@@ -1,0 +1,24 @@
+pkgbase = scclient-bin
+	pkgdesc = Prebuilt Linux desktop bundle for scclient
+	pkgver = 1.33.12
+	pkgrel = 1
+	url = https://dl.pbb.dexi009.com/apps/sc/linux.zip
+	arch = x86_64
+	license = custom:unknown
+	depends = gtk3
+	depends = libsecret
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	depends = hicolor-icon-theme
+	optdepends = xdg-utils: open external links from the application
+	provides = scclient=1.33.12
+	conflicts = scclient
+	noextract = linux.zip
+	options = !strip
+	options = !debug
+	source = linux.zip::https://dl.pbb.dexi009.com/apps/sc/linux.zip
+	source = net.scclient.app.desktop
+	sha256sums = 6e1506e6d4ec383c64e8c4517f8f876b1d9966c455a9ad07c2fc16b158196af1
+	sha256sums = 396e5a1c0779d36f94dec79918d135a639b1893b5451a801e5a1c4f52bea7282
+
+pkgname = scclient-bin

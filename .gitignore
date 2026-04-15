@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!LICENSE
+!PKGBUILD
+!net.scclient.app.desktop

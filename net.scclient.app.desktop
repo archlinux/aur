@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=scclient
+Comment=Launch scclient desktop client
+Exec=scclient
+Icon=scclient
+Terminal=false
+StartupNotify=true
+Categories=Network;Utility;
+StartupWMClass=scclient
