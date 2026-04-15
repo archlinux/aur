@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Rotki
+Comment=A portfolio tracking, analytics, accounting and management application that protects your privacy
+Exec=rotki
+Icon=rotki
+Terminal=false
+StartupNotify=false
+Categories=Finance;Office;Utility;
