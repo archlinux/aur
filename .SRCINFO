@@ -1,12 +1,12 @@
 pkgbase = turso-cli
 	pkgdesc = Command line interface to Turso.
-	pkgver = 1.0.19
+	pkgver = 1.0.20
 	pkgrel = 1
 	url = https://github.com/tursodatabase/turso-cli
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = turso-cli-1.0.19.tar.gz::https://github.com/tursodatabase/turso-cli/archive/refs/tags/v1.0.19.tar.gz
-	sha256sums = c76d2bef5db80f5593a450a172b66948f4a11a2edd7c9bd35be2c24e085016d3
+	source = turso-cli-1.0.20.tar.gz::https://github.com/tursodatabase/turso-cli/archive/refs/tags/v1.0.20.tar.gz
+	sha256sums = 581ac5429c5cfef44346d4e3bfd7e18ba4d3a729b8bf7fb1b4e57b44d1bab816
 
 pkgname = turso-cli
