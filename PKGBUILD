@@ -3,7 +3,7 @@
 # Contributor: Peter Kurfer <peter.kurfer@gmail.com>
 
 pkgname='git-age-bin'
-pkgver=0.2.4
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='git-age is a smudge/clean filter to encrypt/decrypt files in a git repository transparently
 '
@@ -14,11 +14,11 @@ provides=('git-age')
 conflicts=('git-age')
 optdepends=('git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/prskr/git-age/releases/download/v0.2.4/git-age_Linux_arm64.tar.gz")
-sha256sums_aarch64=('35dc1fd4f59e992432c43710e1cc4a4c20cb216f2f91757c2db9df7a133badf0')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/prskr/git-age/releases/download/v${pkgver}/git-age_Linux_arm64.tar.gz")
+sha256sums_aarch64=('0485ef9a7ec6768c10f87c7f2b4cb12e7218d83d5c2e16014f3fddb02116b0a2')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/prskr/git-age/releases/download/v0.2.4/git-age_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('477c3cac49be1f1eabad2bbdf49eececffd7f64a3a20ccfbce057894c7542a98')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/prskr/git-age/releases/download/v${pkgver}/git-age_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('f782d540ea80c86fef123ad8aeca042efbf5d44c5ab0909313b7f62d27ba385d')
 
 package() {
   # bin
