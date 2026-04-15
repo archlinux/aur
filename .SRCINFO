@@ -1,8 +1,9 @@
 pkgbase = caelestia-cli-git
 	pkgdesc = The main cli for the Caelestia dotfiles
-	pkgver = 1.0.0.r0.g54f7611
+	pkgver = 1.0.7.r0.g5f1d008
 	pkgrel = 1
 	url = https://github.com/caelestia-dots/cli
+	install = message.install
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git

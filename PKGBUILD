@@ -3,7 +3,7 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-cli-git'
-pkgver=1.0.0.r0.g54f7611
+pkgver=1.0.7.r0.g5f1d008
 pkgrel=1
 pkgdesc='The main cli for the Caelestia dotfiles'
 arch=('any')
@@ -17,6 +17,7 @@ provides=('caelestia-cli')
 conflicts=('caelestia-cli')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
+install=message.install
 
 prepare() {
 	git -C "${srcdir}/${pkgname}" clean -dfx

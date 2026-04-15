@@ -1,0 +1,7 @@
+post_install() {
+	echo '=> Some applications require root privileges to theme.'
+	echo '=> These must be enabled manually by following the instructions in https://github.com/caelestia-dots/cli?tab=readme-ov-file#additional-steps'
+	echo '=> The applications in question are:'
+	echo '=>   - papirus-folders (for folder colour theming)'
+	echo '=>   - chromium-based browsers'
+}
