@@ -1,0 +1,13 @@
+#!/bin/sh
+
+post_install() {
+  echo ""
+  echo "This binary provides a PS1 function implementation written in C++, usefull for developers."
+  echo ""
+  echo "Edit your ~/.bashrc and add the following line"
+  echo "    source <(/usr/bin/cpp-ps1 --source)"
+  echo ""
+}
+post_upgrade() {
+  post_install
+}
