@@ -1,7 +1,7 @@
 # Maintainer: Tuure Piitulainen <tuure.piitulainen@gmail.com>
 
 pkgname="vivify"
-pkgver="0.13.0"
+pkgver="0.14.0"
 pkgrel=1
 pkgdesc="Markdown preview tool which can be used standalone or plug into an editor like (Neo)Vim"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("GPL-3.0-or-later")
 depends=("gcc-libs" "sh")
 makedepends=("yarn" "nvm" "zip")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("63e2a171fcebe3e92faa64b936faacb403b2f7be6ca7ba78b7b156b447f83366")
+sha256sums=("dde3fe5f14ee76d9012c920d3549ac55085aff809c1b54a151bf34156d4353d7")
 
 # Stripping 'unneeded symbols' causes vivify-server executable to break
 # (segmentation fault)
@@ -24,7 +24,7 @@ _ensure_local_nvm() {
 }
 
 build() {
-	cd "Vivify-${pkgver}"
+        cd "Vivify-${pkgver}"
 
         # This package uses Node SEA, which is alpha and experimental
         # https://nodejs.org/api/single-executable-applications.html
@@ -38,7 +38,7 @@ build() {
 }
 
 package() {
-	cd "Vivify-${pkgver}"
+        cd "Vivify-${pkgver}"
 
         install -Dm755 ./build/linux/viv           "${pkgdir}/usr/bin/viv"
         install -Dm755 ./build/linux/vivify-server "${pkgdir}/usr/bin/vivify-server"
