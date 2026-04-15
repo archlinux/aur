@@ -1,0 +1,21 @@
+[Desktop Entry]
+Type=Application
+Name=Desktop Item Manager
+Name[ru]=Менеджер ярлыков
+Name[uk]=Менеджер ярликів
+Name[de]=Desktop-Starter-Manager
+Name[fr]=Gestionnaire de raccourcis bureau
+Name[es]=Gestor de elementos de escritorio
+Name[it]=Gestore delle voci desktop
+Comment=Browse, launch, and edit desktop entries
+Comment[ru]=Просмотр, запуск и редактирование ярлыков
+Comment[uk]=Перегляд, запуск та редагування ярликів
+Comment[de]=Desktop-Starter durchsuchen, starten und bearbeiten
+Comment[fr]=Parcourir, lancer et modifier des entrées desktop
+Comment[es]=Navegar, lanzar y editar entradas de escritorio
+Comment[it]=Sfoglia, avvia e modifica le voci desktop
+Icon=preferences-desktop
+Exec=desktop-item-manager
+Terminal=false
+StartupNotify=true
+Categories=GTK;Settings;Utility;

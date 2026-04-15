@@ -1,0 +1,1563 @@
+--- a/gnome-panel/gnome-desktop-item-edit.c
++++ b/gnome-panel/gnome-desktop-item-edit.c
+@@ -24,7 +24,7 @@
+ static char **desktops = NULL;
+ 
+ static GOptionEntry options[] = {
+-	{ "create-new", 0, 0, G_OPTION_ARG_NONE, &create_new, N_("Create new file in the given directory"), NULL },
++	{ "create-new", 0, 0, G_OPTION_ARG_NONE, &create_new, N_("Create a new launcher (use PATH or choose Desktop/Autostart)"), NULL },
+ 	{ G_OPTION_REMAINING, 0, 0, G_OPTION_ARG_FILENAME_ARRAY, &desktops, NULL, N_("[FILE...]") },
+ 	{ NULL }
+ };
+@@ -38,19 +38,53 @@
+ 		gtk_main_quit ();
+ }
+ 
+-static void
+-validate_for_filename (char *file)
++static char *
++sanitize_name_for_filename (const char *name)
+ {
+-	char *ptr;
++	char     *ascii;
++	char     *result;
++	char     *timestamp;
++	GString  *slug;
++	int       i;
++
++	ascii = g_str_to_ascii (name ? name : "", NULL);
++	slug = g_string_new (NULL);
++
++	for (i = 0; ascii[i] != '\0'; i++) {
++		char c = g_ascii_tolower (ascii[i]);
++
++		if (g_ascii_isalnum (c)) {
++			g_string_append_c (slug, c);
++		} else if (c == '-' || c == '_') {
++			if (slug->len > 0 && slug->str[slug->len - 1] != '-')
++				g_string_append_c (slug, '-');
++		} else if (g_ascii_isspace (c) || c == '.' || c == '+' || c == ':') {
++			if (slug->len > 0 && slug->str[slug->len - 1] != '-')
++				g_string_append_c (slug, '-');
++		}
++	}
++
++	while (slug->len > 0 && slug->str[slug->len - 1] == '-')
++		g_string_truncate (slug, slug->len - 1);
++
++	if (slug->len == 0) {
++		GDateTime *now;
+ 
+-	g_return_if_fail (file != NULL);
+-	
+-	ptr = file;
+-	while (*ptr != '\0') {
+-		if (*ptr == '/')
+-			*ptr = '_';
+-		ptr++;
++		now = g_date_time_new_now_local ();
++		timestamp = g_date_time_format (now, "%Y%m%d-%H%M%S");
++		g_date_time_unref (now);
++		result = g_strdup_printf ("launcher-%s", timestamp);
++		g_free (timestamp);
++	} else {
++		result = g_string_free (slug, FALSE);
++		slug = NULL;
+ 	}
++
++	g_free (ascii);
++	if (slug != NULL)
++		g_string_free (slug, TRUE);
++
++	return result;
+ }
+ 
+ static char *
+@@ -60,18 +94,19 @@
+ 	GKeyFile *keyfile;
+ 	char     *name;
+ 	char     *filename;
++	char     *sanitized;
+ 	char     *uri;
+ 	char     *dir;
+ 
+ 	keyfile = panel_ditem_editor_get_key_file (dialog);
+ 	name = panel_key_file_get_string (keyfile, "Name");
+-
+-	validate_for_filename (name);
+-	filename = g_filename_from_utf8 (name, -1, NULL, NULL, NULL);
++	sanitized = sanitize_name_for_filename (name);
++	filename = g_filename_from_utf8 (sanitized, -1, NULL, NULL, NULL);
++	g_free (sanitized);
+ 	g_free (name);
+ 
+ 	if (filename == NULL)
+-		filename = g_strdup ("foo");
++		filename = g_strdup ("launcher");
+ 
+ 	dir = g_object_get_data (G_OBJECT (dialog), "dir");
+ 	uri = panel_make_unique_desktop_path_from_name (dir, filename);
+@@ -114,9 +149,30 @@
+ 
+ 	gtk_window_set_default_icon_name (PANEL_ICON_LAUNCHER);
+ 
++	if (desktops && desktops[0] && desktops[1] == NULL &&
++	    (!strcmp (desktops[0], "%f") || !strcmp (desktops[0], "%u") ||
++	     !strcmp (desktops[0], "%F") || !strcmp (desktops[0], "%U")))
++		desktops = NULL;
++
+ 	if (desktops == NULL ||
+ 	    desktops[0] == NULL) {
+-		g_printerr ("gnome-desktop-item-edit: no file to edit\n");
++		GtkWidget *dlg;
++
++		dlg = g_object_new (PANEL_TYPE_DITEM_EDITOR,
++				    "title", _("Create Launcher"),
++				    "show-create-path-selector", TRUE,
++				    NULL);
++		panel_ditem_register_save_uri_func (PANEL_DITEM_EDITOR (dlg),
++					    find_uri_on_save,
++					    NULL);
++
++		dialogs ++;
++		g_signal_connect (G_OBJECT (dlg), "destroy",
++				  G_CALLBACK (dialog_destroyed), NULL);
++		g_signal_connect (G_OBJECT (dlg), "error_reported",
++				  G_CALLBACK (error_reported), NULL);
++		gtk_widget_show (dlg);
++		gtk_main ();
+ 		return 0;
+ 	}
+ 
+--- a/gnome-panel/panel-ditem-editor.h
++++ b/gnome-panel/panel-ditem-editor.h
+@@ -102,8 +102,11 @@
+ const char *panel_ditem_editor_get_uri (PanelDItemEditor *dialog);
+ 
+ void panel_ditem_register_save_uri_func (PanelDItemEditor  *dialog,
+-					 PanelDitemSaveUri  save_uri,
+-					 gpointer           data);
++				 PanelDitemSaveUri  save_uri,
++				 gpointer           data);
++
++void panel_ditem_editor_set_show_create_path_selector (PanelDItemEditor *dialog,
++						       gboolean          show);
+ 
+ G_END_DECLS
+ 
+--- a/gnome-panel/panel-ditem-editor.c
++++ b/gnome-panel/panel-ditem-editor.c
+@@ -24,8 +24,11 @@
+ #include <config.h>
+ 
+ #include <string.h>
++#include <errno.h>
++#include <unistd.h>
+ 
+ #include <glib/gi18n.h>
++#include <glib/gstdio.h>
+ #include <gio/gio.h>
+ #include <gtk/gtk.h>
+ 
+@@ -60,10 +63,14 @@
+ 	gpointer          save_uri_data;
+ 
+ 	GtkWidget *grid;
++	GtkWidget *path_label;
++	GtkWidget *path_combo;
+ 	GtkWidget *type_label;
+ 	GtkWidget *type_combo;
+ 	GtkWidget *name_label;
+ 	GtkWidget *name_entry;
++	GtkWidget *name_localized_label;
++	GtkWidget *name_localized_entry;
+ 	GtkWidget *command_hbox;
+ 	GtkWidget *command_label;
+ 	GtkWidget *command_entry;
+@@ -71,12 +78,20 @@
+ 	GtkWidget *command_browse_filechooser;
+ 	GtkWidget *comment_label;
+ 	GtkWidget *comment_entry;
++	GtkWidget *comment_localized_label;
++	GtkWidget *comment_localized_entry;
++	GtkWidget *categories_label;
++	GtkWidget *categories_combo;
+ 	GtkWidget *icon_chooser;
++	GtkWidget *edit_button;
+ 
+ 	GtkWidget *revert_button;
+ 	GtkWidget *close_button;
+ 	GtkWidget *cancel_button;
+ 	GtkWidget *ok_button;
++
++	gboolean   show_create_path_selector;
++	GFileMonitor *file_monitor;
+ };
+ 
+ /* Time in seconds after which we save the file on the disk */
+@@ -119,6 +134,22 @@
+ 	  PANEL_DITEM_EDITOR_TYPE_DIRECTORY            }
+ };
+ 
++static const char *standard_categories[] = {
++	"AudioVideo;",
++	"Audio;",
++	"Video;",
++	"Development;",
++	"Education;",
++	"Game;",
++	"Graphics;",
++	"Network;",
++	"Office;",
++	"Science;",
++	"Settings;",
++	"System;",
++	"Utility;"
++};
++
+ typedef struct {
+ 	const char *key;
+ 	GType       type;
+@@ -131,8 +162,8 @@
+ 	{ "Terminal", G_TYPE_BOOLEAN, FALSE, FALSE },
+ 	{ "Exec",     G_TYPE_STRING,  FALSE, FALSE },
+ 	{ "URL",      G_TYPE_STRING,  FALSE, FALSE },
++	{ "Categories", G_TYPE_STRING,  FALSE, FALSE },
+ 	/* locale keys */
+-	{ "Icon",     G_TYPE_STRING,  FALSE, TRUE  },
+ 	{ "Name",     G_TYPE_STRING,  FALSE, TRUE  },
+ 	{ "Comment",  G_TYPE_STRING,  FALSE, TRUE  },
+ 	{ "X-GNOME-FullName", G_TYPE_STRING,  FALSE, TRUE  },
+@@ -158,7 +189,8 @@
+ 	PROP_0,
+ 	PROP_KEYFILE,
+ 	PROP_URI,
+-	PROP_TYPEDIRECTORY
++	PROP_TYPEDIRECTORY,
++	PROP_SHOW_CREATE_PATH_SELECTOR
+ };
+ 
+ static guint ditem_edit_signals[LAST_SIGNAL] = { 0 };
+@@ -170,6 +202,10 @@
+ static void panel_ditem_editor_setup_ui (PanelDItemEditor *dialog);
+ 
+ static void type_combo_changed (PanelDItemEditor *dialog);
++static void panel_ditem_editor_name_localized_changed (PanelDItemEditor *dialog);
++static void panel_ditem_editor_comment_localized_changed (PanelDItemEditor *dialog);
++static void panel_ditem_editor_categories_changed (PanelDItemEditor *dialog);
++static void panel_ditem_editor_path_changed (PanelDItemEditor *dialog);
+ 
+ static void response_cb (GtkDialog *dialog,
+ 			 gint       response_id);
+@@ -178,9 +214,19 @@
+ 			        const char       *icon_name);
+ 
+ static gboolean panel_ditem_editor_save         (PanelDItemEditor *dialog,
+-						 gboolean          report_errors);
++					 gboolean          report_errors);
+ static gboolean panel_ditem_editor_save_timeout (gpointer data);
+ static void panel_ditem_editor_revert (PanelDItemEditor *dialog);
++static gboolean panel_ditem_editor_validate_desktop_item (GKeyFile *key_file,
++						   char    **message);
++static char *panel_ditem_editor_get_system_lang (void);
++static void panel_ditem_editor_set_localized_value_for_lang (GKeyFile    *key_file,
++						      const char *key,
++						      const char *lang,
++						      const char *value);
++static char *panel_ditem_editor_get_localized_value_for_lang (GKeyFile    *key_file,
++						       const char *key,
++						       const char *lang);
+ 
+ static void panel_ditem_editor_key_file_loaded (PanelDItemEditor  *dialog);
+ static gboolean panel_ditem_editor_load_uri (PanelDItemEditor  *dialog,
+@@ -192,6 +238,16 @@
+ static gboolean panel_ditem_editor_get_type_directory (PanelDItemEditor *dialog);
+ static void panel_ditem_editor_set_type_directory (PanelDItemEditor *dialog,
+ 						   gboolean          type_directory);
++static GtkWidget *panel_ditem_editor_get_categories_entry (PanelDItemEditor *dialog);
++static char *panel_ditem_editor_get_selected_create_path (PanelDItemEditor *dialog);
++static void panel_ditem_editor_update_create_dir (PanelDItemEditor *dialog);
++static void panel_ditem_editor_update_edit_button (PanelDItemEditor *dialog);
++static void panel_ditem_editor_file_changed_cb (GFileMonitor      *monitor,
++					       GFile             *file,
++					       GFile             *other_file,
++					       GFileMonitorEvent  event_type,
++					       PanelDItemEditor  *dialog);
++static void panel_ditem_editor_edit_button_clicked (PanelDItemEditor *dialog);
+ 
+ 
+ static PanelDItemEditorType
+@@ -267,6 +323,7 @@
+ 	g_free (desktop_type);
+ 
+ 	panel_ditem_editor_setup_ui (dialog);
++	panel_ditem_editor_update_create_dir (dialog);
+ 
+ 	if (dialog->priv->new_file)
+ 		setup_icon_chooser (dialog, NULL);
+@@ -296,6 +353,9 @@
+ 	case PROP_TYPEDIRECTORY:
+ 		g_value_set_boolean (value, panel_ditem_editor_get_type_directory (dialog));
+ 		break;
++	case PROP_SHOW_CREATE_PATH_SELECTOR:
++		g_value_set_boolean (value, dialog->priv->show_create_path_selector);
++		break;
+ 	default:
+ 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+ 		break;
+@@ -325,7 +385,10 @@
+ 		break;
+ 	case PROP_TYPEDIRECTORY:
+ 		panel_ditem_editor_set_type_directory (dialog,
+-						       g_value_get_boolean (value));
++					       g_value_get_boolean (value));
++		break;
++	case PROP_SHOW_CREATE_PATH_SELECTOR:
++		dialog->priv->show_create_path_selector = g_value_get_boolean (value);
+ 		break;
+ 	default:
+ 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+@@ -358,6 +421,12 @@
+ 		g_key_file_free (dialog->priv->revert_key_file);
+ 	dialog->priv->revert_key_file = NULL;
+ 
++	if (dialog->priv->file_monitor != NULL) {
++		g_file_monitor_cancel (dialog->priv->file_monitor);
++		g_object_unref (dialog->priv->file_monitor);
++		dialog->priv->file_monitor = NULL;
++	}
++
+ 	if (dialog->priv->uri != NULL)
+ 		g_free (dialog->priv->uri);
+ 	dialog->priv->uri = NULL;
+@@ -485,6 +554,15 @@
+ 				      "Whether the edited file is a .directory file or not",
+ 				      FALSE,
+ 				      G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
++
++	g_object_class_install_property (
++		gobject_class,
++		PROP_SHOW_CREATE_PATH_SELECTOR,
++		g_param_spec_boolean ("show-create-path-selector",
++				      "Show Create Path Selector",
++				      "Whether to show path selector for create mode",
++				      FALSE,
++				      G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+ }
+ 
+ static GtkWidget *
+@@ -576,11 +654,138 @@
+ 	return type;
+ }
+ 
++static GtkWidget *
++panel_ditem_editor_get_categories_entry (PanelDItemEditor *dialog)
++{
++	return gtk_bin_get_child (GTK_BIN (dialog->priv->categories_combo));
++}
++
++static char *
++panel_ditem_editor_get_selected_create_path (PanelDItemEditor *dialog)
++{
++	const char *id;
++
++	id = gtk_combo_box_get_active_id (GTK_COMBO_BOX (dialog->priv->path_combo));
++	if (id != NULL && strcmp (id, "autostart") == 0)
++		return g_build_filename (g_get_user_config_dir (), "autostart", NULL);
++
++	if (g_get_user_special_dir (G_USER_DIRECTORY_DESKTOP) != NULL)
++		return g_strdup (g_get_user_special_dir (G_USER_DIRECTORY_DESKTOP));
++
++	return g_build_filename (g_get_home_dir (), "Desktop", NULL);
++}
++
++static void
++panel_ditem_editor_update_create_dir (PanelDItemEditor *dialog)
++{
++	char *dir;
++
++	if (!dialog->priv->show_create_path_selector)
++		return;
++
++	dir = panel_ditem_editor_get_selected_create_path (dialog);
++	g_object_set_data_full (G_OBJECT (dialog), "dir", dir, (GDestroyNotify) g_free);
++}
++
++static void
++panel_ditem_editor_update_edit_button (PanelDItemEditor *dialog)
++{
++	if (dialog->priv->edit_button == NULL)
++		return;
++
++	gtk_widget_set_sensitive (dialog->priv->edit_button,
++				  dialog->priv->uri != NULL && dialog->priv->uri[0] != '\0');
++}
++
++static void
++panel_ditem_editor_file_changed_cb (GFileMonitor      *monitor,
++				    GFile             *file,
++				    GFile             *other_file,
++				    GFileMonitorEvent  event_type,
++				    PanelDItemEditor  *dialog)
++{
++	if (event_type != G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT)
++		return;
++
++	panel_ditem_editor_load_uri (dialog, NULL);
++}
++
++static void
++panel_ditem_editor_edit_button_clicked (PanelDItemEditor *dialog)
++{
++	GAppInfo *app;
++	GError   *error;
++	GFile    *file;
++	GList    *files;
++	gboolean  launched;
++
++	if (dialog->priv->uri == NULL || dialog->priv->uri[0] == '\0')
++		return;
++
++	error = NULL;
++	launched = FALSE;
++	app = g_app_info_get_default_for_type ("text/plain", FALSE);
++
++	if (app != NULL) {
++		file = g_file_new_for_uri (dialog->priv->uri);
++		files = g_list_append (NULL, file);
++		launched = g_app_info_launch (app, files, NULL, &error);
++		g_list_free (files);
++		g_object_unref (file);
++		g_object_unref (app);
++	}
++
++	if (!launched)
++		launched = g_app_info_launch_default_for_uri (dialog->priv->uri,
++						      NULL,
++						      &error);
++
++	if (!launched && error != NULL) {
++		g_signal_emit (G_OBJECT (dialog),
++			       ditem_edit_signals[ERROR_REPORTED], 0,
++			       _("Could not open launcher in editor"),
++			       error->message);
++		g_error_free (error);
++	}
++
++	/* Cancel existing monitor before creating a new one */
++	if (dialog->priv->file_monitor != NULL) {
++		g_file_monitor_cancel (dialog->priv->file_monitor);
++		g_object_unref (dialog->priv->file_monitor);
++		dialog->priv->file_monitor = NULL;
++	}
++
++	/* Set up file monitor to reload after external edit */
++	if (dialog->priv->uri != NULL) {
++		GFile *gfile;
++
++		gfile = g_file_new_for_uri (dialog->priv->uri);
++		dialog->priv->file_monitor = g_file_monitor_file (gfile,
++								  G_FILE_MONITOR_NONE,
++								  NULL, NULL);
++		if (dialog->priv->file_monitor != NULL)
++			g_signal_connect (dialog->priv->file_monitor, "changed",
++					  G_CALLBACK (panel_ditem_editor_file_changed_cb),
++					  dialog);
++		g_object_unref (gfile);
++	}
++}
++
+ static void
+ panel_ditem_editor_make_ui (PanelDItemEditor *dialog)
+ {
+ 	PanelDItemEditorPrivate *priv;
+ 	GtkWidget *dialog_vbox;
++	GtkWidget *action_area;
++	GtkWidget *edit_image;
++	char      *desktop_path;
++	char      *autostart_path;
++	char      *desktop_label;
++	char      *autostart_label;
++	char      *system_lang;
++	char      *name_localized_label;
++	char      *comment_localized_label;
++	int        i;
+ 
+ 	priv = dialog->priv;
+ 
+@@ -596,6 +801,26 @@
+ 	gtk_box_pack_start (GTK_BOX (dialog_vbox), priv->grid, TRUE, TRUE, 0);
+ 	gtk_widget_show (priv->grid);
+ 
++	/* Path */
++	priv->path_label = label_new_with_mnemonic (_("_Path:"));
++	priv->path_combo = gtk_combo_box_text_new ();
++	desktop_path = panel_ditem_editor_get_selected_create_path (dialog);
++	autostart_path = g_build_filename (g_get_user_config_dir (), "autostart", NULL);
++	desktop_label = g_strdup_printf (_("Desktop (%s)"), desktop_path);
++	autostart_label = g_strdup_printf (_("Autostart (%s)"), autostart_path);
++	gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (priv->path_combo),
++				   "desktop", desktop_label);
++	gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (priv->path_combo),
++				   "autostart", autostart_label);
++	gtk_combo_box_set_active_id (GTK_COMBO_BOX (priv->path_combo), "desktop");
++	gtk_widget_show (priv->path_combo);
++	gtk_label_set_mnemonic_widget (GTK_LABEL (priv->path_label),
++				       priv->path_combo);
++	g_free (desktop_path);
++	g_free (autostart_path);
++	g_free (desktop_label);
++	g_free (autostart_label);
++
+ 	/* Type */
+ 	priv->type_label = label_new_with_mnemonic (_("_Type:"));
+ 	priv->type_combo = gtk_combo_box_new ();
+@@ -603,6 +828,10 @@
+ 	gtk_label_set_mnemonic_widget (GTK_LABEL (priv->type_label),
+ 				       priv->type_combo);
+ 
++	system_lang = panel_ditem_editor_get_system_lang ();
++	name_localized_label = g_strdup_printf (_("Name [%s]:"), system_lang);
++	comment_localized_label = g_strdup_printf (_("Comment [%s]:"), system_lang);
++
+ 	/* Name */
+ 	priv->name_label = label_new_with_mnemonic (_("_Name:"));
+ 	priv->name_entry = gtk_entry_new ();
+@@ -610,10 +839,17 @@
+ 	gtk_label_set_mnemonic_widget (GTK_LABEL (priv->name_label),
+ 				       priv->name_entry);
+ 
++	/* Localized Name */
++	priv->name_localized_label = label_new_with_mnemonic (name_localized_label);
++	priv->name_localized_entry = gtk_entry_new ();
++	gtk_widget_show (priv->name_localized_entry);
++	gtk_label_set_mnemonic_widget (GTK_LABEL (priv->name_localized_label),
++				       priv->name_localized_entry);
++
+ 	/* Icon */
+ 	priv->icon_chooser = panel_icon_chooser_new (NULL);
+ 	panel_icon_chooser_set_fallback_icon_name (PANEL_ICON_CHOOSER (priv->icon_chooser),
+-						   PANEL_ICON_LAUNCHER);
++					   PANEL_ICON_LAUNCHER);
+ 	gtk_grid_attach (GTK_GRID (priv->grid), priv->icon_chooser, 0, 0, 1, 2);
+ 	gtk_widget_show (priv->icon_chooser);
+ 
+@@ -642,21 +878,54 @@
+ 	gtk_label_set_mnemonic_widget (GTK_LABEL (priv->comment_label),
+ 				       priv->comment_entry);
+ 
++	/* Localized Comment */
++	priv->comment_localized_label = label_new_with_mnemonic (comment_localized_label);
++	priv->comment_localized_entry = gtk_entry_new ();
++	gtk_widget_show (priv->comment_localized_entry);
++	gtk_label_set_mnemonic_widget (GTK_LABEL (priv->comment_localized_label),
++				       priv->comment_localized_entry);
++
++	/* Categories */
++	priv->categories_label = label_new_with_mnemonic (_("Cate_gories:"));
++	priv->categories_combo = gtk_combo_box_text_new_with_entry ();
++	for (i = 0; i < G_N_ELEMENTS (standard_categories); i++)
++		gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (priv->categories_combo),
++						standard_categories[i]);
++	gtk_widget_show (priv->categories_combo);
++	gtk_label_set_mnemonic_widget (GTK_LABEL (priv->categories_label),
++				       panel_ditem_editor_get_categories_entry (dialog));
++
++	g_free (system_lang);
++	g_free (name_localized_label);
++	g_free (comment_localized_label);
++
+ 	priv->revert_button = gtk_dialog_add_button (GTK_DIALOG (dialog),
+-						     _("_Revert"),
++						     _("_Отмена"),
+ 						     REVERT_BUTTON);
+ 	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+ 					   REVERT_BUTTON,
+ 					   FALSE);
+ 	priv->close_button = gtk_dialog_add_button (GTK_DIALOG (dialog),
+-						    _("_Close"),
++						    _("_Ok"),
+ 						    GTK_RESPONSE_CLOSE);
+ 	priv->cancel_button = gtk_dialog_add_button (GTK_DIALOG (dialog),
+ 						     _("_Cancel"),
+ 						     GTK_RESPONSE_CANCEL);
+ 	priv->ok_button = gtk_dialog_add_button (GTK_DIALOG (dialog),
+-						 _("_OK"),
+-						 GTK_RESPONSE_OK);
++					 _("_OK"),
++					 GTK_RESPONSE_OK);
++
++	priv->edit_button = gtk_button_new_with_mnemonic (_("_Edit"));
++	edit_image = gtk_image_new_from_icon_name ("gtk-edit", GTK_ICON_SIZE_BUTTON);
++	gtk_button_set_image (GTK_BUTTON (priv->edit_button), edit_image);
++	gtk_button_set_always_show_image (GTK_BUTTON (priv->edit_button), TRUE);
++
++	action_area = gtk_dialog_get_action_area (GTK_DIALOG (dialog));
++	gtk_box_pack_start (GTK_BOX (action_area), priv->edit_button, FALSE, FALSE, 0);
++	gtk_box_reorder_child (GTK_BOX (action_area), priv->edit_button, 0);
++	gtk_widget_show (priv->edit_button);
++	gtk_widget_set_tooltip_text (priv->edit_button,
++				     _("Open in a text editor"));
+ 
+ 	/* FIXME: There needs to be a way to edit ALL keys/sections */
+ }
+@@ -708,17 +977,36 @@
+ 		GtkTreeModel         *model;
+ 		PanelDItemEditorType  buf_type;
+ 
+-		grid_attach_label (GTK_GRID (priv->grid), priv->type_label, 1, 0, 1, 1);
+-		grid_attach_entry (GTK_GRID (priv->grid), priv->type_combo, 2, 0, 1, 1);
++		if (priv->show_create_path_selector) {
++			grid_attach_label (GTK_GRID (priv->grid), priv->path_label, 1, 0, 1, 1);
++			grid_attach_entry (GTK_GRID (priv->grid), priv->path_combo, 2, 0, 1, 1);
++			gtk_widget_show (priv->path_label);
++			gtk_widget_show (priv->path_combo);
++		} else {
++			gtk_widget_hide (priv->path_label);
++			gtk_widget_hide (priv->path_combo);
++		}
++
++		grid_attach_label (GTK_GRID (priv->grid), priv->type_label, 1, 1, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->type_combo, 2, 1, 1, 1);
+ 
+-		grid_attach_label (GTK_GRID (priv->grid), priv->name_label, 1, 1, 1, 1);
+-		grid_attach_entry (GTK_GRID (priv->grid), priv->name_entry, 2, 1, 1, 1);
++		grid_attach_label (GTK_GRID (priv->grid), priv->name_label, 1, 2, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->name_entry, 2, 2, 1, 1);
+ 
+-		grid_attach_label (GTK_GRID (priv->grid), priv->command_label, 1, 2, 1, 1);
+-		grid_attach_entry (GTK_GRID (priv->grid), priv->command_hbox, 2, 2, 1, 1);
++		grid_attach_label (GTK_GRID (priv->grid), priv->name_localized_label, 1, 3, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->name_localized_entry, 2, 3, 1, 1);
+ 
+-		grid_attach_label (GTK_GRID (priv->grid), priv->comment_label, 1, 3, 1, 1);
+-		grid_attach_entry (GTK_GRID (priv->grid), priv->comment_entry, 2, 3, 1, 1);
++		grid_attach_label (GTK_GRID (priv->grid), priv->command_label, 1, 4, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->command_hbox, 2, 4, 1, 1);
++
++		grid_attach_label (GTK_GRID (priv->grid), priv->comment_label, 1, 5, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->comment_entry, 2, 5, 1, 1);
++
++		grid_attach_label (GTK_GRID (priv->grid), priv->comment_localized_label, 1, 6, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->comment_localized_entry, 2, 6, 1, 1);
++
++		grid_attach_label (GTK_GRID (priv->grid), priv->categories_label, 1, 7, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->categories_combo, 2, 7, 1, 1);
+ 
+ 		/* FIXME: hack hack hack */
+ 		model = gtk_combo_box_get_model (GTK_COMBO_BOX (priv->type_combo));
+@@ -734,20 +1022,58 @@
+ 			}
+ 		} while (gtk_tree_model_iter_next (model, &iter));
+ 	} else if (type == PANEL_DITEM_EDITOR_TYPE_DIRECTORY) {
+-		grid_attach_label (GTK_GRID (priv->grid), priv->name_label, 1, 0, 1, 1);
+-		grid_attach_entry (GTK_GRID (priv->grid), priv->name_entry, 2, 0, 1, 1);
++		if (priv->show_create_path_selector) {
++			grid_attach_label (GTK_GRID (priv->grid), priv->path_label, 1, 0, 1, 1);
++			grid_attach_entry (GTK_GRID (priv->grid), priv->path_combo, 2, 0, 1, 1);
++			gtk_widget_show (priv->path_label);
++			gtk_widget_show (priv->path_combo);
++		} else {
++			gtk_widget_hide (priv->path_label);
++			gtk_widget_hide (priv->path_combo);
++		}
++
++		grid_attach_label (GTK_GRID (priv->grid), priv->name_label, 1, 1, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->name_entry, 2, 1, 1, 1);
++
++		grid_attach_label (GTK_GRID (priv->grid), priv->name_localized_label, 1, 2, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->name_localized_entry, 2, 2, 1, 1);
++
++		grid_attach_label (GTK_GRID (priv->grid), priv->comment_label, 1, 3, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->comment_entry, 2, 3, 1, 1);
++
++		grid_attach_label (GTK_GRID (priv->grid), priv->comment_localized_label, 1, 4, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->comment_localized_entry, 2, 4, 1, 1);
+ 
+-		grid_attach_label (GTK_GRID (priv->grid), priv->comment_label, 1, 1, 1, 1);
+-		grid_attach_entry (GTK_GRID (priv->grid), priv->comment_entry, 2, 1, 1, 1);
++		gtk_widget_hide (priv->categories_label);
++		gtk_widget_hide (priv->categories_combo);
+ 	} else {
+-		grid_attach_label (GTK_GRID (priv->grid), priv->name_label, 1, 0, 1, 1);
+-		grid_attach_entry (GTK_GRID (priv->grid), priv->name_entry, 2, 0, 1, 1);
++		if (priv->show_create_path_selector) {
++			grid_attach_label (GTK_GRID (priv->grid), priv->path_label, 1, 0, 1, 1);
++			grid_attach_entry (GTK_GRID (priv->grid), priv->path_combo, 2, 0, 1, 1);
++			gtk_widget_show (priv->path_label);
++			gtk_widget_show (priv->path_combo);
++		} else {
++			gtk_widget_hide (priv->path_label);
++			gtk_widget_hide (priv->path_combo);
++		}
++
++		grid_attach_label (GTK_GRID (priv->grid), priv->name_label, 1, 1, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->name_entry, 2, 1, 1, 1);
++
++		grid_attach_label (GTK_GRID (priv->grid), priv->name_localized_label, 1, 2, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->name_localized_entry, 2, 2, 1, 1);
+ 
+-		grid_attach_label (GTK_GRID (priv->grid), priv->command_label, 1, 1, 1, 1);
+-		grid_attach_entry (GTK_GRID (priv->grid), priv->command_hbox, 2, 1, 1, 1);
++		grid_attach_label (GTK_GRID (priv->grid), priv->command_label, 1, 3, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->command_hbox, 2, 3, 1, 1);
+ 
+-		grid_attach_label (GTK_GRID (priv->grid), priv->comment_label, 1, 2, 1, 1);
+-		grid_attach_entry (GTK_GRID (priv->grid), priv->comment_entry, 2, 2, 1, 1);
++		grid_attach_label (GTK_GRID (priv->grid), priv->comment_label, 1, 4, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->comment_entry, 2, 4, 1, 1);
++
++		grid_attach_label (GTK_GRID (priv->grid), priv->comment_localized_label, 1, 5, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->comment_localized_entry, 2, 5, 1, 1);
++
++		grid_attach_label (GTK_GRID (priv->grid), priv->categories_label, 1, 6, 1, 1);
++		grid_attach_entry (GTK_GRID (priv->grid), priv->categories_combo, 2, 6, 1, 1);
+ 	}
+ 
+ 	type_combo_changed (dialog);
+@@ -756,10 +1082,14 @@
+ 	 * as the first widget in the chain */
+ 	focus_chain = NULL;
+ 	focus_chain = g_list_prepend (focus_chain, priv->icon_chooser);
++	focus_chain = g_list_prepend (focus_chain, priv->path_combo);
+ 	focus_chain = g_list_prepend (focus_chain, priv->type_combo);
+ 	focus_chain = g_list_prepend (focus_chain, priv->name_entry);
++	focus_chain = g_list_prepend (focus_chain, priv->name_localized_entry);
+ 	focus_chain = g_list_prepend (focus_chain, priv->command_hbox);
+ 	focus_chain = g_list_prepend (focus_chain, priv->comment_entry);
++	focus_chain = g_list_prepend (focus_chain, priv->comment_localized_entry);
++	focus_chain = g_list_prepend (focus_chain, panel_ditem_editor_get_categories_entry (dialog));
+ 	focus_chain = g_list_reverse (focus_chain);
+ 	gtk_container_set_focus_chain (GTK_CONTAINER (priv->grid), focus_chain);
+ 	g_list_free (focus_chain);
+@@ -814,19 +1144,15 @@
+ 	name = gtk_entry_get_text (GTK_ENTRY (dialog->priv->name_entry));
+ 
+ 	if (!dialog->priv->reverting) {
+-		/* When reverting, we don't need to set the content of the key
+-		 * file; we only want to send a signal. Changing the key file
+-		 * could actually break the revert since it might overwrite the
+-		 * old Name value with the X-GNOME-FullName value */
+ 		if (name && name[0])
+-			panel_key_file_set_locale_string (dialog->priv->key_file,
+-							  "Name", name);
++			panel_key_file_set_string (dialog->priv->key_file,
++					   "Name", name);
+ 		else
+-			panel_key_file_remove_all_locale_key (dialog->priv->key_file,
+-							      "Name");
++			panel_key_file_remove_key (dialog->priv->key_file,
++					   "Name");
+ 
+-		panel_key_file_remove_all_locale_key (dialog->priv->key_file,
+-						      "X-GNOME-FullName");
++		panel_key_file_remove_key (dialog->priv->key_file,
++				   "X-GNOME-FullName");
+ 	}
+ 
+ 	g_signal_emit (G_OBJECT (dialog), ditem_edit_signals[NAME_CHANGED], 0,
+@@ -834,6 +1160,23 @@
+ }
+ 
+ static void
++panel_ditem_editor_name_localized_changed (PanelDItemEditor *dialog)
++{
++	char       *lang;
++	const char *name;
++
++	name = gtk_entry_get_text (GTK_ENTRY (dialog->priv->name_localized_entry));
++	lang = panel_ditem_editor_get_system_lang ();
++
++	panel_ditem_editor_set_localized_value_for_lang (dialog->priv->key_file,
++						  "Name",
++						  lang,
++						  name);
++
++	g_free (lang);
++}
++
++static void
+ panel_ditem_editor_command_changed (PanelDItemEditor *dialog)
+ {
+ 	PanelDItemEditorType  type;
+@@ -861,8 +1204,8 @@
+ 		if (icon) {
+ 			char *current;
+ 
+-			current = panel_key_file_get_locale_string (dialog->priv->key_file,
+-								    "Icon");
++			current = panel_key_file_get_string (dialog->priv->key_file,
++					     "Icon");
+ 
+ 			if (!current || strcmp (icon, current))
+ 				setup_icon_chooser (dialog, icon);
+@@ -893,26 +1236,72 @@
+ 	comment = gtk_entry_get_text (GTK_ENTRY (dialog->priv->comment_entry));
+ 
+ 	if (comment && comment[0])
+-		panel_key_file_set_locale_string (dialog->priv->key_file,
+-						  "Comment", comment);
++		panel_key_file_set_string (dialog->priv->key_file,
++				   "Comment", comment);
+ 	else
+-		panel_key_file_remove_all_locale_key (dialog->priv->key_file,
+-						      "Comment");
++		panel_key_file_remove_key (dialog->priv->key_file,
++				   "Comment");
+ 
+ 	g_signal_emit (G_OBJECT (dialog), ditem_edit_signals[COMMENT_CHANGED],
+ 		       0, comment);
+ }
+ 
+ static void
++panel_ditem_editor_comment_localized_changed (PanelDItemEditor *dialog)
++{
++	char       *lang;
++	const char *comment;
++
++	comment = gtk_entry_get_text (GTK_ENTRY (dialog->priv->comment_localized_entry));
++	lang = panel_ditem_editor_get_system_lang ();
++
++	panel_ditem_editor_set_localized_value_for_lang (dialog->priv->key_file,
++						  "Comment",
++						  lang,
++						  comment);
++
++	g_free (lang);
++}
++
++static void
++panel_ditem_editor_categories_changed (PanelDItemEditor *dialog)
++{
++	PanelDItemEditorType type;
++	GtkWidget           *entry;
++	const char          *categories;
++
++	type = panel_ditem_editor_get_item_type (dialog);
++	if (type != PANEL_DITEM_EDITOR_TYPE_APPLICATION &&
++	    type != PANEL_DITEM_EDITOR_TYPE_TERMINAL_APPLICATION)
++		return;
++
++	entry = panel_ditem_editor_get_categories_entry (dialog);
++	categories = gtk_entry_get_text (GTK_ENTRY (entry));
++
++	if (categories && categories[0])
++		panel_key_file_set_string (dialog->priv->key_file,
++					   "Categories", categories);
++	else
++		panel_key_file_remove_key (dialog->priv->key_file,
++				   "Categories");
++}
++
++static void
++panel_ditem_editor_path_changed (PanelDItemEditor *dialog)
++{
++	panel_ditem_editor_update_create_dir (dialog);
++}
++
++static void
+ panel_ditem_editor_icon_changed (PanelDItemEditor *dialog,
+ 				 const char       *icon)
+ {
+ 	if (icon)
+-		panel_key_file_set_locale_string (dialog->priv->key_file,
+-						  "Icon", icon);
++		panel_key_file_set_string (dialog->priv->key_file,
++				   "Icon", icon);
+ 	else
+-		panel_key_file_remove_all_locale_key (dialog->priv->key_file,
+-						      "Icon");
++		panel_key_file_remove_key (dialog->priv->key_file,
++				   "Icon");
+ 
+ 	g_signal_emit (G_OBJECT (dialog), ditem_edit_signals[ICON_CHANGED], 0,
+ 		       icon);
+@@ -1026,24 +1415,40 @@
+ 				  dialog);
+ 
+ 	CONNECT_CHANGED (priv->type_combo, type_combo_changed);
++	CONNECT_CHANGED (priv->path_combo, panel_ditem_editor_path_changed);
+ 	CONNECT_CHANGED (priv->name_entry, panel_ditem_editor_name_changed);
++	CONNECT_CHANGED (priv->name_localized_entry, panel_ditem_editor_name_localized_changed);
+ 	CONNECT_CHANGED (priv->command_entry, panel_ditem_editor_command_changed);
+ 	CONNECT_CHANGED (priv->comment_entry, panel_ditem_editor_comment_changed);
++	CONNECT_CHANGED (priv->comment_localized_entry, panel_ditem_editor_comment_localized_changed);
++	CONNECT_CHANGED (priv->categories_combo, panel_ditem_editor_categories_changed);
+ 	CONNECT_CHANGED (priv->icon_chooser, panel_ditem_editor_icon_changed);
+ 
+ 	g_signal_connect_swapped (priv->name_entry, "activate",
+ 				  G_CALLBACK (panel_ditem_editor_activated),
+ 				  dialog);
++	g_signal_connect_swapped (priv->name_localized_entry, "activate",
++				  G_CALLBACK (panel_ditem_editor_activated),
++				  dialog);
+ 	g_signal_connect_swapped (priv->command_entry, "activate",
+ 				  G_CALLBACK (panel_ditem_editor_activated),
+ 				  dialog);
+ 	g_signal_connect_swapped (priv->comment_entry, "activate",
+ 				  G_CALLBACK (panel_ditem_editor_activated),
+ 				  dialog);
++	g_signal_connect_swapped (priv->comment_localized_entry, "activate",
++				  G_CALLBACK (panel_ditem_editor_activated),
++				  dialog);
++	g_signal_connect_swapped (panel_ditem_editor_get_categories_entry (dialog), "activate",
++				  G_CALLBACK (panel_ditem_editor_activated),
++				  dialog);
+ 
+ 	g_signal_connect_swapped (priv->command_browse_button, "clicked",
+ 				  G_CALLBACK (command_browse_button_clicked),
+ 				  dialog);
++	g_signal_connect_swapped (priv->edit_button, "clicked",
++				  G_CALLBACK (panel_ditem_editor_edit_button_clicked),
++				  dialog);
+ 
+ 	/* We do a signal connection here rather than overriding the method in
+ 	 * class_init because GtkDialog::response is a RUN_LAST signal. We
+@@ -1068,9 +1473,13 @@
+ 					 G_CALLBACK (panel_ditem_editor_changed), \
+ 					 dialog);
+ 	BLOCK_CHANGED (priv->type_combo, type_combo_changed);
++	BLOCK_CHANGED (priv->path_combo, panel_ditem_editor_path_changed);
+ 	BLOCK_CHANGED (priv->name_entry, panel_ditem_editor_name_changed);
++	BLOCK_CHANGED (priv->name_localized_entry, panel_ditem_editor_name_localized_changed);
+ 	BLOCK_CHANGED (priv->command_entry, panel_ditem_editor_command_changed);
+ 	BLOCK_CHANGED (priv->comment_entry, panel_ditem_editor_comment_changed);
++	BLOCK_CHANGED (priv->comment_localized_entry, panel_ditem_editor_comment_localized_changed);
++	BLOCK_CHANGED (priv->categories_combo, panel_ditem_editor_categories_changed);
+ 	BLOCK_CHANGED (priv->icon_chooser, panel_ditem_editor_icon_changed);
+ }
+ 
+@@ -1089,9 +1498,13 @@
+ 					   G_CALLBACK (panel_ditem_editor_changed), \
+ 					   dialog);
+ 	UNBLOCK_CHANGED (priv->type_combo, type_combo_changed);
++	UNBLOCK_CHANGED (priv->path_combo, panel_ditem_editor_path_changed);
+ 	UNBLOCK_CHANGED (priv->name_entry, panel_ditem_editor_name_changed);
++	UNBLOCK_CHANGED (priv->name_localized_entry, panel_ditem_editor_name_localized_changed);
+ 	UNBLOCK_CHANGED (priv->command_entry, panel_ditem_editor_command_changed);
+ 	UNBLOCK_CHANGED (priv->comment_entry, panel_ditem_editor_comment_changed);
++	UNBLOCK_CHANGED (priv->comment_localized_entry, panel_ditem_editor_comment_localized_changed);
++	UNBLOCK_CHANGED (priv->categories_combo, panel_ditem_editor_categories_changed);
+ 	UNBLOCK_CHANGED (priv->icon_chooser, panel_ditem_editor_icon_changed);
+ }
+ 
+@@ -1119,8 +1532,12 @@
+ 	priv->save_uri_data = NULL;
+ 	priv->combo_setuped = FALSE;
+ 	priv->command_browse_filechooser = NULL;
++	priv->show_create_path_selector = FALSE;
++	priv->file_monitor = NULL;
+ 
+ 	panel_ditem_editor_make_ui (dialog);
++	panel_ditem_editor_update_create_dir (dialog);
++	panel_ditem_editor_update_edit_button (dialog);
+ 	panel_ditem_editor_connect_signals (dialog);
+ }
+ 
+@@ -1133,35 +1550,47 @@
+ 	switch (panel_ditem_editor_get_item_type (dialog)) {
+ 	case PANEL_DITEM_EDITOR_TYPE_APPLICATION:
+ 		text = _("Comm_and:");
++		gtk_widget_show (dialog->priv->categories_label);
++		gtk_widget_show (dialog->priv->categories_combo);
+ 		if (dialog->priv->combo_setuped) {
+ 			panel_key_file_set_string (dialog->priv->key_file,
+-						   "Type", "Application");
++					   "Type", "Application");
+ 			panel_key_file_set_boolean (dialog->priv->key_file,
+-						    "Terminal", FALSE);
++					    "Terminal", FALSE);
+ 		}
+ 		break;
+ 	case PANEL_DITEM_EDITOR_TYPE_TERMINAL_APPLICATION:
+ 		text = _("Comm_and:");
++		gtk_widget_show (dialog->priv->categories_label);
++		gtk_widget_show (dialog->priv->categories_combo);
+ 		if (dialog->priv->combo_setuped) {
+ 			panel_key_file_set_string (dialog->priv->key_file,
+-						   "Type", "Application");
++					   "Type", "Application");
+ 			panel_key_file_set_boolean (dialog->priv->key_file,
+-						    "Terminal", TRUE);
++					    "Terminal", TRUE);
+ 		}
+ 		break;
+ 	case PANEL_DITEM_EDITOR_TYPE_LINK:
+ 		text = _("_Location:");
++		gtk_widget_hide (dialog->priv->categories_label);
++		gtk_widget_hide (dialog->priv->categories_combo);
+ 		if (dialog->priv->combo_setuped) {
+ 			panel_key_file_set_string (dialog->priv->key_file,
+-						   "Type", "Link");
++					   "Type", "Link");
++			panel_key_file_remove_key (dialog->priv->key_file,
++					   "Terminal");
+ 			panel_key_file_remove_key (dialog->priv->key_file,
+-						   "Terminal");
++					   "Categories");
+ 		}
+ 		break;
+ 	case PANEL_DITEM_EDITOR_TYPE_DIRECTORY:
++		gtk_widget_hide (dialog->priv->categories_label);
++		gtk_widget_hide (dialog->priv->categories_combo);
+ 		if (dialog->priv->combo_setuped) {
+ 			panel_key_file_set_string (dialog->priv->key_file,
+-						   "Type", "Directory");
++					   "Type", "Directory");
++			panel_key_file_remove_key (dialog->priv->key_file,
++					   "Categories");
+ 		}
+ 		return;
+ 	default:
+@@ -1219,13 +1648,26 @@
+ 	key_file = dialog->priv->key_file;
+ 
+ 	/* Name */
+-	buffer = panel_key_file_get_locale_string (key_file, "X-GNOME-FullName");
++	buffer = panel_key_file_get_string (key_file, "Name");
+ 	if (!buffer)
+ 		buffer = panel_key_file_get_locale_string (key_file, "Name");
+ 	gtk_entry_set_text (GTK_ENTRY (dialog->priv->name_entry),
+ 			    buffer ? buffer : "");
+ 	g_free (buffer);
+ 
++	{
++		char *lang;
++
++		lang = panel_ditem_editor_get_system_lang ();
++		buffer = panel_ditem_editor_get_localized_value_for_lang (key_file,
++							  "Name",
++							  lang);
++		gtk_entry_set_text (GTK_ENTRY (dialog->priv->name_localized_entry),
++				    buffer ? buffer : "");
++		g_free (buffer);
++		g_free (lang);
++	}
++
+ 	/* Type */
+ 	type = panel_key_file_get_string (key_file, "Type");
+ 	if (!dialog->priv->combo_setuped) {
+@@ -1269,14 +1711,35 @@
+ 	g_free (buffer);
+ 
+ 	/* Comment */
+-	buffer = panel_key_file_get_locale_string (key_file, "Comment");
++	buffer = panel_key_file_get_string (key_file, "Comment");
++	if (!buffer)
++		buffer = panel_key_file_get_locale_string (key_file, "Comment");
+ 	gtk_entry_set_text (GTK_ENTRY (dialog->priv->comment_entry),
+ 			    buffer ? buffer : "");
+ 	g_free (buffer);
+ 
++	{
++		char *lang;
++
++		lang = panel_ditem_editor_get_system_lang ();
++		buffer = panel_ditem_editor_get_localized_value_for_lang (key_file,
++							  "Comment",
++							  lang);
++		gtk_entry_set_text (GTK_ENTRY (dialog->priv->comment_localized_entry),
++				    buffer ? buffer : "");
++		g_free (buffer);
++		g_free (lang);
++	}
++
++	/* Categories */
++	buffer = panel_key_file_get_string (key_file, "Categories");
++	gtk_entry_set_text (GTK_ENTRY (panel_ditem_editor_get_categories_entry (dialog)),
++			    buffer ? buffer : "");
++	g_free (buffer);
++
+ 
+ 	/* Icon */
+-	buffer = panel_key_file_get_locale_string (key_file, "Icon");
++	buffer = panel_key_file_get_string (key_file, "Icon");
+ 	setup_icon_chooser (dialog, buffer);
+ 	g_free (buffer);
+ 
+@@ -1287,6 +1750,113 @@
+ }
+ 
+ static gboolean
++panel_ditem_editor_validate_desktop_item (GKeyFile *key_file,
++					   char    **message)
++{
++	char    *validator;
++	char    *tmpfile;
++	char    *data;
++	char    *stderr_output;
++	char    *secondary;
++	gsize    data_len;
++	int      fd;
++	int      wait_status;
++	char    *argv[4];
++	GError  *error;
++	gboolean valid;
++
++	if (message != NULL)
++		*message = NULL;
++
++	validator = g_find_program_in_path ("desktop-file-validate");
++	if (validator == NULL)
++		return TRUE;
++
++	valid = TRUE;
++	tmpfile = NULL;
++	data = NULL;
++	stderr_output = NULL;
++	error = NULL;
++
++	data = g_key_file_to_data (key_file, &data_len, &error);
++	if (error != NULL)
++		goto out;
++
++	fd = g_file_open_tmp ("gnome-desktop-item-edit-XXXXXX.desktop",
++			      &tmpfile,
++			      &error);
++	if (fd == -1)
++		goto out;
++
++	if (close (fd) != 0) {
++		g_set_error (&error,
++			     G_FILE_ERROR,
++			     g_file_error_from_errno (errno),
++			     "%s",
++			     g_strerror (errno));
++		goto out;
++	}
++
++	if (!g_file_set_contents (tmpfile, data, data_len, &error))
++		goto out;
++
++	argv[0] = validator;
++	argv[1] = "--no-hints";
++	argv[2] = tmpfile;
++	argv[3] = NULL;
++
++	if (!g_spawn_sync (NULL,
++			   argv,
++			   NULL,
++			   0,
++			   NULL,
++			   NULL,
++			   NULL,
++			   &stderr_output,
++			   &wait_status,
++			   &error))
++		goto out;
++
++	if (!g_spawn_check_wait_status (wait_status, &error))
++		goto out;
++
++	goto cleanup;
++
++out:
++	valid = FALSE;
++	secondary = NULL;
++
++	if (stderr_output != NULL && stderr_output[0] != '\0') {
++		g_strchomp (stderr_output);
++		secondary = g_strdup_printf (_("desktop-file-validate reported:\n%s"),
++					    stderr_output);
++	}
++
++	if (secondary == NULL) {
++		if (error != NULL && error->message != NULL)
++			secondary = g_strdup (error->message);
++		else
++			secondary = g_strdup (_("The launcher file is not valid."));
++	}
++
++	if (message != NULL)
++		*message = secondary;
++	else
++		g_free (secondary);
++
++cleanup:
++	if (tmpfile != NULL)
++		g_unlink (tmpfile);
++	g_clear_error (&error);
++	g_free (stderr_output);
++	g_free (data);
++	g_free (tmpfile);
++	g_free (validator);
++
++	return valid;
++}
++
++static gboolean
+ panel_ditem_editor_save (PanelDItemEditor *dialog,
+ 			 gboolean          report_errors)
+ {
+@@ -1356,6 +1926,32 @@
+ 	panel_key_file_ensure_C_key (key_file, "Comment");
+ 	panel_key_file_ensure_C_key (key_file, "Icon");
+ 
++	if (panel_ditem_editor_get_item_type (dialog) == PANEL_DITEM_EDITOR_TYPE_APPLICATION ||
++	    panel_ditem_editor_get_item_type (dialog) == PANEL_DITEM_EDITOR_TYPE_TERMINAL_APPLICATION) {
++		char *categories;
++
++		categories = panel_key_file_get_string (key_file, "Categories");
++		if (categories == NULL || categories[0] == '\0')
++			panel_key_file_set_string (key_file, "Categories", "Utility;");
++		g_free (categories);
++	}
++
++	{
++		char *validation_error;
++
++		validation_error = NULL;
++		if (!panel_ditem_editor_validate_desktop_item (key_file,
++						       &validation_error)) {
++			if (report_errors)
++				g_signal_emit (G_OBJECT (dialog),
++					       ditem_edit_signals[ERROR_REPORTED], 0,
++					       _("Could not save launcher"),
++					       validation_error);
++			g_free (validation_error);
++			return FALSE;
++		}
++	}
++
+ 	if (dialog->priv->save_uri) {
+ 		char *uri;
+ 
+@@ -1391,6 +1987,96 @@
+ 	return TRUE;
+ }
+ 
++static char *
++panel_ditem_editor_get_system_lang (void)
++{
++	const char *locale;
++	const char * const *langs;
++	char       *lang;
++	char       *end;
++
++	locale = g_getenv ("LC_MESSAGES");
++	if (locale == NULL || locale[0] == '\0')
++		locale = g_getenv ("LANG");
++
++	if (locale == NULL || locale[0] == '\0') {
++		int i;
++
++		langs = g_get_language_names ();
++		for (i = 0; langs[i] != NULL; i++) {
++			if (g_strcmp0 (langs[i], "C") != 0 &&
++			    g_strcmp0 (langs[i], "POSIX") != 0) {
++				locale = langs[i];
++				break;
++			}
++		}
++	}
++
++	if (locale == NULL || locale[0] == '\0')
++		return g_strdup ("en");
++
++	lang = g_strdup (locale);
++	end = strpbrk (lang, "_.@");
++	if (end != NULL)
++		*end = '\0';
++
++	if (lang[0] == '\0') {
++		g_free (lang);
++		return g_strdup ("en");
++	}
++
++	return lang;
++}
++
++static void
++panel_ditem_editor_set_localized_value_for_lang (GKeyFile    *key_file,
++						  const char *key,
++						  const char *lang,
++						  const char *value)
++{
++	char *locale_key;
++
++	if (lang == NULL || lang[0] == '\0')
++		return;
++
++	locale_key = g_strdup_printf ("%s[%s]", key, lang);
++	if (value == NULL || value[0] == '\0') {
++		g_key_file_remove_key (key_file,
++				       G_KEY_FILE_DESKTOP_GROUP,
++				       locale_key,
++				       NULL);
++		g_free (locale_key);
++		return;
++	}
++
++	g_key_file_set_string (key_file,
++			       G_KEY_FILE_DESKTOP_GROUP,
++			       locale_key,
++			       value);
++	g_free (locale_key);
++}
++
++static char *
++panel_ditem_editor_get_localized_value_for_lang (GKeyFile    *key_file,
++						  const char *key,
++						  const char *lang)
++{
++	char *locale_key;
++	char *value;
++
++	if (lang == NULL || lang[0] == '\0')
++		return NULL;
++
++	locale_key = g_strdup_printf ("%s[%s]", key, lang);
++	value = g_key_file_get_string (key_file,
++				      G_KEY_FILE_DESKTOP_GROUP,
++				      locale_key,
++				      NULL);
++	g_free (locale_key);
++
++	return value;
++}
++
+ static gboolean
+ panel_ditem_editor_save_timeout (gpointer data)
+ {
+@@ -1686,6 +2372,8 @@
+ 	if (uri && uri [0])
+ 		dialog->priv->uri = g_strdup (uri);
+ 
++	panel_ditem_editor_update_edit_button (dialog);
++
+ 	g_object_notify (G_OBJECT (dialog), "uri");
+ }
+ 
+@@ -1745,3 +2433,14 @@
+ 	dialog->priv->save_uri = save_uri;
+ 	dialog->priv->save_uri_data = data;
+ }
++
++void
++panel_ditem_editor_set_show_create_path_selector (PanelDItemEditor *dialog,
++						       gboolean          show)
++{
++	g_return_if_fail (PANEL_IS_DITEM_EDITOR (dialog));
++
++	dialog->priv->show_create_path_selector = show;
++	if (show)
++		panel_ditem_editor_update_create_dir (dialog);
++}
+--- a/gnome-panel/libpanel-util/panel-keyfile.c
++++ b/gnome-panel/libpanel-util/panel-keyfile.c
+@@ -252,8 +252,12 @@
+ {
+ 	const char         *locale;
+ 	const char * const *langs_pointer;
++	gchar              *lang;
++	gchar              *end;
+ 	int                 i;
+ 
++	lang = NULL;
++
+ 	locale = NULL;
+ 	langs_pointer = g_get_language_names ();
+ 	for (i = 0; langs_pointer[i] != NULL; i++) {
+@@ -264,12 +268,26 @@
+ 		}
+ 	}
+ 
+-	if (locale)
++	if (locale) {
++		lang = g_strdup (locale);
++		end = strpbrk (lang, "_.@");
++		if (end != NULL)
++			*end = '\0';
++
++		if (lang[0] == '\0') {
++			g_free (lang);
++			lang = NULL;
++		}
++	}
++
++	if (locale && lang)
+ 		g_key_file_set_locale_string (keyfile, G_KEY_FILE_DESKTOP_GROUP,
+-					      key, locale, value);
++					      key, lang, value);
+ 	else
+ 		g_key_file_set_string (keyfile, G_KEY_FILE_DESKTOP_GROUP,
+ 				       key, value);
++
++	g_free (lang);
+ }
+ 
+ void
+@@ -279,20 +297,34 @@
+ 	const char * const *langs_pointer;
+ 	int                 i;
+ 	char               *locale_key;
++	gchar              *lang;
++	gchar              *end;
+ 
+ 	locale_key = NULL;
++	lang = NULL;
+ 	langs_pointer = g_get_language_names ();
+ 	for (i = 0; langs_pointer[i] != NULL; i++) {
+ 		/* find first without encoding  */
+ 		if (strchr (langs_pointer[i], '.') == NULL) {
+-			locale_key = g_strdup_printf ("%s[%s]",
+-						      key, langs_pointer[i]);
++			lang = g_strdup (langs_pointer[i]);
++			end = strpbrk (lang, "_.@");
++			if (end != NULL)
++				*end = '\0';
++			if (lang[0] == '\0') {
++				g_free (lang);
++				lang = NULL;
++				continue;
++			}
++
++			locale_key = g_strdup_printf ("%s[%s]", key, lang);
+ 			if (g_key_file_has_key (keyfile, G_KEY_FILE_DESKTOP_GROUP,
+ 						locale_key, NULL))
+ 				break;
+ 
+ 			g_free (locale_key);
+ 			locale_key = NULL;
++			g_free (lang);
++			lang = NULL;
+ 		}
+ 	}
+ 
+@@ -303,6 +335,8 @@
+ 	} else
+ 		g_key_file_remove_key (keyfile, G_KEY_FILE_DESKTOP_GROUP,
+ 				       key, NULL);
++
++	g_free (lang);
+ }
+ 
+ void
+--- a/po/ru.po
++++ b/po/ru.po
+@@ -866,8 +866,8 @@
+ msgstr "_Удалить из панели"
+ 
+ #: gnome-panel/gnome-desktop-item-edit.c:27
+-msgid "Create new file in the given directory"
+-msgstr "Создать новый файл в заданном каталоге"
++msgid "Create a new launcher (use PATH or choose Desktop/Autostart)"
++msgstr "Создать новый ярлык (использовать PATH или выбрать Desktop/Autostart)"
+ 
+ #: gnome-panel/gnome-desktop-item-edit.c:28
+ msgid "[FILE...]"
+@@ -1395,11 +1395,63 @@
+ msgid "_Type:"
+ msgstr "_Тип:"
+ 
++#: gnome-panel/panel-ditem-editor.c:740
++msgid "_Path:"
++msgstr "_Путь:"
++
++#: gnome-panel/panel-ditem-editor.c:746
++msgid "Desktop (%s)"
++msgstr "Рабочий стол (%s)"
++
++#: gnome-panel/panel-ditem-editor.c:747
++msgid "Autostart (%s)"
++msgstr "Автозапуск (%s)"
++
++#: gnome-panel/panel-ditem-editor.c:917
++msgid "Audio & Video"
++msgstr "Аудио и видео"
++
++#: gnome-panel/panel-ditem-editor.c:930
++msgid "Text Editor"
++msgstr "Текстовый редактор"
++
++#: gnome-panel/panel-ditem-editor.c:931
++msgid "Terminal Emulator"
++msgstr "Эмулятор терминала"
++
++#: gnome-panel/panel-ditem-editor.c:932
++msgid "File Manager"
++msgstr "Файловый менеджер"
++
++#: gnome-panel/panel-ditem-editor.c:933
++msgid "Web Browser"
++msgstr "Веб-браузер"
++
++#: gnome-panel/panel-ditem-editor.c:936
++msgid "Player"
++msgstr "Проигрыватель"
++
++#: gnome-panel/panel-ditem-editor.c:937
++msgid "Recorder"
++msgstr "Рекордер"
++
++#: gnome-panel/panel-ditem-editor.c:938
++msgid "Archiving"
++msgstr "Архивирование"
++
++#: gnome-panel/panel-ditem-editor.c:939
++msgid "Accessibility"
++msgstr "Специальные возможности"
++
+ #. Name
+ #: gnome-panel/panel-ditem-editor.c:607
+ msgid "_Name:"
+ msgstr "_Имя:"
+ 
++#: gnome-panel/panel-ditem-editor.c:751
++msgid "Name [%s]:"
++msgstr "Имя [%s]:"
++
+ #: gnome-panel/panel-ditem-editor.c:632
+ msgid "_Browse..."
+ msgstr "_Просмотреть…"
+@@ -1407,11 +1459,27 @@
+ #. Comment
+ #: gnome-panel/panel-ditem-editor.c:639
+ msgid "Co_mment:"
+-msgstr "При_мечание:"
++msgstr "_Комментарий:"
++
++#: gnome-panel/panel-ditem-editor.c:770
++msgid "Cate_gories:"
++msgstr "_Категории:"
++
++#: gnome-panel/panel-ditem-editor.c:752
++msgid "Comment [%s]:"
++msgstr "Комментарий [%s]:"
+ 
+-#: gnome-panel/panel-ditem-editor.c:646
+-msgid "_Revert"
+-msgstr "Ве_рнуть"
++#: gnome-panel/panel-ditem-editor.c:856
++msgid "_Отмена"
++msgstr ""
++
++#: gnome-panel/panel-ditem-editor.c:862
++msgid "_Ok"
++msgstr "_Ok"
++
++#: gnome-panel/panel-ditem-editor.c:881
++msgid "Open in a text editor"
++msgstr "Открыть в текстовом редакторе"
+ 
+ #: gnome-panel/panel-ditem-editor.c:658 gnome-panel/panel-run-dialog.c:1278
+ #: modules/external/clock/clock.ui:82
+@@ -1450,6 +1518,18 @@
+ msgid "The command of the launcher is not set."
+ msgstr "Команда для кнопки запуска не указана."
+ 
++#: gnome-panel/panel-ditem-editor.c:807
++msgid "Could not open launcher in editor"
++msgstr "Не удалось открыть ярлык в редакторе"
++
++#: gnome-panel/panel-ditem-editor.c:1709
++msgid "desktop-file-validate reported:\n%s"
++msgstr "desktop-file-validate сообщил:\n%s"
++
++#: gnome-panel/panel-ditem-editor.c:1717
++msgid "The launcher file is not valid."
++msgstr "Файл ярлыка недопустим."
++
+ #: gnome-panel/panel-ditem-editor.c:1340
+ msgid "The location of the launcher is not set."
+ msgstr "Адрес для кнопки запуска не указан."
