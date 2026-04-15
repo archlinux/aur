@@ -21,7 +21,7 @@ python -m build --wheel --skip-dependency-check --no-isolation
 
 check() {
     cd ${_base}-${pkgver}
-    test-env/bin/python -m pytest test
+    pytest -q
 }
 
 package() {
