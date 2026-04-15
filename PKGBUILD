@@ -3,60 +3,115 @@
 # Contributor: KspLite <ksplite@outlook.com>
 # Contributor: Daniil Kovalev <daniil@kovalev.website>
 pkgname=0wgram
-pkgver=1.4.0
+pkgver=1.4.3
 pkgrel=1
 epoch=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
 arch=('x86_64' 'aarch64')
 url="https://github.com/clansty/tdesktop"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash' 'ada'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'abseil-cpp' 'libdispatch'
-         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0'
-         'libxcomposite' 'libvpx' 'libxdamage' 'kcoreaddons' 'jemalloc' 'openh264')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
-             'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
-             'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'python-packaging'
-             'dos2unix' 'glib2-devel')
-optdepends=('webkit2gtk: embedded browser features'
-            'xdg-desktop-portal: desktop integration')
+depends=(
+  'abseil-cpp'
+  'ada'
+  'ffmpeg'
+  'glib2'
+  'glibc'
+  'hicolor-icon-theme'
+  'hunspell'
+  'kcoreaddons'
+  'libavif'
+  'libdispatch'
+  'libgcc'
+  'libheif'
+  'libjxl'
+  'libstdc++'
+  'libxcomposite'
+  'libxdamage'
+  'libxrandr'
+  'libxtst'
+  'lz4'
+  'minizip'
+  'openal'
+  'openh264'
+  'openssl'
+  'pipewire'
+  'protobuf'
+  'qt6-imageformats'
+  'qt6-svg'
+  'qt6-wayland'
+  'rnnoise'
+  'xxhash'
+  'zlib'
+)
+makedepends=(
+  'boost'
+  'boost-libs'
+  'cmake'
+  'git'
+  'glib2-devel'
+  'gobject-introspection'
+  'gperf'
+  'libtg_owt'
+  'microsoft-gsl'
+  'ninja'
+  'python'
+  'range-v3'
+  'tl-expected'
+)
+optdepends=(
+  'geoclue: geoinformation support'
+  'crow-translate: translation provider'
+  'webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1'
+  'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (Wayland only)'
+  'xdg-desktop-portal: desktop integration'
+)
 
-commit="1576cacb687060713733754e3952cbc27d42b93b"
+_td_commit=51743dfd01dff6179e2d8f7095729caa4e2222e9
+commit="2ab549b3d7"
 source=("git+${url}.git#commit=${commit}"
-        "fix-lzma-link.patch")
+  "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
+  fix-lzma-link.patch
+        "tdesktop-fix-minizip-includes.patch")
 
-sha512sums=('4efad218af2e45c6254f6ba7584445486ca96fff6f00f9288aa81d6b7fc2f2c2320e440dda270cb26a15e1cd86175692c05bb0b0784fadc0bde69b3fbca96ee6'
-            'e15cdc8513793f17e4b6ca2dfab5b4bbf22d0934c1e88038957b9004865edb4101a3133482708aab6844de3c1dfdac9c98970de684c1508634180d90c84345f7')
+sha512sums=('dfc41e641e3853e88251c3f201a586d2f57be83337d4bd5b42786b21d1ee6122918cc3bf12fbe2581e1606254a43ce17994630f55e9194b8b61aed3f68a768bd'
+            'd622b8f3580ee49415546d025c4ba45f5b2de50b315fc379dc57c0427c5f815c7cc3820cca937c12182ee461641bb61f87ebc99b6c74a1a666cea9a08f0f41a0'
+            'e15cdc8513793f17e4b6ca2dfab5b4bbf22d0934c1e88038957b9004865edb4101a3133482708aab6844de3c1dfdac9c98970de684c1508634180d90c84345f7'
+            'd9765588e92f154d83b95dc2840207bf22b26b6ca37b4d5cdfdb5e27a00c9e1ebcc9cd475a96bbcc5b02c24f6892320e009f843aa6b172a1820814b952a772eb')
 
 prepare() {
     cd tdesktop
     git submodule update --init --recursive
-    patch -p1 --binary < ../fix-lzma-link.patch
+    patch -p1 --binary < "$srcdir"/fix-lzma-link.patch
+    patch -Np1 -d Telegram/lib_base -i "$srcdir"/tdesktop-fix-minizip-includes.patch
 }
 
 build() {
-    CXXFLAGS+=' -ffat-lto-objects'
+    cmake -S td -B td/build \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_INSTALL_PREFIX="$PWD/td/install" \
+        -Wno-dev \
+        -DTD_E2E_ONLY=ON
+    cmake --build td/build
+    cmake --install td/build
 
-    cmake \
-        -B build \
-        -S tdesktop \
-        -G Ninja \
-        -DCMAKE_VERBOSE_MAKEFILE=ON \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON \
-        -DTDESKTOP_API_ID=16138177 \
-        -DTDESKTOP_API_HASH=f14e4d935dcd9f002e44b2698aeb2466
-        # -DTDESKTOP_API_TEST=ON
-    cmake --build build
+  cmake -B build -S tdesktop -G Ninja \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -Dtde2e_DIR="$PWD/td/install/lib/cmake/tde2e" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DTDESKTOP_API_ID=611335 \
+    -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
+  cmake --build build
 }
+
+_pkgname_original=org.telegram.desktop
+_pkgname_new=com.clansty.0wgram
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    mv "$pkgdir/usr/bin/telegram-desktop" "$pkgdir/usr/bin/${pkgname}"
-    find "$pkgdir" -type f -name "telegram.png" -exec rename telegram.png ${pkgname}.png {} \;
-    mv "$pkgdir/usr/share/icons/hicolor/symbolic/apps/telegram-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/${pkgname}-symbolic.svg"
-    mkdir -p "$pkgdir/usr/share/${pkgname}/externalupdater.d"
-    echo "/usr/bin/${pkgname}" > "$pkgdir/usr/share/${pkgname}/externalupdater.d/telegram-desktop.conf"
+    mv "$pkgdir/usr/bin/Telegram" "$pkgdir/usr/bin/${pkgname}"
+    find "$pkgdir" -type f -name "${_pkgname_original}.png" -exec rename ${_pkgname_original}.png ${_pkgname_new}.png {} \;
+    mv "$pkgdir/usr/share/icons/hicolor/symbolic/apps/${_pkgname_original}-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/${_pkgname_new}-symbolic.svg"
+    mv "$pkgdir/usr/share/icons/hicolor/symbolic/apps/${_pkgname_original}-mute-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/${_pkgname_new}-mute-symbolic.svg"
+    mv "$pkgdir/usr/share/icons/hicolor/symbolic/apps/${_pkgname_original}-attention-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/${_pkgname_new}-attention-symbolic.svg"
 }

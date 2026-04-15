@@ -4,3 +4,7 @@ src/
 pkg/
 *.log
 kcoreaddons*.tar.xz
+td
+tdesktop
+1
+*.zst
