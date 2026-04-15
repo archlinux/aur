@@ -4,7 +4,7 @@
 
 _pkgname="godot-export-templates"
 pkgbase="$_pkgname-bin"
-pkgver=4.6.1
+pkgver=4.6.2
 pkgrel=1
 pkgdesc='Godot export templates'
 url="https://github.com/godotengine/godot"
