@@ -13,13 +13,13 @@ conflicts=('jeeves')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/robinovitch61/jeeves/releases/download/v${pkgver}/jeeves_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('af2b840a6167be2b449e11958c9654b985c515f865d6024edebf0af3b14263e6')
+sha256sums_aarch64=('eefa5db4883dd3168b1c60591b3b5167342a2251ed591afd0ee5465a36246c69')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/robinovitch61/jeeves/releases/download/v${pkgver}/jeeves_${pkgver}_Linux_i386.tar.gz")
-sha256sums_i686=('2af583807280b493d764741984f116460e6c5056ee555bf8bf046af977492cf2')
+sha256sums_i686=('e77320aee5d41e2e2c9cba45b6b516cb6d4f42659966cc7fd70133cafb0f9e51')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/robinovitch61/jeeves/releases/download/v${pkgver}/jeeves_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('57db7de6c79de069697aff0e111075c731768ab7d69245dd8caf68a591b27a0a')
+sha256sums_x86_64=('739d9feaa1783e60316dcd52e533e8fc52dc0d79748f922c647ca18d423e60de')
 
 package() {
   install -Dm755 "./jeeves" "${pkgdir}/usr/bin/jeeves"
