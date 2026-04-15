@@ -1,11 +1,11 @@
 pkgbase = springcraft
 	pkgdesc = Modern CLI scaffolder for Spring Boot projects - like Vite but for Spring
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/fmitesh007/springcraft-cli
 	arch = x86_64
 	license = MIT
-	source = https://github.com/fmitesh007/springcraft-cli/releases/download/v0.2.0/springcraft-linux
-	sha256sums = 39a27834d8bf5933dc71e2fd4aaf08b16b3069fa7cda169cb935394a17b78b7a
+	source = https://github.com/fmitesh007/springcraft-cli/releases/download/v0.3.0/springcraft-linux
+	sha256sums = 3e16365296a32e2b6c93786884d24508800eeeb41c5d6eef029b6f48d845b24e
 
 pkgname = springcraft
