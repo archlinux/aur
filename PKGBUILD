@@ -2,7 +2,7 @@
 pkgname=opennow
 _pkgname=OpenNOW
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="custom GeForce Now client"
 url="https://opennow.zortos.me/"
 license=('MIT')
@@ -11,7 +11,6 @@ depends=('gtk3' 'cairo' 'pango' 'mesa' 'dbus' 'libx11' 'at-spi2-core' 'hicolor-i
 makedepends=('npm' 'imagemagick')
 provides=('opennow')
 conflicts=('opennow-appimage')
-replaces=('opennow-appimage')
 arch=('x86_64')
 source=(opennow-${pkgver}.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v${pkgver}.tar.gz
 	opennow.desktop)
