@@ -9,7 +9,7 @@ pkgbase = photomatix
 	depends = libtiff
 	depends = openexr
 	depends = gtkmm3
-	source = ""https://www.hdrsoft.com/download/linux/ubuntu/PhotomatixLinux2.0.2_Ubuntu23_24.deb"
+	source = ("https://www.hdrsoft.com/download/linux/ubuntu/PhotomatixLinux_3.0_Ubuntu23_24.deb")
 	sha512sums=('38abc84e912c3db3b949e9c6ea25b43a7e87ec58806250fd25bb73ad559729d36399310a6123b6fae29b22c3eb7d1234e4d696965cc0f19b8c636726d003c769')
 
 pkgname = photomatix
