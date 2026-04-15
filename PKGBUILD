@@ -1,6 +1,6 @@
 # Maintainer: Enriquefft <https://github.com/Enriquefft>
 pkgname=oryx-bench-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='ZSA Oryx keyboard layout manager — pull, lint, generate, build, and flash QMK firmware'
 arch=('x86_64' 'aarch64')
