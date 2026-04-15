@@ -1,0 +1,14 @@
+pkgbase = iw-tui
+	pkgdesc = TUI app for iNet wireless control (iwctl) wrapper
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/IovAnto/iw-tui
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = iwd
+	source = iw-tui-0.2.0.tar.gz::https://github.com/IovAnto/iw-tui/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 46373c5b1c0dcbeffe9427a2a84cfe35ed8d15d9029739f12129772f239aa3a0
+
+pkgname = iw-tui
