@@ -1,8 +1,8 @@
 # Maintainer: Atharva Surwase <atharvasurwase@gmail.com>
 
-pkgname=text-extractor
-pkgver=0.1.0
-pkgrel=3
+pkgname=MonteCapcho
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="A Rust-based text extractor using Tesseract OCR and Iced GUI"
 arch=('x86_64')
 url="https://github.com/Top-g-hash/Monte-Capcho"
@@ -21,8 +21,8 @@ depends=(
 
 makedepends=('cargo' 'pkgconf' 'oniguruma')
 
-source=("$pkgname-$pkgver.tar.gz")
-sha256sums=('89733efd739c73d0ee694b059d871c9beb1cfacdd9de021a6e553882f29011db')
+source=("MonteCapcho-$pkgver.tar.gz")
+sha256sums=('c98a1d519f8cfd7cf463452f5f7f258a45307f8258062dc44c594b4dba9c3ea3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -31,12 +31,24 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "fonts/ocr-icons.toml" "$pkgdir/usr/share/text-extractor/fonts/ocr-icons.toml"
-  install -Dm644 "fonts/ocr-icons.ttf" "$pkgdir/usr/share/text-extractor/fonts/ocr-icons.ttf"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "assets/text-extractor.desktop" "$pkgdir/usr/share/applications/text-extractor.desktop"
-  install -Dm644 "assets/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/text-extractor.png"
+  cd "$srcdir/MonteCapcho-$pkgver"
+
+  install -Dm755 target/release/text-extractor \
+    "$pkgdir/usr/bin/MonteCapcho"
+
+  install -Dm644 fonts/ocr-icons.toml \
+    "$pkgdir/usr/share/MonteCapcho/fonts/ocr-icons.toml"
+
+  install -Dm644 fonts/ocr-icons.ttf \
+    "$pkgdir/usr/share/MonteCapcho/fonts/ocr-icons.ttf"
+
+  install -Dm644 LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm644 assets/text-extractor.desktop \
+    "$pkgdir/usr/share/applications/MonteCapcho.desktop"
+
+  install -Dm644 assets/icon.png \
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/MonteCapcho.png"
 }
 
