@@ -1,7 +1,7 @@
 # Maintainer: ihipop <ihipop at gmail dot com>
 _pkgname=proxyman
 pkgname="${_pkgname}-bin"
-pkgver=3.9.0
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="Proxyman is a native, high-performance app, which enables developers to capture, inspect, and manipulate HTTP/HTTPS requests/responses with ease."
 arch=('x86_64')
@@ -15,10 +15,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::https://github.com/ProxymanApp/proxyman-windows-linux/releases/download/${pkgver}/Proxyman-${pkgver}.AppImage?v=${pkgver//./-}"
     "LICENSE.md"
 )
-sha256sums=(
-            '86fd13625087a225ab3112dc3ebaee234f520b6e0f69fa3d079924529143c8a2'
-            '1f06e6dbbba57c36ef98daa6ad4893b944494b1e20bcf477eb78580476205f9a'
-           )
+sha256sums=('873a527a2d2047d6a9709e8054da22a925092ccbcfd15ffa49398629e520e6f2'
+            '1f06e6dbbba57c36ef98daa6ad4893b944494b1e20bcf477eb78580476205f9a')
 build() {
     rm -rf "${srcdir}/squashfs-root/"
     chmod a+x "${srcdir}/${_pkgname}-${pkgver}.AppImage"
