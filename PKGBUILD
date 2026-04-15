@@ -4,8 +4,8 @@
 # https://github.com/mathworks/MATLAB-language-server/issues/79
 
 pkgname="matlab-language-server"
-pkgver=1.3.9
-pkgrel=2
+pkgver=1.3.10
+pkgrel=1
 pkgdesc="Implementation of the Microsoft Language Server Protocol for the MATLAB language"
 arch=(
   'any'
@@ -25,7 +25,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('d37fd3c3e99c615a18a00731fce65ec818c132892b68c238d5f79ba92131afb0')
+sha256sums=('0f767e2a0f955987ba00f4fbb7ccd346b2d99bc6c77c182b370a9df780853415')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -46,7 +46,6 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  rm -rf "node_modules"
   npm ci --omit=dev --cache "${srcdir}/.npm"
 
   sed -i '1i#!/usr/bin/env node' "out/index.js"
@@ -54,7 +53,7 @@ package() {
 
   install -vd "${pkgdir}/usr/lib/node_modules/${pkgname}"
   cp -a --no-preserve=ownership -t "${pkgdir}/usr/lib/node_modules/${pkgname}" \
-    "out" "node_modules" "matlab" "package.json"
+    "out" "node_modules" "matlab" # "package.json"
 
   install -vd "${pkgdir}/usr/bin"
   ln -vsf "/usr/lib/node_modules/${pkgname}/out/index.js" "${pkgdir}/usr/bin/${pkgname}"
