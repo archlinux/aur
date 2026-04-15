@@ -1,0 +1,15 @@
+pkgbase = fastfetch-configurator
+	pkgdesc = Herramienta gráfica para crear, editar y visualizar configuraciones de Fastfetch
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/AnabasaSoft/fastfetch-configurator
+	arch = x86_64
+	license = GPL3
+	makedepends = python-pyinstaller
+	makedepends = python-pyqt6
+	makedepends = python-pillow
+	depends = fastfetch
+	source = fastfetch-configurator-1.1.tar.gz::https://github.com/AnabasaSoft/fastfetch-configurator/archive/refs/tags/v1.1.tar.gz
+	sha256sums = 4244c51652f64846b05ee2c5c94392ac8d37c8d243e770493fe3126484bd1179
+
+pkgname = fastfetch-configurator
