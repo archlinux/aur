@@ -9,7 +9,7 @@ url="https://github.com/fmitesh007/springcraft-cli"
 license=('MIT')
 depends=()
 source=("https://github.com/fmitesh007/springcraft-cli/releases/download/v${pkgver}/springcraft-linux")
-sha256sums=('3e16365296a32e2b6c93786884d24508800eeeb41c5d6eef029b6f48d845b24e')
+sha256sums=('d900a37ccfb4ede2db43a6284b64d50786cc663fdfecb8280c86e34acd2eebfe')
 
 package() {
     install -Dm755 "${srcdir}/springcraft-linux" "${pkgdir}/usr/bin/springcraft"
