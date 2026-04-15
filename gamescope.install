@@ -20,7 +20,7 @@ do_setcap() {
 issue_1662() {
   note "${all_off}\"[gamescope] [Error] vulkan: vkImportSemaphoreFdKHR failed (VkResult: -3)\""
   msg_blue "This is due to upstream issue #1662"
-  msg_blue "Add environment variable ${all_off}'ENABLE_GAMESCOPE_WSI=0'${bold} to your command, or run Gamescope in tty can workaround this bug."
+  msg_blue "Add the environment variable ${all_off}'ENABLE_GAMESCOPE_WSI=0'${bold} to your command, or run Gamescope in tty to workaround this bug."
 }
 
 post_install() {
