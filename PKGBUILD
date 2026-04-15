@@ -4,7 +4,7 @@
 # Contributor: Raphael Amorim <rapha850@gmail.com>
 
 pkgname=rio
-pkgver=0.3.5
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
 arch=('x86_64')
@@ -30,7 +30,7 @@ makedepends=(
   'python'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('f61a697f00e10097e274b9890c5291b5f12bb9975bafc26d1e2452189c31f5a905f521afccde4a156ceac91f2341a26c38834885e49469cbfd38dc4117a0ba59')
+sha512sums=('a397bf082a644bdd0671e677dee725057fab51b8f7f94724722ae63e2623e927b9568a7b36387ce832e10705ac73526bce12d6d4f2ea76754a875f1dea9c3057')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
