@@ -1,8 +1,8 @@
 pkgbase = mks-git
 	pkgdesc = Small experimental scripting language and interpreter written in C
-	pkgver = 0.r39.g2c3cb0b
+	pkgver = 0.r45.gd98d011
 	pkgrel = 1
-	url = https://github.com/MilakyS/MKS-interpreter
+	url = https://github.com/mks-lang/MKS-interpreter
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = mks-git
 	depends = glibc
 	provides = mks
 	conflicts = mks
-	source = MKS-interpreter::git+https://github.com/MilakyS/MKS-interpreter.git
+	source = MKS-interpreter::git+https://github.com/mks-lang/MKS-interpreter.git
 	sha256sums = SKIP
 
 pkgname = mks-git
