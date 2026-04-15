@@ -7,6 +7,7 @@ pkgbase = risor-bin
 	arch = i386
 	arch = aarch64
 	license = Apache-2.0
+	options = !debug
 	source_x86_64 = risor-2.1.0_x86_64.tar.gz::https://github.com/risor-io/risor/releases/download/v2.1.0/risor_Linux_x86_64.tar.gz
 	sha256sums_x86_64 = 5ae92a33c2542edb63887e11ffca93fd0d5c25c4f1732b368175d201675cd535
 	source_i386 = risor-2.1.0_i386.tar.gz::https://github.com/risor-io/risor/releases/download/v2.1.0/risor_Linux_i386.tar.gz
