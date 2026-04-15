@@ -1,7 +1,7 @@
 pkgbase = apprenticevrsrc-bin
 	pkgdesc = A modern, cross-platform desktop application designed for managing and sideloading content onto Meta Quest devices
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mula-bb/apprenticeVrSrc
 	install = apprenticevr.install
 	arch = x86_64

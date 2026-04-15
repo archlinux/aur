@@ -3,7 +3,7 @@
 
 pkgname=apprenticevrsrc-bin
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, cross-platform desktop application designed for managing and sideloading content onto Meta Quest devices"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mula-bb/apprenticeVrSrc"
