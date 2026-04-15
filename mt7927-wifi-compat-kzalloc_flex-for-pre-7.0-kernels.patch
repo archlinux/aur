@@ -1,0 +1,33 @@
+wifi: mt76: compat: use kzalloc+struct_size for pre-7.0 kernels
+
+Linux 7.0 introduced kzalloc_flex() and family in commit e4c8b46b924e
+("slab: Introduce kmalloc_flex() and family") and adopted them treewide
+in commit 69050f8d6d07 ("treewide: Replace kmalloc with kmalloc_obj for
+non-scalar types"). mt76/agg-rx.c uses kzalloc_flex() for a flexible-
+array struct allocation.
+
+This DKMS package extracts mt76 from the kernel 7.0 tarball but is
+compiled against the host kernel, which is commonly 6.1 LTS through
+6.19.x. On those hosts the build fails with:
+
+  agg-rx.c: error: call to undeclared function 'kzalloc_flex'
+
+Replace the call with kzalloc(struct_size(...), GFP_KERNEL). struct_size
+has existed since kernel 5.x in include/linux/overflow.h. kzalloc_flex
+upstream expands to exactly this, so behavior is identical. The call
+site is sleepable (regular allocation path), GFP_KERNEL is correct.
+
+Signed-off-by: Javier Tia <floss@jetm.me>
+
+diff --git a/agg-rx.c b/agg-rx.c
+--- a/agg-rx.c
++++ b/agg-rx.c
+@@ -248,7 +248,7 @@
+ 
+ 	mt76_rx_aggr_stop(dev, wcid, tidno);
+ 
+-	tid = kzalloc_flex(*tid, reorder_buf, size);
++	tid = kzalloc(struct_size(tid, reorder_buf, size), GFP_KERNEL);
+ 	if (!tid)
+ 		return -ENOMEM;
+ 

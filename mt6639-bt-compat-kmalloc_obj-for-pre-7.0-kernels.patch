@@ -1,0 +1,80 @@
+Bluetooth: btusb/btmtk: compat fixes for pre-7.0 kernels
+
+This DKMS package extracts btusb.c and btmtk.c from the kernel 7.0
+tarball but is compiled against the host kernel, which is commonly
+6.1 LTS through 6.19.x (CachyOS, Fedora 43, Ubuntu, Bazzite, etc.).
+
+Two compat issues arise:
+
+1. kmalloc_obj() / kzalloc_obj() (commit 2932ba8d9c99 "slab: Introduce
+   kmalloc_obj() and family", adopted treewide in 69050f8d6d07). These
+   helpers live only in kernel 7.0+ include/linux/slab.h. On pre-7.0
+   hosts the build fails:
+
+     btusb.c: error: call to undeclared function 'kmalloc_obj'
+     btusb.c: error: call to undeclared function 'kzalloc_obj'
+     btmtk.c: error: call to undeclared function 'kmalloc_obj'
+
+   Replace the three call sites with kmalloc/kzalloc equivalents.
+   kmalloc_obj(*x) expands to kmalloc(sizeof(*x), GFP_KERNEL) upstream,
+   so behavior is identical. All three sites are sleepable.
+
+2. hci_discovery_active() was exported for modules only in v7.0 by
+   commit 97eb023cd161 ("Bluetooth: hci_core: Export
+   hci_discovery_active"). v7.0 btusb.c calls it in btusb_suspend() via
+   commit 312b09bbe983 ("Bluetooth: btusb: Reject autosuspend if
+   discovery is active"). On pre-7.0 hosts, modpost fails:
+
+     ERROR: modpost: "hci_discovery_active" [btusb.ko] undefined!
+
+   Drop the discovery_active check from btusb_suspend(). This restores
+   the behavior that shipped with in-tree btusb.c in kernel < 7.0 (no
+   regression for the target audience). On kernel 7.0+ hosts a minor
+   optimization is lost - USB autosuspend may fire during discovery -
+   but those users would typically use the in-tree driver anyway.
+
+Signed-off-by: Javier Tia <floss@jetm.me>
+
+diff --git a/btusb.c b/btusb.c
+--- a/btusb.c
++++ b/btusb.c
+@@ -2071,7 +2071,7 @@
+ 	if (!urb)
+ 		return ERR_PTR(-ENOMEM);
+ 
+-	dr = kmalloc_obj(*dr);
++	dr = kmalloc(sizeof(*dr), GFP_KERNEL);
+ 	if (!dr) {
+ 		usb_free_urb(urb);
+ 		return ERR_PTR(-ENOMEM);
+@@ -4062,7 +4062,7 @@
+ 			return -ENODEV;
+ 	}
+ 
+-	data = kzalloc_obj(*data);
++	data = kzalloc(sizeof(*data), GFP_KERNEL);
+ 	if (!data)
+ 		return -ENOMEM;
+ 
+@@ -4481,8 +4481,7 @@
+ 	/* Don't auto-suspend if there are connections or discovery in
+ 	 * progress; external suspend calls shall never fail.
+ 	 */
+-	if (PMSG_IS_AUTO(message) &&
+-	    (hci_conn_count(data->hdev) || hci_discovery_active(data->hdev)))
++	if (PMSG_IS_AUTO(message) && hci_conn_count(data->hdev))
+ 		return -EBUSY;
+ 
+ 	if (data->suspend_count++)
+diff --git a/btmtk.c b/btmtk.c
+--- a/btmtk.c
++++ b/btmtk.c
+@@ -537,7 +537,7 @@
+ 	if (!urb)
+ 		return -ENOMEM;
+ 
+-	dr = kmalloc_obj(*dr);
++	dr = kmalloc(sizeof(*dr), GFP_KERNEL);
+ 	if (!dr) {
+ 		usb_free_urb(urb);
+ 		return -ENOMEM;

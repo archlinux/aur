@@ -31,7 +31,7 @@ device ID and firmware patches not yet in mainline. Supports kernels 6.17+.
   seconds, power back on. A regular reboot is not enough - the MT6639 BT firmware
   locks up and only recovers with a full power drain.
   ([#23](https://github.com/jetm/mediatek-mt7927-dkms/issues/23))
-- AP mode throughput capped at ~15 Mbps - MT7927 firmware is optimized for STA mode ([#36](https://github.com/jetm/mediatek-mt7927-dkms/issues/36))
+- AP mode throughput lower than Windows (~424 Mbps vs ~700 Mbps at 80 MHz) - Linux driver/stack limitation, not firmware. NetworkManager defaults to 20 MHz which drops to ~130 Mbps. Use hostapd for wider channels. ([#36](https://github.com/jetm/mediatek-mt7927-dkms/issues/36))
 
 ## Supported hardware
 
@@ -59,6 +59,21 @@ Check if your hardware is detected:
 lspci | grep -i 14c3          # WiFi (PCIe)
 lsusb | grep -iE '0489|13d3|0e8d'  # Bluetooth (USB)
 ```
+
+## Tested distributions
+
+Requires kernel 6.17+ and DKMS.
+
+| Distribution | Kernel | Install method |
+|-------------|--------|----------------|
+| Arch Linux / CachyOS | 6.19+ | AUR (`yay -S mediatek-mt7927-dkms`) |
+| Fedora 43 | 6.17+ | RPM (`make rpm`) |
+| Ubuntu / Debian | 6.17+ | DEB (`make deb`) |
+| Proxmox VE | 6.17+ | `make install` |
+| NixOS | 6.17+ | [Community port](https://github.com/cmspam/mt7927-nixos) |
+| Bazzite (Fedora Atomic) | 6.17+ | [Container image](https://github.com/samutoljamo/bazzite-mt7927) |
+| Artix Linux | 6.18+ | `make install` |
+| Linux Mint 22.2 (Ubuntu 24.04) | 6.17+ | `make install` |
 
 ## Naming guide
 

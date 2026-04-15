@@ -19,6 +19,26 @@ PKGBUILD="$DKMS_DIR/PKGBUILD"
 DKMS_CONF="$DKMS_DIR/dkms.conf"
 REPO="jetm/mediatek-mt7927-dkms"
 
+# Rollback version-bump sed changes if we fail before the tag is pushed.
+release_committed=0
+rollback_on_failure() {
+	local rc=$?
+	if ((release_committed == 0)); then
+		echo >&2 ""
+		echo >&2 "Release aborted before tag push - reverting version-bump changes..."
+		git checkout -- "$PKGBUILD" "$DKMS_CONF" .SRCINFO 2>/dev/null || true
+	fi
+	exit "$rc"
+}
+trap rollback_on_failure ERR
+
+# Require releasing from master so the pushed tag points at a commit on master.
+current_branch=$(git symbolic-ref --short HEAD 2>/dev/null || echo "")
+if [[ "$current_branch" != "master" ]]; then
+	echo >&2 "ERROR: Must be on master branch to release (currently: ${current_branch:-<detached>})"
+	exit 1
+fi
+
 # Read current version
 cur_pkgver=$(grep '^pkgver=' "$PKGBUILD" | cut -d= -f2)
 cur_pkgrel=$(grep '^pkgrel=' "$PKGBUILD" | cut -d= -f2)
@@ -105,30 +125,26 @@ echo ""
 echo "Building package..."
 aurgen
 
-# Show what will be committed
+# Show the (expected-empty) diff so the user can confirm tree is clean
 echo ""
-echo "Changes to commit:"
+echo "Working tree diff:"
 git diff --stat
 
 # Confirm
 echo ""
-read -rp "Commit and release ${new_tag}? [y/N] " confirm
+read -rp "Release ${new_tag}? [y/N] " confirm
 if [[ "$confirm" != [yY] ]]; then
 	echo "Aborted. Reverting version changes..."
-	git checkout -- PKGBUILD dkms.conf
+	git checkout -- "$PKGBUILD" "$DKMS_CONF" .SRCINFO 2>/dev/null || true
 	exit 1
-fi
-
-# Commit (skip if version was already set before script ran)
-git add PKGBUILD dkms.conf .SRCINFO
-if git diff --cached --quiet; then
-	echo "Version already set, no commit needed."
-else
-	git commit -m "pkg: Release ${new_tag}"
 fi
 
 # Tag
 git tag "${new_tag}"
+
+# From here on, the local tag exists. Don't roll back PKGBUILD/dkms.conf on
+# subsequent failures - the user can retry the push steps manually.
+release_committed=1
 
 # Push to GitHub first (tag triggers GH Actions: release + RPM/DEB)
 echo ""

@@ -1,0 +1,43 @@
+wifi: mt76: mt7925: fix reported txpower always showing 3 dBm
+
+mt76_get_txpower() computes the reported TX power from
+phy->txpower_cur, but the mt7925 driver never assigns this field.
+It stays at 0, causing iw to always report 3 dBm regardless of
+actual transmit power:
+
+  DIV_ROUND_UP(0 + 6, 2) = 3
+
+The actual RF output is unaffected - firmware receives correct SKU
+power tables via set_rate_txpower. Only the value reported to
+userspace through iw and nl80211 is wrong.
+
+Fix this by computing the effective TX power for the current
+operating channel after programming the per-band SKU tables,
+following the same pattern used by mt7996.
+
+Link: https://github.com/jetm/mediatek-mt7927-dkms/issues/47
+Reported-by: Loong0x00 <loong0x00@users.noreply.github.com>
+Signed-off-by: Javier Tia <floss@jetm.me>
+Tested-by: Marcin Wróblewski <mawroble@gmail.com>
+Tested-by: Clément Metz <metz.clement@gmail.com>
+
+cb234606f197714fd0e282973e2ba41068595d3f
+diff --git a/mt7925/mcu.c b/mt7925/mcu.c
+index 0755fee..d42025a 100644
+--- a/mt7925/mcu.c
++++ b/mt7925/mcu.c
+@@ -3839,2 +3839,14 @@ int mt7925_mcu_set_rate_txpower(struct mt76_phy *phy)
+ 
++	if (phy->chandef.chan) {
++		struct mt76_power_limits la = {};
++		int tx_power;
++
++		tx_power = mt76_get_power_bound(phy,
++						mdev->hw->conf.power_level);
++		tx_power = mt76_get_rate_power_limits(phy,
++						      phy->chandef.chan,
++						      &la, tx_power);
++		phy->txpower_cur = tx_power;
++	}
++
+ 	return 0;

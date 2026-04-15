@@ -1,0 +1,46 @@
+wifi: mt76: mt7925: add STA_REC_TX_PROC TLV
+
+mt7996 sends a STA_REC_TX_PROC TLV for every connected station,
+configuring the firmware TX engine per-client (AMSDU aggregation,
+header conversion). mt7925 does not send this, leaving firmware TX
+processing at uninitialized defaults.
+
+Add mt7925_mcu_sta_tx_proc_tlv() ported from mt7996, initializing
+the flag field to zero (firmware defaults). Wire it into the
+info->enable path of mt7925_mcu_sta_cmd() and bump
+MT7925_STA_UPDATE_MAX_SIZE accordingly.
+
+Signed-off-by: Javier Tia <floss@jetm.me>
+
+007490be9e4ee4fd0d12816e1a1c5203e9dfe974
+diff --git a/mt7925/mcu.c b/mt7925/mcu.c
+index d2ac847..55c4975 100644
+--- a/mt7925/mcu.c
++++ b/mt7925/mcu.c
+@@ -1730,2 +1730,14 @@ mt7925_mcu_sta_muru_tlv(struct sk_buff *skb,
+ 
++static void
++mt7925_mcu_sta_tx_proc_tlv(struct sk_buff *skb)
++{
++	struct sta_rec_tx_proc *tx_proc;
++	struct tlv *tlv;
++
++	tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_TX_PROC, sizeof(*tx_proc));
++
++	tx_proc = (struct sta_rec_tx_proc *)tlv;
++	tx_proc->flag = cpu_to_le32(0);
++}
++
+ static void
+@@ -2096,2 +2108,3 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
+ 		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
++		mt7925_mcu_sta_tx_proc_tlv(skb);
+ 	}
+diff --git a/mt7925/mcu.h b/mt7925/mcu.h
+index 1471e75..f1aa588 100644
+--- a/mt7925/mcu.h
++++ b/mt7925/mcu.h
+@@ -523,2 +523,3 @@ struct bss_rlm_tlv {
+ 					 sizeof(struct sta_rec_muru) +		\
++					 sizeof(struct sta_rec_tx_proc) +	\
+ 					 sizeof(struct tlv) * 2 +		\

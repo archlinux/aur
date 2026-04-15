@@ -1,0 +1,98 @@
+wifi: mt76: mt7925: add STA_REC_MURU TLV for AP mode
+
+mt7925 never sends STA_REC_MURU to firmware. This TLV tells the
+firmware scheduler about each client's MU-MIMO and OFDMA capabilities.
+Without it, firmware cannot use DL-OFDMA or DL-MU-MIMO, and the
+enable flags (mimo_dl_en, ofdma_dl_en) may gate other TX optimizations
+even for single-client scenarios.
+
+Port the MURU TLV builder from mt7996, populating MIMO DL/UL and
+OFDMA DL/UL fields from the link station's HE/VHT capabilities.
+Wire it into mt7925_mcu_sta_cmd() and bump MT7925_STA_UPDATE_MAX_SIZE
+to account for the new TLV.
+
+Signed-off-by: Javier Tia <floss@jetm.me>
+
+d47a11085074e9e7ccb6deacf927194a039f2084
+diff --git a/mt7925/mcu.c b/mt7925/mcu.c
+index d42025a..d2ac847 100644
+--- a/mt7925/mcu.c
++++ b/mt7925/mcu.c
+@@ -13,2 +13,5 @@
+ 
++#define HE_PHY(p, c)			u8_get_bits(c, IEEE80211_HE_PHY_##p)
++#define HE_MAC(m, c)			u8_get_bits(c, IEEE80211_HE_MAC_##m)
++
+ int mt7925_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+@@ -1671,2 +1674,58 @@ mt7925_mcu_sta_he_tlv(struct sk_buff *skb, struct ieee80211_link_sta *link_sta)
+ 
++static void
++mt7925_mcu_sta_muru_tlv(struct sk_buff *skb,
++			struct ieee80211_bss_conf *link_conf,
++			struct ieee80211_link_sta *link_sta)
++{
++	struct ieee80211_he_cap_elem *elem = &link_sta->he_cap.he_cap_elem;
++	struct sta_rec_muru *muru;
++	struct tlv *tlv;
++
++	if (link_conf->vif->type != NL80211_IFTYPE_STATION &&
++	    link_conf->vif->type != NL80211_IFTYPE_AP)
++		return;
++
++	tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_MURU, sizeof(*muru));
++
++	muru = (struct sta_rec_muru *)tlv;
++	muru->cfg.mimo_dl_en = link_conf->eht_mu_beamformer ||
++			       link_conf->he_mu_beamformer ||
++			       link_conf->vht_mu_beamformer ||
++			       link_conf->vht_mu_beamformee;
++	muru->cfg.ofdma_dl_en = true;
++
++	if (link_sta->vht_cap.vht_supported)
++		muru->mimo_dl.vht_mu_bfee =
++			!!(link_sta->vht_cap.cap & IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE);
++
++	if (!link_sta->he_cap.has_he)
++		return;
++
++	muru->mimo_dl.partial_bw_dl_mimo =
++		HE_PHY(CAP6_PARTIAL_BANDWIDTH_DL_MUMIMO, elem->phy_cap_info[6]);
++
++	muru->mimo_ul.full_ul_mimo =
++		HE_PHY(CAP2_UL_MU_FULL_MU_MIMO, elem->phy_cap_info[2]);
++	muru->mimo_ul.partial_ul_mimo =
++		HE_PHY(CAP2_UL_MU_PARTIAL_MU_MIMO, elem->phy_cap_info[2]);
++
++	muru->ofdma_dl.punc_pream_rx =
++		HE_PHY(CAP1_PREAMBLE_PUNC_RX_MASK, elem->phy_cap_info[1]);
++	muru->ofdma_dl.he_20m_in_40m_2g =
++		HE_PHY(CAP8_20MHZ_IN_40MHZ_HE_PPDU_IN_2G, elem->phy_cap_info[8]);
++	muru->ofdma_dl.he_20m_in_160m =
++		HE_PHY(CAP8_20MHZ_IN_160MHZ_HE_PPDU, elem->phy_cap_info[8]);
++	muru->ofdma_dl.he_80m_in_160m =
++		HE_PHY(CAP8_80MHZ_IN_160MHZ_HE_PPDU, elem->phy_cap_info[8]);
++
++	muru->ofdma_ul.t_frame_dur =
++		HE_MAC(CAP1_TF_MAC_PAD_DUR_MASK, elem->mac_cap_info[1]);
++	muru->ofdma_ul.mu_cascading =
++		HE_MAC(CAP2_MU_CASCADING, elem->mac_cap_info[2]);
++	muru->ofdma_ul.uo_ra =
++		HE_MAC(CAP3_OFDMA_RA, elem->mac_cap_info[3]);
++	muru->ofdma_ul.rx_ctrl_frame_to_mbss =
++		HE_MAC(CAP3_RX_CTRL_FRAME_TO_MULTIBSS, elem->mac_cap_info[3]);
++}
++
+ static void
+@@ -2015,2 +2074,4 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
+ 		mt7925_mcu_sta_he_tlv(skb, info->link_sta);
++		mt7925_mcu_sta_muru_tlv(skb, info->link_conf,
++					info->link_sta);
+ 		mt7925_mcu_sta_he_6g_tlv(skb, info->link_sta);
+diff --git a/mt7925/mcu.h b/mt7925/mcu.h
+index e09e060..1471e75 100644
+--- a/mt7925/mcu.h
++++ b/mt7925/mcu.h
+@@ -522,2 +522,3 @@ struct bss_rlm_tlv {
+ 					 sizeof(struct sta_rec_mld) +		\
++					 sizeof(struct sta_rec_muru) +		\
+ 					 sizeof(struct tlv) * 2 +		\

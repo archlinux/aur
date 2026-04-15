@@ -174,7 +174,7 @@ git commit -q -m "mt7902"
 # Clean stale patches before full regeneration
 if ((${#patches_to_gen[@]} == 0)) && ! $dry_run; then
 	echo "Cleaning old DKMS patches..."
-	rm -f "$DKMS_DIR"/mt7927-wifi-*.patch
+	rm -f "$DKMS_DIR"/mt7927-wifi-[0-9]*.patch
 fi
 
 echo "Generating patches..."

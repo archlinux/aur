@@ -1,0 +1,29 @@
+wifi: mt76: mt7925: route BA command to WA processor for AMPDU
+
+mt7925_mcu_sta_ba sends the STA_REC_BA TLV using MCU_UNI_CMD which
+routes only to the WM (WiFi Manager) processor. The WA (WiFi Agent)
+processor, which handles TX aggregation scheduling, never learns
+about the BA session. As a result, firmware accepts the BA command
+but never performs AMPDU framing - all TX Length counters remain
+zero in AP mode despite BA sessions being established.
+
+mt7996 sends the same TLV using MCU_WMWA_UNI_CMD which routes to
+both WM and WA. Use the same command routing so WA can enable AMPDU
+TX aggregation after BA setup.
+
+Signed-off-by: Javier Tia <floss@jetm.me>
+
+ffc0b45b68310fd35bb1ef59abcfbbaee7d07cb5
+diff --git a/mt7925/mcu.c b/mt7925/mcu.c
+index 360cc4d..d40eac5 100644
+--- a/mt7925/mcu.c
++++ b/mt7925/mcu.c
+@@ -673,7 +673,7 @@ mt7925_mcu_sta_ba(struct mt76_dev *dev, struct mt76_vif_link *mvif,
+ 	ba->tid = params->tid;
+ 
+ 	return mt76_mcu_skb_send_msg(dev, skb,
+-				     MCU_UNI_CMD(STA_REC_UPDATE), true);
++				     MCU_WMWA_UNI_CMD(STA_REC_UPDATE), true);
+ }
+ 
+ /** starec & wtbl **/

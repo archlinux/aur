@@ -1,0 +1,50 @@
+wifi: mt76: mt7925: fix TX power reporting in AP mode
+
+mt7925 computes phy->txpower_cur from hw->conf.power_level, which is
+always 0 for chanctx-capable drivers in AP mode. mac80211 delivers
+per-BSS TX power via BSS_CHANGED_TXPOWER instead, but mt7925 ignored
+this event. This caused mt76_get_txpower() to report 0 dBm.
+
+Add a txpower field to mt792x_phy to store the per-BSS TX power from
+mac80211. Handle BSS_CHANGED_TXPOWER in mt7925_link_info_changed() to
+update this field and recalculate power limits. Use the stored value
+instead of hw->conf.power_level when computing phy->txpower_cur in
+mt7925_mcu_set_rate_txpower().
+
+This mirrors how mt7996 handles TX power via its own phy->txpower
+field and BSS_CHANGED_TXPOWER handler.
+
+Signed-off-by: Javier Tia <floss@jetm.me>
+
+b7ef4f7c2babaa05d111ccc810c9566b084d798b
+diff --git a/mt7925/main.c b/mt7925/main.c
+index 825251f..844f8ff 100644
+--- a/mt7925/main.c
++++ b/mt7925/main.c
+@@ -1994,2 +1994,8 @@ static void mt7925_link_info_changed(struct ieee80211_hw *hw,
+ 
++	if (changed & BSS_CHANGED_TXPOWER &&
++	    info->txpower != phy->txpower) {
++		phy->txpower = info->txpower;
++		mt7925_mcu_set_rate_txpower(phy->mt76);
++	}
++
+ 	mt792x_mutex_release(dev);
+diff --git a/mt7925/mcu.c b/mt7925/mcu.c
+index 55c4975..360cc4d 100644
+--- a/mt7925/mcu.c
++++ b/mt7925/mcu.c
+@@ -3918,3 +3918,3 @@ int mt7925_mcu_set_rate_txpower(struct mt76_phy *phy)
+ 		tx_power = mt76_get_power_bound(phy,
+-						mdev->hw->conf.power_level);
++						dev->phy.txpower);
+ 		tx_power = mt76_get_rate_power_limits(phy,
+diff --git a/mt792x.h b/mt792x.h
+index d456c57..d5607dc 100644
+--- a/mt792x.h
++++ b/mt792x.h
+@@ -169,2 +169,4 @@ struct mt792x_phy {
+ 
++	int txpower;
++
+ 	u32 rx_ampdu_ts;

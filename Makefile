@@ -75,7 +75,7 @@ $(STAMP): check-version
 		patch -d "$(SRCDIR)/mt76" -p1 < "$$p"; \
 	done
 	@echo "==> Applying MT6639 Bluetooth patches..."
-	@for p in $(TOPDIR)mt6639-bt-[0-9]*.patch; do \
+	@for p in $(TOPDIR)mt6639-bt-[0-9]*.patch $(TOPDIR)mt6639-bt-compat-*.patch; do \
 		echo "  $$(basename "$$p")"; \
 		patch -d "$(SRCDIR)/bluetooth" -p1 < "$$p"; \
 	done
@@ -136,7 +136,7 @@ install: sources
 	# Patch files (reference copies)
 	install -dm755 "$(DESTDIR)$(DKMS_PREFIX)/patches/bt"
 	install -dm755 "$(DESTDIR)$(DKMS_PREFIX)/patches/wifi"
-	install -m644 $(TOPDIR)mt6639-bt-[0-9]*.patch "$(DESTDIR)$(DKMS_PREFIX)/patches/bt/"
+	install -m644 $(TOPDIR)mt6639-bt-[0-9]*.patch $(TOPDIR)mt6639-bt-compat-*.patch "$(DESTDIR)$(DKMS_PREFIX)/patches/bt/"
 	install -m644 "$(TOPDIR)mt7902-wifi-6.19.patch" "$(DESTDIR)$(DKMS_PREFIX)/patches/wifi/"
 	install -m644 $(TOPDIR)mt7927-wifi-*.patch "$(DESTDIR)$(DKMS_PREFIX)/patches/wifi/"
 	@echo "==> Install complete."

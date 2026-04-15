@@ -1,0 +1,41 @@
+wifi: mt76: mt7925: add missing HE AP PHY capabilities
+
+AP mode HE caps were severely stripped compared to STA mode, missing
+key capabilities that affect throughput. At 80 MHz 2SS, short GI
+(0.8us) vs 1.6us GI is ~960 vs ~816 Mbps theoretical.
+
+Add missing PHY capabilities to AP iftype data: short guard interval
+(LTF_AND_GI 0.8us), 4xLTF with short GI, SU beamformee with max STS
+for UL sounding, power boost factor, and sub-channel PPDU support
+(20-in-40 for 2G, 80-in-160). These mirror what STA mode already
+advertises.
+
+Signed-off-by: Javier Tia <floss@jetm.me>
+
+dd1f9209330fbad7b0443d3e6cc62eb905e939df
+diff --git a/mt7925/main.c b/mt7925/main.c
+index f36638b..825251f 100644
+--- a/mt7925/main.c
++++ b/mt7925/main.c
+@@ -64,2 +64,5 @@ mt7925_init_he_caps(struct mt792x_phy *phy, enum nl80211_band band,
+ 			IEEE80211_HE_MAC_CAP5_OM_CTRL_UL_MU_DATA_DIS_RX;
++		he_cap_elem->phy_cap_info[1] |=
++			IEEE80211_HE_PHY_CAP1_DEVICE_CLASS_A |
++			IEEE80211_HE_PHY_CAP1_HE_LTF_AND_GI_FOR_HE_PPDUS_0_8US;
+ 		he_cap_elem->phy_cap_info[3] |=
+@@ -67,2 +70,6 @@ mt7925_init_he_caps(struct mt792x_phy *phy, enum nl80211_band band,
+ 			IEEE80211_HE_PHY_CAP3_DCM_MAX_CONST_RX_QPSK;
++		he_cap_elem->phy_cap_info[4] |=
++			IEEE80211_HE_PHY_CAP4_SU_BEAMFORMEE |
++			IEEE80211_HE_PHY_CAP4_BEAMFORMEE_MAX_STS_UNDER_80MHZ_4 |
++			IEEE80211_HE_PHY_CAP4_BEAMFORMEE_MAX_STS_ABOVE_80MHZ_4;
+ 		he_cap_elem->phy_cap_info[6] |=
+@@ -70,2 +77,8 @@ mt7925_init_he_caps(struct mt792x_phy *phy, enum nl80211_band band,
+ 			IEEE80211_HE_PHY_CAP6_PPE_THRESHOLD_PRESENT;
++		he_cap_elem->phy_cap_info[7] |=
++			IEEE80211_HE_PHY_CAP7_POWER_BOOST_FACTOR_SUPP |
++			IEEE80211_HE_PHY_CAP7_HE_SU_MU_PPDU_4XLTF_AND_08_US_GI;
++		he_cap_elem->phy_cap_info[8] |=
++			IEEE80211_HE_PHY_CAP8_20MHZ_IN_40MHZ_HE_PPDU_IN_2G |
++			IEEE80211_HE_PHY_CAP8_80MHZ_IN_160MHZ_HE_PPDU;
+ 		he_cap_elem->phy_cap_info[9] |=
