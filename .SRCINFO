@@ -1,6 +1,6 @@
 pkgbase = clipshare-bin
 	pkgdesc = 剪贴板同步工具，支持跨平台使用，此版本在原作者基础上增加对wayland兼容性，x11没测试，如果用不了可以用作者原版，后续更新关注原作者github地址
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/aa2013/ClipShare
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = clipshare-bin
 	provides = clipshare
 	conflicts = clipshare
 	options = !strip
-	source = ClipShare-1.4.3-linux-x86_64.tar.gz::https://github.com/JianGangLi/ClipShare/releases/download/v1.2.1/ClipShare-1.4.3-linux-x86_64.tar.gz
-	sha256sums = f5e23eed514a7c4cbc19ef2dc68b1d0ef758eb4392f491ca270844d9c28c46c4
+	source = ClipShare-1.4.4-linux-x86_64.tar.gz::https://github.com/JianGangLi/ClipShare/releases/download/v1.4.4/ClipShare-1.4.4-linux-x86_64.tar.gz
+	sha256sums = 7b51247d80a30a55bf691a11695f879f281d509cca2189befcf3489e1db2ea07
 
 pkgname = clipshare-bin
