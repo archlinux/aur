@@ -1,0 +1,17 @@
+pkgbase = pipewire-ldac-dec
+	pkgdesc = A metapackage to install pipewire with ldac decoding support
+	pkgver = 1.6.3
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = libldacdec
+	depends = pipewire-ldac
+	depends = libpipewire-ldac
+	depends = pipewire-libcamera-ldac
+	depends = pipewire-audio-ldac
+	depends = pipewire-alsa-ldac
+	depends = pipewire-jack-ldac
+	depends = pipewire-pulse-ldac
+	depends = gst-plugin-pipewire-ldac
+
+pkgname = pipewire-ldac-dec
