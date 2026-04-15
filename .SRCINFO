@@ -1,6 +1,6 @@
 pkgbase = python-xeus-python-shell
 	pkgdesc = The xeus-python core python logic
-	pkgver = 0.6.6
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/jupyter-xeus/xeus-python-shell
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-xeus-python-shell
 	depends = python-debugpy
 	optdepends = ipython: IPython support
 	optdepends = python-pyjs: wasm support
-	source = xeus-python-shell-0.6.6.tar.gz::https://github.com/jupyter-xeus/xeus-python-shell/archive/0.6.6.tar.gz
-	sha512sums = 3dcacb72ab3299b4da87b6647997d5e8e370649421799d6d06a5f7be300acdb3cb950f662f283c6231009b4e5fa74c7633586be38a301fcd18b620c470bd9722
+	source = xeus-python-shell-0.7.0.tar.gz::https://github.com/jupyter-xeus/xeus-python-shell/archive/0.7.0.tar.gz
+	sha512sums = 9d40f02b633076d0576e3c20313559fe191901da44501d0830c4400e6737c3536950722f2d7267c679be8dd3f20435666fafc391b2251d7a04120968419328ce
 
 pkgname = python-xeus-python-shell
