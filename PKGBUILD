@@ -1,8 +1,11 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
+: "${MAKEPKG_MATLAB_PREFIX:=/opt}"
+: "${MAKEPKG_MATLAB_ROOT:=${MAKEPKG_MATLAB_PREFIX}/MATLAB}"
+
 pkgname="matlab-mcp-core-server"
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Run MATLAB® using AI applications with the official MATLAB MCP Server from MathWorks®"
 arch=(
   'x86_64' # glnxa64
@@ -15,6 +18,7 @@ license=(
 depends=(
   'glibc'
   'matlab-release>=R2020b'
+  'sh'
 )
 makedepends=(
   'go'
@@ -23,16 +27,17 @@ makedepends=(
 _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
-  "${pkgname}_disable_telemetry.patch"
+  "${pkgname}.sh"
+  # "${pkgname}_disable_telemetry.patch"
 )
 sha256sums=('151ccb108d3da423e9480b7623d87a65195e259de8f4174294f899ce34a4b749'
-            '7a56f149840e0f1cdc592c7de5f261c8a03d1ce48a1adcf4fc03c7f1b059ce18')
+            '49d0f8ed16c0828abccb82839263013eb86b664340f46352021f9374574143e7')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "${srcdir}/${pkgname}_disable_telemetry.patch"
+  # patch -Np1 -i "${srcdir}/${pkgname}_disable_telemetry.patch"
 
   go mod download -modcacherw -x
   go mod verify
@@ -51,17 +56,21 @@ build() {
   go build -v -o "build/glnxa64/${pkgname}" ./"cmd/${pkgname}"
 }
 
-# check() {
-#   export MATLAB_MCP_CORE_SERVER_BUILD_DIR="${srcdir}/${_pkgsrc}/build"
-#   export MCP_MATLAB_PATH=""
+check() {
+  export MATLAB_MCP_CORE_SERVER_BUILD_DIR="${srcdir}/${_pkgsrc}/build"
+  export MCP_MATLAB_PATH="$(printf '%s\n' ${MAKEPKG_MATLAB_ROOT}/*/bin | sort -V | tail -n1)"
 
-#   cd "${srcdir}/${_pkgsrc}"
-#   go test ./...
-# }
+  cd "${srcdir}/${_pkgsrc}"
+  # go test ./...
+  go test ./internal/... ./pkg/... ./tests/testutils/... ./tests/integration/...
+}
 
 package() {
-  cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "build/glnxa64/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  cd "${srcdir}"
+  install -vDm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+
+  cd "${_pkgsrc}"
+  install -vDm755 "build/glnxa64/${pkgname}" "${pkgdir}/usr/lib/${pkgname}/${pkgname}"
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }

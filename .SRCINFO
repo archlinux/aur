@@ -1,7 +1,7 @@
 pkgbase = matlab-mcp-core-server
 	pkgdesc = Run MATLAB® using AI applications with the official MATLAB MCP Server from MathWorks®
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mathworks.com/products/matlab-mcp-core-server.html
 	arch = x86_64
 	license = BSD-3-Clause
@@ -9,9 +9,10 @@ pkgbase = matlab-mcp-core-server
 	makedepends = git
 	depends = glibc
 	depends = matlab-release>=R2020b
+	depends = sh
 	source = matlab-mcp-core-server::git+https://github.com/matlab/matlab-mcp-core-server.git#tag=v0.7.0
-	source = matlab-mcp-core-server_disable_telemetry.patch
+	source = matlab-mcp-core-server.sh
 	sha256sums = 151ccb108d3da423e9480b7623d87a65195e259de8f4174294f899ce34a4b749
-	sha256sums = 7a56f149840e0f1cdc592c7de5f261c8a03d1ce48a1adcf4fc03c7f1b059ce18
+	sha256sums = 49d0f8ed16c0828abccb82839263013eb86b664340f46352021f9374574143e7
 
 pkgname = matlab-mcp-core-server
