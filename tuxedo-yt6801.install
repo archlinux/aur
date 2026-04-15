@@ -1,31 +1,20 @@
 post_install() {
-    # We use a wildcard here or the injected version to find the directory
-    # Adjust path if you use versioned directories: /usr/src/tuxedo-yt6801-${1}
-    local src_dir="/usr/src/tuxedo-yt6801"
-    local board_name=""
-    local target="Kbuild_default"
-
+    local board_name="Unknown"
     if [ -f "/sys/class/dmi/id/board_name" ]; then
         board_name="$(cat /sys/class/dmi/id/board_name)"
     fi
 
-    # Logic from base_package.yml
+    echo ""
     if [ "GXxHRXx" = "$board_name" ] || [ "GM5IXxA" = "$board_name" ]; then
-        target="Kbuild_no_aspm"
-        echo ":: Board '$board_name' detected. Disabling ASPM."
+        echo ":: Motorcomm YT6801: Known problematic board '$board_name' detected."
+        echo ":: DKMS will build the module with ASPM disabled for stability."
     else
-        echo ":: Using default configuration (ASPM enabled)."
+        echo ":: Motorcomm YT6801: Board '$board_name' detected."
+        echo ":: DKMS will build the module with default settings (ASPM enabled)."
     fi
-
-    # Create the symlink that DKMS will actually use
-    ln -sf "${src_dir}/${target}" "${src_dir}/Kbuild"
+    echo ""
 }
 
 post_upgrade() {
-    post_install "$1"
-}
-
-pre_remove() {
-    local src_dir="/usr/src/tuxedo-yt6801"
-    rm -f "${src_dir}/Kbuild"
+    post_install
 }
