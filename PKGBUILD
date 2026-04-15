@@ -4,7 +4,7 @@
 pkgname=namida-bin
 pkgver=6.0.0
 _buildnumber=260415083
-pkgrel=2
+pkgrel=3
 pkgdesc="A Beautiful and Feature-rich Music Player, With YouTube & Video Support Built in Flutter"
 arch=('x86_64')
 url="https://github.com/namidaco/namida-snapshots"
@@ -68,9 +68,6 @@ package() {
     "${pkgdir}/usr/share/metainfo/namida.metainfo.xml"
 
   # install icons
-  install -Dm644 "share/icons/namida.png" \
-    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/namida.png"
-
   install -Dm644 "share/icons/namida_512.png" \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/namida.png"
 
