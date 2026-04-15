@@ -10,7 +10,6 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 options=('!lto')
-conflicts=('tmux-ai-titles-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/evanpurkhiser/tmux-ai-titles/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('e6d5c40cf1743e48256c33ece3a76f62ca44595a7f5f592622d5c9794ad5eaff')
 
