@@ -1,7 +1,7 @@
 # Maintainer: D7OMDEV <hello@d7om.dev>
 pkgname=clipse-gui
 pkgver=0.7.0
-pkgrel=25
+pkgrel=26
 pkgdesc="A GTK3 GUI for the clipse clipboard manager"
 arch=('any')
 url="https://github.com/d7omdev/clipse-gui"
@@ -15,27 +15,30 @@ depends=(
 	'xdotool'
 	'clipse'
 )
-makedepends=('git')
+makedepends=(
+	'git'
+	'python-build'
+	'python-installer'
+	'python-setuptools'
+	'python-wheel'
+)
 source=("git+https://github.com/d7omdev/clipse-gui.git")
 sha256sums=('SKIP')
+
+build() {
+	cd "$srcdir/$pkgname" || exit
+	# Build a standard wheel. No isolation: use the system's setuptools/wheel
+	# instead of pulling fresh copies from PyPI in a sealed venv.
+	python -m build --wheel --no-isolation
+}
 
 package() {
 	cd "$srcdir/$pkgname" || exit
 
-	# Install Python sources — no Nuitka bundle. System python-gobject stays
-	# in sync with system GLib, avoiding the frozen-gi assertion crashes that
-	# affected 0.6.0 (#13) and 0.7.0 (#14).
-	install -dm755 "$pkgdir/usr/share/$pkgname"
-	cp -r clipse_gui "$pkgdir/usr/share/$pkgname/"
-	install -Dm644 "$pkgname.py" "$pkgdir/usr/share/$pkgname/$pkgname.py"
-
-	# Launcher shim
-	install -dm755 "$pkgdir/usr/bin"
-	cat >"$pkgdir/usr/bin/$pkgname" <<EOF
-#!/bin/sh
-exec python "/usr/share/$pkgname/$pkgname.py" "\$@"
-EOF
-	chmod +x "$pkgdir/usr/bin/$pkgname"
+	# Install wheel into the package root using PEP 517's standard installer.
+	# This produces a real `clipse-gui` console_script in /usr/bin and drops
+	# the package under site-packages, where Python expects it.
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
 	# Icon
 	if [ -f "$pkgname.png" ]; then
