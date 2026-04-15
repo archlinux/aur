@@ -1,15 +1,14 @@
 # Maintainer: Christopher Snowhill <kode54@gmail.com>
 pkgname=fooyin-kode54-plugins-git
 _pkgname=${pkgname%-git}
-pkgver=r32.8b31f99
+pkgver=r48.a93771e
 pkgrel=1
 pkgdesc="A set of plugins for Fooyin (Git version)"
 url="https://github.com/kode54/fooyin-kode54-plugins"
 arch=('x86_64')
 license=('GPL-3.0-only')
 makedepends=('cmake' 'git')
-depends=('fooyin' 'libbass' 'libbassmidi' 'libbass_mpc' 'libbassflac' 'libbassopus'
-         'libbasswv' 'libmgba' 'vgmstream')
+depends=('fooyin' 'libmgba' 'vgmstream')
 source=('git+https://github.com/kode54/fooyin-kode54-plugins.git'
         'git+https://github.com/kode54/midi_processing.git'
         'git+https://bitbucket.org/losnoco/psflib.git'
