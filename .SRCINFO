@@ -1,6 +1,6 @@
 pkgbase = jiq-ai-bin
 	pkgdesc = Interactive JSON query tool with real-time output and AI assistant
-	pkgver = 3.21.1
+	pkgver = 3.22.0
 	pkgrel = 1
 	url = https://github.com/bellicose100xp/jiq
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = jiq-ai-bin
 	provides = jiq
 	conflicts = jiq
 	conflicts = jiq-bin
-	source_x86_64 = jiq-x86_64-3.21.1.txz::https://github.com/bellicose100xp/jiq/releases/download/v3.21.1/jiq-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = caf7423e9a2d633acdc554eeff7881a8b99210d86193901f23d511be0a9cf78f
-	source_aarch64 = jiq-aarch64-3.21.1.txz::https://github.com/bellicose100xp/jiq/releases/download/v3.21.1/jiq-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = a99d1cbc592277c66d0a75ea9cbfea94d8e1f32b6e2e5f42f25bf6c48521ee6e
+	source_x86_64 = jiq-x86_64-3.22.0.txz::https://github.com/bellicose100xp/jiq/releases/download/v3.22.0/jiq-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = e765f099bc5c4ac4b45987eeb9055432ac2638d6a543e06ccdf16e9969d318a4
+	source_aarch64 = jiq-aarch64-3.22.0.txz::https://github.com/bellicose100xp/jiq/releases/download/v3.22.0/jiq-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 1df390e4df11e969e6807c92a8a948cc03c9cfbfba7a96efa0f3fefc0f605a69
 
 pkgname = jiq-ai-bin
