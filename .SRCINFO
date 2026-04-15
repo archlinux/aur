@@ -1,12 +1,12 @@
 pkgbase = springcraft
 	pkgdesc = Modern CLI scaffolder for Spring Boot projects
 	pkgver = 0.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = https://github.com{pkgver}/springcraft-linux
+	source = https://github.com/releases/download/v0.3.0/springcraft-linux
 	sha256sums = SKIP
 
 pkgname = springcraft
