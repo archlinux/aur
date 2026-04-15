@@ -2,9 +2,9 @@
 pkgname=yubico-authenticator
 _app_id=com.yubico.yubioath
 pkgdesc="Yubico Authenticator for Desktop"
-pkgver=7.3.2
-pkgrel=2
-_flutter_ver=3.41.2  ## Check .github/workflows/env for version
+pkgver=7.3.3
+pkgrel=1
+_flutter_ver=3.41.6  ## Check .github/workflows/env for version
 arch=('x86_64' 'aarch64')
 url="https://github.com/Yubico/yubioath-flutter"
 license=('Apache-2.0')
@@ -14,8 +14,11 @@ depends=(
   'libayatana-appindicator'
   'libnotify'
   'pcsclite'
+  'python-click'
+  'python-fido2'
   'python-mss'
   'python-pillow'
+  'python-pyscard'
   'python-zxing-cpp'
   'yubikey-manager'
   'zenity'
@@ -33,8 +36,9 @@ makedepends=(
   'python-wheel'
 )
 source=("git+https://github.com/Yubico/yubioath-flutter.git#tag=$pkgver?signed")
-sha256sums=('6a4a150ab6fd64664c0cea613bf04ea46e3b3ba1db5bd3079a9fc20812a04c0c')
-validpgpkeys=('20EE325B86A81BCBD3E56798F04367096FBA95E8')  # Dain Nilsson <dain@yubico.com>
+sha256sums=('9aa06c52ce65db05bb9b4752a09fd6b38346888bf0aa946ee3c5dc01c6da3216')
+validpgpkeys=('20EE325B86A81BCBD3E56798F04367096FBA95E8'   # Dain Nilsson <dain@yubico.com>
+              'C28ED3753F01B4B097A1B306948B29C5F1E063ED')  # Elias Bonnici <elias.bonnici@yubico.com>
 
 prepare() {
   cd yubioath-flutter
@@ -44,10 +48,7 @@ prepare() {
   fvm install "${_flutter_ver}"
   fvm global "${_flutter_ver}"
 
-  # Disable analytics
   fvm flutter --disable-analytics
-
-  # Pull dependencies within prepare, allowing for offline builds later on
   fvm flutter pub get
 
   desktop-file-edit --set-key=Exec --set-value="$pkgname" --set-icon="${_app_id}" \
@@ -85,6 +86,7 @@ package() {
 
   pushd helper
   python -m installer --destdir="$pkgdir" dist/*.whl
+
   install -Dm755 authenticator-helper.py "$pkgdir/opt/$pkgname/helper/authenticator-helper"
   install -Dm755 shell.py -t "$pkgdir/opt/$pkgname/helper/"
   popd
