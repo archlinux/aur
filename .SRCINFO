@@ -1,8 +1,8 @@
 pkgbase = wasm-pack-git
 	pkgdesc = Your favorite rust -> wasm workflow tool!
-	pkgver = 0.9.1.967
+	pkgver = 0.14.0.1390
 	pkgrel = 1
-	url = https://github.com/ashleygwilliams/wasm-pack
+	url = https://github.com/wasm-bindgen/wasm-pack.git
 	arch = i686
 	arch = x86_64
 	license = Apache
@@ -14,8 +14,7 @@ pkgbase = wasm-pack-git
 	depends = npm
 	provides = wasm-pack
 	conflicts = wasm-pack
-	source = wasm-pack::git+https://github.com/rustwasm/wasm-pack
+	source = wasm-pack::git+https://github.com/wasm-bindgen/wasm-pack.git
 	sha256sums = SKIP
 
 pkgname = wasm-pack-git
-
