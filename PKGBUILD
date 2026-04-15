@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-sleipnir
-pkgver=0.5.0
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Reverse mode autodiff library, interior-point method, and NLP solver DSL"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip' 'staticlibs')
 provides=('sleipnirgroup-sleipnir')
 conflicts=('sleipnirgroup-sleipnir')
 source=("git+https://github.com/SleipnirGroup/Sleipnir#tag=v${pkgver}")
-md5sums=('c479536e9d2b50ac5002a98d1630ffae')
+md5sums=('42aacd70bc4178f962d424cace16d6f5')
 
 prepare() {
   cd "$srcdir"/Sleipnir
@@ -23,8 +23,8 @@ prepare() {
 
 build() {
   cmake -B build -S "Sleipnir" \
-    -DUSE_SYSTEM_EIGEN=ON \
-    -DUSE_SYSTEM_NANOBIND=ON \
+    -DSLEIPNIR_USE_SYSTEM_EIGEN=ON \
+    -DSLEIPNIR_USE_SYSTEM_NANOBIND=ON \
     -DCMAKE_INSTALL_PREFIX='/usr'
   cmake --build build
 
