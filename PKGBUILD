@@ -1,6 +1,6 @@
 # Maintainer: Ben Word <ben@benword.com>
 pkgname=quien
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A better WHOIS lookup tool with interactive TUI"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9e69eefffd7ec501621a70daa7482571bbb078a6ea0bf65cb34e8430184f7d6c')
+sha256sums=('d0e74663ef59a9854bef4a16e4ece2cbd48dcf9df870ce26579cba5a9f0359c2')
 
 prepare() {
   cd "$pkgname-$pkgver"

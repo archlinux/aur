@@ -1,6 +1,6 @@
 pkgbase = quien
 	pkgdesc = A better WHOIS lookup tool with interactive TUI
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/retlehs/quien
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = quien
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = quien-0.6.2.tar.gz::https://github.com/retlehs/quien/archive/v0.6.2.tar.gz
-	sha256sums = 9e69eefffd7ec501621a70daa7482571bbb078a6ea0bf65cb34e8430184f7d6c
+	source = quien-0.7.0.tar.gz::https://github.com/retlehs/quien/archive/v0.7.0.tar.gz
+	sha256sums = d0e74663ef59a9854bef4a16e4ece2cbd48dcf9df870ce26579cba5a9f0359c2
 
 pkgname = quien
