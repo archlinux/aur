@@ -225,7 +225,6 @@ export CXX='clang++'
 
 # Branding
 ac_add_options --with-app-name=${__pkgname}
-ac_add_options --enable-update-channel=release
 export MOZ_APP_REMOTINGNAME=${__pkgname}
 
 # System libraries
