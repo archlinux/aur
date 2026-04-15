@@ -1,0 +1,16 @@
+pkgbase = python-classproperties
+	pkgdesc = Property for class methods.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/dpep/pyclassproperties
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/ee/cf/a540ef6bbf6df3192dcb6549a8c84034f5937c5393cefce49f7dec29fead/classproperties-0.2.0.tar.gz
+	sha256sums = a77e96a666898ecd697dd7f331d9ab1e38383c1edef809d953bb5f8a3ea67c2a
+
+pkgname = python-classproperties
