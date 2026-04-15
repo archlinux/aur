@@ -17,4 +17,4 @@ exec pkexec env \
   XDG_CONFIG_HOME="$USER_HOME/.config" XDG_DATA_HOME="$USER_HOME/.local/share" \
   QT_QPA_PLATFORMTHEME=gtk3 \
   GTK_THEME=Adwaita:dark \
-  /usr/bin/legion
+  bash -lc 'cd /opt/legion-gui && exec ./venv/bin/python ./legion.py'
