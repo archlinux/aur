@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=kafkio-bin
-pkgver=2.1.14
+pkgver=2.1.15
 pkgrel=1
 pkgdesc="A GUI application for managing and using Apache Kafka clusters"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://kafkio.com/download/kafkio/${pkgve
         "kafkio.install"
         "laptop_k_colour.svg")
 sha256sums=('d8a242913fd2666763f8b22eed4a272dca2ae40a694bde52e2f95502f9357275'
-            '1801ab5d78e86b0c2efded3466fd9054e89df4e50a6bed7d2cedc152c688ff76'
+            '471bd05ff4e330918adbd69c746a6644fb2006aca40e65ad899047f6dbf56d9f'
             '5a76c0ef634149fa2ca7ac9e44b0d296affecde78921b10210c2f36e76a7c18e'
             '875b569e6358652351deb034afd68b8ee34a7e1a6e92ab7947e3e4980140e5d0')
 noextract=("${pkgname}-${pkgver}.tar.gz")
