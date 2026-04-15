@@ -1,7 +1,7 @@
 post_install() {
     systemctl daemon-reload
-    systemctl enable littlesnitch.service
-    systemctl restart littlesnitch.service
+    echo ":: Little Snitch daemon installed. To start and enable it:"
+    echo "::   systemctl enable --now littlesnitch.service"
 }
 
 post_upgrade() {
