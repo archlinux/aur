@@ -13,7 +13,7 @@
 _pkgname=ffmpeg
 pkgname="${_pkgname}5.1"
 pkgver=5.1.8
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (legacy v5.1 branch, with libavcodec v59)'
 arch=(aarch64 i686 x86_64)
@@ -116,6 +116,7 @@ prepare() {
 
   echo "Applying patches for the SVT-AV1 API change..."
   git cherry-pick -n d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95
+  git cherry-pick -n a5d4c398b411a00ac09d8fe3b66117222323844c
 
   echo "Applying patch for v4l2 1.30..."
   git cherry-pick -n 5fea5e3e11d6ff425db48f44489916399822aece
