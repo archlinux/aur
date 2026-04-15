@@ -5,7 +5,7 @@
 
 _pkgname="mindustry"
 pkgbase="$_pkgname"
-pkgver=156.2
+pkgver=157.1
 pkgrel=1
 pkgdesc="A sandbox tower defense game"
 url="https://github.com/Anuken/Mindustry"
@@ -26,8 +26,8 @@ source=(
   "$_pkgname-arc-$_build.$_pkgext"::"https://github.com/Anuken/Arc/archive/refs/tags/v$_build.$_pkgext"
 )
 sha256sums=(
-  '5a7d7b2af34b06abfc9dabc63e3b6df089b5444e69d4516326762901df2ebc54'
-  'b56e2ce2ef4ba5c58acadbe620726a47c15313fee1125e6be5aeb32635d3e88d'
+  '7126149c8b9b23940d8f97b395e7080c4286b23973b7a3b24b75ec2f66353cef'
+  '3891a6ee77436fc83e57030b1dadf19bb9112dbf42da20e9f2a1bca63255db69'
 )
 
 prepare() {
@@ -68,6 +68,29 @@ END
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/${pkgname%$_pkgtype}" << END
 #!/usr/bin/env sh
+
+_wanted="/usr/lib/jvm/java-${_java_ver}-openjdk"
+if [ -d "\$_wanted" ]; then
+  JAVA_HOME="\$_wanted"
+else
+  _best=""
+  for d in /usr/lib/jvm/java-*-openjdk; do
+    if [ -d "\$d" ]; then
+      n=\$(grep -Pom1 'java-\K[0-9.]+' <<< "\$d")
+      if (( \$n > ${_java_ver} )); then
+        _best="\$d"
+      fi
+    fi
+  done
+  if [ -n "\$_best" ]; then
+    JAVA_HOME="\$_best"
+  fi
+fi
+
+if [ -n "\$JAVA_HOME" ]; then
+  export JAVA_HOME
+fi
+
 exec /usr/bin/java -jar /usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar "\$@"
 END
 
