@@ -24,31 +24,18 @@ source=("$pkgname-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
- cd "$srcdir"
+  cd "$srcdir/$pkgname-$pkgver"
   export RUSTFLAGS="-C link-args=-lonig -lzstd"
   cargo build --release --locked
 }
 
 package() {
-  cd "$srcdir"
-   # Install the binary
-    install -Dm755 "target/release/$pkgname" \
-        "$pkgdir/usr/bin/$pkgname"
-
-        # Install fonts
-    install -Dm644 "fonts/ocr-icons.toml" \
-        "$pkgdir/usr/share/text-extractor/fonts/ocr-icons.toml"
-    install -Dm644 "fonts/ocr-icons.ttf" \
-        "$pkgdir/usr/share/text-extractor/fonts/ocr-icons.ttf"
-install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # Install desktop file
-  install -Dm644 "assets/text-extractor.desktop" \
-    "$pkgdir/usr/share/applications/text-extractor.desktop"
-
-  # Install icon
-  install -Dm644 "assets/icon.png" \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/text-extractor.png"
-
+  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "fonts/ocr-icons.toml" "$pkgdir/usr/share/text-extractor/fonts/ocr-icons.toml"
+  install -Dm644 "fonts/ocr-icons.ttf" "$pkgdir/usr/share/text-extractor/fonts/ocr-icons.ttf"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "assets/text-extractor.desktop" "$pkgdir/usr/share/applications/text-extractor.desktop"
+  install -Dm644 "assets/icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/text-extractor.png"
 }
 
