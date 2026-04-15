@@ -1,6 +1,6 @@
 pkgbase = kaniko
 	pkgdesc = Build Container Images In Kubernetes
-	pkgver = 1.25.9
+	pkgver = 1.25.10
 	pkgrel = 2
 	url = https://github.com/chainguard-dev/kaniko
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kaniko
 	depends = glibc
 	optdepends = bash: run_in_docker.sh script
 	options = !lto
-	source = https://github.com/chainguard-dev/kaniko/archive/refs/tags/v1.25.9.tar.gz
-	sha256sums = 8634f3eb392ff0960f4b14d00d2cb29bb55837f67711fd28cb7615ddb87761da
+	source = https://github.com/chainguard-dev/kaniko/archive/refs/tags/v1.25.10.tar.gz
+	sha256sums = d65aa76d725e456b799fe54c4748457d8db51ba7eb0b8e4e7c541d8e4544880b
 
 pkgname = kaniko
