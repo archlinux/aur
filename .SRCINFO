@@ -1,6 +1,6 @@
 pkgbase = auroradownloader
 	pkgdesc = Your all in one web based music manager
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 2
 	url = https://github.com/Bacem-Abidi/AuroraDownloader
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = auroradownloader
 	depends = ffmpeg
 	depends = python
 	depends = redis
-	source = auroradownloader-1.0.1.tar.gz::https://github.com/Bacem-Abidi/AuroraDownloader/archive/refs/tags/1.0.1.tar.gz
+	source = auroradownloader-1.0.2.tar.gz::https://github.com/Bacem-Abidi/AuroraDownloader/archive/refs/tags/1.0.2.tar.gz
 	source = auroradownloader.service
 	sha256sums = SKIP
 	sha256sums = SKIP
