@@ -2,23 +2,20 @@
 pkgname=moonlight-cursor-theme
 pkgver=1.0
 pkgrel=1
-pkgdesc="Moonlight X11/Wayland cursor theme"
+pkgdesc="Moonlight — X11/Wayland cursor theme"
 arch=('any')
 url="https://www.gnome-look.org/p/1341926"
-license=('custom')
-# TODO before pushing to AUR:
-#   1. Visit the gnome-look page above, click download, copy the CDN URL.
-#   2. Paste it as the `source=()` entry below.
-#   3. Run `updpkgsums` to populate sha256sums.
-#   4. Verify EXTRACT_DIR matches the top-level directory name inside
-#      the archive (inspect with `tar -tf` or `unzip -l`).
-source=("moonlight-cursors.tar.gz::https://REPLACE_ME_WITH_REAL_DOWNLOAD_URL")
-sha256sums=('SKIP')
-
-EXTRACT_DIR="Moonlight"
+license=('CCPL')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/veasman/kara-cursor-mirror/releases/download/v1/Moonlight.tar.gz")
+sha256sums=('879bd8c09a1588f1bb77dcfc14d35126df63171dfb629d315073c7580752b0df')
 
 package() {
-	mkdir -p "$pkgdir/usr/share/icons"
-	cp -r "$srcdir/$EXTRACT_DIR" "$pkgdir/usr/share/icons/" 2>/dev/null \
-		|| cp -r "$srcdir"/*/ "$pkgdir/usr/share/icons/"
+	install -dm755 "$pkgdir/usr/share/icons"
+	cp -r "$srcdir/Moonlight" "$pkgdir/usr/share/icons/Moonlight"
+	# Upstream ships a Creative Commons PDF + readme + logo inside the
+	# theme dir; strip non-theme artifacts.
+	rm -f "$pkgdir/usr/share/icons/Moonlight"/*.pdf \
+	      "$pkgdir/usr/share/icons/Moonlight"/*.png \
+	      "$pkgdir/usr/share/icons/Moonlight/readme"
+	chmod -R u=rwX,go=rX "$pkgdir/usr/share/icons/Moonlight"
 }

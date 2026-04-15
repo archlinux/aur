@@ -1,0 +1,11 @@
+pkgbase = moonlight-cursor-theme
+	pkgdesc = Moonlight — X11/Wayland cursor theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1341926
+	arch = any
+	license = CCPL
+	source = moonlight-cursor-theme-1.0.tar.gz::https://github.com/veasman/kara-cursor-mirror/releases/download/v1/Moonlight.tar.gz
+	sha256sums = 879bd8c09a1588f1bb77dcfc14d35126df63171dfb629d315073c7580752b0df
+
+pkgname = moonlight-cursor-theme
