@@ -1,9 +1,9 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=python-tree-sitter-c-sharp
 _gitpkgname=tree-sitter-c-sharp
-pkgver=0.23.1
-pkgrel=2
+pkgver=0.23.5
+pkgrel=1
 pkgdesc='C# grammar for tree-sitter'
 arch=('x86_64')
 url='https://github.com/tree-sitter/tree-sitter-c-sharp'
@@ -27,9 +27,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/tree-sitter/tree-sitter-c-sharp/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  '8b4467d13f7947b38b13ed1b81f09dd6754155d2a0090d557e7252cd103f80de23d6890cc6de7142f39332cd88395b9976b89833232f16582646c96f1d28a31a'
-)
+sha512sums=('c99f7d776bd8de04ebf8fbeaa31b98f37a3c9d8ec307c8415aa2172fa281e9332f0c2d4ef230421448ade5d51c7c7032e82cd7834ac74a999dc21f2821658223')
 
 build() {
   cd "${_gitpkgname}-${pkgver}"
