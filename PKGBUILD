@@ -1,9 +1,9 @@
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 pkgname=ludo
-pkgver=0.19.0
+pkgver=0.22.3
 pkgrel=1
 pkgdesc="Ludo is a minimalist frontend for emulators"
-arch=('x86_64' 'armv7h')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/libretro/ludo"
 license=('GPL3')
 makedepends=(
@@ -40,6 +40,8 @@ package() {
 
   if [ $arch == "armv7h" ]; then
     _ARCH="arm"
+  elif [ $arch == "aarch64" ]; then
+    _ARCH="arm64"
   else
     _ARCH="$arch"
   fi
