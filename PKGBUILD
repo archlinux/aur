@@ -1,7 +1,7 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=gog-rail-route
-pkgver=2.3.23
+pkgver=2.3.24
 pkgrel=1
 pkgdesc='Design and automate your own railway network. GOG version.'
 _shortname="${pkgname#gog-}"
@@ -10,8 +10,9 @@ url="https://www.gog.com/en/game/${_shortname//-/_}"
 license=('LicenseRef-eula')
 depends=(
   'bash'
-  'gcc-libs'
   'glibc'
+  'libgcc'
+  'libstdc++'
   'zlib'
 )
 makedepends=('execstack' 'lgogdownloader')
@@ -24,7 +25,7 @@ source=(
   "${_shortname}.bash"
 )
 
-sha512sums=('d4875a18571f824619e9a480bc900cdcc48554524de6d5df205ccf7eba0f4a01ab5dda1ed24602709555240a13a411c8b5afbcee951cbe5af05273afafa36183'
+sha512sums=('128f7e31a84c329687d7ef6840cfea39c74bd477dccfc5dc55cbf2b271ed94292dc8a99f5bb30f225e51d4fc3dcaca073ff7efacefdddffd35bfcd44a6e827c3'
             '2ca22352d18d7409cd68a47434d499c0f01fccff998ed890e893cad284eae2cc798d1c3fdb2a669642feb87fda5b5ac2f934b6afd59fec5b277b6e8f999c197b'
             '33368df35f53e8252a1a132008227a56372fbf84cbe66d46f62e6612f01b1d2ef8990a771ab4d5e866e5ead892e5b4da6f130243ec128025720e08329904f132')
 
