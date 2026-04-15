@@ -1,0 +1,19 @@
+pkgbase = classfi-git
+	pkgdesc = A simple classical music player
+	pkgver = 0.1.0.r0.g4af3333
+	pkgrel = 1
+	url = https://github.com/carmiac/classfi
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = git
+	depends = mpv
+	provides = classfi
+	conflicts = classfi
+	conflicts = classfi-bin
+	source = classfi-main::git+https://github.com/carmiac/classfi.git#branch=main
+	sha256sums = SKIP
+
+pkgname = classfi-git
