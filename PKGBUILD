@@ -1,7 +1,7 @@
 # Maintainer: avscs <avscs at proton dot me>
 pkgname=bclone-git
 pkgver=nightly.r0.gf11ee0176
-pkgrel=1
+pkgrel=2
 pkgdesc="rclone with Alist, Alldebrid, iCloud Photos, Teldrive and Terabox support"
 arch=(any)
 url="https://github.com/BenjiThatFoxGuy/bclone"
@@ -15,17 +15,17 @@ source=("git+https://github.com/BenjiThatFoxGuy/bclone.git")
 sha256sums=(SKIP)
 
 pkgver() {
-	cd "${pkgname%-bin}"
+	cd "${pkgname%-git}"
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "${pkgname%-bin}"
+	cd "${pkgname%-git}"
 	sed -i "1s/python$/&2/" bin/make_manual.py bin/make_backend_docs.py
 }
 
 build() {
-	cd "${pkgname%-bin}"
+	cd "${pkgname%-git}"
 	export GOPATH="$SRCDEST/go-modules"
 
 	go build \
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-bin}"
+  cd "${pkgname%-git}"
   install -D rclone ${pkgdir}/usr/bin/rclone
   install -Dm644 rclone.bash_completion "$pkgdir"/usr/share/bash-completion/completions/rclone
   install -Dm644 rclone.zsh_completion "$pkgdir"/usr/share/zsh/site-functions/_rclone

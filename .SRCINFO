@@ -1,7 +1,7 @@
 pkgbase = bclone-git
 	pkgdesc = rclone with Alist, Alldebrid, iCloud Photos, Teldrive and Terabox support
 	pkgver = nightly.r0.gf11ee0176
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BenjiThatFoxGuy/bclone
 	arch = any
 	license = MIT
