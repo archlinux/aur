@@ -5,7 +5,7 @@ _pkgver="v2.0.0-alpha.191"
 _repo="https://github.com/toitlang/toit.git"
 _pkgver_no_dash="${_pkgver//-/}"
 pkgver="${_pkgver_no_dash#v}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
@@ -21,6 +21,6 @@ build() {
 
 package() {
 	cd "$srcdir"
-	mkdir -p "$pkgdir/opt/toit-sdk/vessels"
-	cp -r vessels/* "$pkgdir/opt/toit-sdk/vessels/"
+	mkdir -p "$pkgdir/usr/lib/toit/vessels"
+	cp -r vessels/* "$pkgdir/usr/lib/toit/vessels/"
 }
