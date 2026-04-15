@@ -1,0 +1,4 @@
+[proxyman-bin]
+source = "github"
+github = "ProxymanApp/proxyman-windows-linux"
+use_latest_release = true
