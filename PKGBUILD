@@ -11,7 +11,7 @@ license=('AGPL3')
 conflicts=('bambustudio' 'bambustudio-git' 'bambustudio-bin')
 depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'gst-libav' 'webkit2gtk-4.1')
 makedepends=('fuse2')
-source=("bambustudio-${pkgver}.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v02.05.03.61/BambuStudio_ubuntu-24.04-v02.05.03.61-20260414220857.AppImage"
+source=("bambustudio-${pkgver}.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v02.05.03.62/BambuStudio_ubuntu-24.04-v02.05.03.61-20260414220857.AppImage"
 	"BambuStudio.desktop"
 	"bambu-studio"
     "mesa.tar.zst::https://archive.archlinux.org/packages/m/mesa/mesa-1%3A24.3.4-1-x86_64.pkg.tar.zst"
