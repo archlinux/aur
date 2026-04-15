@@ -10,7 +10,7 @@ backup=('etc/nff.yml' 'etc/nftables.d/00-nff.nft')
 install=nff.install
 # source=('nff.py' 'nff-defaults.yml' '00-nff.nft' 'version')
 source=("v${pkgver}.tar.gz::https://github.com/CodeKing710/nff/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('add1d33042865c362114848b59f7f8a0174037f1f3d7bc63c8adb34a39602d5c')
+sha256sums=('94ab00f1cffb5b0f36642a887797be69fa8cea5da8b0f17a5d97267be4987020')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
