@@ -1,44 +1,54 @@
 # Maintainer: D7OMDEV <hello@d7om.dev>
 pkgname=clipse-gui
 pkgver=0.7.0
-pkgrel=24
+pkgrel=25
 pkgdesc="A GTK3 GUI for the clipse clipboard manager"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/d7omdev/clipse-gui"
 license=('MIT')
-depends=('python-gobject' 'gtk3' 'wl-clipboard' 'wtype' 'xdotool' 'clipse')
-makedepends=('git' 'uv' 'gcc' 'patchelf')
-options=('!strip')
+depends=(
+	'python'
+	'python-gobject'
+	'gtk3'
+	'wl-clipboard'
+	'wtype'
+	'xdotool'
+	'clipse'
+)
+makedepends=('git')
 source=("git+https://github.com/d7omdev/clipse-gui.git")
 sha256sums=('SKIP')
-
-build() {
-	cd "$srcdir/$pkgname" || exit
-	rm -rf dist/
-	uv venv --python 3.13 .venv
-	uv pip install nuitka PyGObject --python .venv/bin/python
-	.venv/bin/python -m nuitka --onefile --output-dir=dist --remove-output \
-		--include-package=clipse_gui \
-		--follow-imports --nofollow-import-to=*.tests --assume-yes-for-downloads \
-		"$pkgname.py"
-	mv dist/clipse-gui.bin dist/clipse-gui
-}
 
 package() {
 	cd "$srcdir/$pkgname" || exit
 
-	rm -rf "$pkgdir/opt/$pkgname"
-	mkdir -p "$pkgdir/opt/$pkgname"
-	cp dist/clipse-gui "$pkgdir/opt/$pkgname"
-	chmod +x "$pkgdir/opt/$pkgname/$pkgname"
+	# Install Python sources — no Nuitka bundle. System python-gobject stays
+	# in sync with system GLib, avoiding the frozen-gi assertion crashes that
+	# affected 0.6.0 (#13) and 0.7.0 (#14).
+	install -dm755 "$pkgdir/usr/share/$pkgname"
+	cp -r clipse_gui "$pkgdir/usr/share/$pkgname/"
+	install -Dm644 "$pkgname.py" "$pkgdir/usr/share/$pkgname/$pkgname.py"
 
-	mkdir -p "$pkgdir/usr/bin"
-	ln -sf "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	# Launcher shim
+	install -dm755 "$pkgdir/usr/bin"
+	cat >"$pkgdir/usr/bin/$pkgname" <<EOF
+#!/bin/sh
+exec python "/usr/share/$pkgname/$pkgname.py" "\$@"
+EOF
+	chmod +x "$pkgdir/usr/bin/$pkgname"
 
+	# Icon
 	if [ -f "$pkgname.png" ]; then
-		install -Dm644 "$pkgname.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
+		install -Dm644 "$pkgname.png" \
+			"$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
 	fi
 
+	# License
+	if [ -f "LICENSE" ]; then
+		install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	fi
+
+	# Systemd user service for the clipse listener
 	install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user/clipse.service" <<EOF
 [Unit]
 Description=Clipse clipboard listener
@@ -52,7 +62,8 @@ Restart=on-failure
 WantedBy=graphical-session.target
 EOF
 
-	mkdir -p "$pkgdir/usr/share/applications"
+	# Desktop entry
+	install -dm755 "$pkgdir/usr/share/applications"
 	cat >"$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
 [Desktop Entry]
 Version=$pkgver
@@ -60,7 +71,7 @@ Type=Application
 Name=Clipse GUI
 GenericName=Clipboard Manager
 Comment=GTK Clipboard Manager
-Exec=/opt/$pkgname/$pkgname
+Exec=/usr/bin/$pkgname
 Icon=$pkgname
 Terminal=false
 Categories=Utility;GTK;
