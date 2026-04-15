@@ -1,11 +1,11 @@
 # Maintainer: Joinsider <public@joinside.de>
 pkgname=dhbw-next-git
-pkgver=1.0.6.r0.gc1b5359
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='DHBW Horb Studenten App - Desktop application for DHBW Stuttgart students'
 arch=('x86_64' 'aarch64')
-url='https://github.com/Joinsider/dhbw-next'
-license=('GPL-3.0-or-later')
+url='https://github.com/Joinsider/dhbw'
+license=('AGPL-3.0-or-later')
 depends=('java-runtime>=21' 'hicolor-icon-theme' 'libsecret')
 optdepends=(
     'gnome-keyring: Secret Service backend for GNOME'
@@ -14,7 +14,7 @@ optdepends=(
 makedepends=('java-environment=21' 'jdk21-openjdk' 'git')
 provides=('dhbw-next')
 conflicts=('dhbw-next')
-source=("${pkgname%-git}::git+https://github.com/Joinsider/dhbw-next.git")
+source=("${pkgname%-git}::git+https://github.com/Joinsider/dhbw.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -40,8 +40,8 @@ build() {
 package() {
     cd "${srcdir}/${pkgname%-git}"
 
-    local app_dir="composeApp/build/compose/binaries/main-release/app/dhbw-next"
-    local launcher_script="${app_dir}/bin/dhbw-next"
+    local app_dir="composeApp/build/compose/binaries/main-release/app/dhbw-horb-student-app"
+    local launcher_script="${app_dir}/bin/dhbw-horb-student-app"
 
     if [ ! -f "${launcher_script}" ]; then
         echo "Error: Could not find generated application launcher."
@@ -55,9 +55,9 @@ package() {
 
     # Create a wrapper script in /usr/bin
     install -d "${pkgdir}/usr/bin"
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" <<'EOF'
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" <<EOF
 #!/bin/bash
-exec /usr/share/java/dhbw-next/bin/dhbw-next "$@"
+exec /usr/share/java/${pkgname%-git}/bin/dhbw-horb-student-app "\$@"
 EOF
 
     # Install desktop file
@@ -70,7 +70,7 @@ Exec=${pkgname%-git}
 Icon=${pkgname%-git}
 Categories=Education;Utility;
 Terminal=false
-StartupWMClass=de-joinside-dhbw-MainKt
+StartupWMClass=de-fampopprol-dhbwhorb-MainKt
 EOF
 
     # Install icon

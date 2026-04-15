@@ -2,7 +2,7 @@ pkgbase = dhbw-next-git
 	pkgdesc = DHBW Horb Studenten App - Desktop application for DHBW Stuttgart students
 	pkgver = 1.0.6.r0.gc1b5359
 	pkgrel = 1
-	url = https://github.com/Joinsider/dhbw-next
+	url = https://github.com/Joinsider/dhbw
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -16,7 +16,7 @@ pkgbase = dhbw-next-git
 	optdepends = kwallet: Secret Service backend for KDE Plasma
 	provides = dhbw-next
 	conflicts = dhbw-next
-	source = dhbw-next::git+https://github.com/Joinsider/dhbw-next.git
+	source = dhbw-next::git+https://github.com/Joinsider/dhbw.git
 	sha256sums = SKIP
 
 pkgname = dhbw-next-git
