@@ -1,6 +1,6 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=klayout-pex
-pkgver=0.3.10
+pkgver=0.3.12
 pkgrel=1
 pkgdesc="Parasitic Extraction (PEX) tool for KLayout"
 arch=("x86_64")
@@ -42,7 +42,7 @@ source=(
 	"${pkgname}::git+${_git_url}#tag=v${pkgver}"
 	"0001-fix-use-locally-installed-protobuf.patch"
 )
-b2sums=('e6552307ec4cc9b3fdcbb825866cfa512a0c4bf2ee4dc6fb5e8f732ad2f4bcde4dd20ee97857d9c179af959681c0542cbdabf583b163d5f3ac4608ad13802245'
+b2sums=('4aa661cb8b8864d25e5fabfa90d27561861aa3b1df888f6ee20c86268ad73f72c17fe488613a49c1138a4a1363e6d06a00e425d7344aa5b99d7f8e812185f42f'
         '0642c635ed405a6938ab3a968e6a92b6864b5b3ea685cefbad214f46fdf6fb7e80068b3c89e6770e55508a1dce0042a291698885d575778f6775885e083bbe61')
 
 prepare() {
