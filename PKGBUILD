@@ -3,7 +3,7 @@
 # Contributor: oscareczek <oscareczek at gmail dot com>
 pkgname=pcbox-git
 pkgver=5.3
-pkgrel=3
+pkgrel=4
 pkgdesc='An emulator for classic IBM PC clones (Built with qt6)'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://pcbox-emu.xyz/'
