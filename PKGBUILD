@@ -8,10 +8,10 @@
 
 _pkgname=armagetronad
 pkgname=${_pkgname}-git
-pkgver=r5871.813b684a
+pkgver=r5967.ec0dbb09
 pkgrel=1
 pkgdesc='A Tron Clone in 3D.'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://www.armagetronad.org'
 license=('GPL')
 options=('!buildflags')
@@ -37,6 +37,7 @@ pkgver() {
 prepare(){
     cd "${srcdir}/${_pkgname}"
     patch -Np1 -i ../../python3.patch
+    sed -i 's/->label() == FieldDescriptor::LABEL_REPEATED/->is_repeated()/g' src/network/nProtoBuf.cpp
 }
 
 build() {
@@ -69,6 +70,6 @@ package() {
       ln -s /usr/share/armagetronad/desktop/icons/${directory}/armagetronad.png "$pkgdir/usr/share/icons/hicolor/${directory}/apps/armagetronad.png"
     done
     mv "${pkgdir}/usr/bin/armagetronad" "${pkgdir}/usr/bin/armagetronad_bin"
-    printf "#!/bin/bash\n/usr/bin/armagetronad_bin --configdir /etc/armagetronad --datadir /usr/share/armagetronad" > "${pkgdir}/usr/bin/armagetronad"
+    printf "#!/bin/bash\n/usr/bin/armagetronad_bin --configdir /etc/armagetronad --datadir /usr/share/armagetronad \$@" > "${pkgdir}/usr/bin/armagetronad"
     chmod +x "${pkgdir}/usr/bin/armagetronad"
 }
