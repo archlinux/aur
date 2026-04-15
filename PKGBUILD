@@ -2,7 +2,7 @@
 # Contributor: Stephanie Wilde-Hobbs <hi@stephanie.is>
 
 pkgname=megacmd
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 url="https://github.com/meganz/MEGAcmd"
@@ -22,12 +22,12 @@ depends=(
   'fuse2'
 )
 makedepends=('cmake' 'git')
-_sdkhash=acfdf8d3a73d3f636cb4bb4b183845f4feb5af9a
+_sdkhash=fae76a36d60484657fbdf442b7b917ccc4fbad77
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/meganz/MEGAcmd/archive/${pkgver}_Linux.tar.gz"
         "mega-sdk-${_sdkhash}.tar.gz::https://github.com/meganz/sdk/archive/${_sdkhash}.tar.gz"
         "fix-icu-linking.patch::https://github.com/meganz/sdk/pull/2768.patch")
-sha512sums=('bc0248c7c2656466042cc817f00aac77d60a08d85e2876acc8246bcaaf3b8fc6ecd71a3595b8fc23c54c29629086691fb8c049f60d6c8bb3a0e13e83870040ba'
-            '6eb0fa3d1620bf864dcb4f2e5062e4a56e228ce65e9c00b9855cc14c57ee7c0b16c72e2d697b6b574e627b55e90a0ad172de218e0085b01be98d29d53f1e903d'
+sha512sums=('14bae79eb8b6562bceab7be625cca71fc01f44dc4cdb72b443289e085fd87381c97f8867d9c44866c37354d83449df014b632bc30e7f00e895253f71fb7bd8d1'
+            '88d51c533d7db16800d4620714d19b4aa2a3e81f3354ceb083037728890558011e3bd4ac220433586f47a6bfb8f8dabca7fce004da9916f6d9e3d47946df7f6b'
             '2d720030596a9721a2e6ad9d426d3de9a1f2a625438e2b7df0e7363ffb0178097c87d9ee7b4e36ef0277ced78b754564517fd73ca4502a8723fa8132a1b37810')
 
 prepare() {
@@ -92,7 +92,6 @@ package() {
   # Documentation
   install -Dm644 README.md UserGuide.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
   install -Dm644 contrib/docs/*.md -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
-  install -Dm644 contrib/docs/commands/*.md -t "${pkgdir}/usr/share/doc/${pkgname}/docs/commands/"
 
   # License
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
