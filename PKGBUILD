@@ -2,7 +2,7 @@
 pkgname=cfait-git
 _pkgname=cfait
 pkgver=730.6c04e37.rolling
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local, git version)"
 arch=('x86_64')
 url="https://codeberg.org/trougnouf/cfait"
@@ -15,6 +15,8 @@ depends=(
     'libxrandr'
     'libxkbcommon'
     'wayland'
+    'vulkan-icd-loader'
+    'vulkan-driver'
 )
 makedepends=('cargo' 'git')
 conflicts=("$_pkgname")
