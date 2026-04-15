@@ -52,17 +52,3 @@ EOF
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/apprenticevr.png"
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/apprenticevr.png"
 }
-
-post_install() {
-    update-desktop-database -q
-    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-}
-
-post_upgrade() {
-    post_install
-}
-
-post_remove() {
-    update-desktop-database -q
-    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-}
