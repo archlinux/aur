@@ -51,7 +51,7 @@ CONFIG_BASE="${XDG_CONFIG_HOME:-$HOME/.config}/kicad"
 CFG_DIR=""
 KI_VERSION=""
 
-for v in 9.0 8.0 7.0 6.0; do
+for v in 10.0 9.0 8.0 7.0 6.0; do
   if [ -d "$CONFIG_BASE/$v" ]; then
     CFG_DIR="$CONFIG_BASE/$v"
     KI_VERSION="$v"
@@ -61,7 +61,7 @@ done
 
 if [ -z "$CFG_DIR" ]; then
   echo "ERROR: Could not find a KiCad configuration directory under:"
-  echo "  $CONFIG_BASE/{9.0,8.0,7.0,6.0}"
+  echo "  $CONFIG_BASE/{10.0,9.0,8.0,7.0,6.0}"
   echo "Open KiCad at least once and try again."
   exit 1
 fi
