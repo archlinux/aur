@@ -3,7 +3,7 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2623.f329f90c
+pkgver=r2633.762d3308
 pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
@@ -44,11 +44,12 @@ build() {
     # use -DGAMEPACKS_LICENSE_LIST=none and -DGAMEPACKS_NAME_LIST="Unvanquished Xonotic".
     # See https://gitlab.com/xonotic/netradiant/-/blob/master/README.md for further instructions.
 
-    # Add -DGTK_TARGET=3 to build and run NetRadiant with gtk3 instead of gtk2 + gtkglext, don't forget
+    # Use -DGTK_TARGET=3 to build and run NetRadiant with gtk3 instead of gtk2 + gtkglext, don't forget
     # to edit the package dependencies accordingly.
 
     cmake -G "Unix Makefiles" -S. -Bbuild \
     -DCMAKE_BUILD_TYPE=Release \
+    -DGTK_TARGET=2 \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DFHS_INSTALL=ON \
     -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
