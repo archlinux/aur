@@ -1,0 +1,3 @@
+[python-auditok]
+source = "pypi"
+pypi = "auditok"
