@@ -1,7 +1,7 @@
 pkgbase = obs-vertical-canvas-bin
 	pkgdesc = A plugin for OBS Studio that allows you to simultaneously launch two streams with different side resolutions and different source layout.
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aitum/obs-vertical-canvas
 	arch = x86_64
 	license = GPL-2.0-or-later
