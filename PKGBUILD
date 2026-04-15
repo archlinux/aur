@@ -4,7 +4,7 @@
 # Contributor: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=seerr
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=(x86_64 aarch64)
@@ -36,7 +36,7 @@ source=(
   seerr.service
   seerr.conf.d
 )
-sha256sums=('30363ca76d887c28aecad86ce3eeec29ccff11af766c1895fc7476d37d786d72'
+sha256sums=('e9c4c49f16da99516e0baf5968dc2c0221f6f22fd16a57c922810165bb57861b'
             '1a4a8daf655c530ebf24d89d036458aa75d7ae2de21a99a2b10eb02c2df1ac81'
             '8e137d571603af4ad83dd55a79d743bf1360de84af2db05dfb9289ccf649973d'
             '34f139015c3537ced763080832f691f3fca012ee4c126c7c66d8e120085d5290'
