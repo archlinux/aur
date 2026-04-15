@@ -1,6 +1,6 @@
 # Maintainer: RiDDiX <github@egu-rel.de>
 pkgname=adguard-tray
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="System tray monitor and controller for adguard-cli (KDE Plasma & Hyprland)"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
     'qt6-svg: SVG icon theme support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c63bef5a082b7a190314c7198e91448a9fd792ebd8aca9fc58753b43824ffc7f')
+sha256sums=('e512094671f24df358f53416a4b916d3df823f0eeaae18d716b769d377aea4fd')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
