@@ -1,13 +1,14 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=mesen
 pkgver=2.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS) for Windows, Linux and macOS"
 arch=('x86_64')
 url="https://github.com/SourMesen/Mesen2"
 license=('GPL-3.0-or-later')
-depends=(sdl2 fontconfig libevdev glibc libx11 gcc-libs zlib dotnet-runtime-8.0)
-makedepends=(dotnet-sdk-8.0 meson ninja clang lld zip unzip)
+depends=(sdl2 fontconfig libevdev glibc libx11 libgcc libstdc++ zlib dotnet-runtime-8.0
+	libxcb libxau libxdmcp freetype2 expat zlib bzip2 libpng brotli)
+makedepends=(dotnet-sdk meson ninja clang lld zip unzip)
 checkdepends=()
 optdepends=()
 provides=('mesen2')
@@ -17,7 +18,7 @@ options=(!lto !strip !debug)
 source=("$url/archive/refs/tags/${pkgver}.tar.gz"
 	"options.diff")
 sha256sums=('ce845c15e9aba9a65557760bd24376767becf7232e9a03222ce85e0e608d7822'
-            'c97321bfec6748e8aed96340bcb6e49d35f204ae9c72afbcfadfca11aef80a31')
+            'd6ceccdcb13930d6f62fa4356113519798156b6bfd735e9667292ea0748a5898')
 
 prepare() {
 	cd "$srcdir"

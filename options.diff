@@ -1,5 +1,5 @@
---- A/makefile	2025-10-27 01:14:59.480984167 -0500
-+++ B/makefile	2025-10-27 01:15:31.846563322 -0500
+--- A/makefile	2026-04-14 21:41:33.777150946 -0500
++++ B/makefile	2026-04-14 21:41:48.148939081 -0500
 @@ -4,6 +4,9 @@
  #The emulation core also requires SDL2.
  #Run "make" to build, "make run" to run
@@ -22,3 +22,10 @@
  
  OBJFOLDER := obj.$(MESENPLATFORM)
  DEBUGFOLDER := bin/$(MESENPLATFORM)/Debug
+@@ -131,7 +134,7 @@
+ ifeq ($(USE_AOT),true)
+ 	PUBLISHFLAGS ?=  -r $(MESENPLATFORM) -p:PublishSingleFile=false -p:PublishAot=true -p:SelfContained=true
+ else
+-	PUBLISHFLAGS ?=  -r $(MESENPLATFORM) --no-self-contained true -p:PublishSingleFile=true
++	PUBLISHFLAGS ?=  -r $(MESENPLATFORM) --no-self-contained -p:PublishSingleFile=true
+ endif
