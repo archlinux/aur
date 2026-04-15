@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=sigma-file-manager
-_tagname=2.0.0-beta.2
+_tagname=2.0.0-beta.3
 pkgver="${_tagname//-/_}"
-pkgrel=7
+pkgrel=1
 pkgdesc="\"Sigma File Manager\" is a free, open-source, quickly evolving, modern file manager (explorer / finder) app for Windows and Linux."
 arch=($CARCH)
 url="https://github.com/aleksey-hoffman/sigma-file-manager"
@@ -28,7 +28,7 @@ backup=()
 options=('!strip' '!debug')
 install=
 source=("${pkgname}::git+${url}.git#tag=v${_tagname}")
-sha256sums=('d8374765ff52d82cc5a669b1f6b0b70bacaa67ed9042cbe9a8c3eb133d261caf')
+sha256sums=('12a6b67b9d586bee096ab7c0bea05932026156dde6be1b4921dea288700b778a')
 noextract=("${pkgname}-${_tagname}.tar.gz")
 
 prepare() {
