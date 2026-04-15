@@ -1,13 +1,13 @@
 pkgbase = olcli
 	pkgdesc = Command-line interface to sync, manage, and compile LaTeX projects on Overleaf
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/aloth/olcli
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/@aloth/olcli/-/olcli-0.1.6.tgz
-	sha256sums = 018b859a3c222eacc21e2ad7e8f73cd8cc08496e647a241e774c15e58e788591
+	source = https://registry.npmjs.org/@aloth/olcli/-/olcli-0.1.7.tgz
+	sha256sums = 1ebeac4d9ca039e42e40b14311e19caaea6799513546488134caebf331d20db8
 
 pkgname = olcli

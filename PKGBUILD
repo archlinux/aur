@@ -1,7 +1,7 @@
 # Maintainer: Your Name <valentin@barbaza.org>
 pkgname=olcli
 _npmname=@aloth/olcli
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Command-line interface to sync, manage, and compile LaTeX projects on Overleaf"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${_npmname}/-/olcli-${pkgver}.tgz")
-sha256sums=('018b859a3c222eacc21e2ad7e8f73cd8cc08496e647a241e774c15e58e788591')
+sha256sums=('1ebeac4d9ca039e42e40b14311e19caaea6799513546488134caebf331d20db8')
 
 package() {
   # Install the npm package globally into the temporary packaging directory
