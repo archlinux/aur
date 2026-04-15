@@ -6,7 +6,7 @@
 
 _pkgname="legcord"
 pkgname="$_pkgname"
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Discord client with builtin client mod and theme support"
 url="https://github.com/Legcord/Legcord"
@@ -28,7 +28,7 @@ optdepends=(
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
-sha256sums=('32680040c1a55767524a6e2990918be88f7e466cea43bd3d1151793c7dfd7853')
+sha256sums=('81a4c674523a4f4d1154eda351b93db006da9e4de61d2e21665ca693e5076be4')
 
 build() (
   # avoid cluttering user home
