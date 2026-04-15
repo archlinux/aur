@@ -1,7 +1,7 @@
 pkgbase = dockroot-git
 	pkgdesc = Run docker in any root linux system
 	pkgver = r6.345af06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kspeeder/dockroot
 	arch = x86_64
 	license = LicenseRef-dockroot
@@ -10,6 +10,7 @@ pkgbase = dockroot-git
 	makedepends = go
 	depends = glibc
 	depends = gpgme
+	depends = ruri-git
 	provides = dockroot
 	conflicts = dockroot
 	options = !strip

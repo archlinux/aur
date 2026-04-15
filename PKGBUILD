@@ -2,7 +2,7 @@
 
 pkgname=dockroot-git
 pkgver=r6.345af06
-pkgrel=1
+pkgrel=2
 pkgdesc="Run docker in any root linux system"
 arch=($CARCH)
 url="https://github.com/kspeeder/dockroot"
@@ -13,6 +13,7 @@ conflicts=(${pkgname%-git})
 depends=(
     glibc
     gpgme
+    ruri-git
 )
 makedepends=(
     btrfs-progs
