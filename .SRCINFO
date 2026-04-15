@@ -1,0 +1,11 @@
+pkgbase = miku-cursor-theme
+	pkgdesc = Miku Cursor — Hatsune Miku themed X11/Wayland cursor theme
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/2124099
+	arch = any
+	license = custom
+	source = miku-cursor-theme-1.2.6.tar.xz::https://github.com/veasman/kara-cursor-mirror/releases/download/v1/miku-cursor-linux-1.2.6.tar.xz
+	sha256sums = 6a13eec3928937575bc35435410f276410c899245d0ca98c7f9e1cc23f1f2689
+
+pkgname = miku-cursor-theme

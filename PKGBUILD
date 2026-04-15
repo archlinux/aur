@@ -1,24 +1,16 @@
 # Maintainer: Charlton Moren <charlton.moren@gmail.com>
 pkgname=miku-cursor-theme
-pkgver=1.0
+pkgver=1.2.6
 pkgrel=1
-pkgdesc="Miku X11/Wayland cursor theme"
+pkgdesc="Miku Cursor — Hatsune Miku themed X11/Wayland cursor theme"
 arch=('any')
 url="https://www.gnome-look.org/p/2124099"
 license=('custom')
-# TODO before pushing to AUR:
-#   1. Visit the gnome-look page above, click download, copy the CDN URL.
-#   2. Paste it as the `source=()` entry below.
-#   3. Run `updpkgsums` to populate sha256sums.
-#   4. Verify EXTRACT_DIR matches the top-level directory name inside
-#      the archive (inspect with `tar -tf` or `unzip -l`).
-source=("miku-cursors.tar.gz::https://REPLACE_ME_WITH_REAL_DOWNLOAD_URL")
-sha256sums=('SKIP')
-
-EXTRACT_DIR="Miku"
+source=("$pkgname-$pkgver.tar.xz::https://github.com/veasman/kara-cursor-mirror/releases/download/v1/miku-cursor-linux-1.2.6.tar.xz")
+sha256sums=('6a13eec3928937575bc35435410f276410c899245d0ca98c7f9e1cc23f1f2689')
 
 package() {
-	mkdir -p "$pkgdir/usr/share/icons"
-	cp -r "$srcdir/$EXTRACT_DIR" "$pkgdir/usr/share/icons/" 2>/dev/null \
-		|| cp -r "$srcdir"/*/ "$pkgdir/usr/share/icons/"
+	install -dm755 "$pkgdir/usr/share/icons"
+	cp -r "$srcdir/miku-cursor-linux" "$pkgdir/usr/share/icons/miku-cursor-linux"
+	chmod -R u=rwX,go=rX "$pkgdir/usr/share/icons/miku-cursor-linux"
 }
