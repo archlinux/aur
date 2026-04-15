@@ -1,14 +1,14 @@
 # Maintainer: NorthWestWind <nw@northwestw.in>
 _pkgname=app-librescore
 pkgname=$_pkgname-appimage
-pkgver=6.0.22
+pkgver=6.0.23
 pkgrel=1
 pkgdesc="Download sheet music"
 arch=('any')
 url="https://github.com/LibreScore/app-librescore"
 license=('MIT')
 source=("${url}/releases/download/v${pkgver}/LibreScore.AppImage")
-md5sums=('fa14a16d822671942c6c549201799289')
+md5sums=('8c97dfabfc386de5e1f551cb9a5d7c79')
 options=(!strip)
 
 prepare() {
