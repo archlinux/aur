@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com"
 license=('MIT')
 depends=('glibc')
-source=("https://github.com/releases/download/v${pkgver}/springcraft-linux")
+source=("https://github.com{pkgver}/springcraft-linux")
 sha256sums=('SKIP')
 
 package() {

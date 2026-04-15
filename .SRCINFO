@@ -6,7 +6,7 @@ pkgbase = springcraft
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = https://github.com/releases/download/v0.3.0/springcraft-linux
+	source = https://github.com{pkgver}/springcraft-linux
 	sha256sums = SKIP
 
 pkgname = springcraft
