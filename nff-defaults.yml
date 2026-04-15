@@ -1,0 +1,16 @@
+exclusive: false
+default-policies:
+  input: drop
+  output: accept
+
+tcp:
+  in:
+    allow: [22,80]
+  out:
+    allow: []
+
+udp:
+  in:
+    allow: [53]
+  out:
+    allow: []

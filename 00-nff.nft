@@ -1,0 +1,61 @@
+#!/usr/bin/nft -f
+
+destroy table inet nff;
+table inet nff {
+    set tcp_in_allow {
+      type inet_service
+      elements = { 22 }
+    }
+    set udp_in_allow {
+      type inet_service
+      elements = { 53 }
+    }
+    set tcp_out_allow {
+      type inet_service
+    }
+    set udp_out_allow {
+      type inet_service
+    }
+
+    chain input {
+      type filter hook input priority 0
+      policy drop
+
+      ct state invalid drop comment "Drop invalid packets"
+      ct state {established, related} accept comment "Allow tracked connections"
+      iif lo accept comment "Allow loopback traffic"
+      ip protocol icmp icmp type echo-request limit rate 10/second accept comment "Allow ICMP requests with rate limit"
+      limit rate 50/second burst 15 packets comment "Allow general traffic with rate limit, prevent DoS"
+      tcp dport 22 meter brute_block { ip saddr timeout 1m limit rate 5/minute } accept comment "Allow SSH with brute-force protection"
+      pkttype host limit rate 5/second counter reject with icmpx type admin-prohibited comment "Reject other host-directed traffic"
+      counter
+    }
+
+    chain output {
+      type filter hook output priority 0
+      policy accept
+
+      ct state invalid drop comment "Drop invalid packets"
+      ct state {established, related} accept comment "Allow tracked connections"
+      oif lo accept comment "Allow loopback traffic"
+
+      tcp dport @tcp_out_allow accept
+      udp dport @udp_out_allow accept
+    }
+
+    chain forward {
+        type filter hook forward priority 0
+        policy drop
+    }
+}
+
+# Kernel-level table
+destroy table netdev nff
+table netdev nff {
+    chain ingress_lockdown {
+        # Please change "eth0" to your respective gateway interface
+        type filter hook ingress device "eth0" priority -500;
+        # Uncomment below to drop fragments (common in some DDoS attacks)
+        #ip frag-off & 0x1fff != 0 drop
+    }
+}

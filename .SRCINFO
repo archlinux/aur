@@ -1,0 +1,17 @@
+pkgbase = nff
+	pkgdesc = An nftables firewall tool built in Python. Not as robust as direct nftables usage but nice to load static rules similar to ufw
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/CodeKing710/nff
+	install = nff.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-yaml
+	depends = nftables
+	backup = etc/nff.yml
+	backup = etc/nftables.d/00-nff.nft
+	source = v1.0.0.tar.gz::https://github.com/CodeKing710/nff/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = add1d33042865c362114848b59f7f8a0174037f1f3d7bc63c8adb34a39602d5c
+
+pkgname = nff
