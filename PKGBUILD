@@ -1,6 +1,6 @@
 # Maintainer: IovAnto <iovine.antonio44@gmail.com>
 pkgname=dns-switcher
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="TUI application for real-time DNS switching on Linux"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('iwd' 'systemd' 'polkit')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/IovAnto/dns-switcher/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5e4b14a9c3323f8048cc9cca2e6baa50283f86b64a4055b19c5ad4f85c640c04')
+sha256sums=('cbd149088102e35e670b3cc20849d8af09591095e2f1d0c37fea2ee7f60e8c0f')
 
 build() {
     cd "$pkgname-$pkgver"
