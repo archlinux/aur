@@ -29,7 +29,7 @@ main(){
     local ret=0
 
     local mirrorlist_o=/etc/pacman.d/mirrorlist
-    local mirrorlist_a=/etc/pacman.d/mirrorlist.archive
+    local mirrorlist_a=/tmp/mirrorlist.archive
 
     local y m d
     if ! get_last_update_date;then
