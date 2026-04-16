@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vikunja-desktop-bin
 _pkgname="Vikunja Desktop"
-pkgver=0.24.6
-_electronversion=29
+pkgver=2.3.0
+_electronversion=40
 pkgrel=1
 pkgdesc="Vikunja, the fluffy, open-source, self-hostable to-do app.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -16,12 +16,17 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.pacman::https://dl.vikunja.io/desktop/${pkgver}/Vikunja%20Desktop-v${pkgver}.pacman"
+    "${pkgname%-bin}-${pkgver}.pacman::https://dl.vikunja.io/desktop/v${pkgver}/Vikunja%20Desktop-v${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9200ba50c873e2e8eb8c0dc9d3bd2e0cafedd6cd6a47983c2b8eb647fe25d18a'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('150fb65188276e5b3c22c081b84103443028ccc1026fd25ac92f5bf32710bad5'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-bin}/
@@ -36,7 +41,8 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/opt/${_pkgname}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icon_sizes in "${_icon_sizes[@]}";do
