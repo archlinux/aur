@@ -1,0 +1,18 @@
+pkgbase = organize-git
+	pkgdesc = File organizer by extension - Git version
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/ZhX589/organize
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = bash
+	depends = coreutils
+	provides = organize
+	conflicts = organize
+	conflicts = organize-bin
+	source = organize-git::git+https://github.com/ZhX589/organize.git
+	sha256sums = SKIP
+
+pkgname = organize-git
