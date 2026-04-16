@@ -2,6 +2,7 @@
 *.tar.gz
 *.tar.zst
 *.tar.xz
+*.deb.*
 *.AppImage
 *.rpm
 *.deb
