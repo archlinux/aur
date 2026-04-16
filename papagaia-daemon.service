@@ -1,0 +1,11 @@
+[Unit]
+Description=papagaia daemon
+
+[Service]
+Type=simple
+ExecStart=papagaia-daemon
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

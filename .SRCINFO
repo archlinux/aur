@@ -1,0 +1,27 @@
+pkgbase = papagaia-git
+	pkgdesc = Voice-writing and text-rewriting tool for Linux Wayland desktops
+	pkgver = r15.a0945d6
+	pkgrel = 1
+	url = https://github.com/ceifa/papagaia
+	install = papagaia.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = alsa-lib
+	depends = gtk4
+	depends = gtk4-layer-shell
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = wtype: keyboard simulation on Wayland
+	optdepends = ydotool: keyboard simulation (alternative to wtype)
+	optdepends = whisper.cpp: local speech-to-text for dictation
+	provides = papagaia=r15.a0945d6
+	conflicts = papagaia
+	source = papagaia-git::git+https://github.com/ceifa/papagaia.git
+	source = papagaia-daemon.service
+	sha256sums = SKIP
+	sha256sums = 2f2d18e22d6f2fa0b7ac1a7cede9cb2a913ab63894dfdd1d08cc695cce616304
+
+pkgname = papagaia-git
