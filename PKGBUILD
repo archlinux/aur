@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=p3x-redis-ui-bin
 _pkgname=P3X-Redis-UI
-pkgver=2026.4.1006
+pkgver=2026.4.1007
 _electronversion=41
 pkgrel=1
 pkgdesc="A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app.(Prebuilt version.Use system-wide electron)"
@@ -27,8 +27,8 @@ source=(
 )
 sha256sums=('1847e0e0698142ed4347c1441a9fa81c8fbddd44b1d8bbcd5e3647f991759d7f'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('37dc010258ea09a3c853781cbc9acde5b786fdd9a313597592637d2cfe841aad')
-sha256sums_x86_64=('67f3ac9a551c5f295a364f463007aaf3154777a8117c8118f36411fa1f86b937')
+sha256sums_aarch64=('94790881493931b9a5ed27a6d116ff2e5d3b59347ccbba9607267639225b1aa3')
+sha256sums_x86_64=('f47d888188c5e3fe6599cd42ec5fa0154dfbb986c907ae9ad7d2714319a3713e')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
