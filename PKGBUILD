@@ -12,12 +12,12 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "wallpaper-picker-$pkgver"
   cargo build --release --locked
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd "wallpaper-picker-$pkgver"
+  install -Dm755 "target/release/wallpaper-picker" "$pkgdir/usr/bin/wallpaper-picker-rs"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
