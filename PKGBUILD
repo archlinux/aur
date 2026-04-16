@@ -1,9 +1,8 @@
-# Maintainer: João Freitas <joaj.freitas at gmail dot com>
-# Co-maintainer: Sven Karsten Greiner <sven@sammyshp.de>
+# Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
-pkgname=plotjuggler
-pkgver='3.16.0'
-pkgrel=2
+pkgname=plotjuggler-git
+pkgver=3.16.0.r82.gf3a557d3
+pkgrel=1
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
 url="https://github.com/facontidavide/PlotJuggler"
@@ -18,6 +17,7 @@ depends=(
     'protobuf'
     'qt5-base'
     'qt5-multimedia'
+    'qt5-serialport'
     'qt5-svg'
     'qt5-websockets'
     'qt5-x11extras'
@@ -26,14 +26,22 @@ depends=(
 makedepends=(
     'cmake'
     'clang'
+    'git'
 )
+provides=('plotjuggler')
+conflicts=('plotjuggler')
 source=(
-    "${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz"
+    "git+https://github.com/facontidavide/PlotJuggler.git"
 )
-sha256sums=('cc7a14649acfba629b111118a4f0b8b509603365ad6945c2b598efab7c160388')
+sha256sums=('SKIP')
+
+pkgver() {
+    cd PlotJuggler
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-    cd "PlotJuggler-${pkgver}"
+    cd "PlotJuggler"
     cmake -S . -B build \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects"
@@ -41,6 +49,6 @@ build() {
 }
 
 package() {
-    cd "PlotJuggler-${pkgver}"
+    cd "PlotJuggler"
     DESTDIR="${pkgdir}" cmake --install build
 }
