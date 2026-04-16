@@ -1,0 +1,19 @@
+pkgbase = python-browser-git
+	pkgdesc = GTK4 web browser with profiles, local history, bookmarks, and session restore
+	pkgver = 0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/EvansOgala/python-browser
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = webkitgtk-6.0
+	depends = libsoup3
+	provides = python-browser
+	conflicts = python-browser
+	source = python-browser-git::git+https://github.com/EvansOgala/python-browser.git
+	sha256sums = SKIP
+
+pkgname = python-browser-git
