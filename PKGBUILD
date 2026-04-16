@@ -1,7 +1,7 @@
 # Maintainer: Azur84 <Azur84@outlook.fr>
 pkgname=pandora-launcher-bin
 _pkgname=PandoraLauncher-Linux
-pkgver=4.1.0
+pkgver=5.0.2
 pkgrel=1
 pkgdesc="A modern Minecraft launcher that balances ease-of-use with powerful instance management features."
 arch=('x86_64')
@@ -19,6 +19,9 @@ depends=(
   'vulkan-icd-loader'
   'vulkan-driver'
   'openssl'
+  'libgcc'
+  'glibc'
+  'libseccomp'
 )
 optdepends=(
   'flite: minecraft narrator support'
@@ -32,7 +35,7 @@ source=(
   "icon.svg::https://raw.githubusercontent.com/Moulberry/PandoraLauncher/refs/tags/v$pkgver/package/windows.svg"
   "$pkgname.desktop"
 )
-sha256sums=('4a95e93608aca487d2f59510e4db1dc84973002891943b05cdba205797328f7e'
+sha256sums=('8c7973b3b0558f42260f4bbbc7b875848a3478eba1ab95e391f5a5cd5edc334f'
             'a416ff7bf8fca263a47d8256c154c4405df3502506520613500bed0cb6eb86a8'
             '8c045dbd40e52ee10f439e90f368ef4a12c0f3f830f252b2fefd2e862bc76fc5'
             '8ae5fa2476e937d0fdc1e53bacb62d8a5ac333d98f17da987d13b25e1a1afe31')
