@@ -1,6 +1,6 @@
 pkgbase = kodi-rpi
 	pkgver = 21.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/graysky2/xbmc/tree/gs-gbm_omega
 	arch = aarch64
 	arch = armv7h
@@ -79,6 +79,8 @@ pkgbase = kodi-rpi
 	source = ArchARM-kodi-init-v2.0.tar.gz::https://github.com/graysky2/kodi-standalone-service/archive/v2.0.tar.gz
 	source = kodi.config.txt
 	source = 0001-ffmpeg-build-with-lto-when-duse-lto.patch::https://github.com/xbmc/xbmc/commit/2cc6f1728ccb67ef575fe57680dd42836e3d6a1f.patch
+	source = 0001-Merge-pull-request-28016-from-heitbaum-giflib.patch
+	source = 0002-backport-NFS-replace-nfs_create-with-nfs_open2.patch
 	sha256sums = 561edb25c047d604f7a67c1689fd47a101646a544426a690c32709c564dcbfde
 	sha256sums = f38c4a4e7a4f4da6d8e83b8852489aa3bb6588a915dc41f5ee89d9aad305a06e
 	sha256sums = 584f62a3896794408d46368e2ecf2c6217ab9c676ce85921b2d68b8961f49dfc
@@ -91,6 +93,8 @@ pkgbase = kodi-rpi
 	sha256sums = 995910eb228986cfb8b921a86d421e06130dfb629a97681eb8c0a2e7ede2d9cf
 	sha256sums = 5ac76e6ff16d8f0f60a414647bddb13b46402563dd02d69a05e90c0ddbb085f0
 	sha256sums = 5a2f1c5fa9189d56eaf7e05024071c57e11f92b4eeb68b4bb0555c1fdd66c890
+	sha256sums = 36a2b3c0ec76fd6511fa0679a1d4fd15ab50edc5618992cc0f18ac822a355d32
+	sha256sums = d3b7377d5b194fa54514656230dc25ab67b07a2769830e5de69519649be9d091
 
 pkgname = kodi-rpi
 	pkgdesc = Media player and entertainment hub with hw accel for RPi5, gbm_omega fork
