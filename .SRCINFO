@@ -1,7 +1,7 @@
 pkgbase = ts-litex-driver-git
 	pkgdesc = Linux Driver for the LiteX-based Thunderscope
 	pkgver = r24.0414118
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EEVengers/ts_litex_driver_linux
 	arch = any
 	license = LicenseRef-custom
@@ -10,8 +10,10 @@ pkgbase = ts-litex-driver-git
 	depends = dkms
 	depends = glibc
 	optdepends = ts.net-git: Thunderscope-compatible PC-host software written in C# using high-performing primitives & SIMD.
-	provides = ts-litex-driver-git
-	conflicts = ts-litex-driver-git
+	provides = ts-litex-driver
+	conflicts = ts-litex-driver
+	options = !debug
+	options = !strip
 	source = ts-litex-driver-git::git+https://github.com/EEVengers/ts_litex_driver_linux.git
 	sha256sums = SKIP
 

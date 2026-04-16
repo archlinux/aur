@@ -3,14 +3,14 @@
 pkgbase=ts-litex-driver-git
 pkgname=ts-litex-driver-git
 pkgver=r24.0414118
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Linux Driver for the LiteX-based Thunderscope"
 arch=(any)
 url="https://github.com/EEVengers/ts_litex_driver_linux"
 license=("LicenseRef-custom")
-provides=(${pkgname})
-conflicts=(${pkgname})
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 depends=(
     sh
     dkms
@@ -23,7 +23,7 @@ optdepends=(
     'ts.net-git: Thunderscope-compatible PC-host software written in C# using high-performing primitives & SIMD.'
 )
 backup=()
-options=()
+options=(!debug !strip)
 install=
 source=(
     "${pkgname}::git+${url}.git"
@@ -52,7 +52,7 @@ build() {
 package() {
     cd ${srcdir}/${pkgname}
     install -vDm0644 *.rules -t ${pkgdir}/usr/lib/udev/rules.d/ 
-    sed "s/^MAKE_VERSION=.*/MAKE_VERSION=\"${pkgver}\"/" dkms.conf.in > dkms.conf
+    sed "s/^PACKAGE_VERSION=.*/PACKAGE_VERSION=\"${pkgver}\"/" dkms.conf.in > dkms.conf
     install -vDm644 dkms.conf -t "${pkgdir}/usr/src/${pkgname}-${pkgver}/"
     install -vDm644 kernel/* -t "${pkgdir}/usr/src/${pkgname}-${pkgver}/"
     install -vDm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
