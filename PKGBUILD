@@ -3,8 +3,8 @@
 # Contributor: xiota
 pkgname=legcord-bin
 _pkgname=Legcord
-pkgver=1.2.2
-_electronversion=40
+pkgver=1.2.4
+_electronversion=41
 pkgrel=1
 pkgdesc="a custom client designed to enhance your Discord experience while keeping everything lightweight.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -35,9 +35,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('c2cba32542cf3a65813e83fdbd259020d6d62b6833aa18f38aec983837dc9e4d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('57e4ef120051c1fe3b6b2ebd59484913da36199346e006da04850f40b34ad462')
-sha256sums_armv7h=('b7e13037f9095e1cefbb016375b392d1fcaf6d21e00bf2ee282e109ec5f92fdb')
-sha256sums_x86_64=('bcf5b63df319e00f1913122a910ea8ef6b948ede7f3d1ef1773eb1c344f68617')
+sha256sums_aarch64=('1e930e8c3477a634e7c5972096420fc454a60b1c5fa1794bfe4dba645f14f10b')
+sha256sums_armv7h=('21269dc09e9320cc64ed445ac0924223a12e27b09a53ef6b6a1c49ea36ad2219')
+sha256sums_x86_64=('9796877e249da528a1a7a9dacbf93e28c02039cad81fb572bc3659d132b48217')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -79,14 +79,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	find "${srcdir}/opt/${_pkgname}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
-    if find "${srcdir}/opt/${_pkgname}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/opt/${_pkgname}/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
-            fi
-        done
-    fi
+	cp -a "${srcdir}/opt/${_pkgname}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
