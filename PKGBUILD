@@ -13,26 +13,15 @@ source=(git+$url)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname" || exit 1
   git rev-parse --short HEAD
 }
 
 package() {
   cd "$srcdir/$_pkgname" || exit 1
-  make release
+  make PREFIX=dest/usr install
 
-  # Prepare directories
-  mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/share/man/{man1,man3} "$pkgdir"/usr/share/velvet/{bin,lua}
-
-  # Install binary
-  install -m 755 release/vv "$pkgdir"/usr/share/velvet/bin/vv
+  cp -r dest/* "$pkgdir"
   ln -sf /usr/share/velvet/bin/vv "$pkgdir"/usr/bin/vv
-
-  # Install man pages
-  install -m 644 doc/man1/velvet.1 "$pkgdir"/usr/share/man/man1/
-  install -m 644 doc/man3/*.3 "$pkgdir"/usr/share/man/man3/
-
-  # Install lua scripts
-  cp -r lua/velvet "$pkgdir"/usr/share/velvet/lua/
 }
 
