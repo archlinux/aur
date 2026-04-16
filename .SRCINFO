@@ -1,0 +1,22 @@
+pkgbase = spotybar-git
+	pkgdesc = Waybar widget system for Spotify and MPRIS (spotylike + seekingmpris)
+	pkgver = r5.043c194
+	pkgrel = 1
+	url = https://github.com/redeyes-jpg/spotybar
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = playerctl
+	depends = python
+	depends = libnotify
+	depends = systemd
+	depends = bc
+	depends = waybar
+	provides = spotybar
+	conflicts = spotybar
+	source = spotybar::git+https://github.com/redeyes-jpg/spotybar.git
+	sha256sums = SKIP
+
+pkgname = spotybar-git
