@@ -1,0 +1,5 @@
+[marmite-bin]
+source = "github"
+github = "rochacbruno/marmite"
+prefix = "v"
+use_latest_release = true
