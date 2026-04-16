@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Stably Orca
+GenericName=Agentic Coding IDE
+Comment=Electron-based agentic coding IDE by Stably AI (git build)
+Exec=stably-orca %U
+Terminal=false
+Type=Application
+Icon=stably-orca
+Categories=Development;IDE;TextEditor;
+StartupWMClass=Orca
+MimeType=x-scheme-handler/stably-orca;

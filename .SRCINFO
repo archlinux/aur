@@ -1,0 +1,34 @@
+pkgbase = stably-orca-git
+	pkgdesc = Stably AI Orca - Electron-based agentic coding IDE (built from main)
+	pkgver = 1.1.30.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/stablyai/orca
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs>=20
+	makedepends = pnpm
+	makedepends = python
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = libsecret
+	provides = stably-orca
+	conflicts = stably-orca
+	conflicts = stably-orca-bin
+	options = !strip
+	options = !debug
+	source = orca::git+https://github.com/stablyai/orca.git
+	source = stably-orca.sh
+	source = stably-orca.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = stably-orca-git
