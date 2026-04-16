@@ -1,0 +1,33 @@
+post_install() {
+  _post_msg
+}
+
+post_upgrade() {
+  # Migrate users off the old user unit if they had it enabled
+  if [ -f /usr/lib/systemd/user/lianli-daemon.service ] || \
+     systemctl --user --machine="*" is-enabled lianli-daemon.service &>/dev/null; then
+    cat <<MSG
+NOTE: lianli-daemon is now a templated system service.
+Disable the old user unit and enable the new one for your user:
+
+  systemctl --user disable --now lianli-daemon.service 2>/dev/null
+  sudo systemctl enable --now lianli-daemon@\$USER.service
+
+MSG
+  fi
+  _post_msg
+}
+
+post_remove() {
+  echo "Remember to disable any enabled lianli-daemon@USER.service instances."
+}
+
+_post_msg() {
+  cat <<MSG
+To start the daemon for the current user, run:
+
+  sudo systemctl enable --now lianli-daemon@\$USER.service
+
+The daemon reads ~/.config/lianli/config.json for that user.
+MSG
+}

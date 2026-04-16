@@ -1,6 +1,6 @@
 # Maintainer: sgtaziz <sgtaziz013 at google dot com>
 pkgname=lianli-linux-git
-pkgver=r206.a583f93
+pkgver=r217.b996f40
 pkgrel=1
 pkgdesc="Open-source Linux replacement for L-Connect 3 - fan control, RGB, LCD streaming for Lian Li devices"
 arch=('x86_64')
@@ -12,6 +12,7 @@ provides=('lianli-linux')
 conflicts=('lianli-linux')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+install=lianli-linux.install
 options=('!debug' '!lto' 'strip')
 
 pkgver() {
@@ -43,21 +44,8 @@ package() {
   # udev rules
   install -Dm644 udev/99-lianli.rules "$pkgdir/usr/lib/udev/rules.d/99-lianli.rules"
 
-  # Systemd user service
-  install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user/lianli-daemon.service" <<EOF
-[Unit]
-Description=Lian Li Device Daemon
-After=default.target
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/lianli-daemon
-Restart=on-failure
-RestartSec=5
-
-[Install]
-WantedBy=default.target
-EOF
+  # Systemd templated system service (enable per-user via lianli-daemon@USER.service)
+  install -Dm644 systemd/lianli-daemon@.service "$pkgdir/usr/lib/systemd/system/lianli-daemon@.service"
 
   # Desktop entry
   install -Dm644 com.sgtaziz.lianlilinux.desktop "$pkgdir/usr/share/applications/com.sgtaziz.lianlilinux.desktop"
@@ -67,11 +55,6 @@ EOF
   install -Dm644 assets/icons/128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/com.sgtaziz.lianlilinux.png"
   install -Dm644 assets/icons/128x128@2x.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.sgtaziz.lianlilinux.png"
   install -Dm644 assets/icons/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.sgtaziz.lianlilinux.svg"
-
-  # Auto-enable daemon for all users
-  install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user-preset/50-lianli.preset" <<EOF
-enable lianli-daemon.service
-EOF
 
   # License
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
