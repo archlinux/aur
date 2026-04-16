@@ -1,4 +1,4 @@
-# Maintainer: Elias Elwyn <a@jthv.ai>
+# Maintainer: Elias Elwyn <a@jthvai.net>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname=perl-pod2-base
