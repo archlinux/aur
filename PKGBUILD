@@ -1,6 +1,6 @@
 # Maintainer: lemonxah <lemonxah@gmail.com>
 pkgname=zestbay
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="A PipeWire patchbay and audio routing manager with LV2/CLAP/VST3 plugin hosting"
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=(
   'lv2'
   'libx11'
   'dbus'
+  'suil'
 )
 makedepends=(
   'rust'
@@ -28,9 +29,6 @@ makedepends=(
   'lilv'
   'lv2'
   'libx11'
-)
-optdepends=(
-  'suil: LV2 UI toolkit wrapping for GTK-based plugin UIs'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
