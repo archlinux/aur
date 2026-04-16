@@ -1,5 +1,22 @@
 # Release Notes
 
+## 2.92.3
+
+This release fixes universal lock splits that use extra markers not directly related to
+`--style universal` target systems or `--interpreter-constraints`. Previously these triggered an
+internal exception. That bug is now fixed and the scope of manually induced splits is now
+broadened to include extra markers when used alone.
+
+* Fix universal lock splitting for extra markers. (#3150)
+
+## 2.92.2
+
+This release fixes `pex3 lock create --avoid-downloads` hashing of VCS requirements where the VCS
+repository contains symlinks. Previously the hash calculated at lock create time would always
+mismatch the hash calculated at lock use time.
+
+* Fix VCS hashing in the face of symlinks. (#3149)
+
 ## 2.92.1
 
 This release fixes a caching bug introduced in #2766 that led to sdists always being rebuilt when
