@@ -10,6 +10,8 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 ########################################################################
 ## PRODUCTS
 ########################################################################
+##
+## Uncomment the lines for the products you want to install or download.
 
 # "5G_Toolbox"
 # "AUTOSAR_Blockset"
@@ -28,7 +30,7 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "DDS_Blockset"
 # "DSP_HDL_Toolbox"
 # "DSP_System_Toolbox"
-# ## "Data_Acquisition_Toolbox"
+# "Data_Acquisition_Toolbox"
 # "Database_Toolbox"
 # "Datafeed_Toolbox"
 # "Deep_Learning_HDL_Toolbox"
@@ -74,6 +76,7 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "Polyspace_Code_Prover"
 # "Polyspace_Code_Prover_Server"
 # "Polyspace_Test"
+# "Polyspace_as_You_Code"
 # "Powertrain_Blockset"
 # "Predictive_Maintenance_Toolbox"
 # "RF_Blockset"
@@ -81,11 +84,13 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "RF_Toolbox"
 # "ROS_Toolbox"
 # "Radar_Toolbox"
+# "Raspberry_Pi_Blockset"
 # "Reinforcement_Learning_Toolbox"
 # "Requirements_Toolbox"
 # "Risk_Management_Toolbox"
 # "Robotics_System_Toolbox"
 # "Robust_Control_Toolbox"
+# "STM32_Microcontroller_Blockset"
 # "Satellite_Communications_Toolbox"
 # "Sensor_Fusion_and_Tracking_Toolbox"
 # "SerDes_Toolbox"
@@ -109,6 +114,7 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "Simulink_Design_Optimization"
 # "Simulink_Design_Verifier"
 # "Simulink_Desktop_Real-Time"
+# "Simulink_FMU_Builder"
 # "Simulink_Fault_Analyzer"
 # "Simulink_PLC_Coder"
 # "Simulink_Real-Time"
@@ -129,17 +135,23 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "WLAN_Toolbox"
 # "Wavelet_Toolbox"
 # "Wireless_HDL_Toolbox"
+# "Wireless_Network_Toolbox"
 # "Wireless_Testbench"
 
-#######################################################################
-# SUPPORT PACKAGES
-#######################################################################
+
+########################################################################
+## SUPPORT PACKAGES
+########################################################################
+##
+## Uncomment the lines for the support packages you want to install or download.
 
 # "6G_Exploration_Library_for_5G_Toolbox"
 # "Aerospace_Blockset_Interface_for_Unreal_Engine_Projects"
+# "AI_Verification_Library_for_Deep_Learning_Toolbox"
 # "ASIC_Testbench_for_HDL_Verifier"
 # "Audio_Toolbox_Interface_for_SpeechBrain_and_Torchaudio_Libraries"
 # "Automated_Driving_Toolbox_Importer_for_Zenrin_Japan_Map_API_3.0_(Itsumo_NAVI_API_3.0)_Service"
+# "Automated_Driving_Toolbox_Interface_for_Eclipse_SUMO_Traffic_Simulator"
 # "Automated_Driving_Toolbox_Interface_for_Unreal_Engine_Projects"
 # "Automated_Driving_Toolbox_Model_for_Lidar_Lane_Detection"
 # "Automated_Driving_Toolbox_Test_Suite_for_Euro_NCAP_Protocols"
@@ -149,14 +161,17 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "Communications_Toolbox_Support_Package_for_RTL-SDR_Radio"
 # "Communications_Toolbox_Support_Package_for_USRP_Embedded_Series_Radio"
 # "Communications_Toolbox_Support_Package_for_USRP_Radio"
-# "Communications_Toolbox_Wireless_Network_Simulation_Library"
 # "Component_Deployment_Guideline_for_Embedded_Coder"
+# "Computer_Vision_Toolbox_Interface_for_Nerfstudio_Library"
 # "Computer_Vision_Toolbox_Interface_for_OpenCV_in_MATLAB"
 # "Computer_Vision_Toolbox_Interface_for_OpenCV_in_Simulink"
 # "Computer_Vision_Toolbox_Model_for_BiSeNet_v2_Semantic_Segmentation_Network"
+# "Computer_Vision_Toolbox_Model_for_Grounding_DINO_Object_Detection"
 # "Computer_Vision_Toolbox_Model_for_Inflated-3D_Video_Classification"
 # "Computer_Vision_Toolbox_Model_for_Mask_R-CNN_Instance_Segmentation"
+# "Computer_Vision_Toolbox_Model_for_moondream_Vision_Language_Model"
 # "Computer_Vision_Toolbox_Model_for_Object_Keypoint_Detection"
+# "Computer_Vision_Toolbox_Model_for_OpenAI_CLIP_Network"
 # "Computer_Vision_Toolbox_Model_for_Pose_Mask_R-CNN_6-DoF_Object_Pose_Estimation"
 # "Computer_Vision_Toolbox_Model_for_R(2+1)D_Video_Classification"
 # "Computer_Vision_Toolbox_Model_for_RAFT_Optical_Flow_Estimation"
@@ -183,7 +198,8 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "Deep_Learning_Toolbox_Converter_for_PyTorch_Model_Format"
 # "Deep_Learning_Toolbox_Converter_for_TensorFlow_models"
 # "Deep_Learning_Toolbox_Importer_for_Caffe_Models"
-# "Deep_Learning_Toolbox_Interface_for_TensorFlow_Lite"
+# "Deep_Learning_Toolbox_Interface_for_alpha-beta-CROWN_Verifier"
+# "Deep_Learning_Toolbox_Interface_for_LiteRT_Library"
 # "Deep_Learning_Toolbox_Model_Compression_Library"
 # "Deep_Learning_Toolbox_Model_for_AlexNet_Network"
 # "Deep_Learning_Toolbox_Model_for_DarkNet-19_Network"
@@ -204,7 +220,6 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "Deep_Learning_Toolbox_Model_for_VGG-16_Network"
 # "Deep_Learning_Toolbox_Model_for_VGG-19_Network"
 # "Deep_Learning_Toolbox_Model_for_Xception_Network"
-# "Deep_Learning_Toolbox_Verification_Library"
 # "Embedded_Coder_Interface_to_QEMU_Emulator"
 # "Embedded_Coder_Support_Package_for_AMD_SoC_Devices"
 # "Embedded_Coder_Support_Package_for_ARM_Cortex-A_Processors"
@@ -216,12 +231,10 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "Embedded_Coder_Support_Package_for_Intel_SoC_Devices"
 # "Embedded_Coder_Support_Package_For_Linux_Applications"
 # "Embedded_Coder_Support_Package_for_Qualcomm_Hexagon_Processors"
-## "Embedded_Coder_Support_Package_for_STMicroelectronics_STM32_Processors"
 # "Ephemeris_Data_for_Aerospace_Toolbox"
 # "Extended_Tire_Features_for_Vehicle_Dynamics_Blockset"
-# "FMU_Builder_For_Simulink"
 # "Geoid_Data_for_Aerospace_Toolbox"
-# "GPU_Coder_Interface_for_Deep_Learning_Libraries"
+# "GPU_Coder_Interface_for_Deep_Learning"
 # "GUIDE_to_App_Designer_Migration_Tool_for_MATLAB"
 # "HDL_Coder_Support_Package_for_AMD_FPGA_and_SoC_Devices"
 # "HDL_Coder_Support_Package_for_Intel_FPGA_and_SoC_Devices"
@@ -240,7 +253,9 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 ## "Image_Acquisition_Toolbox_Support_Package_for_Point_Grey_Hardware"
 ## "Image_Acquisition_Toolbox_Support_Package_for_Teledyne_DALSA_Sapera_Hardware"
 # "Image_Processing_Toolbox_Image_Data"
+# "Image_Processing_Toolbox_Model_for_Circle_Detection"
 # "Image_Processing_Toolbox_Model_for_Segment_Anything_Model"
+# "Image_Processing_Toolbox_Model_for_Segment_Anything_Model_2"
 ## "Instrument_Control_Toolbox_Support_Package_for_IVI_and_VXIplug&play_Drivers"
 ## "Instrument_Control_Toolbox_Support_Package_for_Keysight_(Agilent)_IO_Libraries_and_VISA_Interface"
 ## "Instrument_Control_Toolbox_Support_Package_for_National_Instruments_NI-845x_I2C/SPI_Interface"
@@ -259,8 +274,8 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "Lidar_Toolbox_Model_for_RandLA-Net_Semantic_Segmentation"
 # "Lidar_Toolbox_Support_Package_for_Hokuyo_LiDAR_Sensors"
 # "Lidar_Toolbox_Support_Package_for_Ouster_Lidar_Sensors"
+# "Lidar_Toolbox_Support_Package_for_SICK_Lidar_Sensors"
 # "Lidar_Toolbox_Support_Package_for_Velodyne_LiDAR_Sensors"
-# "Machine_Learning_Pipelines_for_Statistics_and_Machine_Learning_Toolbox_(Beta)"
 ## "MariaDB_ODBC_Driver_for_Database_Toolbox"
 # "MATLAB_Basemap_Data_-_bluegreen"
 # "MATLAB_Basemap_Data_-_colorterrain"
@@ -268,11 +283,13 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "MATLAB_Basemap_Data_-_grayterrain"
 # "MATLAB_Basemap_Data_-_landcover"
 # "MATLAB_Client_for_MATLAB_Production_Server"
-# "MATLAB_Coder_Interface_for_Deep_Learning_Libraries"
+# "MATLAB_Coder_Interface_for_Deep_Learning"
 # "MATLAB_Coder_Interface_for_Visual_Studio_Code_Debugging"
 # "MATLAB_Coder_Support_Package_for_NVIDIA_Jetson_and_NVIDIA_DRIVE_Platforms"
+# "MATLAB_Coder_Support_Package_for_PyTorch_and_LiteRT_Models"
 # "MATLAB_Support_for_HEIF/HEIC_Image_Format"
 ## "MATLAB_Support_for_MinGW-w64_C/C++/Fortran_Compiler"
+# "MATLAB_Support_for_OpenJDK"
 # "MATLAB_Support_Package_for_Android_Sensors"
 # "MATLAB_Support_Package_for_Apple_iOS_Sensors"
 # "MATLAB_Support_Package_for_Arduino_Hardware"
@@ -281,18 +298,20 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "MATLAB_Support_Package_for_LEGO_MINDSTORMS_EV3_Hardware"
 ## "MATLAB_Support_Package_for_Parrot_Drones"
 # "MATLAB_Support_Package_for_Quantum_Computing"
-# "MATLAB_Support_Package_for_Raspberry_Pi_Hardware"
 ## "MATLAB_Support_Package_for_Ryze_Tello_Drones"
 # "MATLAB_Support_Package_for_USB_Webcams"
 # "Medical_Imaging_Toolbox_Interface_for_Cellpose"
 # "Medical_Imaging_Toolbox_Interface_for_MONAI_Label_Library"
+# "Medical_Imaging_Toolbox_Interface_for_Whole_Slide_Imaging_File_Reader"
 # "Medical_Imaging_Toolbox_Model_for_Medical_Segment_Anything_Model"
 # "Mixed-Signal_Blockset_Models"
 # "Modelscape_for_MATLAB"
 # "Multi-Version_Co-Simulation_for_Simulink"
+# "Optical_Design_and_Simulation_Library_for_Image_Processing_Toolbox"
 ## "PostgreSQL_ODBC_Driver_for_Database_Toolbox"
 # "Powertrain_Blockset_Drive_Cycle_Data"
 ## "Radar_Toolbox_Support_Package_for_Texas_Instruments_mmWave_Radar_Sensors"
+# "Reduced_Order_Modeler_for_MATLAB"
 # "RF_Blockset_Models_for_Analog_Devices_RF_Transceivers"
 # "Robotics_System_Toolbox_Interface_for_Unreal_Engine_Projects"
 # "Robotics_System_Toolbox_Offroad_Autonomy_Library"
@@ -301,23 +320,20 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "Robotics_System_Toolbox_Support_Package_for_Universal_Robots_UR_Series_Manipulators"
 # "ROS_Toolbox_Support_Package_for_TurtleBot-Based_Robots"
 # "Scenario_Builder_for_Automated_Driving_Toolbox"
-# "Signal_Processing_Toolbox_Support_Package_for_Linux_IIO_Devices"
 # "Simulink_3D_Animation_Interface_for_Unreal_Engine_Projects"
 ## "Simulink_Coder_Support_Package_for_ARM_Cortex-based_VEX_Microcontroller"
 ## "Simulink_Coder_Support_Package_for_BBC_microbit_Board"
 # "Simulink_Coder_Support_Package_for_BeagleBone_Blue_Hardware"
 ## "Simulink_Coder_Support_Package_for_NXP_FRDM-K64F_Board"
 ## "Simulink_Coder_Support_Package_for_NXP_FRDM-KL25Z_Board"
-## "Simulink_Coder_Support_Package_for_STMicroelectronics_Nucleo_Boards"
 ## "Simulink_Coder_Support_Package_for_VEX_EDR_V5_Robot_Brain"
 ## "Simulink_Interface_for_Siemens_MF-Tyre/MF-Swift_Tire_Model"
-# "Simulink_Real-Time_Target_Support_Package"
+# "Simulink_Real-Time_Support_Package_for_Linux_Devices"
 ## "Simulink_Real-Time_XIL_Support_Package"
 # "Simulink_Support_Package_for_Android_Devices"
 # "Simulink_Support_Package_for_Arduino_Hardware"
 # "Simulink_Support_Package_for_LEGO_MINDSTORMS_EV3_Hardware"
 # "Simulink_Support_Package_for_Parrot_Minidrones"
-# "Simulink_Support_Package_for_Raspberry_Pi_Hardware"
 ## "Simulink_Test_Support_Package_for_ASAM_XIL"
 # "SoC_Blockset_Support_Package_for_AMD_FPGA_and_SoC_Devices"
 # "SoC_Blockset_Support_Package_for_Embedded_Linux_Devices"
@@ -333,7 +349,9 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "Text_Analytics_Toolbox_Model_for_BERT-Tiny_Network"
 # "Text_Analytics_Toolbox_Model_for_fastText_English_16_Billion_Token_Word_Embedding"
 # "Text_Analytics_Toolbox_Model_from_UDify_Data"
+# "Time_Series_Anomaly_Detection_for_MATLAB"
 # "UAV_Toolbox_Interface_for_Unreal_Engine_Projects"
+## "UAV_Toolbox_Support_Package_for_ArduPilot_Autopilots"
 # "UAV_Toolbox_Support_Package_for_PX4_Autopilots"
 # "Variant_Manager_for_Simulink"
 # "Vehicle_Dynamics_Blockset_Interface_for_Unreal_Engine_Projects"
@@ -341,9 +359,11 @@ _MAKEPKG_MATLAB_PRODUCT_LIST=(
 # "WINNER_II_Channel_Model_for_Communications_Toolbox"
 # "Wireless_Testbench_Support_Package_for_NI_USRP_Radios"
 
-#######################################################################
-# OPTIONAL FEATURES
-#######################################################################
+########################################################################
+## OPTIONAL FEATURES
+########################################################################
+##
+## Uncomment the lines for the optional features you want to install or download.
 
 # "Airport_Scene"
 # "Construction_Site_Scene"
@@ -377,10 +397,10 @@ pkgname=(
   "${pkgbase}-gcc"
   "${pkgbase}-gcc-fortran"
 )
-pkgver=R2025b+25.2.0.3177638
+pkgver=R2026a+26.1.0.3203278
 _release="${pkgver%+*}"
 _version="${pkgver##*+}"
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=(
@@ -392,7 +412,6 @@ license=(
 )
 makedepends=(
   'gendesk'
-  'gnutls3.8.9'
   'inotify-tools'
   'matlab-mpm'
 )
@@ -531,22 +550,16 @@ build() {
         -e "s|g++|g++-${pkgbase}|g" \
         -e "s|gfortran|gfortran-${pkgbase}|g" \
         -i "{}" +
-
-  # https://bbs.archlinux.org/viewtopic.php?id=305604
-  echo "  -> Downgrading GnuTLS version..."
-  find "/usr/lib/gnutls3.8.9" -maxdepth 1 -type f,l -name 'lib*.so*' -exec \
-    ln -vsf {} bin/glnxa64/ \;
 }
 
 package_matlab() {
   depends=(
     "${pkgname}-meta>=${_release}"
     'sh'
-    'gnutls3.8.9'
   )
   optdepends=(
     "${pkgname}-meta-all: all runtime dependencies"
-    "java-${pkgname}: required for certain products and features"
+    "java-${pkgname}: Java components, required for certain products and features"
     "${pkgname}-gcc: GCC runtime dependency"
     "${pkgname}-gcc-fortran: GCC Fortran runtime dependency"
   )
