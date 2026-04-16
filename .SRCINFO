@@ -1,0 +1,27 @@
+pkgbase = kokoro-reader-git
+	pkgdesc = Minimal PDF reader with built-in neural text-to-speech (Kokoro 82M)
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Samhamsam/kokoro-reader
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = alsa-lib
+	depends = fontconfig
+	depends = gtk3
+	depends = libxkbcommon
+	depends = espeak-ng
+	depends = sonic
+	depends = pcaudiolib
+	provides = kokoro-reader
+	conflicts = kokoro-reader
+	options = !lto
+	source = kokoro-reader::git+https://github.com/Samhamsam/kokoro-reader.git
+	source = pdfium-linux-x64.tgz::https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F7776/pdfium-linux-x64.tgz
+	sha256sums = SKIP
+	sha256sums = 8aa6036e2643aeb699f6390f3a9fff3f28d4add64ffc727d0cbc85670bb1417c
+
+pkgname = kokoro-reader-git
