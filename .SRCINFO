@@ -1,7 +1,7 @@
 pkgbase = qdrant-git
 	pkgdesc = Vector Database and Vector Search Engine for AI
-	pkgver = 1.16.2+r5061+gd2834de0b
-	pkgrel = 2
+	pkgver = 1.17.1+r5628+geabee371f
+	pkgrel = 1
 	url = https://github.com/qdrant/qdrant
 	arch = x86_64
 	license = Apache
@@ -25,7 +25,7 @@ pkgbase = qdrant-git
 	depends = shaderc
 	depends = xz
 	depends = zstd
-	provides = qdrant=1.16.2+r5061+gd2834de0b
+	provides = qdrant=1.17.1+r5628+geabee371f
 	conflicts = qdrant
 	backup = etc/qdrant/config.yaml
 	source = git+https://github.com/qdrant/qdrant.git
