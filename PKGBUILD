@@ -32,8 +32,9 @@ sha256sums=('e54907f7395f879fb1eda268fd059517b2bc3688c5010a04bcec120aaf76bed2')
 
 prepare() {
 	cd "$_archive"
-	# https://github.com/p2panda/reflection/issues/230
+	# https://github.com/p2panda/reflection/pull/231
 	sed -i -e '/^loro/s/.*/loro = "1"/' reflection-doc/Cargo.toml
+	# https://github.com/p2panda/reflection/issues/230
 	cargo fetch --target host-tuple
 }
 
