@@ -1,66 +1,78 @@
-# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
+# Maintainer: Chi_Tang <me@chitang.dev>
+# Maintainer: Integral <integral@member.fsf.org>
 
 pkgname=throne
-pkgver=1.0.13
+_srcname=Throne
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: sing-box)"
-arch=('x86_64')
-url="https://github.com/throneproj/Throne"
+arch=('x86_64' 'aarch64' 'riscv64')
+url="https://throneproj.github.io"
 license=('GPL-3.0-or-later')
-depends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base')
-makedepends=('cmake' 'gendesk' 'git' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-        "${pkgname}.sh"
-        "git+https://github.com/throneproj/routeprofiles.git#branch=rule-set")
-sha256sums=('b5abdc6aab685e4433762fdf678ccb6a2e32c31a7f348f486634c6c231de0c7c'
-            'b0797f3a45d1c94f5ef93f3dc5979cee633ca1bbcaf5a3c15b3bcf139af8dc62'
-            'SKIP')
+depends=('qt6-base' 'qt6-charts')
+makedepends=('cmake' 'go' 'qt6-tools' 'protobuf' 'vulkan-headers')
+optdepends=(
+	'sing-geoip-db: geoip database for Throne'
+	'sing-geosite-db: geosite database for Throne'
+)
+conflicts=('nekoray')
+replaces=('nekoray')
+source=(
+	"${pkgname}-${pkgver}.tar.gz::https://github.com/throneproj/${_srcname}/archive/${pkgver}.tar.gz"
+	"https://raw.githubusercontent.com/throneproj/routeprofiles/rule-set/srslist.h"
+	"${pkgname}.sh"
+	"${_srcname}.desktop"
+)
+sha512sums=('84221c2f9a5c64b757517f69243b1111a3e9bfb0b9ff62b0b4c544299ba6ab289a66ffdb657a3d8a97089b131f3f1aaf91dcded444dbec23695a986311b80b81'
+            'd0c689c06dd022222f1fc8856771fd70482de502d1d2250b561a3435f797370f5b1d279c483a4f8aa8b8956a2991fec7d6d0756b118d3ca663e292c3a82c809a'
+            '28275441d2d1eb3203d3d4084666d5f8f8af03e29feee97fb758f6ba87396a45876221316e11aab1a159ef8a67fe8d62d75ff8d38131cb3dca3221bb1d98085c'
+            'a47e8b547bd8759e7bc5c31f6055ad5ed3f6ee5879c07de8c05349b381578f907d3bdfb833fd5296fb4b20b6cacae6b622b2ab1fc7e46fce309cb273e82bc1c5')
 
 prepare() {
-    mkdir -p build
-    cp routeprofiles/srslist.h build
+	cd "${_srcname}-${pkgver}/"
+	cp "${srcdir}/srslist.h" .
 
-    gendesk -f -n \
-        --pkgname "${pkgname}" \
-        --pkgdesc "${pkgdesc}" \
-        --name "${pkgname^}" \
-        --categories 'Network'
+	cd core/server
+	export GOBIN="${srcdir}/bin"
+	export PATH="${PATH}:${GOBIN}"
+	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+	go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
-    cd "${pkgname^}-${pkgver}/core/server"
-    export GOBIN="${srcdir}/bin"
-    export PATH="${PATH}:${GOBIN}"
-    go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-    go install github.com/chai2010/protorpc/protoc-gen-protorpc@latest
-
-    cd gen
-    protoc -I . --go_out=. --protorpc_out=. libcore.proto
+	cd gen
+	protoc -I . --go_out=. --go-grpc_out=. libcore.proto
 }
 
 build() {
-    cmake -B build -S "${pkgname^}-${pkgver}" \
-        -D CMAKE_BUILD_TYPE=Release \
-        -D CMAKE_INSTALL_PREFIX=/usr \
-        -W no-dev
-    cmake --build build
+	cd "${_srcname}-${pkgver}/"
 
-    cd "${pkgname^}-${pkgver}/core/server"
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	cmake -B build \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr
 
-    VERSION_SINGBOX=$(go list -m -f '{{.Version}}' github.com/sagernet/sing-box)
-    go build -o "${srcdir}/build" \
-        -ldflags="-linkmode=external -w -s -X 'github.com/sagernet/sing-box/constant.Version=${VERSION_SINGBOX}'" \
-        -tags="with_clash_api,with_gvisor,with_quic,with_wireguard,with_utls,with_dhcp,with_tailscale"
+	cmake --build build
+
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+
+	cd core/server
+
+	VERSION_SINGBOX=$(go list -m -f '{{.Version}}' github.com/sagernet/sing-box)
+	go build -o ../../build/ \
+		-buildmode=pie \
+		-trimpath \
+		-ldflags "-linkmode=external -w -s -X 'github.com/sagernet/sing-box/constant.Version=${VERSION_SINGBOX}' -X 'internal/godebug.defaultGODEBUG=multipathtcp=0' -checklinkname=0" \
+		-mod=readonly \
+		-modcacherw \
+		-tags "with_clash_api,with_gvisor,with_quic,with_wireguard,with_utls,with_dhcp,with_tailscale,badlinkname,tfogo_checklinkname0"
 }
 
 package() {
-    install -Dm755 build/{Core,Throne} -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+	install -Dm644 "${_srcname}.desktop" -t "${pkgdir}/usr/share/applications/"
+	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
-    cd "${pkgname^}-${pkgver}"
-    install -Dm644 res/public/Throne.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	cd "${_srcname}-${pkgver}/"
+	install -Dm644 "res/public/${_srcname}.png" -t "${pkgdir}/usr/share/pixmaps/"
+	install -Dm755 build/Throne{,Core} -t "${pkgdir}/usr/lib/${pkgname}/"
 }
