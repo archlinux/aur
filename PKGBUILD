@@ -1,6 +1,6 @@
 # Maintainer: Marvin1099
 pkgname=smb-mount-controller
-pkgver=1.0.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A state-based SMB/CIFS mount controller for Linux that manages network shares based on reachability"
 arch=('any')
