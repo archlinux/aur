@@ -1,0 +1,17 @@
+pkgbase = xgestured-git
+	pkgdesc = A lightweight, minimal, and lightning-fast touchpad gesture daemon for X11
+	pkgver = r32.0375b5d
+	pkgrel = 1
+	url = https://github.com/06ergin06/xgestured
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = libinput
+	provides = xgestured
+	conflicts = xgestured
+	source = git+https://github.com/06ergin06/xgestured.git
+	sha256sums = SKIP
+
+pkgname = xgestured-git
