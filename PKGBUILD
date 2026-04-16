@@ -79,6 +79,9 @@ package() {
   # PKGBUILD for rationale (AppImageLauncher bypass + no fuse2 runtime dep).
   install -dm755 "${pkgdir}/opt/stably-orca"
   cp -a "${sqfs}/." "${pkgdir}/opt/stably-orca/"
+  # Extracted AppImages can ship with 0700 on the root dir; make everything
+  # world-readable and dirs world-traversable so non-root users can launch.
+  chmod -R u+rwX,go+rX "${pkgdir}/opt/stably-orca"
   chmod 755 "${pkgdir}/opt/stably-orca/AppRun"
 
   install -Dm755 "${srcdir}/stably-orca.sh" "${pkgdir}/usr/bin/stably-orca"
