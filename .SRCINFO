@@ -1,0 +1,23 @@
+pkgbase = vgp-git
+	pkgdesc = GPU-accelerated vector display server and desktop environment
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/theesfeld/VGP
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = libdrm
+	depends = libinput
+	depends = libxkbcommon
+	depends = seatd
+	depends = dbus
+	depends = libvterm
+	depends = mesa
+	provides = vgp
+	conflicts = vgp
+	source = git+https://github.com/theesfeld/VGP.git
+	sha256sums = SKIP
+
+pkgname = vgp-git
