@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit
 pkgname=python-${_pkgname}
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 epoch=1
 pkgdesc="An open-source SDK for working with (IBM) quantum computers"
@@ -53,7 +53,12 @@ checkdepends=(
 )
 provides=(libqiskit.so)
 source=($_pkgname::git+https://github.com/Qiskit/$_pkgname#tag=$pkgver)
-b2sums=('01b0c96c33b2cf1d35f09b6d4b052bae8117ffcd96d0287100f4e545b5d801e5293652d24c7006f3518afcdec187324713b8d5e0d8ee9bdc13d05b7b6585ab64')
+b2sums=('a9a32d7842f7c74f4c6616dee9e67e8e7ce433f35301148eed088d21d4b58fb63e57f5e0fbb3fe4666c6c2d89fb1812611c65b813b7b17965d514003aeb73e94')
+
+prepare() {
+    cd $_pkgname
+    sed -i 's/setuptools-rust==1.12.0/setuptools-rust>=1.12.0/' pyproject.toml
+}
 
 build() {
     cd $_pkgname
@@ -81,6 +86,11 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm755 dist/c/lib/libqiskit.so "$pkgdir"/usr/lib/libqiskit.so
     install -Dm644 dist/c/include/qiskit.h "$pkgdir"/usr/include/qiskit.h
+    install -Dm644 dist/c/include/qiskit/attributes.h "$pkgdir"/usr/include/qiskit/attributes.h
     install -Dm644 dist/c/include/qiskit/complex.h "$pkgdir"/usr/include/qiskit/complex.h
+    install -Dm644 dist/c/include/qiskit/funcs.h "$pkgdir"/usr/include/qiskit/funcs.h
+    install -Dm644 dist/c/include/qiskit/funcs_py.h "$pkgdir"/usr/include/qiskit/funcs_py.h
+    install -Dm644 dist/c/include/qiskit/types.h "$pkgdir"/usr/include/qiskit/types.h
+    install -Dm644 dist/c/include/qiskit/version.h "$pkgdir"/usr/include/qiskit/version.h
     install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
