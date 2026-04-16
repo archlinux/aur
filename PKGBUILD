@@ -1,19 +1,16 @@
 # Maintainer: Edmund Lodewijks <edmund at proteamail.com>
 
 pkgname=route-summarization
-pkgver=0.2
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Summarize CIDR classes with Perl"
 arch=(any)
-url="https://github.com/lquidfire/route-summarization"
+url="https://github.com/edmundlod/route-summarization"
 license=('BSD-3-Clause')
 depends=('glibc' 'perl' 'perl-net-cidr-lite')
 makedepends=('git')
-#source=("${pkgname}"::"git+https://github.com/lquidfire/"${pkgname}".git#tag="$pkgver"")
-source=("${pkgname}::git+https://codeberg.org/peregrinus13/${pkgname}.git#tag=${pkgver}")
-validpgpkeys=('E7AAC21597965C6259108D6F471F22BDE25DD664')
-# The above is the fingerprint for key-id 0x471F22BDE25DD664
-sha256sums=('5834066adcc2a66effe00510abc7035b3f3541a82fb0929449505b4f9c2433a8')
+source=("${pkgname}"::"git+https://github.com/edmundlod/"${pkgname}".git#tag=v${pkgver}")
+b2sums=('1b9bb08ba0fbfeb820a32a5a7b06924205c2a216f7ad8488bd548700342ff9a43fa2b6aabcbfab93cbe24ddeb8171920e62f6884a445fc6887c1858858fd9a34')
 
 package() {
   cd "$pkgname"

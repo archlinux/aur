@@ -1,16 +1,15 @@
 pkgbase = route-summarization
 	pkgdesc = Summarize CIDR classes with Perl
-	pkgver = 0.2
+	pkgver = 0.3.1
 	pkgrel = 1
-	url = https://github.com/lquidfire/route-summarization
+	url = https://github.com/edmundlod/route-summarization
 	arch = any
 	license = BSD-3-Clause
 	makedepends = git
 	depends = glibc
 	depends = perl
 	depends = perl-net-cidr-lite
-	source = route-summarization::git+https://codeberg.org/peregrinus13/route-summarization.git#tag=0.2
-	validpgpkeys = E7AAC21597965C6259108D6F471F22BDE25DD664
-	sha256sums = 5834066adcc2a66effe00510abc7035b3f3541a82fb0929449505b4f9c2433a8
+	source = route-summarization::git+https://github.com/edmundlod/route-summarization.git#tag=v0.3.1
+	b2sums = 1b9bb08ba0fbfeb820a32a5a7b06924205c2a216f7ad8488bd548700342ff9a43fa2b6aabcbfab93cbe24ddeb8171920e62f6884a445fc6887c1858858fd9a34
 
 pkgname = route-summarization
