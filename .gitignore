@@ -1,9 +1,9 @@
 # path:   /home/klassiker/.local/share/repos/aur/rustymeter/.gitignore
 # author: klassiker [mrdotx]
 # url:    https://aur.archlinux.org/packages/rustymeter
-# date:   2025-07-20T17:31:05+0200
+# date:   2026-04-16T18:32:28+0200
 
 pkg/
 src/
 *\.tar\.*
-/rustymeter-*
+/rustymeter-[0-9]*
