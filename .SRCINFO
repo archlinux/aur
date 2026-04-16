@@ -1,5 +1,5 @@
 pkgbase = python-fastapi-sso
-	pkgdesc = FastAPI plugin to enable SSO to most common providers (latest tagged version)
+	pkgdesc = FastAPI plugin to enable SSO to most common providers
 	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/tomasvotava/fastapi-sso
