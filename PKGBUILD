@@ -2,7 +2,7 @@
 pkgname=smb-mount-controller
 pkgver=0.1.1
 pkgrel=1
-pkgdesc="A state-based SMB/CIFS mount controller for Linux that manages network shares based on reachability"
+pkgdesc="A state-based SMB/CIFS mount controller written in bash for Linux that (un)mounts network shares based on reachability"
 arch=('any')
 url="https://codeberg.org/marvin1099/smb-mount-controller"
 license=('AGPL3')
