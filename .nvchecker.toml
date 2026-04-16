@@ -1,10 +1,16 @@
 [matlab-meta]
-source = 'jq'
-url = 'https://api.github.com/repos/mathworks-ref-arch/container-images/contents/matlab-deps'
-filter = '.[].name'
-include_regex = 'r20\d{2}[ab]'
+source = "container"
+registry = "docker.io"
+container = "mathworks/matlab"
 from_pattern = 'r'
 to_pattern = 'R'
+
+# source = 'jq'
+# url = 'https://api.github.com/repos/mathworks-ref-arch/container-images/contents/matlab-deps'
+# filter = '.[].name'
+# include_regex = 'r20\d{2}[ab]'
+# from_pattern = 'r'
+# to_pattern = 'R'
 
 # source = 'regex'
 # url = 'https://raw.githubusercontent.com/mathworks-ref-arch/container-images/refs/heads/main/matlab-deps/README.md'
