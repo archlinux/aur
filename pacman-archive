@@ -1,0 +1,66 @@
+#!/bin/bash
+get_last_update_date(){
+    local last_sync_date="0"
+    local db_last_modified_date
+
+    while read -r db_file; do
+        db_last_modified_date="$(date +%s -r "$db_file")"
+        #echo "$db_last_modified_date"
+        if [ "$last_sync_date" -lt "$db_last_modified_date" ];then
+            last_sync_date="$db_last_modified_date"
+        fi
+    done < <(find /var/lib/pacman/sync -name '*.db')
+
+    if [ "$last_sync_date" -eq 0 ];then
+        {
+            echo "Failed to get last update date from /var/lib/pacman/sync"
+            echo "exit"
+        } >&2
+        return 1
+    fi
+
+    y="$(date +%Y --date="@$last_sync_date")"
+    m="$(date +%m --date="@$last_sync_date")"
+    d="$(date +%d --date="@$last_sync_date")"
+    export y m d
+}
+
+main(){
+    local ret=0
+
+    local mirrorlist_o=/etc/pacman.d/mirrorlist
+    local mirrorlist_a=/etc/pacman.d/mirrorlist.archive
+
+    local y m d
+    if ! get_last_update_date;then
+        return 1
+    fi
+    echo "archive date: $y/$m/$d"
+
+    cat "$mirrorlist_o" > "$mirrorlist_a"
+    cat << EOF >> "$mirrorlist_a"
+Server = https://archive.archlinux.org/repos/$y/$m/$d/\$repo/os/\$arch
+EOF
+
+    mount --bind "$mirrorlist_a" "$mirrorlist_o"
+
+    pacman "$@"
+    ret="$?"
+
+    umount "$mirrorlist_o"
+
+    rm "$mirrorlist_a"
+    return "$ret"
+}
+
+if "$IN_UNSHARE_MOUNT" 2>/dev/null;then
+    main "$@"
+    exit "$?"
+fi
+
+if [ "$(id -u)" -ne 0 ];then
+    echo "root permission is required."
+    exit 1
+fi
+export IN_UNSHARE_MOUNT=true
+exec unshare -m "$0" "$@"
