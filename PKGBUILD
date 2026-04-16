@@ -11,7 +11,7 @@ pkgdesc='Library to easily interface with LLM API providers.'
 arch=(any)
 url='https://github.com/BerriAI/litellm'
 license=('MIT')
-depends=('python' 'python-fastuuid' 'python-httpx' 'python-openai' 'python-dotenv' 'python-tiktoken' 'python-importlib-metadata' 'python-tokenizers' 'python-click' 'python-jinja' 'python-aiohttp' 'python-pydantic' 'python-jsonschema')
+depends=('python' 'python-fastuuid' 'python-httpx' 'python-openai' 'python-dotenv' 'python-tiktoken' 'python-importlib-metadata' 'python-tokenizers' 'python-click' 'python-jinja' 'python-aiohttp' 'python-pydantic' 'python-jsonschema' 'python-fastapi-sso')
 makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('gunicorn: proxy'
             'uvicorn: proxy'
@@ -50,16 +50,29 @@ optdepends=('gunicorn: proxy'
             'python-mlflow: mlflow'
             'python-grpcio: grpc'
             'python-google-cloud-aiplatform: google')
-provides=("python-$pkgname")
+provides=("python-${pkgname}")
+
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('38db022b4bf5a51cbe597a8308e6e51eb71254ae684d41aa210b76df0c827063')
 
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}/"
+
+  sed -i -E 's/uv_build==[0-9.]*/uv_build/g' pyproject.toml
+}
+
+
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "${srcdir}/${pkgname}-${pkgver}/"
+
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "${srcdir}/${pkgname}-${pkgver}/"
+
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }

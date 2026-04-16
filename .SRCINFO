@@ -22,6 +22,7 @@ pkgbase = litellm
 	depends = python-aiohttp
 	depends = python-pydantic
 	depends = python-jsonschema
+	depends = python-fastapi-sso
 	optdepends = gunicorn: proxy
 	optdepends = uvicorn: proxy
 	optdepends = python-uvloop: proxy
