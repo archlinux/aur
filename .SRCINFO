@@ -1,6 +1,6 @@
 pkgbase = hypryou-git
 	pkgdesc = Dynamic and elegant desktop setup inspired by Material You, featuring auto-generated colors, fluid animations, and customizable user experience.
-	pkgver = 2.2.0.1.g2e2bf0d
+	pkgver = 2.2.4.1.g67510e6
 	pkgrel = 1
 	url = https://github.com/koeqaife/hyprland-material-you
 	install = hypryou.install
@@ -17,7 +17,7 @@ pkgbase = hypryou-git
 	depends = python-pam
 	depends = gtk4
 	depends = libgirepository
-	depends = hyprland
+	depends = hyprland>=0.53.0
 	depends = dbus
 	depends = dbus-glib
 	depends = python-pyvips
@@ -38,7 +38,7 @@ pkgbase = hypryou-git
 	depends = networkmanager
 	depends = hyprshot
 	depends = gtk4-layer-shell
-	depends = python-materialyoucolor-git
+	depends = python-materialyoucolor>=3.0
 	depends = libastal-bluetooth-git
 	depends = libastal-wireplumber-git
 	depends = ttf-material-symbols-variable-git

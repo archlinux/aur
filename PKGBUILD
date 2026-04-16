@@ -1,7 +1,7 @@
 # Maintainer: Koeqaife
 pkgname=hypryou-git
 _pkgname="hyprland-material-you"
-pkgver=2.2.0.1.g2e2bf0d
+pkgver=2.2.4.1.g67510e6
 pkgrel=1
 pkgdesc="Dynamic and elegant desktop setup inspired by Material You, featuring auto-generated colors, fluid animations, and customizable user experience."
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ depends=(
   'python-pam'
   'gtk4'
   'libgirepository'
-  'hyprland'
+  'hyprland>=0.53.0'
   'dbus'
   'dbus-glib'
   'python-pyvips'
@@ -49,7 +49,7 @@ depends=(
   'hyprshot'
 
   'gtk4-layer-shell'
-  'python-materialyoucolor-git'
+  'python-materialyoucolor>=3.0'
   'libastal-bluetooth-git'
   'libastal-wireplumber-git'
   'ttf-material-symbols-variable-git'
