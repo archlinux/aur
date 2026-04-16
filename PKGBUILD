@@ -8,8 +8,8 @@ pkgname=(
   "${pkgbase}"
   "${pkgbase}-all"
 )
-pkgver=R2025b
-pkgrel=3
+pkgver=R2026a
+pkgrel=1
 epoch=1
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=(
@@ -33,9 +33,98 @@ _releases=(
   'R2024a'
   'R2024b'
   'R2025a'
+  'R2025b'
 )
 
 declare -Ag _depends=(
+  # archlinux                 # ubuntu24.04
+  ['ca-certificates']=1       # ca-certificates
+  ['debianutils']=0           # debianutils
+  ['rdma-core']=0             # ibverbs-providers
+  ['alsa-lib']=1              # libasound2t64
+  ['at-spi2-core']=1          # libatk-bridge2.0-0t64
+  ['at-spi2-core']=1          # libatk1.0-0t64
+  ['libatomic']=1             # libatomic1
+  ['at-spi2-core']=1          # libatspi2.0-0t64
+  ['boost174-libs']=0         # libboost-atomic1.74.0
+  ['boost174-libs']=0         # libboost-chrono1.74.0t64
+  ['boost174-libs']=0         # libboost-date-time1.74.0
+  ['boost174-libs']=0         # libboost-filesystem1.74.0
+  ['boost174-libs']=0         # libboost-log1.74.0
+  ['boost174-libs']=0         # libboost-program-options1.74.0
+  ['boost174-libs']=0         # libboost-regex1.74.0
+  ['boost174-libs']=0         # libboost-system1.74.0
+  ['boost174-libs']=0         # libboost-thread1.74.0
+
+  ['glibc']=1                 # libc6
+  ['cairo']=0                 # libcairo-gobject2
+  ['cairo']=0                 # libcairo2
+  ['libcap']=0                # libcap2
+  ['libxcrypt-compat']=1      # libcrypt1
+  ['libcups']=0               # libcups2t64
+  ['fontconfig']=1            # libfontconfig1
+  ['fribidi']=0               # libfribidi0
+  ['mesa']=1                  # libgbm1
+  ['gdk-pixbuf2']=1           # libgdk-pixbuf-2.0-0
+  ['libgl']=1                 # libgl1
+  ['glib2']=1                 # libglib2.0-0t64
+  ['libgl']=1                 # libglx0
+  ['gst-plugins-base-libs']=1 # libgstreamer-plugins-base1.0-0
+  ['gstreamer']=1             # libgstreamer1.0-0
+  ['gtk3']=0                  # libgtk-3-0t64
+  ['hidapi']=1                # libhidapi-libusb0
+  ['rdma-core']=0             # libibverbs1
+  ['libice']=1                # libice6
+  ['mosquitto']=0             # libmosquitto1
+  ['mosquitto']=0             # libmosquittopp1
+  ['nspr']=1                  # libnspr4
+  ['nss']=1                   # libnss3
+  ['numactl']=0               # libnuma1
+  ['libgl']=1                 # libopengl0
+  ['pam']=1                   # libpam0g
+  ['pango']=1                 # libpango-1.0-0
+  ['pango']=1                 # libpangocairo-1.0-0
+  ['pango']=1                 # libpangoft2-1.0-0
+  ['pixman']=1                # libpixman-1-0
+  ['opa-psm2']=0              # libpsm2-2
+  ['rdma-core']=0             # librdmacm1t64
+  ['libsndfile']=1            # libsndfile1
+  ['libtirpc']=0              # libtirpc3t64
+  ['openucx']=0               # libucx0
+  ['systemd-libs']=1          # libudev1
+  ['libuhd']=0                # libuhd4.6.0-dpdk
+  ['util-linux-libs']=1       # libuuid1
+  ['libxcomposite']=1         # libxcomposite1
+  ['libxcursor']=0            # libxcursor1
+  ['libxdamage']=0            # libxdamage1
+  ['libxfixes']=1             # libxfixes3
+  ['libxfont2']=0             # libxfont2
+  ['libxft']=1                # libxft2
+  ['libxinerama']=0           # libxinerama1
+  ['libxrandr']=1             # libxrandr2
+  ['libxt']=1                 # libxt6t64
+  ['libxtst']=0               # libxtst6
+  ['libxxf86vm']=1            # libxxf86vm1
+  ['glibc-locales']=0         # locales
+  ['glibc-locales']=0         # locales-all
+  ['make']=1                  # make
+  ['net-tools']=0             # net-tools
+  ['libprocps']=0             # procps
+  ['sudo']=0                  # sudo
+  ['unzip']=1                 # unzip
+  ['xorg-setxkbmap']=0        # x11-xkb-utils
+  ['xorg-xkbcomp']=0          # x11-xkb-utils
+  ['xorg-xkbevd']=0           # x11-xkb-utils
+  ['xorg-xkbprint']=0         # x11-xkb-utils
+  ['xorg-xkbutils']=0         # x11-xkb-utils
+  ['zlib']=1                  # zlib1g
+  ['wget']=1                  # wget
+
+  # archlinux                 # ubi9
+  ['which']=1                 # which.x86_64
+)
+
+declare -Ag _depends_r2025b=(
   # archlinux                 # ubuntu24.04
   ['ca-certificates']=1       # ca-certificates
   ['debianutils']=0           # debianutils
@@ -890,9 +979,6 @@ package_matlab-meta() {
   )
   optdepends=(
     "${_optdepends_resolved[@]}"
-    "matlab-${pkgver,,}-jre: supported system-wide JRE"
-    "matlab-${pkgver,,}-gcc: supported GCC"
-    "matlab-${pkgver,,}-gcc-fortran: supported GFortran"
   )
   provides=(
     "${pkgname/matlab/"matlab-${pkgver,,}"}=${pkgver}"
@@ -942,9 +1028,6 @@ package_${pkgbase/matlab/"matlab-${_release,,}"}() {
   )
   optdepends=(
     ${_optdepends_resolved[@]}
-    'matlab-${_release,,}-jre: supported system-wide JRE'
-    'matlab-${_release,,}-gcc: supported GCC'
-    'matlab-${_release,,}-gcc-fortran: supported GFortran'
   )
 }
 

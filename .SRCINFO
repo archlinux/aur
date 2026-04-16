@@ -1,7 +1,7 @@
 pkgbase = matlab-meta
 	pkgdesc = A high-level language for numerical computation and visualization
-	pkgver = R2025b
-	pkgrel = 3
+	pkgver = R2026a
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mathworks-ref-arch/container-images/tree/main/matlab-deps
 	arch = any
@@ -17,6 +17,7 @@ pkgname = matlab-meta
 	depends = libxt
 	depends = gstreamer
 	depends = glib2
+	depends = hidapi
 	depends = libatomic
 	depends = pam
 	depends = libice
@@ -27,7 +28,6 @@ pkgname = matlab-meta
 	depends = util-linux-libs
 	depends = libxxf86vm
 	depends = gdk-pixbuf2
-	depends = libdrm
 	depends = libxcomposite
 	depends = libxft
 	depends = which
@@ -39,12 +39,14 @@ pkgname = matlab-meta
 	depends = wget
 	depends = pango
 	depends = mesa
+	depends = systemd-libs
 	depends = pixman
 	depends = libgl
 	depends = ca-certificates
 	optdepends = xorg-xkbevd
 	optdepends = cairo
 	optdepends = net-tools
+	optdepends = boost174-libs
 	optdepends = numactl
 	optdepends = libcups
 	optdepends = xorg-xkbcomp
@@ -56,9 +58,9 @@ pkgname = matlab-meta
 	optdepends = xorg-xkbprint
 	optdepends = xorg-setxkbmap
 	optdepends = openucx
-	optdepends = libltdl
 	optdepends = libxinerama
 	optdepends = libprocps
+	optdepends = mosquitto
 	optdepends = libxtst
 	optdepends = glibc-locales
 	optdepends = libxcursor
@@ -69,18 +71,16 @@ pkgname = matlab-meta
 	optdepends = gtk3
 	optdepends = xorg-xkbutils
 	optdepends = libxdamage
-	optdepends = matlab-r2025b-jre: supported system-wide JRE
-	optdepends = matlab-r2025b-gcc: supported GCC
-	optdepends = matlab-r2025b-gcc-fortran: supported GFortran
-	provides = matlab-r2025b-meta=R2025b
-	conflicts = matlab-r2025b-meta
+	provides = matlab-r2026a-meta=R2026a
+	conflicts = matlab-r2026a-meta
 
 pkgname = matlab-meta-all
 	pkgdesc = A high-level language for numerical computation and visualization (meta, all)
-	depends = matlab-meta>=R2025b-3
+	depends = matlab-meta>=R2026a-1
 	depends = xorg-xkbevd
 	depends = cairo
 	depends = net-tools
+	depends = boost174-libs
 	depends = numactl
 	depends = libcups
 	depends = xorg-xkbcomp
@@ -92,9 +92,9 @@ pkgname = matlab-meta-all
 	depends = xorg-xkbprint
 	depends = xorg-setxkbmap
 	depends = openucx
-	depends = libltdl
 	depends = libxinerama
 	depends = libprocps
+	depends = mosquitto
 	depends = libxtst
 	depends = glibc-locales
 	depends = libxcursor
@@ -105,8 +105,8 @@ pkgname = matlab-meta-all
 	depends = gtk3
 	depends = xorg-xkbutils
 	depends = libxdamage
-	provides = matlab-r2025b-meta-all=R2025b
-	conflicts = matlab-r2025b-meta-all
+	provides = matlab-r2026a-meta-all=R2026a
+	conflicts = matlab-r2026a-meta-all
 
 pkgname = matlab-r2019b-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2019b, meta)
@@ -161,13 +161,10 @@ pkgname = matlab-r2019b-meta
 	optdepends = debianutils
 	optdepends = gtk3
 	optdepends = xorg-xkbutils
-	optdepends = matlab-r2019b-jre: supported system-wide JRE
-	optdepends = matlab-r2019b-gcc: supported GCC
-	optdepends = matlab-r2019b-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2019b-meta-all
 	pkgdesc = A high-level language for numerical computation and visualization (R2019b, meta, all)
-	depends = matlab-r2019b-meta>=R2025b-3
+	depends = matlab-r2019b-meta>=R2026a-1
 	depends = xorg-xkbevd
 	depends = cairo
 	depends = net-tools
@@ -243,13 +240,10 @@ pkgname = matlab-r2020a-meta
 	optdepends = debianutils
 	optdepends = gtk3
 	optdepends = xorg-xkbutils
-	optdepends = matlab-r2020a-jre: supported system-wide JRE
-	optdepends = matlab-r2020a-gcc: supported GCC
-	optdepends = matlab-r2020a-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2020a-meta-all
 	pkgdesc = A high-level language for numerical computation and visualization (R2020a, meta, all)
-	depends = matlab-r2020a-meta>=R2025b-3
+	depends = matlab-r2020a-meta>=R2026a-1
 	depends = xorg-xkbevd
 	depends = cairo
 	depends = net-tools
@@ -320,13 +314,10 @@ pkgname = matlab-r2020b-meta
 	optdepends = debianutils
 	optdepends = gtk3
 	optdepends = xorg-xkbutils
-	optdepends = matlab-r2020b-jre: supported system-wide JRE
-	optdepends = matlab-r2020b-gcc: supported GCC
-	optdepends = matlab-r2020b-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2020b-meta-all
 	pkgdesc = A high-level language for numerical computation and visualization (R2020b, meta, all)
-	depends = matlab-r2020b-meta>=R2025b-3
+	depends = matlab-r2020b-meta>=R2026a-1
 	depends = xorg-xkbevd
 	depends = cairo
 	depends = net-tools
@@ -400,13 +391,10 @@ pkgname = matlab-r2021a-meta
 	optdepends = debianutils
 	optdepends = gtk3
 	optdepends = xorg-xkbutils
-	optdepends = matlab-r2021a-jre: supported system-wide JRE
-	optdepends = matlab-r2021a-gcc: supported GCC
-	optdepends = matlab-r2021a-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2021a-meta-all
 	pkgdesc = A high-level language for numerical computation and visualization (R2021a, meta, all)
-	depends = matlab-r2021a-meta>=R2025b-3
+	depends = matlab-r2021a-meta>=R2026a-1
 	depends = xorg-xkbevd
 	depends = cairo
 	depends = net-tools
@@ -483,13 +471,10 @@ pkgname = matlab-r2021b-meta
 	optdepends = debianutils
 	optdepends = gtk3
 	optdepends = xorg-xkbutils
-	optdepends = matlab-r2021b-jre: supported system-wide JRE
-	optdepends = matlab-r2021b-gcc: supported GCC
-	optdepends = matlab-r2021b-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2021b-meta-all
 	pkgdesc = A high-level language for numerical computation and visualization (R2021b, meta, all)
-	depends = matlab-r2021b-meta>=R2025b-3
+	depends = matlab-r2021b-meta>=R2026a-1
 	depends = xorg-xkbevd
 	depends = cairo
 	depends = net-tools
@@ -567,13 +552,10 @@ pkgname = matlab-r2022a-meta
 	optdepends = debianutils
 	optdepends = gtk3
 	optdepends = xorg-xkbutils
-	optdepends = matlab-r2022a-jre: supported system-wide JRE
-	optdepends = matlab-r2022a-gcc: supported GCC
-	optdepends = matlab-r2022a-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2022a-meta-all
 	pkgdesc = A high-level language for numerical computation and visualization (R2022a, meta, all)
-	depends = matlab-r2022a-meta>=R2025b-3
+	depends = matlab-r2022a-meta>=R2026a-1
 	depends = xorg-xkbevd
 	depends = cairo
 	depends = net-tools
@@ -644,13 +626,10 @@ pkgname = matlab-r2022b-meta
 	optdepends = gtk3
 	optdepends = xorg-xkbutils
 	optdepends = libxdamage
-	optdepends = matlab-r2022b-jre: supported system-wide JRE
-	optdepends = matlab-r2022b-gcc: supported GCC
-	optdepends = matlab-r2022b-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2022b-meta-all
 	pkgdesc = A high-level language for numerical computation and visualization (R2022b, meta, all)
-	depends = matlab-r2022b-meta>=R2025b-3
+	depends = matlab-r2022b-meta>=R2026a-1
 	depends = xorg-xkbevd
 	depends = cairo
 	depends = net-tools
@@ -722,13 +701,10 @@ pkgname = matlab-r2023a-meta
 	optdepends = gtk3
 	optdepends = xorg-xkbutils
 	optdepends = libxdamage
-	optdepends = matlab-r2023a-jre: supported system-wide JRE
-	optdepends = matlab-r2023a-gcc: supported GCC
-	optdepends = matlab-r2023a-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2023a-meta-all
 	pkgdesc = A high-level language for numerical computation and visualization (R2023a, meta, all)
-	depends = matlab-r2023a-meta>=R2025b-3
+	depends = matlab-r2023a-meta>=R2026a-1
 	depends = xorg-xkbevd
 	depends = cairo
 	depends = net-tools
@@ -799,13 +775,10 @@ pkgname = matlab-r2023b-meta
 	optdepends = gtk3
 	optdepends = xorg-xkbutils
 	optdepends = libxdamage
-	optdepends = matlab-r2023b-jre: supported system-wide JRE
-	optdepends = matlab-r2023b-gcc: supported GCC
-	optdepends = matlab-r2023b-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2023b-meta-all
 	pkgdesc = A high-level language for numerical computation and visualization (R2023b, meta, all)
-	depends = matlab-r2023b-meta>=R2025b-3
+	depends = matlab-r2023b-meta>=R2026a-1
 	depends = xorg-xkbevd
 	depends = cairo
 	depends = net-tools
@@ -879,13 +852,10 @@ pkgname = matlab-r2024a-meta
 	optdepends = gtk3
 	optdepends = xorg-xkbutils
 	optdepends = libxdamage
-	optdepends = matlab-r2024a-jre: supported system-wide JRE
-	optdepends = matlab-r2024a-gcc: supported GCC
-	optdepends = matlab-r2024a-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2024a-meta-all
 	pkgdesc = A high-level language for numerical computation and visualization (R2024a, meta, all)
-	depends = matlab-r2024a-meta>=R2025b-3
+	depends = matlab-r2024a-meta>=R2026a-1
 	depends = xorg-xkbevd
 	depends = cairo
 	depends = net-tools
@@ -961,13 +931,10 @@ pkgname = matlab-r2024b-meta
 	optdepends = debianutils
 	optdepends = gtk3
 	optdepends = libxdamage
-	optdepends = matlab-r2024b-jre: supported system-wide JRE
-	optdepends = matlab-r2024b-gcc: supported GCC
-	optdepends = matlab-r2024b-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2024b-meta-all
 	pkgdesc = A high-level language for numerical computation and visualization (R2024b, meta, all)
-	depends = matlab-r2024b-meta>=R2025b-3
+	depends = matlab-r2024b-meta>=R2026a-1
 	depends = cairo
 	depends = net-tools
 	depends = libcups
@@ -1048,13 +1015,104 @@ pkgname = matlab-r2025a-meta
 	optdepends = gtk3
 	optdepends = xorg-xkbutils
 	optdepends = libxdamage
-	optdepends = matlab-r2025a-jre: supported system-wide JRE
-	optdepends = matlab-r2025a-gcc: supported GCC
-	optdepends = matlab-r2025a-gcc-fortran: supported GFortran
 
 pkgname = matlab-r2025a-meta-all
 	pkgdesc = A high-level language for numerical computation and visualization (R2025a, meta, all)
-	depends = matlab-r2025a-meta>=R2025b-3
+	depends = matlab-r2025a-meta>=R2026a-1
+	depends = xorg-xkbevd
+	depends = cairo
+	depends = net-tools
+	depends = numactl
+	depends = libcups
+	depends = xorg-xkbcomp
+	depends = opa-psm2
+	depends = libtirpc
+	depends = sudo
+	depends = libcap
+	depends = rdma-core
+	depends = xorg-xkbprint
+	depends = xorg-setxkbmap
+	depends = openucx
+	depends = libltdl
+	depends = libxinerama
+	depends = libprocps
+	depends = libxtst
+	depends = glibc-locales
+	depends = libxcursor
+	depends = libxfont2
+	depends = fribidi
+	depends = libuhd
+	depends = debianutils
+	depends = gtk3
+	depends = xorg-xkbutils
+	depends = libxdamage
+
+pkgname = matlab-r2025b-meta
+	pkgdesc = A high-level language for numerical computation and visualization (R2025b, meta)
+	depends = fontconfig
+	depends = nspr
+	depends = at-spi2-core
+	depends = glibc
+	depends = alsa-lib
+	depends = libxt
+	depends = gstreamer
+	depends = glib2
+	depends = libatomic
+	depends = pam
+	depends = libice
+	depends = libxrandr
+	depends = libsndfile
+	depends = libxfixes
+	depends = make
+	depends = util-linux-libs
+	depends = libxxf86vm
+	depends = gdk-pixbuf2
+	depends = libdrm
+	depends = libxcomposite
+	depends = libxft
+	depends = which
+	depends = gst-plugins-base-libs
+	depends = libxcrypt-compat
+	depends = zlib
+	depends = unzip
+	depends = nss
+	depends = wget
+	depends = pango
+	depends = mesa
+	depends = pixman
+	depends = libgl
+	depends = ca-certificates
+	optdepends = xorg-xkbevd
+	optdepends = cairo
+	optdepends = net-tools
+	optdepends = numactl
+	optdepends = libcups
+	optdepends = xorg-xkbcomp
+	optdepends = opa-psm2
+	optdepends = libtirpc
+	optdepends = sudo
+	optdepends = libcap
+	optdepends = rdma-core
+	optdepends = xorg-xkbprint
+	optdepends = xorg-setxkbmap
+	optdepends = openucx
+	optdepends = libltdl
+	optdepends = libxinerama
+	optdepends = libprocps
+	optdepends = libxtst
+	optdepends = glibc-locales
+	optdepends = libxcursor
+	optdepends = libxfont2
+	optdepends = fribidi
+	optdepends = libuhd
+	optdepends = debianutils
+	optdepends = gtk3
+	optdepends = xorg-xkbutils
+	optdepends = libxdamage
+
+pkgname = matlab-r2025b-meta-all
+	pkgdesc = A high-level language for numerical computation and visualization (R2025b, meta, all)
+	depends = matlab-r2025b-meta>=R2026a-1
 	depends = xorg-xkbevd
 	depends = cairo
 	depends = net-tools
