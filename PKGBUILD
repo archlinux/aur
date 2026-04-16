@@ -2,7 +2,7 @@
 
 pkgname=dmultiwall-git
 _pkgname=dmultiwall
-pkgver=r17.3cac58a
+pkgver=v1.0.0
 pkgrel=1
 pkgdesc="Dynamic multi-monitor wallpaper setter using feh"
 arch=('x86_64')
