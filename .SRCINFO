@@ -1,0 +1,17 @@
+pkgbase = curlmgr-bin
+	pkgdesc = A lightweight CLI package manager for command-line tools distributed through direct URLs, GitHub Releases, local manifests, or explicit install scripts
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tianchangNorth/curlmgr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = cm
+	conflicts = curlmgr
+	options = !strip
+	source_x86_64 = curlmgr-x86_64-0.1.0.tgz::https://github.com/tianchangNorth/curlmgr/releases/download/v0.1.0/curlmgr_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7953afe94207a5a968b645986ba63983844fe43e820cd9956096b311df547a7e
+	source_aarch64 = curlmgr-aarch64-0.1.0.tgz::https://github.com/tianchangNorth/curlmgr/releases/download/v0.1.0/curlmgr_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8296be510dc80b778a6b9e74758e3b4905a18ba6ffd92279af5f56ce6c4ef09b
+
+pkgname = curlmgr-bin

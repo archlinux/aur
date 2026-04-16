@@ -1,0 +1,5 @@
+[curlmgr-bin]
+source = "github"
+github = "tianchangNorth/curlmgr"
+use_latest_release = true
+prefix = "v"
