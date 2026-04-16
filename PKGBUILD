@@ -1,7 +1,7 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=craft-agents-bin
-pkgver=0.8.7
-pkgrel=2
+pkgver=0.8.8
+pkgrel=1
 pkgdesc='Claude Code-like agent for Craft documents'
 url='https://github.com/lukilabs/craft-agents-oss'
 arch=(
@@ -37,7 +37,7 @@ source=(
 noextract=(
     "$pkgname-$pkgver-x86_64.AppImage"
 )
-sha256sums=('ecffc51ab79d55ac9c978ad30c2aecb6c7555bc4116138a39473a730843c7672'
+sha256sums=('ab3f20c2f4c532a9c239a6f1b56dbbe4f9501616867a5f1669835b9a24b1ef00'
             '9a75ace1224f0f880ddfdd8442d14d5a0d865152c61a2fd363d8e2c351f94d2c'
             'caa334b760b4c7835957c91ac24c3d52e7abc7ac770050445027766b4ce4ce7f')
 
