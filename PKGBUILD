@@ -2,30 +2,35 @@
 
 pkgname=gnome-shell-extension-gnome-hdate-git
 _gitname=gnome-hdate
-pkgver=9500f83
+_uuid="hdate@hatul.info"
+_destdir="/usr/share/gnome-shell/extensions/$_uuid"
+pkgver=2026.04.16
 pkgrel=1
 pkgdesc="Show Hebrew date in gnome-shell panel"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/amiad/gnome-hdate"
 license=('GPL')
-depends=('libhdate' 'libhdate-glib' 'gnome-shell')
+depends=('gnome-shell')
 makedepends=('git')
 conflicts=('gnome-shell-extension-gnome-hdate')
 provides=('gnome-shell-extension-gnome-hdate')
 source=('git+https://github.com/amiad/gnome-hdate.git')
-# Because the sources are not static, skip Git checksum:
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  # Use the tag of the last commit
-  git describe --always | sed 's|-|.|g'
+  cd "$_gitname"
+  git log -1 --format="%cd.%h" --date=short | sed 's/-//g'
 }
 
 package() {
-  cd $srcdir/$_gitname
-  _uuid="hdate@hatul.info"
-  install -dm755 "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
-  find . -type d -not \( -wholename './.git*' \) -exec install -dm755 "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"/{} \;
-  find . -type f -not \( -wholename './.git*' \) -exec install -Dm644 {} "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"/{} \;
+  cd "$srcdir/$_gitname"
+
+  install -dm755 "$pkgdir$_destdir"
+  cp -r . "$pkgdir$_destdir/"
+
+  rm -rf "$pkgdir$_destdir/.git"
+
+  if [ -d "$pkgdir$_destdir/schemas" ]; then
+    glib-compile-schemas "$pkgdir$_destdir/schemas/"
+  fi
 }
