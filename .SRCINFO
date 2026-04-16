@@ -1,6 +1,6 @@
 pkgbase = fastfind-bin
 	pkgdesc = Fast, smart file search with fuzzy matching and natural language queries
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/RobertFlexx/fastfind
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = fastfind-bin
 	depends = libgcc
 	provides = ff
 	conflicts = fastfind
-	source = MANPAGE-2.1.0.1::https://raw.githubusercontent.com/RobertFlexx/fastfind/v2.1.0/mandoc/ff.1
-	source = README-2.1.0.md::https://raw.githubusercontent.com/RobertFlexx/fastfind/v2.1.0/README.md
-	source = LICENSE-2.1.0::https://raw.githubusercontent.com/RobertFlexx/fastfind/v2.1.0/LICENSE
+	source = MANPAGE-2.2.0.1::https://raw.githubusercontent.com/RobertFlexx/fastfind/v2.2.0/mandoc/ff.1
+	source = README-2.2.0.md::https://raw.githubusercontent.com/RobertFlexx/fastfind/v2.2.0/README.md
+	source = LICENSE-2.2.0::https://raw.githubusercontent.com/RobertFlexx/fastfind/v2.2.0/LICENSE
 	sha256sums = bf89827624998371742ec16b08e8e52c557d54147c10128474fa2010e064f682
-	sha256sums = 5b6f1a3aa6b6bffd0647be6f0cbf902e0f27af80f46c66eba51dd28514f42965
+	sha256sums = 65cac3989ea7f13413a5f4e8fb2572ef191f6d7fbbfc7c0c219891960ee9499d
 	sha256sums = 03032f3a3b2cda5b47d8994ebcc63b6f39259eff117931f14640a3ba2649146c
-	source_x86_64 = fastfind-x86_64-2.1.0::https://github.com/RobertFlexx/fastfind/releases/download/v2.1.0/ff-linux-glibc-amd64
-	sha256sums_x86_64 = 423518ab4d9eef6615a5fa934fd0bbf158d0ab6c7a73c92431270f30935d1a57
+	source_x86_64 = fastfind-x86_64-2.2.0::https://github.com/RobertFlexx/fastfind/releases/download/v2.2.0/ff-linux-glibc-amd64
+	sha256sums_x86_64 = bae160e9b39259a4ddd5e6ae3c24b03c57deabe7e4feb0ca6c6355068615e72f
 
 pkgname = fastfind-bin
