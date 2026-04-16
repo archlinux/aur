@@ -1,7 +1,19 @@
 # Maintainer: Marvin1099
 pkgname=smb-mount-controller-git
+
 pkgver() {
-  git -C "$srcdir/smb-mount-controller-git" describe --tags --abbrev=0 2>/dev/null || git -C "$srcdir/smb-mount-controller-git" rev-parse --short HEAD
+  cd "$srcdir/smb-mount-controller"
+  local _desc=$(git describe --tags 2>/dev/null)
+  if [[ -n "$_desc" ]]; then
+    local _tag="${_desc#v}"
+    _tag="${_tag%%-*}"
+    local _dist="${_desc##*-}"
+    _dist="${_dist#g}"
+    _tag="${_tag}.${_dist}"
+  else
+    _tag=$(git rev-parse --short HEAD)
+  fi
+  echo "$_tag"
 }
 pkgrel=1
 pkgdesc="A state-based SMB/CIFS mount controller written in bash for Linux that (un)mounts network shares based on reachability"
@@ -15,12 +27,12 @@ md5sums=('SKIP')
 install=smb-controller.install
 
 prepare() {
-  cd "$pkgname"
+  cd "smb-mount-controller"
   git submodule update --init --recursive
 }
 
 package() {
-  cd "$pkgname"
+  cd "smb-mount-controller"
   install -Dm755 smb-controller.sh "$pkgdir/usr/local/bin/smb-controller"
   install -Dm644 example-smb-controller.conf "$pkgdir/etc/smb-controller-default.conf"
   install -Dm644 default-smb-controller.service "$pkgdir/etc/systemd/system/smb-controller.service"
