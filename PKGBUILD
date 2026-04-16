@@ -1,5 +1,5 @@
 pkgname=vimnm-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Aplikasi TUI (Vim-motion) untuk mengelola koneksi Wi-Fi menggunakan NetworkManager"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('vimnm')
 conflicts=('vimnm')
 source=("${url}/releases/download/v${pkgver}/vimnm_Linux_x86_64.tar.gz")
 
-sha256sums=('e1b5d10354afcbaf06aaa5528754345e6aae7e7d54f0096c21ceda231889b175')
+sha256sums=('sha256:72c936e886e6a5be08eef08bc02343b5dd636db1d14e38656ccd4e925de48edb')
 
 package() {
     install -Dm755 "${srcdir}/vimnm" "${pkgdir}/usr/bin/vimnm"
