@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+URL=${GHOSTWRITER_URL:-http://127.0.0.1:8000/home/}
+
+need_cmd() {
+  command -v "$1" >/dev/null 2>&1 || {
+    echo "Missing command: $1" >&2
+    exit 1
+  }
+}
+
+services_ready() {
+  systemctl is-active --quiet pentest-ghostwriter-web.service \
+    && systemctl is-active --quiet pentest-ghostwriter-queue.service \
+    && systemctl is-active --quiet pentest-ghostwriter-collab.service
+}
+
+app_ready() {
+  curl -fsS -o /dev/null "$URL"
+}
+
+need_cmd curl
+need_cmd xdg-open
+
+if ! services_ready || ! app_ready; then
+  if command -v pkexec >/dev/null 2>&1; then
+    pkexec /usr/bin/pentest-ghostwriter-start-root
+  else
+    echo "pkexec is required to start Ghostwriter from the desktop launcher." >&2
+    exit 1
+  fi
+fi
+
+for _ in $(seq 1 30); do
+  if app_ready; then
+    xdg-open "$URL" >/dev/null 2>&1 &
+    exit 0
+  fi
+  sleep 1
+done
+
+echo "Ghostwriter did not become ready in time." >&2
+exit 1

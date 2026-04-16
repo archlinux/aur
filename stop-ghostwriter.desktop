@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Stop Ghostwriter
+Comment=Stop the local Ghostwriter services
+Exec=/usr/bin/ghostwriter-stop
+Icon=/usr/share/pixmaps/ghostwriter.ico
+Terminal=false
+Categories=Security;Utility;
+Keywords=ghostwriter;stop;services;
+StartupNotify=false

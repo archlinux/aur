@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if command -v pkexec >/dev/null 2>&1; then
+  pkexec /usr/bin/pentest-ghostwriter-stop-root
+else
+  echo "pkexec is required to stop Ghostwriter from the desktop launcher." >&2
+  exit 1
+fi

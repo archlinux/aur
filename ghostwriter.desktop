@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Ghostwriter
+Comment=The SpecterOps project management and reporting engine
+Exec=/usr/bin/ghostwriter-launcher
+Icon=/usr/share/pixmaps/ghostwriter.ico
+Terminal=false
+Categories=Security;Utility;
+Keywords=ghostwriter;pentest;reporting;red-team;security;
+StartupNotify=true
