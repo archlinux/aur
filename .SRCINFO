@@ -1,0 +1,14 @@
+pkgbase = lore
+	pkgdesc = A terminal pager with search, filter, and selection.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/robinovitch61/lore
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = lore-0.4.0.tar.gz::https://github.com/robinovitch61/lore/archive/v0.4.0.tar.gz
+	sha256sums = 8053e1d8b3ff550600e45c2db9136f023c7ead67cd84223ce137ad7d64c0337a
+
+pkgname = lore
