@@ -1,4 +1,4 @@
-# Maintainer: Elias Elwyn <a@jthv.ai>
+# Maintainer: Elias Elwyn <a@jthvai.net>
 
 pkgname=perl-pdl-transform-color
 _dist=PDL-Transform-Color
