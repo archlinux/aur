@@ -10,7 +10,7 @@ provides=('vimnm')
 conflicts=('vimnm')
 source=("${url}/releases/download/v${pkgver}/vimnm_Linux_x86_64.tar.gz")
 
-sha256sums=('sha256:72c936e886e6a5be08eef08bc02343b5dd636db1d14e38656ccd4e925de48edb')
+sha256sums=('0028b2488565a63d78d6d5d4f48746498a722f10887969f0511487509602a114 ')
 
 package() {
     install -Dm755 "${srcdir}/vimnm" "${pkgdir}/usr/bin/vimnm"
