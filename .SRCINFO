@@ -1,6 +1,6 @@
 pkgbase = duelsplus-bin
 	pkgdesc = Compiled binaries for the Duels+ Launcher
-	pkgver = 3.5.6
+	pkgver = 3.5.7
 	pkgrel = 1
 	url = https://github.com/duelsplus/launcher-tauri
 	install = duelsplus-bin.install
@@ -20,7 +20,7 @@ pkgbase = duelsplus-bin
 	conflicts = duelsplus-git
 	options = !strip
 	options = !debug
-	source = Duels+.Launcher_3.5.6_amd64.deb::https://github.com/duelsplus/launcher-tauri/releases/download/v3.5.6/Duels+.Launcher_3.5.6_amd64.deb
-	sha256sums = af798c120c86d7119ac0a21f7160077766a6d5fae6c320d39c435776e862cae9
+	source = Duels+.Launcher_3.5.7_amd64.deb::https://github.com/duelsplus/launcher-tauri/releases/download/v3.5.7/Duels+.Launcher_3.5.7_amd64.deb
+	sha256sums = ae045aefc24953235dd15fc7ca338c6f00bd664343ab6b7ccdeeb8ab1fbe12e9
 
 pkgname = duelsplus-bin
