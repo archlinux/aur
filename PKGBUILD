@@ -1,4 +1,4 @@
-# Maintainer: Elias Elwyn <a@jthv.ai>
+# Maintainer: Elias Elwyn <a@jthvai.net>
 
 pkgname=perl-alien-hdf4
 _dist=Alien-HDF4
