@@ -12,11 +12,6 @@ source=("git+https://codeberg.org/marvin1099/smb-mount-controller.git")
 md5sums=('SKIP')
 install=smb-controller.install
 
-prepare() {
-  cd "smb-mount-controller"
-  git submodule update --init --recursive
-}
-
 package() {
   cd "smb-mount-controller"
   install -Dm755 smb-controller.sh "$pkgdir/usr/local/bin/smb-controller"
