@@ -1,6 +1,6 @@
 pkgbase = spark-store
 	pkgdesc = A community powered app store.
-	pkgver = 5.0.0_beta4
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://www.spark-app.store/
 	install = spark-store.install
@@ -21,15 +21,15 @@ pkgbase = spark-store
 	depends = polkit
 	depends = aria2
 	depends = zenity
-	depends = amber-package-manager
+	depends = amber-package-manager>=1.2.2
 	depends = flatpak
 	depends = qt5-base
 	depends = gtk3
 	options = !strip
 	options = !debug
-	source_x86_64 = https://gitee.com/spark-store-project/spark-store/releases/download/5.0.0beta4/spark-store_5.0.0~beta4_amd64.deb
-	sha256sums_x86_64 = e87d3b2b4ca4afd83c57e209373954ce8b9f1b9174341173fda6ed6eee5d6c29
-	source_aarch64 = https://gitee.com/spark-store-project/spark-store/releases/download/5.0.0beta4/spark-store_5.0.0~beta4_arm64.deb
-	sha256sums_aarch64 = 42910c277e66fb46470c335e74ea55799460dcc84daa5638a4501ad6da760750
+	source_x86_64 = https://gitee.com/spark-store-project/spark-store/releases/download/5.0.0/spark-store_5.0.0_amd64.deb
+	sha256sums_x86_64 = c471006cdb30cd978855cc55b45e890354868157ad855c5c8b0e7d08c4147cfb
+	source_aarch64 = https://gitee.com/spark-store-project/spark-store/releases/download/5.0.0/spark-store_5.0.0_arm64.deb
+	sha256sums_aarch64 = 83e14eaa848cf409485a1a232ef6fdefe1ba48a3e939f582d6725acee81ab1f0
 
 pkgname = spark-store
