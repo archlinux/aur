@@ -7,7 +7,7 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=6.2.1.0
+pkgver=6.2.2.0
 pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
@@ -46,7 +46,7 @@ source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux"
         '020-megasync-app-fix-cmake-dependencies-detection.patch'
         '030-megasync-app-disable-isolated-gfx-for-disabling-freeimage-in-sdk.patch'
         '040-megasync-sdk-add-missing-icu-link-library.patch')
-sha256sums=('e0d24ec1e6b67380db38e7bf9b8538d7e3a5fee12ed7d01f13c880a82745058b'
+sha256sums=('fb6a10a4755be84fa1ff4d662005bb7e6edb2874258f6c45eeda4c9ebd9e6d50'
             'SKIP'
             'ceedf9b236b3f65f796e389b2c6ef33d71348d8be3c517cc59c423f1f354d092'
             'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171'
@@ -57,16 +57,9 @@ prepare() {
     # https://github.com/meganz/MEGAsync/issues/1010#issuecomment-2726028797
     git -C MEGAsync rm --cached src/DesignTokensImporter/megadesignassets
     
-    #git -C MEGAsync submodule init
-    #git -C MEGAsync config --local submodule.src/MEGASync/mega.url "${srcdir}/meganz-sdk"
-    #git -C MEGAsync -c protocol.file.allow='always' submodule update
-    # sdk is set to be at commit 663549152ccf05866ffe059d9b6f4be54dc10cce (v10.6.2) but it does not exist, using sdk v10.6.1
-    # https://github.com/meganz/MEGAsync/commit/41bdbcb6612db10e46f352d89dfd099e32ce5256
-    # https://github.com/meganz/sdk/commits/v10.6.1/
-    git -C meganz-sdk config --local advice.detachedHead false
-    git -C meganz-sdk checkout 613e7a03f76127b5bcb586eb690536a67d5729e9
-    rm -r MEGAsync/src/MEGASync/mega
-    ln -sf ../../../meganz-sdk MEGAsync/src/MEGASync/mega
+    git -C MEGAsync submodule init
+    git -C MEGAsync config --local submodule.src/MEGASync/mega.url "${srcdir}/meganz-sdk"
+    git -C MEGAsync -c protocol.file.allow='always' submodule update
     
     patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/010-megasync-sdk-fix-cmake-dependencies-detection.patch"
     patch -d MEGAsync -Np1 -i "${srcdir}/020-megasync-app-fix-cmake-dependencies-detection.patch"
