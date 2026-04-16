@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hihat
-pkgver=2.0.1
-_electronversion=26
-_nodeversion=20
+pkgver=2.0.2
+_electronversion=35
+_nodeversion=22
 pkgrel=1
 pkgdesc="A minimalist offline music library player for desktop, built on Electron, React, and Material UI.Use system-wide electron."
 arch=('any')
@@ -19,12 +19,8 @@ makedepends=(
     'curl'
     'jq'
 )
-source=(
-    "${pkgname}-${pkgver}::git+${url}#tag=${pkgver}"
-    "${pkgname}.sh"
-)
-sha256sums=('5be3f237f3de4d48337346b09575d133d8d5fd828145d34484ee4c56cd27e507'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+source=("${pkgname}.sh")
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -37,6 +33,14 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
+    cd "${srcdir}"
+    if [[ ! -d "${srcdir}/${pkgname}-${pkgver}" ]]; then
+        git clone \
+            --depth 1 \
+            --branch "${pkgver}" \
+            "${url}" \
+            "${pkgname}-${pkgver}"
+    fi
     cd "${srcdir}/${pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
