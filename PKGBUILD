@@ -7,7 +7,7 @@ url="https://codeberg.org/int13h3/Wolf_browser/src/branch/main/Wolf_browser_0.4.
 license=('GPL3')
 depends=('bash' 'python')
 makedepends=('git')
-source=('Wolf_browser_0.4.05.tar.xz::https://codeberg.org/int13h3/Wolf_browser/raw/branch/main/Wolf_browser_0.3.15.tar.xz')
+source=('Wolf_browser_0.4.05.tar.xz::https://codeberg.org/int13h3/Wolf_browser/raw/branch/main/Wolf_browser_0.4.05.tar.xz')
 sha256sums=('SKIP')
 package() {
   cd "$srcdir/Wolf_browser"
