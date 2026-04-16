@@ -2,7 +2,7 @@
 
 pkgname=pentest-ghostwriter
 pkgver=6.3.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Local-first Arch Linux port of Ghostwriter for single-user offensive security workflows'
 arch=('x86_64')
 url='https://github.com/GhostManager/Ghostwriter'
