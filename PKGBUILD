@@ -1,15 +1,15 @@
 # Maintainer: Ben Word <ben@benword.com>
 pkgname=quien
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
-pkgdesc="A better WHOIS lookup tool with interactive TUI"
+pkgdesc="A better whois and domain intelligence toolkit"
 arch=('x86_64' 'aarch64')
 url="https://github.com/retlehs/quien"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d0e74663ef59a9854bef4a16e4ece2cbd48dcf9df870ce26579cba5a9f0359c2')
+sha256sums=('c401f9eb5534828b74bcb34848595ad3e2f532ccf942185a5d6d4ae35da987ed')
 
 prepare() {
   cd "$pkgname-$pkgver"
