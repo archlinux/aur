@@ -2,6 +2,7 @@
 pkgname=lcemp-server
 pkgver=1.0.1
 pkgrel=1
+install=$pkgname.install
 pkgdesc="Dedicated Minecraft Legacy Edition server"
 arch=('x86_64')
 url="https://github.com/LCEMP/LCEMP-Server"
