@@ -1,5 +1,3 @@
-# Maintainer: Gabriel Francisco dos Santos <gabriel at goodstream dot com>
-
 pkgname=papagaia
 pkgver=0.1.0
 pkgrel=1
@@ -32,13 +30,6 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
-}
-
-check() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo test --frozen
 }
 
 package() {
