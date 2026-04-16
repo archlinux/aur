@@ -1,4 +1,4 @@
-# Maintainer: Elias Elwyn <a@jthv.ai>
+# Maintainer: Elias Elwyn <a@jthvai.net>
 # Contributor: Jose Riha <jose1711 gmail com>
 
 pkgname=perl-uuid
