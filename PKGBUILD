@@ -4,7 +4,7 @@
 # Contributor: crasm <crasm@firebase-tools.aur.yooz4sio.vczf.io>
 
 pkgname=firebase-tools
-pkgver=15.14.0
+pkgver=15.15.0
 pkgrel=1
 pkgdesc='The Firebase Command Line Tools'
 arch=('x86_64')
@@ -13,12 +13,17 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('jq' 'npm' 'node-gyp' 'python')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('1fa857c493585545e146c66a2daca73781cfe090dac316c2f64f406810726508')
+sha256sums=('0c22408e16d3298b7e774821ed51bbaf357f2503714dcf32bfe85f515e683d55')
 
 prepare() {
+  # ignore dependencies specific to Bare runtime as they contain prebuilt binaries
   # devendor node-gyp
   cd package
-  jq '.overrides."node-gyp"="/usr/lib/node_modules/node-gyp"' package.json > package.json.tmp
+  jq '.overrides += {
+    "bare-events": "/dev/null",
+    "bare-fs": "/dev/null",
+    "node-gyp": "/usr/lib/node_modules/node-gyp",
+  }' package.json > package.json.tmp
   mv package.json{.tmp,}
 }
 
@@ -26,12 +31,15 @@ package() {
   local _module_path="/usr/lib/node_modules/$pkgname"
 
   # build re2 from source
-  export DEVELOPMENT_SKIP_GETTING_ASSET=1 PYTHONDONTWRITEBYTECODE=1
+  export DEVELOPMENT_SKIP_GETTING_ASSET=1
 
   # can't use `npm install -g` with overrides
   cd package
   npm install --no-save
-  ln -sf /usr/lib/node_modules/node-gyp node_modules/ # fix relative symlink
+  # fix relative symlinks
+  ln -sf /dev/null node_modules/bare-events
+  ln -sf /dev/null node_modules/bare-fs
+  ln -sf /usr/lib/node_modules/node-gyp node_modules/
   npm_config_prefix="$pkgdir/usr" npm link
   cd ..
   rm "$pkgdir/$_module_path"
