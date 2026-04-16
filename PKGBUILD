@@ -2,8 +2,8 @@
 
 _name=pytr
 pkgname="python-$_name-git"
-pkgver=0.4.7.r3.g540e6aa
-pkgrel=2
+pkgver=0.4.8.r1.gf260f9c
+pkgrel=1
 pkgdesc='This is a library for the private API of the Trade Republic online brokerage.'
 arch=('any')
 url="https://github.com/pytr-org/pytr"
@@ -13,7 +13,7 @@ provides=("python-${_name}")
 conflicts=("python-${_name}")
 depends=(
   'python' 'python-shtab' 'python-babel' 'python-websockets' 'python-requests-futures' 'python-pygments' 'python-pathvalidate'
-  'python-packaging' 'python-ecdsa' 'python-coloredlogs' 'python-certifi'
+  'python-packaging' 'python-playwright' 'python-coloredlogs' 'python-certifi'
   'python-cryptography' 'python-curl_cffi'
   )
 source=("${_name}::git+${url}.git")
