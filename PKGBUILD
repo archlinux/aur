@@ -12,7 +12,7 @@ pkgrel=1
 pkgdesc="Toolkit for preserving and recovering vintage floppy disks - including flux imaging support (Greaseweazle/KryoFlux)"
 arch=('x86_64')
 url="https://github.com/Axel051171/UnifiedFloppyTool"
-license=('GPL-2.0-only')
+license=('GPL-2.0-or-later')
 depends=('qt6-base' 'qt6-serialport' 'libglvnd' 'glibc' 'libgcc' 'libstdc++')
 makedepends=()
 provides=("unified-floppy-tool")
@@ -57,13 +57,12 @@ package()
 {
   cd "${srcdir}/${pkg_name_ver}"
   cd _build.out
-  make INSTALL_ROOT="${pkgdir}" install
 
-  #install -D ddhx "${pkgdir}/usr/bin/ddhx"
-  #make install DESTDIR="${pkgdir}" PREFIX="/usr"
-  #install -D -m 0644 ddhx.1 "${pkgdir}/usr/share/man/man1/ddhx.1"
-  #install -D -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  #install -D -m 0644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  # TODO: report proper PREFIX/DESTDIR usage upstream
+  make INSTALL_ROOT="${pkgdir}" install
+  mkdir -p "${pkgdir}/usr/bin"
+  mv "${pkgdir}/opt/UnifiedFloppyTool/bin/UnifiedFloppyTool" "${pkgdir}/usr/bin/"
+  rmdir -p "${pkgdir}/opt/UnifiedFloppyTool/bin/" || true
 }
 
 #
