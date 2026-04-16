@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=countrycode
-_pkgver=1.7.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-utf8
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('88eaf6f308cd39d22cd7a49c437a6d65')
-b2sums=('5838cdbed514aeaebf015ac11809c33b0ce6dfdebc6ab3af379cddfe3d46aa4f4937508e118f55988ed9a1e26f7e64fdb184e90f4d4d84ebc7577e6034ca195b')
+md5sums=('d3821db67468fe524b448f216d092850')
+b2sums=('5ac1aa442eb3ae5b5b59a443bdf445c2c706d608055c27a35b7bb153cfe0655a4abc6fcf6e1cbf9cafec7c46d5489be7cd40bdc17889b49b6f301840d4f8e097')
 
 build() {
   mkdir build
