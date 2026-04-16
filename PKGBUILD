@@ -1,12 +1,13 @@
 # Maintainer: httpanimations
 
 pkgname=t3-code-git
-pkgver=0.0.0.r0.g0000000
-pkgrel=1
+pkgver=0.0.17.r54.gd22c6f5
+pkgrel=2
 pkgdesc='Minimal web GUI for coding agents (desktop app, git build)'
 arch=('x86_64')
 url='https://github.com/pingdotgg/t3code'
 license=('MIT')
+options=('!strip' '!debug')
 provides=('t3-code')
 conflicts=('t3-code')
 depends=('fuse2')
@@ -20,8 +21,23 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${srcdir}/t3code"
-  git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//; s/-/.r/; s/-/./' || \
+  local desc rest count hash tag
+
+  desc=$(git describe --long --tags --abbrev=7 --exclude='nightly*' 2>/dev/null) || {
     printf '0.0.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    return
+  }
+
+  hash=${desc##*-g}
+  rest=${desc%-g*}
+  count=${rest##*-}
+  tag=${rest%-${count}}
+  tag=${tag%-}
+  tag=${tag#nightly-v}
+  tag=${tag#v}
+  tag=${tag//-/.}
+
+  printf '%s.r%s.g%s' "${tag}" "${count}" "${hash}"
 }
 
 build() {
