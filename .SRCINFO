@@ -1,4 +1,4 @@
-pkgbase = kura-voice
+pkgbase = kura-voice-bin
 	pkgdesc = KurA low-CPU Discord voice music bot
 	pkgver = 0.1.4
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = kura-voice
 	source_x86_64 = https://github.com/TOTO-sys28/KurA/releases/download/v0.1.4/kura_voice-linux-x64.tar.gz
 	sha256sums_x86_64 = SKIP
 
-pkgname = kura-voice
+pkgname = kura-voice-bin
