@@ -2,7 +2,7 @@
 
 pkgname=clipshare-bin
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='剪贴板同步工具，支持跨平台使用，此版本在原作者基础上增加对wayland兼容性，x11没测试，如果用不了可以用作者原版，后续更新关注原作者github地址'
 arch=('x86_64')
 url='https://github.com/aa2013/ClipShare'
@@ -29,7 +29,7 @@ _release_tag='v1.4.4'
 _download_url='https://github.com/JianGangLi/ClipShare'
 
 source=("${_archive}::${_download_url}/releases/download/${_release_tag}/${_archive}")
-sha256sums=('7b51247d80a30a55bf691a11695f879f281d509cca2189befcf3489e1db2ea07')
+sha256sums=('f070eb5ecb473fbc7b189b6407af010615a7d4dde6fbca50e4d0e9e9eb9f1db6')
 
 package() {
   install -d "${pkgdir}/opt/clipshare"
