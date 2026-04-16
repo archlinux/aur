@@ -1,7 +1,7 @@
 pkgbase = openrevolution-git
 	pkgdesc = C/C++ BRSTM and other format tools - git version
-	pkgver = v2.8.1.r1.gd9293d8
-	pkgrel = 0
+	pkgver = v2.9.0.r0.gb826540
+	pkgrel = 1
 	url = https://github.com/ic-scm/openrevolution
 	arch = x86_64
 	arch = i686
@@ -16,8 +16,6 @@ pkgbase = openrevolution-git
 	provides = openrevolution
 	conflicts = openrevolution
 	source = openrevolution::git+https://github.com/ic-scm/openrevolution
-	source = 00-skiprtbuild.patch
 	sha256sums = SKIP
-	sha256sums = b24e06f8a0f7493d978a68d4fa21c1c54366fd559f8642fe9618d487965fa6ed
 
 pkgname = openrevolution-git
