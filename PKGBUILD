@@ -11,10 +11,14 @@ license=("GPL-3.0")
 arch=("x86_64")
 provides=("emskin")
 conflicts=("emskin")
+depends=("wayland" "libxkbcommon" "libxkbcommon-x11" "mesa" "libinput" "seatd" "fontconfig" "freetype2" "xorg-xwayland")
+optdepends=("emacs-wayland: pgtk Emacs (recommended)" "emacs: X11 Emacs (works via XWayland)")
 source=("https://github.com/emskin/emskin/releases/download/v$pkgver/emskin-$pkgver-x86_64.tar.gz")
-sha256sums=("620168e06b9c1e15cd9ff63eb70582684f63e2528dbbb74a59794e7aaea2a1eb")
+sha256sums=('c870e54adde932cb0c697b47b01f46655834fdc5c688da00a6cb0ce850b267b2')
 
 package() {
     install -Dm755 emskin -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "assets/emskin.desktop" "$pkgdir/usr/share/applications/emskin.desktop"
+    install -Dm644 "assets/emskin.png" "$pkgdir/usr/share/pixmaps/emskin.png"
 }
