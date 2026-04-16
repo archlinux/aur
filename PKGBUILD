@@ -1,5 +1,5 @@
 pkgname=vimnm-bin
-pkgver=1.1.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Aplikasi TUI (Vim-motion) untuk mengelola koneksi Wi-Fi menggunakan NetworkManager"
 arch=('x86_64')
