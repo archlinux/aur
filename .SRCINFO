@@ -1,6 +1,6 @@
 pkgbase = libfprint-crfpmoc-git
 	pkgdesc = Library for fingerprint readers (crfpmoc feature branch)
-	pkgver = 1.94.8.r157.gfde6d37
+	pkgver = 1.94.8.r170.gb4c5b8d
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/Xelef2000/libfprint.git
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = libfprint-crfpmoc-git
 	depends = libgusb
 	depends = nss
 	depends = pixman
-	provides = libfprint=1.94.8.r157.gfde6d37
+	provides = libfprint=1.94.8.r170.gb4c5b8d
 	provides = libfprint-2.so
 	conflicts = libfprint
 	source = libfprint::git+https://gitlab.freedesktop.org/Xelef2000/libfprint.git#branch=feature/crfpmoc

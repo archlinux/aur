@@ -9,7 +9,7 @@
 ## basic info
 _pkgname="libfprint"
 pkgname="$_pkgname-crfpmoc-git"
-pkgver=1.94.8.r157.gfde6d37
+pkgver=1.94.8.r170.gb4c5b8d
 pkgrel=1
 pkgdesc="Library for fingerprint readers (crfpmoc feature branch)"
 url="https://gitlab.freedesktop.org/Xelef2000/libfprint.git"
