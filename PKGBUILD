@@ -1,14 +1,14 @@
 # Maintainer: Tal <talwat321@gmail.com>
 pkgname=lowfi
-pkgver=2.0.5
-pkgrel=2
+pkgver=2.0.6
+pkgrel=1
 pkgdesc="An extremely simple lofi player."
 arch=('any')
 url="https://github.com/talwat/$pkgname"
 license=('MIT')
 makedepends=('cargo' 'alsa-lib' 'openssl')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('b53cb8b68055e8cf03b8b1e6c97207b24638c29aa8bc9e6bd561fdb478a23ce9fe8b722518ad6d825fab4db0f4f74b883135cd2e0b915e9dd1d709a8b3a4fc70')
+sha512sums=('ad56ceaca23a6a453c3e9d97c76c521a2684bc3f59f7f2a65fac91b91c6af9194b88309c84d98890ef686ea5db3176bef7b89dc3f2dc477c5c24eba69526e9bd')
 options=(!lto)
 
 prepare() {
