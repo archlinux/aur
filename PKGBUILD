@@ -7,12 +7,12 @@ arch=('x86_64')
 url="https://github.com/LCEMP/LCEMP-Server"
 license=('Other')
 source=("https://github.com/LCEMP/LCEMP-Server/releases/download/1.0.1/MinecraftDedicatedServer-Linux"
-		"./$pkgname.service"
+		"$pkgname.service"
 		)
 sha256sums=('SKIP')
 depends=('cmake' 'gcc')
 
 package() {
 	install -Dm755 ./MinecraftDedicatedServer-Linux "$pkgdir/srv/lcemp/MinecraftDedicatedServer-Linux"
-	install ./$pkgname.service "$pkgdir/etc/systemd/system/$pkgname.service"
+	install $srcdir/$pkgname.service "$pkgdir/etc/systemd/system/$pkgname.service"
 }
