@@ -2,10 +2,11 @@
 
 # https://github.com/mathworks/Emacs-MATLAB-Mode/blob/default/doc/matlab-language-server-lsp-mode.org#installation
 # https://github.com/mathworks/MATLAB-language-server/issues/79
+# https://github.com/zed-extensions/matlab?tab=readme-ov-file#installation-steps
 
 pkgname="matlab-language-server"
 pkgver=1.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of the Microsoft Language Server Protocol for the MATLAB language"
 arch=(
   'any'
@@ -57,6 +58,7 @@ package() {
 
   install -vd "${pkgdir}/usr/bin"
   ln -vsf "/usr/lib/node_modules/${pkgname}/out/index.js" "${pkgdir}/usr/bin/${pkgname}"
+  ln -vsf "${pkgname}" "${pkgdir}/usr/bin/matlab_ls"
 
   install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
