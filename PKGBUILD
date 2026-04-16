@@ -1,6 +1,6 @@
 # Maintainer: Aloys233 <luodh233@gmail.com>
 pkgname=otomusic-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="OtoMusic - A cross-platform desktop music player"
 arch=('x86_64')
