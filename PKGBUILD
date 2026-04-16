@@ -3,7 +3,7 @@
 
 pkgname=opera-gx
 pkgver=130.0.5847.58
-pkgrel=1
+pkgrel=2
 pkgdesc='Opera GX The Gaming Browser'
 arch=('x86_64')
 url='https://www.opera.com/gx'
