@@ -1,15 +1,15 @@
 pkgbase = zftop
 	pkgdesc = A terminal dashboard for ZFS, in the spirit of htop
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://git.skylantix.com/rbitton/zftop
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = glibc
 	depends = zfs-utils
-	source = zftop-0.2.2-linux-amd64::https://git.skylantix.com/api/v4/projects/rbitton%2Fzftop/packages/generic/zftop/0.2.2/zftop-linux-amd64
-	source = LICENSE-0.2.2::https://git.skylantix.com/rbitton/zftop/-/raw/v0.2.2/LICENSE
-	sha256sums = b387ed2db7949f8106db583676ef14b6d6d1f1a6e2f798f5ca5b43c3ca9cd526
+	source = zftop-0.2.3-linux-amd64::https://git.skylantix.com/api/v4/projects/rbitton%2Fzftop/packages/generic/zftop/0.2.3/zftop-linux-amd64
+	source = LICENSE-0.2.3::https://git.skylantix.com/rbitton/zftop/-/raw/v0.2.3/LICENSE
+	sha256sums = c6b6dd805e627c55a8ef4cfc9030f8c1fd5b864b8c4b86d66817ffecb811f49c
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = zftop
