@@ -1,5 +1,5 @@
 # Maintainer: izz <kui@eeu.jp>
-pkgname=wallpaper-picker
+pkgname=wallpaper-picker-rs
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A TUI wallpaper selector with matugen theming support"

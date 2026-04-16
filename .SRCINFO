@@ -1,4 +1,4 @@
-pkgbase = wallpaper-picker
+pkgbase = wallpaper-picker-rs
 	pkgdesc = A TUI wallpaper selector with matugen theming support
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -7,7 +7,7 @@ pkgbase = wallpaper-picker
 	license = MIT
 	makedepends = cargo
 	depends = matugen
-	source = wallpaper-picker-0.1.0.tar.gz::https://github.com/kuisux/wallpaper-picker/archive/v0.1.0.tar.gz
+	source = wallpaper-picker-rs-0.1.0.tar.gz::https://github.com/kuisux/wallpaper-picker/archive/v0.1.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = wallpaper-picker
+pkgname = wallpaper-picker-rs
