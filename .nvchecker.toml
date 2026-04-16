@@ -1,0 +1,5 @@
+[lore]
+source = "github"
+github = "robinovitch61/lore"
+prefix = "v"
+use_latest_release = true
