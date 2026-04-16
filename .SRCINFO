@@ -1,6 +1,6 @@
 pkgbase = tmux-ai-titles
 	pkgdesc = AI-powered title generation for tmux panes and windows
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/evanpurkhiser/tmux-ai-titles
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = tmux-ai-titles
 	depends = glibc
 	depends = gcc-libs
 	options = !lto
-	source = tmux-ai-titles-0.1.1.tar.gz::https://github.com/evanpurkhiser/tmux-ai-titles/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 0d548ae81c3fbe5da7e4ffe3c376a4628c159f9e1a2c6ec0ad9e69f00f8f6199
+	source = tmux-ai-titles-0.1.2.tar.gz::https://github.com/evanpurkhiser/tmux-ai-titles/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = adcf78b73387ed9bec7d68a427bd2ac82311fe46e5323607e430e951670abf90
 
 pkgname = tmux-ai-titles
 
