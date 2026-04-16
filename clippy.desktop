@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Clippy
+Comment=Clippy
+Exec=/usr/bin/clippy
+Icon=/opt/clippy/resources/app/assets/icon.png
+Type=Application
+Categories=Utility;

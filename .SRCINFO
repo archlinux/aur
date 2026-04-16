@@ -1,0 +1,14 @@
+pkgbase = clippy-gemini
+	pkgdesc = Clippy
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/daedaevibin/clippy
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = typescript
+	depends = electron39
+	source = clippy::git+https://github.com/daedaevibin/clippy.git
+	sha256sums = SKIP
+
+pkgname = clippy-gemini
