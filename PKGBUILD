@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-space-bar-git
-pkgver=34.r0.g6f1df60
+pkgver=37.r1.g0e3fd25
 pkgrel=1
 pkgdesc="GNOME Shell extension that shows workspaces buttons in top panel"
 arch=('any')
@@ -12,6 +12,7 @@ makedepends=(
   'jq'
   'pnpm'
   'typescript'
+  'zip'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -26,7 +27,7 @@ pkgver() {
 build() {
   cd space-bar
   export PNPM_HOME="$srcdir/pnpm-home"
-  pnpm install
+  pnpm install --frozen-lockfile
   sh scripts/build.sh
 }
 
@@ -35,10 +36,10 @@ package() {
   _uuid=$(jq -r .uuid metadata.json)
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
-  bsdtar -xvf "${_uuid}.shell-extension.zip" -C \
+  bsdtar -xvf "${_uuid}.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  install -Dvm644 target/schemas/*.gschema.xml -t \
+  install -Dvm644 dist/schemas/*.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
   rm -rfv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }
