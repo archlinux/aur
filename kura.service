@@ -1,0 +1,17 @@
+[Unit]
+Description=KurA Voice Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/kura.env
+WorkingDirectory=/var/lib/kura
+ExecStart=/usr/bin/kura
+Restart=on-failure
+RestartSec=3
+DynamicUser=yes
+StateDirectory=kura
+
+[Install]
+WantedBy=multi-user.target
