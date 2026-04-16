@@ -1,7 +1,7 @@
 # Maintainer: daedaevibin <daedaevibin@ik.me>
 pkgname=clippy-gemini
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Clippy"
 arch=('x86_64')
 url="https://github.com/daedaevibin/clippy"
