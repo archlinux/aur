@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=snout-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Rime input method init and update tool with Wanxiang, Ice, Frost, and Mint support"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('snout')
 conflicts=('snout')
 source_x86_64=("snout-${pkgver}-linux-x86_64::${url}/releases/download/v${pkgver}/snout-v${pkgver}-linux-x86_64")
 source_aarch64=("snout-${pkgver}-linux-aarch64::${url}/releases/download/v${pkgver}/snout-v${pkgver}-linux-aarch64")
-sha256sums_x86_64=('876f72f3d139dcd0161e75507cc432d2d588bf86271c4c49610864a304a0a92d')
-sha256sums_aarch64=('448de829305894fffd46e1c4c79705d2bc2e3c97387886a245edcded2a86ddd8')
+sha256sums_x86_64=('27e3e442abb30c8fe9154d612efb88190b047fd4cdb572ccb2199f3f03d24690')
+sha256sums_aarch64=('543fa1d25bfcca8d58cb76855eb36c64a53253ea3cf1ff56ddfac67b86a20090')
 
 package() {
   install -Dm755 "${srcdir}/snout-${pkgver}-linux-${CARCH}" "${pkgdir}/usr/bin/snout"
