@@ -1,9 +1,9 @@
-# Maintainer: Kyle Jackson <kylejackson_@outlook.com>
+# Maintainer: Kyle Jackson <your@email.com>
 # paintfe — builds PaintFE from the tagged source tarball on GitHub.
 # Update pkgver + sha256sums (run: updpkgsums) for each new release.
 
 pkgname=paintfe
-pkgver=1.1.12
+pkgver=1.1.13
 pkgrel=1
 pkgdesc="Fast, GPU-accelerated raster image editor"
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,7 @@ makedepends=(
     'mesa'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fb0981eff4d6427244a070bef1794e24ee9929eb16e4b10a1f3d7055c33e9c68')
+sha256sums=('711caaf4b2961216360f3077ab4de2c74d2ed62483b26c41d385abe3daca82e2')
 
 prepare() {
     cd "PaintFE-$pkgver"
