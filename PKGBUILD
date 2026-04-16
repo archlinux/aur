@@ -2,7 +2,7 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=9.3.0.r0.g171b91e37
+pkgver=9.3.0.r213.gcd702239b
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
@@ -56,6 +56,29 @@ pkgver() {
         git describe --long --tags --match '[0-9.]*' 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
+}
+
+prepare() {
+    cd "${srcdir}/${pkgrealname}"
+
+    if [ "${WEBCAMOID_ENABLE_EXTRA_PLUGINS}" = 1 ]; then
+        echo "Building Webcamoid with extra plugins."
+        echo "Cloning submodules (this may take a while)..."
+
+        git submodule init
+        git submodule update --recursive --depth=1
+
+        echo "Submodules cloned successfully."
+    else
+        echo "Building Webcamoid without the extra plugins, extra plugins are"
+        echo "available to sponsors only, You can become a sponsor at:"
+        echo
+        echo "https://github.com/sponsors/hipersayanX"
+        echo
+        echo "To enable them, build with:"
+        echo
+        echo "WEBCAMOID_ENABLE_EXTRA_PLUGINS=1 makepkg -si"
+    fi
 }
 
 build() {
