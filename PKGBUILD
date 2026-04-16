@@ -3,8 +3,8 @@
 pkgname='piped-backend-git'
 _componentname="${pkgname%'-git'}"
 _componentnameshort="${_componentname#'piped-'}"
-pkgver=r1317.da5bcd7
-pkgrel=3
+pkgver=r1318.e3c7bdb
+pkgrel=1
 pkgdesc='An alternative privacy-friendly YouTube frontend which is efficient by design. Backend/API component, for fetching Metadata'
 arch=('x86_64')
 url='https://github.com/TeamPiped/Piped-Backend'
@@ -42,20 +42,9 @@ prepare() {
 	sed -i "s|dependencies {|dependencies {\n    implementation 'com.kohlschutter.junixsocket:junixsocket-core:2.10.0'|" build.gradle
 }
 
-fix_from_orhtej2() { # https://github.com/TeamPiped/Piped/issues/4139#issuecomment-3840519632
-	sed -i "s|implementation 'com.github.FireMasterK:NewPipeExtractor:92809cedefd89ce68bc4de8763e9d5f2760f5899'|implementation 'com.github.TeamNewPipe:NewPipeExtractor:v0.25.1'|" build.gradle
-	sed -i "s|implementation 'com.github.FireMasterK:nanojson:a507525e549a836c3a8b6ab7090dca38e92942ef'|implementation 'com.github.TeamNewPipe:nanojson:c7a6c1c08d16b6d5ecded34758e6415e07be2166'|" build.gradle
-}
-
-fix_from_jollySleeper() { #https://github.com/TeamPiped/Piped-Backend/pull/885/commits/1b8c1c0b00336fbba0f10b30ef6487fc96a801b4
-	sed -i "s|implementation 'com.github.FireMasterK:NewPipeExtractor:92809cedefd89ce68bc4de8763e9d5f2760f5899'|implementation 'com.github.jollySleeper:NewPipeExtractor:4b7752bff41e7b8982af1fad9b167b0e719ba4da'|" build.gradle
-}
-
 build() {
 	cd Piped-Backend
 	
-	fix_from_orhtej2
-
 	./gradlew shadowJar -Dorg.gradle.java.home=/usr/lib/jvm/java-21-openjdk
 }
 
