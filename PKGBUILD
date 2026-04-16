@@ -1,9 +1,9 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=workbuddy-bin
-pkgver=4.9.6.25479271
-pkgrel=2
-_commit=21f0d738
+pkgver=4.10.0.25559938
+pkgrel=1
+_commit=868e84e9
 pkgdesc="Work Smart，Not Hard"
 arch=('x86_64' 'aarch64')
 url="https://www.codebuddy.ai/agents"
@@ -15,6 +15,7 @@ makedepends=('7zip'
 )
 checkdepends=()
 optdepends=(
+	'gnome-shell-extension-appindicator'
 )
 provides=()
 conflicts=()
@@ -26,6 +27,7 @@ sha256sums=('SKIP'
 )
 
 prepare() {
+    rm -rf WorkBuddy/WorkBuddy.app/Contents/Resources/app
     7z x WorkBuddy-darwin-x64-${pkgver}-${_commit}.dmg
     mkdir -p WorkBuddy/WorkBuddy.app/Contents/Resources/node_modules
 }
