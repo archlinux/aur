@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="See what your ai agents are doing"
 
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('a9fad47d28278f5f73ca9e5e4b9845a2fefabcc1f84f41157f150062bf50a301')
-sha256sums_aarch64=('507b6b5879d7fa564b439821f29d979defdb3379c26b7a623cdc07980889c080')
+sha256sums_x86_64=('d96328334e4d6733197764f4995f0169239848313d480aa9ef773e19d7203237')
+sha256sums_aarch64=('e1b86a835ae8970b62193bfefb002a36efcc46415ac761bc76a6e3ed4f9606d5')
 
 
 package() {
