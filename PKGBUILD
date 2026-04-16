@@ -1,5 +1,5 @@
 pkgname=kura-voice-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="KurA low-CPU Discord voice music bot (prebuilt binaries)"
 arch=('x86_64')
@@ -40,4 +40,13 @@ package() {
 OPUS_CACHE=/var/lib/kura/music_opus
 RUST_LOG=warn
 EOF
+
+  # WSL: Windows npm shims for kura/kurac often precede /usr/bin; prefer native binaries.
+  install -Dm644 /dev/null "${pkgdir}/etc/profile.d/kura-voice-bin.sh"
+  cat > "${pkgdir}/etc/profile.d/kura-voice-bin.sh" <<'EOF'
+#!/bin/sh
+PATH="/usr/bin:/usr/local/bin:$PATH"
+export PATH
+EOF
+  chmod 644 "${pkgdir}/etc/profile.d/kura-voice-bin.sh"
 }

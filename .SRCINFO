@@ -1,6 +1,6 @@
 pkgbase = kura-voice-bin
 	pkgdesc = KurA low-CPU Discord voice music bot (prebuilt binaries)
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/TOTO-sys28/KurA
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kura-voice-bin
 	conflicts = kura-voice
 	backup = etc/kura.env
 	optdepends = ffmpeg: kurac audio conversion to .opus
-	source_x86_64 = https://github.com/TOTO-sys28/KurA/releases/download/v0.1.5/kura_voice-linux-x64.tar.gz
+	source_x86_64 = https://github.com/TOTO-sys28/KurA/releases/download/v0.1.6/kura_voice-linux-x64.tar.gz
 	source_x86_64 = kura.service
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
