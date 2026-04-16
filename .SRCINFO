@@ -1,7 +1,7 @@
 pkgbase = jasp-desktop
-	pkgdesc = JASP Desktop (development branch)
-	pkgver = 0.96.0.38.gb498d5368
-	pkgrel = 2
+	pkgdesc = JASP Desktop
+	pkgver = 0.96.0
+	pkgrel = 3
 	url = https://github.com/jasp-stats/jasp-desktop
 	arch = x86_64
 	license = GPL3
@@ -41,10 +41,10 @@ pkgbase = jasp-desktop
 	depends = zlib
 	depends = libfreexl
 	depends = readstat
-	optdepends = v8: for jaspProcess support
-	source = git+https://github.com/jasp-stats/jasp-desktop.git#branch=development
+	optdepends = v8: for jaspProcess support, but there is no maintained PKGBUILD so you are on you own here;)
+	source = git+https://github.com/jasp-stats/jasp-desktop.git#tag=v0.96.0
 	source = org.jaspstats.JASP.desktop
-	sha256sums = SKIP
-	sha256sums = 6415669f39de6484ce9a6a368caf69bb1db13b2e0e0388a15243bb09484f0d37
+	sha256sums = ac8a75a55a75cc7b6fc04b28f6a3042a667a33bedaa0a614aceb3716ec7a765d
+	sha256sums = 7d2a438834cda8a8616801438ae4fe544709f20f52c21fb4f7cbcb82d7062ebe
 
 pkgname = jasp-desktop

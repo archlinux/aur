@@ -1,7 +1,7 @@
 pkgname=jasp-desktop
-pkgver=0.96.0.38.gb498d5368
-pkgrel=2
-pkgdesc="JASP Desktop (development branch)"
+pkgver=0.96.0
+pkgrel=3
+pkgdesc="JASP Desktop"
 arch=('x86_64')
 url="https://github.com/jasp-stats/jasp-desktop"
 license=('GPL3')
@@ -16,111 +16,71 @@ makedepends=(
   'libtool' 'bison' 'flex' 'gettext' 'blas' 'lapack' 'ccache'
 )
 
-optdepends=('v8: for jaspProcess support')
+optdepends=('v8: for jaspProcess support, but there is no maintained PKGBUILD so you are on you own here;)')
 
 source=(
-  "git+https://github.com/jasp-stats/jasp-desktop.git#branch=development"
+  "git+https://github.com/jasp-stats/jasp-desktop.git#tag=v${pkgver}"
   "org.jaspstats.JASP.desktop"
 )
 
-sha256sums=('SKIP'
-            '6415669f39de6484ce9a6a368caf69bb1db13b2e0e0388a15243bb09484f0d37')
+sha256sums=('ac8a75a55a75cc7b6fc04b28f6a3042a667a33bedaa0a614aceb3716ec7a765d'
+            '7d2a438834cda8a8616801438ae4fe544709f20f52c21fb4f7cbcb82d7062ebe')
 
 _jasp_prefix="/opt/jasp-desktop"
 
-pkgver() {
-  cd "${srcdir}/jasp-desktop"
-  if git describe --long --tags >/dev/null 2>&1; then
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/./g'
-  else
-    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  fi
-}
-
-check_env() {
-  if [[ -z "${GITHUB_PAT:-}" ]]; then
-    echo "==> ERROR: GITHUB_PAT is not set."
-    echo "==> ERROR: Please export GITHUB_PAT=your_github_pat before running makepkg."
-    echo "Aborting due to missing required environment variable."
-    exit 1
-  fi
-
-  : "${GITHUB_PAT_DEF:=DUMMY}"
-  export GITHUB_PAT_DEF
-}
-
 prepare() {
-  check_env
-
   cd "${srcdir}/jasp-desktop"
-
   git submodule sync --recursive
   git submodule update --init --recursive --jobs "$(nproc)"
-
-  # allows detection of host boost-libs
-  sed -i 's/COMPONENTS system/COMPONENTS/' Tools/CMake/Libraries.cmake
+  
+  # Fix Boost 1.90 compatibility
+  sed -i 's|find_package(Boost 1\.78 REQUIRED COMPONENTS system)|find_package(Boost 1.90 CONFIG REQUIRED COMPONENTS filesystem)|' Tools/CMake/Libraries.cmake
 }
 
 build() {
-  # Set compiler launcher to use ccache
   export CMAKE_C_COMPILER_LAUNCHER=ccache
   export CMAKE_CXX_COMPILER_LAUNCHER=ccache
   export CMAKE_Fortran_COMPILER_LAUNCHER=ccache
 
-  # Set compiler flags
   export CFLAGS="${CFLAGS} -fPIC"
   export CXXFLAGS="${CXXFLAGS} -fPIC"
   export FCFLAGS="${FCFLAGS} -fPIC"
   export FFLAGS="${FFLAGS} -fPIC"
 
-  # Navigate to the source directory
   cd "${srcdir}/jasp-desktop" || return
-
-  # Clean previous build directory
   rm -rf "${srcdir}/build"
 
-  # Run CMake to configure the build
   cmake -S . -B "${srcdir}/build" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
+    -DBoost_DEBUG=ON \
     -DCMAKE_INSTALL_PREFIX="${_jasp_prefix}" \
     -DLINUX_LOCAL_BUILD=ON \
     -Wno-dev
 
-  # Build the project using Ninja
   ninja -C "${srcdir}/build"
 
-  # Create necessary directories for the build
   mkdir -p "${srcdir}/build/Modules"/{binary_pkgs,manifests,module_libs,Tools}
 
-  # Run additional build scripts
   cd "${srcdir}/jasp-desktop/Tools" || return
   Rscript buildAllDefaultJaspModules.R
 }
 
 package() {
   cd "${srcdir}"
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
 
   install -d "${pkgdir}${_jasp_prefix}/Modules"
-  if [[ -d "${srcdir}/jasp-desktop/Tools/ModuleBundleBuildDir/Modules" ]]; then
-    cp -a "${srcdir}/jasp-desktop/Tools/ModuleBundleBuildDir/Modules/"* \
-      "${pkgdir}${_jasp_prefix}/Modules/" 2>/dev/null || true
-  fi
+  cp -a "${srcdir}/jasp-desktop/Tools/ModuleBundleBuildDir/Modules/." \
+    "${pkgdir}${_jasp_prefix}/Modules/"
 
-  install -d "${pkgdir}${_jasp_prefix}/R/library"
   if [[ -d "${srcdir}/build/R/library" ]]; then
-    shopt -s nullglob
-    local modules=( "${srcdir}/build/R/library/"* )
-    shopt -u nullglob
-    if (( ${#modules[@]} )); then
-      cp -a "${modules[@]}" "${pkgdir}${_jasp_prefix}/R/library/"
-    fi
+    install -d "${pkgdir}${_jasp_prefix}/R/library"
+    cp -a "${srcdir}/build/R/library/." "${pkgdir}${_jasp_prefix}/R/library/"
   fi
 
   if [[ -d "${pkgdir}${_jasp_prefix}/share/icons/hicolor" ]]; then
     install -d "${pkgdir}/usr/share/icons/hicolor"
-    cp -a "${pkgdir}${_jasp_prefix}/share/icons/hicolor/"* \
-      "${pkgdir}/usr/share/icons/hicolor/"
+    cp -a "${pkgdir}${_jasp_prefix}/share/icons/hicolor/." "${pkgdir}/usr/share/icons/hicolor/"
   fi
 
   install -Dm644 "${srcdir}/org.jaspstats.JASP.desktop" \
@@ -131,3 +91,4 @@ package() {
   find . -name 'LICENSE*' -type f -exec install -m644 '{}' \
     "${pkgdir}/usr/share/licenses/${pkgname}/" \;
 }
+
