@@ -25,6 +25,6 @@ pkgbase = sunder-bin
 	source = sunder_1.3.5_amd64.deb::https://github.com/FrogSnot/Sunder/releases/download/v1.3.5/sunder_1.3.5_amd64.deb
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 	sha256sums = 46c44b26bf09b011d374d74246f8931d804a6fd76838b7821fd83956247f45cb
-	sha256sums = 6f86b4cf4a532240708422c2e5933ae96abeed53d5818f1f050799711a06a179
+	sha256sums = 6a0ccbfe9d9bcf56108b7457e0c527b9495e06c253ad372889e276090a64db00
 
 pkgname = sunder-bin
