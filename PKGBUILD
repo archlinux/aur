@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qsoc-git
-pkgver=1.0.2.r0.ga0ef7a7
+pkgver=r826.c68655d
 pkgrel=1
 epoch=
 pkgdesc="QSoC - Quick System on Chip Studio"
@@ -28,6 +28,7 @@ depends=(
 makedepends=(
     antlr4-runtime
     cmake
+    cppcheck
     boost
     ninja
     git
