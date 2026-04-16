@@ -3,15 +3,30 @@
 # Contributor: Scimmia
 
 pkgbase=wayland-git
-pkgname=('wayland-git' 'wayland-docs-git')
-pkgver=1.18.0.r18.gef611a80
+pkgname=(
+    'wayland-git'
+    'wayland-docs-git')
+pkgver=1.24.91.r8.g25da99a
 pkgrel=1
 pkgdesc='A computer display server protocol (git version)'
 arch=('x86_64')
 url='https://wayland.freedesktop.org/'
 license=('MIT')
-depends=('glibc' 'libffi' 'expat' 'libxml2')
-makedepends=('git' 'meson' 'ninja' 'libxslt' 'doxygen' 'xmlto' 'graphviz' 'docbook-xsl')
+depends=(
+    'default-cursors'
+    'expat'
+    'glibc'
+    'libffi'
+    'libxml2')
+makedepends=(
+    'docbook-xsl'
+    'doxygen'
+    'git'
+    'graphviz'
+    'libxslt'
+    'mdbook'
+    'meson'
+    'xmlto')
 source=('git+https://gitlab.freedesktop.org/wayland/wayland.git')
 sha256sums=('SKIP')
 
@@ -20,21 +35,25 @@ pkgver() {
 }
 
 build() {
-    meson build wayland --buildtype='release' --prefix='/usr'
+    arch-meson wayland build
+    meson compile -C build
 }
 
 check() {
-    ninja -C build test
+    meson test -C build --print-errorlogs
 }
 
 package_wayland-git() {
-    provides=("wayland=${pkgver}")
-    conflicts=('wayland')
+    provides=(
+        libwayland-{client,cursor,egl,server}.so
+        "wayland=${pkgver}")
+    conflicts=(
+        'wayland')
     
-    DESTDIR="$pkgdir" ninja -C build install
+    meson install -C build --destdir "$pkgdir"
     mkdir -p docs/share
     mv "${pkgdir}/usr/share/"{doc,man} docs/share
-    install -D -m644 wayland/COPYING "$p{kgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 wayland/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_wayland-docs-git() {
