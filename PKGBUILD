@@ -8,7 +8,7 @@ pkgdesc="Fast, smart file search with fuzzy matching and natural language querie
 
 pkgver=2.2.0
 pkgrel=1
-_pkgvername=v${pkgver}
+_pkgvername=v${pkgver}-${pkgrel}
 
 arch=('x86_64')
 _barch=('linux-glibc-amd64')
@@ -29,7 +29,7 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pk
 sha256sums=('bf89827624998371742ec16b08e8e52c557d54147c10128474fa2010e064f682'
             '65cac3989ea7f13413a5f4e8fb2572ef191f6d7fbbfc7c0c219891960ee9499d'
             '03032f3a3b2cda5b47d8994ebcc63b6f39259eff117931f14640a3ba2649146c')
-sha256sums_x86_64=('bae160e9b39259a4ddd5e6ae3c24b03c57deabe7e4feb0ca6c6355068615e72f')
+sha256sums_x86_64=('0001fa85e65861f5b07f24744643dabc3c7c51f6e9f3304ea0d2a3321920373c')
 
 
 package() {
