@@ -1,0 +1,23 @@
+pkgbase = concryptor-bin
+	pkgdesc = A gigabyte-per-second, multi-threaded file encryption engine
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/FrogSnot/Concryptor
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	depends = glibc
+	depends = libgcc
+	provides = concryptor
+	conflicts = concryptor
+	options = !strip
+	source = README-1.0.5.md::https://raw.githubusercontent.com/FrogSnot/Concryptor/v1.0.5/README.md
+	source = LICENSE-1.0.5::https://raw.githubusercontent.com/FrogSnot/Concryptor/v1.0.5/LICENSE
+	sha256sums = 6b144cfdbd66d88cd7b77c917cee616c2a38f73b022815412aa42ee400ab05fc
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+	source_x86_64 = concryptor-x86_64-1.0.5.tgz::https://github.com/FrogSnot/Concryptor/releases/download/v1.0.5/concryptor-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c28a79369f809a46d4810f17d744cc6ae209c1e88b91924b77fc2dc02a27ec8d
+	source_aarch64 = concryptor-aarch64-1.0.5.tgz::https://github.com/FrogSnot/Concryptor/releases/download/v1.0.5/concryptor-linux-aarch64.tar.gz
+	sha256sums_aarch64 = d780d9e8d371624c8f74e8d5d0de4e3f242ebffe6291658727b7098d07052629
+
+pkgname = concryptor-bin

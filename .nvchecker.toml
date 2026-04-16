@@ -1,0 +1,5 @@
+[concryptor-bin]
+source = "github"
+github = "FrogSnot/Concryptor"
+use_latest_release = true
+prefix = "v"
