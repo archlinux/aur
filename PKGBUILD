@@ -1,8 +1,8 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgbase="matlab-gcc-meta"
-pkgver=R2025b
-pkgrel=7
+pkgver=R2026a
+pkgrel=1
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=(
   'any'
@@ -57,6 +57,7 @@ declare -Ag _gccs=(
   ['R2024b']='8 9 10 11 12'
   ['R2025a']='8 9 10 11 12 13'
   ['R2025b']='8 9 10 11 12 13'
+  ['R2026a']='8 9 10 11 12 13'
 )
 
 declare -Ag _gcc_fortrans=(
@@ -104,6 +105,7 @@ declare -Ag _gcc_fortrans=(
   ['R2024b']='10'
   ['R2025a']='10'
   ['R2025b']='10'
+  ['R2026a']='10'
 )
 
 for _release in "${!_gccs[@]}"; do
