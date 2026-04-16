@@ -1,8 +1,8 @@
 # Maintainer: Marat Bakeev <hawara@gmail.com>
 
 pkgname=fido2-token2-git
-pkgver=r0.0
-pkgrel=1
+pkgver=r150.c1423e8
+pkgrel=2
 pkgdesc='TOKEN2 FIDO2 management CLI with wrapper and GUI'
 arch=('x86_64')
 url='https://github.com/Token2/fido2-manage'
@@ -35,6 +35,10 @@ prepare() {
 }
 
 build() {
+  # Strip makepkg's _FORTIFY_SOURCE — upstream CMakeLists.txt sets its own
+  CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+  CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+
   cmake -S "$srcdir/fido2-manage-upstream" -B "$srcdir/build" \
     -DUSE_PCSC=ON \
     -DBUILD_SHARED_LIBS=OFF \
