@@ -41,10 +41,22 @@ case ${CARCH} in
     ;;
 esac
 
+build() {
+	cd "${srcdir}/${_appname}_${pkgver}_${_CARCH}/" || exit
+
+	./${_execname} completion bash > ${_appname}.bash
+	./${_execname} completion zsh > ${_appname}.zsh
+	./${_execname} completion fish > ${_appname}.fish
+}
+
 package() {
 	cd "${srcdir}/${_appname}_${pkgver}_${_CARCH}/" || exit
 
 	install -Dm755 "${_execname}" "${pkgdir}/usr/bin/${_execname}"
+
+	install -D -m644 "${_appname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_execname}"
+	install -D -m644 "${_appname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_execname}"
+	install -D -m644 "${_appname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_execname}.fish"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
