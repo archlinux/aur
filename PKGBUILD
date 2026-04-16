@@ -3,9 +3,9 @@
 
 pkgname=heroic-games-launcher-electron-git
 _pkgname=HeroicGamesLauncher
-pkgver=2.20.1.r22.g46edb4836
+pkgver=2.20.1.r32.g5eb484e92
 pkgrel=1
-_electron=electron
+_electron=electron41
 pkgdesc="Native GOG, Epic Games and Amazon games launcher. Development version (Git) using system Electron."
 arch=('x86_64')
 url="https://heroicgameslauncher.com/"
@@ -39,7 +39,7 @@ prepare() {
   # Ensures Steam shortcuts point to our wrapper instead of raw electron
   patch -p1 -i "$srcdir/fix-exec-heroic.patch"
   # Fix desktop file for system integration
-  sed -i "s/Exec=heroic-run /Exec=heroic %u/" "flatpak/com.heroicgameslauncher.hgl.desktop"
+  sed -i "s/Exec=heroic-run /Exec=heroic /" "flatpak/com.heroicgameslauncher.hgl.desktop"
 }
 
 build() {
@@ -61,13 +61,16 @@ package() {
   install -d "$pkgdir/usr/bin"
 
   # Install resources to /opt to avoid container path reservation conflicts
-  install -Dm644 dist/linux-unpacked/resources/app.asar -t "$pkgdir/opt/heroic/"
-  cp -r dist/linux-unpacked/resources/app.asar.unpacked "$pkgdir/opt/heroic/"
-  rm -rf "$pkgdir/opt/heroic/app.asar.unpacked/build/bin/arm64/"
-
+  #install -Dm644 dist/linux-unpacked/resources/app.asar -t "$pkgdir/opt/heroic/"
+  #cp -r dist/linux-unpacked/resources/app.asar.unpacked "$pkgdir/opt/heroic/"
+  
   # Wrapper script
-  echo -e "#!/bin/bash\nexec $_electron /opt/heroic/app.asar \"\$@\"" > "$pkgdir/usr/bin/heroic"
-  chmod +x "$pkgdir/usr/bin/heroic"
+  #echo -e "#!/bin/bash\nexec $_electron /opt/heroic/app.asar \"\$@\"" > "$pkgdir/usr/bin/heroic"
+  #chmod +x "$pkgdir/usr/bin/heroic"
+
+  # Temporaly use the compiled binary instead of the script with the system electron
+  cp -R dist/linux-unpacked/. "${pkgdir}/opt/heroic/"
+  ln -sf "/opt/heroic/heroic" "${pkgdir}/usr/bin/heroic"
 
   # System integration files
   install -Dm644 "flatpak/com.heroicgameslauncher.hgl.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/com.heroicgameslauncher.hgl.png"
