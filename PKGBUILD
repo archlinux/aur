@@ -1,4 +1,4 @@
-# Maintainer: Elias Elwyn <a@jthv.ai>
+# Maintainer: Elias Elwyn <a@jthvai.net>
 
 pkgname=perl-alien-build-plugin-cleanse-builddir
 _dist=Alien-Build-Plugin-Cleanse-BuildDir
