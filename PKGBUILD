@@ -3,7 +3,7 @@
 pkgname=freetube-electron-git
 _pkgname=FreeTube
 _electron=electron41
-pkgver=0.23.15.beta.r10021.22467b5
+pkgver=0.24.0.beta.r10136.75fa0e7
 pkgrel=1
 pkgdesc='A private YouTube client - built from latest git, using the system electron.'
 arch=('x86_64')
@@ -30,7 +30,7 @@ prepare() {
   cd "$_pkgname"
 
   # Inject system electron path into the build configuration
-  sed -i "5i electronDist: '/usr/lib/$_electron'," "_scripts/ebuilder.config.mjs"
+  sed -i "5i \  electronDist: '/usr/lib/$_electron'," "_scripts/ebuilder.config.mjs"
 
   # Configure the builder to create a directory output instead of a compressed installer
   sed -i "s/targets = Platform.LINUX.*/targets = Platform.LINUX.createTarget(['dir'], arch)/" "_scripts/build.mjs"
@@ -38,7 +38,8 @@ prepare() {
 
 build() {
   cd "$_pkgname"
-  yarn install
+  yarn run ci
+  yarn run lint
   yarn run build
 }
 
@@ -50,11 +51,15 @@ package() {
   install -d "${pkgdir}/usr/bin"
 
   # Install the app.asar bundle
-  cp -R "build/linux-unpacked/resources/app.asar" "${pkgdir}/opt/freetube/"
+  #cp -R "build/linux-unpacked/resources/app.asar" "${pkgdir}/opt/freetube/"
 
   # Create the launcher script using the system electron
-  printf "#!/bin/sh\nexec %s /opt/freetube/app.asar \"\$@\"\n" "$_electron" > "${pkgdir}/usr/bin/freetube"
-  chmod 755 "${pkgdir}/usr/bin/freetube"
+  #printf "#!/bin/sh\nexec %s /opt/freetube/app.asar \"\$@\"\n" "$_electron" > "${pkgdir}/usr/bin/freetube"
+  #chmod 755 "${pkgdir}/usr/bin/freetube"
+
+  # Temporaly use the compiled binary instead of the script with the system electron
+  cp -R "build/linux-unpacked/." "${pkgdir}/opt/freetube/"
+  ln -s "/opt/freetube/freetube" "${pkgdir}/usr/bin/freetube"
 
   # Install license, icon, and desktop entry
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
