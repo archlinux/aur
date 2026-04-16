@@ -1,0 +1,19 @@
+post_install() {
+    echo ""
+    echo "  awsd has been installed. To finish setup, add the following"
+    echo "  to your ~/.bashrc or ~/.zshrc and then open a new terminal:"
+    echo ""
+    echo "    # Required: makes 'awsd' source the profile into your current shell"
+    echo "    alias awsd=\"source _awsd\""
+    echo ""
+    echo "    # Optional: persist the selected profile across new shells"
+    echo "    export AWS_PROFILE=\$(cat ~/.awsd 2>/dev/null)"
+    echo ""
+    echo "    # Optional: enable tab completion"
+    echo "    source _awsd_autocomplete"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
