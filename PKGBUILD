@@ -13,7 +13,7 @@ depends=(
   'gtk3'
   'libxkbcommon'
   'espeak-ng'
-  'sonic'
+  'libsonic'
   'pcaudiolib'
 )
 makedepends=('rust' 'cargo' 'git' 'pkgconf')
