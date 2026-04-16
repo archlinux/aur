@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=JentleMemes Launcher
+Comment=Minecraft launcher (Tauri)
+Exec=jentlememes-launcher %u
+Terminal=false
+Type=Application
+Icon=jentlememes-launcher
+Categories=Game;
+StartupWMClass=jentlememes-launcher
