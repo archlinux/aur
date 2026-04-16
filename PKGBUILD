@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=servo
-pkgver=0.0.6
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Parallel Browser Project: web browser written in Rust'
 arch=(x86_64 i686)
@@ -37,7 +37,7 @@ makedepends=(clang
 options=('!lto') # lto breaks linking
 backup=("etc/profile.d/$pkgname".{csh,sh})
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('6bead4430b4760e92939bab95f323944346429ef6e90207f8ecbb8a0eecc7b73')
+sha256sums=('6552f3791630552478ff2132a3756350af139371265bc54219384eeb2d4ff378')
 
 prepare() {
 	cd "$pkgname"
@@ -55,7 +55,7 @@ build() {
 
 package() {
 	servopath=$pkgname/target/release
-	install -Dm0755 -t "$pkgdir/opt/servo/" "$servopath/servo"
+	install -Dm0755 -t "$pkgdir/opt/servo/" "$servopath/servoshell"
 	install -d "$pkgdir/opt/servo/resources/"
 	cp -r $pkgname/resources/* "$pkgdir/opt/servo/resources"
 	cd "$pkgname"
