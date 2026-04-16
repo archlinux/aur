@@ -2,7 +2,7 @@
 # Contributor: jackreeds
 pkgname=neovide-bin
 _pkgname=neovide
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1.1
 pkgdesc="No Nonsense Neovim Client in Rust"
 arch=(x86_64)
@@ -23,16 +23,16 @@ depends=(
 # install=.install
 source_x86_64=(
     "${_pkgname}-${pkgver}-x86_64.tar::${url}/releases/download/${pkgver}/${_pkgname}-linux-x86_64.tar"
-    "${url}/raw/refs/tags/${pkgver}/assets/${_pkgname}.desktop"
-    "${url}/raw/refs/tags/${pkgver}/assets/${_pkgname}.svg"
-    "${url}/raw/refs/tags/${pkgver}/assets/${_pkgname}-16x16.png"
-    "${url}/raw/refs/tags/${pkgver}/assets/${_pkgname}-32x32.png"
-    "${url}/raw/refs/tags/${pkgver}/assets/${_pkgname}-48x48.png"
-    "${url}/raw/refs/tags/${pkgver}/assets/${_pkgname}-256x256.png"
+    "${_pkgname}.desktop::${url}/raw/refs/tags/${pkgver}/assets/${_pkgname}.desktop"
+    "${_pkgname}.svg::${url}/raw/refs/tags/${pkgver}/assets/${_pkgname}.svg"
+    "${_pkgname}-16x16.png::${url}/raw/refs/tags/${pkgver}/assets/${_pkgname}-16x16.png"
+    "${_pkgname}-32x32.png::${url}/raw/refs/tags/${pkgver}/assets/${_pkgname}-32x32.png"
+    "${_pkgname}-48x48.png::${url}/raw/refs/tags/${pkgver}/assets/${_pkgname}-48x48.png"
+    "${_pkgname}-256x256.png::${url}/raw/refs/tags/${pkgver}/assets/${_pkgname}-256x256.png"
     "${_pkgname}-1024x1024.png::${url}/raw/refs/tags/${pkgver}/assets/${_pkgname}-1024.png"
 )
 sha256sums_x86_64=(
-    '6d9d59bc9b549f830d499aa728578c614bbdf4b078bb4db61972a648381c5a26'
+    'd3f4a50921b7144d6ab45096587d5f9bef3ad167f3d83e522e100b73efa73560'
     '028fe24eee4a367dfba9cb223725055da327b1c261325cc33049192ca0fdd2f8'
     'a6870391ded090cc5f24f0cb40a8ffa67930faf109a419753ec25ac0a03177a9'
     '155562150a8ba263dc542fde26aeba8faff57acd89d9346c68d0c2afef736de9'
