@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-gradia-capture-git
+	pkgdesc = Enhances the GNOME built-in screenshot tool with the annotation features you would expect.
+	pkgver = r35.f545fde
+	pkgrel = 1
+	url = https://github.com/AlexanderVanhee/gradia-capture
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = jq
+	depends = gnome-shell
+	depends = gradia
+	provides = gnome-shell-extension-gradia-capture
+	conflicts = gnome-shell-extension-gradia-capture
+	source = git+https://github.com/AlexanderVanhee/gradia-capture.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-gradia-capture-git
