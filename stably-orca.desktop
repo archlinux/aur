@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Stably Orca
+Name=Orca
 GenericName=Agentic Coding IDE
 Comment=Electron-based agentic coding IDE by Stably AI
 Exec=stably-orca %U

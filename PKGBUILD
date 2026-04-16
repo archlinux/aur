@@ -28,8 +28,8 @@ source=(
   'stably-orca.desktop'
 )
 sha256sums=('139a7ebfbe20d2f7197cb389ccdd84dace2e610b5c9b4891003c5825b205969d'
-            'c61fa58fed7c5d2dbfebde9847a08cc1a3dab055f49d8fad282be15346e90b79'
-            '020779387f8bc6aa8188316c2ca6ed4a9ecda906b7236ecd1a4521c9587a6a5b')
+            'b412134da6b7ac048c6ac3fe7e2bb14fb3b2b12ab0aee994c51684349b98b309'
+            '6e05296c09a37e0c28b9a2886b804d167a0c025ef1e72f955e9ba744be2f1dcd')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
 prepare() {
