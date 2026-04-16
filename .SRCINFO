@@ -9,8 +9,8 @@ pkgbase = copia-cli-bin
 	provides = copia-cli
 	conflicts = copia-cli
 	source_x86_64 = https://github.com/qubernetic/copia-cli/releases/download/v1.1.2/copia-cli_1.1.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = e27c45097bb88ee18424bd0f725f5678677436c241ecace9b95c359aaeb35028
+	sha256sums_x86_64 = 5e3e947c59617c7d6fa6cb0c00755c80a6fb3f3a99f2eebee44e398f8f80f97d
 	source_aarch64 = https://github.com/qubernetic/copia-cli/releases/download/v1.1.2/copia-cli_1.1.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = ec970ca97736931d7efd780a9ebd120caaca8b0f45ec9cb4e6d74514ec4507e2
+	sha256sums_aarch64 = 83a027d89e39c4e8c80e99695b0a17fac4227666242725f49a341c6f464ad986
 
 pkgname = copia-cli-bin
