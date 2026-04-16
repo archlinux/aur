@@ -2,7 +2,7 @@
 
 pkgname=proton-meet-bin
 _name=${pkgname%-bin}
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc='Secure, end-to-end encrypted video conferencing'
 arch=(any)
@@ -14,9 +14,9 @@ provides=($_name)
 conflicts=($_name)
 source=($_name-$pkgver.deb::https://proton.me/download/meet/linux/$pkgver/ProtonMeet-desktop.deb
         $_name.sh)
-sha512sums=('a307f09a2ad3c376282c23f5d4a623fc3ccdc1043b25d04e52b068b685f99cb52c4711e9e2eb9094934d0baa924d1659f3647ba4673c86e32cebcce714086b78'
+sha512sums=('f5131eda75e2f41a1f6022ad01f548c1a405c1cf83f17722b233729cecdafa8a0edaedcdf56f2ed2c326a0d3c4332bd05d5fc968e263fb302d83e703201fb11b'
             '558644ebe5a0fb43fead451e93b65f4006108ea76fb5241b591fe06951f9d1be742ef6fbac307d86020d132eeee3a2c182604351144f7c750fe4f275c876ae9b')
-b2sums=('48e8680dad8d5f93e4b66b701fc048aa7e73c129642b203ecf808f8c6a1aa8fc05a4148e49b133c8fc0d22b254fac5e6cdfee628fc80baa99e1beb2a95594ef9'
+b2sums=('91d74ef9f37cf12435667545ac45cd0af7f2ccb3b54660d4c404eac9f00ded2699cd0f31a958664ed05e2dea6e19ae8213c507fbfd7a6f92d7f2a84469c7f5b0'
         'cc16def864fd2e9134c194b473db94b0588871af895803fe4151ab7b715f66bbbb695a0964c03577da12b72397230626dabf186885cd206de412c8eac3a47e4a')
 
 prepare() {
