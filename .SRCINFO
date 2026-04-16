@@ -1,0 +1,18 @@
+pkgbase = veila-bin
+	pkgdesc = Secure, elegant, and fast Wayland screen locker
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/naurissteins/Veila
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = libxkbcommon
+	depends = pam
+	optdepends = systemd: enable the bundled user service with systemctl --user
+	provides = veila
+	conflicts = veila
+	conflicts = veila-git
+	options = !debug
+	source = veila-bin-0.1.0.tar.gz::https://github.com/naurissteins/Veila/releases/download/0.1.0/veila-0.1.0-x86_64-linux.tar.gz
+	sha256sums = d249dc20170089a1eb73320d96d4656737d0d93dc5c3e07608907a098dd1cfb6
+
+pkgname = veila-bin
