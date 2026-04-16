@@ -2,7 +2,7 @@
 # Contributor: Peter <your@email.com>
 
 pkgname=ytm-player
-pkgver=1.5.7
+pkgver=1.5.8
 pkgrel=1
 pkgdesc="A full-featured YouTube Music TUI client with vim-style navigation"
 
@@ -41,7 +41,7 @@ conflicts=("${pkgname}"{-git,-bin})
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('c766384329ff0fc38fbd2e7ac4bf4904c74a7fc22978c4c1404c6e3b1770a7a2')
+sha256sums=('fdcb49ca1c89c6444b809d4117cbdf390a4a2aca96a39cd0f4f35742b3694265')
 
 build() {
     cd "${pkgname}-${pkgver}" || exit
