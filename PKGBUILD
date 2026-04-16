@@ -54,7 +54,7 @@ optdepends=(
     'upower: battery save support'
 )
 
-_nwjs_ffmpeg_version=0.108.0
+_nwjs_ffmpeg_version=0.110.1
 
 _upstream_deb_pkg='opera-gx-stable'
 _debfile="${_upstream_deb_pkg}_${pkgver}_amd64.deb"
@@ -77,7 +77,7 @@ sha256sums=('0429979a505afff50f5d738b66ba9bc57247ef0190105a7fd425685960cf7415'
             '3c48827275d36f2a38a9ac63ce81875211f11022d390d7ada302d26e475271ea'
             'd67656e82d68ab88841b3e16a24e60aabd9f242e42b7010f9613282df57d7003'
             'cb50dfd6f03cafffbb0565f4cf6d8f943b2709dcdb30acc3d0a52c9c99af3e32'
-            'd46952266692504cf5283fb8dec9ae49a2ee040e0dbd3ec10477588a89215cbb')
+            '4b895cc0212d9cec7f96943be998e5e6fb8db7104c0b9264ddd471f0d3cedf95')
 
 prepare() {
     sed -e 's|%pkgname%|opera-gx|g' \
