@@ -1,7 +1,7 @@
 # Maintainer: Deon Spengler <deon@spengler.co.za>
 
 pkgname=python-luma-core
-pkgver=2.4.2
+pkgver=2.5.3
 pkgrel=1
 pkgdesc="Pillow-compatible library to support drawing and text-rendering for small displays"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(python-pillow python-smbus2)
 makedepends=(python-setuptools)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rm-hull/luma.core/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8ad1ac035a82fc729a4f5bb70ec7501322bd458af4888ed8c225b99a30c428f9')
+sha256sums=('c87414d8f3f5f4e0cfa06e265862d27a890506d26c0f7f1fe6c5ec8b85aa7d46')
 
 build() {
   cd "luma.core-$pkgver"
