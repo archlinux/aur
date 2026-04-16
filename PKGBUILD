@@ -2,7 +2,7 @@
 # Contributor: David Koenig <koenigdmj@gmail.com>
 pkgname=bible-kjv
 pkgver=4.42
-pkgrel=1
+pkgrel=2
 pkgdesc="King James Bible, Concordance, and Command-Line Viewer"
 arch=(x86_64)
 url="https://tracker.debian.org/pkg/bible-kjv"
