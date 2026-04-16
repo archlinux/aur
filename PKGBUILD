@@ -1,6 +1,6 @@
 pkgname=kura-voice-bin
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="KurA low-CPU Discord voice music bot (prebuilt binaries)"
 arch=('x86_64')
 url="https://github.com/TOTO-sys28/KurA"
@@ -10,8 +10,9 @@ provides=('kura-voice')
 conflicts=('kura-voice')
 backup=('etc/kura.env')
 optdepends=('ffmpeg: kurac audio conversion to .opus')
+# Unique local filename per release so makepkg/yay never reuses a stale tarball (same upstream name every tag).
 source_x86_64=(
-  "https://github.com/TOTO-sys28/KurA/releases/download/v${pkgver}/kura_voice-linux-x64.tar.gz"
+  "kura-voice-${pkgver}-linux-x64.tar.gz::https://github.com/TOTO-sys28/KurA/releases/download/v${pkgver}/kura_voice-linux-x64.tar.gz"
   "kura.service"
 )
 sha256sums_x86_64=('SKIP' 'SKIP')
@@ -49,4 +50,13 @@ PATH="/usr/bin:/usr/local/bin:$PATH"
 export PATH
 EOF
   chmod 644 "${pkgdir}/etc/profile.d/kura-voice-bin.sh"
+
+  # Interactive bash (non-login) does not source /etc/profile.d; WSL often uses this.
+  install -Dm644 /dev/null "${pkgdir}/etc/bash/bashrc.d/kura-voice-bin.sh"
+  cat > "${pkgdir}/etc/bash/bashrc.d/kura-voice-bin.sh" <<'EOF'
+# Prefer native kura/kurac over Windows npm shims (WSL)
+PATH="/usr/bin:/usr/local/bin:$PATH"
+export PATH
+EOF
+  chmod 644 "${pkgdir}/etc/bash/bashrc.d/kura-voice-bin.sh"
 }
