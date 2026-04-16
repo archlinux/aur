@@ -9,6 +9,6 @@ pkgbase = vimnm-bin
 	provides = vimnm
 	conflicts = vimnm
 	source = https://github.com/MatchaTi/vimnm/releases/download/v1.1.0/vimnm_Linux_x86_64.tar.gz
-	sha256sums = sha256:72c936e886e6a5be08eef08bc02343b5dd636db1d14e38656ccd4e925de48edb
+	sha256sums = 0028b2488565a63d78d6d5d4f48746498a722f10887969f0511487509602a114
 
 pkgname = vimnm-bin
