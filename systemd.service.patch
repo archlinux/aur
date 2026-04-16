@@ -10,12 +10,5 @@
  Restart=on-failure
 -DynamicUser=true
  UMask=0077
+ LimitNOFILE=524288
  
- StateDirectory=iocaine
-@@ -30,7 +30,6 @@
- 
- PrivateTmp=true
- PrivateDevices=true
--PrivateUsers=true
- 
- SystemCallArchitectures=n

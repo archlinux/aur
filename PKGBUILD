@@ -1,7 +1,7 @@
 # Maintainer: 30p87 <30p87@30p87.de>
 
 pkgname=iocaine-git
-pkgver=r718.4f213a8
+pkgver=r775.9d133f3
 pkgrel=1
 pkgdesc='The deadliest poison known to AI'
 arch=('any')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             '3ba1d429be28b8291861aca9b91564ab4db4f83aa7d955ed102d090259d46b5b'
             'd98c03791baff0fbd59261de5f0e38e592e3a4f2014d3dbf135567771ccf8193'
             '7761fab52173f5f0cfeb8678bcbf9e4c297fcb6282acb13c604b6cba4f760f9b'
-            'ca7d951fffab50ea84e064a2a36782fd5b628b6fe6a508e5945f36ac0c3f1263')
+            'ed95d2d7e8a73b8b9dace5ac6192b255147729465a8016933cf322feac4e7a61')
 
 pkgver() {
 	cd "${pkgname%-git}"

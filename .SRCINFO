@@ -1,6 +1,6 @@
 pkgbase = iocaine-git
 	pkgdesc = The deadliest poison known to AI
-	pkgver = r718.4f213a8
+	pkgver = r775.9d133f3
 	pkgrel = 1
 	url = https://iocaine.madhouse-project.org/
 	arch = any
@@ -23,6 +23,6 @@ pkgbase = iocaine-git
 	sha256sums = 3ba1d429be28b8291861aca9b91564ab4db4f83aa7d955ed102d090259d46b5b
 	sha256sums = d98c03791baff0fbd59261de5f0e38e592e3a4f2014d3dbf135567771ccf8193
 	sha256sums = 7761fab52173f5f0cfeb8678bcbf9e4c297fcb6282acb13c604b6cba4f760f9b
-	sha256sums = ca7d951fffab50ea84e064a2a36782fd5b628b6fe6a508e5945f36ac0c3f1263
+	sha256sums = ed95d2d7e8a73b8b9dace5ac6192b255147729465a8016933cf322feac4e7a61
 
 pkgname = iocaine-git
