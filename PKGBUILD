@@ -21,7 +21,7 @@ license=('MIT')
 
 depends=('glibc')
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${_appname}"{,-git})
 
 options=(!strip)
 

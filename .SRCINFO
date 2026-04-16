@@ -9,6 +9,7 @@ pkgbase = store-bin
 	depends = glibc
 	provides = store
 	conflicts = store
+	conflicts = store-git
 	options = !strip
 	source = README-1.3.0.md::https://raw.githubusercontent.com/cushycush/store/v1.3.0/README.md
 	source = LICENSE-1.3.0::https://raw.githubusercontent.com/cushycush/store/v1.3.0/LICENSE
