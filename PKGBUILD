@@ -8,7 +8,7 @@
 
 _pkgname=neovim
 pkgname="$_pkgname-git"
-pkgver=0.12.0.r2460.g563f9ef799
+pkgver=0.13.0.r202.gc3c06723f0
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -84,8 +84,8 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 runtime/nvim.desktop -t "${pkgdir}/usr/share/applications/"
-  install -Dm644 runtime/nvim.appdata.xml -t "${pkgdir}/usr/share/metainfo/"
+  install -Dm644 runtime/org.neovim.nvim.desktop -t "${pkgdir}/usr/share/applications/"
+  install -Dm644 runtime/org.neovim.nvim.appdata.xml -t "${pkgdir}/usr/share/metainfo/"
   install -Dm644 runtime/nvim.png -t "${pkgdir}/usr/share/pixmaps/"
 
   # Make Arch Vim packages work
