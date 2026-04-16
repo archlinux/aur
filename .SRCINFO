@@ -1,0 +1,15 @@
+pkgbase = termbox2
+	pkgdesc = terminal I/O library
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/termbox/termbox2
+	arch = aarch64
+	license = MIT
+	provides = termbox2
+	provides = libtermbox.so
+	conflicts = termbox2
+	conflicts = termbox
+	source = https://github.com/termbox/termbox2/archive/refs/tags/v2.5.0.tar.gz
+	sha256sums = 1d7a9811060e3673be417019007acbf4e2575734b6f95baaf6e8aed27f06c65a
+
+pkgname = termbox2
