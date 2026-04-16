@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = checking /etc/pacman.d/mirrorlist.archive
+When = PreTransaction
+Exec = /usr/bin/update-mirrorlist-archive

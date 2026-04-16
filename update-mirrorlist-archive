@@ -1,0 +1,71 @@
+#!/bin/bash
+
+get_last_update_date(){
+    local last_sync_date="0"
+    local db_last_modified_date
+
+    while read -r db_file; do
+        db_last_modified_date="$(date +%s -r "$db_file")"
+        #echo "$db_last_modified_date"
+        if [ "$last_sync_date" -lt "$db_last_modified_date" ];then
+            last_sync_date="$db_last_modified_date"
+        fi
+    done < <(find /var/lib/pacman/sync -name '*.db')
+
+    if [ "$last_sync_date" -eq 0 ];then
+        {
+            echo "Failed to get last update date from /var/lib/pacman/sync"
+            echo "exit"
+        } >&2
+        return 1
+    fi
+
+    y="$(date +%Y --date="@$last_sync_date")"
+    m="$(date +%m --date="@$last_sync_date")"
+    d="$(date +%d --date="@$last_sync_date")"
+    export y m d
+}
+
+get_current_archive_date(){
+    local mirrorlist_a="$1"
+    if ! [ -e "$mirrorlist_a" ];then
+        y=0
+        m=0
+        d=0
+        return
+    fi
+    # shellcheck disable=2016
+    read -r y m d < <(sed -n 's#^Server = https://archive.archlinux.org/repos/\([0-9]*\)/\([0-9]*\)/\([0-9]*\)/$repo/os.*#\1 \2 \3#p' "$mirrorlist_a")
+    export y m d
+}
+
+main(){
+    local mirrorlist_a=/etc/pacman.d/mirrorlist.archive
+
+    local y m d
+    get_current_archive_date "$mirrorlist_a"
+    old_y="$y"
+    old_m="$m"
+    old_d="$d"
+
+    local y m d
+    if ! get_last_update_date;then
+        return 1
+    fi
+    new_y="$y"
+    new_m="$m"
+    new_d="$d"
+
+    if [ "$old_y/$old_m/$old_d" = "$new_y/$new_m/$new_d" ];then
+        return 0
+    fi
+
+    cat << EOF > "$mirrorlist_a"
+Server = https://archive.archlinux.org/repos/$new_y/$new_m/$new_d/\$repo/os/\$arch
+EOF
+
+    chmod +r "$mirrorlist_a"
+    sync "$mirrorlist_a"
+    echo "pacman archive mirrorlist.archive has been update to $new_y/$new_m/$new_d"
+}
+main "$@"

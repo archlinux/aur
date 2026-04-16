@@ -1,0 +1,28 @@
+post_install(){
+    update-mirrorlist-archive
+    cat << EOF
+
+    Hooks to auto update mirrorlist.archive has been installed, to disable it,
+    please remove the following hook file
+
+    /etc/pacman.d/hooks/update-mirrorlist-archive.hook
+
+    To make the generated mirrorlist take effect, append the following line in
+    core/extra repositories in /etc/pacman.conf
+
+    Include = /etc/pacman.d/mirrorlist.archive
+
+EOF
+}
+pre_remove(){
+    rm -f /etc/pacman.d/mirrorlist.archive
+
+    cat << EOF
+
+    /etc/pacman.d/mirrorlist.archive has been removed, please remove the
+    following line in /etc/pacman.conf
+
+    Include = /etc/pacman.d/mirrorlist.archive
+
+EOF
+}
