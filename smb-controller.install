@@ -1,0 +1,6 @@
+post_install() {
+  if [[ ! -f /etc/smb-controller.conf ]]; then
+    cp /etc/smb-controller-default.conf /etc/smb-controller.conf
+    echo "Created /etc/smb-controller.conf from default"
+  fi
+}

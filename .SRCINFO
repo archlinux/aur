@@ -1,0 +1,16 @@
+pkgbase = smb-mount-controller
+	pkgdesc = A state-based SMB/CIFS mount controller for Linux that manages network shares based on reachability
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/marvin1099/smb-mount-controller
+	install = smb-controller.install
+	arch = any
+	license = AGPL3
+	depends = bash
+	depends = cifs-utils
+	depends = netcat
+	optdepends = systemd: for systemd service file support
+	source = https://codeberg.org/marvin1099/smb-mount-controller/archive/refs/heads/main.tar.gz
+	md5sums = SKIP
+
+pkgname = smb-mount-controller
