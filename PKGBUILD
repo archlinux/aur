@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hihat-git
-pkgver=2.0.0.r0.g1e01128
-_electronversion=26
-_nodeversion=20
+pkgver=2.0.1.r5.g4cbb570
+_electronversion=35
+_nodeversion=22
 pkgrel=1
 pkgdesc="A minimalist offline music library player for desktop, built on Electron, React, and Material UI.(Use system-wide electron)"
 arch=('any')
@@ -94,14 +94,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	find "${srcdir}/${pkgname//-/.}/release/build/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-git}" {} +
-    if find "${srcdir}/${pkgname//-/.}/release/build/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/${pkgname//-/.}/release/build/linux-"*"/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-git}"
-            fi
-        done
-    fi
+    cp -a "${srcdir}/${pkgname//-/.}/release/build/linux-"*"/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "${srcdir}/${pkgname//-/.}/icon.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
