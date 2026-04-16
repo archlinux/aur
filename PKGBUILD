@@ -2,7 +2,7 @@
 
 _pkgname="matlab-mcp-core-server"
 pkgname="${_pkgname}-git"
-pkgver=0.7.0.r0.gdf73d85
+pkgver=0.8.0.r0.ge666149
 pkgrel=1
 pkgdesc="Run MATLAB® using AI applications with the official MATLAB MCP Server from MathWorks®"
 arch=(
@@ -16,6 +16,7 @@ license=(
 depends=(
   'glibc'
   'matlab-release>=R2020b'
+  'sh'
 )
 makedepends=(
   'go'
@@ -30,16 +31,17 @@ conflicts=(
 _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git"
-  "${_pkgname}_disable_telemetry.patch"
+  # "${_pkgname}_disable_telemetry.patch"
+  "${_pkgname}.sh"
 )
 sha256sums=('SKIP'
-            '7a56f149840e0f1cdc592c7de5f261c8a03d1ce48a1adcf4fc03c7f1b059ce18')
+            '49d0f8ed16c0828abccb82839263013eb86b664340f46352021f9374574143e7')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "${srcdir}/${_pkgname}_disable_telemetry.patch" || true
+  # patch -Np1 -i "${srcdir}/${_pkgname}_disable_telemetry.patch" || true
 
   go mod download -modcacherw -x
   go mod verify
@@ -63,17 +65,20 @@ build() {
   go build -v -o "build/glnxa64/${_pkgname}" ./"cmd/${_pkgname}"
 }
 
-# check() {
-#   export MATLAB_MCP_CORE_SERVER_BUILD_DIR="${srcdir}/${_pkgsrc}/build"
-#   export MCP_MATLAB_PATH=""
+check() {
+  export MATLAB_MCP_CORE_SERVER_BUILD_DIR="${srcdir}/${_pkgsrc}/build"
+  export MCP_MATLAB_PATH="$(printf '%s\n' ${MAKEPKG_MATLAB_ROOT}/*/bin | sort -V | tail -n1)"
 
-#   cd "${srcdir}/${_pkgsrc}"
-#   go test ./...
-# }
+  cd "${srcdir}/${_pkgsrc}"
+  # go test ./...
+  go test ./internal/... ./pkg/... ./tests/testutils/... ./tests/integration/...
+}
 
 package() {
-  cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "build/glnxa64/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+
+  cd "${_pkgsrc}"
+  install -vDm755 "build/glnxa64/${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
 }
