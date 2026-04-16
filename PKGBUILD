@@ -1,6 +1,6 @@
 pkgname=kura-voice-bin
-pkgver=0.1.6
-pkgrel=2
+pkgver=0.1.7
+pkgrel=1
 pkgdesc="KurA low-CPU Discord voice music bot (prebuilt binaries)"
 arch=('x86_64')
 url="https://github.com/TOTO-sys28/KurA"
