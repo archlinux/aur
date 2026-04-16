@@ -1,5 +1,0 @@
-[python-fastapi-sso]
-source = "github"
-github = "tomasvotava/fastapi-sso"
-use_latest_release = true
-prefix = "v"

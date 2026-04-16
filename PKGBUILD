@@ -1,32 +1,46 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: taotieren <admin@taotieren.com>
 
 _pkgauthor=tomasvotava
-_pkgname=fastapi-sso
-pkgname=python-${_pkgname}
+pkgname=python-fastapi-sso
+_pkgname=${pkgname#python-}
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="FastAPI plugin to enable SSO to most common providers"
 arch=('any')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('MIT')
-
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
-depends=('python' 'python-fastapi' 'python-httpx' 'python-oauthlib' 'python-pydantic' 'python-pyjwt' 'python-typing_extensions' 'python-starlette')
-
-conflicts=("${pkgname}-git")
-
-source=("git+${url}.git#tag=${pkgver}")
+depends=(
+    'python'
+    'python-httpx'
+    'python-oauthlib'
+    'python-pydantic'
+    'python-pyjwt' 
+    'python-starlette'
+)
+makedepends=(
+    'git' 
+    'python-build' 
+    'python-installer' 
+    'python-wheel' 
+    'python-poetry-core'
+)
+conflicts=("${pkgname}")
+provides=("${pkgname}")
+source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 sha256sums=('6849853b5626a08b388c76adb04bcf231f02de11a612a1a13a3466cc6248d97a')
 
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build() {
-    cd "$_pkgname"
+    cd "${srcdir}/${pkgname}"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_pkgname"
+    cd "${srcdir}/${pkgname}"
 
     python -m installer --destdir="$pkgdir" dist/*.whl
 
