@@ -1,7 +1,7 @@
 pkgbase = ts.net-git
 	pkgdesc = Thunderscope-compatible PC-host software written in C# using high-performing primitives & SIMD.
 	pkgver = r652.c181cd8
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/EEVengers/TS.NET
 	arch = x86_64
 	license = MIT

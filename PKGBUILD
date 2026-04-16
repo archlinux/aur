@@ -2,7 +2,7 @@
 
 pkgname=ts.net-git
 pkgver=r652.c181cd8
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Thunderscope-compatible PC-host software written in C# using high-performing primitives & SIMD."
 arch=(x86_64)
@@ -56,8 +56,8 @@ package() {
     install -vDm755 TS.NET.Engine -t ${pkgdir}/usr/share/${pkgname}/
     install -vDm644 thunderscope* -t ${pkgdir}/usr/share/${pkgname}/
     ln -sf /usr/lib/libtslitex.so ${pkgdir}/usr/share/${pkgname}/libtslitex.so
-    install -vDm755 /dev/stdin ${pkgdir}/usr/bin/${pkgname%-git} <<EOF
-#!/bin/env bash
+    install -vDm755 /dev/stdin ${pkgdir}/usr/bin/ts-net <<EOF
+#!/usr/bin/env bash
 cd /usr/share/${pkgname}/
 ./TS.NET.Engine "\$@"
 EOF
