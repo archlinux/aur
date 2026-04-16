@@ -1,6 +1,6 @@
 # Maintainer: Marvin1099
 pkgname=user-updater
-pkgver=0.1.2
+pkgver=0.1.2.1
 pkgrel=1
 pkgdesc="[EXPERIMENTAL] A simple bash tool for automatic system updates using topgrade, featuring a background systemd service and a lightweight GUI. WARNING: This package may result in problems and should only be used as a learning resource."
 arch=('any')
