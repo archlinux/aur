@@ -1,12 +1,12 @@
 pkgbase = git-pages-cli
 	pkgdesc = Command line application for publishing sites to git-pages
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://codeberg.org/git-pages/git-pages-cli
 	arch = x86_64
 	license = 0BSD
 	makedepends = go
-	source = git-pages-cli-1.8.0.tar.gz::https://codeberg.org/git-pages/git-pages-cli/archive/v1.8.0.tar.gz
-	sha256sums = e20c807fb781fa385c9430eda1173ac2e1d1d22b36108b19bc9b43285341df81
+	source = git-pages-cli-1.8.1.tar.gz::https://codeberg.org/git-pages/git-pages-cli/archive/v1.8.1.tar.gz
+	sha256sums = 7c7295218e70035c490e87b4de5cff03c493cf8139291d1476bf6dbad6d7f401
 
 pkgname = git-pages-cli
