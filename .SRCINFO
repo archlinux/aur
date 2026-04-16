@@ -1,7 +1,7 @@
 pkgbase = sm64coopdx-git
 	pkgdesc = Fork of Super Mario 64 Co-op with more features, customizability and power to the Lua API
-	pkgver = r3689.30ccad3
-	pkgrel = 3
+	pkgver = r4921.6092488
+	pkgrel = 1
 	epoch = 1
 	url = https://sm64coopdx.com/
 	arch = x86_64
@@ -17,15 +17,12 @@ pkgbase = sm64coopdx-git
 	makedepends = audiofile
 	makedepends = gendesk
 	depends = sdl2
-	provides = sm64coopdx
-	options = !strip
+	provides = sm64coopdx=r4921.6092488
 	source = git+https://github.com/coop-deluxe/sm64coopdx.git
-	source = file://baserom.us.z64
 	source = sm64coopdx.sh
 	source = sm64coopdx.png
 	md5sums = SKIP
-	md5sums = 20b854b239203baf6c961b850a4a51a2
-	md5sums = 84fd37eacc71065d03ccad67cb35f699
+	md5sums = 314f0815dc7132df21bbd3a9d391f2be
 	md5sums = 9bec90a66559edbf42992c4985e4548a
 
 pkgname = sm64coopdx-git

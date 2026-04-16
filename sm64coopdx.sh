@@ -1,14 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
-# constants
-PKGNAME="sm64coopdx"
+if [ -z "$XDG_DATA_HOME" ]; then
+    SAVEPATH="$HOME/.local/share/sm64coopdx"
+else
+    SAVEPATH="$XDG_DATA_HOME/sm64coopdx"
+fi
 
-GAMEPATH="/usr/share/$PKGNAME"
-LIBPATH="/usr/lib/$PKGNAME"
-SAVEPATH="$HOME/.local/share/$PKGNAME"
-
-# create the save directory if it doesn't exist
 mkdir -p "$SAVEPATH"
 
-# run the game
-LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$LIBPATH" "$GAMEPATH/$PKGNAME" --savepath "$SAVEPATH" "$@"
+LD_LIBRARY_PATH="/usr/lib/sm64coopdx:$LD_LIBRARY_PATH" \
+    /usr/share/sm64coopdx/sm64coopdx \
+    --savepath "$SAVEPATH" "$@"
