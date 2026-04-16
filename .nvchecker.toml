@@ -1,0 +1,5 @@
+[typist-bin]
+source = "github"
+github = "chuma-beep/typist"
+use_latest_release = true
+prefix = "v"
