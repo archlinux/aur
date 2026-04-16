@@ -1,4 +1,5 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: Matthew Cushing <cushing.matt at gmail dot com>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _gitauthor=cushycush
 _gitname=store
@@ -26,22 +27,21 @@ conflicts=("${_appname}"{,-git})
 options=(!strip)
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
-		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
+	"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.zip")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.zip")
 sha256sums=('1ae44acd18c323da0249e2c83f89508e4c162126470482a752ce6a4f29d82e15'
-            'c4c73cfe3e7d8e4cae57635b5d7bde8f256d5eb8e5766ce80b22b0cf3de9cca5')
+	'c4c73cfe3e7d8e4cae57635b5d7bde8f256d5eb8e5766ce80b22b0cf3de9cca5')
 sha256sums_x86_64=('53cbea83cc541bee302038db3949827044285a8a02855cadaa082b3eac312784')
 sha256sums_aarch64=('c56017d38341454179702f3f2ca9779641162f4a0abaa659bcbe363e7874abc5')
 
-
 case ${CARCH} in
-	${arch[0]})
-		_CARCH=${_barch[0]}
+${arch[0]})
+	_CARCH=${_barch[0]}
 	;;
 
-	${arch[1]})
-		_CARCH=${_barch[1]}
+${arch[1]})
+	_CARCH=${_barch[1]}
 	;;
 esac
 
@@ -54,9 +54,9 @@ prepare() {
 build() {
 	cd "${srcdir}/" || exit
 
-	./${_appname} completion bash > ${_appname}.bash
-	./${_appname} completion zsh > ${_appname}.zsh
-	./${_appname} completion fish > ${_appname}.fish
+	./${_appname} completion bash >${_appname}.bash
+	./${_appname} completion zsh >${_appname}.zsh
+	./${_appname} completion fish >${_appname}.fish
 }
 
 package() {
