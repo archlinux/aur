@@ -5,7 +5,7 @@
 
 pkgname=seafile-server
 pkgver=13.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc='Seafile server core'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/haiwen/seafile-server'
@@ -30,8 +30,6 @@ source=(
     'fix_incompatible_pointer.diff'
     'fix_implicit_declaration.diff'
     'fix_conflicting_types.diff'
-    'seafile-server@.service'
-    'seafile-server.service'
     'seafile-notification@.service'
     'seafile-notification.service'
     'seafile-sysusers.conf'
@@ -43,8 +41,6 @@ sha256sums=(
     '4d84d7b73aad520ef37d42f20a4a3b67f373a703a655e01d4e0a8158a5d985c0'
     '54805cc9d5e54dae038f5bfa7fc0756e9e2673d5601540b702fdc9275b3ffee3'
     'd4a3b4cbeafb9bd825d68636de2a66de63bb2ca43371f92e24181ba7afb9559b'
-    '3fb3d1218ef10560654c143b1ace8adadf08155d214f920ccc2c1cdc9a5c0dc7'
-    '3e3ceeef0423e4655a63534b729d0f8ff2042f6485480482772041018d27d8c4'
     'ae92d89964bed69582818cd1a5a220758ca7dd7382260c8eee9ab20fd29caf96'
     '5296a5b0a13a9d427989a04101db10152725f2b61ff7e017e3864fac2ad99afa'
     '2faf52556d901ae18cfaa33b1cc55ee14abab4f78869eb6a2889ceeac4e3076a'
