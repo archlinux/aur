@@ -1,6 +1,6 @@
 # Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=dos-machines
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Folder-based DOS machine workspace and launcher editor"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' 'pyside6' 'dosbox-staging')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('816b773ba791b820f7b79137c485d6cb44c002e39fcc81148794ba4e7c3e25db')
+sha256sums=('87b16dc4d55b701ddc436b2f666a1a14b39469ec8687bfbccf919dbf348941e1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
