@@ -1,0 +1,22 @@
+diff --git a/tests/sandbox_escape.rs b/tests/sandbox_escape.rs
+index 9743af6..88f1575 100644
+--- a/tests/sandbox_escape.rs
++++ b/tests/sandbox_escape.rs
+@@ -39,6 +39,8 @@ fn bwrap_available() -> bool {
+                 "--ro-bind",
+                 "/",
+                 "/",
++                "--proc",
++                "/proc",
+                 "--unshare-pid",
+                 "--unshare-uts",
+                 "--unshare-ipc",
+@@ -61,6 +63,8 @@ fn bwrap_net_available() -> bool {
+                     "--ro-bind",
+                     "/",
+                     "/",
++                    "--proc",
++                    "/proc",
+                     "--unshare-pid",
+                     "--unshare-uts",
+                     "--unshare-ipc",
