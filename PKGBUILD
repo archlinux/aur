@@ -4,7 +4,7 @@
 pkgname=loudgain
 pkgver=v0.6.8
 _pkgver=0.6.8
-pkgrel=8
+pkgrel=9
 pkgdesc="A loudness normalizer that scans music files and calculates loudness-normalized gain and loudness peak values according to the EBU R128 standard, and can optionally write ReplayGain-compatible metadata."
 url="https://github.com/Moonbase59/loudgain"
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ build() {
   export PKG_CONFIG_PATH=/usr/lib/taglib1/pkgconfig
   cd "${srcdir}/${pkgname}-${_pkgver}"
   mkdir -p build && cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 
