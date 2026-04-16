@@ -3,7 +3,7 @@
 pkgname=upscayl
 _pkgname=Upscayl
 pkgver=2.15.0
-pkgrel=5
+pkgrel=6
 _electronversion=39
 pkgdesc="A free and open source AI Image Upscaler App"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
 sha256sums=('566a7882fb95a8722c00f00a248139e2426fa299ae7cae4fe3f0c35280f5e21e'
             '361a644aef5aed1f5820f26917db04de9ac111bf828894048a99040822472b38'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980'
-            'efa6be3613767cf6c19931b97bb439b97ca7b475491b61770cf40fbd7ca88674')
+            'd047f2ea25b9e93772e450cac1b5e5221ead0f63eb8c42ec3094e2f24e3dad14')
 
 prepare() {
     sed -e "
@@ -59,59 +59,64 @@ build() {
     NODE_ENV=production     npm run tsc
     NODE_ENV=production     npm run build
 
+    pushd node_modules
+
     # pure frontend UI libraries that already bundled by Next.js
-    rm -rf node_modules/@floating-ui
-    rm -rf node_modules/@radix-ui
-    rm -rf node_modules/class-variance-authority
-    rm -rf node_modules/classnames
-    rm -rf node_modules/clsx
-    rm -rf node_modules/cmdk
-    rm -rf node_modules/jotai
-    rm -rf node_modules/lucide-react
-    rm -rf node_modules/react-compare-slider
-    rm -rf node_modules/react-resizable-panels
-    rm -rf node_modules/react-select
-    rm -rf node_modules/react-tooltip
-    rm -rf node_modules/tailwind-merge
-    rm -rf node_modules/tailwind-scrollbar
-    rm -rf node_modules/tailwindcss-animate
-    rm -rf node_modules/theme-change
+    rm -rf @floating-ui
+    rm -rf @radix-ui
+    rm -rf class-variance-authority
+    rm -rf classnames
+    rm -rf clsx
+    rm -rf cmdk
+    rm -rf jotai
+    rm -rf lucide-react
+    rm -rf react-compare-slider
+    rm -rf react-resizable-panels
+    rm -rf react-select
+    rm -rf react-tooltip
+    rm -rf tailwind-merge
+    rm -rf tailwind-scrollbar
+    rm -rf tailwindcss-animate
+    rm -rf theme-change
 
     # Markdown and text parsing ecosystem
-    rm -rf node_modules/mdast*
-    rm -rf node_modules/micromark*
-    rm -rf node_modules/react-markdown
-    rm -rf node_modules/remark*
-    rm -rf node_modules/unist*
+    rm -rf mdast*
+    rm -rf micromark*
+    rm -rf react-markdown
+    rm -rf remark*
+    rm -rf unist*
 
     # linting, type-checking and dev tools
-    rm -rf node_modules/@eslint-community
-    rm -rf node_modules/@next/eslint-plugin-next
-    rm -rf node_modules/@rushstack/eslint-patch
-    rm -rf node_modules/@typescript-eslint
-    rm -rf node_modules/eslint-config-next
+    rm -rf @eslint-community
+    rm -rf @next/eslint-plugin-next
+    rm -rf @rushstack/eslint-patch
+    rm -rf @typescript-eslint
+    rm -rf eslint-config-next
 
     # telemetry, cloud services and RPC components
-    rm -rf node_modules/@firebase
-    rm -rf node_modules/@grpc
-    rm -rf node_modules/firebase
-    rm -rf node_modules/posthog-js
-    rm -rf node_modules/protobufjs
+    rm -rf @firebase
+    rm -rf @grpc
+    rm -rf firebase
+    rm -rf posthog-js
+    rm -rf protobufjs
+
+    find -name '*.map' -type f -print -delete
+    find -name '*.ts' -type f -print -delete
+    find -name '*.yml' -type f -print -delete
+    find -name '*.md' -type f -print -delete
+    find -name test.js -type f -print -delete
+    find -name Makefile -type f -print -delete
+
+    find -type d -name 'docs' -prune -exec rm -rf {} +
+    find -type d -name 'test-utils' -prune -exec rm -rf {} +
+    find -type d -name '__tests__' -prune -exec rm -rf {} +
+
+    find . -type d -empty -print -delete
+
+    popd
 
     # macOS specific artifacts
     rm -f export/build/icon.icns
-
-    find node_modules -name '*.map' -type f -print -delete
-    find node_modules -name '*.ts' -type f -print -delete
-    find node_modules -name Makefile -type f -print -delete
-    find node_modules -name '*.yml' -type f -print -delete
-    find node_modules -name '*.md' -type f -print -delete
-
-    find node_modules -type d -name 'docs' -prune -exec rm -rf {} +
-    find node_modules -type d -name 'test-utils' -prune -exec rm -rf {} +
-    find node_modules -type d -name '__tests__' -prune -exec rm -rf {} +
-
-    find . -type d -empty -print -delete
 
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} -c.electronVersion=${SYSTEM_ELECTRON_VERSION}"
 
