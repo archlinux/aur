@@ -1,6 +1,6 @@
 # Maintainer: Forrest Knight <forrest.knight.yt@gmail.com>
 pkgname=waycal
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A tiny Waybar calendar popup for wlr-layer-shell compositors"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk4' 'gtk4-layer-shell')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/forrestknight/waycal/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('48d11efbf085639fc81f7f78c24116fafaf55178a0bb809898320098365bbdfa')
+sha256sums=('0f6f58257fd5e5c2423a9ed29aa659ed14bd5549593eee96fbd3c61b8f1bd98f')
 
 prepare() {
     cd "$pkgname-$pkgver"
