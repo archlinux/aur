@@ -1,6 +1,6 @@
 pkgbase = rustconn
 	pkgdesc = Modern connection manager for Linux with GTK4/Wayland-native interface.
-	pkgver = 0.10.19
+	pkgver = 0.10.21
 	pkgrel = 1
 	url = https://github.com/totoshko88/RustConn
 	arch = x86_64
@@ -32,6 +32,7 @@ pkgbase = rustconn
 	optdepends = libappindicator: Display icon in system tray
 	optdepends = libsecret: Password storage method fallback
 	optdepends = mc: SFTP via Midnight Commander FISH VFS
+	optdepends = mosh: External MOSH client
 	optdepends = oci-cli: OCI CLI
 	optdepends = pass: Password storage method option
 	optdepends = passbolt-cli: Password storage method option
@@ -43,7 +44,7 @@ pkgbase = rustconn
 	optdepends = tigervnc: External VNC client fallback
 	optdepends = virt-viewer: External SPICE client fallback
 	optdepends = waypipe: Wayland application forwarding for SSH connections
-	source = RustConn-0.10.19.tar.gz::https://github.com/totoshko88/RustConn/archive/refs/tags/v0.10.19.tar.gz
-	sha256sums = 882d3329180d5fb85a6f62a5100d84aaa44edf185744f24a2cc219d48a0e4e75
+	source = RustConn-0.10.21.tar.gz::https://github.com/totoshko88/RustConn/archive/refs/tags/v0.10.21.tar.gz
+	sha256sums = e13cd37348fca4fdd4871ce84b917e27f991b181d482b77e5c8c12e81da51e19
 
 pkgname = rustconn

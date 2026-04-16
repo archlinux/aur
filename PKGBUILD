@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.10.19
+pkgver=0.10.21
 pkgrel=1
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
@@ -37,6 +37,7 @@ optdepends=(
   'libappindicator: Display icon in system tray'
   'libsecret: Password storage method fallback'
   'mc: SFTP via Midnight Commander FISH VFS'
+  'mosh: External MOSH client'
   'oci-cli: OCI CLI'
   'pass: Password storage method option'
   'passbolt-cli: Password storage method option'
@@ -50,7 +51,7 @@ optdepends=(
   'waypipe: Wayland application forwarding for SSH connections'
 )
 source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('882d3329180d5fb85a6f62a5100d84aaa44edf185744f24a2cc219d48a0e4e75')
+sha256sums=('e13cd37348fca4fdd4871ce84b917e27f991b181d482b77e5c8c12e81da51e19')
 
 prepare() {
   cd "RustConn-$pkgver"
@@ -84,6 +85,8 @@ package() {
     "$pkgdir/usr/share/applications/"
   install -Dm644 "$pkgname/assets/${_app_id}.metainfo.xml" -t \
     "$pkgdir/usr/share/metainfo/"
+  install -Dm644 "$pkgname/assets/${_app_id}-rdp.xml" -t \
+    "$pkgdir/usr/share/mime/packages/"
   install -Dm644 "$pkgname/assets/icons/hicolor/scalable/apps/${_app_id}.svg" -t \
       "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 
