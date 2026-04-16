@@ -12,7 +12,7 @@ depends=('libxml++2.6' 'xmlsec' 'imagemagick' 'libharu>=2.4.5'  'openjpeg2>=2.5'
 makedepends=('git' 'python' 'boost>=1.89.0' 'gcc' 'pkg-config' 'fast_float>=7.0')
 _cherrypicks=()
 source=("${pkgname}-${pkgver}::git+https://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")
-sha256sums=('41c7f082c9591f4e54b654256368220ec6c2d7e8a26d6b89a144aff9f91b2f0c')
+sha256sums=('c34ab45474aa814e0503c2f56ae6e5134a97c546290184976dc628029c93ec81')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
