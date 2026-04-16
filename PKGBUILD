@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.9.23
+pkgver=0.9.24
 _electronversion=41
 _nodever=24
 pkgrel=1
@@ -22,12 +22,8 @@ makedepends=(
     'yarn'
     'jq'
 )
-source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
-    "${pkgname}.sh"
-)
-sha256sums=('b2c1394addf7a5eb9aeb7363994bf885892d5b91a8b041bfcd2a4d1a0c7a804e'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+source=("${pkgname}.sh")
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -40,6 +36,14 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
+    cd "${srcdir}"
+    if [[ ! -d "${srcdir}/${pkgname}-${pkgver}" ]]; then
+        git clone \
+            --depth 1 \
+            --branch "v${pkgver}" \
+            "${_ghurl}" \
+            "${pkgname}-${pkgver}"
+    fi
     cd "${srcdir}/${pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
