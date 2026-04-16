@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Rangoli
+Type=Application
+Exec=rangoli
+GenericName=Keyboard software
+Comment=Free, Open Source, Lightweight, Cross-platform Software for Royal Kludge Keyboards
+Icon=rangoli
+Categories=Qt;Utility;HardwareSettings;
