@@ -1,36 +1,39 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
-
 pkgname=dotbackup
-pkgver=1.2.3
+_name="$pkgname.rs"
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='YAML config based backup utility'
-arch=('any')
-url='https://github.com/jaxvanyang/dotbackup'
+pkgdesc='Dotfile backup utility'
+arch=('x86_64')
+url='https://github.com/jaxvanyang/dotbackup.rs'
 license=('MIT')
-depends=('python-ruamel-yaml' 'python>=3.8')
-makedepends=(
-	'python-build'
-	'python-installer'
-	'python-wheel'
-	'python-hatchling'
-	'asciidoctor'
-)
-checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jaxvanyang/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('747ff099746dbf9d75392311557951dd5f6d99d02779010d021c8bc7f69c8726')
+depends=('gcc-libs' 'glibc')
+makedepends=('cargo' 'just' 'scdoc')
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('423c064c7b020c8940c970700c1499183e9aab785b70f2d0fedbfc51e8cce40a')
+
+prepare() {
+	cd "$_name-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-	cd "$pkgname-$pkgver"
-	python -m build --wheel --no-isolation
+	cd "$_name-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
+	just doc
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	pytest
+	cd "$_name-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --all-features
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	python -m installer --destdir "$pkgdir" dist/*.whl
+	cd "$_name-$pkgver"
+	just prefix="$pkgdir/usr" install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
