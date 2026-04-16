@@ -4,7 +4,7 @@
 
 _name=click-extra
 pkgname=python-${_name}
-pkgver=7.12.0
+pkgver=7.13.0
 pkgrel=1
 pkgdesc='Drop-in replacement for Click to make user-friendly and colorful CLI.'
 
@@ -16,7 +16,7 @@ makedepends=('uv' 'python-pip')
 depends=('python' 'python-boltons' 'python-pygments' 'python-click' 'python-json5' 'python-hjson' 'python-tomli' 'python-tomlkit' 'python-yaml' 'python-cloup' 'python-deepmerge' 'python-extra-platforms' 'python-requests' 'python-tabulate' 'python-xmltodict' 'python-wcmatch' 'python-wcwidth' 'python-docutils' 'python-sphinx')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('667ad6c5545cd90fd5e92fd64ac862effb30704bf55c4783e3be9b5ccd9b39325e01e7d4f21f1178ba77b7313f18e5300e85117efb2bdfaab7befa6a7080aa52')
+sha512sums=('f4f1248077c6b8376bffec8c66deb80d6f0ff8beca0a6a2e1776f9ef95cf8c83a2857e4ba7ccedfdd02da1f7ddc9763fe903e8a12f19693262c9481437a20e99')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
