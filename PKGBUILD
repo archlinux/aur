@@ -1,6 +1,6 @@
 # Maintainer: Raphael Bitton <raphael@rbitton.com>
 pkgname=zftop
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A terminal dashboard for ZFS, in the spirit of htop"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc' 'zfs-utils')
 keywords=('zfs' 'zftop')
 source=("zftop-${pkgver}-linux-amd64::https://git.skylantix.com/api/v4/projects/rbitton%2Fzftop/packages/generic/zftop/${pkgver}/zftop-linux-amd64"
         "LICENSE-${pkgver}::https://git.skylantix.com/rbitton/zftop/-/raw/v${pkgver}/LICENSE")
-sha256sums=('c6b6dd805e627c55a8ef4cfc9030f8c1fd5b864b8c4b86d66817ffecb811f49c' '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
+sha256sums=('908ba9f0dbae05ad8943092e68152bfb846e7aa6e1934939003fd67d3296e03e' '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
     install -Dm755 "zftop-${pkgver}-linux-amd64" "$pkgdir/usr/bin/zftop"
