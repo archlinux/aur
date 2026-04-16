@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=python-wtpsplit
-pkgver=2.2.0
-pkgrel=1
+pkgver=2.2.1
+pkgrel=2
 pkgdesc="Universal, robust, efficient, and adaptable sentence segmentation"
 arch=('any')
 url="https://github.com/segment-any-text/wtpsplit"
@@ -37,8 +37,8 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-source=("https://files.pythonhosted.org/packages/b5/0d/2078e6b6a735f13bfc51803e72da6a574b1d55923e422a94a1b4db0969e7/wtpsplit-${pkgver}.tar.gz")
-sha256sums=('188a2e785ba39e05f69260367401d33fc896498126e330149f432affaab5af08')
+source=("https://files.pythonhosted.org/packages/5a/1b/eb2f7ef0be37f9e8909005ca90366e7cb6a72ec8893467bd83fe69763dc7/wtpsplit-${pkgver}.tar.gz")
+sha256sums=('e72faf6df558fa45fdaa24ab2de28b7b61ad9c69900bc08041b7d479e6b9f5b7')
 
 build() {
   cd "wtpsplit-${pkgver}"
