@@ -1,6 +1,6 @@
 # Maintainer: Ellis Clayton <ellis@ellis.codes>
-pkgname=ha-localizer
-pkgver=0.2.0
+pkgname=ha-localizer-bin
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Provide timezone and geolocation information to Linux systems via Home Assistant"
 arch=('x86_64' 'aarch64')
@@ -15,15 +15,13 @@ optdepends=(
 )
 backup=('etc/ha-localizer.toml')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-source_x86_64=("${pkgname}-ha-geoip-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/ha-geoip-x86_64-unknown-linux-gnu.tar.gz"
-    "${pkgname}-ha-timezone-sync-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/ha-timezone-sync-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("${pkgname}-ha-geoip-${pkgver}-aarch64.tar.gz::${url}/releases/download/${pkgver}/ha-geoip-aarch64-unknown-linux-gnu.tar.gz"
-    "${pkgname}-ha-timezone-sync-${pkgver}-aarch64.tar.gz::${url}/releases/download/${pkgver}/ha-timezone-sync-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums=('ec8f524c5d854a243d46637f086c229812bededb230cc6d105b1d5030745f107')
-sha256sums_x86_64=('44b1dd707f86f6da4fa2b74f3d604c74ad96f516b652672e5a4f6e213278d729'
-    '6fdae6a0069296b4a0ba0b8b674d417e3ea4a8bbfad6e55ca22db4b1dc2bbd39')
-sha256sums_aarch64=('000e6f0e837a4c19171effee7aa77960e109b4509a56d7156c3cae2c4be96531'
-    '41c457f7e050acb4ae14fb6459f71dc4b0e469cab4795986c9c726c1b68111cd')
+source_x86_64=("${pkgname%-bin}-ha-geoip-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/ha-geoip-x86_64-unknown-linux-gnu.tar.gz"
+    "${pkgname%-bin}-ha-timezone-sync-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/ha-timezone-sync-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("${pkgname%-bin}-ha-geoip-${pkgver}-aarch64.tar.gz::${url}/releases/download/${pkgver}/ha-geoip-aarch64-unknown-linux-gnu.tar.gz"
+    "${pkgname%-bin}-ha-timezone-sync-${pkgver}-aarch64.tar.gz::${url}/releases/download/${pkgver}/ha-timezone-sync-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums=('4ff5d0c58c44779554eb74b4191427667048679940efc10eecd6a83c1a27c864')
+sha256sums_x86_64=('6cab3a92c6889362d5373bd4a53c13646c1a5fc6576a2d9744fe4a645b76803d' '30f10e46a03350b45a37797fa5c5c3d6bbd5ae1367644938693d5c1b56020eb0')
+sha256sums_aarch64=('f06f56b98095ba09354fdb2f28d259a4d8fee9eac206de3603d985632626c862' '4edf46e2556ab76bfa9e2530b65382f938ac8697480ffeb98ae4af5e8f4a45df')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
