@@ -2,7 +2,7 @@
 # Contributor: Dr. Abiira Nathan <nabiira2by2@gmail.com>
 
 pkgname=solidc-git
-pkgver=1.10.4.r0.ga560653
+pkgver=1.10.8.r0.gd42335d
 pkgrel=1
 pkgdesc="A robust C library for data structures, concurrency, and utilities."
 arch=('x86_64' 'aarch64')
@@ -24,6 +24,10 @@ pkgver() {
 
 build() {
   cd solidc
+  # Ensure we have both LTO bytecode and machine code
+  export CFLAGS="$CFLAGS -ffat-lto-objects"
+  export CXXFLAGS="$CXXFLAGS -ffat-lto-objects"
+
   cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
