@@ -1,0 +1,23 @@
+pkgbase = linuxqq-clipsync-git
+	pkgdesc = 修复Linuxqq以Wayland运行时的剪贴板异常。
+	pkgver = r22.e08c790
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/linuxqq-clipsync
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = xclip
+	depends = wl-clipboard
+	depends = clipnotify
+	provides = linuxqq-clipsync
+	provides = clipsync
+	provides = clipsync-git
+	conflicts = linuxqq-clipsync
+	conflicts = clipsync
+	conflicts = clipsync-git
+	replaces = clipsync-git
+	source = clipsync::git+https://github.com/SHORiN-KiWATA/linuxqq-clipsync.git
+	sha256sums = SKIP
+
+pkgname = linuxqq-clipsync-git
