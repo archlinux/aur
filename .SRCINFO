@@ -1,7 +1,7 @@
 pkgbase = webull-desktop
 	pkgdesc = Invest in stocks, ETFs, and options with Webull Financial, all commission-free, /usr/bin/makepkg minimum deposit.
 	pkgver = 9.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://webull.com
 	arch = x86_64
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = webull-desktop
 	depends = libcurl-gnutls
 	depends = qtav
 	options = !strip
-	source_x86_64 = https://u1sweb.webullfintech.com/us/Webull%20Desktop_9.3.0_9100000072_global_x64signed_ffutrq3xq6f5.deb
+	source_x86_64 = https://u1sweb.webullfintech.com/us/Webull%20Desktop_9.3.0_9100000072_global_x64signed.deb
 	sha512sums_x86_64 = bf9421577e55e9de097486c33e429a23f54978e129154d90d3729a29cd204a795d123757e18f58a3dc6cfa2c150831d9edf892ae07cd56c8cecad407018347cd
 
 pkgname = webull-desktop
