@@ -1,13 +1,12 @@
 pkgbase = matlab-support
 	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = R2026a+26.1.9.9999999
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.mathworks.com/products/matlab.html
 	arch = any
 	license = 0BSD
 	makedepends = gendesk
-	makedepends = gnutls3.8.9
 
 pkgname = matlab-support
 	pkgdesc = A high-level language for numerical computation and visualization (support)
@@ -32,7 +31,7 @@ pkgname = matlab-support
 
 pkgname = matlab-gcc-support
 	pkgdesc = A high-level language for numerical computation and visualization (GCC, support)
-	depends = matlab-support>=1:R2026a+26.1.9.9999999-1
+	depends = matlab-support>=1:R2026a+26.1.9.9999999-2
 	depends = matlab-gcc-meta>=R2026a
 	provides = matlab-gcc=R2026a+26.1.9.9999999
 	provides = matlab-gcc-release=R2026a
@@ -43,7 +42,7 @@ pkgname = matlab-gcc-support
 
 pkgname = matlab-gcc-fortran-support
 	pkgdesc = A high-level language for numerical computation and visualization (GCC Fortran, support)
-	depends = matlab-support>=1:R2026a+26.1.9.9999999-1
+	depends = matlab-support>=1:R2026a+26.1.9.9999999-2
 	depends = matlab-gcc-fortran-meta>=R2026a
 	provides = matlab-gcc-fortran=R2026a+26.1.9.9999999
 	provides = matlab-gcc-fortran-release=R2026a

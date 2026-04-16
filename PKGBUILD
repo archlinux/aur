@@ -399,7 +399,7 @@ pkgname=(
 pkgver=R2026a+26.1.9.9999999
 _release="${pkgver%+*}"
 _version="${pkgver##*+}"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=(
@@ -411,7 +411,6 @@ license=(
 )
 makedepends=(
   'gendesk'
-  'gnutls3.8.9'
 )
 
 for _product in "${MAKEPKG_MATLAB_PRODUCT_LIST[@]}"; do
