@@ -1,4 +1,5 @@
 pkgbase = copia-cli-bin
+	# Maintainer: Qubernetic <info@qubernetic.com>
 	pkgdesc = CLI for Copia — source control for industrial automation
 	pkgver = 1.0.0
 	pkgrel = 1

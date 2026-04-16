@@ -1,4 +1,4 @@
-# Maintainer: Qubernetic <hello@qubernetic.io>
+# Maintainer: Qubernetic <info@qubernetic.com>
 pkgname=copia-cli-bin
 pkgver=1.0.0
 pkgrel=1
