@@ -21,4 +21,5 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "assets/emskin.desktop" "$pkgdir/usr/share/applications/emskin.desktop"
     install -Dm644 "assets/emskin.png" "$pkgdir/usr/share/pixmaps/emskin.png"
+    install -Dm755 "emskin-bar" "$pkgdir/usr/bin/emskin-bar"
 }
