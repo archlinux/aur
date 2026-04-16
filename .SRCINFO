@@ -1,6 +1,6 @@
 pkgbase = nano-ffmpeg-bin
 	pkgdesc = Wraps the full power of FFmpeg in a beautiful, keyboard-driven terminal dashboard
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/dgr8akki/nano-ffmpeg
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = nano-ffmpeg-bin
 	provides = nano-ffmpeg
 	conflicts = nano-ffmpeg
 	options = !strip
-	source_x86_64 = nano-ffmpeg-x86_64-0.2.0.tgz::https://github.com/dgr8akki/nano-ffmpeg/releases/download/v0.2.0/nano-ffmpeg_0.2.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7dce0c262a21890bcdbe0efd1837a699ef4d7b98ca3e6efc739acd3ba00ff365
-	source_aarch64 = nano-ffmpeg-aarch64-0.2.0.tgz::https://github.com/dgr8akki/nano-ffmpeg/releases/download/v0.2.0/nano-ffmpeg_0.2.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 918fc5fcea1be73792337deea9a4b27bbec1bfea9df3ed726513fd73eb25d2f3
+	source_x86_64 = nano-ffmpeg-x86_64-0.3.0.tgz::https://github.com/dgr8akki/nano-ffmpeg/releases/download/v0.3.0/nano-ffmpeg_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6aecbd6134aa6c0b536a70a1dede4444b7699fcf8c8e4b575c4dc0a39abb6ade
+	source_aarch64 = nano-ffmpeg-aarch64-0.3.0.tgz::https://github.com/dgr8akki/nano-ffmpeg/releases/download/v0.3.0/nano-ffmpeg_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = aa9db92e0c3562820b3b1633523be1ac5a27b6428d2d0c264245ae27ca36c333
 
 pkgname = nano-ffmpeg-bin
