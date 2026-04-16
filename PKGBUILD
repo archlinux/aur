@@ -1,4 +1,4 @@
-# Maintainer: Elias Elwyn <a@jthv.ai>
+# Maintainer: Elias Elwyn <a@jthvai.net>
 # Contributor: "Jameson Pugh <imntreal@gmail.com>"
 # Contributor: Alessandro Sagratini <ale_sagra at hotmail dot com>
 
