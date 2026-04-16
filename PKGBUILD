@@ -4,8 +4,8 @@
 #https://comate-ide.bj.bcebos.com/updates/stable/linux/x64/latest.json
 pkgname=comate-bin
 _pkgname=Comate
-pkgver=1.4.1
-_version=5ab44bbb6bc38db0be4caa8f2d65a4d6f56ffd54-247199675
+pkgver=1.5.1
+_version=6eba022db2e3c774af6130c33e83b96772f0a8f2-248918218
 _electronversion=39
 pkgrel=1
 pkgdesc="Code as you like, one step ahead, and understand your intelligent code assistant better.(Prebuilt version)"
@@ -25,6 +25,8 @@ depends=(
     'libsecret'
     'webkit2gtk-4.1'
     'python-yaml'
+    'python-pillow'
+    'python-requests'
 )
 optdepends=(
     'bash'
@@ -47,7 +49,7 @@ sha256sums=('c3a1092a7721ed02b8f4a22a8ce96995f731986e9158d9bcc5475662aa836831'
             '0c8fee636da036e57fcde0385bdc698126c4b179de663ad315e8299d483abc9d'
             '787bf0078b80c66fa5b8191991700afd6e32e9f285cdb32f69791b8894c86fd5'
             'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
-sha256sums_x86_64=('ef784224d0673244de2f103dec3057b4be3653f0854c48c51bc85d8ae59bb424')
+sha256sums_x86_64=('b097ca48acc09b6177cc930276dddcec1ec03e5b0f29f1a393dac4ac114a5b9f')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/${_pkgname}-linux-x64/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"

@@ -1,6 +1,6 @@
 pkgbase = comate-bin
 	pkgdesc = Code as you like, one step ahead, and understand your intelligent code assistant better.(Prebuilt version)
-	pkgver = 1.4.1
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://comate.baidu.com
 	arch = x86_64
@@ -13,13 +13,15 @@ pkgbase = comate-bin
 	depends = libsecret
 	depends = webkit2gtk-4.1
 	depends = python-yaml
+	depends = python-pillow
+	depends = python-requests
 	optdepends = bash
 	optdepends = zsh
-	provides = comate=1.4.1
+	provides = comate=1.5.1
 	conflicts = comate
 	options = !emptydirs
 	options = !strip
-	source = LICENSE-1.4.1::https://cloud.baidu.com/doc/COMATE/s/glxiygwdx
+	source = LICENSE-1.5.1::https://cloud.baidu.com/doc/COMATE/s/glxiygwdx
 	source = comate.js
 	source = comate.desktop
 	source = comate-url-handler.desktop
@@ -29,7 +31,7 @@ pkgbase = comate-bin
 	sha256sums = 0c8fee636da036e57fcde0385bdc698126c4b179de663ad315e8299d483abc9d
 	sha256sums = 787bf0078b80c66fa5b8191991700afd6e32e9f285cdb32f69791b8894c86fd5
 	sha256sums = e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207
-	source_x86_64 = comate-1.4.1-x86_64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/5ab44bbb6bc38db0be4caa8f2d65a4d6f56ffd54-247199675/Comate-linux-x64.tar.gz
-	sha256sums_x86_64 = ef784224d0673244de2f103dec3057b4be3653f0854c48c51bc85d8ae59bb424
+	source_x86_64 = comate-1.5.1-x86_64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/6eba022db2e3c774af6130c33e83b96772f0a8f2-248918218/Comate-linux-x64.tar.gz
+	sha256sums_x86_64 = b097ca48acc09b6177cc930276dddcec1ec03e5b0f29f1a393dac4ac114a5b9f
 
 pkgname = comate-bin
