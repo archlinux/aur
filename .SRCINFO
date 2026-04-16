@@ -16,6 +16,6 @@ pkgbase = sunder
 	depends = yt-dlp
 	depends = ffmpeg
 	source = sunder-1.3.5.tar.gz::https://github.com/FrogSnot/Sunder/archive/v1.3.5.tar.gz
-	sha256sums = be47d9c7c34f25386e3aa9c7660605acc05239e5e3602336784de905c20f09c7
+	sha256sums = f1dbba905a6e812c894533a8fcdf56a0025f28d68dfff4880fa7ddee51637830
 
 pkgname = sunder
