@@ -27,7 +27,7 @@ package() {
 [Desktop Entry]
 Name=TCTerm
 Comment=That Composite Terminal
-Exec=${pkgdir}/usr/bin/${pkgname}
+Exec=/usr/bin/${pkgname}
 Icon=${pkgname}
 Terminal=false
 Type=Application
