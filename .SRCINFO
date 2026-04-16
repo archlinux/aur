@@ -1,6 +1,6 @@
 pkgbase = organize-git
 	pkgdesc = File organizer by extension - Git version
-	pkgver = 2.0.4
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://github.com/ZhX589/organize
 	arch = any

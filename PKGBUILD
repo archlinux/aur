@@ -1,6 +1,6 @@
 # Maintainer: ZhX589 ZhX589@outlook.com
 pkgname=organize-git
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="File organizer by extension - Git version"
 arch=('any')
