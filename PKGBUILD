@@ -6,7 +6,9 @@ pkgdesc="Dedicated Minecraft Legacy Edition server"
 arch=('x86_64')
 url="https://github.com/LCEMP/LCEMP-Server"
 license=('Other')
-source=("https://github.com/LCEMP/LCEMP-Server/releases/download/1.0.1/MinecraftDedicatedServer-Linux")
+source=("https://github.com/LCEMP/LCEMP-Server/releases/download/1.0.1/MinecraftDedicatedServer-Linux"
+		"./$pkgname.service"
+		)
 sha256sums=('SKIP')
 depends=('cmake' 'gcc')
 
