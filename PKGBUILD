@@ -2,7 +2,7 @@
 pkgname=user-updater
 pkgver=0.1.2
 pkgrel=1
-pkgdesc="A simple bash tool for automatic system updates using topgrade, featuring a background systemd service and a lightweight GUI to notify users of ongoing updates"
+pkgdesc="[EXPERIMENTAL] A simple bash tool for automatic system updates using topgrade, featuring a background systemd service and a lightweight GUI. WARNING: This package may result in problems and should only be used as a learning resource."
 arch=('any')
 url="https://codeberg.org/marvin1099/user_updater"
 license=('AGPLv3')
