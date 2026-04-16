@@ -1,0 +1,4 @@
+clippy/
+pkg/
+src/
+*.tar.zst
