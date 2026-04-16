@@ -19,7 +19,7 @@ conflicts=('weaveback' 'weaveback-git')
 depends=('gcc-libs' 'glibc')
 options=('!debug')
 source=("weaveback-x86_64-linux.tar.gz::https://github.com/giannifer7/weaveback/releases/download/v${pkgver}/weaveback-x86_64-linux.tar.gz")
-sha256sums=('71be9d9e980eb72731f536bcd859bd638f2b100a81028e4f2126c27c97d48bb7')
+sha256sums=('848b8c8b706bea304d2714dcb640cc7370e0c782352f70f222fe730f26e12502')
 
 package() {
     install -Dm755 weaveback-macro  -t "${pkgdir}/usr/bin"
