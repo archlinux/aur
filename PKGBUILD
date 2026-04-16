@@ -1,6 +1,6 @@
 # Maintainer: Qubernetic <info@qubernetic.com>
 pkgname=copia-cli-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="CLI for Copia — source control for industrial automation"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('copia-cli')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/copia-cli_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/copia-cli_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('7d03459b548f7d7bb0dcb37a26fa7e74a977470cc4deb1fde010c65f606cb4f2')
-sha256sums_aarch64=('55d227ccfa5aaff95d7c530b8230865a2f07f3a82df26a707bea82e492692136')
+sha256sums_x86_64=('e27c45097bb88ee18424bd0f725f5678677436c241ecace9b95c359aaeb35028')
+sha256sums_aarch64=('ec970ca97736931d7efd780a9ebd120caaca8b0f45ec9cb4e6d74514ec4507e2')
 
 package() {
     install -Dm755 copia-cli "${pkgdir}/usr/bin/copia-cli"
