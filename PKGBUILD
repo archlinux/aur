@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=devkitty
 _pkgname=Devkitty
-pkgver=4.1.1
+pkgver=4.1.2
 _electronversion=41
 _nodeversion=25
 pkgrel=1
@@ -38,11 +38,13 @@ _get_electron_version() {
 }
 prepare() {
     cd "${srcdir}"
-    git clone \
-        --depth 1 \
-        --branch "v${pkgver}" \
-        "${_ghurl}" \
-        "${pkgname}-${pkgver}"
+    if [ ! -d "${pkgname}-${pkgver}" ]; then
+        git clone \
+            --depth 1 \
+            --branch "v${pkgver}" \
+            "${_ghurl}" \
+            "${pkgname}-${pkgver}"
+    fi
     cd "${srcdir}/${pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
