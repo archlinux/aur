@@ -2,7 +2,7 @@
 
 _pkgname="github-mcp-server"
 pkgname="${_pkgname}-bin"
-pkgver=0.33.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="GitHub's official MCP server which connects AI tools directly to GitHub's platform"
 arch=(
@@ -30,9 +30,9 @@ source_i686=(
 source_x86_64=(
   "${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz"
 )
-sha256sums_aarch64=('d269f93b16a1b5f22a07d279d44ea366d8427e04c8337b798c493c27e031788a')
-sha256sums_i686=('7ee816b1ae10ed54025a67721afe4658e971d6a282d8d49f60492244b3e48d4d')
-sha256sums_x86_64=('704e560e569e31fd3e8693f51c0e001710d92f0e8f62a6d14e7b8b0cf7decfac')
+sha256sums_aarch64=('d1e49428580f8b7a1ffd617641c1a2cbda945356f86e8d9b5ae43c45fb0509af')
+sha256sums_i686=('0323c30cd1467cb6ca16b720165dfb299fa1338d80304115d241d13e844cdf52')
+sha256sums_x86_64=('668892769ba3a9133cef17e60c025e4276eea9cbb4ddf937d4ace2434ed4b4de')
 
 prepare() {
   cd "${srcdir}"
