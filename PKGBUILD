@@ -4,13 +4,13 @@ _pkgname=carton
 
 pkgname="${_pkgname}"-appimage
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A Windows and Linux GUI client for sing-box.(主打高性能和易用性，非electron tauri等web套皮)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/821869798/repo/"
 license=('GPL-3.0')
-depends=()
-options=()
+depends=('zlib' 'fuse2')
+options=('!strip')
 _appimage_x86_64="${_pkgname}-${pkgver}-linux-x64.AppImage"
 _appimage_aarch64="${_pkgname}-${pkgver}-linux-arm64.AppImage"
 source_x86_64=("${_appimage_x86_64}::https://github.com/821869798/carton/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage "

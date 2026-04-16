@@ -1,13 +1,16 @@
 pkgbase = carton-appimage
 	pkgdesc = A Windows and Linux GUI client for sing-box.(主打高性能和易用性，非electron tauri等web套皮)
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/821869798/repo/
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0
+	depends = zlib
+	depends = fuse2
 	noextract = carton-0.1.8-linux-x64.AppImage
 	noextract = carton-0.1.8-linux-arm64.AppImage
+	options = !strip
 	source_x86_64 = carton-0.1.8-linux-x64.AppImage::https://github.com/821869798/carton/releases/download/v0.1.8/carton-0.1.8-linux-x64.AppImage
 	source_x86_64 = https://raw.githubusercontent.com/821869798/carton/refs/tags/v0.1.8/LICENSE
 	sha256sums_x86_64 = de43b80d6af4a145e8eb942883b5e659dfdd6896ec45e9bd9fed82a32f866160
