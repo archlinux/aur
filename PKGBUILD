@@ -1,5 +1,5 @@
 pkgname=tsarr-bin
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Type-safe TypeScript SDK and CLI for Servarr APIs"
 arch=('x86_64' 'aarch64')
@@ -9,8 +9,8 @@ provides=('tsarr')
 conflicts=('tsarr')
 source_x86_64=("https://github.com/robbeverhelst/tsarr/releases/download/v${pkgver}/tsarr-linux-x64")
 source_aarch64=("https://github.com/robbeverhelst/tsarr/releases/download/v${pkgver}/tsarr-linux-arm64")
-sha256sums_x86_64=('600f88dffcef675c2a3ae77d20b3f0579675c5a09e41e378b6db24827a183041')
-sha256sums_aarch64=('53d5dfa615c51c1ff71bc7755d8a2967a602cb78f04ca03eb6d749d75f020132')
+sha256sums_x86_64=('d2d8068c14e332f30602818a973c9f39079be305d1aefb690391293792f94865')
+sha256sums_aarch64=('6c090cea22d6b6f425a8f4020fa50c6cd9b663f2c1e2bbc7fcb19eafa604f527')
 
 package() {
   install -Dm755 "${srcdir}/tsarr-linux-"* "${pkgdir}/usr/bin/tsarr"
