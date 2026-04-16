@@ -1,0 +1,4 @@
+pkg
+src
+velvet
+*.pkg.tar.zst

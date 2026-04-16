@@ -1,0 +1,15 @@
+pkgbase = velvet-git
+	pkgdesc = Velvet is a fully scriptable terminal multiplexer which draws heavy inspiration from tmux and neovim
+	pkgver = e899ceb
+	pkgrel = 1
+	url = https://github.com/Operdies/velvet.git
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = git+https://github.com/Operdies/velvet.git
+	sha256sums = SKIP
+
+pkgname = velvet-git
