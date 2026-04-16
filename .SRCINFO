@@ -1,6 +1,6 @@
 pkgbase = gnome-quick-share
 	pkgdesc = Quick Share client for GNOME
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/weversonl/gnome-quick-share
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = gnome-quick-share
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
+	makedepends = meson
+	makedepends = ninja
 	makedepends = gettext
 	depends = gtk4
 	depends = gtk3
