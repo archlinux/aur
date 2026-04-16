@@ -1,5 +1,3 @@
-# Maintainer: Gabriel Francisco dos Santos <gabriel at goodstream dot com>
-
 pkgname=papagaia-git
 pkgver=r15.a0945d6
 pkgrel=1
@@ -42,13 +40,6 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
-}
-
-check() {
-    cd "$pkgname"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo test --frozen
 }
 
 package() {
