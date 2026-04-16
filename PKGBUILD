@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mogan-bin
 _pkgname='Mogan STEM'
-pkgver=2026.2.1
+pkgver=2026.2.2
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor.(Prebuilt version)"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-stem-v${pkgver}-debian13-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b2411625af497d7cef7036193c129ccf3171e817b4fd57ad342f5401dbc1d05f'
+sha256sums=('4d703d1f76138e2ab005fb85020c6a5ab68c2587ad84a4b89aaa9ddfebb6795f'
             'b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863')
 prepare() {
     sed -i -e "
