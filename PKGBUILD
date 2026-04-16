@@ -1,6 +1,8 @@
-# Maintainer: ZhX589 ZhX589@outlook.com
+# Maintainer: ZhX589 ZhX589@outlook.com 
+# Contributor: ZhX589 ZhX589@outlook.com 
+
 pkgname=organize-git
-pkgver=2.0.5
+pkgver=v2.0.5.r0.g4f801d2
 pkgrel=1
 pkgdesc="File organizer by extension - Git version"
 arch=('any')
@@ -21,7 +23,7 @@ pkgver() {
 package() {
   cd "$srcdir/$pkgname"
   
-  # 运行 make 构建（生成最终的 organize.sh）
+  # 运行 make 构建
   make
   
   # 安装
