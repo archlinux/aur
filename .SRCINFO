@@ -1,0 +1,13 @@
+pkgbase = omarchy-emacs
+	pkgdesc = Emacs integration for Omarchy with automatic theme and font syncing
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/scottjones/omarchy-emacs
+	arch = any
+	license = MIT
+	depends = emacs-wayland
+	depends = bash
+	source = omarchy-emacs-1.7.0.tar.gz::https://github.com/scottjones/omarchy-emacs/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = 1b12c90d5eb9156205c8a2d223a18b843420fd64d2081e3f7eed96e250fa71e6
+
+pkgname = omarchy-emacs
