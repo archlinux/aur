@@ -9,7 +9,7 @@ license=('AGPL-3.0-only')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'librsvg' 'sqlite' 'yt-dlp' 'ffmpeg')
 makedepends=('npm' 'rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f1dbba905a6e812c894533a8fcdf56a0025f28d68dfff4880fa7ddee51637830')
+sha256sums=('4fbfc9634dd7584726e551b8d8764cc50d37071a9a03f13d2dd7fa746d4d95a6')
 
 build() {
     cd "$srcdir/Sunder-$pkgver"
