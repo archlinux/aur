@@ -2,14 +2,14 @@
 # Based on Aaron Paden <aaronbpaden@gmail.com> PKGBUILD for pcem
 pkgname=pcem-git
 _pkgname=pcem
-pkgver=17.r224.gb2ecd8f3
+pkgver=17.r250.gfbf5ece3
 pkgrel=1
 pkgdesc="Emulator for various IBM PC computers and clones - development version"
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
 license=('GPL-2.0-or-later')
-depends=('wxwidgets-gtk3' 'openal' 'sdl2-compat' 'alsa-lib' 'libpcap')
-makedepends=('git' 'ninja' 'meson' 'cmake' 'clang')
+depends=('wxwidgets-gtk3' 'openal' 'sdl2-compat' 'alsa-lib' 'libpcap' 'libslirp')
+makedepends=('git' 'cmake' 'clang')
 conflicts=('pcem')
 provides=("pcem=${pkgver}")
 source=("git+https://github.com/sarah-walker-pcem/pcem.git"
@@ -28,18 +28,24 @@ pkgver() {
 
 build() {
   cd "${srcdir}/pcem"
-  export WX_CONFIG=wx-config
+
+  # New building part from Martian PKGBUILD. Thanks!
   export CC=clang
   export CXX=clang++
-  mkdir -p build
-  cd build
-  cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DUSE_NETWORKING=ON -DUSE_PCAP_NETWORKING=ON -DUSE_ALSA=ON -DPLUGIN_ENGINE=ON -DFORCE_X11=ON ..
-  ninja
+  export LDFLAGS="-Wl,--allow-multiple-definition"
+
+  cmake -B build \
+       -DCMAKE_BUILD_TYPE=Release \
+       -DCMAKE_INSTALL_PREFIX=/usr \
+       -DUSE_NETWORKING=ON \
+       -DUSE_ALSA=ON
+
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/pcem/build"
-  DESTDIR="$pkgdir" ninja install
+  cd "${srcdir}/pcem/"
+  DESTDIR="${pkgdir}" cmake --install build
   # Based on pcem stable PKGBUILD
   install -Dm644 ../../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 ../../pcem.desktop "$pkgdir/usr/share/applications/pcem.desktop"
