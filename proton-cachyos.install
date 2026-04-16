@@ -11,9 +11,6 @@ post_install() {
   echo "   If something does NOT run with this package, but DOES run with the same official"
   echo "   version, installed according to upstream instructions, feel free to report it through"
   echo "   the issues in our repository - https://github.com/CachyOS/proton-cachyos"
-  echo ""
-  echo "   Proton-CachyOS is built with Wayland support, but it is DISABLED by default."
-  echo "   If you want to test the Wayland driver, set PROTON_ENABLE_WAYLAND=1"
 }
 
 post_upgrade() {

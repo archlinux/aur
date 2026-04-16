@@ -8,7 +8,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=10.4.1
 _xaliaver=0.4.8
-pkgrel=1
+pkgrel=2
 epoch=1
 
 source=(
@@ -52,7 +52,6 @@ depends=(
   lzo             lib32-lzo
   python
   python-six
-  sdl2            lib32-sdl2
   speex           lib32-speex
 # Start of old steam-native-runtime
   atk             lib32-atk
@@ -127,11 +126,9 @@ makedepends=(
   perl-json
   rsync
   rust                  lib32-rust-libs
-  python
   python-pefile
   python-setuptools-scm
   samba
-  sdl2                  lib32-sdl2
   unixodbc
   v4l-utils             lib32-v4l-utils
   vulkan-headers
@@ -145,11 +142,6 @@ optdepends=(
   alsa-plugins          lib32-alsa-plugins
   ffmpeg
   gnutls                lib32-gnutls
-  gst-plugins-bad
-  gst-plugins-base      lib32-gst-plugins-base
-  gst-plugins-base-libs lib32-gst-plugins-base-libs
-  gst-plugins-good      lib32-gst-plugins-good
-  gst-plugins-ugly
   gtk3                  lib32-gtk3
   libgphoto2
   libpulse              lib32-libpulse
@@ -159,7 +151,6 @@ optdepends=(
   opencl-icd-loader     lib32-opencl-icd-loader
   pcsclite              lib32-pcsclite
   samba
-  sdl2                  lib32-sdl2
   steam
   unixodbc
   v4l-utils             lib32-v4l-utils
