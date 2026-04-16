@@ -2,8 +2,8 @@
 
 _pkgname=pi-mono
 pkgname=pi
-pkgver=0.67.2
-pkgrel=2
+pkgver=0.67.3
+pkgrel=1
 pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool use"
 arch=('x86_64' 'aarch64')
 url="https://github.com/badlogic/pi-mono"
@@ -16,9 +16,9 @@ optdepends=(
   'ripgrep: system-provided backend for the grep tool'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('082ba1166a4f45575885dcd377ca44a1595cdc84b2c753c135c0596a70fa96e8')
+sha256sums=('513e25df1f7aa446a311a8bdf02d4dbc20aeaaf832e1fb160d55cb8f93ded475')
 
-prepare() {
+build() {
   cd "${_pkgname}-${pkgver}"
 
   export npm_config_cache="${srcdir}/npm-cache"
@@ -31,12 +31,6 @@ prepare() {
     --workspace packages/agent \
     --workspace packages/coding-agent \
     --include-workspace-root
-}
-
-build() {
-  cd "${_pkgname}-${pkgver}"
-
-  export npm_config_cache="${srcdir}/npm-cache"
 
   npm --prefix packages/tui run build
   ./node_modules/.bin/tsgo -p packages/ai/tsconfig.build.json
