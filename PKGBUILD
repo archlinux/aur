@@ -5,19 +5,24 @@ _pkgname=chataigne
 _Pkgname=Chataigne
 
 pkgname="${_pkgname}"-beta-bin
-pkgver=1.9.25b12
 pkgrel=1
+pkgver=20260415.133556
 pkgdesc="Artist-friendly Modular Machine for Art and Technology."
 arch=('x86_64')
-url="https://benjamin.kuperberg.fr/chataigne/en"
+url="https://benjamin.kuperberg.fr/chataigne/user/data/"
 license=('GPL3')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'curl' 'bluez-libs' 'freetype2' 'libx11' 'libxinerama' 'libxrandr' 'libxcursor' 'libxcomposite' 'mesa' 'alsa-lib' 'freeglut' 'jack' 'gtk3' 'webkit2gtk' 'sdl2' 'libusb' 'hidapi' 'nss' 'ttf-bitstream-vera' 'libcurl-gnutls')
 conflicts=(chataigne-stable-bin)
 options=(!strip)
-_appimage="${_Pkgname}-linux-x64-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://benjamin.kuperberg.fr/chataigne/user/data/${_appimage}")
+_appimage="${_Pkgname}-linux-x64-bleedingedge.AppImage"
+source_x86_64=("${_appimage}::${url}${_appimage}")
 noextract=("${_appimage}")
-sha256sums_x86_64=('844df5f96cf75cf8fed2874a337f9db84ae53c2d51841daf17c6b93ca534132f')
+sha256sums_x86_64=('SKIP')
+
+pkgver() {
+  # Extracts date from HTTP header: e.g., "Wed, 16 Apr 2024 12:00:00 GMT" -> 20240416
+  curl -sI "${url}${_appimage}" | grep -i '^last-modified:' | cut -d' ' -f3-6 | date -f - +%Y%m%d.%H%M%S
+}
 
 prepare() {
     chmod +x "${_appimage}"
