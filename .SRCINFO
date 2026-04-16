@@ -1,0 +1,16 @@
+pkgbase = copia-cli-bin
+	pkgdesc = CLI for Copia — source control for industrial automation
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/qubernetic/copia-cli
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = copia-cli
+	conflicts = copia-cli
+	source_x86_64 = https://github.com/qubernetic/copia-cli/releases/download/v1.0.0/copia-cli_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6ec094fc59dcf796e2574fd5144da08cd752ddc4363fc41bc889e6cd745eb8c0
+	source_aarch64 = https://github.com/qubernetic/copia-cli/releases/download/v1.0.0/copia-cli_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a485c6e320dc0b1e7e49bf58e9da3574f891975f43ad9b3ff31b9e558c6a4abb
+
+pkgname = copia-cli-bin
