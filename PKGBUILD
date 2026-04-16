@@ -1,20 +1,6 @@
 # Maintainer: Marvin1099
 pkgname=smb-mount-controller-git
-
-pkgver() {
-  cd "$srcdir/smb-mount-controller"
-  local _desc=$(git describe --tags 2>/dev/null)
-  if [[ -n "$_desc" ]]; then
-    local _tag="${_desc#v}"
-    _tag="${_tag%%-*}"
-    local _dist="${_desc##*-}"
-    _dist="${_dist#g}"
-    _tag="${_tag}.${_dist}"
-  else
-    _tag=$(git rev-parse --short HEAD)
-  fi
-  echo "$_tag"
-}
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A state-based SMB/CIFS mount controller written in bash for Linux that (un)mounts network shares based on reachability"
 arch=('any')
