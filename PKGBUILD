@@ -2,7 +2,7 @@
 # Contributor: ZhX589 ZhX589@outlook.com 
 
 pkgname=organize-git
-pkgver=v2.0.5.r0.g4f801d2
+pkgver=v2.0.7
 pkgrel=1
 pkgdesc="File organizer by extension - Git version"
 arch=('any')
