@@ -1,2 +1,11 @@
-- Fix PTB communication being broken
 - Fix tailscale not switching properly between the same tailnet with multiple accounts
+- Fix deadlock for terminal launches when another terminal window had to be opened, e.g. for a login command
+- Fix SSH config write for VsCode and others not properly clearing old entries
+- Fix SFTP connections not showing error handler actions for things like accepting host keys or unsupported algorithms
+- Fix manual SSH host key acceptance not working for hashed known hosts file
+- Fix SSH key acceptance not working when known_hosts file was corrupted
+- Fix Pageant connections with specified key not opening properly in all cases on Windows
+- Fix file browser navigation failing to open directories in cmd with certain special characters
+- Fix PTB communication being broken
+- Add identity names to error messages about missing info
+- Improve configuration clarity for direct RDP/VNC connections
