@@ -9,7 +9,7 @@ license=('Other')
 source=("https://github.com/LCEMP/LCEMP-Server/releases/download/1.0.1/MinecraftDedicatedServer-Linux"
 		"$pkgname.service"
 		)
-sha256sums=('SKIP' 'SKIP)
+sha256sums=('SKIP' 'SKIP')
 depends=('cmake' 'gcc')
 
 package() {
