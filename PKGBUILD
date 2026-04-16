@@ -16,15 +16,15 @@ makedepends=(
   'libtool' 'bison' 'flex' 'gettext' 'blas' 'lapack' 'ccache'
 )
 
-optdepends=('v8: for jaspProcess support, but there is no maintained PKGBUILD so you are on you own here;)')
+optdepends=('v8: necessary for jaspProcess support, but there is no maintained PKGBUILD anymore so you are on you own here.')
 
 source=(
   "git+https://github.com/jasp-stats/jasp-desktop.git#tag=v${pkgver}"
   "org.jaspstats.JASP.desktop"
 )
 
-sha256sums=('ac8a75a55a75cc7b6fc04b28f6a3042a667a33bedaa0a614aceb3716ec7a765d'
-            '7d2a438834cda8a8616801438ae4fe544709f20f52c21fb4f7cbcb82d7062ebe')
+sha256sums=('SKIP'
+            '6415669f39de6484ce9a6a368caf69bb1db13b2e0e0388a15243bb09484f0d37')
 
 _jasp_prefix="/opt/jasp-desktop"
 
