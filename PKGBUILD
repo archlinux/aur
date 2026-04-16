@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folo
 _pkgname=Folo
-pkgver=1.5.0
+pkgver=1.6.1
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -38,11 +38,13 @@ _get_electron_version() {
 }
 prepare() {
     cd "${srcdir}"
-    git clone \
-        --depth 1 \
-        --branch "v${pkgver}" \
-        "${_ghurl}" \
-        "${pkgname}-${pkgver}"
+    if [ ! -d "${pkgname}-${pkgver}" ]; then
+        git clone \
+            --depth 1 \
+            --branch "v${pkgver}" \
+            "${_ghurl}" \
+            "${pkgname}-${pkgver}"
+    fi
     cd "${srcdir}/${pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
