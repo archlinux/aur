@@ -1,0 +1,27 @@
+pkgbase = mcp-linker-bin
+	pkgdesc = Desktop manager for adding and syncing MCP servers across AI clients
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/milisp/mcp-linker
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = fuse2
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	optdepends = xdg-utils: open external URLs from the desktop environment
+	provides = mcp-linker
+	conflicts = mcp-linker
+	noextract = MCPLinker_2.1.0_amd64.AppImage
+	options = !strip
+	source = MCPLinker_2.1.0_amd64.AppImage::https://github.com/milisp/mcp-linker/releases/download/v2.1.0/MCPLinker_2.1.0_amd64.AppImage
+	source = mcp-linker-bin.png::https://raw.githubusercontent.com/milisp/mcp-linker/v2.1.0/src-tauri/icons/128x128.png
+	source = mcp-linker-bin.desktop
+	source = mcp-linker-bin.sh
+	source = LICENSE
+	sha256sums = 656d6e55c86a7add1b377b624a87871d2f32b7c2e82428f2301a28a3bfa03aa4
+	sha256sums = 17b717623d714585d43fe064157261bc48f93f48aea176eabdee2cf8905b8ab5
+	sha256sums = c474269f10d838b1e8b044f124dd9b32199fddef24df811d7a05db331536f834
+	sha256sums = 897687752a9600edcdfc1105565029a1d2f29dada259b970c1f7b4c66d84708c
+	sha256sums = d505308ce53c54f0e5dc890b85e19182d5c6d60a594de316c24e7a8d29665342
+
+pkgname = mcp-linker-bin

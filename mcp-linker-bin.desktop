@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=MCP Linker
+Comment=Add and sync MCP servers across AI clients
+Exec=/usr/bin/mcp-linker-bin %U
+Icon=mcp-linker-bin
+Terminal=false
+Categories=Development;Utility;
+MimeType=x-scheme-handler/mcp-linker;
+Keywords=MCP;AI;Claude;Cursor;Codex;
+StartupNotify=true
+StartupWMClass=MCPLinker
