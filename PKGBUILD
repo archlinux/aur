@@ -3,14 +3,16 @@ pkgname=otomusic-bin
 pkgver=1.0.3
 pkgrel=1
 pkgdesc="OtoMusic - A cross-platform desktop music player"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Aloys233/OtoMusic"
 license=('MIT')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst')
 provides=('otomusic')
 conflicts=('otomusic')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Aloys233/OtoMusic/releases/download/v${pkgver}/OtoMusic-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('fb7aaf96e7b0acc37595845c61368a0bf6d40adb3e97649a92b7916d7cd41cd9')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/Aloys233/OtoMusic/releases/download/v${pkgver}/OtoMusic-${pkgver}-linux-x64.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/Aloys233/OtoMusic/releases/download/v${pkgver}/OtoMusic-${pkgver}-linux-arm64.tar.gz")
+sha256sums_x86_64=('d0014e47bede919c6cb61a63ae9734feafa4c9e0cd3436b4612619bd75249203')
+sha256sums_aarch64=('ba6848879f1e46a643246778c816eb88e8c1af4dc0f308c5df1a4e2c0edcffa7')
 
 package() {
     cd "${srcdir}/otomusic-${pkgver}"
