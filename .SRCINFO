@@ -1,0 +1,20 @@
+pkgbase = emendo
+	pkgdesc = Lightweight GTK4/libadwaita media exporter for quick and powerful trimming, cropping and re-encoding workflows
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Gabriel2Silva/Emendo
+	arch = any
+	license = GPL-3.0-only
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = gst-python
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugin-gtk4
+	depends = ffmpeg
+	source = emendo-1.0.0.tar.gz::https://github.com/Gabriel2Silva/Emendo/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = e28f3fdfae92c2133f6572472482f802352f6fed7e8e0812fcc55477c3ca4e3d
+
+pkgname = emendo
