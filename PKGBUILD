@@ -60,9 +60,16 @@ package()
 
   # TODO: report proper PREFIX/DESTDIR usage upstream
   make INSTALL_ROOT="${pkgdir}" install
-  mkdir -p "${pkgdir}/usr/bin"
-  mv "${pkgdir}/opt/UnifiedFloppyTool/bin/UnifiedFloppyTool" "${pkgdir}/usr/bin/"
+
+  install -m 755 -D "${pkgdir}/opt/UnifiedFloppyTool/bin/UnifiedFloppyTool" "${pkgdir}/usr/bin/UnifiedFloppyTool"
+  install -m 644 -D "${srcdir}/${pkg_name_ver}/packaging/linux/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -m 644 -D "${srcdir}/${pkg_name_ver}/resources/icons/${_pkgname}.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
+  install -m 644 -D "${srcdir}/${pkg_name_ver}/resources/icons/${_pkgname}.svg" "${pkgdir}/usr/share/icons/${_pkgname}.svg"
+
+  #mkdir -p "${pkgdir}/usr/bin"
+  rm "${pkgdir}/opt/UnifiedFloppyTool/bin/UnifiedFloppyTool"
   rmdir -p "${pkgdir}/opt/UnifiedFloppyTool/bin/" || true
+
 }
 
 #
