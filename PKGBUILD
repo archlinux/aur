@@ -1,6 +1,6 @@
 # Maintainer: Matthew Cushing <cushing.matt@gmail.com>
 pkgname=qml-language-server-bin
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Language Server Protocol implementation for QML"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=("${_base_url}-linux-amd64.zip")
 source_aarch64=("${_base_url}-linux-arm64.zip")
 
 # Update these after each release with: updpkgsums
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
+sha256sums_x86_64=('a402030dd8f69cfff1d6aa146efd0cce99a55a220965331deb13e7348f77885c')
+sha256sums_aarch64=('bf62c3464619ab5749bb6f39d56f1d2be52d3f373c61bf9b2f63262520202a75')
 
 package() {
     cd "${srcdir}"
