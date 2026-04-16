@@ -157,9 +157,26 @@ package() {
     done
 
     install -d "${pkgdir}/usr/bin"
-    ln -sf /opt/pyrite64/pyrite64 "${pkgdir}/usr/bin/pyrite64"
+
+    # Use wrapper scripts instead of symlinks so N64_INST is always set,
+    # even for GUI launches (desktop entry) where profile.d is not sourced.
+    install -dm755 "${pkgdir}/usr/bin"
+    cat > "${pkgdir}/usr/bin/pyrite64" << 'EOF'
+#!/bin/sh
+export N64_INST=/opt/libdragon
+export PATH="/opt/libdragon/bin:$PATH"
+exec /opt/pyrite64/pyrite64 "$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/pyrite64"
+
     if [ -f "${pkgdir}/opt/libdragon/bin/gltf_to_t3d" ]; then
-        ln -sf /opt/libdragon/bin/gltf_to_t3d "${pkgdir}/usr/bin/gltf_to_t3d"
+        cat > "${pkgdir}/usr/bin/gltf_to_t3d" << 'EOF'
+#!/bin/sh
+export N64_INST=/opt/libdragon
+export PATH="/opt/libdragon/bin:$PATH"
+exec /opt/libdragon/bin/gltf_to_t3d "$@"
+EOF
+        chmod 755 "${pkgdir}/usr/bin/gltf_to_t3d"
     fi
     
     # Ensure permissions for toolchain binaries
