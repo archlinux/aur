@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Manages dotfile symlinks from a single repository without requiring a mirrored target directory layout"
 
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.zip")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.zip")
-sha256sums=('1a4c566dcdfc27d3921f9550ce4fe8da64d589ca35bb246c8e0ad8d2034b0d91'
+sha256sums=('1ae44acd18c323da0249e2c83f89508e4c162126470482a752ce6a4f29d82e15'
             'c4c73cfe3e7d8e4cae57635b5d7bde8f256d5eb8e5766ce80b22b0cf3de9cca5')
-sha256sums_x86_64=('555543d02099d90c6fb14c5e813f4e532345f571573aa42b3fdc4a170fd66cfe')
-sha256sums_aarch64=('f31128913a2a5c8367e59cb5e2e4d11680cefb5842a084fb720add8f5f38e72b')
+sha256sums_x86_64=('53cbea83cc541bee302038db3949827044285a8a02855cadaa082b3eac312784')
+sha256sums_aarch64=('c56017d38341454179702f3f2ca9779641162f4a0abaa659bcbe363e7874abc5')
 
 
 case ${CARCH} in
