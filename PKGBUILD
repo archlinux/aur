@@ -1,4 +1,4 @@
-# Maintainer: Elias Elwyn <a@jthv.ai>
+# Maintainer: Elias Elwyn <a@jthvai.net>
 
 pkgname=perl-net-amazon-signature-v4
 _dist=Net-Amazon-Signature-V4
