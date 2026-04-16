@@ -1,0 +1,24 @@
+pkgbase = actual-ai
+	pkgdesc = Automatic classification of transactions for Actual Budget using AI (OpenAI, Anthropic, Gemini, Ollama)
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/sakowicz/actual-ai
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = typescript
+	makedepends = node-gyp
+	makedepends = python
+	makedepends = git
+	depends = nodejs>=20
+	backup = etc/actual-ai/actual-ai.env
+	source = actual-ai-2.3.1.tar.gz::https://github.com/sakowicz/actual-ai/archive/refs/tags/2.3.1.tar.gz
+	source = actual-ai.service
+	source = actual-ai.sysusers
+	source = actual-ai.tmpfiles
+	sha256sums = 304d5506ab6ac2ab85e49558f9d0199f1b7af2ce62e2982073ab5678cebd7033
+	sha256sums = 6febb119651336efcb8664a9677466cebadccd03cd783188866c8b889d981dbb
+	sha256sums = 2c8eea7b53a943d47caf6ccaf46a64dd42dea275b1f79e0277001480e48e1493
+	sha256sums = 9e9b35a86c0aa805fc75ba5d00513630bf1cc2079b727979a586cbc94b890ebf
+
+pkgname = actual-ai

@@ -1,0 +1,15 @@
+[Unit]
+Description=Actual AI classification service
+After=network.target
+
+[Service]
+Type=simple
+User=actual-ai
+Group=actual-ai
+WorkingDirectory=/usr/lib/actual-ai
+EnvironmentFile=/etc/actual-ai/actual-ai.env
+ExecStart=/usr/bin/node /usr/lib/actual-ai/dist/app.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
