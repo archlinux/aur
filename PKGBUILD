@@ -1,0 +1,28 @@
+# Maintainer: Will Hurley <will@hurley.fm>
+# Contributor: Aleksej Komarov <stylemistake@gmail.com>
+# Upstream: Bitwig GmbH <support@bitwig.com>
+
+pkgname='bitwig-studio-5'
+pkgver='5.3.13'
+_pkgver='5.3.13'
+pkgrel='1'
+pkgdesc='Digital audio workstation for music production, remixing and live performance'
+arch=('x86_64')
+url='https://www.bitwig.com/'
+license=('custom')
+depends=('xdg-utils' 'xcb-util-wm' 'libbsd')
+optdepends=('jack' 'alsa-lib' 'oss' 'ffmpeg: MP3 support')
+provides=('clap-host' 'vst-host' 'vst3-host')
+replaces=()
+conflicts=('bitwig-studio-legacy' 'bitwig-8-track' 'bitwig-studio')
+options=(!strip)
+source=("bitwig-studio-${_pkgver}.deb::https://www.bitwig.com/dl/Bitwig%20Studio/${_pkgver}/installer_linux/")
+sha256sums=('b71f83cfd7d39b80c8a1bc0b6b4e7964e08c1beb54eef425d753459c428c027a')
+
+package() {
+  # Unpack package contents
+  bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"/
+
+  # Install license
+  install -D -m644 "${pkgdir}/opt/bitwig-studio/EULA.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
