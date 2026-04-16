@@ -1,15 +1,17 @@
 pkgbase = tetro-tui
 	pkgdesc = A terminal-based but modern tetromino-stacking game that is very customizable and cross-platform.
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 3.0.0
+	pkgrel = 3
 	url = https://github.com/Strophox/tetro-tui
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = rust
-	conflicts = tetro-tui-git
+	provides = tetro-tui
 	conflicts = tetro-tui-bin
-	source = tetro-tui-2.1.0.tar.gz::https://github.com/Strophox/tetro-tui/archive/v2.1.0.tar.gz
-	b2sums = 1b2b5544d77e814355f2368a148e177ef2296d91e411f5c27791ffd352cb85de8e28369eef4b5ab128873b234d8605bc15f8a0aa5d936e211252a84db69e781b
+	conflicts = tetro-tui-git
+	options = !debug
+	source = tetro-tui-3.0.0.tar.gz::https://github.com/Strophox/tetro-tui/archive/v3.0.0.tar.gz
+	b2sums = d9ff1c6968b044d6ff20bf6b91c7afabd7d7e52b0d6a25fdb3f8d6e9112c85ae9e26ba5ff8d9a863dde690520321f9784e2be3543541e1cad9b4cf38b984c987
 
 pkgname = tetro-tui

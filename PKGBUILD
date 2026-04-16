@@ -1,17 +1,22 @@
+# shellcheck disable=all
 # Maintainer: Walter - "Y29udGFjdG9Ad2FsdGVyY2FzYW5vdmEudGVjaAo="
+# Maintainer: Guillermo Galavis <druxorey@proton.me>
 
 pkgname=tetro-tui
-pkgver=2.1.0
-pkgrel=2
+pkgver=3.0.0
+pkgrel=3
 pkgdesc="A terminal-based but modern tetromino-stacking game that is very customizable and cross-platform. "
 arch=('x86_64' 'aarch64')
 url="https://github.com/Strophox/tetro-tui"
 license=('MIT')
 depends=()
-conflicts=("${pkgname}-git" "${pkgname}-bin")
 makedepends=('rust')
+provides=("${pkgname}")
+conflicts=("${pkgname}-bin" "${pkgname}-git")
+
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('1b2b5544d77e814355f2368a148e177ef2296d91e411f5c27791ffd352cb85de8e28369eef4b5ab128873b234d8605bc15f8a0aa5d936e211252a84db69e781b')
+b2sums=('d9ff1c6968b044d6ff20bf6b91c7afabd7d7e52b0d6a25fdb3f8d6e9112c85ae9e26ba5ff8d9a863dde690520321f9784e2be3543541e1cad9b4cf38b984c987')
+options=('!debug')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -35,5 +40,6 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dm755 "target/release/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+	[ -f LICENSE ]   && install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+	[ -f README.md ] && install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
