@@ -1,6 +1,6 @@
 pkgbase = unified-floppy-tool
 	pkgdesc = Toolkit for preserving and recovering vintage floppy disks - including flux imaging support (Greaseweazle/KryoFlux)
-	pkgver = 4.1.2
+	pkgver = 4.1.3
 	pkgrel = 1
 	url = https://github.com/Axel051171/UnifiedFloppyTool
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = unified-floppy-tool
 	depends = libstdc++
 	provides = unified-floppy-tool
 	conflicts = unified-floppy-tool
-	source = https://github.com/Axel051171//UnifiedFloppyTool/archive/refs/tags/v4.1.2.tar.gz
-	sha256sums = b93011ae5b26777af1a8fc9302d71c89545e3652b166295685c21322eea716d0
+	source = https://github.com/Axel051171//UnifiedFloppyTool/archive/refs/tags/v4.1.3.tar.gz
+	sha256sums = a240da531826ea45729b8128fd32e5ad68a8b1276c4dc3eb2e72f1ef5d9f33d6
 
 pkgname = unified-floppy-tool
