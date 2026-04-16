@@ -14,6 +14,7 @@ depends=(
   'dbus'
   'libvterm'
   'mesa'
+  'pam'
 )
 makedepends=(
   'meson'

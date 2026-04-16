@@ -15,9 +15,9 @@ pkgbase = vgp-git
 	depends = dbus
 	depends = libvterm
 	depends = mesa
+	depends = pam
 	provides = vgp
 	conflicts = vgp
 	source = git+https://github.com/theesfeld/VGP.git
-	sha256sums = SKIP
 
 pkgname = vgp-git
