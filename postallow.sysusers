@@ -1,0 +1,2 @@
+u! postallow - "Postallow allowlist generator" /var/lib/postallow /usr/sbin/nologin
+
