@@ -1,6 +1,6 @@
 pkgbase = pipemixer
 	pkgdesc = TUI volume control app for pipewire
-	pkgver = 0.2.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/heather7283/pipemixer
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pipemixer
 	depends = libpipewire
 	depends = ncurses
 	conflicts = pipemixer-git
-	source = pipemixer-0.2.2.tar.gz::https://github.com/heather7283/pipemixer/archive/v0.2.2.tar.gz
-	sha256sums = 7d43f971754ac1b0ef4e37a7cb008a4f2be9a91297751b74dcaef9cf24a7c3f7
+	source = pipemixer-0.4.3.tar.gz::https://github.com/heather7283/pipemixer/archive/v0.4.3.tar.gz
+	sha256sums = ebc27ca93225cb50a92367b50ca9f4d12a54014de573713fbe9a3e921aa36764
 
 pkgname = pipemixer

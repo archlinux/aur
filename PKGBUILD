@@ -1,7 +1,7 @@
 # Maintainer: goll <goll@users.noreply.github.com>
 
 pkgname=pipemixer
-pkgver=0.2.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='TUI volume control app for pipewire'
 arch=('x86_64')
@@ -11,11 +11,11 @@ depends=('glibc' 'libpipewire' 'ncurses')
 makedepends=('git' 'meson' 'ninja')
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/heather7283/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('7d43f971754ac1b0ef4e37a7cb008a4f2be9a91297751b74dcaef9cf24a7c3f7')
+sha256sums=('ebc27ca93225cb50a92367b50ca9f4d12a54014de573713fbe9a3e921aa36764')
 
 build() {
 	cd "${pkgname}-${pkgver}"
-	arch-meson -D system_libraries=disabled build
+	arch-meson build
 	meson compile -C build
 }
 
