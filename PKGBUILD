@@ -1,10 +1,10 @@
 pkgname=i2tor-bin
-pkgver=0.1.1
+pkgver=0.1.8
 pkgrel=1
-pkgdesc='Desktop launcher that combines Tor Browser and Java I2P without forking Tor Browser'
+pkgdesc='Desktop launcher that combines Tor Browser and Java I2P'
 arch=('x86_64')
 url='https://github.com/SethMcGuire/i2tor'
-license=('custom')
+license=('MIT')
 depends=('gtk3' 'glib2' 'libx11' 'libxcursor' 'libxfixes' 'libxinerama' 'libxrandr' 'mesa' 'gnupg')
 optdepends=('xdg-utils: desktop integration helpers')
 provides=('i2tor')
