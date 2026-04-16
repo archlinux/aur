@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _gitauthor=cesarferreira
-_gitname=pirate-ctl
+_gitname=pirata
 _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Search and download torrents via the CLI"
@@ -9,7 +9,7 @@ pkgdesc="Search and download torrents via the CLI"
 pkgver=0.1.0
 pkgrel=1
 _gitversion=main
-_gitcommit=4c4aa223c31e4fd08c17bd7f325361c9fb8b8143
+_gitcommit=6db55d878c9c5b2a0cfdc6748c10596a7025c488
 
 arch=('x86_64' 'aarch64')
 
@@ -19,8 +19,9 @@ url=${_ghurl}
 
 license=('MIT')
 
+replaces=("pirate-ctl")
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${_appname}" "pirate-ctl")
 
 makedepends=('rust' 'openssl')
 depends=('glibc' 'libgcc')
@@ -29,7 +30,7 @@ options=(!strip)
 
 source=("git+${_ghurl}#commit=${_gitcommit}"
 		"LICENSE")
-sha256sums=('1ea669f5118212a05e14a96a6094199905593d6fd6fbf6f52c55d02d90f108d1'
+sha256sums=('054fcbb913915ff7cca1765adb023da9b760f78062b9ed6ec0f520a27e0366e4'
             '57764ebae827c1c96dc5c1b74e2579ff34d3abcaabb54f5e5498fb2f612330cc')
 
 
