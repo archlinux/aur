@@ -1,6 +1,6 @@
 # Maintainer: Hornfisk <hornfisk@users.noreply.github.com>
 pkgname=squelchbox
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='TB-303-style acid bassline synthesizer plugin (VST3/CLAP/standalone)'
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=(
   'cmake'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Hornfisk/squelchbox/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fa95d2a56f78f1415d13e7af1e87ab3d37dc3beb82114b8f07e9df56417aa0b0')
+sha256sums=('42babcb2ce983ed061c9aaf596108da5eb544ac08ff2a975a515a82e174a94a4')
 options=('!lto')  # project uses its own LTO settings in Cargo.toml
 
 prepare() {
