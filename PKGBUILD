@@ -1,6 +1,6 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-biosig
-pkgver=3.9.2
+pkgver=3.9.5
 pkgrel=1
 pkgdesc="Python module for reading and writing routines for different biosignal data formats"
 arch=('i686' 'x86_64')
@@ -19,10 +19,12 @@ install=
 changelog=
 source=(https://sourceforge.net/projects/biosig/files/BioSig%20for%20C_C%2B%2B/src/biosig-$pkgver.src.tar.xz)
 noextract=()
-sha1sums=('07aa7c380af4b1bec694c084168115557720f175')
+sha1sums=('6281a49a1dba58ee66fcbbd3e9d7c1b74188af40')
 
 build() {
-  cd "$srcdir/biosig-$pkgver/biosig4c++/python"
+  cd "$srcdir/biosig-$pkgver"
+  ./configure
+  cd biosig4c++/python
   python setup.py build
 }
 
