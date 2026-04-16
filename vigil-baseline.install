@@ -1,0 +1,61 @@
+post_install() {
+    echo ""
+    echo "  ┌──────────────────────────────────────────────┐"
+    echo "  │  Vigil Baseline — File Integrity Monitor     │"
+    echo "  └──────────────────────────────────────────────┘"
+    echo ""
+    echo "  Quick start:"
+    echo "    vigil init          — establish your baseline"
+    echo "    vigil check         — verify filesystem integrity"
+    echo "    vigil status        — check baseline and daemon health"
+    echo ""
+    echo "  Enable the daemon:"
+    echo "    sudo systemctl enable --now vigild"
+    echo ""
+    echo "  Enable scheduled scans:"
+    echo "    sudo systemctl enable --now vigil-scan.timer"
+    echo ""
+    echo "  Configuration:"
+    echo "    /etc/vigil/vigil.toml  (create from example)"
+    echo "    Example: /usr/share/doc/vigil-baseline/vigil.toml.example"
+    echo ""
+    echo "  Docs: https://github.com/lousclues-labs/vigil"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "  Vigil Baseline upgraded to $1"
+    echo ""
+    echo "  If the daemon is running, restart it:"
+    echo "    sudo systemctl restart vigild"
+    echo ""
+}
+
+pre_remove() {
+    if systemctl is-active --quiet vigild 2>/dev/null; then
+        systemctl stop vigild
+    fi
+    if systemctl is-enabled --quiet vigild 2>/dev/null; then
+        systemctl disable vigild
+    fi
+    if systemctl is-active --quiet vigil-scan.timer 2>/dev/null; then
+        systemctl stop vigil-scan.timer
+    fi
+    if systemctl is-enabled --quiet vigil-scan.timer 2>/dev/null; then
+        systemctl disable vigil-scan.timer
+    fi
+}
+
+post_remove() {
+    echo ""
+    echo "  Vigil Baseline has been removed."
+    echo ""
+    echo "  User configuration may remain at:"
+    echo "    ~/.config/vigil/"
+    echo "    /etc/vigil/"
+    echo "    /var/lib/vigil/"
+    echo ""
+    echo "  Remove these directories manually if no longer needed."
+    echo ""
+}

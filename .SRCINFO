@@ -1,0 +1,18 @@
+pkgbase = vigil-baseline
+	pkgdesc = Lightweight file integrity monitor for Linux desktops
+	pkgver = 0.32.2
+	pkgrel = 1
+	url = https://github.com/lousclues-labs/vigil
+	install = vigil-baseline.install
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	provides = vigil
+	conflicts = vigil
+	options = !lto
+	source = vigil-baseline-0.32.2.tar.gz::https://github.com/lousclues-labs/vigil/archive/v0.32.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = vigil-baseline
