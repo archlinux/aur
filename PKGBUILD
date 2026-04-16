@@ -1,9 +1,9 @@
 # Maintainer: Ben Word <ben@benword.com>
 pkgname=quien-bin
 _pkgname=quien
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
-pkgdesc="A better WHOIS lookup tool with interactive TUI (pre-built binary)"
+pkgdesc="A better whois and domain intelligence toolkit (pre-built binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/retlehs/quien"
 license=('MIT')
@@ -11,8 +11,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source_x86_64=("$_pkgname-$pkgver-amd64.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_linux_amd64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-arm64.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_linux_arm64.tar.gz")
-sha256sums_x86_64=('14e1f5e2b5b8a5ffcf135e350da92833e3e542c95684a0cb653c9a3b07f53996')
-sha256sums_aarch64=('34599bb8b0e54b642b79ccd69cb8bb19937f0478003d26d2adbbcae6b3f24156')
+sha256sums_x86_64=('b879ba635838344b6fe76e7739e61b8a5af3e3a8e377b9c1bcb2f40b256c5dca')
+sha256sums_aarch64=('840079b39857d475704dc2e21d78b37a3e5eaa4295b6c2523e81297c3ac1e91f')
 
 package() {
   install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
