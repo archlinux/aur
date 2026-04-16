@@ -1,19 +1,19 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=proton-meet
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=(any)
-url='https://proton.me/mail'
+url='https://proton.me/meet'
 license=(GPL-3.0-or-later)
 _electron=electron39
 depends=(bash $_electron hicolor-icon-theme)
 makedepends=(git jq nodejs-lts-jod yarn)
-source=("ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git#tag=proton-meet-desktop@$pkgver"
+source=(ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git#tag=proton-meet-desktop@$pkgver
         proton-meet.desktop
         proton-meet.sh)
-b2sums=('2efa935802f4069a37fbf64674c490240870492da61b618d5c98ec05f167c3e647e1981021f8506285e651d63cf30417d76b1430a05d21372f556bc6d90f0405'
+b2sums=('bfff98ff308f0660e85603e3d19bdbce783ab1bd194914044dd82f2eb23c39b246b8ffb8dcef7b5b26083681ff431267659058bde396ccb376d88ec53fac6321'
         'efdcc089844bf0287c61e7d5f8c6aa9f5721a6000751b887a586f3a5b5caf36686500b09c10dc3039e6914be804c155edf67a0be17640602221d96a25e1a197c'
         'cc16def864fd2e9134c194b473db94b0588871af895803fe4151ab7b715f66bbbb695a0964c03577da12b72397230626dabf186885cd206de412c8eac3a47e4a')
 
