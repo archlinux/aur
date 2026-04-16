@@ -1,0 +1,24 @@
+pkgbase = orators-git
+	pkgdesc = Turn a Linux desktop into a Bluetooth speaker
+	pkgver = 0.0.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/OneNoted/orators
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = bluez
+	depends = bluez-utils
+	depends = bluez-alsa-git
+	depends = pipewire
+	depends = sudo
+	depends = systemd
+	depends = wireplumber
+	provides = orators
+	conflicts = orators
+	conflicts = orators-bin
+	install = orators.install
+	source = orators::git+https://github.com/OneNoted/orators.git
+	sha256sums = SKIP
+
+pkgname = orators-git

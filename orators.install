@@ -1,0 +1,18 @@
+post_install() {
+  cat <<'EOM'
+==> Orators was installed.
+==> Enable the packaged user service for your account:
+    systemctl --user daemon-reload
+    systemctl --user enable --now oratorsd.service
+
+==> Then install the managed Bluetooth backend once:
+    oratorsctl install-system-backend
+
+==> Runtime note: Orators currently expects BlueALSA binaries to be present.
+==> This package depends on bluez-alsa-git because that is the matching AUR package currently available.
+EOM
+}
+
+post_upgrade() {
+  post_install
+}
