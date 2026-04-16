@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stremio-enhanced-bin
 _pkgname=Stremio.Enhanced
-pkgver=1.1.3
+pkgver=1.1.4
 _electronversion=41
-pkgrel=2
+pkgrel=1
 pkgdesc="An Electron-based Stremio client with plugins and themes support. It runs the Stremio Service automatically and loads the web version of Stremio.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -25,9 +25,9 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('5a3a8e170b3a5f190f50b65dccdf8629a225fd3826fc010e616eb1ec364e8d46'
-            'ffabf433bef2fde70ebd519422e9255bcfe3af604735cbfe3a3df62bcf0668e5')
-sha256sums_aarch64=('39915692b4f1196c6227796dee7a3bafc8ca6ce41a165f074cf28225413a003f')
-sha256sums_x86_64=('2dbe2d04847c10de91498ee5cc4158c0b87031e08247cac60e2b2f66a961fb40')
+            '11f9d566b891c36b7bd6114444addca0a761230bca82d8255f177854e05a8171')
+sha256sums_aarch64=('e0ec70641828f757bbc2347b0830448afc0b9153330d942fae7fc51e78db694c')
+sha256sums_x86_64=('143ddae5444863c0c1fce242a39d7c5b6f0198fb02f806317424e8b40e4c696b')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
