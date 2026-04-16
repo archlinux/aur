@@ -1,5 +1,8 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
+: "${MAKEPKG_MATLAB_PREFIX:=/opt}"
+: "${MAKEPKG_MATLAB_ROOT:=${MAKEPKG_MATLAB_PREFIX}/MATLAB}"
+
 _pkgname="matlab-mcp-core-server"
 pkgname="${_pkgname}-git"
 pkgver=0.8.0.r0.ge666149
