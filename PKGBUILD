@@ -4,11 +4,11 @@ pkgbase=seanime-git
 pkgname=('seanime-server-git' 'seanime-denshi-git')
 _pkgname=seanime
 _electronver=39
-pkgver=v3.5.2.r0.g29f7947
-pkgrel=2
+pkgver=v3.6.1.r0.g47c204c
+pkgrel=1
 pkgdesc="Open-source media server with a web interface and desktop app for anime and manga."
 arch=('x86_64' 'aarch64')
-url="https://github.com/5rahim/seanime"
+url="https://seanime.app"
 license=('GPL-3.0-only')
 depends=('glibc'
 	 'libgcc'
