@@ -1,0 +1,21 @@
+diff --git src/formats/amiga_ext/snprintf.c src/formats/amiga_ext/snprintf.c
+index 29d5658..43de601 100644
+--- src/formats/amiga_ext/snprintf.c
++++ src/formats/amiga_ext/snprintf.c
+@@ -4,8 +4,8 @@
+  * @version 3.8.0
+  */
+ 
+-/* MSVC CRT already provides snprintf/vsnprintf - skip this entire file */
+-#if defined(_MSC_VER)
++/* MSVC CRT and Linux already provides snprintf/vsnprintf - skip this entire file */
++#if defined(_MSC_VER) || defined(__linux__)
+ /* nothing */
+ #else
+ 
+@@ -277,4 +277,4 @@ static void dopr_outch( c )
+        }
+ }
+ 
+-#endif /* !_MSC_VER */
++#endif /* !_MSC_VER || !__linux__ */
