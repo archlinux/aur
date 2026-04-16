@@ -2,7 +2,7 @@
 
 pkgname=stably-orca-bin
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Stably AI Orca - Electron-based agentic coding IDE (prebuilt AppImage)"
 arch=('x86_64')
 url="https://github.com/stablyai/orca"
@@ -46,6 +46,9 @@ package() {
   # avoids that entirely, and also drops the fuse2 runtime dependency.
   install -dm755 "${pkgdir}/opt/stably-orca"
   cp -a "${sqfs}/." "${pkgdir}/opt/stably-orca/"
+  # Extracted AppImages can ship with 0700 on the root dir; make everything
+  # world-readable and dirs world-traversable so non-root users can launch.
+  chmod -R u+rwX,go+rX "${pkgdir}/opt/stably-orca"
   chmod 755 "${pkgdir}/opt/stably-orca/AppRun"
 
   install -Dm755 "${srcdir}/stably-orca.sh" \
