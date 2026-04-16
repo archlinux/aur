@@ -1,0 +1,10 @@
+src/
+build/
+*.tar*
+*.pkg.tar*
+*.pkg.tar.zst
+*.src.tar.gz
+*.src.tar.xz
+*.src.tar.zst
+pkg/
+solidc*
