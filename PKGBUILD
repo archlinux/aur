@@ -2,7 +2,7 @@
 # Contributor: Dr. Abiira Nathan <nabiira2by2@gmail.com>
 
 pkgname=solidc-git
-pkgver=1.10.8.r0.gd42335d
+pkgver=1.10.9.r0.g8a4e9b6
 pkgrel=1
 pkgdesc="A robust C library for data structures, concurrency, and utilities."
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,11 @@ url="https://github.com/abiiranathan/solidc"
 license=('MIT')
 depends=()
 makedepends=('cmake' 'git' 'make' 'gcc')
-provides=('solidc')
-conflicts=('solidc')
+provides=('solidc-git')
+conflicts=('solidc-git')
 source=("solidc::git+https://github.com/abiiranathan/solidc.git")
 b2sums=('SKIP')
+options=(!lto)
 
 pkgver() {
   cd solidc
