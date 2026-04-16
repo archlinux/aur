@@ -2,7 +2,7 @@
 
 pkgbase=x-tools
 pkgname=x-tools
-pkgver=7.6.3
+pkgver=7.7.0
 pkgrel=1
 groups=()
 pkgdesc="Qt SerialPort-BLE-UDP-TCP-WebSocket-Modbus-CAN Assistant."
@@ -47,7 +47,7 @@ checkdepends=(
 )
 optdepends=()
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('107a0c19d96a18ac64ed2cc648a9c55b36622188e7d40ade2c414989bca59991')
+sha256sums=('b695e4f5ee6762e58ebcacb4f2b3e797329edf62e7455e641554f70f49f488fa')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
