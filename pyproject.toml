@@ -3,7 +3,7 @@ requires = ["setuptools","wheel"]
 
 [project]
 name = "seafobj"
-version = "13.0.19"
+version = "13.0.20"
 description = "Python library for accessing seafile data model"
 authors = [
     {name = "Seafile Ltd.", email = "info@seafile.com"}
