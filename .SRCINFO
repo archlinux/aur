@@ -1,7 +1,7 @@
 pkgbase = matlab-support
 	pkgdesc = A high-level language for numerical computation and visualization
-	pkgver = R2025b+25.2.9.9999999
-	pkgrel = 2
+	pkgver = R2026a+26.1.9.9999999
+	pkgrel = 1
 	epoch = 1
 	url = https://www.mathworks.com/products/matlab.html
 	arch = any
@@ -11,43 +11,42 @@ pkgbase = matlab-support
 
 pkgname = matlab-support
 	pkgdesc = A high-level language for numerical computation and visualization (support)
-	depends = matlab-meta>=R2025b
-	depends = matlab-jre-common>=R2025b
-	depends = gnutls3.8.9
+	depends = matlab-meta>=R2026a
+	depends = matlab-jre-common>=R2026a
 	optdepends = matlab-meta-all: all runtime dependencies
 	optdepends = matlab-jre-meta: JRE runtime dependency
 	optdepends = matlab-gcc-support: GCC runtime dependency
 	optdepends = matlab-gcc-fortran-support: GCC Fortran runtime dependency
-	provides = matlab=R2025b+25.2.9.9999999
-	provides = matlab-release=R2025b
-	provides = matlab-version=25.2.9.9999999
-	provides = matlab-r2025b=25.2.9.9999999
-	provides = java-matlab=R2025b+25.2.9.9999999
-	provides = java-matlab-release=R2025b
-	provides = java-matlab-version=25.2.9.9999999
-	provides = java-matlab-r2025b=25.2.9.9999999
+	provides = matlab=R2026a+26.1.9.9999999
+	provides = matlab-release=R2026a
+	provides = matlab-version=26.1.9.9999999
+	provides = matlab-r2026a=26.1.9.9999999
+	provides = java-matlab=R2026a+26.1.9.9999999
+	provides = java-matlab-release=R2026a
+	provides = java-matlab-version=26.1.9.9999999
+	provides = java-matlab-r2026a=26.1.9.9999999
 	conflicts = matlab
-	conflicts = matlab-r2025b
+	conflicts = matlab-r2026a
 	conflicts = java-matlab
-	conflicts = java-matlab-r2025b
+	conflicts = java-matlab-r2026a
 
 pkgname = matlab-gcc-support
 	pkgdesc = A high-level language for numerical computation and visualization (GCC, support)
-	depends = matlab-support>=1:R2025b+25.2.9.9999999-2
-	depends = matlab-gcc-meta>=R2025b
-	provides = matlab-gcc=R2025b+25.2.9.9999999
-	provides = matlab-gcc-release=R2025b
-	provides = matlab-gcc-version=25.2.9.9999999
-	provides = matlab-r2025b-gcc=25.2.9.9999999
+	depends = matlab-support>=1:R2026a+26.1.9.9999999-1
+	depends = matlab-gcc-meta>=R2026a
+	provides = matlab-gcc=R2026a+26.1.9.9999999
+	provides = matlab-gcc-release=R2026a
+	provides = matlab-gcc-version=26.1.9.9999999
+	provides = matlab-r2026a-gcc=26.1.9.9999999
 	conflicts = matlab-gcc
-	conflicts = matlab-r2025b-gcc
+	conflicts = matlab-r2026a-gcc
 
 pkgname = matlab-gcc-fortran-support
 	pkgdesc = A high-level language for numerical computation and visualization (GCC Fortran, support)
-	depends = matlab-support>=1:R2025b+25.2.9.9999999-2
-	depends = matlab-gcc-fortran-meta>=R2025b
-	provides = matlab-gcc-fortran=R2025b+25.2.9.9999999
-	provides = matlab-gcc-fortran-release=R2025b
-	provides = matlab-gcc-fortran-version=25.2.9.9999999
-	provides = matlab-r2025b-gcc-fortran=25.2.9.9999999
-	conflicts = matlab-r2025b-gcc
+	depends = matlab-support>=1:R2026a+26.1.9.9999999-1
+	depends = matlab-gcc-fortran-meta>=R2026a
+	provides = matlab-gcc-fortran=R2026a+26.1.9.9999999
+	provides = matlab-gcc-fortran-release=R2026a
+	provides = matlab-gcc-fortran-version=26.1.9.9999999
+	provides = matlab-r2026a-gcc-fortran=26.1.9.9999999
+	conflicts = matlab-r2026a-gcc
