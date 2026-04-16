@@ -1,33 +1,25 @@
 pkgbase = web-greeter
 	pkgdesc = A modern, visually appealing greeter for LightDM
-	pkgver = 3.5.3
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://github.com/JezerM/web-greeter
 	arch = any
 	license = GPL3
-	makedepends = rsync
-	makedepends = zip
-	makedepends = make
+	makedepends = meson
+	makedepends = ninja
 	makedepends = gcc
 	makedepends = typescript
 	makedepends = git
+	makedepends = uv
 	depends = lightdm
 	depends = python3
-	depends = python-gobject
-	depends = python-pyqt5
-	depends = python-pyqt5-webengine
-	depends = python-ruamel-yaml
-	depends = python-pyinotify
-	depends = python-xlib
-	depends = qt5-webengine
 	depends = gobject-introspection
 	depends = libxcb
 	depends = libx11
+	depends = cairo
 	conflicts = nody-greeter
-	backup = etc/lightdm/web-greeter.yml
-	source = web-greeter-3.5.3::git+https://github.com/JezerM/web-greeter.git#tag=3.5.3
-	source = package.patch
+	backup = etc/lightdm/web-greeter.toml
+	source = web-greeter-4.0.0::git+https://github.com/JezerM/web-greeter.git#tag=4.0.0
 	sha512sums = SKIP
-	sha512sums = 8146f3e6047fff6ebd24cd6a2fda91322e75bef24d54cad5112e4f0daffc4f0713505f062dfb9c24255de0c2a08856f3224fe57a668247941eba73f434cad0d6
 
 pkgname = web-greeter

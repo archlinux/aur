@@ -1,32 +1,31 @@
 # Maintainer: Jezer Mejía <amyuki4@gmail.com>
 
 pkgname=web-greeter
-pkgver=3.5.3
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc='A modern, visually appealing greeter for LightDM'
 arch=('any')
 url='https://github.com/JezerM/web-greeter'
 license=('GPL3')
-depends=('lightdm' 'python3' 'python-gobject' 'python-pyqt5' 'python-pyqt5-webengine' 'python-ruamel-yaml' 'python-pyinotify' 'python-xlib' 'qt5-webengine' 'gobject-introspection' 'libxcb' 'libx11')
-makedepends=('rsync' 'zip' 'make' 'gcc' 'typescript' 'git')
-source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver" "package.patch")
-sha512sums=('SKIP'
-            '8146f3e6047fff6ebd24cd6a2fda91322e75bef24d54cad5112e4f0daffc4f0713505f062dfb9c24255de0c2a08856f3224fe57a668247941eba73f434cad0d6')
-backup=('etc/lightdm/web-greeter.yml')
+depends=('lightdm' 'python3' 'gobject-introspection' 'libxcb' 'libx11' 'cairo')
+makedepends=('meson' 'ninja' 'gcc' 'typescript' 'git' 'uv')
+source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
+sha512sums=('SKIP')
+backup=('etc/lightdm/web-greeter.toml')
 conflicts=('nody-greeter')
 
 prepare() {
-    cd "$pkgname-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/package.patch"
-    git submodule update --init --recursive
+  cd "$pkgname-$pkgver"
+  git submodule update --init --recursive
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  make -j1 build
+  meson build -Dprefix=/usr -Dsysconfdir=/etc
+  ninja -C build
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" ninja -C build install
 }
