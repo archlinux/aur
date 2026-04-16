@@ -47,6 +47,10 @@ package() {
   # Systemd templated system service (enable per-user via lianli-daemon@USER.service)
   install -Dm644 systemd/lianli-daemon@.service "$pkgdir/usr/lib/systemd/system/lianli-daemon@.service"
 
+  # Systemd oneshot that pre-creates an evdi virtual display node at boot
+  # (writing to /sys/devices/evdi/add needs root; the user daemon then just opens it)
+  install -Dm644 systemd/lianli-evdi-setup.service "$pkgdir/usr/lib/systemd/system/lianli-evdi-setup.service"
+
   # Desktop entry
   install -Dm644 com.sgtaziz.lianlilinux.desktop "$pkgdir/usr/share/applications/com.sgtaziz.lianlilinux.desktop"
 

@@ -29,5 +29,11 @@ To start the daemon for the current user, run:
   sudo systemctl enable --now lianli-daemon@\$USER.service
 
 The daemon reads ~/.config/lianli/config.json for that user.
+
+If you have a desktop-mode device (HydroShift II, Lancool 207, Universal Screen 8.8"),
+also enable the evdi setup oneshot so a virtual display node exists for the user daemon:
+
+  sudo systemctl enable --now lianli-evdi-setup.service
+
 MSG
 }
