@@ -3,13 +3,20 @@
 
 pkgname=ghcid
 pkgver=0.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc='GHCi based bare bones IDE'
 arch=(x86_64)
 url="https://github.com/ndmitchell/$pkgname"
 license=(BSD-3-Clause)
-depends=(ghc-libs haskell-ansi-terminal haskell-cmdargs haskell-extra haskell-fsnotify haskell-terminal-size)
-makedepends=(ghc haskell-tasty haskell-tasty-hunit)
+depends=(ghc-libs
+         haskell-ansi-terminal
+         haskell-cmdargs
+         haskell-extra
+         haskell-fsnotify
+         haskell-terminal-size)
+makedepends=(ghc
+             haskell-tasty
+             haskell-tasty-hunit)
 _archive="$pkgname-$pkgver"
 source=("https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$_archive.tar.gz")
 sha512sums=('25082de985f29430dc7d4577a7a9e0c5ff2dc78ae229f5c6728d19f573dc05b3d88400de7afaa7588cf11e11b341453a23fbeccf7f3c75130741b0078621d1eb')
