@@ -1,0 +1,4 @@
+[mochi-appimage]
+source = "regex"
+url = "https://mochi.cards/download/"
+regex = "<strong>(\\d+\\.\\d+\\.\\d+)</strong>" 
