@@ -1,0 +1,9 @@
+post_install() {
+    echo "==> To get started:"
+    echo "      papagaia init                                    # generate config + detect tools"
+    echo "      systemctl --user enable --now papagaia-daemon    # start the daemon"
+}
+
+post_upgrade() {
+    echo "==> Restart the daemon with: systemctl --user restart papagaia-daemon"
+}
