@@ -2,7 +2,7 @@
 _pkgname=velvet
 pkgname=$_pkgname-git
 pkgver=e899ceb
-pkgrel=2
+pkgrel=3
 pkgdesc="Velvet is a fully scriptable terminal multiplexer which draws heavy inspiration from tmux and neovim"
 arch=('x86_64')
 url="https://github.com/Operdies/$_pkgname.git"
@@ -19,9 +19,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_pkgname" || exit 1
-  make PREFIX=dest/usr install
-
-  cp -r dest/* "$pkgdir"
+  make PREFIX="$pkgdir"/usr install
   ln -sf /usr/share/velvet/bin/vv "$pkgdir"/usr/bin/vv
 }
 
