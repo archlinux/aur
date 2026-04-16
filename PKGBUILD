@@ -9,7 +9,6 @@ arch=('x86_64')
 url="https://github.com/stablyai/orca"
 license=('MIT')
 depends=(
-  'fuse2'
   'zlib'
   'hicolor-icon-theme'
   'gtk3'
@@ -74,25 +73,29 @@ package() {
   chmod +x "${appimage}"
   ( cd "${srcdir}" && "${appimage}" --appimage-extract >/dev/null )
 
-  install -Dm755 "${appimage}" "${pkgdir}/opt/stably-orca/orca.AppImage"
+  local sqfs="${srcdir}/squashfs-root"
+
+  # Ship the extracted tree rather than the AppImage: see stably-orca-bin
+  # PKGBUILD for rationale (AppImageLauncher bypass + no fuse2 runtime dep).
+  install -dm755 "${pkgdir}/opt/stably-orca"
+  cp -a "${sqfs}/." "${pkgdir}/opt/stably-orca/"
+  chmod 755 "${pkgdir}/opt/stably-orca/AppRun"
+
   install -Dm755 "${srcdir}/stably-orca.sh" "${pkgdir}/usr/bin/stably-orca"
   install -Dm644 "${srcdir}/stably-orca.desktop" \
     "${pkgdir}/usr/share/applications/stably-orca.desktop"
 
-  local sqfs="${srcdir}/squashfs-root"
-  if [[ -d "${sqfs}" ]]; then
-    local found=0
-    for size in 16 32 48 64 128 256 512; do
-      local src="${sqfs}/usr/share/icons/hicolor/${size}x${size}/apps/orca.png"
-      if [[ -f "${src}" ]]; then
-        install -Dm644 "${src}" \
-          "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/stably-orca.png"
-        found=1
-      fi
-    done
-    if [[ "${found}" -eq 0 && -f "${sqfs}/orca.png" ]]; then
-      install -Dm644 "${sqfs}/orca.png" \
-        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/stably-orca.png"
+  local found=0
+  for size in 16 32 48 64 128 256 512; do
+    local src="${sqfs}/usr/share/icons/hicolor/${size}x${size}/apps/orca.png"
+    if [[ -f "${src}" ]]; then
+      install -Dm644 "${src}" \
+        "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/stably-orca.png"
+      found=1
     fi
+  done
+  if [[ "${found}" -eq 0 && -f "${sqfs}/orca.png" ]]; then
+    install -Dm644 "${sqfs}/orca.png" \
+      "${pkgdir}/usr/share/icons/hicolor/512x512/apps/stably-orca.png"
   fi
 }
