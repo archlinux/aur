@@ -1,0 +1,16 @@
+pkgbase = qml-language-server-git
+	pkgdesc = Language Server Protocol implementation for QML (git version)
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/cushycush/qml-language-server
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = qml-language-server
+	conflicts = qml-language-server
+	conflicts = qml-language-server-bin
+	source = qml-language-server-git::git+https://github.com/cushycush/qml-language-server.git
+	sha256sums = SKIP
+
+pkgname = qml-language-server-git
