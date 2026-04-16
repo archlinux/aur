@@ -5,7 +5,7 @@
 
 pkgname=seahub
 pkgver=13.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc='The web frontend for seafile server'
 arch=('any')
 url='https://github.com/haiwen/seahub'
@@ -49,6 +49,8 @@ optdepends=(
 )
 source=(
     "$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz"
+    'seafile-server@.service'
+    'seafile-server.service'
     'seahub@.service'
     'seahub.service'
     'nginx.example.conf'
@@ -58,6 +60,8 @@ source=(
 )
 sha256sums=(
     '5e391c4747c8a3bc5c025459681f5b10c99e629e5c091bac785d5778982ca037'
+    '3fb3d1218ef10560654c143b1ace8adadf08155d214f920ccc2c1cdc9a5c0dc7'
+    '3e3ceeef0423e4655a63534b729d0f8ff2042f6485480482772041018d27d8c4'
     'ba48ce265a8f411184ab92e8d914d2a02e06f19156333d6058eb3fcf861d780a'
     'c80abc71a12d86c6e42f860a69acfc079f1542a9e21f1b93692ce3313130b21c'
     '9ef2e5753f031ff6c5e2e1c7fd7399a01cbde795a3d01fac4749fa372ca1f689'
