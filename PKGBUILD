@@ -1,7 +1,7 @@
 # Maintainer: Azur84 <Azur84@outlook.fr>
 pkgname=pandora-launcher-git
 _pkgname=pandora_launcher
-pkgver=2.6.0.r0.g0fdf646
+pkgver=5.0.2.r4.ga585e69
 pkgrel=1
 pkgdesc="A modern Minecraft launcher that balances ease-of-use with powerful instance management features."
 arch=('x86_64')
@@ -18,12 +18,15 @@ depends=(
   'vulkan-icd-loader'
   'vulkan-driver'
   'openssl'
+  'libgcc'
+  'glibc'
+  'libseccomp'
 )
 makedepends=(
   'cargo'
-  'mold'
   'xcb-util'
   'git'
+  'fontconfig'
 )
 optdepends=(
   'flite: minecraft narrator support'
@@ -40,6 +43,8 @@ sha256sums=('SKIP'
             'f525ded38bc914f912fc0de9762c4d9716399dcdbe400aba36fb3044ad833aee'
             '8c045dbd40e52ee10f439e90f368ef4a12c0f3f830f252b2fefd2e862bc76fc5')
 
+options=('!lto')
+
 export RUSTUP_TOOLCHAIN=stable
 
 pkgver() {
@@ -55,7 +60,6 @@ prepare() {
 build() {
   cd "$pkgname"
   export CARGO_TARGET_DIR=target
-  export RUSTFLAGS="-C link-arg=-fuse-ld=mold"
   cargo build --release --locked --target $(rustc --print host-tuple)
 }
 
