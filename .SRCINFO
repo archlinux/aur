@@ -1,6 +1,6 @@
 pkgbase = spf-tools
 	pkgdesc = Scripts for taming the SPF records in order to fight 10-maximum-DNS-look-ups limit
-	pkgver = 2.1
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/spf-tools/spf-tools
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = spf-tools
 	makedepends = git
 	depends = glibc
 	depends = sh
-	backup = etc/postallow.conf
-	source = spf-tools::git+https://github.com/spf-tools/spf-tools.git#tag=v2.1
-	sha256sums = 444dae6a7cd2a6bc30636c9afd3b6698ce2b4da068ff65c15f75ac44d831690d
+	source = spf-tools::git+https://github.com/spf-tools/spf-tools.git#tag=v2.3
+	b2sums = 22ab4c8a107701889f3c94ee8868f4f355056a69890b01a682b8b42d9f2fa92283cc8267a0383f9237a188d44731183945f82ad5bf94d9850c6cbb868abee428
 
 pkgname = spf-tools
