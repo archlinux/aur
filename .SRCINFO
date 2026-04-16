@@ -1,0 +1,13 @@
+pkgbase = cjit-git
+	pkgdesc = C Just In Time, interpreter and compiler
+	pkgver = r411.2103864
+	pkgrel = 1
+	url = https://dyne.org/cjit/
+	arch = aarch64
+	license = GPL-3.0-or-later
+	provides = cjit
+	conflicts = cjit
+	source = git+https://github.com/dyne/cjit.git
+	sha256sums = SKIP
+
+pkgname = cjit-git
