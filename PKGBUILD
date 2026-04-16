@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=chrome-devtools-axi
-pkgver=0.1.15
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="AXI-compliant chrome-devtools-mcp wrapper with contextual suggestions"
 arch=('any')
@@ -10,21 +10,52 @@ license=('MIT')
 depends=('nodejs' 'chrome-devtools-mcp')
 makedepends=('npm')
 options=('!debug')
-source=(
-  "${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz"
-  "${pkgname}-runtime.patch"
-)
-sha512sums=('fcb639c0b1028a4476782e1cde60bc2a4e7fe9a85e161db46d5ab46c3f7a54b3c85cf3fe9d8b6f1aff552209733930299a3809f12f40e4ee84726c252056d642'
-            '2433d630f4f7f20d141dd3753f151de4bd61301e8ed5bbbd384151874bf67c7a972f734d6a7b55596da07bfdb52f40fc5cf588685e10ba792a737e6258a9c843')
+source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
+sha512sums=('afdc3b870d0772ccf66cd2c6722a411501fc71438680dc1f95026efdf7bddab93f91dc8fd7ef7e7168ea8f9e374b72da2094600ce0c4e3dddf1c6a0dbc94d84e')
 
 latestver() {
   curl -fsSL "https://registry.npmjs.org/${pkgname}/latest" | jq -r '.version'
 }
 
+# Replace fixed string $2 with $3 in file $1. Fails loud if the needle is
+# absent — keeps us honest when upstream refactors the call site out from
+# under us. Avoids sed BRE escaping by staying in awk's literal index/substr.
+_literal_replace() {
+  local file=$1 needle=$2 repl=$3
+  grep -qF -- "$needle" "$file" || {
+    printf 'prepare: needle missing in %s: %s\n' "$file" "$needle" >&2
+    exit 1
+  }
+  awk -v n="$needle" -v r="$repl" '{
+    while ((i = index($0, n)) > 0)
+      $0 = substr($0, 1, i-1) r substr($0, i+length(n))
+    print
+  }' "$file" > "$file.new"
+  mv "$file.new" "$file"
+}
+
 prepare() {
   cd "${srcdir}/package"
 
-  patch -Np1 -i "${srcdir}/${pkgname}-runtime.patch"
+  # Route the bridge at the system chrome-devtools-mcp instead of fetching it
+  # through npx at runtime — otherwise our chrome-devtools-mcp depends= is a lie
+  # and each call re-downloads an unpinned copy from the npm registry.
+  _literal_replace dist/src/bridge.js \
+    'const args = ["-y", "chrome-devtools-mcp@latest"];' \
+    'const args = [];'
+  _literal_replace dist/src/bridge.js \
+    'command: "npx", args: buildTransportArgs()' \
+    'command: "chrome-devtools-mcp", args: buildTransportArgs()'
+  _literal_replace dist/src/client.js \
+    'npx chrome-devtools-mcp@latest --help' \
+    'chrome-devtools-mcp --help'
+
+  # Upstream ships the built bridge script with a tsx shebang; no Arch user has
+  # global tsx, and the bridge is a plain .js after build.
+  _literal_replace dist/bin/chrome-devtools-axi-bridge.js \
+    '#!/usr/bin/env tsx' \
+    '#!/usr/bin/env node'
+  sed -i '/^#!.*tsx$/d' dist/bin/chrome-devtools-axi-bridge.d.ts
 }
 
 build() {
