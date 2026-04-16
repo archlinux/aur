@@ -1,0 +1,51 @@
+# simpleautoframer.install — pacman post-(un)install hooks
+
+post_install() {
+    cat <<EOF
+
+==> SimpleAutoFramer installed.
+
+To finish setup:
+
+  1. Load v4l2loopback now (it will auto-load on next boot):
+       sudo modprobe v4l2loopback
+
+  2. Make sure your user is in the 'video' group:
+       sudo usermod -aG video \$USER
+     Then log out and back in.
+
+  3. Under Wayland, the first run will ask xdg-desktop-portal to bind
+     the global shortcuts — accept the prompt (behaviour depends on your
+     desktop environment: KDE applies immediately, GNOME needs >= 47).
+
+  4. Launch the application:
+       simpleautoframer
+
+A virtual camera named "AutoFrameCam" will appear at /dev/video20.
+
+EOF
+    # Refresh desktop caches (best-effort)
+    update-desktop-database -q /usr/share/applications 2>/dev/null || true
+    gtk-update-icon-cache -q /usr/share/icons/hicolor 2>/dev/null || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    cat <<EOF
+
+==> SimpleAutoFramer removed.
+
+The v4l2loopback kernel module was NOT unloaded automatically.
+If you no longer need the virtual camera:
+    sudo rmmod v4l2loopback
+
+The persistent modprobe configuration installed by this package has been
+removed. Other v4l2loopback users on your system are unaffected.
+
+EOF
+    update-desktop-database -q /usr/share/applications 2>/dev/null || true
+    gtk-update-icon-cache -q /usr/share/icons/hicolor 2>/dev/null || true
+}

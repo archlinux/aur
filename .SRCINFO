@@ -1,0 +1,39 @@
+pkgbase = simpleautoframer-git
+	pkgdesc = Open-source auto-framing for webcams (alternative to NVIDIA Broadcast)
+	pkgver = r1.0
+	pkgrel = 1
+	url = https://github.com/Rimsoo/SimpleAutoFramer
+	install = simpleautoframer.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	depends = opencv
+	depends = gtkmm3
+	depends = libayatana-appindicator
+	depends = nlohmann-json
+	depends = glib2
+	depends = libx11
+	depends = libxi
+	depends = hicolor-icon-theme
+	depends = v4l2loopback-dkms
+	optdepends = xdg-desktop-portal: required for global shortcuts under Wayland
+	optdepends = xdg-desktop-portal-kde: portal backend for KDE Plasma
+	optdepends = xdg-desktop-portal-gnome: portal backend for GNOME (>=47 recommended)
+	optdepends = xdg-desktop-portal-hyprland: portal backend for Hyprland
+	optdepends = xdg-desktop-portal-wlr: portal backend for Sway/other wlroots WMs
+	optdepends = cuda: optional GPU acceleration (rebuild with -DUSE_CUDA=ON)
+	provides = simpleautoframer
+	conflicts = simpleautoframer
+	source = simpleautoframer::git+https://github.com/Rimsoo/SimpleAutoFramer.git
+	source = v4l2loopback.conf
+	source = v4l2loopback-modules-load.conf
+	source = simpleautoframer.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = simpleautoframer-git
