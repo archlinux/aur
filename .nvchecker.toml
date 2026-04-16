@@ -1,11 +1,19 @@
 [matlab]
-source = 'jq'
-url = 'https://api.github.com/repos/mathworks-ref-arch/container-images/contents/matlab-deps'
-filter = '.[].name'
+source = "container"
+registry = "docker.io"
+container = "mathworks/matlab"
 include_regex = 'r20\d{2}[ab]'
 from_pattern = 'r20(\d{2}[ab])'
 to_pattern = 'R20\1+autoupdated'
 
+# source = 'jq'
+# url = 'https://api.github.com/repos/mathworks-ref-arch/container-images/contents/matlab-deps'
+# filter = '.[].name'
+# include_regex = 'r20\d{2}[ab]'
+# from_pattern = 'r20(\d{2}[ab])'
+# to_pattern = 'R20\1+autoupdated'
+
+# source = "regex"
 # url = "https://www.mathworks.com/products/new_products/latest_features.html"
 # url = "https://www.mathworks.com/help/matlab/release-notes.html"
 # regex = "R20\\d{2}[ab]"
