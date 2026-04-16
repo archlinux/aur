@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=4.0.0
-pkgrel=4
+pkgver=4.1.1
+pkgrel=1
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('any')
 url="https://bytedz.com/products/pclink"
@@ -55,7 +55,7 @@ optdepends=(
   'wl-clipboard: Clipboard support on Wayland'
 )
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9d866829aa7a0a402cfa288f3d1d15048b1101b7f390094f7479244253549906')
+sha256sums=('6fc0bd4e898204b58de914dd104bfa323e5d175883726fd409058360a97a6b90')
 
 prepare() {
   cd "PCLink-$pkgver"
