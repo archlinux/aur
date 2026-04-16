@@ -1,0 +1,21 @@
+pkgbase = t-nesx
+	pkgdesc = Cross-platform retro game emulator (NES, SNES, GBA & Intellivision)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cargabsj175/t-nesx
+	arch = x86_64
+	license = GPL3
+	makedepends = npm
+	makedepends = rust
+	makedepends = cargo-c
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = libsoup3
+	depends = libappindicator-gtk3
+	source = git+https://gitlab.com/cargabsj175/t-nesx.git#tag=1.0.0
+	sha256sums = SKIP
+
+pkgname = t-nesx
