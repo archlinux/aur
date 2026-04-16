@@ -1,0 +1,18 @@
+pkgbase = store-git
+	pkgdesc = Dotfile symlink manager — one repo, one config, one command per machine (development version)
+	pkgver = r0
+	pkgrel = 1
+	url = https://github.com/cushycush/store
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	conflicts = store
+	conflicts = store-bin
+	provides = store
+	source = store-git::git+https://github.com/cushycush/store.git
+	sha256sums = SKIP
+
+pkgname = store-git
