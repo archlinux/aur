@@ -1,0 +1,4 @@
+# IRIS v2 NearLink - Wired
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="363c", ATTRS{idProduct}=="ec05", MODE="0666"
+# IRIS v2 NearLink - Wireless (Dongle)
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="363c", ATTRS{idProduct}=="ec06", MODE="0666"

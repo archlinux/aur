@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=IRIS v2 NearLink
+Exec=pressplay-iris-v2-nearlink %U
+Terminal=false
+Type=Application
+Icon=pressplay-iris-v2-nearlink
+StartupWMClass=IRIS_V2_NearLink
+Comment=Press Play IRIS V2 NearLink | Unofficial community mouse software for linux
+Categories=Utility;
