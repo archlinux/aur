@@ -4,6 +4,7 @@
 *.AppImage
 *.deb
 *.rpm
+*.pkg.*
 
 *.gz
 *.xz

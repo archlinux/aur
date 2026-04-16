@@ -16,7 +16,7 @@ source=(
     "LICENSE.md"
 )
 sha256sums=('873a527a2d2047d6a9709e8054da22a925092ccbcfd15ffa49398629e520e6f2'
-            '1f06e6dbbba57c36ef98daa6ad4893b944494b1e20bcf477eb78580476205f9a')
+            '4e971de9ede9734b775a1fa13fcb28d4fe3553e3dec5670d28ab2cb9ec035104')
 build() {
     rm -rf "${srcdir}/squashfs-root/"
     chmod a+x "${srcdir}/${_pkgname}-${pkgver}.AppImage"
