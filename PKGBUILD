@@ -12,5 +12,5 @@ depends=('cmake' 'gcc')
 
 package() {
 	install -Dm755 ./MinecraftDedicatedServer-Linux "$pkgdir/srv/lcemp/MinecraftDedicatedServer-Linux"
-	install "./$pkgname.service" "$pkgdir/etc/systemd/system/$pkgname.service"
+	install ./$pkgname.service "$pkgdir/etc/systemd/system/$pkgname.service"
 }
