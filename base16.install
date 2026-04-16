@@ -1,0 +1,7 @@
+post_install() {
+    echo ':: To activate this plugin, add it to your init.'
+}
+
+post_remove() {
+    echo ':: Remember to remove this plugin from your init.'
+}

@@ -1,0 +1,19 @@
+pkgbase = neovim-base16-git
+	pkgdesc = Neovim plugin for building base16 colorschemes
+	pkgver = r148.4a6ef31
+	pkgrel = 1
+	url = https://github.com/rrethy/base16-nvim
+	install = base16.install
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	provides = neovim-base16
+	provides = base16-nvim
+	conflicts = neovim-base16
+	conflicts = base16-nvim
+	source = neovim-base16::git+https://github.com/rrethy/base16-nvim
+	sha256sums = SKIP
+
+pkgname = neovim-base16-git
+	depends = neovim
