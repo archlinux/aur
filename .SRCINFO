@@ -1,12 +1,12 @@
 pkgbase = refremir-git
 	pkgdesc = Script for sourcing, ranking, and sorting mirrors into mirrorlists
-	pkgver = r20.b1f5060
+	pkgver = r13.81076b6
 	pkgrel = 1
 	url = https://gitlab.com/cscs/refremir
 	arch = any
 	license = GPL
 	depends = rate-mirrors
-	optdepends = reflector
+	optdepends = reflector: alternative ranking backend
 	source = git+https://gitlab.com/cscs/refremir.git
 	sha256sums = SKIP
 
