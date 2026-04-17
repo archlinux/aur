@@ -14,7 +14,7 @@ conflicts=("emskin")
 depends=("wayland" "libxkbcommon" "libxkbcommon-x11" "mesa" "libinput" "seatd" "fontconfig" "freetype2" "xorg-xwayland")
 optdepends=("emacs-wayland: pgtk Emacs (recommended)" "emacs: X11 Emacs (works via XWayland)")
 source=("https://github.com/emskin/emskin/releases/download/v$pkgver/emskin-$pkgver-x86_64.tar.gz")
-sha256sums=('d2f8c897f2a7003a183ad47e608930f876d6e5db2961bd6f053be1f48b26a8f5')
+sha256sums=('bdbf4b9adf48446bd28ff22dcfb7f86f4db77a95ed8fab0e0645fd972946610d')
 
 package() {
     install -Dm755 emskin -t "$pkgdir/usr/bin"
