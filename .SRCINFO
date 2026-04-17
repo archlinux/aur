@@ -1,0 +1,18 @@
+pkgbase = tomatillo
+	pkgdesc = Tomatillo is a Pomodoro Timer app for your productivity tasks
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/diegopvlk/Tomatillo
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = appstream
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = meson
+	depends = gtk4
+	depends = libadwaita
+	depends = python
+	source = git+https://github.com/diegopvlk/Tomatillo.git#tag=v1.0.4
+	sha1sums = SKIP
+
+pkgname = tomatillo
