@@ -1,0 +1,24 @@
+pkgbase = zskins-bin
+	pkgdesc = Wayland status bar and launcher built on GPUI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/loyalpartner/zskins
+	arch = x86_64
+	license = MIT
+	depends = wayland
+	depends = vulkan-icd-loader
+	depends = libxkbcommon
+	depends = libxcb
+	depends = fontconfig
+	depends = freetype2
+	depends = mesa
+	depends = gtk4
+	optdepends = sway: workspace and window management integration
+	optdepends = hyprland: workspace integration
+	optdepends = pipewire-pulse: volume control via pactl
+	provides = zbar
+	conflicts = zbar
+	source = https://github.com/loyalpartner/zskins/releases/download/v0.1.0/zbar-0.1.0-x86_64.tar.gz
+	sha256sums = e1c16474e9bb084177cd7b3b49ccd22b657c810ecbda4978072dc6e6cc157512
+
+pkgname = zskins-bin
