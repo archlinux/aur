@@ -14,7 +14,7 @@ conflicts=('dunst' 'mako' 'deadd-notification-center')
 install='ember-notify.install'
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8a73d8b4f205624ad409ac7a5b779227f215e80ad231e4bd15b7a7966d414188')
+sha256sums=('bc8245ab1ad92947ad399e85e0ff4bb580c2ee5d996d1c9ddccc3e9b86abcff4')
 
 _srcdir="Ember-$pkgver"
 
