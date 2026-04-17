@@ -1,14 +1,15 @@
 pkgbase = lean-ctx
-	pkgdesc = Context Engineering Layer for AI Coding — 34 intelligent tools, 8 read modes, 90+ shell patterns, neural token optimization, persistent knowledge, multi-agent orchestration. Reduces AI costs by 60-99%.
-	pkgver = 3.1.5
+	pkgdesc = Context Engineering Layer for AI Coding — local-first MCP tools, compression/read modes, workflows+evidence, persistent knowledge, multi-agent orchestration. Zero telemetry.
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://leanctx.com
 	arch = x86_64
-	license = MIT
+	arch = aarch64
+	license = Apache-2.0
 	makedepends = cargo
 	makedepends = gcc
 	depends = gcc-libs
-	source = lean-ctx-3.1.5.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.1.5/lean-ctx-3.1.5-source.tar.gz
-	sha256sums = 8c5156c09d88d3def970a572811e78eb7c64de498c6f154d0353aa0f6e2bac42
+	source = lean-ctx-3.2.1.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.2.1/lean-ctx-3.2.1-source.tar.gz
+	sha256sums = 5c9efb5d4e2de1945ae10c2fe440f9c1b723be480c8e4a6d06fa47be15a863bc
 
 pkgname = lean-ctx
