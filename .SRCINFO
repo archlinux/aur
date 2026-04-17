@@ -1,6 +1,6 @@
 pkgbase = rtpengine
 	pkgdesc = A media relay for RTP sessions
-	pkgver = 14.1.1.4
+	pkgver = 14.1.1.5
 	pkgrel = 1
 	url = https://github.com/sipwise/rtpengine
 	arch = x86_64
@@ -61,9 +61,9 @@ pkgbase = rtpengine
 	backup = etc/rtpengine/rtpengine.conf
 	backup = etc/rtpengine/rtpengine-recording.conf
 	backup = etc/sysconfig/rtpengine
-	source = rtpengine-14.1.1.4.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr14.1.1.4.tar.gz
+	source = rtpengine-14.1.1.5.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr14.1.1.5.tar.gz
 	source = rtpengine.sysusers
-	sha256sums = 0c7684d1789f5a6fb862c8225f858752ea4c93ade6e6b1238f8e4edca9c34f38
+	sha256sums = f8ce2084bec041d5cde50c187edb1b95eccb68fd6f5ac4c4acb04d5aa8261309
 	sha256sums = 9ee6664c7368cc0466d813c199c997ac4889eb0e72f7f0b51149510cf0ae0b3e
 
 pkgname = rtpengine
