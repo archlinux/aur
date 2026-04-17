@@ -1,6 +1,6 @@
 # Maintainer: VGP Project
 pkgname=vgp-git
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="GPU-accelerated vector display server and desktop environment"
 arch=('x86_64')
