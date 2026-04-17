@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=VNS Manjaro Toolbox
+Exec=vns-manjaro-toolbox
+Terminal=false
+Type=Application
+Icon=system-software-update
+Categories=System;Settings;
+Comment=Maintenance and repair tool for Manjaro

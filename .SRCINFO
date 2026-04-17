@@ -1,0 +1,16 @@
+pkgbase = vns-manjaro-toolbox
+	pkgdesc = Lightweight PyQt6 maintenance tool for Manjaro Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vnsgzx/vns-manjaro-toolbox
+	arch = any
+	license = GPL3
+	depends = python-pyqt6
+	depends = yay
+	depends = xfce4-terminal
+	source = git+https://github.com/vnsgzx/vns-manjaro-toolbox.git
+	source = vns-manjaro-toolbox.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = vns-manjaro-toolbox
