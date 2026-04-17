@@ -1,0 +1,16 @@
+pkgbase = pipedash-bin
+pkgdesc = Manage CI/CD pipelines from multiple providers - desktop app
+pkgver = 0.1.1
+pkgrel = 1
+url = https://github.com/hcavarsan/pipedash
+arch = x86_64 aarch64
+license = GPL-3.0-only
+depends = webkit2gtk-4.1 gtk3
+provides = pipedash
+conflicts = pipedash
+source_x86_64 = https://github.com/hcavarsan/pipedash/releases/download/v0.1.1/pipedash_0.1.1_amd64.deb
+sha256sums_x86_64 = 3b37373ad81c50fd1455c7502fb54c6319e7ea4c935f46b96b5cd235a77d6f7c
+source_aarch64 = https://github.com/hcavarsan/pipedash/releases/download/v0.1.1/pipedash_0.1.1_arm64.deb
+sha256sums_aarch64 = 6a3a4073383592fe2cb82622254d612de1de6346a34bdf60bd9cb24ff18dee4d
+
+pkgname = pipedash-bin
