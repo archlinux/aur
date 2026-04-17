@@ -1,6 +1,6 @@
 pkgbase = monique
 	pkgdesc = MONitor Integrated QUick Editor — graphical monitor configurator for Hyprland and Sway
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/ToRvaLDz/monique
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = monique
 	optdepends = sway: Sway compositor support
 	optdepends = sddm: login screen layout sync via Xsetup
 	optdepends = polkit: passwordless SDDM Xsetup writes
-	source = monique-0.6.3.tar.gz::https://github.com/ToRvaLDz/monique/archive/refs/tags/v0.6.3.tar.gz
-	sha256sums = 9b2f638ae079c84b6c672dd5fbcd1a45c832f1da235b5e6ec4d3ccdc1d76b7d8
+	source = monique-0.6.4.tar.gz::https://github.com/ToRvaLDz/monique/archive/refs/tags/v0.6.4.tar.gz
+	sha256sums = 1514a142b0822f6e6943b1813efdf054405e4c9561c9ab94d7ed5bbace1321dc
 
 pkgname = monique
