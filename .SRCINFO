@@ -1,6 +1,6 @@
 pkgbase = hyprsettings-git
 	pkgdesc = Configurator for Hyprland (alpha, development version, git snapshot)
-	pkgver = 0.9.3.r22.gfa0374e
+	pkgver = 0.9.3.r23.g6902219
 	pkgrel = 1
 	url = https://github.com/acropolis914/hyprsettings
 	arch = x86_64
