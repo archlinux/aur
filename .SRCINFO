@@ -1,0 +1,15 @@
+pkgbase = ezlinux
+	pkgdesc = the ultimate cachyos performance + gaming setup script
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/roxzitywolf/ezLnux
+	arch = any
+	license = MIT
+	depends = bash
+	depends = git
+	depends = pacman
+	optdepends = paru: AUR helper for optional AUR installs
+	source = git+https://github.com/roxzitywolf/ezlinux.git
+	sha256sums = SKIP
+
+pkgname = ezlinux
