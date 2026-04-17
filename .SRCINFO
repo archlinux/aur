@@ -1,13 +1,14 @@
 pkgbase = portprotonqt
 	pkgdesc = Modern GUI for managing and launching games from PortProton, Steam, and Epic Games Store
-	pkgver = 0.1.11
-	pkgrel = 2
+	pkgver = 0.1.12
+	pkgrel = 1
 	url = https://git.linux-gaming.ru/Boria138/PortProtonQt
 	arch = any
 	license = GPL-3.0
 	makedepends = meson
 	makedepends = ninja
 	makedepends = vulkan-headers
+	makedepends = gettext
 	depends = python-requests
 	depends = python-babel
 	depends = python-evdev
@@ -32,9 +33,19 @@ pkgbase = portprotonqt
 	depends = pciutils
 	depends = mesa-utils
 	depends = vulkan-icd-loader
-	source = git+https://git.linux-gaming.ru/Boria138/PortProtonQt#tag=v0.1.11
-	source = qt6-11.patch
-	sha256sums = 66cb620f94e223b101ad79b3cdeee018afd0c963c4b0cddb1983de9cf0b1be45
-	sha256sums = 5e79464ff38b0cda075fd055d6bd8322fb2378b39d30e3fa61b569242a40e69a
+	depends = 7zip
+	source = git+https://git.linux-gaming.ru/Boria138/PortProtonQt#tag=v0.1.12
+	sha256sums = d6ecab2ad0c39cd26347b71cb72c8a2b0b97e46fed72f058d01707bb150bc9c7
 
 pkgname = portprotonqt
+	pkgdesc = Modern GUI for managing and launching games from PortProton, Steam, and Epic Games Store
+	optdepends = networkmanager: System tab network management
+	optdepends = bluez: System tab bluetooth management
+	optdepends = upower: System tab bluetooth battery level
+	optdepends = libpulse: System tab audio volume/output management
+	optdepends = python-dbus-fast: System tab D-Bus integration
+	optdepends = python-qrcode: Wi-Fi QR code generation
+
+pkgname = portprotonqt-steam-compat
+	pkgdesc = Steam compatibility tool for PortProtonQt
+	depends = portprotonqt
