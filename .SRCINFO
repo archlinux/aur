@@ -1,6 +1,6 @@
 pkgbase = wayle
 	pkgdesc = A configurable desktop shell for Wayland compositors
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/wayle-rs/wayle
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = wayle
 	conflicts = wayle-bin
 	conflicts = wayle-git
 	options = !lto
-	source = wayle-0.2.0.tar.gz::https://github.com/wayle-rs/wayle/archive/v0.2.0.tar.gz
-	sha256sums = 6bddea66c5012d781205ffc62c5e52ca3d8d80e90001e899279750054c928870
+	source = wayle-0.2.1.tar.gz::https://github.com/wayle-rs/wayle/archive/v0.2.1.tar.gz
+	sha256sums = bc2cbfc0e60293fa3e3be236cf8871ab08e50ef5c716ce52583a425d2a32ef9e
 
 pkgname = wayle
