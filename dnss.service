@@ -1,0 +1,14 @@
+[Unit]
+Description=A small, speedy DNS proxy and bad-stuff-blocker.
+After=network.target
+Before=network-online.target nss-lookup.target
+Wants=nss-lookup.target
+
+[Service]
+User=dnss
+ExecStart=/usr/bin/dnss -c /etc/dnss.conf
+Restart=on-failure
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
