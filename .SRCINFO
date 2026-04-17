@@ -1,0 +1,21 @@
+pkgbase = vermouth
+	pkgdesc = A no-frills Wine/Proton game launcher for Linux
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/dekomote/vermouth
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = extra-cmake-modules
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kirigami
+	depends = ki18n
+	depends = kcoreaddons
+	depends = qqc2-desktop-style
+	optdepends = icoutils: Windows icon extraction
+	source = vermouth-1.2.1.tar.gz::https://github.com/dekomote/vermouth/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = c0f5e05018c9cbe86350e3334a385f14eef5a05845158fe4f1e33b73d739633a
+
+pkgname = vermouth
