@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=UYAP Dokuman Editor
+Name[tr]=UYAP Dokuman Editor
+GenericName=UYAP DOKUMAN EDITOR
+GenericName[tr]=UYAP DOKUMAN EDITOR
+Comment=
+Comment[tr]=
+Exec=uyap-dokuman %f
+Icon=uyap-editor
+MimeType=application/udf;
+Categories=Office;X-UYAP;
+Terminal=false

@@ -1,0 +1,5 @@
+#!/bin/bash
+exec java -Xmx200m \
+    -cp '/usr/share/java/uyap-editor/*' \
+    tr.com.havelsan.uyap.system.editor.common.WPAppManager \
+    getNewWPInstance EDITOR_TYPE_DOCUMENT "$@"

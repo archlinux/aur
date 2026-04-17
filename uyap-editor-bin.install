@@ -1,0 +1,17 @@
+_refresh_caches() {
+    update-desktop-database -q
+    update-mime-database -n /usr/share/mime
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+}
+
+post_install() {
+    _refresh_caches
+}
+
+post_upgrade() {
+    _refresh_caches
+}
+
+post_remove() {
+    _refresh_caches
+}

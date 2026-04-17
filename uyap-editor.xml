@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/udf">
+        <comment>Uyap Document File</comment>
+        <comment xml:lang="tr">Uyap Dokuman Editor</comment>
+        <acronym>UDF</acronym>
+        <expanded-acronym>Uyap Document File</expanded-acronym>
+        <generic-icon name="uyap-editor"/>
+        <glob pattern="*.udf"/>
+    </mime-type>
+
+    <mime-type type="application/usf">
+        <comment>Uyap Template File</comment>
+        <comment xml:lang="tr">Uyap Sablon Editor</comment>
+        <acronym>USF</acronym>
+        <expanded-acronym>Uyap Template File</expanded-acronym>
+        <generic-icon name="uyap-editor"/>
+        <glob pattern="*.usf"/>
+    </mime-type>
+</mime-info>

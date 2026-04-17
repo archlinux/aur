@@ -1,0 +1,23 @@
+# Development-only resources (not part of the AUR package)
+/openspec/
+/upstream/
+/.cursor/
+/project.txt
+
+# makepkg working/output directories
+/src/
+/pkg/
+
+# Built packages and signatures
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.pkg.tar.xz
+*.pkg.tar.xz.sig
+
+# makepkg-downloaded upstream sources
+uyap-editor-bin-*.zip
+
+# Editor / OS debris
+*~
+*.swp
+.DS_Store
