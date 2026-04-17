@@ -1,0 +1,17 @@
+pkgbase = task-tui
+	pkgdesc = A modern, interactive TUI for Taskwarrior built with Textual
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/lbesnard/task-tui
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-textual
+	source = task-tui-1.4.0.tar.gz::https://github.com/lbesnard/task-tui/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = 94548c50497a9d01b3a2fa22c48ade730ce227b0c07d75501d6bbfebcfed7e1e
+
+pkgname = task-tui
