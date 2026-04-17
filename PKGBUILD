@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-no-extras
-pkgver=142.0.7444.59
+pkgver=147.0.7727.101
 pkgrel=1
 # optionally modify to fit your specific hardware
 # hacky way to determine subarch
@@ -26,40 +26,72 @@ pkgdesc="Chromium without hangout services, widevine, or chromedriver"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD-3-Clause')
-provides=(chromium=$pkgver)
-conflicts=(chromium)
-depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
-         'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'rustup' 'rust-bindgen' 'qt6-base' 'java-runtime-headless'
-             'git' 'compiler-rt')
+depends=(
+  'alsa-lib'
+  'dbus'
+  'desktop-file-utils'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libcups'
+  'libffi'
+  'libgcrypt'
+  'libpulse'
+  'libva'
+  'libxss'
+  'nss'
+  'pciutils'
+  'systemd'
+  'ttf-liberation'
+  'xdg-utils'
+)
+makedepends=(
+  'clang'
+  'compiler-rt'
+  'git'
+  'gn'
+  'gperf'
+  'java-runtime-headless'
+  'lld'
+  'ninja'
+  'nodejs'
+  'pipewire'
+  'python'
+  'qt6-base'
+  'rust-bindgen'
+  'rust'
+)
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
-            'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
-            'kwallet: support for storing passwords in KWallet on Plasma'
+            'org.freedesktop.secrets: password storage backend on GNOME, KDE and Xfce'
             'upower: Battery Status API support')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         chromium-138-nodejs-version-check.patch
-        chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
+        chromium-145-fix-SYS_SECCOMP.patch
+        chromium-146-drop-unknown-clang-flag.patch
+        chromium-146-build-with-wasm-rollup.patch
+        chromium-147-revert-clang-no-lifetime-dse-flag.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch
-        chromium-141-cssstylesheet-iwyu.patch)
-sha256sums=('720a1196410080056cd97a1f5ec34d68ba216a281d9b5157b7ea81ea018ec661'
+        glibc-2.42-baud-rate-fix.patch)
+sha256sums=('2e2f36e3cd1ebc4ad57fd310774a5e5e9db77883d5f9374fedeaabd3c103b819'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
-            '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
+            '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
+            '24535c314c7e70c52bcf409aaf604728bfc5b5c97e60087e630e1f7233b9e12d'
+            '45fa20cc27ef0aa00d654d0bac84bfaa8d8090b5f8aec49cc2e8d7249d3cd7ba'
+            'c382830318c5b37826ecf44f3ba9def6be8affdad1bce819ecb83f3222ff4b3a'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
-            'e6da901e4d0860058dc2f90c6bbcdc38a0cf4b0a69122000f62204f24fa7e374'
-            'de5c873564b09713b65dd9e6a0b9049d7b3cf8f881436f36e1c091824b63e876')
+            '9343afa1a4308a7cfb3317229f5aff7778688debcc03c4a74a85908aa1d0cc3a'
+            '1c1898f263eaacbc069a8e1a3e732852350350d1dad4cb1a6bba430e3b796cd0')
 
 if (( _manual_clone )); then
   source[0]=fetch-chromium-release
+  sha256sums[0]='2e2f36e3cd1ebc4ad57fd310774a5e5e9db77883d5f9374fedeaabd3c103b819'
   makedepends+=('python-httplib2' 'python-pyparsing' 'python-six' 'npm' 'rsync')
 fi
 
@@ -78,7 +110,7 @@ declare -gA _system_libs=(
   #[libaom]=aom
   #[libavif]=libavif  # needs -DAVIF_ENABLE_EXPERIMENTAL_GAIN_MAP=ON
   [libjpeg]=libjpeg-turbo
-  [libpng]=libpng
+  # [libpng]=libpng
   #[libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
@@ -103,7 +135,7 @@ depends+=(${_system_libs[@]})
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
 prepare() {
-  rustup toolchain install 1.91.0
+  # rustup install nightly
 
   if (( _manual_clone )); then
     ./fetch-chromium-release $pkgver
@@ -130,10 +162,6 @@ prepare() {
 
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-138-nodejs-version-check.patch
-  patch -Np1 -i ../chromium-141-cssstylesheet-iwyu.patch
-
-  # Fixes from NixOS
-  patch -Np1 -i ../chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
@@ -141,13 +169,24 @@ prepare() {
   # Increase _FORTIFY_SOURCE level to match Arch's default flags
   patch -Np1 -i ../increase-fortify-level.patch
 
-  # Fixes for building with libstdc++ instead of libc++
+  # Fix issue about missing compiler flag, can be dropped when arch has LLVM 23
+  # clang++: error: unknown argument: '-fsanitize-ignore-for-ubsan-feature=array-bounds'
+  patch -Np1 -i ../chromium-146-drop-unknown-clang-flag.patch
+
+  # Causes a build failure with our clang version
+  patch -Np1 -i ../chromium-147-revert-clang-no-lifetime-dse-flag.patch
+
+  # https://crbug.com/456218403
+  patch -Np1 -i ../chromium-145-fix-SYS_SECCOMP.patch
+
+  patch -Np1 -i ../chromium-146-build-with-wasm-rollup.patch
+
+  # https://crbug.com/456677057
+  patch -Np1 -i ../glibc-2.42-baud-rate-fix.patch
 
   # Link to system tools required by the build
-  if (( ! _manual_clone )); then
-    mkdir third_party/node/linux/node-linux-x64/bin
-    ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
-  fi
+  mkdir -p third_party/node/linux/node-linux-x64/bin third_party/jdk/current/bin
+  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
 
   if (( !_system_clang )); then
@@ -252,7 +291,7 @@ build() {
     _flags+=(
       'rust_sysroot_absolute="/usr"'
       'rust_bindgen_root="/usr"'
-      "rustc_version=\"$(rustc --version)\""
+      "rustc_version=\"$(rustc --version | awk '{ print $2 ;}')\""
     )
   fi
 
@@ -283,6 +322,15 @@ build() {
   # https://crbug.com/957519#c122
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
+  if [[ $CARCH == aarch64 ]] || [[ $CARCH == riscv64 ]]; then
+    # On aarch64 and riscv64, certain files (e.g. in libvpx and libyuv) needs to
+    # be compiled with additional arch features (e.g. dotprod, sve, sme, rvv)
+    # Having an arch setting in the C(XX)FLAGS overrides those
+    # and causes compilation failure
+    CFLAGS="${CFLAGS/-march=*([^ ]) }"
+    CXXFLAGS="${CXXFLAGS/-march=*([^ ]) }"
+  fi
+
   gn gen out/Release --args="${_flags[*]}"
   ninja -C out/Release chrome chrome_sandbox chromedriver.unstripped
 }
@@ -290,23 +338,25 @@ build() {
 package() {
   cd chromium-launcher-$_launcher_ver
   make PREFIX=/usr DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE \
+  install -Dvm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
   cd ../chromium-$pkgver
 
-  install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
-  install -D out/Release/chromedriver.unstripped "$pkgdir/usr/bin/chromedriver"
-  install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
+  install -Dv out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
+  install -Dv out/Release/chromedriver.unstripped "$pkgdir/usr/bin/chromedriver"
+  install -Dvm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
 
-  install -Dm644 chrome/installer/linux/common/desktop.template \
+  install -Dvm644 chrome/installer/linux/common/desktop.template \
     "$pkgdir/usr/share/applications/chromium.desktop"
-  install -Dm644 chrome/app/resources/manpage.1.in \
+  install -Dvm644 chrome/app/resources/manpage.1.in \
     "$pkgdir/usr/share/man/man1/chromium.1"
   sed -i \
-    -e 's/@@MENUNAME@@/Chromium/g' \
-    -e 's/@@PACKAGE@@/chromium/g' \
-    -e 's/@@USR_BIN_SYMLINK_NAME@@/chromium/g' \
+    -e 's/@@MENUNAME/Chromium/g' \
+    -e 's/@@PACKAGE/chromium/g' \
+    -e 's/@@usr_bin_symlink_name/chromium/g' \
+    -e 's|@@uri_scheme|x-scheme-handler/chromium;|g' \
+    -e 's/@@extra_desktop_entries//g' \
     "$pkgdir/usr/share/applications/chromium.desktop" \
     "$pkgdir/usr/share/man/man1/chromium.1"
 
@@ -318,7 +368,7 @@ package() {
     export $(grep -o '^[A-Z_]*' $info_file)
     sed -E -e 's/@@([A-Z_]*)@@/\${\1}/g' -e '/<update_contact>/d' $tmpl_file | envsubst
   ) \
-  | install -Dm644 /dev/stdin "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
+  | install -Dvm644 /dev/stdin "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
 
   local toplevel_files=(
     chrome_100_percent.pak
@@ -343,19 +393,19 @@ package() {
   fi
 
   cp "${toplevel_files[@]/#/out/Release/}" "$pkgdir/usr/lib/chromium/"
-  install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
+  install -Dvm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
 
   for size in 24 48 64 128 256; do
-    install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
+    install -Dvm644 "chrome/app/theme/chromium/product_logo_$size.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png"
   done
 
   for size in 16 32; do
-    install -Dm644 "chrome/app/theme/default_100_percent/chromium/product_logo_$size.png" \
+    install -Dvm644 "chrome/app/theme/default_100_percent/chromium/product_logo_$size.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png"
   done
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chromium/LICENSE"
+  install -Dvm644 LICENSE "$pkgdir/usr/share/licenses/chromium/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
