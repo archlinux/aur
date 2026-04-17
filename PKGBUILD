@@ -2,7 +2,7 @@
 # Contributor DuckSoft <realducksoft at gmail dot com>
 pkgname=pingtunnel-git
 _pkgname=${pkgname%-git}
-pkgver=2.8.r1.gdc93b2d
+pkgver=master.2f75aea1924d47f975aeddf7527302622149b2ea.r0.g2f75aea
 pkgrel=1
 pkgdesc="A tool that advertises TCP/UDP/SOCKS5 traffic as ICMP traffic for forwarding."
 depends=(glibc)
