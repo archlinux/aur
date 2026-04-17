@@ -1,7 +1,7 @@
 # Maintainer: Youcef <youcef.nafa@gmail.com>
 pkgname=hermes-agent
-pkgver=0.9.0
-_tagver=2026.4.13
+pkgver=0.10.0
+_tagver=2026.4.16
 pkgrel=2
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
@@ -44,9 +44,11 @@ optdepends=(
   #'python-homeassistant: Home Assistant integration' -cli?
   #'python-acp: ACP editor integration support'
   'python-slack-sdk: Slack messaging'
+  'python-faster-whisper'
+  'python-sounddevice'
 )
 source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('5e4529b8cb6e4821eb916b81517e48125109b1764d6d1e68a204a9f0ddf2d98c')
+sha256sums=('ef999b93b487532c50f8ed42c3ac0141a52d128052ba0a0d0e90c6edc02e97fe')
 validpgpkeys=()
 
 build() {
