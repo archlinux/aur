@@ -1,7 +1,7 @@
 # Maintainer: Aleksei Gusev <aleksei.gusev@gmail.com>
 
 pkgname=krunner-zed
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="KRunner plugin to access Zed recent projects"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('rust' 'cargo')
 optdepends=('kde-cli-tools: kstart for proper starting Zed in KDE environment')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hron/krunner-zed/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('eaa468a89d22cf02f794ffeb37c6573d31be86986c4798974da82697ddb5d569')
+sha256sums=('994443617f1c466b3462b488f2870893f71d57fff6ca8eb62c987f6980d42ec2')
 
 prepare() {
     cd "$pkgname-$pkgver" || exit 1
