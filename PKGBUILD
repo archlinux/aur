@@ -1,6 +1,6 @@
 # Maintainer: Peter <your@email.com>
 pkgname=ytm-player-git
-pkgver=1.2.11.r0.g6b20a58
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A full-featured YouTube Music TUI client with vim-style navigation"
 arch=('any')
