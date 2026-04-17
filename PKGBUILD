@@ -7,6 +7,7 @@ pkgdesc="A modern, interactive TUI for Taskwarrior built with Textual"
 arch=('any')
 url="https://github.com/lbesnard/task-tui"
 license=('MIT')
+keywords=('taskwarrior' 'tui' 'task' 'productivity' 'todo' 'terminal' 'textual')
 depends=('python' 'python-textual')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 checkdepends=('python-pytest')
