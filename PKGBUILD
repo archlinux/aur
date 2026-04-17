@@ -3,7 +3,7 @@
 pkgname=baidu-translate-client-bin
 _pkgname=BdTranslateClient
 _zhsname='百度翻译'
-pkgver=2.2.1
+pkgver=2.3.0
 _electronversion=11
 pkgrel=1
 pkgdesc="Baidu translate.(Prebuilt version.Use system-wide electron)${_zhsname}"
@@ -32,7 +32,7 @@ source=(
     "LICENSE-${pkgver}.html::https://fanyi.baidu.com/static/webpage/agreement.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('106819913eba0ce50f5702474e3b2f62d51ac4a9b255b9541c9eb9584814a707'
+sha256sums=('21e8e2b9aa5c4acac0fbca196d23fe0494a45ff94c27a7cc83219749577a363d'
             '883caab57df8960f025758fa321da15cdac180dfc3688d7ec975c142ccd0d3ad'
             '1bac6150492bcebb1b2f74fc4a6712a8cd9317abf3107e6fa8ca357e5023bbf7'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
@@ -61,11 +61,12 @@ prepare(){
             ;;
     esac
     find "${srcdir}/resources/app.asar.unpacked" \( -name "*win32*" -o -name "*darwin*" \) -exec rm -rf {} +
+    find "${srcdir}/resources" -name "*.exe" -exec rm -rf {} +
 }
 package(){
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	cp -a "${srcdir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
     install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
