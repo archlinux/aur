@@ -31,6 +31,9 @@ depends=(
     'hidapi'
     'stb'
     'magic_enum'
+    'utf8proc'
+    'freetype'
+    'fontconfig'
 )
 makedepends=(
     'git'
