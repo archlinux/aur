@@ -487,13 +487,14 @@ run_walkthrough() {
       echo "Reusing existing $(pkg_filename)"
     fi
   else
-    if ! confirm "Build the .pkg.tar.zst now?" "Y"; then
-      die "walkthrough stopped before build"
-    fi
-    if [[ -n "$deb_file" ]]; then
-      run_prepare --deb-file "$deb_file"
+    if confirm "Build the .pkg.tar.zst now?" "Y"; then
+      if [[ -n "$deb_file" ]]; then
+        run_prepare --deb-file "$deb_file"
+      else
+        run_prepare --deb-url "$deb_url"
+      fi
     else
-      run_prepare --deb-url "$deb_url"
+      echo "Skipping build. You will need an existing CrabNebula download URL for this release."
     fi
   fi
 
