@@ -2,7 +2,7 @@
 
 pkgname=krunner-zed
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="KRunner plugin to access Zed recent projects"
 arch=('x86_64')
 url="https://github.com/hron/krunner-zed"
