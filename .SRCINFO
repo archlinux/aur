@@ -1,16 +1,15 @@
 pkgbase = powerpc-linux-gnu-linux-api-headers
 	pkgdesc = Kernel headers sanitized for use in userspace (powerpc-linux-gnu)
-	pkgver = 5.1
+	pkgver = 7.0
 	pkgrel = 1
 	url = http://www.gnu.org/software/libc
 	arch = any
 	license = GPL2
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v7.x/linux-7.0.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v7.x/linux-7.0.tar.sign
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	md5sums = 15fbdff95ff98483069ac6e215b9f4f9
+	md5sums = 1d35f79af3a784f986e4c3a154c0ecf5
 	md5sums = SKIP
 
 pkgname = powerpc-linux-gnu-linux-api-headers
-
