@@ -10,7 +10,7 @@ _pkgname=python-croniter
 pkgname="$_pkgname-git"
 _name="${_pkgname#python-}"
 pkgdesc='Parses cron schedules to iterate over datetime objects (development version)'
-pkgver=6.2.2.r11.gc3f41f5
+pkgver=6.2.2.r14.g831cdb3
 pkgrel=1
 url='https://github.com/pallets-eco/croniter'
 arch=('any')
@@ -45,6 +45,8 @@ prepare() {
   cd "$_name"
 
   git clean -dfx
+
+  sed -i 's/"packaging==26.0"/"packaging>=26.0"/g' pyproject.toml
 }
 
 pkgver() {
