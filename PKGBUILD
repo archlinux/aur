@@ -18,15 +18,5 @@ sha512sums_x86_64=('27db524e0afaa6ecbec3cef5ed5c71d8eb21a395391758c66f8d99948641
 sha512sums_aarch64=('SKIP')
 
 package(){
-
-	# Extract package data
-	tar -xz -f data.tar.gz -C "${pkgdir}"
-
-	# Fix directory structure differences
-	cd "${pkgdir}"
-
-	mkdir usr/bin 2> /dev/null; mv usr/sbin/* usr/bin; rm -rf usr/sbin
-
-	cd ..
-
+	tar -xf data.tar.gz ${pkgdir}
 }
