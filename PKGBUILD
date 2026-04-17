@@ -156,6 +156,10 @@ package() {
     install -dm755 "${pkgdir}/usr/share/polkit-1/rules.d"
     install -m644 -t "${pkgdir}/usr/share/polkit-1/rules.d" "${source_dir}/share/polkit-1/rules.d"/*
 
+    # alpm hooks
+    install -dm755 "${pkgdir}/usr/share/libalpm/hooks"
+    install -m644 -t "${pkgdir}/usr/share/libalpm/hooks" "${source_dir}/share/libalpm/hooks"/*
+
     # udev rules
     install -dm755 "${pkgdir}/usr/lib/udev/rules.d"
     install -m644 -t "${pkgdir}/usr/lib/udev/rules.d" "${source_dir}/lib/udev/rules.d"/*
