@@ -1,39 +1,8 @@
 pkgbase = dolphin-tabopts
-	pkgdesc = KDE File Manager - with extended tab options
-	pkgver = 25.12.3
+	pkgdesc = metapackage - migrate to dolphin
+	pkgver = 26.04.0
 	pkgrel = 1
-	url = https://invent.kde.org/system/dolphin/-/merge_requests/1152
-	arch = x86_64
-	arch = i686
-	license = GPL-2.0-or-later
-	makedepends = extra-cmake-modules
-	makedepends = git
-	makedepends = kdoctools
-	makedepends = ninja
-	depends = baloo-widgets
-	depends = kcmutils
-	depends = kio-extras
-	depends = knewstuff
-	depends = kparts
-	depends = ktextwidgets
-	depends = kuserfeedback
-	depends = kwidgetsaddons
-	depends = qt6-multimedia
-	optdepends = ffmpegthumbs: video thumbnails
-	optdepends = filelight: detailed disk usage statistics
-	optdepends = kde-cli-tools: for editing file type options
-	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
-	optdepends = kdenetwork-filesharing: samba usershare properties menu
-	optdepends = kdf: view disk usage
-	optdepends = kio-admin: for managing files as administrator
-	optdepends = kompare: comparing files menu action
-	optdepends = konsole: terminal panel
-	optdepends = purpose: share context menu
-	provides = dolphin=25.12.3
-	conflicts = dolphin
-	source = dolphin::git+https://invent.kde.org/system/dolphin.git#tag=v25.12.3
-	source = dolphin-MR1152-tab_options.patch::https://invent.kde.org/system/dolphin/-/commit/a31695655194c57c608f938c94684fe8db93696b.patch
-	sha256sums = bb804cc5ac10917af97f51dc1de95a64d8a03d79a2239de0949e027b8aaac9c7
-	sha256sums = bf81aa3ed12a3cdad45ec96f136d629ab0b6a2b20c54239a89ebdd418813e4ae
+	arch = any
 
 pkgname = dolphin-tabopts
+	depends = dolphin
