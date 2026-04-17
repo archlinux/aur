@@ -1,7 +1,7 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=plotjuggler-git
-pkgver=3.16.0.r82.gf3a557d3
+pkgver=3.16.0.r89.g44eaa553
 pkgrel=1
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(
     'arrow'
     'binutils'
     'fmt'
-    'lua'
+    'lua54'
     'mosquitto'
     'nlohmann-json'
     'protobuf'
@@ -31,13 +31,21 @@ makedepends=(
 provides=('plotjuggler')
 conflicts=('plotjuggler')
 source=(
-    "git+https://github.com/facontidavide/PlotJuggler.git"
+    'git+https://github.com/facontidavide/PlotJuggler.git'
+    '0001-lua54.patch'
 )
-sha256sums=('SKIP')
+sha256sums=(
+    'SKIP'
+    '3783f1e19f8bc6d64d48a7d68899d43df30fe23c577f4e4cf25c151c25e653fc'
+)
 
 pkgver() {
     cd PlotJuggler
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    patch -Np1 -i "${srcdir}/0001-lua54.patch" -d "${srcdir}/PlotJuggler"
 }
 
 build() {
