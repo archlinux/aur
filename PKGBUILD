@@ -1,5 +1,5 @@
 pkgname=lazyspotify-bin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Terminal Spotify client bundled with a patched go-librespot daemon"
 arch=('x86_64')
@@ -14,8 +14,8 @@ optdepends=(
   'xclip: clipboard integration on X11'
   'xsel: clipboard integration on X11'
 )
-source=("lazyspotify-v${pkgver}-arch-amd64.tar.gz::https://github.com/dubeyKartikay/lazyspotify/releases/download/v0.3.2/lazyspotify-v0.3.2-arch-amd64.tar.gz")
-sha256sums=('2055ef20c7a6f46443cdb27b15b47edec434fe5186dfd6a7018f8be695ffbb0a')
+source=("lazyspotify-v${pkgver}-arch-amd64.tar.gz::https://github.com/dubeyKartikay/lazyspotify/releases/download/v0.3.3/lazyspotify-v0.3.3-arch-amd64.tar.gz")
+sha256sums=('a196c2b0433fa243db8901b339f1a87103d24d24778da37b7680e424e7dee2d4')
 
 package() {
   install -Dm755 "${srcdir}/lazyspotify-v${pkgver}-arch-amd64/lazyspotify" "${pkgdir}/usr/bin/lazyspotify"
