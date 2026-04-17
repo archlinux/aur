@@ -1,7 +1,7 @@
 pkgbase = pv-migrate
 	pkgdesc = kubectl plugin to easily migrate the contents of one Kubernetes PersistentVolumeClaim to another
 	pkgver = 3.3.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/utkuozdemir/pv-migrate
 	arch = x86_64
 	groups = kubectl-plugins
@@ -9,12 +9,11 @@ pkgbase = pv-migrate
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	depends = kubectl
-	depends = goreleaser
+	optdepends = kubectl: can be used as a plugin for kubectl,
 	optdepends = bash-completion: auto-completion for flux in Bash,
 	optdepends = zsh-completions: auto-completion for flux in ZSH
 	provides = kubectl-pv-migrate
-	source = pv-migrate.git::git+https://github.com/utkuozdemir/pv-migrate#tag=v3.3.0
-	b2sums = bc074226195f979a9f93f5d7d5d3f954bfbd489710985bcc31590c050ff093f47a16d7c2b6412ed11e848884a5cfcda9c2a292900bb9b221dc2b05b082be296d
+	source = https://github.com/utkuozdemir/pv-migrate/archive/v3.3.0/pv-migrate-3.3.0.tar.gz
+	b2sums = 9aed13ef6382c60848633fc811f0874e27a5d369806d9df923041625212337eec23fec5bdd5b1fb47ff80d48ed16a84e90c4c2bb9eac2edf7c8d45d6a2e67aed
 
 pkgname = pv-migrate
