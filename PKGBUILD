@@ -1,15 +1,17 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-daemon
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Hardware fan control daemon for Linux (OpenFan, hwmon, GPU)"
 arch=('x86_64')
 url="https://github.com/Plan-B-Development/control-ofc-daemon"
 license=('MIT')
 depends=('glibc' 'systemd-libs')
+optdepends=('lm_sensors: sensors-detect for hardware not covered by built-in module list')
 makedepends=('rust' 'cargo')
 backup=('etc/control-ofc/daemon.toml'
-        'etc/control-ofc/profiles/quiet.json')
+        'etc/control-ofc/profiles/quiet.json'
+        'etc/modules-load.d/control-ofc.conf')
 install=control-ofc-daemon.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -72,6 +74,12 @@ package() {
     # /etc/udev/rules.d/ and fill in their VID/PID.
     install -Dm644 packaging/99-control-ofc.rules \
         "$pkgdir/usr/share/doc/$pkgname/99-control-ofc.rules.example"
+
+    # Kernel module loading — Super I/O chipset drivers that expose
+    # motherboard fan headers and sensors. See packaging/modules-load.d/
+    # for rationale. Covered by backup=() so pacman preserves user edits.
+    install -Dm644 packaging/modules-load.d/control-ofc.conf \
+        "$pkgdir/etc/modules-load.d/control-ofc.conf"
 
     # License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
