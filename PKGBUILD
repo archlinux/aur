@@ -1,9 +1,8 @@
 # Maintainer: PulseSync <contact@pulsesync.dev>
 
 pkgname=pulsesync-bin
-_upstream_ver=2.13.0
-pkgver=${_upstream_ver//-/_}
-pkgrel=1
+pkgver=2.13.0
+pkgrel=2
 _prefix=builds/app
 _branch=beta
 pkgdesc="PulseSync desktop app"
@@ -27,7 +26,8 @@ provides=('pulsesync')
 conflicts=('pulsesync')
 options=('!strip')
 
-_asset="pulsesync-app-${_upstream_ver}-amd64.deb"
+_asset_version="${pkgver}-beta"
+_asset="pulsesync-app-${_asset_version}-amd64.deb"
 
 source_x86_64=("${_asset}::https://s3.pulsesync.dev/${_prefix}/${_branch}/${_asset}")
 sha256sums_x86_64=('645e223e61ee93415bdc8177cb64b496d452fe2c3adb6ae7e7eef96386009c7c')
