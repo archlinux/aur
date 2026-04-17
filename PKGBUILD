@@ -4,13 +4,13 @@ pkgver=1.9.1
 pkgrel=1
 pkgdesc='Portunix CLI – intelligent developer environment automation toolkit'
 arch=('x86_64')
-url='https://github.com/cassandragargoyle/Portunix'
+url='https://github.com/cassandragargoyle/portunix'
 license=('MIT')
 depends=()
 makedepends=('go' 'git')
 provides=('portunix')
 conflicts=('portunix-bin')
-source=("portunix-${pkgver}.tar.gz::https://github.com/cassandragargoyle/Portunix/archive/refs/tags/v${pkgver}.tar.gz")
+source=("portunix-${pkgver}.tar.gz::https://github.com/cassandragargoyle/portunix/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
