@@ -4,7 +4,7 @@
 pkgname=python-croniter
 _name=${pkgname#python-}
 pkgver=6.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Parses cron schedules to iterate over datetime objects."
 arch=('any')
 url="https://github.com/pallets-eco/croniter"
@@ -23,6 +23,13 @@ makedepends=(
 checkdepends=('python-pytest')
 source=("https://github.com/pallets-eco/croniter/archive/refs/tags/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('d405ef6a395bc1340ee3c1ad4237493a4fdb24a5cfce63ee21cf1d5ab17cc377')
+
+prepare() {
+  cd "$_name-$pkgver"
+
+  # Relax requirements
+  sed -i 's/==/>=/g' pyproject.toml
+}
 
 build() {
   cd "$_name-$pkgver"
