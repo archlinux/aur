@@ -1,6 +1,6 @@
 pkgbase = quien-bin
 	pkgdesc = A better whois and domain intelligence toolkit (pre-built binary)
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/retlehs/quien
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = quien-bin
 	license = MIT
 	provides = quien
 	conflicts = quien
-	source_x86_64 = quien-0.7.1-amd64.tar.gz::https://github.com/retlehs/quien/releases/download/v0.7.1/quien_linux_amd64.tar.gz
-	sha256sums_x86_64 = b879ba635838344b6fe76e7739e61b8a5af3e3a8e377b9c1bcb2f40b256c5dca
-	source_aarch64 = quien-0.7.1-arm64.tar.gz::https://github.com/retlehs/quien/releases/download/v0.7.1/quien_linux_arm64.tar.gz
-	sha256sums_aarch64 = 840079b39857d475704dc2e21d78b37a3e5eaa4295b6c2523e81297c3ac1e91f
+	source_x86_64 = quien-0.7.2-amd64.tar.gz::https://github.com/retlehs/quien/releases/download/v0.7.2/quien_linux_amd64.tar.gz
+	sha256sums_x86_64 = f506b8310ab72283d27733e89df9c1f3775f35e68020494b4ae5cbf2784bc2c6
+	source_aarch64 = quien-0.7.2-arm64.tar.gz::https://github.com/retlehs/quien/releases/download/v0.7.2/quien_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4088501cec58a88da95c2fe151d7ed8fbe0ec9f22b0c628012e402c8b3579347
 
 pkgname = quien-bin
