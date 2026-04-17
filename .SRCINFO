@@ -1,20 +1,22 @@
 pkgbase = agentop-bin
-	pkgdesc = Terminal dashboard for AI coding assistant sessions — token usage, cost, and cache efficiency
-	pkgver = 0.1.1
+	pkgdesc = Terminal dashboard for AI coding assistant sessions
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/mohitmishra786/agentop
-	arch = x86_64
-	arch = aarch64
 	license = MIT
-	provides = agentop
 	conflicts = agentop
-	source_x86_64 = agentop-0.1.1-x86_64.tar.gz::https://github.com/mohitmishra786/agentop/releases/download/v0.1.1/agentop_0.1.1_linux_x86_64.tar.gz
-	sha256sums_x86_64 = d824156e4757732a59e4b435ec7fbc72dc874851060d89a7d5bcdb103d25626d
-	source_aarch64 = agentop-0.1.1-aarch64.tar.gz::https://github.com/mohitmishra786/agentop/releases/download/v0.1.1/agentop_0.1.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = d3402c0df8ac649ae1a94b0e26121a97f37cdb96e1660506d91d89349c16a154
-
+	provides = agentop
+	arch = aarch64
+	source_aarch64 = https://github.com/mohitmishra786/agentop/releases/download/v0.1.2/agentop_0.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 80bf672bc3805e3b25a836bbbfc118f34d2eeb9ec8cbeeefaa05d8a6ee1c11ab
+	arch = armv7h
+	source_armv7h = https://github.com/mohitmishra786/agentop/releases/download/v0.1.2/agentop_0.1.2_linux_armv7.tar.gz
+	sha256sums_armv7h = fcb7139c4448e3384091d28f1686cf19ecb6137b4457ad71ede7228db4291fdb
+	arch = i686
+	source_i686 = https://github.com/mohitmishra786/agentop/releases/download/v0.1.2/agentop_0.1.2_linux_i386.tar.gz
+	sha256sums_i686 = 9228ce7439ee545b8229e10821f9d8d332507fcd0adde11046e0106d436d5179
+	arch = x86_64
+	source_x86_64 = https://github.com/mohitmishra786/agentop/releases/download/v0.1.2/agentop_0.1.2_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 601050dc2dea9396b4b49812a6a8ead5a804d35bd9b84f6e2163e1931b804da8
+	
 pkgname = agentop-bin
-	pkgdesc = Terminal dashboard for AI coding assistant sessions — token usage, cost, and cache efficiency
-	depends =
-	provides = agentop
-	conflicts = agentop
