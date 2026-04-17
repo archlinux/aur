@@ -1,0 +1,19 @@
+pkgbase = spectre-loc
+	pkgdesc = Geolocation Surveillance & Recon Engine based on Shodan
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/LoudLunatics/spectre-loc
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dotenv
+	depends = python-rich
+	depends = python-shodan
+	source = spectre-loc-1.0.0.tar.gz::https://github.com/LoudLunatics/spectre-loc/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = ff2bfa6b30a017d5b7428b193ecee446fc76fab54b01b901805bd9ae7ba975bc
+
+pkgname = spectre-loc
