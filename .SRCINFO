@@ -1,6 +1,6 @@
 pkgbase = sem-bin
 	pkgdesc = Semantic version control CLI — entity-level diff, blame, graph, and impact analysis via tree-sitter
-	pkgver = 0.3.21
+	pkgver = 0.3.22
 	pkgrel = 1
 	url = https://ataraxy-labs.github.io/sem/
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = sem-bin
 	provides = sem
 	conflicts = sem
 	options = !debug
-	source_x86_64 = sem-0.3.21-x86_64.tar.gz::https://github.com/Ataraxy-Labs/sem/releases/download/v0.3.21/sem-linux-x86_64.tar.gz
-	source_x86_64 = LICENSE-APACHE-0.3.21::https://raw.githubusercontent.com/Ataraxy-Labs/sem/v0.3.21/LICENSE-APACHE
-	source_x86_64 = LICENSE-MIT-0.3.21::https://raw.githubusercontent.com/Ataraxy-Labs/sem/v0.3.21/LICENSE-MIT
-	sha256sums_x86_64 = 6cd7fccdf7b6c8be264ea17ba66ce6b672b62c9f601f0ef55eebca4e46048295
+	source_x86_64 = sem-0.3.22-x86_64.tar.gz::https://github.com/Ataraxy-Labs/sem/releases/download/v0.3.22/sem-linux-x86_64.tar.gz
+	source_x86_64 = LICENSE-APACHE-0.3.22::https://raw.githubusercontent.com/Ataraxy-Labs/sem/v0.3.22/LICENSE-APACHE
+	source_x86_64 = LICENSE-MIT-0.3.22::https://raw.githubusercontent.com/Ataraxy-Labs/sem/v0.3.22/LICENSE-MIT
+	sha256sums_x86_64 = 9ba76fa688d7cdc73cb081f8ad22622cc8c3aa7d70c782a37de46eaab53767af
 	sha256sums_x86_64 = 3d5ac2ca3c9e4bcd641e43c5512350cf62e15e527f9b4a720d52b546d9965a5f
 	sha256sums_x86_64 = 0173d0fc0ea38a5124e9cc7eea9db01a14141ce1240508eb497f701394fe49eb
 
