@@ -1,8 +1,8 @@
 # Maintainer: guglovich <твой@email.com>
 # Created with assistance from Claude (Anthropic)
 pkgname=vykar-gui-bin
-pkgver=0.12.12
-pkgrel=3
+pkgver=0.12.13
+pkgrel=1
 pkgdesc="Desktop GUI for Vykar backup — Slint-based, with system tray and scheduled backups"
 arch=('x86_64')
 options=('!debug')
@@ -13,7 +13,7 @@ depends=('fontconfig' 'libxkbcommon' 'libgl' 'xdotool')
 provides=('vykar-gui')
 conflicts=('vykar-gui')
 source=("vykar-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/borgbase/vykar/releases/download/v${pkgver}/vykar-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('9eb85740dc0455097b6bb4eb0a8ec45ab5ad1c177ad913bd84745cfd14e75dbe')
+sha256sums=('3c0150905b3b69da68fef378f3c1c3ae26ac86b1ac569123c874e356f430e1c8')
 
 package() {
     cd "$srcdir"
