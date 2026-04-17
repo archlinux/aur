@@ -1,5 +1,6 @@
-*.tar.gz
-*.tar.xz
 pkg
 src
 .vscode
+*.zst
+*.xz
+*.gz
