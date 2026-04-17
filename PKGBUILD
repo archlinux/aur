@@ -2,7 +2,7 @@
 pkgname=hermes-agent
 pkgver=0.10.0
 _tagver=2026.4.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
@@ -57,15 +57,20 @@ build() {
 
   # Install Node.js dependencies
   [ -f "package.json" ] && npm install
+
   # Build frontend
   [ -d "web" ] && cd web && npm install && npm run build && cd ..
+  
   # Install whatsapp-bridge dependencies
-  [ -f "scripts/whatsapp-bridge/package.json" ] && cd scripts/whatsapp-bridge && npm install --silent 2>/dev/null && cd ../..
- # Ensure web_dist is included in the Python package
- # The web build output needs to be in hermes_cli/web_dist for the wheel to include it
- [ -d "web/dist" ] && cp -r web/dist hermes_cli/web_dist
+  if [ -f "scripts/whatsapp-bridge/package.json" ]; then
+    (cd scripts/whatsapp-bridge && npm install --legacy-peer-deps --omit=dev) || echo "Warning: whatsapp-bridge npm install failed (optional)"
+  fi
+  # Ensure web_dist is included in the Python package
+  # The web build output needs to be in hermes_cli/web_dist for the wheel to include it
+  [ -d "web/dist" ] && cp -r web/dist hermes_cli/web_dist
 
- # Build Python wheel
+  # Build Python wheel
+  python -m build --wheel --no-isolation
 }
 
 package() {
@@ -74,15 +79,15 @@ package() {
   # Install Python package
   python -m installer --destdir="$pkgdir" dist/*.whl
 
- # Create wrapper script to set NODE_PATH for browser tools
- rm "$pkgdir/usr/bin/hermes"
- cat > "$pkgdir/usr/bin/hermes" << 'EOF'
- #!/bin/bash
- export NODE_PATH="/usr/share/hermes-agent/node_modules${NODE_PATH:+:$NODE_PATH}"
- export PATH="/usr/share/hermes-agent/node_modules/.bin:$PATH"
- exec python -m hermes_cli "$@"
- EOF
- chmod 755 "$pkgdir/usr/bin/hermes"
+  # Create wrapper script to set NODE_PATH for browser tools
+  cp "$pkgdir/usr/bin/hermes" "$pkgdir/usr/bin/hermes-real"
+  echo '#!/bin/bash' > "$pkgdir/usr/bin/hermes"
+  echo 'export NODE_PATH="/usr/share/hermes-agent/node_modules${NODE_PATH:+:$NODE_PATH}"' >> "$pkgdir/usr/bin/hermes" 
+  echo 'export PATH="/usr/share/hermes-agent/node_modules/.bin:$PATH"' >> "$pkgdir/usr/bin/hermes" 
+  echo 'exec /usr/bin/hermes-real "$@"' >> "$pkgdir/usr/bin/hermes" 
+
+  chmod 755 "$pkgdir/usr/bin/hermes"
+ 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Install optional submodule if present
