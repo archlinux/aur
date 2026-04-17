@@ -1,6 +1,6 @@
 pkgbase = squelchbox
 	pkgdesc = TB-303-style acid bassline synthesizer plugin (VST3/CLAP/standalone)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Hornfisk/squelchbox
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = squelchbox
 	depends = alsa-lib
 	depends = jack2
 	options = !lto
-	source = squelchbox-0.1.1.tar.gz::https://github.com/Hornfisk/squelchbox/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 42babcb2ce983ed061c9aaf596108da5eb544ac08ff2a975a515a82e174a94a4
+	source = squelchbox-0.1.2.tar.gz::https://github.com/Hornfisk/squelchbox/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = f83f7b1710e03a7847af0146fff8f85c3886530f0d2e49f9e570b16a2e869410
 
 pkgname = squelchbox
