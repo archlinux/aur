@@ -26,7 +26,7 @@ pkgver() {
 
 # Packaging guideline cause double build.
 export RUSTONIG_DYNAMIC_LIBONIG=1
-export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no" #--cfg=linux_latest" # rustix flag
+export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no --cfg=linux_latest" # rustix optimization is OK for ARch 's lts
 [ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS='-Zbuild-std=std,panic_abort --config=profile.release.panic=\"immediate-abort\" -Zpanic-immediate-abort'
 package(){
   cd ${pkgname%-git}
@@ -34,7 +34,7 @@ package(){
   #git apply -v -p1 ../head-fuse-fake-stat.patch
   unset optdepends
   export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release MULTICALL=y LN="ln -f" MANPAGES=n COMPLETIONS=n #LOCALES=n
-  make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname expand factor unexpand ptx sum shred shuf"
+  make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname" #expand factor unexpand ptx sum shred shuf"
   make install PROG_PREFIX=uu- UTILS="arch kill more uptime hostname"
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
   cp -r ../share "$pkgdir"/usr && cd "$pkgdir"/usr/share
