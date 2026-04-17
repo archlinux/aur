@@ -3,8 +3,8 @@
 pkgname=next-ai-draw-io-bin
 _pkgname=next-ai-draw-io
 _dist_name="Next AI Draw.io"
-pkgver=0.4.13
-_pkgver=0.4.13
+pkgver=0.4.15
+_pkgver=0.4.15
 _electronversion=39
 pkgrel=1
 pkgdesc="Next AI Powered Draw.io (Desktop version). Built for system-wide electron."
@@ -21,8 +21,8 @@ source_x86_64=("${url}/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_amd6
 source_aarch64=("${url}/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_arm64.deb")
 source=("${_pkgname}.sh")
 
-sha256sums_x86_64=('b529d6501745ecf63f67cc4801a04a1e04bf9c441450b62d15b03ca0614e8f0d')
-sha256sums_aarch64=('616e68d4ccab9ad2af03bc1f44db1c6a9ada40e6c179a0c607835d5fdcd38f91')
+sha256sums_x86_64=('b6d241e8e2370a766e302e6d7c949c53ffe8958909e210f81bed5a18cd6d0f3a')
+sha256sums_aarch64=('7c83dc87cd755a5ee7db4cb49aa8ff65c1603270914c0e165c632e34cdcd1bf2')
 sha256sums=('6dec33b7b4169f695f1ff02a9e55a6ce93b421b20177f051b29223911b8d0a8a')
 
 prepare() {
