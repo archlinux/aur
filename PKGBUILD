@@ -1,11 +1,11 @@
-# Maintainer: Stefan Auditor <stefan@auditor.email>
+# Maintainer: a821 at mail dot de
+# Contributor: Stefan Auditor <stefan@auditor.email>
 # Contributor: Johannes Schleifenbaum <johannes [at] js-webcoding [dot] de>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 # Please report issues at https://github.com/jojosch/pkgbuilds
 
-_pkgname=php-box
-pkgname=${_pkgname}
-pkgver=4.6.8
+pkgname=php-box
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="An application for building and managing Phars"
 arch=("any")
@@ -13,24 +13,21 @@ url="https://github.com/box-project/box"
 license=("MIT")
 depends=('php' 'php-sodium')
 makedepends=('git' 'composer')
-conflicts=('php-box')
-provides=('box')
-install="${_pkgname}.install"
 source=("git+https://github.com/box-project/box.git#tag=${pkgver}")
-md5sums=('0a391b0000ae90267bf7daea922aeae7')
+sha256sums=('3a496bc1434b455c6ee394799ef767dea70225d70c7cd82e0b35f7d70a511807')
 
 prepare() {
-  cd "${srcdir}/${provides[0]}"
+  cd box
   composer install --no-interaction
 }
 
 build() {
-  cd "${srcdir}/${provides[0]}"
+  cd box
   bin/box compile
 }
 
 package() {
-  cd "${srcdir}/${provides[0]}"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -D -m755 bin/box.phar "${pkgdir}/usr/bin/${provides[0]}"
+  cd box
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m755 bin/box.phar "${pkgdir}/usr/bin/box"
 }

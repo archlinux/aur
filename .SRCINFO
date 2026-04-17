@@ -1,18 +1,15 @@
 pkgbase = php-box
 	pkgdesc = An application for building and managing Phars
-	pkgver = 4.6.8
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://github.com/box-project/box
-	install = php-box.install
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = composer
 	depends = php
 	depends = php-sodium
-	provides = box
-	conflicts = php-box
-	source = git+https://github.com/box-project/box.git#tag=4.6.8
-	md5sums = 0a391b0000ae90267bf7daea922aeae7
+	source = git+https://github.com/box-project/box.git#tag=4.7.0
+	sha256sums = 3a496bc1434b455c6ee394799ef767dea70225d70c7cd82e0b35f7d70a511807
 
 pkgname = php-box
