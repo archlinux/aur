@@ -3,9 +3,9 @@
 pkgname=elio
 pkgver=1.0.1
 pkgrel=1
-pkgdesc='Terminal-native file manager with rich previews, inline images, and mouse support'
+pkgdesc='Terminal file manager (TUI) with a three-pane layout, rich previews, inline images, and keyboard-first workflows'
 arch=('x86_64')
-url='https://github.com/elio-fm/elio'
+url='https://elio-fm.github.io/'
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
