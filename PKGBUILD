@@ -1,16 +1,18 @@
 # Maintainer: wjsoj <wjs@wjsphy.top>
 
 pkgname=ccuse
-pkgver=0.1.2
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="A CLI tool to manage and switch between Claude Code profiles"
 arch=('x86_64' 'aarch64')
+provides=('ccuse-bin')
+conflicts=('ccuse-bin')
 url="https://github.com/wjsoj/ccuse"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wjsoj/ccuse/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ef9da2a6144f2165df72fab3601af16a3fdc1e023f744f613a377754aa1e71c8')
+sha256sums=('4322e03736fc2e7df00f33467052ebdf3f8c0651fcd9ef5305fb0df0d055f2b3')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
