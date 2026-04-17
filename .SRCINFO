@@ -1,16 +1,14 @@
 pkgbase = pulsar
 	pkgdesc = Distributed pub-sub messaging system
-	pkgver = 2.11.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/apache/pulsar
 	arch = any
 	license = Apache
-	makedepends = java-environment=17
-	makedepends = maven
-	depends = java-runtime=17
-	depends = bash
+	makedepends = java-environment>=21
+	depends = java-runtime>=21
 	depends = python
-	source = pulsar-2.11.0.tar.gz::https://github.com/apache/pulsar/archive/refs/tags/v2.11.0.tar.gz
-	sha256sums = 63ef2421b9e09f57cf79c56111f59d320f66ecc6f4a7bd711af4d90ddce66098
+	source = pulsar-4.2.0.tar.gz::https://github.com/apache/pulsar/archive/refs/tags/v4.2.0.tar.gz
+	sha256sums = 6491def2f54278815111896d4c15967556c2fa956d23424e0448d4a395e77bd9
 
 pkgname = pulsar

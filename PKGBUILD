@@ -1,19 +1,28 @@
-# Maintainer: Adam Brenner <adam@aeb.io>
+# Maintainer: Rongbo Wu <wurongbo2012@hotmail.com>
+# Contributor: Adam Brenner <adam@aeb.io>
+
 pkgname=pulsar
-pkgver=2.11.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Distributed pub-sub messaging system'
 arch=('any')
 url='https://github.com/apache/pulsar'
 license=('Apache')
-makedepends=('java-environment=17' 'maven')
-depends=('java-runtime=17' 'bash' 'python')
+makedepends=('java-environment>=21'
+)
+depends=('java-runtime>=21' 'python')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/apache/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('63ef2421b9e09f57cf79c56111f59d320f66ecc6f4a7bd711af4d90ddce66098')
+sha256sums=('6491def2f54278815111896d4c15967556c2fa956d23424e0448d4a395e77bd9')
 
 build() {
-  cd ${pkgname}-${pkgver}
-  mvn package -Pcore-modules,-main -DskipTests
+    cd ${pkgname}-${pkgver}
+    ./mvnw package -DskipTests -Daether.connector.basic.threads=12
+   #mvn package -Pcore-modules,-main -DskipTests
+}
+
+check(){
+    cd ${pkgname}-${pkgver}
+    ./mvnw test
 }
 
 package() {
@@ -43,5 +52,3 @@ package() {
     fi
   done
 }
-
-# vim: ts=2 sw=2 et:
