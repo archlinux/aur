@@ -1,6 +1,6 @@
 # Maintainer: D7OMDEV <hello@d7om.dev>
 pkgname=clipse-gui
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A GTK3 GUI for the clipse clipboard manager"
 arch=('any')
@@ -10,6 +10,7 @@ depends=(
 	'python'
 	'python-gobject'
 	'gtk3'
+	'gtk-layer-shell'
 	'wl-clipboard'
 	'wtype'
 	'xdotool'
