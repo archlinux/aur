@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Distributed pub-sub messaging system'
 arch=('any')
 url='https://github.com/apache/pulsar'
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('java-environment>=21'
 )
 depends=('java-runtime>=21' 'python')
@@ -31,6 +31,7 @@ package() {
   cd apache-${pkgname}-${pkgver}
 
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm777 ${pkgdir}/opt/${pkgname}/logs
   find conf -type f -exec install -D -m644 "{}" "${pkgdir}/opt/${pkgname}/{}" \;
 
   for bin in $(ls bin -I "*.cmd"); do
