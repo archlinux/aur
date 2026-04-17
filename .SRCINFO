@@ -1,7 +1,7 @@
 pkgbase = kiro-generator-bin
 	pkgdesc = Kiro agent configuration generator
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kiro-generator/kiro-generator
 	install = kiro-generator.install
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kiro-generator-bin
 	options = !debug
 	backup = etc/kg/global.env
 	backup = etc/kg/home.env
-	source = kiro-generator::https://github.com/kiro-generator/kiro-generator/releases/download/v0.3.0/kg-amd64-linux.tar.gz
-	sha256sums = 416cdb6b54e9662028850b175fe9bd2ae18cc44d5b673c77283f03c7fb410c1d
+	source = https://github.com/kiro-generator/kiro-generator/releases/download/v0.3.0/kg-amd64-linux.tar.gz
+	sha256sums = ee45e356ca070d7480a58a050ec7497bc31784eeb99dfe55fddf64ef983d68e4
 
 pkgname = kiro-generator-bin
