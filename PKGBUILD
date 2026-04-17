@@ -2,7 +2,7 @@
 
 pkgbase=x-tools
 pkgname=x-tools
-pkgver=7.7.0
+pkgver=7.7.1
 pkgrel=1
 groups=()
 pkgdesc="Qt SerialPort-BLE-UDP-TCP-WebSocket-Modbus-CAN Assistant."
@@ -11,20 +11,21 @@ url="https://github.com/x-tools-author/x-tools"
 license=('LGPL-3.0-or-later')
 provides=(${pkgname} xtools)
 conflicts=(${pkgname} xtools)
+_qt=qt6
 depends=(
     bash
-    gcc-libs
     glibc
     hicolor-icon-theme
-    libiconv
-    libunwind
-    vulkan-headers
-    qt6-charts
-    qt6-connectivity
-    qt6-base
-    qt6-serialbus
-    qt6-serialport
-    qt6-websockets
+    libgcc
+    libstdc++
+    $_qt-charts
+    $_qt-connectivity
+    $_qt-base
+    $_qt-declarative
+    $_qt-serialbus
+    $_qt-serialport
+    $_qt-websockets
+    systemd-libs
     #     google-glog
     #     libusb
     #     hidapi
@@ -38,8 +39,11 @@ makedepends=(
     git
     cmake
     ninja
-    qt6-svg
-    qt6-tools
+    libiconv
+    libunwind
+    vulkan-headers
+    $_qt-svg
+    $_qt-tools
     pkgconf
 )
 checkdepends=(
@@ -47,7 +51,7 @@ checkdepends=(
 )
 optdepends=()
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('b695e4f5ee6762e58ebcacb4f2b3e797329edf62e7455e641554f70f49f488fa')
+sha256sums=('3f4afe1a302423b6e6b100c2a0ed308a6a5f5fbc61edc312c108fa28f03ece88')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
