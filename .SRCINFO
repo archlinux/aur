@@ -1,6 +1,6 @@
 pkgbase = contextzip-bin
 	pkgdesc = Compresses noisy CLI output to reduce LLM context usage
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/jee599/contextzip
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = contextzip-bin
 	provides = contextzip
 	conflicts = contextzip
 	options = !strip
-	source_x86_64 = contextzip-0.1.1-linux-x86_64::https://github.com/jee599/contextzip/releases/download/v0.1.1/contextzip-linux-x86_64
-	source_x86_64 = contextzip-0.1.1.tar.gz::https://github.com/jee599/contextzip/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums_x86_64 = 3421ba3fbbdcce98515628912e8bf1f4f4a4c2898c3cf009c4f4dd0624bee9a9
-	sha256sums_x86_64 = f805fcabe7842505f76d099d4192eb6d026a54b713f3363396dfa359fe63598c
+	source_x86_64 = contextzip-0.2.0-linux-x86_64::https://github.com/jee599/contextzip/releases/download/v0.2.0/contextzip-linux-x86_64
+	source_x86_64 = contextzip-0.2.0.tar.gz::https://github.com/jee599/contextzip/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums_x86_64 = d3269e26b01efe999b446a3156585125e99b668ab6065f699a38ca1c8f5f95c8
+	sha256sums_x86_64 = 7611c014d0a0049bcb60ab734ac35f4c1cd6ec409a52ed3bb74acf3629533858
 
 pkgname = contextzip-bin

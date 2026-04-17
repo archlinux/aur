@@ -1,6 +1,6 @@
 pkgname=contextzip-bin
 _pkgname=contextzip
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Compresses noisy CLI output to reduce LLM context usage'
 arch=('x86_64')
@@ -15,8 +15,8 @@ source_x86_64=(
   "${_pkgname}-${pkgver}-linux-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64"
   "${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums_x86_64=('3421ba3fbbdcce98515628912e8bf1f4f4a4c2898c3cf009c4f4dd0624bee9a9'
-                   'f805fcabe7842505f76d099d4192eb6d026a54b713f3363396dfa359fe63598c')
+sha256sums_x86_64=('d3269e26b01efe999b446a3156585125e99b668ab6065f699a38ca1c8f5f95c8'
+                   '7611c014d0a0049bcb60ab734ac35f4c1cd6ec409a52ed3bb74acf3629533858')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}-${pkgver}-linux-x86_64" "${pkgdir}/usr/bin/${_pkgname}"
