@@ -1,0 +1,12 @@
+pkgbase = sera-git
+	pkgdesc = Command-line updater for KDE Plasma addons, widgets, plasmoids, or plugins.
+	pkgver = r20.b1f5060
+	pkgrel = 1
+	url = https://gitlab.com/cscs/sera
+	arch = any
+	license = MIT
+	depends = jq
+	source = git+https://gitlab.com/cscs/sera.git
+	sha256sums = SKIP
+
+pkgname = sera-git
