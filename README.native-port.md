@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 pacmanics
+
+SPDX-License-Identifier: 0BSD
+-->
+
 # pentest-ghostwriter
 
 `pentest-ghostwriter` is a local-first Arch Linux port of Ghostwriter adapted for single-user offensive security workflows on a workstation.

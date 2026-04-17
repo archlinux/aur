@@ -1,0 +1,5 @@
+[pentest-ghostwriter]
+source = "github"
+github = "GhostManager/Ghostwriter"
+use_max_tag = true
+prefix = "v"
