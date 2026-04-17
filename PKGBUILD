@@ -1,9 +1,9 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
-pkgver=0.8.1.r7.g9d02b92
-pkgrel=2
+pkgver=0.8.2.r0.g7e204ee
+pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Firstp1ck/Pacsea"
 license=('MIT')
 depends=('pacman' 'curl' 'bash' 'sudo' 'coreutils' 'grep' 'xdg-utils')
@@ -35,7 +35,7 @@ optdepends=(
     'semgrep-bin: static analysis checks'
     'shellcheck: lint shell scripts'
     'downgrade: Downgrade of Packages'
-    'pacman-contrib: Used as a fallback for update checking'    
+    'pacman-contrib: Used as a fallback for update checking'
 )
 
 makedepends=('cargo' 'git')
@@ -46,25 +46,21 @@ source=()
 sha256sums=()
 
 # Custom source function to clone with sparse checkout, excluding Images/ and Release-docs/
-source() {
+fetch_source() {
   cd "$srcdir" || exit 1
   if [ ! -d Pacsea ]; then
     git clone --filter=blob:none --sparse https://github.com/Firstp1ck/Pacsea.git Pacsea
   fi
   cd Pacsea || exit 1
+  git pull --tags origin main 2>/dev/null || true
   git sparse-checkout init --no-cone
-  git sparse-checkout set '/*' \
-  '!/Images' '!/Release-docs' \
-  '!/AGENTS.md' '!/CLAUDE.md' '!/CODE_OF_CONDUCT.md' \
-  '!/CONTRIBUTING.md' '!/Makefile' '!/deny.toml' \
-  '!/rustfmt.toml' '!/clippy.toml' '!/.gitleaks.toml' \
-  '!/pacsea.code-workspace'
+  git sparse-checkout set '/*' '!/Images' '!/Release-docs' '!/dev' '!/.git' '!/.github'
   git checkout 2>/dev/null || true
 }
 
 pkgver() {
   if [ ! -d "$srcdir/Pacsea" ]; then
-    source >/dev/null 2>&1
+    fetch_source >/dev/null 2>&1
   fi
   cd "$srcdir/Pacsea" || exit 1
   git describe --tags --long --always \
@@ -73,7 +69,7 @@ pkgver() {
 
 prepare() {
   if [ ! -d "$srcdir/Pacsea" ]; then
-    source
+    fetch_source
   fi
   cd "$srcdir/Pacsea" || exit 1
   export RUSTUP_TOOLCHAIN=stable
@@ -82,6 +78,11 @@ prepare() {
 
 build() {
   cd "$srcdir/Pacsea" || exit 1
+
+  # Strip makepkg's cross-compiler wrappers so aws-lc-sys cmake build
+  # uses plain system tools and not x86_64-pc-linux-gnu-* wrappers.
+  unset CC CXX AR LD CFLAGS CXXFLAGS LDFLAGS CHOST
+
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
@@ -89,6 +90,7 @@ build() {
 
 check() {
   cd "$srcdir/Pacsea" || exit 1
+  unset CC CXX AR LD CFLAGS CXXFLAGS LDFLAGS CHOST
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --release --all-features -- --test-threads=1
 }
@@ -105,4 +107,7 @@ package() {
   # Install locale files
   install -d "$pkgdir/usr/share/pacsea/locales"
   install -m644 config/locales/*.yml "$pkgdir/usr/share/pacsea/locales/"
+
+  install -Dm644 data/pacsea.desktop "$pkgdir/usr/share/applications/pacsea.desktop"
+  install -Dm644 data/assets/pacsea.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/pacsea.svg"
 }
