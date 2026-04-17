@@ -1,6 +1,6 @@
 pkgname=pulseview-slogic-appimage
-pkgver=260122
-pkgrel=1
+pkgver=230811
+pkgrel=2
 pkgdesc='基于 Qt 的 sigrok 逻辑分析仪图形用户界面(slogic定制版,仅适用于slogic的逻辑分析仪)'
 arch=('x86_64')
 url='https://wiki.sipeed.com/hardware/zh/logic_analyzer/combo8/use_logic_function.html'
@@ -10,7 +10,7 @@ depends=('fuse2')
 source=(
   "https://github.com/a15355447898a/pulseview-slogic/releases/download/260122/pulseview-slogic-${pkgver}-x86_64.AppImage"
 )
-sha512sums=('222e5cf989b09b504b777be9c874402c103da84eee7dfca34e74fcabb3be9cbca92f26612ac48cbc7c56d8c2e6e9f838af7fbbbba1a0be5b900ccd194eb1e865')
+sha512sums=('dbfe7b3e703fa1c97d7f5a67ce27f65f377dbd9c0af3f2aa97d9aabcf008ea9dd1456505b676028b074f13554bab6eaa34cab22cd6fb4c8dc56d205157f2930f')
 
 _installdir=/opt/pulseview-slogic
 
