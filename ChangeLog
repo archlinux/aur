@@ -1,6 +1,7 @@
 ## Changelog
-* 22ad073a49cecd5609e6ed8489e9a38e38a555a7 chore: update Go toolchain to 1.25.9 (#5015) (#5016)
-* 1e3df8ef22bfc6e1edda0dae39b9d57cebe4fc70 docs: add v1.20.1 v1.20.2 release notes (#4999)
+* 2b49131fb821d9029514945bf13209c2917dede1 chore(deps): bump protobufjs from 7.5.4 to 7.5.5 in /ui (#5062) (#5064)
+* b8ee74b159ebe78fe9f3065e42ad0172e8f8d575 chore(deps): bump protocol-buffers-schema from 3.6.0 to 3.6.1 in /ui (#5059) (#5061)
+* edcc88f9d1de1be881b8a0a659568336f28bf072 docs: add v1.20.3 release notes (#5019) (#5021)
 
 As always, feedback is more than welcome, feel free to open issues/discussions.
 You can reach out to the team using:
@@ -15,7 +16,7 @@ You can reach out to the team using:
 - [grafana/pyroscope](https://hub.docker.com/r/grafana/pyroscope/tags)
 
 ```bash
-  docker pull docker.io/grafana/pyroscope:1.20.3
+  docker pull docker.io/grafana/pyroscope:1.20.4
 ```
 
 
