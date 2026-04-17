@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=hyprfm-git
-pkgver=r266.ga340782
+pkgver=r267.ga596555
 pkgrel=1
 pkgdesc="A lightweight Qt6/QML file manager for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,9 @@ optdepends=(
     'bat: syntax-highlighted text previews'
     'gvfs: remote filesystem support via gio/gvfs (sftp, ftp, dav, etc.)'
     'gvfs-smb: SMB/CIFS remote browsing support'
-    'ffmpeg: video file thumbnail previews'
+    'ffmpeg: video thumbnails and audio/video metadata (via ffprobe)'
+    'poppler: PDF thumbnails, previews, and metadata (via pdftoppm/pdfinfo)'
+    'perl-image-exiftool: EXIF metadata for images (via exiftool)'
     'udisks2: mount/unmount devices from sidebar'
 )
 provides=('hyprfm')
