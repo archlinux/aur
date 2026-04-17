@@ -1,8 +1,8 @@
 # Maintainer: Heine Otte <heinep@gmail.com>
 _pkgname=velvet
 pkgname=$_pkgname-git
-pkgver=e899ceb
-pkgrel=3
+pkgver=a46be9b
+pkgrel=1
 pkgdesc="Velvet is a fully scriptable terminal multiplexer which draws heavy inspiration from tmux and neovim"
 arch=('x86_64')
 url="https://github.com/Operdies/$_pkgname.git"
