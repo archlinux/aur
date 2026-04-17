@@ -1,0 +1,28 @@
+Copyright (c) 2026 BasalBit GmbH.
+All rights reserved.
+
+This software and associated documentation files (the "Software") are
+proprietary to BasalBit GmbH and are licensed, not sold.
+
+Subject to these terms, BasalBit GmbH grants you a limited, non-exclusive,
+non-transferable, revocable license to download, install, run, and make copies
+of unmodified official releases of the Software solely as needed for your
+internal business use or personal use with rerune services.
+
+Except for the limited permission above, you may not modify, reverse engineer,
+decompile, disassemble, sublicense, sell, publish, distribute, or create
+derivative works of the Software without prior written authorization from
+BasalBit GmbH.
+
+No right, title, or interest in the Software or any intellectual property is
+transferred to you.
+
+Commercial license terms and additional permissions may be available at:
+https://rerune.io/terms
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL
+BASALBIT GMBH BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN
+AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
