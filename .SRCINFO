@@ -1,7 +1,7 @@
 pkgbase = xgestured-git
 	pkgdesc = A lightweight, minimal, and lightning-fast touchpad gesture daemon for X11
 	pkgver = r32.0375b5d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/06ergin06/xgestured
 	install = xgestured.install
 	arch = x86_64

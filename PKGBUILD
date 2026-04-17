@@ -1,7 +1,7 @@
 # Maintainer: İbrahim Hakkı Ergin <ibrahimh.ergin@gmail.com>
 pkgname=xgestured-git
 pkgver=r32.0375b5d
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight, minimal, and lightning-fast touchpad gesture daemon for X11"
 arch=('x86_64')
 url="https://github.com/06ergin06/xgestured"
