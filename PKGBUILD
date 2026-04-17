@@ -1,6 +1,6 @@
 # Maintainer: oom <master@spicebrains.com>
 pkgname=ie-r
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Instant Eyedropper Reborn — pixel-perfect color picker"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=(
     'pkg-config'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('da97ea5e36f819511d5416b0bb81751fb8274c9e4e785c4117810624737d5729')
+sha256sums=('37bbac810bc7c1b7a8750336bc1236371493201a829c5ea25e21bb81a5de0cb2')
 
 build() {
     cd "$pkgname-$pkgver"
