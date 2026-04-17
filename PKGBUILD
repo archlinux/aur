@@ -21,6 +21,7 @@ package() {
 
   # /opt install
   install -d "$pkgdir/opt/CypherGate"
+  install -d "$pkgdir/usr/bin"
   install -Dm755 "cyphergate.elf" "$pkgdir/opt/CypherGate/cyphergate"
   install -Dm755 "cyphergated.elf" "$pkgdir/opt/CypherGate/cyphergated"
   ln -s "/opt/CypherGate/cyphergate" "$pkgdir/usr/bin/cyphergate"
