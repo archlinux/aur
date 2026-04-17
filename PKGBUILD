@@ -14,7 +14,7 @@
 
 pkgname=editix-free
 _pkgname=editix
-pkgver=2023
+pkgver=2026
 pkgrel=1
 epoch=1
 pkgdesc="EditiX is a powerful and easy to use XML editor, Visual Schema Editor, XQuery Editor and XSLT debugger"
@@ -23,32 +23,29 @@ license=('custom')
 depends=('java-runtime')
 url="http://free.editix.com/"
 source=("http://www.editix.com/download/editix$pkgver.zip")
-sha256sums=('4a91396ba51ae45f6b5767290dec9e715fbb21dc4e217fe174f0700cb0efe21d')
+sha256sums=('4f27dce8c7e54703551009418072a4a355dde3601990ba1f7609acca84b63bb8')
 
 package() {
   # Licenses first, before we move the whole directory to opt
-  cd "${srcdir}/"
-  for F in LICENSE.TXT ; do
-    # Install to /usr and remove from distribution dir
-    install -D -m644 $F "${pkgdir}/usr/share/licenses/${pkgname}/$F"
-    rm -f $F
-    # Symlink the original file from /opt to /usr
-    ln -sf /usr/share/licenses/${pkgname}/$F $F
-  done
+  cd "${srcdir}/${_pkgname}${pkgver}"
+  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/  
+  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
 
   # Install the compiled app to /opt
-  cd "$srcdir"
   install -dm755 "${pkgdir}/opt/${_pkgname}"
   cp -r * ${pkgdir}/opt/${_pkgname}
 
   # Create a symlink to /usr/bin
   install -dm755 "${pkgdir}/usr/bin/"
-  ln -sf /opt/${_pkgname}/bin/editix.sh "${pkgdir}/usr/bin/${_pkgname}"
-  chmod 755 "${pkgdir}/opt/${_pkgname}/bin/editix.sh"
+  ln -sf /opt/${_pkgname}/run.sh "${pkgdir}/usr/bin/${_pkgname}"
+  chmod 755 "${pkgdir}/opt/${_pkgname}/run.sh"
 
   # Fix the run script
-  sed -e "s|^TOPDIR=.*\$|TOPDIR='/opt/${_pkgname}/bin/';|g" \
-    -i "${pkgdir}/opt/${_pkgname}/bin/editix.sh"
+  sed -e "s|:|:/opt/${_pkgname}/|g" \
+    -i "${pkgdir}/opt/${_pkgname}/run.sh"
+
+  sed -e "s|CLASSPATH=|CLASSPATH=/opt/${_pkgname}/|g" \
+    -i "${pkgdir}/opt/${_pkgname}/run.sh"
 
   rm -f ${pkg}/opt/${_pkgname}/${_pkgname}${pkgver}
 }
