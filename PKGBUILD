@@ -23,6 +23,7 @@ prepare() {
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export CYAN_SKILLFISH_GOVERNOR_VERSION="${pkgver}"
     cd "cyan-skillfish-governor-$pkgver"
     cargo build --frozen --release --all-features
 }
