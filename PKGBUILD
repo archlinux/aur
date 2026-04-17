@@ -1,7 +1,7 @@
 # Maintainer: RaghavGohil raghavgohil2004@gmail.com
 
 pkgname=den
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Braindumping for projects made easy."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RaghavGohil/den/archive/v$pkgver.tar.gz")
-sha256sums=('7355cb10a15b3fb7b7659656ae1be8c3c049575e342d5627f2f2dc0c746fa627')
+sha256sums=('1f5af63bb34656a0eadd0083e3198985442790ce693acff47dad62acddcb5937')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
