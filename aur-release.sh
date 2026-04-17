@@ -321,6 +321,7 @@ run_cn_upload() {
 
 run_finalize() {
   local zst_url=""
+  local zst_file=""
   local do_commit=0
   local do_push=0
   local commit_msg=""
@@ -330,6 +331,11 @@ run_finalize() {
       --zst-url)
         [[ $# -ge 2 ]] || die "--zst-url requires a value"
         zst_url="$2"
+        shift 2
+        ;;
+      --zst-file)
+        [[ $# -ge 2 ]] || die "--zst-file requires a value"
+        zst_file="$2"
         shift 2
         ;;
       --commit)
@@ -363,10 +369,19 @@ run_finalize() {
   need_cmd git
 
   local out_pkg out_sha pkgver pkgrel
-  out_pkg="$(pkg_filename)"
-  [[ -f "$out_pkg" ]] || die "build artifact not found: $out_pkg (run prepare first)"
+  if [[ -n "$zst_file" ]]; then
+    out_pkg="$zst_file"
+  else
+    out_pkg="$(pkg_filename)"
+  fi
 
-  out_sha="$(sha256sum "$out_pkg" | awk '{print $1}')"
+  if [[ -f "$out_pkg" ]]; then
+    out_sha="$(sha256sum "$out_pkg" | awk '{print $1}')"
+  else
+    need_cmd curl
+    echo "==> Local package not found; hashing from download URL"
+    out_sha="$(curl --fail --location --silent --show-error "$zst_url" | sha256sum | awk '{print $1}')"
+  fi
   set_pkgbuild_var "_magelab_zst_url" "$zst_url" double
   set_pkgbuild_var "_magelab_zst_sha256" "$out_sha" single
 
