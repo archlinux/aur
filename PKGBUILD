@@ -2,7 +2,7 @@
 
 pkgname=samurai-static
 _pkgname=samurai
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="ninja-compatible build tool written in C"
 provides=(samurai)
@@ -12,8 +12,8 @@ arch=(aarch64 'x86_64')
 url="https://github.com/michaelforney/${_pkgname}"
 license=('ISC' 'Apache' 'MIT')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('37a2d9f35f338c53387eba210bab7e5d8abe033492664984704ad84f91b71bac')
-b2sums=('31ec4e728a90bbbba49964487c1c682a8cf3684bf05962dc74a73f51a9e3b539e1b8044b24001c748cd75de51f91850671342d87cc3d27f03b5f50f857bd5965')
+sha256sums=('44ff119a27b343ec47a797fa8701c19b9e672230bc15f3c6a6cede9641ea6332')
+b2sums=('0490240a908340a12acff44e3db6ec33695f9c9cecfb9ba222410a66e627c4a6eedacc31ed4cb100bb9ff179d81dfb87985bc97980df1eb0448a4ed7a1b330b4')
 
 build() {
     export CC=musl-gcc CFLAGS="$CFLAGS -Os" LDFLAGS="$LDFLAGS -static"
