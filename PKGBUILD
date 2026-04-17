@@ -1,11 +1,11 @@
 # Maintainer: Ardox <ardox@axos-project.com>
 pkgname=sleex-git
 _pkgname=sleex
-pkgver=1.28.r594.1161d3d
+pkgver=1.28.r646.0255311
 pkgrel=1
 pkgdesc="Desktop environment focused on aesthetics and performance (git version)"
 arch=("x86_64")
-url="https://github.com/axos-project/sleex"
+url="https://gitlab.com/axos-project/sleex"
 license=('GPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -46,7 +46,7 @@ optdepends=(
   "nwg-displays: Display arrangement tool"
 )
 
-source=("git+https://github.com/axos-project/sleex.git")
+source=("git+https://gitlab.com/axos-project/sleex.git")
 sha256sums=('SKIP')
 
 pkgver() {
