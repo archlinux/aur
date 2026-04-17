@@ -1,0 +1,573 @@
+pre_install() {
+
+
+	before_upgrade() {
+	    :
+	#
+	# Do NOT change shebang above - regardless what you put there fpm will embed
+	# this script in a file invoked with /usr/bin/sh (-> dash) on darwin/ubuntu.
+	#
+
+	if [ "$(uname -s)" = "Darwin" -o -e /tmp/flox.install.debug ]; then
+	    set -x
+	fi
+
+	# Return the /nix/store package providing a given path.
+	# All because MacOS Big Sur has neither realpath nor readlink -f.
+	orig_path=
+	_store_path() {
+	    local path="$1"
+	    # Case statement is most portable for old shells.
+	    case "$path" in
+	        /)
+	            echo "ERROR: $orig_path is not a /nix/store path" 1>&2
+	            exit 1
+	            ;;
+	        /nix/store/*)
+	            echo "$path" | cut -d/ -f1-4
+	            ;;
+	        *)
+	            if [ -L "$path" ]; then
+	                # A link - recurse with the new path referenced by the link.
+	                local link=$(readlink "$path")
+	                case "$link" in
+	                    /*)
+	                        _store_path "$link"
+	                        ;;
+	                    *)
+	                        _store_path $(dirname "$path")/"$link"
+	                        ;;
+	                esac
+	            else
+	                _store_path $(dirname "$path")
+	            fi
+	            ;;
+	    esac
+	}
+	store_path() {
+	    orig_path="$1"
+	    [ -e "$orig_path" ] || exit 1
+	    _store_path "$orig_path"
+	    orig_path=
+	}
+
+	add_old_nix_gcroot() {
+	    local oldNix="$1"
+	    oldNixPkgPath=$(store_path $oldNix)
+	    rm -f /usr/share/nix/old-nix
+	    $oldNixPkgPath/bin/nix-store --add-root /usr/share/nix/old-nix -r $oldNixPkgPath >/dev/null
+	}
+
+	if [ -f /nix/var/nix/db/db.sqlite ]; then
+	    # TODO opportunity to compare versions and bid a hasty retreat.
+
+	    # Figure out which of the following situations we find ourselves in:
+	    #   - upgrade from flox
+	    #   - upgrade from multi-user
+	    #   - upgrade from single-user
+	    # Then create GCroot for the previous Nix version and (re)install.
+	    if [ -L /usr/bin/nix ] && [ -e /etc/flox-version -o -e /etc/flox-version.update ] ; then
+	        # This is a flox installation - make note of the previous Nix version
+	        # and proceed with the (re)install.
+	        add_old_nix_gcroot /usr/bin/nix
+
+	        # Rename the previous gcroots/flox directory to reflect old version
+	        # so that we can remove it at the conclusion of a successful install.
+	        # Rename to a unique name by timestamp in case of multiple failed
+	        # installation attempts to replace the same Flox version.
+	        FLOX_GCROOT="/nix/var/nix/gcroots/flox"
+	        if [ -d "$FLOX_GCROOT" ]; then
+	            now="$(date +%s)"
+	            new_path="$FLOX_GCROOT-$now"
+	            echo "INFO: renaming $FLOX_GCROOT -> $new_path" 1>&2
+	            mv "$FLOX_GCROOT" "$new_path"
+	        fi
+	    else
+	        nixProfile=/nix/var/nix/profiles/default
+	        if [ ! -e "$nixProfile/bin/nix" ]; then
+	            # Pre-existing single-user installation. Look for old nix
+	            # in profile of user owning /nix.
+	            if [ "$(uname -s)" = "Darwin" ]; then
+	                nixOwner=$(stat -f %Su /nix)
+	            else
+	                nixOwner=$(stat --format %U /nix)
+	            fi
+	            nixProfile=/nix/var/nix/profiles/per-user/$nixOwner/profile
+	        fi
+	        oldNix=$nixProfile/bin/nix
+	        if [ -e "$oldNix" ]; then
+	            add_old_nix_gcroot $oldNix
+
+	            # Use old Nix version to remove nix and cacert from the
+	            # default profile if found. Be careful to reference the
+	            # actual symbolic link to identify the package path; note
+	            # that we do not have access to "realpath" or "readlink -f"
+	            # on MacOS Big Sur and older(!).
+	            profileRemovals=""
+	            for i in $nixProfile/bin/nix $nixProfile/etc/ssl/certs/ca-bundle.crt; do
+	                if storePath=$(store_path $i); then
+	                    # Select /nix/store/$pkgname from storePath.
+	                    profileRemovals="$profileRemovals $storePath"
+	                fi
+	            done
+	            if [ -n "$profileRemovals" ]; then
+	                $oldNix --extra-experimental-features nix-command profile remove --profile $nixProfile $profileRemovals \
+	                    || true # it's not that big of a deal if we leave these in the profile
+	            fi
+	        else
+	            echo "Error: previous nix installation detected but could not find a Nix binary at $oldNix. Please remove existing Nix installation or create a symbolic link to the nix binary from $oldNix to allow upgrading or install using the Nix-Generic method in the documentaion."
+	            echo "Previous Nix installation detected at '/nix' (/nix/var/nix/db/db.sqlite found)"
+	            echo "check /usr/bin/nix"
+	            echo "check $nixProfile"
+	            exit 1
+	        fi
+
+	        for i in "/etc/bashrc" "/etc/profile.d/nix.sh" "/etc/zshrc" "/etc/bash.bashrc" "/etc/zsh/zshrc"; do
+	            if [ -e "$i.backup-before-nix" ]; then
+	                mv $i $i.backup-with-nix-before-flox
+	                mv $i.backup-before-nix $i
+	            fi
+	        done
+	    fi
+	fi
+
+	}
+
+	before_install() {
+	    :
+	#
+	# Do NOT change shebang above - regardless what you put there fpm will embed
+	# this script in a file invoked with /usr/bin/sh (-> dash) on darwin/ubuntu.
+	#
+
+	if [ "$(uname -s)" = "Darwin" -o -e /tmp/flox.install.debug ]; then
+	    set -x
+	fi
+
+	# Return the /nix/store package providing a given path.
+	# All because MacOS Big Sur has neither realpath nor readlink -f.
+	orig_path=
+	_store_path() {
+	    local path="$1"
+	    # Case statement is most portable for old shells.
+	    case "$path" in
+	        /)
+	            echo "ERROR: $orig_path is not a /nix/store path" 1>&2
+	            exit 1
+	            ;;
+	        /nix/store/*)
+	            echo "$path" | cut -d/ -f1-4
+	            ;;
+	        *)
+	            if [ -L "$path" ]; then
+	                # A link - recurse with the new path referenced by the link.
+	                local link=$(readlink "$path")
+	                case "$link" in
+	                    /*)
+	                        _store_path "$link"
+	                        ;;
+	                    *)
+	                        _store_path $(dirname "$path")/"$link"
+	                        ;;
+	                esac
+	            else
+	                _store_path $(dirname "$path")
+	            fi
+	            ;;
+	    esac
+	}
+	store_path() {
+	    orig_path="$1"
+	    [ -e "$orig_path" ] || exit 1
+	    _store_path "$orig_path"
+	    orig_path=
+	}
+
+	add_old_nix_gcroot() {
+	    local oldNix="$1"
+	    oldNixPkgPath=$(store_path $oldNix)
+	    rm -f /usr/share/nix/old-nix
+	    $oldNixPkgPath/bin/nix-store --add-root /usr/share/nix/old-nix -r $oldNixPkgPath >/dev/null
+	}
+
+	if [ -f /nix/var/nix/db/db.sqlite ]; then
+	    # TODO opportunity to compare versions and bid a hasty retreat.
+
+	    # Figure out which of the following situations we find ourselves in:
+	    #   - upgrade from flox
+	    #   - upgrade from multi-user
+	    #   - upgrade from single-user
+	    # Then create GCroot for the previous Nix version and (re)install.
+	    if [ -L /usr/bin/nix ] && [ -e /etc/flox-version -o -e /etc/flox-version.update ] ; then
+	        # This is a flox installation - make note of the previous Nix version
+	        # and proceed with the (re)install.
+	        add_old_nix_gcroot /usr/bin/nix
+
+	        # Rename the previous gcroots/flox directory to reflect old version
+	        # so that we can remove it at the conclusion of a successful install.
+	        # Rename to a unique name by timestamp in case of multiple failed
+	        # installation attempts to replace the same Flox version.
+	        FLOX_GCROOT="/nix/var/nix/gcroots/flox"
+	        if [ -d "$FLOX_GCROOT" ]; then
+	            now="$(date +%s)"
+	            new_path="$FLOX_GCROOT-$now"
+	            echo "INFO: renaming $FLOX_GCROOT -> $new_path" 1>&2
+	            mv "$FLOX_GCROOT" "$new_path"
+	        fi
+	    else
+	        nixProfile=/nix/var/nix/profiles/default
+	        if [ ! -e "$nixProfile/bin/nix" ]; then
+	            # Pre-existing single-user installation. Look for old nix
+	            # in profile of user owning /nix.
+	            if [ "$(uname -s)" = "Darwin" ]; then
+	                nixOwner=$(stat -f %Su /nix)
+	            else
+	                nixOwner=$(stat --format %U /nix)
+	            fi
+	            nixProfile=/nix/var/nix/profiles/per-user/$nixOwner/profile
+	        fi
+	        oldNix=$nixProfile/bin/nix
+	        if [ -e "$oldNix" ]; then
+	            add_old_nix_gcroot $oldNix
+
+	            # Use old Nix version to remove nix and cacert from the
+	            # default profile if found. Be careful to reference the
+	            # actual symbolic link to identify the package path; note
+	            # that we do not have access to "realpath" or "readlink -f"
+	            # on MacOS Big Sur and older(!).
+	            profileRemovals=""
+	            for i in $nixProfile/bin/nix $nixProfile/etc/ssl/certs/ca-bundle.crt; do
+	                if storePath=$(store_path $i); then
+	                    # Select /nix/store/$pkgname from storePath.
+	                    profileRemovals="$profileRemovals $storePath"
+	                fi
+	            done
+	            if [ -n "$profileRemovals" ]; then
+	                $oldNix --extra-experimental-features nix-command profile remove --profile $nixProfile $profileRemovals \
+	                    || true # it's not that big of a deal if we leave these in the profile
+	            fi
+	        else
+	            echo "Error: previous nix installation detected but could not find a Nix binary at $oldNix. Please remove existing Nix installation or create a symbolic link to the nix binary from $oldNix to allow upgrading or install using the Nix-Generic method in the documentaion."
+	            echo "Previous Nix installation detected at '/nix' (/nix/var/nix/db/db.sqlite found)"
+	            echo "check /usr/bin/nix"
+	            echo "check $nixProfile"
+	            exit 1
+	        fi
+
+	        for i in "/etc/bashrc" "/etc/profile.d/nix.sh" "/etc/zshrc" "/etc/bash.bashrc" "/etc/zsh/zshrc"; do
+	            if [ -e "$i.backup-before-nix" ]; then
+	                mv $i $i.backup-with-nix-before-flox
+	                mv $i.backup-before-nix $i
+	            fi
+	        done
+	    fi
+	fi
+
+	}
+
+	if [ "${1}" = "install" -a -z "${2}" ]
+	then
+	    before_install
+	elif [ "${1}" = "upgrade" -a -n "${2}" ]
+	then
+	    upgradeFromVersion="${2}"
+	    before_upgrade "${upgradeFromVersion}"
+	elif [ "${1}" = "install" -a -n "${2}" ]
+	then
+	    upgradeFromVersion="${2}"
+	    # Executed when a package is removed but its config files aren't,
+	    # and a new version is installed.
+	    # Looks a _lot_ like an upgrade case, I say we just execute the
+	    # same "before upgrade" script as in the previous case
+	    before_upgrade "${upgradeFromVersion}"
+	elif echo "${1}" | grep -E -q '(fail|abort)'
+	then
+	    echo "Failed to install before the pre-installation script was run." >&2
+	    exit 1
+	fi
+}
+
+post_install() {
+
+
+	after_upgrade() {
+	    :
+	#
+	# Do NOT change shebang above - regardless what you put there
+	# fpm will embed this script in a file invoked with /usr/bin/sh.
+	#
+
+	# fpm considers an install to be an upgrade if config files have not been purged
+	if [ ! -f /usr/share/nix/old-nix/bin/nix ]; then
+	    echo "WARNING: could not find previous nix installation, attempting re-install" 1>&2
+	    if command -v bash > /dev/null 2>&1; then
+	        exec bash /usr/share/flox/include/after-install.bash "$@"
+	    fi
+	    echo "ERROR: could not find bash in PATH" 1>&2
+	    exit 1
+	fi
+
+	. /usr/share/flox/include/common.sh
+
+	tar -xJpf /usr/share/nix/nix.tar.xz -C /usr/share/nix --no-same-owner
+	/usr/share/nix/old-nix/bin/nix \
+	    --extra-experimental-features nix-command \
+	    --option substitute false \
+	    copy --from /usr/share/nix --all --no-check-sigs
+
+	# Now that Nix closure has been extracted, set path to prefer
+	# tools as provided in installation bundle.
+	export PATH=/nix/store/74sind1d6vf2bfwd7yklg8chsvzqxmmq-coreutils-9.10/bin:/nix/store/q9mkalz07gwsj77js4q48f4j034f6m8b-daemonize-1.7.8/bin:/nix/store/c89zz4vh8v9dbs8169wk8ahwxvrdxgm5-findutils-4.10.0/bin:/nix/store/jpsqy47rdl0j0dvyyzb4kw8gqajw8nx0-gnused-4.9/bin:$PATH
+
+	# Zero out file rather than removing to prevent package manager
+	# from complaining that file disappeared upon package removal.
+	dd if=/dev/null of=/usr/share/nix/nix.tar.xz 2> /dev/null
+	rm -rf /usr/share/nix/nix
+
+	# cleanup after before-upgrade.sh
+	rm -f @usrShareDir/nix/old-nix
+
+	# Identify which service control mechanism we're using.
+	if [ "$(uname -s)" = "Linux" ]; then
+
+	    # must be performed after install_nix
+	    flox_check_selinux
+
+	    # Restart nix-daemon if running in multiuser mode.
+
+	    # Distros running systemd
+	    if is_running_systemd; then
+	        # must stop the service before restarting the socket
+	        systemctl stop nix-daemon.service
+	        systemctl restart nix-daemon.socket
+
+	    # WSL2 images using /usr/bin/service
+	    elif is_os_wsl2; then
+	        service restart nix-daemon
+	    fi
+
+	elif [ "$(uname -s)" = "Darwin" ]; then
+	    if [ -z "${FLOX_SKIP_UID_MIGRATION-}" ]; then
+	        /usr/share/flox/scripts/migrate_uids_to_sequoia.sh
+	    fi
+
+	    launchctl stop org.nixos.nix-daemon
+	    launchctl start org.nixos.nix-daemon
+
+	else
+
+	    echo "ERROR: system not Linux or Darwin" 1>&2
+	    exit 1
+
+	fi
+
+	# Clean up gcroots for previous Flox installations, but only if the
+	# current Flox gcroot directory exists. Recall that the previous gcroot
+	# directory is renamed from ".../flox" to ".../flox-<prev_version>" from
+	# the hooks/before-install-or-upgrade.sh script as the installation begins.
+	FLOX_GCROOT="/nix/var/nix/gcroots/flox"
+	if [ -d "$FLOX_GCROOT" ]; then
+	    # Need to identify and remove old Flox gcroots using old Bourne
+	    # shell syntax that will work on old versions of /usr/bin/sh.
+	    for dir in "$FLOX_GCROOT"-*; do
+	        # All versions of /usr/bin/sh will either return no match or leave
+	        # the glob pattern unexpanded. To address the latter we first
+	        # test that it is a directory before attempting to remove it.
+	        if [ -d "$dir" ]; then
+	            echo "INFO: removing $dir" 1>&2
+	            rm -rf "$dir"
+	        fi
+	    done
+	fi
+
+
+	}
+
+	after_install() {
+	    :
+	#
+	# Do NOT change shebang above - regardless what you put there fpm will embed
+	# this script in a file invoked with /usr/bin/sh (-> dash) on darwin/ubuntu.
+	#
+	#
+	# ... and it is precisely because after-install is the script that invokes
+	# the nix installer script that it *must* run with bash, so unlike the other
+	# scripts we maintain this script which simply re-exec's the bash version
+	# of the script.
+
+	if command -v bash > /dev/null 2>&1; then
+	    exec bash /usr/share/flox/include/after-install.bash "$@"
+	fi
+	echo "ERROR: could not find bash in PATH" 1>&2
+	exit 1
+
+
+	}
+
+	if [ "${1}" = "configure" -a -z "${2}" ] || \
+	   [ "${1}" = "abort-remove" ]
+	then
+	    # "after install" here
+	    # "abort-remove" happens when the pre-removal script failed.
+	    #   In that case, this script, which should be idemptoent, is run
+	    #   to ensure a clean roll-back of the removal.
+	    after_install
+	elif [ "${1}" = "configure" -a -n "${2}" ]
+	then
+	    upgradeFromVersion="${2}"
+	    # "after upgrade" here
+	    # NOTE: This slot is also used when deb packages are removed,
+	    # but their config files aren't, but a newer version of the
+	    # package is installed later, called "Config-Files" state.
+	    # basically, that still looks a _lot_ like an upgrade to me.
+	    after_upgrade "${2}"
+	elif echo "${1}" | grep -E -q "(abort|fail)"
+	then
+	    echo "Failed to install before the post-installation script was run." >&2
+	    exit 1
+	fi
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+
+
+	{
+	    :
+	#
+	# Do NOT change shebang above - regardless what you put there
+	# fpm will embed this script in a file invoked with /usr/bin/sh.
+	#
+
+	# Identify which service control mechanism we're using.
+	if [ "$(uname -s)" = "Linux" ]; then
+
+	    # Make best effort to clean up systemd services but
+	    # don't let nonzero return codes trip us up.
+	    systemctl stop nix-daemon.service || true
+	    systemctl stop nix-daemon.socket || true
+	    systemctl disable nix-daemon.service || true
+	    systemctl disable nix-daemon.socket || true
+	    systemctl daemon-reload || true
+
+	elif [ "$(uname -s)" = "Darwin" ]; then
+
+	    for i in /Library/LaunchDaemons/org.nixos.{nix-daemon,darwin-store}.plist; do
+	        launchctl unload $i
+	        rm $i
+	    done
+
+	else
+
+	    echo "ERROR: system not Darwin or running systemd" 2>&1
+	    exit 1
+
+	fi
+
+
+	}
+
+	dummy() {
+	    :
+	}
+
+	if [ "${1}" = "remove" -a -z "${2}" ]
+	then
+	    # "before remove" goes here
+	    before_remove
+	elif [ "${1}" = "upgrade" ]
+	then
+	    # Executed before the old version is removed
+	    # upon upgrade.
+	    # We should generally not do anything here. The newly installed package
+	    # should do the upgrade, not the uninstalled one, since it can't anticipate
+	    # what new things it will have to do to upgrade for the new version.
+	    dummy
+	elif echo "${1}" | grep -E -q "(fail|abort)"
+	then
+	    echo "Failed to install before the pre-removal script was run." >&2
+	    exit 1
+	fi
+}
+
+post_remove() {
+
+
+	after_remove() {
+	    :
+	#
+	# Do NOT change shebang above - regardless what you put there fpm will embed
+	# this script in a file invoked with /usr/bin/sh (-> dash) on darwin/ubuntu.
+	#
+
+	_system=$(uname -s)
+	case $_system in
+
+	Linux)
+	    # Not required for [container] single-user mode.
+	    if type -p userdel > /dev/null; then
+	        grep '^nixbld' /etc/passwd | cut -d : -f 1 | while read user; do
+	            userdel "$user"
+	        done
+	    fi
+	    if type -p groupdel > /dev/null; then
+	        groupdel nixbld || true
+	    fi
+	    rm -rf /nix
+
+	    if command -v getenforce > /dev/null 2>&1; then
+	        if [ "$(getenforce)" = "Enforcing" ]; then
+	            semodule -X 300 --remove=nix
+	        fi
+	    fi
+	    ;;
+
+	*)
+	    echo "ERROR: unsupported system: $_system" 2>&1
+	    exit 1
+	    ;;
+
+	esac
+
+	}
+
+	after_purge() {
+	    :
+	}
+
+	dummy() {
+	    :
+	}
+
+
+	if [ "${1}" = "remove" -o "${1}" = "abort-install" ]
+	then
+	    # "after remove" goes here
+	    # "abort-install" happens when the pre-installation script failed.
+	    #   In that case, this script, which should be idemptoent, is run
+	    #   to ensure a clean roll-back of the installation.
+	    after_remove
+	elif [ "${1}" = "purge" -a -z "${2}" ]
+	then
+	    # like "on remove", but executes after dpkg deletes config files
+	    # There is no equivalent in RPM or ARCH.
+	    after_purge
+	elif [ "${1}" = "upgrade" ]
+	then
+	    # This represents the case where the old package's postrm is called after
+	    # upgrade, not the uninstalled one, since it can't anticipate what new
+	    # things it will have to do to upgrade for the new version.
+	    dummy
+	elif echo "${1}" | grep -E -q '(fail|abort)'
+	then
+	    echo "Failed to install before the post-removal script was run." >&2
+	    exit 1
+	fi
+}
