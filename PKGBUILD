@@ -1,6 +1,6 @@
 pkgname=rtk-ai-bin
 _pkgname=rtk
-pkgver=0.36.0
+pkgver=0.37.0
 pkgrel=1
 pkgdesc='CLI proxy that reduces LLM token consumption by 60-90% on common dev commands'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source_x86_64=(
   "${_pkgname}-${pkgver}-x86_64-unknown-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-musl.tar.gz"
   "LICENSE-${pkgver}::https://raw.githubusercontent.com/rtk-ai/rtk/v${pkgver}/LICENSE"
 )
-sha256sums_x86_64=('2d428ce344734df95e0933f01f30a2d694fad470de39d8c5186b89eb707aac26'
+sha256sums_x86_64=('52183fe20d68fa14ddc3c1666a1810d821a4fb8334cc71a4c83d551ca4df0cd6'
                    '4044ade9c21d8b084d3d16a03375cf3b7e166b946a327bb37a3fbbdb53287cfd')
 
 package() {
