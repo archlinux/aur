@@ -3,7 +3,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 
 pkgname=flow-browser-bin
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Modern tabbed web browser with Chrome extension support'
 arch=('x86_64')
@@ -45,7 +45,7 @@ options=('!strip')
 source=(
   "${pkgname%-bin}-${pkgver}.deb::https://github.com/MultiboxLabs/flow-browser/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 )
-sha256sums=('96e690d450fb11f4a6a648ec3ad93b714761ab64bfd7cb55ad85dec54d059526')
+sha256sums=('4f93ac6b166b07b90804b5fa233264bc6b7d40f0b207b2862e19e544616ba119')
 
 package() {
   cd "${srcdir}"

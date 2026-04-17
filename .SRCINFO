@@ -1,6 +1,6 @@
 pkgbase = flow-browser-bin
 	pkgdesc = Modern tabbed web browser with Chrome extension support
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/MultiboxLabs/flow-browser
 	arch = x86_64
@@ -33,10 +33,10 @@ pkgbase = flow-browser-bin
 	depends = pango
 	depends = util-linux-libs
 	depends = xdg-utils
-	provides = flow-browser=0.11.0
+	provides = flow-browser=0.12.0
 	conflicts = flow-browser
 	options = !strip
-	source = flow-browser-0.11.0.deb::https://github.com/MultiboxLabs/flow-browser/releases/download/v0.11.0/flow-browser_0.11.0_amd64.deb
-	sha256sums = 96e690d450fb11f4a6a648ec3ad93b714761ab64bfd7cb55ad85dec54d059526
+	source = flow-browser-0.12.0.deb::https://github.com/MultiboxLabs/flow-browser/releases/download/v0.12.0/flow-browser_0.12.0_amd64.deb
+	sha256sums = 4f93ac6b166b07b90804b5fa233264bc6b7d40f0b207b2862e19e544616ba119
 
 pkgname = flow-browser-bin
