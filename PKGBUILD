@@ -1,7 +1,7 @@
 # Maintainer: MYT1 <MYT1 @ QQ .com>
 pkgname=uotantoolbox_linux-bin
 _pkgname=UotanToolbox_Linux
-pkgver=3.5.0
+pkgver=3.6.1
 epoch=1
 pkgrel=1
 pkgdesc='鱼柚坛工具箱 NT,为玩机发烧友而生。'
@@ -17,9 +17,9 @@ source_arm64=("https://github.com/Uotan-Dev/UotanToolboxNT/releases/download/$pk
 source_loong64=("https://github.com/Uotan-Dev/UotanToolboxNT/releases/download/$pkgver/${_pkgname}_loong64_$pkgver.deb")
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('17d8d6179d67ba7177406b23463e7cb0fffcfcd8d11149063bd94ab19f760f24')
-sha256sums_arm64=('db98dcbd19dc961b0b8343e677b0a2b093325dbbaa019a4c5721cac0ea9e33a7')
-sha256sums_loong64=('abb0884ad56b30a885cca4d587aed0d2006ba96da90046634580821ab4a915e3')
+sha256sums_x86_64=('0454222c1f06112bc13ffc027a6c795e3c254cd1290a09f0bb982af8f3bd377c')
+sha256sums_arm64=('c78c18deb1a7a36994f7212def7d54d9fd5e5ee85259a1521612a566195083f6')
+sha256sums_loong64=('a8972407d59d8d6f90cdb1a1776e7901bc9ddec1a6301e718343ac171f3026ab')
 options=('!strip' '!debug')
 
 package() {
