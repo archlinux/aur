@@ -1,6 +1,6 @@
 pkgbase = solana
 	pkgdesc = A fast, secure, and censorship resistant blockchain.
-	pkgver = 3.1.11
+	pkgver = 3.1.13
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/anza-xyz/agave
@@ -18,17 +18,37 @@ pkgbase = solana
 	depends = gcc-libs
 	depends = glibc
 	depends = systemd-libs
-	provides = spl-token
 	options = !lto
-	source = git+https://github.com/anza-xyz/agave.git#tag=v3.1.11
+	source = git+https://github.com/anza-xyz/agave.git#tag=v3.1.13
 	source = git+https://github.com/solana-program/token-2022.git#tag=cli@v5.5.0
 	source = solana.sysusers
 	source = solana.tmpfiles
 	source = solana-sbf_sdk-path.patch
-	sha256sums = a8faca6012b4060908cdd78899cf2b68be9877a52ae7c2dfd38577e2da4899f4
+	sha256sums = d8fc8ff23288140bac1bb7a932cdb0a09a075d56136078a18f38eef5b3a52e0b
 	sha256sums = a9a0f6e495f68a77e61ce44a39bed42608bd3afd6aa5ddf09e124b50e17d41a6
 	sha256sums = bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0
 	sha256sums = a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b
 	sha256sums = f2251e4057350ec795d6ea5402cffbaa5678883996e68ba8688c3f250cb9a173
 
+pkgname = solana-cli
+	pkgdesc = Solana CLI tools
+	install = solana.install
+	provides = solana-cli=1:3.1.13-1
+	provides = spl-token
+	conflicts = solana-bin
+
+pkgname = agave-validator
+	pkgdesc = Agave validator and node operator tools for Solana
+	provides = agave-validator=1:3.1.13-1
+
+pkgname = solana-dev
+	pkgdesc = Solana program developer tools
+	provides = solana-dev=1:3.1.13-1
+	conflicts = solana-dev-bin
+
 pkgname = solana
+	pkgdesc = Solana blockchain (meta package — includes CLI tools, validator and developer tools)
+	arch = any
+	depends = solana-cli
+	depends = agave-validator
+	depends = solana-dev
