@@ -1,0 +1,20 @@
+pkgbase = dnss-bin
+	pkgdesc = A small, speedy DNS proxy and bad-stuff-blocker.
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://codeberg.org/zacoons/dnss
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Unlicense
+	provides = dnss
+	backup = etc/dnss.conf
+	b2sums = SKIP
+	source_x86_64 = https://codeberg.org/zacoons/dnss/releases/download/0.1.0/dnss-0.1.0-x86_64-linux.tar.gz
+	b2sums_x86_64 = SKIP
+	source_armv7h = https://codeberg.org/zacoons/dnss/releases/download/0.1.0/dnss-0.1.0-armv7h-linux.tar.gz
+	b2sums_armv7h = SKIP
+	source_aarch64 = https://codeberg.org/zacoons/dnss/releases/download/0.1.0/dnss-0.1.0-aarch64-linux.tar.gz
+	b2sums_aarch64 = SKIP
+
+pkgname = dnss-bin
