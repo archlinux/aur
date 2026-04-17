@@ -1,6 +1,6 @@
 pkgbase = hyprcrop-bin
 	pkgdesc = A fast, Hyprland-native screenshot tool written in Rust
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/ry2x/hyprcrop
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = hyprcrop-bin
 	depends = pipewire
 	provides = hyprcrop
 	conflicts = hyprcrop
-	source = LICENSE-0.4.4::https://github.com/ry2x/hyprcrop/raw/v0.4.4/LICENSE
-	source = README-0.4.4::https://github.com/ry2x/hyprcrop/raw/v0.4.4/README.md
+	source = LICENSE-0.4.5::https://github.com/ry2x/hyprcrop/raw/v0.4.5/LICENSE
+	source = README-0.4.5::https://github.com/ry2x/hyprcrop/raw/v0.4.5/README.md
 	sha256sums = 7730947ada4144f1f707fa00247da2dca12e3ef8cb22c9939d42f032595a5e74
-	sha256sums = bafc618029795659be1c0b7ddce3e1d91a8b29638d8a7f362c87fa88d9440950
-	source_x86_64 = hyprcrop-0.4.4::https://github.com/ry2x/hyprcrop/releases/download/v0.4.4/hyprcrop
-	sha256sums_x86_64 = 1c42558d5a4bec77147d367391b4e8ab1251a2cdf36c73a02cb56a1189fd0c06
+	sha256sums = e0c9f154591de01d9cab1549f4e79fd5dd76b3a94f800e7e8f976134c031ac40
+	source_x86_64 = hyprcrop-0.4.5::https://github.com/ry2x/hyprcrop/releases/download/v0.4.5/hyprcrop
+	sha256sums_x86_64 = ca1203403b30878bfb65a77e7aad3421818fa0925e4874f4c88208e67fa7daf7
 
 pkgname = hyprcrop-bin
