@@ -1,0 +1,36 @@
+pkgbase = zot
+	pkgdesc = A scale-out production-ready vendor-neutral OCI-native container image/artifact registry
+	pkgver = 2.1.15
+	pkgrel = 1
+	url = https://github.com/project-zot/zot
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = npm
+	depends = glibc
+	source = https://github.com/project-zot/zot/archive/v2.1.15/zot-2.1.15.tar.gz
+	source = zot.service
+	source = zot.tmpfiles
+	source = zot.sysusers
+	source = zot.config
+	sha512sums = 6b55020b1fc6ee3170b18c54e31f2ffd67c781075ee6fb864501aede006828fa851c95e9b8206a2a9ab3f6fc5fb6cd95813025fdc36be85f0c454d2070db8842
+	sha512sums = 6ec30ab646294fb80ab94553b1bb3f25aabc1487436922770e89ff9bd523bfb22a51a5d76b48b9f2fca24867fa8c2639f6d868fcd614aa83206294a14ceb6a4f
+	sha512sums = 84ac76bb0c1f9c8ac20985ff02e9bf8d8a7dcca2030501d4ba388edf34f30412c4692385734839829127e22fdc9e44d5ee00788da230c463d0cd1b71faa9d2bc
+	sha512sums = d0d8d88d79fa7277d65670a3d5f01efe86b68ad7490a23066a0fb58cf3017aeff1f716ea4f6e5335a01609f2b60a679c8f5e26efec486e9c7b765e6d24cab532
+	sha512sums = e5bdca56ed60c88dbd5013ba5c3bdbae21a733471dbdf8e0f4b7cacb00439e0d4f4a633726797d3c8106152e34edf7ce158f68cb6b3c79153a20f78f6db9e470
+	b2sums = 2f96e6e02a795df58048b9c9f5ab168db07179bc513359f626c8903f67e60ee61496205972c9eb6e0087ec1169b9606640c81c9ab598cbf625f147339b56378d
+	b2sums = c28dd7b4162986fb5e827dc9c31c27208889b859fe149241aa323fafc14cd50231259864cf12dc8ff32cba4f9044671366ee5afe2ec9331de8eec9f49ff98033
+	b2sums = 018ac527c0eba82b84fa30c9390969aac8b3e444f1d737b415eb521f6d5fe50ad8a46dcad972848da8d368d2525020bb8b9672881aeb9cf6880e92fabec39061
+	b2sums = 3b13686c657dd70c80f48576a2647185bd399bb1c00177da3dd879439db2bc3af337577cc2d96befa769d32736359dee55da970d547e7f45fb97347b7af7a029
+	b2sums = bf748bacb72049ce9a551cc9572645db9e3fdb8d2ee7fc92388e4fc40146678132b418b53aa75e2adde08f7066b0a5ea85997d680170b07b481bc6cec979317f
+
+pkgname = zot
+
+pkgname = zli
+
+pkgname = zb
+
+pkgname = zxp
+
+pkgname = zot-docs

@@ -1,0 +1,3 @@
+z /etc/zot                 0750 root zot -
+z /etc/zot/config.json     0750 root zot -
+d /var/lib/zot             0770 root zot -
