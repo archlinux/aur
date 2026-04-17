@@ -1,5 +1,5 @@
 pkgname=gpk-bin
-pkgver=0.3.26
+pkgver=0.3.27
 pkgrel=1
 pkgdesc="TUI dashboard that unifies 34 package managers into one searchable view"
 arch=('x86_64' 'aarch64')
@@ -8,10 +8,10 @@ license=('GPL-3.0-or-later')
 depends=()
 provides=('gpk')
 conflicts=('gpk')
-source_x86_64=("https://github.com/neur0map/glazepkg/releases/download/v0.3.26/gpk-linux-amd64")
-source_aarch64=("https://github.com/neur0map/glazepkg/releases/download/v0.3.26/gpk-linux-arm64")
-sha256sums_x86_64=("00d50766834020c6c12f880bb8baa24b198f94da3df15d0219aff4da43067004")
-sha256sums_aarch64=("debceb3eee33763521b103a87e941a65b88d9fbe7268e9b62c21379e62b569c7")
+source_x86_64=("https://github.com/neur0map/glazepkg/releases/download/v0.3.27/gpk-linux-amd64")
+source_aarch64=("https://github.com/neur0map/glazepkg/releases/download/v0.3.27/gpk-linux-arm64")
+sha256sums_x86_64=("bbe4d0b38134a569cb4052e6190d3ad331f689fff0db6b38dad5b5272a1919b3")
+sha256sums_aarch64=("bc9716a1d20918f715709c767745788f4182a931e4ce658346c8905349a1dfa8")
 package() {
   if   [[ "$CARCH" == "x86_64"  ]]; then install -Dm755 "gpk-linux-amd64" "${pkgdir}/usr/bin/gpk"
   elif [[ "$CARCH" == "aarch64" ]]; then install -Dm755 "gpk-linux-arm64" "${pkgdir}/usr/bin/gpk"
