@@ -1,6 +1,6 @@
 pkgbase = qml-language-server-bin
 	pkgdesc = Language Server Protocol implementation for QML
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/cushycush/qml-language-server
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = qml-language-server-bin
 	provides = qml-language-server
 	conflicts = qml-language-server
 	conflicts = qml-language-server-git
-	source_x86_64 = https://github.com/cushycush/qml-language-server/releases/download/v1.4.0/qml-language-server-v1.4.0-linux-amd64.zip
-	sha256sums_x86_64 = a402030dd8f69cfff1d6aa146efd0cce99a55a220965331deb13e7348f77885c
-	source_aarch64 = https://github.com/cushycush/qml-language-server/releases/download/v1.4.0/qml-language-server-v1.4.0-linux-arm64.zip
-	sha256sums_aarch64 = bf62c3464619ab5749bb6f39d56f1d2be52d3f373c61bf9b2f63262520202a75
+	source_x86_64 = https://github.com/cushycush/qml-language-server/releases/download/v1.6.0/qml-language-server-v1.6.0-linux-amd64.zip
+	sha256sums_x86_64 = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	source_aarch64 = https://github.com/cushycush/qml-language-server/releases/download/v1.6.0/qml-language-server-v1.6.0-linux-arm64.zip
+	sha256sums_aarch64 = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
 
 pkgname = qml-language-server-bin
