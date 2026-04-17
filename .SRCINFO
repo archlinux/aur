@@ -1,10 +1,10 @@
 pkgbase = joker-git
 	pkgdesc = A Clojure interpreter and linter written in Go
-	pkgver = 0.17.1.r0.g5d329d3f
+	pkgver = 1.7.1.r2.g8b553a03
 	pkgrel = 1
 	url = https://github.com/candid82/joker
 	arch = x86_64
-	license = EPL
+	license = EPL-1.0
 	makedepends = go
 	makedepends = git
 	depends = glibc
@@ -14,4 +14,3 @@ pkgbase = joker-git
 	md5sums = SKIP
 
 pkgname = joker-git
-
