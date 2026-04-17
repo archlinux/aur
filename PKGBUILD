@@ -2,7 +2,7 @@
 
 pkgname=stably-orca-bin
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Stably AI Orca - Electron-based agentic coding IDE (prebuilt AppImage)"
 arch=('x86_64')
 url="https://github.com/stablyai/orca"
@@ -27,7 +27,7 @@ source=(
   'stably-orca.desktop'
 )
 sha256sums=('139a7ebfbe20d2f7197cb389ccdd84dace2e610b5c9b4891003c5825b205969d'
-            '174c3e1cd049c23d239e456c21e26f96b4ff325bd367397fd41db43a0d722c02'
+            '99a4d39e313a217f68cae6eb5e5437f2522da037b99de989291e34524484795c'
             '6e05296c09a37e0c28b9a2886b804d167a0c025ef1e72f955e9ba744be2f1dcd')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
