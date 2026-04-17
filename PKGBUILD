@@ -2,7 +2,7 @@
 
 pkgname=tomatillo
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Tomatillo is a Pomodoro Timer app for your productivity tasks'
 arch=(any)
 url='https://github.com/diegopvlk/Tomatillo'
@@ -13,8 +13,6 @@ depends=(
   python
 )
 makedepends=(
-  appstream
-  blueprint-compiler
   git
   meson
 )
