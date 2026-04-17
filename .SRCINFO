@@ -1,7 +1,7 @@
 pkgbase = jay-bin
 	pkgdesc = A lightweight, semantic AUR helper wrapper for Arch Linux
-	pkgver = 3.4.3
-	pkgrel = 3.1
+	pkgver = 3.4.4
+	pkgrel = 1
 	url = https://github.com/xmlzitos154/jay
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = jay-bin
 	optdepends = flatpak: hybrid AUR/Flatpak mode
 	optdepends = reflector: mirror optimization support
 	optdepends = checkupdates: check available updates
-	source = jay-bin-3.4.3.tar.gz::https://github.com/xmlzitos154/jay/archive/v3.4.3.tar.gz
-	sha256sums = 1b56630668fc3a5ff24ee2c1497af9ff21f8a96a834d042409d59ea34c877de5
+	source = jay-bin-3.4.4.tar.gz::https://github.com/xmlzitos154/jay/archive/v3.4.4.tar.gz
+	sha256sums = 0ec96f314f0393dc3ef4ff583ef4fc8cc309c9777883724b9e21131af24ea124
 
 pkgname = jay-bin

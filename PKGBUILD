@@ -1,7 +1,7 @@
 # Maintainer: xmlzitos154 <matheuz.ricardo@protonmail.com>
 pkgname=jay-bin
-pkgver=3.4.3
-pkgrel=3.1
+pkgver=3.4.4
+pkgrel=1
 pkgdesc="A lightweight, semantic AUR helper wrapper for Arch Linux"
 arch=('any')
 url="https://github.com/xmlzitos154/jay"
@@ -13,14 +13,18 @@ optdepends=(
     'checkupdates: check available updates'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1b56630668fc3a5ff24ee2c1497af9ff21f8a96a834d042409d59ea34c877de5')
+sha256sums=('0ec96f314f0393dc3ef4ff583ef4fc8cc309c9777883724b9e21131af24ea124')
 
 package() {
-    cd "$srcdir/jay-$pkgver"
-    mkdir -p "$pkgdir/usr/share/jay"
-    mkdir -p "$pkgdir/usr/bin"
-    cp -dr --no-preserve=ownership modules "$pkgdir/usr/share/jay/"
+    cd "jay-$pkgver"
+    install -dm755 "$pkgdir/usr/bin"
+    install -dm755 "$pkgdir/usr/share/jay/modules"
+    install -dm755 "$pkgdir/usr/share/doc/jay"
+    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm755 main "$pkgdir/usr/bin/jay"
-    install -Dm755 install.sh "$pkgdir/usr/share/jay/install.sh"
+    for mod in modules/*; do
+        install -Dm644 "$mod" "$pkgdir/usr/share/jay/$mod"
+    done
     install -Dm644 README.md "$pkgdir/usr/share/doc/jay/README.md"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
