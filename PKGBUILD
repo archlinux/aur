@@ -1,6 +1,6 @@
 # Maintainer: Nicholas Glazer <nicholasglazer at protonmail dot com>
 pkgname=teru
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="AI-first terminal emulator, multiplexer, and tiling manager"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ optdepends=('xclip: clipboard support on X11'
             'wl-clipboard: clipboard support on Wayland')
 makedepends=('zig>=0.16')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nicholasglazer/teru/archive/v$pkgver.tar.gz")
-sha256sums=('18b5cc42023abfb45a42157f4d5828d972c94172228118cc159fc71374488523')
+sha256sums=('d0d3a80a0628425d0f78c80701534a2b6e03f151beb7cdb048c0c27375bd4af5')
 
 build() {
     cd "$pkgname-$pkgver"
