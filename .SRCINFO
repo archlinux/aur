@@ -1,6 +1,6 @@
 pkgbase = fastdownloader-bin
 	pkgdesc = A fast video/audio downloader in electron.js.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/BERNARDO31P/FastDownloader
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = fastdownloader-bin
 	depends = electron39
 	depends = ffmpeg
 	depends = yt-dlp
-	provides = fastdownloader=0.8.3
+	provides = fastdownloader=0.8.4
 	conflicts = fastdownloader
-	source = fastdownloader-0.8.3.pacman::https://github.com/BERNARDO31P/FastDownloader/releases/download/v0.8.3/fastdownloader-0.8.3.pacman
+	source = fastdownloader-0.8.4.pacman::https://github.com/BERNARDO31P/FastDownloader/releases/download/v0.8.4/fastdownloader-0.8.4.pacman
 	source = fastdownloader.sh
-	sha256sums = 9a8c9613d6ac43dea38f2dcb11e8cfdbe7756cf0d6fb91fc18e3b12e8b7b295d
+	sha256sums = bd6726f4581d4c524045b62158601dfcd7da9daa4eda51c7f7b79b2a2664b264
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = fastdownloader-bin
