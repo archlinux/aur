@@ -5,7 +5,7 @@ conflicts=(
     "protonmail-bridge"
     "protonmail-bridge-core"
 )
-pkgver=3.23.1
+pkgver=3.24.1
 pkgrel=1
 pkgdesc="An IMAP/SMTP bridge to a ProtonMail account (patched, stores secrets in a file)"
 arch=("x86_64")
@@ -20,7 +20,7 @@ source=(
     "protonmail-bridge.service"
 )
 sha256sums=(
-    "a0b4443f65b52f5a2a8179489e3a3b13a5e2ceb74b07ff8aa4b5573fe1e9cdf3"
+    "007ab01db624f0b266b9f0ca3f3ac5dd99513e488979a7c5e53266e65d37cb72"
     "fe08ed8a40e14034d5509bd1c827991cc3c273dc313842451a4b3366e8cbfc70"
     "5ffaaa5acc030ebed82b3b13f1ddc2791b50851fb93964a5d6a20a11000c18c2"
 )
