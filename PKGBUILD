@@ -2,7 +2,7 @@
 
 pkgname=continuwuity-bin
 _name=${pkgname%-bin}
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc='Community driven continuation of conduwuit & Conduit, focusing on user experience and new features'
 arch=(x86_64 aarch64)
@@ -19,12 +19,12 @@ source=("$_name-LICENSE-${license[0]}::$url/raw/tag/v$pkgver/LICENSE"
         "$_name-$pkgver-CHANGELOG.md::$url/raw/tag/v$pkgver/CHANGELOG.md"
         "$_name-$pkgver-conduwuit.service::$url/raw/tag/v$pkgver/pkg/conduwuit.service"
         "$_name-$pkgver-conduwuit-example.toml::$url/raw/tag/v$pkgver/conduwuit-example.toml")
-b2sums=('05c474bd372cbb4f52a93982812b2ff8d6a38df6168ad673c8c2a7662ae5a23932b666c0997efec85c13b8a622f2ea4817bc7dc1560f9ed48ff914403595cba7'
-        '22545cc3d56cc4c0c29a69cf198db0a4cc010c92ff9a96b76f886b967a7c417d067b60c1786d1e94c9b89dc98ebd2818773e84ef9b341a41fe81338a3a6db911'
-        'da2f5e3778d8c62023d694969b37ecfed754ad2d8dc43c7cba44218618bbb95bade515537b41d22cb3222adeec4ef9074c5e8fc3f101c364751f2f4868dba96f'
-        'b873c2825f8b405ab7bf97d69e1f8fa71abecf355ed07886f20dbd9b79f35cdcc947f599f1f04455bffc15119a11ab939d854abea8343843761bbc79905e62a3')
-b2sums_x86_64=('10df1c2c9e473becc7627e151f4e76e4f087d87dfb69149ab1a846baa5ab3dfdcf32df1be21a31c149f86737e13f3f4c9151f3195d7882f899472d2bdbf459de')
-b2sums_aarch64=('f097a1fccd57d3232674065c9c2abc1e0300cd0c4751ab515ede6f930c65e4a5197e715adc74dfe8f731663082a6355cfb0f44cb6a85fae3e47ea22c6f10ecb0')
+b2sums=('518d931ec3677f070b113790e4aa9ee45ed1e4b9db4b15c08ef72f62eb82f4778347a55fa7cd61cc1654c012cdc0b52f0cf5d05444b20c7e9a002f8d3088c276'
+        '317f65d5dd667b966e2499b65a19864a9832966721b3565377e9a59116730f94075b94859be1bc06f50720c68780f3c93b61890580109c8106f49381a49fb2e4'
+        '1a7146581c3cedef312287589c5189e02ef205e08e997af3604a472b2584466c693d52ca8cda254d2202d50bd46af65bda049b3b1f1fc00aaa074cbcb31e0e73'
+        '1b78f489e1ce39911ded71367abb4de9bd5347aa69ecbd22179a15b1647ea5b74793acbff5aafa822617730bed8544f85de27beccc9e04baed7080490e098a06')
+b2sums_x86_64=('6d6a2d6e7d1f7f559b4ac39f4c61be199160585855dd05585607477d0bfd0752d28cda0d8f20a831ea351ca295f44c86816c84dba135cf9e59bedec047d7c2ce')
+b2sums_aarch64=('c5853f6e31a26953fffd05f794b4e3771953a9a942b9ccdc99a6eb84cbce40f495c4b226ab41901f82a0f2c96108b89399aa3268a1a23db1b5418de0c0da4c42')
 
 package() {
     install -Dm755 $_name-$pkgver-$CARCH "$pkgdir/usr/bin/conduwuit"
