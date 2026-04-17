@@ -1,10 +1,10 @@
 pkgbase = mingw-w64-libsndfile
-	pkgdesc = A C library for reading and writing files containing sampled sound (mingw-w64)
+	pkgdesc = A C library for reading and writing files containing sampled audio data (mingw-w64)
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libsndfile.github.io/libsndfile/
 	arch = any
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
 	makedepends = mingw-w64-cmake
 	makedepends = python
 	depends = mingw-w64-flac
@@ -17,6 +17,11 @@ pkgbase = mingw-w64-libsndfile
 	options = !strip
 	options = !buildflags
 	source = https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz
+	source = https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz.asc
+	validpgpkeys = 6A91A5CF22C24C99A35E013FCFDCF91FB242ACED
+	validpgpkeys = 9B1CFD2E92239C4B288E025F9D0D1F1CCB35FF8C
+	validpgpkeys = 31D95CAB6D80D262244A1750A47620E801E47E95
 	sha256sums = 3799ca9924d3125038880367bf1468e53a1b7e3686a934f098b7e1d286cdb80e
+	sha256sums = SKIP
 
 pkgname = mingw-w64-libsndfile
