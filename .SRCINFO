@@ -1,6 +1,6 @@
 pkgbase = krunner-zed
 	pkgdesc = KRunner plugin to access Zed recent projects
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/hron/krunner-zed
 	install = krunner-zed.install
@@ -13,7 +13,7 @@ pkgbase = krunner-zed
 	depends = krunner
 	depends = kservice
 	optdepends = kde-cli-tools: kstart for proper starting Zed in KDE environment
-	source = krunner-zed-0.1.1.tar.gz::https://github.com/hron/krunner-zed/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = eaa468a89d22cf02f794ffeb37c6573d31be86986c4798974da82697ddb5d569
+	source = krunner-zed-0.1.2.tar.gz::https://github.com/hron/krunner-zed/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 994443617f1c466b3462b488f2870893f71d57fff6ca8eb62c987f6980d42ec2
 
 pkgname = krunner-zed
