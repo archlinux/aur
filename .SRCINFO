@@ -1,0 +1,13 @@
+pkgbase = cachyos-downgrade-git
+	pkgdesc = Script for downgrading one or more packages to a version in your cache or the C.L.A. or A.L.A.
+	pkgver = r8.4f661a9
+	pkgrel = 1
+	url = https://gitlab.com/cscs/cachyos-downgrade
+	arch = any
+	license = GPL
+	depends = downgrade
+	optdepends = sudo: for installation via sudo
+	source = git+https://gitlab.com/cscs/cachyos-downgrade.git
+	sha256sums = SKIP
+
+pkgname = cachyos-downgrade-git
