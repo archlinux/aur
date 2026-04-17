@@ -11,8 +11,8 @@ provides=('snout')
 conflicts=('snout')
 source_x86_64=("snout-${pkgver}-linux-x86_64::${url}/releases/download/v${pkgver}/snout-v${pkgver}-linux-x86_64")
 source_aarch64=("snout-${pkgver}-linux-aarch64::${url}/releases/download/v${pkgver}/snout-v${pkgver}-linux-aarch64")
-sha256sums_x86_64=('684cc75cfea7a78b4bff7a568497e32d0fb5542eec009b1ff06d59459a632727')
-sha256sums_aarch64=('e5f338c458a171f57be062ff52c0c7d0da171324c09b7918e341dae94bacb670')
+sha256sums_x86_64=('6b43a25adcf4b74c607a77e2e10ebe7a72a55a922b7332abea90be1ed52ded4b')
+sha256sums_aarch64=('abaa7ca1b2fdeb1c99e690b7ff7ce9f5b1bd45f4470530e4d0407fb2f96bc5af')
 
 package() {
   install -Dm755 "${srcdir}/snout-${pkgver}-linux-${CARCH}" "${pkgdir}/usr/bin/snout"
