@@ -3,7 +3,7 @@ pkgname=avogadro2-bin
 _pkgname=Avogadro2
 _appname="org.openchemistry.${_pkgname}"
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -48,7 +48,7 @@ prepare() {
     sed -i "s/Icon=${_appname}/Icon=${pkgname%-bin}/g" "${srcdir}/squashfs-root/usr/share/applications/${_appname}.desktop"
     sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/squashfs-root/usr/share/metainfo/${_appname}.metainfo.xml"
     # Replace build runner paths with correct installation paths
-    find "${pkgdir}" -type f -exec sed -i 's|/home/runner/work/avogadrolibs/build/prefix|/usr/lib/avogadro2|g' {} +
+    find "${srcdir}/squashfs-root" -type f -exec sed -i 's|/home/runner/work/avogadrolibs/build/prefix|/usr/lib/avogadro2|g' {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
