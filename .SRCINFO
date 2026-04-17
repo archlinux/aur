@@ -8,6 +8,7 @@ pkgbase = ember-notify
 	license = MIT
 	makedepends = cargo
 	makedepends = rust
+	makedepends = sqlite
 	depends = cairo
 	depends = dbus
 	depends = sqlite

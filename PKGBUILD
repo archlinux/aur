@@ -6,7 +6,7 @@ arch=('x86_64')
 url='https://github.com/Savanta/Ember'
 license=('MIT')
 depends=('cairo' 'dbus' 'sqlite' 'wmctrl')
-makedepends=('cargo' 'rust')
+makedepends=('cargo' 'rust' 'sqlite')
 optdepends=('noto-fonts: default toast font'
             'eww: bar widget integration')
 provides=('notification-daemon')
@@ -27,6 +27,8 @@ prepare() {
 build() {
   cd "$_srcdir"
   export CARGO_HOME="$srcdir/cargo-home"
+  export SQLITE3_LIB_DIR="/usr/lib"
+  export SQLITE3_INCLUDE_DIR="/usr/include"
   cargo build --release --locked --offline
 }
 
