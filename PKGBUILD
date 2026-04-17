@@ -1,4 +1,5 @@
-# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
+# Maintainer: Konstantin Liberty <jon9097 at gmail dot com>
+# Contributor: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Contributor: Dct Mei <dctxmei@yandex.com>
 # Contributor: AkinoKaede <autmaple@protonmail.com>
 # Contributor: DuckSoft <realducksoft@gmail.com>
@@ -6,9 +7,9 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray
-pkgver=26.2.6
+pkgver=26.3.27
 pkgrel=1
-pkgdesc="The best v2ray-core, with XTLS support"
+pkgdesc="Proxy platform with XTLS support"
 arch=('x86_64')
 url="https://github.com/XTLS/Xray-core"
 license=('MPL-2.0')
@@ -20,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "xray.tmpfiles"
         "xray.service"
         "xray@.service")
-sha256sums=('a41f170a03fa25d9d39f23f344540b02336a5c893d97b1b837b9477f4b35bc7f'
+sha256sums=('992a4997e6bb846d11469435d687f99ef812fcde1e0a009bb8e95189ea20331d'
             '801131bf2eb079750f17d3e703e414eab8494db0d512164cdef3cc68cef308b8'
             '2d301e9f2fae728da55f33a15b2c36e90cdb657deafb5d6ab7d74375ce9fdf38'
             '66a8a3280aa5b3ed41b9855ba3de3f884bd2113b4a965cf097fcb31c3a6066ed'
@@ -32,7 +33,7 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -modcacherw"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
     go build -o xray -gcflags="all=-l=4" ./main
 }
 
