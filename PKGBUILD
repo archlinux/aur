@@ -2,7 +2,7 @@
 
 pkgname=('portprotonqt' 'portprotonqt-steam-compat')
 pkgver=0.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern GUI for managing and launching games from PortProton, Steam, and Epic Games Store"
 arch=('any')
 url="https://git.linux-gaming.ru/Boria138/PortProtonQt"
@@ -11,8 +11,15 @@ depends=('python-requests' 'python-babel' 'python-evdev' 'python-pyudev' 'python
     'python-psutil' 'python-tqdm' 'python-vdf' 'python-libarchive-c' 'pyside6' 'python-rapidfuzz' 'icoextract' 'python-pillow' 'perl-image-exiftool' 'python-beautifulsoup4' 'python-websocket-client' 'cabextract' 'unzip' 'curl' 'unrar' 'qt6-svg' 'pciutils' 'mesa-utils' 'vulkan-icd-loader' '7zip')
 depends_aarch64=('muvm')
 makedepends=('meson' 'ninja' 'vulkan-headers' 'gettext')
-source=("git+https://git.linux-gaming.ru/Boria138/PortProtonQt#tag=v$pkgver")
-sha256sums=('d6ecab2ad0c39cd26347b71cb72c8a2b0b97e46fed72f058d01707bb150bc9c7')
+source=("git+https://git.linux-gaming.ru/Boria138/PortProtonQt#tag=v$pkgver"
+		"dbus-fixes.patch")
+sha256sums=('d6ecab2ad0c39cd26347b71cb72c8a2b0b97e46fed72f058d01707bb150bc9c7'
+            'e413a4970fc97d8c43b39ecfc78aff3e1d9b95a65a924a83dab0fc980eff7146')
+
+prepare() {
+	cd "${srcdir}/PortProtonQt"
+	patch -p1 -i "${srcdir}"/dbus-fixes.patch
+}
 
 build() {
     arch-meson PortProtonQt build
