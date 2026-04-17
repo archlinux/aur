@@ -2,7 +2,7 @@
 
 _pkgname=moon
 pkgname="${_pkgname}-bin"
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 license=('MIT')
@@ -13,8 +13,8 @@ arch=('x86_64' 'aarch64')
 depends=('gcc-libs')
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.tar.xz::${url}/releases/download/v${pkgver}/moon_cli-${arch[0]}-unknown-linux-gnu.tar.xz")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.tar.xz::${url}/releases/download/v${pkgver}/moon_cli-${arch[1]}-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('6642850b041ddfce5d15276a2eb344fddab20f24961932a338b33f94d31c202c')
-sha256sums_aarch64=('9aef6d52bfc73b0ed1e4957ea93adb48b2753d873a83568673ef39e7ab9c545d')
+sha256sums_x86_64=('7d09aa63a9cfc4e9245fc1f31aee11a9fb4cfbb208b6669c0ca0321c4eeadbc2')
+sha256sums_aarch64=('e2e9226ef825a6ccb334576f07139c38f89a12eaa1edad3edf86f3e34ee59e74')
 
 prepare() {
   cd "moon_cli-${CARCH}-unknown-linux-gnu"
