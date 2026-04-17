@@ -1,20 +1,19 @@
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -211,16 +211,12 @@ execute_process(
+diff -ura src.orig/CMakeLists.txt src.new/CMakeLists.txt
+--- src.orig/CMakeLists.txt	2026-04-16 19:37:06.833665110 +0800
++++ src.new/CMakeLists.txt	2026-04-16 19:45:37.327516043 +0800
+@@ -215,13 +215,9 @@
  )
  
  if(PROTOBUF_CHECK EQUAL 0)
--    if(PROTOBUF_VERSION VERSION_LESS "4.0.0")
--        message(STATUS "Python protobuf ${PROTOBUF_VERSION} found (< 4.0)")
+-    if(PROTOBUF_VERSION VERSION_LESS "3.20.0" OR PROTOBUF_VERSION VERSION_GREATER_EQUAL "4.0.0")
+-        message(FATAL_ERROR "Python protobuf ${PROTOBUF_VERSION} found, but version (>=3.20, <4.0) is required")
 -    else()
--        message(FATAL_ERROR "Python protobuf ${PROTOBUF_VERSION} found, but version < 4.0 required")
+-        message(STATUS "Python protobuf ${PROTOBUF_VERSION} found (>=3.20, <4.0)")
 -    endif()
-+    message(STATUS "Python protobuf ${PROTOBUF_VERSION} found")
++	message(STATUS "Python protobuf ${PROTOBUF_VERSION} found")
  else()
--    message(FATAL_ERROR "Python protobuf not found. Install version <4.0")
-+    message(FATAL_ERROR "Python protobuf not found")
+-    message(FATAL_ERROR "Python protobuf not found. Install version (>=3.20, <4.0)")
++	message(FATAL_ERROR "Python protobuf not found")
  endif()
  
- 
- add_subdirectory(libs)
  
