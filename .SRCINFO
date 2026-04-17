@@ -1,0 +1,22 @@
+pkgbase = tint2-patched-git
+	pkgdesc = tint2 is a simple panel/taskbar made for modern X window managers. Git release with patches from https://github.com/korbeljak/tint2.
+	pkgver = r2160.8033cc8
+	pkgrel = 1
+	url = https://github.com/korbeljak/tint2
+	install = tint2-patched-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = gtk2
+	depends = gtk3
+	depends = imlib2
+	depends = startup-notification
+	provides = tint2
+	conflicts = tint2
+	conflicts = tint2-git
+	source = git+https://github.com/korbeljak/tint2
+	md5sums = SKIP
+
+pkgname = tint2-patched-git
