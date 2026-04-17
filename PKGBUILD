@@ -15,8 +15,9 @@ depends=('ntp' 'cronie' 'openssh' 'mariadb' 'dnsmasq' 'avahi' 'python-setuptools
 optdepends=('python-picamera2: Raspberry Pi camera support for ethoscope devices')
 provides=('ethoscope')
 install="ethoscope-node.install"
-source=("$pkgname::git+https://github.com/gilestrolab/ethoscope.git")
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/gilestrolab/ethoscope.git"
+        "ssh-handler.desktop")
+md5sums=('SKIP' 'SKIP')
 _git_branch="dev"
 
 pkgver() {
@@ -66,6 +67,9 @@ package() {
   ln -s /opt/ethoscope/services/virtuascope.service ./
   ln -s /opt/ethoscope/services/ethoscope_mirror_fetch.service ./
   ln -s /opt/ethoscope/services/ethoscope_mirror_fetch.timer ./
+
+  # Install ssh:// protocol handler so SSH links in the web UI are clickable
+  install -Dm644 "${srcdir}/ssh-handler.desktop" "${pkgdir}/usr/share/applications/ssh-handler.desktop"
 
   # Note: Python packages are installed via pip in the .install script
   # This generates .egg-info metadata and registers console script entry points

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=SSH Handler
+Comment=Open ssh:// links in a terminal
+Exec=xterm -e ssh %u
+Icon=utilities-terminal
+NoDisplay=true
+MimeType=x-scheme-handler/ssh;

@@ -41,6 +41,8 @@ pkgbase = ethoscope-node
 	optdepends = python-picamera2: Raspberry Pi camera support for ethoscope devices
 	provides = ethoscope
 	source = ethoscope-node::git+https://github.com/gilestrolab/ethoscope.git
+	source = ssh-handler.desktop
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = ethoscope-node
