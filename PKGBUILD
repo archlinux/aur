@@ -1,6 +1,6 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=kwybars-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Desktop audio visualizer for Wayland that renders real-time audio bars on screen"
 arch=('x86_64')
@@ -9,12 +9,12 @@ license=('MIT')
 provides=('kwybars')
 conflicts=('kwybars' 'kwybars-git')
 options=('!debug')
-depends=('gtk4' 'gtk4-layer-shell' 'pipewire' 'cava')
+depends=('gdk-pixbuf2' 'gtk4' 'gtk4-layer-shell' 'pipewire' 'cava')
 optdepends=('libnotify: desktop error notifications via notify-send')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/naurissteins/Kwybars/releases/download/$pkgver/kwybars-$pkgver-x86_64-linux.tar.gz"
 )
-sha256sums=('d6b94e75f297fa589b241d0bb57634b0b0e727cfdbe4b99b20ffe56cb75b6324')
+sha256sums=('61c9a7dac3cfe2c6734be4ff74a2606f452aac6373490421a741bc7cbe4c82ad')
 
 package() {
   cd "kwybars-$pkgver-x86_64-linux"
