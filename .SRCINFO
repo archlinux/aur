@@ -1,14 +1,14 @@
 pkgbase = seestar-tool
 	pkgdesc = Desktop tool for managing firmware on ZWO Seestar telescopes
-	pkgver = 2026.4.0
+	pkgver = 2026.4.1
 	pkgrel = 1
 	url = https://github.com/bguthro/seestar-tool
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0
-	source_x86_64 = https://github.com/bguthro/seestar-tool/releases/download/v2026.4.0/seestar-tool_2026.4.0_amd64.deb
-	sha256sums_x86_64 = 4f50022c6ad0bce066b14d700ef76a4fa3c65d96f8a56060a45d28ed656d2363
-	source_aarch64 = https://github.com/bguthro/seestar-tool/releases/download/v2026.4.0/seestar-tool_2026.4.0_arm64.deb
-	sha256sums_aarch64 = ac586e3fa27ba6c48095c329617ee165fa117def0556cf786bbd7e83a4729f92
+	source_x86_64 = https://github.com/bguthro/seestar-tool/releases/download/v2026.4.1/seestar-tool_2026.4.1_amd64.deb
+	sha256sums_x86_64 = c7096106ca7018c02fc60e5b02b156ec07763a526fcc4edfa3cf7514cd74a939
+	source_aarch64 = https://github.com/bguthro/seestar-tool/releases/download/v2026.4.1/seestar-tool_2026.4.1_arm64.deb
+	sha256sums_aarch64 = 3af2ca1f0ce5c089673cae4925834cf6b130c323518f66f0cf78272af8f0ea5a
 
 pkgname = seestar-tool
