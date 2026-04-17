@@ -1,0 +1,13 @@
+pkgbase = lockdate-git
+	pkgdesc = custom impl of date that allows for formatting in other calendars
+	pkgver = r1.9ca27e0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = lockdate
+	source = misc::git+https://github.com/dot166/misc
+	sha256sums = SKIP
+
+pkgname = lockdate-git
