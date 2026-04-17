@@ -50,6 +50,7 @@ optdepends=(
 source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
 sha256sums=('ef999b93b487532c50f8ed42c3ac0141a52d128052ba0a0d0e90c6edc02e97fe')
 validpgpkeys=()
+install=hermes-agent.install
 
 build() {
   cd "${pkgname}-${_tagver}"
@@ -80,7 +81,7 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Install optional submodule if present
-if [ -f "tinker-atropos/pyproject.toml" ]; then
+  if [ -f "tinker-atropos/pyproject.toml" ]; then
       cd tinker-atropos
       python -m build --wheel --no-isolation
       python -m installer --destdir="$pkgdir" dist/*.whl
@@ -97,4 +98,9 @@ if [ -f "tinker-atropos/pyproject.toml" ]; then
   install -d "$pkgdir/usr/share/hermes-agent"
   [ -f "cli-config.yaml.example" ] && install -Dm644 cli-config.yaml.example "$pkgdir/usr/share/hermes-agent/cli-config.yaml.example"
   [ -f ".env.example" ] && install -Dm644 .env.example "$pkgdir/usr/share/hermes-agent/.env.example"
+
+  # Install skills directory
+  if [ -d "skills" ]; then
+    cp -r skills "$pkgdir/usr/share/hermes-agent/"
+  fi
 }
