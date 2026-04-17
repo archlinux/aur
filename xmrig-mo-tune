@@ -1,0 +1,142 @@
+#!/bin/bash
+
+# Ensure script is run as root
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root (sudo xmrig-mo-tune)"
+  exit 1
+fi
+
+echo "=========================================="
+echo " XMRig-MO Desktop Zero-Impact Tuner"
+echo "=========================================="
+
+# 1. HugePages Kernel Parameter Check & Automation
+if grep -q "hugepagesz=1G" /proc/cmdline; then
+    echo "[OK] 1GB HugePages are active in the current kernel."
+    REBOOT_REQUIRED=0
+else
+    echo "[!] WARNING: 1GB HugePages are NOT active in the kernel."
+    echo "This will cause a measurable loss in hashrate."
+    read -p "Would you like this script to auto-configure dracut/systemd-boot for HugePages? (y/n): " AUTO_HUGE
+    
+    if [[ "$AUTO_HUGE" =~ ^[Yy]$ ]]; then
+        echo "[+] Configuring kernel parameters..."
+        
+    # Apply parameters exclusively based on system architecture
+        if [ -f /etc/kernel/cmdline ]; then
+            # Method A: EndeavourOS / systemd-boot native
+            if ! grep -q "hugepagesz=1G" /etc/kernel/cmdline; then
+                sed -i '$ s/$/ default_hugepagesz=1G hugepagesz=1G hugepages=3/' /etc/kernel/cmdline
+                echo " -> Added parameters to /etc/kernel/cmdline"
+            else
+                echo " -> Parameters already exist in /etc/kernel/cmdline"
+            fi
+        else
+            # Method B: Fallback to dracut drop-in
+            mkdir -p /etc/cmdline.d
+            echo "default_hugepagesz=1G hugepagesz=1G hugepages=3" > /etc/cmdline.d/90-xmrig-hugepages.conf
+            echo " -> Created dracut drop-in at /etc/cmdline.d/90-xmrig-hugepages.conf"
+        fi
+        echo "[+] Rebuilding kernel images..."
+        # Intelligently detect the correct rebuild command for the user's Arch setup
+        if command -v dracut-rebuild >/dev/null 2>&1; then
+            echo " -> Detected dracut-rebuild wrapper. Running..."
+            dracut-rebuild
+        elif command -v reinstall-kernels >/dev/null 2>&1; then
+            echo " -> Detected reinstall-kernels wrapper. Running..."
+            reinstall-kernels
+        elif command -v dracut >/dev/null 2>&1; then
+            echo " -> Running standard dracut regeneration..."
+            dracut -f --regenerate-all
+        else
+            echo "[!] Could not find a supported rebuild command. You may need to rebuild your initramfs manually."
+        fi
+        
+        REBOOT_REQUIRED=1
+    else
+        echo "[-] Skipping HugePages configuration."
+        REBOOT_REQUIRED=0
+    fi
+fi
+echo "------------------------------------------"
+
+# 2. Gather User Data
+read -p "Enter your MoneroOcean Wallet Address: " WALLET_ID
+if [ -z "$WALLET_ID" ]; then
+    echo "Wallet address required. Exiting."
+    exit 1
+fi
+
+read -p "Enter a worker name for this machine (default: arch_desktop): " WORKER_NAME
+WORKER_NAME=${WORKER_NAME:-arch_desktop}
+
+# 3. Hardware Topology & Core Isolation
+TOTAL_CORES=$(nproc)
+echo -e "\nDetected $TOTAL_CORES logical CPU threads."
+echo "To keep the desktop completely stutter-free, we isolate the miner from core 0 and 1."
+read -p "How many threads do you want to RESERVE purely for the desktop? (default: 2): " RESERVED_CORES
+RESERVED_CORES=${RESERVED_CORES:-2}
+
+ALLOWED_START=$RESERVED_CORES
+ALLOWED_END=$((TOTAL_CORES - 1))
+ALLOWED_RANGE="${ALLOWED_START}-${ALLOWED_END}"
+
+# 4. Generate the Skeleton Config
+echo -e "\n[+] Generating XMRig configuration at /etc/xmrig-mo/config.json..."
+mkdir -p /etc/xmrig-mo
+
+cat <<EOF > /etc/xmrig-mo/config.json
+{
+    "autosave": true,
+    "cpu": {
+        "enabled": true,
+        "huge-pages": true,
+        "hwloc": true,
+        "yield": true,
+        "1gb-pages": true,
+        "asm": true
+    },
+    "opencl": { "enabled": false },
+    "cuda": { "enabled": false },
+    "pools": [
+        {
+            "url": "gulf.moneroocean.stream:10128",
+            "user": "$WALLET_ID",
+            "pass": "$WORKER_NAME",
+            "keepalive": true,
+            "tls": false
+        }
+    ]
+}
+EOF
+
+# 5. Generate Systemd Drop-in for Core Isolation
+echo "[+] Applying CPU Isolation (AllowedCPUs=$ALLOWED_RANGE) to systemd..."
+mkdir -p /etc/systemd/system/xmrig-mo.service.d
+
+cat <<EOF > /etc/systemd/system/xmrig-mo.service.d/override.conf
+[Service]
+AllowedCPUs=$ALLOWED_RANGE
+EOF
+
+# 6. Reload and Enable
+echo "[+] Reloading systemd daemons..."
+systemctl daemon-reload
+
+if [ "$REBOOT_REQUIRED" -eq 1 ]; then
+    systemctl enable xmrig-mo.service
+    echo "=========================================="
+    echo " SETUP COMPLETE - REBOOT REQUIRED"
+    echo "=========================================="
+    echo "Kernel parameters were updated. You MUST reboot your system"
+    echo "for the 1GB HugePages to allocate properly."
+    echo "The background miner is enabled and will start automatically after reboot."
+else
+    systemctl enable --now xmrig-mo.service
+    echo "=========================================="
+    echo " TUNING COMPLETE & MINER STARTED!"
+    echo "=========================================="
+    echo "- View live logs: sudo journalctl -fu xmrig-mo.service"
+    echo "- Stop miner:     sudo systemctl stop xmrig-mo.service"
+fi
+echo "=========================================="

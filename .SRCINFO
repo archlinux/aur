@@ -1,0 +1,23 @@
+pkgbase = xmrig-mo-service
+	pkgdesc = MoneroOcean XMRig with zero-impact desktop tuning script
+	pkgver = 6.22.0
+	pkgrel = 1
+	url = https://github.com/MoneroOcean/xmrig
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = hwloc
+	depends = libuv
+	depends = openssl
+	depends = pciutils
+	source = git+https://github.com/MoneroOcean/xmrig.git
+	source = xmrig-mo.service
+	source = xmrig-mo-tune
+	sha256sums = SKIP
+	sha256sums = 7a12b30926aa0425db6726deecaebb2717dc13eeef33a881b340b2c9055418ef
+	sha256sums = 9476fa893b88563c0236e5d37c19ab9973ce3f8d73943f5cc1ebab6427b05fa3
+
+pkgname = xmrig-mo-service

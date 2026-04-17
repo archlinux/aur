@@ -1,0 +1,18 @@
+[Unit]
+Description=MoneroOcean XMRig Background Miner
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/xmrig-mo --config=/etc/xmrig-mo/config.json
+Nice=19
+CPUSchedulingPolicy=idle
+IOSchedulingClass=idle
+User=root
+Group=root
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
