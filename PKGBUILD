@@ -10,14 +10,20 @@ license=('Apache-2.0')
 depends=(
     'git'
     'python'
+    'python-click'
+    'python-httpx'
+    'python-pcpp'
     'python-pyyaml'
+    'python-rich'
+    'python-truststore'
     'python-zstandard'
 )
 
 makedepends=(
-    'python-setuptools'
     'python-build'
     'python-installer'
+    'python-poetry-core'
+    'python-setuptools'
     'python-wheel'
 )
 
