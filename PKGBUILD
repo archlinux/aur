@@ -59,21 +59,11 @@ build() {
   [ -f "package.json" ] && npm install
   # Build frontend
   [ -d "web" ] && cd web && npm install && npm run build && cd ..
- # Install whatsapp-bridge dependencies
- [ -f "scripts/whatsapp-bridge/package.json" ] && cd scripts/whatsapp-bridge && npm install --silent 2>/dev/null && cd ../..
+  # Install whatsapp-bridge dependencies
+  [ -f "scripts/whatsapp-bridge/package.json" ] && cd scripts/whatsapp-bridge && npm install --silent 2>/dev/null && cd ../..
   # Build Python wheel
   python -m build --wheel --no-isolation
 }
-
-#check() {
-#    local pytest_options=(
-#        -vv
-#    )
-#    cd "${pkgname}-${_tagver}"
-#    python -m venv --system-site-packages test-env
-#    test-env/bin/python -m installer dist/*.whl
-#    test-env/bin/python -m pytest "${pytest_options[@]}" tests
-#}
 
 package() {
   cd "${pkgname}-${_tagver}"
