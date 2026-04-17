@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-shotzy-git
-pkgver=r32.0577065
+pkgver=r35.2a1b7bf
 pkgrel=1
-pkgdesc="Image search on Google Lens and OCR directly from the built-in GNOME screenshot tool."
+pkgdesc="Image search on Google Lens, OCR and QR scan directly from the built-in GNOME Screenshot tool"
 arch=('any')
 url="https://github.com/SamkitJain660/Shotzy"
 license=('GPL-3.0-or-later')
