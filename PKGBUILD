@@ -6,7 +6,7 @@ pkgdesc="A terminal-based Netease cloud music player with spectrum visualizer, l
 arch=('x86_64' 'aarch64')
 url="https://github.com/professor-lee/CNMPlayer"
 license=('AGPL3')
-depends=('alsa-lib' 'dbus' 'chromaprint' 'fftw' 'cava' 'chafa')
+depends=('alsa-lib' 'dbus' 'chromaprint' 'fftw' 'cava' 'chafa' 'pipewire')
 optdepends=(
   'ttf-nerd-fonts-symbols: For icons and spectrum visualizer'
   'ttf-jetbrains-mono-nerd: Recommended monospace font'
