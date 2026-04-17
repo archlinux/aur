@@ -2,3 +2,5 @@ pkg/
 src/
 *.deb
 *.zst
+*.pkg.tar.*
+*.log

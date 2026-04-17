@@ -1,15 +1,15 @@
 # Maintainer: s1mpleog
 #
 # Build Details:
-# Chromium 147.0.7685.0 (Official Build) unstable (Linux 64-bit)
+# Chromium 149.0.7785.0 (Official Build) unstable (Linux 64-bit)
 # Features: No Sync | WebRTC Enabled | Widevine Enabled
 # Revision: 190a3548629c822fa8226a8a9bccb11ddbf7383d-refs/heads/main@{#1584191}
 # Compiler: clang (+lld_linker +thinlto +pgo +avx2 +fma +compiler_optimizations +linker_optimizations)
 
 pkgname=chromium-clang-avx2-bin
 _upstream_name=chromium-browser-unstable
-pkgver=147.0.7685.0
-_commit=r1584191
+pkgver=149.0.7785.0
+_commit=r1613160
 pkgrel=1
 pkgdesc="Chromium unstable compiled w/ Clang, PGO, ThinLTO, AVX2 (No Sync, WebRTC, Widevine)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ provides=("chromium" "$_upstream_name")
 conflicts=("chromium" "$_upstream_name")
 
 source=("https://github.com/RobRich999/Chromium_Clang/releases/download/v${pkgver}-${_commit}-linux64-rpm-avx2/${_upstream_name}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('95e05115de12ecc0a0bebb717859fe81ec0c81e087e6d447b37e96651f7b8a96')
+sha256sums=('022c31a63d67144039f0b25503eb9f0cba32500112bf0b787a291d1c4ee4309d')
 
 package() {
   cd "$srcdir"
