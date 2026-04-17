@@ -14,6 +14,7 @@ pkgbase = faugus-launcher-git
 	depends = python-filelock
 	depends = python-vdf
 	depends = python-psutil
+	depends = python-pygame
 	depends = libcanberra
 	depends = imagemagick
 	depends = icoextract
