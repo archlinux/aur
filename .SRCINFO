@@ -1,6 +1,6 @@
 pkgbase = leshade-bin
 	pkgdesc = An ReShade manager for linux.
-	pkgver = 2.4.5
+	pkgver = 2.4.6
 	pkgrel = 1
 	url = https://github.com/Ishidawg/LeShade
 	arch = x86_64
@@ -34,9 +34,9 @@ pkgbase = leshade-bin
 	options = !strip
 	options = !emptydirs
 	options = !libtool
-	source = leshade-2.4.5-LeShade-x86_64.AppImage::https://github.com/Ishidawg/LeShade/releases/download/2.4.5/LeShade-x86_64.AppImage
-	source = leshade-2.4.5-LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE
-	sha256sums = ea434fc31d992aeeea3e0526662793a53386b83f1c9f0347651df0349469bf32
+	source = leshade-2.4.6-LeShade-x86_64.AppImage::https://github.com/Ishidawg/LeShade/releases/download/2.4.6/LeShade-x86_64.AppImage
+	source = leshade-2.4.6-LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE
+	sha256sums = abc7821af7e4d0edce9d454ceaade7079af92a5008aaac0de5a0055ef44ac607
 	sha256sums = a7b8f406ed4e1a5311d51a1967f91e569a6c0ce815c2bf74956d926613dd61a3
 
 pkgname = leshade-bin
