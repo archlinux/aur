@@ -1,9 +1,3 @@
-# Development-only resources (not part of the AUR package)
-/openspec/
-/upstream/
-/.cursor/
-/project.txt
-
 # makepkg working/output directories
 /src/
 /pkg/
