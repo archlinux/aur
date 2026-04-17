@@ -1,14 +1,21 @@
 pkgbase = joern-git
 	pkgdesc = The Bug Hunter's Workbench
-	pkgver = 1.1.364
+	pkgver = 4.0.523.r2.g4b5afe5
 	pkgrel = 1
 	url = https://joern.io/
 	arch = any
-	license = apache
+	groups = reverse-engineering
+	license = Apache-2.0
+	makedepends = git
+	makedepends = unzip
 	makedepends = sbt
-	makedepends = java-environment>=11
-	depends = java-runtime>=11
+	makedepends = java-environment>=19
+	depends = java-runtime>=19
+	optdepends = glibc: for csharpsrc2cpg frontend support (C# and .NET)
+	optdepends = libgcc: for csharpsrc2cpg frontend support (C# and .NET)
+	optdepends = libstdc++: for csharpsrc2cpg frontend support (C# and .NET)
+	optdepends = zlib: for csharpsrc2cpg frontend support (C# and .NET)
 	source = git+https://github.com/joernio/joern.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = joern-git

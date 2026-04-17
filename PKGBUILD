@@ -1,18 +1,24 @@
 # Maintainer: Leonard Janis König < ljrk at ljrk dot org >
+# Maintainer: Noor Christensen <archlinux_AT_technopragmatics_DOT_org>
 _pkgname=joern
 pkgname=$_pkgname-git
-pkgver=1.1.364
+pkgver=4.0.523.r2.g4b5afe5
 pkgrel=1
 epoch=
 pkgdesc="The Bug Hunter's Workbench"
 arch=('any')
 url='https://joern.io/'
-license=('apache')
-#groups=()
-depends=('java-runtime>=11')
-makedepends=('sbt' 'java-environment>=11')
+license=('Apache-2.0')
+groups=('reverse-engineering')
+depends=('java-runtime>=19')
+makedepends=('git' 'unzip' 'sbt' 'java-environment>=19')
 #checkdepends=()
-#optdepends=()
+optdepends=(
+	'glibc: for csharpsrc2cpg frontend support (C# and .NET)'
+	'libgcc: for csharpsrc2cpg frontend support (C# and .NET)'
+	'libstdc++: for csharpsrc2cpg frontend support (C# and .NET)'
+	'zlib: for csharpsrc2cpg frontend support (C# and .NET)'
+)
 #provides=()
 #conflicts=()
 #replaces=()
@@ -22,12 +28,12 @@ makedepends=('sbt' 'java-environment>=11')
 #changelog=
 source=('git+https://github.com/joernio/joern.git')
 #noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP')
 #validpgpkeys=()
 
 pkgver() {
 	cd "$_pkgname"
-	git describe | sed 's/^v//'
+	git describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
