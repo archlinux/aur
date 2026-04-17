@@ -1,27 +1,28 @@
 # Maintainer: lea Chescotta <lea250183 at tutanota dot com>
 # Contributor: Rojikku <RojikkuNoKami at gmail dot com>
 # Contributor: Beej Jorgensen <beej@beej.us>
+# Contributor: Geoff Clements <ro2kz0@gmail.com>
 pkgname=umoria-color
-pkgver=5.8.2
-pkgrel=2
+pkgver=5.8.3
+pkgrel=1
 pkgdesc="Rogue-like dungeon crawler color variant"
 arch=('i686' 'x86_64')
 url="https://andrew.cool/moria"
-license=('GPL')
+license=('GPL-1.0-or-later')
 depends=('ncurses')
 makedepends=('gzip' 'cmake')
-backup=("usr/share/${pkgname}/files/scores")
+backup=("usr/share/${pkgname}/data/scores.dat")
 source=(
   "${pkgname}-${pkgver}-aur.patch"
   ${pkgname}-${pkgver}.tar.gz::https://github.com/andrewtweber/${pkgname}/archive/v${pkgver}.tar.gz
 )
 install=${pkgname}.install
 sha512sums=('35b1ebbb6c2b55795b9f86470a30bf3ff30d6d5926bcf34fef9f009cd08d9d2139a9c3479cfacf80a6a77c25843c592c85d11bebbb9628ca89d448baab0b4d39'
-            'f7259a6a405418a716c05720abf69d6afc50922f6089751a12500c49d347ff1238a349618d5f3169e81122ef3b78dfa2c5bafda48aba06a2bed32fc824a4d2f3')
+  '2e816d2533afad586a1e3d2889cf3c561978dc45babd03c7c16a340f75f4f74fd49c12de5c7cc9b3f5675fcb5cb9d3082cba8e690c4e8b8ffde26aadc67b1188')
 
 prepare() {
   cd "$srcdir/${pkgname}-$pkgver"
-  patch -Np1 < ../${pkgname}-${pkgver}-aur.patch
+  patch -Np1 <../${pkgname}-${pkgver}-aur.patch
 }
 
 build() {
@@ -45,6 +46,4 @@ package() {
   # set permissions on scores file (Uncomment below and change 666 > 664 to make games group exclusive)
   # chgrp games "${pkgdir}/usr/share/${pkgname}/data/scores.dat"
   chmod 666 "${pkgdir}/usr/share/${pkgname}/data/scores.dat"
-
 }
-
