@@ -38,13 +38,14 @@ If you want prompts for each step, you can run:
 
 This mode:
 
-- asks for the upstream `.deb` URL
-- extracts version from `magelab_<version>_amd64.deb`
-- offers to update `pkgver` and reset `pkgrel=1` when version changed
+- checks for a local `magelab_<version>_amd64.deb` before asking for a URL
+- extracts version from the local file name or the upstream URL
+- offers to update `pkgver`, then asks for `pkgrel`
 - runs `prepare`
-- asks for hosted `.pkg.tar.zst` URL after upload
-- runs `finalize --commit --push`
-- can upload the built pacman package to CrabNebula and asks beta vs stable
+- pauses once the `.pkg.tar.zst` is built so you can add it to CrabNebula
+- asks for the CrabNebula download URL for the `.pkg.tar.zst`
+- runs `makepkg --printsrcinfo > .SRCINFO`
+- asks before committing, then optionally asks before pushing to AUR
 
 ### 1. Prepare the build from upstream `.deb`
 
@@ -110,7 +111,7 @@ What this does:
 ## Command reference
 
 ```bash
-./aur-release.sh prepare [--deb-url URL] [--upload ...]
+./aur-release.sh prepare [--deb-url URL | --deb-file PATH] [--upload ...]
 ./aur-release.sh finalize --zst-url URL [--commit] [--push] [--message MSG]
 ./aur-release.sh walkthrough
 ```
@@ -118,6 +119,7 @@ What this does:
 Options:
 
 - `--deb-url URL`: override `_magelab_deb_url` during `prepare`
+- `--deb-file PATH`: build from a local `.deb` instead of downloading one
 - `--upload`: run `cn release upload` during `prepare`
 - `--upload-app X`: app slug (default `sapient-artifice/mage-lab`)
 - `--upload-version X`: release version (default `pkgver` from `PKGBUILD`)
@@ -133,11 +135,11 @@ Options:
 
 ## Typical version bump flow
 
-1. Edit `PKGBUILD` and bump `pkgver`/`pkgrel`.
-2. Run `./aur-release.sh prepare`.
-3. Upload generated `.pkg.tar.zst`.
-4. Run `./aur-release.sh finalize --zst-url "<uploaded-url>" --commit --push`.
-5. Verify AUR page updates.
+1. Run `./aur-release.sh walkthrough`.
+2. Let it reuse a local `.deb` or provide the upstream `.deb` URL.
+3. Confirm the target `pkgver`/`pkgrel`, then build.
+4. Upload the generated `.pkg.tar.zst` to CrabNebula and paste the download URL.
+5. Let the script refresh `.SRCINFO`, commit when ready, then push when ready.
 
 ## Troubleshooting
 

@@ -4,7 +4,7 @@ set -euo pipefail
 usage() {
   cat <<'USAGE'
 Usage:
-  ./aur-release.sh prepare [--deb-url URL] [--upload [upload options]]
+  ./aur-release.sh prepare [--deb-url URL | --deb-file PATH] [--upload [upload options]]
   ./aur-release.sh finalize --zst-url URL [--commit] [--push] [--message MSG]
   ./aur-release.sh walkthrough
 
@@ -12,10 +12,11 @@ Commands:
   prepare   Build package from upstream .deb and update _magelab_deb_* in PKGBUILD.
   finalize  Update _magelab_zst_* in PKGBUILD, refresh .SRCINFO, optionally commit/push.
   walkthrough
-            Interactive end-to-end flow: prompt for .deb URL, build, finalize, commit, push.
+            Interactive local-first flow: choose a .deb, build, refresh metadata, commit, and optionally push.
 
 Options:
   --deb-url URL    Override _magelab_deb_url during prepare.
+  --deb-file PATH  Use a local .deb during prepare instead of downloading it.
   --upload         Upload an asset with crabnebula CLI (cn release upload).
   --upload-app X   App slug for upload (default: sapient-artifice/mage-lab).
   --upload-version X
@@ -124,8 +125,25 @@ pkg_filename() {
   printf 'magelab-bin-%s-%s-x86_64.pkg.tar.zst' "$pkgver" "$pkgrel"
 }
 
+commit_release() {
+  local commit_msg="$1"
+
+  need_cmd git
+  git add PKGBUILD .SRCINFO
+  git commit -m "$commit_msg"
+  echo "==> Created commit: $commit_msg"
+}
+
+push_release() {
+  need_cmd git
+  # AUR metadata tracks master; push HEAD explicitly there.
+  git push origin HEAD:master
+  echo "==> Pushed to origin/master"
+}
+
 run_prepare() {
   local deb_url=""
+  local deb_file=""
   local do_upload=0
   local upload_app="sapient-artifice/mage-lab"
   local upload_version=""
@@ -140,6 +158,11 @@ run_prepare() {
       --deb-url)
         [[ $# -ge 2 ]] || die "--deb-url requires a value"
         deb_url="$2"
+        shift 2
+        ;;
+      --deb-file)
+        [[ $# -ge 2 ]] || die "--deb-file requires a value"
+        deb_file="$2"
         shift 2
         ;;
       --upload)
@@ -191,9 +214,10 @@ run_prepare() {
     esac
   done
 
+  [[ -z "$deb_url" || -z "$deb_file" ]] || die "use either --deb-url or --deb-file, not both"
+
   need_cmd makepkg
   need_cmd sha256sum
-  need_cmd curl
   need_cmd git
 
   local pkgver deb_asset deb_sha deb_source_url out_pkg out_sha
@@ -207,12 +231,21 @@ run_prepare() {
     set_pkgbuild_var "_magelab_deb_url" "$deb_url" double
   fi
 
-  deb_source_url="$(read_pkg_var _magelab_deb_url | sed -e 's/^"//' -e 's/"$//')"
-  [[ -n "$deb_source_url" ]] || die "_magelab_deb_url is empty"
-
   deb_asset="magelab_${pkgver}_amd64.deb"
-  echo "==> Downloading $deb_asset"
-  curl --fail --location --silent --show-error "$deb_source_url" --output "$deb_asset"
+  if [[ -n "$deb_file" ]]; then
+    [[ -f "$deb_file" ]] || die "local .deb not found: $deb_file"
+    echo "==> Using local .deb: $deb_file"
+    if [[ "$deb_file" != "$deb_asset" ]]; then
+      cp -f "$deb_file" "$deb_asset"
+    fi
+    deb_source_url="file://${deb_file}"
+  else
+    need_cmd curl
+    deb_source_url="$(read_pkg_var _magelab_deb_url | sed -e 's/^"//' -e 's/"$//')"
+    [[ -n "$deb_source_url" ]] || die "_magelab_deb_url is empty"
+    echo "==> Downloading $deb_asset"
+    curl --fail --location --silent --show-error "$deb_source_url" --output "$deb_asset"
+  fi
 
   deb_sha="$(sha256sum "$deb_asset" | awk '{print $1}')"
   set_pkgbuild_var "_magelab_deb_sha256" "$deb_sha" single
@@ -351,36 +384,64 @@ run_finalize() {
       commit_msg="magelab-bin: release ${pkgver}-${pkgrel}"
     fi
 
-    git add PKGBUILD .SRCINFO
-    git commit -m "$commit_msg"
-    echo "==> Created commit: $commit_msg"
+    commit_release "$commit_msg"
   fi
 
   if [[ "$do_push" -eq 1 ]]; then
-    # AUR metadata tracks master; push HEAD explicitly there.
-    git push origin HEAD:master
-    echo "==> Pushed to origin/master"
+    push_release
   fi
 }
 
 run_walkthrough() {
   need_cmd git
 
-  local default_deb_url deb_url deb_ver current_pkgver current_pkgrel zst_url
+  local default_deb_url recorded_deb_url deb_url deb_file deb_ver current_pkgver current_pkgrel next_pkgrel zst_url
   local upload_channel="beta" upload_version="" upload_app="sapient-artifice/mage-lab"
+  local commit_msg="" push_after_commit=0
+  local local_debs=()
   default_deb_url="$(read_pkg_var _magelab_deb_url | sed -e 's/^"//' -e 's/"$//')"
-
-  read -r -p "Upstream .deb URL [${default_deb_url}]: " deb_url
-  if [[ -z "$deb_url" ]]; then
-    deb_url="$default_deb_url"
-  fi
-  [[ -n "$deb_url" ]] || die "deb URL cannot be empty"
-
+  recorded_deb_url="$default_deb_url"
   current_pkgver="$(read_pkg_var pkgver)"
   current_pkgrel="$(read_pkg_var pkgrel)"
-  deb_ver="$(extract_deb_version_from_url "$deb_url" || true)"
+  shopt -s nullglob
+  local_debs=(magelab_*_amd64.deb)
+  shopt -u nullglob
+
+  deb_file=""
+  if [[ ${#local_debs[@]} -gt 0 ]]; then
+    if [[ ${#local_debs[@]} -gt 1 ]]; then
+      printf 'Found local .debs:\n'
+      printf '  %s\n' "${local_debs[@]}"
+      read -r -p "Local .deb to use [${local_debs[0]}]: " input_deb_file
+      if [[ -n "${input_deb_file:-}" ]]; then
+        deb_file="$input_deb_file"
+      else
+        deb_file="${local_debs[0]}"
+      fi
+    else
+      deb_file="${local_debs[0]}"
+    fi
+    echo "Selected local .deb: ${deb_file}"
+    if ! confirm "Use this local .deb for the build?" "Y"; then
+      deb_file=""
+    fi
+  fi
+
+  if [[ -z "$deb_file" ]]; then
+    read -r -p "Upstream .deb URL [${default_deb_url}]: " deb_url
+    if [[ -z "$deb_url" ]]; then
+      deb_url="$default_deb_url"
+    fi
+    [[ -n "$deb_url" ]] || die "deb URL cannot be empty"
+  fi
+
+  if [[ -n "$deb_file" ]]; then
+    deb_ver="$(extract_deb_version_from_url "$deb_file" || true)"
+  else
+    deb_ver="$(extract_deb_version_from_url "$deb_url" || true)"
+  fi
   if [[ -z "$deb_ver" ]]; then
-    echo "Could not auto-detect version from URL."
+    echo "Could not auto-detect version from the selected .deb source."
     read -r -p "Upstream version [${current_pkgver}]: " deb_ver
     if [[ -z "$deb_ver" ]]; then
       deb_ver="$current_pkgver"
@@ -391,22 +452,55 @@ run_walkthrough() {
   echo "Current PKGBUILD version:  ${current_pkgver}-${current_pkgrel}"
 
   if [[ "$deb_ver" != "$current_pkgver" ]]; then
-    if confirm "Update PKGBUILD to pkgver=$deb_ver and reset pkgrel=1?" "Y"; then
+    if confirm "Update PKGBUILD to pkgver=$deb_ver?" "Y"; then
       set_pkgbuild_var "pkgver" "$deb_ver" plain
-      set_pkgbuild_var "pkgrel" "1" plain
-      current_pkgrel="1"
-      echo "Updated PKGBUILD to ${deb_ver}-${current_pkgrel}"
+      echo "Updated PKGBUILD to pkgver=$deb_ver"
     else
       die "walkthrough stopped: pkgver mismatch was not accepted"
     fi
   fi
 
+  if [[ "$deb_ver" != "$current_pkgver" ]]; then
+    next_pkgrel="1"
+  else
+    next_pkgrel="$current_pkgrel"
+  fi
+
+  read -r -p "pkgrel [${next_pkgrel}]: " input_pkgrel
+  if [[ -n "${input_pkgrel:-}" ]]; then
+    next_pkgrel="$input_pkgrel"
+  fi
+  [[ "$next_pkgrel" =~ ^[0-9]+$ ]] || die "pkgrel must be a positive integer"
+  set_pkgbuild_var "pkgrel" "$next_pkgrel" plain
+  current_pkgrel="$next_pkgrel"
+  echo "Release target: ${deb_ver}-${current_pkgrel}"
+
   if ! confirm "Run prepare step now?" "Y"; then
     die "walkthrough stopped before prepare"
   fi
-  run_prepare --deb-url "$deb_url"
+  if [[ -n "$deb_file" ]]; then
+    run_prepare --deb-file "$deb_file"
+  else
+    run_prepare --deb-url "$deb_url"
+  fi
 
-  if confirm "Upload built pacman package to CrabNebula now?" "Y"; then
+  if [[ -n "$deb_file" ]]; then
+    echo
+    echo "A public .deb URL is still needed in PKGBUILD for future rebuilds."
+    read -r -p "Upstream .deb URL to record [${recorded_deb_url}]: " deb_url
+    if [[ -z "$deb_url" ]]; then
+      deb_url="$recorded_deb_url"
+    fi
+    [[ -n "$deb_url" ]] || die "deb URL cannot be empty"
+    set_pkgbuild_var "_magelab_deb_url" "$deb_url" double
+  fi
+
+  echo
+  echo "Built package: $(pkg_filename)"
+  if ! confirm "Add this .pkg.tar.zst to CrabNebula now?" "Y"; then
+    die "walkthrough stopped before CrabNebula upload"
+  fi
+  if confirm "Run the CrabNebula upload from this script?" "N"; then
     if confirm "Is this a beta release channel?" "Y"; then
       upload_channel="beta"
     else
@@ -422,21 +516,48 @@ run_walkthrough() {
       upload_version="$input_upload_version"
     fi
     run_cn_upload "$upload_app" "$upload_version" "pacman-x86_64" "" "" "" "$upload_channel" "$(pkg_filename)"
+  else
+    echo "Upload it in CrabNebula, then continue with the hosted download URL."
   fi
 
   echo
-  echo "Upload the built .pkg.tar.zst to your CDN, then paste the public URL below."
-  read -r -p "Hosted .pkg.tar.zst URL: " zst_url
+  read -r -p ".pkg.tar.zst CrabNebula download URL: " zst_url
   [[ -n "$zst_url" ]] || die "zst URL cannot be empty"
 
-  if ! confirm "Run finalize, commit, and push to AUR now?" "Y"; then
-    die "walkthrough stopped before finalize/push"
+  run_finalize --zst-url "$zst_url"
+
+  echo
+  if ! confirm "Refresh complete. Are you ready to commit these AUR changes?" "Y"; then
+    die "walkthrough stopped before commit"
   fi
-  run_finalize --zst-url "$zst_url" --commit --push
+  if ! confirm "Create the git commit now?" "Y"; then
+    die "walkthrough stopped before commit"
+  fi
+
+  commit_msg="magelab-bin: release $(read_pkg_var pkgver)-$(read_pkg_var pkgrel)"
+  read -r -p "Commit message [${commit_msg}]: " input_commit_msg
+  if [[ -n "${input_commit_msg:-}" ]]; then
+    commit_msg="$input_commit_msg"
+  fi
+  commit_release "$commit_msg"
+
+  echo
+  if confirm "Push this commit to the AUR remote now?" "N"; then
+    if confirm "Push HEAD to origin/master?" "Y"; then
+      push_after_commit=1
+    fi
+  fi
+  if [[ "$push_after_commit" -eq 1 ]]; then
+    push_release
+  fi
 
   echo
   echo "Walkthrough complete."
-  echo "AUR should update shortly after the push."
+  if [[ "$push_after_commit" -eq 1 ]]; then
+    echo "AUR should update shortly after the push."
+  else
+    echo "Next step: push with git push origin HEAD:master when you are ready."
+  fi
 }
 
 main() {
