@@ -3,13 +3,14 @@
 _pkgname=carton
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.1.8
-pkgrel=2
+pkgver=0.1.8 # renovate: datasource=github-tags depName=821869798/carton
+pkgrel=3
 pkgdesc="A Windows and Linux GUI client for sing-box.(主打高性能和易用性，非electron tauri等web套皮)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/821869798/repo/"
+url="https://github.com/821869798/carton"
 license=('GPL-3.0')
-depends=('zlib' 'fuse2')
+depends=('zlib' 'fuse2' 'hicolor-icon-theme')
+provides=("${_pkgname}")
 options=('!strip')
 _appimage_x86_64="${_pkgname}-${pkgver}-linux-x64.AppImage"
 _appimage_aarch64="${_pkgname}-${pkgver}-linux-arm64.AppImage"
@@ -26,11 +27,10 @@ sha256sums_aarch64=('27822e5b445322ba2c91b6b541ec0b92877e95995aa3bd375d2c24f3e3d
                    'd0f7cd798fd03274d6742245e320bbd2133dfdb7161c4470df4ea862b4fa57dd')
 
 prepare() {
-    if [[ ${CARCH} == "x86_64" ]]; then
-        _appimage="${_appimage_x86_64}"
-    else
-        _appimage="${_appimage_aarch64}"
-    fi
+    case "${CARCH}" in
+        x86_64)  _appimage="${_appimage_x86_64}" ;;
+        aarch64) _appimage="${_appimage_aarch64}" ;;
+    esac
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract
 }
@@ -44,11 +44,10 @@ build() {
 }
 
 package() {
-    if [[ ${CARCH} == "x86_64" ]]; then
-        _appimage="${_appimage_x86_64}"
-    else
-        _appimage="${_appimage_aarch64}"
-    fi
+    case "${CARCH}" in
+        x86_64)  _appimage="${_appimage_x86_64}" ;;
+        aarch64) _appimage="${_appimage_aarch64}" ;;
+    esac
 
     # AppImage
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
