@@ -65,7 +65,13 @@
 ### Full tickless can give higher performances in various cases but, depending on hardware, lower consistency.
 : "${_tickrate:=full}"
 
-## Choose between full(low-latency), lazy, voluntary or none
+## Choose between full, lazy or dynamic
+# Dynamic allows you to switch between full and lazy at runtime
+# Full: Makes all non-critical kernel code preemptible to reduce latency
+# Lazy: Same as full but instead of preempting immediately it waits for signals from the scheduler
+#       in an attempt to boost throughput.
+#       In practice, this doesn't seem to perform well as both throughput and latency suffer
+#       compared to full.
 : "${_preempt:=full}"
 
 ### Transparent Hugepages
@@ -170,18 +176,14 @@ else
 fi
 
 pkgbase="linux-$_pkgsuffix"
-_major=6.19
-_minor=11
+_major=7.0
+_minor=0
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
 _tagrel=2
 pkgrel=1
-#_stable=${_major}.${_minor}
-_stable=${_major}
-#_stablerc=${_major}-${_rcver}
-_srctag=cachyos-${_major}.${_minor}-${_tagrel}
-_srcname=${_srctag}
+_srcname=cachyos-${_major}.${_minor}-${_tagrel}
 pkgdesc='CachyOS Linux kernel with cjktty patches'
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
@@ -191,9 +193,13 @@ license=('GPL-2.0-only')
 options=('!strip' '!debug' '!lto')
 makedepends=(
   bc
+  binutils
   cpio
   gettext
+  glibc
   libelf
+  libgcc
+  openssl
   pahole
   perl
   python
@@ -201,20 +207,21 @@ makedepends=(
   rust-bindgen
   rust-src
   tar
+  xxhash
   xz
+  zlib
   zstd
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_cjktty_commit=6d8301e88ddf1f1c61623d6356c5fd10b860cd7e
-_cjktty_source="https://raw.githubusercontent.com/bigshans/cjktty-patches/${_cjktty_commit}"
+_cjktty_source="https://raw.githubusercontent.com/bigshans/cjktty-patches/master"
 _nv_ver=595.58.03
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
-    "https://github.com/CachyOS/linux/releases/download/${_srctag}/${_srctag}.tar.gz"
+    "https://github.com/CachyOS/linux/releases/download/${_srcname}/${_srcname}.tar.gz"
     "config"
-    "${_cjktty_source}/v6.x/cjktty-${_major}.patch"
+    "${_cjktty_source}/v7.x/cjktty-7.0.patch"
     "${_cjktty_source}/cjktty-add-cjk32x32-font-data.patch")
 
 # LLVM makedepends
@@ -237,13 +244,17 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=1c702dda346a59e05cfd3029569bbb1d5d91c54b")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=0829cf892b5d7b3a0e8aa76cc7aca02b84f62557")
 fi
 
 
 if [ "$_build_nvidia_open" = "yes" ]; then
     source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
-             "${_patchsource}/misc/nvidia/0002-Add-IBT-support.patch")
+             "${_patchsource}/misc/nvidia/0002-Add-IBT-support.patch"
+             "${_patchsource}/misc/nvidia/0004-HACK-kernel-open-Makefile-Remove-PAHOLE_VARIABLE.patch"
+             "${_patchsource}/misc/nvidia/0003-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
+             "${_patchsource}/misc/nvidia/0004-fix-dsc-use-bits_per_component-for-flatnessDetThresh.patch"
+             "${_patchsource}/misc/nvidia/0005-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
 fi
 
 # Use generated AutoFDO Profile
@@ -327,9 +338,6 @@ prepare() {
         scripts/config -e CACHY
     fi
 
-    echo "Enabling cjktty fonts..."
-    scripts/config -e FONT_CJK_16x16 -e FONT_CJK_32x32
-
     ### Selecting the CPU scheduler
     case "$_cpusched" in
         cachyos|bore|hardened) scripts/config -e SCHED_BORE;;
@@ -400,10 +408,9 @@ prepare() {
     # We should not set up the PREEMPT for RT kernels
     if [[ "$_cpusched" != "rt" && "$_cpusched" != "rt-bore" ]]; then
         case "$_preempt" in
-            full) scripts/config -e PREEMPT_DYNAMIC -e PREEMPT -d PREEMPT_VOLUNTARY -d PREEMPT_LAZY -d PREEMPT_NONE;;
-            lazy) scripts/config -e PREEMPT_DYNAMIC -d PREEMPT -d PREEMPT_VOLUNTARY -e PREEMPT_LAZY -d PREEMPT_NONE;;
-            voluntary) scripts/config -d PREEMPT_DYNAMIC -d PREEMPT -e PREEMPT_VOLUNTARY -d PREEMPT_LAZY -d PREEMPT_NONE;;
-            none) scripts/config -d PREEMPT_DYNAMIC -d PREEMPT -d PREEMPT_VOLUNTARY -d PREEMPT_LAZY -e PREEMPT_NONE;;
+            full) scripts/config -d PREEMPT_DYNAMIC -e PREEMPT -d PREEMPT_LAZY;;
+            lazy) scripts/config -d PREEMPT_DYNAMIC -d PREEMPT -e PREEMPT_LAZY;;
+            dynamic) scripts/config -e PREEMPT_DYNAMIC -e PREEMPT -d PREEMPT_LAZY;;
             *) _die "The value '$_preempt' is invalid. Choose the correct one again.";;
         esac
 
@@ -471,9 +478,6 @@ prepare() {
         echo "Propeller profile has been found..."
         BUILD_FLAGS+=(CLANG_PROPELLER_PROFILE_PREFIX="${srcdir}/propeller")
     fi
-
-    echo "Enable USER_NS_UNPRIVILEGED"
-    scripts/config -e USER_NS
 
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -597,8 +601,8 @@ _package() {
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE V4L2LOOPBACK-MODULE NTSYNC-MODULE VHBA-MODULE ADIOS-MODULE)
     # Replace LTO kernel with the default kernel
     if _is_lto_kernel; then
-        provides+=(linux-cachyos-lto=$_kernver)
-        replaces=(linux-cachyos-lto)
+        provides+=(linux-cachyos-cjktty-lto=$_kernver)
+        replaces=(linux-cachyos-cjktty-lto)
     fi
 
     cd "$_srcname"
@@ -623,12 +627,21 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('pahole' "${pkgbase}")
+    depends=(binutils
+      glibc
+      libelf
+      libgcc
+      openssl
+      pahole
+      xxhash
+      zlib
+      zstd
+     "${pkgbase}")
     provides=(LINUX-HEADERS)
 
     if _is_lto_kernel; then
-        provides+=(linux-cachyos-lto-headers=$_kernver)
-        replaces=(linux-cachyos-lto-headers)
+        provides+=(linux-cachyos-cjktty-lto-headers=$_kernver)
+        replaces=(linux-cachyos-cjktty-lto-headers)
         depends+=(clang llvm lld)
     fi
 
@@ -811,8 +824,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('b38be031a72888d32ffd1c95ac36417836e373e95d7f86d33d9e32f4583b4acc86de19c6e62294a1836d8ebb8410e27c714b5580f2101b4b0e88ba2d9eecb13b'
-        'e144d096552a6ab80eb9ec9cb99f0aa56967389f964ec09fb541d250e719d83e8a1c33959d546c8ef7e816f1efdbd7a76f876cce9479e496b7fd2f1fd1b3f790'
-        '46b2630c6bec2dc4d84638d7be6a2391fef158c9a268f64c099927dd5e6b4a4c7269516e347c72ea8d02e6875cfbe8ac6d162214de45ff53ab2bfc1cfbbd9248'
+b2sums=('40fefc434872c4ec8af8c780b2926d959ad74f1a3d94ad454d0f889caa67ab913cac3e5109f28c69c27acc4fc033c6c478128ba799447edbb207252923a63943'
+        '82153e11fef1889ec4e5b8dfa4443f247991544543283030c8ace80362ca00ddd47ab59f6faebe376f327f70a77342ea4c8b43135b0a44c4339e0a07280ee7d4'
+        '9f80b3111b0a2f66ebfa670f594685e5a85db4263090125a7ef1792605fa5b764d4bf4e7c1fb3e18c2afc17aa3c82ecc3b95813f835352655361a6ef07979c15'
         '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678'
-        'ea26c88950fc06b6ffab93b30e3beacc7d26571a70262334ca8b001dc7899bf96b47d703fbaa7f4e47765c3dafccc23c58a4d4da2169b8ee50012afcb7a1dd96')
+        'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')
