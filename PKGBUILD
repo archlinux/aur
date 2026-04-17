@@ -5,29 +5,32 @@ _pipname=${_pkgname//-/_}
 pkgname="python-${_pkgname}"
 pkgver=1.7.2
 pkgrel=1
-pkgdesc="A Command Line Tool for ComfyUI"
+pkgdesc="Command Line Interface for Managing ComfyUI"
 arch=('any')
 url='https://github.com/Comfy-Org/comfy-cli'
-license=('MIT')
+license=('GPL-3.0-only')
 depends=(python-httpx python-requests
-python-cookiecutter
-python-charset-normalizer
-python-gitpython
-python-mixpanel
-python-pathspec
-python-psutil
-python-pyyaml
-python-rich
-python-semver
-python-questionary
-python-tomlkit
-python-typer
-python-websocket-client)
-makedepends=('python-build'
-'python-installer'
-'uv'
+	python-cookiecutter
+	python-charset-normalizer
+	python-gitpython
+	python-mixpanel
+	python-pathspec
+	python-psutil
+	python-pyyaml
+	python-rich
+	python-semver
+	python-questionary
+	python-tomlkit
+	python-typer
+	python-websocket-client
 )
-optdepends=()
+makedepends=('python-build'
+	'python-installer'
+	'uv'
+)
+optdepends=('aria2: aria2 RPC download backend'
+'git-lfs'
+)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
