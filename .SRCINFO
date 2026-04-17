@@ -1,6 +1,6 @@
 pkgbase = snout-bin
 	pkgdesc = Rime input method init and update tool with Wanxiang, Ice, Frost, and Mint support
-	pkgver = 0.1.8
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ca-x/snout
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = snout-bin
 	license = MIT
 	provides = snout
 	conflicts = snout
-	source_x86_64 = snout-0.1.8-linux-x86_64::https://github.com/ca-x/snout/releases/download/v0.1.8/snout-v0.1.8-linux-x86_64
-	sha256sums_x86_64 = 6b43a25adcf4b74c607a77e2e10ebe7a72a55a922b7332abea90be1ed52ded4b
-	source_aarch64 = snout-0.1.8-linux-aarch64::https://github.com/ca-x/snout/releases/download/v0.1.8/snout-v0.1.8-linux-aarch64
-	sha256sums_aarch64 = abaa7ca1b2fdeb1c99e690b7ff7ce9f5b1bd45f4470530e4d0407fb2f96bc5af
+	source_x86_64 = snout-0.2.0-linux-x86_64::https://github.com/ca-x/snout/releases/download/v0.2.0/snout-v0.2.0-linux-x86_64
+	sha256sums_x86_64 = d04c443c6f30fc5fb8d1ad10caf32ca25e4be48bd110ffdee2de497b161e3f5f
+	source_aarch64 = snout-0.2.0-linux-aarch64::https://github.com/ca-x/snout/releases/download/v0.2.0/snout-v0.2.0-linux-aarch64
+	sha256sums_aarch64 = 5f083992087c7841f29174b744866b09dbe33e2b5805678e3b66f332181508b7
 
 pkgname = snout-bin
