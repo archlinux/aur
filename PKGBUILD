@@ -2,7 +2,7 @@
 
 pkgname="orca-slicer"
 pkgver=2.3.2
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -32,8 +32,8 @@ build() {
 
   export CMAKE_BUILD_PARALLEL_LEVEL=$(nproc)
   # Limit build parallelism to free memory in GB
-  if [ $CMAKE_BUILD_PARALLEL_LEVEL -gt $(awk '/MemFree/ { printf "%.0f\n", $2/1024/1024 }' /proc/meminfo) ]; then
-    export CMAKE_BUILD_PARALLEL_LEVEL=$(awk '/MemFree/ { printf "%.0f\n", $2/1024/1024 }' /proc/meminfo)
+  if [ $CMAKE_BUILD_PARALLEL_LEVEL -gt $(awk '/MemFree/ { printf "%.0f\n", $2/1024/1024/16 }' /proc/meminfo) ]; then
+    export CMAKE_BUILD_PARALLEL_LEVEL=$(awk '/MemFree/ { printf "%.0f\n", $2/1024/1024/16 }' /proc/meminfo)
   fi
 
   git apply ../deps-build-parallelism.patch
@@ -47,7 +47,7 @@ build() {
     -DDEP_DOWNLOAD_DIR="$PWD/deps/DL_CACHE" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCOLORED_OUTPUT=ON
-  ninja -C deps/build -j1
+  cmake --build deps/build -j1
 
   cmake \
     -S . \
@@ -64,7 +64,7 @@ build() {
     -DBBL_INTERNAL_TESTING=0 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCOLORED_OUTPUT=ON
-  ninja -C build
+  cmake --build build
 
   # add localizations
   ./scripts//run_gettext.sh --full
