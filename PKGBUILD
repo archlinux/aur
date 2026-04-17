@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=drill-search
-pkgver=46
+pkgver=52
 pkgrel=1
 epoch=1
 pkgdesc="Very fast file searcher without indexing"
@@ -22,10 +22,10 @@ checkdepends=(
 #  'python-sortedcontainers-stubs'  ## TODO
 )
 conflicts=("$pkgname-cli" "$pkgname-gtk")
-source=("Drill-$pkgver.tar.gz::$url/archive/refs/tags/release-$pkgver.tar.gz"
+source=("Drill-$pkgver.tar.gz::https://github.com/yatima1460/Drill/archive/refs/tags/release-$pkgver.tar.gz"
         'drill.sh'
         'drill.desktop')
-sha256sums=('bbd317dcc507dfd392cba90d1b6787dc1f63d87baeffa04d681b2e85fe85a5e2'
+sha256sums=('a198a97fd81876d995ccbefa394b5704c47779ee7627f72c1384a201bbe4cbb7'
             '255aec49f9d963f712313474a17eb6225c4da0ecbdf0a7c2eae178272224fb6c'
             '6f3aeb8c5b0a61cf8e7ca419879885e7fb901abc3fbd601d3a267fb1b42cc988')
 
@@ -56,7 +56,12 @@ package() {
   install -Dm644 drill/assets/{roots_linux,wordsalpha}.txt -t \
     "${pkgdir}${site_packages}/drill/assets/"
   install -Dm644 drill/assets/drill.svg -t \
+    "${pkgdir}${site_packages}/drill/assets/"
+
+  install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+  ln -s "/${site_packages}/drill/assets/drill.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+
   install -Dm755 "$srcdir/drill.sh" "$pkgdir/usr/bin/drill"
   install -Dm644 "$srcdir/drill.desktop" -t "$pkgdir/usr/share/applications/"
 }
