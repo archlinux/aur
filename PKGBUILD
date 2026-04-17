@@ -1,6 +1,6 @@
-# Maintainer: Necromortis <necromortis@protonmail.com>
+# Maintainer: Necromortis <necromortis(a)protonmail.com>
 pkgname=vultisig
-pkgver=1.0.51
+pkgver=1.0.56
 pkgrel=1
 pkgdesc="Vultisig Linux Application"
 arch=('x86_64')
