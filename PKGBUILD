@@ -8,10 +8,20 @@ arch=('x86_64')
 url="https://github.com/RanAwaySuccessfully/marmalade"
 license=('MIT')
 depends=('glibc' 'gtk3' 'gtk4' 'libv4l' 'xdg-utils' 'pciutils')
+optdepends=('cuda: For NVIDIA GPU acceleration (highly recommended for RTX cards)'
+            'cudnn: Required for CUDA-based neural network acceleration')
 provides=('marmalade')
 conflicts=('marmalade')
-source=("${pkgname}-${pkgver}.zip::https://github.com/RanAwaySuccessfully/marmalade/releases/download/v${pkgver}/marmalade.zip")
-sha256sums=('3f79dd87f9c5353e9ab70af7b41d8048070f5ef6ef60ff0fe79ab16909f9d3c3')
+source=(
+    "${pkgname}-${pkgver}.zip::https://github.com/RanAwaySuccessfully/marmalade/releases/download/v${pkgver}/marmalade.zip"
+    "marmalade_logo.svg::https://raw.githubusercontent.com/RanAwaySuccessfully/marmalade/refs/heads/main/resources/icons/marmalade_logo.svg"
+    "marmalade_logo.png::https://raw.githubusercontent.com/RanAwaySuccessfully/marmalade/refs/heads/main/resources/icons/marmalade_logo.png"
+    "marmalade_logo_256.png::https://raw.githubusercontent.com/RanAwaySuccessfully/marmalade/refs/heads/main/resources/icons/marmalade_logo_256.png"
+)
+sha256sums=('3f79dd87f9c5353e9ab70af7b41d8048070f5ef6ef60ff0fe79ab16909f9d3c3'
+            '79bf9e5e2d08616e9e6977c08962ad9fcfde5589909d5eb95a11c00af4a6e447'
+            'c719ba5b9c7592d6b709d22532ac784e9d98e706310d19e17740e1a749e71f7f'
+            'aca4f58ad63f02ad32c9ffb9acc120694ce0bea23306abdf42d71f1ce05106ff')
 
 package() {
     install -d "${pkgdir}/usr/lib/marmalade"
@@ -77,6 +87,38 @@ EOF
     chmod 755 "${pkgdir}/usr/bin/marmalade" \
               "${pkgdir}/usr/bin/marmalade-gtk3" \
               "${pkgdir}/usr/bin/marmalade-gtk4"
+
+    install -d "${pkgdir}/usr/share/applications"
+    cat > "${pkgdir}/usr/share/applications/marmalade-gtk3.desktop" <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=Marmalade (GTK 3)
+Comment=MediaPipe tracking bridge for Linux
+Exec=marmalade-gtk3
+Icon=xyz.randev.marmalade
+Terminal=false
+Categories=Utility;Video;
+StartupNotify=true
+EOF
+
+    cat > "${pkgdir}/usr/share/applications/marmalade-gtk4.desktop" <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=Marmalade (GTK 4)
+Comment=MediaPipe tracking bridge for Linux
+Exec=marmalade-gtk4
+Icon=xyz.randev.marmalade
+Terminal=false
+Categories=Utility;Video;
+StartupNotify=true
+EOF
+
+    install -Dm644 "${srcdir}/marmalade_logo.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/xyz.randev.marmalade.svg"
+    install -Dm644 "${srcdir}/marmalade_logo_256.png" \
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/xyz.randev.marmalade.png"
+    install -Dm644 "${srcdir}/marmalade_logo.png" \
+        "${pkgdir}/usr/share/pixmaps/xyz.randev.marmalade.png"
 
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/python/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-python"

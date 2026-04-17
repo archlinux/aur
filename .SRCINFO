@@ -11,9 +11,17 @@ pkgbase = marmalade-bin
 	depends = libv4l
 	depends = xdg-utils
 	depends = pciutils
+	optdepends = cuda: For NVIDIA GPU acceleration (highly recommended for RTX cards)
+	optdepends = cudnn: Required for CUDA-based neural network acceleration
 	provides = marmalade
 	conflicts = marmalade
 	source = marmalade-bin-0.4.2.zip::https://github.com/RanAwaySuccessfully/marmalade/releases/download/v0.4.2/marmalade.zip
+	source = marmalade_logo.svg::https://raw.githubusercontent.com/RanAwaySuccessfully/marmalade/refs/heads/main/resources/icons/marmalade_logo.svg
+	source = marmalade_logo.png::https://raw.githubusercontent.com/RanAwaySuccessfully/marmalade/refs/heads/main/resources/icons/marmalade_logo.png
+	source = marmalade_logo_256.png::https://raw.githubusercontent.com/RanAwaySuccessfully/marmalade/refs/heads/main/resources/icons/marmalade_logo_256.png
 	sha256sums = 3f79dd87f9c5353e9ab70af7b41d8048070f5ef6ef60ff0fe79ab16909f9d3c3
+	sha256sums = 79bf9e5e2d08616e9e6977c08962ad9fcfde5589909d5eb95a11c00af4a6e447
+	sha256sums = c719ba5b9c7592d6b709d22532ac784e9d98e706310d19e17740e1a749e71f7f
+	sha256sums = aca4f58ad63f02ad32c9ffb9acc120694ce0bea23306abdf42d71f1ce05106ff
 
 pkgname = marmalade-bin
