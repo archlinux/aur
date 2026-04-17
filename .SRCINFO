@@ -1,6 +1,6 @@
 pkgbase = python-trame-plotly
 	pkgdesc = Plotly figure widget for trame
-	pkgver = 3.1.0
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/Kitware/trame-plotly
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-trame-plotly
 	depends = python-trame-client
 	depends = python-plotly
 	optdepends = python-plotly: for Plotly integration
-	source = trame-plotly-3.1.0.tar.gz::https://github.com/Kitware/trame-plotly/archive/v3.1.0.tar.gz
-	sha512sums = 7b6daec9e6c4a1bd470b1a13054d29769cea480857563a009a85f58f1c499fa97b3ef38792431bc970087b8f3d318e84b40e2a62dbd01b32b477b46be65b214b
+	source = trame-plotly-3.1.2.tar.gz::https://github.com/Kitware/trame-plotly/archive/v3.1.2.tar.gz
+	sha512sums = 1e9c68cf4fd3f2388b5ef30ef2d9e1dc4301c82da8b025592a30e8c691dfb808a0498e335cd441c235d9ac1ed28cba518aab8ed029767192e51b60ef238d85ed
 
 pkgname = python-trame-plotly

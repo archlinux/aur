@@ -3,7 +3,7 @@ _base=trame-plotly
 # _npm_base=plotly.js-dist-min
 pkgname=python-${_base}
 pkgdesc="Plotly figure widget for trame"
-pkgver=3.1.0
+pkgver=3.1.2
 # _npm_pkgver=3.0.0
 pkgrel=1
 arch=(any)
@@ -15,7 +15,7 @@ checkdepends=(python-pytest)
 optdepends=('python-plotly: for Plotly integration')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 # https://registry.npmjs.org/${_npm_base}/-/${_npm_base}-${_npm_pkg/ver}.tgz
-sha512sums=('7b6daec9e6c4a1bd470b1a13054d29769cea480857563a009a85f58f1c499fa97b3ef38792431bc970087b8f3d318e84b40e2a62dbd01b32b477b46be65b214b')
+sha512sums=('1e9c68cf4fd3f2388b5ef30ef2d9e1dc4301c82da8b025592a30e8c691dfb808a0498e335cd441c235d9ac1ed28cba518aab8ed029767192e51b60ef238d85ed')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
