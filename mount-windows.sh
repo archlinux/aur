@@ -12,8 +12,6 @@ POLKIT_RULES="/usr/share/polkit-1/rules.d/49-mount-windows.rules"
 MAPPER_NAME="mount-windows-c" # fixed mapper for BitLocker
 
 # Elevation
-# NOTE: Direct root execution support (rare DE root user case)
-# If the script is already running as root (EUID==0), we skip ALL elevation.
 needs_root() {
     case "${1:-}" in
         mount)
@@ -146,8 +144,14 @@ find_bcd_path() {
                 run_sudo umount "$TEMP_MNT" 2>/dev/null || true
             fi
         done
+
+        # Cleanup mountpoints
+        run_sudo umount "$TEMP_MNT" 2>/dev/null || true
+        rmdir "$TEMP_MNT" 2>/dev/null || true
     fi
+
     if [ -z "$bcd_path" ]; then
+        rm -f "$BCD_COPY" 2>/dev/null || true
         echo "Error: Could not locate Windows BCD" >&2
         exit 1
     fi
@@ -224,8 +228,10 @@ get_windows_device() {
 # Mount helpers
 find_existing_mount() {
     local device="$1"
+    local mount_source="${2:-$device}"
     local mp=""
 
+    # Check canonical symlink first
     if [ -L "$CANONICAL_LINK" ]; then
         mp=$(readlink -f "$CANONICAL_LINK" 2>/dev/null)
         mountpoint -q "$mp" 2>/dev/null && { echo "$mp"; return 0; }
@@ -234,8 +240,16 @@ find_existing_mount() {
         return 0
     fi
 
+    # Check physical device
     mp=$(findmnt -n -o TARGET --source "$device" 2>/dev/null | head -n1)
     [ -n "$mp" ] && mountpoint -q "$mp" 2>/dev/null && { echo "$mp"; return 0; }
+
+    # Check actual mount source
+    if [ "$mount_source" != "$device" ]; then
+        mp=$(findmnt -n -o TARGET --source "$mount_source" 2>/dev/null | head -n1)
+        [ -n "$mp" ] && mountpoint -q "$mp" 2>/dev/null && { echo "$mp"; return 0; }
+    fi
+
     echo ""
 }
 
@@ -259,14 +273,14 @@ do_mount() {
     local use_gui=false
     [[ "${1:-}" == "--gui" ]] && use_gui=true
 
+    # Do not allow gui mode to be run via sudo but do allow it if the DE is actually running as root
     if [ "$use_gui" = true ] && [ "$EUID" -eq 0 ] && \
        { [ -n "${SUDO_USER:-}" ] || [ -n "${PKEXEC_UID:-}" ]; }; then
         cat >&2 <<EOF
 Error: GUI mode (--gui) cannot be run via sudo or pkexec.
 
 The desktop environment expects mounts to be performed by your normal user
-so that file manager icons, permissions, thumbnails, and desktop integration
-work correctly.
+for icons to appear on your desktop correctly.
 
 Please run without sudo/pkexec:
     $(basename "$0") mount --gui
@@ -293,21 +307,36 @@ EOF
         echo "BitLocker detected on Windows partition."
         echo "You will be prompted for your BitLocker password (or recovery key)."
 
-        if [ -e "/dev/mapper/$MAPPER_NAME" ]; then
-            echo "Already unlocked (using existing mapper)."
+        if [ "$use_gui" = true ]; then
+            echo "→ Unlocking using udisksctl (GUI password/recovery-key dialog)..."
+            if udisksctl info -b "$device" | grep -q "CleartextDevice:"; then
+                mount_source=$(udisksctl info -b "$device" | grep "CleartextDevice:" | awk '{print $2}')
+                echo "Already unlocked as $mount_source"
+            else
+                local unlock_output
+                unlock_output=$(udisksctl unlock -b "$device" 2>&1)
+                mount_source=$(echo "$unlock_output" | grep -o "/dev/dm-[0-9]\+" | head -n1)
+                [ -z "$mount_source" ] && { echo "Failed to unlock BitLocker." >&2; exit 1; }
+                echo "Unlocked as $mount_source"
+            fi
         else
-            run_sudo cryptsetup open --type bitlk "$device" "$MAPPER_NAME"
+            if [ -e "/dev/mapper/$MAPPER_NAME" ]; then
+                echo "Already unlocked (using existing mapper)."
+            else
+                echo "Unlocking with cryptsetup..."
+                run_sudo cryptsetup open --type bitlk --readonly "$device" "$MAPPER_NAME"
+            fi
+            mount_source="/dev/mapper/$MAPPER_NAME"
         fi
-        mount_source="/dev/mapper/$MAPPER_NAME"
     fi
 
     local existing
-    existing=$(find_existing_mount "$device")
+    existing=$(find_existing_mount "$device" "$mount_source")
 
     if [ -n "$existing" ]; then
         if [ "$use_gui" = true ] && [[ "$existing" != /run/media/* ]] && [[ "$existing" != /media/* ]]; then
             echo "Existing direct mount detected — remounting via udisksctl for proper GUI/desktop integration..."
-            do_umount   # clean unmount first
+            do_umount # clean unmount first
         else
             echo "Windows partition already mounted at: $existing"
             create_link "$existing"
@@ -315,11 +344,11 @@ EOF
         fi
     fi
 
-    if [ "$use_gui" = true ] && [ "$is_bl" = false ]; then
+    if [ "$use_gui" = true ]; then
         echo "Mounting via udisksctl (GUI integration)..."
-        udisksctl mount -b "$device" -o ro,windows_names --filesystem-type=ntfs || exit 1
+        udisksctl mount -b "$mount_source" -o ro,windows_names || exit 1
         sleep 0.8
-        existing=$(find_existing_mount "$device")
+        existing=$(find_existing_mount "$device" "$mount_source")
         create_link "$existing"
     else
         echo "Mounting directly to $CANONICAL_LINK..."
