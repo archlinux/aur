@@ -14,9 +14,10 @@ pkgbase = skwd-wall
 	depends = awww
 	depends = mpvpaper
 	depends = matugen
+	depends = jq
 	depends = ttf-nerd-fonts-symbols
 	depends = ttf-roboto
-	source = skwd-wall::git+https://github.com/liixini/skwd-wall.git#branch=experimental/rust-refactor
+	source = skwd-wall::git+https://github.com/liixini/skwd-wall.git#branch=main
 	sha256sums = SKIP
 
 pkgname = skwd-wall

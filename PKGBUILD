@@ -15,12 +15,13 @@ depends=(
   'awww'
   'mpvpaper'
   'matugen'
+  'jq'
   'ttf-nerd-fonts-symbols'
   'ttf-roboto'
 )
 
 install="${pkgname}.install"
-source=("${pkgname}::git+https://github.com/liixini/skwd-wall.git#branch=experimental/rust-refactor")
+source=("${pkgname}::git+https://github.com/liixini/skwd-wall.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
