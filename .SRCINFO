@@ -9,7 +9,6 @@ pkgbase = dnss-bin
 	license = Unlicense
 	provides = dnss
 	backup = etc/dnss.conf
-	b2sums = SKIP
 	source_x86_64 = https://codeberg.org/zacoons/dnss/releases/download/0.1.0/dnss-0.1.0-x86_64-linux.tar.gz
 	b2sums_x86_64 = SKIP
 	source_armv7h = https://codeberg.org/zacoons/dnss/releases/download/0.1.0/dnss-0.1.0-armv7h-linux.tar.gz

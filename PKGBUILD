@@ -14,7 +14,6 @@ source_x86_64=("https://codeberg.org/zacoons/dnss/releases/download/${pkgver}/dn
 source_armv7h=("https://codeberg.org/zacoons/dnss/releases/download/${pkgver}/dnss-${pkgver}-armv7h-linux.tar.gz")
 source_aarch64=("https://codeberg.org/zacoons/dnss/releases/download/${pkgver}/dnss-${pkgver}-aarch64-linux.tar.gz")
 
-b2sums=("SKIP")
 b2sums_x86_64=("SKIP")
 b2sums_armv7h=("SKIP")
 b2sums_aarch64=("SKIP")
