@@ -5,6 +5,7 @@ pkgbase = task-tui
 	url = https://github.com/lbesnard/task-tui
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

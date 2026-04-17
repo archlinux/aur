@@ -9,6 +9,7 @@ url="https://github.com/lbesnard/task-tui"
 license=('MIT')
 depends=('python' 'python-textual')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+checkdepends=('python-pytest')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lbesnard/$_name/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('94548c50497a9d01b3a2fa22c48ade730ce227b0c07d75501d6bbfebcfed7e1e')
@@ -18,10 +19,10 @@ build() {
     python -m build --wheel --no-isolation
 }
 
-# check() {
-#     cd "$_name-$pkgver"
-#     PYTHONPATH="$PWD" pytest -o addopts=""
-# }
+check() {
+    cd "$_name-$pkgver"
+    PYTHONPATH="$PWD" pytest -o addopts=""
+}
 
 package() {
     cd "$_name-$pkgver"
