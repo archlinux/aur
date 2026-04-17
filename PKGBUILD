@@ -1,37 +1,48 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: acxz <akashpatel2008 at yahoo dot com>
+
 pkgname=libpgm-git
-pkgver=r1232.fcc46a11
+pkgver=5.3.128.r11.gcf6cebed
 pkgrel=1
-pkgdesc="OpenPGM: implementation of the Pragmatic General Multicast (PGM, RFC3208)"
-arch=('x86_64')
-url='https://www.freshports.org/net/openpgm/'
-license=('LGPL2.1')
+pkgdesc="Library implementing the PGM reliable multicast network protocol"
+arch=('i686' 'x86_64')
+url="https://github.com/steve-o/openpgm"
+license=('LGPL-2.1-or-later')
 depends=('glibc')
-makedepends=('python2')
-_name=openpgm
-provides=('libpgm')
+makedepends=('git' 'python')
+provides=("libpgm=$pkgver")
 conflicts=('libpgm')
+options=('staticlibs')
 source=("git+https://github.com/steve-o/openpgm.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$_name"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
-prepare() {
-  cd "$srcdir/$_name/openpgm/pgm"
-  find . -type f -exec sed -i 's/python/python2/g' {} \+
+pkgver() {
+  cd "openpgm"
+
+  _tag=$(git tag -l --sort -v:refname | /usr/bin/grep -E '^release-[0-9-]+$' | head -n1)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^release-//;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_name/openpgm/pgm"
-  autoreconf -i
-  ./configure --prefix=/usr
+  cd "openpgm/openpgm/pgm"
+
+  ./bootstrap.sh
+  ./configure \
+    --prefix="/usr"
   make
 }
 
+check() {
+  cd "openpgm/openpgm/pgm"
+
+  #make check
+}
+
 package() {
-  cd "$srcdir/$_name/openpgm/pgm"
-  make prefix="$pkgdir/usr" install
+  cd "openpgm/openpgm/pgm"
+
+  make DESTDIR="$pkgdir" install
 }
