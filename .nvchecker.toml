@@ -1,0 +1,4 @@
+[zipsign]
+source = "git"
+git = "https://github.com/Kijewski/zipsign.git"
+prefix = "v"

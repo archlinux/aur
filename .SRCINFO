@@ -1,0 +1,14 @@
+pkgbase = zipsign
+	pkgdesc = A tool to sign and verify .zip and .tar.gz files with an ed25519 signing key
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://crates.io/crates/zipsign
+	arch = x86_64
+	license = MIT OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception
+	makedepends = cargo
+	depends = libgcc
+	depends = glibc
+	source = zipsign-0.2.0.tar.gz::https://github.com/Kijewski/zipsign/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 392e1d264829b19c51cb6606946125b05fef489ff17738f8f3826536f76d3876
+
+pkgname = zipsign
