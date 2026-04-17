@@ -1,7 +1,7 @@
 pkgbase = xchpst
 	pkgdesc = A backwards-compatible chpst implementation with new hardening options using namespaces and capabilities
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/init-tools/xchpst
 	arch = x86_64
 	license = MIT
@@ -15,3 +15,4 @@ pkgname = xchpst
 pkgname = xchpst-compat
 	pkgdesc = A backwards-compatible chpst implementation with new hardening options using namespaces and capabilities (compat symlinks)
 	depends = xchpst
+	provides = chpst
