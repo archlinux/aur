@@ -20,7 +20,7 @@ pkgbase = pulsesync-bin
 	conflicts = pulsesync
 	noextract = pulsesync-app-2.13.0-amd64.deb
 	options = !strip
-	source_x86_64 = pulsesync-app-2.13.0-amd64.deb::https://s3.pulsesync.dev/builds/releases/beta/pulsesync-app-2.13.0-amd64.deb
+	source_x86_64 = pulsesync-app-2.13.0-amd64.deb::https://s3.pulsesync.dev/builds/app/beta/pulsesync-app-2.13.0-amd64.deb
 	sha256sums_x86_64 = 645e223e61ee93415bdc8177cb64b496d452fe2c3adb6ae7e7eef96386009c7c
 
 pkgname = pulsesync-bin
