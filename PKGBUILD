@@ -96,4 +96,5 @@ if [ -f "tinker-atropos/pyproject.toml" ]; then
   # Install configuration examples
   install -d "$pkgdir/usr/share/hermes-agent"
   [ -f "cli-config.yaml.example" ] && install -Dm644 cli-config.yaml.example "$pkgdir/usr/share/hermes-agent/cli-config.yaml.example"
+  [ -f ".env.example" ] && install -Dm644 .env.example "$pkgdir/usr/share/hermes-agent/.env.example"
 }
