@@ -1,0 +1,10 @@
+#!/bin/sh
+
+case "$1" in
+  pre)
+    /usr/bin/modprobe -r aic8800D80_fdrv >/dev/null 2>&1 || true
+    ;;
+  post)
+    /usr/bin/modprobe aic8800D80_fdrv >/dev/null 2>&1 || true
+    ;;
+esac

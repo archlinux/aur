@@ -1,0 +1,13 @@
+diff --git a/drivers/aic8800/aic8800_fdrv/aicwf_pcie.c b/drivers/aic8800/aic8800_fdrv/aicwf_pcie.c
+--- a/drivers/aic8800/aic8800_fdrv/aicwf_pcie.c
++++ b/drivers/aic8800/aic8800_fdrv/aicwf_pcie.c
+@@ -23,7 +23,9 @@
+ static const struct pci_device_id aic8820_pci_ids[] = {
+     {PCI_DEVICE(AIC8800D80_PCI_VENDOR_ID,AIC8800D80_PCI_DEVICE_ID)},
+     {PCI_DEVICE(AIC8800D80X2_PCI_VENDOR_ID,AIC8800D80X2_PCI_DEVICE_ID)},
++    { },
+ };
++MODULE_DEVICE_TABLE(pci, aic8820_pci_ids);
+ 
+ #ifdef CONFIG_WS
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 0, 0)

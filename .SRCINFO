@@ -1,0 +1,24 @@
+pkgbase = aic8800d80-pcie-dkms
+	pkgdesc = DKMS module for AIC8800D80 PCIe Wi-Fi adapters (Ugreen CM958 and similar)
+	pkgver = 6.4.3.0
+	pkgrel = 1
+	url = https://www.aicsemi.com/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = dkms
+	optdepends = LINUX-HEADERS: kernel headers for building the module
+	conflicts = aic8800d80-dkms
+	source = UGREEN-CM958-75615_Linux_Drive_V1.0.zip::https://download.lulian.cn/2026-drive/UGREEN-CM958-75615_Linux_Drive_V1.0.zip
+	source = 0001-linux-6.13-plus-compat.patch
+	source = 0002-export-pci-modalias.patch
+	source = 0003-default-quiet-logging.patch
+	source = 0004-quiet-pcie-dma-progress.patch
+	source = aic8800d80-sleep-hook
+	sha256sums = c929c2ff22ba0b55e26ecaccb57f04edc11bb84767d31ac068b8087dd4a8c53a
+	sha256sums = 6e8562dcb93f114bdbf759506967f9504ffc5fc9043b94b616449ba43d1d34ef
+	sha256sums = 98699379ab9b302c0e5059d6a16e1598ad3ace7cfb15570c988c994c12a0333f
+	sha256sums = 0aea176f35d1f80898d2680c0b4117392d22e47846f42d83b9cc3a7b787f4639
+	sha256sums = 8b3fa1408d8762424761f41989581cf03a0cace9ff506ddb9529db5510480a01
+	sha256sums = 1d34e929c3570cfae9aea2b79d3e143ca89c41ad165457e10c143c2bb74489da
+
+pkgname = aic8800d80-pcie-dkms

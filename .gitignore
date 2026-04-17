@@ -1,0 +1,6 @@
+.codex
+src/
+pkg/
+*.pkg.tar.zst
+*.log
+UGREEN-CM958-75615_Linux_Drive_V1.0.zip

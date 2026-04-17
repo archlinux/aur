@@ -1,0 +1,410 @@
+diff -ruN a/drivers/aic8800/aic8800_fdrv/aicwf_pcie_api.c b/drivers/aic8800/aic8800_fdrv/aicwf_pcie_api.c
+--- a/drivers/aic8800/aic8800_fdrv/aicwf_pcie_api.c	2025-11-21 14:56:47.000000000 +0800
++++ b/drivers/aic8800/aic8800_fdrv/aicwf_pcie_api.c	2026-04-11 19:27:33.674633413 +0800
+@@ -483,6 +483,8 @@
+ 
+     // 1. hardware initial config
+     aicwf_pcie_cfg(adev);
++    /* ATU / inbound mapping may need a moment after config cycles */
++    msleep(20);
+ 
+     // 2. test pcie
+     ret = aicwf_pcie_test_accs_emb(adev);
+diff -ruN a/drivers/aic8800/aic8800_fdrv/aicwf_pcie.c b/drivers/aic8800/aic8800_fdrv/aicwf_pcie.c
+--- a/drivers/aic8800/aic8800_fdrv/aicwf_pcie.c	2025-11-21 14:56:47.000000000 +0800
++++ b/drivers/aic8800/aic8800_fdrv/aicwf_pcie.c	2026-04-11 19:27:33.672633414 +0800
+@@ -511,6 +511,51 @@
+ 	return 0;
+ }
+ 
++/* Reverse aicwf_pcie_init after it succeeded (frees IRQ/MSI/BAR); safe if only init ran */
++static void aicwf_pcie_hw_shutdown(struct aic_pci_dev *pciedev)
++{
++	struct pci_dev *pdev = pciedev->pci_dev;
++
++	if (!pdev)
++		return;
++
++	free_irq(pdev->irq, pciedev);
++
++	if (pciedev->chip_id == PRODUCT_ID_AIC8800D80) {
++		if (pciedev->bar_count == 1) {
++			if (pciedev->pci_bar0_vaddr) {
++				iounmap(pciedev->pci_bar0_vaddr);
++				pciedev->pci_bar0_vaddr = NULL;
++			}
++			pciedev->map0 = NULL;
++		} else {
++			if (pciedev->pci_bar2_vaddr) {
++				iounmap(pciedev->pci_bar2_vaddr);
++				pciedev->pci_bar2_vaddr = NULL;
++			}
++			if (pciedev->pci_bar1_vaddr) {
++				iounmap(pciedev->pci_bar1_vaddr);
++				pciedev->pci_bar1_vaddr = NULL;
++			}
++			if (pciedev->pci_bar0_vaddr) {
++				iounmap(pciedev->pci_bar0_vaddr);
++				pciedev->pci_bar0_vaddr = NULL;
++			}
++		}
++	} else if (pciedev->chip_id == PRODUCT_ID_AIC8800D80X2) {
++		if (pciedev->pci_bar0_vaddr) {
++			iounmap(pciedev->pci_bar0_vaddr);
++			pciedev->pci_bar0_vaddr = NULL;
++		}
++		pciedev->map0 = NULL;
++	}
++
++	pci_disable_msi(pdev);
++	pci_release_regions(pdev);
++	pci_clear_master(pdev);
++	pci_disable_device(pdev);
++}
++
+ static int aicwf_pcie_init(struct aic_pci_dev *pciedev)
+ {
+ 	struct pci_dev *pci_dev = pciedev->pci_dev;
+@@ -534,8 +579,14 @@
+ 
+ 	pci_set_master(pci_dev);
+ 
+-	if((ret = pci_request_regions(pci_dev, KBUILD_MODNAME))) {
+-		dev_err(&(pci_dev->dev), "pci_request_regions failed\n");
++	ret = pci_request_regions(pci_dev, KBUILD_MODNAME);
++	if (ret) {
++		if (ret == -EBUSY)
++			dev_err(&pci_dev->dev,
++				"pci_request_regions: BAR busy (another driver holds this device). Run: sudo rmmod aic_load_fw aic8800_fdrv 2>/dev/null; then modprobe this module. Check: lspci -k -s %s\n",
++				pci_name(pci_dev));
++		else
++			dev_err(&pci_dev->dev, "pci_request_regions failed: %d\n", ret);
+ 		goto out_request;
+ 	}
+ 	
+@@ -561,7 +612,8 @@
+ 				adev->len0 = pci_resource_len  (adev->pdev, 0);
+ 				adev->map0 = ioremap(adev->bar0, adev->len0);
+ 				#else
+-				pci_read_config_dword (adev->pdev, 0x10, &(adev->bar0));
++				/* Use decoded bus address (low BAR bits are flags; raw config read breaks ATU) */
++				adev->bar0 = (u32)pci_resource_start(adev->pdev, 0);
+ 				adev->len0 = pci_resource_len(adev->pdev, 0);
+ 				if(!(adev->map0 = (u8 *)pci_ioremap_bar(adev->pdev, 0))) {
+ 					dev_err(&(pci_dev->dev), "pci_ioremap_bar0 failed\n");
+@@ -609,7 +661,7 @@
+ 			adev->len0 = pci_resource_len  (adev->pdev, 0);
+ 			adev->map0 = ioremap(adev->bar0, adev->len0);
+ 			#else
+-			pci_read_config_dword (adev->pdev, 0x10, &(adev->bar0));
++			adev->bar0 = (u32)pci_resource_start(adev->pdev, 0);
+ 			adev->len0 = pci_resource_len(adev->pdev, 0);
+ 			if(!(adev->map0 = (u8 *)pci_ioremap_bar(adev->pdev, 0))) {
+ 				dev_err(&(pci_dev->dev), "pci_ioremap_bar0 failed\n");
+@@ -758,16 +810,17 @@
+ #endif
+ 
+ 	ret = aicwf_pcie_init(pciedev);
+-	if(ret) {
++	if (ret) {
+ 		printk("%s: pci init fail\n", __func__);
+-		return ret;
++		goto err_probe;
+ 	}
+ 
+-	if(pciedev->chip_id == PRODUCT_ID_AIC8800D80X2 || pciedev->bar_count == 1) {
++	if (pciedev->chip_id == PRODUCT_ID_AIC8800D80X2 || pciedev->bar_count == 1) {
+ 		ret = aicwf_pcie_setst(pciedev);
+-		if(ret) {
++		if (ret) {
+ 			printk("%s: pci set&tst fail\n", __func__);
+-			return ret;
++			aicwf_pcie_hw_shutdown(pciedev);
++			goto err_probe;
+ 		}
+ 	}
+ 
+@@ -775,10 +828,19 @@
+ 
+ 	ret = aicwf_pcie_platform_init(pciedev);
+ 
+-	if(!ret)
++	if (!ret)
+ 		aicwf_hostif_ready();
+ 
+ 	return ret;
++
++err_probe:
++#ifdef CONFIG_WS
++	unregister_ws();
++#endif
++	dev_set_drvdata(&pci_dev->dev, NULL);
++	kfree(pciedev);
++	kfree(bus_if);
++	return ret;
+ }
+ 
+ static void aicwf_pcie_remove(struct pci_dev *pci_dev)
+diff -ruN a/drivers/aic8800/aic8800_fdrv/Makefile b/drivers/aic8800/aic8800_fdrv/Makefile
+--- a/drivers/aic8800/aic8800_fdrv/Makefile	2025-11-21 14:56:47.000000000 +0800
++++ b/drivers/aic8800/aic8800_fdrv/Makefile	2026-04-11 19:27:33.674633413 +0800
+@@ -301,8 +301,9 @@
+ ccflags-y += -DNX_TXQ_CNT=4
+ endif
+ 
+-# For old kernel (<=3.19)
+-ifeq ($(shell test $(VERSION) -lt 4 -a "$(CONFIG_VENDOR_RWNX)" = y ; echo $$?),0)
++# For old kernel (<=3.19) with CONFIG_VENDOR_RWNX=y (not used here; avoid shell test
++# breakage when VERSION expands to multiple words in some build environments)
++ifeq ($(shell [ "$$(($(VERSION)))" -lt 4 ] 2>/dev/null && [ "x$(CONFIG_VENDOR_RWNX)" = xy ] && echo 1),1)
+ ccflags-y += -DCONFIG_VENDOR_RWNX_VHT_NO80
+ endif
+ 
+diff -ruN a/drivers/aic8800/aic8800_fdrv/rwnx_compat.h b/drivers/aic8800/aic8800_fdrv/rwnx_compat.h
+--- a/drivers/aic8800/aic8800_fdrv/rwnx_compat.h	2025-11-21 14:56:47.000000000 +0800
++++ b/drivers/aic8800/aic8800_fdrv/rwnx_compat.h	2026-04-11 19:27:33.674335708 +0800
+@@ -429,4 +429,25 @@
+ typedef __s64 time64_t;
+ #endif
+ 
++/* Linux 6.16+: from_timer removed; del_timer* wrappers dropped (use timer_delete*) */
++#include <linux/timer.h>
++#if defined(timer_container_of) && !defined(from_timer)
++#define from_timer(var, callback_timer, timer_fieldname) \
++	timer_container_of(var, callback_timer, timer_fieldname)
++#endif
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
++#ifndef del_timer_sync
++#define del_timer_sync(t) timer_delete_sync(t)
++#endif
++#ifndef del_timer
++#define del_timer(t) timer_delete(t)
++#endif
++#endif
++
++/* Linux 6.19+: in_irq() removed from preempt.h */
++#include <linux/preempt.h>
++#ifndef in_irq
++#define in_irq() in_hardirq()
++#endif
++
+ #endif /* _RWNX_COMPAT_H_ */
+diff -ruN a/drivers/aic8800/aic8800_fdrv/rwnx_gki.h b/drivers/aic8800/aic8800_fdrv/rwnx_gki.h
+--- a/drivers/aic8800/aic8800_fdrv/rwnx_gki.h	2025-11-21 14:56:47.000000000 +0800
++++ b/drivers/aic8800/aic8800_fdrv/rwnx_gki.h	2026-04-11 19:27:33.672633414 +0800
+@@ -51,8 +51,15 @@
+ 
+ #else
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0)
++#define rwnx_cfg80211_rx_spurious_frame(dev, addr, gfp) \
++	cfg80211_rx_spurious_frame((dev), (addr), -1, (gfp))
++#define rwnx_cfg80211_rx_unexpected_4addr_frame(dev, addr, gfp) \
++	cfg80211_rx_unexpected_4addr_frame((dev), (addr), -1, (gfp))
++#else
+ #define rwnx_cfg80211_rx_spurious_frame           cfg80211_rx_spurious_frame
+ #define rwnx_cfg80211_rx_unexpected_4addr_frame   cfg80211_rx_unexpected_4addr_frame
++#endif
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0))
+ #define rwnx_cfg80211_notify_new_peer_candidate   cfg80211_notify_new_peer_candidate
+diff -ruN a/drivers/aic8800/aic8800_fdrv/rwnx_main.c b/drivers/aic8800/aic8800_fdrv/rwnx_main.c
+--- a/drivers/aic8800/aic8800_fdrv/rwnx_main.c	2025-11-21 14:56:47.000000000 +0800
++++ b/drivers/aic8800/aic8800_fdrv/rwnx_main.c	2026-04-11 19:27:33.672633414 +0800
+@@ -3663,8 +3663,8 @@
+  * Also called internaly with chandef set to NULL simply to retrieve the channel
+  * configured at firmware level.
+  */
+-static int rwnx_cfg80211_set_monitor_channel(struct wiphy *wiphy,
+-											 struct cfg80211_chan_def *chandef)
++static int rwnx_cfg80211_set_monitor_channel_impl(struct wiphy *wiphy,
++						  struct cfg80211_chan_def *chandef)
+ {
+ 	struct rwnx_hw *rwnx_hw = wiphy_priv(wiphy);
+ 	struct rwnx_vif *rwnx_vif;
+@@ -3716,9 +3716,36 @@
+ 	return 0;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++static int rwnx_cfg80211_set_monitor_channel(struct wiphy *wiphy,
++					     struct net_device *dev,
++					     struct cfg80211_chan_def *chandef)
++{
++	(void)dev;
++	return rwnx_cfg80211_set_monitor_channel_impl(wiphy, chandef);
++}
++#else
++static int rwnx_cfg80211_set_monitor_channel(struct wiphy *wiphy,
++					     struct cfg80211_chan_def *chandef)
++{
++	return rwnx_cfg80211_set_monitor_channel_impl(wiphy, chandef);
++}
++#endif
++
+ int rwnx_cfg80211_set_monitor_channel_(struct wiphy *wiphy,
+-                                             struct cfg80211_chan_def *chandef){
+-    return rwnx_cfg80211_set_monitor_channel(wiphy, chandef);
++                                             struct cfg80211_chan_def *chandef)
++{
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++	struct rwnx_hw *rwnx_hw = wiphy_priv(wiphy);
++	struct net_device *mdev = NULL;
++
++	if (rwnx_hw->monitor_vif != RWNX_INVALID_VIF &&
++	    rwnx_hw->vif_table[rwnx_hw->monitor_vif])
++		mdev = rwnx_hw->vif_table[rwnx_hw->monitor_vif]->ndev;
++	return rwnx_cfg80211_set_monitor_channel(wiphy, mdev, chandef);
++#else
++	return rwnx_cfg80211_set_monitor_channel(wiphy, chandef);
++#endif
+ }
+ 
+ /**
+@@ -3774,11 +3801,27 @@
+  *	have changed. The actual parameter values are available in
+  *	struct wiphy. If returning an error, no value should be changed.
+  */
+-static int rwnx_cfg80211_set_wiphy_params(struct wiphy *wiphy, u32 changed)
++static int rwnx_cfg80211_set_wiphy_params_impl(struct wiphy *wiphy, u32 changed)
+ {
++	(void)wiphy;
++	(void)changed;
+ 	return 0;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0)
++static int rwnx_cfg80211_set_wiphy_params(struct wiphy *wiphy, int radio_idx,
++					  u32 changed)
++{
++	(void)radio_idx;
++	return rwnx_cfg80211_set_wiphy_params_impl(wiphy, changed);
++}
++#else
++static int rwnx_cfg80211_set_wiphy_params(struct wiphy *wiphy, u32 changed)
++{
++	return rwnx_cfg80211_set_wiphy_params_impl(wiphy, changed);
++}
++#endif
++
+ 
+ /**
+  * @set_tx_power: set the transmit power according to the parameters,
+@@ -3787,8 +3830,10 @@
+  *	always be %NULL unless the driver supports per-vif TX power
+  *	(as advertised by the nl80211 feature flag.)
+  */
+-static int rwnx_cfg80211_set_tx_power(struct wiphy *wiphy, struct wireless_dev *wdev,
+-									  enum nl80211_tx_power_setting type, int mbm)
++static int rwnx_cfg80211_set_tx_power_impl(struct wiphy *wiphy,
++					   struct wireless_dev *wdev,
++					   enum nl80211_tx_power_setting type,
++					   int mbm)
+ {
+ 	struct rwnx_hw *rwnx_hw = wiphy_priv(wiphy);
+ 	struct rwnx_vif *vif;
+@@ -3815,22 +3860,59 @@
+ 	return res;
+ }
+ 
+-static int rwnx_cfg80211_get_tx_power(struct wiphy *wiphy,
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0)
+- struct wireless_dev *wdev,
+-#endif
+-	int *mbm)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0)
++static int rwnx_cfg80211_set_tx_power(struct wiphy *wiphy, struct wireless_dev *wdev,
++				    int radio_idx,
++				    enum nl80211_tx_power_setting type, int mbm)
+ {
+-    #if LINUX_VERSION_CODE < KERNEL_VERSION(3, 8, 0)
+-    struct wireless_dev *wdev = NULL;
+-    #endif
+-    s8 pwr = 0;
+-    int res = 0;
++	(void)radio_idx;
++	return rwnx_cfg80211_set_tx_power_impl(wiphy, wdev, type, mbm);
++}
++#else
++static int rwnx_cfg80211_set_tx_power(struct wiphy *wiphy, struct wireless_dev *wdev,
++				      enum nl80211_tx_power_setting type, int mbm)
++{
++	return rwnx_cfg80211_set_tx_power_impl(wiphy, wdev, type, mbm);
++}
++#endif
+ 
+-	*mbm = get_txpwr_max(pwr);
++static int rwnx_cfg80211_get_tx_power_impl(struct wiphy *wiphy,
++					   struct wireless_dev *wdev,
++					   int *mbm)
++{
++	(void)wiphy;
++	(void)wdev;
++	*mbm = get_txpwr_max(0);
++	return 0;
++}
+ 
+-    return res;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0)
++static int rwnx_cfg80211_get_tx_power(struct wiphy *wiphy, struct wireless_dev *wdev,
++				      int radio_idx, unsigned int link_id, int *mbm)
++{
++	(void)radio_idx;
++	(void)link_id;
++	return rwnx_cfg80211_get_tx_power_impl(wiphy, wdev, mbm);
++}
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(6, 14, 0)
++static int rwnx_cfg80211_get_tx_power(struct wiphy *wiphy, struct wireless_dev *wdev,
++				      unsigned int link_id, int *mbm)
++{
++	(void)link_id;
++	return rwnx_cfg80211_get_tx_power_impl(wiphy, wdev, mbm);
++}
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0)
++static int rwnx_cfg80211_get_tx_power(struct wiphy *wiphy, struct wireless_dev *wdev,
++				      int *mbm)
++{
++	return rwnx_cfg80211_get_tx_power_impl(wiphy, wdev, mbm);
++}
++#else
++static int rwnx_cfg80211_get_tx_power(struct wiphy *wiphy, int *mbm)
++{
++	return rwnx_cfg80211_get_tx_power_impl(wiphy, NULL, mbm);
+ }
++#endif
+ 
+ #if 0
+ /**
+@@ -4129,7 +4211,11 @@
+ 
+ 	if (rwnx_vif->vif_index == rwnx_hw->monitor_vif) {
+ 		//retrieve channel from firmware
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++		rwnx_cfg80211_set_monitor_channel(wiphy, rwnx_vif->ndev, NULL);
++#else
+ 		rwnx_cfg80211_set_monitor_channel(wiphy, NULL);
++#endif
+ 	}
+ 
+ 	//Check if channel context is valid
+diff -ruN a/drivers/aic8800/aic8800_fdrv/rwnx_rx.c b/drivers/aic8800/aic8800_fdrv/rwnx_rx.c
+--- a/drivers/aic8800/aic8800_fdrv/rwnx_rx.c	2025-11-21 14:56:47.000000000 +0800
++++ b/drivers/aic8800/aic8800_fdrv/rwnx_rx.c	2026-04-11 19:27:33.674633413 +0800
+@@ -1667,7 +1667,7 @@
+         hdr = (struct ieee80211_hdr *)(skb->data + msdu_offset);
+         rwnx_vif = rwnx_rx_get_vif(rwnx_hw, hw_rxhdr->flags_vif_idx);
+         if (rwnx_vif) {
+-            cfg80211_rx_spurious_frame(rwnx_vif->ndev, hdr->addr2, GFP_ATOMIC);
++            rwnx_cfg80211_rx_spurious_frame(rwnx_vif->ndev, hdr->addr2, GFP_ATOMIC);
+         }
+         rwnx_ipc_buf_e2a_sync_back(rwnx_hw, ipc_buf, sync_len);
+         rwnx_ipc_rxbuf_repush(rwnx_hw, ipc_buf);
+@@ -1714,7 +1714,7 @@
+                 }
+ 
+                 if (hw_rxhdr->flags_is_4addr && !rwnx_vif->use_4addr) {
+-                    cfg80211_rx_unexpected_4addr_frame(rwnx_vif->ndev,
++                    rwnx_cfg80211_rx_unexpected_4addr_frame(rwnx_vif->ndev,
+                                                        sta->mac_addr, GFP_ATOMIC);
+                 }
+             }
