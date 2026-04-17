@@ -1,16 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=drill-search
-pkgver=72
+pkgver=78
 pkgrel=1
 epoch=1
 pkgdesc="Very fast file searcher without indexing"
 arch=('any')
 url="https://drill.software"
 license=('GPL-2.0-or-later')
-depends=(
-  'python-pyqt6'
-  'python-sortedcontainers'
-)
+depends=('python-pyqt6')
 makedepends=(
   'python-build'
   'python-installer'
@@ -18,14 +15,15 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=(
-  'python-pytest-qt'
-#  'python-sortedcontainers-stubs'  ## TODO
+#  'pyright'
+  'python-pytest'
+#  'python-pytest-qt'
 )
 conflicts=("$pkgname-cli" "$pkgname-gtk")
 source=("Drill-$pkgver.tar.gz::https://github.com/yatima1460/Drill/archive/refs/tags/release-$pkgver.tar.gz"
         'drill.sh'
         'drill.desktop')
-sha256sums=('43dd879d027b744a66cfe2434f013955e500164883bb54123edce6d78773775d'
+sha256sums=('5776294423e43b13c2afcf74a853aca620825300d4dbf57bbf614714ada0a228'
             '255aec49f9d963f712313474a17eb6225c4da0ecbdf0a7c2eae178272224fb6c'
             '6f3aeb8c5b0a61cf8e7ca419879885e7fb901abc3fbd601d3a267fb1b42cc988')
 
@@ -43,10 +41,10 @@ build() {
   python -m build --skip-dependency-check --wheel --no-isolation
 }
 
-#check() {
-#  cd "Drill-release-$pkgver"
-#  PYTHONPATH=drill/ pytest
-#}
+check() {
+  cd "Drill-release-$pkgver"
+  PYTHONPATH=drill/ pytest -k 'not test_window'
+}
 
 package() {
   cd "Drill-release-$pkgver"
