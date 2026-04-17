@@ -3,7 +3,7 @@ post_install() {
   echo "==> gamepad-osk installed!"
   echo ""
   echo "  Quick start:  gamepad-osk"
-  echo "  Config:       ~/.config/gamepad-osk/config.toml (auto-created on first run)"
+  echo "  Config:       ~/.config/gamepad-osk/config (auto-created on first run)"
   echo "  All options:  gamepad-osk --help"
   echo ""
   echo "  Systemd user service:"
