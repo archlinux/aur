@@ -1,18 +1,19 @@
-# Maintainer: Philipp Classen <philipp at posteo.de>
+# Maintainer: Merlin Glander <merlin at merlin-glander dot de>
+# Previous Maintainer: Philipp Classen <philipp at posteo.de>
 # Contributor: Arnaud Durand-Favreau <biginoz at FREE point FR>
 # Previous maintainer: Bjoern Franke <bjo at nord-west.org>
 pkgname=stapler
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A small utility making use of the pypdf library to provide a (somewhat) lighter alternative to pdftk"
 arch=('any')
 url="https://github.com/hellerbarde/stapler"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('python' 'python-pypdf2' 'python-more-itertools')
 makedepends=('python-pip')
 conflicts=('stapler-git')
 
-source=("https://github.com/hellerbarde/stapler/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/hellerbarde/stapler/archive/$pkgver.tar.gz")
 sha256sums=('011f0d82a1c7a20a600a8dbe4fb3076129ec1df3a2214054ae7954ab3a85ed51')
 
 package() {
