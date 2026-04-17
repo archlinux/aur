@@ -1,6 +1,6 @@
 pkgbase = cv4pve-diag
 	pkgdesc = Diagnostic tool for Proxmox VE — checks nodes, VMs, LXC containers and storage for common issues
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/Corsinvest/cv4pve-diag
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = cv4pve-diag
 	conflicts = cv4pve-diag
 	options = !strip
 	options = !debug
-	source_x86_64 = cv4pve-diag-2.2.0-x86_64.zip::https://github.com/Corsinvest/cv4pve-diag/releases/download/v2.2.0/cv4pve-diag-linux-x64.zip
-	sha256sums_x86_64 = 39c7df4fe0a920f4cdfa383a1f236b66a2fcb12faaa66b41f1888e35bbf4113c
-	source_aarch64 = cv4pve-diag-2.2.0-aarch64.zip::https://github.com/Corsinvest/cv4pve-diag/releases/download/v2.2.0/cv4pve-diag-linux-arm64.zip
-	sha256sums_aarch64 = 2095d2b2406139fe3f107327752ff5bf821236fa0fb8418bfb942574f4cd07e3
-	source_armv7h = cv4pve-diag-2.2.0-armv7h.zip::https://github.com/Corsinvest/cv4pve-diag/releases/download/v2.2.0/cv4pve-diag-linux-arm.zip
-	sha256sums_armv7h = e077401a1c3a390c3cda09e2974c50aa2d451d7c016b256c03ef3637a38b8c53
+	source_x86_64 = cv4pve-diag-2.2.1-x86_64.zip::https://github.com/Corsinvest/cv4pve-diag/releases/download/v2.2.1/cv4pve-diag-linux-x64.zip
+	sha256sums_x86_64 = b16cc1c3a250b77fc9d8be78f7f45b23dca33cec92df28a2feb37041bea5709e
+	source_aarch64 = cv4pve-diag-2.2.1-aarch64.zip::https://github.com/Corsinvest/cv4pve-diag/releases/download/v2.2.1/cv4pve-diag-linux-arm64.zip
+	sha256sums_aarch64 = edd9d80626c632401a9fad8fefe076c32c491d6af1554de6ec8d35e46f164a8e
+	source_armv7h = cv4pve-diag-2.2.1-armv7h.zip::https://github.com/Corsinvest/cv4pve-diag/releases/download/v2.2.1/cv4pve-diag-linux-arm.zip
+	sha256sums_armv7h = 9b2fc0e857d54640d02f0b53e57f292787ef0c87974d891ed5fe366b851458a4
 
 pkgname = cv4pve-diag

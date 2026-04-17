@@ -3,7 +3,7 @@
 # Part of : CV4PVE Suite - https://www.corsinvest.it/cv4pve
 
 pkgname=cv4pve-diag
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Diagnostic tool for Proxmox VE — checks nodes, VMs, LXC containers and storage for common issues"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,9 +18,9 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://github.com/Corsinvest/c
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://github.com/Corsinvest/cv4pve-diag/releases/download/v${pkgver}/cv4pve-diag-linux-arm64.zip")
 source_armv7h=("${pkgname}-${pkgver}-armv7h.zip::https://github.com/Corsinvest/cv4pve-diag/releases/download/v${pkgver}/cv4pve-diag-linux-arm.zip")
 
-sha256sums_x86_64=('39c7df4fe0a920f4cdfa383a1f236b66a2fcb12faaa66b41f1888e35bbf4113c')
-sha256sums_aarch64=('2095d2b2406139fe3f107327752ff5bf821236fa0fb8418bfb942574f4cd07e3')
-sha256sums_armv7h=('e077401a1c3a390c3cda09e2974c50aa2d451d7c016b256c03ef3637a38b8c53')
+sha256sums_x86_64=('b16cc1c3a250b77fc9d8be78f7f45b23dca33cec92df28a2feb37041bea5709e')
+sha256sums_aarch64=('edd9d80626c632401a9fad8fefe076c32c491d6af1554de6ec8d35e46f164a8e')
+sha256sums_armv7h=('9b2fc0e857d54640d02f0b53e57f292787ef0c87974d891ed5fe366b851458a4')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
