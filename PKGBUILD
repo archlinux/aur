@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-another-window-session-manager-git
 pkgver=51.r1.gcf23fef
-pkgrel=2
+pkgrel=3
 pkgdesc="A GNOME shell extension to close open windows gracefully and save them as a session."
 arch=('any')
 url="https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager"
@@ -39,18 +39,7 @@ build() {
     --extra-source=template/ \
     --extra-source=ui/ \
     --extra-source=utils/ \
-    --extra-source=closeSession.js \
-    --extra-source=constants.js \
-    --extra-source=indicator.js \
-    --extra-source=moveSession.js \
-    --extra-source=openWindowsTracker.js \
-    --extra-source=prefsCloseWindow.js \
-    --extra-source=prefsColumnView.js \
-    --extra-source=prefsWidgets.js \
-    --extra-source=prefsWindowPickableEntry.js \
-    --extra-source=restoreSession.js \
-    --extra-source=saveSession.js \
-    --extra-source=windowTilingSupport.js \
+    $(find . -maxdepth 1 -name '*.js' -printf '--extra-source=%f ') \
     --force
 }
 
@@ -67,5 +56,6 @@ package() {
   rm -rfv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 
   # https://github.com/nlpsuge/gnome-shell-extension-another-window-session-manager#how-to-make-close-by-rules-work
-  install -Dvm644 "$srcdir/60-awsm-ydotool-uinput.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+  install -Dvm644 "$srcdir/60-awsm-ydotool-uinput.rules" -t \
+    "$pkgdir/usr/lib/udev/rules.d/"
 }
