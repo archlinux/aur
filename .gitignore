@@ -1,0 +1,4 @@
+*.zst
+cpupower-gui
+pkg
+src

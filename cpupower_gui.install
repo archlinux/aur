@@ -1,16 +1,14 @@
 post_install() {
-	# enable daemons
-	echo ":: Enabling cpupower-gui-helper service"
-	systemctl enable cpupower-gui-helper.service
-	systemctl enable cpupower-gui.service
+	cat <<EOF
+:: To enable the cpupower-gui helper and service, run:
+::   systemctl enable --now cpupower-gui-helper.service
+::   systemctl enable --now cpupower-gui.service
+::
+:: For the optional per-user service:
+::   systemctl --user enable --now cpupower-gui-user.service
+EOF
 }
 
 post_upgrade() {
-	echo ":: Enabling cpupower-gui-helper service"
-	systemctl enable cpupower-gui-helper.service
-	systemctl enable cpupower-gui.service
-}
-pre_remove() {
-	systemctl disable cpupower-gui-helper.service
-	systemctl disable cpupower-gui.service
+	post_install
 }
