@@ -22,7 +22,8 @@ build() {
 
 check() {
     cd "$_name-$pkgver"
-    PYTHONPATH="$PWD" pytest -o addopts=""
+    # Skip UI tests that require a running Textual app/screens
+    PYTHONPATH="$PWD" pytest -o addopts="" --ignore=tests/test_app_actions.py --ignore=tests/test_user_input.py
 }
 
 package() {
