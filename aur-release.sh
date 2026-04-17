@@ -475,13 +475,26 @@ run_walkthrough() {
   current_pkgrel="$next_pkgrel"
   echo "Release target: ${deb_ver}-${current_pkgrel}"
 
-  if ! confirm "Run prepare step now?" "Y"; then
-    die "walkthrough stopped before prepare"
-  fi
-  if [[ -n "$deb_file" ]]; then
-    run_prepare --deb-file "$deb_file"
+  if [[ -f "$(pkg_filename)" ]]; then
+    echo "Existing package found: $(pkg_filename)"
+    if confirm "Build a fresh .pkg.tar.zst now?" "N"; then
+      if [[ -n "$deb_file" ]]; then
+        run_prepare --deb-file "$deb_file"
+      else
+        run_prepare --deb-url "$deb_url"
+      fi
+    else
+      echo "Reusing existing $(pkg_filename)"
+    fi
   else
-    run_prepare --deb-url "$deb_url"
+    if ! confirm "Build the .pkg.tar.zst now?" "Y"; then
+      die "walkthrough stopped before build"
+    fi
+    if [[ -n "$deb_file" ]]; then
+      run_prepare --deb-file "$deb_file"
+    else
+      run_prepare --deb-url "$deb_url"
+    fi
   fi
 
   if [[ -n "$deb_file" ]]; then
@@ -496,28 +509,29 @@ run_walkthrough() {
   fi
 
   echo
-  echo "Built package: $(pkg_filename)"
-  if ! confirm "Add this .pkg.tar.zst to CrabNebula now?" "Y"; then
-    die "walkthrough stopped before CrabNebula upload"
-  fi
-  if confirm "Run the CrabNebula upload from this script?" "N"; then
-    if confirm "Is this a beta release channel?" "Y"; then
-      upload_channel="beta"
+  echo "Package file: $(pkg_filename)"
+  if confirm "Add this .pkg.tar.zst to CrabNebula now?" "N"; then
+    if confirm "Run the CrabNebula upload from this script?" "N"; then
+      if confirm "Is this a beta release channel?" "Y"; then
+        upload_channel="beta"
+      else
+        upload_channel="stable"
+      fi
+      upload_version="$(read_pkg_var pkgver)"
+      read -r -p "Upload app slug [${upload_app}]: " input_upload_app
+      if [[ -n "${input_upload_app:-}" ]]; then
+        upload_app="$input_upload_app"
+      fi
+      read -r -p "Upload version [${upload_version}]: " input_upload_version
+      if [[ -n "${input_upload_version:-}" ]]; then
+        upload_version="$input_upload_version"
+      fi
+      run_cn_upload "$upload_app" "$upload_version" "pacman-x86_64" "" "" "" "$upload_channel" "$(pkg_filename)"
     else
-      upload_channel="stable"
+      echo "Upload it in CrabNebula, then continue with the hosted download URL."
     fi
-    upload_version="$(read_pkg_var pkgver)"
-    read -r -p "Upload app slug [${upload_app}]: " input_upload_app
-    if [[ -n "${input_upload_app:-}" ]]; then
-      upload_app="$input_upload_app"
-    fi
-    read -r -p "Upload version [${upload_version}]: " input_upload_version
-    if [[ -n "${input_upload_version:-}" ]]; then
-      upload_version="$input_upload_version"
-    fi
-    run_cn_upload "$upload_app" "$upload_version" "pacman-x86_64" "" "" "" "$upload_channel" "$(pkg_filename)"
   else
-    echo "Upload it in CrabNebula, then continue with the hosted download URL."
+    echo "Skipping upload. Paste the existing CrabNebula download URL below."
   fi
 
   echo
