@@ -1,8 +1,8 @@
 # Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
 
 pkgname=eez-studio-appimage
-pkgver=0.26.2
-pkgrel=3
+pkgver=0.27.1
+pkgrel=1
 pkgdesc="Cross-platform low-code GUI and automation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/eez-open/studio/releases"
@@ -22,7 +22,7 @@ source=(
     "${pkgname}-${pkgver}.AppImage::https://github.com/eez-open/studio/releases/download/v${pkgver}/EEZ-Studio-${pkgver}.AppImage"
 )
 
-sha256sums=('95ab446678d7e2dcec728162c93767996f03d9879579d55a517647b0b70684ab')
+sha256sums=('79b5ba7ac5949cf598773b6c16bc006a5bffc54e5e7251105c583619196b6561')
 
 prepare() {
     chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
