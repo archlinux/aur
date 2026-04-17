@@ -2,8 +2,8 @@
 # Maintainer: i4 <admin@i4.cn>
 # Maintainer: taotieren <admin@taotieren.com>
 pkgname=i4tools-bin
-pkgver=3.09.002
-pkgrel=3
+pkgver=3.10.001
+pkgrel=1
 epoch=1
 pkgdesc='爱思助手是一款集“高效管理 iOS 设备数据”，“智能刷机”和“免费下载海量应用游戏、铃声壁纸”等为一体的 iOS 设备管理工具。'
 arch=('x86_64')
@@ -32,27 +32,31 @@ source=(
     "${pkgname%-bin}_v${pkgver}.rpm::https://d-updater.i4.cn/i4linux/deb/${pkgname%-bin}_v${pkgver}.rpm"
     "https://www.i4.cn/copyright.html"
 )
-sha256sums=('acf171b4998cab459965f2682209d7f42686f90cd42873e24134ee9306be5d8f'
-            'SKIP')
+sha256sums=('5c8432b6f89a8d2b89263d0770d68afd313e70afdf86e1978e52a02f1c266582'
+            '79bf7500e724fda34fb534fe2b1e84e16cf39bb1e661e5368534f004dab729a5')
 
 package() {
     install -m755 -d "${pkgdir}/opt/${pkgname%-bin}"
     install -m755 -d "${pkgdir}/usr/share/pixmaps"
     install -m755 -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -m755 -d "${pkgdir}/usr/bin" 
-    install -Dm755 "${srcdir}/opt/apps/cn.i4Tools/"run.sh "${pkgdir}/usr/bin/"${pkgname%-bin}
+#    install -Dm755 "${srcdir}/opt/apps/cn.i4Tools/"run.sh "${pkgdir}/usr/bin/"${pkgname%-bin}
     install -Dm644 "${srcdir}/opt/apps/cn.i4Tools/"cn.i4Tools.desktop $pkgdir/usr/share/applications/${pkgname%-bin}.desktop
     install -Dm644 ${srcdir}/copyright.html "$pkgdir/usr/share/licenses/${pkgname%-bin}/copyright.html"
+    cp -r "${srcdir}/opt/apps/cn.i4Tools/"* "${pkgdir}/opt/${pkgname%-bin}/"
     sed -i 's|/opt/apps/cn.i4Tools/run.sh|i4tools %u|g' \
         "$pkgdir/usr/share/applications/"${pkgname%-bin}.desktop
     sed -i 's|/opt/apps/cn.i4Tools/resources/logo.png|i4tools|g' \
         "$pkgdir/usr/share/applications/"${pkgname%-bin}.desktop
     sed -i 's|utils|Utility;|g' \
         "$pkgdir/usr/share/applications/"${pkgname%-bin}.desktop
-    sed '7s/.*/    cd \/opt\/i4tools/g' -i "${pkgdir}/usr/bin/"${pkgname%-bin}
-    sed -i '8i\	export LD_LIBRARY_PATH=\/opt\/i4tools\/lib:$LD_LIBRARY_PATH' "${pkgdir}/usr/bin/"${pkgname%-bin}
-    cp -r "${srcdir}/opt/apps/cn.i4Tools/"* "${pkgdir}/opt/${pkgname%-bin}/"
+    sed '7s/.*/    cd \/opt\/i4tools/g' -i "${pkgdir}/opt/i4tools/"run.sh
+    sed -i 's|export QT_AUTO_SCREEN_SCALE_FACTOR=0|export QT_AUTO_SCREEN_SCALE_FACTOR=1|g' \
+        "${pkgdir}/opt/i4tools/"run.sh
+    sed -i '8i\	export LD_LIBRARY_PATH=\/opt\/i4tools\/lib:$LD_LIBRARY_PATH' "${pkgdir}/opt/i4tools/"run.sh
+#    cp -r "${srcdir}/opt/apps/cn.i4Tools/"* "${pkgdir}/opt/${pkgname%-bin}/"
     cd "${srcdir}/opt/apps/cn.i4Tools/resources"
     cp logo.png "$pkgdir"/usr/share/pixmaps/${pkgname%-bin}.png
     cp logo.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg
+    ln -s /opt/i4tools/run.sh "${pkgdir}/usr/bin/"${pkgname%-bin}
 }
