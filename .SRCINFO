@@ -1,0 +1,27 @@
+pkgbase = oo7
+	pkgdesc = Secret Service provider
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/linux-credentials/oo7
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = libgcc
+	depends = glibc
+	source = oo7-0.6.0.tar.gz::https://github.com/linux-credentials/oo7/archive/refs/tags/0.6.0.tar.gz
+	sha256sums = 793de2494423b3f3cc2457f69bca1c17ce90497dbe2eb26d9c717b1d166fee36
+
+pkgname = cargo-credential-oo7
+	pkgdesc = Cargo credential provider built using oo7
+
+pkgname = oo7-cli
+	pkgdesc = CLI application to interact with the system keyring
+
+pkgname = oo7-daemon
+	pkgdesc = Service providing the Secret Service D-Bus API
+
+pkgname = oo7-pam
+	pkgdesc = PAM module for oo7 Secret Service integration
+
+pkgname = oo7-portal
+	pkgdesc = org.freedesktop.impl.portal.Secret implementation using oo7
