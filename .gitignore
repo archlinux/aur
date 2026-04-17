@@ -3,3 +3,5 @@ src/
 *.pkg.tar.*
 *.src.tar.*
 *.log
+rerune-bin-*.tar.gz
+rerune_*.tar.gz

@@ -1,20 +1,20 @@
 pkgbase = rerune-bin
 	pkgdesc = Prebuilt CLI for rerune translation workflows
-	pkgver = 0.14.5
+	pkgver = 0.14.6
 	pkgrel = 1
 	url = https://rerune.io
 	arch = x86_64
 	arch = aarch64
 	license = LicenseRef-BasalBit-Proprietary
-	provides = rerune=0.14.5
+	provides = rerune=0.14.6
 	conflicts = rerune
 	options = !debug
 	options = !strip
 	source = rerune-LICENSE.txt
 	sha256sums = b0bf9b7da434db532ad6760e6c0aabfc6340047d2c264e5a4bfc82d4dd9dcf4f
-	source_x86_64 = rerune_0.14.5_linux_amd64.tar.gz::https://basalbit.github.io/rerune-releases/v0.14.5/rerune_0.14.5_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1b3d8939913edd7b615ce7773cf979dd541f7b9bc4d695d4d34617a17d7c5747
-	source_aarch64 = rerune_0.14.5_linux_arm64.tar.gz::https://basalbit.github.io/rerune-releases/v0.14.5/rerune_0.14.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = ceb3d6e9e4972d2d4fde842835718d7eba72ffd8a65f34024784d0e493ddff20
+	source_x86_64 = rerune_0.14.6_linux_amd64.tar.gz::https://basalbit.github.io/rerune-releases/v0.14.6/rerune_0.14.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = f736f8de1e9255ddaf6feb10940da512d9f2a2407bc66a2631f5e3e3a6234ea2
+	source_aarch64 = rerune_0.14.6_linux_arm64.tar.gz::https://basalbit.github.io/rerune-releases/v0.14.6/rerune_0.14.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = c9e8b900ebd3caef1101963cb375cecef873160643a7e38beb3413e0ab19be0d
 
 pkgname = rerune-bin
