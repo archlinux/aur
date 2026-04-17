@@ -1,0 +1,27 @@
+pkgbase = automaker-bin
+	pkgdesc = An autonomous AI development studio that helps you build software faster using AI-powered agents
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AutoMaker-Org/automaker
+	install = automaker.install
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	optdepends = claude-code-cli: Claude Code CLI for authentication
+	optdepends = github-cli: GitHub integration
+	provides = automaker
+	conflicts = automaker
+	conflicts = automaker-git
+	noextract = automaker-bin-1.0.0.AppImage
+	options = !strip
+	source_x86_64 = automaker-bin-1.0.0.AppImage::https://github.com/AutoMaker-Org/automaker/releases/download/v1.0.0/Automaker-1.0.0-x86_64.AppImage
+	sha256sums_x86_64 = 1d8160ab3ca35b98117e7d870c8093cf71eccbc8579c701c539b5e843a47ca49
+
+pkgname = automaker-bin
