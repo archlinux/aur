@@ -1,5 +1,5 @@
 pkgname=cava-bg
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Audio visualizer for Wayland"
 url="https://github.com/leriart/cava-bg"
