@@ -1,0 +1,29 @@
+post_install() {
+    echo ""
+    echo "==> arch-native installed."
+    echo ""
+    echo "    Review /etc/arch-native.conf before starting the service."
+    echo "    Key settings: march, mode (local/remote), distro (arch/artix), repo_name"
+    echo ""
+    echo "    Initialize the data directory and chroot:"
+    echo "      sudo buildbot init"
+    echo ""
+    echo "    Then enable and start:"
+    echo "      sudo systemctl enable --now arch-native"
+    echo ""
+    echo "    If using nginx to serve the repo, copy the example config:"
+    echo "      cp /usr/share/arch-native/nginx.conf.example /etc/nginx/conf.d/arch-native.conf"
+    echo "      sudo systemctl reload nginx"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> arch-native upgraded."
+    if [[ -f /etc/arch-native.conf.pacnew ]]; then
+        echo "    New default config installed as /etc/arch-native.conf.pacnew"
+        echo "    Review and merge any new options into /etc/arch-native.conf"
+    fi
+    echo "    Restart the service to apply: sudo systemctl restart arch-native"
+    echo ""
+}
