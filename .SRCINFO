@@ -1,7 +1,7 @@
 pkgbase = python-ciel
 	pkgdesc = A tool for managing Process Design Kits (PDKs) for ASIC and FPGA flows.
 	pkgver = 2.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fossi-foundation/ciel
 	arch = any
 	license = Apache-2.0
