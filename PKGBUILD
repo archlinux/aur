@@ -3,7 +3,7 @@
 # Contributor: matthias.lisin
 # Contributor: Bruno Inec <bruno at inec dot fr>
 pkgname=wtfutil
-pkgver=0.49.0
+pkgver=0.49.1
 pkgrel=1
 pkgdesc="Personal information dashboard for your terminal"
 arch=('x86_64' 'aarch64' 'armv6h')
@@ -12,7 +12,7 @@ license=('MPL-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wtfutil/wtf/archive/v$pkgver.tar.gz")
-sha256sums=('700024091ed2db2ce1f38e20735e4edf7e9179a697ffd361851e63342b652cee')
+sha256sums=('77860a2bc3a14ebea15a8f31b388fd14a09dd2ecaade4e82079331c094896bb6')
 
 build() {
   cd "wtf-$pkgver"
