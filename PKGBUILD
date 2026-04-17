@@ -2,8 +2,9 @@
 
 pkgbase=scopehal-apps
 pkgname=scopehal-apps
-pkgver=0.1
-pkgrel=1
+_tagname=0.1.1
+pkgver=${_tagname//-/_}
+pkgrel=2
 epoch=
 pkgdesc="ngscopeclient and other client applications for libscopehal"
 arch=($CARCH)
@@ -53,7 +54,7 @@ options=()
 install=
 changelog=
 source=(
-    "${pkgname}::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}::git+${url}.git#tag=v${_tagname}"
     "lib::git+https://github.com/ngscopeclient/scopehal.git"
     "xptools::git+https://github.com/ngscopeclient/xptools.git"
     "log::git+https://github.com/ngscopeclient/logtools.git"
@@ -67,7 +68,7 @@ source=(
     "wayland-protocols::git+https://gitlab.freedesktop.org/wayland/wayland-protocols.git"
     "imgui_markdown::git+https://github.com/juliettef/imgui_markdown.git"
 )
-sha256sums=('d951b998eb8a599c5c97c2fef8b23f2aaa9d8ba0098776f0ae7b3bafe6c05ca8'
+sha256sums=('8c8203c03e10160a922b5b5104761089b79693d6ea585be32be5a07707142cf5'
             'SKIP'
             'SKIP'
             'SKIP'
