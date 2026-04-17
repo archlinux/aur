@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf-bin
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
@@ -12,8 +12,8 @@ provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}")
 source=("MareTF-Linux-Standalone-gcc-release-${pkgver}.zip::$url/releases/download/v${pkgver}/MareTF-Linux-Standalone-gcc-release.zip"
 	"$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d424947edc80d5bb8c43e75b3af095d213401f66e5b2701e0fbbc56a2859763a'
-            '79e9305b8087e15cf0d1fbabc3cba7ba0324255bdbc3e24083b2b0602b06a57c')
+sha256sums=('da5b7373182bd62b88d77a49c9441553f7566a9227019d52e1c141fc2fc36f62'
+            'a0abd607fd6ee33d8ea622bfc9d201b00bfe95afa6b66c3f8ae68ee05b35c0e2')
 
 package() {
 	cd "$srcdir"
