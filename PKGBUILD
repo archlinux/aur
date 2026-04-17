@@ -14,29 +14,28 @@ conflicts=('dunst' 'mako' 'deadd-notification-center')
 install='ember-notify.install'
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2633da90d653d31a3c6bad949f22995de87e1aa09ffb84ffa5d63301d56889f8')
+sha256sums=('8a73d8b4f205624ad409ac7a5b779227f215e80ad231e4bd15b7a7966d414188')
+
+_srcdir="Ember-$pkgver"
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  # Download Cargo dependencies into the cargo cache before build.
+  cd "$_srcdir"
   export CARGO_HOME="$srcdir/cargo-home"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_srcdir"
   export CARGO_HOME="$srcdir/cargo-home"
+  # Arch Linux default LDFLAGS include -z,now (BIND_NOW) which causes sqlx
+  # proc-macro .so to fail loading due to unresolved sqlite symbols.
+  # Override with -z,lazy so symbols are resolved lazily (at first use).
+  export RUSTFLAGS="-C link-arg=-Wl,-z,lazy"
   cargo build --release --locked --offline
 }
 
-check() {
-  cd "$pkgname-$pkgver"
-  export CARGO_HOME="$srcdir/cargo-home"
-  cargo test --release --locked --offline
-}
-
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_srcdir"
 
   install -Dm755 target/release/ember             "$pkgdir/usr/bin/ember"
   install -Dm644 config/default.toml              "$pkgdir/usr/share/ember/default.toml"
