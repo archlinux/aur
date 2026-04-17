@@ -1,15 +1,16 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf-git
-pkgver=0.9.2.r2.gc38ff66
+pkgver=0.10.3.r0.g5fc6d63
 pkgrel=1
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
 url="https://github.com/craftablescience/MareTF"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'hicolor-icon-theme' 'qt6-base')
+depends=('glibc' 'libgcc' 'libstdc++' 'hicolor-icon-theme' 'qt6-base')
 makedepends=('ninja' 'cmake' 'git')
+replaces=("vtf-thumbnailer")
 provides=("${pkgname::-4}")
-conflicts=("${pkgname::-4}")
+conflicts=("${pkgname::-4}" "vtf-thumbnailer")
 source=("$pkgname::git+$url.git"
 	"git+https://github.com/craftablescience/cmake-helpers.git"
 	"git+https://github.com/p-ranav/argparse.git"
