@@ -2,7 +2,7 @@
 
 pkgname=flox-bin
 pkgver=1.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Deterministic Foundation for your SDLC"
 arch=('x86_64' 'aarch64')
 url="https://flox.dev"
@@ -36,12 +36,22 @@ sha512sums_aarch64=('SKIP')
 package() {
     cd "$srcdir"
 
-    # Ensure .deb was unpacked by makepkg
+    # Extract Debian payload (makepkg already unpacked .deb)
     if [[ ! -f data.tar.gz ]]; then
-        error "data.tar.gz not found. Makepkg did not extract the .deb correctly."
+        error "data.tar.gz not found (deb unpack failed)"
         return 1
     fi
 
-    # Extract payload into package root
     bsdtar -xf data.tar.gz -C "$pkgdir"
+
+    # -------------------------
+    # Arch compatibility fix
+    # -------------------------
+    if [[ -d "$pkgdir/usr/sbin" ]]; then
+        msg "Fixing /usr/sbin → /usr/bin"
+
+        mkdir -p "$pkgdir/usr/bin"
+        mv "$pkgdir/usr/sbin/"* "$pkgdir/usr/bin/" 2>/dev/null || true
+        rmdir "$pkgdir/usr/sbin" 2>/dev/null || true
+    fi
 }

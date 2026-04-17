@@ -1,7 +1,7 @@
 pkgbase = flox-bin
 	pkgdesc = The Deterministic Foundation for your SDLC
 	pkgver = 1.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flox.dev
 	install = flox-bin.install
 	arch = x86_64
