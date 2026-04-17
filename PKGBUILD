@@ -2,7 +2,7 @@
 
 pkgname="orca-slicer"
 pkgver=2.3.2
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -15,11 +15,13 @@ options=('!debug' '!emptydirs')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
 source=(
-  "OrcaSlicer-v${pkgver}.tar.gz::https://github.com/OrcaSlicer/OrcaSlicer/archive/refs/tags/v${pkgver}.tar.gz"
+  "OrcaSlicer-v${pkgver}.tar.gz::https://codeload.github.com/OrcaSlicer/OrcaSlicer/tar.gz/refs/tags/v${pkgver}"
   "orca-slicer.sh"
+  "deps-build-parallelism.patch"
   )
 sha256sums=('2c7eea7b1e3757011f2c9520dc1712d789b9182b5c276aba271bf814172b0a52'
-            'c1ca1fadba5f5c088af80f076f911c74fa594e8200cee7be65e4330f43909e7d')
+            'c1ca1fadba5f5c088af80f076f911c74fa594e8200cee7be65e4330f43909e7d'
+            'c94df90eb725b301b7732974b73f21014e34853727266204f8a74aab0acda432')
 
 
 build() {
@@ -29,10 +31,12 @@ build() {
   cd "$srcdir/OrcaSlicer-${pkgver}"
 
   export CMAKE_BUILD_PARALLEL_LEVEL=$(nproc)
-  # Limit build parallelism to free memory in GB / 2
-  if [ $CMAKE_BUILD_PARALLEL_LEVEL -gt $(awk '/MemFree/ { printf "%.0f\n", $2/1024/1024/2 }' /proc/meminfo) ]; then
-    export CMAKE_BUILD_PARALLEL_LEVEL=$(awk '/MemFree/ { printf "%.0f\n", $2/1024/1024/2 }' /proc/meminfo)
+  # Limit build parallelism to free memory in GB
+  if [ $CMAKE_BUILD_PARALLEL_LEVEL -gt $(awk '/MemFree/ { printf "%.0f\n", $2/1024/1024 }' /proc/meminfo) ]; then
+    export CMAKE_BUILD_PARALLEL_LEVEL=$(awk '/MemFree/ { printf "%.0f\n", $2/1024/1024 }' /proc/meminfo)
   fi
+
+  git apply ../deps-build-parallelism.patch
 
   # deps
   cmake -S deps \
@@ -43,7 +47,7 @@ build() {
     -DDEP_DOWNLOAD_DIR="$PWD/deps/DL_CACHE" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCOLORED_OUTPUT=ON
-  ninja -C deps/build
+  ninja -C deps/build -j1
 
   cmake \
     -S . \

@@ -1,0 +1,38 @@
+From 6265efe5d9a62e037e7c35d88007255ed089d695 Mon Sep 17 00:00:00 2001
+From: Angus Gratton <gus@projectgus.com>
+Date: Thu, 9 Apr 2026 16:08:28 +1000
+Subject: [PATCH] deps: Use CMAKE_BUILD_PARALLEL_LEVEL for dependency builds.
+
+If set when initial CMake is run, don't hard-code the number of CPUs for all the
+recursive child builds.
+---
+ deps/CMakeLists.txt | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/deps/CMakeLists.txt b/deps/CMakeLists.txt
+index a90de994db3..13bde6b3070 100644
+--- a/deps/CMakeLists.txt
++++ b/deps/CMakeLists.txt
+@@ -166,11 +166,18 @@ function(orcaslicer_add_cmake_project projectname)
+         endif ()
+     endif ()
+ 
+-    set(_gen "")
+-    set(_build_j "-j${NPROC}")
+     if (MSVC)
+-        set(_gen CMAKE_GENERATOR "${DEP_MSVC_GEN}" CMAKE_GENERATOR_PLATFORM "${DEP_PLATFORM}")
+-        set(_build_j "/m")
++      set(_gen CMAKE_GENERATOR "${DEP_MSVC_GEN}" CMAKE_GENERATOR_PLATFORM "${DEP_PLATFORM}")
++    else()
++      set(_gen "")
++    endif()
++
++    if ($ENV{CMAKE_BUILD_PARALLEL_LEVEL})
++      set(_build_j "")  # assume environment will control --build parallel setting
++    elseif(MSVC)
++      set(_build_j "/m")
++    else()
++      set(_build_j "-j${NPROC}")
+     endif ()
+ 
+ if (NOT IS_CROSS_COMPILE OR NOT APPLE)
