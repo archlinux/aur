@@ -2,7 +2,7 @@
 pkgname=flox-bin
 pkgver=1.11.2
 pkgrel=1
-pkgdesc="Flox installer Developer environments you can take with you. It provides access to the largest, freshest collection of Open Source packages anywhere. For developers, flox makes it easy to build your own and share your own packages across your machines or team. Packages built with flox build remotely, work on any machine with flox, and automatically stay fresh.."
+pkgdesc="The Deterministic Foundation for your SDLC"
 arch=('x86_64' 'aarch64')
 url="http://flox.dev"
 license=('custom:flox')
