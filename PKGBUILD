@@ -1,7 +1,7 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
 pkgver=0.8.2.r4.gb061930
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Firstp1ck/Pacsea"
