@@ -43,7 +43,7 @@ if [ ! -e "$state_dir/config.json" ]; then
 fi
 
 if [ ! -e "$state_dir/python" ]; then
-    ln -s /usr/lib/marmalade/python "$state_dir/python"
+    ln -sf /usr/lib/marmalade/python "$state_dir/python"
 fi
 
 cd "$state_dir" || exit 1
@@ -60,7 +60,7 @@ if [ ! -e "$state_dir/config.json" ]; then
 fi
 
 if [ ! -e "$state_dir/python" ]; then
-    ln -s /usr/lib/marmalade/python "$state_dir/python"
+    ln -sf /usr/lib/marmalade/python "$state_dir/python"
 fi
 
 cd "$state_dir" || exit 1
@@ -77,7 +77,7 @@ if [ ! -e "$state_dir/config.json" ]; then
 fi
 
 if [ ! -e "$state_dir/python" ]; then
-    ln -s /usr/lib/marmalade/python "$state_dir/python"
+    ln -sf /usr/lib/marmalade/python "$state_dir/python"
 fi
 
 cd "$state_dir" || exit 1
