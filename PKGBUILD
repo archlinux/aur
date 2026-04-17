@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=peci-pcie-git
-pkgver=r53.ebd2aa8
+pkgver=r54.de355fd
 pkgrel=1
 pkgdesc="The peci-pcie application uses the CPU PECI interface to get PCIe Device information for the system and shares it on D-Bus."
 url="https://github.com/openbmc/peci-pcie"
@@ -10,15 +10,16 @@ license=('Apache-2.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(
-    boost-libs
-    gcc-libs
     glibc
+    libgcc
+    libstdc++
     systemd-libs
     #AUR
     libpeci-git
     sdbusplus-git
 )
 makedepends=(
+    boost-libs
     boost
     cmake
     git
