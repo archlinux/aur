@@ -1,0 +1,5 @@
+[task-spooler-cpu]
+source = "github"
+github = "justanhduc/task-spooler"
+use_latest_release = true
+prefix = "v"
