@@ -1,12 +1,13 @@
 # Maintainer: robertxy <prfiredragon at gmail dot com>
 
 pkgname='omada-controller-rxy'
-pkgver=6.1.0.19
+pkgver=6.2.0.17
 pkgrel=1
 pkgdesc='Omada SDN Controller'
 _basepkgname='Omada_Network_Application'
-_basepkgpath='upload/software/2026/202601/20260121'
+_basepkgpath='upload/software/2026/202604/20260402'
 _baseos='linux_x64'
+_last_code='20260331104736'
 arch=('x86_64' 'aarch64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
 license=('GPL')
@@ -15,10 +16,10 @@ makedepends=('git')
 conflicts=('omada-sdn-controller' 'omada-controller')
 install=omada-controller.install
 source=(
-    "https://static.tp-link.com/${_basepkgpath}/${_basepkgname}_v${pkgver}_${_baseos}_20260117100056.tar.gz"
+    "https://static.tp-link.com/${_basepkgpath}/${_basepkgname}_v${pkgver}_${_baseos}_${_last_code}.tar.gz"
     "git+https://github.com/prfiredragon/omada-controller-scripts.git"
 )
-sha256sums=('885eb2aeaed16b300e618297af2132d4e015c7f9bc5edce2ba81b8cdb181e126'
+sha256sums=('67143e24c3bcf392ca026c26bf469452dc59d078aee4bdf9297c8634db9b8927'
             'SKIP')
 
 package() {
@@ -57,6 +58,7 @@ package() {
     cd "${srcdir}/omada-controller-scripts"
     install -dm 755 "${pkgdir}/usr/lib/systemd/system"
     install -m 644 "omada-controller.service" "${pkgdir}/usr/lib/systemd/system/"
+    systemctl daemon-reload
 
     # Install sysusers configuration.
     install -dm 755 "${pkgdir}/usr/lib/sysusers.d"
