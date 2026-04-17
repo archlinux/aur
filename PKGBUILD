@@ -1,6 +1,6 @@
 # Maintainer: Professor Lee <https://github.com/professor-lee>
 pkgname=cnmplayer-git
-pkgver=0.3.0.r3.7e329c1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A terminal-based Netease cloud music player with spectrum visualizer, lyrics support. (Development version)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=(
   'ttf-jetbrains-mono-nerd: Recommended monospace font'
 )
 # 必须添加 git 以便拉取仓库
-makedepends=('cargo' 'cmake' 'pkg-config' 'git')
+makedepends=('cargo' 'cmake' 'pkgconf' 'git')
 provides=("cnmplayer")
 conflicts=("cnmplayer")
 options=(!lto)
