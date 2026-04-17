@@ -1,6 +1,6 @@
 pkgbase = prismlauncher-themes-git
 	pkgdesc = PrismLauncher themes from their official github
-	pkgver = 2025.06.06_1749223820.r0.g8832f3d
+	pkgver = 2025.06.06_1749223820.r2.g3b87732
 	pkgrel = 1
 	url = https://github.com/PrismLauncher/Themes
 	install = themes.install
