@@ -14,7 +14,7 @@ pkgbase = openchrom-bin
 	source = https://products.lablicate.com/openchrom/1.6.13/openchrom_linux.x86_64_1.6.13.tar.gz
 	source = openchrom.desktop
 	source = openchrom.png
-	sha256sums = null
+	sha256sums = ea1b93bdd765329261ba7e4333c3482aad154bedc52e1c5b2c2eb16022007fd2
 	sha256sums = 700aaa0a38757cd12d389598746a375df8e53c133ea7e73c59b5d3f252b336f1
 	sha256sums = 5668c08f75ec9ad00123e857b03502291cea1aaaf69e6641067386e17486ef7f
 
