@@ -3,13 +3,17 @@ post_install() {
   echo "==> gamepad-osk installed!"
   echo ""
   echo "  Quick start:  gamepad-osk"
-  echo "  Config:       ~/.config/gamepad-osk/config.toml (auto-created on first run)"
+  echo "  Config:       ~/.config/gamepad-osk/config (auto-created on first run)"
   echo "  All options:  gamepad-osk --help"
   echo ""
   echo "  Systemd user service:"
   echo "    systemctl --user enable --now gamepad-osk"
   echo ""
   echo "  Toggle visibility:  gamepad-osk --toggle"
+  echo ""
+  echo ":: Your user must be in the 'input' group for gamepad access:"
+  echo "   sudo usermod -aG input \$USER"
+  echo ":: Log out and back in for the group change to take effect."
   echo ""
 }
 
