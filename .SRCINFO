@@ -1,7 +1,7 @@
 pkgbase = ha-localizer-bin
 	pkgdesc = Provide timezone and geolocation information to Linux systems via Home Assistant
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ellsclytn/ha-localizer
 	arch = x86_64
 	arch = aarch64

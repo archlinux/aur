@@ -1,7 +1,7 @@
 # Maintainer: Ellis Clayton <ellis@ellis.codes>
 pkgname=ha-localizer-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Provide timezone and geolocation information to Linux systems via Home Assistant"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ellsclytn/ha-localizer"
@@ -24,7 +24,7 @@ sha256sums_x86_64=('6cab3a92c6889362d5373bd4a53c13646c1a5fc6576a2d9744fe4a645b76
 sha256sums_aarch64=('f06f56b98095ba09354fdb2f28d259a4d8fee9eac206de3603d985632626c862' '4edf46e2556ab76bfa9e2530b65382f938ac8697480ffeb98ae4af5e8f4a45df')
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname%-bin}-${pkgver}"
 
     install -Dm644 dist/config/ha-localizer.toml "${pkgdir}/etc/ha-localizer.toml"
 
