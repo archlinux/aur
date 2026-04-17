@@ -3,10 +3,11 @@
 # Maintainer: Duncan <duncan@mac-vicar.eu>
 # Co-Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 org=zed-industries
+npmorg=agentclientprotocol
 realname=claude-agent-acp
 pkgname=$realname
 pkgver=0.29.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Use Claude Agent from any ACP client such as Zed!"
 arch=('x86_64')
 url="https://github.com/$org/$realname"
@@ -28,6 +29,6 @@ build() {
 
 package() {
   npm install -g --prefix "${pkgdir}/usr" \
-    "${srcdir}/${realname}-${pkgver}/${org}-${realname}-${pkgver}.tgz"
+    "${srcdir}/${realname}-${pkgver}/${npmorg}-${realname}-${pkgver}.tgz"
   ln -s claude-agent-acp "${pkgdir}/usr/bin/claude-code-acp"
 }
