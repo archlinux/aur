@@ -1,10 +1,10 @@
 pkgbase = koka-bin
 	pkgdesc = A strongly typed functional-style language with effect types and handlers
-	pkgver = 3.1.2
+	pkgver = 3.2.3
 	pkgrel = 1
 	url = https://github.com/koka-lang/koka
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	depends = gcc
 	depends = make
 	optdepends = clang: for C backend compiler
@@ -14,9 +14,8 @@ pkgbase = koka-bin
 	optdepends = mono: for C# target
 	provides = koka
 	conflicts = koka
-	noextract = koka-v3.1.2-linux-x64.tar.gz
 	options = !strip
-	source = https://github.com/koka-lang/koka/releases/download/v3.1.2/koka-v3.1.2-linux-x64.tar.gz
-	sha256sums = a62f81b5147c1cd1c41b17ef9a986282839f78d1a4e22baedfbcffc211b3b3a6
+	source = https://github.com/koka-lang/koka/releases/download/v3.2.3/koka-v3.2.3-linux-x64.tar.gz
+	sha256sums = e82a4b497f1f8791ee171d06c45293ba16432e485d645ddd9688bafa6ccde5a5
 
 pkgname = koka-bin

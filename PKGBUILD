@@ -1,14 +1,15 @@
-# Maintainer: apropos <jj@toki.la>
+# Maintainer: qwjyh <urataw421@gmail.com>
+# Contributor: apropos <jj@toki.la>
 # Contributor: TwoFinger
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=koka-bin
-pkgver=3.1.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="A strongly typed functional-style language with effect types and handlers"
 arch=(x86_64)
 url="https://github.com/koka-lang/koka"
-license=(Apache)
+license=(Apache-2.0)
 options=('!strip')
 depends=(gcc make)
 optdepends=(
@@ -24,10 +25,13 @@ _dlfilename="koka-v${pkgver}-linux-x64.tar.gz"
 source=(
   "https://github.com/koka-lang/koka/releases/download/v${pkgver}/${_dlfilename}"
 )
-noextract=("${_dlfilename}")
-sha256sums=('a62f81b5147c1cd1c41b17ef9a986282839f78d1a4e22baedfbcffc211b3b3a6')
+sha256sums=('e82a4b497f1f8791ee171d06c45293ba16432e485d645ddd9688bafa6ccde5a5')
 
 package() {
-  install -d "${pkgdir}/usr"
-  tar -xzf "${_dlfilename}" -C "${pkgdir}/usr"
+  cd $srcdir
+  install -Dm755 "bin/koka" "${pkgdir}/usr/bin/koka"
+  install -d "${pkgdir}/usr/lib"
+  cp -r lib/koka "${pkgdir}/usr/lib/"
+  install -d "${pkgdir}/usr/share/koka"
+  cp -r "share/koka" "${pkgdir}/usr/share/"
 }
