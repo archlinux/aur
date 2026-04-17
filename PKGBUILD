@@ -1,7 +1,7 @@
 # Maintainer: daedaevibin <daedaevibin@ik.me>
 pkgname=clippy-gemini
-pkgver=0.5.2
-pkgrel=3
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="Clippy"
 arch=('x86_64')
 url="https://github.com/daedaevibin/clippy"
@@ -21,7 +21,7 @@ package() {
   cd "$srcdir/clippy"
   install -d "$pkgdir/opt/$pkgname"
   cp -r out/Clippy-linux-x64/* "$pkgdir/opt/$pkgname"
-  
+
   # Ensure assets are present
   install -d "$pkgdir/opt/$pkgname/assets"
   if [ -d "assets" ]; then
