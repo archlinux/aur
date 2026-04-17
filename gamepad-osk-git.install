@@ -11,6 +11,10 @@ post_install() {
   echo ""
   echo "  Toggle visibility:  gamepad-osk --toggle"
   echo ""
+  echo ":: Your user must be in the 'input' group for gamepad access:"
+  echo "   sudo usermod -aG input \$USER"
+  echo ":: Log out and back in for the group change to take effect."
+  echo ""
 }
 
 post_upgrade() {
