@@ -73,6 +73,16 @@ package() {
 
   # Install Python package
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+ # Create wrapper script to set NODE_PATH for browser tools
+ rm "$pkgdir/usr/bin/hermes"
+ cat > "$pkgdir/usr/bin/hermes" << 'EOF'
+ #!/bin/bash
+ export NODE_PATH="/usr/share/hermes-agent/node_modules${NODE_PATH:+:$NODE_PATH}"
+ export PATH="/usr/share/hermes-agent/node_modules/.bin:$PATH"
+ exec python -m hermes_cli "$@"
+ EOF
+ chmod 755 "$pkgdir/usr/bin/hermes"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Install optional submodule if present
