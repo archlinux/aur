@@ -1,0 +1,4 @@
+[xchpst]
+source = "git"
+git = "https://gitlab.com/init-tools/xchpst.git"
+prefix = "v"
