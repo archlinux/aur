@@ -1,0 +1,7 @@
+type            = process
+command         = /usr/bin/dnss -c /etc/dnss.conf
+smooth-recovery = true
+logfile         = /var/log/dinit/dnss.log
+depends-on      = udevd
+depends-on      = pre-network.target
+before          = network.target

@@ -1,0 +1,12 @@
+pkgbase = dnss-dinit
+	pkgdesc = Dinit script for dnss.
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://codeberg.org/zacoons/dnss
+	arch = any
+	license = Unlicense
+	depends = dnss
+	source = dnss.service
+	b2sums = SKIP
+
+pkgname = dnss-dinit
