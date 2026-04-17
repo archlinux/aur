@@ -1,7 +1,49 @@
 ## Changelog
-* 2b49131fb821d9029514945bf13209c2917dede1 chore(deps): bump protobufjs from 7.5.4 to 7.5.5 in /ui (#5062) (#5064)
-* b8ee74b159ebe78fe9f3065e42ad0172e8f8d575 chore(deps): bump protocol-buffers-schema from 3.6.0 to 3.6.1 in /ui (#5059) (#5061)
-* edcc88f9d1de1be881b8a0a659568336f28bf072 docs: add v1.20.3 release notes (#5019) (#5021)
+* 49d94a53193c7de94872908ae048f9491a2cf102 Add per-request timeout for debug info upload handler (#5056)
+* 4a43a854e746d94ecd9da3e4d6809049caeccf3d Add release notes for v1.20 (#4996)
+* 3ec501ddead5ef9ddbf7d3c9387d19d804fc3a8e Cleanup dev/tools/v2 and references (#5040)
+* 950f9ee628d5a774f256ddacade93d41dbf3b01c chore(deps): bump axios (#5045)
+* 6193166e38690940ba8c5277f6240c63d6ed7d42 chore(deps): bump go.opentelemetry.io/otel to v1.43.0 across all modules (#5037)
+* 1ecd1708cb6cc929dd5d5f37208d3589295ea04f chore(deps): bump lodash from 4.17.23 to 4.18.1 in /ui (#4974)
+* ecd7045c4109020d39651811b2a122d1466bf34a chore(deps): bump protobufjs from 7.5.4 to 7.5.5 in /ui (#5062)
+* 804f590e8968b18408b2e7ab5886a84e7885b320 chore(deps): bump protocol-buffers-schema from 3.6.0 to 3.6.1 in /ui (#5059)
+* c4cff3a87c3cc8a75142ba7ff620059e79af62bb chore(deps): bump rack-session (#5003)
+* 9dc65a89b828a2465df912dbe8bd8599071dafeb chore(deps): bump rack-session in /examples/tracing/ruby (#5011)
+* 741073e36830fd67a826d5764ee2b6252b9c1ed2 chore(deps): update dependency vite to v8.0.5 [security] (#4994)
+* 80d8cbe651b069c63995743f81b0f9d565fe8c42 chore(deps): update module github.com/go-jose/go-jose/v4 to v4.1.4 [security] (#4984)
+* 56b2bf9882dd18d1ebff4d04aa2d59d0507af139 chore(renovate): raise prConcurrentLimit to 239 (#5063)
+* faac8703131b0209d5dd8ef0751715c0b946542b chore: bump Helm chart to v1.20.2 (#5013)
+* 846a339286a1cdd04620e81679e12370a7f31c17 chore: bump Helm chart to v1.20.3 (#5022)
+* aadd5159c87d4b503fa60e5b7b999a20911daef6 chore: log HTTP protocol version in per-request logs (#5014)
+* fa655d4162614d382c91e79120f72e3349b34dea chore: replace broken husky pre-commit hook with UI linter (#5000)
+* ef8a801e2d4fa13d1fd31a3bf5ef66330a710e55 chore: unblock bump for github.com/prometheus/prometheus (#5053)
+* 77b39b147fd3d0161502fda9a88367a249543c76 chore: update Go toolchain to 1.25.9 (#5015)
+* 55e4ca19e16034600d72d55de524d6a599fb14e0 ci: add test runs without -race -cover to the matrix (#5004)
+* f82444bc356c388e464ed606c2b8e3b4d302204e ci: split integration tests into a separate CI job (#5009)
+* 042738280404d18a86666244ac94b7b5385ddff3 docs(proto): clarify HeatmapSlot timestamp semantics (#4986)
+* 8dbabce8507ba0015e569540cb6bdf03caddaca1 docs(v2): fix migration guide prereq check and port-forward race (#5044)
+* ad88b7ef4f0be1f5c05170b51f7596b8ad8117a9 docs: add security patch check to release process (#5012)
+* c7fe25e6e843826f60d804da0a1e811442312890 docs: add v1.19.2 release notes (#5008)
+* 08cbe93a9e2ec24c096baa34a36541306c995b97 docs: add v1.19.3 release notes (#5018)
+* 865dfe334069a0074e24112d9e844f377aa64b78 docs: add v1.20.1 and v1.20.2 release notes (#5006)
+* 07966575fc608eab1c5eb8d5956e133fddf9cb18 docs: add v1.20.3 release notes (#5019)
+* 742a4a9b59b7770ac0f556080bc5969e47ceb2b0 docs: add v1.20.4 release notes (#5065)
+* ad352840a1638bf20832122bd2acb12aeacf756b docs: fix Rust SDK documentation and examples for v2.0.0 (#4972)
+* 5eb4b919ec16f72f52b5a57b4bc3ab325f803689 feat(debuginfo): rewrite upload API to work over HTTP/1.1 (#5046)
+* c626a69ba75531d360522b745399dd01d17691f3 feat(querier): add DOT format support to SelectMergeStacktraces Connect API (#5047)
+* 87ddf302e1b7bdaf9a696c8a94df3587914ee7ae feat(query-frontend): log user_agent on query log lines (#5042)
+* 9d24f59cc51e51be8f57183cc3e54fca1f0d7995 feat(v2): move default storage paths under ./data/v2/ (#4978)
+* be4dd48182ca2b01e4231d1aaedf9d9149d36909 fix pkg/test/integration.TestStatusCode (#5058)
+* 0b317bd71108746b303062d9db29e4e10e3166d2 fix(compactor): Indefinitely hanging within the blocks cleaner after receiving a SIGTERM (#4992)
+* e2e01c0daecb1192c13694e79dcd86ca6670c7fc fix(profilecli): preserve label name casing in table output (#4989)
+* e264a034848f8c912da631ae50d519556d9ebf88 fix(scheduler): replace bufconn with TCP listener to fix flaky test (#5052)
+* 15c7dba3bbaa5aa6e7d9b94255084416088988d5 fix(segmentwriter): tolerate ErrServerStopped in client test suite (#4977)
+* f223393725845b83c27a5b1586eacf05cb0bcc1c fix(ui): Align time series line graph with actual data points (#5041)
+* 6785ea8dec1fc4990142d19355f749c1b0bf15f3 fix(ui): Fix file naming collision when building UI on MacOS (#5055)
+* 9cd4ab0a12ca606f67a83ac1104ff7fb7f16904e fix(ui): bump dompurify, immutable, brace-expansion to fix Trivy CVEs (#5070)
+* 6106082b3ecd1c49926122ecb828e10206b3adab helm(refactor): remove redundant adaptive-placement default (#5057)
+* 0b0689b418e636e8d9d8f0ffb1021ac2bb38c660 helm: add HTTPRoute support (#4983)
+* 5bcc1db7014f5286b8e69c9843daca36035c7e16 helm: add pyroscope.rbac.create toggle (#5067)
 
 As always, feedback is more than welcome, feel free to open issues/discussions.
 You can reach out to the team using:
@@ -16,7 +58,7 @@ You can reach out to the team using:
 - [grafana/pyroscope](https://hub.docker.com/r/grafana/pyroscope/tags)
 
 ```bash
-  docker pull docker.io/grafana/pyroscope:1.20.4
+  docker pull docker.io/grafana/pyroscope:1.21.0
 ```
 
 
