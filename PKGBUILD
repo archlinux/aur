@@ -2,7 +2,7 @@
 _pkgname=GPU-T
 pkgname=${_pkgname,,}-git
 pkgdesc='GPU-T is a modern desktop utility built with .NET and Avalonia UI designed to provide detailed information about your video card and GPU'
-pkgver=0.1.4.r1.gdef2aee
+pkgver=0.1.4.r2.g6a003bd
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/lseurttyuu/${_pkgname}"
@@ -40,11 +40,11 @@ build() {
     export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
     export DOTNET_NOLOGO=1
 
-    # dotnet publish Nvapi/GPU-T.Nvapi.csproj --configuration Release --no-restore \
-    #     --runtime linux-x64 \
-    #     --output ./publish_output \
-    #     -p:DebugSymbols=false \
-    #     -p:DebugType=None
+    dotnet publish Nvapi/GPU-T.Nvapi.csproj --configuration Release --no-restore \
+        --runtime linux-x64 \
+        --output ./publish_output \
+        -p:DebugSymbols=false \
+        -p:DebugType=None
 
     dotnet publish ${_pkgname}.csproj --configuration Release --no-restore \
         --runtime linux-x64 \
@@ -63,7 +63,7 @@ package() {
     install -Dm644 "Assets/app_icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/gpu_t.png"
 
     install -Dm755 publish_output/GPU-T $pkgdir/usr/lib/$_pkgname/$_pkgname
-    # install -Dm755 publish_output/GPU-T.Nvapi $pkgdir/usr/lib/$_pkgname/$_pkgname.Nvapi
+    install -Dm755 publish_output/GPU-T.Nvapi $pkgdir/usr/lib/$_pkgname/$_pkgname.Nvapi
     install -Dm644 publish_output/*.{dll,json} -t "$pkgdir/usr/lib/$_pkgname/"
     install -Dm755 publish_output/*.so -t "$pkgdir/usr/lib/$_pkgname/"
     install -d "$pkgdir/usr/bin"
