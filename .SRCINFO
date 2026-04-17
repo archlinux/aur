@@ -1,6 +1,6 @@
 pkgbase = vns-manjaro-toolbox
 	pkgdesc = Lightweight PyQt6 maintenance tool for Manjaro Linux
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/vnsgzx/vns-manjaro-toolbox
 	arch = any
