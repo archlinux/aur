@@ -16,7 +16,6 @@ sha256sums=('SKIP')
 #}
 
 package() {
-    cd "$srcdir/ravi-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 portfolio.py "$pkgdir/usr/bin/ravikiran"
 }
-
