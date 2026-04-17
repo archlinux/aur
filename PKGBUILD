@@ -1,6 +1,6 @@
 # Maintainer: MCB-SMART-BOY <2720838051@qq.com>
 pkgname=neve-git
-pkgver=3.0.0.r147.ge41dec6
+pkgver=3.1.0.r148.gdc582a6
 pkgrel=1
 pkgdesc="Standalone language for system configuration, builds, and shell automation"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd Neve
-    printf "3.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "3.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
