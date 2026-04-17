@@ -1,0 +1,22 @@
+pkgbase = supremum-git
+	pkgdesc = Simple, lightweight, but powerful AI code editor for the AI era.
+	pkgver = r172.d2c23d4
+	pkgrel = 1
+	url = https://github.com/HybridTalentComputing/Supremum
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = rustup
+	makedepends = bun
+	makedepends = gendesk
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = supremum=r172.d2c23d4
+	conflicts = supremum
+	source = supremum.git::git+https://github.com/HybridTalentComputing/Supremum.git
+	sha256sums = SKIP
+
+pkgname = supremum-git
