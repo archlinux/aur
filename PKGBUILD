@@ -1,6 +1,6 @@
 # Maintainer: veggixmaas
 pkgname=vns-manjaro-toolbox
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Lightweight PyQt6 maintenance tool for Manjaro Linux"
 arch=('any')
