@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellyfin-desktop-git
-pkgver=0.r408.bdd2dc0
-pkgrel=2
+pkgver=0.r448.4d3f3e2
+pkgrel=1
 epoch=1
 license=('GPL-2.0-only')
 pkgdesc="Jellyfin Desktop Client"
@@ -10,7 +10,14 @@ url="https://github.com/jellyfin/jellyfin-desktop"
 depends=(
     'cef'
     'jellyfin-desktop-libmpv-git'
+    'libglvnd'
+    'libxcb'
+    'libxkbcommon'
+    'libxkbcommon-x11'
     'systemd-libs'
+    'wayland'
+    'xcb-util-cursor'
+    'xdg-utils'
 )
 makedepends=(
     'cmake'
