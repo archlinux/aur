@@ -7,6 +7,7 @@ pkgbase = voix
 	license = OSL-3.0
 	makedepends = cmake>=4.2
 	makedepends = clang
+	makedepends = llvm
 	makedepends = ninja
 	makedepends = pkgconf
 	makedepends = git

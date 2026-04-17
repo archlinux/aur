@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/Veridian-Zenith/Voix"
 license=('OSL-3.0')
 depends=('pam' 'libcap')
-makedepends=('cmake>=4.2' 'clang' 'ninja' 'pkgconf' 'git' 'yaml-cpp' 'ccache')
+makedepends=('cmake>=4.2' 'clang' 'llvm' 'ninja' 'pkgconf' 'git' 'yaml-cpp' 'ccache')
 backup=('etc/pam.d/voix' 'etc/voix.conf')
 source=("git+https://github.com/Veridian-Zenith/Voix.git")
 sha256sums=('SKIP')
