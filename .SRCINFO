@@ -9,7 +9,6 @@ pkgbase = tint2-patched-git
 	license = GPL
 	makedepends = cmake
 	makedepends = git
-	depends = gtk2
 	depends = gtk3
 	depends = imlib2
 	depends = startup-notification
