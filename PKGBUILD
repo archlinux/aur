@@ -5,7 +5,7 @@
 pkgname=cachyos-downgrade-git
 pkgver=r8.4f661a9
 pkgrel=1
-pkgdesc="Script for downgrading one or more packages to a version in your cache or the C.L.A. or A.L.A."
+pkgdesc="Script for downgrading packages to versions in your cache or the C.L.A. or A.L.A."
 arch=('any')
 url="https://gitlab.com/cscs/cachyos-downgrade"
 license=('GPL')
