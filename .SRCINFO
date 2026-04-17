@@ -1,10 +1,11 @@
 pkgbase = chromium-clang-avx2-bin
 	pkgdesc = Chromium unstable compiled w/ Clang, PGO, ThinLTO, AVX2 (No Sync, WebRTC, Widevine)
 	pkgver = 149.0.7785.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RobRich999/Chromium_Clang
 	arch = x86_64
 	license = BSD
+	makedepends = rpm-tools
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = cairo
