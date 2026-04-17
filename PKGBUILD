@@ -1,6 +1,6 @@
 # Maintainer: cyprien <ton-email>
 pkgname=hugvi
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A note-taking app for programmers with markdown syntax (Pre-built binary)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('hugvi')
 
 # On utilise le nouveau tag v-${pkgver}
 source_x86_64=("${url}/releases/download/v-${pkgver}/Hugvi_${pkgver}_amd64.deb")
-sha256sums_x86_64=('3bee8132c357325d88eed77906a91d2003d34e6a354c564158ac8cb46e34e6b7')
+sha256sums_x86_64=('4789f9197fce7f1d6712d6cbcd120184c8a9d9f281c41b1853bf7e8dcc03c29c')
 
 prepare() {
   # Extraction simplifiée puisqu'on n'a qu'une archi
