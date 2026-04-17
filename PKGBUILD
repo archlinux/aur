@@ -14,7 +14,7 @@ conflicts=('dunst' 'mako' 'deadd-notification-center')
 install='ember-notify.install'
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('2633da90d653d31a3c6bad949f22995de87e1aa09ffb84ffa5d63301d56889f8')
 
 prepare() {
   cd "$pkgname-$pkgver"
