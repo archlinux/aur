@@ -1,0 +1,16 @@
+pkgbase = diom-cli
+	pkgdesc = The Diom CLI (components platform)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://diom.svix.com
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	options = !lto
+	source = https://github.com/svix/diom/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 5f91bd444d7147747cfb7cddebc940b0f2f9faf1c12a411072f081b89cfffba6
+
+pkgname = diom-cli
