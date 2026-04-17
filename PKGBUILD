@@ -1,11 +1,11 @@
 # Maintainer: Campbell Jones <serebit at archlinux dot org>
 
 pkgname=vkcheck-git
-pkgver=r44.d50f982
+pkgver=r60.1e962b6
 pkgrel=1
 pkgdesc='Display extensions supported by Vulkan implementations'
 arch=('x86_64' 'armv7h' 'aarch64')
-url="https://codeberg.org/serebit/waycheck"
+url="https://codeberg.org/serebit/vkcheck"
 license=('Apache-2.0')
 depends=(
     'glfw'
@@ -25,8 +25,6 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname-$pkgver.tar.gz"
-        "$pkgname-$pkgver.patch")
 source=("$pkgname"::'git+https://codeberg.org/serebit/vkcheck.git')
 b2sums=('SKIP')
 
@@ -36,10 +34,7 @@ pkgver() {
 }
 
 build() {
-	arch-meson "$pkgname" build \
-	    -Dimgui-backend='glfw' \
-	    --wrap-mode default
-
+	arch-meson "$pkgname" build --wrap-mode default
 	meson compile -C build
 }
 
