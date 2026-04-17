@@ -1,0 +1,11 @@
+pkgbase = pastelo-git
+	pkgdesc = Script to leverage various pastebin services like dpaste or 0x0.st
+	pkgver = r20.b1f5060
+	pkgrel = 1
+	url = https://gitlab.com/cscs/pastelo
+	arch = any
+	license = GPL
+	source = git+https://gitlab.com/cscs/pastelo.git
+	sha256sums = SKIP
+
+pkgname = pastelo-git
