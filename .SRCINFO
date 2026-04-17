@@ -1,6 +1,6 @@
 pkgbase = intel-metrics-discovery-git
 	pkgdesc = User mode library that provides access to GPU performance data
-	pkgver = 1.14.184.r0.g5c14a07
+	pkgver = 1.14.185.r0.g6752a06
 	pkgrel = 1
 	url = https://github.com/intel/metrics-discovery
 	arch = x86_64
