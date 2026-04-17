@@ -1,4 +1,6 @@
 [python-hwdata]
-source = "git"
-git = "https://github.com/xsuchy/python-hwdata.git"
-prefix = "python-hwdata-"
+source = "github"
+github = "xsuchy/python-hwdata"
+use_max_tag = true
+from_pattern = '^python-hwdata-([\d.]+)-\d+$'
+to_pattern = '\1'
