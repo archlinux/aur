@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=drill-search
-pkgver=71
+pkgver=72
 pkgrel=1
 epoch=1
 pkgdesc="Very fast file searcher without indexing"
@@ -25,7 +25,7 @@ conflicts=("$pkgname-cli" "$pkgname-gtk")
 source=("Drill-$pkgver.tar.gz::https://github.com/yatima1460/Drill/archive/refs/tags/release-$pkgver.tar.gz"
         'drill.sh'
         'drill.desktop')
-sha256sums=('780c5bf5f19b70bc9244f796d8f0f3d3c3441860db31358f274c3353d4a95109'
+sha256sums=('43dd879d027b744a66cfe2434f013955e500164883bb54123edce6d78773775d'
             '255aec49f9d963f712313474a17eb6225c4da0ecbdf0a7c2eae178272224fb6c'
             '6f3aeb8c5b0a61cf8e7ca419879885e7fb901abc3fbd601d3a267fb1b42cc988')
 
@@ -40,7 +40,7 @@ prepare() {
 
 build() {
   cd "Drill-release-$pkgver"
-  python -m build --wheel --skip-dependency-check --no-isolation
+  python -m build --skip-dependency-check --wheel --no-isolation
 }
 
 #check() {

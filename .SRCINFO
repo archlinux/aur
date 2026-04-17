@@ -1,6 +1,6 @@
 pkgbase = drill-search
 	pkgdesc = Very fast file searcher without indexing
-	pkgver = 71
+	pkgver = 72
 	pkgrel = 1
 	epoch = 1
 	url = https://drill.software
@@ -15,10 +15,10 @@ pkgbase = drill-search
 	depends = python-sortedcontainers
 	conflicts = drill-search-cli
 	conflicts = drill-search-gtk
-	source = Drill-71.tar.gz::https://github.com/yatima1460/Drill/archive/refs/tags/release-71.tar.gz
+	source = Drill-72.tar.gz::https://github.com/yatima1460/Drill/archive/refs/tags/release-72.tar.gz
 	source = drill.sh
 	source = drill.desktop
-	sha256sums = 780c5bf5f19b70bc9244f796d8f0f3d3c3441860db31358f274c3353d4a95109
+	sha256sums = 43dd879d027b744a66cfe2434f013955e500164883bb54123edce6d78773775d
 	sha256sums = 255aec49f9d963f712313474a17eb6225c4da0ecbdf0a7c2eae178272224fb6c
 	sha256sums = 6f3aeb8c5b0a61cf8e7ca419879885e7fb901abc3fbd601d3a267fb1b42cc988
 
