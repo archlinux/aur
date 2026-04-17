@@ -1,6 +1,6 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
-pkgver=0.8.2.r0.g7e204ee
+pkgver=0.8.2.r4.gb061930
 pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
 arch=('x86_64' 'aarch64')
@@ -45,7 +45,7 @@ provides=('pacsea')
 source=()
 sha256sums=()
 
-# Custom source function to clone with sparse checkout, excluding Images/ and Release-docs/
+# Custom source function to clone with sparse checkout (skip docs, CI, and dev-only paths).
 fetch_source() {
   cd "$srcdir" || exit 1
   if [ ! -d Pacsea ]; then
@@ -54,7 +54,13 @@ fetch_source() {
   cd Pacsea || exit 1
   git pull --tags origin main 2>/dev/null || true
   git sparse-checkout init --no-cone
-  git sparse-checkout set '/*' '!/Images' '!/Release-docs' '!/dev' '!/.git' '!/.github'
+  git sparse-checkout set '/*' \
+    '!/Images' '!/Release-docs' '!/dev' '!/.github' '!/.cursor' \
+    '!/AGENTS.md' '!/CLAUDE.md' '!/CHANGELOG.md' '!/CODE_OF_CONDUCT.md' \
+    '!/CONTRIBUTING.md' '!/SECURITY.md' \
+    '!/deny.toml' '!/rustfmt.toml' '!/clippy.toml' '!/Makefile' '!/.gitleaks.toml' \
+    '!/PKGBUILD-bin' '!/PKGBUILD-git' '!/pacsea.code-workspace' \
+    '!/.gitattributes' '!/.gitignore'
   git checkout 2>/dev/null || true
 }
 
