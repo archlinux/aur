@@ -1,0 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/log/mautrix-telegram 0700 mautrix-telegram mautrix-telegram
+d /var/lib/mautrix-telegram 0700 mautrix-telegram mautrix-telegram
+
