@@ -1,9 +1,8 @@
 # Maintainer: Lia Bertran Roca <lia@bertran.xyz>
-
 _pkgname=neo4j-desktop
 pkgname=neo4j-desktop-2
 pkgver=2.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for managing local and remote Neo4j Graph databases"
 arch=('x86_64')
 url=http://neo4j.org/
