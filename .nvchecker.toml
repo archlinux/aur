@@ -1,0 +1,3 @@
+[legion-gui]
+source = "git"
+git = "https://gitlab.com/kalilinux/packages/legion.git"
