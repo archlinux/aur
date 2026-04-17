@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=volt-gui
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A graphical user interface for configuring GPU related environment variables and more for Linux gaming."
 arch=('any')
@@ -26,7 +26,7 @@ install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('8c8aa79a47d3fe0473ec0fef461bd36caac5865457956477ce968fa335b1fe8f'
+sha256sums=('37a273cf66bd825c607065e6328d281e125589d2b4d1cebeebd4dc31800cb1c1'
             '1581606e978f09077743a7b3001498f99b4e141ca0eb229e8bac4d63ddf6692b'
             '9852a7ff299da58c8b8be0439d8560350a812f8a004eab44481433cec7fa398a')
 
