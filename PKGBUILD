@@ -10,7 +10,7 @@ depends=(
   'glib2'
   'gtk4'
   'sqlite'
-  'gsound'
+  'libcanberra'
   'libsoup3'
   'libgee'
   'json-glib'
