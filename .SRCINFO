@@ -1,15 +1,15 @@
 pkgbase = pypy3-editables
 	pkgdesc = Editable installations
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
-	url = https://github.com/editables/editables
+	url = https://github.com/pfmoore/editables
 	arch = any
 	license = MIT
 	makedepends = pypy3-build
 	makedepends = pypy3-installer
 	makedepends = pypy3-flit-core
 	depends = pypy3
-	source = editables-0.5.tar.gz::https://github.com/editables/editables/archive/v0.5.tar.gz
-	sha512sums = 9aa4036eef35ec61c3707e3df4e1875f4153b9303694c9f7c9eefc81994242a74554e9b21102e7c6253b7f7b686c96ca787aa9b3c0cb7a5376f0b59950dbeead
+	source = editables-0.6.tar.gz::https://github.com/pfmoore/editables/archive/0.6.tar.gz
+	sha512sums = 123a5aec65cfa259dddfd6a8c0e4a51f5ad722e36cd360fd4d5094b853805b0332ec1b143a19e5fae79e5f841124bbd6162bb6fe64d8d92d7edcf5b640afcdc4
 
 pkgname = pypy3-editables
