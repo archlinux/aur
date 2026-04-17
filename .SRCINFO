@@ -1,0 +1,17 @@
+pkgbase = snglrtty-git
+	pkgdesc = Terminal audio visualizer — singularity in your TTY
+	pkgver = 0.1.0.r2.g1a9c223
+	pkgrel = 1
+	url = https://github.com/the-unknown/snglrtty
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = libpulse
+	provides = snglrtty
+	conflicts = snglrtty
+	conflicts = snglrtty-bin
+	source = snglrtty-main::git+https://github.com/the-unknown/snglrtty.git#branch=main
+	sha256sums = SKIP
+
+pkgname = snglrtty-git
