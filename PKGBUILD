@@ -1,6 +1,6 @@
 # Maintainer: Raimo Geisel <raimog92@protonmail.com>
 pkgname=narsil-nvidia-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A terminal-based system resource monitor — GPU-aware (NVIDIA), Braille charts, per-char label inversion"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 provides=('narsil')
 conflicts=('narsil' 'narsil-bin' 'narsil-nvidia')
 source=("https://github.com/Pommersche92/narsil/releases/download/v$pkgver/narsil-nvidia-$pkgver-x86_64.tar.gz")
-sha256sums=('4c5171df2b9d9455d55218cc93108c5d18b12d35b95242148abe95cd1c4ed3a3')
+sha256sums=('a844d09032c59e6f909013cd53a8b50cf9548e0769a2935e06a15a7269ee4d1e')
 
 package() {
     cd "narsil-nvidia-$pkgver"
