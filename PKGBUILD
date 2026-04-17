@@ -61,8 +61,11 @@ build() {
   [ -d "web" ] && cd web && npm install && npm run build && cd ..
   # Install whatsapp-bridge dependencies
   [ -f "scripts/whatsapp-bridge/package.json" ] && cd scripts/whatsapp-bridge && npm install --silent 2>/dev/null && cd ../..
-  # Build Python wheel
-  python -m build --wheel --no-isolation
+ # Ensure web_dist is included in the Python package
+ # The web build output needs to be in hermes_cli/web_dist for the wheel to include it
+ [ -d "web/dist" ] && cp -r web/dist hermes_cli/web_dist
+
+ # Build Python wheel
 }
 
 package() {
@@ -91,6 +94,11 @@ package() {
   [ -f "cli-config.yaml.example" ] && install -Dm644 cli-config.yaml.example "$pkgdir/usr/share/hermes-agent/cli-config.yaml.example"
   [ -f ".env.example" ] && install -Dm644 .env.example "$pkgdir/usr/share/hermes-agent/.env.example"
 
+
+ # Install whatsapp-bridge
+ if [ -d "scripts/whatsapp-bridge" ]; then
+ cp -r scripts/whatsapp-bridge "$pkgdir/usr/share/hermes-agent/"
+ fi
   # Install skills directory
   if [ -d "skills" ]; then
     cp -r skills "$pkgdir/usr/share/hermes-agent/"
