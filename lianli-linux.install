@@ -1,39 +1,81 @@
 post_install() {
+  _reload_udev
+  _enable_user_service
+  _restart_for_active_users
   _post_msg
 }
 
 post_upgrade() {
-  # Migrate users off the old user unit if they had it enabled
-  if [ -f /usr/lib/systemd/user/lianli-daemon.service ] || \
-     systemctl --user --machine="*" is-enabled lianli-daemon.service &>/dev/null; then
+  if systemctl list-unit-files 'lianli-daemon@*.service' 2>/dev/null | grep -q '\.service'; then
     cat <<MSG
-NOTE: lianli-daemon is now a templated system service.
-Disable the old user unit and enable the new one for your user:
-
-  systemctl --user disable --now lianli-daemon.service 2>/dev/null
-  sudo systemctl enable --now lianli-daemon@\$USER.service
+NOTE: The templated system service lianli-daemon@USER.service has been removed.
+Disabling any enabled instances:
 
 MSG
+    for inst in $(systemctl list-units --all --no-legend 'lianli-daemon@*.service' 2>/dev/null | awk '{print $1}'); do
+      systemctl disable --now "$inst" 2>/dev/null || true
+    done
+    systemctl disable --now lianli-evdi-setup.service 2>/dev/null || true
   fi
+  _reload_udev
+  _enable_user_service
+  _restart_for_active_users
   _post_msg
 }
 
 post_remove() {
-  echo "Remember to disable any enabled lianli-daemon@USER.service instances."
+  systemctl --global disable lianli-daemon.service 2>/dev/null || true
+}
+
+_reload_udev() {
+  if command -v udevadm &>/dev/null; then
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger 2>/dev/null || true
+    # Module uevents live under /sys/module, which `udevadm trigger` skips by
+    # default; trigger evdi explicitly so the chmod rule applies to an already-
+    # loaded module without requiring reboot or rmmod+modprobe.
+    [ -e /sys/module/evdi ] && udevadm trigger --action=add /sys/module/evdi 2>/dev/null || true
+  fi
+}
+
+_enable_user_service() {
+  systemctl --global enable lianli-daemon.service 2>/dev/null || true
+}
+
+_restart_for_active_users() {
+  [ -d /run/user ] || return 0
+  local dir uid user
+  for dir in /run/user/*; do
+    [ -d "$dir" ] || continue
+    uid="${dir##*/}"
+    [ -S "$dir/bus" ] || continue
+    user="$(id -nu "$uid" 2>/dev/null)" || continue
+    # runuser drops the caller's env; systemctl --user needs both XDG_RUNTIME_DIR
+    # and DBUS_SESSION_BUS_ADDRESS to find the target user's manager.
+    runuser -u "$user" -- \
+      env XDG_RUNTIME_DIR="$dir" DBUS_SESSION_BUS_ADDRESS="unix:path=$dir/bus" \
+      systemctl --user daemon-reload 2>/dev/null || true
+    runuser -u "$user" -- \
+      env XDG_RUNTIME_DIR="$dir" DBUS_SESSION_BUS_ADDRESS="unix:path=$dir/bus" \
+      systemctl --user restart lianli-daemon.service 2>/dev/null || true
+  done
 }
 
 _post_msg() {
   cat <<MSG
-To start the daemon for the current user, run:
+lianli-daemon.service has been enabled globally for all users — it will
+auto-start on login for every account. Any user with an active session
+during install has had the daemon (re)started automatically to pick up
+the new binary.
 
-  sudo systemctl enable --now lianli-daemon@\$USER.service
+Config: ~/.config/lianli/config.json (created on first run).
 
-The daemon reads ~/.config/lianli/config.json for that user.
+Desktop-mode devices (HydroShift II, Lancool 207, Universal Screen 8.8")
+work out of the box — evdi auto-loads at boot and udev grants user access.
+If this is a first install without a reboot, run: sudo modprobe evdi
 
-If you have a desktop-mode device (HydroShift II, Lancool 207, Universal Screen 8.8"),
-also enable the evdi setup oneshot so a virtual display node exists for the user daemon:
-
-  sudo systemctl enable --now lianli-evdi-setup.service
+Optional: to keep the daemon running without an active desktop login:
+  sudo loginctl enable-linger \$USER
 
 MSG
 }

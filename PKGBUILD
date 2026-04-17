@@ -1,7 +1,7 @@
 # Maintainer: sgtaziz <sgtaziz013 at google dot com>
 pkgname=lianli-linux-git
-pkgver=r217.b996f40
-pkgrel=2
+pkgver=r227.1ee4b97
+pkgrel=1
 pkgdesc="Open-source Linux replacement for L-Connect 3 - fan control, RGB, LCD streaming for Lian Li devices"
 arch=('x86_64')
 url="https://github.com/sgtaziz/lian-li-linux"
@@ -42,17 +42,16 @@ package() {
   install -Dm755 target/release/lianli-gui "$pkgdir/usr/bin/lianli-gui"
 
   # udev rules
-  install -Dm644 udev/99-lianli.rules "$pkgdir/usr/lib/udev/rules.d/99-lianli.rules"
+  install -Dm644 packaging/udev/99-lianli.rules "$pkgdir/usr/lib/udev/rules.d/99-lianli.rules"
 
-  # Systemd templated system service (enable per-user via lianli-daemon@USER.service)
-  install -Dm644 systemd/lianli-daemon@.service "$pkgdir/usr/lib/systemd/system/lianli-daemon@.service"
+  # Systemd user service (enabled globally by the install hook)
+  install -Dm644 packaging/systemd/lianli-daemon.service "$pkgdir/usr/lib/systemd/user/lianli-daemon.service"
 
-  # Systemd oneshot that pre-creates an evdi virtual display node at boot
-  # (writing to /sys/devices/evdi/add needs root; the user daemon then just opens it)
-  install -Dm644 systemd/lianli-evdi-setup.service "$pkgdir/usr/lib/systemd/system/lianli-evdi-setup.service"
+  # Auto-load the evdi kernel module at boot so udev can grant user access to it
+  install -Dm644 packaging/modules-load.d/lianli-evdi.conf "$pkgdir/usr/lib/modules-load.d/lianli-evdi.conf"
 
   # Desktop entry
-  install -Dm644 com.sgtaziz.lianlilinux.desktop "$pkgdir/usr/share/applications/com.sgtaziz.lianlilinux.desktop"
+  install -Dm644 packaging/desktop/com.sgtaziz.lianlilinux.desktop "$pkgdir/usr/share/applications/com.sgtaziz.lianlilinux.desktop"
 
   # Icons
   install -Dm644 assets/icons/32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/com.sgtaziz.lianlilinux.png"
