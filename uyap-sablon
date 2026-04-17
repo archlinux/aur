@@ -1,5 +1,54 @@
 #!/bin/bash
-exec java -Xmx200m \
+# UYAP Editor is incompatible with Java 17+. Bypass archlinux-java's
+# default /usr/bin/java and select a Java 11 or Java 8 runtime directly.
+# Users may override via UYAP_EDITOR_JAVA=/absolute/path/to/java.
+
+_select_java() {
+    if [[ -n ${UYAP_EDITOR_JAVA:-} && -x ${UYAP_EDITOR_JAVA} ]]; then
+        printf '%s\n' "${UYAP_EDITOR_JAVA}"
+        return 0
+    fi
+
+    local pattern candidate
+    for pattern in \
+        '/usr/lib/jvm/java-11-*/bin/java' \
+        '/usr/lib/jvm/java-11-*/jre/bin/java' \
+        '/usr/lib/jvm/java-8-*/bin/java' \
+        '/usr/lib/jvm/java-8-*/jre/bin/java'
+    do
+        for candidate in $pattern; do
+            if [[ -x ${candidate} ]]; then
+                printf '%s\n' "${candidate}"
+                return 0
+            fi
+        done
+    done
+
+    return 1
+}
+
+if ! _java=$(_select_java); then
+    _prog=$(basename -- "$0")
+    cat >&2 <<EOF
+${_prog}: no compatible Java runtime found.
+
+UYAP Editor requires Java 8 or Java 11. Checked:
+  - \$UYAP_EDITOR_JAVA (unset or not executable)
+  - /usr/lib/jvm/java-11-*/bin/java
+  - /usr/lib/jvm/java-11-*/jre/bin/java
+  - /usr/lib/jvm/java-8-*/bin/java
+  - /usr/lib/jvm/java-8-*/jre/bin/java
+
+Install one via:
+  sudo pacman -S jre11-openjdk     # recommended
+  sudo pacman -S jre8-openjdk      # or this
+
+Or set UYAP_EDITOR_JAVA=/absolute/path/to/java
+EOF
+    exit 1
+fi
+
+exec "${_java}" -Xmx200m \
     -cp '/usr/share/java/uyap-editor/*' \
     tr.com.havelsan.uyap.system.editor.common.WPAppManager \
     getNewWPInstance EDITOR_TYPE_TEMPLATE "$@"

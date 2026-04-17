@@ -19,7 +19,7 @@
 
 pkgname=uyap-editor-bin
 pkgver=5.4.16
-pkgrel=1
+pkgrel=2
 pkgdesc='UYAP Document and Template Editor (Turkish judicial system)'
 arch=('x86_64')
 url='https://uyap.gov.tr/UYAP-Editor'
@@ -51,13 +51,13 @@ source=(
     "${pkgname}.install"
 )
 sha256sums=('2e3643111cce9d0d0c71e8300ef85d02f7591b96b43f9aabdb98564aa6bcd0a8'
-            'd3b9f74482f31a9fe1a4e599efa5e2eea7c8108f009921df09db4ade5f1cfe88'
-            'c275bcb1db86525759c151532aacdf5cbec3e6ee5b69af2b7d38039e85cfcaf2'
+            'd9a8cdea5b14235c252ad21abd7ecdef5ce9347d85d624d4ce0d0da615d9d8cd'
+            '6311a3cd1a68c7312d6633fdd8e00dd47988907722ac609d00d68762b430c1eb'
             '0cc1749ba298862da0a26172af44dbcc1396ad9f36ca160d6c6b0cbad6eae929'
             '8b4572bd43a1a5dc824fa1cc90369d77973455d5c4f76a1daaa43e258f2ccd8f'
             '57258cbf56e59f1adb3d036ebf5dfa14c12cb3d3cf9e52995bca1907d08ac135'
             '15d61066c988b5e00501b14d785dc63a20f485a4660f9815ed463189b8806081'
-            'SKIP')
+            'baffb2aac23056e5963f7effb649ab4a2ab6a4ee05fec472c538cc35156b79a4')
 
 prepare() {
     cd "${srcdir}"
