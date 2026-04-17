@@ -7,6 +7,8 @@ pkgbase = dnss-dinit
 	license = Unlicense
 	depends = dnss
 	source = dnss.service
+	source = example.dnss.conf
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = dnss-dinit

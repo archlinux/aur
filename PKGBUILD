@@ -11,7 +11,7 @@ depends=("dnss")
 
 source=("dnss.service" "example.dnss.conf")
 
-b2sums=("SKIP")
+b2sums=("SKIP" "SKIP")
 
 package() {
 	cd "$srcdir"
