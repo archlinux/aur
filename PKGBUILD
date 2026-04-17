@@ -2,7 +2,7 @@
 # shellcheck disable=SC2154
 # Author: cscs <admin[at]cscs[dot]tech>
 pkgname=pastelo-git
-pkgver=r20.b1f5060
+pkgver=r35.eae8bb5
 pkgrel=1
 pkgdesc="Script to leverage various pastebin services like dpaste or 0x0.st"
 arch=('any')
