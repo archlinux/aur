@@ -1,6 +1,6 @@
 pkgbase = pyrefly
 	pkgdesc = A fast type checker and IDE for Python
-	pkgver = 0.61.0
+	pkgver = 0.61.1
 	pkgrel = 1
 	url = https://github.com/facebook/pyrefly
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pyrefly
 	makedepends = cargo-nightly
 	makedepends = git
 	options = !lto
-	source = pyrefly::git+https://github.com/facebook/pyrefly#tag=0.61.0
-	b2sums = 1721f5bfd6110567063cd93652197045be2e8ee9e6e985da0a689504810cf9c16e8bf4cdb0f255f48011ba062816afc053c007f4528bc1c043d01b6b2548bfca
+	source = pyrefly::git+https://github.com/facebook/pyrefly#tag=0.61.1
+	b2sums = 608a8ac1edbbd202fc47b94b805217043bdfd7e7e45deac6915c88b4124a49214b95832680753ed19ece6cef8c7ada4c42d0ef3192efe9d64d64c79e943068b7
 
 pkgname = pyrefly
