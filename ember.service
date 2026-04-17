@@ -1,0 +1,35 @@
+[Unit]
+Description=Ember notification daemon
+Documentation=man:ember(1)
+After=graphical-session-pre.target dbus.socket
+PartOf=graphical-session.target
+# Ensure we replace any other notification daemon that may be running.
+# Remove the next line if you want to run ember alongside another daemon.
+Wants=dbus.socket
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ember
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=5
+
+# Logging
+Environment=RUST_LOG=ember=info
+
+# Sandboxing — keeps the daemon from accessing things it doesn't need.
+# ember needs: D-Bus (IPC), X11 socket, XDG_RUNTIME_DIR (IPC socket), filesystem (SQLite, icons)
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/.local/share/ember %h/.config/ember %t
+# Allow X11 socket access (/tmp/.X11-unix)
+PrivateTmp=false
+BindReadOnlyPaths=/tmp/.X11-unix
+
+# Resource limits
+LimitNOFILE=4096
+MemoryMax=64M
+
+[Install]
+WantedBy=graphical-session.target
