@@ -1,6 +1,6 @@
 pkgbase = neovim-zig-git
 	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig
-	pkgver = 0.13.0.r81.g9927d9259d
+	pkgver = 0.13.0.r268.g724fccd46f
 	pkgrel = 1
 	url = https://neovim.io
 	arch = i686
