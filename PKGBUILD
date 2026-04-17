@@ -3,9 +3,9 @@
 # Contributor: FlyInWind <2518509078@qq.com>
 pkgname=ynote-desktop-bin
 _zhsname='有道云笔记'
-pkgver=8.2.32
+pkgver=8.2.41
 _electronversion=22
-_reldate='%2F2026%2F02%2F03%2Fe59cc78c'
+_reldate='%2F2026%2F03%2F12%2F2b47e7e4'
 pkgrel=1
 pkgdesc="Netease Youdao Ynote for Linux.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     "LICENSE.html::https://note.youdao.com/license.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('26d3a9b3a37373c6a000f3d46013e76965a7c1f11ef7b599a0660e9d2de4297d'
+sha256sums=('c18c66026bccb8f45329725854f2eded3bd55fff6f1e8f3e8b6978187d4013c9'
             'a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -52,26 +52,22 @@ prepare() {
         s/Utility/Office/g
     " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_zhsname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${srcdir}/opt/${_zhsname}/resources/app.asar"
     sed -i -e "
         s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g
         s/\.\.\/dll\/scholar/dll\/scholar/g
     " "${srcdir}/app.asar.unpacked/dist/"{main.js,scholar.js}
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/opt/${_zhsname}/resources/app.asar"
     rm -rf \
         "${srcdir}/opt/${_zhsname}/resources/app.asar.unpacked/node_modules/ffi-napi/prebuilds/"{darwin-x64,linux-arm64,win32-ia32,win32-x64} \
         "${srcdir}/opt/${_zhsname}/resources/app.asar.unpacked/node_modules/ref-napi/prebuilds/"{darwin-x64,linux-arm64,win32-ia32,win32-x64} \
-        "${srcdir}/opt/${_zhsname}/resources/app.asar.unpacked/node_modules/node-screenshots-linux-x64-musl"
+        "${srcdir}/opt/${_zhsname}/resources/app.asar.unpacked/node_modules/node-screenshots-linux-x64-musl" \
+        "${srcdir}/opt/${_zhsname}/resources/app.asar.unpacked/node_modules/koffi/build/koffi/"{*win*,*bsd*,*arm*,linux_ia32,linux_loong64,linux_riscv64d}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    if find "${srcdir}/opt/${_zhsname}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for subdir in "${srcdir}/opt/${_zhsname}/resources/"*; do
-            if [ -d "${subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
-            fi
-        done
-    fi
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	cp -a "${srcdir}/opt/${_zhsname}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644  "${srcdir}/opt/${_zhsname}/dll/scholar/client.so" -t "${pkgdir}/usr/lib/${pkgname%-bin}/dll/scholar"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
