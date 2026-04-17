@@ -12,6 +12,7 @@ provides=('xgestured')
 conflicts=('xgestured')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+install="xgestured.install"
 
 pkgver() {
   cd "$srcdir/xgestured"

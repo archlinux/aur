@@ -3,6 +3,7 @@ pkgbase = xgestured-git
 	pkgver = r32.0375b5d
 	pkgrel = 2
 	url = https://github.com/06ergin06/xgestured
+	install = xgestured.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
