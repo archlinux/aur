@@ -50,9 +50,9 @@ source=("Pacsea-${_tag}.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs
 source_x86_64=("pacsea-x86_64::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/pacsea-x86_64")
 source_aarch64=("pacsea-aarch64::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/pacsea-aarch64")
 
-sha256sums=('SKIP')
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
+sha256sums=('747529d71550be1753b68c6a139944eb53ad31ff6aed06e01eae60ce94432139')
+sha256sums_x86_64=('6d47aaaa3867dd872d6ca1d3f8446fe3714ab56d96505243d0f106561ccc1d94')
+sha256sums_aarch64=('2a4dbbdeca5213507e51c2d28468e3be1e68b32884cc419cc45c84264431bd82')
 
 noextract=("pacsea-x86_64" "pacsea-aarch64")
 

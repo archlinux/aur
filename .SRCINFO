@@ -48,10 +48,10 @@ pkgbase = pacsea-bin
 	noextract = pacsea-aarch64
 	options = !strip
 	source = Pacsea-v0.8.2.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/v0.8.2.tar.gz
-	sha256sums = SKIP
+	sha256sums = 747529d71550be1753b68c6a139944eb53ad31ff6aed06e01eae60ce94432139
 	source_x86_64 = pacsea-x86_64::https://github.com/Firstp1ck/Pacsea/releases/download/v0.8.2/pacsea-x86_64
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 6d47aaaa3867dd872d6ca1d3f8446fe3714ab56d96505243d0f106561ccc1d94
 	source_aarch64 = pacsea-aarch64::https://github.com/Firstp1ck/Pacsea/releases/download/v0.8.2/pacsea-aarch64
-	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = 2a4dbbdeca5213507e51c2d28468e3be1e68b32884cc419cc45c84264431bd82
 
 pkgname = pacsea-bin
