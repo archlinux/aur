@@ -1,5 +1,6 @@
---- nginx-1.26.0/src/http/ngx_http_core_module.c	2024-04-23 11:04:32.000000000 -0300
-+++ nginx-1.26.0_patched/src/http/ngx_http_core_module.c	2024-04-23 18:51:56.531096754 -0300
+# diff -Nau nginx-1.30.0/src/http/ngx_http_core_module.c nginx-1.30.0_patched/src/http/ngx_http_core_module.c > nginx-without-server-header/ngx_http_core_module.c.patch
+--- nginx-1.30.0/src/http/ngx_http_core_module.c	2026-04-14 10:10:11.000000000 -0300
++++ nginx-1.30.0_patched/src/http/ngx_http_core_module.c	2026-04-16 20:09:20.321382881 -0300
 @@ -124,7 +124,6 @@
  static ngx_conf_enum_t  ngx_http_core_server_tokens[] = {
      { ngx_string("off"), NGX_HTTP_SERVER_TOKENS_OFF },
@@ -8,12 +9,12 @@
      { ngx_null_string, 0 }
  };
  
-@@ -3899,7 +3898,7 @@
+@@ -3966,7 +3965,7 @@
      ngx_conf_merge_value(conf->etag, prev->etag, 1);
  
      ngx_conf_merge_uint_value(conf->server_tokens, prev->server_tokens,
 -                              NGX_HTTP_SERVER_TOKENS_ON);
 +                              NGX_HTTP_SERVER_TOKENS_OFF);
  
-     ngx_conf_merge_ptr_value(conf->open_file_cache,
-                               prev->open_file_cache, NULL);
+     ngx_conf_merge_ptr_value(conf->early_hints, prev->early_hints, NULL);
+ 

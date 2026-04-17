@@ -1,3 +1,4 @@
+################################################################################
 # Maintainer: Fabiano Furtado < fusca14 _at_ gmail *dot* com >
 # Description: patches to remove the HTTP "server" header
 # Changes:
@@ -5,11 +6,14 @@
 #   * "server_tokens off;": "server header" removed from http header response
 #   * "server_tokens on;": default header "Server: ws"
 #   * "server_tokens build;" is no longer valid
+#
+# https://wiki.archlinux.org/title/AUR_submission_guidelines#Publishing_new_package_content
+################################################################################
 
 pkgbase=nginx-without-server-header
 _pkgbase=nginx
 pkgname=($pkgbase $pkgbase'-src')
-pkgver=1.26.3
+pkgver=1.30.0
 pkgrel=1
 _prefix_relative='etc/nginx'
 _prefix_full='/'$_prefix_relative
@@ -36,16 +40,16 @@ validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8'  # Maxim Dounin <mdouni
               '43387825DDB1BB97EC36BA5D007C8D7C15D87369'  # Roman Arutyunyan <r.arutyunyan@f5.com>
               'D6786CE303D9A9022998DC6CC8464D549AF75C0A'  # Sergey Kandaurov <s.kandaurov@f5.com>
               '13C82A63B603576156E30A4EA0EA981B66B0D967') # Konstantin Pavlov <thresh@nginx.com>
-sha512sums=('cd780e495796bf7413e54a6730d11d55127b0ca6563acf5c75eb2698f62cddbbf5ba61820c57b2316c0bb789fcfd17f98a27a84b525ed50f304d1b1043ffa05d'
+sha512sums=('9df502279583ea305e2d7a4cbe67c54cbcdb880f1caf010d582eea8839bda3bc6dd5e244bb79e848a70ad0c9fda9927cb8d9d8c5fc1bc49acc2da9e734543d7c'
             'SKIP'
             '490e973fac48c0b27d35c722d190c1103fc0e6f71362580739f47eea4373f2a7206a8722866c740c916a4be7e789db80d4ce56a67e751f1183e420cb314a32d8'
             '25b1054176b694dda940528df45432bdc80191ad9dd6f11b7bb02da43b3c38c592448664774ccde779bb6953f9d32a4fd55349dbad9b43a7db38a1410a47dc24'
-            '67c5961fdc2b94f909127aaec2d8eb82b8d94efde24ea9c2d00311d692bc8c5265bd365032cb3be4b301602b945d2a627fab231398f4897175b43488e3ce92b8'
-            'c699cc4b828f410efa1ba15a4ebd619ff8ff6869366efdf7a9d87c16781d9c2039ac9acc3cf17e28baa81d37621a388b999674763110678fae30c9ce6230b6b6'
-            '0ee8e33e6f515a662f03faf87bf9a67eaf820718443a084804ba1b423c56c7356830d4d86bb347d32934e2789d5e66f220a7d41a532f042b7af355497bc1e1aa'
-            'b35e021d734157cb29c4609bdfb3155e139b7e630cc705be71a5ceaf23ab60dc4eacb0259a7345592dd739dd91b12d347a319620623638709ca9f3c2a22d8931'
-            '08378f1c8a9d183e60dd65c1f193b74b93d93d7fb4d7d284b661986b2d486cdd74ebefe55a6381418e0019959ceb4670b8a69ed14b04620a923c4c9a49487966'
-            '9a0e9ec2738343f0676c89bc65e77f47dc68069cb75953786d0158b3c73178742d7788e6c94f923056aa850806462e5586ecb329ff91f3e09e1f1b9429dc4e75')
+            '65365c26aec87e9023f62ab44e0793f518c5aa8e2eac5d101cfdbfd415946533bd4bf5b734d73e4f06ad0e49856d38892bc6cf70b1d043e73a554936ffa522bd'
+            '173e0a7d213cbcfe1653c2c1c83c37808fda5a03da58cf4fe46f9240f23489267bd76c6925029452faf9c6b0a99eac95d697b25322e2274e3d86cffe815e8383'
+            '0c66371e18871d1b4a4f9c23b467727229fae06f134ae7556fa98055141a2957d49641edf4835c730fdf65052da4a2237e8abfa17684e065b487f3353e62006a'
+            '71d5deb40c77401b73f7b76750ee23a4eede990d3310fb32b983f2983b6c5769c99782172ef4dbad0e4aafa6c13f223cf0e80cc35c0b2e3f0cb113ea00947f15'
+            '65894467a7b800b6c7a10c6e6c5d2ddf98432300b3d0f8795933142faaa60ea55513d50f3ece6acbe8458a97dc9c757c18891c224a29286b8d00046d00847dff'
+            '5c41afb61dcaab4f3a751e399de47859691ca4878aad086bdd2c279d9b21467e89c4312c7cfacac1a59e94b3173a5c7dab58e884463bdc5f5b62c93cad7e7f9c')
 
 _common_flags=(
   --with-compat
@@ -137,16 +141,18 @@ package_nginx-without-server-header() {
   cd $_pkgbase'-'$pkgver
   make DESTDIR="$pkgdir" install
 
-  sed -e '2s|\<user\s\+\w\+;|user http;|' \
-    -e '8i \error_log  /var/log/nginx/error.log  error;' \
-    -e '21s|[#]||;22s|[#]||;23s|[#]||;25s|[#]||;25s|logs|/var/log/nginx|' \
-    -e '34i \\n    types_hash_max_size 4096;\n\n    server_tokens off;\n\n    root /usr/share/nginx/html;' \
-    -e '44s|html|/usr/share/nginx/html|' \
-    -e '54s|html|/usr/share/nginx/html|' \
+
+  sed -e '/^#user\s/s|nobody;|http;|' \
+    -e '/^#error_log\s.*\sinfo;$/a error_log  /var/log/nginx/error.log  error;' \
+    -e '/^\s*#log_format/,/;$/s|^\(\s*\)#|\1|' \
+    -e '/^\s*#access_log\s\s*logs\/access\.log/,/;$/s|^\(\s*\)#|\1|' \
+    -e 's|logs\/access\.log|/var/log/nginx/access\.log|' \
+    -e '/^\s*#gzip\s\s*on;$/a\\n    types_hash_max_size 4096;\n\n    server_tokens off;\n\n    root /usr/share/nginx/html;' \
+    -e 's| html;| /usr/share/nginx/html;|' \
     -i $pkgdir$_prefix_full'/nginx.conf'
 
-  sed -e '16s|^|#|' \
-    -e '17i fastcgi_param  SERVER_SOFTWARE    nginx;' \
+  sed -e '/^\s*fastcgi_param\s\s*SERVER_SOFTWARE\s\s*nginx\/\$nginx_version;/s|^|#|' \
+    -e '/^\s*#fastcgi_param\s\s*SERVER_SOFTWARE\s\s*nginx\/\$nginx_version;/a\fastcgi_param  SERVER_SOFTWARE    nginx;' \
     -i $pkgdir$_prefix_full'/fastcgi_params'
 
   rm "$pkgdir$_prefix_full"/*.default

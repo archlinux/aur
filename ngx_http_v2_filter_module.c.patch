@@ -1,14 +1,16 @@
---- nginx-1.26.0/src/http/v2/ngx_http_v2_filter_module.c	2024-04-23 11:04:32.000000000 -0300
-+++ nginx-1.26.0_patched/src/http/v2/ngx_http_v2_filter_module.c	2024-04-23 19:21:41.433118932 -0300
-@@ -115,19 +115,12 @@
+# diff -Nau nginx-1.30.0/src/http/v2/ngx_http_v2_filter_module.c nginx-1.30.0_patched/src/http/v2/ngx_http_v2_filter_module.c > nginx-without-server-header/ngx_http_v2_filter_module.c.patch
+--- nginx-1.30.0/src/http/v2/ngx_http_v2_filter_module.c	2026-04-14 10:10:11.000000000 -0300
++++ nginx-1.30.0_patched/src/http/v2/ngx_http_v2_filter_module.c	2026-04-16 20:42:19.710788321 -0300
+@@ -120,20 +120,13 @@
      ngx_http_core_srv_conf_t  *cscf;
      u_char                     addr[NGX_SOCKADDR_STRLEN];
  
--    static const u_char nginx[5] = "\x84\xaa\x63\x55\xe7";
-+    static const u_char nginx[3] = "\x82\xf0\x8f";
+-    static const u_char nginx[5] = { 0x84, 0xaa, 0x63, 0x55, 0xe7 };
++    static const u_char nginx[3] = { 0x82, 0xf0, 0x8f };
  #if (NGX_HTTP_GZIP)
-     static const u_char accept_encoding[12] =
-         "\x8b\x84\x84\x2d\x69\x5b\x05\x44\x3c\x86\xaa\x6f";
+     static const u_char accept_encoding[12] = {
+         0x8b, 0x84, 0x84, 0x2d, 0x69, 0x5b, 0x05, 0x44, 0x3c, 0x86, 0xaa, 0x6f
+     };
  #endif
  
 -    static size_t nginx_ver_len = ngx_http_v2_literal_size(NGINX_VER);
@@ -21,7 +23,7 @@
      stream = r->stream;
  
      if (!stream) {
-@@ -217,17 +210,9 @@
+@@ -223,17 +216,9 @@
  
      clcf = ngx_http_get_module_loc_conf(r, ngx_http_core_module);
  
@@ -38,11 +40,11 @@
 -        }
 +    if ( (r->headers_out.server == NULL) &&
 +         (clcf->server_tokens == NGX_HTTP_SERVER_TOKENS_ON) ) {
-+      len += 1 + sizeof(nginx);
++        len += 1 + sizeof(nginx);
      }
  
      if (r->headers_out.date == NULL) {
-@@ -421,47 +406,14 @@
+@@ -427,47 +412,14 @@
          pos = ngx_sprintf(pos, "%03ui", r->headers_out.status);
      }
  
@@ -57,19 +59,18 @@
 -            ngx_log_debug1(NGX_LOG_DEBUG_HTTP, fc->log, 0,
 -                           "http2 output header: \"server: %s\"",
 -                           NGINX_VER_BUILD);
-+    if ( (r->headers_out.server == NULL) &&
-+         (clcf->server_tokens == NGX_HTTP_SERVER_TOKENS_ON) ) {
-+      ngx_log_debug0(NGX_LOG_DEBUG_HTTP, fc->log, 0,
-+                     "http2 output header: \"server: ws\"");
- 
+-
 -        } else {
 -            ngx_log_debug0(NGX_LOG_DEBUG_HTTP, fc->log, 0,
 -                           "http2 output header: \"server: nginx\"");
 -        }
-+      *pos++ = ngx_http_v2_inc_indexed(NGX_HTTP_V2_SERVER_INDEX);
++    if ( (r->headers_out.server == NULL) &&
++         (clcf->server_tokens == NGX_HTTP_SERVER_TOKENS_ON) ) {
++        ngx_log_debug0(NGX_LOG_DEBUG_HTTP, fc->log, 0,
++                       "http2 output header: \"server: ws\"");
  
--        *pos++ = ngx_http_v2_inc_indexed(NGX_HTTP_V2_SERVER_INDEX);
--
+         *pos++ = ngx_http_v2_inc_indexed(NGX_HTTP_V2_SERVER_INDEX);
+ 
 -        if (clcf->server_tokens == NGX_HTTP_SERVER_TOKENS_ON) {
 -            if (nginx_ver[0] == '\0') {
 -                p = ngx_http_v2_write_value(nginx_ver, (u_char *) NGINX_VER,
@@ -92,7 +93,7 @@
 -        } else {
 -            pos = ngx_cpymem(pos, nginx, sizeof(nginx));
 -        }
-+      pos = ngx_cpymem(pos, nginx, sizeof(nginx));
++        pos = ngx_cpymem(pos, nginx, sizeof(nginx));
      }
  
      if (r->headers_out.date == NULL) {

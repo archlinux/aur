@@ -1,5 +1,6 @@
---- nginx-1.24.0/src/http/ngx_http_special_response.c	2023-04-10 22:45:34.000000000 -0300
-+++ nginx-1.24.0_custom/src/http/ngx_http_special_response.c	2023-06-17 12:08:39.692428310 -0300
+# diff -Nau nginx-1.30.0/src/http/ngx_http_special_response.c nginx-1.30.0_patched/src/http/ngx_http_special_response.c > nginx-without-server-header/ngx_http_special_response.c.patch
+--- nginx-1.30.0/src/http/ngx_http_special_response.c	2026-04-14 10:10:11.000000000 -0300
++++ nginx-1.30.0_patched/src/http/ngx_http_special_response.c	2026-04-16 20:20:38.342377986 -0300
 @@ -18,22 +18,8 @@
  static ngx_int_t ngx_http_send_refresh(ngx_http_request_t *r);
  
@@ -24,7 +25,7 @@
  "</body>" CRLF
  "</html>" CRLF
  ;
-@@ -680,18 +666,8 @@
+@@ -688,18 +674,8 @@
      ngx_uint_t    msie_padding;
      ngx_chain_t   out[3];
  

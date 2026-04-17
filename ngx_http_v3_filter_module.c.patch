@@ -1,6 +1,7 @@
---- nginx-1.26.0/src/http/v3/ngx_http_v3_filter_module.c	2024-04-23 11:04:32.000000000 -0300
-+++ nginx-1.26.0_patched/src/http/v3/ngx_http_v3_filter_module.c	2024-04-24 13:25:59.890807167 -0300
-@@ -158,16 +158,9 @@
+# diff -Nau nginx-1.30.0/src/http/v3/ngx_http_v3_filter_module.c nginx-1.30.0_patched/src/http/v3/ngx_http_v3_filter_module.c > nginx-without-server-header/ngx_http_v3_filter_module.c.patch
+--- nginx-1.30.0/src/http/v3/ngx_http_v3_filter_module.c	2026-04-14 10:10:11.000000000 -0300
++++ nginx-1.30.0_patched/src/http/v3/ngx_http_v3_filter_module.c	2026-04-16 20:48:00.515266854 -0300
+@@ -161,16 +161,9 @@
  
      clcf = ngx_http_get_module_loc_conf(r, ngx_http_core_module);
  
@@ -20,7 +21,7 @@
  
          len += ngx_http_v3_encode_field_lri(NULL, 0,
                                              NGX_HTTP_V3_HEADER_SERVER,
-@@ -339,19 +332,10 @@
+@@ -342,19 +335,10 @@
          b->last = ngx_sprintf(b->last, "%03ui", r->headers_out.status);
      }
  
