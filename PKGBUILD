@@ -1,7 +1,7 @@
 # Maintainer: shiyi
 pkgname=fd-rdd-git
 _pkgname=vcp-fd-rdd
-pkgver=0.5.5.r73.g90a8479
+pkgver=0.5.6.r101.g5f87fe9
 pkgrel=1
 pkgdesc="Event-driven elastic file indexer with RDD lineage and glob support"
 arch=('x86_64')
