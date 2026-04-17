@@ -1,6 +1,6 @@
 pkgbase = codenomad-bin
 	pkgdesc = A fast, multi-instance workspace for running OpenCode sessions
-	pkgver = 0.13.3
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/NeuralNomadsAI/CodeNomad
 	arch = x86_64
@@ -39,9 +39,9 @@ pkgbase = codenomad-bin
 	options = !debug
 	source = codenomad.desktop
 	sha256sums = 099ff5f301ceebffbf8d386820bc8f4a9ab678d0f518fe5ef40aba32bf1f459f
-	source_x86_64 = codenomad-bin-0.13.3.zip::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v0.13.3/CodeNomad-0.13.3-linux-x64.zip
-	sha256sums_x86_64 = c5d389900b9109cbeafdea6a587b053189ffc7ffc60ae4d6b950fc8f55498fd0
-	source_aarch64 = codenomad-bin-0.13.3.zip::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v0.13.3/CodeNomad-0.13.3-linux-arm64.zip
-	sha256sums_aarch64 = c5d389900b9109cbeafdea6a587b053189ffc7ffc60ae4d6b950fc8f55498fd0
+	source_x86_64 = codenomad-bin-0.14.0.zip::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v0.14.0/CodeNomad-0.14.0-linux-x64.zip
+	sha256sums_x86_64 = 7e2dbb33dbbc95d1b266c332f18afc76b07e75486c43d0458bdea3c844ea4164
+	source_aarch64 = codenomad-bin-0.14.0.zip::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v0.14.0/CodeNomad-0.14.0-linux-arm64.zip
+	sha256sums_aarch64 = 7e2dbb33dbbc95d1b266c332f18afc76b07e75486c43d0458bdea3c844ea4164
 
 pkgname = codenomad-bin
