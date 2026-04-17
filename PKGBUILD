@@ -2,8 +2,8 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=24.04.14
-pkgrel=3
+pkgver=24.04.15
+pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -25,7 +25,7 @@ depends=(
   'python-pynacl'
   'python-systemd'
   'python-xlib'
-  'system76-firmware-daemon'
+  'system76-firmware-git'
   'usbutils'
   'wireless_tools'
 )
@@ -54,7 +54,7 @@ install="$pkgname.install"
 source=("git+https://github.com/pop-os/system76-driver.git#tag=$pkgver"
         'cli.patch'
         'actions.patch')
-sha256sums=('56ae7ae5034a4676fdc6e171518bd6d9508ece4baab0010dc3f6078ee0e4e9e0'
+sha256sums=('251ab2349c657363aa535c509d81c2293cb605eb54b654d42794c9ddf75e6322'
             'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
             'ec8e19504242b67f6c2ef92d382336060fb9024d0ebae0ed3de38aa2f34cbc2a')
 

@@ -1,7 +1,7 @@
 pkgbase = system76-driver
 	pkgdesc = Universal driver for System76 computers
-	pkgver = 24.04.14
-	pkgrel = 3
+	pkgver = 24.04.15
+	pkgrel = 1
 	url = https://github.com/pop-os/system76-driver
 	install = system76-driver.install
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = system76-driver
 	depends = python-pynacl
 	depends = python-systemd
 	depends = python-xlib
-	depends = system76-firmware-daemon
+	depends = system76-firmware-git
 	depends = usbutils
 	depends = wireless_tools
 	optdepends = firmware-manager: Manage System76 firmware updates via standalone application
@@ -42,10 +42,10 @@ pkgbase = system76-driver
 	optdepends = system76-power: System76 Power Management
 	optdepends = xorg-xhost: To enable GUI applications on Wayland
 	optdepends = xorg-xbacklight: To use the backlight service
-	source = git+https://github.com/pop-os/system76-driver.git#tag=24.04.14
+	source = git+https://github.com/pop-os/system76-driver.git#tag=24.04.15
 	source = cli.patch
 	source = actions.patch
-	sha256sums = 56ae7ae5034a4676fdc6e171518bd6d9508ece4baab0010dc3f6078ee0e4e9e0
+	sha256sums = 251ab2349c657363aa535c509d81c2293cb605eb54b654d42794c9ddf75e6322
 	sha256sums = ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3
 	sha256sums = ec8e19504242b67f6c2ef92d382336060fb9024d0ebae0ed3de38aa2f34cbc2a
 
