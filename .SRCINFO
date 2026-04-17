@@ -1,6 +1,6 @@
 pkgbase = wps-office-365
 	pkgdesc = WPS Office, is an office productivity suite.
-	pkgver = 12.1.2.24730
+	pkgver = 12.1.2.25882
 	pkgrel = 1
 	url = https://365.wps.cn/
 	arch = x86_64
@@ -26,12 +26,12 @@ pkgbase = wps-office-365
 	options = !strip
 	options = !zipman
 	options = !debug
-	source_x86_64 = https://pubwps-wps365-obs.wpscdn.cn/download/Linux/24730/wps-office_12.1.2.24730.AK.preread.sw_644359_amd64.deb
-	sha256sums_x86_64 = 08d56554b77bfef97b8e10d022600708f091e6fb73f7d0d31c2b2eeb27acc11c
-	source_aarch64 = https://pubwps-wps365-obs.wpscdn.cn/download/Linux/24730/wps-office_12.1.2.24730.AK.preread.sw_644358_arm64.deb
-	sha256sums_aarch64 = a23dbc832a625fd15c66a091d42cdd9a0f8eaefe6bdde0c4a6b48bbb2e25bb40
-	source_loong64 = https://pubwps-wps365-obs.wpscdn.cn/download/Linux/24730/wps-office_12.1.2.24730.AK.preread.sw_625684_loongarch64.deb
-	sha256sums_loong64 = d2b1fb745e225dc34e4712b3b29916dc99d76d5d5afd1ba3a559279b2a0b8003
+	source_x86_64 = https://pubwps-wps365-obs.wpscdn.cn/download/Linux/25882/wps-office_12.1.2.25882.AK.preread.sw.365_667345_amd64.deb
+	sha256sums_x86_64 = a5e54fc657b50fee4d7c08f44da2a12080d1acea9857a1db4877eb3355dd2631
+	source_aarch64 = https://pubwps-wps365-obs.wpscdn.cn/download/Linux/25882/wps-office_12.1.2.25882.AK.preread.sw.365_667348_arm64.deb
+	sha256sums_aarch64 = 5e8834f9325a623a8f540a29b4a3b31cd24fadf5dd34a0c4734a988117119f20
+	source_loong64 = https://pubwps-wps365-obs.wpscdn.cn/download/Linux/25882/wps-office_12.1.2.25882.AK.preread.sw.365_667352_loongarch64.deb
+	sha256sums_loong64 = a08c83a9340b8fd27bbf20c5912dbc1a57cb8b2ca0e4099d384b981f69226c26
 
 pkgname = wps-office-365
 	provides = wps-office
