@@ -1,0 +1,12 @@
+post_install() {
+  echo
+  echo "Please read /usr/share/doc/tmpreaper/README.security.gz first;"
+  echo "edit /etc/tmpreaper.conf to remove the warning (look for SHOWWARNING)."
+  echo
+  echo "Timer can enabled with: systemctl enable tmpreaper.timer"
+  echo
+}
+
+post_upgrade() {
+  post_install "${1}"
+}

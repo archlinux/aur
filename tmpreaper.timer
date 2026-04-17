@@ -1,0 +1,8 @@
+[Unit]
+Description=Daily Cleanup of /tmp directory
+Documentation=man:tmpreaper.conf(5) man:tmpreaper(8)
+ConditionPathExists=/etc/tmpreaper.conf
+
+[Timer]
+OnUnitActiveSec=1d
+

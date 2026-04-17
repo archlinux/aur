@@ -1,0 +1,9 @@
+[Unit]
+Description=Cleanup of /tmp directory
+Documentation=man:tmpreaper.conf(5) man:tmpreaper(8)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/tmpreaper.daily
+IOSchedulingClass=idle
+
