@@ -6,3 +6,6 @@ ConditionPathExists=/etc/tmpreaper.conf
 [Timer]
 OnUnitActiveSec=1d
 
+[Install]
+WantedBy=timers.target
+
