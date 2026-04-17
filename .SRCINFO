@@ -10,6 +10,7 @@ pkgbase = ember-notify
 	makedepends = rust
 	depends = cairo
 	depends = dbus
+	depends = sqlite
 	depends = wmctrl
 	optdepends = noto-fonts: default toast font
 	optdepends = eww: bar widget integration

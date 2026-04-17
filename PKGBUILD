@@ -5,7 +5,7 @@ pkgdesc='Notification daemon for i3/X11 with Eww integration'
 arch=('x86_64')
 url='https://github.com/Savanta/Ember'
 license=('MIT')
-depends=('cairo' 'dbus' 'wmctrl')
+depends=('cairo' 'dbus' 'sqlite' 'wmctrl')
 makedepends=('cargo' 'rust')
 optdepends=('noto-fonts: default toast font'
             'eww: bar widget integration')
@@ -27,10 +27,6 @@ prepare() {
 build() {
   cd "$_srcdir"
   export CARGO_HOME="$srcdir/cargo-home"
-  # Arch Linux default LDFLAGS include -z,now (BIND_NOW) which causes sqlx
-  # proc-macro .so to fail loading due to unresolved sqlite symbols.
-  # Override with -z,lazy so symbols are resolved lazily (at first use).
-  export RUSTFLAGS="-C link-arg=-Wl,-z,lazy"
   cargo build --release --locked --offline
 }
 
