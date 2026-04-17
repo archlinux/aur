@@ -1,7 +1,7 @@
 # Maintainer: xmlzitos154 <matheuz.ricardo@protonmail.com>
 pkgname=jay-bin
 pkgver=3.4.4
-pkgrel=1
+pkgrel=1.1
 pkgdesc="A lightweight, semantic AUR helper wrapper for Arch Linux"
 arch=('any')
 url="https://github.com/xmlzitos154/jay"
@@ -26,5 +26,4 @@ package() {
         install -Dm644 "$mod" "$pkgdir/usr/share/jay/$mod"
     done
     install -Dm644 README.md "$pkgdir/usr/share/doc/jay/README.md"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
