@@ -13,7 +13,7 @@ conflicts=('connectlnx')
 provides=('connectlnx')
 
 source=("connectlnx-${pkgver}.deb::https://github.com/3DBarath/connectlnx-releases/releases/download/v${pkgver}/connectlnx_${pkgver}_amd64.deb")
-sha256sums=('370951e34dc65c4bd318d17614ef9654ea097fe4cc253ff992131d709282ce9d')  # ← Replace with: sha256sum connectlnx_1.0.0_amd64.deb
+sha256sums=('02c56834c538bd6e8f323a8a77220393a387f5348ecd5c8d52e0a2689e04bd1e')  # ← Replace with: sha256sum connectlnx_1.0.0_amd64.deb
 
 package() {
     cd "$srcdir"
