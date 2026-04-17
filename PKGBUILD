@@ -1,41 +1,42 @@
 pkgname=mingw-w64-minizip
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Mini zip and unzip based on zlib (mingw-w64)'
 url='https://www.zlib.net/'
-license=('custom')
+license=(Zlib)
 arch=('any')
-makedepends=('mingw-w64-configure')
+makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 depends=('mingw-w64-zlib')
-source=("https://zlib.net/zlib-${pkgver}.tar.gz"{,.asc})
-validpgpkeys=('5ED46A6721D365587791E2AA783FCD8E58BCAFBA') # Mark Adler <madler@alumni.caltech.edu>
-sha256sums=('9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23'
-            'SKIP')
+source=(https://github.com/madler/zlib/releases/download/v$pkgver/zlib-$pkgver.tar.xz{,.asc})
+sha256sums=('d7a0654783a4da529d1bb793b7ad9c3318020af77667bcae35f95d0e42a792f3' 'SKIP')
+validpgpkeys=('5ED46A6721D365587791E2AA783FCD8E58BCAFBA')  # Mark Adler <madler@alumni.caltech.edu>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 
 prepare() {
   cd "$srcdir"/zlib-${pkgver}/contrib/minizip
-  sed -i "s|\-version\-info|\-no\-undefined \-version\-info|g" Makefile.am
-  autoreconf -vfi
+  # keep static libz.a name for now
+  sed -i '/set(minizip_static_suffix "s")/d' CMakeLists.txt
 }
 
+
 build() {
-  cd "$srcdir"/zlib-${pkgver}/contrib/minizip
+  cd zlib-${pkgver}/contrib/minizip
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure ..
-    make
-    popd
+    ${_arch}-cmake -DMINIZIP_BUILD_TESTING=OFF -DCMAKE_INSTALL_INCLUDEDIR=include/minizip -B build-${_arch} .
+    cmake --build build-${_arch}
   done
 }
 
-package() {
+package () {
+  cd zlib-${pkgver}/contrib/minizip
   for _arch in ${_architectures}; do
-    cd "$srcdir"/zlib-${pkgver}/contrib/minizip/build-${_arch}
-    make install DESTDIR="$pkgdir"
+    DESTDIR="${pkgdir}" cmake --install build-${_arch}
+    rm "$pkgdir"/usr/${_arch}/bin/*.exe
+    # https://github.com/madler/zlib/pull/229
+    rm "$pkgdir/usr/${_arch}/include/minizip/crypt.h"
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
