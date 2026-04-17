@@ -1,6 +1,6 @@
 pkgbase = ioninja
 	pkgdesc = Professional all-in-one terminal emulator, sniffer, and protocol analyzer
-	pkgver = 5.10.1
+	pkgver = 5.10.2
 	pkgrel = 1
 	url = https://ioninja.com
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = ioninja
 	depends = qt5-base
 	depends = openssl
 	options = !strip
-	source_i686 = https://ioninja.com/downloads/archive/ioninja/ioninja-5.10.1/ioninja-5.10.1-linux-x86.tar.xz
-	sha256sums_i686 = a3efba3da1a952f2eb7c0af2670a72dd779dcb5205c6c026454f350d9026415f
-	source_x86_64 = https://ioninja.com/downloads/archive/ioninja/ioninja-5.10.1/ioninja-5.10.1-linux-amd64.tar.xz
-	sha256sums_x86_64 = 512d27317374f5a9d84b10ebf2d91cfb150600a84bea4e461e2a27667023ffbf
+	source_i686 = https://ioninja.com/downloads/archive/ioninja/ioninja-5.10.2/ioninja-5.10.2-linux-x86.tar.xz
+	sha256sums_i686 = fa09bae883e1742c5cbb02264adb66393885cdc06f6897a82ddb87d3e46ea715
+	source_x86_64 = https://ioninja.com/downloads/archive/ioninja/ioninja-5.10.2/ioninja-5.10.2-linux-amd64.tar.xz
+	sha256sums_x86_64 = 170b624b9c4bf106c0fa3de4202c1c7038be8087d5d732b570fd98280baf578a
 
 pkgname = ioninja
