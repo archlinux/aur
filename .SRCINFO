@@ -1,6 +1,6 @@
 pkgbase = ccuse
 	pkgdesc = A CLI tool to manage and switch between Claude Code profiles
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/wjsoj/ccuse
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ccuse
 	depends = gcc-libs
 	provides = ccuse-bin
 	conflicts = ccuse-bin
-	source = ccuse-0.1.9.tar.gz::https://github.com/wjsoj/ccuse/archive/refs/tags/v0.1.9.tar.gz
-	sha256sums = 4322e03736fc2e7df00f33467052ebdf3f8c0651fcd9ef5305fb0df0d055f2b3
+	source = ccuse-0.1.10.tar.gz::https://github.com/wjsoj/ccuse/archive/refs/tags/v0.1.10.tar.gz
+	sha256sums = 08d1177c14c6c5e075645ee6aa9d3a4487604d7ba861f99d6899522769470d3d
 
 pkgname = ccuse
