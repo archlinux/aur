@@ -2,7 +2,7 @@
 # Contributor: hoverth
 # Adapted from AUR package `organicmaps` by nesk_aur
 pkgname=comaps
-pkgver=v2026.02.23_9
+pkgver=v2026.04.07_8
 _tag="${pkgver%%_*}-${pkgver##*_}"
 pkgrel=1
 pkgdesc="CoMaps: Offline Hike, Bike, Trails and Navigation"
@@ -18,7 +18,7 @@ source=(comaps.desktop
 	relax-protobuf-version.patch)
 sha256sums=('21f70d6c3282fcec0165c9b9f8082e081ecb50b423ae286ffd4ccde4cc794563'
             '85210e30cd1b6e8b30407cf97a57cbf3eb98f16526fc6ffaae63f1441691e6e1'
-            '60144c52729711de741679290f41b7000d8de4d4aed86b10c6aa59a1cdb1545e')
+            'cc620aac73157f0f16f480c6956e40edcafa3884d9fb96e17d08d2d02da39a47')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 prepare() {
 	avail=$(df -P -B 1048576 $srcdir | awk 'NR>1 {print $4}')
