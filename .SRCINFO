@@ -1,0 +1,14 @@
+pkgbase = localports
+	pkgdesc = A simple command-line tool to list network ports with their associated binaries
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/diegoholiveira/localports
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = localports-0.1.0.tar.gz::https://github.com/diegoholiveira/localports/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 3150d5b411db846822074ab0ff87a580e8679752986cf028e8da162d12245be5
+
+pkgname = localports
