@@ -2,7 +2,7 @@
 
 pkgname=wayle-bin
 _pkgname=wayle
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A configurable desktop shell for Wayland compositors"
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
 )
 
 source_x86_64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64-linux.tar.gz")
-sha256sums_x86_64=('b6ce36ee96247b733bace26803d9c32e0cf1a959ac3112181897f72adb90b7c6')
+sha256sums_x86_64=('ee6183a95e7b540d32923be8eff2124d84c53f1cae29c336afb749306d5cb3e4')
 
 package() {
     local _staging="${_pkgname}-${pkgver}-x86_64-linux"
