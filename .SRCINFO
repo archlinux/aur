@@ -1,6 +1,6 @@
 pkgbase = d2rloader
 	pkgdesc = Cross-platform Diablo 2 Resurrected Loader written in Python/Qt
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/sh4nks/d2rloader
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = d2rloader
 	optdepends = gamemode: use gamemode to run D2R instances
 	provides = d2rloader
 	conflicts = d2rloader
-	source = d2rloader-1.6.1.tar.gz::https://github.com/sh4nks/d2rloader/archive/v1.6.1.tar.gz
-	sha256sums = cf84e758a7fabb3d1a3bca544c60dfd10175bff9aeb0b5f1bcf54045311d7165
+	source = d2rloader-1.6.2.tar.gz::https://github.com/sh4nks/d2rloader/archive/v1.6.2.tar.gz
+	sha256sums = 22c76ab3396110235f59305deabb306fe2748113acb79ac0f8aeeb58dff36c71
 
 pkgname = d2rloader
