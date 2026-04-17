@@ -1,0 +1,20 @@
+pkgbase = concryptor
+	pkgdesc = A gigabyte-per-second, multi-threaded file encryption engine
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/FrogSnot/Concryptor
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = concryptor
+	conflicts = concryptor-bin
+	conflicts = concryptor-git
+	options = !strip
+	source = concryptor-1.0.5.tgz::https://github.com/FrogSnot/Concryptor/archive/v1.0.5.tar.gz
+	sha256sums = 9e13f992d585abce8e8910f9c6e358e6ae2ec5bff6c1213acf0a9f96d074053e
+
+pkgname = concryptor
