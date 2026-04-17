@@ -1,16 +1,16 @@
 pkgname=dude
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch=
-pkgdesc='A single-binary helper that discovers, previews and removes pacman orphans'
+pkgdesc='Safe orphan package cleanup for Arch Linux with preview mode and a terminal UI'
 arch=('x86_64')
-url='https://github.com/seeyebe/dude'
+url='https://github.com/marawny/dude'
 license=('MIT' 'Apache')
 depends=(gcc-libs pacman glibc)
 makedepends=('cargo')
 optdepends=('libnotify: desktop notifications')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f5dace30ae13ebe017db0d2e630cc9e02eef2549c74e6b0602e17c939ebe9f15')
+sha256sums=('2e06fe167d73ae4a5aea8ce2c11efe9635ebe05bb3c91ee566bf83fe8c0856f2')
 
 prepare() {
   cd "$pkgname-$pkgver"
