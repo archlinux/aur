@@ -2,7 +2,7 @@
 
 pkgname=cyphergatevpn-bin
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Cross-platform VPN GUI for OpenVPN - Binary release"
 arch=('x86_64')
 url="https://github.com/Cypher-Monarch/CypherGate"
@@ -23,7 +23,7 @@ package() {
   install -d "$pkgdir/opt/CypherGate"
   install -Dm755 "cyphergate.elf" "$pkgdir/opt/CypherGate/cyphergate"
   install -Dm755 "cyphergated.elf" "$pkgdir/opt/CypherGate/cyphergated"
-  ln -s /opt/CypherGate/cyphergate /usr/bin/cyphergate
+  ln -s "/opt/CypherGate/cyphergate" "$pkgdir/usr/bin/cyphergate"
 
   cp -r "Assets" "$pkgdir/opt/CypherGate/"
 
