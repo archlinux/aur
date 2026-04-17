@@ -1,6 +1,6 @@
 pkgbase = pirate-radio-launcher
 	pkgdesc = A launcher for Knockout City's Private Server Edition
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/KnockoutCity-Pirate-Radio/PirateRadio-Artifacts
 	install = pirate-radio-launcher.install
@@ -17,7 +17,7 @@ pkgbase = pirate-radio-launcher
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/KnockoutCity-Pirate-Radio/PirateRadio-Artifacts/releases/download/launcher-v0.8.0/Pirate.Radio.Launcher_0.8.0_amd64.deb
-	sha256sums_x86_64 = 2e93612e29af843ede80001847f89b92db350cce511ec3d8c5f78a7d311a4ba4
+	source_x86_64 = https://github.com/KnockoutCity-Pirate-Radio/PirateRadio-Artifacts/releases/download/launcher-v0.9.0/Pirate.Radio.Launcher_0.9.0_amd64.deb
+	sha256sums_x86_64 = dc98efb715daaa0b8ee01de4116ec4587d93653d0ec10459e499fbed71c03b0c
 
 pkgname = pirate-radio-launcher
