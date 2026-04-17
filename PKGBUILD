@@ -1,8 +1,8 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-bin
-pkgver=0.8.1
+pkgver=0.8.2
 _tag="v$pkgver"
-pkgrel=4
+pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Firstp1ck/Pacsea"
@@ -42,17 +42,27 @@ optdepends=(
 
 provides=("pacsea=${pkgver}")
 conflicts=('pacsea' 'pacsea-git')
+
+# Tarball for config/locale/data files (architecture-independent)
 source=("Pacsea-${_tag}.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/${_tag}.tar.gz")
-source_x86_64=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/pacsea")
-source_aarch64=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/pacsea-aarch64")
-sha256sums=('3a89523ea08704b4a30efc31b1f99cea9ec7193d89952c10a7cd5b21d77422e3')
-sha256sums_x86_64=('26c6ee6f9868fd988732039931d3049e816dd6fee7f7a8ac7eb7ca10b36503b2')
-sha256sums_aarch64=('1de184460187a8b2c69356ffc998fd2ae1302f6a7fde4c197a18255069c40023')
-noextract=('Pacsea')
+
+# Architecture-specific prebuilt binaries
+source_x86_64=("pacsea-x86_64::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/pacsea-x86_64")
+source_aarch64=("pacsea-aarch64::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/pacsea-aarch64")
+
+sha256sums=('SKIP')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
+
+noextract=("pacsea-x86_64" "pacsea-aarch64")
 
 prepare() {
-  # Verify the binary exists (follow symlinks)
-  local binary_path="$srcdir/Pacsea"
+  # Select the correct binary for this architecture
+  case "$CARCH" in
+    x86_64)   local binary_path="$srcdir/pacsea-x86_64" ;;
+    aarch64)  local binary_path="$srcdir/pacsea-aarch64" ;;
+  esac
+
   if [[ ! -f "$binary_path" ]]; then
     error "Pacsea binary not found in $srcdir"
     ls -la "$srcdir/" || true
@@ -101,16 +111,24 @@ prepare() {
 }
 
 package() {
-  # GitHub tarballs from tags extract to Pacsea-<version> (without 'v' prefix)
-  cd "$srcdir/Pacsea-${pkgver}" || exit 1
-  install -Dm755 "$srcdir/Pacsea" "$pkgdir/usr/bin/pacsea"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  # Source tarball extracts to Pacsea-<version> (without 'v' prefix)
+  local srcroot="$srcdir/Pacsea-${pkgver}"
+
+  case "$CARCH" in
+    x86_64)   local binary_path="$srcdir/pacsea-x86_64" ;;
+    aarch64)  local binary_path="$srcdir/pacsea-aarch64" ;;
+  esac
+
+  install -Dm755 "$binary_path"                         "$pkgdir/usr/bin/pacsea"
+  install -Dm644 "$srcroot/LICENSE"                    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcroot/README.md"                  "$pkgdir/usr/share/doc/$pkgname/README.md"
 
   # Install i18n configuration
-  install -Dm644 "config/i18n.yml" "$pkgdir/usr/share/pacsea/config/i18n.yml"
+  install -Dm644 "$srcroot/config/i18n.yml"            "$pkgdir/usr/share/pacsea/config/i18n.yml"
 
-  # Install locale files
-  install -d "$pkgdir/usr/share/pacsea/locales"
-  install -m644 config/locales/*.yml "$pkgdir/usr/share/pacsea/locales/"
+    # Install locale files
+  install -d                                            "$pkgdir/usr/share/pacsea/locales"
+  install -m644  "$srcroot/config/locales/"*.yml        "$pkgdir/usr/share/pacsea/locales/"
+  install -Dm644 "$srcroot/data/pacsea.desktop"         "$pkgdir/usr/share/applications/pacsea.desktop"
+  install -Dm644 "$srcroot/data/assets/pacsea.svg"      "$pkgdir/usr/share/icons/hicolor/scalable/apps/pacsea.svg"
 }
