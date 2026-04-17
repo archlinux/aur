@@ -20,6 +20,5 @@ pkgbase = uutils-coreutils-git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = SKIP
 
 pkgname = uutils-coreutils-git

@@ -18,7 +18,7 @@ source=("${pkgname%-git}::git+${url}.git"
 "yes-boost.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11458.patch"
 #"head-fuse-fake-stat.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11844.patch"
 "${url}/releases/download/latest-commit/docs.tar.zst")
-b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+b2sums=('SKIP' 'SKIP' 'SKIP')
 pkgver() {
   cd ${pkgname%-git}
   git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
