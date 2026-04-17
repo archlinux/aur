@@ -1,7 +1,7 @@
 pkgbase = rate-mirrors-git
 	pkgdesc = Everyday-use client-side map-aware mirror ranking tool
 	pkgver = 0.28.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/westandskif/rate-mirrors
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,6 @@ pkgbase = rate-mirrors-git
 	conflicts = rate-mirrors
 	options = !lto
 	source = rate-mirrors-git-0.28.3.tar.gz::https://github.com/westandskif/rate-mirrors/archive/v0.28.3.tar.gz
-	sha256sums = 415bf0b0778b8910b8f267feafd23a44085b1a2a1e2e316c0bb3c9b99564dd71
+	sha256sums = 6efd4dfe87a63b344afeeed680bc72356d24947febf1fcc5d8c5e3eeffc6e92a
 
 pkgname = rate-mirrors-git

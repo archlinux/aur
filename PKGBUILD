@@ -2,7 +2,7 @@
 
 pkgname=rate-mirrors-git
 pkgver=0.28.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Everyday-use client-side map-aware mirror ranking tool"
 url="https://github.com/westandskif/rate-mirrors"
 license=('CC-BY-NC-SA-3.0')
@@ -52,4 +52,4 @@ package() {
 }
 
 #vim: syntax=sh
-sha256sums=('415bf0b0778b8910b8f267feafd23a44085b1a2a1e2e316c0bb3c9b99564dd71')
+sha256sums=('6efd4dfe87a63b344afeeed680bc72356d24947febf1fcc5d8c5e3eeffc6e92a')
