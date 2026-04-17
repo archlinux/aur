@@ -1,23 +1,20 @@
 pkgbase = powerpc-linux-gnu-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files (powerpc-linux-gnu)
-	pkgver = 2.32
+	pkgver = 2.46.0
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	checkdepends = dejagnu
-	checkdepends = bc
 	depends = glibc
 	depends = zlib
 	options = staticlibs
 	options = !distcc
 	options = !ccache
-	source = http://ftp.gnu.org/gnu/binutils/binutils-2.32.tar.xz
-	source = http://ftp.gnu.org/gnu/binutils/binutils-2.32.tar.xz.sig
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.46.0.tar.xz
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.46.0.tar.xz.sig
 	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
-	md5sums = 0d174cdaf85721c5723bf52355be41e6
+	md5sums = 81bb6810bcd1119819dc0804956e1c92
 	md5sums = SKIP
 
 pkgname = powerpc-linux-gnu-binutils
-
