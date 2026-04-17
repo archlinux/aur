@@ -1,0 +1,20 @@
+pkgbase = rebased-bin
+	pkgdesc = Standalone JetBrains-based Git client (prebuilt binary)
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/DetachHead/rebased
+	arch = x86_64
+	license = Apache-2.0
+	depends = fontconfig
+	depends = giflib
+	depends = hicolor-icon-theme
+	depends = libdbusmenu-glib
+	depends = ttf-font
+	optdepends = xdg-utils: open URLs from the IDE
+	provides = rebased
+	conflicts = rebased
+	options = !strip
+	source = rebased-1.0.8.tar.gz::https://github.com/DetachHead/rebased/releases/download/1.0.8/ideaIC-261.22158.SNAPSHOT.tar.gz
+	sha256sums = ee48969d3679aa1d89e98801c6ba79ce4c7edd65ca8ed3581d8fc33f6f887cbc
+
+pkgname = rebased-bin
