@@ -1,0 +1,15 @@
+pkgbase = arch-native-client
+	pkgdesc = Client-side pacman hook for arch-native: syncs installed package list to the build server
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/adelmonte/arch-native
+	install = arch-native-client.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = rsync
+	depends = pacman
+	depends = python
+	source = arch-native-client-1.0.0.tar.gz::https://github.com/adelmonte/arch-native/archive/refs/tags/arch-native-client-v1.0.0.tar.gz
+	sha256sums = 24fbd629283cc9d1eb9aa7357b9747875fed36cd6e1cd8fb4b1d714e433467f9
+
+pkgname = arch-native-client

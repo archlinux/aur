@@ -1,0 +1,19 @@
+post_install() {
+    echo ""
+    echo "==> arch-native-client installed."
+    echo ""
+    echo "    Configure the connection to your build server:"
+    echo "      sudo cp /usr/share/arch-native-client/arch-native-client.conf.example \\"
+    echo "               /etc/arch-native-client.conf"
+    echo "      sudo \$EDITOR /etc/arch-native-client.conf"
+    echo ""
+    echo "    The pacman hook will fire automatically after each transaction."
+    echo "    Test manually with: sudo pkglist-export"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> arch-native-client upgraded."
+    echo ""
+}
