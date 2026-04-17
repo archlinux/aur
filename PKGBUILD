@@ -1,6 +1,6 @@
 # Maintainer: Luis Hernandez <luishernandezgarrido@gmail.com>
 pkgname=open-os-cli-bin
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Terminal emulator with private, local AI powered by Ollama"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!strip' '!debug')
 provides=('open-os-cli')
 conflicts=('open-os-cli')
 source=("${pkgname}-${pkgver}.pacman::https://github.com/luishg/open-os-cli/releases/download/v${pkgver}/open-os-cli-${pkgver}.pacman")
-sha256sums=('db8e8ed8709e44e685c2d098d36eabe61887b1bb65a534053fc4024b496c159d')
+sha256sums=('a7ea35f2804bd19cd444ef840de9eaab55aabdf74ac7ef13d6bfbc36d4501cc6')
 noextract=("${pkgname}-${pkgver}.pacman")
 
 package() {

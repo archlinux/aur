@@ -1,6 +1,6 @@
 pkgbase = open-os-cli-bin
 	pkgdesc = Terminal emulator with private, local AI powered by Ollama
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://open-os.com
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = open-os-cli-bin
 	depends = libnotify
 	provides = open-os-cli
 	conflicts = open-os-cli
-	noextract = open-os-cli-bin-0.6.2.pacman
+	noextract = open-os-cli-bin-0.7.0.pacman
 	options = !strip
 	options = !debug
-	source = open-os-cli-bin-0.6.2.pacman::https://github.com/luishg/open-os-cli/releases/download/v0.6.2/open-os-cli-0.6.2.pacman
-	sha256sums = db8e8ed8709e44e685c2d098d36eabe61887b1bb65a534053fc4024b496c159d
+	source = open-os-cli-bin-0.7.0.pacman::https://github.com/luishg/open-os-cli/releases/download/v0.7.0/open-os-cli-0.7.0.pacman
+	sha256sums = a7ea35f2804bd19cd444ef840de9eaab55aabdf74ac7ef13d6bfbc36d4501cc6
 
 pkgname = open-os-cli-bin
