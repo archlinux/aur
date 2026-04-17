@@ -1,0 +1,18 @@
+pkgbase = forgecode-fish-git
+	pkgdesc = Fish-shell plugin for Forge colon-command workflows (git HEAD)
+	pkgver = 0.0.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/OneNoted/forgecode.fish
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	depends = fish
+	depends = fzf
+	optdepends = fd: preferred file discovery backend for @ file completion
+	optdepends = forge: required Forge CLI backend
+	provides = forgecode-fish
+	conflicts = forgecode-fish
+	source = git+https://github.com/OneNoted/forgecode.fish.git
+	sha256sums = SKIP
+
+pkgname = forgecode-fish-git
