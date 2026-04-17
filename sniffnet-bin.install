@@ -1,0 +1,32 @@
+_set_sniffnet_caps() {
+  local bin='/opt/sniffnet-bin/bin/sniffnet'
+
+  if [[ ! -x "$bin" ]] || ! command -v setcap >/dev/null 2>&1; then
+    return 0
+  fi
+
+  setcap cap_net_raw,cap_net_admin=eip "$bin" 2>/dev/null || true
+}
+
+post_install() {
+  _set_sniffnet_caps
+
+  cat <<'EOF'
+==> Sniffnet needs packet-capture privileges.
+==> Tried to set: cap_net_raw,cap_net_admin=eip on /opt/sniffnet-bin/bin/sniffnet
+==> If that failed, run as root:
+==>   setcap cap_net_raw,cap_net_admin=eip /opt/sniffnet-bin/bin/sniffnet
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  local bin='/opt/sniffnet-bin/bin/sniffnet'
+
+  if [[ -e "$bin" ]] && command -v setcap >/dev/null 2>&1; then
+    setcap -r "$bin" 2>/dev/null || true
+  fi
+}

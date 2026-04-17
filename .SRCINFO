@@ -1,0 +1,21 @@
+pkgbase = sniffnet-bin
+	pkgdesc = Comfortably monitor your network traffic (prebuilt binary)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/GyulyVGC/sniffnet
+	install = sniffnet-bin.install
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	depends = alsa-lib
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	depends = libcap
+	depends = libpcap
+	provides = sniffnet=1.5.0
+	conflicts = sniffnet
+	noextract = sniffnet-bin-1.5.0.AppImage
+	source = sniffnet-bin-1.5.0.AppImage::https://github.com/GyulyVGC/sniffnet/releases/download/v1.5.0/Sniffnet_LinuxAppImage_amd64.AppImage
+	sha256sums = acd6360169831dd3481fcb28a64f0f23a3d4e84598e0662b425713ce87cc5b4e
+
+pkgname = sniffnet-bin
