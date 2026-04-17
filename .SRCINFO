@@ -1,0 +1,19 @@
+pkgbase = marmalade-bin
+	pkgdesc = MediaPipe tracking bridge for Linux with CLI, GTK3 and GTK4 binaries
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/RanAwaySuccessfully/marmalade
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gtk3
+	depends = gtk4
+	depends = libv4l
+	depends = xdg-utils
+	depends = pciutils
+	provides = marmalade
+	conflicts = marmalade
+	source = marmalade-bin-0.4.2.zip::https://github.com/RanAwaySuccessfully/marmalade/releases/download/v0.4.2/marmalade.zip
+	sha256sums = 3f79dd87f9c5353e9ab70af7b41d8048070f5ef6ef60ff0fe79ab16909f9d3c3
+
+pkgname = marmalade-bin
