@@ -2,7 +2,7 @@
 pkgname=kelivo-bin
 pkgver=1.1.10
 pkgrel=28.1
-pkgrel_ver=27
+pkgrel_ver=28
 pkgdesc="A Flutter LLM Chat Client"
 arch=("x86_64")
 url="https://github.com/Chevey339/kelivo"
