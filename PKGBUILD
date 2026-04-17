@@ -2,7 +2,7 @@
 # 🔋 slskdn - The batteries-included Soulseek web client
 pkgname=slskdn-bin
 _pkgname=slskd
-pkgver=0.24.5.slskdn.135
+pkgver=0.24.5.slskdn.136
 pkgrel=1
 pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
 arch=('x86_64')
@@ -23,7 +23,7 @@ backup=('etc/slskd/slskd.yml')
 options=('!strip')
 install=slskd.install
 source=(
-    "slskdn-main-linux-x64.zip::https://github.com/snapetech/slskdn/releases/download/${pkgver//.slskdn/-slskdn}/slskdn-main-linux-x64.zip"
+    "slskdn-main-linux-glibc-x64.zip::https://github.com/snapetech/slskdn/releases/download/${pkgver//.slskdn/-slskdn}/slskdn-main-linux-glibc-x64.zip"
     "slskd.service"
     "slskd.yml"
     "slskd.sysusers"
