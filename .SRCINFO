@@ -1,6 +1,6 @@
 pkgbase = den
-	pkgdesc = CLI tool for capturing and organizing project notes and context
-	pkgver = 0.1.0
+	pkgdesc = Braindumping for projects made easy.
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/RaghavGohil/den
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = den
 	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python
-	source = den-0.1.0.tar.gz::https://github.com/RaghavGohil/den/archive/v0.1.0.tar.gz
-	sha256sums = SKIP
+	source = den-0.1.4.tar.gz::https://github.com/RaghavGohil/den/archive/v0.1.4.tar.gz
+	sha256sums = 7355cb10a15b3fb7b7659656ae1be8c3c049575e342d5627f2f2dc0c746fa627
 
 pkgname = den
