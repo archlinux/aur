@@ -2,14 +2,15 @@
 # Contributor: Yacob Zitouni <yacob.zitouni@gmail.com>
 
 pkgname="projectctr-makerom"
-pkgver=0.18.4
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Creates CTR cxi/cfa/cci/cia files"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/3DSGuy/Project_CTR/tree/master/makerom"
 license=('MIT')
+depends=('libstdc++' 'libgcc' 'glibc')
 source=("https://github.com/3DSGuy/Project_CTR/archive/refs/tags/makerom-v$pkgver.tar.gz")
-sha256sums=('fa34054e8f4e026bdf4a3cf523c622d942736d1a1ea60541842bd80b596e388b')
+sha256sums=('446bd23919b7e9fa10540a784202d388a0b93ef4d7165f3990481edd2aa2f946')
 
 build() {
     cd "$srcdir/Project_CTR-makerom-v$pkgver/makerom"
@@ -18,5 +19,5 @@ build() {
 }
 
 package() {
-    install -Dm755 $srcdir/Project_CTR-makerom-v$pkgver/makerom/bin/makerom $pkgdir/usr/bin/makerom
+    install -Dm755 "$srcdir"/Project_CTR-makerom-v$pkgver/makerom/bin/makerom "$pkgdir"/usr/bin/makerom
 }
