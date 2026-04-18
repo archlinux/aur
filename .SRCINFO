@@ -1,0 +1,25 @@
+pkgbase = rime-ice-data
+	pkgdesc = Rime Ice input method data set for librime, installed into /usr/share/rime-data
+	pkgver = 2026.04.13
+	pkgrel = 1
+	url = https://github.com/iDvel/rime-ice
+	arch = any
+	license = GPL-3.0-only
+	conflicts = rime-data
+	conflicts = librime-data
+	conflicts = brise
+	conflicts = rime-prelude
+	conflicts = rime-essay
+	conflicts = rime-luna-pinyin
+	conflicts = rime-bopomofo
+	conflicts = rime-cangjie
+	conflicts = rime-stroke
+	conflicts = rime-terra-pinyin
+	provides = rime-data
+	provides = librime-data
+	source = rime-ice-data-2bd2983c6c74ea49b3a013f150ade7f3b8a27515.tar.gz::https://github.com/iDvel/rime-ice/archive/2bd2983c6c74ea49b3a013f150ade7f3b8a27515.tar.gz
+	source = fcitx5.yaml
+	sha256sums = 3df4aab9270497036988367ace8be3db02a0975a0da9e4e03b146e0131425ba9
+	sha256sums = 4e1db4bd11a8f68ef8c804d48c740451622e226f2defabb3fa628eb0fd09ff77
+
+pkgname = rime-ice-data

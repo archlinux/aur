@@ -1,0 +1,12 @@
+# Fcitx5 settings
+# encoding: utf-8
+
+config_version: "0.22"
+
+# set app options based on app name
+# e.g.
+# "app_options/kwrite":
+#   - ascii_mode: true
+# You may obtain the app name via
+# dbus-send --print-reply=literal --dest=org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.DebugInfo
+app_options: {}
