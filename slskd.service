@@ -9,10 +9,9 @@ Type=simple
 User=slskd
 Group=slskd
 # Use the packaged config explicitly so /etc/slskd/slskd.yml is authoritative.
-ExecStart=/usr/share/dotnet/dotnet /usr/lib/slskd/slskd.dll --config /etc/slskd/slskd.yml
+ExecStart=/usr/lib/slskd/slskd --config /etc/slskd/slskd.yml
 WorkingDirectory=/var/lib/slskd
 Environment="HOME=/var/lib/slskd"
-Environment="DOTNET_ROOT=/usr/share/dotnet"
 Restart=on-failure
 RestartSec=10
 

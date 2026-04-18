@@ -2,14 +2,14 @@
 # 🔋 slskdn - The batteries-included Soulseek web client (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=0.24.5.slskdn.139
+pkgver=0.24.5.slskdn.140
 pkgrel=1
 pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
 arch=('x86_64' 'aarch64')
 url="https://github.com/snapetech/slskdn"
 license=('AGPL-3.0-or-later')
-depends=('dotnet-runtime-8.0' 'aspnet-runtime-8.0' 'yt-dlp')
-makedepends=('dotnet-sdk-8.0' 'dotnet-runtime-8.0' 'aspnet-runtime-8.0' 'nodejs' 'npm')
+depends=('dotnet-runtime-10.0' 'aspnet-runtime-10.0' 'yt-dlp')
+makedepends=('dotnet-sdk-10.0' 'dotnet-runtime-10.0' 'aspnet-runtime-10.0' 'nodejs' 'npm')
 optdepends=(
     'docker: for containerized deployment'
     'ffmpeg: for audio decoding and SongID media handling'
@@ -28,10 +28,24 @@ source=(
     "slskd.sysusers"
 )
 # Note: First hash is SKIP (tarball changes each release), others are static file hashes
-sha256sums=('SKIP' 'd2146ef5879e73f488074072505389c895f4483f8f024077e1f62f676e22730a' '6d60a8a8ec79b1df0f5839e9a5ba8a77a021cc457fa138a62b58f4321b3a16df' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056')
+sha256sums=('SKIP' '9724a9ad5790fa011868c3777cbdb9e41224c3b612e7c47990c524f8659ab278' '6d60a8a8ec79b1df0f5839e9a5ba8a77a021cc457fa138a62b58f4321b3a16df' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056')
 
 build() {
     cd "${srcdir}/slskdn-${pkgver//.slskdn/-slskdn}"
+
+    local _rid
+    case "${CARCH}" in
+        x86_64)
+            _rid=linux-x64
+            ;;
+        aarch64)
+            _rid=linux-arm64
+            ;;
+        *)
+            echo "Unsupported Arch build architecture: ${CARCH}" >&2
+            return 1
+            ;;
+    esac
     
     # Build frontend (--legacy-peer-deps matches CI; resolves react-scripts vs typescript@5)
     cd src/web
@@ -40,7 +54,7 @@ build() {
     cd ../..
     
     # Build backend (not self-contained, uses system .NET)
-    # Clean obj/bin and publish so we get fresh 9.x DLLs (not stale 8.x from previous build)
+    # Clean obj/bin and publish so we get fresh 10.x binaries (not stale 8.x from previous build)
     rm -rf src/slskd/obj src/slskd/bin publish
     # Set Version + InformationalVersion so UI shows correct version (not 0.0.0 / Development)
     _version="${pkgver//.slskdn/-slskdn}"
@@ -49,7 +63,7 @@ build() {
         -c Release \
         -o publish \
         --self-contained false \
-        -r linux-x64 \
+        -r "${_rid}" \
         -p:Version="$_assembly_ver" \
         -p:InformationalVersion="$_version" \
         -p:PackageVersion="$_version"
