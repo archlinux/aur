@@ -32,7 +32,7 @@ optdepends=(
   'python-yfinance: trading module'
   'python-sqlalchemy: web server backend'
   'python-passlib: web server auth'
-  'python-jwt: web server JWT auth'
+  'python-pyjwt: web server JWT auth'
   'ollama: local model support'
 )
 provides=('cheetahclaws')
