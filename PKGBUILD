@@ -1,14 +1,14 @@
 # Maintainer: alejopek alejopek62@gmail.com
 pkgname=sys-dashboard
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A professional real-time system monitoring dashboard built with Node.js and Electron"
 arch=('x86_64')
 url="https://github.com/Alejopek/Sys-Dashboard-"
 license=('ISC')
 depends=('nodejs' 'npm')
 makedepends=('git')
-source=("git+${url}.git#tag=v${pkgver}")
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
