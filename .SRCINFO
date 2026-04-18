@@ -1,6 +1,6 @@
 pkgbase = verti
 	pkgdesc = Versioned artifacts for Git repositories
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/ruinivist/verti
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = verti
 	conflicts = verti
 	provides = verti
 	
-	source = https://github.com/ruinivist/verti/releases/download/v0.2.2/verti_0.2.2_source.tar.gz
-	sha256sums = cfa6d5cae943778101c86d8debbb21d3da7f5bb66395914e217d9b2206a014f5
+	source = https://github.com/ruinivist/verti/releases/download/v0.2.3/verti_0.2.3_source.tar.gz
+	sha256sums = 1cfa72aa5c7a042edcb3d8ad19a4efc58bbdb7f440029f633ec3757eeb19079c
 	
 pkgname = verti
