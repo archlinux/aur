@@ -9,7 +9,7 @@ provides=("cava-bg")
 conflicts=("cava-bg")
 depends=('cava' 'wayland')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/leriart/cava-bg/releases/download/$pkgver/cava-bg-$pkgver-x86_64.tar.gz")
-sha256sums=("9abefe795974741eb4729c20c65f3fd267eaa6c32fa0048376d1e0a8adf57b67")
+sha256sums=("caf8aaf7fad83ba17dde734388eedf1bceb0b70c62d82b39f22ba2588ececc75")
 
 package() {
     cd "$srcdir"

@@ -10,6 +10,6 @@ pkgbase = cava-bg
 	provides = cava-bg
 	conflicts = cava-bg
 	source = cava-bg-0.2.0.tar.gz::https://github.com/leriart/cava-bg/releases/download/0.2.0/cava-bg-0.2.0-x86_64.tar.gz
-	sha256sums = 9abefe795974741eb4729c20c65f3fd267eaa6c32fa0048376d1e0a8adf57b67
+	sha256sums = caf8aaf7fad83ba17dde734388eedf1bceb0b70c62d82b39f22ba2588ececc75
 
 pkgname = cava-bg
