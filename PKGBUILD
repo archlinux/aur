@@ -3,7 +3,7 @@
 
 _pkgname=squawk
 pkgname="${_pkgname}-cli"
-pkgver=2.47.0
+pkgver=2.48.0
 pkgrel=1
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=(
@@ -29,7 +29,7 @@ source=(
 	"https://github.com/sbdchd/squawk/archive/refs/tags/v${pkgver}.tar.gz"
 	use-system-openssl.patch
 )
-sha256sums=('ea8f0562cb475c22dcca00381bf47dbfeab259067189bccfcf23178b0b5adaec'
+sha256sums=('9f679eea158fbdc4fdd3b6a0b90c596db7d8975c57c7de5156a857644e351073'
             '19ea25b3dc922dee9bc675a6b684ee24bc2b9d869f467f50888d710a00f0fa4a')
 
 : "${pkgname}"
