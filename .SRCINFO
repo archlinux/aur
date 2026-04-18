@@ -1,5 +1,5 @@
 pkgbase = python-pysfcgal
-	pkgdesc = A Python package for segmenting geospatial data with the Segment Anything Model (SAM)
+	pkgdesc = An official Python wrapper for the SFCGAL library, inspired by Shapely
 	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://gitlab.com/sfcgal/pysfcgal
