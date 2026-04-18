@@ -1,7 +1,7 @@
 pkgbase = gbstudio-bin
 	pkgdesc = Gameboy game development environment
-	pkgver = 0.1.4
-	pkgrel = 1
+	pkgver = 0.1.5
+	pkgrel = 2
 	url = https://github.com/suleymanlaarabi/GBStudio
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = gbstudio-bin
 	depends = pango
 	depends = webkit2gtk-4.1
 	options = !emptydirs
-	source_x86_64 = gbstudio-bin-0.1.4.deb::https://github.com/suleymanlaarabi/GBStudio/releases/download/v0.1.4/GB-Studio_0.1.4_amd64.deb
-	sha256sums_x86_64 = b2d4574c389cb1170ce7c9597fc432665fde37b3445005bdb9eff57606697b76
+	source_x86_64 = gbstudio-bin-0.1.5.deb::https://github.com/suleymanlaarabi/GBStudio/releases/download/v0.1.5/GB-Studio_0.1.5_amd64.deb
+	sha256sums_x86_64 = ef5978b194df20dacc88da2b8a9d714ec835e5ddda12846f9ca06e476c7c885d
 
 pkgname = gbstudio-bin
