@@ -1,7 +1,7 @@
 # Maintainer: Fabio Fontana (fabifont) <me@fabifont.dev>
 
 pkgname=claude-code-bin
-pkgver=2.1.113
+pkgver=2.1.114
 pkgrel=1
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,8 @@ source_x86_64=("claude-${pkgver}-linux-x64::${_gcs_bucket}/${pkgver}/linux-x64/c
 source_aarch64=("claude-${pkgver}-linux-arm64::${_gcs_bucket}/${pkgver}/linux-arm64/claude")
 
 sha256sums=('728158fd1037143fad6907e8fa34804177e598b7326519503fe83cafdef849e6')
-sha256sums_x86_64=('a81f7726b3b6b910e50c08a09f0090cb60714695d6d01bfe8698ff16cda9b87d')
-sha256sums_aarch64=('7656fabaa2ba449a88cd3757827c62886a6f2cf7c050ef9d8357e6351da48ee1')
+sha256sums_x86_64=('12bd4b0916deb06be17ffc7b2f0485e140bf00b2db3dcb78469d66723d73c27f')
+sha256sums_aarch64=('9556b74e2c912e7dcaef90c91fd0dd5095364f8a9d71398de3c5c669612b828a')
 
 package() {
   local _source_arch
