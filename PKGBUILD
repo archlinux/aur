@@ -2,7 +2,7 @@
 # Maintainer: Victor Golovanenko <drygdryg2014 at domain yandex.com>
 pkgname=kaitai-struct-compiler-git
 _pkgname='kaitai-struct-compiler'
-pkgver=0.10.r56.g0acd030
+pkgver=0.11.r73.g02c287f
 pkgrel=1
 pkgdesc='Compiler for the Kaitai declarative binary format parsing language.'
 arch=('any')

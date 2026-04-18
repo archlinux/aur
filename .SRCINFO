@@ -1,6 +1,6 @@
 pkgbase = kaitai-struct-compiler-git
 	pkgdesc = Compiler for the Kaitai declarative binary format parsing language.
-	pkgver = 0.10.r56.g0acd030
+	pkgver = 0.11.r73.g02c287f
 	pkgrel = 1
 	url = https://kaitai.io
 	arch = any
