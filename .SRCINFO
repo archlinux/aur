@@ -1,6 +1,6 @@
 pkgbase = s3m
 	pkgdesc = CLI for streams of data in S3 buckets
-	pkgver = 0.16.1
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://s3m.stream
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = s3m
 	license = BSD
 	makedepends = cargo
 	options = !lto
-	source = s3m-0.16.1.tar.gz::https://github.com/s3m/s3m/archive/0.16.1.tar.gz
-	sha256sums = 0175c40412ff730d40cd32c47c4825a067bc48a2d6c6b389df4a544ce31c936e
+	source = s3m-0.16.2.tar.gz::https://github.com/s3m/s3m/archive/0.16.2.tar.gz
+	sha256sums = 725cf72c60fd5f224a2773be4ab8c3994e5d3122d1fa830ca848604f832e1485
 
 pkgname = s3m

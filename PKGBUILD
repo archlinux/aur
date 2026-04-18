@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Embriz <nbari at tequila dot io>
 
 pkgname=s3m
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 pkgdesc="CLI for streams of data in S3 buckets"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/s3m/s3m/archive/${pkgver}.tar.gz")
-sha256sums=('0175c40412ff730d40cd32c47c4825a067bc48a2d6c6b389df4a544ce31c936e')
+sha256sums=('725cf72c60fd5f224a2773be4ab8c3994e5d3122d1fa830ca848604f832e1485')
 
 build() {
     cd "$pkgname-$pkgver"
