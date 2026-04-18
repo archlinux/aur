@@ -1,0 +1,19 @@
+Author: Roland Rosenfeld <roland@debian.org>
+Bug-Debian: https://bugs.debian.org/1066582
+Description: Fix implicit declaration of function ‘yylex’
+Last-Update: 2024-08-31
+
+--- a/parser.y
++++ b/parser.y
+@@ -67,7 +67,10 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-                  
++
++extern void DisplayMessage(char *message, int toRemotePlayer);
++extern int yylex (void);
++
+ enum { False, True };
+ 
+ static void yyerror();

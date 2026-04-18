@@ -1,0 +1,21 @@
+From: Yann Dirson <ydirson@free.fr>
+Date: Sun, 25 Jan 2026 13:47:59 +0100
+Subject: Fix declaration of yyerror
+
+---
+ parser.y | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/parser.y b/parser.y
+index 928ced3..ed1a2a1 100644
+--- a/parser.y
++++ b/parser.y
+@@ -73,7 +73,7 @@ extern int yylex (void);
+ 
+ enum { False, True };
+ 
+-static void yyerror();
++static void yyerror(char *errmsg);
+            
+ static ShogiMove move_type;
+ static int  from_x, from_y, to_x, to_y;
