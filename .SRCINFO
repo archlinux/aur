@@ -15,6 +15,7 @@ pkgbase = niri-wallpaperengine-git
 	depends = ffmpeg
 	depends = mpv
 	depends = glfw
+	depends = freeglut
 	depends = glew
 	depends = libpulse
 	depends = libcups
