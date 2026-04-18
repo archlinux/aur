@@ -1,0 +1,20 @@
+pkgbase = wall-selector
+	pkgdesc = Selector de wallpapers 3x3 dinámico para Wayfire/Sway con soporte Pywal (Proyecto ZeroSignal)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Elpepesaurio44/wall-selector
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = git
+	depends = gtkmm3
+	depends = nlohmann-json
+	depends = swaybg
+	depends = python-pywal
+	depends = hicolor-icon-theme
+	source = git+https://github.com/Elpepesaurio44/wall-selector.git
+	sha256sums = SKIP
+
+pkgname = wall-selector
