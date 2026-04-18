@@ -1,6 +1,6 @@
 pkgbase = codex-app-unofficial
 	pkgdesc = Unofficial Linux build of Codex from OpenAI's Codex appcast feed.
-	pkgver = 26.415.30602_launcher.7
+	pkgver = 26.415.32059_launcher.7
 	pkgrel = 1
 	url = https://github.com/better-slop/codex-app-linux
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = codex-app-unofficial
 	conflicts = codex-app-linux-bin
 	replaces = codex-app-linux-bin
 	install = codex-app-unofficial.install
-	source = codex-app-linux-26.415.30602-launcher.7-x64-linux-unpacked.tar.gz::https://github.com/better-slop/codex-app-linux/releases/download/v26.415.30602-launcher.7/codex-app-linux-26.415.30602-launcher.7-x64-linux-unpacked.tar.gz
-	source = codex-app-linux-26.415.30602-launcher.7-x64.png::https://github.com/better-slop/codex-app-linux/releases/download/v26.415.30602-launcher.7/codex-app-linux-26.415.30602-launcher.7-x64.png
-	sha256sums = bfd4e3162ed2581107fa657f480b3a04357c6d16c7300e710b0b8abd7dbdb9a2
+	source = codex-app-linux-26.415.32059-launcher.7-x64-linux-unpacked.tar.gz::https://github.com/better-slop/codex-app-linux/releases/download/v26.415.32059-launcher.7/codex-app-linux-26.415.32059-launcher.7-x64-linux-unpacked.tar.gz
+	source = codex-app-linux-26.415.32059-launcher.7-x64.png::https://github.com/better-slop/codex-app-linux/releases/download/v26.415.32059-launcher.7/codex-app-linux-26.415.32059-launcher.7-x64.png
+	sha256sums = 7757b3da49567c1bbbff48fb26406a20991ba93a5b6e0b697f5701012bc30544
 	sha256sums = 1c926e380bfe6a50f40648dd9bc5de88da7271546491adf99ec72172e17df6a0
 
 pkgname = codex-app-unofficial
