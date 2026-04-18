@@ -6,11 +6,11 @@ Wants=network-online.target
 [Service]
 User=hath
 WorkingDirectory=/var/lib/hath/ 
-ExecStart=/usr/bin/java -Xms16m -Xmx512m -jar /usr/share/java/hath/hath.jar 
+ExecStart=/usr/bin/hath
 SuccessExitStatus=143
-TimeoutStopSec=10
+TimeoutStopSec=60
 Restart=always
-RestartSec=5
+RestartSec=600
 
 [Install]
 WantedBy=multi-user.target

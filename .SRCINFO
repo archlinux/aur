@@ -1,7 +1,7 @@
 pkgbase = hath
 	pkgdesc = Open-source Peer-2-Peer gallery distribution system
 	pkgver = 1.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ehwiki.org/wiki/Hentai@Home
 	install = hath.install
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = hath
 	source = hath.sysusers
 	source = hath.tmpfiles
 	sha256sums = d2aab9bf9029c59b2f4a6e2ea8e8e1a0a4db66d22109c03aea57df58a6b8619d
-	sha256sums = 4b7124af5e27d25a9b3033b2a14e48ea8745417c3fd400a6ec6ddf1817b74b61
+	sha256sums = 029681a77400b5e30dcb3bb82eead49cf933d96199dc51e81c3dfb77655177aa
 	sha256sums = 80064d7e31085b56ad5b41863f51b25c33a20328a7f49cd88f80dfed281c439a
 	sha256sums = 0c3a1a6c26cec616bc44274acbf5908e736581ae30cdf0af7508d4bfcad3a81e
 	sha256sums = 9d11932a3ff1011cbe5ad2f000d29e3ad6011235fcc94685dcbc9bd61a54f87c

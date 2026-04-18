@@ -6,6 +6,10 @@ cat << EOF
 ## when used as a downloader, your files will be in  ##
 ## /var/lib/hath/download/                           ##
 ##                                                   ##
+## On first run, use sudo hath to enter ID & token.  ##
+## after registration, it may be run directly        ##
+## or with systemd service.                          ##
+##                                                   ##
 ## Do not manually delete the cache; this adversely  ##
 ## impacts the H@H network. For more information:    ##
 ## https://ehwiki.org/wiki/Hentai@Home               ##
