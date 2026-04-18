@@ -1,6 +1,6 @@
 pkgbase = python-ouroboros-ai
 	pkgdesc = Specification-first workflow engine for AI coding agents
-	pkgver = 0.28.7
+	pkgver = 0.28.8
 	pkgrel = 1
 	url = https://github.com/Q00/ouroboros
 	install = python-ouroboros-ai.install
@@ -13,6 +13,7 @@ pkgbase = python-ouroboros-ai
 	makedepends = python-hatch-vcs
 	depends = python
 	depends = python-aiosqlite
+	depends = python-anyio
 	depends = python-prompt_toolkit
 	depends = python-pydantic
 	depends = python-yaml
@@ -28,7 +29,7 @@ pkgbase = python-ouroboros-ai
 	optdepends = python-streamlit: dashboard support
 	optdepends = python-plotly: dashboard support
 	optdepends = python-pandas: dashboard support
-	source = https://files.pythonhosted.org/packages/source/o/ouroboros_ai/ouroboros_ai-0.28.7.tar.gz
-	sha256sums = 41ca71a5d1cf5da8779ce3d57c18d669762c40505a259dcfe932b58c88a3b27e
+	source = https://files.pythonhosted.org/packages/source/o/ouroboros_ai/ouroboros_ai-0.28.8.tar.gz
+	sha256sums = 633c02769e0469ec2683f7cf3484017c15fc6d0b14ba700e1313455cedd182ad
 
 pkgname = python-ouroboros-ai
