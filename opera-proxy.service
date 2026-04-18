@@ -1,6 +1,6 @@
 [Unit]
 Description=Opera VPN proxy
-Documentation=https://github.com/Snawoot/opera-proxy
+Documentation=https://github.com/Alexey71/opera-proxy
 After=network.target network-online.target
 Requires=network-online.target
 
