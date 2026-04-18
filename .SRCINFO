@@ -1,0 +1,21 @@
+pkgbase = paws-plugins-git
+	pkgdesc = PAwS Audio Wrangling Suite - LV2 and CLAP plugins
+	pkgver = r1
+	pkgrel = 1
+	url = https://zynskey.nekoweb.org/paws
+	arch = x86_64
+	groups = clap-plugins
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = lv2
+	makedepends = clap
+	depends = qt5-base
+	replaces = paws-lv2-git
+	source = git+https://codeberg.org/zynskeyfolf/paws-plugins
+	sha256sums = SKIP
+
+pkgname = paws-plugins-git
