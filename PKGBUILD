@@ -2,7 +2,7 @@
 pkgname=colony-bin
 _pkgname=colony
 pkgver=0.1.4
-pkgrel=2
+pkgrel=1
 pkgdesc="Application launcher for the Project-Colony ecosystem (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/Project-Colony/Colony"
