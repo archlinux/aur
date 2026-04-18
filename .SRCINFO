@@ -1,6 +1,6 @@
 pkgbase = codex-app-beta-unofficial
 	pkgdesc = Unofficial Linux build of Codex Beta from OpenAI's Codex beta appcast feed.
-	pkgver = 26.415.40636_beta.1798.launcher.8
+	pkgver = 26.415.40636_beta.1798.launcher.9
 	pkgrel = 1
 	url = https://github.com/better-slop/codex-app-linux
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = codex-app-beta-unofficial
 	conflicts = codex-app-linux-beta-bin
 	replaces = codex-app-linux-beta-bin
 	install = codex-app-beta-unofficial.install
-	source = codex-app-linux-26.415.40636-beta.1798.launcher.8-x64-linux-unpacked.tar.gz::https://github.com/better-slop/codex-app-linux/releases/download/v26.415.40636-beta.1798.launcher.8/codex-app-linux-26.415.40636-beta.1798.launcher.8-x64-linux-unpacked.tar.gz
-	source = codex-app-linux-26.415.40636-beta.1798.launcher.8-x64.png::https://github.com/better-slop/codex-app-linux/releases/download/v26.415.40636-beta.1798.launcher.8/codex-app-linux-26.415.40636-beta.1798.launcher.8-x64.png
-	sha256sums = b54871f8af22d2041a0ae195320f3b2669b589c3ba66ad1e8adf579444a5976b
+	source = codex-app-linux-26.415.40636-beta.1798.launcher.9-x64-linux-unpacked.tar.gz::https://github.com/better-slop/codex-app-linux/releases/download/v26.415.40636-beta.1798.launcher.9/codex-app-linux-26.415.40636-beta.1798.launcher.9-x64-linux-unpacked.tar.gz
+	source = codex-app-linux-26.415.40636-beta.1798.launcher.9-x64.png::https://github.com/better-slop/codex-app-linux/releases/download/v26.415.40636-beta.1798.launcher.9/codex-app-linux-26.415.40636-beta.1798.launcher.9-x64.png
+	sha256sums = c9b09e781763cd060a041bf3217b8942e2aa589afa95c0bb3ccda796f1db06b0
 	sha256sums = 1c926e380bfe6a50f40648dd9bc5de88da7271546491adf99ec72172e17df6a0
 
 pkgname = codex-app-beta-unofficial
