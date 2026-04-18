@@ -2,12 +2,12 @@
 pkgname=fladder-bin
 _pkgname=Fladder
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple Jellyfin Frontend"
 arch=('x86_64')
 url="https://github.com/Fladder-App/Fladder"
 license=('GPL-3.0-or-later')
-depends=('mpv' 'gtk3')
+depends=('mpv' 'gtk3' 'xdg-user-dirs')
 makedepends=('patchelf')
 source=(
     "${pkgname}-${pkgver}.zip::https://github.com/DonutWare/Fladder/releases/download/v${pkgver}/Fladder-Linux-${pkgver}.zip"
