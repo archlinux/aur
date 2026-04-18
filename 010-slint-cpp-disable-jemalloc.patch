@@ -1,6 +1,6 @@
 --- a/api/cpp/CMakeLists.txt
 +++ b/api/cpp/CMakeLists.txt
-@@ -161,10 +161,6 @@ if(SLINT_FEATURE_COMPILER AND NOT SLINT_COMPILER)
+@@ -158,10 +158,6 @@ if(SLINT_FEATURE_COMPILER AND NOT SLINT_COMPILER)
      if (SLINT_FEATURE_SDF_FONTS)
          list(APPEND slint_compiler_features "sdf-fonts")
      endif()
