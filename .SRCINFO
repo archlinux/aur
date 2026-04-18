@@ -1,0 +1,16 @@
+pkgbase = linux-ops-center-git
+	pkgdesc = GTK4 operations dashboard for services, disk audits, and package checks
+	pkgver = 0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/EvansOgala/linux-ops-center
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = systemd
+	source = linux-ops-center-git::git+https://github.com/EvansOgala/linux-ops-center.git
+	sha256sums = SKIP
+
+pkgname = linux-ops-center-git
