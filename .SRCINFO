@@ -8,9 +8,12 @@ pkgbase = sortiz-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	makedepends = alsa-lib
 	depends = gcc-libs
+	depends = alsa-lib
 	provides = sortiz
 	conflicts = sortiz
+	options = !debug
 	source = sortiz-git::git+https://github.com/PR0M4XIMUS/sortiz.git
 	sha256sums = SKIP
 

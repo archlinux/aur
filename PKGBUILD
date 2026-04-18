@@ -8,10 +8,14 @@ pkgdesc="TUI sorting algorithm visualizer with smooth animations and full theme 
 arch=('x86_64' 'aarch64')
 url="https://github.com/PR0M4XIMUS/sortiz"
 license=('MIT')
-depends=('gcc-libs')
-makedepends=('cargo' 'git')
+depends=('gcc-libs' 'alsa-lib')
+makedepends=('cargo' 'git' 'alsa-lib')
 provides=('sortiz')
 conflicts=('sortiz')
+# Disable debug flag injection: Arch's makepkg sets CARGO_PROFILE_RELEASE_DEBUG=2
+# and DEBUG_RUSTFLAGS="-C debuginfo=2 -C force-frame-pointers=yes" which trigger
+# a SIGSEGV in rustc 1.94.1 during LLVM codegen. options=(!debug) suppresses this.
+options=('!debug')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
