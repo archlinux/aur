@@ -1,22 +1,33 @@
 pkgbase = stormfetch
-	pkgdesc = A simple linux fetch program written in go and bash
-	pkgver = 7.4
+	pkgdesc = A linux fetch program written in go
+	pkgver = 8.0
 	pkgrel = 1
 	url = https://github.com/EnumeratedDev/stormfetch
 	install = stormfetch.install
 	arch = any
 	license = MIT
-	makedepends = libx11
+	makedepends = bash
 	makedepends = go
+	makedepends = libx11
+	makedepends = libxcursor
+	makedepends = libxrandr
+	makedepends = libxinerama
+	makedepends = libxi
+	makedepends = libglvnd
 	makedepends = make
-	depends = sh
+	backup = etc/stormfetch/config.yml
+	source = git+https://github.com/EnumeratedDev/stormfetch.git#tag=8.0
+	sha256sums = SKIP
+
+pkgname = stormfetch
+	depends = bash
+	optdepends = stormfetch-monitor-detection: Detect monitor resolution and refresh rate
+
+pkgname = stormfetch-monitor-detection
+	pkgdesc = Monitor detection utility for stormfetch
+	depends = stormfetch
 	depends = libxcursor
 	depends = libxrandr
 	depends = libxinerama
 	depends = libxi
 	depends = libglvnd
-	backup = etc/stormfetch/config.yml
-	source = git+https://github.com/EnumeratedDev/stormfetch.git#tag=7.4
-	sha256sums = SKIP
-
-pkgname = stormfetch

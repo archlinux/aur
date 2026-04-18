@@ -1,15 +1,16 @@
 # Maintainers: let <let@notlet.dev>, EnumDev <enumdev@enumerated.dev>
 
-pkgname=stormfetch
-pkgver=7.4
+pkgbase=stormfetch
+pkgname=(stormfetch stormfetch-monitor-detection)
+pkgver=8.0
 pkgrel=1
-pkgdesc='A simple linux fetch program written in go and bash'
+pkgdesc='A linux fetch program written in go'
 arch=('any')
 url='https://github.com/EnumeratedDev/stormfetch'
 license=('MIT')
 
-makedepends=('libx11' 'go' 'make')
-depends=('sh' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libglvnd')
+makedepends=('bash' 'go' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libglvnd' 'make')
+
 backup=(etc/stormfetch/config.yml)
 install=stormfetch.install
 
@@ -18,13 +19,30 @@ sha256sums=('SKIP')
 
 build() {
 	cd "$srcdir/stormfetch"
-	make PREFIX=/usr SYSCONFDIR=/etc
+
+	# Expects Go LDFLAGS
+	unset LDFLAGS
+
+	make PREFIX=/usr LIBEXECDIR=/usr/lib SYSCONFDIR=/etc
 }
 
-package() {
+package_stormfetch() {
+	depends=('bash')
+	optdepends=('stormfetch-monitor-detection: Detect monitor resolution and refresh rate')
+
 	cd "$srcdir/stormfetch"
-	make DESTDIR="$pkgdir" PREFIX=/usr SYSCONFDIR=/etc install
-	make DESTDIR="$pkgdir" PREFIX=/usr SYSCONFDIR=/etc install-config
+	make DESTDIR="$pkgdir" PREFIX=/usr LIBEXECDIR=/usr/lib SYSCONFDIR=/etc install-stormfetch
+	make DESTDIR="$pkgdir" PREFIX=/usr LIBEXECDIR=/usr/lib SYSCONFDIR=/etc install-config
+
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_stormfetch-monitor-detection() {
+	pkgdesc='Monitor detection utility for stormfetch'
+	depends=('stormfetch' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libglvnd')
+
+	cd "$srcdir/stormfetch"
+	make DESTDIR="$pkgdir" PREFIX=/usr LIBEXECDIR=/usr/lib SYSCONFDIR=/etc install-stormfetch-monitor-detection
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
