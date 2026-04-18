@@ -2,7 +2,7 @@
 
 pkgname=echomusic-appimage
 _pkgname=echomusic
-pkgver="2.1.5"
+pkgver="2.1.7"
 pkgrel=3
 pkgdesc="EchoMusic desktop client AppImage"
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=('libappindicator-gtk3: tray indicator support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
-source_x86_64=("EchoMusic-${pkgver}-linux-x86_64.AppImage::https://github.com/hoowhoami/EchoMusic/releases/download/v${pkgver}/EchoMusic-${pkgver}-linux-x86_64.AppImage")
-sha512sums_x86_64=('708a056c036d07d1540e2e5cb21327df5c670cc11505f907d8b2b602b55a9121c7e08b25c60d865f7a0089f57d648789b4320290a0f9d8d7452e802c460de91f')
+source_x86_64=("EchoMusic-2.1.7-linux-x86_64.AppImage::https://github.com/hoowhoami/EchoMusic/releases/download/v2.1.7/EchoMusic-2.1.7-linux-x86_64.AppImage")
+sha512sums_x86_64=('6b289139ec654b768b0b497c8f921959c0ce111d3c16fce9574bf31ae431d54f77f2708bcb93a30a5a4f418cbad8762fe510ea91392e85047cf6f92b74d0d7e4')
 noextract=("EchoMusic-${pkgver}-linux-x86_64.AppImage")
 
 prepare() {
