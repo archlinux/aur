@@ -4,13 +4,13 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.3109.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
 license=('custom:Claude')
-depends=('electron')
-makedepends=('electron')
+depends=('alsa-lib' 'gtk3' 'nss')
+makedepends=('unzip')
 optdepends=('nodejs: System Node.js for MCP extensions that require specific versions (Electron bundles Node.js as fallback)'
             'claude-code: Claude Code CLI for agentic coding features (npm i -g @anthropic-ai/claude-code)'
             'claude-cowork-service: Enables Cowork VM features on Linux'
@@ -30,26 +30,31 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'socat: Cowork socket health check in launcher (fallback: age-based check)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.3109.0-5/claude-desktop-1.3109.0-linux.tar.gz")
-sha256sums_x86_64=('da02f22c4fbab3d2924f022f5f613f5dcf2d38356756fe6fdd82662c2a8cbea6')
+_electron_ver=41.2.1
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.3109.0-6/claude-desktop-1.3109.0-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
+sha256sums_x86_64=('970784b91163c8d555f5550bd345d9cda07f9d1b59513b0891d87bfa067ba440' 'SKIP')
 options=('!strip')
 
 package() {
     cd "$srcdir"
 
-    # Install application files (pre-patched)
+    # Install bundled Electron runtime
     install -dm755 "$pkgdir/usr/lib/$pkgname"
-    cp -r app/* "$pkgdir/usr/lib/$pkgname/"
+    unzip -q "$srcdir/electron-v${_electron_ver}-linux-x64.zip" -d "$pkgdir/usr/lib/$pkgname"
 
-    # Copy system electron into our prefix under the APP_ID name. Electron
-    # reads /proc/self/exe for Wayland app_id / X11 WM_CLASS, so the binary
-    # name must match the .desktop StartupWMClass.
-    local electron_bin=/usr/lib/electron/electron
-    if [[ -x $electron_bin ]]; then
-        cp "$electron_bin" "$pkgdir/usr/lib/$pkgname/com.anthropic.claude-desktop"
-    else
-        echo "PKGBUILD: /usr/lib/electron/electron not found; WM_CLASS will be wrong until rebuilt against an installed electron" >&2
+    # Rename the Electron binary to APP_ID. Electron reads /proc/self/exe for
+    # Wayland app_id / X11 WM_CLASS, so the binary name must match the .desktop
+    # StartupWMClass.
+    mv "$pkgdir/usr/lib/$pkgname/electron" \
+       "$pkgdir/usr/lib/$pkgname/com.anthropic.claude-desktop"
+
+    # Set SUID on chrome-sandbox (required by Chromium's sandbox)
+    if [ -f "$pkgdir/usr/lib/$pkgname/chrome-sandbox" ]; then
+        chmod 4755 "$pkgdir/usr/lib/$pkgname/chrome-sandbox"
     fi
+
+    # Install application files (pre-patched) into Electron's resources directory
+    cp -r app/* "$pkgdir/usr/lib/$pkgname/resources/"
 
     # Install launcher script (Wayland/X11 detection, env setup, lock cleanup)
     install -Dm755 "$srcdir/launcher/claude-desktop" "$pkgdir/usr/bin/claude-desktop"
