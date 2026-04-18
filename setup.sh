@@ -4,10 +4,10 @@
 # AstrBot Cross-Platform Installer  |  supports: Arch / Debian / Ubuntu / RHEL / Fedora / openSUSE
 #
 # Usage:
-#   ./setup.sh               Install / Update AstrBot
+#   ./setup.sh               Install / Refresh AstrBot
 #   ./setup.sh deps          Step 1: Install dependencies only
 #   ./setup.sh setups        Step 2: Setup users / dirs / permissions
-#   ./setup.sh files         Step 3: Clone app + install service
+#   ./setup.sh files         Step 3: Install app + management scripts + service
 #   ./setup.sh help          Show this help
 # ──────────────────────────────────────────────────────────────────────────────
 set -euo pipefail
@@ -96,7 +96,7 @@ detect_distro() {
 _install_deps_arch() {
   need_cmd pacman
   _log "Installing via pacman..."
-  local pkgs=(python python-pip uv git certbot)
+  local pkgs=(python312 python-pip uv git certbot)
   # rustup provides cargo; do not install rust/cargo from official repos if rustup exists
   if ! command -v rustup >/dev/null 2>&1; then
     pkgs+=(rust cargo)
@@ -227,12 +227,32 @@ install_files() {
     ok "Installed: ${ASTRBOT_APP_DIR} (${_ver})"
   fi
 
+  _log "Installing management scripts..."
+  if [[ -f "${REPO_ROOT}/astrbotctl" ]]; then
+    sudo install -Dm755 "${REPO_ROOT}/astrbotctl" "/usr/bin/astrbotctl"
+  else
+    err "Missing astrbotctl in ${REPO_ROOT}"
+  fi
+  if [[ -f "${REPO_ROOT}/astrbotctl.functions" ]]; then
+    sudo install -Dm644 "${REPO_ROOT}/astrbotctl.functions" "/usr/bin/astrbotctl.functions"
+  else
+    err "Missing astrbotctl.functions in ${REPO_ROOT}"
+  fi
+  if [[ -f "${REPO_ROOT}/tmpl.conf" ]]; then
+    sudo install -Dm644 "${REPO_ROOT}/tmpl.conf" "${ASTRBOT_CONFIG_DIR}/tmpl.conf"
+  else
+    err "Missing tmpl.conf in ${REPO_ROOT}"
+  fi
+  ok "Management scripts installed."
+
   _log "Installing systemd service..."
   if [[ -f "${REPO_ROOT}/astrbot@.service" ]]; then
     sudo install -Dm644 "${REPO_ROOT}/astrbot@.service" \
       "/etc/systemd/system/astrbot@.service"
     sudo systemctl daemon-reload
     ok "systemd service installed."
+  else
+    err "Missing astrbot@.service in ${REPO_ROOT}"
   fi
 }
 
@@ -245,10 +265,10 @@ show_help() {
   printf '%s║%s  Supports: Arch / Debian / Ubuntu / RHEL / Fedora…    %s║%s\n' "${CYN}" "${RST}" "${DIM}" "${RST}"
   printf '%s╚═══════════════════════════════════════════════════════╝%s\n' "${CYN}" "${RST}"
   printf '%s\n' ""
-  printf '  %s./setup.sh%s          Install / Update AstrBot\n' "${GRN}" "${RST}"
+  printf '  %s./setup.sh%s          Install / Refresh AstrBot\n' "${GRN}" "${RST}"
   printf '  %s./setup.sh deps%s     Step 1 — Install system dependencies\n' "${GRN}" "${RST}"
   printf '  %s./setup.sh setups%s    Step 2 — Setup users, dirs, permissions\n' "${GRN}" "${RST}"
-  printf '  %s./setup.sh files%s    Step 3 — Clone app + install service\n' "${GRN}" "${RST}"
+  printf '  %s./setup.sh files%s    Step 3 — Install app, astrbotctl, and service\n' "${GRN}" "${RST}"
   printf '  %s./setup.sh help%s     Show this help\n' "${GRN}" "${RST}"
   printf '%s\n' ""
   printf '  %sNOTE:%s  Run %swithout sudo%s — the installer asks when needed.\n' "${YEL}" "${RST}" "${BOLD}" "${RST}"
@@ -282,9 +302,13 @@ case "${1:-install}" in
     [[ "${SKIP_ALLFILES}"   != true ]] && install_files
     printf '\n'
     ok "AstrBot is ready!"
-    printf '\n  %sCreate an instance:%s    %sastrbotctl init <name>%s\n' "${BOLD}" "${RST}" "${GRN}" "${RST}"
-    printf '  %sStart service:%s         %ssudo systemctl start astrbot@<name>%s\n' "${BOLD}" "${RST}" "${GRN}" "${RST}"
-    printf '  %sEnable on boot:%s         %ssudo systemctl enable --now astrbot@<name>%s\n' "${BOLD}" "${RST}" "${GRN}" "${RST}"
+    printf '\n  %sCreate an instance:%s    %ssudo astrbotctl init <name>%s\n' "${BOLD}" "${RST}" "${GRN}" "${RST}"
+    printf '  %sStart service:%s         %ssudo astrbotctl start <name>%s\n' "${BOLD}" "${RST}" "${GRN}" "${RST}"
+    printf '  %sForeground debug:%s      %ssudo astrbotctl run <name>%s\n' "${BOLD}" "${RST}" "${GRN}" "${RST}"
+    printf '  %sEnable on boot:%s        %ssudo systemctl enable --now astrbot@<name>%s\n' "${BOLD}" "${RST}" "${GRN}" "${RST}"
+    printf '  %sIf code looks stale:%s   %ssudo astrbotctl sync <name>%s\n' "${BOLD}" "${RST}" "${GRN}" "${RST}"
+    printf '  %sLock file:%s             %sASTRBOT_ROOT/astrbot.lock%s\n' "${BOLD}" "${RST}" "${GRN}" "${RST}"
+    printf '  %sRemove stale lock:%s     %ssudo rm -f /var/lib/astrbot/<name>/astrbot.lock%s\n' "${BOLD}" "${RST}" "${GRN}" "${RST}"
     printf '  %sDocs:%s                   %shttps://docs.astrbot.app%s\n' "${BOLD}" "${RST}" "${CYN}" "${RST}"
     printf '\n'
     ;;

@@ -77,8 +77,8 @@ rm -rf src/ pkg/
 makepkg --printsrcinfo >.SRCINFO
 
 echo "[5/5] Committing and pushing..."
-# git add PKGBUILD .SRCINFO to catch both tracked and new files
-git add PKGBUILD .SRCINFO
+
+git add -u
 if git diff --quiet && git diff --cached --quiet; then
     echo ">>> 没有更改，跳过提交"
 else
@@ -89,5 +89,10 @@ git push github "$BRANCH" 2>/dev/null || echo "⚠️ GitHub push failed (check 
 
 echo "=== ✅ 完成！版本: $NEW_VER-$NEW_PKGREL ==="
 echo ""
-echo "在远程服务器上执行以下命令更新 (首次由旧版切换时需加 --overwrite 覆盖未追踪文件):"
-echo "  ssh ArchDmit 'sudo -u lightjunction paru -S astrbot-git --rebuild --overwrite \"*\" --noconfirm'"
+echo "在远程服务器上执行以下命令更新:"
+echo "  1. 更新/重建 AUR 包"
+echo "     ssh ArchDmit 'sudo -u lightjunction paru -S astrbot-git --rebuild --overwrite \"*\" --noconfirm'"
+echo ""
+echo "  包升级后会自动尝试同步现有实例虚拟环境。"
+echo "  如果实例仍像在跑旧代码，可手动执行:"
+echo "     ssh ArchDmit 'sudo astrbotctl sync --all'"

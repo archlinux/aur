@@ -9,7 +9,7 @@ AstrBot is an Agentic IM Chatbot infrastructure. This AUR package (`astrbot-git`
 
 - **Multi-Instance Support**: Run multiple bots on the same server with isolated data and environments.
 - **Systemd Integration**: Manage bots as system services (`systemctl start astrbot@instance`).
-- **Environment Isolation**: Uses `uv` to manage Python dependencies in `/var/cache/astrbot`, keeping your system Python clean.
+- **Environment Isolation**: Uses `uv` to manage a per-instance virtualenv under `/var/lib/astrbot/<instance>/.venv`, keeping your system Python clean.
 - **Secure by Default**: Runs as a dedicated `astrbot` user with restricted permissions.
 
 ### Installation
@@ -85,12 +85,11 @@ The `astrbotctl` utility is the main entry point for managing AstrBot instances.
 
 - **List instances**:
     ```bash
-    astrbotctl list
+    astrbotctl ls
     ```
 - **Change dashboard credentials quickly**:
     ```bash
-    astrbotctl password <name>
-    astrbotctl password -u admin -p 'new-password' <name>
+    sudo astrbotctl admin -u admin -p 'new-password' <name>
     ```
 - **Export instance backup quickly**:
     ```bash
@@ -111,10 +110,17 @@ The `astrbotctl` utility is the main entry point for managing AstrBot instances.
     # Install a plugin
     astrbotctl cli <name> plug install <plugin_repo>
     ```
+- **Refresh an instance venv after package updates**:
+    Package upgrades try to sync existing instance virtualenvs automatically. If `/opt/astrbot` has been updated but an instance still appears to run old AstrBot code:
+    ```bash
+    sudo astrbotctl sync <name>
+    # or sync all instances
+    sudo astrbotctl sync --all
+    ```
 
 ### Architecture & File Structure
 
-This package uses a read-only application source (`/opt`) with per-instance mutable data (`/var/lib`) and environment caches (`/var/cache`).
+This package uses a read-only application source (`/opt`) with per-instance mutable data and virtualenvs under `/var/lib`.
 
 ```bash
 /
@@ -138,13 +144,9 @@ This package uses a read-only application source (`/opt`) with per-instance muta
 │       └── bot2.conf             # Config for 'bot2'
 │
 ├── var/
-│   ├── lib/astrbot/              # [Data Persistence] Runtime data
-│   │   ├── bot1/                 # Data for 'bot1' (DB, logs, plugins)
-│   │   └── bot2/                 # Data for 'bot2'
-│   │
-│   └── cache/astrbot/            # [Runtime Env] uv-managed venvs
-│       ├── venv-bot1/            # Isolated venv for 'bot1'
-│       └── venv-bot2/            # Isolated venv for 'bot2'
+│   └── lib/astrbot/              # [Data + Venv] Per-instance runtime state
+│       ├── bot1/                 # Data for 'bot1' (DB, logs, plugins, .venv)
+│       └── bot2/                 # Data for 'bot2' (DB, logs, plugins, .venv)
 ```
 
 ### Configuration
@@ -173,18 +175,32 @@ EXTRA_ARGS=""
   ```
 
 - **Permission Errors**:
-  Ensure directories in `/var/lib/astrbot` and the instance venv under `/var/cache/astrbot` are owned by `astrbot:astrbot`.
+  Ensure directories in `/var/lib/astrbot` and the instance venv are owned by `astrbot:astrbot`.
   ```bash
   sudo chown -R astrbot:astrbot /var/lib/astrbot
-  sudo chown -R astrbot:astrbot /var/cache/astrbot/venv-<instance>
+  sudo chown -R astrbot:astrbot /var/lib/astrbot/<instance>/.venv
   ```
   If the venv was created by `root`, also ensure its Python interpreter is not linked into `/root/.local/share/uv/...`.
   Rebuild the venv after installing the fixed package if needed.
 
+- **Package Updated But Runtime Still Looks Old**:
+  Package upgrades try to sync instance virtualenvs automatically. If `/opt/astrbot/.version` has changed but the instance still behaves like the old AstrBot code is installed:
+  ```bash
+  sudo astrbotctl sync <instance>
+  # or
+  sudo astrbotctl sync --all
+  ```
+
+- **Stale Lock File**:
+  The lock file lives at `ASTRBOT_ROOT/astrbot.lock` (for example `/var/lib/astrbot/<instance>/astrbot.lock`). If an instance exits unexpectedly and leaves the lock behind, remove it manually:
+  ```bash
+  sudo rm -f /var/lib/astrbot/<instance>/astrbot.lock
+  ```
+
 - **Clean Cache**:
   If python dependencies break after an update:
   ```bash
-  sudo rm -rf /var/cache/astrbot/venv-<instance>
+  sudo rm -rf /var/lib/astrbot/<instance>/.venv
   sudo systemctl restart astrbot@<instance>
   ```
 
@@ -215,7 +231,7 @@ AstrBot 是一个支持多模型、多平台的即时通讯机器人框架。本
 
 - **多实例支持**: 在同一台服务器上运行多个机器人，数据和环境相互隔离。
 - **Systemd 集成**: 将机器人作为系统服务管理 (`systemctl start astrbot@instance`)。
-- **环境隔离**: 使用 `uv` 在 `/var/cache/astrbot` 中管理 Python 依赖，保持系统 Python 环境整洁。
+- **环境隔离**: 使用 `uv` 为每个实例管理位于 `/var/lib/astrbot/<instance>/.venv` 的独立虚拟环境，保持系统 Python 环境整洁。
 - **默认安全**: 作为专用的 `astrbot` 用户运行，权限受限。
 
 ### 安装
@@ -291,12 +307,11 @@ cd astrbot-aur
 
 - **列出实例**:
     ```bash
-    astrbotctl list
+    astrbotctl ls
     ```
 - **快速修改控制台账号密码**:
     ```bash
-    astrbotctl password <name>
-    astrbotctl password -u admin -p 'new-password' <name>
+    sudo astrbotctl admin -u admin -p 'new-password' <name>
     ```
 - **快速导出实例备份**:
     ```bash
@@ -317,10 +332,17 @@ cd astrbot-aur
     # 安装插件
     astrbotctl cli <name> plug install <plugin_repo>
     ```
+- **在包更新后刷新实例虚拟环境**:
+    包升级时会尽量自动同步现有实例虚拟环境。如果 `/opt/astrbot` 已更新，但实例看起来仍在运行旧版本代码：
+    ```bash
+    sudo astrbotctl sync <name>
+    # 或同步全部实例
+    sudo astrbotctl sync --all
+    ```
 
 ### 架构与文件结构
 
-本软件包使用只读的应用程序源码 (`/opt`)，配合每个实例的可变数据 (`/var/lib`) 和环境缓存 (`/var/cache`)。
+本软件包使用只读的应用程序源码 (`/opt`)，配合每个实例位于 `/var/lib` 下的可变数据和虚拟环境。
 
 ```bash
 /
@@ -343,13 +365,9 @@ cd astrbot-aur
 │       └── bot2.conf             # 'bot2' 的配置
 │
 ├── var/
-│   ├── lib/astrbot/              # [数据持久化] 运行时数据
-│   │   ├── bot1/                 # 'bot1' 的数据 (数据库、日志、插件)
-│   │   └── bot2/                 # 'bot2' 的数据
-│   │
-│   └── cache/astrbot/            # [运行时环境] uv 管理的虚拟环境
-│       ├── venv-bot1/            # 'bot1' 的独立虚拟环境
-│       └── venv-bot2/            # 'bot2' 的独立虚拟环境
+│   └── lib/astrbot/              # [数据 + 虚拟环境] 每个实例的运行时状态
+│       ├── bot1/                 # 'bot1' 的数据（数据库、日志、插件、.venv）
+│       └── bot2/                 # 'bot2' 的数据（数据库、日志、插件、.venv）
 ```
 
 ### 配置文件
@@ -378,18 +396,24 @@ EXTRA_ARGS=""
   ```
 
 - **权限错误**:
-  确保 `/var/lib/astrbot` 以及 `/var/cache/astrbot/venv-<instance>` 归 `astrbot:astrbot` 所有。
+  确保 `/var/lib/astrbot` 以及 `/var/lib/astrbot/<instance>/.venv` 归 `astrbot:astrbot` 所有。
   ```bash
   sudo chown -R astrbot:astrbot /var/lib/astrbot
-  sudo chown -R astrbot:astrbot /var/cache/astrbot/venv-<instance>
+  sudo chown -R astrbot:astrbot /var/lib/astrbot/<instance>/.venv
   ```
   如果 venv 是由 `root` 创建的，还要确认其中的 Python 解释器没有链接到 `/root/.local/share/uv/...`。
   安装修复后的包后，必要时重建该实例的 venv。
 
+- **锁文件残留**:
+  锁文件位于 `ASTRBOT_ROOT/astrbot.lock`，例如 `/var/lib/astrbot/<instance>/astrbot.lock`。如果实例异常退出后锁文件未删除，可以手动删除：
+  ```bash
+  sudo rm -f /var/lib/astrbot/<instance>/astrbot.lock
+  ```
+
 - **清理缓存**:
   如果更新后 Python 依赖出现问题：
   ```bash
-  sudo rm -rf /var/cache/astrbot/venv-<instance>
+  sudo rm -rf /var/lib/astrbot/<instance>/.venv
   sudo systemctl restart astrbot@<instance>
   ```
 

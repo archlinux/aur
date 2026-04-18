@@ -25,7 +25,16 @@ conf_file() {
 }
 
 venv_dir() {
-    echo "$CACHE_DIR/venv-${instance?instance not set}"
+    echo "${ASTRBOT_ROOT:-$SYSTEM_ROOT/${instance?instance not set}}/.venv"
+}
+
+venv_sync_marker_file() {
+    echo "$(venv_dir)/.astrbot-app-version"
+}
+
+current_app_version() {
+    [ -f "$APP_DIR/.version" ] || return 1
+    cat "$APP_DIR/.version"
 }
 
 certbot_instance_cert_dir() {
@@ -221,28 +230,51 @@ run_astrbot_env_cmd() {
     _runuser_with_env "$ASTRBOT_ROOT/.env" "$runtime_root" "$@"
 }
 
-# Ensure the shared venv is present and synced with the app.
+# Ensure the instance venv is present and synced with the packaged app.
 ensure_instance_env_synced() {
     setup_runtime_env
 
     # Self-heal app dir before syncing
     _ensure_app_dir || return 1
 
-    if [ ! -d "$UV_PROJECT_ENVIRONMENT" ]; then
-        echo ">>> Creating virtual environment for instance: $instance"
-        run_astrbot_env_cmd uv venv "$UV_PROJECT_ENVIRONMENT" --python 3.12
+    local env_file="$ASTRBOT_ROOT/.env"
+    local venv_python="$UV_PROJECT_ENVIRONMENT/bin/python"
+    local venv_astrbot="$UV_PROJECT_ENVIRONMENT/bin/astrbot"
+    local marker_file current_version last_synced_version needs_sync sync_reason
+    marker_file="$(venv_sync_marker_file)"
+    current_version="$(current_app_version 2>/dev/null || true)"
+    last_synced_version="$(cat "$marker_file" 2>/dev/null || true)"
+    needs_sync=0
+    sync_reason=""
+
+    if [ ! -x "$venv_python" ] || [ ! -x "$venv_astrbot" ]; then
+        needs_sync=1
+        sync_reason="missing virtualenv or astrbot entrypoint"
+        echo ">>> Initializing virtual environment for instance: $instance"
+        run_astrbot_env_cmd uv venv "$UV_PROJECT_ENVIRONMENT" --python 3.12 --clear
+    elif [ -n "$current_version" ] && [ "$current_version" != "$last_synced_version" ]; then
+        needs_sync=1
+        sync_reason="app version changed (${last_synced_version:-none} -> $current_version)"
     fi
 
-    echo ">>> Syncing Python environment for instance: $instance"
-    run_astrbot_env_cmd env \
-        VIRTUAL_ENV="$UV_PROJECT_ENVIRONMENT" \
-        PATH="$UV_PROJECT_ENVIRONMENT/bin:$PATH" \
-        UV_NO_CONFIG=1 \
-        UV_PYTHON_INSTALL_DIR="$ASTRBOT_ROOT/.python" \
-        CARGO_HOME="/var/lib/astrbot/.cargo" \
-        RUSTUP_HOME="/var/lib/astrbot/.rustup" \
-        CARGO_TARGET_DIR="$CACHE_DIR/cargo_target" \
-        uv pip install "$APP_DIR"
+    if [ "$needs_sync" -eq 1 ]; then
+        echo ">>> Syncing Python environment for instance: $instance${sync_reason:+ ($sync_reason)}"
+        run_astrbot_env_cmd env \
+            VIRTUAL_ENV="$UV_PROJECT_ENVIRONMENT" \
+            PATH="$UV_PROJECT_ENVIRONMENT/bin:$PATH" \
+            UV_NO_CONFIG=1 \
+            UV_PYTHON_INSTALL_DIR="$ASTRBOT_ROOT/.python" \
+            CARGO_HOME="/var/lib/astrbot/.cargo" \
+            RUSTUP_HOME="/var/lib/astrbot/.rustup" \
+            CARGO_TARGET_DIR="$CACHE_DIR/cargo_target" \
+            uv pip install --reinstall "$APP_DIR"
+
+        if [ -n "$current_version" ]; then
+            _runuser_with_env "$env_file" "$runtime_root" \
+                sh -c 'printf "%s\n" "$1" > "$2"' \
+                sh "$current_version" "$marker_file"
+        fi
+    fi
 }
 
 # ─── Config rendering ────────────────────────────────────────────────────────
@@ -252,13 +284,27 @@ ensure_instance_env_synced() {
 # take effect in the runtime config.
 sync_cmd_config() {
     local cmd_config="${ASTRBOT_ROOT}/data/cmd_config.json"
-    [ ! -f "$cmd_config" ] && return 0
+
+    # If file does not exist or is empty, AstrBot will create it on first run;
+    # nothing to sync yet — bail out to avoid spurious errors.
+    if [ ! -f "$cmd_config" ]; then
+        return 0
+    fi
+    if [ ! -s "$cmd_config" ]; then
+        echo "⚠️  cmd_config.json is empty; skipping sync (AstrBot will regenerate it on first run)." >&2
+        return 0
+    fi
 
     # Use the already-loaded shell variable ASTRBOT_DASHBOARD_ENABLE (set by
     # load_instance_config from the conf file). Fallback to true if not set.
     local dashboard_enable="${ASTRBOT_DASHBOARD_ENABLE:-true}"
 
-    # Use jq if available, otherwise use Python for reliable JSON editing
+    # Use jq if available, otherwise use Python for reliable JSON editing.
+    # Prefer the venv's Python to avoid issues with system Python being a
+    # different (e.g. 3.14 on Arch) version than the venv (3.12).
+    local python_bin="${UV_PROJECT_ENVIRONMENT:-${VIRTUAL_ENV}}/bin/python"
+    [ ! -x "$python_bin" ] && python_bin="python3"
+
     if command -v jq >/dev/null 2>&1; then
         jq \
             --arg port "$ASTRBOT_PORT" \
@@ -279,7 +325,7 @@ sync_cmd_config() {
             mv "${cmd_config}.tmp" "$cmd_config"
     else
         # Use Python for reliable JSON manipulation (no extra deps needed)
-        python3 - "$cmd_config" "$ASTRBOT_PORT" "$ASTRBOT_HOST" \
+        "$python_bin" - "$cmd_config" "$ASTRBOT_PORT" "$ASTRBOT_HOST" \
             "$ASTRBOT_SSL_ENABLE" "$ASTRBOT_SSL_CERT" "$ASTRBOT_SSL_KEY" \
             "$ASTRBOT_LOG_LEVEL" "$dashboard_enable" <<'PYEOF'
 import json, sys
@@ -434,7 +480,7 @@ _ensure_app_dir() {
     fi
 
     echo "❌ Error: APP_DIR $APP_DIR does not exist or is missing pyproject.toml." >&2
-    echo "   (AstrBot is managed by pacman. Run 'sudo pacman -Syu astrbot-git' to fix)" >&2
+    echo "   Reinstall or upgrade the astrbot-git package with your package manager or AUR helper to restore it." >&2
     return 1
 }
 
@@ -566,24 +612,11 @@ run_astrbot() {
         exit 1
     }
 
-    local env_file="$ASTRBOT_ROOT/.env"
-    local venv_python="$UV_PROJECT_ENVIRONMENT/bin/python"
     local venv_astrbot="$UV_PROJECT_ENVIRONMENT/bin/astrbot"
-
-    # Rebuild venv if missing or incomplete.
-    if [ ! -x "$venv_python" ] || [ ! -x "$venv_astrbot" ]; then
-        echo ">>> Initializing virtual environment..."
-        # Use --clear so uv handles removal of an incomplete/broken venv
-        # (works even when the directory is a read-only systemd namespace mount)
-        _runuser_with_env "$env_file" "$runtime_root" \
-            uv venv "$UV_PROJECT_ENVIRONMENT" --python 3.12 --clear
-        _runuser_with_env "$env_file" "$runtime_root" \
-            env \
-                CARGO_HOME="/var/lib/astrbot/.cargo" \
-                RUSTUP_HOME="/var/lib/astrbot/.rustup" \
-                CARGO_TARGET_DIR="$CACHE_DIR/cargo_target" \
-                uv pip install "$APP_DIR"
-    fi
+    ensure_instance_env_synced || {
+        echo "❌ Error: Failed to prepare Python environment for instance '$instance'." >&2
+        exit 1
+    }
 
     cd "$ASTRBOT_ROOT" || exit
 
@@ -636,6 +669,7 @@ Usage:
   sudo astrbotctl rm <name>                        # Remove an instance
   sudo astrbotctl reset <name>                     # Regenerate config from template
   sudo astrbotctl certbot <name>                   # Issue/renew HTTPS certs
+  sudo astrbotctl sync [instance|--all]            # Refresh instance venv(s) from /opt/astrbot
   astrbotctl start <name>                          # Start via systemd
   astrbotctl stop <name>                           # Stop via systemd
   astrbotctl status <name>                         # Check status
@@ -644,9 +678,7 @@ Usage:
   astrbotctl admin [options] <name>                # Change dashboard password
   astrbotctl export [options] <name>               # Export instance backup
   astrbotctl import [options] <name> <backup_file> # Import instance backup
-  sudo astrbotctl git pull [--sync] [instance|--all]            # Pull latest app source
-  sudo astrbotctl git pull --rebuild-venv [instance|--all]     # Pull and rebuild venv(s)
-  sudo astrbotctl update [instance|--all]                    # Update AUR package + venv + restart
+  sudo astrbotctl update [instance|--all]                    # Sync installed package into venv(s), restart, monitor
 
 Init options:
   -f, --backup <file>  Initialize the instance from a backup archive
