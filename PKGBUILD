@@ -1,4 +1,4 @@
-# Maintainer: yobson <contact@yobson.xyz>
+# Maintainer: yobson <aur@yobson.xyz>
 pkgname=stremio-linux-shell
 pkgver=1.0.0_beta.13
 pkgrel=1
