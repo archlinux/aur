@@ -28,6 +28,12 @@ pkgver() {
         printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+    export CARGO_TARGET_DIR=target
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
     cd "${srcdir}/${_pkgname}"
     export CARGO_TARGET_DIR=target
