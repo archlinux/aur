@@ -7,6 +7,7 @@
 - Fix Pageant connections with specified key not opening properly in all cases on Windows
 - Fix file browser navigation failing to open directories in cmd with certain special characters
 - Fix PTB communication being broken
+- Show Windows terminal dock button on top instead of at the bottom
 - Make newly added scripts be automatically enabled to improve ease of use
 - Set multiplexer automatically on initial launch
 - Add new dialog to disable latest Windows RDP security warnings
