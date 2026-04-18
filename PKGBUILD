@@ -6,8 +6,8 @@ pkgdesc="Lightweight PWA manager for Linux desktops"
 arch=('x86_64')
 url="https://github.com/tutkuofnight/lycan"
 license=('MIT')
-depends=('webkit2gtk' 'gtk3' 'glib2' 'openssl')
-makedepends=('rust' 'cargo' 'git' 'pkg-config')
+depends=('webkit2gtk-4.1' 'gtk3' 'glib2')
+makedepends=('rust' 'git' 'pkg-config')
 provides=('lycan')
 conflicts=('lycan')
 source=("git+https://github.com/tutkuofnight/lycan.git")
@@ -28,4 +28,5 @@ package() {
     install -Dm755 "target/release/lycan" "$pkgdir/usr/bin/lycan"
     install -Dm644 "data/io.github.tutkuofnight.Lycan.desktop" "$pkgdir/usr/share/applications/io.github.tutkuofnight.Lycan.desktop"
     install -Dm644 "data/io.github.tutkuofnight.Lycan.metainfo.xml" "$pkgdir/usr/share/metainfo/io.github.tutkuofnight.Lycan.metainfo.xml"
+    install -Dm644 "assets/lycan.png" "$pkgdir/usr/share/pixmaps/io.github.tutkuofnight.Lycan.png"
 }
