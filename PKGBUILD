@@ -1,8 +1,8 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=soredowe-bin
 _pkgname=soredowe
-pkgver=0.2.0
-_tag=v0.2.0
+pkgver=0.2.3
+_tag=v0.2.3
 pkgrel=1
 pkgdesc="Experimental GUI for pacman/AUR users who prefer it (Wayland/Vulkan)"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source_aarch64=("${_pkgname}-${_tag}-aarch64-unknown-linux-gnu.tar.gz::https://g
 # Icon
 source=("icon.svg::https://raw.githubusercontent.com/mlm-games/soredowe/refs/heads/main/packaging/icons/hicolor/scalable/apps/soredowe.svg")
 
-sha256sums_x86_64=('5b5d2ed27a26da234fb3d81b9374d1407ddeca2cf5b83eab7db0b50db3b14f12')
-sha256sums_aarch64=('efdc13c2e65a72804e62903142503f0c859eb3b9d8cf6d4cb52e01e94e5b1df6')
+sha256sums_x86_64=('1255db6e0661e23978581f8254fe309694517feda24023bfbe64a2ae9287c657')
+sha256sums_aarch64=('6a9f4e097a5e1fe450523ad2c1267bfe0c2efc754c5731988138665dbc7c1976')
 sha256sums=('SKIP') # for icon.svg
 
 package() {
