@@ -2,6 +2,6 @@ post_install() {
 	echo ' ------- '
   echo 'For running joymap as a user service, your user must have write access to "/dev/uinput" and read access to "/dev/input/*".'
   echo 'User level configuration for the user service is located in "~/.config/joymap.map".'
-  echo 'System level configuration for the ssytem service is located in "/etc/joymap.map".'
+  echo 'System level configuration for the system service is located in "/etc/joymap.map".'
   echo ' ------- '
 }
