@@ -1,0 +1,5 @@
+[llama-panel-bin]
+source = "github"
+github = "AlexsJones/llama-panel"
+use_latest_release = true
+prefix = "v"
