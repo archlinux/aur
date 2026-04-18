@@ -1,6 +1,6 @@
 pkgbase = displayconfig-mutter
 	pkgdesc = Change Gnome display settings from cli
-	pkgver = 0.1.6
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/eaglesemanation/displayconfig-mutter
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = displayconfig-mutter
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = git+https://github.com/eaglesemanation/displayconfig-mutter.git#tag=v0.1.6
-	sha256sums = b13de0b237e370c73f321905a35fd5f39ddeef7d3a11a63a6261e11c843276fc
+	source = git+https://github.com/eaglesemanation/displayconfig-mutter.git#tag=v0.1.8
+	sha256sums = 35fd6fa31cf69e6c612b9205a6ed02e690f4e152c9ed341306e5f74c36d29d70
 
 pkgname = displayconfig-mutter
