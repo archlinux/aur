@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Lufus
+Comment=Drive imaging and formatting utility for Linux written in Python
+Exec=lufus
+Icon=lufus
+Terminal=false
+Type=Application
+Categories=Utility;
