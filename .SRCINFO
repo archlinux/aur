@@ -1,6 +1,6 @@
 pkgbase = electerm-bin
 	pkgdesc = An electron-based SSH/SFTP Connection manager and terminal
-	pkgver = 3.3.8
+	pkgver = 3.5.6
 	pkgrel = 1
 	url = https://electerm.html5beta.com
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = electerm-bin
 	conflicts = electerm
 	conflicts = electerm-giti
 	conflicts = electerm-live-bin
-	source = https://github.com/electerm/electerm/releases/download/v3.3.8/electerm-3.3.8-linux-amd64.deb
+	source = https://github.com/electerm/electerm/releases/download/v3.5.6/electerm-3.5.6-linux-amd64.deb
 	source = https://raw.githubusercontent.com/electerm/electerm/master/LICENSE
-	sha256sums = 66c4de0931e88e5b6c16f08898479e4d30b4294000e81ab89abf8464c84084a3
+	sha256sums = c300cfe6a7613fa75abcaf16c53a4ac13cb14db894a4010f97ba2fd06783d493
 	sha256sums = a9b7ccf11bec7796b217a7575d3324c16613a46bfc899e72ec2c11da28d0991e
 
 pkgname = electerm-bin
