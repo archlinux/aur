@@ -2,7 +2,7 @@
 # Contributor: jbpratt <jbpratt78 at gmail dot com>
 
 pkgname=crc-bin
-pkgver=2.49.0
+pkgver=2.60.1
 pkgrel=1
 pkgdesc="Red Hat CodeReady Containers is a tool that manages a local OpenShift 4.x cluster optimized for testing and development purposes"
 url=https://github.com/code-ready/crc
@@ -14,7 +14,7 @@ license=("APACHE")
 source_x86_64=(
   "crc-v${pkgver}-linux-amd64.tar.xz::https://developers.redhat.com/content-gateway/file/pub/openshift-v4/clients/crc/${pkgver}/crc-linux-amd64.tar.xz"
 )
-b2sums_x86_64=('5fba867945a22c631c9e5f7842749743686f6a4d4b2d9ceb0ffa5bbd2b1f47231e1bd61e5627ca5e66ee7491420817c7e5a4071413fac85eed1660c1f13247c8')
+b2sums_x86_64=('e9a644de02abd146310aaad19d7ad78e2610fdbc4405dfc79a3d2170ba54077fcd5b891a0aa079a8d88ae0c7e773f405773f8ea0ee3d6acbbc5e5ce146df870e')
 
 package() {
   cd "${srcdir}/${pkgname%-*}-linux-${pkgver}-amd64"
