@@ -1,0 +1,39 @@
+# Maintainer: luytan <luytan@khora.me>
+# Please someone maintain this and make a better one, i do not use Arch!!!btw
+
+pkgbase=cardwire
+pkgname=cardwire
+pkgver=0.4.1
+pkgrel=1
+pkgdesc='GPU manager for Linux using eBPF LSM hooks'
+arch=('x86_64')
+url='https://github.com/luytan/cardwire'
+license=('GPL3')
+depends=('hwdata' 'dbus' 'systemd')
+makedepends=('libbpf' 'rust' 'clang')
+source=("https://github.com/luytan/cardwire/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('37882d4d0d431c3ff48e24bd47cea03b7847080623254d8bdb4af9846134d700')
+
+prepare(){
+	cd "${pkgbase}-${pkgver}"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked
+}
+
+build(){
+	cd "${pkgbase}-${pkgver}"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	export RUSTFLAGS="$RUSTFLAGS --remap-path-prefix=$srcdir=/usr/src"
+
+	cargo build --frozen --release --workspace --bins
+}
+
+package(){
+	cd "${pkgbase}-${pkgver}"
+	install -Dm755 target/release/cardwire "$pkgdir/usr/bin/cardwire"
+	install -Dm755 target/release/cardwired "$pkgdir/usr/bin/cardwired"
+	install -Dm644 assets/cardwired.service "$pkgdir/usr/lib/systemd/system/cardwired.service"
+	install -Dm644 assets/com.github.luytan.cardwire.conf "$pkgdir/usr/share/dbus-1/system.d/com.github.luytan.cardwire.conf"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
