@@ -96,6 +96,9 @@ prepare() {
   mkdir -p mozbuild
   cd $_pkgname-v$_pkgver
 
+  # Temporary fix build for rust < 1.95 (still in testing in arch repository)
+  patch -Rsp1 -i browser/$_pkgname/patches/build-patches/fixes/third_party-rust-encoding_rs-src-x_user_defined.rs.patch
+
   patch -Nsp1 -i "$srcdir"/fix-wasm32-wasi-target.patch
   patch -Nsp1 -i "$srcdir"/0023-bgo-969412-glibc-2.43.patch
   sed -i -e 's/\("files":{\)[^}]*/\1/' third_party/rust/glslopt/.cargo-checksum.json
