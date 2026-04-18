@@ -3,7 +3,7 @@
 pkgname=imgvwr-git
 _pkgname=imgvwr
 pkgver=r112.5c81e5b
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimal Wayland image viewer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Gigas002/$_pkgname"
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	cargo build --release --features jpeg,webp,jxl,gpu-vulkan,dmabuf,decorations
+	cargo build --release --features jpeg,webp,webp-anim,avif,avif-anim,jxl,jxl-anim,gif,apng,decorations,gpu-vulkan,dmabuf
 }
 
 package() {

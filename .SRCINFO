@@ -1,7 +1,7 @@
 pkgbase = imgvwr-git
 	pkgdesc = Minimal Wayland image viewer
 	pkgver = r112.5c81e5b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Gigas002/imgvwr
 	arch = x86_64
 	arch = aarch64
