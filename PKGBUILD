@@ -27,8 +27,9 @@ prepare() {
 build() {
   cd "$_srcdir"
   export CARGO_HOME="$srcdir/cargo-home"
-  export SQLITE3_LIB_DIR="/usr/lib"
-  export SQLITE3_INCLUDE_DIR="/usr/include"
+  # Force libsqlite3-sys to use system sqlite via pkg-config instead of
+  # compiling the bundled sqlite3.c (which sqlx's `sqlite` feature enables).
+  export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
   cargo build --release --locked --offline
 }
 
