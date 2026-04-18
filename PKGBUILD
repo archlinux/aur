@@ -18,7 +18,7 @@ pkgname=anycubicslicernext-bin
 # I know I can use 'epoch'. But I’m sure they will release some patch version
 # with four digits at some point. So I padded the version with zeros.
 pkgver=1.3.9600
-pkgrel=2
+pkgrel=3
 pkgdesc="Anycubic Slicer is an open source slicer for FDM printers"
 arch=('x86_64')
 url="https://github.com/ANYCUBIC-3D/AnycubicSlicer"
@@ -29,14 +29,14 @@ depends=('webkit2gtk-4.1' 'libxml2-legacy' 'libbsd' 'gtk3' 'zlib' 'wayland' 'lib
 optdepends=('ttf-harmonyos-sans: font removed from original package'
             'ttf-nanum: font removed from original package')
 
-source=("${_url_source}/dists/noble/main/binary-amd64/develop_AnycubicSlicerNext-1.3.96_20260131_153250-Ubuntu_24_04_3_LTS.deb"
+source=("${_url_source}/dists/noble/main/binary-amd64/develop_AnycubicSlicerNext-1.3.96_20260319_224609-Ubuntu_24_04_3_LTS.deb"
     "https://archive.ubuntu.com/ubuntu/pool/main/i/icu/libicu74_74.2-1ubuntu3.1_amd64.deb"
     "https://archive.ubuntu.com/ubuntu/pool/main/libs/libselinux/libselinux1_3.5-2ubuntu2.1_amd64.deb"
     "AnycubicSlicerNext.sh")
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('6a8bbac204a6dba69b02ec687079d961aaa3684085f020f2dfca7a83ea52ed64'
+sha256sums=('2c2883a9c624ab64e721a0211667852e0083d8794f7839c1d7932c9f712ed076'
     'c9a70989678660eed9a1e904c74fa043da8bec8e2036856fc16e31ced79b04f8'
     '6abaa6c26f46ef17764c4a753e0e84de1cdadde5634fd2987621fdc617988d19'
     '20a2e851c8914af6a4098f9718b7462f9f108430b498483f9c04eba81e695fc2')
