@@ -1,7 +1,7 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=codename-goose
-pkgver=1.29.1
-pkgrel=2
+pkgver=1.31.0
+pkgrel=1
 pkgdesc="An open-source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64' 'aarch64')
 url="https://github.com/aaif-goose/goose"
@@ -34,7 +34,7 @@ optdepends=(
 # LTO is broken for dependency ring https://github.com/briansmith/ring/issues/1444
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aaif-goose/goose/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('dabb4b67c0c8c94d6f98d20e75a070f4a895578feb8d9eeefa67d4520ff93514dfdb6a8f91910ad042c03827b120d653a9640d765e4f1cfd60499c50dd45dc58')
+b2sums=('766c297438915030d1c969f28ceab1f0963f7bd4df2cc4c0b8c4b55215bd79223555f122495afc4f2ed0dec84a13103089b73183be5ce64f37e9d91ff5b062b5')
 
 prepare() {
 	cd "goose-$pkgver"
@@ -51,7 +51,7 @@ build() {
 	# Ampere (sm_80) needed for bf16 WMMA; covers RTX 3000+ via forward compat
 	# Required because no GPU in build chroot for auto-detection
 	export CUDA_COMPUTE_CAP=80
-	cargo build --frozen --release -p goose-cli --all-features
+	cargo build --frozen --release -p goose-cli --features cuda,disable-update
 }
 
 check() {
