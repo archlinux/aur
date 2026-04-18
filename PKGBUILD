@@ -2,7 +2,7 @@
 
 _name=user_external
 pkgname=nextcloud-app-user-external
-pkgver=4.0.0_rc1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc=" External user authentication methods like IMAP, SMB and FTP"
 arch=('any')
@@ -11,7 +11,7 @@ license=('AGPL3')
 makedepends=('nextcloud>=31' 'yq')
 options=('!strip')
 source=("https://github.com/nextcloud-releases/${_name}/releases/download/v${pkgver/_/-}/${_name}-v${pkgver/_/-}.tar.gz")
-sha256sums=('1b62ace04d26d27457e1cfac4293b79be69a839c9b93da55d71cb3f5be54b052')
+sha256sums=('f1f98c577bd02177fe74e9199f8e50d0c288ffa94bb50a227101a5ba0633c529')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
