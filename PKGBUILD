@@ -2,33 +2,38 @@
 # Contributor: Alastair Feille <me at alastair dot se>
 
 pkgname=wget-lua
-pkgver=1.14
-pkgrel=3
+pkgver=1.21.3_at.20231213.03
+pkgrel=1
 pkgdesc="Wget with Lua scripting"
 url="http://archiveteam.org/index.php?title=Wget_with_Lua_hooks"
 license=('GPL')
-depends=('gnutls' 'libidn' 'pcre' 'lua')
+depends=('gnutls' 'libidn' 'pcre' 'lua51')
 optdepends=("ca-certificates: HTTPS Downloads")
-makedepends=('git' 'perl')
+makedepends=('git' 'perl' 'autoconf-archive' 'gettext' 'gperf' 'wget')
 provides=('wget-lua')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-source=("http://warriorhq.archiveteam.org/downloads/wget-lua/wget-1.14.lua.LATEST.tar.bz2"
-        "lua.patch"
-        "ssl.patch")
-sha1sums=('3fdc939d7b66c5f0fa0bf00b366ec01a4b306afa'
-          '3f9d9f483fb0435624faa8d51e7171b11b3542cb'
-          '7e06d0272f90325c46b4ef609dce7c471342f077')
-build() {
-  cd "$srcdir"/wget-1.14.lua.20*/
-  patch -p0 -i $srcdir/lua.patch
-  patch -p0 -i $srcdir/ssl.patch
+source=("git+https://github.com/ArchiveTeam/wget-lua#tag=v${pkgver//_/-}"
+        "git+https://git.savannah.gnu.org/git/gnulib.git#commit=c5c11d644737e04258f411ab8584f5ed816135ab")
+sha1sums=('bad93dd33f8557ef0c81aadc9dc13506d74c1299'
+          '3cc37ffe21690ddf1684ca40b285e7fd1953f851')
 
-  ./configure --with-ssl=gnutls --disable-nls
+prepare() {
+  cd "$srcdir/wget-lua/"
+  git submodule init
+  git config submodule.gnulib.url "$srcdir/gnulib"
+  git -c protocol.file.allow=always submodule update
+}
+
+build() {
+  cd "$srcdir/wget-lua/"
+  ./bootstrap
+  autopoint --force   # updates gnulib_po/Makefile.in.in to the newer system gettext version
+  ./configure
   make
 }
 
 package() {
-  cd "$srcdir"/wget-1.14.lua.20*/src
+  cd "$srcdir"/wget-lua/src
   mkdir -p "$pkgdir/usr/bin/"
   cp wget "$pkgdir/usr/bin/wget-lua"
 }
