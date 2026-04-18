@@ -1,25 +1,38 @@
 pkgname=cmdcreate
 pkgver=1.2.3
-pkgrel=1
-arch=('any')
+pkgrel=2
+pkgdesc="Allows you to create custom commands for your custom scripts"
+arch=('x86_64' 'aarch64') 
 url="https://github.com/owen-debiasio/cmdcreate"
 license=('GPL3')
-depends=('curl' 'nano' 'git' 'openssl')
-makedepends=('cargo' 'git' 'rust')
-pkgdesc="Allows you to create custom commands for your custom scripts"
-source=("git+https://github.com/owen-debiasio/cmdcreate.git#tag=v$pkgver")
+
+depends=('gcc-libs' 'curl' 'git' 'openssl')
+makedepends=('cargo' 'cmake' 'clang')
+
+conflicts=('cmdcreate-git')
+provides=('cmdcreate')
+
+options=('!lto')
+
+source=("$pkgname-v$pkgver::git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
-conflicts=('cmdcreate-git' 'cmdcreate-git-debug')
-options=('debug')
+prepare() {
+    cd "$pkgname-v$pkgver"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-    cd "$srcdir/$pkgname"
-    cargo build --release
+    cd "$pkgname-v$pkgver"
+    
+    export LIBCLANG_PATH=/usr/lib
+    export CFLAGS+=" -ffat-lto-objects"
+    
+    cargo build --release --frozen
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    install -Dm755 target/release/cmdcreate "$pkgdir/usr/bin/cmdcreate"
+    cd "$pkgname-v$pkgver"
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
