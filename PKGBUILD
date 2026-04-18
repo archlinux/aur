@@ -2,11 +2,11 @@
 pkgname=colony-bin
 _pkgname=colony
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Application launcher for the Project-Colony ecosystem (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/Project-Colony/Colony"
-license=('Unknown')
+license=('MIT')
 depends=(
     'gcc-libs'
     'openssl'
