@@ -1,0 +1,15 @@
+[Unit]
+Description=netronome service
+After=syslog.target network-online.target
+Documentation=https://github.com/autobrr/netronome
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=5
+ExecStartPre=-/bin/mkdir -p %E/netronome
+ExecStartPre=-/usr/bin/netronome generate-config --config=%E/netronome/config.toml
+ExecStart=/usr/bin/netronome serve --config=%E/netronome/config.toml
+
+[Install]
+WantedBy=default.target

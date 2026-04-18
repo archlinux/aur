@@ -1,0 +1,5 @@
+[netronome-bin]
+source = "github"
+github = "autobrr/netronome"
+use_latest_release = true
+prefix = "v"
