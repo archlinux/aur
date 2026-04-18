@@ -1,8 +1,8 @@
 # Maintainer: Victor Golovanenko <drygdryg2014 at yandex dot com>
 pkgname=emv-utils-git
 _pkgname=emv-utils
-pkgver=0.2.1.r0.g4b3da31
-pkgrel=2
+pkgver=0.3.1.r7.g130911d
+pkgrel=1
 pkgdesc='Libraries and tools for EMV card data'
 arch=(x86_64 i686 pentium4 armv7h aarch64)
 url='https://github.com/openemv/emv-utils'
@@ -33,8 +33,7 @@ build() {
     -DBUILD_DOCS=YES \
     -DBUILD_EMV_DECODE=YES \
     -DBUILD_EMV_TOOL=YES \
-    -DBUILD_EMV_VIEWER=YES \
-    -DQT_DIR=/usr/lib/cmake/Qt6
+    -DBUILD_EMV_VIEWER=YES
   cmake --build build
 }
 
