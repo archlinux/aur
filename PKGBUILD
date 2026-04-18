@@ -8,7 +8,7 @@
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-futpib-git"
-pkgver=6.6.0.r5.g1705e5a
+pkgver=6.5.1.r96.g898b73c
 pkgrel=1
 pkgdesc="futpib's Telegram Desktop fork with control socket support"
 url="https://github.com/futpib/tdesktop"
@@ -75,11 +75,11 @@ _source_telegram() {
   _prepare_telegram() (
     echo "Preparing telegram..."
     cd "$_pkgsrc"
-    git rm -r 'Telegram/ThirdParty/dispatch'
-    git rm -r 'Telegram/ThirdParty/range-v3'
-    git rm -r 'Telegram/ThirdParty/hunspell'
-    git rm -r 'Telegram/ThirdParty/kcoreaddons'
-    git rm -r 'Telegram/ThirdParty/lz4'
+    git rm -r --ignore-unmatch 'Telegram/ThirdParty/dispatch'
+    git rm -r --ignore-unmatch 'Telegram/ThirdParty/range-v3'
+    git rm -r --ignore-unmatch 'Telegram/ThirdParty/hunspell'
+    git rm -r --ignore-unmatch 'Telegram/ThirdParty/kcoreaddons'
+    git rm -r --ignore-unmatch 'Telegram/ThirdParty/lz4'
     git submodule update --init --recursive --depth=1
 
     local src
