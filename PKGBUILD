@@ -1,6 +1,6 @@
 # Maintainer: LightJunction <lightjunction.me@gmail.com>
 pkgname=mimic-node-git
-pkgrel=5
+pkgrel=1
 pkgdesc="A stealthy, systemless sing-box node manager (Rust implementation)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/LIghtJUNction/Mimic-Node"
@@ -22,7 +22,7 @@ sha256sums=(
     'e06c13f4ae1ec63371e7db816ace19c7f62156196305da0ff5bcda73dfbfb94a'
 )
 
-pkgver=r79.180c448
+pkgver=r100.8a72509
 
 pkgver() {
     cd "$srcdir/Mimic-Node"
