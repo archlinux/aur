@@ -8,7 +8,7 @@
 pkgname=palemoon-gtk3
 _pkgname=palemoon
 _repo=Pale-Moon
-epoch=1
+epoch=2
 pkgver=34.2.0
 # Commit ID can be found at https://repo.palemoon.org/MoonchildProductions/Pale-Moon/tags
 _commit=a1043b6a581b2e9b12b34159c26dcf198058d525
@@ -20,7 +20,7 @@ license=('MPL-2.0')
 provides=('palemoon')
 conflicts=('palemoon')
 depends=('gtk3' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'alsa-lib')
-makedepends=('python2' 'unzip' 'zip' 'yasm' 'libpulse' 'git' 'gtk3')
+makedepends=('python2' 'unzip' 'zip' 'yasm' 'libpulse' 'git')
 optdepends=('libpulse: PulseAudio audio driver'
             'ffmpeg: various video and audio support'
 	    'gtk2: Required for NPAPI plugins')
@@ -30,10 +30,10 @@ source=(git+"https://repo.palemoon.org/MoonchildProductions/${_repo}?signed#comm
 validpgpkeys=('3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC')
 sha1sums=('8a287fd50942645a557e7cf054dc065a43cc807e'
           'SKIP'
-          'c44cbce39eac59a84757456676891a398c8d7508')
+          '0cc72ae4909479d031508146d037a3daffb0bbe7')
 sha256sums=('1b7b96ab385f7eb23a41ffb0247f010b1601006dbe4bbd3e03d4760d25145c9f'
             'SKIP'
-            '97c11dd56388c7359fc1f7d6ad32bc68faaf00a634f6724a4562a3707eff3ca7')
+            '3562dcaeb658475bb35e9f90d96a40c45417c2c7d0c63623449e95e3c1dbfaa8')
 
 prepare() {
   sed 's#%SRCDIR%#'"${srcdir}"'#g' mozconfig.in > mozconfig
