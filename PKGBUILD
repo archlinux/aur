@@ -3,7 +3,7 @@
 pkgname=elio
 pkgver=1.0.1
 pkgrel=1
-pkgdesc='Terminal file manager (TUI) with a three-pane layout, rich previews, inline images, and keyboard-first workflows'
+pkgdesc='Snappy, batteries-included terminal file manager with rich previews, inline images, bulk actions, and trash support'
 arch=('x86_64')
 url='https://elio-fm.github.io/'
 license=('MIT')
