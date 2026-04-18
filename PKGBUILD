@@ -6,7 +6,7 @@ _pkgname=jsongrep
 pkgname=${_pkgname}-bin
 pkgdesc="A JSONPath-inspired query language over JSON documents"
 
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,7 +22,7 @@ provides=("${_appname}")
 conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('9123290534f33306df40aa07c7ea7720aa81f61a3fab5de7400f55e587668dfe')
+sha256sums_x86_64=('4249803db76fa4098dfa41b5af28ea83fcbacaa029418390d4c9245c292ddcff')
 
 
 case ${CARCH} in
