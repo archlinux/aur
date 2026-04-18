@@ -19,12 +19,10 @@ package() {
 
 build() {
 	cd $pkgname-$pkgver
-	# Uncomment this if you have installed gurobi into /usr:
-	# export GUROBI_HOME=/usr
 
 	# pyproject.toml specifies sagemath-environment and sagemath-categories as dependencies
 	# but it suffices to have the sagemath package installed; hence: `--skip-dependency-check`
-	python -m build --wheel --no-isolation --skip-dependency-check
+	GUROBI_HOME="${GUROBI_HOME:-/usr}" python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
