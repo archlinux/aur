@@ -3,7 +3,7 @@
 # Maintainer: Carlos Alexandro Becker <carlos at becker dot software>
 
 pkgname='nfpm'
-pkgver=2.46.1
+pkgver=2.46.2
 pkgrel=1
 pkgdesc='nFPM is a simple, 0-dependencies, deb, rpm and apk packager.'
 url='https://nfpm.goreleaser.com'
@@ -13,7 +13,7 @@ provides=('nfpm')
 conflicts=('nfpm')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/goreleaser/nfpm/releases/download/v${pkgver}/nfpm_${pkgver}_source.tar.gz")
-sha256sums=('05bd5997384f1b6d05a965fa1ddd3c4512147a9d5e135c90ea8fa97a65ae6f01')
+sha256sums=('9d20f9f56479199ccae41cdc853a7fb6fd580d84784e69fdb31d521469ddf1b4')
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
