@@ -1,0 +1,6 @@
+u-boot
+pkg
+src
+*.bin
+*.elf
+*.tar*
