@@ -1,0 +1,17 @@
+pkgbase = disk-health-monitor-git
+	pkgdesc = GTK4 SMART and NVMe disk health monitor with trend tracking
+	pkgver = 0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/EvansOgala/disk-health-monitor
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = smartmontools
+	depends = nvme-cli
+	source = disk-health-monitor-git::git+https://github.com/EvansOgala/disk-health-monitor.git
+	sha256sums = SKIP
+
+pkgname = disk-health-monitor-git
