@@ -8,7 +8,7 @@ url="https://github.com/thefangeddeity/hls-livecam-server"
 license=('MIT')
 depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'smartmontools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('728df16b67ce697b41489c7796d7a006fc2b9eeef7356fb6909687d3752e02ef')
+sha256sums=('740c7d1e908180de31603dc1de16865067fd018e418dbf31a9cbd4341f562fdc')
 
 package() {
     cd "$pkgname-$pkgver"
