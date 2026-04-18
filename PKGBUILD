@@ -56,6 +56,9 @@ EOF
     install -Dm644 "$_src/OpenSourceTreeIcon.png" \
         "$pkgdir/usr/share/pixmaps/opensourcetree.png"
 
+    install -Dm644 "$_src/OpenSourceTreeIcon.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/opensourcetree.png"
+
     install -Dm644 "$_src/opensourcetree.desktop" \
         "$pkgdir/usr/share/applications/opensourcetree.desktop"
 }
