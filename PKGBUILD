@@ -1,6 +1,6 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd-wall
-pkgver=r36.3c3ee34
+pkgver=r37.8306c57
 pkgrel=1
 pkgdesc='Quickshell-based image, video & wallpaper engine wallpaper selector with color sorting, Matugen integration, and Wallhaven & Steam in-app browsing'
 arch=('any')
