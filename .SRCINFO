@@ -1,6 +1,6 @@
 pkgbase = zenith-bar
     pkgdesc = Sleek animated Wayland status bar for Hyprland in Rust
-    pkgver = 1.1.0
+    pkgver = 1.2.0
     pkgrel = 1
     url = https://github.com/CPT-Dawn/Zenith
     arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = zenith-bar
     optdepends = playerctl: media module support
     optdepends = ttf-inter: recommended UI font
     optdepends = ttf-jetbrains-mono-nerd: recommended icon and mono font
-    source = zenith-bar-1.1.0.tar.gz::https://github.com/CPT-Dawn/Zenith/archive/refs/tags/v1.1.0.tar.gz
-    sha256sums = 9ded505ba05d03d23bc5d176cafb6b8df648ced3c04f803b05373d1d698ff718
+    source = zenith-bar-1.2.0.tar.gz::https://github.com/CPT-Dawn/Zenith/archive/refs/tags/v1.2.0.tar.gz
+    sha256sums = d9b5af472d3a2c6240de07e3d9bc969fb9dedad32c172497d5655b324d69e73b
 
 pkgname = zenith-bar
