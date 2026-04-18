@@ -14,6 +14,7 @@ pkgbase = kabekami-git
 	depends = libxkbcommon
 	depends = openssl
 	optdepends = kscreen: screen resolution auto-detection via kscreen-doctor
+	optdepends = noto-fonts-cjk: Japanese text in the settings GUI
 	provides = kabekami
 	provides = kabekami-config
 	conflicts = kabekami

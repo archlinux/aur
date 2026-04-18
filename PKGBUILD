@@ -1,6 +1,6 @@
 # Maintainer: kabeuchi-bird <https://github.com/kabeuchi-bird>
 pkgname=kabekami-git
-pkgver=r49.7ef9b9a
+pkgver=r29.c4ec6a4
 pkgrel=1
 pkgdesc="KDE Plasma wallpaper rotation daemon with BlurPad display mode and online sources"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,10 @@ url="https://github.com/kabeuchi-bird/kabekami"
 license=('MIT')
 depends=('plasma-workspace' 'libxkbcommon' 'openssl')
 makedepends=('rust' 'cargo' 'git' 'pkg-config')
-optdepends=('kscreen: screen resolution auto-detection via kscreen-doctor')
+optdepends=(
+    'kscreen: screen resolution auto-detection via kscreen-doctor'
+    'noto-fonts-cjk: Japanese text in the settings GUI'
+)
 provides=('kabekami' 'kabekami-config')
 conflicts=('kabekami' 'kabekami-config')
 source=(
