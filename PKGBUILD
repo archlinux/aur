@@ -4,6 +4,8 @@ pkgdesc='ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sy
 url='https://github.com/pnn64/deadsync'
 license=('MIT')
 arch=('x86_64' 'aarch64')
+provides=('deadsync')
+conflicts=('deadsync-git' 'deadsync-bin')
 depends=(
     'vulkan-icd-loader'
     'libgl'
