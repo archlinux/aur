@@ -1,9 +1,9 @@
 # Maintainer: RaghavGohil raghavgohil2004@gmail.com
 
 pkgname=den
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-pkgdesc="Braindumping for projects made easy."
+pkgdesc="Context management for projects made easy."
 arch=('any')
 url="https://github.com/RaghavGohil/den"
 license=('MIT')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RaghavGohil/den/archive/v$pkgver.tar.gz")
-sha256sums=('699654b45bce80b0d76e98f41c95f870d7da7cf23b54098752e0df15e92d1399')
+sha256sums=('5a3a0d0ab1a872467e2f9c41e5130acf1d51b138da58c0f7a7072f37f578ffb6')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

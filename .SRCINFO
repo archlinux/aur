@@ -1,6 +1,6 @@
 pkgbase = den
-	pkgdesc = Braindumping for projects made easy.
-	pkgver = 0.1.1
+	pkgdesc = Context management for projects made easy.
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/RaghavGohil/den
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = den
 	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python
-	source = den-0.1.1.tar.gz::https://github.com/RaghavGohil/den/archive/v0.1.1.tar.gz
-	sha256sums = 699654b45bce80b0d76e98f41c95f870d7da7cf23b54098752e0df15e92d1399
+	source = den-0.1.2.tar.gz::https://github.com/RaghavGohil/den/archive/v0.1.2.tar.gz
+	sha256sums = 5a3a0d0ab1a872467e2f9c41e5130acf1d51b138da58c0f7a7072f37f578ffb6
 
 pkgname = den
