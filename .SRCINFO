@@ -1,6 +1,6 @@
 pkgbase = open62541
 	pkgdesc = An open source and free implementation of OPC Unified Architecture written in the common subset of the C99 and C++98 languages.
-	pkgver = v1.4.14_r14_g62c025b15
+	pkgver = v1.5.3_r111_g17ad51cca
 	pkgrel = 1
 	url = http://open62541.org/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = open62541
 	optdepends = openssl: OpenSSL encryption backend (set UA_ENABLE_ENCRYPTION=OPENSSL on environment variable OPEN62541_CMAKE_FLAGS)
 	optdepends = mbedtls: mbed TLS encryption backend (set UA_ENABLE_ENCRYPTION=MBEDTLS on environment variable OPEN62541_CMAKE_FLAGS)
 	optdepends = graphviz: For document generation
-	source = git+https://github.com/open62541/open62541.git#branch=1.4
+	source = git+https://github.com/open62541/open62541.git#branch=1.5
 	md5sums = SKIP
 	sha256sums = SKIP
 

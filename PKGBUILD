@@ -1,9 +1,9 @@
 # Maintainer: qwjyh <urataw421@gmail.com>
 # Contributor: open62541 Team <open62541-core@googlegroups.com>
 # Contributor: Samega7Cattac <sameg7acattac@gmail.com>
-branch=1.4
+branch=1.5
 pkgname=open62541
-pkgver=v1.4.14_r14_g62c025b15
+pkgver=v1.5.3_r111_g17ad51cca
 pkgrel=1
 pkgdesc="An open source and free implementation of OPC Unified Architecture written in the common subset of the C99 and C++98 languages."
 arch=('any')
@@ -26,6 +26,7 @@ prepare() {
 "-DBUILD_SHARED_LIBS=ON"\
 " -DUA_NAMESPACE_ZERO=FULL"\
 " -DUA_ENABLE_AMALGAMATION=OFF"\
+" -DUA_ENABLE_JSON_ENCODING=ON"\
 " -DCMAKE_BUILD_TYPE=RelWithDebInfo"\
 " -DCMAKE_INSTALL_PREFIX=/usr/"\
 " -DCMAKE_INSTALL_LIBDIR=/usr/lib/"
