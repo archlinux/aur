@@ -1,0 +1,22 @@
+pkgbase = gbstudio-bin
+	pkgdesc = Gameboy game development environment
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/suleymanlaarabi/GBStudio
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = gbstudio-bin-0.1.1.deb::https://github.com/suleymanlaarabi/GBStudio/releases/download/v0.1.1/GB-Studio_0.1.1_amd64.deb
+	sha256sums_x86_64 = 1d093760ffe7319e2d7f00e5ae3e4ed6323e2ac49154c9e6b73a507785888ef2
+
+pkgname = gbstudio-bin
