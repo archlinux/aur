@@ -3,7 +3,7 @@
 _pkgname="dolphin-memory-engine"
 pkgname="${_pkgname}-bin"
 pkgver=2026.04.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A RAM search made specifically to search, monitor, and edit the Dolphin emulator's emulated memory"
 arch=(
   'x86_64'
@@ -14,8 +14,9 @@ license=(
 )
 depends=(
   'dolphin-emu'
-  'gcc-libs'
   'glibc'
+  'libgcc'
+  'libstdc++'
   'qt6-base'
 )
 provides=(

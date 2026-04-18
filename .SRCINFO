@@ -1,13 +1,14 @@
 pkgbase = dolphin-memory-engine-bin
 	pkgdesc = A RAM search made specifically to search, monitor, and edit the Dolphin emulator's emulated memory
 	pkgver = 2026.04.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aldelaro5/dolphin-memory-engine
 	arch = x86_64
 	license = MIT
 	depends = dolphin-emu
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = qt6-base
 	provides = dolphin-memory-engine
 	conflicts = dolphin-memory-engine
