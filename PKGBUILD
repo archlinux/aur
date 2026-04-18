@@ -1,8 +1,8 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=gitcs
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="📈 Command line tool written in Go. It allows developers to scan their local Git repositories and generate a visual contributions graph."
 arch=('x86_64' 'aarch64')
 url="https://github.com/hrtsegv/gitcs"
