@@ -1,6 +1,6 @@
 # Maintainer: EndlessEden < endlesseden [at] deep-rose {dot} org >
 pkgname=plasma6-applet-homeassistant
-pkgver=1.2.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Plasmoid for Home Assistant on your plasma desktop."
 arch=('any')
