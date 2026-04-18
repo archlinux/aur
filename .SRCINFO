@@ -1,13 +1,13 @@
 pkgbase = chordsketch
 	pkgdesc = ChordPro file format parser and renderer
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/koedame/chordsketch
 	arch = x86_64
 	license = MIT
 	provides = chordsketch
 	conflicts = chordsketch-git
-	source = https://github.com/koedame/chordsketch/releases/download/v0.2.1/chordsketch-v0.2.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = c555b01cbb7f01db8be182b3708babe4b172419de7d19d7eb2da04835a14fec3
+	source = https://github.com/koedame/chordsketch/releases/download/v0.2.2/chordsketch-v0.2.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 08a1c5c206bdcbc9188bbd60c254b76d56996da7cc8252dcb262cc826aa79e0b
 
 pkgname = chordsketch
