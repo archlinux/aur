@@ -4,7 +4,7 @@ pkgbase = uboot-rockchip-rk3566-powkiddy-x55
 	pkgrel = 1
 	url = https://github.com/u-boot/u-boot
 	arch = x86_64
-	arch = aarch
+	arch = aarch64
 	license = (GPL-2.0+ OR BSD-3-Clause) AND LicenseRef-scancode-rockchip-proprietary-2023
 	makedepends = git
 	source = git+https://github.com/u-boot/u-boot.git#tag=v2026.04
