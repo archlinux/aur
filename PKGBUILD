@@ -1,27 +1,36 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vault-unseal"
-pkgver=0.7.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Auto-unseal utility for Hashicorp Vault"
-arch=('aarch64' 'armv7h' 'x86_64')
+arch=(
+  'aarch64'
+  'armv7h'
+  'x86_64'
+)
 url="https://github.com/lrstanley/${pkgname}"
-license=('MIT')
-depends=('glibc')
-makedepends=('go')
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('29fc48e895527db804502ef2364316a89ef8a74cd1826d69b4198f1d25200f8e')
+license=(
+  'MIT'
+)
+depends=(
+  'glibc'
+)
+makedepends=(
+  'go'
+)
+_pkgsrc="${url##*/}-${pkgver}"
+source=(
+  "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+)
+sha256sums=('627b10b221dce1efd01a7f858283b67fb9a2b214a36b7b9251a187e41b06e741')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go mod download -x
-  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
-  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
-
-  mkdir -p "build"
+  go mod download -modcacherw -x
+  go mod verify
 }
 
 build() {
@@ -36,6 +45,11 @@ build() {
   cd "${srcdir}/${_pkgsrc}"
   go build -v -o "build/${pkgname}" .
 }
+
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
