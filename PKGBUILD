@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/stefonarch/niri-settings"
 license=('GPLv2.0')
 depends=('python' 'python-pyqt6' 'qt6-wayland' 'niri')
+makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/stefonarch/$_pkgname.git")
