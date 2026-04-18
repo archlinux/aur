@@ -1,0 +1,35 @@
+pkgbase = niri-wallpaperengine-git
+	pkgdesc = Wallpaper Engine backgrounds for Linux! Using background layer, compatible with niri blur.
+	pkgver = r601.be77336
+	pkgrel = 1
+	url = https://github.com/Almamu/linux-wallpaperengine
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = sdl2
+	makedepends = glm
+	makedepends = wayland-protocols
+	makedepends = xorg-xrandr
+	depends = lz4
+	depends = ffmpeg
+	depends = mpv
+	depends = glfw
+	depends = glew
+	depends = libpulse
+	depends = libcups
+	depends = at-spi2-core
+	depends = nss
+	depends = libxcomposite
+	depends = libxdamage
+	depends = nspr
+	depends = wayland
+	provides = linux-wallpaperengine
+	conflicts = linux-wallpaperengine
+	conflicts = linux-wallpaperengine-git
+	source = linux-wallpaperengine::git+https://github.com/Almamu/linux-wallpaperengine.git#branch=main
+	source = background.patch
+	sha512sums = SKIP
+	sha512sums = e6ec156ad851877d6212641a56790bb96f12fd9d13816b0dbc6d3b826bf5ce36277c0afa9a80b14f34eedfe345896b9fab03b066c81e6d22fb6aa92a1ce222b2
+
+pkgname = niri-wallpaperengine-git
