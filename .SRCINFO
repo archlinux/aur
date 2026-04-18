@@ -1,6 +1,6 @@
 pkgbase = lean-ctx-bin
 	pkgdesc = Context Engineering Layer for AI Coding — 42 intelligent tools, 8 read modes, 90+ shell patterns, RRF-based token optimization, persistent knowledge, multi-agent orchestration. Reduces AI costs by 60-99%. (pre-built binary)
-	pkgver = 3.2.2
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = https://leanctx.com
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lean-ctx-bin
 	depends = gcc-libs
 	provides = lean-ctx
 	conflicts = lean-ctx
-	source_x86_64 = lean-ctx-3.2.2-x86_64.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.2.2/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = fac9db086b1f7cd1d1f62bd52d175eb09c7d8b6f2434507928bfb7af0d4b7a0a
-	source_aarch64 = lean-ctx-3.2.2-aarch64.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.2.2/lean-ctx-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 8359db511554403f2c5809a9727a4da0cd202772b6914ce0da8a5179f1262ae0
+	source_x86_64 = lean-ctx-3.2.4-x86_64.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.2.4/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9cb9b76dce700b64115fc92b86a0830e1af8e769fdf9efc15c6114619816e27b
+	source_aarch64 = lean-ctx-3.2.4-aarch64.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.2.4/lean-ctx-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7fee8f65e09d520a08e864c220715df395875ff2094d63b42dfc2173230eeccd
 
 pkgname = lean-ctx-bin
