@@ -1,4 +1,5 @@
 [vault-unseal-bin]
-source = "git"
-git = "https://github.com/lrstanley/vault-unseal.git"
+source = "github"
+github = "lrstanley/vault-unseal"
+use_latest_release = true
 prefix = "v"
