@@ -5,7 +5,7 @@ pkgdesc="A stealthy, systemless sing-box node manager (Rust implementation)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/LIghtJUNction/Mimic-Node"
 license=('GPL-3.0-or-later')
-depends=('sing-box' 'openssl' 'kmod' 'gcc-libs')
+depends=('sing-box>=1.14.0' 'openssl' 'kmod' 'gcc-libs')
 makedepends=('git' 'rust' 'cargo')
 provides=('mimic-node')
 conflicts=('mimic-node')
