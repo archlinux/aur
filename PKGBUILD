@@ -1,7 +1,7 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=sourcegit
-pkgver=2026.07
+pkgver=2026.08
 pkgrel=1
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('dotnet-sdk-10.0' 'desktop-file-utils')
 
 source=("git+https://github.com/sourcegit-scm/$pkgname.git#tag=v$pkgver"
         "git+https://github.com/love-linger/AvaloniaEdit.git")
-sha256sums=('e552fb240310d2b2f97453fef0182871456722dcface8299c727fe295677e24d'
+sha256sums=('01f23619fdc4ff3481573b32d4b82aec02754522aa5ee2f010c1e8fe966ae864'
             'SKIP')
 
 prepare() {
