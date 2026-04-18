@@ -1,0 +1,17 @@
+pkgbase = flypaper
+	pkgdesc = Externally bind or mark sockets on the fly
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://codeberg.org/iguanajuice/flypaper
+	arch = x86_64
+	license = GPL-3.0
+	depends = bpf
+	depends = cjson
+	depends = clang
+	depends = libbpf
+	depends = linux-headers
+	depends = meson
+	source = https://codeberg.org/iguanajuice/flypaper/archive/v0.4.3.tar.gz
+	sha256sums = f65c793843ce90709fee9cb64befb3adf4488696a4978317d47f93fc9a76ce66
+
+pkgname = flypaper
