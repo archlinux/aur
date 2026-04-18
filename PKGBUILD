@@ -1,4 +1,5 @@
 # Maintainer: nardholio <nardholio@gmail.com>
+# Maintainer: aarto <aarto@aur.archlinux.org>
 # Contributor: Xeonacid <h.dwwwwww@gmail.com>
 # Contributor: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 # Contributor: BlackCatDevel0per
