@@ -1,18 +1,19 @@
 pkgbase = drg_mod_integration-notag-bin
 	pkgdesc = Deep Rock Galactic mod loader and integration (Strappazzon fork)
-	pkgver = 0.2.14
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/Strappazzon/drg-mint-notag
 	arch = x86_64
 	license = MIT
 	depends = openssl
 	provides = drg_mod_integration
 	conflicts = drg_mod_integration-bin
+	conflicts = drg_mod_integration-git
 	options = !strip
-	source = https://github.com/Strappazzon/drg-mint-notag/releases/download/v0.2.14/mint-notag-linux-x86_64.tar.xz
+	source = https://github.com/Strappazzon/drg-mint-notag/releases/download/v0.3.0/mint-x86_64-unknown-linux-gnu.zip
 	source = drg_mod_integration.desktop
 	source = icon.png
-	sha256sums = 0b8f12ae9327f96fefa0559a7ae409d4c3956fce4e53c90ce137d0acf8bb8a77
+	sha256sums = 906402e045e509f56ea88161345c0a9697c0a2f56eafcd6050dc6c9fe4658606
 	sha256sums = 4d072cc8e36cbdcc8fcbc676b3b9881edccf2da3fc011a1acadaf58908219f5f
 	sha256sums = babf72fd087d81c285f830416fe4c38783380510383d6ecce20829532af6c9b7
 
