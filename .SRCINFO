@@ -1,0 +1,21 @@
+pkgbase = rime-webdav-git
+	pkgdesc = Qt GUI for syncing Rime user data over WebDAV
+	pkgver = 0.r7.gf64038c
+	pkgrel = 1
+	url = https://github.com/faywong/rime-webdav
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = curl
+	depends = librime
+	depends = openssl
+	depends = pugixml
+	depends = qt6-base
+	provides = rime-webdav
+	conflicts = rime-webdav
+	source = git+https://github.com/faywong/rime-webdav.git
+	sha256sums = SKIP
+
+pkgname = rime-webdav-git
