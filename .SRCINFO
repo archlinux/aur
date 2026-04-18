@@ -1,17 +1,19 @@
 pkgbase = cmdcreate-git
 	pkgdesc = Allows you to create custom commands for your custom scripts
-	pkgver = r524.fef787b
+	pkgver = r1382.3380b6c
 	pkgrel = 1
 	url = https://github.com/owen-debiasio/cmdcreate
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cargo
 	makedepends = git
+	makedepends = cmake
+	makedepends = clang
 	depends = gcc-libs
 	provides = cmdcreate
 	conflicts = cmdcreate
-	conflicts = cmdcreate-debug
-	options = debug
+	options = !lto
 	source = cmdcreate::git+https://github.com/owen-debiasio/cmdcreate.git
 	sha256sums = SKIP
 

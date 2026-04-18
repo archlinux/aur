@@ -1,17 +1,17 @@
 pkgname=cmdcreate-git
-pkgver=r524.fef787b
+pkgver=r1382.3380b6c
 pkgrel=1
 pkgdesc="Allows you to create custom commands for your custom scripts"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/owen-debiasio/cmdcreate"
 license=('GPL3')
 
 depends=('gcc-libs')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'cmake' 'clang')
 
-conflicts=('cmdcreate' 'cmdcreate-debug')
+conflicts=('cmdcreate')
 provides=('cmdcreate')
-options=('debug')
+options=('!lto') 
 
 source=("cmdcreate::git+$url.git")
 sha256sums=('SKIP')
@@ -21,13 +21,19 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd cmdcreate
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd cmdcreate
-  cargo build --release
+  export LIBCLANG_PATH=/usr/lib
+  cargo build --release --frozen
 }
 
 package() {
   cd cmdcreate
   install -Dm755 target/release/cmdcreate "$pkgdir/usr/bin/cmdcreate"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/cmdcreate/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
