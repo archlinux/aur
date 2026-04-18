@@ -1,8 +1,8 @@
-# Maintainer: Fibref <fibref_233@outlook.com>
+# Maintainer: fibref <fibref_233@outlook.com>
 
 pkgname=quickjs-ng
 _basename=quickjs
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Small and embeddable JavaScript engine"
 url="https://quickjs-ng.github.io/quickjs"
@@ -10,10 +10,10 @@ arch=(x86_64)
 license=(MIT)
 options=(!strip)
 conflicts=(quickjs)
-depends=(glibc)
+depends=(glibc libgcc)
 makedepends=(cmake)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quickjs-ng/quickjs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c2c54b76ca2f52ffea49658a61c5111449cfe0f94e62510bd3bd7a12e2e18884')
+sha256sums=('13ed1d22cd4b2b693a94a234e752d1ea6a0064434a740031ff90439679257c6c')
 
 build() {
 	local _jobs=$(nproc 2>/dev/null || echo 4)
