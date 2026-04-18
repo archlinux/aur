@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=kabekami Config
+Name[ja]=kabekami 設定
+GenericName=Wallpaper Settings
+GenericName[ja]=壁紙設定
+Comment=Configure kabekami wallpaper rotation daemon
+Comment[ja]=kabekami 壁紙ローテーションデーモンの設定
+Exec=kabekami-config
+Icon=preferences-desktop-wallpaper
+Type=Application
+Categories=Settings;DesktopSettings;Qt;KDE;
+Keywords=wallpaper;background;rotation;
