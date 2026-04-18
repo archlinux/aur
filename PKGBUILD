@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=opencode-tool-search
-pkgver=0.4.2 # renovate: datasource=github-tags depName=M0Rf30/opencode-tool-search
+pkgver=0.4.3 # renovate: datasource=github-tags depName=M0Rf30/opencode-tool-search
 pkgrel=1
 pkgdesc="OpenCode plugin implementing Tool Search pattern - BM25 + regex search to discover tools on demand, reducing context usage"
 arch=('any')
@@ -12,7 +12,7 @@ options=('!strip' '!debug')
 install=$pkgname.install
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('062eed07203f53bc7137fe88461dde75b97501bf0af7b8b2396ff3aff3b72b39')
+sha256sums=('5fa40c4b26e15c4b989faea4729bdbdef3ea2b9dd0af1c3581482cadf8617eb9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

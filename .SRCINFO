@@ -1,6 +1,6 @@
 pkgbase = opencode-tool-search
 	pkgdesc = OpenCode plugin implementing Tool Search pattern - BM25 + regex search to discover tools on demand, reducing context usage
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/M0Rf30/opencode-tool-search
 	install = opencode-tool-search.install
@@ -10,7 +10,7 @@ pkgbase = opencode-tool-search
 	depends = opencode
 	options = !strip
 	options = !debug
-	source = opencode-tool-search-0.4.2.tar.gz::https://github.com/M0Rf30/opencode-tool-search/archive/refs/tags/v0.4.2.tar.gz
-	sha256sums = 062eed07203f53bc7137fe88461dde75b97501bf0af7b8b2396ff3aff3b72b39
+	source = opencode-tool-search-0.4.3.tar.gz::https://github.com/M0Rf30/opencode-tool-search/archive/refs/tags/v0.4.3.tar.gz
+	sha256sums = 5fa40c4b26e15c4b989faea4729bdbdef3ea2b9dd0af1c3581482cadf8617eb9
 
 pkgname = opencode-tool-search
