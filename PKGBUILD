@@ -7,7 +7,7 @@
 
 pkgname=ffmpeg-ndi
 pkgver=7.1.1
-pkgrel=4
+pkgrel=6
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video with NDI support'
 arch=(x86_64)
