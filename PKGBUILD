@@ -1,6 +1,6 @@
 # Maintainer: MrRedstonia <contact@mrredstonia.com>
 pkgname=armbian-imager-bin
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Utility for flashing Armbian OS images to SD cards and USB drives."
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('armbian-imager')
 options=('!strip')
 
 source=("https://github.com/armbian/imager/releases/download/v${pkgver}/Armbian.Imager_${pkgver}_amd64.deb")
-sha256sums=('c483ccf8bf4317993c7f1c99e52c3eb6540ab6c98345be722871d65ed5ac45b8')
+sha256sums=('d2c9aa36677f2b1fb383ad7195aa5a93127cadbba91769b594897aed78e38892')
 
 prepare() {
   ar x "Armbian.Imager_${pkgver}_amd64.deb"
