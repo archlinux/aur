@@ -1,12 +1,12 @@
 # Maintainer: kobe-koto <k [at] koto [dot] cc>
 pkgname=preaur-git
 _repo=PreAUR
-pkgver=0.0.4.r2.g00e9293
+pkgver=0.0.4.r3.g6ec07ef
 pkgrel=1
 pkgdesc="PreAUR, build AUR (not only) pkgbuilds ahead of time."
 arch=('any')
 url="https://github.com/kobe-koto/$_repo"
-license=('AGPL-3.0-only')
+license=('MIT')
 depends=(
   'bun'
   'git'
