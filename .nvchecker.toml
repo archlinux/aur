@@ -1,0 +1,5 @@
+[netwatch-tui-bin]
+source = "github"
+github = "matthart1983/netwatch"
+use_latest_release = true
+prefix = "v"
