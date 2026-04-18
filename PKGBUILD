@@ -1,14 +1,14 @@
 # Maintainer: Evans Jahja <evansjahja13 gmail>
 pkgname=roc-alpha4-rolling-bin
 pkgver=2025.09.09.d73ea10
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="A fast, friendly, functional language."
 arch=('x86_64' 'aarch64')
 url="https://www.roc-lang.org/"
 license=('UPL')
 groups=()
-depends=()
+depends=('glibc')
 makedepends=()
 checkdepends=()
 optdepends=()

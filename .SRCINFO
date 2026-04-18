@@ -1,12 +1,13 @@
 pkgbase = roc-alpha4-rolling-bin
 	pkgdesc = A fast, friendly, functional language.
 	pkgver = 2025.09.09.d73ea10
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://www.roc-lang.org/
 	arch = x86_64
 	arch = aarch64
 	license = UPL
+	depends = glibc
 	source_x86_64 = roc-alpha4-rolling-bin-0.src.tar.gz::https://github.com/roc-lang/roc/releases/download/alpha4-rolling/roc-linux_x86_64-alpha4-rolling.tar.gz
 	sha256sums_x86_64 = SKIP
 	source_aarch64 = roc-alpha4-rolling-bin-0.src.tar.gz::https://github.com/roc-lang/roc/releases/download/alpha4-rolling/roc-linux_arm64-alpha4-rolling.tar.gz
