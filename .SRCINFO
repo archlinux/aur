@@ -1,6 +1,6 @@
 pkgbase = appmanager
 	pkgdesc = MacOS style AppImage installer and management application
-	pkgver = 3.5.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://github.com/kem-a/AppManager
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = appmanager
 	depends = squashfs-tools
 	depends = zsync2
 	optdepends = appimage-thumbnailer: generate thumbnails for AppImages
-	source = AppManager-3.5.0.tar.gz::https://github.com/kem-a/AppManager/archive/refs/tags/v3.5.0.tar.gz
-	sha256sums = 8e0b404619da2df8935bdac0ea4017839c02010e3058d71175b4c2f15f2b5d8d
+	source = AppManager-3.5.1.tar.gz::https://github.com/kem-a/AppManager/archive/refs/tags/v3.5.1.tar.gz
+	sha256sums = 627a823abf98023b331080aa2691a605db8bc2b4e95431d6b1e2beb5f092096e
 
 pkgname = appmanager
