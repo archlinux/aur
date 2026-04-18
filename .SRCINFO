@@ -1,6 +1,6 @@
 pkgbase = emskin-bin
 	pkgdesc = Nested Wayland compositor for Emacs
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/emskin/emskin
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = emskin-bin
 	optdepends = emacs: X11 Emacs (works via XWayland)
 	provides = emskin
 	conflicts = emskin
-	source = https://github.com/emskin/emskin/releases/download/v0.3.2/emskin-0.3.2-x86_64.tar.gz
-	sha256sums = bdb1eba8d02c3616ce6ca8922d5cf2b498d49c339af952dfd6bf6c507c3809c6
+	source = https://github.com/emskin/emskin/releases/download/v0.3.3/emskin-0.3.3-x86_64.tar.gz
+	sha256sums = 8df71f2b7631e6dcdb5b44ad6cec8df604b5e56e5455c2b0fa743e5b77f9ac19
 
 pkgname = emskin-bin
