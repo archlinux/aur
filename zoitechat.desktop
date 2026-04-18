@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ZoiteChat Irc Client
+Comment=A popular and easy to use graphical IRC (chat) client, based on HexChat
+Exec=/usr/bin/zoitechat
+Icon=/opt/zoitechat/zoitechat.png
+Terminal=false
+Type=Application
+Categories=Network
