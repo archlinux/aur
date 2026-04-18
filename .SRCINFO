@@ -6,10 +6,8 @@ pkgbase = thelounge-beta
 	arch = any
 	license = MIT
 	makedepends = yarn
-	makedepends = python
-	makedepends = python-setuptools
 	makedepends = git
-	depends = nodejs
+	depends = nodejs>=22
 	provides = thelounge
 	conflicts = thelounge
 	noextract = thelounge-4.5.0-rc.1.tgz
