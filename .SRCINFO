@@ -1,17 +1,17 @@
 pkgbase = lycan-bin
 	pkgdesc = Lightweight PWA manager for Linux desktops
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/tutkuofnight/lycan
 	arch = x86_64
 	license = MIT
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = glib2
 	provides = lycan
 	conflicts = lycan
 	conflicts = lycan-git
-	source = https://github.com/tutkuofnight/lycan/releases/download/v0.1.1/lycan-v0.1.1-x86_64-linux.tar.gz
-	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	source = https://github.com/tutkuofnight/lycan/releases/download/v0.1.2/lycan-v0.1.2-x86_64-linux.tar.gz
+	sha256sums = 57cbf369044d2046cb49c5092f24e555ad77f667de637c84e60bdf454724b743
 
 pkgname = lycan-bin
