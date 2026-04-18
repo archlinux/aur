@@ -1,10 +1,10 @@
 # Maintainer: Alexander Pohl <alex@ahpohl.com>
 
 pkgname=fronius-bridge
-pkgver=1.0.10
+pkgver=1.1.10
 pkgrel=1
 arch=('x86_64' 'aarch64')
-pkgdesc="Lightweight Modbus-to-MQTT bridge for Fronius inverters"
+pkgdesc="Lightweight Modbus-to-MQTT bridge for Fronius devices"
 url="https://github.com/ahpohl/fronius-bridge"
 license=('MIT')
 makedepends=('cmake' 'git' 'pkgconf')
