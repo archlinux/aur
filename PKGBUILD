@@ -17,7 +17,7 @@ options=('!debug' '!lto' 'strip')
 
 pkgver() {
   cd lian-li-linux
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  (git describe --tags --abbrev=0 2>/dev/null || git rev-parse --short HEAD) | sed 's/^v//'
 }
 
 prepare() {
