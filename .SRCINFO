@@ -1,0 +1,20 @@
+pkgbase = viper-py
+	pkgdesc = A fast Python interpreter written in Rust — beats CPython 3.12 on 9/10 benchmarks
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/matthart1983/viper
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nasm
+	depends = glibc
+	depends = libgcc
+	provides = viper
+	options = !lto
+	options = !strip
+	source = viper-0.2.0.crate::https://crates.io/api/v1/crates/viper-py/0.2.0/download
+	sha256sums = 55911d115fe03c27cc6fa473369df24abb3b555f55def30553f47e3240fd9b11
+
+pkgname = viper-py

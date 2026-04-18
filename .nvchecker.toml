@@ -1,0 +1,3 @@
+[viper-py]
+source = "cratesio"
+cratesio = "viper-py"
