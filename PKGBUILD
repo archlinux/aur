@@ -14,10 +14,10 @@ url='http://qgis.org/'
 license=('GPL')
 arch=('x86_64')
 depends=(
-  'proj' 'geos' 'sqlite' 'qwtpolar' 'expat' 'spatialindex' 'gsl' 'libzip' 'exiv2' 'ocl-icd' 'protobuf' 'pdal'
+  'proj' 'geos' 'sqlite' 'expat' 'spatialindex' 'gsl' 'libzip' 'exiv2' 'ocl-icd' 'protobuf' 'pdal'
   'qt6-tools' 'qtkeychain' 'sip' 'qca-qt6' 'qt6-webengine' 'qt6-3d' 'qt6-serialport'
   'python-gdal' 'python-owslib' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments'
-  'python-pyqt6' 'python-qscintilla-qt6' 'qwt-qt6'
+  'python-pyqt6' 'python-qscintilla-qt6' 'qwt'
 )
 makedepends=(git cmake ninja pyqt-builder opencl-clhpp fcgi qt6-tools sip)
 optdepends=('grass: for GRASS providers and plugin (6 or 7)'
@@ -64,9 +64,6 @@ build() {
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DQGIS_MANUAL_SUBDIR=share/man \
     -DBINDINGS_GLOBAL_INSTALL=FALSE \
-    -DWITH_QWTPOLAR=TRUE \
-    -DQWTPOLAR_LIBRARY=/usr/lib/libqwt-qt6.so \
-    -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt-qt6 \
     -DWITH_INTERNAL_SPATIALINDEX=TRUE
 
   ninja
