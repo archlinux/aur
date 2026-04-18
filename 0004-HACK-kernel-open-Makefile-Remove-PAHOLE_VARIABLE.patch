@@ -1,0 +1,69 @@
+From 679f2b17b3c09104a8008a734a4d13f1647ffdfe Mon Sep 17 00:00:00 2001
+From: Eric Naim <dnaim@cachyos.org>
+Date: Mon, 23 Feb 2026 15:34:49 +0800
+Subject: [PATCH 4/4] [HACK] kernel-open/Makefile: Remove PAHOLE_VARIABLE
+
+Something in 7.0 broke the quoting in PAHOLE_VARIABLES and caused errors
+during BTF generation. Taking a look, this part doesn't really make
+sense. It's not supposed to do anything if pahole-flags.sh is present,
+but:
+1. pahole-flags.sh doesn't exclude c++
+2. pahole-flags.sh was replaced with Makefile.btf
+
+Removing this doesn't seem to break the functionality of the module as a
+user so until a proper fix from NVIDIA is available, this should be
+sufficient.
+
+Signed-off-by: Eric Naim <dnaim@cachyos.org>
+---
+ kernel-open/Makefile | 27 +--------------------------
+ 1 file changed, 1 insertion(+), 26 deletions(-)
+
+diff --git a/kernel-open/Makefile b/kernel-open/Makefile
+index f7a8db69fb54..7ad221ea3135 100644
+--- a/kernel-open/Makefile
++++ b/kernel-open/Makefile
+@@ -71,31 +71,6 @@ else
+   CC ?= cc
+   LD ?= ld
+   OBJDUMP ?= objdump
+-  AWK ?= awk
+-  # Bake the following awk program in a string. The program is needed to add C++
+-  # to the languages excluded from BTF generation.
+-  #
+-  # Also, unconditionally return success (0) from the awk program, rather than
+-  # propagating pahole's return status (with 'exit system(pahole_cmd)'), to
+-  # workaround an DW_TAG_rvalue_reference_type error in
+-  # kernel/nvidia-modeset.ko.
+-  #
+-  # BEGIN {
+-  #     pahole_cmd = "pahole"
+-  #     for (i = 1; i < ARGC; i++) {
+-  #         if (ARGV[i] ~ /--lang_exclude=/) {
+-  #             pahole_cmd = pahole_cmd sprintf(" %s,c++", ARGV[i])
+-  #         } else {
+-  #             pahole_cmd = pahole_cmd sprintf(" %s", ARGV[i])
+-  #         }
+-  #     }
+-  #     system(pahole_cmd)
+-  # }
+-  PAHOLE_AWK_PROGRAM = BEGIN { pahole_cmd = \"pahole\"; for (i = 1; i < ARGC; i++) { if (ARGV[i] ~ /--lang_exclude=/) { pahole_cmd = pahole_cmd sprintf(\" %s,c++\", ARGV[i]); } else { pahole_cmd = pahole_cmd sprintf(\" %s\", ARGV[i]); } } system(pahole_cmd); }
+-  # If scripts/pahole-flags.sh is not present in the kernel tree, add PAHOLE and
+-  # PAHOLE_AWK_PROGRAM assignments to PAHOLE_VARIABLES; otherwise assign the
+-  # empty string to PAHOLE_VARIABLES.
+-  PAHOLE_VARIABLES=$(if $(wildcard $(KERNEL_SOURCES)/scripts/pahole-flags.sh),,"PAHOLE=$(AWK) '$(PAHOLE_AWK_PROGRAM)'")
+ 
+   ifndef ARCH
+     ARCH := $(shell uname -m | sed -e 's/i.86/i386/' \
+@@ -136,7 +111,7 @@ else
+   .PHONY: modules module clean clean_conftest modules_install
+   modules clean modules_install:
+ 	@$(MAKE) "LD=$(LD)" "CC=$(CC)" "OBJDUMP=$(OBJDUMP)" \
+-	  $(PAHOLE_VARIABLES) $(KBUILD_PARAMS) $@
++	  $(KBUILD_PARAMS) $@
+ 	@if [ "$@" = "modules" ]; then \
+ 	  for module in $(NV_KERNEL_MODULES); do \
+ 	    if [ -x split-object-file.sh ]; then \
+-- 
+2.53.0
+
