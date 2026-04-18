@@ -2,7 +2,7 @@
 pkgname=colony-git
 _pkgname=colony
 pkgver=r0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Application launcher for the Project-Colony ecosystem (git HEAD)"
 arch=('x86_64')
 url="https://github.com/Project-Colony/Colony"
@@ -40,11 +40,14 @@ build() {
     cd "${srcdir}/${_pkgname}"
     export CARGO_TARGET_DIR=target
     # Force -sys crates to link against system libraries via pkg-config
-    # instead of bundled/vendored builds. Without these, zstd-sys and
-    # libdbus-sys fail to emit -lzstd / -ldbus-1 and the final link fails
-    # with "undefined symbol: ZSTD_freeDCtx / dbus_error_init".
+    # instead of bundled/vendored builds.
     export ZSTD_SYS_USE_PKG_CONFIG=1
     export PKG_CONFIG_ALL_DYNAMIC=1
+    # libdbus-sys ne propage pas toujours `-ldbus-1` via pkg-config selon
+    # l'environnement (bug observé avec rust-lld sur certaines versions).
+    # On force le flag directement via RUSTFLAGS pour que le link final
+    # résolve dbus_error_init & co.
+    export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-ldbus-1"
     cargo build --frozen --release
 }
 
