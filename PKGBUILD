@@ -1,7 +1,7 @@
 # Maintainer: Dwayne Bent <dbb@dbb.io>
 pkgname=systemd-cron
-pkgver=2.6.0
-pkgrel=2
+pkgver=2.7.0
+pkgrel=1
 pkgdesc='systemd units to run cron scripts'
 arch=('x86_64')
 url='https://github.com/systemd-cron/systemd-cron'
@@ -16,7 +16,7 @@ source=(
     'sysusers.conf'
 )
 install=${pkgname}.install
-sha256sums=('a235dac95aa6b8339acc56d4567089f0feeed56421ff473fa161a3c8f022e813'
+sha256sums=('549e17110202a258a5c4543ba107f27189bedecb38124bf60854d42a8f0dad19'
             '9260221879cca05d4c82cd12deb88759c8d9148e106f4b9891700849cef5c41b')
 
 build() {
