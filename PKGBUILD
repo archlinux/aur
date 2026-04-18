@@ -2,8 +2,8 @@
 pkgname=pressplay-iris-v2-nearlink
 pkgver=1.0.3
 pkgrel=1
-pkgdesc="Press Play IRIS V2 NearLink | Unofficial community mouse software for linux"
-arch=('x86_64')
+pkgdesc="Press Play IRIS V2 NearLink | Unofficial community mouse software driver for linux"
+arch=('x86_64' 'arm64')
 url="https://github.com/dxnz-id/pressplay-iris-v2-nearlink"
 license=('MIT')
 depends=('libnotify' 'libxtst' 'nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'libxkbcommon' 'mesa' 'pango' 'alsa-lib')
