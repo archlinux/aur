@@ -14,12 +14,12 @@ url='http://qgis.org/'
 license=('GPL')
 arch=('x86_64')
 depends=(
-  'proj' 'geos' 'sqlite' 'expat' 'spatialindex' 'gsl' 'libzip' 'exiv2' 'ocl-icd' 'protobuf' 'pdal'
-  'qt6-tools' 'qtkeychain' 'sip' 'qca-qt6' 'qt6-webengine' 'qt6-3d' 'qt6-serialport'
+  'proj' 'geos' 'sqlite' 'expat' 'spatialindex' 'gsl' 'libzip' 'exiv2' 'ocl-icd' 'protobuf' 'pdal' 'draco'
+  'qt6-tools' 'qtkeychain-qt6' 'sip' 'qca-qt6' 'qt6-webengine' 'qt6-3d' 'qt6-serialport' 'qt6-svg' 'qt6-multimedia'
   'python-gdal' 'python-owslib' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments'
   'python-pyqt6' 'python-qscintilla-qt6' 'qwt'
 )
-makedepends=(git cmake ninja pyqt-builder opencl-clhpp fcgi qt6-tools sip)
+makedepends=(git cmake ninja pyqt-builder opencl-clhpp fcgi)
 optdepends=('grass: for GRASS providers and plugin (6 or 7)'
 #            'gsl: for georeferencer'
             'postgresql: for postgis and SPIT support'
