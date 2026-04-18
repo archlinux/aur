@@ -1,8 +1,8 @@
 # Maintainer: Shorin <shorin@example.com>
 _pkgname=clipsync
 pkgname=linuxqq-clipsync-git
-pkgver=r22.e08c790
-pkgrel=1
+pkgver=r23.a1d662a
+pkgrel=2
 pkgdesc="修复Linuxqq以Wayland运行时的剪贴板异常。"
 arch=('x86_64')
 url="https://github.com/SHORiN-KiWATA/linuxqq-clipsync"
@@ -13,7 +13,7 @@ makedepends=('git' 'cargo')
 provides=('linuxqq-clipsync' 'clipsync' 'clipsync-git')
 conflicts=('linuxqq-clipsync' 'clipsync' 'clipsync-git')
 replaces=('clipsync-git')
-
+install="${pkgname}.install"
 source=("$_pkgname::git+${url}.git")
 # ========================
 
