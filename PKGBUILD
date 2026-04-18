@@ -1,7 +1,7 @@
 # Maintainer: yobson <aur@yobson.xyz>
 pkgname=zipsign
 pkgdesc='A tool to sign and verify .zip and .tar.gz files with an ed25519 signing key'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 arch=('x86_64')
 url="https://crates.io/crates/${pkgname}"
@@ -9,7 +9,7 @@ license=('MIT OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception')
 makedepends=('cargo')
 depends=('libgcc' 'glibc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Kijewski/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('392e1d264829b19c51cb6606946125b05fef489ff17738f8f3826536f76d3876')
+sha256sums=('909b6828e0416644cfbd2c83c83b809948b7acb38cdc3293b8d1489b7ecc661c')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver/cli"
