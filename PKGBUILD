@@ -1,7 +1,7 @@
 # Maintainer: RaghavGohil raghavgohil2004@gmail.com
 
 pkgname=den
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Context management for projects made easy."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RaghavGohil/den/archive/v$pkgver.tar.gz")
-sha256sums=('5a3a0d0ab1a872467e2f9c41e5130acf1d51b138da58c0f7a7072f37f578ffb6')
+sha256sums=('dd0fb548971e3d31664c689a9768e52dde6bd650cb550e47483fbacd297e97a6')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
