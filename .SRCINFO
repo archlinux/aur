@@ -1,0 +1,14 @@
+pkgbase = forgecode-nu
+	pkgdesc = Nushell plugin for Forge colon-command workflows
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/OneNoted/forgecode.nu
+	arch = any
+	license = Apache-2.0
+	depends = nushell
+	optdepends = forge: required Forge CLI backend
+	conflicts = forgecode-nu-git
+	source = https://github.com/OneNoted/forgecode.nu/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = d60f527516882a148d305e12a451b8448187712cbee58aa65ad901ae34834993
+
+pkgname = forgecode-nu
