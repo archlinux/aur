@@ -1,0 +1,19 @@
+pkgbase = whydpi
+	pkgdesc = Adaptive, per-SNI DPI bypass that learns optimal TLS fragmentation per host
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/byrdltd/whyDPI
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = iptables
+	optdepends = systemd: run whydpi as a service at boot
+	conflicts = whydpi-git
+	source = whydpi-0.2.0.tar.gz::https://github.com/byrdltd/whyDPI/archive/v0.2.0.tar.gz
+	sha256sums = fac22ab4ad20972fbeccbaa23beeaa3a8c2ec33cc93af068da4f79e1cea728a1
+
+pkgname = whydpi
