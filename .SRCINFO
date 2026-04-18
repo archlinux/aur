@@ -1,9 +1,10 @@
 pkgbase = pressplay-iris-v2-nearlink
-	pkgdesc = Press Play IRIS V2 NearLink | Unofficial community mouse software for linux
+	pkgdesc = Press Play IRIS V2 NearLink | Unofficial community mouse software driver for linux
 	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/dxnz-id/pressplay-iris-v2-nearlink
 	arch = x86_64
+	arch = arm64
 	license = MIT
 	makedepends = npm
 	makedepends = nodejs
