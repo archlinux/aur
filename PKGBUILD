@@ -1,9 +1,9 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=workbuddy-bin
-pkgver=4.10.0.25559938
+pkgver=4.10.1.25648017
 pkgrel=1
-_commit=868e84e9
+_commit=3aa8d419
 pkgdesc="Work Smart，Not Hard"
 arch=('x86_64' 'aarch64')
 url="https://www.codebuddy.ai/agents"
