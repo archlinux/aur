@@ -1,5 +1,5 @@
 pkgname='codex-app-unofficial'
-pkgver='26.415.32059_launcher.10'
+pkgver='26.415.40636_launcher.10'
 pkgrel=1
 pkgdesc='Unofficial Linux build of Codex from OpenAI'\''s Codex appcast feed.'
 arch=('x86_64')
@@ -11,11 +11,11 @@ conflicts=('codex-app-linux-bin')
 replaces=('codex-app-linux-bin')
 install='codex-app-unofficial.install'
 source=(
-  'codex-app-linux-26.415.32059-launcher.10-x64-linux-unpacked.tar.gz::https://github.com/better-slop/codex-app-linux/releases/download/v26.415.32059-launcher.10/codex-app-linux-26.415.32059-launcher.10-x64-linux-unpacked.tar.gz'
-  'codex-app-linux-26.415.32059-launcher.10-x64.png::https://github.com/better-slop/codex-app-linux/releases/download/v26.415.32059-launcher.10/codex-app-linux-26.415.32059-launcher.10-x64.png'
+  'codex-app-linux-26.415.40636-launcher.10-x64-linux-unpacked.tar.gz::https://github.com/better-slop/codex-app-linux/releases/download/v26.415.40636-launcher.10/codex-app-linux-26.415.40636-launcher.10-x64-linux-unpacked.tar.gz'
+  'codex-app-linux-26.415.40636-launcher.10-x64.png::https://github.com/better-slop/codex-app-linux/releases/download/v26.415.40636-launcher.10/codex-app-linux-26.415.40636-launcher.10-x64.png'
 )
 sha256sums=(
-  '85e70149798206a5f96f3e2b1d6559d1a51efcecc0f4d94bd3f79be5545dd73d'
+  'a1ff45e6fb35e5b88d83d21474db042e5d7c381f9d95296b47c72e87837a2c8a'
   '1c926e380bfe6a50f40648dd9bc5de88da7271546491adf99ec72172e17df6a0'
 )
 
@@ -26,7 +26,7 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/codex-app-linux/codex-app-linux" "${pkgdir}/usr/bin/codex-app-linux"
 
-  install -Dm644 "${srcdir}/codex-app-linux-26.415.32059-launcher.10-x64.png"     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/codex-app-linux.png"
+  install -Dm644 "${srcdir}/codex-app-linux-26.415.40636-launcher.10-x64.png"     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/codex-app-linux.png"
 
   cat > "codex-app-linux.desktop" <<'EOF'
 [Desktop Entry]
