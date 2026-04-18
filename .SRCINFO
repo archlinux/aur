@@ -1,6 +1,6 @@
 pkgbase = aligo
 	pkgdesc = Utility for checking and viewing Golang struct alignment info
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/essentialkaos/aligo
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = aligo
 	makedepends = git
 	makedepends = go
 	makedepends = make
-	source = aligo::git+https://github.com/essentialkaos/aligo.git#commit=5c1c562e2e3f989d9378d1a7f0f56afb0bf9a2c5
+	source = aligo::git+https://github.com/essentialkaos/aligo.git#commit=8649908b91dc01529375d2d01b011acb6045b6cc
 	sha256sums = SKIP
 
 pkgname = aligo
