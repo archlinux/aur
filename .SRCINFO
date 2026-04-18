@@ -1,17 +1,17 @@
 pkgbase = bcmr-bin
 	pkgdesc = Better Copy Move Remove — A modern, safe CLI tool for file operations with progress display, resume, and remote copy.
-	pkgver = 0.5.17
+	pkgver = 0.5.19
 	pkgrel = 1
 	url = https://github.com/Bengerthelorf/bcmr
 	arch = x86_64
 	license = MIT
 	provides = bcmr
 	conflicts = bcmr
-	source = LICENSE-0.5.17::https://raw.githubusercontent.com/Bengerthelorf/bcmr/v0.5.17/LICENSE
-	source = README-0.5.17.md::https://raw.githubusercontent.com/Bengerthelorf/bcmr/v0.5.17/README.md
+	source = LICENSE-0.5.19::https://raw.githubusercontent.com/Bengerthelorf/bcmr/v0.5.19/LICENSE
+	source = README-0.5.19.md::https://raw.githubusercontent.com/Bengerthelorf/bcmr/v0.5.19/README.md
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	sha256sums = e26d584e05d0e34c8e4db28524d59a7518088a03fa21c3238a3ab87eb67cf781
-	source_x86_64 = bcmr-x86_64-0.5.17.tgz::https://github.com/Bengerthelorf/bcmr/releases/download/v0.5.17/bcmr-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 21e6bef98609daeb98951d7e038bd89f0c4c13732a6057d6c5aae4381dcef509
+	sha256sums = def0a9bebd315776ad0171de850cf2f80c7b5a3e883f3652d555a5b795e28ef9
+	source_x86_64 = bcmr-x86_64-0.5.19.tgz::https://github.com/Bengerthelorf/bcmr/releases/download/v0.5.19/bcmr-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 1f7f7104eba70a670111f986ec27d8371ffa3d77bd9f70708347d9a1bbb93edc
 
 pkgname = bcmr-bin
