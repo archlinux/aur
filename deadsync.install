@@ -1,0 +1,11 @@
+post_install() {
+    echo "DeadSync has been installed to /opt/deadsync."
+    echo "Run 'deadsync' from a terminal or launch it from your application menu."
+    echo
+    echo "Place song packs and other user content inside ~/.deadsync/"
+    echo "Configuration is also stored in ~/.deadsync/"
+}
+
+post_upgrade() {
+    post_install
+}
