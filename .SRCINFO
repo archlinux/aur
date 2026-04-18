@@ -1,0 +1,14 @@
+pkgbase = fsysutils
+	pkgdesc = Falcon system utilities
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/HanSolo1000Falcon/falcon-system-utils
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	source = fsysutils::git+https://github.com/HanSolo1000Falcon/falcon-system-utils.git
+	sha256sums = SKIP
+
+pkgname = fsysutils
