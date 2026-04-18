@@ -1,8 +1,8 @@
 # Maintainer: DrCoomer <isfortner@gmail.com>
 pkgname=blahaj-rs-git
+
 pkgver=1
 pkgrel=1
-epoch=
 pkgdesc="Gay sharks at your local terminal - but in rust! lolcat-like CLI tool "
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/yoshisaac/BLAHAJ-rs"
@@ -13,30 +13,26 @@ makedepends=('cargo')
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=('blahaj')
+conflicts=('blahaj' 'blahaj-git' 'blahaj-d' 'blahaj-d-git')
 replaces=()
 backup=()
-options=()
+options=('!debug')
 install=
 changelog=
-source=("https://github.com/yoshisaac/BLAHAJ-rs/archive/refs/tags/AUR-Release.tar.gz")
+source=("git+https://github.com/Doctor-Coomer/BLAHAJ-rs.git")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
 
-prepare() {
-    cd "BLAHAJ-rs-AUR-Release"
-}
-
 build() {
-    cd "BLAHAJ-rs-AUR-Release"
+    cd "BLAHAJ-rs"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --release
 }
 
 package() {
-    cd "BLAHAJ-rs-AUR-Release"
-    mv "target/release/blahaj-rs" "target/release/blahaj"
+    cd "BLAHAJ-rs"
+    mv "target/release/blahaj-rs" "target/release/blahaj" # Rename binary to a common name
     install -Dm755 "target/release/blahaj" -t "$pkgdir/usr/bin/"
 }
