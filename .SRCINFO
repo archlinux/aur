@@ -1,26 +1,29 @@
 pkgbase = vbam-git
 	pkgdesc = Nintendo Game Boy Advance emulator
-	pkgver = 2.1.0.r2.g459a1fbe
+	pkgver = 2.2.3.r460.gb7db7177
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/visualboyadvance-m/visualboyadvance-m
+	url = https://visualboyadvance-m.org
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = cmake
 	makedepends = gettext
-	depends = wxgtk3
+	makedepends = zip
+	depends = wxwidgets-gtk3
 	depends = sfml
 	depends = ffmpeg
-	depends = zip
+	depends = openal
+	depends = libxss
+	depends = sdl3
+	provides = vbam-sdl
 	provides = vbam-wx
-	conflicts = vbam-gtk
+	conflicts = vbam-sdl
 	conflicts = vbam-wx
 	options = !emptydirs
-	source = vbam::git+https://github.com/visualboyadvance-m/visualboyadvance-m.git
+	source = git+https://github.com/visualboyadvance-m/visualboyadvance-m.git
 	sha256sums = SKIP
 	makedepends_i686 = nasm
 
 pkgname = vbam-git
-
