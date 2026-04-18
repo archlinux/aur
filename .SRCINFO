@@ -1,0 +1,12 @@
+pkgbase = monado-mercury-hand-data-git
+	pkgdesc = ONNX model files for the Monado Mercury hand tracker
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	source = https://github.com/moshimeow/mercury_steamvr_driver/raw/e3948ace94a9f2cbd949adf50ffcc082002337cc/src/steamvr_driver/mercury/resources/internal/hand-tracking-models/grayscale_detection_160x160.onnx
+	source = https://github.com/moshimeow/mercury_steamvr_driver/raw/e3948ace94a9f2cbd949adf50ffcc082002337cc/src/steamvr_driver/mercury/resources/internal/hand-tracking-models/grayscale_keypoint_jan18.onnx
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = monado-mercury-hand-data-git
