@@ -4,7 +4,7 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.3109.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -30,8 +30,8 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'socat: Cowork socket health check in launcher (fallback: age-based check)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.3109.0-4/claude-desktop-1.3109.0-linux.tar.gz")
-sha256sums_x86_64=('dd90f99015d59f2a2533300565d2da038259a6de100df679dc86d2073beaf5a4')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.3109.0-5/claude-desktop-1.3109.0-linux.tar.gz")
+sha256sums_x86_64=('da02f22c4fbab3d2924f022f5f613f5dcf2d38356756fe6fdd82662c2a8cbea6')
 options=('!strip')
 
 package() {
@@ -41,15 +41,12 @@ package() {
     install -dm755 "$pkgdir/usr/lib/$pkgname"
     cp -r app/* "$pkgdir/usr/lib/$pkgname/"
 
-    # Hardlink system electron into our prefix under the APP_ID name. Electron
+    # Copy system electron into our prefix under the APP_ID name. Electron
     # reads /proc/self/exe for Wayland app_id / X11 WM_CLASS, so the binary
-    # name must match the .desktop StartupWMClass. Hardlink avoids duplicating
-    # ~200 MB; falls back to cp on cross-device setups (separate /home partition,
-    # btrfs subvolumes) where hard links are not possible.
+    # name must match the .desktop StartupWMClass.
     local electron_bin=/usr/lib/electron/electron
     if [[ -x $electron_bin ]]; then
-        ln "$electron_bin" "$pkgdir/usr/lib/$pkgname/com.anthropic.claude-desktop" 2>/dev/null \
-            || cp "$electron_bin" "$pkgdir/usr/lib/$pkgname/com.anthropic.claude-desktop"
+        cp "$electron_bin" "$pkgdir/usr/lib/$pkgname/com.anthropic.claude-desktop"
     else
         echo "PKGBUILD: /usr/lib/electron/electron not found; WM_CLASS will be wrong until rebuilt against an installed electron" >&2
     fi
