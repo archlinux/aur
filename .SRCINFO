@@ -1,0 +1,20 @@
+pkgbase = pulsedb
+	pkgdesc = A high-performance time-series database written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/matthart1983/pulsedb
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nasm
+	depends = glibc
+	depends = libgcc
+	provides = pulsedb
+	options = !lto
+	options = !strip
+	source = pulsedb-0.1.0.crate::https://crates.io/api/v1/crates/pulsedb/0.1.0/download
+	sha256sums = d56ecb10a2092c0afd540bdc0a4804ea03c95b5f11a28aaa0d25b0927e10742e
+
+pkgname = pulsedb
