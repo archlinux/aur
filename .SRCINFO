@@ -1,0 +1,15 @@
+pkgbase = weather-dashboard-git
+	pkgdesc = GTK4 weather desktop app with current conditions, forecast, and saved cities
+	pkgver = 0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/EvansOgala/weather-dashboard
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	source = weather-dashboard-git::git+https://github.com/EvansOgala/weather-dashboard.git
+	sha256sums = SKIP
+
+pkgname = weather-dashboard-git
