@@ -1,7 +1,7 @@
 pkgbase = shelly-git
 	pkgdesc = Shelly: A Modern Arch Package Manager (git version)
-	pkgver = 2.0.10
-	pkgrel = 3
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/ZoeyErinBauer/Shelly-ALPM
 	arch = x86_64
 	license = GPL-3.0-only
@@ -18,6 +18,7 @@ pkgbase = shelly-git
 	depends = hicolor-icon-theme
 	depends = dbus
 	depends = glibc
+	depends = libarchive
 	optdepends = flatpak: For supporting flatpak implementation.
 	optdepends = archlinux-appstream-data: package icons and metadata
 	optdepends = fish: Fish shell completions
