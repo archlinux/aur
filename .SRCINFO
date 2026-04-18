@@ -1,5 +1,5 @@
 pkgbase = linux-mnt-reform-bin
-	pkgver = 6.19.12.reform1
+	pkgver = 6.19.13.reform1
 	pkgrel = 1
 	url = https://github.com/cetola/mnt-build
 	arch = aarch64
@@ -16,14 +16,14 @@ pkgbase = linux-mnt-reform-bin
 	sha256sums = 9273c9f5d07b592e8e93ca4a2a46d637470672fe7d7dc43c3cd221e7ebfe175c
 	sha256sums = 24e36fc74f7aa27fe699e5eac923c14ae80c7bc85038cfab3d8cd93148d7cb3e
 	sha256sums = f698b0eac8828aa4b4ee4fad351b303760594b9371dee5c244789734139e05fd
-	source_aarch64 = kernel-6.19.12.reform1-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/6.19.12.reform1-aarch64/kernel-6.19.12.reform1.tar.gz
-	source_aarch64 = headers-6.19.12.reform1-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/6.19.12.reform1-aarch64/headers-6.19.12.reform1.tar.gz
-	sha256sums_aarch64 = 3095f0ffaccc517f2a50916b91f6b1f7cd3361ca240751765a7aa8a526102c1a
-	sha256sums_aarch64 = e50332e711dabe2f7e6a046592714a478b6aec1a7af5028d3c93a43a6042cae7
-	source_x86_64 = kernel-6.19.12.reform1-x86_64.tar.gz::https://github.com/cetola/mnt-build/releases/download/6.19.12.reform1-x86_64/kernel-6.19.12.reform1.tar.gz
-	source_x86_64 = headers-6.19.12.reform1-x86_64.tar.gz::https://github.com/cetola/mnt-build/releases/download/6.19.12.reform1-x86_64/headers-6.19.12.reform1.tar.gz
-	sha256sums_x86_64 = e0e6155fae14f1b1fa800437197e397e41a0f68ee6ed6cd33f36649df22f0d42
-	sha256sums_x86_64 = 5faf7e70dcbbc6d62a6b1b1ad1ca23b78ccdebea5cc31168d839f540c2e32eaf
+	source_aarch64 = kernel-6.19.13.reform1-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/6.19.13.reform1-aarch64/kernel-6.19.13.reform1.tar.gz
+	source_aarch64 = headers-6.19.13.reform1-aarch64.tar.gz::https://github.com/cetola/mnt-build/releases/download/6.19.13.reform1-aarch64/headers-6.19.13.reform1.tar.gz
+	sha256sums_aarch64 = fb89bce403f759e0d4b5c30f6fc0b894f4c4dc6f8b2749d094ae74159e1692f7
+	sha256sums_aarch64 = c9de6f09bda9dbff457b20564e211758aa23ed8ca87ccb91348f74d43a016344
+	source_x86_64 = kernel-6.19.13.reform1-x86_64.tar.gz::https://github.com/cetola/mnt-build/releases/download/6.19.13.reform1-x86_64/kernel-6.19.13.reform1.tar.gz
+	source_x86_64 = headers-6.19.13.reform1-x86_64.tar.gz::https://github.com/cetola/mnt-build/releases/download/6.19.13.reform1-x86_64/headers-6.19.13.reform1.tar.gz
+	sha256sums_x86_64 = f98a1510182cf7582efaa03251a2ca6d7887abda410647165a8cedcb71c2727e
+	sha256sums_x86_64 = bd7ab55d87b1de13a93f9cd1dcbbe4b87a187528648fe2a481887de513552947
 
 pkgname = linux-mnt-reform-bin
 	pkgdesc = Linux kernel for MNT Reform
@@ -33,12 +33,12 @@ pkgname = linux-mnt-reform-bin
 	depends = kmod
 	depends = cpio
 	optdepends = linux-mnt-reform-bin-headers: for building modules
-	provides = linux=6.19.12
+	provides = linux=6.19.13
 	conflicts = linux
 
 pkgname = linux-mnt-reform-bin-headers
 	pkgdesc = Header files and scripts for building modules for linux-mnt-reform-bin kernel
 	depends = perl
-	depends = linux-mnt-reform-bin=6.19.12.reform1-1
-	provides = linux-headers=6.19.12
+	depends = linux-mnt-reform-bin=6.19.13.reform1-1
+	provides = linux-headers=6.19.13
 	conflicts = linux-mnt-reform-headers
