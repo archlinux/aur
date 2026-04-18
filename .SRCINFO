@@ -1,0 +1,17 @@
+pkgbase = verti
+	pkgdesc = Versioned artifacts for Git repositories
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/ruinivist/verti
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	conflicts = verti
+	provides = verti
+	
+	source = https://github.com/ruinivist/verti/releases/download/v0.2.1/verti_0.2.1_source.tar.gz
+	sha256sums = cfa6d5cae943778101c86d8debbb21d3da7f5bb66395914e217d9b2206a014f5
+	
+pkgname = verti
