@@ -10,7 +10,7 @@ arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/ic-scm/$_pkgbase"
 license=('GPL-3.0-only')
 makedepends=('git')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'rtaudio')
 optdepends=('ffmpeg: Audio manipulation with the --ffmpeg option')
 provides=($_pkgbase)
 conflicts=($_pkgbase)
@@ -32,8 +32,5 @@ build() {
 package() {
   cd "$srcdir/$_pkgbase/"
   install -m755 -D 'brstm_converter' "$pkgdir/usr/bin/brstm_converter"
-  install -m755 -D 'brstm_decoder' "$pkgdir/usr/bin/brstm_decoder"
-  install -m755 -D 'brstm_encoder' "$pkgdir/usr/bin/brstm_encoder"
-  install -m755 -D 'brstm_reencoder' "$pkgdir/usr/bin/brstm_reencoder"
-  install -m755 -D 'brstm_rebuilder' "$pkgdir/usr/bin/brstm_rebuilder"
+  install -m755 -D 'brstm_rt' "$pkgdir/usr/bin/brstm_rt"
 }

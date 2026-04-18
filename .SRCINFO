@@ -12,6 +12,7 @@ pkgbase = openrevolution-git
 	makedepends = git
 	depends = glibc
 	depends = gcc-libs
+	depends = rtaudio
 	optdepends = ffmpeg: Audio manipulation with the --ffmpeg option
 	provides = openrevolution
 	conflicts = openrevolution
