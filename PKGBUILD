@@ -14,8 +14,8 @@ _base_url="${url}/releases/download/v${pkgver}/qml-language-server-v${pkgver}"
 source_x86_64=("${_base_url}-linux-amd64.zip")
 source_aarch64=("${_base_url}-linux-arm64.zip")
 
-sha256sums_x86_64=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
-sha256sums_aarch64=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums_x86_64=('ad6e88b0fffbe5ee03fc9f6502c0103aa047c02c4942c547715283443bf4e946')
+sha256sums_aarch64=('df473af4af176ee9170fbcf596ce07d6496c4a7aa2bd93577430daef014b39de')
 
 package() {
     cd "${srcdir}"
