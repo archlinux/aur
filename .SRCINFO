@@ -1,0 +1,17 @@
+pkgbase = chainsaw-bin
+	pkgdesc = Declarative Kubernetes end-to-end testing framework (prebuilt binary)
+	pkgver = 0.2.14
+	pkgrel = 1
+	url = https://github.com/kyverno/chainsaw
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = chainsaw=0.2.14
+	conflicts = chainsaw
+	conflicts = kyverno-chainsaw-bin
+	source_x86_64 = chainsaw-bin-0.2.14-x86_64.tar.gz::https://github.com/kyverno/chainsaw/releases/download/v0.2.14/chainsaw_linux_amd64.tar.gz
+	sha256sums_x86_64 = f2f4a3f9a541d65db12f5c910950758f7d56fae20ad5b1272cdc271c9568443e
+	source_aarch64 = chainsaw-bin-0.2.14-aarch64.tar.gz::https://github.com/kyverno/chainsaw/releases/download/v0.2.14/chainsaw_linux_arm64.tar.gz
+	sha256sums_aarch64 = b6494b71e490ab825890fc12cc575de7f59bfa637d5cfe73c66987e4454e397c
+
+pkgname = chainsaw-bin
