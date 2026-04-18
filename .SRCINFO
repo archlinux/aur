@@ -7,10 +7,13 @@ pkgbase = essh
 	arch = aarch64
 	license = MIT
 	makedepends = rust
+	makedepends = cargo
+	makedepends = nasm
 	depends = glibc
 	depends = libgcc
 	provides = essh
-	conflicts = essh
+	options = !lto
+	options = !strip
 	source = essh-0.2.7.crate::https://crates.io/api/v1/crates/essh/0.2.7/download
 	sha256sums = d91fb43282fdc33d128f1862e8a11408f38968ad2748588bf457a4ba79468f50
 

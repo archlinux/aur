@@ -4,7 +4,7 @@ _pkgauthor=matthart1983
 _pkgname=essh
 _cratename=${_pkgname}
 _appname=${_pkgname}
-pkgname=${_pkgname}
+pkgname=${_cratename}
 pkgdesc="Enhanced SSH client with TUI — manage connections, keys, and sessions"
 
 pkgver=0.2.7
@@ -18,20 +18,28 @@ url="https://github.com/${_pkgauthor}/${_pkgname}"
 
 license=('MIT')
 
-makedepends=('rust')
+makedepends=('rust' 'cargo' 'nasm')
 depends=('glibc' 'libgcc')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
+
+options=('!lto' '!strip')
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
 sha256sums=('d91fb43282fdc33d128f1862e8a11408f38968ad2748588bf457a4ba79468f50')
 
+prepare() {
+  cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+}
 
 build() {
 	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
 
-	RUSTFLAGS="--remap-path-prefix=$(pwd)=/build/" cargo build --release --locked
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 
 package() {
