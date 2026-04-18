@@ -5,7 +5,7 @@ _pkgname=mp3rgain
 pkgname=${_pkgname}-bin
 pkgdesc="Lossless MP3 volume adjustment - A modern 'mp3gain' replacement"
 
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,10 +26,10 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-x86_64-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-linux-x86_64.tar.gz")
 source_aarch64=("${_pkgname}-aarch64-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-linux-arm64.tar.gz")
 sha256sums=('8e557208f0bd83f91b38dcc81ccf914c4c84060ab6dbc5072dbf369791ffc135'
-            '335c0f19969da77ed3f1247dd1b649a8f1fb83b4995b8d03afa3fed4207b7a0e'
+            'ce3754cc907669003c3cbaf1965627e375f700e8c8b16551398e080f795c0f08'
             'af454cef96a4a790f7c773c3e79546120a55791ca89fb1776263f124fd3df1c6')
-sha256sums_x86_64=('ef1e4889108898c7aa2ebb6647acee3efa1468f04ebb0cbb4bdffa7f4a422669')
-sha256sums_aarch64=('9c1545b30686ad3a085217d125636d1ac88639a726041a784e8196d8a0735ab2')
+sha256sums_x86_64=('b29ca2603918777a6d97f44deab24d67bca282e767f822ab059a5ca71a19f151')
+sha256sums_aarch64=('955edd98da25122c76990125ee5b2ef476c26d457efd2ffdb47ba9423be1d065')
 
 
 package() {
