@@ -1,7 +1,7 @@
 # Maintainer: MrToadie <toadie@toadie.de>
 
 pkgname=cert-checker
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="simple validity checker for website certificates"
 arch=('x86_64')
@@ -19,6 +19,7 @@ build() {
     # Option A: Build von Root mit Pfadangabe (empfohlen)
     # Finde das cmd-Verzeichnis und baue daraus
     go build -ldflags="-s -w" -o "$pkgname" ./cmd
+    upx --best --lzma cert-checker
 }
 
 package() {
