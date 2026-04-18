@@ -2,11 +2,10 @@
 
 pkgbase=slint
 pkgname=(
-    'nodejs-slint'
     'python-slint'
     'slint-cpp'
     'slint-tools')
-pkgver=1.15.1
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Declarative GUI toolkit to build native user interfaces'
 license=('GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0')
@@ -22,7 +21,6 @@ makedepends=(
     'libx11'
     'libxcb'
     'libxkbcommon'
-    'pnpm'
     'python'
     'python-build'
     'python-installer'
@@ -32,18 +30,14 @@ makedepends=(
     'wayland')
 source=("https://github.com/slint-ui/slint/archive/v${pkgver}/slint-${pkgver}.tar.gz"
         '010-slint-remove-jemalloc.patch')
-sha256sums=('64e4e2fe7e5b475595b5f6591b853578706e434e9cd94200e61bba131ef9bc31'
-            'fb4c238d6186c434b72e1aa6e24453bee57754466f3091e51095ea92dbc24d84')
+sha256sums=('462e186f651a68a15d3acfe51c317f5a9eb8bb7ee78bb3a1fda22efb561dbc7b'
+            'f4eafdb7a47a79ac13950153d835ad645078438c053ac5845817a0e5f2cf3d65')
 
 prepare () {
     cargo fetch --locked --target "$(rustc --print host-tuple)" --manifest-path="${pkgbase}-${pkgver}/Cargo.toml"
     cargo fetch --locked --target "$(rustc --print host-tuple)" --manifest-path="${pkgbase}-${pkgver}/api/python/slint/Cargo.toml"
     
     patch -d "${pkgbase}-${pkgver}" -Np1 -i "${srcdir}/010-slint-remove-jemalloc.patch"
-    
-    cd "${pkgbase}-${pkgver}/api/node"
-    pnpm config set --local store-dir "${srcdir}/pnpm-cache"
-    pnpm install --frozen-lockfile
 }
 
 build() {
@@ -82,15 +76,6 @@ build() {
         --package='slint-viewer' \
         --release
     
-    # nodejs
-    printf '%s\n' '  -> building nodejs-slint...'
-    cd "${pkgbase}-${pkgver}/api/node"
-    export CARGOFLAGS="--no-default-features --features ${_features}"
-    pnpm run build   # generate binary .node file
-    pnpm run compile # generate dist/ dir
-    # generate node_modules/ dir with needed dependencies only
-    pnpm --filter slint-ui --prod --legacy --no-optional --ignore-scripts deploy "${srcdir}/nodejs-deploy"
-    
     # python
     printf '%s\n' '  -> building python-slint...'
     cd "${srcdir}/${pkgbase}-${pkgver}/api/python/slint"
@@ -104,50 +89,16 @@ _install_licenses() {
     install -D -m644 "${pkgbase}-${pkgver}/LICENSES/LicenseRef-Slint-Software-3.0.md" -t "${1}/usr/share/licenses/${2}"
 }
 
-package_nodejs-slint() {
-    pkgdesc="${pkgdesc} for Node.js apps"
-    depends=(
-        'fontconfig'
-        'gcc-libs'
-        'glibc'
-        'nodejs'
-        'libx11'
-        'libxcb'
-        'libxkbcommon'
-        'wayland')
-    optdepends=(
-        'libgl: for Skia OpenGL renderer backend'
-        'vulkan-icd-loader: for Skia Vulkan renderer backend')
-    
-    local _nodejs_dir="${pkgdir}/usr/lib/node_modules/slint-ui"
-    
-    install -D -m644 "${pkgbase}-${pkgver}/api/node"/*.node -t "$_nodejs_dir"
-    install -D -m644 nodejs-deploy/package.json -t "$_nodejs_dir"
-    install -D -m644 nodejs-deploy/rust-module.cjs -t "$_nodejs_dir"
-    install -D -m644 nodejs-deploy/rust-module.d.cts -t "$_nodejs_dir"
-    cp -dr --no-preserve='ownership' nodejs-deploy/dist "$_nodejs_dir"
-    cp -dr --no-preserve='ownership' nodejs-deploy/node_modules "$_nodejs_dir"
-    _install_licenses "$pkgdir" "$pkgname"
-    
-    # remove unneeded sections from package.json
-    sed -i '/"ava":/,/}/d' "${_nodejs_dir}/package.json"
-    sed -i '/"devDependencies":/,/}/d' "${_nodejs_dir}/package.json"
-    sed -i '/"scripts":/,/}/d' "${_nodejs_dir}/package.json"
-    
-    # remove references to $srcdir/$pkgdir
-    find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
-}
-
 package_python-slint() {
     pkgdesc="${pkgdesc} for Python apps"
     depends=(
         'fontconfig'
-        'gcc-libs'
         'glibc'
-        'python'
+        'libgcc'
         'libx11'
         'libxcb'
         'libxkbcommon'
+        'python'
         'wayland')
    optdepends=(
         'libgl: for Skia OpenGL renderer backend'
@@ -162,8 +113,8 @@ package_slint-cpp() {
     depends=(
         'fontconfig'
         'freetype2'
-        'gcc-libs'
         'glibc'
+        'libgcc'
         'libx11'
         'libxcb'
         'libxkbcommon'
@@ -183,8 +134,8 @@ package_slint-tools() {
     depends=(
         'fontconfig'
         'freetype2'
-        'gcc-libs'
         'glibc'
+        'libgcc'
         'libx11'
         'libxcb'
         'libxkbcommon'

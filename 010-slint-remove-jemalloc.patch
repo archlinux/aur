@@ -1,16 +1,16 @@
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -176,7 +176,6 @@ rayon = { version = "1.10.0", default-features = false }
- raw-window-handle-06 = { package = "raw-window-handle", version = "0.6", features = ["alloc"] }
- unicode-segmentation = { version = "1.12.0" }
- glow = { version = "0.16" }
+@@ -185,7 +185,6 @@ unicode-segmentation = { version = "1.12.0" }
+ icu_normalizer = { version = "2", default-features = false, features = ["compiled_data"] }
+ 
+ glow = { version = "0.17" }
 -tikv-jemallocator = { version = "0.6" }
  wgpu-27 = { package = "wgpu", version = "27", default-features = false }
  wgpu-28 = { package = "wgpu", version = "28", default-features = false }
  input = { version = "0.9.0", default-features = false }
 --- a/api/cpp/CMakeLists.txt
 +++ b/api/cpp/CMakeLists.txt
-@@ -161,10 +161,6 @@ if(SLINT_FEATURE_COMPILER AND NOT SLINT_COMPILER)
+@@ -158,10 +158,6 @@ if(SLINT_FEATURE_COMPILER AND NOT SLINT_COMPILER)
      if (SLINT_FEATURE_SDF_FONTS)
          list(APPEND slint_compiler_features "sdf-fonts")
      endif()
@@ -105,8 +105,8 @@
 -#![no_std]
 +
  
- // Enforce mutual exclusivity of pixel format
- #[cfg(all(feature = "pixel-bgra8888", feature = "pixel-rgb565"))]
+ // Enforce linking crate that provides critical section implementation.
+ // (We need these functions even though the lib code never calls them.)
 --- a/examples/uefi-demo/main.rs
 +++ b/examples/uefi-demo/main.rs
 @@ -2,7 +2,7 @@
@@ -120,9 +120,9 @@
  extern crate alloc;
 --- a/helper_crates/const-field-offset/src/lib.rs
 +++ b/helper_crates/const-field-offset/src/lib.rs
-@@ -8,7 +8,7 @@
- 
- The [`FieldOffset`] type is re-exported from the `field-offset` crate.
+@@ -41,7 +41,7 @@ struct Foo { a: u32, b: f64 }
+ The `#[pin]` attribute enforces that the struct is `!Unpin` and does not
+ implement `Drop` (use `#[pin_drop]` with [`PinnedDrop`] instead).
  */
 -#![no_std]
 +
@@ -153,8 +153,8 @@
  use alloc::boxed::Box;
 --- a/internal/core/lib.rs
 +++ b/internal/core/lib.rs
-@@ -9,7 +9,7 @@
- #![deny(unsafe_code)]
+@@ -10,7 +10,7 @@
+ #![allow(clippy::missing_safety_doc)] // FFI surface has many exported unsafe entry points
  #![cfg_attr(slint_nightly_test, feature(non_exhaustive_omitted_patterns_lint))]
  #![cfg_attr(slint_nightly_test, warn(non_exhaustive_omitted_patterns))]
 -#![no_std]
@@ -203,23 +203,31 @@
 @@ -36,4 +35,3 @@ spin_on = { workspace = true }
  itertools = { workspace = true }
  
- [target.'cfg(not(any(target_os = "windows", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
+ [target.'cfg(not(any(target_os = "openbsd", target_os = "windows", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
 -tikv-jemallocator = { workspace = true, optional = true }
 --- a/tools/compiler/main.rs
 +++ b/tools/compiler/main.rs
-@@ -7,18 +7,6 @@
- use itertools::Itertools;
- use std::io::{BufWriter, Write};
+@@ -8,26 +8,6 @@
+ use std::io::Cursor;
+ use std::io::Write;
  
 -#[cfg(all(
 -    feature = "jemalloc",
--    not(any(target_os = "windows", all(target_arch = "aarch64", target_os = "linux")))
+-    not(any(
+-        target_os = "openbsd",
+-        target_os = "windows",
+-        all(target_arch = "aarch64", target_os = "linux")
+-    ))
 -))]
 -use tikv_jemallocator::Jemalloc;
 -
 -#[cfg(all(
 -    feature = "jemalloc",
--    not(any(target_os = "windows", all(target_arch = "aarch64", target_os = "linux")))
+-    not(any(
+-        target_os = "openbsd",
+-        target_os = "windows",
+-        all(target_arch = "aarch64", target_os = "linux")
+-    ))
 -))]
 -#[global_allocator]
 -static GLOBAL: Jemalloc = Jemalloc;
@@ -228,51 +236,56 @@
  enum Embedding {
 --- a/tools/lsp/Cargo.toml
 +++ b/tools/lsp/Cargo.toml
-@@ -109,7 +109,6 @@ slint-interpreter = { workspace = true, features = ["compat-1-2", "internal", "i
- nucleo-matcher = "0.3.1"
+@@ -107,7 +107,6 @@ nucleo-matcher = "0.3.1"
+ futures-util = "0.3.32"
  
- [target.'cfg(not(any(target_os = "windows", target_arch = "wasm32", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
+ [target.'cfg(not(any(target_os = "openbsd", target_os = "windows", target_arch = "wasm32", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
 -tikv-jemallocator = { workspace = true }
  
  [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
  clap = { workspace = true }
 --- a/tools/lsp/main.rs
 +++ b/tools/lsp/main.rs
-@@ -47,15 +47,12 @@
+@@ -47,7 +47,6 @@ use crate::common::document_cache::Compi
      target_arch = "wasm32",
      all(target_arch = "aarch64", target_os = "linux")
  )))]
 -use tikv_jemallocator::Jemalloc;
  
  #[cfg(not(any(
-     target_os = "windows",
+     target_os = "openbsd",
+@@ -55,8 +54,6 @@ use tikv_jemallocator::Jemalloc;
      target_arch = "wasm32",
      all(target_arch = "aarch64", target_os = "linux")
  )))]
 -#[global_allocator]
 -static GLOBAL: Jemalloc = Jemalloc;
  
- #[derive(Clone, clap::Parser)]
- #[command(author, version, about, long_about = None)]
+ const RECOMPILE_IDLE_TIMEOUT: Duration = Duration::from_millis(50);
+ 
 --- a/tools/viewer/Cargo.toml
 +++ b/tools/viewer/Cargo.toml
 @@ -67,7 +67,6 @@ serde_json = { workspace = true }
  smol_str = { workspace = true }
  
- [target.'cfg(not(any(target_os = "windows", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
+ [target.'cfg(not(any(target_os = "openbsd", target_os = "windows", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
 -tikv-jemallocator = { workspace = true }
  
  [[bin]]
  name = "slint-viewer"
 --- a/tools/viewer/main.rs
 +++ b/tools/viewer/main.rs
-@@ -16,11 +16,8 @@
- use std::sync::{Arc, Mutex};
- 
- #[cfg(not(any(target_os = "windows", all(target_arch = "aarch64", target_os = "linux"))))]
+@@ -20,15 +20,12 @@
+     target_os = "windows",
+     all(target_arch = "aarch64", target_os = "linux")
+ )))]
 -use tikv_jemallocator::Jemalloc;
  
- #[cfg(not(any(target_os = "windows", all(target_arch = "aarch64", target_os = "linux"))))]
+ #[cfg(not(any(
+     target_os = "openbsd",
+     target_os = "windows",
+     all(target_arch = "aarch64", target_os = "linux")
+ )))]
 -#[global_allocator]
 -static GLOBAL: Jemalloc = Jemalloc;
  
