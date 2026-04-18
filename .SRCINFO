@@ -1,0 +1,15 @@
+pkgbase = app-hub-git
+	pkgdesc = GTK4 download manager and AppImage launcher
+	pkgver = 0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/EvansOgala/app-hub
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	source = app-hub-git::git+https://github.com/EvansOgala/app-hub.git
+	sha256sums = SKIP
+
+pkgname = app-hub-git
