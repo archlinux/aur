@@ -1,7 +1,7 @@
 pkgbase = clipse-gui
 	pkgdesc = A GTK3 GUI for the clipse clipboard manager
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/d7omdev/clipse-gui
 	arch = any
 	license = MIT
