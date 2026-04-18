@@ -9,17 +9,9 @@ license=('GPL')
 depends=('mpv' 'rofi' 'ueberzugpp')
 provides=('curd')
 conflicts=('curd')
-
-pkgver() {
-  curl -s "https://api.github.com/repos/Wraient/curd/releases/latest" | 
-    jq -r '.tag_name' | sed 's/^v//'
-}
-
-build() {
-  curl -L "https://github.com/Wraient/curd/releases/download/v$pkgver/curd-linux-x86_64" -o curd
-  chmod +x curd
-}
+source=("https://github.com/Wraient/curd/releases/download/v${pkgver}/curd-linux-x86_64")
+sha256sums=('b009df16e9debdb8af2a16771be5a438d4dadbcfe5e14309adf959724fca1750')
 
 package() {
-  install -Dm755 "$srcdir/curd" "$pkgdir/usr/bin/curd"
+  install -Dm755 "$srcdir/curd-linux-x86_64" "$pkgdir/usr/bin/curd"
 }
