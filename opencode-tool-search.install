@@ -1,0 +1,24 @@
+post_install() {
+  echo "=========================================================================="
+  echo "  OpenCode Tool Search Plugin Installed"
+  echo "=========================================================================="
+  echo ""
+  echo "To enable this plugin, add it to your opencode configuration file"
+  echo "(e.g., ~/.config/opencode/opencode.json):"
+  echo ""
+  echo "  {"
+  echo "    \"plugin\": ["
+  echo "      [\"file:///usr/lib/opencode/plugins/opencode-tool-search\", {"
+  echo "        \"alwaysLoad\": [\"read\", \"write\", \"edit\", \"bash\", \"glob\", \"grep\"]"
+  echo "      }]"
+  echo "    ]"
+  echo "  }"
+  echo ""
+  echo "See $url for configuration options."
+  echo ""
+  echo "=========================================================================="
+}
+
+post_upgrade() {
+  post_install
+}
