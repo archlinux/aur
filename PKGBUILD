@@ -1,11 +1,11 @@
 # Maintainer: LightJunction <lightjunction.me@gmail.com>
 pkgname=mimic-node-git
-pkgrel=1
+pkgrel=4
 pkgdesc="A stealthy, systemless sing-box node manager (Rust implementation)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/LIghtJUNction/Mimic-Node"
 license=('GPL-3.0-or-later')
-depends=('sing-box>=1.14.0' 'sing-box-beta-bin' 'openssl' 'kmod' 'gcc-libs')
+depends=('sing-box-beta-bin' 'openssl' 'kmod' 'gcc-libs')
 makedepends=('git' 'rust' 'cargo')
 provides=('mimic-node')
 conflicts=('mimic-node')
