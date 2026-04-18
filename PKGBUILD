@@ -6,9 +6,9 @@
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=4.99_master.r95470.c4b875028a6
+pkgver=4.99_master.r96980.3b8ef1f72a3
 _pkgver=4.99_master  # fake pkgver prefix for the name
-pkgrel=2
+pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
 license=('GPL')
