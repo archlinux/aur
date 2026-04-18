@@ -1,0 +1,17 @@
+pkgbase = flatten-bin
+	pkgdesc = Prebuilt binary for flatten, a Rust CLI for exporting project trees
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/fabifont/flatten
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	depends = gcc-libs
+	provides = flatten=0.2.0
+	conflicts = flatten
+	conflicts = flatten-git
+	source = flatten-bin-0.2.0.tar.gz::https://github.com/fabifont/flatten/releases/download/v0.2.0/flatten-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = b1a250daa1378d59c61ba19fc06c7aeb0a8613110491bffb9b9afd5f00329e39
+	b2sums = fb78d7dec6c126fd2e4047cc4b5b3b55b54730b6390ee5ec3b79b72573fa0dd8663c39378986c3c5cfacbc0e489d9da20b3fdd8f1b15bf11cfae0c1b770adb38
+
+pkgname = flatten-bin
