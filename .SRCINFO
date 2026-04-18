@@ -1,0 +1,20 @@
+pkgbase = nocturne
+	pkgdesc = Bring your music library together
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = https://github.com/Jeffser/Nocturne
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = meson
+	depends = libadwaita
+	depends = python-cairo
+	depends = python-colorthief
+	depends = python-favicon
+	depends = python-mpris_server
+	depends = python-pillow
+	depends = python-tinytag
+	source = -0.9.7.tar.gz::https://github.com/Jeffser/Nocturne/archive/refs/tags/0.9.7.tar.gz
+	sha256sums = debdda29b1fb81d98769419d8349a8b0520b9c921649f06325c57eb9060b5424
+
+pkgname = nocturne
