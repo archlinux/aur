@@ -1,6 +1,6 @@
 pkgbase = mdfried-bin
 	pkgdesc = A markdown viewer for the terminal that renders images and big headers
-	pkgver = 0.19.3
+	pkgver = 0.19.4
 	pkgrel = 1
 	url = https://github.com/benjajaja/mdfried
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = mdfried-bin
 	depends = gcc-libs
 	provides = mdfried
 	conflicts = mdfried
-	source = LICENSE-0.19.3::https://raw.githubusercontent.com/benjajaja/mdfried/v0.19.3/LICENSE
-	source = README-0.19.3.md::https://raw.githubusercontent.com/benjajaja/mdfried/v0.19.3/README.md
+	source = LICENSE-0.19.4::https://raw.githubusercontent.com/benjajaja/mdfried/v0.19.4/LICENSE
+	source = README-0.19.4.md::https://raw.githubusercontent.com/benjajaja/mdfried/v0.19.4/README.md
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = 11f3fe3a47ecc1f8f064c77eca0a953b3eceb996bb8a7db2931654f7ffe3fed2
-	source_x86_64 = mdfried-0.19.3::https://github.com/benjajaja/mdfried/releases/download/v0.19.3/mdfried
-	sha256sums_x86_64 = 2bd9a2e15c4f499d27d14a1f96acf5d3a1ad7cfb9a21760df8d9b73789411b31
+	source_x86_64 = mdfried-0.19.4::https://github.com/benjajaja/mdfried/releases/download/v0.19.4/mdfried
+	sha256sums_x86_64 = 1c0e792c2af0f117bf773a74b0a459905d5ba2c4caff9aa3585ba609ac8a337a
 
 pkgname = mdfried-bin
