@@ -2,4 +2,5 @@ pkg/
 src/
 *.tar.zst
 *.tar.gz
+*.tar.bz2
 *.log
