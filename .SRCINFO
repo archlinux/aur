@@ -1,6 +1,6 @@
 pkgbase = forgecode-fish
 	pkgdesc = Fish-shell plugin for Forge colon-command workflows
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/OneNoted/forgecode.fish
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = forgecode-fish
 	optdepends = fd: preferred file discovery backend for @ file completion
 	optdepends = forge: required Forge CLI backend
 	conflicts = forgecode-fish-git
-	source = https://github.com/OneNoted/forgecode.fish/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 24719b69b72d96581e70c808712b0f031e130dec41c1abfa0943ad4bc14bc7e2
+	source = https://github.com/OneNoted/forgecode.fish/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 30605fb092b719283c365a7a18b11585bcf213db2b8dbb2ed1bd7b0d7cc20893
 
 pkgname = forgecode-fish

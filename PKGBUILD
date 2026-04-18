@@ -1,5 +1,5 @@
 pkgname=forgecode-fish
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Fish-shell plugin for Forge colon-command workflows'
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('forgecode-fish-git')
 source=(
   "https://github.com/OneNoted/forgecode.fish/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('24719b69b72d96581e70c808712b0f031e130dec41c1abfa0943ad4bc14bc7e2')
+sha256sums=('30605fb092b719283c365a7a18b11585bcf213db2b8dbb2ed1bd7b0d7cc20893')
 
 package() {
   cd "${srcdir}/forgecode.fish-${pkgver}"
