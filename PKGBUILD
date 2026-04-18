@@ -4,7 +4,7 @@
 
 pkgname=aic8800d80-pcie-dkms
 pkgver=6.4.3.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc="DKMS module for AIC8800D80 PCIe Wi-Fi adapters (Ugreen CM958 and similar)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ sha256sums=(
   'c929c2ff22ba0b55e26ecaccb57f04edc11bb84767d31ac068b8087dd4a8c53a'
   '6e8562dcb93f114bdbf759506967f9504ffc5fc9043b94b616449ba43d1d34ef'
   '98699379ab9b302c0e5059d6a16e1598ad3ace7cfb15570c988c994c12a0333f'
-  '1687699015054c8d65d18e557908817c868eda5a29d9cbc6277b6ff44052eb0a'
+  'c9664b1f0866926e25c1df9e23feede9784c6ef1b3a247b72863a7ad217447d6'
   '1d34e929c3570cfae9aea2b79d3e143ca89c41ad165457e10c143c2bb74489da'
 )
 
