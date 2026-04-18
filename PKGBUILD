@@ -8,7 +8,7 @@
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-futpib-git"
-pkgver=6.5.1.r96.g898b73c
+pkgver=r22917.gd536e68
 pkgrel=1
 pkgdesc="futpib's Telegram Desktop fork with control socket support"
 url="https://github.com/futpib/tdesktop"
