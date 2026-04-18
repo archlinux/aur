@@ -16,10 +16,20 @@
 #   4. Run `updpkgsums` to refresh the zip checksum.
 #   5. Build with `makepkg -f` in a clean chroot and verify with namcap.
 #   6. Regenerate .SRCINFO: `makepkg --printsrcinfo > .SRCINFO`.
+#
+# If you edit ANY local file listed in source=() (notably
+# uyap-editor-bin.install, the .desktop files, uyap-editor.xml,
+# uyap-dokuman, uyap-sablon, LICENSE), you MUST:
+#   a. Run `updpkgsums` to refresh its sha256 entry.
+#   b. Bump pkgrel.
+#   c. Regenerate .SRCINFO *after* the sum update.
+#   d. Verify with `makepkg --verifysource -o`.
+# Skipping (a) causes "did not pass the validity check" at install
+# time — .SRCINFO regen does NOT recompute hashes.
 
 pkgname=uyap-editor-bin
 pkgver=5.4.16
-pkgrel=4
+pkgrel=5
 pkgdesc='UYAP Document and Template Editor (Turkish judicial system)'
 arch=('x86_64')
 url='https://uyap.gov.tr/UYAP-Editor'
@@ -61,7 +71,7 @@ sha256sums=('2e3643111cce9d0d0c71e8300ef85d02f7591b96b43f9aabdb98564aa6bcd0a8'
             '8b4572bd43a1a5dc824fa1cc90369d77973455d5c4f76a1daaa43e258f2ccd8f'
             '57258cbf56e59f1adb3d036ebf5dfa14c12cb3d3cf9e52995bca1907d08ac135'
             '15d61066c988b5e00501b14d785dc63a20f485a4660f9815ed463189b8806081'
-            'baffb2aac23056e5963f7effb649ab4a2ab6a4ee05fec472c538cc35156b79a4')
+            '2279f85020d5b82acc391799f310f8cef6e694c874d767b341c6145838d9d6a7')
 
 prepare() {
     cd "${srcdir}"

@@ -1,7 +1,7 @@
 pkgbase = uyap-editor-bin
 	pkgdesc = UYAP Document and Template Editor (Turkish judicial system)
 	pkgver = 5.4.16
-	pkgrel = 4
+	pkgrel = 5
 	url = https://uyap.gov.tr/UYAP-Editor
 	install = uyap-editor-bin.install
 	arch = x86_64
@@ -35,6 +35,6 @@ pkgbase = uyap-editor-bin
 	sha256sums = 8b4572bd43a1a5dc824fa1cc90369d77973455d5c4f76a1daaa43e258f2ccd8f
 	sha256sums = 57258cbf56e59f1adb3d036ebf5dfa14c12cb3d3cf9e52995bca1907d08ac135
 	sha256sums = 15d61066c988b5e00501b14d785dc63a20f485a4660f9815ed463189b8806081
-	sha256sums = baffb2aac23056e5963f7effb649ab4a2ab6a4ee05fec472c538cc35156b79a4
+	sha256sums = 2279f85020d5b82acc391799f310f8cef6e694c874d767b341c6145838d9d6a7
 
 pkgname = uyap-editor-bin
