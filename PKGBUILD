@@ -4,7 +4,7 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.3109.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -30,8 +30,8 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'socat: Cowork socket health check in launcher (fallback: age-based check)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.3109.0-3/claude-desktop-1.3109.0-linux.tar.gz")
-sha256sums_x86_64=('908e5306cfddf1208aae03bc52f5330130e5e6693f2bc25c30b7ca7321805769')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.3109.0-4/claude-desktop-1.3109.0-linux.tar.gz")
+sha256sums_x86_64=('dd90f99015d59f2a2533300565d2da038259a6de100df679dc86d2073beaf5a4')
 options=('!strip')
 
 package() {
@@ -42,14 +42,14 @@ package() {
     cp -r app/* "$pkgdir/usr/lib/$pkgname/"
 
     # Hardlink system electron into our prefix under the APP_ID name. Electron
-    # ignores Chromium's --class flag and argv[0]; it reads /proc/self/exe and
-    # uses the basename as the Wayland app_id / X11 WM_CLASS. A hardlink lets
-    # us appear as com.anthropic.claude-desktop without duplicating 200 MB.
-    # Caveat: if the electron package is upgraded, this link still points at
-    # the OLD inode until claude-desktop-bin is reinstalled. See .install.
+    # reads /proc/self/exe for Wayland app_id / X11 WM_CLASS, so the binary
+    # name must match the .desktop StartupWMClass. Hardlink avoids duplicating
+    # ~200 MB; falls back to cp on cross-device setups (separate /home partition,
+    # btrfs subvolumes) where hard links are not possible.
     local electron_bin=/usr/lib/electron/electron
     if [[ -x $electron_bin ]]; then
-        ln "$electron_bin" "$pkgdir/usr/lib/$pkgname/com.anthropic.claude-desktop"
+        ln "$electron_bin" "$pkgdir/usr/lib/$pkgname/com.anthropic.claude-desktop" 2>/dev/null \
+            || cp "$electron_bin" "$pkgdir/usr/lib/$pkgname/com.anthropic.claude-desktop"
     else
         echo "PKGBUILD: /usr/lib/electron/electron not found; WM_CLASS will be wrong until rebuilt against an installed electron" >&2
     fi
