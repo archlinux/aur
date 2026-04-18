@@ -17,14 +17,28 @@ _check_java_installed() {
 EOF
 }
 
+_check_optdeps() {
+    pacman -T 'akia' >/dev/null 2>&1 && return 0
+    pacman -T 'cups' >/dev/null 2>&1 && return 0
+    cat <<'EOF'
+==> Note: Neither a smart-card middleware (akia / akia-bin) nor cups is
+==>       installed. UYAP Editor will launch, but:
+==>         * e-imza / judicial card login will be unavailable until you
+==>           install an `akia` provider (e.g. `akia-bin`).
+==>         * Printing will be unavailable until you install `cups`.
+EOF
+}
+
 post_install() {
     _refresh_caches
     _check_java_installed
+    _check_optdeps
 }
 
 post_upgrade() {
     _refresh_caches
     _check_java_installed
+    _check_optdeps
 }
 
 post_remove() {

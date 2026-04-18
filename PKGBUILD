@@ -19,7 +19,7 @@
 
 pkgname=uyap-editor-bin
 pkgver=5.4.16
-pkgrel=3
+pkgrel=4
 pkgdesc='UYAP Document and Template Editor (Turkish judicial system)'
 arch=('x86_64')
 url='https://uyap.gov.tr/UYAP-Editor'
@@ -27,12 +27,14 @@ license=('LicenseRef-UYAP')
 depends=(
     'java-runtime<=11'
     'pcsclite'
-    'akia'
-    'cups'
     'bash'
     'hicolor-icon-theme'
     'shared-mime-info'
     'desktop-file-utils'
+)
+optdepends=(
+    'akia: smart-card / e-imza login for judicial authentication (AKIS middleware; provided by akia or akia-bin)'
+    'cups: printing documents from the editor'
 )
 provides=('uyap-editor')
 conflicts=('uyap-editor' 'uyapeditor' 'uyap')
