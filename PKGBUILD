@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.6
+_pkgver=13.0.0-rc.7
 
 __pkgname=$_pkgname
 
@@ -68,9 +68,9 @@ source_x86_64=(
 source_aarch64=(
   $__pkgname-v$_pkgver.linux-arm64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-arm64.tar.xz
 )
-sha256sums=('daddae57059e7586cb50674f5fd735cb72b1ba383e8b961f875e10e62f26a700')
-sha256sums_x86_64=('63c7b4342b2437382aaf61c6318745b11418cd0bfca4a1b7bb8110e2829918de')
-sha256sums_aarch64=('fda38324f6d98075d3d464e49104ccf5b6065b8a1b1d5e8e8cab9331bf93fc41')
+sha256sums=('50f74e0399b6963f24f15cf94dbb25988f1b37b369131800a236d6794d19e888')
+sha256sums_x86_64=('8fd3b7abff3c79a776571aff07202e8169b2458208be84de40532723e2f550ef')
+sha256sums_aarch64=('c5ae86e925cccac8259448080937cb343a07bbd823eb6b85ac39cfe7e69f0850')
 noextract=(
   $__pkgname-v$_pkgver.linux-x64.tar.xz
   $__pkgname-v$_pkgver.linux-arm64.tar.xz
