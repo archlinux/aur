@@ -43,6 +43,10 @@ depends=(
 
 prepare() {
     cd "bitmask-vpn"
+    sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/pickle/helpers.go
+    sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/launcher/launcher_linux.go
+    sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/pickle/helpers/bitmask-root
+    sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' helpers/se.leap.bitmask.policy
 }
 
 build() {
