@@ -12,7 +12,7 @@ depends=('glibc' 'gcc-libs' 'dbus' 'hwdata')
 makedepends=('git' 'cargo' 'clang' 'libbpf')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+$url.git?ref=dev")
+source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
