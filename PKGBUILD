@@ -21,11 +21,9 @@ conflicts=(
 provides=('rime-data' 'librime-data')
 source=(
   "${pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz"
-  'fcitx5.yaml'
 )
 sha256sums=(
   '3df4aab9270497036988367ace8be3db02a0975a0da9e4e03b146e0131425ba9'
-  '4e1db4bd11a8f68ef8c804d48c740451622e226f2defabb3fa628eb0fd09ff77'
 )
 
 package() {
@@ -35,7 +33,6 @@ package() {
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
   cp -r --no-preserve=ownership "${datadir}/". "${pkgdir}/usr/share/rime-data/"
-  install -m644 "${srcdir}/fcitx5.yaml" "${pkgdir}/usr/share/rime-data/fcitx5.yaml"
   install -m644 "${datadir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   rm -rf "${pkgdir}/usr/share/rime-data/.github"
