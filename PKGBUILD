@@ -112,6 +112,7 @@ _source_telegram() {
       -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
       -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF
       -Dtg_owt_DIR="$srcdir/build_tg_owt"
+      -DCMAKE_LINKER_TYPE=MOLD
       -Wno-dev
     )
 
