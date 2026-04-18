@@ -1,0 +1,16 @@
+pkgbase = ops-console-git
+	pkgdesc = GTK4 operations console for network inspection and update checks
+	pkgver = 0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/EvansOgala/ops-console
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = python-psutil
+	source = ops-console-git::git+https://github.com/EvansOgala/ops-console.git
+	sha256sums = SKIP
+
+pkgname = ops-console-git
