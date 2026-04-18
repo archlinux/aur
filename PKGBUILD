@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="PreAUR, build AUR (not only) pkgbuilds ahead of time. (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/kobe-koto/preaur"
-license=('AGPL-3.0-only')
+license=('MIT')
 depends=(
   'bun'
   'git'
