@@ -29,8 +29,18 @@ depends=(
     'python-edge-tts'
     'ripgrep'
     'ffmpeg'
+    'nss'
+    'atk'
+    'at-spi2-core'
+    'cups'
+    'libdrm'
+    'libxkbcommon'
+    'mesa'
+    'pango'
+    'cairo'
+    'alsa-lib'
 )
-makedepends=('nodejs' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-pytest')
+makedepends=('nodejs' 'npm' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-pytest')
 optdepends=(
   'python-litellm: multi-provider LLM support'
   'python-telegram-bot: Telegram gateway support'
@@ -59,7 +69,7 @@ build() {
   [ -f "package.json" ] && npm install
 
   # Build frontend
-  [ -d "web" ] && cd web && npm install && npm run build && cd ..
+  [ -d "web" ] && cd web && rm -f package-lock.json && npm install && npm run build && cd ..
   
   # Install whatsapp-bridge dependencies
   if [ -f "scripts/whatsapp-bridge/package.json" ]; then
@@ -67,7 +77,7 @@ build() {
   fi
   # Ensure web_dist is included in the Python package
   # The web build output needs to be in hermes_cli/web_dist for the wheel to include it
-  [ -d "web/dist" ] && cp -r web/dist hermes_cli/web_dist
+  #[ -d "web/dist" ] && cp -r web/dist hermes_cli/web_dist
 
   # Build Python wheel
   python -m build --wheel --no-isolation
