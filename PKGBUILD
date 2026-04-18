@@ -31,31 +31,23 @@ sha512sums=('bf01efb4465497367a6b7468dc8df0057f0b70b03415581a467e4ad81cc43438c57
 sha512sums[1]='SKIP'
 sha512sums[2]='SKIP'
 
-prepare() {
-  cd $_pkgname
-  sed -i "s|Exec=.*|Exec=/usr/bin/$pkgname|" $pkgname.desktop
-}
-
 package() {
   depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3')
   install -d "$pkgdir"/opt/$pkgname
   cp -a $_pkgname/. "$pkgdir"/opt/$pkgname
 
-  chmod 755 "$pkgdir"/opt/$pkgname/$_pkgname
+  chmod 755 "$pkgdir"/opt/$pkgname/$pkgname
 
   rm "$pkgdir"/opt/$pkgname/postinst.sh
 
   install -d "$pkgdir"/usr/bin
-  ln -s /opt/$pkgname/$_pkgname "$pkgdir"/usr/bin/$pkgname
+  ln -s /opt/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
 
   install -d "$pkgdir"/usr/share/applications
   ln -s /opt/$pkgname/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 
   install -d "$pkgdir"/usr/share/icons/hicolor/256x256/apps
   ln -s /opt/$pkgname/discord.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/$pkgname.png
-
-  # setuid on chrome-sandbox
-  chmod u+s "$pkgdir"/opt/$pkgname/chrome-sandbox
 
   install -Dm644 LICENSE-$pkgver.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.html
   install -Dm644 OSS-LICENSES-$pkgver.html "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES.html
