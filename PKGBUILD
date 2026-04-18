@@ -2,7 +2,7 @@
 pkgname=colony-git
 _pkgname=colony
 pkgver=r0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Application launcher for the Project-Colony ecosystem (git HEAD)"
 arch=('x86_64')
 url="https://github.com/Project-Colony/Colony"
@@ -54,4 +54,20 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
     install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+    # Desktop entry so GNOME/KDE/rofi/wofi launchers pick up Colony.
+    install -dm755 "${pkgdir}/usr/share/applications"
+    cat > "${pkgdir}/usr/share/applications/colony.desktop" <<'EOF'
+[Desktop Entry]
+Name=Colony
+GenericName=Application Launcher
+Comment=Application launcher for the Project-Colony ecosystem
+Exec=colony
+Icon=colony
+Terminal=false
+Type=Application
+Categories=Utility;System;
+Keywords=launcher;apps;project-colony;
+StartupNotify=true
+EOF
 }
