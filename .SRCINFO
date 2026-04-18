@@ -1,7 +1,7 @@
 pkgbase = auroradownloader
 	pkgdesc = Your all in one web based music manager
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Bacem-Abidi/AuroraDownloader
 	install = auroradownloader.install
 	arch = any
