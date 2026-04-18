@@ -2,7 +2,7 @@
 
 _plugin=comp
 pkgname=vsview-${_plugin}
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A vsview plugin to make comparison backed by Slowpoke Pics"
 arch=("x86_64")
