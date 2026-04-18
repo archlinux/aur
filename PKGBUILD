@@ -1,7 +1,10 @@
+# Maintainer: ZlothY29IQ <badzacgaming@gmail.com>
+# Upstream Author: HanSolo1000Falcon
+
 pkgname=fsysutils
 pkgver=1.0
-pkgrel=1
-pkgdesc="Falcon system utilities"
+pkgrel=2
+pkgdesc="Falcon system utilities by HanSolo1000Falcon"
 arch=('x86_64')
 url="https://github.com/HanSolo1000Falcon/falcon-system-utils"
 license=('MIT')
@@ -9,7 +12,6 @@ depends=()
 makedepends=('cmake' 'gcc' 'git')
 
 source=("fsysutils::git+https://github.com/HanSolo1000Falcon/falcon-system-utils.git")
-
 sha256sums=('SKIP')
 
 build() {

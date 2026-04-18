@@ -1,7 +1,7 @@
 pkgbase = fsysutils
-	pkgdesc = Falcon system utilities
+	pkgdesc = Falcon system utilities by HanSolo1000Falcon
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HanSolo1000Falcon/falcon-system-utils
 	arch = x86_64
 	license = MIT
