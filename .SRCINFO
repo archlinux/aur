@@ -1,0 +1,20 @@
+pkgbase = sysview
+	pkgdesc = A beautiful CLI tool for system monitoring - ports, network, memory, CPU, disk, processes, and git with colorful tables.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/12britz/sysview
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = sysview
+	noextract = sysview-1.0.3.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = sysview-1.0.3.tgz::https://registry.npmjs.org/@12britz/sysview/-/sysview-1.0.3.tgz
+	b2sums = e3c16b33eb6888825929935a790bf6e00595bf064826f2e1a966bc994905f4408a3a0c86682463d97c0be8932fd8654c425497f8a31460e803c4d17ff10d5a78
+
+pkgname = sysview

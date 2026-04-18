@@ -1,0 +1,3 @@
+[sysview]
+source = "npm"
+npm = "@12britz/sysview"
