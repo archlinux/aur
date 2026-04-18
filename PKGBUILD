@@ -1,45 +1,58 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Michael Cortese <mcortese1406@gmail.com>
 
-pkgname=netwatch-tui
-pkgver=0.12.3
-pkgrel=1
+_pkgauthor=matthart1983
+_pkgname=netwatch
+_cratename=${_pkgname}-tui
+_appname=${_pkgname}
+pkgname=${_cratename}
 pkgdesc="Real-time network diagnostics TUI — like htop for your network"
 
+pkgver=0.12.3
+pkgrel=1
+_pkgvername=${pkgver}
+
+arch=('x86_64' 'aarch64')
+_barch=('x86_64' 'aarch64')
+
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+
 license=('MIT')
-arch=('x86_64')
-url="https://github.com/matthart1983/netwatch"
 
-provides=("${pkgname%-tui}")
-
-makedepends=('cargo' 'nasm')
+makedepends=('rust' 'cargo' 'nasm')
 depends=('glibc' 'libgcc' 'libpcap')
+
+provides=("${_appname}")
 
 options=('!lto' '!strip')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
+source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
 sha256sums=('af90777ad12f7c06e531b52608baf437833604fa9943285d7a52b01e74f1a586')
 
 prepare() {
-  cd "${pkgname}-${pkgver}" || exit 1
+  cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
-  cd "${pkgname}-${pkgver}" || exit 1
+	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
 
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 
 package() {
-  cd "${pkgname}-${pkgver}" || exit 1
+	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
 
-  install -Dm755 "target/release/netwatch" "${pkgdir}/usr/bin/netwatch"
+	install -Dm755 "target/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "CONTRIBUTING.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -Dm644 "REFACTORING.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -Dm644 "CHANGELOG.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -Dm644 "WIKI.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
 
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
