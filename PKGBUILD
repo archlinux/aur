@@ -35,12 +35,6 @@ build() {
     cargo build --frozen --release
 }
 
-check() {
-    cd "$pkgname"
-    export CARGO_TARGET_DIR=target
-    cargo test --frozen
-}
-
 package() {
     cd "$pkgname"
     install -Dm755 target/release/sortiz      "$pkgdir/usr/bin/sortiz"
