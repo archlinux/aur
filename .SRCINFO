@@ -1,0 +1,16 @@
+pkgbase = snapdog
+	pkgdesc = Multi-room audio system with AirPlay, Snapcast, MQTT, and KNX integration
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/metaneutrons/snapdog
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = npm
+	depends = alsa-lib
+	backup = etc/snapdog/snapdog.toml
+	source = snapdog-0.4.0.tar.gz::https://github.com/metaneutrons/snapdog/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = snapdog
