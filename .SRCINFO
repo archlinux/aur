@@ -1,0 +1,15 @@
+pkgbase = maltrail
+	pkgdesc = Malicious traffic detection system utilizing publicly available blacklists
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/stamparm/maltrail
+	install = maltrail.install
+	arch = any
+	license = MIT
+	depends = python
+	optdepends = python-pcapy: for sensor mode (packet capture)
+	backup = etc/maltrail/maltrail.conf
+	source = maltrail-1.3.tar.gz::https://github.com/stamparm/maltrail/archive/refs/tags/1.3.tar.gz
+	sha256sums = d0db9546f099a3450f59dc561b69882eef83015dcd4bbd27300d102fd0d9c547
+
+pkgname = maltrail

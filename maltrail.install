@@ -1,0 +1,13 @@
+post_install() {
+  echo ":: To use maltrail, edit /etc/maltrail/maltrail.conf"
+  echo "   Then enable/start maltrail-server.service and maltrail-sensor.service"
+  echo ":: Sensor mode requires python-pcapy (install separately)"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo ":: Note: /etc/maltrail/ and /var/log/maltrail/ may remain on disk"
+}
