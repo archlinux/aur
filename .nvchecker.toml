@@ -1,0 +1,5 @@
+["octosql-bin"]
+source = "github"
+github = "cube2222/octosql"
+use_latest_release = true
+prefix = "v"

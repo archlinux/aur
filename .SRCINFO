@@ -1,13 +1,20 @@
 pkgbase = octosql-bin
-	pkgdesc = OctoSQL is a query tool that allows you to join, analyse and transform data from multiple databases and file formats using SQL
+	pkgdesc = A CLI tool which lets you query a plethora of databases and file formats using SQL
 	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/cube2222/octosql
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	depends = glibc
 	provides = octosql
-	source = https://github.com/cube2222/octosql/releases/download/v0.13.0/octosql_0.13.0_linux_amd64.tar.gz
-	sha256sums = 49963463c2dc515bedd7e9d77e0e75a394532102ce878caa097250a8260aa815
+	conflicts = octosql
+	source = README-0.13.0.md::https://raw.githubusercontent.com/cube2222/octosql/v0.13.0/README.md
+	source = LICENSE-0.13.0::https://raw.githubusercontent.com/cube2222/octosql/v0.13.0/LICENSE
+	sha256sums = 49ce50d9820bdddfc8389ebcd43410eb202cccbe6f2d5470fde62ff75e6b567b
+	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
+	source_x86_64 = octosql-x86_64-0.13.0.tgz::https://github.com/cube2222/octosql/releases/download/v0.13.0/octosql_0.13.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 49963463c2dc515bedd7e9d77e0e75a394532102ce878caa097250a8260aa815
+	source_aarch64 = octosql-aarch64-0.13.0.tgz::https://github.com/cube2222/octosql/releases/download/v0.13.0/octosql_0.13.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8455bc6f9f9164d4469b286bcb58921887e2fe9390e50195fa2f4ea45d85d235
 
 pkgname = octosql-bin
