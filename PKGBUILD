@@ -6,6 +6,7 @@ pkgdesc="An extensible, Python-native agent system for autonomous multi-model wo
 arch=('any')
 url="https://github.com/SafeRL-Lab/cheetahclaws"
 license=('MIT')
+keywords=('ai' 'agent' 'llm' 'cli' 'claude' 'openai' 'ollama' 'python')
 depends=(
   'python'
   'python-anthropic'
