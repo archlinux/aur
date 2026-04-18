@@ -1,8 +1,8 @@
 # Maintainer: ZynskeyFolf <djpixus at gmail dot com>
 pkgname=paws-lv2-git
-pkgver=r1
+pkgver=r2
 pkgrel=1
-pkgdesc="A few niche audio effects and synthesizers"
+pkgdesc="This package has been replaced by paws-plugins-git."
 arch=('x86_64')
 url="https://zynskey.nekoweb.org/paws"
 license=('GPL-3.0-or-later')

@@ -1,6 +1,6 @@
 pkgbase = paws-lv2-git
-	pkgdesc = A few niche audio effects and synthesizers
-	pkgver = r1
+	pkgdesc = This package has been replaced by paws-plugins-git.
+	pkgver = r2
 	pkgrel = 1
 	url = https://zynskey.nekoweb.org/paws
 	arch = x86_64
