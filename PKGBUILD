@@ -1,4 +1,4 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: Garrett Stewart <zero@gr-p.com>
 pkgname=deadsync-bin
 pkgdesc='ITG/StepMania engine with Vulkan/OpenGL backends – pre-built binary release'
 url='https://github.com/pnn64/deadsync'
