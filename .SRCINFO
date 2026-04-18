@@ -1,7 +1,7 @@
 pkgbase = auroradownloader
 	pkgdesc = Your all in one web based music manager
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bacem-Abidi/AuroraDownloader
 	install = auroradownloader.install
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = auroradownloader
 	depends = mpc
 	source = auroradownloader-1.0.5.tar.gz::https://github.com/Bacem-Abidi/AuroraDownloader/archive/refs/tags/1.0.5.tar.gz
 	source = auroradownloader.service
+	source = auroradownloader-user.service
 	source = auroradownloader.install
 	sha256sums = SKIP
 	sha256sums = SKIP

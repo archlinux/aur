@@ -40,11 +40,11 @@ post_upgrade() {
 }
 
 pre_remove() {
-    systemctl stop auroradownloader.service
-    systemctl disable auroradownloader.service
+    # Stop the user service if it's running
+    systemctl --user stop auroradownloader.service 2>/dev/null || true
+    systemctl --user disable auroradownloader.service 2>/dev/null || true
 }
 
 post_remove() {
-    userdel aurora 2>/dev/null || true
-    groupdel aurora 2>/dev/null || true
+    echo ":: AuroraDownloader removed"
 }

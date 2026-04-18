@@ -1,7 +1,7 @@
 # Maintainer: Bacem Abidi <abidi.bacem.ab.25@gmail.com>
 pkgname=auroradownloader
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Your all in one web based music manager"
 arch=('any')
 url="https://github.com/Bacem-Abidi/AuroraDownloader"
@@ -16,6 +16,7 @@ makedepends=()
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Bacem-Abidi/AuroraDownloader/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.service"
+        "$pkgname-user.service"
         "$pkgname.install")
 install="$pkgname.install"
 sha256sums=('SKIP'
