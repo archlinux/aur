@@ -1,12 +1,13 @@
 pkgbase = stormfetch
 	pkgdesc = A linux fetch program written in go
 	pkgver = 8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EnumeratedDev/stormfetch
 	install = stormfetch.install
 	arch = any
 	license = MIT
 	makedepends = bash
+	makedepends = git
 	makedepends = go
 	makedepends = libx11
 	makedepends = libxcursor

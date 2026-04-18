@@ -3,13 +3,13 @@
 pkgbase=stormfetch
 pkgname=(stormfetch stormfetch-monitor-detection)
 pkgver=8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A linux fetch program written in go'
 arch=('any')
 url='https://github.com/EnumeratedDev/stormfetch'
 license=('MIT')
 
-makedepends=('bash' 'go' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libglvnd' 'make')
+makedepends=('bash' 'git' 'go' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libglvnd' 'make')
 
 backup=(etc/stormfetch/config.yml)
 install=stormfetch.install
