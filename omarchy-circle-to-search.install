@@ -1,0 +1,32 @@
+post_install() {
+    echo ""
+    echo "  >>> omarchy-circle-to-search installed."
+    echo ""
+    echo "  ── STEP 1: Enable keybindings (copy-paste this) ──────────────"
+    echo ""
+    echo "    printf '\\n# circle-to-search\\nbindd = SUPER ALT, C, Circle to Search, exec, circle-to-search\\n' >> ~/.config/hypr/bindings.conf && hyprctl reload"
+    echo ""
+    echo "  ── Default keybinding ────────────────────────────────────────"
+    echo ""
+    echo "    SUPER+ALT+C    Circle to Search"
+    echo ""
+    echo "  ── Customize ────────────────────────────────────────────────"
+    echo ""
+    echo "    Edit the bindings directly in ~/.config/hypr/bindings.conf"
+    echo "    Reference: /usr/share/circle-to-search/hyprland-binds.conf"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ""
+    echo "  >>> omarchy-circle-to-search removed."
+    echo ""
+    echo "  ── Remove keybindings (copy-paste this) ──────────────────────"
+    echo ""
+    echo "    sed -i '/circle-to-search/d' ~/.config/hypr/bindings.conf && hyprctl reload"
+    echo ""
+}
