@@ -1,0 +1,19 @@
+pkgbase = t1161-driver-bin
+	pkgdesc = Driver for Gotop/Vinsa T1161 tablet
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/YOURUSER/t1161-driver
+	arch = x86_64
+	license = MIT
+	depends = libusb
+	depends = systemd
+	source = https://github.com/ColdyESP/t1161-driver/releases/download/v0.1.1-beta/t1161-driver-0.1.1-x86_64.tar.gz
+	source = t1161-driver.service
+	source = 99-t1161-driver.rules
+	source = t1161-driver.install
+	sha256sums = a2f3537f33a69d0fa99483c7de01886075970250c7a395c967e16db8eaec84a7
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = t1161-driver-bin

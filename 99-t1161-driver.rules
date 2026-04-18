@@ -1,0 +1,2 @@
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="08f2", ATTR{idProduct}=="6811", TAG+="systemd", ENV{SYSTEMD_WANTS}="t1161-driver.service"
+ACTION=="remove", SUBSYSTEM=="usb", ENV{PRODUCT}=="8f2/6811/*", RUN+="/usr/bin/systemctl stop t1161-driver.service"

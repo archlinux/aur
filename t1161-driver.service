@@ -1,0 +1,15 @@
+[Unit]
+Description=T1161 Tablet Driver
+After=systemd-udevd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/t1161-driver
+Restart=no
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
