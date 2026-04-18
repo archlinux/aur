@@ -1,6 +1,6 @@
 pkgbase = otter-launcher
 	pkgdesc = A rust-based cli/tui launcher built for keyboard-centric users, featuring vi & emacs keybinds, ascii decoration, etc
-	pkgver = 0.6.9
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/kuokuo123/otter-launcher
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = otter-launcher
 	makedepends = cargo
 	options = !debug
 	backup = etc/otter-launcher/config.toml
-	source = https://github.com/kuokuo123/otter-launcher/archive/refs/tags/v0.6.9.tar.gz
-	sha256sums = b1c952cf7fc5a6c6ba6b2fac3b3ab4be166748b6c666f4c9555135e7836b2121
+	source = https://github.com/kuokuo123/otter-launcher/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 835fb080a9c45eacccfc4d94f96f30802e8ff0232b201c0e58fb92cc23c8a72a
 
 pkgname = otter-launcher
