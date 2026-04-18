@@ -1,0 +1,6 @@
+src/
+pkg/
+*.tar.zst
+*.tar.xz
+*.tar.gz
+imgvwr/

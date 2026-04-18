@@ -1,0 +1,23 @@
+pkgbase = imgvwr-git
+	pkgdesc = Minimal Wayland image viewer
+	pkgver = r112.5c81e5b
+	pkgrel = 1
+	url = https://github.com/Gigas002/imgvwr
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = wayland
+	depends = libxkbcommon
+	optdepends = vulkan-icd-loader: GPU-accelerated rendering via Vulkan
+	optdepends = libdav1d: animated AVIF support (rebuild with avif-anim feature)
+	optdepends = libjxl: JPEG XL support (rebuild with jxl or jxl-anim feature)
+	provides = imgvwr
+	conflicts = imgvwr
+	options = !strip
+	source = git+https://github.com/Gigas002/imgvwr.git
+	sha256sums = SKIP
+
+pkgname = imgvwr-git
