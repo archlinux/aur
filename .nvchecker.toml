@@ -1,0 +1,7 @@
+[stremio-linux-shell]
+source = "github"
+github = "Stremio/stremio-linux-shell"
+use_max_tag = true
+prefix = "v"
+from_pattern = "-"
+to_pattern = "_"
