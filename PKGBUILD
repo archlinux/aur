@@ -10,12 +10,11 @@ epoch=1
 pkgver=3.1.13
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
 _splTokenCliVersion=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, secure, and censorship resistant blockchain."
 url="https://github.com/anza-xyz/agave"
 arch=(x86_64)
 license=(Apache-2.0)
-depends=(bash bzip2 cargo gcc-libs glibc systemd-libs)
 makedepends=(git protobuf clang llvm curl)
 source=(git+https://github.com/anza-xyz/agave.git#tag=v$pkgver
         git+https://github.com/solana-program/token-2022.git#tag=cli@v$_splTokenCliVersion
@@ -147,6 +146,7 @@ build() {
 
 package_solana-cli() {
   pkgdesc="Solana CLI tools"
+  depends=(bzip2 gcc-libs glibc systemd-libs)
   provides=("solana-cli=${epoch}:${pkgver}-${pkgrel}" "spl-token")
   conflicts=(solana-bin)
   install=$pkgbase.install
@@ -167,6 +167,7 @@ package_solana-cli() {
 
 package_agave-validator() {
   pkgdesc="Agave validator and node operator tools for Solana"
+  depends=(bzip2 gcc-libs glibc)
   provides=("agave-validator=${epoch}:${pkgver}-${pkgrel}")
 
   cd "$srcdir/agave"
@@ -182,6 +183,8 @@ package_agave-validator() {
 
 package_solana-dev() {
   pkgdesc="Solana program developer tools"
+  depends=(bash bzip2 gcc-libs glibc)
+  optdepends=('cargo: required for cargo-build-sbf and cargo-test-sbf')
   provides=("solana-dev=${epoch}:${pkgver}-${pkgrel}")
   conflicts=(solana-dev-bin)
 
