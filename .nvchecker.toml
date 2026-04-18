@@ -1,0 +1,5 @@
+[tuxedo-control-center-bin]
+source = "rpmrepo"
+repo = "https://rpm.tuxedocomputers.com/fedora/43/x86_64/base/"
+pkg = "tuxedo-control-center"
+arch = "x86_64"
