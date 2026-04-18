@@ -1,6 +1,6 @@
 # Maintainer: fa5e4658010be730
 pkgname=dotm
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Declarative dotfiles manager with normal file paths, delegated encryption, and first-class permission management"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
     'diffutils: dotm diff'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('8ec2a5d535d5814a5d299c4a997ca1002df6b6a38fd1e9c885e058d703197f63')
+sha256sums=('2750ac85c845be65c242764a4597bddc8222d4c37d728aa85c184829a5433727')
 
 build() {
     cd "${pkgname}-v${pkgver}"
