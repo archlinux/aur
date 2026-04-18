@@ -6,7 +6,7 @@ After=network.target redis.service
 User=aurora
 Group=aurora
 WorkingDirectory=/opt/auroradownloader
-Environment="PATH=/opt/auroradownloader/venv/bin"
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/opt/auroradownloader/venv/bin"
 ExecStart=/opt/auroradownloader/venv/bin/gunicorn -k gevent --worker-connections 1000 --bind 127.0.0.1:5000 app:app
 Restart=on-failure
 

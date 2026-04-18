@@ -1,6 +1,6 @@
 # Maintainer: Bacem Abidi <abidi.bacem.ab.25@gmail.com>
 pkgname=auroradownloader
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=2
 pkgdesc="Your all in one web based music manager"
 arch=('any')
@@ -10,6 +10,7 @@ depends=(
     'ffmpeg'
     'python'
     'redis'          # required for Server‑Sent Events
+    'mpc'
 )
 makedepends=()
 optdepends=()
