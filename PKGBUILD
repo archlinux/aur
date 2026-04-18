@@ -2,7 +2,7 @@
 
 pkgname=quickjs-ng
 _basename=quickjs
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Small and embeddable JavaScript engine"
 url="https://quickjs-ng.github.io/quickjs"
@@ -13,7 +13,7 @@ conflicts=(quickjs)
 depends=(glibc libgcc)
 makedepends=(cmake)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quickjs-ng/quickjs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('13ed1d22cd4b2b693a94a234e752d1ea6a0064434a740031ff90439679257c6c')
+sha256sums=('928e9406addd99eb8623348f2cfcd916eade9a263c60d42be79bc7aee4ee8453')
 
 build() {
 	local _jobs=$(nproc 2>/dev/null || echo 4)
