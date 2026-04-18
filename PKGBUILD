@@ -4,7 +4,7 @@ pkgbase=scopehal-apps
 pkgname=scopehal-apps
 _tagname=0.1.1
 pkgver=${_tagname//-/_}
-pkgrel=2
+pkgrel=4
 epoch=
 pkgdesc="ngscopeclient and other client applications for libscopehal"
 arch=($CARCH)
@@ -39,9 +39,12 @@ makedepends=(
     catch2
     fftw
     lsb-release
+    nvtx
+    openmp
+    pkgconf
     shaderc
     vulkan-headers
-    pkgconf
+    wayland
 )
 checkdepends=()
 optdepends=(
