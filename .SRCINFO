@@ -1,6 +1,6 @@
 pkgbase = zeed-bin
 	pkgdesc = Chromium-based browser with bundled Zeed AI assistant (prebuilt)
-	pkgver = 147.0.7727.55.2
+	pkgver = 147.0.7727.55.3
 	pkgrel = 1
 	url = https://github.com/efg-technologies/zeed-browser-dist
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = zeed-bin
 	source = zeed.desktop
 	sha256sums = 39fea8e8a7a407b91451e90dc88744b014e0ea0a8fc9efcac3d3155d81f3529f
 	sha256sums = 44643ac4148288223db5829f4b1ccb3bd84fea19e4e43711e91ee5f52cf6401f
-	source_x86_64 = zeed-147.0.7727.55.2-linux-x86_64.tar.xz::https://github.com/efg-technologies/zeed-browser-dist/releases/download/v147.0.7727.55.2/zeed-147.0.7727.55.2-linux-x86_64.tar.xz
-	sha256sums_x86_64 = 9478d71d5c6161b0efa58e72e888ffac6fdb1c17bb8af875dab0e4b3337fe1c6
+	source_x86_64 = zeed-147.0.7727.55.3-linux-x86_64.tar.xz::https://github.com/efg-technologies/zeed-browser-dist/releases/download/v147.0.7727.55.3/zeed-147.0.7727.55.3-linux-x86_64.tar.xz
+	sha256sums_x86_64 = 442b3cdba40f825075521f71a96ef516fdd4a62fcd6e04c13b860443cb43b9af
 
 pkgname = zeed-bin
