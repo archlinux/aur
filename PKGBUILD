@@ -2,7 +2,7 @@
 
 pkgname=fronius-bridge
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 pkgdesc="Lightweight Modbus-to-MQTT bridge for Fronius devices"
 url="https://github.com/ahpohl/fronius-bridge"
@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=('aaa1d67371aea6a1735f4676e1d02d34891cbc23554d8d182b19797cc95e3c2a'
             'ceb25291231fff17ab14840233f700878897bd74d7749bed3345d6e46d4f4f24'
-            'dca32ad410dd3803c840bb5980169ed2d92d37038cdd3832596af652666dc1eb')
+            '9b07ac29013a6548f1ed08a8aa9565084ef273653444a5f4a5192c4389206bb9')
 backup=('etc/fronius-bridge/config.yaml')
 
 build() {
