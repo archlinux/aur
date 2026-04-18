@@ -1,6 +1,6 @@
 pkgbase = soh
 	pkgver = 9.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shipofharkinian.com/
 	arch = x86_64
 	arch = i686
@@ -32,7 +32,7 @@ pkgbase = soh
 	source = ZAPDTR-ee3397a3.tar.gz::https://github.com/HarbourMasters/ZAPDTR/archive/ee3397a365c5f350a60538c88f0643f155944836.tar.gz
 	source = OTRExporter-32e088e2.tar.gz::https://github.com/HarbourMasters/OTRExporter/archive/32e088e28c8cdd055d4bb8f3f219d33ad37963f3.tar.gz
 	source = soh.desktop
-	sha256sums = f7fbe26250c51abf96b5e280e8b99956084416cb3555381b6c5f19f6c4e9a8bb
+	sha256sums = 84d1e00cdb76928a1295b04469d4e1f344f57a0a652186dd0c4c4075c25a0f66
 	sha256sums = 60add82e2211861075223387e694fc43e0c0dcb2b31a19b8895e0ed0b37250af
 	sha256sums = 555cb887dcdf5b9c76fbd703a9928de8792bc3d816253696cd52c2d8f2826601
 	sha256sums = 91a863f8899f2ebfc7868ccad4b5982ae416799c76358ce5b2c0edc11e42a672
