@@ -113,11 +113,12 @@ _source_telegram() {
       -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF
       -Dtg_owt_DIR="$srcdir/build_tg_owt"
       -DCMAKE_LINKER_TYPE=MOLD
+      -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
       -Wno-dev
     )
 
     cmake "${_cmake_options[@]}"
-    cmake --build build
+    cmake --build build -- -j$(( $(nproc) / 2 > 4 ? $(nproc) / 2 : 4 ))
   )
 }
 
