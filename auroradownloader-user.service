@@ -1,0 +1,12 @@
+[Unit]
+Description=AuroraDownloader web service (user)
+After=network.target redis.service
+
+[Service]
+WorkingDirectory=%h/.cache/auroradownloader
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/opt/auroradownloader/venv/bin"
+ExecStart=/opt/auroradownloader/venv/bin/gunicorn -k gevent --worker-connections 1000 --bind 127.0.0.1:5000 app:app
+Restart=on-failure
+
+[Install]
+WantedBy=default.targetantedBy=multi-user.target

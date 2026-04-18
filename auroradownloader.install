@@ -1,25 +1,38 @@
+# post_install() {
+#     # Create system user and group if they don't exist
+#     if ! getent group aurora >/dev/null; then
+#         groupadd -r aurora
+#     fi
+#     if ! getent passwd aurora >/dev/null; then
+#         useradd -r -g aurora -d /opt/auroradownloader -s /usr/bin/nologin \
+#             -c "AuroraDownloader service user" aurora
+#     fi
+#
+#     # Set correct ownership and permissions
+#     chown -R aurora:aurora /opt/auroradownloader
+#     chown aurora:aurora /var/log/auroradownloader
+#     chmod 755 /opt/auroradownloader
+#
+#     # Enable and start Redis (if not already running)
+#     systemctl enable --now redis 2>/dev/null || true
+#
+#     # Reload systemd and start our service
+#     systemctl daemon-reload
+#     systemctl enable auroradownloader.service
+#     systemctl start auroradownloader.service
+# }
+
 post_install() {
-    # Create system user and group if they don't exist
-    if ! getent group aurora >/dev/null; then
-        groupadd -r aurora
-    fi
-    if ! getent passwd aurora >/dev/null; then
-        useradd -r -g aurora -d /opt/auroradownloader -s /usr/bin/nologin \
-            -c "AuroraDownloader service user" aurora
-    fi
+    # Only create log directory (owned by root, but world‑writable? Better to let user manage logs)
+    # Actually, for user service we don't need system‑wide logs. Remove /var/log/auroradownloader.
+    # Instead, the app can write logs to ~/.cache/auroradownloader or use systemd journal.
 
-    # Set correct ownership and permissions
-    chown -R aurora:aurora /opt/auroradownloader
-    chown aurora:aurora /var/log/auroradownloader
-    chmod 755 /opt/auroradownloader
-
-    # Enable and start Redis (if not already running)
-    systemctl enable --now redis 2>/dev/null || true
-
-    # Reload systemd and start our service
-    systemctl daemon-reload
-    systemctl enable auroradownloader.service
-    systemctl start auroradownloader.service
+    # No system user, no system service start.
+    echo ":: AuroraDownloader installed."
+    echo ":: To run as a user service (recommended):"
+    echo "    systemctl --user enable --now auroradownloader"
+    echo ":: To run as a system service (requires manual permission setup):"
+    echo "    sudo systemctl enable --now auroradownloader"
 }
 
 post_upgrade() {

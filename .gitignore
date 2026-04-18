@@ -4,3 +4,4 @@
 !.SRCINFO
 !auroradownloader.install
 !auroradownloader.service
+!auroradownloader-user.service
