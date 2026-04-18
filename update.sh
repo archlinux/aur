@@ -9,11 +9,13 @@ set -e
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
 NC='\033[0m'
 
 info() { echo -e "${GREEN}[INFO]${NC} $1"; }
 error() { echo -e "${RED}[ERROR]${NC} $1" >&2; }
 warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
+step() { echo -e "${BLUE}[STEP]${NC} $1"; }
 
 cd "$(dirname "$0")"
 
@@ -23,15 +25,18 @@ if [[ ! -d ".git" ]]; then
     exit 1
 fi
 
-info "Mimic-Node AUR 更新脚本"
+echo ""
+echo "================================================================================"
+echo "                    Mimic-Node AUR 更新脚本"
+echo "================================================================================"
 echo ""
 
 # 1. 拉取最新代码
-info "拉取最新 PKGBUILD..."
-git pull --rebase origin master || true
+step "拉取最新 PKGBUILD..."
+git pull --rebase origin master 2>/dev/null || warn "无法拉取远程更新 (可能无网络或无更改)"
 
 # 2. 清理旧构建
-info "清理旧构建..."
+step "清理旧构建..."
 rm -rf src/ pkg/ *.pkg.tar.zst 2>/dev/null || true
 
 # 3. pkgrel 递增（强制触发用户更新检测）
@@ -41,27 +46,38 @@ sed -i "s/^pkgrel=.*/pkgrel=$new_pkgrel/" PKGBUILD
 info "pkgrel: $current_pkgrel → $new_pkgrel"
 
 # 4. 同步 .SRCINFO，避免 AUR 前端和 AUR helper 读到过期元数据
-info "更新 .SRCINFO..."
+step "更新 .SRCINFO..."
 makepkg --printsrcinfo > .SRCINFO
 
 # 5. 构建并安装
-info "构建并安装..."
+step "构建并安装..."
 makepkg -si --noconfirm
 
 # 6. 提交更改
-info "提交更改..."
+step "提交更改..."
 git add -A
-git commit -m "chore(aur): bump pkgrel to $new_pkgrel" || true
+git commit -m "chore(aur): bump pkgrel to $new_pkgrel" 2>/dev/null || info "无需提交 (无更改或已提交)"
 
 # 7. 推送到 AUR
-info "推送到 AUR..."
-git push origin master
-
-info "AUR 更新完成!"
+step "推送到 AUR..."
+git push origin master 2>/dev/null || warn "无法推送 (可能无网络或无更改)"
 
 echo ""
-echo "=============================================="
-info "后续步骤:"
-echo "  1. 用户端运行: paru -Syu --noconfirm mimic-node-git"
-echo "  2. 或者触发远程更新 (如果配置了 CI/CD)"
-echo "=============================================="
+echo "================================================================================"
+echo "                    AUR 更新完成!"
+echo "================================================================================"
+echo ""
+echo "  后续步骤:"
+echo ""
+echo "    # 用户端运行以下命令更新:"
+echo "    paru -Syu --noconfirm mimic-node-git"
+echo "    # 或"
+echo "    yay -Syu --noconfirm mimic-node-git"
+echo ""
+echo "  或者触发远程 CI/CD 更新 (如果配置了)"
+echo ""
+echo "  更新后建议运行诊断:"
+echo "    sudo mimictl diagnose --verbose"
+echo ""
+echo "================================================================================"
+}
