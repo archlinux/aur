@@ -1,0 +1,6 @@
+pkg/
+src/
+whitenoise-rs/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.log

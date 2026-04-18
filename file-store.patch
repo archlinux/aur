@@ -1,0 +1,262 @@
+diff --git Cargo.toml Cargo.toml
+index a1afefd..815b1e4 100644
+--- Cargo.toml
++++ Cargo.toml
+@@ -117,9 +117,6 @@ apple-native-keyring-store = { version = "0.2", features = ["protected"] }
+ [target.'cfg(target_os = "windows")'.dependencies]
+ windows-native-keyring-store = "0.5"
+ 
+-[target.'cfg(target_os = "linux")'.dependencies]
+-linux-keyutils-keyring-store = "0.2"
+-
+ [target.'cfg(target_os = "android")'.dependencies]
+ android-native-keyring-store = "0.5"
+ 
+diff --git src/whitenoise/file_store.rs src/whitenoise/file_store.rs
+new file mode 100644
+index 0000000..9d630a2
+--- /dev/null
++++ src/whitenoise/file_store.rs
+@@ -0,0 +1,174 @@
++//! Plain file-based `keyring-core` credential store.
++//!
++//! Each credential is persisted as a 0600-perm file under a per-store base
++//! directory, at path `{base}/{sanitized_service}/{sanitized_user}`.  No
++//! platform keyring, no D-Bus, no keyutils — secrets survive reboot because
++//! they live on disk, and they are as private as the filesystem the base
++//! directory sits on.
++//!
++//! Trade-off: secrets are stored in plaintext (0600) rather than in an
++//! OS-managed secure enclave.  For an unattended daemon on a single-user
++//! Linux box this matches the threat model of every other on-disk secret
++//! (`~/.ssh/id_*`, `~/.nostr/nsec`, etc.) and avoids the session-scoped
++//! lifetime that `linux-keyutils` imposes.
++
++use std::any::Any;
++use std::collections::HashMap;
++use std::fs;
++use std::io::Write;
++use std::os::unix::fs::{OpenOptionsExt, PermissionsExt};
++use std::path::{Path, PathBuf};
++use std::sync::Arc;
++
++use keyring_core::api::{CredentialApi, CredentialStoreApi};
++use keyring_core::{Credential, CredentialPersistence, Entry, Error, Result};
++
++/// Keep ASCII alphanumerics plus `.`, `_`, `-`.  Everything else becomes `_`
++/// so service/user strings can never traverse directories or collide with
++/// special filenames.
++fn sanitize(s: &str) -> String {
++    let mut out = String::with_capacity(s.len());
++    for c in s.chars() {
++        if c.is_ascii_alphanumeric() || c == '.' || c == '_' || c == '-' {
++            out.push(c);
++        } else {
++            out.push('_');
++        }
++    }
++    if out.is_empty() {
++        out.push('_');
++    }
++    out
++}
++
++fn io_err(context: &str, e: std::io::Error) -> Error {
++    Error::PlatformFailure(Box::new(std::io::Error::new(
++        e.kind(),
++        format!("{context}: {e}"),
++    )))
++}
++
++#[derive(Debug)]
++pub struct Cred {
++    service: String,
++    user: String,
++    path: PathBuf,
++}
++
++impl Cred {
++    fn new(base: &Path, service: &str, user: &str) -> Self {
++        let path = base.join(sanitize(service)).join(sanitize(user));
++        Self {
++            service: service.to_string(),
++            user: user.to_string(),
++            path,
++        }
++    }
++}
++
++impl CredentialApi for Cred {
++    fn set_secret(&self, secret: &[u8]) -> Result<()> {
++        if let Some(parent) = self.path.parent() {
++            fs::create_dir_all(parent).map_err(|e| io_err("create credential dir", e))?;
++            // Tighten perms on the service dir too.
++            let _ = fs::set_permissions(parent, fs::Permissions::from_mode(0o700));
++        }
++
++        let tmp = self.path.with_extension("tmp");
++        let mut f = fs::OpenOptions::new()
++            .write(true)
++            .create(true)
++            .truncate(true)
++            .mode(0o600)
++            .open(&tmp)
++            .map_err(|e| io_err("open credential tmp file", e))?;
++        f.write_all(secret)
++            .map_err(|e| io_err("write credential", e))?;
++        f.sync_all().map_err(|e| io_err("fsync credential", e))?;
++        drop(f);
++
++        fs::rename(&tmp, &self.path).map_err(|e| io_err("rename credential into place", e))?;
++        Ok(())
++    }
++
++    fn get_secret(&self) -> Result<Vec<u8>> {
++        match fs::read(&self.path) {
++            Ok(v) => Ok(v),
++            Err(e) if e.kind() == std::io::ErrorKind::NotFound => Err(Error::NoEntry),
++            Err(e) => Err(io_err("read credential", e)),
++        }
++    }
++
++    fn delete_credential(&self) -> Result<()> {
++        match fs::remove_file(&self.path) {
++            Ok(()) => Ok(()),
++            Err(e) if e.kind() == std::io::ErrorKind::NotFound => Err(Error::NoEntry),
++            Err(e) => Err(io_err("delete credential", e)),
++        }
++    }
++
++    fn get_credential(&self) -> Result<Option<Arc<Credential>>> {
++        if self.path.exists() {
++            Ok(None)
++        } else {
++            Err(Error::NoEntry)
++        }
++    }
++
++    fn get_specifiers(&self) -> Option<(String, String)> {
++        Some((self.service.clone(), self.user.clone()))
++    }
++
++    fn as_any(&self) -> &dyn Any {
++        self
++    }
++}
++
++#[derive(Debug)]
++pub struct Store {
++    base: PathBuf,
++    id: String,
++}
++
++impl Store {
++    pub fn new(base: PathBuf) -> Result<Arc<Self>> {
++        fs::create_dir_all(&base).map_err(|e| io_err("create credential base dir", e))?;
++        // 0700 on the base dir so no other user can list credentials.
++        let _ = fs::set_permissions(&base, fs::Permissions::from_mode(0o700));
++        let id = format!("file-store@{}", base.display());
++        Ok(Arc::new(Self { base, id }))
++    }
++}
++
++impl CredentialStoreApi for Store {
++    fn vendor(&self) -> String {
++        String::from("whitenoise file-store (plaintext 0600 on disk)")
++    }
++
++    fn id(&self) -> String {
++        self.id.clone()
++    }
++
++    fn build(
++        &self,
++        service: &str,
++        user: &str,
++        modifiers: Option<&HashMap<&str, &str>>,
++    ) -> Result<Entry> {
++        if modifiers.is_some_and(|m| !m.is_empty()) {
++            return Err(Error::NotSupportedByStore(
++                "file store does not accept modifiers".to_string(),
++            ));
++        }
++        let cred: Arc<Credential> = Arc::new(Cred::new(&self.base, service, user));
++        Ok(Entry::new_with_credential(cred))
++    }
++
++    fn as_any(&self) -> &dyn Any {
++        self
++    }
++
++    fn persistence(&self) -> CredentialPersistence {
++        CredentialPersistence::UntilDelete
++    }
++}
+diff --git src/whitenoise/mod.rs src/whitenoise/mod.rs
+index b42f750..336161f 100644
+--- src/whitenoise/mod.rs
++++ src/whitenoise/mod.rs
+@@ -28,6 +28,13 @@ pub mod debug;
+ pub mod drafts;
+ pub mod error;
+ mod event_processor;
++#[cfg(all(
++    target_os = "linux",
++    not(test),
++    not(feature = "integration-tests"),
++    not(feature = "benchmark-tests")
++))]
++mod file_store;
+ pub mod event_tracker;
+ pub mod follows;
+ pub mod group_information;
+@@ -266,7 +273,8 @@ impl Whitenoise {
+     ///
+     /// This function is safe to call multiple times; only the first call has
+     /// an effect.
+-    fn initialize_keyring_store() {
++    #[allow(unused_variables)]
++    fn initialize_keyring_store(data_dir: &Path) {
+         static KEYRING_STORE_INIT: OnceLock<()> = OnceLock::new();
+         KEYRING_STORE_INIT.get_or_init(|| {
+             // Use the mock (in-memory) store in test, integration-test, and
+@@ -329,8 +337,12 @@ impl Whitenoise {
+                 }
+                 #[cfg(target_os = "linux")]
+                 {
+-                    let store = linux_keyutils_keyring_store::Store::new()
+-                        .expect("Failed to create Linux keyutils credential store");
++                    // On Linux we avoid the session-scoped keyutils store and
++                    // the D-Bus/libsecret dance; credentials live as 0600 files
++                    // under `{data_dir}/credentials/`, so they persist across
++                    // reboots without any platform keychain entitlements.
++                    let store = file_store::Store::new(data_dir.join("credentials"))
++                        .expect("Failed to create file-based credential store");
+                     keyring_core::set_default_store(store);
+                 }
+                 #[cfg(target_os = "android")]
+@@ -375,7 +387,8 @@ impl Whitenoise {
+     /// ```
+     #[cfg(any(test, feature = "integration-tests"))]
+     pub fn initialize_mock_keyring_store() {
+-        Self::initialize_keyring_store();
++        // Mock path ignores the data_dir argument, so any temp path works.
++        Self::initialize_keyring_store(&std::env::temp_dir());
+     }
+ 
+     /// Creates an MDK instance for the given account public key using this
+@@ -404,9 +417,13 @@ impl Whitenoise {
+     pub async fn initialize_whitenoise(config: WhitenoiseConfig) -> Result<()> {
+         init_timing::start();
+ 
++        // Create the data directory up front so the file-based credential
++        // store can place its `credentials/` subdirectory inside it.
++        std::fs::create_dir_all(&config.data_dir)?;
++
+         // Ensure keyring-core has a credential store before any MDK or
+         // SecretsStore operations attempt to create or read keyring entries.
+-        Self::initialize_keyring_store();
++        Self::initialize_keyring_store(&config.data_dir);
+ 
+         // Validate keyring_service_id is not empty or whitespace
+         let keyring_service_id = config.keyring_service_id.trim().to_string();

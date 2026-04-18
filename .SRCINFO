@@ -1,6 +1,6 @@
 pkgbase = whitenoise-rs-git
 	pkgdesc = wn — White Noise MLS/Nostr messaging CLI daemon
-	pkgver = r669.6aff825
+	pkgver = r716.2e95b1f
 	pkgrel = 1
 	url = https://github.com/marmot-protocol/whitenoise-rs
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = whitenoise-rs-git
 	conflicts = whitenoise-rs
 	options = !lto
 	source = whitenoise-rs::git+https://github.com/marmot-protocol/whitenoise-rs.git
+	source = file-store.patch
 	sha256sums = SKIP
+	sha256sums = c76b397f291f36f50e01d8b75a96ac710b046986ead9d49ebfc6548fc401c150
 
 pkgname = whitenoise-rs-git
