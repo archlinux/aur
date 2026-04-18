@@ -1,6 +1,6 @@
 # Maintainer: Ron <thefangeddeity>
 pkgname=hls-livecam-server
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/thefangeddeity/hls-livecam-server"
 license=('MIT')
 depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'smartmontools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('847527e0dd103933ee45d6d1635debfdc8e731511b62767b99472ce489a816aa')
+sha256sums=("d91de1fa3a223653c354d47ca5f3ae6bba7f8d16c42da978defacf0063a3118a")
 
 package() {
     cd "$pkgname-$pkgver"
