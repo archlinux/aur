@@ -1,4 +1,5 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Esteban Beltran <arch@academo.me>
+# Contributor: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Christopher A. Williamson
 # Contributor: Moritz Poldrack <moritz at poldrack dot dev>
 # Contributor: Pascal Mathis <mail@pascalmathis.com>
