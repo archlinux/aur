@@ -2,11 +2,11 @@
 pkgname=colony-git
 _pkgname=colony
 pkgver=r0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Application launcher for the Project-Colony ecosystem (git HEAD)"
 arch=('x86_64')
 url="https://github.com/Project-Colony/Colony"
-license=('Unknown')
+license=('MIT')
 depends=(
     'gcc-libs'
     'openssl'
@@ -54,6 +54,9 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
     install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+    # Ship the upstream LICENSE in /usr/share/licenses per Arch convention.
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # Desktop entry so GNOME/KDE/rofi/wofi launchers pick up Colony.
     install -dm755 "${pkgdir}/usr/share/applications"
