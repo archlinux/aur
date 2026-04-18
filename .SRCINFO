@@ -1,0 +1,16 @@
+pkgbase = file-explorer-git
+	pkgdesc = GTK4 file explorer with favorites, search, preview, and file operations
+	pkgver = 0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/EvansOgala/file-explorer
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = xdg-utils
+	source = file-explorer-git::git+https://github.com/EvansOgala/file-explorer.git
+	sha256sums = SKIP
+
+pkgname = file-explorer-git
