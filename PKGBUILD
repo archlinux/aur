@@ -1,22 +1,15 @@
 pkgname=rudo-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Elegant Wayland dock with niri-aware integration'
 arch=('x86_64')
 url='https://github.com/skorotkiewicz/rudo'
 license=('unknown')
 depends=('gtk4' 'gtk4-layer-shell')
-makedepends=('cargo')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/skorotkiewicz/rudo/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8fb44d60524ab3adcd24a9330f7c97e4a35afd315a2fc97cd6128c7c2c836b26')
-
-build() {
-    cd "rudo-${pkgver}"
-    cargo build --release --locked
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/skorotkiewicz/rudo/releases/download/v${pkgver}/${pkgname}-${pkgver}-x86_64-linux.tar.gz")
+sha256sums=('ea39d59065b49f5dba07dc83f0f3cbbeffe972088dbe2d42644abafdf2cb7e83')
 
 package() {
-    cd "rudo-${pkgver}"
-    install -Dm755 target/release/rudo "${pkgdir}/usr/bin/rudo"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm755 rudo "${pkgdir}/usr/bin/rudo"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md" 2>/dev/null || true
 }
