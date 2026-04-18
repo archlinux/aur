@@ -6,6 +6,8 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/LIghtJUNction/Mimic-Node"
 license=('GPL-3.0-or-later')
 depends=('openssl' 'kmod' 'gcc-libs')
+optdepends=('sing-box: required for node functionality'
+            'sing-box-beta-bin: alternative to sing-box')
 makedepends=('git' 'rust' 'cargo')
 provides=('mimic-node')
 conflicts=('mimic-node')
