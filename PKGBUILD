@@ -4,7 +4,7 @@
 
 pkgname=aic8800d80-pcie-dkms
 pkgver=6.4.3.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="DKMS module for AIC8800D80 PCIe Wi-Fi adapters (Ugreen CM958 and similar)"
 arch=('x86_64')
@@ -20,16 +20,14 @@ source=(
   "UGREEN-CM958-75615_Linux_Drive_V1.0.zip::https://download.lulian.cn/2026-drive/UGREEN-CM958-75615_Linux_Drive_V1.0.zip"
   "0001-linux-6.13-plus-compat.patch"
   "0002-export-pci-modalias.patch"
-  "0003-default-quiet-logging.patch"
-  "0004-quiet-pcie-dma-progress.patch"
+  "0003-normalize-driver-logging.patch"
   "aic8800d80-sleep-hook"
 )
 sha256sums=(
   'c929c2ff22ba0b55e26ecaccb57f04edc11bb84767d31ac068b8087dd4a8c53a'
   '6e8562dcb93f114bdbf759506967f9504ffc5fc9043b94b616449ba43d1d34ef'
   '98699379ab9b302c0e5059d6a16e1598ad3ace7cfb15570c988c994c12a0333f'
-  '0aea176f35d1f80898d2680c0b4117392d22e47846f42d83b9cc3a7b787f4639'
-  '8b3fa1408d8762424761f41989581cf03a0cace9ff506ddb9529db5510480a01'
+  '1687699015054c8d65d18e557908817c868eda5a29d9cbc6277b6ff44052eb0a'
   '1d34e929c3570cfae9aea2b79d3e143ca89c41ad165457e10c143c2bb74489da'
 )
 
@@ -38,8 +36,7 @@ prepare() {
 	bsdtar -C "$srcdir" -xf "$srcdir/Linux/aic8800_linux_drvier.zip"
 	patch -d "$srcdir/aic8800_linux_drvier" -p1 -i "$srcdir/0001-linux-6.13-plus-compat.patch"
 	patch -d "$srcdir/aic8800_linux_drvier" -p1 -i "$srcdir/0002-export-pci-modalias.patch"
-	patch -d "$srcdir/aic8800_linux_drvier" -p1 -i "$srcdir/0003-default-quiet-logging.patch"
-	patch -d "$srcdir/aic8800_linux_drvier" -p1 -i "$srcdir/0004-quiet-pcie-dma-progress.patch"
+	patch -d "$srcdir/aic8800_linux_drvier" -p1 -i "$srcdir/0003-normalize-driver-logging.patch"
 }
 
 package() {
