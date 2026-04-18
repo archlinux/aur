@@ -1,11 +1,11 @@
 pkgname=ember-notify
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Notification daemon for i3/X11 with Eww integration'
 arch=('x86_64')
 url='https://github.com/Savanta/Ember'
 license=('MIT')
-depends=('cairo' 'dbus' 'sqlite' 'wmctrl')
+depends=('cairo' 'dbus' 'libcanberra' 'sqlite' 'wmctrl')
 makedepends=('cargo' 'rust' 'sqlite')
 optdepends=('noto-fonts: default toast font'
             'eww: bar widget integration')

@@ -1,7 +1,7 @@
 pkgbase = ember-notify
 	pkgdesc = Notification daemon for i3/X11 with Eww integration
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Savanta/Ember
 	install = ember-notify.install
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = ember-notify
 	makedepends = sqlite
 	depends = cairo
 	depends = dbus
+	depends = libcanberra
 	depends = sqlite
 	depends = wmctrl
 	optdepends = noto-fonts: default toast font
