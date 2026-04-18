@@ -1,7 +1,7 @@
 # Maintainer: clove3am (aka: Caltlgin) <clove.dev.mailbox.org>
 
 pkgname='ftpgrab'
-pkgver=7.12.0
+pkgver=7.13.0
 pkgrel=1
 pkgdesc='Grab your files periodically from a remote FTP or SFTP server easily'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1206216f3cbb2737f6dd131d86a0dede6c58ec6e46b4fbc396610513df6dbca8')
+sha256sums=('214646f3750ab39068f752f30b903a91b70d3616b14ea3989f856d3430d6fbfc')
 
 build() {
   cd "${pkgname}-${pkgver}"
