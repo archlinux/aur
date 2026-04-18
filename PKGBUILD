@@ -1,7 +1,7 @@
 # Maintainer: Pea <peanut2 [aaaaat] systemli [dooot] org>
 pkgname=riseup-vpn-git
 pkgrel=1
-pkgver=0.24.8.r21.g473595df
+pkgver=0.25.8.r25.gdc7f2ee4
 pkgdesc="RiseupVPN is a branded build of Bitmask VPN. Bitmask VPN is a minimal rewrite of the Bitmask VPN Client, written in golang, that for now lacks client authentication, and is preconfigured to use a single provider."
 url="https://0xacab.org/leap/bitmask-vpn"
 arch=('x86_64')
