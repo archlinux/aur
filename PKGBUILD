@@ -2,7 +2,7 @@
 # 🔋 slskdn - The batteries-included Soulseek web client (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=0.24.5.slskdn.140
+pkgver=0.24.5.slskdn.141
 pkgrel=1
 pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
 arch=('x86_64' 'aarch64')
@@ -46,57 +46,46 @@ build() {
             return 1
             ;;
     esac
-    
-    # Build frontend (--legacy-peer-deps matches CI; resolves react-scripts vs typescript@5)
+
     cd src/web
     npm ci --legacy-peer-deps
     DISABLE_ESLINT_PLUGIN=true npm run build
     cd ../..
-    
-    # Build backend (not self-contained, uses system .NET)
-    # Clean obj/bin and publish so we get fresh 10.x binaries (not stale 8.x from previous build)
+
     rm -rf src/slskd/obj src/slskd/bin publish
-    # Set Version + InformationalVersion so UI shows correct version (not 0.0.0 / Development)
     _version="${pkgver//.slskdn/-slskdn}"
     _assembly_ver="${pkgver%.slskdn.*}.${pkgver##*.}"
-    dotnet publish src/slskd/slskd.csproj \
-        -c Release \
-        -o publish \
-        --self-contained false \
-        -r "${_rid}" \
-        -p:Version="$_assembly_ver" \
-        -p:InformationalVersion="$_version" \
-        -p:PackageVersion="$_version"
+    dotnet publish src/slskd/slskd.csproj         -c Release         -o publish         --self-contained false         -r "${_rid}"         -p:Version="$_assembly_ver"         -p:InformationalVersion="$_version"         -p:PackageVersion="$_version"
 }
 
 package() {
     cd "${srcdir}/slskdn-${pkgver//.slskdn/-slskdn}"
-    
-    # Install application to /usr/lib/slskd (same location as original slskd)
-    install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
-    cp -r publish/* "${pkgdir}/usr/lib/${_pkgname}/"
-    
-    # Install web assets
-    install -dm755 "${pkgdir}/usr/lib/${_pkgname}/wwwroot"
-    cp -r src/web/build/* "${pkgdir}/usr/lib/${_pkgname}/wwwroot/"
-    
-    # Make binary executable
-    chmod +x "${pkgdir}/usr/lib/${_pkgname}/slskd"
-    
-    # Create symlink /usr/bin/slskd -> /usr/lib/slskd/slskd
+
+    local app_root="${pkgdir}/usr/lib/${_pkgname}"
+    local release_root="${app_root}/releases/${pkgver}"
+
+    install -dm755 "${release_root}"
+    cp -r publish/* "${release_root}/"
+
+    install -dm755 "${release_root}/wwwroot"
+    cp -r src/web/build/* "${release_root}/wwwroot/"
+
+    chmod +x "${release_root}/slskd"
+    ln -sfn "releases/${pkgver}" "${app_root}/current"
+
+    cat > "${app_root}/slskd" <<'EOF'
+#!/bin/sh
+exec /usr/lib/slskd/current/slskd "$@"
+EOF
+    chmod 755 "${app_root}/slskd"
+
     install -dm755 "${pkgdir}/usr/bin"
     ln -sf "/usr/lib/${_pkgname}/slskd" "${pkgdir}/usr/bin/${_pkgname}"
-    
-    # Install systemd service as slskd.service
+
     install -Dm644 "${srcdir}/slskd.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-    
-    # Install sysusers config
     install -Dm644 "${srcdir}/slskd.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
-    
-    # Install default config to /etc/slskd/slskd.yml
     install -Dm644 "${srcdir}/slskd.yml" "${pkgdir}/etc/${_pkgname}/${_pkgname}.yml"
-    
-    # Create data directories at /var/lib/slskd
+
     install -dm755 "${pkgdir}/var/lib/${_pkgname}"
     install -dm755 "${pkgdir}/var/lib/${_pkgname}/downloads"
     install -dm755 "${pkgdir}/var/lib/${_pkgname}/incomplete"
