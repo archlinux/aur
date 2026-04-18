@@ -1,7 +1,7 @@
 # Maintainer: dan361 <daniel@m8t.io>
 pkgname=drg_mod_integration-git
 pkgver=0.2.10.r154.g57aa964
-pkgrel=2
+pkgrel=3
 pkgdesc="Deep Rock Galactic mod loader and integration tool"
 arch=('x86_64')
 url="https://github.com/trumank/mint"
@@ -26,8 +26,8 @@ makedepends=(
   'pkg-config'
   'mingw-w64-gcc'
 )
-provides=('drg_mod_integration-git' 'drg-mod-integration-bin')
-conflicts=('drg_mod_integration-git' 'drg-mod-integration-bin')
+provides=('drg_mod_integration-git' 'drg-mod-integration-bin' 'drg_mod_integration-notag-bin')
+conflicts=('drg_mod_integration-git' 'drg-mod-integration-bin' 'drg_mod_integration-notag-bin')
 source=(
   "${pkgname}::git+https://github.com/trumank/mint.git"
   "drg_mod_integration.desktop"
