@@ -1,5 +1,5 @@
 pkgname=nettui-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Unified TUI for Wi-Fi and Ethernet"
 arch=("x86_64")
@@ -9,7 +9,7 @@ options=("!debug")
 depends=("glibc" "gcc-libs")
 conflicts=("nettui" "nettui-git")
 source=("nettui-v${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/nettui-v${pkgver}-x86_64.tar.gz")
-sha256sums=("220f9b5262545e88a55c05291db92bf9586d50baf6863c216cf7e85a73efbb9a")
+sha256sums=("85180dc7e3308726d1e83c8a7c9a9f4860a281ecac8799d97bc6bc188d89587d")
 
 package() {
   local srcroot="${srcdir}/nettui-v${pkgver}-x86_64"
