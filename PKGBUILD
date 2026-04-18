@@ -5,20 +5,20 @@
 _pkgname=ConsoleKit2
 
 pkgname=consolekit
-pkgver=1.2.6
-pkgrel=5
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="A framework for defining and tracking users, login sessions, and seats"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/ConsoleKit2/ConsoleKit2"
-license=('GPL')
+license=(GPL-2.0-only)
 provides=('elogind')
 depends=('dbus' 'glib2' 'libx11' 'polkit-consolekit' 'udev' 'zlib' 'python3')
-makedepends=('acl' 'xmlto' 'docbook-xsl' 'python-setuptools' 'glib2-devel')
+makedepends=('acl' 'xmlto' 'docbook-xsl' 'python-setuptools' 'glib2-devel' 'gobject-introspection')
 options=('libtool')
 install=consolekit.install
 source=("$url/archive/refs/tags/$pkgver.tar.gz"
         'consolekit.tmpfiles.conf')
-sha256sums=('d41224129c5a689469ebd8fe87e34c4a76afdb7b2f6201eb246320262ea5a942'
+sha256sums=('f3f4a424f2a4fbb67696b4011caf2fd4c02e5e67c24ef1c86cecb2301bccdba4'
             '778552dc12b3c235bde200e476d4262da0c135f3f6f8b3e975a87881d1f154d1')
 
 build(){
@@ -39,7 +39,8 @@ build(){
         --with-xinitrc-dir=/etc/X11/xinit/xinitrc.d \
         --with-pam-module-dir=/usr/lib/security \
         --without-systemdsystemunitdir \
-        --disable-cgroups
+        --disable-cgroups \
+        --disable-dependency-tracking
 
 		make
 }
