@@ -17,7 +17,7 @@ pkgbase = colony-git
 	provides = colony
 	conflicts = colony
 	conflicts = colony-bin
-	source = git+https://github.com/Project-Colony/Colony.git
+	source = colony::git+https://github.com/Project-Colony/Colony.git
 	sha256sums = SKIP
 
 pkgname = colony-git
