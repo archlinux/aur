@@ -1,7 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: tee < teeaur at duck dot com >
 
-
 _pkgauthor=yamafaktory
 _pkgname=jql
 pkgname=${_pkgname}-bin
