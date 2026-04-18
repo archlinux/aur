@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=packet
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A Quick Share client for Linux"
 arch=('x86_64')
@@ -22,12 +22,12 @@ optdepends=(
   'python-dbus: needed for Nautilus extension'
 )
 source=("git+https://github.com/nozwock/packet.git#tag=$pkgver")
-sha256sums=('4d34845f96ea8601f48672cb549b8ca72c8b24066eaac0d31d4383e93d8fb242')
+sha256sums=('b2e8da892e63a4a435346fd7ea79b2be1a4d65efd927b3ca6a84fd87df2787c2')
 
 prepare() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target host-tuple
 }
 
 build() {
@@ -43,7 +43,7 @@ check() {
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
 
-  # Symlink Nautilus extension to exension directory
+  # Symlink Nautilus extension to extension directory
   install -d "$pkgdir/usr/share/nautilus-python/extensions"
   ln -s "/usr/share/$pkgname/plugins/packet_nautilus.py" \
     "$pkgdir/usr/share/nautilus-python/extensions/"
