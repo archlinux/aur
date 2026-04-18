@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=caffeine-ng
-pkgver=4.3.0
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="Status bar application able to temporarily inhibit the screensaver and sleep mode."
 arch=(any)
@@ -33,22 +33,23 @@ makedepends=(
 conflicts=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
 provides=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
 replaces=(caffeine-oneclick caffeine-systray)
-source=("https://codeberg.org/WhyNotHugo/caffeine-ng/releases/download/v${pkgver}/caffeine-ng-v${pkgver}.tar.gz")
-
-sha512sums=('f014e1a48f83f70000b4fefd05ddf48cc0a7777b06cb05f653653c45d0a84cdf037fad070d56023801ea29ecd89f326fccb30abf8609c9028200178fb032b094')
+#source=("https://codeberg.org/WhyNotHugo/caffeine-ng/releases/download/v${pkgver}/caffeine-ng-v${pkgver}.tar.gz")
+# As per AUR comment from upstream author, tagged versions can be considered "releases"
+source=("https://codeberg.org/WhyNotHugo/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('5b74773b53a76df431145dcc01466b3648f727e1d35cf6dde216e07b6b5a1ec97a7325f9f8c02bd188f5aa17b89aa55ce68bfb6b63a1e8bf4676383314749158')
 
 build() {
-  cd "$srcdir/caffeine-ng-v${pkgver}"
+  cd "$srcdir/caffeine-ng"
   arch-meson . build
   meson compile -C build
 }
 
 check() {
-  cd "$srcdir/caffeine-ng-v${pkgver}"
+  cd "$srcdir/caffeine-ng"
   meson test --no-rebuild --print-errorlogs -C build
 }
 
 package() {
-  cd "$srcdir/caffeine-ng-v${pkgver}"
+  cd "$srcdir/caffeine-ng"
   DESTDIR="$pkgdir" meson install --no-rebuild -C build
 }

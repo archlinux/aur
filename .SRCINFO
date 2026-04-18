@@ -1,6 +1,6 @@
 pkgbase = caffeine-ng
 	pkgdesc = Status bar application able to temporarily inhibit the screensaver and sleep mode.
-	pkgver = 4.3.0
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://codeberg.org/WhyNotHugo/caffeine-ng
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = caffeine-ng
 	conflicts = caffeine-systray
 	replaces = caffeine-oneclick
 	replaces = caffeine-systray
-	source = https://codeberg.org/WhyNotHugo/caffeine-ng/releases/download/v4.3.0/caffeine-ng-v4.3.0.tar.gz
-	sha512sums = f014e1a48f83f70000b4fefd05ddf48cc0a7777b06cb05f653653c45d0a84cdf037fad070d56023801ea29ecd89f326fccb30abf8609c9028200178fb032b094
+	source = https://codeberg.org/WhyNotHugo/caffeine-ng/archive/v4.3.2.tar.gz
+	sha512sums = 5b74773b53a76df431145dcc01466b3648f727e1d35cf6dde216e07b6b5a1ec97a7325f9f8c02bd188f5aa17b89aa55ce68bfb6b63a1e8bf4676383314749158
 
 pkgname = caffeine-ng
