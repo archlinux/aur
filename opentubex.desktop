@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=OpenTubeX
+GenericName=YouTube Player
+Comment=An open source desktop YouTube player based on FreeTube with extra features.
+Exec=opentubex %U
+Terminal=false
+Type=Application
+Icon=opentubex
+MimeType=x-scheme-handler/opentubex;
+Categories=Network;Video;
+Keywords=FreeTube;YouTube;YT;Video;Privacy;Invidious;
+X-KDE-Keywords=FreeTube;YouTube;YT;Privacy;Invidious;
+StartupNotify=true
+StartupWMClass=OpenTubeX
