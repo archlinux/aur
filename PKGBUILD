@@ -58,7 +58,7 @@ package() {
 
 	msg2 "Install README file"
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
-	ln -sf "/usr/lib/node_modules/${_npmname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	ln -sf "/usr/lib/node_modules/${_npmauthor}/${_npmname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	msg2 "Install LICENSE file"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
