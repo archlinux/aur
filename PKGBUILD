@@ -1,12 +1,12 @@
 # Maintainer: kobe-koto <k [at] koto [dot] cc>
 pkgname=archavenger-git
 _repo=Archavenger
-pkgver=0.0.1.r2.g8b99055
+pkgver=0.0.2.r3.g34ab49c
 pkgrel=1
 pkgdesc="Archavenger is a simple tool for cleaning up Arch Linux package repositories."
 arch=('any')
 url="https://github.com/kobe-koto/$_repo"
-license=('AGPL-3.0-only')
+license=('MIT')
 makedepends=('git')
 depends=(
   'bun'

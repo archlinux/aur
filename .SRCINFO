@@ -1,10 +1,10 @@
 pkgbase = archavenger-git
 	pkgdesc = Archavenger is a simple tool for cleaning up Arch Linux package repositories.
-	pkgver = 0.0.1.r2.g8b99055
+	pkgver = 0.0.2.r3.g34ab49c
 	pkgrel = 1
 	url = https://github.com/kobe-koto/Archavenger
 	arch = any
-	license = AGPL-3.0-only
+	license = MIT
 	makedepends = git
 	depends = bun
 	provides = archavenger
