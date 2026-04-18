@@ -2,7 +2,7 @@
 
 pkgname=asix-ax88179-dkms
 _pkgname="${pkgname%-*}"
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='A kernel module for ASIX AX88179B USB network adapters'
 url="https://www.asix.com.tw/en/product/USBEthernet/Super-Speed_USB_Ethernet/AX88179B"
@@ -12,24 +12,24 @@ arch=('any')
 
 _archivename="ASIX_USB_NIC_Linux_Driver_Source_v${pkgver}"
 source=(
-    "${_archivename}.tar.bz2::https://www.asix.com.tw/en/support/download/file/2089"
+    "${_archivename}.tar.bz2::https://www.asix.com.tw/en/support/download/file/2150"
     'dkms.conf'
     'modprobe.conf'
 )
 sha256sums=(
-    '9a08945f4d285c1751747edffc13d82b62044e9b3bc7d09831038207f348442f'
+    'fd650b715ee41d2a871e7a1c5ab5c42e01aa5a252cc9a4b4fcdb89f1287482b6'
     '280c3fd129bb3ac8b763e65dbbe7383ca795a435021f4c978a7f6b03d696b616'
     '652e3715724de0c1893ffbdfc48a66c7c09e82015429f10254869934dea40b55'
 )
 
 package() {
-    find -type f -exec chmod 644 {} +
+    find . -type f -exec chmod 644 {} +
 
     mkdir -p "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
     cp -pr "${_archivename}"/* "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
 
-    install -Dm644 ${srcdir}/dkms.conf "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
+    install -Dm644 "${srcdir}/dkms.conf" "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
     sed -e "s/@PKGVER@/${pkgver}/" -i "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
 
-    install -Dm644 ${srcdir}/modprobe.conf "${pkgdir}/usr/lib/modprobe.d/${_pkgname}.conf"
+    install -Dm644 "${srcdir}/modprobe.conf" "${pkgdir}/usr/lib/modprobe.d/${_pkgname}.conf"
 }
