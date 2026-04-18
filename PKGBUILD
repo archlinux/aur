@@ -1,6 +1,6 @@
 pkgname=flypaper
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Externally bind or mark sockets on the fly'
 arch=('x86_64')
 url='https://codeberg.org/iguanajuice/flypaper'
@@ -19,11 +19,11 @@ depends=(
 
 build() {
 	cd "$pkgname"
-	meson setup -Dprefix="$pkgdir/usr" -Dsystemd=true build
+	meson setup -Dbuildtype=release -Dsystemd=true build
 	ninja -C build
 }
 
 package() {
 	cd "$pkgname"
-	ninja -C build install
+	DESTDIR="$pkgdir/usr" ninja -C build install
 }

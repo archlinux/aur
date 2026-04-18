@@ -1,7 +1,7 @@
 pkgbase = flypaper
 	pkgdesc = Externally bind or mark sockets on the fly
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/iguanajuice/flypaper
 	arch = x86_64
 	license = GPL-3.0
