@@ -1,6 +1,6 @@
 pkgbase = fladder-git
 	pkgdesc = Fladder - A Simple Jellyfin Frontend
-	pkgver = r1445.4011b8c
+	pkgver = r1539.90bc47a
 	pkgrel = 1
 	url = https://github.com/Fladder-App/Fladder
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = fladder-git
 	depends = glibc
 	depends = mpv
 	depends = gtk3
+	depends = xdg-user-dirs
 	provides = fladder
 	conflicts = fladder
 	source = git+https://github.com/Fladder-App/Fladder.git#branch=develop

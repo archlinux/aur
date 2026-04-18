@@ -1,13 +1,13 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 pkgname=fladder-git
 _pkgname=Fladder
-pkgver=r1445.4011b8c
+pkgver=r1539.90bc47a
 pkgrel=1
 pkgdesc="Fladder - A Simple Jellyfin Frontend"
 arch=('x86_64')
 url="https://github.com/Fladder-App/Fladder"
 license=('GPL-3.0-or-later')
-depends=('glibc' 'mpv' 'gtk3')
+depends=('glibc' 'mpv' 'gtk3' 'xdg-user-dirs')
 makedepends=('patchelf' 'cmake' 'clang' 'base-devel' 'git' 'ninja' 'jq' 'curl')
 _branch="develop"
 source=("git+https://github.com/Fladder-App/Fladder.git#branch=${_branch}"
