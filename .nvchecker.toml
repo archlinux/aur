@@ -1,0 +1,5 @@
+[selfsync]
+source = "github"
+github = "loyalpartner/selfsync"
+prefix = "v"
+use_latest_tag = true

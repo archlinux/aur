@@ -1,0 +1,20 @@
+pkgbase = selfsync
+	pkgdesc = Self-hosted Chrome Sync server.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/loyalpartner/selfsync
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = protobuf
+	depends = glibc
+	depends = libgcc
+	depends = sqlite
+	source = selfsync-0.1.2.tar.gz::https://github.com/loyalpartner/selfsync/archive/refs/tags/v0.1.2.tar.gz
+	source = selfsync.service
+	source = selfsync-user.service
+	sha256sums = 8b1b3b65f4e685fd03ed944dd99206267daf076c1658b7227d7f041cd111d88a
+	sha256sums = 5011a12b92faf53af85ff81dea14383579b6f247b0ba8dcb59617c7e02b9049c
+	sha256sums = 1329f53ab77afa9168890f3530f1d76e4765c65a1f4584a168263b3b2dff7ea5
+
+pkgname = selfsync

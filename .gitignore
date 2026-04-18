@@ -1,0 +1,7 @@
+*
+!.nvchecker.toml
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!selfsync.service
+!selfsync-user.service
