@@ -1,3 +1,4 @@
+# Maintainer: Catalin Croitoru <dkdekatron@gmail.com>
 pkgname=t1161-driver-bin
 pkgver=0.1.1
 pkgrel=1
