@@ -3,7 +3,7 @@
 # Contributor: McNoggins <gagnon88 AT gmail DOT com>
 pkgname=ttwatch-git
 pkgver=20240107
-pkgrel=2
+pkgrel=3
 pkgdesc="TomTom GPS Watch Utilities"
 arch=('i686' 'x86_64')
 url="https://github.com/ryanbinns/ttwatch"
@@ -39,5 +39,6 @@ package() {
   cd "$pkgname"
   install -d "${pkgdir}/usr/bin"
   install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 -t "${pkgdir}/usr/lib/udev/rules.d/" "${srcdir}/${pkgname}/99-tomtom.rules"
   make install
 }
