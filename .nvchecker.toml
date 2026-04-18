@@ -1,0 +1,3 @@
+[netwatch-tui]
+source = "cratesio"
+cratesio = "netwatch-tui"
