@@ -14,9 +14,9 @@
 #
 # SOME MORE NOTES:
 #
-# This package is huge. The download alone is a 103GB tar (in SI units),
+# This package is huge. The download alone is a 105GB tar (in SI units),
 # and the final zstd-compressed package is another 65GB.
-# Reserve at least 375GB in total for building.
+# Reserve at least 384GB in total for building.
 #
 # It can also take several hours to build,
 # being mostly limited by I/O and single-thread performance.
@@ -30,9 +30,9 @@
 
 pkgname=vitis
 _srcname=FPGAs_AdaptiveSoCs_Unified_SDI
-_pkgver=2025.2  # used in install paths
+_pkgver=2025.2.1  # used in install paths
 pkgver=${_pkgver}
-_more_ver=1114_2157
+_more_ver=0320_0604
 pkgrel=1
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vitis.html"
@@ -53,7 +53,7 @@ depends=(
     'libsecret'                 # libsecret-1.so.0
     'libxcrypt-compat'          # needed by setup tools
     'ncurses5-compat-libs'      # albeit provided internally -- still needed?
-    'openssl-1.1'               # for DocNav
+    'openssl-1.1'               # formerly needed for DocNav, perhaps unneeded since v2025.2.1
     'unzip'                     # for Vitis
     'zip'                       # for Vitis
     ## The following are required but presumably satisfied indirectly:
@@ -116,7 +116,7 @@ source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar"
         'spoof_homedir.c')
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('5e793c6b88de5123a09f024253fc2527'
+md5sums=('11183f1b399d176a4ff4424a7c0603f5'
          '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
