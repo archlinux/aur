@@ -24,6 +24,8 @@ source=(
 noextract=(
   "${source[@]##*/}"
 )
+md5sums=('cbaf87a625615683e72b76c738a02dfe')
+sha1sums=('d9a173279ac1a912279da0f3d4cb2c38ac0478dc')
 sha256sums=('67e008e1ee6c164e711ababbbbddc0848e137b2fe73923f08c7b8b96bdff8c70')
 
 prepare() {
