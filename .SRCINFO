@@ -1,6 +1,6 @@
 pkgbase = codex-native-git
 	pkgdesc = Native Linux Codex desktop shell built with Rust, GTK, WebKitGTK, and Codex CLI
-	pkgver = r0.0
+	pkgver = r10.b793b07
 	pkgrel = 1
 	url = https://github.com/Redminote11tech/Codex-Native
 	arch = x86_64
