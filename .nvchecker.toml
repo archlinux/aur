@@ -1,0 +1,5 @@
+[rdr-bin]
+source = "github"
+github = "iRootPro/rdr"
+use_latest_release = true
+prefix = "v"
