@@ -2,26 +2,25 @@
 pkgname=zipsign
 pkgdesc='A tool to sign and verify .zip and .tar.gz files with an ed25519 signing key'
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://crates.io/crates/${pkgname}"
 license=('MIT OR Apache-2.0 OR Apache-2.0 WITH LLVM-exception')
 makedepends=('cargo')
 depends=('libgcc' 'glibc')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Kijewski/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('909b6828e0416644cfbd2c83c83b809948b7acb38cdc3293b8d1489b7ecc661c')
+source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
+sha256sums=('bc5d02b6a44b677c4c412fca9eb5c9b08f255692b30f6943248437b6add1f5c6')
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver/cli"
+    cd "$srcdir/$pkgname-$pkgver"
 
     export RUSTUP_TOOLCHAIN=stable
 
-    # can't use --locked here because upstream doesn't publish lockfiles
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver/cli"
+    cd "$srcdir/$pkgname-$pkgver"
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
@@ -30,7 +29,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver/cli"
+    cd "$srcdir/$pkgname-$pkgver"
 
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname/"
