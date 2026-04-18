@@ -19,7 +19,7 @@
 
 pkgname=uyap-editor-bin
 pkgver=5.4.16
-pkgrel=2
+pkgrel=3
 pkgdesc='UYAP Document and Template Editor (Turkish judicial system)'
 arch=('x86_64')
 url='https://uyap.gov.tr/UYAP-Editor'
@@ -27,6 +27,8 @@ license=('LicenseRef-UYAP')
 depends=(
     'java-runtime<=11'
     'pcsclite'
+    'akia'
+    'cups'
     'bash'
     'hicolor-icon-theme'
     'shared-mime-info'
