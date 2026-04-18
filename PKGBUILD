@@ -1,4 +1,4 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: Garrett Stewart <zero@gr-p.com>
 pkgname=deadsync-git
 pkgdesc='ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync (git)'
 url='https://github.com/pnn64/deadsync'
