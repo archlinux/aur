@@ -47,7 +47,7 @@ info "pkgrel: $current_pkgrel → $new_pkgrel"
 
 # 4. 同步 .SRCINFO，避免 AUR 前端和 AUR helper 读到过期元数据
 step "更新 .SRCINFO..."
-makepkg --printsrcinfo > .SRCINFO
+makepkg --printsrcinfo >.SRCINFO
 
 # 5. 构建并安装
 step "构建并安装..."
@@ -80,4 +80,3 @@ echo "  更新后建议运行诊断:"
 echo "    sudo mimictl diagnose --verbose"
 echo ""
 echo "================================================================================"
-}
