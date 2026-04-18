@@ -1,7 +1,7 @@
 pkgbase = build2
 	pkgdesc = build2 build system
-	pkgver = 0.17.0
-	pkgrel = 2
+	pkgver = 0.18.1
+	pkgrel = 1
 	url = https://build2.org/
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = build2
 	depends = libgcc
 	depends = libstdc++
 	depends = sqlite
-	source = https://download.build2.org/0.17.0/build2-toolchain-0.17.0.tar.xz
-	sha256sums = 3722a89ea86df742539d0f91bb4429fd46bbf668553a350780a63411b648bf5d
+	source = https://download.build2.org/0.18.1/build2-toolchain-0.18.1.tar.xz
+	sha256sums = a5f3eab9d4522bc22704899593dd6c7013349a1b8c37278c8b2321073e25ff16
 
 pkgname = build2
