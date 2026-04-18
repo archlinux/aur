@@ -1,13 +1,13 @@
 # Maintainer: Evan Chen <evan@evanchen.cc>
 
 pkgname=borse
-pkgver=0.6.1
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Practice braille, Morse, semaphore.'
 arch=(any)
 url=https://github.com/vEnhance/borse
 license=(MIT)
-depends=(python python-tomli-w)
+depends=(python python-tomli-w python-pyperclip)
 makedepends=(python-hatchling)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
   LICENSE)
@@ -21,5 +21,5 @@ package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
-sha256sums=('7bd1c6e340edde6a033d79688fa5797fd926646c8480d12ec89028285439372c'
+sha256sums=('a3c0ac9f167d53de8d0ad24b59ca87a646466bdfe7e993f7a00934e59d3e561a'
             '82af9d0f8e6e2acd6c36b1426eb1d70bc3e9b16a126ae20fcd4f8d1101e64c47')
