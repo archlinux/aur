@@ -18,7 +18,7 @@ ac_add_options --disable-debug
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-updater
 ac_add_options --with-pthreads
-ac_add_options --disable-npapi
+#ac_add_options --disable-npapi
 
 ac_add_options --x-libraries=/usr/lib
 
