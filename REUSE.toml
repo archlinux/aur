@@ -1,0 +1,17 @@
+# REUSE.toml — license metadata for this AUR packaging repository.
+# This repository contains only Arch Linux packaging files and is
+# licensed under 0BSD per Arch packaging guidelines.
+# The upstream software (fafind) remains MIT licensed.
+# See: https://reuse.software/spec/
+
+version = 1
+
+[[annotations]]
+path = ["PKGBUILD", ".SRCINFO"]
+SPDX-FileCopyrightText = "Ryan Wilson <ryan@ryanwilson.io>"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = ["LICENSE"]
+SPDX-FileCopyrightText = "Ryan Wilson <ryan@ryanwilson.io>"
+SPDX-License-Identifier = "0BSD"
