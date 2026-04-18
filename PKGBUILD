@@ -30,7 +30,7 @@ pkgver() {
 build() {
     cd "$srcdir/Mimic-Node"
     export RUSTUP_TOOLCHAIN=stable
-    cargo build --release --frozen --all-features
+    cargo build --release --all-features
 }
 
 check() {
