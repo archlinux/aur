@@ -3,9 +3,9 @@
 pkgname='python-flashinfer-rocm'
 _pkgname='flashinfer'
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-pkgdesc='ROCm port of FlashInfer'
+pkgdesc='ROCm port of FlashInfer (CDNA3+)'
 url="https://github.com/ROCm/flashinfer"
 license=('Apache-2.0')
 provides=('python-flashinfer')
@@ -30,15 +30,15 @@ optdepends=(
 )
 
 source=(
-	"${url}/archive/refs/tags/v${pkgver}+amd.1.tar.gz"
+	"${url}/archive/refs/tags/v${pkgver}+amd.${pkgrel}.tar.gz"
 )
 sha256sums=(
-	'c6b72c9e37627bcb3f34b3d7f488f5754320c99d081bfc53e457df9aac39cc7f'
+	'f83eb02af3cbec2c757a093a7b308dd814b5e6901dcc2308070a4b3172ec9f76'
 )
 
 prepare() {
 	cd ${_pkgname}-${pkgver}-amd.${pkgrel}
-#	cmake -B _skbuild .
+#	cmake -B build .
 }
 
 build() {
