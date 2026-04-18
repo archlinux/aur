@@ -1,8 +1,8 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-bin
-pkgver=2.0.10
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/ZoeyErinBauer/Shelly-ALPM"
@@ -20,6 +20,7 @@ depends=(
     'hicolor-icon-theme'
     'dbus'
     'glibc'
+    'libarchive'
 )
 optdepends=(
     'flatpak: For supporting flatpak implementation.'
@@ -31,7 +32,7 @@ source=(
     "Shelly-ALPM-linux-x64-${pkgver}.tar.gz::https://github.com/ZoeyErinBauer/Shelly-ALPM/releases/download/v${pkgver}/Shelly-ALPM-linux-x64.tar.gz"
 )
 
-sha256sums=('4d0df63ee9c7afc5d41bf88211b5c8e98d133ca028c53d18f13d72aac2c400f1')
+sha256sums=('ae38bb6af0a2170595425a38aae0ab7f326013f25899d795575686dab8e352fa')
 
 package() {
   # Install Shelly.Gtk binary
