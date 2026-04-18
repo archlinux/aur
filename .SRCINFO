@@ -1,0 +1,17 @@
+pkgbase = flatten
+	pkgdesc = Rust CLI and library for exporting a project tree into one deterministic representation
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/fabifont/flatten
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	conflicts = flatten-git
+	conflicts = flatten-bin
+	source = flatten-0.2.0.tar.gz::https://github.com/fabifont/flatten/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 197ea27f97a33a10b44af2583e45db9b4c7770cbe819eeb38346db8d57efbfbc
+	b2sums = 5521a218adfff312ab3597b0d1b2f8c784e158008302cc60539552df99a72dc7d09b4082edcbdf382bb690fe724717c30a97c8577728f9cd6a2efb5b8b4229f6
+
+pkgname = flatten
