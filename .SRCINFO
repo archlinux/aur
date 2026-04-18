@@ -1,0 +1,16 @@
+pkgbase = tinyserve
+	pkgdesc = Minimal multi-worker HTTP server built on libuv (static files + reverse proxy)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Derrity/TinyServe
+	install = tinyserve.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = libuv
+	source = tinyserve-0.3.0.tar.gz::https://github.com/Derrity/TinyServe/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = a7ead0dc497f888311170dcf6a00cd67f6cf3623aeae85e2a5c34c5135e14f58
+
+pkgname = tinyserve

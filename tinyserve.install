@@ -1,0 +1,26 @@
+post_install() {
+    cat <<EOF
+==> tinyserve installed.
+
+  Quick start (static file server):
+    mkdir -p /var/www/tinyserve && echo "hello" > /var/www/tinyserve/index.html
+    sudo systemctl enable --now tinyserve
+    curl http://localhost:8000/
+
+  The systemd unit uses DynamicUser=yes plus a hardening sandbox
+  (ProtectSystem=strict, NoNewPrivileges, RestrictNamespaces, etc).
+  To override defaults (port, root dir, workers):
+    sudo systemctl edit tinyserve
+  and set, for example:
+    [Service]
+    ExecStart=
+    ExecStart=/usr/bin/tinyserve -a 0.0.0.0 -p 8080 -d /srv/http -j 4
+
+  Manual run:    tinyserve -h
+  Documentation: man tinyserve
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
