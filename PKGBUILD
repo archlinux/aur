@@ -27,8 +27,9 @@ prepare() {
 
     local _elver=$(cat /usr/lib/electron/version)
     echo -n Replacing $(cat package.json | grep '"electron":')
-    npm pkg set devDependencies.electron=${_elver} 2>/dev/null
+    npm pkg set devDependencies.electron=${_elver}
     echo with $(cat package.json | grep '"electron":')
+    npm pkg set build.linux.target='["dir"]' --json
 
     pnpm install --ignore-scripts --no-frozen-lockfile
 }
