@@ -3,7 +3,7 @@
 
 pkgname='python-pygad'
 _name='pygad'
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=2
 pkgdesc="A Python 3 Library for Building the Genetic Algorithm and Training Machine Learning Algorithms"
 url="https://github.com/ahmedfgad/GeneticAlgorithmPython"
@@ -24,7 +24,7 @@ checkdepends=(
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('18c5b7ad274375206d7b78adc63fc9725a2d655b90c8296e14cc03c0f535797e')
+sha256sums=('9b36d9deeb779f124f39a975d19a02a60c8967d4105a67cc3ec5b3a99ac86e35')
 
 build() {
   cd "$_name-$pkgver"
