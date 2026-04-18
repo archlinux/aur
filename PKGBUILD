@@ -2,7 +2,7 @@
 # 🔋 slskdn - The batteries-included Soulseek web client
 pkgname=slskdn-bin
 _pkgname=slskd
-pkgver=0.24.5.slskdn.140
+pkgver=0.24.5.slskdn.141
 pkgrel=1
 pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
 arch=('x86_64')
@@ -32,10 +32,13 @@ source=(
 sha256sums=('SKIP' '9724a9ad5790fa011868c3777cbdb9e41224c3b612e7c47990c524f8659ab278' '6d60a8a8ec79b1df0f5839e9a5ba8a77a021cc457fa138a62b58f4321b3a16df' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056')
 
 package() {
-    # Install application to /usr/lib/slskd (same location as original slskd)
-    install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
-    
-    # Copy all files from zip except our packaging files
+    local app_root="${pkgdir}/usr/lib/${_pkgname}"
+    local release_root="${app_root}/releases/${pkgver}"
+
+    install -dm755 "${release_root}"
+
+    # Keep the public /usr/lib/slskd surface stable, but isolate the release payload
+    # beneath a managed versioned subdirectory so stale root files do not block upgrades.
     for f in "${srcdir}"/*; do
         fname=$(basename "$f")
         case "$fname" in
@@ -43,28 +46,27 @@ package() {
                 continue
                 ;;
             *)
-                cp -r "$f" "${pkgdir}/usr/lib/${_pkgname}/"
+                cp -r "$f" "${release_root}/"
                 ;;
         esac
     done
-    
-    # Make binary executable
-    chmod +x "${pkgdir}/usr/lib/${_pkgname}/slskd"
-    
-    # Create symlink /usr/bin/slskd -> /usr/lib/slskd/slskd
+
+    chmod +x "${release_root}/slskd"
+    ln -sfn "releases/${pkgver}" "${app_root}/current"
+
+    cat > "${app_root}/slskd" <<'EOF'
+#!/bin/sh
+exec /usr/lib/slskd/current/slskd "$@"
+EOF
+    chmod 755 "${app_root}/slskd"
+
     install -dm755 "${pkgdir}/usr/bin"
     ln -sf "/usr/lib/${_pkgname}/slskd" "${pkgdir}/usr/bin/${_pkgname}"
-    
-    # Install systemd service as slskd.service
+
     install -Dm644 "${srcdir}/slskd.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-    
-    # Install sysusers config
     install -Dm644 "${srcdir}/slskd.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
-    
-    # Install default config to /etc/slskd/slskd.yml (only if not exists - backup handles upgrades)
     install -Dm644 "${srcdir}/slskd.yml" "${pkgdir}/etc/${_pkgname}/${_pkgname}.yml"
-    
-    # Create data directories at /var/lib/slskd
+
     install -dm755 "${pkgdir}/var/lib/${_pkgname}"
     install -dm755 "${pkgdir}/var/lib/${_pkgname}/downloads"
     install -dm755 "${pkgdir}/var/lib/${_pkgname}/incomplete"
