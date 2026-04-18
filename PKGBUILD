@@ -114,12 +114,14 @@ source=(
   git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
   0001-Add-av_stream_get_first_dts-for-Chromium.patch
   0002-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
+  0003-avcodec-libsvtav1-rename-aq_mode-for-v4.0.0.patch
   fix_build_with_v4l2_1.30.patch
   chore-Add-nonfree-libndi_newtek-device.patch
 )
 b2sums=('c7b1a56593f123de8e18b3b93c81dca4aff439f5701935cc1fe6316543e8c3256acd7f95b4a533eb7ba30e346fa13bf0ad5bff54b7822c088ef3939882416a7c'
         'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d'
         'a32aeff68032a78d661011654bbdba138002833f7d17d23bba6f95479ca22bef5697eb9e7e4cb9e0b5140fc23eab3aab16fc60962d62809c3c02f890599a8332'
+        'a004d7b7b021e82ae01e9fd171c4cd2901bb1348aafa8ec2256f38c967521cdb947c01b8b6872b6076fc0ee96bf296992abfecb5446a83eb8c052b976851948a'
         'a713b3a4243cc5de3867f7c210172c094f50bd614c0c8be2c99d6161b06d43d9183ae9c442ac3056bfe06c28419e276d129b1235471466eedd340bf0c4780acb'
         'deb68ec424eecee1726014f76823486c053f4fa53585bf90192ec935d5e01148577b1abfe3723bcc6d48dc32aeb43872ab3c1ae95ecd1d69c411d2176a3eae85')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
@@ -139,7 +141,7 @@ prepare() {
   # Taken from https://github.com/FFmpeg/FFmpeg/commit/d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95.patch
   git apply -3 ../0002-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
 
-
+  git apply -3 ../0003-avcodec-libsvtav1-rename-aq_mode-for-v4.0.0.patch
   # VAAPI HEVC encode alignment fix
   git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47
   git cherry-pick -n d0facac679faf45d3356dff2e2cb382580d7a521
