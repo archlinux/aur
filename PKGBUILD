@@ -1,19 +1,41 @@
-# Maintainer: Lahfa Samy (AkechiShiro) <'akechishiro-aur' at the domain 'lahfa.xyz'>
+# Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
+# Contributor: Lahfa Samy (AkechiShiro) <'akechishiro-aur' at the domain 'lahfa.xyz'>
 # Contributor: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 pkgname=python-pwntools-git
-pkgver=4.9.0beta0.r1.g7f5866ab
+pkgver=4.15.0.r124.gee49a2be
 pkgrel=1
-pkgdesc='A CTF framework and exploit development library. (git branch dev)'
+pkgdesc='A CTF framework and exploit development library'
 url='https://github.com/Gallopsled/pwntools'
 arch=('any')
-license=('GPL')
-makedepends=('make' 'git')
+license=('BSD-2-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT')
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+)
 conflicts=('python-pwntools')
-depends=('python' 'python-intervaltree' 'python-pyelftools' 'python-tox' 'python-mako'
-         'python-unicorn-git' 'python-psutil' 'python-dateutil' 'python-pysocks' 'python-pygments'
-         'python-pip' 'python-pyserial' 'python-paramiko' 'ropgadget' 'python-capstone'
-         'python-requests' 'python-psutil' 'python-packaging' 'python-rpyc' 'python-colored-traceback')
-optdepends=('gdb: binary debugging')
+depends=(
+  'python'
+  'python-capstone'
+  'python-colored-traceback'
+  'python-intervaltree'
+  'python-mako'
+  'python-packaging'
+  'python-paramiko'
+  'python-psutil'
+  'python-pyelftools'
+  'python-pygments'
+  'python-pyserial'
+  'python-pysocks'
+  'python-requests'
+  'python-rpyc'
+  'python-sortedcontainers'
+  'python-unicorn'
+  'python-zstandard'
+  'ropgadget'
+)
+optdepends=('gdb: binary debugging'
+            'python-dateutil: Android build date fallback parsing')
 source=("${pkgname}::git+https://github.com/Gallopsled/pwntools.git#branch=dev")
 sha256sums=('SKIP')
 provides=('python-pwntools')
@@ -24,18 +46,33 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd ${pkgname}
-}
-
 build() {
   cd ${pkgname}
-  python3 setup.py build
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+  cd ${pkgname}
+  python -m installer --destdir=test_dir dist/*.whl
+
+  PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH" PWNLIB_NOTERM=true python -c 'import pwn'
 }
 
 package() {
   cd ${pkgname}
-  python3 setup.py install --root=${pkgdir}/ --optimize=1
-  install -D -m 644 LICENSE-pwntools.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  rm -f ${pkgdir}/usr/lib/python*/site-packages/*.{txt,md}
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  find "${pkgdir}/usr/bin" -type f ! -name pwn -delete
+
+  install -Dm 644 LICENSE-pwntools.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  # https://github.com/Gallopsled/pwntools/issues/2150
+  install -d "${pkgdir}/usr/share/doc/"
+  mv -v "${pkgdir}/usr/pwntools-doc" "${pkgdir}/usr/share/doc/"
+
+  install -Dm 644 extra/bash_completion.d/pwn -t  "${pkgdir}/usr/share/bash-completion/completions/"
+  install -Dm 644 extra/zsh_completion/_pwn -t "${pkgdir}/usr/share/zsh/site-functions/"
+
+  install -Dm 644 LICENSE-pwntools.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
