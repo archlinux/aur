@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Archavenger is a simple tool for cleaning up Arch Linux package repositories. (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/kobe-koto/archavenger"
-license=('AGPL-3.0-only')
+license=('MIT')
 depends=(
   'bun'
 )
