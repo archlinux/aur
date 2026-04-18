@@ -3,12 +3,12 @@ pkgbase = quad
 	pkgver = 1.12
 	pkgrel = 7
 	url = https://quad.sourceforge.net
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = LGPL-2.1-or-later
 	depends = glibc
-	noextract = quad-1.12.zip
-	source = quad-1.12.zip::https://downloads.sourceforge.net/sourceforge/quad/quad112src.zip
+	noextract = quad112src.zip
+	source = https://downloads.sourceforge.net/sourceforge/quad/quad112src.zip
 	sha256sums = 67e008e1ee6c164e711ababbbbddc0848e137b2fe73923f08c7b8b96bdff8c70
 
 pkgname = quad
