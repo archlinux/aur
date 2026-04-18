@@ -2,16 +2,16 @@ pkgbase = nordvpn-tui-bin
 	pkgdesc = Keyboard-first terminal UI for NordVPN on Linux
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/simonwa01/nordvpn-tui
+	url = https://github.com/simonwinther/nordvpn-tui
+	arch = aarch64
+	arch = x86_64
 	license = MIT
 	depends = nordvpn
-	conflicts = nordvpn-tui
 	provides = nordvpn-tui
-	arch = aarch64
-	source_aarch64 = https://github.com/simonwinther/nordvpn-tui/releases/download/v0.1.0/nordvpn-tui_0.1.0_linux_arm64.tar.gz
+	conflicts = nordvpn-tui
+	source_aarch64 = nordvpn-tui-bin_0.1.0_aarch64.tar.gz::https://github.com/simonwinther/nordvpn-tui/releases/download/v0.1.0/nordvpn-tui_0.1.0_linux_arm64.tar.gz
 	sha256sums_aarch64 = dd45cb4c3aa09269f0861c06ca67ce1ef4b9c979166e7aeccc8be3a9837f4bec
-	arch = x86_64
-	source_x86_64 = https://github.com/simonwinther/nordvpn-tui/releases/download/v0.1.0/nordvpn-tui_0.1.0_linux_amd64.tar.gz
+	source_x86_64 = nordvpn-tui-bin_0.1.0_x86_64.tar.gz::https://github.com/simonwinther/nordvpn-tui/releases/download/v0.1.0/nordvpn-tui_0.1.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = dda52009790cc9996b597bcdd935e7c0a84b139948949dbb4d832d40c37962d2
-	
+
 pkgname = nordvpn-tui-bin
