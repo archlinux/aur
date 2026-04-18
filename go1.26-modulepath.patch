@@ -1,0 +1,20 @@
+Backport upstream fix: implement TestDeps.ModulePath() for Go 1.26
+
+Go 1.26 added ModulePath() to the testing.testDeps interface. v0.2.14
+predates Go 1.26; upstream main already ships this stub.
+
+Upstream: https://github.com/kyverno/chainsaw/blob/main/pkg/runner/internal/test_deps.go
+
+--- a/pkg/runner/internal/test_deps.go	2025-12-08 20:22:44.000000000 +0900
++++ b/pkg/runner/internal/test_deps.go
+@@ -46,6 +46,10 @@
+ 	return ""
+ }
+ 
++func (*TestDeps) ModulePath() string {
++	return ""
++}
++
+ func (*TestDeps) StartTestLog(w io.Writer) {}
+ 
+ func (*TestDeps) StopTestLog() error {
