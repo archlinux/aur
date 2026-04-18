@@ -4,7 +4,7 @@
 pkgname=clash-party-bin
 _pkgname=clash-party
 _realname=mihomo-party
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="A Clash client with party features (Rebranded as Mihomo Party)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ options=('!strip')
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-${pkgver}-amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-${pkgver}-arm64.deb")
 
-sha256sums_x86_64=('0031728acd7f040ee4b0cd2e391ba904132e068b3d7cb7a36eb16cffc9fde3ad')
-sha256sums_aarch64=('a4089194baff0c5a0edb93d9315fbcc864e1968521f70594c1a86101154bab92')
+sha256sums_x86_64=('4024c8b61782bf9f681af6d3fc2c0afc46cc37ea6234eed2e5fd0b7893cb8127')
+sha256sums_aarch64=('39ae633fe94b15856744ce998b8ef283b724ea3f28a69c5883e898289f869cbb')
 
 package() {
     bsdtar -xf data.tar.* -C "$pkgdir/"
