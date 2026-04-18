@@ -1,0 +1,16 @@
+pkgbase = runrat
+	pkgdesc = Tray system activity monitor with a running rat
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/Lolretrorat/runrat
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = gtk3
+	depends = libayatana-appindicator
+	source = runrat-1.0.3.tar.gz::https://github.com/Lolretrorat/runrat/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 6300a9d7b3acfb5187ada99611b2ca07f809f6f95ae77aab121208ba72032bc3
+
+pkgname = runrat
