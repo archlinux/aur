@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname="plasticity-bin"
-pkgver=26.1.0
+pkgver=26.1.1
 pkgrel=1
 pkgdesc="3D modeling software for concept artists"
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=(
   "https://github.com/nkallen/plasticity/releases/download/v${pkgver}/plasticity_${pkgver}_amd64.deb"
   "https://raw.githubusercontent.com/nkallen/plasticity/refs/tags/v${pkgver}/LICENSE"
 )
-sha512sums=('4f29d976af7af6003dfc25f37d3937a631eba096d9f9d8882267e9378b582fddd25f56039dbc153de65af60d164d909b7b779f0372b6118cbd66f38f36d3d312'
+sha512sums=('798a1c8901a208ce9b2f8770f1639c28d23af2549efa3088201c7b80b80e881823aa5685724a1901afd30f7439e5c9b2456eb0f31e1e79446d609ca8f3a4946c'
             '1fbd6b24b4022331307ee3b8266fc6eee956238b5854633071848c145a044127f6d6eadc8c07c288c4dcd16c0de10e933ff21c5d8c715c273902cdeffded4bcd')
 options=(!strip)
 
