@@ -1,7 +1,7 @@
 pkgbase = mimic-node-git
 	pkgdesc = A stealthy, systemless sing-box node manager (Rust implementation)
 	pkgver = r78.c427d5b
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/LIghtJUNction/Mimic-Node
 	install = mimic-node.install
 	arch = x86_64
