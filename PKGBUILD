@@ -8,7 +8,7 @@
 
 _name=foundryvtt
 pkgname=foundryvtt-server
-pkgver=14.359
+pkgver=14.360
 pkgrel=1
 pkgdesc="A self-hosted and modern roleplaying platform. node.js/systemd version."
 arch=('any')
@@ -21,7 +21,7 @@ source=("FoundryVTT-Node-${pkgver}.zip::local://FoundryVTT-Node-${pkgver}.zip"
         "foundryvtt.service"
         "foundryvtt.sysusers"
         "foundryvtt.tmpfiles")
-sha256sums=('4074624c64291de51405305522f362b49d653fa46fb0f4c1646879a32a5d3c00'
+sha256sums=('abb8a2736de0bbd1383d858f56b52829b5ee2d7fdbc42638f6016a732f3958ad'
             'fe5ccf362d2dda46f9dd181a0ce277b1800dcd401f4c4743b7c3b1bdfa3b76b3'
             '4397966e1d0160e83991953be98b0f765142a197d16e3437a8750a979b398691'
             'eda9e8fa3b459b4d61ff50c3d0fe15ff37dbd00c75522dc3d24ff1d2a4220ad8')
