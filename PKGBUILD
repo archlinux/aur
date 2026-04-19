@@ -4,11 +4,11 @@ _pkgname="meshcore"
 pkgname="${_pkgname}-bin"
 ## For up to date releases, see https://files.liamcottle.net/MeshCore/.
 ## Upstream versioning: e.g. `1.40.0+64-1abed0d` -- break down the individual elements to reference them later, too.
-_releasever=1.42.0
-_buildno=67
-_githash=5a3c5f1
+_releasever=1.43.0
+_buildno=68
+_githash=e843bd6
 pkgver="${_releasever}${_buildno:++"${_buildno}"}.g${_githash}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Closed source reference companion app by Liam Cottle for MeshCore, a LoRa text messaging protocol."
 groups=('meshcore')
 arch=(
@@ -74,7 +74,7 @@ source=(
   "license-info.md"
 )
 sha256sums=(
-  '8fe2a18d63041b804b39761f7449a4c2db58d1f50219d7e0a94a4807780d3c73'  # Binary software package.
+  '6f2b967130cfb225ef445a5f4243ee1b51ab9a2f3114e33d6e83405319259034'  # Binary software package.
   'a8bcb2a147746b1b0a3879220f5d55aac79c6b5f2b100fbc6b1ccea6c9946ca7'  # MeshCore_Quick_Start_Guide.pdf
   '3c212412360ca59e73a11af24b85db2d5414f2d5851f1a60267fca701077c921'  # meshcore.desktop
   '138cfaf059ef5c3fb860d3132291570179bf74cb77e1aaa7927fa766a93ad957'  # license-info.md
