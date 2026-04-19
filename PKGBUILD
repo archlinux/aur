@@ -3,11 +3,11 @@
 _pkgname=goosestation-libretro
 _upstream_commit=5e7be496a2d0480aaabbe9746a1a4576b469d301
 _duckstation_srcdir="duckstation-${_upstream_commit}"
-_overlay_commit=4caba809e33196a9c2c7bf4040ecec5f5a690bb2
+_overlay_commit=7cc64e1cb99d4636565132d5ac45e39afc279af9
 _overlay_raw="https://codeberg.org/hueponik/goosestation-overlay/raw/commit/${_overlay_commit}/games-emulation/goosestation-libretro/files"
 pkgname=${_pkgname}
 pkgver=0+git.${_upstream_commit:0:9}
-pkgrel=7
+pkgrel=8
 pkgdesc='Sony PlayStation libretro core based on goosified DuckStation'
 arch=('x86_64' 'aarch64')
 url='https://codeberg.org/hueponik/goosestation-overlay'
@@ -20,6 +20,8 @@ depends=(
   'libwebp'
   'libzip'
   'plutosvg'
+  'shaderc'
+  'spirv-cross'
   'systemd-libs'
   'vulkan-icd-loader'
   'zlib'
@@ -30,8 +32,6 @@ makedepends=(
   'ed'
   'git'
   'pkgconf'
-  'shaderc'
-  'spirv-cross'
   'vulkan-headers'
 )
 
@@ -42,7 +42,7 @@ source=(
   "goosify.sh::${_overlay_raw}/goosify.sh"
 )
 sha256sums=('5ba5c07c054b3b005d82aeafdc46803fc9e2af77a591d3577b64b0a1086792d7'
-            '9058a3cc4b90425099b4ca4ec727043d4ec6198e22a6e3e981a13bef49ceaba5')
+            'f1aebf1fed5f14efef768f1e2789de0d03506c7fa19a983510ea157c0b1cc0bc')
 
 prepare() {
   cd "duckstation-${_upstream_commit}"
@@ -57,11 +57,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_DISABLE_PRECOMPILE_HEADERS=OFF \
-    -DBUILD_LIBRETRO=ON \
-    -DBUILD_REGTEST=OFF \
-    -DBUILD_TESTS=OFF \
-    -DENABLE_OPENGL=ON \
-    -DENABLE_VULKAN=ON \
     -DCMAKE_MODULE_PATH="${srcdir}/${_duckstation_srcdir}/cmake" \
     -DCMAKE_PREFIX_PATH="${srcdir}/${_duckstation_srcdir}/cmake" \
     -DCMAKE_CXX_FLAGS="-Wno-invalid-offsetof" \
