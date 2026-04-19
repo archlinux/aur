@@ -1,0 +1,18 @@
+post_install() {
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+    echo "════════════════════════════════════════════════"
+    echo "  Victus 16 Keyboard RGB Controller kuruldu!"
+    echo "  Uygulama menüsünden veya terminalde:"
+    echo "    victus16-keyboard"
+    echo "  komutuyla çalıştırabilirsiniz."
+    echo "════════════════════════════════════════════════"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+    echo "Victus 16 Keyboard Controller kaldırıldı."
+}
