@@ -1,6 +1,6 @@
 # Maintainer: Garrett Stewart <zero@gr-p.com>
 pkgname=deadsync
-pkgdesc='ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync and competitive-level performance'
+pkgdesc='ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync and competitive-level performance - from release source'
 url='https://github.com/pnn64/deadsync'
 license=('MIT')
 arch=('x86_64' 'aarch64')
