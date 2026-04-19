@@ -1,6 +1,6 @@
 pkgbase = memos-bin
 	pkgdesc = A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts.
-	pkgver = 0.27.0
+	pkgver = 0.27.1
 	pkgrel = 1
 	url = https://github.com/usememos/memos
 	install = memos-bin.install
@@ -21,11 +21,11 @@ pkgbase = memos-bin
 	sha256sums = eaf0d053c5673176c730085493db4d63b15e212e101fc02c9f9236f8f91abf20
 	sha256sums = ed17b9db8aadd8518a3da01e45b5445a819bdb0f7ccd8bc1acc9f52cc02964fc
 	sha256sums = 814427de1a8fcf9b6e10b184a812ca61b8a82c1901ab61675fb8d9f2cdd99493
-	source_x86_64 = memos-0.27.0-x86_64.tar.gz::https://github.com/usememos/memos/releases/download/v0.27.0/memos_0.27.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2fb1e804a553f5d1dedde3264d39a94cbec064ff685a94da3abedde3ac0b1800
-	source_aarch64 = memos-0.27.0-aarch64.tar.gz::https://github.com/usememos/memos/releases/download/v0.27.0/memos_0.27.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = f1eef3e77c12be459fdc02fc7e1c1962d82461ca65a3c45a4cee0c1ea343c598
-	source_armv7h = memos-0.27.0-armv7h.tar.gz::https://github.com/usememos/memos/releases/download/v0.27.0/memos_0.27.0_linux_armv7.tar.gz
-	sha256sums_armv7h = 503301d11158d2c5ee309ab11e03773810024148b89d5fef3b3d3b5849c9b2f6
+	source_x86_64 = memos-0.27.1-x86_64.tar.gz::https://github.com/usememos/memos/releases/download/v0.27.1/memos_0.27.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = fb743cb275a3393d7b6f0d0c7bb33cea5d2a49f442a20f45b474a614265ce2c8
+	source_aarch64 = memos-0.27.1-aarch64.tar.gz::https://github.com/usememos/memos/releases/download/v0.27.1/memos_0.27.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 71753ba0336ef745797d70bbf0b2bcf730366110478d023438cc4097f8f9501c
+	source_armv7h = memos-0.27.1-armv7h.tar.gz::https://github.com/usememos/memos/releases/download/v0.27.1/memos_0.27.1_linux_armv7.tar.gz
+	sha256sums_armv7h = 1f08df04886f28979b4f8b4befa28a2f2ab5b4e460116e1e80010fb55f55a656
 
 pkgname = memos-bin
