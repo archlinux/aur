@@ -1,24 +1,30 @@
-# Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
+# Maintainer: gigas002 <gigas002@pm.me>
+
 pkgname=sweet-kvantum-git
-pkgver=r112.0b4e52a
+_pkgname=Sweet-kde
+pkgver=r50.0feee61
 pkgrel=1
-pkgdesc="Sweet theme for Kvantum"
-arch=(any)
-url="https://github.com/EliverLara/Sweet"
-license=('CCPL')
-depends=(kvantum-qt5)
-makedepends=(git)
-provides=(${pkgname/-git/})
-conflicts=(${pkgname/-git/})
-source=("${pkgname}::git+https://github.com/EliverLara/Sweet.git#branch=nova")
-sha256sums=(SKIP)
+pkgdesc="Sweet KDE Plasma theme"
+arch=('any')
+url="https://github.com/Gigas002/$_pkgname"
+license=('GPL-3.0-or-later')
+makedepends=(
+    'git'
+)
+depends=(
+    'kvantum'
+)
+provides=('sweet-kvantum')
+conflicts=('sweet-kvantum')
+source=("$_pkgname::git+$url.git#branch=plasma-6-migration")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
-    cd "${pkgname}/kde/kvantum"
-    install -Dm644 -t "${pkgdir}/usr/share/Kvantum/Sweet" Sweet.svg Sweet.kvconfig
+    install -dm755 "$pkgdir/usr/share"
+    cp -a "$srcdir/$_pkgname/Kvantum" "$pkgdir/usr/share/Kvantum"
 }

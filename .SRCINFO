@@ -1,16 +1,15 @@
 pkgbase = sweet-kvantum-git
-	pkgdesc = Sweet theme for Kvantum
-	pkgver = r112.0b4e52a
+	pkgdesc = Sweet KDE Plasma theme
+	pkgver = r50.0feee61
 	pkgrel = 1
-	url = https://github.com/EliverLara/Sweet
+	url = https://github.com/Gigas002/Sweet-kde
 	arch = any
-	license = CCPL
+	license = GPL-3.0-or-later
 	makedepends = git
-	depends = kvantum-qt5
+	depends = kvantum
 	provides = sweet-kvantum
 	conflicts = sweet-kvantum
-	source = sweet-kvantum-git::git+https://github.com/EliverLara/Sweet.git#branch=nova
+	source = Sweet-kde::git+https://github.com/Gigas002/Sweet-kde.git#branch=plasma-6-migration
 	sha256sums = SKIP
 
 pkgname = sweet-kvantum-git
-

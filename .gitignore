@@ -1,2 +1,4 @@
-sweet-kvantum-git/
-*.pkg.tar*
+*
+!.SRCINFO
+!PKGBUILD
+!.gitignore
