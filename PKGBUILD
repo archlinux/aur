@@ -26,11 +26,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('069f92a938fe6006fd29ca5545c0fbae963ba6e23bcf795e76405c4572632f05')
 
 build() {
-	CC=clang arch-meson "$pkgname-$pkgver" build-debug -Db_lundef=false
-	meson compile -C build-debug
+	CC=clang arch-meson "$pkgname-$pkgver" build -Db_sanitize=none -Db_lundef=false
+	meson compile -C build
 }
 
 package() {
-	meson install -C build-debug --no-rebuild --destdir "$pkgdir"
+	meson install -C build --no-rebuild --destdir "$pkgdir"
 	install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
