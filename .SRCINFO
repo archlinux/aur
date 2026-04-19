@@ -1,0 +1,29 @@
+pkgbase = r-gander
+	pkgdesc = High Performance, Low Friction Large Language Model Chat
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gander
+	arch = any
+	license = MIT
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-cli>=3.6.3
+	depends = r-glue>=1.8.0
+	depends = r-ellmer>=0.2.0
+	depends = r-miniui>=0.1.1.1
+	depends = r-rlang>=1.1.4
+	depends = r-rstudioapi>=0.17.1
+	depends = r-shiny>=1.9.1
+	depends = r-streamy>=0.1.0.9000
+	depends = r-treesitter
+	depends = r-treesitter.r
+	optdepends = r-gt
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat>=3.0.0
+	optdepends = r-tibble
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/gander_0.2.0.tar.gz
+	sha256sums = 8e9de3cd88695745bdc446c4b57ee897a53170f6371fb6ff9d0a1288955ea8f5
+
+pkgname = r-gander
