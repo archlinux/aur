@@ -1,0 +1,24 @@
+pkgbase = python-ldfparser
+	pkgdesc = LIN Description File parser written in Python
+	pkgver = 0.25.0
+	pkgrel = 1
+	url = https://github.com/c4deszes/ldfparser
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-lark-parser
+	depends = python-jinja
+	depends = python-bitstruct
+	provides = python-ldfparser
+	conflicts = python-ldfparser
+	options = !strip
+	options = !debug
+	source = ldfparser::git+https://github.com/c4deszes/ldfparser.git#tag=v0.25.0
+	sha256sums = 209b56544783750a40791b31ac2b0359d7d0f8fc0a5b41ee65d45b9f69bf0712
+
+pkgname = python-ldfparser
