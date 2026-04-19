@@ -1,6 +1,6 @@
 pkgbase = doter-bin
 	pkgdesc = A simple GTK4 GUI for managing dotfiles with Git
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/qwlp/doter
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = doter-bin
 	depends = gtk4
 	provides = doter
 	conflicts = doter
-	source = doter-bin-0.1.0.tar.gz::https://github.com/qwlp/doter/releases/download/v0.1.0/doter-0.1.0-x86_64-linux.tar.gz
-	sha256sums = fba651093402996d6cede6f3a0540fd0cc507c9aadfdcb411f5920e772ce5832
+	source = doter-bin-0.1.1.tar.gz::https://github.com/qwlp/doter/releases/download/v0.1.1/doter-0.1.1-x86_64-linux.tar.gz
+	sha256sums = 32e8059cda3381e63e3c232cf6a185b6f140f336a15743847360cd481a21ebbc
 
 pkgname = doter-bin
