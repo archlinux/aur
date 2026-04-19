@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 
 pkgname=jsongrep
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="CLI tool for fast querying of JSON documents using regular path expressions"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(
   git
 )
 source=(git+${url}.git#tag=v${pkgver})
-b2sums=('0cedc3e92b459768efbb3bacbfc1bd4b6ed71eb30d63389a3eaf1883243de4052a09c56222db6bb09c151cdf695ce9f42d5902e36953b15cfbdb445bc1087931')
+b2sums=('97f38b0f63a1a1e0235e54f246ed706a3b024b7ad6390058c0d55ae30a0113cd0cc12d68bf3f29ba91b7ea897ddc837d408d3a17b3739acc634faf0fb1afeeef')
 
 prepare() {
   cargo fetch \
