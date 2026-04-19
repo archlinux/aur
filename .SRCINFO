@@ -1,0 +1,16 @@
+pkgbase = r-leafgl
+	pkgdesc = High-Performance 'WebGl' Rendering for Package 'leaflet'
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=leafgl
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-htmltools
+	depends = r-leaflet
+	depends = r-sf
+	depends = r-yyjsonr
+	source = https://cran.r-project.org/src/contrib/leafgl_0.2.4.tar.gz
+	b2sums = a0e9cce14e6cc7af0db9bd0f4b9e41c9bd5247e62c2add4cf72a564cd55965a40377968a043aedca156e873cd8ccea058312c6ba0c8561b492a0208696bfd744
+
+pkgname = r-leafgl
