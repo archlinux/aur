@@ -1,0 +1,5 @@
+[verti-bin]
+source = "github"
+github = "ruinivist/verti"
+use_latest_release = true
+prefix = "v"

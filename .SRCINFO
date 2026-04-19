@@ -1,0 +1,22 @@
+pkgbase = verti-bin
+	pkgdesc = Versioned artifacts for Git repositories
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/ruinivist/verti
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	provides = verti
+	conflicts = verti
+	options = !strip
+	source = README-0.2.4.md::https://raw.githubusercontent.com/ruinivist/verti/v0.2.4/README.md
+	source = LICENSE-0.2.4::https://raw.githubusercontent.com/ruinivist/verti/v0.2.4/LICENSE
+	sha256sums = f484cc22a40fae38f00e82734c27037014873c96adebbc3435ed04b50a17b024
+	sha256sums = 1767fe6647e9cc12c7f3ef254101eec6ff336e7d6c9e1d43235361921a6e9d59
+	source_x86_64 = verti-x86_64-0.2.4.tgz::https://github.com/ruinivist/verti/releases/download/v0.2.4/verti_0.2.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2c0bbd9826b7dd1d0c4b4b50ffd00719f4ff7764dbbeaf69b676716f7a2ce7ee
+	source_aarch64 = verti-aarch64-0.2.4.tgz::https://github.com/ruinivist/verti/releases/download/v0.2.4/verti_0.2.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 409f20c83c1f9d68a3a7c9c20a39dc867bed2eedab1c852a90af81a093bf2423
+
+pkgname = verti-bin
