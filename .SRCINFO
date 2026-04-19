@@ -1,0 +1,13 @@
+pkgbase = brother-dcp1622we-lpr-bin
+	pkgdesc = LPR driver for Brother DCP-1622WE printer
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcp1622we_eu
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf102485/dcp1610wlpr-3.0.1-1.i386.deb
+	sha256sums = 862d1bdb70e0497553fdf340f98d9a24e768a6ded2c235326327aff356e81a58
+
+pkgname = brother-dcp1622we-lpr-bin
