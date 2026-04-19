@@ -1,4 +1,4 @@
-# Maintainer: kabeuchi-bird <https://github.com/kabeuchi-bird>
+﻿# Maintainer: kabeuchi-bird <https://github.com/kabeuchi-bird>
 pkgname=kabekami-git
 pkgver=r29.c4ec6a4
 pkgrel=1
