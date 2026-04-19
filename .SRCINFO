@@ -1,0 +1,17 @@
+pkgbase = cxstudy-wine
+	pkgdesc = a version of repacked wine app of cxstudy(学习通)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://atomgit.com/JingluWei_chn/cxstudy-wine/tree/master
+	arch = x86_64
+	license = MIT
+	depends = wine
+	depends = wine-mono
+	depends = wine-gecko
+	depends = noto-fonts
+	depends = tar
+	depends = git
+	source = cxstudy-wine-master-1.4.0.zip::git+https://gitcode.com/JingluWei_chn/cxstudy-wine.git
+	sha256sums = SKIP
+
+pkgname = cxstudy-wine
