@@ -1,6 +1,6 @@
 # Maintainer: Garrett Stewart <zero@gr-p.com>
 pkgname=deadsync-bin
-pkgdesc='ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync and competitive-level performance - pre-built binary release'
+pkgdesc='ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync and competitive-level performance - binary release'
 url='https://github.com/pnn64/deadsync'
 license=('GPL-3.0-only')
 arch=('x86_64' 'aarch64')
@@ -13,73 +13,42 @@ depends=(
     'libasound.so'
     'hicolor-icon-theme'
 )
-makedepends=('git' 'curl')
+makedepends=('curl')
 options=('!strip')
 install="${pkgname}.install"
 
-pkgver=0.1 # Placeholder - gets overwritten with pkgver()
+pkgver=0.3.536
 pkgrel=1
-source=()
-sha256sums=()
 
-_asset_x86_64="deadsync-v%s-x86_64-linux.tar.gz"
-_asset_aarch64="deadsync-v%s-arm64-linux.tar.gz"
-
-pkgver() {
-    git ls-remote --tags --sort='version:refname' \
-        'https://github.com/pnn64/deadsync.git' 'refs/tags/v[0-9]*' \
-        | awk 'END { sub(/.*\/v/, "", $2); print $2 }'
-}
+# NOTE: aarch64 releases use "arm64" in the asset filename, not "aarch64".
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/pnn64/deadsync/releases/download/v${pkgver}/deadsync-v${pkgver}-x86_64-linux.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/pnn64/deadsync/releases/download/v${pkgver}/deadsync-v${pkgver}-arm64-linux.tar.gz")
+sha256sums_x86_64=('71a1f3fac259c3829b5abe422c873fc764764e21004a9708b0d32ed1a2dc7f09')
+sha256sums_aarch64=('1329ecd7f051ae39f53108a91e07017cce0ea6409a19f133a6e4ce0eb160faa5')
 
 package() {
-    local _ver="${pkgver}"
-    local _tag="v${_ver}"
-
-    local _asset
-    case "${CARCH}" in
-        x86_64)  _asset=$(printf "${_asset_x86_64}"  "${_ver}") ;;
-        aarch64) _asset=$(printf "${_asset_aarch64}" "${_ver}") ;;
-        *)
-            error "Unsupported architecture: ${CARCH}"
-            return 1
-            ;;
-    esac
-
-    local _url="https://github.com/pnn64/deadsync/releases/download/${_tag}/${_asset}"
-    msg2 "Downloading ${_url}"
-    local _tarball="${srcdir}/${_asset}"
-    curl -L --fail --progress-bar -o "${_tarball}" "${_url}"
-
-    local _stagedir="${srcdir}/deadsync-stage"
-    mkdir -p "${_stagedir}"
-    bsdtar -xf "${_tarball}" -C "${_stagedir}"
-
-    local _src="${_stagedir}"
-    local _dirs=("${_stagedir}"/*)
+    # Determine the extracted source root. The tarball is flat (no wrapping
+    # subdirectory), so the staging dir itself is the content root — but we
+    # handle both layouts in case upstream changes this.
+    local _src="${srcdir}"
+    local _dirs=("${srcdir}"/*)
     if [[ ${#_dirs[@]} -eq 1 && -d "${_dirs[0]}" ]]; then
         _src="${_dirs[0]}"
     fi
 
+    # portable.txt tells the game to use paths relative to its own directory
+    # instead of ~/.local/share/deadsync. Must not ship in an installed package.
     rm -f "${_src}/portable.txt"
 
-    # -----------------------------------------------------------------------
-    # Install game to /opt/deadsync
-    # -----------------------------------------------------------------------
     install -dm755 "${pkgdir}/opt/deadsync"
     cp -a "${_src}/." "${pkgdir}/opt/deadsync/"
     chmod 755 "${pkgdir}/opt/deadsync/deadsync"
 
-    # -----------------------------------------------------------------------
-    # Wrapper script so `deadsync` works from any terminal
-    # -----------------------------------------------------------------------
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/deadsync" <<'EOF'
 #!/bin/sh
 exec /opt/deadsync/deadsync "$@"
 EOF
 
-    # -----------------------------------------------------------------------
-    # Desktop entry
-    # -----------------------------------------------------------------------
     install -Dm644 /dev/stdin \
         "${pkgdir}/usr/share/applications/deadsync.desktop" <<'EOF'
 [Desktop Entry]
@@ -94,8 +63,6 @@ Keywords=ITG;StepMania;rhythm;dance;
 StartupNotify=true
 EOF
 
-    # Install all sized icons into the hicolor theme so Icon=deadsync in the
-    # .desktop file resolves correctly through the icon theme lookup chain.
     local _icondir="${_src}/assets/graphics/icon"
     for _size in 16 24 32 48 64 96 128 256 512 1024; do
         install -Dm644 "${_icondir}/icon-${_size}.png" \
