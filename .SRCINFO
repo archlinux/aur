@@ -1,11 +1,12 @@
 pkgbase = brief
 	pkgdesc = A GTK4 application for browsing tldr-pages (community-maintained command line help pages).
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shonebinu/Brief
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = blueprint-compiler
+	makedepends = git
 	makedepends = meson
 	depends = gtk4
 	depends = libadwaita
@@ -19,11 +20,10 @@ pkgbase = brief
 	depends = python-rapidfuzz
 	depends = python-requests
 	depends = python-urllib3
-	noextract = tldr-2.3.zip
 	options = !strip
-	source = Brief-0.3.1.tar.gz::https://github.com/shonebinu/Brief/archive/refs/tags/v0.3.1.tar.gz
-	source = tldr-2.3.zip::https://github.com/tldr-pages/tldr/releases/download/v2.3/tldr.zip
-	sha256sums = a134e5ba83ae1f2372963d12784be477fe577012833e96114811d545d6d1efd3
-	sha256sums = 46f8eb9f8d0df15862f9258a9ef1550c061a99f157cd0d0b612caf5a7df6fcc3
+	source = git+https://github.com/shonebinu/Brief.git#tag=v0.3.1
+	source = git+https://github.com/tldr-pages/tldr.git
+	sha256sums = 543b84ef464ed418f398490bdb6e9eb69850d31850acc04adc5a7570382f5c29
+	sha256sums = SKIP
 
 pkgname = brief
