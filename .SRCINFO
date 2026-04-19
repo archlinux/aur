@@ -1,0 +1,28 @@
+pkgbase = r-osmdata
+	pkgdesc = Import 'OpenStreetMap' Data as Simple Features or Spatial Objects
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=osmdata
+	arch = any
+	license = GPL-3.0-only
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-curl
+	depends = r-httr2
+	depends = r-rcpp>=0.12.4
+	depends = r-rvest
+	depends = r-tibble
+	depends = r-xml2
+	optdepends = r-httptest2
+	optdepends = r-jsonlite
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	optdepends = r-sf
+	optdepends = r-sp
+	optdepends = r-terra
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/osmdata_0.3.0.tar.gz
+	sha256sums = 26cbe70d7f1c5940f32fa4b9ac8fdbe6f5cf640abb1d11df7e1931e27fecf515
+
+pkgname = r-osmdata
