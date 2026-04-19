@@ -1,6 +1,6 @@
 pkgbase = sway-alttab-gui-bin
 	pkgdesc = Windows-style Alt+Tab window switcher for Sway (prebuilt binary)
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/itsjfx/sway-alttab-gui
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = sway-alttab-gui-bin
 	depends = gtk4-layer-shell
 	provides = sway-alttab-gui
 	conflicts = sway-alttab-gui
-	source_x86_64 = sway-alttab-gui-bin-0.0.3-x86_64::https://github.com/itsjfx/sway-alttab-gui/releases/download/v0.0.3/sway-alttab-gui-linux-amd64
-	sha256sums_x86_64 = 26f19ef4be0ddeb0677560e1ffe6d7176cc2d842301dad95c689064ccf9f6211
-	source_aarch64 = sway-alttab-gui-bin-0.0.3-aarch64::https://github.com/itsjfx/sway-alttab-gui/releases/download/v0.0.3/sway-alttab-gui-linux-arm64
-	sha256sums_aarch64 = 7ceb217b1f7f3056ca08c12be75ad951950fab41b30778fca074dc5fb064e187
+	source_x86_64 = sway-alttab-gui-bin-0.0.4-x86_64::https://github.com/itsjfx/sway-alttab-gui/releases/download/v0.0.4/sway-alttab-gui-linux-amd64
+	sha256sums_x86_64 = f6d3e2a997bf17eb9cc2fe7f21eda48f04d2c7fbc211ceb2c093751a16e4c100
+	source_aarch64 = sway-alttab-gui-bin-0.0.4-aarch64::https://github.com/itsjfx/sway-alttab-gui/releases/download/v0.0.4/sway-alttab-gui-linux-arm64
+	sha256sums_aarch64 = aab4e399196afbaa6ef296d9bacde8ba7fa4217c8d527e7dcd2e22ab33c8476b
 
 pkgname = sway-alttab-gui-bin
