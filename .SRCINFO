@@ -1,42 +1,27 @@
 pkgbase = rapidyaml-git
-	pkgdesc = A library to parse and emit YAML, and do it fast.
-	pkgver = 0.5.0.r14.g6a5a07f
+	pkgver = 0.11.1.r32.g3a2bbd9
 	pkgrel = 1
 	url = https://github.com/biojppm/rapidyaml
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
-	makedepends = git
 	makedepends = cmake
+	makedepends = git
 	makedepends = ninja
+	makedepends = python
 	makedepends = swig
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-setuptools-git
-	makedepends = python-setuptools-scm
-	makedepends = python-cmake-build-extension-git
-	source = git+https://github.com/biojppm/rapidyaml.git
-	source = git+https://github.com/biojppm/c4core.git
-	source = git+https://github.com/biojppm/cmake.git
-	source = git+https://github.com/biojppm/debugbreak
-	source = git+https://github.com/fastfloat/fast_float
-	source = 0001-Remove-bogus-ninja-wheel-dependency.patch
+	source = rapidyaml::git+https://github.com/biojppm/rapidyaml.git
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = c12e283c0c0e970f7150068cf44f5106b4459f745f0b57513acd7bbfcbec897f
 
 pkgname = rapidyaml-git
-	provides = rapidyaml=0.5.0.r14.g6a5a07f
-	provides = c4core
+	pkgdesc = A fast YAML parser and emitter for C++
+	provides = rapidyaml=0.11.1.r32
+	provides = libryml.so
 	conflicts = rapidyaml
-	conflicts = c4core
 
 pkgname = python-rapidyaml-git
+	pkgdesc = Python bindings for rapidyaml (via SWIG)
 	depends = python
-	depends = python-deprecation
-	provides = python-rapidyaml=0.5.0.r14.g6a5a07f
+	depends = rapidyaml
+	provides = python-rapidyaml=0.11.1.r32
 	conflicts = python-rapidyaml

@@ -1,97 +1,93 @@
-# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Maintainer:
+# Contributor: xiretza <xiretza+aur@xiretza.xyz>
 
-_pkgname=rapidyaml
-pkgbase=$_pkgname-git
-pkgname=($pkgbase python-$pkgbase)
-pkgver=0.5.0.r14.g6a5a07f
+_pkgname="rapidyaml"
+pkgbase="$_pkgname-git"
+pkgname=("$pkgbase" "python-$pkgbase")
+pkgver=0.11.1.r32.g3a2bbd9
 pkgrel=1
-pkgdesc="A library to parse and emit YAML, and do it fast."
 url="https://github.com/biojppm/rapidyaml"
-arch=(x86_64)
+arch=('x86_64')
 license=('MIT')
-makedepends=('git' 'cmake' 'ninja' 'swig' 'python-build' 'python-installer' 'python-wheel'
-             'python-setuptools-git' 'python-setuptools-scm'
-             # note: contains additional patches for broken upstream not present in community package
-             'python-cmake-build-extension-git')
-checkdepends=('python-pytest')
-source=(
-	"git+https://github.com/biojppm/rapidyaml.git"
-	"git+https://github.com/biojppm/c4core.git"
-	"git+https://github.com/biojppm/cmake.git"
-	"git+https://github.com/biojppm/debugbreak"
-	"git+https://github.com/fastfloat/fast_float"
-	"0001-Remove-bogus-ninja-wheel-dependency.patch"
+
+makedepends=(
+  'cmake'
+  'git'
+  'ninja'
+  'python'
+  'swig'
 )
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'c12e283c0c0e970f7150068cf44f5106b4459f745f0b57513acd7bbfcbec897f')
+checkdepends=('python-pytest')
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$_pkgname"
-
-	patch -p1 < "$srcdir/0001-Remove-bogus-ninja-wheel-dependency.patch"
-
-	sed -i -e 's/-git//' setup.py
-
-	git submodule init
-	git config submodule.extern/c4core.url "$srcdir/c4core"
-	git -c protocol.allow=never -c protocol.file.allow=always submodule update
-
-	cd ext/c4core
-
-	git submodule init
-	git config submodule.cmake.url "$srcdir/cmake"
-	git config submodule.extern/debugbreak.url "$srcdir/debugbreak"
-	git config submodule.src/c4/ext/fast_float.url "$srcdir/fast_float"
-	git -c protocol.allow=never -c protocol.file.allow=always submodule update
+  git -C "$_pkgsrc" submodule update --init --depth=1
+  git -C "$_pkgsrc/ext/c4core" submodule update --init --depth=1
 }
 
 build() {
-	cmake -B build -S "$_pkgname" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DRYML_BUILD_API=ON
+  export CFLAGS CXXFLAGS
+  CFLAGS+=" -DNDEBUG"
+  CXXFLAGS+=" -DNDEBUG"
 
-	make -C build
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DBUILD_SHARED_LIBS=ON
+    -Wno-dev
 
-	cd "$_pkgname"
+    -DRYML_BUILD_API=ON
+    -DRYML_DEFAULT_CALLBACKS=ON
+    -DRYML_DEFAULT_CALLBACK_USES_EXCEPTIONS=ON
+    -DRYML_DEV=OFF
+  )
 
-	python -m build --wheel --no-isolation
-}
-
-check() {
-	cd "$_pkgname"
-
-	#pytest
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package_rapidyaml-git() {
-	provides=("${pkgname%%-git}=$pkgver" 'c4core')
-	conflicts=("${pkgname%%-git}" 'c4core')
+  pkgdesc="A fast YAML parser and emitter for C++"
+  provides=("${pkgname%-git}=${pkgver%.g*}" 'libryml.so')
+  conflicts=("${pkgname%-git}")
 
-	make -C build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 
-	rm "$pkgdir/usr/ryml.py" "$pkgdir/usr/_ryml.so"
+  mv "${pkgdir}/usr/_ryml.so" "${srcdir}/_ryml.so"
+  mv "${pkgdir}/usr/ryml.py" "${srcdir}/ryml.py"
 
-	install -Dm 644 "$_pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$_pkgsrc/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_python-rapidyaml-git() {
-	depends=('python' 'python-deprecation')
-	provides=("${pkgname%%-git}=$pkgver")
-	conflicts=("${pkgname%%-git}")
+  pkgdesc="Python bindings for rapidyaml (via SWIG)"
+  depends=('python' 'rapidyaml')
+  provides=("${pkgname%-git}=${pkgver%.g*}")
+  conflicts=("${pkgname%-git}")
 
-	cd "$_pkgname"
+  _pyver=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+  _pydir="${pkgdir}/usr/lib/python${_pyver}/site-packages/rapidyaml"
 
-	python -m installer --destdir="$pkgdir" dist/*.whl
+  if [[ -f "${srcdir}/_ryml.so" && -f "${srcdir}/ryml.py" ]]; then
+    install -Dm644 "${srcdir}/_ryml.so" -t "${_pydir}/"
+    install -Dm644 "${srcdir}/ryml.py" -t "${_pydir}/"
+    touch "${_pydir}/__init__.py"
+  else
+    echo "ERROR: Could not find Python binding files in temporary location."
+    return 1
+  fi
 
-	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$_pkgsrc/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
