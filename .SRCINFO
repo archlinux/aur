@@ -1,0 +1,12 @@
+pkgbase = r-packrat
+	pkgdesc = A Dependency Management System for Projects and their R Package Dependencies
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=packrat
+	arch = any
+	license = GPL-2.0-only
+	depends = r>=3.0.0
+	source = https://cran.r-project.org/src/contrib/packrat_0.9.3.tar.gz
+	b2sums = 197d4d46e77e7c655cbab627c9babc738c02a2ed6d317b2f460e163cb58d91e06a69b9b154faab4426fe995beee6e32e5031a446c184cfdbd69f636c15ad730b
+
+pkgname = r-packrat
