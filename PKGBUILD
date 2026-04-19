@@ -1,13 +1,13 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=smolvm
 pkgver=0.5.19
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to build & run portable, lightweight, self-contained virtual machines.'
 arch=('x86_64' 'aarch64' 'riscv64')
 url='https://github.com/smol-machines/smolvm'
 license=('Apache-2.0')
-depends=('libkrun')
-makedepends=('cargo' 'libkrun')
+depends=('libkrun' 'libkrunfw')
+makedepends=('cargo' 'libkrun' 'libkrunfw')
 options=(!lto)
 provides=('smolvm')
 conflicts=('smolvm-git' 'smolvm-bin')
