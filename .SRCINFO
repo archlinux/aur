@@ -1,0 +1,22 @@
+pkgbase = untrunc-gui-git
+	pkgdesc = Utility to restore a damaged (truncated) mp4, m4v, mov, 3gp video (with GUI)
+	pkgver = r388.d286625
+	pkgrel = 1
+	url = https://github.com/anthwlock/untrunc
+	install = untrunc.install
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = yasm
+	makedepends = git
+	makedepends = libx11
+	makedepends = gendesk
+	depends = libvdpau
+	depends = zlib
+	depends = bzip2
+	depends = libui
+	provides = untrunc
+	conflicts = untrunc
+	source = untrunc-gui-git::git+https://github.com/anthwlock/untrunc.git
+	md5sums = SKIP
+
+pkgname = untrunc-gui-git
