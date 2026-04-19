@@ -1,0 +1,17 @@
+pkgbase = zfs-autobackup
+	pkgdesc = ZFS snapshot and replication tool with thinning, verification, and remote transfer
+	pkgver = 3.3
+	pkgrel = 1
+	url = https://github.com/psy0rz/zfs_autobackup
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-colorama
+	source = https://files.pythonhosted.org/packages/source/z/zfs_autobackup/zfs_autobackup-3.3.tar.gz
+	sha256sums = 9c073599daed2049944b4b8ca8e76f574ef13f4d8c163e85e6e0938825ed9ccb
+
+pkgname = zfs-autobackup
