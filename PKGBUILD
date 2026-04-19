@@ -1,6 +1,6 @@
 # Maintainer: saber-88
 pkgname=wallrift
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Wayland wallpaper engine with smooth cursor-based parallax effect"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('git' 'cmake' 'wayland-protocols')
 provides=('wallrift')
 conflicts=('wallrift-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/saber-88/wallrift/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('49e5a0f786ef4efd9462a61f1ffb3be21f4eb3bb2311fd79a55e7ee2275d1175')
+sha256sums=('8f4b7734a28376b39bc8b4aadc211c8b527f9878157d9d82221c295fb02cb38a')
 
 build() {
   cd "$srcdir/wallrift-$pkgver"
