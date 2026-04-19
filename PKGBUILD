@@ -12,10 +12,10 @@ provides=('fest' 'camp')
 conflicts=('fest' 'camp')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Obedience-Corp/festival/releases/download/v${pkgver}/festival-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('428d6e83543661b29e0cf3d014ea69984102e128a2f204d6a965e51346fc8775')
+sha256sums_aarch64=('4bb484631fb728564cbed76b413b9c20aad6378db4f43a96bd07a5e8d7081566')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Obedience-Corp/festival/releases/download/v${pkgver}/festival-${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('d5c6dc072d65cd7d8d77a2a65709694209befe7e087173a033440fda42beca2e')
+sha256sums_x86_64=('535ec7a20092fb7745614a35be1261e90dbf9dd2740dd8ff9e4d6b7689bd2038')
 
 package() {
   install -Dm755 "./fest" "${pkgdir}/usr/bin/fest"
