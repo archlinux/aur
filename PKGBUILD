@@ -2,9 +2,9 @@
 # Maintainer: elpdev <noreply@github.com>
 
 pkgname='pando-bin'
-pkgver=0.14.0
+pkgver=0.15.2
 pkgrel=1
-pkgdesc='Pando — encrypted peer-to-peer chat'
+pkgdesc='Pando — end-to-end encrypted chat over self-hosted relays'
 url='https://github.com/elpdev/pando'
 arch=('aarch64' 'x86_64')
 license=('MIT')
@@ -12,10 +12,10 @@ provides=('pando')
 conflicts=('pando')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/elpdev/pando/releases/download/v${pkgver}/pando_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('ffa4538d95546fc7570b3c9ba362bef86ec442eb8eb767f5a0f25bc0a2be0e96')
+sha256sums_aarch64=('b82db95a307c898d6bf193e8a876075240b3acbb43fb92b23f15fb9a06722374')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/elpdev/pando/releases/download/v${pkgver}/pando_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('40381025adc5484bb758901ef4e11cfee7d30632174af45582660b76339c5f5e')
+sha256sums_x86_64=('d53e875da012679f7fc4a2d7ceeb2cc53d752a3eb495e5fc91a61a63ab6e46dd')
 
 package() {
   install -Dm755 pando       "${pkgdir}/usr/bin/pando"
