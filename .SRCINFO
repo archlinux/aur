@@ -1,18 +1,18 @@
 pkgbase = r-jsonify
 	pkgdesc = Convert Between 'R' Objects and Javascript Object Notation (JSON)
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 2
 	url = https://cran.r-project.org/package=jsonify
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = r>=3.3.0
-	depends = r-rcpp>=0.12.18
-	depends = r-rapidjsonr>=1.2.0
+	depends = r>=4.0.0
+	depends = r-rcpp>=1.1.0
+	depends = r-rapidjsonr>=1.2.1
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/jsonify_1.2.2.tar.gz
-	b2sums = 2c25f09270c66e8b8a0e6925666240c3d4062ff234c08b16760ea2b74d331f02b9ec84bfc9ddd03407065b8ec6b489319a77340daf73468392ce42b7ecc5ae22
+	source = https://cran.r-project.org/src/contrib/jsonify_1.2.3.tar.gz
+	b2sums = d5dc887388220adac3ba132c83bd298eb5a96fd63875e7d7bcc71953d47e9c105097c747b28b04531baf6ed4eda9dcbfaf1b2cc137bb9e26a7f13bb6405adf52
 
 pkgname = r-jsonify
