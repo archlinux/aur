@@ -1,0 +1,12 @@
+pkgbase = r-rapidoc
+	pkgdesc = Generates 'RapiDoc' API Documentation
+	pkgver = 9.3.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rapidoc
+	arch = any
+	license = MIT
+	depends = r
+	source = https://cran.r-project.org/src/contrib/rapidoc_9.3.4.tar.gz
+	b2sums = a961ab6b9a17890b56a0ba5f9442a308f8d0acfb8a234290220fec3a5075114c109f8fa12285e6797eb59185a3d966f052a9856f50b936989c65a4a86b49e61a
+
+pkgname = r-rapidoc
