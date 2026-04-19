@@ -1,6 +1,6 @@
 # Maintainer: Zeus-Deus <widow at codemux dot org>
 pkgname=codexbar-tui
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Thin Omarchy-themed terminal UI on top of the codexbar CLI (steipete/CodexBar)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f79d346fae4c6f0fbf7147ec588f79fdd7606daf3eb2c1565c140ed50796e4a0')
+sha256sums=('1aee810c2765ac925d1a3c5e21c1072b4420e2e430a6fcd2debb65287a31e64c')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -31,7 +31,11 @@ build() {
 check() {
     cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
+    # Rust unit + integration tests.
     cargo test --frozen --release
+    # Shell-script integration tests for the Omarchy hotkey installer.
+    # Sandboxed — no writes outside a tmp HOME, no sudo.
+    bash tests/omarchy-hotkey.sh
 }
 
 package() {
@@ -42,6 +46,9 @@ package() {
 
     install -Dm755 "scripts/${pkgname}-setup-omarchy" \
         "${pkgdir}/usr/bin/${pkgname}-setup-omarchy"
+
+    install -Dm755 "scripts/${pkgname}-remove-omarchy" \
+        "${pkgdir}/usr/bin/${pkgname}-remove-omarchy"
 
     install -Dm644 LICENSE \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

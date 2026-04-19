@@ -7,8 +7,11 @@ post_install() {
 
 ==> Omarchy users: to bind Super+Ctrl+U to a floating codexbar-tui panel, run
         codexbar-tui-setup-omarchy
-    It only writes to ~/.config/hypr/{bindings,windows}.conf inside a marker
-    block it owns, so it's idempotent and trivial to remove.
+    To undo it later:
+        codexbar-tui-remove-omarchy
+    Both are idempotent and only touch marker-delimited blocks they own in
+    ~/.config/hypr/{bindings,windows}.conf, so they won't clobber your other
+    Hyprland config.
 
 EOF
 }
