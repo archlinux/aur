@@ -1,0 +1,15 @@
+pkgbase = r-timereg
+	pkgdesc = Flexible Regression Models for Survival Data
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = https://cran.r-project.org/package=timereg
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = r>=2.15
+	depends = r-lava
+	depends = r-numderiv
+	source = https://cran.r-project.org/src/contrib/timereg_2.0.7.tar.gz
+	b2sums = 02104567e3051f6c5cc6f177780ba8c6bc9e10dbb0f1dc48c060b0c33daefd4fa62c1ee0274d092db9143d344b05761ee43f5cdcdc5494e12cec8edf8ff7a539
+
+pkgname = r-timereg
