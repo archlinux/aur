@@ -4,7 +4,7 @@
 
 _pkgname=lammps
 pkgname=${_pkgname}-git
-pkgver=patch_10Dec2025.r120.ga51f9ba
+pkgver=patch_30Mar2026.r102.g7e52522
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
@@ -74,9 +74,10 @@ build() {
     python -m build
 
     # phana
-    # cd ../tools/phonon/
-    # cmake -S . -B build
-    # cmake --build build
+    cd ../tools/phonon/
+    rm -rf build
+    cmake -S . -B build
+    cmake --build build
 }
 
 package() {
@@ -91,7 +92,7 @@ package() {
     install -Dm644 "../tools/vim/lammps.vim" "${pkgdir}/usr/share/vim/vimfiles/syntax/lammps.vim"
     install -Dm644 "../tools/vim/filetype.vim" "${pkgdir}/usr/share/vim/vimfiles/ftdetect/lammps.vim"
 
-    # install -Dm755 "../tools/phonon/build/phana" "${pkgdir}/usr/bin/phana"
+    install -Dm755 "../tools/phonon/build/phana" "${pkgdir}/usr/bin/phana"
 
     # python lib
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ../python/dist/*.whl
