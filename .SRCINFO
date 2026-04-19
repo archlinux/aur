@@ -1,0 +1,24 @@
+pkgbase = r-mall
+	pkgdesc = Run Multiple Large Language Model Predictions Against a Table, or Vectors
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mall
+	arch = any
+	license = MIT
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-cli
+	depends = r-dplyr
+	depends = r-ellmer>=0.3.0
+	depends = r-fs
+	depends = r-glue
+	depends = r-jsonlite
+	depends = r-ollamar
+	depends = r-rlang
+	optdepends = r-dbplyr
+	optdepends = r-testthat>=3.0.0
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/mall_0.2.0.tar.gz
+	sha256sums = e8edbcbb048d322e1338867aa9845c22740526b74a4d105ed928f33cb4f5fe95
+
+pkgname = r-mall
