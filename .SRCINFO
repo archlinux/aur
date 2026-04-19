@@ -1,0 +1,12 @@
+pkgbase = r-proceduralnames
+	pkgdesc = Several Methods for Procedural Name Generation
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=proceduralnames
+	arch = any
+	license = Apache-2.0
+	depends = r>=2.10
+	source = https://cran.r-project.org/src/contrib/proceduralnames_0.2.2.tar.gz
+	b2sums = 335fcd2211480fd7cc8f578960fe0db681e87b7ee0c1da2eaedfff5ae5f0a90dc55d63c2a5f832b680547992e25ab9fd11b0e780f005552c4c5d7616b7ec4476
+
+pkgname = r-proceduralnames
