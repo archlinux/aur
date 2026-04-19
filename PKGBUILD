@@ -1,21 +1,35 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=mdcz
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Media metadata scraper built on Electron"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ShotHeadman/${pkgname}"
 license=("GPL-3.0-only")
-depends=("bash" "electron39" "glibc" "hicolor-icon-theme" "libgcc")
-makedepends=("pnpm")
+depends=("bash" "electron" "glibc" "hicolor-icon-theme" "libgcc")
+makedepends=("npm" "pnpm")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('21709c2ff99e8b225ff91a26d18bef30b5feaaa49ed86da4157d735172eddd54'
+sha256sums=('79e87a723383cd063953b1ca0d75a3908f5f70b6a3881177cd55e49c43ebb7d3'
             'cd05629c20de4406029004536b25694cf4b2e27997695d6aa2b8942258d43683'
-            'ba4b54d04de0bbdb9fb9a30b8b9321833c25966f5cfe637e43c05090661e447f')
+            'a1818ad81d8ca68b369e1b392ea35c87822d15da7347b031f91b477af4a557a1')
+
+prepare() {
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/electron"
+
+    cd "${pkgname}-${pkgver}"
+    sed -i 's|- AppImage|- dir|g' electron-builder.yml
+    local _elver=$(cat /usr/lib/electron/version)
+    echo -n Replacing $(cat package.json | grep '"electron":')
+    npm pkg set devDependencies.electron=${_elver} 2>/dev/null
+    echo with $(cat package.json | grep '"electron":')
+
+    pnpm install --ignore-scripts --no-frozen-lockfile
+}
 
 build() {
     cd "${pkgname}-${pkgver}"

@@ -8,4 +8,4 @@ if [[ -f "${MDCZ_USER_FLAGS_FILE}" ]]; then
 fi
 
 # Launch
-exec electron39 /usr/lib/mdcz/app.asar $MDCZ_USER_FLAGS "$@"
+exec /usr/bin/electron /usr/lib/mdcz/app.asar $MDCZ_USER_FLAGS "$@"
