@@ -1,0 +1,40 @@
+pkgbase = r-mapboxapi
+	pkgdesc = R Interface to 'Mapbox' Web Services
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mapboxapi
+	arch = any
+	license = MIT
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-httr
+	depends = r-sf
+	depends = r-jsonlite
+	depends = r-purrr
+	depends = r-curl
+	depends = r-dplyr>=1.0.0
+	depends = r-tidyr>=1.0.0
+	depends = r-aws.s3
+	depends = r-stringi
+	depends = r-slippymath
+	depends = r-protolite
+	depends = r-rlang
+	depends = r-geojsonsf
+	depends = r-magick
+	depends = r-leaflet
+	depends = r-units
+	depends = r-raster
+	depends = r-png
+	depends = r-jpeg
+	depends = r-htmltools
+	optdepends = r-ggspatial
+	optdepends = r-mapdeck
+	optdepends = r-tigris
+	optdepends = r-tidycensus
+	optdepends = r-tmap
+	optdepends = r-mapboxer
+	optdepends = r-testthat>=3.0.0
+	source = https://cran.r-project.org/src/contrib/mapboxapi_0.6.3.tar.gz
+	sha256sums = 1ed753cc424d76b793692444c9424303d8dce8d29fc01a06cec18f3d841dba5b
+
+pkgname = r-mapboxapi
