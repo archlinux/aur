@@ -1,0 +1,28 @@
+--- smolvm	2026-04-19 14:25:46.965572931 +0200
++++ smolvm	2026-04-19 14:25:39.492477267 +0200
+@@ -25,7 +25,6 @@
+ 
+ # The actual binary and libraries are in the same directory
+ SMOLVM_BIN="$SCRIPT_DIR/smolvm-bin"
+-SMOLVM_LIB="$SCRIPT_DIR/lib"
+ 
+ # Check if binary exists
+ if [[ ! -x "$SMOLVM_BIN" ]]; then
+@@ -34,17 +33,4 @@
+     exit 1
+ fi
+ 
+-# Check if libraries exist
+-if [[ ! -d "$SMOLVM_LIB" ]]; then
+-    echo "Error: library directory not found at $SMOLVM_LIB" >&2
+-    echo "Make sure you extracted the full distribution." >&2
+-    exit 1
+-fi
+-
+-# Set library path based on OS and run
+-if [[ "$(uname -s)" == "Darwin" ]]; then
+-    export DYLD_LIBRARY_PATH="$SMOLVM_LIB${DYLD_LIBRARY_PATH:+:$DYLD_LIBRARY_PATH}"
+-else
+-    export LD_LIBRARY_PATH="$SMOLVM_LIB${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+-fi
+ exec "$SMOLVM_BIN" "$@"
