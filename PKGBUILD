@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cdncheck"
-pkgver=1.2.31
+pkgver=1.2.32
 pkgrel=1
 pkgdesc="A utility to detect various technology for a given IP address"
 arch=(
@@ -24,7 +24,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('b77feda544575f3e9a37a9db64dfad14978598e295f8910a1bca484d8e184317')
+sha256sums=('e0a6abbd168c51d45101d511faa1989c0cf4c994f94a4f55c556b3b9c9c70cd1')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
@@ -47,10 +47,10 @@ build() {
   go build -v -o "build/${pkgname}" ./"cmd/${pkgname}"
 }
 
-# check() {
-#   cd "${srcdir}/${_pkgsrc}"
-#   go test ./...
-# }
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  go test ./...
+}
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
