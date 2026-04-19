@@ -1,0 +1,23 @@
+pkgbase = sdl2-compat-win32
+	pkgdesc = An SDL2 compatibility layer that uses SDL3 behind the scenes. DLL version to apply for Wine/Proton applications.
+	pkgver = 2.32.66
+	pkgrel = 1
+	url = https://github.com/libsdl-org/sdl2-compat
+	arch = x86_64
+	arch = i686
+	license = Zlib
+	makedepends = curl
+	makedepends = jq
+	depends = sdl3
+	depends = glibc
+	source = https://github.com/libsdl-org/sdl2-compat/releases/download/release-2.32.66/sdl2-compat-2.32.66-win32-x64.zip
+	source = https://github.com/libsdl-org/sdl2-compat/releases/download/release-2.32.66/sdl2-compat-2.32.66-win32-x86.zip
+	validpgpkeys = 0900104363B4C9D4223DE149D913FE7D4B61D39B
+	sha256sums = 8994fac2c4045637ab6e227d3296f515dd994999632531e6079615d76a3e2f45
+	sha256sums = 592ab87a325231ef94f05ac32199fcc9d74ab45ee26593d912e3c630b3cb514c
+
+pkgname = sdl2-compat-win32
+	arch = x86_64
+
+pkgname = lib32-sdl2-compat-win32
+	arch = i686
