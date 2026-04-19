@@ -1,6 +1,6 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=veila-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Secure, elegant, and fast Wayland screen locker"
 arch=('x86_64')
@@ -14,11 +14,12 @@ optdepends=('systemd: enable the bundled user service with systemctl --user')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/naurissteins/Veila/releases/download/$pkgver/veila-$pkgver-x86_64-linux.tar.gz"
 )
-sha256sums=('ef123717137ca93e6558d37a2fa9f27ffd2b93aa58624722249edd05042b51f0')
+sha256sums=('1543f21d8d8660b05a5d3deb69909d86812f850cc8460f169d9d1e4035a998ed')
 
 package() {
   cd "veila-$pkgver-x86_64-linux"
 
+  install -Dm755 bin/veila "$pkgdir/usr/bin/veila"
   install -Dm755 bin/veilad "$pkgdir/usr/bin/veilad"
   install -Dm755 bin/veila-curtain "$pkgdir/usr/bin/veila-curtain"
 
