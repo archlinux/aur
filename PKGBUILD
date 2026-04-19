@@ -1,6 +1,6 @@
 pkgname=cmdcreate
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.2.4
+pkgrel=1
 pkgdesc="Allows you to create custom commands for your custom scripts"
 arch=('x86_64' 'aarch64') 
 url="https://github.com/owen-debiasio/cmdcreate"
