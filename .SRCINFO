@@ -1,0 +1,16 @@
+pkgbase = r-leaflegend
+	pkgdesc = Add Custom Legends to 'leaflet' Maps
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=leaflegend
+	arch = any
+	license = MIT
+	depends = r>=3.3.0
+	depends = r-base64enc
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-leaflet
+	source = https://cran.r-project.org/src/contrib/leaflegend_1.2.1.tar.gz
+	b2sums = 29a54ea6bc5b842bbd5eba270b713129a16bc7025add0daabee038ee1dc4e1bd6fff731f4442b4bb36334f58aa96410844a96ebed5ba1f8f0f9865264881c892
+
+pkgname = r-leaflegend
