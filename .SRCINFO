@@ -1,0 +1,17 @@
+pkgbase = mcl-launcher
+	pkgdesc = Minecraft launcher TUI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/objz/mcl
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = rust
+	makedepends = cargo
+	provides = mcl-launcher
+	conflicts = mcl-launcher-bin
+	conflicts = mcl-launcher-git
+	source = https://github.com/objz/mcl/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = mcl-launcher
