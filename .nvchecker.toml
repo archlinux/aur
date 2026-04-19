@@ -1,0 +1,3 @@
+[netscan-tui]
+source = "cratesio"
+cratesio = "netscan-tui"

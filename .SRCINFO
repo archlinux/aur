@@ -1,0 +1,21 @@
+pkgbase = netscan-tui
+	pkgdesc = The continuous attack surface monitor — a TUI workflow for nmap with scan history, differential scanning, and opt-in AI triage
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/matthart1983/netscan
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nasm
+	depends = glibc
+	depends = libgcc
+	depends = nmap
+	provides = netscan
+	options = !lto
+	options = !strip
+	source = netscan-0.8.1.crate::https://crates.io/api/v1/crates/netscan-tui/0.8.1/download
+	sha256sums = da98277759444dbc3a6def55e1e1e0e72ed35385ebe8b3c1b8096080a6a6dd10
+
+pkgname = netscan-tui
