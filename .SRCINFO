@@ -1,15 +1,15 @@
 pkgbase = chiasmus
 	pkgdesc = MCP server for formal verification with Z3, Prolog, and tree-sitter
-	pkgver = 0.1.17
+	pkgver = 0.1.18
 	pkgrel = 1
 	url = https://github.com/yogthos/chiasmus
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs>=20
-	noextract = chiasmus-0.1.17.tgz
+	noextract = chiasmus-0.1.18.tgz
 	options = !debug
-	source = chiasmus-0.1.17.tgz::https://registry.npmjs.org/chiasmus/-/chiasmus-0.1.17.tgz
-	sha256sums = 683c6fab143e3c02d337c9af0616dc981074b545c27ff4d06ef08194108fc165
+	source = chiasmus-0.1.18.tgz::https://registry.npmjs.org/chiasmus/-/chiasmus-0.1.18.tgz
+	sha256sums = 93acf74e08259909de98f5344fc48207b6258c7c9ad957bffae5b27bc070ca00
 
 pkgname = chiasmus
