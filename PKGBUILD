@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libcerf
-pkgver=2.4
+pkgver=3.3
 pkgrel=1
 arch=(any)
 url="https://jugit.fz-juelich.de/mlz/libcerf/"
@@ -9,7 +9,7 @@ depends=(mingw-w64-crt)
 makedepends=(mingw-w64-cmake)
 options=('!buildflags' 'staticlibs' '!strip')
 source=(git+https://jugit.fz-juelich.de/mlz/libcerf.git#tag=v$pkgver)
-sha256sums=('6970f3c2a99f6ed4f5de6e91e2bfeea338b6d5e424a4d26a05e7978825a41273')
+sha256sums=('504fd78f65361b6a40a54be4dd48afdbb6c82eab73fff28dea7a2079df726644')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -17,10 +17,14 @@ prepare () {
   cd "${srcdir}"/libcerf
 
   # install dll into /bin
-  sed -i "s|RUNTIME DESTINATION \${CMAKE_INSTALL_LIBDIR}|RUNTIME DESTINATION \${CMAKE_INSTALL_BINDIR}|g" lib/CMakeLists.txt
+  sed -i "s|RUNTIME DESTINATION \${CMAKE_INSTALL_LIBDIR}|RUNTIME DESTINATION \${CMAKE_INSTALL_BINDIR}|g" cmake/buildLib.cmake
+
+  # allow building  C variant
+  sed -i "s|WIN32|MSVC|g" CMakeLists.txt
+  sed -i "s|#    if _WIN32|#    if _MSC_VER|g" lib/cerf.h
 
   # dont build tests
-  rm test/*.c
+  sed -i "/add_subdirectory(test/d" CMakeLists.txt
 }
 
 build() {
