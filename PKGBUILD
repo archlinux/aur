@@ -2,7 +2,7 @@
 
 pkgname=whydpi-git
 _pkgname=whydpi
-pkgver=0.2.0.r0.gb45a5d2
+pkgver=0.2.8.r0.g77dc3dd
 pkgrel=1
 pkgdesc="Adaptive, per-SNI DPI bypass that learns optimal TLS fragmentation per host (git, main branch)"
 arch=('any')
@@ -14,6 +14,9 @@ depends=(
 )
 optdepends=(
   'systemd: run whydpi as a service at boot'
+  'python-pystray: system-tray icon with Start/Stop/status from the desktop'
+  'python-pillow: icon rendering for the tray'
+  'libnotify: desktop toasts on tray startup and state change'
 )
 makedepends=(
   'git'
@@ -47,13 +50,19 @@ build() {
 package() {
   cd "${_pkgname}"
 
-  # Python module + console_script
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  # Systemd unit (optional; user enables it explicitly)
   install -Dm644 whydpi.service "${pkgdir}/usr/lib/systemd/system/whydpi.service"
-
-  # License & docs
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  install -Dm644 packaging/desktop/whydpi-tray.desktop \
+    "${pkgdir}/usr/share/applications/whydpi-tray.desktop"
+  install -Dm644 packaging/desktop/whydpi-tray.desktop \
+    "${pkgdir}/etc/xdg/autostart/whydpi-tray.desktop"
+
+  for sz in 16 32 48 64 128 256 512; do
+    install -Dm644 "assets/icon-${sz}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/apps/whydpi.png"
+  done
 }
