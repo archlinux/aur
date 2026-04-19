@@ -1,0 +1,67 @@
+# Maintainer: Chuanshanjia <1845776552@qq.com>
+# Based on Qualcomm Software Center 1.26.4
+
+pkgname=qualcomm-software-center
+pkgver=1.26.4
+pkgrel=1
+pkgdesc="Qualcomm Software Center - Discover and download software distributions, service tasks, tools and change requests"
+arch=('x86_64')
+url="https://www.qualcomm.com/site/privacy"
+license=('custom')
+depends=('electron32' 'hicolor-icon-theme')
+makedepends=()
+install=qualcomm-software-center.install
+provides=('qualcomm-software-center')
+conflicts=()
+backup=()
+options=('!strip' '!emptydirs')
+source=("https://softwarecenter.qualcomm.com/api/download/software/tools/Qualcomm_Software_Center/Linux/Debian/${pkgver}/QualcommSoftwareCenter${pkgver}.Linux-x86.deb"
+        "qualcomm-software-center.sh"
+        "qualcomm-software-center.install")
+sha256sums=('b10cb470c94b6e853725ff2f07ec6e194c7707dcc8523c6c0be59f93c752bc6e'
+            'f877241c7daeb0e8f8f21fe4fa858479d8aabdd88aaf1e8ba8a3e8e93e72a933'
+            '9b58edaa2f2afd61a52b8145facd4cb793481edaf5e4d9f9dd8093a099b5822b')
+
+prepare() {
+    # 解压deb包
+    ar x "QualcommSoftwareCenter${pkgver}.Linux-x86.deb"
+
+    # 解压data.tar.xz
+    mkdir -p temp_extract
+    tar -xf data.tar.xz -C temp_extract
+
+    # 修改应用代码中的资源路径（保持原deb包路径不变）
+    if [[ -d "temp_extract/opt/qcom/softwarecenter/bin/resources/app" ]]; then
+        find "temp_extract/opt/qcom/softwarecenter/bin/resources/app" -type f -name "*.js" -exec sed -i "s|process.resourcesPath|\"/opt/qcom/softwarecenter/bin/resources\"|g" {} +
+    fi
+}
+
+package() {
+    # 安装启动脚本
+    install -Dm755 "${srcdir}/qualcomm-software-center.sh" "${pkgdir}/usr/bin/${pkgname}"
+
+    # 安装应用资源目录
+    local _lib_dir="${pkgdir}/opt/qcom/softwarecenter/bin"
+    install -d "${_lib_dir}"
+
+    # 安装应用文件（排除原始electron二进制）
+    find temp_extract/opt/qcom/softwarecenter/bin -mindepth 1 -maxdepth 1 ! -name "softwarecenter" -exec cp -r {} "${_lib_dir}/" \;
+
+    # 创建必要的目录并复制桌面文件
+    install -d "${pkgdir}/usr/share/applications"
+    cp temp_extract/usr/share/applications/qualcommsoftwarecenter.desktop "${pkgdir}/usr/share/applications/"
+    sed -i "s|Exec=/opt/qcom/softwarecenter/bin/softwarecenter|Exec=/usr/bin/${pkgname}|g" "${pkgdir}/usr/share/applications/qualcommsoftwarecenter.desktop"
+
+    # 复制图标
+    install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+    cp temp_extract/opt/qcom/softwarecenter/bin/resources/app/dist/assets/icons/software-center.png \
+       "${pkgdir}/usr/share/icons/hicolor/256x256/apps/qualcommsoftwarecenter.png"
+
+    
+    # 复制许可证
+    install -Dm644 "temp_extract/opt/qcom/softwarecenter/bin/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # 清理临时文件
+    rm -rf temp_extract
+    rm -f control.tar.xz data.tar.xz debian-binary
+}
