@@ -2,11 +2,11 @@
 # Contributor: Alexey Stukalov <astukalov@gmail.com>
 
 pkgname=smartgit
-pkgver=25.1.110
+pkgver=25.1.128
 _pkgver=$(echo "${pkgver//./_}" | cut -d_ -f -4)
-pkgrel=3
+pkgrel=1
 pkgdesc='Git client with Hg and SVN support.'
-arch=('any')
+arch=('x86_64')
 url="https://www.smartgit.dev/"
 license=('LicenseRef-custom')
 depends=('desktop-file-utils' 'git' 'gtk3' 'which')
@@ -14,7 +14,7 @@ optdepends=('mercurial: hg repositories support')
 replaces=('smartgithg')
 source=("https://download.smartgit.dev/${pkgname}/${pkgname}-${_pkgver}-linux-amd64.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('90d6f72f55ee00cb2c5f781523d97fde5eb4b1adb8bb869f7fb3dc0b864e4fcb'
+sha256sums=('5775ebd37716aaf65bb1274c10b38819434f39eebe2d3b4ea72d88bfe4312c19'
             'bb5665e9c93640b311dbe8b633da65e3c72a712a3dc9655c3274a3542a688a32')
 
 package() {
