@@ -1,6 +1,6 @@
 pkgname=psp-binutils
-pkgver=2.37.0
-pkgrel=2
+pkgver=2.44
+pkgrel=1
 pkgdesc="binutils with PSP patch applied (psp)"
 arch=(x86_64)
 url="https://github.com/pspdev/binutils-gdb"
