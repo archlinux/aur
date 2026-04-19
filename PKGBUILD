@@ -1,5 +1,5 @@
 pkgname=rudo-bin
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='Elegant Wayland dock with niri-aware integration'
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('unknown')
 depends=('gtk4' 'gtk4-layer-shell')
 options=(!strip)
 source=("rudo-${pkgver}.tar.gz::https://github.com/skorotkiewicz/rudo/releases/download/v${pkgver}/rudo-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('b8b21a4344d1b026010283335d6b0d461db76784e9dc9ad961f678b39a350416')
+sha256sums=('a32cbcb65a2806d9616a9ec7c200ea0b0042d2233364f83375d572af5f43e817')
 
 package() {
     install -Dm755 rudo "${pkgdir}/usr/bin/rudo"
