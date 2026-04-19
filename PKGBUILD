@@ -1,7 +1,8 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Christos Longros <chris.longros@gmail.com>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
 _cranname=brotli
-_cranver=1.3.0
+_cranver=1.3.2
 pkgname=r-${_cranname,,}
 pkgdesc="A Compression Format Optimized for the Web"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -27,7 +28,7 @@ checkdepends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("deba182069fe41fd14fac53ef6ebc52abc7e7845aaa8d740416d48ac573b43877d386d5810a9c593d3031ab6d5b6ca760752b8f5a299163e56db5e40c462e42e")
+b2sums=("e4a14de978e10657db8ddc050bd9907840474c2b24968a21b64cea95084f68ed76d556ae9bf25073966105a1107eab1ec126eff96ac6752f8b6bf758aab0bb8e")
 
 build() {
     mkdir -p "${srcdir}/build/"
