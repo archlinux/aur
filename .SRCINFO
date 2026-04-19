@@ -1,6 +1,6 @@
 pkgbase = termide-bin
 	pkgdesc = Cross-platform terminal IDE, file manager and virtual terminal (binary release)
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/termide/termide
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = termide-bin
 	depends = gcc-libs
 	provides = termide
 	conflicts = termide
-	source_x86_64 = termide-bin-0.19.0-x86_64.tar.gz::https://github.com/termide/termide/releases/download/0.19.0/termide-0.19.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 96f73927a01bfd058a43eba68474706984aa664a7b57520a0c3afe06cf35bd0f
-	source_aarch64 = termide-bin-0.19.0-aarch64.tar.gz::https://github.com/termide/termide/releases/download/0.19.0/termide-0.19.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = b8eac19efa8438ee70eb603caffa3bcf0535f5a6f4ce76b4ff53b6ce824bd338
+	source_x86_64 = termide-bin-0.20.0-x86_64.tar.gz::https://github.com/termide/termide/releases/download/0.20.0/termide-0.20.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = fddf113bb8cbb545b95955f33a9405f1b94853e9b8cdda3d45332a14ed5d02c3
+	source_aarch64 = termide-bin-0.20.0-aarch64.tar.gz::https://github.com/termide/termide/releases/download/0.20.0/termide-0.20.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4817d7dfb0ffa616b238c1e6ab30a09a733ba20c4efdb2e27a3e105ca3e6b001
 
 pkgname = termide-bin
