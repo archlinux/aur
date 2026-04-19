@@ -1,7 +1,7 @@
 pkgbase = r-utf8
 	pkgdesc = Unicode Text Processing
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=utf8
 	arch = i686
 	arch = x86_64
