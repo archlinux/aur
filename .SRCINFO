@@ -1,0 +1,16 @@
+pkgbase = cathode-phosphor-icon-theme-git
+	pkgdesc = Green phosphor CRT-style icon theme for GNOME, inspired by retro terminal aesthetics
+	pkgver = r3.4a99411
+	pkgrel = 1
+	url = https://github.com/peteonrails/cathode-phosphor-icon-theme
+	arch = any
+	license = CC-BY-SA-4.0
+	makedepends = git
+	depends = hicolor-icon-theme
+	optdepends = yaru-icon-theme: fallback icons for uncovered names
+	provides = cathode-phosphor-icon-theme
+	conflicts = cathode-phosphor-icon-theme
+	source = cathode-phosphor-icon-theme-git::git+https://github.com/peteonrails/cathode-phosphor-icon-theme.git
+	sha256sums = SKIP
+
+pkgname = cathode-phosphor-icon-theme-git
