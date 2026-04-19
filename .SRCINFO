@@ -1,0 +1,15 @@
+pkgbase = r-unifir
+	pkgdesc = A Unifying API for Calling the 'Unity' '3D' Video Game Engine
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=unifir
+	arch = any
+	license = MIT
+	depends = r>=3.5.0
+	depends = r-glue
+	depends = r-proceduralnames
+	depends = r-r6
+	source = https://cran.r-project.org/src/contrib/unifir_0.2.4.tar.gz
+	b2sums = ddfbbde989b3453cf56fda0bfd723820dbd0cdaa7939c5233c623c9f296d49affd17b745c56976c89d70a7f27dfc2445de2b6df687c6d86295801ace5e4e777c
+
+pkgname = r-unifir
