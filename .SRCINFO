@@ -1,6 +1,6 @@
 pkgbase = amalthea-ldc2
 	pkgdesc = Small general-purpose library for the D programming language
-	pkgver = 1.17.1
+	pkgver = 1.17.2
 	pkgrel = 1
 	url = https://gitlab.com/os-18/amalthea
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = amalthea-ldc2
 	depends = pkg-config
 	depends = glib2
 	depends = ldc
-	source = amalthea-ldc2-1.17.1.tar.gz::https://gitlab.com/os-18/amalthea/-/archive/v1.17.1/amalthea-v1.17.1.tar.gz
-	sha256sums = ec3d12dd33cf43d63fcda21c9785bd7e2db9c000cc24369a530f8d2462131d91
+	source = amalthea-ldc2-1.17.2.tar.gz::https://gitlab.com/os-18/amalthea/-/archive/v1.17.2/amalthea-v1.17.2.tar.gz
+	sha256sums = af7865fce22d29905b10bf1f87a0cf059159cc1251f7563eabafda39dca391cf
 
 pkgname = amalthea-ldc2
