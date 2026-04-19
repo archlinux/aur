@@ -10,12 +10,11 @@ epoch=1
 pkgver=3.1.13
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
 _splTokenCliVersion=5.5.0
-pkgrel=3
-pkgdesc="A fast, secure, and censorship resistant blockchain."
+pkgrel=4
 url="https://github.com/anza-xyz/agave"
 arch=(x86_64)
 license=(Apache-2.0)
-makedepends=(git protobuf clang llvm curl)
+makedepends=(git protobuf clang llvm curl cargo)
 source=(git+https://github.com/anza-xyz/agave.git#tag=v$pkgver
         git+https://github.com/solana-program/token-2022.git#tag=cli@v$_splTokenCliVersion
         $pkgbase.sysusers
@@ -26,11 +25,11 @@ sha256sums=('d8fc8ff23288140bac1bb7a932cdb0a09a075d56136078a18f38eef5b3a52e0b'
             'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
             'a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b'
             'f2251e4057350ec795d6ea5402cffbaa5678883996e68ba8688c3f250cb9a173')
-install=$pkgbase.install
 options=(!lto)
 
 # Build lists
-# Core binaries (non-DCOU) #https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/agave-build-lists.sh
+# https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/agave-build-lists.sh
+# Core binaries (non-DCOU)
 _MAIN_BINS=(
   cargo-build-sbf
   cargo-test-sbf
@@ -149,7 +148,6 @@ package_solana-cli() {
   depends=(bzip2 glibc libgcc systemd-libs)
   provides=("solana-cli=${epoch}:${pkgver}-${pkgrel}" "spl-token")
   conflicts=(solana-bin)
-  install=$pkgbase.install
 
   cd "$srcdir/agave"
   for bin in "${_solana_bins[@]}"; do
@@ -187,6 +185,9 @@ package_solana-dev() {
   optdepends=('cargo: required for cargo-build-sbf and cargo-test-sbf')
   provides=("solana-dev=${epoch}:${pkgver}-${pkgrel}")
   conflicts=(solana-dev-bin)
+  
+  echo "Add yourself to the solana group to be able to install"
+  echo "dependencies when using cargo-build-bpf"
 
   cd "$srcdir/agave"
   for bin in "${_dev_bins[@]}"; do
@@ -206,7 +207,7 @@ package_solana-dev() {
 }
 
 package_solana() {
-  pkgdesc="Solana blockchain (meta package — includes CLI tools, validator and developer tools)"
+  pkgdesc="A fast, secure, and censorship resistant blockchain (meta package)"
   depends=(solana-cli agave-validator solana-dev)
   arch=(any)
 }
