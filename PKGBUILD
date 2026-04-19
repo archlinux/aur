@@ -1,7 +1,7 @@
 # Maintainer: Amodio <jacques@boscq.fr>
 pkgname=labar
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Launch bar for Wayland'
 arch=('x86_64' 'aarch64' 'riscv64' 'mips64el' 'ppc64le')
 url='https://github.com/Amodio/labar'
