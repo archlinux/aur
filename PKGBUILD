@@ -34,8 +34,8 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
-    pnpm install
-    pnpm build:linux
+    pnpm run build
+    pnpm exec electron-builder --linux dir --config electron-builder.yml --publish never
     rm -rf "release/${pkgver}/linux-unpacked/resources/app-update.yml"
 }
 
