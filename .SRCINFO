@@ -1,6 +1,6 @@
 pkgbase = llm
 	pkgdesc = A CLI tool and Python library for interfacing with popular large language models.
-	pkgver = 0.29
+	pkgver = 0.30
 	pkgrel = 1
 	url = https://github.com/simonw/llm
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = llm
 	depends = python-ulid
 	depends = python-puremagic
 	depends = python-httpx
-	source = llm-0.29.tar.gz::https://github.com/simonw/llm/archive/refs/tags/0.29.tar.gz
-	sha256sums = 4607056c76cda8b7339fac576792fca79bc1ed3ff227dc177b852b870035c88d
+	source = llm-0.30.tar.gz::https://github.com/simonw/llm/archive/refs/tags/0.30.tar.gz
+	sha256sums = 2e0905db072846fb0d82d884958a7bab0e58f1f8948e9dae3395cbc3720df3f8
 
 pkgname = llm
