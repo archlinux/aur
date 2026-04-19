@@ -2,31 +2,32 @@
 pkgname=shadps4-qtlauncher-pre-release-bin
 _pkgname=shadPS4QtLauncher
 _pkgid=net.shadps4.shadps4-qtlauncher
-pkgver=20260304.034d58e
+pkgver=20260419.6671c44
 pkgrel=1
 pkgdesc="The official Qt launcher for shadps4 emulator (Pre-release version)"
 arch=('x86_64')
 url="https://github.com/shadps4-emu/shadps4-qtlauncher"
 license=('GPL-2.0-only')
 depends=(
-  'libx11'
-  'libglvnd'
-  'wayland'
-  'libxcb'
-  'fontconfig'
-  'libdrm'
-  'freetype2'
-  'glibc'
-  'gcc-libs'
-  'zlib'
-  'bash'
-  'e2fsprogs'
-  'libgpg-error'
+    'libx11'
+    'libglvnd'
+    'libxcb'
+    'fontconfig'
+    'libdrm'
+    'freetype2'
+    'glibc'
+    'zlib'
+    'bash'
+    'e2fsprogs'
+    'libgpg-error'
+    'libgcc'
+    'libstdc++'
 )
+optdepends=('wayland')
 makedepends=('curl' 'jq' 'unzip')
 provides=('shadps4-qtlauncher')
 conflicts=('shadps4-qtlauncher')
-options=('!strip' '!zipman')
+options=('!strip' '!zipman' '!emptydirs')
 source=("${pkgname}::https://api.github.com/repos/shadps4-emu/shadps4-qtlauncher/releases")
 sha256sums=('SKIP')
 
