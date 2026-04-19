@@ -1,0 +1,43 @@
+pkgbase = r-finalfit
+	pkgdesc = Quickly Create Elegant Regression Results Tables and Plots when Modelling
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=finalfit
+	arch = any
+	license = MIT
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-bdsmatrix
+	depends = r-broom
+	depends = r-cowplot
+	depends = r-dplyr
+	depends = r-forcats
+	depends = r-ggally
+	depends = r-ggplot2
+	depends = r-lme4
+	depends = r-magrittr
+	depends = r-mice>=3.17.0
+	depends = r-pillar
+	depends = r-proc
+	depends = r-purrr
+	depends = r-scales
+	depends = r-stringr
+	depends = r-tidyr>=1.0.0
+	optdepends = r-cmprsk
+	optdepends = r-coxme
+	optdepends = r-hmisc
+	optdepends = r-knitr
+	optdepends = r-lmtest
+	optdepends = r-readr
+	optdepends = r-rlang
+	optdepends = r-rmarkdown
+	optdepends = r-rstan
+	optdepends = r-sandwich
+	optdepends = r-survey
+	optdepends = r-survminer
+	optdepends = r-testthat
+	optdepends = r-tibble
+	source = https://cran.r-project.org/src/contrib/finalfit_1.1.0.tar.gz
+	sha256sums = 480bf93724b66a1565699c4c6411a2b509ef740984f8ba8320621784181dd3a2
+
+pkgname = r-finalfit
