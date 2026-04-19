@@ -21,6 +21,7 @@ depends=(
   'libzip'
   'plutosvg'
   'systemd-libs'
+  'vulkan-icd-loader'
   'zlib'
   'zstd'
 )
@@ -33,11 +34,7 @@ makedepends=(
   'spirv-cross'
   'vulkan-headers'
 )
-optdepends=(
-  'vulkan-icd-loader: Vulkan renderer support'
-  'shaderc: Vulkan renderer support'
-  'spirv-cross: Vulkan renderer support'
-)
+
 provides=('goosestation-libretro')
 conflicts=('goosestation-libretro')
 source=(
