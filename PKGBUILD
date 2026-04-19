@@ -17,6 +17,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "$srcdir"/zlib-${pkgver}/contrib/minizip
+  # keep original libminizip-1.dll runtime name
+  echo 'set_target_properties(libminizip PROPERTIES RUNTIME_OUTPUT_NAME minizip-1)' >> CMakeLists.txt
 }
 
 
