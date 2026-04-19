@@ -1,7 +1,7 @@
 # Maintainer: root.nix.dk
 pkgname='arch-udev-usb-sync'
 _orgname='udev-usb-sync'
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Fine tune write cache and impose buffer limits when USB storage device is plugged'
 arch=('any')
@@ -13,7 +13,7 @@ backup=("etc/${_orgname}/${_orgname}.conf")
 conflicts=('udev-usb-sync')
 install="${pkgname}.install"
 source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('3521ec30dc7f769e80376a6f1b90cdc5b919a20fd9061cdaec50888f7fe1c72b')
+sha256sums=('306b5326d33db9a74a7e3467812e4168f1cc29ade37b5fb6a080f4fdf5e86f23')
 
 package() {
     cd "$srcdir/udev-usb-sync"
