@@ -1,7 +1,7 @@
 # Maintainer: nagamine-git <nagamine-git@users.noreply.github.com>
 pkgname=way-thumbsense-git
 _pkgname=way-thumbsense
-pkgver=r7.g66fbff7
+pkgver=r8.gdd77470
 pkgrel=1
 pkgdesc="ThumbSense for Linux/Wayland — hold a virtual key while touching the trackpad (git)"
 arch=('x86_64' 'aarch64')
