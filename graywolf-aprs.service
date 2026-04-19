@@ -6,13 +6,13 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/graywolf -config /var/lib/graywolf-aprs/graywolf.db -modem /usr/bin/graywolf-modem -http 0.0.0.0:8080
+ExecStart=/usr/bin/graywolf -config /var/lib/graywolf-aprs/graywolf.db -history-db /var/lib/graywolf-aprs/graywolf-history.db -modem /usr/bin/graywolf-modem -http 0.0.0.0:8080
 Restart=on-failure
 RestartSec=5
 
 User=graywolf-aprs
 Group=graywolf-aprs
-SupplementaryGroups=audio uucp
+SupplementaryGroups=audio uucp plugdev gpio
 
 # Writable state for SQLite database
 StateDirectory=graywolf-aprs

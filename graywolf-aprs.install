@@ -1,5 +1,7 @@
 post_install() {
   systemd-sysusers
+  udevadm control --reload-rules 2>/dev/null || true
+  udevadm trigger --subsystem-match=hidraw 2>/dev/null || true
   systemctl daemon-reload
   echo ""
   echo "==> Graywolf installed."
@@ -15,6 +17,8 @@ post_install() {
 }
 
 post_upgrade() {
+  udevadm control --reload-rules 2>/dev/null || true
+  udevadm trigger --subsystem-match=hidraw 2>/dev/null || true
   systemctl daemon-reload
   if systemctl is-active --quiet graywolf-aprs.service; then
     systemctl restart graywolf-aprs.service
