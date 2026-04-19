@@ -1,7 +1,7 @@
 pkgbase = r-lahman
 	pkgdesc = Sean ‘Lahman’ Baseball Database
 	pkgver = 14.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=Lahman
 	arch = any
 	license = GPL2
