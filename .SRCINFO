@@ -1,6 +1,6 @@
 pkgbase = python-llm-ollama
 	pkgdesc = LLM plugin providing access to models running on an Ollama server
-	pkgver = 0.15.1
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/taketwo/llm-ollama
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-llm-ollama
 	depends = python-llm
 	depends = python-ollama
 	depends = python-pydantic
-	source = python-llm-ollama-0.15.1.tar.gz::https://github.com/taketwo/llm-ollama/archive/refs/tags/0.15.1.tar.gz
-	sha256sums = c237b719911e821c95c260421e174d7c61b420e7e06df1c84ab71287b378b0d7
+	source = python-llm-ollama-0.16.0.tar.gz::https://github.com/taketwo/llm-ollama/archive/refs/tags/0.16.0.tar.gz
+	sha256sums = 95a47df1670b830753f707c14e6dea6991dd37319ea5e0b7f50dbefa6dcd41df
 
 pkgname = python-llm-ollama
