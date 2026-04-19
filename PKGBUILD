@@ -4,9 +4,9 @@
 
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=6.6.4
-_td_commit=0ae923c493bceb75433de2682ba8ae29cc7bf88d
-pkgrel=2
+pkgver=6.7.6
+_td_commit=51743dfd01dff6179e2d8f7095729caa4e2222e9
+pkgrel=1
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -18,7 +18,6 @@ provides=('telegram-desktop')
 depends=(
   'abseil-cpp'
   'ada'
-  'boost-libs'
   'ffmpeg'
   'glib2'
   'glibc'
@@ -51,6 +50,7 @@ depends=(
 )
 makedepends=(
   'boost'
+  'boost-libs'
   'cmake'
   'git'
   'glib2-devel'
@@ -73,13 +73,13 @@ optdepends=(
 source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
   "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
-  0001-kde-theme-injection-fix.patch
   tdesktop-fix-minizip-includes.patch
+  0001-kde-theme-injection-fix.patch
 )
-sha512sums=('2665473471c694b4116b8f5e3aa663ab1da0606ddd658f5f637bb9845b27f1090fe559442a9841580cfe81739554f3e2d254e6d9ba754dca35ed7357f50c6862'
-            'bd299ce4cc85fac7567cefca9392820d97d9663560ebc990ba5d1b73f92f01ef43b1fe29c89082105679223b8a3bfb40c364266b9a6021ec001ab91452e810e1'
-            '6544086fd4946384509c053edd447a59e9ae405af65f9a7fa632ae5734099ef57b7211b7dbebf7a0c38665e05dd7c4d2414fa5d2cb5c6ee718cc5e824f5f509a'
-            'd9765588e92f154d83b95dc2840207bf22b26b6ca37b4d5cdfdb5e27a00c9e1ebcc9cd475a96bbcc5b02c24f6892320e009f843aa6b172a1820814b952a772eb')
+sha512sums=('b3f77e752bfb3a1b527fe29b7a8381ada1f53589f694121e17212fcee99ce7de404e979a6437ea807f55ac7e4d3b2e8b5c24da346cb3b66274223a4aca49f600'
+            'd622b8f3580ee49415546d025c4ba45f5b2de50b315fc379dc57c0427c5f815c7cc3820cca937c12182ee461641bb61f87ebc99b6c74a1a666cea9a08f0f41a0'
+            'd9765588e92f154d83b95dc2840207bf22b26b6ca37b4d5cdfdb5e27a00c9e1ebcc9cd475a96bbcc5b02c24f6892320e009f843aa6b172a1820814b952a772eb'
+            '6544086fd4946384509c053edd447a59e9ae405af65f9a7fa632ae5734099ef57b7211b7dbebf7a0c38665e05dd7c4d2414fa5d2cb5c6ee718cc5e824f5f509a')
 
 prepare() {
   # Fix tray unread counter in KDE
