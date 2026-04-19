@@ -80,7 +80,7 @@ post_install() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 0.6.5"
+    echo "==> Voxtype upgraded to 0.6.6"
     echo ""
 
     CPU_VARIANT=$(_detect_cpu)
@@ -89,10 +89,12 @@ post_upgrade() {
     _detect_gpu
 
     echo ""
-    echo "    v0.6.5: Eager processing, multi-GPU device selection, Parakeet TDT models."
-    echo "    Transcription starts while you're still recording for lower latency."
-    echo "    Hybrid GPU users: set gpu_device in config.toml to pick the right GPU."
-    echo "    New models: parakeet-tdt-0.6b-v2 and parakeet-tdt-0.6b-v2-int8."
+    echo "    v0.6.6: Media pause, audio feedback, KDE Plasma support, 7 bug fixes."
+    echo "    New: pause_media = true pauses music during recording (MPRIS/playerctl)."
+    echo "    New: audio feedback plays when transcription completes."
+    echo "    KDE Plasma keybinding docs added to README and user manual."
+    echo "    Fixes: ydotool on Fedora, eitype paste mode, duplicate notifications,"
+    echo "           xclip on X11, text replacement ordering, remote initial_prompt."
     echo ""
     echo "    Restart the daemon to apply updates:"
     echo "      systemctl --user restart voxtype"
