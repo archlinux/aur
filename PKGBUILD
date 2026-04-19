@@ -2,8 +2,8 @@
 
 _pkgname=sing-box
 pkgname="$_pkgname"-ref1nd-bin
-_pkgver=1.13.8-reF1nd # renovate: datasource=github-tags depName=reF1nd/sing-box-releases
-pkgver="${_pkgver//-/\~}"
+_pkgver=1.13.8-reF1nd # renovate: datasource=github-releases depName=reF1nd/sing-box-releases
+pkgver="${_pkgver//-/\.}"
 pkgrel=1
 
 pkgdesc='The universal proxy platform.'
