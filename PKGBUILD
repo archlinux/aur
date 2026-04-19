@@ -1,5 +1,5 @@
 pkgname=superlu_mt
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Set of subroutines to solve a sparse linear system (multithreading extension)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=(libgcc libgomp glibc blas)
 makedepends=(gcc-fortran cmake)
 options=('staticlibs')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b6de5c8ebf8fa6c7c0d607f0607f522454315632ae55b70babf908b94e9602cb')
+sha256sums=('bc6659b145347fa77f90902827c140204c779f297ecb0dddb02a9d71dd2963a9')
 
 build() {
   cd "$srcdir/superlu_mt-${pkgver}"
