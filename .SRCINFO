@@ -1,0 +1,33 @@
+pkgbase = r-terrainr
+	pkgdesc = Landscape Visualizations in R and 'Unity'
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=terrainr
+	arch = any
+	license = MIT
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-base64enc
+	depends = r-ggplot2>=3.4.0
+	depends = r-glue
+	depends = r-httr
+	depends = r-magick>=2.5.0
+	depends = r-png
+	depends = r-rlang
+	depends = r-sf>=1.0-5
+	depends = r-terra
+	depends = r-unifir
+	depends = r-units
+	optdepends = r-brio
+	optdepends = r-covr
+	optdepends = r-jpeg
+	optdepends = r-knitr
+	optdepends = r-progress
+	optdepends = r-progressr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tiff
+	source = https://cran.r-project.org/src/contrib/terrainr_0.7.6.tar.gz
+	sha256sums = 976680a09a859e87217c093bc2f8c7740444cf42fca39795a8a7ccc182d27a2a
+
+pkgname = r-terrainr
