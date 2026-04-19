@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Simple network checker with JSON configuration"
 arch=('any')
 url="https://github.com/radlesner/netchecker"
-license=('GPL-2.0')
+license=('GPL-3.0')
 depends=('bash' 'jq' 'iputils')
 
 source=("$pkgname::git+$url#tag=v$pkgver")
