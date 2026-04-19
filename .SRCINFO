@@ -1,0 +1,13 @@
+pkgbase = r-treesitter.r
+	pkgdesc = 'R' Grammar for 'Tree-Sitter'
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=treesitter.r
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = r>=4.3.0
+	source = https://cran.r-project.org/src/contrib/treesitter.r_1.2.0.tar.gz
+	b2sums = f4ec9f8a6da2fb4048ead7b794d7cb13013d1c5e01e16d7a8d82227896e903dd3f7dd9088cae0ed66089313190f0ee00260b5e5b6e07139156895f5d163b9780
+
+pkgname = r-treesitter.r
