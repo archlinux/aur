@@ -1,0 +1,19 @@
+pkgbase = ants-bin
+	pkgdesc = Advanced Normalization Tools (ANTs): medical image registration and segmentation (prebuilt binary)
+	pkgver = 2.6.5
+	pkgrel = 1
+	url = https://github.com/ANTsX/ANTs
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	optdepends = r: for R-based ANTs scripts (antsBOLDNetworkAnalysis, antsLaplacianBoundaryCondition, antsNetworkAnalysis)
+	optdepends = perl: for queue-wait helper scripts (waitFor{PBSQ,SGEQ,Slurm}Jobs.pl, antsNeuroimagingBattery)
+	optdepends = bash: for ANTs shell pipelines
+	provides = ants=2.6.5
+	conflicts = ants
+	options = !strip
+	source = https://github.com/ANTsX/ANTs/releases/download/v2.6.5/ants-2.6.5-almalinux9-X64-gcc.zip
+	sha256sums = e7410139964dc493b41be7cef720cc6231ea7456b937505bcf84a424011c3002
+
+pkgname = ants-bin
