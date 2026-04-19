@@ -1,7 +1,7 @@
 pkgbase = r-editdata
 	pkgdesc = 'RStudio' Addin for Editing a 'data.frame'
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=editData
 	arch = any
 	license = GPL3
