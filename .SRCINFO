@@ -1,0 +1,15 @@
+pkgbase = r-pki
+	pkgdesc = Public Key Infrastructure for R Based on the X.509 Standard
+	pkgver = 0.1.15
+	pkgrel = 1
+	url = https://cran.r-project.org/package=PKI
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = r>=2.9.0
+	depends = r-base64enc
+	depends = openssl
+	source = https://cran.r-project.org/src/contrib/PKI_0.1-15.tar.gz
+	b2sums = 446cd53d30d5125f44f88a9005c7f13ecb41809c02bd28131a5395dd1e9b11d939d85231afcd837b6cbe782a2dd6fbe5809d402245fd53d7bd63bdd2f7a61770
+
+pkgname = r-pki
