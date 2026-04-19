@@ -1,6 +1,6 @@
 # Maintainer: LukasYTTT <https://github.com/LukasYTTT>
 pkgname=appinstall
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="A modern GUI for installing and managing AppImages."
 arch=('x86_64')
