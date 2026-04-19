@@ -37,7 +37,8 @@ build() {
   mkdir build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-           -DSFGUI_SUBMODULE=ON
+           -DSFGUI_SUBMODULE=ON \
+           -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 
