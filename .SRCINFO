@@ -1,0 +1,17 @@
+pkgbase = channel-git
+	pkgdesc = input config for river
+	pkgver = 61eda1d
+	pkgrel = 1
+	url = https://codeberg.org/Sivecano/channel
+	arch = x86_64
+	arch = aarch64
+	license = AGPLv3
+	makedepends = zig>=0.16.0
+	depends = wayland
+	depends = libxkbcommon
+	provides = channel
+	conflicts = channel
+	source = git+https://codeberg.org/Sivecano/channel.git
+	sha512sums = SKIP
+
+pkgname = channel-git
