@@ -8,7 +8,7 @@ url="https://github.com/saber-88/wallrift"
 license=('MIT')
 
 depends=('wayland' 'libxkbcommon' 'libglvnd')
-makedepends=('git' 'cmake' 'make' 'gcc')
+makedepends=('git' 'cmake' 'wayland-protocols')
 
 provides=('wallrift')
 conflicts=('wallrift')
