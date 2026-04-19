@@ -8,7 +8,7 @@ pkgdesc="Tools for Units of Measurement"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("GPL3")
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 depends=(

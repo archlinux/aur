@@ -1,7 +1,7 @@
 pkgbase = r-measurements
 	pkgdesc = Tools for Units of Measurement
 	pkgver = 1.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=measurements
 	arch = any
 	license = GPL3
