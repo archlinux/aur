@@ -10,7 +10,6 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 options=('!lto')
-conflicts=('things3-cloud-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/evanpurkhiser/things3-cloud/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('5eab88be323510628c2bf335d20d957347db68f2535a1b690cfc25f8c11afd25')
 
