@@ -1,7 +1,7 @@
 # Maintainer: jingluwei <weijinglu at qq dot com>
 pkgname=cxstudy-wine
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 # https://atomgit.com/JingluWei_chn/cxstudy-wine/tree/master
 pkgdesc="a version of repacked wine app of cxstudy(学习通)"
 arch=('x86_64')
@@ -23,6 +23,6 @@ package() {
   cd "$pkgdir/usr/bin/lib/cxstudy-wine/cxstudy/cxstudy-wine-master-1.4.0.zip/1.4.0/1.4.0/resources"
   tar -zxvf "$pkgdir/usr/bin/lib/cxstudy-wine/cxstudy/cxstudy-wine-master-1.4.0.zip/1.4.0/1.4.0/resources/app.tar.gz"
   rm "$pkgdir/usr/bin/lib/cxstudy-wine/cxstudy/cxstudy-wine-master-1.4.0.zip/1.4.0/1.4.0/resources/app.tar.gz"
-  sudo mv /usr/bin/lib/cxstudy-wine/cxstudy/cxstudy-wine-master-1.4.0.zip/1.4.0/cxstudy-wine.desktop /usr/share/applications/cxstudy-wine.desktop
+  sudo mv $pkgdir/usr/bin/lib/cxstudy-wine/cxstudy/cxstudy-wine-master-1.4.0.zip/1.4.0/cxstudy-wine.desktop /usr/share/applications/cxstudy-wine.desktop
   sudo chmod +x /usr/share/applications/cxstudy-wine.desktop
 }
