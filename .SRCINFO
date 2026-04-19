@@ -1,7 +1,7 @@
 pkgbase = r-diffviewer
 	pkgdesc = HTML Widget to Show File Differences
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=diffviewer
 	arch = any
 	license = MIT
