@@ -1,12 +1,12 @@
 pkgbase = r-stringr
 	pkgdesc = Simple, Consistent Wrappers for Common String Operations
-	pkgver = 1.5.1
-	pkgrel = 1
+	pkgver = 1.6.0
+	pkgrel = 2
 	url = https://cran.r-project.org/package=stringr
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = r>=3.6
+	depends = r>=4.1.0
 	depends = r-cli
 	depends = r-glue>=1.6.1
 	depends = r-lifecycle>=1.0.3
@@ -22,7 +22,7 @@ pkgbase = r-stringr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-tibble
-	source = https://cran.r-project.org/src/contrib/stringr_1.5.1.tar.gz
-	b2sums = 8b8b9fa545798fca619429f17c224f89b18cfff0a2890edf53ac12436df3ef9c3e1309edb42569df72fe3058ac392065d9d3482addce86067dd5918844afa771
+	source = https://cran.r-project.org/src/contrib/stringr_1.6.0.tar.gz
+	b2sums = 7b8675448275c5ac310e86c4f7d6d0065c9c1796c2f65f814e829584a831d078bcd418b38f099906bfe89ec2a739d656cbba6738d0bab99dbd0b97b533752044
 
 pkgname = r-stringr
