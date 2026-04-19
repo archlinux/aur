@@ -1,6 +1,6 @@
 pkgbase = whydpi-git
 	pkgdesc = Adaptive, per-SNI DPI bypass that learns optimal TLS fragmentation per host (git, main branch)
-	pkgver = 0.2.8.r0.g77dc3dd
+	pkgver = 0.3.0.r0.ghead
 	pkgrel = 1
 	url = https://github.com/byrdltd/whyDPI
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = whydpi-git
 	optdepends = python-pystray: system-tray icon with Start/Stop/status from the desktop
 	optdepends = python-pillow: icon rendering for the tray
 	optdepends = libnotify: desktop toasts on tray startup and state change
-	provides = whydpi=0.2.8
+	provides = whydpi=0.3.0
 	conflicts = whydpi
 	source = whydpi::git+https://github.com/byrdltd/whyDPI.git
 	sha256sums = SKIP
