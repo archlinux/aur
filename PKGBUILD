@@ -7,7 +7,7 @@ _overlay_commit=6f006c95f75da69a64efa7bd55818b9558e808d3
 _overlay_raw="https://codeberg.org/hueponik/goosestation-overlay/raw/commit/${_overlay_commit}/games-emulation/goosestation-libretro/files"
 pkgname=${_pkgname}
 pkgver=0+git.${_upstream_commit:0:9}
-pkgrel=5
+pkgrel=6
 pkgdesc='Sony PlayStation libretro core based on goosified DuckStation'
 arch=('x86_64' 'aarch64')
 url='https://codeberg.org/hueponik/goosestation-overlay'
@@ -29,6 +29,9 @@ makedepends=(
   'ed'
   'git'
   'pkgconf'
+  'shaderc'
+  'spirv-cross'
+  'vulkan-headers'
 )
 optdepends=(
   'vulkan-icd-loader: Vulkan renderer support'
