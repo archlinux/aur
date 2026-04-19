@@ -1,7 +1,7 @@
 pkgbase = r-geojsonsf
 	pkgdesc = GeoJSON to Simple Feature Converter
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=geojsonsf
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,6 @@ pkgbase = r-geojsonsf
 	source = https://cran.r-project.org/src/contrib/geojsonsf_2.0.5.tar.gz
 	source = fix-rvalue-ref.patch
 	b2sums = 25b31673a1d0df7ba38edf027f67c96b8aa186568ae3a600a4396a697c63f1cd90680aa2026f2b6f154a34d51ca49379a9c46fbcc1f7a22da8e5dbddc6915233
-	b2sums = SKIP
+	b2sums = c2886074fda8274e8eb34ec82e4f81e92c43f7d275c67b1c6da85fcfaf2fe3f2fcf3820dd66e447029f08fbd63a7f56d4b7e69c856cfad285c517ac9ed2edd2c
 
 pkgname = r-geojsonsf
