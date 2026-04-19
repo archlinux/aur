@@ -39,5 +39,5 @@ package() {
   bsdtar -C "${_builddir}" -xf "${srcdir}/${_srcdir}/src-tauri/target/release/bundle/deb/keyviz_${pkgver}_amd64.deb"
   bsdtar -C "${pkgdir}" -xf "${_builddir}/data.tar.gz"
 
-  sed -i     -e 's/^Name=.*/Name=Keyviz ZH/'     -e 's/^Comment=.*/Comment=Chinese-localized Keyviz/'     -e 's/^Categories=.*/Categories=Utility;/'     "${pkgdir}/usr/share/applications/keyviz.desktop"
+  sed -i     -e 's/^Name=.*/Name=Keyviz 汉化版/'     -e 's/^Comment=.*/Comment=Keyviz 汉化版/'     -e 's/^Categories=.*/Categories=Utility;/'     "${pkgdir}/usr/share/applications/keyviz.desktop"
 }
