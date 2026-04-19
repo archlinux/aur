@@ -1,6 +1,6 @@
 pkgbase = arrpc-bun-bin
 	pkgdesc = TypeScript/Bun port of arRPC - Open Discord RPC server (prebuilt binary)
-	pkgver = 1.3.4
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/Creationsss/arrpc-bun
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = arrpc-bun-bin
 	conflicts = arrpc-bun
 	source = arrpc-bun.service
 	sha256sums = 5b318f9251eb1aa45287e6437e543074933b3a8e6956d2c409fabc41fb9a7909
-	source_x86_64 = arrpc-bun-1.3.4-x86_64::https://github.com/Creationsss/arrpc-bun/releases/download/v1.3.4/arrpc-bun-linux-x64
-	sha256sums_x86_64 = b58ac410cd814ce0147819dd503a0a3c4ced6b13cbb6b7dcb8ef7a79184d7009
-	source_aarch64 = arrpc-bun-1.3.4-aarch64::https://github.com/Creationsss/arrpc-bun/releases/download/v1.3.4/arrpc-bun-linux-arm64
-	sha256sums_aarch64 = 10b9a1ae77c5ff59d224d66cffd0a8a70897f7e46098c6b79aab0fb0de7cf560
+	source_x86_64 = arrpc-bun-1.3.6-x86_64::https://github.com/Creationsss/arrpc-bun/releases/download/v1.3.6/arrpc-bun-linux-x64
+	sha256sums_x86_64 = 438b021c9251c47843c16d4bc11862cd0c79241d693353a217eb48f0711aa915
+	source_aarch64 = arrpc-bun-1.3.6-aarch64::https://github.com/Creationsss/arrpc-bun/releases/download/v1.3.6/arrpc-bun-linux-arm64
+	sha256sums_aarch64 = 03759ef3ae1052a6c56288b8219dc23751da65d3bd89fea34c4fc5739023a80a
 
 pkgname = arrpc-bun-bin
