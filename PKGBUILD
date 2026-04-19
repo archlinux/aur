@@ -1,4 +1,5 @@
-# Maintainer: Nixuge
+# Maintainer: NourEddineX
+# Contributor: Nixuge
 # Contributor: Noah Vogt <noah@noahvogt.com>
 # Contributor: SpieringsAE (aarch64 addition)
 
@@ -11,7 +12,7 @@ pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop'
 url=https://github.com/localsend/localsend
 arch=('x86_64' 'aarch64')
-license=(MIT)
+license=(Apache-2.0)
 depends=(fuse2 xdg-user-dirs libayatana-appindicator)
 conflicts=('localsend')
 provides=('localsend')
