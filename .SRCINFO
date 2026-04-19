@@ -1,0 +1,16 @@
+pkgbase = kubeconfig-manager-bin
+	pkgdesc = TUI + CLI for managing kubeconfig files and kubectl contexts
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/Loupeznik/kubeconfig-manager
+	license = Apache-2.0
+	conflicts = kubeconfig-manager
+	provides = kubeconfig-manager
+	arch = aarch64
+	source_aarch64 = https://github.com/Loupeznik/kubeconfig-manager/releases/download/v0.10.1/kubeconfig-manager_0.10.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9a2533a110f0f6042b0720516308a2324873994e556d2df717295760b1066c21
+	arch = x86_64
+	source_x86_64 = https://github.com/Loupeznik/kubeconfig-manager/releases/download/v0.10.1/kubeconfig-manager_0.10.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5522dac4ec4e43983b16815be89ec00be602675ec700deb5d4b1c6ddea23ed0d
+	
+pkgname = kubeconfig-manager-bin
