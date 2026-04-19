@@ -1,7 +1,7 @@
 pkgbase = r-blogdown
 	pkgdesc = Create Blogs and Websites with R Markdown
 	pkgver = 1.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=blogdown
 	arch = any
 	license = GPL3
