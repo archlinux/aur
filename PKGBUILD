@@ -3,7 +3,7 @@
 _name=OpenFIRE-App
 _QTver=Qt5
 pkgname=openfireapp
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Configuration utility for the OpenFIRE lightgun system.'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=(
 )
 install=$pkgname.install
 source=("git+https://github.com/TeamOpenFIRE/OpenFIRE-App.git#tag=v${pkgver}")
-md5sums=('769bd742f220cfa396f865a91622024c')
+md5sums=('97b9c6f3c761f9dc8301bb85cfe031ae')
 
 prepare() {
   cd "$srcdir/$_name"
