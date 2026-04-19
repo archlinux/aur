@@ -15,10 +15,8 @@ source=(
   'ttwatch-git::git+https://github.com/ryanbinns/ttwatch.git'
   'ttwatch-git.install'
 )
-sha256sums=(
-  'SKIP'
-  'c2583dfb88ae16e9349406f9e0025b20d54b0404bfd77c5d4555f11856ae2396'
-)
+sha256sums=('SKIP'
+            '7f4a5247d81a572cf7b406242365b1a748d07a9578cc5933822380c4da05301d')
 install="ttwatch-git.install"
 
 noextract=()
