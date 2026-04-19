@@ -1,0 +1,18 @@
+pkgbase = profile-sync-daemon-openrc-git
+	pkgdesc = OpenRC user service for profile-sync-daemon
+	pkgver = r1.f853d1e
+	pkgrel = 1
+	url = https://github.com/haturatu/profile-sync-daemon-openrc
+	arch = any
+	license = custom:none
+	makedepends = git
+	depends = bash
+	depends = openrc
+	depends = profile-sync-daemon
+	provides = profile-sync-daemon-openrc
+	conflicts = profile-sync-daemon-openrc
+	backup = etc/user/init.d/psd
+	source = git+https://github.com/haturatu/profile-sync-daemon-openrc.git
+	sha256sums = SKIP
+
+pkgname = profile-sync-daemon-openrc-git
