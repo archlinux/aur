@@ -1,25 +1,42 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-pytest-curio
-pkgver=1.0.1
+_name=${pkgname#python-}
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Launch pytest with curio'
 arch=('any')
 url="https://github.com/johnnoone/pytest-curio"
-license=('Apache')
-depends=('python-pytest' 'python-curio')
-makedepends=('python-setuptools')
-changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('59dd06b2c92e93a2a67326cd2448ddf452bfdb83000e2d76221a4a33a232295a')
+license=('Apache-2.0')
+_pydeps=(
+    curio
+	pytest
+)
+depends=('python'
+    "${_pydeps[@]/#/python-}")
+makedepends=(
+    git
+    python-build
+    python-installer
+    python-wheel
+    python-setuptools
+	python-versioneer
+)
+options=('!strip' '!debug')
+source=("${_name}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('b524371d4d4b4a96a36fd1d62d822c9697f5d24024bd9bfb700c2186252841da')
+
+prepare() {
+    git -C "${srcdir}/${_name}" clean -dfx
+}
 
 build() {
-	cd "pytest-curio-$pkgver"
-	python setup.py build
+    cd "${srcdir}/${_name}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "pytest-curio-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+    cd "${srcdir}/${_name}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
