@@ -3,7 +3,7 @@
 set -e
 
 extract_base="https://download1.graphhopper.com/public"
-photon_version='PHOTON_MINOR_VERSION_SED'
+photon_version='PHOTON_DUMP_VERSION_SED'
 
 if [ -z "$PHOTON_GRAPHHOPPER_REGION" ]; then
     echo "PHOTON_GRAPHHOPPER_REGION env variable not set."

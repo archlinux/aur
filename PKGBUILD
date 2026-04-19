@@ -2,8 +2,7 @@
 
 _pkgname=photon
 pkgname=${_pkgname}-geocoder
-pkgver=1.0.1
-_minorpkgver=${pkgver%.*}
+pkgver=1.1.0
 pkgrel=1
 _jdkver=21 # https://github.com/komoot/photon/blob/master/.github/workflows/ci.yml#L13
 pkgdesc="Open source geocoder for openstreetmap data"
@@ -22,18 +21,18 @@ source=("git+${url}.git#tag=${pkgver}"
         "photon-update.sh"
         "photon-update.service"
         "photon-update.timer")
-sha256sums=('985d9fbb088c120ce78b831d1ac9b4a86aba1c1f0f6ecb2a89a56861267f8fb1'
+sha256sums=('9bec344aa8ff4bf0fd7ecb74c96dd0e7e6f7d998cc9c75be07e9a66bdf6e351b'
             '77406e3a566fbde059272ccf0c15c4757729c11d5287848c2fb4d702c78cd8cc'
             'dd8a0d46f3a71104a2d1b55d5a01d5d9ef9a35556a7daa3a531e28f011c67598'
             'd51830a965f3136ffac27d91aed0f5364b9cd1e999e4fb88c7a625b8c4951fa4'
             '35b32ae060d99dfe5ccb55a7e77bfd786f7f2e54b091f5c8712107bb33d3827a'
             '5950d3b4fddcb9b7b4bef5b617079f5f5322d309bb7bfb38d3f83c10daa34be7'
-            '2662c2337b11af96be0bcd37c7cc6dc37d189f6394eae334646de6aa78ddd482'
+            '4e28a7a8bf5d25e97cefc66966f43a974b9cf6de8e7eb1a51717445d58304e2b'
             '412014b6ac4471275dfdc0cca9a676aed721e7f8c4380ecd7e98dbbda23213ed'
             'a38bbe2b167942df5431624cbd02bb9d51cbf4ac4592a525d5854f59fe0bd382')
 
 prepare() {
-  sed -i "s/PHOTON_MINOR_VERSION_SED/${_minorpkgver}/g" photon-update.sh
+  sed -i "s/PHOTON_DUMP_VERSION_SED/1.0/g" photon-update.sh
 }
 
 build() {
