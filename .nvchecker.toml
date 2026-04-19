@@ -1,0 +1,3 @@
+[xcute]
+source = "npm"
+npm = "xcute-cli"
