@@ -1,7 +1,7 @@
 pkgbase = auto-av1-folder-git
 	pkgdesc = Recursive AV1 re-encoder (ffmpeg -> SvtAv1EncApp) with resume/replace options
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = r9.eb17b49
+	pkgrel = 1
 	url = https://tangled.org/aria.pds.witchcraft.systems/auto-av1
 	arch = x86_64
 	license = zlib
@@ -16,6 +16,9 @@ pkgbase = auto-av1-folder-git
 	optdepends = svt-av1-essential: nekotrix SVT-AV1-Essential fork (recommended)
 	provides = auto-av1
 	conflicts = auto-av1
+	options = !strip
+	options = !debug
+	options = !lto
 	source = auto-av1::git+https://tangled.org/aria.pds.witchcraft.systems/auto-av1.git
 	sha256sums = SKIP
 
