@@ -34,13 +34,9 @@ build() {
     export CARGO_HOME="$srcdir/cargo-home"
     export RUSTUP_TOOLCHAIN=stable
 
-    # Build Tailwind CSS
-    npm install --prefix "$srcdir/tw" @tailwindcss/cli 2>/dev/null
-    "$srcdir/tw/node_modules/.bin/tailwindcss" \
-        -i tailwind.css \
-        -o rusic/assets/tailwind.css \
-        --minify \
-        --content './rusic/**/*.rs,./components/**/*.rs,./pages/**/*.rs,./hooks/**/*.rs,./player/**/*.rs,./reader/**/*.rs'
+    # Build Tailwind CSS (v4 requires tailwindcss package in node_modules next to tailwind.css)
+    npm install --save-dev @tailwindcss/cli tailwindcss 2>/dev/null
+    ./node_modules/.bin/tailwindcss -i tailwind.css -o rusic/assets/tailwind.css --minify
 
     # Build app
     dx build --release --platform desktop -p rusic
