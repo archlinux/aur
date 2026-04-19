@@ -1,7 +1,7 @@
 pkgbase = labar
 	pkgdesc = Launch bar for Wayland
 	pkgver = 1.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Amodio/labar
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,6 @@ pkgbase = labar
 	arch = ppc64le
 	license = GPL-3.0-or-later
 	makedepends = meson
-	makedepends = clang
 	makedepends = cmake
 	makedepends = scdoc
 	makedepends = wayland-protocols
