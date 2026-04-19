@@ -1,7 +1,8 @@
 # Maintainer: Diego Garcia <diego.garcia.cr at gmail dot com>
+shopt -s extglob
 pkgname=pinta-appimage
 pkgver=3.1.1_2
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple GTK Paint Program (Unofficial AppImage)"
 arch=('x86_64')
 url='https://github.com/pkgforge-dev/Pinta-AppImage'
@@ -27,6 +28,17 @@ package() {
 
   install -dm755 "$pkgdir/opt/pinta"
   cp -dpr --no-preserve=ownership . "$pkgdir/opt/pinta/"
+  # Remove appimage packaged dependencies
+  rm -rf \
+    "$pkgdir/opt/pinta/bin/dotnet" \
+    "$pkgdir/opt/pinta/bin/shared/" \
+    "$pkgdir/opt/pinta/bin/gio-launch-desktop" \
+    "$pkgdir/opt/pinta/bin/host" \
+    "$pkgdir/opt/pinta/bin/notify" \
+    "$pkgdir/opt/pinta/bin/path-mapping-hardcoded.hook" \
+    "$pkgdir/opt/pinta/bin/self-updater.bg.hook" \
+    "$pkgdir/opt/pinta/shared/bin" \
+    "$pkgdir/opt/pinta/share/"!(icons)
 
   install -Dm644 com.github.PintaProject.Pinta.desktop "$pkgdir/usr/share/applications/com.github.PintaProject.Pinta.desktop"
   install -Dm644 com.github.PintaProject.Pinta.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.github.PintaProject.Pinta.png"
