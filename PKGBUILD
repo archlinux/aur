@@ -1,6 +1,6 @@
 # Maintainer: LukasYTTT <https://github.com/LukasYTTT>
 pkgname=appinstall
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A modern GUI for installing and managing AppImages."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('webkit2gtk' 'gtk3' 'zenity')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LukasYTTT/appinstaller/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6fb51892f01d009eb66521366e7a1792087545e4242e7fb6bd51f0e8040cd5c3')
+sha256sums=('489ceeb9fcb5f6765900a8ecac72ffd8110762df123e35eba9343683d8c8bc3d')
 
 build() {
   cd "appinstaller-$pkgver"

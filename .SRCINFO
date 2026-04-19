@@ -1,6 +1,6 @@
 pkgbase = appinstall
 	pkgdesc = A modern GUI for installing and managing AppImages.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/LukasYTTT/appinstaller
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = appinstall
 	depends = webkit2gtk
 	depends = gtk3
 	depends = zenity
-	source = appinstall-2.0.1.tar.gz::https://github.com/LukasYTTT/appinstaller/archive/refs/tags/v2.0.1.tar.gz
-	sha256sums = 6fb51892f01d009eb66521366e7a1792087545e4242e7fb6bd51f0e8040cd5c3
+	source = appinstall-2.0.2.tar.gz::https://github.com/LukasYTTT/appinstaller/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = 489ceeb9fcb5f6765900a8ecac72ffd8110762df123e35eba9343683d8c8bc3d
 
 pkgname = appinstall
