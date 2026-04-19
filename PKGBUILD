@@ -15,8 +15,8 @@ optdepends=(
 )
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/Omibranch/gitty/releases/download/v${pkgver}/gitty-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/Omibranch/gitty/releases/download/v${pkgver}/gitty-linux-arm64")
-sha256sums_x86_64=('50433e879b5e99540ca269aa0ea075a94da7b05bc721a76ee2d53f9dc7f5a017')
-sha256sums_aarch64=('c79f28813bae1f22c75fbc91af7bcd85d195b5436cfac60536ee48a5a4f77424')
+sha256sums_x86_64=('e5ed324de48ccbea457f263541b663191aa95d4c7143421806950e62f676ac66')
+sha256sums_aarch64=('f451e840a98f23b52bbc91d0a5ba32414ac52d63bb8ab3036febffd72eaeb617')
 noextract=("${pkgname}-${pkgver}-x86_64" "${pkgname}-${pkgver}-aarch64")
 
 package() {
