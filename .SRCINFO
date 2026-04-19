@@ -1,0 +1,17 @@
+pkgbase = chuckfmt-bin
+	pkgdesc = A fast code formatter => ChucK programming language
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/aik2mlj/chuckfmt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = clang
+	provides = chuckfmt
+	conflicts = chuckfmt
+	source_x86_64 = https://github.com/aik2mlj/chuckfmt/releases/download/v0.2.2/chuckfmt-v0.2.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f38cff90502ed7c5518d23c3cc3bbcc3e66df4f91bf5c43c6c214c5d43dfed91
+	source_aarch64 = https://github.com/aik2mlj/chuckfmt/releases/download/v0.2.2/chuckfmt-v0.2.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d5d39a9cc8018dc8f6972df1e51eca8d4a509dd45c699ba2307fa6e3fe1fe9c0
+
+pkgname = chuckfmt-bin
