@@ -1,7 +1,7 @@
 pkgbase = meshcore-bin
 	pkgdesc = Closed source reference companion app by Liam Cottle for MeshCore, a LoRa text messaging protocol.
 	pkgver = 1.43.0.build68.e843bd6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://meshcore.co.uk/
 	arch = x86_64
 	groups = meshcore
