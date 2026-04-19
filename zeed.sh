@@ -27,4 +27,4 @@ if [[ -d "$ZEED_BUNDLED_EXT" && -z "${ZEED_SKIP_BUNDLED_EXTENSION:-}" ]]; then
 fi
 
 # shellcheck disable=SC2086
-exec /opt/zeed-browser/chrome $ZEED_EXT_FLAGS $ZEED_USER_FLAGS "$@"
+exec /opt/zeed-browser/zeed $ZEED_EXT_FLAGS $ZEED_USER_FLAGS "$@"
