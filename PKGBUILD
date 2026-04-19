@@ -4,11 +4,11 @@
 pkgname=larksuite-bin
 pkgver=7.62.9
 _pkgtyp=stable
-pkgrel=1
+pkgrel=2
 pkgdesc="Collaboration suite service for office messaging, calendars, meetings, docs..."
 arch=('x86_64')
 url="https://www.larksuite.com"
-_licensever=1.2.1477  # from hera-project-version. please don't change pkgrel when bumping this
+_licensever=20260122
 license=('LicenseRef-Lark-User-${_licensever}')
 depends=('gtk3' 'nspr' 'nss' 'libpulse' 'libmfx' 'alsa-lib')
 optdepends=('appmenu-gtk-module: Appmenu support')
@@ -17,15 +17,18 @@ replaces=('bytedance-lark-dev-bin')
 provides=('bytedance-lark=$pkgver' 'lark=$pkgver')
 options=('!emptydirs')
 source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info?platform=10
-	LICENSE-${_licensever}.html::http://www.larksuite.com/en_us/user-terms-of-service)
-DLAGENTS=("https::/usr/bin/bash ${startdir}/dlagent-lark.sh %o %u"
-	"http::/usr/bin/bash ${startdir}/dlagent-license.sh %o %u")
+	LICENSE-${_licensever}.html::http://www.larksuite.com/en_us/user-terms-of-service
+	LICENSE-US-${_licensever}.html::http://www.larksuite.com/en_us/user-terms-of-service-us)
+DLAGENTS=("https::/usr/bin/sh ${startdir}/dlagent-lark.sh %o %u"
+	"http::/usr/bin/sh ${startdir}/dlagent-license.sh %o %u")
 sha256sums=('d6662c8fb30624c337f154244f7dd959ca6d70a899d5f22685f838b30785481a'
-            '762ccf089c5c94e0b66328d814f97c2f1e50bb0cc603de67166217e0c4218115')
+            '9adb1906622edc9eb5fd4e75847c3367102cdbca974c88831e5b3347fcad45f8'
+            'b9affd4412225905a79b64662acb48e32f007b197ac74dbbf0ad37820a6179e9')
 
 package() {
 	# License
 	install -Dm644 LICENSE-${_licensever}.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-${_licensever}.html"
+	install -Dm644 LICENSE-US-${_licensever}.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-US-${_licensever}.html"
 
 	# Extract package data
 	tar xpvf "${srcdir}/data.tar.xz" --xattrs-include='*' --numeric-owner -C "${pkgdir}"
