@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="✨ Colorful animated ASCII banners in your terminal"
 
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}-${_gitversion}.tar.gz")
-sha256sums=('58f395be791ca53ed30ec732210e07f22033b66370d496245104dc02bb3adeaf'
+sha256sums=('5f8af593ed54cdafe718bfdcc25572c27e87c0cab3016d8f798ba0fb2abf6179'
             'e47ee26134da1053f49b3ba41d8c376e772f1957afded5c1b71049aab6081bad')
-sha256sums_x86_64=('ea7e154fcf6c86c5516dc7b85cd49d827453d0c1bbfbd63d46184ef03818e654')
+sha256sums_x86_64=('3b8e9c5431c7cab999f9f528a9b01c56ce72bdc0c2127ee66c39ce3ac0858f9d')
 
 
 case ${CARCH} in
