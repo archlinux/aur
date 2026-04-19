@@ -2,15 +2,15 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 # Contributor: Alex Branham <branham@utexas.edu>
 
-_cranname=debugme
-_cranver=1.2.0
-pkgname=r-${_cranname,,}
+_pkgname=debugme
+_pkgver=1.2.0
+pkgname=r-${_pkgname,,}
 pkgdesc="Specify debug messages as special string constants, and control
 debugging of packages via environment variables."
-url="https://cran.r-project.org/package=${_cranname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=2
 
 arch=("any")
 depends=(
@@ -43,23 +43,23 @@ optdepends=(
 #     "r-testthat>=3.0.0"
 # )
 
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("2322eb2726f06af4d89cdc05a11cb5a2b011e484d16a4f2b9941549769bf6bb30b2cee8272263ec72bc1a62a411ea70a7a449101d94184c9b9df89acd73da762")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+b2sums=('2322eb2726f06af4d89cdc05a11cb5a2b011e484d16a4f2b9941549769bf6bb30b2cee8272263ec72bc1a62a411ea70a7a449101d94184c9b9df89acd73da762')
 
 build() {
     mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+    R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}/build/"
 }
 
 # check() {
 #     export R_LIBS="build/"
-#     R CMD check --no-manual "${_cranname}"
+#     R CMD check --no-manual "${_pkgname}"
 # }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -a --no-preserve=ownership "${srcdir}/build/${_pkgname}" "${pkgdir}/usr/lib/R/library"
+    if [[ -f "${_pkgname}/LICENSE" ]]; then
+        install -Dm0644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
