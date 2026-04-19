@@ -8,7 +8,7 @@ pkgdesc="Recognize and Parse Dates in Various Formats"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("GPL2")
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=4
 
 arch=("i686" "x86_64")
 depends=(

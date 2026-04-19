@@ -1,7 +1,7 @@
 pkgbase = r-parsedate
 	pkgdesc = Recognize and Parse Dates in Various Formats
 	pkgver = 1.3.2
-	pkgrel = 2
+	pkgrel = 4
 	url = https://cran.r-project.org/package=parsedate
 	arch = i686
 	arch = x86_64
