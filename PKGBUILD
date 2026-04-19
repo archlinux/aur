@@ -1,4 +1,5 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Christos Longros <chris.longros@gmail.com>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
 _cranname=geojsonsf
 _cranver=2.0.3
