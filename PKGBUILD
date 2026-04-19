@@ -3,22 +3,22 @@
 
 _pkgname=spectre-meltdown-checker
 pkgname=${_pkgname}-pt-br
-pkgver=0.46+37+g9fed5ce
+pkgver=26.26.0404682
 pkgrel=1
-pkgdesc="Spectre, Meltdown, Foreshadow, Fallout, RIDL, ZombieLoad verificador de vulnerabilidade/mitigação"
+pkgdesc="Verificador de vulnerabilidades/mitigação para Reptar, Downfall, Zenbleed, ZombieLoad, RIDL, Fallout, Foreshadow, Spectre e Meltdown"
 arch=('any')
 url="https://github.com/speed47/${_pkgname}"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('sh' 'sqlite')
 makedepends=('git' 'patch')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
-_commit=9fed5ceb332d00b0095ec0a8c2034f5affd1b99a
+_commit=00bb4a951c77c81a47697c40c9e5d97c926f6249
 source=("git+https://github.com/speed47/spectre-meltdown-checker.git#commit=$_commit"
         'translate-pt-br.patch')
 
-sha256sums=('b84473ec7e312771e43d853c203914c0363acdf3dfbcb76bd4f737b24b3b1a97'
-            '4b1aec558576a0a1ca758314944df9dde5454cb1df6583f1c534577e0366a604')
+sha256sums=('cc9901a6e9dc1d2a576652c9f6ccaac766a9c082b8250bada200140ee144c0c0'
+            '6f365fcec616e8e2be24c18f0092c6b3e6acb023ce6c07c8b6f8ef61359cf482')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
@@ -27,7 +27,8 @@ prepare() {
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --tags | sed 's/^v//;s/-/+/g'
+    _ver=$(git describe --tags | sed 's/^v//;s/-/./g')
+    printf '%s' "$( cut -f1-3 -d'.' <<< ${_ver})"
 }
 
 package() {
