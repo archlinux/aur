@@ -1,17 +1,17 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=tsql-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
-pkgdesc='A modern PostgreSQL manager TUI - Binary build'
-arch=(x86_64)
+pkgdesc='A modern PostgreSQL and MongoDB manager TUI - Binary build'
+arch=('x86_64')
 url='https://github.com/fcoury/tsql'
 license=('MIT')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/fcoury/tsql/releases/download/v$pkgver/tsql-x86_64-unknown-linux-gnu.tar.gz"
     "LICENSE::https://raw.githubusercontent.com/fcoury/tsql/refs/tags/v$pkgver/LICENSE")
 provides=('tsql')
-conflicts=($_pkgname)
-sha256sums=('64f6f78946a71fcc3c5adce8d86a6adfab069de1346b98688309a8e3bd4f2a87'
+conflicts=($_pkgname 'tsql-git')
+sha256sums=('2e355fb6a6efa9b8901fdf9a6b53817ed715c9c230a9a7a2b90bfe63780de430'
             '279556e0ab3736896f0f313053d9a84b49743ae476a36a3724c31f1d7d853e20')
 
 package() {
