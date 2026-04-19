@@ -1,0 +1,27 @@
+pkgbase = labar
+	pkgdesc = Launch bar for Wayland
+	pkgver = 1.3.3
+	pkgrel = 0
+	url = https://github.com/Amodio/labar
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	arch = mips64el
+	arch = ppc64le
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = cmake
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	depends = glibc
+	depends = librsvg
+	depends = alsa-lib
+	depends = wayland
+	depends = glib2
+	depends = cairo
+	depends = gtk4
+	options = !debug
+	source = labar-1.3.3.tar.gz::https://github.com/Amodio/labar/archive/refs/tags/v1.3.3.tar.gz
+	sha256sums = 069f92a938fe6006fd29ca5545c0fbae963ba6e23bcf795e76405c4572632f05
+
+pkgname = labar
