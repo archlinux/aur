@@ -1,0 +1,17 @@
+pkgbase = r-satellite
+	pkgdesc = Handling and Manipulating Remote Sensing Data
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=satellite
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = r>=2.10
+	depends = r-plyr
+	depends = r-raster
+	depends = r-rcpp>=0.10.3
+	depends = r-terra
+	source = https://cran.r-project.org/src/contrib/satellite_1.0.6.tar.gz
+	b2sums = 4ad1ec391c36d4263033ad30805ef3b56974ea09e7583384cce66551b72c958a80aa7421f55a3116a18310adaee176999b853b595e66a2045fc7aaffbb0430d4
+
+pkgname = r-satellite
