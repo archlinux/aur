@@ -1,6 +1,6 @@
 # Maintainer: Gurov <gurov@disroot.org>
 pkgname=archie
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Fast & Easy package management for Arch Linux"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('pacman' 'git' 'curl' 'sudo')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Gur0v/archie-ng/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2d20294318d28f39eb5f181a72c410ba52ba0e13f90c1de99ca060e99a17cd20')
+sha256sums=('b999bebbc3e2254e93a73c845c27b51a43b58b313a6f1d2cea8891a00d21a2b4')
 
 build() {
     cd "$srcdir/archie-ng-$pkgver"
