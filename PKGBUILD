@@ -1,6 +1,6 @@
 # Maintainer: canfro <francodvo@gmail.com>
 pkgname=erwin-lang-git
-pkgver=r13.15517da
+pkgver=r14.822c1e2
 pkgrel=1
 pkgdesc="The Erwin programming language compiler and standard library"
 arch=('x86_64')
