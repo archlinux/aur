@@ -192,9 +192,9 @@
 
 # Kernel version
 _kernel_major=6.19
-_kernel_minor=10
+_kernel_minor=13
 # Tachyon patches version
-_tachyon=6.19.10-1598
+_tachyon=6.19.13-1599
 # kernel_compiler_patch version
 _kernelcompilerpatch="20250818.2"
 # kernel_compiler_patch name
@@ -206,7 +206,7 @@ _src_linux=linux-${_kernel_major}
 # Package information
 pkgbase=linux-tachyon
 pkgver=${_kernel_major}.${_kernel_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc="Linux kernel with patches from Linux Tachyon (formerly Linux Clear) which allow for higher performance."
 arch=("x86_64")
 url="https://git.staropensource.de/StarOpenSource/Linux-Tachyon"
@@ -228,7 +228,7 @@ source=(
 sha256sums=(
     "303079a8250b8f381f82b03f90463d12ac98d4f6b149b761ea75af1323521357"
     "SKIP"
-    "01d53fcab1e306f289004769090dd85857a4ce015a96f55f5fdede28bf4e02c9"
+    "71a55ffd4de97d7dd93b082974fff3f70935b7e12eefa1db53b527a949a97dd6"
     "SKIP"
     "326701c512295d50b7ee5b281287959b0e318bba8fed7abe746099e5b658849a"
 )
