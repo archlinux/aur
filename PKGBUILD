@@ -1,7 +1,8 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: Christos Longros <chris.longros@gmail.com>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=r-swirl
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc='Platform for learning (and teaching) statistics and R simultaneously and interactively'
 arch=('any')
@@ -10,7 +11,7 @@ license=('GPL')
 depends=('r' 'r-digest' 'r-httr' 'r-rcurl' 'r-stringr' 'r-yaml')
 makedepends=('r-testthat')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('d9a7209f287a85d8780d41438f2d761eda6e97dde77a24d89e07ec8509e42d4ab76809c067c82f907a0f2d630404d384020f674fb5ae4bf5baa856c59e9fc43d')
+sha512sums=("f532ec56579a87e0c42e6c94ec06c2c515a02ecec347b343916249b808a0f4a48f0bbd881cd4f8e3c54f00fa87b205be722321c76dc8de784cd52de8c1781c44")
 
 build(){
     R CMD INSTALL $pkgname-$pkgver.tar.gz -l "$srcdir"
