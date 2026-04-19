@@ -1,4 +1,5 @@
 # Maintainer: Dave Daynard <nardholio at gmail dot com>
+# Contributor: Pablo Lezaeta <prflr 88 (arro'a) gmail puntocom>
 # Contributor: megadriver <megadriver at gmx dot com>
 # Based on clearlooks-phenix-gtk-theme from the AUR
 
@@ -28,7 +29,7 @@ pkgver() {
 
 build() {
   cd clearlooks-phenix
-  # Prefer building icons from SVG source (if _src exists; remove if errors)
+  # Prefer building icons from SVG source
   export SELF_CALL=1
   make -C _src clean
   make -C _src
@@ -39,9 +40,6 @@ package() {
   mkdir -p "${pkgdir}/usr/share/themes/Clearlooks-Phenix"
   cp -a gtk-2.0 gtk-3.0 index.theme metacity-1 openbox-3 wallpapers xfwm4 \
      "${pkgdir}/usr/share/themes/Clearlooks-Phenix"
-
-  # Clean up git files
-  rm -rf "${pkgdir}/usr/share/themes/Clearlooks-Phenix/.git"
 
   install -D -m 0644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/* *.md
 }
