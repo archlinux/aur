@@ -1,0 +1,16 @@
+pkgbase = chess-cat-git
+	pkgdesc = Visualize chess boards in your terminal
+	pkgver = r7.0af984e
+	pkgrel = 1
+	url = https://github.com/ptsouchlos/chess-cat
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = chess-cat
+	source = chess-cat-main::git+https://github.com/ptsouchlos/chess-cat.git#branch=main
+	sha256sums = SKIP
+
+pkgname = chess-cat-git
