@@ -2,7 +2,7 @@
 pkgname=hermes-agent
 pkgver=0.10.0
 _tagver=2026.4.16
-pkgrel=3
+pkgrel=4
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
@@ -65,6 +65,9 @@ install=hermes-agent.install
 build() {
   cd "${pkgname}-${_tagver}"
 
+  # vite-plugin-tailwindcss uses the ignore package which walks up the tree to read .gitignore files. Unless it finds .git directory, it keeps going up until it finds ArchLinux Package's own .gitignore, Which ignores the whole src directory.This causes the resulting css of the dashboard to be almost empty. Creating an empty .git directory solves the problem.
+  [! -d .git] && mkdir .git
+
   # Install Node.js dependencies
   [ -f "package.json" ] && npm install
 
@@ -75,10 +78,7 @@ build() {
   if [ -f "scripts/whatsapp-bridge/package.json" ]; then
     (cd scripts/whatsapp-bridge && npm install --legacy-peer-deps --omit=dev) || echo "Warning: whatsapp-bridge npm install failed (optional)"
   fi
-  # Ensure web_dist is included in the Python package
-  # The web build output needs to be in hermes_cli/web_dist for the wheel to include it
-  #[ -d "web/dist" ] && cp -r web/dist hermes_cli/web_dist
-
+  
   # Build Python wheel
   python -m build --wheel --no-isolation
 }
