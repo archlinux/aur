@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=brief
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 _tldr_ver=2.3
 pkgdesc="A GTK4 application for browsing tldr-pages (community-maintained command line help pages)."
 arch=('any')
@@ -25,10 +25,11 @@ makedepends=(
   'blueprint-compiler'
   'meson'
 )
+options=('!strip')
 source=("Brief-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "tldr-${_tldr_ver}.zip::https://github.com/tldr-pages/tldr/releases/download/v${_tldr_ver}/tldr.zip")
 noextract=("tldr-${_tldr_ver}.zip")
-sha256sums=('ae581906e738d372bbd75da31c5801dec39739ba17bacc510ef8f69d4c974931'
+sha256sums=('a134e5ba83ae1f2372963d12784be477fe577012833e96114811d545d6d1efd3'
             '46f8eb9f8d0df15862f9258a9ef1550c061a99f157cd0d0b612caf5a7df6fcc3')
 
 prepare() {
@@ -39,7 +40,8 @@ prepare() {
   cp -f generate_commands_index.py "$srcdir/tldr-${_tldr_ver}/"
 
   # Set tldr pages directory
-  sed -i "s|app/share/tldr|usr/share/$pkgname/tldr|g" src/tldr.py
+  sed -i "s|app/share/io.github.shonebinu.Brief/tldr-data|usr/share/$pkgname/tldr|g" \
+    src/tldr.py
 }
 
 build() {
@@ -47,6 +49,8 @@ build() {
   meson compile -C build
 
   cd "tldr-${_tldr_ver}"
+  rm -r pages.en
+  mv pages pages.en
   python generate_commands_index.py
 }
 
