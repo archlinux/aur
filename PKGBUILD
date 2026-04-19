@@ -2,7 +2,7 @@
 
 _zig=0.15
 pkgname="zigdown"
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Parse and render Markdown-like content to the terminal, to HTML, or inside Neovim"
 arch=(
@@ -33,6 +33,7 @@ _zigdepends=(
   "tree-sitter-cmake-fe48221d4d9842d916d66b5e71ab3c6307ec28b3.tar.gz::https://github.com/uyha/tree-sitter-cmake/archive/fe48221d4d9842d916d66b5e71ab3c6307ec28b3.tar.gz"
   "tree-sitter-cpp-f41b4f66a42100be405f96bdc4ebc4a61095d3e8.tar.gz::https://github.com/tree-sitter/tree-sitter-cpp/archive/f41b4f66a42100be405f96bdc4ebc4a61095d3e8.tar.gz"
   "tree-sitter-json-4d770d31f732d50d3ec373865822fbe659e47c75.tar.gz::https://github.com/tree-sitter/tree-sitter-json/archive/4d770d31f732d50d3ec373865822fbe659e47c75.tar.gz"
+  "tree-sitter-lua-7040a79f95b0bf7517a9809a8d0ecd41197027ac.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-lua/archive/7040a79f95b0bf7517a9809a8d0ecd41197027ac.tar.gz"
   "tree-sitter-make-5e9e8f8ff3387b0edcaa90f46ddf3629f4cfeb1d.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-make/archive/5e9e8f8ff3387b0edcaa90f46ddf3629f4cfeb1d.tar.gz"
   "tree-sitter-python-de0c01e7102e755f6c2e1b3055ae6ca85f261a10.tar.gz::https://github.com/tree-sitter/tree-sitter-python/archive/de0c01e7102e755f6c2e1b3055ae6ca85f261a10.tar.gz"
   "tree-sitter-rust-c447dcce961ac438aaeaf117347749fe7d1e8365.tar.gz::https://github.com/tree-sitter/tree-sitter-rust/archive/c447dcce961ac438aaeaf117347749fe7d1e8365.tar.gz"
@@ -47,13 +48,13 @@ _zigdepends=(
 )
 _pkgsrc="${url##*/}-${pkgver}"
 source=(
-  "${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
   "${_zigdepends[@]}"
 )
 noextract=(
   "${_zigdepends[@]%%::*}"
 )
-b2sums=('ac5ba5d88ff16bae9a155489d331c0a94825870ed0bc4427bf4b108ff3d2c8b239e267fcef314ea0390ce7aba05634728a4b28fd1ab5f1cb6689a923e10914c8'
+b2sums=('b63dc453754ce24677a010b395419887caa09ec698fe7b0f150375c984bb70953ab4d27e539ad01fdfbda845ad3ae7b25a4834be20e74b423ad62dd3eb7ab076'
         'e284162579422c325cc118a086c710da09966042157bdcc9205218386c17ea73dcc715177edd84ff8c817129d1114c584b967a8f834a115602ca2c771313f2c6'
         '20789d0ef34be86a9f6dcff82daa7f54d4aeabce275c259164f4df00606f3e2121b5efdad120fef686536343ebf3030d60238607a0ebea3948db45f60b601b73'
         'd144d903717301988b0bd20b98b35578e2354195972a1bbe30ac3d717b2a939e6c664dfc19fda769f2a96337d20d3e3a39bfa6a7cc57e4895b7547cc0594d1b2'
@@ -66,6 +67,7 @@ b2sums=('ac5ba5d88ff16bae9a155489d331c0a94825870ed0bc4427bf4b108ff3d2c8b239e267f
         '644ac76af8c4f621f23841d51ac88da134735e05e9475c0f8aa1b867f97398f6bfd21cd687c2869034bea87e9bc573667c73f162a5ee786cd68d8dacf0e44ec8'
         'bc4c0c3702897fdf95cfb0f60726353c55aa2070620236fe5169ea8c0afb35895a54a81ee9e077795479c082cd97cada4321b15f1cd14f17035f06ad45be863a'
         '2a84f2aa1cd71c19d915af2a3597fa27a124541f945a5ed6565588a40343fa1eb3571fed3dc2bb949b9d207adb93c328eceeafcf29d8af38546054ff8e6f4b6c'
+        '3c1bba27aa7fbe51a6f9a79274eff95ac39a29ad105c663e137ec298004fb9a3e538adb2381d9a03ead505d91ddf6fa0c84c815d915b20ae2cdfc9cca7eeb74b'
         'da196aaa09bd9dc4c5987e7a8be1a12d8c439058dbb9a03ada4be33281e6d8c301ebf289688aed0ddbb4105a46e6668792d388cb65d7e5d2b58a556ddfd35b4a'
         'ba4e8410a3f0479b37d8015e898694435e108867077f5bbf315e4f3d43e4655af7d99ac0514589983da31f14d0206ea5a227adb74c57c9441a8c059cdb480bc3'
         'd37c7aecc437b0b264136242e1b6cb2d6661397df00962c7e394fcffda61c1669041de7a2bd7dce02fb7e9cf40b572680e74a8f860475854a365e7c810d696ce'
@@ -122,5 +124,5 @@ package() {
   cp -vaT --no-preserve=ownership "build" "${pkgdir}"
 
   install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
