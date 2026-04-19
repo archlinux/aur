@@ -38,7 +38,6 @@ build() {
       -DDETHRACE_PLATFORM_SDL2=ON \
       -DDETHRACE_PLATFORM_SDL_DYNAMIC=ON \
       -DDETHRACE_INSTALL=ON \
-      -DBRENDER_DISABLE_INSTALL=ON \
       -Wno-dev
     cmake --build build
 }
