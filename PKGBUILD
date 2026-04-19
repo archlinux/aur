@@ -53,16 +53,6 @@ prepare() {
 }
 
 build() {
-
-  # Detect available GPU backends
-  local _enable_opengl=OFF _enable_vulkan=OFF
-  if pkg-config --exists gl 2>/dev/null || pkg-config --exists opengl 2>/dev/null; then
-    _enable_opengl=ON
-  fi
-  if pkg-config --exists vulkan 2>/dev/null; then
-    _enable_vulkan=ON
-  fi
-
   cmake -S "${_duckstation_srcdir}" -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=OFF \
@@ -70,8 +60,8 @@ build() {
     -DBUILD_LIBRETRO=ON \
     -DBUILD_REGTEST=OFF \
     -DBUILD_TESTS=OFF \
-    -DENABLE_OPENGL=${_enable_opengl} \
-    -DENABLE_VULKAN=${_enable_vulkan} \
+    -DENABLE_OPENGL=ON \
+    -DENABLE_VULKAN=ON \
     -DCMAKE_MODULE_PATH="${srcdir}/${_duckstation_srcdir}/cmake" \
     -DCMAKE_PREFIX_PATH="${srcdir}/${_duckstation_srcdir}/cmake" \
     -DCMAKE_CXX_FLAGS="-Wno-invalid-offsetof" \
