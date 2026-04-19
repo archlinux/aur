@@ -1,0 +1,5 @@
+[helius-bin]
+source = "github"
+github = "Helius-Finance/helius-finance-tracker"
+use_latest_release = true
+prefix = "v"
