@@ -1,0 +1,18 @@
+pkgbase = koharu-appimage
+	pkgdesc = ML-powered manga translator
+	pkgver = 0.44.6
+	pkgrel = 1
+	url = https://github.com/mayocream/koharu
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = xdg-user-dirs
+	provides = koharu
+	conflicts = koharu
+	options = !strip
+	source_x86_64 = koharu_0.44.6_amd64.AppImage::https://github.com/mayocream/koharu/releases/download/0.44.6/koharu_0.44.6_amd64.AppImage
+	sha512sums_x86_64 = aa3021b00e1b0da0a6ffee4c2e512d03db2abfe80de1947956391267fbb0d730d5f5ee996b38c1378ae56803e247713a1d3e977f9e0ea18ac3a14d5e6e685861
+
+pkgname = koharu-appimage
