@@ -5,10 +5,11 @@
 
 pkgname=untrunc-git
 pkgver=r388.d286625
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to restore a damaged (truncated) mp4, m4v, mov, 3gp video"
 arch=('x86_64')
 conflicts=('untrunc')
+provides=('untrunc')
 url="https://github.com/anthwlock/untrunc"
 license=('GPL-2.0-only')
 depends=('libvdpau' 'zlib' 'bzip2')
