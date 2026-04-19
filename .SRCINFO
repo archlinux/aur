@@ -1,0 +1,18 @@
+pkgbase = r-ollamar
+	pkgdesc = 'Ollama' Language Models
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ollamar
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-base64enc
+	depends = r-crayon
+	depends = r-glue
+	depends = r-httr2
+	depends = r-jsonlite
+	depends = r-tibble
+	source = https://cran.r-project.org/src/contrib/ollamar_1.2.2.tar.gz
+	b2sums = 2f88b03515a225e24c0519ce03934b7f1e085a046a8912eaad3fddb71ed6625dd40520f42ceaa21a52b016f4c56a9c20b1cd43797a8a7b786dcd55e9a2dc2d15
+
+pkgname = r-ollamar
