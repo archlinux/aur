@@ -1,19 +1,21 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=deptry
-pkgver=0.24.0
+pkgver=0.25.1
 pkgrel=1
 pkgdesc="Find unused, missing and transitive dependencies in a Python project"
 arch=(x86_64)
-url="https://github.com/fpgmaas/deptry"
+url="https://deptry.com"
 license=(MIT)
 depends=(
-  gcc-libs
   glibc
+  libgcc
   python
   python-click
   python-packaging
   python-requirements-parser
+  python-tomli
 )
 makedepends=(
   git
@@ -23,21 +25,22 @@ makedepends=(
   python-wheel
 )
 checkdepends=(
+  python-inline-snapshot
   python-pdm
   python-poetry
   python-pytest
   python-pytest-xdist
   uv
 )
-source=("$pkgname::git+$url.git#tag=$pkgver")
-sha256sums=('de0399ea1b8e92b5c1bab120769df7f86fae664dad6543411f5c8efe6263390b')
+source=("git+https://github.com/osprey-oss/deptry.git#tag=$pkgver")
+sha256sums=('9c6d03c7bdcee9ca5fd101c6d9e7b2104196a190df288ebfb0f4bc5f3cd1761e')
 
 prepare() {
   cd $pkgname
   sed -i "s|^version = \".*\"|version = \"$pkgver\"|" pyproject.toml
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -54,14 +57,11 @@ check() {
   cp dist/*.whl build/functional_tests/deptry
 
   test -d test-env && rm -r test-env
-  python -m venv --system-site-packages test-env
+  python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  # Deselected test fails due to Poetry error:
-  #   The Poetry configuration is invalid:
-  #     - The fields ['authors', 'description', 'name', 'version'] are required
-  #       in package mode.
+  # Deselect failing PDM test
   test-env/bin/python -m pytest tests/ \
-    --deselect tests/functional/cli/test_cli_poetry_pep_621.py::test_cli_with_poetry_pep_621
+    --deselect tests/functional/cli/test_cli_pdm.py
 }
 
 package() {
