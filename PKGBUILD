@@ -12,7 +12,7 @@ optdepends=(
     'svt-av1: stock SVT-AV1 encoder (SvtAv1EncApp)'
     'svt-av1-essential: nekotrix SVT-AV1-Essential fork (recommended)'
 )
-makedepends=('git' 'python' 'python-nuitka' 'gcc' 'patchelf')
+makedepends=('git' 'python' 'nuitka' 'gcc' 'patchelf')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
