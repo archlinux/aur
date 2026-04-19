@@ -1,0 +1,17 @@
+pkgbase = ices
+	pkgdesc = IceS is a source client for the Icecast streaming server.
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://icecast.org/ices/
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = libogg
+	depends = libvorbis
+	depends = libxml2
+	depends = libshout
+	depends = taglib
+	source = https://downloads.xiph.org/releases/ices/ices-2.0.3.tar.bz2
+	sha256sums = e620c67c8b311520b1d6a8a89d7fd1d1d08f299534d274b8a1a36ed33a7ee4a8
+
+pkgname = ices

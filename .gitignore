@@ -1,0 +1,11 @@
+\#*#
+.#*
+*~
+ices-*.pkg.tar.zst
+ices-*.pkg.tar.xz
+ices-*.pkg.tar.bz2
+src/
+pkg/
+.BUILDINFO
+.MTREE
+.PKGINFO
