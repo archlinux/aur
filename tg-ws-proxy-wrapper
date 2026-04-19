@@ -12,4 +12,4 @@ case "$1" in
     ;;
 esac
 
-exec /usr/bin/tg-ws-proxy-cli --port "$PORT" --secret "$SECRET"
+exec /usr/bin/tg-ws-proxy --port "$PORT" --secret "$SECRET"

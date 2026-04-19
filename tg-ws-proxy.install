@@ -1,0 +1,4 @@
+## arg 1:  the new package version
+post_install() {
+    echo "Run MTProto proxy with a specific port and token using: 'systemctl start tg-ws-proxy@1443:3075abe65830f0325116bb0416cadf9f'"
+}

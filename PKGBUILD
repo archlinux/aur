@@ -1,38 +1,31 @@
 # Maintainer: gogamlg3
 pkgname=tg-ws-proxy-cli
-pkgver=1.5.1
+_name='tg-ws-proxy'
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="Local MTProto proxy server for partial bypassing of Telegram loading"
-arch=("x86_64")
+arch=(any)
 url="https://github.com/Flowseal/tg-ws-proxy"
 license=("MIT")
-depends=("python")
-makedepends=("python" "python-pip")
-
-source=("https://raw.githubusercontent.com/Flowseal/tg-ws-proxy/refs/tags/v$pkgver/proxy/tg_ws_proxy.py"
-        "tg-ws-proxy-cli@.service"
-        "tg-ws-proxy-wrapper")
-sha256sums=("SKIP" "SKIP" "SKIP")
-
+install=$_name.install
+depends=(python python-cryptography)
+makedepends=(python-{build,installer,wheel} python-hatchling)
+source=("https://github.com/Flowseal/tg-ws-proxy/archive/refs/tags/v${pkgver}.tar.gz"
+        "tg-ws-proxy-wrapper"
+        "tg-ws-proxy@.service")
+sha256sums=('81ca4403fc86d093a4910073627e72be66cfeb3c7b29645c87692fb7d399253e'
+            '8b31b2bd47246c52c0fa85b5b423cf2d598e5139fa8250a78379bee778172d10'
+            '006b1b827bb0755e50e7f05520d474d3253ac5a588353b5070aa9a27fcc860f8')
 
 build() {
-  cd "$srcdir/"
-
-  python -m venv .venv
-  .venv/bin/pip install --upgrade pip
-  .venv/bin/pip install customtkinter==5.2.2 Pillow==12.1.1 psutil==7.0.0 pystray==0.19.5 pyperclip==1.9.0 cryptography==46.0.5 pyinstaller
-
-  .venv/bin/pyinstaller --clean --noconfirm --onefile  --name "$pkgname" "tg_ws_proxy.py"
-
-  rm -rf .venv
+    cd $_name-$pkgver
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir"
-
-  install -Dm755 "dist/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm755 "tg-ws-proxy-wrapper" "$pkgdir/usr/bin/tg-ws-proxy-wrapper"
-
-  install -Dm644 "$pkgname@.service" "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
-
+    cd $_name-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$_name/"
+    install -Dm755 "$srcdir/tg-ws-proxy-wrapper" "$pkgdir/usr/bin/tg-ws-proxy-wrapper"
+    install -Dm644 "$srcdir/$_name@.service" "$pkgdir/usr/lib/systemd/system/$_name@.service"
 }
