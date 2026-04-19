@@ -29,7 +29,8 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake .. -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+           -DCMAKE_INSTALL_PREFIX=/usr \
            -DSFGUI_SUBMODULE=ON
   make
 }
