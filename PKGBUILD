@@ -1,7 +1,7 @@
 # Maintainer: LekkerKofi
 
 pkgname=flux-operator-bin
-pkgver=0.46.0
+pkgver=0.47.0
 pkgrel=1
 pkgdesc="GitOps on Autopilot Mode"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ provides=('flux-operator')
 source_x86_64=("https://github.com/controlplaneio-fluxcd/flux-operator/releases/download/v${pkgver}/flux-operator_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/controlplaneio-fluxcd/flux-operator/releases/download/v${pkgver}/flux-operator_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('1bec616c6433499662f98a9e5571ab0107380e371bb3251ae92e631f5247595c')
-sha256sums_aarch64=('42d686b955ab5b5ed23654394586b21aa0d281857e2c838154d8ad6f32df6d19')
+sha256sums_x86_64=('d7cb3a5cb576337738e45137f6bae525b5e48d3581042dad8618cb7d0fb0c642')
+sha256sums_aarch64=('db829fdbe19304c84538ca099f0ed8ad90a86e1cb5060f36696d9a9d893d6afc')
 
 package() {
   install -vDm755 -t "$pkgdir/usr/bin"  flux-operator
