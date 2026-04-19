@@ -1,6 +1,6 @@
 # Maintainer: furudbat <hircreacc@gmail.com>
 pkgname=wpets-git
-pkgver=3.6.1.4.g8641a7f
+pkgver=4.0.0.0.gf008e18
 pkgrel=1
 pkgdesc="A Wayland overlay that displays an animated virtual pet reacting to keyboard input"
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ build() {
     cd "$srcdir/wayland-vpets"
 	cmake -S . -B build \
         -DCMAKE_BUILD_TYPE=Release \
-        -DFEATURE_LAZY_LOAD_ASSETS=ON -DFEATURE_MULTI_VERSIONS=ON \
+        -DFEATURE_LAZY_LOAD_ASSETS=ON -DFEATURE_MULTI_VERSIONS=ON -DSKIP_CPM=ON \
         -Wno-dev
 	cmake --build build --parallel "$(nproc)"
 	cmake --build build --target manpages --parallel "$(nproc)"
