@@ -2,35 +2,52 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nog
-pkgver=0.6.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Tier-aware package manager for KognogOS — wraps pacman with three-tier update management"
+pkgdesc="A tier-aware package manager for Arch Linux — pacman with a safety net, written in Rust"
 arch=('x86_64')
-url="https://github.com/jetomev/KognogOS"
-license=('GPL3')
+url="https://github.com/jetomev/nog"
+license=('GPL-3.0-or-later')
 depends=('pacman' 'pacman-contrib')
-backup=('etc/nog/nog.conf' 'etc/nog/tier-pins.toml')
 makedepends=('rust' 'cargo')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jetomev/KognogOS/archive/refs/tags/v0.7.1-alpha.tar.gz")
-sha256sums=('389e605c17ff7877fdba2507465bdef5a813e5af95165ca0e4da3a0be7b26c0f')
+optdepends=(
+    'yay: AUR helper integration (preferred if installed)'
+    'paru: AUR helper integration (alternative)'
+)
+# Preserve user modifications to these files across upgrades — pacman will
+# write .pacnew next to them instead of overwriting. Without this, running
+# `nog pin` to customize tier-pins.toml would get silently clobbered the next
+# time the AUR ships a new nog version with a different default.
+backup=('etc/nog/nog.conf' 'etc/nog/tier-pins.toml')
+# SKIP is the submission-time placeholder. Before pushing to AUR, run
+# `updpkgsums` in the AUR clone to replace SKIP with the real sha256 of the
+# v1.0.0 GitHub source tarball.
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('9161f27826525a045434306c45b78fb71bf24602ad41827e3424e46226735f82')
 
 build() {
-    cd "${srcdir}/KognogOS-0.7.1-alpha/nog"
-    cargo build --release
+    cd "$pkgname-$pkgver"
+    cargo build --release --locked
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    cargo test --release --locked
 }
 
 package() {
-    cd "${srcdir}/KognogOS-0.7.1-alpha"
+    cd "$pkgname-$pkgver"
 
-    # Install the nog binary
-    install -Dm755 nog/target/release/nog "${pkgdir}/usr/bin/nog"
+    # Binary
+    install -Dm755 target/release/nog "$pkgdir/usr/bin/nog"
 
-    # Install default config files
-    install -Dm644 config/nog.conf "${pkgdir}/etc/nog/nog.conf"
-    install -Dm644 config/tier-pins.toml "${pkgdir}/etc/nog/tier-pins.toml"
+    # Default configs under /etc/nog/
+    install -Dm644 config/nog.conf        "$pkgdir/etc/nog/nog.conf"
+    install -Dm644 config/tier-pins.toml  "$pkgdir/etc/nog/tier-pins.toml"
 
-    # Install license
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    # Install man page
-    install -Dm644 nog.1 "${pkgdir}/usr/share/man/man1/nog.1"
+    # Man page
+    install -Dm644 nog.1 "$pkgdir/usr/share/man/man1/nog.1"
+
+    # License
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

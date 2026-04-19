@@ -1,17 +1,19 @@
 pkgbase = nog
-	pkgdesc = Tier-aware package manager for KognogOS — wraps pacman with three-tier update management
-	pkgver = 0.6.0
+	pkgdesc = A tier-aware package manager for Arch Linux — pacman with a safety net, written in Rust
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/jetomev/KognogOS
+	url = https://github.com/jetomev/nog
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = rust
 	makedepends = cargo
 	depends = pacman
 	depends = pacman-contrib
+	optdepends = yay: AUR helper integration (preferred if installed)
+	optdepends = paru: AUR helper integration (alternative)
 	backup = etc/nog/nog.conf
 	backup = etc/nog/tier-pins.toml
-	source = nog-0.6.0.tar.gz::https://github.com/jetomev/KognogOS/archive/refs/tags/v0.7.1-alpha.tar.gz
-	sha256sums = 389e605c17ff7877fdba2507465bdef5a813e5af95165ca0e4da3a0be7b26c0f
+	source = nog-1.0.0.tar.gz::https://github.com/jetomev/nog/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 9161f27826525a045434306c45b78fb71bf24602ad41827e3424e46226735f82
 
 pkgname = nog
