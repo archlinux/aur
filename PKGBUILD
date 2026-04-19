@@ -1,5 +1,5 @@
 pkgname=flexiblas
-pkgver=3.4.5
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="A BLAS and LAPACK wrapper library with runtime exchangable backends"
 license=('LGPL-3.0+')
@@ -8,7 +8,7 @@ url="https://www.mpi-magdeburg.mpg.de/projects/flexiblas"
 makedepends=('cmake')
 depends=('gcc-libs')
 source=("https://csc.mpi-magdeburg.mpg.de/mpcsc/software/flexiblas/flexiblas-${pkgver}.tar.gz")
-sha256sums=('e819949c614c4968919b0ea4e873ab916d95cdc6943e9d091a78d209b7d6ed07')
+sha256sums=('4f135fd3d4d844f221624b13734acd0d221a4347a19fa78604a6cbcaa3f477ea')
 
 prepare() {
   cd flexiblas-$pkgver
@@ -18,7 +18,7 @@ build() {
   cd flexiblas-$pkgver
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_SKIP_INSTALL_RPATH=ON \
-        -DTESTS=OFF -DEXAMPLES=OFF -DDUMMY_HOOK=ON \
+        -DTESTS=OFF -DEXAMPLES=OFF \
         -B build .
   cmake --build build
 }
