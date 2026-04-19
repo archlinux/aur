@@ -7,7 +7,7 @@ pkgdesc="Media metadata scraper built on Electron"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ShotHeadman/${pkgname}"
 license=("GPL-3.0-only")
-depends=("bash" "electron" "glibc" "hicolor-icon-theme" "libgcc")
+depends=("bash" "electron" "hicolor-icon-theme")
 makedepends=("npm" "pnpm")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -25,7 +25,7 @@ prepare() {
     sed -i 's|- AppImage|- dir|g' electron-builder.yml
     local _elver=$(cat /usr/lib/electron/version)
     echo -n Replacing $(cat package.json | grep '"electron":')
-    npm pkg set devDependencies.electron=${_elver} 2>/dev/null
+    npm pkg set devDependencies.electron=${_elver}
     echo with $(cat package.json | grep '"electron":')
 
     pnpm install --ignore-scripts --no-frozen-lockfile
@@ -35,6 +35,7 @@ build() {
     cd "${pkgname}-${pkgver}"
     pnpm install
     pnpm build:linux
+    rm -rf "release/${pkgver}/linux-unpacked/resources/app-update.yml"
 }
 
 package() {
@@ -43,6 +44,6 @@ package() {
 
     cd "${pkgname}-${pkgver}"
     install -Dm644 "build/icon.png"     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-    cp -r -t "${pkgdir}/usr/lib/${pkgname}" "release/${pkgver}/linux-unpacked/resources/"app.asar*
+    install -dm755 "${pkgdir}/usr/lib"
+    cp -r "release/${pkgver}/linux-unpacked/resources" "${pkgdir}/usr/lib/${pkgname}"
 }
