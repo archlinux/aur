@@ -1,0 +1,56 @@
+pkgbase = r-pins
+	pkgdesc = Pin, Discover, and Share Resources
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=pins
+	arch = any
+	license = Apache License (>= 2)
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-cli
+	depends = r-digest
+	depends = r-fs
+	depends = r-generics
+	depends = r-glue
+	depends = r-httr
+	depends = r-jsonlite
+	depends = r-lifecycle
+	depends = r-purrr>=1.0.0
+	depends = r-rappdirs
+	depends = r-rlang>=1.1.0
+	depends = r-tibble
+	depends = r-whisker
+	depends = r-withr>=2.4.3
+	depends = r-yaml
+	optdepends = r-archive
+	optdepends = r-arrow
+	optdepends = r-azurestor
+	optdepends = r-covr
+	optdepends = r-data.table
+	optdepends = r-filelock
+	optdepends = r-gitcreds
+	optdepends = r-googlecloudstorager
+	optdepends = r-googledrive
+	optdepends = r-httr2
+	optdepends = r-ids
+	optdepends = r-knitr
+	optdepends = r-microsoft365r
+	optdepends = r-mime
+	optdepends = r-mockery
+	optdepends = r-nanoparquet
+	optdepends = r-openssl
+	optdepends = r-paws.storage
+	optdepends = r-qs2
+	optdepends = r-r.utils
+	optdepends = r-rmarkdown
+	optdepends = r-rsconnect
+	optdepends = r-shiny
+	optdepends = r-sodium
+	optdepends = r-testthat>=3.1.7
+	optdepends = r-webfakes>=1.2.0
+	optdepends = r-xml2
+	optdepends = r-zip
+	source = https://cran.r-project.org/src/contrib/pins_1.4.2.tar.gz
+	sha256sums = 2fc42ea78b59b40f41f2689563e9bcdc11f5009b88095cdda5af3cb55931a6a3
+
+pkgname = r-pins
