@@ -1,7 +1,7 @@
 pkgbase = r-rstudioapi
 	pkgdesc = Safely Access the RStudio API
 	pkgver = 0.18.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rstudioapi
 	arch = any
 	license = MIT

@@ -10,7 +10,7 @@ pkgdesc="Safely Access the RStudio API"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 depends=(
