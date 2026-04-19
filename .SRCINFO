@@ -1,0 +1,19 @@
+pkgbase = r-leafpop
+	pkgdesc = Include Tables, Images and Graphs in Leaflet Pop-Ups
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=leafpop
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-base64enc
+	depends = r-brew
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-sf
+	depends = r-svglite
+	depends = r-uuid
+	source = https://cran.r-project.org/src/contrib/leafpop_0.1.0.tar.gz
+	b2sums = 71bdadc56687d75e0b40d2211f18685822a064dd3103d990effde5bf1fbb810c683a86052e21e148cec7db76b220c6c79114bbfe534773f7b40e1ce50b963361
+
+pkgname = r-leafpop
