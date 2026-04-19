@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nog
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A tier-aware package manager for Arch Linux — pacman with a safety net, written in Rust"
 arch=('x86_64')
@@ -23,7 +23,7 @@ backup=('etc/nog/nog.conf' 'etc/nog/tier-pins.toml')
 # `updpkgsums` in the AUR clone to replace SKIP with the real sha256 of the
 # v1.0.0 GitHub source tarball.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9161f27826525a045434306c45b78fb71bf24602ad41827e3424e46226735f82')
+sha256sums=('22fe5d09effaa538c90f2fcfc139f2f7e884f30ccd978c7bc33fd767eb6afad4')
 
 build() {
     cd "$pkgname-$pkgver"
