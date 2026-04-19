@@ -1,7 +1,7 @@
 # Maintainer: Sokpiseth Thin <sokpiseth.thin@gmail.com>
 
 pkgname=doter-bin
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A simple GTK4 GUI for managing dotfiles with Git"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('git' 'gtk4')
 provides=('doter')
 conflicts=('doter')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/qwlp/doter/releases/download/v$pkgver/doter-$pkgver-x86_64-linux.tar.gz")
-sha256sums=('32e8059cda3381e63e3c232cf6a185b6f140f336a15743847360cd481a21ebbc')
+sha256sums=('a09b5cc07838519f17ff3a81b8b8280c40a3abfe671ee717dcfdf5200661adfe')
 
 package() {
   cd "$srcdir/doter-$pkgver-x86_64-linux"
