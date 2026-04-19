@@ -1,6 +1,6 @@
 pkgbase = agsh
 	pkgdesc = An agentic shell where you speak human, not bash
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://docs.agsh.sh
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = agsh
 	depends = glibc
 	depends = libgcc
 	depends = sqlite
-	source = agsh-0.11.0.tar.gz::https://github.com/k4yt3x/agsh/archive/0.11.0.tar.gz
-	sha256sums = 2d19c2903cc78690f50c1b21d27a71bab5f2d179d878d416807b5c8a9acc4ff6
+	source = agsh-0.12.0.tar.gz::https://github.com/k4yt3x/agsh/archive/0.12.0.tar.gz
+	sha256sums = 7581af3d038a8d978490084bf18618d3cea4349361b9548924bd73fce20e20ef
 
 pkgname = agsh
