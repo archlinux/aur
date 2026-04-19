@@ -1,9 +1,10 @@
-# Maintainer: Holzhaus <jholthuis@mixxx.org>
+# Maintainer: Sam Whited <sam@samwhited.com>
+# Contributor: Holzhaus <jholthuis@mixxx.org>
 # Contributor: Gimmeapill <gimmeapill@gmail.com>
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r9308
+pkgver=r9741
 pkgrel=1
 pkgdesc="Digital DJ mixing software (latest development branch)."
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,84 +12,92 @@ url="https://mixxx.org/"
 license=('GPL-2.0-or-later')
 groups=('pro-audio')
 depends=(
-    'chromaprint'
-    'flac'
-    'hidapi'
-    'lame'
-    'libebur128'
-    'libid3tag'
-    'libkeyfinder'
-    'libmad'
-    'libmodplug'
-    'libmp4v2'
-    'libshout'
-    'libsndfile'
-    'libtheora'
-    'libusb'
-    'lilv'
-    'microsoft-gsl'
-    'opusfile'
-    'portaudio'
-    'portmidi'
-    'protobuf'
-    'qt6-declarative'
-    'qt6-5compat'
-    'qt6-svg'
-    'qt6-translations'
-    'qtkeychain-qt6'
-    'rubberband'
-    'soundtouch'
-    'taglib1'
-    'ttf-opensans'
-    'ttf-ubuntu-font-family'
-    'upower'
-    'wavpack'
+	'chromaprint'
+	'ffmpeg'
+	'flac'
+	'glib2'
+	'glibc'
+	'hidapi'
+	'lame'
+	'libebur128'
+	'libglvnd'
+	'libid3tag'
+	'libkeyfinder'
+	'libmad'
+	'libmodplug'
+	'libmp4v2'
+	'libogg'
+	'libshout'
+	'libsndfile'
+	'libtheora'
+	'libusb'
+	'libvorbis'
+	'lilv'
+	'opusfile'
+	'portaudio'
+	'portmidi'
+	'protobuf'
+	'qt6-5compat'
+	'qt6-declarative'
+	'qt6-shadertools'
+	'qt6-svg'
+	'qt6-translations'
+	'qtkeychain-qt6'
+	'rubberband'
+	'soundtouch'
+	'sqlite'
+	'taglib1'
+	'ttf-opensans'
+	'ttf-ubuntu-font-family'
+	'upower'
+	'wavpack'
+	'zlib'
 )
-makedepends=('git' 'lv2' 'qt6-tools' 'cmake' 'gtest' 'benchmark')
+makedepends=(
+	'benchmark'
+	'cmake'
+	'git'
+	'gtest'
+	'lv2'
+	'microsoft-gsl'
+	'qt6-tools'
+)
+optdepends=(
+	'ccache: speed up rebuilds of the package'
+)
 provides=('mixxx')
 conflicts=('mixxx')
-source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git"
-        'mixxx.install')
-md5sums=('SKIP'
-         '321b9cca3ed690fcf57e7ac1e99109c2')
-install='mixxx.install'
+source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-*}"
     echo "r$(git log --pretty=oneline --first-parent | wc -l)"
 }
 
-prepare() {
-    mkdir -p "$srcdir/${pkgname%-*}/build"
-    cmake -S $srcdir/${pkgname%-*} -B $srcdir/${pkgname%-*}/build \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DINSTALL_USER_UDEV_RULES=OFF \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DOPTIMIZE=native \
-    -DQT6=ON \
-    -DBULK=ON \
-    -DFAAD=ON \
-    -DLILV=ON \
-    -DFFMPEG=ON \
-    -DKEYFINDER=ON \
-    -DMAD=ON \
-    -DMODPLUG=ON \
-    -DOPUS=ON \
-    -DQTKEYCHAIN=ON \
-    -DWAVPACK=ON
-}
-
 build() {
-    cmake --build "$srcdir/${pkgname%-*}/build" --parallel "$(nproc)" --target mixxx
+	local cmake_options=(
+		-B build
+		-D CMAKE_BUILD_TYPE=RelWithDebInfo
+		-D CMAKE_INSTALL_PREFIX=/usr
+		-D OPTIMIZE=native
+		-S mixxx
+		-W no-dev
+	)
+
+	export QT_NO_PRIVATE_MODULE_WARNING=ON
+	export PKG_CONFIG_PATH=/usr/lib/taglib1/pkgconfig
+	cmake "${cmake_options[@]}"
+	cmake --build build --parallel "$(nproc)" --target mixxx
 }
 
 check() {
-    cmake --build "$srcdir/${pkgname%-*}/build" --parallel "$(nproc)" --target mixxx-test
-    ctest --test-dir "$srcdir/${pkgname%-*}/build" --parallel "$(nproc)" --output-on-failure
+	cmake --build build --parallel "$(nproc)" --target mixxx-test
+	ctest --test-dir build --parallel "$(nproc)" --output-on-failure
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/lib/udev/rules.d/"
-    install -Dm644 "$srcdir/${pkgname%-*}/res/linux/mixxx-usb-uaccess.rules" "$pkgdir/usr/lib/udev/rules.d/99-mixxx-usb-uaccess.rules"
-    DESTDIR="$pkgdir" cmake --install "$srcdir/${pkgname%-*}/build"
+	DESTDIR="$pkgdir" cmake --install build
 }
+
+# vim:set ts=2 sw=2 et:
