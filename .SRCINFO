@@ -1,7 +1,7 @@
 pkgbase = r-fansi
 	pkgdesc = ANSI Control Sequence Aware String Functions
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=fansi
 	arch = i686
 	arch = x86_64
