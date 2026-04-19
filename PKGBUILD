@@ -2,8 +2,8 @@
 
 pkgbase=un-lock-git
 pkgname=miunlocktool-git
-pkgver=1.6.6.r0.gb903868
-pkgrel=3
+pkgver=1.6.9.r9.g6c62051
+pkgrel=1
 pkgdesc="MiUnlockTool developed to retrieve encryptData(token) for Xiaomi devices for unlocking bootloader, It is compatible with all platforms."
 arch=(any)
 url="https://github.com/offici5l/MiUnlockTool"
@@ -49,13 +49,13 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}/MiUnlockTool"
     #     rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/$pkgname"
+    cd "${srcdir}/$pkgname/MiUnlockTool"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" ../LICENSE
 }
