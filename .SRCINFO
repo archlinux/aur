@@ -1,0 +1,17 @@
+pkgbase = air-language-server-bin
+	pkgdesc = R formatter and language server
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://posit-dev.github.io/air/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = r
+	provides = air-language-server
+	conflicts = air-language-server
+	source_x86_64 = https://github.com/posit-dev/air/releases/download/0.9.0/air-x86_64-unknown-linux-gnu.tar.gz
+	b2sums_x86_64 = 1554ec4db2ff85fc43c59b8875f8a8a06210ff84e0ea916711c2093de16987b0ddf96463fad089ba1c66ec232713d7ce53f0388e04a1aaeba44ea799cf453a73
+	source_aarch64 = https://github.com/posit-dev/air/releases/download/0.9.0/air-aarch64-unknown-linux-gnu.tar.gz
+	b2sums_aarch64 = 9419c1d2aeb161f9d21134b218d126529e65bae2b946bc649f29e086a3aae9405ad4485616e863691ab044f60623161f8b82f5286deafccd3fc8f5bf970e4f9d
+
+pkgname = air-language-server-bin
