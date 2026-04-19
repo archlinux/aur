@@ -1,0 +1,31 @@
+pkgbase = python-canmatrix
+	pkgdesc = Canmatrix is a python package to read and write several CAN (Controller Area Network) database formats
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/ebroecker/canmatrix
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-attrs
+	depends = python-click
+	depends = python-lxml
+	depends = python-importlib-metadata
+	depends = python-openpyxl
+	depends = python-xlrd
+	depends = python-xlwt
+	depends = python-yaml
+	depends = python-canopen
+	depends = python-ldfparser
+	provides = python-canmatrix
+	conflicts = python-canmatrix
+	options = !strip
+	options = !debug
+	source = canmatrix::git+https://github.com/ebroecker/canmatrix.git#tag=1.1
+	sha256sums = e6d93d9473a59c200a79e273ab6c0a0de8b4f131169617ddbddaa902920c367d
+
+pkgname = python-canmatrix
