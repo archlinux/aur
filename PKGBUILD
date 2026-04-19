@@ -37,7 +37,7 @@ package() {
 	cp -avt "${pkgdir}/opt/${pkgname}/" data share lib
 
 	# Desktop entry file
-	install -Dm644 "share/applications/${pkgname%-bin}.desktop" -vt "${pkgdir}/usr/share/applications"
+	install -Dm644 "share/applications/me.ahmetcetinkaya.whph.desktop" -vt "${pkgdir}/usr/share/applications"
 
 	# symlink executable
 	install -dm755 "${pkgdir}/usr/bin/"
