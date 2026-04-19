@@ -2,7 +2,7 @@
 _pkgname=mazemaze
 pkgname="${_pkgname}-git"
 pkgver=0.2.1.r169.g84099dc
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple 3D OpenGL first-person maze game.'
 url="https://github.com/rsxrwscjpzdzwpxaujrr/${_pkgname}"
 arch=('x86_64' 'i686')
