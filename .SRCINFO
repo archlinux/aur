@@ -1,0 +1,30 @@
+pkgbase = r-leafem
+	pkgdesc = 'leaflet' Extensions for 'mapview'
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=leafem
+	arch = any
+	license = MIT
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-base64enc
+	depends = r-geojsonsf
+	depends = r-htmltools>=0.3
+	depends = r-htmlwidgets
+	depends = r-jsonlite
+	depends = r-leaflet>=2.0.1
+	depends = r-raster
+	depends = r-sf
+	depends = r-png
+	optdepends = r-clipr
+	optdepends = r-fontawesome
+	optdepends = r-leafgl
+	optdepends = r-lwgeom
+	optdepends = r-mapdeck
+	optdepends = r-plainview
+	optdepends = r-stars
+	optdepends = r-terra
+	source = https://cran.r-project.org/src/contrib/leafem_0.2.5.tar.gz
+	sha256sums = 6cab254e0c987495b517e550fa22b20128218195a87e98822a7750297f705246
+
+pkgname = r-leafem
