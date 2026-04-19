@@ -17,8 +17,6 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${_gitname}"
     ( set -o pipefail
-      # Strip leading 'v', convert git describe output to an AUR-legal version.
-      # Example: v0.3.0-5-gabc123 -> 0.3.0.r5.gabc123
       git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
@@ -26,7 +24,6 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_gitname}"
-    # noassets: dotkeeper uses Syncthing's REST API only, not its web GUI
     make build
 }
 
