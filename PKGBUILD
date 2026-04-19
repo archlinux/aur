@@ -1,5 +1,5 @@
 pkgname=mingw-w64-fast_float
-pkgver=8.2.2
+pkgver=8.2.5
 pkgrel=1
 arch=(any)
 url="https://github.com/fastfloat/fast_float/"
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/fastfloat/fast_float/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e64b5fff88e04959154adbd5fb83331d91f2e04ac06454671cdfcbdff172b158')
+sha256sums=('17c7fb14499fcf42c3f5d143df0fbe22172e92749ec5f75ef13224005421a654')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
