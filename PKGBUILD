@@ -1,5 +1,5 @@
 pkgname=psp-newlib
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="A fork of newlib for the PSP (psp)"
 arch=(any)
