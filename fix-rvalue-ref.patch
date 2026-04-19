@@ -1,0 +1,25 @@
+Fix illegal bind of non-const Value& to rvalue from GetObject/GetArray.
+
+gcc 15 rejects binding a non-const reference to the rvalue returned by
+rapidjson's GenericValue::GetObject()/GetArray() conversion. Since
+p.value is already a Value, pass it directly to nested_json_to_string.
+
+--- a/inst/include/geojsonsf/geojson/geojson_properties.hpp
++++ b/inst/include/geojsonsf/geojson/geojson_properties.hpp
+@@ -267,13 +267,11 @@
+ 				} else if (value_type == "Null") {
+ 					// don't do anything...
+ 				} else if (value_type == "Object") {
+
+-					Value& v = p.value.GetObject();
+-					nested_json_to_string(v, type, properties, row_index, key);
++					nested_json_to_string(p.value, type, properties, row_index, key);
+
+ 				} else if (value_type == "Array") {
+
+-					Value& v = p.value.GetArray();
+-					nested_json_to_string(v, type, properties, row_index, key);
++					nested_json_to_string(p.value, type, properties, row_index, key);
+
+ 				} else {
+ 					Rcpp::stop("unknown column data type " + type);

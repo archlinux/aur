@@ -2,13 +2,13 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _cranname=geojsonsf
-_cranver=2.0.3
+_cranver=2.0.5
 pkgname=r-${_cranname,,}
 pkgdesc="GeoJSON to Simple Feature Converter"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 
 arch=("i686" "x86_64")
 depends=(
@@ -46,8 +46,21 @@ optdepends=(
 #     "r-tinytest"
 # )
 
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("7dd4803ea5c22f76425a67301ccb017aced79adf970c40463ec24aac5f3d898a23a5554a10fc231e3ee576ccc34e45c9b426f03142c0d6bcf70c3cb9e59e8b9b")
+source=(
+    "https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
+    "fix-rvalue-ref.patch"
+)
+b2sums=(
+    "25b31673a1d0df7ba38edf027f67c96b8aa186568ae3a600a4396a697c63f1cd90680aa2026f2b6f154a34d51ca49379a9c46fbcc1f7a22da8e5dbddc6915233"
+    "SKIP"
+)
+
+prepare() {
+    cd "${srcdir}"
+    tar -xzf ${_cranname}_${_cranver}.tar.gz
+    patch -p1 -d "${_cranname}" < fix-rvalue-ref.patch
+    tar -czf ${_cranname}_${_cranver}.tar.gz ${_cranname}
+}
 
 build() {
     mkdir -p "${srcdir}/build/"
