@@ -1,0 +1,20 @@
+pkgbase = r-simsurv
+	pkgdesc = Simulate Survival Data
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=simsurv
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = gcc-fortran
+	depends = r
+	optdepends = r-bb>=2014.10.1
+	optdepends = r-eha>=2.4.5
+	optdepends = r-flexsurv>=1.1.0
+	optdepends = r-knitr>=1.15.1
+	optdepends = r-rmarkdown
+	optdepends = r-rstpm2>=1.4.1
+	optdepends = r-testthat>=1.0.2
+	source = https://cran.r-project.org/src/contrib/simsurv_1.0.1.tar.gz
+	sha256sums = 6ee9c14d40f104ae626e24103560d1532403361c5ca3e0c022b49f5871b610b1
+
+pkgname = r-simsurv
