@@ -1,6 +1,6 @@
 pkgbase = nyrra-signals-bin
 	pkgdesc = Signal exploration TUI
-	pkgver = 0.0.14
+	pkgver = 0.0.15
 	pkgrel = 1
 	url = https://github.com/nyrra-labs/nyrra-signals
 	install = nyrra-signals-bin.install
