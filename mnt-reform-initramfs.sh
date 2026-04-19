@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-KVER="%KERNVER%"
+KVER="6.19.13-reform1"
 
 if [[ ! -d "/usr/lib/modules/$KVER" ]]; then
   echo "==> Kernel modules directory missing for $KVER, skipping initramfs"

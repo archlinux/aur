@@ -26,9 +26,9 @@ source_x86_64=(
 )
 sha256sums=(
   '8a15cec00fc571b7b62dba4ad9aa7b0132fe837dca3a424828bb19a37f5d3e58'
-  '9273c9f5d07b592e8e93ca4a2a46d637470672fe7d7dc43c3cd221e7ebfe175c'
+  '04af022e3b7b8ed590b99de3a700aeaddfc523e5adf7af4c395d2e6c6902ac8c'
   '24e36fc74f7aa27fe699e5eac923c14ae80c7bc85038cfab3d8cd93148d7cb3e'
-  'f698b0eac8828aa4b4ee4fad351b303760594b9371dee5c244789734139e05fd'
+  '7cc82511b3b40557f3813807d5c7d045366255c1af633e7e7dff629e719aeff3'
 )
 sha256sums_aarch64=(
   'fb89bce403f759e0d4b5c30f6fc0b894f4c4dc6f8b2749d094ae74159e1692f7'
@@ -38,14 +38,6 @@ sha256sums_x86_64=(
   'f98a1510182cf7582efaa03251a2ca6d7887abda410647165a8cedcb71c2727e'
   'bd7ab55d87b1de13a93f9cd1dcbbe4b87a187528648fe2a481887de513552947'
 )
-
-prepare() {
-  sed     -e "s|%KERNVER%|${_kernver}|g"     "$srcdir/linux-mnt-reform-bin.install"     > "$srcdir/linux-mnt-reform-bin.install.generated"
-  mv "$srcdir/linux-mnt-reform-bin.install.generated"     "$srcdir/linux-mnt-reform-bin.install"
-
-  sed     -e "s|%KERNVER%|${_kernver}|g"     "$srcdir/mnt-reform-initramfs.sh"     > "$srcdir/mnt-reform-initramfs.generated.sh"
-  mv "$srcdir/mnt-reform-initramfs.generated.sh"     "$srcdir/mnt-reform-initramfs.sh"
-}
 
 build() {
   :
