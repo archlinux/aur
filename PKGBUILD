@@ -1,6 +1,6 @@
 # Maintainer: Marvin1099
 pkgname=smb-mount-controller-git
-pkgver=0
+pkgver=0.2.r0.geee443b
 pkgrel=1
 pkgdesc="A state-based SMB/CIFS mount controller written in bash for Linux that (un)mounts network shares based on reachability"
 arch=('any')
