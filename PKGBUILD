@@ -50,7 +50,7 @@ package() {
     # 创建必要的目录并复制桌面文件
     install -d "${pkgdir}/usr/share/applications"
     cp temp_extract/usr/share/applications/qualcommsoftwarecenter.desktop "${pkgdir}/usr/share/applications/"
-    sed -i "s|Exec=/opt/qcom/softwarecenter/bin/softwarecenter|Exec=/usr/bin/${pkgname}|g" "${pkgdir}/usr/share/applications/qualcommsoftwarecenter.desktop"
+    sed -i "s|Exec=/opt/qcom/softwarecenter/bin/softwarecenter %u|Exec=/usr/bin/${pkgname} %u|g" "${pkgdir}/usr/share/applications/qualcommsoftwarecenter.desktop"
 
     # 复制图标
     install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
