@@ -1,0 +1,22 @@
+pkgbase = sweet-gtk-theme-git
+	pkgdesc = A colorful dark GTK and KDE Plasma desktop theme
+	pkgver = r446.f5720cb
+	pkgrel = 1
+	url = https://github.com/EliverLara/Sweet
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = inkscape
+	makedepends = optipng
+	makedepends = python
+	optdepends = ttf-roboto: primary font used by the theme
+	optdepends = ttf-ubuntu-font-family: secondary font used by the theme
+	conflicts = plasma5-themes-sweet-full-git
+	conflicts = sweet-gtk-theme-dark
+	conflicts = sweet-gtk-theme
+	conflicts = sweet-theme-git
+	options = !strip
+	source = Sweet::git+https://github.com/EliverLara/Sweet.git#branch=nova
+	sha256sums = SKIP
+
+pkgname = sweet-gtk-theme-git
