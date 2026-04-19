@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=yaImpute
-_pkgver=1.0-34.1
+_pkgver=1.0-36
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-vegan
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1db986dbdc7844996a0c850485bc59ee')
-b2sums=('100ae2827ade6a83b1e51bf05866cfc4474adc8a6eccb42100ddb94d5a040a621e17c117af4dff4b2d5ac96d314d8f1231eefea7a1d17bf0d92d4c2228ce9886')
+md5sums=('618f4efb6ef8e8e43b62dbe0c51aeb65')
+b2sums=('59379d423e3e6b75d1f7f82a58bd4ea0e744a7cf8090faa4cebe5c6f06ad0143f11abe35c8481d81b86ba3735620818b7578cd15b285302081429623d3e5665b')
 
 build() {
   mkdir build
