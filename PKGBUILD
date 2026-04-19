@@ -2,8 +2,8 @@
 
 _pkgname=sing-box
 pkgname="$_pkgname"-ref1nd-beta-bin
-_beta_pkgver=1.14.0-alpha.13-reF1nd.1 # renovate: datasource=github-releases depName=reF1nd/sing-box-releases
-pkgver=$(echo "$_beta_pkgver" | sed 's/-/\~/; s/-/\./')
+_beta_pkgver=1.14.0-alpha.14-reF1nd # renovate: datasource=github-tags depName=reF1nd/sing-box-releases
+pkgver="${_beta_pkgver//-/.}"
 pkgrel=1
 
 pkgdesc='The universal proxy platform.'
