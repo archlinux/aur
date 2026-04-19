@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=rmpd-bin
-pkgver=0.2.0 # renovate: datasource=github-releases depName=M0Rf30/rmpd
+pkgver=0.3.0 # renovate: datasource=github-releases depName=M0Rf30/rmpd
 pkgrel=1
 pkgdesc="A flexible, powerful, server-side application for playing music"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source=("${pkgname%%-bin}.service")
 source_x86_64=("${pkgname%%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/${pkgname%%-bin}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${pkgname%%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/${pkgver}/${pkgname%%-bin}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('f8068b7c7aa732a8b0649d795c50ff74d5da10069f103206366b051368c9c8fe')
-sha256sums_x86_64=('83b609ce6b9533da2c72d77d775b6dff417c08da4bed9685032a05927f2167ef')
-sha256sums_aarch64=('435da1a61c138d5d6b01ca625502b11ffc6584449551e722250ef8cf146b1202')
+sha256sums_x86_64=('50abc13e12d0c1f84c51fe7feada34734c8bfe6828262f1238ea23ed5f96e7b9')
+sha256sums_aarch64=('2e146d0db963a59b1778a2cf1e1511aed5efc0c44d9154419e5e19c4ac3b540b')
 
 package() {
   # Install binary
