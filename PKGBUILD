@@ -1,6 +1,6 @@
 # Maintainer: Abdulkadir Yildirim <contact@kadiryildirim.me>
 pkgname=victus16-keyboard-ui
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="HP Victus 16 Keyboard RGB Backlight Controller (GTK4)"
 arch=('any')
