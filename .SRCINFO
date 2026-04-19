@@ -1,0 +1,18 @@
+pkgbase = dotkeeper-bin
+	pkgdesc = P2P file sync with git history — embedded Syncthing + staggered git auto-backup
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://dotkeeper.corbet.ch
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = git
+	provides = dotkeeper
+	conflicts = dotkeeper
+	conflicts = dotkeeper-git
+	source_x86_64 = dotkeeper_0.3.0_linux_amd64.tar.gz::https://github.com/julian-corbet/dotkeeper/releases/download/v0.3.0/dotkeeper_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 59eb4b71b3d88f13810dec3b1f8119c0d391471d7c149925f5c1ce034badc31c
+	source_aarch64 = dotkeeper_0.3.0_linux_arm64.tar.gz::https://github.com/julian-corbet/dotkeeper/releases/download/v0.3.0/dotkeeper_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = aa4d81f78eff5714d2f413fb84be30240f509259a16253f245e3d149144f998f
+
+pkgname = dotkeeper-bin
