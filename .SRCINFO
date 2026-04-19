@@ -1,6 +1,6 @@
 pkgbase = modrinth-app-appimage
 	pkgdesc = An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.
-	pkgver = 0.13.2
+	pkgver = 0.13.3
 	pkgrel = 1
 	url = https://modrinth.com/app
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = modrinth-app-appimage
 	depends = fuse2
 	provides = modrinth-app
 	conflicts = modrinth-app
-	noextract = Modrinth%20App_0.13.2_amd64.AppImage
+	noextract = Modrinth%20App_0.13.3_amd64.AppImage
 	options = !strip
 	options = !debug
-	source = modrinth-app-0.13.2.AppImage::https://launcher-files.modrinth.com/versions/0.13.2/linux/Modrinth%20App_0.13.2_amd64.AppImage
+	source = modrinth-app-0.13.3.AppImage::https://launcher-files.modrinth.com/versions/0.13.3/linux/Modrinth%20App_0.13.3_amd64.AppImage
 	source = modrinth-app
 	source = modrinth-file-extensions.xml
-	sha256sums = 8cf12bc79b4dff2da6f2c63d46ffc7c0cee6d8318dd68d2ee51f54a2b3038298
+	sha256sums = 991a4132e259bf7877342e72bba726983592e74420cc827644b6b8faee7b00f2
 	sha256sums = 5241eac73fafd6eb4b763ffedeb4d9bb4559ed3fa8fc0c31edd3c6ef62cbc375
 	sha256sums = e0b3eab49465709ed5053dc1fa4206071ab32657d25bd1f9c01850d696715cff
 
