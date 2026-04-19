@@ -1,6 +1,6 @@
 # Maintainer: hnchengzong
 pkgname=jlu-drcom-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="吉林大学校园网客户端"
 arch=('x86_64')
@@ -9,9 +9,9 @@ license=('MIT')
 depends=()
 makedepends=()
 source=("https://github.com/hnchengzong/jlu-drcom/releases/download/v$pkgver/jlu-drcom-$pkgver.tar.xz")
-sha256sums=('df8889956dde63b47f5a85b175b55b265ea2533bf9939636d8a8da38b709e2f0')   
+sha256sums=('5f5c4b607b3ac71acc40cf253df25e5092b4618071110eed8f76b94da79385fc')   
 package() {
-  cd "$srcdir/jlu-drcom-$pkgver"
+  cd "$srcdir/$pkgname"
 
   install -d "$pkgdir/opt/drclient/translator"
 
@@ -24,7 +24,7 @@ package() {
   install -Dm644 drcomauthsvr.drsc "$pkgdir/opt/drclient/drcomauthsvr.drsc"
   install -Dm644 drcomrulesvr.drsc "$pkgdir/opt/drclient/drcomrulesvr.drsc"
 
-  install -Dm755 hn-install.sh "$pkgdir/opt/drclient/hn-install.sh"
+  install -Dm755 hn-config.sh "$pkgdir/opt/drclient/hn-config.sh"
   install -Dm755 hostinfo.sh "$pkgdir/opt/drclient/getinfo.sh"
   install -Dm755 pppoe-status "$pkgdir/opt/drclient/pppoe-status.sh"
 
@@ -42,7 +42,7 @@ EOF
 #!/bin/sh
 cd /opt/drclient || exit 1
 export LD_LIBRARY_PATH=/opt/drclient:$LD_LIBRARY_PATH
-exec /opt/drclient/hn-install.sh "$@"
+exec /opt/drclient/hn-config.sh "$@"
 EOF
 
   chmod 755 "$pkgdir/usr/bin/jlu-drcom"
