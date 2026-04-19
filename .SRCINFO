@@ -1,6 +1,6 @@
 pkgbase = python-single-source
 	pkgdesc = Python library for accessing project versions
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/rabbit72/single-source
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = python-single-source
 	checkdepends = python-pytest
 	checkdepends = python-pytest-mock
 	checkdepends = python-toml
-	makedepends = python-poetry
+	makedepends = python-poetry-core
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	optdepends = python-importlib-metadata>=3.0: REQUIRED for python<3.8
-	source = python-single-source-0.3.0.tar.gz::https://github.com/rabbit72/single-source/archive/v0.3.0.tar.gz
-	sha256sums = 9f0c9a8e004472fee89e688f712b77fbd6a334172f7fedb3fe05f332034adf5a
+	source = python-single-source-0.4.0.tar.gz::https://github.com/rabbit72/single-source/archive/v0.4.0.tar.gz
+	sha256sums = 99e98b8363fc723fbdff5d96494b0546242327afc0817ca30ea8750c8b9da34f
 
 pkgname = python-single-source
