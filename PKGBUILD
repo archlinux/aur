@@ -1,40 +1,27 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Rob Bolton <rob.a.bolton@gmail.com>
 pkgname=es-shell
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
-epoch=
 pkgdesc="Extensible Shell, a shell based on Plan 9's rc shell, influenced by functional languages."
-arch=('any')
+arch=('aarch64' 'x86_64')
 url="http://wryun.github.io/es-shell/"
-license=('unknown')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
+license=('LicenseRef-es-shell')
+depends=('glibc' 'readline')
+provides=('es')
 install=es-shell.install
-changelog=
-source=("https://github.com/wryun/es-shell/releases/download/v$pkgver/es-$pkgver.tar.gz")
-noextract=()
-md5sums=("caa8347ee5bb38435cf8cf7e736e4a99")
-validpgpkeys=()
+source=("es-$pkgver.tar.gz::https://github.com/wryun/es-shell/releases/download/v$pkgver/es-$pkgver.tar.gz")
+sha256sums=('551ec0974822ec081e7b9f8ee79374c62766ca6dcdb1c685a98efdc3e6dbc4b9')
 
 build() {
+	cd "es-$pkgver"
 	./configure --prefix=/usr
 	make
 }
 
 package() {
-make prefix="$pkgdir/usr" install
+	cd "es-$pkgver"
+	make DESTDIR="$pkgdir" prefix="/usr" install
+	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
 }
 
