@@ -1,27 +1,24 @@
 # Maintainer: Abdulkadir Yildirim <contact@kadiryildirim.me>
 pkgname=victus16-keyboard-ui
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="HP Victus 16 Keyboard RGB Backlight Controller (GTK4)"
 arch=('any')
-url="https://github.com/kadir/victus16-keyboard-ui"
+url="https://github.com/kadir-y/victus16-keyboard-ui"
 license=('MIT')
 depends=('python' 'gtk4' 'python-gobject')
 install=victus16-keyboard.install
 
-# BURASI DEĞİŞTİ: Dosyaların GitHub Raw linkleri eklendi
 source=(
-    "https://raw.githubusercontent.com/kadir/victus16-keyboard-ui/main/keyboard_controller.py"
-    "https://raw.githubusercontent.com/kadir/victus16-keyboard-ui/main/com.victus16.keyboard.desktop"
-    "https://raw.githubusercontent.com/kadir/victus16-keyboard-ui/main/victus16-keyboard-sudoers"
-    "https://raw.githubusercontent.com/kadir/victus16-keyboard-ui/main/com.victus16.keyboard.png"
+    "https://raw.githubusercontent.com/kadir-y/victus16-keyboard-ui/main/keyboard_controller.py"
+    "https://raw.githubusercontent.com/kadir-y/victus16-keyboard-ui/main/com.victus16.keyboard.desktop"
+    "https://raw.githubusercontent.com/kadir-y/victus16-keyboard-ui/main/victus16-keyboard-sudoers"
+    "https://raw.githubusercontent.com/kadir-y/victus16-keyboard-ui/main/com.victus16.keyboard.png"
 )
 
-# Güvenlik için SKIP kalabilir ama profesyonel paketlerde sha256 toplamı tercih edilir. Şimdilik SKIP kalsın.
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
-    # BURASI AYNI
     install -Dm755 "$srcdir/keyboard_controller.py" \
         "$pkgdir/usr/bin/victus16-keyboard"
 
