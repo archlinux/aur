@@ -5,11 +5,12 @@ pkgrel=0
 arch=('x86_64')
 makedepends=(
     'git'
-    'npm'
 )
 depends=(
-    'electron'
-    'nodejs'
+    'webkit2gtk'
+    'go'
+    'wails'
+    'bun'
 )
 url="https://github.com/wavelog/WaveLogGate"
 license=('MIT')

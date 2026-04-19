@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /opt/WaveLogGate
-exec electron main.js
+cd /opt/WaveLogGate/build/bin
+./WavelogGate
