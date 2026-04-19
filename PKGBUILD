@@ -35,8 +35,10 @@ package() {
     cp -r publish/. "$pkgdir/usr/lib/livepaper/"
 
     # Remove non-linux-x64 platform runtimes bundled by NuGet packages
-    find "$pkgdir/usr/lib/livepaper/runtimes" -mindepth 1 -maxdepth 1 \
-        ! -name 'linux-x64' -exec rm -rf {} +
+    if [ -d "$pkgdir/usr/lib/livepaper/runtimes" ]; then
+        find "$pkgdir/usr/lib/livepaper/runtimes" -mindepth 1 -maxdepth 1 \
+            ! -name 'linux-x64' -exec rm -rf {} +
+    fi
 
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/livepaper" <<'WRAPPER'
