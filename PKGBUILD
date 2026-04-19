@@ -1,6 +1,6 @@
 # Maintainer: Eric Langlois <eric@langlois.xyz>
 pkgname=mujoco-bin
-pkgver=3.3.5
+pkgver=3.7.0
 _pkgname="${pkgname%-bin}"
 pkgrel=1
 pkgdesc="Multi-Joint dynamics with Contact. A general purpose physics simulator."
@@ -13,8 +13,8 @@ conflicts=('mujoco')
 _src_url_prefix="https://github.com/deepmind/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux"
 source_x86_64=("${_src_url_prefix}-x86_64.tar.gz")
 source_aarch64=("${_src_url_prefix}-aarch64.tar.gz")
-sha256sums_x86_64=('b553458606a66ac0cf4dcdff9c168b757a6e85db1b1936d7dd9290d2eb0abfa0')
-sha256sums_aarch64=('e4f3f1ed1e4d723016cc3995c03e14b594ac789e4ad4beec8a7a1d376f869239')
+sha256sums_x86_64=('f296190163faaa7424e8b9b09988b725bc67dba357e46da27ce9b0c96f3ed7f2')
+sha256sums_aarch64=('404b2baa6dd596712670468ea594a4d36da4095f329974327540d95f2096ea57')
 
 package() {
 	cd "${_pkgname}-${pkgver}"
