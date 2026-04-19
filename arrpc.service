@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/arrpc
+ExecStart=/usr/bin/node /usr/lib/arrpc/src/index.js
 Restart=on-failure
 
 [Install]
