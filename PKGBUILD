@@ -2,7 +2,7 @@
 pkgname=deadsync-bin
 pkgdesc='ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync and competitive-level performance - pre-built binary release'
 url='https://github.com/pnn64/deadsync'
-license=('MIT')
+license=('GPL-3.0-only')
 arch=('x86_64' 'aarch64')
 provides=('deadsync')
 conflicts=('deadsync' 'deadsync-git')
