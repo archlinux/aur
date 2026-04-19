@@ -1,7 +1,7 @@
 # Maintainer: Aaron Coach <aur@awc.id.au>
 _pkgname=qui
 pkgname="${_pkgname}-bin"
-pkgver=1.16.1
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="A modern alternative webUI for qBittorrent (Pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source=(
 sha256sums=('d52299510cf4845f0514eefd492b01c33bc2cd2819c2be9dc157f50f67462bd2'
             'ac49b4d6ae748334f7fa360d8dd58c7cd09ba5e062249666ab380d451b7925dd'
             '3bacde8867fbb7b6d566666b635589579c1cc079cd23418284f43a7b37f0c41b')
-sha256sums_x86_64=('3f41f340f51614f5c3d5429bf11b49c4c418aed8b2f95db548c3da6b3538c23d')
-sha256sums_aarch64=('bd83d5c64b90d7091f53aeaa173c6b965470b3f61c19a1c0981efa5221205819')
+sha256sums_x86_64=('5940770ca910f168c7a3dc5f708ba12d2dfb38fc4f2f5cf98b8b2287401c4737')
+sha256sums_aarch64=('2d4ae2194ec9fd05f3a40e7f494683258e5098c7d5b107da25be4bc26d11563e')
 
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_x86_64.tar.gz"
