@@ -1,0 +1,35 @@
+pkgbase = r-chattr
+	pkgdesc = Interact with Large Language Models in 'RStudio'
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=chattr
+	arch = any
+	license = MIT
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-rstudioapi
+	depends = r-lifecycle
+	depends = r-processx
+	depends = r-config
+	depends = r-ellmer>=0.3.0
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-bslib
+	depends = r-shiny
+	depends = r-clipr
+	depends = r-httr2>=1.1.0
+	depends = r-yaml
+	depends = r-glue
+	depends = r-coro
+	depends = r-cli
+	depends = r-fs
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat>=3.0.0
+	optdepends = r-shinytest2
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/chattr_0.3.1.tar.gz
+	sha256sums = 761d2cf63e48a0f2e4135aa12a7cfebf4a8524f48731bb5e5c4a483b70372472
+
+pkgname = r-chattr
