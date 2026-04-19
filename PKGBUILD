@@ -3,10 +3,10 @@
 # Maintainer: shenmo <shenmo@spark-app.store>
 
 pkgname=amber-package-manager
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="bwrap wrapper for install and running debs inside a Amber-PM container"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://gitee.com/amber-ce/amber-pm/"
 license=('AGPL-3.0')
 depends=('bubblewrap' 'flatpak' 'polkit' 'systemd' 'procps-ng' 'coreutils' 'fuse-overlayfs')
@@ -15,11 +15,18 @@ conflicts=('ace-host-integration' 'amber-pm-store')
 # provides=('amber-package-manager')
 
 source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-ce/amber-pm/repository/archive/${pkgver}.tar.gz")
-sha256sums=('3dd55f7b932751b1cb90ed7d3754c3c97d8dd767fafcebb35810df1d495ed15c')
+source_aarch64=("https://gitee.com/amber-ce/amber-pm/releases/download/1.2.3/ace-env-arm64.tar.xz")
+sha256sums=('2e166950e6ab74e7b84de41c668711f90be60e5b05f8d056967b1107cce610eb')
+sha256sums_aarch64=('b99a96854f8fcba405d46b8a749b07edf584e6119f8bf9b131dfcaaa9b4ad552')
 
 install=amber-package-manager.install
 build() {
+    if [[ "$CARCH" == "aarch64" ]]; then
+        cp -f "$srcdir/ace-env-arm64.tar.xz" "$srcdir/amber-pm-${pkgver}/src/var/lib/apm/apm/files/ace-env.tar.xz"
+    fi
+
     cd "$srcdir/amber-pm-${pkgver}"
+    
     bash build.sh "$srcdir/amber-pm-${pkgver}/src"
 }
 package() {
