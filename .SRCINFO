@@ -1,6 +1,6 @@
 pkgbase = meshcore-bin
 	pkgdesc = Closed source reference companion app by Liam Cottle for MeshCore, a LoRa text messaging protocol.
-	pkgver = 1.43.0+68.ge843bd6
+	pkgver = 1.43.0.build68.e843bd6
 	pkgrel = 1
 	url = https://meshcore.co.uk/
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = meshcore-bin
 	depends = libpango-1.0.so
 	depends = libpangocairo-1.0.so
 	optdepends = hicolor-icon-theme: For hicolor theme hierarchy.
-	provides = meshcore=1.43.0+68.ge843bd6
+	provides = meshcore=1.43.0.build68.e843bd6
 	conflicts = meshcore
 	source = https://files.liamcottle.net/MeshCore/v1.43.0/MeshCore-v1.43.0+68-e843bd6-linux-x86_64.zip
 	source = https://files.liamcottle.net/MeshCore/Documentation/MeshCore_Quick_Start_Guide.pdf
