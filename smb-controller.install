@@ -1,6 +1,9 @@
 post_install() {
-  if [[ ! -f /etc/smb-controller.conf ]]; then
-    cp /etc/smb-controller-default.conf /etc/smb-controller.conf
-    echo "Created /etc/smb-controller.conf from default"
-  fi
+  echo "==> smb-mount-controller installed"
+  echo "==> Edit /etc/smb-controller.conf before running"
+  echo "==> Run: sudo smb-controller OR sudo systemctl enable --now smb-controller.service"
+}
+
+post_upgrade() {
+  echo "==> smb-mount-controller: check /etc/smb-controller.conf.pacnew if present"
 }
