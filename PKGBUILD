@@ -3,11 +3,16 @@
 pkgname=ai-jail-bin
 _pkgname=ai-jail
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sandbox for AI coding agents (bubblewrap on Linux, sandbox-exec on macOS) — prebuilt binary'
 arch=('x86_64')
 url='https://github.com/akitaonrails/ai-jail'
 license=('GPL-3.0-only')
+# Upstream ships the binary fully stripped (no .symtab, no
+# .debug_*). Skipping strip + debug split keeps the installed
+# binary byte-for-byte identical to the release asset, so users
+# can verify it against the sha256 upstream publishes.
+options=('!strip' '!debug')
 depends=('bubblewrap' 'glibc' 'gcc-libs')
 optdepends=(
     'mise: language version management inside the sandbox'

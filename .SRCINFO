@@ -1,7 +1,7 @@
 pkgbase = ai-jail-bin
 	pkgdesc = Sandbox for AI coding agents (bubblewrap on Linux, sandbox-exec on macOS) — prebuilt binary
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akitaonrails/ai-jail
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,6 +12,8 @@ pkgbase = ai-jail-bin
 	optdepends = docker: Docker socket passthrough
 	provides = ai-jail=0.9.0
 	conflicts = ai-jail
+	options = !strip
+	options = !debug
 	source = ai-jail-bin-0.9.0.tar.gz::https://github.com/akitaonrails/ai-jail/releases/download/v0.9.0/ai-jail-linux-x86_64.tar.gz
 	source = LICENSE-0.9.0::https://raw.githubusercontent.com/akitaonrails/ai-jail/v0.9.0/LICENSE
 	sha256sums = d10f5231058d803ccbe1b3470734d1406695e3f77ee8a4337ac664dee27322df
