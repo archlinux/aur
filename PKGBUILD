@@ -7,10 +7,10 @@ makedepends=(
     'git'
 )
 depends=(
-    'webkit2gtk'
     'go'
     'wails'
     'bun'
+    'webkit2gtk'
 )
 url="https://github.com/wavelog/WaveLogGate"
 license=('MIT')

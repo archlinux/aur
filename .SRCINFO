@@ -6,9 +6,10 @@ pkgbase = waveloggate-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = npm
-	depends = electron
-	depends = nodejs
+	depends = go
+	depends = wails
+	depends = bun
+	depends = webkit2gtk
 	options = !lto
 	options = !debug
 	source = WaveLogGate::git+https://github.com/wavelog/WaveLogGate#tag=v2.0.1
@@ -18,6 +19,6 @@ pkgbase = waveloggate-git
 	sha256sums = SKIP
 	sha256sums = ac05b6e3429c8b81b8ea3963da90581c305cbf6550188f13e5cfd11b09b91632
 	sha256sums = 593e1c6e902130d0c911e34f5d26f1e4d2703327b814c94ae82be04e1c2d80bb
-	sha256sums = aa5da810c4c84cbde4b79445e2fb1195c61d4f9b5c85eafa4bc2867b3d16a39d
+	sha256sums = aa5da810c4c84cbde4b79445e2fb1195c61d4f9b5c85eafa4bc2867b3d16a39a
 
 pkgname = waveloggate-git
