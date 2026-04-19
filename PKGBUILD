@@ -2,7 +2,7 @@
 
 pkgname=ai-jail-bin
 _pkgname=ai-jail
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Sandbox for AI coding agents (bubblewrap on Linux, sandbox-exec on macOS) — prebuilt binary'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "LICENSE-$pkgver::https://raw.githubusercontent.com/akitaonrails/ai-jail/v$pkgver/LICENSE"
 )
 sha256sums=(
-    'c881e0bcae473761a0217dde63040a45b64b9fcdd99e37dabc1b7cabd904e81c'
+    'd10f5231058d803ccbe1b3470734d1406695e3f77ee8a4337ac664dee27322df'
     '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
 )
 
