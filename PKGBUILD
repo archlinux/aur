@@ -23,6 +23,7 @@ prepare() {
 
     cd "${pkgname}-${pkgver}"
     sed -i 's|- AppImage|- dir|g' electron-builder.yml
+    sed -i 's|--linux AppImage|--linux dir|g' package.json
     local _elver=$(cat /usr/lib/electron/version)
     echo -n Replacing $(cat package.json | grep '"electron":')
     npm pkg set devDependencies.electron=${_elver}
