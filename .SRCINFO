@@ -5,14 +5,20 @@ pkgbase = uboot-rockchip-rk3566-powkiddy-x55
 	url = https://github.com/u-boot/u-boot
 	arch = x86_64
 	arch = aarch64
-	license = (GPL-2.0+ OR BSD-3-Clause) AND LicenseRef-scancode-rockchip-proprietary-2023
+	license = (GPL-2.0-or-later OR BSD-3-Clause) AND LicenseRef-scancode-rockchip-proprietary-2023
 	makedepends = git
+	makedepends = python3
+	makedepends = python-pyelftools
+	makedepends = python-setuptools
+	makedepends = swig
 	source = git+https://github.com/u-boot/u-boot.git#tag=v2026.04
 	source = https://github.com/rockchip-linux/rkbin/raw/refs/heads/master/bin/rk35/rk3568_ddr_1056MHz_v1.23.bin
 	source = https://github.com/rockchip-linux/rkbin/raw/refs/heads/master/bin/rk35/rk3568_bl31_v1.45.elf
+	source = rkbin.LICENSE::https://raw.githubusercontent.com/rockchip-linux/rkbin/refs/heads/master/LICENSE
 	sha256sums = 4dae81ba4e943a4edda2850da41b35f3f03a5f9035a19d1a00c29bd71ec62b1a
 	sha256sums = 20e4bb076847bd019fcdeb7bdc15bd249890f07ecc76e9937101f22e50950982
 	sha256sums = 76634f10e535bbe981fb9132fd6815a71586cc1b96aae1159bec6797579e5b9f
+	sha256sums = d2765124a2c24d71aba3cbc6cdd6975a5a297821264eb6c26378a4c16cd16e92
 	makedepends_x86_64 = aarch64-linux-gnu-gcc
 
 pkgname = uboot-rockchip-rk3566-powkiddy-x55
