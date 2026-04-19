@@ -3,7 +3,7 @@ _cranname=ankiR
 _cranver=0.6.6
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Comprehensive R Toolkit for Anki Flashcard Analysis (137 functions)"
 arch=('any')
 url="https://github.com/chrislongros/ankiR"
@@ -23,6 +23,7 @@ build() {
   R CMD build .
 }
 package() {
+  install -dm755 "${pkgdir}/usr/lib/R/library"
   cd "${srcdir}/${_cranname}-${_cranver}"
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${pkgdir}/usr/lib/R/library"
 }
