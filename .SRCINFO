@@ -1,7 +1,7 @@
 pkgbase = plasma6-applets-netspeed
 	pkgdesc = Plasma 6 widget that displays the currently used network bandwidth
 	pkgver = 3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dfaust/plasma-applet-netspeed-widget
 	arch = any
 	license = GPL-2.0-only
