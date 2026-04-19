@@ -1,6 +1,6 @@
 pkgbase = nekobox-git
 	pkgdesc = Cross-platform GUI proxy utility (Empowered by sing-box)
-	pkgver = 5.10.38
+	pkgver = 5.10.39
 	pkgrel = 10
 	url = https://github.com/qr243vbi/nekobox
 	arch = x86_64
@@ -35,6 +35,7 @@ pkgbase = nekobox-git
 	makedepends = acl
 	makedepends = patchelf
 	makedepends = ccache
+	makedepends = lmdb
 
 pkgname = nekobox-git
 
