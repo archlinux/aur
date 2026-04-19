@@ -1,7 +1,7 @@
 pkgbase = air-language-server-bin
 	pkgdesc = R formatter and language server
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://posit-dev.github.io/air/
 	arch = x86_64
 	arch = aarch64

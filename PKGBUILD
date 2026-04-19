@@ -1,7 +1,7 @@
 # Maintainer: shanoaice <shanoaice at tutamail dot com>
 pkgname=air-language-server-bin
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="R formatter and language server"
 arch=('x86_64' 'aarch64')
@@ -23,6 +23,6 @@ source_aarch64=("https://github.com/posit-dev/air/releases/download/$pkgver/air-
 b2sums_aarch64=('9419c1d2aeb161f9d21134b218d126529e65bae2b946bc649f29e086a3aae9405ad4485616e863691ab044f60623161f8b82f5286deafccd3fc8f5bf970e4f9d')
 
 package() {
-	cd "$srcdir/air-$arch-unknown-linux-gnu"
+	cd "$srcdir/air-$CARCH-unknown-linux-gnu"
 	install -Dm755 air $pkgdir/usr/bin/air
 }
