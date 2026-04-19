@@ -2,7 +2,7 @@
 
 pkgname=iamb-git
 _pkg=iamb
-pkgver=r188.3355eb2
+pkgver=r271.b10c985
 pkgrel=1
 pkgdesc='A Matrix client for Vim addicts'
 url='https://github.com/ulyssa/iamb'
@@ -18,22 +18,30 @@ options=('!lto')
 # https://wiki.archlinux.org/title/VCS_package_guidelines
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-#  git describe --long --tags --abbrev=7 | sed 's/-/.r/;s/-/./'
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
   cd $_pkg
-  cargo build --release
+  VERGEN_GIT_SHA="Arch Linux" cargo build --release
+}
+
+check() {
+  cd $_pkg
+  cargo test
 }
 
 package() {
-  install -Dm644 "$srcdir/$_pkg/LICENSE" "$pkgdir/usr/share/licenses/$_pkg/LICENSE"
-  install -Dm755 "$srcdir/$_pkg/target/release/iamb" "$pkgdir/usr/bin/iamb"
-  install -Dm755 "$srcdir/$_pkg/README.md" "$pkgdir/usr/share/doc/$_pkg/README.md"
-  # Manpages
-  install -Dm644 "$srcdir/$_pkg/docs/${_pkg}.1" "$pkgdir/usr/share/man/man1/${_pkg}.1"
-  install -Dm644 "$srcdir/$_pkg/docs/${_pkg}.5" "$pkgdir/usr/share/man/man5/${_pkg}.5"
-  # Config example
-  install -Dm644 "$srcdir/$_pkg/config.example.toml" "$pkgdir/usr/share/doc/$_pkg/config.example.toml"
+  install -Dm755 "$srcdir/$_pkg/target/release/iamb"  "$pkgdir/usr/bin/iamb"
+
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$_pkg/"  "$srcdir/$_pkg/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkg/"  "$srcdir/$_pkg/README.md"
+  install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"  "$srcdir/$_pkg/docs/$_pkg.svg"
+  install -Dm644 -t "${pkgdir}/usr/share/metainfo/"  "$srcdir/$_pkg/docs/$_pkg.metainfo.xml"
+  install -Dm644 -t "${pkgdir}/usr/share/applications/"  "$srcdir/$_pkg/$_pkg.desktop"
+
+  install -Dm644 -t "$pkgdir/usr/share/man/man1/"  "$srcdir/$_pkg/docs/$_pkg.1"
+  install -Dm644 -t "$pkgdir/usr/share/man/man5/"  "$srcdir/$_pkg/docs/$_pkg.5"
+
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkg/"  "$srcdir/$_pkg/config.example.toml"
 }
