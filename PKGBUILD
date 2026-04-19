@@ -30,17 +30,25 @@ provides=('voxtype')
 conflicts=('voxtype')
 backup=('etc/voxtype/config.toml')
 install=voxtype-bin.install
+validpgpkeys=('E79F5BAF8CD51A806AA27DBB7DA2709247D75BC6')  # Peter Jackson <pete@peteonrails.com>
 _github="https://github.com/peteonrails/voxtype/releases/download/v$pkgver"
 source=(
     # Whisper binaries
     "voxtype-$pkgver-avx2::$_github/voxtype-$pkgver-linux-x86_64-avx2"
+    "voxtype-$pkgver-avx2.asc::$_github/voxtype-$pkgver-linux-x86_64-avx2.asc"
     "voxtype-$pkgver-avx512::$_github/voxtype-$pkgver-linux-x86_64-avx512"
+    "voxtype-$pkgver-avx512.asc::$_github/voxtype-$pkgver-linux-x86_64-avx512.asc"
     "voxtype-$pkgver-vulkan::$_github/voxtype-$pkgver-linux-x86_64-vulkan"
+    "voxtype-$pkgver-vulkan.asc::$_github/voxtype-$pkgver-linux-x86_64-vulkan.asc"
     # ONNX binaries (all ONNX engines: Parakeet, Moonshine, SenseVoice, Paraformer, Dolphin, Omnilingual)
     "voxtype-$pkgver-onnx-avx2::$_github/voxtype-$pkgver-linux-x86_64-onnx-avx2"
+    "voxtype-$pkgver-onnx-avx2.asc::$_github/voxtype-$pkgver-linux-x86_64-onnx-avx2.asc"
     "voxtype-$pkgver-onnx-avx512::$_github/voxtype-$pkgver-linux-x86_64-onnx-avx512"
+    "voxtype-$pkgver-onnx-avx512.asc::$_github/voxtype-$pkgver-linux-x86_64-onnx-avx512.asc"
     "voxtype-$pkgver-onnx-cuda::$_github/voxtype-$pkgver-linux-x86_64-onnx-cuda"
+    "voxtype-$pkgver-onnx-cuda.asc::$_github/voxtype-$pkgver-linux-x86_64-onnx-cuda.asc"
     "voxtype-$pkgver-onnx-rocm::$_github/voxtype-$pkgver-linux-x86_64-onnx-rocm"
+    "voxtype-$pkgver-onnx-rocm.asc::$_github/voxtype-$pkgver-linux-x86_64-onnx-rocm.asc"
     # Config and support files
     "config-$pkgver.toml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/config/default.toml"
     "voxtype-$pkgver.service::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/systemd/voxtype.service"
@@ -53,13 +61,20 @@ source=(
 sha256sums=(
     # Whisper binaries
     '505933791bb9389ef851813c404eefe63b186eba3aa842b2b321a164ecb8a6db'  # voxtype-avx2
+    'SKIP'                                                              # voxtype-avx2.asc
     'ad9631c1fa810cab0749d66b73a549b6634047bbe36f004ad52d24acf969a467'  # voxtype-avx512
+    'SKIP'                                                              # voxtype-avx512.asc
     '2f7cf1bb199c2d25cae6566c2df0bbe62d39e712f9abea329cb2d563a3b548fe'  # voxtype-vulkan
+    'SKIP'                                                              # voxtype-vulkan.asc
     # ONNX binaries
     '300d040d682e39fdb3a5beca4814cdd1bc127d61efaea917ea43031193aba92f'  # voxtype-onnx-avx2
+    'SKIP'                                                              # voxtype-onnx-avx2.asc
     '3799fb9a6d5d59e132286b8c5f7166d849a746dcd255d2b24b77c87a3bd9fbb6'  # voxtype-onnx-avx512
+    'SKIP'                                                              # voxtype-onnx-avx512.asc
     'ce130d9190274b84c61c974dbeeb3d92c308285f40d4d0befaa135be49af1a09'  # voxtype-onnx-cuda
+    'SKIP'                                                              # voxtype-onnx-cuda.asc
     '456026cc5b0122b3f99a52691c82579bda16d1c36bd739a378b7b1ea24f1294f'  # voxtype-onnx-rocm
+    'SKIP'                                                              # voxtype-onnx-rocm.asc
     # Config and support files
     'SKIP'  # config.toml
     'SKIP'  # voxtype.service
