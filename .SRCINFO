@@ -1,0 +1,13 @@
+pkgbase = r-yyjsonr
+	pkgdesc = Fast 'JSON', 'NDJSON' and 'GeoJSON' Parser and Generator
+	pkgver = 0.1.22
+	pkgrel = 1
+	url = https://cran.r-project.org/package=yyjsonr
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = r>=4.1.0
+	source = https://cran.r-project.org/src/contrib/yyjsonr_0.1.22.tar.gz
+	b2sums = 07a5003a22c5241540bd42a95bb3a5be5279fa734e136237ff7acf91e0490cfeedd9efb793bd0bf4ae3a21c67cfbaf3a8cb180ef2ea5893f89c9d5c9f0a188e4
+
+pkgname = r-yyjsonr
