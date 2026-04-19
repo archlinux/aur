@@ -29,15 +29,15 @@ source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/ta
 sha256sums=('7b260b8febddf278fc9c917c6eb3081016a0c7532c93696dc03322854af70a90')
 
 build() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package}-${pkgver}/" || exit
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package}-${pkgver}/" || exit
 
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
