@@ -1,6 +1,6 @@
 # Maintainer: Dejan Noveski <deko@duck.com>
 pkgname=vermouth
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A no-frills Wine/Proton game launcher for Linux"
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=(
 )
 optdepends=('icoutils: Windows icon extraction')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dekomote/vermouth/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e6cb0ee4616d6c7485d5fb73f6c1f25b7563747bcd731be045c148391b51a730')
+sha256sums=('c69c0884225867130d3f09fbcb55bf8cbb578f9a9b9fecb4993890aab9d366b5')
 
 build() {
     cd "${pkgname}-${pkgver}"
