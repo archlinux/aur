@@ -1,15 +1,16 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=tsql-git
 _pkgname="${pkgname%-git}"
-pkgver=0.2.0.r66.g4518df8
-pkgrel=2
-pkgdesc='A modern PostgreSQL manager TUI'
+pkgver=0.6.0.r0.g63e5891
+pkgrel=1
+pkgdesc='A modern PostgreSQL and MongoDB manager TUI'
 arch=(x86_64 aarch64)
 url='https://github.com/fcoury/tsql'
 license=('MIT')
 makedepends=(cargo tree-sitter)
-provides=(${pkgname%-*}=$pkgver)
-conflicts=(${pkgname%-*})
+options=(!lto)
+provides=('tsql')
+conflicts=('tsql' 'tsql-bin')
 source=("$_pkgname::git+$url.git#branch=master")
 sha256sums=('SKIP')
 
@@ -27,8 +28,6 @@ build() {
     cd "$_pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    # fix the naitive linking errors
-    export RUSTFLAGS="-Clinker-plugin-lto"
     cargo build --release --frozen
 }
 
