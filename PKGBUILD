@@ -1,7 +1,8 @@
+# Maintainer: Christos Longros <chris.longros@gmail.com>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=DiceKriging
-_cranver=1.6.0
+_cranver=1.6.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +13,7 @@ license=(GPL2 GPL3)
 depends=(r)
 optdepends=(r-rgenoud r-foreach r-doparallel r-testthat r-numderiv)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('ab5d1332809f2bb16d156ed234b102eb9fbd6de792e4291f9f6ea4652215cb49')
+sha256sums=("4c65dc2abd006fc3d3e07f97f4fe6571ff822f4e4ecce00e769fc9c0651c1ad2")
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
