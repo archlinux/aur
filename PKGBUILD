@@ -1,6 +1,8 @@
-# Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
+# Maintainer: Sergey Kanafyev <sergeykanafyev@gmail.com>
+
 pkgname=github-backup
-pkgver=0.25.0
+_pkgname=python-github-backup
+pkgver=0.61.5
 pkgrel=1
 pkgdesc="Backup a github user or organization."
 arch=(any)
@@ -8,16 +10,16 @@ url="https://github.com/josegonzalez/python-github-backup"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/g/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('755238b180f1212ee8ac35bcf6a45fdb830556a15ad39c5b0b4d204f0c7d91eabd07a6a5036fa8c322dcf18377edb59d6a3a0d299cf75d62df38be14e10f0a98')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/josegonzalez/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('f9151d94769765ca0f5aa9d329599d6fde2de8b73c81a4faf7f9ea0bfef6cdaeb48d81a2ab18c2830d5c8e877be29fd4570057a2077e1fcc7712734547336126')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
