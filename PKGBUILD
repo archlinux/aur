@@ -1,7 +1,7 @@
 # Maintainer: byrdltd <byrdltd@users.noreply.github.com>
 
 pkgname=whydpi
-pkgver=0.2.1
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Adaptive, per-SNI DPI bypass that learns optimal TLS fragmentation per host"
 arch=('any')
@@ -13,6 +13,9 @@ depends=(
 )
 optdepends=(
   'systemd: run whydpi as a service at boot'
+  'python-pystray: system-tray icon with Start/Stop/status from the desktop'
+  'python-pillow: icon rendering for the tray'
+  'libnotify: desktop toasts on tray startup and state change'
 )
 makedepends=(
   'python-build'
@@ -22,7 +25,8 @@ makedepends=(
 )
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8bd39e0b59cd3eb2c3eecd4d777e1cad36c30726ce7ef59ce6e591cf8c08f0e8')
+# Updated when tagging v${pkgver} on GitHub (archive URL is stable).
+sha256sums=('2ebe8e3371e67cf0b2c74b45c15d6e37925f008a017cd2e5d1ea51edd4b924a0')
 
 build() {
   cd "whyDPI-${pkgver}"
@@ -37,4 +41,20 @@ package() {
   install -Dm644 whydpi.service "${pkgdir}/usr/lib/systemd/system/whydpi.service"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  # Desktop entry (app menu) and autostart copy (login).  Same file,
+  # installed twice because XDG semantics differentiate visibility by
+  # location: /usr/share/applications for "I want to launch this", and
+  # /etc/xdg/autostart for "session manager, please start this for me".
+  install -Dm644 packaging/desktop/whydpi-tray.desktop \
+    "${pkgdir}/usr/share/applications/whydpi-tray.desktop"
+  install -Dm644 packaging/desktop/whydpi-tray.desktop \
+    "${pkgdir}/etc/xdg/autostart/whydpi-tray.desktop"
+
+  # Hicolor icon theme entries — Icon=whydpi in the .desktop resolves
+  # to whichever size the current panel asks for.
+  for sz in 16 32 48 64 128 256 512; do
+    install -Dm644 "assets/icon-${sz}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/apps/whydpi.png"
+  done
 }
