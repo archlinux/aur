@@ -1,0 +1,17 @@
+pkgbase = r-streamy
+	pkgdesc = Inline Streaming of LLM Responses in RStudio
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=streamy
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-cli>=3.6.3
+	depends = r-coro>=1.1.0
+	depends = r-rlang
+	depends = r-rstudioapi>=0.17.1
+	depends = r-withr
+	source = https://cran.r-project.org/src/contrib/streamy_0.2.1.tar.gz
+	b2sums = 37de88d5d3d102269acf460695579cc5894418f812c3acc917d24c02cb616329eb3dbf895bcbb9d98ae270f6a076513c027e08f66b4743fdb967244995a63d04
+
+pkgname = r-streamy
