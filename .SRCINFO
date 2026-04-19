@@ -1,7 +1,7 @@
 pkgbase = cxstudy-wine
 	pkgdesc = a version of repacked wine app of cxstudy(学习通)
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://atomgit.com/JingluWei_chn/cxstudy-wine/tree/master
 	arch = x86_64
 	license = MIT
