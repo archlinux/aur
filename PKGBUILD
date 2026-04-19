@@ -3,13 +3,13 @@
 pkgbase='ceph-bin'
 pkgname=('ceph-bin' 'ceph-libs-bin')
 pkgver=20.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 arch=('x86_64')
 url='https://ceph.com/'
 license=('GPL-2.0-or-later OR LGPL-2.1-or-later OR LGPL-3.0-or-later')
 options=('emptydirs')
-_artifact=v${pkgver}-${pkgrel}
+_artifact=v${pkgver}-1
 _ceph_libs_packages=(
   ceph_{common,compressor,crypto,erasure}
   lib{rados,cephfs,rbd,rgw,cephsqlite}
@@ -65,7 +65,7 @@ package_ceph-libs-bin() {
     'bash'       'boost-libs'    'cryptsetup'          'curl'               'expat'
     'fmt'        'gcc-libs'      'glibc'               'gperftools'         'keyutils'
     'libaio'     'libcap'        'librabbitmq-c'       'librdkafka'         'libutil-linux'
-    'libxcrypt'  'lua'           'lz4'                 'nss'                'oath-toolkit'
+    'libxcrypt'  'lua53'         'lz4'                 'nss'                'oath-toolkit'
     'openssl'    'python'        'snappy'              'systemd-libs'       'zlib'
     'zstd'
 
@@ -95,11 +95,11 @@ package_ceph-bin() {
     'librdkafka'   'lua'          'lvm2'           'oath-toolkit'   'python'
     'snappy'       'sqlite'       'systemd-libs'
 
-    'python-bcrypt'     'python-cheroot'     'python-cherrypy'            'python-cmd2'       'python-colorama'
-    'python-coverage'   'python-dateutil'    'python-importlib-metadata'  'python-jinja'      'python-jsonpatch'
-    'python-packaging'  'python-pecan'       'python-prettytable'         'python-pyopenssl'  'python-requests'
-    'python-scipy'      'python-setuptools'  'python-typing_extensions'   'python-urllib3'    'python-werkzeug'
-    'python-yaml'
+    'python-bcrypt'      'python-cheroot'     'python-cherrypy'             'python-cmd2'                'python-colorama'
+    'python-coverage'    'python-dateutil'    'python-importlib-metadata'   'python-jinja'               'python-jmespath'
+    'python-jsonpatch'   'python-packaging'   'python-pecan'                'python-prettytable'         'python-pyopenssl'
+    'python-requests'    'python-scipy'       'python-setuptools'           'python-typing_extensions'   'python-urllib3'
+    'python-werkzeug'    'python-xmltodict'   'python-yaml'
   )
   optdepends=(
     'smartmontools: disk monitoring via S.M.A.R.T'
