@@ -1,7 +1,7 @@
 pkgbase = r-waldo
 	pkgdesc = Anything to ‘POSIXct’ or ‘Date’ Converter
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=waldo
 	arch = any
 	license = MIT
