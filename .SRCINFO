@@ -1,6 +1,6 @@
 pkgbase = sharkfin
 	pkgdesc = Messaging over MCP for agent/human development teams
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/Work-Fort/Sharkfin
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sharkfin
 	makedepends = go
 	makedepends = nodejs
 	makedepends = pnpm
-	source = https://github.com/Work-Fort/Sharkfin/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = e53eb37b79a9d871ce6c68ace9c59034f871f380d59a21628271e705b8342fb8
+	source = https://github.com/Work-Fort/Sharkfin/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = b2f4207e8508850f7191d0184f8adefa006d47ca12a42b9809d7605448ec7108
 
 pkgname = sharkfin
