@@ -1,0 +1,21 @@
+pkgbase = dupont
+	pkgdesc = Set your desktop wallpaper from Bing and Spotlight
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/parkiyong/dupont
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = openssl
+	depends = glib2
+	depends = libsoup3
+	depends = hicolor-icon-theme
+	options = !lto
+	source = dupont::git+https://github.com/parkiyong/dupont.git#tag=v1.2
+	sha256sums = SKIP
+
+pkgname = dupont
