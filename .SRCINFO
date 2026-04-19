@@ -11,6 +11,7 @@ pkgbase = essh
 	makedepends = nasm
 	depends = glibc
 	depends = libgcc
+	depends = openssh
 	provides = essh
 	options = !lto
 	options = !strip

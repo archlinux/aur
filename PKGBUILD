@@ -19,7 +19,7 @@ url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('MIT')
 
 makedepends=('rust' 'cargo' 'nasm')
-depends=('glibc' 'libgcc')
+depends=('glibc' 'libgcc' 'openssh')
 
 provides=("${_appname}")
 
