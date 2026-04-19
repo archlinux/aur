@@ -1,7 +1,7 @@
 pkgbase = openclaw
 	pkgdesc = Personal AI assistant that runs on your own devices
 	pkgver = 2026.4.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openclaw/openclaw
 	install = openclaw.install
 	arch = x86_64

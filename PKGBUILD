@@ -1,8 +1,11 @@
 # Maintainer: Evert
+# Contributor: Emir-Eins <emir-eins@outlook.com>
+# Contributor: Wuxxin <wuxxin@gmail.com>
+
 
 pkgname=openclaw
 pkgver=2026.4.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal AI assistant that runs on your own devices"
 arch=('x86_64')
 url="https://github.com/openclaw/openclaw"
