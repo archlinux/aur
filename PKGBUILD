@@ -1,8 +1,8 @@
 # Maintainer: PulseSync <contact@pulsesync.dev>
 
 pkgname=pulsesync-bin
-pkgver=2.13.0
-pkgrel=2
+pkgver=2.14.0
+pkgrel=1
 _prefix=builds/app
 _branch=beta
 pkgdesc="PulseSync desktop app"
@@ -26,40 +26,29 @@ provides=('pulsesync')
 conflicts=('pulsesync')
 options=('!strip')
 
-_asset_version="${pkgver}-beta"
-_asset="pulsesync-app-${_asset_version}-amd64.deb"
+_asset_version="2.14.0-beta"
+_asset="pulsesync-app-2.14.0-beta-linux-x64.tar.gz"
 
+source=(
+  'pulsesync.desktop'
+  'pulsesync.xml'
+)
 source_x86_64=("${_asset}::https://s3.pulsesync.dev/${_prefix}/${_branch}/${_asset}")
-sha256sums_x86_64=('645e223e61ee93415bdc8177cb64b496d452fe2c3adb6ae7e7eef96386009c7c')
-noextract=("${_asset}")
+sha256sums=('40712fd6e126ebe51de9f7aaa055c044390ab18ab3984048419b7f20c7df9410' 'fb0b48d037e98bdd70c3a5cf0f9587df0a72450245c786f6da80525523c982e1')
+sha256sums_x86_64=('b081393f7ffb211b02fe5ee769e860a740e913dfca74bcd9967e41a8cc745331')
 
 package() {
-  local deb_unpack_dir="${srcdir}/deb-unpack"
-  rm -rf "${deb_unpack_dir}"
-  mkdir -p "${deb_unpack_dir}"
-  bsdtar -xf "${srcdir}/${_asset}" -C "${deb_unpack_dir}"
+  install -dm755 "${pkgdir}"
+  cp -a "${srcdir}/opt" "${pkgdir}/"
 
-  local data_tar
-  data_tar="$(find "${deb_unpack_dir}" -maxdepth 1 -type f -name 'data.tar.*' | head -n1)"
-  if [[ -z "${data_tar}" ]]; then
-    echo "data.tar archive not found in ${_asset}" >&2
-    exit 1
-  fi
-  bsdtar -xf "${data_tar}" -C "${pkgdir}"
-
-  # Release .deb artifacts occasionally come through with inconsistent mode bits.
-  # Reset the extracted tree to sane defaults and then re-enable only real executables.
-  find "${pkgdir}" -type d -exec chmod 755 {} +
-  find "${pkgdir}" -type f -exec chmod 644 {} +
-
-  for executable in \
-    "${pkgdir}/opt/PulseSync/pulsesync" \
-    "${pkgdir}/opt/PulseSync/chrome-sandbox" \
-    "${pkgdir}/opt/PulseSync/chrome_crashpad_handler"
-  do
+  for executable in "${pkgdir}/opt/PulseSync/pulsesync" "${pkgdir}/opt/PulseSync/chrome-sandbox" "${pkgdir}/opt/PulseSync/chrome_crashpad_handler"; do
     [[ -f "${executable}" ]] && chmod 755 "${executable}"
   done
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -sf "/opt/PulseSync/pulsesync" "${pkgdir}/usr/bin/pulsesync"
+  install -Dm644 "${srcdir}/pulsesync.desktop" "${pkgdir}/usr/share/applications/pulsesync.desktop"
+  install -Dm644 "${srcdir}/pulsesync.xml" "${pkgdir}/usr/share/mime/packages/pulsesync.xml"
+  install -Dm644 "${pkgdir}/opt/PulseSync/resources/assets/icon/App.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/pulsesync.png"
+  install -Dm644 "${pkgdir}/opt/PulseSync/resources/assets/pext/pext.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/mimetypes/application-x-pext.png"
 }

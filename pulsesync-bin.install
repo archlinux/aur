@@ -11,7 +11,7 @@ _pulsesync_refresh_integration() {
   fi
 
   if command -v update-desktop-database >/dev/null 2>&1; then
-    update-desktop-database -q >/dev/null 2>&1 || true
+    update-desktop-database -q /usr/share/applications >/dev/null 2>&1 || true
   fi
 
   if command -v gtk-update-icon-cache >/dev/null 2>&1; then
@@ -33,7 +33,7 @@ post_remove() {
   fi
 
   if command -v update-desktop-database >/dev/null 2>&1; then
-    update-desktop-database -q >/dev/null 2>&1 || true
+    update-desktop-database -q /usr/share/applications >/dev/null 2>&1 || true
   fi
 
   if command -v gtk-update-icon-cache >/dev/null 2>&1; then

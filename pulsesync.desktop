@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PulseSync
+Comment=PulseSync App with Yandex Music Mod
+Exec=pulsesync %U
+Terminal=false
+Type=Application
+Icon=pulsesync
+Categories=Utility;
+MimeType=application/x-pext;x-scheme-handler/pulsesync;
