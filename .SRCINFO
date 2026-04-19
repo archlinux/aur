@@ -1,0 +1,42 @@
+pkgbase = r-mapview
+	pkgdesc = Interactive Viewing of Spatial Data in R
+	pkgver = 2.11.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mapview
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-base64enc
+	depends = r-glue
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-leafem
+	depends = r-leaflet>=2.0.0
+	depends = r-leafpop
+	depends = r-png
+	depends = r-raster>=3.6.3
+	depends = r-satellite
+	depends = r-scales>=0.2.5
+	depends = r-servr
+	depends = r-sf
+	depends = r-sp
+	optdepends = r-knitr
+	optdepends = r-later
+	optdepends = r-leaflet.extras2
+	optdepends = r-leafsync
+	optdepends = r-lwgeom
+	optdepends = r-mapdeck
+	optdepends = r-plainview
+	optdepends = r-poorman
+	optdepends = r-rmarkdown
+	optdepends = r-rstudioapi
+	optdepends = r-s2
+	optdepends = r-stars
+	optdepends = r-tinytest
+	optdepends = r-webshot
+	optdepends = r-webshot2
+	source = https://cran.r-project.org/src/contrib/mapview_2.11.4.tar.gz
+	sha256sums = 61c44b7bcf2692a6d24015f0ddb98d20df307460a577cca1754c7c9447483069
+
+pkgname = r-mapview
