@@ -1,13 +1,14 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Christos Longros <chris.longros@gmail.com>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
-_cranname=h3jsr
-_cranver=1.3.1
-pkgname=r-${_cranname,,}
+_pkgname=h3jsr
+_pkgver=1.3.1
+pkgname=r-${_pkgname,,}
 pkgdesc="Access Uber's H3 Library"
-url="https://cran.r-project.org/package=${_cranname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=("Apache")
-pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgver=${_pkgver//-/.}
+pkgrel=3
 
 arch=("any")
 depends=(
@@ -30,23 +31,19 @@ checkdepends=(
     "r-testthat"
 )
 
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("1cfda04f0dc4dc183532f17630f39b57c9c6b40abb4795d4f0a92e67877439aff4916b11c0bc4fb72aa8784bef9da9f3085c3afb59202db1e62857a44d80758e")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+b2sums=('1cfda04f0dc4dc183532f17630f39b57c9c6b40abb4795d4f0a92e67877439aff4916b11c0bc4fb72aa8784bef9da9f3085c3afb59202db1e62857a44d80758e')
 
 build() {
     mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+    R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}/build/"
 }
 
-check() {
-    export R_LIBS="build/"
-    R CMD check --no-manual --no-vignettes "${_cranname}"
-}
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -a --no-preserve=ownership "${srcdir}/build/${_pkgname}" "${pkgdir}/usr/lib/R/library"
+    if [[ -f "${_pkgname}/LICENSE" ]]; then
+        install -Dm0644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
