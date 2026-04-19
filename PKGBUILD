@@ -1,6 +1,6 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=tributary
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A high-performance, Rhythmbox-style media manager with unified local and remote backends"
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
   'pkg-config'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('67fef7facbdbeefcc196ff25ae53ebbcb40b49be675f1c6c1f54e1786e1f620b')
+sha256sums=('74975de13df87cb40f7883aa725e8950dadcfbbe9457fb67d95405f1b073d258')
 
 build() {
   cd "${pkgname}-${pkgver}"

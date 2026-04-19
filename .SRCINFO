@@ -1,6 +1,6 @@
 pkgbase = tributary
 	pkgdesc = A high-performance, Rhythmbox-style media manager with unified local and remote backends
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/jm2/tributary
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = tributary
 	depends = gst-libav
 	depends = dbus
 	options = !lto
-	source = tributary-0.3.0.tar.gz::https://github.com/jm2/tributary/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 67fef7facbdbeefcc196ff25ae53ebbcb40b49be675f1c6c1f54e1786e1f620b
+	source = tributary-0.4.0.tar.gz::https://github.com/jm2/tributary/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 74975de13df87cb40f7883aa725e8950dadcfbbe9457fb67d95405f1b073d258
 
 pkgname = tributary
