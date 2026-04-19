@@ -1,0 +1,5 @@
+[zigdown-bin]
+source = "github"
+github = "JacobCrabill/zigdown"
+use_latest_release = true
+prefix = "v"
