@@ -3,13 +3,14 @@ pkgbase = sweet-cursors-hyprcursor-git
 	pkgver = r445.1d92ac7
 	pkgrel = 1
 	url = https://github.com/Gigas002/Sweet
-	arch = x86_64
-	license = GPL3
+	arch = any
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = inkscape
 	makedepends = xorg-xcursorgen
 	depends = hyprcursor
 	provides = Sweet-cursors-hyprcursor
+	conflicts = Sweet-cursors-hyprcursor
 	options = !strip
 	source = git+https://github.com/Gigas002/Sweet.git#branch=cursors
 	sha256sums = SKIP
