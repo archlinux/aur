@@ -1,0 +1,20 @@
+pkgbase = plasma-snap-assistant
+	pkgdesc = Visual window snapping overlay for KDE Plasma 6
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/waner11/plasma-snap-assistant
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	depends = kwin
+	depends = qt6-base
+	depends = knotifications
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kstatusnotifieritem
+	source = plasma-snap-assistant-0.1.0.tar.gz::https://github.com/waner11/plasma-snap-assistant/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 22f9d7d5e18d5dd96031cf08222df7f310088084d2bdba14585e878b535bd86c
+
+pkgname = plasma-snap-assistant
