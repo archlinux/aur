@@ -1,6 +1,6 @@
 pkgbase = shadps4-qtlauncher-git
 	pkgdesc = Sony PlayStation 4 emulator (Qt GUI)
-	pkgver = r209.2183034
+	pkgver = r269.e7d736a
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = shadps4-qtlauncher-git
 	makedepends = git
 	makedepends = libgcc
 	makedepends = libstdc++
+	makedepends = openal
 	makedepends = qt6-base
 	makedepends = qt6-multimedia
 	makedepends = qt6-tools
@@ -20,11 +21,13 @@ pkgbase = shadps4-qtlauncher-git
 	depends = hicolor-icon-theme
 	depends = sdl3>=3.1.8
 	optdepends = shadps4: for emulation support
-	provides = shadps4-qtlauncher=r209.2183034
+	provides = shadps4-qtlauncher=r269.e7d736a
 	conflicts = shadps4-qtlauncher
 	source = shadps4-qtlauncher::git+https://github.com/shadps4-emu/shadps4-qtlauncher.git
 	source = nlohmann-json::git+https://github.com/nlohmann/json.git
+	source = spdlog::git+https://github.com/gabime/spdlog.git
 	source = volk::git+https://github.com/zeux/volk.git
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -35,6 +38,7 @@ pkgname = shadps4-qtlauncher-git
 	depends = sdl3>=3.1.8
 	depends = libfmt.so
 	depends = libgcc_s.so
+	depends = libopenal.so
 	depends = libstdc++.so
 	depends = qt6-base
 	depends = qt6-multimedia

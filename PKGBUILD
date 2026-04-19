@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4-qtlauncher
 pkgname=$_pkgname-git
-pkgver=r209.2183034
+pkgver=r269.e7d736a
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (Qt GUI)"
 arch=('aarch64' 'x86_64')
@@ -18,6 +18,7 @@ makedepends=(
 	'git'
 	'libgcc'
 	'libstdc++'
+	'openal'
 	'qt6-base'
 	'qt6-multimedia'
 	'qt6-tools'
@@ -30,9 +31,10 @@ conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+https://github.com/shadps4-emu/shadps4-qtlauncher.git"
 	"nlohmann-json::git+https://github.com/nlohmann/json.git"
+	"spdlog::git+https://github.com/gabime/spdlog.git"
 	"volk::git+https://github.com/zeux/volk.git"
 )
-b2sums=('SKIP'{,,})
+b2sums=('SKIP'{,,,})
 
 pkgver() {
 	cd $_pkgname
@@ -42,6 +44,7 @@ pkgver() {
 prepare() {
 	cd $_pkgname
 	git config submodule.externals/json.url ../nlohmann-json
+	git config submodule.externals/spdlog.url ../spdlog
 	git config submodule.externals/volk.url ../volk
 	git -c protocol.file.allow=always submodule update
 	# remove hardcoded flag
@@ -56,6 +59,7 @@ build() {
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D CMAKE_SKIP_INSTALL_RPATH=ON
 		-D ENABLE_UPDATER=OFF
+		-D SPDLOG_FMT_EXTERNAL=ON
 		-Wno-dev
 	)
 	cmake "${options[@]}" -B build -S $_pkgname
@@ -66,6 +70,7 @@ package() {
 	depends+=(
 		'libfmt.so'
 		'libgcc_s.so'
+		'libopenal.so'
 		'libstdc++.so'
 		'qt6-base'
 		'qt6-multimedia'
