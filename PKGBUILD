@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("cava-bg")
 conflicts=("cava-bg")
 depends=("cava" "wayland")
-source=("https://github.com/leriart/cava-bg/releases/download/v$pkgver/cava-bg-$pkgver-x86_64.tar.gz")
+source=("https://github.com/leriart/cava-bg/releases/download/$pkgver/cava-bg-$pkgver-x86_64.tar.gz")
 sha256sums=("a2542b5a60418adc9cb29183662cc9322b57b675754e276ec047d0eaa4cf37b2")
 
 package() {
