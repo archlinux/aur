@@ -5,7 +5,7 @@ _pkgname=wastebin
 pkgname=${_pkgname}-bin
 pkgdesc="wastebin is a pastebin 📝"
 
-pkgver=3.4.1
+pkgver=3.5.0
 pkgrel=1
 
 arch=('x86_64')
@@ -34,7 +34,7 @@ sha256sums=('6c06010b2ef00f498e460313e8a750da6b6f15dc5034095fa22d3f71d8163ff9'
             '04ad83550f915fd3d69a7748f9b0df67fe8ae80afe7c82a0db6f3a8c5f5a3880'
             '6c519dc412f2180bf2ea8b945d1ae71eae885ca0ab4986034deb840dee5ab83b'
             '498105f68faf1395d09783024a956d97dc652298675a9fe2b187d7389e3e48ee')
-sha256sums_x86_64=('8eba08e67c0995cf58975906b444bddfbc8a57dbd2dabbac9d248c59cce18ac3')
+sha256sums_x86_64=('e3f4a19e22f0679e06f0e39f7668bb2cc695f83e1ce7c63a10506fca2eb70d32')
 
 
 package() {
