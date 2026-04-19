@@ -1,7 +1,7 @@
 # Maintainer: nagamine-git <nagamine-git@users.noreply.github.com>
 pkgname=way-thumbsense-git
 _pkgname=way-thumbsense
-pkgver=r8.gdd77470
+pkgver=r9.gceb9953
 pkgrel=1
 pkgdesc="ThumbSense for Linux/Wayland — hold a virtual key while touching the trackpad (git)"
 arch=('x86_64' 'aarch64')
@@ -52,4 +52,10 @@ package() {
     install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
     install -Dm644 ARCHITECTURE.md "${pkgdir}/usr/share/doc/${_pkgname}/ARCHITECTURE.md"
+
+    # systemd user unit (optional autostart via `systemctl --user enable`)
+    if [ -f "systemd/${_pkgname}.service" ]; then
+        install -Dm644 "systemd/${_pkgname}.service" \
+            "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
+    fi
 }

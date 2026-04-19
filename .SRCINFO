@@ -1,6 +1,6 @@
 pkgbase = way-thumbsense-git
 	pkgdesc = ThumbSense for Linux/Wayland — hold a virtual key while touching the trackpad (git)
-	pkgver = r8.gdd77470
+	pkgver = r9.gceb9953
 	pkgrel = 1
 	url = https://github.com/nagamine-git/way-thumbsense
 	install = way-thumbsense.install
@@ -10,7 +10,7 @@ pkgbase = way-thumbsense-git
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
-	provides = way-thumbsense=r8.gdd77470
+	provides = way-thumbsense=r9.gceb9953
 	conflicts = way-thumbsense
 	source = way-thumbsense::git+https://github.com/nagamine-git/way-thumbsense.git
 	source = 99-uinput.rules

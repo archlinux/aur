@@ -13,6 +13,9 @@ post_install() {
 
     3. Log out and back in for group membership to take effect.
 
+    Optional: enable the user service for autostart and auto-restart:
+         systemctl --user enable --now way-thumbsense.service
+
     See https://github.com/nagamine-git/way-thumbsense for usage.
 
 EOF
