@@ -1,6 +1,6 @@
 # Maintainer: yuhldr <yuhldr@gmail.com>
 pkgname=lfy
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="翻译软件，使用adwaita和python原生开发，免费支持谷歌、必应、百度、腾讯翻译。A translation app by gtk4 and adwaita. Support Google, Bing, Baidu, Tencent Translate for free."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('libadwaita' 'python-gobject' 'python-requests')
 makedepends=('git' 'gobject-introspection' 'meson')
 checkdepends=('appstream-glib')
 source=(${url}/archive/refs/tags/v${pkgver}.zip)
-sha256sums=("6bba19da7cae52fecdc58838dddfb3ceea5bdd055b4c4c8667b090770ad450fd")
+sha256sums=("c4296ec3030f2728a4e05661caa0df2e031a61df55a7d49d2594c27a75e7087f")
 
 
 build() {
