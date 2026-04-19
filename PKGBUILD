@@ -1,10 +1,11 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Christos Longros <chris.longros@gmail.com>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: William Gathoye <william + aur at gathoye dot be>
 # Contributor: Michal Malek <michalm@fastmail.fm>
 # Contributor: Sharif Olorin <sio@tesser.org>
 
 pkgname=orthanc
-pkgver=1.12.10
+pkgver=1.12.11
 pkgrel=1
 pkgdesc='Open-source, lightweight DICOM server'
 arch=('x86_64' 'i686')
@@ -25,7 +26,7 @@ source=(
     "${pkgname}.tmpfiles"
 )
 sha512sums=(
-    'c46c6ef1c728b5ab699564a24deeb51fa13e1036e28b5f38b26ae12e1797d238ea21a42b1c27f816f00fad18c6355bcc9d18cf3c360aff88faff5a49192361a0'
+    '7e900cc0519b3552be2834b49faa26860d727d634dc24a0b63edae59142f0e82685e1f6f6615049ca8ac517c816bf691d8d601169ebdafcaae5822a0b7730d58'
     'cd69b74eff5eea43191341ec35cef53d026a1939bb6fdc6a71734c0f9339ff47effc0eb611c16fd609d6ffcf1e332f48cfaa533ccf8d7f71ce7e61f04b4fabca'
     '30d63bafdcfff751e12f6187115bac5d1630eb31848eab6d06d10359118e3a3c404a845ef14852ee578df0b25f622f2195d0b0546fe62cdc8a2702f2ffb59634'
     '2dffd683e6c9bd0e495a1478bf2c6f90833a5c260c7619828136804d410da1d38b385db5db094a065352e21c54c0da1b5dcdd83bce129bd4bcba9c4a11361d18'
