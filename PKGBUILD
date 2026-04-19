@@ -8,7 +8,7 @@ pkgdesc="Rediscover your social memories with local, AI-powered analysis"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hellodigua/${_reponame}"
 license=("GPL-3.0-only")
-depends=("bash" "electron" "glibc" "hicolor-icon-theme" "libgcc")
+depends=("bash" "electron" "hicolor-icon-theme")
 makedepends=("npm" "pnpm")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -23,8 +23,6 @@ prepare() {
     export ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/${_electron}"
 
     cd "${_reponame}-${pkgver}"
-    sed -i -e '/- deb/d' -e '/- tar.gz/d' -e 's|- AppImage|- dir|g' electron-builder.yml
-
     local _elver=$(cat /usr/lib/electron/version)
     echo -n Replacing $(cat package.json | grep '"electron":')
     npm pkg set devDependencies.electron=${_elver}
@@ -35,7 +33,9 @@ prepare() {
 
 build() {
     cd "${_reponame}-${pkgver}"
-    pnpm build:linux
+    pnpm run build
+    pnpm exec electron-builder --linux dir --config electron-builder.yml --publish never
+    rm -rf "dist/linux-unpacked/resources/app-update.yml"
 }
 
 package() {
@@ -44,6 +44,6 @@ package() {
 
     cd "${_reponame}-${pkgver}"
     install -Dm644 "build/icon.png"     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-    cp -r -t "${pkgdir}/usr/lib/${pkgname}" "dist/linux-unpacked/resources/"app.asar*
+    install -dm755 "${pkgdir}/usr/lib"
+    cp -r "dist/linux-unpacked/resources" "${pkgdir}/usr/lib/${pkgname}"
 }
