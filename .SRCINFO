@@ -1,6 +1,6 @@
 pkgbase = rudo-bin
 	pkgdesc = Elegant Wayland dock with niri-aware integration
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/skorotkiewicz/rudo
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rudo-bin
 	depends = gtk4
 	depends = gtk4-layer-shell
 	options = !strip
-	source = rudo-0.1.8.tar.gz::https://github.com/skorotkiewicz/rudo/releases/download/v0.1.8/rudo-0.1.8-x86_64-linux.tar.gz
-	sha256sums = b5138f913c28f0c02398316a0b007e53fd2cdd346e7cf82490ca0555f3eb657a
+	source = rudo-0.1.9.tar.gz::https://github.com/skorotkiewicz/rudo/releases/download/v0.1.9/rudo-0.1.9-x86_64-linux.tar.gz
+	sha256sums = 51c125b7bdc3273749b793fe777d6d06f6db8aeacbb0ee3a148bbd5ad7714996
 
 pkgname = rudo-bin
