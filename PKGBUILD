@@ -5,7 +5,7 @@ _upstream_name=fsel
 _execname=fsel
 
 pkgname=fsel-bin
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Fast TUI app launcher and fuzzy finder for GNU/Linux and *BSD (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -25,10 +25,10 @@ source_aarch64=(
 )
 
 sha256sums_x86_64=(
-  '8420125e49fa5eb7fbecb67a05b2c8d91428a5ecedfb3dc356fcf626a0fc31bb'
+  '62ede54ea3e30ae00b378bf7337f0e6ec1cbbb32f328d06cbd9084622e31e2d4'
 )
 sha256sums_aarch64=(
-  '5627d640850ad92453ffd4324ab924f751c2bd760a491f97519b7859d4e5cca8'
+  '52ddb8ed51216646bf6f13722719bd57bf26c4cee32286bf44fea7005dcb1df6'
 )
 
 package() {
