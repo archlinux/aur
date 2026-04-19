@@ -2,8 +2,8 @@
 
 _pkgname=sing-box
 pkgname="$_pkgname"-ref1nd-beta-bin
-_pkgver=1.14.0-alpha.13-reF1nd.1 # renovate: datasource=github-tags depName=reF1nd/sing-box-releases
-pkgver=$(echo "$_pkgver" | sed 's/-/\~/; s/-/\./')
+_beta_pkgver=1.14.0-alpha.13-reF1nd.1 # renovate: datasource=github-releases depName=reF1nd/sing-box-releases
+pkgver=$(echo "$_beta_pkgver" | sed 's/-/\~/; s/-/\./')
 pkgrel=1
 
 pkgdesc='The universal proxy platform.'
@@ -14,15 +14,15 @@ license=('GPL-3.0')
 provides=("$_pkgname")
 
 source=(
-    "config.json::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v${_pkgver}/release/config/config.json"
-    "sing-box.rules::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v${_pkgver}/release/config/sing-box.rules"
-    "sing-box.service::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v${_pkgver}/release/config/sing-box.service"
-    "sing-box@.service::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v${_pkgver}/release/config/sing-box@.service"
-    "sing-box-split-dns.xml::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v${_pkgver}/release/config/sing-box-split-dns.xml"
-    "sing-box.sysusers::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v${_pkgver}/release/config/sing-box.sysusers"
+    "config.json::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v${_beta_pkgver}/release/config/config.json"
+    "sing-box.rules::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v${_beta_pkgver}/release/config/sing-box.rules"
+    "sing-box.service::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v${_beta_pkgver}/release/config/sing-box.service"
+    "sing-box@.service::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v${_beta_pkgver}/release/config/sing-box@.service"
+    "sing-box-split-dns.xml::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v${_beta_pkgver}/release/config/sing-box-split-dns.xml"
+    "sing-box.sysusers::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v${_beta_pkgver}/release/config/sing-box.sysusers"
 )
-source_x86_64=("sing-box-${_pkgver}-linux-amd64-purego.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v${_pkgver}/sing-box-${_pkgver}-linux-amd64-purego.tar.gz")
-source_aarch64=("sing-box-${_pkgver}-linux-arm64-purego.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v${_pkgver}/sing-box-${_pkgver}-linux-arm64-purego.tar.gz")
+source_x86_64=("sing-box-${_beta_pkgver}-linux-amd64-purego.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v${_beta_pkgver}/sing-box-${_beta_pkgver}-linux-amd64-purego.tar.gz")
+source_aarch64=("sing-box-${_beta_pkgver}-linux-arm64-purego.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v${_beta_pkgver}/sing-box-${_beta_pkgver}-linux-arm64-purego.tar.gz")
 
 sha256sums=(
     '4da8152e6cc1b50b1eaa4ff5606510aeb6d3f6a6a5c91614d4b2c0ea9a2b1bde'
@@ -50,7 +50,7 @@ package() {
     install -Dm644 sing-box.rules -t "$pkgdir/usr/share/polkit-1/rules.d"
     install -Dm644 sing-box-split-dns.xml "$pkgdir/usr/share/dbus-1/system.d/sing-box-split-dns.conf"
 
-    cd "sing-box-$_pkgver-linux-${ARCH_MAP[$CARCH]}-purego"
+    cd "sing-box-$_beta_pkgver-linux-${ARCH_MAP[$CARCH]}-purego"
     install -Dm755 sing-box -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
     install -Dm644 <(./sing-box completion bash) "$pkgdir/usr/share/bash-completion/completions/${_pkgname}"
