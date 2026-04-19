@@ -1,14 +1,14 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 # Contributor: peippo <christoph+aur@christophfink.com>
 
-_cranname=exactextractr
-_cranver=0.10.1
-pkgname=r-${_cranname,,}
+_pkgname=exactextractr
+_pkgver=0.10.1
+pkgname=r-${_pkgname,,}
 pkgdesc="Fast Extraction from Raster Datasets using Polygons"
-url="https://cran.r-project.org/package=${_cranname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=2
 
 arch=("i686" "x86_64")
 depends=(
@@ -46,23 +46,23 @@ optdepends=(
 #     "r-testthat"
 # )
 
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("c607844b1d512d4bea830712da3153d419c1e537adc8c6fd6b2b7b439fa61c2d4c34ebbbbf86dc768c1ba9e11c392fb3b925bbbf683513bfbf7642c923abfcf9")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+b2sums=('c607844b1d512d4bea830712da3153d419c1e537adc8c6fd6b2b7b439fa61c2d4c34ebbbbf86dc768c1ba9e11c392fb3b925bbbf683513bfbf7642c923abfcf9')
 
 build() {
     mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+    R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}/build/"
 }
 
 # check() {
 #     export R_LIBS="build/"
-#     R CMD check --no-manual "${_cranname}"
+#     R CMD check --no-manual "${_pkgname}"
 # }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -a --no-preserve=ownership "${srcdir}/build/${_pkgname}" "${pkgdir}/usr/lib/R/library"
+    if [[ -f "${_pkgname}/LICENSE" ]]; then
+        install -Dm0644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
