@@ -3,11 +3,11 @@
 _pkgname=goosestation-libretro
 _upstream_commit=5e7be496a2d0480aaabbe9746a1a4576b469d301
 _duckstation_srcdir="duckstation-${_upstream_commit}"
-_overlay_commit=6f006c95f75da69a64efa7bd55818b9558e808d3
+_overlay_commit=4caba809e33196a9c2c7bf4040ecec5f5a690bb2
 _overlay_raw="https://codeberg.org/hueponik/goosestation-overlay/raw/commit/${_overlay_commit}/games-emulation/goosestation-libretro/files"
 pkgname=${_pkgname}
 pkgver=0+git.${_upstream_commit:0:9}
-pkgrel=6
+pkgrel=7
 pkgdesc='Sony PlayStation libretro core based on goosified DuckStation'
 arch=('x86_64' 'aarch64')
 url='https://codeberg.org/hueponik/goosestation-overlay'
@@ -45,7 +45,7 @@ source=(
   "goosify.sh::${_overlay_raw}/goosify.sh"
 )
 sha256sums=('5ba5c07c054b3b005d82aeafdc46803fc9e2af77a591d3577b64b0a1086792d7'
-            '102348e87cd2eebc790688d8d10668bd0afe28a8a3f14c561a5990b3bfed3bc1')
+            '9058a3cc4b90425099b4ca4ec727043d4ec6198e22a6e3e981a13bef49ceaba5')
 
 prepare() {
   cd "duckstation-${_upstream_commit}"
