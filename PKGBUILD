@@ -2,8 +2,8 @@
 
 _reponame=ChatLab
 pkgname="${_reponame,,}"
-pkgver=0.17.3
-pkgrel=2
+pkgver=0.17.4
+pkgrel=1
 pkgdesc="Rediscover your social memories with local, AI-powered analysis"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hellodigua/${_reponame}"
@@ -14,7 +14,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('7f3775c497822ee4c0e80e60fde6dcbb5eb84aedacab5c6e3514b4ad32099786'
+sha256sums=('94b6886e86e8739c1913d78b6b7de09719d273587372c8dbfd046cde17cf6994'
             '7623be40b49f98301c1b5685f4e911aff107cd20354433214266cd892abea4f5'
             'bbe4c7765ec70b967474e751b1700a4540c5746d032d89f437aadd09e3a33b6b')
 
@@ -43,10 +43,10 @@ package() {
     install -Dm755 "${pkgname}.sh"      "${pkgdir}/usr/bin/${pkgname}"
 
     cd "${_reponame}-${pkgver}"
-    install -Dm644 README.md            "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "build/icon.png"     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -dm755 "${pkgdir}/usr/lib"
     cp -r "dist/linux-unpacked/resources" "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
     cd docs
     find . -type f -name "*.md" -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;

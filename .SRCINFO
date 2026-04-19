@@ -1,7 +1,7 @@
 pkgbase = chatlab
 	pkgdesc = Rediscover your social memories with local, AI-powered analysis
-	pkgver = 0.17.3
-	pkgrel = 2
+	pkgver = 0.17.4
+	pkgrel = 1
 	url = https://github.com/hellodigua/ChatLab
 	install = chatlab.install
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = chatlab
 	depends = curl
 	depends = electron
 	depends = hicolor-icon-theme
-	source = chatlab-0.17.3.tar.gz::https://github.com/hellodigua/ChatLab/archive/refs/tags/v0.17.3.tar.gz
+	source = chatlab-0.17.4.tar.gz::https://github.com/hellodigua/ChatLab/archive/refs/tags/v0.17.4.tar.gz
 	source = chatlab.desktop
 	source = chatlab.sh
-	sha256sums = 7f3775c497822ee4c0e80e60fde6dcbb5eb84aedacab5c6e3514b4ad32099786
+	sha256sums = 94b6886e86e8739c1913d78b6b7de09719d273587372c8dbfd046cde17cf6994
 	sha256sums = 7623be40b49f98301c1b5685f4e911aff107cd20354433214266cd892abea4f5
 	sha256sums = bbe4c7765ec70b967474e751b1700a4540c5746d032d89f437aadd09e3a33b6b
 
