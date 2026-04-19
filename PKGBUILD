@@ -1,7 +1,8 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Christos Longros <chris.longros@gmail.com>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
 _cranname=leaflet.providers
-_cranver=2.0.0
+_cranver=3.0.0
 pkgname=r-${_cranname,,}
 pkgdesc="Third-party map tiles for r-leaflet"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -39,7 +40,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("d95efcb836a9772f2293ccea3b58298d7b1aa068d11d7e634c51559c7c31453970042a77a351e5c9a9a00de33febaf9100126739401c92d7a42c0618588fe9ca")
+b2sums=("5801697aab5ccaa7909909b21df832d7f36a58ac094d2de5e3237bc64cc466aba10aa1f165c03805d7248f2012100e4beafff8c6264e2ff4be1e0fe15a0bbcbc")
 
 build() {
     mkdir -p "${srcdir}/build/"
