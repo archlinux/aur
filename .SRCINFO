@@ -1,13 +1,13 @@
 pkgbase = python-favicon
 	pkgdesc = A Python library to find a website's favicon
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/favicon
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pytest-runner
+	makedepends = python-setuptools
 	depends = python-requests
 	depends = python-beautifulsoup4
 	source = https://files.pythonhosted.org/packages/source/f/favicon/favicon-0.7.0.tar.gz
