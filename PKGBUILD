@@ -1,6 +1,6 @@
 # Maintainer: Chris Snell
 pkgname=graywolf-aprs
-pkgver=0.7.19
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='APRS radio transceiver, digipeater, and Internet gateway'
 arch=('x86_64' 'aarch64')
@@ -57,5 +57,6 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${srcdir}/graywolf-aprs.sysusers" \
     "${pkgdir}/usr/lib/sysusers.d/graywolf-aprs.conf"
+  install -Dm644 packaging/udev/99-graywolf-cm108.rules \
+    "${pkgdir}/usr/lib/udev/rules.d/99-graywolf-cm108.rules"
 }
-
