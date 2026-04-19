@@ -1,7 +1,7 @@
 # Maintainer: EFG Technologies <release@efg-technologies.com>
 pkgname=zeed-bin
 _pkgname=zeed-browser
-pkgver=147.0.7727.55.19
+pkgver=147.0.7727.55.20
 pkgrel=1
 pkgdesc="Chromium-based browser with bundled Zeed AI assistant (prebuilt)"
 arch=('x86_64')
@@ -42,7 +42,7 @@ source=(
 # very first publish of a new pkgver; the action's updpkgsums will fill it.
 sha256sums=('0f6341ccfc9eb94e7102dfa221a33b0fc09ee293173da89270ebab9bc7350201'
             '44643ac4148288223db5829f4b1ccb3bd84fea19e4e43711e91ee5f52cf6401f')
-sha256sums_x86_64=('0ececdcd95adc3b950922ff235559356e6d3e1da60ac9a4442a2ba0de0429141')
+sha256sums_x86_64=('56e06af327efa08a9df6395ad79e514a4295872fd31abb4eaa57f518c64b9215')
 
 package() {
   # Browser binaries + resources live under /opt like every other Chromium
