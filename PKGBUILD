@@ -1,6 +1,6 @@
 # Maintainer: Mattes Rötschke <dev at mattes-roetschke dot de>
 pkgname=envelope-bin
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="An environment variables cli tool backed by SQLite "
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
     "LICENSE-UNLICENSE::https://raw.githubusercontent.com/mattrighetti/envelope/refs/tags/${pkgver}/LICENSE-UNLICENSE"
 )
 
-sha256sums=('c47d0f773f5fcdca65a18648ab9ffbf15f6af76d20934b3ff8e5c4725f96f0df'
+sha256sums=('33210b651eae2f5d07605cb9ca772ca9f28909cce420c08ac08815d69a11dc9d'
             '4a63d963c1c4a57fe5343f6fbf3c577d581629aa1b7c8e434eddced767859aab'
             '7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c'
 )

@@ -1,16 +1,16 @@
 pkgbase = envelope-bin
 	pkgdesc = An environment variables cli tool backed by SQLite
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/mattrighetti/envelope
 	arch = x86_64
 	license = Unlicense
 	license = MIT
 	options = !debug
-	source = envelope-0.7.1-x86_64.tar.gz::https://github.com/mattrighetti/envelope/releases/download/0.7.1/envelope-0.7.1-x86_64-unknown-linux-musl.tar.gz
-	source = LICENSE-MIT::https://raw.githubusercontent.com/mattrighetti/envelope/refs/tags/0.7.1/LICENSE-MIT
-	source = LICENSE-UNLICENSE::https://raw.githubusercontent.com/mattrighetti/envelope/refs/tags/0.7.1/LICENSE-UNLICENSE
-	sha256sums = c47d0f773f5fcdca65a18648ab9ffbf15f6af76d20934b3ff8e5c4725f96f0df
+	source = envelope-0.8.0-x86_64.tar.gz::https://github.com/mattrighetti/envelope/releases/download/0.8.0/envelope-0.8.0-x86_64-unknown-linux-musl.tar.gz
+	source = LICENSE-MIT::https://raw.githubusercontent.com/mattrighetti/envelope/refs/tags/0.8.0/LICENSE-MIT
+	source = LICENSE-UNLICENSE::https://raw.githubusercontent.com/mattrighetti/envelope/refs/tags/0.8.0/LICENSE-UNLICENSE
+	sha256sums = 33210b651eae2f5d07605cb9ca772ca9f28909cce420c08ac08815d69a11dc9d
 	sha256sums = 4a63d963c1c4a57fe5343f6fbf3c577d581629aa1b7c8e434eddced767859aab
 	sha256sums = 7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c
 
