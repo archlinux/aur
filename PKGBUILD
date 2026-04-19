@@ -3,7 +3,7 @@
 pkgname=koharu-appimage
 _pkgname=koharu
 pkgver=0.44.6
-pkgrel=2
+pkgrel=3
 pkgdesc="ML-powered manga translator"
 arch=('x86_64')
 url='https://github.com/mayocream/koharu'
@@ -21,18 +21,18 @@ prepare() {
     rm -rf "${srcdir}/squashfs-root"
     "${srcdir}/koharu_${pkgver}_amd64.AppImage" --appimage-extract
 
-    sed -i -E "s|^Exec=.*|Exec=/usr/bin/${_pkgname}|" "${srcdir}/squashfs-root/io.github.mayocream.koharu.desktop"
-    sed -i -E "s|^Icon=.*|Icon=${_pkgname}|" "${srcdir}/squashfs-root/io.github.mayocream.koharu.desktop"
+    sed -i -E "s|^Exec=.*|Exec=/usr/bin/${_pkgname}|" "${srcdir}/squashfs-root/usr/share/applications/${_pkgname}.desktop"
+    sed -i -E "s|^Icon=.*|Icon=${_pkgname}|" "${srcdir}/squashfs-root/usr/share/applications/${_pkgname}.desktop"
 }
 
 package() {
     install -d "${pkgdir}/opt/${_pkgname}"
     install -d "${pkgdir}/usr/bin"
     install -d "${pkgdir}/usr/share/applications"
-    install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -d "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
 
     install -Dm755 "${srcdir}/koharu_${pkgver}_amd64.AppImage" "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
     ln -s "/opt/${_pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "${srcdir}/squashfs-root/io.github.mayocream.koharu.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/koharu.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.png"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
 }
