@@ -1,6 +1,6 @@
 pkgbase = efibootmgr-git
 	pkgdesc = Linux user-space application to modify the EFI Boot Manager
-	pkgver = 17
+	pkgver = 18+14+g0a85e9b
 	pkgrel = 1
 	url = https://github.com/rhboot/efibootmgr
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgname = efibootmgr-git
 	depends = popt
 	depends = libefiboot.so
 	depends = libefivar.so
-
