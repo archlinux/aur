@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=snout-bin
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Rime input method init and update tool with Wanxiang, Ice, Frost, and Mint support"
 arch=('x86_64' 'aarch64')
