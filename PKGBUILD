@@ -1,11 +1,9 @@
 # Maintainer: Garrett Stewart <zero@gr-p.com>
 pkgname=deadsync
-pkgdesc='ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync and competitive-level performance - from release source'
+pkgdesc='ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync and competitive-level performance'
 url='https://github.com/pnn64/deadsync'
 license=('GPL-3.0-only')
 arch=('x86_64' 'aarch64')
-provides=('deadsync')
-conflicts=('deadsync-git' 'deadsync-bin')
 depends=(
     'vulkan-icd-loader'
     'libgl'
@@ -19,50 +17,29 @@ makedepends=(
     'ninja'
     'vulkan-headers'
     'pkg-config'
-    'git'
     'rsync'
 )
-
 options=('!lto' '!debug' '!strip')
 install="${pkgname}.install"
 
-pkgver=0.1 # Placeholder - gets overwritten with pkgver()
+pkgver=0.3.536
 pkgrel=1
 
-source=("${pkgname}::git+https://github.com/pnn64/deadsync.git")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "${srcdir}/${pkgname}"
-    git describe --long --tags --abbrev=7 --match='v[0-9]*' 2>/dev/null \
-        | sed 's/^v//; s/-\([0-9]*\)-g/\.r\1\.g/; s/-/\./g' \
-        || printf 'r%s.g%s' \
-               "$(git rev-list --count HEAD)" \
-               "$(git rev-parse --short=7 HEAD)"
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pnn64/deadsync/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('bc6ae95d92c91c01a829492a7c5d981d5e44da824d455f9f7eb9dcb2771109e2')
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
-
-    local _tag
-    _tag=$(git tag --list 'v[0-9]*' --sort=-version:refname | head -1)
-    if [[ -n "${_tag}" ]]; then
-        msg2 "Checking out release tag: ${_tag}"
-        git checkout "${_tag}"
-    fi
-
-    git submodule update --init --recursive
+    cd "${srcdir}/deadsync-${pkgver}"
 
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/deadsync-${pkgver}"
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-
     unset CFLAGS CXXFLAGS
 
     export RUSTFLAGS="${RUSTFLAGS} \
@@ -73,17 +50,13 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/deadsync-${pkgver}"
 
-    # -----------------------------------------------------------------------
-    # Install game to /opt/deadsync (mirrors ITGmania / StepMania convention)
-    # -----------------------------------------------------------------------
     install -dm755 "${pkgdir}/opt/deadsync"
+
     install -Dm755 "target/release/deadsync" \
         "${pkgdir}/opt/deadsync/deadsync"
 
-    # Copy all game data using rsync with a denylist so future additions
-    # (songs, courses, new asset dirs) are included automatically.
     rsync -a --no-links \
         --exclude=src \
         --exclude=target \
@@ -103,17 +76,11 @@ package() {
         --exclude=TRANSLATION_STATUS.md \
         . "${pkgdir}/opt/deadsync/"
 
-    # -----------------------------------------------------------------------
-    # Wrapper script so `deadsync` works from any terminal.
-    # -----------------------------------------------------------------------
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/deadsync" <<'EOF'
 #!/bin/sh
 exec /opt/deadsync/deadsync "$@"
 EOF
 
-    # -----------------------------------------------------------------------
-    # Desktop entry
-    # -----------------------------------------------------------------------
     install -Dm644 /dev/stdin \
         "${pkgdir}/usr/share/applications/deadsync.desktop" <<'EOF'
 [Desktop Entry]
@@ -128,8 +95,6 @@ Keywords=ITG;StepMania;rhythm;dance;
 StartupNotify=true
 EOF
 
-    # Install all sized icons into the hicolor theme so Icon=deadsync in the
-    # .desktop file resolves correctly through the icon theme lookup chain.
     local _icondir="assets/graphics/icon"
     for _size in 16 24 32 48 64 96 128 256 512 1024; do
         install -Dm644 "${_icondir}/icon-${_size}.png" \
@@ -138,9 +103,6 @@ EOF
     install -Dm644 "${_icondir}/icon.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/deadsync.svg"
 
-    # -----------------------------------------------------------------------
-    # License
-    # -----------------------------------------------------------------------
     install -Dm644 LICENSE \
         "${pkgdir}/usr/share/licenses/deadsync/LICENSE"
 }
