@@ -1,7 +1,7 @@
 # Maintainer: gavin lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/Colossus_LTSM
 pkgname=colossus
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Tool for converting ttf fonts into data, aimed at users of embedded systems"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'tk' 'python-pillow')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://github.com/gavinlyonsrepo/Colossus_LTSM/archive/$pkgver.tar.gz")
 
-sha256sums=('7e938e48c53ea472e840aae736bcde535fde9c53fbb8e40adf2ad9a7efa37cd7')
+sha256sums=('27af58b3fbd8da16c858cef2494506803bce681e599e2ffce1336fcdda347b9a')
 
 build() {
     cd "$srcdir/Colossus_LTSM-${pkgver}"
