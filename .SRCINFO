@@ -1,7 +1,7 @@
 pkgbase = r-leaflet.providers
 	pkgdesc = Third-party map tiles for r-leaflet
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=leaflet.providers
 	arch = any
 	license = BSD

@@ -1,14 +1,14 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 # Contributor: peippo <christoph+aur@christophfink.com>
 
-_cranname=leaflet.providers
-_cranver=3.0.0
-pkgname=r-${_cranname,,}
+_pkgname=leaflet.providers
+_pkgver=3.0.0
+pkgname=r-${_pkgname,,}
 pkgdesc="Third-party map tiles for r-leaflet"
-url="https://cran.r-project.org/package=${_cranname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=("BSD")
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=2
 
 arch=("any")
 depends=(
@@ -39,23 +39,23 @@ optdepends=(
 #     "r-testthat>=3.0.0"
 # )
 
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("5801697aab5ccaa7909909b21df832d7f36a58ac094d2de5e3237bc64cc466aba10aa1f165c03805d7248f2012100e4beafff8c6264e2ff4be1e0fe15a0bbcbc")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+b2sums=('5801697aab5ccaa7909909b21df832d7f36a58ac094d2de5e3237bc64cc466aba10aa1f165c03805d7248f2012100e4beafff8c6264e2ff4be1e0fe15a0bbcbc')
 
 build() {
     mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+    R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}/build/"
 }
 
 # check() {
 #     export R_LIBS="build/"
-#     R CMD check --no-manual "${_cranname}"
+#     R CMD check --no-manual "${_pkgname}"
 # }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -a --no-preserve=ownership "${srcdir}/build/${_pkgname}" "${pkgdir}/usr/lib/R/library"
+    if [[ -f "${_pkgname}/LICENSE" ]]; then
+        install -Dm0644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
