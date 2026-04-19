@@ -1,0 +1,16 @@
+pkgbase = r-cereal
+	pkgdesc = Serialize 'vctrs' Objects to 'JSON'
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=cereal
+	arch = any
+	license = MIT
+	depends = r>=3.6
+	depends = r-jsonlite
+	depends = r-rlang
+	depends = r-tibble
+	depends = r-vctrs
+	source = https://cran.r-project.org/src/contrib/cereal_0.1.0.tar.gz
+	b2sums = fd994d290554d994c5e221750497cc87d54cd861a176b06a8072e0c85f3bf1243d9de3bf2a1d93517a23d1f64b2705f62ed87c24944fd79a77dd685000da9eb9
+
+pkgname = r-cereal
