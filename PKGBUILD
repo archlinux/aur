@@ -1,16 +1,18 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=tsql
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
-pkgdesc="A modern PostgreSQL manager TUI"
+pkgdesc='A modern PostgreSQL manager TUI'
 arch=(x86_64 aarch64)
-url="https://github.com/fcoury/tsql"
+url='https://github.com/fcoury/tsql'
 license=('MIT')
 makedepends=(cargo tree-sitter)
 options=(!lto)
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
+    "LICENSE::https://raw.githubusercontent.com/fcoury/tsql/refs/tags/v$pkgver/LICENSE")
 provides=(tsql)
-sha256sums=('e16ad90ee032d0588db0d8f772e5452aaaa9af157cf49c1ae08085e2867a8a54')
+sha256sums=('f9964ff2c4b6cb775d2ca6d9fb52e552adeeb93b7d7d1490aef95d286a59b811'
+            '279556e0ab3736896f0f313053d9a84b49743ae476a36a3724c31f1d7d853e20')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -27,8 +29,7 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-    # install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" LICENSE
-    # install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/README.md" README.md
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" ../LICENSE
 }
 
 # vim: ts=4 sw=4 et:
