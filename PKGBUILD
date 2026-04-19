@@ -2,7 +2,7 @@
 _pkgauthor=FrogSnot
 _pkgname=HardBore
 pkgname=hardbore-bin
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="High-performance file manager for Linux (prebuilt binary)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/${_pkgauthor}/${_pkg
         "hardbore.portal-$pkgver::https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}/portal/hardbore.portal"
         "hardbore.service-$pkgver::https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}/portal/org.freedesktop.impl.portal.desktop.hardbore.service"
         "${pkgname%-bin}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('c4215762b499abb4cf9674a5653c08691bbed2fbcad74441971069d0364485fe' '4cc02bbabe987a4eef2c4f670da1d551c20bca714357c02b05d831ccdd1f8090' 'd2bdbb9537f1cc4d0f7b736c84e3cf08c93887d87f2acd04c0fd77381a80bdac' '59b5a84ebacb0ee0d30244106d78b7e7114b7a1034f03d5f714c43d151ae15a3' 'd88556c4fb6bbf3d12e87916526759c664377ce9268e004cf111dfcd311fba81' 'bde38d035d352dcad9fc8c0baac7a9cb135f514c46eb0a1b1dc1b9ec675fab9a')
+sha256sums=('c4215762b499abb4cf9674a5653c08691bbed2fbcad74441971069d0364485fe' '4cc02bbabe987a4eef2c4f670da1d551c20bca714357c02b05d831ccdd1f8090' 'e756b5bc5dae6d69152841f6201f76dcb31e37f7ac9e4f4a120eaa12b6bfa052' '59b5a84ebacb0ee0d30244106d78b7e7114b7a1034f03d5f714c43d151ae15a3' 'd88556c4fb6bbf3d12e87916526759c664377ce9268e004cf111dfcd311fba81' 'edd864a2e0f85c1d3500c3208ef6e7c026b36af002b5ced929f6d8ea07bb87db')
 
 package() {
     cd "$srcdir"
