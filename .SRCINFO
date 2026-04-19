@@ -1,7 +1,7 @@
 pkgbase = speak-to-ai
 	pkgdesc = Offline speech-to-text desktop application using Whisper
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AshBuk/speak-to-ai
 	arch = x86_64
 	license = MIT

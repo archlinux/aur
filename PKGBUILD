@@ -3,7 +3,7 @@
 
 pkgname=speak-to-ai
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline speech-to-text desktop application using Whisper"
 arch=('x86_64')
 url="https://github.com/AshBuk/speak-to-ai"
@@ -107,7 +107,7 @@ check() {
     cd "${pkgname}-${pkgver}"
 
     export LD_LIBRARY_PATH="${PWD}/lib"
-    ./"${pkgname}" -help 2>&1 | grep -q "speak-to-ai"
+    ./"${pkgname}" --help 2>&1 | grep -q "speak-to-ai"
 }
 
 package() {
