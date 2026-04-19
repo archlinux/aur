@@ -31,7 +31,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz"
     '0001-lua54.patch'
 )
-sha256sums=('abe9ca652773918c4aa30abc952ff3311e81357b4ee5956c8898cb7f04ab3964'
+sha256sums=('cc7a14649acfba629b111118a4f0b8b509603365ad6945c2b598efab7c160388'
             '3783f1e19f8bc6d64d48a7d68899d43df30fe23c577f4e4cf25c151c25e653fc')
 
 prepare() {
