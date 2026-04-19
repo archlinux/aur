@@ -1,7 +1,7 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=veila-git
 _repo=Veila
-pkgver=0.1.3.r0.g0000000
+pkgver=0.1.4.r0.g0000000
 pkgrel=1
 pkgdesc="Secure, elegant, and fast Wayland screen locker (latest git)"
 arch=('x86_64')
@@ -34,6 +34,7 @@ build() {
 package() {
   cd "$srcdir/$_repo"
 
+  install -Dm755 target/release/veila "$pkgdir/usr/bin/veila"
   install -Dm755 target/release/veilad "$pkgdir/usr/bin/veilad"
   install -Dm755 target/release/veila-curtain "$pkgdir/usr/bin/veila-curtain"
 
