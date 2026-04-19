@@ -20,7 +20,7 @@ sha256sums=('7f3775c497822ee4c0e80e60fde6dcbb5eb84aedacab5c6e3514b4ad32099786'
 
 prepare() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/${_electron}"
+    export ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/electron"
 
     cd "${_reponame}-${pkgver}"
     local _elver=$(cat /usr/lib/electron/version)
