@@ -9,10 +9,10 @@ provides=(konform-browser)
 conflicts=()
 _pkgname="${pkgname}"
 __pkgname=konform
-_ffsrcver=140.9.1
+_ffsrcver=140.10.0
 _ffbuild=1
 _l10n_commit=e4f894a4eef5c492c83a860a4ff16c8ed361445c
-_lwrelver=101
+_lwrelver=100
 pkgver="${_ffsrcver}.${_lwrelver}"
 pkgrel=1
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
@@ -145,8 +145,8 @@ source=(
   "0003-update-rust-bindgen-to-fix-clang22-build.patch.xz"
   "0004-skia-m142-update.patch.xz"
 )
-sha256sums=('779c22c11c5df82e30661b4046eed632a2d5bd96e83290efc2480d24a248bd08'
-            '45d2e6c2b3aa4f52815d1a8a4a93e013d19e86e1b06480f13db9e6fdd7148dc2'
+sha256sums=('ceace80dfd50161e75cffc98faa805449dc1297e96f4bb413d14b48855bb2a27'
+            'c0852a261be3be3c83865ec2c2a4aa65dc1ad6db7c70574926b63a8b48312919'
             'SKIP'
             '52d638394dcc3254c70b550340bffb0ade63bd35f155eaee12e0000a51ef939b'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
