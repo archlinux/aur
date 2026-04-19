@@ -1,0 +1,15 @@
+pkgbase = appinstall
+	pkgdesc = A modern GUI for installing and managing AppImages.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/LukasYTTT/appinstaller
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = webkit2gtk
+	depends = gtk3
+	depends = zenity
+	source = appinstall-1.0.0.tar.gz::https://github.com/LukasYTTT/appinstaller/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = d6c72ad1f42a355e5443b96adc25ecee12fb27f761b835fce30f9f9e644449ac
+
+pkgname = appinstall
