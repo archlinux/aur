@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Codex Native
+Comment=Native Linux Codex desktop shell
+Exec=codex-native-launcher
+Icon=codex-native
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=true

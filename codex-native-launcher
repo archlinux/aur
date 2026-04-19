@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ -n "${WAYLAND_DISPLAY:-}" ] && [ -z "${WEBKIT_DISABLE_DMABUF_RENDERER+x}" ]; then
+  export WEBKIT_DISABLE_DMABUF_RENDERER=1
+fi
+
+exec /usr/bin/codex-native "$@"

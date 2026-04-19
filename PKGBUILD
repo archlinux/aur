@@ -1,11 +1,11 @@
 pkgname=codex-native-git
-pkgver=r12.95c32d3
+pkgver=r16.92a1fa1
 pkgrel=1
 pkgdesc="Native Linux Codex desktop shell built with Rust, GTK, WebKitGTK, and Codex CLI"
 arch=('x86_64')
 url="https://github.com/Redminote11tech/Codex-Native"
 license=('MIT')
-depends=('gtk3' 'webkit2gtk-4.1' 'libsoup3')
+depends=('gtk3' 'webkit2gtk-4.1' 'libsoup3' 'openssl')
 optdepends=('codex: Codex CLI backend bridge for chat, auth, and runtime integration')
 makedepends=('cargo' 'git' 'rust' 'unzip')
 provides=('codex-native')
