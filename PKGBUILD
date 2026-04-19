@@ -16,7 +16,7 @@ source=(
     "https://raw.githubusercontent.com/kadir-y/victus16-keyboard-ui/main/com.victus16.keyboard.png"
 )
 
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     install -Dm755 "$srcdir/keyboard_controller.py" \
