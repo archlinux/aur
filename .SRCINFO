@@ -1,0 +1,25 @@
+pkgbase = stremio-service
+	pkgdesc = The companion app of Stremio Web
+	pkgver = 0.1.21
+	pkgrel = 1
+	url = https://github.com/Stremio/stremio-service
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = openssl
+	makedepends = pkgconf
+	makedepends = rust
+	depends = bun
+	depends = cairo
+	depends = ffmpeg
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libayatana-appindicator
+	source = stremio-service-0.1.21.tar.gz::https://github.com/Stremio/stremio-service/archive/refs/tags/v0.1.21.tar.gz
+	source = server.js::https://dl.strem.io/server/v4.20.17/desktop/server.js
+	sha256sums = 1f64ffaed845a6ee5b6e192fdc6cbcf5e8e60615598752e7616fd4c8b75b3c9e
+	sha256sums = 567a397bb11b788571bf1750fd05dd78927f97bec0c9ddeaa6d9cc1eccee3922
+
+pkgname = stremio-service
