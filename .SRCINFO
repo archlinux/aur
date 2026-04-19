@@ -1,0 +1,15 @@
+pkgbase = sweet-sddm-git
+	pkgdesc = Sweet KDE SDDM login theme
+	pkgver = r47.2ed3782
+	pkgrel = 1
+	url = https://github.com/Gigas002/Sweet-kde
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = sddm
+	provides = sweet-sddm
+	conflicts = sweet-sddm
+	source = Sweet-kde::git+https://github.com/Gigas002/Sweet-kde.git#branch=plasma-6-migration
+	sha256sums = SKIP
+
+pkgname = sweet-sddm-git
