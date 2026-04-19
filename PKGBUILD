@@ -1,5 +1,5 @@
 pkgname=mingw-w64-utf8cpp
-pkgver=4.0.6
+pkgver=4.0.9
 pkgrel=1
 pkgdesc="UTF-8 with C++ in a Portable Way (mingw-w64)"
 url="https://github.com/nemtrif/utfcpp"
@@ -9,7 +9,7 @@ depends=()
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/nemtrif/utfcpp/archive/v${pkgver}.tar.gz")
-sha256sums=('6920a6a5d6a04b9a89b2a89af7132f8acefd46e0c2a7b190350539e9213816c0')
+sha256sums=('397a9a2a6ed5238f854f490b0177b840abc6b62571ec3e07baa0bb94d3f14d5a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
