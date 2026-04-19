@@ -1,3 +1,4 @@
+# Maintainer: Christos Longros <chris.longros@gmail.com>
 _cranname=metadynminer
 pkgname=r-${_cranname,,}-git
 pkgver=r427.e223edf
