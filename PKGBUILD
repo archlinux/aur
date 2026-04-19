@@ -1,5 +1,5 @@
 pkgname=arrpc-bun
-pkgver=1.3.4
+pkgver=1.3.6.r128.g9011d6b
 pkgrel=1
 pkgdesc="TypeScript/Bun port of arRPC - Open Discord RPC server"
 arch=('any')
