@@ -4,7 +4,7 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.3109.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -27,12 +27,12 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'gst-plugin-pipewire: Portal screenshot PipeWire frame capture on GNOME Wayland 46+'
             'gnome-screenshot: Computer Use screenshot fallback (GNOME)'
             'hyprland: Quick Entry cursor positioning on Hyprland Wayland (hyprctl)'
-            'socat: Cowork socket health check in launcher (fallback: age-based check)')
+            'socat: Faster Quick Entry toggle via socket (~2ms vs ~25ms python3 — not required)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
 _electron_ver=41.2.1
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.3109.0-7/claude-desktop-1.3109.0-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
-sha256sums_x86_64=('fc8e4778bb4952f77ef75854d725e966012f18872eb98d672d1a93c2ff0f3939' 'SKIP')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.3109.0-8/claude-desktop-1.3109.0-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
+sha256sums_x86_64=('e5f6430fb81d02c544532a821956aeaf23060b4fe67e91a2e41ca2def39dfec6' 'SKIP')
 options=('!strip')
 
 package() {
