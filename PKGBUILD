@@ -1,7 +1,7 @@
 # Maintainer:  Rubin Simons <me@rubin55.org>
 
 pkgname=pupdate-bin
-pkgver=4.9.1
+pkgver=4.10.0
 pkgrel=1
 pkgdesc=" Pupdate, a thing for updating your Analogue Pocket, binary release"
 provides=("pupdate")
@@ -13,7 +13,7 @@ source=(
     "${pkgname}-${pkgver}.zip::https://github.com/mattpannella/pupdate/releases/download/${pkgver}/pupdate_linux.zip"
 )
 
-sha256sums=('3d28acbcd1368c138cc416c4fe6daa7e96def6e0fb51f45742a8c0e8612510b5')
+sha256sums=('e9f91986d5ce6d5b9b0dac2c984d127d8f5995b18471613675715cda2206ba4e')
 
 options=("!strip")
 
