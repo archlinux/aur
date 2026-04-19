@@ -1,7 +1,8 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Christos Longros <chris.longros@gmail.com>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
 _cranname=distro
-_cranver=0.1.0
+_cranver=0.1.1
 pkgname=r-${_cranname,,}
 pkgdesc="Linux Distribution Properties"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -22,7 +23,7 @@ depends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("c3b4cd68b4b46fb57067fb49eb4bf65293d7aab94ca3dedc9a1a6044204bda74aad35316daed57d330084b661cd76a9a5f7890d42bbff3f191a42f46ab330b94")
+b2sums=("4106aa1918bcb10772304abb2f1d5e935f80d3a839173fa2019bc9999ed47a29716902f979d305be464d0624d5f7f7f1e414251dfecff165fd12b04dd5ccf6c7")
 
 build() {
     mkdir -p "${srcdir}/build/"
