@@ -4,27 +4,26 @@
 
 pkgname=vcmi
 pkgver=1.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
-arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/vcmi/vcmi"
 license=(
-	'GPL-2.0-or-later' # program
-	'CC-BY-SA-4.0' # assets
+  'GPL-2.0-or-later' # program
+  'CC-BY-SA-4.0' # assets
 )
 depends=('boost-libs' 'ffmpeg' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'qt6-base' 'libxkbcommon-x11'
          'hicolor-icon-theme' 'onetbb' 'fuzzylite' 'luajit' 'libsquish')
-makedepends=('boost' 'cmake' 'git' 'qt6-tools' 'minizip' 'ninja')
 optdepends=('innoextract: required by vcmibuilder'
-		    'unshield: required by vcmibuilder'
-		    'unzip: required by vcmibuilder'
-		    'onnxruntime: ML-powered combat AI'
-)
+            'unshield: required by vcmibuilder'
+            'unzip: required by vcmibuilder'
+            'onnxruntime: ML-powered combat AI')
+makedepends=('boost' 'cmake' 'qt6-tools' 'minizip' 'ninja')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/VCMI-Sources.tar.gz")
+_pkgsrc="${pkgname}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/VCMI-Sources.tar.gz")
+noextract=("${_pkgsrc}.tar.gz")
 sha256sums=('84f5cd6652e5a5f5de4778a4d92a4bade18b5fbfcbacb6aa18bf6a4cb66afa34')
-_pkgsrc="$pkgname-$pkgver"
-noextract=("$_pkgsrc.tar.gz")
 
 prepare() {
   mkdir -p "$_pkgsrc"
@@ -36,18 +35,18 @@ prepare() {
 }
 
 build() {
-  # MMAI requires onnxruntime
   local _cmake_options=(
-  	-B build
-  	-S "$_pkgsrc"
-  	-G Ninja
-  	-DCMAKE_INSTALL_PREFIX='/usr'
-  	-DENABLE_TEST=OFF
-  	-DFORCE_BUNDLED_FL=OFF
-  	-DENABLE_INNOEXTRACT=OFF
-  	-DCMAKE_BUILD_TYPE='Release'
-	-DENABLE_MMAI=OFF
-  	-Wno-dev
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_BUILD_TYPE='Release'
+    -DENABLE_TEST=OFF
+    -DFORCE_BUNDLED_FL=OFF
+    -DENABLE_INNOEXTRACT=OFF
+    -DENABLE_DISCORD=OFF # would require network access during build (CPM fetches glaze/fmt)
+    -DENABLE_MMAI=OFF # requires optional onnxruntime
+    -Wno-dev
   )
 
   cmake "${_cmake_options[@]}"
