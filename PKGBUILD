@@ -1,7 +1,7 @@
 # Maintainer: gavin lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/Guardian_LTSM
 pkgname=guardian
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Tool for converting images into data & back, aimed at users of embedded systems"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'tk' 'python-pillow')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://github.com/gavinlyonsrepo/Guardian_LTSM/archive/$pkgver.tar.gz")
 
-sha256sums=('e2986ee89688b148d57458f563fca579c78a0203b3ed228f2eb65e0a75872fcd')
+sha256sums=('b765c51786fdb4f567bfec663d1e26213f9162728907bd1ad50d6367a7c45607')
 
 build() {
     cd "$srcdir/Guardian_LTSM-${pkgver}"
