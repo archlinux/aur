@@ -2,13 +2,13 @@
 pkgname=shadps4-pre-release-bin
 _pkgname=shadPS4
 _pkgid=net.shadps4.shadPS4
-pkgver=20260303.14450d3
+pkgver=20260419.90b75ea
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (Pre-release version - SDL)"
 arch=('x86_64')
 url="https://shadps4.net/"
 license=('GPL-2.0-only')
-depends=('glibc' 'gcc-libs' 'bash' 'zlib' 'util-linux-libs')
+depends=('glibc' 'bash' 'zlib' 'util-linux-libs' 'libstdc++' 'libgcc')
 makedepends=('curl' 'jq' 'unzip')
 provides=("shadps4")
 conflicts=("shadps4")
