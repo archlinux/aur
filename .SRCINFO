@@ -1,6 +1,6 @@
 pkgbase = gohan-bin
 	pkgdesc = A simple, fast static site generator written in Go with differential builds
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/bmf-san/gohan
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = gohan-bin
 	depends = glibc
 	provides = gohan
 	conflicts = gohan
-	source_x86_64 = gohan-x86_64-1.1.7.tgz::https://github.com/bmf-san/gohan/releases/download/v1.1.7/gohan_1.1.7_linux_amd64.tar.gz
-	sha256sums_x86_64 = 03226b7d69be2fb15963282221fa65383f6cad0a2596e5112f6718931b0f33f3
-	source_aarch64 = gohan-aarch64-1.1.7.tgz::https://github.com/bmf-san/gohan/releases/download/v1.1.7/gohan_1.1.7_linux_arm64.tar.gz
-	sha256sums_aarch64 = 1d4dfaf899387141ac5016105d2e23d961af5212dacc87ce177aed24c4bd402b
+	source_x86_64 = gohan-x86_64-1.1.8.tgz::https://github.com/bmf-san/gohan/releases/download/v1.1.8/gohan_1.1.8_linux_amd64.tar.gz
+	sha256sums_x86_64 = e5e29a5ac77abb25d0759c2331e5eaad683c080be772cfba47388d51ae852dfb
+	source_aarch64 = gohan-aarch64-1.1.8.tgz::https://github.com/bmf-san/gohan/releases/download/v1.1.8/gohan_1.1.8_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5410f46b1ad073358ef8677945076fecd6649782d36600d120bdabb9cf4b8732
 
 pkgname = gohan-bin
