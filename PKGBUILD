@@ -1,8 +1,8 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=tsql
 pkgver=0.6.0
-pkgrel=1
-pkgdesc='A modern PostgreSQL manager TUI'
+pkgrel=2
+pkgdesc='A modern PostgreSQL and MongoDB manager TUI'
 arch=(x86_64 aarch64)
 url='https://github.com/fcoury/tsql'
 license=('MIT')
