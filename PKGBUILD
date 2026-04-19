@@ -9,9 +9,13 @@ depends=('nodejs')
 makedepends=('git' 'npm')
 provides=('arrpc')
 conflicts=('arrpc')
+install=arrpc.install
 source=("${pkgname}::git+https://github.com/OpenAsar/arRPC.git"
-    "arrpc.service")
-sha256sums=('SKIP' 'SKIP')
+    "arrpc.service"
+    "arrpc.install")
+sha256sums=('SKIP'
+    '3fa5e7791f0eadf2c955361da0c3b4b313dc336336bc67d13dd5e0928917c5d9'
+    '4da6c27d088a97a6f38f2104eb7ae95321b786625370320a0eae72663d66bd20')
 
 pkgver() {
     cd "$pkgname"
