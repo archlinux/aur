@@ -6,8 +6,8 @@ pkgname=(
   freetype2-git
   freetype2-demos-git
 )
-pkgver=2.14.2+p0+gf4205da14
-pkgrel=2
+pkgver=2.14.3+p16+ga6d486002
+pkgrel=1
 epoch=1
 pkgdesc="Font rasterization library (from git)"
 url="https://www.freetype.org/"
@@ -74,6 +74,7 @@ build() {
     -D freetype2:default_library=shared
     -D freetype2:error_strings=true
     -D freetype2:harfbuzz=dynamic
+    -D freetype2:hvf=disabled
   )
 
   # Build FreeType as part of the demos
