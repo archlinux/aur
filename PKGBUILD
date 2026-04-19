@@ -1,4 +1,4 @@
-# Maintainer: secext2022 <secext2022 at outlook dot com>
+# Maintainer: jingluwei <weijinglu at qq dot com>
 pkgname=cxstudy-wine
 pkgver=1.4.0
 pkgrel=1
