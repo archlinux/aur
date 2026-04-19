@@ -1,14 +1,17 @@
 pkgbase = livepaper-git
 	pkgdesc = Live wallpaper manager for Wayland using mpvpaper
-	pkgver = r1.974c279
+	pkgver = r6.a0907c1
 	pkgrel = 1
 	url = https://github.com/sunwoo101/livepaper
 	arch = x86_64
 	license = MIT
 	makedepends = dotnet-sdk
 	depends = mpvpaper
+	depends = dotnet-runtime
 	provides = livepaper
 	conflicts = livepaper
+	options = !strip
+	options = !debug
 	source = livepaper-git::git+https://github.com/sunwoo101/livepaper.git
 	sha256sums = SKIP
 

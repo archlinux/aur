@@ -1,15 +1,16 @@
 # Maintainer: Sun Woo Kim <sun.kim101@outlook.com>
 pkgname=livepaper-git
-pkgver=r1.974c279
+pkgver=r6.a0907c1
 pkgrel=1
 pkgdesc="Live wallpaper manager for Wayland using mpvpaper"
 arch=('x86_64')
 url="https://github.com/sunwoo101/livepaper"
 license=('MIT')
-depends=('mpvpaper')
+depends=('mpvpaper' 'dotnet-runtime')
 makedepends=('dotnet-sdk')
 provides=('livepaper')
 conflicts=('livepaper')
+options=('!strip' '!debug')
 source=("$pkgname::git+https://github.com/sunwoo101/livepaper.git")
 sha256sums=('SKIP')
 
@@ -21,9 +22,9 @@ pkgver() {
 build() {
     cd "$pkgname"
     dotnet publish src/livepaper \
-        -r linux-x64 \
-        --self-contained \
         -c Release \
+        -r linux-x64 \
+        --no-self-contained \
         -o publish
 }
 
@@ -32,12 +33,15 @@ package() {
 
     install -dm755 "$pkgdir/usr/lib/livepaper"
     cp -r publish/. "$pkgdir/usr/lib/livepaper/"
-    chmod 755 "$pkgdir/usr/lib/livepaper/livepaper"
+
+    # Remove non-linux-x64 platform runtimes bundled by NuGet packages
+    find "$pkgdir/usr/lib/livepaper/runtimes" -mindepth 1 -maxdepth 1 \
+        ! -name 'linux-x64' -exec rm -rf {} +
 
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/livepaper" <<'WRAPPER'
 #!/bin/bash
-exec /usr/lib/livepaper/livepaper "$@"
+exec dotnet /usr/lib/livepaper/livepaper.dll "$@"
 WRAPPER
     chmod 755 "$pkgdir/usr/bin/livepaper"
 
