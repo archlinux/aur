@@ -1,0 +1,12 @@
+post_install() {
+  echo ":: Synca has been installed."
+  echo ":: To start the synchronization daemon automatically on login, run:"
+  echo "   systemctl --user enable --now synca.service"
+  echo ""
+  echo ":: You can then launch the GUI from your application menu."
+}
+
+post_upgrade() {
+  echo ":: Remember to restart the Synca service if you encountered issues:"
+  echo "   systemctl --user restart synca.service"
+}

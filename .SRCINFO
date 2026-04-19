@@ -1,0 +1,21 @@
+pkgbase = synca
+	pkgdesc = Simple, lightweight, and open source file synchronization client
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/bryanrafaelbueno/Synca
+	install = synca.install
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rust
+	makedepends = cargo
+	depends = webkit2gtk-4.1
+	depends = libnm
+	depends = gtk3
+	depends = libappindicator-gtk3
+	source = synca-0.3.1.tar.gz::https://github.com/bryanrafaelbueno/Synca/archive/refs/tags/0.3.1.tar.gz
+	sha256sums = 027a714067114395bcc8ce0f25f51574654b969a453fe857ed66932aec91b23e
+
+pkgname = synca
