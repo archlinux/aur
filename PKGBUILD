@@ -2,7 +2,7 @@
 
 _pkgname=siun
 pkgname=$_pkgname
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="siun stands for, and tries to answer, the question Should I upgrade now?"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
 )
 provides=($_pkgname)
 source=(https://github.com/t4k1t/siun/archive/refs/tags/v"${pkgver}".tar.gz)
-b2sums=('f7b00edf1e6e80aa65dc0ca210c04686f2ebe9c79e391a0cc7746c3277f11940a3ac1d1932179c686e3c2ec46258ebbdb7403052a09bdcf7937ae4dc23a41ba1')
+b2sums=('2bac6874dbdc674c7a85e9a454ff53c2a3306dfe75d766f3133f2fc77b3827d471e0d435831baa29d40af853f4ad7ea6a762666f61641263db5375b39fa840d4')
 
 
 build() {
