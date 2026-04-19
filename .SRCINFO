@@ -1,7 +1,7 @@
 pkgbase = r-rstudioapi
 	pkgdesc = Safely Access the RStudio API
-	pkgver = 0.17.1
-	pkgrel = 1
+	pkgver = 0.18.0
+	pkgrel = 2
 	url = https://cran.r-project.org/package=rstudioapi
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = r-rstudioapi
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/rstudioapi_0.17.1.tar.gz
-	b2sums = bc270f0c14a859f117119ec4c866cddfce8026702ba59db635b1decee71dd6b2fa0017f5322466157bf5668f09d452041c2c5c525481d8906a079b48786f5fd0
+	source = https://cran.r-project.org/src/contrib/rstudioapi_0.18.0.tar.gz
+	b2sums = 6987b36944305a8b462cf53662c48ea4b17836aa5df2da9f2e35c297cc1bfedd5a6782be0d96479f4d4fbe5fa00fbdf10174c3ed2ef9c6185e5f7462ee96b42b
 
 pkgname = r-rstudioapi
