@@ -1,7 +1,7 @@
 pkgbase = r-redcapr
 	pkgdesc = Interaction Between R and REDCap
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=REDCapR
 	arch = any
 	license = MIT
