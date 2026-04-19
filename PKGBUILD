@@ -1,52 +1,95 @@
-# Maintainer: Jan Holthuis <holthuis dot jan at googlemail dot com>
+# Maintainer: Evert
 
 pkgname=openclaw
-_gitname=OpenClaw
-pkgver=0.3
+pkgver=2026.4.15
 pkgrel=1
-pkgdesc="Reimplementation of Captain Claw (1997) platformer"
-arch=('i686' 'x86_64')
-url='https://github.com/pjasicek/OpenClaw'
-license=('GPL3')
-depends=('sdl2' 'sdl2_gfx' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'tinyxml')
-makedepends=('cmake')
-optdepends=(
-    'mono: launcher support'
-    'timidity++: background music support'
-    'timidity-freepats: background music support'
-)
+pkgdesc="Personal AI assistant that runs on your own devices"
+arch=('x86_64')
+url="https://github.com/openclaw/openclaw"
+license=('MIT')
+depends=('nodejs>=22' 'bubblewrap')
+makedepends=('bun' 'pnpm' 'npm' 'python')
+optdepends=('bubblewrap: for experimental additional sandboxed execution')
+conflicts=('openclaw-git')
 source=(
-    "https://github.com/pjasicek/${_gitname}/archive/v${pkgver}.tar.gz"
-    "https://github.com/pjasicek/${_gitname}/releases/download/v0.0/openclaw-1.0-1.x86_64.rpm"
+    "$pkgname-$pkgver.tar.gz::https://github.com/openclaw/openclaw/archive/refs/tags/v$pkgver.tar.gz"
+    'openclaw-bwrap'
+    'openclaw-agent-bwrap'
+    'openclaw-bwrap-install-as-systemd-user-service'
+    'openclaw-patch.sh'
+    'openclaw.install'
+    'README.md'
 )
-sha256sums=(
-    '3aff09241ce9cb574829741fd1ea11d0c0b1b334ea8893aaf49827f3c5631ac9'
-    '99095cc136e35701016bc5f70bcb8b0cb20538fc0a778cdccd38c4275ca85441'
-)
-install='openclaw.install'
+
+install=openclaw.install
+sha256sums=('920d8e0e3c4d9c2d2d9a184c82d98a833f308cdd56a4fd282cec918466b4efe3'
+            '28568550c4674efc8b90a9b4ea5cf9dc024770275c089499a5cc5d7064d1bba8'
+            '44b23035089628327dbb05b1aa7a6daf09f21b82c0172ca59ed4576d3aa7b9a5'
+            '34fa95679d51f4d5be120e98714f8b580689e57bef6eb031dcf35c0b26948e7d'
+            '2c2ddb5d0187435f14fcb19aa908bb60500f17344eca8c16c8cc69b281f0b2ab'
+            '908569172f29dcc788eb4d98a5fcff89ddaee9d4f656a1abcd59456d2e52bd9e'
+            '817f2a15928521a5e3b9206ee227cbe0b699932fe8f54eaa6a4290c59608dff2')
+
+options=('!strip' '!debug')
+
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    bash "$srcdir/openclaw-patch.sh" --patch
+
+    # bun has a bug with pnpm-lock.yaml workspace link migration (bun/issues/23026)
+    # which causes @agentclientprotocol/sdk and other scoped packages to fail with 405.
+    # Use pnpm (the upstream package manager) for dependency installation instead.
+    # Restore pnpm as packageManager field so pnpm install accepts the project.
+    sed -i 's/"packageManager": "bun@[^"]*"/"packageManager": "pnpm@10.30.3"/' package.json
+    # Arch packaging should not fail just because an upstream dependency was published recently.
+    # Disable pnpm's minimumReleaseAge gate for the build environment.
+    sed -i 's/^minimumReleaseAge: .*/minimumReleaseAge: 0/' pnpm-workspace.yaml
+    pnpm install
+    # Install UI dependencies (scripts/ui.js detects bun and uses it if available)
+    bun run ui:install
+}
 
 build() {
-    mkdir -p "${srcdir}/${_gitname}-$pkgver/build"
-    cd "${srcdir}/${_gitname}-$pkgver/build"
-    cmake ..
-    make
+    cd "$srcdir/$pkgname-$pkgver"
+    bun run build
+    # Build Control UI
+    bun run ui:build
 }
 
 package() {
-    cd "${srcdir}/${_gitname}-$pkgver/Build_Release"
+    cd "$srcdir/$pkgname-$pkgver"
 
-    # Binaries
-    install -Dm644 'ClawLauncher.exe' "${pkgdir}/usr/bin/ClawLauncher.exe"
-    install -Dm755 'clawlauncher' "${pkgdir}/usr/bin/clawlauncher"
-    install -Dm755 'openclaw' "${pkgdir}/usr/bin/openclaw"
+    # Install the package to /usr/lib/openclaw
+    install -d "$pkgdir/usr/lib/openclaw"
+    cp -r assets dist docs extensions git-hooks node_modules patches scripts skills "$pkgdir/usr/lib/openclaw/"
+    cp openclaw.mjs package.json AGENTS.md "$pkgdir/usr/lib/openclaw/"
 
-    # Recreated Assets
-    install -Dm644 'ASSETS.ZIP' "${pkgdir}/usr/share/openclaw/ASSETS.ZIP"
-    install -Dm644 'clacon.ttf' "${pkgdir}/usr/share/openclaw/clacon.ttf"
-    install -Dm644 'console02.tga' "${pkgdir}/usr/share/openclaw/console02.tga"
-    install -Dm644 'SAVES.XML' "${pkgdir}/usr/share/openclaw/SAVES.XML"
-    install -Dm644 'config_linux_release.xml' "${pkgdir}/usr/share/openclaw/config.xml"
+    rm -f "$pkgdir/usr/lib/openclaw/node_modules/.pnpm-workspace-state-v1.json"
 
-    # Original Game Assets (from the rpm file)
-    install -Dm644 "${srcdir}/usr/share/openclaw/CLAW.REZ" "${pkgdir}/usr/share/openclaw/CLAW.REZ"
+    # Install documentation
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+    install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README-arch.md"
+
+    # Install examples
+    for i in docker-compose.yml Dockerfile Dockerfile.sandbox Dockerfile.sandbox-browser; do
+        install -Dm644 "$i" "$pkgdir/usr/share/doc/$pkgname/examples/$i"
+    done
+
+    # Install binary wrapper
+    install -d "$pkgdir/usr/bin"
+    cat >"$pkgdir/usr/bin/openclaw" <<EOF
+#!/bin/bash
+exec node /usr/lib/openclaw/openclaw.mjs "\$@"
+EOF
+    chmod +x "$pkgdir/usr/bin/openclaw"
+
+    # Install bwrap scripts
+    install -m755 "$srcdir/openclaw-bwrap" "$pkgdir/usr/bin/openclaw-bwrap"
+    install -m755 "$srcdir/openclaw-agent-bwrap" "$pkgdir/usr/bin/openclaw-agent-bwrap"
+    install -m755 "$srcdir/openclaw-bwrap-install-as-systemd-user-service" \
+        "$pkgdir/usr/bin/openclaw-bwrap-install-as-systemd-user-service"
+
+    # Install license
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
