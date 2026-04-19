@@ -4,7 +4,7 @@
 # Contributor: Johannes Löthberg <demizide@gmail.com>
 
 pkgname=beets-git
-pkgver=2.8.0.r111.g4aaf58bac
+pkgver=2.9.0.r118.ge3e8793d8
 pkgrel=1
 pkgdesc="Flexible music library manager and tagger - git version"
 arch=('any')
@@ -50,6 +50,7 @@ checkdepends=(
   python-beautifulsoup4
   python-dbus
   python-discogs-client
+  python-factory-boy
   python-flask
   python-flask-cors
   python-gobject
