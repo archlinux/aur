@@ -2,7 +2,7 @@
 
 pkgname=python-ldfparser
 _name=${pkgname#python-}
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 epoch=
 pkgdesc="LIN Description File parser written in Python"
@@ -30,7 +30,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('209b56544783750a40791b31ac2b0359d7d0f8fc0a5b41ee65d45b9f69bf0712')
+sha256sums=('8be407dadcd92b0be3128b770dd133accea9d30d20b4f5c521db23ebc3d97d90')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
