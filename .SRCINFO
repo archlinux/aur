@@ -1,0 +1,21 @@
+pkgbase = runex-bin
+	pkgdesc = Cross-shell abbreviation engine that expands short tokens into full commands
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/ShortArrow/runex
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	provides = runex
+	conflicts = runex
+	source = LICENSE-0.1.11::https://raw.githubusercontent.com/ShortArrow/runex/v0.1.11/LICENSE
+	source = README-0.1.11.md::https://raw.githubusercontent.com/ShortArrow/runex/v0.1.11/README.md
+	sha256sums = 19614dcc7dc2af82331a66d30ab79d5674be3ce73ef853ed76e1743b2830f4d0
+	sha256sums = b5d6502f8cf0088b3d75cc79a1fad78ca7da3374803a49e70b7709f991410439
+	source_x86_64 = runex-0.1.11-x86_64.tar.gz::https://github.com/ShortArrow/runex/releases/download/v0.1.11/runex-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1d2767e51ae575739ef97a048a27334c3d7c8b46550cd5ee400c85444b91e5fe
+	source_aarch64 = runex-0.1.11-aarch64.tar.gz::https://github.com/ShortArrow/runex/releases/download/v0.1.11/runex-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 14f94242f7d151158ffaefbf90541e78d828d620b3a0588a8bbac6c2d9361422
+
+pkgname = runex-bin
