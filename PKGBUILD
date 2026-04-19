@@ -1,8 +1,8 @@
 # Maintainer: Rain Xelelo <rxelelo@outlook.com>
 
 pkgname=cactus-client
-pkgver=1.14
-pkgrel=2
+pkgver=1.15
+pkgrel=1
 # allow testing locally a release candidate using pkgver like '19.3rc3'
 _version=${pkgver/rc/-rc}
 pkgdesc="A DDRaceNetwork modification adding new feauters"
@@ -16,7 +16,7 @@ optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
 backup=('usr/share/ddnet/data/autoexec_server.cfg')
 
 source=("https://dw.cactuss.top/$_version/Cactus-$_version-public-linux_x86_64.tar.xz" "cactus-client.png")
-sha256sums=('88b44bb74ff954ee3ac3701257162593dc73ec9a849a7943ca0a84aec1dac7b5'
+sha256sums=('70b5afcdbf7f8ec875780391b2238a29dec3fc2c420bc72f7dbfaf86d56f397b'
             '8508552983950820bd5c8829bd43e714a4a958a084211dc1a8be6619f8d0b742')
 
 prepare() {
