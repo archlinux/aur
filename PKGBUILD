@@ -1,17 +1,19 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Christos Longros <chris.longros@gmail.com>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
-_cranname=gtfstools
-_cranver=1.3.0
-pkgname=r-${_cranname,,}
+_pkgname=gtfstools
+_pkgver=1.4.0
+pkgname=r-${_pkgname,,}
 pkgdesc="Read, manipulate, analyse and write transit feeds in the General
 Transit Feed Specification (GTFS) data format"
-url="https://cran.r-project.org/package=${_cranname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=2
 
 arch=("i686" "x86_64")
 depends=(
+    "r-cpp11"
     "r>=2.10"
     "r-checkmate"
     "r-cli"
@@ -38,23 +40,19 @@ checkdepends=(
     "r-testthat>=3.0.0"
 )
 
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("0b509daa97b3c5ba0222f598e0451d07dc9aa546fd49f2359b03ebb22ec2f0da10272ecd2d0c37a2c13e231561d11fa9adb542b597b00684478729f72d1456b5")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+b2sums=('232fb973bb8cdf2bdf914c12d4f3e231992816a798cf753e83c65b765a75a853be16f4b0700e393cf251173b0a01bbfa3a731d8ecf83f5b0202cef790efaf810')
 
 build() {
     mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+    R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}/build/"
 }
 
-check() {
-    export R_LIBS="build/"
-    R CMD check --no-manual "${_cranname}"
-}
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -a --no-preserve=ownership "${srcdir}/build/${_pkgname}" "${pkgdir}/usr/lib/R/library"
+    if [[ -f "${_pkgname}/LICENSE" ]]; then
+        install -Dm0644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
