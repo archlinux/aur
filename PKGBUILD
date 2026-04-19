@@ -34,5 +34,5 @@ package() {
 	install -Dm644 "eww.yuck" "$pkgdir"/"${HOME#/}"/.config/crcl-select/
 	install -Dm644 "eww.scss" "$pkgdir"/"${HOME#/}"/.config/crcl-select/
 	chmod 	-c		a+rw      "$pkgdir"/"${HOME#/}"/.config/crcl-select/json_files/
-	install -Dm644 "toolbox.json" "$pkgdir"/"${HOME#/}"/.config/crcl-select/json_files/
+	install -Dm644 "json_files/toolbox.json" "$pkgdir"/"${HOME#/}"/.config/crcl-select/json_files/
 }
