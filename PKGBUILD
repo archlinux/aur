@@ -1,8 +1,8 @@
 # Maintainer: Luca Kredel <luca dot kredel at web dot de>
 pkgname=yoctofetch-git
-pkgver=v1.2.0.r1.b3fc699
+pkgver=v2.0.0.r1.e202892
 pkgrel=1
-pkgdesc="Fast(est) system fetch tool for Linux with a low footprint"
+pkgdesc="Fast system fetch tool for Linux with a low footprint"
 arch=(x86_64)
 url="https://codeberg.org/Phosphenius/yoctofetch"
 license=('GPL-3.0-or-later')
