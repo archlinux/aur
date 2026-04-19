@@ -1,16 +1,16 @@
 pkgbase = pando-bin
 	pkgdesc = Pando — end-to-end encrypted chat over self-hosted relays
-	pkgver = 0.20.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/elpdev/pando
 	license = MIT
 	conflicts = pando
 	provides = pando
 	arch = aarch64
-	source_aarch64 = https://github.com/elpdev/pando/releases/download/v0.20.0/pando_0.20.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = f0f2a74c9c5a6f621389c56f8be74dece0a16b6b212030ff116b8e4d5794749d
+	source_aarch64 = https://github.com/elpdev/pando/releases/download/v0.21.0/pando_0.21.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8353bf4c52dac93ddd88446510c085139a5a9f6ad0a1769a5ba84fa86bf647f9
 	arch = x86_64
-	source_x86_64 = https://github.com/elpdev/pando/releases/download/v0.20.0/pando_0.20.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6f1e50d4595ec059032ec3d186763137ee7ca787072ff0146697bc116bdca743
+	source_x86_64 = https://github.com/elpdev/pando/releases/download/v0.21.0/pando_0.21.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1b4ba594be4dfa183072fea0135928ca50b037fb5fffe8eec250e8da438fcbf1
 	
 pkgname = pando-bin
