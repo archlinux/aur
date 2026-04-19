@@ -1,7 +1,7 @@
 # Maintainer: Emma CHRISTOPHE <jean.michel.lesatanique@gmail.com>
 pkgname=crcl-select
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Circle selection utility with Eww widgets"
 arch=('x86_64')
 url="https://github.com/Pat8998/crcl-select/"
@@ -9,8 +9,8 @@ license=('unknown')
 groups=()
 depends=('eww' 'jq')
 makedepends=('jansson')
-source=('https://github.com/Pat8998/crcl-select/releases/download/1.1/crcl-sel.tar')
-sha256sums=(5963231e9f25cc9b6deae9b0cafda48de789432b56e25fda9b675d951996ee64)
+source=('https://github.com/Pat8998/crcl-select/releases/download/1.1-3/crcl-sl.tar')
+sha256sums=(14c39cca158ff17ec3ff8422ee038b301d036ad5cb7a31d2b456a01bde0034d1)
 
 build() {
 	gcc "eww-circle.c"    		-O3 -o cr-circle-gen   -ljansson -lm
