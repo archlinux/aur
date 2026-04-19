@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Fighter-1
+Comment=A fighting game written in Python
+Exec=fighter-1
+Icon=fighter-1
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;

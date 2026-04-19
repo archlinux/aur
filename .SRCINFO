@@ -1,0 +1,20 @@
+pkgbase = fighter-1
+	pkgdesc = A fighting game written in Python.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/EvansOgala/Fighter
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pygame
+	source = fighter-1::git+https://github.com/EvansOgala/Fighter.git
+	source = icon.png
+	source = Fighter.desktop
+	source = fighter-1.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fighter-1
