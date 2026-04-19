@@ -1,5 +1,5 @@
 pkgname=psp-gcc
-pkgver=14.1.0
+pkgver=15.2.0
 pkgrel=1
 pkgdesc="A port of gcc to the PSP (psp)"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = psp-gcc
 	pkgdesc = A port of gcc to the PSP (psp)
-	pkgver = 14.1.0
+	pkgver = 15.2.0
 	pkgrel = 1
 	url = https://github.com/pspdev/gcc
 	arch = x86_64
