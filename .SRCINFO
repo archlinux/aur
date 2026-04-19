@@ -1,6 +1,6 @@
 pkgbase = erwin-lang-git
 	pkgdesc = The Erwin programming language compiler and standard library
-	pkgver = r18.2793a61
+	pkgver = r19.86f9a2d
 	pkgrel = 1
 	url = https://github.com/erwin-lang
 	arch = x86_64
