@@ -2,7 +2,7 @@
 pkgname=auto-av1-folder-git
 _pkgname=auto-av1
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Recursive AV1 re-encoder (ffmpeg -> SvtAv1EncApp) with resume/replace options"
 arch=('x86_64')
 url="https://tangled.org/aria.pds.witchcraft.systems/auto-av1"

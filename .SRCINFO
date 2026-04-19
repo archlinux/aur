@@ -1,7 +1,7 @@
 pkgbase = auto-av1-folder-git
 	pkgdesc = Recursive AV1 re-encoder (ffmpeg -> SvtAv1EncApp) with resume/replace options
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tangled.org/aria.pds.witchcraft.systems/auto-av1
 	arch = x86_64
 	license = zlib
