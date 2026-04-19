@@ -1,0 +1,5 @@
+[vigil-tui]
+source = "github"
+github = "GIN-SYSTEMS/vigil-tui"
+use_latest_release = true
+prefix = "v"

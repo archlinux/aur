@@ -1,0 +1,20 @@
+pkgbase = vigil-tui
+	pkgdesc = Real-time terminal power monitor — CPU · GPU · RAM · Network · Processes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/GIN-SYSTEMS/vigil-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = python
+	depends = python-textual
+	depends = python-psutil
+	depends = python-rich
+	depends = python-nvidia-ml-py
+	provides = vigil
+	conflicts = vigil
+	options = !strip
+	source = vigil-1.0.0.tgz::https://github.com/GIN-SYSTEMS/vigil-tui/archive/v1.0.0.tar.gz
+	sha256sums = cb989414ca4784264e083f5e2b89b8ab7c707dff6ea76b7cd5d69301fcd898bd
+
+pkgname = vigil-tui
