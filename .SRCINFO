@@ -1,0 +1,21 @@
+pkgbase = r-tesseract
+	pkgdesc = Open Source OCR Engine
+	pkgver = 5.2.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=tesseract
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	depends = r
+	depends = r-curl
+	depends = r-digest
+	depends = r-pdftools>=1.5
+	depends = r-rappdirs
+	depends = r-rcpp>=0.12.12
+	depends = leptonica
+	depends = tesseract
+	optdepends = tesseract-data-eng: English OCR training data
+	source = https://cran.r-project.org/src/contrib/tesseract_5.2.5.tar.gz
+	b2sums = a63dbeaa44d0fc40bb194ef67dbdea37d9e0cb0a02a572b6d261be48156fa0bd37365548d510983a39d519c8b075795933b875c3a468b7e204d6e4c5883f6861
+
+pkgname = r-tesseract
