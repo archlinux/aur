@@ -1,9 +1,10 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Christos Longros <chris.longros@gmail.com>
+# Contributor: peippo <christoph+aur@christophfink.com>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=fansi
-_cranver=1.0.6
+_cranver=1.0.7
 pkgname=r-${_cranname,,}
 pkgdesc="ANSI Control Sequence Aware String Functions"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -23,7 +24,7 @@ optdepends=(
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("c30e78315bca93961f2cf88eb5c358e8ef3749a61039d26407d98b960d233a23573abd1169b26806d24938d362365ebff1fc4752aa42b4470ba88575086bc1e5")
+b2sums=("4760d6ab35540e1ebe67cadd574ea29203c7cc533e7b1371b002fa59201f213690638860dbaaed25f0cde5e3aee09d73fd598dd70fb6681569ecf4ccd66a3a92")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
