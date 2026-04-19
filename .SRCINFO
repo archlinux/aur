@@ -1,0 +1,19 @@
+pkgbase = r-snowflakeauth
+	pkgdesc = Authentication to 'Snowflake'
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=snowflakeauth
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-cli
+	depends = r-curl
+	depends = r-jsonlite
+	depends = r-jose
+	depends = r-openssl
+	depends = r-rcpptoml
+	depends = r-rlang
+	source = https://cran.r-project.org/src/contrib/snowflakeauth_0.2.2.tar.gz
+	b2sums = b97c68bfaee0b08de1e313276b3060a5142d6687fa73b29bd806b0bf90043d6d686b8b2b201834b24f6a279e88bb5f5bd74b4873e8b99a52c4f766854fd67e97
+
+pkgname = r-snowflakeauth
