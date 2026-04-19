@@ -1,0 +1,37 @@
+pkgbase = r-shinyloadtest
+	pkgdesc = Load Test Shiny Applications
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=shinyloadtest
+	arch = any
+	license = GPL-3.0-only
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-cli
+	depends = r-curl
+	depends = r-dplyr>=1.0.0
+	depends = r-ggplot2>=3.4.0
+	depends = r-httpuv>=1.5.2
+	depends = r-jsonlite
+	depends = r-magrittr
+	depends = r-r6
+	depends = r-rlang>=0.1.2
+	depends = r-scales
+	depends = r-stringr
+	depends = r-svglite
+	depends = r-vroom
+	depends = r-websocket>=1.0.0
+	depends = r-xml2
+	optdepends = r-getpass
+	optdepends = r-glue
+	optdepends = r-gtable
+	optdepends = r-htmltools
+	optdepends = r-lubridate
+	optdepends = r-progress
+	optdepends = r-rmarkdown
+	optdepends = r-spelling
+	optdepends = r-testthat>=3.2.0
+	source = https://cran.r-project.org/src/contrib/shinyloadtest_1.2.1.tar.gz
+	sha256sums = 1a52084ca44c3dfe3dae46e354cd58e8a255ffff837ece67267ae534da25e88d
+
+pkgname = r-shinyloadtest
