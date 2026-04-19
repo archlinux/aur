@@ -8,6 +8,7 @@ pkgbase = ani-stream
 	depends = curl
 	depends = fzf
 	depends = mpv
+	depends = bash
 	optdepends = yt-dlp: for HLS stream downloads
 	optdepends = ffmpeg: alternative for downloads
 	optdepends = aria2: for faster downloads

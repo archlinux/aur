@@ -6,7 +6,7 @@ pkgdesc="A lightweight CLI tool to stream and download anime from the terminal"
 arch=('any')
 url="https://github.com/aliabdoxd27-source/ani-stream"
 license=('MIT')
-depends=('curl' 'fzf' 'mpv')
+depends=('curl' 'fzf' 'mpv' 'bash')
 optdepends=('yt-dlp: for HLS stream downloads'
             'ffmpeg: alternative for downloads'
             'aria2: for faster downloads'
