@@ -1,5 +1,5 @@
 pkgbase = sweet-folders-git
-	pkgdesc = Sweet folders icons
+	pkgdesc = Folder icons from the Sweet GTK Theme for Linux desktop environments
 	pkgver = r29.40a5d36
 	pkgrel = 1
 	url = https://github.com/EliverLara/Sweet-folders
@@ -8,8 +8,11 @@ pkgbase = sweet-folders-git
 	makedepends = git
 	provides = sweet-folders
 	conflicts = sweet-folders
+	conflicts = sweet-folders-icons-git
 	options = !strip
-	source = Sweet-folders::git+https://github.com/EliverLara/Sweet-folders.git
+	source = Sweet-folders::git+https://github.com/EliverLara/Sweet-folders
+	source = 21.patch
 	b2sums = SKIP
+	b2sums = b86edf2d974c4b4c62f4955628180bb2b4f7d211800410d3be16c1c011da0150871e5c13affd2f0fb90ec0205855c486486147cd50f55f3113b1fbd227112625
 
 pkgname = sweet-folders-git

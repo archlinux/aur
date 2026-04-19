@@ -1,0 +1,130 @@
+From f9dd0137eeca12d3c08339f5ec65c6204d02ef98 Mon Sep 17 00:00:00 2001
+From: gigas002 <gigas002@pm.me>
+Date: Mon, 16 Dec 2024 21:43:26 +0900
+Subject: [PATCH] Add folder-open.svg
+
+---
+ Sweet-Blue-Filled/Places/folder-open.svg   | 1 +
+ Sweet-Blue/Places/folder-open.svg          | 1 +
+ Sweet-Mars/Places/folder-open.svg          | 1 +
+ Sweet-Purple-Filled/Places/folder-open.svg | 1 +
+ Sweet-Purple/Places/folder-open.svg        | 1 +
+ Sweet-Rainbow/Places/folder-open.svg       | 3 +++
+ Sweet-Red-Filled/Places/folder-open.svg    | 1 +
+ Sweet-Red/Places/folder-open.svg           | 1 +
+ Sweet-Teal-Filled/Places/folder-open.svg   | 1 +
+ Sweet-Teal/Places/folder-open.svg          | 1 +
+ Sweet-Yellow-Filled/Places/folder-open.svg | 1 +
+ Sweet-Yellow/Places/folder-open.svg        | 1 +
+ 12 files changed, 14 insertions(+)
+ create mode 100644 Sweet-Blue-Filled/Places/folder-open.svg
+ create mode 100644 Sweet-Blue/Places/folder-open.svg
+ create mode 100644 Sweet-Mars/Places/folder-open.svg
+ create mode 100644 Sweet-Purple-Filled/Places/folder-open.svg
+ create mode 100644 Sweet-Purple/Places/folder-open.svg
+ create mode 100644 Sweet-Rainbow/Places/folder-open.svg
+ create mode 100644 Sweet-Red-Filled/Places/folder-open.svg
+ create mode 100644 Sweet-Red/Places/folder-open.svg
+ create mode 100644 Sweet-Teal-Filled/Places/folder-open.svg
+ create mode 100644 Sweet-Teal/Places/folder-open.svg
+ create mode 100644 Sweet-Yellow-Filled/Places/folder-open.svg
+ create mode 100644 Sweet-Yellow/Places/folder-open.svg
+
+diff --git a/Sweet-Blue-Filled/Places/folder-open.svg b/Sweet-Blue-Filled/Places/folder-open.svg
+new file mode 100644
+index 0000000..7777cfd
+--- /dev/null
++++ b/Sweet-Blue-Filled/Places/folder-open.svg
+@@ -0,0 +1 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- Generator: Gravit.io --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 48 48" width="48pt" height="48pt"><g><path d=" M 42 16.792 L 1.222 23.792 L 1.222 16 C 1.222 13.24 3.462 11 6.222 11 L 13.585 11 C 14.688 11 16.315 11.519 17.214 12.159 L 20.039 14.169 C 20.938 14.809 22.556 15.454 23.649 15.609 L 32 16.792 L 42 16.792 Z " fill="#1A93ED"/><linearGradient id="_lgradient_21" x1="0" y1="0.5" x2="1" y2="0.5" gradientTransform="matrix(45.007,0,0,34.066,1.222,12.142)" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-opacity="1" style="stop-color:#3BE4EA"/><stop offset="98.33333333333333%" stop-opacity="1" style="stop-color:#1A93ED"/></linearGradient><path d=" M 5 15.772 C 3.003 15.503 2.392 14.323 3.075 12.142 Q 2.915 12.203 2.866 12.31 C 2.169 12.898 1.123 14.595 1.229 15.792 L 1.229 41.208 C 1.229 43.968 3.469 46.208 6.229 46.208 L 41.229 46.208 C 43.989 46.208 46.229 43.968 46.229 41.208 L 46.229 20.772 C 46.229 18.012 43.989 15.772 41.229 15.772 L 5 15.772 Z " fill="url(#_lgradient_21)"/></g></svg>
+\ No newline at end of file
+diff --git a/Sweet-Blue/Places/folder-open.svg b/Sweet-Blue/Places/folder-open.svg
+new file mode 100644
+index 0000000..021df30
+--- /dev/null
++++ b/Sweet-Blue/Places/folder-open.svg
+@@ -0,0 +1 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- Generator: Gravit.io --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 48 48" width="48pt" height="48pt"><linearGradient id="_lgradient_9" x1="0" y1="0.5" x2="1" y2="0.5" gradientTransform="matrix(46.1,0,0,37.1,0.95,9.95)" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-opacity="1" style="stop-color:#3BE4EA"/><stop offset="98.26086956521739%" stop-opacity="1" style="stop-color:#1A93ED"/></linearGradient><path d=" M 9 23.05 L 9 23.05 C 8.42 23.05 7.95 22.58 7.95 22 L 7.95 22 C 7.95 21.42 8.42 20.95 9 20.95 L 9 20.95 L 14.65 20.95 C 15.202 20.95 16.008 20.681 16.45 20.35 L 22.85 15.55 C 23.292 15.219 24.098 14.95 24.65 14.95 L 44.05 14.95 C 45.706 14.95 47.05 16.294 47.05 17.95 L 47.05 44.05 C 47.05 45.706 45.706 47.05 44.05 47.05 L 3.95 47.05 C 2.294 47.05 0.95 45.706 0.95 44.05 L 0.95 33 L 0.95 33 C 0.95 32.42 1.42 31.95 2 31.95 L 2 31.95 C 2.58 31.95 3.05 32.42 3.05 33 L 3.05 33 L 3.05 43.45 C 3.05 44.278 3.722 44.95 4.55 44.95 L 43.45 44.95 C 44.278 44.95 44.95 44.278 44.95 43.45 L 44.95 18.55 C 44.95 17.722 44.278 17.05 43.45 17.05 L 25.35 17.05 C 24.798 17.05 23.992 17.319 23.55 17.65 L 17.15 22.45 C 16.708 22.781 15.902 23.05 15.35 23.05 L 9 23.05 Z  M 3.05 25 L 3.05 25 C 3.05 25.58 2.58 26.05 2 26.05 L 2 26.05 C 1.42 26.05 0.95 25.58 0.95 25 L 0.95 25 L 0.95 12.95 C 0.95 11.294 2.294 9.95 3.95 9.95 L 16.43 9.95 C 16.982 9.95 17.747 10.267 18.137 10.657 L 20.74 13.26 L 20.74 13.26 C 21.148 13.668 21.148 14.332 20.74 14.74 L 20.74 14.74 C 20.332 15.148 19.668 15.148 19.26 14.74 L 19.26 14.74 L 16.57 12.05 L 4.55 12.05 C 3.722 12.05 3.05 12.722 3.05 13.55 L 3.05 25 Z " fill-rule="evenodd" fill="url(#_lgradient_9)"/></svg>
+\ No newline at end of file
+diff --git a/Sweet-Mars/Places/folder-open.svg b/Sweet-Mars/Places/folder-open.svg
+new file mode 100644
+index 0000000..91d1c1a
+--- /dev/null
++++ b/Sweet-Mars/Places/folder-open.svg
+@@ -0,0 +1 @@
++<?xml version="1.0" standalone="no"?><!-- Generator: Gravit.io --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 48 48" width="48" height="48"><defs><clipPath id="_clipPath_G95qgm2GfWRO5ZK4Q3pbRBNnFMzRzFw0"><rect width="48" height="48"/></clipPath></defs><g clip-path="url(#_clipPath_G95qgm2GfWRO5ZK4Q3pbRBNnFMzRzFw0)"><linearGradient id="_lgradient_34" x1="-0.04632800608827978" y1="0.15974072496964337" x2="0.8522006595636732" y2="0.7102370619103313" gradientTransform="matrix(45,0,0,30.763,1.229,15.445)" gradientUnits="userSpaceOnUse"><stop offset="3.0434782608695654%" stop-opacity="1" style="stop-color:#141719"/><stop offset="98.26086956521739%" stop-opacity="1" style="stop-color:#141719"/></linearGradient><path d=" M 1.545 46.208 L 45.923 46.198 C 46.092 46.198 46.229 46.061 46.229 45.892 L 46.229 15.772 C 46.229 15.603 46.092 15.466 45.923 15.465 L 20.107 15.445 L 15.886 18.651 C 15.818 18.702 15.695 18.743 15.61 18.743 L 1.229 18.688 L 1.238 45.902 C 1.238 46.071 1.376 46.208 1.545 46.208 Z " fill="url(#_lgradient_34)" vector-effect="non-scaling-stroke" stroke-width="1" stroke="#111315" stroke-linejoin="miter" stroke-linecap="square" stroke-miterlimit="3"/><linearGradient id="_lgradient_35" x1="0" y1="0.5" x2="1" y2="0.5" gradientTransform="matrix(18.873,0,0,6.535,1.243,12.208)" gradientUnits="userSpaceOnUse"><stop offset="3.0434782608695654%" stop-opacity="1" style="stop-color:#141719"/><stop offset="98.26086956521739%" stop-opacity="1" style="stop-color:#141719"/></linearGradient><path d=" M 20.116 15.456 L 15.887 12.3 C 15.819 12.249 15.695 12.208 15.61 12.208 L 1.554 12.208 C 1.385 12.208 1.247 12.346 1.247 12.515 L 1.243 18.683 L 15.8 18.743 L 20.116 15.456 Z " fill="url(#_lgradient_35)" vector-effect="non-scaling-stroke" stroke-width="1" stroke="#111315" stroke-linejoin="miter" stroke-linecap="square" stroke-miterlimit="3"/></g></svg>
+\ No newline at end of file
+diff --git a/Sweet-Purple-Filled/Places/folder-open.svg b/Sweet-Purple-Filled/Places/folder-open.svg
+new file mode 100644
+index 0000000..7b5a299
+--- /dev/null
++++ b/Sweet-Purple-Filled/Places/folder-open.svg
+@@ -0,0 +1 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- Generator: Gravit.io --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 48 48" width="48pt" height="48pt"><g><path d=" M 42 16.792 L 1.222 23.792 L 1.222 16 C 1.222 13.24 3.462 11 6.222 11 L 13.585 11 C 14.688 11 16.315 11.519 17.214 12.159 L 20.039 14.169 C 20.938 14.809 22.556 15.454 23.649 15.609 L 32 16.792 L 42 16.792 Z " fill="#8500F7"/><linearGradient id="_lgradient_21" x1="0" y1="0.5" x2="1" y2="0.5" gradientTransform="matrix(45.007,0,0,34.066,1.222,12.142)" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-opacity="1" style="stop-color:#C50ED2"/><stop offset="98.33333333333333%" stop-opacity="1" style="stop-color:#8500F7"/></linearGradient><path d=" M 5 15.772 C 3.003 15.503 2.392 14.323 3.075 12.142 Q 2.915 12.203 2.866 12.31 C 2.169 12.898 1.123 14.595 1.229 15.792 L 1.229 41.208 C 1.229 43.968 3.469 46.208 6.229 46.208 L 41.229 46.208 C 43.989 46.208 46.229 43.968 46.229 41.208 L 46.229 20.772 C 46.229 18.012 43.989 15.772 41.229 15.772 L 5 15.772 Z " fill="url(#_lgradient_21)"/></g></svg>
+\ No newline at end of file
+diff --git a/Sweet-Purple/Places/folder-open.svg b/Sweet-Purple/Places/folder-open.svg
+new file mode 100644
+index 0000000..372b26b
+--- /dev/null
++++ b/Sweet-Purple/Places/folder-open.svg
+@@ -0,0 +1 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- Generator: Gravit.io --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 48 48" width="48pt" height="48pt"><linearGradient id="_lgradient_9" x1="0" y1="0.5" x2="1" y2="0.5" gradientTransform="matrix(46.1,0,0,37.1,0.95,9.95)" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-opacity="1" style="stop-color:#C50ED2"/><stop offset="98.26086956521739%" stop-opacity="1" style="stop-color:#8500F7"/></linearGradient><path d=" M 9 23.05 L 9 23.05 C 8.42 23.05 7.95 22.58 7.95 22 L 7.95 22 C 7.95 21.42 8.42 20.95 9 20.95 L 9 20.95 L 14.65 20.95 C 15.202 20.95 16.008 20.681 16.45 20.35 L 22.85 15.55 C 23.292 15.219 24.098 14.95 24.65 14.95 L 44.05 14.95 C 45.706 14.95 47.05 16.294 47.05 17.95 L 47.05 44.05 C 47.05 45.706 45.706 47.05 44.05 47.05 L 3.95 47.05 C 2.294 47.05 0.95 45.706 0.95 44.05 L 0.95 33 L 0.95 33 C 0.95 32.42 1.42 31.95 2 31.95 L 2 31.95 C 2.58 31.95 3.05 32.42 3.05 33 L 3.05 33 L 3.05 43.45 C 3.05 44.278 3.722 44.95 4.55 44.95 L 43.45 44.95 C 44.278 44.95 44.95 44.278 44.95 43.45 L 44.95 18.55 C 44.95 17.722 44.278 17.05 43.45 17.05 L 25.35 17.05 C 24.798 17.05 23.992 17.319 23.55 17.65 L 17.15 22.45 C 16.708 22.781 15.902 23.05 15.35 23.05 L 9 23.05 Z  M 3.05 25 L 3.05 25 C 3.05 25.58 2.58 26.05 2 26.05 L 2 26.05 C 1.42 26.05 0.95 25.58 0.95 25 L 0.95 25 L 0.95 12.95 C 0.95 11.294 2.294 9.95 3.95 9.95 L 16.43 9.95 C 16.982 9.95 17.747 10.267 18.137 10.657 L 20.74 13.26 L 20.74 13.26 C 21.148 13.668 21.148 14.332 20.74 14.74 L 20.74 14.74 C 20.332 15.148 19.668 15.148 19.26 14.74 L 19.26 14.74 L 16.57 12.05 L 4.55 12.05 C 3.722 12.05 3.05 12.722 3.05 13.55 L 3.05 25 Z " fill-rule="evenodd" fill="url(#_lgradient_9)"/></svg>
+\ No newline at end of file
+diff --git a/Sweet-Rainbow/Places/folder-open.svg b/Sweet-Rainbow/Places/folder-open.svg
+new file mode 100644
+index 0000000..107b798
+--- /dev/null
++++ b/Sweet-Rainbow/Places/folder-open.svg
+@@ -0,0 +1,3 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?>
++<!-- Generator: Gravit.io -->
++<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 48 48" width="48pt" height="48pt"><linearGradient id="_lgradient_0" x1="0" y1="0.5" x2="1" y2="0.5" gradientTransform="matrix(46.1,0,0,37.1,0.95,9.95)" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-opacity="1" style="stop-color:rgb(0,255,255)"/><stop offset="98.26086956521739%" stop-opacity="1" style="stop-color:rgb(165,83,168)"/></linearGradient><path d=" M 9 23.05 L 9 23.05 C 8.42 23.05 7.95 22.58 7.95 22 L 7.95 22 C 7.95 21.42 8.42 20.95 9 20.95 L 9 20.95 L 14.65 20.95 C 15.202 20.95 16.008 20.681 16.45 20.35 L 22.85 15.55 C 23.292 15.219 24.098 14.95 24.65 14.95 L 44.05 14.95 C 45.706 14.95 47.05 16.294 47.05 17.95 L 47.05 44.05 C 47.05 45.706 45.706 47.05 44.05 47.05 L 3.95 47.05 C 2.294 47.05 0.95 45.706 0.95 44.05 L 0.95 33 L 0.95 33 C 0.95 32.42 1.42 31.95 2 31.95 L 2 31.95 C 2.58 31.95 3.05 32.42 3.05 33 L 3.05 33 L 3.05 43.45 C 3.05 44.278 3.722 44.95 4.55 44.95 L 43.45 44.95 C 44.278 44.95 44.95 44.278 44.95 43.45 L 44.95 18.55 C 44.95 17.722 44.278 17.05 43.45 17.05 L 25.35 17.05 C 24.798 17.05 23.992 17.319 23.55 17.65 L 17.15 22.45 C 16.708 22.781 15.902 23.05 15.35 23.05 L 9 23.05 Z  M 3.05 25 L 3.05 25 C 3.05 25.58 2.58 26.05 2 26.05 L 2 26.05 C 1.42 26.05 0.95 25.58 0.95 25 L 0.95 25 L 0.95 12.95 C 0.95 11.294 2.294 9.95 3.95 9.95 L 16.43 9.95 C 16.982 9.95 17.747 10.267 18.137 10.657 L 20.74 13.26 L 20.74 13.26 C 21.148 13.668 21.148 14.332 20.74 14.74 L 20.74 14.74 C 20.332 15.148 19.668 15.148 19.26 14.74 L 19.26 14.74 L 16.57 12.05 L 4.55 12.05 C 3.722 12.05 3.05 12.722 3.05 13.55 L 3.05 25 Z " fill-rule="evenodd" fill="url(#_lgradient_0)"/></svg>
+\ No newline at end of file
+diff --git a/Sweet-Red-Filled/Places/folder-open.svg b/Sweet-Red-Filled/Places/folder-open.svg
+new file mode 100644
+index 0000000..b747a17
+--- /dev/null
++++ b/Sweet-Red-Filled/Places/folder-open.svg
+@@ -0,0 +1 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- Generator: Gravit.io --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 48 48" width="48pt" height="48pt"><g><path d=" M 42 16.792 L 1.222 23.792 L 1.222 16 C 1.222 13.24 3.462 11 6.222 11 L 13.585 11 C 14.688 11 16.315 11.519 17.214 12.159 L 20.039 14.169 C 20.938 14.809 22.556 15.454 23.649 15.609 L 32 16.792 L 42 16.792 Z " fill="#EA333E"/><linearGradient id="_lgradient_21" x1="0" y1="0.5" x2="1" y2="0.5" gradientTransform="matrix(45.007,0,0,34.066,1.222,12.142)" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-opacity="1" style="stop-color:#FC4988"/><stop offset="98.33333333333333%" stop-opacity="1" style="stop-color:#EA333E"/></linearGradient><path d=" M 5 15.772 C 3.003 15.503 2.392 14.323 3.075 12.142 Q 2.915 12.203 2.866 12.31 C 2.169 12.898 1.123 14.595 1.229 15.792 L 1.229 41.208 C 1.229 43.968 3.469 46.208 6.229 46.208 L 41.229 46.208 C 43.989 46.208 46.229 43.968 46.229 41.208 L 46.229 20.772 C 46.229 18.012 43.989 15.772 41.229 15.772 L 5 15.772 Z " fill="url(#_lgradient_21)"/></g></svg>
+\ No newline at end of file
+diff --git a/Sweet-Red/Places/folder-open.svg b/Sweet-Red/Places/folder-open.svg
+new file mode 100644
+index 0000000..b563d3a
+--- /dev/null
++++ b/Sweet-Red/Places/folder-open.svg
+@@ -0,0 +1 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- Generator: Gravit.io --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 48 48" width="48pt" height="48pt"><linearGradient id="_lgradient_9" x1="0" y1="0.5" x2="1" y2="0.5" gradientTransform="matrix(46.1,0,0,37.1,0.95,9.95)" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-opacity="1" style="stop-color:#FC4988"/><stop offset="98.26086956521739%" stop-opacity="1" style="stop-color:#EA333E"/></linearGradient><path d=" M 9 23.05 L 9 23.05 C 8.42 23.05 7.95 22.58 7.95 22 L 7.95 22 C 7.95 21.42 8.42 20.95 9 20.95 L 9 20.95 L 14.65 20.95 C 15.202 20.95 16.008 20.681 16.45 20.35 L 22.85 15.55 C 23.292 15.219 24.098 14.95 24.65 14.95 L 44.05 14.95 C 45.706 14.95 47.05 16.294 47.05 17.95 L 47.05 44.05 C 47.05 45.706 45.706 47.05 44.05 47.05 L 3.95 47.05 C 2.294 47.05 0.95 45.706 0.95 44.05 L 0.95 33 L 0.95 33 C 0.95 32.42 1.42 31.95 2 31.95 L 2 31.95 C 2.58 31.95 3.05 32.42 3.05 33 L 3.05 33 L 3.05 43.45 C 3.05 44.278 3.722 44.95 4.55 44.95 L 43.45 44.95 C 44.278 44.95 44.95 44.278 44.95 43.45 L 44.95 18.55 C 44.95 17.722 44.278 17.05 43.45 17.05 L 25.35 17.05 C 24.798 17.05 23.992 17.319 23.55 17.65 L 17.15 22.45 C 16.708 22.781 15.902 23.05 15.35 23.05 L 9 23.05 Z  M 3.05 25 L 3.05 25 C 3.05 25.58 2.58 26.05 2 26.05 L 2 26.05 C 1.42 26.05 0.95 25.58 0.95 25 L 0.95 25 L 0.95 12.95 C 0.95 11.294 2.294 9.95 3.95 9.95 L 16.43 9.95 C 16.982 9.95 17.747 10.267 18.137 10.657 L 20.74 13.26 L 20.74 13.26 C 21.148 13.668 21.148 14.332 20.74 14.74 L 20.74 14.74 C 20.332 15.148 19.668 15.148 19.26 14.74 L 19.26 14.74 L 16.57 12.05 L 4.55 12.05 C 3.722 12.05 3.05 12.722 3.05 13.55 L 3.05 25 Z " fill-rule="evenodd" fill="url(#_lgradient_9)"/></svg>
+\ No newline at end of file
+diff --git a/Sweet-Teal-Filled/Places/folder-open.svg b/Sweet-Teal-Filled/Places/folder-open.svg
+new file mode 100644
+index 0000000..e30f524
+--- /dev/null
++++ b/Sweet-Teal-Filled/Places/folder-open.svg
+@@ -0,0 +1 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- Generator: Gravit.io --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 48 48" width="48pt" height="48pt"><g><path d=" M 42 16.792 L 1.222 23.792 L 1.222 16 C 1.222 13.24 3.462 11 6.222 11 L 13.585 11 C 14.688 11 16.315 11.519 17.214 12.159 L 20.039 14.169 C 20.938 14.809 22.556 15.454 23.649 15.609 L 32 16.792 L 42 16.792 Z " fill="#00ffb8"/><linearGradient id="_lgradient_21" x1="0" y1="0.5" x2="1" y2="0.5" gradientTransform="matrix(45.007,0,0,34.066,1.222,12.142)" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-opacity="1" style="stop-color:#00ffd8"/><stop offset="98.33333333333333%" stop-opacity="1" style="stop-color:#00ffb8"/></linearGradient><path d=" M 5 15.772 C 3.003 15.503 2.392 14.323 3.075 12.142 Q 2.915 12.203 2.866 12.31 C 2.169 12.898 1.123 14.595 1.229 15.792 L 1.229 41.208 C 1.229 43.968 3.469 46.208 6.229 46.208 L 41.229 46.208 C 43.989 46.208 46.229 43.968 46.229 41.208 L 46.229 20.772 C 46.229 18.012 43.989 15.772 41.229 15.772 L 5 15.772 Z " fill="url(#_lgradient_21)"/></g></svg>
+\ No newline at end of file
+diff --git a/Sweet-Teal/Places/folder-open.svg b/Sweet-Teal/Places/folder-open.svg
+new file mode 100644
+index 0000000..57e13ea
+--- /dev/null
++++ b/Sweet-Teal/Places/folder-open.svg
+@@ -0,0 +1 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- Generator: Gravit.io --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 48 48" width="48pt" height="48pt"><linearGradient id="_lgradient_9" x1="0" y1="0.5" x2="1" y2="0.5" gradientTransform="matrix(46.1,0,0,37.1,0.95,9.95)" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-opacity="1" style="stop-color:#00ffd8"/><stop offset="98.26086956521739%" stop-opacity="1" style="stop-color:#00ffb8"/></linearGradient><path d=" M 9 23.05 L 9 23.05 C 8.42 23.05 7.95 22.58 7.95 22 L 7.95 22 C 7.95 21.42 8.42 20.95 9 20.95 L 9 20.95 L 14.65 20.95 C 15.202 20.95 16.008 20.681 16.45 20.35 L 22.85 15.55 C 23.292 15.219 24.098 14.95 24.65 14.95 L 44.05 14.95 C 45.706 14.95 47.05 16.294 47.05 17.95 L 47.05 44.05 C 47.05 45.706 45.706 47.05 44.05 47.05 L 3.95 47.05 C 2.294 47.05 0.95 45.706 0.95 44.05 L 0.95 33 L 0.95 33 C 0.95 32.42 1.42 31.95 2 31.95 L 2 31.95 C 2.58 31.95 3.05 32.42 3.05 33 L 3.05 33 L 3.05 43.45 C 3.05 44.278 3.722 44.95 4.55 44.95 L 43.45 44.95 C 44.278 44.95 44.95 44.278 44.95 43.45 L 44.95 18.55 C 44.95 17.722 44.278 17.05 43.45 17.05 L 25.35 17.05 C 24.798 17.05 23.992 17.319 23.55 17.65 L 17.15 22.45 C 16.708 22.781 15.902 23.05 15.35 23.05 L 9 23.05 Z  M 3.05 25 L 3.05 25 C 3.05 25.58 2.58 26.05 2 26.05 L 2 26.05 C 1.42 26.05 0.95 25.58 0.95 25 L 0.95 25 L 0.95 12.95 C 0.95 11.294 2.294 9.95 3.95 9.95 L 16.43 9.95 C 16.982 9.95 17.747 10.267 18.137 10.657 L 20.74 13.26 L 20.74 13.26 C 21.148 13.668 21.148 14.332 20.74 14.74 L 20.74 14.74 C 20.332 15.148 19.668 15.148 19.26 14.74 L 19.26 14.74 L 16.57 12.05 L 4.55 12.05 C 3.722 12.05 3.05 12.722 3.05 13.55 L 3.05 25 Z " fill-rule="evenodd" fill="url(#_lgradient_9)"/></svg>
+\ No newline at end of file
+diff --git a/Sweet-Yellow-Filled/Places/folder-open.svg b/Sweet-Yellow-Filled/Places/folder-open.svg
+new file mode 100644
+index 0000000..50b69c4
+--- /dev/null
++++ b/Sweet-Yellow-Filled/Places/folder-open.svg
+@@ -0,0 +1 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- Generator: Gravit.io --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 48 48" width="48pt" height="48pt"><g><path d=" M 42 16.792 L 1.222 23.792 L 1.222 16 C 1.222 13.24 3.462 11 6.222 11 L 13.585 11 C 14.688 11 16.315 11.519 17.214 12.159 L 20.039 14.169 C 20.938 14.809 22.556 15.454 23.649 15.609 L 32 16.792 L 42 16.792 Z " fill="#ffbb24"/><linearGradient id="_lgradient_21" x1="0" y1="0.5" x2="1" y2="0.5" gradientTransform="matrix(45.007,0,0,34.066,1.222,12.142)" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-opacity="1" style="stop-color:#f7f206"/><stop offset="98.33333333333333%" stop-opacity="1" style="stop-color:#ffbb24"/></linearGradient><path d=" M 5 15.772 C 3.003 15.503 2.392 14.323 3.075 12.142 Q 2.915 12.203 2.866 12.31 C 2.169 12.898 1.123 14.595 1.229 15.792 L 1.229 41.208 C 1.229 43.968 3.469 46.208 6.229 46.208 L 41.229 46.208 C 43.989 46.208 46.229 43.968 46.229 41.208 L 46.229 20.772 C 46.229 18.012 43.989 15.772 41.229 15.772 L 5 15.772 Z " fill="url(#_lgradient_21)"/></g></svg>
+\ No newline at end of file
+diff --git a/Sweet-Yellow/Places/folder-open.svg b/Sweet-Yellow/Places/folder-open.svg
+new file mode 100644
+index 0000000..a90d0d7
+--- /dev/null
++++ b/Sweet-Yellow/Places/folder-open.svg
+@@ -0,0 +1 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- Generator: Gravit.io --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 48 48" width="48pt" height="48pt"><linearGradient id="_lgradient_9" x1="0" y1="0.5" x2="1" y2="0.5" gradientTransform="matrix(46.1,0,0,37.1,0.95,9.95)" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-opacity="1" style="stop-color:#f7f206"/><stop offset="98.26086956521739%" stop-opacity="1" style="stop-color:#ffbb24"/></linearGradient><path d=" M 9 23.05 L 9 23.05 C 8.42 23.05 7.95 22.58 7.95 22 L 7.95 22 C 7.95 21.42 8.42 20.95 9 20.95 L 9 20.95 L 14.65 20.95 C 15.202 20.95 16.008 20.681 16.45 20.35 L 22.85 15.55 C 23.292 15.219 24.098 14.95 24.65 14.95 L 44.05 14.95 C 45.706 14.95 47.05 16.294 47.05 17.95 L 47.05 44.05 C 47.05 45.706 45.706 47.05 44.05 47.05 L 3.95 47.05 C 2.294 47.05 0.95 45.706 0.95 44.05 L 0.95 33 L 0.95 33 C 0.95 32.42 1.42 31.95 2 31.95 L 2 31.95 C 2.58 31.95 3.05 32.42 3.05 33 L 3.05 33 L 3.05 43.45 C 3.05 44.278 3.722 44.95 4.55 44.95 L 43.45 44.95 C 44.278 44.95 44.95 44.278 44.95 43.45 L 44.95 18.55 C 44.95 17.722 44.278 17.05 43.45 17.05 L 25.35 17.05 C 24.798 17.05 23.992 17.319 23.55 17.65 L 17.15 22.45 C 16.708 22.781 15.902 23.05 15.35 23.05 L 9 23.05 Z  M 3.05 25 L 3.05 25 C 3.05 25.58 2.58 26.05 2 26.05 L 2 26.05 C 1.42 26.05 0.95 25.58 0.95 25 L 0.95 25 L 0.95 12.95 C 0.95 11.294 2.294 9.95 3.95 9.95 L 16.43 9.95 C 16.982 9.95 17.747 10.267 18.137 10.657 L 20.74 13.26 L 20.74 13.26 C 21.148 13.668 21.148 14.332 20.74 14.74 L 20.74 14.74 C 20.332 15.148 19.668 15.148 19.26 14.74 L 19.26 14.74 L 16.57 12.05 L 4.55 12.05 C 3.722 12.05 3.05 12.722 3.05 13.55 L 3.05 25 Z " fill-rule="evenodd" fill="url(#_lgradient_9)"/></svg>
+\ No newline at end of file
