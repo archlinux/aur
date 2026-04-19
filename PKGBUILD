@@ -1,17 +1,18 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Christos Longros <chris.longros@gmail.com>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
-_cranname=leaflet
-_cranver=2.2.2
-pkgname=r-${_cranname,,}
+_pkgname=leaflet
+_pkgver=2.2.3
+pkgname=r-${_pkgname,,}
 pkgdesc="Create Interactive Web Maps with the JavaScript ‘Leaflet’ Library"
-url="https://cran.r-project.org/package=${_cranname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=("GPL3")
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=3
 
 arch=("any")
 depends=(
-    "r>=3.1.0"
+    "r>=3.5"
     "r-crosstalk"
     "r-htmltools"
     "r-htmlwidgets>=1.5.4"
@@ -21,8 +22,9 @@ depends=(
     "r-png"
     "r-raster>=3.6.3"
     "r-rcolorbrewer"
+    "r-rlang"
     "r-scales>=1.0.0"
-    "r-sp"
+    "r-sf>=0.9.6"
     "r-viridislite"
     "r-xfun"
 )
@@ -34,8 +36,8 @@ optdepends=(
     "r-rjsonio"
     "r-rmarkdown"
     "r-s2"
-    "r-sf>=0.9.6"
     "r-shiny"
+    "r-sp"
     "r-terra"
 )
 
@@ -58,23 +60,23 @@ optdepends=(
 #     "r-testthat>=3.0.0"
 # )
 
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("70ab96616154a3cfce4db451badf8bf60fcfcfe58e57ffe31d41a3eb6a4527d78e0bd3af11e553127d61cc8f3f6c6e4489480a19d3755e4db936ad724f4b646c")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+b2sums=('81bb0075a5199e231b9a034733f1dfab97b19dfa8ce1e629fc92948b310cd5f44f3bd535dc164cff70218071229ef11a2ae78f2ac4cab5fb7002ce060b164286')
 
 build() {
     mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+    R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}/build/"
 }
 
 # check() {
 #     export R_LIBS="build/"
-#     R CMD check --no-manual "${_cranname}"
+#     R CMD check --no-manual "${_pkgname}"
 # }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -a --no-preserve=ownership "${srcdir}/build/${_pkgname}" "${pkgdir}/usr/lib/R/library"
+    if [[ -f "${_pkgname}/LICENSE" ]]; then
+        install -Dm0644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
