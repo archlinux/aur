@@ -26,6 +26,7 @@ build() {
   cd daemon
   # Ensure an empty .env.embedded exists for build parity
   touch internal/auth/.env.embedded
+  mkdir -p ../bin
   go build -o ../bin/synca-daemon-x86_64-unknown-linux-gnu ./cmd/synca
   cd ..
   
