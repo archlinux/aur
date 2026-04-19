@@ -19,8 +19,6 @@ depends=(
 makedepends=(
     'rust'
     'cargo'
-    'nodejs'
-    'npm'
     'git'
 )
 # dioxus-cli must be installed manually or from AUR at version matching dioxus 0.7.x:
@@ -34,11 +32,7 @@ build() {
     export CARGO_HOME="$srcdir/cargo-home"
     export RUSTUP_TOOLCHAIN=stable
 
-    # Build Tailwind CSS
-    npm ci
-    ./node_modules/.bin/tailwindcss -i tailwind.css -o rusic/assets/tailwind.css --minify
-
-    # Build app
+    # tailwind.css is pre-built and included in the release tarball
     dx build --release --platform desktop -p rusic
 }
 
