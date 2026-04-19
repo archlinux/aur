@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=ITK-SNAP
+GenericName=Medical Image Segmentation
+Comment=Segment structures in 3D medical images
+Exec=itksnap %F
+Icon=applications-science
+Terminal=false
+Categories=Science;MedicalSoftware;
+MimeType=application/x-nifti;application/dicom;image/x-nifti;
+Keywords=medical;imaging;MRI;CT;DICOM;NIfTI;segmentation;
