@@ -1,6 +1,6 @@
 pkgbase = codexbar-tui
 	pkgdesc = Thin Omarchy-themed terminal UI on top of the codexbar CLI (steipete/CodexBar)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Zeus-Deus/codexbar-tui
 	install = codexbar-tui.install
@@ -10,7 +10,7 @@ pkgbase = codexbar-tui
 	depends = gcc-libs
 	depends = glibc
 	optdepends = hyprland: for the Omarchy floating-window hotkey (codexbar-tui-setup-omarchy)
-	source = codexbar-tui-0.1.1.tar.gz::https://github.com/Zeus-Deus/codexbar-tui/archive/v0.1.1.tar.gz
-	sha256sums = 00fedbbfd951ae3e8f599b4a42f5691ffa1d652b533c4dbcadcaeb0c84ecaa04
+	source = codexbar-tui-0.1.2.tar.gz::https://github.com/Zeus-Deus/codexbar-tui/archive/v0.1.2.tar.gz
+	sha256sums = 02f52d6e374c37eace0cb0409df3e32d04e9b92b02e422f97e7217453e26a1e3
 
 pkgname = codexbar-tui
