@@ -1,6 +1,6 @@
 pkgname=win2x11cursor-git
-pkgver=1.0.0.r9.gc3fe391
-pkgrel=1
+pkgver=1.0.0.r13.gee07d9d
+pkgrel=2
 pkgdesc="Convert Windows cursor themes into installable X11/Xcursor themes"
 arch=('any')
 url='https://github.com/tantaihaha4487/win2x11cursor'
@@ -13,12 +13,23 @@ optdepends=(
 )
 provides=('win2x11cursor')
 conflicts=('win2x11cursor')
-source=("$pkgname::git+https://github.com/tantaihaha4487/win2x11cursor.git")
-sha256sums=('SKIP')
+source=(
+  "$pkgname::git+https://github.com/tantaihaha4487/win2x11cursor.git"
+  'add-version-flag.patch'
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd "$srcdir/$pkgname"
   printf '1.0.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  patch -Np1 -i "$srcdir/add-version-flag.patch"
 }
 
 build() {

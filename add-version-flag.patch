@@ -1,0 +1,25 @@
+diff --git a/src/win2x11cursor/cli.py b/src/win2x11cursor/cli.py
+index d1aa3cc..3f7dd9c 100644
+--- a/src/win2x11cursor/cli.py
++++ b/src/win2x11cursor/cli.py
+@@ -5,6 +5,7 @@ from dataclasses import dataclass
+ from pathlib import Path
+ from typing import Any
+ 
++from . import __version__
+ from .source import resolve_source
+ from .windows_theme import ROLE_NAMES, parse_windows_theme
+ from .xcursor_theme import (
+@@ -33,6 +34,12 @@ def build_parser() -> argparse.ArgumentParser:
+         prog="win2x11cursor",
+         description="Convert a Windows cursor theme folder, archive, or URL into an installable Xcursor theme.",
+     )
++    parser.add_argument(
++        "-v",
++        "--version",
++        action="version",
++        version=f"%(prog)s {__version__}",
++    )
+     parser.add_argument(
+         "source",
+         help="Path or HTTP(S) URL to a Windows cursor theme folder, archive, or install.inf file.",
