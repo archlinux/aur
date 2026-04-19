@@ -1,24 +1,24 @@
 # Maintainer: Mira Strannaya <rsxrwscjpzdzwpxaujrr@yahoo.com>
 _pkgname=mazemaze
 pkgname="${_pkgname}-git"
-pkgver=0.2.1.r169.g84099dc
-pkgrel=2
+pkgver=0.2.1.r172.g1766e11
+pkgrel=1
 pkgdesc='Simple 3D OpenGL first-person maze game.'
 url="https://github.com/rsxrwscjpzdzwpxaujrr/${_pkgname}"
 arch=('x86_64' 'i686')
 license=('GPLv2')
-depends=('jsoncpp' 'sfml2')
+depends=('jsoncpp' 'sfml')
 optdepends=()
 makedepends=('cmake')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 replaces=()
 backup=()
-sfgui_commit='83471599284b2a23027b9ab4514684a6eeb08a19'
+sfgui_commit='d57e17c8acf998235bd2a57b43892b85df45992f'
 source=("git+https://github.com/rsxrwscjpzdzwpxaujrr/${_pkgname}"
         "https://github.com/TankOs/SFGUI/archive/${sfgui_commit}.tar.gz")
 sha256sums=('SKIP'
-            '4ff867c6f456288c228a7e62bdb9c0f9be28935741428513481017f59ec73809')
+            '367938205e3f672c42e0b6b83dcea31068558c77535c10f7c83009fdda3c09e4')
 
 pkgver() {
   cd mazemaze
