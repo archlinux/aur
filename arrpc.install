@@ -1,5 +1,4 @@
 post_install() {
-  echo "arRPC is now installed and can be run from the command line via the arrpc command."
-  echo "Alternatively, you can enable/run the systemd user service for automation."
-  echo "For example: systemd enable --user --now arrpc.service"
+    echo -e "\n\e[1;32m==>\e[0m \e[1mTo start arRPC, run the following command:\e[0m"
+    echo -e "\e[1;32m==>\e[0m   \e[1msystemctl --user enable --now arrpc\e[0m\n"
 }
