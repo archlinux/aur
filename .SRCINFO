@@ -1,7 +1,7 @@
 pkgbase = r-dicekriging
 	pkgdesc = Kriging Methods for Computer Experiments
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=DiceKriging
 	arch = i686
 	arch = x86_64
