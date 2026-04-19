@@ -24,14 +24,22 @@ build() {
         -r linux-x64 \
         --self-contained \
         -c Release \
-        -p:PublishSingleFile=true \
         -o publish
 }
 
 package() {
     cd "$pkgname"
 
-    install -Dm755 publish/livepaper "$pkgdir/usr/bin/livepaper"
+    install -dm755 "$pkgdir/usr/lib/livepaper"
+    cp -r publish/. "$pkgdir/usr/lib/livepaper/"
+    chmod 755 "$pkgdir/usr/lib/livepaper/livepaper"
+
+    install -dm755 "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/livepaper" <<'WRAPPER'
+#!/bin/bash
+exec /usr/lib/livepaper/livepaper "$@"
+WRAPPER
+    chmod 755 "$pkgdir/usr/bin/livepaper"
 
     install -Dm644 src/livepaper/Assets/livepaper.png \
         "$pkgdir/usr/share/icons/hicolor/512x512/apps/livepaper.png"
