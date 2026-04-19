@@ -22,14 +22,12 @@ prepare() {
     export ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/electron"
 
     cd "${pkgname}-${pkgver}"
-    sed -i 's|- AppImage|- dir|g' electron-builder.yml
-    sed -i 's|--linux AppImage|--linux dir|g' package.json
     local _elver=$(cat /usr/lib/electron/version)
     echo -n Replacing $(cat package.json | grep '"electron":')
     npm pkg set devDependencies.electron=${_elver}
     echo with $(cat package.json | grep '"electron":')
 
-    pnpm install --ignore-scripts --no-frozen-lockfile
+    pnpm install
 }
 
 build() {
