@@ -182,3 +182,15 @@ cd "${_TA_HOME_DIR_}"
 while read _TA_VER_LINE_; do
 	_TA_INSTALLED_VERSION_="${_TA_VER_LINE_}"
 done < "${_TA_VER_FILE_}"
+
+# start update if old or no tor-browser is installed
+if [[ "${_TA_INSTALLED_VERSION_}" == "${_TA_VERSION_}" ]] && [[ ${_TA_REFRESH_} -eq 0 ]]; then
+	# clear log
+	> "${_TA_LOG_FILE_}"
+else
+	echo "${0}: Your version in ${_TA_HOME_DIR_} is outdated or you haven't installed ${_TA_PKGNAME_} yet." > "${_TA_LOG_FILE_}"
+	_refresh_local_
+fi
+
+# start tor-browser
+"${_TA_APP_DIR_}/Browser/start-tor-browser" "${args[@]}"

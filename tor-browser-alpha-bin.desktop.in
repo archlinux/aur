@@ -1,9 +1,10 @@
-[Dsektop Entry]
-Version=14.5a6
+[Desktop Entry]
+Version=@PACKAGE_VERSION@
 Type=Application
 Name=Tor Browser Alpha
 Exec=tor-browser %u
-Icon=tor-browser-alpha-bin.png
-Categories=Network;
+Icon=tor-browser-alpha-bin
+Categories=Network;WebBrowser;Security;
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
 Comment=Anonymous browsing using Firefox and Tor
 StartupWMClass=Tor Browser Alpha

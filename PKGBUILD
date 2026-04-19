@@ -1,5 +1,5 @@
 #Maintainer:	mumi jim <echo "=02bj5yav9Gb0V3bA1Waq9VatVXb" | rev | base64 -d>
-
+#credit to [https://aur.archlinux.org/packages/tor-browser-bin] for providing 99% of the shit i copied over :)
 
 #please run "gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org" or "curl -s https://openpgpkey.torproject.org/.well-known/openpgpkey/torproject.org/hu/kounek7zrdx745qydx6p59t9mqjpuhdf |gpg --import -" before running "makepkg"
 #if you want to update without AUR. Please run "tor-browser -u"
@@ -8,16 +8,15 @@
 
 _appname='tor-browser'
 pkgname="${_appname}-alpha-bin"
-pkgver='14.5a6'
+pkgver='16.0a5'
 pkgrel=1
 pkgdesc='Alpha Version of Tor Browser'
 url='https://www.torproject.org/projects/torbrowser.html'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('MPL-2.0')
 depends=('libxt' 'startup-notification' 'mime-types' 'dbus-glib'
     'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
-    'icu' 'libvpx' 'libevent' 'nss' 'hunspell' 'sqlite'
-    'qt6-base')
+    'icu' 'libvpx' 'libevent' 'nss' 'hunspell' 'sqlite')
 optdepends=('zenity: simple dialog boxes'
     'kdialog: KDE dialog boxes'
     'libpulse: PulseAudio audio driver'
@@ -29,22 +28,12 @@ conflicts=("${_appname}")
 install="${pkgname}.install"
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 
-_arch_i686='linux-i686'
-_arch_x64='linux-x86_64'
-_urlbase="https://dist.torproject.org/torbrowser/${pkgver}"
+_arch='linux-x86_64'
+_urlbase="https://archive.torproject.org/tor-package-archive/torbrowser/${pkgver}"
 
-# check the CPU arch
-_archset() {
-    if [ "$CARCH" == "x86_64" ]; then
-        echo -n "${_arch_x64}"
-    elif [ "$CARCH" == "i686" ]; then
-        echo -n "${_arch_i686}"
-    fi
-}
-
-# complete sed input
+# Make a string suitable for `sed`, by escaping `[]/&$.*^\` - syntax: `_sed_escape STRING`
 _sed_escape() {
-    echo "$1" | sed 's/[\/&.\*^$[]/\\&/g'
+	echo "${1}" | sed 's/[]\/&.*$^[]/\\&/g'
 }
 
 _checksums() {
@@ -54,25 +43,20 @@ _checksums() {
         awk -v _arch="$arch" -v pkgver="$pkgver" "/${_appname}-${_arch}-${pkgver}.tar.xz\$/"'{print $1}'
 }
 
-source_i686=("${_urlbase}/${_appname}-${_arch_i686}-${pkgver}.tar.xz"{,.asc})
-source_x86_64=("${_urlbase}/${_appname}-${_arch_x64}-${pkgver}.tar.xz"{,.asc})
 source=("${pkgname}.svg"
     	"${pkgname}.png"
     	"${pkgname}.desktop.in"
-		"${pkgname}.in")
+		  "${pkgname}.in"
+      "${_urlbase}/${_appname}-${_arch}-${pkgver}.tar.xz"{,.asc})
 
 sha256sums=('0f05dfe54e576f45e036b3f82e079b5e87f32e3bdbbf3b31a82a5746a9277ed4'
             '1dac790ea6437642d06d5555dd636c286ab2fec3dc524b8bf08ad0f7fc2b7d3b'
-            '170a0ce40874b924c8b57bda09de35c2226e3d3fe920fb985d0f1127c23da084'
-            '03acb2a3a9650575df745e8899283be15357cd4ccdb507d448a80128a1c3790e')
-sha256sums_i686=('39b5b857ec64e7cb213a537b8d3c8ee99659b00f29ed7a4f23354934106e96f0'
-                 'SKIP')
-sha256sums_x86_64=('b006919b19c7602a4c00d3ac8d2069f3c70b8ebea099c83a521bf99d24200218'
-                   'SKIP')
+            '59227d06587417932a6865c154e16627da760436ff38ab6210d4003e40ea4ed6'
+            '1b77a9339fc8d0d8da1b0879e347ccb3909ae7b8515c9c4b73ca0cc582ba289e'
+            'f880fb3274943dddb3b3a3e5e815e048b0b4f04f0c71f6ca2ae9d2d82c32a894'
+            'SKIP')
 
-
-noextract=("${_appname}-${_arch_x64}-${pkgver}.tar.xz"
-    "${_appname}-${_arch_i686}-${pkgver}.tar.xz")
+noextract=("${_appname}-${_arch}-${pkgver}.tar.xz")
 
 package() {
     cd "${srcdir}"
@@ -81,7 +65,7 @@ package() {
 		s/@PACKAGE_NAME@/$(_sed_escape "${pkgname}")/g
 		s/@PACKAGE_VERSION@/$(_sed_escape "${pkgver}")/g
 		s/@PACKAGE_RELEASE@/$(_sed_escape "${pkgrel}")/g
-		s/@PACKAGE_ARCH@/$(_sed_escape "$(_archset)")/g
+		s/@PACKAGE_ARCH@/$(_sed_escape "${_arch}")/g
 		"
 
     install -dm755 \
@@ -101,5 +85,5 @@ package() {
     sed "${_sed_packlet}" "${pkgname}.desktop.in" > \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    install -Dm444 "${_appname}-$(_archset)-${pkgver}.tar.xz" "${pkgdir}/opt/${_appname}-$(_archset)-${pkgver}.tar.xz"
+    install -Dm444 "${_appname}-${_arch}-${pkgver}.tar.xz" "${pkgdir}/opt/${pkgname}/${_appname}-${_arch}-${pkgver}.tar.xz"
 }
