@@ -1,16 +1,14 @@
 pkgbase = misty-cli
 	pkgdesc = Misty pics in CLI
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oliik2013/misty-cli
 	arch = any
 	license = MIT
 	depends = bash
 	depends = curl
 	depends = chafa
-	source = https://raw.githubusercontent.com/oliik2013/misty-cli/refs/heads/main/misty-cli.sh
-	source = https://raw.githubusercontent.com/oliik2013/misty-cli/refs/heads/main/LICENSE
-	sha256sums = aaf6c63d7e290963c875551653ea811b466390c4ac91d1efdb6db35fedf52c2d
-	sha256sums = c98a2204d7305e373b4e36f4bc61626c0041e4ec1ed38c20c24b6bbfb95fca82
+	source = https://github.com/oliik2013/misty-cli/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 322824f8bb6db0bd9e91c6f3da6a4d47c656a5cf2e77555a9917e7d36926e8e9
 
 pkgname = misty-cli
