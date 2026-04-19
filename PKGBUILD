@@ -1,5 +1,5 @@
 pkgname=mingw-w64-nauty
-pkgver=2.8.9
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="A program for computing automorphism groups of graphs and digraphs (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ depends=(mingw-w64-crt)
 makedepends=(mingw-w64-configure)
 options=(!strip !buildflags staticlibs)
 source=("${url}/nauty${pkgver//./_}.tar.gz")
-sha256sums=('c97ab42bf48796a86a598bce3e9269047ca2b32c14fc23e07208a244fe52c4ee')
+sha256sums=('9fc4edae04f88a0f5883985be3b39cf7f898fd6cc96e96b9ee25452743cc1b5b')
 #source=("http://users.cecs.anu.edu.au/~bdm/nauty/nauty2_8_9.tar.gz")
 
 
@@ -17,8 +17,9 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd nauty${pkgver//./_}
-  # popcnt check fails without wine
-  sed -i "6041,6072d" configure
+  # popcnt,lzcnt checks fail in cross-compile mode
+  sed -i "6383,6435d" configure
+  sed -i "6594,6642d" configure
 
   cd "$srcdir"
   for _arch in ${_architectures}; do
@@ -31,6 +32,7 @@ build() {
   for _arch in ${_architectures}; do
     pushd build-${_arch}
     ${_arch}-configure --enable-generic .
+    sed -i "s|#define HAVE_HWLZCNT|#define HAVE_HWLZCNT 0|g" nauty.h
     make
     popd
   done
