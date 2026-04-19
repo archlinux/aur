@@ -16,6 +16,7 @@ license=('LicenseRef-Babble Software Distribution License 1.0')
 #     git describe --tags --abbrev=0 main | tr '-' '_'
 # }
 makedepends=(
+    git
     python-build
     python-installer
     python-wheel
