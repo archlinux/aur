@@ -1,13 +1,13 @@
 pkgbase = r-tuner
 	pkgdesc = Analysis of Music and Speech
-	pkgver = 1.4.6
-	pkgrel = 1
+	pkgver = 1.4.7
+	pkgrel = 2
 	url = https://cran.r-project.org/package=tuneR
 	arch = any
 	license = GPL2
 	depends = r>=3.0
 	depends = r-signal
-	source = https://cran.r-project.org/src/contrib/tuneR_1.4.6.tar.gz
-	sha256sums = c5441fb56dc84cafb6aa6b47d83839da1e1a4e5b19eafbb63b268d1a660647d0
+	source = https://cran.r-project.org/src/contrib/tuneR_1.4.7.tar.gz
+	sha256sums = 364154a0440953327eeefd2f3c72c9f819944cbb52b6e7497958882ca0b6960a
 
 pkgname = r-tuner
