@@ -1,5 +1,6 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
-# Maintainer: Alex Branham <branham@utexas.edu>
+# Maintainer: Christos Longros <chris.longros@gmail.com>
+# Contributor: peippo <christoph+aur@christophfink.com>
+# Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=debugme
 _cranver=1.2.0
