@@ -1,16 +1,17 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
-_cranname=TraMineR
-_cranver=2.2-4
-_updatedate=2022-06-25
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+# Maintainer: Christos Longros <chris.longros@gmail.com>
+# Contributor: Robert Greener <me@r0bert.dev>
+_pkgname=TraMineR
+_pkgver=2.2-13
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=3
 pkgdesc="Trajectory Miner: a Toolbox for Exploring and Rendering Sequences"
 arch=(x86_64)
-url="https://cran.r-project.org/package=${_cranname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=(GPL)
 depends=(
 	r
+	r-vegan
 	r-cluster
 	r-colorspace
 	r-rcolorbrewer
@@ -22,16 +23,16 @@ optdepends=(
 	r-xtable
 	r-traminerextras
 )
-source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('b69ef547443453f1d814d09141f7b9be1dd09ef374cc50771d1a8d3f0815e1a7')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('6fe782c8c67e85465b2aa84fdc610f7bbb90667ec9f35fb5a90623013b241ec8')
 
 build() {
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
 
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
 

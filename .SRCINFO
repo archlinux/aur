@@ -1,11 +1,12 @@
 pkgbase = r-traminer
 	pkgdesc = Trajectory Miner: a Toolbox for Exploring and Rendering Sequences
-	pkgver = 2.2.4
-	pkgrel = 1
+	pkgver = 2.2.13
+	pkgrel = 3
 	url = https://cran.r-project.org/package=TraMineR
 	arch = x86_64
 	license = GPL
 	depends = r
+	depends = r-vegan
 	depends = r-cluster
 	depends = r-colorspace
 	depends = r-rcolorbrewer
@@ -14,7 +15,7 @@ pkgbase = r-traminer
 	depends = r-boot
 	optdepends = r-xtable
 	optdepends = r-traminerextras
-	source = https://cran.microsoft.com/snapshot/2022-06-25/src/contrib/TraMineR_2.2-4.tar.gz
-	sha256sums = b69ef547443453f1d814d09141f7b9be1dd09ef374cc50771d1a8d3f0815e1a7
+	source = https://cran.r-project.org/src/contrib/TraMineR_2.2-13.tar.gz
+	sha256sums = 6fe782c8c67e85465b2aa84fdc610f7bbb90667ec9f35fb5a90623013b241ec8
 
 pkgname = r-traminer
