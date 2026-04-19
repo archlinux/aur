@@ -1,6 +1,6 @@
 #Maintainer: Suletta Mercury <hazfen@proton.me>
 pkgname=hjonkcli
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="cli client for hjonk.me"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('gcc' 'pkgconf')
 depends=('curl' 'cjson')
 options=('!debug' 'strip')
 source=("hjonk.c")
-sha256sums=('42a4c1cbab8b96ebd0f52dc29d7eaa579c30d1f94d31cd42affcadade6de4ad4')
+sha256sums=('b7aa84b1beafad2e94814d85dfc3bbf0bc4eaffb57286242b8cf15eaa0b9f7ca')
 
 build () {
 	gcc hjonk.c -o hjonkcli \

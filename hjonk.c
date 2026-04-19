@@ -128,9 +128,9 @@ void print_posts(cJSON *arr) {
         printf("nothing here.\n");
         return;
     }
-    cJSON *item;
-    cJSON_ArrayForEach(item, arr)
-        print_post(item);
+    int n = cJSON_GetArraySize(arr);
+    for (int i = n - 1; i >= 0; i--)
+        print_post(cJSON_GetArrayItem(arr, i));
 }
 
 void cmd_auth(const char *token) {
