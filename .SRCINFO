@@ -1,0 +1,20 @@
+pkgbase = keyviz-zh-bin
+	pkgdesc = Chinese-localized fork of Keyviz (prebuilt binary)
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/zetaloop/keyviz
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	provides = keyviz
+	conflicts = keyviz
+	conflicts = keyviz-bin
+	conflicts = keyviz-cn-bin
+	noextract = keyviz_2.1.0_amd64.deb
+	options = !strip
+	source = keyviz_2.1.0_amd64.deb::https://github.com/zetaloop/keyviz/releases/download/v2.1.0/keyviz_2.1.0_amd64.deb
+	sha256sums = 08db31926afb45cd6fde0aa29428ad621513825050cc44ccd2e5cf9de5a607f7
+
+pkgname = keyviz-zh-bin
