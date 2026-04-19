@@ -1,3 +1,4 @@
+# Maintainer: Christos Longros <chris.longros@gmail.com>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=editData
