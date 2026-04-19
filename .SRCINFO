@@ -1,17 +1,17 @@
 pkgbase = koreader-bin
 	pkgdesc = An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats, running on Cervantes, Kindle, Kobo, PocketBook and Android devices
 	pkgver = 2026.03
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/koreader/koreader/
 	arch = x86_64
 	arch = aarch64
 	license = AGPL3
-	depends = sdl2
-	depends = fonts-noto-hinted
-	depends = fonts-droid-fallback
-	source_x86_64 = https://github.com/koreader/koreader/releases/download/v2026.03/koreader-2026.03-amd64.deb
-	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/koreader/koreader/releases/download/v2026.03/koreader-2026.03-arm64.deb
-	sha256sums_aarch64 = SKIP
+	depends = sdl3
+	depends = noto-fonts
+	depends = ttf-droid
+	source_x86_64 = https://github.com/koreader/koreader/releases/download/v2026.03/koreader_2026.03-1_amd64.deb
+	sha256sums_x86_64 = 3a106ede88fd22a3662b99e00a45efb9c550ab9689a2139b80436d8dd0dc41c1
+	source_aarch64 = https://github.com/koreader/koreader/releases/download/v2026.03/koreader_2026.03-1_arm64.deb
+	sha256sums_aarch64 = e2e96931761c202439ffd4341869fd9646d6d27b7321f507439c284c08725cb5
 
 pkgname = koreader-bin
