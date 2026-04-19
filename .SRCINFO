@@ -19,6 +19,8 @@ pkgbase = openboard
 	depends = quazip-qt6
 	depends = poppler
 	source = openboard-1.7.7.tar.gz::https://github.com/OpenBoard-org/OpenBoard/archive/v1.7.7.tar.gz
+	source = openboard-support-poppler-26.04.patch::https://github.com/OpenBoard-org/OpenBoard/commit/b68a0bed3caa5dfcfb9bbbb72cc8d78d95533eb3.patch
 	sha256sums = 2ea0989b8c304f64a124c09eb5e3cc71808c395f0942a26d5a3f79d4125df969
+	sha256sums = 0056e6ec3ba5b7f96498e426bb15cde9908047280f20b285833e86b57c78477e
 
 pkgname = openboard

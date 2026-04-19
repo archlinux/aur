@@ -22,8 +22,15 @@ depends+=('openssl' 'ffmpeg')
 depends+=(quazip-${qt})  #drop internal quazip and use system one.
 depends+=(poppler) #replace internal xpdf with poppler and drop freetype/xpdf from deps
 makedepends=('cmake' ${qt}-tools)
-source=("openboard-${pkgver}.tar.gz::https://github.com/OpenBoard-org/OpenBoard/archive/v${pkgver}.tar.gz")
-sha256sums=('2ea0989b8c304f64a124c09eb5e3cc71808c395f0942a26d5a3f79d4125df969')
+source=("openboard-${pkgver}.tar.gz::https://github.com/OpenBoard-org/OpenBoard/archive/v${pkgver}.tar.gz"
+        "openboard-support-poppler-26.04.patch::https://github.com/OpenBoard-org/OpenBoard/commit/b68a0bed3caa5dfcfb9bbbb72cc8d78d95533eb3.patch")
+sha256sums=('2ea0989b8c304f64a124c09eb5e3cc71808c395f0942a26d5a3f79d4125df969'
+            '0056e6ec3ba5b7f96498e426bb15cde9908047280f20b285833e86b57c78477e')
+
+prepare() {
+  cd "$srcdir"/$_src_folder
+  patch -p1 -i ../openboard-support-poppler-26.04.patch
+}
 
 build() {
   cmake -B build -S "$srcdir"/$_src_folder \
