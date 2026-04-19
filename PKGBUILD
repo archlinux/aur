@@ -1,8 +1,9 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
+# Maintainer: Christos Longros <chris.longros@gmail.com>
+# Contributor: Robert Greener <me@r0bert.dev>
 # Contributor: haha662 <haha662 at outlook dot com>
 
 _cranname=blogdown
-_cranver=1.10
+_cranver=1.23
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +15,7 @@ depends=("r" "hugo" "pandoc" "r-rmarkdown>=2.8" "r-bookdown>=0.22" "r-jsonlite" 
 # makedepends=()
 optdepends=("r-testit" "r-shiny" "r-miniui" "r-stringr" "r-rstudioapi" "r-processx" "r-whoami" )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha512sums=("d179ab1d326c8bd28352c41b4d4e7bd999e474c87f539fec2bde73ebd03bb6a46555a5556572d723fecf4bfb6ba65b99aed4a15c9e6f269810675aa6df55fcba")
+sha512sums=("15f1f15fd62f84e60d4dcd58f6eb04e0a22c3c16f1eebb078d6b90387ce9ceb79daf618ba10cdf7db0dde08c156cf5a9e2f5ab91005c4ddd4838e622a0125ffe")
 
 build() {
   cd "${srcdir}"

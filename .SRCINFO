@@ -1,6 +1,6 @@
 pkgbase = r-blogdown
 	pkgdesc = Create Blogs and Websites with R Markdown
-	pkgver = 1.10
+	pkgver = 1.23
 	pkgrel = 1
 	url = https://cran.r-project.org/package=blogdown
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-blogdown
 	optdepends = r-rstudioapi
 	optdepends = r-processx
 	optdepends = r-whoami
-	source = https://cran.r-project.org/src/contrib/blogdown_1.10.tar.gz
-	sha512sums = d179ab1d326c8bd28352c41b4d4e7bd999e474c87f539fec2bde73ebd03bb6a46555a5556572d723fecf4bfb6ba65b99aed4a15c9e6f269810675aa6df55fcba
+	source = https://cran.r-project.org/src/contrib/blogdown_1.23.tar.gz
+	sha512sums = 15f1f15fd62f84e60d4dcd58f6eb04e0a22c3c16f1eebb078d6b90387ce9ceb79daf618ba10cdf7db0dde08c156cf5a9e2f5ab91005c4ddd4838e622a0125ffe
 
 pkgname = r-blogdown
