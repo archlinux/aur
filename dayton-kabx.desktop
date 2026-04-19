@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Dayton Audio KABX
+Comment=DSP Software für KAB Boards
+Exec=dayton-kabx
+Icon=wine
+Terminal=false
+Categories=Settings;HardwareSettings;

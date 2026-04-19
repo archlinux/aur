@@ -1,0 +1,8 @@
+# Dayton Audio / Wondom USB-Programmers
+# Wir fügen SYMLINK+="dayton_kabx" hinzu, damit der Name immer gleich bleibt.
+
+# Version 1: Silicon Labs CP210x
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="dayton_kabx", MODE="0666"
+
+# Version 2: QinHeng Electronics CH340
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="dayton_kabx", MODE="0666"
