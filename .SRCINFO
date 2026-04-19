@@ -1,6 +1,6 @@
-pkgbase = cava-bg
+pkgbase = cava-bg-bin
 	pkgdesc = Audio visualizer for Wayland
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/leriart/cava-bg
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cava-bg
 	depends = wayland
 	provides = cava-bg
 	conflicts = cava-bg
-	source = cava-bg-0.2.0.tar.gz::https://github.com/leriart/cava-bg/releases/download/0.2.0/cava-bg-0.2.0-x86_64.tar.gz
-	sha256sums = caf8aaf7fad83ba17dde734388eedf1bceb0b70c62d82b39f22ba2588ececc75
+	source = https://github.com/leriart/cava-bg/releases/download/v0.2.1/cava-bg-0.2.1-x86_64.tar.gz
+	sha256sums = a2542b5a60418adc9cb29183662cc9322b57b675754e276ec047d0eaa4cf37b2
 
-pkgname = cava-bg
+pkgname = cava-bg-bin
