@@ -1,13 +1,13 @@
 pkgbase = spr-bin
 	pkgdesc = Stacked Pull Requests on GitHub
-	pkgver = 0.17.4
+	pkgver = 0.17.5
 	pkgrel = 1
 	url = https://github.com/ejoffe/spr
 	arch = x86_64
 	license = MIT
 	depends = git
 	provides = spr
-	source = spr-bin-0.17.4.tar.gz::https://github.com/ejoffe/spr/releases/download/v0.17.4/spr_linux_x86_64.tar.gz
-	sha256sums = fac7359721e58d2037029e02af599a09d9f0a5d10dd764e47e80ef6ab7d6db88
+	source = spr-bin-0.17.5.tar.gz::https://github.com/ejoffe/spr/releases/download/v0.17.5/spr_linux_x86_64.tar.gz
+	sha256sums = c1731371d2ec6bec7f0e4fa3fb78ae1a808e6c91590be06a1caab883c8519410
 
 pkgname = spr-bin
