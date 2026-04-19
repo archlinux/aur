@@ -1,4 +1,5 @@
 # Maintainer: Dave Daynard <nardholio at gmail dot com>
+# Contributor: Andrey Vihrov <andrey.vihrov at gmail.com>
 # Contributor: megadriver <megadriver at gmx dot com>
 # Based on clearlooks-phenix-gtk-theme-git, also in the AUR
 
