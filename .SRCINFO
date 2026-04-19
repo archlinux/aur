@@ -1,0 +1,16 @@
+pkgbase = skills-manager-bin
+	pkgdesc = A lightweight desktop app to manage, sync, and organize AI agent skills across 15+ coding tools — Cursor, Claude Code, Codex, Copilot, and more.
+	pkgver = 1.14.1
+	pkgrel = 1
+	url = https://github.com/xingkongliang/skills-manager
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = xz
+	provides = skills-manager
+	conflicts = skills-manager
+	source_x86_64 = https://github.com/xingkongliang/skills-manager/releases/download/v1.14.1/skills-manager_1.14.1_amd64.deb
+	b2sums_x86_64 = 6e7e46658cf41dc2854cdc5a5d047a674a4fefcaabf57c83ae64d10dc48a1b4aefa8e2b96da3238503eb23bdd5d0a38594c97b87ec0ac3eeda3ac70f01949ab0
+
+pkgname = skills-manager-bin
