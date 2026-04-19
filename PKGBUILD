@@ -13,7 +13,7 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1aee810c2765ac925d1a3c5e21c1072b4420e2e430a6fcd2debb65287a31e64c')
+sha256sums=('00fedbbfd951ae3e8f599b4a42f5691ffa1d652b533c4dbcadcaeb0c84ecaa04')
 
 prepare() {
     cd "${pkgname}-${pkgver}"

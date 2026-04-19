@@ -11,6 +11,6 @@ pkgbase = codexbar-tui
 	depends = glibc
 	optdepends = hyprland: for the Omarchy floating-window hotkey (codexbar-tui-setup-omarchy)
 	source = codexbar-tui-0.1.1.tar.gz::https://github.com/Zeus-Deus/codexbar-tui/archive/v0.1.1.tar.gz
-	sha256sums = 1aee810c2765ac925d1a3c5e21c1072b4420e2e430a6fcd2debb65287a31e64c
+	sha256sums = 00fedbbfd951ae3e8f599b4a42f5691ffa1d652b533c4dbcadcaeb0c84ecaa04
 
 pkgname = codexbar-tui
