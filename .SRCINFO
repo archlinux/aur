@@ -1,7 +1,7 @@
 pkgbase = r-gtfsio
 	pkgdesc = Read and Write General Transit Feed Specification (GTFS) Files
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=gtfsio
 	arch = any
 	license = MIT
