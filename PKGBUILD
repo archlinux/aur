@@ -2,7 +2,7 @@
 shopt -s extglob
 pkgname=pinta-appimage
 pkgver=3.1.1_2
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple GTK Paint Program (Unofficial AppImage)"
 arch=('x86_64')
 url='https://github.com/pkgforge-dev/Pinta-AppImage'
@@ -38,6 +38,7 @@ package() {
     "$pkgdir/opt/pinta/bin/path-mapping-hardcoded.hook" \
     "$pkgdir/opt/pinta/bin/self-updater.bg.hook" \
     "$pkgdir/opt/pinta/shared/bin" \
+    "$pkgdir/opt/pinta/shared/lib/"!(pinta) \
     "$pkgdir/opt/pinta/share/"!(icons)
 
   install -Dm644 com.github.PintaProject.Pinta.desktop "$pkgdir/usr/share/applications/com.github.PintaProject.Pinta.desktop"
