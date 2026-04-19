@@ -1,8 +1,10 @@
 # Maintainer: Muhammed Emin Akalan <muhammedeminakalan@akalan.dev>
 
 pkgname=nocturne
+_name=Nocturne
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
+
 pkgdesc="Bring your music library together"
 arch=('any')
 url="https://github.com/Jeffser/Nocturne"
@@ -23,18 +25,18 @@ makedepends=(
   'meson'
 )
 
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/Jeffser/Nocturne/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Jeffser/$_name/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('debdda29b1fb81d98769419d8349a8b0520b9c921649f06325c57eb9060b5424')
 
 build() {
-  cd "Nocturne-$pkgver"
+  cd "$_name-$pkgver"
   
   arch-meson build
   meson compile -C build
 }
 
 package() {
-  cd "Nocturne-$pkgver"
+  cd "$_name-$pkgver"
   
   DESTDIR="$pkgdir" meson install -C build
 }
