@@ -1,7 +1,7 @@
 # Maintainer: Emma CHRISTOPHE <jean.michel.lesatanique@gmail.com>
 pkgname=crcl-select
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Circle selection utility with Eww widgets"
 arch=('x86_64')
 url="https://github.com/Pat8998/crcl-select/"
