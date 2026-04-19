@@ -1,6 +1,6 @@
 # Maintainer: Ali Abdelwahab <aliabdoxd14@gmail.com>
 pkgname=ani-stream
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="A lightweight CLI tool to stream and download anime from the terminal"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('yt-dlp: for HLS stream downloads'
             'aria2: for faster downloads'
             'rofi: for rofi-based menu selection'
             'ani-skip: for skipping intros')
-source=("git+${url}.git#tag=v${pkgver}")
+source=("git+${url}.git#branch=main")
 sha256sums=('SKIP')
 
 package() {
