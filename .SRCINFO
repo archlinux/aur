@@ -1,0 +1,17 @@
+pkgbase = sweet-cursors-git
+	pkgdesc = Sweet cursors KDE theme
+	pkgver = r445.1d92ac7
+	pkgrel = 1
+	url = https://github.com/Gigas002/Sweet
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
+	provides = Sweet-cursors=r445.1d92ac7
+	conflicts = Sweet-cursors
+	options = !strip
+	source = Sweet::git+https://github.com/Gigas002/Sweet.git#branch=cursors
+	sha256sums = SKIP
+
+pkgname = sweet-cursors-git
