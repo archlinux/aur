@@ -66,7 +66,7 @@ build() {
   cd "${pkgname}-${_tagver}"
 
   # vite-plugin-tailwindcss uses the ignore package which walks up the tree to read .gitignore files. Unless it finds .git directory, it keeps going up until it finds ArchLinux Package's own .gitignore, Which ignores the whole src directory.This causes the resulting css of the dashboard to be almost empty. Creating an empty .git directory solves the problem.
-  [! -d .git] && mkdir .git
+  [ ! -d .git ] && mkdir .git
 
   # Install Node.js dependencies
   [ -f "package.json" ] && npm install
