@@ -1,0 +1,38 @@
+pkgbase = r-rsconnect
+	pkgdesc = Deploy Docs, Apps, and APIs to 'Posit Connect', 'shinyapps.io', and 'RPubs'
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rsconnect
+	arch = any
+	license = GPL-2.0-only
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-cli
+	depends = r-curl
+	depends = r-digest
+	depends = r-httr2
+	depends = r-jsonlite
+	depends = r-lifecycle
+	depends = r-openssl>=2.0.0
+	depends = r-pki
+	depends = r-packrat>=0.6
+	depends = r-renv>=1.0.0
+	depends = r-rlang>=1.0.0
+	depends = r-rstudioapi>=0.18.0
+	depends = r-snowflakeauth
+	depends = r-yaml>=2.1.5
+	optdepends = r-biobase
+	optdepends = r-biocmanager
+	optdepends = r-knitr
+	optdepends = r-plumber>=0.3.2
+	optdepends = r-quarto
+	optdepends = r-reticulate
+	optdepends = r-rmarkdown>=1.1
+	optdepends = r-shiny
+	optdepends = r-testthat>=3.1.9
+	optdepends = r-webfakes
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/rsconnect_1.8.0.tar.gz
+	sha256sums = 4dc571860a22183f66c0e8e100f5ca776c9b243b3b5d13ffdd1a0343531eec11
+
+pkgname = r-rsconnect
