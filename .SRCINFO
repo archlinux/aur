@@ -1,0 +1,20 @@
+pkgbase = tonelib-detuner-bin
+	pkgdesc = ToneLib Detuner – Flexible and Simple Tool for High-quality Pitch Shifting
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://tonelib.net/plugins/tl-detuner.html
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = glib2
+	depends = desktop-file-utils
+	depends = alsa-lib
+	depends = harfbuzz
+	depends = fribidi
+	depends = pango
+	depends = freetype2
+	optdepends = jack: JACK output
+	source = tonelib-detuner-bin-1.1.0.deb::https://tonelib.net/download/ToneLib-Detuner-amd64.deb
+	sha256sums = 5a0e48a8276736670679f87c7cf740c4c2a268a873fdebee71979a07e2e969e6
+
+pkgname = tonelib-detuner-bin
