@@ -8,8 +8,8 @@ pkgname=(
   mssqldef
   psqldef
 )
-pkgver=3.11.0
-pkgrel=3
+pkgver=3.11.1
+pkgrel=1
 pkgdesc='Idempotent schema management for MySQL, PostgreSQL, SQLite, and SQL Server'
 arch=(x86_64 aarch64)
 url='https://github.com/sqldef/sqldef'
@@ -19,7 +19,7 @@ depends=(glibc)
 makedepends=('go')
 options=(!lto)
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('be2e152c220b1eb96fc3df393609829aed9c61b0991e4a32f21c7b97538ebaee')
+sha256sums=('22f92fa2645e4095a1d3a4886ed236277c3655eee2408c243ac2139611a1b069')
 
 prepare() {
   cd "$pkgbase-$pkgver"
@@ -38,7 +38,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   for _bin in "${pkgname[@]}"; do
-	  echo "Building $_bin"
+    echo "Building $_bin"
     go build -o "build/$_bin" "cmd/$_bin/$_bin.go"
   done
 
