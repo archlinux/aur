@@ -7,12 +7,11 @@ pkgdesc='Chatterino2 fork with support for 7tv; Patched for native QT & Kvantum 
 url="https://github.com/SevenTV/chatterino7"
 license=('MIT')
 arch=('x86_64')
-
 depends=(
+  'boost-libs'
   'libavif'
   'libnotify'
   'openssl'
-  'qt6-5compat'
   'qt6-base'
   'qt6-imageformats'
   'qt6-svg'
@@ -23,14 +22,13 @@ makedepends=(
   'cmake'
   'expected-lite'
   'git'
-  'ninja'
+  'qt6-tools'
   'rapidjson'
 )
 optdepends=(
   'streamlink: For piping streams to video players'
   'qt6-wayland: For Wayland support'
 )
-
 provides=('chatterino')
 conflicts=('chatterino')
 
