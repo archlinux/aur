@@ -2,7 +2,7 @@
 # Contributor: Jacqueline Fisher <jcfisher@reality-overwritten.net>
 pkgname=postybirb
 _pkgname=PostyBirb
-pkgver=4.0.27
+pkgver=4.0.28
 _electronversion=35
 _nodeversion=22
 pkgrel=1
