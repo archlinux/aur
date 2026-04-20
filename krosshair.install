@@ -1,0 +1,25 @@
+post_install() {
+    echo ""
+    echo "==> krosshair installed successfully!"
+    echo ""
+    echo "==> Getting Started:"
+    echo ""
+    echo "    KROSSHAIR=1 your-game"
+    echo ""
+    echo "    For Steam games, add to launch options:"
+    echo "    KROSSHAIR=1 %command%"
+    echo ""
+    echo "==> crosshair-maker integration:"
+    echo "    If crosshair-maker is installed, your currently selected"
+    echo "    crosshair is used automatically. Override with:"
+    echo "    export KROSSHAIR_IMG=/path/to/crosshair.png"
+    echo ""
+    echo "==> For more info: https://github.com/krob64/krosshair"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> krosshair upgraded successfully!"
+    echo ""
+}
