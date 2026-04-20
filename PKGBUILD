@@ -1,6 +1,6 @@
 # Maintainer: gfrank227 [at] gmail [dot] com
 pkgname=nordvpn-gui
-pkgver=4.5.0
+pkgver=4.6.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc='GUI for NordVPN'
@@ -13,7 +13,7 @@ install=daemon_restart.install
 source=("https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/${pkgver}.tar.gz"
 		"nordvpn-gui.desktop"
 		"daemon_restart.install")
-sha256sums=('c06567edbba523eaba3e35949c617e529f26f7f84b70353136b09caa4d833ca3'
+sha256sums=('3097e4816e40bef23b35afea352a18bcbeb1d0a0a7c6771d5df0689d8b06551c'
             'bce0edf1b5130899b7621f0de8355f0c6fa07374957ef893a5f5065fd9c98952'
             'b3bc3b4519769cc9c78258b16eb44765ddd8168951997d8bafdc7b8fcb73d868')
 
