@@ -1,41 +1,72 @@
-# Maintainer: c3rt1fiedd <slitchio0@gmail.com>
-# Contributor: rgeditv1
-pkgname=yt-dlp-gui
-pkgver=1.0.4
-pkgrel=1
-pkgdesc="A GUI for yt-dlp written in Python with customtkinter"
-arch=("x86_64")
-url="https://github.com/RgeditV1/yt-dlp-linux-gui"
-license=('MIT')
-depends=('python' 'python-customtkinter' 'python-pillow' 'python-plyer' 'yt-dlp')
-source=("https://github.com/RgeditV1/yt-dlp-linux-gui/releases/download/v${pkgver}/YTDLP-GUI-linux.zip"
-        "yt-dlp-gui.desktop")
 
-sha256sums=('ed8c5e5928f8eeea0804badbe0d5a6c6f9af471ef3e9061f6e55a64c57b32b1e'
-            'fb8f1b7733e46aa8f497038e275d7930d608edb05df87020adddfa17ec881d71')
+pkgname=yt-dlp-gui
+pkgver=r5.d6d0f8a
+pkgrel=1
+pkgdesc="A modern Qt6 GUI for yt-dlp"
+arch=('x86_64')
+url="https://github.com/enesehs/yt-dlp-gui"
+license=('MIT')
+
+depends=(
+  'python'
+  'pyside6'
+  'python-requests'
+  'yt-dlp'
+  'ffmpeg'
+)
+
+makedepends=('git')
+
+provides=('yt-dlp-gui')
+conflicts=('yt-dlp-gui')
+
+source=()
+sha256sums=()
+
+pkgver() {
+  cd "$startdir"
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    printf "r%s.%s" \
+      "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short HEAD)"
+  else
+    printf "r0.local"
+  fi
+}
 
 package() {
-  cd "${srcdir}"
+  cd "$startdir"
 
-  # Install the entire folder in /usr/share/yt-dlp-gui
-  install -d "${pkgdir}/usr/share/${pkgname}"
-  cp -r YTDLP-GUI-linux/* "${pkgdir}/usr/share/${pkgname}/"
+  if [[ ! -d src/ui ]]; then
+    echo "ERROR: src/ui not found in working tree."
+    exit 1
+  fi
 
-  # Create wrapper in /usr/bin
-  install -d "${pkgdir}/usr/bin"
-  cat > "${pkgdir}/usr/bin/yt-dlp-gui" <<'EOF'
-#!/bin/sh
-# Export SSL certificates so that the binary can find them
-export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
-exec /usr/share/yt-dlp-gui/YTDLP "$@"
+  install -dm755 "$pkgdir/usr/share/yt-dlp-gui"
+  cp -r src assets main.py requirements.txt "$pkgdir/usr/share/yt-dlp-gui"
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/yt-dlp-gui" <<'EOF'
+#!/usr/bin/env bash
+exec /usr/bin/python /usr/share/yt-dlp-gui/main.py "$@"
 EOF
-  chmod +x "${pkgdir}/usr/bin/yt-dlp-gui"
 
-  # Install the .desktop
-  install -Dm644 yt-dlp-gui.desktop \
-    "${pkgdir}/usr/share/applications/yt-dlp-gui.desktop"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/yt-dlp-gui.desktop" <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=yt-dlp-gui
+Comment=GUI frontend for yt-dlp
+Exec=yt-dlp-gui
+Icon=/usr/share/pixmaps/yt-dlp-gui.ico
+Categories=AudioVideo;Network;
+Terminal=false
+StartupNotify=true
+EOF
 
-  # Install the icon from the img folder
-  install -Dm644 YTDLP-GUI-linux/img/icon.png \
-    "${pkgdir}/usr/share/pixmaps/yt-dlp-gui.png"
+  if [[ -f src/img/logo.ico ]]; then
+    install -Dm644 src/img/logo.ico "$pkgdir/usr/share/pixmaps/yt-dlp-gui.ico"
+  elif [[ -f assets/img/logo.ico ]]; then
+    install -Dm644 assets/img/logo.ico "$pkgdir/usr/share/pixmaps/yt-dlp-gui.ico"
+  else
+    echo "warning: logo.ico not found in src/img or assets/img"
+  fi
 }
