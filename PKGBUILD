@@ -1,7 +1,7 @@
 # Maintainer:  Dessa Simpson <dxs@k7dxs.net>
 # Contributor: Dessa Simpson <dxs@k7dxs.net>
 pkgname=pat-bin
-pkgver=0.17.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A modern Winlink client"
 arch=('i686' 'x86_64' 'armhf' 'armv6h')
@@ -17,10 +17,10 @@ source_i686=("https://github.com/la5nta/pat/releases/download/v${pkgver}/pat_${p
 source_x86_64=("https://github.com/la5nta/pat/releases/download/v${pkgver}/pat_${pkgver}_linux_amd64.deb")
 source_armhf=("https://github.com/la5nta/pat/releases/download/v${pkgver}/pat_${pkgver}_linux_armhf.deb")
 source_armv6h=("https://github.com/la5nta/pat/releases/download/v${pkgver}/pat_${pkgver}_linux_armhf.deb")
-sha512sums_i686=('5faa36e299e1a1b5d0e848256260e78411dacbf752f4ad65769936cc64d016b6254ccd868b573d7ad48ca484443795cfcf9c446e70b274411cbd393f6183b6ec')
-sha512sums_x86_64=('a971be876e7501b680c63a092f4b25df8ccd02f6a859d2d1eca1c7df2bb505d100a7c9acc5a5f3d172b968b0d3a4ec73aaaf723809c454f802b9023f6abc29fc')
-sha512sums_armhf=('44379f4dcea51d245cba129b68cd8a6d2d394463c8fe33bfc70371690f802198c73c170f1dde0912c7ec291a6abf8fd855616065d2b8f6041dd2fea84e467de7')
-sha512sums_armv6h=('44379f4dcea51d245cba129b68cd8a6d2d394463c8fe33bfc70371690f802198c73c170f1dde0912c7ec291a6abf8fd855616065d2b8f6041dd2fea84e467de7')
+sha512sums_i686=('e65d72b639565778a31974765f39fe29157669c5a870f09fb0c54b01ed053673c8a8bad7a447b23e97d34f90480c824b1ecf5d90646fb8914ad4cd7bdfb7abb1')
+sha512sums_x86_64=('4963afdb1f382ef06a29c5ea927059a4e6433594812492abbefa1453d2a938e4bedd2c4b7796c500ea2de13fdfa8794fd62951f51b90a11b8ac19ab2fcfaeef5')
+sha512sums_armhf=('95352b4b5aa8f7ccc8721047c78633a521989c982eb604095dd983ae6e5b4105ff736e36d2e93d4d6da14b8095615fc93ea1a5ff412ab828a519bc361a4de412')
+sha512sums_armv6h=('95352b4b5aa8f7ccc8721047c78633a521989c982eb604095dd983ae6e5b4105ff736e36d2e93d4d6da14b8095615fc93ea1a5ff412ab828a519bc361a4de412')
 
 package() {
 	# Extract package data
