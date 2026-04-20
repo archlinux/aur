@@ -15,12 +15,11 @@
 
 pkgname=python-mempalace
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='The highest-scoring AI memory system, with 30x context compression and a temporal knowledge graph.'
 arch=('any')
 url='https://github.com/milla-jovovich/mempalace'
 license=('MIT')
-# Changed to the virtual provider to let users choose their backend (CPU/CUDA/etc)
 depends=('python' 'python-onnxruntime')
 provides=('mempalace')
 conflicts=('mempalace')
@@ -43,16 +42,8 @@ package() {
     find "${pkgdir}${_dstvenv}/bin" -type f -exec \
         sed -i "s|${_srcvenv}|${_dstvenv}|g" {} +
 
-    # Patch ChromaDB
-    local _ef_file=$(find "${pkgdir}${_dstvenv}/lib" -name "onnx_mini_lm_l6_v2.py")
-    if [ -f "${_ef_file}" ]; then
-        sed -i '/"CoreMLExecutionProvider" in self._preferred_providers/,+2a \\        if (\            self._preferred_providers\            and "DnnlExecutionProvider" in self._preferred_providers\        ):\            # remove DnnlExecutionProvider from the list, it is broken in some Arch packages.\            self._preferred_providers.remove("DnnlExecutionProvider")' "${_ef_file}"
-    fi
-
-    # Improved wrapper to handle module-style calls if needed
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/mempalace" <<'WRAPPER'
 #!/bin/bash
-# Use the venv python to ensure deps are picked up
 exec /opt/mempalace/bin/python -m mempalace "$@"
 WRAPPER
 

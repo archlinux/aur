@@ -1,7 +1,7 @@
 pkgbase = python-mempalace
 	pkgdesc = The highest-scoring AI memory system, with 30x context compression and a temporal knowledge graph.
 	pkgver = 3.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/milla-jovovich/mempalace
 	arch = any
 	license = MIT
