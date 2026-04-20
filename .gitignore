@@ -1,0 +1,3 @@
+# AUR Git Ignore
+*.tar.gz
+*.orig

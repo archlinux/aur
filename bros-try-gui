@@ -1,0 +1,612 @@
+#!/usr/bin/env python3
+import tkinter as tk
+from tkinter import ttk, messagebox, filedialog
+import subprocess
+import threading
+import urllib.request
+import os
+import sys
+from pathlib import Path
+import json
+
+VERSION = "1.0.0"
+
+COLORS = {
+    'bg': '#0a0a0a',
+    'bg_secondary': '#141414',
+    'bg_tertiary': '#1a1a1a',
+    'fg': '#f0f0f0',
+    'fg_secondary': '#a0a0a0',
+    'fg_muted': '#606060',
+    'pink': '#e879f9',
+    'pink_light': '#f0abfc',
+    'pink_dark': '#c026d3',
+    'pink_glow': '#e879f933',
+    'border': '#2a2a2a',
+    'success': '#22c55e',
+    'warning': '#f59e0b',
+    'error': '#ef4444'
+}
+
+FONTS = {
+    'title': ('JetBrains Mono', 24, 'bold'),
+    'heading': ('JetBrains Mono', 14, 'bold'),
+    'body': ('Outfit', 11),
+    'body_bold': ('Outfit', 11, 'bold'),
+    'mono': ('JetBrains Mono', 10),
+    'small': ('Outfit', 9)
+}
+
+VERSIONS = {
+    "1.2.2": {
+        "date": "Nisan 2026",
+        "changelog": [
+            "Socket API send/recv iyileştirmeleri",
+            "ELF yükleme desteği",
+            "Page fault handler",
+            "Symlink desteği",
+            "RTL8139 ağ sürücüsü entegrasyonu"
+        ],
+        "status": "En son stabil sürüm"
+    },
+    "1.2.1": {
+        "date": "Mart 2026",
+        "changelog": [
+            "Versiyon güncellemesi",
+            "Shell komutları genişletildi",
+            "Hata düzeltmeleri"
+        ],
+        "status": "Kararlı sürüm"
+    },
+    "1.2.0": {
+        "date": "Şubat 2026",
+        "changelog": [
+            "TCP/IP stack tamamlandı",
+            "UDP ve ICMP desteği",
+            "Socket API eklendi",
+            "Ağ komutları (ping, netstat)"
+        ],
+        "status": "Kararlı sürüm"
+    },
+    "1.1.0": {
+        "date": "Ocak 2026",
+        "changelog": [
+            "İlk ağ stack sürümü",
+            "ARP protokolü",
+            "Basit socket desteği",
+            "Network init servisi"
+        ],
+        "status": "Eski sürüm"
+    },
+    "1.0.0": {
+        "date": "Aralık 2025",
+        "changelog": [
+            "İlk sürüm",
+            "no_std Rust çekirdek",
+            "DefneFS dosya sistemi",
+            "Temel shell komutları",
+            "Kullanıcı yönetimi"
+        ],
+        "status": "Orijinal sürüm"
+    }
+}
+
+class BrosTryApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Bros Try - Bros OS Virtual Machine")
+        self.root.geometry("900x700")
+        self.root.configure(bg=COLORS['bg'])
+        self.root.resizable(False, False)
+        
+        self.selected_version = tk.StringVar(value="1.2.2")
+        self.is_downloading = False
+        self.download_progress = 0
+        
+        self.setup_cache_dirs()
+        self.create_ui()
+        self.center_window()
+        
+    def setup_cache_dirs(self):
+        self.cache_dir = Path.home() / ".cache" / "bros-try"
+        self.iso_dir = self.cache_dir / "isos"
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
+        self.iso_dir.mkdir(parents=True, exist_ok=True)
+        
+    def center_window(self):
+        self.root.update_idletasks()
+        x = (self.root.winfo_screenwidth() // 2) - (self.root.winfo_width() // 2)
+        y = (self.root.winfo_screenheight() // 2) - (self.root.winfo_height() // 2)
+        self.root.geometry(f"+{x}+{y}")
+        
+    def create_ui(self):
+        main_container = tk.Frame(self.root, bg=COLORS['bg'])
+        main_container.pack(fill=tk.BOTH, expand=True, padx=30, pady=30)
+        
+        self.create_header(main_container)
+        self.create_version_selector(main_container)
+        self.create_vm_config(main_container)
+        self.create_action_buttons(main_container)
+        self.create_status_bar(main_container)
+        
+    def create_header(self, parent):
+        header = tk.Frame(parent, bg=COLORS['bg'])
+        header.pack(fill=tk.X, pady=(0, 25))
+        
+        logo_frame = tk.Frame(header, bg=COLORS['bg'])
+        logo_frame.pack(side=tk.LEFT)
+        
+        logo_text = tk.Label(
+            logo_frame,
+            text="██╗     ██╗   ██╗███╗   ███╗",
+            font=('Courier', 10),
+            fg=COLORS['pink'],
+            bg=COLORS['bg']
+        )
+        logo_text.pack(anchor=tk.W)
+        logo_text = tk.Label(
+            logo_frame,
+            text="██║     ██║   ██║████╗ ████║",
+            font=('Courier', 10),
+            fg=COLORS['pink'],
+            bg=COLORS['bg']
+        )
+        logo_text.pack(anchor=tk.W)
+        
+        title_frame = tk.Frame(header, bg=COLORS['bg'])
+        title_frame.pack(side=tk.LEFT, padx=(20, 0))
+        
+        tk.Label(
+            title_frame,
+            text="Bros Try",
+            font=FONTS['title'],
+            fg=COLORS['fg'],
+            bg=COLORS['bg']
+        ).pack(anchor=tk.W)
+        
+        tk.Label(
+            title_frame,
+            text="Bros OS Virtual Machine Launcher",
+            font=FONTS['small'],
+            fg=COLORS['fg_muted'],
+            bg=COLORS['bg']
+        ).pack(anchor=tk.W)
+        
+        version_label = tk.Label(
+            header,
+            text=f"v{VERSION}",
+            font=FONTS['mono'],
+            fg=COLORS['pink_dark'],
+            bg=COLORS['bg_tertiary'],
+            padx=12,
+            pady=6,
+            relief=tk.FLAT
+        )
+        version_label.pack(side=tk.RIGHT)
+        
+    def create_version_selector(self, parent):
+        selector_frame = tk.LabelFrame(
+            parent,
+            text="Bros Sürümü Seçin",
+            font=FONTS['heading'],
+            fg=COLORS['fg'],
+            bg=COLORS['bg'],
+            highlightthickness=0,
+            padx=20,
+            pady=15
+        )
+        selector_frame.pack(fill=tk.X, pady=(0, 20))
+        
+        version_frame = tk.Frame(selector_frame, bg=COLORS['bg'])
+        version_frame.pack(fill=tk.X)
+        
+        self.version_buttons = {}
+        for idx, (ver, info) in enumerate(VERSIONS.items()):
+            btn = tk.Radiobutton(
+                version_frame,
+                text=f"v{ver}",
+                variable=self.selected_version,
+                value=ver,
+                font=FONTS['body_bold'],
+                fg=COLORS['fg'],
+                bg=COLORS['bg'],
+                activebackground=COLORS['bg'],
+                activeforeground=COLORS['pink'],
+                selectcolor=COLORS['bg_tertiary'],
+                relief=tk.FLAT,
+                padx=20,
+                pady=12,
+                command=lambda v=ver: self.on_version_select(v)
+            )
+            btn.pack(side=tk.LEFT, padx=(0, 10))
+            self.version_buttons[ver] = btn
+            
+        selected = self.selected_version.get()
+        self.version_buttons[selected].configure(
+            fg=COLORS['pink'],
+            relief=tk.RAISED,
+            highlightthickness=1,
+            highlightbackground=COLORS['pink'],
+            highlightcolor=COLORS['pink']
+        )
+        
+        info_frame = tk.Frame(selector_frame, bg=COLORS['bg_tertiary'], padx=15, pady=15)
+        info_frame.pack(fill=tk.X, pady=(15, 0))
+        
+        self.changelog_label = tk.Label(
+            info_frame,
+            text="",
+            font=FONTS['small'],
+            fg=COLORS['fg_secondary'],
+            bg=COLORS['bg_tertiary'],
+            justify=tk.LEFT,
+            anchor=tk.W
+        )
+        self.changelog_label.pack(fill=tk.X)
+        
+        self.update_changelog(selected)
+        
+    def on_version_select(self, version):
+        for ver, btn in self.version_buttons.items():
+            if ver == version:
+                btn.configure(
+                    fg=COLORS['pink'],
+                    relief=tk.RAISED,
+                    highlightthickness=1,
+                    highlightbackground=COLORS['pink'],
+                    highlightcolor=COLORS['pink']
+                )
+            else:
+                btn.configure(
+                    fg=COLORS['fg'],
+                    relief=tk.FLAT,
+                    highlightthickness=0
+                )
+        self.update_changelog(version)
+        
+    def update_changelog(self, version):
+        info = VERSIONS[version]
+        changelog_text = f"📅 {info['date']}  •  {info['status']}\n\n"
+        changelog_text += "📝 Değişiklikler:\n"
+        for item in info['changelog']:
+            changelog_text += f"   • {item}\n"
+        self.changelog_label.configure(text=changelog_text.strip())
+        
+    def create_vm_config(self, parent):
+        config_frame = tk.LabelFrame(
+            parent,
+            text="Sanal Makine Ayarları",
+            font=FONTS['heading'],
+            fg=COLORS['fg'],
+            bg=COLORS['bg'],
+            highlightthickness=0,
+            padx=20,
+            pady=15
+        )
+        config_frame.pack(fill=tk.X, pady=(0, 20))
+        
+        row1 = tk.Frame(config_frame, bg=COLORS['bg'])
+        row1.pack(fill=tk.X, pady=(0, 10))
+        
+        tk.Label(
+            row1,
+            text="RAM:",
+            font=FONTS['body'],
+            fg=COLORS['fg_secondary'],
+            bg=COLORS['bg'],
+            width=12,
+            anchor=tk.W
+        ).pack(side=tk.LEFT)
+        
+        self.ram_var = tk.StringVar(value="512M")
+        ram_combo = ttk.Combobox(
+            row1,
+            textvariable=self.ram_var,
+            values=["256M", "512M", "768M", "1024M", "1536M", "2048M"],
+            font=FONTS['body'],
+            state="readonly",
+            width=15
+        )
+        ram_combo.pack(side=tk.LEFT)
+        self.style_combobox(ram_combo)
+        
+        tk.Label(
+            row1,
+            text="CPU:",
+            font=FONTS['body'],
+            fg=COLORS['fg_secondary'],
+            bg=COLORS['bg'],
+            width=12,
+            anchor=tk.W
+        ).pack(side=tk.LEFT, padx=(30, 0))
+        
+        self.cpu_var = tk.IntVar(value=2)
+        cpu_spin = tk.Spinbox(
+            row1,
+            from_=1,
+            to=8,
+            textvariable=self.cpu_var,
+            font=FONTS['body'],
+            width=15,
+            bg=COLORS['bg_tertiary'],
+            fg=COLORS['fg'],
+            buttonbackground=COLORS['bg_secondary'],
+            highlightbackground=COLORS['border'],
+            relief=tk.FLAT
+        )
+        cpu_spin.pack(side=tk.LEFT)
+        
+        row2 = tk.Frame(config_frame, bg=COLORS['bg'])
+        row2.pack(fill=tk.X, pady=(0, 10))
+        
+        tk.Label(
+            row2,
+            text="Ekran:",
+            font=FONTS['body'],
+            fg=COLORS['fg_secondary'],
+            bg=COLORS['bg'],
+            width=12,
+            anchor=tk.W
+        ).pack(side=tk.LEFT)
+        
+        self.display_var = tk.StringVar(value="GTK")
+        display_combo = ttk.Combobox(
+            row2,
+            textvariable=self.display_var,
+            values=["GTK", "SDL", "Curses", "VNC", "None"],
+            font=FONTS['body'],
+            state="readonly",
+            width=15
+        )
+        display_combo.pack(side=tk.LEFT)
+        self.style_combobox(display_combo)
+        
+        self.network_var = tk.BooleanVar(value=True)
+        network_check = tk.Checkbutton(
+            row2,
+            text="Ağ Etkin (NAT + Port Yönlendirme)",
+            variable=self.network_var,
+            font=FONTS['body'],
+            fg=COLORS['fg'],
+            bg=COLORS['bg'],
+            activebackground=COLORS['bg'],
+            activeforeground=COLORS['pink'],
+            selectcolor=COLORS['bg_tertiary'],
+            padx=10
+        )
+        network_check.pack(side=tk.LEFT, padx=(30, 0))
+        
+    def style_combobox(self, combo):
+        style = ttk.Style()
+        style.theme_use('clam')
+        style.configure(
+            'TCombobox',
+            fieldbackground=COLORS['bg_tertiary'],
+            background=COLORS['bg_secondary'],
+            foreground=COLORS['fg'],
+            bordercolor=COLORS['border'],
+            lightcolor=COLORS['bg_tertiary'],
+            darkcolor=COLORS['bg_tertiary'],
+            arrowcolor=COLORS['pink']
+        )
+        
+    def create_action_buttons(self, parent):
+        button_frame = tk.Frame(parent, bg=COLORS['bg'])
+        button_frame.pack(fill=tk.X, pady=(0, 20))
+        
+        self.start_btn = tk.Button(
+            button_frame,
+            text="▶  Bros OS Başlat",
+            font=FONTS['body_bold'],
+            fg=COLORS['bg'],
+            bg=COLORS['pink'],
+            activebackground=COLORS['pink_light'],
+            activeforeground=COLORS['bg'],
+            relief=tk.FLAT,
+            padx=30,
+            pady=15,
+            cursor='hand2',
+            command=self.start_vm
+        )
+        self.start_btn.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 10))
+        self.start_btn.bind('<Enter>', lambda e: self.start_btn.configure(bg=COLORS['pink_light']))
+        self.start_btn.bind('<Leave>', lambda e: self.start_btn.configure(bg=COLORS['pink']))
+        
+        download_btn = tk.Button(
+            button_frame,
+            text="⬇  ISO İndir",
+            font=FONTS['body_bold'],
+            fg=COLORS['fg'],
+            bg=COLORS['bg_tertiary'],
+            activebackground=COLORS['bg_secondary'],
+            activeforeground=COLORS['fg'],
+            relief=tk.FLAT,
+            padx=20,
+            pady=15,
+            cursor='hand2',
+            command=self.download_iso
+        )
+        download_btn.pack(side=tk.LEFT)
+        download_btn.bind('<Enter>', lambda e: download_btn.configure(bg=COLORS['border']))
+        download_btn.bind('<Leave>', lambda e: download_btn.configure(bg=COLORS['bg_tertiary']))
+        
+    def create_status_bar(self, parent):
+        status_frame = tk.Frame(parent, bg=COLORS['bg_tertiary'], padx=15, pady=10)
+        status_frame.pack(fill=tk.X)
+        
+        self.status_label = tk.Label(
+            status_frame,
+            text="Hazır",
+            font=FONTS['small'],
+            fg=COLORS['fg_secondary'],
+            bg=COLORS['bg_tertiary']
+        )
+        self.status_label.pack(side=tk.LEFT)
+        
+        self.progress_frame = tk.Frame(status_frame, bg=COLORS['bg_tertiary'])
+        self.progress_frame.pack(side=tk.RIGHT)
+        
+        self.progress_bar = ttk.Progressbar(
+            self.progress_frame,
+            mode='indeterminate',
+            length=100,
+            style='Horizontal.TProgressbar'
+        )
+        
+    def update_status(self, message, color=None):
+        self.status_label.configure(text=message, fg=color or COLORS['fg_secondary'])
+        self.root.update_idletasks()
+        
+    def check_qemu(self):
+        try:
+            result = subprocess.run(
+                ['qemu-system-x86_64', '--version'],
+                capture_output=True,
+                text=True,
+                timeout=5
+            )
+            if result.returncode == 0:
+                return True, result.stdout.strip().split('\n')[0]
+        except (subprocess.TimeoutExpired, FileNotFoundError):
+            pass
+        return False, None
+        
+    def get_iso_path(self, version):
+        return self.iso_dir / f"bros-{version}.iso"
+        
+    def check_iso_exists(self, version):
+        iso_path = self.get_iso_path(version)
+        return iso_path.exists()
+        
+    def download_iso_thread(self, version):
+        iso_path = self.get_iso_path(version)
+        url = f"https://bros.berkeai.com/iso/bros-{version}.iso"
+        
+        def reporthook(block_num, block_size, total_size):
+            if total_size > 0:
+                percent = min(100, int((block_num * block_size * 100) / total_size))
+                self.root.after(0, lambda: self.update_status(
+                    f"İndiriliyor: %{percent}", COLORS['warning']
+                ))
+        
+        try:
+            urllib.request.urlretrieve(url, iso_path, reporthook)
+            self.root.after(0, lambda: self.update_status(
+                f"İndirme tamamlandı: {iso_path.name}", COLORS['success']
+            ))
+            self.root.after(0, lambda: self.start_btn.configure(state=tk.NORMAL))
+        except Exception as e:
+            self.root.after(0, lambda: self.update_status(
+                f"Hata: {str(e)}", COLORS['error']
+            ))
+            self.root.after(0, lambda: self.start_btn.configure(state=tk.NORMAL))
+        
+        self.root.after(0, lambda: self.progress_bar.stop())
+        
+    def download_iso(self):
+        version = self.selected_version.get()
+        
+        if self.check_iso_exists(version):
+            messagebox.showinfo(
+                "Mevcut",
+                f"v{version} ISO zaten mevcut!"
+            )
+            return
+            
+        qemu_ok, qemu_ver = self.check_qemu()
+        if not qemu_ok:
+            messagebox.showerror(
+                "QEMU Bulunamadı",
+                "QEMU kurulu değil. Lütfen önce QEMU'yu kurun:\n\n"
+                "Arch Linux: sudo pacman -S qemu\n"
+                "Ubuntu: sudo apt install qemu-system-x86\n"
+                "macOS: brew install qemu\n"
+                "Windows: choco install qemu"
+            )
+            return
+            
+        self.start_btn.configure(state=tk.DISABLED)
+        self.progress_bar.pack(side=tk.RIGHT, padx=(10, 0))
+        self.progress_bar.start(10)
+        self.update_status(f"İndiriliyor: v{version}...", COLORS['warning'])
+        
+        thread = threading.Thread(target=self.download_iso_thread, args=(version,))
+        thread.daemon = True
+        thread.start()
+        
+    def start_vm(self):
+        version = self.selected_version.get()
+        iso_path = self.get_iso_path(version)
+        
+        qemu_ok, qemu_ver = self.check_qemu()
+        if not qemu_ok:
+            messagebox.showerror(
+                "QEMU Bulunamadı",
+                "QEMU kurulu değil. Lütfen önce QEMU'yu kurun."
+            )
+            return
+            
+        if not self.check_iso_exists(version):
+            response = messagebox.askyesno(
+                "ISO Yok",
+                f"v{version} ISO'su bulunmuyor. İndirmek ister misiniz?"
+            )
+            if response:
+                self.download_iso()
+            return
+            
+        self.update_status(f"Başlatılıyor: v{version}...", COLORS['pink'])
+        
+        ram = self.ram_var.get()
+        cpu = self.cpu_var.get()
+        display = self.display_var.get().lower()
+        
+        cmd = [
+            'qemu-system-x86_64',
+            '-m', ram,
+            '-smp', str(cpu),
+            '-cdrom', str(iso_path),
+            '-boot', 'd',
+            '-display', display,
+            '-machine', 'pc,accel=kvm'
+        ]
+        
+        if self.network_var.get():
+            cmd.extend(['-net', 'nic,model=rtl8139'])
+            cmd.extend(['-net', 'user,hostfwd=tcp::2222-:22'])
+        else:
+            cmd.extend(['-net', 'none'])
+        
+        try:
+            subprocess.Popen(cmd)
+            self.update_status(f"Çalışıyor: v{version}", COLORS['success'])
+            messagebox.showinfo(
+                "Bros OS Başlatıldı",
+                f"Bros v{version} sanal makinesi başlatıldı!\n\n"
+                f"KVM hızlandırma: Aktif\n"
+                f"RAM: {ram}, CPU: {cpu}\n\n"
+                "Not: QEMU penceresini kapatarak VM'i durdurabilirsiniz."
+            )
+        except Exception as e:
+            messagebox.showerror("Hata", f"VM başlatılamadı: {str(e)}")
+            self.update_status("Hata oluştu", COLORS['error'])
+
+def main():
+    root = tk.Tk()
+    
+    style = ttk.Style()
+    style.theme_use('clam')
+    style.configure(
+        'Horizontal.TProgressbar',
+        background=COLORS['pink'],
+        troughcolor=COLORS['bg_tertiary'],
+        bordercolor=COLORS['bg_tertiary'],
+        lightcolor=COLORS['pink'],
+        darkcolor=COLORS['pink']
+    )
+    
+    app = BrosTryApp(root)
+    root.mainloop()
+
+if __name__ == '__main__':
+    main()

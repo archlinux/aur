@@ -1,0 +1,18 @@
+pkgbase = bros-try
+	pkgdesc = Bros OS Virtual Machine Launcher - GUI ile Bros OS'i dene
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bros.berkeai.com
+	arch = x86_64
+	license = PROPRIETARY
+	depends = python3
+	depends = python
+	depends = tk
+	depends = qemu
+	provides = bros-try
+	conflicts = bros
+	backup = ~/.config/bros-try/config.json
+
+pkgname = bros-try
+	arch = x86_64
+	license = PROPRIETARY

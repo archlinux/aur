@@ -1,0 +1,213 @@
+#!/usr/bin/env python3
+"""
+Bros Try - Bros OS Virtual Machine Launcher
+Automatically downloads and runs Bros OS in QEMU with pre-configured networking.
+"""
+
+import argparse
+import os
+import sys
+import subprocess
+import urllib.request
+import shutil
+import json
+import hashlib
+from pathlib import Path
+from typing import Optional
+
+VERSION = "1.0.0"
+CONFIG_DIR = Path.home() / ".config" / "bros-try"
+CACHE_DIR = Path.home() / ".cache" / "bros-try"
+ISO_DIR = CACHE_DIR / "isos"
+DEFAULT_VERSION = "1.2.2"
+BASE_URL = "https://bros.berkeai.com/iso"
+
+COLORS = {
+    'reset': '\033[0m',
+    'red': '\033[91m',
+    'green': '\033[92m',
+    'yellow': '\033[93m',
+    'blue': '\033[94m',
+    'pink': '\033[95m',
+    'gray': '\033[90m'
+}
+
+def print_colored(text: str, color: str = 'reset'):
+    print(f"{COLORS.get(color, '')}{text}{COLORS['reset']}")
+
+def print_header():
+    banner = r"""
+    ██╗     ██╗   ██╗███╗   ███╗██╗███╗   ██╗ █████╗ 
+    ██║     ██║   ██║████╗ ████║██║████╗  ██║██╔══██╗
+    ██║     ██║   ██║██╔████╔██║██║██╔██╗ ██║███████║
+    ██║     ██║   ██║██║╚██╔╝██║██║██║╚██╗██║██╔══██║
+    ███████╗╚██████╔╝██║ ╚═╝ ██║██║██║ ╚████║██║  ██║
+    ╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝
+    """
+    print_colored(banner, 'pink')
+    print_colored(f"  Bros Try v{VERSION} - Virtual Machine Launcher\n", 'gray')
+    print_colored("  \"Experience Bros OS without installation\"\n", 'gray')
+
+def ensure_dirs():
+    CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+    ISO_DIR.mkdir(parents=True, exist_ok=True)
+
+def get_version_list():
+    return {
+        "1.2.2": "2026-04",
+        "1.2.1": "2026-03",
+        "1.2.0": "2026-02",
+        "1.1.0": "2026-01",
+        "1.0.0": "2025-12"
+    }
+
+def download_iso(version: str, force: bool = False) -> Path:
+    iso_file = ISO_DIR / f"bros-{version}.iso"
+    
+    if iso_file.exists() and not force:
+        print_colored(f"  [✓] ISO already exists: {iso_file}", 'green')
+        return iso_file
+    
+    url = f"{BASE_URL}/bros-{version}.iso"
+    print_colored(f"  [↓] Downloading Bros v{version}...", 'blue')
+    print_colored(f"      URL: {url}", 'gray')
+    
+    try:
+        urllib.request.urlretrieve(url, iso_file)
+        print_colored(f"  [✓] Download complete: {iso_file}", 'green')
+        return iso_file
+    except Exception as e:
+        print_colored(f"  [✗] Download failed: {e}", 'red')
+        sys.exit(1)
+
+def check_qemu() -> bool:
+    try:
+        result = subprocess.run(['qemu-system-x86_64', '--version'], 
+                              capture_output=True, text=True)
+        if result.returncode == 0:
+            version = result.stdout.strip().split('\n')[0]
+            print_colored(f"  [✓] QEMU found: {version}", 'green')
+            return True
+    except FileNotFoundError:
+        pass
+    
+    print_colored("  [✗] QEMU not found!", 'red')
+    print_colored("      Install with:", 'yellow')
+    print_colored("        - Arch:     sudo pacman -S qemu", 'gray')
+    print_colored("        - Ubuntu:   sudo apt install qemu-system-x86", 'gray')
+    print_colored("        - macOS:    brew install qemu", 'gray')
+    print_colored("        - Windows:  choco install qemu", 'gray')
+    return False
+
+def run_vm(iso_path: Path, memory: str = "512M", cpu: int = 2, 
+           display: str = "gtk", no_network: bool = False):
+    print_colored(f"\n  [🚀] Starting Bros VM...", 'pink')
+    
+    qemu_cmd = [
+        'qemu-system-x86_64',
+        '-m', memory,
+        '-smp', str(cpu),
+        '-cdrom', str(iso_path),
+        '-boot', 'd',
+        '-display', display,
+        '-machine', 'pc,accel=kvm'
+    ]
+    
+    if no_network:
+        qemu_cmd.extend(['-net', 'none'])
+    else:
+        qemu_cmd.extend([
+            '-net', 'nic,model=rtl8139',
+            '-net', 'user,hostfwd=tcp::2222-:22'
+        ])
+    
+    print_colored(f"  Memory: {memory}, CPUs: {cpu}", 'gray')
+    print_colored(f"  Display: {display}", 'gray')
+    print_colored(f"  Network: {'Disabled' if no_network else 'Enabled (port forwarding: 2222->22)'}", 'gray')
+    print_colored("\n  Starting QEMU... Press Ctrl+C to stop.\n", 'yellow')
+    
+    try:
+        subprocess.run(qemu_cmd)
+    except KeyboardInterrupt:
+        print_colored("\n  [+] VM stopped by user", 'yellow')
+
+def list_versions():
+    versions = get_version_list()
+    print_colored("\n  Available Bros OS Versions:\n", 'blue')
+    print_colored("  {:<10} {:<12} {:<20}".format("Version", "Date", "Status"), 'gray')
+    print_colored("  " + "-" * 42, 'gray')
+    
+    for ver, date in versions.items():
+        iso_path = ISO_DIR / f"bros-{ver}.iso"
+        status = "✓ Downloaded" if iso_path.exists() else "○ Not downloaded"
+        print_colored(f"  {ver:<10} {date:<12} {status}", 'white' if iso_path.exists() else 'gray')
+
+def clean_cache():
+    if ISO_DIR.exists():
+        shutil.rmtree(ISO_DIR)
+        print_colored(f"  [✓] Cache cleaned: {ISO_DIR}", 'green')
+    else:
+        print_colored("  [✓] No cache to clean", 'green')
+
+def main():
+    parser = argparse.ArgumentParser(
+        description='Bros Try - Bros OS Virtual Machine Launcher',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=f"""
+Examples:
+  %(prog)s                    # Run latest version (v{DEFAULT_VERSION})
+  %(prog)s --version 1.1.0   # Run specific version
+  %(prog)s --list             # List available versions
+  %(prog)s --download 1.2.0   # Download ISO without running
+  %(prog)s --clean            # Clean downloaded ISOs
+  %(prog)s --memory 1024M     # Allocate 1GB RAM
+  %(prog)s --cpu 4            # Use 4 CPU cores
+  %(prog)s --no-network       # Disable network
+        """
+    )
+    
+    parser.add_argument('-v', '--version', default=DEFAULT_VERSION,
+                       help=f'Bros version to run (default: {DEFAULT_VERSION})')
+    parser.add_argument('--list', action='store_true',
+                       help='List available versions')
+    parser.add_argument('--download', metavar='VERSION',
+                       help='Download ISO without running')
+    parser.add_argument('--clean', action='store_true',
+                       help='Clean downloaded ISOs')
+    parser.add_argument('-m', '--memory', default='512M',
+                       help='RAM to allocate (default: 512M)')
+    parser.add_argument('-c', '--cpu', type=int, default=2,
+                       help='Number of CPU cores (default: 2)')
+    parser.add_argument('-d', '--display', default='gtk',
+                       choices=['gtk', 'sdl', 'curses', 'none', 'vnc'],
+                       help='Display type (default: gtk)')
+    parser.add_argument('--no-network', action='store_true',
+                       help='Disable network')
+    parser.add_argument('--force-download', action='store_true',
+                       help='Force re-download even if ISO exists')
+    
+    args = parser.parse_args()
+    
+    print_header()
+    ensure_dirs()
+    
+    if args.list:
+        list_versions()
+        return
+    
+    if args.clean:
+        clean_cache()
+        return
+    
+    if args.download:
+        download_iso(args.download, args.force_download)
+        return
+    
+    if not check_qemu():
+        sys.exit(1)
+    
+    iso_path = download_iso(args.version, args.force_download)
+    run_vm(iso_path, args.memory, args.cpu, args.display, args.no_network)
+
+if __name__ == '__main__':
+    main()

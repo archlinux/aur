@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Bros Try
+GenericName=Bros OS Virtual Machine
+Comment=Try Bros OS without installation
+Exec=bros-try
+Icon=bros-try
+Terminal=true
+Type=Application
+Categories=System;Emulator;
+Keywords=bros;os;virtual;machine;qemu;linux;server;
+StartupNotify=true
