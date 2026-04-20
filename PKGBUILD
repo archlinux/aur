@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=340.260326.1
+pkgver=341.260417.0
 pkgrel=1
 _nodeversion=22
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
@@ -28,7 +28,7 @@ source=("git+https://github.com/tutao/tutanota.git#tag=$pkgname-release-$pkgver"
         'git+https://github.com/open-quantum-safe/liboqs.git'
         'git+https://github.com/tutao/Signal-FTS5-Extension.git'
         "$pkgname.desktop")
-sha256sums=('02a75ab6347d3bbfb2cceea0ee7d121b527be95f23ef8057778d96cc6d1e89f8'
+sha256sums=('a952df930cebec1b9c746b8bfc4f62dee06303b29ba069992c5dfde50fc92321'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -53,7 +53,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc --print host-tuple)"
+  cargo fetch --target host-tuple
 
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
