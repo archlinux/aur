@@ -624,10 +624,10 @@ Subject: [PATCH] Patch glsl-optimizer to build with glibc 2.43
  rename {third_party => build}/rust/glslopt/wrapper.hpp (100%)
 
 diff --git a/Cargo.lock b/Cargo.lock
-index d46895085516..e197904bca7f 100644
+index 7406564cb72c..18c25ee69794 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2866,8 +2866,6 @@ dependencies = [
+@@ -2894,8 +2894,6 @@ dependencies = [
  [[package]]
  name = "glslopt"
  version = "0.1.12"
@@ -637,10 +637,10 @@ index d46895085516..e197904bca7f 100644
   "cc",
  ]
 diff --git a/Cargo.toml b/Cargo.toml
-index 10b3465ca109..ac2693326424 100644
+index 85edaada8988..8d55916f607c 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -293,3 +293,6 @@ zip = { path = "third_party/rust/zip" }
+@@ -308,3 +308,6 @@ zip = { path = "third_party/rust/zip" }
  
  # Patch libcrux-traits to avoid unnecessary unused dependencies and conflicts.
  libcrux-traits = { path = "build/rust/libcrux-traits" }
@@ -1944,7 +1944,7 @@ similarity index 100%
 rename from third_party/rust/glslopt/wrapper.hpp
 rename to build/rust/glslopt/wrapper.hpp
 diff --git a/supply-chain/config.toml b/supply-chain/config.toml
-index 89d7130055ef..c377c1dad033 100644
+index 6766dac152b8..e0379635d5ee 100644
 --- a/supply-chain/config.toml
 +++ b/supply-chain/config.toml
 @@ -64,6 +64,10 @@ notes = "Used for testing."

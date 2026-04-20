@@ -1,0 +1,21 @@
+From dc06d71cb14390433bcd5a78975cbe7a29e47333 Mon Sep 17 00:00:00 2001
+From: any1here <225423344+any1here@users.noreply.github.com>
+Date: Sat, 18 Apr 2026 00:27:06 +0200
+Subject: [PATCH] Add missing Select trait import for Rust 1.95
+
+---
+ src/x_user_defined.rs | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/x_user_defined.rs b/src/x_user_defined.rs
+index cd87b9a..421f303 100644
+--- a/src/x_user_defined.rs
++++ b/src/x_user_defined.rs
+@@ -16,6 +16,7 @@ cfg_if! {
+         use simd_funcs::*;
+         use core::simd::u16x8;
+         use core::simd::cmp::SimdPartialOrd;
++        use core::simd::Select;
+ 
+         #[inline(always)]
+         fn shift_upper(unpacked: u16x8) -> u16x8 {
