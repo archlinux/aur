@@ -1,0 +1,29 @@
+pkgbase = droidproxy-linux
+	pkgdesc = Proxy Claude, Codex, and Gemini subscriptions for Factory Droid CLI (Linux port)
+	pkgver = 1.8.9
+	pkgrel = 1
+	url = https://github.com/StressarN/droidproxy-linux
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = python-aiohttp
+	depends = python-watchdog
+	depends = python-platformdirs
+	depends = python-tomli-w
+	depends = python-psutil
+	depends = python-gobject
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = xdg-utils
+	optdepends = cloudflared: expose the proxy to the public internet
+	provides = droidproxy
+	conflicts = droidproxy
+	conflicts = droidproxy-linux-bin
+	source = droidproxy-linux-1.8.9.tar.gz::https://github.com/StressarN/droidproxy-linux/archive/refs/tags/v1.8.9.tar.gz
+	sha256sums = 331515adbfd405758155cf08560ef043b987d0d293f6e8040c15217f7192ee16
+
+pkgname = droidproxy-linux
