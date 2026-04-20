@@ -1,5 +1,5 @@
 pkgname=warp-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A live wallpaper daemon and client for Wayland (Pre-compiled)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('wayland' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugin
 provides=('warp' 'warp-daemon' 'warp-client')
 conflicts=('warp' 'warp-daemon' 'warp-client')
 source=("${url}/releases/download/v${pkgver}/warp-linux-amd64.tar.gz")
-sha256sums=('a39d495e2ca5c55b8be2dede29097ea0bb20f4d5db55d203b2cf966370420474')
+sha256sums=('6d6b928171fb0c7cb5c2416d5d16afcb86f9006499acdc52fbf6ef1dc8e1cf0e')
 
 package() {
     cd "${srcdir}"
