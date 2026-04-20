@@ -2,7 +2,7 @@
 _pkgname=backend.ai-desktop
 pkgname="${_pkgname//./-}-bin"
 _appname='Backend.AI Desktop'
-pkgver=26.4.3
+pkgver=26.4.5
 _electronversion=35
 pkgrel=1
 pkgdesc="Provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics."
@@ -33,8 +33,8 @@ source=(
 )
 sha256sums=('c54209c33c387908bfaae40a9c5f6c96bacaa52684f2546068e2b4441f4a53b3'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('e670547235da8f8d29bfb6021864b23dc0102f65d97de7643bc640b5147b7d69')
-sha256sums_x86_64=('910e70aba511e787afc3d5d771576f49f9194c17f387bba751562258f7623d1b')
+sha256sums_aarch64=('5a1b45f00d5f7670e3d19651b4fde41242a25031b3c82813e0728797ff9218f0')
+sha256sums_x86_64=('a114910dcc74506c15d6e7611261c3a147530e46fdf8b43a9f63fc7d0bc769d5')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/${_appname}-linux-"*/"${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
