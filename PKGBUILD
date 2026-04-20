@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.15.0.r72.gcead66d
+pkgver=0.15.0.r114.gdcdbd17
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -13,15 +13,13 @@ depends=(
 	'miniz>=3.1'
 	'pugixml>=1.14'
 	'sdl3>=3.3.5'
-	'sdl3_image'
-	'sdl3_mixer'
 )
 makedepends=(
 	'boost>=1.84'
 	'cli11>=2.6.1'
 	'cmake>=3.16.3'
 	'ffmpeg>=2:5.1.2'
-	'fmt>=10.2'
+	'fmt>=12'
 	'git'
 	'half>=1.12'
 	'libgcc'
@@ -57,14 +55,17 @@ source=(
 	"$_pkgname-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git"
 	"$_pkgname-hwinfo::git+https://github.com/shadps4-emu/ext-hwinfo.git"
 	"$_pkgname-imgui::git+https://github.com/shadps4-emu/ext-imgui.git"
+	"$_pkgname-imguifiledialog::git+https://github.com/shadexternals/ImGuiFileDialog.git"
 	"$_pkgname-libatrac9::git+https://github.com/shadps4-emu/ext-LibAtrac9.git"
 	"$_pkgname-libusb::git+https://github.com/shadexternals/libusb.git"
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
 	"aac::git+https://android.googlesource.com/platform/external/aac.git"
+	"minimp3::git+https://github.com/lieff/minimp3.git"
+	"spdlog::git+https://github.com/gabime/spdlog.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
 )
-b2sums=('SKIP'{,,,,,,,,,})
+b2sums=('SKIP'{,,,,,,,,,,,,})
 
 pkgver() {
 	cd $_pkgname
@@ -77,9 +78,12 @@ prepare() {
 	git config submodule.externals/dear_imgui.url ../$_pkgname-imgui
 	git config submodule.externals/discord-rpc.url ../$_pkgname-discord-rpc
 	git config submodule.externals/hwinfo.url ../$_pkgname-hwinfo
+	git config submodule.externals/ImGuiFileDialog.url ../$_pkgname-imguifiledialog
 	git config submodule.externals/LibAtrac9.url ../$_pkgname-libatrac9
 	git config submodule.externals/libusb.url ../$_pkgname-libusb
+	git config submodule.externals/minimp3.url ../minimp3
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
+	git config submodule.externals/spdlog.url ../spdlog
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
@@ -87,8 +91,6 @@ prepare() {
 	sed -i '/-march=/d' CMakeLists.txt
 	# use system glslang
 	sed -i '/find_package/s/glslang 15/glslang/' CMakeLists.txt
-	# use system sdl3_mixer
-	sed -i 's/MIX_\(G\|S\)etMasterGain/MIX_\1etMixerGain/g' src/core/libraries/np/trophy_ui.cpp
 }
 
 build() {
