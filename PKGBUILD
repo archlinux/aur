@@ -3,8 +3,8 @@
 
 pkgname=canvas-downloader-bin
 _name=canvas-downloader
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='Download and organize all your course materials from Canvas LMS 📚'
 arch=('x86_64')
 url='https://github.com/aik2mlj/canvas-downloader'
@@ -19,7 +19,7 @@ provides=($_name)
 conflicts=($_name)
 
 source=("$url/releases/download/v$pkgver/$_name-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('23c831b3883f294e2d77ca6d5d6d450c75371deb167118e8d6647b7f35bb7027')
+sha256sums=('c32034a7852eb15784bc707438d73200a5a14155b0378a9761b25d9052629abd')
 
 package() {
     # install binary
