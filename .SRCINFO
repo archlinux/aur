@@ -1,14 +1,14 @@
 pkgbase = dssh
 	pkgdesc = The only SSH connection manager you'll ever need. TUI & CLI. ssh_config, SQLite or both.
-	pkgver = 2.0.2
-	pkgrel = 3
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/madLinux7/dssh
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
 	depends = openssh
-	source = dssh-2.0.2.tar.gz::https://github.com/madLinux7/dssh/archive/v2.0.2.tar.gz
-	sha256sums = a6262ce90be99981016e8ca7c63225a9fec5d7297f7c1931d50b478339aff211
+	source = dssh-2.1.0.tar.gz::https://github.com/madLinux7/dssh/archive/v2.1.0.tar.gz
+	sha256sums = d56f33b35982543b73931292f522439aab97e6d7b4adf6fe19c3f586f89a8a4f
 
 pkgname = dssh
