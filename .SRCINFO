@@ -22,6 +22,6 @@ pkgbase = refindplus-bin
 	source = refindplus-install
 	sha256sums = d60e6157fa1d7bdb7e14ffafa77b2cd8f99c5ded8b08b1732d6b5f4913d4ee89
 	sha256sums = bcf0a843c1c7593361f3d67736dcfd89c001a93009ea5949073082febd85642c
-	sha256sums = ac20431da1667d8c1948b9019f95d4b5110b19f36300f645934748df7e83fbd1
+	sha256sums = 7105704349c9531766d9768f86385a84a87c0e127b284173e9d9f9a80bff9436
 
 pkgname = refindplus-bin

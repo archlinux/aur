@@ -36,7 +36,7 @@ source=(
 sha256sums=(
   'd60e6157fa1d7bdb7e14ffafa77b2cd8f99c5ded8b08b1732d6b5f4913d4ee89'
   'bcf0a843c1c7593361f3d67736dcfd89c001a93009ea5949073082febd85642c'
-  'ac20431da1667d8c1948b9019f95d4b5110b19f36300f645934748df7e83fbd1'
+  '7105704349c9531766d9768f86385a84a87c0e127b284173e9d9f9a80bff9436'
 )
 
 package() {
@@ -50,7 +50,6 @@ package() {
     "${boot_tree}/tools" \
     "${pkgdir}/usr/bin"
 
-  install -Dm644 "${_release_dir}/x64_RefindPlus_REL.efi" "${boot_tree}/refind_x64.efi"
   install -Dm644 "${_release_dir}/x64_RefindPlus_REL.efi" "${boot_tree}/x64_RefindPlus_REL.efi"
   install -Dm644 "${_release_dir}/x64_RefindPlus_DBG.efi" "${boot_tree}/x64_RefindPlus_DBG.efi"
   install -Dm644 "${_release_dir}/config.conf" "${boot_tree}/config.conf"
