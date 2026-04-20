@@ -1,13 +1,13 @@
 pkgbase = r-signal
 	pkgdesc = Signal Processing
-	pkgver = 1.8.0
-	pkgrel = 1
+	pkgver = 1.8.1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=signal
 	arch = any
 	license = GPL2
 	depends = r>=3.5
 	depends = gcc-fortran
-	source = https://cran.r-project.org/src/contrib/signal_1.8-0.tar.gz
-	sha256sums = 89cba854167a2b051a58cf3b73ccbf74eeb47c890ac39720611cd41f86b94684
+	source = https://cran.r-project.org/src/contrib/signal_1.8-1.tar.gz
+	sha256sums = a322bc13c2d3ff43a7f24970e52277d3d8ebc47fdaa9f63e210ed53655e1eeb0
 
 pkgname = r-signal
