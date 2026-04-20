@@ -1,6 +1,6 @@
 pkgbase = xterminal-bin
 	pkgdesc = Not only powerful SSH tools, but also local consoles, and more coming soon.(Prebuilt version.Use system-wide electron)不仅是强大的SSH工具,更提供本地控制台,以及更多即将推出的开发相关功能.
-	pkgver = 5.6.0
+	pkgver = 5.6.3
 	pkgrel = 1
 	url = https://www.xterminal.cn/
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = xterminal-bin
 	makedepends = asar
 	makedepends = nodejs
 	depends = electron40
-	provides = xterminal=5.6.0
+	provides = xterminal=5.6.3
 	conflicts = xterminal
 	options = !emptydirs
 	source = LICENSE.html
@@ -18,9 +18,9 @@ pkgbase = xterminal-bin
 	sha256sums = 8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af
 	sha256sums = a273949f3f2352eb4c4347717b5330695ef3c155c687f19064af628ab47a9cda
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = xterminal-5.6.0-aarch64.rpm::https://cdn-cn.xterminal.cn/downloads/XTerminal-5.6.0-linux-aarch64.rpm
-	sha256sums_aarch64 = ba216b006677ee2120c891526a289ad91f32007dec9695414af6f852eb9abc93
-	source_x86_64 = xterminal-5.6.0-x86_64.rpm::https://cdn-cn.xterminal.cn/downloads/XTerminal-5.6.0-linux-x86_64.rpm
-	sha256sums_x86_64 = 79e3afe4a3aad80a2dd18af32fd090c1daeca2fc556bb0aa0b5fc10724a1336e
+	source_aarch64 = xterminal-5.6.3-aarch64.rpm::https://cdn-cn.xterminal.cn/downloads/XTerminal-5.6.3-linux-aarch64.rpm
+	sha256sums_aarch64 = 2ae3ac49314081475c6a16a9cc2105c9b59c82f6c5883b370eb54fefd7fce0a9
+	source_x86_64 = xterminal-5.6.3-x86_64.rpm::https://cdn-cn.xterminal.cn/downloads/XTerminal-5.6.3-linux-x86_64.rpm
+	sha256sums_x86_64 = 44882a758b9270d17b88d650166ec753053899fdd72d017a99457f96851e70fe
 
 pkgname = xterminal-bin
