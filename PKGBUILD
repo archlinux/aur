@@ -1,8 +1,8 @@
 # Maintainer: Bryan Rafael <brthy467@gmail.com>
 
 pkgname=synca-bin
-pkgver=0.3.1
-pkgrel=3
+pkgver=0.3.2
+pkgrel=4
 pkgdesc="Simple, lightweight, open source file synchronization client (prebuilt AppImage)"
 arch=('x86_64')
 url="https://github.com/bryanrafaelbueno/Synca"
@@ -18,7 +18,7 @@ _appimage="Synca-x86_64.AppImage"
 source=(
   "$_appimage::https://github.com/bryanrafaelbueno/Synca/releases/download/$pkgver/$_appimage"
 )
-sha256sums=('4490bf12ecfe01b7367763ee674cc69cf16c4cff2db6bf6692468669312eff70')
+sha256sums=('4baddd4171e040717abaef4d1658cc3cd7796f1a2079bca45f820d1948ac094f')
 
 prepare() {
   cd "$srcdir"
