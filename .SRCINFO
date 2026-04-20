@@ -1,0 +1,23 @@
+pkgbase = warp-bin
+	pkgdesc = A live wallpaper daemon and client for Wayland (Pre-compiled)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/nimirus/warp
+	arch = x86_64
+	license = MIT
+	depends = wayland
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-libav
+	provides = warp
+	provides = warp-daemon
+	provides = warp-client
+	conflicts = warp
+	conflicts = warp-daemon
+	conflicts = warp-client
+	source = https://codeberg.org/nimirus/warp/releases/download/v0.1.0/warp-linux-amd64.tar.gz
+	sha256sums = a39d495e2ca5c55b8be2dede29097ea0bb20f4d5db55d203b2cf966370420474
+
+pkgname = warp-bin
