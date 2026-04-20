@@ -1,15 +1,16 @@
 pkgbase = matlab-mpm
 	pkgdesc = MATLAB Package Manager
 	pkgver = 2026.3+r142.geee682f
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.mathworks.com/products/mpm.html
 	arch = x86_64
 	license = custom:MATLAB EULA
 	makedepends = git
-	depends = ca-certificates
 	depends = glibc
+	depends = ca-certificates
 	depends = unzip
+	depends = libatomic
 	optdepends = matlab-mpm-input: input files used with '--inputfile'
 	source = matlab-dockerfile::git+https://github.com/mathworks-ref-arch/matlab-dockerfile.git#commit=eee682f0ce437f76c4a9fef23e9873fecd8ed8e6
 	sha256sums = 363d78a8f8b253bee1e294483d9c5a9701e8b3e65e55fc475a64f0c5ccbec700

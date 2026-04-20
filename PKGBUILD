@@ -1,13 +1,11 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-# https://www.mathworks.com/help/install/ug/get-mpm-os-command-line.html
-
 _name="mpm"
 pkgname="matlab-${_name}"
 _commit="eee682f0ce437f76c4a9fef23e9873fecd8ed8e6"
 pkgver=2026.3+r142.geee682f
 _pkgver="${pkgver%+*}"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="MATLAB Package Manager"
 arch=(
@@ -19,9 +17,15 @@ license=(
   'custom:MATLAB EULA'
 )
 depends=(
-  'ca-certificates'
   'glibc'
+
+  # https://www.mathworks.com/help/install/ug/get-mpm-os-command-line.html
+  'ca-certificates'
   'unzip'
+
+  # https://github.com/mathworks-ref-arch/container-images/commit/ea7154f8f2b3efa2bcbaded5ba151285a0281c2e
+  # /tmp/mwse_433300552/bin/glnxa64/mpm: error while loading shared libraries: libatomic.so.1: cannot open shared object file: No such file or directory
+  'libatomic'
 )
 makedepends=(
   'git'
