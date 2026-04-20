@@ -2,7 +2,7 @@
 # Contributor: Vítor Vasconcellos <vitor.vasconcellos at proton dot me>
 
 pkgname=tail-tray
-pkgver=0.2.30
+pkgver=0.2.31
 pkgrel=1
 pkgdesc='Tailscale tray menu and UI for the KDE Plasma Desktop'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('libgcc' 'libstdc++' 'glibc' 'tailscale' 'qt6-base' 'hicolor-icon-theme
 optdepends=('davfs2: to access Tail drives')
 makedepends=('cmake' 'extra-cmake-modules' 'qt6-tools' 'git')
 source=("git+https://github.com/SneWs/tail-tray#tag=v$pkgver")
-sha512sums=('4f8da56f2df85976b6929919db09e005b2471010f8421c371077dfb5c3e431d47f92cbeab9d4a90dca70678cdccf2d82f99b7f364511064793d0e4c194c0822e')
+sha512sums=('d32e50ee031ee6c02c6e57fbf2b99435b7d07d88c55f7cfd64705109ea9df8bfb3dd147ebc4524fca80fe3c46e7da58799df746c9a3b6cedfccee4e62fb09e08')
 options=('strip')
 
 build() {
