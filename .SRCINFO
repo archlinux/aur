@@ -1,0 +1,18 @@
+pkgbase = manager-bin
+	pkgdesc = Productivity companion — day counter, focus timer, schedule, journal
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/JAuxance/Manager
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = manager
+	conflicts = manager
+	options = !strip
+	options = !debug
+	source = manager-bin-1.6.1.deb::https://github.com/JAuxance/Manager/releases/download/v1.6.1/Manager_1.6.1_amd64.deb
+	sha256sums = SKIP
+
+pkgname = manager-bin
