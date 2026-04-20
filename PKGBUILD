@@ -1,6 +1,6 @@
 # Maintainer: James Willson <jsdoublel@gmail.com>
 pkgname=nw
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A TUI utility for selecting films to watch from Letterboxd"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=()
 makedepends=('go>=1.25.4')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('36365c0503d5e3896c5d04ea76af0e435a597912c7596121b01b8b1dd8eb0731')
+sha256sums=('0d6537ece6f7e44c14ffabd45f7201da821b70b95bf2968e4030d48c95cb986d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
