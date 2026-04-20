@@ -1,7 +1,7 @@
 pkgbase = gradia
 	pkgdesc = Make your screenshots ready for the world.
 	pkgver = 1.12.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AlexanderVanhee/Gradia
 	arch = x86_64
 	license = GPL-3.0-only
@@ -25,6 +25,7 @@ pkgbase = gradia
 	depends = python-pillow
 	depends = python-cairo
 	depends = python-pytesseract
+	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	options = !debug
 	source = gradia-1.12.1.zip::https://github.com/AlexanderVanhee/Gradia/archive/9b70a5c3ced86a469d8750a452a68ebd7e983051.zip
 	source = gradia_ocr.patch

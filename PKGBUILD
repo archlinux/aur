@@ -1,7 +1,7 @@
 # Maintainer: Michael Langer <laminarlade at t-online DOT de>
 pkgname=gradia
 pkgver=1.12.1
-pkgrel=2
+pkgrel=3
 pkghash=9b70a5c3ced86a469d8750a452a68ebd7e983051
 pkgdesc="Make your screenshots ready for the world."
 arch=('x86_64')
@@ -30,6 +30,9 @@ makedepends=(
     'patch'
     'meson'
     'blueprint-compiler'
+)
+optdepends=(
+  'xdg-desktop-portal: Screensharing with Wayland'
 )
 options=('!debug')
 source=(
