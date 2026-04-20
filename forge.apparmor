@@ -1,0 +1,74 @@
+# AppArmor profile for Forge-Code AI terminal
+# Location: /etc/apparmor.d/forge-code
+#
+# To enable:
+#   sudo cp forge-code.apparmor /etc/apparmor.d/forge-code
+#   sudo apparmor_parser -r /etc/apparmor.d/forge-code
+#   sudo aa-enforce /etc/apparmor.d/forge-code
+#
+# This profile is PERMISSIVE by default — install, test, then enforce.
+
+#include <tunables/global>
+
+/usr/bin/forge-code {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/fonts>
+  #include <abstractions/X>
+  #include <abstractions/freedesktop.org>
+  #include <abstractions/user-tmp>
+  #include <abstractions/audio>
+  #include <abstractions/dbus-session-strict>
+  #include <abstractions/dbus-accessibility-strict>
+
+  # Forge-Code installation directory (read-only)
+  /usr/bin/forge-code r,
+  /usr/bin/forge rix,
+
+  # User configuration and state
+  owner @{HOME}/.forge/** rwk,
+  owner @{HOME}/.config/forge-code/** rwk,
+  owner @{HOME}/.cache/forge-code/** rwk,
+  owner @{HOME}/.local/share/forge-code/** rwk,
+
+  # System libraries
+  /usr/lib/** rm,
+  /usr/share/** r,
+  /etc/fonts/** r,
+  /etc/ssl/** r,
+  /etc/ca-certificates/** r,
+
+  # Proc and sys — minimal
+  @{PROC}/sys/kernel/random/uuid r,
+  @{PROC}/@{pid}/fd/ r,
+  @{PROC}/@{pid}/stat r,
+
+  # Network — required for AI provider API calls
+  network inet stream,
+  network inet6 stream,
+  network netlink raw,
+
+  # IPC
+  /dev/shm/** rw,
+  owner /run/user/*/ d,
+  owner /run/user/*/writable rw,
+
+  # Git operations
+  /usr/bin/git ixr,
+  owner @{HOME}/.gitconfig r,
+
+  # Editor access (for :edit command)
+  /usr/bin/{vim,nvim,nano,code,subl} ix,
+  /usr/bin/{$EDITOR,$VISUAL} ix,
+
+  # fzf (for :conversation picker)
+  /usr/bin/fzf ix,
+
+  # Deny sensitive paths
+  deny /boot/** rw,
+  deny /sys/firmware/** rw,
+  deny /etc/shadow r,
+  deny /etc/gshadow r,
+  deny /root/** rw,
+  deny /home/*/.ssh/** r,
+}

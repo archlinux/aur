@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Forge
+GenericName=AI Coding Assistant
+Comment=AI-Enabled Terminal Development Environment
+Exec=forge %U
+Icon=forge
+Terminal=true
+StartupNotify=false
+Type=Application
+Categories=Development;Utility;ArtificialIntelligence;
+Keywords=AI;Coding;Terminal;Assistant;Agent;
+MimeType=text/plain;x-scheme-handler/forge;
+StartupWMClass=forge
