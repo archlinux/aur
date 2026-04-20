@@ -1,0 +1,5 @@
+[omnyssh-bin]
+source = "github"
+github = "timhartmann7/omnyssh"
+use_latest_release = true
+prefix = "v"
