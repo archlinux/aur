@@ -1,17 +1,16 @@
 pkgbase = python-aiohttp-rpc
 	pkgdesc = Library for integrating JSON-RPC 2.0 protocol with python-aiohttp
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/expert-m/aiohttp-rpc
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python>=3.6.5
-	depends = python-aiohttp>=3
-	depends = python-aiohttp<4
-	source = python-aiohttp-rpc-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/a/aiohttp-rpc/aiohttp-rpc-1.0.0.tar.gz
-	source = python-aiohttp-rpc-LICENSE.txt::https://github.com/expert-m/aiohttp-rpc/raw/master/LICENSE.txt
-	sha256sums = 93976e10376f274d9c5a947859b06de15650263968ab49e8fb197b24471f21fb
-	sha256sums = 9d9a5dcee434ec4bf90be2de273099a33e6213ff63d7c0db6e5b764128d8a9af
+	makedepends = python-wheel
+	depends = python-aiohttp
+	source = python-aiohttp-rpc-2.0.0.tar.gz::https://files.pythonhosted.org/packages/source/a/aiohttp_rpc/aiohttp_rpc-2.0.0.tar.gz
+	sha256sums = 80117b632383e0308e537c2c1b78c427fcd7f865be9cc06fc418a6c37c02989f
 
 pkgname = python-aiohttp-rpc
