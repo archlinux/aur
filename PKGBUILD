@@ -2,7 +2,7 @@
 
 pkgname=refindplus-bin
 pkgver=0.14.2.AE
-pkgrel=1
+pkgrel=2
 pkgdesc='A fork of rEFInd with additional Mac and UEFI-PC functionality (upstream x64 binary)'
 arch=('x86_64')
 url='https://github.com/RefindPlusRepo/RefindPlus'
@@ -36,12 +36,11 @@ source=(
 sha256sums=(
   'd60e6157fa1d7bdb7e14ffafa77b2cd8f99c5ded8b08b1732d6b5f4913d4ee89'
   'bcf0a843c1c7593361f3d67736dcfd89c001a93009ea5949073082febd85642c'
-  '7105704349c9531766d9768f86385a84a87c0e127b284173e9d9f9a80bff9436'
+  'f4c0e7b8a5afdab0a6fbcab61aebc4c90ce59d5e435de1e56f8a4c820b20877c'
 )
 
 package() {
-  local share_dir="${pkgdir}/usr/share/refindplus"
-  local boot_tree="${share_dir}/refindplus"
+  local boot_tree="${pkgdir}/usr/share/refindplus"
   local source_asset
 
   install -dm755 \

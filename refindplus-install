@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-source_dir=${REFINDPLUS_SOURCE_DIR:-/usr/share/refindplus/refindplus}
+source_dir=${REFINDPLUS_SOURCE_DIR:-/usr/share/refindplus}
 config_source=${REFINDPLUS_CONFIG:-${source_dir}/config.conf}
 esp=''
 target='refindplus'
