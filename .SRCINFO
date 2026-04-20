@@ -1,7 +1,7 @@
 pkgbase = python-boltons
 	pkgdesc = Functionality that should be in the standard library. Like builtins, but Boltons.
 	pkgver = 25.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mahmoud/boltons
 	arch = any
 	license = BSD-3-Clause
