@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leavepad
 _pkgname=Leavepad
-pkgver=2.4.0
+pkgver=2.4.2
 _electronversion=41
 _nodeversion=24
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('230fb1295c958e0313c20853d8e401db7453dcd1450923d22254819d5b05a657'
+sha256sums=('83ff8a2736ad65f3db3761afc6c804fc7832a2b8d5325500d1e788e8ca7186ac'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
