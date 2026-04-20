@@ -1,6 +1,6 @@
 # Maintainer: fibsussy <fibsussy@tuta.io>
 pkgname=crosshair-maker
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Crosshair overlay creator with SVG rendering and preview"
 arch=('x86_64' 'aarch64')
@@ -9,6 +9,7 @@ license=('GPL-3.0-only')
 depends=('libx11' 'libxcb' 'wayland' 'libxkbcommon' 'vulkan-icd-loader')
 makedepends=()
 options=('!debug')
+install=crosshair-maker.install
 
 _arch="$CARCH"
 if [ "$_arch" = "x86_64" ]; then
@@ -22,8 +23,9 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/fibsussy/crosshair-maker/v${pkgver}/LICENSE"
     "crosshair-maker.desktop::https://raw.githubusercontent.com/fibsussy/crosshair-maker/v${pkgver}/assets/crosshair-maker.desktop"
     "crosshair-maker.png::https://raw.githubusercontent.com/fibsussy/crosshair-maker/v${pkgver}/assets/crosshair-maker.png"
+    "crosshair-maker.install::https://raw.githubusercontent.com/fibsussy/crosshair-maker/v${pkgver}/crosshair-maker.install"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     install -Dm755 "$srcdir/crosshair-maker" "$pkgdir/usr/bin/crosshair-maker"
