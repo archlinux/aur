@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=SLabeler
+Comment=Proprietary software for labeling speech/singing audio
 Exec=slabeler-le
 Icon=slabeler-le
 Type=Application

@@ -12,11 +12,11 @@ depends=('libgcc' 'alsa-lib')
 options=('!strip' '!emptydirs')
 source=("SLabeler-linux.zip" "slabeler-le.desktop" "LICENSE")
 md5sums=('694265ada186a44250428ec8ad3dbc64'
-         '5ffdd72d199a462074071cecd9e33933'
-         'd5723dd67805fc1c5f971a9fe7ae8133')
+         '666391a8748ee269b6f23264bb1abcdc'
+         '4247e0c0b44b09b93901cab7b0d22ab0')
 sha512sums=('86ff3e451a6783a0066e4010128c720827995631ffd2943b63dca35cffa893a69808a1f6dbf1e34b79e9e7efd721e37a421807a66fe775ec5b7e230b113c89ec'
-            'bbd1921d15db93efb1d4b0e2a13751ebce21bc454d4cf6a5edd88ed999819c5b648a9901fb6f222d5ea6d8f6c24f8bc40ca01bd00494261c1fc9b42f719506da'
-            'a753aeb1bfccdb152253cf8ec379961116b1ac8ced96b09761cffe966c2bd438bf265f81abaea8aba42a1c8a90b32e093c9a4dfa0f09a7f45eca8abacb6e2f48')
+            'f1464580bd75087bc0e59e468073a21a0656897a04aad3c6c300a6b55adec2677f30da9b03447b2e3ed7bb1e3edd27923f6b8260a55a018cffd71056519d695a'
+            '2cbb910a59da520bb31ca9da3171cbf1aaf2ab82a04c7e7ba763113dc94fe572883617685302fdadb489922be12716a4c7e2684e4f384200ff6ed19ff3a60416')
 
 prepare() {
     if [ ! -f "${srcdir}/SLabeler-linux.zip" ]; then
