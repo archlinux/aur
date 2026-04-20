@@ -1,7 +1,7 @@
 pkgbase = sillytavern
 	pkgdesc = Locally installed user interface for LLMs, image generation, and TTS voice models
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SillyTavern/SillyTavern
 	arch = x86_64
 	arch = armv7h
@@ -15,6 +15,6 @@ pkgbase = sillytavern
 	options = !debug
 	backup = usr/share/sillytavern/config.yaml
 	source = sillytavern-1.17.0.tar.gz::https://github.com/SillyTavern/SillyTavern/archive/refs/tags/1.17.0.tar.gz
-	sha256sums = ff041b119b929923b0955d35bdeed3d9ed434dcfbc2b8224975a1fe36fc483e5
+	b2sums = e7168da6703eb5739a83dd466b11e4ae5687b01e0007d06d729f48de4fe24a4f5544fc17927e42fdc4ef3e963f91c75b50c6367387ec9c4b8f0c510fc1653387
 
 pkgname = sillytavern

@@ -3,7 +3,7 @@
 pkgname=sillytavern
 _pkgname=SillyTavern
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Locally installed user interface for LLMs, image generation, and TTS voice models"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/SillyTavern/$_pkgname"
@@ -14,18 +14,16 @@ conflicts=('sillytavern-git')
 options=('!strip' '!debug')
 backup=('usr/share/sillytavern/config.yaml')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ff041b119b929923b0955d35bdeed3d9ed434dcfbc2b8224975a1fe36fc483e5')
+b2sums=('e7168da6703eb5739a83dd466b11e4ae5687b01e0007d06d729f48de4fe24a4f5544fc17927e42fdc4ef3e963f91c75b50c6367387ec9c4b8f0c510fc1653387')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
-	export NODE_ENV=production
-	npm i --no-save --no-audit --no-fund --loglevel=error --no-progress --omit=dev --ignore-scripts
+	npm ci --cache="$srcdir/npm-cache" --omit=dev --ignore-scripts
 }
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
-	export NODE_ENV=production
-	npm rebuild
+	npm rebuild --cache="$srcdir/npm-cache"
 }
 
 package() {
