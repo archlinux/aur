@@ -1,6 +1,6 @@
 pkgbase = firefox-syncstorage
 	pkgdesc = Sync storage server with built-in token server for running a self-hosted firefox sync server
-	pkgver = 0.21.1
+	pkgver = 0.22.3
 	pkgrel = 1
 	url = https://github.com/mozilla-services/syncstorage-rs
 	install = firefox-syncstorage.install
@@ -16,14 +16,12 @@ pkgbase = firefox-syncstorage
 	makedepends = pkgconf
 	makedepends = mariadb-libs
 	depends = openssl
-	optdepends = mysql: for use with a local database server
+	optdepends = mysql: for use with a MySQL/MariaDB database server
 	options = !lto
 	backup = etc/firefox-syncstorage.toml
-	source = https://github.com/mozilla-services/syncstorage-rs/archive/0.21.1/syncstorage-rs-0.21.1.tar.gz
+	source = https://github.com/mozilla-services/syncstorage-rs/archive/0.22.3/syncstorage-rs-0.22.3.tar.gz
 	source = firefox-syncstorage.service
-	source = mariadb-compat.patch
-	sha512sums = dcf10d5d6e286dea69faaabdf6ad2f60e7d4e0563ec30dc113318c809d4224e05289423ed688080c7d74d97e5236176047ec889f96829ceb8dfc4aa9991e2d7e
+	sha512sums = 7bb4eab0e6927adb91a44bdc30444ea5ffccc43b3e8cb894453e691f4676aa3262b9ec6bbfd44d6df64007604c7871b701ef71393ff50490b2fa7df18315506e
 	sha512sums = 4c5fbb99160613ba3fb0fedce97f04f63b92699fe79c6edd899d4ec5f297c5a98c0c211df3eb9a6579c12c57f4c63513747ed8944a60fc76e32f1e0c0f5e3a95
-	sha512sums = fc24c504defb2961388833a5d6f96d883c533f58476de595f697ff5d42daabd21f8ce3c52e3f1897e089fcd8f2791d93ecc42eeee49f0100a17fd1689fa112c7
 
 pkgname = firefox-syncstorage
