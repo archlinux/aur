@@ -1,4 +1,4 @@
-# Maintainer: T9Tuco <fabiostaab12@gmail.com>
+# Maintainer: T9Tuco <tucot9@tuta.io>
 pkgname=archvital-git
 pkgver=r1.d5ea010
 pkgrel=1
