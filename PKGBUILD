@@ -2,7 +2,7 @@
 
 pkgname=synca-bin
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple, lightweight, open source file synchronization client (prebuilt AppImage)"
 arch=('x86_64')
 url="https://github.com/bryanrafaelbueno/Synca"
@@ -20,22 +20,37 @@ source=(
 )
 sha256sums=('4490bf12ecfe01b7367763ee674cc69cf16c4cff2db6bf6692468669312eff70')
 
+prepare() {
+  cd "$srcdir"
+
+  chmod +x "$_appimage"
+
+  # Extrai apenas para acessar ícones e desktop file
+  "./$_appimage" --appimage-extract >/dev/null
+}
+
 package() {
   cd "$srcdir"
 
-  # Instala AppImage em /usr/lib (padrão para blobs)
+  # Instala AppImage
   install -Dm755 "$_appimage" \
     "$pkgdir/usr/lib/synca/synca.AppImage"
 
-  # Wrapper binário
+  # Wrapper
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/synca" << 'EOF'
 #!/bin/bash
 exec /usr/lib/synca/synca.AppImage "$@"
 EOF
 
-  # Desktop entry básico (fallback)
-  install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/applications/synca.desktop" << 'EOF'
+  # Desktop entry (usa o original se existir)
+  if [ -f "squashfs-root/*.desktop" ]; then
+    desktop_file=$(ls squashfs-root/*.desktop | head -n1)
+    sed -i 's|Exec=.*|Exec=synca|' "$desktop_file"
+    install -Dm644 "$desktop_file" \
+      "$pkgdir/usr/share/applications/synca.desktop"
+  else
+    install -Dm644 /dev/stdin \
+      "$pkgdir/usr/share/applications/synca.desktop" << 'EOF'
 [Desktop Entry]
 Name=Synca
 Comment=Lightweight file sync client
@@ -45,4 +60,23 @@ Terminal=false
 Type=Application
 Categories=Utility;Network;
 EOF
+  fi
+
+  # Ícones
+  for size in 32 64 128 256 512; do
+    icon_path="$srcdir/squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/synca.png"
+    if [ -f "$icon_path" ]; then
+      install -Dm644 "$icon_path" \
+        "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/synca.png"
+    fi
+  done
+
+  # Licença
+  if [ -f "$srcdir/squashfs-root/usr/share/licenses/synca/LICENSE" ]; then
+    install -Dm644 "$srcdir/squashfs-root/usr/share/licenses/synca/LICENSE" \
+      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  elif [ -f "$srcdir/squashfs-root/LICENSE" ]; then
+    install -Dm644 "$srcdir/squashfs-root/LICENSE" \
+      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  fi
 }
