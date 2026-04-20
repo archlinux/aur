@@ -1,0 +1,27 @@
+#!/bin/bash
+luna_version=$(pacman -Q luna-translator | awk '{print $2}')
+
+# Initialize files if first run
+if [ ! -d "$HOME"/.luna-translator ] ; then
+    mkdir -p "$HOME"/.luna-translator
+    
+    echo 'Initializing...'
+    echo "$luna_version" > "$HOME"/.luna-translator/.version
+    cp -r /usr/share/luna-translator/files "$HOME"/.luna-translator/files
+    ln -s /usr/share/luna-translator/LunaTranslator.exe "$HOME"/.luna-translator/LunaTranslator.exe
+    ln -s -T /usr/share/luna-translator/LunaTranslator "$HOME"/.luna-translator/LunaTranslator
+
+    # Set Windows version
+    mkdir -p "$HOME"/.luna-translator/.wine
+    WINEPREFIX="$HOME"/.luna-translator/.wine wine winecfg /v win10
+fi
+
+# Update files if version changed
+if [ "$luna_version" != "$(cat "$HOME"/.luna-translator/.version)" ]; then
+    echo "Version changed, replacing files..."
+    rm -rf "$HOME"/.luna-translator/files
+    cp -r /usr/share/luna-translator/files "$HOME"/.luna-translator/files || exit 1
+    echo "$luna_version" > "$HOME"/.luna-translator/.version
+fi
+
+WINEPREFIX="$HOME"/.luna-translator/.wine wine "$HOME"/.luna-translator/LunaTranslator.exe "$@"

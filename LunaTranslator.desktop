@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=LunaTranslator
+Comment=Visual Novel Translator
+Keywords=luna;translator
+Icon=LunaTranslator.png
+Exec=/usr/bin/luna-translator
+Categories=Utility
+Terminal=false
