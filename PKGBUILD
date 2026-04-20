@@ -21,8 +21,8 @@ depends=(
     'gst-plugin-gtk4'
     'ffmpeg'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fdd16526c4315154013a7e88bab94873b24ca64bcebc4c101724cc82039d8073')
+source=("$pkgname-$pkgver.tar.gz")
+sha256sums=('e76f41444e7e5dd7372426ac366b344fcc29ca90b432a887316816d69c1318d4')
 
 package() {
     cd "Emendo-$pkgver"

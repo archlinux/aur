@@ -18,7 +18,7 @@ pkgbase = emendo
 	depends = gst-libav
 	depends = gst-plugin-gtk4
 	depends = ffmpeg
-	source = emendo-1.0.1.tar.gz::https://github.com/Gabriel2Silva/Emendo/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = fdd16526c4315154013a7e88bab94873b24ca64bcebc4c101724cc82039d8073
+	source = emendo-1.0.1.tar.gz
+	sha256sums = e76f41444e7e5dd7372426ac366b344fcc29ca90b432a887316816d69c1318d4
 
 pkgname = emendo
