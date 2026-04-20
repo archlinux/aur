@@ -1,7 +1,7 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 pkgname=lektra-bin
 pkgver=0.6.9
-pkgrel=2
+pkgrel=3
 pkgdesc="High-performance PDF reader that prioritizes screen space and control"
 arch=('x86_64')
 url="https://codeberg.org/lektra/lektra"
@@ -16,7 +16,7 @@ conflicts=('lektra' 'lektra-git')
 source=(
     "lektra-${pkgver}-x86_64.tar.gz::https://codeberg.org/lektra/lektra/releases/download/v${pkgver}/lektra-${pkgver}-x86_64.tar.gz"
 )
-sha256sums=('654fbbb88e6fe7f2078deae1b59f9b860c8d4cce2d95c56862ec1081f144a4b2')
+sha256sums=('7c290e47c9a2b9e7b25ccaca02eda9e5aabb973e8180348f0e844c4f1b992fcd')
 
 package() {
     install -Dm755 "${srcdir}/usr/bin/lektra"                              "${pkgdir}/usr/bin/lektra"
