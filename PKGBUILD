@@ -3,7 +3,7 @@
 _name="ondk"
 _pkgname="android-${_name}"
 pkgname="${_pkgname}-bin"
-pkgver=r29.6
+pkgver=r30.0
 pkgrel=1
 pkgdesc="Oxidized NDK - NDK repackaged with Rust toolchain"
 arch=(
@@ -42,15 +42,15 @@ options=(
 source_x86_64=(
   "${_pkgname}-${pkgver}-x86_64.tar.xz::${url}/releases/download/${pkgver}/${_name}-${pkgver}-linux.tar.xz"
 )
-sha256sums_x86_64=('4217061bf81da89681a557fcb93b49bcc36ae5ae5cc4a9d2944d54e4cadd2a1d')
-b2sums_x86_64=('5fa0f1148a70653bef33a90c2319fe19245cacaa09ea3c44efd4687cb5c321e4fa8e2ea272a39627f8a66e59f8bfd82340213b46ce1d298cb106db5d568d544e')
+sha256sums_x86_64=('3492ef0077a455a59ffc00f5cd71c4ba83ac04c15fdf58e22f280aa45310eeef')
+b2sums_x86_64=('f00d26cc153a65e5db4e28fd6eda01a5b4ff9135e5762cb149e98d1de52516fca3888a9be7a1cdfc453d0b829b151a00cb87d98a1948e9a98d8e7686c902cef0')
 
 package() {
   cd "${srcdir}"
   # install -vDm644 "${_pkgname}."{csh,sh} -t "${pkgdir}/etc/profile.d"
   
-  install -vd "${pkgdir}/opt/${_pkgname}-${pkgver}" "${pkgdir}/opt/android-sdk/ndk"
-  cp -aT --no-preserve=ownership "${_name}-${pkgver}" "${pkgdir}/opt/${_pkgname}-${pkgver}"
-  ln -vsf "/opt/${_pkgname}-${pkgver}" "${pkgdir}/opt/${_pkgname}"
-  ln -vsf "/opt/${_pkgname}-${pkgver}" "${pkgdir}/opt/android-sdk/ndk/magisk"
+  install -vd "${pkgdir}/opt/${_pkgname}" "${pkgdir}/opt/android-sdk/ndk"
+  cp -aT --no-preserve=ownership "${_name}-${pkgver}" "${pkgdir}/opt/${_pkgname}"
+  ln -vsf "/opt/${_pkgname}" "${pkgdir}/opt/${_pkgname}-${pkgver}"
+  ln -vsf "/opt/${_pkgname}" "${pkgdir}/opt/android-sdk/ndk/magisk"
 }
