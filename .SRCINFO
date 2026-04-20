@@ -1,7 +1,7 @@
 pkgbase = qabc
 	pkgdesc = ABC music notation minimal GUI.
-	pkgver = 1.14
-	pkgrel = 2
+	pkgver = 1.15
+	pkgrel = 1
 	url = https://github.com/be1/qabc
 	arch = i686
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = qabc
 	depends = fluidsynth
 	depends = soundfont-fluid
 	depends = shared-mime-info
-	source = qabc-1.14.tar.gz::https://github.com/be1/qabc/archive/refs/tags/1.14.tar.gz
+	source = qabc-1.15.tar.gz::https://github.com/be1/qabc/archive/refs/tags/1.15.tar.gz
 	source = soundfont.patch
-	sha512sums = 41e8ef3689bb36af8b2e3c7758868c3e8551ddf377e9a7dc94c36acbdc79eeb151c093b6d592b4cdb82581c384f695f94ac7443a4d45f72ccfab5c28188b08f8
+	sha512sums = b48cc3270f97d291e1ff0d09105307854012d5c4b3af4e5525f954704b40ef24263b50a1f8df68b66dbc82de23f02fdea68212b4abecda293facce53af102cab
 	sha512sums = edf3a10be120a452a4b024f0adb55bb5a4ec1ffcb56fcf7d8bdeb83189152baa5ebe77c873167d6ea23472b1575ffecab6c0810371a40234f2bda03a29dc00f8
 
 pkgname = qabc
