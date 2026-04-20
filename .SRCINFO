@@ -1,7 +1,7 @@
 pkgbase = fount-bin
 	pkgdesc = A terminal-based Fountain screenplay editor (Binary)
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BeetleBot/FountTUI
 	arch = x86_64
 	license = GPL3
