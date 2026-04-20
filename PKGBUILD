@@ -2,7 +2,7 @@
 
 pkgname=forgecode
 pkgver=2.11.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An AI-powered code assistant CLI tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/antinomyhq/forgecode"
@@ -22,7 +22,7 @@ makedepends=(
 )
 optdepends=('git: For git-related operations')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('a2e9257dd0e466cf0e60e806543ed7de270861fd3d34ee66e8d26dd90caa887e975f61bead8b367412aac4e4abee27358c748f317e01ac8e72de01eb8df8244c')
+b2sums=('fb3ad09f265660b290f5f57b6e9d330e3ab4b39cf782f20a1d105239525e7077a0a25ef457a9ef2354b1a4d33c125843e543a72e6522f8d776bb1e9d31b9c743')
 options=(!lto)
 
 prepare() {
