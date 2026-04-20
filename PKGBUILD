@@ -1,5 +1,6 @@
 # Maintainer: Mark <levmarkpost@gmail.com>
-pkgname=python-webos-ctl
+pkgname=pywebos-ctl
+pkgbase=pywebos-ctl
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="CLI tool to control LG webOS TVs"
