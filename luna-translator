@@ -12,8 +12,7 @@ if [ ! -d "$HOME"/.luna-translator ] ; then
     ln -s -T /usr/share/luna-translator/LunaTranslator "$HOME"/.luna-translator/LunaTranslator
 
     # Set Windows version
-    mkdir -p "$HOME"/.luna-translator/.wine
-    WINEPREFIX="$HOME"/.luna-translator/.wine wine winecfg /v win10
+    wine reg add "HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\LunaTranslator.exe" /f /t REG_SZ /v Version /d win11
 fi
 
 # Update files if version changed
@@ -24,4 +23,4 @@ if [ "$luna_version" != "$(cat "$HOME"/.luna-translator/.version)" ]; then
     echo "$luna_version" > "$HOME"/.luna-translator/.version
 fi
 
-WINEPREFIX="$HOME"/.luna-translator/.wine wine "$HOME"/.luna-translator/LunaTranslator.exe "$@"
+wine "$HOME"/.luna-translator/LunaTranslator.exe "$@"
