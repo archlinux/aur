@@ -10,6 +10,7 @@ post_install() {
   echo "    systemctl --user enable --now gamepad-osk"
   echo ""
   echo "  Toggle visibility:  gamepad-osk --toggle"
+  echo "  Toggle combo:       Set toggle_combo in config (e.g. guide+a) for built-in show/hide"
   echo ""
   echo ":: Your user must be in the 'input' group for gamepad access:"
   echo "   sudo usermod -aG input \$USER"
