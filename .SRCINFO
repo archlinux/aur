@@ -1,6 +1,6 @@
 pkgbase = coolercontrol-bin
 	pkgdesc = A program to monitor and control your cooling devices (binary release)
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://gitlab.com/coolercontrol/coolercontrol
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = coolercontrol-bin
 	depends = qt6-webengine
 	provides = coolercontrol
 	conflicts = coolercontrol
-	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/4.1.0/downloads/packages/coolercontrol_4.1.0
-	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/4.1.0/downloads/packages/coolercontrol-4.1.0.tar.gz
-	sha256sums = 5d6493be6522314a0624e616ca291bb7c77657dcafe113e604c14c9cdf66437e
-	sha256sums = 128ea179d9e1989b6c925fd2d1a2615b2a04536160fe8f58a86dcd0a093b0f71
+	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/4.2.0/downloads/packages/coolercontrol_4.2.0
+	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/4.2.0/downloads/packages/coolercontrol-4.2.0.tar.gz
+	sha256sums = ec806acd506278bcfb662df378df86c2c751da621760e710dad4a604bbce65a6
+	sha256sums = 8e068782fe7d5ae6c736e4b2af8475b4f1bc16422333e4cbee13afe649c87e4f
 
 pkgname = coolercontrol-bin
