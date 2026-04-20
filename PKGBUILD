@@ -2,12 +2,12 @@
 pkgname=python-aesqlapius
 _name=${pkgname#python-}
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage SQL queries as a Python API"
 arch=('any')
 url="https://github.com/AMDmi3/aesqlapius"
 license=('MIT')
-depends=('python')
+depends=('python' 'python-aiopg' 'python-asyncpg')
 makedepends=('python-installer' 'python-build' 'python-wheel')
 checkdepends=('pytest')
 optdepends=()

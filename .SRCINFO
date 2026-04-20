@@ -1,7 +1,7 @@
 pkgbase = python-aesqlapius
 	pkgdesc = Manage SQL queries as a Python API
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AMDmi3/aesqlapius
 	arch = any
 	license = MIT
@@ -10,6 +10,8 @@ pkgbase = python-aesqlapius
 	makedepends = python-build
 	makedepends = python-wheel
 	depends = python
+	depends = python-aiopg
+	depends = python-asyncpg
 	source = python-aesqlapius-0.0.9.tar.gz::https://github.com/AMDmi3/aesqlapius/archive/refs/tags/0.0.9.tar.gz
 	sha256sums = a159ed6b32cc6c5acdb63ce181ff5937d091bbe6b5b05149dd5c526739e6a9cc
 
