@@ -1,17 +1,18 @@
 pkgbase = bangla-typer-bin
 	pkgdesc = Desktop Bangla typing trainer
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/mehad605/Bangla_Typer
-	install = bangla-typer.install
 	arch = x86_64
-	license = GPL3
+	license = custom:CC-BY-NC-SA-4.0
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = libayatana-appindicator
 	provides = bangla-typer
 	conflicts = bangla-typer
-	source = https://github.com/mehad605/Bangla_Typer/releases/download/v1.0.0/bangla-typer-1.0.0.tar.gz
-	sha256sums = dba5f7a9a376a01bbb3f7db168616c2064e3d9ef2ff945c0906f464def0a297a
+	source = https://github.com/mehad605/Bangla_Typer/releases/download/v1.0.1/bangla-typer-1.0.1.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/mehad605/Bangla_Typer/v1.0.1/LICENSE
+	sha256sums = dc37c7642efe0e54fb76a70eefae613a5e2b239e3a73e6e7554db0d7f4262861
+	sha256sums = 674c75a8fa913a320d31f9afd27a34a27216a9b64627042a49cabe672aa107a2
 
 pkgname = bangla-typer-bin
