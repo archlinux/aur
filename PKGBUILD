@@ -12,10 +12,10 @@ provides=('camp-graph')
 conflicts=('camp-graph')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Obedience-Corp/camp-graph/releases/download/v${pkgver}/camp-graph-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('7b4ce8833f216a960144eee79f4e907efc1cf682291d1632015d9b2adddeccf1')
+sha256sums_aarch64=('78d7737f61f6b05640ccc9dab9ab6442d807f7d5368f97bf0052e90ad638d12f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Obedience-Corp/camp-graph/releases/download/v${pkgver}/camp-graph-${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('3a043f4f4f4abb107ca754acc407b0e7aa7d46a6bafcf279c330d85a5b3c9e9c')
+sha256sums_x86_64=('aea24bf6601fc3d414831f2dae0965c31dd94aff643588852113671184aea77c')
 
 package() {
   install -Dm755 "./camp-graph" "${pkgdir}/usr/bin/camp-graph"
