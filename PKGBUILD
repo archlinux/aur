@@ -2,7 +2,7 @@
 pkgname=smolvm-bin
 _pkgname=smolvm
 pkgver=0.5.19
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to build & run portable, lightweight, self-contained virtual machines.'
 arch=('x86_64')
 url='https://github.com/smol-machines/smolvm'
@@ -17,13 +17,15 @@ source=("$_pkgname-$pkgver-bin.tar.gz::$url/releases/download/v$pkgver/$_pkgname
     'use-system-libs.patch')
 sha256sums=('7acee4ad8e2ade57b74420b0aa173e126b65053f89b2461a00dfa5831f1757b2'
             'ac6a4050f2f415a02f3c223ddee932a07de627bc143059e9a1ea9df088e46909'
-            '3dffa88b68abfbd8b8fd6086e0c312f58a5561ec98ca7962a2680de4ddc19584')
+            'a64059e9dacb770103a0edec5e8bb11dcd954d688f688d03bb2ade53a17d5f0b')
 
 package() {
     cd "$_pkgname-$pkgver-linux-x86_64"
     patch < ../use-system-libs.patch
     install -Dm0755 smolvm "$pkgdir/usr/bin/smolvm"
     install -Dm0755 smolvm-bin "$pkgdir/usr/bin/smolvm-bin"
+    install -d "$pkgdir/usr/lib/smolvm/"
+    cp -r agent-rootfs/ "$pkgdir/usr/lib/smolvm/"
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ../LICENSE
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.txt
 }

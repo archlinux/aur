@@ -1,5 +1,5 @@
---- smolvm	2026-04-19 14:25:46.965572931 +0200
-+++ smolvm	2026-04-19 14:25:39.492477267 +0200
+--- smolvm	2026-04-18 13:16:29.000000000 +0200
++++ smolvm	2026-04-20 08:59:29.284347514 +0200
 @@ -25,7 +25,6 @@
  
  # The actual binary and libraries are in the same directory
@@ -8,7 +8,7 @@
  
  # Check if binary exists
  if [[ ! -x "$SMOLVM_BIN" ]]; then
-@@ -34,17 +33,4 @@
+@@ -34,17 +33,6 @@
      exit 1
  fi
  
@@ -18,7 +18,8 @@
 -    echo "Make sure you extracted the full distribution." >&2
 -    exit 1
 -fi
--
++export SMOLVM_AGENT_ROOTFS='/usr/lib/smolvm/agent-rootfs'
+ 
 -# Set library path based on OS and run
 -if [[ "$(uname -s)" == "Darwin" ]]; then
 -    export DYLD_LIBRARY_PATH="$SMOLVM_LIB${DYLD_LIBRARY_PATH:+:$DYLD_LIBRARY_PATH}"
