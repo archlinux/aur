@@ -14,6 +14,7 @@ pkgbase = hyprglaze-git
 	depends = wayland
 	depends = mesa
 	depends = libglvnd
+	depends = libpulse
 	optdepends = aws-cli-v2: AI buddy via AWS Bedrock
 	provides = hyprglaze
 	conflicts = hyprglaze
