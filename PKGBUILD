@@ -30,10 +30,10 @@ source=(git+"https://repo.palemoon.org/MoonchildProductions/${_repo}?signed#comm
 validpgpkeys=('3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC')
 sha1sums=('8a287fd50942645a557e7cf054dc065a43cc807e'
           'SKIP'
-          '0cc72ae4909479d031508146d037a3daffb0bbe7')
+          '2578b9cb0a4110c170d1c1cfa90fe929f3c760a9')
 sha256sums=('1b7b96ab385f7eb23a41ffb0247f010b1601006dbe4bbd3e03d4760d25145c9f'
             'SKIP'
-            '3562dcaeb658475bb35e9f90d96a40c45417c2c7d0c63623449e95e3c1dbfaa8')
+            '73ceef9fb5712c2fd150b24a7f02d47ffb7cbf35237f4d65eb1c71c0ce37917a')
 
 prepare() {
   sed 's#%SRCDIR%#'"${srcdir}"'#g' mozconfig.in > mozconfig
