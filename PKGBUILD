@@ -4,8 +4,8 @@
 #https://comate-ide.bj.bcebos.com/updates/stable/linux/x64/latest.json
 pkgname=comate-bin
 _pkgname=Comate
-pkgver=1.5.1
-_version=6eba022db2e3c774af6130c33e83b96772f0a8f2-248918218
+pkgver=1.5.2
+_version=ba864a6fbffcc29f3d703edd590578f3fc9fcad5-249402461
 _electronversion=39
 pkgrel=1
 pkgdesc="Code as you like, one step ahead, and understand your intelligent code assistant better.(Prebuilt version)"
@@ -49,7 +49,7 @@ sha256sums=('c3a1092a7721ed02b8f4a22a8ce96995f731986e9158d9bcc5475662aa836831'
             '0c8fee636da036e57fcde0385bdc698126c4b179de663ad315e8299d483abc9d'
             '787bf0078b80c66fa5b8191991700afd6e32e9f285cdb32f69791b8894c86fd5'
             'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
-sha256sums_x86_64=('b097ca48acc09b6177cc930276dddcec1ec03e5b0f29f1a393dac4ac114a5b9f')
+sha256sums_x86_64=('92924fc6b104d0e7e216768234b590cb929fdecffaa9eceb0eca9ead50bfd574')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/${_pkgname}-linux-x64/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -68,14 +68,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    find "${srcdir}/${_pkgname}-linux-x64/resources/app" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
-    if find "${srcdir}/${_pkgname}-linux-x64/resources/app" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/${_pkgname}-linux-x64/resources/app/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
-            fi
-        done
-    fi
+    cp -a "${srcdir}/${_pkgname}-linux-x64/resources/app/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}"*.desktop -t "${pkgdir}/usr/share/applications"
     if [ -x "/usr/bin/bash" ];then
