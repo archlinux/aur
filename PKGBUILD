@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=data-peek
 _pkgname=Data-Peek
-pkgver=0.20.1
+pkgver=0.21.0
 _electronversion=38
 _nodeversion=24
 pkgrel=1
