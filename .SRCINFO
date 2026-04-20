@@ -1,0 +1,13 @@
+pkgbase = hcl2json
+	pkgdesc = Convert hcl2 to json
+	pkgver = 0.6.9
+	pkgrel = 1
+	url = https://github.com/tmccombs/hcl2json
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	source = https://github.com/tmccombs/hcl2json/archive/refs/tags/v0.6.9.tar.gz
+	sha256sums = df7361e4ea5f34de02a81afa06f515bc6379efeb5ab86c154c6a31def6bcb3dc
+
+pkgname = hcl2json
