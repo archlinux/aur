@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!README.md
+!refindplus-bin.install
+!refindplus-install

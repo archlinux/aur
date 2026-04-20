@@ -1,0 +1,18 @@
+post_install() {
+  cat <<'EOF'
+RefindPlus has been installed under:
+  /usr/share/refindplus/refindplus
+
+To copy the complete tree to an ESP mounted at /boot:
+  sudo refindplus-install --esp /boot
+
+For removable-media fallback booting:
+  sudo refindplus-install --esp /boot --fallback
+
+The package does not modify your ESP automatically.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

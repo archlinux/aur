@@ -1,0 +1,158 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+source_dir=${REFINDPLUS_SOURCE_DIR:-/usr/share/refindplus/refindplus}
+config_source=${REFINDPLUS_CONFIG:-/etc/refindplus/config.conf}
+esp=''
+target='refindplus'
+fallback=0
+register=0
+label='RefindPlus'
+dry_run=0
+
+usage() {
+  cat <<'EOF'
+Usage: refindplus-install --esp PATH [options]
+
+Options:
+  --esp PATH       Mounted EFI system partition, such as /boot or /efi.
+  --target NAME    Directory under EFI/ for normal installs. Default: refindplus.
+  --fallback       Install as EFI/BOOT/BOOTX64.EFI for fallback/removable booting.
+  --register       Add a UEFI boot entry with efibootmgr. Not used with --fallback.
+  --label TEXT     Boot entry label for --register. Default: RefindPlus.
+  --dry-run        Print actions without copying files.
+  -h, --help       Show this help.
+
+The installer copies the complete package tree: config, icons, fonts, banners,
+keys, tools, and x64 filesystem drivers. An existing config.conf is preserved;
+the packaged config is copied as config.conf-sample instead.
+EOF
+}
+
+die() {
+  printf 'refindplus-install: %s\n' "$*" >&2
+  exit 1
+}
+
+run() {
+  printf '%s\n' "$*"
+  if (( ! dry_run )); then
+    "$@"
+  fi
+}
+
+copy_dir_contents() {
+  local from=$1
+  local to=$2
+
+  [[ -d $from ]] || return 0
+  run mkdir -p "$to"
+  run cp -R "${from}/." "$to/"
+}
+
+efi_loader_path() {
+  local path=$1
+  path=${path#/}
+  path=${path//\//\\}
+  printf '\\%s' "$path"
+}
+
+register_boot_entry() {
+  local esp_path=$1
+  local loader_path=$2
+  local part_source
+  local parent
+  local part_num
+
+  command -v efibootmgr >/dev/null 2>&1 || die 'efibootmgr is required for --register'
+  command -v findmnt >/dev/null 2>&1 || die 'findmnt is required for --register'
+  command -v lsblk >/dev/null 2>&1 || die 'lsblk is required for --register'
+
+  part_source=$(findmnt -nro SOURCE --target "$esp_path") || die "could not identify mount source for ${esp_path}"
+  parent=$(lsblk -nro PKNAME "$part_source" | head -n1)
+  part_num=$(lsblk -nro PARTN "$part_source" | head -n1)
+
+  [[ -n $parent && -n $part_num ]] || die "could not derive disk and partition from ${part_source}"
+  run efibootmgr -c -d "/dev/${parent}" -p "$part_num" -L "$label" -l "$(efi_loader_path "$loader_path")"
+}
+
+while (($#)); do
+  case "$1" in
+    --esp)
+      [[ $# -ge 2 ]] || die '--esp requires a path'
+      esp=$2
+      shift 2
+      ;;
+    --target)
+      [[ $# -ge 2 ]] || die '--target requires a name'
+      target=$2
+      shift 2
+      ;;
+    --fallback)
+      fallback=1
+      shift
+      ;;
+    --register)
+      register=1
+      shift
+      ;;
+    --label)
+      [[ $# -ge 2 ]] || die '--label requires text'
+      label=$2
+      shift 2
+      ;;
+    --dry-run)
+      dry_run=1
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      die "unknown option: $1"
+      ;;
+  esac
+done
+
+[[ -n $esp ]] || die 'missing --esp PATH'
+[[ -d $source_dir ]] || die "package tree not found: ${source_dir}"
+[[ -d $esp ]] || die "ESP path does not exist: ${esp}"
+[[ $target != *'/'* && $target != *'\\'* && -n $target ]] || die '--target must be a single directory name'
+
+if (( fallback )); then
+  dest="${esp%/}/EFI/BOOT"
+  loader_name='BOOTX64.EFI'
+  loader_rel='EFI/BOOT/BOOTX64.EFI'
+  (( ! register )) || die '--register is not used with --fallback'
+else
+  dest="${esp%/}/EFI/${target}"
+  loader_name='refind_x64.efi'
+  loader_rel="EFI/${target}/refind_x64.efi"
+fi
+
+run mkdir -p "$dest"
+run install -m0644 "${source_dir}/refind_x64.efi" "${dest}/${loader_name}"
+run install -m0644 "${source_dir}/x64_RefindPlus_REL.efi" "${dest}/x64_RefindPlus_REL.efi"
+run install -m0644 "${source_dir}/x64_RefindPlus_DBG.efi" "${dest}/x64_RefindPlus_DBG.efi"
+
+if [[ -e ${dest}/config.conf ]]; then
+  run install -m0644 "${source_dir}/config.conf-sample" "${dest}/config.conf-sample"
+else
+  [[ -f $config_source ]] || config_source="${source_dir}/config.conf"
+  run install -m0644 "$config_source" "${dest}/config.conf"
+fi
+
+run install -m0644 "${source_dir}/config.conf-sample-Dev" "${dest}/config.conf-sample-Dev"
+copy_dir_contents "${source_dir}/icons" "${dest}/icons"
+copy_dir_contents "${source_dir}/fonts" "${dest}/fonts"
+copy_dir_contents "${source_dir}/banners" "${dest}/banners"
+copy_dir_contents "${source_dir}/keys" "${dest}/keys"
+copy_dir_contents "${source_dir}/drivers_x64" "${dest}/drivers_x64"
+copy_dir_contents "${source_dir}/tools" "${dest}/tools"
+
+if (( register )); then
+  register_boot_entry "$esp" "$loader_rel"
+fi
+
+printf 'Installed RefindPlus to %s\n' "$dest"
