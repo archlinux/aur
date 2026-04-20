@@ -1,0 +1,48 @@
+pkgbase = motorbridge
+	pkgdesc = Unified CAN motor control stack with a vendor-agnostic Rust core, stable C ABI, and Python/C++ bindings
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/tianrking/motorbridge
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = glibc
+	depends = libgcc
+	depends = python
+	options = !strip
+	options = !debug
+	options = staticlibs
+	options = !lto
+	source = motorbridge::git+https://github.com/tianrking/motorbridge.git#tag=v0.2.2
+	sha256sums = 0ce1f73b081bdb11d1f0110da07319eae60279859ca73b9adf38067361587836
+
+pkgname = motorbridge
+	arch = x86_64
+	depends = glibc
+	depends = libgcc
+	provides = motorbridge
+	conflicts = motorbridge
+
+pkgname = libmotorbridge
+	pkgdesc = Unified CAN motor control stack with a vendor-agnostic Rust core, stable C ABI, and Python/C++ bindings - cpp module
+	arch = x86_64
+	depends = glibc
+	depends = libgcc
+	provides = libmotorbridge
+	conflicts = libmotorbridge
+
+pkgname = python-motorbridge
+	pkgdesc = Unified CAN motor control stack with a vendor-agnostic Rust core, stable C ABI, and Python/C++ bindings - python module
+	arch = x86_64
+	depends = glibc
+	depends = libgcc
+	depends = python
+	provides = python-motorbridge
+	conflicts = python-motorbridge
