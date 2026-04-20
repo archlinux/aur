@@ -2,25 +2,27 @@
 # Maintainer: Bas <hi@bas.sh>
 pkgname=goat-cli
 pkgver=0.2.3 # renovate: datasource=github-tags depName=bluesky-social/goat
-pkgrel=1
+pkgrel=2
 pkgdesc="Go AT protocol CLI tool"
 arch=('x86_64')
 url="https://github.com/bluesky-social/goat"
 license=('MIT')
-depends=()
+depends=('glibc')
 makedepends=('go')
-options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bluesky-social/goat/archive/v$pkgver.tar.gz")
 sha256sums=('b94e45a9c4d1ada49a4635f3faa36f4e53d7ce2e09461a54a5d4f113cd461337')
 
 build() {
 	cd "goat-$pkgver" || exit 1
+	export GOPATH="${srcdir}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	make build
+	export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
+	export GOEXPERIMENT="loopvar,nodwarf5"
+
+	go build -ldflags "-compressdwarf=false -linkmode external" .
 }
 
 package() {
