@@ -1,7 +1,7 @@
 pkgbase = synca
 	pkgdesc = Simple, lightweight, and open source file synchronization client
 	pkgver = 0.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bryanrafaelbueno/Synca
 	install = synca.install
 	arch = x86_64
