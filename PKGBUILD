@@ -1,7 +1,7 @@
 # Maintainer: phlppbmm <philipp.baumm@gmx.net>
 pkgname=python-chromadb-bin
-pkgver=1.5.7
-pkgrel=7
+pkgver=1.5.8
+pkgrel=1
 pkgdesc="AI-native open-source embedding database (prebuilt)"
 arch=('x86_64')
 url="https://github.com/chroma-core/chroma"
@@ -38,7 +38,7 @@ makedepends=('python-installer')
 provides=('python-chromadb')
 conflicts=('python-chromadb')
 source=(
-    "https://files.pythonhosted.org/packages/e4/30/c81b33b2d8d3d03c4ca7364348e03e6e80d15b36dd6bd1ca6c22e03a89f5/chromadb-${pkgver}-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+    "https://files.pythonhosted.org/packages/4d/45/53556edcbbd273c54b81e07c1b21c79f7209ab4edf9603f94babb4ecf4f6/chromadb-1.5.8-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
     "https://files.pythonhosted.org/packages/2e/76/932be4b50ef6ccedf9d3c6639b056a967a86258c6d9200643f01269211ca/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
     "https://files.pythonhosted.org/packages/57/83/c77dfeed04022e8930b08eedca2b6e5efed256ab3321396fde90066efb65/pypika-0.51.1-py2.py3-none-any.whl"
     "https://files.pythonhosted.org/packages/2c/ec/d0050e82b4be2126f4769612f0ef9734348cb736a23754ea238202285343/posthog-7.10.3-py3-none-any.whl"
