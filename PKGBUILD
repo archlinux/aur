@@ -1,14 +1,14 @@
-# Maintainer: Torge Matthies <openglfreak at googlemail dot com>
+# Maintainer: Reyka Matthies <openglfreak at googlemail dot com>
 
 _omit_dlls=false
 _dotnet_ver=10.0
-_runtime_ver=0
-_sdk_ver=100
+_runtime_ver=4
+_sdk_ver=104
 
 pkgname='openshock-desktop-bin'
 pkgdesc='An OpenShock application with module support (pre-built version)'
-pkgver='1.1.2'
-pkgrel='2'
+pkgver='1.1.4'
+pkgrel='1'
 arch=('x86_64')
 url='https://github.com/OpenShock/Desktop'
 license=('AGPL-3.0-only')
@@ -19,7 +19,7 @@ source=("OpenShock.Desktop.Photino.Linux.$pkgver.zip::https://github.com/OpenSho
         'openshock-desktop'
         'OpenShock-Desktop.desktop')
 noextract=("OpenShock.Desktop.Photino.Linux.$pkgver.zip")
-sha256sums=('8434c5b2ddbf2d3290b0229a7edc32acdfc9f1fbbc2cf828db247a8870a89c83'
+sha256sums=('17c5c3baafdb4933ffdf844c409da1c5c624f5d3d65bb01e2f1cc5f60e00ee4c'
             '4fe84f7aa610d36698d4386e57f4c5a141700032ec94df14e0e03eb48ef9e1ca'
             'f56461a0d3dba950a927e225ceb34b885b256907098d1bbcd35c972d6a867c6e')
 
@@ -41,24 +41,32 @@ prepare() {
 
 build() {
     rm OpenShock.Desktop.Photino.Linux/sasscompiler.json
-    rm OpenShock.Desktop.Photino.Linux/wwwroot/OpenShock.min.css.br
-    rm OpenShock.Desktop.Photino.Linux/wwwroot/OpenShock.min.css.gz
-    rm OpenShock.Desktop.Photino.Linux/wwwroot/app.css.br
-    rm OpenShock.Desktop.Photino.Linux/wwwroot/app.css.gz
-    rm OpenShock.Desktop.Photino.Linux/wwwroot/index.html.br
-    rm OpenShock.Desktop.Photino.Linux/wwwroot/index.html.gz
-    rm OpenShock.Desktop.Photino.Linux/wwwroot/photino.html.br
-    rm OpenShock.Desktop.Photino.Linux/wwwroot/photino.html.gz
     rm OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.css.br
     rm OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.css.gz
     rm OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.js.br
     rm OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.js.gz
-    rm OpenShock.Desktop.Photino.Linux/wwwroot/images/Icon.svg.br
-    rm OpenShock.Desktop.Photino.Linux/wwwroot/images/Icon.svg.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.js.map
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.js.map.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/_content/MudBlazor/MudBlazor.min.js.map.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/css/OpenShock.min.css.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/css/OpenShock.min.css.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/_framework/blazor.server.js.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/_framework/blazor.server.js.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/_framework/blazor.web.js.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/_framework/blazor.web.js.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/index.html.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/index.html.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/js/tailwindcss-browser.js.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/js/tailwindcss-browser.js.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/photino.html.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/photino.html.gz
+
     rm OpenShock.Desktop.Photino.Linux/wwwroot/images/IconLoadingSpin.svg.br
     rm OpenShock.Desktop.Photino.Linux/wwwroot/images/IconLoadingSpin.svg.gz
     rm OpenShock.Desktop.Photino.Linux/wwwroot/images/IconSlowSpin.svg.br
     rm OpenShock.Desktop.Photino.Linux/wwwroot/images/IconSlowSpin.svg.gz
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/images/Icon.svg.br
+    rm OpenShock.Desktop.Photino.Linux/wwwroot/images/Icon.svg.gz
     rm OpenShock.Desktop.Photino.Linux/wwwroot/images/NavbarLogoSpin.svg.br
     rm OpenShock.Desktop.Photino.Linux/wwwroot/images/NavbarLogoSpin.svg.gz
     rm OpenShock.Desktop.Photino.Linux/wwwroot/images/openshock-icon.ico.br
