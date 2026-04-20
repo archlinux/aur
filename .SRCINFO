@@ -10,6 +10,7 @@ pkgbase = hyprglaze-git
 	makedepends = zig
 	makedepends = wayland-protocols
 	makedepends = stb
+	depends = hyprland
 	depends = wayland
 	depends = mesa
 	depends = libglvnd
