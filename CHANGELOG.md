@@ -1,5 +1,148 @@
 # Changelog
-## PENDING 2.0.0 (2022-09-26)
+## 2.7.7 (2025-07-16)
+No code change - only build infrastructure
+
+## 2.7.6 (2025-07-16)
+### Enhancements
+None
+
+### Bug Fixes
+* Fixes dependency_definition raise Awaitable singleton raises RuntimeError (#274) thanks @zzl221000
+
+## 2.7.5 (2024-12-10)
+### Enhancements
+None
+
+### Bug Fixes
+* Fixes bug in fast api integration where only the first `depends` was built correctly (#254)
+
+## 2.7.4 (2024-12-08)
+### Enhancements
+None
+
+### Bug Fixes
+* Fixes compilation issues so all supported versions of python now have a compiled build.
+
+
+## 2.7.2 (2024-12-06)
+### Enhancements
+None
+
+### Bug Fixes
+* Honour defaults when constructing dependencies if they value can't be constructed by the container.
+* Exception raised when a dependency definition causes a circle.
+
+## 2.7.1 (2024-11-29)
+### Enhancements
+None
+
+### Bug Fixes
+* Fixes build issues blocking publishing to pypi
+
+## 2.7.0 (2024-11-22)
+### Enhancements
+* Supports python 3.13
+
+### Bug Fixes
+None
+
+### Backwards incompatible changes
+* Formal support for 3.8 dropped
+
+## 2.6.0 (2023-11-19)
+### Enhancements
+* Supports python 3.12
+
+### Bug Fixes
+None
+
+### Backwards incompatible changes
+* Formal support for 3.7 dropped - but the code should still work
+
+## 2.5.0 (2023-09-20)
+### Enhancements
+* Add support for pydantic v2. Thanks to @rickythefox
+
+### Bug Fixes
+None
+
+### Backwards incompatible changes
+None
+
+## 2.4.2 (2023-09-20)
+### Enhancements
+None
+
+### Bug Fixes
+* Awaitable singleton no longer raises RuntimeError on second usage - thanks to @thiromi
+
+### Backwards incompatible changes
+None
+
+## 2.4.1 (2023-03-21)
+### Enhancements
+None
+
+### Bug Fixes
+* Fixes BC breaking change in UnresolvableType definition released in 2.4.0.
+
+### Backwards incompatible changes
+None
+
+## 2.4.0 (2023-03-21)
+### Enhancements
+* Better error messages when UnresolvableType is raised. The dependency chain is now printed. Thanks to @bastienexertier via #235
+
+### Bug Fixes
+None
+
+### Backwards incompatible changes
+None
+
+## 2.3.0 (2023-03-06)
+### Enhancements
+* Request level singletons can now depend on the request in the fastapi integration. Added in #231 thanks to @alkimake.
+
+### Bug Fixes
+None
+
+### Backwards incompatible changes
+None
+
+## 2.2.0 (2022-11-10)
+### Enhancements
+* Adds working version of experimental AsyncContextContainer. This is the async version of the ContextContainer. At this
+point the code and interface should be considered unstable although every effort to avoid breaking it will be taken.
+* Binding a function to a ContextContainer (or the new AsyncContextContainer) automatically wraps the bound function in 
+a "with"
+
+### Bug Fixes
+* Fixed bug in ContextContainer where singletons lived longer than the `with` block. 
+
+### Backwards incompatible changes
+None
+
+## 2.1.0 (2022-11-01)
+### Enhancements
+* Adds formal 3.11 support
+
+### Bug Fixes
+None
+
+### Backwards incompatible changes
+None
+
+## 2.0.1 (2022-10-25)
+### Enhancements
+None
+
+### Bug Fixes
+* Make compilation is not the default but opt in. This fixes issues with untested platforms that would not support compilation.
+
+### Backwards incompatible changes
+None
+
+## 2.0.0 (2022-09-26)
 
 ### Enhancements
 * Add helper exception if an async type is requested without being wrapped in Awaitable.

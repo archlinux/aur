@@ -2,10 +2,10 @@
 
 pkgname=python-lagom
 _pkg="${pkgname#python-}"
-pkgver=2.0.0
+pkgver=2.7.7
 pkgrel=1
 pkgdesc="Autowiring dependency injection container"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/meadsteve/lagom"
 license=('MIT')
 depends=('python')
@@ -17,11 +17,12 @@ checkdepends=(
 	'python-httpx'
 	'python-pydantic'
 	'python-pytest'
+    'python-pytest-asyncio'
 	'python-starlette')
 optdepends=('python-pydantic')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ab7fc2b63ef65e3f8cbaec67d165d8992f8addc23d42f2bc395f1db5eef1a5aa')
+sha256sums=('8a9fd4ab9f58150c2673ec92c36b704b6f1bf4180af66dfbc131c4cd53625a72')
 
 prepare() {
 	cd "$_pkg-$pkgver"
@@ -41,9 +42,9 @@ check() {
 
 package() {
 	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$_pkg-$pkgver.dist-info/licenses/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
