@@ -1,7 +1,7 @@
 pkgbase = feynman-cli
 	pkgdesc = Open-source AI research agent CLI
 	pkgver = 0.2.40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/getcompanion-ai/feynman
 	arch = x86_64
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=feynman-cli
 pkgver=0.2.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source AI research agent CLI"
 arch=('x86_64')
 url="https://github.com/getcompanion-ai/feynman"
@@ -15,10 +15,6 @@ sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"
-  
-  #pwd
-
-  #export NODE_ENV=production
 
   npm ci
   
@@ -34,7 +30,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   cat << 'EOF' > "$pkgdir/usr/bin/feynman"
 #!/bin/sh
-# Ensure writable directories
+
 export FEYNMAN_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/feynman"
 export FEYNMAN_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/feynman"
 
