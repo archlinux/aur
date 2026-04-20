@@ -1,0 +1,27 @@
+pkgbase = omarchy-world-clock-bin
+	pkgdesc = Unofficial Waybar world clock integration for Omarchy
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/olivoil/omarchy-world-clock
+	install = omarchy-world-clock-bin.install
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = graphene
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = libgcc
+	optdepends = waybar: status bar integration
+	optdepends = hyprland: target compositor for Omarchy sessions
+	provides = omarchy-world-clock=0.1.0
+	conflicts = omarchy-world-clock
+	options = !strip
+	options = !debug
+	source = LICENSE.omarchy-world-clock
+	sha256sums = 6fe2cafb9b5011c7c3de24ba23fc38394670ba7cb8b335a44ee03854b1de9143
+	source_x86_64 = omarchy-world-clock-0.1.0-x86_64.tar.gz::https://github.com/olivoil/omarchy-world-clock/releases/download/v0.1.0/omarchy-world-clock-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 558aeaad82b87bd3822c8b59d67832fc65f2a2117697732d42592645404639dc
+
+pkgname = omarchy-world-clock-bin
