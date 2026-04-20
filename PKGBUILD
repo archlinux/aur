@@ -1,7 +1,7 @@
 # Maintainer: Bryan Rafael <brthy467@gmail.com>
 pkgname=synca
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple, lightweight, and open source file synchronization client"
 arch=('x86_64')
 url="https://github.com/bryanrafaelbueno/Synca"
@@ -41,7 +41,7 @@ package() {
   
   # Install binaries
   install -Dm755 "$srcdir/Synca-$pkgver/desktop/src-tauri/target/release/synca" "$pkgdir/usr/bin/synca"
-  install -Dm755 "$srcdir/Synca-$pkgver/bin/synca-daemon" "$pkgdir/usr/bin/synca-daemon"
+  install -Dm755 "$srcdir/Synca-$pkgver/bin/synca-daemon-x86_64-unknown-linux-gnu" "$pkgdir/usr/bin/synca-daemon"
   
   # Desktop entry
   cat > "$pkgname.desktop" <<EOF
