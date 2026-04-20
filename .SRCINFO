@@ -1,6 +1,6 @@
 pkgbase = clad
 	pkgdesc = Enables automatic differentiation for C++
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/vgvassilev/clad
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = clad
 	makedepends = cmake
 	makedepends = python
 	makedepends = git
-	depends = llvm
-	depends = clang
-	source = git+https://github.com/vgvassilev/clad#tag=v2.2
-	sha256sums = e20bca441bf9175bc14691789896d6e37533c086728733b845f455a0fafc4bad
+	depends = llvm21
+	depends = clang21
+	source = git+https://github.com/vgvassilev/clad#tag=v2.3
+	sha256sums = f165083a84200ffed3365b015546b95aabffc63e0d2221255a25bdd47c903d4c
 
 pkgname = clad
