@@ -1,6 +1,6 @@
 # Maintainer: HAHWUL <hahwul@gmail.com>
 pkgname=deadfinder
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Find dead (broken) links in web pages, URL lists, and sitemaps"
 arch=('x86_64' 'aarch64')
