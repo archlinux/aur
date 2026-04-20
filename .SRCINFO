@@ -1,0 +1,17 @@
+pkgbase = cubo-rubik-git
+	pkgdesc = Simulador realista de Cubo de Rubik en 3D con Python y OpenGL
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/adribriffaca-creator/cubo-rubik
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pyqt6
+	depends = python-opengl
+	provides = cubo-rubik
+	conflicts = cubo-rubik
+	source = git+https://github.com/adribriffaca-creator/cubo-rubik.git
+	md5sums = SKIP
+
+pkgname = cubo-rubik-git
