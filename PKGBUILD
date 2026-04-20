@@ -13,11 +13,11 @@ conflicts=('fwci')
 depends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blindspotsoftware/firmwareci/releases/download/v${pkgver}/fwci-${pkgver}.linux-arm64.tar.gz")
-sha256sums_aarch64=('63b05ccffd2aedfcb04c1ea2b5dbef5b54037b2a3a2fc42d9189d26c4f098081')
+sha256sums_aarch64=('2e04d18b8707255f0e50d364b97d462c50ed77f87a99b6a488faee7a51d1d721')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blindspotsoftware/firmwareci/releases/download/v${pkgver}/fwci-${pkgver}.linux-amd64.tar.gz")
-sha256sums_x86_64=('52f64469b0e26b09e70a44a94b5845bc6b7002f90f7e4a6fed5ad18054e5a1ed')
+sha256sums_x86_64=('fcaef2f7abf9666a918851b03ec1c3aaa7d58da0229d51505291cdeeff2c387a')
 
 package() {
-  install -Dm755 "./fwci-0.15.4.linux-arm64" "${pkgdir}/usr/bin/fwci-0.15.4.linux-arm64"
+  install -Dm755 "./fwci-0.15.4.linux-amd64" "${pkgdir}/usr/bin/fwci-0.15.4.linux-amd64"
 }
