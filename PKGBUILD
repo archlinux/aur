@@ -1,7 +1,7 @@
 # Maintainer: Michael Tews <michael at tews dot dev>
 
 pkgname=rclone-studip-git
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Rclone with a Stud.IP backend"
 arch=(any)
