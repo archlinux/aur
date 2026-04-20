@@ -1,6 +1,6 @@
 pkgbase = go-ios-bin
 	pkgdesc = A collection of tools to interact with iOS devices on Linux
-	pkgver = 1.0.209
+	pkgver = 1.0.210
 	pkgrel = 1
 	url = https://github.com/danielpaulus/go-ios
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = go-ios-bin
 	conflicts = go-ios
 	options = !strip
 	options = !debug
-	source = go-ios-bin-1.0.209.zip::https://github.com/danielpaulus/go-ios/releases/download/v1.0.209/go-ios-linux.zip
+	source = go-ios-bin-1.0.210.zip::https://github.com/danielpaulus/go-ios/releases/download/v1.0.210/go-ios-linux.zip
 	source = LICENSE::https://raw.githubusercontent.com/danielpaulus/go-ios/main/LICENSE
-	sha256sums = 41a869ed536cc6780bb5b2389e2f317ba61b48cb012fdb4d548cf0a782591051
+	sha256sums = e49a762ba733897931d16c9bf70e1f26bd806849999325f08e413c3872e11d56
 	sha256sums = d368be6f632f8f928369c6f1923cf2f884a1ae42a5f0dd218acd96f9bcfa75b4
 
 pkgname = go-ios-bin
