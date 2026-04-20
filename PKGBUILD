@@ -6,7 +6,7 @@
 pkgname=firefox-vaapi
 _pkgname=firefox
 pkgver=150.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, Private & Safe Web Browser (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
@@ -88,10 +88,9 @@ source=(
   org.mozilla.$_pkgname.metainfo.xml
   0000-remove-nvidia-blocklist.patch
   0001-Install-under-remoting-name.patch
-  0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
-  0003-Use-wasm32-wasip1-target.patch
-  0005-fix-encoding_rs.patch
-  encoding_rs.cargo-checksum.json
+  0002-Bug-2033279-Make-enable-rust-simd-work-with-Rust-1.9.patch
+  0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  0004-Bug-2023597-Use-wasm32-wasip1-target-for-clang-22.1-.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -105,10 +104,9 @@ sha256sums=('fbe43df4c8a135cee4b29c375574bd9f609ee37a9f3b43bb96a83680e8ef3994'
             '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1'
             '06e30b49678a48f4b6d5eb74de91f743734c7d21efd442777c77aee8cf5dad85'
             '4c53a3681e67fd586869c4c81c6ea195aa5b9ac4c08945560a3afc7c5b74b073'
-            '46f7eefdc181b29c73a261558e3ba396e736968e8630e1588c274728b9a4b54a'
-            '53ef3a18bde8cfe321b37f0e6f60272620f54c9696080d62eea632ce98ef34ca'
-            '5f24c0cdfa0f7ce87e5b6bce0c626acce6039b35728c30fbc152d1028bd2a61a'
-            'b774509ddc4808ef9c569467e8bd2b2f5c5a2dba4725bb5ad7079389c2378f9c')
+            '9f10d9bfcaa3a8dd86a8654431f820716a45a72a885c29fd6359bccc7bcdaefa'
+            'f579e02644ef9c29da5cd61d2c9213ba1c3f7a1aa8abf601bdf07cbbbadb1ce3'
+            'd6e1dbafe56bc52c8ab6cbf9542cf80e89c1857a71ce08bbbd82804909bcb76f')
 b2sums=('046ed34f4ccdeab26420bb394621887293791fe67a45b548819baaad1f93f72d675d461c9c0a9f3d88cc3ae9cd33a9d614904748b3ac70ad900f933013c397eb'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
@@ -116,10 +114,9 @@ b2sums=('046ed34f4ccdeab26420bb394621887293791fe67a45b548819baaad1f93f72d675d461
         '2ce33432f8a73a4f1a412b7a065d3c124e1ca9f6bdf3fad0407e897efc0840f8ef43eeeb1b9bef4a102d9fac0b2c4a2ef205726b817f83fe9c3742d076778b14'
         'a59a736b1176ce523ec61357bc918b5792e7e35db0239e6776179d1e5942fd69640735ebf19e0824b71ddbdb3bd96a836e89cd2dced498a32374ebd7308db778'
         '82c1e48ba8ef31df7ea3ec75114b81cd8cb164c84116d0d8cad58e68a3af3417d91a660f2fa17365af359828c19064fd6c0893f390e5758cf82c82c5e6292f22'
-        '43e91a14bd963a36de72898b51657c5590f8ba9717494ea2eae44cc6e43a498eadd279a2c3e935b43b4d5165ddbcb232950019f08b3a0574d540f4ec629769f2'
-        'da279ffe2f16be7ce7342b4c60da00e843aec8edeef4ac41e769fb1aa5a01dcb90cabaf68413da9871329881e5226b74a820b20c3da091e5b21d4966a3c7c6ce'
-        'e7853b31a5d5824c00f6ca814976ac936eb07cdd59daa33c95bd95abf9dacf026a0bce08ac52229823042efd73be9854ce9a5dc1bb39c0cbdff4097d079933f3'
-        '5a1534aac9411f84c47c35d258e5eb2db21492bd8a349a8817e3311981b36c0b999a0481bc17c113bd90644867592473eb2e10a55b05fed769ec197267f88b8c')
+        '29772ea097f9f07abec2d79371885c1f9861b0655cdf03bcfb66517cb6433196f41791918bb36ccda3dceff30e46c0937d010ec43911a79e1cb025f014499660'
+        '01caaec5254c01cf7d11cd2cdc2a2909fc2105a9d9fa6c958c9520dbd49b95635d6f6ee69804218319ddbc533fe0860cfaf97fc9010341ca2edc1407d3d9e729'
+        'abf89c9a6c025f1a5c4b9dd8888eb2042ca412c966d1262a996735a171fdbdbc473461a8e751ec5c0e2f613f9d9dfd2c5d1975243e6fe074fd73a1462f78c759')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -137,17 +134,17 @@ prepare() {
   # Make different channels installable in parallel
   patch -Np1 -i ../0001-Install-under-remoting-name.patch
 
+  # Fix build with Rust 1.95.0
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=2033279
+  patch -Np1 -i ../0002-Bug-2033279-Make-enable-rust-simd-work-with-Rust-1.9.patch
+
   # Fix build with glibc 2.43
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
-  patch -Np1 -i ../0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  patch -Np1 -i ../0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
   
   # Fix build with Clang 22
-  patch -Np1 -i ../0003-Use-wasm32-wasip1-target.patch
-  
-  # Rust 1.95 require changes
-  # https://github.com/hsivonen/encoding_rs/issues/131  
-  patch -d third_party/rust/encoding_rs/ -Np1 -i "$(pwd)/../0005-fix-encoding_rs.patch"
-  cp ../encoding_rs.cargo-checksum.json third_party/rust/encoding_rs/.cargo-checksum.json
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=2023597
+  patch -Np1 -i ../0004-Bug-2023597-Use-wasm32-wasip1-target-for-clang-22.1-.patch
 
   echo -n "$_google_api_key" >google-api-key
 
