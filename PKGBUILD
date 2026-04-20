@@ -1,6 +1,6 @@
 # Maintainer: eightscrow
 pkgname=omarchy-circle-to-search
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Draw to select and search with Google Lens — Omarchy edition"
 arch=('any')
@@ -28,7 +28,7 @@ provides=('circle-to-search')
 conflicts=('circle-to-search')
 install=omarchy-circle-to-search.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1f10ce4d2f62acaaaf600b83c56c19133985c1a9a56179284d1672b984bfe171')
+sha256sums=('e725b2ccfbde58007942aacbbaf120e9bd2c990d6d177e626ac38efe95cf2af7')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
