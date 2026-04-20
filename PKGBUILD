@@ -2,22 +2,25 @@
 
 _pkgname=iventoy
 pkgname="${_pkgname}-bin"
-pkgver=1.0.26
+pkgver=1.0.27
 pkgrel=1
 pkgdesc="An enhanced version of the PXE server"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://www.iventoy.com"
-license=("custom")
+license=("custom:END USER LICENSE AGREEMENT (EULA) FOR IVENTOY PROFESSIONAL/FREE EDITION")
+install="${_pkgname}.install"
 provides=("${_pkgname}")
 install="${_pkgname}.install"
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/ventoy/PXE/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-free.tar.gz"
-        "${_pkgname}.sh"
+source=("${_pkgname}.sh"
         "${_pkgname}.service"
         "${_pkgname}.tmpfiles")
-sha256sums=('07ff09c930c79b0e4e4824c09b7e2a6219498777b6be287ef4dbac806f287daf'
-            'ef27beecddc5a9650194e8b033ae0b3172f29a9bf352cfff079a61ece86a3263'
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/ventoy/PXE/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64-free.tar.gz")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/ventoy/PXE/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64-trial.tar.gz")
+sha256sums=('ef27beecddc5a9650194e8b033ae0b3172f29a9bf352cfff079a61ece86a3263'
             '7d0c73aa37f35ec8b8ab2b32ba415b3efed0e1f1a677f64f64349f102d173562'
             '4f2180dc7afdeebf062bc6cbf8186c652394196cd264608a314a196c4ece809c')
+sha256sums_x86_64=('ea696c30072b18a98ec523436751b7ff9fd51af8a7ea02eb72c9bb0b2a5d41b1')
+sha256sums_aarch64=('d92bf65325ded8723f6591efb16f321d1ea656d6224d037cef704a0b3ba722df')
 options=(!strip)
 
 prepare() {
