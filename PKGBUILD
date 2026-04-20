@@ -9,7 +9,15 @@ url="https://superset.sh"
 license=(custom)
 
 depends=(fuse2 hicolor-icon-theme)
+makedepends=()
+
+
 options=(!strip !debug)
+
+
+
+conflicts=(superset-desktop-bin)
+
 
 _appimage="superset-${pkgver}-x86_64.AppImage"
 source=("${_appimage}::https://github.com/superset-sh/superset/releases/download/desktop-v1.5.6/superset-1.5.6-x86_64.AppImage")
