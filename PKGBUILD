@@ -1,42 +1,42 @@
-# Maintainer: Islam Nofl <islamnofl.official@gmail.com>
-
-_depver="16.1-1+13.2"
-
 pkgname=mingw-w64-gdb-target
-pkgver=16.1.1
+pkgver=17.1-3+13.3
 pkgrel=1
 pkgdesc="Cross-debugger server for Win32 and Win64 using MinGW-w64 extracted from Debian package"
-arch=("i686" "x86_64")
+arch=(i686 x86_64)
 url="https://packages.debian.org/sid/all/gdb-mingw-w64-target"
-license=("GPL-3+")
-source=("http://ftp.debian.org/debian/pool/main/g/gdb-mingw-w64/gdb-mingw-w64-target_${_depver}_all.deb")
-sha256sums=("83e57f98a78ecd42cf9d418132d42482bcdfbcc571b95c0ff04c1df8716af0bc")
-options=("!docs")
-conflicts=("mingw-w64-gdb-target")
+license=(GPL-3+)
+
+depends=()
+makedepends=()
+options=(!docs)
+
+_debver=""
+
+source=("${pkgname}-${_debver}.deb::http://ftp.debian.org/debian/pool/main/g/gdb-mingw-w64/gdb-mingw-w64_17.1-3+13.3_amd64.deb")
+sha256sums=('72b3b0c37a51b762435d046a4257bde5b4b66f9ac92bf778342e010b18366b59')
+
 
 prepare() {
-    # Ensure the required tools are available
-    command -v ar >/dev/null 2>&1 || { echo "Error: 'ar' is required but not found."; exit 1; }
-    command -v tar >/dev/null 2>&1 || { echo "Error: 'tar' is required but not found."; exit 1; }
 
-    # Extract the .deb file (which is an ar archive)
-    mkdir -p "${srcdir}/deb_contents"
-    cd "${srcdir}/deb_contents"
-    ar x "../gdb-mingw-w64-target_${_depver}_all.deb"
+    command -v ar >/dev/null 2>&1 || exit 1
+    command -v tar >/dev/null 2>&1 || exit 1
+
+    mkdir -p "${srcdir}/deb"
+    cd "${srcdir}/deb"
+
+    ar x "../${pkgname}-${_debver}.deb"
+
 }
 
 package() {
-    cd "${srcdir}/deb_contents"
+    cd "${srcdir}/deb"
 
-    # Check if data.tar.xz exists
-    if [[ ! -f "data.tar.xz" ]]; then
-        echo "Error: 'data.tar.xz' not found in the Debian package."
+
+    if [[ ! -f data.tar.* ]]; then
+        echo "Missing data.tar"
         exit 1
     fi
 
-    # Extract data.tar.xz into the root directory
-    tar -xJf "data.tar.xz" -C "${pkgdir}"
+    tar -xf data.tar.* -C "${pkgdir}"
 
-    # Ensure all files are correctly placed
-    echo "Files extracted successfully."
 }
