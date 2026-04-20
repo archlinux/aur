@@ -1,7 +1,7 @@
 pkgbase = mongodb70-bin
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 7.0.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = mongodb70-bin
 	makedepends = chrpath
 	depends = mongosh-bin
 	depends = curl
-	depends = openssl-1.1
+	depends = openssl
 	optdepends = mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.
 	provides = mongodb=7.0.31
 	conflicts = mongodb
