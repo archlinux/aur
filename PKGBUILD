@@ -102,6 +102,8 @@ package() {
   rm -rf "$pkgdir/usr/include/enet"
   rm -rf "$pkgdir/usr/lib/static"
   rm -f "$pkgdir/usr/lib/libcitra_room.a"
+  # Remove the duplicate desktop file installed by CMake
+  rm -f "$pkgdir/usr/share/applications/azahar.desktop"
 }
 
 
