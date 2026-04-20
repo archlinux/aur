@@ -1,0 +1,16 @@
+pkgbase = yourmom-git
+	pkgdesc = The most cursed programming language in existence — quantum esoteric lang that transpiles to C
+	pkgver = r.1
+	pkgrel = 1
+	url = https://github.com/viewerofall/yourmom
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc
+	provides = yourmom
+	conflicts = yourmom
+	source = yourmom-git::git+https://github.com/viewerofall/yourmom.git
+	sha256sums = SKIP
+
+pkgname = yourmom-git
