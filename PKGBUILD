@@ -1,6 +1,6 @@
 # Maintainer: Christian Möllmann (knoelliX) <moellix@knoellix.net>
 pkgname=nativmix
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="Hardware-based PipeWire volume & MIDI mixer for Linux. Controls physical Arduino faders, virtual sinks, and MIDI devices."
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
 install=nativmix.install
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/knoelliX/NativMix/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bea2e6ffecbe9f7524e1cecb2ba7727545ced759ae133d2c6ed3d695870486ed')
+sha256sums=('4a1202132014f05a6b6596db8a657261343b4311e6138b5838de6ae6dd07e1bf')
 
 prepare() {
     # Find extracted directory (GitHub tags prepends 'NativMix-' or 'nativmix-')
