@@ -25,7 +25,7 @@ package() {
   rm "$pkgdir/usr/bin/lib/cxstudy-wine/cxstudy/cxstudy-wine/1.4.0/1.4.0/resources/app.tar.gz"
   sudo mv $pkgdir/usr/bin/lib/cxstudy-wine/cxstudy/cxstudy-wine/1.4.0/cxstudy-wine.desktop /usr/share/applications/cxstudy-wine.desktop
   sudo chmod +x /usr/share/applications/cxstudy-wine.desktop
-  wine regedit "$pkgdir/usr/bin/lib/cxstudy-wine/cxstudy/cxstudy-wine/1.4.0/share/fontreplace.reg"
+  sudo wine regedit "$pkgdir/usr/bin/lib/cxstudy-wine/cxstudy/cxstudy-wine/1.4.0/share/fontreplace.reg"
   wineboot -r
   #reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\electron.app.学习通 /f
 }
