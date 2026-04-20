@@ -1,11 +1,11 @@
 # Maintainer: taotieren <admin@taotieren.com>
-# Maintainer: Anatol Pomozov
+# Contributor: Anatol Pomozov
 # Co-Maintainer: Abdelhak Bougouffa <abougouffa@fedoraproject.org>
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=dsview-git
 pkgver=1.3.2.r53.g2e9e2c8
-pkgrel=13
+pkgrel=15
 pkgdesc='GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.'
 arch=($CARCH)
 url='http://www.dreamsourcelab.com/'
@@ -90,6 +90,9 @@ prepare() {
   git cherry-pick -n d33e389ec66476349ce703b209c74ec3582df06a
   git cherry-pick -n f69b6f3a328541e8bf1c83fa3daac5501f956593
   git cherry-pick -n ba6e86fcd7a20303e1ec25d8f12069beb6cd58db
+
+  # Fix window drag on Wayland #902
+  git cherry-pick -n c9aeded7d621264c82b7646ed34c04697812e2cd
 
   sed -i 's#MODE="0666"#TAG+="uaccess"#' DSView/DreamSourceLab.rules
 }
