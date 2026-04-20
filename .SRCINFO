@@ -1,20 +1,20 @@
 pkgbase = r-traminerextras
 	pkgdesc = TraMineR Extension
-	pkgver = 0.6.4
-	pkgrel = 1
+	pkgver = 0.6.8
+	pkgrel = 3
 	url = https://cran.r-project.org/package=TraMineRextras
 	arch = x86_64
 	license = GPL
 	depends = r>=3.5.0
 	depends = r-traminer>=2.2.1
+	depends = r-doparallel
+	depends = r-foreach
 	optdepends = r-gtools
 	optdepends = r-cluster
 	optdepends = r-rcolorbrewer
 	optdepends = r-colorspace
 	optdepends = r-survival
-	optdepends = r-doparallel
-	optdepends = r-foreach
-	source = https://cran.microsoft.com/snapshot/2022-06-25/src/contrib/TraMineRextras_0.6.4.tar.gz
-	sha256sums = 47e5b75ac9aa16a3b330f6ae5927031a52afe0dbce10cd91a5bbea7335a0d429
+	source = https://cran.r-project.org/src/contrib/TraMineRextras_0.6.8.tar.gz
+	sha256sums = 22e5dced59b22cd24740f90a595253f3d8f1339da07dbe801833399528f090db
 
 pkgname = r-traminerextras
