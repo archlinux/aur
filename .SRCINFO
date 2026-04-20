@@ -11,9 +11,9 @@ pkgbase = mdirecto
 	makedepends = rust
 	makedepends = cargo-c
 	depends = gtk3
-	depends = libwebkit2gtk-4.1
+	depends = webkit2gtk-4.1
 	depends = libappindicator-gtk3
-	source = https://gitlab.com/cargabsj175/mdirecto.git#tag=0.1.0
+	source = git+https://gitlab.com/cargabsj175/mdirecto.git#tag=0.1.0
 	sha256sums = SKIP
 
 pkgname = mdirecto
