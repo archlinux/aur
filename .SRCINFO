@@ -1,0 +1,22 @@
+pkgbase = hyprglaze-git
+	pkgdesc = Wayland shader wallpaper daemon for Hyprland with window-aware effects and AI desktop buddy
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/slastra/hyprglaze
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = zig
+	makedepends = wayland-protocols
+	makedepends = stb
+	depends = wayland
+	depends = mesa
+	depends = libglvnd
+	optdepends = aws-cli-v2: AI buddy via AWS Bedrock
+	provides = hyprglaze
+	conflicts = hyprglaze
+	source = git+https://github.com/slastra/hyprglaze.git
+	sha256sums = SKIP
+
+pkgname = hyprglaze-git
