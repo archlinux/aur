@@ -1,0 +1,12 @@
+pkgbase = solcl
+	pkgdesc = solar system visualization tui
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Cladamos/solcl
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = solcl-0.1.2.tar.gz::https://github.com/Cladamos/solcl/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 535a2e6461d3a211348ce927599eb86e4bd336929119f29c7e5ed4d4f7e573f2
+
+pkgname = solcl
