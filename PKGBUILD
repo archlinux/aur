@@ -1,6 +1,6 @@
 # Maintainer: Xavier Olive <git@xoolive.org>
 pkgname=fmradio-bin
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="An FM radio demodulator and RDS decoder in pure Rust"
 arch=('x86_64' 'aarch64')

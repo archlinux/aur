@@ -1,0 +1,17 @@
+pkgbase = fmradio-bin
+	pkgdesc = An FM radio demodulator and RDS decoder in pure Rust
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/xoolive/desperado
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = alsa-lib
+	provides = fmradio
+	conflicts = fmradio
+	source_x86_64 = https://github.com/xoolive/desperado/releases/download/v0.3.0/fmradio-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/xoolive/desperado/releases/download/v0.3.0/fmradio-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = SKIP
+
+pkgname = fmradio-bin
