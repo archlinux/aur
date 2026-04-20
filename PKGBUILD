@@ -1,9 +1,8 @@
-
 pkgname=yt-dlp-gui
-pkgver=r5.d6d0f8a
+pkgver=r20.db8f441
 pkgrel=1
 pkgdesc="A modern Qt6 GUI for yt-dlp"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/enesehs/yt-dlp-gui"
 license=('MIT')
 
@@ -20,22 +19,18 @@ makedepends=('git')
 provides=('yt-dlp-gui')
 conflicts=('yt-dlp-gui')
 
-source=()
-sha256sums=()
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$startdir"
-  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    printf "r%s.%s" \
-      "$(git rev-list --count HEAD)" \
-      "$(git rev-parse --short HEAD)"
-  else
-    printf "r0.local"
-  fi
+  cd "$pkgname"
+  printf "r%s.%s" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$startdir"
+  cd "$pkgname"
 
   if [[ ! -d src/ui ]]; then
     echo "ERROR: src/ui not found in working tree."
@@ -43,25 +38,29 @@ package() {
   fi
 
   install -dm755 "$pkgdir/usr/share/yt-dlp-gui"
-  cp -r src assets main.py requirements.txt "$pkgdir/usr/share/yt-dlp-gui"
+  cp -r src assets main.py requirements.txt "$pkgdir/usr/share/yt-dlp-gui/"
 
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/yt-dlp-gui" <<'EOF'
+  install -dm755 "$pkgdir/usr/bin"
+  cat <<'EOF' > "$pkgdir/usr/bin/yt-dlp-gui"
 #!/usr/bin/env bash
 exec /usr/bin/python /usr/share/yt-dlp-gui/main.py "$@"
 EOF
+  chmod +x "$pkgdir/usr/bin/yt-dlp-gui"
 
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/yt-dlp-gui.desktop" <<'EOF'
+  install -dm755 "$pkgdir/usr/share/applications"
+  cat <<'EOF' > "$pkgdir/usr/share/applications/yt-dlp-gui.desktop"
 [Desktop Entry]
 Type=Application
 Name=yt-dlp-gui
 Comment=GUI frontend for yt-dlp
 Exec=yt-dlp-gui
-Icon=/usr/share/pixmaps/yt-dlp-gui.ico
+Icon=yt-dlp-gui
 Categories=AudioVideo;Network;
 Terminal=false
 StartupNotify=true
 EOF
 
+  install -dm755 "$pkgdir/usr/share/pixmaps"
   if [[ -f src/img/logo.ico ]]; then
     install -Dm644 src/img/logo.ico "$pkgdir/usr/share/pixmaps/yt-dlp-gui.ico"
   elif [[ -f assets/img/logo.ico ]]; then
