@@ -1,6 +1,6 @@
 # Maintainer: 0x90shell
 pkgname=gamepad-osk-bin
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Gamepad-controlled on-screen keyboard for Linux"
 arch=('x86_64')
@@ -12,7 +12,8 @@ conflicts=('gamepad-osk' 'gamepad-osk-git')
 install=gamepad-osk-bin.install
 source=("gamepad-osk-${pkgver}::${url}/releases/download/v${pkgver}/gamepad-osk"
         "${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('4a2b82d44159154dd1a7d027b2fe6d8e70f38aa4bb5d8f3cc9e6f455f02d1d40'
+            'd772ddff4513126579f2e5adba2c5fd10757d09c38b10a6a29a2e6a9bc05fa62')
 
 package() {
   install -Dm755 "gamepad-osk-${pkgver}" "$pkgdir/usr/bin/gamepad-osk"
