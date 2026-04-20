@@ -1,0 +1,21 @@
+post_install() {
+    echo "=> Aggiornamento regole udev..."
+    udevadm control --reload-rules
+    udevadm trigger
+
+    echo "=> Applicazione permessi hwmon istantanea..."
+    for hwmon in /sys/class/hwmon/hwmon*; do
+        if [ -f "$hwmon/name" ] && grep -q "aquaero" "$hwmon/name"; then
+            chmod a+w "$hwmon"/pwm* 2>/dev/null
+            echo "   Permessi applicati a: $hwmon"
+        fi
+    done
+
+    if command -v gtk-update-icon-cache &> /dev/null; then
+        gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    fi
+}
+
+post_upgrade() {
+    post_install
+}

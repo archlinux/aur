@@ -1,0 +1,14 @@
+pkgbase = openaquaero
+	pkgdesc = Software nativo di controllo termico per hardware Aquacomputer Aquaero 6 LT
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/raffaele-90/openaquaero
+	arch = any
+	license = GPL3
+	depends = python
+	depends = pyside6
+	optdepends = python-pynvml: supporto lettura sensori GPU Nvidia
+	source = openaquaero-2.2.0.tar.gz::https://github.com/raffaele-90/openaquaero/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = openaquaero
