@@ -66,8 +66,8 @@ package()
 
   install -m 755 -D "${pkgdir}/opt/UnifiedFloppyTool/bin/UnifiedFloppyTool" "${pkgdir}/usr/bin/UnifiedFloppyTool"
   install -m 644 -D "${srcdir}/${pkg_name_ver}/packaging/linux/io.github.Axel051171.${_pkgname}.desktop" "${pkgdir}/usr/share/applications/io.github.Axel051171.${_pkgname}.desktop"
-  install -m 644 -D "${srcdir}/${pkg_name_ver}/resources/icons/${_pkgname}.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
-  install -m 644 -D "${srcdir}/${pkg_name_ver}/resources/icons/${_pkgname}.svg" "${pkgdir}/usr/share/icons/${_pkgname}.svg"
+  install -m 644 -D "${srcdir}/${pkg_name_ver}/resources/icons/${_pkgname}.png" "${pkgdir}/usr/share/icons/io.github.Axel051171.${_pkgname}.png"
+  install -m 644 -D "${srcdir}/${pkg_name_ver}/resources/icons/${_pkgname}.svg" "${pkgdir}/usr/share/icons/io.github.Axel051171.${_pkgname}.svg"
 
   #mkdir -p "${pkgdir}/usr/bin"
   rm "${pkgdir}/opt/UnifiedFloppyTool/bin/UnifiedFloppyTool"
