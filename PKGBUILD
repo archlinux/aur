@@ -1,14 +1,14 @@
 # Working example of Arch Linux PKGBUILD for NsCDE 2.X - Chinese Localization
 pkgname=nscde-zh
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Not so Common Desktop Environment: Modern and functional CDE based on FVWM - Chinese Localization"
 arch=(x86_64)
 url="https://github.com/wenyinos/NsCDE-zh"
 license=('GPL')
-depends=('libxext' 'libx11' 'libxpm' 'stalonetray' 'xsettingsd' 'fvwm3' 'glibc' 'ksh'
+depends=('libxext' 'libx11' 'libxpm' 'stalonetray' 'xsettingsd' 'fvwm3' 'glibc' 'ksh93'
 'imagemagick' 'xorg-xprop' 'xorg-xrdb' 'xorg-xset' 'xorg-xdpyinfo' 'xorg-xrefresh'
-'xorg-xmodmap' 'xorg-xrandr' 'xterm' 'python3' 'python-pyxdg' 'python-yaml'
+'xorg-xmodmap' 'xorg-xrandr' 'xterm' 'python' 'python-pyxdg' 'python-yaml'
 'python-psutil' 'python-pyqt5' 'xdotool' 'xdg-utils' 'gettext' 'groff' 'ttf-dejavu' 'noto-fonts-cjk'
 'qterminal' 'pcmanfm-qt' 'gvim' 'pavucontrol-qt' 'arandr' 'kcalc')
 makedepends=('xorgproto' 'autoconf' 'automake')
@@ -22,7 +22,6 @@ optdepends=('xclip: Copy screen, window of area shot to X11 clipboard'
 'qt6ct: Qt6 Configuration Utility'
 'picom: X compositor that may fix tearing issues'
 'gkrellm: System monitor package fits nicely with NsCDE')
-# options=()
 provides=('nscde-zh')
 source=($pkgname-$pkgver.tar.gz::https://github.com/wenyinos/NsCDE-zh/archive/refs/tags/v${pkgver}_zh.tar.gz)
 sha256sums=('SKIP')
@@ -30,6 +29,7 @@ sha256sums=('SKIP')
 build() {
   cd "NsCDE-zh-${pkgver}_zh"
 
+  autoreconf -ivf
   ./configure --prefix=/usr --libexecdir=/usr/lib
   make
 }
