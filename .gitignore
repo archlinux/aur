@@ -2,5 +2,5 @@
 /sdl2-compat-*-win32-x86.zip
 /src/
 /pkg/
-/sdl2-compat-win32.pkg.tar*
-/lib32-sdl2-compat-win32.pkg.tar*
+/sdl2-compat-win32-*.pkg.tar*
+/lib32-sdl2-compat-win32-*.pkg.tar*
