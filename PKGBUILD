@@ -11,11 +11,11 @@ depends=()
 makedepends=('git' 'nodejs' 'npm')
 provides=(raindrop)
 
-source_x86_64=('raindrop-amd64.deb::https://github.com/raindropio/desktop/releases/download/v5.7.6/Raindrop-amd64.deb')
-sha256sums_x86_64=('79ffd91214a1889e9ad9d8b39b7e09b9a45d59ac87cf399cad19b058175b757d')
+source_x86_64=('raindrop-amd64.deb::https://github.com/raindropio/desktop/releases/download/v5.7.7/Raindrop-amd64.deb')
+sha256sums_x86_64=('b2132c68667eefb689ed0720bee12785ff59973cf1d6a1d2052eb2a729663e11')
 
-source_arm64=('raindrop-arm64.dev::https://github.com/raindropio/desktop/releases/download/v5.7.6/Raindrop-arm64.deb')
-sha256sums_aarch64=('0ae5332738b2e4dd9b29788602cfa81a7bdb5f89f6427313e77b7fd020da5beb')
+source_arm64=('raindrop-arm64.dev::https://github.com/raindropio/desktop/releases/download/v5.7.7/Raindrop-arm64.deb')
+sha256sums_aarch64=('5e4eb72c1c405b49abb50fd6d60864ccfa036f34b69acc16e0040e3ad89da390')
 
 prepare() {
   echo "Extracting .deb"
