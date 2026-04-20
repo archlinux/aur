@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Proprietary software for labeling speech/singing audio"
 arch=('x86_64')
 url="https://m-lo7.itch.io/slabeler-le"
-license=('LicenseRef-custom')
+license=('custom')
 groups=('slabeler')
 depends=('libgcc' 'alsa-lib')
 options=('!strip' '!emptydirs')
@@ -38,7 +38,7 @@ package() {
     cp -r "${srcdir}/assets" "${pkgdir}/opt/${pkgname}/"
     install -m755 "${srcdir}/SLabeler" "${pkgdir}/opt/${pkgname}/"
 
-    # 3. THE NUCLEAR OPTION: Permissions
+    # 3. Permissions
     # We make the folder world-writable so the log file can be created by anyone
     chmod -R 777 "${pkgdir}/opt/${pkgname}"
 
