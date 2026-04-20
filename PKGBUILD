@@ -2,6 +2,9 @@
 pkgname=pywebos-ctl
 pkgbase=pywebos-ctl
 pkgver=0.1.0
+pkgver() {
+    git describe --tags --abbrev=0 | sed 's/^v//'
+}
 pkgrel=1
 pkgdesc="CLI tool to control LG webOS TVs"
 arch=('any')

@@ -2,14 +2,14 @@ pkgbase = pywebos-ctl
 	pkgdesc = CLI tool to control LG webOS TVs
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/ssh://aur@aur.archlinux.org/pywebos-ctl
+	url = https://github.com/git@github.com:MarkLevkovich/webos-ctl
 	arch = any
 	license = MIT
 	depends = python>=3.12
 	depends = python-pyfiglet
 	depends = python-pywebostv
 	depends = python-scapy
-	source = pywebos-ctl-0.1.0.tar.gz::https://github.com/ssh://aur@aur.archlinux.org/pywebos-ctl/archive/refs/tags/v0.1.0.tar.gz
+	source = pywebos-ctl-0.1.0.tar.gz::https://github.com/git@github.com:MarkLevkovich/webos-ctl/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = pywebos-ctl
