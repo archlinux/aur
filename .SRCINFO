@@ -1,0 +1,16 @@
+pkgbase = wl-kbd-assets-git
+	pkgdesc = Keyboard layout flag icons and xkeyboardconfig catalog
+	pkgver = 0.2.0.r1.gd0836f0
+	pkgrel = 1
+	url = https://github.com/sfs-pra/wl-kbd-assets
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	provides = wl-kbd-assets
+	conflicts = wl-kbd-assets
+	source = git+https://github.com/sfs-pra/wl-kbd-assets.git
+	sha256sums = SKIP
+
+pkgname = wl-kbd-assets-git
