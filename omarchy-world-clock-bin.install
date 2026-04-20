@@ -1,17 +1,10 @@
-# SPDX-FileCopyrightText: 2026 Olivier Melcher <olivier.melcher@gmail.com>
-# SPDX-License-Identifier: 0BSD
-
 post_install() {
   cat <<'EOF'
 Omarchy World Clock was installed to /usr/bin/omarchy-world-clock.
 
 To add it to your current user's Waybar config, run:
 
-  omarchy-world-clock install-waybar \
-    --waybar-config "$HOME/.config/waybar/config.jsonc" \
-    --waybar-style "$HOME/.config/waybar/style.css" \
-    --command-path /usr/bin/omarchy-world-clock \
-    --user-config "$HOME/.config/omarchy-world-clock/config.json"
+  omarchy-world-clock install-waybar
   omarchy-world-clock restart-waybar
 
 This is an unofficial Omarchy integration.
