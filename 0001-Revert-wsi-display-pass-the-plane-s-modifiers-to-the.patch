@@ -1,0 +1,154 @@
+From 3cacf70e7484f3b60612323fd338936e458e06eb Mon Sep 17 00:00:00 2001
+From: hypevhs <hackgammavision@gmail.com>
+Date: Sat, 18 Apr 2026 22:24:22 -0500
+Subject: [PATCH] Revert "wsi/display: pass the plane's modifiers to the image"
+
+This reverts commit a8e9af2ce98e69ab44c47b1859be89e4d2891639.
+---
+ src/vulkan/wsi/wsi_common_display.c | 106 +---------------------------
+ 1 file changed, 1 insertion(+), 105 deletions(-)
+
+diff --git a/src/vulkan/wsi/wsi_common_display.c b/src/vulkan/wsi/wsi_common_display.c
+index 586db9ce32f..869804c4676 100644
+--- a/src/vulkan/wsi/wsi_common_display.c
++++ b/src/vulkan/wsi/wsi_common_display.c
+@@ -80,7 +80,6 @@
+ 
+ #include "vk_device.h"
+ #include "vk_fence.h"
+-#include "vk_format.h"
+ #include "vk_instance.h"
+ #include "vk_physical_device.h"
+ #include "vk_sync.h"
+@@ -1572,95 +1571,6 @@ wsi_display_destroy_buffer(struct wsi_display *wsi,
+                    &((struct drm_gem_close) { .handle = buffer }));
+ }
+ 
+-static uint64_t*
+-wsi_get_modifiers_for_format(const struct wsi_display * const wsi,
+-                             const uint32_t plane_id,
+-                             const uint32_t drm_format,
+-                             uint32_t * const modifiers_count)
+-{
+-   /* wsi_display_setup_connector() must already have been called.  KMS objects
+-    * are non-zero IDs.
+-    */
+-   assert(plane_id != 0);
+-
+-   /* Get the properties of the plane */
+-   drmModeObjectProperties *props =
+-      drmModeObjectGetProperties(wsi->fd, plane_id,
+-                                 DRM_MODE_OBJECT_PLANE);
+-   if (!props) {
+-      mesa_loge("Failed to drmModeObjectGetProperties(plane=%d)", plane_id);
+-      return NULL;
+-   }
+-
+-   /* Find the blob that contains the formats and their modifiers */
+-   uint32_t blob_id = 0;
+-   for (size_t i = 0; i< props->count_props; i++) {
+-      const drmModePropertyPtr prop =
+-         drmModeGetProperty(wsi->fd, props->props[i]);
+-
+-      if (!strcmp(prop->name, "IN_FORMATS")) {
+-         blob_id = props->prop_values[i];
+-         drmModeFreeProperty(prop);
+-         break;
+-      }
+-
+-      drmModeFreeProperty(prop);
+-   }
+-
+-   /* Property not found, which means an old kernel, so definitely no modifiers
+-    * support.
+-    */
+-   if (blob_id == 0)
+-      return NULL;
+-
+-   /* Grab the IN_FORMATS blob */
+-   drmModePropertyBlobRes *blob = drmModeGetPropertyBlob(wsi->fd, blob_id);
+-   if (!blob)
+-      return NULL;
+-
+-   /* Get the formats and modifiers out of the blob */
+-   struct drm_format_modifier_blob *fmt_mod_blob = blob->data;
+-   uint32_t *blob_formats = (uint32_t*)((char*)fmt_mod_blob +
+-                                        fmt_mod_blob->formats_offset);
+-   struct drm_format_modifier *blob_modifiers =
+-      (struct drm_format_modifier *)((char*)fmt_mod_blob +
+-                                     fmt_mod_blob->modifiers_offset);
+-
+-   /* Find the format we care about in the list */
+-   size_t format_index = 0;
+-   for (size_t i = 0; i < fmt_mod_blob->count_formats; i++) {
+-      if (blob_formats[i] == drm_format) {
+-         format_index = i;
+-         break;
+-      }
+-   }
+-
+-   /* Get the list of modifiers supported by that format */
+-   uint32_t count_modifiers = 0;
+-   uint64_t *modifiers = NULL;
+-   for (size_t i = 0; i < fmt_mod_blob->count_modifiers; i++) {
+-      struct drm_format_modifier *mod = &blob_modifiers[i];
+-
+-      if ((format_index < mod->offset) || (format_index > mod->offset + 63))
+-         continue;
+-      if (!(mod->formats & (1ull << (format_index - mod->offset))))
+-         continue;
+-
+-      modifiers = realloc(modifiers,
+-                          (count_modifiers + 1) *
+-                          sizeof(modifiers[0]));
+-      assert(modifiers);
+-      modifiers[count_modifiers++] = mod->modifier;
+-   }
+-
+-   drmModeFreePropertyBlob(blob);
+-
+-   drmModeFreeObjectProperties(props);
+-
+-   *modifiers_count = count_modifiers;
+-   return modifiers;
+-}
+-
+ static VkResult
+ wsi_display_image_init(struct wsi_swapchain *drv_chain,
+                        const VkSwapchainCreateInfoKHR *create_info,
+@@ -3030,23 +2940,9 @@ wsi_display_surface_create_swapchain(
+    if (result != VK_SUCCESS)
+       return result;
+ 
+-   uint32_t num_modifiers = 0;
+-   const uint64_t *modifiers = NULL;
+-   if (wsi_device->supports_modifiers) {
+-      modifiers = wsi_get_modifiers_for_format(wsi,
+-                                               display_mode->connector->plane_id,
+-                                               drm_format, &num_modifiers);
+-   }
+-   if (num_modifiers) {
+-      image_params.num_modifier_lists = 1;
+-      image_params.modifiers = &modifiers;
+-      image_params.num_modifiers = &num_modifiers;
+-   }
+-
+    result = wsi_swapchain_init(wsi_device, &chain->base, device,
+                                create_info, &image_params.base,
+                                allocator);
+-   free((void *)modifiers);
+    if (result != VK_SUCCESS) {
+       u_cnd_monotonic_destroy(&chain->present_id_cond);
+       mtx_destroy(&chain->present_id_mutex);
+@@ -3069,7 +2965,7 @@ wsi_display_surface_create_swapchain(
+    chain->wsi = wsi;
+    chain->status = VK_SUCCESS;
+ 
+-   chain->surface = surface;
++   chain->surface = (VkIcdSurfaceDisplay *) icd_surface;
+ 
+    /* Default HDR metadata when the HDR10/ST2084 colorspace is used
+     * to the metadata provided by the EDID. */
+-- 
+2.53.0
+
