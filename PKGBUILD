@@ -1,6 +1,6 @@
 # Maintainer: Vojket <vojket@protonmail.com>
 pkgname=sdl3_mixer-git
-pkgver=r2118.7d6e46a
+pkgver=r2252.a2d867c
 pkgrel=1
 pkgdesc="A simple multi-channel audio mixer (Version 3)"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('fluidsynth' 'git' 'cmake')
 optdepends=('fluidsynth: MIDI software synth, replaces built-in timidity')
 source=("git+https://github.com/libsdl-org/SDL_mixer")
 sha512sums=('SKIP')
-provides=('sdl3_mixer=$pkgver')
+provides=("sdl3_mixer=$pkgver")
 conflicts=('sdl3_mixer')
 
 
