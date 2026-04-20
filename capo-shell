@@ -50,13 +50,10 @@ if [[ "$hasOSConfig" == false ]]; then
 fi
 if [[ "$hasKubeconfig" == false ]]; then
   echo "KUBECONFIG missing, only setting OpenStack env" >/dev/stderr
-#elif kubectl -n "$namespace" get openstackcluster -l cluster.x-k8s.io/cluster-name="$name" -o yaml 2>/dev/null | yq -er '.items[0] | if .spec.apiServerLoadBalancer.allowedCidrs then .spec.controlPlaneEndpoint.host else null end' &>/dev/null; then
-#  proxyPodName="proxy-$name"
-#  if ! kubectl -n "$namespace" get pod "$proxyPodName" &>/dev/null; then
-#    kubectl -n "$namespace" run --image docker.io/kalaksi/tinyproxy "$proxyPodName" --restart=Never
-#  fi
-#  kubectl -n "$namespace" port-forward "$proxyPodName" 8888 &>/dev/null &
-#  export HTTPS_PROXY=http://localhost:8888
-#  PROXY_PID=$!
+elif apiServerIP="$(kubectl -n "$namespace" get openstackcluster -l cluster.x-k8s.io/cluster-name="$name" -o yaml 2>/dev/null | yq -er '.items[0] | if .spec.apiServerLoadBalancer.allowedCIDRs then .spec.controlPlaneEndpoint.host else null end')"; then
+  if [[ -v CAPO_SHELL_SSHUTTLE_HOST ]]; then
+    sshuttle -r "$CAPO_SHELL_SSHUTTLE_HOST" "$apiServerIP/32" &>/dev/null &
+    PROXY_PID=$!
+  fi
 fi
-env -u KUBECONFIG -u KUBECONFIG_CONTEXT "${envs[@]}" "${@:-${SHELL:-/usr/bin/env bash}}"
+env -u KUBECONFIG -u KUBECONFIG_CONTEXT -u PROXY_PID "${envs[@]}" "${@:-${SHELL:-/usr/bin/env bash}}"
