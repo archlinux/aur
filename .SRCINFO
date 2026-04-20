@@ -1,7 +1,7 @@
 pkgbase = python-typed-ffmpeg-compatible
 	pkgdesc = Modern Python FFmpeg wrappers offer comprehensive support for complex filters, complete with detailed typing and documentation.
 	pkgver = 4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/typed-ffmpeg-compatible/
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = python-typed-ffmpeg-compatible
 	makedepends = python-setuptools-scm
 	makedepends = python-hatchling
 	depends = ffmpeg
+	depends = python-typed-ffmpeg-v8
 	source = https://files.pythonhosted.org/packages/source/t/typed_ffmpeg_compatible/typed_ffmpeg_compatible-4.1.tar.gz
 	sha256sums = 46fe69c08c066d994c033d7037ffd06b382237c7711a6460cd040bd4bba7e8da
 
