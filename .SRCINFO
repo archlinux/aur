@@ -1,10 +1,9 @@
 pkgbase = python-pytubefix
 	pkgdesc = A pytube fork with additional features and fixes
 	pkgver = 10.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JuanBindez/pytubefix
-	arch = x86_64
-	arch = i686
+	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
