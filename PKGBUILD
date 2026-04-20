@@ -2,7 +2,8 @@
 
 pkgname=waylyrics
 pkgver=0.3.21
-pkgrel=3
+_opencc_rust_ver=1.1.19
+pkgrel=4
 pkgdesc="the furry way to show desktop lyrics"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -10,13 +11,15 @@ license=("MIT")
 depends=(
 	"openssl" "dbus" "glibc" "libgcc" "glib2" "cairo" "dconf" "gtk4" "opencc"
 )
-makedepends=("cargo" "gettext")
+makedepends=("git" "cargo" "gettext")
 optdepends=(
 	"breeze-icons: better tray-icon icons"
 	"xdg-desktop-portal: file dialog to import LRC"
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7279ae1e6d25845d3baac08e8d515e7fa44881ad51146d08a25a3477e2388681')
+source=("git+${url}#tag=v${pkgver}"
+	"git+https://github.com/magiclen/opencc-rust.git#tag=v${_opencc_rust_ver}")
+sha256sums=('365f4c1cdd94a6eb76d5db68ed1e1405429181cd6d60af5c6d251c9a148d07eb'
+            'e707c10ee848d597f009796ca2be9676a3d0dbb12fde90aa47d00def176280fb')
 options=('!lto')
 
 _features=(--features opencc
@@ -24,13 +27,17 @@ _features=(--features opencc
            --features offline-test)
 
 prepare() {
-	cd "${pkgname}-${pkgver}/"
+	sed -i '/MAX_VERSION/d' opencc-rust/build.rs
+
+	cd "${pkgname}/"
+	echo -e "\n[patch.crates-io]\nopencc-rust = { path = '../opencc-rust' }" >> Cargo.toml
+
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target host-tuple
+	cargo fetch --target host-tuple
 }
 
 build() {
-	cd "${pkgname}-${pkgver}/"
+	cd "${pkgname}/"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/${pkgname}/themes/"
@@ -39,7 +46,7 @@ build() {
 }
 
 check() {
-	cd "${pkgname}-${pkgver}/"
+	cd "${pkgname}/"
 	export RUSTUP_TOOLCHAIN=stable
 	export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/${pkgname}/themes/"
 	cargo test --frozen "${_features[@]}"
@@ -48,7 +55,7 @@ check() {
 package() {
 	depends+=("hicolor-icon-theme")
 
-	cd "${pkgname}-${pkgver}/"
+	cd "${pkgname}/"
 	local _app_id=io.github.waylyrics.Waylyrics
 
 	install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
