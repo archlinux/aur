@@ -1,5 +1,5 @@
 pkgbase = omarchy-world-clock-bin
-	pkgdesc = Unofficial Waybar world clock integration for Omarchy
+	pkgdesc = Waybar world clock for Omarchy
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/olivoil/omarchy-world-clock
