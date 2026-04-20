@@ -1,0 +1,15 @@
+pkgbase = braincup-bin
+	pkgdesc = Train your math skills, memory and focus
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/Braincup
+	arch = x86_64
+	license = Apache-2.0
+	depends = hicolor-icon-theme
+	provides = braincup
+	conflicts = braincup
+	options = !strip
+	source = Braincup-2.5.0-linux-x86_64.tar.gz::https://github.com/SimonSchubert/Braincup/releases/download/v2.5.0/Braincup-2.5.0-linux-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = braincup-bin
