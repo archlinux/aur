@@ -1,0 +1,19 @@
+pkgbase = ioruba-desktop-bin
+  pkgdesc = Tactile audio mixer for Arduino-based Linux control (prebuilt AppImage)
+  pkgver = 0.5.0
+  pkgrel = 1
+  url = https://github.com/bernardopg/ioruba
+  arch = x86_64
+  license = MIT
+  provides = ioruba-desktop
+  conflicts = ioruba-desktop
+  depends = glibc
+  depends = gtk3
+  depends = webkit2gtk-4.1
+  depends = libayatana-appindicator
+  source = Ioruba_0.5.0_amd64.AppImage::https://github.com/bernardopg/ioruba/releases/download/v${pkgver}/Ioruba_0.5.0_amd64.AppImage
+  source = ioruba.png::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/apps/desktop/src-tauri/icons/128x128.png
+  sha256sums = 8719f61be132b3bed77a7147470552821161cdb2dbb7f9581cb4f13be9644087
+  sha256sums = 7aff3ecc3a0cbc1fed8559ae0464d2af330372514c39edfaefd31c2119a2db63
+
+pkgname = ioruba-desktop-bin
