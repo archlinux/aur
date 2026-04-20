@@ -2,7 +2,7 @@
 
 _pkgname=ddns-go
 pkgname=cubic-$_pkgname
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Over-engineered DDNS service with native OS integrations for managing A, AAAA, and HTTPS records"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 backup=("etc/$_pkgname/config.json")
 source=("$_pkgname::git+$url.git#tag=v$pkgver?signed")
-b2sums=('c6832482931770ca0aeff1cbafb49ac55408d1b57c7a721ca901b50762ed6bffde63851f31caa6f483a1f41f9968ab954b62da1b8f7a8b777b2f48210e6d6e26')
+b2sums=('751c6b9069bda21ed9f1f5928cb633bcd45225a0bb0de7201086fd2344b4ba44b0826af81ac7021dd87dce345f5183d1a350be49caff7f26de618e0804170179')
 validpgpkeys=(
     '4DCED15E346E2923B931D6F71CA27546BEDB8B01' # Ian Chen (database64128) <free122448@hotmail.com>
 )
