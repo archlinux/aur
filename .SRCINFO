@@ -1,0 +1,19 @@
+pkgbase = ase-explorer
+	pkgdesc = ASE Hierarchical Project Explorer with NerdFont Icons
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/antarien/ase-client-explorer
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = gtkmm-4.0
+	depends = libadwaita
+	depends = ttf-fira-code
+	depends = ttf-nerd-fonts-symbols-mono
+	source = git+https://github.com/antarien/ase-client-explorer.git
+	sha256sums = SKIP
+
+pkgname = ase-explorer
