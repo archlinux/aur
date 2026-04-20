@@ -2,12 +2,13 @@
 shopt -s extglob
 pkgname=pinta-appimage
 pkgver=3.1.1_2
-pkgrel=5
+pkgrel=6
 pkgdesc="Simple GTK Paint Program (Unofficial AppImage)"
 arch=('x86_64')
 url='https://github.com/pkgforge-dev/Pinta-AppImage'
 license=('MIT')
-depends=('dotnet-runtime' 'dotnet-host' 'libadwaita' 'hicolor-icon-theme' 'webp-pixbuf-loader')
+options=(!strip)
+depends=()
 conflicts=()
 provides=('pinta')
 noextract=("$pkgname-$pkgver.AppImage")
@@ -18,32 +19,24 @@ prepare() {
   cd "$srcdir"
   chmod +x "$pkgname-$pkgver.AppImage"
   ./"$pkgname-$pkgver.AppImage" --appimage-extract
+  cd -
 }
 
 package() {
+  # Install AppImage
+  install -Dm755 "$srcdir/$pkgname-$pkgver.AppImage" "$pkgdir/opt/pinta/pinta.AppImage"
+
+  # Wrapper script to disables self-update
+  install -dm755 "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/pinta" <<'EOF'
+#!/bin/bash
+# Disable AppImage self-updater so it doesn't try to overwrite /opt/pinta/pinta.AppImage
+exec env DISABLE_AUTO_UPDATES=1 /opt/pinta/pinta.AppImage "$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/pinta"
+
+  # Desktop file
   cd "$srcdir/squashfs-root"
-
-  sed -e 's|\$APPDIR|/opt/pinta|g' \
-    -i ./bin/pinta
-
-  install -dm755 "$pkgdir/opt/pinta"
-  cp -dpr --no-preserve=ownership . "$pkgdir/opt/pinta/"
-  # Remove appimage packaged dependencies
-  rm -rf \
-    "$pkgdir/opt/pinta/bin/dotnet" \
-    "$pkgdir/opt/pinta/bin/shared/" \
-    "$pkgdir/opt/pinta/bin/gio-launch-desktop" \
-    "$pkgdir/opt/pinta/bin/host" \
-    "$pkgdir/opt/pinta/bin/notify" \
-    "$pkgdir/opt/pinta/bin/path-mapping-hardcoded.hook" \
-    "$pkgdir/opt/pinta/bin/self-updater.bg.hook" \
-    "$pkgdir/opt/pinta/shared/bin" \
-    "$pkgdir/opt/pinta/shared/lib/"!(pinta) \
-    "$pkgdir/opt/pinta/share/"!(icons)
-
   install -Dm644 com.github.PintaProject.Pinta.desktop "$pkgdir/usr/share/applications/com.github.PintaProject.Pinta.desktop"
   install -Dm644 com.github.PintaProject.Pinta.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.github.PintaProject.Pinta.png"
-
-  install -dm755 "$pkgdir/usr/bin"
-  ln -s "/opt/pinta/bin/pinta" "$pkgdir/usr/bin/pinta"
 }
