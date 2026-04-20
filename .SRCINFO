@@ -1,13 +1,13 @@
 pkgbase = synca-bin
 	pkgdesc = Simple, lightweight, open source file synchronization client (prebuilt AppImage)
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bryanrafaelbueno/Synca
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	depends = zlib
-	depends = fuse2
+	optdepends = fuse2: for running AppImage directly
 	provides = synca
 	conflicts = synca
 	options = !strip
