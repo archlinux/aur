@@ -1,0 +1,16 @@
+pkgbase = sshfs-mountctl
+	pkgdesc = Terminal UI for managing persistent SSHFS mounts backed by systemd --user
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/Klick3r-1/sshfs-manager
+	install = sshfs-mountctl.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-textual
+	depends = sshfs
+	depends = fuse3
+	source = sshfs-mountctl-1.1.2.tar.gz::https://github.com/Klick3r-1/sshfs-manager/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = 8d8e198d347f10aa835bae3e6ed1e730f58119716c6c75f14a1c9abbf0fc2f1c
+
+pkgname = sshfs-mountctl

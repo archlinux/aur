@@ -1,0 +1,13 @@
+post_install() {
+    echo ""
+    echo "  ╔══════════════════════════════════════════════════════════╗"
+    echo "  ║  sshfs-mountctl requires first-time setup — run once:   ║"
+    echo "  ║                                                          ║"
+    echo "  ║    sshfs-mountctl --init                                 ║"
+    echo "  ╚══════════════════════════════════════════════════════════╝"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
