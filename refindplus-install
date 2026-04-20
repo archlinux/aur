@@ -2,7 +2,7 @@
 set -euo pipefail
 
 source_dir=${REFINDPLUS_SOURCE_DIR:-/usr/share/refindplus/refindplus}
-config_source=${REFINDPLUS_CONFIG:-/etc/refindplus/config.conf}
+config_source=${REFINDPLUS_CONFIG:-${source_dir}/config.conf}
 esp=''
 target='refindplus'
 fallback=0
@@ -24,8 +24,8 @@ Options:
   -h, --help       Show this help.
 
 The installer copies the complete package tree: config, icons, fonts, banners,
-keys, tools, and x64 filesystem drivers. An existing config.conf is preserved;
-the packaged config is copied as config.conf-sample instead.
+keys, tools, and x64 filesystem drivers. An existing ESP config.conf is
+preserved; the packaged config is copied as config.conf-sample instead.
 EOF
 }
 

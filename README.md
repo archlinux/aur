@@ -2,10 +2,11 @@
 
 AUR package files for the upstream x64 RefindPlus binary release.
 
-This package deliberately does not modify the EFI system partition during
-package installation. It installs a complete staging tree under
+This package never modifies the EFI system partition during package
+installation. It installs a complete staging tree under
 `/usr/share/refindplus/refindplus`, including the upstream release binaries plus
-the matching source tag's icons, fonts, banners, keys, and sample configs.
+the matching source tag's icons, fonts, banners, keys, and sample configs. Run
+`refindplus-install` explicitly when you want to copy those files to an ESP.
 
 ## Build
 
