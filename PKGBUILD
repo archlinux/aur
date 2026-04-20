@@ -1,7 +1,7 @@
 # Maintainer: Zesko
 _pkgname="limine-entry-tool"
 pkgname="limine-mkinitcpio-hook"
-_pkgver=1.34.1
+_pkgver=1.35.0
 _extver=""
 pkgver="${_pkgver}${_extver}"
 pkgrel=1
@@ -30,7 +30,7 @@ optdepends=(
 makedepends=('git' 'gradle')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-entry-tool')
-sha256sums=('76855351dff8c587f8fb52d911dae8d3557b6ca7677637d528ff3c3b3d12f7bf')
+sha256sums=('55cca6cf0f7dd9ea83ca50f26c0411317cd428c1ce11715d03e78e89a8afbc43')
 sha256sums_x86_64=('e0be791c8fda4d03b6b0a0cb824fef3149736170057b3a515252b44419606af0')
 sha256sums_aarch64=('b4580d9f223d0a4b3a1757e58b18ff4c1db950e67e105fc5cb741457d2384a71')
 
