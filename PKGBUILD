@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-bin
-pkgver=26.09.37435.1
+pkgver=26.14.37833.4
 _gmmver=22.9.0
 _gmmsover=12
-_igcver=2.30.1
+_igcver=2.32.7
 _lzsover=1
 _build=0
 pkgrel=1
@@ -18,6 +18,7 @@ depends=(
     'libgcc'
     'libstdc++')
 optdepends=(
+    'igsc: for discrete GPU firmware enumeration through Level Zero'
     'libdrm: for cl_intel_va_api_media_sharing'
     'libva: for cl_intel_va_api_media_sharing')
 provides=('intel-compute-runtime' 'intel-gmmlib' 'level-zero-driver' 'opencl-driver')
@@ -32,9 +33,9 @@ noextract=("intel-ocloc_${pkgver}-${_build}_amd64.deb"
            "intel-opencl-icd_${pkgver}-${_build}_amd64.deb"
            "${pkgname}-${pkgver}-level-zero-${_gmmver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb")
-sha256sums=('893185ee9df9656f1350d701bffc240a7ec04021879e0b8ac645dd1db419cd9e'
-            '611c758c169a81c91bfc0b089cb6a53949ec2b6aedbf892635a579c529c63e7a'
-            '9fb35fbccbb5f85a60283803de961398ec8ae7d23bfd07f1f272307f596972c9'
+sha256sums=('7841a45b3e5fafeb97ab530eb872c1607a01723e4d6ae057d0255cd56e168cad'
+            '2e15eeb4fe9c1bba467a655967373eec6a20dd04cc7159de53c359f17ab53e41'
+            '34ce5791160d87ce6d54edb558a4030858ee1dad2afb067b9c5c58d4cde774c6'
             '9d712f71c18baee076de9961dda71e8089291e1bd0deb5d649ab5ba5de114f97'
             '987a002c6c9eb75290d9937735641ef4f4b670591ee79e1ac8edebe16a81872e')
 
