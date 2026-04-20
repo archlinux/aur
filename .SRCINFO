@@ -1,0 +1,16 @@
+pkgbase = python-pyciede2000
+	pkgdesc = Python library to calculate CIEDE2000 color difference.
+	pkgver = 0.0.21
+	pkgrel = 1
+	url = https://github.com/shameempk/pyciede2000
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pyciede2000/pyciede2000-0.0.21.tar.gz
+	sha256sums = 18bd261368df2540ad3b6542ef5204dd57c6840b6e33b7f0b63868353072879e
+
+pkgname = python-pyciede2000
