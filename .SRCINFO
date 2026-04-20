@@ -1,6 +1,6 @@
 pkgbase = python-telethon-git
 	pkgdesc = Pure Python 3 Telegram client library, asyncio version
-	pkgver = 1.42.0.r24.g09ef6976
+	pkgver = 1.43.2.r0.g20c4cf73
 	pkgrel = 1
 	url = https://codeberg.org/Lonami/Telethon
 	arch = any
