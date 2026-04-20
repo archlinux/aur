@@ -1,6 +1,6 @@
 # Maintainer: novenary <streetwalkermc@gmail.com>
 pkgname=python-telethon-git
-pkgver=1.42.0.r24.g09ef6976
+pkgver=1.43.2.r0.g20c4cf73
 pkgrel=1
 pkgdesc="Pure Python 3 Telegram client library, asyncio version"
 arch=('any')
@@ -21,12 +21,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/Telethon"
-  ./setup.py build
+  python setup.py build
 }
 
 package() {
   cd "$srcdir/Telethon"
-  ./setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
