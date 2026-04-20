@@ -1,7 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=checkip
-pkgver=0.51.0
+pkgver=0.53.0
 pkgrel=1
 pkgdesc="Get (security) info about IP addresses"
 arch=('x86_64' 'aarch64')
