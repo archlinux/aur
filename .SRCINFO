@@ -1,0 +1,11 @@
+pkgbase = anihot-app
+	pkgver = 6.0.8
+	pkgrel = 1
+	url = https://github.com/MrGlany/AniHotAppPC
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = anihot-6.0.8.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/6.0.8r/6.0.8-linux.zip
+	sha256sums = SKIP
+
+pkgname = anihot-app
