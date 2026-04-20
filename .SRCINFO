@@ -1,0 +1,15 @@
+pkgbase = cskk
+	pkgdesc = SKK (Simple Kana Kanji henkan) library
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/naokiri/cskk
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo-c
+	depends = glibc
+	depends = libgcc
+	depends = libxkbcommon
+	source = cskk-v3.3.0.tar.gz::https://github.com/naokiri/cskk/archive/v3.3.0.tar.gz
+	b2sums = b3264fda813f672eaf486b51d820f57cfdd5d8a401ac06e88ebbf47c74ff0f65d7cf3a9a64e7abb0ed51f47d9dbc287f9b65da920c292aecb2f6b2e840b9cf36
+
+pkgname = cskk
