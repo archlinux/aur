@@ -105,7 +105,7 @@
 : ${CLANGD_INLAYHINTSIGNOREEVIDENT:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=22.r10834.g8589d8fbbe996
+pkgver=23.r12019.gcea56f648ef4
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -136,7 +136,7 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
 sha256sums=('SKIP'
     '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
     '85cec3889f7a818fcc998c3564cdd9b01fbeb95855d64ea999d6df5af9ebe817'  # lsp-codelens
-    'd1b59079d51f19b653b4196945d9268c6427f2314ec3aff76e2b0d352892dbfb'  # postfix-completion-trunk
+    'SKIP'  # postfix-completion-trunk (locally maintained)
     'fd1f752f7a5a29bc18432ba60b0a9faa0381b3fee49febc53fc8f8f177d61f5d'  # refactor-extract-function
     'ad4b75468f2969e7414fb68670fb0ca622b0a1e19ca0fa7b836468f085fe0178'  # inlay-hints-paddings
     'ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa'  # hover-hex-formats

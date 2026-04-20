@@ -16,15 +16,6 @@ index c6deed3ab1..9488ba78dc 100644
        Completion.FilterText = SemaCCS->getAllTypedText();
        if (Completion.Scope.empty()) {
          if ((C.SemaResult->Kind == CodeCompletionResult::RK_Declaration) ||
-@@ -480,6 +485,8 @@ struct CodeCompletionBuilder {
-                    C.SemaResult->CursorKind,
-                    /*IncludeFunctionArguments=*/C.SemaResult->FunctionCanBeCall,
-                    /*RequiredQualifiers=*/&Completion.RequiredQualifier);
-+      if (C.SemaResult->Name) // Description is self-contained.
-+        S.Signature.clear();
-       S.ReturnType = getReturnType(*SemaCCS);
-       if (C.SemaResult->Kind == CodeCompletionResult::RK_Declaration)
-         if (const auto *D = C.SemaResult->getDeclaration())
 @@ -994,6 +1001,8 @@ struct CompletionRecorder : public CodeCompleteConsumer {
    // Returns the filtering/sorting name for Result, which must be from Results.
    // Returned string is owned by this recorder (or the AST).
