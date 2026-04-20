@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 
 pkgname=qt-web-extractor
-pkgver=r26.20260419.e993fec
+pkgver=r27.20260420.8ca4503
 pkgrel=1
 pkgdesc='Qt WebEngine based web content extractor with HTTP server'
 arch=('any')
