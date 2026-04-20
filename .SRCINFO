@@ -1,6 +1,6 @@
 pkgbase = juliaup-bin
 	pkgdesc = Julia installer and version multiplexer
-	pkgver = 1.19.10
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://github.com/JuliaLang/juliaup
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = juliaup-bin
 	conflicts = juliaup
 	conflicts = julia
 	conflicts = julia-bin
-	source_x86_64 = https://github.com/JuliaLang/juliaup/releases/download/v1.19.10/juliaup-1.19.10-x86_64-unknown-linux-musl-portable.tar.gz
-	sha256sums_x86_64 = 2104d664b8c671987f6a7c199eccd95ae6121410d6d86f87d9971b109ea35f68
-	source_aarch64 = https://github.com/JuliaLang/juliaup/releases/download/v1.19.10/juliaup-1.19.10-aarch64-unknown-linux-musl-portable.tar.gz
-	sha256sums_aarch64 = dc4610d9686e64b598ade2a920a7ff9c8796f431ebf01a5177ce6007d6d3e3ee
-	source_i686 = https://github.com/JuliaLang/juliaup/releases/download/v1.19.10/juliaup-1.19.10-i686-unknown-linux-musl-portable.tar.gz
-	sha256sums_i686 = 0d8045622ca8bd6bcb077dc46d73236b6790d7a32964b29c891bc870dca807de
+	source_x86_64 = https://github.com/JuliaLang/juliaup/releases/download/v1.20.1/juliaup-1.20.1-x86_64-unknown-linux-musl-portable.tar.gz
+	sha256sums_x86_64 = bbfcb05358f713d99b9ff15657d68737e352facdb36e6c3af7c25f53731be9b7
+	source_aarch64 = https://github.com/JuliaLang/juliaup/releases/download/v1.20.1/juliaup-1.20.1-aarch64-unknown-linux-musl-portable.tar.gz
+	sha256sums_aarch64 = 67528dc3efef8955d1dfcc8577904c89d152b81bc8aed25841acea4b22324409
+	source_i686 = https://github.com/JuliaLang/juliaup/releases/download/v1.20.1/juliaup-1.20.1-i686-unknown-linux-musl-portable.tar.gz
+	sha256sums_i686 = a2510030c5a08fd69a02e0ad891f8a7cdab50ef9faec5c865cd29c80fce40015
 
 pkgname = juliaup-bin
