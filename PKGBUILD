@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=scotty
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Transfer listens and loves between music services"
 arch=('x86_64')
 url="https://git.sr.ht/~phw/scotty"
@@ -32,4 +32,11 @@ package() {
 	install -Dm755 "$srcdir/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 "$srcdir/$pkgname/config.example.toml" "$pkgdir/usr/share/doc/$pkgname/config.example.toml"
 	install -Dm644 "$srcdir/$pkgname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	for _shell in {bash,fish,zsh}
+	do
+		./${pkgname} completion ${_shell} > "$srcdir/${pkgname}-${_shell}"
+	done
+	install -Dm644 "$srcdir"/${pkgname}-bash "$pkgdir/usr/share/bash-completion/completions/${pkgname}"
+	install -Dm644 "$srcdir"/${pkgname}-fish "$pkgdir/usr/share/fish/completions/${pkgname}.fish"
+	install -Dm644 "$srcdir"/${pkgname}-zsh "$pkgdir/usr/share/zsh/site-functions/_${pkgname}"
 }
