@@ -1,9 +1,9 @@
 # Maintainer: OpenSorcerer <alex cat fossfed dog eu>
 pkgname=cntb
-pkgver=1.5.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="Contabo Command Line Interface"
-arch=('i686' 'x86_64' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/contabo/cntb"
 license=('GPL-3.0-only')
 depends=('glibc')
