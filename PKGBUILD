@@ -15,7 +15,7 @@ conflicts=("${_pkgname}" "${_pkgname}-appimage")
 
 source=(
     "LICENSE::https://raw.githubusercontent.com/821869798/carton/refs/tags/v${pkgver}/LICENSE"
-    "carton_icon.png::https://raw.githubusercontent.com/821869798/carton/refs/heads/main/src/carton.GUI/Assets/carton_icon.png"
+    "carton_icon.png::https://raw.githubusercontent.com/821869798/carton/refs/tags/v${pkgver}/src/carton.GUI/Assets/carton_icon.png"
 )
 source_x86_64=("${_pkgname}-v${pkgver}-x64-portable.tar.gz::https://github.com/821869798/carton/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64-portable.tar.gz ")
 source_aarch64=("${_pkgname}-v${pkgver}-arm64-portable.tar.gz::https://github.com/821869798/carton/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64-portable.tar.gz")
