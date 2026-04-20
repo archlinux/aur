@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=vdu_controls
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Visual Display Unit virtual control panel - a GUI front end to ddcutil"
 arch=('any')
@@ -14,11 +14,13 @@ depends=(
   'qt6-svg'
 )
 optdepends=(
+  'brightnessctl: Laptop panel support'
   'ddcutil-service: D-Bus Interface for up to 10x faster response times.'
   'python-pyserial: If you wish to use a serial-port lux metering device'
+  'python-pyudev: Laptop panel support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8a692e175b530bc02ec5f8cb9f363b63483ba36f27f8ba13aea7cb3e5af6cc3e')
+sha256sums=('53cde3462f43a90258f90438ab0839e7fe23f749da7fb8e936950fee4c01026a')
 
 package() {
   cd "$pkgname-$pkgver"
