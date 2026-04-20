@@ -1,5 +1,5 @@
 # Maintainer: T9Tuco <fabiostaab12@gmail.com>
-pkgname=archvital
+pkgname=archvital-git
 pkgver=r1.d5ea010
 pkgrel=1
 pkgdesc="Qt6/C++20 system monitor for Arch Linux"
