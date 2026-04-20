@@ -1,16 +1,16 @@
 pkgbase = deadfinder
 	pkgdesc = Find dead (broken) links in web pages, URL lists, and sitemaps
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/hahwul/deadfinder
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source = LICENSE-2.0.1::https://raw.githubusercontent.com/hahwul/deadfinder/2.0.1/LICENSE
+	source = LICENSE-2.0.2::https://raw.githubusercontent.com/hahwul/deadfinder/2.0.2/LICENSE
 	sha256sums = SKIP
-	source_x86_64 = deadfinder-2.0.1-x86_64.tar.gz::https://github.com/hahwul/deadfinder/releases/download/2.0.1/deadfinder-linux-x86_64.tar.gz
+	source_x86_64 = deadfinder-2.0.2-x86_64.tar.gz::https://github.com/hahwul/deadfinder/releases/download/2.0.2/deadfinder-linux-x86_64.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = deadfinder-2.0.1-aarch64.tar.gz::https://github.com/hahwul/deadfinder/releases/download/2.0.1/deadfinder-linux-aarch64.tar.gz
+	source_aarch64 = deadfinder-2.0.2-aarch64.tar.gz::https://github.com/hahwul/deadfinder/releases/download/2.0.2/deadfinder-linux-aarch64.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = deadfinder
