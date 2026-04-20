@@ -2,7 +2,7 @@
 
 pkgbase=motorbridge
 pkgname=(motorbridge libmotorbridge python-motorbridge)
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Unified CAN motor control stack with a vendor-agnostic Rust core, stable C ABI, and Python/C++ bindings'
 arch=($CARCH)
@@ -29,7 +29,7 @@ checkdepends=()
 optdepends=()
 options=(!strip !debug staticlibs !lto)
 source=("${pkgbase}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('0ce1f73b081bdb11d1f0110da07319eae60279859ca73b9adf38067361587836')
+sha256sums=('ed01c98555409d8950d20e47565a065956ae34b85539ff0020a65950a0355991')
 
 
 prepare() {
@@ -100,6 +100,9 @@ package_motorbridge() {
       -type f \
       -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
   rm -rf ${pkgdir}/usr/bin/*.so
+  install -vDm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  cp -R docs "${pkgdir}/usr/share/doc/${pkgname}/"
+  cp -R examples "${pkgdir}/usr/share/doc/${pkgname}/"
   install -vDm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
