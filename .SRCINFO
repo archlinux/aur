@@ -50,8 +50,8 @@ pkgbase = chatterino2-7tv-native-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = f0a8f9e3a951182136d564a951d8fbaa8700f7a159459b4efe190b97b4d97ee3
+	sha256sums = 023a2cad4865675e4d0303eca60f11daaccb107b838343e3b5e5c1f6694bc8a6
 	sha256sums = f7694cfd67cdfdb7ef825052af4d0a09ea8043a747bbfe60692d0102b7cc42bb
-	sha256sums = a02903a54bf92e67afca73cef89850209490edf2203005952bed55d9f94cfb3a
+	sha256sums = 06ea7c9fcb42965e9baecbdc3f864ad7049d148b27f152ceebc7bd8af58c2147
 
 pkgname = chatterino2-7tv-native-git
