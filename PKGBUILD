@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hihat
-pkgver=2.0.2
+pkgver=2.1.0
 _electronversion=35
 _nodeversion=22
 pkgrel=1
