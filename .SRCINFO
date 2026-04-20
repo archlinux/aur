@@ -1,0 +1,12 @@
+pkgbase = steam-prefix-shortcut
+	pkgdesc = Creates symbolic links to Proton/Wine prefixes for Steam games running through Proton
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/aaronred345/SteamPrefixShorcut
+	arch = any
+	license = MIT
+	depends = python
+	source = steam-prefix-shortcut-1.1.0.tar.gz::https://github.com/aaronred345/SteamPrefixShorcut/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 4072e1e1bb30f0c98d4948641bfdbe6d4e1eac405914b6b9aeebf1a6e15fdec9
+
+pkgname = steam-prefix-shortcut
