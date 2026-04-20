@@ -1,11 +1,12 @@
 pkgbase = waveterm-bin
 	pkgdesc = An open-source, cross-platform terminal for seamless workflows.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.14.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.waveterm.dev
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
+	makedepends = asar
 	depends = electron41
 	options = !strip
 	source = waveterm.sh

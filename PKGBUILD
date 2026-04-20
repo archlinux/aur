@@ -4,7 +4,7 @@ pkgname=waveterm-bin
 _pkgname=Wave
 pkgver=0.14.5
 _electronversion=41
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source, cross-platform terminal for seamless workflows.(Prebuilt version.Use system-wide electron)'
 arch=(
     'aarch64'
@@ -15,6 +15,9 @@ _ghurl="https://github.com/wavetermdev/waveterm"
 license=('Apache-2.0')
 depends=(
     "electron${_electronversion}"
+)
+makedepends=(
+    'asar'
 )
 options=(
     '!strip'
