@@ -78,9 +78,13 @@ package() {
     install -Dm644 LICENSE \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    # Version check script for cron/automation
+    # Version check script for personal use (no systemd timer — maintainer decides when to update)
     install -Dm755 check-version.sh \
         "$pkgdir/usr/share/$pkgname/check-version.sh"
+
+    # systemd units — DISABLED by default, user opts in manually
+    install -Dm644 /dev/null "$pkgdir/usr/lib/systemd/user/forge-code-update-check.service"
+    install -Dm644 /dev/null "$pkgdir/usr/lib/systemd/user/forge-code-update-check.timer"
 }
 
 # vim: set ts=4 sw=4 et:
