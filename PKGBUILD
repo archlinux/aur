@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=phiola-bin
-pkgver=2.7.9
+pkgver=2.7.11
 pkgrel=1
 pkgdesc="Fast audio player, recorder, converter.(Prebuilt version)"
 arch=(
-    'aarch64'
+    #'aarch64'
     'x86_64'
 )
 url="https://github.com/stsaz/phiola"
@@ -24,11 +24,10 @@ options=(
     '!strip'
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.zst::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.tar.zst")
+#source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.zst::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.tar.zst")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.zst::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.tar.zst")
 sha256sums=('6be792749954f9c1c53f9ec0cfe9764d1a678b378d411f5acd262318ef94a13f')
-sha256sums_aarch64=('eb62f4e0d3a4f2096f890d54bd7a8167af32698f9890eac66af6e031ba8c431f')
-sha256sums_x86_64=('d86426fdbd6cd599b531f30940e9729d2d022eb2f094a9df2f8b416c053d957f')
+sha256sums_x86_64=('0e67a4ad1490e9587c39dc63053972289fa9f8be33db877034864d284a98841c')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
