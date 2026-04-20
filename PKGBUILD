@@ -8,7 +8,7 @@ url="https://github.com/larsch/git-remove"
 license=('MIT')
 depends=('git' 'bash' 'coreutils')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/larsch/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('92fc310d88b557b262eb6c331eb96279fc3d5400f2aef57134e294098b5419fc')
+sha256sums=('41dee086fbe72398ef5737a12f6e3e974896b6536a2cc383e8b2315986d21a3c')
 
 package() {
   cd "$pkgname-$pkgver"

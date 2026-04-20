@@ -9,6 +9,6 @@ pkgbase = git-remove
 	depends = bash
 	depends = coreutils
 	source = git-remove-1.0.tar.gz::https://github.com/larsch/git-remove/archive/refs/tags/v1.0.tar.gz
-	sha256sums = 92fc310d88b557b262eb6c331eb96279fc3d5400f2aef57134e294098b5419fc
+	sha256sums = 41dee086fbe72398ef5737a12f6e3e974896b6536a2cc383e8b2315986d21a3c
 
 pkgname = git-remove
