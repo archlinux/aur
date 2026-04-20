@@ -1,7 +1,7 @@
 # Maintainer: Aaron Coach <aur@awc.id.au>
 _pkgname=pocket-id
 pkgname="${_pkgname}-bin"
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A simple and easy-to-use OIDC provider (Pre-compiled binary)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
   "${_pkgname}.tmpfiles"
 )
 
-sha256sums=('def7486d7601e6f88f938e895a7f192d7e7b8eff37a8987a1ce0389cdffef814'
+sha256sums=('6ff8fcc7f9f06bca61399dfabe1164b183f28ad2fd4bfaec1653b342a38c560e'
             'a16d41415d11c4cf586cb67147190678181abef880306aca6f5267bd496a1a67'
             'c4822dc23fddabd9aef6cd1b1e5dfe307cbc36dc0f1d662e82d58ebc886d9d0f'
             'b3eecd75778be96a757fadb11366d7cc5e166deb7d06c2c75fc6e4d63545d90b'
