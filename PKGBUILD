@@ -22,11 +22,11 @@ makedepends=(
 options=('!lto' '!debug' '!strip')
 install="${pkgname}.install"
 
-pkgver=0.3.536
+pkgver=0.3.552
 pkgrel=1
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pnn64/deadsync/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bc6ae95d92c91c01a829492a7c5d981d5e44da824d455f9f7eb9dcb2771109e2')
+sha256sums=('8f85f6ba3661d9ee933907e34bc965b7ee8440390572a54bfbf80e06f12f2ca8')
 
 prepare() {
     cd "${srcdir}/deadsync-${pkgver}"
@@ -40,7 +40,6 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    unset CFLAGS CXXFLAGS
 
     export RUSTFLAGS="${RUSTFLAGS} \
         --remap-path-prefix=${srcdir}=/build/source \
