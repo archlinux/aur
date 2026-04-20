@@ -12,8 +12,12 @@ optdepends=('github-cli: PR Inspector feature')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
-source=("hydra-ensemble-0.1.1.AppImage::https://github.com/javabetatester/hydra-ensemble/releases/download/v0.1.1/Hydra.Ensemble-0.1.1.AppImage")
-sha256sums=('114b3c086d07de4765c4f06eb38314da64231cd385e12472306e0e51a651f600')
+source=("hydra-ensemble-0.1.1.AppImage::https://github.com/javabetatester/hydra-ensemble/releases/download/v0.1.1/Hydra.Ensemble-0.1.1.AppImage"
+        "hydra-ensemble.desktop"
+        "hydra-ensemble.png::https://raw.githubusercontent.com/javabetatester/hydra-ensemble/v0.1.1/resources/icon.png")
+sha256sums=('114b3c086d07de4765c4f06eb38314da64231cd385e12472306e0e51a651f600'
+            'SKIP'
+            'SKIP')
 noextract=("${_pkgname}-${pkgver}.AppImage")
 
 package() {
