@@ -2,7 +2,7 @@
 
 pkgbase=td-system-tools
 pkgname=td-system-tools
-pkgver=2.2.4
+pkgver=2.3.0
 pkgrel=1
 groups=()
 pkgdesc="Tools for Basic System Management"
@@ -17,6 +17,7 @@ depends=(
 )
 makedepends=(
     gettext
+    git
     openssl
     cmake
     ninja
@@ -26,15 +27,20 @@ checkdepends=(
 )
 optdepends=()
 options=('!debug')
-source=("${pkgname#td-}-${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('cb715577598e56cf2ba4896cf8d180ad70f731d407fe6462c10f105d2dc66162')
+source=("${pkgname}::git+${url}.git#tag=${pkgname}-${pkgver}")
+sha256sums=('3c3a065bb6bdd311f0f66874c8a68800a6930518ce7679937d7837f6fa0e4026')
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
     export CXXFLAGS+=" ${CPPFLAGS}"
     export LDFLAGS+=" ${LDFLAGS}"
 
-    cd "${srcdir}/${pkgname#td-}-${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
 
     # see：https://wiki.archlinux.org/title/CMake_package_guidelines
     cmake -DCMAKE_BUILD_TYPE=None \
@@ -47,6 +53,6 @@ build() {
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname#td-}-${pkgname}-${pkgver}/build install
-    install -Dm644 "${srcdir}/${pkgname#td-}-${pkgname}-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
+    install -Dm644 "${srcdir}/${pkgname}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
