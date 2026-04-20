@@ -1,0 +1,20 @@
+pkgbase = crosshair-maker
+	pkgdesc = Crosshair overlay creator with SVG rendering and preview
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/fibsussy/crosshair-maker
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = libx11
+	depends = libxcb
+	depends = wayland
+	depends = libxkbcommon
+	depends = vulkan-icd-loader
+	options = !debug
+	source = https://github.com/fibsussy/crosshair-maker/releases/download/v0.1.2/crosshair-maker-0.1.2-x86_64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/fibsussy/crosshair-maker/v0.1.2/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = crosshair-maker
