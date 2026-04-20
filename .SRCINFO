@@ -23,7 +23,6 @@ pkgbase = chatterino2-7tv-native-git
 	optdepends = qt6-wayland: For Wayland support
 	provides = chatterino
 	conflicts = chatterino
-	options = !lto
 	source = git+https://github.com/SevenTV/chatterino7
 	source = git+https://github.com/arsenm/sanitizers-cmake
 	source = git+https://github.com/Chatterino/crash-handler

@@ -68,9 +68,6 @@ sha256sums=(
   'a02903a54bf92e67afca73cef89850209490edf2203005952bed55d9f94cfb3a'
 )
 
-# We temporarily disable LTO since we get an ICE when compiling with gcc since this commit https://github.com/Chatterino/chatterino2/commit/ed20e71db4c957d3b2a8ce9350b847f4c805cb83
-options=('!lto')
-
 pkgver() {
   cd "$_pkgsrc"
   local _tag=$(git tag | grep -E '([0-9]+)\.([0-9]+)\.([0-9]+)' | grep -v test | sort -rV | head -1)
