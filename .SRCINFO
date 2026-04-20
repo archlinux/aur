@@ -1,0 +1,22 @@
+pkgbase = mcp-wsl-bin
+	pkgdesc = MCP server exposing Linux system info and command execution over stdio or HTTP (pre-built binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Nachtalb/mcp-wsl
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = LGPL-3.0-only
+	provides = mcp-wsl
+	conflicts = mcp-wsl
+	source_x86_64 = mcp-wsl-bin-0.1.0-x86_64::https://github.com/Nachtalb/mcp-wsl/releases/download/v0.1.0/mcp-wsl-linux-amd64
+	b2sums_x86_64 = 62b6d8cdef4212f361521644842c157d402e5922107f20aeb004a3425ea375a9056983ca9fd15b7efb6e2a699a3f21d4c526d7b69370073556ed78d746f919a8
+	source_i686 = mcp-wsl-bin-0.1.0-i686::https://github.com/Nachtalb/mcp-wsl/releases/download/v0.1.0/mcp-wsl-linux-i386
+	b2sums_i686 = 2f799fb5ac94405b0a08c671085e5b51e05edda4e1f26cf8e663c576dde1f80d8e443cbdb8d14225f7fda384d225bc2a7daa9cf170b969372259ec35fb584cb9
+	source_aarch64 = mcp-wsl-bin-0.1.0-aarch64::https://github.com/Nachtalb/mcp-wsl/releases/download/v0.1.0/mcp-wsl-linux-arm64
+	b2sums_aarch64 = 51ce7539502d2f54cc572035230cba26fa8e5991cdf5d2793d3d8015d5164c3cf8c6157dc48c0f1daf9fbc59b75ea1a65653497d7aacf77d4c3cf7cee5b18e77
+	source_armv7h = mcp-wsl-bin-0.1.0-armv7h::https://github.com/Nachtalb/mcp-wsl/releases/download/v0.1.0/mcp-wsl-linux-arm32
+	b2sums_armv7h = 48623ce3194d5aed8e604729fe92d2a0d81e3ef84f0c84e7b145d44bf481e10c888c5a4841942ab792c258567e66631a7c3fd259b0c6765109e4b05e5ddd4b12
+
+pkgname = mcp-wsl-bin
