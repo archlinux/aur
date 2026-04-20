@@ -1,6 +1,6 @@
 pkgbase = ghidra-mcp
 	pkgdesc = Production-ready Model Context Protocol server for Ghidra reverse engineering platform
-	pkgver = 4.3.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://github.com/bethington/ghidra-mcp
 	install = ghidra-mcp.install
@@ -14,7 +14,7 @@ pkgbase = ghidra-mcp
 	depends = python-mcp
 	provides = ghidra-mcp
 	conflicts = ghidra-mcp-git
-	source = ghidra-mcp-4.3.0.tar.gz::https://github.com/bethington/ghidra-mcp/archive/refs/tags/v4.3.0.tar.gz
-	sha256sums = 04fbcfec1ec7fa8a386278eb35de19493c63f506fe3fac6bc5f936f9971da54d
+	source = ghidra-mcp-5.4.1.tar.gz::https://github.com/bethington/ghidra-mcp/archive/refs/tags/v5.4.1.tar.gz
+	sha256sums = 9096b50b77aac5122004237f75dea533e44e9f9651fcdb4f1a6221fb69ac101f
 
 pkgname = ghidra-mcp
