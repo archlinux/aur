@@ -8,6 +8,7 @@ arch=('x86_64')
 url='https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance'
 license=('LicenseRef-Microsoft-Pylance')
 depends=('nodejs')
+checkdepends=('python')
 provides=('pylance-language-server')
 conflicts=('pylance-language-server')
 options=('!strip' '!debug' '!lto')
@@ -43,6 +44,84 @@ prepare() {
     # are disabling the self-kill + init throw, not hiding the license.
     sed -i 's|process.stderr.write(nG+"\\n"),process.exit(1)|void 0|' "${bundle}"
     sed -i 's#if(void 0===e||nG!==JSON.parse(e))throw Error#if(!1)throw Error#' "${bundle}"
+}
+
+check() {
+    # Canary: if Microsoft reshapes the gates in a future release the
+    # sed patterns above may silently no-op (sed doesn't error on zero
+    # matches). We verify both patches actually hit, then boot the
+    # server and confirm it answers `initialize` with a real result —
+    # if a new third gate appears, initialize will come back with an
+    # error carrying the EULA as its message and we abort the build.
+    # Every `yay -S pylance-language-server` thus doubles as a live
+    # labyrinth-integrity probe.
+    local bundle="${srcdir}/extension/dist/server.bundle.js"
+
+    if grep -q 'process.stderr.write(nG+"\\n"),process.exit(1)' "${bundle}"; then
+        echo "::error:: gate 1 (boot exit) still present — sed pattern stale" >&2
+        return 1
+    fi
+    if grep -q 'if(void 0===e||nG!==JSON.parse(e))throw Error' "${bundle}"; then
+        echo "::error:: gate 2 (initialize throw) still present — sed pattern stale" >&2
+        return 1
+    fi
+
+    python - "${bundle}" <<'PY'
+import json, subprocess, sys, time
+
+bundle = sys.argv[1]
+proc = subprocess.Popen(
+    ["node", bundle, "--stdio"],
+    stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+)
+
+def send(obj):
+    body = json.dumps(obj).encode()
+    proc.stdin.write(f"Content-Length: {len(body)}\r\n\r\n".encode() + body)
+    proc.stdin.flush()
+
+send({"jsonrpc": "2.0", "id": 1, "method": "initialize",
+      "params": {"processId": None, "rootUri": None,
+                 "workspaceFolders": [], "capabilities": {}}})
+
+buf = b""
+resp = None
+deadline = time.time() + 45
+while time.time() < deadline and resp is None:
+    chunk = proc.stdout.read1(65536)
+    if not chunk:
+        break
+    buf += chunk
+    while True:
+        hdr = buf.find(b"\r\n\r\n")
+        if hdr < 0:
+            break
+        clen = next(int(l.split(b":", 1)[1].strip())
+                    for l in buf[:hdr].split(b"\r\n")
+                    if l.lower().startswith(b"content-length"))
+        start = hdr + 4
+        if len(buf) < start + clen:
+            break
+        msg = json.loads(buf[start:start + clen])
+        buf = buf[start + clen:]
+        if msg.get("id") == 1:
+            resp = msg
+            break
+
+proc.kill()
+try:
+    proc.wait(timeout=5)
+except subprocess.TimeoutExpired:
+    pass
+
+if resp is None:
+    sys.exit("no initialize response — server crashed or a new gate killed stdout")
+if "error" in resp:
+    sys.exit(f"initialize returned error — labyrinth changed: {resp['error']}")
+if "result" not in resp:
+    sys.exit(f"malformed initialize response: {resp}")
+print("[check] pylance initialized cleanly — gates held")
+PY
 }
 
 package() {

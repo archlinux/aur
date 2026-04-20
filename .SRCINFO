@@ -6,6 +6,7 @@ pkgbase = pylance-language-server
 	install = pylance-language-server.install
 	arch = x86_64
 	license = LicenseRef-Microsoft-Pylance
+	checkdepends = python
 	depends = nodejs
 	provides = pylance-language-server
 	conflicts = pylance-language-server
