@@ -3,7 +3,7 @@
 # Update pkgver + sha256sums (run: updpkgsums) for each new release.
 
 pkgname=paintfe
-pkgver=1.2.1
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Fast, GPU-accelerated raster image editor"
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,7 @@ makedepends=(
     'mesa'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2fcbd66beadf5b7245238dbb6ad7c838d7b5b28fdf0144422c92ec9f9a552f12')
+sha256sums=('8a651e3bd1f25c2b838a530a402d5eaaa55025cfd54ae8e8196e2a3dc9003cc8')
 
 prepare() {
     cd "PaintFE-$pkgver"
