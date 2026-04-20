@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TBSignatureProfiler
-_pkgver=1.16.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
-pkgrel=1
+pkgver=1.22.0
+pkgrel=2
 pkgdesc='Profile RNA-Seq Data Using TB Pathway Signatures'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,8 +19,11 @@ depends=(
   r-edger
   r-gdata
   r-ggplot2
+  r-glmnet
   r-gsva
+  r-hgnchelper
   r-magrittr
+  r-proc
   r-rcolorbrewer
   r-reshape2
   r-rlang
@@ -37,14 +40,11 @@ optdepends=(
   r-covr
   r-dplyr
   r-e1071
-  r-glmnet
-  r-hgnchelper
   r-impute
   r-knitr
   r-lintr
   r-mass
   r-plyr
-  r-proc
   r-randomforest
   r-rmarkdown
   r-shiny
@@ -53,7 +53,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f34a44de804cd0d90d95d6e6ef02f245e3c289e4d37415da31a89a6c794b4dee')
+sha256sums=('b38752eebc443dfa803586f3570ebf8baf3dbdddabeaf97321b061432a329746')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
