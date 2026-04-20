@@ -2,33 +2,38 @@
 : ${aur_llamacpp_build_universal:=false}
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b8665.r2.c08d28d088
+pkgver=b8851.r0.e365e658f0
 pkgrel=1
 _build_number=0
 _commit_id=
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
-arch=(x86_64 armv7h aarch64)
-url='https://github.com/ggerganov/llama.cpp'
+arch=(x86_64 aarch64)
+url='https://github.com/ggml-org/llama.cpp'
 license=('MIT')
+backup=('etc/conf.d/llama.cpp')
 depends=(
   cuda
   curl
   gcc-libs
-  glibc
+  glibc  
   nvidia-utils
-)
-makedepends=(
-  cmake
-  git
   openssl
+)
+makedepends=(  
+  cmake
   cudnn
+  git
+  ninja
 )
 optdepends=(
+'ccache: greatly reduce package re-build time'
+'nccl: needed for multi-GPU parallelism'
 'python-numpy: needed for convert_hf_to_gguf.py'
 'python-safetensors: needed for convert_hf_to_gguf.py'
 'python-sentencepiece: needed for convert_hf_to_gguf.py'
 'python-pytorch: needed for convert_hf_to_gguf.py'
 'python-transformers: needed for convert_hf_to_gguf.py'
+'rdma-core: RDMA transport for RPC backend'
 )
 # Note: This package provides libggml (with CUDA) and libggml-cuda-git to support
 # downstream packages like whisper.cpp-cuda that require CUDA-enabled GGML backends.
@@ -36,6 +41,7 @@ provides=(
   "${_pkgname}"
   libggml-cuda-git
   libggml
+  libggml.so
   ggml
 )
 conflicts=(
@@ -49,12 +55,15 @@ llama.cpp.conf
 llama.cpp.service
 )
 sha256sums=('SKIP'
-'53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
-'0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
+            '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
+            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
+b2sums=('SKIP'
+        '088e6b702e42bf1af019f69c8a85b0cd1196599e12f196e086ea1271e1800540947d1b51e3500821ec4556386f8e3c8217c0ad03570b764b85016827648939e7'
+        '56e8e6e99c37f9baa1db5e3f8956f48a59bdbdc48797ae9b41292f0d1cdc3e41e5174bd7d721f3db84587ca271b11b480525e8c32cdb0f17f689b5537623c0a7')
 
 pkgver() {
   cd "${_pkgname}" || exit
-  printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
@@ -63,18 +72,20 @@ prepare() {
   _commit_id=$(git rev-parse HEAD)
   _build_number=$(git rev-list --count HEAD)
   cd ..
-
-  ln -sf "${_pkgname}" llama.cpp
 }
 
 build() {
   # This may not be set if the user's session
   # has not restarted on a new 'cuda' install
   if [[ -z "${NVCC_CCBIN}" ]]; then
-    source /etc/profile
+    # cuda package installs /etc/profile.d/cuda.sh
+    if [[ -f /etc/profile.d/cuda.sh ]]; then
+      source /etc/profile.d/cuda.sh
+    fi
   fi
 
   local _cmake_options=(
+    -G Ninja
     -B build
     -S "${_pkgname}"
     -DCMAKE_BUILD_TYPE=Release
@@ -92,6 +103,7 @@ build() {
     -DGGML_CUDA=ON
     -DGGML_CUDA_FA_ALL_QUANTS=ON
     -DGGML_CUDNN=ON
+    -DGGML_CUDA_COMPRESSION_MODE=speed
     -DLLAMA_BUILD_SERVER=ON
     -DLLAMA_BUILD_NUMBER="${_build_number}"
     -DLLAMA_BUILD_COMMIT="${_commit_id}"
