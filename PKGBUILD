@@ -1,7 +1,7 @@
 # Maintainer: jingluwei <weijinglu at qq dot com>
 pkgname=cxstudy-wine
 pkgver=1.4.0
-pkgrel=4
+pkgrel=5
 # https://atomgit.com/JingluWei_chn/cxstudy-wine/tree/master
 pkgdesc="a version of repacked wine app of cxstudy(学习通)"
 arch=('x86_64')
