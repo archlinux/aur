@@ -1,6 +1,6 @@
 # Maintainer: Xavier Olive <git@xoolive.org>
 pkgname=fmradio-bin
-pkgver=0.4.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="An FM radio demodulator and RDS decoder in pure Rust"
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,7 @@ sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 
 package() {
+    cd "fmradio-${CARCH}-unknown-linux-gnu"
     install -Dm755 "fmradio" "${pkgdir}/usr/bin/fmradio"
     install -Dm644 "readme.md" "${pkgdir}/usr/share/doc/fmradio/readme.md"
 }

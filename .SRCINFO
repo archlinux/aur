@@ -1,6 +1,6 @@
 pkgbase = fmradio-bin
 	pkgdesc = An FM radio demodulator and RDS decoder in pure Rust
-	pkgver = 0.4.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/xoolive/desperado
 	arch = x86_64
