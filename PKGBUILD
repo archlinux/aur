@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=drawnix
-_tagname=0.2.1
-pkgver=0.3.3
-pkgrel=5
+_tagname=0.4.0-2
+pkgver=${_tagname//-/_}
+pkgrel=1
 pkgdesc="All in one open-source whiteboard tool with mind, flowchart, freehand and etc."
 arch=('any')
 url="https://github.com/plait-board/drawnix"
@@ -27,7 +27,7 @@ backup=()
 options=()
 install=
 source=("${pkgname}-${_tagname}.tar.gz::${url}/archive/refs/tags/v${_tagname}.tar.gz")
-sha256sums=('82d01e799c5f8dffa712e41ed293e78fe61d2fb2e1c8c4aab6ade227e3976eed')
+sha256sums=('801dade5c510ec4b6f36e99fbe171de20ce905115688e96172a6649aade0a1bf')
 noextract=("${_pkgname}-${_tagname}.tar.gz")
 
 package() {
