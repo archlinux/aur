@@ -1,6 +1,6 @@
 # Maintainer: T9Tuco <tucot9@tuta.io>
 pkgname=archvital
-pkgver=1.0.0
+pkgver=main
 pkgrel=1
 pkgdesc="Qt6/C++20 system monitor for Arch Linux"
 arch=('x86_64')
