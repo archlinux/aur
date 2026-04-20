@@ -1,0 +1,23 @@
+pkgbase = logitune-git
+	pkgdesc = Configure Logitech devices on Linux (Options+ clone)
+	pkgver = v0.3.1.beta.1.r5.330b2b0
+	pkgrel = 1
+	url = https://github.com/mmaher88/logitune
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = gtest
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-5compat
+	depends = libudev0-shim
+	provides = logitune
+	conflicts = logitune
+	source = logitune-git::git+https://github.com/mmaher88/logitune.git
+	sha256sums = SKIP
+
+pkgname = logitune-git
