@@ -1,0 +1,18 @@
+pkgbase = slabeler-le
+	pkgdesc = Proprietary software for labeling speech/singing audio
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://m-lo7.itch.io/slabeler-le
+	arch = x86_64
+	groups = slabeler
+	license = custom
+	makedepends = unzip
+	depends = glibc
+	depends = libx11
+	options = !strip
+	options = !emptydirs
+	source = SLabeler-linux.zip
+	md5sums = 694265ada186a44250428ec8ad3dbc64
+	sha512sums = 86ff3e451a6783a0066e4010128c720827995631ffd2943b63dca35cffa893a69808a1f6dbf1e34b79e9e7efd721e37a421807a66fe775ec5b7e230b113c89ec
+
+pkgname = slabeler-le
