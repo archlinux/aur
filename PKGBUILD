@@ -6,7 +6,7 @@
 pkgbase=rapidyaml
 pkgname=('rapidyaml' 'python-rapidyaml')
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/biojppm/rapidyaml"
 license=('MIT')
@@ -98,7 +98,7 @@ package_python-rapidyaml() {
     touch "${_pydir}/__init__.py"
   else
     echo "ERROR: Could not find Python binding files in temporary location."
-    exit 1
+    return 1
   fi
 
   install -Dm644 rapidyaml/LICENSE.txt \
