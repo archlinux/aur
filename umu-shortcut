@@ -1,0 +1,200 @@
+#!/usr/bin/env python3
+
+import argparse, os, shutil
+
+
+class Args:
+    icon: str | None = None
+    prefix: str | None = None
+    gameid: str | None = None
+    proton: str | None = None
+    store: str | None = None
+    name: str | None = None
+    executable: list[str] | None = None
+    arguments: list[str] | None = None
+    systemd_inhibit: bool = False
+    kde_inhibit: bool = False
+
+def make_executable(path: str):
+    mode = os.stat(path).st_mode
+    mode |= (mode & 0o444) >> 2
+    os.chmod(path, mode)
+
+def build_wrapper() -> str:
+    umu_path = shutil.which("umu-run")
+    if umu_path == None:
+        raise ValueError("Umu Launcher must be installed and on the PATH")
+
+    if Args.executable == None:
+        raise ValueError("Could not find executable variable")
+    
+    if len(Args.executable) != 1:
+        raise ValueError("Executable variable must have a length of 1")
+
+    executable = os.path.abspath(Args.executable[0])
+
+    if not os.path.isfile(executable):
+        raise ValueError("Executable must be a file")
+
+    contents = "#!/usr/bin/env bash\n\n"
+
+    if Args.prefix != None:
+        if not os.path.isabs(Args.prefix):
+            raise ValueError("Prefix must be a full path")
+        
+        if not os.path.isdir(Args.prefix):
+            raise ValueError("Prefix must be a directory")
+        
+        contents += f"WINEPREFIX={Args.prefix} \\\n"
+
+    if Args.gameid != None:
+        contents += f"GAMEID={Args.gameid} \\\n"
+
+    if Args.proton != None:
+        skip_proton_checks = False
+
+        if Args.proton == "GE-Proton":
+            skip_proton_checks = True
+
+        if Args.proton == "UMU-Proton":
+            skip_proton_checks = True
+
+        if not skip_proton_checks and not os.path.isabs(Args.proton):
+            raise ValueError("Proton must be a full path")
+        
+        if not skip_proton_checks and not os.path.isdir(Args.proton):
+            raise ValueError("Proton must be a directory")
+        
+        contents += f"PROTONPATH={Args.proton} \\\n"
+    
+    if Args.store != None:
+        contents += f"STORE={Args.store} \\\n"
+
+    if Args.systemd_inhibit:
+        contents += "systemd-inhibit --what=idle --why='Gaming via UMU' \\\n"
+
+    if Args.kde_inhibit:
+        contents += "kde-inhibit --screenSaver --power \\\n"
+
+    contents += f"{umu_path} '{executable}"
+
+    if Args.arguments != None:
+        contents += f" {" ".join(Args.arguments)}"
+        contents = contents.strip()
+
+    contents += "'\n"
+
+    wrapper_dir = "~/.local/share/umu-shortcut"
+    wrapper_dir = os.path.expanduser(wrapper_dir)
+    if not os.path.exists(wrapper_dir):
+        os.mkdir(wrapper_dir)
+
+    if Args.name == None:
+        raise ValueError("Could not find name variable")
+    
+    filename = Args.name.replace("'", "")
+    wrapper_path = os.path.join(wrapper_dir, filename)
+
+    with open(wrapper_path, 'w') as wrapper_file:
+        wrapper_file.write(contents)
+
+    make_executable(wrapper_path)
+
+    if not os.path.exists(wrapper_path):
+        raise RuntimeError("Could not create wrapper")
+
+    print(f"Created wrapper:\t'{wrapper_path}'")
+
+    return wrapper_path
+
+def build_desktop_entry():
+    command = build_wrapper()
+
+    contents = "[Desktop Entry]\n"
+    contents += f"Name={Args.name}\n"
+    contents += "Comment=Play this game via UMU\n"
+    contents += f"Exec='{command}'\n"
+
+    if Args.icon != None:
+        contents += f"Icon={Args.icon}\n"
+
+    contents += "Terminal=False\n"
+    contents += "Type=Application\n"
+    contents += "Categories=Game;\n"
+
+    desktop_dir = "~/.local/share/applications"
+    desktop_dir = os.path.expanduser(desktop_dir)
+
+    if not os.path.exists(desktop_dir):
+        os.mkdir(desktop_dir)
+    
+    if Args.name == None:
+        raise ValueError("Could not find name variable")
+
+    filename = f"{Args.name.replace("'", "")}.desktop"
+    desktop_path = os.path.join(desktop_dir, filename)
+
+    with open(desktop_path, 'w') as desktop_file:
+        desktop_file.write(contents)
+
+    make_executable(desktop_path)
+
+    if not os.path.exists(desktop_path):
+        raise RuntimeError("Could not create desktop entry")
+
+    print(f"Created desktop entry:\t'{desktop_path}'")
+
+if __name__ == "__main__":
+    version = "v1.0.1"
+
+    parser = argparse.ArgumentParser(
+        prog=f"umu-shortcut",
+        description="Create shortcuts for an executable in an umu prefix",
+        epilog=f"Version {version}"
+    )
+    parser.add_argument(
+        "-i", "--icon", help="The path to an icon to use for the shortcut"
+    )
+    parser.add_argument("-p", "--prefix", help="The full path to a WINE prefix to use")
+    parser.add_argument(
+        "-g", "--gameid", help="The umu-id from the umu-database to use"
+    )
+    parser.add_argument(
+        "-r", "--proton", help="The full path to a specific proton version to use\n" \
+        "Can also be GE-Proton or UMU-Proton"
+    )
+    parser.add_argument(
+        "-s", "--store", help="The storefront to use. Defaults to 'none'"
+    )
+    parser.add_argument(
+        "-n", "--name", help="The name of the application", required=True
+    )
+    parser.add_argument(
+        "executable",
+        nargs=1,
+        help="The path to the executable",
+    )
+    parser.add_argument(
+        "arguments", nargs="*", help="Command-line arguments to pass to the executable"
+    )
+    workarounds = parser.add_argument_group(
+        "Workarounds",
+        "Configuration specific workarounds for various issues\n" \
+        "See https://github.com/NubiaMeow/umu-shortcut for more details",
+    ).add_mutually_exclusive_group()
+    workarounds.add_argument(
+        "--systemd-inhibit",
+        action="store_true",
+        help= "Use systemd-inhibit to prevent sleep, shutdown, etc. while the application is running"
+    )
+    workarounds.add_argument(
+        "--kde-inhibit",
+        action="store_true",
+        help= "Use kde-inhibit to prevent sleep, shutdown, etc. while the application is running"
+    )
+    parser.parse_args(namespace=Args)
+
+    if Args.name != None:
+        Args.name = Args.name.strip()
+
+    build_desktop_entry()
