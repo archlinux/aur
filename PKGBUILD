@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=oxideterm-bin
 _pkgname=OxideTerm
-pkgver=1.2.2
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="All-in-one terminal workspace — local shells, SSH, SFTP, remote IDE, AI agent, and file manager in a single native binary. Built with Tauri 2 and pure Rust SSH (no OpenSSL). Smart reconnect, MCP, RAG, plugins, 30+ themes, 11 languages.(Prebuilt version)"
 arch=(
@@ -18,10 +18,10 @@ depends=(
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('9f6442b473d4ccf2c91ce5748d67d59bad276edb4a37df2f7106ac882346f841')
-sha256sums_x86_64=('0d4d0ac2d6a2a6cfafab7bf256ae4af2af92064f4fe8a685b541fdbb8c6e54ac')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_x64.rpm")
+sha256sums_aarch64=('afdae0974021f98a40b4b746346eee9d471547b9a8fd23a3a5b09b65cbbdd2f9')
+sha256sums_x86_64=('8fbe7454fedaa81043d27a5e37a23b8f8fd497e02374cebd54297381f47affdc')
 prepare() {
     sed -i "s/Categories=/Categories=Development;System;Utility;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
