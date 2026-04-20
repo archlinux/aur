@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!247370bc632c4c8325214f7d77057ec5c4e4f382.patch
+!com.jankinwu.fntv.desktop
