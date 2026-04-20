@@ -2,4 +2,4 @@
 source = "github"
 github = "loyalpartner/selfsync"
 prefix = "v"
-use_latest_tag = true
+use_latest_release = true

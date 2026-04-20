@@ -1,5 +1,5 @@
 pkgname=selfsync
-pkgver=0.1.2
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Self-hosted Chrome Sync server."
 arch=(x86_64)
@@ -10,7 +10,7 @@ makedepends=(cargo protobuf)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loyalpartner/selfsync/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname-user.service")
-sha256sums=('8b1b3b65f4e685fd03ed944dd99206267daf076c1658b7227d7f041cd111d88a'
+sha256sums=('4cbb1dce676e7049cf362e68921145a08619f95e67700a0955304150c3f5f6ae'
             '5011a12b92faf53af85ff81dea14383579b6f247b0ba8dcb59617c7e02b9049c'
             '1329f53ab77afa9168890f3530f1d76e4765c65a1f4584a168263b3b2dff7ea5')
 
