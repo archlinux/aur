@@ -7,7 +7,8 @@ url="https://github.com/LIghtJUNction/Mimic-Node"
 license=('GPL-3.0-or-later')
 depends=('openssl' 'kmod' 'gcc-libs' 'github-cli')
 optdepends=('sing-box: required for node functionality'
-            'sing-box-beta-bin: alternative to sing-box')
+            'sing-box-beta-bin: alternative to sing-box'
+            's-ui-git: web panel for Mimic-Node')
 makedepends=('git' 'rust' 'cargo')
 provides=('mimic-node')
 conflicts=('mimic-node')
@@ -22,7 +23,7 @@ sha256sums=(
     'e06c13f4ae1ec63371e7db816ace19c7f62156196305da0ff5bcda73dfbfb94a'
 )
 
-pkgver=r110.97c2340
+pkgver=r114.81710dd
 
 pkgver() {
     cd "$srcdir/Mimic-Node"
