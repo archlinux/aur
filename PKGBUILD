@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Limieri <limieri at protonmail dot com>
 pkgname=emendo
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Lightweight GTK4/libadwaita media exporter for quick and powerful trimming, cropping and re-encoding workflows"
 arch=('any')
@@ -22,7 +22,7 @@ depends=(
     'ffmpeg'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e28f3fdfae92c2133f6572472482f802352f6fed7e8e0812fcc55477c3ca4e3d')
+sha256sums=('fdd16526c4315154013a7e88bab94873b24ca64bcebc4c101724cc82039d8073')
 
 package() {
     cd "Emendo-$pkgver"
