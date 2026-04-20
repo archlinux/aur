@@ -1,7 +1,7 @@
 pkgbase = recaf-bin
 	pkgdesc = The modern Java bytecode editor
 	pkgver = 4.0.0alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Col-E/Recaf
 	arch = x86_64
 	arch = aarch64
