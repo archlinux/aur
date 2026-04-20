@@ -88,8 +88,8 @@ package() {
   install -Dm644 "$_dist_desktop" "$_target_desktop"
 
   sed -i 's/^Name=.*/Name=AzaharPlus/' "$_target_desktop"
-  sed -i 's/^Exec=.*/Exec=azahar/' "$_target_desktop"
-  sed -i 's/^Icon=.*/Icon=azahar/' "$_target_desktop"
+  sed -i 's/^Exec=.*/Exec=azahar %f/' "$_target_desktop"
+  sed -i 's/^Icon=.*/Icon=org.azahar_emu.Azahar/' "$_target_desktop"
   
   if ! grep -q "Categories=Game;" "$_target_desktop"; then
      sed -i 's/^Categories=.*/Categories=Game;Emulator;Qt;/' "$_target_desktop"
