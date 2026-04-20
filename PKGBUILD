@@ -3,7 +3,7 @@
 # Ex-Contributor: Malacology <guoyizhang at malacology dot com>
 
 pkgname=zotero-beta-bin
-_pkgver=10.0-beta.1+c52a6151d
+_pkgver=10.0-beta.2+a835136d3
 pkgver="${_pkgver//[-+]/_}"
 pkgrel=1
 pkgdesc="Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research."
@@ -24,9 +24,9 @@ source_x86_64=("Zotero-${_pkgver}_linux-x86_64.tar.xz::https://download.zotero.o
 source_i686=("Zotero-${_pkgver}_linux-i686.tar.xz::https://download.zotero.org/client/beta/${_pkgver//+/%2B}/Zotero-${_pkgver//+/%2B}_linux-i686.tar.xz")
 source_aarch64=("Zotero-${_pkgver}_linux-aarch64.tar.xz::https://download.zotero.org/client/beta/${_pkgver//+/%2B}/Zotero-${_pkgver//+/%2B}_linux-arm64.tar.xz")
 sha256sums=('2ef0a68483c4beaa18922cc88f13ad1a7239f7d4c460d8a5d4838a02ca419c28')
-sha256sums_x86_64=('102e992f88b140fab2988615b117a9a729a73dd259bf424a455d110a0753af81')
-sha256sums_i686=('380afa8284eafd4aa3719b4b4d981690ef040287abea1552281fe64f3f2e26cd')
-sha256sums_aarch64=('d0a167a22502d03ab2ef79767cbd9ed5e286e2435e882d87c73f7d9363449c26')
+sha256sums_x86_64=('f6fe93fda60f856ee5f10873a50f6ee96cbb3bbb596e6539d104bb083c1e8053')
+sha256sums_i686=('bb0c6a11bc41ef7e8a621d436e6774d6c34ce482c87276891263902a177d76df')
+sha256sums_aarch64=('a9d1ff72a62d2ebbf52e17d517bd15a6ca3307b60b290d5dc0a486cf0d86f63a')
 
 prepare() {
     if [[ "$CARCH" == "aarch64" ]]; then
