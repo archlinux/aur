@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Hydra Ensemble
+GenericName=Multi-Session Claude Code Terminal
+Comment=Run parallel Claude Code agents with git worktree isolation
+Exec=/opt/hydra-ensemble/hydra-ensemble.AppImage %U
+Icon=hydra-ensemble
+Terminal=false
+Type=Application
+Categories=Development;TerminalEmulator;IDE;
+StartupWMClass=Hydra Ensemble
+Keywords=claude;code;terminal;agent;worktree;
