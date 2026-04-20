@@ -1,13 +1,13 @@
 pkgbase = detekt-bin
 	pkgdesc = Static code analysis for Kotlin
-	pkgver = 1.23.4
+	pkgver = 1.23.8
 	pkgrel = 1
 	url = https://github.com/detekt/detekt
 	arch = any
 	license = Apache
 	depends = java-runtime
 	provides = detekt-cli
-	source = detekt-bin-1.23.4.zip::https://github.com/detekt/detekt/releases/download/v1.23.4/detekt-cli-1.23.4.zip
-	sha256sums = f30551c442a63c5a9b15c3223f510ae95139a53c37b82e6bb03d6164c9100c1a
+	source = detekt-bin-1.23.8.zip::https://github.com/detekt/detekt/releases/download/v1.23.8/detekt-cli-1.23.8.zip
+	sha256sums = ff9f9258879ff2ec4349114740221498afec46a85cf6302c9f80b06eb4429501
 
 pkgname = detekt-bin

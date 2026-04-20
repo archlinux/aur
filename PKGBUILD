@@ -4,7 +4,7 @@
 
 pkgname=detekt-bin
 pkgdesc="Static code analysis for Kotlin"
-pkgver=1.23.4
+pkgver=1.23.8
 pkgrel=1
 arch=('any')
 url="https://github.com/detekt/detekt"
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('java-runtime')
 provides=("detekt-cli")
 source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/detekt-cli-$pkgver.zip")
-sha256sums=('f30551c442a63c5a9b15c3223f510ae95139a53c37b82e6bb03d6164c9100c1a')
+sha256sums=('ff9f9258879ff2ec4349114740221498afec46a85cf6302c9f80b06eb4429501')
 
 PURGE_TARGETS=('*.bat')
 
