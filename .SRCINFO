@@ -1,12 +1,14 @@
 pkgbase = spirit
   pkgdesc = spirit (prebuilt AppImage)
   pkgver = 0.0.0
-  pkgrel = 1
+  pkgrel = 2
   url = https://github.com/aquaticcalf/spirit
   arch = x86_64
   license = MIT
   depends = fuse2
   source = spirit-0.0.0-x86_64.AppImage::https://github.com/aquaticcalf/spirit/releases/download/0.0.0/spirit-0.0.0-x86_64.AppImage
-  sha256sums = 0bbb47aa4adf3fe9a91ab9be53318be210af876ac251a2dd8e6297fd5ed5488c
+  sha256sums = c92e63b7fa4965a59e7ce42021493b758df189f2c92c159d1fdf0ad394452b02
+  source_1 = icon.png::https://github.com/aquaticcalf/spirit/releases/download/0.0.0/icon.png
+  sha256sums_1 = SKIP
 
 pkgname = spirit
