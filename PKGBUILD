@@ -1,9 +1,10 @@
 # Maintainer: myuki <mioki dot cinnamon650 at 8shield dot net>
+# Contributor: Seth Hoong <hoong seth at gmail dot com>
 
 pkgname=sillytavern
 _pkgname=SillyTavern
 pkgver=1.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Locally installed user interface for LLMs, image generation, and TTS voice models"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/SillyTavern/$_pkgname"

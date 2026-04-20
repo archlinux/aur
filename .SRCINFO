@@ -1,7 +1,7 @@
 pkgbase = sillytavern
 	pkgdesc = Locally installed user interface for LLMs, image generation, and TTS voice models
 	pkgver = 1.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SillyTavern/SillyTavern
 	arch = x86_64
 	arch = armv7h
