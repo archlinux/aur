@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-GCS_BUCKET="https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases"
+GCS_BUCKET="https://downloads.claude.ai/claude-code-releases"
 PKGBUILD="PKGBUILD"
 
 # Get current version from PKGBUILD
