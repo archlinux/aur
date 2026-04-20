@@ -5,7 +5,7 @@ _pkgname=starknet-foundry
 pkgname=${_pkgname}-bin
 _orgname=foundry-rs
 _github=${_orgname}/${_pkgname}
-pkgver=0.58.1
+pkgver=0.59.0
 pkgrel=1
 pkgdesc='Blazing fast toolkit for developing Starknet contracts'
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ depends=('scarb'
 # also requires rust, but it is not a package
 source_x86_64=("https://github.com/${_github}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/${_github}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('abfd1e6283bc36921a91075f52f2dca57291bd81e430e557b3cf329bbea4fad6')
-sha256sums_aarch64=('c29f891ed44fea7ffcc65b393a6091654efa8189e25c9252d00b4e9a58c96f04')
+sha256sums_x86_64=('cd0377defe199e397686e0803334d30138067988d594a079c20f8a3c621abbd4')
+sha256sums_aarch64=('58f05a834d931668bb3dd9e244e9fe1071519c3f51c57538d762024c784dc37a')
 
 package() {
 	for each_executable in $(ls "${srcdir}/${_pkgname}-v${pkgver}-${CARCH}-unknown-linux-gnu/bin"); do
