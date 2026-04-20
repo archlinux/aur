@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=keep-me-awake
 _app_id=de.swsnr.keepmeawake
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Inhibit screensaver and suspend in GNOME"
 arch=('any')
@@ -24,11 +24,14 @@ makedepends=(
   'python-wheel'
 )
 source=("git+https://codeberg.org/swsnr/keep-me-awake.git#tag=v$pkgver")
-sha256sums=('ed652bc6a1073e4fe5d0bc59e560f38210fa73bd948d1b411e2943010fd202c5')
+sha256sums=('962dea694c7e0825ce2eedbcda8f20836fd72a4114d742593ab6b10802221b9c')
 
 build() {
   cd "$pkgname"
-  python -m build --wheel --no-isolation
+
+  # Skip dependency check as it can't find blueprint-compiler
+  # even though we have it
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {

@@ -1,6 +1,6 @@
 pkgbase = keep-me-awake
 	pkgdesc = Inhibit screensaver and suspend in GNOME
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://codeberg.org/swsnr/keep-me-awake
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = keep-me-awake
 	depends = libportal-gtk4
 	depends = python-gobject
 	depends = python-packaging
-	source = git+https://codeberg.org/swsnr/keep-me-awake.git#tag=v2.1.1
-	sha256sums = ed652bc6a1073e4fe5d0bc59e560f38210fa73bd948d1b411e2943010fd202c5
+	source = git+https://codeberg.org/swsnr/keep-me-awake.git#tag=v2.1.2
+	sha256sums = 962dea694c7e0825ce2eedbcda8f20836fd72a4114d742593ab6b10802221b9c
 
 pkgname = keep-me-awake
