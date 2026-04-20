@@ -2,7 +2,7 @@
 # Contributor: Igor <f2404@yandex.ru>
 # Contributor: Davi da Silva Böger <dsboger at gmail dot com>
 pkgname=tilix-git
-pkgver=1.9.6.r52.g53b21fc
+pkgver=1.9.6.r68.g284f583
 pkgrel=1
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64')
@@ -41,10 +41,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-
-  # Patch Align to GtkAlign, due to conflicting symbols
-  sed -i 's/(Align\./(GtkAlign./g' source/gx/tilix/prefeditor/prefdialog.d
-  sed -i 's/(Align\./(GtkAlign./g' source/gx/tilix/terminal/terminal.d
 }
 
 build() {
