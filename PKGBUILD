@@ -1,7 +1,7 @@
 # Maintainer: Michał Tomczyk <tomczykmk94 _at_ gmail _dot_ com>
 # Contributor: Sick Codes <info at sick dot codes>
 pkgname=doomtools-bin
-pkgver=2026.03.27.012840705
+pkgver=2026.04.20.000623946
 _pkgdate=${pkgver%%.?????????}
 pkgrel=1
 pkgdesc="Set of command-line utilities for building projects or for other things related to Doom Engine games."
@@ -17,7 +17,7 @@ source=(
 	"doomtools.desktop"
 )
 sha256sums=(
-	"d1f3a9b627e1642f0ab536ee18f1d0bb296edb9a5eca92e075174cc96e2c4824"
+	"c67d1ad1b786735c57a2c32a5e0be21994cccba151efebbb3ad5ea461c059b4a"
 	"dab435a5096090c2106875966bec76f357721b27542e9ed2a276df1bc608b673"
 	"e90aecc14f66eed27b8afe409de6f058a285f8eee84a8af207b0398b5450cf57"
 )
