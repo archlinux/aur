@@ -1,0 +1,18 @@
+pkgbase = allium-tools
+	pkgdesc = LLM-native language for specifying what systems should do
+	pkgver = 3.0.5
+	pkgrel = 1
+	url = https://github.com/juxt/allium-tools
+	arch = x86_64
+	arch = i686
+	license = LGPL3+
+	license = CC0
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = allium
+	source = https://github.com/juxt/allium-tools/archive/refs/tags/v3.0.5.tar.gz
+	sha512sums = e724930b95e8eada3e2bda4523950053fecf17b4c695772c95b84fade080a582d6515a9be8b761838a63d384fc13db9ceb97f28368267892a0b5a4d7407cfaad
+
+pkgname = allium-tools
