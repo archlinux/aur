@@ -1,9 +1,10 @@
 # Maintainer: hekel <hekel at vivaldi dot net>
+# https://github.com/hekel/chatterino-stuffs
 
 pkgname="chatterino2-7tv-native-git"
 pkgver=7.5.5beta1.r68.g758cd72
 pkgrel=1
-pkgdesc='Chatterino2 fork with support for 7tv; Patched for native QT & Kvantum Themes: https://github.com/hekel/chatterino-stuffs'
+pkgdesc='Chatterino2 fork with support for 7tv; Patched to use native system QT style'
 url="https://github.com/SevenTV/chatterino7"
 license=('MIT')
 arch=('x86_64')
