@@ -1,13 +1,13 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=altirrasdl-git
-pkgver=r192.31e6f58
+pkgver=r229.4e084cc
 pkgrel=1
 pkgdesc="An 8-bit Atari computer emulator, native SDL"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ilmenit/AltirraSDL"
 license=('GPL2')
-depends=('sdl3' 'sdl3_image')
+depends=('cmake' 'sdl3' 'sdl3_image')
 optdepends=('librashader')
 makedepends=('git')
 source=("git+https://github.com/ilmenit/AltirraSDL.git")
