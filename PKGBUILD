@@ -13,10 +13,10 @@ conflicts=('ipsw')
 backup=('etc/ipsw.conf')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v${pkgver}/ipsw_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('0fcc2ed0241375d482495c00d4fe537b068423ce3f7af3d8cf95b0e203df212c')
+sha256sums_aarch64=('24aaa181d73ea7bda0139675e1b5f6a62c31455b778952d8f4d0088ac2552f34')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v${pkgver}/ipsw_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('86c837e0ad68ed3634c49714983c0616b5f1c64c3cb928ce48711327da3305bc')
+sha256sums_x86_64=('da4d6f5d3953f14bd387534c7053f2ed855eb8cfd9621c4db411ca4051627404')
 
 package() {
   # bin
