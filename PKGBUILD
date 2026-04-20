@@ -3,7 +3,7 @@
 pkgname=llama.cpp-gfx1151
 _pkgname=${pkgname%%-gfx1151}
 pkgver=b8851
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1151, ROCm + Vulkan)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggml-org/llama.cpp'
@@ -50,7 +50,7 @@ sha256sums=('63e6763d91c28852eda0d2976f7be07847db4e5a484d9a32b616b617947d4fd1'
 prepare() {
   ln -sf "${_pkgname}-${pkgver}" llama.cpp
 
-  patch -d "${srcdir}/llama.cpp" -Np1 -i "${srcdir}/llama-gfx1151-41ebffac.patch"
+  # patch -d "${srcdir}/llama.cpp" -Np1 -i "${srcdir}/llama-gfx1151-41ebffac.patch"
 }
 
 build() {
