@@ -1,6 +1,6 @@
 pkgbase = altirrasdl-git
 	pkgdesc = An 8-bit Atari computer emulator, native SDL
-	pkgver = r229.4e084cc
+	pkgver = r231.763c477
 	pkgrel = 1
 	url = https://github.com/ilmenit/AltirraSDL
 	arch = x86_64

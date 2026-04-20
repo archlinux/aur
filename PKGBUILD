@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=altirrasdl-git
-pkgver=r229.4e084cc
+pkgver=r231.763c477
 pkgrel=1
 pkgdesc="An 8-bit Atari computer emulator, native SDL"
 arch=('x86_64' 'aarch64')
@@ -23,17 +23,15 @@ pkgver() {
 
 build() {
   cd "AltirraSDL"
-  JOBS=$(grep "^MAKEFLAGS=" /etc/makepkg.conf) || true
-  JOBS=$(echo "${JOBS//MAKEFLAGS=\"-j}" | tr -d "\"")
-  [ -n "${JOBS}" ] && JOBS="--jobs ${JOBS}"
-  ./build.sh ${JOBS}
+  cmake -B build
+  cmake --build build
 }
 
 package() {
   cd "AltirraSDL"
   sed -i 's/Name=Altirra/Name=AltirraSDL/' "${srcdir}/AltirraSDL/dist/linux/altirra.desktop"
   sed -i 's/Icon=altirra/Icon=altirraSDL/' "${srcdir}/AltirraSDL/dist/linux/altirra.desktop"
-  install -Dm655 "${srcdir}/AltirraSDL/build/linux-release/src/AltirraSDL/AltirraSDL" "${pkgdir}/usr/bin/AltirraSDL"
+  install -Dm655 "${srcdir}/AltirraSDL/build/src/AltirraSDL/AltirraSDL" "${pkgdir}/usr/bin/AltirraSDL"
   install -Dm644 "${srcdir}/AltirraSDL/dist/linux/altirra.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
   install -Dm644 "${srcdir}/AltirraSDL/dist/linux/altirra.png" "${pkgdir}/usr/share/pixmaps/${pkgname%sdl-git}SDL.png"
 }
