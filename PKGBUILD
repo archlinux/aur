@@ -4,7 +4,7 @@
 pkgname=runa-bin
 _name=runa
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and lightweight console file browser written in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alexm-dev/runa"

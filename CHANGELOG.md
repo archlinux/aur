@@ -2,6 +2,86 @@
 
 All the changes made to runa are documented here.
 
+## [0.11.0] - 2026-04-19
+
+#### Icon coloring, preview scrolling, performance improvements and more.
+
+### Added
+- **Preview scrolling**: Preview pane is now scrollable with the `scroll_up` and `scroll_down` keybinds. Works for both `internal` and `bat` preview methods.
+- **Entry and Icon coloring**: Added coloring entries, extensions and icons.
+    - It is now possible to set entry colors by the exact filename or by extension.
+    ```toml
+    # Set the entry color for an exact filename
+    [theme.exact]
+    "foo" = { fg = "#RRGGBB", bg = "#RRGGBB" }
+    "bar" = { fg = "#RRGGBB", bg = "#RRGGBB" }
+
+    # Set the entry color for extensions
+    [theme.ext]
+    "foo" = { fg = "#RRGGBB", bg = "#RRGGBB" }
+
+    # Set the icon color (does not affect entry color)
+    [theme.icon_color]
+    foo = "#RRGGBB"
+    ```
+
+- **Editor config**: Added more editor configuration options. This introduces breaking changes. 
+    - Possible to now set editors/programs for specific filenames and extensions.
+    ```toml
+    [editor]
+    default = "nvim"
+    ext = { rs = ["vim"], md = ["code"] }
+    filename = { "Cargo.toml" = ["vim"] }
+
+    # -- OR --
+
+    [editor.ext]
+    rs = ["vim"]
+    md = ["code"]
+
+    [editor.filename]
+    "Cargo.toml" = ["vim"]
+
+    # Also possible to add arguments
+    ext = { md = ["code", "-d"] }
+    ```
+
+### Changed
+- **[BREAKING] Editor config**: With the new editor configuration, the older `[editor] cmd = "foo"` no longer works.
+    - Example:
+    ```toml
+    # Old 
+    [editor]
+    cmd = "nvim"
+
+    # New
+    [editor]
+    default = "nvim"
+    ```
+
+- **Border styling**: `unified` border style now applies the separator to the outer border as well, making it look like a proper "boxed" or "unified" look.
+- **Find widget**: Set `find_width` to 60 and `find_visible_results` to 8.
+
+### Fixed
+- **CLI**: Fixed an issue where the CLI arg `--init-full` generated a broken `runa.toml`. [Issue #55](https://github.com/alexm-dev/runa/issues/55)
+- **Theme**: Fixed an issue where the `accent` style ignored the `separator`. Now, the separator applies the set `accent` theme and also considers the `separator` override. [Issue #56](https://github.com/alexm-dev/runa/issues/56)
+- **Status line**: Fixed an issue where the `status_line.fg/bg` did not set the marker/clipboard colors correctly.
+- **Selection color**: Fixed an issue where the selection color would override the marker background color when one was set.
+
+### Internal
+- **Performance improvements**:
+    - Added `core/cache` module to cache shared FileEntry and sort_column data for the main pane to apply instead of re-computing all entries on each directory change, resulting in big performance improvements on navigation and directory changes.
+    - Added `app/timings` module to centralize the "throttling" of worker requests, resulting in less flooding of worker activity and therefore massive efficiency improvements and smoother navigation.
+    - `FileEntry` now stores the `name_str` and `ext(ension)` of an entry name to reduce re-computing of each data for each entry row.
+    - `nerd_font_icons` phf-map look-ups are more efficient with the lookup happening once and without relying on lowering the entry name and extension.
+    - `AppContainer` now owns `TabManager` exclusively via heap allocation.
+    - `sort_column` now is a new type `StrBuffer` instead of a `Arc<[Arc<str>]>` to only do one atomic ref-count increment.
+    - Removed static `META_SORT_EPOCH` and `META_SORT_CACHE` caches and instead cache the metadata of a sorted directory in a local cache resulting in memory efficiency and stability.
+
+
+---
+
+
 ## [0.10.1] - 2026-04-06
 
 #### Keymap overwrite bug fix and sorting performance improvements.
