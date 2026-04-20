@@ -1,6 +1,7 @@
 pkgbase = anihot-app
+	pkgdesc = Flutter-based Linux client for AniHot anime streaming app
 	pkgver = 6.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MrGlany/AniHotAppPC
 	arch = x86_64
 	license = custom

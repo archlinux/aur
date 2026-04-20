@@ -1,6 +1,7 @@
 pkgname=anihot-app
 pkgver=6.0.8
-pkgrel=1
+pkgdesc="Flutter-based Linux client for AniHot anime streaming app"
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/MrGlany/AniHotAppPC"
 license=('custom')
@@ -12,27 +13,28 @@ sha256sums=('SKIP')
 package() {
     cd "$srcdir"
 
-    # Main directory
+    # Find extracted root folder safely
+    root=$(find . -maxdepth 1 -type d | head -n 1)
+    cd "$root"
+
+    # Install full bundle
     install -d "$pkgdir/usr/lib/$pkgname"
+    cp -r * "$pkgdir/usr/lib/$pkgname/"
 
-    # Copy runtime files
-    cp -r lib data share "$pkgdir/usr/lib/$pkgname/"
-
-    # Main executable
-    install -Dm755 "AniHot App" "$pkgdir/usr/lib/$pkgname/anihot-app"
-
-    # Wrapper (Flutter requires correct working directory)
-    install -Dm755 /dev/stdin "$pkgdir/usr/bin/anihot" <<'EOF'
+    # Wrapper (no hardcoded name)
+    install -d "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/anihot" << EOF
 #!/bin/bash
-cd /usr/lib/anihot-app
-exec ./anihot-app "$@"
+cd /usr/lib/$pkgname
+exec ./anihot-app "\$@"
 EOF
+    chmod 755 "$pkgdir/usr/bin/anihot"
 
     # Desktop entry
-    install -Dm644 share/applications/com.anihot.anihot.desktop \
+    install -Dm644 "$pkgdir/usr/lib/$pkgname/share/applications/com.anihot.anihot.desktop" \
         "$pkgdir/usr/share/applications/anihot.desktop"
 
     # Icon
-    install -Dm644 share/icons/hicolor/256x256/apps/com.anihot.anihot.png \
+    install -Dm644 "$pkgdir/usr/lib/$pkgname/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.anihot.anihot.png"
 }
