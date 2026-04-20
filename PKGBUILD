@@ -11,6 +11,7 @@ url="https://sourceforge.net/projects/wsjt-x-improved/"
 license=('GPL3')
 
 depends=(
+	'boost-libs'
 	'fftw'
     'hamlib>=4.5'
 	'libusb'
