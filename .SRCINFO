@@ -1,7 +1,7 @@
 pkgbase = packet
 	pkgdesc = A Quick Share client for Linux
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nozwock/packet
 	arch = x86_64
 	license = GPL-3.0-or-later

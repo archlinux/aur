@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=packet
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Quick Share client for Linux"
 arch=('x86_64')
 url="https://github.com/nozwock/packet"
@@ -42,9 +42,4 @@ check() {
 
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
-
-  # Symlink Nautilus extension to extension directory
-  install -d "$pkgdir/usr/share/nautilus-python/extensions"
-  ln -s "/usr/share/$pkgname/plugins/packet_nautilus.py" \
-    "$pkgdir/usr/share/nautilus-python/extensions/"
 }
