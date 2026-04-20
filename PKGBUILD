@@ -1,8 +1,8 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=checkip
-pkgver=0.49.0
-pkgrel=3
+pkgver=0.50.0
+pkgrel=1
 pkgdesc="Get (security) info about IP addresses"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jreisinger/checkip"
