@@ -1,7 +1,7 @@
 pkgbase = r-r.utils
 	pkgdesc = Various Programming Utilities
 	pkgver = 2.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=R.utils
 	arch = any
 	license = LGPL2.1
