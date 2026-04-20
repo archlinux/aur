@@ -1,0 +1,13 @@
+pkgbase = ocx
+	pkgdesc = OpenCode extension manager with portable, isolated profiles. Your setup, anywhere.
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = https://github.com/kdcokenny/ocx
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bun
+	source = git+https://github.com/kdcokenny/ocx#tag=v2.0.7
+	sha256sums = e63b7ca60e69962eb348282a5e28519ea4ab712e5edd56e2ea7ab3a340008158
+
+pkgname = ocx
