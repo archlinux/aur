@@ -1,24 +1,30 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait-git
 _pkgname=cfait
-pkgver=730.6c04e37.rolling
-pkgrel=2
+pkgver=849.b9b8d92.rolling
+pkgrel=1
 pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local, git version)"
 arch=('x86_64')
 url="https://codeberg.org/trougnouf/cfait"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
-    'fontconfig'
-    'libx11'
-    'libxcursor'
-    'libxi'
-    'libxrandr'
-    'libxkbcommon'
-    'wayland'
-    'vulkan-icd-loader'
-    'vulkan-driver'
+    'gcc-libs'
+    'glibc'
+    'fontconfig'        # Required by the GUI for system font discovery
+    'libxkbcommon'      # Required by the GUI for keyboard handling (especially on Wayland)
+    'vulkan-icd-loader' # Required by the GUI to load Vulkan drivers for rendering
 )
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'pkgconf' 'git')  # git is needed as long as libdav > 0.10.3 is not released
+# Optional dependencies for the GUI and specific features
+optdepends=(
+    'vulkan-driver: Required by the GUI for hardware-accelerated rendering'
+    'wayland: Required by the GUI for Wayland session support'
+    'libx11: Required by the GUI for X11 session support'
+    'libxcursor: Required by the GUI for X11 cursor support'
+    'libxi: Required by the GUI for X11 input devices'
+    'libxrandr: Required by the GUI for X11 monitor layout support'
+    'xdg-desktop-portal: Required by the GUI for the file picker (export/import)'
+)
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
@@ -51,7 +57,7 @@ package() {
   cd "$_pkgname"
 
   install -Dm755 "target/release/cfait" "$pkgdir/usr/bin/cfait"
-  install -Dm755 "target/release/gui" "$pkgdir/usr/bin/cfait-gui"
+  install -Dm755 "target/release/cfait-gui" "$pkgdir/usr/bin/cfait-gui"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
