@@ -1,6 +1,6 @@
 pkgbase = python-pytubefix
 	pkgdesc = A pytube fork with additional features and fixes
-	pkgver = 8.12.2
+	pkgver = 10.3.8
 	pkgrel = 1
 	url = https://github.com/JuanBindez/pytubefix
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-pytubefix
 	makedepends = python-wheel
 	depends = python
 	provides = pytubefix
-	source = python-pytubefix-8.12.2.zip::https://github.com/JuanBindez/pytubefix/archive/refs/tags/v8.12.2.zip
-	md5sums = SKIP
+	source = python-pytubefix-10.3.8.zip::https://github.com/JuanBindez/pytubefix/archive/refs/tags/v10.3.8.zip
+	sha256sums = 02984432fe14247ab8dbd98805e3d3e37c80058335df0276c5c75ea460c97212
 
 pkgname = python-pytubefix

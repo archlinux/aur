@@ -2,23 +2,16 @@
 # Contributor: Ananas <ananas@ananas.moe>
 _pkgname=pytubefix
 pkgname=python-pytubefix
-pkgver="8.12.2"
+pkgver=10.3.8
 pkgrel=1
 pkgdesc="A pytube fork with additional features and fixes"
 arch=("x86_64" "i686")
 url="https://github.com/JuanBindez/pytubefix"
 license=("MIT")
-makedepends=(
-	"python-build" "python-installer"  "python-wheel"
-)
-depends=(
-	"python"
-)
-optdepends=()
-checkdepends=()
+makedepends=("python-build" "python-installer" "python-wheel")
+depends=("python")
 provides=("pytubefix")
-conflicts=(	)
-md5sums=("SKIP")
+sha256sums=('02984432fe14247ab8dbd98805e3d3e37c80058335df0276c5c75ea460c97212')
 source=(
 	"${pkgname}-${pkgver}.zip::https://github.com/JuanBindez/pytubefix/archive/refs/tags/v$pkgver.zip"
 )
@@ -29,6 +22,6 @@ build() {
 }
 
 package() {
-    cd ${_pkgname}-$pkgver
-    python -m installer --destdir="$pkgdir" dist/*.whl
+	cd ${_pkgname}-$pkgver
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }

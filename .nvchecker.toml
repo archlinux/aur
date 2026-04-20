@@ -1,0 +1,4 @@
+[python-pytubefix]
+source="github"
+github="JuanBindez/pytubefix"
+use_latest_release=true
