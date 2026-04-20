@@ -1,35 +1,12 @@
 post_install() {
-    chown -R "$(logname)" /opt/pylance-language-server
-    BBLUE='\033[1;34m'
-    GREEN='\033[0;32m'
-    NC='\033[0m' # No Color
-
-    printf "${BBLUE}Example configuration using [coc.nvim](https://github.com/neoclide/coc.nvim):${GREEN}\n\n"
-    cat << EOF
-        "pylance": {
-            "enable": true,
-            "filetypes": ["python"],
-            "command": "pylance-language-server",
-            "args": ["--stdio"],
-            "initializationOptions": {},
-            "settings": {
-                "python.analysis.typeCheckingMode": "basic",
-                "python.analysis.diagnosticMode": "openFilesOnly",
-                "python.analysis.stubPath": "./typings",
-                "python.analysis.autoSearchPaths": true,
-                "python.analysis.extraPaths": [],
-                "python.analysis.diagnosticSeverityOverrides": {},
-                "python.analysis.useLibraryCodeForTypes": true,
-                "python.analysis.autoImportCompletions": true,
-                "python.analysis.completeFunctionParens": false
-            }
-        }
+    cat <<'EOF'
+pylance-language-server installed to /opt/pylance-language-server.
+Run via `pylance-language-server --stdio` (standard LSP stdio transport).
 EOF
-    printf "\n${BBLUE}All available configuration options can be found in ${GREEN}https://github.com/microsoft/pylance-release#settings-and-customization${NC}\n"
 }
 
 post_upgrade() {
-    chown -R "$(logname)" /opt/pylance-language-server
+    :
 }
 
 post_remove() {
