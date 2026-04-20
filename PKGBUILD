@@ -1,5 +1,5 @@
 pkgname=marmot
-pkgver=2.9.0
+pkgver=2.9.10
 _pkgver=2.9.10-beta
 pkgrel=1
 pkgdesc="A distributed SQLite server with MySQL wire compatible interface"
