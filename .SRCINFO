@@ -1,7 +1,7 @@
 pkgbase = ferdium-bin
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application (binary release).
 	pkgver = 7.1.2
-	pkgrel = 3
+	pkgrel = 1
 	url = https://ferdium.org
 	arch = x86_64
 	arch = armv7l
@@ -35,11 +35,11 @@ pkgbase = ferdium-bin
 	conflicts = ferdium-electron
 	options = !strip
 	options = !debug
-	source_x86_64 = ferdium-bin-7.1.2-3-amd64.zip::https://github.com/ferdium/ferdium-app/releases/download/v7.1.2/Ferdium-linux-7.1.2-amd64.deb
+	source_x86_64 = ferdium-bin-7.1.2-1-amd64.zip::https://github.com/ferdium/ferdium-app/releases/download/v7.1.2/Ferdium-linux-7.1.2-amd64.deb
 	sha512sums_x86_64 = 66fb007c1acda7ea1c34e8ff86137d754081a0f50411e5355a38f00725b574115df63ecbcaa09d5eef63fc8bedd58830c3cf2cee9d5bd8e621d68a984d82f953
-	source_armv7l = ferdium-bin-7.1.2-3-armv7l.zip::https://github.com/ferdium/ferdium-app/releases/download/v7.1.2/Ferdium-linux-7.1.2-armv7l.deb
+	source_armv7l = ferdium-bin-7.1.2-1-armv7l.zip::https://github.com/ferdium/ferdium-app/releases/download/v7.1.2/Ferdium-linux-7.1.2-armv7l.deb
 	sha512sums_armv7l = ec22281a6922ddbcbb4427ee453c22e9df30646c21b6e419cb15206aaab50884811164e55e9ce3d7f489e23296f9af111cbf701292236800a40013ac60a3ff13
-	source_aarch64 = ferdium-bin-7.1.2-3-arm64.zip::https://github.com/ferdium/ferdium-app/releases/download/v7.1.2/Ferdium-linux-7.1.2-arm64.deb
+	source_aarch64 = ferdium-bin-7.1.2-1-arm64.zip::https://github.com/ferdium/ferdium-app/releases/download/v7.1.2/Ferdium-linux-7.1.2-arm64.deb
 	sha512sums_aarch64 = 383d72bf611cd6b5a92ae2e700daf7d485f8814c514fa89db0207308ae940c06e4938006d1ac7e93616047374348b0d81cea8a38085aefb0c76e97d3037728ae
 
 pkgname = ferdium-bin
