@@ -1,6 +1,6 @@
 pkgbase = gamepad-osk-git
 	pkgdesc = Gamepad-controlled on-screen keyboard for Linux
-	pkgver = r39.39a41d3
+	pkgver = r42.7082857
 	pkgrel = 1
 	url = https://github.com/0x90shell/gamepad-osk
 	install = gamepad-osk-git.install
