@@ -5,7 +5,7 @@
 # Contributor: chaseme <aur@chase.ninja>
 
 pkgname='tenv-bin'
-pkgver=4.11.0
+pkgver=4.11.1
 pkgrel=1
 pkgdesc='OpenTofu, Terraform, Terragrunt, Terramate and Atmos version manager, written in Go'
 url='https://tofuutils.github.io/tenv/'
@@ -16,13 +16,13 @@ conflicts=('atmos' 'atmos-bin' 'opentofu' 'opentofu-bin' 'opentofu-bin-stable' '
 optdepends=('cosign: package validation for OpenTofu')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tofuutils/tenv/releases/download/v${pkgver}/tenv_v${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('7bb3d8b09afc2e04c1d50286cc955ab26c9b806dee935abb1ed9a15cac766a71')
+sha256sums_aarch64=('b73783958ca5dd7ef81a28ba30c8c1810d82135ead2979f45948709ec0638a3a')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/tofuutils/tenv/releases/download/v${pkgver}/tenv_v${pkgver}_Linux_i386.tar.gz")
-sha256sums_i686=('9d7065de29a53233757e034b3fa2811bbb93bdc2370d9fae472a6e3059eb7caf')
+sha256sums_i686=('6420cffc8c365ad4ffd3434b284aa9ab0b9dd9521e4a679ed71eb972fc523f87')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tofuutils/tenv/releases/download/v${pkgver}/tenv_v${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('7eeecd98c35cdea562c6c2f5e25b27e0c8e6aee0c4aeae3fe586dcced94249f9')
+sha256sums_x86_64=('e8e7ce27c26935917a15bc736f0c4b646bd08cfcb7b3565da868a3562fc709e4')
 
 package() {
   # bin
