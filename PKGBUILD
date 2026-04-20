@@ -1,9 +1,8 @@
-# Maintainer: Kevin Stephen <qarks@icloud.com>
-# Maintainer: awsl1414 <awsl1414@qq.com>
+# Maintainer: lian
 pkgname=wechat-devtools-git
 _pkgname=wechat-devtools
 pkgver=2.01.2510290
-pkgrel=5
+pkgrel=1
 epoch=0
 pkgdesc="WeChat Devtools For Linux."
 license=("MIT")
