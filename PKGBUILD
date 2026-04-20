@@ -47,7 +47,6 @@ options=('!lto')
 prepare() {
 	cd "${srcdir}/dma_ip_drivers"
 
-
 	# Note : command to create/update a patch file
 	# git -C src/dma_ip_drivers/ diff <source_file> > <patch_file>
 
@@ -66,6 +65,15 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/dma_ip_drivers/QDMA/linux-kernel"
+
+	# FIXME Remove some default makepkg CFLAGS that make compilation fail
+	# Observed with : gcc 15.2.1, linux 6.19.11
+
+	CFLAGS=${CFLAGS/-fno-plt/}
+	CFLAGS=${CFLAGS/-fexceptions/}
+
+	msg "Using CFLAGS ... $CFLAGS"
+	msg "Using LDFLAGS .. $LDFLAGS"
 
 	# Important : the Makefiles do not support parallel jobs
 	# Note : Not sure at this stage if specifying future install paths are necessary
