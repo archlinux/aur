@@ -10,7 +10,7 @@ license=('LicenseRef-custom')
 groups=('slabeler')
 depends=('libgcc' 'alsa-lib')
 options=('!strip' '!emptydirs')
-source=("SLabeler-linux.zip" "slabeler-le.desktop" "LICENSE")
+source=("SLabeler-linux.zip::$url" "slabeler-le.desktop" "LICENSE")
 md5sums=('694265ada186a44250428ec8ad3dbc64'
          '666391a8748ee269b6f23264bb1abcdc'
          '4247e0c0b44b09b93901cab7b0d22ab0')
