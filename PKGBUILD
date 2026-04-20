@@ -5,7 +5,7 @@ _pkgname=tiki
 pkgname=${_pkgname}-bin
 pkgdesc="Markdown-based git-versioned documentation and issue management"
 
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('f4f2cde09dd9e4e3739e8cc79c66da82111c241604382fc2a584bac135f6fea4')
-sha256sums_aarch64=('6f905757eea7b4462783cd2284903bdbbcc3f1a892ae936033acbb2a0dda4d30')
+sha256sums_x86_64=('378c636783f8f17fce6b77bffebbb05ea3d4f2ef3a4f4756da1a9e2828bf08fd')
+sha256sums_aarch64=('a7256af0f565ee46d91075735c7507dcc1b469ee2a7c595fe96b251f10b08bd5')
 
 
 package() {
