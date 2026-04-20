@@ -1,6 +1,6 @@
 pkgbase = magiskboot-git
 	pkgdesc = Official magiskboot form Magisk (topjohnwu) source code, use GitHub Actions to build everyday.
-	pkgver = r169.3355fc3
+	pkgver = r170.56c02e4
 	pkgrel = 1
 	url = https://github.com/Uevo001/magiskboot-linux
 	arch = x86_64
