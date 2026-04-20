@@ -12,9 +12,9 @@
 ## pkginfo
 pkgdesc='A fancy custom distribution of Valves Proton with various patches'
 pkgname=proton-ge-custom-rtsp-bin
-pkgver=GE_Proton10_33_rtsp22
+pkgver=GE_Proton10_33_rtsp23
 pkgrel=4
-epoch=2
+epoch=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog.md
@@ -73,12 +73,12 @@ backup=("$_protoncfg")
 
 ## sources
 url='https://github.com/SpookySkeletons/proton-ge-rtsp'
-source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}-${pkgrel}.tar.gz"
+source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}-${pkgrel}/${_pkgver}-${pkgrel}.tar.gz"
   'user_settings.py'
   'launcher.sh'
   'proton-ge-custom-rtsp-bin.conf'
   'pam_limits.conf')
-sha512sums=('5f0d7bfbb2e83b4591fcb5a0d2f49d57f152fc179e9f040f8c419e6a5e5a3d6d1490f2f4f51df2268c6f0028c23313a401686ea48118a3248a8585be0e022b17'
+sha512sums=('f35f4e50e16e6dcaa580f6e7e0b90e17c1aa404c3809a216adf21bb49104ca940536d6a069a7d334e6064bb0724a595161448f4133c3ae409e9435030abe1fdc'
             'babe2a461118bef6a777656a10bb89abeee2c8c3ed4285eb1b99f5ba517b779f18372d1d93ed2cce63b0d8111cf0b08e14a0c92435680239f6936783c3e4cbc5'
             '78ede6d50f9c43407da511c8b37dcf60aae2ddbd461c0081f0d0ce3de08ace3a84dee86e9253acbac829b47c5818ef4e1a354ccb05feaa9853ce279dc3f903fd'
             'ac2bd634838ffe6b90f2637e229013f0993fc1013271dbeefd216dc262a8bb79e4a5ce15a75cbfcb0c3b521d32f4ebe1ed25a6b066b99cc327b60bd6d7212e6f'
