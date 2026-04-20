@@ -1,5 +1,5 @@
 pkgname=audium
-pkgver=0.9.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Terminal music app built in Rust"
 arch=('x86_64')
