@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=scotty-git
-pkgver=0.7.1.r4.g3770f00
+pkgver=0.7.1.r6.g75478f7
 pkgrel=1
 pkgdesc="Transfer listens and loves between music services"
 arch=('x86_64')
@@ -38,4 +38,11 @@ package() {
 	install -Dm755 "$srcdir/${pkgname::-4}/${pkgname::-4}" "$pkgdir/usr/bin/${pkgname::-4}"
 	install -Dm644 "$srcdir/${pkgname::-4}/config.example.toml" "$pkgdir/usr/share/doc/${pkgname}/config.example.toml"
 	install -Dm644 "$srcdir/${pkgname::-4}/COPYING" "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
+	for _shell in {bash,fish,zsh}
+	do
+		./${pkgname::-4} completion ${_shell} > "$srcdir/${pkgname::-4}-${_shell}"
+	done
+	install -Dm644 "$srcdir"/${pkgname::-4}-bash "$pkgdir/usr/share/bash-completion/completions/${pkgname::-4}"
+	install -Dm644 "$srcdir"/${pkgname::-4}-fish "$pkgdir/usr/share/fish/completions/${pkgname::-4}.fish"
+	install -Dm644 "$srcdir"/${pkgname::-4}-zsh "$pkgdir/usr/share/zsh/site-functions/_${pkgname::-4}"
 }
