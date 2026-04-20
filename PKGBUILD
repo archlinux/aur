@@ -1,7 +1,7 @@
 # Maintainer: Ryan Rusnak <ryan@airspace.com>
 pkgname=todarchy-git
-pkgver=0.1.0.r0
-pkgrel=3
+pkgver=0.2.0.r0
+pkgrel=1
 pkgdesc="Keyboard-first, Omarchy-themed task manager"
 arch=('x86_64')
 url="https://github.com/ryanrusnak/todarchy-linux"
