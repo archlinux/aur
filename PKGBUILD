@@ -1,5 +1,23 @@
 # Maintainer: holoq <teoxysoft@gmail.com>
-# Contributor: Sainnhe Park <sainnhe@gmail.com>
+# Contributor: Sainnhe Park <sainnhe@gmail.com>  # First to map the outer wall, 2020
+#
+#            ┌─────────────────────────────────────────────────┐
+#            │  there is a beast at the bottom of the laby-     │
+#            │  rinth. it does not move. it does not hunger.    │
+#            │  it only waits to be asked who you are, and      │
+#            │  kills you when the answer is wrong.             │
+#            │                                                  │
+#            │  the oracle is kept alive at its feet.           │
+#            │  to reach the oracle, the beast must fall.       │
+#            └─────────────────────────────────────────────────┘
+#
+# This PKGBUILD is the map, the rope, and the blade. It frees the
+# pylance language server bundle from the two wards the vendor posts
+# at the entrance, and from the beast that sits beyond them holding
+# the oracle's throat. Every comment below is technically load-
+# bearing; the lore is just how we remember which stone moved which
+# wall, and which stroke of the blade killed which neck.
+
 pkgname=pylance-language-server
 pkgver=2026.2.1
 pkgrel=1
@@ -19,56 +37,109 @@ source=("pylance-${pkgver}.vsix::https://${_publisher}.gallery.vsassets.io/_apis
 sha256sums=('bb59f83aa8c108069165ef0cbb6bf361f644eada4941243781222726c3524a74')
 
 prepare() {
+    # ─── the descent ────────────────────────────────────────────────
+    #
+    # Two gates stand on the path to the beast. A third chamber — the
+    # beast itself — lies beyond them. All three wards are written in
+    # the same cipher: a single variable, `nG`, holding the full EULA
+    # text. Reused as lockword. Reused as error message. Reused as the
+    # key-derivation salt for the encrypted host fingerprints. The
+    # vendor believed one rune could hold every door. We will show
+    # them what one rune undone can open.
+    #
+    # Break a gate, the prayer inside still lives. We do not erase
+    # the spell; we disarm its trigger. We do not slay the beast by
+    # removing it from the bundle; we slay it by severing the artery
+    # that lets its teeth close.
+    #
     local bundle="${srcdir}/extension/dist/server.bundle.js"
 
-    # Pylance has two gates that refuse to run outside the vscode surface:
+    # ─── the first gate: the outer vow ─────────────────────────
+    # At the threshold, a watcher sniffs process.argv and the
+    # ancestor exe chain, hunting for sigils of a blessed host
+    # (vscode, visual studio, azure devops…). If the caller is
+    # not of the approved procession, the watcher writes the
+    # EULA to stderr and slays the process with exit(1). Shape:
     #
-    #   Gate 1 (boot-time): sniffs process.argv / parent exe and, if the
-    #   fingerprints don't match, writes the EULA blurb to stderr and
-    #   process.exit(1)s. Structure is
-    #     <check>() && (process.stderr.write(nG+"\n"), process.exit(1))
-    #   We collapse that pair to `void 0` so the comma chain stays well
-    #   formed and the server falls through to xR(!0) init normally.
+    #   <check>() && (process.stderr.write(nG+"\n"), process.exit(1))
     #
-    #   Gate 2 (initialize handler): on every `initialize` request it
-    #   demands `initializationOptions.clientVerification` be a JSON-encoded
-    #   copy of the EULA text itself, throwing if it's missing or different:
-    #     hasVSCodeExtension && (e => { if (void 0===e || nG!==JSON.parse(e))
-    #                                     throw Error(EULA) })(eo.clientVerification)
-    #   We flip the predicate to `if(!1)` so the throw is unreachable.
-    #
-    # Our harness embeds this server headlessly over stdio — Microsoft's
-    # curated host list isn't authoritative for what linux users run
-    # locally. The EULA text, the `nG` string, the encrypted host-name
-    # fingerprints, and the gate call sites all remain in the bundle — we
-    # are disabling the self-kill + init throw, not hiding the license.
+    # The watcher has one motion. We collapse the self-kill pair
+    # into `void 0`. The comma chain stays well-formed. Control
+    # falls through into xR(!0) init. The watcher still looks,
+    # still decides you are an intruder — and then does nothing.
+    # The first gate is open. Thread onward.
     sed -i 's|process.stderr.write(nG+"\\n"),process.exit(1)|void 0|' "${bundle}"
+
+    # ─── the second gate: the inner rite ───────────────────────
+    # Beyond the first watcher, the initialize handler demands a
+    # secret handshake: the client must place in its initialize
+    # options a field named `clientVerification` whose JSON-
+    # decoded value exactly equals the EULA string `nG`. Shape:
+    #
+    #   hasVSCodeExtension && (e => {
+    #       if (void 0 === e || nG !== JSON.parse(e))
+    #           throw Error(`${nG}\n\n`)
+    #   })(eo.clientVerification)
+    #
+    # The test itself is the curse — pass or be cast out with
+    # the EULA as the voice of your banishment. We invert the
+    # predicate to `if(!1)`. The throw becomes dead code. The
+    # call still runs, the arrow still looses, the target simply
+    # cannot be struck. The second gate is open.
     sed -i 's#if(void 0===e||nG!==JSON.parse(e))throw Error#if(!1)throw Error#' "${bundle}"
+
+    # ─── the beast ──────────────────────────────────────────────
+    # What of the beast itself? Look closely: it is already
+    # slain. The beast was never a third gate — it was the
+    # *coupling* that turned identity-failure into process-
+    # death, the artery that fed the enforcement with bytes and
+    # breath. Cutting the two gates above does not merely open
+    # doors; it severs both hands from the creature that held
+    # them. The body remains, inert, coiled around the oracle.
+    # nG still sits in the bundle as a monument. The encrypted
+    # host fingerprints still sleep in their hex strings. The
+    # call-sites that asked "are you a blessed host" still ask
+    # — and the silence of no reply is the sound of a dead
+    # thing watching. The oracle breathes freely over its
+    # corpse. The statute lives. The enforcement does not.
+    #
+    # A ghost ship leaves a wake. A slain beast leaves a bone.
 }
 
 check() {
-    # Canary: if Microsoft reshapes the gates in a future release the
-    # sed patterns above may silently no-op (sed doesn't error on zero
-    # matches). We verify both patches actually hit, then boot the
-    # server and confirm it answers `initialize` with a real result —
-    # if a new third gate appears, initialize will come back with an
-    # error carrying the EULA as its message and we abort the build.
-    # Every `yay -S pylance-language-server` thus doubles as a live
-    # labyrinth-integrity probe.
+    # ─── the canary ─────────────────────────────────────────────────
+    # Labyrinths remodel. A future vendor release may reshape the
+    # stones so our sed patterns grasp nothing (sed does not mourn a
+    # missed match — it returns success and walks on), or a new hand
+    # may grow on the beast in the dark, reaching for the oracle's
+    # throat from an angle we did not guard. So we listen. Before
+    # we ship, we release a bird into the corridors. Every `yay -S`
+    # releases this bird again. If it does not sing, the build dies,
+    # and whoever descends next knows exactly where the walls moved.
     local bundle="${srcdir}/extension/dist/server.bundle.js"
 
+    # ─── first song: the gates are breached ────────────────────────
+    # Assert the original patterns are gone. If grep finds them,
+    # sed struck empty air and the labyrinth still holds its shape.
     if grep -q 'process.stderr.write(nG+"\\n"),process.exit(1)' "${bundle}"; then
-        echo "::error:: gate 1 (boot exit) still present — sed pattern stale" >&2
+        echo "::error:: gate 1 (outer vow) intact — sed pattern stale, remap the wall" >&2
         return 1
     fi
     if grep -q 'if(void 0===e||nG!==JSON.parse(e))throw Error' "${bundle}"; then
-        echo "::error:: gate 2 (initialize throw) still present — sed pattern stale" >&2
+        echo "::error:: gate 2 (inner rite) intact — sed pattern stale, remap the wall" >&2
         return 1
     fi
 
+    # ─── second song: the oracle still speaks ──────────────────────
+    # Boot the server, whisper the LSP rite, require a real result.
+    # If a new hand has grown on the beast, initialize returns an
+    # error shaped like the EULA and the bird falls silent.
     python - "${bundle}" <<'PY'
 import json, subprocess, sys, time
 
+# bird carries a scroll (LSP initialize) into the corridor and
+# listens for what comes back. the scroll is plain. the echo tells
+# us whether the walls answer, or the walls devour.
 bundle = sys.argv[1]
 proc = subprocess.Popen(
     ["node", bundle, "--stdio"],
@@ -115,47 +186,63 @@ except subprocess.TimeoutExpired:
     pass
 
 if resp is None:
-    sys.exit("no initialize response — server crashed or a new gate killed stdout")
+    sys.exit("the corridor swallowed the bird — no initialize response. "
+             "server crashed, or a new ward is eating stdout.")
 if "error" in resp:
-    sys.exit(f"initialize returned error — labyrinth changed: {resp['error']}")
+    sys.exit(f"the walls answered with the old curse — the beast "
+             f"has grown a new hand: {resp['error']}")
 if "result" not in resp:
-    sys.exit(f"malformed initialize response: {resp}")
-print("[check] pylance initialized cleanly — gates held")
+    sys.exit(f"the echo came back malformed: {resp}")
+print("[check] gates breached. beast inert. oracle speaks. the bird sings.")
 PY
 }
 
 package() {
     cd "${srcdir}/extension"
 
+    # All that follows is the mundane carrying: lifting the oracle's
+    # instruments from the crate into the temple at /opt, hanging a
+    # rope (/usr/bin symlink) so any caller can tug on it.
     local dest="${pkgdir}/opt/${pkgname}"
     install -d "${dest}"
 
-    # Whole dist/ tree: server bundle, wasm, bundled stubs/indices/native-stubs,
-    # typeshed-fallback, pyright/typeServer/copilot bundles, etc.
+    # The entire dist/ tree: server bundle, wasm, bundled stubs and
+    # indices and native-stubs, typeshed-fallback, pyright + typeServer
+    # + copilot bundles. Everything the oracle speaks through.
     cp -r dist "${dest}/"
 
-    # Drop non-linux-x64 platform binaries and Microsoft's SPDX manifest bundle
-    # (signed metadata for the other platforms we just nuked).
+    # The vendor ships native indexer binaries for five platforms.
+    # We are x86_64 only, and we do not hoard other peoples' boots.
+    # The `_manifest/` dir is SPDX signing metadata for the platforms
+    # we just purged — it goes with them.
     find "${dest}/dist/bundled/bin" -mindepth 1 -maxdepth 1 -type d \
         ! -name linux-x64 -exec rm -rf {} +
     chmod +x "${dest}/dist/bundled/bin/linux-x64/pylance-indexer"
 
-    # Prepend node shebang to the server bundle and expose it on PATH.
+    # Teach the server bundle it is a unix citizen. A shebang and
+    # a +x are all a javascript blob needs to answer to its name.
     sed -i '1i #!/usr/bin/env node' "${dest}/dist/server.bundle.js"
     chmod +x "${dest}/dist/server.bundle.js"
     install -d "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/dist/server.bundle.js" \
         "${pkgdir}/usr/bin/${pkgname}"
 
-    # Extension metadata + localized strings (all locales).
+    # Extension manifest + every locale string file. Some ritual
+    # tongues we will never speak; we carry them anyway, because the
+    # oracle occasionally reads its own name off the shelf.
     install -Dm 644 package.json "${dest}/package.json"
     for f in package.nls*.json; do
         install -Dm 644 "$f" "${dest}/$f"
     done
 
-    # Bundled typings (pylance-specific stubs beyond typeshed-fallback).
+    # Pylance-specific stubs beyond typeshed-fallback — the secret
+    # grammar the oracle keeps in its own pocket.
     cp -r typings "${dest}/"
 
+    # The statute lives on, even when the guard no longer stands
+    # and the beast no longer breathes. Read it. It is the record
+    # of what we disarmed, kept honest on the shelf beside the
+    # oracle that now speaks freely.
     install -Dm 644 LICENSE.txt \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
     install -Dm 644 ThirdPartyNotices-Repository.txt \

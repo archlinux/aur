@@ -1,15 +1,24 @@
 #!/usr/bin/env bash
 # Maintainer tool — NOT shipped in the AUR package.
 #
-# End-to-end bump: compare upstream stable to our pinned pkgver, and if
-# it moved, fetch the new VSIX, rehash, rewrite PKGBUILD + .SRCINFO, run
-# a full makepkg -f (which exercises prepare() + check() and thus proves
-# both our gate patches still hit and the server still boots), then
-# commit and push to AUR.
+# ┌─ the scryer ─────────────────────────────────────────────────────┐
+# │  when the vendor remodels the labyrinth, the walls move quietly. │
+# │  run this to compare our map to the current stones. if they have │
+# │  shifted, fetch the new layout, walk it once under makepkg's     │
+# │  watch (prepare + check: gates fall, bird sings, or the descent  │
+# │  aborts), then carry the new map back to the AUR.                │
+# └──────────────────────────────────────────────────────────────────┘
 #
-# Idempotent: if we're already on the latest version it exits 0 without
-# touching anything. If the build fails (e.g. Microsoft reshaped the
-# labyrinth), the PKGBUILD edits are reverted so the tree stays clean.
+# End-to-end: compare upstream stable to our pinned pkgver, and if it
+# moved, fetch the new VSIX, rehash, rewrite PKGBUILD + .SRCINFO, run
+# a full makepkg -f (which exercises prepare() + check() and thus
+# proves both our gate patches still hit and the server still boots),
+# then commit and push to AUR.
+#
+# Idempotent: if we're already on the latest version it exits 0
+# without touching anything. If the build fails (the beast grew a new
+# hand), PKGBUILD edits are reverted so the tree stays clean and
+# someone with a blade can come take a look.
 #
 # Usage:
 #   ./bump.sh            # auto-detect, build, commit, push

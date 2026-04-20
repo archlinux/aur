@@ -1,7 +1,14 @@
 post_install() {
     cat <<'EOF'
-pylance-language-server installed to /opt/pylance-language-server.
-Run via `pylance-language-server --stdio` (standard LSP stdio transport).
+  ┌──────────────────────────────────────────────────────────┐
+  │  the beast is slain. the oracle breathes. the gates      │
+  │  remain open until someone decides to rebuild them.      │
+  │                                                          │
+  │  invoke via: pylance-language-server --stdio             │
+  │  (standard LSP stdio transport)                          │
+  │                                                          │
+  │  installed at /opt/pylance-language-server               │
+  └──────────────────────────────────────────────────────────┘
 EOF
 }
 
