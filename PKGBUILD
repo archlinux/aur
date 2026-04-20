@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4-qtlauncher
 pkgname=$_pkgname-git
-pkgver=r269.e7d736a
+pkgver=r272.6487f9b
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (Qt GUI)"
 arch=('aarch64' 'x86_64')
@@ -59,7 +59,6 @@ build() {
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D CMAKE_SKIP_INSTALL_RPATH=ON
 		-D ENABLE_UPDATER=OFF
-		-D SPDLOG_FMT_EXTERNAL=ON
 		-Wno-dev
 	)
 	cmake "${options[@]}" -B build -S $_pkgname
