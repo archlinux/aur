@@ -2,7 +2,7 @@
 
 pkgname=eso-addons-manager-bin
 pkgdesc='Cross platform addon manager for the Elder Scrolls Online'
-pkgver=0.4.18 # renovate: datasource=github-tags depName=arviceblot/eso-addons
+pkgver=0.4.19 # renovate: datasource=github-tags depName=arviceblot/eso-addons
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/arviceblot/eso-addons"
@@ -20,7 +20,7 @@ source=(
   "LICENSE-$pkgver::https://raw.githubusercontent.com/arviceblot/eso-addons/refs/tags/v${pkgver}/LICENSE"
   "com.arviceblot.eso-addon-manager.desktop"
 )
-sha256sums=('e1a7779e4f8880ecc4bf306af66c2a764136d243d2c0f408b1764b8e61a8b0d2'
+sha256sums=('2d59126e76b426c4f9e053029616a558a95e9f09e7b02fde4eb522d4c13cdb50'
             '0a085ba27dc72ae85eaf2033c8099ce01e737b680f6313e28253d6eb49e0e284'
             '8e53babd1d2c750bcee57c8489cbb58602541f7bc1f4077cec919234246f6ea9'
             '4fc6d1df6ca640527e1f7a2e7718d487cd1d5677785724b0803c76ef8e466e5e')
