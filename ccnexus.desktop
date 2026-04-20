@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ccNexus
+Comment=A network tool for proxy testing and management
+Exec=/usr/bin/ccnexus
+Icon=ccnexus
+Type=Application
+Categories=Network;Utility;
+Terminal=false
+StartupNotify=true

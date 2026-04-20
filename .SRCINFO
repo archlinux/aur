@@ -1,0 +1,14 @@
+pkgbase = ccnexus-bin
+	pkgdesc = ccNexus - A network tool for proxy testing and management
+	pkgver = 5.2.0
+	pkgrel = 2
+	url = https://github.com/lich0821/ccNexus
+	arch = x86_64
+	license = unknown
+	options = !strip
+	source_x86_64 = ccnexus-bin-5.2.0-linux-amd64.tar.gz::https://github.com/lich0821/ccNexus/releases/download/v5.2.0/ccNexus-v5.2.0-linux-amd64.tar.gz
+	source_x86_64 = ccnexus.desktop
+	sha256sums_x86_64 = da9e30d93abf34d22b5773d8869b53cdff2aafe4b6bf4501f256123ffcf3afd7
+	sha256sums_x86_64 = SKIP
+
+pkgname = ccnexus-bin
