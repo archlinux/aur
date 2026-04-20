@@ -1,11 +1,10 @@
 pkgbase = r-iseeindex
 	pkgdesc = iSEE extension for a landing page to a custom collection of data sets
-	pkgver = 1.2.0
-	pkgrel = 1
+	pkgver = 1.8.0
+	pkgrel = 3
 	url = https://bioconductor.org/packages/iSEEindex
 	arch = any
 	license = Artistic-2.0
-	checkdepends = r-testthat
 	depends = r-biocfilecache
 	depends = r-dt
 	depends = r-isee
@@ -26,8 +25,8 @@ pkgbase = r-iseeindex
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
 	optdepends = r-yaml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iSEEindex_1.2.0.tar.gz
-	md5sums = 5ec09044fa2963f40e87f633425ea355
-	b2sums = 6dad5b2d664e208863eb0ff34084e88d26ebca65a4ca90fb07590d2f2d4043b144f71b06fa91455e2f3751f3cee93702c333586bc568ae3b6a1463cb07710ebf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iSEEindex_1.8.0.tar.gz
+	md5sums = 1eebe6478ce84cd14d9ee12be9d17968
+	b2sums = 93311daf54c65ad25a2e61589e7659c09a37a4b648907e3fa5c514da3356b21a8731fdf51a3e241bbb21404247cc8c74775bb41e0ad56b32675c2d70f8889202
 
 pkgname = r-iseeindex

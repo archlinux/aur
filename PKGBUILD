@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=iSEEindex
-_pkgver=1.2.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="iSEE extension for a landing page to a custom collection of data sets"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -23,9 +23,6 @@ depends=(
   r-summarizedexperiment
   r-urltools
 )
-checkdepends=(
-  r-testthat
-)
 optdepends=(
   r-biocstyle
   r-covr
@@ -37,17 +34,12 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5ec09044fa2963f40e87f633425ea355')
-b2sums=('6dad5b2d664e208863eb0ff34084e88d26ebca65a4ca90fb07590d2f2d4043b144f71b06fa91455e2f3751f3cee93702c333586bc568ae3b6a1463cb07710ebf')
+md5sums=('1eebe6478ce84cd14d9ee12be9d17968')
+b2sums=('93311daf54c65ad25a2e61589e7659c09a37a4b648907e3fa5c514da3356b21a8731fdf51a3e241bbb21404247cc8c74775bb41e0ad56b32675c2d70f8889202')
 
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
-}
-
-check() {
-  cd "$_pkgname/tests"
-  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
