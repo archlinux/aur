@@ -2,8 +2,7 @@
 
 pkgname=rebased-bin
 _pkgname=rebased
-pkgver=1.0.8
-_build=261.22158.SNAPSHOT
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='Standalone JetBrains-based Git client (prebuilt binary)'
 arch=('x86_64')
@@ -14,20 +13,34 @@ optdepends=('xdg-utils: open URLs from the IDE')
 provides=('rebased')
 conflicts=('rebased')
 options=('!strip')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/DetachHead/rebased/releases/download/1.0.8/ideaIC-261.22158.SNAPSHOT.tar.gz")
-sha256sums=('ee48969d3679aa1d89e98801c6ba79ce4c7edd65ca8ed3581d8fc33f6f887cbc')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/DetachHead/rebased/releases/download/1.0.9/rebased.tar.gz")
+sha256sums=('75df29f91824f39e36e83c21653d3d7251082f70dacb271731b589f6ca21bf46')
 
 package() {
+  source_root=""
+
+  for candidate in "${srcdir}"/idea-IC-* "${srcdir}"/ideaIC-* "${srcdir}"/rebased* "${srcdir}"/Rebased*; do
+    if [[ -d "${candidate}" ]]; then
+      source_root="${candidate}"
+      break
+    fi
+  done
+
+  if [[ -z "${source_root}" ]]; then
+    printf 'failed to locate extracted source tree\n' >&2
+    return 1
+  fi
+
   install -dm755 "${pkgdir}/opt/${_pkgname}"
-  cp -a "${srcdir}/idea-IC-261.22158.SNAPSHOT/." "${pkgdir}/opt/${_pkgname}/"
+  cp -a "${source_root}/." "${pkgdir}/opt/${_pkgname}/"
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/${_pkgname}/bin/idea" "${pkgdir}/usr/bin/rebased"
 
-  install -Dm644 "${srcdir}/idea-IC-261.22158.SNAPSHOT/bin/idea.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/rebased.svg"
-  install -Dm644 "${srcdir}/idea-IC-261.22158.SNAPSHOT/bin/idea.png" "${pkgdir}/usr/share/pixmaps/rebased.png"
-  install -Dm644 "${srcdir}/idea-IC-261.22158.SNAPSHOT/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-  install -Dm644 "${srcdir}/idea-IC-261.22158.SNAPSHOT/NOTICE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE.txt"
+  install -Dm644 "${source_root}/bin/idea.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/rebased.svg"
+  install -Dm644 "${source_root}/bin/idea.png" "${pkgdir}/usr/share/pixmaps/rebased.png"
+  install -Dm644 "${source_root}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  install -Dm644 "${source_root}/NOTICE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE.txt"
 
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/rebased.desktop" <<'DESKTOP'
 [Desktop Entry]
