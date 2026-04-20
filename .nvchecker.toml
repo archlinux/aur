@@ -1,0 +1,3 @@
+[lerna]
+source = "npm"
+npm = "lerna"
