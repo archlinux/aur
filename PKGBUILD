@@ -13,31 +13,22 @@ depends=(
     'libasound.so'
     'hicolor-icon-theme'
 )
-makedepends=('curl')
 options=('!strip')
 install="${pkgname}.install"
 
-pkgver=0.3.536
+pkgver=0.3.552
 pkgrel=1
 
 # NOTE: aarch64 releases use "arm64" in the asset filename, not "aarch64".
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/pnn64/deadsync/releases/download/v${pkgver}/deadsync-v${pkgver}-x86_64-linux.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/pnn64/deadsync/releases/download/v${pkgver}/deadsync-v${pkgver}-arm64-linux.tar.gz")
-sha256sums_x86_64=('71a1f3fac259c3829b5abe422c873fc764764e21004a9708b0d32ed1a2dc7f09')
-sha256sums_aarch64=('1329ecd7f051ae39f53108a91e07017cce0ea6409a19f133a6e4ce0eb160faa5')
+sha256sums_x86_64=('895ebeb5c2092ccba45bc586c7d9cfad92319d0b1a4fe8e2dae281a9c818a320')
+sha256sums_aarch64=('cef8b15c8c7adb323a961d59ea3733bdbd83a7e4e7bc1170734134943a64c67c')
 
 package() {
-    # Determine the extracted source root. The tarball is flat (no wrapping
-    # subdirectory), so the staging dir itself is the content root — but we
-    # handle both layouts in case upstream changes this.
-    local _src="${srcdir}"
-    local _dirs=("${srcdir}"/*)
-    if [[ ${#_dirs[@]} -eq 1 && -d "${_dirs[0]}" ]]; then
-        _src="${_dirs[0]}"
-    fi
+    local _src="${srcdir}/deadsync"
 
-    # portable.txt tells the game to use paths relative to its own directory
-    # instead of ~/.local/share/deadsync. Must not ship in an installed package.
+    # portable.txt tells the game to resolve data paths relative to its own directory
     rm -f "${_src}/portable.txt"
 
     install -dm755 "${pkgdir}/opt/deadsync"
