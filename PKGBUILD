@@ -1,7 +1,7 @@
 pkgbase='python-muzlib'
 pkgname=('python-muzlib')
 _module='muzlib'
-pkgver=main
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Muzlib is a Python script that allows you to create your own music library."
 url="https://github.com/ezvezdov/muzlib"
