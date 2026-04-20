@@ -1,0 +1,14 @@
+pkgbase = archvital
+	pkgdesc = Qt6/C++20 system monitor for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/T9Tuco/archvital
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	depends = qt6-base
+	source = archvital-1.0.0.tar.gz::https://github.com/T9Tuco/archvital/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = archvital
