@@ -1,7 +1,7 @@
 # Maintainer: Islam Nofl <islamnofl.official@gmail.com>
 
 pkgname=superset-bin
-pkgver=desktop.v1.5.6
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Code Editor for the AI Agents Era - Run an army of Claude Code, Codex, etc. on your machine"
 arch=(x86_64)
