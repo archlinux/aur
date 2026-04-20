@@ -1,7 +1,7 @@
 pkgbase = synca-bin
 	pkgdesc = Simple, lightweight, open source file synchronization client (prebuilt AppImage)
 	pkgver = 0.3.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/bryanrafaelbueno/Synca
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,6 @@ pkgbase = synca-bin
 	conflicts = synca
 	options = !strip
 	source = Synca-x86_64.AppImage::https://github.com/bryanrafaelbueno/Synca/releases/download/0.3.2/Synca-x86_64.AppImage
-	sha256sums = 4baddd4171e040717abaef4d1658cc3cd7796f1a2079bca45f820d1948ac094f
+	sha256sums = 24a3d4ef637c6eb490c682d56d07a6df46fbbbea5dc39cbc59060e7a4314c8b9
 
 pkgname = synca-bin
