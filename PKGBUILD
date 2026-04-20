@@ -2,8 +2,8 @@
 
 pkgname=tarotcaster
 _pkgname=TarotCaster
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc='Tarot Casting Application with AI Interpretation of Spreads'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/alamahant/${_pkgname}"
@@ -13,7 +13,7 @@ makedepends=('cmake' 'ninja' 'qt6-tools')
 #conflicts=('')
 #provides=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('50342ac543fc5b89c002cd4d36012e28f72e918c02934b79f56563e7dfb4f042')
+sha256sums=('bb645663d3fde9bd12849bb159014aeb623b67b4dc4d5a850fb48a161b794413')
 
 
 build(){
