@@ -5,7 +5,7 @@
 pkgname=trae-cn-desktop-bin
 _pkgname=trae-cn
 pkgver=2.3.20622
-pkgrel=1
+pkgrel=2
 pkgdesc="字节跳动推出的AI编程IDE（Trae CN）"
 arch=('x86_64' 'aarch64')
 url="https://www.trae.cn/"
@@ -62,4 +62,7 @@ package() {
     install -Dm644 "${srcdir}/resources/completions/bash/${_pkgname}"  "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
     install -Dm644 "${srcdir}/resources/completions/zsh/_${_pkgname}"  "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
     install -m755 "${srcdir}/${_pkgname}-startup.sh" "${pkgdir}/usr/bin/${_pkgname}"
+    
+    # 暂时修复一下工作区索引不能成功构建的问题
+    rm -rf "${pkgdir}/opt/${_pkgname}/resources/app/modules/ckg/binary/libstdc++.so.6"
 }

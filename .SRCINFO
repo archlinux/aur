@@ -1,7 +1,7 @@
 pkgbase = trae-cn-desktop-bin
 	pkgdesc = 字节跳动推出的AI编程IDE（Trae CN）
 	pkgver = 2.3.20622
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.trae.cn/
 	install = trae-cn-desktop-bin.install
 	arch = x86_64
