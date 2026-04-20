@@ -32,13 +32,20 @@ pkgver() {
 package() {
   cd "$pkgname"
 
-  if [[ ! -d src/ui ]]; then
+  local app_root="."
+  local fallback_root="pkg/$pkgname/usr/share/$pkgname"
+
+  if [[ -d src/ui ]]; then
+    app_root="."
+  elif [[ -d "$fallback_root/src/ui" ]]; then
+    app_root="$fallback_root"
+  else
     echo "ERROR: src/ui not found in working tree."
     exit 1
   fi
 
   install -dm755 "$pkgdir/usr/share/yt-dlp-gui"
-  cp -r src assets main.py requirements.txt "$pkgdir/usr/share/yt-dlp-gui/"
+  cp -r "$app_root/src" "$app_root/assets" "$app_root/main.py" "$app_root/requirements.txt" "$pkgdir/usr/share/yt-dlp-gui/"
 
   install -dm755 "$pkgdir/usr/bin"
   cat <<'EOF' > "$pkgdir/usr/bin/yt-dlp-gui"
@@ -61,10 +68,10 @@ StartupNotify=true
 EOF
 
   install -dm755 "$pkgdir/usr/share/pixmaps"
-  if [[ -f src/img/logo.ico ]]; then
-    install -Dm644 src/img/logo.ico "$pkgdir/usr/share/pixmaps/yt-dlp-gui.ico"
-  elif [[ -f assets/img/logo.ico ]]; then
-    install -Dm644 assets/img/logo.ico "$pkgdir/usr/share/pixmaps/yt-dlp-gui.ico"
+  if [[ -f "$app_root/src/img/logo.ico" ]]; then
+    install -Dm644 "$app_root/src/img/logo.ico" "$pkgdir/usr/share/pixmaps/yt-dlp-gui.ico"
+  elif [[ -f "$app_root/assets/img/logo.ico" ]]; then
+    install -Dm644 "$app_root/assets/img/logo.ico" "$pkgdir/usr/share/pixmaps/yt-dlp-gui.ico"
   else
     echo "warning: logo.ico not found in src/img or assets/img"
   fi
