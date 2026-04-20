@@ -10,7 +10,7 @@ url="https://gitlab.com/cargabsj175/mdirecto"
 license=(GPL-3.0-only)
 depends=(
 	gtk3
-	libwebkit2gtk-4.1
+	webkit2gtk-4.1
 	libappindicator-gtk3
 )
 makedepends=(
