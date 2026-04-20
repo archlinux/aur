@@ -1,7 +1,7 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 pkgname=fladder-git
 _pkgname=Fladder
-pkgver=r1539.90bc47a
+pkgver=r1542.96b4d9a
 pkgrel=1
 pkgdesc="Fladder - A Simple Jellyfin Frontend"
 arch=('x86_64')
@@ -65,7 +65,7 @@ package() {
 
     cp -r "$srcdir/$_pkgname/build/linux/x64/release/bundle/"* "$pkgdir/usr/bin/$_pkgname/"
 
-    ln -s "/usr/bin/$_pkgname/Fladder" "$pkgdir/usr/bin/fladder"
+    ln -s "/usr/bin/$_pkgname/fladder" "$pkgdir/usr/bin/fladder"
     ln -s "/usr/bin/$_pkgname/data/flutter_assets/icons/fladder_icon.svg" "$pkgdir/usr/share/icons/fladder.svg"
 
     install -m644 "$srcdir/fladder.desktop" "$pkgdir/usr/share/applications/"
@@ -74,7 +74,7 @@ package() {
     for lib in "$pkgdir/usr/bin/$_pkgname/lib"/*.so; do
         [[ -f "$lib" && -n "$(patchelf --print-rpath "$lib")" ]] && patchelf --set-rpath '$ORIGIN' "$lib"
     done
-    patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/usr/bin/$_pkgname/Fladder"
+    patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/usr/bin/$_pkgname/fladder"
 
     # set baseurl
     if [ -n "$_base_url" ]; then
