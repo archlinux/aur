@@ -9,7 +9,7 @@
 
 _pkgname=Flexget
 pkgname=${_pkgname,,}
-pkgver=3.19.12
+pkgver=3.19.13
 pkgrel=1
 pkgdesc="A program aimed to automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 arch=(any)
@@ -115,7 +115,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.user.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('718fea0d84d8727cc6c558a33988983d261dd0baf7514054a2139154271f332b'
+sha256sums=('adbedb0d03b94c038202d9e316725d2238b2ea06f4903ec5fa6d8aed2b2c0c8e'
             'b7578417ab5f671def7021133ae68900d82aaa81b5e80a2fec4d85e46eb1f8e9'
             'b9d354f6095aafe7a29cb8e90239b662a2584903a85fe3770f2b99bb8bdfff4a'
             '799921777b3714f074deaafbdd241ea7b99a0eccd65931708fd81457286f4f49'
@@ -134,10 +134,8 @@ check() {
     cd "${_pkgname}-${pkgver}"
     python -m installer --destdir="tmp_install" dist/*.whl
 
-    ## There are actually a large number of test errors currently, but they are still forcibly packaged. 
-    ## Please pay attention to distinguishing whether the errors affect your settings.
     echo "==> Running tests..."
-    echo "==> This tests related to the optional features will be skipped: "
+    echo "==> These tests related to the optional features will be skipped: "
     echo "==> archives, decompress, ftp, matrix, plex_watchlist, sftp, sns, subtitle, telegram, transmission"
     sleep 3
     export PYTHONPATH="$PWD/tmp_install$_site_packages/:$PYTHONPATH:$PWD/tests"
