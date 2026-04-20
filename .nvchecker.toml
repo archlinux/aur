@@ -1,4 +1,4 @@
 [python-aesqlapius]
 source="github"
 github="AMDmi3/aesqlapius"
-use_latest_release=true
+use_max_tag=true
