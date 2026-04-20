@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=rotor
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Stateless password manager'
 arch=('aarch64' 'x86_64')
@@ -13,7 +13,7 @@ options=('!lto')
 conflicts=('lptk')
 replaces=('lptk')
 source=("${pkgname}::git+https://gitlab.com/ogarcia/${pkgname}.git#tag=${pkgver}")
-b2sums=('b0d398b230b8b28dcc9580fc956845c42acfc3d16deb434eef7bbbbde203e19e2127b7d60bb6fad37e4e9fa3ed0161ab44e2771280729cce5bc1968391b694c4')
+b2sums=('d20bdfbf65514efa97bc41ea6099e53a43cbf29c604370dd9d51735631c89640ff1423364c9316176b5c9ff07f78511966a1d528bcd521d6f7c84a51756fb685')
 
 build() {
   arch-meson "${pkgname}" build

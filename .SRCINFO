@@ -1,6 +1,6 @@
 pkgbase = rotor
 	pkgdesc = Stateless password manager
-	pkgver = 0.10.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://gitlab.com/ogarcia/rotor
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = rotor
 	conflicts = lptk
 	replaces = lptk
 	options = !lto
-	source = rotor::git+https://gitlab.com/ogarcia/rotor.git#tag=0.10.1
-	b2sums = b0d398b230b8b28dcc9580fc956845c42acfc3d16deb434eef7bbbbde203e19e2127b7d60bb6fad37e4e9fa3ed0161ab44e2771280729cce5bc1968391b694c4
+	source = rotor::git+https://gitlab.com/ogarcia/rotor.git#tag=0.11.0
+	b2sums = d20bdfbf65514efa97bc41ea6099e53a43cbf29c604370dd9d51735631c89640ff1423364c9316176b5c9ff07f78511966a1d528bcd521d6f7c84a51756fb685
 
 pkgname = rotor
