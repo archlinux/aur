@@ -1,0 +1,24 @@
+pkgbase = hypr-network-manager-git
+        pkgdesc = Themeable NetworkManager applet for Hyprland
+        pkgver = 0.1.0.r403.g0a21a7e
+        pkgrel = 1
+        url = https://github.com/hypr-nm/hypr-network-manager
+        arch = x86_64
+        arch = aarch64
+        license = GPL-3.0-or-later
+        makedepends = git
+        makedepends = meson
+        makedepends = ninja
+        makedepends = pkgconf
+        makedepends = vala
+        depends = gtk4
+        depends = gtk4-layer-shell
+        depends = json-glib
+        depends = networkmanager
+        provides = hypr-network-manager
+        conflicts = hypr-network-manager
+        source = hypr-network-manager::git+https://github.com/hypr-nm/hypr-network-manager.git
+        sha256sums = SKIP
+
+pkgname = hypr-network-manager-git
+
