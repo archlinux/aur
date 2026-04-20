@@ -27,6 +27,7 @@ build() {
   # Ensure an empty .env.embedded exists for build parity
   touch internal/auth/.env.embedded
   mkdir -p ../bin
+  touch internal/auth/.env.embedded
   go build -o ../bin/synca-daemon-x86_64-unknown-linux-gnu ./cmd/synca
   cd ..
   
@@ -39,8 +40,8 @@ package() {
   cd "Synca-$pkgver"
   
   # Install binaries
-  install -Dm755 "desktop/src-tauri/target/release/synca" "$pkgdir/usr/bin/synca"
-  install -Dm755 "bin/synca-daemon" "$pkgdir/usr/bin/synca-daemon"
+  install -Dm755 "$srcdir/Synca-$pkgver/desktop/src-tauri/target/release/synca" "$pkgdir/usr/bin/synca"
+  install -Dm755 "$srcdir/Synca-$pkgver/bin/synca-daemon" "$pkgdir/usr/bin/synca-daemon"
   
   # Desktop entry
   cat > "$pkgname.desktop" <<EOF
