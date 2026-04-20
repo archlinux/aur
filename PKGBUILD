@@ -1,22 +1,38 @@
 # Maintainer: Taha YVR <taha@noiserandom.com>
 pkgname=omarchist-bin
-pkgver=0.8.3
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="A GUI app for Omarchy."
+pkgdesc="A GUI app for Omarchy Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/tahayvr/omarchist"
-license=('MIT')
-depends=('cairo' 'zstd' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
+license=('Apache-2.0')
+install=omarchist.install
+depends=(
+    'libxcb'
+    'libxkbcommon'
+    'libxkbcommon-x11'
+    'wayland'
+    'vulkan-icd-loader'
+    'libx11'
+    'libxi'
+    'mesa'
+    'openssl'
+    'fontconfig'
+    'alsa-lib'
+)
 provides=('omarchist')
 conflicts=('omarchist' 'omarchist-git')
-options=('!strip' '!emptydirs')
-install=${pkgname}.install
-source_x86_64=("${url}/releases/download/v${pkgver}/Omarchist_${pkgver}_amd64.deb")
-source_aarch64=("${url}/releases/download/v${pkgver}/Omarchist_${pkgver}_arm64.deb")
-sha256sums_x86_64=('184af82f06e055c13f0804d9e90675616c72822a3e86697200ac209f1dd8a1ea')
-sha256sums_aarch64=('6127bf28eab3d716b438cb1b6286d8eb9f474d96f4995cf89d68d3625908d1c1')
-package() {
-  # Extract package data
-  tar -xvf data.tar.gz -C "${pkgdir}"
 
+source_x86_64=("omarchist-linux-x86_64-${pkgver}.tar.gz::https://github.com/tahayvr/omarchist/releases/download/v${pkgver}/omarchist-linux-x86_64.tar.gz")
+source_aarch64=("omarchist-linux-aarch64-${pkgver}.tar.gz::https://github.com/tahayvr/omarchist/releases/download/v${pkgver}/omarchist-linux-aarch64.tar.gz")
+
+sha256sums_x86_64=('116bca732e0988ba5ef7a77a53e6395d3b792fb7fb1f14c83c8e740e12be62f2')
+sha256sums_aarch64=('0394f14bd5fb05ad871093217cd896d3f38d3c54783a77cfb240f951eedd5ad6')
+
+package() {
+    install -Dm755 omarchist                    "${pkgdir}/usr/bin/omarchist"
+    install -Dm644 omarchist.desktop            "${pkgdir}/usr/share/applications/omarchist.desktop"
+    install -Dm644 omarchist.png                "${pkgdir}/usr/share/icons/hicolor/256x256/apps/omarchist.png"
+    install -Dm644 README.md                    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 LICENSE                      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
