@@ -1,15 +1,15 @@
 pkgbase = feynman-cli
 	pkgdesc = Open-source AI research agent CLI
-	pkgver = 0.2.17
+	pkgver = 0.2.40
 	pkgrel = 1
 	url = https://github.com/getcompanion-ai/feynman
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = pnpm
+	makedepends = npm
 	depends = nodejs
 	depends = npm
-	source = feynman-cli::git+https://github.com/getcompanion-ai/feynman.git#tag=v0.2.17
+	source = feynman-cli::git+https://github.com/getcompanion-ai/feynman.git#tag=v0.2.40
 	sha256sums = SKIP
 
 pkgname = feynman-cli
