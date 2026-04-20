@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=plexamp-bin
 _pkgname=Plexamp
-pkgver=4.13.0
-_electronversion=38
+pkgver=4.13.1
+_electronversion=41
 pkgrel=1
 pkgdesc="Modern music client for Plex.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ce48f833cdf35e0690603f5669e1d6e4ba7af055ed4bf356278a1f6ecc220166'
+sha256sums=('a7d63868462f10f14f7d58f6e8c8acfaef8d9b539bf5fb13597f128b2a87775b'
             '4ca4de54abb5b0239320564e0ea21cbfd42d2da2ced5f87740cf9d5c566c1b9b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -47,8 +47,8 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/"{app.asar.unpacked,treble,cacert.pem} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/squashfs-root/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/${pkgname%-bin}.svg" \
         -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
