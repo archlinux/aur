@@ -1,6 +1,6 @@
 pkgbase = dos-machines
 	pkgdesc = Folder-based DOS machine workspace and launcher editor
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/evertvorster/dos-machines
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = dos-machines
 	depends = python
 	depends = pyside6
 	depends = dosbox-staging
-	source = dos-machines-0.2.3.tar.gz::https://github.com/evertvorster/dos-machines/archive/refs/tags/v0.2.3.tar.gz
-	sha256sums = 87b16dc4d55b701ddc436b2f666a1a14b39469ec8687bfbccf919dbf348941e1
+	source = dos-machines-0.2.4.tar.gz::https://github.com/evertvorster/dos-machines/archive/refs/tags/v0.2.4.tar.gz
+	sha256sums = 8766a49ab07b1965f656bcc435b861626c9b5961a5a49f65d42c78e3cb715727
 
 pkgname = dos-machines
