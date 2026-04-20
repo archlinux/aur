@@ -1,6 +1,6 @@
 pkgbase = prisma-access-browser-bin
 	pkgdesc = Prisma Access Browser - the secure enterprise browser by Palo Alto Networks
-	pkgver = 145.30.9.160
+	pkgver = 147.15.6.102
 	pkgrel = 1
 	url = https://docs.paloaltonetworks.com/prisma-access-browser
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = prisma-access-browser-bin
 	conflicts = prisma-access-browser
 	options = !emptydirs
 	options = !strip
-	source = https://updates.talon-sec.com/linux/prisma-access-browser/deb/pool/stable/main/prisma-access-browser-stable_145.30.9.160-1_amd64.deb
-	sha256sums = e00c3cc59da355766a30fc5d9e1be8c50a82ac88bac2ae90acf9da00682e3085
+	source = https://updates.talon-sec.com/linux/prisma-access-browser/deb/pool/stable/main/prisma-access-browser-stable_147.15.6.102-1_amd64.deb
+	sha256sums = 2daccc236af7093a4635617c8c865695f35f2a60dc77b10e1668f1f148b524fe
 
 pkgname = prisma-access-browser-bin
