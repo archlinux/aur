@@ -1,4 +1,5 @@
-# Maintainer: Ananas <ananas@ananas.moe>
+# Maintainer: Agil Mammadov <mammadovagil at tutamail dot com>
+# Contributor: Ananas <ananas@ananas.moe>
 _pkgname=pytubefix
 pkgname=python-pytubefix
 pkgver="8.12.2"
