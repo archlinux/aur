@@ -1,6 +1,6 @@
 pkgbase = cpp-ps1
 	pkgdesc = C++ base PS1 function, useful for programmers
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/Emiliopg91/cpp-ps1
 	install = cpp-ps1.install
@@ -8,7 +8,7 @@ pkgbase = cpp-ps1
 	license = GPL-2
 	makedepends = clang
 	depends = git
-	source = git+https://github.com/Emiliopg91/cpp-ps1.git#tag=1.0.2-1
+	source = git+https://github.com/Emiliopg91/cpp-ps1.git#tag=1.0.3-1
 	sha256sums = SKIP
 
 pkgname = cpp-ps1

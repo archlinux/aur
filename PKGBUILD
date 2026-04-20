@@ -1,5 +1,5 @@
 pkgname=cpp-ps1
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='C++ base PS1 function, useful for programmers'
 arch=('x86_64')
