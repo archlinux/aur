@@ -1,16 +1,16 @@
 pkgbase = stubidp-bin
 	pkgdesc = A mock OpenID Connect server for developers. Zero config, instant OIDC.
-	pkgver = 0.0.5
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/cerberauth/stubidp
 	license = MIT
 	conflicts = stubidp
 	provides = stubidp
 	arch = aarch64
-	source_aarch64 = https://github.com/cerberauth/stubidp/releases/download/v0.0.5/stubidp_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 2a43f863602f8b66922339567a44082429f9b4b9ee3c002327d0b36bb9a2b28b
+	source_aarch64 = https://github.com/cerberauth/stubidp/releases/download/v0.1.0/stubidp_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 24a4ad0879fd76b57f49ce52a497b1d28e1ca2d6f3baaddef89d5269749290a8
 	arch = x86_64
-	source_x86_64 = https://github.com/cerberauth/stubidp/releases/download/v0.0.5/stubidp_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = d558681bd15626b92370c4948cf57b020546dd94ed1405b2442885d42e28ea6b
+	source_x86_64 = https://github.com/cerberauth/stubidp/releases/download/v0.1.0/stubidp_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 34946bc02db6b184fd90012f437bb7cf876afc4f88b79651d78420f53de127e9
 	
 pkgname = stubidp-bin
