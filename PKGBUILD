@@ -35,10 +35,9 @@ conflicts=('chatterino')
 _pkgsrc="chatterino7"
 source=(
   "git+https://github.com/SevenTV/chatterino7"
-  "git+https://github.com/arsenm/sanitizers-cmake"
-  "git+https://github.com/Chatterino/crash-handler"
   "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
   "git+https://github.com/Chatterino/websocketpp"
+  "git+https://github.com/Chatterino/certify"
   "git+https://github.com/pajlada/settings"
   "git+https://github.com/pajlada/serialize"
   "git+https://github.com/pajlada/signals"
@@ -51,7 +50,6 @@ source=(
   "https://github.com/hekel/chatterino-stuffs/raw/refs/heads/master/native-qt/fix-bg-opacity.patch"
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -86,12 +84,16 @@ prepare () {
   patch -p1 -i $srcdir/fix-bg-opacity.patch || exit 1
 
   # Disable updating of unused submodules
+  git config submodule.cmake/sanitizers-cmake.update "none"
+  git config submodule.lib/rapidjson.update "none"
+  git config submodule.tools/crash-handler.update "none"
   git config submodule.lib/googletest.update "none"
+  git config submodule.lib/twitch-eventsub-ws/lib/date.update "none"
+  git config submodule.lib/twitch-eventsub-ws/lib/fmt.update "none"
   git config submodule.lib/WinToast.update "none"
   git config submodule.lib/qtkeychain.update "none"
 
   git submodule init
-  git config submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
   git config submodule.lib/libcommuni.url "$srcdir/libcommuni"
   git config submodule.lib/settings.url "$srcdir/settings"
   git config submodule.lib/signals.url "$srcdir/signals"
@@ -101,7 +103,7 @@ prepare () {
   git config submodule.lib/magicenum.url "$srcdir/magicenum"
   git config submodule.lib/sol2.url "$srcdir/sol2"
   git config submodule.lib/lua/src.url "$srcdir/lua"
-  git config submodule.tools/crash-handler.url "$srcdir/crash-handler"
+  git config submodule.lib/certify.url "$srcdir/certify"
   git -c protocol.file.allow=always submodule update
 }
 
