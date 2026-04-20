@@ -1,7 +1,7 @@
 # Maintainer: Bryan Rafael <brthy467@gmail.com>
 pkgname=synca
 pkgver=0.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple, lightweight, and open source file synchronization client"
 arch=('x86_64')
 url="https://github.com/bryanrafaelbueno/Synca"
@@ -23,7 +23,16 @@ build() {
   # 1. Build Go daemon (Sidecar)
   export CGO_ENABLED=0
   cd daemon
-  touch internal/auth/.env.embedded
+
+  # Use local .env from the build directory if it exists
+  if [ -f "$startdir/.env" ]; then
+    echo ":: Embedding credentials from .env..."
+    cp "$startdir/.env" internal/auth/.env.embedded
+  else
+    echo "Error: .env file missing in $startdir."
+    echo "Please provide a .env file with your credentials in the same directory as the PKGBUILD."
+    exit 1
+  fi
   mkdir -p ../bin
   go build -o ../bin/synca-daemon-x86_64-unknown-linux-gnu ./cmd/synca
   cd ..
