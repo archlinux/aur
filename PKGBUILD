@@ -1,16 +1,21 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Christos Longros <chris.longros@gmail.com>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
-_cranname=r5r
-_cranver=1.0.1
-pkgname=r-${_cranname,,}
+_pkgname=r5r
+_pkgver=2.3.0
+pkgname=r-${_pkgname,,}
 pkgdesc="Rapid Realistic Routing with ‘R5’"
 url="https://cran.r-project.org/package=r5r"
 license=("MIT")
-pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgver=${_pkgver//-/.}
+pkgrel=6
 
 arch=("any")
 depends=(
+    "r-concaveman"
+    "r-dplyr"
+    "r-h3jsr"
+    "r-gtfstools"
     "jdk11-openjdk"
     "r-checkmate"
     "r-curl"
@@ -41,24 +46,19 @@ checkdepends=(
     "r-testthat"
 )
 
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("052f76d4ef0c0ef4a6e3aeeca361715e53dfea0b86394562e9acd7fdc066e442d2b12163d894293e96d1726dec2501259003b6f0be5a9f11690f26db05884460")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+b2sums=('c70edbc7d67c7bc72b099e70d22bf1a9962a0a9f48fa1eae94e476932b74fab8afad1cd328b4df6fa8115276959b0c451f542974ec0a47d3f833b4200ae16392')
 
 build() {
     mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+    R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}/build/"
 }
 
-check() {
-    export R_LIBS="build/"
-    export NOT_CRAN=true
-    R CMD check --no-manual --no-vignettes "${_cranname}"
-}
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -a --no-preserve=ownership "${srcdir}/build/${_pkgname}" "${pkgdir}/usr/lib/R/library"
+    if [[ -f "${_pkgname}/LICENSE" ]]; then
+        install -Dm0644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }

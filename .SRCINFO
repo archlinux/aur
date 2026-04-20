@@ -1,7 +1,7 @@
 pkgbase = r-r5r
 	pkgdesc = Rapid Realistic Routing with ‘R5’
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 6
 	url = https://cran.r-project.org/package=r5r
 	arch = any
 	license = MIT
@@ -15,6 +15,10 @@ pkgbase = r-r5r
 	checkdepends = r-patchwork
 	checkdepends = r-rmarkdown
 	checkdepends = r-testthat
+	depends = r-concaveman
+	depends = r-dplyr
+	depends = r-h3jsr
+	depends = r-gtfstools
 	depends = jdk11-openjdk
 	depends = r-checkmate
 	depends = r-curl
@@ -36,7 +40,7 @@ pkgbase = r-r5r
 	optdepends = r-knitr
 	optdepends = r-patchwork
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/r5r_1.0.1.tar.gz
-	b2sums = 052f76d4ef0c0ef4a6e3aeeca361715e53dfea0b86394562e9acd7fdc066e442d2b12163d894293e96d1726dec2501259003b6f0be5a9f11690f26db05884460
+	source = https://cran.r-project.org/src/contrib/r5r_2.3.0.tar.gz
+	b2sums = c70edbc7d67c7bc72b099e70d22bf1a9962a0a9f48fa1eae94e476932b74fab8afad1cd328b4df6fa8115276959b0c451f542974ec0a47d3f833b4200ae16392
 
 pkgname = r-r5r
