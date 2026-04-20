@@ -25,7 +25,7 @@ makedepends=(
 options=('!lto' '!debug' '!strip')
 install="${pkgname}.install"
 
-pkgver=0.1 # Placeholder - gets overwritten with pkgver()
+pkgver=0.3.536.r14.g3f9cd61 # Placeholder - gets overwritten with pkgver()
 pkgrel=1
 
 source=("${pkgname}::git+https://github.com/pnn64/deadsync.git")
@@ -54,7 +54,6 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    unset CFLAGS CXXFLAGS
 
     export RUSTFLAGS="${RUSTFLAGS} \
         --remap-path-prefix=${srcdir}=/build/source \
