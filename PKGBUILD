@@ -31,6 +31,7 @@ optdepends=(
 )
 provides=('chatterino')
 conflicts=('chatterino')
+install=$pkgname.install
 
 _pkgsrc="chatterino7"
 source=(

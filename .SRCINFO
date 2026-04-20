@@ -3,6 +3,7 @@ pkgbase = chatterino2-7tv-native-git
 	pkgver = 7.5.3beta1.r101.g28721ab
 	pkgrel = 1
 	url = https://github.com/SevenTV/chatterino7
+	install = chatterino2-7tv-native-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = boost
