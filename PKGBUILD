@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=(
 )
 makedepends=('go>=1.21')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b2ddbe463a90b9bebda937e98dca2c18464690331eb89f64506ee5325389e096')
+sha256sums=('605aeac47a8804a8e9476f4f0dd96509a4d7c2f5f32d3e31513aa840ce95507b')
 # NOTE: config.toml intentionally NOT in backup - must be replaced when switching compositor variants
 backup=('etc/greetd/niri-greeter-config.kdl' 'etc/polkit-1/rules.d/85-greeter.rules')
 install=${pkgname}.install
