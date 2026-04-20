@@ -1,14 +1,15 @@
-# Maintainer: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
+# Maintainer : stickynotememo <samk26633@gmail.com
+# Contributor: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=meta-package-manager-git
 _pkgname=${pkgname%-git}
-pkgver=5.18.0.r31.g9a9b59d8
+pkgver=6.3.0.r46.gd1ac4397
 pkgrel=1
 provides=($_pkgname)
 conflicts=($_pkgname)
 pkgdesc='A wrapper around all package managers (git version)'
 url='https://kdeldycke.github.io/meta-package-manager/'
-makedepends=(uv)
+makedepends=(uv git)
 depends=(python python-boltons python-click-extra python-cyclonedx-lib python-packageurl python-spdx-tools python-tabulate python-tomli-w python-xmltodict)
 checkdepends=(python-pytest python-pytest-cov python-pytest-randomly python-pytest-xdist)
 optdepends=('apt: support for apt packages'

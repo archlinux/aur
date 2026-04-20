@@ -1,6 +1,6 @@
 pkgbase = meta-package-manager-git
 	pkgdesc = A wrapper around all package managers (git version)
-	pkgver = 5.18.0.r31.g9a9b59d8
+	pkgver = 6.3.0.r46.gd1ac4397
 	pkgrel = 1
 	url = https://kdeldycke.github.io/meta-package-manager/
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = meta-package-manager-git
 	checkdepends = python-pytest-randomly
 	checkdepends = python-pytest-xdist
 	makedepends = uv
+	makedepends = git
 	depends = python
 	depends = python-boltons
 	depends = python-click-extra
