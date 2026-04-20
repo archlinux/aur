@@ -1,7 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
-pkgver=2.1.10
+_app_id="com.bktus.$pkgname"
+pkgver=2.1.11
 pkgrel=1
 pkgdesc="An exceptional GUI frontend for the modern GnuPG (gpg)"
 arch=('x86_64')
@@ -20,17 +21,20 @@ makedepends=(
   'cmake'
   'desktop-file-utils'
   'git'
+  'ninja'
+  'python'
   'qt6-tools'
 )
+checkdepends=('appstream')
 source=("git+https://github.com/saturneric/GpgFrontend#tag=v$pkgver"
         'git+https://github.com/qt/qttranslations.git'
-        'git+https://git.bktus.com/GpgFrontend/Modules.git'
-        'git+https://git.bktus.com/GpgFrontend/gpgme.git'
-        'git+https://git.bktus.com/GpgFrontend/libassuan.git'
-        'git+https://git.bktus.com/GpgFrontend/libgpg-error.git'
+        'git+https://git.bktus.com/gpgfrontend/Modules.git'
+        'git+https://git.bktus.com/gpgfrontend/gpgme.git'
+        'git+https://git.bktus.com/gpgfrontend/libassuan.git'
+        'git+https://git.bktus.com/gpgfrontend/libgpg-error.git'
         'git+https://github.com/openssl/openssl.git'
-        'git+https://git.bktus.com/GpgFrontend/vmime.git')
-sha256sums=('5f7a8020d8aff09d4d0f9f809d52032bb2cdfdcd7606e90ba4fd40a42de20ca2'
+        'git+https://git.bktus.com/gpgfrontend/vmime.git')
+sha256sums=('ebb13337cd29220682c66f9a89e453f019dd1a834802f6d990b086bba19917ef'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -61,19 +65,32 @@ prepare() {
 
   # Correct StartupWMClass
   desktop-file-edit --set-key=StartupWMClass --set-value="$pkgname" \
-    resource/appstream/com.bktus.gpgfrontend.desktop
+    "resource/appstream/${_app_id}.desktop"
 }
 
 build() {
-  cmake -B build -S GpgFrontend \
-    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -Wno-dev
+  local cmake_options=(
+    -B build
+    -S GpgFrontend
+    -G Ninja
+    -W no-dev
+    -D CMAKE_BUILD_TYPE='RelWithDebInfo'
+    -D CMAKE_INSTALL_PREFIX='/usr'
+    -D GPGFRONTEND_BUILD_APP_FOR_PACKAGE='ON'
+    -D GPGFRONTEND_BUILD_STRIP_RPATH='ON'
+    -D GPGFRONTEND_USE_SYSTEM_OPENSSL='ON'
+    -D OPENSSL_INCLUDE_DIR='/usr/include/openssl'
+    -D OPENSSL_SSL_LIBRARY='/usr/lib/libssl.so'
+    -D OPENSSL_CRYPTO_LIBRARY='/usr/lib/libcrypto.so'
+  )
+  cmake "${cmake_options[@]}"
   cmake --build build
 }
 
 check() {
-  ctest --test-dir build --output-on-failure
+  cd GpgFrontend
+  appstreamcli validate --no-net "resource/appstream/${_app_id}.metainfo.xml"
+  desktop-file-validate "resource/appstream/${_app_id}.desktop"
 }
 
 package() {
