@@ -1,6 +1,6 @@
 pkgbase = perry-bin
 	pkgdesc = Compiles TypeScript directly to executables using SWC and Cranelift
-	pkgver = 0.5.110
+	pkgver = 0.5.112
 	pkgrel = 1
 	url = https://github.com/PerryTS/perry
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = perry-bin
 	provides = perry
 	conflicts = perry
 	options = !strip
-	source = README-0.5.110.md::https://raw.githubusercontent.com/PerryTS/perry/v0.5.110/README.md
-	source = LICENSE-0.5.110::https://raw.githubusercontent.com/PerryTS/perry/v0.5.110/LICENSE
+	source = README-0.5.112.md::https://raw.githubusercontent.com/PerryTS/perry/v0.5.112/README.md
+	source = LICENSE-0.5.112::https://raw.githubusercontent.com/PerryTS/perry/v0.5.112/LICENSE
 	sha256sums = 84e8d80bf18a3f2cf1ec8641ff16be7ea8b0e641aee9a3ecdcbc2cce88866983
 	sha256sums = c871483477d7105432645affac5be5edbd92b41a6faedb4c692e0681e46ada09
-	source_x86_64 = perry-x86_64-0.5.110.tgz::https://github.com/PerryTS/perry/releases/download/v0.5.110/perry-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 36ab9a10205bd129feb048be0bc42286b6429c82d093b3e9105ce92545c57bdb
-	source_aarch64 = perry-aarch64-0.5.110.tgz::https://github.com/PerryTS/perry/releases/download/v0.5.110/perry-linux-aarch64.tar.gz
-	sha256sums_aarch64 = b9a3ac913a5d834e7a7e53f8a85be91360624e607f091d479b7409aca97ea103
+	source_x86_64 = perry-x86_64-0.5.112.tgz::https://github.com/PerryTS/perry/releases/download/v0.5.112/perry-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 6b33d4cc9aa18e55472c92ff23d860b6bf4b0006d8ef8e03b384970ac3bee15a
+	source_aarch64 = perry-aarch64-0.5.112.tgz::https://github.com/PerryTS/perry/releases/download/v0.5.112/perry-linux-aarch64.tar.gz
+	sha256sums_aarch64 = b32b8aea7f32a128e2efdb8989946f1af582304b3c6617e32cbdb4f2763d7712
 
 pkgname = perry-bin
