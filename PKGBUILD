@@ -4,8 +4,8 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A GTK4 Download Manager wrapping Aria2, Curl, and YT-DLP"
 arch=('any')
-url="https://github.com/C-Yassin/flameget"
-license=('MIT')
+url="https://github.com/C-Yassin/FlameGet"
+license=('MIT' 'LGPL3')
 depends=(
     'python'
     'python-gobject'
@@ -13,11 +13,12 @@ depends=(
     'gtk4'
     'libappindicator-gtk3'
     'aria2'
-    'curl'
+    'python-pycurl'
     'yt-dlp'
     'python-requests'
-    'aria2p'
     'python-waitress'
+    'aria2p'
+    'ffmpeg'
 )
 makedepends=('git')
 
@@ -27,9 +28,7 @@ source=(
     "downloader.py"
     "browser_context_menu_handler.py"
     "Toast.py"
-    "server.py"
     "translations.json"
-    "settings.json"
     "dark_style.css"
     "light_style.css"
     "custom_style.css"
@@ -37,7 +36,8 @@ source=(
     "flameget.desktop"
     "flameget.sh"
     "SaveManager.py"
-    "xsi-application-exit-symbolic.svg"
+    'FireAddOns.py'
+    "build.sh"
     "xsi-view-reveal-symbolic.svg"
     "xsi-x-office-document-symbolic.svg"
     "xsi-view-refresh-symbolic.svg"
@@ -67,53 +67,70 @@ source=(
     "xsi-edit-copy-symbolic.svg"
     "xsi-document-new-symbolic.svg"
     "xsi-dialog-error-symbolic.svg"
+    "xsi-emblem-favorite-symbolic.svg"
+    "xsi-dialog-information-symbolic.svg"
+    "xsi-executable-symbolic.svg"
+    "xsi-github-symbolic.svg"
+    "xsi-sign-info-symbolic.svg"
+    "xsi-text-x-generic-symbolic.svg"
+    "xsi-folder-pictures-symbolic.svg"
+    "xsi-window-close-symbolic.svg"
+    "flameget_about_dialog.png"
 )
 
-sha256sums=('c837746fc7a0b34154855d464801d9d420996a4e952930e69f722090753349df'
-            '633026dbb3782c993c5d3bcb27bc32306f6019c077d049daf2bef8ab1e103a29'
-            '07a7a92338a6debe4c246589d1d0a77dec78d5146a65dc0911a105b07e294b70'
-            '7fcf35b6a8e6f85781a81a747542d3a7df6c4d747fe9d87a3f24b1b128215074'
-            '08a42525fb8aed7680bd22d1816c95890dab2d0bf4b132672c60079e697a2e32'
-            '27108c60e2ef133e986a10f717a8555fc931c5a1a2612dcdc5c3321a74a179e6'
-            '9d14ba08624282396e399602fba056be4459468e5ef0cf1df94b3d19967bbeac'
-            'ffdacd8fae5b5a51d09311086b17a08bb873d2538b9e590beca5fe35d8183b6d'
-            'ff9ad1651a99da834282c38bb2328162d9f45991720823b63599c245cc86a760'
-            'e326ed7358c311131afafa5ea12a686a7a96b06e732062260037b4eca27974af'
-            '31a20b182f1e037fc474f7d7beaae375dea21f02cf605de995ecebe377688bd7'
+sha256sums=('f48b0615e1fdd8e3f28fc56c71fa930bb24f59d754d64fec8be3d5252668d7d6'
+            '0493a516e031eb46449e53e63abffcd57f22dc60dd1d726bc2dd27e037a9faa3'
+            'da64f50fa8fb2faa476b610c1c58285046ec0d256f58aa4fd8de66ecd30c328c'
+            '99cbb9bdd6ceccf75a939f43a0a325dece3ea8e56f0dc03fa4832a2bb7726bd9'
+            'd4ba9a8f986d69f512dbfdbf594f51112b31ce1df16a9e481b70df5107544319'
+            '13bacdaa507383dbac332316d3998884e05e3f6868480529b0ab381b013285ac'
+            'cea7e5f5046ebec31573ff1a9645a6f119cb7f676e1c6bd6187de484df6fe3fc'
+            'f592a9ed655c99198beae352c46e6980b50a2c572ee124b991a56cc9e079a2db'
+            '152c85a349918671498e2515ac24503bed95626da514a70dd64a18d7646d6ca6'
             '760f41ae9df477da38e40446933c4e930af66980fc1ad84f34948852ff71cadf'
-            'e67da42e83ff6c13bf7aef7454acdba702a38732ade20f103c177b8a452d5b77'
+            '801714ce164699baae490aae1abba2c52ac4b4459c196b6dab7e6e1949fcba44'
             'b7589ea018f5c068a7c0eed41bde61fd6b705354dbd4a51d0f989c589068dae0'
-            '62be36b3d538ff1485e0387f4fc3a083e062068928fccfd4780f18d8773d8f9a'
-            'c1a0c1ca2e8f15fea2645466e6aaa6f5eb1a73fd3942dc001d0be4bcab39fd9f'
+            'f6b781f67908e9d02223eb9730995a8cc91393c3f6b0417fb3d98646353a8689'
+            '7085d23fdc10f85e0c00f9624464a1dd2f0b929695b736b07b8e159e7e07d729'
+            'c4d7aea24957d76f67c819721d2c892316b276b5503a75b647f745e59153c600'
             'ec98bf51f293436514a688861fa1074d48ba8e4286efa8f1dae9c3715aeed362'
-            '9f265bc483433503c43910d98938bf9b03de57a054b190aa9e543d800c173cbc'
-            '43281dccb17fe4ef2d2fd459de33debf0fbd9294dac9275c0f047c9fe7d9ae5c'
-            '136411618c7625e771cef9cdfab9c49606ae414d2dacd89bb4b3fe23c757b8b1'
-            'a9fb4acd59659187fc705cc7bae5de6aa074da2d648731778025f5e69840ae95'
-            '287a3f6c2dbdb1d90899680cf843a2b563b2f0025134bc23d99f23cdc1e2137c'
-            '721e2c94656574da2bdd8cef7cce76e45ecaacebbffcaf7e1efc9aae8f536715'
-            '49b07927082c327ab40a22bd901273f4a48f68bd72d463657432217aff23c89b'
-            'fc604231cacbe481c02ede8f92f0b6374debcc0485895d1641dd999c406f676f'
-            'ea8a62c72b83675161a7df27b17888434b832775c21bbe1ac358207eef5a1ca4'
-            'de717251084ed2ee64ae328919a4d75ec13dcc620061c67143dab5bb68f0c9df'
-            '6fc069b21b6b14a524afe7d3892da343eb2ca3fb4ef628a15b93826652ea05c0'
-            '4756cbc2235a2f241696218f438cdc8c24b32f04a913a722c76988088d921625'
-            '405a271977c2af2516e043dbe0422ae03c136ad15e10e431b58d8852e4e111cf'
-            'f065743d82110e80d73f5fb0cd0268c791882013b4ba22d3752ad72cc4dbf170'
-            'cd59f2092360c88a27c919c861da36ff36d86ec53e01a1b4f74d2ee3f19c66b4'
-            'a184b2464e374e4a2cbe1e0ecac98e2cb2cd90bd2a406aef4e55adaf0e1a2adc'
-            '187ea5995032967301e3c2ac03daf4d922a2e6aad436ee67c55f50d591e64751'
-            '0a7c7a0bcdd1e994f48109fabc30c0a32b32e19e7496580484e12f8fe7ade9c6'
-            'd5fbf420bca60ec27f41296e00d517cd66bbbeb3622a89643c70808dfa204c6f'
-            'caa94690a91374c8ccbf97f41d6cdcb08f33f0ad2a5e5e527a46c6e1ec0687c3'
-            '706d76d93ee8c91e0e9623c923eaf08f8d42369873e028a6e7f63e685dbdae10'
-            '30e76c3fc3bd2cd0c20cfc5eefe8078789df9f6072228dcdbc3de18288878c01'
-            '79f266d397263237d48d302213a4a7728690de91648cd3b364a24c5f722cc601'
-            '2f316af0449a986b2193b63083d2b4e083a2dc05f2c50da8b46f2baebb277535'
-            '1c6d419e8398fb61aa76fe2f321b971a90cc9492eb359e50c03f9c0effd8dcc6'
-            '7aa32044a367ce62d42332ac5b3b2517ddc87fbe9798a091f191df6c86481579'
-            '3925f99a0a2ff858b8ecc209e59fbf24625baa739eef9c70721d7ea35481ac81'
-            '9ae9275bada87b8f1328664d6ec93710a9420fb6dbe945b0868b9a42feebe95d')
+            '60d7586fe076ea552b2e5d07490d73f91c23f37ae75fa400f0ba55724e2c1f53'
+            'e87598352bb5863da8eda0768a2093628bbbc5dcc11b3193738f1bd75b6c3c20'
+            'e0628a25fb58251b007c770705d017011cbfa49fdc94c5c029b2cb76de6dc0ac'
+            '1563b60fe9c54cd6e9217a330021e018f9ffb99067c6cd499a82b9bace74eb42'
+            'ee4ee2061d0573ce453497c096660deb06bac970d08a83efc8cbc1320d43fc0f'
+            '22193faf86cdce23d7a736ea646341efbea2177d6131691f899f7502829f65a3'
+            'f5586605c820b0031493f6a165817e0687889be554ae8e33841caf6ea6ef11ec'
+            '422c5db7d1350cc72fea28d6af14127d6db4b1181ffd6d2529093a48816b116d'
+            '85166b932c0b6937a6208b764ca11f6a34a8b04dfb2cfb8be97ace6c0dd1336c'
+            'e7c114e7618a117fd6d5b6bc7b16a01e25f5bc0d34feb1cfd894db913ab8bd83'
+            '35982fb8761cc37bd1ff46e490a908968323ed0a01440992502f4b3e954469b4'
+            '8e1cdf3e67b0a8bf6fb81910217168fe8a784d0b5df67790392c170c4b2fab7c'
+            '1db405b6413844a868fe8cc676ae4f26826a886dc1dbea28e2bc39ac5ee768ee'
+            'f4aa71ca66865afb7de1b96e59e8f56bfc8d97e694d8dae372a9283309de5290'
+            '93ee7fb132733a3240f6cd02b2ad4f654fb98bb98400601b62acfc488412818e'
+            '905c5694ae8eecac0e06053c80756d400faf994411531df0708d2f9cd8918077'
+            '35a74f28cee229942e0dc43ae1925bca898b1218aa6ee8252eaaa1e12476980f'
+            '9b7e63475a838c66c7fa349b707e571a0b6ec2cca410d450537b44f8b216b5ec'
+            'ed9218d1e417001a043c68ddee34ed9616efa2106304b469dfec353697aa4df9'
+            '2e611df9eaa8345b777ed9fe80574a9a9807df4e238b97563a72565334a96a9a'
+            '453c0b8da988f57bf88f0d8a8102f26394736f2b12187a5e2a85024a1bbc1ecc'
+            '700d2957f73e34afb672273580fb388dfd62447c0ddc38b6c6d00496af354de3'
+            '72b5ae511b09b77abba8097d17f19dfaa1dc0edee42a9a8ad862b75e27db532a'
+            '083f98a3ba13e1ee90b4b1fb2df6dabaaa2ca4ff18888a7b2140375e8b7838e4'
+            'dd61f55020ffe203776b1576ea576810878cd697ff18c3d1c82da89957bdbd24'
+            'a38a30f0f8b65dd5835124a700a88271450445969eef85eff5938bb8bdfbe7f1'
+            'ffdf96fa6a84d0bb760a4d38ade9c84b3edf74f679c9bbd62bdfcf3710d06fc8'
+            '8d1fc13fdac323d5a9f0f00a3011e92fa2f56286498f2043f569cf490a20153e'
+            '296cfaaba89a9842d6675a2b11abc4173e42b7b007dd2b9c345eb7bca1ab8306'
+            '508d6a331ce6a1711b6f6c09d8f933ea8266e0b09b43cac93710f44d1849cfbc'
+            'b04c04e7a48ef6fa9445b5cc344e9117d48242ac2280521208ef892972791e84'
+            '241aa2df9d22c82a1e57b37355671cf9a685d0e4322bdd6c259eb1f5b2882800'
+            'e0c3365abd3cef09e0a066ef44091c40609db842e25dd80d4adc7e8618c734ee'
+            'ae2d01e62986ec9b0dd93458adbb2c9b8c7025d19761ab7ff49837b999f0ba38'
+            '67e6005ebeae35bb9e9886330860817a5e8f297eb35c2d9493cff298dc67068e'
+            '8c409bce0493b22a91eaa21d228cfc5ec115f9626d968422171f86c09ec1e239'
+            '6fc5317656f716553e0fc04d6ede5efd9b793684f50cdf62eb89c13dfdd5abdf')
 
 package() {
     install -d "$pkgdir/usr/lib/$pkgname"
@@ -123,27 +140,27 @@ package() {
     install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 
     cd "$srcdir"
-    
+
     for file in *; do
         [ -f "$file" ] || continue
-        
+
         case "$file" in
             xsi-*.svg)
-                install -m644 "$file" "$pkgdir/usr/lib/$pkgname/icons/" 
+                install -m644 "$file" "$pkgdir/usr/lib/$pkgname/icons/"
                 ;;
-                
+
             *.py|*.json|*.css)
                 install -m644 "$file" "$pkgdir/usr/lib/$pkgname/"
                 ;;
-                
+
             flameget.sh)
                 install -m755 "$file" "$pkgdir/usr/bin/flameget"
                 ;;
-                
+
             *.desktop)
                 install -m644 "$file" "$pkgdir/usr/share/applications/"
                 ;;
-                
+
             flameget.svg)
                 install -m644 "$file" "$pkgdir/usr/share/icons/hicolor/scalable/apps/flameget.svg"
                 ;;

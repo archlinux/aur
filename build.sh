@@ -33,7 +33,7 @@ if [[ "$OS" == "arch" || "$OS_LIKE" == *"arch"* ]]; then
     echo "-> Running Arch Linux build process..."
     
     echo "Installing official dependencies..."
-    sudo pacman -S --needed --noconfirm base-devel git python python-gobject gtk4 aria2 python-pycurl yt-dlp python-requests
+    sudo pacman -S --needed --noconfirm base-devel git python python-gobject gtk4 aria2 python-pycurl yt-dlp python-requests python-flask python-waitress
     
     if pacman -Qi $AUR_DEP &> /dev/null; then
         echo "AUR dependency '$AUR_DEP' is already installed."

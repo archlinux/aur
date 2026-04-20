@@ -1,0 +1,8 @@
+PyGObject
+Flask
+pycurl
+yt-dlp
+requests
+waitress
+aria2p
+psutil

@@ -27,23 +27,43 @@ window,
     color: #ffffff;
     padding: 6px;
 }
-
+selection {
+    background-color: @blue;
+    color: white;
+}
+label {
+    color: #ffffff;
+}
 /* ==========================================================================
    BUTTON STYLES
    ========================================================================== */
 /* Main 'Add New Download' Button */
 .add-url-button {
-    color: white; 
+    color: #ffffff; 
     padding: 8px 10px;
     font-weight: bold;
 }
 
 /* Standard Buttons */
+menubutton > button{
+    color: white;
+    background-image: none;
+    background-color: @foreground;
+    border-radius: 6px;
+    border-color: @border-color;
+}
+menubutton > button:hover{
+    background-color: @hover;
+}
+menubutton > button:active{
+    background-color: alpha(@foreground, .5);
+}
 .generic-button{
     background-image: none;
     background-color: @foreground;
     border-radius: 6px;
     border-color: @border-color;
+    color: white;
 }
 .generic-button:hover{
     background-color: @hover;
@@ -57,6 +77,7 @@ window,
     background-image: none;
     background-color: @foreground;
     border: 1px solid @border-color;
+    color: white;
 }
 .no-border-left{
     border-left: 0px solid transparent;
@@ -222,14 +243,15 @@ window,
     background-color: @foreground;
     box-shadow: none;
     border-color: @border-color;
-
+    color: #ffffff;
 }
 .search-bar image {
     margin-right: 5px;
-    color: white;
+    color: #ffffff;
 }
 .search-bar placeholder{
     opacity: .5;
+    color: #ffffff;
 }
 
 /* ==========================================================================
@@ -252,6 +274,7 @@ window,
    ========================================================================== */
 listview {
     background-color: @background;
+    color: white;
 }
 
 /* 1. Base Row State: No Borders */
@@ -374,10 +397,15 @@ columnview row:first-child {
    ========================================================================== */
 progressbar progress {
     background-image: none;
-    background-color: @blue; /* Blue Progress Fill */
+    border-color: @blue;
+    background-color: alpha(@blue, .5);
     border-radius: 4px;
 }
-
+progressbar trough{
+    background-image: none;
+    background-color: transparent;
+    border-color: @blue;
+}
 /* Height of the progress bar row */
 progressbar trough,
 progress {
@@ -391,15 +419,29 @@ progress {
     padding: 6px;
     background-color: @background;
     border-top: 2px solid @border-color;
+    color: white;
 }
 
 .footer label {
     opacity: 0.85;
     font-size: 13px;
+    color: white;
+}
+checkbutton{
+    background-image: none;
+}
+checkbutton check{
+    background-image: none;
 }
 checkbutton check:disabled {
     background-image: none;
-    background-color: @foreground; 
+    background-color: @background; 
+}
+checkbutton label:disabled{
+    color: #6b7280;
+}
+checkbutton:hover check {
+    background-color: alpha(@blue, .1);    
 }
 /* ==========================================================================
    DROPDOWN MENUS (Buttons with arrows)
@@ -409,6 +451,7 @@ dropdown > button {
     background-image: none;
     border-radius: 4px;
     min-height: 32px;
+    color: white;
 }
 
 dropdown > button:hover {
@@ -439,6 +482,7 @@ dropdown > popover.menu {
 dropdown > popover.menu listview {
     background-image: none;
     background-color: @background;
+    color: white;
 }
 
 /* Individual Menu Items */
@@ -446,6 +490,7 @@ dropdown > popover.menu listview row {
     background-color: @background;
     background-image: none;
     padding: 12px;
+    color: white;
 }
 
 dropdown > popover.menu listview row:selected {
@@ -455,6 +500,7 @@ dropdown > popover.menu listview row:selected {
 dropdown > popover.menu listview row:hover {
     background-color: @foreground;
     font-weight: bold;
+    color: white;
 }
 
 
@@ -470,12 +516,15 @@ popover.menu > contents {
     background-image: none;
     background-color: @background;
     border: 2px solid @border-color;
+    color: white;
 }
 popover.menu {
    background-image: none;
    background-color: transparent;
 }
-
+popover.menu modelbutton {
+    color: white;
+}
 popover.menu modelbutton:hover {
     background-color: @foreground;
 }
@@ -552,6 +601,7 @@ popover > contents {
     background-image: none;
     background-color: @blue;
     border-color: @blue;
+    color: white;
 }
 .blue-btn:hover{
     background-color: alpha(@blue, .8);
@@ -647,9 +697,12 @@ scale slider {
 .segment-line{
     border-left: 1px solid #4CAF50;
 }
-
 .shake {
   border: 1px solid @red;
+}
+.settings-label{
+    font-size: large;
+    font-weight: 800;
 }
 .size-label{
   transition: opacity 2000ms ease;
@@ -674,7 +727,7 @@ scale slider {
 }
 
 /* Container for the buttons */
-stackswitcher {
+stackswitcher.downloader {
     background-color: @border-color;
     background-image: none;
     padding: 0;
@@ -684,22 +737,24 @@ stackswitcher {
 }
 
 /* 1. INACTIVE TABS (The default look of unselected buttons) */
-stackswitcher button {
+stackswitcher.downloader button {
     border-radius: 0px;
     border-color: transparent;
     background-color: @foreground;
-    margin-top: -8px;
+    margin-right: -5px;
+    margin-left: -5px;
+    margin-top: -6px;
     background-image: none;
 }
 
 /* 2. HOVER STATE (When mouse is over a tab) */
-stackswitcher button:hover {
+stackswitcher.downloader button:hover {
     background-color: @hover;
     color: white;
 }
 
 /* 3. ACTIVE TAB (The currently selected page) */
-stackswitcher button:checked {
+stackswitcher.downloader button:checked {
     background-color: @background;
     color: @blue;
     font-weight: bold;
@@ -757,13 +812,16 @@ stackswitcher button:checked {
 .tracker-item:hover{
     background-color: @foreground;
 }
+
 .del-tracker-item{
-    margin-left: 10px;
+    min-width: 1px;
+    min-height: 1px;
     border-radius: 3px;
-    padding: .1px;
+    color: white;
     background-image: none;
     background-color: @red;
     border: 1px solid @red;
+    padding: 0px;
 }
 .del-tracker-item:hover{
     background-color: alpha(@red, .8);
@@ -779,6 +837,7 @@ stackswitcher button:checked {
     background-color: @foreground;
     margin-bottom: 5px;
     border-radius: 6px;
+    color: white;
 }
 .add-new-tracker-button:hover{
     background-color: @hover;
@@ -791,4 +850,129 @@ stackswitcher button:checked {
 }
 dropdown.dropmenu-rtl > popover{
     margin-right: -7px;
+}
+
+/* About section */
+popover.about-menu > contents {
+    padding: 6px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.4);
+    border: 1px solid @border-color;
+    background-color: @background;
+}
+popover.about-menu arrow {
+    border: 1px solid @border-color;
+    background-color: @background;
+}
+popover.about-menu {
+    background-image: none;
+    background-color: transparent;
+}
+.report-bug-btn image {
+    color: white;
+}
+.donate-btn image {
+    color: @red;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%   { transform: scale(1.1); }
+    14%  { transform: scale(1.3); }
+    28%  { transform: scale(1.1); }
+    42%  { transform: scale(1.3); }
+    70%  { transform: scale(1.1); }
+    100% { transform: scale(1.1); }
+}
+.donate-btn label {
+    font-weight: bold;
+}
+.about-helper stackswitcher button {
+    background-image: none;
+    background-color: @foreground;
+    border-color: @border-color;
+}
+
+.about-helper stackswitcher button:hover {
+    background-color: @hover;
+}
+
+.about-helper stackswitcher button:active {
+    background-color: alpha(@foreground, .5);
+}
+
+.about-helper stackswitcher button:checked {
+    background-color: @blue; 
+    color: #ffffff;
+}
+
+.about-helper stackswitcher button:checked:hover {
+    background-color: alpha(@blue, .8);
+}
+aboutdialog{
+    background-image: none;
+    background-color: @background;
+} 
+.about-helper headerbar {
+    background-image: none;
+    background-color: @foreground;
+    box-shadow: none;
+    border: none;
+}
+/* for windows */
+headerbar {
+    background-image: none; 
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+}
+windowcontrols button {
+    color: #ffffff; 
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 4px;
+}
+windowcontrols button.close {
+    background-image: none;
+    background-color: transparent;
+}
+window.about-helper scrolledwindow textview,
+window.about-helper scrolledwindow viewport {
+    background-image: none;
+    background-color: @background;
+}
+.dialog-vbox .dialog-action-area .text-button {
+    background-image: none;
+    margin: 5px;
+    background-color: @blue; 
+}
+.dialog-vbox .dialog-action-area .text-button {
+    background-color: alpha(@blue, .9);
+    border: 1px solid @blue;
+    color: white;
+}
+.dialog-vbox .dialog-action-area .text-button:hover {
+    background-color: alpha(@blue, .8);
+}
+.dialog-vbox .dialog-action-area .text-button:active {
+    background-color: alpha(@blue, .5);
+}
+
+.dialog-vbox .dialog-action-area .text-button:not(.suggested-action) {
+    background-color: alpha(@red, .9);
+    border: 1px solid @red;
+    color: white;
+}
+.dialog-vbox .dialog-action-area .text-button:not(.suggested-action):hover {
+    background-color: alpha(@red, .8);
+}
+.dialog-vbox .dialog-action-area .text-button:not(.suggested-action):active {
+    background-color: alpha(@red, .5);
+}
+fontchooser stack grid stack grid entry{
+    background-image: none;
+    color: white;
+    background-color: @foreground;
 }

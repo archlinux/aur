@@ -1,151 +1,34 @@
 #!/usr/bin/env python3
-
 import sys, os
-import sqlite3
-import re, time
-import json, errno, importlib
-import gi, signal, subprocess, shutil
-import socket, threading, tempfile
-import Toast as toast
-import SaveManager
-from urllib.parse import urlparse, unquote, parse_qs
+from multiprocessing import freeze_support
+if __name__ == '__main__':
+    freeze_support() 
+    worker_type = os.environ.get("FLAMEGET_WORKER")
+    if "downloader" == worker_type:
+        import downloader
+        downloader.main()
+        sys.exit(0)
+    elif "browser" == worker_type:
+        import browser_context_menu_handler
+        browser_context_menu_handler.main()
+        sys.exit(0)
+
+import gi, signal, subprocess, shutil, time, json, re, socket, threading, tempfile
 gi.require_version('Gtk', '4.0')
 from gi.repository import Gtk, Gio, GObject, Gdk, GLib, Graphene, Pango
-def lazy_import(name):
-    spec = importlib.util.find_spec(name)
-    loader = importlib.util.LazyLoader(spec.loader)
-    spec.loader = loader
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[name] = module
-    loader.exec_module(module)
-    return module
 
-yt_dlp = lazy_import("yt_dlp")
+import Toast as toast
+import FireAddOns as addOn
+import SaveManager
+yt_dlp = addOn.lazy_import("yt_dlp")
+requests = addOn.lazy_import("requests")
 
-runtime_dir = os.environ.get("XDG_RUNTIME_DIR", "/tmp")
-SOCKET_PATH = os.path.join(runtime_dir, "flameget_dm_tray.sock")
-SIZE_RE = re.compile(r"/([0-9.]+)([KMG]i?)B", re.I)
-MULT = {
-    "b": 1, "byte": 1, "bytes": 1,
+WINDOWS_PORT = 18597
+WINDOWS_TRAY_PORT = 18598
+SOCKET_PATH = os.path.join(addOn.UNITS.RUNTIME_DIR, "flameget_dm_tray.sock")
+HAS_SIGUSR1 = hasattr(signal, "SIGUSR1")
 
-    "k": 1000, "kb": 1000, 
-    "ki": 1024, "kib": 1024,
-
-    "m": 1000**2, "mb": 1000**2, 
-    "mi": 1024**2, "mib": 1024**2,
-
-    "g": 1000**3, "gb": 1000**3, 
-    "gi": 1024**3, "gib": 1024**3,
-
-    "t": 1000**4, "tb": 1000**4, 
-    "ti": 1024**4, "tib": 1024**4,
-
-    # WHO THE FUCK HAS THIS AMOUNT OF DATA DAYUUM
-    "p": 1000**5, "pb": 1000**5, 
-    "pi": 1024**5, "pib": 1024**5,
-}
-COMPRESSED = {
-    ".zip", ".rar", ".7z", ".tar", ".gz", ".bz2", ".xz",
-    ".tgz", ".tbz2", ".txz", ".zst", ".iso"
-}
-PROGRAMS = {
-    ".exe", ".msi", ".apk", ".appimage", ".deb", ".rpm",
-    ".run", ".bin", ".sh"
-}
-VIDEOS = {
-    ".mp4", ".mkv", ".avi", ".mov", ".wmv", ".flv",
-    ".webm", ".mpeg", ".mpg", ".m4v"
-}
-MUSIC = {
-    ".mp3", ".flac", ".wav", ".ogg", ".aac", ".m4a",
-    ".opus", ".wma"
-}
-PICTURES = {
-    ".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp",
-    ".tiff", ".svg", ".avif"
-}
-DOCUMENTS = {
-    ".pdf", ".doc", ".docx", ".odt", ".rtf", ".txt",
-    ".md", ".ppt", ".pptx", ".xls", ".xlsx", ".ods",
-    ".csv", ".epub"
-}
-SUPPORTED_SITES = {
-    "youtube.com", "youtu.be",
-    "twitch.tv", "tiktok.com",
-    "instagram.com", "facebook.com", "fb.watch",
-    "twitter.com", "x.com",
-    "vimeo.com", "dailymotion.com",
-    "soundcloud.com", "mixcloud.com",
-    "reddit.com", "pinterest.com",
-    "bilibili.com", "vk.com", 
-    "odysee.com", "rumble.com",
-    "streamable.com"
-}
-
-class DownloadDatabase:
-    def __init__(self, db_name="downloads.db"):
-        self.conn = sqlite3.connect(db_name, check_same_thread=False)
-        self.conn.row_factory = sqlite3.Row
-        self.conn.execute("PRAGMA journal_mode=WAL;")
-        self.conn.execute("PRAGMA synchronous=NORMAL;")
-        self.create_table()
-
-    def clean_startup(self):
-        try:
-            cursor = self.conn.cursor()
-            
-            cursor.execute("""
-                UPDATE downloads 
-                SET status = 'Stopped'
-                WHERE status IN ('downloading', 'Paused', 'Verifying Checksum')
-            """)
-            
-            cursor.execute("""
-                UPDATE downloads 
-                SET status = 'Finished'
-                WHERE status = 'Seeding'
-            """)
-            
-            self.conn.commit()
-            print("Cleaned up interrupted downloads and seeds.")
-        except Exception as e:
-            print(f"Startup cleanup failed: {e}")
-
-    def create_table(self):
-        cursor = self.conn.cursor()
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS downloads (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                filename TEXT,
-                size TEXT,
-                status TEXT,
-                progress INTEGER,
-                speed TEXT,
-                time_left TEXT,
-                date_added TEXT,
-                category TEXT,
-                file_directory TEXT,
-                url TEXT,
-                pid INTEGER,
-                file_size_bytes INTEGER,
-                segments INT,
-                is_audio BOOL,
-                quality_mod TEXT,
-                download_playlist BOOL,
-                scheduled_time REAL DEFAULT 0,
-                finished_downloading BOOL DEFAULT False
-            )
-        ''')
-        cursor.execute('SELECT count(*) FROM downloads')
-        self.conn.commit()
-
-    def get_downloads(self, category="All"):
-        cursor = self.conn.cursor()
-        if category == "All":
-            cursor.execute('SELECT * FROM downloads')
-        else:
-            cursor.execute('SELECT * FROM downloads WHERE category = ?', (category,))
-        return cursor.fetchall()
+os.environ['GTK_CSD'] = '0'
 
 class TorrentNode(GObject.Object):
     __gtype_name__ = 'TorrentNode'
@@ -312,9 +195,10 @@ class DownloadItem(GObject.Object):
 
 class FlameGetManager(Gtk.Application):
     def __init__(self):
-        super().__init__(application_id='com.flameget.manager', flags=Gio.ApplicationFlags.FLAGS_NONE)
+        super().__init__(application_id='io.github.C_Yassin.FlameGet', flags=Gio.ApplicationFlags.FLAGS_NONE)
         GLib.set_prgname('FlameGet')
         GLib.set_application_name('FlameGet')
+        self.app_name = "FlameGet Download Manager"
         self.select_all_btn = []
         self.all_selected = False
         self.has_settedup_events = False
@@ -330,50 +214,22 @@ class FlameGetManager(Gtk.Application):
         self.view_registry = {}
         self.torrent_files_data = []
         self.is_programmatic_sort = False
+        self.start_minimized = False
 
         self.add_url_dialog = None
         self.can_delete_dialog = None
+        self.is_flatpak_env = 'FLATPAK_ID' in os.environ or os.path.exists('/.flatpak-info')
 
-        self.config_dir = os.path.join(GLib.get_user_config_dir(), "flameget")
-        os.makedirs(self.config_dir, exist_ok=True)
-        
-        self.data_dir = os.path.join(GLib.get_user_data_dir(), "flameget")
-        os.makedirs(self.data_dir, exist_ok=True)
-
-        self.db_file = os.path.join(self.data_dir, "downloads.db")
-        self.db = DownloadDatabase(db_name=self.db_file)
+        fire_files = addOn.FireFiles
+        self.db = fire_files.db
         self.db.clean_startup()
-        
-        self.install_dir = os.path.dirname(os.path.abspath(__file__))
-        self.downloader_script_path = os.path.join(self.install_dir, "downloader.py")
-        self.browser_context_menu_handler_script_path = os.path.join(self.install_dir, "browser_context_menu_handler.py")
+        self.install_dir = fire_files.install_dir
+        self.downloader_script_path = fire_files.downloader_script_path
+        self.browser_context_menu_handler_script_path = fire_files.browser_context_menu_handler_script_path
 
-        self.tray_script_path = os.path.join(self.install_dir, "tray.py")
-        display = Gdk.Display.get_default()
-        icon_theme = Gtk.IconTheme.get_for_display(display)
+        self.tray_script_path = fire_files.tray_script_path
+        self.server_script_path = fire_files.server_script_path
         
-        icons_dir = os.path.join(self.install_dir, "icons") 
-        if os.path.exists(icons_dir):
-            icon_theme.add_search_path(icons_dir)
-        else:
-            print(f"Warning: Icon folder not found at {icons_dir}")
-        editable_files = ["translations.json","dark_style.css", "light_style.css", "custom_style.css"]
-        
-        for filename in editable_files:
-            user_path = os.path.join(self.config_dir, filename)
-            system_path = os.path.join(self.install_dir, filename)
-            
-            if not os.path.exists(user_path):
-                if os.path.exists(system_path):
-                    try:
-                        shutil.copy2(system_path, user_path)
-                        print(f"Copied default {filename} to user config.")
-                    except Exception as e:
-                        print(f"Failed to copy {filename}: {e}")
-                else:
-                    open(user_path, 'a').close()
-                    print(f"making empty one {filename}")
-
         self.download_folder = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DOWNLOAD)
         self.translations = SaveManager.load_translations()
         self.prev_statuses = {} 
@@ -384,7 +240,7 @@ class FlameGetManager(Gtk.Application):
         self.server_running = False
 
         self.app_settings = SaveManager.load_settings(self.download_folder)
-
+        self.download_engine = self.app_settings.get("engine").lower()
         saved_dir = self.app_settings.get("default_download_dir")
         if saved_dir and os.path.exists(saved_dir):
             self.download_folder = saved_dir
@@ -404,9 +260,9 @@ class FlameGetManager(Gtk.Application):
         return text
 
     def do_activate(self):
-        self.window = Gtk.ApplicationWindow(application=self, title="FlameGet Download Manager")
+        self.window = Gtk.ApplicationWindow(application=self, title=self.app_name)
         self.window.set_default_size(1200, 700)
-        self.window.set_icon_name("flameget")
+        self.window.set_icon_name("io.github.C_Yassin.FlameGet" if self.is_flatpak_env else "flameget")
 
         drop_target = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY)
         drop_target.connect("enter", self.on_drag_enter)
@@ -418,15 +274,10 @@ class FlameGetManager(Gtk.Application):
         key_controller.connect("key-pressed", self.on_window_key_pressed)
         self.window.add_controller(key_controller)
 
-        self.start_server()
-        self.start_tray_subprocess()
         self.window.connect("close-request", self.on_window_close_request)
 
         self.apply_theme_and_font()
         self.toggle_autostart(self.app_settings.get("start_on_boot", False))
-        
-        if self.app_settings.get("browser_port"):
-            print(f"Browser integration listening on port {self.app_settings['browser_port']} (Placeholder)")
         
         root_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
 
@@ -490,6 +341,7 @@ class FlameGetManager(Gtk.Application):
         sidebar_frame.set_size_request(200, -1)
         if self.app_settings.get("language") == "ar":
             sidebar_frame.add_css_class("arabic-sidebar-bg")
+            self.is_rtl = True
         else:
             sidebar_frame.add_css_class("sidebar-bg")
         
@@ -560,10 +412,23 @@ class FlameGetManager(Gtk.Application):
         sidebar_frame.append(self.listbox_status)
 
         self.listbox_main.select_row(first_row)
-        self.window.present()
+        
+        if self.start_minimized:
+            self.window.set_visible(True)
+            addOn.set_titlebar_theme(self.app_name, self.app_settings.get("theme_mode"))
+            self.window.set_visible(False)
+        else:
+            self.window.present()
+        
+        self.check_and_install_ffmpeg(self.window, self.install_dir)
         self.apply_cursor_recursive(self.window, "pointer")
+        
         GLib.idle_add(self.update_stats_labels)
         GLib.timeout_add(200, self.on_global_tick)
+        
+        self.start_server()
+        self.start_tray_subprocess()
+
         if len(sys.argv) > 1:
             arg = sys.argv[1]
             if arg.startswith("magnet:?") or arg.endswith(".torrent"):
@@ -638,6 +503,7 @@ class FlameGetManager(Gtk.Application):
             
         btn.connect("clicked", on_click)
         btn.add_css_class("context-btn")
+        btn.lbl.add_css_class("context-btn")
         btn.add_css_class("generic-button")
         self.context_menu_btns.append(btn)
         self.context_menu_box.append(btn)
@@ -734,7 +600,7 @@ class FlameGetManager(Gtk.Application):
 
             cursor.execute("DELETE FROM downloads WHERE id = ?", (item.id,))
             pid = int(item.pid)
-            if pid > 0 and self.is_pid_alive(pid):
+            if pid > 0 and addOn.is_pid_alive(pid):
                 os.kill(item.pid, signal.SIGTERM)
                 
             if self.is_yt_dlp(item.url):
@@ -783,11 +649,24 @@ class FlameGetManager(Gtk.Application):
                     except: pass
 
         self.db.conn.commit() 
-
+        # if "__compiled__" in globals():
+        #     exe_c = [self.downloader_script_path]
+        # else:
+        #     exe_c = [sys.executable, self.downloader_script_path]
+        
+        worker_env = os.environ.copy()
+        worker_env["PYINSTALLER_RESET_ENVIRONMENT"] = "1"
+        worker_env["FLAMEGET_WORKER"] = "downloader"
+        
+        executable_path = sys.executable 
+        
+        is_compiled = getattr(sys, 'frozen', False)
+        args = [executable_path]
+        if not is_compiled:
+            args.append(os.path.abspath(self.downloader_script_path))
         for _, data in redo_list:
             cmd = [
-                sys.executable, 
-                self.downloader_script_path,
+                *args,
                 data["url"],
                 data["filename"],
                 str(data["file_size"]),
@@ -806,7 +685,7 @@ class FlameGetManager(Gtk.Application):
             if data["quality"]:
                 cmd.extend(["--quality", data["quality"]])
 
-            subprocess.Popen(cmd)
+            subprocess.Popen(cmd, env=worker_env)
 
     def find_active_part_yt_dlp(self, filename, directory):
         clean_name = os.path.basename(filename)
@@ -853,6 +732,9 @@ class FlameGetManager(Gtk.Application):
         self.btn_resume.set_sensitive(False)
         self.btn_pause.set_sensitive(False)
         self.btn_stop.set_sensitive(False)
+        self.btn_resume.set_direction(Gtk.TextDirection.LTR)
+        self.btn_stop.set_direction(Gtk.TextDirection.LTR)
+        self.btn_pause.set_direction(Gtk.TextDirection.LTR)
 
         box_controls.append(self.btn_resume)
         box_controls.append(self.btn_pause)
@@ -865,7 +747,9 @@ class FlameGetManager(Gtk.Application):
 
         self.btn_delete = Gtk.Button(icon_name="xsi-user-trash-symbolic")
         self.btn_folder = Gtk.Button(icon_name="xsi-folder-symbolic")
-        
+        self.btn_folder.set_direction(Gtk.TextDirection.LTR)
+        self.btn_delete.set_direction(Gtk.TextDirection.LTR)
+
         self.btn_delete.add_css_class("connected-button")
         self.btn_delete.add_css_class("btn_cancel")
         self.btn_delete.add_css_class("delete-connected-btn")
@@ -884,8 +768,10 @@ class FlameGetManager(Gtk.Application):
         self.btn_select_all.add_css_class("connected-button")
         self.btn_select_all.add_css_class("no-border-right")
         self.btn_select_all.set_tooltip_text(self.tr("Select All"))
+        self.btn_select_all.set_direction(Gtk.TextDirection.LTR)
 
         self.copy_url_btn = Gtk.Button(icon_name="xsi-edit-copy-symbolic")
+        self.copy_url_btn.set_direction(Gtk.TextDirection.LTR)
         self.copy_url_btn.add_css_class("connected-button")
         self.copy_url_btn.set_sensitive(False)
         self.copy_url_btn.set_tooltip_text(self.tr("Copy URL"))
@@ -916,6 +802,49 @@ class FlameGetManager(Gtk.Application):
 
         btn_settings.connect("clicked", self.open_settings_window)
         toolbar_box.append(btn_settings)
+        btn_help = Gtk.MenuButton(icon_name="xsi-sign-info-symbolic")
+        btn_help.add_css_class("generic-button")
+        btn_help.set_tooltip_text(self.tr("Help & About"))
+
+        help_popover = Gtk.Popover()
+        help_popover.add_css_class("about-menu")
+        help_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+        help_box.set_margin_top(5)
+        help_box.set_margin_bottom(5)
+        help_box.set_margin_start(5)
+        help_box.set_margin_end(5)
+
+        def add_help_item(label, icon_name, callback):
+            btn = Gtk.Button()
+            if label == "Donate":
+                btn.add_css_class("donate-btn")
+            btn.add_css_class("generic-button")
+            box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+            box.append(Gtk.Image.new_from_icon_name(icon_name))
+            box.append(Gtk.Label(label=self.tr(label), xalign=0))
+            btn.set_child(box)
+            
+            def on_click(b):
+                help_popover.popdown()
+                callback()
+                
+            btn.connect("clicked", on_click)
+            help_box.append(btn)
+
+        add_help_item("About FlameGet", "xsi-dialog-information-symbolic", self.show_about_dialog)
+        
+        sep = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
+        sep.add_css_class("separator")
+        sep.set_margin_top(4); sep.set_margin_bottom(4)
+        help_box.append(sep)
+        
+        # change later
+        add_help_item("Report a Bug", "xsi-github-symbolic", lambda: self.open_url("https://github.com/C-Yassin/flameget/issues"))
+        add_help_item("Donate", "xsi-emblem-favorite-symbolic", lambda: self.open_url("https://github.com/C-Yassin/flameget"))
+
+        help_popover.set_child(help_box)
+        btn_help.set_popover(help_popover)
+        toolbar_box.append(btn_help)
         return toolbar_box
 
     def open_settings_window(self, btn):
@@ -924,7 +853,7 @@ class FlameGetManager(Gtk.Application):
         dialog.set_modal(True)
         dialog.set_default_size(800, 600)
         dialog.set_resizable(False)
-
+        
         self._listening_btn = None
         self._listening_controller = None
         self._listening_action = None
@@ -1133,13 +1062,14 @@ class FlameGetManager(Gtk.Application):
         gen_box.append(chk_boot)
 
         auto_start = Gtk.CheckButton(label=self.tr("Start Download Immediately"))
-        auto_start.set_tooltip_text(self.tr("If checked, the download will begin instantly when added, skipping the 'Download' button."))
+        auto_start.set_tooltip_text(self.tr("If checked, the downloads will begin instantly when added, skipping the 'Download' button."))
         auto_start.set_active(self.app_settings.get("auto_start", False))
         auto_start.connect("toggled", lambda b: self.app_settings.update({"auto_start": b.get_active()}) or SaveManager.save_settings(self.app_settings))
         gen_box.append(auto_start)
 
         start_minimized = Gtk.CheckButton(label=self.tr("Start in Minimized Mode"))
-        start_minimized.set_tooltip_text(self.tr("If checked, The Download Will Begin in The Background."))
+        start_minimized.set_sensitive(not self.is_flatpak_env)
+        start_minimized.set_tooltip_text(self.tr("If checked, The downloads will begin in the background."))
         start_minimized.set_active(self.app_settings.get("start_in_minimize_mode", False))
         start_minimized.connect("toggled", lambda b: self.app_settings.update({"start_in_minimize_mode": b.get_active()}) or SaveManager.save_settings(self.app_settings))
         gen_box.append(start_minimized)
@@ -1156,6 +1086,7 @@ class FlameGetManager(Gtk.Application):
         dd_eng.set_selected(1 if curr_eng == "Curl" else 0)
         def on_eng_change(dd, p):
             self.app_settings["engine"] = "Curl" if dd.get_selected() == 1 else "Aria2"
+            self.download_engine = self.app_settings["engine"].lower()
             SaveManager.save_settings(self.app_settings)
         dd_eng.connect("notify::selected", on_eng_change)
         net_box.append(dd_eng)
@@ -1198,6 +1129,7 @@ class FlameGetManager(Gtk.Application):
             new_theme = theme_map[dd.get_selected()]
             self.app_settings["theme_mode"] = new_theme
             SaveManager.save_settings(self.app_settings)
+            addOn.set_titlebar_theme(dialog.get_title(), self.app_settings.get("theme_mode"))
             self.apply_theme_and_font()
             if hasattr(self, "css_editor_box"):
                 is_visible = new_theme == "Custom"
@@ -1229,14 +1161,34 @@ class FlameGetManager(Gtk.Application):
         chk_has_borders.connect("toggled", lambda b: self.app_settings.update({"chk_has_borders": b.get_active()}) or SaveManager.save_settings(self.app_settings))
         app_box.append(chk_has_borders)
 
+        label_cells_size = Gtk.Label(label=self.tr("Row size (px):"))
+        cells_size_box = Gtk.Box(spacing=10); offset_box.set_hexpand(True)
+        cells_size = Gtk.Entry()
+        cells_size.set_hexpand(True)
+        cells_size.set_text(f"{self.app_settings.get("cells_size", 1)}")
+        cells_size.add_css_class("entry")
+        cells_size.set_placeholder_text(self.tr("Set the size of your rows in pixels"))
+        cells_size.connect("changed", lambda b: self.app_settings.update({"cells_size": b.get_text()}) or SaveManager.save_settings(self.app_settings))
+        cells_size_box.append(label_cells_size)
+        cells_size_box.append(cells_size)
+        app_box.append(cells_size_box)
+
         app_box.append(self.create_settings_label("Application Font"))
-        font_btn = Gtk.FontButton()
-        if self.app_settings.get("font_name"): font_btn.set_font(self.app_settings.get("font_name"))
-        def on_font_set(btn):
-            self.app_settings["font_name"] = btn.get_font()
+        font_dialog = Gtk.FontDialog()
+
+        font_btn = Gtk.FontDialogButton(dialog=font_dialog)
+        saved_font_name = self.app_settings.get("font_name")
+        if saved_font_name:
+            font_desc = Pango.FontDescription.from_string(saved_font_name)
+            font_btn.set_font_desc(font_desc)
+        def on_font_changed(button, param_spec):
+            new_font_desc = button.get_font_desc()
+            new_font_string = new_font_desc.to_string()
+            self.app_settings["font_name"] = new_font_string
             SaveManager.save_settings(self.app_settings)
             self.apply_theme_and_font()
-        font_btn.connect("font-set", on_font_set)
+
+        font_btn.connect("notify::font-desc", on_font_changed)
         app_box.append(font_btn)
 
         app_box.append(self.create_settings_label("UI Scale (%)"))
@@ -1280,6 +1232,7 @@ class FlameGetManager(Gtk.Application):
                     css_entry.set_text(path)
                     with open(path, 'r') as fr: txt_view.get_buffer().set_text(fr.read())
                     SaveManager.load_css(self.app_settings.get("theme_mode"))
+                    addOn.set_titlebar_theme(self.app_name, self.app_settings.get("theme_mode"))
                 except: pass
             fd.open(dialog, None, on_c_open)
         btn_css.connect("clicked", on_css_pick)
@@ -1294,6 +1247,7 @@ class FlameGetManager(Gtk.Application):
             try:
                 with open(p, 'w') as f: f.write(txt)
                 SaveManager.load_css(self.app_settings.get("theme_mode"))
+                addOn.set_titlebar_theme(self.app_name, self.app_settings.get("theme_mode"))
             except: pass
         btn_save_css.connect("clicked", on_save_css)
         self.css_editor_box.append(btn_save_css)
@@ -1305,7 +1259,7 @@ class FlameGetManager(Gtk.Application):
 
         brower_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
         brower_box.set_margin_top(20); brower_box.set_margin_bottom(20); brower_box.set_margin_start(20); brower_box.set_margin_end(20)
-        url = "change later"
+        url = "https://github.com/C-Yassin/FlameGet"
         brower_box.append(self.create_settings_label("for browser integration", markup=f"{self.tr("Browser Integration (Don't have it?)")} <a href='{url}'>{self.tr("click here")}</a>!"))
         enable_integration = Gtk.CheckButton(label=self.tr("Enable Browser Integration"))
         enable_integration.set_active(self.app_settings["enable_integration"])
@@ -1314,7 +1268,7 @@ class FlameGetManager(Gtk.Application):
 
         brower_box.append(self.create_settings_label("Browser Integration Port"))
         port_entry = Gtk.Entry(); port_entry.add_css_class("entry")
-        port_entry.set_text(str(self.app_settings.get("browser_port", "6800")))
+        port_entry.set_text(str(self.app_settings.get("browser_port", 6812)))
         port_entry.connect("changed", lambda e: self.app_settings.update({"browser_port": e.get_text()}) or SaveManager.save_settings(self.app_settings))
         brower_box.append(port_entry)
         stack.add_named(brower_box, "Browser")
@@ -1400,11 +1354,14 @@ class FlameGetManager(Gtk.Application):
 
         dialog.set_child(main_box)
         dialog.present()
+        addOn.set_titlebar_theme(dialog.get_title(), self.app_settings.get("theme_mode"))
         self.apply_cursor_recursive(dialog, "pointer")
         
     def create_settings_label(self, text, markup=""):
-        lbl = Gtk.Label(label=self.tr(text), xalign=0)
-        lbl.add_css_class("heading")
+        lbl = Gtk.Label(label=self.tr(text))
+        lbl.set_halign(Gtk.Align.START) 
+        lbl.set_valign(Gtk.Align.CENTER)
+        lbl.add_css_class("settings-label")
         if markup != "":
             lbl.set_markup(markup)
         return lbl
@@ -1418,7 +1375,7 @@ class FlameGetManager(Gtk.Application):
             
         mode = self.app_settings.get("theme_mode", "Dark")
         SaveManager.load_css(mode)
-
+        GLib.idle_add(addOn.set_titlebar_theme, self.app_name, self.app_settings.get("theme_mode"))
         display = Gdk.Display.get_default()
 
         if hasattr(self, 'font_provider') and self.font_provider:
@@ -1528,6 +1485,8 @@ class FlameGetManager(Gtk.Application):
 
     def add_url_button(self, btn, is_torrent_ready=None):
         self.add_url_dialog = Gtk.Dialog(title=self.tr("New Download"), transient_for=self.window, modal=True)
+        GLib.idle_add(addOn.set_titlebar_theme, self.add_url_dialog.get_title(), self.app_settings.get("theme_mode"))
+
         key_controller = Gtk.EventControllerKey()
         key_controller.connect("key-pressed", self.on_window_key_pressed, self.add_url_dialog)
         self.add_url_dialog.connect("close-request", lambda x: setattr(self, 'add_url_dialog', None))
@@ -2111,6 +2070,7 @@ class FlameGetManager(Gtk.Application):
         If is_torrent_ready (which is a silly name for a torrent file but uhh it does the jobe done) is provided, it uses that file.
         Otherwise, it attempts to download metadata from the magnet link first.
         """
+        from urllib.parse import urlparse, parse_qs
         self.trackers_store.remove_all()
         self.torrent_files_data = []
 
@@ -2126,6 +2086,7 @@ class FlameGetManager(Gtk.Application):
 
         try:
             torrent_path = is_torrent_ready
+            print("is_torrent_ready", torrent_path)
             if torrent_path is None:
                 torrent_path = self._download_magnet_metadata(url)
                 if not torrent_path:
@@ -2147,11 +2108,9 @@ class FlameGetManager(Gtk.Application):
             print(f"Metadata error: {e}")
 
     def _download_magnet_metadata(self, url):
-        """Helper: Downloads .torrent file from magnet link and returns the path."""
-        runtime_dir = os.environ.get("XDG_RUNTIME_DIR", "/tmp")
-        save_path_template = tempfile.mkdtemp(prefix="flameget_torrent_", dir=runtime_dir)
+        save_path_template = tempfile.mkdtemp(prefix="flameget_torrent_", dir=addOn.UNITS.RUNTIME_DIR)
         cmd = [
-            "aria2c",
+            addOn.FireFiles.aria2c_path,
             "--bt-metadata-only=true",
             "--bt-save-metadata=true",
             "-d", save_path_template,
@@ -2159,7 +2118,7 @@ class FlameGetManager(Gtk.Application):
         ]
 
         download_proc = subprocess.run(
-            cmd, capture_output=True, text=True, timeout=60, check=True
+            cmd, capture_output=True, text=True, timeout=60, check=True, **({"creationflags": subprocess.CREATE_NO_WINDOW} if os.name == "nt" else {})
         )
 
         match = re.search(r"Saved metadata as (.*\.torrent)", download_proc.stdout)
@@ -2174,8 +2133,8 @@ class FlameGetManager(Gtk.Application):
 
     def _parse_torrent_file(self, file_path):
         """Helper: Runs aria2c -S, parses the output, and updates the UI."""
-        cmd = ["aria2c", "-S", file_path]
-        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=15)
+        cmd = [addOn.FireFiles.aria2c_path, "-S", file_path]
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=15, **({"creationflags": subprocess.CREATE_NO_WINDOW} if os.name == "nt" else {}))
         
         output = proc.stdout
         
@@ -2282,7 +2241,7 @@ class FlameGetManager(Gtk.Application):
                 child_node = store.get_item(j)
                 if child_node.is_dir:
                     dir_bytes = calc_dir_size(child_node.children_store)
-                    child_node.size_str = self.parse_size(dir_bytes)
+                    child_node.size_str = addOn.parse_size(dir_bytes)
                     total_bytes += dir_bytes
                 else:
                     total_bytes += self.torrent_parse_size(child_node.size_str)
@@ -2291,9 +2250,9 @@ class FlameGetManager(Gtk.Application):
         calc_dir_size(self.root_node_store)
         self.update_torrent_counter()
 
-        GLib.idle_add(self.lbl_meta_size.set_text, f"Size: {total_size}")
-        GLib.idle_add(self.lbl_meta_name.set_text, f"Name: {name}")
-        GLib.idle_add(self.expander_files.set_label, f"Files ({files_count})")
+        GLib.idle_add(self.lbl_meta_size.set_text, f"{self.tr("Size:")} {total_size}")
+        GLib.idle_add(self.lbl_meta_name.set_text, f"{self.tr("Name:")} {name}")
+        GLib.idle_add(self.expander_files.set_label, f"{self.tr("Files")} ({files_count})")
         GLib.idle_add(self.expander_files.set_sensitive, True)
         GLib.idle_add(self.expander_files.set_expanded, True)
 
@@ -2301,8 +2260,6 @@ class FlameGetManager(Gtk.Application):
         GLib.idle_add(self.expander_trackers.set_expanded, True)
         GLib.idle_add(self.btn_download.set_sensitive, True)
         GLib.idle_add(self.btn_queue.set_sensitive, True)
-        dir_path = os.path.dirname(file_path)
-        if self.is_safe_path(dir_path): shutil.rmtree(dir_path)
 
     def update_torrent_counter(self):
         total_files = 0
@@ -2324,14 +2281,14 @@ class FlameGetManager(Gtk.Application):
             walk_stats(self.root_node_store)
         
         if hasattr(self, 'lbl_files_expander'):
-            GLib.idle_add(self.lbl_files_expander.set_label, f"{self.tr('Files')} ({selected_files}/{total_files})")
+            GLib.idle_add(self.lbl_files_expander.set_label, f"{self.tr("Files")} ({selected_files}/{total_files})")
 
     def torrent_parse_size(self, size_str):
         if not size_str: return 0
         m = re.search(r"([0-9.]+)\s*([a-zA-Z]+)", size_str)
         if m:
             val, unit = m.groups()
-            return self.range_parse_size(val, unit)
+            return addOn.range_parse_size(val, unit)
         try:
             return int(float(size_str))
         except ValueError:
@@ -2339,6 +2296,7 @@ class FlameGetManager(Gtk.Application):
 
     def on_add_tracker_clicked(self, btn):
         dialog = Gtk.Dialog(title=self.tr("Add Trackers"), transient_for=self.add_url_dialog, modal=True)
+        GLib.idle_add(addOn.set_titlebar_theme, dialog.get_title(), self.app_settings.get("theme_mode"))
         dialog.set_default_size(450, 300)
         key_controller = Gtk.EventControllerKey()
         key_controller.connect("key-pressed", self.on_window_key_pressed, dialog)
@@ -2545,7 +2503,7 @@ class FlameGetManager(Gtk.Application):
         column_view = Gtk.ColumnView(model=selection_model)
         column_view.set_hexpand(True)
         
-        if self.get_windowing_system() == "wayland":
+        if self.get_windowing_system() == "wayland" or os.name == "nt":
             column_view.add_css_class("wayland-headers")
 
         sort_model.set_sorter(column_view.get_sorter())
@@ -2652,7 +2610,7 @@ class FlameGetManager(Gtk.Application):
         is_finished = (item.status == "Finished")
         is_downloading = (item.status == "downloading")
         is_seeding = (item.status == "Seeding")
-        is_paused_or_stopped = item.status in ("Paused", "Stopped")
+        is_paused_or_stopped = item.status in ("Paused", "Stopped") and not item.finished_downloading
         is_paused = item.status == "Paused"
 
         if item.category == "Torrent" and item.finished_downloading:
@@ -2671,7 +2629,7 @@ class FlameGetManager(Gtk.Application):
         is_process_running = False
         try:
             pid = int(item.pid)
-            if pid > 0 and self.is_pid_alive(pid):
+            if pid > 0 and addOn.is_pid_alive(pid):
                 is_process_running = True
         except (ValueError, TypeError):
             pass
@@ -2695,7 +2653,6 @@ class FlameGetManager(Gtk.Application):
 
     def add_checkbox_column(self, view, selection_model):
         col = Gtk.ColumnViewColumn(title=self.tr("All"))
-        col.set_fixed_width(45)
         
         row_factory = Gtk.SignalListItemFactory()
 
@@ -2788,7 +2745,7 @@ class FlameGetManager(Gtk.Application):
         col.set_factory(row_factory)
         view.append_column(col)
 
-    def add_column(self, view, title, setup_func, bind_func, unbind_func=None, expand=False, width=None, sorter=None):
+    def add_column(self, view, title, setup_func, bind_func, unbind_func=None, expand=False, width=None, sorter=None):        
         col = Gtk.ColumnViewColumn(title=title)
         if expand: col.set_expand(True)
         if width: col.set_fixed_width(width)
@@ -2803,7 +2760,14 @@ class FlameGetManager(Gtk.Application):
             hitbox = Gtk.Box()
             hitbox.set_hexpand(True)
             hitbox.set_vexpand(True)
-            if self.get_windowing_system() == "wayland":
+            if self.get_windowing_system() == "wayland" or os.name == "nt":
+                user_padding = self.app_settings.get("cells_size", 1) 
+                custom_css = f".wayland-fix {{ padding: {user_padding}px; }}"
+                
+                provider = Gtk.CssProvider()
+                provider.load_from_data(custom_css.encode('utf-8'))
+                display = Gdk.Display.get_default()
+                Gtk.StyleContext.add_provider_for_display(display, provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
                 hitbox.add_css_class("wayland-fix")
             
             if content_widget:
@@ -2827,7 +2791,6 @@ class FlameGetManager(Gtk.Application):
             
             list_item.set_child(hitbox)
             self.set_cursor_for_widget(hitbox, "pointer")
-
         factory.connect("setup", setup_wrapper)
         factory.connect("bind", bind_func)
         if unbind_func:
@@ -2887,7 +2850,10 @@ class FlameGetManager(Gtk.Application):
             Gio.AppInfo.launch_default_for_uri(file.get_uri(), None)
         except Exception as e:
             print(f"Could not open file: {e}")
-            subprocess.run(["xdg-open", full_file_path])
+            if os.name == 'nt':
+                os.startfile(full_file_path)
+            else:
+                subprocess.run(["xdg-open", full_file_path])
 
     def delete_selected_items(self, button, selection_model, files_too=None):
         selection = selection_model.get_selection()
@@ -2905,6 +2871,7 @@ class FlameGetManager(Gtk.Application):
         count = selection.get_size()
         
         dialog = Gtk.Dialog(title=self.tr("Delete Confirmation"), transient_for=self.window, modal=True)
+        GLib.idle_add(addOn.set_titlebar_theme, dialog.get_title(), self.app_settings.get("theme_mode"))
         dialog.set_default_size(400, 125)
         dialog.connect("close-request", lambda x: setattr(self, 'can_delete_dialog', None))
         self.can_delete_dialog = dialog
@@ -3075,10 +3042,22 @@ class FlameGetManager(Gtk.Application):
                 self.db.conn.commit()
 
                 speed_limit = self.app_settings.get("global_speed_limit", "0")
+                # if "__compiled__" in globals():
+                #     exe_c = [self.downloader_script_path]
+                # else:
+                #     exe_c = [sys.executable, self.downloader_script_path]
+                worker_env = os.environ.copy()
+                worker_env["FLAMEGET_WORKER"] = "downloader"
+                worker_env["PYINSTALLER_RESET_ENVIRONMENT"] = "1"
                 
+                executable_path = sys.executable 
+                
+                is_compiled = getattr(sys, 'frozen', False)
+                args = [executable_path]
+                if not is_compiled:
+                    args.append(os.path.abspath(self.downloader_script_path))
                 cmd = [
-                    sys.executable, 
-                    self.downloader_script_path,
+                    *args,
                     task['url'],
                     task['filename'],
                     str(task['file_size_bytes']),
@@ -3094,7 +3073,7 @@ class FlameGetManager(Gtk.Application):
                 if task['download_playlist']: cmd.append("--playlist")
                 if task['quality_mod']: cmd.extend(["--quality", task['quality_mod']])
 
-                subprocess.Popen(cmd)
+                subprocess.Popen(cmd, env=worker_env)
                 
                 self.show_toast_popup(f"{self.tr('Scheduled Start:')} {task['filename']}")
                 
@@ -3427,9 +3406,22 @@ class FlameGetManager(Gtk.Application):
             trackers_arg = ",".join(tracker_list)
         try:
             print(self.download_folder)
+            # if "__compiled__" in globals():
+            #     exe_c = [self.downloader_script_path]
+            # else:
+            #     exe_c = [sys.executable, self.downloader_script_path]
+            worker_env = os.environ.copy()
+            worker_env["FLAMEGET_WORKER"] = "downloader"
+            worker_env["PYINSTALLER_RESET_ENVIRONMENT"] = "1"
+            
+            executable_path = sys.executable 
+            
+            is_compiled = getattr(sys, 'frozen', False)
+            args = [executable_path]
+            if not is_compiled:
+                args.append(os.path.abspath(self.downloader_script_path))
             cmd = [
-                sys.executable, 
-                self.downloader_script_path,
+                *args,
                 url,
                 filename,
                 "0",
@@ -3448,7 +3440,7 @@ class FlameGetManager(Gtk.Application):
                 if trackers_arg:
                     cmd.extend(["--trackers", trackers_arg])
                     
-            subprocess.Popen(cmd)
+            subprocess.Popen(cmd, env=worker_env)
             if dialog: 
                 self.add_url_dialog = None
                 dialog.destroy()
@@ -3456,13 +3448,28 @@ class FlameGetManager(Gtk.Application):
             print("Starting failed")
 
     def start_yt_dlp_download_url(self, dialog, ext, is_audio, quality_mod, download_playlist):
+        print("test /////////////////////////////////////////////////")
         segments = self.spin_seg.get_value_as_int()
         speed_limit = self.app_settings.get("global_speed_limit", "0")
         custom_name = self.yt_entry_name.get_text().strip()
         try:
+            # if "__compiled__" in globals():
+            #     exe_c = [self.browser_context_menu_handler_script_path]
+            # else:
+            #     exe_c = [sys.executable, self.browser_context_menu_handler_script_path]
+
+            worker_env = os.environ.copy()
+            worker_env["PYINSTALLER_RESET_ENVIRONMENT"] = "1"
+            worker_env["FLAMEGET_WORKER"] = "browser"
+            
+            executable_path = sys.executable 
+            
+            is_compiled = getattr(sys, 'frozen', False)
+            args = [executable_path]
+            if not is_compiled:
+                args.append(os.path.abspath(self.browser_context_menu_handler_script_path))
             cmd = [
-                sys.executable, 
-                self.browser_context_menu_handler_script_path,
+                *args,
                 self.raw_file_url,
             ]
             cmd.extend(["--filename", custom_name])
@@ -3480,7 +3487,7 @@ class FlameGetManager(Gtk.Application):
                 cmd.extend(["--quality", quality_mod])
 
             print(cmd)
-            subprocess.Popen(cmd)
+            subprocess.Popen(cmd, env=worker_env)
             GLib.idle_add(dialog.destroy)
         except Exception as e:
             print(f"Starting failed {e}")
@@ -3553,7 +3560,7 @@ class FlameGetManager(Gtk.Application):
         filename = self.entry_name.get_text().strip()
         is_torrent = self.raw_file_url.startswith("magnet:?") or self.raw_file_url.endswith(".torrent")
         support, file_size_bytes, fetched_name = self.fetch_head_info(self.raw_file_url, ext, is_audio, quality_mod, download_playlist)
-        size_str = "UNKNOWN" if not support else self.parse_size(file_size_bytes)
+        size_str = "UNKNOWN" if not support else addOn.parse_size(file_size_bytes)
         
         if not fetched_name and is_torrent:
             try:
@@ -3625,6 +3632,30 @@ class FlameGetManager(Gtk.Application):
         self.add_url_dialog = None
         dialogue.destroy()
 
+    def send_command(self, cmd, target_socket=None):
+        # ONLY FOR WINDOWS
+        try:
+            if target_socket:
+                if os.path.exists(target_socket):
+                    try:
+                        with open(target_socket, 'r') as f:
+                            target_port = int(f.read().strip())
+                    except ValueError:
+                        print(f"Error: Invalid port data in {target_socket}")
+                        return
+                else:
+                    print(f"Target socket file missing: {target_socket}")
+                    return
+
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.connect(('127.0.0.1', target_port))
+                s.sendall(cmd.encode('utf-8'))
+                    
+        except (ConnectionRefusedError, FileNotFoundError):
+            print(f"Target not running? ({target_socket})")
+        except OSError as e:
+            print(f"Socket error while sending command: {e}")
+
     def resume_download(self, btn, selection_model, in_minimize_mode=False):
         selection = selection_model.get_selection()
         if selection.is_empty(): return
@@ -3644,7 +3675,7 @@ class FlameGetManager(Gtk.Application):
             elif item.category == "Torrent":
                 is_torrent = True
             pid = int(item.pid)
-            if item.status == "Paused" and pid > 0:
+            if HAS_SIGUSR1 and item.status == "Paused" and pid > 0:
                 try:
                     os.kill(pid, signal.SIGUSR1)
                     print("Resumed existing process!")
@@ -3652,9 +3683,17 @@ class FlameGetManager(Gtk.Application):
                 except OSError:
                     pass
             try:
+                worker_env = os.environ.copy()
+                worker_env["FLAMEGET_WORKER"] = "downloader"
+                worker_env["PYINSTALLER_RESET_ENVIRONMENT"] = "1"
+                executable_path = sys.executable 
+                
+                is_compiled = getattr(sys, 'frozen', False)
+                args = [executable_path]
+                if not is_compiled:
+                    args.append(os.path.abspath(self.downloader_script_path))
                 cmd = [
-                    sys.executable, 
-                    self.downloader_script_path,
+                    *args,
                     item.url,
                     item.filename,
                     str(item.file_size_bytes),
@@ -3679,7 +3718,7 @@ class FlameGetManager(Gtk.Application):
                     popup_text = self.tr("Seeding the Torrent File in The Backgound:")
                     cmd.append("--in_minimize_mode")
 
-                subprocess.Popen(cmd)
+                subprocess.Popen(cmd, env=worker_env)
                 self.show_toast_popup(f"{popup_text} {item.filename}")
             except Exception as e:
                 print(f"Resume failed for {item.id}: {e}")
@@ -3708,17 +3747,32 @@ class FlameGetManager(Gtk.Application):
             except (ValueError, TypeError):
                 continue
 
-            if pid <= 0 or not self.is_pid_alive(pid):
+            if pid <= 0 or not addOn.is_pid_alive(pid):
                 continue
 
             try:
+                downloader_sock = os.path.join(addOn.UNITS.RUNTIME_DIR, f"flameget_dl_{pid}.sock")
                 if kill:
-                    print(f"Stopping (SIGTERM) PID {pid} for {item.filename}")
-                    os.kill(pid, signal.SIGTERM)
+                    print(f"Stopping PID {pid} for {item.filename}")
+                    if os.name == 'nt':
+                        self.send_command("stop", target_socket=downloader_sock)
+                    else:
+                        os.kill(pid, signal.SIGTERM)
+                        
                 else:
                     if item.status != "Paused":
-                        print(f"Pausing (SIGUSR1) PID {pid} for {item.filename}")
-                        os.kill(pid, signal.SIGUSR1)
+                        print(f"Pausing PID {pid} for {item.filename}")
+                        if os.name == 'nt':
+                            if HAS_SIGUSR1:
+                                self.send_command("pause", target_socket=downloader_sock)
+                            else: 
+                                self.send_command("stop", target_socket=downloader_sock)
+                        else:
+                            if HAS_SIGUSR1:
+                                print(f"Pausing (SIGUSR1) PID {pid} for {item.filename}")
+                                os.kill(pid, signal.SIGUSR1)
+                            else:
+                                os.kill(pid, signal.SIGTERM) 
                         
             except ProcessLookupError:
                 pass
@@ -3773,7 +3827,8 @@ class FlameGetManager(Gtk.Application):
         fallback = "index.html"
         if url.startswith("magnet:?") or url.endswith(".torrent"):
             fallback = "torrent_folder"
-
+            
+        from urllib.parse import urlparse, unquote
         path = unquote(os.path.basename(urlparse(url).path)) or fallback
         print(path)
         os.path.basename(path)
@@ -3798,25 +3853,6 @@ class FlameGetManager(Gtk.Application):
     def on_url_entry_changed(self, entry):
         raw_input = entry.get_text().strip()
         self.raw_file_url = raw_input
-
-    def categorize_filename(self, filename, is_torrent=False):
-        ext = os.path.splitext(filename.lower())[1]
-        if is_torrent:
-            return "Torrent"
-        if ext in COMPRESSED:
-            return "Compressed"
-        if ext in PROGRAMS:
-            return "Programs"
-        if ext in VIDEOS:
-            return "Videos"
-        if ext in MUSIC:
-            return "Music"
-        if ext in PICTURES:
-            return "Pictures"
-        if ext in DOCUMENTS:
-            return "Documents"
-
-        return "Documents"
 
     def fetch_head_info(self, url, ext=None, is_audio_mode=None, quality_mod=None, download_playlist=False):
         if download_playlist:
@@ -3862,69 +3898,109 @@ class FlameGetManager(Gtk.Application):
                 print(f"Quick Info Check Error: {e}")
                 return False, 0, ""
         else:
-            timeout = 10
-            save_path_template = os.path.join(runtime_dir, "temp_torrent")
-            os.makedirs(save_path_template, exist_ok=True)
-            cmd =  [
-                "aria2c",
-                f"-x{self.app_settings.get("default_segments")}",
-                f"-s{self.app_settings.get("default_segments")}",
-                "--file-allocation=none",
-                "--connect-timeout=5",
-                "--timeout=5",
-                "--max-tries=2",
-                "--auto-save-interval=0",
-                "--summary-interval=1",
-                "-d", save_path_template,
-                url
-            ]
-            proc = subprocess.Popen(
-                cmd,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.DEVNULL,
-                text=True
-            )
-            try:
-                while time.time() - start < timeout:
-                    line = proc.stdout.readline()
-                    if not line.strip():
-                        continue
-
-                    low = line.lower()
-
-                    if "cn:" in low and "cn:1" not in low:
-                        supports = True
-
-                    m = SIZE_RE.search(line)
-                    if m:
-                        val, unit = m.groups()
-                        file_size = self.range_parse_size(val, unit)
-
-                    is_actively_downloading = "dl:" in low and "0b/0b" not in low
-                    if (supports and file_size > 0) or is_actively_downloading:
-                        break
-
-            except:
-                return False, 0, ""
-
-            finally:
-                proc.terminate()
+            if self.download_engine == "aria2":
+                timeout = 10
+                save_path_template = os.path.join(addOn.UNITS.RUNTIME_DIR, "temp_torrent")
+                os.makedirs(save_path_template, exist_ok=True)
+                cmd =  [
+                    addOn.FireFiles.aria2c_path,
+                    f"-x{self.app_settings.get("default_segments")}",
+                    f"-s{self.app_settings.get("default_segments")}",
+                    "--file-allocation=none",
+                    "--connect-timeout=5",
+                    "--timeout=5",
+                    "--max-tries=2",
+                    "--auto-save-interval=0",
+                    "--summary-interval=1",
+                    "-d", save_path_template,
+                    url
+                ]
+                proc = subprocess.Popen(
+                    cmd,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.DEVNULL,
+                    text=True,
+                    **({"creationflags": subprocess.CREATE_NO_WINDOW} if os.name == "nt" else {})
+                )
                 try:
-                    proc.wait(timeout=1)
-                except subprocess.TimeoutExpired:
-                    proc.kill()
-            
-            if os.path.exists(save_path_template):
-                for f in os.listdir(save_path_template):
-                    print(f)
-                    if f.endswith(".aria2"):
-                        filename = f.replace(".aria2", "")
-                        break
-            
-            if self.is_safe_path(save_path_template):
-                shutil.rmtree(save_path_template, ignore_errors=True)
+                    while time.time() - start < timeout:
+                        line = proc.stdout.readline()
+                        if not line.strip():
+                            continue
 
-            return supports, file_size, filename
+                        low = line.lower()
+
+                        if "cn:" in low and "cn:1" not in low:
+                            supports = True
+
+                        m = addOn.UNITS.SIZE_RE.search(line)
+                        if m:
+                            val, unit = m.groups()
+                            file_size = addOn.range_parse_size(val, unit)
+
+                        is_actively_downloading = "dl:" in low and "0b/0b" not in low
+                        if (supports and file_size > 0) or is_actively_downloading:
+                            break
+
+                except:
+                    return False, 0, ""
+
+                finally:
+                    proc.terminate()
+                    try:
+                        proc.wait(timeout=1)
+                    except subprocess.TimeoutExpired:
+                        proc.kill()
+                
+                if os.path.exists(save_path_template):
+                    for f in os.listdir(save_path_template):
+                        print(f)
+                        if f.endswith(".aria2"):
+                            filename = f.replace(".aria2", "")
+                            break
+                
+                if self.is_safe_path(save_path_template):
+                    shutil.rmtree(save_path_template, ignore_errors=True)
+
+                return supports, file_size, filename
+            else:
+                try:
+                    headers = {
+                        "Accept-Encoding": "identity",
+                        "Accept": "*/*"
+                    }
+                    
+                    if self.user_agent:
+                        headers["User-Agent"] = self.user_agent
+                    else:
+                        headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+                        
+                    if self.cookies: headers["Cookie"] = self.cookies.replace('\n', '').replace('\r', '').strip()
+                    if self.referer: headers["Referer"] = self.referer
+
+                    response = requests.head(url, headers=headers, allow_redirects=True, timeout=10)
+                    
+                    if response.status_code not in (200, 206) or 'Content-Length' not in response.headers:
+                        response = requests.get(url, headers=headers, stream=True, allow_redirects=True, timeout=10)
+
+                    file_size = int(response.headers.get('Content-Length', 0))
+                    supports = response.headers.get('Accept-Ranges') == 'bytes' or file_size > 0
+
+                    cd = response.headers.get('Content-Disposition')
+                    if cd and 'filename=' in cd:
+                        m = re.search(r'filename=["\']?([^"\';]+)["\']?', cd)
+                        if m: filename = m.group(1)
+                    else:
+                        from urllib.parse import urlparse
+                        parsed = urlparse(response.url)
+                        name = os.path.basename(parsed.path)
+                        if name: filename = name
+
+                    return supports, file_size, filename
+
+                except Exception as e:
+                    print(f"Error getting precise file info: {e}")
+                    return False, 0, filename
 
     def on_window_key_pressed(self, controller, keyval, keycode, state, dialog=None):
         """Global keyboard shortcut handler using customized keys."""
@@ -3966,8 +4042,8 @@ class FlameGetManager(Gtk.Application):
                     print(f"Error killing server: {e}")
                     try: self.server_process.kill()
                     except: pass
-            GLib.idle_add(self.tray_process.terminate)
-            GLib.idle_add(self.quit)
+                
+            GLib.idle_add(self.emergency_cleanup, None, None)
             return True
             
         elif is_match("close_window"):
@@ -3985,58 +4061,108 @@ class FlameGetManager(Gtk.Application):
 
     def toggle_autostart(self, enable):
         """Creates or removes the XDG autostart entry for FlameGet."""
+        if os.name == 'nt':
+            import winreg
+            try:
+                reg_path = r"Software\Microsoft\Windows\CurrentVersion\Run"
+                app_name = "FlameGet"
+
+                if getattr(sys, "frozen", False):
+                    exec_cmd = f'"{sys.executable}"'
+                else:
+                    script_path = os.path.abspath(sys.argv[0])
+                    exec_cmd = f'"{sys.executable}" "{script_path}"'
+
+                exec_cmd += " --start-minimized"
+
+                with winreg.OpenKey(
+                    winreg.HKEY_CURRENT_USER,
+                    reg_path,
+                    0,
+                    winreg.KEY_SET_VALUE
+                ) as key:
+
+                    if enable:
+                        winreg.SetValueEx(key, app_name, 0, winreg.REG_SZ, exec_cmd)
+                        print("Autostart enabled (Windows).")
+                    else:
+                        try:
+                            winreg.DeleteValue(key, app_name)
+                            print("Autostart disabled (Windows).")
+                        except FileNotFoundError:
+                            pass
+            except Exception as e:
+                print(f"Windows autostart failed: {e}")
+            return
         autostart_dir = os.path.join(GLib.get_user_config_dir(), "autostart")
         desktop_file = os.path.join(autostart_dir, "flameget.desktop")
 
-        if enable:
-            os.makedirs(autostart_dir, exist_ok=True)
-            if getattr(sys, 'frozen', False):
-                exec_cmd = f"{sys.executable}"
-            else:
-                script_path = os.path.abspath(sys.argv[0])
-                exec_cmd = f"{sys.executable} {script_path}"
-            
-            exec_cmd += " --start-minimized"
-            content = f"""
-                [Desktop Entry]
-                Type=Application
-                Name=FlameGet
-                Comment=FlameGet Download Manager
-                Exec={exec_cmd}
-                Icon=flameget
-                Terminal=false
-                Categories=Network;FileTransfer;
-                StartupNotify=false
-            """
+        if self.is_flatpak_env:
             try:
-                with open(desktop_file, "w") as f:
-                    f.write(content)
-                print(f"Autostart enabled: {desktop_file}")
+                action_word = "enable" if enable else "disable"
+                
+                print(f"Requesting to {action_word} Flatpak Autostart...")
+                
+                bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
+
+                options = {
+                    'autostart': GLib.Variant('b', enable), 
+                    'background': GLib.Variant('b', True) 
+                }
+                options_variant = GLib.Variant('a{sv}', options)
+
+                parent_window = GLib.Variant('s', "")
+                params = GLib.Variant.new_tuple(parent_window, options_variant)
+
+                bus.call_sync(
+                    "org.freedesktop.portal.Desktop",
+                    "/org/freedesktop/portal/desktop",
+                    "org.freedesktop.portal.Background",
+                    "RequestBackground",
+                    params,
+                    None,
+                    Gio.DBusCallFlags.NONE,
+                    -1,
+                    None
+                )
+                print(f"Portal request to {action_word} autostart sent successfully.")
+                
             except Exception as e:
-                print(f"Failed to enable autostart: {e}")
-
+                print(f"Failed to {action_word} autostart portal via Gio: {e}")
         else:
-            if os.path.exists(desktop_file):
+            if enable:
+                os.makedirs(autostart_dir, exist_ok=True)
+                if getattr(sys, 'frozen', False):
+                    exec_cmd = f"{sys.executable}"
+                else:
+                    script_path = os.path.abspath(sys.argv[0])
+                    exec_cmd = f"{sys.executable} {script_path}"
+                
+                exec_cmd += " --start-minimized"
+                content = f"""
+                    [Desktop Entry]
+                    Type=Application
+                    Name=FlameGet
+                    Comment=FlameGet Download Manager
+                    Exec={exec_cmd}
+                    Icon=flameget
+                    Terminal=false
+                    Categories=Network;FileTransfer;
+                    StartupNotify=false
+                """
                 try:
-                    os.remove(desktop_file)
-                    print("Autostart disabled.")
+                    with open(desktop_file, "w") as f:
+                        f.write(content)
+                    print(f"Autostart enabled: {desktop_file}")
                 except Exception as e:
-                    print(f"Failed to disable autostart: {e}")
-
-    def range_parse_size(self, val, unit):
-        unit = unit.lower()
-        if not unit.endswith("b"):
-            unit += "b"
-        return int(float(val) * MULT[unit])
-
-    def parse_size(self ,file_size_in_bytes):
-        return (
-            f"{file_size_in_bytes} B" if file_size_in_bytes < 1024 else
-            f"{file_size_in_bytes / 1024:.2f} KB" if file_size_in_bytes < 1024**2 else
-            f"{file_size_in_bytes / (1024 ** 2):.2f} MB" if file_size_in_bytes < 1024**3 else
-            f"{file_size_in_bytes / (1024 ** 3):.2f} GB" if file_size_in_bytes < 1024**4 else
-            f"{file_size_in_bytes / (1024 ** 4):.2f} TB"
-        )
+                    print(f"Failed to enable autostart: {e}")
+            else:
+                if os.path.exists(desktop_file):
+                    try:
+                        os.remove(desktop_file)
+                        print("Autostart disabled.")
+                    except Exception as e:
+                        print(f"Failed to disable autostart: {e}")
 
     def on_folder_entry_changed(self, entry):
         path = entry.get_text().strip()
@@ -4073,7 +4199,7 @@ class FlameGetManager(Gtk.Application):
     def is_yt_dlp(self, url): 
         found = False
         clean_url = url.lower()
-        if any(site in clean_url for site in SUPPORTED_SITES):
+        if any(site in clean_url for site in addOn.UNITS.SUPPORTED_SITES):
             found = True
         return found
 
@@ -4088,34 +4214,22 @@ class FlameGetManager(Gtk.Application):
         return url
 
     def start_server(self):
-        self.start_flask_server()
+        threading.Thread(target=server_main, daemon=True).start()
         self.server_running = True
         thread = threading.Thread(target=self._server_loop, daemon=True)
         thread.start()
 
-    def start_flask_server(self):
-        """Launches server.py as a background subprocess."""
-        try:
-            server_script_path = os.path.join(self.install_dir, "server.py")
-            
-            if os.path.exists(server_script_path):
-                print(f"Starting Browser Integration Server: {server_script_path}")
-                self.server_process = subprocess.Popen(
-                    [sys.executable, server_script_path],
-                    cwd=self.install_dir
-                )
-            else:
-                print("Warning: server.py not found, browser integration disabled.")
-        except Exception as e:
-            print(f"Failed to start server: {e}")
-
     def _server_loop(self):
         try:
-            if os.path.exists(SOCKET_PATH):
-                os.unlink(SOCKET_PATH)
+            if os.name != 'nt':
+                if os.path.exists(SOCKET_PATH):
+                    os.unlink(SOCKET_PATH)
+                self.server_socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+                self.server_socket.bind(SOCKET_PATH)
+            else:
+                self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                self.server_socket.bind(('127.0.0.1', WINDOWS_PORT))
 
-            self.server_socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-            self.server_socket.bind(SOCKET_PATH)
             self.server_socket.listen(1)
 
             while self.server_running:
@@ -4131,40 +4245,178 @@ class FlameGetManager(Gtk.Application):
                         if cmd.startswith("open_url:"):
                             url = cmd.split("open_url:", 1)[1]
                             GLib.idle_add(self.handle_external_url, url)
-                        if cmd == "toggle":
+                            
+                        elif cmd.startswith("toast:"):
+                            msg = cmd.split("toast:", 1)[1]
+                            GLib.idle_add(self.show_toast_popup, msg, 4000, "green_toast")
+                            
+                        elif cmd.startswith("error_toast:"):
+                            msg = cmd.split("error_toast:", 1)[1]
+                            GLib.idle_add(self.show_toast_popup, msg, 6000, "red_toast")
+                        
+                        elif cmd == "toggle":
                             GLib.idle_add(self.toggle_window)
-                        if cmd == "update_footer":
+                        elif cmd == "update_footer":
                             GLib.idle_add(self.update_stats_labels)
                         elif cmd == "quit":
-                            GLib.idle_add(self.quit)
+                            GLib.idle_add(self.emergency_cleanup, None, None)
                 except OSError:
                     break
         finally:
-            try:
-                os.unlink(SOCKET_PATH)
-            except FileNotFoundError:
-                pass
+            if os.name != 'nt':
+                try:
+                    os.unlink(SOCKET_PATH)
+                except FileNotFoundError:
+                    pass
+
+    def check_and_install_ffmpeg(self, parent_window, install_dir):
+        if os.path.exists(addOn.FireFiles.ffmpeg_path):
+            return True 
+
+        dialog = Gtk.Window(
+            transient_for=parent_window,
+            modal=True,
+            title="Missing FFmpeg Component !",
+            resizable=False,
+            default_width=400
+        )
+        GLib.idle_add(addOn.set_titlebar_theme, dialog.get_title(), self.app_settings.get("theme_mode"))
+
+        dialog.add_css_class("dialog")
+
+        content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
+        content_box.set_margin_top(18)
+        content_box.set_margin_bottom(18)
+        content_box.set_margin_start(25)
+        content_box.set_margin_end(25)
+        dialog.set_child(content_box)
+
+        desc_label = Gtk.Label(
+            label="FlameGet needs FFmpeg to merge high-quality video and audio tracks.\nWould you like to download and install it automatically (~30MB)?",
+            wrap=True,
+            xalign=0
+        )
+        content_box.append(desc_label)
+
+        progress_bar = Gtk.ProgressBar()
+        progress_bar.set_fraction(0.0)
+        progress_bar.set_visible(False)
+        progress_label = Gtk.Label(label="Downloading...")
+        progress_label.set_visible(False)
+        content_box.append(progress_bar)
+        content_box.append(progress_label)
+
+        button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        button_box.set_halign(Gtk.Align.FILL)
+        button_box.set_margin_top(12)
+        button_box.set_hexpand(True)
+        content_box.append(button_box)
+
+        cancel_btn = Gtk.Button(label="Cancel")
+        install_btn = Gtk.Button(label="Download & Install")
+        cancel_btn.set_hexpand(True)
+        install_btn.set_hexpand(True)
+        
+        cancel_btn.add_css_class("btn_cancel")
+        install_btn.add_css_class("green-btn")
+
+        button_box.append(cancel_btn)
+        button_box.append(install_btn)
+
+        def on_install_clicked(btn):
+            progress_bar.set_visible(True)
+            cancel_btn.set_visible(False)
+            install_btn.set_visible(False)
+            progress_label.set_visible(True)
+            threading.Thread(
+                target=self.download_ffmpeg, 
+                args=(dialog, install_dir, progress_bar),
+                daemon=True
+            ).start()
+
+        def on_cancel_clicked(btn):
+            dialog.destroy()
+            self.show_toast_popup(f"{self.tr("FFmpeg is required, Please install it!")}", color="red_toast")
+
+        install_btn.connect("clicked", on_install_clicked)
+        cancel_btn.connect("clicked", on_cancel_clicked)
+
+        dialog.present()
+
+        if os.name == 'nt':
+            GLib.timeout_add(50, addOn.force_center_dialog, "Missing FFmpeg Component !", self.app_name)
+            
+        return False
+    
+    def update_ffmpeg_progress(self, progress_bar, fraction):
+        """Safely updates the GTK progress bar from the main thread"""
+        progress_bar.set_fraction(fraction)
+        progress_bar.set_text(f"{int(fraction * 100)}%")
+        return False
+
+    def download_ffmpeg(self, dialog, install_dir, progress_bar):
+        import urllib.request
+        import zipfile
+        import io
+        
+        url = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip"
+        
+        try:
+            req = urllib.request.urlopen(url)
+            
+            total_size = int(req.headers.get('content-length', 0))
+            downloaded = 0
+            chunk_size = 8192
+            
+            zip_buffer = io.BytesIO()
+            
+            while True:
+                chunk = req.read(chunk_size)
+                if not chunk:
+                    break
+                    
+                zip_buffer.write(chunk)
+                downloaded += len(chunk)
+                
+                if total_size > 0:
+                    fraction = downloaded / total_size
+                    GLib.idle_add(self.update_ffmpeg_progress, progress_bar, fraction)
+            
+            zip_buffer.seek(0)
+            
+            with zipfile.ZipFile(zip_buffer) as z:
+                for file_info in z.infolist():
+                    if file_info.filename.endswith("ffmpeg.exe") or file_info.filename.endswith("ffprobe.exe"):
+                        file_info.filename = os.path.basename(file_info.filename)
+                        z.extract(file_info, addOn.FireFiles.binaries_path)
+            
+            GLib.idle_add(self.on_download_success, dialog)
+            
+        except Exception as e:
+            GLib.idle_add(self.on_download_error, dialog, str(e))
+
+    def on_download_success(self, dialog):
+        dialog.destroy()
+        self.show_toast_popup(f"{self.tr("FFmpeg installed successfully!")}")
+        return False
+
+    def on_download_error(self, dialog, error_msg):
+        dialog.destroy()
+        self.show_toast_popup(f"{self.tr("FFmpeg is required, Please install it!")}", color="red_toast")
+        return False
 
     def start_tray_subprocess(self):
-        if not os.path.exists(self.tray_script_path ):
-            print(f"Error: {self.tray_script_path } not found!")
+        if self.is_flatpak_env:
+            # soon....
             return
 
-        self.tray_process = subprocess.Popen(
-            [sys.executable, self.tray_script_path],
-            cwd=self.install_dir,
-            stdin=subprocess.DEVNULL,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
-        )
+        if getattr(sys, 'frozen', False):
+            self.tray_process = subprocess.Popen([self.tray_script_path], **({"creationflags": subprocess.CREATE_NO_WINDOW} if os.name == "nt" else {}))
+        else:
+            self.tray_process = subprocess.Popen([sys.executable, self.tray_script_path])
 
     def handle_external_url(self, url):
         print(f"Received external URL: {url}")
-        
-        if not self.window.is_visible():
-            self.window.set_visible(True)
-        self.window.present()
-        
         if self.add_url_dialog is None:
             self.add_url_button(None)
         
@@ -4185,16 +4437,6 @@ class FlameGetManager(Gtk.Application):
             return True
         return False
     
-    def is_pid_alive(self, pid: int) -> bool:
-        try:
-            os.kill(pid, 0)
-        except OSError as e:
-            if e.errno == errno.ESRCH:
-                return False
-            if e.errno == errno.EPERM:
-                return True
-            raise
-        return True
     
     def is_safe_path(self, path_obj):
         try:
@@ -4273,6 +4515,8 @@ class FlameGetManager(Gtk.Application):
         signal.signal(signal.SIGTERM, self.emergency_cleanup)
 
     def emergency_cleanup(self, signum, frame):
+        if self.tray_process: self.stop_tray_subprocess()
+
         if self.server_process:
             print(" - Stopping Server Process...")
             try:
@@ -4282,14 +4526,6 @@ class FlameGetManager(Gtk.Application):
                 print(f"   Error killing server: {e}")
                 try: self.server_process.kill() 
                 except: pass
-
-        if self.tray_process:
-            print(" - Stopping Tray Icon...")
-            try:
-                self.tray_process.terminate()
-                self.tray_process.wait(timeout=1)
-            except Exception:
-                pass
 
         try:
             cursor = self.db.conn.cursor()
@@ -4301,7 +4537,7 @@ class FlameGetManager(Gtk.Application):
                 filename = row['filename']
                 
                 if pid and pid > 0:
-                    if self.is_pid_alive(pid):
+                    if addOn.is_pid_alive(pid):
                         print(f" - Killing PID {pid} ({filename})...")
                         os.kill(pid, signal.SIGTERM)
             
@@ -4309,7 +4545,7 @@ class FlameGetManager(Gtk.Application):
             cursor.execute("""
                 UPDATE downloads 
                 SET status = 'Stopped' 
-                WHERE status = 'downloading'
+                WHERE status = 'downloading' OR status = 'Paused'
             """)
             
             cursor.execute("""
@@ -4332,13 +4568,86 @@ class FlameGetManager(Gtk.Application):
         print("Cleanup Complete. Exiting.")
         sys.exit(0)
 
+    def stop_tray_subprocess(self):
+        TRAY_SOCKET_PATH = os.path.join(addOn.UNITS.RUNTIME_DIR, "flameget_tray_listener.sock")
+        try:
+            if os.name == 'nt':
+                with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
+                    client.connect(('127.0.0.1', WINDOWS_TRAY_PORT))
+                    client.sendall("kill_tray".encode())
+                    self.tray_process = None
+            else:
+                with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as client:
+                    client.connect(TRAY_SOCKET_PATH) 
+                    client.sendall("kill_tray".encode())
+                    self.tray_process = None
+        except (ConnectionRefusedError, FileNotFoundError):
+            pass
+        except Exception as e:
+            print(f"Socket graceful shutdown failed: {e}")
+
+        if hasattr(self, 'tray_process') and self.tray_process:
+            try:
+                self.tray_process.wait(timeout=1) 
+            except subprocess.TimeoutExpired:
+                print("Tray process frozen. Forcing kill...")
+                self.tray_process.kill()
+                self.tray_process.wait()
+            
+            self.tray_process = None
+
+    def open_url(self, url):
+        """Opens a web link in the user's default browser."""
+        try:
+            Gio.AppInfo.launch_default_for_uri(url, None)
+        except Exception as e:
+            print(f"Failed to open URL {url}: {e}")
+
+    def show_about_dialog(self):
+        about = Gtk.AboutDialog()
+        about.set_transient_for(self.window)
+        about.set_modal(True)
+        
+        about.set_program_name("FlameGet")
+        about.set_version("1.0.0") 
+        
+        about.set_comments(self.tr("A fast, modern download manager.\n\nIcons provided by the XApp Project under the LGPL-3.0 License."))
+        
+        about.set_website("https://github.com/C-Yassin/flameget")
+        about.set_website_label(self.tr("Visit FlameGet Repository"))
+        about.set_logo_icon_name("flameget_about_dialog") 
+        
+        about.set_license_type(Gtk.License.MIT_X11) 
+        
+        about.set_authors(["C-Yassin \nhttps://github.com/C-Yassin"])
+        
+        about.add_credit_section(
+            self.tr("Icon Design"), 
+            ["XApp Project (LGPL-3.0)\nhttps://github.com/xapp-project/xapp-symbolic-icons"]
+        )
+        about.add_credit_section(
+            self.tr("Backend Download Engines"), 
+            [
+                "aria2 (GPL-2.0)\nhttps://aria2.github.io/",
+                "yt-dlp (The Unlicense)\nhttps://github.com/yt-dlp/yt-dlp",
+                "PycURL (Dual MIT/LGPL)\nhttp://pycurl.io/"
+            ]
+        )
+        about.add_css_class("about-helper")
+        about.present()
+    
 def check_if_running():
-    if not os.path.exists(SOCKET_PATH):
+    if os.name != 'nt' and not os.path.exists(SOCKET_PATH):
         return False
 
     try:
-        client_socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-        client_socket.connect(SOCKET_PATH)
+        if os.name != 'nt':
+            client_socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+            client_socket.connect(SOCKET_PATH)
+        else:
+            client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            client_socket.connect(('127.0.0.1', WINDOWS_PORT))
+            
         print(sys.argv)
         
         if len(sys.argv) > 1:
@@ -4353,10 +4662,230 @@ def check_if_running():
         print("FlameGet is already running. Sent command to existing instance.")
         return True
     except (ConnectionRefusedError, OSError):
-            return False
+        return False
 
-if __name__ == '__main__':
+def main():
     if check_if_running():
         sys.exit(0)
+        
     app = FlameGetManager()
-    app.run(sys.argv)
+    is_minimized = "--start-minimized" in sys.argv
+
+    if is_minimized:
+        sys.argv.remove("--start-minimized")
+    app.start_minimized = is_minimized
+    
+    initial_url = None
+    if len(sys.argv) > 1:
+        initial_url = sys.argv[1]
+    
+    app.run([sys.argv[0]])
+    
+    if getattr(sys, 'frozen', False) and os.name == 'nt':
+        try:
+            parent_pid = os.getppid()
+            os.kill(parent_pid, signal.SIGTERM)
+        except Exception:
+            pass
+
+
+from flask import Flask, request, jsonify
+from werkzeug.utils import secure_filename 
+from waitress import serve
+
+flask_app = Flask(__name__)
+
+downloader_script_path = addOn.FireFiles.downloader_script_path
+browser_context_menu_handler_script_path = addOn.FireFiles.browser_context_menu_handler_script_path
+
+app_settings = SaveManager.load_settings()
+
+def notify_main_ui(message, is_error=False):
+    try:
+        prefix = "error_toast:" if is_error else "toast:"
+        cmd = f"{prefix}{message}".encode('utf-8')
+        
+        if os.name == 'nt':
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.settimeout(1)
+                s.connect(('127.0.0.1', 18597))
+                s.sendall(cmd)
+        else:
+            sock_path = os.path.join(addOn.UNITS.RUNTIME_DIR, "flameget_dm_tray.sock")
+            with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as s:
+                s.settimeout(1)
+                s.connect(sock_path)
+                s.sendall(cmd)
+    except Exception:
+        pass
+
+@flask_app.after_request
+def add_cors_headers(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    return response
+
+@flask_app.route('/sync')
+def sync():
+    data = {
+        "status": "ok",
+        "enabled": True,
+        "fileExts": ["*"], 
+        "blockedHosts": [],
+        "tabsWatcher": [],
+        "videoList": [],
+        "mediaExts": [""],
+        "matchingHosts": [],
+        "mediaTypes": [],
+        "message": "Hello from Python!"
+    }
+    return jsonify(data)
+    
+@flask_app.route("/video_download", methods=["POST", "OPTIONS"])
+def handle_video_download():
+    if request.method == "OPTIONS":
+        return jsonify({"status": "ok"}), 200
+
+    print("captured video_download!")
+    
+    data = request.get_json(force=True, silent=True)
+    if not data:
+        return jsonify({"error": "No JSON data received"}), 400
+
+    url = data.get("url")
+    isAuto = data.get("isAuto")
+    if not url:
+        return jsonify({"error": "Missing 'url' parameter"}), 400
+
+    if not browser_context_menu_handler_script_path:
+        return jsonify({"error": "Server configuration error"}), 500
+    
+    worker_env = os.environ.copy()
+    worker_env["FLAMEGET_WORKER"] = "browser"
+    
+    executable_path = sys.executable 
+    is_compiled = getattr(sys, 'frozen', False)
+    args = [executable_path]
+    
+    if not is_compiled:
+        args.append(os.path.abspath(browser_context_menu_handler_script_path))
+    cmd = [*args, url]
+
+    if isAuto:
+        autoType = data.get("autoType")
+        autoQuality = data.get("autoQuality")
+        autoFormat = data.get("autoFormat")
+        chkPlaylist = data.get("chkPlaylist")
+        if autoType: cmd.append("--audio")
+        if chkPlaylist: cmd.append("--playlist")
+        if autoFormat: cmd.extend(["--ext", "." + autoFormat])
+        if autoQuality: cmd.extend(["--quality", autoQuality])
+
+    subprocess.Popen(cmd, env=worker_env)
+    return jsonify({"status": "ok"})
+
+@flask_app.route("/download", methods=["POST", "OPTIONS"])
+def handle_download():
+    if request.method == "OPTIONS":
+        return jsonify({"status": "ok"}), 200
+
+    data = request.get_json(force=True, silent=True)
+    if data == None:
+        return jsonify({"error": "No JSON data received"}), 400
+        
+    url = data.get("url")
+    raw_name = data.get("filename")
+    if raw_name:
+        raw_name = os.path.basename(raw_name)
+
+    filename = secure_filename(raw_name or "download.dat")
+    
+    raw_size = data.get("fileSize")
+    try:
+        size_str = str(int(raw_size)) if raw_size is not None and int(raw_size) >= 0 else "0"
+    except (ValueError, TypeError):
+        size_str = "0"
+
+    cookies = data.get("cookies", None)
+    user_agent = data.get("userAgent", None)
+    referer = data.get("referer", None)
+
+    worker_env = os.environ.copy()
+    worker_env["FLAMEGET_WORKER"] = "downloader"
+    
+    executable_path = sys.executable 
+    is_compiled = getattr(sys, 'frozen', False)
+    args = [executable_path]
+    if not is_compiled:
+        args.append(os.path.abspath(downloader_script_path))
+        
+    cmd = [
+        *args, url, filename, size_str,
+        app_settings.get("default_download_dir")
+    ]
+
+    cmd.extend(["--segments", str(app_settings.get("default_segments"))])
+    cmd.extend(["--id", "-1"])
+    cmd.extend(["--speed-limit", str(app_settings.get("global_speed_limit"))])
+
+    if cookies: cmd.append(f"--cookies={cookies}")
+    if user_agent: cmd.append(f"--user-agent={user_agent}")
+    if referer: cmd.append(f"--referer={referer}")
+
+    subprocess.Popen(cmd, env=worker_env)
+    return jsonify({"status": "ok", "filename": filename})
+
+def diagnose_server_port(port):
+    import urllib.request
+    import urllib.error
+
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.settimeout(0.5)
+        is_occupied = (s.connect_ex(('127.0.0.1', port)) == 0)
+        
+    if not is_occupied:
+        return "DEAD"
+
+    try:
+        url = f"http://127.0.0.1:{port}/sync"
+        req = urllib.request.Request(url, method="GET")
+        
+        with urllib.request.urlopen(req, timeout=1.0) as response:
+            if response.status == 200:
+                return "HEALTHY"
+                
+    except (urllib.error.URLError, ConnectionResetError, TimeoutError):
+        pass
+
+    return "HIJACKED_OR_FROZEN"
+
+def server_main():
+    base_port = int(app_settings.get("browser_port", 6812))
+    try:
+        print(f"Attempting to start server on 127.0.0.1:{base_port}...")   
+        status = diagnose_server_port(base_port)
+        
+        if status == "HEALTHY":
+            print(f"Server is already running and healthy on port {base_port}.")
+            return
+            
+        elif status == "HIJACKED_OR_FROZEN":
+            print(f"CRITICAL: Port {base_port} is hijacked by another app!")
+            notify_main_ui(f"Port {base_port} is busy! Please change it in settings.", is_error=True)
+            return
+            
+        elif status == "DEAD":
+            print("Port is free. Starting server...")
+        serve(flask_app, host='127.0.0.1', port=base_port, threads=4)
+        
+    except OSError as e:
+        if "Address already in use" in str(e) or getattr(e, 'errno', 0) == 98:
+            print(f"Port {base_port} is busy.")
+            notify_main_ui(f"Port {base_port} is busy! Please change it in settings.", is_error=True)
+        else:
+            notify_main_ui(f"Browser integration crashed: {str(e)}", is_error=True)
+            raise e
+
+if __name__ == '__main__':
+    main()

@@ -1,6 +1,12 @@
-src/
 pkg/
-*.pkg.tar.zst
 src/
-pkg/
-*.pkg.tar.zst
+*.pkg.tar.*
+*.log
+__pycache__/
+*.pyc
+*.pyo
+venv/
+env/
+.vscode/
+.idea/
+.DS_Store

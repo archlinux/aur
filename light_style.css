@@ -25,7 +25,10 @@ window,
     color: #000000;
     padding: 6px;
 }
-
+selection {
+    background-color: @blue;
+    color: white;
+}
 /* ==========================================================================
    BUTTON STYLES
    ========================================================================== */
@@ -37,6 +40,19 @@ window,
 }
 
 /* Standard Buttons */
+menubutton > button{
+    color: #000000;
+    background-image: none;
+    background-color: @foreground;
+    border-radius: 6px;
+    border-color: @border-color;
+}
+menubutton > button:hover{
+    background-color: @hover;
+}
+menubutton > button:active{
+    background-color: alpha(@foreground, .5);
+}
 .generic-button{
     background-image: none;
     background-color: @foreground;
@@ -379,10 +395,16 @@ columnview row:first-child {
    ========================================================================== */
 progressbar progress {
     background-image: none;
-    background-color: @blue;
+    border-color: @blue;
+    background-color: alpha(@blue, .5);
     border-radius: 4px;
 }
-
+progressbar trough{
+    background-image: none;
+    background-color: transparent;
+    border-color: @blue;
+}
+/* Height of the progress bar row */
 progressbar trough,
 progress {
     min-height: 40px;
@@ -403,9 +425,24 @@ progress {
     font-size: 13px;
     color: #333333;
 }
+checkbutton{
+    background-image: none;
+}
+checkbutton check{
+    background-image: none;
+}
+checkbutton:checked check{
+    color: #000000;
+}
 checkbutton check:disabled {
     background-image: none;
-    background-color: @foreground; 
+    background-color: @background; 
+}
+checkbutton label:disabled{
+    color: #999999;
+}
+checkbutton:hover check {
+    background-color: alpha(@blue, .1);    
 }
 /* ==========================================================================
    DROPDOWN MENUS
@@ -661,6 +698,10 @@ scale slider {
 .shake {
   border: 1px solid @red;
 }
+.settings-label{
+    font-size: large;
+    font-weight: 800;
+}
 .size-label{
   transition: opacity 2000ms ease;
 }
@@ -683,33 +724,24 @@ scale slider {
     border-top: none;
 }
 
-stackswitcher {
-    background-color: @border-color;
-    background-image: none;
-    padding: 0;
-    margin: 0;
-    border-radius: 0;
-    background-color: transparent; 
-}
-
-/* Inactive */
-stackswitcher button {
+stackswitcher.downloader button {
     border-radius: 0px;
     border-color: transparent;
     background-color: @foreground;
-    margin-top: -8px;
+    margin-right: -5px;
+    margin-left: -5px;
+    margin-top: -6px;
     background-image: none;
-    color: #555555;
 }
 
-/* Hover */
-stackswitcher button:hover {
+/* 2. HOVER STATE (When mouse is over a tab) */
+stackswitcher.downloader button:hover {
     background-color: @hover;
     color: #000000;
 }
 
-/* Active */
-stackswitcher button:checked {
+/* 3. ACTIVE TAB (The currently selected page) */
+stackswitcher.downloader button:checked {
     background-color: @background;
     color: @blue;
     font-weight: bold;
@@ -769,13 +801,14 @@ stackswitcher button:checked {
     background-color: @foreground;
 }
 .del-tracker-item{
-    margin-left: 10px;
+    min-width: 1px;
+    min-height: 1px;
     border-radius: 3px;
-    padding: .1px;
+    color: white;
     background-image: none;
     background-color: @red;
     border: 1px solid @red;
-    color: white;
+    padding: 0px;
 }
 .del-tracker-item:hover{
     background-color: alpha(@red, .8);
@@ -804,4 +837,134 @@ stackswitcher button:checked {
 
 dropdown.dropmenu-rtl > popover{
     margin-right: -7px;
+}
+
+/* About section */
+popover.about-menu > contents {
+    padding: 6px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.4);
+    border: 1px solid @border-color;
+    background-color: @background;
+}
+popover.about-menu arrow {
+    border: 1px solid @border-color;
+    background-color: @background;
+}
+popover.about-menu {
+    background-image: none;
+    background-color: transparent;
+}
+.report-bug-btn image {
+    color: white;
+}
+.donate-btn image {
+    color: @red;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%   { transform: scale(1.1); }
+    14%  { transform: scale(1.3); }
+    28%  { transform: scale(1.1); }
+    42%  { transform: scale(1.3); }
+    70%  { transform: scale(1.1); }
+    100% { transform: scale(1.1); }
+}
+.donate-btn label {
+    font-weight: bold;
+}
+.about-helper stackswitcher button {
+    background-image: none;
+    background-color: @foreground;
+    border-color: @border-color;
+}
+
+.about-helper stackswitcher button:hover {
+    background-color: @hover;
+}
+
+.about-helper stackswitcher button:active {
+    background-color: alpha(@foreground, .5);
+}
+
+.about-helper stackswitcher button:checked {
+    background-color: @blue; 
+    color: #000000;
+}
+
+.about-helper stackswitcher button:checked:hover {
+    background-color: alpha(@blue, .8);
+}
+aboutdialog{
+    background-image: none;
+    background-color: @background;
+} 
+.about-helper headerbar {
+    background-image: none;
+    background-color: @foreground;
+    box-shadow: none;
+    border: none;
+}
+/* for windows */
+headerbar {
+    background-image: none; 
+    background-color: transparent;
+    color: black;
+    border: none;
+}
+windowcontrols button {
+    color: black; 
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 4px;
+}
+windowcontrols button.close {
+    background-image: none;
+    background-color: transparent;
+}
+window.about-helper scrolledwindow textview,
+window.about-helper scrolledwindow viewport {
+    background-image: none;
+    background-color: @background;
+}
+window.about-helper scrolledwindow textview,
+window.about-helper scrolledwindow viewport {
+    background-image: none;
+    background-color: @background;
+}
+.dialog-vbox .dialog-action-area .text-button {
+    background-image: none;
+    margin: 5px;
+    background-color: @blue; 
+}
+.dialog-vbox .dialog-action-area .text-button {
+    background-color: alpha(@blue, .9);
+    border: 1px solid @blue;
+    color: black;
+}
+.dialog-vbox .dialog-action-area .text-button:hover {
+    background-color: alpha(@blue, .8);
+}
+.dialog-vbox .dialog-action-area .text-button:active {
+    background-color: alpha(@blue, .5);
+}
+
+.dialog-vbox .dialog-action-area .text-button:not(.suggested-action) {
+    background-color: alpha(@red, .9);
+    border: 1px solid @red;
+    color: black;
+}
+.dialog-vbox .dialog-action-area .text-button:not(.suggested-action):hover {
+    background-color: alpha(@red, .8);
+}
+.dialog-vbox .dialog-action-area .text-button:not(.suggested-action):active {
+    background-color: alpha(@red, .5);
+}
+fontchooser stack grid stack grid entry{
+    background-image: none;
+    color: black;
+    background-color: @foreground;
 }

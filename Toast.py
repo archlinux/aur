@@ -1,8 +1,6 @@
-import gi, os
+import gi
 gi.require_version("Gtk", "4.0")
 from gi.repository import Gtk, Gdk, GLib
-
-# --- Modern KDE-Style CSS ---
 css_provider = Gtk.CssProvider()
 css_provider.load_from_data(b"""
 .toast-container {
@@ -36,30 +34,21 @@ css_provider.load_from_data(b"""
 }
 """)
 
-Gtk.StyleContext.add_provider_for_display(
-    Gdk.Display.get_default(),
-    css_provider,
-    Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-)
+display = Gdk.Display.get_default()
+if display:
+    Gtk.StyleContext.add_provider_for_display(
+        display,
+        css_provider,
+        Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+    )
 
 class ToastBox(Gtk.Box):
     def __init__(self, message, duration=3000, color="green_toast"):
         super().__init__(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
-        display = Gdk.Display.get_default()
-        icon_theme = Gtk.IconTheme.get_for_display(display)
-        install_dir = os.path.dirname(os.path.abspath(__file__))
-        
-        icons_dir = os.path.join(install_dir, "icons") 
-        if os.path.exists(icons_dir):
-            icon_theme.add_search_path(icons_dir)
-        else:
-            print(f"Warning: Icon folder not found at {icons_dir}")
-        # 1. Apply Styles
         self.add_css_class("toast-container")
         self.set_halign(Gtk.Align.CENTER)
         self.set_valign(Gtk.Align.END)
         
-        # 2. Build UI (Accent Strip + Content)
         accent = Gtk.Box()
         accent.add_css_class("accent-strip")
         if color == "red_toast":
@@ -83,57 +72,47 @@ class ToastBox(Gtk.Box):
         content_box.append(label)
         self.append(content_box)
 
-        # --- ANIMATION SETUP ---
-        # Initial State: Invisible and slightly lower than final position
         self.set_opacity(0.0)
         self.set_margin_bottom(0) 
         
-        # Animation Variables
-        self.target_margin = 30  # Final distance from bottom
+        self.target_margin = 30
         self.current_margin = 0.0
         self.current_opacity = 0.0
         
-        # 1. Start Entrance Animation
-        GLib.timeout_add(16, self._animate_in) # ~60 FPS
+        GLib.timeout_add(16, self._animate_in)
 
-        # 2. Schedule Exit
         GLib.timeout_add(duration, self._start_exit_animation)
 
     def _animate_in(self):
         """Smooth ease-out animation for pop-up effect."""
-        # Calculate distance to target
         margin_diff = self.target_margin - self.current_margin
         opacity_diff = 1.0 - self.current_opacity
 
-        # Stop if we are close enough (Floating point precision)
         if margin_diff < 0.5 and opacity_diff < 0.05:
             self.set_margin_bottom(self.target_margin)
             self.set_opacity(1.0)
-            return False # Stop the timer
+            return False
 
-        # Mathematical interpolation (Ease-Out)
-        # We move 20% of the remaining distance every frame
         self.current_margin += margin_diff * 0.2
         self.current_opacity += opacity_diff * 0.2
 
         self.set_margin_bottom(int(self.current_margin))
         self.set_opacity(self.current_opacity)
-        return True # Continue timer
+        return True
 
     def _start_exit_animation(self):
         """Trigger the exit animation loop."""
         GLib.timeout_add(16, self._animate_out)
-        return False # Stop the wait timer
+        return False
 
     def _animate_out(self):
         """Reverse animation to fade out and slide down."""
-        # We target 0 opacity and -10 margin (slide down slightly)
         if self.current_opacity <= 0.05:
             self._remove_self()
             return False
 
-        self.current_opacity -= 0.1 # Fade out faster than fade in
-        self.current_margin -= 1.0  # Slide down slowly
+        self.current_opacity -= 0.1
+        self.current_margin -= 1.0
         
         self.set_opacity(max(0.0, self.current_opacity))
         self.set_margin_bottom(int(self.current_margin))

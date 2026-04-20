@@ -1,52 +1,30 @@
 #!/usr/bin/env python3
-import sys, importlib
+import sys
 import os
 import subprocess
 import threading
 import gi
-gi.require_version("Gtk", "4.0")
-from gi.repository import Gtk, GLib, Gio, Gdk
-import json
-import argparse
-def lazy_import(name):
-    spec = importlib.util.find_spec(name)
-    loader = importlib.util.LazyLoader(spec.loader)
-    spec.loader = loader
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[name] = module
-    loader.exec_module(module)
-    return module
 
-yt_dlp = lazy_import("yt_dlp")
+gi.require_version("Gtk", "4.0")
+from gi.repository import Gtk, GLib, Gio
+import argparse
+import FireAddOns as addOn
+import SaveManager
+
+yt_dlp = addOn.lazy_import("yt_dlp")
 
 # --- CONFIG ---
-style_provider = None
-config_dir = os.path.join(GLib.get_user_config_dir(), "flameget")
-os.makedirs(config_dir, exist_ok=True)
+downloader_script_path = addOn.FireFiles.downloader_script_path
+translations = SaveManager.load_translations()
+app_settings = SaveManager.load_settings()
+SaveManager.load_css(app_settings.get("theme_mode"))
+is_flatpak_env = 'FLATPAK_ID' in os.environ or os.path.exists('/.flatpak-info')
+worker_type = os.environ.get("FLAMEGET_WORKER")
+if "downloader" == worker_type:
+    import downloader
+    downloader.main()
+    sys.exit(0)
 
-data_dir = os.path.join(GLib.get_user_data_dir(), "flameget")
-os.makedirs(data_dir, exist_ok=True)
-
-install_dir = os.path.dirname(os.path.abspath(__file__))
-
-settings_file = os.path.join(config_dir, "settings.json")
-downloader_script_path = os.path.join(install_dir, "downloader.py")
-
-translations_file = os.path.join(config_dir, "translations.json")
-
-def load_translations(file_path):
-    if not os.path.exists(file_path):
-        print(f"Error: {file_path} not found.")
-        return {"en": {}}
-    
-    try:
-        with open(file_path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except json.JSONDecodeError as e:
-        print(f"Error decoding JSON: {e}")
-        return {"en": {}}
-
-translations = load_translations(translations_file)
 def tr(text):
     """Simple translation lookup."""
     lang = app_settings.get("language", "en")
@@ -54,85 +32,9 @@ def tr(text):
         return translations[lang][text]
     return text
 
-def load_settings():
-    default_css = os.path.join(config_dir, "dark_style.css")
-    custom_css = os.path.join(config_dir, "custom_style.css")
-
-    defaults = {
-        "engine": "Aria2",
-        "css_path": default_css,
-        "custom_css_path": custom_css,
-        "default_segments": 8,
-        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "confirm_delete": True,
-        "notifications": True,
-        "default_download_dir": GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DOWNLOAD),
-        "theme_mode": "Dark",
-        "language": "en",
-        "font_name": "Sans Regular 11",
-        "ui_scale": 100,
-        "start_on_boot": False,
-        "show_finish_dialog": True,
-        "enable_toasts":True,
-        "chk_has_borders": True,
-        "enable_integration": True,
-        "ctx_menu_offsets": {"x": 100, "y":0},
-        "start_in_minimize_mode": False,
-        "auto_start": False,
-        "global_speed_limit": "0",
-        "browser_port": "6800"
-    }
-    if os.path.exists(settings_file):
-        try:
-            with open(settings_file, 'r') as f:
-                data = json.load(f)
-                defaults.update(data)
-        except: pass
-    return defaults
-
-app_settings = load_settings()
-
-def load_css(theme=""):
-    global style_provider
-
-    display = Gdk.Display.get_default()
-
-    if style_provider:
-        Gtk.StyleContext.remove_provider_for_display(display, style_provider)
-
-    print(f"Switching to theme: {theme}")
-    if theme == "Custom":
-        css_path = os.path.join(config_dir, "custom_style.css")
-    else:
-        css_path = os.path.join(config_dir, f"{theme.lower()}_style.css")
-
-    css_provider = Gtk.CssProvider()
-    css_file = Gio.File.new_for_path(css_path)
-    
-    try:
-        css_provider.load_from_file(css_file)
-        
-        Gtk.StyleContext.add_provider_for_display(
-            display, 
-            css_provider, 
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-        )
-        style_provider = css_provider 
-    except Exception as e:
-        print(f"CSS Load Error: {e}")
-
-load_css(app_settings.get("theme_mode"))
-
-SUPPORTED_SITES = {
-    "youtube.com", "youtu.be", "twitch.tv", "tiktok.com", "instagram.com", 
-    "facebook.com", "fb.watch", "twitter.com", "x.com", "vimeo.com", 
-    "dailymotion.com", "soundcloud.com", "mixcloud.com", "reddit.com", 
-    "bilibili.com", "vk.com", "odysee.com", "rumble.com", "streamable.com"
-}
-
 class VideoAnalyzer(Gtk.Application):
     def __init__(self, filename, directory, url, ext=".mp4", audio=False, quality="Best Available", playlist=False):
-        super().__init__(application_id="com.flameget.analyzer", flags=Gio.ApplicationFlags.NON_UNIQUE)
+        super().__init__(application_id="io.github.C_Yassin.FlameGet.Downloader", flags=Gio.ApplicationFlags.NON_UNIQUE)
         self.filename = filename
         self.file_size_bytes = 0
         self.directory = directory
@@ -147,7 +49,7 @@ class VideoAnalyzer(Gtk.Application):
     def do_activate(self):
         self.window = Gtk.ApplicationWindow(application=self)
         self.window.set_title("FlameGet - Analyzer")
-        self.window.set_icon_name("flameget")
+        self.window.set_icon_name("io.github.C_Yassin.FlameGet" if is_flatpak_env else "flameget")
         self.window.set_default_size(400, -1)
         self.window.set_resizable(False)
 
@@ -175,7 +77,7 @@ class VideoAnalyzer(Gtk.Application):
 
     def is_yt_dlp(self, url):
         clean_url = url.lower()
-        return any(site in clean_url for site in SUPPORTED_SITES)
+        return any(site in clean_url for site in addOn.UNITS.SUPPORTED_SITES)
 
     def normalize_youtube_url(self, url):
         try:
@@ -207,9 +109,7 @@ class VideoAnalyzer(Gtk.Application):
                 
                 raise Exception("SIZE_FOUND")
 
-        runtime_dir = os.environ.get("XDG_RUNTIME_DIR", "/tmp")
-
-        save_path_template = os.path.join(runtime_dir, f'%(title)s{ext}')
+        save_path_template = os.path.join(addOn.UNITS.RUNTIME_DIR, f'%(title)s{ext}')
 
         ydl_opts = {
             'quiet': True,
@@ -217,6 +117,7 @@ class VideoAnalyzer(Gtk.Application):
             'noplaylist': True,
             'socket_timeout': 20,
             'outtmpl': save_path_template, 
+            'ffmpeg_location': addOn.FireFiles.ffmpeg_path,
             'progress_hooks': [progress_hook],
         }
 
@@ -490,9 +391,17 @@ class VideoAnalyzer(Gtk.Application):
             file_name += ext
 
         file_size = self.file_size_bytes
-
+        worker_env = os.environ.copy()
+        worker_env["FLAMEGET_WORKER"] = "downloader"
+        
+        executable_path = sys.executable 
+        
+        is_compiled = getattr(sys, 'frozen', False)
+        args = [executable_path]
+        if not is_compiled:
+            args.append(os.path.abspath(downloader_script_path))
         cmd = [
-            sys.executable, downloader_script_path,
+            *args,
             self.url,
             file_name,
             str(file_size),
@@ -512,10 +421,10 @@ class VideoAnalyzer(Gtk.Application):
 
         print("Launching:", " ".join(cmd))
         
-        subprocess.Popen(cmd)
+        subprocess.Popen(cmd, env=worker_env)
         self.quit()
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(description="FlameGet Middleman")
     parser.add_argument("url", help="Target URL")
     
@@ -544,9 +453,17 @@ if __name__ == "__main__":
 
     if filename and has_valid_size:
         print("Explicit arguments detected (Filename & Valid Size). Launching downloader directly...")
+        worker_env = os.environ.copy()
+        worker_env["FLAMEGET_WORKER"] = "downloader"
         
+        executable_path = sys.executable 
+        
+        is_compiled = getattr(sys, 'frozen', False)
+        args = [executable_path]
+        if not is_compiled:
+            args.append(os.path.abspath(downloader_script_path))
         cmd = [
-            sys.executable, downloader_script_path,
+            *args,
             args.url,
             filename,
             args.size,
@@ -565,8 +482,14 @@ if __name__ == "__main__":
             cmd.append("--playlist")
 
         print("Launching:", " ".join(cmd))
-        subprocess.Popen(cmd)
+        subprocess.Popen(cmd, env=worker_env)
         sys.exit(0)
 
     app = VideoAnalyzer(filename, directory, args.url, args.ext, args.audio, args.quality, args.playlist)
     app.run(None)
+
+if __name__ == "__main__":
+    from multiprocessing import freeze_support
+    freeze_support()
+    main()
+    

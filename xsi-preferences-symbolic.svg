@@ -37,37 +37,37 @@
      transform="translate(0.5,0.49999502)">
     <g
        id="path307"
-       style="fill:#2e3436;fill-opacity:1">
+       style="fill:#ffffff;fill-opacity:1">
       <path
-         style="color:#000000;fill:#2e3436;stroke-width:1.76471;stroke-linecap:round;-inkscape-stroke:none;fill-opacity:1"
+         style="color:#000000;fill:#ffffff;stroke-width:1.76471;stroke-linecap:round;-inkscape-stroke:none;fill-opacity:1"
          d="M 2.20588,0.88235497 V 14.117655"
          id="path7137" />
       <path
-         style="color:#000000;fill:#2e3436;stroke-linecap:round;-inkscape-stroke:none;fill-opacity:1"
+         style="color:#000000;fill:#ffffff;stroke-linecap:round;-inkscape-stroke:none;fill-opacity:1"
          d="M 2.2050781,0 A 0.88235497,0.88235497 0 0 0 1.3242187,0.8828125 V 14.117188 A 0.88235497,0.88235497 0 0 0 2.2050781,15 0.88235497,0.88235497 0 0 0 3.0878906,14.117188 V 0.8828125 A 0.88235497,0.88235497 0 0 0 2.2050781,0 Z"
          id="path7139" />
     </g>
     <g
        id="path309"
-       style="fill:#2e3436;fill-opacity:1">
+       style="fill:#ffffff;fill-opacity:1">
       <path
-         style="color:#000000;fill:#2e3436;stroke-width:1.76471;stroke-linecap:round;-inkscape-stroke:none;fill-opacity:1"
+         style="color:#000000;fill:#ffffff;stroke-width:1.76471;stroke-linecap:round;-inkscape-stroke:none;fill-opacity:1"
          d="M 7.5,0.88235497 V 14.117655"
          id="path7131" />
       <path
-         style="color:#000000;fill:#2e3436;stroke-linecap:round;-inkscape-stroke:none;fill-opacity:1"
+         style="color:#000000;fill:#ffffff;stroke-linecap:round;-inkscape-stroke:none;fill-opacity:1"
          d="M 7.5,0 A 0.88235497,0.88235497 0 0 0 6.6171875,0.8828125 V 14.117188 A 0.88235497,0.88235497 0 0 0 7.5,15 0.88235497,0.88235497 0 0 0 8.3828125,14.117188 V 0.8828125 A 0.88235497,0.88235497 0 0 0 7.5,0 Z"
          id="path7133" />
     </g>
     <g
        id="path311"
-       style="fill:#2e3436;fill-opacity:1">
+       style="fill:#ffffff;fill-opacity:1">
       <path
-         style="color:#000000;fill:#2e3436;stroke-width:1.76471;stroke-linecap:round;-inkscape-stroke:none;fill-opacity:1"
+         style="color:#000000;fill:#ffffff;stroke-width:1.76471;stroke-linecap:round;-inkscape-stroke:none;fill-opacity:1"
          d="M 12.79412,0.88235497 V 14.117655"
          id="path6387" />
       <path
-         style="color:#000000;fill:#2e3436;stroke-linecap:round;-inkscape-stroke:none;fill-opacity:1"
+         style="color:#000000;fill:#ffffff;stroke-linecap:round;-inkscape-stroke:none;fill-opacity:1"
          d="M 12.794922,0 A 0.88235497,0.88235497 0 0 0 11.912109,0.8828125 V 14.117188 A 0.88235497,0.88235497 0 0 0 12.794922,15 0.88235497,0.88235497 0 0 0 13.675781,14.117188 V 0.8828125 A 0.88235497,0.88235497 0 0 0 12.794922,0 Z"
          id="path6389" />
     </g>
@@ -75,16 +75,16 @@
        d="m 4.41176,10.588235 c 0,1.21827 -0.9876,2.20589 -2.20588,2.20589 C 0.98761,12.794125 0,11.806505 0,10.588235 c 0,-1.21826 0.98761,-2.20588 2.20588,-2.20588 1.21828,0 2.20588,0.98762 2.20588,2.20588 z"
        fill="#000000"
        id="path313"
-       style="fill:#2e3436;fill-opacity:1;stroke-width:0.882352" />
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.882352" />
     <path
        d="m 9.70588,4.411765 c 0,1.21827 -0.98762,2.20589 -2.20588,2.20589 -1.21826,0 -2.20588,-0.98762 -2.20588,-2.20589 0,-1.21827 0.98762,-2.20588 2.20588,-2.20588 1.21826,0 2.20588,0.98761 2.20588,2.20588 z"
        fill="#000000"
        id="path315"
-       style="fill:#2e3436;fill-opacity:1;stroke-width:0.882352" />
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.882352" />
     <path
        d="m 15,10.588235 c 0,1.21827 -0.98762,2.20589 -2.20588,2.20589 -1.21827,0 -2.20588,-0.98762 -2.20588,-2.20589 0,-1.21826 0.98761,-2.20588 2.20588,-2.20588 1.21826,0 2.20588,0.98762 2.20588,2.20588 z"
        fill="#000000"
        id="path317"
-       style="fill:#2e3436;fill-opacity:1;stroke-width:0.882352" />
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.882352" />
   </g>
 </svg>

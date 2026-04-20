@@ -8,3 +8,4 @@ Type=Application
 Categories=Download Manager
 StartupNotify=true
 MimeType=x-scheme-handler/magnet;
+Keywords=Network;FileTransfer
