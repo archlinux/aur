@@ -8,6 +8,7 @@ url="https://github.com/Psychotoxical/psysonic"
 license=('GPL-3.0-only')
 provides=('psysonic')
 conflicts=('psysonic')
+options=('!debug')
 depends=(
     'alsa-lib'
     'gtk3'
@@ -28,8 +29,6 @@ package() {
     mv "${pkgdir}/usr/bin/psysonic" "${pkgdir}/usr/bin/psysonic-bin"
     cat <<EOF > "${pkgdir}/usr/bin/psysonic"
 #!/bin/sh
-export WEBKIT_DISABLE_COMPOSITING_MODE=1
-export GDK_BACKEND=x11
 exec /usr/bin/psysonic-bin "\$@"
 EOF
     chmod +x "${pkgdir}/usr/bin/psysonic"
