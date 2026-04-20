@@ -1,7 +1,7 @@
 # Maintainer: hekel <hekel at vivaldi dot net>
 
 pkgname="chatterino2-7tv-native-git"
-pkgver=7.5.3beta1.r101.g28721ab
+pkgver=7.5.5beta1.r68.g758cd72
 pkgrel=1
 pkgdesc='Chatterino2 fork with support for 7tv; Patched for native QT & Kvantum Themes: https://github.com/hekel/chatterino-stuffs'
 url="https://github.com/SevenTV/chatterino7"
@@ -9,6 +9,7 @@ license=('MIT')
 arch=('x86_64')
 depends=(
   'boost-libs'
+  'hunspell'
   'libavif'
   'libnotify'
   'openssl'
@@ -117,6 +118,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DUSE_SYSTEM_QTKEYCHAIN=ON
     -DUSE_PRECOMPILED_HEADERS=OFF
+    -DCHATTERINO_SPELLCHECK=ON
     -DCHATTERINO_UPDATER=OFF
     -DSKIP_JSON_GENERATION=ON
     -Wno-dev
