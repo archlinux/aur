@@ -1,6 +1,6 @@
 pkgbase = labar
 	pkgdesc = Launch bar for Wayland
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/Amodio/labar
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = labar
 	depends = glib2
 	depends = cairo
 	depends = gtk4
-	source = labar-1.4.1.tar.gz::https://github.com/Amodio/labar/archive/refs/tags/v1.4.1.tar.gz
-	sha256sums = 590317beff5a5578de8796cb103d9c51a1118038d56811a359a2abae4c59ee35
+	source = labar-1.4.2.tar.gz::https://github.com/Amodio/labar/archive/refs/tags/v1.4.2.tar.gz
+	sha256sums = 4bed79b5cadd590f0e6109835c8f936601e31079c9af01cd00b9d7f04999cfec
 
 pkgname = labar
