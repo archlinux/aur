@@ -1,13 +1,13 @@
 # Maintainer: Icaro Motta <icarogomesmotta@proton.me>
 pkgname=autoanimedownloader-git
-pkgver=1.2.0.r0.g0000000
+pkgver=1.3.0.r0.g0000000
 pkgrel=1
 pkgdesc="An app that automatically downloads your anime from Anilist"
 arch=('x86_64' 'aarch64')
 url="https://github.com/icarosuper/AutoAnimeDownloader"
 license=('GPL3')
 depends=('qbittorrent')
-makedepends=('git' 'go' 'npm')
+makedepends=('git' 'go' 'npm' 'pkg-config')
 provides=('autoanimedownloader')
 conflicts=('autoanimedownloader-bin')
 source=("${pkgname}::git+https://github.com/icarosuper/AutoAnimeDownloader.git")
@@ -52,4 +52,7 @@ package() {
 
   sed -i 's|%h/.local/bin/autoanimedownloader-daemon|/usr/bin/autoanimedownloader-daemon|g' \
     "${pkgdir}/usr/lib/systemd/user/autoanimedownloader.service"
+
+  install -Dm644 infra/linux/autoanimedownloader.desktop "${pkgdir}/usr/share/applications/autoanimedownloader.desktop"
+  install -Dm644 src/internal/tray/icon.png "${pkgdir}/usr/share/pixmaps/autoanimedownloader.png"
 }
