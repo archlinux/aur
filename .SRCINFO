@@ -1,6 +1,6 @@
 pkgbase = snowflake-client
 	pkgdesc = Snowflake Database command line client (snowsql)
-	pkgver = 1.4.5
+	pkgver = 1.5.0
 	pkgrel = 1
 	epoch = 1
 	url = http://www.snowflake.net/
@@ -9,10 +9,10 @@ pkgbase = snowflake-client
 	depends = gcc-libs
 	depends = unzip
 	depends = libxcrypt-compat
-	source = snowflake-client-1.4.5.bash::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.4/linux_x86_64/snowsql-1.4.5-linux_x86_64.bash
-	source = snowflake-client-1.4.5.bash.sig::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.4/linux_x86_64/snowsql-1.4.5-linux_x86_64.bash.sig
-	validpgpkeys = 8564510C6D193BB04E0603062A3149C82551A34A
-	sha256sums = 518837dd955d2faebbf11f38db52323ce4ec8fdef6da6a19780eaaff61dafbee
+	source = snowflake-client-1.5.0.bash::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.5/linux_x86_64/snowsql-1.5.0-linux_x86_64.bash
+	source = snowflake-client-1.5.0.bash.sig::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.5/linux_x86_64/snowsql-1.5.0-linux_x86_64.bash.sig
+	validpgpkeys = 6C983AB7AFE2E5951C6C47B13C98F63C9292CE02
+	sha256sums = 3124e9b642fab946e701e64e72417fa90797a5708156d3d974eeaf9bea4402c3
 	sha256sums = SKIP
 
 pkgname = snowflake-client

@@ -3,12 +3,12 @@
 
 # To be able to verify the gpg signatures run:
 # ```
-# gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys 2A3149C82551A34A
+# gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys 3C98F63C9292CE02
 # ```
 
 pkgname=snowflake-client
-pkgver=1.4.5
-_bootstrap=1.4
+pkgver=1.5.0
+_bootstrap=1.5
 pkgrel=1
 epoch=1
 pkgdesc="Snowflake Database command line client (snowsql)"
@@ -22,9 +22,9 @@ source=(
     "${pkgname}-${pkgver}.bash::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/${_bootstrap}/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash"
     "${pkgname}-${pkgver}.bash.sig::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/${_bootstrap}/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash.sig"
 )
-sha256sums=('518837dd955d2faebbf11f38db52323ce4ec8fdef6da6a19780eaaff61dafbee'
+sha256sums=('3124e9b642fab946e701e64e72417fa90797a5708156d3d974eeaf9bea4402c3'
             'SKIP')
-validpgpkeys=('8564510C6D193BB04E0603062A3149C82551A34A')
+validpgpkeys=('6C983AB7AFE2E5951C6C47B13C98F63C9292CE02')
 
 package() {
   # Stop Snowflake installer from modifying shell profile
