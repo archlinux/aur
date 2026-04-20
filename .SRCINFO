@@ -1,0 +1,19 @@
+pkgbase = todarchy-git
+	pkgdesc = Keyboard-first, Omarchy-themed task manager
+	pkgver = 0.1.0.r0
+	pkgrel = 1
+	url = https://github.com/ryanrusnak/todarchy-linux
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = npm
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	provides = todarchy
+	provides = tod
+	source = git+https://github.com/ryanrusnak/todarchy-linux.git
+	sha256sums = SKIP
+
+pkgname = todarchy-git
