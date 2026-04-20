@@ -1,15 +1,15 @@
 pkgbase = gaiad-bin
 	pkgdesc = Cosmos SDK application for the Cosmos Hub
-	pkgver = 27.1.0
+	pkgver = 27.2.0
 	pkgrel = 1
 	url = https://github.com/cosmos/gaia
 	arch = x86_64
 	license = Apache
 	provides = gaiad
 	conflicts = gaiad
-	source = https://raw.githubusercontent.com/cosmos/gaia/v27.1.0/LICENSE
+	source = https://raw.githubusercontent.com/cosmos/gaia/v27.2.0/LICENSE
 	sha256sums = 98bf5ef31e3c439d9d721a2b919fa285ad6a1ee607d71fb062a8b1849ae1e1fc
-	source_x86_64 = gaiad-v27.1.0-linux-x86_64::https://github.com/cosmos/gaia/releases/download/v27.1.0/gaiad-v27.1.0-linux-amd64
-	sha256sums_x86_64 = 958c5a99738592891de886a2fbd86eace4568a1804e89359a32889c01afc177f
+	source_x86_64 = gaiad-v27.2.0-linux-x86_64::https://github.com/cosmos/gaia/releases/download/v27.2.0/gaiad-v27.2.0-linux-amd64
+	sha256sums_x86_64 = 8c086f59ec924e1bbd308624ac59d0de7b5a63454d628442249113b05ec69f3d
 
 pkgname = gaiad-bin
