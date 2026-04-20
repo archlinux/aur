@@ -1,0 +1,13 @@
+pkgbase = mozillajs-linux-bin
+	pkgdesc = javascript library used by Oolite
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/OoliteProject/mozillajs-linux
+	arch = x86_64
+	license = MPL-1.1
+	options = !strip
+	options = !debug
+	source = mozillajs-linux-bin-0.0.1.tar.gz::https://github.com/OoliteProject/mozillajs-linux/releases/download/0.0.1/mozilla-js-static-lib.tar.gz
+	sha512sums = 6b2903570d5d1499d514c6decaed414f567825eeee756c644e49fc67d1ec2b40055321793f8debca00f11da281441b5547d13df4420e5564e7bb27f681f4f4b5
+
+pkgname = mozillajs-linux-bin
