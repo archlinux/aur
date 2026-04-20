@@ -1,6 +1,5 @@
 pkgname=marmot
 pkgver=2.9.10
-_pkgver=2.9.10-beta
 pkgrel=1
 pkgdesc="A distributed SQLite server with MySQL wire compatible interface"
 arch=(any)
@@ -8,7 +7,7 @@ url="https://github.com/maxpert/marmot"
 license=(MIT)
 makedepends=('go' 'toml-cli')
 backup=('etc/marmot/config.toml')
-source=("https://github.com/maxpert/marmot/archive/refs/tags/v$_pkgver.tar.gz"
+source=("https://github.com/maxpert/marmot/archive/refs/tags/v${pkgver}-beta.tar.gz"
 	"marmot.service")
 
 sha256sums=('86fa8e63a22946848b5215f538ed562d4869d4200b0c628cf8d2ac54164786ba'
