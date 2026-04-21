@@ -10,8 +10,8 @@ license=('OSL-3.0')
 depends=('pam' 'libcap')
 makedepends=('cmake>=3.18' 'clang' 'llvm' 'ninja' 'pkgconf' 'git' 'yaml-cpp' 'ccache')
 backup=('etc/pam.d/voix' 'etc/voix.conf')
-source=("git+https://github.com/Veridian-Zenith/Voix.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/Veridian-Zenith/Voix.git#tag=v$pkgver")
+sha256sums=('bcbfa157c8e6e64e13dd33686e2c1d4152f72070905a2e5a18bceaee28b0be61')
 
 
 build() {
