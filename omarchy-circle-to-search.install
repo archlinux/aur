@@ -1,20 +1,22 @@
+#!/bin/sh
+
 post_install() {
-    echo ""
-    echo "  >>> omarchy-circle-to-search installed."
-    echo ""
-    echo "  ── STEP 1: Enable keybindings (copy-paste this) ──────────────"
-    echo ""
-    echo "    printf '\\n# circle-to-search\\nbindd = SUPER ALT, C, Circle to Search, exec, circle-to-search\\n' >> ~/.config/hypr/bindings.conf && hyprctl reload"
-    echo ""
-    echo "  ── Default keybinding ────────────────────────────────────────"
-    echo ""
-    echo "    SUPER+ALT+C    Circle to Search"
-    echo ""
-    echo "  ── Customize ────────────────────────────────────────────────"
-    echo ""
-    echo "    Edit the bindings directly in ~/.config/hypr/bindings.conf"
-    echo "    Reference: /usr/share/circle-to-search/hyprland-binds.conf"
-    echo ""
+    printf '\n'
+    printf '  >>> omarchy-circle-to-search installed.\n'
+    printf '\n'
+    printf '  ── STEP 1: Enable keybindings (copy-paste this) ──────────────\n'
+    printf '\n'
+    printf '%s\n' "    printf '\\n# circle-to-search\\nbindd = SUPER ALT, C, Circle to Search, exec, circle-to-search\\n' >> ~/.config/hypr/bindings.conf && hyprctl reload"
+    printf '\n'
+    printf '  ── Default keybinding ────────────────────────────────────────\n'
+    printf '\n'
+    printf '    SUPER+ALT+C    Circle to Search\n'
+    printf '\n'
+    printf '  ── Customize ────────────────────────────────────────────────\n'
+    printf '\n'
+    printf '    Edit the bindings directly in ~/.config/hypr/bindings.conf\n'
+    printf '    Reference: /usr/share/circle-to-search/hyprland-binds.conf\n'
+    printf '\n'
 }
 
 post_upgrade() {
@@ -22,11 +24,11 @@ post_upgrade() {
 }
 
 post_remove() {
-    echo ""
-    echo "  >>> omarchy-circle-to-search removed."
-    echo ""
-    echo "  ── Remove keybindings (copy-paste this) ──────────────────────"
-    echo ""
-    echo "    sed -i '/circle-to-search/d' ~/.config/hypr/bindings.conf && hyprctl reload"
-    echo ""
+    printf '\n'
+    printf '  >>> omarchy-circle-to-search removed.\n'
+    printf '\n'
+    printf '  ── Remove keybindings (copy-paste this) ──────────────────────\n'
+    printf '\n'
+    printf '%s\n' "    sed -i '/circle-to-search/d' ~/.config/hypr/bindings.conf && hyprctl reload"
+    printf '\n'
 }

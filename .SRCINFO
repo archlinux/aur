@@ -1,12 +1,13 @@
 pkgbase = omarchy-circle-to-search
 	pkgdesc = Draw to select and search with Google Lens — Omarchy edition
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/eightscrow/omarchy-circle-to-search
 	install = omarchy-circle-to-search.install
 	arch = any
 	license = MIT
 	depends = python
+	depends = python-cairo
 	depends = python-gobject
 	depends = python-pillow
 	depends = gtk3
@@ -22,7 +23,7 @@ pkgbase = omarchy-circle-to-search
 	optdepends = xdg-utils: fallback URL opening
 	provides = circle-to-search
 	conflicts = circle-to-search
-	source = omarchy-circle-to-search-2.1.0.tar.gz::https://github.com/eightscrow/omarchy-circle-to-search/archive/v2.1.0.tar.gz
-	sha256sums = e725b2ccfbde58007942aacbbaf120e9bd2c990d6d177e626ac38efe95cf2af7
+	source = omarchy-circle-to-search-2.2.0.tar.gz::https://github.com/eightscrow/omarchy-circle-to-search/archive/v2.2.0.tar.gz
+	sha256sums = 0b70b8aab4b397a5842c73aaeb1605739ce2042f7744e100c44e0095ba57f7e8
 
 pkgname = omarchy-circle-to-search
