@@ -14,7 +14,7 @@ source=("https://github.com/asheshgoplani/agent-deck/releases/download/v1.7.50/a
 sha256sums=('1415f37a4031d929f92562ad2faee7e2f3a31142382305488b11dce2b827ca63')
 
 prepare() {
-    tar -xf "${source}"
+    tar -xf "${srcdir}/$(basename "${source}")"
 }
 
 package() {
