@@ -1,0 +1,24 @@
+pkgbase = wl-kbd-config-git
+	pkgdesc = Keyboard layout configuration GUI for Wayland WMs
+	pkgver = 0.2.0.r2.gd106eb2
+	pkgrel = 1
+	url = https://github.com/sfs-pra/wl-kbd-config
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gettext
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = vala
+	makedepends = dbus
+	depends = gtk3
+	depends = libxkbcommon
+	depends = wl-kbd-assets
+	optdepends = librsvg: SVG flag icons in settings UI
+	provides = wl-kbd-config
+	conflicts = wl-kbd-config
+	source = git+https://github.com/sfs-pra/wl-kbd-config.git
+	sha256sums = SKIP
+
+pkgname = wl-kbd-config-git
