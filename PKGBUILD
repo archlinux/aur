@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=mtproto.zig
-pkgver=0.16.0
+pkgver=0.19.2
 pkgrel=1
 pkgdesc="High-performance Telegram MTProto proxy written in Zig"
 arch=(any)
@@ -19,15 +19,16 @@ depends=(
 	'python-psutil'
 	'python-websockets'
 )
-sha256sums=('17e0d62cf214a78f972c4a4dbf0e3c41049c3eadbf649cea1759b350a735a797'
+sha256sums=('37f018c3d9baf6e52242f9ac42fe3686bb07109372c443afd75f08abc62d9763'
             'd58880e0feeef1e9f157bd7469760e391bccf940a3cb8e1795dbb9bf0434c4d7'
-            '262a7da689f7710ad69953291f2baf42e681868a451bad4d346a9c674ea6705f'
+            '7dcd7cf03d013b2d93bcb400867cc8d23f707d54018df3c752caaabe3725a425'
             'a089d6059846f1513ce566225c37b256ae2ac3cd9b18e0d85d1d473f3d067c90')
 backup=('etc/mtproto-proxy.toml')
 install='mtproto-proxy.install'
 build () {
 	cd "$pkgname-$pkgver"
 	make build
+	sudo zig-out/bin/mtbuddy setup dashboard
 }
 package() {
 	cd "$pkgname-$pkgver"
