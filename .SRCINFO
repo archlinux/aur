@@ -1,6 +1,6 @@
 pkgbase = droidproxy-linux
 	pkgdesc = Proxy Claude, Codex, and Gemini subscriptions for Factory Droid CLI (Linux port)
-	pkgver = 1.8.14
+	pkgver = 1.8.15
 	pkgrel = 1
 	url = https://github.com/StressarN/droidproxy-linux
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = droidproxy-linux
 	provides = droidproxy
 	conflicts = droidproxy
 	conflicts = droidproxy-linux-bin
-	source = droidproxy-linux-1.8.14.tar.gz::https://github.com/StressarN/droidproxy-linux/archive/refs/tags/v1.8.14.tar.gz
-	sha256sums = a3b871aea96dbf1f4f655dae7f33c9e6b448cd854dc6e7716828bfb6f9e83512
+	source = droidproxy-linux-1.8.15.tar.gz::https://github.com/StressarN/droidproxy-linux/archive/refs/tags/v1.8.15.tar.gz
+	sha256sums = 76b472ff3372afe125394d1a5099a100ffc0e8563c37d22ba4e926751fbf74c2
 
 pkgname = droidproxy-linux
