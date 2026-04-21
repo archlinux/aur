@@ -1,0 +1,16 @@
+pkgbase = plasma-splash-catppuccin-mocha-git
+	pkgdesc = Soothing pastel splash screens for KDE Plasma
+	pkgver = 0.2.6.r3.g0909503
+	pkgrel = 1
+	url = https://github.com/catppuccin/kde
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = sed
+	depends = plasma-desktop
+	provides = plasma-splash-catppuccin-mocha
+	conflicts = plasma-splash-catppuccin-mocha
+	source = plasma-splash-catppuccin-mocha::git+https://github.com/catppuccin/kde.git
+	sha256sums = SKIP
+
+pkgname = plasma-splash-catppuccin-mocha-git
