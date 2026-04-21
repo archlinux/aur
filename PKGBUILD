@@ -1,8 +1,8 @@
 # Maintainer: aquaticcalf
 pkgname=spirit
 pkgver=0.0.0
-pkgrel=7
-pkgdesc="Spirit Desktop (prebuilt)"
+pkgrel=8
+pkgdesc="spirit desktop (prebuilt)"
 arch=('x86_64')
 url="https://github.com/aquaticcalf/spirit"
 license=('MIT')
@@ -12,10 +12,7 @@ sha256sums=('59885c007d1c622f230d24fb26a7b5673c97131af9a4b20c8b09dcc979e4b34a' '
 
 package() {
   install -d "${pkgdir}/opt/${pkgname}"
-  install -d "${srcdir}/spirit-temp"
-  tar -xzf "${srcdir}/spirit-0.0.0-x64.tar.gz" -C "${srcdir}/spirit-temp" --strip-components=1
-  cp -r "${srcdir}/spirit-temp/"* "${pkgdir}/opt/${pkgname}/"
-  rm -rf "${srcdir}/spirit-temp"
+  tar -xzf "${srcdir}/spirit-0.0.0-x64.tar.gz" -C "${pkgdir}/opt/${pkgname}" --strip-components=1
 
   install -d "${pkgdir}/usr/bin"
   ln -sf "/opt/${pkgname}/spirit" "${pkgdir}/usr/bin/${pkgname}"
@@ -25,8 +22,8 @@ package() {
   install -d "${pkgdir}/usr/share/applications"
   cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<DESKTOP
 [Desktop Entry]
-Name=Spirit
-Comment=Spirit Desktop
+Name=spirit
+Comment=spirit desktop
 Exec=/opt/${pkgname}/spirit
 Icon=${pkgname}
 Type=Application
