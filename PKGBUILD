@@ -2,8 +2,8 @@
 
 _pkgname=yandex-browser
 pkgname=yandex-browser-corporate
-pkgver=26.3.1.1020
-_pkgver=26.3.1.1020-1
+pkgver=26.3.1.1071
+_pkgver=26.3.1.1071-1
 pkgrel=1
 
 pkgdesc="The web browser from Yandex.
@@ -20,7 +20,7 @@ depends=("binutils" "ttf-liberation" "jq" "alsa-lib" "at-spi2-atk" "curl" "dbus"
 optdepends=("speech-dispatcher" "gstreamer-meta" "cryptopro-csp-k1")
 
 source=("${pkgname}-${_pkgver}.deb::https://repo.yandex.ru/${_pkgname}/deb/pool/main/y/${pkgname}/${pkgname}_${_pkgver}_amd64.deb")
-sha256sums=("a180dfb5cd0f2e38f5ce8fabcda0a5f71997c9bdbef878f6ec4821493eced3d3")
+sha256sums=("9c1e75bd5d813e1c36b0e967d8dbe50224e68ae1a940eec5f974991f87f353ed")
 install=${pkgname}.install
 
 prepare() {
