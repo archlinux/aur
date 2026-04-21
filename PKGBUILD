@@ -28,5 +28,3 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 requirements.txt "$pkgdir/usr/share/doc/$pkgname/requirements.txt"
 }
-sha256sums=('7882d69558ee2adedbce36f09900582c80e1d656f5ab8b3948aa0c40c39072b1')
-sha256sums=('7882d69558ee2adedbce36f09900582c80e1d656f5ab8b3948aa0c40c39072b1')
