@@ -1,7 +1,7 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=veila-git
 _repo=Veila
-pkgver=0.1.4.r0.g0000000
+pkgver=0.1.5.r0.g0000000
 pkgrel=1
 pkgdesc="Secure, elegant, and fast Wayland screen locker (latest git)"
 arch=('x86_64')
