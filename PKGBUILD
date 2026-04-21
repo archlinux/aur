@@ -12,8 +12,8 @@ depends=(openssl)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=(
-	$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/toggl-x86_64-unknown-linux-gnu-$_pkgver.zip
-	$pkgname-$pkgver.sha256::$url/releases/download/v$pkgver/x86_64_linux.sha256
+  $pkgname-$pkgver.zip::$url/releases/download/v$pkgver/toggl-x86_64-unknown-linux-gnu-$_pkgver.zip
+  $pkgname-$pkgver.sha256::$url/releases/download/v$pkgver/x86_64_linux.sha256
 )
 sha256sums=('3b2cceb57803a809d91e8ab26eb675d19209ddd9c442a42f50f4a15eccdade7b'
             '9c46e2f16be712d53b6c1c5f11a7c8156228e12859818ec383cf3b12bdc82a57')
