@@ -1,0 +1,19 @@
+pkgbase = muzlib-desktop
+	pkgdesc = Music Downloader
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ezvezdov/muzlib-desktop
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.10
+	depends = python-muzlib
+	depends = pyside6
+	depends = qt6-svg
+	source = git+https://github.com/ezvezdov/muzlib-desktop.git
+	md5sums = SKIP
+
+pkgname = muzlib-desktop
