@@ -1,8 +1,8 @@
 # Maintainer: Ignacio Taranto <ignacio_taranto at protonmail dot com>
 # shellcheck shell=bash disable=2034,2154,2164
 pkgname=gdlv
-pkgver=1.15.0
-pkgrel=3
+pkgver=1.16.0
+pkgrel=1
 pkgdesc='A graphical frontend for Delve'
 arch=(x86_64)
 url=https://github.com/aarzilli/${pkgname}
@@ -12,7 +12,7 @@ makedepends=(go)
 provides=(gdlv)
 conflicts=(gdlv)
 source=("https://github.com/aarzilli/gdlv/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=(69ded34777779887beae5fce93879614b90cc9becc95b04c16310ead41e12046)
+sha256sums=(f60b3c94565621b6b87154468515f1dec00424aa2eb5a85eb90743add4fa46ce)
 options=(!lto)
 
 build() {
