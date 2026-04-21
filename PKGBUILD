@@ -20,7 +20,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 license=('GPL-3.0-or-later')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('83a342c895b1d7b5ab95db14f38a4c60a49e1f3a1bdd23a01f9f14af04ed3dc8')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
