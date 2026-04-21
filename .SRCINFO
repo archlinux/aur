@@ -1,13 +1,13 @@
 pkgbase = spirit
-  pkgdesc = spirit (prebuilt tarball)
-  pkgver = 0.0.0
-  pkgrel = 3
-  url = https://github.com/aquaticcalf/spirit
-  arch = x86_64
-  license = MIT
-  source = spirit-0.0.0-x64.tar.gz::https://github.com/aquaticcalf/spirit/releases/download/0.0.0/spirit-0.0.0-x64.tar.gz
-  sha256sums = 48eb2fc4379d32913a32410faaae0e91118d5bb1a396c2f5517ce9d117b53ad3
-  source_1 = icon.png::https://github.com/aquaticcalf/spirit/releases/download/0.0.0/icon.png
-  sha256sums_1 = SKIP
+	pkgdesc = Spirit Desktop (prebuilt)
+	pkgver = 0.0.0
+	pkgrel = 4
+	url = https://github.com/aquaticcalf/spirit
+	arch = x86_64
+	license = MIT
+	source = spirit-0.0.0-x64.tar.gz::https://github.com/aquaticcalf/spirit/releases/download/v0.0.0/spirit-0.0.0-x64.tar.gz
+	source = icon.png::https://github.com/aquaticcalf/spirit/releases/download/v0.0.0/icon.png
+	sha256sums = 59885c007d1c622f230d24fb26a7b5673c97131af9a4b20c8b09dcc979e4b34a
+	sha256sums = SKIP
 
 pkgname = spirit
