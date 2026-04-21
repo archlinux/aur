@@ -4,7 +4,7 @@
 
 pkgname=zotero-git
 _pkgname="${pkgname%-git}"
-pkgver=9.0.0.r8.gad4bb17
+pkgver=9.0.1.r16271.e1cd832
 pkgrel=1
 pkgdesc="A free, easy-to-use tool to help you collect, organize, cite, and share your research sources, git version"
 arch=('x86_64' 'i686')
@@ -72,7 +72,8 @@ sha256sums=(
 
 pkgver() {
   cd zotero-client
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag="$(git tag | sort -V | tail -1)"
+  printf "%s.r%s.%s" "$_tag" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
