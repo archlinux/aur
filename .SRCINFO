@@ -1,6 +1,6 @@
 pkgbase = xcute
 	pkgdesc = Execute reusable command workflows from a single CLI
-	pkgver = 0.8.0
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/HichemTab-tech/xcute
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = xcute
 	depends = python-typing_extensions
 	depends = gyp
 	provides = xcute
-	noextract = xcute-0.8.0.tgz
+	noextract = xcute-0.10.3.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = xcute-0.8.0.tgz::https://registry.npmjs.org/xcute-cli/-/xcute-cli-0.8.0.tgz
-	b2sums = 43a2b2604b02b7f08458306df1b73aba438c75b15346464128183fea2afb53a9a65f6c9f799c439e875c92b7309a45bc4242ac8218f2c2500b271475a0dd85c1
+	source = xcute-0.10.3.tgz::https://registry.npmjs.org/xcute-cli/-/xcute-cli-0.10.3.tgz
+	b2sums = 53c36bf5c15f06003f8b851adeac30f8e42c4c384a6acace082fefa3410cf7b7ba6f9502f8da1616558b20f0bb4e1dabb562f317a1664b5d2606abfc51872997
 
 pkgname = xcute
