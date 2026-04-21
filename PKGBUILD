@@ -1,33 +1,47 @@
-# Maintainer: amateurece <ethan.twardy at gmail dot com>
+# Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=phosphor-dbus-interfaces-git
-_pkgname=${pkgname%%-git}
-pkgver=r581.b78a0704
+pkgver=r934.a12cc29
 pkgrel=2
 pkgdesc="YAML descriptors of standard dbus interfaces (in OpenBMC)"
 url="https://github.com/openbmc/phosphor-dbus-interfaces"
-arch=('i686' 'x86_64' 'aarch64')
-license=('Apache')
-depends=('sdbusplus-git')
-makedepends=('git' 'meson')
-source=("${pkgname}::git+https://github.com/openbmc/${_pkgname}.git")
+arch=($CARCH)
+license=('Apache-2.0')
+depends=(
+    glibc
+    libgcc
+    libstdc++
+    systemd-libs
+# AUR
+    sdbusplus-git
+)
+makedepends=(
+    boost-libs
+    cmake
+    git
+    meson
+    nlohmann-json
+    pkgconf
+    python-jsonschema
+)
+source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
-_meson_setup() {
-    arch-meson "${pkgname}" build
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    (
+        set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 prepare() {
-    _meson_setup
-}
-
-pkgver() {
-    cd "${pkgname}"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
-    _meson_setup
+    arch-meson ${pkgname} build
     meson compile -C build
 }
 
