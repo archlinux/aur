@@ -1,0 +1,10 @@
+## Pi Source Code
+
+Pi's full source code is installed at `/usr/lib/node_modules/pi-coding-agent/`.
+You can read, search, and reference any file in this tree to understand how Pi works internally.
+
+Key paths:
+- Source: `/usr/lib/node_modules/pi-coding-agent/packages/coding-agent/src/`
+- Docs: `/usr/lib/node_modules/pi-coding-agent/packages/coding-agent/docs/`
+- Extensions: `/usr/lib/node_modules/pi-coding-agent/packages/coding-agent/examples/extensions/`
+- System extensions: `/usr/share/pi/extensions/`
