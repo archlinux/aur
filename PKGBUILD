@@ -14,20 +14,20 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('cfcc9949ae053be2106fb64cbd75adfff5a772a3b4bc2ae15ad44e2997a0e6ee')
 
 package() {
-    cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
-    mkdir -p "$pkgdir"/usr/bin/
-    mkdir -p "$pkgdir/usr/share/$pkgname"
+  mkdir -p "$pkgdir"/usr/bin/
+  mkdir -p "$pkgdir/usr/share/$pkgname"
 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
 
-    cat > "$pkgdir/usr/bin/$pkgname" << EOF
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/bin/sh
 cd /usr/share/splatmoji
 exec bash splatmoji "\${@}"
 EOF
 
-    chmod a+x "$pkgdir/usr/bin/$pkgname"
+  chmod a+x "$pkgdir/usr/bin/$pkgname"
 }
