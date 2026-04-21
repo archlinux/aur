@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Rhythia
+GenericName=Rhythm Game
+Comment=Aim-based rhythm game client, built in Godot 4
+Exec=rhythia
+Icon=rhythia
+Terminal=false
+Categories=Game;Music;ArcadeGame;
+Keywords=rhythm;music;game;aim;
+StartupNotify=true
+
