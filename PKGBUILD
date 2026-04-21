@@ -3,14 +3,14 @@ pkgver=r4.d17fad4
 pkgrel=1
 pkgdesc="Simple GTK3 GUI for gamma and brightness control on X11 and Wayland"
 arch=('x86_64')
-url="https://github.com/jahamars/easygamma"
+url="https://github.com/j4hongir/easygamma"
 license=('MIT')
 depends=('gtkmm3' 'wayland' 'libayatana-appindicator')
 makedepends=('gcc' 'pkgconf' 'cmake' 'wayland-protocols' 'git')
 optdepends=('xorg-xrandr: X11 gamma control')
 provides=('easygamma')
 conflicts=('easygamma')
-source=("$pkgname::git+https://github.com/jahamars/easygamma.git")
+source=("$pkgname::git+https://github.com/j4hongir/easygamma.git")
 sha256sums=('SKIP')
 
 pkgver() {
