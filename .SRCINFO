@@ -1,7 +1,7 @@
 pkgbase = carton-bin
 	pkgdesc = A Windows and Linux GUI client for sing-box.(主打高性能和易用性，非electron tauri等web套皮)
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/821869798/carton
 	arch = x86_64
 	arch = aarch64

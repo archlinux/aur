@@ -3,7 +3,7 @@
 _pkgname=carton
 pkgname="${_pkgname}-bin"
 pkgver=0.1.8 # renovate: datasource=github-releases depName=821869798/carton
-pkgrel=1
+pkgrel=2
 pkgdesc="A Windows and Linux GUI client for sing-box.(主打高性能和易用性，非electron tauri等web套皮)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/821869798/carton"
@@ -42,7 +42,7 @@ package() {
 [Desktop Entry]
 Name=Carton
 Exec=/usr/bin/carton
-Icon=carton
+Icon=carton_icon
 Type=Application
 Comment=A Windows and Linux GUI client for sing-box.
 Terminal=false
