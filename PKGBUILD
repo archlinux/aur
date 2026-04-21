@@ -14,7 +14,7 @@ depends=(python-bcrypt python-build python-chroma-hnswlib python-fastapi python-
 makedepends=('python-build' 'python-installer' 'python-maturin' 'python-setuptools' 'python-setuptools-scm' 'rust')
 options=(!lto)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('9f5dfaea989128793c4e1928de6a150d70ae55e44403d85448be94ff32f2c962')
+b2sums=('34aa95e2487b58ce49a0f99e5ee350e1923d2c8d0b37be789ceb62e70035d696d082df4d4f22f1948c6a836c040e0dca3aa6b1dab56d96ab259902d027757a8c')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
