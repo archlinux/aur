@@ -14,5 +14,5 @@ source=("$url/uploads/$_tag/${pkgname%-bin}_${pkgver//./-}_linux_musl.tar.gz")
 sha256sums=('885dfc3ea2b5dcbef16a71c33ef992d858abd9a64a1dc59375f5d425e86b1a05')
 
 package() {
-  install -Dm755  "${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
+  install -Dm755 "${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
 }
