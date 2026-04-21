@@ -1,5 +1,3 @@
-# Maintainer: Islam Nofl <islamnofl.official@gmail.com>
-
 pkgname=superset-bin
 pkgver=1.5.6
 pkgrel=1
@@ -19,7 +17,7 @@ options=(!strip !debug)
 conflicts=(superset-desktop-bin)
 
 
-_appimage="superset-${pkgver}-x86_64.AppImage"
+_appimage="superset-${pkgver}-${arch}.AppImage"
 source=("${_appimage}::https://github.com/superset-sh/superset/releases/download/desktop-v1.5.6/superset-1.5.6-x86_64.AppImage")
 sha256sums=('207c95cea70cc46380e538f328acaf0a481608951dede40ae4523fb3801b9b2e')
 noextract=("${_appimage}")
