@@ -1,7 +1,7 @@
 pkgbase = korb
 	pkgdesc = Unofficial grocery delivery CLI for German supermarket chain REWE
 	pkgver = 0.4.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/yannick-cw/korb
 	arch = x86_64
 	license = BSD-3-Clause

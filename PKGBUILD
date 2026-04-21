@@ -1,8 +1,8 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=korb
 pkgver=0.4.7
-pkgrel=5
+pkgrel=6
 pkgdesc='Unofficial grocery delivery CLI for German supermarket chain REWE'
 arch=('x86_64')
 url='https://github.com/yannick-cw/korb'
