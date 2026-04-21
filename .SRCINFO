@@ -1,0 +1,16 @@
+pkgbase = screenconnect-bin
+	pkgdesc = ConnectWise ScreenConnect remote desktop client
+	pkgver = 25.9.5.9473
+	pkgrel = 1
+	url = https://screenconnect.com
+	install = screenconnect-bin.install
+	arch = x86_64
+	license = custom
+	depends = java-runtime
+	depends = xdg-utils
+	options = !strip
+	backup = opt/connectwisecontrol-3093ce05059ac871/ClientLaunchParameters.txt
+	source = ScreenConnect.ClientSetup.sh
+	sha256sums = SKIP
+
+pkgname = screenconnect-bin
