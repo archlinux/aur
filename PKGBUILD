@@ -11,14 +11,14 @@ pkgname=proton-ge-custom
 url='https://github.com/GloriousEggroll/proton-ge-custom'
 
 pkgver=GE_Proton10_34
-pkgrel=3
+pkgrel=4
 epoch=1
 
 _pkgver=${pkgver//_/-}
 _srcdir=${_pkgver}
 
 source=(
-	"${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
+	"${_pkgver}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
 	0001-build-make-compatible-with-system-wide-install.patch
 	proton-ge-custom.conf
 )
