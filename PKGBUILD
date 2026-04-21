@@ -1,6 +1,6 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=fluux-messenger
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="A fast, modern, cross-platform XMPP client for communities and organizations."
 arch=('x86_64' 'aarch64')
@@ -47,6 +47,7 @@ prepare() {
     npm ci --cache "${srcdir}/npm-cache"
 
     cd "apps/fluux/src-tauri"
+    cargo update -w
     cargo fetch --locked --target host-tuple
 }
 
@@ -78,5 +79,5 @@ package() {
 }
 
 sha512sums=(
-'2bcae3cf636a9d1ab8ae6fdc1f0365c097aea586a751029d8561dfb431c42fdaba95812b04737865d3ec962d9477f8d9693d295f86d1cbaf4ad9ee592639a8b0'
+'72dea933679c44d556dd4c8bb935b135eec92b4638c6853dd5da041157fb6958e12063959ba523a68e9f055a11a62fa7e6b8bc5d169e03b3400c4f8a1339dd43'
 )
