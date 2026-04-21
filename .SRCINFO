@@ -1,14 +1,14 @@
 pkgbase = nnd
 	pkgdesc = A debugger for Linux
-	pkgver = 0.69
+	pkgver = 0.71
 	pkgrel = 1
 	url = https://github.com/al13n321/nnd
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
-	depends = gcc-libs
 	depends = glibc
-	source = nnd-0.69.tar.gz::https://github.com/al13n321/nnd/archive/v0.69.tar.gz
-	sha256sums = 300ef5e1a9d92eb0a4a84feed424f5b7134e18751e7ec2f36e3813190d6a0b84
+	depends = libgcc
+	source = nnd-0.71.tar.gz::https://github.com/al13n321/nnd/archive/v0.71.tar.gz
+	sha256sums = b0d770d5b78c29ac364553b7816954b5e39a8b5101d1f2fcb6905d730a2330f5
 
 pkgname = nnd
