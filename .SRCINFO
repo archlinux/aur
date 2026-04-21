@@ -1,6 +1,6 @@
 pkgbase = llmserve-bin
 	pkgdesc = A simple TUI for serving local LLM models. Pick a model, pick a backend, serve it
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/AlexsJones/llmserve
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = llmserve-bin
 	provides = llmserve
 	conflicts = llmserve
 	options = !strip
-	source_x86_64 = llmserve-x86_64-0.0.7.tgz::https://github.com/AlexsJones/llmserve/releases/download/v0.0.7/llmserve-v0.0.7-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 2384baca180c3c53b6e78c5a40a57c6114f404dba34a823a3999523891253c5e
-	source_aarch64 = llmserve-aarch64-0.0.7.tgz::https://github.com/AlexsJones/llmserve/releases/download/v0.0.7/llmserve-v0.0.7-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 9e4cfe4697059aad7a12ef20647568a6513e2342652174a38c8b756aaad65d99
+	source_x86_64 = llmserve-x86_64-0.0.8.tgz::https://github.com/AlexsJones/llmserve/releases/download/v0.0.8/llmserve-v0.0.8-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 12403756742f29388a9e83fe601ebe0b993771ef274b81e3ac093103186e1866
+	source_aarch64 = llmserve-aarch64-0.0.8.tgz::https://github.com/AlexsJones/llmserve/releases/download/v0.0.8/llmserve-v0.0.8-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d8a6e08c713412640cd0d83d0e4709e5da4e110acb9c88bf5fed9dfe7c0aa901
 
 pkgname = llmserve-bin
