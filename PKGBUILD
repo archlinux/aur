@@ -3,18 +3,18 @@
 # Contributor: Max Meyer <dev@fedux.org>
 
 pkgname=python-pacparser
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Python 3.x pacparser module'
 arch=(i686 x86_64 aarch64)
 license=(LGPL-3.0-only)
 url=https://github.com/manugarg/pacparser
 depends=('python>=3.8')
-makedepends=(git)
+makedepends=(git python-setuptools)
 options=(!makeflags)
-_tag=74eb8a4ba59b788edb955e2a4d918b54e206ff17
+_tag=a0403120052c54be83504c680f716cfda5f399e5
 source=(git+https://github.com/manugarg/pacparser.git#tag=$_tag)
-sha256sums=(SKIP)
+sha256sums=('b8ee20f6d1d08348c052b0e396e1917b04c5dcf8071faf9b197024b80b21dcbe')
 
 pkgver() {
   cd pacparser
