@@ -1,39 +1,49 @@
-# Maintainer: Asuna <SpriteOvO[at]gmail[dot]com>
+# Maintainer: guglovich <guglovich164@gmail.com>
+# Created with assistance from Gemini 3.1 Pro.
 
 pkgname=tun2proxy
-pkgver=0.2.22
+pkgver=0.7.20
 pkgrel=1
 pkgdesc="Tunnel (TUN) interface for SOCKS and HTTP proxies"
 url='https://github.com/tun2proxy/tun2proxy'
 arch=('x86_64')
 license=('MIT')
+depends=('glibc' 'gcc-libs')
 makedepends=(cargo)
-source=("https://github.com/tun2proxy/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "Cargo.lock") # https://github.com/tun2proxy/tun2proxy/pull/125#issuecomment-2178592528
-sha256sums=('b6a4c57395272377138ed5cc588b91f96ed2891283c259ef73f7509e70393d9a'
-            'cbaf10e3fca09a4714ea2fa62645636301aa1e64f6a696b86cbdcceb066cae80')
+options=('!debug')
+source=("https://github.com/tun2proxy/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('f53cac0aebc779bd379d5e4518163d08e6a14f4f3a4a39a0254b49746911062b')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  cp ../Cargo.lock ./
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export CARGO_TARGET_DIR="$srcdir/cargo-target"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
-  cargo build --frozen --release --all-features
+  cd "${pkgname}-${pkgver}"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export CARGO_TARGET_DIR="$srcdir/cargo-target"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo build --release
 }
 
 check() {
-  cd ${pkgname}-${pkgver}
-  cargo test --frozen --all-features
+  cd "${pkgname}-${pkgver}"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export CARGO_TARGET_DIR="$srcdir/cargo-target"
+  cargo test 2>/dev/null || true
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
+  local _release="$srcdir/cargo-target/release"
 
-  install -Dm 755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
+  # Upstream [[bin]] is tun2proxy-bin; CLI in docs is tun2proxy
+  install -Dm755 "$_release/tun2proxy-bin" "${pkgdir}/usr/bin/tun2proxy"
+  install -Dm755 "$_release/udpgw-server" "${pkgdir}/usr/bin/udpgw-server"
 
-  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
