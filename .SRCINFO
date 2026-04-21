@@ -1,7 +1,7 @@
 pkgbase = lichtfeld-studio
 	pkgdesc = Real-time 3D Gaussian Splatting studio for point cloud visualization and editing
-	pkgver = 0.5.1
-	pkgrel = 6
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = https://github.com/MrNeRF/LichtFeld-Studio
 	arch = x86_64
 	license = GPL-3.0-only
@@ -48,15 +48,13 @@ pkgbase = lichtfeld-studio
 	conflicts = lichtfeld-studio-git
 	options = !lto
 	options = !debug
-	source = lichtfeld-studio-0.5.1.tar.gz::https://github.com/MrNeRF/LichtFeld-Studio/archive/refs/tags/v0.5.1.tar.gz
+	source = lichtfeld-studio-0.5.2.tar.gz::https://github.com/MrNeRF/LichtFeld-Studio/archive/refs/tags/v0.5.2.tar.gz
 	source = vcpkg::git+https://github.com/microsoft/vcpkg.git
 	source = libvterm-934bc2fbf21800ac3458a499df8820ca5fb45fd3.tar.gz::https://github.com/neovim/libvterm/archive/934bc2fbf21800ac3458a499df8820ca5fb45fd3.tar.gz
-	source = python-finalize-before-viewer-reset.patch
 	source = lichtfeld-studio.desktop
-	sha256sums = 8d1c23ea67262f2b0dca5edb0cffc93de69069c51b089986a01370a0468e1b4a
+	sha256sums = 3dcbf8e97b4681bada448ca3ed94200514c52b8da9cd6534f0c0a0f074396911
 	sha256sums = SKIP
 	sha256sums = f09525eb2a02679be0eb50bc1c294569e8cbaa4b59fb867d606236de2830045f
-	sha256sums = eae26bc2de025a3b0b6f73a51315c95487491a478a6affb96b6a6072308c8bde
 	sha256sums = a07642f575ad454ef6783e0a49d03afc96cc7df14d82db7a9de2ccad045fde65
 
 pkgname = lichtfeld-studio
