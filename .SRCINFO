@@ -1,6 +1,6 @@
 pkgbase = tiger-tui
 	pkgdesc = Timer, alarm and stopwatch TUI for the terminal
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/gavasc/tiger
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tiger-tui
 	depends = libnotify
 	depends = ffmpeg
 	optdepends = libpulse: fallback audio if ffmpeg is unavailable
-	source = tiger-tui-0.1.5.tar.gz::https://github.com/gavasc/tiger/archive/v0.1.5.tar.gz
-	sha256sums = a2474047e6c11f77c1bde18038eb4bd27b937e50d605153a42107d97a28bf80f
+	source = tiger-tui-0.1.6.tar.gz::https://github.com/gavasc/tiger/archive/v0.1.6.tar.gz
+	sha256sums = 331d79603d41c6a8977aec32cf2901c53a17bf5c27fbfab2b180c31f61f24e29
 
 pkgname = tiger-tui
