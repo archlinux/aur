@@ -1,7 +1,7 @@
 # Maintainer: aquaticcalf
 pkgname=spirit
 pkgver=0.0.0
-pkgrel=8
+pkgrel=9
 pkgdesc="spirit desktop (prebuilt)"
 arch=('x86_64')
 url="https://github.com/aquaticcalf/spirit"
@@ -15,7 +15,7 @@ package() {
   tar -xzf "${srcdir}/spirit-0.0.0-x64.tar.gz" -C "${pkgdir}/opt/${pkgname}" --strip-components=1
 
   install -d "${pkgdir}/usr/bin"
-  ln -sf "/opt/${pkgname}/spirit" "${pkgdir}/usr/bin/${pkgname}"
+  ln -sf "/opt/${pkgname}/spirit-desktop" "${pkgdir}/usr/bin/${pkgname}"
 
   install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
@@ -24,9 +24,11 @@ package() {
 [Desktop Entry]
 Name=spirit
 Comment=spirit desktop
-Exec=/opt/${pkgname}/spirit
+Exec=/usr/bin/${pkgname} --no-sandbox %U
+Terminal=false
 Icon=${pkgname}
 Type=Application
 Categories=Development;Utility;
+MimeType=x-scheme-handler/spirit;
 DESKTOP
 }

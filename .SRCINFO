@@ -1,7 +1,7 @@
 pkgbase = spirit
 	pkgdesc = spirit desktop (prebuilt)
 	pkgver = 0.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/aquaticcalf/spirit
 	arch = x86_64
 	license = MIT
