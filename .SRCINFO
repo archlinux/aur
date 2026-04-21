@@ -1,13 +1,13 @@
 pkgbase = xonichat
 	pkgdesc = A terminal-based Gemini client optimized for low-resource devices (ASUS Eee PC, etc.)
-	pkgver = 4.2.1
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://github.com/XONIDU/xonichat
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-requests
-	source = xonichat-4.2.1.tar.gz::https://github.com/XONIDU/xonichat/archive/refs/tags/v4.2.1.tar.gz
-	sha256sums = c4606a7d1bab616da5a2661f8419af0f7d44f4dcbffb89295610a305c0d8239e
+	source = xonichat-4.2.2.tar.gz::https://github.com/XONIDU/xonichat/archive/refs/tags/v4.2.2.tar.gz
+	sha256sums = 1cba963864f59c7ddde77c2b361f451738f70dc995069884d891d5c79eaf2c3f
 
 pkgname = xonichat
