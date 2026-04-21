@@ -1,7 +1,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=hiddify
-pkgver=4.0.4
+pkgver=4.1.1
 _flutter_ver=3.38.5
 pkgrel=1
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH, etc."
@@ -31,7 +31,7 @@ source=("git+${url}.git#tag=v${pkgver}"
         "git+https://github.com/hiddify/psiphon-tls.git"
         "git+https://github.com/hiddify/tailscale.git"
         "git+https://github.com/hiddify/wireguard-go.git")
-sha256sums=('fdfabb84cf6143769fdc6f1f83d2cda78bef4f262817c80dc979cca1cc690fc9'
+sha256sums=('fc53061ec78cfbae6a4196e41116699074ab5948aea9c3eeb43f67b4223798be'
             'SKIP'
             'SKIP'
             'SKIP'
