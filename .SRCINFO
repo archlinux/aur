@@ -1,6 +1,6 @@
 pkgbase = festival-bin
 	pkgdesc = Festival Methodology CLI suite (fest + camp) - AI-native project planning
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://fest.build
 	license = BUSL-1.1
@@ -9,10 +9,10 @@ pkgbase = festival-bin
 	provides = fest
 	provides = camp
 	arch = aarch64
-	source_aarch64 = https://github.com/Obedience-Corp/festival/releases/download/v0.2.2/festival-0.2.2-linux-arm64.tar.gz
-	sha256sums_aarch64 = 4bb484631fb728564cbed76b413b9c20aad6378db4f43a96bd07a5e8d7081566
+	source_aarch64 = https://github.com/Obedience-Corp/festival/releases/download/v0.2.3/festival-0.2.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = e6b82a8b31da207d817aeebfd924b55918e267048edbec782e0abc0a4e8c5601
 	arch = x86_64
-	source_x86_64 = https://github.com/Obedience-Corp/festival/releases/download/v0.2.2/festival-0.2.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 535ec7a20092fb7745614a35be1261e90dbf9dd2740dd8ff9e4d6b7689bd2038
+	source_x86_64 = https://github.com/Obedience-Corp/festival/releases/download/v0.2.3/festival-0.2.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = fbfe4a0b9822ce6568d14436ce3aa58c4a392b707432c692c11beed890e3297a
 	
 pkgname = festival-bin
