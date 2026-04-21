@@ -3,7 +3,7 @@
 _pkgauthor=Owloops
 _pkgname=updo
 pkgname=${_pkgname}-bin
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Uptime monitoring CLI tool with alerting and advanced settings"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -21,9 +21,9 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/v${pk
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_${_barch[1]}")
 
 sha256sums=('c4bb03bd6f1bc39a9a068700598796514a826d115a8a10c5d3fb9593ccbda18e'
-            '49d4a4d3c6e92ddbb82ab4090939e0e4998a0540f093f4bae1c9d4640f1eb562')
-sha256sums_x86_64=('5048b4e83f0d1b5a4ac73e886cc4d1014d9c95ffaad85f7f038b964ce383eb90')
-sha256sums_aarch64=('ab18ad8b4ae7b537fb51e3b02f217023f022d9c0831fe2d7e48da99276d47561')
+            'fe412d1f01347ef36b615db511e996fde956fe2149ef766cf3e714a9c901b4e9')
+sha256sums_x86_64=('5dba54b95fb48369d18282c21848b4a560eeb257fab2218c585a3ced20440267')
+sha256sums_aarch64=('86af2def813bff909fc606bc3d25f8afa34fad826efb9b63c65d4cdd6cf7af97')
 
 package() {
   cd "${srcdir}/" || exit
