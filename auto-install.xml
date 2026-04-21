@@ -1,4 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+    Copyright (C) 2015-2026 veraPDF Consortium <info@verapdf.org>
+    SPDX-FileCopyrightText: 2015-2026 veraPDF Consortium <info@verapdf.org>
+    SPDX-License-Identifier: GPL-3.0-or-later OR MPL-2.0
+
+    This file is part of veraPDF Validation Applications, a module of the veraPDF project.
+    Copyright (c) 2015-2026, veraPDF Consortium <info@verapdf.org>
+    All rights reserved.
+
+    veraPDF Validation Applications is free software: you can redistribute it and/or modify
+    it under the terms of either:
+
+    The GNU General public license GPLv3+.
+    You should have received a copy of the GNU General Public License
+    along with veraPDF Validation Applications as the LICENSE.GPL file in the root of the source
+    tree.  If not, see http://www.gnu.org/licenses/ or
+    https://www.gnu.org/licenses/gpl-3.0.en.html.
+
+    The Mozilla Public License MPLv2+.
+    You should have received a copy of the Mozilla Public License along with
+    veraPDF Validation Applications as the LICENSE.MPL file in the root of the source tree.
+    If a copy of the MPL was not distributed with this file, you can obtain one at
+    http://mozilla.org/MPL/2.0/.
+
+-->
 <AutomatedInstallation langpack="eng">
     <com.izforge.izpack.panels.htmlhello.HTMLHelloPanel id="welcome"/>
     <com.izforge.izpack.panels.target.TargetPanel id="install_dir">
@@ -6,10 +31,9 @@
     </com.izforge.izpack.panels.target.TargetPanel>
     <com.izforge.izpack.panels.packs.PacksPanel id="sdk_pack_select">
         <pack index="0" name="veraPDF GUI" selected="true"/>
-        <pack index="1" name="veraPDF Mac and *nix Scripts" selected="true"/>
-        <pack index="2" name="veraPDF Corpus and Validation model" selected="true"/>
-        <pack index="3" name="veraPDF Documentation" selected="true"/>
-        <pack index="4" name="veraPDF Sample Plugins" selected="false"/>
+        <pack index="1" name="veraPDF CLI" selected="true"/>
+        <pack index="2" name="veraPDF Documentation" selected="true"/>
+        <pack index="3" name="veraPDF Sample Plugins" selected="false"/>
     </com.izforge.izpack.panels.packs.PacksPanel>
     <com.izforge.izpack.panels.install.InstallPanel id="install"/>
     <com.izforge.izpack.panels.finish.FinishPanel id="finish"/>
