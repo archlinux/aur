@@ -1,6 +1,6 @@
 pkgbase = python-spsdk
 	pkgdesc = Open Source Secure Provisioning SDK for NXP MCU/MPU
-	pkgver = 3.7.1
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/nxp-mcuxpresso/spsdk
 	arch = any
@@ -51,7 +51,7 @@ pkgbase = python-spsdk
 	depends = python-spsdk-pqc
 	depends = python-libusbsio
 	depends = python-x690
-	source = spsdk-3.7.1.tar.gz::https://files.pythonhosted.org/packages/source/s/spsdk/spsdk-3.7.1.tar.gz
-	sha512sums = e8da6115b39a4b05b6221d0cb78dfad18ec2d6d1bbd260c4c1340e9b8e38f364b3aad701d1c8a5aacb0fca27c5eac1d102ea62ac88cf0165af2b88004791a20a
+	source = spsdk-3.8.0.tar.gz::https://files.pythonhosted.org/packages/source/s/spsdk/spsdk-3.8.0.tar.gz
+	sha512sums = 17e2cb5578b97f016d5a3bf26ca4f6d45e061776448535895944c5f20740594840454f3544cdb4ec6250da00aa2e87d927519bb7a15a1b11e305d16b339250a7
 
 pkgname = python-spsdk
