@@ -1,0 +1,5 @@
+[trufflehog-bin]
+source = "github"
+github = "trufflesecurity/trufflehog"
+use_latest_release = true
+prefix = "v"
