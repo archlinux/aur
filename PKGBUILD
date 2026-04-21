@@ -1,7 +1,7 @@
 # Maintainer: razingfire <j2r3nkf3j@mozmail.com>
 pkgname=ulaa-browser
 _pkgname=Ulaa-Browser
-pkgver=2.42.0
+pkgver=2.42.2
 pkgrel=1
 pkgdesc="The web browser from Zoho. Ulaa combines minimal design with sophisticated technology to make the web faster, safer, and easier."
 arch=(x86_64)
@@ -21,7 +21,7 @@ install=
 changelog=Changelog
 source_x86_64=(${_pkgname}-v${pkgver}-${pkgrel}.deb::https://downloads.zohocdn.com/ulaa-browser/release/linux/stable/${_pkgname}-v${pkgver}-amd64.deb)
 noextract=()
-sha256sums_x86_64=('67f4dba776100c7bceea22fc02d2acff111bd6e88967d1c1882b9e2110a95429')
+sha256sums_x86_64=('6bfdc7b45a2fcdc0dae85a8e402c94a20f365ed87183934225517b099ceb974e')
 validpgpkeys=()
 
 prepare() {

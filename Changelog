@@ -1,4 +1,2 @@
-2.42.0-1 [2026-04-09]
-- [Desktop][UI] Added dark mode support for themed dashboards.
-- [Windows][BugFix] Fixed relaunch behaviour in system-level update.
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 147.0.7727.56/57.
+2.42.2-1 [2026-04-16]
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 147.0.7727.102.
