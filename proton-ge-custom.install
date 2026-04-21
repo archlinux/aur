@@ -1,0 +1,17 @@
+post_install() {
+    echo "::  Although this package is a convenient way to install and upgrade Proton-GE, note that"
+    echo "    it is UNOFFICIAL and UNSUPPORTED by both Valve and GloriousEggroll."
+    echo
+    echo "    Please report issues in Valve's or GloriousEggroll's ONLY IF"
+    echo "    you had issues that can be reproduced with the official packages."
+    echo
+    echo "    Please leave a comment in the AUR if there is a problem specific"
+    echo "    to this package that does not happen with official Proton-GE distributions."
+    echo
+    echo
+    echo "::: Note that this package installs a file to load the Wine NTSync module at boot time."
+}
+
+post_upgrade() {
+  post_install
+}
