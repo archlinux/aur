@@ -1,0 +1,9 @@
+# AUR package build artifacts
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.pkg.tar*
+src/
+pkg/
+*.log
+lota
