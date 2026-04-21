@@ -11,7 +11,7 @@ depends=(gcc-libs glibc libdrm libjxl mesa wayland)
 optdepends=('slurp: alternative for region selection')
 makedepends=(cargo git scdoc)
 source=("git+$url#tag=v$pkgver")
-b2sums=('SKIP')
+b2sums=('8dadc05753a46bd43b37e50b2f8c7bdb85e7cb254054e779cb04497656ae685a12ce1d03d9efa6072675a42e969f33dab7814a75dfed69f5dbff0b7af86c9dda')
 
 prepare() {
 	cd $pkgname
