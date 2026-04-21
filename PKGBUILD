@@ -25,8 +25,30 @@ sha512sums=(
   'SKIP'
 )
 
+_omniroute_pkgroot() {
+  local _candidate
+  local -a _candidates=()
+
+  for _candidate in "${srcdir}"/*; do
+    [[ -d "${_candidate}" ]] || continue
+    [[ "${_candidate}" == "${srcdir}/npm-home" ]] && continue
+    [[ "${_candidate}" == "${srcdir}/npm-cache" ]] && continue
+    [[ -f "${_candidate}/package.json" ]] || continue
+    _candidates+=("${_candidate}")
+  done
+
+  if (( ${#_candidates[@]} != 1 )); then
+    printf 'Expected one extracted omniroute package root, found %d:\n' "${#_candidates[@]}" >&2
+    printf '  %s\n' "${_candidates[@]}" >&2
+    return 1
+  fi
+
+  printf '%s\n' "${_candidates[0]}"
+}
+
 build() {
-  local _pkgroot="${srcdir}/package"
+  local _pkgroot
+  _pkgroot="$(_omniroute_pkgroot)"
   local _app_binary="${_pkgroot}/app/node_modules/better-sqlite3/build/Release/better_sqlite3.node"
 
   cd "${_pkgroot}"
@@ -42,7 +64,9 @@ build() {
 
   npm install --omit=dev --ignore-scripts --no-audit --no-fund
   npm rebuild better-sqlite3 --build-from-source
-  node scripts/postinstall.mjs
+  if [[ -f scripts/postinstall.mjs ]]; then
+    node scripts/postinstall.mjs
+  fi
 
   [[ -f "${_app_binary}" ]] || {
     printf 'Missing repaired better-sqlite3 binary at %s\n' "${_app_binary}" >&2
@@ -53,12 +77,15 @@ build() {
 }
 
 package() {
-  install -d "${pkgdir}/usr/lib/omniroute"
-  cp -a "${srcdir}/package/." "${pkgdir}/usr/lib/omniroute/"
+  local _pkgroot
+  _pkgroot="$(_omniroute_pkgroot)"
+
+  install -dm755 "${pkgdir}/usr/lib/omniroute"
+  cp -a "${_pkgroot}/." "${pkgdir}/usr/lib/omniroute/"
 
   install -Dm755 "${srcdir}/omniroute.sh" "${pkgdir}/usr/bin/omniroute"
   install -Dm644 "${srcdir}/omniroute.service" "${pkgdir}/usr/lib/systemd/user/omniroute.service"
   install -Dm644 "${srcdir}/.env.example" "${pkgdir}/usr/share/doc/${pkgname}/.env.example"
-  install -Dm644 "${srcdir}/package/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "${srcdir}/package/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${_pkgroot}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "${_pkgroot}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
