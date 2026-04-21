@@ -1,0 +1,12 @@
+pkgbase = dloom
+	pkgdesc = Lightweight dotfile manager and system bootstrapper
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dloomorg/dloom
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = dloom-1.0.0.tar.gz::https://github.com/dloomorg/dloom/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = b92b29ab163e197fe34f9af59ad54b057d58ecf515b7fdf37f5f3d86e9ec6191
+
+pkgname = dloom
