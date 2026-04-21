@@ -1,8 +1,8 @@
 # Maintainer: Javad <ja7ad@live.com>
 
 pkgname=nordvpn-live-bin
-_pkgver=4.5.0
-pkgver=4.5.0
+_pkgver=4.6.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="NordVPN CLI/GUI tool for Linux (Live version)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'armeabi')
@@ -25,7 +25,7 @@ esac
 _deb="nordvpn_${_pkgver//_/-}_${_arch}.deb"
 source=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/${_deb}")
 
-sha256sums=('6de9093b384b1b016c611b8f6a000dc1476ec82b9f694e17a093f05a8067891f')
+sha256sums=('b7e92f80ace32c96343caf5e83a11dbfdfa8a55aea59497d58c448b870c942e3')
 
 package() {
   bsdtar -xf "${srcdir}/${_deb}" -C "${srcdir}"
