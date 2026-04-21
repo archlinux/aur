@@ -9,21 +9,21 @@ pkgname=(
     'virtualbox-bin'
     'virtualbox-bin-guest-iso'
     'virtualbox-bin-sdk')
-pkgver=7.2.6
-_build=172322
+pkgver=7.2.8
+_build=173730
 _sdk_commit=72af1bf47ae4fa0cbca89251155953051c5acd67
-pkgrel=2
+pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
 license=('GPL-3.0-only')
 makedepends=(
-    'at-spi2-core' # to satisfy pkgcheck
-    'cairo' # to satisfy pkgcheck
-    'gdk-pixbuf2' # to satisfy pkgcheck
-    #'gtk2' # to satisfy pkgcheck
-    'gtk3' # to satisfy pkgcheck
-    'pango' # to satisfy pkgcheck
+    'at-spi2-core' # to satisfy namcap
+    'cairo' # to satisfy namcap
+    'gdk-pixbuf2' # to satisfy namcap
+    #'gtk2' # to satisfy namcap
+    'gtk3' # to satisfy namcap
+    'pango' # to satisfy namcap
     'python'
     'python-build'
     'python-installer'
@@ -43,8 +43,8 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'LICENSE.sdk'
         '013-Makefile.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('190733b1923ba4820c4c555cbfbada7c31c762988d687fda70d14f9d64b6bfe4'
-            'f39862b54e587b0b1f2ef7c459b36d1df48bf0e681c0ed88ccec2b1b701e040c'
+sha256sums=('c878868d9b9e849d051c6248fc5b2d5b75411365840c5a7857b09f112629cb57'
+            'f2d5c1a0fc5ac4aa746c7d52c5660306a6d9fdd77dfc389e317a871cbb2a6ad1'
             'f54c6a3e118e24ea36474b23e6376bf83ed945e76bb627257457c018f0e11018'
             '0fe446cdc96d227e3f9a2d905d39ea2804c15560a42ff2dec207349f03ac9206'
             'a2923c8828c540ae2e2b4da38c402892b8e16d19fb86af2ecb0ab080e3745c9e'
@@ -86,11 +86,12 @@ package_virtualbox-bin() {
         'dkms'
         'fontconfig'
         'freetype2'
-        'gcc-libs'
         'glib2'
         'glibc'
         'hicolor-icon-theme'
+        'libgcc'
         'libgl'
+        'libstdc++'
         'libx11'
         'libxcb'
         'libxkbcommon'
