@@ -7,6 +7,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 Environment=DATA_DIR=%h/.config/omniroute
+Environment=APP_LOG_TO_FILE=false
 EnvironmentFile=-%h/.config/omniroute/.env
 ExecStart=/usr/bin/omniroute --no-open
 Restart=on-failure
