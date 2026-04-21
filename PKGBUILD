@@ -1,7 +1,7 @@
 # Maintainer: aquaticcalf
 pkgname=spirit
 pkgver=0.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Spirit Desktop (prebuilt)"
 arch=('x86_64')
 url="https://github.com/aquaticcalf/spirit"
@@ -12,8 +12,9 @@ sha256sums=('59885c007d1c622f230d24fb26a7b5673c97131af9a4b20c8b09dcc979e4b34a' '
 
 package() {
   install -d "${pkgdir}/opt/${pkgname}"
-  # ASSET_NAME is evaluated by GitHub Actions now, not makepkg!
-  tar -xzf "${srcdir}/spirit-0.0.0-x64.tar.gz" -C "${pkgdir}/opt/${pkgname}" --strip-components=1
+  tar -xzf "${srcdir}/spirit-0.0.0-x64.tar.gz" -C "${srcdir}/spirit-temp" --strip-components=1
+  cp -r "${srcdir}/spirit-temp/"* "${pkgdir}/opt/${pkgname}/"
+  rm -rf "${srcdir}/spirit-temp"
 
   install -d "${pkgdir}/usr/bin"
   ln -sf "/opt/${pkgname}/spirit" "${pkgdir}/usr/bin/${pkgname}"
