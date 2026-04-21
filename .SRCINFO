@@ -1,6 +1,6 @@
 pkgbase = python-pytantan
 	pkgdesc = Cython bindings and Python interface to Tantan, a fast method for identifying repeats in DNA and protein sequences.
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/althonos/pytantan
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = python-pytantan
 	makedepends = python-scikit-build-core
 	depends = python
 	depends = python-scoring-matrices
-	source = https://files.pythonhosted.org/packages/source/p/pytantan/pytantan-0.1.3.tar.gz
-	sha256sums = b1f8addeeb7955a1a7ca57f08415bcc7a36f95f30d23d477f6075d2cce025c4a
+	source = https://files.pythonhosted.org/packages/source/p/pytantan/pytantan-0.1.4.tar.gz
+	sha256sums = 323410fdb42f2f7c4722a2a3c3633b273b6f75cf43b62c5d5f49dac7a77af5d1
 
 pkgname = python-pytantan

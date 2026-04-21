@@ -2,7 +2,7 @@
 
 _name=pytantan
 pkgname=python-${_name}
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to Tantan, a fast method for identifying repeats in DNA and protein sequences."
 url="https://github.com/althonos/pytantan"
@@ -11,7 +11,7 @@ license=("GPL-3.0-or-later")
 depends=('python' 'python-scoring-matrices')
 makedepends=('cython' 'python-build' 'python-installer' 'cmake' 'ninja' 'python-scikit-build-core')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(b1f8addeeb7955a1a7ca57f08415bcc7a36f95f30d23d477f6075d2cce025c4a)
+sha256sums=(323410fdb42f2f7c4722a2a3c3633b273b6f75cf43b62c5d5f49dac7a77af5d1)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -19,10 +19,10 @@ build() {
 }
 
 check() {
-    local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp311-abi3-linux_${machine}.whl"
 
+    rm -rf "${srcdir}/env"
     python -m venv --symlinks --system-site-packages "${srcdir}/env"
     source "${srcdir}/env/bin/activate"
     python -m installer "$whl"
@@ -31,9 +31,8 @@ check() {
 }
 
 package() {
-    local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp311-abi3-linux_${machine}.whl"
 
     python -m installer --prefix="${pkgdir}/usr" "$whl"
     install -Dm644  ${srcdir}/${_name}-${pkgver}/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
