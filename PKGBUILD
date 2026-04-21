@@ -1,6 +1,6 @@
 # Maintainer: Shaun Lastra <shaun@revolvetrading.com>
 pkgname=hyprglaze-git
-pkgver=r1
+pkgver=r65.4b82adf
 pkgrel=1
 pkgdesc="Wayland shader wallpaper daemon for Hyprland with window-aware effects and AI desktop buddy"
 arch=('x86_64' 'aarch64')
@@ -36,4 +36,7 @@ package() {
     # Sprites
     install -dm755 "$pkgdir/usr/share/hyprglaze/sprites"
     install -Dm644 sprites/*.png "$pkgdir/usr/share/hyprglaze/sprites/"
+
+    # Systemd user unit
+    install -Dm644 contrib/hyprglaze.service "$pkgdir/usr/lib/systemd/user/hyprglaze.service"
 }
