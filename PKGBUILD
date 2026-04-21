@@ -26,3 +26,4 @@ package() {
   install -Dm644 requirements.txt "$pkgdir/usr/share/doc/$pkgname/requirements.txt"
 }
 sha256sums=('808334a34e251b60a4ed76a5f4dbd2fee22af385bbb476673478daebaafdf214')
+sha256sums=('808334a34e251b60a4ed76a5f4dbd2fee22af385bbb476673478daebaafdf214')
