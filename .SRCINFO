@@ -1,6 +1,6 @@
 pkgbase = hnefatafl-copenhagen
-	pkgdesc = Copenhagen Hnefatafl client. Discord: https://discord.gg/h56CAHEBXd
-	pkgver = 5.6.1
+	pkgdesc = Copenhagen Hnefatafl client, engine, server and artificial intelligence
+	pkgver = 5.7.0
 	pkgrel = 1
 	url = https://hnefatafl.org
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = hnefatafl-copenhagen
 	depends = openssl
 	provides = hnefatafl-copenhagen
 	conflicts = hnefatafl-copenhagen
-	source = https://codeberg.org/dcampbell/hnefatafl/archive/v5.6.1-2.tar.gz
-	sha256sums = ce9f494eea0a3e92360efa96cec6251c1fa7a011864096804d073f8560e15ea0
+	source = https://codeberg.org/dcampbell/hnefatafl/archive/v5.7.0-3.tar.gz
+	sha256sums = 77c5b9a3c7aec06395ca8a1574c117387c99978c10d046352ee34d564cb91381
 
 pkgname = hnefatafl-copenhagen

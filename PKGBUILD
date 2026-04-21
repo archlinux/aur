@@ -17,10 +17,10 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=hnefatafl-copenhagen
-pkgver=5.6.1
+pkgver=5.7.0
 pkgrel=1
-real_pkgrel=2
-pkgdesc="Copenhagen Hnefatafl client. Discord: https://discord.gg/h56CAHEBXd"
+real_pkgrel=3
+pkgdesc="Copenhagen Hnefatafl client, engine, server and artificial intelligence"
 url="https://hnefatafl.org"
 license=("AGPL-3.0-or-later")
 arch=("x86_64")
@@ -29,7 +29,7 @@ conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib" "openssl")
 makedepends=("base-devel" "clang" "llvm" "mold" "rustup")
 source=("https://codeberg.org/dcampbell/hnefatafl/archive/v$pkgver-$real_pkgrel.tar.gz")
-sha256sums=("ce9f494eea0a3e92360efa96cec6251c1fa7a011864096804d073f8560e15ea0")
+sha256sums=("77c5b9a3c7aec06395ca8a1574c117387c99978c10d046352ee34d564cb91381")
 build() {
     tar -xvzf v$pkgver-$real_pkgrel.tar.gz
     cd "hnefatafl"
