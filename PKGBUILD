@@ -1,26 +1,27 @@
-# Maintainer:  Alexander Minges <alexander.minges@gmail.de>
+# Maintainer:  Kherim Willems <aur@kher.im>
+# Contributor: Alexander Minges <alexander.minges@gmail.de>
 # Contributor: Michael Schubert <mschu.dev at gmail>
 # Contributor: yescalona <yescalona@ug_uchile_cl>
 # Contributor: Juan Miguel Cejuela <jmcejuela@gmail.com>
 # Contributor: Fabio Zanini <iosonofabio@gmail.com>
 
 pkgname=modeller
-pkgver=10.5
+pkgver=10.8
 pkgrel=1
 pkgdesc="3D Structure Homology Modeller"
-arch=('i686' 'x86_64')
-url="http://salilab.org/modeller/"
+arch=('x86_64' 'armv7h' 'aarch64')
+url="https://salilab.org/modeller/"
 license=('custom')
 depends=('glib2')
-optdepends=('python: python support'
-            'python2: python2 support')
+makedepends=('python')
+optdepends=('python: python support')
 backup=("etc/$pkgname/config.py")
-source=("http://www.salilab.org/modeller/$pkgver/$pkgname-$pkgver.tar.gz"{,.sign}
+source=("https://www.salilab.org/modeller/$pkgver/$pkgname-$pkgver.tar.gz"{,.sign}
         "LICENSE")
-sha256sums=('acbee4481d79e669dd0251d5e075902dbe0a7dfeb13f8777c8d602cae64a28ad'
+sha256sums=('dde99dcad8e2945d48f9d87ea21addfad90f61ade14bbd7a7ad38b72530c5927'
             'SKIP'
             '7d1fb18e362298bc606d6d99852479dc107ad336e1bcd33362fdeef18cf207fe')
-validpgpkeys=('9F7FF1477E5A2463732EC9781CC7D059745E6093')
+validpgpkeys=('0EE4B5E734E7AF8C67AF2632F67207CBE6414C85')
 
 package() {
     _MODINSTALL="/usr/lib/$pkgname"
@@ -28,12 +29,14 @@ package() {
     cd "$pkgname-$pkgver"
 
     case "$CARCH" in
-      i686)
-        _EXECUTABLE_TYPE="i386-intel8" ;;
       x86_64)
         _EXECUTABLE_TYPE="x86_64-intel8" ;;
+      armv7h)
+        _EXECUTABLE_TYPE="armv6l-gnu" ;;
+      aarch64)
+        _EXECUTABLE_TYPE="armv8-gnu" ;;
       *)
-        error "MODELLER is only available for i386 and x86_64!" ;;
+        error "MODELLER on Arch Linux is only available for x86_64, armv7h, and aarch64!" ;;
     esac
 
     # Installing Modeller files
@@ -68,7 +71,10 @@ package() {
 
     # create config.py
     install -dm755 "$pkgdir/etc/$pkgname"
-    echo "license = 'XXXX'" > "$pkgdir/etc/$pkgname/config.py"
+    {
+      echo "install_dir = r'$_MODINSTALL'"
+      echo "license = 'XXXX'"
+    } > "$pkgdir/etc/$pkgname/config.py"
     ln -s /etc/$pkgname/config.py "$pkgdir/$_MODINSTALL/modlib/modeller/config.py"
 
     # add modeller libs to ld.so.conf
@@ -76,12 +82,10 @@ package() {
     echo "/usr/lib/$pkgname/lib/$_EXECUTABLE_TYPE" > "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
 
     # install python modules
-    for _pyver in 2.7 3.12; do
-      install -dm755 "$pkgdir/usr/lib/python$_pyver/site-packages"
-      ln -s "$_MODINSTALL/modlib/modeller" "$pkgdir/usr/lib/python$_pyver/site-packages/modeller"
-    done
-    ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python2.5/_modeller.so" "$pkgdir/usr/lib/python2.7/site-packages/_modeller.so"
-    ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python3.3/_modeller.so" "$pkgdir/usr/lib/python3.12/site-packages/_modeller.so"
+    _py3ver="$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')"
+    install -dm755 "$pkgdir/usr/lib/python$_py3ver/site-packages"
+    ln -s "$_MODINSTALL/modlib/modeller" "$pkgdir/usr/lib/python$_py3ver/site-packages/modeller"
+    ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python3.3/_modeller.so" "$pkgdir/usr/lib/python$_py3ver/site-packages/_modeller.so"
 
     # add profile.d file
     install -dm755 "$pkgdir/etc/profile.d"
