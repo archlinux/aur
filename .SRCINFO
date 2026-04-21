@@ -1,7 +1,7 @@
 pkgbase = particle-cli
 	pkgdesc = CLI tool for the Particle hardware platform
 	pkgver = 3.47.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://particle.io/
 	arch = x86_64
 	arch = aarch64
@@ -12,9 +12,8 @@ pkgbase = particle-cli
 	makedepends = python
 	depends = libusb
 	depends = udev
-	depends = nodejs
+	depends = nodejs>=22
 	depends = libxml2-legacy
-	depends = bash
 	depends = openssl
 	optdepends = dfu-util: local flashing
 	noextract = particle-cli-3.47.2.tgz
