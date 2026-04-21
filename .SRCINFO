@@ -1,6 +1,6 @@
 pkgbase = savebutton
-	pkgdesc = Simple bookmark and notes manager
-	pkgver = 0.2.24
+	pkgdesc = Simple bookmark manager
+	pkgver = 0.2.25
 	pkgrel = 1
 	url = https://github.com/lofimx/savebutton-gtk
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = savebutton
 	depends = gtk4
 	depends = libadwaita
 	depends = libsecret
-	source = savebutton-0.2.24.tar.gz::https://github.com/lofimx/savebutton-gtk/archive/refs/tags/v0.2.24.tar.gz
-	sha256sums = f7ce795a795f890acdd5f82ba1348dea87231195acd5559d11cddb9e235ae4cb
+	source = savebutton-0.2.25.tar.gz::https://github.com/lofimx/savebutton-gtk/archive/refs/tags/v0.2.25.tar.gz
+	sha256sums = b82804721172bb29f28cee5ed25117798814a4e0605a0faa41bc4ec57b300fbc
 
 pkgname = savebutton
