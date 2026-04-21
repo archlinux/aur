@@ -1,0 +1,14 @@
+-------------------------------------------------------
+ Changelog    : sd-boot
+ Tags         : 3.6.3 ➙ 3.6.4
+              : 2026-04-21 ➙ 2026-04-21
+              : 6 tags. See Docs for full changelog
+-------------------------------------------------------
+
+ 2026-04-21   : 3.6.4
+              - PKGBUILD should be arch "any"
+              - update Changelog
+
+ 2026-04-21   : 3.6.3
+              - PKGBUILD - no .install needed
+              - update Changelog
