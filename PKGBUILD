@@ -1,8 +1,9 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=('ezp2019-git')
 conflicts=('ezp2019')
-pkgver=0.9.0.r1.g5b6b779
+pkgver=0.9.0.r5.gb8768dd
 pkgrel=1
+provides=('ezp2019' 'libezp2019.so')
 options=(!debug)
 pkgdesc='EZP2019 USB SPI Flash Programmer'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')

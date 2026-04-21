@@ -1,6 +1,6 @@
 pkgbase = ezp2019-git
 	pkgdesc = EZP2019 USB SPI Flash Programmer
-	pkgver = 0.9.0
+	pkgver = 0.9.0.r1.g5b6b779
 	pkgrel = 1
 	url = https://github.com/bokic/ezp2019
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = ezp2019-git
 	makedepends = git
 	depends = glibc
 	depends = libusb
+	provides = ezp2019
+	provides = libezp2019.so
 	conflicts = ezp2019
 	options = !debug
 	source = ezp2019::git+https://github.com/bokic/ezp2019.git
