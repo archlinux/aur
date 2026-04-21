@@ -1,15 +1,15 @@
 pkgbase = lunzip
 	pkgdesc = A decompressor for the lzip format written in C
-	pkgver = 1.15
+	pkgver = 1.16
 	pkgrel = 1
 	url = https://www.nongnu.org/lzip/lunzip.html
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = glibc
-	source = https://download.savannah.gnu.org/releases/lzip/lunzip/lunzip-1.15.tar.gz
-	source = https://download.savannah.gnu.org/releases/lzip/lunzip/lunzip-1.15.tar.gz.sig
-	validpgpkeys = 1D41C14B272A2219A739FA4F8FE99503132D7742
-	sha256sums = fdb930b87672a238a54c4b86d63df1c86038ff577d512adbc8e2c754c046d8f2
+	source = https://download.savannah.gnu.org/releases/lzip/lunzip/lunzip-1.16.tar.gz
+	source = https://download.savannah.gnu.org/releases/lzip/lunzip/lunzip-1.16.tar.gz.sig
+	validpgpkeys = 1E5AEE0B18C0DEB45D64AA0325B62C9821501AA0
+	sha256sums = f13809a1aeaf953f32b07f822c3804bfb11056c08d465b93750b4e45190becda
 	sha256sums = SKIP
 
 pkgname = lunzip
