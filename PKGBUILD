@@ -6,7 +6,7 @@
 
 _pkgname="icecat"
 pkgname="$_pkgname-bin"
-pkgver=140.9.1
+pkgver=140.10.0
 pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://git.nabein.me/icecat-bin"
@@ -24,7 +24,7 @@ _dl_file="icecat-$pkgver.en-US.linux-$CARCH.tar.xz"
 noextract=("$_dl_url/$_dl_file")
 
 source=("$_dl_url/$_dl_file")
-sha256sums=('1da36cd681bf607f77ab2c270cafd0d173c9f32bddff1f51006c463d5a8d4d8a')
+sha256sums=('689575f7c10ae2eeec80b61925ea08d3741e8872225a182b95d6328b9dd8181b')
 
 package() {
   depends=(
