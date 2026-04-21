@@ -1,7 +1,7 @@
 # Maintainer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
 pkgname=nvidia-mft
-pkgver=4.32.0
-pkgverrel=120
+pkgver=4.35.0
+pkgverrel=159
 pkgversarch="${pkgver}-${pkgverrel}-$(uname -m)"
 pkgrel=1
 epoch=
@@ -21,17 +21,14 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("https://www.mellanox.com/downloads/MFT/mft-${pkgversarch}-rpm.tgz")
+source=("https://www.mellanox.com/downloads/MFT/mft-${pkgver}-${pkgverrel}-x86_64-deb.tgz")
 noextract=()
-sha256sums=('3036a8b560f8726d5171d753b5afa9bed5088cb3982134a47388f85eb3d69894')
+b2sums=('6cee60dcc46bc4030e23033c83462d5eec55872978d8acacd67ee63a240fa6f6e45e9f86422014a8d30e7e7ea21bc99e5e80b291d73ec19385aad5657afef9e4')
 validpgpkeys=()
 
 package() {
-    (cd mft-${pkgversarch}-rpm/SDEBS && \
-	 bsdtar -xf kernel-mft-dkms_*.deb)
-    for rpm in "mft-${pkgversarch}-rpm/RPMS"/*.rpm \
-            mft-${pkgversarch}-rpm/SDEBS/data.tar.xz; do
-	bsdtar -C "$pkgdir" -xpf "$rpm"
+    for deb in mft-${pkgversarch}-deb/*DEBS/*.deb; do
+	bsdtar xOf "$deb" data.tar.gz data.tar.gz | bsdtar xC "$pkgdir"
     done
 
     cd "$pkgdir"
