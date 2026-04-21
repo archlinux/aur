@@ -2,7 +2,7 @@
 # Contributor: Yufan You <ouuansteve at gmail>
 
 pkgname=ttf-lxgw-wenkai-gb
-pkgver=1.521
+pkgver=1.522
 pkgrel=1
 pkgdesc="An open-source Chinese font derived from Klee One, modified to conform to GB2312 standard."
 arch=('any')
@@ -11,7 +11,7 @@ license=('OFL')
 
 source=("$url/releases/download/v$pkgver/lxgw-wenkai-gb-v$pkgver.tar.gz")
 
-b2sums=('003f385a9282eddaec95ded556d26f214e56d4b3e248fa8b1e3f36abfd4757382d674ef6bb09cfc65cbc98c603eee2208905bfb8cc18d35d938fd6de873c7541')
+b2sums=('a784cb76548eff66e9c1e3963f3d3a5f44a7368d4e3205ce5dfe12ff08d45a68bb8a5917c24f1c43d49ed89521a59123567bd2cc79e875505cad2a776c1fbcbc')
 
 package() {
     cd "lxgw-wenkai-gb-v$pkgver"
