@@ -11,6 +11,7 @@ depends=(
     'python-gobject'
     'gtk4'
     'libadwaita'
+    'gtksourceview5'
 )
 optdepends=('python-pyyaml: YAML theme config parsing')
 makedepends=(
