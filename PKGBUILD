@@ -15,30 +15,29 @@ install=splatmoji-git.install
 sha256sums=('SKIP')
 
 pkgver() {
-      cd $_pkgname
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    rm -rf "$_pkgname/{.git/, .git* ,README.md}"
+  rm -rf "$_pkgname/{.git/, .git* ,README.md}"
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
 
-    mkdir -p "$pkgdir"/usr/bin/
-    mkdir -p "$pkgdir/usr/share/$_pkgname"
+  mkdir -p "$pkgdir"/usr/bin/
+  mkdir -p "$pkgdir/usr/share/$_pkgname"
 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname"
 
-    cat > "$pkgdir/usr/bin/$_pkgname" << EOF
+  cat > "$pkgdir/usr/bin/$_pkgname" << EOF
 #!/bin/sh
 cd /usr/share/splatmoji
 exec bash splatmoji "\${@}"
 EOF
 
-    chmod a+x "$pkgdir/usr/bin/$_pkgname"
+  chmod a+x "$pkgdir/usr/bin/$_pkgname"
 }
-
