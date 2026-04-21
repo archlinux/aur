@@ -1,7 +1,7 @@
 # Maintainer: seulsale <me@seulsale.com>
 pkgname=persistent-claude-code-git
 _pkgname=persistent-claude-code
-pkgver=0.1.0.r0.g0000000
+pkgver=0.1.1.r0.g0000000
 pkgrel=1
 pkgdesc="GTK desktop app for browsing and resuming Claude Code sessions"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "0.1.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

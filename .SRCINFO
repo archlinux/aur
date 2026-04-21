@@ -1,6 +1,6 @@
 pkgbase = persistent-claude-code-git
 	pkgdesc = GTK desktop app for browsing and resuming Claude Code sessions
-	pkgver = 0.1.0.r0.g0000000
+	pkgver = 0.1.1.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/seulsale/persistent-claude-code
 	arch = any
