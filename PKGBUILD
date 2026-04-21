@@ -1,7 +1,7 @@
 # Maintainer: zlicdt <xkicdt1@gmail.com>
 
 pkgname=open-orpheus
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="An open-source implementation of Netease Cloud Music's Orpheus browser host."
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=('libarchive')
 source=("${pkgname}_${pkgver}_amd64.deb::https://github.com/YUCLing/open-orpheus/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('cc2b7ba3424279309124fb00bb127a25d11f01585fad6e588012b6719d6946d5')
+sha256sums=('4b795219c4af3d5abad733dae9cd4738fad87091277e5641b8855a61cf19e8fe')
 
 prepare() {
     ar x ${pkgname}_${pkgver}_amd64.deb
