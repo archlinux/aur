@@ -3,7 +3,7 @@
 
 pkgname=hltb
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HowLongToBeat CLI tool"
 archive=how-long-to-beat-cli
 arch=('x86_64')
