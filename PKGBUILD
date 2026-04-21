@@ -1,6 +1,6 @@
 # Maintainer: Darian Alberto Camacho Salas <xonidu@gmail.com>
 pkgname=xonitube
-pkgver=6.4.0
+pkgver=6.4.1
 pkgrel=1
 pkgdesc="Reproductor de YouTube desde terminal para equipos de bajos recursos (1GB RAM). Streaming directo o descarga."
 arch=('any')
@@ -17,15 +17,16 @@ package() {
   # Instalar start.py como ejecutable principal
   install -Dm755 start.py "$pkgdir/usr/bin/$pkgname"
   
-  # Instalar xonitube.py en /usr/share/xonitube/ (IMPORTANTE)
+  # Instalar xonitube.py en /usr/share/xonitube/
   install -Dm755 xonitube.py "$pkgdir/usr/share/$pkgname/xonitube.py"
+  
+  # Crear enlace simbólico para compatibilidad
+  ln -sf "/usr/share/$pkgname/xonitube.py" "$pkgdir/usr/bin/xonitube.py"
   
   # Documentación
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 requirements.txt "$pkgdir/usr/share/doc/$pkgname/requirements.txt"
 }
-sha256sums=('808334a34e251b60a4ed76a5f4dbd2fee22af385bbb476673478daebaafdf214')
-sha256sums=('808334a34e251b60a4ed76a5f4dbd2fee22af385bbb476673478daebaafdf214')
-
-sha256sums=('e76c29dcb6949aae8344a7f04eb2b0386d372f1577d2f65839d2315509e1bbf6')
+sha256sums=('7882d69558ee2adedbce36f09900582c80e1d656f5ab8b3948aa0c40c39072b1')
+sha256sums=('7882d69558ee2adedbce36f09900582c80e1d656f5ab8b3948aa0c40c39072b1')
