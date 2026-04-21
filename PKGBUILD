@@ -22,6 +22,9 @@ package() {
 	cd "$pkgname"
 	install -dm755 "$pkgdir/usr/share/oh-my-fish"
 	cp -r . "$pkgdir/usr/share/oh-my-fish/"
-	install -Dm755 bin/omf "$pkgdir/usr/bin/omf"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	install -dm755 "$pkgdir/usr/share/fish/vendor_conf.d"
+	printf 'set -gx OMF_PATH /usr/share/oh-my-fish\nsource $OMF_PATH/init.fish\n' \
+		> "$pkgdir/usr/share/fish/vendor_conf.d/oh-my-fish.fish"
 }
