@@ -1,0 +1,13 @@
+pkgbase = gitmastery-beta-bin
+	pkgdesc = Git-Mastery CLI for practicing Git
+	pkgver = v.0.1.13_beta.1
+	pkgrel = 1
+	url = https://github.com/git-mastery/app
+	changelog = gitmastery-beta.changelog
+	arch = x86_64
+	license = MIT
+	depends = python
+	source = gitmastery-beta-.0.1.13-beta.1-linux-amd64::https://github.com/git-mastery/app/releases/download/v.0.1.13-beta.1/gitmastery-beta-.0.1.13-beta.1-arch-amd64
+	sha256sums = SKIP
+
+pkgname = gitmastery-beta-bin
