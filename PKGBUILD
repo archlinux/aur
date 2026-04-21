@@ -2,19 +2,27 @@
 # Maintainer: Philipp Schmitt <philipp@schmitt.co>
 pkgname=flicd
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Flic SDK for Linux"
 arch=('i386' 'x86_64' 'armv6h' 'armv6l' 'armv7h' 'armv7l' 'aarch64')
 url="https://github.com/50ButtonsEach/fliclib-linux-hci"
 license=('unknown')
 source=("git+https://github.com/50ButtonsEach/fliclib-linux-hci#tag=${pkgver}"
-        "flicd.service")
+        "flicd.service"
+        "ctime.patch")
 md5sums=('SKIP'
-         '6144a880dd1975c63140f1754320812c')
+         '6144a880dd1975c63140f1754320812c'
+         '652a7c73309272f98195899fed8b57eb')
 sha256sums=('SKIP'
-            '89c7f1872e84eb87b4e02f331819fbd40dadfaa99a8a2d1e255f225c2b1c0617')
+            '89c7f1872e84eb87b4e02f331819fbd40dadfaa99a8a2d1e255f225c2b1c0617'
+            'ed5d4aa90811788a7532ccbc98ee6bf5026578abd5effbae124384fefe6c7306')
 backup=('etc/flicd/db')
 install="${pkgname}.install"
+
+prepare() {
+  cd "${srcdir}/fliclib-linux-hci"
+  patch -p1 < ../ctime.patch
+}
 
 build() {
   cd "${srcdir}/fliclib-linux-hci/simpleclient"

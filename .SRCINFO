@@ -1,7 +1,7 @@
 pkgbase = flicd
 	pkgdesc = Flic SDK for Linux
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/50ButtonsEach/fliclib-linux-hci
 	install = flicd.install
 	arch = i386
@@ -15,9 +15,12 @@ pkgbase = flicd
 	backup = etc/flicd/db
 	source = git+https://github.com/50ButtonsEach/fliclib-linux-hci#tag=2.0.3
 	source = flicd.service
+	source = ctime.patch
 	md5sums = SKIP
 	md5sums = 6144a880dd1975c63140f1754320812c
+	md5sums = 652a7c73309272f98195899fed8b57eb
 	sha256sums = SKIP
 	sha256sums = 89c7f1872e84eb87b4e02f331819fbd40dadfaa99a8a2d1e255f225c2b1c0617
+	sha256sums = ed5d4aa90811788a7532ccbc98ee6bf5026578abd5effbae124384fefe6c7306
 
 pkgname = flicd
