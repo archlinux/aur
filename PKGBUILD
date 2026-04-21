@@ -1,12 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=sfp-master
-pkgver=1.0.7
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="SFP-module programmer for CH341a devices"
 arch=($CARCH)
 url="https://github.com/bigbigmdm/SFP-Master"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later AND LGPL-2.1-or-later')
 provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
@@ -26,7 +26,7 @@ optdepends=(
   "imsprog: MSProg - software for CH341A-based programmers to work with I2C, SPI and MicroWire EEPROM/Flash chips"
 )
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('b2b0ab872c531c71b24f750ba799819b08ec72358fe1c7c13cccd4dc21669b50')
+sha256sums=('52e5367785234530036d952ca05a11c91ab9075a8ee120f7795ffd05d1d2da79')
 
 prepare() {
   git -C "${srcdir}/${pkgname}" clean -dfx
