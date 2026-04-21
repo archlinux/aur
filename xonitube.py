@@ -142,11 +142,10 @@ class XONITUBE:
             return False
     
     def reproducir_stream(self, url, calidad, nombre_calidad):
-        """Reproducción directa usando mpv con yt-dlp integrado (sin pipe)"""
+        """Reproducción directa usando mpv con yt-dlp integrado (sin pipe, sin sudo)"""
         print(f"\n{Colors.GREEN}▶ Reproduciendo en {nombre_calidad}...{Colors.END}")
         self.mostrar_controles()
         try:
-            # Usar mpv directamente con su integración yt-dlp (NO pipe)
             cmd = [
                 REPRODUCTOR,
                 f"--ytdl-format={calidad}",

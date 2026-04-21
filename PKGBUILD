@@ -13,17 +13,9 @@ sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  
-  # Instalar start.py como ejecutable principal
   install -Dm755 start.py "$pkgdir/usr/bin/$pkgname"
-  
-  # Instalar xonitube.py en /usr/share/xonitube/
   install -Dm755 xonitube.py "$pkgdir/usr/share/$pkgname/xonitube.py"
-  
-  # Crear enlace simbólico para compatibilidad
   ln -sf "/usr/share/$pkgname/xonitube.py" "$pkgdir/usr/bin/xonitube.py"
-  
-  # Documentación
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 requirements.txt "$pkgdir/usr/share/doc/$pkgname/requirements.txt"
