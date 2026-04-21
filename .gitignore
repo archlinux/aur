@@ -1,0 +1,9 @@
+.m2/
+src/
+pkg/
+*.pkg.tar.*
+*.src.tar.*
+*.log
+
+jsesh
+

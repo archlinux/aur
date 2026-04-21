@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -euo pipefail
+
+appdir='/opt/jsesh'
+
+shopt -s nullglob
+jars=("${appdir}"/lib/jseshAppli-*.jar)
+shopt -u nullglob
+
+if (( ${#jars[@]} != 1 )); then
+  echo "Unable to locate a single jseshAppli jar in ${appdir}/lib" >&2
+  exit 1
+fi
+
+cd "${appdir}"
+exec /usr/lib/jvm/java-21-openjdk/bin/java -jar "${jars[0]}" "$@"

@@ -1,0 +1,20 @@
+pkgbase = jsesh-git
+	pkgdesc = Hieroglyphic text editor built from the upstream JSesh git repository
+	pkgver = 7.11.r0.g68c4c77d
+	pkgrel = 1
+	url = https://github.com/rosmord/jsesh
+	arch = any
+	license = custom:CeCILL
+	license = custom:jsesh-fonts
+	makedepends = git
+	makedepends = maven
+	depends = jre21-openjdk
+	provides = jsesh
+	conflicts = jsesh
+	conflicts = jsesh-bin
+	source = jsesh::git+https://github.com/rosmord/jsesh.git
+	source = jsesh-launcher
+	sha256sums = SKIP
+	sha256sums = bb9d9ece5cd35b820a2722945fa73e3d9a1e88f34f7e30f778bcdb4b023ac633
+
+pkgname = jsesh-git
