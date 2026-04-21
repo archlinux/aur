@@ -2,8 +2,8 @@
 # Contributor: codepunk <codepunk AT noreply DOT codeberg DOT org>
 
 pkgname=hltb
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="HowLongToBeat CLI tool"
 archive=how-long-to-beat-cli
 arch=('x86_64')
