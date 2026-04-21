@@ -1,0 +1,5 @@
+["loki-ai-bin"]
+source = "github"
+github = "Dark-Alex-17/loki"
+use_latest_release = true
+prefix = "v"
