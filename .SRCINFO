@@ -1,12 +1,12 @@
 pkgbase = radix
 	pkgdesc = CLI tool to convert numbers between binary, octal, decimal and hexadecimal.
-	pkgver = 1.0.1
-	pkgrel = 1
+	pkgver = 1.1.0
+	pkgrel = 2
 	url = https://github.com/zOrfeo/radix
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	source = radix-1.0.1.tar.gz::https://github.com/zOrfeo/radix/archive/refs/tags/v1.0.1.tar.gz
+	source = radix-1.1.0.tar.gz::https://github.com/zOrfeo/radix/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = 13e9daca03345e10ce9488d3ae145afdbc844db36819c973120b7840f9bd9b79
 
 pkgname = radix

@@ -1,6 +1,6 @@
 pkgname=radix
-pkgver=1.0.1
-pkgrel=1
+pkgver=1.1.0
+pkgrel=2
 pkgdesc="CLI tool to convert numbers between binary, octal, decimal and hexadecimal."
 arch=('x86_64')
 url="https://github.com/zOrfeo/radix"
@@ -8,7 +8,7 @@ license=('MIT')
 makedepends=('cmake')
 depends=()
 source=("radix-$pkgver.tar.gz::https://github.com/zOrfeo/radix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('13e9daca03345e10ce9488d3ae145afdbc844db36819c973120b7840f9bd9b79')
+sha256sums=('394a1cdaa4317153846c827f6064c7bd7e88d525668e72752d418ad6c8e5c656')
 
 build() {
   cd "$srcdir/radix-$pkgver"
