@@ -23,12 +23,12 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-build () {
+build() {
   cd "$pkgname"
   gcc $CFLAGS $(pkg-config --cflags gio-2.0 gio-unix-2.0) -o xdgctl main.c $(pkg-config --libs gio-2.0 gio-unix-2.0) $LDFLAGS
 }
 
-package () {
+package() {
   cd "$pkgname"
   install -Dm755 xdgctl "$pkgdir/usr/bin/xdgctl"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"

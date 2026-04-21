@@ -1,7 +1,7 @@
 pkgbase = xdgctl-git
 	pkgdesc = TUI for managing XDG default applications
-	pkgver = r15.f7654de
-	pkgrel = 2
+	pkgver = r19.9797f48
+	pkgrel = 1
 	url = https://github.com/mitjafelicijan/xdgctl
 	arch = x86_64
 	license = BSD-2-Clause
