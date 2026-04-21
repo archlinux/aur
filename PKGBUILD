@@ -1,6 +1,6 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=clk-sdl
-pkgver=2026_04_07
+pkgver=2026_04_21
 pkgrel=1
 epoch=
 pkgdesc="a latency hating emulator for 8 and 16 bit platforms(sdl version)"
@@ -14,7 +14,7 @@ conflicts=('clk-qt' 'clk-qt-git' 'clk-sdl-git')
 source=("https://github.com/TomHarte/CLK/archive/refs/tags/${pkgver//_/-}.tar.gz")
 noextract=()
 install="clk.install"
-sha256sums=('584c6c6c76933fcac78b6876ec5127f420a2aa7fbf306a5b3d8461ca1c30cbef')
+sha256sums=('fbb3dccc93ed8d91552d1ea935f96536a7a258a4b80caa1a0dc1dc0bca7ff292')
 
 build() {
 	local cmake_options=(
