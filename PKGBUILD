@@ -1,6 +1,6 @@
 # Maintainer: Darian Alberto Camacho Salas <xonidu@gmail.com>
 pkgname=xonitube
-pkgver=6.4.1
+pkgver=6.4.2
 pkgrel=1
 pkgdesc="Reproductor de YouTube desde terminal para equipos de bajos recursos (1GB RAM). Streaming directo o descarga."
 arch=('any')
