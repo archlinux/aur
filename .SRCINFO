@@ -1,7 +1,7 @@
 pkgbase = stalld
 	pkgdesc = A daemon to prevent the starvation of operating system threads
-	pkgver = 1.19.8
-	pkgrel = 2
+	pkgver = 1.20.1
+	pkgrel = 1
 	url = https://gitlab.com/rt-linux-tools/stalld
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = stalld
 	depends = libbpf
 	optdepends = bash: for throttlectl
 	backup = etc/sysconfig/stalld
-	source = https://gitlab.com/rt-linux-tools/stalld/-/archive/v1.19.8/stalld-v1.19.8.tar.gz
-	sha256sums = be84f4c9560e77807c8b45e5ddbb9d02d80c591c6224d3c2b16525ce834c79a7
+	source = https://gitlab.com/rt-linux-tools/stalld/-/archive/v1.20.1/stalld-v1.20.1.tar.gz
+	sha256sums = 830f3f0ff7f00b23de43511639e9987839f730a2357746d938f3e20e0cff9fa0
 
 pkgname = stalld
