@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=stalld
-pkgver=1.23.1
+pkgver=1.25.1
 pkgrel=1
 pkgdesc="A daemon to prevent the starvation of operating system threads"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('bpf' 'clang' 'llvm')
 optdepends=('bash: for throttlectl')
 backup=('etc/sysconfig/stalld')
 source=("https://gitlab.com/rt-linux-tools/stalld/-/archive/v$pkgver/stalld-v$pkgver.tar.gz")
-sha256sums=('2a23bb79bdb0fba367b3ac4cb75bea9e53b657704d3114031d5fdf30565c65d8')
+sha256sums=('cea9057b2ce607dc17c3ea3cd51abc3c89154acfac100a529c0048947395647c')
 
 
 prepare() {
