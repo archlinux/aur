@@ -1,6 +1,6 @@
 pkgbase = bato
 	pkgdesc = A program to send battery level notifications
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/doums/bato
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = bato
 	provides = bato
 	conflicts = bato
 	options = !debug
-	source = bato-0.2.1.tar.gz::https://github.com/doums/bato/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 317e80aee78a35a48818743dccb9b5c15df00b4435255c5b8232eece9f2bb2df
+	source = bato-0.2.2.tar.gz::https://github.com/doums/bato/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 8e987fdb812f28149c939a470adcbf683212f461d066dd6774424dc746285d46
 
 pkgname = bato

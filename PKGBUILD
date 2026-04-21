@@ -1,7 +1,7 @@
 # Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=bato
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='A program to send battery level notifications'
 arch=('x86_64')
@@ -13,16 +13,17 @@ provides=('bato')
 conflicts=('bato')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('317e80aee78a35a48818743dccb9b5c15df00b4435255c5b8232eece9f2bb2df')
+sha256sums=('8e987fdb812f28149c939a470adcbf683212f461d066dd6774424dc746285d46')
+_pkgdir="$pkgname-$pkgver"
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$_pkgdir"
   cargo build --release --locked
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 "target/release/bato" "$pkgdir/usr/bin/bato"
-  install -Dm644 "bato.toml" "$pkgdir/usr/share/bato/bato.toml"
+  cd "$srcdir/$_pkgdir"
+  install -Dm755 "$srcdir/$_pkgdir/target/release/bato" "$pkgdir/usr/bin/bato"
+  install -Dm644 "$srcdir/$_pkgdir/bato.toml" "$pkgdir/usr/share/bato/bato.toml"
 }
 
