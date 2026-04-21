@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio
-pkgver=0.5.1
-pkgrel=6
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
 url="https://github.com/MrNeRF/LichtFeld-Studio"
@@ -56,12 +56,10 @@ _libvtermcommit=934bc2fbf21800ac3458a499df8820ca5fb45fd3
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MrNeRF/LichtFeld-Studio/archive/refs/tags/v${pkgver}.tar.gz"
         'vcpkg::git+https://github.com/microsoft/vcpkg.git'
         "libvterm-${_libvtermcommit}.tar.gz::https://github.com/neovim/libvterm/archive/${_libvtermcommit}.tar.gz"
-        'python-finalize-before-viewer-reset.patch'
         'lichtfeld-studio.desktop')
-sha256sums=('8d1c23ea67262f2b0dca5edb0cffc93de69069c51b089986a01370a0468e1b4a'
+sha256sums=('3dcbf8e97b4681bada448ca3ed94200514c52b8da9cd6534f0c0a0f074396911'
             'SKIP'
             'f09525eb2a02679be0eb50bc1c294569e8cbaa4b59fb867d606236de2830045f'
-            'eae26bc2de025a3b0b6f73a51315c95487491a478a6affb96b6a6072308c8bde'
             'a07642f575ad454ef6783e0a49d03afc96cc7df14d82db7a9de2ccad045fde65')
 
 latestver() {
@@ -83,6 +81,7 @@ prepare() {
     rm -rf vcpkg
     cp -a "$srcdir/vcpkg" vcpkg
     rm -f vcpkg/vcpkg  # remove stale binary/symlink so bootstrap can write fresh
+    rm -f vcpkg/.git/refs/remotes/origin/patch-2026-04-02  # remove stale remote-tracking ref (deleted upstream)
     ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
 
     # Skip vcpkg debug builds (we only use release libs);
@@ -95,8 +94,6 @@ EOF
 
     # Fix vendored zep missing <cstdint> for GCC 15
     sed -i '5i #include <cstdint>' external/zep/include/zep/glyph_iterator.h
-
-    patch -Np1 -i "$srcdir/python-finalize-before-viewer-reset.patch"
 
     # Remove $srcdir reference from binary (PROJECT_ROOT_PATH is a dev fallback;
     # production path resolution uses exe/../share/LichtFeld-Studio/ which works with FHS)
