@@ -1,7 +1,7 @@
 # Maintainer: Swaranga Sarma <sarma.swaranga@gmail.com>
 pkgname=dloom-bin
 _pkgname=dloom
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Prebuilt binary release of dloom, a flexible dotfile symlink manager and system bootstrapper'
 arch=('x86_64')
@@ -10,12 +10,12 @@ license=('MIT')
 provides=('dloom')
 conflicts=('dloom')
 source=(
-  "${_pkgname}_v${pkgver}_linux_amd64.tar.gz::https://github.com/dloomorg/dloom/releases/download/v1.0.1/dloom_v1.0.1_linux_amd64.tar.gz"
-  "${_pkgname}-${pkgver}.tar.gz::https://github.com/dloomorg/dloom/archive/refs/tags/v1.0.1.tar.gz"
+  "${_pkgname}_v${pkgver}_linux_amd64.tar.gz::https://github.com/dloomorg/dloom/releases/download/v1.0.2/dloom_v1.0.2_linux_amd64.tar.gz"
+  "${_pkgname}-${pkgver}.tar.gz::https://github.com/dloomorg/dloom/archive/refs/tags/v1.0.2.tar.gz"
 )
 sha256sums=(
-  'd1cdf2063c6fa889cdce46863a3e0a9a685133eeff592e52697631a46a0a5c98'
-  '3edc665197a871ebb59b2971f7e8e73a245f13b49e7a3e992e949aeccc893afe'
+  '011432bbcc20057a9176d7ada94c89223dddb72c44efefca7254ee25fca0674c'
+  '5d01c61d102dc91b2cbe472626d1cc495f605a66684f8587d6113dd66a8bd1ee'
 )
 
 package() {
