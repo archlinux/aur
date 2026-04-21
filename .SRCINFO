@@ -1,7 +1,7 @@
 pkgbase = llama.cpp
 	pkgdesc = Port of Facebook's LLaMA model in C/C++
 	pkgver = b8864
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
 	arch = armv7h
