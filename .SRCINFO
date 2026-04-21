@@ -1,0 +1,14 @@
+pkgbase = pi-ext-awsdocs
+	pkgdesc = pi-coding-agent extension for AWS documentation
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/dougefresher/pi-ext-awsdocs
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-markdownify
+	source = pi-ext-awsdocs-0.1.2.tar.gz::https://github.com/dougefresher/pi-ext-awsdocs/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 42674cfc0f0f6190d93b9e8ae6d5e85f2fbb04e12aee629097c0ce1a82be9477
+
+pkgname = pi-ext-awsdocs
