@@ -27,6 +27,8 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/superset-desktop"
 
+    # Install extra files from srcdir (e.g., LICENSE alongside AppImage)
+
     cd "${srcdir}/squashfs-root"
     find . -maxdepth 1 -name '*.desktop' -exec \
         install -Dm644 {} "${pkgdir}/usr/share/applications/superset-desktop.desktop" \;
