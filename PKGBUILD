@@ -1,14 +1,14 @@
 # Maintainer: Swaranga Sarma <sarma.swaranga@gmail.com>
 pkgname=dloom
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Flexible dotfile symlink manager and system bootstrapper'
 arch=('x86_64')
 url='https://github.com/dloomorg/dloom'
 license=('MIT')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dloomorg/dloom/archive/refs/tags/v1.0.1.tar.gz")
-sha256sums=('3edc665197a871ebb59b2971f7e8e73a245f13b49e7a3e992e949aeccc893afe')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dloomorg/dloom/archive/refs/tags/v1.0.2.tar.gz")
+sha256sums=('5d01c61d102dc91b2cbe472626d1cc495f605a66684f8587d6113dd66a8bd1ee')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
