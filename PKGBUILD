@@ -3,13 +3,13 @@
 
 pkgname=hltb
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="HowLongToBeat CLI tool"
 archive=how-long-to-beat-cli
 arch=('x86_64')
 url="https://codeberg.org/codepunk/${archive}"
 license=('AGPL-3.0-or-later')
-depends=('gcc-libs')
+depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
