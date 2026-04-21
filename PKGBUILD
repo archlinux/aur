@@ -11,7 +11,7 @@ conflicts=('ioruba' 'ioruba-desktop-bin')
 replaces=('ioruba')
 makedepends=('npm' 'rust' 'cargo' 'pkgconf' 'webkit2gtk-4.1' 'gtk3' 'librsvg' 'patchelf' 'libappindicator-gtk3')
 source=("ioruba-${pkgver}.tar.gz::https://github.com/bernardopg/ioruba/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f9baf1dc88b99af54d20964140d94269bef1e6267bb9bf300840dbbd2b63889f')
+sha256sums=('788808d106543428a0e19fbdebfe4437f9d86371e0c5b62f40c165904217be0e')
 
 prepare() {
   cd "ioruba-${pkgver}"

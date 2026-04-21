@@ -22,7 +22,7 @@ pkgbase = ioruba-desktop
 	conflicts = ioruba
 	conflicts = ioruba-desktop-bin
 	replaces = ioruba
-	source = ioruba-${pkgver}.tar.gz::https://github.com/bernardopg/ioruba/archive/refs/tags/v${pkgver}.tar.gz
-	sha256sums = f9baf1dc88b99af54d20964140d94269bef1e6267bb9bf300840dbbd2b63889f
+	source = ioruba-0.6.1.tar.gz::https://github.com/bernardopg/ioruba/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = 788808d106543428a0e19fbdebfe4437f9d86371e0c5b62f40c165904217be0e
 
 pkgname = ioruba-desktop
