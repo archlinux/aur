@@ -3,7 +3,7 @@
 
 pkgname=parabolic
 _name=org.nickvision.tubeconverter
-pkgver=2026.2.4
+pkgver=2026.4.0
 pkgrel=1
 pkgdesc="Download web video and audio"
 arch=('x86_64')
@@ -26,7 +26,7 @@ provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('48d8f76c1e0cc9a222e9e372de225829e80663b76af0282adb1ab1e0e37d9b3e')
+sha256sums=('a72cfc05ecf1ab84a25c89f001439e3b50783625037f27de6fe172c0f5322fc3')
 
 prepare() {
     cd "${pkgname^}-${pkgver}/resources/linux"
@@ -44,7 +44,7 @@ build() {
         --configuration Release \
         --runtime linux-x64 \
         -p:PublishReadyToRun=true \
-        -p:SelfContained=false \
+        -p:SelfContained=true \
         Nickvision.Parabolic.GNOME/Nickvision.Parabolic.GNOME.csproj
 }
 
