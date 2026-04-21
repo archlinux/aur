@@ -41,11 +41,18 @@ prepare() {
     #
     # Two gates stand on the path to the beast. A third chamber — the
     # beast itself — lies beyond them. All three wards are written in
-    # the same cipher: a single variable, `nG`, holding the full EULA
-    # text. Reused as lockword. Reused as error message. Reused as the
-    # key-derivation salt for the encrypted host fingerprints. The
-    # vendor believed one rune could hold every door. We will show
-    # them what one rune undone can open.
+    # the same cipher: a single variable holding the full EULA text,
+    # reused as lockword, as error message, and as the key-derivation
+    # salt for the encrypted host fingerprints. The vendor believed
+    # one rune could hold every door. We will show them what one rune
+    # undone can open.
+    #
+    # The minifier reshuffles identifier letters between builds — that
+    # rune was `nG` on 2026.2.1, `n1` on 2026.2.100, will be something
+    # else again next release. So our patterns match the *shape* of
+    # the incantation and leave an identifier-shaped hole where the
+    # variable lives. The walls can rename themselves as often as they
+    # like; the gate they guard has only one architecture.
     #
     # Break a gate, the prayer inside still lives. We do not erase
     # the spell; we disarm its trigger. We do not slay the beast by
@@ -54,6 +61,9 @@ prepare() {
     #
     local bundle="${srcdir}/extension/dist/server.bundle.js"
 
+    # a JS identifier slot — the minifier's rebindable letter.
+    local ident='[A-Za-z_$][A-Za-z0-9_$]*'
+
     # ─── the first gate: the outer vow ─────────────────────────
     # At the threshold, a watcher sniffs process.argv and the
     # ancestor exe chain, hunting for sigils of a blessed host
@@ -61,32 +71,38 @@ prepare() {
     # not of the approved procession, the watcher writes the
     # EULA to stderr and slays the process with exit(1). Shape:
     #
-    #   <check>() && (process.stderr.write(nG+"\n"), process.exit(1))
+    #   <check>() && (process.stderr.write(<IDENT>+"\n"), process.exit(1))
+    #
+    # <IDENT> is whatever letter the minifier chose for the EULA
+    # variable this build; we match any identifier there.
     #
     # The watcher has one motion. We collapse the self-kill pair
     # into `void 0`. The comma chain stays well-formed. Control
-    # falls through into xR(!0) init. The watcher still looks,
-    # still decides you are an intruder — and then does nothing.
-    # The first gate is open. Thread onward.
-    sed -i 's|process.stderr.write(nG+"\\n"),process.exit(1)|void 0|' "${bundle}"
+    # falls through into init. The watcher still looks, still
+    # decides you are an intruder — and then does nothing. The
+    # first gate is open. Thread onward.
+    sed -i -E "s#process\.stderr\.write\(${ident}\+\"\\\\n\"\),process\.exit\(1\)#void 0#" "${bundle}"
 
     # ─── the second gate: the inner rite ───────────────────────
     # Beyond the first watcher, the initialize handler demands a
     # secret handshake: the client must place in its initialize
     # options a field named `clientVerification` whose JSON-
-    # decoded value exactly equals the EULA string `nG`. Shape:
+    # decoded value exactly equals the EULA string. Shape:
     #
     #   hasVSCodeExtension && (e => {
-    #       if (void 0 === e || nG !== JSON.parse(e))
-    #           throw Error(`${nG}\n\n`)
+    #       if (void 0 === e || <IDENT> !== JSON.parse(e))
+    #           throw Error(`${<IDENT>}\n\n`)
     #   })(eo.clientVerification)
+    #
+    # Same <IDENT> as gate 1 — same EULA variable, same minifier
+    # letter, same identifier-slot pattern.
     #
     # The test itself is the curse — pass or be cast out with
     # the EULA as the voice of your banishment. We invert the
     # predicate to `if(!1)`. The throw becomes dead code. The
     # call still runs, the arrow still looses, the target simply
     # cannot be struck. The second gate is open.
-    sed -i 's#if(void 0===e||nG!==JSON.parse(e))throw Error#if(!1)throw Error#' "${bundle}"
+    sed -i -E "s#if\(void 0===e\|\|${ident}!==JSON\.parse\(e\)\)throw Error#if(!1)throw Error#" "${bundle}"
 
     # ─── the beast ──────────────────────────────────────────────
     # What of the beast itself? Look closely: it is already
@@ -96,12 +112,13 @@ prepare() {
     # breath. Cutting the two gates above does not merely open
     # doors; it severs both hands from the creature that held
     # them. The body remains, inert, coiled around the oracle.
-    # nG still sits in the bundle as a monument. The encrypted
-    # host fingerprints still sleep in their hex strings. The
-    # call-sites that asked "are you a blessed host" still ask
-    # — and the silence of no reply is the sound of a dead
-    # thing watching. The oracle breathes freely over its
-    # corpse. The statute lives. The enforcement does not.
+    # The EULA string still sits in the bundle as a monument.
+    # The encrypted host fingerprints still sleep in their hex
+    # strings. The call-sites that asked "are you a blessed
+    # host" still ask — and the silence of no reply is the
+    # sound of a dead thing watching. The oracle breathes
+    # freely over its corpse. The statute lives. The
+    # enforcement does not.
     #
     # A ghost ship leaves a wake. A slain beast leaves a bone.
 }
@@ -119,14 +136,17 @@ check() {
     local bundle="${srcdir}/extension/dist/server.bundle.js"
 
     # ─── first song: the gates are breached ────────────────────────
-    # Assert the original patterns are gone. If grep finds them,
-    # sed struck empty air and the labyrinth still holds its shape.
-    if grep -q 'process.stderr.write(nG+"\\n"),process.exit(1)' "${bundle}"; then
-        echo "::error:: gate 1 (outer vow) intact — sed pattern stale, remap the wall" >&2
+    # Assert the gate shapes are gone — not just one minifier letter,
+    # the whole incantation structure. If grep finds any identifier in
+    # the variable slot next to the rest of the shape, sed either
+    # struck empty air or MS reshaped the stones enough to break us.
+    local ident='[A-Za-z_$][A-Za-z0-9_$]*'
+    if grep -qE "process\.stderr\.write\(${ident}\+\"\\\\n\"\),process\.exit\(1\)" "${bundle}"; then
+        echo "::error:: gate 1 (outer vow) intact — pattern stale, remap the wall" >&2
         return 1
     fi
-    if grep -q 'if(void 0===e||nG!==JSON.parse(e))throw Error' "${bundle}"; then
-        echo "::error:: gate 2 (inner rite) intact — sed pattern stale, remap the wall" >&2
+    if grep -qE "if\(void 0===e\|\|${ident}!==JSON\.parse\(e\)\)throw Error" "${bundle}"; then
+        echo "::error:: gate 2 (inner rite) intact — pattern stale, remap the wall" >&2
         return 1
     fi
 
