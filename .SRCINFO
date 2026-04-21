@@ -1,0 +1,13 @@
+pkgbase = liftoff
+	pkgdesc = Fast CLI project launcher — detect, install and start projects in one command
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/notliad/liftoff
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = liftoff-0.4.1.tar.gz::https://github.com/notliad/liftoff/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = afe415c72cf69b80facb0eb2ec3daf6bdb0eb2ca40bac36ac0c5ac540063f7e0
+
+pkgname = liftoff
