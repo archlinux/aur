@@ -2,7 +2,10 @@ post_install() {
     echo ":: Launch Control-OFC from your application menu, or run:"
     echo "   control-ofc-gui"
     echo ""
-    echo ":: The control-ofc-daemon service must be running for full functionality."
-    echo ":: Use --demo to launch in demo mode without the daemon:"
-    echo "   control-ofc-gui --demo"
+    echo ":: Requires the daemon: sudo systemctl enable --now control-ofc-daemon"
+    echo "   Demo mode (no daemon): control-ofc-gui --demo"
+    echo ""
+    echo ":: If motherboard sensors are missing, load modules and restart the daemon:"
+    echo "   sudo systemctl start systemd-modules-load"
+    echo "   sudo systemctl restart control-ofc-daemon"
 }
