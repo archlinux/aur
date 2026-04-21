@@ -1,7 +1,7 @@
 pkgbase = spirit
 	pkgdesc = spirit desktop (prebuilt)
 	pkgver = 0.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/aquaticcalf/spirit
 	arch = x86_64
 	license = MIT
@@ -11,3 +11,4 @@ pkgbase = spirit
 	sha256sums = SKIP
 
 pkgname = spirit
+provides = spirit

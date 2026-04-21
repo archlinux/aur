@@ -1,7 +1,7 @@
 # Maintainer: aquaticcalf
 pkgname=spirit
 pkgver=0.0.0
-pkgrel=9
+pkgrel=10
 pkgdesc="spirit desktop (prebuilt)"
 arch=('x86_64')
 url="https://github.com/aquaticcalf/spirit"
@@ -18,6 +18,9 @@ package() {
   ln -sf "/opt/${pkgname}/spirit-desktop" "${pkgdir}/usr/bin/${pkgname}"
 
   install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
+  install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 
   install -d "${pkgdir}/usr/share/applications"
   cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<DESKTOP
