@@ -1,6 +1,6 @@
 _pkgname=slimevr-gui
 pkgname=${_pkgname}-git
-pkgver=v18.2.0.r0.0236a05f2
+pkgver=v19.0.0.r40.15ff70dda
 pkgrel=1
 pkgdesc="web GUI for SlimeVR Full Body Tracking System"
 arch=('x86_64')
@@ -55,7 +55,7 @@ package() {
   cd "${srcdir}/SlimeVR-Server/gui/dist"
   find . -type f -exec install -vDm 644 {} "${pkgdir}/opt/${_pkgname}/{}" \;
 
-  install -Dm644 "${srcdir}/SlimeVR-Server/gui/src-tauri/icons/32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png"
-  install -Dm644 "${srcdir}/SlimeVR-Server/gui/src-tauri/icons/128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
-  install -Dm644 "${srcdir}/SlimeVR-Server/gui/src-tauri/icons/ios/AppIcon-512@2x.png" "${pkgdir}/usr/share/icons/hicolor/512x512@2x/apps/${_pkgname}.png"
+  install -Dm644 "${srcdir}/SlimeVR-Server/gui/electron/resources/icons/32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png"
+  install -Dm644 "${srcdir}/SlimeVR-Server/gui/electron/resources/icons/128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
+  install -Dm644 "${srcdir}/SlimeVR-Server/gui/electron/resources/icons/128x128@2x.png" "${pkgdir}/usr/share/icons/hicolor/128x128@2/apps/${_pkgname}.png"
 }
