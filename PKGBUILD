@@ -1,7 +1,7 @@
 _pkgname=slimevr-gui
 pkgname=${_pkgname}-git
 pkgver=v19.0.0.r40.15ff70dda
-pkgrel=1
+pkgrel=2
 pkgdesc="web GUI for SlimeVR Full Body Tracking System"
 arch=('x86_64')
 url="https://github.com/SlimeVR/SlimeVR-Server"
@@ -52,7 +52,7 @@ package() {
   cd "${srcdir}/SlimeVR-Server"
   install -Dm644 "LICENSE-MIT" "LICENSE-APACHE" -t "${pkgdir}/opt/${_pkgname}"
 
-  cd "${srcdir}/SlimeVR-Server/gui/dist"
+  cd "${srcdir}/SlimeVR-Server/gui/out/renderer"
   find . -type f -exec install -vDm 644 {} "${pkgdir}/opt/${_pkgname}/{}" \;
 
   install -Dm644 "${srcdir}/SlimeVR-Server/gui/electron/resources/icons/32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png"
