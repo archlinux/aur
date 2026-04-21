@@ -10,7 +10,7 @@ epoch=1
 pkgver=3.1.13
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
 _splTokenCliVersion=5.5.0
-pkgrel=6
+pkgrel=7
 url="https://github.com/anza-xyz/agave"
 arch=(x86_64)
 license=(Apache-2.0)
@@ -166,6 +166,10 @@ package_solana-cli() {
 package_agave-validator() {
   pkgdesc="Agave validator and node operator tools for Solana"
   depends=(bzip2 glibc libgcc libstdc++)
+  optdepends=(
+    'ocl-icd: OpenCL GPU signature verification via perf-libs (requires compatible GPU; opt-in via SOLANA_PERF_LIBS)'
+    'intel-sgx-psw: SGX-backed signing enclave via perf-libs (requires SGX-capable CPU; opt-in via SOLANA_PERF_LIBS)'
+  )
   provides=("agave-validator=${epoch}:${pkgver}-${pkgrel}")
 
   cd "$srcdir/agave"
