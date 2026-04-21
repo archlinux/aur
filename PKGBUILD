@@ -28,4 +28,5 @@ package() {
         exit 1
     fi
     tar -xf data.tar.* -C "${pkgdir}"
+    # Install additional files from deb_contents (e.g., LICENSE from .deb)
 }
