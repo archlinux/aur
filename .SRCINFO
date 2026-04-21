@@ -1,7 +1,7 @@
 pkgbase = kelivo-bin
 	pkgdesc = A Flutter LLM Chat Client
-	pkgver = 1.1.10
-	pkgrel = 28.1
+	pkgver = 1.1.11
+	pkgrel = 29.1
 	url = https://github.com/Chevey339/kelivo
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -9,9 +9,9 @@ pkgbase = kelivo-bin
 	depends = libnotify
 	provides = kelivo
 	conflicts = kelivo
-	source = https://github.com/Chevey339/kelivo/releases/download/v1.1.10/Kelivo_linux_1.1.10+28.tar.gz
+	source = https://github.com/Chevey339/kelivo/releases/download/v1.1.11/Kelivo_linux_1.1.11+29.tar.gz
 	source = kelivo.desktop
-	sha256sums = c2fc4d248404480f234c40d9e12f99422b8b0fd10d18356482de64851fe22acb
-	sha256sums = d70d4b0a4968c1c4b2323e7a1522850a919ca7d03c7d66026d05234aaf13449b
+	sha256sums = a1956d83f9dc2ba863c3383bdbd873d8b42b805c9f0accd31d76743512f62e6b
+	sha256sums = 24bc2c4cf189b1a6494a89f5e97b296bc6e13f6d68dbac0963b7372bf1acfe89
 
 pkgname = kelivo-bin
