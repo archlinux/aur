@@ -1,0 +1,17 @@
+pkgbase = gitbutler-cli-bin
+	pkgdesc = Git client with things like parallel and stacked branches, just the CLI
+	pkgver = 0.19.9
+	pkgrel = 1
+	url = https://gitbutler.com/
+	changelog = CHANGELOG
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-FSL-1.1-MIT
+	source = pkg-license.md
+	sha256sums = 2a3154bf44e0b219014291b96249082f3305844a1d73796741468c8128c2829e
+	source_x86_64 = https://releases.gitbutler.com/releases/release/0.19.9-2990/linux/x86_64/but
+	sha256sums_x86_64 = 722a9ece8cdd8699a17b3d541c532a63cf648c22d0fb77b14c35a3492061bdb2
+	source_aarch64 = https://releases.gitbutler.com/releases/release/0.19.9-2990/linux/aarch64/but
+	sha256sums_aarch64 = 722a9ece8cdd8699a17b3d541c532a63cf648c22d0fb77b14c35a3492061bdb2
+
+pkgname = gitbutler-cli-bin
