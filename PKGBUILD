@@ -22,5 +22,6 @@ package() {
 	cd "$pkgname"
 	install -dm755 "$pkgdir/usr/share/oh-my-fish"
 	cp -r . "$pkgdir/usr/share/oh-my-fish/"
+	install -Dm755 bin/omf "$pkgdir/usr/bin/omf"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-} 
+}
