@@ -3,7 +3,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=crosswords
-pkgver=0.3.16.2
+pkgver=0.3.17
 pkgrel=1
 pkgdesc='Crossword player and editor for GNOME'
 arch=(x86_64 aarch64)
@@ -28,11 +28,11 @@ depends=(
     python-regex
 )
 makedepends=(glib2-devel meson blueprint-compiler)
-source=("${pkgname}::git+${url}.git#tag=${pkgver}")
-sha256sums=('59e3ac3f6a815c66b4ccdddc49fecfb75170d22dc5f655822689b3c91c474056')
+source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('05ec07046798f3e41a745bd2c667ca5f34fa57134e93e4431af5f2107f0592ec')
 
 build() {
-    arch-meson ${pkgname} build -Ddevelopment=false
+    arch-meson ${pkgname}-${pkgver} build -Ddevelopment=false
     meson compile -C build
 }
 
