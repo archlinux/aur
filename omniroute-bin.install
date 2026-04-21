@@ -3,7 +3,7 @@ post_install() {
 ==> OmniRoute was installed.
 ==> Optional per-user service setup:
 ==>   mkdir -p ~/.config/omniroute
-==>   cp /usr/share/doc/omniroute-bin/omniroute.dotenv.example ~/.config/omniroute/.env
+==>   cp /usr/share/doc/omniroute-bin/.env.example ~/.config/omniroute/.env
 ==>   systemctl --user daemon-reload
 ==>   systemctl --user enable --now omniroute.service
 ==> The packaged user service defaults DATA_DIR to ~/.config/omniroute.
