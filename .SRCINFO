@@ -1,0 +1,27 @@
+pkgbase = wl-kbd-git
+	pkgdesc = Wayland keyboard layout indicator with SNI tray icon
+	pkgver = 0.1.0.r2.g2041ff7
+	pkgrel = 1
+	url = https://github.com/sfs-pra/wl-kbd
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = gettext
+	makedepends = dbus
+	depends = glib2
+	depends = cairo
+	depends = pango
+	depends = wayland
+	depends = libxkbcommon
+	depends = libsni-exporter
+	depends = wl-kbd-assets
+	optdepends = wl-kbd-config: keyboard settings GUI (launched from tray menu)
+	provides = wl-kbd
+	conflicts = wl-kbd
+	source = git+https://github.com/sfs-pra/wl-kbd.git
+	sha256sums = SKIP
+
+pkgname = wl-kbd-git
