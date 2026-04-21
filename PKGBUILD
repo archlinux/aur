@@ -1,4 +1,4 @@
-# maintainer: zxkmm (IHp4a21tQGhvdG1haWwuY29t)
+# maintainer: SiYuan community (https://github.com/siyuan-note/siyuan/issues/new/choose)
 # auto running on siyuan official repo
 # PKGBUILD is modified from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=siyuan-appimage
 # which is made by vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
@@ -6,7 +6,7 @@
 # for change request, PLEASE MAKE A PR ON GITHUB REPO, keep commenting here would be ignored
 
 pkgname=siyuan-bin
-pkgver=3.6.4
+pkgver=3.6.5
 pkgrel=1
 pkgdesc="auto upload to AUR when SiYuan stable release"
 arch=("x86_64")
