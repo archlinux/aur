@@ -1,4 +1,5 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: Sungjoon Moon <sumoon [at] seoulsaram [dot] com>
+# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=greetd-wlgreet
 pkgver=0.4.1
