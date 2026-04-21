@@ -10,11 +10,11 @@ epoch=1
 pkgver=3.1.13
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
 _splTokenCliVersion=5.5.0
-pkgrel=8
+pkgrel=9
 url="https://github.com/anza-xyz/agave"
 arch=(x86_64)
 license=(Apache-2.0)
-makedepends=(git protobuf clang llvm curl cargo systemd-libs)
+makedepends=(git protobuf clang curl cargo systemd-libs)
 source=(git+https://github.com/anza-xyz/agave.git#tag=v$pkgver
         git+https://github.com/solana-program/token-2022.git#tag=cli@v$_splTokenCliVersion
         $pkgbase.sysusers
@@ -146,7 +146,7 @@ package_solana-cli() {
   pkgdesc="Solana CLI tools"
   depends=(bzip2 glibc libgcc systemd-libs)
   provides=(spl-token)
-  conflicts=(solana-bin)
+  conflicts=(spl-token)
 
   cd "$srcdir/agave"
   for bin in "${_solana_bins[@]}"; do

@@ -1,6 +1,6 @@
 pkgbase = solana
 	pkgver = 3.1.13
-	pkgrel = 8
+	pkgrel = 9
 	epoch = 1
 	url = https://github.com/anza-xyz/agave
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = solana
 	makedepends = git
 	makedepends = protobuf
 	makedepends = clang
-	makedepends = llvm
 	makedepends = curl
 	makedepends = cargo
 	makedepends = systemd-libs
@@ -31,7 +30,7 @@ pkgname = solana-cli
 	depends = libgcc
 	depends = systemd-libs
 	provides = spl-token
-	conflicts = solana-bin
+	conflicts = spl-token
 
 pkgname = agave-validator
 	pkgdesc = Agave validator and node operator tools for Solana
