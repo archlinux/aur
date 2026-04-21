@@ -1,0 +1,5 @@
+[shanti-bin]
+source = "github"
+github = "muzomer/shanti"
+use_latest_release = true
+prefix = "v"

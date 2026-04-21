@@ -1,0 +1,22 @@
+pkgbase = shanti-bin
+	pkgdesc = Create and manage Git worktrees in multiple repositories
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/muzomer/shanti
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	depends = zlib
+	provides = shanti
+	conflicts = shanti
+	options = !strip
+	source = README-0.5.0.md::https://raw.githubusercontent.com/muzomer/shanti/v0.5.0/README.md
+	source = LICENSE-0.5.0::https://raw.githubusercontent.com/muzomer/shanti/v0.5.0/LICENSE
+	sha256sums = b4bf0975fe6cf1a55f0d0bd1651324ff8ff2b9346317d4f0bfb2038750ca9c47
+	sha256sums = 85927af65f9f16f2531192205c54cfc6ea28d0cd4689163f634bdb4346e9e633
+	source_x86_64 = shanti-x86_64-0.5.0::https://github.com/muzomer/shanti/releases/download/v0.5.0/shanti-linux-latest
+	sha256sums_x86_64 = 2df63ad5ba54d52fe96a17fd7fc21783cfc8290abceea716000d16afdf27a7eb
+
+pkgname = shanti-bin
