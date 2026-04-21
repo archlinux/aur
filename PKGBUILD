@@ -1,6 +1,6 @@
 pkgname=rsyslog
-pkgver=8.2602.0
-pkgrel=2
+pkgver=8.2604.0
+pkgrel=1
 pkgdesc="An enhanced multi-threaded syslogd with a focus on security and reliability"
 url="http://www.rsyslog.com/"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -22,7 +22,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/rsyslog/rsyslog/archive/v${
         'rsyslog.tmpfiles'
         )
 
-sha256sums=('e4e8125c07bbb268f61b7a8616aa6e5ba9414fdce46dc3ac7c5e0a527e1f3c14'
+sha256sums=('c8560fba4c419c47497f7c98852a8ef507759482fcce09ec597556201e6439f0'
             '0f5bea3fd4dff2c9f097bf95768b2e1f6e9cfd9a08eab98bc3b3b4d2ed44119a'
             'bc7ea11a697c20cdaa6730cfa0b4465cef0fec0e3f6b39aeff8deae9756aafbb'
             '81b9f9b78395405b679849143a6709911d00e9317928fdb2a2540f52965847c2'
