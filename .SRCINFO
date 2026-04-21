@@ -1,18 +1,15 @@
 pkgbase = equicord-hook
-	pkgdesc = Pacman hook to automatically install Equicord on Discord updates
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgdesc = Pacman hook to automatically (re)install Equicord when Discord or Equicord updates
+	pkgver = r4.162f97a
+	pkgrel = 2
 	arch = any
-	license = GPL3
 	depends = bash
 	depends = coreutils
 	depends = curl
 	depends = sed
-	depends = discord
-	optdepends = equicord-installer-bin: Equilotl installer for Equicord
-	source = equicord.hook
-	source = equicord.sh
-	sha256sums = SKIP
+	depends = equicord-installer-bin
+	optdepends = discord: Discord stable branch
+	source = git+https://github.com/Ari-43/equicord-autoinstall
 	sha256sums = SKIP
 
 pkgname = equicord-hook

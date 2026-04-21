@@ -1,33 +1,29 @@
-# Maintainer: JarzaClay <icdubs09+aur at gmail dot com>
+# Maintainer: Ari43 <arirera43 [at] gmail [dot] com>
+# Contributor: JarzaClay <icdubs09+aur at gmail dot com>
 
-_pkgname=equicord-hook
 pkgname=equicord-hook
-pkgdesc='Pacman hook to automatically install Equicord on Discord updates'
-pkgver=1.0.0
-pkgrel=1
+pkgdesc='Pacman hook to automatically (re)install Equicord when Discord or Equicord updates'
+pkgver=r4.162f97a
+pkgrel=2
 arch=('any')
-license=('GPL3')
 depends=(
   'bash'
   'coreutils'
   'curl'
   'sed'
-  'discord'
+  'equicord-installer-bin'
 )
-optdepends=(
-  'equicord-installer-bin: Equilotl installer for Equicord'
-)
-source=(
-  'equicord.hook'
-  'equicord.sh'
-)
-sha256sums=(
-  'SKIP' # You probably want to calculate real checksums later
-  'SKIP'
-)
+source=('git+https://github.com/Ari-43/equicord-autoinstall')
+optdepends=('discord: Discord stable branch')
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/equicord-autoinstall"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
-  install -Dm644 "equicord.hook" "$pkgdir/etc/pacman.d/hooks/equicord.hook"
-  install -Dm755 "equicord.sh" "$pkgdir/etc/pacman.d/hookbin/equicord.sh"
+  install -Dm644 "$srcdir/equicord-autoinstall/equicord-autoinstall.hook" "$pkgdir/etc/pacman.d/hooks/equicord-autoinstall.hook"
+  install -Dm755 "$srcdir/equicord-autoinstall/equicord-autoinstall.sh" "$pkgdir/usr/lib/equicord-hook/equicord-autoinstall.sh"
 }
 
