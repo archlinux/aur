@@ -8,7 +8,7 @@ _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Universal command line credential management and injection tool"
 arch=('x86_64' 'aarch64')
-_barch=('x86_64' 'aarch64')
+_barch=('x86_64-unknown-linux-musl' 'aarch64-unknown-linux-musl')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 license=('BSD-3-Clause')
@@ -23,8 +23,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "CONTRIBUTING-${pkgver}.md::${_urlraw}/CONTRIBUTING.md"
         "SECURITY-${pkgver}.md::${_urlraw}/SECURITY.md")
 
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-musl.tar.gz")
-source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}-unknown-linux-musl.tar.gz")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
 sha256sums=('d8de70bc004d0740466df51f22845647ca8a104c15386fd1411d580a43e12257'
             'c3d9465817ffe1d1d9c2055d8808e66b1beb912e064a5435c585ff4501e77cff'
             '7ec3e098d3102f525059b47116b0d4fb1b40fbca9372b2f8c98d81ba7cb946be'
