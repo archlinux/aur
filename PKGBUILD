@@ -1,6 +1,6 @@
 # Maintainer: Ilyas Turki <turki.ilyass at gmail dot com>
 pkgname=prayer-times
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Islamic Prayer Times Information and Notifications"
 arch=('x86_64' 'aarch64')
@@ -48,6 +48,8 @@ package() {
 
     install -Dm644 "assets/mosque-svgrepo-com.png" \
         "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
+    install -Dm644 "contrib/${pkgname}.service" \
+        "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
     install -Dm644 "README.md" \
         "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "LICENSE" \
