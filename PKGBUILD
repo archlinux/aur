@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=2.10.26.r0.ga3a1ac3
-_electronversion=38
-_nodeversion=22
+pkgver=3.6.6.r0.gc5ba438
+_electronversion=41
+_nodeversion=24
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client.(Use system-wide electron)"
 arch=(
@@ -67,29 +67,28 @@ prepare() {
         --categories="System" \
         --name="${pkgname%-git}" \
         --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-    } >> .npmrc
+    local HOME="${srcdir}/.electron-gyp"
+    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+    export NPM_CONFIG_MAXSOCKETS=32
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        } >> .npmrc
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+        }
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
-    NODE_ENV=development    npm install
+    NODE_ENV=development    npm install --legacy-peer-deps
+    NODE_ENV=development    npm add -D node-gyp
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     _ensure_local_nvm
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run clean
     NODE_ENV=production     npm run compile
@@ -98,16 +97,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    find "${srcdir}/${pkgname//-/.}/dist/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-git}" {} +
-    if find "${srcdir}/${pkgname//-/.}/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/${pkgname//-/.}/dist/linux-"*"/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-git}"
-            fi
-        done
-    fi
-    install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+	cp -a "${srcdir}/${pkgname//-/.}/dist/linux-"*"/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "${srcdir}/${pkgname//-/.}/node_modules/@${pkgname%-git}/${pkgname%-git}-resource/build-res/appx/StoreLogo.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
