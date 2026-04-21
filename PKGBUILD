@@ -5,8 +5,8 @@
 
 # Maintainer: BYK <bykdev@proton.me>
 pkgname=basecalc-git
-pkgver=1.0.9.r22.d1aa09d
-_verstr=1.0.9
+pkgver=1.1.0.r0.g8c2b0de
+_verstr=1.0.12
 pkgrel=1
 pkgdesc="BaseCalc is a base calculator made in C with GTK4."
 arch=('x86_64')
@@ -31,7 +31,7 @@ validpgpkeys=()
 
 pkgver() {
   cd BaseCalc
-  printf "%s.r%s.%s" "${_verstr}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
