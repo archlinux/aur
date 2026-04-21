@@ -1,0 +1,293 @@
+#!/bin/bash
+set -e
+
+show_usage() {
+    cat <<'EOF'
+DDNSTO 实例管理工具
+用法: ddnstoctl <命令> [参数]
+
+命令:
+  add <实例名> <token>     添加新实例
+  remove <实例名>          删除实例
+  start <实例名>           启动实例
+  stop <实例名>            停止实例
+  restart <实例名>         重启实例
+  status <实例名>          查看实例状态
+  list                    列出所有实例
+  logpath <实例名>        查看实例日志路径
+  logs <实例名>           查看实例日志
+  fix-perms               修复权限问题
+
+示例:
+  ddnstoctl add web token12345678
+  ddnstoctl start web
+  ddnstoctl logs web
+EOF
+}
+
+# 检查root权限
+check_root() {
+    if [[ $EUID -ne 0 ]]; then
+        echo "错误: 此命令需要root权限" >&2
+        exit 1
+    fi
+}
+
+# 修复权限
+fix_permissions() {
+    check_root
+    echo "正在修复权限..."
+
+    # 创建用户
+    if ! id ddnsto &>/dev/null; then
+        useradd -r -s /bin/false -d /nonexistent -M ddnsto
+        echo "创建用户: ddnsto"
+    fi
+
+    # 创建目录
+    mkdir -p /etc/ddnsto
+    mkdir -p /var/log/ddnsto
+
+    # 设置目录权限
+    chown ddnsto:ddnsto /etc/ddnsto
+    chmod 750 /etc/ddnsto
+    chown ddnsto:ddnsto /var/log/ddnsto
+    chmod 755 /var/log/ddnsto
+
+    echo "✅ 权限修复完成"
+}
+
+# 添加实例
+add_instance() {
+    local instance="$1"
+    local token="$2"
+
+    if [[ -z "$instance" || -z "$token" ]]; then
+        echo "错误: 需要提供实例名和 token" >&2
+        exit 1
+    fi
+
+    # 验证实例名（只允许字母、数字、下划线、短横线）
+    if [[ ! "$instance" =~ ^[a-zA-Z0-9_-]+$ ]]; then
+        echo "错误: 实例名只能包含字母、数字、下划线和短横线" >&2
+        exit 1
+    fi
+
+    local token_file="/etc/ddnsto/${instance}_token"
+    local log_file="/var/log/ddnsto/${instance}.log"
+
+    # 确保基础环境
+    fix_permissions
+
+    # 检查实例是否已存在
+    if [[ -f "$token_file" ]]; then
+        echo "警告: 实例 '$instance' 已存在，将覆盖配置文件" >&2
+    fi
+
+    # 创建token文件
+    cat >"$token_file" <<EOF
+DDNSTO_TOKEN=${token}
+EOF
+
+    chmod 640 "$token_file"
+    chown ddnsto:ddnsto "$token_file"
+
+    # 确保日志文件存在并设置权限
+    touch "$log_file"
+    chown ddnsto:ddnsto "$log_file"
+    chmod 644 "$log_file"
+
+    echo "✅ 实例添加成功: $instance"
+    echo "📁 配置文件: $token_file"
+    echo "📁 日志文件: $log_file"
+
+    systemctl daemon-reload
+}
+
+remove_instance() {
+    local instance="$1"
+
+    if [[ -z "$instance" ]]; then
+        echo "错误: 需要提供实例名" >&2
+        exit 1
+    fi
+
+    local token_file="/etc/ddnsto/${instance}_token"
+    local log_file="/var/log/ddnsto/${instance}.log"
+
+    if [[ ! -f "$token_file" ]]; then
+        echo "错误: 实例不存在: $instance" >&2
+        exit 1
+    fi
+
+    # 停止并禁用服务
+    systemctl stop "ddnsto@$instance" 2>/dev/null || true
+    systemctl disable "ddnsto@$instance" 2>/dev/null || true
+
+    # 删除配置文件
+    rm -f "$token_file"
+
+    # 询问是否删除日志文件
+    if [[ -f "$log_file" ]]; then
+        read -p "是否删除日志文件 $log_file? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            rm -f "$log_file"
+            echo "已删除日志文件"
+        fi
+    fi
+
+    systemctl daemon-reload
+    echo "✅ 实例删除成功: $instance"
+}
+
+list_instances() {
+    echo "已配置的 DDNSTO 实例:"
+    echo "====================="
+    
+    if [[ ! -d "/etc/ddnsto" ]]; then
+        echo "暂无实例"
+        return
+    fi
+
+    for token_file in /etc/ddnsto/*_token; do
+        if [[ -f "$token_file" ]]; then
+            local instance=$(basename "$token_file" "_token")
+            
+            # 获取token（不显示完整token）
+            local token_exists="是"
+            
+            local status=$(systemctl is-active "ddnsto@$instance" 2>/dev/null || echo "未运行")
+            local enabled=$(systemctl is-enabled "ddnsto@$instance" 2>/dev/null || echo "-")
+            
+            printf "实例: %-12s 状态: %-8s 自启: %-4s 配置: %-3s\n" \
+                "$instance" \
+                "$status" \
+                "$([ "$enabled" = "enabled" ] && echo "是" || echo "否")" \
+                "$token_exists"
+        fi
+    done
+}
+
+show_log_path() {
+    local instance="$1"
+    local token_file="/etc/ddnsto/${instance}_token"
+
+    if [[ ! -f "$token_file" ]]; then
+        echo "错误: 实例不存在: $instance" >&2
+        exit 1
+    fi
+
+    local log_file="/var/log/ddnsto/${instance}.log"
+    echo "实例: $instance"
+    echo "配置文件: $token_file"
+    echo "日志文件: $log_file"
+    
+    if [[ -f "$log_file" ]]; then
+        echo "日志大小: $(ls -lh "$log_file" | awk '{print $5}')"
+        echo "最后修改: $(ls -l --time-style=long-iso "$log_file" | awk '{print $6, $7}')"
+    else
+        echo "日志文件: 不存在（服务启动后会自动创建）"
+    fi
+}
+
+# 查看日志
+show_logs() {
+    local instance="$1"
+    local token_file="/etc/ddnsto/${instance}_token"
+
+    if [[ ! -f "$token_file" ]]; then
+        echo "错误: 实例不存在: $instance" >&2
+        exit 1
+    fi
+
+    local log_file="/var/log/ddnsto/${instance}.log"
+
+    if [[ ! -f "$log_file" ]]; then
+        echo "日志文件不存在: $log_file" >&2
+        echo "请先启动服务创建日志文件" >&2
+        exit 1
+    fi
+
+    echo "正在查看日志: $log_file"
+    echo "============================"
+    tail -f "$log_file"
+}
+
+enable_log_to_file() {
+    echo "注意: 要支持日志文件输出，需要修改 systemd 服务文件"
+    echo "修改 /usr/lib/systemd/system/ddnsto@.service 中的以下行:"
+    echo ""
+    echo "从:"
+    echo "StandardOutput=journal"
+    echo "StandardError=journal"
+    echo ""
+    echo "改为:"
+    echo "StandardOutput=file:/var/log/ddnsto/%i.log"
+    echo "StandardError=file:/var/log/ddnsto/%i.log"
+    echo ""
+    echo "或者使用日志重定向:"
+    echo "ExecStart=/usr/bin/ddnsto -u \${DDNSTO_TOKEN} run 2>&1 | tee /var/log/ddnsto/%i.log"
+}
+
+case "${1:-}" in
+add)
+    add_instance "$2" "$3"
+    ;;
+remove|del)
+    remove_instance "$2"
+    ;;
+start)
+    local instance="$2"
+    if [[ -z "$instance" ]]; then
+        echo "错误: 需要提供实例名" >&2
+        exit 1
+    fi
+    
+    # 确保日志文件存在
+    local log_file="/var/log/ddnsto/${instance}.log"
+    if [[ ! -f "$log_file" ]]; then
+        touch "$log_file"
+        chown ddnsto:ddnsto "$log_file"
+        chmod 644 "$log_file"
+    fi
+    
+    systemctl start "ddnsto@$instance"
+    echo "✅ 启动实例: $instance"
+    echo "📁 日志文件: $log_file"
+    ;;
+stop)
+    systemctl stop "ddnsto@$2"
+    echo "✅ 停止实例: $2"
+    ;;
+restart)
+    systemctl restart "ddnsto@$2"
+    echo "✅ 重启实例: $2"
+    ;;
+status)
+    systemctl status "ddnsto@$2" --no-pager
+    ;;
+list)
+    list_instances
+    ;;
+logpath)
+    show_log_path "$2"
+    ;;
+logs)
+    show_logs "$2"
+    ;;
+fix-perms)
+    fix_permissions
+    ;;
+enable-logs)
+    enable_log_to_file
+    ;;
+""|help|--help|-h)
+    show_usage
+    ;;
+*)
+    echo "错误: 未知命令 '$1'" >&2
+    echo "使用 'ddnstoctl help' 查看帮助" >&2
+    exit 1
+    ;;
+esac

@@ -1,0 +1,5 @@
+#Type   Path                      Mode    User     Group    Age     Argument
+d       /var/lib/ddnsto           0755    ddnsto   ddnsto   -       -
+d       /var/log/ddnsto           0755    ddnsto   ddnsto   -       -
+d       /etc/ddnsto               0755    ddnsto   ddnsto   -       -
+

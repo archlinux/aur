@@ -1,0 +1,39 @@
+_help() {
+    cat << 'EOF'
+DDNSTO 服务管理帮助
+=====================================
+
+基本使用:
+1. 添加服务实例:
+   ddnstoctl add <实例名> <token>
+   示例: ddnstoctl add web token12345678
+
+2. 服务管理命令:
+   启动:    ddnstoctl start <实例名>
+   停止:    ddnstoctl stop <实例名>
+   重启:    ddnstoctl restart <实例名>
+   状态:    ddnstoctl status <实例名>
+
+3. 实例管理:
+   查看所有实例: ddnstoctl list
+   删除实例:     ddnstoctl remove <实例名>
+   查看日志路径: ddnstoctl logpath <实例名>
+
+4. 服务日志查看:
+   - 文件日志: tail -f /var/log/ddnsto/<实例名>.log
+   - 实时日志: ddnstoctl logs <实例名>
+
+5. 常用实例命名:
+   web    - 网站服务
+   ssh    - SSH远程访问
+   mysql  - 数据库访问
+   nas    - 网络存储
+   api    - API服务
+
+配置文件: /etc/ddnsto/<实例名>_token
+日志文件: /var/log/ddnsto/<实例名>.log
+
+文档: https://doc.linkease.com/zh/guide/ddnsto
+=====================================
+EOF
+}

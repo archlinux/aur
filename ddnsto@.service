@@ -1,0 +1,31 @@
+[Unit]
+Description=DDNSTO Service for instance %i
+Documentation=https://doc.linkease.com/zh/guide/ddnsto
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=ddnsto
+Group=ddnsto
+Environment=DDNSTO_INSTANCE=%i
+EnvironmentFile=/etc/ddnsto/%i_token
+
+PrivateTmp=yes
+ProtectSystem=no
+ProtectHome=yes
+
+ExecStart=/usr/bin/ddnsto -u ${DDNSTO_TOKEN} run
+Restart=always
+RestartSec=10
+
+# StandardOutput=journal
+# StandardError=journal
+StandardOutput=file:/var/log/ddnsto/%i.log
+StandardError=file:/var/log/ddnsto/%i.log
+SyslogIdentifier=ddnsto-%i
+
+[Install]
+WantedBy=multi-user.target
