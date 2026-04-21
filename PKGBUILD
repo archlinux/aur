@@ -10,7 +10,7 @@ epoch=1
 pkgver=3.1.13
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
 _splTokenCliVersion=5.5.0
-pkgrel=9
+pkgrel=10
 url="https://github.com/anza-xyz/agave"
 arch=(x86_64)
 license=(Apache-2.0)
@@ -34,7 +34,6 @@ _MAIN_BINS=(
   cargo-build-sbf
   cargo-test-sbf
   solana-test-validator
-  agave-install
   solana
   solana-keygen
   agave-validator
@@ -44,7 +43,6 @@ _MAIN_BINS=(
   solana-faucet
   solana-stake-accounts
   solana-tokens
-  agave-install-init
 )
 
 # Root-workspace DCOU/tainted binaries
@@ -79,7 +77,7 @@ _dcou_tainted_packages=(
 )
 
 # Packaging lists
-_solana_bins=(solana solana-keygen solana-gossip solana-faucet solana-stake-accounts solana-tokens agave-install agave-install-init)
+_solana_bins=(solana solana-keygen solana-gossip solana-faucet solana-stake-accounts solana-tokens)
 _validator_bins=(agave-validator agave-watchtower solana-genesis "${_ROOT_DCOU_BINS[@]}" solana-bench-tps solana-dos)
 _dev_bins=(cargo-build-sbf cargo-test-sbf solana-test-validator agave-ledger-tool agave-store-tool solana-banking-bench)
 
@@ -144,7 +142,7 @@ build() {
 
 package_solana-cli() {
   pkgdesc="Solana CLI tools"
-  depends=(bzip2 glibc libgcc systemd-libs)
+  depends=(glibc libgcc systemd-libs)
   provides=(spl-token)
   conflicts=(spl-token)
 

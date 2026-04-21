@@ -1,6 +1,6 @@
 pkgbase = solana
 	pkgver = 3.1.13
-	pkgrel = 9
+	pkgrel = 10
 	epoch = 1
 	url = https://github.com/anza-xyz/agave
 	arch = x86_64
@@ -25,7 +25,6 @@ pkgbase = solana
 
 pkgname = solana-cli
 	pkgdesc = Solana CLI tools
-	depends = bzip2
 	depends = glibc
 	depends = libgcc
 	depends = systemd-libs
