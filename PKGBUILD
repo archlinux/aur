@@ -2,9 +2,9 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=bit64
-_pkgver=4.6.0-1
+_pkgver=4.8.0
 pkgname=r-${_pkgname,,}
-pkgver=4.6.0.1
+pkgver=4.8.0
 pkgrel=1
 pkgdesc='A S3 Class for Vectors of 64bit Integers'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   r-bit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fbc0ce142fc22c9a9fdcbac930a814dfb648563d4b6a77dff739c23cc81319b7')
+sha256sums=('d2fdb14c38b6673b7a611593ff39e2ac6ec6c16eae84cb552f7a9a354d425a37')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
