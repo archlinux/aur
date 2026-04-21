@@ -1,0 +1,5 @@
+["managarr-bin"]
+source = "github"
+github = "Dark-Alex-17/managarr"
+use_latest_release = true
+prefix = "v"
