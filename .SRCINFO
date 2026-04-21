@@ -1,6 +1,6 @@
 pkgbase = speedofsound
 	pkgdesc = Voice typing for the Linux desktop.
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://www.speedofsound.io
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = speedofsound
 	depends = gtk4
 	depends = java-runtime>=25
 	depends = libadwaita
-	source = git+https://github.com/zugaldia/speedofsound.git#tag=v0.12.0
-	sha256sums = bab39762e8839d203c1d023cc2ce530d8e02494651b77b04cad9b9e214b4b3c1
+	source = git+https://github.com/zugaldia/speedofsound.git#tag=v0.13.0
+	sha256sums = 6ebca7df63c16be816a1d95749af248d4a3e7792ab0ba080e17c8f1aba207570
 
 pkgname = speedofsound
