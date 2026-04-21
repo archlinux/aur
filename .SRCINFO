@@ -1,0 +1,16 @@
+pkgbase = gnmic
+	pkgdesc = gNMI CLI client and collector
+	pkgver = 0.45.0
+	pkgrel = 1
+	url = https://github.com/openconfig/gnmic
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	options = !lto
+	source = gnmic-0.45.0.tar.gz::https://github.com/openconfig/gnmic/archive/v0.45.0.tar.gz
+	sha256sums = 47caa59c65c03bbb33959998fadc677039c32e268f66664f18a98e8e31f71603
+
+pkgname = gnmic
