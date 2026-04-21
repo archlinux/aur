@@ -1,6 +1,6 @@
 # Maintainer: Rui Jiang <https://github.com/ruiiiijiiiiang>
 pkgname=rs-top
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A lightweight, agentless, and read-only remote system monitor with a TUI dashboard"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssh')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9598190fb8c8dd5fb7dbf4bcdce734d88448b4c94c8371d1e16c4ef49755c8bb')
+sha256sums=('626f910851fde0a58079675065a93f3f281a1012fdd41c0532fd7ce07b767688')
 
 prepare() {
   cd "$pkgname-$pkgver"
