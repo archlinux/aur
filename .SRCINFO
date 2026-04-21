@@ -1,7 +1,7 @@
 pkgbase = hltb
 	pkgdesc = HowLongToBeat CLI tool
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/codepunk/how-long-to-beat-cli
 	arch = x86_64
 	license = AGPL-3.0-or-later
