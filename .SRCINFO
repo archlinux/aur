@@ -1,6 +1,6 @@
 pkgbase = indi-3rdparty-libs
 	pkgdesc = Indi 3rd party libraries
-	pkgver = 2.1.7.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://indilib.org
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = indi-3rdparty-libs
 	depends = pipewire-jack
 	depends = wireplumber
 	options = !lto
-	source = https://github.com/indilib/indi-3rdparty/archive/refs/tags/v2.1.7.1.tar.gz
-	sha256sums = 84f9ab78fb21b96a24d4225c5b0ca2030060b8050ef36450020fd9ecfcf613e9
+	source = https://github.com/indilib/indi-3rdparty/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 2f5f329326bf6e468e6313724679e2934314dcee234715cbc5cac39279142f04
 
 pkgname = indi-3rdparty-libs
