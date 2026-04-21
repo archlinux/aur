@@ -1,8 +1,8 @@
-# Maintainer: Marco Pompili <aur@odd.red>
+# Maintainer: Marco Pompili <aur@marcopompili.com>
 
 pkgname=openframeworks
-pkgver=0.12.0
-pkgrel=3
+pkgver=0.12.1
+pkgrel=1
 pkgdesc="An open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64')
@@ -13,12 +13,14 @@ options=(!strip)
 install=openframeworks.install
 source=(
   "of-make-workspace"
-  "https://github.com/openframeworks/openFrameworks/releases/download/0.12.0/of_v0.12.0_linux64gcc6_release.tar.gz"
+  "https://github.com/openframeworks/openFrameworks/releases/download/${pkgver}/of_v${pkgver}_linux64_gcc6_release.tar.gz"
+  "fix-algorithm-include.patch"
 )
 sha256sums=('b4fc38288595df566f770018d871970fb13fb2ad4af7e9e5cddc60288f338806'
-            '942cd299c903e0aeea5f05e429ab813702e0ba4f99a5a3d0e7c21e61be9b3b2b')
+            'd6c1dcab777665b2aa63e5e3d9122cc116f096b3421db3493f795a621b399c63'
+            'd8c38329177aa3db76904bc3a24c94e4e4c92db4233a894857aa86c440060424')
 
-_name="of_v${pkgver}_linux64gcc6_release"
+_name="of_v${pkgver}_linux64_gcc6_release"
 
 prepare() {
   cd ${srcdir}
@@ -34,6 +36,9 @@ prepare() {
   else
     LIBSPATH=linux
   fi
+
+  cd ${_name}
+  patch -p1 < ${srcdir}/fix-algorithm-include.patch
 }
 
 build() {
@@ -74,7 +79,6 @@ package() {
 
   chmod 644 "${pkgdir}"/opt/openFrameworks/apps/myApps/emptyExample/addons.make
   chmod 644 "${pkgdir}"/opt/openFrameworks/apps/myApps/emptyExample/config.make
-  chmod 644 "${pkgdir}"/opt/openFrameworks/apps/myApps/emptyExample/emptyExample.qbs
   chmod 644 "${pkgdir}"/opt/openFrameworks/apps/myApps/emptyExample/Makefile
 
   install -D -m644 "${srcdir}/${_name}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
