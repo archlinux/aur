@@ -8,7 +8,7 @@ license=('MIT')
 depends=('glibc' 'gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
 makedepends=('npm' 'rust' 'cargo' 'pkgconf' 'webkit2gtk-4.1' 'gtk3' 'librsvg' 'patchelf' 'libappindicator-gtk3')
 source=("ioruba-${pkgver}.tar.gz::https://github.com/bernardopg/ioruba/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7796806b11b55be1f7f9e63fa1f8397c2b914eb6792b33c7921c0f04c9750937')
+sha256sums=('123467bb1e74e5709ff45d0245250e9619fcb63a29f3cfc07c87959bdf3f2081')
 
 prepare() {
   cd "ioruba-${pkgver}"
