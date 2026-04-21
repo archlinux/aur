@@ -1,0 +1,19 @@
+_check_and_install_printer() {
+    # The command checks if the printer is already installed
+    lpstat -v boomaga &> /dev/null
+    RESULT=$?
+    if [ "${RESULT}" -ne 0 ]; then 
+        echo "Install the Boomaga printer using the installPrinter.sh script"
+        /usr/bin/installPrinter.sh
+    else
+        echo "Boomaga printer is already installed"
+    fi
+}
+
+post_install() {
+    _check_and_install_printer $1
+}
+
+post_upgrade() {
+    _check_and_install_printer $1
+}

@@ -1,0 +1,25 @@
+pkgbase = boomaga-qt6-git
+	pkgdesc = A virtual printer for viewing a document before printing it out using the physical printer. Qt6 port
+	pkgver = 3.0.0.r29.g6575833
+	pkgrel = 1
+	url = http://www.boomaga.org
+	install = boomaga-qt6-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = qt6-tools
+	makedepends = git
+	makedepends = cmake
+	makedepends = snappy
+	depends = qt6-base
+	depends = poppler
+	depends = cups
+	provides = boomaga
+	conflicts = boomaga
+	conflicts = boomaga-qt5
+	conflicts = boomaga-git
+	options = !emptydirs
+	source = boomaga::git+https://github.com/guiodic/boomaga-qt6.git
+	md5sums = SKIP
+
+pkgname = boomaga-qt6-git
