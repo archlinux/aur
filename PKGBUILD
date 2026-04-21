@@ -5,7 +5,7 @@ pkgname=vintagestory
 # "unstable" for release candidates and "pre" for testing releases before big updates.
 _release=stable
 # `$_pkgver` is separate to allow specifying pre-release versions such as "-rc.1".
-_pkgver=1.21.7
+_pkgver=1.22.0
 
 # `makepkg` doesn't support hyphens in `$pkgver`, so we'll strip them as per `vercmp`.
 pkgver=${_pkgver//-/}
@@ -20,7 +20,7 @@ source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_p
 #       "https://account.vintagestory.at/files/$_release/vs_client_linux-x64_$_pkgver.tar.gz" (alternative source)
         "$pkgname.desktop"
         "vsmodinstall-handler.desktop")
-md5sums=("2e81c9433875311040b28cd58ee6f69e"
+md5sums=("f7f0ef1daa2a0f9706dd5f97cc4410a9"
          "0cd6360c157fc7dc4d52952e83483e7d"
          "8ccc9b49290dda21199b14ac3cd4ac7e")
 
@@ -38,7 +38,7 @@ prepare() {
 
 package() {
 	# Copy application icon and .desktop files
-	install -Dm644 "$pkgname"/assets/gameicon.xpm "$pkgdir"/usr/share/pixmaps/"$pkgname".xpm
+	install -Dm644 "$pkgname"/assets/gameicon.png "$pkgdir"/usr/share/pixmaps/"$pkgname".png
 	install -Dm644 "$pkgname".desktop "$pkgdir"/usr/share/applications/"$pkgname".desktop
 	install -Dm644 vsmodinstall-handler.desktop "$pkgdir"/usr/share/applications/vsmodinstall-handler.desktop
 
