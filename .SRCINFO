@@ -1,6 +1,6 @@
 pkgbase = voxtype-tui
 	pkgdesc = Textual-based TUI for managing Voxtype (Linux voice-to-text daemon)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Zeus-Deus/voxtype-tui
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = voxtype-tui
 	depends = voxtype-bin
 	optdepends = libpulse: audio device enumeration via pactl
 	optdepends = systemd: daemon restart prompts via systemctl --user
-	source = voxtype-tui-0.1.0.tar.gz::https://github.com/Zeus-Deus/voxtype-tui/archive/v0.1.0.tar.gz
-	sha256sums = f332d93d5286c914546f475fab23a888c6cb27a63190be6aeb7fd23045b52961
+	source = voxtype-tui-0.1.1.tar.gz::https://github.com/Zeus-Deus/voxtype-tui/archive/v0.1.1.tar.gz
+	sha256sums = ff9fb642cb9113a0c1e0e7ff43fbb4844a0631ea29df2c3c85fbe30c6a9baf07
 
 pkgname = voxtype-tui
