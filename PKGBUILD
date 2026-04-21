@@ -1,7 +1,7 @@
 # Maintainer: CrypticCreator <crypticcreator@noreply.codeberg.org>
 pkgname=selene-player-git
 _pkgname=selene-player
-pkgver=v0.6.0.r0.gb7344a3
+pkgver=v0.7.0.r0.gc7dfbef
 pkgrel=0
 pkgdesc="A feature complete music player and metadata editor"
 
@@ -36,8 +36,6 @@ build() {
 	cd "${_pkgname}"
 
 	export CARGO_TARGET_DIR=target
-	# export CC=clang
-	# export CXX=clang++
 
 	cargo build --release --locked --offline -p selene-cli
 }
