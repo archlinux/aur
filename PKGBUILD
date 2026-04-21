@@ -1,7 +1,7 @@
 # Maintainer: Craig McLure <craig@mclure.net>
 pkgname=pipeweaver-app
 _pkgbase=pipeweaver
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="An application wrapper for the Pipeweaver UI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('pipeweaver' 'qt6-webengine')
 makedepends=('git' 'rust' 'cargo')
 
 source=("$_pkgbase-$pkgver.tar.gz::https://github.com/pipeweaver/pipeweaver/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('3a7ab37e85401d2e361f419b49db028270e0afcea292a196965688b3127fa3da00dede96ed80ba4f93f41c3702d5351589d263e57ac7dcaa8b4df5dc750b5e40')
+sha512sums=('8971f658703d9ac36fe46671fd0742d08b814132be88942995e90247bbd90813a000098db7293017b849c4f3d8e1abba54e3df3632b3e8d77de806c43aeda4a8')
 options=('!lto') # build fails with lto enabled
 
 prepare() {
