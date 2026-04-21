@@ -1,6 +1,6 @@
 pkgbase = solana
 	pkgver = 3.1.13
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 1
 	url = https://github.com/anza-xyz/agave
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgname = solana-cli
 	depends = glibc
 	depends = libgcc
 	depends = systemd-libs
-	provides = solana-cli=1:3.1.13-5
+	provides = solana-cli=1:3.1.13-6
 	provides = spl-token
 	conflicts = solana-bin
 
@@ -40,17 +40,18 @@ pkgname = agave-validator
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	provides = agave-validator=1:3.1.13-5
+	provides = agave-validator=1:3.1.13-6
 
 pkgname = solana-dev
 	pkgdesc = Solana program developer tools
+	install = solana-dev.install
 	depends = bash
 	depends = bzip2
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
 	optdepends = cargo: required for cargo-build-sbf and cargo-test-sbf
-	provides = solana-dev=1:3.1.13-5
+	provides = solana-dev=1:3.1.13-6
 	conflicts = solana-dev-bin
 
 pkgname = solana

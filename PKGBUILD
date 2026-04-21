@@ -10,7 +10,7 @@ epoch=1
 pkgver=3.1.13
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
 _splTokenCliVersion=5.5.0
-pkgrel=5
+pkgrel=6
 url="https://github.com/anza-xyz/agave"
 arch=(x86_64)
 license=(Apache-2.0)
@@ -181,13 +181,11 @@ package_agave-validator() {
 
 package_solana-dev() {
   pkgdesc="Solana program developer tools"
+  install=$pkgname.install
   depends=(bash bzip2 glibc libgcc libstdc++)
   optdepends=('cargo: required for cargo-build-sbf and cargo-test-sbf')
   provides=("solana-dev=${epoch}:${pkgver}-${pkgrel}")
   conflicts=(solana-dev-bin)
-
-  echo "Add yourself to the solana group to be able to install"
-  echo "dependencies when using cargo-build-bpf"
 
   cd "$srcdir/agave"
   for bin in "${_dev_bins[@]}"; do
