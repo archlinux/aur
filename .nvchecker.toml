@@ -1,0 +1,7 @@
+[proton-ge-custom]
+source = "github"
+github = "GloriousEggroll/proton-ge-custom"
+use_latest_release = true
+include_regex = "^GE-Proton\\d+-\\d+$"
+from_pattern = "^GE-Proton(\\d+)-(\\d+)$"
+to_pattern = "GE_Proton\\1_\\2"

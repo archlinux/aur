@@ -1,0 +1,43 @@
+From 56211379e347cdaef64b2dd94e8c1accc8e4c421 Mon Sep 17 00:00:00 2001
+From: Stelios Tsampas <loathingkernel@gmail.com>
+Date: Fri, 17 Apr 2026 18:03:03 +0300
+Subject: [PATCH] build: make compatible with system-wide install
+
+---
+ proton      | 6 ++----
+ 2 files changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/proton b/proton
+index 0875f4bcd..6269a49de 100755
+--- a/proton
++++ b/proton
+@@ -529,7 +529,6 @@ class Proton:
+         self.user_settings_file = self.path("user_settings.py")
+         self.wine_bin = self.bin_dir + "wine"
+         self.wineserver_bin = self.bin_dir + "wineserver"
+-        self.dist_lock = FileLock(self.path("dist.lock"), timeout=-1)
+         self.host_pe_arch = "x86_64-windows"
+         self.wow64_pe_arch = "i386-windows"
+ 
+@@ -2061,8 +2060,6 @@ if __name__ == "__main__":
+ 
+     g_proton = Proton(os.path.dirname(sys.argv[0]))
+ 
+-    g_proton.cleanup_legacy_dist()
+-    g_proton.do_steampipe_fixups()
+ 
+     g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
+ 
+@@ -2071,7 +2068,8 @@ if __name__ == "__main__":
+     g_session.init_wine()
+ 
+     if g_proton.missing_default_prefix():
+-        g_proton.make_default_prefix()
++        log("Default prefix is missing. Something is very wrong.")
++        sys.exit(1)
+ 
+     g_session.init_session(sys.argv[1] != "runinprefix")
+ 
+-- 
+2.53.0
+

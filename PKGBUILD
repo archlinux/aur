@@ -1,272 +1,114 @@
-# Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
+# Maintainer: 	EpicTux123 <EpicTux123@proton.me>
+# Contributor:	Jaja <jaja@mailbox.org>
+# Contributor:	floriplum <floriplum@mailbox.org>
+# Contributor:	various people submitting to the 'chaotic-aur' repository
+# Contributor:	barfin (a.k.a. RogueGirl) <barfin@protonmail.com>
+
+#shellcheck disable=SC2034,SC2154
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton9-23
-_commit=
-pkgver=${_srctag//-/.}
-_geckover=2.47.4
-_monover=9.3.1
-_xaliaver=0.4.5
-pkgrel=1
-epoch=2
-pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
-url="https://github.com/GloriousEggroll/proton-ge-custom"
-arch=(x86_64 x86_64_v3)
-options=(!staticlibs !lto !debug emptydirs)
-license=('custom')
+url='https://github.com/GloriousEggroll/proton-ge-custom'
 
-depends=(
-  attr             lib32-attr
-  fontconfig       lib32-fontconfig
-  libxcursor       lib32-libxcursor
-  libxrandr        lib32-libxrandr
-  libxi            lib32-libxi
-  gettext          lib32-gettext
-  freetype2        lib32-freetype2
-  gcc-libs         lib32-gcc-libs
-  libpcap          lib32-libpcap
-  lzo              lib32-lzo
-  libxkbcommon     lib32-libxkbcommon
-  libvpx           lib32-libvpx
-  sdl2             lib32-sdl2
-  libsoup          lib32-libsoup
-  libgudev         lib32-libgudev
-#  blas             lib32-blas
-#  lapack           lib32-lapack
-  speex            lib32-speex
-  desktop-file-utils
-  python
-  steam-native-runtime
-  cabextract
-)
+pkgver=GE_Proton10_34
+pkgrel=2
+epoch=1
 
-makedepends=(autoconf bison perl flex mingw-w64-gcc
-  wget rsync unzip mingw-w64-tools lld nasm
-  meson cmake fontforge afdko python-pefile glib2-devel
-  glslang vulkan-headers
-  clang
-  giflib                lib32-giflib
-  gnutls                lib32-gnutls
-  libxinerama           lib32-libxinerama
-  libxcomposite         lib32-libxcomposite
-  libxxf86vm            lib32-libxxf86vm
-  v4l-utils             lib32-v4l-utils
-  alsa-lib              lib32-alsa-lib
-  libxcomposite         lib32-libxcomposite
-  mesa                  lib32-mesa
-  mesa-libgl            lib32-mesa-libgl
-  opencl-icd-loader     lib32-opencl-icd-loader
-  libpulse              lib32-libpulse
-  gtk3                  lib32-gtk3
-  gst-plugins-base-libs lib32-gst-plugins-base-libs
-  vulkan-icd-loader     lib32-vulkan-icd-loader
-  sdl2                  lib32-sdl2
-  rust                  lib32-rust-libs
-  libgphoto2
-  opencl-headers
-  git
-  wayland-protocols
-)
+_pkgver=${pkgver//_/-}
+_srcdir=${_pkgver}
 
-optdepends=(
-  giflib                lib32-giflib
-  gnutls                lib32-gnutls
-  v4l-utils             lib32-v4l-utils
-  libpulse              lib32-libpulse
-  alsa-plugins          lib32-alsa-plugins
-  alsa-lib              lib32-alsa-lib
-  libxcomposite         lib32-libxcomposite
-  libxinerama           lib32-libxinerama
-  opencl-icd-loader     lib32-opencl-icd-loader
-  gtk3                  lib32-gtk3
-  gst-plugins-base-libs lib32-gst-plugins-base-libs
-  vulkan-icd-loader     lib32-vulkan-icd-loader
-  libgphoto2
-)
-
-provides=('proton')
-install=${pkgname}.install
 source=(
-    proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=${_srctag}
-    https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
-    https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
-    https://github.com/madewokherd/xalia/releases/download/xalia-${_xaliaver}/xalia-${_xaliaver}-net48-mono.zip
-    0001-AUR-Pkgbuild-changes.patch
-    0002-AUR-Do-not-update-cargo-crates.patch
-    0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
-    0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
-    0005-AUR-Strip-binaries-early.patch
-    0006-AUR-Fix-hwnd-redefinition.patch
-    0007-AUR-Disable-incompatible-pointer-types-in-Wine-GCC-1.patch
-    0008-build-Stop-forcing-mno-avx-for-32bit-libraries.patch
+	"${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
+	0001-build-make-compatible-with-system-wide-install.patch
+	proton-ge-custom.conf
 )
-noextract=(
-    wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
-    wine-mono-${_monover}-x86.tar.xz
-    xalia-${_xaliaver}-net48-mono.zip
+sha512sums=('9fd0b2cfbd501c0b5c892239c392c7283a029b5e5d5a77d3f85b0ce190d555456241a18eebca16b53f094b403499201c13550a3f0b9b365e1a5eb5737cbb7303'
+            'cc5b0770abd984bddd0819fc7eae7d4ae55d91ae4fffc9f1d6643367cc4484c8854162ac6bfb1c78b70eb99e8be2554c15f907baa9ee2642c2791c1874a8f07b'
+            'ac2bd634838ffe6b90f2637e229013f0993fc1013271dbeefd216dc262a8bb79e4a5ce15a75cbfcb0c3b521d32f4ebe1ed25a6b066b99cc327b60bd6d7212e6f')
+
+pkgdesc='Proton from Valve Software with extra patches from GloriousEggroll'
+arch=('x86_64')
+license=('BSD-3-Clause')
+provides=('proton')
+conflicts=('proton-ge-custom-bin' 'proton-ge-custom-git')
+options=(!strip emptydirs)
+
+# Dependencies are (mostly) the same as the "steam" package
+depends=(
+	bash
+	coreutils
+	curl
+	dbus
+	desktop-file-utils
+	diffutils
+	freetype2
+	gdk-pixbuf2
+	glibc
+	hicolor-icon-theme
+	libgcc
+	libxcrypt
+	libxcrypt-compat
+	libxkbcommon-x11
+	lsb-release
+	lsof
+	nss
+	python
+	ttf-font
+	usbutils
+	vulkan-driver
+	vulkan-icd-loader
+	xdg-user-dirs
+	xorg-xrandr
+	xz
+	zenity
 )
-
-_make_wrappers () {
-    #     _arch     prefix   gcc    ld             as     strip
-    local _i686=(  "i686"   "-m32" "-melf_i386"   "--32" "elf32-i386")
-    local _x86_64=("x86_64" "-m64" "-melf_x86_64" "--64" "elf64-x86-64")
-    local _opts=(_i686 _x86_64)
-    declare -n _opt
-    for _opt in "${_opts[@]}"; do
-        for l in ar ranlib nm; do
-            ln -s /usr/bin/gcc-$l wrappers/${_opt[0]}-pc-linux-gnu-$l
-        done
-        for t in gcc g++; do
-            install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-$t <<EOF
-#!/usr/bin/bash
-$(which ccache 2> /dev/null) /usr/bin/$t ${_opt[1]} "\$@"
-EOF
-        done
-        install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-ld <<EOF
-#!/usr/bin/bash
-/usr/bin/ld ${_opt[2]} "\$@"
-EOF
-        install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-as <<EOF
-#!/usr/bin/bash
-/usr/bin/as ${_opt[3]} "\$@"
-EOF
-        install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-strip <<EOF
-#!/usr/bin/bash
-/usr/bin/strip -F ${_opt[4]} "\$@"
-EOF
-    done
-}
-
-prepare() {
-
-    # Provide wrappers to compiler tools
-    rm -rf wrappers && mkdir wrappers
-    _make_wrappers
-
-    [ ! -d build ] && mkdir build
-
-    cd proton-ge-custom
-
-    [ ! -d contrib ] && mkdir -p contrib
-    mv "$srcdir"/wine-gecko-${_geckover}-x86{,_64}.tar.xz contrib/
-    mv "$srcdir"/wine-mono-${_monover}-x86.tar.xz contrib/
-    mv "$srcdir"/xalia-${_xaliaver}-net48-mono.zip contrib/
-
-    # Explicitly set origin URL for submodules using relative paths
-    git remote set-url origin https://github.com/gloriouseggroll/proton-ge-custom.git
-    git submodule update --init --filter=tree:0 --recursive
-
-    for rustlib in gst-plugins-rs; do
-    pushd $rustlib
-        export RUSTUP_TOOLCHAIN=stable
-        export CARGO_HOME="${SRCDEST}"/proton-cargo
-        cargo update
-        cargo fetch --locked --target "i686-unknown-linux-gnu"
-        cargo fetch --locked --target "x86_64-unknown-linux-gnu"
-    popd
-    done
-
-    ./patches/protonprep-valve-staging.sh
-
-    patch -p1 -i "$srcdir"/0001-AUR-Pkgbuild-changes.patch
-    #patch -p1 -i "$srcdir"/0002-AUR-Do-not-update-cargo-crates.patch
-    patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
-    patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
-    patch -p1 -i "$srcdir"/0005-AUR-Strip-binaries-early.patch
-    patch -p1 -i "$srcdir"/0006-AUR-Fix-hwnd-redefinition.patch
-    patch -p1 -i "$srcdir"/0007-AUR-Disable-incompatible-pointer-types-in-Wine-GCC-1.patch
-    patch -p1 -i "$srcdir"/0008-build-Stop-forcing-mno-avx-for-32bit-libraries.patch
-}
+depends_x86_64=(
+	lib32-alsa-plugins
+	lib32-fontconfig
+	lib32-gcc-libs
+	lib32-glibc
+	lib32-libgl
+	lib32-libgpg-error
+	lib32-libnm
+	lib32-libva
+	lib32-libx11
+	lib32-libxcrypt
+	lib32-libxcrypt-compat
+	lib32-libxinerama
+	lib32-libxss
+	lib32-nss
+	lib32-pipewire
+	lib32-systemd
+	lib32-vulkan-driver
+	lib32-vulkan-icd-loader
+)
+optdepends=(
+	'steam: the Steam client'
+	'umu-launcher: to use Proton-GE outside of Steam'
+)
+depends+=(NTSYNC-MODULE)
 
 build() {
-    export PATH="$(pwd)/wrappers:$PATH"
+	# Automagically keep "Proton-GE" selected
+	sed -i -r 's|"GE-Proton.*"|"Proton-GE"|' "${_srcdir}/compatibilitytool.vdf"
 
-    cd build
-    ROOTLESS_CONTAINER="" \
-    ../proton-ge-custom/configure.sh \
-        --container-engine="none" \
-        --proton-sdk-image="" \
-        --build-name="${pkgname}"
-
-    local -a split=($CFLAGS)
-    local -A flags
-    for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
-    local march="${flags["-march"]:-nocona}"
-    local mtune="${flags["-mtune"]:-core-avx2}"
-
-    CFLAGS="-O3 -march=$march -mtune=$mtune -pipe -fno-semantic-interposition"
-    CXXFLAGS="-O3 -march=$march -mtune=$mtune -pipe -fno-semantic-interposition"
-    RUSTFLAGS="-C opt-level=3 -C target-cpu=$march"
-    LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
-
-    export CFLAGS CXXFLAGS RUSTFLAGS LDFLAGS
-
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_HOME="${SRCDEST}"/proton-cargo
-    export WINEESYNC=0
-    export WINEFSYNC=0
-    unset DISPLAY
-
-    SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
-        make -j1 dist
+	# Prevent lock file from being created, since Proton-GE in /usr is not writable
+	patch -N "${_srcdir}/proton" "${srcdir}/0001-build-make-compatible-with-system-wide-install.patch"
 }
+
+_protondir=usr/share/steam/compatibilitytools.d/${pkgname}
+_licensedir=usr/share/licenses/${pkgname}
 
 package() {
-    cd build
-
-    # Delete the intermediate build directories to free space (mostly for my github actions)
-    rm -rf dst-* obj-* src-* pfx-*
-
-    local _compatdir="$pkgdir/usr/share/steam/compatibilitytools.d"
-    mkdir -p "$_compatdir/${pkgname}"
-    rsync --delete -arx dist/* "$_compatdir/${pkgname}"
-
-    # For some unknown to me reason, 32bit vkd3d (not vkd3d-proton) always links
-    # to libgcc_s_dw2-1.dll no matter what linker options I tried.
-    # Copy the required dlls into the package, they will be copied later into the prefix
-    # by the patched proton script. Bundle them to not depend on mingw-w64-gcc being installed.
-    cp /usr/i686-w64-mingw32/bin/{libgcc_s_dw2-1.dll,libwinpthread-1.dll} \
-        "$_compatdir/${pkgname}"/files/lib/vkd3d/
-    cp /usr/x86_64-w64-mingw32/bin/{libgcc_s_seh-1.dll,libwinpthread-1.dll} \
-        "$_compatdir/${pkgname}"/files/lib64/vkd3d/
-
-    mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
-    mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
-        "$pkgdir/usr/share/licenses/${pkgname}"
-
-    cd "$_compatdir/${pkgname}/files"
-    i686-w64-mingw32-strip --strip-unneeded \
-        $(find lib/wine \( -iname fakedlls -or -iname i386-windows \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
-    x86_64-w64-mingw32-strip --strip-unneeded \
-        $(find lib64/wine \( -iname fakedlls -or -iname x86_64-windows \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
-
-    local _geckodir="share/wine/gecko/wine-gecko-${_geckover}"
-    i686-w64-mingw32-strip --strip-unneeded \
-        $(find "$_geckodir"-x86 -iname "*.dll" -or -iname "*.exe")
-    x86_64-w64-mingw32-strip --strip-unneeded \
-        $(find "$_geckodir"-x86_64 -iname "*.dll" -or -iname "*.exe")
-
-    local _monodir="share/wine/mono/wine-mono-${_monover}"
-    i686-w64-mingw32-strip --strip-unneeded \
-        $(find "$_monodir"/lib/mono -iname "*.dll" -or -iname "*.exe")
-    i686-w64-mingw32-strip --strip-unneeded \
-        "$_monodir"/lib/x86/*.dll \
-        $(find "$_monodir" -iname "*x86.dll" -or -iname "*x86.exe")
-    x86_64-w64-mingw32-strip --strip-unneeded \
-        "$_monodir"/lib/x86_64/*.dll \
-        $(find "$_monodir" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
+	# Create paths
+	mkdir -p "${pkgdir}/${_protondir}/"
+	mkdir -p "${pkgdir}/${_licensedir}/"
+	mkdir -p "${pkgdir}/usr/lib/modules-load.d/"
+	# Licenses
+	mv "${_srcdir}/LICENSE" "${pkgdir}/${_licensedir}/"
+	mv "${_srcdir}/LICENSE.OFL" "${pkgdir}/${_licensedir}/"
+	mv "${_srcdir}/PATENTS.AV1" "${pkgdir}/${_licensedir}/"
+	# NTSync module
+	install -m 0644 "${srcdir}/${pkgname}.conf" "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
+	# Main files
+	mv "${_srcdir}"/* "${pkgdir}/${_protondir}"
 }
-
-sha256sums=('3140b18dc84f4d32b267f229a3d46fc0cf50768b071291641a0599ead5d00571'
-            '2cfc8d5c948602e21eff8a78613e1826f2d033df9672cace87fed56e8310afb6'
-            'fd88fc7e537d058d7a8abf0c1ebc90c574892a466de86706a26d254710a82814'
-            '32eff652b96390f04fb52ee695fc3a6d197b1bb616ed2df7e25119fe5700c950'
-            '7e061783acf005c8dc90bd47fea1af9fc941f80c459477752fc32fbc2924ec65'
-            '1c0aee859f9df60d9c1eb94cc34aa22b168de35a99767c5636df239d345d893c'
-            'c5e1f36161be01b8b11153b6e8a529a7ace979a54758583c49119bc583a0edb1'
-            '635d1f7c01f1966501df567932af911f03e5fe766db5cac60cb24373177666d1'
-            '11fe04af71b3674b46474ab7a8042c9dcdeaf06994f6a73fe38cc3c1e06b9d83'
-            'ccd549108f5d1e0481a59864df0683c18d7b8e82cae2b7f0e5cb23db80d28ac8'
-            'c5b44f0d32770ed03732f0595475fbd1dd15dff9578e9bdd2a8e039e433ae954'
-            'cc2d925af5a87e5afd82b9366ab8fb75211cb6d654c8ff559f6676ee7f009f00'
-            '10bd99884f88c7313dbce7a3a829e0dee67ebed31e37a3806ac724ad54cf3952')
