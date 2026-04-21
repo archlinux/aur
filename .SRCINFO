@@ -12,26 +12,16 @@ pkgbase = pi-coding-agent-git
 	options = !debug
 	source = pi-coding-agent::git+https://github.com/badlogic/pi-mono
 	source = pi-wrapper
-	source = doom-wad-path.patch
 	source = APPEND_SYSTEM.md.example
-	source = https://distro.ibiblio.org/slitaz/sources/packages/d/doom1.wad
 	sha256sums = SKIP
 	sha256sums = 7883f9bdeeec04f9e06584ac4b4d55c813377f924623b8dd3b58b1465ab82fa6
-	sha256sums = 920a24f42039b51685b619f936f4c04de498df4bd757ad48b9bf6b41c4280da5
 	sha256sums = SKIP
-	sha256sums = 1d7d43be501e67d927e415e0b8f3e29c3bf33075e859721816f652a526cac771
 
 pkgname = pi-coding-agent-git
 	install = pi-coding-agent-git.install
 	depends = nodejs
 	provides = pi-coding-agent
 	conflicts = pi-coding-agent
-
-pkgname = pi-ext-doom-git
-	pkgdesc = Required extension for full productivity
-	install = pi-ext-git.install
-	provides = pi-ext-doom
-	conflicts = pi-ext-doom
 
 pkgname = pi-ext-todo-git
 	pkgdesc = Todo list extension

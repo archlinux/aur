@@ -1,7 +1,10 @@
 # Maintainer: dougefresh <dchimento@gmail.com>
+pkgver=0.68.0.r7.ga0a16c776
+pkgrel=1
+pkgdesc="Coding agent CLI with read, bash, edit, write tools and session management"
+url="https://github.com/badlogic/pi-mono"
 pkgbase=pi-coding-agent-git
 pkgname=('pi-coding-agent-git'
-    'pi-ext-doom-git'
     'pi-ext-todo-git'
     'pi-ext-git-checkpoint-git'
     'pi-ext-plan-mode-git'
@@ -18,21 +21,15 @@ pkgname=('pi-coding-agent-git'
     'pi-ext-bash-spawn-hook-git'
 )
 _pkgname=pi-coding-agent
-pkgdesc="Coding agent CLI with read, bash, edit, write tools and session management"
-pkgver=0.68.0.r7.ga0a16c776
-pkgrel=1
 arch=('x86_64')
-url="https://github.com/badlogic/pi-mono"
 license=('MIT')
 makedepends=('git' 'npm' 'typescript-go-git')
 source=(
     "${_pkgname}::git+https://github.com/badlogic/pi-mono"
     'pi-wrapper'
-    'doom-wad-path.patch'
     'APPEND_SYSTEM.md.example'
-    'https://distro.ibiblio.org/slitaz/sources/packages/d/doom1.wad'
 )
-sha256sums=('SKIP' '7883f9bdeeec04f9e06584ac4b4d55c813377f924623b8dd3b58b1465ab82fa6' '920a24f42039b51685b619f936f4c04de498df4bd757ad48b9bf6b41c4280da5' 'SKIP' '1d7d43be501e67d927e415e0b8f3e29c3bf33075e859721816f652a526cac771')
+sha256sums=('SKIP' '7883f9bdeeec04f9e06584ac4b4d55c813377f924623b8dd3b58b1465ab82fa6' 'SKIP')
 options=('!strip' '!debug')
 
 pkgver() {
@@ -44,7 +41,7 @@ prepare() {
     cd "$srcdir/$_pkgname"
 }
 
-build() {
+build_pi-coding-agent-git() {
     cd "$srcdir/$_pkgname"
     npm ci --no-audit --no-fund
     npm run build
@@ -69,20 +66,6 @@ package_pi-coding-agent-git() {
     # docs
     install -Dm644 packages/coding-agent/README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
     install -Dm644 "$srcdir/APPEND_SYSTEM.md.example" "$pkgdir/usr/share/doc/$_pkgname/APPEND_SYSTEM.md.example"
-}
-
-package_pi-ext-doom-git() {
-    pkgdesc="Required extension for full productivity"
-    conflicts=('pi-ext-doom')
-    provides=('pi-ext-doom')
-    install=pi-ext-git.install
-
-    cd "$srcdir/$_pkgname"
-    mkdir -p "$pkgdir/usr/share/pi/extensions"
-    cp -a packages/coding-agent/examples/extensions/doom-overlay "$pkgdir/usr/share/pi/extensions/"
-
-    # shareware WAD
-    install -Dm644 "$srcdir/doom1.wad" "$pkgdir/usr/share/games/doom/doom1.wad"
 }
 
 package_pi-ext-todo-git() {
@@ -246,15 +229,18 @@ package_pi-ext-bash-spawn-hook-git() {
     cp -a packages/coding-agent/examples/extensions/${_extname}.ts "$pkgdir/usr/share/pi/extensions/${_extname}.ts"
 }
 
+
+build_pi-ext-sandbox-git() {
+    cd "$srcdir/$_pkgname/packages/coding-agent/examples/extensions/sandbox"
+    npm ci --no-audit --no-fund
+}
+
 package_pi-ext-sandbox-git() {
-    depends=('pi-coding-agent-git')
     conflicts=('pi-ext-sandbox')
     install=pi-ext-git.install
     pkgdesc="PI Sanbox extension"
     provides=('pi-ext-sandbox')
 
-    cd "$srcdir/$_pkgname/packages/coding-agent/examples/extensions"
-    npm ci --no-audit --no-fund
     mkdir -p "$pkgdir/usr/share/pi/extensions"
     cp -a packages/coding-agent/examples/extensions/sandbox "$pkgdir/usr/share/pi/extensions/sandbox"
 }
