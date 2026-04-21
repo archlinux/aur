@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=phosphor-logging-git
-pkgver=r1068.b6d3e2f
+pkgver=r1162.a36e4df
 pkgrel=1
 epoch=
 pkgdesc="Libraries for common event and logging creation."
@@ -10,8 +10,9 @@ url="https://github.com/openbmc/phosphor-logging"
 license=('Apache-2.0')
 groups=()
 depends=(
-    gcc-libs
     glibc
+    libgcc
+    libstdc++
     systemd-libs
     #AUR
     sdbusplus-git
