@@ -1,6 +1,6 @@
 pkgbase = voix
 	pkgdesc = A secure privilege escalation tool replacing sudo/doas, using PAM for authentication
-	pkgver = 4.1.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = https://github.com/Veridian-Zenith/Voix
 	arch = x86_64
@@ -11,13 +11,14 @@ pkgbase = voix
 	makedepends = ninja
 	makedepends = pkgconf
 	makedepends = git
-	makedepends = yaml-cpp
 	makedepends = ccache
 	depends = pam
 	depends = libcap
+	depends = libseccomp
+	depends = yaml-cpp
 	backup = etc/pam.d/voix
 	backup = etc/voix.conf
-	source = git+https://github.com/Veridian-Zenith/Voix.git#tag=v4.1.1
-	sha256sums = bcbfa157c8e6e64e13dd33686e2c1d4152f72070905a2e5a18bceaee28b0be61
+	source = git+https://github.com/Veridian-Zenith/Voix.git#tag=v4.1.2
+	sha256sums = a6ff973e8d8daf3069ad4533c896b4777cdaee075a7dadb5f34d6a4475165787
 
 pkgname = voix
