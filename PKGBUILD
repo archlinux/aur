@@ -1,16 +1,17 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=sdbusplus-git
-pkgver=r891.663b7b7
-pkgrel=2
+pkgver=r905.a74f63b
+pkgrel=1
 pkgdesc="C++ bindings for systemd dbus APIs"
 url="https://github.com/openbmc/sdbusplus"
 arch=($CARCH)
 license=('Apache-2.0')
 depends=(
     "sh"
-    "gcc-libs"
     "glibc"
+    "libgcc"
+    "libstdc++"
     "nlohmann-json"
     "python"
     "python-inflection"
