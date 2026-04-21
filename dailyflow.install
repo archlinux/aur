@@ -1,0 +1,22 @@
+post_install() {
+  cat <<'EOF'
+==> DailyFlow installed.
+==> The package ships with an empty config file at /etc/dailyflow/config.conf.
+==> Initialize it with:
+    dailyflow -c /etc/dailyflow/config.conf -setdir /path/to/Daily
+    dailyflow -c /etc/dailyflow/config.conf -setuser <username>
+    dailyflow -c /etc/dailyflow/config.conf -setpass
+==> Enable and start the service with:
+    systemctl enable --now dailyflow.service
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> DailyFlow upgraded.
+==> If you have not configured /etc/dailyflow/config.conf yet, run:
+    dailyflow -c /etc/dailyflow/config.conf -setdir /path/to/Daily
+    dailyflow -c /etc/dailyflow/config.conf -setuser <username>
+    dailyflow -c /etc/dailyflow/config.conf -setpass
+EOF
+}

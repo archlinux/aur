@@ -1,0 +1,21 @@
+pkgbase = dailyflow-git
+	pkgdesc = A simple web interface for daily Markdown journals
+	pkgver = 0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Xarth-Mai/DailyFlow
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MPL2
+	makedepends = git
+	makedepends = go
+	provides = dailyflow
+	conflicts = dailyflow
+	backup = etc/dailyflow/config.conf
+	install = dailyflow.install
+	source = dailyflow::git+https://github.com/Xarth-Mai/DailyFlow.git
+	source = dailyflow.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dailyflow-git

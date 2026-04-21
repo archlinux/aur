@@ -1,0 +1,14 @@
+[Unit]
+Description=DailyFlow markdown journal web service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dailyflow -c /etc/dailyflow/config.conf
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=multi-user.target
