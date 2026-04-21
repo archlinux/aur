@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Vasconcelos <gavasc@proton.me>
 pkgname=tuidger
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Terminal personal finance manager"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ab366d4dbfb057007a7b3aea224872ae948bd295798fbf841ea708b5ebd3266d')
+sha256sums=('a123f3adb37de8e0b59491cd7dcd44b86a1c1c23b849ef907a56927513c72461')
 
 build() {
     cd "$pkgname-$pkgver"

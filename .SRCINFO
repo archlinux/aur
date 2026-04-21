@@ -1,14 +1,14 @@
 pkgbase = tuidger
 	pkgdesc = Terminal personal finance manager
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/gavasc/tuidger
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = tuidger-0.2.4.tar.gz::https://github.com/gavasc/tuidger/archive/v0.2.4.tar.gz
-	sha256sums = ab366d4dbfb057007a7b3aea224872ae948bd295798fbf841ea708b5ebd3266d
+	source = tuidger-0.2.5.tar.gz::https://github.com/gavasc/tuidger/archive/v0.2.5.tar.gz
+	sha256sums = a123f3adb37de8e0b59491cd7dcd44b86a1c1c23b849ef907a56927513c72461
 
 pkgname = tuidger
 	pkgdesc = Terminal personal finance manager
