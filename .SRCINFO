@@ -1,0 +1,23 @@
+pkgbase = spacedrive-clean-foss
+	pkgdesc = The FOSS distribution of spacedrive; a file manager from the future - powered by a virtual distributed filesystem. Cleaner Arch repack of the official Linux binary.
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://www.spacedrive.com
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = patchelf
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = dbus
+	depends = xdotool
+	depends = glibc
+	provides = spacedrive
+	conflicts = spacedrive
+	conflicts = spacedrive-bin
+	conflicts = spacedrive-git
+	conflicts = spacedrive-clean
+	options = !strip
+	source = spacedrive-clean-foss-0.4.3.deb::https://github.com/spacedriveapp/spacedrive/releases/download/0.4.3/Spacedrive-linux-x86_64.deb
+	sha256sums = 30b0801cd2c9ffd6dd0812c106cb2ba64f7cbaf2937c7b3d606c66c49d75fe86
+
+pkgname = spacedrive-clean-foss
