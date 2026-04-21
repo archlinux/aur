@@ -11,8 +11,10 @@ depends=('dkms')
 conflicts=('tp_smapi')
 provides=("tp_smapi=$pkgver")
 options=(!strip)
-source=("$pkgname-$pkgver.tgz::$url/releases/download/tp-smapi/$pkgver/${pkgname%-*}-$pkgver.tgz"
-        'dkms.conf')
+source=(
+  "$pkgname-$pkgver.tgz::$url/releases/download/tp-smapi/$pkgver/${pkgname%-*}-$pkgver.tgz"
+  'dkms.conf'
+)
 sha256sums=('627b15affc3ed993d633be1421b66db8c96789464390029b86bb16b00239bb24'
             'e5874442a51bc1cb0c90c6e9289ebe4b1cccf4ea60716c823d0beaa5ce1b361b')
 
@@ -27,8 +29,8 @@ package() {
   cp dkms.conf "${pkgdir}"/usr/src/${pkgname}-${pkgver}
 
   sed -e "s/@PKGNAME@/${pkgname}/" \
-      -e "s/@PKGVER@/${pkgver}/" \
-      -i "${pkgdir}"/usr/src/${pkgname}-${pkgver}/dkms.conf
+    -e "s/@PKGVER@/${pkgver}/" \
+    -i "${pkgdir}"/usr/src/${pkgname}-${pkgver}/dkms.conf
 
   sed -i 's/KVER/KERNELRELEASE/g' "${pkgdir}"/usr/src/${pkgname}-${pkgver}/Makefile
 }
