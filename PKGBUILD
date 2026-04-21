@@ -1,12 +1,12 @@
 # Maintainer: Umut Dag <me@umtdg.com>
 
-pkgname=quark-quick-access
+pkgname=quark-quick-access-bin
 pkgver=0.2.6
 pkgrel=1
 pkgdesc='Quick access application for Proton Pass using pass-cli'
-license=('MIT')
 arch=('x86_64')
 url='https://github.com/umtdg/quark'
+license=('MIT')
 
 depends=(
     'cairo'
