@@ -1,6 +1,6 @@
 pkgbase = r-eulerr
 	pkgdesc = Area-Proportional Euler and Venn Diagrams with Ellipses
-	pkgver = 7.0.4
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=eulerr
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-eulerr
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/eulerr_7.0.4.tar.gz
-	sha256sums = 1e3e438c1402c8b6b8adf34a00e812128c83aee661d4ff2b792e4b3836d4ca72
+	source = https://cran.r-project.org/src/contrib/eulerr_7.1.0.tar.gz
+	sha256sums = 9286ac29c0de4af63e5f20af4cc422336693cedd9159eb5418fdb9281657ffab
 
 pkgname = r-eulerr
