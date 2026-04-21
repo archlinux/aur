@@ -1,10 +1,11 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-
 pkgname=guile1.8
 pkgver=1.8.8
-pkgrel=10
+pkgrel=11
 pkgdesc='Portable, embeddable Scheme implementation written in C. Legacy branch.'
-url="https://www.gnu.org/software/guile/"
+url="https://www.gnu.org/software/guile"
 arch=(x86_64)
 license=(GPL)
 depends=(gcc-libs glibc gmp libtool openssl libxcrypt)
@@ -34,7 +35,7 @@ prepare() {
 
 build() {
   cd guile-$pkgver
-  export CFLAGS+=" -O1"
+  export CFLAGS+=" -O1 -std=gnu89 -Wno-incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=int-conversion"
   ./configure \
     --prefix=/usr \
     --disable-static  \
