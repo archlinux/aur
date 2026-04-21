@@ -1,7 +1,7 @@
 # Maintainer: Jan Kohnert <bughunter@jan.kohnert.de>
 # Contributor: ml <ml@visu.li>
 pkgname=helm-diff
-pkgver=3.15.5
+pkgver=3.15.6
 pkgrel=1
 pkgdesc="Helm plugin that shows a diff explaining what a helm upgrade would change"
 arch=("x86_64")
@@ -11,7 +11,7 @@ install=helm-diff.install
 depends=("glibc")
 makedepends=("go")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=("e961e4f10b0e0c123fdc7698f53d604cdb49f42bf5672d7755fbbb04fd9c7e3c5f37d51b7516489e7dfeda4d3e907d93b5d38231ce63d3064c2978e1bbc173e5")
+sha512sums=("4924260dfb89232451ad639616eadf415ed715677cb1811db6f34258a92e3248471c4c78fa2478c0bb339b85df7cd9b387639cea7fe036d95ad3c2d0faafbf39")
 
 prepare() {
   sed -i '/^hooks:$/Q' "$pkgname-$pkgver"/plugin.yaml
