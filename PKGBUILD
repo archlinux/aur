@@ -3,7 +3,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # shellcheck disable=2034,2154,2164
 pkgname=gibo
-pkgver=3.0.20
+pkgver=3.0.21
 pkgrel=1
 pkgdesc='Command-line tool to help you easily access .gitignore boilerplates'
 arch=('x86_64' 'aarch64' 'i686')
@@ -15,7 +15,7 @@ conflicts=("${pkgname}-bin")
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.install")
-b2sums=('1f29c718f27f4bacc8ae156e8470d26c1d3e446d28494222ca1bc67f379cbe61004d8f7532268a8aae10a593530e40d4a94224d69307a39382bd48a29159439d'
+b2sums=('86816dbeafb6e8c01407b1f739d21c2e35ad20392a252c550b4a87765c029de73cb0e22f2a613e115c796628f3e5913ac84a6f0f72f8aca9bf43b843e53fb8c7'
         'a8516b43198e9353eaf0fe49d50cb50ea2ac096b0366deabd33795b2c6d52ede6264d5615acdf78117550dbd2dc13999bca66fc9d1b10a090e7cee344c487f97')
 
 prepare() {
