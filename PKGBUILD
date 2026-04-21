@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 	"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.zip")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.zip")
-sha256sums=('ba2775a05491687adcdcc1484ff71760c00b419667e7e493ed2a4fcea564cb70'
+sha256sums=('8f113f9532cf8e5524679f1f16f47cdef65a2a8e0761bc85eeb3e0a4f59b1b14'
             'c4c73cfe3e7d8e4cae57635b5d7bde8f256d5eb8e5766ce80b22b0cf3de9cca5')
-sha256sums_x86_64=('45dae76829708c1d2b431f1d6d24e5a9074edcfe547e6227e9d395d90adedab8')
-sha256sums_aarch64=('81519bbf5d010039552e4647751ed43aa4d4ad03666853c28f8beb04cb0b7fe1')
+sha256sums_x86_64=('d0221cabb37ad7b8f0901bfb09b8a26d547875fd3c43bf4092c678aa2489a0b3')
+sha256sums_aarch64=('ecd546ad3c97056a26b4cff0c97c25709289a9d9bd2c2a17ec0a230a570f8d4b')
 
 case ${CARCH} in
 ${arch[0]})
