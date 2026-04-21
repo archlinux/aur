@@ -1,0 +1,25 @@
+post_install() {
+    systemctl daemon-reload
+    update-desktop-database -q usr/share/applications 2>/dev/null
+    xdg-mime default connectwisecontrol-3093ce05059ac871.desktop x-scheme-handler/sc-3093ce05059ac871 2>/dev/null
+    echo ":: To start the ScreenConnect client:"
+    echo "   systemctl enable --now connectwisecontrol-3093ce05059ac871.service"
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    update-desktop-database -q usr/share/applications 2>/dev/null
+    if systemctl is-active --quiet connectwisecontrol-3093ce05059ac871.service; then
+        systemctl restart connectwisecontrol-3093ce05059ac871.service
+    fi
+}
+
+pre_remove() {
+    systemctl stop connectwisecontrol-3093ce05059ac871.service 2>/dev/null
+    systemctl disable connectwisecontrol-3093ce05059ac871.service 2>/dev/null
+}
+
+post_remove() {
+    systemctl daemon-reload
+    update-desktop-database -q usr/share/applications 2>/dev/null
+}
