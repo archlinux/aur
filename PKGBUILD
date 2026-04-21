@@ -1,9 +1,15 @@
-# Maintainer: Dominik Wetzel <dimonok [at] web [dot] de>
-# Contributors: Julian Eckhardt <julian [at] eckhardt [dot] fi>, Paulo Marcos <contato-myghi63 [at] protonmail [dot] com>
+# Maintainer: Hartmut Seichter <hartmut [at] gmail [dot] com>
+# Contributors:
+# - Julian Eckhardt <julian [at] eckhardt [dot] fi>
+# - Paulo Marcos <contato-myghi63 [at] protonmail [dot] com>
+# - Dominik Wetzel <dimonok [at] web [dot] de>
+# - Arne v.Irmer < 	archlinux [at] a-vi [dot] de >
+# - and others ...
+#
 
 pkgname=kyocera_universal
-pkgver=9.4.20240521
-pkgrel=2
+pkgver=10.0.20240521
+pkgrel=1
 
 major=$(cut -d '.' -f 1 <<< $pkgver)
 minor=$(cut -d '.' -f 2 <<< $pkgver)
@@ -23,7 +29,7 @@ toDwnld="KyoceraLinuxPackages_${date}_tar_gz.download.gz"
 source=("https://www.kyoceradocumentsolutions.us/content/dam/download-center-americas-cf/us/drivers/drivers/${toDwnld}")
 install=kyodialog-bin.install
 
-sha256sums=('7f9f1ca91cef018a6e56f2210d86f16afa00d0bf06b33ac32c875e49dc5439ef')
+sha256sums=('20f7c978db123007a3a6c6688698b49061ab69cdd7ec065b6728bd77d9a900e7')
 
 if [ "$arch" == "x86_64" ]; then
   _arch="amd64"
@@ -65,7 +71,7 @@ package() {
   mkdir -p $ALTERNATE_PPD_DIRECTORY
   mv $TEMP_PPD_DIRECTORY/* $PRIMARY_PPD_DIRECTORY
 
-  chmod 755 usr/bin/kyoPPDWrite_H
+  chmod 755 usr/bin/kyoPPDWrite_X
 
   if [ ! -h $ALTERNATE_PPD_DIRECTORY/kyocera ]; then
       ln -s /$PRIMARY_PPD_DIRECTORY $ALTERNATE_PPD_DIRECTORY/kyocera
