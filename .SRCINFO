@@ -1,0 +1,16 @@
+pkgbase = gsd-pi
+	pkgdesc = A powerful meta-prompting, context engineering and spec-driven development system that enables agents to work autonomously
+	pkgver = 2.77.0
+	pkgrel = 1
+	url = https://github.com/gsd-build/gsd-2
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	provides = gsd
+	provides = gsd-cli
+	noextract = gsd-pi-2.77.0.tgz
+	source = https://registry.npmjs.org/gsd-pi/-/gsd-pi-2.77.0.tgz
+	sha256sums = 8dd7398dc7a51e0b95031b39e0ef0b8fc4977a5e1aeaf899abae6408e603628d
+
+pkgname = gsd-pi
