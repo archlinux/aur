@@ -49,11 +49,13 @@ package() {
             local bin_name="${line%%=*}"
             local bin_path="${line##*=}"
             ln -s "${npm_lib_abs}/${bin_path}" "${pkgdir}/usr/bin/${bin_name}"
+            chmod +x "${npm_lib_abs}/${bin_path}"
         done
     else
         
         if [ -f "bin/gsd" ]; then
             ln -s "${npm_lib_abs}/bin/gsd" "${pkgdir}/usr/bin/gsd"
+            chmod +x "${npm_lib_abs}/bin/gsd"
         fi
         
     fi
