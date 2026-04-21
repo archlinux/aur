@@ -1,7 +1,7 @@
 pkgbase = varia
 	pkgdesc = Download manager based on aria2
-	pkgver = 2026.1.5.3
-	pkgrel = 2
+	pkgver = 2026.3.27
+	pkgrel = 1
 	url = https://giantpinkrobots.github.io/varia/
 	arch = any
 	license = MPL-2.0
@@ -27,7 +27,7 @@ pkgbase = varia
 	depends = python-pystray
 	depends = python-requests
 	depends = yt-dlp
-	source = varia-2026.1.5.3.tar.gz::https://github.com/giantpinkrobots/varia/archive/v2026.1.5-3.tar.gz
+	source = varia-2026.3.27.tar.gz::https://github.com/giantpinkrobots/varia/archive/v2026.1.5-3.tar.gz
 	sha256sums = 01dc36ee71f40666219ee70699dd8350116a18b94b4c3931c16a1fc18e2d0afc
 
 pkgname = varia

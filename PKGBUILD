@@ -2,9 +2,9 @@
 # Contributor: jdigi78 <jdigiovanni78 at gmail dot com>
 
 pkgname=varia
-pkgver=2026.1.5.3
+pkgver=2026.3.27
 _pkgver=2026.1.5-3
-pkgrel=2
+pkgrel=1
 pkgdesc="Download manager based on aria2"
 arch=('any')
 url="https://giantpinkrobots.github.io/varia/"
