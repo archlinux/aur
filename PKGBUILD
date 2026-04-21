@@ -37,29 +37,34 @@ prepare() {
 package() {
     cd "${srcdir}/npm_pkg/package"
 
-    local npm_lib="${pkgdir}/usr/lib/node_modules"
-    install -dm755 "${npm_lib}"
-    cp -r . "${npm_lib}/gsd-pi"
+    # Install package to staging directory
+    local staging_lib="${pkgdir}/usr/lib/node_modules/gsd-pi"
+    install -dm755 "${staging_lib}"
+    cp -r . "${staging_lib}"
 
+    # Create bin symlinks - use absolute path for runtime
     install -dm755 "${pkgdir}/usr/bin"
+    local install_lib="/usr/lib/node_modules/gsd-pi"
 
-    local npm_lib_abs="/usr/lib/node_modules/gsd-pi"
     if [ -f package.json ] && [ -n "$(jq -r '.bin // {}' package.json)" ]; then
+        # Read bin entries from package.json and create symlinks
         jq -r '.bin | to_entries[] | "\(.key)=\(.value)"' package.json | while read -r line; do
             local bin_name="${line%%=*}"
             local bin_path="${line##*=}"
-            ln -s "${npm_lib_abs}/${bin_path}" "${pkgdir}/usr/bin/${bin_name}"
-            chmod +x "${npm_lib_abs}/${bin_path}"
+            ln -s "${install_lib}/${bin_path}" "${pkgdir}/usr/bin/${bin_name}"
+            chmod +x "${staging_lib}/${bin_path}"
         done
-    else
         
+    else
+        # Fallback: use binary_name if no bin entries in package.json
         if [ -f "bin/gsd" ]; then
-            ln -s "${npm_lib_abs}/bin/gsd" "${pkgdir}/usr/bin/gsd"
-            chmod +x "${npm_lib_abs}/bin/gsd"
+            ln -s "${install_lib}/bin/gsd" "${pkgdir}/usr/bin/gsd"
+            chmod +x "${staging_lib}/bin/gsd"
         fi
         
     fi
 
+    # Clean up package.json files
     find "${pkgdir}" -name "package.json" -print0 | xargs -r -0 sed -i '/_where/d'
 
     local tmppackage="$(mktemp)"
