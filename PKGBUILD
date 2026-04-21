@@ -1,29 +1,43 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: taotieren <admin@taotieren.com>
 
-_pkgname=pythondata-software-compiler_rt
-_pyname=${_pkgname//-/_}
-pkgname=python-$_pkgname
-pkgver=2022.08
-pkgrel=4
+pkgname=python-pythondata-software-compiler_rt
+_name=${pkgname#python-}
+_pyname=${_name//-/_}
+pkgver=2025.12
+pkgrel=1
 pkgdesc='Python module containing data files for compiler_rt software (for use with LiteX)'
 arch=('any')
 url='https://github.com/litex-hub/pythondata-software-compiler_rt'
-license=('MIT' 'custom')
-depends=('python')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('a1dc7d41ada9a9eb3cc9adb3d940b11d6401fcbd7343c5dbc6ccd56d0e084e451003c121c870d3b831c69fcb1fa8224df8983991da42edabf07a62a3982ed7bc')
+license=('Apache-2.0')
+_pydeps=(
+  packaging
+)
+depends=(
+  sh
+  python
+  "${_pydeps[@]/#/python-}"
+)
+makedepends=(
+  git
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+source=("${_name}::git+${url}.git#tag=$pkgver")
+sha256sums=('663933a1273f8ebd502d684adb0badb9391a1bf8a55b84338f3ec8ae3f85848e')
+
+prepare() {
+  git -C "${srcdir}/${_name}" clean -dfx
+}
 
 build() {
-  cd $_pkgname-$pkgver
-
-  python setup.py build
+  cd "${srcdir}/${_name}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $_pkgname-$pkgver
-
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-  install -Dm 644 $_pyname/data/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  cd "${srcdir}/${_name}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
