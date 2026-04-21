@@ -5,14 +5,14 @@ pkgname=hltb
 pkgver=0.4.0
 pkgrel=1
 pkgdesc="HowLongToBeat CLI tool"
+archive=how-long-to-beat-cli
 arch=('x86_64')
-url="https://codeberg.org/codepunk/how-long-to-beat-cli"
+url="https://codeberg.org/codepunk/${archive}"
 license=('AGPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
-archive=how-long-to-beat-cli
 
 prepare() {
     cd "${archive}"
