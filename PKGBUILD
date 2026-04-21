@@ -1,9 +1,10 @@
-# Maintainer: Emilien Devos <contact.at.emiliendevos.dot.be>
-# Forked from PKGBUILD from Joan Figueras
+# Maintainer: Marc Straube <email@marcstraube.de>
+# Contributor: Emilien Devos <contact.at.emiliendevos.dot.be>
+# Contributor: Joan Figueras
 
 pkgname=asbru-cm
 _pkgname=${pkgname}
-pkgver=6.4.0
+pkgver=6.4.1
 pkgrel=1
 arch=('any')
 license=('GPL3')
@@ -15,8 +16,8 @@ optdepends=('uucp: Unix-to-Unix Copy' 'rdesktop: RDP connections' 'freerdp: RDP 
 makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
-source=("git+https://github.com/asbru-cm/asbru-cm.git#tag=${pkgver}")
-sha256sums=('SKIP')
+source=("git+https://github.com/asbru-cm/asbru-cm.git#tag=v${pkgver}")
+sha256sums=('ab0e9cc330e9a1b34de53958d6c94670684395ca537f7d0d1c8b9a244975415e')
 
 package() {
 	cd ${srcdir}/${_pkgname}
