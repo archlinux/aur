@@ -1,7 +1,7 @@
 # Maintainer: Stefan Gruenberger <stefan.gruenberger at gmail dot com>
 # Contributor: Thomas Millward Wright <tmillwardwright@gmail.com>
 pkgname=perimeter81
-pkgver=10.0.5.962
+pkgver=10.0.6.996
 pkgrel=1
 pkgdesc='Perimeter81 agent application'
 arch=('x86_64')
@@ -14,9 +14,9 @@ source=(
   'perimeter81helper.service'
   'LICENSE'
 )
-sha256sums=('47c066739a4bf25ce482e3783a8d63d45b173eb02f9f4e1aee8b5a84270cb0ae'
-            '3a081715b806d54b09d65f17c0f38c0ce40d99b9157555f6c63245afcc702baf'
-            'c505b227d3f2222305800c16805f29b8da3bf841bf71df36674a695528bd0731')
+sha256sums=('7df3afd8c88a38f53a9d75518bac8cdebc220bb8fabff7389cc577c4dfda9473'
+  '3a081715b806d54b09d65f17c0f38c0ce40d99b9157555f6c63245afcc702baf'
+  'c505b227d3f2222305800c16805f29b8da3bf841bf71df36674a695528bd0731')
 
 prepare() {
   bsdtar -xf data.tar.xz
