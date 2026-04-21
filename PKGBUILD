@@ -3,7 +3,7 @@
 pkgname='linux-firmware-gaokun3'
 _tag=200.0.10.0
 pkgver=2.10.2
-pkgrel=1
+pkgrel=2
 _wlanfwver='8380_CRD/200.0.57.0'
 pkgdesc='Firmware files for HUAWEI MateBook E Go (sc8280xp)'
 license=('custom')
@@ -89,8 +89,8 @@ package() {
     done
 
     # use qrd wlan firmware, TODO: except adsp, almost all firmwares are compatible
-    install -Dm644 'm320.bin' -t "${pkgdir}/${_fw_dir}/ath11k/WCN6855/hw2.0/m3.bin"
-    install -Dm644 'wlanfw20.mbn' -t "${pkgdir}/${_fw_dir}/ath11k/WCN6855/hw2.0/amss.bin"
+    install -Dm644 'm320.bin' "${pkgdir}/${_fw_dir}/ath11k/WCN6855/hw2.0/m3.bin"
+    install -Dm644 'wlanfw20.mbn' "${pkgdir}/${_fw_dir}/ath11k/WCN6855/hw2.0/amss.bin"
 
     # fix link
     ln -s 'hw2.0' "${pkgdir}/${_fw_dir}/ath11k/WCN6855/hw2.1"
