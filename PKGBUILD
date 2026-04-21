@@ -2,12 +2,12 @@
 
 pkgname=omniroute-bin
 pkgver=3.6.9
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenAI-compatible AI gateway with routing, retries, caching, and observability"
 arch=('x86_64')
 url="https://github.com/diegosouzapw/OmniRoute"
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs-lts-krypton')
 makedepends=('npm' 'python')
 optdepends=('systemd: user service management via systemctl --user')
 install="${pkgname}.install"
