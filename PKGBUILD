@@ -4,29 +4,29 @@ _name='VapoR'
 _pkgname="vapor-openvr"
 pkgname="$_pkgname-git"
 pkgver=r44.0801406
-pkgrel=2
+pkgrel=3
 pkgdesc="An experimental implementation of an OpenVR runtime on top of OpenXR/Monado"
 arch=(x86_64)
 url="https://github.com/micheal65536/VapoR"
 license=('BSD-2-Clause')
-makedepends=('git' 'make' 'cmake')
-depends=('openxr' 'nlohmann-json' 'vulkan-headers')
+makedepends=('git' 'make' 'cmake' 'nlohmann-json' 'vulkan-headers')
+depends=('openxr' 'vulkan-icd-loader' 'libgcc' 'libglvnd' 'glibc' 'libx11' 'libstdc++')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=('git+https://github.com/micheal65536/VapoR')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_name"
-  ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+	cd "$_name"
+	( set -o pipefail
+	git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	)
 }
 
 build() {
 	cd "$srcdir/${_name}"
-	cmake CMAKE_INSTALL_DATADIR="/opt/${_name}/" -B build -S . 
+	cmake -DCMAKE_INSTALL_DATADIR="/opt/${_name}/" -B build -S . 
 	cmake --build build
 }
 
@@ -40,4 +40,7 @@ package() {
 	install -Dm755 \
 		"${srcdir}/${_name}/build/src/vrclient.so" \
 		"${pkgdir}/opt/${_name}/bin/linux64/vrclient.so"
+	install -Dm644 \
+		"${srcdir}/${_name}/LICENSE.md" \
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
