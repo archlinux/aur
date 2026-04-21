@@ -1,0 +1,17 @@
+[Unit]
+Description=OmniRoute AI gateway
+Documentation=https://github.com/diegosouzapw/OmniRoute
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=DATA_DIR=%h/.config/omniroute
+EnvironmentFile=-%h/.config/omniroute/.env
+ExecStart=/usr/bin/omniroute --no-open
+Restart=on-failure
+RestartSec=5
+WorkingDirectory=%h
+
+[Install]
+WantedBy=default.target

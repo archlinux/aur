@@ -1,0 +1,52 @@
+# Copy this file to:
+#   ~/.config/omniroute/.env
+#
+# The packaged systemd user service sets:
+#   DATA_DIR=$HOME/.config/omniroute
+# and OmniRoute reads:
+#   ~/.config/omniroute/.env
+# automatically via upstream behavior.
+#
+# This example is intentionally not exhaustive. It highlights common
+# runtime-facing variables documented upstream or clearly used by the
+# published package.
+
+# --- Basic ports ---
+# PORT=20128
+# DASHBOARD_PORT=20129
+
+# --- Data and logging ---
+# DATA_DIR=/home/your-user/.config/omniroute
+# APP_LOG_TO_FILE=true
+# DISABLE_SQLITE_AUTO_BACKUP=true
+
+# --- Request and stream timeouts (milliseconds) ---
+# REQUEST_TIMEOUT_MS=600000
+# STREAM_IDLE_TIMEOUT_MS=605000
+# FETCH_TIMEOUT_MS=600000
+# FETCH_HEADERS_TIMEOUT_MS=600000
+# FETCH_BODY_TIMEOUT_MS=605000
+# FETCH_CONNECT_TIMEOUT_MS=30000
+# FETCH_KEEPALIVE_TIMEOUT_MS=10000
+# TLS_CLIENT_TIMEOUT_MS=30000
+# API_BRIDGE_PROXY_TIMEOUT_MS=600000
+# API_BRIDGE_SERVER_REQUEST_TIMEOUT_MS=600000
+# API_BRIDGE_SERVER_HEADERS_TIMEOUT_MS=600000
+# API_BRIDGE_SERVER_KEEPALIVE_TIMEOUT_MS=5000
+# API_BRIDGE_SERVER_SOCKET_TIMEOUT_MS=605000
+
+# --- Security and auth ---
+# REQUIRE_API_KEY=true
+# OMNIROUTE_API_KEY=replace-me
+# ROUTER_API_KEY=replace-me
+# JWT_SECRET=replace-me
+# STORAGE_ENCRYPTION_KEY=replace-me
+
+# --- Background sync ---
+# PROVIDER_LIMITS_SYNC_INTERVAL_MINUTES=15
+
+# --- Common provider credentials ---
+# OPENAI_API_KEY=replace-me
+# ANTHROPIC_API_KEY=replace-me
+# GEMINI_API_KEY=replace-me
+# OPENROUTER_API_KEY=replace-me
