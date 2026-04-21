@@ -1,7 +1,8 @@
+# Maintainer: Swaranga Sarma <sarma.swaranga@gmail.com>
 pkgname=dloom
 pkgver=1.0.0
-pkgrel=1
-pkgdesc='Lightweight dotfile manager and system bootstrapper'
+pkgrel=2
+pkgdesc='Flexible dotfile symlink manager and system bootstrapper'
 arch=('x86_64')
 url='https://github.com/dloomorg/dloom'
 license=('MIT')

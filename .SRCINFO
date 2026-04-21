@@ -1,7 +1,7 @@
 pkgbase = dloom
-	pkgdesc = Lightweight dotfile manager and system bootstrapper
+	pkgdesc = Flexible dotfile symlink manager and system bootstrapper
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dloomorg/dloom
 	arch = x86_64
 	license = MIT
