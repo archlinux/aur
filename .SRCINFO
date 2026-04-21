@@ -1,6 +1,6 @@
 pkgbase = imagemagick-full
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all possible features)
-	pkgver = 7.1.2.19
+	pkgver = 7.1.2.21
 	pkgrel = 1
 	url = https://www.imagemagick.org/
 	arch = x86_64
@@ -56,10 +56,10 @@ pkgbase = imagemagick-full
 	makedepends = xz
 	makedepends = zlib
 	makedepends = zstd
-	source = https://imagemagick.org/archive/releases/ImageMagick-7.1.2-19.tar.lz
-	source = https://imagemagick.org/archive/releases/ImageMagick-7.1.2-19.tar.lz.asc
+	source = https://imagemagick.org/archive/releases/ImageMagick-7.1.2-21.tar.lz
+	source = https://imagemagick.org/archive/releases/ImageMagick-7.1.2-21.tar.lz.asc
 	validpgpkeys = D8272EF51DA223E4D05B466989AB63D48277377A
-	sha256sums = 95545620076ffd54781e46b832a615e54747ae2f4d0e309b1d3e28a810a263b3
+	sha256sums = 1cac138ea0a2411fd9da19c6478aafcaaad307f8c2124ccb39b8fe2d6b525907
 	sha256sums = SKIP
 
 pkgname = imagemagick-full
@@ -113,9 +113,9 @@ pkgname = imagemagick-full
 	depends = xz
 	depends = zlib
 	optdepends = imagemagick-full-doc: manual and API docs
-	provides = imagemagick=7.1.2.19
-	provides = libmagick=7.1.2.19
-	provides = libmagick-full=7.1.2.19
+	provides = imagemagick=7.1.2.21
+	provides = libmagick=7.1.2.21
+	provides = libmagick-full=7.1.2.21
 	conflicts = imagemagick
 	conflicts = libmagick
 	replaces = libmagick-full
@@ -137,5 +137,5 @@ pkgname = imagemagick-full
 pkgname = imagemagick-full-doc
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all possible features) (manual and API docs)
 	arch = any
-	provides = imagemagick-doc=7.1.2.19
+	provides = imagemagick-doc=7.1.2.21
 	conflicts = imagemagick-doc
