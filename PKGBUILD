@@ -2,7 +2,7 @@
 
 pkgname=omniroute-bin
 pkgver=3.6.9
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenAI-compatible AI gateway with routing, retries, caching, and observability"
 arch=('x86_64')
 url="https://github.com/diegosouzapw/OmniRoute"
