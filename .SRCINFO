@@ -1,0 +1,13 @@
+pkgbase = tryto-bin
+	pkgdesc = Describe your needs, shell like a guru. Natural language to shell command converter.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/beeender/tryto
+	arch = x86_64
+	license = MIT
+	provides = tryto
+	conflicts = tryto
+	source_x86_64 = https://github.com/beeender/tryto/releases/download/v0.1.0/tryto_v0.1.0_x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 6fdb74359b70c660a47ab4d22821cd3683ce1cd6a16f4a1a5b65b540d709ecb9
+
+pkgname = tryto-bin
