@@ -8,7 +8,7 @@ url='https://github.com/notliad/liftoff'
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/notliad/liftoff/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('afe415c72cf69b80facb0eb2ec3daf6bdb0eb2ca40bac36ac0c5ac540063f7e0')
+sha256sums=('8b79583eabb1a58461f7ec9c85e5f70c2ffb92bc0290e5565610f76b603452e0')
 
 build() {
     cd "$pkgname-$pkgver"
