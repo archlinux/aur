@@ -1,22 +1,22 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5fpc
-pkgver=7262.0.0.2
-pkgrel=2
+pkgver=7270.0.0.1
+pkgrel=1
 pkgdesc='Command-line VPN client using FastPPP to connect to F5Networks BIG-IP APM 13.0'
 arch=(aarch64 armv7h x86_64)
 
 source=('LICENSE')
-mirror=vpn.mtu.edu
+mirror=vpn.brown.edu
 source_aarch64=("linux_f5cli-${pkgver}.aarch64.deb::https://${mirror}/public/download/linux_f5cli.aarch64.deb")
 source_armv7h=("linux_f5cli-${pkgver}.armv7h.deb::https://${mirror}/public/download/linux_f5cli.armhf.deb")
 source_x86_64=("linux_f5cli-${pkgver}.x86_64.deb::https://${mirror}/public/download/linux_f5cli.x86_64.deb")
-b2sums_aarch64=('a10735649ad67a20f27df7bbb40c7352e6351f61f810288cd271f8811ea5c3c23ce855b3ec5917f1f254bb03425c18f19d6d2ce94ac9393b51bf6294b579c566')
-b2sums_armv7h=('60a5dfa90f858027f9e5b02313203b3d29b66943a6b95f591291a980b63c996537d39a29a5b46b101f84d721893836f2d8c74f1e93ebe02762f16cb17463e595')
-b2sums_x86_64=('92582951cb657dd7c47bf5509550ac17236cdc784d092be92b470c5c2d345a9223cc799aab8209628a2c7d5a190971a901b3b000a93e2430f8cd13cecdbb7d5d')
+b2sums_aarch64=('d6a3e657791393ae1d9bbe52b052c85e8b964024942fe07fa37d72fbd63339ddfcedcb510d4c848abd3a5040c06ea796a5bde4f054c0f97cd6313bc4bd07c7a4')
+b2sums_armv7h=('2de023b322bf70920018168bff66a7d259ad46132ced26445786e00954e4da22a5f6525654c30d1fd13c68beb9960834397f63e12a1ae495642f249a089fc94b')
+b2sums_x86_64=('a0daf3c6be1cb4550396352986ab185bf3551225465581425edcce04a035f75ccc49475ff4d69d78d124a7eb684599f3fdf7543e017fdd0f7be2a6f0317ca6e8')
 b2sums=('c864e69799ffc4c13bf8af7d76bcc8beed195d9a41acb01d459aaa0c3cd5bae75290ef7be1fa6a0bfd6472e1c3f8df3a7f5d59767861ded0dc4a373a3ead447c')
-sha256sums_aarch64=('2622c16b37a0449b96534b1d5a4199a5d6622c3b821294bdfdae33b033edfa12')
-sha256sums_armv7h=('0de95a15c2052ff952f23642542b20a9013077e93c86d24f835490a0ceae4169')
-sha256sums_x86_64=('00e4f5010547344499ac6c3df024bfeabf00457c52f291b6f3000ef0c6f3914f')
+sha256sums_aarch64=('bded0295236cae5f7eb15e20ccba71ca1781dbc66b56bf4a7bb850138688015e')
+sha256sums_armv7h=('650797153193d10d73ef6edf8585d5269f2b3e3975e0d788d27969087f62260d')
+sha256sums_x86_64=('0f86df9183d7730cde54975c5fb1392416eed23d6597088c9847a4b0ca30f6c7')
 sha256sums=('85f06be8b8e438c4cefdad9e8975d1c48fd53446fe35e95d4260ba14ac7f98fd')
 
 depends=(openssl)
