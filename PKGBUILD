@@ -1,7 +1,7 @@
 # Maintainer: JAuxance <auxance.jourdan@proton.me>
 pkgname=manager-bin
 _pkgname=manager
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Productivity companion — day counter, focus timer, schedule, journal"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Manager_${pkgver}_amd64.deb")
-sha256sums=('f2c35550eba299f3326e664ec4cd55b82f4d17b341a7cfbb7e93004c51903180')
+sha256sums=('11fd5403ff308137f8ed0bbcd42a1146a501dc661c2be72a3851e62b2ca0d8b6')
 options=('!strip' '!debug')
 
 package() {
