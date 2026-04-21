@@ -2,7 +2,7 @@
 pkgname=voix
 _pkgname=Voix # The case-sensitive name of the repository from git
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication"
 arch=('x86_64')
 url="https://github.com/Veridian-Zenith/Voix"
