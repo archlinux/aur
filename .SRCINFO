@@ -1,6 +1,6 @@
 pkgbase = standardnotes
 	pkgdesc = Think fearlessly with end-to-end encrypted notes and files
-	pkgver = 3.201.19
+	pkgver = 3.201.21
 	pkgrel = 1
 	url = https://standardnotes.com
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = standardnotes
 	depends = libstdc++
 	depends = nodejs
 	depends = python
-	source = standardnotes-3.201.19.tar.gz::https://github.com/standardnotes/app/archive/@standardnotes/desktop@3.201.19.tar.gz
+	source = standardnotes-3.201.21.tar.gz::https://github.com/standardnotes/app/archive/tags/@standardnotes/desktop@3.201.21.tar.gz
 	source = standardnotes.desktop
 	source = standardnotes.sh
-	sha256sums = 9a948afb3293129d26bdd3c02a5eb1c9ad9e0e116e3e3646eee99464e58d51a1
+	sha256sums = a829b21f4fa95569c2dc2725db58a32bae05a31c8ceac0647399b3d9c67293d2
 	sha256sums = b990343f6d187f3997129a7e2d5892fb2cb7a942a8040f9be2b8887ad5150215
 	sha256sums = 6dc53fdd5d597acd1bcc1bfe7ecc6458291fb53c5b1a4d2ece12e0dbfa8b41a2
 

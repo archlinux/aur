@@ -5,7 +5,7 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 
 pkgname=standardnotes
-pkgver=3.201.19
+pkgver=3.201.21
 pkgrel=1
 pkgdesc="Think fearlessly with end-to-end encrypted notes and files"
 arch=('x86_64')
@@ -14,10 +14,10 @@ license=('AGPL-3.0-or-later')
 _electron=electron35
 depends=('bash' "${_electron}" 'glibc' 'hicolor-icon-theme' 'libstdc++' 'nodejs' 'python')
 makedepends=('python-setuptools' 'yarn')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/standardnotes/app/archive/@standardnotes/desktop@${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/standardnotes/app/archive/tags/@standardnotes/desktop@${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('9a948afb3293129d26bdd3c02a5eb1c9ad9e0e116e3e3646eee99464e58d51a1'
+sha256sums=('a829b21f4fa95569c2dc2725db58a32bae05a31c8ceac0647399b3d9c67293d2'
             'b990343f6d187f3997129a7e2d5892fb2cb7a942a8040f9be2b8887ad5150215'
             '6dc53fdd5d597acd1bcc1bfe7ecc6458291fb53c5b1a4d2ece12e0dbfa8b41a2')
 
@@ -26,7 +26,7 @@ prepare() {
 }
 
 build() {
-    cd "app--${pkgname}-desktop-${pkgver}/packages/desktop"
+    cd "app-tags-${pkgname}-desktop-${pkgver}/packages/desktop"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     yarn install --immutable
     yarn rebuild:home-server
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-    cd "app--${pkgname}-desktop-${pkgver}/packages/desktop"
+    cd "app-tags-${pkgname}-desktop-${pkgver}/packages/desktop"
     install -Dm644 dist/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     cp -r dist/linux-unpacked/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
     for size in 16x16 32x32 128x128 256x256 512x512; do
