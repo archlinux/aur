@@ -32,8 +32,8 @@ build() {
   cd "$pkgname-$pkgver"
   # Patch working dir
   sed -i -e 's/\/config/\/var\/lib\/profilarr\/config/' backend/app/config/config.py
-	# Build frontend
-	cd frontend
+  # Build frontend
+  cd frontend
   export NG_CLI_ANALYTICS=false
   npm ci
   npm run build
@@ -41,11 +41,10 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-	install -dm755 "$pkgdir/usr/share/webapps/profilarr"
-	cp -r backend/app "$pkgdir/usr/share/webapps/profilarr/"
-	cp -r frontend/dist "$pkgdir/usr/share/webapps/profilarr/app/static"
-	install -Dm755 "$srcdir/profilarr.service" "$pkgdir/usr/lib/systemd/system/profilarr.service"
-	install -Dm644 "$srcdir/profilarr.sysusers" "$pkgdir/usr/lib/sysusers.d/profilarr.conf"
-	install -Dm644 "$srcdir/profilarr.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/profilarr.conf"
+  install -dm755 "$pkgdir/usr/share/webapps/profilarr"
+  cp -r backend/app "$pkgdir/usr/share/webapps/profilarr/"
+  cp -r frontend/dist "$pkgdir/usr/share/webapps/profilarr/app/static"
+  install -Dm755 "$srcdir/profilarr.service" "$pkgdir/usr/lib/systemd/system/profilarr.service"
+  install -Dm644 "$srcdir/profilarr.sysusers" "$pkgdir/usr/lib/sysusers.d/profilarr.conf"
+  install -Dm644 "$srcdir/profilarr.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/profilarr.conf"
 }
-
