@@ -2,74 +2,27 @@ pkgname=gsd-pi
 pkgver=2.77.0
 pkgrel=1
 pkgdesc="A powerful meta-prompting, context engineering and spec-driven development system that enables agents to work autonomously"
-arch=(any)
+arch=(x86_64)
 url="https://github.com/gsd-build/gsd-2"
 license=(MIT)
-
-
-
-
-makedepends=( jq)
-
-
-
-depends=(nodejs npm)
-
-options=()
-
-
-
-provides=(gsd gsd-cli)
-
-
-
-_npm_name="gsd-pi"
-source=("https://registry.npmjs.org/gsd-pi/-/gsd-pi-2.77.0.tgz")
-sha256sums=('8dd7398dc7a51e0b95031b39e0ef0b8fc4977a5e1aeaf899abae6408e603628d')
-noextract=("${_npm_name}-${pkgver}.tgz")
+makedepends=(npm jq findutils)
+depends=(nodejs)
+_npm_name="@gsd-build/engine-linux-x64-gnu"
+source=("https://registry.npmjs.org/@gsd-build/engine-linux-x64-gnu/-/engine-linux-x64-gnu-2.77.0.tgz")
+sha256sums=('d32097ee9c5e482e8134665fb7113f08d96e7327dab7a5b31979713352eb7619')
 
 prepare() {
-    mkdir -p "${srcdir}/npm_pkg"
-    cd "${srcdir}/npm_pkg"
-    tar -xzf "../${_npm_name}-${pkgver}.tgz"
+    mkdir -p "${srcdir}/npm-cache"
 }
 
 package() {
-    cd "${srcdir}/npm_pkg/package"
+    cd "${srcdir}"
+    npm install -g --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" "@gsd-build/engine-linux-x64-gnu-${pkgver}.tgz"
 
-    # Install dependencies (skip postinstall scripts)
-    
-    npm install --ignore-scripts
-    
+    # Fix permissions that sometimes break module resolution
+    find "${pkgdir}/usr/lib/node_modules" -type d -exec chmod 755 {} +
 
-    # Install package to staging directory
-    local staging_lib="${pkgdir}/usr/lib/node_modules/gsd-pi"
-    install -dm755 "${staging_lib}"
-    cp -r . "${staging_lib}"
-
-    # Create bin symlinks - use absolute path for runtime
-    install -dm755 "${pkgdir}/usr/bin"
-    local install_lib="/usr/lib/node_modules/gsd-pi"
-
-    if [ -f package.json ] && [ -n "$(jq -r '.bin // {}' package.json)" ]; then
-        # Read bin entries from package.json and create symlinks
-        jq -r '.bin | to_entries[] | "\(.key)=\(.value)"' package.json | while read -r line; do
-            local bin_name="${line%%=*}"
-            local bin_path="${line##*=}"
-            ln -s "${install_lib}/${bin_path}" "${pkgdir}/usr/bin/${bin_name}"
-            chmod +x "${staging_lib}/${bin_path}"
-        done
-        
-    else
-        # Fallback: use binary_name if no bin entries in package.json
-        if [ -f "bin/gsd" ]; then
-            ln -s "${install_lib}/bin/gsd" "${pkgdir}/usr/bin/gsd"
-            chmod +x "${staging_lib}/bin/gsd"
-        fi
-        
-    fi
-
-    # Clean up package.json files
+    # Fix package.json files
     find "${pkgdir}" -name "package.json" -print0 | xargs -r -0 sed -i '/_where/d'
 
     local tmppackage="$(mktemp)"
@@ -86,12 +39,4 @@ package() {
         mv "$tmppackage" "$pkgjson"
         chmod 644 "$pkgjson"
     done
-
-    
-
-    
-
-    
-
-    
 }
