@@ -51,6 +51,8 @@ prepare() {
 }
 
 build() {
+    export CFLAGS+=" -Wno-error=format-security"
+    export CXXFLAGS+=" -Wno-error=format-security"
     cd "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/build
 	cmake \
 		-Wno-dev \
