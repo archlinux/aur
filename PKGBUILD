@@ -2,7 +2,7 @@
 # Contributor: Kruemmelbande
 pkgname=slimevr-beta-bin
 pkgver=20.0.0rc1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="SlimeVR FBT software beta version"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source_x86_64=(
 )
 
 sha512sums_x86_64=(
-	"ef194d9c3dc4a043c2120cfa525bfd4510b3b1ade839695896abf256043b1cb96e4d9fcf7e58163997af4c5979f6385b8b62829fd5343bc33918007064f5f08a"
+	"d7a11d31e38b060cb8cbf301e769c871c3ea6cd56354ffc32c56829613a75ae96ae2cd3878121302712ffb1b526563560ae42609bea7d81534dd9eab830e0ce3"
 )
 
 package() {
