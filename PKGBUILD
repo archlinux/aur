@@ -2,11 +2,11 @@
 #
 pkgname=pospell
 pkgver='1.1'
-pkgrel=2
+pkgrel=3
 pkgdesc="Spellcheck .po files containing reStructuredText translations"
 url="https://github.com/AFPy/pospell"
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
@@ -18,13 +18,13 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
   patch -i ../c4feb4d25f23c3584959ba861267f669fbfcc98d.diff
 }
-            
+
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
