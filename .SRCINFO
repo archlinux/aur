@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Proton from Valve Software with extra patches from GloriousEggroll
 	pkgver = GE_Proton10_34
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = proton-ge-custom
 	conflicts = proton-ge-custom-git
 	options = !strip
 	options = emptydirs
-	source = GE-Proton10-34_2.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton10-34/GE-Proton10-34.tar.gz
+	source = GE-Proton10-34_3.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton10-34/GE-Proton10-34.tar.gz
 	source = 0001-build-make-compatible-with-system-wide-install.patch
 	source = proton-ge-custom.conf
 	sha512sums = 9fd0b2cfbd501c0b5c892239c392c7283a029b5e5d5a77d3f85b0ce190d555456241a18eebca16b53f094b403499201c13550a3f0b9b365e1a5eb5737cbb7303

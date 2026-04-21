@@ -1,8 +1,9 @@
 # Maintainer: 	EpicTux123 <EpicTux123@proton.me>
+# Contributor: 	Stelios Tsampas <loathingkernel@gmail.com>
 # Contributor:	Jaja <jaja@mailbox.org>
 # Contributor:	floriplum <floriplum@mailbox.org>
-# Contributor:	various people submitting to the 'chaotic-aur' repository
 # Contributor:	barfin (a.k.a. RogueGirl) <barfin@protonmail.com>
+# Contributor:	various people submitting to the 'chaotic-aur' repository
 
 #shellcheck disable=SC2034,SC2154
 
@@ -10,7 +11,7 @@ pkgname=proton-ge-custom
 url='https://github.com/GloriousEggroll/proton-ge-custom'
 
 pkgver=GE_Proton10_34
-pkgrel=2
+pkgrel=3
 epoch=1
 
 _pkgver=${pkgver//_/-}
