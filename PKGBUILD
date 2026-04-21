@@ -1,8 +1,8 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 # Contributor: Artem Vorotnikov <artem@vorotnikov.me>
 
 pkgname=dumbpipe
-pkgver=0.35.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="Connect A to B. Send Data."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('aafe6c563bf5c19fad48d31a524b0ff45c6bbf880c271677b5b62f1ec388dbc127df152576bfe4dbc47a62809d1cb3324b3d9112a1e0f1e1e17720b16684d622')
+b2sums=('e2bd5e8449fc058e0724a83967c6fa03e192f0588432b7ad65699ef949d0a1b7ffc23e8727bf3c8260721be64bf69fd998e628c28658bad6e88dbd52a2ba2e26')
 
 prepare() {
     cd $pkgname-$pkgver
