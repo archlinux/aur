@@ -1,4 +1,45 @@
 
+# v19.0.0
+
+## What's Changed
+* Switch to Electron by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1747
+* Bump Gradle, plugin, and package versions by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/1746
+* Bump actions/upload-artifact from 6 to 7 by @dependabot[bot] in https://github.com/SlimeVR/SlimeVR-Server/pull/1770
+* Revert "Bump actions/upload-artifact from 6 to 7" by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1779
+* Electron CI fixes by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1780
+* Electron build fix round 2 by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1783
+* New Pontoon translations by @SlimeVR-bot in https://github.com/SlimeVR/SlimeVR-Server/pull/1674
+* Electron fixes after RC feedbacks by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1784
+* Electron fixes macos by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1797
+* Downgrade JavaOSC version by @gorbit99 in https://github.com/SlimeVR/SlimeVR-Server/pull/1801
+* Revert kache and coroutines upgrade by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1804
+
+
+**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v18.2.0...v19.0.0
+
+__________
+
+# v19.0.0-rc.1
+
+Please report all bugs and technical issues in our [Discord server](https://slimevr.dev/discord) in the `#support-forum` or `#technical-support` channels. Bugs may also be reported in our [GitHub Issues](https://github.com/SlimeVR/SlimeVR-Server/issues).
+
+## Installation Instructions (Windows):
+Download the custom installer for this RC from the discord and install it as you would a regular update of slimevr.
+DO NOT try to move the files yourself
+
+## What's Changed
+* Switch to Electron by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1747
+* Bump Gradle, plugin, and package versions by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/1746
+* Bump actions/upload-artifact from 6 to 7 by @dependabot[bot] in https://github.com/SlimeVR/SlimeVR-Server/pull/1770
+* Revert "Bump actions/upload-artifact from 6 to 7" by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1779
+* Electron CI fixes by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1780
+* Electron build fix round 2 by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1783
+
+
+**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v18.2.0...v19.0.0-rc.1
+
+__________
+
 # v18.2.0
 
 Please report all bugs and technical issues in our [Discord server](https://slimevr.dev/discord) in the `#support-forum` or `#technical-support` channels. Bugs may also be reported in our [GitHub Issues](https://github.com/SlimeVR/SlimeVR-Server/issues).
@@ -1286,55 +1327,5 @@ Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.
 * @Ghostydrae made their first contribution in  https://github.com/SlimeVR/SlimeVR-Server/pull/1171
 
 **Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.13.0...v0.13.1
-
-__________
-
-# v0.13.1-rc.3
-
-This is a release candidate. Back up your vrconfig.yml at `%AppData%\dev.slimevr.SlimeVR` before running.
-Please report all bugs in our [Discord server](https://slimevr.dev/discord), in the appropriate forum post in `#beta-testing-forum`!
-
-## Installation
-* Download the new release below and extract it.
-* Replace `slimevr.jar` and `slimevr.exe` in the install folder (`C:\Program Files (x86)\SlimeVR Server`)
-* To run SlimeVR, use the shortcut from the start menu or desktop, or open the installation folder and launch slimevr.exe.
-
-## What's Changed
-* Clarify AutoBone error after #1185 by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/1214
-* Auto label pull requests by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1217
-* Hid update protocol by @sctanf in https://github.com/SlimeVR/SlimeVR-Server/pull/1200
-* Fix Drift compensation prediction description by @Erimelowo in https://github.com/SlimeVR/SlimeVR-Server/pull/1216
-* Don't upload `desktop.jar` on CI by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1211
-* Fix finishing setup wizard not make it be skipped next time by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1212
-* Implement magnetometer toggle for firmware by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1114
-* Fix missing translation key on tracker settings for `Tracker name` by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1215
-* Update nix flake by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1221
-
-
-**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.13.1-rc.2...v0.13.1-rc.3
-
-__________
-
-# v0.13.1-rc.2
-
-This is a release candidate. Back up your vrconfig.yml at `%AppData%\dev.slimevr.SlimeVR` before running.
-Please report all bugs in our [Discord server](https://slimevr.dev/discord), in the appropriate forum post in `#beta-testing-forum`!
-
-## Installation
-* Download the new release below and extract it.
-* Replace `slimevr.jar` and `slimevr.exe` in the install folder (`C:\Program Files (x86)\SlimeVR Server`)
-* To run SlimeVR, use the shortcut from the start menu or desktop, or open the installation folder and launch slimevr.exe.
-
-## What's Changed
-* catch unable to find hid library by @sctanf in https://github.com/SlimeVR/SlimeVR-Server/pull/1199
-* Fix spacing issues on advanced settings by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1198
-* Add asexual theme by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/1207
-* Fix vmc head shift for lock head by @Erimelowo in https://github.com/SlimeVR/SlimeVR-Server/pull/1208
-* Fix typo on `OBTAINING_MAC_ADDRESS` by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1206
-* Fix tauri not autosaving store on close anymore by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1209
-* Fix style for tracker "shadow" & add to all cases by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/1204
-
-
-**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.13.1-rc.1...v0.13.1-rc.2
 
 __________
