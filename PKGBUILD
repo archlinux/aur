@@ -9,7 +9,7 @@ license=(MIT)
 
 
 
-makedepends=()
+makedepends=( jq)
 
 
 
@@ -35,11 +35,27 @@ prepare() {
 }
 
 package() {
-    
     cd "${srcdir}/npm_pkg/package"
-    mkdir -p "${srcdir}/npm-cache"
-    npm install --cache "${srcdir}/npm-cache" -g --prefix "${pkgdir}/usr"
-    
+
+    local npm_lib="${pkgdir}/usr/lib/node_modules"
+    install -dm755 "${npm_lib}"
+    cp -r . "${npm_lib}/gsd-pi"
+
+    install -dm755 "${pkgdir}/usr/bin"
+
+    if [ -f package.json ] && [ -n "$(jq -r '.bin // {}' package.json)" ]; then
+        jq -r '.bin | to_entries[] | "\(.key)=\(.value)"' package.json | while read -r line; do
+            local bin_name="${line%%=*}"
+            local bin_path="${line##*=}"
+            ln -s "${npm_lib}/gsd-pi/${bin_path}" "${pkgdir}/usr/bin/${bin_name}"
+        done
+    else
+        
+        if [ -f "bin/gsd" ]; then
+            ln -s "${npm_lib}/gsd-pi/bin/gsd" "${pkgdir}/usr/bin/gsd"
+        fi
+        
+    fi
 
     find "${pkgdir}" -name "package.json" -print0 | xargs -r -0 sed -i '/_where/d'
 

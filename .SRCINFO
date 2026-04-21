@@ -5,6 +5,7 @@ pkgbase = gsd-pi
 	url = https://github.com/gsd-build/gsd-2
 	arch = any
 	license = MIT
+	makedepends = jq
 	depends = nodejs
 	depends = npm
 	provides = gsd
