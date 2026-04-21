@@ -1,9 +1,9 @@
 # Maintainer: MarcusPy827 <https://github.com/MarcusPy827>
 
 pkgname=husky-panel-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="(WIP) Yet another bar for Linux on Wayland session..."
+pkgdesc="A monolithic bar for Linux desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MarcusPy827/Husky-Panel"
 license=('GPL-3.0-only')
