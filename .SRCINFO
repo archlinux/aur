@@ -1,5 +1,5 @@
 pkgbase = moonfin-bin
-	pkgdesc = Jellyfin & Emby media client for Linux
+	pkgdesc = Jellyfin & Emby media client for Linux (binary release)
 	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/Moonfin-Client/Mobile-Desktop
@@ -11,7 +11,7 @@ pkgbase = moonfin-bin
 	depends = libsecret
 	provides = moonfin
 	conflicts = moonfin
-	source_x86_64 = moonfin-bin-1.3.3.tar.gz::https://github.com/Moonfin-Client/Mobile-Desktop/releases/download/1.3.3/Moonfin_Linux_v1.3.3.tar.gz
-	sha256sums_x86_64 = SKIP
+	source = moonfin-bin-1.3.3.tar.gz::https://github.com/Moonfin-Client/Mobile-Desktop/releases/download/1.3.3/Moonfin_Linux_v1.3.3.tar.gz
+	sha256sums = SKIP
 
-pkgname = moonfin
+pkgname = moonfin-bin
