@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.8.4.409"
+pkgver="10.8.5.410"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -19,7 +19,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('df87fa6a639a7adaff428bb3d85ac12d57f27a5b0105cec420fb1b963d7d16d6')
+sha256sums=('bbaa345299c20ed054d7296efc3649b8a656814df70299175b58191dd24f0f34')
 
 prepare()
 {
@@ -33,47 +33,11 @@ prepare()
  7z x "$srcdir/e_res.cab" -o"$srcdir"
  7z x "$srcdir/et_res.cab" -o"$srcdir"
  7z x "$srcdir/disk1.cab" -o"$srcdir"
-
-    python3 - << 'PY' "$srcdir/FID_EditorEXE"
-import sys, pathlib, re
-
-path = pathlib.Path(sys.argv[1])
-data = bytearray(path.read_bytes())
-
-# Pattern around the CoRegisterActivationFilter call:
-#   48 8B CB              mov rcx,rbx
-#   FF 15 ?? ?? ?? ??     call qword ptr [rip+disp32]
-#   C6 43 10 01           mov byte ptr [rbx+0x10],1
-#   C1 E8 1F              shr eax,0x1f
-#   84 C0                 test al,al
-#   75 ??                 jnz rel8
-pat = re.compile(
-    b"\x48\x8b\xcb"      # mov rcx,rbx
-    b"\xff\x15...."      # call qword ptr [rip+disp32] (wildcard disp32)
-    b"\xc6\x43\x10\x01"  # mov byte ptr [rbx+0x10],1
-    b"\xc1\xe8\x1f"      # shr eax,0x1f
-    b"\x84\xc0"          # test al,al
-    b"\x75."             # jnz rel8 (wildcard offset)
-    , re.DOTALL
-)
-
-count = 0
-for m in pat.finditer(data):
-    call_off = m.start() + 3  # 3 bytes into pattern: at FF 15
-    # Replace the 6-byte CALL with xor eax,eax + 4×nop
-    data[call_off:call_off+6] = b"\x31\xc0\x90\x90\x90\x90"
-    count += 1
-
-if count == 0:
-    raise SystemExit("No matching CoRegisterActivationFilter pattern found")
-
-path.write_bytes(data)
-print(f"Patched {count} call site(s) via code pattern")
-PY
-
+ 
 }
 
 package()
+
 {  
 
  mkdir -p "$pkgdir${_installdir}/$pkgname"
@@ -909,23 +873,14 @@ package()
  install -Dm644 "$srcdir/FID_U3D_vi_VN" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.vi-VN.xcl"
  install -Dm644 "$srcdir/FID_U3D_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_U3D_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.zh-TW.xcl"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_concrt140d_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/concrt140d.dll"
  install -Dm644 "$srcdir/FID_MSVCRT_X64_concrt140_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/concrt140.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_msvcp140_1d_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/msvcp140_1d.dll"
  install -Dm644 "$srcdir/FID_MSVCRT_X64_msvcp140_1_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/msvcp140_1.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_msvcp140_2d_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/msvcp140_2d.dll"
  install -Dm644 "$srcdir/FID_MSVCRT_X64_msvcp140_2_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/msvcp140_2.dll"
  install -Dm644 "$srcdir/FID_MSVCRT_X64_msvcp140_atomic_wait_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/msvcp140_atomic_wait.dll"
  install -Dm644 "$srcdir/FID_MSVCRT_X64_msvcp140_codecvt_ids_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/msvcp140_codecvt_ids.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_msvcp140d_atomic_wait_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/msvcp140d_atomic_wait.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_msvcp140d_codecvt_ids_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/msvcp140d_codecvt_ids.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_msvcp140d_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/msvcp140d.dll"
  install -Dm644 "$srcdir/FID_MSVCRT_X64_msvcp140_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/msvcp140.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_vcruntime140_1d_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/vcruntime140_1d.dll"
  install -Dm644 "$srcdir/FID_MSVCRT_X64_vcruntime140_1_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/vcruntime140_1.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_vcruntime140d_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/vcruntime140d.dll"
  install -Dm644 "$srcdir/FID_MSVCRT_X64_vcruntime140_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/vcruntime140.dll"
- install -Dm644 "$srcdir/FID_MSVCRT_X64_vcruntime140_threadsd_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/vcruntime140_threadsd.dll"
  install -Dm644 "$srcdir/FID_MSVCRT_X64_vcruntime140_threads_dll" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/MSVCRT/x64/vcruntime140_threads.dll"
  install -Dm644 "$srcdir/FID_REDACT_PAT_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/cs_CZ.json"
  install -Dm644 "$srcdir/FID_REDACT_PAT_en_CA" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/en_CA.json"
