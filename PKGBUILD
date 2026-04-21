@@ -14,7 +14,7 @@ build() {
     cd "$pkgname-$pkgver"
     export CGO_ENABLED=0
     export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
-    go build -ldflags "-s -w" -o lo ./cmd/lo
+    go build -ldflags "-s -w" -o "$srcdir/lo" ./cmd/lo
 }
 
 check() {
@@ -23,9 +23,7 @@ check() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-
-    install -Dm755 lo "$pkgdir/usr/bin/lo"
-    install -Dm644 man/man1/lo.1 "$pkgdir/usr/share/man/man1/lo.1"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "$srcdir/lo" "$pkgdir/usr/bin/lo"
+    install -Dm644 "$pkgname-$pkgver/man/man1/lo.1" "$pkgdir/usr/share/man/man1/lo.1"
+    install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
