@@ -2,7 +2,7 @@
 # https://github.com/hekel/chatterino-stuffs
 
 pkgname="chatterino2-7tv-native-git"
-pkgver=7.5.5beta1.r68.g758cd72
+pkgver=7.5.5beta1.r85.gf97e67d
 pkgrel=1
 pkgdesc='Chatterino2 fork with support for 7tv; Patched to use native system QT style'
 url="https://github.com/SevenTV/chatterino7"
@@ -24,6 +24,7 @@ makedepends=(
   'cmake'
   'expected-lite'
   'git'
+  'ninja'
   'qt6-tools'
   'rapidjson'
 )
