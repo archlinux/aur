@@ -22,16 +22,19 @@ source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info
 	dlagent-lark.sh
 	dlagent-license.sh
 	dlagent-license-global.sh
-	dlagent-license-US.sh)
+	dlagent-license-US.sh
+)
 DLAGENTS=("https::/usr/bin/sh ${startdir}/dlagent-lark.sh %o %u"
-	"http::/usr/bin/sh ${startdir}/dlagent-license.sh %o %u")
+	"http::/usr/bin/sh ${startdir}/dlagent-license.sh %o %u"
+)
 sha256sums=('d6662c8fb30624c337f154244f7dd959ca6d70a899d5f22685f838b30785481a'
             '9adb1906622edc9eb5fd4e75847c3367102cdbca974c88831e5b3347fcad45f8'
             'b9affd4412225905a79b64662acb48e32f007b197ac74dbbf0ad37820a6179e9'
             '742edd7ea5dc81caefd79d78f137ed91e83b3ab780fe1451600048a3fc2faa59'
             '3118084bc1714421df79d564ebebf27173e3629a0ee45529ea7a854eda7b9dea'
             '43768fe6801ca4f04ad83978efb9ff00681f70fd0e74f5856eb081f4b114543a'
-            '5667985d6e882c8565d3b76a93172e504a92dde5c8f889ecfaf40a7bda97d02b')
+            '5667985d6e882c8565d3b76a93172e504a92dde5c8f889ecfaf40a7bda97d02b'
+)
 
 package() {
 	# License
