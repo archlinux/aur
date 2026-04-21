@@ -1,6 +1,6 @@
 pkgbase = solana
 	pkgver = 3.1.13
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 1
 	url = https://github.com/anza-xyz/agave
 	arch = x86_64
@@ -30,7 +30,6 @@ pkgname = solana-cli
 	depends = glibc
 	depends = libgcc
 	depends = systemd-libs
-	provides = solana-cli=1:3.1.13-7
 	provides = spl-token
 	conflicts = solana-bin
 
@@ -42,7 +41,6 @@ pkgname = agave-validator
 	depends = libstdc++
 	optdepends = ocl-icd: OpenCL GPU signature verification via perf-libs (requires compatible GPU; opt-in via SOLANA_PERF_LIBS)
 	optdepends = intel-sgx-psw: SGX-backed signing enclave via perf-libs (requires SGX-capable CPU; opt-in via SOLANA_PERF_LIBS)
-	provides = agave-validator=1:3.1.13-7
 
 pkgname = solana-dev
 	pkgdesc = Solana program developer tools
@@ -53,7 +51,6 @@ pkgname = solana-dev
 	depends = libgcc
 	depends = libstdc++
 	optdepends = cargo: required for cargo-build-sbf and cargo-test-sbf
-	provides = solana-dev=1:3.1.13-7
 	conflicts = solana-dev-bin
 
 pkgname = solana

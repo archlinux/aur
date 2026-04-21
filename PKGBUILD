@@ -10,7 +10,7 @@ epoch=1
 pkgver=3.1.13
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
 _splTokenCliVersion=5.5.0
-pkgrel=7
+pkgrel=8
 url="https://github.com/anza-xyz/agave"
 arch=(x86_64)
 license=(Apache-2.0)
@@ -99,7 +99,6 @@ prepare() {
 build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  export RUSTFLAGS="$RUSTFLAGS -W dangerous_implicit_autorefs"
   cd "$srcdir/agave"
   # Fix lints
   sed -i '/^\[workspace\.lints\.rust\]$/,+1d' Cargo.toml
@@ -146,7 +145,7 @@ build() {
 package_solana-cli() {
   pkgdesc="Solana CLI tools"
   depends=(bzip2 glibc libgcc systemd-libs)
-  provides=("solana-cli=${epoch}:${pkgver}-${pkgrel}" "spl-token")
+  provides=(spl-token)
   conflicts=(solana-bin)
 
   cd "$srcdir/agave"
@@ -170,7 +169,6 @@ package_agave-validator() {
     'ocl-icd: OpenCL GPU signature verification via perf-libs (requires compatible GPU; opt-in via SOLANA_PERF_LIBS)'
     'intel-sgx-psw: SGX-backed signing enclave via perf-libs (requires SGX-capable CPU; opt-in via SOLANA_PERF_LIBS)'
   )
-  provides=("agave-validator=${epoch}:${pkgver}-${pkgrel}")
 
   cd "$srcdir/agave"
   for bin in "${_validator_bins[@]}"; do
@@ -188,7 +186,6 @@ package_solana-dev() {
   install=$pkgname.install
   depends=(bash bzip2 glibc libgcc libstdc++)
   optdepends=('cargo: required for cargo-build-sbf and cargo-test-sbf')
-  provides=("solana-dev=${epoch}:${pkgver}-${pkgrel}")
   conflicts=(solana-dev-bin)
 
   cd "$srcdir/agave"
