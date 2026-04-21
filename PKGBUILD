@@ -2,15 +2,16 @@
 pkgname=kawaii-player
 _pkgname=kawaii_player
 pkgver=8.1.0
-pkgrel=1
+pkgrel=2
 _pkgrel=1
 pkgdesc="Multimedia player, media library manager and portable media server with PC-to-PC casting feature"
 arch=(any)
 url="https://github.com/kanishka-linux/kawaii-player"
 license=('GPL3')
-depends=('mpv' 'sqlite' 'python' 'python-pyqt5' 'socat' 'qt5-webengine' 'curl' 'mplayer' 'ffmpegthumbnailer'
+depends=('mpv' 'sqlite' 'python>=3.5' 'python-pyqt5>=5.5' 'socat' 'qt5-webengine' 'curl' 'mplayer' 'ffmpegthumbnailer'
          'python-beautifulsoup4' 'python-certifi' 'python-dbus' 'python-lxml' 'python-mutagen' 'python-opengl'
-         'python-pillow' 'python-pycurl' 'python-pyqtwebengine' 'wget' 'python-setuptools' 'libnotify')
+         'python-pillow' 'python-pycurl' 'python-pyqt5-webengine' 'wget' 'python-setuptools' 'libnotify'
+		 'python-pytaglib' 'python-mutagen')
 optdepends=('python-pympv: modern opengl-render API for libmpv'
 			'mpv: MPV media player'
             'libtorrent-rasterbar: torrent streaming'
