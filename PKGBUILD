@@ -2,13 +2,13 @@
 
 pkgname=omniroute-bin
 pkgver=3.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenAI-compatible AI gateway with routing, retries, caching, and observability"
 arch=('x86_64')
 url="https://github.com/diegosouzapw/OmniRoute"
 license=('MIT')
 depends=('nodejs')
-makedepends=()
+makedepends=('npm' 'python')
 optdepends=('systemd: user service management via systemctl --user')
 install="${pkgname}.install"
 options=('!strip')
@@ -24,6 +24,33 @@ sha512sums=(
   'SKIP'
   'SKIP'
 )
+
+build() {
+  local _pkgroot="${srcdir}/package"
+  local _app_binary="${_pkgroot}/app/node_modules/better-sqlite3/build/Release/better_sqlite3.node"
+
+  cd "${_pkgroot}"
+
+  export HOME="${srcdir}/npm-home"
+  export npm_config_cache="${srcdir}/npm-cache"
+  export npm_config_build_from_source=true
+  export npm_config_audit=false
+  export npm_config_fund=false
+  export npm_config_update_notifier=false
+
+  mkdir -p "${HOME}" "${npm_config_cache}"
+
+  npm install --omit=dev --ignore-scripts --no-audit --no-fund
+  npm rebuild better-sqlite3 --build-from-source
+  node scripts/postinstall.mjs
+
+  [[ -f "${_app_binary}" ]] || {
+    printf 'Missing repaired better-sqlite3 binary at %s\n' "${_app_binary}" >&2
+    return 1
+  }
+
+  rm -rf "${_pkgroot}/node_modules"
+}
 
 package() {
   install -d "${pkgdir}/usr/lib/omniroute"

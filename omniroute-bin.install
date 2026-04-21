@@ -1,9 +1,35 @@
+_omniroute_setup_user_service() {
+  local _target_user="${SUDO_USER:-}"
+  local _target_uid _runtime_dir _target_home
+
+  [[ -n "${_target_user}" && "${_target_user}" != root ]] || return 0
+
+  _target_uid=$(id -u "${_target_user}" 2>/dev/null) || return 0
+  _runtime_dir="/run/user/${_target_uid}"
+  _target_home=$(getent passwd "${_target_user}" | cut -d: -f6) || return 0
+
+  [[ -d "${_runtime_dir}" && -n "${_target_home}" ]] || return 0
+
+  runuser -u "${_target_user}" -- mkdir -p "${_target_home}/.config/omniroute" || return 0
+  runuser -u "${_target_user}" -- sh -lc '
+    if [ ! -f "$HOME/.config/omniroute/.env" ]; then
+      cp /usr/share/doc/omniroute-bin/.env.example "$HOME/.config/omniroute/.env"
+    fi
+  ' || return 0
+
+  XDG_RUNTIME_DIR="${_runtime_dir}" runuser -u "${_target_user}" -- systemctl --user daemon-reload || return 0
+  XDG_RUNTIME_DIR="${_runtime_dir}" runuser -u "${_target_user}" -- systemctl --user enable --now omniroute.service || return 0
+}
+
 post_install() {
+  _omniroute_setup_user_service
+
   cat <<'EOF'
 ==> OmniRoute was installed.
-==> Optional per-user service setup:
+==> Best-effort per-user service setup was attempted for the invoking user.
+==> If it could not be enabled automatically, run:
 ==>   mkdir -p ~/.config/omniroute
-==>   cp /usr/share/doc/omniroute-bin/.env.example ~/.config/omniroute/.env
+==>   cp -n /usr/share/doc/omniroute-bin/.env.example ~/.config/omniroute/.env
 ==>   systemctl --user daemon-reload
 ==>   systemctl --user enable --now omniroute.service
 ==> The packaged user service defaults DATA_DIR to ~/.config/omniroute.
