@@ -1,6 +1,6 @@
 pkgbase = peekoo-bin
 	pkgdesc = Desktop AI pet and productivity companion
-	pkgver = 0.1.32
+	pkgver = 0.1.33
 	pkgrel = 1
 	url = https://github.com/feed-mob/peekoo-ai
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = peekoo-bin
 	depends = libnotify
 	optdepends = xdg-utils: open external links
 	options = !strip
-	source = https://github.com/feed-mob/peekoo-ai/releases/download/v0.1.32/Peekoo_0.1.32_amd64.AppImage
+	source = https://github.com/feed-mob/peekoo-ai/releases/download/v0.1.33/Peekoo_0.1.33_amd64.AppImage
 	source = peekoo.desktop
 	source = peekoo.png
-	sha256sums = e194cec6564bca6e495e58f062bd96768efeb3a2afc8d84898f14bedb848102d
+	sha256sums = 5cfdc74aa7e7659bfcd9d9c71fa31015e6bc1509831f38a237f0ccf4973f9e64
 	sha256sums = SKIP
 	sha256sums = SKIP
 
