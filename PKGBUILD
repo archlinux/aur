@@ -1,6 +1,6 @@
 # Maintainer: tirith contributors
 pkgname=tirith
-pkgver=0.2.12
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Terminal security - catches homograph attacks, pipe-to-shell, ANSI injection'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'base-devel')
 options=(!lto)
 install=tirith.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7b6c8d31b538069bf34e8c64045fbc77f1704b721dda30db03368a7430f78080')
+sha256sums=('5e949777a2fea993c3a24b67f529b0e92f25725e9c18936c4bf5dfd730dd4ba0')
 
 prepare() {
   cd "$pkgname-$pkgver"
