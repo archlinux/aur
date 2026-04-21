@@ -1,6 +1,6 @@
 pkgbase = typist-bin
 	pkgdesc = A cross-platform CLI and Web UI typing application built for developers to master speed and syntax
-	pkgver = 1.0.3
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/chuma-beep/typist
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = typist-bin
 	provides = typist
 	conflicts = typist
 	options = !strip
-	source_x86_64 = typist-x86_64-1.0.3.tgz::https://github.com/chuma-beep/typist/releases/download/v1.0.3/typist_1.0.3_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 02081f731128b5b90dd0ab78b384f258d4befeea4d67f647d471c29e2b5fe0b5
-	source_aarch64 = typist-aarch64-1.0.3.tgz::https://github.com/chuma-beep/typist/releases/download/v1.0.3/typist_1.0.3_Linux_arm64.tar.gz
-	sha256sums_aarch64 = eeba1c3c15f3a97e49f60fc3b1ab533c4ff86b530b741174728990a0be292560
+	source_x86_64 = typist-x86_64-2.0.1.tgz::https://github.com/chuma-beep/typist/releases/download/v2.0.1/typist_2.0.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = be65f82e6e7c9ab0e0c161fe9bc397195a1d372ff7bf795b0834cdb6d5de9408
+	source_aarch64 = typist-aarch64-2.0.1.tgz::https://github.com/chuma-beep/typist/releases/download/v2.0.1/typist_2.0.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 50225d95cf1cd0ad2f2b23e23aada0b4c4a99b07af2a7a85d3296920e29152e8
 
 pkgname = typist-bin
