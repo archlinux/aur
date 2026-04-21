@@ -1,6 +1,6 @@
 pkgbase = muzlib-desktop
 	pkgdesc = Music Downloader
-	pkgver = 0.1
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/ezvezdov/muzlib-desktop
 	arch = any

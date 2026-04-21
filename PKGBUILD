@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=muzlib-desktop
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Music Downloader"
 arch=('any')
