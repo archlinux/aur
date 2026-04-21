@@ -10,6 +10,7 @@ arch=(x86_64)
 url="https://github.com/micheal65536/VapoR"
 license=('BSD-2-Clause')
 makedepends=('git' 'make' 'cmake')
+depends=('openxr' 'nlohmann-json' 'vulkan-headers')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=('git+https://github.com/micheal65536/VapoR')
