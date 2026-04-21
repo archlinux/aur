@@ -1,98 +1,98 @@
-# Maintainer: Evert
+# Maintainer: Evert Vorster <evorster@gmail.com>
 # Contributor: Emir-Eins <emir-eins@outlook.com>
 # Contributor: Wuxxin <wuxxin@gmail.com>
 
-
 pkgname=openclaw
 pkgver=2026.4.15
-pkgrel=2
-pkgdesc="Personal AI assistant that runs on your own devices"
-arch=('x86_64')
-url="https://github.com/openclaw/openclaw"
+pkgrel=4
+pkgdesc='Personal AI assistant / multi-channel gateway'
+arch=('x86_64' 'aarch64')
+url='https://github.com/openclaw/openclaw'
 license=('MIT')
-depends=('nodejs>=22' 'bubblewrap')
-makedepends=('bun' 'pnpm' 'npm' 'python')
-optdepends=('bubblewrap: for experimental additional sandboxed execution')
-conflicts=('openclaw-git')
-source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/openclaw/openclaw/archive/refs/tags/v$pkgver.tar.gz"
-    'openclaw-bwrap'
-    'openclaw-agent-bwrap'
-    'openclaw-bwrap-install-as-systemd-user-service'
-    'openclaw-patch.sh'
-    'openclaw.install'
-    'README.md'
-)
+depends=('nodejs>=22')
+makedepends=('pnpm')
+source=("https://github.com/openclaw/openclaw/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('920d8e0e3c4d9c2d2d9a184c82d98a833f308cdd56a4fd282cec918466b4efe3')
 
-install=openclaw.install
-sha256sums=('920d8e0e3c4d9c2d2d9a184c82d98a833f308cdd56a4fd282cec918466b4efe3'
-            '28568550c4674efc8b90a9b4ea5cf9dc024770275c089499a5cc5d7064d1bba8'
-            '44b23035089628327dbb05b1aa7a6daf09f21b82c0172ca59ed4576d3aa7b9a5'
-            '34fa95679d51f4d5be120e98714f8b580689e57bef6eb031dcf35c0b26948e7d'
-            '2c2ddb5d0187435f14fcb19aa908bb60500f17344eca8c16c8cc69b281f0b2ab'
-            '908569172f29dcc788eb4d98a5fcff89ddaee9d4f656a1abcd59456d2e52bd9e'
-            '817f2a15928521a5e3b9206ee227cbe0b699932fe8f54eaa6a4290c59608dff2')
-
-options=('!strip' '!debug')
+# If upstream version tags ever include extra suffixes, this can help:
+# pkgver() {
+#   cd "$srcdir/$pkgname-$pkgver"
+#   node -p "require('./package.json').version"
+# }
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    bash "$srcdir/openclaw-patch.sh" --patch
+  cd "$srcdir/$pkgname-$pkgver"
 
-    # bun has a bug with pnpm-lock.yaml workspace link migration (bun/issues/23026)
-    # which causes @agentclientprotocol/sdk and other scoped packages to fail with 405.
-    # Use pnpm (the upstream package manager) for dependency installation instead.
-    # Restore pnpm as packageManager field so pnpm install accepts the project.
-    sed -i 's/"packageManager": "bun@[^"]*"/"packageManager": "pnpm@10.30.3"/' package.json
-    # Arch packaging should not fail just because an upstream dependency was published recently.
-    # Disable pnpm's minimumReleaseAge gate for the build environment.
-    sed -i 's/^minimumReleaseAge: .*/minimumReleaseAge: 0/' pnpm-workspace.yaml
-    pnpm install
-    # Install UI dependencies (scripts/ui.js detects bun and uses it if available)
-    bun run ui:install
+  # Upstream keeps pnpm on a hoisted layout via .npmrc.
+  # Leave that in place unless you have a reason to patch it.
+  #
+  # If you ever need to stop a troublesome postinstall during packaging,
+  # this is where you'd patch package.json or environment.
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    bun run build
-    # Build Control UI
-    bun run ui:build
+  cd "$srcdir/$pkgname-$pkgver"
+
+  export CI=1
+  export NODE_ENV=production
+
+  # Install the workspace exactly as locked by upstream.
+  pnpm install --frozen-lockfile
+
+  # Build the runtime bits that upstream's npm package has repeatedly missed.
+  # The README/dev docs explicitly call out ui:build for Control UI, and
+  # gateway:watch is only for development.
+  pnpm ui:build
+
+  # Optional: if you discover the release tarball still needs a full build,
+  # uncomment this and inspect what it produces.
+  # pnpm build
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  # Minimal sanity checks; avoid noisy/full test suites for now.
+  test -f openclaw.mjs
+  test -d dist
+  test -f dist/control-ui/index.html
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
-    # Install the package to /usr/lib/openclaw
-    install -d "$pkgdir/usr/lib/openclaw"
-    cp -r assets dist docs extensions git-hooks node_modules patches scripts skills "$pkgdir/usr/lib/openclaw/"
-    cp openclaw.mjs package.json AGENTS.md "$pkgdir/usr/lib/openclaw/"
+  install -dm755 "$pkgdir/usr/lib/$pkgname"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 
-    rm -f "$pkgdir/usr/lib/openclaw/node_modules/.pnpm-workspace-state-v1.json"
+  # Copy the runtime tree. Start broad, then trim once confirmed.
+  cp -a \
+    openclaw.mjs \
+    package.json \
+    pnpm-workspace.yaml \
+    dist \
+    dist-runtime \
+    assets \
+    skills \
+    scripts \
+    packages \
+    extensions \
+    vendor \
+    node_modules \
+    "$pkgdir/usr/lib/$pkgname/" 2>/dev/null || true
 
-    # Install documentation
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
-    install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README-arch.md"
+  # Docs / license
+  install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 
-    # Install examples
-    for i in docker-compose.yml Dockerfile Dockerfile.sandbox Dockerfile.sandbox-browser; do
-        install -Dm644 "$i" "$pkgdir/usr/share/doc/$pkgname/examples/$i"
-    done
-
-    # Install binary wrapper
-    install -d "$pkgdir/usr/bin"
-    cat >"$pkgdir/usr/bin/openclaw" <<EOF
-#!/bin/bash
-exec node /usr/lib/openclaw/openclaw.mjs "\$@"
+  # Launcher
+  cat > "$pkgdir/usr/bin/openclaw" <<'EOF'
+#!/bin/sh
+exec node /usr/lib/openclaw/openclaw.mjs "$@"
 EOF
-    chmod +x "$pkgdir/usr/bin/openclaw"
+  chmod 755 "$pkgdir/usr/bin/openclaw"
 
-    # Install bwrap scripts
-    install -m755 "$srcdir/openclaw-bwrap" "$pkgdir/usr/bin/openclaw-bwrap"
-    install -m755 "$srcdir/openclaw-agent-bwrap" "$pkgdir/usr/bin/openclaw-agent-bwrap"
-    install -m755 "$srcdir/openclaw-bwrap-install-as-systemd-user-service" \
-        "$pkgdir/usr/bin/openclaw-bwrap-install-as-systemd-user-service"
-
-    # Install license
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # Clean obvious packaging cruft once things are working.
+  rm -rf "$pkgdir/usr/lib/$pkgname/.git" 2>/dev/null || true
 }
