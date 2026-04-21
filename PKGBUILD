@@ -9,7 +9,7 @@
 # Please discuss bugs in AUR comments before reporting them upstream!
 
 pkgname=mullvad-browser-bin
-pkgver=15.0.9
+pkgver=15.0.10
 pkgrel=1
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
@@ -62,11 +62,10 @@ provides=(mullvad-browser=$pkgver mullvad-browser)
 conflicts=(mullvad-browser)
 
 # mullvad.net is blocked or slow in many countries around the world.
-# If you don't want to download from Microsoft, use any of the alternative links.
 source=(
-  https://github.com/mullvad/mullvad-browser/releases/download/$pkgver/mullvad-browser-linux-x86_64-$pkgver.tar.xz{,.asc}
+  #https://github.com/mullvad/mullvad-browser/releases/download/$pkgver/mullvad-browser-linux-x86_64-$pkgver.tar.xz{,.asc}
   #https://cdn.mullvad.net/browser/$pkgver/mullvad-browser-linux-x86_64-$pkgver.tar.xz{,.asc}
-  #https://dist.torproject.org/mullvadbrowser/$pkgver/mullvad-browser-linux-x86_64-$pkgver.tar.xz{,.asc}
+  https://dist.torproject.org/mullvadbrowser/$pkgver/mullvad-browser-linux-x86_64-$pkgver.tar.xz{,.asc}
   #https://tor.eff.org/dist/mullvadbrowser/$pkgver/mullvad-browser-linux-x86_64-$pkgver.tar.xz{,.asc}
 
   mullvad-browser.sh
@@ -77,7 +76,7 @@ validpgpkeys=(
 )
 changelog='mullvad-browser.changelog'
 
-sha256sums=('1a42c2ced7e5c9f445662660f9b663505bcaf62fa36da832cc1ed281b8ca9694'
+sha256sums=('d575163d2ec667e57d887446b8d1a917108fd0828f74c214b77acb2ec0f8c90f'
             'SKIP'
             '9e1a8b33705972bd372be3af3bdf3039297e6d568e53dcf2e3da03f6f2f2aadd'
             '6e218bdd9c442143088dec784d898f2668e36ae55f6cde45038408bc2bd59488')
