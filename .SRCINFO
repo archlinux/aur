@@ -1,6 +1,6 @@
 pkgbase = mermark-editor
 	pkgdesc = Elegant and simple Markdown, Mermaid editor
-	pkgver = 0.1.72
+	pkgver = 0.1.73
 	pkgrel = 1
 	url = https://github.com/Vesperino/MerMarkEditor
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = mermark-editor
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !lto
-	source = mermark-editor-0.1.72.tar.gz::https://github.com/Vesperino/MerMarkEditor/archive/refs/tags/v0.1.72.tar.gz
+	source = mermark-editor-0.1.73.tar.gz::https://github.com/Vesperino/MerMarkEditor/archive/refs/tags/v0.1.73.tar.gz
 	source = mermark-editor.desktop
-	sha256sums = 703e74e86fc6db5e221c8e0c637c43838ef1b34cb8c3ee9194af06dfd8cb50ce
+	sha256sums = 844db4fa16b36f051a8b7423e3e42decc5f7d0da47cbb28cbb8254ec7a8e5f21
 	sha256sums = b53a303d9d44e96a7a371450aef5ee3002bb58abc8faf6346aa926aab2ec41ed
 
 pkgname = mermark-editor
