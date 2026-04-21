@@ -1,0 +1,16 @@
+pkgbase = xonigraf
+	pkgdesc = Graficador matemático ligero para equipos de bajos recursos. Soporta sumatorias, series de Fourier y funciones complejas.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/XONIDU/xonigraf
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-sympy
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = tk
+	source = xonigraf-1.0.0.tar.gz::https://github.com/XONIDU/xonigraf/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = ceea5b18482cbb7f649023300a4911c97acdc833eb7e4946d25d4bf338fce17a
+
+pkgname = xonigraf
