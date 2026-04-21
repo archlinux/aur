@@ -17,7 +17,9 @@ pkgbase = ioruba-desktop-bin
 	depends = libayatana-appindicator
 	source = Ioruba_0.6.1_amd64.AppImage::https://github.com/bernardopg/ioruba/releases/download/v${pkgver}/Ioruba_0.6.1_amd64.AppImage
 	source = ioruba.png::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/apps/desktop/src-tauri/icons/128x128.png
+	source = run-appimage-compat.sh::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/scripts/run-appimage-compat.sh
 	sha256sums = 18cae2d533749d5533300fb8f4e09c02c1d886be3716eeff65307d6ab0ccd183
 	sha256sums = 7aff3ecc3a0cbc1fed8559ae0464d2af330372514c39edfaefd31c2119a2db63
+	sha256sums = 18703c7f9b4f15c5885fc38214060cdf8abeeea7cc84aef51d42376bc34a16f3
 
 pkgname = ioruba-desktop-bin
