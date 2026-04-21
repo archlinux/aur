@@ -3,8 +3,8 @@
 # Maintainer: Guoxin "7Ji" Pu <pugokushin@gmail.com>
 pkgbase=wps-office-365-edu
 pkgname=('wps-office-365-edu' 'wps-office-365-edu-fonts')
-pkgver=12.1.2.23578
-pkgrel=2
+pkgver=12.1.2.25882
+pkgrel=1
 pkgdesc="WPS Office for education."
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://365.wps.cn/edu/home"
@@ -16,12 +16,12 @@ optdepends=(
   'wps-office-365-edu-fonts: FZ TTF fonts provided by wps office 365 edu'
   'cups: for printing support')
 options=(!strip !zipman !debug)
-source_x86_64=("https://pubwps-wps365-obs.wpscdn.cn/download/Linux/365edu/${pkgver}/wps-office_${pkgver}.AK.preload.sw.withsn_amd64.deb")
-source_aarch64=("https://pubwps-wps365-obs.wpscdn.cn/download/Linux/365edu/${pkgver}/wps-office_${pkgver}.AK.preload.sw.withsn_arm64.deb")
-source_loong64=("https://pubwps-wps365-obs.wpscdn.cn/download/Linux/365edu/${pkgver}/wps-office_${pkgver}.AK.preload.sw.withsn_loongarch64.deb")
-sha256sums_x86_64=('e61f94e641d9ae02e1d205ddfd4de150bf4e9ad1e54ede471ff06de273e6ba02')
-sha256sums_aarch64=('42335c0c28badf679cb5624b45151442caedfab184410d2527ab89dc9c69d39c')
-sha256sums_loong64=('0b55c335043e5bff435ce5566383e56892cef352759f26dd5d081f2f14bae5df')
+source_x86_64=("https://edu-download.wpscdn.cn/download/365edu/${pkgver}/wps-office_${pkgver}.AK.preload.sw.withsn.edu_666780_amd64.deb")
+source_aarch64=("https://edu-download.wpscdn.cn/download/365edu/${pkgver}/wps-office_${pkgver}.AK.preload.sw.withsn.edu_666841_arm64.deb")
+source_loong64=("https://edu-download.wpscdn.cn/download/365edu/${pkgver}/wps-office_${pkgver}.AK.preload.sw.withsn.edu_666842_loongarch64.deb")
+sha256sums_x86_64=('da8ca8846b3f0f3bbc0031b15a9a8d3d0efc20f999a67ce006037be3b7d540f4')
+sha256sums_aarch64=('fb9c8284dcc7477666732199ff209dd1fdf5a10da12c331ea93d1398c9f52dfa')
+sha256sums_loong64=('a9d0ceccf087e853bdebae1d60e62acfa08ae806925aa719963d6c7bb5369a3a')
 
 prepare() {
   xz -df data.tar.xz
