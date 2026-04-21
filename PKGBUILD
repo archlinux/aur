@@ -12,27 +12,28 @@ depends=('gcc-libs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
+archive=how-long-to-beat-cli
 
 prepare() {
-    cd "${pkgname}"
+    cd "${archive}"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target host-tuple
 }
 
 build() {
-    cd "${pkgname}"
+    cd "${archive}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
-    cd "${pkgname}"
+    cd "${archive}"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
-    cd "${pkgname}"
+    cd "${archive}"
     install -Dm0755 -t "${pkgdir}/usr/bin" "target/release/${pkgname}"
 }
