@@ -16,7 +16,6 @@ provides=(coreutils)
 conflicts=({uutils-,}coreutils)
 source=("${pkgname%-git}::git+${url}.git"
 "yes-boost.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11458.patch"
-#"head-fuse-fake-stat.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11844.patch"
 "${url}/releases/download/latest-commit/docs.tar.zst")
 b2sums=('SKIP' 'SKIP' 'SKIP')
 pkgver() {
@@ -26,12 +25,11 @@ pkgver() {
 
 # Packaging guideline cause double build.
 export RUSTONIG_DYNAMIC_LIBONIG=1
-export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no --cfg=linux_latest" # rustix optimization is OK for ARch 's lts
+export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no --cfg=linux_latest" # rustix cfg compat with Arch 's lts kernel
 [ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS='-Zbuild-std=std,panic_abort --config=profile.release.panic=\"immediate-abort\" -Zpanic-immediate-abort'
 package(){
   cd ${pkgname%-git}
   git apply -v -p1 ../yes-boost.patch
-  #git apply -v -p1 ../head-fuse-fake-stat.patch
   unset optdepends
   export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release MULTICALL=y LN="ln -f" MANPAGES=n COMPLETIONS=n #LOCALES=n
   make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname" #expand factor unexpand ptx sum shred shuf"
