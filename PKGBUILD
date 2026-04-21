@@ -10,7 +10,7 @@ pkgname='sd-boot'
 pkgdesc='Linux boot tools supporting systemd with kernel-install'
 _gitname='sd-boot'
 
-pkgver="3.6.4"
+pkgver="3.6.5"
 pkgrel=1
 url="https://github.com/gene-git/sd-boot"
 
@@ -29,7 +29,7 @@ depends=(
 )
 optdepends=(
     'edk2-shell: efi-shell (installed into EFI partition'
-    'memtest86_64-git: memtest (installed into EFI partition'   # TBD in AUR
+    # 'memtest86_64-git: memtest (installed into EFI partition'   # TBD in AUR
 )
 
 makedepends=()

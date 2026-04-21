@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 3.6.3 ➙ 3.6.4
+ Tags         : 3.6.3 ➙ 3.6.5
               : 2026-04-21 ➙ 2026-04-21
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-04-21   : 3.6.5
+              - Drop our memtest package from optdepends until we release it
+              - update Changelog
 
  2026-04-21   : 3.6.4
               - PKGBUILD should be arch "any"
