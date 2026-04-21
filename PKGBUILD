@@ -43,16 +43,17 @@ package() {
 
     install -dm755 "${pkgdir}/usr/bin"
 
+    local npm_lib_abs="/usr/lib/node_modules/gsd-pi"
     if [ -f package.json ] && [ -n "$(jq -r '.bin // {}' package.json)" ]; then
         jq -r '.bin | to_entries[] | "\(.key)=\(.value)"' package.json | while read -r line; do
             local bin_name="${line%%=*}"
             local bin_path="${line##*=}"
-            ln -s "${npm_lib}/gsd-pi/${bin_path}" "${pkgdir}/usr/bin/${bin_name}"
+            ln -s "${npm_lib_abs}/${bin_path}" "${pkgdir}/usr/bin/${bin_name}"
         done
     else
         
         if [ -f "bin/gsd" ]; then
-            ln -s "${npm_lib}/gsd-pi/bin/gsd" "${pkgdir}/usr/bin/gsd"
+            ln -s "${npm_lib_abs}/bin/gsd" "${pkgdir}/usr/bin/gsd"
         fi
         
     fi
