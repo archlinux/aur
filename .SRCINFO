@@ -1,6 +1,6 @@
 pkgbase = husky-panel-git
-        pkgdesc = (WIP) Yet another bar for Linux on Wayland session...
-        pkgver = 1.0.0
+        pkgdesc = A monolithic bar for Linux desktop.
+        pkgver = 1.0.1
         pkgrel = 1
         url = https://github.com/MarcusPy827/Husky-Panel
         arch = x86_64
