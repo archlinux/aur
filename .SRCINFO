@@ -1,6 +1,6 @@
 pkgbase = smoothcsv-bin
 	pkgdesc = A powerful and intuitive CSV editor built for real work
-	pkgver = 3.17.1
+	pkgver = 3.18.1
 	pkgrel = 1
 	url = https://smoothcsv.com
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = smoothcsv-bin
 	conflicts = smoothcsv
 	source = LICENSE-SmoothCSV.md::https://raw.githubusercontent.com/kohii/smoothcsv-website/refs/heads/main/src/pages/terms.md
 	sha256sums = 21185cf5a704c8c91420cb9f25baf0937f852e3a40ada396b9f29cedf79bfab0
-	source_x86_64 = SmoothCSV_3.17.1_amd64.deb::https://github.com/kohii/smoothcsv3/releases/download/v3.17.1/SmoothCSV_3.17.1_amd64.deb
-	sha256sums_x86_64 = 009b8a4705269cc4ad4b74618193003330e63cef6c9aa9edae87251652b19d05
-	source_aarch64 = SmoothCSV_3.17.1_arm64.deb::https://github.com/kohii/smoothcsv3/releases/download/v3.17.1/SmoothCSV_3.17.1_arm64.deb
-	sha256sums_aarch64 = 99bcd34e516d388f4d11147225042c3ee4f665a9541e6a3d740d6946d15b9f1e
+	source_x86_64 = SmoothCSV_3.18.1_amd64.deb::https://github.com/kohii/smoothcsv3/releases/download/v3.18.1/SmoothCSV_3.18.1_amd64.deb
+	sha256sums_x86_64 = 412c49287353880800b9feb7281cdb0a9863382ce0a7e22fd5f286a65ee6312b
+	source_aarch64 = SmoothCSV_3.18.1_arm64.deb::https://github.com/kohii/smoothcsv3/releases/download/v3.18.1/SmoothCSV_3.18.1_arm64.deb
+	sha256sums_aarch64 = 383c69add88276319f56e082e5d633f61eb393cbbaa44389c1f203fa69a697b0
 
 pkgname = smoothcsv-bin
