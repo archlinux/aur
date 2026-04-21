@@ -1,10 +1,12 @@
 post_install() {
 	echo 
-	echo ########################################################
+	echo "########################################################"
 	echo "	Please note:"
 	echo "	Server files are now in /srv/lcemp."
 	echo "	To start the server, type systemctl enable --now lcemp-server"
-	echo "	Thanks for using my package!"
-	echo ########################################################
+	echo"	To view console, type screen -r lcemp-server"
+	echo "	Thank you for using my package!"
+	echo "	Thanks Matrix98 for the service file"
+	echo "########################################################"
 	echo
 }

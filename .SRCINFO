@@ -6,6 +6,7 @@ pkgbase = lcemp-server
 	install = lcemp-server.install
 	arch = x86_64
 	license = Other
+	depends = screen
 	source = https://github.com/LCEMP/LCEMP-Server/archive/refs/tags/1.0.1.tar.gz
 	source = lcemp-server.service
 	sha256sums = SKIP

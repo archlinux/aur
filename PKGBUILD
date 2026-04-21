@@ -11,7 +11,7 @@ source=("https://github.com/LCEMP/LCEMP-Server/releases/download/1.0.1/Minecraft
 		"$pkgname.service"
 		)
 sha256sums=('SKIP' 'SKIP')
-depends=('cmake' 'gcc')
+depends=('screen')
 
 package() {
 	install -Dm755 $srcdir/MinecraftDedicatedServer-Linux "$pkgdir/srv/lcemp/MinecraftDedicatedServer-Linux"

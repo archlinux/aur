@@ -1,14 +1,14 @@
 [Unit]
-Description=Dedicated Minecraft Legacy Edition server
+Description=Minecraft Legacy Edition Dedicated Server
 After=network.target
-StartLimitIntervalSec=0
+
 [Service]
-Type=simple
-Restart=always
-RestartSec=1
 User=root
 WorkingDirectory=/srv/lcemp
-ExecStart=/srv/lcemp/MinecraftDedicatedServer-Linux
+ExecStart=/usr/bin/screen -DmS lcemp-server /srv/lcemp/MinecraftDedicatedServer-Linux
+ExecStop=/usr/bin/screen -S lcemp-server -X quit || true
+Restart=always
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
