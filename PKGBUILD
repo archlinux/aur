@@ -5,7 +5,7 @@
 pkgbase=ns3
 pkgname=(ns3 python-ns3 ns3-examples{,-src}) #FIXME: ns3-docs (Doxygen is damn large!)
 pkgver=3.47
-pkgrel=3
+pkgrel=4
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=('x86_64')
 url='https://www.nsnam.org/'
@@ -13,9 +13,11 @@ license=('GPL-2.0-only')
 makedepends=(
     ### Required, according to docs
     python gcc cmake ninja git
-    ### Optional, seems to be build deps
+    ### Additional components
+    # Python bindings
+    python-cppyy
     # Openflow (devel) [FIXME!]
-    # boost
+    boost{,-libs}
     # Eigen3 (vector math lib, header-only)
     eigen3
     # Sphinx documentation
@@ -34,6 +36,15 @@ sha512sums=('41a060b93e88bc389ef1f316b8e4568be2ca559f6a2e4b54bca29b6620e9fbb78e2
 b2sums=('c03622d72afc5043aced4aa8ee39b477a15feb28e45142c6d4117a4ffd94c146d522200ac829831b1e9e89bb8bcd17f2f9e66306ba1a6bae9300b68025648f85'
         '83fbc3bb43094ee08bee4741c8d343de8a3b84a1b3f151d311586b3d3adf3b35142ca6295c7d15901514cafc891a51432e1a5188bef6491465984f587d531edc')
 
+# Installation prefix
+# leaving there for possible /opt
+# packaging on-demand if needed.
+#
+# This might get useful if isolation
+# will be mandatory, eg. to avoid conflicts
+# with Arch packages / software.
+_pkgprefix="/usr"
+
 _pver() {
     python --version | awk '{print $2}' | sed 's/.[^.]*$//'
 }
@@ -51,51 +62,69 @@ prepare() {
 
 # This is taken from mesa package
 _pick() {
-  local p="$1" f d; shift
-  for f; do
-    d="$srcdir/$p/${f#$pkgdir/}"
-    mkdir -p "$(dirname "$d")"
-    mv -v "$f" "$d"
-    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
-  done
+    local p="$1" f d; shift
+    for f; do
+        d="$srcdir/$p/${f#$pkgdir/}"
+        mkdir -p "$(dirname "$d")"
+        mv -v "$f" "$d"
+        rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+    done
 }
 
 build() {
     cd "${srcdir}/ns-${pkgver}"
-    ./ns3 configure \
-        --build-profile=default \
-        --enable-build-version \
-        --enable-dpdk \
-        --enable-eigen \
-        --enable-examples \
-        --enable-tests \
-        --enable-gsl \
-        --enable-gtk \
-        --enable-logs \
-        --enable-monolib \
-        --enable-python-bindings \
-        --prefix=/usr \
-        -- \
-        -DNS3_BINDINGS_INSTALL_DIR="/usr/lib/python$(_pver)/site-packages" \
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    local ns3_options=(
+        ### GENERAL ###
+        --build-profile=default
+        --enable-build-version
+        ### INTEGRATIONS ###
+        --enable-dpdk
+        --enable-eigen
+        --enable-gsl
+        --enable-gtk
+        --enable-logs
+        --enable-monolib
+        --enable-python-bindings
+        ### ADDITIONAL COMPONENTS ###
+        --enable-examples
+        --enable-tests
+        # Prefix for packaged software
+        --prefix="$_pkgprefix"
+        ### COMPONENT DIRS ###
+        --with-click="$_pkgprefix"
+        --with-openflow="$_pkgprefix"
+        ### DISABLED ###
+        --disable-mpi
+        # ^ Incompatible with Python bindings
+        # (I assume Python support is better for average
+        #  use cases)
+    )
+    local cmake_options=(
+        ### ADDITIONAL PATH DEFINITIONS ###
+        # Python bindings installation
+        -DNS3_BINDINGS_INSTALL_DIR="$site_packages"
+        # libexec is lib/[package] per guidelines
         -DCMAKE_INSTALL_LIBEXECDIR="lib/$pkgname/"
-        # FIXME!:
-        #--with-click="$srcdir/click-git/install" \
-        #--with-openflow="$openflow_dir" \
-        # Disabled:
-        #--enable-mpi \ # Incompatible with Python bindings
-                        # (I assume Python is better for consumer-grade
-                        # hardware or development on NS-3)
+        ### INTEGRATIONS INTO ARCHLINUX ###
+        # Allows for linker overrides (via /etc/makepkg.conf)
+        # Otherwise, this enforces MOLD when installed.
+        -DNS3_FAST_LINKERS=OFF
+    )
+
+    ./ns3 configure "${ns3_options[@]}" -- "${cmake_options[@]}"
     ./ns3 build
-    # Build docs (if enabled)
+    # Generate docs (if enabled)
     for has_docs in "${pkgname[@]}"; do if [ "$has_docs" == "ns3-docs" ]; then
         ./ns3 docs doxygen-no-build
         break
     fi; done;
 }
 
-# FIXME: add tests
-# (not the most important thing, but still)
-#check() {}
+check() {
+    cd "${srcdir}/ns-${pkgver}"
+    ./test.py
+}
 
 package_ns3() {
     depends=(
@@ -108,12 +137,12 @@ package_ns3() {
         libxml2
         # 4. GTK configuration store
         gtk3
-        # 5. Openflow [FIXME]
-        # openflow boost-libs
+        # 5. Openflow
+        openflow boost-libs
         # 6. Brite
         brite
-        # 7. Click [FIXME]
-        # clickrouter
+        # 7. Click
+        click-ns3
         # 8. DPDK
         dpdk
         # 9. Netmap emulation FdNetDevice
