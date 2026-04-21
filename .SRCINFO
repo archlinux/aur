@@ -1,6 +1,6 @@
 pkgbase = qt-web-extractor
 	pkgdesc = Qt WebEngine based web content extractor with HTTP server
-	pkgver = r28.20260420.c3876af
+	pkgver = r29.20260421.2d51ee3
 	pkgrel = 1
 	url = https://github.com/wszqkzqk/qt-web-extractor
 	arch = any
