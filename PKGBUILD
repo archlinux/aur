@@ -1,27 +1,26 @@
-# Maintainer: éclairevoyant
+# Maintainer: Gigas002 <gigas002@pm.me>
 
 pkgname=wayshot
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4.6
+pkgrel=1
 pkgdesc="Screenshot tool for wlroots compositors"
 arch=(x86_64)
 url="https://github.com/waycrate/$pkgname"
-license=(BSD)
-depends=(gcc-libs glibc)
-optdepends=('slurp: for area selection')
+license=(BSD-2-Clause)
+depends=(gcc-libs glibc libdrm libjxl mesa wayland)
+optdepends=('slurp: alternative for region selection')
 makedepends=(cargo git scdoc)
-source=("git+$url#commit=d3cdd329fe8263d5eca2ff62635fcb6b6ae57645?signed")
+source=("git+$url#tag=v$pkgver")
 b2sums=('SKIP')
-validpgpkeys=('C18E2B48B8DA9B624C8B72D66DD485917B553B7B') # Shinyzenith#6969 (gpgkeypair) <aakashsensharma@gmail.com>
 
 prepare() {
 	cd $pkgname
 
-	# don't waste time zipping manpages
-	rm -rfv build.rs
+	# build.rs compiles and gzips man pages; we handle scdoc manually
+	rm -f build.rs
 
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked
 }
 
 build() {
@@ -34,7 +33,8 @@ build() {
 package() {
 	cd $pkgname
 	install -Dm755 target/release/$pkgname -t "$pkgdir/usr/bin/"
-	install -Dm644 docs/$pkgname.1.scd "$pkgdir/usr/share/man/man1/$pkgname.1"
-	install -Dm644 docs/$pkgname.7.scd "$pkgdir/usr/share/man/man7/$pkgname.7"
+	scdoc < docs/$pkgname.1.scd | install -Dm644 /dev/stdin "$pkgdir/usr/share/man/man1/$pkgname.1"
+	scdoc < docs/$pkgname.5.scd | install -Dm644 /dev/stdin "$pkgdir/usr/share/man/man5/$pkgname.5"
+	scdoc < docs/$pkgname.7.scd | install -Dm644 /dev/stdin "$pkgdir/usr/share/man/man7/$pkgname.7"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
