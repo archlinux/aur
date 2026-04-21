@@ -5,7 +5,7 @@
 
 _pkgbase=networkmanager-iodine
 pkgname="${_pkgbase}-git"
-pkgver=1.2.0.r72.g53f5069
+pkgver=1.2.0.r80.gce18eb6
 pkgrel=1
 pkgdesc="Iodine plugin for NetworkManager (git build)"
 arch=('i686' 'x86_64')

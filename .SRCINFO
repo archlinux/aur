@@ -1,6 +1,6 @@
 pkgbase = networkmanager-iodine-git
 	pkgdesc = Iodine plugin for NetworkManager (git build)
-	pkgver = 1.2.0.r72.g53f5069
+	pkgver = 1.2.0.r80.gce18eb6
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/network-manager-iodine
 	arch = i686
