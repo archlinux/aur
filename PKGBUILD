@@ -6,11 +6,12 @@ _pkgname=wrkflw
 pkgname=${_pkgname}-bin
 pkgdesc="Validate and execute GitHub Actions workflows locally"
 
-pkgver=0.7.3
+pkgver=0.8.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
+_barch=('x86_64-unknown-linux-gnu' 'aarch64-unknown-linux-gnu')
 
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
@@ -23,10 +24,12 @@ depends=('glibc' 'libgcc' 'openssl')
 
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-linux-${arch[0]}.tar.gz")
-sha256sums=('1d2b423f42a7a805af454c3ca8f81e7997767281dc7c5a58189de8259b4b9257'
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
+sha256sums=('f1d678330592351cff646dc13e31bd303fb682312712058df695b22096827248'
             'e635a29d3556c9b030c44f42c52aee20aa6d22c0e448003baef320e9dc2e1764')
-sha256sums_x86_64=('befb1fdd986e15ae29d17b17c61c5670cd01677ed36c734daa60017811d178ae')
+sha256sums_x86_64=('d7140aa917da5bb13a2f27eab6c592bb019cbe4977e14390d579992087a6a902')
+sha256sums_aarch64=('44b9d02e3624aa808dfab22bbcc12f65564079e30bc5b7d82a3f32e1f0830234')
 
 
 package() {
