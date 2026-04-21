@@ -3,7 +3,7 @@
 # shellcheck disable=2034,2154,2164
 pkgname=gibo-bin
 _pkgname="${pkgname%-bin}"
-pkgver=3.0.20
+pkgver=3.0.21
 pkgrel=1
 pkgdesc='Command-line tool to help you easily access .gitignore boilerplates'
 arch=('x86_64' 'aarch64' 'i686')
