@@ -5,7 +5,7 @@
 
 pkgname=dsview-git
 pkgver=1.3.2.r53.g2e9e2c8
-pkgrel=15
+pkgrel=16
 pkgdesc='GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.'
 arch=($CARCH)
 url='http://www.dreamsourcelab.com/'
@@ -24,6 +24,7 @@ depends=(
   glib2
   glibc
   libgcc
+  libstdc++
   libusb
   ${_qt}-base
   fftw
