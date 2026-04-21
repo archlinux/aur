@@ -9,12 +9,12 @@ _pkgver=1.22.0
 
 # `makepkg` doesn't support hyphens in `$pkgver`, so we'll strip them as per `vercmp`.
 pkgver=${_pkgver//-/}
-pkgrel=1
+pkgrel=2
 pkgdesc="Uncompromising wilderness survival sandbox game (requires paid account)"
 arch=("x86_64")
 url="https://www.vintagestory.at/"
 license=("custom")
-depends=("dotnet-runtime-8.0" "opengl-driver" "openal" "glibc>=2.34")
+depends=("dotnet-runtime-10.0" "opengl-driver" "openal" "glibc>=2.34")
 options=(!strip !debug) # .NET game probably doesn't need symbols stripped or a debug package
 source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_pkgver.tar.gz"
 #       "https://account.vintagestory.at/files/$_release/vs_client_linux-x64_$_pkgver.tar.gz" (alternative source)
