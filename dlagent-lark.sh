@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/sh
 # DLAGENT for https: downloads
 # Fetches the actual download URL from the API response and downloads the file
 
