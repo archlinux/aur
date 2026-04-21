@@ -1,9 +1,9 @@
-# Maintainer:
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Contributor: yidaduizuoye <yidaduizuoye at outlook dot com>
 
 pkgname=v2rayn
 _pkgname=v2rayN
-pkgver=7.18.0
+pkgver=7.20.4
 _bin_commit=c58533aca0c90bd269ac90bd9fdfe03ee4450b30
 pkgrel=1
 pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
@@ -18,7 +18,7 @@ source=("git+${url}#tag=${pkgver}"
         "git+https://github.com/2dust/GlobalHotKeys.git"
         "${pkgname}-bin-${_bin_commit}.zip::${url}-core-bin/raw/${_bin_commit}/v2rayN-linux-64.zip"
         "${pkgname}.sh")
-sha256sums=('a838965a81e6fa11a346c1f47f33001413f2805c9d8ca7b40e275847fdb338bc'
+sha256sums=('0d108da1e86d96202edfca3cd66d646987b7599cee93a9928cd7610b13713719'
             'SKIP'
             'df588b9b80a1888dab6e0376c77938bae223e8e8dc8b23abccec373da3256897'
             '0fd5ed368fc6f51f6a8d2507c7cf598edbede076245d5661b06fe4394a6f1390')

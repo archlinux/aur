@@ -1,6 +1,6 @@
 pkgbase = v2rayn
 	pkgdesc = A GUI client for Windows, Linux and macOS, support Xray and sing-box and others
-	pkgver = 7.18.0
+	pkgver = 7.20.4
 	pkgrel = 1
 	url = https://github.com/2dust/v2rayN
 	install = v2rayn.install
@@ -18,11 +18,11 @@ pkgbase = v2rayn
 	depends = libstdc++
 	depends = xray
 	options = !strip
-	source = git+https://github.com/2dust/v2rayN#tag=7.18.0
+	source = git+https://github.com/2dust/v2rayN#tag=7.20.4
 	source = git+https://github.com/2dust/GlobalHotKeys.git
 	source = v2rayn-bin-c58533aca0c90bd269ac90bd9fdfe03ee4450b30.zip::https://github.com/2dust/v2rayN-core-bin/raw/c58533aca0c90bd269ac90bd9fdfe03ee4450b30/v2rayN-linux-64.zip
 	source = v2rayn.sh
-	sha256sums = a838965a81e6fa11a346c1f47f33001413f2805c9d8ca7b40e275847fdb338bc
+	sha256sums = 0d108da1e86d96202edfca3cd66d646987b7599cee93a9928cd7610b13713719
 	sha256sums = SKIP
 	sha256sums = df588b9b80a1888dab6e0376c77938bae223e8e8dc8b23abccec373da3256897
 	sha256sums = 0fd5ed368fc6f51f6a8d2507c7cf598edbede076245d5661b06fe4394a6f1390
