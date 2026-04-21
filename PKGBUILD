@@ -2,7 +2,7 @@
 # Contributor: Victor Zamanian <victor.zamanian@gmail.com>
 
 pkgname=pomotroid-bin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Simple and visually-pleasing Pomodoro timer"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('MIT')
 source=("https://raw.githubusercontent.com/Splode/pomotroid/v$pkgver/"{LICENSE,README.md})
 source_x86_64=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/Pomotroid_${pkgver}_amd64.deb")
 sha256sums=('26c9bfaefad8fafa79e3f2c403bf75438f099f1847da304f43fda117b5ca6658'
-            'e10982736edcabc88c9245d1a1879ce35a50eb42c8a54b86f4f969ed65dff3d2')
-sha256sums_x86_64=('2239dbd584ce80ecbd321c4e82ed3a31eaac19c23cb2917df57dabf4d99952a8')
+            'faa651e36f833b00d57578345589a2bddd99930ed7a929a2e56f2daabd7e23fc')
+sha256sums_x86_64=('0eacb55dca01c75d3cfe89f0d74553b36c7521c26c842e85eefc4a67534b5f1b')
 
 package() {
     depends=(libwebkit2gtk-4.1.so libcairo.so libsoup-3.0.so libgobject-2.0.so libgtk-3.so libgio-2.0.so libasound.so libgcc_s.so)
