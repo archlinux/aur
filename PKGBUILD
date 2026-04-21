@@ -2,14 +2,14 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=greetd-wlgreet
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Wayland greeter for greetd"
 arch=(x86_64)
 url="https://git.sr.ht/~kennylevinsen/wlgreet"
 license=(MIT)
 source=("https://git.sr.ht/~kennylevinsen/wlgreet/archive/$pkgver.tar.gz")
-sha256sums=('6abc51625cb8a61959a745bfd56c17963ca4ab33cd79dabe8ad0daeb651b8a13')
+sha256sums=('bc36c1b20eacba999ff5af2569c80eb4b93306a6ca967e1d05e1ec6bd705c524')
 makedepends=(rust)
 
 build() {
