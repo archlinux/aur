@@ -10,11 +10,11 @@ epoch=1
 pkgver=3.1.13
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
 _splTokenCliVersion=5.5.0
-pkgrel=4
+pkgrel=5
 url="https://github.com/anza-xyz/agave"
 arch=(x86_64)
 license=(Apache-2.0)
-makedepends=(git protobuf clang llvm curl cargo)
+makedepends=(git protobuf clang llvm curl cargo systemd-libs)
 source=(git+https://github.com/anza-xyz/agave.git#tag=v$pkgver
         git+https://github.com/solana-program/token-2022.git#tag=cli@v$_splTokenCliVersion
         $pkgbase.sysusers
@@ -185,7 +185,7 @@ package_solana-dev() {
   optdepends=('cargo: required for cargo-build-sbf and cargo-test-sbf')
   provides=("solana-dev=${epoch}:${pkgver}-${pkgrel}")
   conflicts=(solana-dev-bin)
-  
+
   echo "Add yourself to the solana group to be able to install"
   echo "dependencies when using cargo-build-bpf"
 
