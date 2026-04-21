@@ -1,19 +1,31 @@
-# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Maintainer: Jai Brown (AUR: JaINTP) <dev [at] jaintp [dot] com>
+# Contributor: Aseem Athale <athaleaseem@gmail.com>
 # Contributor: devome <evinedeng@hotmail.com>
 
 _pkgname=chromadb
 pkgname="python-${_pkgname}"
-pkgver=1.5.2
+pkgver=1.5.8
 pkgrel=1
 pkgdesc="the AI-native open-source embedding database"
-arch=("any")
+arch=("x86_64" "aarch64")
 url="https://github.com/chroma-core/chroma"
 license=('Apache-2.0')
 depends=(python-bcrypt python-build python-chroma-hnswlib python-fastapi python-grpcio python-httpx python-importlib_resources python-jsonschema python-kubernetes python-mmh3 python-numpy python-onnxruntime python-opentelemetry-api python-opentelemetry-exporter-otlp-proto-grpc python-opentelemetry-instrumentation-fastapi python-opentelemetry-sdk python-orjson python-overrides python-posthog python-pybase64 python-pydantic python-pypika python-pyyaml python-rich python-tenacity python-tokenizers python-tqdm python-typer python-typing_extensions uvicorn)
-makedepends=('python-build' 'python-installer' 'python-maturin' 'python-setuptools' 'python-setuptools-scm')
+makedepends=('python-build' 'python-installer' 'python-maturin' 'python-setuptools' 'python-setuptools-scm' 'rust')
 options=(!lto)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('b884f8fadc43ee730e1fed782bb29c52149e82e0d9ffa62d5de3c4fd3c81047e315686f2f2a5bbd5326a93d67b7929a8923e4a419daf9da3dd64e511a73ca210')
+b2sums=('9f5dfaea989128793c4e1928de6a150d70ae55e44403d85448be94ff32f2c962')
+
+prepare() {
+    cd "${_pkgname}-${pkgver}"
+
+    # If the line exists, change the value to 512.
+    # If it doesn't, append it to the top.
+    find rust -name "lib.rs" -exec sed -i \
+        '/recursion_limit/s/"[0-9]*"/"512"/; t; 1i #![recursion_limit = "512"]' {} +
+
+    echo "Normalized recursion limits to 512 across all crates."
+}
 
 build() {
     cd "${_pkgname}-${pkgver}"
