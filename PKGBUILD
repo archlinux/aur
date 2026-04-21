@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="An open-source Chinese font derived from Klee One, modified to conform to GB2312 standard."
 arch=('any')
 url='https://github.com/lxgw/LxgwWenKaiGB'
-license=('OFL')
+license=('OFL-1.1')
 
 source=("$url/releases/download/v$pkgver/lxgw-wenkai-gb-v$pkgver.tar.gz")
 
