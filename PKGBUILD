@@ -43,6 +43,8 @@ prepare() {
     tar xzf "$srcdir"/$_pkgname-$pkgver/src/wsjtx.tgz
 }
 build() {
+    export CFLAGS+=" -Wno-error=format-security"
+    export CXXFLAGS+=" -Wno-error=format-security"
     cd "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/build
 	cmake \
 		-Wno-dev \
