@@ -13,10 +13,9 @@ replaces=('mingw-w64-coin-or-coinasl')
 makedepends=('mingw-w64-configure' 'mingw-w64-wine')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/coin-or-tools/ThirdParty-ASL/archive/releases/$pkgver.tar.gz"
-        https://coin-or-tools.github.io/ThirdParty-ASL/solvers-20241108.tgz)
+         https://coin-or-tools.github.io/ThirdParty-ASL/solvers-64919f75f.tgz)
 sha256sums=('633e9d42b015a5a6a9ae324cac5736af1605fb74eb18299a54912b67d1a69be7'
-            '7ffe7541a5b1a347124f909a0e260c1784f698b78ff24b145d0b11be635292e5')
-
+            'e212926d1d797701adc901ef18eaab6b15edd13f9281dd8c9266e3cdaf8c2dd3')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
