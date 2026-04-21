@@ -158,9 +158,9 @@ package_pi-ext-subagent-git() {
 
 package_pi-ext-session-name-git() {
     _extname="session-name"
-    pkgdesc="PI Extension ${_extname}"
-    conflicts=("pi-ext-${_extname}")
-    provides=("pi-ext-${_extname}")
+    pkgdesc="PI Extension session name"
+    conflicts=("pi-ext-session-name")
+    provides=("pi-ext-session-name")
     install=pi-ext-git.install
 
     cd "$srcdir/$_pkgname"
@@ -170,9 +170,9 @@ package_pi-ext-session-name-git() {
 
 package_pi-ext-bookmark-git() {
     _extname="bookmark"
-    pkgdesc="PI Extension ${_extname}"
-    conflicts=("pi-ext-${_extname}")
-    provides=("pi-ext-${_extname}")
+    pkgdesc="PI Extension bookmark"
+    conflicts=("pi-ext-bookmark")
+    provides=("pi-ext-bookmark")
     install=pi-ext-git.install
 
     cd "$srcdir/$_pkgname"
@@ -182,9 +182,9 @@ package_pi-ext-bookmark-git() {
 
 package_pi-ext-claude-rules-git() {
     _extname="claude-rules"
-    pkgdesc="PI Extension ${_pkgname}"
-    conflicts=("pi-ext-${_pkgname}")
-    provides=("pi-ext-${_pkgname}")
+    pkgdesc="PI Extension claude-rules"
+    conflicts=("pi-ext-claude-rules")
+    provides=("pi-ext-claude-rules")
     install=pi-ext-git.install
 
     cd "$srcdir/$_pkgname"
@@ -195,8 +195,8 @@ package_pi-ext-claude-rules-git() {
 package_pi-ext-send-user-message-git() {
     _extname="send-user-message"
     pkgdesc="PI Extension ${_pkgname}"
-    conflicts=("pi-ext-${_extname}")
-    provides=("pi-ext-${_extname}")
+    conflicts=("pi-ext-send-user-message")
+    provides=("pi-ext-send-user-message")
     install=pi-ext-git.install
 
     cd "$srcdir/$_pkgname"
@@ -219,9 +219,9 @@ package_pi-ext-titlebar-spinner-git() {
 
 package_pi-ext-bash-spawn-hook-git() {
     _extname="bash-spawn-hook"
-    pkgdesc="PI Extension ${_extname}"
-    conflicts=("pi-ext-${_extname}")
-    provides=("pi-ext-${_extname}")
+    pkgdesc="PI Extension bash spawn hook"
+    conflicts=("pi-ext-bash-spawn-hook")
+    provides=("pi-ext-bash-spawn-hook")
     install=pi-ext-git.install
 
     cd "$srcdir/$_pkgname"
@@ -238,7 +238,7 @@ build_pi-ext-sandbox-git() {
 package_pi-ext-sandbox-git() {
     conflicts=('pi-ext-sandbox')
     install=pi-ext-git.install
-    pkgdesc="PI Sanbox extension"
+    pkgdesc="PI sanbox extension"
     provides=('pi-ext-sandbox')
 
     mkdir -p "$pkgdir/usr/share/pi/extensions"

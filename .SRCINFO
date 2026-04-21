@@ -72,28 +72,28 @@ pkgname = pi-ext-subagent-git
 	conflicts = pi-ext-subagent
 
 pkgname = pi-ext-session-name-git
-	pkgdesc = PI Extension
+	pkgdesc = PI Extension session name
 	install = pi-ext-git.install
-	provides = pi-ext-
-	conflicts = pi-ext-
+	provides = pi-ext-session-name
+	conflicts = pi-ext-session-name
 
 pkgname = pi-ext-claude-rules-git
-	pkgdesc = PI Extension pi-coding-agent
+	pkgdesc = PI Extension claude-rules
 	install = pi-ext-git.install
-	provides = pi-ext-pi-coding-agent
-	conflicts = pi-ext-pi-coding-agent
+	provides = pi-ext-claude-rules
+	conflicts = pi-ext-claude-rules
 
 pkgname = pi-ext-send-user-message-git
 	pkgdesc = PI Extension pi-coding-agent
 	install = pi-ext-git.install
-	provides = pi-ext-
-	conflicts = pi-ext-
+	provides = pi-ext-send-user-message
+	conflicts = pi-ext-send-user-message
 
 pkgname = pi-ext-bookmark-git
-	pkgdesc = PI Extension
+	pkgdesc = PI Extension bookmark
 	install = pi-ext-git.install
-	provides = pi-ext-
-	conflicts = pi-ext-
+	provides = pi-ext-bookmark
+	conflicts = pi-ext-bookmark
 
 pkgname = pi-ext-titlebar-spinner-git
 	pkgdesc = PI Extension
@@ -102,7 +102,7 @@ pkgname = pi-ext-titlebar-spinner-git
 	conflicts = pi-ext-
 
 pkgname = pi-ext-bash-spawn-hook-git
-	pkgdesc = PI Extension
+	pkgdesc = PI Extension bash spawn hook
 	install = pi-ext-git.install
-	provides = pi-ext-
-	conflicts = pi-ext-
+	provides = pi-ext-bash-spawn-hook
+	conflicts = pi-ext-bash-spawn-hook
