@@ -1,0 +1,18 @@
+pkgbase = niri-focused-booster
+	pkgdesc = dmem cgroup boosting for focused windows on Niri
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/1Naim/niri-focused-booster
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = dmemcg-booster
+	depends = glibc
+	depends = libgcc
+	depends = niri-git
+	depends = systemd
+	source = niri-focused-booster::git+https://github.com/1Naim/niri-focused-booster.git#tag=0.2.0
+	sha256sums = bac60506c997ecdf0dd9139886b75c3fd5672810ce8f115c0b38cef30d6dfc88
+
+pkgname = niri-focused-booster
