@@ -4,7 +4,7 @@
 
 pkgname=mayaflux-dev-bin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MayaFlux development build - A modern C++ framework for real-time graphics and audio"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MayaFlux/MayaFlux"
@@ -31,8 +31,8 @@ depends=(
     'hidapi'
     'stb'
     'magic_enum'
-    'utf8proc'
-    'freetype'
+    'libutf8proc'
+    'freetype2'
     'fontconfig'
 )
 makedepends=(
