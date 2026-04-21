@@ -1,0 +1,20 @@
+pkgbase = grindx
+	pkgdesc = A distraction free DSA practice in your terminal
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/xghostient/grindx
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-textual
+	provides = grindx
+	conflicts = python-grindx
+	replaces = python-grindx
+	source = https://files.pythonhosted.org/packages/source/g/grindx/grindx-0.2.5.tar.gz
+	sha256sums = 18f34cd9f91c6d242705e888348eec12b5d31cdcee56063b400e9bf2bd3f4d61
+
+pkgname = grindx
