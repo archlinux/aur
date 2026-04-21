@@ -4,7 +4,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mucommander
-pkgver=1.6.0
+pkgver=1.6.1
 _pkgrel=1
 pkgrel=1
 pkgdesc="A lightweight, cross-platform file manager with a dual-pane interface written in Java"
@@ -15,7 +15,7 @@ license=('GPL')
 install=${pkgname}.install
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}-${_pkgrel}/${pkgname}-${pkgver}-${_pkgrel}-${arch[0]}.tgz"
         "${pkgname}.png" "${pkgname}.desktop")
-sha256sums=('9874a59772d2a5a623b390da17682a50101575601e5aed7cb734541c3e6a702c'
+sha256sums=('3202f77b7ed28abfa0e4a0f748915fe88ccdb2de851d89d4700e643b8834e74b'
             '2595fd4f7299750b6762a9d978feebc1e8b375a54b722391e86c972963384f55'
             '96672efdbb19448736c0038a55ed82d1634380499f03293bd5900194301a482f')
 
