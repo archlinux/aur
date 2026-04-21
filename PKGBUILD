@@ -14,7 +14,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd todarchy-linux
-  printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Pull the base version out of src-tauri/Cargo.toml so -git installs
+  # reflect the real semver, not a hardcoded string that drifts. Append
+  # commit count + hash the usual -git way.
+  local base
+  base=$(grep -m1 '^version' src-tauri/Cargo.toml | cut -d'"' -f2)
+  printf "%s.r%s.%s" "$base" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
