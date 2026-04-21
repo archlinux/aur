@@ -1,12 +1,12 @@
 pkgbase = amnesia
 	pkgdesc = ram only secure notepad
-	pkgver = 0.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Laticee/amnesia
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = amnesia-0.1.0.tar.gz::https://github.com/Laticee/amnesia/archive/refs/tags/v.0.1.0.tar.gz
-	sha256sums = b4957d0941dc3da4229b68b9567a4796a0e8fa966bed74089941ac46ca32839b
+	source = amnesia-1.2.0.tar.gz::https://github.com/Laticee/amnesia/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 72a2ae59fcedb565775d2ecccb9eae01d97ee427d6ebd63d9024294ddfc4a255
 
 pkgname = amnesia
