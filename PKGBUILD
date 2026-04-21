@@ -12,11 +12,13 @@ depends=('desktop-file-utils')
 source=($pkgname $pkgname.desktop)
 
 package() {
-  install -Dm755 $pkgname         "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
   desktop-file-install --dir="$pkgdir/usr/share/applications" "$pkgname.desktop"
 }
 
-sha256sums=('9ed93088ea896c0595cf5369b443cb4a386935462e23685d136b241478d64de6'
-            'cca3fa496ae05bdd5f6c4f4dcc5f63724002489e58c14a58ab0455aa45b06d66')
+sha256sums=(
+  '9ed93088ea896c0595cf5369b443cb4a386935462e23685d136b241478d64de6'
+  'cca3fa496ae05bdd5f6c4f4dcc5f63724002489e58c14a58ab0455aa45b06d66'
+)
 
 # vim:set ts=2 sw=2 et:
