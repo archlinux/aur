@@ -10,12 +10,11 @@ license=('OSL-3.0')
 depends=('pam' 'libcap' 'libseccomp' 'yaml-cpp')
 makedepends=('cmake>=3.18' 'clang' 'llvm' 'ninja' 'pkgconf' 'git' 'ccache')
 backup=('etc/pam.d/voix' 'etc/voix.conf')
-source=("git+https://github.com/Veridian-Zenith/Voix.git#tag=v$pkgver")
-sha256sums=('a6ff973e8d8daf3069ad4533c896b4777cdaee075a7dadb5f34d6a4475165787')
-
+source=("https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('e289e6c09b15e72125e3e7b91ddfac1549fd5891933be3ad11a9d93ff38e69c0')
 
 build() {
-    cd "$_pkgname"
+    cd "$_pkgname-$pkgver"
     CC=clang CXX=clang++ cmake -B build -G Ninja -Wno-dev \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -25,7 +24,7 @@ build() {
 }
 
 package() {
-    cd "$_pkgname"
+    cd "$_pkgname-$pkgver"
     DESTDIR="$pkgdir" cmake --install build
 
     # Apply permissions manually for AUR packaging

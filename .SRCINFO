@@ -18,7 +18,7 @@ pkgbase = voix
 	depends = yaml-cpp
 	backup = etc/pam.d/voix
 	backup = etc/voix.conf
-	source = git+https://github.com/Veridian-Zenith/Voix.git#tag=v4.1.2
-	sha256sums = a6ff973e8d8daf3069ad4533c896b4777cdaee075a7dadb5f34d6a4475165787
+	source = https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v4.1.2.tar.gz
+	sha256sums = e289e6c09b15e72125e3e7b91ddfac1549fd5891933be3ad11a9d93ff38e69c0
 
 pkgname = voix
