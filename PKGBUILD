@@ -14,7 +14,7 @@ package() {
   cd "$srcdir"
   
   # Install variable fonts
-  install -Dm644 variable/*.ttf -t "$pkgdir/usr/share/fonts/TTF/"
+  install -Dm644 ./*.ttf -t "$pkgdir/usr/share/fonts/TTF/"
   
   # Install license
   install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
