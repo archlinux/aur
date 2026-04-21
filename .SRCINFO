@@ -1,6 +1,6 @@
 pkgbase = tiger-tui
 	pkgdesc = Timer, alarm and stopwatch TUI for the terminal
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/gaio/tiger
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tiger-tui
 	makedepends = go
 	depends = libnotify
 	depends = pulseaudio-utils
-	source = tiger-tui-0.1.0.tar.gz::https://github.com/gaio/tiger/archive/v0.1.0.tar.gz
-	sha256sums = SKIP
+	source = tiger-tui-0.1.2.tar.gz::https://github.com/gaio/tiger/archive/v0.1.2.tar.gz
+	sha256sums = 771716b677ca2688dd337dbfd26a4ef8f67ef29e2bbf4c4984c32ede0b73edbd
 
 pkgname = tiger-tui

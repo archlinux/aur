@@ -1,6 +1,6 @@
 # Maintainer: gaio <gavasc@proton.me>
 pkgname=tiger-tui
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Timer, alarm and stopwatch TUI for the terminal"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libnotify' 'pulseaudio-utils')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('771716b677ca2688dd337dbfd26a4ef8f67ef29e2bbf4c4984c32ede0b73edbd')
 
 build() {
     cd "tiger-$pkgver"
