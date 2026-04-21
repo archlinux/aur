@@ -1,6 +1,6 @@
 pkgbase = ioruba-desktop-bin
 	pkgdesc = Tactile audio mixer for Arduino-based Linux control (prebuilt AppImage)
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/bernardopg/ioruba
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = ioruba-desktop-bin
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = libayatana-appindicator
-	source = Ioruba_0.6.3_amd64.AppImage::https://github.com/bernardopg/ioruba/releases/download/v0.6.3/Ioruba_0.6.3_amd64.AppImage
-	source = ioruba.png::https://raw.githubusercontent.com/bernardopg/ioruba/v0.6.3/apps/desktop/src-tauri/icons/128x128.png
-	source = run-appimage-compat.sh::https://raw.githubusercontent.com/bernardopg/ioruba/v0.6.3/scripts/run-appimage-compat.sh
-	sha256sums = fedb068068e841697bedbd81b6be8e0ecb3124f4c45e2f14fa911440012ffa2e
+	source = Ioruba_0.6.4_amd64.AppImage::https://github.com/bernardopg/ioruba/releases/download/v0.6.4/Ioruba_0.6.4_amd64.AppImage
+	source = ioruba.png::https://raw.githubusercontent.com/bernardopg/ioruba/v0.6.4/apps/desktop/src-tauri/icons/128x128.png
+	source = run-appimage-compat.sh::https://raw.githubusercontent.com/bernardopg/ioruba/v0.6.4/scripts/run-appimage-compat.sh
+	sha256sums = 8b65f55d9ed00a6a19b100c4c0a29f29dee767e6fa12ceaf105fbe3e224cd836
 	sha256sums = 7aff3ecc3a0cbc1fed8559ae0464d2af330372514c39edfaefd31c2119a2db63
 	sha256sums = 18703c7f9b4f15c5885fc38214060cdf8abeeea7cc84aef51d42376bc34a16f3
 
