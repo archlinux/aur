@@ -1,5 +1,3 @@
-# Maintainer: Islam Nofl <islamnofl.official@gmail.com>
-
 pkgname=mingw-w64-gdb-target
 pkgver=17.1.3+13.3
 pkgrel=1
