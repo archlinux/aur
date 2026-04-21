@@ -11,6 +11,7 @@ url='https://github.com/bokic/ezp2019'
 license=('MIT')
 makedepends=('cmake' 'gcc' 'python' 'git')
 depends=('glibc' 'libusb')
+install=ezp2019.install
 
 source=(
     'ezp2019::git+https://github.com/bokic/ezp2019.git'
@@ -33,4 +34,5 @@ build() {
 package() {
     DESTDIR="$pkgdir" cmake --install "build"
     install -Dm644 "$srcdir/ezp2019/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/ezp2019/99-ezp2019.rules" "$pkgdir/usr/lib/udev/rules.d/99-ezp2019.rules"
 }

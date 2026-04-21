@@ -1,8 +1,9 @@
 pkgbase = ezp2019-git
 	pkgdesc = EZP2019 USB SPI Flash Programmer
-	pkgver = 0.9.0.r1.g5b6b779
+	pkgver = 0.9.0.r5.gb8768dd
 	pkgrel = 1
 	url = https://github.com/bokic/ezp2019
+	install = ezp2019.install
 	arch = x86_64
 	arch = i686
 	arch = pentium4
