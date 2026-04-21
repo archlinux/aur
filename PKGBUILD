@@ -1,13 +1,13 @@
 # Maintainer: Ilyas Turki <turki.ilyass at gmail dot com>
 pkgname=prayer-times
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Islamic Prayer Times Information and Notifications"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Yasso9/prayer-times"
 license=('MIT')
 depends=('dbus' 'openssl')
-makedepends=('rust' 'cargo')
+makedepends=('rust')
 conflicts=('prayer-times-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
