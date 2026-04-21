@@ -10,7 +10,7 @@ pkgname=proton-ge-custom
 url="https://github.com/GloriousEggroll/${pkgname}"
 
 pkgver=GE_Proton10_34
-pkgrel=6
+pkgrel=7
 epoch=1
 
 _pkgver=${pkgver//_/-}

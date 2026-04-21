@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Proton from Valve Software with extra patches from GloriousEggroll
 	pkgver = GE_Proton10_34
-	pkgrel = 6
+	pkgrel = 7
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	install = proton-ge-custom.install
