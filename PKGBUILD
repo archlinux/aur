@@ -19,4 +19,6 @@ prepare() {
 
 package() {
     install -Dm755 "agent-deck" "${pkgdir}/usr/bin/agent-deck"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}"
 }
