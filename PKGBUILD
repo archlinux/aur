@@ -1,4 +1,4 @@
-# Maintainer: litescript <your@email.com>
+# Maintainer: litescript <peter@litescript.net>
 pkgname=omnote-git
 pkgver=1.0.0.r22.g98b27b3
 pkgrel=1
