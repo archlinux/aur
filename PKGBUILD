@@ -1,8 +1,8 @@
 # Maintainer: Kruemmelbande  (kai.scheufen@gmail.com)
 # Contributor: Kruemmelbande
 pkgname=slimevr-beta-bin
-pkgver=19.0.0
-pkgrel=3
+pkgver=20.0.0rc1
+pkgrel=1
 epoch=1
 pkgdesc="SlimeVR FBT software beta version"
 arch=('x86_64')
@@ -16,18 +16,17 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
 source_x86_64=(
-	"SlimeVR-amd64-${pkgver}.deb"::"https://github.com/SlimeVR/SlimeVR-Server/releases/download/v19.0.0/SlimeVR-amd64.deb"
+	"SlimeVR-amd64-${pkgver}.deb"::"https://github.com/SlimeVR/SlimeVR-Server/releases/download/v20.0.0-rc.1/SlimeVR-amd64.deb"
 )
 
 sha512sums_x86_64=(
-	"e6ce69688a16aa261f009bc3059832e6e3df5e64da812af88a23ae5668b9a74bd2132c1afd42c20ecb5c3420cc6b79d02405289dec8cc055fbf32029975d4d5c"
+	"ef194d9c3dc4a043c2120cfa525bfd4510b3b1ade839695896abf256043b1cb96e4d9fcf7e58163997af4c5979f6385b8b62829fd5343bc33918007064f5f08a"
 )
 
 package() {
-
-  tar -xJ -f data.tar.xz -C "${pkgdir}"
-  mkdir -p "${pkgdir}/usr/lib/udev/rules.d/"
-  mv "${pkgdir}/opt/SlimeVR/69-slimevr-devices.rules" "${pkgdir}/usr/lib/udev/rules.d/"
-  install -dm755 "$pkgdir/usr/bin"
-  ln -s "/opt/SlimeVR/slimevr" "${pkgdir}/usr/bin/slimevr"
+	tar -xJ -f data.tar.xz -C "${pkgdir}"
+	mkdir -p "${pkgdir}/usr/lib/udev/rules.d/"
+	mv "${pkgdir}/opt/SlimeVR/69-slimevr-devices.rules" "${pkgdir}/usr/lib/udev/rules.d/"
+	install -dm755 "$pkgdir/usr/bin"
+	ln -s "/opt/SlimeVR/slimevr" "${pkgdir}/usr/bin/slimevr"
 }
