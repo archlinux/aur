@@ -1,18 +1,15 @@
 pkgbase = bros-try
-	pkgdesc = Bros OS Virtual Machine Launcher - GUI ile Bros OS'i dene
+	pkgdesc = Try BROS operating system in QEMU - CLI tool
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://bros.berkeai.com
-	arch = x86_64
-	license = PROPRIETARY
-	depends = python3
-	depends = python
-	depends = tk
+	pkgrel = 2
+	url = https://github.com/berkeai/bros-try
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.8
 	depends = qemu
+	optdepends = qemu-guest-agent
 	provides = bros-try
-	conflicts = bros
-	backup = ~/.config/bros-try/config.json
+	conflicts = bros-try-git
 
 pkgname = bros-try
-	arch = x86_64
-	license = PROPRIETARY

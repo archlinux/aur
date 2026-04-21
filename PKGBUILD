@@ -3,25 +3,25 @@
 
 pkgname=bros-try
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="Bros OS Virtual Machine Launcher - GUI ile Bros OS'i dene"
-arch=('x86_64')
-url="https://bros.berkeai.com"
-license=('PROPRIETARY')
-depends=('python3' 'python tk' 'qemu')
+pkgrel=2
+pkgdesc="Try BROS operating system in QEMU - CLI tool"
+arch=('any')
+url="https://github.com/berkeai/bros-try"
+license=('MIT')
+depends=('python>=3.8' 'qemu')
+makedepends=('python-setuptools')
+optdepends=('qemu-guest-agent')
 provides=('bros-try')
-conflicts=('bros')
-backup=('~/.config/bros-try/config.json')
-source=("$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
-options=('!emptydirs')
+conflicts=('bros-try-git')
 
 package() {
-    install -Dm755 "$srcdir/$pkgname-$pkgver/bros-try-gui" "$pkgdir/usr/bin/bros-try"
-    install -Dm755 "$srcdir/$pkgname-$pkgver/bros-try" "$pkgdir/usr/bin/bros-try-cli"
-    install -Dm644 "$srcdir/$pkgname-$pkgver/bros-try.desktop" "$pkgdir/usr/share/applications/bros-try.desktop"
-    install -Dm644 "$srcdir/$pkgname-$pkgver/bros-try.conf" "$pkgdir/etc/bros-try.conf"
+    cd "$srcdir/$pkgname-$pkgver"
+    
+    python -m compileall bros_try/
+    
+    install -Dm755 "bros_try/cli.py" "$pkgdir/usr/bin/bros-try"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     
     mkdir -p "$pkgdir/usr/share/doc/$pkgname"
-    cp -r "$srcdir/$pkgname-$pkgver/docs/"* "$pkgdir/usr/share/doc/$pkgname/"
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
