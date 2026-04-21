@@ -1,7 +1,7 @@
 pkgbase = xonitube
 	pkgdesc = Reproductor de YouTube desde terminal para equipos de bajos recursos (1GB RAM). Streaming directo o descarga.
 	pkgver = 6.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XONIDU/xonitube
 	arch = any
 	license = MIT

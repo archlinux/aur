@@ -1,7 +1,7 @@
 # Maintainer: Darian Alberto Camacho Salas <xonidu@gmail.com>
 pkgname=xonitube
 pkgver=6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Reproductor de YouTube desde terminal para equipos de bajos recursos (1GB RAM). Streaming directo o descarga."
 arch=('any')
 url="https://github.com/XONIDU/xonitube"
@@ -13,8 +13,14 @@ sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
+  
+  # Instalar start.py como el ejecutable principal (es el lanzador)
   install -Dm755 start.py "$pkgdir/usr/bin/$pkgname"
+  
+  # Instalar xonitube.py en /usr/share/xonitube/ (NO en /usr/bin)
   install -Dm755 xonitube.py "$pkgdir/usr/share/$pkgname/xonitube.py"
+  
+  # Instalar documentación
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 requirements.txt "$pkgdir/usr/share/doc/$pkgname/requirements.txt"
