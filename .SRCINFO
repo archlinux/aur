@@ -1,22 +1,13 @@
 pkgbase = torrential
-	pkgdesc = Simple BitTorrent client for Pantheon
-	pkgver = 2.0.1
-	pkgrel = 2
-	url = https://github.com/davidmhewitt/torrential
+	pkgdesc = A sleek Linux TIDAL client with Hi-Res FLAC support (24-bit/192kHz)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/oliveiraethales/torrential
 	arch = x86_64
-	license = GPL
-	makedepends = meson
-	makedepends = git
-	makedepends = vala
-	makedepends = libtransmission
-	makedepends = dht
-	makedepends = libutp
-	depends = granite
-	depends = libevent
-	depends = libb64
-	depends = miniupnpc
-	depends = libnatpmp
-	source = git+https://github.com/davidmhewitt/torrential.git#commit=d17fc2728056af0e4abdf4d025a7f415900eeedb
-	sha256sums = SKIP
+	license = MIT
+	depends = gtk3
+	depends = mpv
+	source = torrential-0.1.0.tar.gz::https://github.com/oliveiraethales/torrential/releases/download/v0.1.0/torrential-0.1.0-linux-x86_64.tar.gz
+	sha256sums = 39d538ce4af803ecf84c59cfefaa4b818a8dcda8ab074b364e43539f1d668721
 
 pkgname = torrential
