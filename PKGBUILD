@@ -7,10 +7,10 @@
 # Contributor: 
 # 
 pkgname='sd-boot'
-pkgdesc='Linux boot tools supporting systemd with kernel-install'
+pkgdesc='Tools to install linux kernels via kernel-install from systemd'
 _gitname='sd-boot'
 
-pkgver="3.6.5"
+pkgver="3.6.6"
 pkgrel=1
 url="https://github.com/gene-git/sd-boot"
 
