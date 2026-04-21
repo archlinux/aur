@@ -14,7 +14,7 @@ _ffbuild=1
 _l10n_commit=e4f894a4eef5c492c83a860a4ff16c8ed361445c
 _lwrelver=100
 pkgver="${_ffsrcver}.${_lwrelver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -144,6 +144,7 @@ source=(
   "0002-Use-wasm32-wasip1-target.patch"
   "0003-update-rust-bindgen-to-fix-clang22-build.patch.xz"
   "0004-skia-m142-update.patch.xz"
+  "0005-rust1_95compat.patch"
 )
 sha256sums=('ceace80dfd50161e75cffc98faa805449dc1297e96f4bb413d14b48855bb2a27'
             'c0852a261be3be3c83865ec2c2a4aa65dc1ad6db7c70574926b63a8b48312919'
@@ -154,7 +155,8 @@ sha256sums=('ceace80dfd50161e75cffc98faa805449dc1297e96f4bb413d14b48855bb2a27'
             '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
             'baad79216200df4ea05a0e5ca26e0c56c4d4a3cd2149d32f15dc8b7c724376ba'
             '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
-            'e11aba9839824096f07ca5dc17c9fd5bfa09209f8261ab09f7e473f350a82760')
+            'e11aba9839824096f07ca5dc17c9fd5bfa09209f8261ab09f7e473f350a82760'
+            '6476516b1b56fe7b16f53bd4f6d2d77cb297fca0ca895c0354cd07d245d20bdc')
 
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -176,7 +178,7 @@ prepare() {
   mkdir -p "${_lw_srcdir}/lw"
   mv "../firefox-l10n-${_l10n_commit}" "${_lw_srcdir}/lw/l10n"
 
-  export KONFORM_MOZ_BUILD_ID="$(grep '^buildID=' config/linux_info.txt  | cut -d= -f2)"
+  export KONFORM_MOZ_BUILD_ID="$(grep '^buildID=' "$srcdir/src/config/linux_info.txt" | cut -d= -f2)"
   export MOZ_BUILD_DATE="${KONFORM_MOZ_BUILD_ID}"
 
   python3 scripts/librewolf-patches.py "${_ffsrcver}" "${_lwrelver}"
@@ -288,6 +290,7 @@ fi
   patch -B .patchorigin -Np1 -i ../../0002-Use-wasm32-wasip1-target.patch
   xzcat ../../0003-update-rust-bindgen-to-fix-clang22-build.patch.xz | patch -B .patchorigin -Np1
   xzcat ../../0004-skia-m142-update.patch.xz | patch -B .patchorigin -Np1
+  patch -B .patchorigin -Np1 -i ../../0005-rust1_95compat.patch
 }
 
 
@@ -299,7 +302,7 @@ build() {
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   # export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   #hardcoded build timestamp for fingerprint protection defense-in-depth
-  export KONFORM_MOZ_BUILD_ID="$(grep '^buildID=' config/linux_info.txt  | cut -d= -f2)"
+  export KONFORM_MOZ_BUILD_ID="$(grep '^buildID=' "$srcdir/src/config/linux_info.txt" | cut -d= -f2)"
   export MOZ_BUILD_DATE="${KONFORM_MOZ_BUILD_ID}"
   export MOZ_NOSPAM=1
   export MOZ_REQUIRE_SIGNING=
