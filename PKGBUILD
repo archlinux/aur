@@ -1,16 +1,16 @@
 # Maintainer: gaio <gavasc@proton.me>
 pkgname=tiger-tui
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Timer, alarm and stopwatch TUI for the terminal"
 arch=('x86_64' 'aarch64')
-url="https://github.com/gaio/tiger"
+url="https://github.com/gavasc/tiger"
 license=('MIT')
 depends=('libnotify' 'ffmpeg')
 optdepends=('libpulse: fallback audio if ffmpeg is unavailable')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('98a57f7aa9552c90608076d1730f344e9ed2b80bc63b8abddd21b8710313aee6')
+sha256sums=('a2474047e6c11f77c1bde18038eb4bd27b937e50d605153a42107d97a28bf80f')
 
 build() {
     cd "tiger-$pkgver"
