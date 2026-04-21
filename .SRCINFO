@@ -10,7 +10,5 @@ pkgbase = screenconnect-bin
 	depends = xdg-utils
 	options = !strip
 	backup = opt/connectwisecontrol-3093ce05059ac871/ClientLaunchParameters.txt
-	source = ScreenConnect.ClientSetup.sh
-	sha256sums = SKIP
 
 pkgname = screenconnect-bin

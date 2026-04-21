@@ -8,8 +8,8 @@ arch=('x86_64')
 url='https://screenconnect.com'
 license=('custom')
 depends=('java-runtime' 'xdg-utils')
-source=("ScreenConnect.ClientSetup.sh")
-sha256sums=('SKIP')
+source=()
+sha256sums=()
 install=screenconnect-bin.install
 options=('!strip')
 backup=("opt/${_pkgname}/ClientLaunchParameters.txt")
@@ -19,6 +19,9 @@ _first_line_of() {
 }
 
 prepare() {
+    local _file="$startdir/ScreenConnect.ClientSetup.sh"
+    [[ -f "$_file" ]] || { echo "ERROR: Place ScreenConnect.ClientSetup.sh (downloaded from your SC instance) alongside the PKGBUILD before running makepkg."; return 1; }
+    cp "$_file" "$srcdir/ScreenConnect.ClientSetup.sh"
     local _file="$srcdir/ScreenConnect.ClientSetup.sh"
 
     # Extract tar.gz payload from self-extracting script
