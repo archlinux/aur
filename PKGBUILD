@@ -37,6 +37,11 @@ prepare() {
 package() {
     cd "${srcdir}/npm_pkg/package"
 
+    # Install dependencies (skip postinstall scripts)
+    
+    npm install --ignore-scripts
+    
+
     # Install package to staging directory
     local staging_lib="${pkgdir}/usr/lib/node_modules/gsd-pi"
     install -dm755 "${staging_lib}"
