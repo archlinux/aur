@@ -7,6 +7,7 @@ pkgbase = superset-bin
 	license = custom
 	depends = fuse2
 	depends = hicolor-icon-theme
+	provides = superset-desktop
 	conflicts = superset-desktop-bin
 	noextract = superset-1.5.8-x86_64.AppImage
 	options = !strip
