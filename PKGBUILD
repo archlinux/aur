@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio-git
-pkgver=0.5.1.r45.ge725a123
+pkgver=0.5.2.r2.g85efbd07
 pkgrel=1
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
@@ -75,6 +75,7 @@ prepare() {
     rm -rf vcpkg
     cp -a "$srcdir/vcpkg" vcpkg
     rm -f vcpkg/vcpkg  # remove stale binary/symlink so bootstrap can write fresh
+    rm -f vcpkg/.git/refs/remotes/origin/patch-2026-04-02  # remove stale remote-tracking ref (deleted upstream)
     ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
 
     # Skip vcpkg debug builds (we only use release libs);
