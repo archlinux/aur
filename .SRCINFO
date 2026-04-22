@@ -1,6 +1,6 @@
 pkgbase = flightgear
 	pkgdesc = An open-source, multi-platform flight simulator
-	pkgver = 2024.1.4
+	pkgver = 2024.1.5
 	pkgrel = 1
 	url = https://www.flightgear.org
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = flightgear
 	depends = systemd-libs
 	depends = zlib
 	optdepends = flightgear-data: Base data package
-	source = https://gitlab.com/flightgear/flightgear/-/archive/2024.1.4/flightgear-2024.1.4.tar.gz
-	sha256sums = 7a91d585b6150a04423914d71e5094137cc90046c705abc5489441f0c2829a56
+	source = https://gitlab.com/flightgear/flightgear/-/archive/2024.1.5/flightgear-2024.1.5.tar.gz
+	sha256sums = d433fcf51bf05c96d5a6ae54a2161bf0545bbe2f69fd43470be9e479f505c52c
 
 pkgname = flightgear

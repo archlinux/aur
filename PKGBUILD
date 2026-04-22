@@ -8,19 +8,20 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=flightgear
-pkgver=2024.1.4
+pkgver=2024.1.5
 pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=('x86_64')
 url="https://www.flightgear.org"
 license=("GPL-2.0-or-later")
 depends=('dbus'
-         'gcc-libs'
          'glibc'
          'gsm'
          'hicolor-icon-theme'
          'libevent'
+         'libgcc'
          'libglvnd'
+         'libstdc++'
          'libx11'
          'openal'
          'openscenegraph'
@@ -35,7 +36,7 @@ depends=('dbus'
 makedepends=('boost' 'cmake' 'plib' 'qt6-svg' 'qt6-tools')
 optdepends=('flightgear-data: Base data package')
 source=("https://gitlab.com/flightgear/flightgear/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7a91d585b6150a04423914d71e5094137cc90046c705abc5489441f0c2829a56')
+sha256sums=('d433fcf51bf05c96d5a6ae54a2161bf0545bbe2f69fd43470be9e479f505c52c')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
