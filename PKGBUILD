@@ -1,19 +1,24 @@
-# Maintainer: Étienne Deparis <etienne@depar.is>
+# Maintainer: Étienne Pflieger <etienne@pflieger.bzh>
 pkgname=edgar-ssh
 _upname=edgar
-pkgver=5.0
-pkgrel=4
+pkgver=6.0
+pkgrel=1
 pkgdesc="A small utility to maintain SSH config files"
 arch=("any")
 url="https://git.umaneti.net/${_upname}/about/"
 license=("WTFPL")
-depends=("python-yaml")
-makedepends=("python-setuptools")
+depends=("python" "python-yaml")
+makedepends=("python-flit-core" "python-build" "python-installer" "python-wheel")
 source=("https://git.umaneti.net/${_upname}/snapshot/${_upname}-${pkgver}.tar.gz")
-sha256sums=('aa949451143e939d497b198b6064b567a793c2803c2ac25729eb4b03248c4fec')
+sha256sums=('fb5fcc96cc271f0de76df0057f78c065f3520307aad6102fbb5417ae256f081f')
+
+build() {
+    cd "${_upname}-$pkgver"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "${_upname}-$pkgver"
-  python setup.py install --no-compile --root="$pkgdir"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_upname}/LICENSE"
+    cd "${_upname}-$pkgver"
+    python -m installer --destdir="$pkgdir" "dist/${_upname}-${pkgver}-py3-none-any.whl"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_upname}/LICENSE"
 }
