@@ -10,11 +10,15 @@ depends=('jre21-openjdk')
 makedepends=('git' 'maven')
 provides=('jsesh')
 conflicts=('jsesh' 'jsesh-bin')
-source=("jsesh::git+https://github.com/rosmord/jsesh.git")
-source+=('jsesh-launcher')
+source=("jsesh::git+https://github.com/rosmord/jsesh.git"
+        "jsesh-launcher"
+        "jsesh.desktop"
+        "jsesh-icon.png::https://jsesh.qenherkhopeshef.org/user/pages/01.home/logo.png")
 sha256sums=(
   'SKIP'
   'bb9d9ece5cd35b820a2722945fa73e3d9a1e88f34f7e30f778bcdb4b023ac633'
+  'SKIP'
+  'SKIP'
 )
 
 pkgver() {
@@ -53,4 +57,7 @@ package() {
   install -Dm755 "${srcdir}/jsesh-launcher" "${pkgdir}/usr/bin/jsesh"
   install -Dm644 "jsesh-installer/src/binary/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
   install -Dm644 "jsesh-installer/src/binary/FONT-LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/FONT-LICENSE.md"
+  install -Dm644 "${srcdir}/jsesh.desktop" "${pkgdir}/usr/share/applications/jsesh.desktop"
+  install -Dm644 "${srcdir}/jsesh-icon.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/jsesh.png"
+  install -Dm644 "${srcdir}/jsesh-icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/jsesh.png"
 }

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=JSesh
+Comment=Hieroglyphic text editor
+Exec=/usr/bin/jsesh %F
+Icon=jsesh
+Terminal=false
+Categories=Office;Science;Education;
+Keywords=hieroglyph;egyptian;text;editor;ancient
+StartupNotify=true

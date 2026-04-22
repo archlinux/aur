@@ -14,7 +14,11 @@ pkgbase = jsesh-git
 	conflicts = jsesh-bin
 	source = jsesh::git+https://github.com/rosmord/jsesh.git
 	source = jsesh-launcher
+	source = jsesh.desktop
+	source = jsesh-icon.png::https://jsesh.qenherkhopeshef.org/user/pages/01.home/logo.png
 	sha256sums = SKIP
 	sha256sums = bb9d9ece5cd35b820a2722945fa73e3d9a1e88f34f7e30f778bcdb4b023ac633
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = jsesh-git
