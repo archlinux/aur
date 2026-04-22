@@ -3,9 +3,9 @@
 # Contributor: Julie Shapiro <jshapiro at nvidia dot com>
 
 pkgname=p4v
-_version=2025.4
-pkgver=2025.4.2886649
-pkgrel=2
+_version=2026.1
+pkgver=2026.1.2913202
+pkgrel=1
 pkgdesc="Perforce Helix Visual Client"
 arch=('x86_64')
 url="https://www.perforce.com"
@@ -26,7 +26,7 @@ sha256sums=('e2c5380997980f12ece4a92d558fc681deacfaa9273838e67be1a4298a99f032'
             'fda6ab6585ba26625879b104c2c99645915055bd752d5ba574c5c83b7f8b230c'
             '5b07d4373062825e463580bfec18db7346b457dc2a86678e3dfed84c7cbd3299'
             'c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32'
-            'e469c5ca51028d2462ffb1439231241528682321fa2c1143571dc8a7557f8ac0')
+            'f3d5f3f5dc4078b18e3abf742b409d9718eb7c87fdbd49b2655dedcd6b2959d4')
 
 # Perforce Software (Package Signing) <support+packaging@perforce.com>
 # validpgpkeys=('7123CB760FF18869'

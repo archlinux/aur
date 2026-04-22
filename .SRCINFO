@@ -1,7 +1,7 @@
 pkgbase = p4v
 	pkgdesc = Perforce Helix Visual Client
-	pkgver = 2025.4.2886649
-	pkgrel = 2
+	pkgver = 2026.1.2913202
+	pkgrel = 1
 	url = https://www.perforce.com
 	arch = x86_64
 	license = custom:p4v
@@ -12,11 +12,11 @@ pkgbase = p4v
 	source = p4admin.desktop
 	source = p4merge.desktop
 	source = LICENSE
-	source = 20260323-p4v-2025.4.2886649.tgz::https://www.perforce.com/downloads/perforce/r25.4/bin.linux26x86_64/p4v.tgz
+	source = 20260422-p4v-2026.1.2913202.tgz::https://www.perforce.com/downloads/perforce/r26.1/bin.linux26x86_64/p4v.tgz
 	sha256sums = e2c5380997980f12ece4a92d558fc681deacfaa9273838e67be1a4298a99f032
 	sha256sums = fda6ab6585ba26625879b104c2c99645915055bd752d5ba574c5c83b7f8b230c
 	sha256sums = 5b07d4373062825e463580bfec18db7346b457dc2a86678e3dfed84c7cbd3299
 	sha256sums = c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32
-	sha256sums = e469c5ca51028d2462ffb1439231241528682321fa2c1143571dc8a7557f8ac0
+	sha256sums = f3d5f3f5dc4078b18e3abf742b409d9718eb7c87fdbd49b2655dedcd6b2959d4
 
 pkgname = p4v
