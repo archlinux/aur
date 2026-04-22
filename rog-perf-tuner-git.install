@@ -8,6 +8,15 @@ run_as_user() {
     fi
 }
 
+print_bin_info(){
+    echo ""
+    echo "After first run, many useful scripts will be created in:"
+    echo "    ~/.RogPerfTuner/bin"
+    echo ""
+    echo "You can use them to bind keyboards shortcuts to actions"
+    echo ""
+}
+
 reload_udev_rules() {
     echo "  🔄 Reloading udev rules..."
     udevadm control --reload-rules
@@ -20,11 +29,13 @@ stop_application() {
 }
 
 post_install() {
+    print_bin_info
     echo "📦 Performing post install actions..."
     reload_udev_rules
 }
 
 post_upgrade() {
+    print_bin_info
     echo "🔼 Performing post update actions..."
     reload_udev_rules
 }
