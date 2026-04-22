@@ -1,6 +1,6 @@
 pkgbase = fluxer-world-bin
 	pkgdesc = Fluxer World desktop client — open-source chat, voice, and community platform
-	pkgver = 1.0.58
+	pkgver = 1.0.59
 	pkgrel = 1
 	url = https://fluxer.world
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = fluxer-world-bin
 	conflicts = fluxer-world
 	options = !strip
 	options = !debug
-	source = fluxer-world-1.0.58-linux-x64.tar.gz::https://github.com/fluxerworld/fluxerworld/releases/download/v1.0.58/Fluxer-World-1.0.58-linux-x64.tar.gz
-	sha256sums = 3dc89799a42107d32977a1e3c8d49f2ac95397039bbd594dfcc9d2a79e0900ea
+	source = fluxer-world-1.0.59-linux-x64.tar.gz::https://github.com/fluxerworld/fluxerworld/releases/download/v1.0.59/Fluxer-World-1.0.59-linux-x64.tar.gz
+	sha256sums = 1a74c04b89a209d69501a9d27bc9ef28f749e7367889dd50aaa391176aa674fc
 
 pkgname = fluxer-world-bin
