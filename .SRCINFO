@@ -1,6 +1,6 @@
 pkgbase = manager-bin
 	pkgdesc = Productivity companion — day counter, focus timer, schedule, journal
-	pkgver = 1.7.3
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://github.com/JAuxance/manager-releases
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = manager-bin
 	conflicts = manager
 	options = !strip
 	options = !debug
-	source = manager-bin-1.7.3.deb::https://github.com/JAuxance/manager-releases/releases/download/v1.7.3/Manager_1.7.3_amd64.deb
-	sha256sums = d522ec1714f878cdaece6e6198c9cd62bf9654f03bd287eb07c0ad0849b06c5d
+	source = manager-bin-1.7.4.deb::https://github.com/JAuxance/manager-releases/releases/download/v1.7.4/Manager_1.7.4_amd64.deb
+	sha256sums = 68599c79855b262c3f5be24383f3a8f16dee77803109e1cfd85a43bc4d7af647
 
 pkgname = manager-bin
