@@ -1,5 +1,5 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Gemini 3.1 Pro.
+# Created with assistance from Codex (GPT-5.3).
 
 pkgname=sbv
 pkgver=0.1.10
