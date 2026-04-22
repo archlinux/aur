@@ -1,0 +1,27 @@
+post_install() {
+    systemctl --user daemon-reload >/dev/null 2>&1 || true
+    echo "Meter installed."
+    echo ""
+    echo "To start now and enable on boot:"
+    echo "  systemctl --user enable --now meter"
+    echo ""
+    echo "Or use: meter --autostart"
+}
+
+pre_remove() {
+    systemctl --user stop meter >/dev/null 2>&1 || true
+    systemctl --user disable meter >/dev/null 2>&1 || true
+}
+
+post_remove() {
+    systemctl --user daemon-reload >/dev/null 2>&1 || true
+    echo "Meter removed."
+    echo ""
+    echo "User data NOT removed (configs, logs, cache):"
+    echo "  ~/.config/meter/"
+    echo "  ~/.cache/meter/"
+    echo "  ~/.local/share/meter/"
+    echo ""
+    echo "To remove user data manually:"
+    echo "  rm -rf ~/.config/meter ~/.cache/meter ~/.local/share/meter"
+}
