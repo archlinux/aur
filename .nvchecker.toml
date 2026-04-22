@@ -1,0 +1,4 @@
+[claude-code-bin]
+source = "regex"
+url = "https://downloads.claude.ai/claude-code-releases/latest"
+regex = ".+"

@@ -7,59 +7,42 @@ pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/anthropics/claude-code"
 license=('LicenseRef-claude-code')
-
-depends=('glibc' 'sh')
-options=('!strip' '!debug')
+depends=('bash')
+# Binary is a self-contained Bun executable with embedded JS/resources - stripping breaks it
+options=('!strip')
 
 provides=("claude-code=${pkgver}")
 conflicts=('claude-code')
 
 optdepends=(
-  'git: allow Claude to use git'
-  'github-cli: interact with GitHub'
-  'glab: interact with GitLab'
-  'ripgrep: enhanced file search'
-  'tmux: agent team split panes'
-  'bubblewrap: sandboxing'
-  'socat: sandboxing'
+	'git: allow Claude to use git'
+	'github-cli: interact with GitHub'
+	'glab: interact with GitLab'
+	'ripgrep: enhanced file search'
+	'tmux: agent team split panes'
+	'bubblewrap: sandboxing'
+	'socat: sandboxing'
 )
 
-_gcs_bucket="https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases"
+source=("cc-legal::https://code.claude.com/docs/en/legal-and-compliance.md")
+source_x86_64=("claude-${pkgver}-x86_64::https://downloads.claude.ai/claude-code-releases/${pkgver}/linux-x64/claude")
+source_aarch64=("claude-${pkgver}-aarch64::https://downloads.claude.ai/claude-code-releases/${pkgver}/linux-arm64/claude")
 
-source=("claude-code-LICENSE-${pkgver}.md::https://raw.githubusercontent.com/anthropics/claude-code/v${pkgver}/LICENSE.md")
-source_x86_64=("claude-${pkgver}-linux-x64::${_gcs_bucket}/${pkgver}/linux-x64/claude")
-source_aarch64=("claude-${pkgver}-linux-arm64::${_gcs_bucket}/${pkgver}/linux-arm64/claude")
-
-sha256sums=('728158fd1037143fad6907e8fa34804177e598b7326519503fe83cafdef849e6')
+sha256sums=('SKIP')
 sha256sums_x86_64=('b7246963d9e32ece439c3e1e7885f53773a4820e90a4d2433ef2a413a055a5fe')
 sha256sums_aarch64=('302c9c189552dc261b1c4511d0d8c9147baeaa4bf7e50785873fa1699ee51f22')
 
 package() {
-  local _source_arch
-  case "${CARCH}" in
-    x86_64)
-      _source_arch="linux-x64"
-      ;;
-    aarch64)
-      _source_arch="linux-arm64"
-      ;;
-    *)
-      echo "Unsupported architecture: ${CARCH}" >&2
-      return 1
-      ;;
-  esac
+	install -Dm755 "${srcdir}/claude-${pkgver}-${CARCH}" "${pkgdir}/opt/claude-code/bin/claude"
 
-  install -Dm755 "${srcdir}/claude-${pkgver}-${_source_arch}" \
-    "${pkgdir}/usr/lib/claude-code/claude"
-
-  install -dm755 "${pkgdir}/usr/bin"
-  cat > "${pkgdir}/usr/bin/claude" << 'EOF'
+	# Create wrapper script to disable autoupdater
+	install -dm755 "${pkgdir}/usr/bin"
+	cat > "${pkgdir}/usr/bin/claude" << 'EOF'
 #!/bin/sh
 export DISABLE_AUTOUPDATER=1
-exec /usr/lib/claude-code/claude "$@"
+exec /opt/claude-code/bin/claude "$@"
 EOF
-  chmod 755 "${pkgdir}/usr/bin/claude"
+	chmod 755 "${pkgdir}/usr/bin/claude"
 
-  install -Dm644 "${srcdir}/claude-code-LICENSE-${pkgver}.md" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/cc-legal" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
