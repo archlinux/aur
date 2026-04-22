@@ -1,0 +1,17 @@
+post_install() {
+    systemctl daemon-reload
+    systemctl enable tpm-reenroll.service
+
+    echo ""
+    echo "==> NOTE: Run 'sudo tpm-reenroll-setup' to configure the service."
+    echo "==> The service is enabled but will not run until setup is complete."
+    echo ""
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    systemctl disable tpm-reenroll.service 2>/dev/null
+}
