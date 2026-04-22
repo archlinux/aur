@@ -7,6 +7,7 @@ url="https://github.com/gsd-build/gsd-2"
 license=(MIT)
 makedepends=("npm" "jq" "findutils")
 depends=("nodejs" "npm")
+provides=(gsd gsd-cli)
 _npm_name="@gsd-build/engine-linux-x64-gnu"
 source=("https://registry.npmjs.org/@gsd-build/engine-linux-x64-gnu/-/engine-linux-x64-gnu-2.77.0.tgz")
 sha256sums=('d32097ee9c5e482e8134665fb7113f08d96e7327dab7a5b31979713352eb7619')

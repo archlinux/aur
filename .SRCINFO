@@ -10,6 +10,8 @@ pkgbase = gsd-pi
 	makedepends = findutils
 	depends = nodejs
 	depends = npm
+	provides = gsd
+	provides = gsd-cli
 	source = https://registry.npmjs.org/@gsd-build/engine-linux-x64-gnu/-/engine-linux-x64-gnu-2.77.0.tgz
 	sha256sums = d32097ee9c5e482e8134665fb7113f08d96e7327dab7a5b31979713352eb7619
 
