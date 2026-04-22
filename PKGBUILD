@@ -19,7 +19,7 @@ depends=(
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'libxkbcommon' 'libxkbcommon-x11' 'wayland-protocols' 'nasm' 'yasm')
 # add '!lto' or ffmpeg build fails exact the same way described in this thread
 # https://bbs.archlinux.org/viewtopic.php?id=305489
-options=(!lto)
+options=(!lto !strip !debug)
 source=(
 	"BambuStudio-$_raw_pkgver.tar.gz::https://github.com/bambulab/BambuStudio/archive/refs/tags/v$_raw_pkgver.tar.gz"
 	'BambuStudio.desktop'
