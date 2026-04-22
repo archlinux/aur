@@ -8,6 +8,7 @@ url='https://github.com/nispor/nispor'
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('cargo')
+options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
