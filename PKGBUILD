@@ -4,12 +4,12 @@
 
 pkgname=arx-libertatis
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform port of Arx Fatalis, a first-person role-playing game (executables only)'
 url='https://arx-libertatis.org/'
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('sdl2' 'openal' 'libepoxy')
+depends=('sdl2' 'openal' 'libepoxy' 'freetype2')
 optdepends=('arx-fatalis-data-demo: game data from official freeware demo'
             'arx-fatalis-data-gog: game data from GOG.com installer'
             'arx-fatalis-data-copy: game data from existing Windows/Wine installation'

@@ -1,7 +1,7 @@
 pkgbase = arx-libertatis
 	pkgdesc = Cross-platform port of Arx Fatalis, a first-person role-playing game (executables only)
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://arx-libertatis.org/
 	install = arx-libertatis.install
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = arx-libertatis
 	depends = sdl2
 	depends = openal
 	depends = libepoxy
+	depends = freetype2
 	optdepends = arx-fatalis-data-demo: game data from official freeware demo
 	optdepends = arx-fatalis-data-gog: game data from GOG.com installer
 	optdepends = arx-fatalis-data-copy: game data from existing Windows/Wine installation
