@@ -3,7 +3,7 @@
 
 pkgname=zed-preview
 _pkgname=${pkgname%-preview}
-pkgver=0.233.5
+pkgver=0.234.2
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
@@ -11,21 +11,20 @@ url=https://zed.dev
 _url="https://github.com/zed-industries/$_pkgname"
 license=(GPL-3.0-or-later AGPL-3.0-or-later Apache-2.0)
 depends=(alsa-lib libasound.so
-         curl libcurl.so
+         curl
          fontconfig
-         gcc-libs # libgcc_s.so libstdc++.so
-         glibc # libc.so libm.so
-         # libgit2 libgit2.so
-         # libxau libXau.so
+         glib2 libgio-2.0.so libglib-2.0.so libgobject-2.0.so
+         glibc # libc.so libm.so ld-linux-x86_64.so
+         libgcc libgcc_s.so
+         libstdc++ libstdc++.so
          libxcb # libxcb.so libxcb-xkb.so
-         # libxdmcp libXdmcp.so
-         libxkbcommon # libxkbcommon.so
-         libxkbcommon-x11 # libxkbcommon-x11.so
-         'nodejs>=18'
+         libx11 # libX11-xcb.so
+         libxkbcommon libxkbcommon.so
+         libxkbcommon-x11 libxkbcommon-x11.so
          netcat
+         'nodejs>=18'
          npm
-         openssl libcrypto.so libssl.so
-         sqlite
+         sqlite libsqlite3.so
          vulkan-driver
          vulkan-icd-loader
          vulkan-tools
@@ -42,13 +41,14 @@ makedepends=(cargo
 optdepends=('clang: improved C/C++ language support'
             'eslint: improved Javascript language support'
             'pyright: improved Python language support'
-            'rust-analyzer: improved Rust language support')
+            'rust-analyzer: improved Rust language support'
+            'org.freedesktop.secrets: to keep you logged into your Zed account')
 replaces=(zed-editor-preview)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 _archive="zed-$pkgver-pre"
 source=("$_url/archive/v$pkgver-pre/$_archive.tar.gz")
-sha256sums=('19f6028bffd9d9593388f29cb64e9610089aa966dddce25de951e33864a7cd62')
+sha256sums=('c7836a8989083c8499535421b981986a5ca111fafbdc19db5574214d8c0a9f35')
 
 _binname=zeditor
 _appid=dev.zed.Zed-Preview
@@ -73,6 +73,8 @@ _srcenv() {
 	CFLAGS+=' -ffat-lto-objects'
 	CXXFLAGS+=' -ffat-lto-objects'
 	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+	export ZSTD_SYS_USE_PKG_CONFIG=1
 }
 
 build() {
