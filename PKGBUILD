@@ -32,7 +32,7 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz"
         'byparr.sysusers')
 
 sha256sums=('59e9bbc95bc8e76986f0018a284769f292da30ff589e723e50b7e34cea04f10c'
-            '78559285099a0909d5f52b3a3b2a5e97d755112ba3f55a25881a2fce0efd7946'
+            '270d7b655db58366d6ec533aa7565e8eaf685adbcb7e0bf17548ca505aed2d31'
             '3c332dc86e413980402663b57f35653b34047d9d01d069b35c15cf60e68ee5d2')
 
 package() {

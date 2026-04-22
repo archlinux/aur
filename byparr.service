@@ -1,3 +1,6 @@
+# Be sure to use `systemctl edit byparr` to modify this service with an
+# override.conf because direct changes will be overwritten by package updates.
+
 [Unit]
 Description=Byparr Service
 
@@ -5,6 +8,8 @@ Description=Byparr Service
 User=byparr
 Group=byparr
 Type=simple
+Environment="HOST=0.0.0.0" "PORT=8191"
+#Environment="PROXY_SERVER=" "PROXY_USERNAME=" "PROXY_PASSWORD="
 WorkingDirectory=/usr/lib/byparr
 ExecStart=/usr/bin/uv run main.py
 
