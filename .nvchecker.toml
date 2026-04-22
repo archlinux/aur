@@ -1,0 +1,5 @@
+[yr]
+source = "htmlparser"
+url = "https://git.sr.ht/~timharek/yr"
+xpath = "/html/body/div[3]/div[1]/div[2]/div[1]/div[1]/dl/dt[2]"
+prefix = "v"
