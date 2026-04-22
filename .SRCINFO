@@ -1,0 +1,20 @@
+pkgbase = dshub-bin
+	pkgdesc = Desktop application for monitoring and controlling industrial devices via TCP/UDP
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/skjafar/dshub
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = openssl
+	depends = libsoup3
+	depends = xdg-utils
+	provides = dshub
+	conflicts = dshub
+	source = dshub-0.2.3-linux-x86_64.zip::https://github.com/skjafar/dshub/releases/download/v0.2.3/dshub-linux-x86_64.zip
+	source = dshub-0.2.3.tar.gz::https://github.com/skjafar/dshub/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 5e5e055365abfcf78c0d7657ccff5efeff46b0b29d7a2cb6c5ef9a86434d66d2
+	sha256sums = f55f618cac0e27c4ac1161212213b417cef2ab01de8ec0581c48aa762252b9bb
+
+pkgname = dshub-bin
