@@ -1,5 +1,5 @@
 pkgname=peekoo-bin
-pkgver=0.1.34
+pkgver=0.1.35
 pkgrel=1
 pkgdesc="Desktop AI pet and productivity companion"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   'peekoo.png'
 )
 sha256sums=(
-  '1a38c7449e7cace8ff813414965323cc137c133f16167900b3c1bb03aed55464'
+  '5345a4f5ceb9c683b92083e611e715614aaa7f722578302517b0c1daae6590e5'
   'SKIP'
   'SKIP'
 )
