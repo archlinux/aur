@@ -2,7 +2,7 @@
 
 _reponame=ChatLab
 pkgname="${_reponame,,}"
-pkgver=0.17.5
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Rediscover your social memories with local, AI-powered analysis"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('d5ffe8bb1f48f435f2791a208ee49af54e09dbe5969ec5b915e83fdcd6ef15be'
+sha256sums=('fc2f8c3b499c293b808c83cc823bcb65da44b9a859c5a6efb702b51b00590473'
             '7623be40b49f98301c1b5685f4e911aff107cd20354433214266cd892abea4f5'
             'bbe4c7765ec70b967474e751b1700a4540c5746d032d89f437aadd09e3a33b6b')
 
@@ -43,10 +43,10 @@ package() {
     install -Dm755 "${pkgname}.sh"      "${pkgdir}/usr/bin/${pkgname}"
 
     cd "${_reponame}-${pkgver}"
+    install -Dm644 "README.md"          "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "build/icon.png"     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -dm755 "${pkgdir}/usr/lib"
     cp -r "dist/linux-unpacked/resources" "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
     cd docs
     find . -type f -name "*.md" -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
