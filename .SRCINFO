@@ -1,6 +1,6 @@
 pkgbase = wayland-display-info
 	pkgdesc = Daemon that keeps /var/cache/wayland-display-info/display-info up to date using wlr-output-management
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/acrion/wayland-display-info
 	install = wayland-display-info.install
@@ -12,7 +12,7 @@ pkgbase = wayland-display-info
 	makedepends = wlr-protocols
 	makedepends = git
 	depends = systemd
-	source = wayland-display-info-1.0.6.tar.gz::https://github.com/acrion/wayland-display-info/archive/refs/tags/v1.0.6.tar.gz
+	source = wayland-display-info-1.0.7.tar.gz::https://github.com/acrion/wayland-display-info/archive/refs/tags/v1.0.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = wayland-display-info
