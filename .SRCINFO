@@ -24,11 +24,12 @@ pkgbase = gale-git
 	depends = sqlite
 	depends = hicolor-icon-theme
 	provides = gale
+	conflicts = gale
 	conflicts = gale-bin
 	options = !lto
 	source = git+https://github.com/Kesomannen/gale.git
 	source = Gale.desktop
-	sha256sums = SKIP
-	sha256sums = 169161f9ccc27cd7c0c6ce1ce75d63c15169f91706bd8b8b52d0fe4499ce4f70
+	b2sums = SKIP
+	b2sums = f87bf62232195c4d063ff59c1b6cc7d4c83e129f67ab824a16181d449dbe73cd9a6ebff37e1874a74a5b3f29ae6be7a261592e3e71cec1f3558a447787f9a32e
 
 pkgname = gale-git

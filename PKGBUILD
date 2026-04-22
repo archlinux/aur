@@ -11,7 +11,7 @@ depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2'
 source=('git+https://github.com/Kesomannen/gale.git' 'Gale.desktop')
 b2sums=('SKIP'
     'f87bf62232195c4d063ff59c1b6cc7d4c83e129f67ab824a16181d449dbe73cd9a6ebff37e1874a74a5b3f29ae6be7a261592e3e71cec1f3558a447787f9a32e')
-conflicts=('gale-bin')
+conflicts=('gale' 'gale-bin')
 provides=('gale')
 options=('!lto')
 
