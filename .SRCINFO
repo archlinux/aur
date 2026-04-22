@@ -1,7 +1,7 @@
 pkgbase = echo
 	pkgdesc = Utility to ping websites.
 	pkgver = 3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lo2dev.github.io/portal/echo
 	arch = any
 	license = GPL-3.0-or-later

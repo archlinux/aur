@@ -2,7 +2,7 @@
 pkgname=echo
 _app_id=io.github.lo2dev.Echo
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to ping websites."
 arch=('any')
 url="https://lo2dev.github.io/portal/echo"
@@ -20,13 +20,6 @@ makedepends=(
 source=("Echo-$pkgver.tar.gz::https://github.com/lo2dev/Echo/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('d4730771bae69471b4e02047f5599fb4cb595de4563b3208292acc0de205d437')
 
-prepare() {
-  cd "Echo-$pkgver"
-
-  # conflicts with coreutils
-  sed -i "s/Exec=$pkgname/Exec=${_app_id}/g" data/${_app_id}.desktop.in
-}
-
 build() {
   arch-meson "Echo-$pkgver" build
   meson compile -C build
@@ -40,5 +33,7 @@ package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
 
   # conflicts with coreutils
-  mv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/bin/${_app_id}"
+  mv -v "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/bin/Echo"
+  desktop-file-edit --set-key=Exec --set-value=/usr/bin/Echo \
+    "$pkgdir/usr/share/applications/${_app_id}.desktop"
 }
