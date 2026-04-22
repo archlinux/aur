@@ -1,6 +1,6 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner-git
-pkgver=4.14.9.r6
+pkgver=4.14.9.r7
 pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
@@ -12,7 +12,7 @@ license=(
   'GPL2'
 )
 source=(
-  "git+$url.git#commit=f134e8dd"
+  "git+$url.git#commit=a8d73186"
 )
 sha256sums=(
   'SKIP'
@@ -33,7 +33,6 @@ depends=(
   'libusb'
   'power-profiles-daemon'
   'python'
-  'python-pip'
   'python-yaml'
   'qt6-base'
   'qt6-charts'
@@ -70,16 +69,9 @@ prepare() {
     git submodule init
     git submodule sync
     git submodule update --init --recursive --depth 1
-
-    if [[ ! -d "${HOME}/.local/share/pnpm" ]]; then
-        echo "Setup for pnpm..."
-        SHELL=/bin/bash pnpm setup
-    fi
 }
 
 build() {
-    pip install --break-system-packages asyncio pyyaml
-
     clean_flags() {
         echo "$1" \
         | sed -E 's/(^| )-Wp,-D_FORTIFY_SOURCE=[0-9]+//g' \
