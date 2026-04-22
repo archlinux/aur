@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 3.6.3 ➙ 3.6.6
-              : 2026-04-21 ➙ 2026-04-21
+ Tags         : 3.6.3 ➙ 3.7.0
+              : 2026-04-21 ➙ 2026-04-22
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-04-22   : 3.7.0
+              - Fix typo in print statement
+ 2026-04-21   ⋯
+              - update Changelog
 
  2026-04-21   : 3.6.6
               - PKGBUILD : tweak the description
