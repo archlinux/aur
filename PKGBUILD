@@ -2,7 +2,7 @@
 # Co-Maintainer: Aethar <elliott.ashby88@gmail.com>
 _basename='wl-freeze'
 pkgname="$_basename-git"
-pkgver=2.0.0.r0.36fd50d
+pkgver=2.0.1.r1.53475ba
 pkgrel=1
 pkgdesc="wl-freeze is a community-driven utility to suspend a game process (and other programs) in Wayland compositors."
 arch=('any')
