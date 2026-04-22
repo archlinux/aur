@@ -1,3 +1,103 @@
+# cranko 0.17.3 (2026-04-10)
+
+- In Rust projects, fix rewriting inside `target.'cfg(...)'.dependencies`
+  blocks (#58, #59, @CraftSpider).
+
+The DOI of this release is [10.5281/zenodo.19499931][vdoi].
+
+[vdoi]: https://doi.org/10.5281/zenodo.19499931
+
+
+# cranko 0.17.2 (2026-01-24)
+
+- The new support for generic projects didn't actually fully work. Now it does,
+  hopefully (#57, @pkgw). Avoid using previous releases in the 0.17.x series.
+
+The DOI of this release is [10.5281/zenodo.18358028][vdoi].
+
+[vdoi]: https://doi.org/10.5281/zenodo.18358028
+
+
+# cranko 0.17.1 (2026-01-24)
+
+- Switch to a patched version of the [`ci_info`] crate in an attempt to fix
+  branch detection on GitHub Actions, which is pretty important for Cranko to
+  work at all (#56, @pkgw).
+
+The DOI of this release is [10.5281/zenodo.18357208][vdoi].
+
+[vdoi]: https://doi.org/10.5281/zenodo.18357208
+
+
+# cranko 0.17.0 (2026-01-23)
+
+- Add support for "generic" projects, detected via the existence of a
+  `CrankoProject.toml` file (#54, @pkgw). This is useful if you want to apply
+  versioning and release automation to something that doesn't use a
+  versioning-aware developer tool, like a document. The support here is
+  quite minimal but could potentially become more sophisticated.
+- Various general dependency updates (@pkgw)
+
+The DOI of this release is [10.5281/zenodo.18345170][vdoi].
+
+[vdoi]: https://doi.org/10.5281/zenodo.18345170
+
+
+# cranko 0.16.1 (2025-07-25)
+
+- Fix the downloader script for machines that identify as arm64 (#52, #53, @CraftSpider)
+- Various general dependency updates (@pkgw)
+
+The DOI of this release is [10.5281/zenodo.16416428][vdoi].
+
+[vdoi]: https://doi.org/10.5281/zenodo.16416428
+
+
+# cranko 0.16.0 (2023-12-14)
+
+- Update to work with Zenodo after their [October 2023
+  upgrade](https://blog.zenodo.org/2023/10/19/2023-10-19-upgrade-issues/) (#48,
+  @pkgw). Due to changes in the Zenodo API, the Zenodo integration as
+  implemented in previous versions of Cranko stopped working.
+- General dependency updates, including a fix for a weird class seen only in
+  recent release builds (#49, @pkgw).
+
+The DOI of this release is [10.5281/zenodo.10382647][vdoi].
+
+[vdoi]: https://doi.org/10.5281/zenodo.10382647
+
+
+# cranko 0.15.0 (2022-11-30)
+
+- Add a new `--yarn` option to the `cranko npm install-token` command (#46,
+  @pkgw). This gives a mechanism to set up authentication to publish packages
+  using `yarn npm publish`. The environment variable used to obtain the token is
+  still called `NPM_TOKEN`, and the same value will still work (if you're using
+  the default registries); it's just that a different file needs to be set up.
+
+The DOI of this release is [10.5281/zenodo.7383887][vdoi].
+
+[vdoi]: https://doi.org/10.5281/zenodo.7383887
+
+
+# cranko 0.14.0 (2022-11-30)
+
+- Improve handling of Yarn workspaces (#45, @pkgw). First, pre-1.0 version
+  constraints for internal dependencies now use `>=` rather than `^` as an
+  operator, since semver treats the latter as only matching identical minor
+  versions. Second, add a new configuration option `npm.internal_dep_protocol`,
+  which allows users to specify a Yarn "resolution protocol" to be used with
+  internal dependency version constraints. The useful setting here is
+  `"workspace"`, which forces Yarn to resolve the dependency within a monorepo,
+  which can detect incorrectly-specified internal dependency version constraints.
+- Add an official binary build for the `aarch64-apple-darwin` (Apple Silicon)
+  platform (#44, @pkgw).
+
+The DOI of this release is [10.5281/zenodo.7379147][vdoi].
+
+[vdoi]: https://doi.org/10.5281/zenodo.7379147
+
+
 # cranko 0.13.0 (2022-10-02)
 
 - Add the `--pause` option to `cranko cargo foreach-published` (#43, @pkgw). The
