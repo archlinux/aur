@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-f2c
 	pkgdesc = Fortran to C code translator (mingw-w64)
 	pkgver = 20240130
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.netlib.org/f2c/index.html
 	arch = any
 	license = custom
