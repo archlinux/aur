@@ -1,20 +1,20 @@
 pkgbase = sourcegraph-cli
 	pkgdesc = Command line interface to Sourcegraph
-	pkgver = 4.1.1
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://github.com/sourcegraph/src-cli
 	changelog = CHANGELOG.md
 	arch = x86_64
 	arch = aarch64
-	license = APACHE
+	license = Apache-2.0
 	makedepends = go
 	makedepends = git
 	depends = glibc
 	provides = src-cli
 	conflicts = src-cli
-	source = sourcegraph-cli::git+https://github.com/sourcegraph/src-cli#commit=c967c5e?signed
+	source = sourcegraph-cli::git+https://github.com/sourcegraph/src-cli#commit=cdb00ca?signed
 	validpgpkeys = 4C824CB6E018D60F90418A3CCDDA7B793B3E9A18
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
-	sha256sums = SKIP
+	sha256sums = fbca231de58a9e2ce82be89d918c272e0527ca8fc86adba69410cf13e5ede9ff
 
 pkgname = sourcegraph-cli
