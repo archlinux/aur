@@ -1,6 +1,6 @@
 pkgbase = deadsync-bin
 	pkgdesc = ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync and competitive-level performance - binary release
-	pkgver = 0.3.586
+	pkgver = 0.3.620
 	pkgrel = 1
 	url = https://github.com/pnn64/deadsync
 	install = deadsync-bin.install
@@ -16,9 +16,9 @@ pkgbase = deadsync-bin
 	conflicts = deadsync
 	conflicts = deadsync-git
 	options = !strip
-	source_x86_64 = deadsync-bin-0.3.586-x86_64.tar.gz::https://github.com/pnn64/deadsync/releases/download/v0.3.586/deadsync-v0.3.586-x86_64-linux.tar.gz
-	sha256sums_x86_64 = e23a6e08a003836b1b335ee1e108d9b295f7beae1c750b578ba47787a8acfa44
-	source_aarch64 = deadsync-bin-0.3.586-aarch64.tar.gz::https://github.com/pnn64/deadsync/releases/download/v0.3.586/deadsync-v0.3.586-arm64-linux.tar.gz
-	sha256sums_aarch64 = 69d4691547e7894876d0d27157ae237ce16b4a4524539ba0c2ad588a8797311d
+	source_x86_64 = deadsync-bin-0.3.620-x86_64.tar.gz::https://github.com/pnn64/deadsync/releases/download/v0.3.620/deadsync-v0.3.620-x86_64-linux.tar.gz
+	sha256sums_x86_64 = e304375be3bd4e65f4bd2330dde4410e41735da4611dddcd0b363b16ae151047
+	source_aarch64 = deadsync-bin-0.3.620-aarch64.tar.gz::https://github.com/pnn64/deadsync/releases/download/v0.3.620/deadsync-v0.3.620-arm64-linux.tar.gz
+	sha256sums_aarch64 = f3452b306cff9f304989e2c67d82ecd7c3f4a7f16aa67a310cc2dad74d75590f
 
 pkgname = deadsync-bin
