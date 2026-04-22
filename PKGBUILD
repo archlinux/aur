@@ -2,7 +2,7 @@
 # Contributor: fossdd <fossdd@pwned.life
 # Contributor: Julian <juliannfairfax@protonmail.com>
 pkgname=pipeline-gtk
-pkgver=3.3.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Watch YouTube and PeerTube videos in one place"
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,7 @@ depends=(
   'libclapper-gtk'
   'openssl'
   'sqlite'
+  'yt-dlp'
 )
 makedepends=(
   'blueprint-compiler'
@@ -24,12 +25,12 @@ makedepends=(
 )
 conflicts=('tubefeeder')
 source=("$url/-/archive/$pkgver/pipeline-$pkgver.tar.gz")
-sha256sums=('5fd5b7dd68a278018e89c3a48be76c77b79ae43a8b381bfba61be2bbec4e860f')
+sha256sums=('0c93bf4632d5da4b6f1c6e880461aad81dc1169d5828f915765f13c31bbd0f5a')
 
 prepare() {
   cd pipeline-$pkgver
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc --print host-tuple)"
+  cargo fetch --target host-tuple
 }
 
 build() {
