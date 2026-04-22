@@ -189,7 +189,7 @@ pkgrel=2
 #_stable=${_major}
 _stable=${_major}-${_rcver}
 _srctag=cachyos-${_major}-${_rcver}-${_tagrel}
-_srcname=linux
+_srcname=linux-09d54799a73eb003725e7b8a6b9d80cb7145347c
 pkgdesc='Hardware-specific CachyOS edge-preview kernel for Acer TMP453-M class hardware'
 _kernver="$pkgver-$pkgrel"
 _source_kernelver="7.0.0-rc5"
@@ -203,7 +203,6 @@ makedepends=(
   binutils
   cpio
   gettext
-  git
   glibc
   libelf
   libgcc
@@ -223,7 +222,7 @@ _nv_ver=595.58.03
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
-    "linux::git+https://github.com/CachyOS/linux.git#commit=09d54799a73eb003725e7b8a6b9d80cb7145347c"
+    "${_srcname}.tar.gz::https://codeload.github.com/CachyOS/linux/tar.gz/09d54799a73eb003725e7b8a6b9d80cb7145347c"
     "config")
 
 # LLVM makedepends
@@ -1025,7 +1024,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP')
+sha256sums=('a943aad5800a8e1e01f915432b3ff90e3916c83b3ae18fed84afafba5ba80bf9'
+            'fa32a9d7b1961b366a59d107006a9728da9d89f06e32d1ef51e44fa6b9a55801'
+            '6f45ef083841792e88fbadbfefb0630abd738a131f9782333fbc61f8b6712b4b'
+            'f594e3a0cf55649377e09bc22e6dd5152ecafe6a96460a68036a35bba5ba932e')
