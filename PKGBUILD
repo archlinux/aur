@@ -4,8 +4,8 @@
 
 pkgname=trae-cn-desktop-bin
 _pkgname=trae-cn
-pkgver=2.3.20622
-pkgrel=2
+pkgver=2.3.21082
+pkgrel=1
 pkgdesc="字节跳动推出的AI编程IDE（Trae CN）"
 arch=('x86_64' 'aarch64')
 url="https://www.trae.cn/"
@@ -42,10 +42,10 @@ source_aarch64=(
     "${_pkgname}-startup.sh"
 )
 
-sha256sums_x86_64=('24cf29ab06d5b7c4e07263db6cb1e8ae955cd16e1e7c147a5a7ad490350a2042'
+sha256sums_x86_64=('9b73c5f4682b7a8dc142babc793b74aaab3f0305f655a8f7e406fa028dbd1520'
                    'bb29c808c432f05d1611a4064fa958560f91c64e55aebc03e3dd9d08f9659de6'
                    'cd3a00a606b14d2ab494ad98b1c3926ceaf0c46f226b258f7e79c55b61dbd395')
-sha256sums_aarch64=('24cf29ab06d5b7c4e07263db6cb1e8ae955cd16e1e7c147a5a7ad490350a2042'
+sha256sums_aarch64=('9b73c5f4682b7a8dc142babc793b74aaab3f0305f655a8f7e406fa028dbd1520'
                     'bb29c808c432f05d1611a4064fa958560f91c64e55aebc03e3dd9d08f9659de6'
                     'cd3a00a606b14d2ab494ad98b1c3926ceaf0c46f226b258f7e79c55b61dbd395')
 
