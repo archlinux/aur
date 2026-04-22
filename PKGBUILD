@@ -2,7 +2,7 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=poezio
-pkgver=0.16.1
+pkgver=0.17
 pkgrel=1
 pkgdesc="A full-featured command-line IRC-like XMPP (Jabber) client"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -12,11 +12,12 @@ depends=('python' 'python-slixmpp' 'python-setuptools')
 makedepends=('python-sphinx')
 source=("https://codeberg.org/poezio/poezio/archive/v${pkgver}.tar.gz")
 optdepends=('poezio-omemo: OMEMO plugin'
+            'python-emoji: message reactions'
             'python-aiohttp: file upload'
             'python-pyinotify: Autoaway with screen plugin (also works with tmux)'
             'figlet: ASCII art plugin')
 
-sha256sums=('8059d78f59c356bc7c8221a784035d4b4eb7754166a2d7a1e6159f8f28100b48')
+sha256sums=('fa690ad8158c27839cb881c0b6163e42d2ba5643ba23751c7edf55935e17fa03')
 build() {
     cd "$pkgname"
     rm -f dist/*.whl
