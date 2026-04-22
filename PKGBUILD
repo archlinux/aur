@@ -3,7 +3,7 @@
 # AUR Package Repository: https://github.com/patrickjaja/claude-desktop-bin
 
 pkgname=claude-desktop-bin
-pkgver=1.3561.0
+pkgver=1.3883.0
 pkgrel=1
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
@@ -30,9 +30,9 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'socat: Faster Quick Entry toggle via socket (~2ms vs ~25ms python3 — not required)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-_electron_ver=41.2.1
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.3561.0/claude-desktop-1.3561.0-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
-sha256sums_x86_64=('de761160ba4f333ae5da50b859f3ccd41c1f6bfa25741732c09415e7fe55a0d8' 'SKIP')
+_electron_ver=41.2.2
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.3883.0/claude-desktop-1.3883.0-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
+sha256sums_x86_64=('55a07cb1c68dae59ca7bbdd09d4d10a4d59d8fc5c361122331bddf8a27394d0f' 'SKIP')
 options=('!strip')
 
 package() {
