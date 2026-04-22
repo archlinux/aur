@@ -16,15 +16,12 @@ post_upgrade() {
 }
 
 pre_remove() {
-  echo ""
-  echo "╔══════════════════════════════════════════════════════════╗"
-  echo "║        omarchy-window-restore is being removed!          ║"
-  echo "║                                                          ║"
-  echo "║  First run this to clean up your user config:            ║"
-  echo "║                                                          ║"
-  echo "║    omarchy-uninstall-window-restore                      ║"
-  echo "║                                                          ║"
-  echo "║  (scripts & keybindings won't be removed otherwise)      ║"
-  echo "╚══════════════════════════════════════════════════════════╝"
-  echo ""
+  # Find all users who have the scripts installed and clean up for each
+  for user_home in /home/*/; do
+    user=$(basename "$user_home")
+    if [ -f "$user_home/.local/bin/hypr-close-window" ]; then
+      echo "  → Cleaning up Window Restore for user: $user"
+      runuser -l "$user" -c "omarchy-uninstall-window-restore" || true
+    fi
+  done
 }
