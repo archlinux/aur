@@ -1,7 +1,7 @@
 pkgname=quick-dns-switcher
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="System tray utility to manage and switch DNS settings via NetworkManager"
+pkgdesc="System tray utility to manage DNS settings via NetworkManager"
 arch=('any')
 url="https://github.com/gmm96/Quick-DNS-Switcher"
 license=('GPL3')
@@ -12,39 +12,50 @@ depends=(
     'python-dbus'
 )
 source=(
-  "$pkgname-$pkgver.zip::https://github.com/gmm96/Quick-DNS-Switcher/releases/download/$pkgver/quick-dns-switcher-v$pkgver.zip"
+    "${pkgname}-v${pkgver}.tar.gz::https://github.com/gmm96/Quick-DNS-Switcher/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('1d683be6b6568571fe8e1e0e6a5b777749aefd74b4c134d51307e46131686ff1')
+sha256sums=('f18f437e61b7e5e4ef9c8378e4c2cea6d122ae4e65dd92417ac05b99adbdbcda')
 
-package(){
-    cd "$srcdir/$pkgname-v$pkgver"
+package()
+{
+    APP_NAME="quick-dns-switcher"
+    INSTALL_DIR="${pkgdir}/opt/${APP_NAME}"
+    BIN_DIR="${pkgdir}/usr/bin"
+    BIN_FILE="${BIN_DIR}/${APP_NAME}"
+    DESKTOP_FILE="${pkgdir}/usr/share/applications/${APP_NAME}.desktop"
+    AUTOSTART_FILE="${pkgdir}/etc/xdg/autostart/${APP_NAME}.desktop"
+    ICON_DIR="${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    SHARE_DIR="${pkgdir}/usr/share/${APP_NAME}"
+
+    cd "${srcdir}/Quick-DNS-Switcher-${pkgver}"
 
     # Source
-    install -dm755 "$pkgdir/opt/quick-dns-switcher"
-    cp -r src "$pkgdir/opt/quick-dns-switcher/"
-    install -Dm644 "README.md" "$pkgdir/opt/quick-dns-switcher/README.md"
-    install -Dm644 "LICENSE" "$pkgdir/opt/quick-dns-switcher/LICENSE"
-
-    # Config
-    install -Dm644 "src/resources/config/dns_providers.json" "$pkgdir/usr/share/quick-dns-switcher/dns_providers.json"
+    install -dm755 "${INSTALL_DIR}"
+    cp -r "qds" "${INSTALL_DIR}/"
+    find "${INSTALL_DIR}/qds" -type d -exec chmod 755 {} \;
+    find "${INSTALL_DIR}/qds" -type f -exec chmod 644 {} \;
+    install -Dm755 "${APP_NAME}.sh" "${INSTALL_DIR}/${APP_NAME}.sh"
+    install -Dm644 "README.md" "${INSTALL_DIR}/README.md"
+    install -Dm644 "LICENSE" "${INSTALL_DIR}/LICENSE"
 
     # Bin
-    install -Dm755 "/dev/stdin" "$pkgdir/usr/bin/quick-dns-switcher" \
-<<EOF
-#!/bin/bash
-cd /opt/quick-dns-switcher
-exec python3 -m src.main "$@"
-EOF
+    install -dm755 "${BIN_DIR}"
+    ln -sf "${INSTALL_DIR}/${APP_NAME}.sh" "${BIN_FILE}"
+
+    # Config
+    install -Dm644 "qds/resources/config/dns_providers.json" "${SHARE_DIR}/dns_providers.json"
 
     # App shortcut
-    install -Dm644 "src/resources/assets/QuickDnsSwitcher.desktop" "$pkgdir/usr/share/applications/quick-dns-switcher.desktop"
+    install -Dm644 "qds/resources/assets/${APP_NAME}.desktop" "${DESKTOP_FILE}"
 
     # Autostart
-    install -Dm644 "src/resources/assets/QuickDnsSwitcher.desktop" "$pkgdir/etc/xdg/autostart/quick-dns-switcher.desktop"
+    install -Dm644 "qds/resources/assets/${APP_NAME}.desktop" "${AUTOSTART_FILE}"
 
     # Icons
-    install -dm755 "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-    for icon in src/resources/assets/icons/*.svg; do
-        install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$(basename "$icon")"
+    shopt -s nullglob
+    install -dm755 "${ICON_DIR}"
+    for icon in "qds/resources/assets/icons/"*".svg"; do
+        install -Dm644 "${icon}" "${ICON_DIR}/$(basename "${icon}")"
     done
+    shopt -u nullglob
 }
