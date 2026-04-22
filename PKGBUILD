@@ -32,8 +32,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.zip")
 sha256sums=('8f113f9532cf8e5524679f1f16f47cdef65a2a8e0761bc85eeb3e0a4f59b1b14'
             'c4c73cfe3e7d8e4cae57635b5d7bde8f256d5eb8e5766ce80b22b0cf3de9cca5')
-sha256sums_x86_64=('2717b718ae71a30e30e086701b43fa37f3ef0df99f385f3a24aef3261df7a048')
-sha256sums_aarch64=('3bc3c57188996a3d99ca8ae28c22f59561d7b0889e52b6161b1761a66b127be0')
+sha256sums_x86_64=('3e693f553aff090fad410a65d9ce69443f2656111e8f31658426469cd529ae77')
+sha256sums_aarch64=('d85bba953e3b61ce12e4e7f3ca26d6a3162b0b9be3c59aae587e119c3b7a254c')
 
 case ${CARCH} in
 ${arch[0]})
