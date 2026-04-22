@@ -1,6 +1,6 @@
 pkgbase = tunet-bash
 	pkgdesc = Tsinghua University network authentication utility.
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/adamanteye/tunet-bash
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = tunet-bash
 	depends = openssl
 	depends = jq
 	optdepends = pass: for password storing
-	source = tunet-bash-1.4.0.tar.gz::https://github.com/adamanteye/tunet-bash/archive/refs/tags/1.4.0.tar.gz
-	sha256sums = 42ee546f40f439c1d261f158bc696f78ffc0735689531449b4292822ba9db168
+	source = tunet-bash-1.4.1.tar.gz::https://github.com/adamanteye/tunet-bash/archive/refs/tags/1.4.1.tar.gz
+	sha256sums = d278dcb38990cfa58eb8f24b9784f07d463114da2dfd9aeeb14121e478d7fccf
 
 pkgname = tunet-bash
