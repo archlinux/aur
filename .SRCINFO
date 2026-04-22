@@ -1,6 +1,6 @@
 pkgbase = autokit
 	pkgdesc = Sample-based drum machine plugin with spectral analysis and 2D sample map
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/Hornfisk/autokit
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = autokit
 	depends = mesa
 	depends = alsa-lib
 	provides = autokit
-	source = autokit-0.5.2.tar.gz::https://github.com/Hornfisk/autokit/archive/refs/tags/v0.5.2.tar.gz
+	source = autokit-0.5.3.tar.gz::https://github.com/Hornfisk/autokit/archive/refs/tags/v0.5.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = autokit

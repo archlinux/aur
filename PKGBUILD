@@ -1,6 +1,6 @@
 # Maintainer: Hornfisk <hornfisk@users.noreply.github.com>
 pkgname=autokit
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Sample-based drum machine plugin with spectral analysis and 2D sample map"
 arch=('x86_64')
