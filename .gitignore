@@ -4,3 +4,7 @@
 !.gitignore
 !.pre-commit-config.yaml
 !CHANGELOG.md
+!REUSE.toml
+!LICENSE
+!LICENSES/0BSD.txt
+!LICENSES/EPL-2.0.txt
