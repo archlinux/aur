@@ -8,7 +8,7 @@ pkgbase = omarchy-window-restore-git
 	makedepends = git
 	depends = python
 	depends = hyprland
-	depends = walker-bin
+	depends = walker
 	provides = omarchy-window-restore=r1
 	conflicts = omarchy-window-restore
 	source = omarchy-window-restore-git::git+https://github.com/TimHerb2005/omarchy-window-restore.git

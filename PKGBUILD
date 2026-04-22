@@ -6,7 +6,7 @@ pkgdesc="Save and restore closed windows in Omarchy via keybindings"
 arch=('any')
 url="https://github.com/TimHerb2005/omarchy-window-restore"
 license=('LicenseRef-PolyForm-Noncommercial-1.0.0')
-depends=('python' 'hyprland' 'walker-bin')
+depends=('python' 'hyprland' 'walker')
 makedepends=('git')
 provides=("omarchy-window-restore=${pkgver}")
 conflicts=('omarchy-window-restore')
