@@ -1,45 +1,44 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
-# Contributor: Joao Cordeiro <jlcordeiro at gmail dot com>
+# Maintainer: Joao Cordeiro <jlcordeiro@gmail.com>
 
 pkgname=brogue
-pkgver=1.7.5
+pkgver=1.15.1
 pkgrel=1
-pkgdesc="A 26-level dungeon crawl to the Amulet of Yendor."
-arch=('i686' 'x86_64')
-url="http://sites.google.com/site/broguegame/"
-license=('AGPL3')
-depends=('libtcod-151')
-install=brogue.install
-source=("https://sites.google.com/site/broguegame/brogue-$pkgver-linux-amd64.tbz2"
-        'brogue.sh')
-md5sums=('6bbd27b1a8a21caf40900130b806dedc'
-         '9de3fa32ba7fe562b0224417eaea5c26')
+pkgdesc="Roguelike game (Brogue Community Edition)"
+arch=('x86_64')
+url="https://github.com/tmewett/BrogueCE"
+license=('AGPL-3.0-or-later')
+
+depends=('sdl2' 'sdl2_image')
+makedepends=('make' 'gcc')
+
+conflicts=('brogue-ce-git' 'brogue-ce' 'brogue-ce-curses')
+provides=('brogue-ce')
+options=(!debug)
+
+source=("$pkgname-$pkgver.tar.gz::https://github.com/tmewett/BrogueCE/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2abc186c5327342cb9ad7e45d41096ab10797d5ba76dcac843824ac2a0bfb3ac')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  sed -i '/^CFLAGS=*/a CFLAGS+=-I/usr/include/libtcod-1.5.1' Makefile
-  sed -i 's/-ltcod/-l:libtcod.so.1.5.1 -lSDL -lm/g' Makefile
-
-  # todo, fix sources to use /usr/share directly and remove brogue.sh
-
-  make clean
-  make
+  cd "BrogueCE-$pkgver"
+  make DATADIR="/usr/share/brogue"
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "BrogueCE-$pkgver"
 
-  _dest_dir="$pkgdir/usr/share/$pkgname"
-  mkdir -p "$_dest_dir/fonts"
-  chown -R :games "$_dest_dir"
-  chmod -R g+rw "$_dest_dir"
+install -d "$pkgdir/usr/share/brogue"
+install -Dm755 bin/brogue "$pkgdir/usr/bin/brogue-bin"
+cp -r bin/assets "$pkgdir/usr/share/brogue/"
+install -Dm644 bin/keymap.txt "$pkgdir/usr/share/brogue/keymap.txt"
 
-  install -Dm755 bin/brogue "$_dest_dir"
-  install -Dm755 bin/keymap "$_dest_dir"
-  install -Dm644 bin/fonts/*.png "$_dest_dir"/fonts/ 
-  #install -Dm644 brogue.desktop "$pkgdir/usr/share/applications/brogue.desktop"
-  install -T -D -m 755 "$srcdir/brogue.sh" "$pkgdir/usr/bin/$pkgname"
+  # launcher (XDG-safe)
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/brogue" << 'EOF'
+#!/bin/sh
+
+USERDIR="${XDG_DATA_HOME:-$HOME/.local/share}/brogue"
+mkdir -p "$USERDIR"
+cd "$USERDIR"
+
+exec /usr/bin/brogue-bin "$@"
+EOF
 }
-
-# vim:set ts=2 sw=2 et:
