@@ -1,6 +1,6 @@
 # Maintainer: Matthew Cushing <cushing.matt@gmail.com>
 pkgname=store
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Dotfile symlink manager — one repo, one config, one command per machine'
 arch=('x86_64' 'aarch64')
