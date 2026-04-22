@@ -1,0 +1,17 @@
+pkgbase = omarchy-window-restore-git
+	pkgdesc = Save and restore closed windows in Omarchy via keybindings
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/TimHerb2005/omarchy-window-restore
+	arch = any
+	license = LicenseRef-PolyForm-Noncommercial-1.0.0
+	makedepends = git
+	depends = python
+	depends = hyprland
+	depends = walker-bin
+	provides = omarchy-window-restore=r1
+	conflicts = omarchy-window-restore
+	source = omarchy-window-restore-git::git+https://github.com/TimHerb2005/omarchy-window-restore.git
+	sha256sums = SKIP
+
+pkgname = omarchy-window-restore-git
