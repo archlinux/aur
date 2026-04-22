@@ -1,5 +1,6 @@
-# Maintainer: Konstantin Gizdov <arch at kge dot pw>
-# Co-Maintainer: Baptiste Jonglez <archlinux at bitsofnetworks dot org>
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
+# Contributor: Konstantin Gizdov <arch at kge dot pw>
+# Contributor: Baptiste Jonglez <archlinux at bitsofnetworks dot org>
 # Contributor: Patrice Peterson <runiq at archlinux dot us>
 
 _pkgname=sphinxcontrib-bibtex
