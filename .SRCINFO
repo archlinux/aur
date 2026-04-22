@@ -1,0 +1,18 @@
+pkgbase = meter-tray
+	pkgdesc = System tray app for tracking AI usage limits (Codex, OpenCode)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xddinside/meter
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pystray
+	depends = python-pillow
+	source = meter-tray-0.1.0.tar.gz::https://github.com/xddinside/meter/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = meter-tray
