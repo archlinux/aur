@@ -1,0 +1,23 @@
+pkgbase = recon-git
+	pkgdesc = A Resonite contacts app built with Flutter
+	pkgver = r307.abc1234
+	pkgrel = 1
+	url = https://github.com/RetrowaveHyena/ReCon
+	arch = x86_64
+	license = GPL3
+	makedepends = flutter-bin
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkg-config
+	makedepends = git
+	depends = gtk3
+	depends = mpv
+	depends = libepoxy
+	depends = xdg-user-dirs
+	provides = recon
+	conflicts = recon
+	source = recon-git::git+https://github.com/RetrowaveHyena/ReCon.git
+	sha256sums = SKIP
+
+pkgname = recon-git
