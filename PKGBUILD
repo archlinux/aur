@@ -1,7 +1,7 @@
 # Maintainer: Nelson Duarte <nelsonduarte@github.com>
 pkgname=pdfapps-bin
 _pkgname=pdfapps
-pkgver=1.12.3
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Fast, offline, subscription-free PDF editor (PyInstaller binary)"
 arch=('x86_64')
@@ -33,8 +33,8 @@ source=(
     "$_pkgname.svg::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/pdfapps.svg"
 )
 sha256sums=(
-    '4bcc6009d64590ffb8750f80d1b1cd6e60699e36d62d55654ddc66671b3f52bb'
-    '4bcc6009d64590ffb8750f80d1b1cd6e60699e36d62d55654ddc66671b3f52bb'
+    'cd425aa2aede06d1da581c143a899e7c8e0fbc38dca58c41ce2eedebc4ec3e34'
+    'cd425aa2aede06d1da581c143a899e7c8e0fbc38dca58c41ce2eedebc4ec3e34'
     'SKIP'
     'SKIP'
     'SKIP'
