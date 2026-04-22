@@ -1,4 +1,4 @@
-# Maintainer: Patrick Li <your-email>
+# Maintainer: Patrick Li <aur@patrickli.one>
 pkgname=unbill-cli-bin
 pkgver=0
 pkgrel=1
