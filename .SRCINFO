@@ -1,6 +1,6 @@
 pkgbase = scopebuddy-gui-git
 	pkgdesc = Graphical frontend for ScopeBuddy
-	pkgver = v2.4.0.r1.gc3c9504
+	pkgver = 2.4.0.r1.gc3c9504
 	pkgrel = 1
 	url = https://github.com/rfrench3/scopebuddy-gui
 	arch = any

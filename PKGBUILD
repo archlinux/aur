@@ -3,7 +3,7 @@
 _id=io.github.rfrench3
 _pkgname=scopebuddy-gui
 pkgname=$_pkgname-git
-pkgver=v2.4.0.r1.gc3c9504
+pkgver=2.4.0.r1.gc3c9504
 pkgrel=1
 pkgdesc="Graphical frontend for ScopeBuddy"
 arch=(any)
@@ -23,7 +23,7 @@ source=("$_pkgname::git+https://github.com/rfrench3/scopebuddy-gui")
 b2sums=('SKIP')
 pkgver() {
     cd $_pkgname
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 prepare() {
     sed -i -E "s/scopebuddygui|$_id.$_pkgname/$_pkgname/g" $_pkgname/$_id.$_pkgname.desktop
