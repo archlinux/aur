@@ -3,7 +3,7 @@
 # Contributor: Filip Dvorak <fila@pruda.com>
 
 pkgname=mingw-w64-enca
-pkgver=1.21
+pkgver=1.22
 pkgrel=1
 pkgdesc="Charset analyser and converter (mingw-w64)"
 arch=('any')
@@ -24,7 +24,7 @@ source=("git+https://github.com/nijel/enca#tag=$pkgver"
         'enca-bad-file-descriptor.patch'
         'configure.patch'
         'tools.patch')
-b2sums=('6a6dccb2fbb71329b7460d560a483cc83b3d4b588a5978a66b6d10810d0038d98fd2d73d3b061fc943edc21feab8611a1889723adfe0ae0411ee0a7827b597f3'
+b2sums=('7cb7f391221739d237e9fe19adedf99b741db5b4d1c8740bb6507b3d48823cfee2ebb04755a7db92aeb4d04cecaaf0c39ccd51a098905d5eb4348f3b464cb3ad'
 	'787e33ad3238c6e8bfc550587f243f4d2f81ccda66d83706d60d6488ed3bfb99e9cbf108067c5f1641386f17d07274d7fbea762445f686df56c050f166ac16bd'
         'f08cfbf2f6ba47d9b21dc60e26e3722a80222394471f931667cf0d4991cf0a0bc6f1f204a1dcc8fd794ecaaabcba00dd47f3acc797b0c5dd06711787ab59008f'
         'd04c92221c01b6e341686ec364c9d01fabee4d56b4426fcbad5b7b74ea68e2e3994418fd0aa4251ab761c736faa3f51974579473b26e316cb019f898fa341275')
