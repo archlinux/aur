@@ -1,6 +1,6 @@
 pkgbase = flightgear-data
 	pkgdesc = The FlightGear base package contains the necessary data files to run FlightGear
-	pkgver = 2024.1.4
+	pkgver = 2024.1.5
 	pkgrel = 1
 	url = https://gitlab.com/flightgear/fgdata
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = flightgear-data
 	depends = bash
 	depends = perl
 	depends = python
-	source = https://gitlab.com/flightgear/fgdata/-/archive/2024.1.4/fgdata-2024.1.4.tar.gz
-	sha256sums = 68d277d5b440b899185cfed597ae45bd85c033e0b420be74656ded9103df6310
+	source = https://gitlab.com/flightgear/fgdata/-/archive/2024.1.5/fgdata-2024.1.5.tar.gz
+	sha256sums = 9afbc42c264a615748f4b776ca7a682695db555e72bde038887a5c56d4b75094
 
 pkgname = flightgear-data

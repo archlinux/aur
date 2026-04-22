@@ -8,7 +8,7 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=flightgear-data
-pkgver=2024.1.4
+pkgver=2024.1.5
 pkgrel=1
 pkgdesc="The FlightGear base package contains the necessary data files to run FlightGear"
 arch=('any')
@@ -16,7 +16,7 @@ url="https://gitlab.com/flightgear/fgdata"
 license=('GPL-2.0-or-later')
 depends=('bash' 'perl' 'python')
 source=("${url}/-/archive/${pkgver}/fgdata-${pkgver}.tar.gz")
-sha256sums=('68d277d5b440b899185cfed597ae45bd85c033e0b420be74656ded9103df6310')
+sha256sums=('9afbc42c264a615748f4b776ca7a682695db555e72bde038887a5c56d4b75094')
 
 package() {
     cd "fgdata-${pkgver}"
