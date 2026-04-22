@@ -1,12 +1,12 @@
 # Maintainer: Basem Aljedai <baljedai@gmail.com>
 pkgname=omarchy-prayer
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Muslim prayer-time notifier for Omarchy: mako + adhan, waybar countdown, themed TUI, qibla, hijri, adhan catalog"
 arch=('any')
 url="https://github.com/mrCode/omarchy-prayer"
 license=('MIT')
-depends=('ruby' 'ruby-tomlrb' 'libnotify' 'mako' 'waybar' 'mpv' 'curl' 'systemd')
+depends=('ruby' 'ruby-tomlrb' 'ruby-racc' 'libnotify' 'mako' 'waybar' 'mpv' 'curl' 'systemd')
 optdepends=('hyprland: reference window manager for bundled waybar integration')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -32,11 +32,15 @@ package() {
   install -dm755 "${libdir}/omarchy_prayer"
   cp -r lib/omarchy_prayer/. "${libdir}/omarchy_prayer/"
 
-  # Entry scripts — rewrite $LOAD_PATH to point at the installed lib.
+  # Entry scripts — pin shebang to /usr/bin/ruby so user-managed Rubies
+  # (mise/rbenv/asdf/chruby) don't shadow the system Ruby that owns the
+  # ruby-tomlrb / ruby-racc gems pacman installed as deps. Also rewrite
+  # $LOAD_PATH to point at the installed lib.
   install -dm755 "${bindir}"
   for s in omarchy-prayer omarchy-prayer-schedule omarchy-prayer-notify \
            omarchy-prayer-waybar omarchy-prayer-stop; do
-    sed "s|\$LOAD_PATH.unshift File.expand_path('../lib', __dir__)|\$LOAD_PATH.unshift '/usr/share/${pkgname}/lib'|" \
+    sed -e '1s|^#!/usr/bin/env ruby$|#!/usr/bin/ruby|' \
+        -e "s|\$LOAD_PATH.unshift File.expand_path('../lib', __dir__)|\$LOAD_PATH.unshift '/usr/share/${pkgname}/lib'|" \
         "bin/${s}" > "${bindir}/${s}"
     chmod 755 "${bindir}/${s}"
   done

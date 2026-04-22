@@ -1,13 +1,14 @@
 pkgbase = omarchy-prayer
 	pkgdesc = Muslim prayer-time notifier for Omarchy: mako + adhan, waybar countdown, themed TUI, qibla, hijri, adhan catalog
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrCode/omarchy-prayer
 	install = omarchy-prayer.install
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-tomlrb
+	depends = ruby-racc
 	depends = libnotify
 	depends = mako
 	depends = waybar
