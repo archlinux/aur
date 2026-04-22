@@ -1,7 +1,7 @@
 pkgbase = mautrix-teams
 	pkgdesc = A Matrix-Microsoft Teams puppeting bridge
 	pkgver = 26.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YourSandwich/mautrix-teams
 	install = mautrix-teams.install
 	arch = x86_64
