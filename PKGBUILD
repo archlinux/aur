@@ -1,7 +1,7 @@
 # Maintainer: Josephine Pfeiffer <hi@josie.lol>
 pkgname=cockpit-pacman-git
 pkgver=0.3.5.r0.ga3210e9
-pkgrel=1
+pkgrel=2
 pkgdesc='Cockpit plugin for Arch Linux package management using alpm.rs'
 arch=('x86_64')
 url='https://github.com/pfeifferj/cockpit-pacman'
@@ -10,7 +10,7 @@ depends=('cockpit' 'pacman')
 makedepends=('npm' 'rust' 'cargo' 'git')
 provides=("cockpit-pacman=${pkgver%%.r*}")
 conflicts=('cockpit-pacman')
-options=(!lto)
+options=(!lto !debug)
 source=("$pkgname::git+https://github.com/pfeifferj/cockpit-pacman.git")
 sha256sums=('SKIP')
 
