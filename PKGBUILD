@@ -1,7 +1,7 @@
 # Creator: Stefan Reinauer <reinauer@google.com>
 # Maintainer: Chandler Klüser <chandler.kluser@gmail.com>
 pkgname=amifuse
-pkgver=0.2.0
+pkgver=0.5.0
 pkgrel=0
 pkgdesc="Native AMIGA filesystems on Linux with FUSE"
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/reinauer/amifuse"
 depends=('fuse' 'python' 'python-virtualenv')
 makedepends=('git')
 provides=("amifuse=${pkgver}")
-source=('git+https://github.com/reinauer/amifuse.git#commit=9bc9aa2c57c45c15cf5bef8ccdd114a9ad7a3187')
-sha256sums=('7410b4459bdca1c0dc391d5e6d2d85af03df50536d5492ef9ee2bc369a57b745')
+source=('git+https://github.com/reinauer/amifuse.git#commit=30b5429843ac23c61076c61f15597ed8bdd3042f')
+sha256sums=('13bf0b8e5aa8976fc3772402f6b35adfe70c42677329139b750221c5a7c76431')
 
 build() {
     cd ${pkgname}
