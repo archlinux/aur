@@ -19,7 +19,7 @@ source=("git+https://github.com/labwc/${_pkgname}.git"
         'https://github.com/labwc/labwc/pull/3424.patch')
 md5sums=('SKIP'
          '78692fe6f15dd8f191d0af6d5ce34e6a'
-         '70c0f8b9d43cbbef7bba0e23d0e091c0')
+         '5cbb72d3d0f43f350dd8e43fc8742dcb')
 
 pkgver() {
   cd "$_pkgname"

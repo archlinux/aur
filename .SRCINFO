@@ -26,6 +26,6 @@ pkgbase = labwc-hdr-git
 	source = https://github.com/labwc/labwc/pull/3424.patch
 	md5sums = SKIP
 	md5sums = 78692fe6f15dd8f191d0af6d5ce34e6a
-	md5sums = 70c0f8b9d43cbbef7bba0e23d0e091c0
+	md5sums = 5cbb72d3d0f43f350dd8e43fc8742dcb
 
 pkgname = labwc-hdr-git
