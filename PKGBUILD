@@ -14,12 +14,12 @@ source=("${pkgname}::git+https://github.com/TimHerb2005/omarchy-window-restore.g
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
 
   # Install hypr-* scripts as data files (activated per-user via omarchy-install-window-restore)
   install -dm755 "$pkgdir/usr/share/$pkgname/bin"
