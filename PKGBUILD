@@ -36,6 +36,10 @@ package() {
   install -Dm755 bin/omarchy-uninstall-window-restore \
     "$pkgdir/usr/bin/omarchy-uninstall-window-restore"
 
+  # Install auto-update alpm hook (runs omarchy-install-window-restore on upgrade)
+  install -Dm644 hooks/omarchy-window-restore-update.hook \
+    "$pkgdir/usr/share/libalpm/hooks/omarchy-window-restore-update.hook"
+
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
