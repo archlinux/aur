@@ -2,7 +2,7 @@
 pkgbase=godot-bin
 pkgname=('godot-bin' 'godot-mono-bin')
 pkgver=4.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Godot Engine - Prebuilt binary from GitHub"
 arch=(x86_64)
 url="https://godotengine.org"
@@ -67,6 +67,7 @@ package_godot-mono-bin() {
     pkgdesc="Godot Engine (Mono) - Prebuilt binary from GitHub"
     provides=("godot-mono=${pkgver}")
     conflicts=('godot-mono')
+    depends+=(dotnet-sdk)
 
     install -dm755 "$pkgdir/opt/godot-mono"
 

@@ -1,7 +1,7 @@
 pkgbase = godot-bin
 	pkgdesc = Godot Engine - Prebuilt binary from GitHub
 	pkgver = 4.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://godotengine.org
 	arch = x86_64
 	license = MIT
@@ -45,5 +45,25 @@ pkgname = godot-bin
 
 pkgname = godot-mono-bin
 	pkgdesc = Godot Engine (Mono) - Prebuilt binary from GitHub
+	depends = brotli
+	depends = ca-certificates
+	depends = embree
+	depends = freetype2
+	depends = graphite
+	depends = libglvnd
+	depends = libspeechd
+	depends = libsquish
+	depends = libtheora
+	depends = libvorbis
+	depends = libwebp
+	depends = libwslay
+	depends = libxcursor
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = miniupnpc
+	depends = openxr
+	depends = pcre2
+	depends = dotnet-sdk
 	provides = godot-mono=4.6.2
 	conflicts = godot-mono
