@@ -1,6 +1,6 @@
 pkgbase = azaharplus-git
 	pkgdesc = AzaharPlus, an Azahar fork that adds extra features and functionality.
-	pkgver = 2125.0.A.r40.b790cc133
+	pkgver = 2125.0.A.r42.53579d09b
 	pkgrel = 1
 	url = https://github.com/AzaharPlus/AzaharPlus
 	arch = x86_64

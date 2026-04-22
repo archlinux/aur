@@ -1,6 +1,6 @@
 # Maintainer: objecity <objecity.nekoweb.org>
 pkgname=azaharplus-git
-pkgver=2125.0.A.r40.b790cc133
+pkgver=2125.0.A.r42.53579d09b
 pkgrel=1
 pkgdesc="AzaharPlus, an Azahar fork that adds extra features and functionality."
 arch=('x86_64')
