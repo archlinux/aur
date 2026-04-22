@@ -2,8 +2,8 @@
 # Contributor: Brian Thompson <brianrobt@pm.me>
 
 pkgname=alist
-pkgver=3.56.0
-_web_pkgver=3.56.0
+pkgver=3.60.0
+_web_pkgver=3.60.0
 pkgrel=1
 pkgdesc="File list program that supports multiple storage"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'arm7vh' 'aarch64' 'riscv64' 'loong64')
@@ -19,8 +19,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
     'alist.tmpfiles'
     'alist.sysusers'
     'config.json')
-sha256sums=('bd4621a15e10e5c446d7bce44c31ba1be5be653f4d255f3724a2bedb53265bd9'
-            '3afcfd6488ddbc112a37858b7e2a6a8c83711cc118af0072903280dd89995a81'
+sha256sums=('beccffdfba65a168e796a1789b6bea11ca225101cbc4276451e02b9ad8751a82'
+            '35c4a218fce07c9ef5113b70ec93e385c57c2910de8852b2d0973129c12b0843'
             '5712b21aebf669fe9fb5d47dd685809d4d9670b1bb1d5e6fef962b9d11ba9d72'
             'c6b62c4a750ab921c2e8f965e4baeee28855c9a969b00eddd346670f2fdf12de'
             '3658370660806f73c3d9bc5f1b6e2a013c9520d34ffc4462df99f7692473613d'
