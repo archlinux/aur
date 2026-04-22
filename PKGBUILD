@@ -2,7 +2,7 @@
 
 pkgname=python-cn2an
 _name=${pkgname#python-}
-pkgver=0.5.23
+pkgver=0.5.24
 pkgrel=1
 epoch=
 pkgdesc="Convert Chinese numerals and Arabic numerals."
@@ -28,7 +28,7 @@ optdepends=()
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('eda06a63e5eff4a64488d9f22e5f2a4ceca6eaa63416e4f771e67edecb1a5bdb')
+sha256sums=('c276cfc4b3c9e758214841de597502eb178de50b8da2633ed345564f90705f0e')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
