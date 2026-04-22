@@ -1,6 +1,6 @@
 pkgbase = ioruba-desktop
 	pkgdesc = Tactile audio mixer for Arduino-based Linux control
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/bernardopg/ioruba
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = ioruba-desktop
 	conflicts = ioruba
 	conflicts = ioruba-desktop-bin
 	replaces = ioruba
-	source = ioruba-0.6.5.tar.gz::https://github.com/bernardopg/ioruba/archive/refs/tags/v0.6.5.tar.gz
-	sha256sums = a989d24c320569e14599fae615eae68a2937469ddda6f8479ac9e27667e8ff59
+	source = ioruba-0.6.6.tar.gz::https://github.com/bernardopg/ioruba/archive/refs/tags/v0.6.6.tar.gz
+	sha256sums = 6a6594b506491e440fbaebfa03281026f77d7efe5035d30fb1ee9832700b874b
 
 pkgname = ioruba-desktop
