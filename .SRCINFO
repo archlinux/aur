@@ -8,6 +8,7 @@ pkgbase = python-ua-parser-builtins
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
+	depends = python-ua-parser
 	noextract = *.whl
 	source = https://files.pythonhosted.org/packages/py3/u/ua_parser_builtins/ua_parser_builtins-202603-py3-none-any.whl
 	sha256sums = 67478397a68fac1a98fd0a31c416ea7c65a719141fc151d0211316f2cd337cc9
