@@ -1,0 +1,15 @@
+pkgbase = python-camoufox
+	pkgdesc = Wraps around Playwright's API to help automatically generate & inject unique device characteristics (OS, CPU info, navigator, fonts, headers, screen dimensions, viewport size, WebGL, addons, etc.) into Camoufox.
+	pkgver = 0.4.11
+	pkgrel = 1
+	url = https://pypi.org/project/camoufox/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://pypi.org/packages/source/c/camoufox/camoufox-0.4.11.tar.gz
+	sha256sums = 0a2c9d24ac5070c104e7c2b125c0a3937f70efa416084ef88afe94c32a72eebe
+
+pkgname = python-camoufox
