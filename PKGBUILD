@@ -3,7 +3,7 @@
 
 pkgname=lzfse
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 _srcname="${pkgname}-${pkgname}-${pkgver}"
 pkgdesc='LZFSE compression library and command line tool'
 arch=('x86_64' 'aarch64')
@@ -11,6 +11,7 @@ url='https://github.com/lzfse/lzfse'
 license=('BSD-3-Clause')
 depends=('glibc')
 conflicts=('lzfse-git')
+options=('!strip')
 source=("https://github.com/lzfse/lzfse/archive/lzfse-${pkgver}.tar.gz")
 sha256sums=('cf85f373f09e9177c0b21dbfbb427efaedc02d035d2aade65eb58a3cbf9ad267')
 
