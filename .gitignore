@@ -1,0 +1,17 @@
+# Build artifacts
+pkg/
+src/
+*.pkg.tar.zst
+
+# Downloaded sources (makepkg re-downloads these)
+*.deb
+*.flatpak
+
+# Debug extractions
+app-asar-extracted/
+flatpak-extracted/
+flatpak-repo/
+
+# Temporary files
+*.log
+install-logs-*.txt
