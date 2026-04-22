@@ -4,7 +4,8 @@
 
 _variant=gaokun3
 pkgbase=linux-$_variant
-pkgver=6.19.y
+pkgver=$((curl -sf https://raw.githubusercontent.com/gregkh/linux/refs/heads/master/Makefile || exit 1) | sed -Ez 's/.*VERSION = ([1-9]+)\nPATCHLEVEL = ([0-9]+)\nSUBLEVEL = ([0-9]+\n).*/\1.\2.\3/')
+_branch="${pkgver%.*}.y"
 pkgrel=1
 pkgdesc='Linux for HUAWEI MateBook E Go (sc8280xp)'
 url='https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
@@ -64,7 +65,7 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   # for my quickly local rebuild
   if [ ! -d 'linux' ]; then
-    git clone --depth=1 $url -b linux-$pkgver $_srcname
+    git clone --depth=1 $url -b linux-$_branch $_srcname
     cd $_srcname
     # Not using git am to avoid setting git identity
     for p in "$srcdir/linux-gaokun/patch sets/recommended/"*; do
