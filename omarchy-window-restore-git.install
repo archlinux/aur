@@ -14,3 +14,17 @@ post_install() {
 post_upgrade() {
   post_install
 }
+
+pre_remove() {
+  echo ""
+  echo "╔══════════════════════════════════════════════════════════╗"
+  echo "║        omarchy-window-restore is being removed!          ║"
+  echo "║                                                          ║"
+  echo "║  First run this to clean up your user config:            ║"
+  echo "║                                                          ║"
+  echo "║    omarchy-uninstall-window-restore                      ║"
+  echo "║                                                          ║"
+  echo "║  (scripts & keybindings won't be removed otherwise)      ║"
+  echo "╚══════════════════════════════════════════════════════════╝"
+  echo ""
+}

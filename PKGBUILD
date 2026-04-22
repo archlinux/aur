@@ -32,6 +32,10 @@ package() {
   install -Dm755 bin/omarchy-install-window-restore \
     "$pkgdir/usr/bin/omarchy-install-window-restore"
 
+  # Install user-facing deactivation command into PATH
+  install -Dm755 bin/omarchy-uninstall-window-restore \
+    "$pkgdir/usr/bin/omarchy-uninstall-window-restore"
+
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
