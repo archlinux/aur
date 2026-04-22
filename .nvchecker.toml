@@ -1,0 +1,9 @@
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+
+["pi-ext-powerline-footer"]
+source = "github"
+github = "nicobailon/pi-powerline-footer"
+use_latest_release = true
+prefix = "v"
