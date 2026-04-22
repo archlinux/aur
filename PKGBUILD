@@ -1,6 +1,6 @@
 # Maintainer: Mina Maher <mina.maher88@hotmail.com>
 pkgname=logitune
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Logitech device configurator for Linux — per-app profiles, button remapping, DPI, gestures"
 arch=('x86_64')
@@ -12,13 +12,17 @@ makedepends=('cmake' 'ninja' 'qt6-tools')
 optdepends=('gnome-shell: per-app profile switching on GNOME'
              'gnome-shell-extension-appindicator: tray icon on GNOME')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('21362d379328f999dad51a95663d7243b862329d6ce5901ea118432638d99115')
+sha256sums=('b479400914c1be40d3142f9b2b4f91e5e9d3f6aa93294fe487d245d4a7da12ce')
 
 build() {
+    # Pass the version explicitly: the GitHub source tarball has no .git,
+    # so CMake's git-describe lookup would fail and the configure step
+    # refuses to guess. pkgver is the single source of truth here.
     cmake -B build -S "$pkgname-$pkgver" -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_TESTING=OFF \
+        -DLOGITUNE_VERSION="$pkgver" \
         -Wno-dev
     cmake --build build
 }
