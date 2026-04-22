@@ -1,10 +1,10 @@
-# Maintainer: Layne Pedersen <layne.pedersen@gmail.com>
+# Maintainer: Layne Pedersen <layne.pedersen at gmail dot com>
 
 ## see https://www.netlib.org/f2c/changes for versioning
 
 pkgname=mingw-w64-f2c
 pkgver=20240130
-pkgrel=1
+pkgrel=2
 pkgdesc='Fortran to C code translator (mingw-w64)'
 url='http://www.netlib.org/f2c/index.html'
 license=('custom')
