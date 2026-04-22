@@ -1,6 +1,6 @@
 pkgbase = python-glue-vispy-viewers
 	pkgdesc = 3-d data viewers for glue based on VisPy
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = http://docs.glueviz.org/en/stable/gui_guide/3d_viewers.html
 	arch = any
@@ -10,17 +10,18 @@ pkgbase = python-glue-vispy-viewers
 	checkdepends = python-glue-core
 	checkdepends = python-opengl
 	checkdepends = python-vispy
+	checkdepends = python-pyqt6
 	makedepends = python-setuptools-scm
-	source = https://files.pythonhosted.org/packages/source/g/glue_vispy_viewers/glue_vispy_viewers-1.3.0.tar.gz
-	sha256sums = 4d3fe2a605c567977e546a9367f1f0eddc1cc0b2b3234e71aec66ec3669ed45e
+	source = https://files.pythonhosted.org/packages/source/g/glue_vispy_viewers/glue_vispy_viewers-1.4.0.tar.gz
+	sha256sums = aa9bc2b11d851ac1c12d953d4637b48b6eff9449f54715c92e654c38407af54a
 
 pkgname = python-glue-vispy-viewers
-	depends = python>=3.8
+	depends = python>=3.10
 	depends = python-matplotlib
 	depends = python-opengl
 	depends = python-scipy
-	depends = python-glue-core>=1.17.0
-	depends = python-vispy>=0.12.0
+	depends = python-glue-core>=1.25.0
+	depends = python-vispy>=0.14.0
 	depends = python-glfw
 	depends = python-imageio
 	optdepends = python-qtpy: pyqt, pyside
