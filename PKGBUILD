@@ -1,7 +1,7 @@
 # $Id: PKGBUILD 103944 2014-01-13 20:31:53Z spupykin $
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
-pkgname=nextcloud-app-maps
+pkgname=nextcloud-app-maps-git
 _name=maps
 pkgver=v1.6.0.r181.g78fead7d
 pkgrel=1

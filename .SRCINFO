@@ -1,4 +1,4 @@
-pkgbase = nextcloud-app-maps
+pkgbase = nextcloud-app-maps-git
 	pkgdesc = OpenStreetMap layers including POIs
 	pkgver = v1.6.0.r181.g78fead7d
 	pkgrel = 1
@@ -14,6 +14,6 @@ pkgbase = nextcloud-app-maps
 	source = git+https://github.com/nextcloud/maps.git
 	sha256sums = SKIP
 
-pkgname = nextcloud-app-maps
+pkgname = nextcloud-app-maps-git
 	depends = nextcloud>=
 	depends = nextcloud<
