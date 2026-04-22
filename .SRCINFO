@@ -1,6 +1,6 @@
 pkgbase = classisland-preview
 	pkgdesc = 适用于班级大屏的课表小工具（预览版）。Class schedule displaying tool for interactive whiteboards in classrooms (Preview).
-	pkgver = 2.0.3.1
+	pkgver = 2.0.3.2
 	pkgrel = 1
 	url = https://github.com/ClassIsland/ClassIsland
 	install = classisland-preview.install
@@ -17,7 +17,7 @@ pkgbase = classisland-preview
 	depends = glibc
 	depends = hicolor-icon-theme
 	options = !debug
-	source = git+https://github.com/ClassIsland/ClassIsland.git#tag=2.0.3.1
+	source = git+https://github.com/ClassIsland/ClassIsland.git#tag=2.0.3.2
 	source = git+https://github.com/ClassIsland/EdgeTtsSharp.git#branch=classisland-v2
 	source = classisland-preview.sh
 	sha256sums = SKIP
