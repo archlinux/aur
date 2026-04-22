@@ -1,0 +1,11 @@
+# makepkg build dirs and artifacts
+src/
+pkg/
+*.pkg.tar
+*.pkg.tar.*
+*.log
+
+# Downloaded sources (names match the source=() entries)
+pacrank-*.tar.gz
+LICENSE-MIT-*
+LICENSE-APACHE-*
