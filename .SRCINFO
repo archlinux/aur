@@ -1,0 +1,14 @@
+pkgbase = fnord
+	pkgdesc = A Discordian calendar, lunar phase calculator, and chaos utility. Weighs exactly 5 tons of flax.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/maravexa/fnord
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = fn0rd-0.1.1.tar.gz::https://static.crates.io/crates/fn0rd/fn0rd-0.1.1.crate
+	b2sums = ceb24982da0cf8f580bfa3982f2ea43d40eb8911538ae2072271c165addaeeb901f8a6bb98f2439fe48ef8e04305690a2a19303af5408964de2933f181fb2f31
+
+pkgname = fnord
