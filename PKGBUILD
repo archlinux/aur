@@ -1,6 +1,6 @@
 # Maintainer: Josephine Pfeiffer <hi@josie.lol>
 pkgname=nispor
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Unified interface for Linux network state querying'
 arch=('x86_64')

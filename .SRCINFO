@@ -1,13 +1,13 @@
 pkgbase = nispor
 	pkgdesc = Unified interface for Linux network state querying
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/nispor/nispor
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
 	depends = glibc
-	source = nispor-2.0.1.tar.gz::https://github.com/nispor/nispor/archive/v2.0.1.tar.gz
+	source = nispor-2.0.2.tar.gz::https://github.com/nispor/nispor/archive/v2.0.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = nispor
