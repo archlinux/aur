@@ -1,0 +1,14 @@
+pkgbase = meowdo
+	pkgdesc = A cute, keyboard-driven todo list with a cat sidekick.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Sycorlax/Meowdo
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = make
+	makedepends = gcc
+	depends = ncurses
+	source = meowdo-1.2.0.tar.gz::https://github.com/Sycorlax/Meowdo/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = meowdo
