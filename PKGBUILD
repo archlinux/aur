@@ -1,7 +1,7 @@
 # Maintainer: yobson <aur@yobson.xyz>
 pkgname=gale-git
 pkgdesc='A lightweight mod manager for Thunderstore'
-pkgver=1.13.0.r6.g75a4dcc
+pkgver=1.13.1.r0.gaf87be2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Kesomannen/gale'
@@ -50,17 +50,4 @@ package() {
     install -Dm644 "src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/gale.png"
     install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/gale.png"
     install -Dm644 "src-tauri/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/gale.png"
-}
-
-post_install() {
-    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-    update-desktop-database -q
-}
-
-post_upgrade() {
-    post_install
-}
-
-post_remove() {
-    post_install
 }
