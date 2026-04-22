@@ -1,5 +1,5 @@
 pkgname=ioruba-desktop
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="Tactile audio mixer for Arduino-based Linux control"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('glibc' 'gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
 makedepends=('npm' 'rust' 'cargo' 'pkgconf' 'webkit2gtk-4.1' 'gtk3' 'librsvg' 'patchelf' 'libappindicator-gtk3')
 source=("ioruba-${pkgver}.tar.gz::https://github.com/bernardopg/ioruba/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('54ab3b9647d2da0d0c255872f77deaa7225668c7da16a4160c2a5d4da43bed7c')
+sha256sums=('a989d24c320569e14599fae615eae68a2937469ddda6f8479ac9e27667e8ff59')
 
 prepare() {
   cd "ioruba-${pkgver}"
@@ -25,8 +25,28 @@ package() {
 
   install -Dm755     "apps/desktop/src-tauri/target/release/ioruba-desktop"     "${pkgdir}/usr/bin/ioruba-desktop"
 
-  install -Dm644     "apps/desktop/src-tauri/icons/128x128.png"     "${pkgdir}/usr/share/icons/hicolor/128x128/apps/ioruba.png"
+  local _icons="apps/desktop/src-tauri/icons"
+  install -Dm644 "${_icons}/32x32.png"     "${pkgdir}/usr/share/icons/hicolor/32x32/apps/ioruba.png"
+  install -Dm644 "${_icons}/64x64.png"     "${pkgdir}/usr/share/icons/hicolor/64x64/apps/ioruba.png"
+  install -Dm644 "${_icons}/128x128.png"     "${pkgdir}/usr/share/icons/hicolor/128x128/apps/ioruba.png"
+  install -Dm644 "${_icons}/128x128@2x.png"     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/ioruba.png"
+  install -Dm644 "${_icons}/app-icon.svg"     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ioruba.svg"
 
-  install -Dm644 /dev/null "${pkgdir}/usr/share/applications/ioruba.desktop"
-  printf '%s\n'     '[Desktop Entry]'     'Type=Application'     'Name=Ioruba'     'Comment=Tactile audio mixer for Arduino-based Linux control'     'Exec=ioruba-desktop'     'Icon=ioruba'     'Categories=AudioVideo;Audio;'     'Terminal=false'     > "${pkgdir}/usr/share/applications/ioruba.desktop"
+  install -dm755 "${pkgdir}/usr/share/applications"
+  cat > "${pkgdir}/usr/share/applications/ioruba.desktop" <<'DESKTOP'
+[Desktop Entry]
+Type=Application
+Name=Ioruba
+GenericName=Audio Mixer
+GenericName[pt_BR]=Mixer de Áudio
+Comment=Tactile audio mixer for Arduino-based Linux control
+Comment[pt_BR]=Mixer de áudio tátil para controle via Arduino no Linux
+Exec=ioruba-desktop
+Icon=ioruba
+Terminal=false
+Categories=AudioVideo;Audio;Mixer;
+Keywords=audio;mixer;volume;arduino;serial;hardware;potentiometer;
+StartupNotify=true
+StartupWMClass=Ioruba
+DESKTOP
 }
