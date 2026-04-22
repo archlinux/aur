@@ -28,11 +28,11 @@ post_install() {
 	5) It is recommended to run homebridge with a supported Node.js LTS version.
 	Currently nodejs-lts-krypton (Node.js 24) is the recommended version.
 
-	6) To use systemd-resolved as the mDNS resolver, set up systemd-resolved mDNS
+	6) Note: This feature is broken due to upstream systemd bugs. Use Ciao in the meantime.
+	https://github.com/systemd/systemd/pull/41342
+	To use systemd-resolved as the mDNS resolver, set up systemd-resolved mDNS
 	and then follow these instructions:
 	https://github.com/homebridge/homebridge/wiki/mDNS-Options#systemd-resolved-linux-only-experimental
-	Note: If you experience mDNS resolution errors, be sure to disable "Advertise Via mDNS" and "Enable UI Accessory Control"
-	as they open their own mDNS sockets which can interfere with systemd-resolved.
 
 	EOF
 }
