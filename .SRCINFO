@@ -1,6 +1,6 @@
 pkgbase = plotjuggler-git
 	pkgdesc = The Time Series Visualization Tool that you deserve. Without ROS dependencies.
-	pkgver = 3.16.0.r89.g44eaa553
+	pkgver = 3.16.0.r92.g8704e452
 	pkgrel = 1
 	url = https://github.com/facontidavide/PlotJuggler
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = plotjuggler-git
 	depends = arrow
 	depends = binutils
 	depends = fmt
-	depends = lua54
+	depends = lua
 	depends = mosquitto
 	depends = nlohmann-json
 	depends = protobuf
@@ -25,8 +25,6 @@ pkgbase = plotjuggler-git
 	provides = plotjuggler
 	conflicts = plotjuggler
 	source = git+https://github.com/facontidavide/PlotJuggler.git
-	source = 0001-lua54.patch
 	sha256sums = SKIP
-	sha256sums = 3783f1e19f8bc6d64d48a7d68899d43df30fe23c577f4e4cf25c151c25e653fc
 
 pkgname = plotjuggler-git
