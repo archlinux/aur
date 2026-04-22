@@ -6,8 +6,7 @@
 pkgname=mawkawk
 pkgdesc='Re-point /usr/bin/awk symlink to mawk'
 pkgver=0.1
-pkgrel=1
-url='none'
+pkgrel=2
 install="$pkgname.install"
 arch=('any')
 license=('EUPL-1.2')  # SPDX-License-Identifier: EUPL-1.2
