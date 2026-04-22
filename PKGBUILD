@@ -10,6 +10,7 @@ depends=('glibc')
 makedepends=('cargo' 'git')
 provides=('nispor')
 conflicts=('nispor')
+options=(!debug)
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 

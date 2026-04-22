@@ -10,6 +10,7 @@ pkgbase = nispor-git
 	depends = glibc
 	provides = nispor
 	conflicts = nispor
+	options = !debug
 	source = nispor-git::git+https://github.com/nispor/nispor.git
 	sha256sums = SKIP
 
