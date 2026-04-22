@@ -1,0 +1,14 @@
+pkgbase = sidex-bin
+	pkgdesc = A fast, open-source code editor built on Tauri
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Sidenai/sidex
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	source = SideX_0.1.2_amd64.deb::https://github.com/Sidenai/sidex/releases/download/v0.1.2/SideX_0.1.2_amd64.deb
+	sha512sums = 4dccde1ab8f2e3f570c234ad806a6d584bd4ff7917f03140dd69c6319ead5ea8bb17f8648c94b25adb9b31c9028c24ed59bea982ccf616baff737b58c180c4d7
+
+pkgname = sidex-bin
