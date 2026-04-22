@@ -59,6 +59,7 @@ optdepends=(
 makedepends=(
   'cargo'
   'git'
+  'libxkbcommon'
 )
 install="${pkgname}.install"
 source=(

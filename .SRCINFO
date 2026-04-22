@@ -8,6 +8,7 @@ pkgbase = my-niri-desk
 	license = custom
 	makedepends = cargo
 	makedepends = git
+	makedepends = libxkbcommon
 	depends = niri
 	depends = quickshell
 	depends = qt6-5compat
