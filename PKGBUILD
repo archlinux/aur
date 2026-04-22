@@ -1,4 +1,5 @@
-# Maintainer: Konstantin Gizdov <arch at kge dot pw>
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
+# Contributor: Konstantin Gizdov <arch at kge dot pw>
 # Contributor: Liam Timms <timms5000@gmail.com>
 # Contributor: Michel Zou
 
