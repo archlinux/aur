@@ -1,5 +1,5 @@
 [Unit]
-Description=AuroraDownloader web service (user)
+Description=AuroraDownloader web service
 After=network.target redis.service
 
 [Service]
@@ -9,4 +9,4 @@ ExecStart=/opt/auroradownloader/venv/bin/gunicorn -k gevent --worker-connections
 Restart=on-failure
 
 [Install]
-WantedBy=default.targetantedBy=multi-user.target
+WantedBy=default.target

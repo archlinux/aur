@@ -1,6 +1,6 @@
 # Maintainer: Bacem Abidi <abidi.bacem.ab.25@gmail.com>
 pkgname=auroradownloader
-pkgver=1.0.6
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Your all in one web based music manager"
 arch=('any')
