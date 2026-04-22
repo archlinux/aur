@@ -1,5 +1,5 @@
 pkgname=xbelite2-dkms
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc='Xbox Elite Series 2 controller driver and configurator for Linux'
 arch=('x86_64')
@@ -35,7 +35,7 @@ package() {
   install -Dm644 kmod/Kbuild "$_dkmsdir/Kbuild"
   install -Dm644 kmod/Makefile "$_dkmsdir/Makefile"
   install -Dm644 kmod/xbelite2_c.c "$_dkmsdir/xbelite2_c.c"
-  install -Dm644 kmod/xbelite2_rust.rs "$_dkmsdir/xbelite2_rust.rs"
+  install -Dm644 kmod/xbelite2_logic.c "$_dkmsdir/xbelite2_logic.c"
 
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 docs/elite2.png "$pkgdir/usr/share/doc/$pkgname/elite2.png"
