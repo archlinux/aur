@@ -1,8 +1,8 @@
 pkgbase = python-squareline-to-esphome-git
-	pkgdesc = A python wrapper over the ORCID API
+	pkgdesc = SquareLine Studio to ESPHome converter
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/ORCID/python-orcid
+	url = https://github.com/gpambrozio/SquarelineToEsphome
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
