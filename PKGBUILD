@@ -1,6 +1,6 @@
 # Maintainer: Basem Aljedai <baljedai@gmail.com>
 pkgname=omarchy-prayer
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Muslim prayer-time notifier for Omarchy: mako + adhan, waybar countdown, themed TUI, qibla, hijri, adhan catalog"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('ruby' 'ruby-tomlrb' 'libnotify' 'mako' 'waybar' 'mpv' 'curl' 'systemd'
 optdepends=('hyprland: reference window manager for bundled waybar integration')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fbce46ccac8c7d1f51e61013a4510b1928ae123e0c1b00ed8c5e493ea9a1ec9f')
+sha256sums=('bbd290aa0bc06f2b7bf02a114e0e5ec544e3373856f5f743d78a8aaa75cc0fa2')
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
