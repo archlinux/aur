@@ -1,0 +1,13 @@
+pkgname=edc-bin
+pkgver=1.0
+pkgrel=1
+pkgdesc='a tool for simple alphabetical text encryption.'
+arch=('x86_64')
+license=('custom')
+source=('https://github.com/castluno/edc/releases/download/main/edc-1.0.0-linux-x86_64.tar.gz')
+sha256sums=('ad43b27b880e4990f5a5becf735426df44cf81250236821a2a1c2e6ed4438147')
+
+package() {
+  install -Dm755 edc "$pkgdir/usr/bin/edc"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/edc/LICENSE"
+}
