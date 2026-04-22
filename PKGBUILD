@@ -1,6 +1,6 @@
 # Maintainer: Matthew Cushing <cushing.matt@gmail.com>
 pkgname=stock
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Package/tool/runtime installer — companion to store'
 arch=('x86_64' 'aarch64')
