@@ -1,0 +1,15 @@
+pkgbase = python-browserforge
+	pkgdesc = Browser header and fingerprint generator that mimics the frequency of different browsers, operating systems, and devices found in the wild..
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://pypi.org/project/browserforge/
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://pypi.org/packages/source/b/browserforge/browserforge-1.2.4.tar.gz
+	sha256sums = 05686473793769856ebd3528c69071f5be0e511260993e8b2ba839863711a0c4
+
+pkgname = python-browserforge
