@@ -1,7 +1,7 @@
 # Maintainer: Chuan Ji <chuan@jichu4n.com>
 
 pkgname=jfbview-git
-pkgver=r415.f46b487
+pkgver=r428.1395deb
 pkgrel=1
 pkgdesc="PDF and image viewer for the Linux framebuffer"
 arch=('i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

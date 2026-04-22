@@ -1,6 +1,6 @@
 pkgbase = jfbview-git
 	pkgdesc = PDF and image viewer for the Linux framebuffer
-	pkgver = r415.f46b487
+	pkgver = r428.1395deb
 	pkgrel = 1
 	url = https://github.com/jichu4n/jfbview
 	arch = i686
@@ -26,4 +26,3 @@ pkgbase = jfbview-git
 	sha512sums = SKIP
 
 pkgname = jfbview-git
-
