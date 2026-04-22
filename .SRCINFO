@@ -1,0 +1,22 @@
+pkgbase = stock-bin
+	pkgdesc = Package/tool/runtime installer — companion to store (prebuilt binaries)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/cushycush/stock
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = stock
+	conflicts = stock
+	conflicts = stock-git
+	source = README-0.2.0.md::https://raw.githubusercontent.com/cushycush/stock/v0.2.0/README.md
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/cushycush/stock/v0.2.0/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	source_x86_64 = stock-x86_64-0.2.0.zip::https://github.com/cushycush/stock/releases/download/v0.2.0/stock-v0.2.0-linux-amd64.zip
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = stock-aarch64-0.2.0.zip::https://github.com/cushycush/stock/releases/download/v0.2.0/stock-v0.2.0-linux-arm64.zip
+	sha256sums_aarch64 = SKIP
+
+pkgname = stock-bin
