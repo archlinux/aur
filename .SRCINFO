@@ -1,7 +1,7 @@
 pkgbase = stelliberty-bin
 	pkgdesc = Modern Clash/Mihomo 客户端的二进制发行版
 	pkgver = 1.2.278
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/Kindness-Kismet/Stelliberty
 	install = stelliberty-bin.install
 	arch = x86_64
