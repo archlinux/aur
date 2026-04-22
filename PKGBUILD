@@ -2,7 +2,9 @@
 pkgname=musicxx-bin
 _pkgname=musicxx
 pkgver=0.85.5
-pkgrel=1.0
+pkgrel=2.0
+providers=('musicxx')
+conflicts=('musicxx')
 pkgdesc="Audio and video player"
 arch=(x86_64)
 url="https://github.com/coolight7/musicxx"

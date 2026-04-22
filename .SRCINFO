@@ -1,7 +1,7 @@
 pkgbase = musicxx-bin
 	pkgdesc = Audio and video player
 	pkgver = 0.85.5
-	pkgrel = 1.0
+	pkgrel = 2.0
 	url = https://github.com/coolight7/musicxx
 	arch = x86_64
 	license = MIT
