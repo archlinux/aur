@@ -1,0 +1,3 @@
+d /var/lib/mautrix-teams 0750 mautrix-teams mautrix-teams -
+d /var/log/mautrix-teams 0750 mautrix-teams mautrix-teams -
+d /etc/mautrix-teams      0750 root           mautrix-teams -

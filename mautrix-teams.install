@@ -1,0 +1,33 @@
+post_install() {
+    systemd-sysusers mautrix-teams.conf
+    systemd-tmpfiles --create mautrix-teams.conf
+
+    cat <<'EOF'
+==> Next steps:
+    1. Generate the example config:
+       sudo -u mautrix-teams mautrix-teams -e -c /etc/mautrix-teams/mautrix-teams.yaml
+    2. Edit /etc/mautrix-teams/mautrix-teams.yaml (homeserver, domain, app-service port).
+    3. Generate the Synapse registration:
+       sudo -u mautrix-teams mautrix-teams -g -c /etc/mautrix-teams/mautrix-teams.yaml -r /etc/mautrix-teams/registration.yaml
+    4. Add /etc/mautrix-teams/registration.yaml to app_service_config_files in your
+       homeserver.yaml and restart Synapse.
+    5. Start the bridge:
+       systemctl enable --now mautrix-teams.service
+EOF
+}
+
+post_upgrade() {
+    systemd-sysusers mautrix-teams.conf
+    systemd-tmpfiles --create mautrix-teams.conf
+    systemctl daemon-reload
+    systemctl try-restart mautrix-teams.service 2>/dev/null || true
+}
+
+post_remove() {
+    cat <<'EOF'
+==> Config, registration, and data were kept.
+    Remove them manually with:
+      rm -rf /etc/mautrix-teams /var/lib/mautrix-teams /var/log/mautrix-teams
+      userdel mautrix-teams
+EOF
+}
