@@ -25,4 +25,74 @@ export ELECTRON_IS_DEV
 : ${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
 
+# electron-castlab v41 can crash at startup when CHROME_DESKTOP is set.
+unset CHROME_DESKTOP
+
+has_class=0
+has_name=0
+for arg in "$@"; do
+    if [[ "$arg" == "--class" || "$arg" == --class=* ]]; then
+        has_class=1
+    fi
+    if [[ "$arg" == "--name" || "$arg" == --name=* ]]; then
+        has_name=1
+    fi
+done
+
+if [[ ${has_class} -eq 0 || ${has_name} -eq 0 ]]; then
+    app_target="."
+    for arg in "$@"; do
+        if [[ "$arg" == "--" ]]; then
+            continue
+        fi
+        if [[ "$arg" != -* ]]; then
+            app_target="$arg"
+            break
+        fi
+    done
+
+    pkg_path=""
+    if [[ -d "${app_target}" && -f "${app_target}/package.json" ]]; then
+        pkg_path="${app_target}/package.json"
+    elif [[ -f "${PWD}/package.json" ]]; then
+        pkg_path="${PWD}/package.json"
+    fi
+
+    app_class=""
+    if [[ -n "${pkg_path}" ]] && command -v python3 >/dev/null 2>&1; then
+        app_class="$(python3 - "${pkg_path}" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], 'r', encoding='utf-8') as f:
+    pkg = json.load(f)
+
+print((pkg.get('name') or pkg.get('productName') or '').strip())
+PY
+)"
+    fi
+
+    if [[ -z "${app_class}" ]]; then
+        app_class="$(basename "${PWD}")"
+    fi
+
+    app_class="$(printf '%s' "${app_class}" | tr '[:upper:] ' '[:lower:]-' | tr -cd 'a-z0-9._-')"
+    if [[ -z "${app_class}" ]]; then
+        app_class="electron-app"
+    fi
+
+    if [[ ${has_class} -eq 0 ]]; then
+        set -- "--class=${app_class}" "$@"
+    fi
+
+    if [[ ${has_name} -eq 0 ]]; then
+        set -- "--name=${app_class}" "$@"
+    fi
+fi
+
+runtime_hook="/usr/lib/${name}/linux-app-id.js"
+if [[ -f "${runtime_hook}" ]]; then
+    exec /usr/lib/${name}/electron "${flags[@]}" -r "${runtime_hook}" "$@"
+fi
+
 exec /usr/lib/${name}/electron "${flags[@]}" "$@"
