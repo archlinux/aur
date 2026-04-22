@@ -67,17 +67,14 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  local _dist_desktop="AzaharPlus/dist/azahar.desktop"
-  local _target_desktop="$pkgdir/usr/share/applications/azaharplus.desktop"
+  local _target="$pkgdir/usr/share/applications/azahar.desktop"
 
-  install -Dm644 "$_dist_desktop" "$_target_desktop"
-
-  sed -i 's/^Name=.*/Name=AzaharPlus/' "$_target_desktop"
-  sed -i 's/^Exec=.*/Exec=azahar %f/' "$_target_desktop"
-  sed -i 's/^Icon=.*/Icon=org.azahar_emu.Azahar/' "$_target_desktop"
+  sed -i 's/^Name=.*/Name=AzaharPlus/' "$_target"
+  sed -i 's/^Exec=.*/Exec=azahar %f/' "$_target"
+  sed -i 's/^Icon=.*/Icon=org.azahar_emu.Azahar/' "$_target"
   
-  if ! grep -q "Categories=Game;" "$_target_desktop"; then
-     sed -i 's/^Categories=.*/Categories=Game;Emulator;Qt;/' "$_target_desktop"
+  if ! grep -q "Categories=Game;" "$_target"; then
+    sed -i 's/^Categories=.*/Categories=Game;Emulator;Qt;/' "$_target"
   fi
 
   if [ -f "$pkgdir/usr/bin/azahar-qt" ]; then
@@ -87,8 +84,6 @@ package() {
   rm -rf "$pkgdir/usr/include/enet"
   rm -rf "$pkgdir/usr/lib/static"
   rm -f "$pkgdir/usr/lib/libcitra_room.a"
-  # Remove the duplicate desktop file installed by CMake
-  rm -f "$pkgdir/usr/share/applications/azahar.desktop"
 }
 
 
