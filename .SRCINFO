@@ -1,6 +1,6 @@
 pkgbase = llmfit-bin
 	pkgdesc = CLI tool to tell which LLM models will run best on your hardware
-	pkgver = 0.9.10
+	pkgver = 0.9.13
 	pkgrel = 1
 	url = https://github.com/AlexsJones/llmfit
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = llmfit-bin
 	depends = glibc
 	provides = llmfit
 	conflicts = llmfit
-	source = llmfit-0.9.10-linux.tar.gz::https://github.com/AlexsJones/llmfit/releases/download/v0.9.10/llmfit-v0.9.10-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 61160ce0551ee5c37da99572c32d075daf475db85f567dfbbfb0cf9e77093fad
+	source = llmfit-0.9.13-linux.tar.gz::https://github.com/AlexsJones/llmfit/releases/download/v0.9.13/llmfit-v0.9.13-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = a6d000fea64e14878a6181fdf31cd325456aa53943b958e94837efcc5633c9e8
 
 pkgname = llmfit-bin
