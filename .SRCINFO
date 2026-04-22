@@ -1,0 +1,17 @@
+pkgbase = crain-git
+	pkgdesc = the worst storm this side of the silicon (terminal-based rain)
+	pkgver = 2026.4.22
+	pkgrel = 1
+	url = https://github.com/mazylol/crain
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = clang
+	depends = ncurses
+	provides = crain
+	conflicts = crain
+	options = !strip
+	source = git+https://github.com/mazylol/crain.git
+	sha256sums = SKIP
+
+pkgname = crain-git
