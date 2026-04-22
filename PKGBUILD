@@ -1,8 +1,8 @@
 # Maintainer: Keiran <keircn@proton.me>
 pkgname=seanime
 pkgver=3.6.1
-pkgrel=1
-pkgdesc="A self-hosted server that seamlessly integrates with your local anime collection with anilist integration."
+pkgrel=2
+pkgdesc="A self-hosted media server for anime with anilist integration"
 arch=(x86_64)
 url="https://github.com/5rahim/seanime"
 license=('MIT')
@@ -39,10 +39,7 @@ package() {
     cp -r web "${pkgdir}/opt/${pkgname}/"
     ln -s "/opt/${pkgname}/seanime" "${pkgdir}/usr/bin/"
 
-    local user=${USER:-root}
-    local group=${USER:-root}
-
-    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/seanime.service" <<EOF
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/user/seanime.service" <<EOF
 [Unit]
 Description=Seanime Service
 After=network.target
@@ -50,14 +47,8 @@ After=network.target
 [Service]
 ExecStart=/usr/bin/seanime
 Restart=always
-User=$user
-Group=$group
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 EOF
-}
-
-post_install() {
-    systemctl enable seanime --now
 }
