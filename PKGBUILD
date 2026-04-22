@@ -1,7 +1,7 @@
 # Maintainer: Hamza Gbada <hamza.gbada@gmail.com>
 
 pkgname=docker-model
-pkgver=1.1.29
+pkgver=1.1.37
 pkgrel=1
 pkgdesc="Docker CLI plugin for running AI models (model-cli; upstream repo version 1.1.17, CLI version differs)"
 arch=('x86_64')
