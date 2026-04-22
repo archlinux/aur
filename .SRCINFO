@@ -1,7 +1,7 @@
 pkgbase = r-paxtoolsr
 	pkgdesc = Access Pathways from Multiple Databases Through BioPAX and Pathway Commons
 	pkgver = 1.38.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/paxtoolsr
 	arch = any
 	license = LGPL
@@ -27,7 +27,7 @@ pkgbase = r-paxtoolsr
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/paxtoolsr_1.38.0.tar.gz
+	source = https://bioconductor.org/packages/3.19/bioc/src/contrib/paxtoolsr_1.38.0.tar.gz
 	sha256sums = fc1dd31db521b380ea4736d289c30b00a9322de323ead1807c7ac289ad477954
 
 pkgname = r-paxtoolsr

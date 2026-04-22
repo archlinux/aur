@@ -3,9 +3,10 @@
 
 _pkgname=paxtoolsr
 _pkgver=1.38.0
+_bioc_release=3.19
 pkgname=r-${_pkgname,,}
 pkgver=1.38.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Access Pathways from Multiple Databases Through BioPAX and Pathway Commons'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -36,7 +37,7 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/${_bioc_release}/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('fc1dd31db521b380ea4736d289c30b00a9322de323ead1807c7ac289ad477954')
 
 build() {
