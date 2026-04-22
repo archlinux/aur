@@ -1,6 +1,6 @@
 pkgbase = r-htmltable
 	pkgdesc = Advanced Tables for Markdown/HTML
-	pkgver = 2.4.3
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=htmlTable
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-htmltable
 	optdepends = r-tidyselect
 	optdepends = r-xml
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/htmlTable_2.4.3.tar.gz
-	sha256sums = 3739d01bff313ccd206b63940a8252b037f0521d041c721a4e0d195abd6ef6dd
+	source = https://cran.r-project.org/src/contrib/htmlTable_2.5.0.tar.gz
+	sha256sums = 0f61b0f27408fefc09f17fa3270c8f26d10a1e5a7f0dd26c203d3f961268d828
 
 pkgname = r-htmltable
