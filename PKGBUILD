@@ -1,5 +1,5 @@
 pkgname=graphify-bin
-pkgver=0.4.25
+pkgver=0.4.26
 pkgrel=1
 pkgdesc="AI coding assistant skill - turn any folder into a queryable knowledge graph"
 arch=(x86_64)
@@ -8,8 +8,8 @@ license=(MIT)
 depends=("python>=3.10" "python" "python-pip")
 provides=(graphify)
 
-source=("https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.4.25.tar.gz")
-sha256sums=('af985c43a8fc9725e33dfad7e6b77d89ba3784baf6b674b87da36c38f32d6698')
+source=("https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.4.26.tar.gz")
+sha256sums=('742a0ff2430b83c66ef9c5d44613d5a3dd8835935d7a8057963253498a25bcae')
 
 build() {
     cd "${srcdir}/graphifyy-${pkgver}"
