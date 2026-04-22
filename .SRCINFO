@@ -1,0 +1,11 @@
+pkgbase = llmfs
+	pkgdesc = Terminal-based AI service analyzer — scans responses for suspicious patterns and telemetry
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/zaraiskij/llmfs
+	arch = x86_64
+	license = MIT
+	source = llmfs-linux-x86_64::https://github.com/zaraiskij/llmfs/releases/download/v0.9.1/llmfs-linux-x86_64
+	sha256sums = 228d431946a5426621f22cb0cd462af6db8fc64ecd9d64df7f62efd949a16042
+
+pkgname = llmfs
