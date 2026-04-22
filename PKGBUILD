@@ -1,12 +1,12 @@
 # Maintainer: weversonl
 pkgname=gnome-quick-share
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Quick Share client for GNOME"
 arch=('x86_64')
 url="https://github.com/weversonl/gnome-quick-share"
 license=('AGPL-3.0-only')
-options=(!debug)
+options=(!debug !lto)
 depends=(
   'gtk4'
   'gtk3'
