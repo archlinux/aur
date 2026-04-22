@@ -1,6 +1,6 @@
 pkgbase = conar-bin
 	pkgdesc = AI-powered tool for working with Postgres, MySQL, MSSQL and ClickHouse.
-	pkgver = 0.28.1
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://github.com/wannabespace/conar
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = conar-bin
 	depends = systemd-libs
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = conar-0.28.1.deb::https://download.conar.app/linux/deb/x64
-	sha256sums_x86_64 = cf32380b3819a841a46535e62715ca8daa83d98f946431272b4edf15b2656f91
+	source_x86_64 = conar-0.29.0.deb::https://download.conar.app/linux/deb/x64
+	sha256sums_x86_64 = 9103c6be01f9018e3c9632a64efd756bd3c56803556e83c3999994e585ab35d9
 
 pkgname = conar-bin
