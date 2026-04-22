@@ -1,6 +1,6 @@
 pkgname=aiprobe
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="CLI for probing AI API providers, models, and diagnostics"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gqcdm/aiprobe"
