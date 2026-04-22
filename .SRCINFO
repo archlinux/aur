@@ -1,0 +1,20 @@
+pkgbase = wdotool-git
+	pkgdesc = xdotool-compatible input automation for Wayland (git, rolling)
+	pkgver = 0.1.3.r4.g6793da2
+	pkgrel = 1
+	url = https://github.com/cushycush/wdotool
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = libxkbcommon
+	depends = wayland
+	provides = wdotool
+	conflicts = wdotool
+	conflicts = wdotool-bin
+	source = wdotool::git+https://github.com/cushycush/wdotool.git
+	sha256sums = SKIP
+
+pkgname = wdotool-git
