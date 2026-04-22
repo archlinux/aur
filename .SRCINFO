@@ -1,0 +1,15 @@
+pkgbase = python-twocaptcha
+	pkgdesc = Python wrapper for 2Captcha API.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/twocaptcha/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://pypi.org/packages/source/T/TwoCaptcha/TwoCaptcha-0.0.1.tar.gz
+	sha256sums = fd04127de71ca4bd31c22add84a5bcb7c683cf9ee5bf503ca14a8f372ac76a0e
+
+pkgname = python-twocaptcha
