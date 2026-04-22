@@ -4,7 +4,7 @@
 _basename="powershell"
 _pkgname="${_basename}-preview"
 pkgname="${_pkgname}-bin"
-pkgver=7.6.0
+pkgver=7.6.1
 _pkgver="${pkgver//preview/-preview.}"
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework"
@@ -19,8 +19,9 @@ license=(
   'MIT'
 )
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
+  'libstdc++'
 )
 optdepends=(
   'lttng-ust2.12: CoreCLR tracing'
@@ -32,9 +33,9 @@ provides=(
 conflicts=(
   "${_basename}"
 )
-options=(
-  # '!strip'
-)
+# options=(
+#   '!strip'
+# )
 install="${_basename}.install"
 source_aarch64=(
   "${_url}/releases/download/v${_pkgver}/${_basename}-${_pkgver}-linux-arm64.tar.gz"
@@ -50,14 +51,14 @@ noextract=(
   "${source_armv7h[@]##*/}"
   "${source_x86_64[@]##*/}"
 )
-sha256sums_aarch64=('dddf7564fb3b52dc26be5580fc5b4e08eb3fa65b094488aae6d4b3cad5fea460')
-sha256sums_armv7h=('ecdff7807c239adf6a600632e8e686367a10f23fb2435c668fbe19b06dcc136e')
-sha256sums_x86_64=('04517472cf57d7f9cbd93897da9bed467c73ca6063c29d7655ebc20aa1d6023f')
+sha256sums_aarch64=('73498813194ea0d849d5942332ee6e51657ea66da08216aa1050788d5c52b741')
+sha256sums_armv7h=('50e3b4a3b36a61720abe92decda8c518c784b76d9371c8c32ae481566d5cf076')
+sha256sums_x86_64=('dfc94229767921603f7c3e1cb1ac5aa931448af7496ccf657723b6278057c415')
 
 package() {
-  local source_carch="source_${CARCH}[0]"
-  local source_arch="${!source_carch}"
-  local source_artifact="${source_arch##*/}"
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
 
   install -vd "${pkgdir}/usr/bin" \
               "${pkgdir}/usr/lib/${_basename}" \

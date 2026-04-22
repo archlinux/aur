@@ -1,6 +1,6 @@
 pkgbase = powershell-preview-bin
 	pkgdesc = A cross-platform automation and configuration tool/framework
-	pkgver = 7.6.0
+	pkgver = 7.6.1
 	pkgrel = 1
 	url = https://microsoft.com/PowerShell
 	install = powershell.install
@@ -8,20 +8,21 @@ pkgbase = powershell-preview-bin
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	optdepends = lttng-ust2.12: CoreCLR tracing
-	provides = powershell=7.6.0
-	provides = powershell-preview=7.6.0
+	provides = powershell=7.6.1
+	provides = powershell-preview=7.6.1
 	conflicts = powershell
-	noextract = powershell-7.6.0-linux-arm64.tar.gz
-	noextract = powershell-7.6.0-linux-arm32.tar.gz
-	noextract = powershell-7.6.0-linux-x64.tar.gz
-	source_aarch64 = https://github.com/PowerShell/PowerShell/releases/download/v7.6.0/powershell-7.6.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = dddf7564fb3b52dc26be5580fc5b4e08eb3fa65b094488aae6d4b3cad5fea460
-	source_armv7h = https://github.com/PowerShell/PowerShell/releases/download/v7.6.0/powershell-7.6.0-linux-arm32.tar.gz
-	sha256sums_armv7h = ecdff7807c239adf6a600632e8e686367a10f23fb2435c668fbe19b06dcc136e
-	source_x86_64 = https://github.com/PowerShell/PowerShell/releases/download/v7.6.0/powershell-7.6.0-linux-x64.tar.gz
-	sha256sums_x86_64 = 04517472cf57d7f9cbd93897da9bed467c73ca6063c29d7655ebc20aa1d6023f
+	noextract = powershell-7.6.1-linux-arm64.tar.gz
+	noextract = powershell-7.6.1-linux-arm32.tar.gz
+	noextract = powershell-7.6.1-linux-x64.tar.gz
+	source_aarch64 = https://github.com/PowerShell/PowerShell/releases/download/v7.6.1/powershell-7.6.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 73498813194ea0d849d5942332ee6e51657ea66da08216aa1050788d5c52b741
+	source_armv7h = https://github.com/PowerShell/PowerShell/releases/download/v7.6.1/powershell-7.6.1-linux-arm32.tar.gz
+	sha256sums_armv7h = 50e3b4a3b36a61720abe92decda8c518c784b76d9371c8c32ae481566d5cf076
+	source_x86_64 = https://github.com/PowerShell/PowerShell/releases/download/v7.6.1/powershell-7.6.1-linux-x64.tar.gz
+	sha256sums_x86_64 = dfc94229767921603f7c3e1cb1ac5aa931448af7496ccf657723b6278057c415
 
 pkgname = powershell-preview-bin
