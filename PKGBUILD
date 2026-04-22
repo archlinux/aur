@@ -1,6 +1,9 @@
+# Maintainer: Layne Pedersen <layne.pedersen@gmail.com>
+
+## see https://www.netlib.org/f2c/changes for versioning
 
 pkgname=mingw-w64-f2c
-pkgver=1.0
+pkgver=20240130
 pkgrel=1
 pkgdesc='Fortran to C code translator (mingw-w64)'
 url='http://www.netlib.org/f2c/index.html'
@@ -11,7 +14,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-make')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://www.netlib.org/f2c/libf2c.zip" libf2c-1.patch)
 noextract=("libf2c.zip")
-sha256sums=('ca404070e9ce0a9aaa6a71fc7d5489d014ade952c5d6de7efb88de8e24f2e8e0'
+sha256sums=('cc84253b47b5c036aa1d529332a6c218a39ff71c76974296262b03776f822695'
             '87094ca646b67339bcb8faef5d400249e4abf744086398788d15c17f306eda36')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -20,7 +23,7 @@ prepare() {
   cd "${srcdir}"
 
   # zipbomb
-  rm -rf libf2c 
+  rm -rf libf2c
   mkdir -p libf2c && pushd libf2c
   unzip "${srcdir}"/libf2c.zip
 
@@ -45,5 +48,4 @@ package() {
     #${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
-} 
-
+}

@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-f2c
 	pkgdesc = Fortran to C code translator (mingw-w64)
-	pkgver = 1.0
+	pkgver = 20240130
 	pkgrel = 1
 	url = http://www.netlib.org/f2c/index.html
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = mingw-w64-f2c
 	options = staticlibs
 	source = http://www.netlib.org/f2c/libf2c.zip
 	source = libf2c-1.patch
-	sha256sums = ca404070e9ce0a9aaa6a71fc7d5489d014ade952c5d6de7efb88de8e24f2e8e0
+	sha256sums = cc84253b47b5c036aa1d529332a6c218a39ff71c76974296262b03776f822695
 	sha256sums = 87094ca646b67339bcb8faef5d400249e4abf744086398788d15c17f306eda36
 
 pkgname = mingw-w64-f2c
-
