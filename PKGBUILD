@@ -4,7 +4,7 @@
 _name="victoriametrics"
 _name_camel="VictoriaMetrics"
 pkgname="${_name}-cluster"
-pkgver='1.137.0'
+pkgver='1.140.0'
 pkgrel='1'
 pkgdesc='Fast, cost-effective monitoring solution and time series database'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ url="https://${_uri}/${_name_camel}"
 license=('Apache')
 makedepends=('go' 'git')
 conflicts=("${_name}-agent" "${_name}-bin" "${_name}" 'vmutils')
-source=("${url}/archive/refs/tags/v${pkgver}-cluster.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/${_name_camel}/tar.gz/refs/tags/v${pkgver}-cluster"
 	"vmauth"
 	"vmauth.service"
 	"vminsert"
@@ -25,7 +25,7 @@ source=("${url}/archive/refs/tags/v${pkgver}-cluster.tar.gz"
 	"vmauth.yml"
 	"${_name}.sysusers"
 	"${_name}.tmpfiles")
-sha256sums=('1664efca2f71c3534e22f97d2fdb7c4b78ef0ec6b0f1631c45c73bf266f3929b'
+sha256sums=('dba07ed1ce8ade6b397965ee9732990fafbb463bcce0f69dfd7e2b7589c918ae'
             '459b40675c3b77b108a597e864d29b72c93870a0ef0d814d8a99f0c293addd54'
             'd08557b61879cc854287bab39a62a176c54c752a3bf2bf71d42b1c27a645a571'
             '5144d6cb0732ae7d12e92ec4e13c36f3373407b7f826c44aedff6da50dd8d17a'
@@ -79,7 +79,7 @@ check() {
   cd "${GOPATH}/src/${_uri}/${_name}"
   eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
   GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" \
-    DISABLE_FSYNC_FOR_TESTING=1 go test ./lib/... ./app/...
+    DISABLE_FSYNC_FOR_TESTING=1 go test -modcacherw ./lib/... ./app/...
 }
 
 package() {
