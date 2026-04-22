@@ -2,14 +2,13 @@
 pkgbase=godot-bin
 pkgname=('godot-bin' 'godot-mono-bin')
 pkgver=4.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Godot Engine - Prebuilt binary from GitHub"
 arch=(x86_64)
 url="https://godotengine.org"
 license=(MIT)
 makedepends=(setconf)
-depends=(brotli ca-certificates embree freetype2 graphite libglvnd libspeechd libsquish libtheora libvorbis
-         libwebp libwslay libxcursor libxi libxinerama libxrandr miniupnpc openxr pcre2)
+depends=(libglvnd libspeechd libxcursor libxi libxinerama libxrandr)
 
 _pkgver_url="4.6.2-stable"
 _filename_std="Godot_v${_pkgver_url}_linux.x86_64.zip"
