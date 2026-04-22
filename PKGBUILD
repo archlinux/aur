@@ -18,14 +18,14 @@ sha256sums=("a1956d83f9dc2ba863c3383bdbd873d8b42b805c9f0accd31d76743512f62e6b"
 package() {
         install -d "$pkgdir/opt/kelivo"
         install -Dm755 "$srcdir/kelivo" "$pkgdir/opt/kelivo/kelivo"
-		cp -r "$srcdir/lib" "$pkgdir/opt/$pkgname/"
-  		cp -r "$srcdir/data" "$pkgdir/opt/$pkgname/"
+		cp -r "$srcdir/lib" "$pkgdir/opt/kelivo/"
+  		cp -r "$srcdir/data" "$pkgdir/opt/kelivo/"
 
   		install -Dm644 "$srcdir/data/flutter_assets/assets/app_icon.png" \
   			"$pkgdir/usr/share/icons/hicolor/256x256/apps/kelivo.png"
 
-  		install -Dm644 "$srcdir/kelivo.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  		install -Dm644 "$srcdir/kelivo.desktop" "$pkgdir/usr/share/applications/kelivo.desktop"
   		
         install -d "$pkgdir/usr/bin"
-  		ln -s "/opt/$pkgname/kelivo" "$pkgdir/usr/bin/kelivo"
+  		ln -s "/opt/kelivo/kelivo" "$pkgdir/usr/bin/kelivo"
 }
