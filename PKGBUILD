@@ -3,7 +3,7 @@
 
 pkgname=paper2slides-git
 pkgver=r25.941695a
-pkgrel=1
+pkgrel=2
 pkgdesc="From paper to presentation in one click (CLI)"
 arch=('any')
 url="https://github.com/HKUDS/Paper2Slides"
@@ -21,6 +21,7 @@ depends=(
   'python-requests'
   'python-reportlab'
   'python-tqdm'
+  'python-markdown'
   'uvicorn'
 )
 makedepends=('git')
