@@ -1,13 +1,18 @@
 pkgbase = pi-coding-agent-git
 	pkgdesc = Coding agent CLI with read, bash, edit, write tools and session management
-	pkgver = 0.68.0.r7.ga0a16c776
+	pkgver = 0.68.1.r14.g239e84279
 	pkgrel = 1
 	url = https://github.com/badlogic/pi-mono
+	install = pi-coding-agent-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = npm
-	makedepends = typescript-go-git
+	depends = nodejs
+	provides = pi-coding-agent
+	conflicts = pi-coding-agent
+	options = !strip
+	options = !debug
 	source = pi-coding-agent::git+https://github.com/badlogic/pi-mono
 	source = pi-wrapper
 	source = APPEND_SYSTEM.md.example
@@ -16,91 +21,3 @@ pkgbase = pi-coding-agent-git
 	sha256sums = SKIP
 
 pkgname = pi-coding-agent-git
-	install = pi-coding-agent-git.install
-	depends = nodejs
-	provides = pi-coding-agent
-	conflicts = pi-coding-agent
-
-pkgname = pi-ext-todo-git
-	pkgdesc = Todo list extension
-	install = pi-ext-git.install
-	provides = pi-ext-todo
-	conflicts = pi-ext-todo
-
-pkgname = pi-ext-git-checkpoint-git
-	pkgdesc = Git checkpoint extension
-	install = pi-ext-git.install
-	provides = pi-ext-git-checkpoint
-	conflicts = pi-ext-git-checkpoint
-
-pkgname = pi-ext-plan-mode-git
-	pkgdesc = Plan mode extension
-	install = pi-ext-git.install
-	provides = pi-ext-plan-mode
-	conflicts = pi-ext-plan-mode
-
-pkgname = pi-ext-auto-commit-git
-	pkgdesc = Auto commit on exit extension
-	install = pi-ext-git.install
-	provides = pi-ext-auto-commit
-	conflicts = pi-ext-auto-commit
-
-pkgname = pi-ext-notify-git
-	pkgdesc = Notification extension
-	install = pi-ext-git.install
-	provides = pi-ext-notify
-	conflicts = pi-ext-notify
-
-pkgname = pi-ext-confirm-destructive-git
-	pkgdesc = Confirm destructive operations
-	install = pi-ext-git.install
-	provides = pi-ext-confirm-destructive
-	conflicts = pi-ext-confirm-destructive
-
-pkgname = pi-ext-protected-paths-git
-	pkgdesc = PI Protected paths extension
-	install = pi-ext-git.install
-	provides = pi-ext-protected-paths
-	conflicts = pi-ext-protected-paths
-
-pkgname = pi-ext-subagent-git
-	pkgdesc = PI Subagent extension
-	install = pi-ext-git.install
-	provides = pi-ext-subagent
-	conflicts = pi-ext-subagent
-
-pkgname = pi-ext-session-name-git
-	pkgdesc = PI Extension session name
-	install = pi-ext-git.install
-	provides = pi-ext-session-name
-	conflicts = pi-ext-session-name
-
-pkgname = pi-ext-claude-rules-git
-	pkgdesc = PI Extension claude-rules
-	install = pi-ext-git.install
-	provides = pi-ext-claude-rules
-	conflicts = pi-ext-claude-rules
-
-pkgname = pi-ext-send-user-message-git
-	pkgdesc = PI Extension pi-coding-agent
-	install = pi-ext-git.install
-	provides = pi-ext-send-user-message
-	conflicts = pi-ext-send-user-message
-
-pkgname = pi-ext-bookmark-git
-	pkgdesc = PI Extension bookmark
-	install = pi-ext-git.install
-	provides = pi-ext-bookmark
-	conflicts = pi-ext-bookmark
-
-pkgname = pi-ext-titlebar-spinner-git
-	pkgdesc = PI Extension
-	install = pi-ext-git.install
-	provides = pi-ext-
-	conflicts = pi-ext-
-
-pkgname = pi-ext-bash-spawn-hook-git
-	pkgdesc = PI Extension bash spawn hook
-	install = pi-ext-git.install
-	provides = pi-ext-bash-spawn-hook
-	conflicts = pi-ext-bash-spawn-hook
