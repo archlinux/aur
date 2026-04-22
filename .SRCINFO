@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-vulkan-utility-libraries
+	pkgdesc = Vulkan Utility Libraries (mingw-w64)
+	pkgver = 1.4.341
+	pkgrel = 1
+	url = https://www.khronos.org/vulkan/
+	arch = any
+	groups = mingw-w64-vulkan-devel
+	license = Apache-2.0
+	makedepends = mingw-w64-cmake
+	makedepends = git
+	makedepends = mingw-w64-vulkan-headers
+	makedepends = ninja
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git#tag=vulkan-sdk-1.4.341.0
+	sha256sums = e3e09eb9efaa90c16a36fcbd5f50b7cad07855215aa9c045774949d5f89de97d
+
+pkgname = mingw-w64-vulkan-utility-libraries
