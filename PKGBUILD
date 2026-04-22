@@ -9,11 +9,11 @@ url='https://github.com/michel-kraemer/zsh-patina'
 license=('MIT')
 depends=('gcc-libs')
 conflicts=('zsh-patina-git' 'zsh-patina')
-source=("$url/releases/download/$pkgver/zsh-patina-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
+source=("$url/releases/download/$pkgver/zsh-patina-v$pkgver-$CARCH-unknown-linux-gnu.tar.gz")
 sha256sums=('5b1b8863d69d7fd20b793f8299fa78c66b594a0cb9c70f8701c05b467460b879')
 
 package() {
-    cd "$srcdir"/zsh-patina-v"$pkgver"-x86_64-unknown-linux-gnu
+    cd "$srcdir"/zsh-patina-v"$pkgver"-"$CARCH"-unknown-linux-gnu
 
     install -Dm755 zsh-patina "$pkgdir/usr/bin/zsh-patina"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
