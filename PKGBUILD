@@ -6,6 +6,7 @@ arch=(x86_64)
 url="https://graphify.net"
 license=(MIT)
 depends=("python>=3.10" "python" "python-pip")
+provides=(graphify)
 
 source=("https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.4.25.tar.gz")
 sha256sums=('af985c43a8fc9725e33dfad7e6b77d89ba3784baf6b674b87da36c38f32d6698')
