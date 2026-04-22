@@ -2,7 +2,7 @@
 # Contributor Wimpy <vvinn.py[AT]@gmail.com>
 
 pkgname=kimi-cli
-pkgver=1.34.0
+pkgver=1.37.0
 pkgrel=1
 pkgdesc="Kimi Code CLI is your next CLI agent."
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/MoonshotAI/kimi-cli"
 license=('Apache-2.0')
 
 source=("https://github.com/MoonshotAI/kimi-cli/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2928d62ddf26ecd2b16ef5e09cdc461d63c0b7895780cebc67d6a19747b21c55')
+sha256sums=('367f5c1c51011aa192b46b8494a249ec043e61aa6668fc3e6d6829f9130b034a')
 
 makedepends=(
   uv
