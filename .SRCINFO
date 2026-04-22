@@ -1,6 +1,6 @@
 pkgbase = redumper
 	pkgdesc = Low level CD dumper utility
-	pkgver = 714
+	pkgver = 715
 	pkgrel = 1
 	url = https://github.com/superg/redumper
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = redumper
 	depends = glibc
 	depends = libc++
 	depends = libc++abi
-	source = redumper-714.tar.gz::https://github.com/superg/redumper/archive/refs/tags/b714.tar.gz
-	sha256sums = fd8124b5f4ba3cab9e16948640c4260358f3cfd3165a107bcdeb5159488c967b
+	source = redumper-715.tar.gz::https://github.com/superg/redumper/archive/refs/tags/b715.tar.gz
+	sha256sums = f835e4c5b51f3f78feff98e41ae275a5b9f5f4ddcb9d61d53576694e8b46b8e7
 
 pkgname = redumper
