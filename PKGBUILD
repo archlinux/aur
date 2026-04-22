@@ -1,6 +1,6 @@
 # Maintainer: canfro <francodvo@gmail.com>
 pkgname=erwin-core-git
-pkgver=r32.d9b967a
+pkgver=r33.d61d9fd
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/erwin-lang/erwin-core.git"
