@@ -1,15 +1,16 @@
 pkgbase = qodercli-bin
 	pkgdesc = Qoder Agentic CLI - Advanced AI coding agent from Alibaba
-	pkgver = 0.1.46
+	pkgver = 0.1.47
 	pkgrel = 1
 	url = https://qoder.com/cli
 	arch = x86_64
 	arch = aarch64
 	license = LicenseRef-Qoder-Product-Service
-	provides = qoderclibin
 	conflicts = qoder-cli
-	options = !strip
-	options = !debug
+	optdepends = bash-completion: for bash completions
+	optdepends = zsh-completion: for zsh completions
+	optdepends = fish: for fish completions
+	provides = qoderclibin
 	source = LICENSE
 	source = qodercli.bash
 	source = qodercli.zsh
@@ -18,10 +19,9 @@ pkgbase = qodercli-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	source_x86_64 = qodercli_0.1.47_linux_amd64.tar.gz::https://download.qoder.com/qodercli/releases/0.1.47/qodercli_0.1.47_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1888e1046814ba11ff7de7a1a8146591256011844a96b6f56e789c2ef638547a
+	source_aarch64 = qodercli_0.1.47_linux_arm64.tar.gz::https://download.qoder.com/qodercli/releases/0.1.47/qodercli_0.1.47_linux_arm64.tar.gz
+	sha256sums_aarch64 = bfa5082ebd78a30da67394dcec00f49ab1beb6950da3b3f04fc741643acba87a
 
 pkgname = qodercli-bin
-	source_x86_64 = qodercli_0.1.46_linux_amd64.tar.gz::https://download.qoder.com/qodercli/releases/0.1.46/qodercli_0.1.46_linux_amd64.tar.gz
-	sha256sums_x86_64 = abb8c482e04bb9bd9a0c546893ae518a0fa664bd79670fec0d197c521d75bed7
-
-	source_aarch64 = qodercli_0.1.46_linux_arm64.tar.gz::https://download.qoder.com/qodercli/releases/0.1.46/qodercli_0.1.46_linux_arm64.tar.gz
-	sha256sums_aarch64 = c57a97ddcbd5e7c54ed52784300f8be80b4fc79beab1c24c0afc4161124f3e5c
