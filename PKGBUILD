@@ -1,7 +1,7 @@
 pkgname=jsesh-git
 _upstream=jsesh
 pkgver=7.11.r0.g68c4c77d
-pkgrel=1
+pkgrel=2
 pkgdesc="Hieroglyphic text editor built from the upstream JSesh git repository"
 arch=('any')
 url='https://github.com/rosmord/jsesh'
