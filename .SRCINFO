@@ -1,7 +1,7 @@
 pkgbase = marmot
 	pkgdesc = A distributed SQLite server with MySQL wire compatible interface
 	pkgver = 2.9.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maxpert/marmot
 	arch = any
 	license = MIT

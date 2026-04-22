@@ -1,6 +1,6 @@
 pkgname=marmot
 pkgver=2.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed SQLite server with MySQL wire compatible interface"
 arch=(any)
 url="https://github.com/maxpert/marmot"
@@ -23,5 +23,4 @@ package() {
 	install -o root -g root -m755 -D $srcdir/$pkgname-${pkgver}-beta/dist/$pkgname $pkgdir/usr/bin/$pkgname
 	install -o root -g root -m644 -D $srcdir/config.toml $pkgdir/etc/$pkgname/config.toml
 	install -o root -g root -m644 -D $srcdir/$pkgname.service $pkgdir/usr/lib/systemd/system/$pkgname.service
-	install -o nobody -g nobody -m755 -d $pkgdir/var/lib/marmot $pkgdir/var/log/marmot
 }
