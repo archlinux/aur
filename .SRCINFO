@@ -8,6 +8,7 @@ pkgbase = agent-deck-bin
 	license = MIT
 	depends = tmux
 	depends = glibc
+	provides = agent-deck
 	conflicts = agent-deck
 	options = !strip
 	options = !debug
