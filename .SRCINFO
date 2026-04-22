@@ -1,6 +1,6 @@
 pkgbase = beamsync-bin
 	pkgdesc = A fast, local peer-to-peer file transfer application with a Neubrutalist interface
-	pkgver = 2.3
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/PranavAgarkar07/BeamSync
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = beamsync-bin
 	depends = gtk3
 	provides = beamsync
 	conflicts = beamsync
-	source = https://github.com/PranavAgarkar07/BeamSync/releases/download/v2.3/BeamSync
+	source = https://github.com/PranavAgarkar07/BeamSync/releases/download/v2.4.0/BeamSync
 	source = beamsync.desktop
-	sha256sums = 28e40fcd5258b62a5f7fec24dd25f9dac8aa93b7908c7a59c880e5f6856235c0
+	sha256sums = c016c5ea6c244118c0042b73e9d76dca4224e05f73dab9d8a001421f990fb631
 	sha256sums = 897fa734e9806ccd7354c72979196f563c55119152999b1b94d03231ee0d96a1
 
 pkgname = beamsync-bin
