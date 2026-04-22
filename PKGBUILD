@@ -1,7 +1,7 @@
 # Maintainer: Max Harmathy <harmathy@alumni.tum.de>
 # Contributor: JayceCao <jaycecao520@gmail.com>
 pkgname=oras
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='A command line tool that allows you to push and pull files from any OCI registry'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/oras-project/oras'
 license=(Apache-2.0)
 makedepends=('go' 'git')
 source=("$pkgname::git+https://github.com/oras-project/oras#commit=v$pkgver")
-sha512sums=('72a2291db600662744675af3fdf3b3370f5e256392ea950859fc4eea3239aec403b9695c8ff1d68a0c388475a13e201d2f6dc5239747273cccb3fd7e7f5ee692')
+sha512sums=('64b1f2ef183cdee3e8b1debc174d1d9060f7e2109d0f62a977b5b35335e7a365d99e283adac104957af0bbc4ffb168ba1e8ef312568bd72bce652e9a5b6c2573')
 
 build() {
   # Flags to trim path from binary
