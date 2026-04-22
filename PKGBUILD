@@ -36,12 +36,6 @@ package() {
   install -Dm755 bin/omarchy-uninstall-window-restore \
     "$pkgdir/usr/bin/omarchy-uninstall-window-restore"
 
-  # Install alpm hook for automatic cleanup on removal
-  install -Dm644 hooks/omarchy-window-restore-remove.hook \
-    "$pkgdir/usr/share/libalpm/hooks/omarchy-window-restore-remove.hook"
-  install -Dm755 hooks/omarchy-window-restore-remove.sh \
-    "$pkgdir/usr/share/libalpm/scripts/omarchy-window-restore-remove"
-
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
