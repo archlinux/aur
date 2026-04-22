@@ -1,6 +1,6 @@
 # Maintainer: canfro <francodvo@gmail.com>
 pkgname=erwin-std-git
-pkgver=r4.2961a85
+pkgver=r5.859f59d
 pkgrel=1
 arch=('any')
 url="https://github.com/erwin-lang/erwin-std.git"

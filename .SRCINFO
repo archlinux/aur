@@ -1,6 +1,6 @@
 pkgbase = erwin-std-git
 	pkgdesc = The Erwin programming language standard library
-	pkgver = r4.2961a85
+	pkgver = r5.859f59d
 	pkgrel = 1
 	url = https://github.com/erwin-lang/erwin-std.git
 	arch = any
