@@ -3,7 +3,7 @@ Name=Cursor
 Comment=The AI Code Editor.
 GenericName=Text Editor
 Exec=cursor %U
-Icon=cursor
+Icon=co.anysphere.cursor
 Type=Application
 StartupNotify=false
 StartupWMClass=Cursor
@@ -15,4 +15,4 @@ Keywords=cursor;vscode;editor;code;ide;
 [Desktop Action new-empty-window]
 Name=New Empty Window
 Exec=cursor --new-window %U
-Icon=cursor
+Icon=co.anysphere.cursor
