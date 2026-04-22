@@ -1,7 +1,7 @@
 pkgbase = labwc-hdr-git
 	pkgdesc = stacking wayland compositor with look and feel from openbox (git version) (experimental HDR branch and other patches applied)
 	pkgver = 0.9.5.r80.g5f668a82
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/labwc/labwc
 	arch = x86_64
 	license = GPL-2.0-only
@@ -26,6 +26,6 @@ pkgbase = labwc-hdr-git
 	source = https://github.com/labwc/labwc/pull/3424.patch
 	md5sums = SKIP
 	md5sums = 78692fe6f15dd8f191d0af6d5ce34e6a
-	md5sums = 5cbb72d3d0f43f350dd8e43fc8742dcb
+	md5sums = 724b526caf328a041cc39545f79076e7
 
 pkgname = labwc-hdr-git
