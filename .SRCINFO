@@ -1,6 +1,6 @@
 pkgbase = postier-bin
 	pkgdesc = API client without bloat
-	pkgver = 2.0.0
+	pkgver = 2.1.2
 	pkgrel = 3
 	url = https://github.com/results-may-vary-org/postier
 	install = postier-bin.install
@@ -13,7 +13,7 @@ pkgbase = postier-bin
 	depends = hicolor-icon-theme
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/results-may-vary-org/postier/releases/download/v2.0.0/postier_2.0.0_amd64-webkit2_41.deb
-	sha256sums_x86_64 = 1c96064bb4ec6de77e556d4209add6c0c89dd297411f3d58c4f3b59af089a69b
+	source_x86_64 = https://github.com/results-may-vary-org/postier/releases/download/v2.1.2/postier_2.1.2_amd64-webkit2_41.deb
+	sha256sums_x86_64 = f7af64db577341a594969349a9bae2e5f08ebd8137794cff891767ced29acae0
 
 pkgname = postier-bin
