@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP') 
+sha256sums=('8b2fd7f87b8672a8f3bff7fa7f172f8bd480b3bd9581343019e43ddad4b74709')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
