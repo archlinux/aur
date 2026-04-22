@@ -1,6 +1,6 @@
 pkgbase = cranky-git
 	pkgdesc = A minimalist, performant, and modular bar for Hyprland (git version)
-	pkgver = 0.2.0.r0.g1234567
+	pkgver = 0.3.0.rX.gYYYYYYY
 	pkgrel = 1
 	url = https://github.com/jaoppb/cranky
 	arch = x86_64
