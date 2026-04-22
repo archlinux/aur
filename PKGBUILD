@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-tui-bin
 pkgdesc="Real-time network diagnostics TUI — like htop for your network"
 
-pkgver=0.12.3
+pkgver=0.12.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('42ef98d93306ebaac0f599ba00f0e6be9a559b3ab2a1151f172f15ca15ee0de4'
+sha256sums=('457276f3c24bad36cd46f3dea6cd1f9f43ed45ee6eb8c5e6b67a82fd34b8ae0f'
             '25f1837fb575f27ff0b53bea961fb5e3a6282cec74646aa7cc638ebd0f725545')
-sha256sums_x86_64=('78e7a66950e253a63422f8737bc8100d5b5476533facd4e331ddbcdcbc86e99f')
-sha256sums_aarch64=('a642fe61c2ba80d557340b757811efd845c01af493dd9f6fdf021b8a58aa0c7c')
+sha256sums_x86_64=('d7696e8425ee52e09bf426bb4569b9b62cfb490cee3fb99daa810fdf131ddcaa')
+sha256sums_aarch64=('8e525b44d4cf71ce66ecaed05632d29ee3126cbe4d464c15f59e73132c8b84e5')
 
 
 case ${CARCH} in
