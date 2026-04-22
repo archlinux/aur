@@ -1,0 +1,11 @@
+--- a/src/ngx_http_lua_headers_in.c	2022-09-15 08:59:08.000000000 +0600
++++ b/src/ngx_http_lua_headers_in.c	2022-10-12 17:27:32.110186592 +0600
+@@ -153,7 +153,7 @@
+ #endif
+ 
+     { ngx_string("Cookie"),
+-                 offsetof(ngx_http_headers_in_t, cookies),
++                 offsetof(ngx_http_headers_in_t, cookie),
+                  ngx_http_set_builtin_multi_header },
+ 
+     { ngx_null_string, 0, ngx_http_set_header }
