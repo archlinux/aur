@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=SHMiner
+Comment=Mining Client for S-UAH cryptocurrency
+Exec=shminer
+Icon=shminer
+Terminal=false
+Type=Application
+Categories=Finance;Utility;Crypto;
+Keywords=crypto;miner;майнінг;s-uah;

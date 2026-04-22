@@ -1,0 +1,24 @@
+pkgbase = shminer-bin
+	pkgdesc = Mining Client for S-UAH cryptocurrency (Student Hryvnia Miner)
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/OlexiyOdarchuk/Student-Hryvnia-Miner
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = webkit2gtk
+	depends = gtk3
+	depends = cairo
+	depends = pango
+	provides = shminer
+	conflicts = shminer
+	source = shminer-1.1.4-linux-amd64::https://github.com/OlexiyOdarchuk/Student-Hryvnia-Miner/releases/download/v1.1.4/SHMiner-linux-amd64
+	source = LICENSE::https://raw.githubusercontent.com/OlexiyOdarchuk/Student-Hryvnia-Miner/v1.1.4/LICENSE
+	source = shminer.desktop
+	source = icon.png::https://raw.githubusercontent.com/OlexiyOdarchuk/Student-Hryvnia-Miner/main/build/appicon.png
+	sha256sums = dc10ef98303fde5c101262d7ee4cb6c1a13aaa35d868c01ab80e20e7164067f6
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 1e617e90981872e29d8dff6581a63c456cb4d30178d666406be7af91bbed98bd
+	sha256sums = e587396876cab3666978caddd2e80ad1a4584e37cc6508d2fd0f0e3c84629d85
+
+pkgname = shminer-bin
