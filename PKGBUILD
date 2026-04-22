@@ -1,6 +1,6 @@
 # Maintainer: Taha YVR <taha@noiserandom.com>
 pkgname=omarchist-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A GUI app for Omarchy Linux."
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ conflicts=('omarchist' 'omarchist-git')
 source_x86_64=("omarchist-linux-x86_64-${pkgver}.tar.gz::https://github.com/tahayvr/omarchist/releases/download/v${pkgver}/omarchist-linux-x86_64.tar.gz")
 source_aarch64=("omarchist-linux-aarch64-${pkgver}.tar.gz::https://github.com/tahayvr/omarchist/releases/download/v${pkgver}/omarchist-linux-aarch64.tar.gz")
 
-sha256sums_x86_64=('116bca732e0988ba5ef7a77a53e6395d3b792fb7fb1f14c83c8e740e12be62f2')
-sha256sums_aarch64=('0394f14bd5fb05ad871093217cd896d3f38d3c54783a77cfb240f951eedd5ad6')
+sha256sums_x86_64=('93b08b60990b50839de4100d5d8944ff822e142769c33b74eed02b749dec2773')
+sha256sums_aarch64=('c0f093fdaabc3cdcfb0062d44c368a84d88b376c2cd8e543dddf1e368b7ff8c1')
 
 package() {
     install -Dm755 omarchist                    "${pkgdir}/usr/bin/omarchist"
