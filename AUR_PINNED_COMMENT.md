@@ -1,16 +1,16 @@
-## paper2slides-git — быстрый старт
+## paper2slides-git — Quick Start
 
-### 1) Установка
+### 1) Installation
 
 ```bash
 yay -S paper2slides-git
 ```
 
-> Пакет ставит CLI и исходники в `/usr/lib/paper2slides`, но часть Python-зависимостей upstream пока не упакована в официальные репозитории Arch (например `lightrag-hku`, `mineru[core]`).
+> The package installs the CLI and source code to `/usr/lib/paper2slides`, but some upstream Python dependencies are not yet packaged in the official Arch repositories (e.g., `lightrag-hku`, `mineru[core]`).
 
 ---
 
-### 2) Рекомендуемый запуск через venv (чтобы подтянуть все зависимости)
+### 2) Recommended setup via venv (to install all dependencies)
 
 ```bash
 python -m venv ~/.local/share/paper2slides/venv
@@ -21,19 +21,19 @@ pip install -r /usr/lib/paper2slides/requirements.txt
 
 ---
 
-### 3) Где указывать API ключи
+### 3) Setting up API keys
 
-Есть два варианта.
+There are two options.
 
-**Вариант A (файл, постоянный):**
+**Option A (persistent file):**
 
-редактируйте файл:
+Edit the file:
 
 ```bash
 sudo nano /usr/lib/paper2slides/.env
 ```
 
-минимальный пример:
+Minimal example:
 
 ```dotenv
 RAG_LLM_API_KEY=sk-...
@@ -46,7 +46,7 @@ IMAGE_GEN_BASE_URL=https://openrouter.ai/api/v1
 IMAGE_GEN_MODEL=google/gemini-3-pro-image-preview
 ```
 
-**Вариант B (через консоль, без правки файлов):**
+**Option B (via console, without editing files):**
 
 ```bash
 export RAG_LLM_API_KEY='sk-...'
@@ -59,18 +59,18 @@ export IMAGE_GEN_BASE_URL='https://openrouter.ai/api/v1'
 export IMAGE_GEN_MODEL='google/gemini-3-pro-image-preview'
 ```
 
-Чтобы не вводить каждый раз — добавьте эти `export` в `~/.bashrc`.
+To avoid entering them every time, add these `export` commands to your `~/.bashrc`.
 
 ---
 
-### 4) Первый запуск
+### 4) First run
 
 ```bash
 source ~/.local/share/paper2slides/venv/bin/activate
 paper2slides --input ./paper.pdf --output slides --length medium --style academic
 ```
 
-Параллельный режим:
+Parallel mode:
 
 ```bash
 paper2slides --input ./paper.pdf --output slides --parallel 2
@@ -78,8 +78,8 @@ paper2slides --input ./paper.pdf --output slides --parallel 2
 
 ---
 
-### 5) Важно
+### 5) Important
 
-- Нужны валидные ключи LLM/vision-провайдера, без них пайплайн остановится.
-- Первый запуск может быть долгим из-за подготовки RAG и зависимостей.
-- Для принудительного перезапуска этапов используйте `--from-stage rag|summary|plan|generate`.
+- Valid LLM/vision provider keys are required; without them, the pipeline will stop.
+- The first run may take a while due to RAG preparation and dependency installation.
+- To force a restart of specific stages, use `--from-stage rag|summary|plan|generate`.

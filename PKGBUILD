@@ -1,5 +1,5 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Codex (GPT-5.3).
+# Created with assistance from Gemini 3 Flash.
 
 pkgname=paper2slides-git
 pkgver=r25.941695a
