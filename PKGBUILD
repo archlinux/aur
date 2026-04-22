@@ -1,8 +1,11 @@
 # Maintainer: Sandwich <sandwich dot archworks dot co>
 
 pkgname=mautrix-slack
-pkgver=0.2.3
+pkgver=26.04
 pkgrel=0
+# Upstream uses CalVer release names (v26.04) but tags the git repo with a
+# semver-shaped alias (v0.2604.0). Keep the tag pinned here.
+_srctag=v0.2604.0
 pkgdesc="A Matrix-Slack puppeting bridge"
 arch=('x86_64' 'aarch64')
 license=('AGPL-3.0-or-later')
@@ -12,19 +15,19 @@ makedepends=(go git)
 depends=('libolm')
 optdepends=('ffmpeg: If you want to send gifs from Matrix')
 url="https://github.com/mautrix/slack"
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_srctag}.tar.gz"
   sysusers-mautrix-slack.conf
   mautrix-slack.tmpfiles
   mautrix-slack.service
 )
 backup=("etc/${pkgname}/mautrix-slack.yaml")
-sha256sums=('e5bd8e42da628a6e4142ca8f8e5ef8c2b53f274fa3d33f9b6cb4f49ce24caa93'
+sha256sums=('bf54e6a53b47d63b1ec89c1197402cf2793b1bd19573583a855402667c50e618'
             'c1e3d2d9a65fa9ced4b35fdad98ec69a21dfee5da9e22e8c76e7821cebc0fa1e'
             'dc52d374b0af0af85aa44bc2679edf48e41c2631f684b8df7d2cc591fbadbf96'
             '58bed71d40735df20c01176eafea2e85aa98e2e24c26d2d0adc76652c5b25003')
 
 build() {
-  cd "$srcdir/slack-$pkgver"
+  cd "$srcdir/slack-${_srctag#v}"
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -36,7 +39,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/slack-$pkgver"
+  cd "$srcdir/slack-${_srctag#v}"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   install -Dm644 "$srcdir/sysusers-mautrix-slack.conf" "$pkgdir/usr/lib/sysusers.d/mautrix-slack.conf"
