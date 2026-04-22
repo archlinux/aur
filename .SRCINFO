@@ -1,6 +1,6 @@
 pkgbase = r-nanotime
 	pkgdesc = Nanosecond-Resolution Time Support for R
-	pkgver = 0.3.13
+	pkgver = 0.3.14
 	pkgrel = 1
 	url = https://cran.r-project.org/package=nanotime
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-nanotime
 	optdepends = r-data.table
 	optdepends = r-tinytest
 	optdepends = r-xts
-	source = https://cran.r-project.org/src/contrib/nanotime_0.3.13.tar.gz
-	sha256sums = 09e1d3943c2c908732a6f459b1a0af6381969d23ab841168d21198d4f29991af
+	source = https://cran.r-project.org/src/contrib/nanotime_0.3.14.tar.gz
+	sha256sums = 0746805c326011aa020bd7aba66666cb1fb82c3fa89ca6ab3fa9e11a1cc29669
 
 pkgname = r-nanotime
