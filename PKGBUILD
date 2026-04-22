@@ -1,6 +1,6 @@
 # Maintainer: kabeuchi-bird <https://github.com/kabeuchi-bird>
 pkgname=kabekami-git
-pkgver=r44.f47734d
+pkgver=r69.2d8df78
 pkgrel=1
 pkgdesc="KDE Plasma wallpaper rotation daemon with BlurPad display mode and online sources"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,10 @@ source=(
     "$pkgname::git+https://github.com/kabeuchi-bird/kabekami.git"
     "kabekami-config.desktop"
 )
-sha256sums=('SKIP'
-            'aadec7cb6e6bff5a008936578905beb8fbf18feb794b8decd3b3e8ad90023b27')
+sha256sums=(
+    'SKIP'
+    'c5448fc1733c37ce87f24bcdddc732f1bf524cf4c1c94d4ef8735987d01df62d'
+)
 
 pkgver() {
     cd "$pkgname"

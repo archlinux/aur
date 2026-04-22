@@ -1,6 +1,6 @@
 pkgbase = kabekami-git
 	pkgdesc = KDE Plasma wallpaper rotation daemon with BlurPad display mode and online sources
-	pkgver = r44.f47734d
+	pkgver = r69.2d8df78
 	pkgrel = 1
 	url = https://github.com/kabeuchi-bird/kabekami
 	arch = x86_64
