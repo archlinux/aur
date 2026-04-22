@@ -1,6 +1,6 @@
 pkgbase = gmatrix
 	pkgdesc = A fast and lightweight terminal entertainment program for Matrix rain
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/gducpm/gmatrix
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gmatrix
 	license = GPL3
 	makedepends = cmake
 	depends = ncurses
-	source = gmatrix-2.0.0.tar.gz::https://github.com/gducpm/gmatrix/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 6f0a868d3e37dfc6bb476205e605df46af8c541445af6edb73a6a244a9a7449c
+	source = gmatrix-2.0.1.tar.gz::https://github.com/gducpm/gmatrix/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = f41a971c356013edf60efbed04861f07f1a45f5c479f76b044423c2134709332
 
 pkgname = gmatrix
