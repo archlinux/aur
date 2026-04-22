@@ -21,7 +21,7 @@ _srcdir="Ember-$pkgver"
 prepare() {
   cd "$_srcdir"
   export CARGO_HOME="$srcdir/cargo-home"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -30,7 +30,7 @@ build() {
   # Force libsqlite3-sys to use system sqlite via pkg-config instead of
   # compiling the bundled sqlite3.c (which sqlx's `sqlite` feature enables).
   export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
-  cargo build --release --locked --offline
+  cargo build --release --offline
 }
 
 package() {
