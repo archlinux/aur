@@ -1,7 +1,7 @@
 # Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
 
 pkgname=tmux-ai-titles
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="AI-powered title generation for tmux panes and windows"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/evanpurkhiser/tmux-ai-titles/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('000b6ffc535650d8e96900b228fcf14afa335e0add318d3a20772cf9208feac8')
+sha256sums=('b5a012343d6418d8ec5acbefa764a1448db39eddc82f520a50d6459f76ccef0e')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
