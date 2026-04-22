@@ -9,8 +9,8 @@ license=('GPL-3.0-or-later')
 makedepends=('git' 'cargo' 'cargo-tauri' 'pnpm' 'lld' 'clang')
 depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libsoup3' 'openssl' 'pango' 'sqlite' 'hicolor-icon-theme')
 source=('git+https://github.com/Kesomannen/gale.git' 'Gale.desktop')
-sha256sums=('SKIP'
-    '169161f9ccc27cd7c0c6ce1ce75d63c15169f91706bd8b8b52d0fe4499ce4f70')
+b2sums=('SKIP'
+    'f87bf62232195c4d063ff59c1b6cc7d4c83e129f67ab824a16181d449dbe73cd9a6ebff37e1874a74a5b3f29ae6be7a261592e3e71cec1f3558a447787f9a32e')
 conflicts=('gale-bin')
 provides=('gale')
 options=('!lto')
