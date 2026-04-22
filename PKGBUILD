@@ -69,14 +69,12 @@ package() {
 
   local _target="$pkgdir/usr/share/applications/azahar.desktop"
 
-  sed -i 's/^Icon=.*/Icon=org.azahar_emu.Azahar/' "$_target"
-  
+  sed -i 's/^Exec=.*/Exec=azahar %f/' "$_target"
+  sed -i 's/^Name=.*/Name=AzaharPlus/' "$_target"
+  sed -i 's/^Icoz=.*/Icon=org.azahar_emu.Azahar/' "$_target"
+
   if ! grep -q "Categories=Game;" "$_target"; then
     sed -i 's/^Categories=.*/Categories=Game;Emulator;Qt;/' "$_target"
-  fi
-
-  if [ -f "$pkgdir/usr/bin/azahar-qt" ]; then
-    ln -s /usr/bin/azahar-qt "$pkgdir/usr/bin/azahar"
   fi
 
   rm -rf "$pkgdir/usr/include/enet"
