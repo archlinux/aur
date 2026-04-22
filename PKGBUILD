@@ -2,7 +2,7 @@
 # Maintainer: Michael Lass <bevan@bi-co.net>
 
 pkgname=portfolio
-pkgver=0.83.1
+pkgver=0.83.2
 pkgrel=2
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ _mvnver=3.9.15
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz"
         "https://dlcdn.apache.org/maven/maven-3/$_mvnver/binaries/apache-maven-$_mvnver-bin.tar.gz"
         "portfolio.sh")
-sha1sums=('518290dd5e1139ab311e0d183a253a63d987b3fa'
+sha1sums=('912111a7d075e08ad002918b1513d80e644c7ed3'
           '4412bdb3bf417516e41cc314db66ff732720c081'
           '044c48a939e20311b27a1bbbd98d4866ee3eff3c')
 
