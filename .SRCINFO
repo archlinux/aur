@@ -1,0 +1,20 @@
+pkgbase = word-snatchers-cli
+	pkgdesc = A game which target is unscramble the letters to spell out a word fitting the given definition
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://github.com/coderaiser/cloudcmd
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = word-snatchers-cli
+	noextract = word-snatchers-cli-4.2.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = word-snatchers-cli-4.2.0.tgz::https://registry.npmjs.org/word-snatchers-cli/-/word-snatchers-cli-4.2.0.tgz
+	b2sums = f9e554ac373f524a6276029f8b786d783316aa274d6a37343d131251e12d4c8a49c8601fcf3f8fc0809baa096f8510a05df1e2ecc489637bcd53e926687b6dd5
+
+pkgname = word-snatchers-cli
