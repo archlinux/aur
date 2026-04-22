@@ -6,7 +6,7 @@
 pkgname=mawkawk
 pkgdesc='Re-point /usr/bin/awk symlink to mawk'
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 install="$pkgname.install"
 arch=('any')
 license=('EUPL-1.2')  # SPDX-License-Identifier: EUPL-1.2
@@ -15,7 +15,8 @@ provides=('awk')
 options=('!strip')
 source=(
   "$pkgname.hook"
-  'EUPL-1.2.txt'      # This ought to be included in core/licenses
+  # This ought to be included in core/licenses, IMHO.
+  'LICENSE::https://interoperable-europe.ec.europa.eu/sites/default/files/custom-page/attachment/2020-03/EUPL-1.2%20EN.txt'
 )
 sha256sums=(
   'c56c1f85e0d6ed5bb58e7e09ef22c93eab904be6952e8e7304a228ed462d7e4d'
@@ -23,8 +24,10 @@ sha256sums=(
 )
 
 package() {
-  install -Dm0644 -t "$pkgdir/usr/share/libalpm/hooks" "$srcdir/$pkgname.hook"
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/EUPL-1.2.txt"
+  cd "$srcdir"
+
+  install -Dm0644 -t "$pkgdir/usr/share/libalpm/hooks" "$pkgname.hook"
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 
 # eof
