@@ -1,5 +1,4 @@
 #!/bin/bash
 export APP_DIR=/opt/neuroforest
 export ENVIRONMENT=PRODUCTION
-cd "$APP_DIR"
-exec nenv/bin/invoke app.run
+exec /opt/neuroforest/nenv/bin/neuro "$@"

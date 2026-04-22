@@ -2,24 +2,26 @@
 
 pkgbase=neuroforest-git
 pkgname=neuroforest-git
-pkgver=1.2.0.r120.7772b0f
+pkgver=1.5.0.r313.33912e5
 pkgrel=1
 pkgdesc="NeuroForest knowledge engineering platform"
 arch=('x86_64')
 url="https://github.com/neuroforest"
 license=('custom')
 depends=('docker' 'docker-compose' 'python' 'rsync' 'ttf-liberation')
-makedepends=('git' 'npm')
+makedepends=('git' 'pnpm')
 conflicts=('neuroforest')
 provides=('neuroforest')
 options=('!strip' '!debug')
-_commit=7772b0fdde699521a716012c871a5e31e503c2fe
+_commit=33912e512bccd61d8af3574dbae72b04fd399d18
 source=("app::git+https://github.com/neuroforest/app.git#commit=$_commit"
+        'neuro.sh'
         'neurowiki.sh'
         'neurowiki.desktop')
 sha256sums=('SKIP'
-            'b0f745fde1dbd9767d199266f7c5883f2e46510c7ece565a0743000e49629565'
-            '7533ca9accca26b1537c5083a4141897ca2b85b5b0bd6982392d95e7ddf0d0f9')
+            '9036b43d4d03b6b5498d9be056ce979008c31b6e8bc79a832d8da3f1d555e78a'
+            'c785760662f0534ed8a0a5a3cee8a3c65ddd668b4a885c3267905529163a8081'
+            'fda674499a7514ee6154e2aa0af1d7b9b7eb90ec670414327398b60afe78ba34')
 
 pkgver() {
     cd "$srcdir/app"
@@ -37,32 +39,36 @@ build() {
     cd "$srcdir/app"
     python -m venv nenv
     nenv/bin/pip install ./neuro
-    export NF_DIR="$PWD"
+    export APP_DIR="$PWD"
     export ENVIRONMENT=BUILD
-    mkdir -p build
-    nenv/bin/invoke desktop.build tw5.build
+    nenv/bin/invoke tw5.compile
+    nenv/bin/invoke app.build
 }
 
 package() {
     local optdir="$pkgdir/opt/neuroforest"
     local repodir="$srcdir/app"
+    local buildnenv="$repodir/build/nenv"
 
     install -dm755 "$optdir"
-    rsync -aL --exclude='__pycache__' "$repodir"/{build,nenv,tasks} "$optdir/"
+    rsync -a --exclude='__pycache__' "$repodir"/{build,tasks} "$optdir/"
+    mv "$optdir/build/nenv" "$optdir/nenv"
+    rsync -a --exclude='test' "$repodir/assets" "$optdir/"
     chmod -R a+rX "$optdir/"
     install -Dm444 "$repodir/.env" "$optdir/.env"
     install -Dm644 "$repodir"/{docker-compose.yml,Dockerfile} -t "$optdir/"
 
-    # Fix venv references to $srcdir
+    # Fix venv references from build/nenv to final install path
     find "$optdir/nenv/bin" -type f -exec \
-        sed -i "s|$repodir/nenv|/opt/neuroforest/nenv|g" {} +
+        sed -i "s|$buildnenv|/opt/neuroforest/nenv|g" {} +
     find "$optdir/nenv" -name 'direct_url.json' -delete
-    sed -i "s|$repodir|/opt/neuroforest|g" "$optdir/nenv/pyvenv.cfg"
+    sed -i "s|$buildnenv|/opt/neuroforest/nenv|g" "$optdir/nenv/pyvenv.cfg"
 
+    install -Dm755 "$srcdir/neuro.sh" "$pkgdir/usr/bin/neuro"
     install -Dm755 "$srcdir/neurowiki.sh" "$pkgdir/usr/bin/neurowiki"
-    ln -s /opt/neuroforest/nenv/bin/neuro "$pkgdir/usr/bin/neuro"
+
     install -Dm644 "$srcdir/neurowiki.desktop" \
         "$pkgdir/usr/share/applications/neurowiki.desktop"
-    install -Dm644 "$repodir/assets/neuroforest.svg" \
+    install -Dm644 "$repodir/assets/images/neuroforest.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/neuroforest.svg"
 }

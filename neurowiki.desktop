@@ -6,4 +6,6 @@ Exec=neurowiki
 Icon=neuroforest
 Terminal=false
 Categories=Science;Education;Office;
-StartupWMClass=NeuroWiki
+StartupWMClass=NeuroDesktop
+Keywords=neurowiki;neurodesktop;neuroforest;neuro;neo4j;tiddlywiki;tiddlydesktop;
+MimeType=x-scheme-handler/neuro

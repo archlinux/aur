@@ -2,5 +2,6 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!neuro.sh
 !neurowiki.sh
 !neurowiki.desktop
