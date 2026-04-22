@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Fast, local-first web content extraction for LLMs"
 
-pkgver=0.3.19
+pkgver=0.5.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('89e572fea72d870374d69566912513f6ade1b5514c90d9cfd3cbfc26ef0dd7cf')
-sha256sums_aarch64=('c823276115badb5fa1a7fc91c920dbd7bc7a19a1800c779ceea128eae929eb04')
+sha256sums_x86_64=('a7254a2e5eea0f333afc3eed9e5a02166db368862286aa689ed80ac1e8c7c924')
+sha256sums_aarch64=('2f2270f323bdcc98ae840e016eeb995e06d7c3a84a7fc16a2fc4560b8a8183c0')
 
 
 case ${CARCH} in
