@@ -18,12 +18,16 @@ _gdrive_hacx="1FLWE-HtaNX1cZv7JT_nhwArJMBeOMvar"        # Hacx2.0 Addon.pk3
 _gdrive_neonover="1bGV0IZgL57eW8bgaAotXArKKn_ETf6LU"    # NeonOver Addon.pk3
 
 latestver() {
-    curl -fsSL "$url" | python3 -c 'import re, sys
+    local _page
+    _page=$(curl -fsSL \
+        -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+        "$url")
+    python3 -c 'import re, sys
 m = re.search(r"Updated ([0-9]{1,2})/([0-9]{1,2})/([0-9]{2})", sys.stdin.read())
 if not m:
     raise SystemExit(1)
 month, day, year = map(int, m.groups())
-print(f"20{year:02d}{month:02d}{day:02d}")'
+print(f"20{year:02d}{month:02d}{day:02d}")' <<< "$_page"
 }
 
 _gdrive_fetch() {
