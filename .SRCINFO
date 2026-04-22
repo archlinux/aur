@@ -1,6 +1,6 @@
 pkgbase = simple-deadlock-mod-manager
 	pkgdesc = A simple mod manager for Deadlock
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/Gabri3445/simple-deadlock-mod-manager
 	install = simple-deadlock-mod-manager.install
@@ -18,7 +18,7 @@ pkgbase = simple-deadlock-mod-manager
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/Gabri3445/simple-deadlock-mod-manager/releases/download/v0.5.0/simple-deadlock-mod-manager_0.5.0_amd64.deb
-	sha256sums_x86_64 = dfa886da35eb020720c7f70ac7d30ebc908925996e903d8f0ad19334605fb5eb
+	source_x86_64 = https://github.com/Gabri3445/simple-deadlock-mod-manager/releases/download/v0.5.1/simple-deadlock-mod-manager_0.5.1_amd64.deb
+	sha256sums_x86_64 = c98e45d987658185581427cdc70b654865786f30f3da760b16b2a2e9bbef9a1d
 
 pkgname = simple-deadlock-mod-manager
