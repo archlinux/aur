@@ -1,13 +1,13 @@
 # Maintainer: Koutheir Attouchi <koutheir@gmail.com>
 pkgname=llvm-bolt-bin
 pkgver=22.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Post-link optimizer developed to speed up large applications'
 url="https://github.com/llvm/llvm-project/tree/llvmorg-${pkgver}/bolt"
 license=('Apache-2.0 WITH LLVM-exception')
 arch=('x86_64')
-depends=('glibc' 'libgcc' 'libstdc++' 'zlib' 'xz')
-makedepends=('libarchive')
+depends=('glibc' 'libgcc' 'libstdc++' 'zlib')
+makedepends=('libarchive' 'xz')
 checkdepends=()
 optdepends=()
 backup=()
@@ -22,7 +22,7 @@ validpgpkeys=()
 
 prepare() {
     cd "${srcdir}"
-    bsdtar -x -f "LLVM-${pkgver}-Linux-X64.tar.xz" "LLVM-${pkgver}-Linux-X64/bin"/{llvm-bolt*,perf2bolt}
+    bsdtar -x -f "LLVM-${pkgver}-Linux-X64.tar.xz" "LLVM-${pkgver}-Linux-X64/bin"/{llvm-bolt*,perf2bolt,merge-fdata}
 }
 
 build() {
@@ -36,9 +36,9 @@ check() {
 package () {
     mkdir -p "$pkgdir/usr"/{bin,share/licenses/${pkgname}}
 
-    install --verbose --preserve-timestamps -D \
+    install --preserve-timestamps -D \
         "--target-directory=$pkgdir/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE.TXT"
 
     cp --archive --no-dereference "--target-directory=$pkgdir/usr/bin" \
-        "${srcdir}/LLVM-${pkgver}-Linux-X64/bin"/{llvm-bolt*,perf2bolt}
+        "${srcdir}/LLVM-${pkgver}-Linux-X64/bin"/{llvm-bolt*,perf2bolt,merge-fdata}
 }
