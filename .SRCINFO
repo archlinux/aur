@@ -1,6 +1,6 @@
 pkgbase = cockpit-tools-bin
 	pkgdesc = Universal AI IDE account manager for Antigravity / Codex / GitHub Copilot / Windsurf / Kiro / Cursor / Gemini-cli / CodeBuddy
-	pkgver = 0.22.8
+	pkgver = 0.22.9
 	pkgrel = 1
 	url = https://github.com/jlcodes99/cockpit-tools
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cockpit-tools-bin
 	depends = libayatana-appindicator
 	provides = cockpit-tools
 	conflicts = cockpit-tools
-	source = cockpit-tools-bin-0.22.8.deb::https://github.com/jlcodes99/cockpit-tools/releases/download/v0.22.8/Cockpit.Tools_0.22.8_amd64.deb
-	sha256sums = 1b1775d9ae06a96a96d0ed61929667f0ef54abe449e2ecd3c43b5fdb062bfe88
+	source = cockpit-tools-bin-0.22.9.deb::https://github.com/jlcodes99/cockpit-tools/releases/download/v0.22.9/Cockpit.Tools_0.22.9_amd64.deb
+	sha256sums = 6b1304b50ab3a2eeb0e2068bcbf2f4e7adb43c08442707e3f8c23a08d8c54cfc
 
 pkgname = cockpit-tools-bin
