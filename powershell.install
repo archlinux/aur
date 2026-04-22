@@ -1,3 +1,4 @@
+# vim: ts=2 sw=2 et:
 post_install() {
   grep -qe '^/usr/bin/pwsh$' etc/shells || echo '/usr/bin/pwsh' >> etc/shells
 }
