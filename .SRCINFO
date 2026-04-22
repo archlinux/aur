@@ -1,6 +1,6 @@
 pkgbase = store-bin
 	pkgdesc = Dotfile symlink manager — one repo, one config, one command per machine
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/cushycush/store
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = store-bin
 	conflicts = store
 	conflicts = store-git
 	provides = store
-	source = README-2.0.0.md::https://raw.githubusercontent.com/cushycush/store/v2.0.0/README.md
-	source = LICENSE-2.0.0::https://raw.githubusercontent.com/cushycush/store/v2.0.0/LICENSE
+	source = README-2.1.0.md::https://raw.githubusercontent.com/cushycush/store/v2.1.0/README.md
+	source = LICENSE-2.1.0::https://raw.githubusercontent.com/cushycush/store/v2.1.0/LICENSE
 	sha256sums = 8f113f9532cf8e5524679f1f16f47cdef65a2a8e0761bc85eeb3e0a4f59b1b14
 	sha256sums = c4c73cfe3e7d8e4cae57635b5d7bde8f256d5eb8e5766ce80b22b0cf3de9cca5
-	source_x86_64 = store-x86_64-2.0.0.zip::https://github.com/cushycush/store/releases/download/v2.0.0/store-v2.0.0-linux-amd64.zip
-	sha256sums_x86_64 = d0221cabb37ad7b8f0901bfb09b8a26d547875fd3c43bf4092c678aa2489a0b3
-	source_aarch64 = store-aarch64-2.0.0.zip::https://github.com/cushycush/store/releases/download/v2.0.0/store-v2.0.0-linux-arm64.zip
-	sha256sums_aarch64 = ecd546ad3c97056a26b4cff0c97c25709289a9d9bd2c2a17ec0a230a570f8d4b
+	source_x86_64 = store-x86_64-2.1.0.zip::https://github.com/cushycush/store/releases/download/v2.1.0/store-v2.1.0-linux-amd64.zip
+	sha256sums_x86_64 = 2717b718ae71a30e30e086701b43fa37f3ef0df99f385f3a24aef3261df7a048
+	source_aarch64 = store-aarch64-2.1.0.zip::https://github.com/cushycush/store/releases/download/v2.1.0/store-v2.1.0-linux-arm64.zip
+	sha256sums_aarch64 = 3bc3c57188996a3d99ca8ae28c22f59561d7b0889e52b6161b1761a66b127be0
 
 pkgname = store-bin
