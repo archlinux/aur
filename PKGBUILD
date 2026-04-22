@@ -31,6 +31,6 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	cd "Meowdo"
+	cp "meowdo" $pkgdir/
 }
