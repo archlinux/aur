@@ -2,9 +2,33 @@ post_install() {
     systemctl daemon-reload
     systemctl enable tpm-reenroll.service
 
+    # Detect LUKS device and TPM enrollment
+    _root_dm=$(findmnt -n -o SOURCE / | cut -d'[' -f1)
+    _device=$(cryptsetup status "$_root_dm" 2>/dev/null | awk '/device:/{print $2}')
+    _has_tpm=false
+
+    if [ -n "$_device" ] && cryptsetup luksDump "$_device" 2>/dev/null | grep -q "tpm2"; then
+        _has_tpm=true
+    fi
+
     echo ""
-    echo "==> NOTE: Run 'sudo tpm-reenroll-setup' to configure the service."
-    echo "==> The service is enabled but will not run until setup is complete."
+    if [ "$_has_tpm" = true ]; then
+        echo "==> TPM2 enrollment detected on $_device."
+        echo "==> The service is enabled and will handle re-enrollment automatically."
+        echo ""
+        echo "==> To customize PCR set or device, create /etc/tpm-reenroll.conf:"
+        echo "      DEVICE=$_device"
+        echo "      PCRS=7"
+    else
+        echo "==> No TPM2 enrollment found."
+        echo "==> To enable TPM auto-unlock, first enroll your disk:"
+        echo ""
+        echo "      sudo systemd-cryptenroll /dev/YOUR_LUKS_DEVICE --tpm2-device=auto --tpm2-pcrs=7"
+        echo ""
+        echo "==> Then create /etc/tpm-reenroll.conf:"
+        echo "      DEVICE=/dev/YOUR_LUKS_DEVICE"
+        echo "      PCRS=7"
+    fi
     echo ""
 }
 

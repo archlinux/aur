@@ -1,6 +1,6 @@
 pkgbase = tpm-reenroll
 	pkgdesc = Auto re-enroll TPM2 for LUKS when PCR policy changes (e.g. after a Secure Boot dbx update)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/thekoma/tpm-reenroll
 	install = tpm-reenroll.install
@@ -12,7 +12,7 @@ pkgbase = tpm-reenroll
 	depends = util-linux
 	depends = grep
 	optdepends = sbctl: Secure Boot key management
-	source = tpm-reenroll-0.1.0.tar.gz::https://github.com/thekoma/tpm-reenroll/archive/v0.1.0.tar.gz
-	sha256sums = 54a94a4e98dbf0a77ea6519189bbf6b4343da6828968d46890d5d14e92b569e0
+	source = tpm-reenroll-0.2.0.tar.gz::https://github.com/thekoma/tpm-reenroll/archive/v0.2.0.tar.gz
+	sha256sums = 326ceb3cb24e4e028fe7ae9205245888b44797e6eece681352584e67f7190f96
 
 pkgname = tpm-reenroll
