@@ -1,7 +1,7 @@
 # Maintainer: Stefan Zipproth <s.zipproth@acrion.ch>
 
 pkgname=wayland-font-dpi
-pkgver=1.0.43
+pkgver=1.0.44
 pkgrel=1
 pkgdesc="Automatic text scaling for Wayland compositors based on physical display DPI"
 arch=('any')
