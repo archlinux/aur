@@ -1,0 +1,3 @@
+[typing-game-cli]
+source = "npm"
+npm = "typing-game-cli"

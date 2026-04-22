@@ -1,0 +1,20 @@
+pkgbase = typing-game-cli
+	pkgdesc = Command line game to practice your typing speed by competing against typer-robot or against your best result
+	pkgver = 7.1.0
+	pkgrel = 1
+	url = https://github.com/coderaiser/cloudcmd
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = typing-game-cli
+	noextract = typing-game-cli-7.1.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = typing-game-cli-7.1.0.tgz::https://registry.npmjs.org/typing-game-cli/-/typing-game-cli-7.1.0.tgz
+	b2sums = 13243d85f7696f440463d84270982037dbcb254e68d4d5adf401bd5d0c44cad22860861bd692ba1894eeb2ed0b75dac6a8eb075cbbc2c2409cdbc59d4be50ef2
+
+pkgname = typing-game-cli
