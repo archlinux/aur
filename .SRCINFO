@@ -1,7 +1,7 @@
 pkgbase = r-pkgload
 	pkgdesc = Simulate Package Installation and Attach
-	pkgver = 1.5.1
-	pkgrel = 2
+	pkgver = 1.5.2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=pkgload
 	arch = any
 	license = MIT
@@ -25,7 +25,7 @@ pkgbase = r-pkgload
 	optdepends = r-testthat>=3.2.1.1
 	optdepends = r-usethis
 	optdepends = r-withr
-	source = https://cloud.r-project.org/src/contrib/pkgload_1.5.1.tar.gz
-	b2sums = b30ac9269b06c133f4cd6c771c966c28c467c1b308d8836b0dd7f9226b30d37fd8c08e274f6d7e1d7898a467b38e8b2200fe9fff49b68b14c471db0f88bc9bd4
+	source = https://cloud.r-project.org/src/contrib/pkgload_1.5.2.tar.gz
+	b2sums = 02e0cdd508248c50ade3782aaabdcec19803cc3f050cec95a1db0419481cd883fbe8b3ed8482e815256fde9089545af8fb2d19b4928463f5823f772658764f31
 
 pkgname = r-pkgload
