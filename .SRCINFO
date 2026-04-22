@@ -9,6 +9,7 @@ pkgbase = erwin-core-git
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc
+	depends = erwin-std-git
 	provides = erwin
 	conflicts = erwin
 	source = git+https://github.com/erwin-lang/erwin-core.git
