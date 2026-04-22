@@ -1,0 +1,18 @@
+pkgbase = stock-git
+	pkgdesc = Package/tool/runtime installer — companion to store (development version)
+	pkgver = r0
+	pkgrel = 1
+	url = https://github.com/cushycush/stock
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = stock
+	conflicts = stock
+	conflicts = stock-bin
+	source = stock-git::git+https://github.com/cushycush/stock.git
+	sha256sums = SKIP
+
+pkgname = stock-git
