@@ -3,10 +3,10 @@
 
 pkgname=tun2proxy
 pkgver=0.7.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Tunnel (TUN) interface for SOCKS and HTTP proxies"
 url='https://github.com/tun2proxy/tun2proxy'
-arch=('x86_64')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=(cargo)

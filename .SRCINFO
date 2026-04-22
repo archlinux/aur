@@ -1,9 +1,12 @@
 pkgbase = tun2proxy
 	pkgdesc = Tunnel (TUN) interface for SOCKS and HTTP proxies
 	pkgver = 0.7.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tun2proxy/tun2proxy
 	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
 	license = MIT
 	makedepends = cargo
 	depends = glibc
