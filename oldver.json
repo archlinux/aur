@@ -1,4 +1,10 @@
 {
   "version": 2,
-  "data": {}
+  "data": {
+    "pi-ext-powerline-footer": {
+      "version": "0.4.6",
+      "gitref": "refs/tags/v0.4.6",
+      "url": "https://github.com/nicobailon/pi-subagents/tag/v0.4.6"
+    }
+  }
 }
