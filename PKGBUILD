@@ -1,4 +1,5 @@
-# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
+# Contributor: Evangelos Foutras <foutrelis@archlinux.org>
 
 _name=sphinxcontrib-spelling
 pkgname=python-$_name
