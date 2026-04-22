@@ -1,0 +1,37 @@
+post_install() {
+  cat <<'EOF'
+my-niri-desk installed.
+
+Next step:
+  Run `my-niri-desk-apply` as your normal user.
+
+What it does:
+  - Copies the desktop preset into your home directory
+  - Installs niri/quickshell/fcitx5/hyprlock/fuzzel/mako config
+  - Replaces user-specific placeholders such as @HOME@
+  - Creates required runtime directories
+
+After applying:
+  Log out, choose the `Niri` session, and log back in.
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+my-niri-desk upgraded.
+
+If you want the updated preset in your home directory, run:
+  my-niri-desk-apply
+
+Your existing files in ~/.config are not overwritten automatically.
+EOF
+}
+
+post_remove() {
+  cat <<'EOF'
+my-niri-desk removed.
+
+Note:
+  Configuration already copied into your home directory is intentionally left untouched.
+EOF
+}
