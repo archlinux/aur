@@ -1,6 +1,6 @@
 pkgbase = neovim-nightly
 	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs
-	pkgver = 0.11.0.r1238.g66bb1e577c
+	pkgver = 0.13.0.r270.g32e249dfa6
 	pkgrel = 1
 	url = https://neovim.io
 	arch = i686
@@ -8,25 +8,32 @@ pkgbase = neovim-nightly
 	arch = armv7h
 	arch = armv6h
 	arch = aarch64
-	license = custom:neovim
+	license = Apache-2.0
+	license = LicenseRef-vim
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
-	makedepends = unzip
+	makedepends = lua51-mpack
+	depends = glibc
+	depends = libgcc
 	depends = libluv
-	depends = libtermkey
+	depends = libtree-sitter.so
+	depends = libunibilium.so
+	depends = libutf8proc
 	depends = libuv
-	depends = libvterm>0.1.4
+	depends = libvterm>=0.3.3
+	depends = lua51-lpeg
 	depends = luajit
 	depends = msgpack-c
-	depends = tree-sitter-git
+	depends = tree-sitter
 	depends = unibilium
-	depends = lua51-lpeg
 	optdepends = python-pynvim: for Python plugin support (see :help python)
+	optdepends = tree-sitter-cli: for tree-sitter parser compilation
 	optdepends = xclip: for clipboard support on X11 (or xsel) (see :help clipboard)
 	optdepends = xsel: for clipboard support on X11 (or xclip) (see :help clipboard)
 	optdepends = wl-clipboard: for clipboard support on wayland (see :help clipboard)
-	provides = neovim=0.11.0
+	provides = neovim=0.13.0
+	provides = nvim
 	provides = vim-plugin-runtime
 	conflicts = neovim
 	backup = etc/xdg/nvim/sysinit.vim

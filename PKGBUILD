@@ -7,32 +7,49 @@
 
 _pkgname=neovim
 pkgname="$_pkgname-nightly"
-pkgver=0.11.0.r1238.g66bb1e577c
+pkgver=0.13.0.r270.g32e249dfa6
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs'
 arch=(i686 x86_64 armv7h armv6h aarch64)
 url='https://neovim.io'
 backup=('etc/xdg/nvim/sysinit.vim')
-license=('custom:neovim')
+license=(
+  'Apache-2.0'
+  'LicenseRef-vim'
+)
 depends=(
+  'glibc'
+  'libgcc'
   'libluv'
-  'libtermkey'
+  'libtree-sitter.so'
+  'libunibilium.so'
+  'libutf8proc'
   'libuv'
-  'libvterm>0.1.4'
+  'libvterm>=0.3.3'
+  'lua51-lpeg'
   'luajit'
   'msgpack-c'
-  'tree-sitter-git'
+  'tree-sitter'
   'unibilium'
-  'lua51-lpeg'
 )
-makedepends=('cmake' 'git' 'ninja' 'unzip')
+makedepends=(
+  'cmake'
+  'git'
+  'ninja'
+  'lua51-mpack'
+)
 optdepends=(
   'python-pynvim: for Python plugin support (see :help python)'
+  'tree-sitter-cli: for tree-sitter parser compilation'
   'xclip: for clipboard support on X11 (or xsel) (see :help clipboard)'
   'xsel: for clipboard support on X11 (or xclip) (see :help clipboard)'
   'wl-clipboard: for clipboard support on wayland (see :help clipboard)'
 )
-provides=("$_pkgname=${pkgver/\.r*/}" 'vim-plugin-runtime')
+provides=(
+  "$_pkgname=${pkgver/\.r*/}"
+  'nvim'
+  'vim-plugin-runtime'
+)
 conflicts=("$_pkgname")
 source=(
   "git+https://github.com/neovim/$_pkgname.git#tag=nightly"
@@ -54,8 +71,19 @@ pkgver() {
 }
 
 build() {
+  local cmake_options=(
+    -B build
+    -G Ninja
+    -D CMAKE_BUILD_TYPE=RelWithDebInfo
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D USE_BUNDLED=OFF
+    -D ENABLE_TRANSLATIONS=ON
+    -W no-dev
+  )
+
   cd "$_pkgname"
-  make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=/usr
+  cmake "${cmake_options[@]}"
+  cmake --build build --verbose
 }
 
 check() {
@@ -72,17 +100,24 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 runtime/nvim.desktop -t "${pkgdir}/usr/share/applications/"
-  install -Dm644 runtime/nvim.appdata.xml -t "${pkgdir}/usr/share/metainfo/"
+  install -Dm644 runtime/org.neovim.nvim.desktop -t "${pkgdir}/usr/share/applications/"
+  install -Dm644 runtime/org.neovim.nvim.appdata.xml -t "${pkgdir}/usr/share/metainfo/"
   install -Dm644 runtime/nvim.png -t "${pkgdir}/usr/share/pixmaps/"
 
-  # Make Arch Vim packages work
+  # Tree-sitter grammars are packaged separately and installed into
+  # /usr/lib/tree_sitter.
+  ln -s /usr/lib/tree_sitter "${pkgdir}"/usr/share/nvim/runtime/parser
+
+  # Include system-wide Vim directory in runtimepath
   mkdir -p "${pkgdir}"/etc/xdg/nvim
-  echo "\" This line makes pacman-installed global Arch Linux vim packages work." > "${pkgdir}"/etc/xdg/nvim/sysinit.vim
-  echo "source /usr/share/nvim/archlinux.vim" >> "${pkgdir}"/etc/xdg/nvim/sysinit.vim
+  echo 'source /usr/share/nvim/archlinux.lua' > "${pkgdir}"/etc/xdg/nvim/sysinit.vim
 
   mkdir -p "${pkgdir}"/usr/share/vim
-  echo "set runtimepath+=/usr/share/vim/vimfiles" > "${pkgdir}"/usr/share/nvim/archlinux.vim
+  cat > "${pkgdir}"/usr/share/nvim/archlinux.lua << EOF
+-- Modify runtimepath to also search the system-wide Vim directory
+-- (eg. for Vim runtime files from Arch Linux packages)
+vim.opt.runtimepath:append({ '/usr/share/vim/vimfiles', '/usr/share/vim/vimfiles/after' })
+EOF
 }
 
 # vim:set sw=2 sts=2 et:
