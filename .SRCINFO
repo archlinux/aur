@@ -1,4 +1,4 @@
-﻿pkgbase = kabekami-git
+pkgbase = kabekami-git
 	pkgdesc = KDE Plasma wallpaper rotation daemon with BlurPad display mode and online sources
 	pkgver = r29.c4ec6a4
 	pkgrel = 1
