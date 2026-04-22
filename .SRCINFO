@@ -1,0 +1,17 @@
+pkgbase = pi-skill-youtube-transcript-git
+	pkgdesc = Pi coding agent skill for fetching YouTube video transcripts
+	pkgver = r24.75d32a3
+	pkgrel = 1
+	url = https://github.com/badlogic/pi-skills
+	install = pi-skill-youtube-transcript-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	provides = pi-skill-youtube-transcript
+	conflicts = pi-skill-youtube-transcript
+	source = git+https://github.com/badlogic/pi-skills.git
+	sha256sums = SKIP
+
+pkgname = pi-skill-youtube-transcript-git
