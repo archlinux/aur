@@ -1,0 +1,17 @@
+pkgbase = pi-skill-brave-search-git
+	pkgdesc = Pi coding agent skill for Brave Search web search and content extraction
+	pkgver = r24.75d32a3
+	pkgrel = 1
+	url = https://github.com/badlogic/pi-skills
+	install = pi-skill-brave-search-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	provides = pi-skill-brave-search
+	conflicts = pi-skill-brave-search
+	source = git+https://github.com/badlogic/pi-skills.git
+	sha256sums = SKIP
+
+pkgname = pi-skill-brave-search-git
