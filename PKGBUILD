@@ -3,21 +3,22 @@
 # Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=libation
-pkgver=13.3.2
+pkgver=13.3.5
 pkgrel=1
 pkgdesc="A free, open-source application for downloading and managing your Audible audiobooks"
 arch=('x86_64')
 url="https://getlibation.com"
 license=('GPL-3.0-only')
-depends=('bash' 'dotnet-runtime' 'fontconfig' 'glibc' 'hicolor-icon-theme')
+depends=('bash' 'dotnet-runtime' 'fontconfig' 'hicolor-icon-theme' 'libgcc' 'libstdc++')
 makedepends=('dotnet-sdk>=10')
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rmcrackan/Libation/archive/v${pkgver}.tar.gz")
-sha256sums=('282e6e49b906778788565a1b9f77d2ae99ea65a0ae44a660975390f3b221b528')
+sha256sums=('046f1731538cd8de68f6a883f91666c045f54cd3c00b6b185e26dbd0676c7c2d')
 
 prepare() {
     cd "${pkgname^}-${pkgver}"
-    sed -i "s/\"version\":.*/\"version\": \"$(dotnet --list-sdks | awk 'END{print $1}')\",/" global.json
+    SDK_VERSION=$(dotnet --list-sdks | awk 'END{print $1}')
+    sed -i "s/\"version\": \".*\"/\"version\": \"${SDK_VERSION}\"/" global.json
 }
 
 build() {
