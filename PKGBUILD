@@ -3,7 +3,7 @@
 # Check for new Linux releases using:
 # curl -sSf https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages | grep -A1 "Package: google-chrome-canary" | awk '/Version/{print $2}' | cut -d '-' -f1
 pkgname=google-chrome-canary
-pkgver=149.0.7802.0
+pkgver=149.0.7806.0
 pkgrel=1
 pkgdesc="The popular web browser by Google (Canary Channel)"
 arch=('x86_64')
@@ -32,7 +32,7 @@ _channel=canary
 source=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
   'eula_text.html'
   "google-chrome-$_channel.sh")
-sha512sums=('5f1a7f32ccf0681f75dc5927840c70cf91bc9480de23089289bab17322a3ec11a1040ea573293b34e70e7c00db3f399fed680197a3320c5932681dddf6b4f414'
+sha512sums=('95f8eccb3d6d74e13d8f7ab5ad102ef58531885a008e328483499b4378e19250b3e11fddb9edefd334378497252feed259de1a9b07ae0bfda9d210a4aec5d07e'
   'a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396'
   '9579a42fbcbc8c592a6f1c625735768287a74d5081d5e2486a5ea11ee41b1d9f91bf60c7c816a9f433e9bf92724262a4c986408a04bf7f13fec8fca4600c6b3a')
 
