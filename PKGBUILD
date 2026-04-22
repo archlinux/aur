@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Window Assigment System Monitoring Advanced (git)"
 arch=('x86_64')
 url="https://github.com/Azencorporation/Wasma"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'gcc-libs'
   'wayland'
