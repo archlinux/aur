@@ -1,4 +1,4 @@
-From 3fd08d58875dde11f6887c13769d76933d068559 Mon Sep 17 00:00:00 2001
+From 07b32abdf39eb9e7356efba50f5f0ece8be85cdf Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 1/4] Restore transparency
@@ -209,10 +209,10 @@ index 2b7626d1..f16265c5 100644
  
  static void
 diff --git a/src/terminal-window.cc b/src/terminal-window.cc
-index 36eb7ce7..a41d2de2 100644
+index 1130c009..c58d4600 100644
 --- a/src/terminal-window.cc
 +++ b/src/terminal-window.cc
-@@ -2173,6 +2173,8 @@ terminal_window_init (TerminalWindow *window)
+@@ -2175,6 +2175,8 @@ terminal_window_init (TerminalWindow *window)
    };
    TerminalWindowPrivate *priv;
    TerminalApp *app;
@@ -221,7 +221,7 @@ index 36eb7ce7..a41d2de2 100644
    GSettings *gtk_debug_settings;
    GtkWindowGroup *window_group;
    //  GtkAccelGroup *accel_group;
-@@ -2188,6 +2190,11 @@ terminal_window_init (TerminalWindow *window)
+@@ -2190,6 +2192,11 @@ terminal_window_init (TerminalWindow *window)
  
    gtk_widget_init_template (GTK_WIDGET (window));
  
@@ -234,10 +234,10 @@ index 36eb7ce7..a41d2de2 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.52.0
+2.54.0
 
 
-From b5a4e6b47c741e9c322a0e94ff9703050643ab81 Mon Sep 17 00:00:00 2001
+From 97671c2c4a1bee90c7eff45060aaaf328dda89dd Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 2/4] window: Make the drawing robust across all themes
@@ -257,10 +257,10 @@ https://bugzilla.gnome.org/show_bug.cgi?id=730016
  1 file changed, 21 insertions(+)
 
 diff --git a/src/terminal-window.cc b/src/terminal-window.cc
-index a41d2de2..11d93419 100644
+index c58d4600..6089ae47 100644
 --- a/src/terminal-window.cc
 +++ b/src/terminal-window.cc
-@@ -2003,6 +2003,26 @@ terminal_window_realize (GtkWidget *widget)
+@@ -2005,6 +2005,26 @@ terminal_window_realize (GtkWidget *widget)
    terminal_window_update_size (window);
  }
  
@@ -287,7 +287,7 @@ index a41d2de2..11d93419 100644
  static gboolean
  terminal_window_state_event (GtkWidget            *widget,
                               GdkEventWindowState  *event)
-@@ -2368,6 +2388,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
+@@ -2370,6 +2390,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
  
    widget_class->show = terminal_window_show;
    widget_class->realize = terminal_window_realize;
@@ -296,10 +296,10 @@ index a41d2de2..11d93419 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.52.0
+2.54.0
 
 
-From c32f74fb1d733bd57d925d06b076ac402532ef5a Mon Sep 17 00:00:00 2001
+From 964e98ce40f871c483b9e0cde3c90e355327ae6b Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 3/4] screen, window: Extra padding around transparent
@@ -399,10 +399,10 @@ index f16265c5..9cb924bb 100644
  terminal_screen_button_press (GtkWidget      *widget,
                                GdkEventButton *event)
 diff --git a/src/terminal-window.cc b/src/terminal-window.cc
-index 11d93419..61857bfe 100644
+index 6089ae47..9eaa86b2 100644
 --- a/src/terminal-window.cc
 +++ b/src/terminal-window.cc
-@@ -2009,15 +2009,21 @@ terminal_window_draw (GtkWidget *widget,
+@@ -2011,15 +2011,21 @@ terminal_window_draw (GtkWidget *widget,
  {
    if (gtk_widget_get_app_paintable (widget))
      {
@@ -431,10 +431,10 @@ index 11d93419..61857bfe 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.52.0
+2.54.0
 
 
-From 666371799038a745027ee38fc9ee0c79c63f3719 Mon Sep 17 00:00:00 2001
+From dda2e8359d690b25110135aad5cc359340f9bc8c Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 4/4] Restore translations for setting a title and transparency
@@ -473,7 +473,7 @@ Subject: [PATCH 4/4] Restore translations for setting a title and transparency
  po/fr.po          | 24 ++++++++++++++++++++++++
  po/fur.po         | 11 +++++++++--
  po/ga.po          |  3 +++
- po/gl.po          | 15 +++++++++------
+ po/gl.po          | 12 ++++++++++++
  po/gu.po          | 16 ++++++++--------
  po/he.po          | 16 ++++++++--------
  po/hi.po          | 17 ++++++++---------
@@ -532,7 +532,7 @@ Subject: [PATCH 4/4] Restore translations for setting a title and transparency
  po/zh_CN.po       | 15 +++++++++------
  po/zh_HK.po       | 15 +++++++++------
  po/zh_TW.po       | 15 +++++++++------
- 92 files changed, 738 insertions(+), 334 deletions(-)
+ 92 files changed, 741 insertions(+), 328 deletions(-)
 
 diff --git a/po/am.po b/po/am.po
 index 3445d96d..ee992f07 100644
@@ -1418,25 +1418,20 @@ index 93d5fa9d..feb87dce 100644
 +msgid "Transparent background"
 +msgstr "Cúlra trédhearcach"
 diff --git a/po/gl.po b/po/gl.po
-index c0dc3349..adea6024 100644
+index 4610f250..af5da2e2 100644
 --- a/po/gl.po
 +++ b/po/gl.po
-@@ -2500,11 +2500,14 @@ msgstr "P_echar a xanela"
- msgid "Failed to parse arguments: %s\n"
- msgstr "Produciuse un erro ao analizar os argumentos: %s\n"
+@@ -2599,3 +2599,15 @@ msgstr "Produciuse un erro ao analizar os argumentos: %s\n"
  
--#~ msgid "org.gnome.Terminal"
--#~ msgstr "org.gnome.Terminal"
+ #~ msgid "Georgian"
+ #~ msgstr "Xeorxiano"
++
 +msgid "Title"
 +msgstr "Título"
- 
--#~ msgid "Armenian"
--#~ msgstr "Armenio"
++ 
 +msgid "_Title:"
 +msgstr "_Título:"
- 
--#~ msgid "Georgian"
--#~ msgstr "Xeorxiano"
++ 
 +msgid "Set Title"
 +msgstr "Definir o título"
 +
@@ -1719,10 +1714,10 @@ index 185ebbe3..66bc6026 100644
  msgid "Default color of text in the terminal"
  msgstr "ტერმინალის ტექსტის ნაგულისხმები ფერი"
 diff --git a/po/kk.po b/po/kk.po
-index 34ce6b2a..5d415eb3 100644
+index ab5e20dd..37f4bc29 100644
 --- a/po/kk.po
 +++ b/po/kk.po
-@@ -2741,3 +2741,15 @@ msgstr "Аргументтерді өндеу қатемен аяқталды: %
+@@ -2823,3 +2823,15 @@ msgstr "Аргументтерді өндеу қатемен аяқталды: %
  
  #~ msgid "Be quiet"
  #~ msgstr "Тыныш болу"
@@ -3054,7 +3049,7 @@ index cb78ec67..a4f3b4dd 100644
  #: ../src/terminal-window.c:986
  msgid "Set _Character Encoding"
 diff --git a/po/zh_CN.po b/po/zh_CN.po
-index 5d51cba6..34a5ff42 100644
+index 139f0fc1..19250cbe 100644
 --- a/po/zh_CN.po
 +++ b/po/zh_CN.po
 @@ -2882,17 +2882,17 @@ msgstr "无法处理参数：%s\n"
@@ -3159,5 +3154,5 @@ index 192e0c19..b9be17d9 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.52.0
+2.54.0
 
