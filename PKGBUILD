@@ -1,8 +1,8 @@
 # Maintainer: werdxz
 
 pkgname=portty
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="XDG Desktop Portal backend for TTY environments"
 arch=('x86_64')
 url="https://github.com/werdxz/portty"
@@ -12,7 +12,7 @@ makedepends=('rustup')
 provides=('portty')
 conflicts=('portty-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/WERDXZ/portty/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('67a34b76491e7eb6bb40309fb55af4f4fab2da3500e30bc98af8171220efdebf')
+sha256sums=('8be421a20f63177d0ea8dcf3dfe5ba2ab74d4b4b891ae0325096a8f8e1374f40')
 
 prepare() {
     rustup toolchain install --profile minimal --no-self-update nightly
