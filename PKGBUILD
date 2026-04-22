@@ -1,40 +1,82 @@
-# Maintainer: Jonian Guveli <https://github.com/jonian/>
-pkgname=godot-bin
-pkgver=3.3.2
+# Maintainer: Nova Bürky (me@novadragon.space)
+pkgbase=godot-bin
+pkgname=('godot-bin' 'godot-mono-bin')
+pkgver=4.6.2
 pkgrel=1
-pkgdesc="Godot is an advanced, feature packed, multi-platform 2D and 3D game engine"
-arch=("i686" "x86_64")
-url="http://www.godotengine.org"
-license=("MIT")
-provides=("godot")
-conflicts=("godot" "godot-git")
-source=("godot.desktop" "icons.tar.gz")
-source_i686+=("$pkgname-$pkgver.zip::https://downloads.tuxfamily.org/godotengine/"$pkgver"/Godot_v"$pkgver"-stable_x11.32.zip")
-source_x86_64+=("$pkgname-$pkgver.zip::https://downloads.tuxfamily.org/godotengine/"$pkgver"/Godot_v"$pkgver"-stable_x11.64.zip")
-md5sums=("fa7422332b97ab8430ea7628ec8b0880" "48ee5f4295a45bb61c6223ba83fd1436")
-md5sums_i686=("32907fa281b19f2ea486ebd39fc274be")
-md5sums_x86_64=("3d07c77ed2b7ea9925a60f01351b02f8")
+pkgdesc="Godot Engine - Prebuilt binary from GitHub"
+arch=(x86_64)
+url="https://godotengine.org"
+license=(MIT)
+makedepends=(setconf)
+depends=(brotli ca-certificates embree freetype2 graphite libglvnd libspeechd libsquish libtheora libvorbis
+         libwebp libwslay libxcursor libxi libxinerama libxrandr miniupnpc openxr pcre2)
 
-package() {
-  mkdir -p "$pkgdir/opt/$pkgname"
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/icons/hicolor"
-  mkdir -p "$pkgdir/usr/share/applications"
+_pkgver_url="4.6.2-stable"
+_filename_std="Godot_v${_pkgver_url}_linux.x86_64.zip"
+_filename_mono="Godot_v${_pkgver_url}_mono_linux_x86_64.zip"
 
-  case $CARCH in
-    "i686")
-      cp "$srcdir/Godot_v"$pkgver"-stable_x11.32" "$pkgdir/opt/$pkgname/godot"
-    ;;
-    "x86_64")
-      cp "$srcdir/Godot_v"$pkgver"-stable_x11.64" "$pkgdir/opt/$pkgname/godot"
-    ;;
-  esac
+source=("https://github.com/godotengine/godot-builds/releases/download/${_pkgver_url}/${_filename_std}"
+        "https://github.com/godotengine/godot-builds/releases/download/${_pkgver_url}/${_filename_mono}"
+        "godot.desktop"
+        "godot.svg"
+        "org.godotengine.Godot.xml")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            )
+noextract=("${_filename_std}" "${_filename_mono}")
 
-  cp "$srcdir/godot.desktop" "$pkgdir/usr/share/applications/godot.desktop"
-  cp -a "$srcdir/icons/." "$pkgdir/usr/share/icons/hicolor"
-  cp -a "$srcdir/icons/." "$pkgdir/usr/share/icons/gnome"
+prepare(){
 
-  chmod +x "$pkgdir/opt/$pkgname/godot"
 
-  ln -s "/opt/$pkgname/godot" "$pkgdir/usr/bin/godot"
+  cp -f godot.desktop godot-mono.desktop
+  setconf godot-mono.desktop Exec godot-mono %f
+  setconf godot-mono.desktop Icon godot-mono.svg
+  setconf godot-mono.desktop Name 'Godot Engine Mono'
+
+  # MIME info fix, ref FS#77810
+  sed -i 's,xmlns="https://specifications.freedesktop.org/shared-mime-info-spec",xmlns="http://www.freedesktop.org/standards/shared-mime-info",g' \
+    org.godotengine.Godot.xml
+
+  # Godot Mono MIME config
+  cp -f org.godotengine.Godot.xml org.godotengine.Godot-mono.xml
+
+}
+
+package_godot-bin() {
+    pkgdesc="Godot Engine - Prebuilt binary from GitHub"
+    provides=("godot=${pkgver}")
+    conflicts=('godot')
+
+
+    install -dm755 "$pkgdir/opt/godot"
+    bsdtar -xf "${_filename_std}" -C "$pkgdir/opt/godot"
+
+    install -dm755 "$pkgdir/usr/bin"
+    ln -s "/opt/godot/Godot_v${_pkgver_url}_linux.x86_64" "$pkgdir/usr/bin/godot"
+
+    install -Dm644 "$srcdir/godot.desktop" "$pkgdir/usr/share/applications/godot.desktop"
+    install -Dm644 "$srcdir/godot.svg" "$pkgdir/usr/share/pixmaps/godot.svg"
+    install -Dm644 "$srcdir/org.godotengine.Godot.xml" "$pkgdir/usr/share/mime/packages/org.godotengine.Godot.xml"
+
+}
+
+package_godot-mono-bin() {
+    pkgdesc="Godot Engine (Mono) - Prebuilt binary from GitHub"
+    provides=("godot-mono=${pkgver}")
+    conflicts=('godot-mono')
+
+    install -dm755 "$pkgdir/opt/godot-mono"
+
+    bsdtar -xf "${_filename_mono}" -C "$pkgdir/opt/godot-mono"
+
+    install -dm755 "$pkgdir/usr/bin"
+    ln -s "/opt/godot-mono/Godot_v${_pkgver_url}_mono_linux_x86_64/Godot_v${_pkgver_url}_mono_linux.x86_64" "$pkgdir/usr/bin/godot-mono"
+
+    install -Dm644 "$srcdir/godot-mono.desktop" "$pkgdir/usr/share/applications/godot-mono.desktop"
+    install -Dm644 "$srcdir/godot.svg" "$pkgdir/usr/share/pixmaps/godot-mono.svg"
+    install -Dm644 "$srcdir/org.godotengine.Godot-mono.xml" "$pkgdir/usr/share/mime/packages/org.godotengine.Godot-mono.xml"
+
 }
