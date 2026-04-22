@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=meter-tray
 pkgver=0.1.0
-pkgrel=8
+pkgrel=9
 pkgdesc="System tray app for tracking AI usage limits (Codex, OpenCode)"
 arch=('any')
 url="https://github.com/xddinside/meter"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-pystray' 'python-pillow')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 install=meter-tray.install
-source=("git+https://github.com/xddinside/meter.git#commit=c031b87a30019a8696a3c13e19e3fcd3b9b54713")
+source=("git+https://github.com/xddinside/meter.git#commit=bc7329096e05555e125af682c454dd7bf6f6165c")
 sha256sums=('SKIP')
 
 build() {
