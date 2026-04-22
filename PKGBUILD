@@ -2,12 +2,12 @@
 
 pkgbase=jidugs-appimage
 pkgname=jidugs
-pkgver=1.4.5
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="极度公式 公式一键识别快速转换，几十项技术创新助力，快捷方便！"
 arch=('x86_64')
 url="https://jidugs.wlhex.com/"
-license=('LicenseRef-Commercial')
+license=('LicenseRef-scancode-commercial-license')
 provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
@@ -20,8 +20,8 @@ makedepends=()
 backup=()
 options=(!strip !debug)
 install=
-source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::https://jidugs.wlhex.com/download/极度公式-${pkgver}.AppImage")
-sha256sums_x86_64=('b829ace8b3d825bf70c24aca408280561df15f652e7ec15b2676258f211d9d55')
+source=("${pkgname}-${pkgver}-x86_64.AppImage::https://jidugs.wlhex.com/download/极度公式-${pkgver}.AppImage")
+sha256sums=('272100f61174b415fbf3f521cfe9dc2f921c6051d4c55cb0ebd995035c032c3e')
 
 _install_path="/opt/appimages"
 
@@ -42,5 +42,5 @@ package() {
     done
 
     install -Dm644 "${srcdir}/squashfs-root/jidugspc.desktop" -t "${pkgdir}/usr/share/applications"
-    #     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}"/squashfs-root/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
