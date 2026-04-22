@@ -1,7 +1,7 @@
 pkgbase = r-jose
 	pkgdesc = JavaScript Object Signing and Encryption
-	pkgver = 1.2.1
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=jose
 	arch = any
 	license = MIT
@@ -12,8 +12,8 @@ pkgbase = r-jose
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/jose_1.2.1.tar.gz
-	md5sums = ad1cfb133b45fd6925f987eef8361e2a
-	b2sums = 9bb1ff4b18deb77dace6a79f0b0c5e1ba73817d1b4f5b39a5f01b928a2f67e91ca8f5202a04c80ef9451186398155085db954d7d2fb17d0978ffa1da5f5dd77c
+	source = https://cran.r-project.org/src/contrib/jose_2.0.0.tar.gz
+	md5sums = a92e5664a4efbb86f31342c1190b3722
+	b2sums = 3ccd5c73170a315981ff6881f317d99e90bd654c3112be3826270a26b442b50cb9dbe2edc9f2492a1dcef9cf5a3386227aa2a52291712ae2322e01396c715b5d
 
 pkgname = r-jose
