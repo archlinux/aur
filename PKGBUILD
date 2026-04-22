@@ -6,9 +6,9 @@ arch=(x86_64)
 url="https://superset.sh"
 license=(custom)
 
-depends=(fuse2 hicolor-icon-theme)
+depends=("fuse2" "hicolor-icon-theme")
 options=(!strip !debug)
-conflicts=(superset-desktop-bin)
+conflicts=("superset-desktop-bin")
 
 _appimage="superset-${pkgver}-${arch}.AppImage"
 source=("${_appimage}::https://github.com/superset-sh/superset/releases/download/desktop-v1.5.8/superset-1.5.8-x86_64.AppImage")
