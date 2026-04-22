@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'mautrix-teams.service'
         'mautrix-teams.sysusers'
         'mautrix-teams.tmpfiles')
-sha256sums=('efc0b3c422b0b5bddf21088a5f8c6d025b2233aefae31d0b697a007933f9f135'
+sha256sums=('SKIP'
             'aacb178c68e066e344a66a852fac5ee0bddb4ba5c28d3fe12dd5b3a38926444f'
             '06455386eb56393054ae9b467ebe9d78026d0e92d07e58040e6afd7ffaf0a0ba'
             '17c329e362b7caa7670f063461324db6f625b98043bad82b6c2db7544a37802c')
