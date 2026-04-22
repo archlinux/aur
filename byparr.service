@@ -1,0 +1,12 @@
+[Unit]
+Description=Byparr Service
+
+[Service]
+User=byparr
+Group=byparr
+Type=simple
+WorkingDirectory=/usr/lib/byparr
+ExecStart=/usr/bin/uv run main.py
+
+[Install]
+WantedBy=multi-user.target
