@@ -1,6 +1,6 @@
 pkgbase = linux-tpm453-stable
 	pkgdesc = Hardware-specific CachyOS stable kernel for Acer TMP453-M class hardware
-	pkgver = 7.0.0
+	pkgver = 7.0.0.r20260422.g2a5a214aa4d
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = linux-tpm453-stable
 	makedepends = binutils
 	makedepends = cpio
 	makedepends = gettext
+	makedepends = git
 	makedepends = glibc
 	makedepends = libelf
 	makedepends = libgcc
@@ -27,13 +28,14 @@ pkgbase = linux-tpm453-stable
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.0-2/cachyos-7.0.0-2.tar.gz
+	source = linux::git+https://github.com/CachyOS/linux.git#commit=2a5a214aa4d81291700b74b09d882b1a09a9a257
 	source = config
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/misc/dkms-clang.patch
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/sched/0001-bore-cachy.patch
-	b2sums = 40fefc434872c4ec8af8c780b2926d959ad74f1a3d94ad454d0f889caa67ab913cac3e5109f28c69c27acc4fc033c6c478128ba799447edbb207252923a63943
-	b2sums = b247fa1ddea7d6124348fa66438715b1eb7afe279fd0d073cf9a366deecd322dbfea3843de0c61356f0d88b242cec42dbb6b2b2344d4ae9042335118c0c31e81
-	b2sums = c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = linux-tpm453-stable
 	pkgdesc = The Hardware-specific CachyOS stable kernel for Acer TMP453-M class hardware kernel and modules
@@ -51,7 +53,7 @@ pkgname = linux-tpm453-stable
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
-	provides = linux-cachyos-lto=7.0.0-1
+	provides = linux-cachyos-lto=7.0.0.r20260422.g2a5a214aa4d-1
 	replaces = linux-cachyos-lto
 
 pkgname = linux-tpm453-stable-headers
@@ -70,5 +72,5 @@ pkgname = linux-tpm453-stable-headers
 	depends = llvm
 	depends = lld
 	provides = LINUX-HEADERS
-	provides = linux-cachyos-lto-headers=7.0.0-1
+	provides = linux-cachyos-lto-headers=7.0.0.r20260422.g2a5a214aa4d-1
 	replaces = linux-cachyos-lto-headers

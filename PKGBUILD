@@ -182,13 +182,14 @@ _major=7.0
 _minor=0
 #_minorc=$((_minor+1))
 #_rcver=rc8
-pkgver=${_major}.${_minor}
+pkgver=7.0.0.r20260422.g2a5a214aa4d
 _tagrel=2
 pkgrel=1
-_srcname=cachyos-${_major}.${_minor}-${_tagrel}
+_srcname=linux
 pkgdesc='Hardware-specific CachyOS stable kernel for Acer TMP453-M class hardware'
 _kernver="$pkgver-$pkgrel"
-_kernuname="${pkgver}-${_custom_kernsuffix}"
+_source_kernelver="7.0.0"
+_kernuname="${_source_kernelver}-${_custom_kernsuffix}"
 arch=('x86_64')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL-2.0-only')
@@ -198,6 +199,7 @@ makedepends=(
   binutils
   cpio
   gettext
+  git
   glibc
   libelf
   libgcc
@@ -217,7 +219,7 @@ _nv_ver=595.58.03
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
-    "https://github.com/CachyOS/linux/releases/download/${_srcname}/${_srcname}.tar.gz"
+    "linux::git+https://github.com/CachyOS/linux.git#commit=2a5a214aa4d81291700b74b09d882b1a09a9a257"
     "config")
 
 # LLVM makedepends
@@ -1026,6 +1028,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('40fefc434872c4ec8af8c780b2926d959ad74f1a3d94ad454d0f889caa67ab913cac3e5109f28c69c27acc4fc033c6c478128ba799447edbb207252923a63943'
-        'b247fa1ddea7d6124348fa66438715b1eb7afe279fd0d073cf9a366deecd322dbfea3843de0c61356f0d88b242cec42dbb6b2b2344d4ae9042335118c0c31e81'
-        'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
