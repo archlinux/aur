@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rmpi
-_pkgver=0.7-3.3
+_pkgver=0.7-3.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,9 +15,9 @@ depends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('367cca4ef38cb4b54695126648081073'
+md5sums=('27b61bffecc7e82c24f0a959b54cc431'
          '5922dce2ffadb52b20b8b0f53b74536e')
-b2sums=('8e97a28b4ab53b4b1ecaed9ef0c754044d5f0ff731f7605885a98ee90c012fb69e97222ca708fbf19191a568315ba4babd8b30ab85b3da28bddbc66b38e6189a'
+b2sums=('f9d627b1d777023d251ff3a55953f382217c362eb6261f09e040df551c409aedc321ffc2909128a7884dd2be5930511b69544bc1db148092315f3c1e115255ed'
         'b8b1306f851458c2842bdef88a693e716e08f9fc108e51a97748c783c2ca01a48417f40587f88cb68e2cd693629db02840dfa87fb5197a5b9c3c9a973942f7b8')
 
 prepare() {
