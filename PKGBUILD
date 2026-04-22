@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype-bin
 pkgver=0.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
 arch=('x86_64')
 url="https://voxtype.io"
@@ -99,10 +99,8 @@ package() {
     install -Dm755 "$srcdir/voxtype-$pkgver-onnx-cuda" "$pkgdir/usr/lib/voxtype/voxtype-onnx-cuda"
     install -Dm755 "$srcdir/voxtype-$pkgver-onnx-rocm" "$pkgdir/usr/lib/voxtype/voxtype-onnx-rocm"
 
-    # Create symlink based on CPU capabilities (updated in .install file)
-    # Default to avx2 for safety
-    mkdir -p "$pkgdir/usr/bin"
-    ln -sf /usr/lib/voxtype/voxtype-avx2 "$pkgdir/usr/bin/voxtype"
+    # /usr/bin/voxtype symlink is managed by the .install script
+    # to preserve user-configured backends across upgrades
 
     # Install default configuration
     install -Dm644 "$srcdir/config-$pkgver.toml" "$pkgdir/etc/voxtype/config.toml"
