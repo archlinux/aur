@@ -1,7 +1,7 @@
 pkgbase = jlink-software-and-documentation
 	pkgdesc = Segger JLink software & documentation pack for Linux
 	pkgver = 9.38
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 65
 	url = https://www.segger.com/jlink-software.html
 	install = jlink-software-and-documentation.install
@@ -69,6 +69,6 @@ pkgbase = jlink-software-and-documentation
 	source_armv7h = JLink_Linux_938_arm.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V938_arm.tgz
 	md5sums_armv7h = d5b8bf2e1ca11da407fc5b5a1bdf71fa
 	source_aarch64 = JLink_Linux_938_arm64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V938_arm64.tgz
-	md5sums_aarch64 = 1e892fcd0379ebde7560d1f79b687d58
+	md5sums_aarch64 = c5ca81701d39730ddc7169bbfde0fda7
 
 pkgname = jlink-software-and-documentation
