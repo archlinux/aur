@@ -1,0 +1,26 @@
+pkgbase = reachy-mini-desktop-app
+	pkgdesc = Desktop control application for Reachy Mini robot (simulation and hardware control)
+	pkgver = 0.9.29
+	pkgrel = 1
+	url = https://github.com/pollen-robotics/reachy-mini-desktop-app
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = yarn
+	makedepends = base-devel
+	makedepends = openssl
+	makedepends = file
+	makedepends = librsvg
+	makedepends = webkit2gtk-4.1
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	optdepends = bluez: Bluetooth/BLE robot discovery
+	optdepends = xdotool: UI automation support
+	provides = reachy-mini-control
+	conflicts = reachy-mini-control
+	source = reachy-mini-desktop-app-0.9.29.tar.gz::https://github.com/pollen-robotics/reachy-mini-desktop-app/archive/refs/tags/v0.9.29.tar.gz
+	sha256sums = b9b6e7e2b960f6cc0b36446bc6b6670d8d826d9c06a552f4bd014ccaaf446eae
+
+pkgname = reachy-mini-desktop-app
