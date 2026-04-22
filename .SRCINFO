@@ -1,0 +1,16 @@
+pkgbase = wdotool
+	pkgdesc = xdotool-compatible input automation for Wayland (libei + wlroots)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/cushycush/wdotool
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = libxkbcommon
+	depends = wayland
+	source = wdotool-0.1.1.tar.gz::https://github.com/cushycush/wdotool/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 0e39ba4c5817f99424685c529e7d6f89839adc25c9346a12d5a5809b11085454
+
+pkgname = wdotool
