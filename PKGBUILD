@@ -1,12 +1,12 @@
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-ada,gcc-ga68,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,gcc-libs,libasan,libatomic,libga68,libgcc,libgccjit,libgcobol,libgfortran,libgm2,libgnat,libgo,libgomp,libgphobos,libitm,liblsan,libobjc,libquadmath,libstdc++,libtsan,libubsan,libvtv,lib32-gcc-libs,lto-dump}-snapshot)
-pkgver=16.0.0.snapshot20260412
-_pkgver=16-20260412
+pkgver=16.0.0.snapshot20260419
+_pkgver=16-20260419
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
 _gmpver=6.3.0
-_mpcver=1.3.1
+_mpcver=1.4.1
 _mpfrver=4.2.2
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (snapshot)"
@@ -19,7 +19,7 @@ _libdir=usr/lib/gcc/${CHOST}/${_realver}
 source=(https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/${_pkgver}/gcc-${_pkgver}.tar.xz
         git+https://repo.or.cz/isl.git#branch=maint
         https://gmplib.org/download/gmp/gmp-${_gmpver}.tar.xz{,.sig}
-        https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz{,.sig}
+        https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.xz{,.sig}
         https://www.mpfr.org/mpfr-${_mpfrver}/mpfr-${_mpfrver}.tar.xz{,.asc}
         c89
         c99
@@ -31,11 +31,11 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # Niels Möller <nisse@lysator.liu.se>
               A534BE3F83E241D918280AEB5831D11A0D4DB02A  # vincent@vinc17.net
               AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3) # Andres Enge <andreas.enge@inria.fr>
-sha256sums=('786a4614b83367580c515f4db844594b1f771ecbdd409f93409c46cccd5e3137'
+sha256sums=('271ed5cdfae0369165c44d72b26e897b0295ecf52ff33cfc0ec9fff71d2b4311'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
-            'ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8'
+            '91204cd32f164bd3b7c992d4a6a8ce6519511aadab30f78b6982d0bf8d73e931'
             'SKIP'
             'b67ba0383ef7e8a8563734e2e889ef5ec3c3b898a01d00fa0a6869ad81c6ce01'
             'SKIP'
