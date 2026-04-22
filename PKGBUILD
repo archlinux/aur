@@ -4,7 +4,6 @@
 
 _name='powershell'
 pkgname="$_name-git"
-_binaryname='pwsh'
 pkgver=7.6.1.r11423.1799667
 _major=${pkgver:0:1}
 pkgrel=1
