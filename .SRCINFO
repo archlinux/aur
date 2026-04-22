@@ -1,0 +1,14 @@
+pkgbase = zsh-patina-bin
+	pkgdesc = A blazingly fast Zsh syntax highlighter
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/michel-kraemer/zsh-patina
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	conflicts = zsh-patina-git
+	conflicts = zsh-patina
+	source = https://github.com/michel-kraemer/zsh-patina/releases/download/1.5.0/zsh-patina-v1.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 5b1b8863d69d7fd20b793f8299fa78c66b594a0cb9c70f8701c05b467460b879
+
+pkgname = zsh-patina-bin
