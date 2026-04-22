@@ -4,7 +4,7 @@ pkgname=hqplayer-embedded
 _debpkgver=5.17.2-48
 _debpkgverarm=5.17.2-48
 pkgver=5.17.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64' 'aarch64')
@@ -33,7 +33,7 @@ package() {
  rm -rf "$pkgdir/etc/modules-load.d"
  rm -rf "$pkgdir/etc/udev"
  else
- bsdtar xf hqplayerd-$_debpkgverarm.fc42.aarch64.rpm -C "$pkgdir"
+ bsdtar xf hqplayerd-$_debpkgverarm.fc43.aarch64.rpm -C "$pkgdir"
  install -Dm644 "$pkgdir/usr/share/doc/hqplayerd/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
  rm "$pkgdir/usr/share/doc/hqplayerd/LICENSE"
  fi
