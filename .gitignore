@@ -1,0 +1,8 @@
+syntax: glob
+
+/NOTES.md
+/src/
+/pkg/
+/*.tar.gz
+/*.tar.zst
+/*.log
