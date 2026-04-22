@@ -1,0 +1,40 @@
+From 932b1a4c1d0fd349b739d6c0c245f9b387289023 Mon Sep 17 00:00:00 2001
+From: heath-toby <heathtobias@gmail.com>
+Date: Thu, 23 Apr 2026 00:02:15 +0100
+Subject: [PATCH] Fix Qt TTS engine being silently deleted on every other prefs
+ close
+
+When the user closes the Preferences dialog with TTS engine set to
+TTSENGINE_QT, slotClientPreferences() previously only created a new
+QTextToSpeech instance when ttSpeech was nullptr; in every other case
+it fell through to the else-branch and deleted the existing instance.
+
+This made TTS oscillate between working and broken across consecutive
+launches / preferences-close cycles, and prevented changes to voice,
+rate or volume from taking effect without a full restart.
+
+Replace the conditional new with a call to startTTS(), which already
+handles destruction + recreation and applies the persisted voice / rate
+/ volume / locale settings for all TTS engines.
+---
+ Client/qtTeamTalk/mainwindow.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Client/qtTeamTalk/mainwindow.cpp b/Client/qtTeamTalk/mainwindow.cpp
+index 72655df..5f4f17f 100644
+--- a/Client/qtTeamTalk/mainwindow.cpp
++++ b/Client/qtTeamTalk/mainwindow.cpp
+@@ -4277,8 +4277,8 @@ void MainWindow::slotClientPreferences(bool /*checked =false */)
+     if(!b)return;
+ 
+ #if defined(QT_TEXTTOSPEECH_LIB)
+-    if (ttSettings->value(SETTINGS_TTS_ENGINE, SETTINGS_TTS_ENGINE_DEFAULT).toUInt() == TTSENGINE_QT && ttSpeech == nullptr)
+-        ttSpeech = new QTextToSpeech(this);
++    if (ttSettings->value(SETTINGS_TTS_ENGINE, SETTINGS_TTS_ENGINE_DEFAULT).toUInt() == TTSENGINE_QT)
++        startTTS();
+     else
+     {
+         delete ttSpeech;
+-- 
+2.54.0
+

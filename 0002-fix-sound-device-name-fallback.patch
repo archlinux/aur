@@ -1,0 +1,183 @@
+From 5b5e1d568c2146286e7aa8e82c63e0415c335193 Mon Sep 17 00:00:00 2001
+From: heath-toby <heathtobias@gmail.com>
+Date: Thu, 23 Apr 2026 00:04:20 +0100
+Subject: [PATCH] Persist sound device name as fallback identifier
+
+The Linux sound backends sometimes report an empty szDeviceID for a
+device (notably PipeWire-via-ALSA devices), in which case the existing
+UID-based persistence stores an empty string and the next launch can no
+longer re-resolve the user's chosen device, silently reverting to the
+default.
+
+Persist szDeviceName alongside szDeviceID and try both when re-resolving
+on the next launch, restricting the name match to the same SoundSystem
+to avoid ambiguity.
+
+The existing getSoundInputFromUID() / getSoundOutputFromUID() are left
+intact for any external callers; the new resolution lives directly in
+getSelectedSnd{Input,Output}Device() so it can also consider the name.
+---
+ Client/qtTeamTalk/preferencesdlg.cpp | 16 +++++++-
+ Client/qtTeamTalk/settings.h         |  2 +
+ Client/qtTeamTalk/utilsound.cpp      | 60 +++++++++++++++++++++++++---
+ Client/qtTeamTalk/utilsound.h        |  2 +
+ 4 files changed, 72 insertions(+), 8 deletions(-)
+
+diff --git a/Client/qtTeamTalk/preferencesdlg.cpp b/Client/qtTeamTalk/preferencesdlg.cpp
+index b32d23c..8dd9049 100644
+--- a/Client/qtTeamTalk/preferencesdlg.cpp
++++ b/Client/qtTeamTalk/preferencesdlg.cpp
+@@ -904,20 +904,32 @@ void PreferencesDlg::slotSaveChanges()
+         break;
+         }
+ 
++        // Persist both szDeviceID and szDeviceName so the resolver can
++        // fall back to the name when szDeviceID is empty.
+         ttSettings->setValue(SETTINGS_SOUND_INPUTDEVICE_UID, "");
++        ttSettings->setValue(SETTINGS_SOUND_INPUTDEVICE_NAME, "");
+         for(int i=0;i<m_sounddevices.size();i++)
+         {
+             if(inputid == m_sounddevices[i].nDeviceID)
+-                ttSettings->setValue(SETTINGS_SOUND_INPUTDEVICE_UID, 
++            {
++                ttSettings->setValue(SETTINGS_SOUND_INPUTDEVICE_UID,
+                                      _Q(m_sounddevices[i].szDeviceID));
++                ttSettings->setValue(SETTINGS_SOUND_INPUTDEVICE_NAME,
++                                     _Q(m_sounddevices[i].szDeviceName));
++            }
+         }
+ 
+         ttSettings->setValue(SETTINGS_SOUND_OUTPUTDEVICE_UID, "");
++        ttSettings->setValue(SETTINGS_SOUND_OUTPUTDEVICE_NAME, "");
+         for(int i=0;i<m_sounddevices.size();i++)
+         {
+             if(outputid == m_sounddevices[i].nDeviceID)
+-                ttSettings->setValue(SETTINGS_SOUND_OUTPUTDEVICE_UID, 
++            {
++                ttSettings->setValue(SETTINGS_SOUND_OUTPUTDEVICE_UID,
+                                      _Q(m_sounddevices[i].szDeviceID));
++                ttSettings->setValue(SETTINGS_SOUND_OUTPUTDEVICE_NAME,
++                                     _Q(m_sounddevices[i].szDeviceName));
++            }
+         }
+ 
+         // reinit sound device if anything has changed
+diff --git a/Client/qtTeamTalk/settings.h b/Client/qtTeamTalk/settings.h
+index f94687a..7f588f0 100644
+--- a/Client/qtTeamTalk/settings.h
++++ b/Client/qtTeamTalk/settings.h
+@@ -241,9 +241,11 @@
+ #define SETTINGS_SOUND_INPUTDEVICE                  "soundsystem/inputdeviceid"
+ #define SETTINGS_SOUND_INPUTDEVICE_DEFAULT          SOUNDDEVICEID_DEFAULT
+ #define SETTINGS_SOUND_INPUTDEVICE_UID              "soundsystem/inputdeviceuid"
++#define SETTINGS_SOUND_INPUTDEVICE_NAME             "soundsystem/inputdevicename"
+ #define SETTINGS_SOUND_OUTPUTDEVICE                 "soundsystem/outputdeviceid"
+ #define SETTINGS_SOUND_OUTPUTDEVICE_DEFAULT         SOUNDDEVICEID_DEFAULT
+ #define SETTINGS_SOUND_OUTPUTDEVICE_UID             "soundsystem/outputdeviceuid"
++#define SETTINGS_SOUND_OUTPUTDEVICE_NAME            "soundsystem/outputdevicename"
+ #define SETTINGS_SOUND_MASTERVOLUME                 "soundsystem/mastervolume"
+ #define SETTINGS_SOUND_MASTERVOLUME_DEFAULT         50
+ #define SETTINGS_SOUND_MICROPHONEGAIN               "soundsystem/microphonegain"
+diff --git a/Client/qtTeamTalk/utilsound.cpp b/Client/qtTeamTalk/utilsound.cpp
+index 9a043c2..0cb7b0a 100644
+--- a/Client/qtTeamTalk/utilsound.cpp
++++ b/Client/qtTeamTalk/utilsound.cpp
+@@ -122,6 +122,25 @@ bool getSoundDevice(const QString& devid, bool input, const QVector<SoundDevice>
+     return false;
+ }
+ 
++bool getSoundDeviceByName(const QString& name, bool input, SoundSystem sndsys,
++                          const QVector<SoundDevice>& devs, SoundDevice& dev)
++{
++    if (name.isEmpty())
++        return false;
++
++    for (auto d : devs)
++    {
++        bool sysok = (sndsys == SOUNDSYSTEM_NONE) || (d.nSoundSystem == sndsys);
++        bool sideok = (input && d.nMaxInputChannels > 0) || (!input && d.nMaxOutputChannels > 0);
++        if (sysok && sideok && _Q(d.szDeviceName) == name)
++        {
++            dev = d;
++            return true;
++        }
++    }
++    return false;
++}
++
+ int getSoundDuplexSampleRate(const SoundDevice& indev, const SoundDevice& outdev)
+ {
+     auto isend = indev.inputSampleRates + sizeof(indev.inputSampleRates);
+@@ -223,10 +242,26 @@ int getSelectedSndInputDevice()
+         inputid = getDefaultSndInputDevice();
+     else
+     {
+-        //check if device-id has changed since last
++        // Re-resolve the persisted device by szDeviceID, falling back to
++        // szDeviceName, since the numeric ID is unstable across reboots
++        // and some sound backends report an empty szDeviceID.
+         QString uid = ttSettings->value(SETTINGS_SOUND_INPUTDEVICE_UID, "").toString();
+-        if (uid.size())
+-            inputid = getSoundInputFromUID(inputid, uid);
++        QString name = ttSettings->value(SETTINGS_SOUND_INPUTDEVICE_NAME, "").toString();
++        SoundSystem sndsys = SoundSystem(ttSettings->value(SETTINGS_SOUND_SOUNDSYSTEM, SOUNDSYSTEM_NONE).toInt());
++
++        QVector<SoundDevice> devs = getSoundDevices();
++        SoundDevice dev = {};
++        bool resolved = false;
++        if (!uid.isEmpty() && getSoundDevice(uid, true, devs, dev))
++        {
++            inputid = dev.nDeviceID;
++            resolved = true;
++        }
++        if (!resolved && !name.isEmpty() && getSoundDeviceByName(name, true, sndsys, devs, dev))
++        {
++            inputid = dev.nDeviceID;
++            resolved = true;
++        }
+     }
+     qDebug() << "Returning input device #" << inputid;
+     return inputid;
+@@ -240,10 +275,23 @@ int getSelectedSndOutputDevice()
+         outputid = getDefaultSndOutputDevice();
+     else
+     {
+-        //check if device-id has changed since last
+         QString uid = ttSettings->value(SETTINGS_SOUND_OUTPUTDEVICE_UID, "").toString();
+-        if (uid.size())
+-            outputid = getSoundOutputFromUID(outputid, uid);
++        QString name = ttSettings->value(SETTINGS_SOUND_OUTPUTDEVICE_NAME, "").toString();
++        SoundSystem sndsys = SoundSystem(ttSettings->value(SETTINGS_SOUND_SOUNDSYSTEM, SOUNDSYSTEM_NONE).toInt());
++
++        QVector<SoundDevice> devs = getSoundDevices();
++        SoundDevice dev = {};
++        bool resolved = false;
++        if (!uid.isEmpty() && getSoundDevice(uid, false, devs, dev))
++        {
++            outputid = dev.nDeviceID;
++            resolved = true;
++        }
++        if (!resolved && !name.isEmpty() && getSoundDeviceByName(name, false, sndsys, devs, dev))
++        {
++            outputid = dev.nDeviceID;
++            resolved = true;
++        }
+     }
+     qDebug() << "Returning output device #" << outputid;
+     return outputid;
+diff --git a/Client/qtTeamTalk/utilsound.h b/Client/qtTeamTalk/utilsound.h
+index 88aab45..46bae10 100644
+--- a/Client/qtTeamTalk/utilsound.h
++++ b/Client/qtTeamTalk/utilsound.h
+@@ -32,6 +32,8 @@
+ QVector<SoundDevice> getSoundDevices();
+ bool getSoundDevice(int deviceid, const QVector<SoundDevice>& devs, SoundDevice& dev);
+ bool getSoundDevice(const QString& devid, bool input, const QVector<SoundDevice>& devs, SoundDevice& dev);
++bool getSoundDeviceByName(const QString& name, bool input, SoundSystem sndsys,
++                          const QVector<SoundDevice>& devs, SoundDevice& dev);
+ int getSoundDuplexSampleRate(const SoundDevice& indev, const SoundDevice& outdev);
+ bool isSoundDeviceEchoCapable(const SoundDevice& indev, const SoundDevice& outdev);
+ 
+-- 
+2.54.0
+

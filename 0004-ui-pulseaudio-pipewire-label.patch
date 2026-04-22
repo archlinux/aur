@@ -1,0 +1,54 @@
+From def5c86c8bcfd734e9c57012b598cab99f0801bc Mon Sep 17 00:00:00 2001
+From: heath-toby <heathtobias@gmail.com>
+Date: Thu, 23 Apr 2026 00:05:17 +0100
+Subject: [PATCH] Label PulseAudio sound system as "PulseAudio / PipeWire" on
+ PipeWire
+
+When pipewire-pulse is running, selecting PulseAudio in the sound
+system dropdown actually routes audio through PipeWire. Detect this at
+preferences-init time by checking for the PipeWire socket at
+/run/user/$UID/pipewire-0 and adjust the dropdown label accordingly so
+users on a PipeWire-based distribution can recognise the right option.
+The underlying SoundSystem value is unchanged; only the displayed
+label is affected.
+---
+ Client/qtTeamTalk/preferencesdlg.cpp | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/Client/qtTeamTalk/preferencesdlg.cpp b/Client/qtTeamTalk/preferencesdlg.cpp
+index b32d23c..956eed0 100644
+--- a/Client/qtTeamTalk/preferencesdlg.cpp
++++ b/Client/qtTeamTalk/preferencesdlg.cpp
+@@ -36,9 +36,14 @@
+ 
+ #include <QDebug>
+ #include <QMessageBox>
++#include <QFile>
+ #include <QFileDialog>
+ #include <QFileInfo>
+ #include <QDir>
++
++#if defined(Q_OS_UNIX) && !defined(Q_OS_DARWIN)
++#include <unistd.h>
++#endif
+ #include <QVariant>
+ #include <QKeyEvent>
+ #if defined(QT_TEXTTOSPEECH_LIB)
+@@ -561,7 +566,13 @@ void PreferencesDlg::initSoundSystemTab()
+     ui.sndSysBox->addItem(tr("CoreAudio"), SOUNDSYSTEM_COREAUDIO);
+ #else
+     ui.sndSysBox->addItem(tr("Advanced Linux Sound Architecture (ALSA)"), SOUNDSYSTEM_ALSA);
+-    ui.sndSysBox->addItem(tr("PulseAudio"), SOUNDSYSTEM_PULSEAUDIO);
++    {
++        // On a PipeWire system the PulseAudio backend is served by
++        // pipewire-pulse, so reflect that in the label when detected.
++        bool pipewire = QFile::exists(QString("/run/user/%1/pipewire-0").arg(getuid()));
++        QString label = pipewire ? tr("PulseAudio / PipeWire") : tr("PulseAudio");
++        ui.sndSysBox->addItem(label, SOUNDSYSTEM_PULSEAUDIO);
++    }
+ #endif
+     int comboIndex = ui.sndSysBox->findData(SoundSystem(ttSettings->value(SETTINGS_SOUND_SOUNDSYSTEM, SOUNDSYSTEM_NONE).toInt()));
+     if(comboIndex>=0)
+-- 
+2.54.0
+

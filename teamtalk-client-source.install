@@ -1,0 +1,17 @@
+post_install() {
+    # The SDK tarball ships a writable TeamTalk5.ini next to the binary;
+    # we install only TeamTalk5.ini.default and let the app create the
+    # writable copy on first launch. Nothing to do here today, but the
+    # hook is kept for future migrations.
+    :
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # Wipe any user state that lived alongside the install. The per-user
+    # settings under ~/.config/BearWare.dk/ are intentionally left alone.
+    rm -rf /opt/teamtalk-client-source 2>/dev/null || true
+}

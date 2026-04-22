@@ -1,0 +1,32 @@
+From 8aa6f275b99ccc0f21d0b7b1dea19552b3fab24d Mon Sep 17 00:00:00 2001
+From: heath-toby <heathtobias@gmail.com>
+Date: Thu, 23 Apr 2026 00:04:32 +0100
+Subject: [PATCH] Add cmake_minimum_required(VERSION 3.16) to qtTeamTalk
+
+CMake 4 (released 2025) hard-fails the configure step on subprojects
+that lack a top-level cmake_minimum_required() call, even when invoked
+through the parent build. Without this, building qtTeamTalk standalone
+or via cmake -S Client/qtTeamTalk fails with:
+
+  CMake Error in CMakeLists.txt:
+    No cmake_minimum_required command is present.
+
+3.16 is well below the features actually used and matches the version
+range supported by Qt's own CMake integration.
+---
+ Client/qtTeamTalk/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Client/qtTeamTalk/CMakeLists.txt b/Client/qtTeamTalk/CMakeLists.txt
+index 855cf1b..c40ae07 100644
+--- a/Client/qtTeamTalk/CMakeLists.txt
++++ b/Client/qtTeamTalk/CMakeLists.txt
+@@ -1,3 +1,5 @@
++cmake_minimum_required(VERSION 3.16)
++
+ if (CMAKE_VERSION VERSION_LESS "3.7.0")
+   set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ endif()
+-- 
+2.54.0
+
