@@ -1,6 +1,113 @@
 Changelog
 =========
 
+## v4.9.0 (2026-04-21)
+
+### Enhancements
+
+* Add `bugsnag.__version__` attribute for programmatic version checking as per PEP 396 specification
+  [#409](https://github.com/bugsnag/bugsnag-python/pull/409)
+
+## v4.8.1 (2026-01-23)
+
+### Changes
+
+* Amend secondary instance URL to bugsnag.smartbear.com
+  [#400](https://github.com/bugsnag/bugsnag-python/pull/400)
+
+## v4.8.0 (2025-07-08)
+
+### Enhancements
+
+* Remove deprecated `datetime.utcnow()` method call from utils class
+  [#394](https://github.com/bugsnag/bugsnag-python/pull/394).
+* Set default endpoints based on API key
+  [#399](https://github.com/bugsnag/bugsnag-python/pull/399)
+
+## v4.7.1 (2024-05-22)
+
+### Bug fixes
+
+* Avoid reading `__code__` when setting a custom delivery unless it exists
+  [#387](https://github.com/bugsnag/bugsnag-python/pull/387)
+
+## v4.7.0 (2024-04-24)
+
+### Enhancements
+
+* Add support for AWS Lambda functions via the new `bugsnag.aws_lambda_handler` decorator. See [the documentation for usage instructions](https://docs.bugsnag.com/platforms/python/aws-lambda/).
+
+## v4.6.2 (2024-03-05)
+
+### Bug fixes
+
+* Ensure sessions are sent at exit
+  [#371](https://github.com/bugsnag/bugsnag-python/pull/371)
+
+## v4.6.1 (2023-12-11)
+
+### Bug fixes
+
+* Avoid using deprecated `flask.__version__` attribute
+  [#365](https://github.com/bugsnag/bugsnag-python/pull/365)
+* Ensure the session delivery queue is started regardless of `auto_capture_sessions` configuration
+  [#367](https://github.com/bugsnag/bugsnag-python/pull/367)
+
+## v4.6.0 (2023-09-05)
+
+### Enhancements
+
+* Add support for feature flags & experiments
+  [#350](https://github.com/bugsnag/bugsnag-python/pull/350)
+  [#351](https://github.com/bugsnag/bugsnag-python/pull/351)
+
+* Remove use of deprecated `pkg_resources` module
+  [#362](https://github.com/bugsnag/bugsnag-python/pull/362)
+
+## v4.5.0 (2023-07-17)
+
+### Enhancements
+
+* The exception's `__notes__` field will now be sent as metadata if it exists
+  [#340](https://github.com/bugsnag/bugsnag-python/pull/340)
+  [0HyperCube](https://github.com/0HyperCube)
+
+* Allows changing the grouping hash when using `BugsnagHandler` via the logger methods' `extra` keyword argument
+  [#334](https://github.com/bugsnag/bugsnag-python/pull/334)
+  [0HyperCube](https://github.com/0HyperCube)
+
+* PathLike objects are now accepted as the project path
+  [#344](https://github.com/bugsnag/bugsnag-python/pull/344)
+  [0HyperCube](https://github.com/0HyperCube)
+
+### Bug fixes
+
+* Fixes one of the fields being mistakenly replaced with `[RECURSIVE]` when encoding a list or dictionary with identical siblings but no recursion.
+  [#341](https://github.com/bugsnag/bugsnag-python/pull/341)
+  [0HyperCube](https://github.com/0HyperCube)
+
+* Fix the ignore class list not accounting for nested classes
+  [#342](https://github.com/bugsnag/bugsnag-python/pull/342)
+  [0HyperCube](https://github.com/0HyperCube)
+
+## v4.4.0 (2023-02-21)
+
+### Enhancements
+
+* Sub-exceptions will now be reported when an `ExceptionGroup` or `BaseExceptionGroup` is passed to `bugsnag.notify`. This includes support for the backports provided by the `exceptiongroup` package
+  [#332](https://github.com/bugsnag/bugsnag-python/pull/332)
+  [#338](https://github.com/bugsnag/bugsnag-python/pull/338)
+
+## v4.3.0 (2022-11-02)
+
+### Enhancements
+
+* Allow preventing an exception from being reported to Bugsnag by setting the `skip_bugsnag` attr to `True`
+  [#325](https://github.com/bugsnag/bugsnag-python/pull/325)
+
+* Prevent duplicate events from being notified in the Django integration
+  [#326](https://github.com/bugsnag/bugsnag-python/pull/326)
+
 ## v4.2.1 (2022-05-16)
 
 ### Bug fixes
