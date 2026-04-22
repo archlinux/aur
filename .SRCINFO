@@ -1,0 +1,24 @@
+pkgbase = angie-mod-ndk-set-misc
+	pkgdesc = Angie module that adds additional generic tools that module developers can use in their own modules
+	pkgver = 0.33+0.3.4
+	pkgrel = 1
+	url = https://github.com/openresty/set-misc-nginx-module
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = angie
+	makedepends = angie-src
+	source = https://github.com/openresty/set-misc-nginx-module/archive/v0.33/set-misc-0.33.tar.gz
+	source = https://github.com/simpl/ngx_devel_kit/archive/v0.3.4/ngx_devel_kit-0.3.4.tar.gz
+	sha256sums = cd5e2cc834bcfa30149e7511f2b5a2183baf0b70dc091af717a89a64e44a2985
+	sha256sums = 14a28063294f645d457b1eb10e3c23bbba44398f1c5f021421b58b6f8ab31662
+
+pkgname = angie-mod-ndk
+	pkgdesc = Angie module that adds additional generic tools that module developers can use in their own modules
+	depends = nginx
+	backup = etc/nginx/modules.d/20-ndk.conf
+
+pkgname = angie-mod-set-misc
+	pkgdesc = Angie module that adds various set_xxx directives
+	depends = angie-mod-ndk
+	depends = nginx
+	backup = etc/nginx/modules.d/20-set-misc.conf
