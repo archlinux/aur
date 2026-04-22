@@ -1023,7 +1023,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP')
+sha256sums=('40302fe5cd98904f7db6955a824dcaf34a04fe1af3b5e668537f7bd84ed9a2a8'
+            'fa32a9d7b1961b366a59d107006a9728da9d89f06e32d1ef51e44fa6b9a55801'
+            '6f45ef083841792e88fbadbfefb0630abd738a131f9782333fbc61f8b6712b4b'
+            'f594e3a0cf55649377e09bc22e6dd5152ecafe6a96460a68036a35bba5ba932e')
