@@ -1,7 +1,7 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=openchamber
 _npmname=@openchamber/web
-pkgver=1.9.6
+pkgver=1.9.7
 pkgrel=1
 pkgdesc="Desktop and web interface for OpenCode AI agent"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/@openchamber/web/-/web-${pkgver}.tgz")
 noextract=("web-${pkgver}.tgz")
-sha256sums=('f741c1b408b54bad708f7eb875af370b9eb6dcdc094210230cea5e6ce9d8a9af')
+sha256sums=('2aa5923340e6f1ee1742252d43adf154c60cc5106adf5ab5f615cb552b9dd18e')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
@@ -32,6 +32,14 @@ package() {
     find "$pkgdir/usr/lib/node_modules" -type f -exec sed -i 's|\$srcdir||g;s|\$pkgdir||g' {} +
     rm -f "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/node-pty/build/config.gypi" \
           "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/node-pty/build/Makefile"
+
+    # Remove leftover compiled object and dependency files to satisfy namcap warnings
+    find "$pkgdir/usr/lib/node_modules" -type f \( -name '*.o' -o -name '*.o.d' -o -name '*.d' \) -delete || true
+
+    # Remove better-sqlite3 build intermediates and config files that may reference build paths
+    rm -rf "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/better-sqlite3/build/Release/obj.target" || true
+    rm -f "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/better-sqlite3/build/config.gypi" \
+          "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/better-sqlite3/build/Makefile" || true
 
     # Install license file for namcap (search common license filenames)
     license_files=( "$pkgdir/usr/lib/node_modules/@openchamber/web/LICENSE" "$pkgdir/usr/lib/node_modules/@openchamber/web/license" "$pkgdir/usr/lib/node_modules/@openchamber/web/LICENSE.md" )
