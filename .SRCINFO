@@ -1,6 +1,6 @@
 pkgbase = mementodb
 	pkgdesc = A complex, easy-to-use and customizable solution for database management
-	pkgver = 3.9.0
+	pkgver = 3.10.0
 	pkgrel = 1
 	url = https://mementodatabase.com
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = mementodb
 	depends = zlib
 	options = !docs
 	options = !strip
-	source = https://mementodatabase.com/download/mementodb-3.9.0-linux.deb
-	sha256sums = ea36fc9035256b4f04b791c111f138a1e2d500e4a95dc51e2cba3780317cd7dc
+	source = https://download.mementodb.com/mementodb-3.10.0-linux.deb
+	sha256sums = 7f38b310eeddd6e516d15ebe8910a4ccda446f5391c12836611e55fba7d135d0
 
 pkgname = mementodb
