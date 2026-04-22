@@ -1,6 +1,6 @@
 pkgbase = talanoa-bin
 	pkgdesc = Talanoa is a modern email client that is designed to be fast, secure, and easy to use
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://talanoa.email
 	install = talanoa-bin.install
@@ -32,7 +32,7 @@ pkgbase = talanoa-bin
 	options = !debug
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/talanoa-email/desktop-releases/releases/download/v0.8.0/talanoa_0.8.0_amd64.deb
-	sha224sums = d7d0741d2b4138e9800900831bdb2e4ff896486d5fed92f84f24f5a5
+	source = https://github.com/talanoa-email/desktop-releases/releases/download/v0.8.1/talanoa_0.8.1_amd64.deb
+	sha224sums = 0ffcdfaa2cbe1fbae2044a952845a478be49d40e715e4872c1f42b27
 
 pkgname = talanoa-bin
