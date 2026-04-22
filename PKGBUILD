@@ -3,7 +3,7 @@
 
 pkgname=(zoho-cliq zoho-cliq-upstream-electron)
 pkgver=1.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Zoho Cliq communication software'
 arch=('x86_64')
 url="https://www.zoho.com/cliq/desktop/linux.html"
@@ -30,7 +30,7 @@ package_zoho-cliq() {
 package_zoho-cliq-upstream-electron() {
     # The only difference is that this package copies over only the resources/ folder
     # and creates a launcher wrapper.
-    electron_ver='electron36'
+    electron_ver='electron39'
     depends+=($electron_ver)
     conflicts=('zoho-cliq')
     pkgdesc='Zoho Cliq running on upstream Electron (experimental)'
