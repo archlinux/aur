@@ -72,7 +72,7 @@ prepare() {
   
   cd "../$_name-native"
   git submodule init
-  git config submodules.src/libpsl-native/test/googletest.url "$srcdir/googletest"
+  git config submodule.src/libpsl-native/test/googletest.url "$srcdir/googletest"
   git -c protocol.file.allow=always submodule update
 }
 
