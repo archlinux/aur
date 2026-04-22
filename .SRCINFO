@@ -1,6 +1,6 @@
 pkgbase = ol
 	pkgdesc = Otus Lisp, a purely functional dialect of Scheme
-	pkgver = 2.6
+	pkgver = 2.7
 	pkgrel = 1
 	url = https://github.com/yuriy-chumak/ol
 	arch = i486
@@ -11,7 +11,7 @@ pkgbase = ol
 	license = custom:MIT
 	makedepends = vim
 	depends = glibc
-	source = ol-2.6.tar.gz::https://github.com/yuriy-chumak/ol/archive/2.6.tar.gz
+	source = ol-2.7.tar.gz::https://github.com/yuriy-chumak/ol/archive/2.7.tar.gz
 	sha512sums = SKIP
 
 pkgname = ol

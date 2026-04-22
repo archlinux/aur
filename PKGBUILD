@@ -1,7 +1,7 @@
 # Maintainer: Yuriy Chumak <yuriy.chumak at mail dot com>
 
 pkgname='ol'
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc='Otus Lisp, a purely functional dialect of Scheme'
 arch=('i486' 'pentium4' 'i686' 'x86_64')
