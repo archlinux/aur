@@ -69,8 +69,6 @@ package() {
 
   local _target="$pkgdir/usr/share/applications/azahar.desktop"
 
-  sed -i 's/^Name=.*/Name=AzaharPlus/' "$_target"
-  sed -i 's/^Exec=.*/Exec=azahar %f/' "$_target"
   sed -i 's/^Icon=.*/Icon=org.azahar_emu.Azahar/' "$_target"
   
   if ! grep -q "Categories=Game;" "$_target"; then
