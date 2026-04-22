@@ -1,6 +1,6 @@
 pkgbase = fooyin-kode54-plugins-git
 	pkgdesc = A set of plugins for Fooyin (Git version)
-	pkgver = r48.a93771e
+	pkgver = r80.c76cc73
 	pkgrel = 1
 	url = https://github.com/kode54/fooyin-kode54-plugins
 	arch = x86_64
@@ -20,6 +20,8 @@ pkgbase = fooyin-kode54-plugins-git
 	source = git+https://bitbucket.org/losnoco/lazyusf2.git
 	source = git+https://bitbucket.org/losnoco/sseqplayer.git
 	source = git+https://bitbucket.org/losnoco/libsnes9x.git
+	source = git+https://github.com/kode54/spessasynth_core_c.git
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
