@@ -2,18 +2,18 @@
 # Contributor: Reese Wang <thuwrx10 at gmail dot com>
 
 pkgname='hikvision-mvs'
-pkgver=4.6.3
-_pkgdate=260205
+pkgver=5.0.0
+_pkgdate=260421
 pkgrel=1
 pkgdesc="Machine Vision Software by Hikvision, for their industrial cameras."
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://www.hikrobotics.com/"
 license=('LGPL2.1' 'LGPL3' 'custom')
 source=("https://www.hikrobotics.com/cn2/source/support/software/MVS_Linux_STD_V${pkgver}_${_pkgdate}.zip"
 	'logo.svg'
 	'hikvision-mvs.desktop')
 noextract=("${source[0]##*/}")
-sha256sums=('e187a49435a1987dde48acfdf3cf280ae775c054b251156cdfdb5b16f2986517'
+sha256sums=('6602744f88c772a84dd12d00d0c37dd9b02d1003591c58bd30ebd4e673c0b02d'
             '6be7b478c87b26e562ee385c91039b8b5d4927eb3d34a27089201edb2b2182fb'
             '8e71020b983d2b49f012af025dce81d83301f280acf73f8062adf6dbe2b71a2c')
 
@@ -27,6 +27,8 @@ prepare() {
 	declare -A arch_in_filename=(
 		['x86_64']='x86_64'
 		['i686']='i386'
+		['armv7h']='arm-none'
+		['aarch64']='aarch64'
 	)
 	export FILENAME=MVS-${pkgver}_${arch_in_filename[$CARCH]}_20${_pkgdate}.tar.gz
 	unzip -o ${noextract[0]} $FILENAME
@@ -37,6 +39,8 @@ package() {
 	declare -A arch_in_filename=(
 		['x86_64']='x86_64'
 		['i686']='i386'
+		['armv7h']='arm-none'
+		['aarch64']='aarch64'
 	)
 	export FILENAME=MVS-${pkgver}_${arch_in_filename[$CARCH]}_20${_pkgdate}.tar.gz #why paru cant do this?
 	OPT=${pkgdir}/opt/MVS
