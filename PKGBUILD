@@ -3,7 +3,7 @@
 pkgname=inkdrop
 _pkgname=inkdrop
 pkgver=5.11.8
-pkgrel=1
+pkgrel=2
 pkgdesc="The Note-taking App with Robust Markdown Editor"
 arch=('x86_64')
 url="https://www.inkdrop.app/"
@@ -31,4 +31,5 @@ package() {
 
     cp -ar ${srcdir}/* $pkgdir/usr/lib/inkdrop
     ln -sf /usr/lib/inkdrop/inkdrop ${pkgdir}/usr/bin/inkdrop
+    ln -sf /usr/lib/inkdrop/resources/app/ipm/bin/ipm ${pkgdir}/usr/bin/ipm
 }

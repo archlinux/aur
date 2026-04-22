@@ -1,7 +1,7 @@
 pkgbase = inkdrop
 	pkgdesc = The Note-taking App with Robust Markdown Editor
 	pkgver = 5.11.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.inkdrop.app/
 	arch = x86_64
 	license = custom
