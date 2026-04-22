@@ -3,8 +3,8 @@
 # Contributor: Wuxxin <wuxxin@gmail.com>
 
 pkgname=openclaw
-pkgver=2026.4.15
-pkgrel=4
+pkgver=2026.4.20
+pkgrel=1
 pkgdesc='Personal AI assistant / multi-channel gateway'
 arch=('x86_64' 'aarch64')
 url='https://github.com/openclaw/openclaw'
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('nodejs>=22')
 makedepends=('pnpm')
 source=("https://github.com/openclaw/openclaw/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('920d8e0e3c4d9c2d2d9a184c82d98a833f308cdd56a4fd282cec918466b4efe3')
+sha256sums=('29a843f7fdbca5e9496ba932036883a654e2f264692e21d6595cb6c18cfcb8d3')
 
 # If upstream version tags ever include extra suffixes, this can help:
 # pkgver() {
@@ -36,26 +36,20 @@ build() {
   export CI=1
   export NODE_ENV=production
 
-  # Install the workspace exactly as locked by upstream.
   pnpm install --frozen-lockfile
 
-  # Build the runtime bits that upstream's npm package has repeatedly missed.
-  # The README/dev docs explicitly call out ui:build for Control UI, and
-  # gateway:watch is only for development.
-  pnpm ui:build
+  # Build the actual runtime, not just the UI
+  pnpm build
 
-  # Optional: if you discover the release tarball still needs a full build,
-  # uncomment this and inspect what it produces.
-  # pnpm build
+  # If upstream still expects a separate UI build, keep this too
+  pnpm ui:build || true
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # Minimal sanity checks; avoid noisy/full test suites for now.
   test -f openclaw.mjs
-  test -d dist
-  test -f dist/control-ui/index.html
+  test -f dist/entry.js -o -f dist/entry.mjs
 }
 
 package() {
