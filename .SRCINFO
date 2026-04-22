@@ -1,0 +1,22 @@
+pkgbase = python-squareline-to-esphome-git
+	pkgdesc = A python wrapper over the ORCID API
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ORCID/python-orcid
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pillow
+	depends = python-pyperclip
+	depends = python-yaml
+	source = git+https://github.com/gpambrozio/SquarelineToEsphome.git
+	source = fix-setup.patch
+	sha256sums = SKIP
+	sha256sums = 6b38249bf5bb07013499eacc97e64a97acb720393bb80e6b5c6275a12aabe478
+
+pkgname = python-squareline-to-esphome-git
+	depends = python
+	depends = python-pillow
+	depends = python-pyperclip
+	depends = python-yaml

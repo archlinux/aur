@@ -1,0 +1,11 @@
+--- pyproject.toml	2026-04-22 13:37:12.146864056 +0200
++++ pyproject.toml	2026-04-22 13:59:56.539361828 +0200
+@@ -22,7 +22,7 @@
+
+
+ [build-system]
+-requires = ["setuptools==80.8.0",]
++requires = ["setuptools>=80.8.0",]
+ build-backend = "setuptools.build_meta"
+
+ [tool.ruff]
