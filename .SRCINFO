@@ -1,7 +1,7 @@
 pkgbase = llama-swap
 	pkgdesc = Model swapping for llama.cpp (or any local OpenAPI compatible server)
-	pkgver = v204
-	pkgrel = 2
+	pkgver = v205
+	pkgrel = 3
 	url = https://github.com/mostlygeek/llama-swap
 	arch = x86_64
 	arch = aarch64
@@ -16,9 +16,9 @@ pkgbase = llama-swap
 	conflicts = llama-swap-bin
 	options = lto
 	options = !debug
-	source = git+https://github.com/mostlygeek/llama-swap.git#tag=v204
+	source = git+https://github.com/mostlygeek/llama-swap.git#tag=v205
 	source = llama-swap.service
-	sha256sums = ad7d5706da90e037452d9ef558f403a963683566bc47246ddda821dc38c59f08
+	sha256sums = 0266dc5ef3f6ab38922ac6eb1d43ff819ffed3477e686bf0da1203d23b8602c9
 	sha256sums = 8f247fec3e347c212006415e23260a4851ccc435ea3fe0b2c7eaed12b49c406c
 
 pkgname = llama-swap
