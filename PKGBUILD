@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=browsr
-pkgver=1.23.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="TUI File Browser App"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-hatchling python-wheel)
 # checkdepends=(python-pytest python-requests)
 optdepends=('python-pyarrow')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9abc27a1f045b2c64c294ec34ca6775c3f98ab31993fd196e7432dcb1ab03b7c728bc6322fb6fad3eb3e14773f1e22c2d6791efec91f20e8ac7586c11403dea7')
+sha512sums=('3e670f2c98b50aa53ba4f74bb716874d3c2d6f66e447597068200389f847a2cb2bba4628835a863b5f49188cdc7bec3913b43435744e053aa1e6adc2827ff6fd')
 
 build() {
   cd ${pkgname}-${pkgver}
