@@ -1,0 +1,12 @@
+pkgbase = shanns-liga-nerd-font
+	pkgdesc = A combination of ComicShannsMono NF and SeriousShanns NF with ligatures from RecMonoSmCasual NF
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pakhromov/ShannsLiga-Nerd-Font
+	arch = any
+	license = MIT
+	license = OFL-1.1
+	source = shanns-liga-nerd-font-1.0.0.zip::https://github.com/pakhromov/ShannsLiga-Nerd-Font/releases/download/v1.0.0/ShannsLigaNerdFonts-v1.0.0.zip
+	sha256sums = bacd8e87bf77230f28449137a9800e3265893cc1e81694be5a330bb3fa6377ef
+
+pkgname = shanns-liga-nerd-font
