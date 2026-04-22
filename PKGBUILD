@@ -4,12 +4,13 @@
 _name=sphinxcontrib-spelling
 pkgname=python-$_name
 pkgver=8.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Spelling checker for Sphinx"
 arch=('any')
 url="https://sphinxcontrib-spelling.readthedocs.io/"
 license=('BSD-3-Clause')
-depends=('python-sphinx' 'python-pyenchant' 'python-requests')
+depends=('python-sphinx' 'python-pyenchant' 'python-requests'
+              'python-importlib-metadata')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel'
              'python-setuptools' 'python-setuptools-scm')
 source=("git+https://github.com/sphinx-contrib/spelling.git#tag=$pkgver")

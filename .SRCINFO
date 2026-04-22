@@ -1,7 +1,7 @@
 pkgbase = python-sphinxcontrib-spelling
 	pkgdesc = Spelling checker for Sphinx
 	pkgver = 8.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sphinxcontrib-spelling.readthedocs.io/
 	arch = any
 	license = BSD-3-Clause
@@ -14,6 +14,7 @@ pkgbase = python-sphinxcontrib-spelling
 	depends = python-sphinx
 	depends = python-pyenchant
 	depends = python-requests
+	depends = python-importlib-metadata
 	source = git+https://github.com/sphinx-contrib/spelling.git#tag=8.0.2
 	sha256sums = 24695eef3545558e70d6d112bec4e7500521d6dc88f0b05464b4ec3dda1da395
 
