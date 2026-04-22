@@ -1,0 +1,46 @@
+post_install() {
+  cat <<'EOF'
+:: omarchy-prayer installed.
+
+First run:
+    omarchy-prayer adhans list       # pick an adhan audio
+    omarchy-prayer adhans download makkah
+    omarchy-prayer adhans set makkah
+    omarchy-prayer                   # open the TUI (auto-detects location via IP)
+
+Enable the daily scheduler + resume hook:
+    systemctl --user enable --now omarchy-prayer-schedule.timer
+    systemctl --user enable omarchy-prayer-resume.service
+
+Waybar module snippet:
+    "custom/prayer": {
+      "exec": "omarchy-prayer-waybar",
+      "interval": 30,
+      "return-type": "json",
+      "on-click": "alacritty -e omarchy-prayer",
+      "on-click-right": "omarchy-prayer-stop",
+      "tooltip": true
+    }
+
+Optional Hyprland keybind (append to ~/.config/hypr/bindings.conf):
+    bind = SUPER CTRL, M, exec, omarchy-prayer-stop
+
+Config lives at ~/.config/omarchy-prayer/config.toml (seeded on first run).
+EOF
+}
+
+post_upgrade() {
+  echo ":: omarchy-prayer upgraded. Restart waybar if the module's JSON shape changed."
+}
+
+post_remove() {
+  cat <<'EOF'
+:: omarchy-prayer removed. Your config and cached times are preserved at:
+    ~/.config/omarchy-prayer/
+    ~/.local/state/omarchy-prayer/
+    ~/.local/share/omarchy-prayer/adhans/
+Delete them manually if you want a clean uninstall. Also remember to:
+    systemctl --user disable --now omarchy-prayer-schedule.timer
+    systemctl --user disable omarchy-prayer-resume.service
+EOF
+}
