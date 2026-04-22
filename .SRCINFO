@@ -1,6 +1,6 @@
 pkgbase = python-sphinxcontrib-spelling
 	pkgdesc = Spelling checker for Sphinx
-	pkgver = 8.0.1
+	pkgver = 8.0.2
 	pkgrel = 1
 	url = https://sphinxcontrib-spelling.readthedocs.io/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-sphinxcontrib-spelling
 	depends = python-sphinx
 	depends = python-pyenchant
 	depends = python-requests
-	source = git+https://github.com/sphinx-contrib/spelling.git#tag=8.0.1
-	sha256sums = a82e9285f7952bdd03fade53076e23c1f4306d666acae1559b8abdca9603beae
+	source = git+https://github.com/sphinx-contrib/spelling.git#tag=8.0.2
+	sha256sums = 24695eef3545558e70d6d112bec4e7500521d6dc88f0b05464b4ec3dda1da395
 
 pkgname = python-sphinxcontrib-spelling

@@ -3,7 +3,7 @@
 
 _name=sphinxcontrib-spelling
 pkgname=python-$_name
-pkgver=8.0.1
+pkgver=8.0.2
 pkgrel=1
 pkgdesc="Spelling checker for Sphinx"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-sphinx' 'python-pyenchant' 'python-requests')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel'
              'python-setuptools' 'python-setuptools-scm')
 source=("git+https://github.com/sphinx-contrib/spelling.git#tag=$pkgver")
-sha256sums=('a82e9285f7952bdd03fade53076e23c1f4306d666acae1559b8abdca9603beae')
+sha256sums=('24695eef3545558e70d6d112bec4e7500521d6dc88f0b05464b4ec3dda1da395')
 
 build() {
   cd spelling
