@@ -1,7 +1,7 @@
 pkgbase = openclaw
 	pkgdesc = Personal AI assistant / multi-channel gateway
 	pkgver = 2026.4.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openclaw/openclaw
 	arch = x86_64
 	arch = aarch64
