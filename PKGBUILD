@@ -2,7 +2,7 @@
 
 _pkgname=crain
 pkgname="${_pkgname}-git"
-pkgver=2026.4.22
+pkgver=r21.eb8edab
 pkgrel=1
 pkgdesc="the worst storm this side of the silicon (terminal-based rain)"
 url="https://github.com/mazylol/crain"
@@ -12,13 +12,18 @@ depends=('ncurses')
 makedepends=('git' 'clang')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+${url}.git")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 options=('!strip')
 
+pkgver() {
+    cd "$srcdir/${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
     cd "$srcdir/${_pkgname}"
-    gcc nob.c -o nob
+    clang nob.c -o nob
     ./nob
 }
 
