@@ -4,7 +4,7 @@
 _setmiscver=0.33
 _ndkver=0.3.4
 
-pkgbase=angie-mod-ndk-set-misc
+pkgbase=angie-mod-ndk
 pkgname=(angie-mod-ndk angie-mod-set-misc)
 pkgver=$_setmiscver+$_ndkver
 pkgrel=1

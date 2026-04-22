@@ -1,4 +1,4 @@
-pkgbase = angie-mod-ndk-set-misc
+pkgbase = angie-mod-ndk
 	pkgdesc = Angie module that adds additional generic tools that module developers can use in their own modules
 	pkgver = 0.33+0.3.4
 	pkgrel = 1
