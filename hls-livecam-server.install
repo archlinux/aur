@@ -1,0 +1,12 @@
+post_install() {
+    echo ""
+    echo "hls-livecam-server installed."
+    echo ""
+    echo "Run the setup wizard to configure your webcam:"
+    echo "  sudo hls-livecam-setup"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
