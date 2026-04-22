@@ -1,9 +1,10 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _gitauthor=matthart1983
 _gitname=netwatch
 _appname=${_gitname}
-pkgname=${_appname}-tui-bin
+pkgname="${_appname}-tui-bin"
 pkgdesc="Real-time network diagnostics TUI — like htop for your network"
 
 pkgver=0.12.5
@@ -15,7 +16,7 @@ _barch=('linux-x86_64-static' 'linux-aarch64-static')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
-url=${_ghurl}
+url="${_ghurl}"
 
 license=('MIT')
 
