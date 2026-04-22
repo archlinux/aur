@@ -30,7 +30,6 @@ source=(
     'APPEND_SYSTEM.md.example'
 )
 sha256sums=('SKIP' '7883f9bdeeec04f9e06584ac4b4d55c813377f924623b8dd3b58b1465ab82fa6' 'SKIP')
-options=('!strip' '!debug')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
