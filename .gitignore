@@ -3,3 +3,4 @@ src/
 *.tar.gz
 *.zst
 *.json
+!oldver.json
