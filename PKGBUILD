@@ -1,12 +1,12 @@
 # Maintainer: Ishidaw <willianscagol@gmail.com>
 pkgname=leshade-git
-pkgver=2.4.6
+pkgver=2.4.7
 pkgrel=1
 pkgdesc="Official build for Leshade. An ReShade Manager for Linux"
 arch=('any')
 url="https://github.com/Ishidawg/LeShade"
 license=('MIT')
-depends=('python' 'pyside6' 'python-certifi' 'python-requests' 'protontricks')
+depends=('python' 'pyside6' 'python-certifi' 'python-requests' 'wine' 'winetricks')
 makedepends=('git' 'meson' 'ninja')
 provides=(leshade)
 conflicts=(leshade leshade-bin)
