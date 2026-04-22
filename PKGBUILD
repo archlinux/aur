@@ -18,10 +18,8 @@ source=(
     "$pkgname::git+https://github.com/kabeuchi-bird/kabekami.git"
     "kabekami-config.desktop"
 )
-sha256sums=(
-    'SKIP'
-    'c5448fc1733c37ce87f24bcdddc732f1bf524cf4c1c94d4ef8735987d01df62d'
-)
+sha256sums=('SKIP'
+            'aadec7cb6e6bff5a008936578905beb8fbf18feb794b8decd3b3e8ad90023b27')
 
 pkgver() {
     cd "$pkgname"
