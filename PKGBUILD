@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=yr
-pkgver=0.0.6
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Get the weather delivered to your command-line, or use as a Go package"
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go')
 options=("strip" "buildflags")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('97d5556582728b38e4e629dfc4515579e9f933596f41607e7a4addc3a5f8a9ad')
+sha256sums=('cf7b92d980f74278623306f4b715acfd69c629266849f61999570005b3f2cc7e')
 
 prepare(){
     cd "$pkgname-v$pkgver"
