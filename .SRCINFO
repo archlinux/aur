@@ -1,6 +1,6 @@
 pkgbase = molotov-deb
 	pkgdesc = Molotov TV client
-	pkgver = 7.4.1
+	pkgver = 7.5.2
 	pkgrel = 1
 	url = https://www.molotov.tv/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = molotov-deb
 	depends = pango
 	depends = alsa-lib
 	conflicts = molotov
-	source = https://desktop-app.molotov.tv/stable/linux/x64/Molotov-x64-7.4.1.deb
-	sha256sums = 366cd7cc908a25cde36bd616294158a02deb068f9063da6150553d519c40a2ad
+	source = https://desktop-app.molotov.tv/stable/linux/x64/Molotov-x64-7.5.2.deb
+	sha256sums = 0a24387fb8cdcc31e048c06fc83e5e01b041cb1528963aee7857eef6625446d6
 
 pkgname = molotov-deb
