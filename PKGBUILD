@@ -1,12 +1,12 @@
 pkgname=hiresti
-pkgver=1.8.6
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="High-Res TIDAL player for Linux with bit-perfect playback support"
 arch=('x86_64')
 url="https://github.com/yelanxin/hiresTI"
 license=('GPL-3.0-or-later')
-_commit=f9969331ce935232e71673510f17fb2792e6edb5
-_srcdir="hiresTI-${_commit}"
+_tag="v${pkgver}"
+_srcdir="hiresTI-${pkgver}"
 depends=(
   'alsa-lib'
   'gst-plugin-pipewire'
@@ -33,6 +33,9 @@ depends=(
   'python-tidalapi'
   'python-typing_extensions'
   'python-setproctitle'
+  'libusb'
+  'mesa'
+  'libglvnd'
 )
 makedepends=(
   'cargo'
@@ -50,10 +53,10 @@ conflicts=(
   'hiresti-git'
 )
 source=(
-  "${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/yelanxin/hiresTI/archive/${_commit}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/yelanxin/hiresTI/archive/refs/tags/${_tag}.tar.gz"
 )
 sha256sums=(
-  'dfea46210ac147cf21c0859c685854e17424ff1f4033bac0baaf9baff3f3607c'
+  'a76cea72481b74148d8fa71ed78b21a13bfe929cecc5fc3d147487a8c309d521'
 )
 
 build() {
