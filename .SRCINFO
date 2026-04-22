@@ -1,0 +1,16 @@
+pkgbase = python-playwright-captcha
+	pkgdesc = Helps solve captchas in Playwright or Playwright-based frameworks (like Camoufox or Patchright) automatically.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://pypi.org/project/playwright-captcha/
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-playwright
+	source = https://pypi.org/packages/source/p/playwright_captcha/playwright_captcha-0.1.4.tar.gz
+	sha256sums = 78140c9f8a6710d7b4334bed4ad481f72f0aae18709a914d47dcea5576c6c412
+
+pkgname = python-playwright-captcha
