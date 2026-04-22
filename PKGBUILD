@@ -952,5 +952,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('f7502edf032c0931ff1a42d2341b957f88f2946ae55423cb711fc77d29feb0855694edcd31643fa4935f9c7bae714a7c7c1cd8682f6d37ef4627bfff135b48ee'
-        '81fafd3adcaf3b690d8d4791693e68c7ae921d103ebfd70e8d0ae15cd05ecde5e6672ae43c3a7875686d883c1f5b82d2c8b37b40aee8dcb0563913f9dd6469b6')
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
