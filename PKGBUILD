@@ -1,5 +1,5 @@
 pkgname=quick-dns-switcher
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="System tray utility to manage DNS settings via NetworkManager"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
 source=(
     "${pkgname}-v${pkgver}.tar.gz::https://github.com/gmm96/Quick-DNS-Switcher/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('f18f437e61b7e5e4ef9c8378e4c2cea6d122ae4e65dd92417ac05b99adbdbcda')
+sha256sums=('e5794706abbcb4e28da6ba3a34ed3f0f9bc3deaf713864658a63cc1bb52b6716')
 
 package()
 {
@@ -40,7 +40,7 @@ package()
 
     # Bin
     install -dm755 "${BIN_DIR}"
-    ln -sf "${INSTALL_DIR}/${APP_NAME}.sh" "${BIN_FILE}"
+    ln -sf "/opt/${APP_NAME}/${APP_NAME}.sh" "${BIN_FILE}"
 
     # Config
     install -Dm644 "qds/resources/config/dns_providers.json" "${SHARE_DIR}/dns_providers.json"
@@ -54,7 +54,8 @@ package()
     # Icons
     shopt -s nullglob
     install -dm755 "${ICON_DIR}"
-    for icon in "qds/resources/assets/icons/"*".svg"; do
+    for icon in "qds/resources/assets/icons/"*".svg";
+    do
         install -Dm644 "${icon}" "${ICON_DIR}/$(basename "${icon}")"
     done
     shopt -u nullglob
