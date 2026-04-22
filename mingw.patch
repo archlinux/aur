@@ -1,0 +1,13 @@
+diff --git a/src/cspice/mkprodct.csh b/src/cspice/mkprodct.csh
+index e08a643..b8f1a69 100755
+--- a/src/cspice/mkprodct.csh
++++ b/src/cspice/mkprodct.csh
+@@ -169,7 +169,7 @@ else
+ #                        implementation
+ #
+ #
+-   set TKCOMPILEOPTIONS = "-c -ansi -m64 -O2 -fPIC -DNON_UNIX_STDIO"
++   set TKCOMPILEOPTIONS = "-c -ansi -m64 -O2 -fPIC -DNON_UNIX_STDIO -DMSDOS"
+    echo " "
+    echo "      Setting default compile options:"
+    echo "      $TKCOMPILEOPTIONS"
