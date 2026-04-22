@@ -8,16 +8,16 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=simgear
-pkgver=2024.1.4
+pkgver=2024.1.5
 pkgrel=1
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications"
 arch=('x86_64')
 url="https://gitlab.com/flightgear/simgear"
 license=('LGPL-2.0-only')
-depends=('c-ares' 'curl' 'expat' 'ffmpeg' 'gcc-libs' 'glibc' 'libglvnd' 'openal' 'openscenegraph' 'xz' 'zlib')
-makedepends=('boost' 'cmake')
+depends=('c-ares' 'curl' 'expat' 'ffmpeg' 'glibc' 'libgcc' 'libglvnd' 'libstdc++' 'openal' 'openscenegraph' 'xz' 'zlib')
+makedepends=('boost' 'boost-libs' 'cmake')
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('512238508b9f4101ac1515acad31b3a1efbdd26cc24665e55523010f5753b613')
+sha256sums=('b396b53825a2d7dad1619800598dbd535fd93ad983379fe60d14532151592c69')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \
