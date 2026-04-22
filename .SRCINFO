@@ -3,6 +3,7 @@ pkgbase = omarchy-window-restore-git
 	pkgver = r1
 	pkgrel = 1
 	url = https://github.com/TimHerb2005/omarchy-window-restore
+	install = omarchy-window-restore-git.install
 	arch = any
 	license = LicenseRef-PolyForm-Noncommercial-1.0.0
 	makedepends = git

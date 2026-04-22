@@ -1,0 +1,16 @@
+post_install() {
+  echo ""
+  echo "╔══════════════════════════════════════════════════════════╗"
+  echo "║         omarchy-window-restore installed!                ║"
+  echo "║                                                          ║"
+  echo "║  Run this command to activate keybindings for your user: ║"
+  echo "║                                                          ║"
+  echo "║    omarchy-install-window-restore                        ║"
+  echo "║                                                          ║"
+  echo "╚══════════════════════════════════════════════════════════╝"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}

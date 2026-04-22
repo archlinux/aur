@@ -10,6 +10,7 @@ depends=('python' 'hyprland' 'walker')
 makedepends=('git')
 provides=("omarchy-window-restore=${pkgver}")
 conflicts=('omarchy-window-restore')
+install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/TimHerb2005/omarchy-window-restore.git")
 sha256sums=('SKIP')
 
