@@ -1,4 +1,4 @@
-# Maintainer: fa5e4658010be730
+# Maintainer: fkzys <fkzys at proton dot me>
 _pkgname=subs2srs
 pkgname=subs2srs-gui
 pkgver=0.2.5
