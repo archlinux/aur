@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gdk-pixbuf2
-pkgver=2.42.10
+pkgver=2.42.11
 pkgrel=1
 pkgdesc='An image loading library (mingw-w64)'
 arch=('any')
@@ -10,6 +10,7 @@ makedepends=(
   'mingw-w64-pkg-config'
   'mingw-w64-meson'
   'mingw-w64-wine'
+  'glib2-devel'
   'python') # python is required to run glib-mkenums
 depends=(
   'mingw-w64-crt'
@@ -21,9 +22,8 @@ options=('!strip' '!buildflags' 'staticlibs')
 source=(
   "https://download.gnome.org/sources/gdk-pixbuf/${pkgver%.*}/gdk-pixbuf-$pkgver.tar.xz"
   'gdk-pixbuf2-gen-thumbnailer-wine.patch')
-sha256sums=(
-  'ee9b6c75d13ba096907a2e3c6b27b61bcd17f5c7ebeab5a5b439d2f2e39fe44b'
-  '69dd65e803a7a0d752536478864b19d77423affff2921aea5d076dd5916594f6')
+sha256sums=('49dcb402388708647e8c321d56b6fb30f21e51e515d0c5a942268d23052a2f00'
+            '69dd65e803a7a0d752536478864b19d77423affff2921aea5d076dd5916594f6')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
