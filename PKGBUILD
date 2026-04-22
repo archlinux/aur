@@ -1,6 +1,6 @@
 # Maintainer: ushineko <https://github.com/ushineko>
 pkgname=clockwork-orange-git
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="Advanced wallpaper manager and downloader with plugin support (Wallhaven, DuckDuckGo Images) for KDE Plasma 6"
 arch=('any')
@@ -40,6 +40,7 @@ package() {
 	install -Dm755 clockwork-orange.py "${pkgdir}/usr/lib/${pkgname%-git}/clockwork-orange.py"
     install -Dm644 plugin_manager.py "${pkgdir}/usr/lib/${pkgname%-git}/plugin_manager.py"
     install -Dm644 platform_utils.py "${pkgdir}/usr/lib/${pkgname%-git}/platform_utils.py"
+    install -Dm644 config_migrations.py "${pkgdir}/usr/lib/${pkgname%-git}/config_migrations.py"
     install -Dm644 clockwork-orange.service "${pkgdir}/usr/lib/${pkgname%-git}/clockwork-orange.service"
     install -Dm644 .tag "${pkgdir}/usr/lib/${pkgname%-git}/.tag"
     sed -i 's|ExecStart=.*|ExecStart=/usr/bin/clockwork-orange --service|' "${pkgdir}/usr/lib/${pkgname%-git}/clockwork-orange.service"
