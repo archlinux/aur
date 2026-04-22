@@ -1,13 +1,13 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=grimmory
-pkgver=2.3.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Self hosted ebook reader"
 arch=('x86_64')
 url="https://grimmory.org/"
 license=('AGPL-3.0')
 backup=("etc/grimmory/grimmory.conf")
-depends=('jdk25-openjdk' 'mariadb' 'fontconfig' 'ttf-dejavu' 'kepubify')
+depends=('jdk25-openjdk' 'mariadb' 'fontconfig' 'ttf-dejavu' 'kepubify' 'corepack')
 makedepends=('yarn')
 conflicts=('booklore')
 optdepends=('apache' 'nginx' 'caddy')
@@ -21,7 +21,7 @@ grimmory.tmpfiles
 grimmory.install
 )
 sha512sums_x86_64=(
-940638694eac1c412055bc918f18b9881a53beec107c3a41145057c16a3a6c89c9cdf957ed8bd6ff24461393acc8edb9d350ef0fdfe244f05869c61b34565b89
+6200677aa5ae7d7025d174e43a27b7312fea3ab00e9bcaa7d75b950c142533545909a53fc3b02678643e96bc7bddf1c123fdcd2b7ce48fc74c8b3c99cedbf78b
 'SKIP'
 'SKIP'
 'SKIP'
@@ -34,12 +34,14 @@ build() {
     cd "${srcdir}"
 
     # build web-UI
-    cd grimmory-$pkgver/booklore-ui
-    yarn install
-    yarn build
+    cd grimmory-$pkgver/frontend
+    mkdir -p bin
+    corepack enable --install-directory bin
+    corepack yarn install
+    corepack yarn build
 
     # build server
-    cd ../booklore-api
+    cd ../backend
     sed -i 's|/app/data|/var/lib/grimmory/app/data|' src/main/resources/application.yaml
     sed -i 's|/bookdrop|/var/lib/grimmory/bookdrop|' src/main/resources/application.yaml
     sed -i 's|development|'$pkgver'|' src/main/resources/application.yaml
@@ -53,7 +55,7 @@ package() {
 mkdir -p $pkgdir/usr/share/webapps/grimmory/grimmory-ui
 mkdir -p $pkgdir/etc/grimmory
 install -Dm 644 $srcdir/grimmory.conf $pkgdir/etc/grimmory/
-install -Dm 644 $srcdir/grimmory-$pkgver/booklore-api/build/libs/booklore-api-0.0.1-SNAPSHOT.jar  $pkgdir/usr/share/webapps/grimmory/grimmory.jar
+install -Dm 644 $srcdir/grimmory-$pkgver/backend/build/libs/backend-0.0.1-SNAPSHOT.jar  $pkgdir/usr/share/webapps/grimmory/grimmory.jar
 install -Dm 644 ${srcdir}/grimmory.sysusers "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
 install -Dm 644 ${srcdir}/grimmory.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
 install=grimmory.install
