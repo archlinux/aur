@@ -1,6 +1,6 @@
 pkgbase = nexus-client
 	pkgdesc = Cross-platform BBS client with chat, file transfers, and news support
-	pkgver = 0.7.6
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = https://github.com/zquestz/nexus
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nexus-client
 	makedepends = cargo
 	depends = alsa-lib
 	options = !lto
-	source = nexus-client-0.7.6.tar.gz::https://github.com/zquestz/nexus/archive/v0.7.6.tar.gz
-	sha256sums = df3c9821b964cebe80f01eb16dbe67a24c85137c8d30558df394e178fff22dd2
+	source = nexus-client-0.7.7.tar.gz::https://github.com/zquestz/nexus/archive/v0.7.7.tar.gz
+	sha256sums = 41c7c865b90ae3b45bfdb70e15a9444a97f1935e9ddcc178d2b758e8ee3993eb
 
 pkgname = nexus-client
