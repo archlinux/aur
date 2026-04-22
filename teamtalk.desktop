@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=TeamTalk (source build)
+Name=TeamTalk Client
 GenericName=Voice & video conferencing client
-Comment=TeamTalk 5 Qt client built from upstream source
-Exec=teamtalk-source
-Icon=teamtalk-source
+Comment=TeamTalk 5 Qt client (built from upstream source)
+Exec=teamtalk
+Icon=teamtalk
 Terminal=false
 Type=Application
 Categories=Network;AudioVideo;Telephony;

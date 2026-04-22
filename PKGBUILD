@@ -1,7 +1,7 @@
 # Maintainer: Toby Heath <heathtobias@gmail.com>
 pkgname=teamtalk-client-source
 pkgver=5.22
-pkgrel=1
+pkgrel=2
 pkgdesc='TeamTalk 5 Qt client built from upstream source against the official BearWare SDK'
 arch=('x86_64')
 url='https://github.com/BearWare/TeamTalk5'
@@ -9,25 +9,32 @@ license=('GPL3')
 depends=('qt6-base' 'qt6-multimedia' 'qt6-speech' 'libxss' 'libx11'
          'alsa-lib' 'libpulse' 'openssl')
 makedepends=('cmake' 'qt6-tools' 'git')
+provides=('teamtalk-client')
+conflicts=('teamtalk-client')
+replaces=('teamtalk-client')
 
 source=("TeamTalk5-source-${pkgver}.tar.gz::https://github.com/BearWare/TeamTalk5/archive/refs/tags/v${pkgver}.tar.gz"
         "teamtalk-sdk-${pkgver}.tgz::https://bearware.dk/teamtalk/v${pkgver}/teamtalk-v${pkgver}-ubuntu22-${arch}.tgz"
-        'teamtalk-source'
-        'teamtalk-source.desktop'
+        'teamtalk'
+        'teamtalk.desktop'
         '0001-fix-qt-tts-engine-reinit.patch'
         '0002-fix-sound-device-name-fallback.patch'
         '0003-build-cmake-minimum-required.patch'
         '0004-ui-pulseaudio-pipewire-label.patch')
 sha256sums=('b776f75c7707151e4f22d8abaa002a84fb9e36ea083b28a440b922da91c43c77'
             'c9eeb88e7c8c26f796eeff783d382a7bd36666c8a090c201cb758f5a6aeb9376'
-            '2743ad36bc6dda30896eba949abc5e75a8a454d6a717b424a0f820bf48c2364d'
-            '7fba0a2081c6c00c8cbbbc73b840f6759921faebba7862dc0fd1aeaa1e0da70c'
+            '9862ee801789f3a767b8e45ed0f3e63ab70caec72fe4aa425f166d7cde0dacc4'
+            '4ec3b73e303841bfa14fd8c182e1446b9512fe66dcfa39803df0958a2f350b2c'
             '3a17058dd009306a84f63cab69560caf5fbec7acb2e0f18e665e8765280b6f85'
             '22574bd3a7d5b81356dda7f579fc635315b9d22272cd2dcbbdf0a22d16351c21'
             '5a694ae9847c8ef567783cb574b79863936a6b54ae4e7599a4c91cbc689882f2'
             'ff279125befa35598af2c51d1d8a7fd7fd58ca4a45528b28c83aa5b1cf12cf69')
 install="${pkgname}.install"
 
+# Install paths -- chosen to be drop-in compatible with the official AUR
+# `teamtalk-client` package so users can `paru -S teamtalk-client-source`
+# without changing menu shortcuts, scripts or muscle memory.
+_optdir='/opt/teamtalk-client'
 _srcdir="TeamTalk5-${pkgver}"
 _sdkdir="teamtalk-v${pkgver}-ubuntu22-${arch}"
 
@@ -75,48 +82,49 @@ build() {
 package() {
     cd "${srcdir}"
 
-    # Stage the SDK's data files (sounds, help, languages, ini default)
-    # into /opt/teamtalk-client-source/, mirroring the upstream install
-    # layout. Skip TeamTalk5.ini -- that's the writable user config and
-    # the post-install hook handles it.
-    install -d "${pkgdir}/opt/${pkgname}"
-    cp -r "${_sdkdir}/client/help"     "${pkgdir}/opt/${pkgname}/"
-    cp -r "${_sdkdir}/client/sounds"   "${pkgdir}/opt/${pkgname}/"
+    # Stage the SDK's data files (sounds, help, ini default) into
+    # /opt/teamtalk-client/, mirroring the upstream install layout.
+    # Skip TeamTalk5.ini -- that's the writable user config and the
+    # post-install hook handles it.
+    install -d "${pkgdir}${_optdir}"
+    cp -r "${_sdkdir}/client/help"   "${pkgdir}${_optdir}/"
+    cp -r "${_sdkdir}/client/sounds" "${pkgdir}${_optdir}/"
     install -m644 "${_sdkdir}/client/TeamTalk5.ini.default" \
-        "${pkgdir}/opt/${pkgname}/TeamTalk5.ini.default"
-    install -m644 "${_sdkdir}/client/README" "${pkgdir}/opt/${pkgname}/README"
+        "${pkgdir}${_optdir}/TeamTalk5.ini.default"
+    install -m644 "${_sdkdir}/client/README" "${pkgdir}${_optdir}/README"
 
-    # The SDK so we built against
+    # SDK shared library we built against.
     install -m644 "${_sdkdir}/client/libTeamTalk5.so" \
-        "${pkgdir}/opt/${pkgname}/libTeamTalk5.so"
+        "${pkgdir}${_optdir}/libTeamTalk5.so"
 
-    # Our freshly-built binary replaces the SDK-shipped teamtalk5
+    # Our freshly-built binary replaces the SDK-shipped teamtalk5.
     install -m755 "${_srcdir}/Client/qtTeamTalk/teamtalk5" \
-        "${pkgdir}/opt/${pkgname}/teamtalk5"
+        "${pkgdir}${_optdir}/teamtalk5"
 
-    # Translations rebuilt from the source tree's .ts files
-    install -d "${pkgdir}/opt/${pkgname}/languages"
+    # Translations rebuilt from the source tree's .ts files.
+    install -d "${pkgdir}${_optdir}/languages"
     if compgen -G "${_srcdir}/Client/qtTeamTalk/languages/*.qm" > /dev/null; then
         install -m644 "${_srcdir}"/Client/qtTeamTalk/languages/*.qm \
-            "${pkgdir}/opt/${pkgname}/languages/"
+            "${pkgdir}${_optdir}/languages/"
     fi
 
-    # Tiny LD_LIBRARY_PATH wrapper so the binary finds libTeamTalk5.so
-    cat > "${pkgdir}/opt/${pkgname}/run.sh" <<'EOF'
+    # Tiny LD_LIBRARY_PATH wrapper so the binary finds libTeamTalk5.so.
+    cat > "${pkgdir}${_optdir}/run.sh" <<'EOF'
 #!/bin/sh
 LD_LIBRARY_PATH="$(dirname "$0"):$LD_LIBRARY_PATH" \
     exec "$(dirname "$0")/teamtalk5" "$@"
 EOF
-    chmod 755 "${pkgdir}/opt/${pkgname}/run.sh"
+    chmod 755 "${pkgdir}${_optdir}/run.sh"
 
-    # User-facing launcher + .desktop entry
-    install -Dm755 teamtalk-source       "${pkgdir}/usr/bin/teamtalk-source"
-    install -Dm644 teamtalk-source.desktop \
-        "${pkgdir}/usr/share/applications/teamtalk-source.desktop"
+    # User-facing launcher + .desktop entry. Same names used by the
+    # original teamtalk-client package so existing menu pins, scripts
+    # and `teamtalk` muscle memory keep working.
+    install -Dm755 teamtalk         "${pkgdir}/usr/bin/teamtalk"
+    install -Dm644 teamtalk.desktop "${pkgdir}/usr/share/applications/teamtalk.desktop"
 
-    # Icon (reuse the source tree's app icon)
+    # Icon (reuse the source tree's app icon).
     install -Dm644 "${_srcdir}/Client/qtTeamTalk/images/teamtalk.png" \
-        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/teamtalk-source.png"
+        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/teamtalk.png"
 
     # License lifted from the SDK tarball, since the source tree itself
     # only carries per-file GPL headers and we ship the SDK alongside.

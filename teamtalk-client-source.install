@@ -11,7 +11,9 @@ post_upgrade() {
 }
 
 post_remove() {
-    # Wipe any user state that lived alongside the install. The per-user
-    # settings under ~/.config/BearWare.dk/ are intentionally left alone.
-    rm -rf /opt/teamtalk-client-source 2>/dev/null || true
+    # Clean up the install dir if anything (e.g. the writable TeamTalk5.ini
+    # created at first launch, or a backup from an earlier manual install)
+    # remains after pacman removes the tracked files. Per-user settings
+    # under ~/.config/BearWare.dk/ are intentionally left alone.
+    rm -rf /opt/teamtalk-client 2>/dev/null || true
 }
