@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
@@ -5,8 +6,8 @@
 
 pkgname='soupault-bin'
 _pkgname="${pkgname/-bin}"
-pkgver=5.2.0
-pkgrel=3
+pkgver=5.3.0
+pkgrel=1
 pkgdesc='Static website generator based on HTML element tree rewriting (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/PataphysicalSociety/soupault'
@@ -59,19 +60,19 @@ verify() {
 package() {
   cd "${_tarball/.tar.gz}"
 
-  install -vDsm0755 -t "$pkgdir/usr/bin" \
+  install -Dsm0755 -t "$pkgdir/usr/bin" \
     soupault
-  install -vDm0644  -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -Dm0644  -t "$pkgdir/usr/share/doc/$pkgname" \
     {CHANGELOG,README}.md
-  install -vDm0644  -t "$pkgdir/usr/share/licenses/$pkgname" \
+  install -Dm0644  -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
 
   cd ..
-  install -vDm0644  -t "$pkgdir/usr/share/doc/$pkgname/plugins" \
+  install -Dm0644  -t "$pkgdir/usr/share/doc/$pkgname/plugins" \
     ./*.lua
 
-  cd "$pkgdir/usr/share/doc/"
-  ln -vsrf "$pkgname" "$_pkgname"
+  cd "$pkgdir/usr/share/doc/" \
+  && ln -srf "$pkgname" "$_pkgname"
 }
 
 # eof
