@@ -1,6 +1,6 @@
 pkgbase = grove-tui-bin
 	pkgdesc = Terminal UI for monitoring GitHub repositories
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/alcxyz/grove
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = grove-tui-bin
 	conflicts = grove
 	provides = grove
 	arch = aarch64
-	source_aarch64 = https://github.com/alcxyz/grove/releases/download/v0.6.0/grove_0.6.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 1b77cb65d77ae25ddb5c14ab312a168c77260819c2464ceeb96e0010d34ade16
+	source_aarch64 = https://github.com/alcxyz/grove/releases/download/v0.6.1/grove_0.6.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 45b42c5e088251ef095b0e7b0fc06529f6607dc3d1fcc0db0bbd05d57decd2dd
 	arch = x86_64
-	source_x86_64 = https://github.com/alcxyz/grove/releases/download/v0.6.0/grove_0.6.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1657bf55cbceb54d9efeda401234c53c38edc2e5e73a0bfe7ae695baf6844abf
+	source_x86_64 = https://github.com/alcxyz/grove/releases/download/v0.6.1/grove_0.6.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3cb998df63c3d4b4ad45a5fb5ac4251d21648aaaa60d899233128ebd58dd4731
 	
 pkgname = grove-tui-bin
