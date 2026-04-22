@@ -3,7 +3,7 @@
 _pkgname=Equibop
 pkgname=equibop-bin
 _appname=equibop-desktop
-pkgver=3.1.9
+pkgver=3.2.0
 _electronversion=40
 pkgrel=1
 pkgdesc="A custom Discord desktop app with Equicord pre-installed (binary release)"
@@ -31,8 +31,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.tar.gz")
 sha256sums=('28e852632bc479a8c9bb84c2d9b629c35a621618448fbc1e0bbea21dfaef19a1'
             '280156676d268d80f65ea3e592bacdd0df5bd78e69872211c624fa07ea062cb8')
-sha256sums_aarch64=('d6cbaee24f6d09e7917da31ac3743e58d2f5ee7c5a264206a1d69cd6e84ad675')
-sha256sums_x86_64=('e344946af86a85c60bc4e7cc9efbfc3ac3fee7c41634bce1744bb41a6c0b469f')
+sha256sums_aarch64=('72775919fd133d12d805b180a87baea94146cc9e0d794aa9d917cb981a7fec5f')
+sha256sums_x86_64=('fd4c881917cd8d81a9c088cd2619958acab44538447506790e3e5a2cff94f70c')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
