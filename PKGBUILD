@@ -7,7 +7,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Manages dotfile symlinks from a single repository without requiring a mirrored target directory layout"
 
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,8 +32,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.zip")
 sha256sums=('8f113f9532cf8e5524679f1f16f47cdef65a2a8e0761bc85eeb3e0a4f59b1b14'
             'c4c73cfe3e7d8e4cae57635b5d7bde8f256d5eb8e5766ce80b22b0cf3de9cca5')
-sha256sums_x86_64=('3e693f553aff090fad410a65d9ce69443f2656111e8f31658426469cd529ae77')
-sha256sums_aarch64=('d85bba953e3b61ce12e4e7f3ca26d6a3162b0b9be3c59aae587e119c3b7a254c')
+sha256sums_x86_64=('d3eb81738c3f4660ef4195e986a5037ab1f2fdf9f39ee4052f640a59aca0dacd')
+sha256sums_aarch64=('5717f318e2ff38e4f36cdc5f4cea8e47c318ee2e8abefe4ee2170a8b1120f13c')
 
 case ${CARCH} in
 ${arch[0]})
