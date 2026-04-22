@@ -13,7 +13,7 @@ pkgbase = postier-bin
 	depends = hicolor-icon-theme
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/results-may-vary-org/postier/releases/download/v2.0.0/postier_2.0.0_amd64.deb
-	sha256sums_x86_64 = 190fe17a7ee0d7e5058af08647b55c4da03916ef7d5368522a51f57f598efbec
+	source_x86_64 = https://github.com/results-may-vary-org/postier/releases/download/v2.0.0/postier_2.0.0_amd64-webkit2_41.deb
+	sha256sums_x86_64 = 1c96064bb4ec6de77e556d4209add6c0c89dd297411f3d58c4f3b59af089a69b
 
 pkgname = postier-bin
