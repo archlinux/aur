@@ -1,6 +1,6 @@
 pkgbase = ctfl
 	pkgdesc = Claude Tracker For Linux — system tray monitor for Claude usage
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/mordup/ctfl
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ctfl
 	depends = python
 	depends = python-pyqt6
 	depends = python-keyring
-	source = ctfl-2.7.0.tar.gz::https://github.com/mordup/ctfl/archive/refs/tags/v2.7.0.tar.gz
-	sha256sums = 29be8b8ba5e2c99fe275fdddf91e4b65ad4a3b8ce039741954910e6a61f22370
+	source = ctfl-2.7.1.tar.gz::https://github.com/mordup/ctfl/archive/refs/tags/v2.7.1.tar.gz
+	sha256sums = 97b628f3f17f6b03c58b89c88b8d309094ba3bc7fb1e762497ccda01d62f8482
 
 pkgname = ctfl
