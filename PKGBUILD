@@ -1,4 +1,4 @@
-# Maintainer: Patrick Li <aur@patickli.one>
+# Maintainer: Patrick Li <aur@patrickli.one>
 pkgname=unbill-tui-bin
 pkgver=0
 pkgrel=1
