@@ -1,6 +1,6 @@
 pkgbase = paintfe
 	pkgdesc = Fast, GPU-accelerated raster image editor
-	pkgver = 1.2.7
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://github.com/kylejckson/PaintFE
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = paintfe
 	depends = libx11
 	optdepends = vulkan-icd-loader: hardware-accelerated GPU rendering (recommended)
 	optdepends = mesa: software/OpenGL fallback rendering
-	source = paintfe-1.2.7.tar.gz::https://github.com/kylejckson/PaintFE/archive/refs/tags/v1.2.7.tar.gz
-	sha256sums = 3d94e25d9acb9c4262aa5304dd4724e30d78381ab971c15cb8066faf6f1e9517
+	source = paintfe-1.2.8.tar.gz::https://github.com/kylejckson/PaintFE/archive/refs/tags/v1.2.8.tar.gz
+	sha256sums = c62012ab5b91dd06e9ae51fb45a74572b02a7b0f02e29b14370762f78217f8db
 
 pkgname = paintfe
