@@ -2,7 +2,7 @@
 # Contributor: Antony Ho <ntonyworkshop@gmail.com>
 
 pkgname=session-desktop
-pkgver=1.17.12
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="A Decentralized, Onion Routed, Private Messenger"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("git+https://github.com/session-foundation/session-desktop.git#tag=v${pk
         "git+https://github.com/session-foundation/session-desktop-dynamic-assets.git"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('3970b1d3620f2310828b98ccc35c2ab47c4a56eb51f53a2dc767cea9a93274f2'
+sha256sums=('9cc39a6164ae3886ca93fad4eebe14869619327ec06c28b439619c6023e1720a'
             'SKIP'
             'SKIP'
             '267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c'
