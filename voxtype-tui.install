@@ -1,0 +1,23 @@
+# pacman .install hook — shown in yay/pacman output on install & upgrade.
+#
+# Keep this idempotent and fail-safe. It runs as root during the package
+# transaction, so we cannot touch the user's per-user config or user
+# systemd service directly. Instead we print a short, actionable notice;
+# the TUI's own startup migration + exit-restart hook handles the
+# activation on the next time the user opens voxtype-tui.
+#
+# If you want to apply the migration right now without opening the TUI,
+# the notice tells you the one-liner.
+
+_notice() {
+    cat <<'EOF'
+==> voxtype-tui: schema changes (if any) will apply on next 'voxtype-tui' launch
+==> and the voxtype daemon will auto-restart when you close the TUI.
+==>
+==> To apply immediately without opening the TUI, run:
+==>     voxtype-tui --apply-migrations
+EOF
+}
+
+post_install() { _notice; }
+post_upgrade() { _notice; }
