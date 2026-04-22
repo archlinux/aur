@@ -1,6 +1,6 @@
 pkgbase = python-ext4
 	pkgdesc = Library for read only interactions with an ext4 filesystem
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/Eeems/python-ext4
 	arch = i686
@@ -12,14 +12,12 @@ pkgbase = python-ext4
 	makedepends = nuitka>=4.0.6
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/e/ext4/ext4-1.3.1.tar.gz
-	source = 1.3.1-test-image.sh::https://github.com/Eeems/python-ext4/raw/refs/tags/v1.3.1/_test_image.sh
-	source = 1.3.1-test.py::https://github.com/Eeems/python-ext4/raw/refs/tags/v1.3.1/test.py
-	source = test.txt
-	md5sums = a428992610036c31fd463d4c8165df60
-	md5sums = 53e62f3008d498290398b530e131e290
-	md5sums = fc6838dc844a2bb11b5404186b846be7
-	md5sums = 8f7fa83c2cc8ea6e90fe94b1efd1a83a
+	source = https://files.pythonhosted.org/packages/source/e/ext4/ext4-1.3.2.tar.gz
+	source = 1.3.2-test.py::https://github.com/Eeems/python-ext4/raw/refs/tags/v1.3.2/test.py
+	source = test-images.tar.gz
+	sha256sums = c89a3774ad7e8a3f604347cf41a63e71ef76e824315253e9b7e5bad5ac71aedd
+	sha256sums = 8943ffa62b1b1b7cb9cbff7f3cb6f3489de853fea9170fd5b62645c2944fb75f
+	sha256sums = SKIP
 
 pkgname = python-ext4
 	depends = python>=3.10

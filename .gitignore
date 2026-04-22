@@ -8,3 +8,4 @@ pkg
 *.log
 *.py
 *image.sh
+!test-images.tar.gz
