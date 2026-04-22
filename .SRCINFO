@@ -1,6 +1,6 @@
 pkgbase = dune-cli-bin
 	pkgdesc = Dune Analytics CLI
-	pkgver = 0.1.14
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://github.com/duneanalytics/cli
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = dune-cli-bin
 	conflicts = dune-cli
 	conflicts = dune-cli-git
 	conflicts = dune-cli-bin
-	source_x86_64 = dune-cli_0.1.14_linux_amd64.tar.gz::https://github.com/duneanalytics/cli/releases/download/v0.1.14/dune-cli_0.1.14_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1d7096da3450ab4b64f3d2fc131c3b0d33655ef9809215f8c18e2509ad078b66
-	source_aarch64 = dune-cli_0.1.14_linux_arm64.tar.gz::https://github.com/duneanalytics/cli/releases/download/v0.1.14/dune-cli_0.1.14_linux_arm64.tar.gz
-	sha256sums_aarch64 = 482d1748a10c823c28bde8e6a05f9881a128ff927c000b560c2dd114d6dd4dd4
+	source_x86_64 = dune-cli_0.1.15_linux_amd64.tar.gz::https://github.com/duneanalytics/cli/releases/download/v0.1.15/dune-cli_0.1.15_linux_amd64.tar.gz
+	sha256sums_x86_64 = 447f3ea2c9eea8b42bfdfcae8d216804b82c0c845c2b75c9295c0074cc067340
+	source_aarch64 = dune-cli_0.1.15_linux_arm64.tar.gz::https://github.com/duneanalytics/cli/releases/download/v0.1.15/dune-cli_0.1.15_linux_arm64.tar.gz
+	sha256sums_aarch64 = 40cf24915492221882c26a47b8ce0677f1f59c674861ecfa7c58aaac64c0ba6e
 
 pkgname = dune-cli-bin
