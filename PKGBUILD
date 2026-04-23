@@ -4,7 +4,7 @@
 _name=sphinxcontrib-spelling
 pkgname=python-$_name
 pkgver=8.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Spelling checker for Sphinx"
 arch=('any')
 url="https://sphinxcontrib-spelling.readthedocs.io/"
@@ -12,7 +12,7 @@ license=('BSD-3-Clause')
 depends=('python-sphinx' 'python-pyenchant' 'python-requests'
               'python-importlib-metadata')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel'
-             'python-setuptools' 'python-setuptools-scm')
+             'python-hatchling' 'python-hatch-vcs')
 source=("git+https://github.com/sphinx-contrib/spelling.git#tag=$pkgver")
 sha256sums=('24695eef3545558e70d6d112bec4e7500521d6dc88f0b05464b4ec3dda1da395')
 
@@ -26,5 +26,3 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
