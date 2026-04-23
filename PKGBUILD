@@ -1,7 +1,7 @@
 pkgname=channel-git
 _pkgname=channel
 pkgdesc="input config for river"
-pkgver=61eda1d
+pkgver=96829ef
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/Sivecano/channel"
