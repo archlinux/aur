@@ -4,7 +4,7 @@
 
 pkgname=zotero-git
 _pkgname="${pkgname%-git}"
-pkgver=9.0.1.r16271.e1cd832
+pkgver=9.0.1.r16273.a487dd9
 pkgrel=1
 pkgdesc="A free, easy-to-use tool to help you collect, organize, cite, and share your research sources, git version"
 arch=('x86_64' 'i686')
@@ -89,7 +89,7 @@ prepare() {
   git config submodule.styles.url "$srcdir/zotero-styles"
   git config submodule.pdf-worker.url "$srcdir/zotero-pdf-worker"
   git config submodule.note-editor.url "$srcdir/zotero-note-editor"
-  git config submodule.reader.url "$srcdir/zotero-reader"
+  git config submodule.pdf-reader.url "$srcdir/zotero-reader"
   git config submodule.resource/schema/global.url "$srcdir/zotero-schema"
   git config submodule.resource/SingleFile.url "$srcdir/zotero-SingleFile"
   git config submodule.chrome/content/zotero/xpcom/utilities.url "$srcdir/zotero-utilities"
@@ -112,7 +112,7 @@ prepare() {
   git config submodule.epubjs/epub.js.url "$srcdir/zotero-epub-js"
   git -c protocol.file.allow=always submodule update
 
-  cd "$srcdir/zotero-client/pdf-worker"
+  cd "$srcdir/zotero-client/document-worker"
   git submodule init
   git config submodule.pdf.js.url "$srcdir/zotero-pdf-js"
   git -c protocol.file.allow=always submodule update
