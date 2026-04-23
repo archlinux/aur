@@ -6,7 +6,7 @@
 
 _pkgname="libggml"
 pkgname="$_pkgname-git"
-pkgver=0.9.4.r387.g3e9f2ba
+pkgver=0.10.0.r1.g8be60f8
 pkgrel=1
 pkgdesc="Tensor library for machine learning"
 url="https://github.com/ggml-org/ggml"
@@ -22,6 +22,7 @@ makedepends=(
   'git'
   'ninja'
   'shaderc'
+  'spirv-headers'
   'vulkan-headers'
 )
 
