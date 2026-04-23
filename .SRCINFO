@@ -1,6 +1,6 @@
 pkgbase = python-cmake
 	pkgdesc = CMake is an open-source, cross-platform family of tools designed to build, test and package software
-	pkgver = 4.3.1
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://pypi.org/project/cmake
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = python-cmake
 	conflicts = python-cmake
 	options = !strip
 	options = !debug
-	source = cmake-4.3.1.tar.gz::https://files.pythonhosted.org/packages/source/c/cmake/cmake-4.3.1.tar.gz
-	sha256sums = 6fe523413cdd2568a19a6ec297b8f869a95a3f8edaf0dd73731b81412216e00e
+	source = cmake-4.3.2.tar.gz::https://files.pythonhosted.org/packages/source/c/cmake/cmake-4.3.2.tar.gz
+	sha256sums = 5f47f5f00910c474662d09a0516413c6e9750bde73cdc52dea3988102a274e06
 
 pkgname = python-cmake
