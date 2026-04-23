@@ -3,19 +3,22 @@
 
 pkgname=fpm
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Effing package management! Build packages for multiple platforms (deb, rpm, etc) with great ease and sanity.'
 arch=(any)
 url="https://github.com/jordansissel/fpm"
 license=('MIT')
-depends=(ruby
-         ruby-cabin
-         ruby-backports
-         ruby-arr-pm
-         ruby-clamp
-         ruby-rexml
-         ruby-pleaserun
-         ruby-stud)
+depends=(
+  ruby
+  ruby-cabin
+  ruby-backports
+  ruby-arr-pm
+  ruby-clamp
+  ruby-rexml
+  ruby-pleaserun
+  ruby-stud
+  ruby-erb
+)
 optdepends=('squashfs-tools: Support for snaps')
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jordansissel/fpm/archive/v${pkgver}.tar.gz")
