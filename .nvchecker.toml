@@ -1,0 +1,4 @@
+[ocaml-jingoo]
+source = 'github'
+github = 'tategakibunko/jingoo'
+use_max_tag = true

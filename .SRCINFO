@@ -1,0 +1,16 @@
+pkgbase = ocaml-jingoo
+	pkgdesc = OCaml template engine almost compatible with jinja2
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/tategakibunko/jingoo
+	arch = x86_64
+	license = MIT
+	makedepends = dune
+	makedepends = ocaml-findlib
+	makedepends = ocaml-menhir
+	makedepends = ocaml-ppx_deriving
+	depends = ocaml-uucp
+	source = ocaml-jingoo-1.5.2.tar.gz::https://github.com/tategakibunko/jingoo/archive/refs/tags/1.5.2.tar.gz
+	sha256sums = 98d7be2166d1bc0615f7b4592cf68842a86df0f7b0d98d949972317f23edd34c
+
+pkgname = ocaml-jingoo
