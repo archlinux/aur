@@ -34,7 +34,7 @@ _tagsuffix=
 _build=261.23567.138
 
 pkgver="$_versionyyyy.$_versionr.$_versionn.$_versionm.$_build$([ -n "$_tagsuffix" ] && echo -n ".$_tagsuffix" | tr - _)"
-pkgrel=1
+pkgrel=2
 
 _tag="$_tagprefix$_versionyyyy.$_versionr$([ "$_versionn" -ne 0 ] && echo -n ".$_versionn")\
 $([ "$_versionm" -ne 0 ] && echo -n ".$_versionm")\
@@ -82,7 +82,10 @@ build() {
   export HOME=${srcdir}
   export BAZELISK_HOME=${srcdir}/.bazelisk
 
-  ./installers.cmd -Duser.home="${srcdir}" -Dintellij.build.use.compiled.classes=false -Dintellij.build.target.os=linux -Dbuild.number="${_build}"
+  # Note: The Maven cache path, ".m2/repository", is not overridden here, as with
+  # Bazel, the build does not actually use it.
+
+  ./installers.cmd -Dintellij.build.use.compiled.classes=false -Dintellij.build.target.os=linux -Dbuild.number="${_build}"
   tar -xf out/idea-ce/artifacts/ideaIC-${_build}.tar.gz -C "${srcdir}"
 }
 

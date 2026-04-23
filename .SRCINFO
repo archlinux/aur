@@ -1,7 +1,7 @@
 pkgbase = intellij-idea-open-eap
 	pkgdesc = IDE for Java, Groovy and other programming languages with advanced refactoring features. Open-source, latest-tag (usually EAP) version
 	pkgver = 2026.1.1.0.261.23567.138
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/idea/
 	arch = x86_64
 	license = Apache-2.0
