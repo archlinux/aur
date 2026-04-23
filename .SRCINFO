@@ -1,0 +1,14 @@
+pkgbase = onion-keydisp-git
+	pkgdesc = Keyboard visualizer for rhythm games
+	pkgver = r7.4288931
+	pkgrel = 1
+	url = https://codeberg.org/onion27/onion-keydisp
+	arch = x86_64
+	license = WTFPL
+	makedepends = cargo
+	makedepends = git
+	depends = wayland
+	source = onion-keydisp::git+https://codeberg.org/onion27/onion-keydisp.git
+	sha256sums = SKIP
+
+pkgname = onion-keydisp-git
