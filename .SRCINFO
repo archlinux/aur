@@ -1,6 +1,6 @@
 pkgbase = pixiv-viewer-bin
 	pkgdesc = App version of pixiv-viewer, supports Android/Windows/macOS/iOS/Linux.
-	pkgver = 1.25.5
+	pkgver = 1.32.2
 	pkgrel = 1
 	url = https://github.com/asadahimeka/pixiv-viewer-app
 	arch = x86_64
@@ -9,6 +9,6 @@ pkgbase = pixiv-viewer-bin
 	depends = hicolor-icon-theme
 	options = !strip
 	sha256sums = SKIP
-	source_x86_64 = Pixiv-Viewer_1.25.5_amd64.AppImage::https://github.com/asadahimeka/pixiv-viewer-app/releases/download/v1.25.5/Pixiv-Viewer_1.25.5_amd64.AppImage
+	source_x86_64 = Pixiv-Viewer_1.32.2_amd64.AppImage::https://github.com/asadahimeka/pixiv-viewer-app/releases/download/v1.32.2/Pixiv-Viewer_1.32.2_amd64-archlinux.AppImage
 
 pkgname = pixiv-viewer-bin

@@ -11,7 +11,7 @@ license=('MIT')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="Pixiv-Viewer_${pkgver}_amd64.AppImage"
-source_x86_64=("${_appimage}::https://github.com/asadahimeka/pixiv-viewer-app/releases/download/v${pkgver}/Pixiv-Viewer_${pkgver}_amd64.AppImage")
+source_x86_64=("${_appimage}::https://github.com/asadahimeka/pixiv-viewer-app/releases/download/v${pkgver}/Pixiv-Viewer_${pkgver}_amd64-archlinux.AppImage")
 sha256sums=('SKIP')
 
 prepare() {
