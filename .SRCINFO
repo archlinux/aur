@@ -1,6 +1,6 @@
 pkgbase = koharu-appimage
 	pkgdesc = ML-powered manga translator
-	pkgver = 0.47.6
+	pkgver = 0.47.7
 	pkgrel = 1
 	url = https://github.com/mayocream/koharu
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = koharu-appimage
 	depends = xdg-user-dirs
 	provides = koharu
 	conflicts = koharu
-	noextract = koharu_0.47.6_amd64.AppImage
+	noextract = koharu_0.47.7_amd64.AppImage
 	options = !strip
-	source_x86_64 = koharu_0.47.6_amd64.AppImage::https://github.com/mayocream/koharu/releases/download/0.47.6/koharu_0.47.6_amd64.AppImage
-	sha512sums_x86_64 = 46a9d0d404d3f8a106c3828473911c29b3c2d44080159d5503198e819a48068cfb1b8824b5406a23378828b46f7d0fdc8acafff5cff0a8366d84ee44f2f54429
+	source_x86_64 = koharu_0.47.7_amd64.AppImage::https://github.com/mayocream/koharu/releases/download/0.47.7/koharu_0.47.7_amd64.AppImage
+	sha512sums_x86_64 = 964807ba08c18ff5f2293295fff3c3cb5a9413c15a33c7640dba12dc13702b0c959d33b599bfb418d283ec1424c33e2ff185789990363c06b2d70130061047e7
 
 pkgname = koharu-appimage

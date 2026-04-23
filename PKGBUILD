@@ -2,7 +2,7 @@
 
 pkgname=koharu-appimage
 _pkgname=koharu
-pkgver="0.47.6"
+pkgver="0.47.7"
 pkgrel=1
 pkgdesc="ML-powered manga translator"
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'xdg-user-dirs')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
-source_x86_64=("koharu_0.47.6_amd64.AppImage::https://github.com/mayocream/koharu/releases/download/0.47.6/koharu_0.47.6_amd64.AppImage")
-sha512sums_x86_64=('46a9d0d404d3f8a106c3828473911c29b3c2d44080159d5503198e819a48068cfb1b8824b5406a23378828b46f7d0fdc8acafff5cff0a8366d84ee44f2f54429')
+source_x86_64=("koharu_0.47.7_amd64.AppImage::https://github.com/mayocream/koharu/releases/download/0.47.7/koharu_0.47.7_amd64.AppImage")
+sha512sums_x86_64=('964807ba08c18ff5f2293295fff3c3cb5a9413c15a33c7640dba12dc13702b0c959d33b599bfb418d283ec1424c33e2ff185789990363c06b2d70130061047e7')
 noextract=("koharu_${pkgver}_amd64.AppImage")
 
 prepare() {
