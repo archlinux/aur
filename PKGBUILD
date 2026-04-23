@@ -1,5 +1,5 @@
 pkgname=xbelite2-dkms
-pkgver=0.8.10
+pkgver=0.8.11
 pkgrel=1
 pkgdesc='Xbox Elite Series 2 controller driver and configurator for Linux'
 arch=('x86_64')
@@ -52,18 +52,4 @@ Terminal=false
 Type=Application
 Categories=Settings;HardwareSettings;
 EOF
-}
-
-post_install() {
-  echo "------------------------------------------------------"
-  echo "To start and enable the service, run:"
-  echo "  sudo systemctl enable --now xbelite2d.service"
-  echo "------------------------------------------------------"
-}
-
-post_upgrade() {
-  echo "-----------------------------------------------------------------"
-  echo "If you have the service running, don't forget to restart it:"
-  echo "  sudo systemctl restart xbelite2d.service"
-  echo "-----------------------------------------------------------------"
 }
