@@ -4,7 +4,7 @@
 # https://github.com/adamperkowski/pkgbuilds
 
 pkgname=nvrs
-pkgver=0.1.7
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Fast new version checker for software releases"
 arch=('x86_64')
@@ -13,7 +13,8 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('990747678c9ec3bc7b878bf201f47d938e1c5e0d387743810334ccc42c8c4f45b59ddcd610e8eeba41572040056c2f6f6d134a6d28e0bc843cec956792fb31fb')
+sha512sums=('445804691b3470cae2ec4dec1c059d64c455a7dfd906826634e9567c0ed6c967d1650785ca61251c542a33c1e555c56d9d4453b5e1a6a79a01913dcbf7e683d2')
+options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -23,13 +24,13 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   export CARGO_TARGET_DIR=target
-  cargo build --release --frozen --bin "$pkgname" --features="${pkgname}_cli"
+  cargo build --release --frozen --bin "$pkgname" --features="cli"
 }
 
 check() {
   cd "$pkgname-$pkgver"
   export CARGO_TARGET_DIR=target
-  cargo test --frozen --features="${pkgname}_cli"
+  cargo test --frozen --features="cli"
 }
 
 package() {
