@@ -1,7 +1,8 @@
 pkgbase = osu-lazer-appimage
 	pkgdesc = A free-to-win rhythm game. Rhythm is just a *click* away!
-	pkgver = 1.0
+	pkgver = latest
 	pkgrel = 1
+	install = osu-lazer-appimage.install
 	arch = x86_64
 	license = GPL
 	depends = fuse

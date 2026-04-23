@@ -1,0 +1,8 @@
+post_install() {
+  chmod +x /usr/bin/osu-lazer
+  chmod +x /opt/osu-lazer-appimage/osu.AppImage
+}
+
+post_upgrade() {
+    post_install
+}
