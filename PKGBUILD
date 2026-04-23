@@ -1,6 +1,6 @@
 # Maintainer: dougEfresh <dchimento@gmail.com>
 pkgname=pi-ext-subagents
-pkgver=0.17.2
+pkgver=0.17.5
 pkgrel=1
 pkgdesc='Subagents extension for pi coding agent'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/nicobailon/pi-subagents/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('a81f7962a144b190f3113526ca8875f4f8377a3f9b4c2a2a7d05d20856081516')
+sha256sums=('c61fa4022d23268c4af72ec1eb05f7e0aae42b151c164f44aeef91e2a59472e0')
 install=pi-ext.install
 
 package() {
