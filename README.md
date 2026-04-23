@@ -5,7 +5,7 @@ Hardware-specific TPM453 package variant for AUR publication.
 Channel: LTS
 Upstream template: linux-cachyos-lts
 Package name: linux-tpm453-lts
-Source lane: Signed CachyOS LTS release tag cachyos-6.18.23-1
+Source lane: Signed CachyOS LTS release tag cachyos-6.18.24-1
 
 Build on a faster server:
 
