@@ -40,3 +40,5 @@ package() {
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
 
+# vim: ts=4 sw=4 et:
+
