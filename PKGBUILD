@@ -1,6 +1,6 @@
 pkgname=ember-notify
-pkgver=0.1.4
-pkgrel=5
+pkgver=0.1.5
+pkgrel=1
 pkgdesc='Notification daemon for i3/X11 with Eww integration'
 arch=('x86_64')
 url='https://github.com/Savanta/Ember'
@@ -15,7 +15,7 @@ options=('!debug' '!lto')
 install='ember-notify.install'
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cdacc88a198c636da067a11e54f7609976ce30fb05355a03aa2e275f17e71bb0')
+sha256sums=('89adff1c845e7e97fae678b1ece15bda93857fcc97d3b0f212c19bbb084376b1')
 
 _srcdir="Ember-$pkgver"
 _cargo_target_dir="$startdir/cargo-target"

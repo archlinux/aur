@@ -1,7 +1,7 @@
 pkgbase = ember-notify
 	pkgdesc = Notification daemon for i3/X11 with Eww integration
-	pkgver = 0.1.4
-	pkgrel = 5
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://github.com/Savanta/Ember
 	install = ember-notify.install
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = ember-notify
 	conflicts = deadd-notification-center
 	options = !debug
 	options = !lto
-	source = ember-notify-0.1.4.tar.gz::https://github.com/Savanta/Ember/archive/refs/tags/v0.1.4.tar.gz
-	sha256sums = cdacc88a198c636da067a11e54f7609976ce30fb05355a03aa2e275f17e71bb0
+	source = ember-notify-0.1.5.tar.gz::https://github.com/Savanta/Ember/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 89adff1c845e7e97fae678b1ece15bda93857fcc97d3b0f212c19bbb084376b1
 
 pkgname = ember-notify
