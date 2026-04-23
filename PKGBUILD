@@ -3,16 +3,20 @@
 _pkgauthor=clux
 _pkgname=lq
 pkgname=${_pkgname}-bin
+pkgdesc="jq compatible yq/tq implementation in rust"
 pkgver=0.16.0
 pkgrel=1
-pkgdesc="jq compatible yq/tq implementation in rust"
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${pkgver}"
 arch=('x86_64' 'aarch64')
 license=('Apache-2.0')
+
+provides=("${_pkgname}")
+
 depends=('glibc' 'gcc-libs')
 conflicts=("${_pkgname}" "whyq" "whyq-bin")
-provides=("${_pkgname}")
+
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${arch[0]}-unknown-linux-gnu.tar.xz")
