@@ -2,7 +2,7 @@
 _appname=ooniprobe
 pkgname="${_appname}-desktop-bin"
 _pkgname=OONI-Probe
-pkgver=3.10.0
+pkgver=3.10.1
 _electronversion=12
 pkgrel=1
 pkgdesc="The next generation OONI Probe desktop app.(Prebuilt version.Use system-wide electron)"
@@ -15,7 +15,6 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'fuse2'
     'asar'
 )
 source=(
@@ -23,9 +22,9 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/ooni/probe-desktop/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('232076368ecb2064ca3aceabd8dce1dc0f5f14a78f8725714e39fad1385f08db'
+sha256sums=('44a73dcc3bb53adfed865ec7e7a5dcc91097fd0eebc0d28afe1bf0d2e954cf56'
             '1fc3f6a8bf2909bfaad6d6f4825c8e8b6dfed17e3b5270a9fd060d6de7938f8d'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
@@ -45,13 +44,15 @@ prepare() {
     _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${srcdir}/squashfs-root/resources/app.asar"
     sed -i "s/path.dirname(appPath)/\'\/usr\/lib\/${pkgname%-bin}\'/g" "${srcdir}/app.asar.unpacked/main/utils/paths.js"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/squashfs-root/resources/app.asar"
+    find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/squashfs-root/resources/bin/${_appname}" -t "${pkgdir}/usr/lib/${pkgname%-bin}/resources/bin"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/squashfs-root/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)

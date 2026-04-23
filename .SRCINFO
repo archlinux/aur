@@ -1,20 +1,19 @@
 pkgbase = ooniprobe-desktop-bin
 	pkgdesc = The next generation OONI Probe desktop app.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.10.0
+	pkgver = 3.10.1
 	pkgrel = 1
 	url = https://github.com/ooni/probe-desktop
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = fuse2
 	makedepends = asar
 	depends = electron12
-	provides = ooniprobe-desktop=3.10.0
+	provides = ooniprobe-desktop=3.10.1
 	conflicts = ooniprobe-desktop
-	source = ooniprobe-desktop-3.10.0-x86_64.AppImage::https://github.com/ooni/probe-desktop/releases/download/v3.10.0/OONI-Probe-3.10.0.AppImage
-	source = LICENSE-3.10.0.md::https://raw.githubusercontent.com/ooni/probe-desktop/v3.10.0/LICENSE.md
+	source = ooniprobe-desktop-3.10.1-x86_64.AppImage::https://github.com/ooni/probe-desktop/releases/download/v3.10.1/OONI-Probe-3.10.1.AppImage
+	source = LICENSE-3.10.1.md::https://raw.githubusercontent.com/ooni/probe-desktop/v3.10.1/LICENSE.md
 	source = ooniprobe-desktop.sh
-	sha256sums = 232076368ecb2064ca3aceabd8dce1dc0f5f14a78f8725714e39fad1385f08db
+	sha256sums = 44a73dcc3bb53adfed865ec7e7a5dcc91097fd0eebc0d28afe1bf0d2e954cf56
 	sha256sums = 1fc3f6a8bf2909bfaad6d6f4825c8e8b6dfed17e3b5270a9fd060d6de7938f8d
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = ooniprobe-desktop-bin
