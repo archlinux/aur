@@ -1,0 +1,31 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "cdparanoia-10.2-format-security.patch",
+    "cdparanoia-10.2-ldflags.patch",
+    "cdparanoia-r15388.patch",
+]
+SPDX-FileCopyrightText = "cdparanoia contributors"
+SPDX-License-Identifier = "TODO-Choose-a-license"

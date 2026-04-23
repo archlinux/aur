@@ -1,0 +1,4 @@
+[cdparanoia]
+source = 'regex'
+url = 'https://ftp.osuosl.org/pub/xiph/releases/cdparanoia/'
+regex = 'cdparanoia-III-([\d.]+).src'
