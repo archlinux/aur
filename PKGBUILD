@@ -1,9 +1,9 @@
 # Maintainer: erslly <contact@erslly.dev>
 pkgname=animecix-linux
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Animecix için unofficial Linux masaüstü uygulaması"
-arch=('x64')
+arch=('x86_64')
 url="https://github.com/erslly/animecix-linux"
 license=('MIT')
 depends=('electron' 'socat')
