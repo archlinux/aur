@@ -2,7 +2,7 @@
 
 pkgname=python-pyvhdlmodel
 pkgdesc='An abstract VHDL language model'
-pkgver=0.33.1
+pkgver=0.34.0
 pkgrel=1
 arch=('any')
 url='https://github.com/VHDL/pyVHDLModel'
@@ -12,6 +12,7 @@ depends=(
   'python-pytooling'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
   'python-setuptools'
@@ -22,27 +23,30 @@ checkdepends=(
   'python-pytest-cov'
 )
 
-_pyname=pyVHDLModel
+_commit=03061d6
 source=(
-  "$_pyname-$pkgver.tar.gz::https://github.com/VHDL/pyVHDLModel/archive/refs/tags/v$pkgver.tar.gz"
+  "git+https://github.com/VHDL/pyVHDLModel.git?signed#commit=$_commit"
 )
 sha256sums=(
-  '1b8389c4e8e15e34d16a0832056fdde8a16a76f7828f62b3efb0e540ab194320'
+  '9cab2979a520b26cc8dd7b28d2c56c5e8b04a53ac3a064413e1e2cca6367e0dc'
+)
+validpgpkeys=(
+  '968479A1AFF927E37D1A566BB5690EEEBB952194'  # GitHub signing key
 )
 
 prepare() {
-  cd "$_pyname-$pkgver"
+  cd pyVHDLModel
   sed -i -e "s/pyTooling ~= 8.8/pyTooling/" pyproject.toml
   sed -i -e "s/wheel ~= 0.45.0/wheel/" pyproject.toml
 }
 
 build() {
-  cd "$_pyname-$pkgver"
+  cd pyVHDLModel
   python -m build --no-isolation --wheel
 }
 
 check() {
-  cd "$_pyname-$pkgver"
+  cd pyVHDLModel
   rm -rf testenv
   python -m venv --system-site-packages testenv
   testenv/bin/python -m installer dist/pyvhdlmodel-"$pkgver"*.whl
@@ -51,6 +55,6 @@ check() {
 }
 
 package() {
-  cd "$_pyname-$pkgver"
+  cd pyVHDLModel
   python -m installer --destdir="$pkgdir" dist/pyvhdlmodel-"$pkgver"*.whl
 }

@@ -1,18 +1,20 @@
 pkgbase = python-pyvhdlmodel
 	pkgdesc = An abstract VHDL language model
-	pkgver = 0.33.1
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://github.com/VHDL/pyVHDLModel
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-pytooling
-	source = pyVHDLModel-0.33.1.tar.gz::https://github.com/VHDL/pyVHDLModel/archive/refs/tags/v0.33.1.tar.gz
-	sha256sums = 1b8389c4e8e15e34d16a0832056fdde8a16a76f7828f62b3efb0e540ab194320
+	source = git+https://github.com/VHDL/pyVHDLModel.git?signed#commit=03061d6
+	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
+	sha256sums = 9cab2979a520b26cc8dd7b28d2c56c5e8b04a53ac3a064413e1e2cca6367e0dc
 
 pkgname = python-pyvhdlmodel
