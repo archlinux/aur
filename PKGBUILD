@@ -20,7 +20,6 @@ sha256sums=('SKIP')
 build() {
     cd "$pkgname-$pkgver"
     export CGO_ENABLED=0
-    export GOFLAGS="-buildmode=pie"
     go build -ldflags="-s -w -X main.version=v$pkgver" -o alps .
 }
 
