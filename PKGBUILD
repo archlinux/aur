@@ -8,8 +8,8 @@
 
 pkgname='mlmmj'
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
-pkgver=1.8.0
-_pkgver=1_8_0
+pkgver=2.0.0
+_pkgver=2_0_0
 pkgrel=1
 _url='http://mlmmj.org/'
 url='https://codeberg.org/mlmmj/mlmmj'
@@ -26,7 +26,7 @@ source=(
   'sysuser.conf' 'tmpfile.conf'
 )
 sha256sums=(
-  '1a096c8256b63a51717d71459987c9d739963a82ecf382779184794e93e32618'
+  '1ec9c84bfabeddf3c1b31da410abd670d073a97a2ede7049a2b26bb80433994c'
   'SKIP' 'SKIP'  # Skip to my Lou
 )
 
@@ -34,7 +34,10 @@ build() {
   cd "$pkgname-$pkgver"
 
   # Tests require “atf-c”. Anyone?
-  ./configure --prefix=/usr --disable-tests
+  ./configure \
+    --prefix=/usr \
+    --mandir=/usr/share/man \
+    --disable-tests
 
   make
 }
@@ -43,6 +46,12 @@ package() {
   cd "$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
+
+  # ./configure doesn't seem to honor --mandir
+  install -dm0755    "$pkgdir/usr/share/man/man1"
+  install -Dm0644 -t "$pkgdir/usr/share/man/man1" \
+    "$pkgdir/usr/man/man1"/*.1
+  rm -rf "$pkgdir/usr/man"
 
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     ChangeLog FAQ README.* TODO TUNABLES.md UPGRADE
