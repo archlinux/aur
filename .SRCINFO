@@ -1,10 +1,11 @@
-pkgbase = python-pyosmocom
+pkgbase = python-pyosmocom-git
 	pkgdesc = Python implementation of core Osmocom utilities and protocols
-	pkgver = 0.0.12
+	pkgver = 0.0.12.r4.g75785e4
 	pkgrel = 1
 	url = https://osmocom.org/projects/pyosmocom/wiki
 	arch = any
 	license = GPL-2.0-or-later
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -12,7 +13,7 @@ pkgbase = python-pyosmocom
 	depends = python
 	depends = python-construct
 	depends = python-gsm0338
-	source = https://files.pythonhosted.org/packages/source/p/pyosmocom/pyosmocom-0.0.12.tar.gz
-	sha256sums = 10c3a7ae6b84c9ef72ab5c71eec435f5f2f3c92ef39fabc669b661ed972b2fff
+	source = git+https://gitea.osmocom.org/osmocom/pyosmocom.git
+	sha256sums = SKIP
 
-pkgname = python-pyosmocom
+pkgname = python-pyosmocom-git

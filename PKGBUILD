@@ -1,7 +1,9 @@
 # Maintainer: Mingxun Hua <huamingxun@gmail.com>
-pkgname=python-pyosmocom
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+
+pkgname=python-pyosmocom-git
 _name=pyosmocom
-pkgver=0.0.12
+pkgver=0.0.12.r4.g75785e4
 pkgrel=1
 pkgdesc='Python implementation of core Osmocom utilities and protocols'
 arch=('any')
@@ -13,21 +15,27 @@ depends=(
   'python-gsm0338'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
   'python-setuptools'
   'python-wheel'
 )
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('10c3a7ae6b84c9ef72ab5c71eec435f5f2f3c92ef39fabc669b661ed972b2fff')
+source=("git+https://gitea.osmocom.org/osmocom/${_name}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_name}"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^\(v\)\1*//'
+}
 
 build() {
-  cd "${_name}-${pkgver}"
+  cd "${srcdir}/${_name}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_name}-${pkgver}"
+  cd "${srcdir}/${_name}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
