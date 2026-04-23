@@ -1,0 +1,32 @@
+pkgbase = caelestia-sddm-git
+	pkgver = r135.9e8d36b
+	pkgrel = 1
+	url = https://github.com/ItsABigIgloo/caelestia-sddm
+	install = caelestia-sddm.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = sddm
+	depends = qt6-declarative
+	depends = qt6-5compat
+	depends = qt6-svg
+	depends = qt6-virtualkeyboard
+	depends = ffmpeg
+	optdepends = caelestia-shell: dynamic colors and wallpaper sync
+	optdepends = caelestia-shell-git: dynamic colors and wallpaper sync (git)
+	optdepends = caelestia-cli: color generation for theme sync
+	optdepends = caelestia-cli-git: color generation for theme sync (git)
+	optdepends = ttf-rubik: default UI font
+	optdepends = ttf-material-symbols-outlined: icons for minimalist themes
+	optdepends = ttf-material-symbols-rounded: icons for locklike theme
+	provides = caelestia-sddm
+	conflicts = caelestia-sddm
+	backup = etc/sddm.conf.d/caelestia.conf
+	source = caelestia-sddm-git::git+https://github.com/ItsABigIgloo/caelestia-sddm
+	sha256sums = SKIP
+
+pkgname = caelestia-sddm-locklike-git
+
+pkgname = caelestia-sddm-minimalist-git
+
+pkgname = caelestia-sddm-minimalistv2-git
