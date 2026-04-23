@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ooniprobe-desktop
-pkgver=3.10.0
+pkgver=3.10.1
 pkgrel=1
-_cliver=3.26.0
+_cliver=3.29.0
 _nodeversion=18
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
@@ -22,8 +22,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/
         "${pkgname%-desktop}-${_cliver}-linux-amd64::https://github.com/ooni/probe-cli/releases/download/v${_cliver}/${pkgname%-desktop}-linux-amd64"
         "$pkgname.desktop"
         'drop-fsevents.patch')
-sha256sums=('4446563d217b487f76f3e082b64b90b5a227b16b5d9b73b9d32a1fe3ae504e22'
-            '758db091ad0ff8a32a55b04d1c673c865c7a6583599c09b6fea33c6ad3c30d06'
+sha256sums=('256901d276c0ff9f61d322fab47238fa67349ec409f8a72740175b3c6da1ac73'
+            'c18da912451af2b66a8c978c7d23bbd195504d20b0b8d8ebcc974124a6831869'
             '77f39a9c8d017b391f61686ac38131a9e31435635de4b72d0f20930165404915'
             'b869d595b6e6100373031c951d976c147050dea02e5683f341711a35f3ffba10')
 
@@ -48,7 +48,7 @@ prepare() {
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
-  yarn install
+  yarn install --frozen-lockfile
 
   # Place files
   mkdir -p build/probe-cli/linux_amd64
