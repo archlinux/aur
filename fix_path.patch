@@ -1,6 +1,40 @@
---- a/libwebcam/uvcdynctrl/CMakeLists.txt	2016-04-27 13:52:51.432376590 -0400
-+++ b/libwebcam/uvcdynctrl/CMakeLists.txt	2016-04-27 13:53:29.121677785 -0400
-@@ -102,11 +102,11 @@
+--- a/libwebcam/CMakeLists.txt
++++ b/libwebcam/CMakeLists.txt
+@@ -2,8 +2,7 @@
+ # GENERAL
+ #
+ 
+-# Require CMake 2.6 because of the Debian packaging.
+-cmake_minimum_required (VERSION 2.6)
++cmake_minimum_required (VERSION 3.5)
+ 
+ # uninstall target
+ configure_file(
+--- a/libwebcam/libwebcam/CMakeLists.txt
++++ b/libwebcam/libwebcam/CMakeLists.txt
+@@ -2,8 +2,7 @@
+ # GENERAL
+ #
+ 
+-# Require CMake 2.6 because of the Debian packaging.
+-cmake_minimum_required (VERSION 2.6)
++cmake_minimum_required (VERSION 3.5)
+ 
+ project (LIBWEBCAM)
+ 
+--- a/libwebcam/uvcdynctrl/CMakeLists.txt
++++ b/libwebcam/uvcdynctrl/CMakeLists.txt
+@@ -2,8 +2,7 @@
+ # GENERAL
+ #
+ 
+-# Require CMake 2.6 because of the Debian packaging.
+-cmake_minimum_required (VERSION 2.6)
++cmake_minimum_required (VERSION 3.5)
+ 
+ project (UVCDYNCTRL)
+ 
+@@ -102,11 +101,11 @@
  # Note that having absolute paths here requires CPACK_SET_DESTDIR to be set to "ON".
  install (
  	FILES	udev/rules/80-uvcdynctrl.rules

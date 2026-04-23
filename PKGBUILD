@@ -3,7 +3,7 @@
 
 pkgname=libwebcam-git
 pkgver=0.2.5.r2.g0233106
-pkgrel=1
+pkgrel=2
 pkgdesc="A library that is designed to simplify the development of webcam applications"
 arch=(i686 x86_64)
 url="http://sourceforge.net/projects/libwebcam/"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('libxml2')
 makedepends=('cmake' 'linux-headers' 'git')
 source=("$pkgname::git+http://git.code.sf.net/p/libwebcam/code" 'fix_path.patch')
-sha512sums=('SKIP' 'bd2c86e5e32a20a85bb36cdcfb47737a6bbf6dfd2b44126de679d7cd241eefcdec8983a54236d0ee574c2439c3deafafba3d02695ce5d8128a6646d7c9395d6e')
+sha512sums=('SKIP' 'f2b24ceb3f552678284a291a5eb28ea345d905796588a1251dbaff681cfba7331f4d6a4591070483dfcc60e960a3e03891bfd2cf71a19c02ed82786592e3deb4')
 
 pkgver() {
   cd $pkgname
