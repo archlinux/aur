@@ -1,15 +1,15 @@
 pkgbase = worldforge-bin
 	pkgdesc = A world simulation engine. Simple rules, emergent civilizations, and a narrative that writes itself.
-	pkgver = 0.2.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://git.skylantix.com/hermes/worldforge
 	arch = x86_64
 	license = GPL-3.0-or-later
 	provides = worldforge
 	conflicts = worldforge
-	source = worldforge-0.2.1-linux-amd64::https://git.skylantix.com/api/v4/projects/hermes%2Fworldforge/packages/generic/worldforge/0.2.1/worldforge-linux-amd64
-	source = LICENSE-0.2.1::https://git.skylantix.com/hermes/worldforge/-/raw/v0.2.1/LICENSE
-	sha256sums = 46d41e9f308a031cc0d66b6f7929e4b0961cc076c693677f7e80defa7bf0ca67
+	source = worldforge-0.4.0-linux-amd64::https://git.skylantix.com/api/v4/projects/hermes%2Fworldforge/packages/generic/worldforge/0.4.0/worldforge-linux-amd64
+	source = LICENSE-0.4.0::https://git.skylantix.com/hermes/worldforge/-/raw/v0.4.0/LICENSE
+	sha256sums = b081b3ec1ec3684a9f2ff4921d6cd69708d8d65bf246bf04e1bfc8b4c252bb53
 	sha256sums = bee7ee25f14a0f45a0d36dff8007e82829235938e52a18f2ebafba279a08e5c6
 
 pkgname = worldforge-bin
