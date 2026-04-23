@@ -30,7 +30,7 @@ post_install() {
         echo -e "\033[33m警告: docker-compose 未安装，请安装它，否则 1Panel 应用商店将无法使用。\033[0m"
     fi
     echo -e "\033[31m使用默认的用户名和密码将是一个十分危险的行为！！！\033[0m."
-    echo -e "请务必在启动 \033[34m1panel.service\033[0m 之后使用 \033[34mWeb界面\033[0m 来设置您的用户名和密码！"
+    echo -e "请务必在启动 \033[34m1panel.service\033[0m 之后修改 033[34m/etc/1panel.conf\033[0m 来设置您的用户名和密码！"
     echo -e ""
     echo -e "==================== 1Panel 安装完成 ===================="
 }
@@ -69,9 +69,6 @@ post_upgrade() {
     # if no version in conf nor config exists, program will crash.
     conf_file="/etc/1panel.conf"
 
-    clean_ver="v${pkgver//_/-}"
-    clean_ver="${clean_ver%-0}"
-
     if [[ -f "$conf_file" ]]; then
         # uses pkgver replace the ORIGINAL_VERSION
         sed -i "s/^ORIGINAL_VERSION=.*/ORIGINAL_VERSION=v${clean_ver//_/-}/" "$conf_file"
@@ -80,7 +77,7 @@ post_upgrade() {
     # There is no offical support for this command,
     # but i founded it in sourcecode, to update versions in databases.
     # Please modify it only when upstream changse how version is checks.
-    1panel update version v${clean_ver//_/-}
+    1panel update version v${pkgver}
 
     if [ -n "${_restart_1panel_agent_service+x}" ]; then
         echo -e "正在重启服务..."

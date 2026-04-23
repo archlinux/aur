@@ -3,11 +3,11 @@
 # Contributor: Senge Dev <sengedev@gmail.com>
 
 pkgname=1panel
-pkgver=2.1.7
+pkgver=2.1.10
 pkgrel=0
 pkgdesc="1Panel, a modern open source linux panel."
 arch=('x86_64' 'aarch64')
-url="https://1panel.pro"
+url="https://github.com/1Panel-dev/1Panel"
 license=('GPL-3.0-or-later')
 install=1panel.install
 makedepends=('go' 'nodejs' 'npm' 'python')
@@ -21,7 +21,7 @@ source=(
     "1panel.conf"
 )
 b2sums=(
-    "64d48422e494ebf332f2c7e5ede37338c1490a5c31e7caeeb0bc39c33bd25b4d1aab767a9fd81df7e7ff52bc3a7b18bfc5fc2e462bf5e82fada14feefb2216e9"
+    "b51e012f5a15c02294ac7929577299b54d8ef4101537d645c9717728af1f69b074ee2489e15f60b4e91eb7159448be45b1133fdd77f712847bbc140f5f4ccfc3"
     "SKIP"
     "SKIP"
     "SKIP"
