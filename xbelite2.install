@@ -1,17 +1,20 @@
 post_install() {
-    udevadm control --reload-rules
-    udevadm trigger
-    systemctl daemon-reload
-}
-
-pre_upgrade() {
-    pre_remove
+  udevadm control --reload-rules
+  udevadm trigger
+  systemctl daemon-reload
+  echo "------------------------------------------------------"
+  echo "To start and enable the service, run:"
+  echo "  sudo systemctl enable --now xbelite2d.service"
+  echo "------------------------------------------------------"
 }
 
 post_upgrade() {
-    post_install
+  echo "-----------------------------------------------------------------"
+  echo "If you have the service running, don't forget to restart it:"
+  echo "  sudo systemctl restart xbelite2d.service"
+  echo "-----------------------------------------------------------------"
 }
 
 pre_remove() {
-    systemctl stop xbelite2d.service 2>/dev/null
+  systemctl stop xbelite2d.service 2>/dev/null
 }
