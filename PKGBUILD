@@ -1,6 +1,6 @@
 # Maintainer: Duncan Mac-Vicar P. <duncan@mac-vicar.eu>
 pkgname=lstk
-pkgver=0.5.4
+pkgver=0.5.8
 pkgrel=1
 pkgdesc='LocalStack CLI v2'
 arch=('x86_64' 'aarch64')
