@@ -4,7 +4,7 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.3883.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -31,8 +31,8 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
 provides=('claude-desktop')
 conflicts=('claude-desktop')
 _electron_ver=41.3.0
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.3883.0-3/claude-desktop-1.3883.0-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
-sha256sums_x86_64=('57afa79c49d9abcd53b556d0e6a8c8397eaad3582737cfaff95e852c54bf5718' 'SKIP')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.3883.0-4/claude-desktop-1.3883.0-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
+sha256sums_x86_64=('384509f88d96a48404ca5bf21fe6d8ae819445e94b15e8189d8f3186aee0191f' 'SKIP')
 options=('!strip')
 
 package() {
