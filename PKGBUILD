@@ -3,7 +3,7 @@
 _pkgbase="zig-waybar-contrib"
 pkgname="${_pkgbase}"
 pkgver=26.04.23
-pkgrel=3
+pkgrel=4
 pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring (Stable binary version)'
 arch=('x86_64')
 url="https://codeberg.org/erffy/$_pkgbase"
@@ -18,11 +18,7 @@ source=(
   "config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.04.23/config.waybar.jsonc"
   "LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.04.23/LICENSE"
 )
-md5sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+md5sums=()
 
 package() {
   cd "$srcdir"
