@@ -1,7 +1,7 @@
 pkgbase = minivmac
 	pkgdesc = A miniature early Macintosh emulator
 	pkgver = 36.04
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.gryphel.com/c/minivmac/
 	arch = x86_64
 	arch = i686

@@ -1,4 +1,5 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
+# Contributor: Nathaniel van Diepen <eeems@eeems.email>
 # Contributor: Lu Xu <oliver_lew@outlook.com>
 # Contributor: LIN Ruohshoei <lin dot ruohshoei plus archlinux at gmail dot com>
 # Contributor: Eric DeStefano <eric at ericdestefano dot com>
@@ -7,7 +8,7 @@
 
 pkgname=minivmac
 pkgver=36.04
-pkgrel=5
+pkgrel=6
 pkgdesc="A miniature early Macintosh emulator"
 arch=('x86_64' 'i686') 
 url="https://www.gryphel.com/c/minivmac/"
@@ -39,7 +40,7 @@ sha256sums=('9b7343cec87723177a203e69ad3baf20f49b4e8f03619e366c4bf2705167dfa4'
             'bd6e70489d9bac12d9012634f4f5ae51f30a2c5d647fe3b2b071ff1b5a649419')
 
 build() {
-  OPTIONS="-api ${_api} -n '${pkgname}-${_model}_v${pkgver}-${pkgrel}'"
+  options="-api ${_api} -n '${pkgname}-${_model}_v${pkgver}-${pkgrel}'"
   cd ${pkgname}
   mkdir -p bin
   gcc setup/tool.c -o setup_t
@@ -50,9 +51,9 @@ build() {
     #[ $_model = II ] && option_mf=2 || option_mf=3
     echo Architecture is $CARCH.
     if [ "${CARCH}" = "x86_64" ]; then
-      ./setup_t -t lx64 -m ${_model} $OPTIONS | bash
+      ./setup_t -t lx64 -m ${_model} $options | bash
     elif [ "${CARCH}" = "i686" ]; then
-      ./setup_t -t lx86 -m ${_model} $OPTIONS | bash
+      ./setup_t -t lx86 -m ${_model} $options | bash
     else
       echo "Architecture $CARCH is not supported by this PKGBUILD."
       exit 1
