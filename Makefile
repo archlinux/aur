@@ -6,6 +6,11 @@ MAKEFILE_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
 
 TARGET_REPO := tencentcloud/tencentcloud-sdk-python
 
+IMAGE_NAME := arch:arch-package-test
+# for --no-cache option
+# ex. make IMAGE_BUILD_OPTIONS="--no-cache" test
+IMAGE_BUILD_OPTIONS := 
+
 .PHONY: default
 default: help
 
@@ -17,7 +22,7 @@ help-common:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m %-30s\033[0m %s\n", $$1, $$2}'
 
 
-.PHONY: all renew install update_checksum packaging clean update_tag test
+.PHONY: all renew install update_checksum packaging clean update_tag test remove-image
 
 all: update_tag packaging test ## Update to the latest version and packaging for release [Recommended]
 
@@ -51,8 +56,8 @@ update_tag: ## get and update newest version in PKGBUILD
 	fi
 
 test: ## test (needs make packaging)
-	docker build -t arch:arch-package-test -f $(MAKEFILE_DIR)/Dockerfile $(MAKEFILE_DIR) && \
-	docker run -it --rm -v $(MAKEFILE_DIR):/work -w /work arch:arch-package-test ./test.sh
+	docker build $(IMAGE_BUILD_OPTIONS) -t $(IMAGE_NAME) -f $(MAKEFILE_DIR)/Dockerfile $(MAKEFILE_DIR) && \
+	docker run -it --rm -v $(MAKEFILE_DIR):/work -w /work $(IMAGE_NAME) ./test.sh
 	namcap PKGBUILD
 	source ./PKGBUILD && namcap "$${pkgname}-$${pkgver}-$${pkgrel}-any.pkg.tar.xz"
 
