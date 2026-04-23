@@ -1,0 +1,13 @@
+pkgbase = ocaml-lua-ml
+	pkgdesc = Embeddable Lua 2.5 interpreter implemented in OCaml
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/lindig/lua-ml
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = dune
+	depends = ocaml
+	source = lua-ml-0.9.4.tar.gz::https://github.com/lindig/lua-ml/archive/refs/tags/0.9.4.tar.gz
+	sha256sums = 4d5512f5be2b59946ebb8e62f78954daf9bcf4284da9d6ade52df7baa314467d
+
+pkgname = ocaml-lua-ml

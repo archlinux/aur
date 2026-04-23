@@ -1,0 +1,4 @@
+[ocaml-lua-ml]
+source = 'github'
+github = 'lindig/lua-ml'
+use_max_tag = true
