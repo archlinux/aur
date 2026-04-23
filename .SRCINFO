@@ -1,7 +1,7 @@
 pkgbase = mawkawk
 	pkgdesc = Re-point /usr/bin/awk symlink to mawk
 	pkgver = 0.2
-	pkgrel = 2
+	pkgrel = 3
 	install = mawkawk.install
 	arch = any
 	license = 0BSD
