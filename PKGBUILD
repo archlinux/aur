@@ -7,7 +7,7 @@ pkgdesc="Jellyfin & Emby media client for Linux (binary release)"
 arch=('x86_64')
 url="https://github.com/Moonfin-Client/Mobile-Desktop"
 license=('GPL-3.0-or-later')
-depends=('gtk3' 'glib2' 'mpv' 'libsecret')
+depends=('gtk3' 'glib2' 'mpv' 'ffmpeg' 'libva' 'libvdpau' 'libsecret')
 provides=('moonfin')
 conflicts=('moonfin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Moonfin-Client/Mobile-Desktop/releases/download/${pkgver}/Moonfin_Linux_v${pkgver}.tar.gz")
@@ -22,12 +22,25 @@ package() {
   # Drop bundled libs that should come from distro packages
   rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libmpv.so."*
   rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libsecret-1.so."*
+  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libavcodec.so."*
+  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libavdevice.so."*
+  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libavfilter.so."*
+  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libavformat.so."*
+  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libavutil.so."*
+  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libpostproc.so."*
+  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libswresample.so."*
+  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libswscale.so."*
+  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libva.so."*
+  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libva-drm.so."*
+  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libva-wayland.so."*
+  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libva-x11.so."*
+  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libvdpau.so."*
 
   install -dm755 "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/bin/sh
 APPDIR="/usr/lib/${_pkgname}"
-export LD_LIBRARY_PATH="\$APPDIR/lib\${LD_LIBRARY_PATH:+:\$LD_LIBRARY_PATH}"
+export LD_LIBRARY_PATH="\${LD_LIBRARY_PATH:+\$LD_LIBRARY_PATH:}\$APPDIR/lib"
 exec "\$APPDIR/${_pkgname}" "\$@"
 EOF
   chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
