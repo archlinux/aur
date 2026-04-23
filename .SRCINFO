@@ -1,6 +1,6 @@
 pkgbase = workbuddy-bin
 	pkgdesc = Work Smart，Not Hard
-	pkgver = 4.10.1.25648017
+	pkgver = 4.10.2.25783960
 	pkgrel = 1
 	url = https://www.codebuddy.ai/agents
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = workbuddy-bin
 	makedepends = libicns
 	depends = electron
 	optdepends = gnome-shell-extension-appindicator
-	source = https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-4.10.1.25648017-3aa8d419.dmg
+	source = https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-4.10.2.25783960-c16c5524.dmg
 	source = WorkBuddy.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
