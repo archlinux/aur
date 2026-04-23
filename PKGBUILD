@@ -9,9 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/master.tar.gz")
-sha256sums=(
-	'7da981fb65777116aa2e1407e4ee1c871ee6fb71f5c662948f54f0d0c775b9e4'
-	)
+sha256sums=('6a6190304e8d7d4f47ca82fad0c6cd31900a33320551ba71b1eb401e11b68109')
 
 build() {
   cd "QTop-master"
