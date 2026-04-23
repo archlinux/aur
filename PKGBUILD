@@ -2,12 +2,12 @@
 pkgname=moonfin-bin
 _pkgname=moonfin
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Jellyfin & Emby media client for Linux (binary release)"
 arch=('x86_64')
 url="https://github.com/Moonfin-Client/Mobile-Desktop"
 license=('GPL-3.0-or-later')
-depends=('gtk3' 'glib2' 'mpv' 'ffmpeg' 'libva' 'libvdpau' 'libsecret')
+depends=('gtk3' 'glib2' 'mpv' 'ffmpeg' 'libva' 'libvdpau' 'libsecret' 'libass')
 provides=('moonfin')
 conflicts=('moonfin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Moonfin-Client/Mobile-Desktop/releases/download/${pkgver}/Moonfin_Linux_v${pkgver}.tar.gz")
@@ -21,6 +21,7 @@ package() {
 
   # Drop bundled libs that should come from distro packages
   rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libmpv.so."*
+  rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libass.so."*
   rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libsecret-1.so."*
   rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libavcodec.so."*
   rm -f "${pkgdir}/usr/lib/${_pkgname}/lib/libavdevice.so."*
