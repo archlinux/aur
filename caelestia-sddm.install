@@ -60,6 +60,25 @@ pre_install() {
   _cleanup_all
 }
 
+_print_posthook_instructions() {
+  local theme_dir="$1"
+  local real_user="$2"
+
+  echo ""
+  echo "==> To sync manually at any time, run:"
+  echo "==>   sudo $theme_dir/scripts/sync.sh"
+  echo ""
+  echo "==> To sync automatically on wallpaper change, set up the posthook:"
+  echo "==>   1) Add to ~/.config/caelestia/cli.json under \"wallpaper\":"
+  echo "==>        \"postHook\": \"sudo $theme_dir/scripts/sync.sh --posthook\""
+  echo "==>   2) Enable passwordless sudo for the script:"
+  echo "==>        echo \"$real_user ALL=(root) NOPASSWD: $theme_dir/scripts/sync.sh\" | sudo tee /etc/sudoers.d/caelestia-sddm-sync"
+  echo "==>   3) Verify it works:"
+  echo "==>        sudo $theme_dir/scripts/sync.sh"
+  echo ""
+  echo "==> Full posthook guide: https://github.com/ItsABigIgloo/caelestia-sddm/blob/main/POSTHOOK.md"
+}
+
 post_install() {
   local theme_dir="/usr/share/sddm/themes/caelestia"
 
@@ -87,8 +106,7 @@ post_install() {
   SUDO_USER="$real_user" "$theme_dir/scripts/sync.sh"
   echo "==> Initial sync complete"
 
-  echo "==> For automatic sync on wallpaper change, see:"
-  echo "==> https://github.com/ItsABigIgloo/caelestia-sddm/blob/main/POSTHOOK.md"
+  _print_posthook_instructions "$theme_dir" "$real_user"
 }
 
 post_upgrade() {
@@ -96,18 +114,9 @@ post_upgrade() {
 }
 
 post_remove() {
-  local real_user
-  real_user=$(_detect_user)
-  if [ -n "$real_user" ]; then
-    local real_home
-    real_home=$(getent passwd "$real_user" | cut -d: -f6)
-    rm -f "$real_home/.config/caelestia/templates/sddm-theme.conf"
-    if [ -d "$real_home/.config/caelestia/templates" ] && [ -z "$(ls -A "$real_home/.config/caelestia/templates")" ]; then
-      rmdir "$real_home/.config/caelestia/templates"
-    fi
-    rm -rf "$real_home/.cache/sddm-greeter-qt6"
-  fi
-
   echo "==> Caelestia SDDM Theme fully removed."
+  echo "==> Don't forget to clean up your posthook setup:"
+  echo "==>   Remove the postHook entry from ~/.config/caelestia/cli.json"
+  echo "==>   Remove /etc/sudoers.d/caelestia-sddm-sync if created"
   echo "==> Update SDDM theme in /etc/sddm.conf or /etc/sddm.conf.d/"
 }

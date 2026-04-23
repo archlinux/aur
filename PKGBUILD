@@ -28,8 +28,6 @@ optdepends=(
 )
 makedepends=('git')
 provides=('caelestia-sddm')
-conflicts=('caelestia-sddm')
-backup=('etc/sddm.conf.d/caelestia.conf')
 install=caelestia-sddm.install
 source=("${pkgbase}::git+${url}")
 sha256sums=('SKIP')
@@ -41,9 +39,7 @@ pkgver() {
 
 _package_variant() {
   local variant="$1"
-  local desc="$2"
 
-  pkgdesc="$desc"
   install -dm755 "$pkgdir/usr/share/sddm/themes/caelestia"
 
   cp -r "$srcdir/${pkgbase}/themes/$variant"/* \
@@ -66,16 +62,19 @@ DROPIN
 }
 
 package_caelestia-sddm-locklike-git() {
-  _package_variant "locklike" \
-    "Caelestia SDDM theme - locklike variant mimicking the original lock screen from caelestia"
+  pkgdesc="Caelestia SDDM theme - locklike variant mimicking the original lock screen from caelestia"
+  conflicts=('caelestia-sddm' 'caelestia-sddm-minimalist-git' 'caelestia-sddm-minimalistv2-git')
+  _package_variant "locklike"
 }
 
 package_caelestia-sddm-minimalist-git() {
-  _package_variant "minimalist" \
-    "Caelestia SDDM theme - minimalist variant with gradient background and simple design"
+  pkgdesc="Caelestia SDDM theme - minimalist variant with gradient background and simple design"
+  conflicts=('caelestia-sddm' 'caelestia-sddm-locklike-git' 'caelestia-sddm-minimalistv2-git')
+  _package_variant "minimalist"
 }
 
 package_caelestia-sddm-minimalistv2-git() {
-  _package_variant "minimalistV2" \
-    "Caelestia SDDM theme - minimalistV2 variant with improved fonts and modern design following caelestia's UI style"
+  pkgdesc="Caelestia SDDM theme - minimalistV2 variant with improved fonts and modern design following caelestia's UI style"
+  conflicts=('caelestia-sddm' 'caelestia-sddm-locklike-git' 'caelestia-sddm-minimalist-git')
+  _package_variant "minimalistV2"
 }
