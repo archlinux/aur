@@ -1,9 +1,8 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 # Contributor: Robert Falkenberg <falkenber9@gmail.com>
 
+_gitname=pysim
 pkgname=python-pysim-git
-_pyname=${pkgname#python-}
-_pyname=${_pyname%-git}
 pkgver=1.0.r520.g219a5f36
 pkgrel=1
 pkgdesc='A python tool to program SIMs / USIMs / ISIMs'
@@ -35,13 +34,13 @@ source=('git+https://git.osmocom.org/pysim')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_pyname}
+  cd "${srcdir}/${_gitname}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^\(v\)\1*//'
 }
 
 package() {
   install=$pkgname.install
-  cd "${srcdir}/${_pyname}"
+  cd "${srcdir}/${_gitname}"
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
