@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=rdn-git
 _pkgname=rdn
-pkgver=r5.c43cd78
+pkgver=r9.2c8c340
 pkgrel=1
 pkgdesc='Rusty Dos Navigator'
 arch=('x86_64')

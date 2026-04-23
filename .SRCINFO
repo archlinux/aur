@@ -1,6 +1,6 @@
 pkgbase = rdn-git
 	pkgdesc = Rusty Dos Navigator
-	pkgver = r5.c43cd78
+	pkgver = r9.2c8c340
 	pkgrel = 1
 	url = https://github.com/apatrushev/rdn
 	arch = x86_64
