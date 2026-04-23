@@ -6,6 +6,6 @@ post_install() {
 }
 
 post_upgrade() {
-	echo "The plugin will auto-rebuild on Hyprland updates if cmake is installed."
+	echo "The plugin will auto-rebuild on Hyprland updates if cmake and pkgconf are installed."
 	echo "If the plugin fails to load, run: hyprspaces-install"
 }

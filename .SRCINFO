@@ -1,6 +1,6 @@
 pkgbase = hyprspaces
 	pkgdesc = Paired workspace plugin and setup scripts for Hyprland
-	pkgver = 1.4.1
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/jtaw5649/hyprspaces
 	install = hyprspaces.install
@@ -14,7 +14,7 @@ pkgbase = hyprspaces
 	optdepends = cmake: automatic plugin rebuild on Hyprland updates
 	optdepends = pkgconf: automatic plugin rebuild on Hyprland updates
 	options = !debug
-	source = hyprspaces-1.4.1.tar.gz::https://github.com/jtaw5649/hyprspaces/archive/refs/tags/v1.4.1.tar.gz
+	source = hyprspaces-1.5.tar.gz::https://github.com/jtaw5649/hyprspaces/archive/refs/tags/v1.5.tar.gz
 	source = hyprspaces.hook
 	sha256sums = SKIP
 	sha256sums = SKIP
