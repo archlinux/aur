@@ -1,7 +1,7 @@
 pkgbase = cdparanoia-overread
 	pkgdesc = Compact Disc Digital Audio extraction tool patched for lead-out overread support
 	pkgver = 10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xiph.org/paranoia/
 	arch = i686
 	arch = x86_64
