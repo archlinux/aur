@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=jolt-git
 _pkgname=jolt
-pkgver=1.2.0.beta.2.r5.g71c6ffb
+pkgver=1.2.0.r33.g7784131
 pkgrel=1
 pkgdesc='TUI-based battery and energy monitor.'
 arch=('x86_64' 'aarch64')

@@ -1,6 +1,6 @@
 pkgbase = jolt-git
 	pkgdesc = TUI-based battery and energy monitor.
-	pkgver = 1.2.0.beta.2.r5.g71c6ffb
+	pkgver = 1.2.0.r33.g7784131
 	pkgrel = 1
 	url = https://github.com/jordond/jolt
 	install = jolt.install
