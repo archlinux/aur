@@ -1,6 +1,6 @@
 pkgbase = nota.zsh-git
 	pkgdesc = ZSH plugin that help you record notas with some context.
-	pkgver = 1.0.0
+	pkgver = 1.0.0.r0.gcc1b6c5
 	pkgrel = 1
 	url = https://github.com/0x61nas/nota.zsh
 	arch = any

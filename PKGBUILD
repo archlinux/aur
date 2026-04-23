@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=nota.zsh-git
 _pkgname=nota.zsh
-pkgver=1.0.0
+pkgver=1.0.0.r0.gcc1b6c5
 pkgrel=1
 pkgdesc='ZSH plugin that help you record notas with some context.'
 arch=('any')
