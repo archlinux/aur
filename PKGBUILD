@@ -20,8 +20,8 @@ url=${_ghurl}
 license=('Apache-2.0')
 
 provides=("${_appname}")
+conflicts=("${_gitname}")
 depends=('glibc' 'libgcc' 'tmux')
-conflicts=("${_appname}" "${_gitname}")
 
 options=(!strip)
 

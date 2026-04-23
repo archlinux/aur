@@ -10,7 +10,6 @@ pkgbase = honeymux-bin
 	depends = libgcc
 	depends = tmux
 	provides = hmx
-	conflicts = hmx
 	conflicts = honeymux
 	options = !strip
 	source = README-0.102.2.md::https://raw.githubusercontent.com/honeymux/honeymux/v0.102.2/README.md
