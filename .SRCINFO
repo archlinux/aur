@@ -1,6 +1,6 @@
 pkgbase = gonzo
 	pkgdesc = TUI log analysis tool
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 2
 	url = https://github.com/control-theory/gonzo
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = gonzo
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = https://github.com/control-theory/gonzo/archive/v0.3.1/gonzo-0.3.1.tar.gz
-	sha512sums = 1d00faee039d632e0fbe264550ade3e829c66a2be589ec4f098fb2577d22e6bf5aaa258de3ffb96b080bfdbf6d102316878230ddd21cc895d0257e3767ca75df
-	b2sums = fabf02d1230eeee0347dffa958f7801d166507d0ce434e3891285f6a9fb6ad99c322ffc64aa56663131360c4e2739e10003dc73b1e409a2ccefc7b434ab7f83f
+	source = https://github.com/control-theory/gonzo/archive/v0.3.2/gonzo-0.3.2.tar.gz
+	sha512sums = 23db158fa846df35a6b2fe12fdde3f9d43b1a61bb86a383b97fc11298fa587abdb3d5c215dcc535009851c002d6b17fd6b22917a0f1e1c2bd2774d492320c624
+	b2sums = 9fbd2f73613dcff67b4e76527c79d579f6424ec870fea982e554c6f8273e4e019e478c39bbf9c2111d7234c2133b7060e7fbbff26c0a62c8c99ae312d9231c52
 
 pkgname = gonzo
