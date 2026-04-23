@@ -1,0 +1,14 @@
+pkgbase = animecix-linux
+	pkgdesc = Animecix için unofficial Linux masaüstü uygulaması
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/erslly/animecix-linux
+	arch = x64
+	license = MIT
+	makedepends = npm
+	depends = electron
+	depends = socat
+	source = git+https://github.com/erslly/animecix-linux.git
+	md5sums = SKIP
+
+pkgname = animecix-linux
