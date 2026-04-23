@@ -1,0 +1,19 @@
+pkgbase = onionshot-git
+	pkgdesc = Screenshot tool for Hyprland
+	pkgver = r27.8c2b7ac
+	pkgrel = 1
+	url = https://codeberg.org/onion27/onionshot
+	arch = x86_64
+	license = WTFPL
+	makedepends = cargo
+	makedepends = git
+	depends = hyprland
+	depends = wayfreeze
+	depends = grim
+	depends = slurp
+	depends = wl-clipboard
+	depends = libnotify
+	source = onionshot::git+https://codeberg.org/onion27/onionshot.git
+	sha256sums = SKIP
+
+pkgname = onionshot-git
