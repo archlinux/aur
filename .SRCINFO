@@ -1,6 +1,6 @@
 pkgbase = tuistory
 	pkgdesc = Playwright for terminal user interfaces
-	pkgver = 0.1.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/remorses/tuistory
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = tuistory
 	depends = nodejs
 	depends = python
 	provides = tuistory
-	noextract = tuistory-0.1.0.tgz
+	noextract = tuistory-0.2.1.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = tuistory-0.1.0.tgz::https://registry.npmjs.org/tuistory/-/tuistory-0.1.0.tgz
-	b2sums = cb5de745da432de0ae559042f3808dd9070cc668530117b05eb396e5715c029d2282305540ac4b8ee8ce67569722fca1d064a36303f368ae4c493b42d375aaf3
+	source = tuistory-0.2.1.tgz::https://registry.npmjs.org/tuistory/-/tuistory-0.2.1.tgz
+	b2sums = b114647d29bece89e3add6ba6062d2a73d2cc30af0cc1cd00e5247aa11d0517379df5f9234d0cd6bffcd81794fc890d5328a43c7ca294c822cbffda0ae9bef66
 
 pkgname = tuistory
