@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='tencentcloud-cli'
-pkgver=3.1.6.1
+pkgver=3.1.80.1
 pkgrel=1
 pkgdesc='Tencent Cloud API 3.0 Command Line Interface'
 url='https://github.com/TencentCloud/tencentcloud-cli'
@@ -21,7 +21,7 @@ conflicts=('tencentcloud-cli-intl-en')
 source=(
   "${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('a881fbedf92f65ad4e3fb6ef8d821d7ee4351b3bc464906b70f68804b8c203b5')
+sha256sums=('8d25d9188d70ce08551fd09a299ced18fcede9faefb4cb44778de431129e5880')
 
 build() {
   cd "${pkgname}-${pkgver}"
