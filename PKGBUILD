@@ -12,7 +12,7 @@ provides=('recon')
 conflicts=('recon')
 source=("$pkgname::git+https://github.com/RetrowaveHyena/ReCon.git")
 sha256sums=('SKIP')
-
+keywords=('resonite' 'contacts' 'vr' 'chat' 'flutter' 'messaging')
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
