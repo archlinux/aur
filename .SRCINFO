@@ -1,36 +1,36 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = The Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 6.19.12.arch1
+	pkgver = 6.19.13.arch1
 	pkgrel = 1
 	url = https://github.com/archlinux/linux
 	arch = x86_64
 	license = GPL2
-	noextract = linux-6.19.12.arch1-1-x86_64.pkg.tar.zst
-	noextract = linux-headers-6.19.12.arch1-1-x86_64.pkg.tar.zst
-	noextract = linux-docs-6.19.12.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-6.19.13.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-headers-6.19.13.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-docs-6.19.13.arch1-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://archive.archlinux.org/packages/.all/linux-6.19.12.arch1-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-headers-6.19.12.arch1-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-docs-6.19.12.arch1-1-x86_64.pkg.tar.zst
-	sha256sums = 3ff24bf77c56722645181228605081885331ea078bc5732b1c12dfe1ca26f1c3
-	sha256sums = 3395c194b0f33cb97bee00072859952b562425df0a83b5dc461b215ad8c91ccc
-	sha256sums = da52c2d48f87f59a6601dab34c0be24f241e3186e3ff22efc17a09d1313c0c5f
+	source = https://archive.archlinux.org/packages/.all/linux-6.19.13.arch1-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-headers-6.19.13.arch1-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-docs-6.19.13.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = fcf9ab19b827c503a77bd222d9c1b4d0cd5718b894b3042da49f5a330e705d31
+	sha256sums = 8739749d19f0a2db590af2e5a448c14f8a84e725d1cfe65030b6051639dfacfd
+	sha256sums = 820cfa556d46698ec023783f6251a8b0cf0d568aa3dfa03fb3a56ed3dfadb7a2
 
 pkgname = linux-versioned-bin
-	pkgdesc = Metapackage depending on linux6.19.12.arch1-1-bin
-	depends = linux6.19.12.arch1-1-bin
+	pkgdesc = Metapackage depending on linux6.19.13.arch1-1-bin
+	depends = linux6.19.13.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux6.19.12.arch1-1-headers-bin
-	depends = linux6.19.12.arch1-1-headers-bin
+	pkgdesc = Metapackage depending on linux6.19.13.arch1-1-headers-bin
+	depends = linux6.19.13.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux6.19.12.arch1-1-docs-bin
-	depends = linux6.19.12.arch1-1-docs-bin
+	pkgdesc = Metapackage depending on linux6.19.13.arch1-1-docs-bin
+	depends = linux6.19.13.arch1-1-docs-bin
 
-pkgname = linux6.19.12.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 6.19.12-arch1-1
+pkgname = linux6.19.13.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 6.19.13-arch1-1
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -46,8 +46,8 @@ pkgname = linux6.19.12.arch1-1-bin
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux6.19.12.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 6.19.12-arch1-1
+pkgname = linux6.19.13.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 6.19.13-arch1-1
 	depends = binutils
 	depends = glibc
 	depends = libelf
@@ -60,6 +60,6 @@ pkgname = linux6.19.12.arch1-1-headers-bin
 	provides = LINUX-HEADERS
 	conflicts = linux-headers
 
-pkgname = linux6.19.12.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 6.19.12-arch1-1
+pkgname = linux6.19.13.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 6.19.13-arch1-1
 	conflicts = linux-docs
