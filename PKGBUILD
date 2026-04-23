@@ -6,7 +6,7 @@
 # Maintainer: sukanka <su975853527 [AT] gmail [DOT] com>
 
 pkgname=tuxedo-control-center
-pkgver=2.1.21
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="A tool to control performance, energy, fan and comfort settings on TUXEDO laptops. (With system-wide electron) "
 arch=(x86_64)
@@ -17,9 +17,12 @@ depends=(
   # 'tuxedo-drivers-dkms'
   ${_electron}
   python
+  libxcrypt-compat
 )
 makedepends=('npm' 'git'
   'openssh'
+  jq
+  moreutils
 )
 options=('!strip' '!debug')
 install=${pkgname}.install
@@ -29,12 +32,12 @@ source=(
   tuxedo-control-center.install
   tuxedo-control-center.sh
 )
-sha256sums=('8e6e0375526fce38fa78d623935e20444cfbb871ac7ee1f792dd5c331dc6b320'
-            'fef8f708ff4ba19921f167ff9bffd2536cc0c128dfe418a30f7e5e0d04fca6e3'
-            '6c393c72100131320be982b52124cda0a56f1f49b9f45b41ab1efb02ade250b7')
-sha512sums=('13645c53f6074524e24df7d40637b1dad1f8d308bc42d641de0c5ec7fe6f4904da1ae0075cd6055b5330666be2bae739fe1bf0dbdb4d8d4e36cb249016afab3a'
-            'b70d3412f07c72d6de2cf18e75a184741d8f5db7f144c4d8e8c0dde752e197d831fc8f8b6c095c9b6387ff97b36567f9cf5167dbb23ebc392f7b3cc47a78111a'
-            '344dd01d332f1288388502c8436728153daa9db974623cd1ad5c340ef21c28a55e23fc139ec25eee1f422eb97d4793d24b9f89010210979ec7bcfc630a6599d6')
+sha256sums=('16e782694c3d8a85d4808c1d8b3791b1a80009266d20ae841cdd08f45d53e251'
+  'fef8f708ff4ba19921f167ff9bffd2536cc0c128dfe418a30f7e5e0d04fca6e3'
+  '54f6686fe8d5f69a39605de996e659f7ce2852db3a05d7ea769dcc4a0b26b0e0')
+sha512sums=('1cd4d9e3e4647c4f92ade7aba549db9610071e7f55653faff28df0c898447497edf357c4554c9169f8d4796a3651fc2e4bc9ac7654dbedeb89d6f4283bb7e6f5'
+  'b70d3412f07c72d6de2cf18e75a184741d8f5db7f144c4d8e8c0dde752e197d831fc8f8b6c095c9b6387ff97b36567f9cf5167dbb23ebc392f7b3cc47a78111a'
+  '9411bc1b45f1096654b6c415d92f279c82a31d1f84368fc1bed19160e93fc39a6a049af8d9bb3429abc250b7a2d09b6849cbfb106734758a5dbbd170cfd90bcd')
 
 _patch() {
   cd "${srcdir}/${pkgname}-${pkgver}"/src/dist-data
@@ -54,14 +57,14 @@ prepare() {
 
   # keep for future, now we have to build with electron13, but use electron38 at runtime
 
-  # cd "${srcdir}/${pkgname}-${pkgver}"
-  # local electronDist="/usr/lib/${_electron}"
-  # local electronVersion="$(<$electronDist/version)"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  local electronDist="/usr/lib/${_electron}"
+  local electronVersion="$(<$electronDist/version)"
 
-  # jq ".devDependencies.electron = \"$electronVersion\"" package.json |
-  #   jq ".build.electronDist = \"$electronDist\"" |
-  #   jq ".build.electronVersion = \"$electronVersion\"" |
-  #   sponge package.json
+  jq ".devDependencies.electron = \"$electronVersion\"" package.json |
+    jq ".build.electronDist = \"$electronDist\"" |
+    jq ".build.electronVersion = \"$electronVersion\"" |
+    sponge package.json
 
   (
     _patch
@@ -72,9 +75,7 @@ build() {
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   export NODE_OPTIONS=--openssl-legacy-provider
   npm install
-  npm run build
-  cd dist/${pkgname}
-  npm install tslib dbus-next rxjs node-ble xliff
+  npm run pack-prod
 }
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"/src/dist-data
@@ -89,7 +90,8 @@ package() {
   install -Dm644 tccd{,-sleep}.service -t "${pkgdir}/usr/lib/systemd/system"
 
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cp -r dist/${pkgname} "${pkgdir}/usr/lib/${pkgname}"
+  cp -r dist/packages/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}"
+  mv "${pkgdir}/usr/lib/${pkgname}"/dist/${pkgname}/data "${pkgdir}/usr/lib/${pkgname}/"
   install -Dm644 "src/udev/99-webcam.rules" -t "${pkgdir}/usr/lib/udev/rules.d"
 
   install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
