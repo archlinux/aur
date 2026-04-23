@@ -4,14 +4,17 @@ _pkgauthor=cryptaliagy
 _pkgname=tomlq
 _pkgexec=tq
 pkgname=${_pkgname}-bin
+pkgdesc="Tool for getting data from TOML files"
 pkgver=0.2.2
 _pkgvername=${pkgver}
 pkgrel=1
-pkgdesc="Tool for getting data from TOML files"
+
 arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+
 license=('MIT')
 
 provides=("${_pkgexec}")

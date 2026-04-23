@@ -1,0 +1,5 @@
+[tomlq-bin]
+source = "github"
+github = "cryptaliagy/tomlq"
+use_latest_release = true
+prefix = "v"
