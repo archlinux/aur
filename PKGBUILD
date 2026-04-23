@@ -3,7 +3,7 @@
 _pkgbase="zig-waybar-contrib"
 pkgname="${_pkgbase}"
 pkgver=26.04.23
-pkgrel=2
+pkgrel=3
 pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring (Stable binary version)'
 arch=('x86_64')
 url="https://codeberg.org/erffy/$_pkgbase"
