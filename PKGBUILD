@@ -3,7 +3,7 @@
 #   makepkg --printsrcinfo > .SRCINFO
 
 pkgname=pollis
-pkgver=1.0.113
+pkgver=1.0.114
 pkgrel=1
 pkgdesc="End-to-end encrypted messaging"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
   'dbus'
 )
 source=("https://cdn.pollis.com/releases/v${pkgver}/pollis-v${pkgver}-linux.deb")
-sha256sums=('7476b7fedc8bf40109026253288c64796d216d07aa6b15988107c3a63e87455a')
+sha256sums=('fda43fd685a949d89c0e5769e3e5b806c5e21b7b209599bea42ce68382ef1999')
 
 package() {
   # Extract the data archive from the .deb
