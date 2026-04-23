@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=archy-scripts-git
-pkgver=0.0.2.r9.gf46c73c
+pkgver=0.0.2.r15.g7ab9f8a
 pkgrel=1
 epoch=
 _pkgname="archy-scripts"
