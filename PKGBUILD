@@ -2,7 +2,7 @@
 
 pkgname=claude-code-bin
 pkgver=2.1.118
-pkgrel=1
+pkgrel=2
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/anthropics/claude-code"
@@ -35,10 +35,11 @@ sha256sums_aarch64=('b77b22fe93c15409f3c64be67950fe11e5fc17d1cd327891596cb87dd9b
 package() {
 	install -Dm755 "${srcdir}/claude-${pkgver}-${CARCH}" "${pkgdir}/opt/claude-code/bin/claude"
 
-	# Create wrapper script to disable autoupdater
+	# Create wrapper script to disable upstream update paths
 	install -dm755 "${pkgdir}/usr/bin"
 	cat > "${pkgdir}/usr/bin/claude" << 'EOF'
 #!/bin/sh
+export DISABLE_UPDATES=1
 export DISABLE_AUTOUPDATER=1
 exec /opt/claude-code/bin/claude "$@"
 EOF
