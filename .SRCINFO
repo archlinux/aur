@@ -1,16 +1,18 @@
 pkgbase = python-python-iso639
 	pkgdesc = Look-up utilities for ISO 639 language codes and names
-	pkgver = 2026.1.31
-	pkgrel = 2
+	pkgver = 2026.4.20
+	pkgrel = 1
 	url = https://github.com/jacksonllee/iso639
+	changelog = CHANGELOG.md
 	arch = any
 	license = Apache-2.0
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	source = https://github.com/jacksonllee/iso639/archive/refs/tags/v2026.1.31.tar.gz
-	sha256sums = b8bff8df30d221200c95b0a2087214abcac2e45be4aac4359fce6f9b8df7f400
+	source = python-python-iso639-2026.4.20.tar.gz::https://github.com/jacksonllee/iso639/archive/v2026.4.20.tar.gz
+	sha256sums = 90095aebc44a35375ef7c2762b40013fab869e7377e53e1608398dc3ab613269
 
 pkgname = python-python-iso639
-	depends = python
