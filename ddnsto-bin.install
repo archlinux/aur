@@ -6,8 +6,8 @@ DDNSTO 快速使用指南 / Quick Start Guide
 
 1. 配置并启动服务 / Configure and Start Service
 sudo vim /etc/ddnsto/config.yaml
-# 必须修改: userToken routerName 和 webdav.password
-# Must change: userToken routerName and webdav.password
+# 必须修改: userToken 和 webdav.password
+# Must change: userToken and webdav.password
 sudo systemctl enable --now ddnsto
 
 2. 检查服务状态 / Check Service Status
