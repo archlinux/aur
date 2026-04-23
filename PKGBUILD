@@ -1,8 +1,8 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=archy-screenshot-git
 _pkgname=archy-screenshot
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.0.r0.g8d91047
+pkgrel=1
 pkgdesc="Simple script helper to take screenshots with \`lqth\`"
 arch=('any')
 url="https://github.com/archy-linux/archy-screenshot"
