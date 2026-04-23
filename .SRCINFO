@@ -1,0 +1,18 @@
+pkgbase = eh-vial-appimage
+	pkgdesc = Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time, similar to VIA. ErgoHaven edition
+	pkgver = 0.7.5_eh_2026_03_28
+	pkgrel = 1
+	url = https://vial.ergohaven.xyz
+	arch = x86_64
+	license = GPL2
+	depends = fuse2
+	provides = vial=0.7.5_eh_2026_03_28
+	conflicts = vial
+	noextract = Vial-x86_64.AppImage
+	options = !strip
+	source_x86_64 = Vial-x86_64.AppImage::https://github.com/ergohaven/vial-gui/releases/download/0.7.5-eh-2026-03-28/Vial-x86_64.AppImage
+	source_x86_64 = 59-vial.rules
+	sha256sums_x86_64 = 50c9d707d7389a5a838d64b4375ca9f77b92987472e9660e0af1af0bb9589ca4
+	sha256sums_x86_64 = b732cc95f26691f2c8c28a8cad0450559528838b44351abf66d2c96991cd4f11
+
+pkgname = eh-vial-appimage
