@@ -1,0 +1,5 @@
+[leetrs-bin]
+source = "github"
+github = "shadowmkj/leetrs"
+use_latest_release = true
+prefix = "v"
