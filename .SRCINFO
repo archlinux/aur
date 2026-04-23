@@ -8,6 +8,6 @@ pkgbase = goyoke-bin
 	provides = goYoke-dev
 	arch = x86_64
 	source_x86_64 = https://github.com/Bucket-Chemist/goYoke-dev/releases/download/v0.5.2/goYoke_0.5.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = f29f3e572c49ce77264cdbcbb5eebd6239bf24a8b45379ce56ac8c45625fcd6c
+	sha256sums_x86_64 = ac83e3393a509c318f3a4ba133d030d28b731cae5aad6d82d6ae3ed99c8cf00d
 	
 pkgname = goyoke-bin
