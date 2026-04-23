@@ -179,13 +179,13 @@ _custom_kernsuffix="${_custom_pkgbase#linux-}"
 
 pkgbase="$_custom_pkgbase"
 _major=7.0
-_minor=0
+_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
-pkgver=${_major}.${_minor}
-_tagrel=2
+pkgver=7.0.1
+_tagrel=3
 pkgrel=1
-_srcname=cachyos-${_major}.${_minor}-${_tagrel}
+_srcname=cachyos-7.0.1-3
 pkgdesc='Hardware-specific CachyOS release-channel kernel for Acer TMP453-M class hardware'
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_custom_kernsuffix}"
@@ -926,7 +926,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('d835e31dcc6665be43da8484d267e22e33f9f8b59e4f2892ce941705e728318a'
+sha256sums=('fe351aed1e7b6e2c7e31ae5258f4f55a943cd185d9b14b2fa2b779135bd8c682'
             'fa32a9d7b1961b366a59d107006a9728da9d89f06e32d1ef51e44fa6b9a55801'
             '6f45ef083841792e88fbadbfefb0630abd738a131f9782333fbc61f8b6712b4b'
             '71b77f8610d4e7b75663b18a417c7451a38c3bf9f5c9281d4946c9df346bdab2')

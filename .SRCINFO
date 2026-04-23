@@ -1,6 +1,6 @@
 pkgbase = linux-tpm453-release
 	pkgdesc = Hardware-specific CachyOS release-channel kernel for Acer TMP453-M class hardware
-	pkgver = 7.0.0
+	pkgver = 7.0.1
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
@@ -27,11 +27,11 @@ pkgbase = linux-tpm453-release
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.0-2/cachyos-7.0.0-2.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.1-3/cachyos-7.0.1-3.tar.gz
 	source = config
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/misc/dkms-clang.patch
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/sched/0001-bore-cachy.patch
-	sha256sums = d835e31dcc6665be43da8484d267e22e33f9f8b59e4f2892ce941705e728318a
+	sha256sums = fe351aed1e7b6e2c7e31ae5258f4f55a943cd185d9b14b2fa2b779135bd8c682
 	sha256sums = fa32a9d7b1961b366a59d107006a9728da9d89f06e32d1ef51e44fa6b9a55801
 	sha256sums = 6f45ef083841792e88fbadbfefb0630abd738a131f9782333fbc61f8b6712b4b
 	sha256sums = 71b77f8610d4e7b75663b18a417c7451a38c3bf9f5c9281d4946c9df346bdab2
@@ -52,7 +52,7 @@ pkgname = linux-tpm453-release
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
-	provides = linux-cachyos-lto=7.0.0-1
+	provides = linux-cachyos-lto=7.0.1-1
 	replaces = linux-cachyos-lto
 
 pkgname = linux-tpm453-release-headers
@@ -71,5 +71,5 @@ pkgname = linux-tpm453-release-headers
 	depends = llvm
 	depends = lld
 	provides = LINUX-HEADERS
-	provides = linux-cachyos-lto-headers=7.0.0-1
+	provides = linux-cachyos-lto-headers=7.0.1-1
 	replaces = linux-cachyos-lto-headers
