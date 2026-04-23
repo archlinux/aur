@@ -12,6 +12,7 @@ pkgbase = goonget
 	depends = python
 	depends = python-requests
 	depends = chafa
+	depends = mpv
 	source = https://github.com/LewdM3at/GoonGet/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = bff315aaa8a90eebc94068ddf4fec7cefac07dcd1033f52b658076db46dc6831
 
