@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-anbox
 	pkgdesc = Linux Xanmod with ashmem and binder enabled for Anbox - Stable Mainline [MAIN]
-	pkgver = 6.19.13
+	pkgver = 6.19.14
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = linux-xanmod-anbox
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.19.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.19.tar.sign
-	source = patch-6.19.13-xanmod1.xz::https://sourceforge.net/projects/xanmod/files/releases/main/6.19.13-xanmod1/patch-6.19.13-xanmod1.xz/download
+	source = patch-6.19.14-xanmod1.xz::https://sourceforge.net/projects/xanmod/files/releases/main/6.19.14-xanmod1/patch-6.19.14-xanmod1.xz/download
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 303079a8250b8f381f82b03f90463d12ac98d4f6b149b761ea75af1323521357
 	sha256sums = SKIP
-	sha256sums = 1b3a01a2c27d201fce3a8a788d98034cd7eaff347556a4c87dd57f18e77ccc54
+	sha256sums = f1ea0b2fb603b7cb32db73ef58817d54549d13d405b2619ac92ad7e8a67806e7
 	sha256sums = f4acc1760990c54348a029315d1505ccb7c7270cd70a9aeb728bffcced51e767
 
 pkgname = linux-xanmod-anbox
