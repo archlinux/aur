@@ -16,6 +16,7 @@ pkgbase = monocoque-git
 	depends = libxdg-basedir
 	depends = libuv
 	depends = lua
+    depends = procps-ng
 	source = git+https://github.com/spacefreak18/monocoque
 	sha256sums = SKIP
 

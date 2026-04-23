@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/spacefreak18/monocoque"
 license=('GPL3')
 depends=(
-        hidapi
+    hidapi
 	libserialport
 	libxml2
 	argtable
@@ -17,6 +17,7 @@ depends=(
 	libxdg-basedir
 	libuv
 	lua
+    procps-ng
 )
 makedepends=(
   git
