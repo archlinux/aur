@@ -2,13 +2,13 @@
 
 pkgname=cxxshm
 pkgrel=1
-pkgver=2.0.4
+pkgver=2.0.5
 pkgdesc="A C++ library to handle POSIX shared memory"
-url="https://github.com/NikolasK-source/cxxshm"
+url="https://gitlab.com/nikolask-cpp-libs/cxxshm"
 license=('MIT')
 arch=('x86_64' 'aarch64')
 makedepends=('cmake')
-source=("git+https://github.com/NikolasK-source/cxxshm.git#tag=v${pkgver}")
+source=("git+https://gitlab.com/nikolask-cpp-libs/cxxshm.git#tag=v${pkgver}")
 
 sha256sums=('SKIP')
 
