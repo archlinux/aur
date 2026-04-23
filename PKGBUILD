@@ -2,9 +2,9 @@
 
 _pkgname="gpu-screen-recorder-gtk"
 pkgname="$_pkgname-git"
-pkgver=5.7.7.r0.g32b9725
-pkgrel=1
-pkgdesc="Frontend for gpu-screen-recorder, a shadowplay-like screen recorder"
+pkgver=5.7.9.r3.gd3e5d91
+pkgrel=2
+pkgdesc="A GTK UI for GPU Screen Recorder in the style of ShadowPlay"
 url="https://git.dec05eba.com/gpu-screen-recorder-gtk"
 license=('GPL-3.0-only')
 arch=('x86_64')
@@ -44,8 +44,6 @@ check() {
 }
 
 package() {
-  depends+=(
-    'gpu-screen-recorder' # AUR
-  )
+  depends+=('gpu-screen-recorder')
   meson install -C build --destdir "$pkgdir"
 }

@@ -1,7 +1,7 @@
 pkgbase = gpu-screen-recorder-gtk-git
-	pkgdesc = Frontend for gpu-screen-recorder, a shadowplay-like screen recorder
-	pkgver = 5.7.7.r0.g32b9725
-	pkgrel = 1
+	pkgdesc = A GTK UI for GPU Screen Recorder in the style of ShadowPlay
+	pkgver = 5.7.9.r3.gd3e5d91
+	pkgrel = 2
 	url = https://git.dec05eba.com/gpu-screen-recorder-gtk
 	arch = x86_64
 	license = GPL-3.0-only
