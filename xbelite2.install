@@ -1,20 +1,24 @@
 post_install() {
   udevadm control --reload-rules
-  udevadm trigger
-  systemctl daemon-reload
+  udevadm trigger --subsystem-match=misc --action=change || true
   echo "------------------------------------------------------"
-  echo "To start and enable the service, run:"
-  echo "  sudo systemctl enable --now xbelite2d.service"
+  echo "xbelite2 installed."
+  echo "Load the kernel module:"
+  echo "  sudo modprobe xbelite2"
+  echo "Ensure your user is in the 'input' group, e.g.:"
+  echo "  sudo usermod -aG input \$USER   # re-login to apply"
   echo "------------------------------------------------------"
 }
 
 post_upgrade() {
+  udevadm control --reload-rules
+  udevadm trigger --subsystem-match=misc --action=change || true
   echo "-----------------------------------------------------------------"
-  echo "If you have the service running, don't forget to restart it:"
-  echo "  sudo systemctl restart xbelite2d.service"
+  echo "Reload the kernel module to pick up changes:"
+  echo "  sudo rmmod xbelite2 && sudo modprobe xbelite2"
   echo "-----------------------------------------------------------------"
 }
 
 pre_remove() {
-  systemctl stop xbelite2d.service 2>/dev/null
+  rmmod xbelite2 2>/dev/null || true
 }
