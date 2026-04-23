@@ -2,8 +2,8 @@
 pkgname=musicxx-bin
 _pkgname=musicxx
 pkgver=0.85.5
-pkgrel=2.0
-providers=('musicxx')
+pkgrel=2.1
+provides=('musicxx')
 conflicts=('musicxx')
 pkgdesc="Audio and video player"
 arch=(x86_64)

@@ -1,7 +1,7 @@
 pkgbase = musicxx-bin
 	pkgdesc = Audio and video player
 	pkgver = 0.85.5
-	pkgrel = 2.0
+	pkgrel = 2.1
 	url = https://github.com/coolight7/musicxx
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,8 @@ pkgbase = musicxx-bin
 	depends = gtk3
 	depends = util-linux-libs
 	depends = xz
+	provides = musicxx
+	conflicts = musicxx
 	options = !strip
 	source = musicxx-0.85.5.appimage::https://github.com/beanc904/musicxx-arch/releases/download/v0.85.5/musicxx-0.85.5.appimage
 	sha256sums = e54f92f9a8a4069677729054dca80c6c1444763340c3c6951da678e036c52a16
