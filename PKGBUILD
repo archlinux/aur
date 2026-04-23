@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64')
 _uri='github.com/mehdy'
 url="https://${_uri}/${pkgbase}"
 license=('GPL')
-depends=('keepalived')
+depends=('keepalived>=2.2.7-2')
 makedepends=('go')
 source=("${pkgbase}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgbase}/tar.gz/refs/tags/v${pkgver}"
 	"${pkgname}"
