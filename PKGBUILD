@@ -4,7 +4,7 @@
 pkgbase='keepalived-exporter'
 pkgname="prometheus-${pkgbase}"
 pkgver='1.7.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Prometheus exporter for Keepalived'
 arch=('x86_64' 'aarch64')
 _uri='github.com/mehdy'
@@ -18,7 +18,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgbase}/tar.gz
 	"${pkgname}.sysusers")
 sha256sums=('e17022c7e1e63d145e473a17702ee1023c574db06bb460f9d6e39017c3c74bb4'
             '3a1d17478bc66f0fc76ddd83ffd4d7ff116631fec915ea444b508789e2c5e89f'
-            '93e24524da013e81562b6c79fd323a41c2796409e47ca6dd04f8e16bfc92f8c7'
+            'e617ee53931ce5d3556c8b64e6037d96192ba0a424f508e2a91055b54e23af88'
             'd52f807f4d965b4f8a22238013a3476a1accf941e962b9a0866e58e0ec4676f4')
 backup=("etc/conf.d/${pkgname}")
 
@@ -50,7 +50,6 @@ build() {
     -X github.com/prometheus/common/version.BuildDate=$(date -u '+%Y%m%d-%H:%M:%S' --date=@${SOURCE_DATE_EPOCH})" \
     "./cmd/${pkgbase}"
 }
-
 
 check() {
   cd "${GOPATH}/src/${_uri}/${pkgbase}"
