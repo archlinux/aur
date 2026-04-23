@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=smolvm
-pkgver=0.5.19
-pkgrel=2
+pkgver=0.5.20
+pkgrel=1
 pkgdesc='Tool to build & run portable, lightweight, self-contained virtual machines.'
 arch=('x86_64' 'aarch64' 'riscv64')
 url='https://github.com/smol-machines/smolvm'
@@ -13,13 +13,13 @@ provides=('smolvm')
 conflicts=('smolvm-git' 'smolvm-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     'Cargo.lock')
-sha256sums=('8390765e2cae5379892315472705cbf3a9bcafe71aef47b5e91b4095001fcc4b'
-            'd9f26bb225bd5a0e38a217810c48bba8f4df4f5b7a997469b1c03db4f33a01f1')
+sha256sums=('ceba9666a1a3fcd3bc909423ef1bd550f4b9d0f12d07b4f166e53357888f2e81'
+            '14e0cd94bea5be9b8236951fcb6205660df0875518174c0520a18fd40a16ac89')
 
 prepare() {
     cd "$pkgname-$pkgver"
     cp ../Cargo.lock .
-    cargo fetch --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
