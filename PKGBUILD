@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=smolvm-git
 _pkgname=smolvm
-pkgver=0.5.19.r19.gf83a1bb
+pkgver=0.5.20.r0.g27e4604
 pkgrel=1
 pkgdesc='Tool to build & run portable, lightweight, self-contained virtual machines.'
 arch=('x86_64' 'aarch64' 'riscv64')

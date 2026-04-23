@@ -1,6 +1,6 @@
 pkgbase = smolvm-git
 	pkgdesc = Tool to build & run portable, lightweight, self-contained virtual machines.
-	pkgver = 0.5.19.r19.gf83a1bb
+	pkgver = 0.5.20.r0.g27e4604
 	pkgrel = 1
 	url = https://github.com/smol-machines/smolvm
 	arch = x86_64
