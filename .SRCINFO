@@ -1,6 +1,6 @@
 pkgbase = bitwarden-cli-bin
 	pkgdesc = The command line vault
-	pkgver = 2026.3.0
+	pkgver = 2026.4.1
 	pkgrel = 1
 	url = https://bitwarden.com
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = bitwarden-cli-bin
 	provides = bitwarden-cli
 	conflicts = bitwarden-cli
 	options = !strip
-	source_x86_64 = https://github.com/bitwarden/clients/releases/download/cli-v2026.3.0/bw-linux-2026.3.0.zip
-	sha256sums_x86_64 = 0bdf85cfa1ad1e3c4f6cd2ae23d0de1af136939405f1f395b6836b7f43479ed2
-	source_aarch64 = https://github.com/bitwarden/clients/releases/download/cli-v2026.3.0/bw-linux-arm64-2026.3.0.zip
-	sha256sums_aarch64 = 5826f3c4f0c5ff16151c9dccf0a8b245224b943a86c51f1125070bcdcaec1436
+	source_x86_64 = https://github.com/bitwarden/clients/releases/download/cli-v2026.4.1/bw-linux-2026.4.1.zip
+	sha256sums_x86_64 = 2172dc63f821fcbd4b4ce65e7106f1ebab26b6cb16c9c8a5b28230dcc6f8a774
+	source_aarch64 = https://github.com/bitwarden/clients/releases/download/cli-v2026.4.1/bw-linux-arm64-2026.4.1.zip
+	sha256sums_aarch64 = c405867e5e2df08f82e1893561094fb7e5ef7caf957ba5ded9fbe870b2ef4380
 
 pkgname = bitwarden-cli-bin
