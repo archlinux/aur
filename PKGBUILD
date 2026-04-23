@@ -1,25 +1,31 @@
 # Maintainer: Ben Song <bensongsyz@gmail.com>
 # Contributer: Tim Liou <wheatdoge at gmail dot com>
-pkgname=i3-workspace-groups
-pkgver=0.4.7
-pkgrel=2
-pkgdesc='Tools for managing i3wm workspaces in groups.'
-url='https://github.com/infokiller/i3-workspace-groups'
+_pkgname=i3-workspace-groups
+pkgname="$_pkgname"-enhanced
+pkgver=0.4.7.1
+pkgrel=1
+pkgdesc='Tools for managing i3wm workspaces in groups(with icon in sway supported).'
+url='https://github.com/BenSYZ/i3-workspace-groups'
 arch=('any')
 license=('MIT')
-source=("git+https://github.com/infokiller/i3-workspace-groups#tag=$pkgver")
+source=("git+https://github.com/BenSYZ/i3-workspace-groups#tag=$pkgver")
 sha256sums=('SKIP')
-depends=('python' 'i3-wm' 'python-i3ipc' 'python-toml')
-makedepends=(python-build python-installer python-wheel git python-setuptools python-setuptools-scm)
-optdepends=('rofi: provide for a few utility scripts')
-install="${pkgname}.install"
+depends=('python' 'python-i3ipc' 'python-toml')
+makedepends=(python-build python-installer python-wheel python-setuptools python-setuptools-scm)
+provides=(i3-workspace-groups)
+conflicts=(i3-workspace-groups)
+optdepends=(
+    'rofi: provide for a few utility scripts'
+    'i3-wm'
+    'sway'
+    )
 
 build() {
-    cd "$pkgname"
+    cd "$_pkgname"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }

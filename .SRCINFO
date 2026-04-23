@@ -1,23 +1,24 @@
-pkgbase = i3-workspace-groups
-	pkgdesc = Tools for managing i3wm workspaces in groups.
-	pkgver = 0.4.7
-	pkgrel = 2
-	url = https://github.com/infokiller/i3-workspace-groups
-	install = i3-workspace-groups.install
+pkgbase = i3-workspace-groups-enhanced
+	pkgdesc = Tools for managing i3wm workspaces in groups(with icon in sway supported).
+	pkgver = 0.4.7.1
+	pkgrel = 1
+	url = https://github.com/BenSYZ/i3-workspace-groups
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	depends = python
-	depends = i3-wm
 	depends = python-i3ipc
 	depends = python-toml
 	optdepends = rofi: provide for a few utility scripts
-	source = git+https://github.com/infokiller/i3-workspace-groups#tag=0.4.7
+	optdepends = i3-wm
+	optdepends = sway
+	provides = i3-workspace-groups
+	conflicts = i3-workspace-groups
+	source = git+https://github.com/BenSYZ/i3-workspace-groups#tag=0.4.7.1
 	sha256sums = SKIP
 
-pkgname = i3-workspace-groups
+pkgname = i3-workspace-groups-enhanced
