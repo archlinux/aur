@@ -1,6 +1,6 @@
 pkgbase = claude-code-stable-bin
 	pkgdesc = Claude Code terminal-based AI coding assistant (stable binary release)
-	pkgver = 2.1.104
+	pkgver = 2.1.108
 	pkgrel = 1
 	url = https://github.com/anthropics/claude-code
 	install = claude-code-stable-bin.install
@@ -21,10 +21,10 @@ pkgbase = claude-code-stable-bin
 	conflicts = claude-code-latest-bin
 	options = !strip
 	source = claude-wrapper
-	source = LICENSE.md::https://raw.githubusercontent.com/anthropics/claude-code/v2.1.104/LICENSE.md
+	source = LICENSE.md::https://raw.githubusercontent.com/anthropics/claude-code/v2.1.108/LICENSE.md
 	sha256sums = 91374907d431d091be80078090fb30dfb6e341b68f6dc73b74a4d9ffbf93a354
 	sha256sums = 728158fd1037143fad6907e8fa34804177e598b7326519503fe83cafdef849e6
-	source_x86_64 = claude-code-stable-bin-2.1.104-x86_64::https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.104/linux-x64/claude
-	sha256sums_x86_64 = f5fe84d4b8a5a322b83a8ae63ac117adb143d2a9a0bfd73a201a5201d6423869
+	source_x86_64 = claude-code-stable-bin-2.1.108-x86_64::https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.108/linux-x64/claude
+	sha256sums_x86_64 = 1f641676eb086ceafd76a5f51ffb260b948fa1f6d77991d8cd6e480267dfff37
 
 pkgname = claude-code-stable-bin
