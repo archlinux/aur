@@ -1,0 +1,19 @@
+pkgbase = osu-lazer-appimage
+	pkgdesc = A free-to-win rhythm game. Rhythm is just a *click* away!
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = fuse
+	depends = bash
+	options = !strip
+	source = https://github.com/ppy/osu/releases/download/2026.423.0-lazer/osu.AppImage
+	source = http://162.19.230.104:2069/windux-builds/Osu-Lazer/osu-lazer
+	source = http://162.19.230.104:2069/windux-builds/Osu-Lazer/osu.desktop
+	source = https://raw.githubusercontent.com/ppy/osu/refs/heads/master/assets/lazer.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = osu-lazer-appimage
