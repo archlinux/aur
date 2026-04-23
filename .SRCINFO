@@ -1,16 +1,16 @@
 pkgbase = servicebus-browser-bin
 	pkgdesc = A cross platform tool to manage your Azure Service Bus instances.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.4.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/mligtenberg/ServicebusBrowser
 	arch = x86_64
 	license = MIT
 	depends = electron40
-	provides = servicebus-browser=1.4.0
+	provides = servicebus-browser=2.0.0
 	conflicts = servicebus-browser
-	source = servicebus-browser-1.4.0-x86_64.AppImage::https://github.com/mligtenberg/ServicebusBrowser/releases/download/1.4.0/servicebus-browser-linux.AppImage
+	source = servicebus-browser-2.0.0-x86_64.AppImage::https://github.com/mligtenberg/ServicebusBrowser/releases/download/2.0.0/servicebus-browser-linux.AppImage
 	source = servicebus-browser.sh
-	sha256sums = 8e9866dda93b737f4cd6af71873533f4fbe856a98767222013a6bfe9a39c521d
+	sha256sums = 6d7af19a66e01aa15280139325472b1edd8963e2c3235a497d732d5da31d3625
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = servicebus-browser-bin
