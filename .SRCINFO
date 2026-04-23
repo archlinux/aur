@@ -9,16 +9,21 @@ pkgbase = python-pysim-git
 	makedepends = git
 	depends = python
 	depends = python-bidict
-	depends = python-cmd2>=1.3.0
+	depends = python-cmd2>=2.6.2
 	depends = python-colorlog
-	depends = python-construct>=2.9
+	depends = python-construct>=2.10.70
+	depends = python-cryptography
 	depends = python-gsm0338
 	depends = python-jsonpath-ng
+	depends = python-pycryptodome
+	depends = python-pyosmocom
 	depends = python-pyscard
 	depends = python-pyserial
 	depends = python-pytlv
 	depends = python-termcolor
-	depends = python-yaml>=5.1
+	depends = python-yaml>=5.4
+	optdepends = python-smpplib: for pySim-smpp2sim.py
+	optdepends = python-pyshark: for pySim-trace.py
 	provides = python-pysim
 	source = git+https://git.osmocom.org/pysim
 	sha256sums = SKIP

@@ -12,16 +12,23 @@ url='https://osmocom.org/projects/pysim/wiki'
 license=('GPL-2.0-or-later')
 depends=('python'
          'python-bidict'
-         'python-cmd2>=1.3.0'
+         'python-cmd2>=2.6.2'
          'python-colorlog'
-         'python-construct>=2.9'
+         'python-construct>=2.10.70'
+         'python-cryptography'
          'python-gsm0338'
          'python-jsonpath-ng'
+         'python-pycryptodome'
+         'python-pyosmocom'
          'python-pyscard'
          'python-pyserial'
          'python-pytlv'
          'python-termcolor'
-         'python-yaml>=5.1')
+         'python-yaml>=5.4')
+# XXX osmo-smdpp.py (not installed) needs 'https://github.com/osmocom/asn1tools'
+# XXX pySim-smpp2sim.py needs 'smpp.pdu', and 'smpp.twisted'
+optdepends=('python-smpplib: for pySim-smpp2sim.py'
+            'python-pyshark: for pySim-trace.py')
 makedepends=('python-setuptools' 'git')
 provides=('python-pysim')
 source=('git+https://git.osmocom.org/pysim')
