@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trufos-bin
 _pkgname=Trufos
-pkgver=0.6.0
+pkgver=0.7.0
 _electronversion=41
 pkgrel=1
 pkgdesc="A modern, open source REST client app.(Prebuilt version.Use system-wide electron)"
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/EXXETA/trufos/v${pkgver}/images/logo-512.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f1e35efc38091cc5ec951a65548debcd22c9d8fd93485b20fd2606177c6f0ce9'
+sha256sums=('09c72ccc5c50da2160b17801b61809df9644e00a0aeeb5c4d1f8a2bfa5e9f8a0'
             'df7d9be0dcc412122eecd47fbc0e083a45dfda3953c97c5b22fe7a737258cc70'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -51,14 +51,8 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/${_pkgname}-linux-x64/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
 	find "${srcdir}/${_pkgname}-linux-x64/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
-    if find "${srcdir}/${_pkgname}-linux-x64/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/${_pkgname}-linux-x64/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
-            fi
-        done
-    fi
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
