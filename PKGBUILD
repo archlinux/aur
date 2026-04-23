@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=materialious
 _app_id=us.materialio.Materialious
-pkgver=1.16.24
+pkgver=1.16.25
 pkgrel=1
 _nodeversion=24
 _electronversion=41
@@ -17,7 +17,7 @@ makedepends=(
 )
 source=("Materialious-$pkgver.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('1eea12c64f3a5e81111669c1e03cfd336f98d9173360577fd57f6be847d4b801'
+sha256sums=('956619ab368d26a6ef6c16a7cf31382ecf50480c008ab9b4c4d06fda79babf1d'
             'ae23af6865ab1638d46df5158fa09d41357f57068f1676af86e1a0e6e00459ed')
 
 _ensure_local_nvm() {
@@ -36,7 +36,6 @@ prepare() {
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
-  npm install
 
   # Set desktop file Exec
   desktop-file-edit --set-key=Exec --set-value="$pkgname" "electron/$pkgname.desktop"
@@ -52,6 +51,7 @@ build() {
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
    _ensure_local_nvm
+  npm ci
   npm run build
   npm prune --omit=dev
   npx cap telemetry off
@@ -59,7 +59,7 @@ build() {
 
   cd electron
   python patch_capacitor_plugin.py
-  npm install
+  npm ci
   npm run build
   npx electron-builder build --linux dir -c ./electron-builder.config.json \
     -c.electronDist=$electronDist -c.electronVersion=$electronVer
