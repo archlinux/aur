@@ -6,9 +6,9 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A modern, intuitive, terminal text editor. Single file. No dependencies. No config."
 
-pkgver=2026.04.22
+pkgver=2026.04.23
 pkgrel=1
-_gitversion=30851f0
+_gitversion=a96fbc8
 
 arch=('any')
 
@@ -33,7 +33,7 @@ source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 		"CHANGELOG-${pkgver}.md::${_ghurlraw}/docs/help/changelog.md"
 		"${_appname}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}")
 sha256sums=('9f3273e5e01858ed10ab7a253cbd6b1abd7259bd9b4b3fd1dfafc3bf902e89c3'
-            'f97b85e2f019a4ae8bc16adb8eceab480b2da390dae9932c133486766a55ebf0'
+            'bbc37a4dfe625a3f297eaba9c7ce0faf9cf9a17cf1527689c2d1d4d8b6d088c8'
             'ad91b2ec97463e826d9e76c3b1664b2f076fc0fc6e4c97866e43e48dc3a4ca05'
             '39ac24c49ca977a9db0a667cb6af1c2e76822215384feb880b4b2afe786727aa'
             '757e6fa391078cd3ab8b522b14021740e4a03f065173ad2fb7ece812fb0075b8'
@@ -41,7 +41,7 @@ sha256sums=('9f3273e5e01858ed10ab7a253cbd6b1abd7259bd9b4b3fd1dfafc3bf902e89c3'
             '2c1d40500aec7391a4a692bdfb121b5bedbac96789387cac34519a530fe1c33f'
             'b69a054e50829ddbc1f1d7aaa8aa6d3cfac9eb52c2ac85463e488bc30dc9bc46'
             '240140a69c048fdbcd6824e7969b395817bb65713c40a659975abf8bd55c8af7'
-            'a2c61d53cd9b72f3470e8eda4244055c3d430047dae0cf7dc8cc0336096e6eb4')
+            '722f93c9a193e61222c0c981aa9dc654e7834ddfbf28469b53f2819f0fff4b67')
 
 
 package() {
