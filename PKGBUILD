@@ -1,11 +1,11 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=plotjuggler-git
-pkgver=3.16.0.r92.g8704e452
+pkgver=3.16.0.r99.gbca8ea58
 pkgrel=1
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
-url="https://github.com/facontidavide/PlotJuggler"
+url="https://github.com/PlotJuggler/PlotJuggler"
 license=('MPL-2.0')
 depends=(
     'arrow'
@@ -31,7 +31,7 @@ makedepends=(
 provides=('plotjuggler')
 conflicts=('plotjuggler')
 source=(
-    'git+https://github.com/facontidavide/PlotJuggler.git'
+    'git+https://github.com/PlotJuggler/PlotJuggler.git'
 )
 sha256sums=(
     'SKIP'
