@@ -1,6 +1,6 @@
 pkgbase = hydra-ensemble-bin
 	pkgdesc = Cross-platform multi-session terminal for Claude Code
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://hydra-ensemble.xyz
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = hydra-ensemble-bin
 	optdepends = github-cli: PR Inspector feature
 	provides = hydra-ensemble
 	conflicts = hydra-ensemble
-	noextract = hydra-ensemble-0.1.3.AppImage
+	noextract = hydra-ensemble-0.2.0.AppImage
 	options = !strip
-	source = hydra-ensemble-0.1.3.AppImage::https://github.com/javabetatester/hydra-ensemble/releases/download/v0.1.3/Hydra.Ensemble-0.1.3.AppImage
+	source = hydra-ensemble-0.2.0.AppImage::https://github.com/javabetatester/hydra-ensemble/releases/download/v0.2.0/Hydra.Ensemble-0.2.0.AppImage
 	source = hydra-ensemble.desktop
-	source = hydra-ensemble.png::https://raw.githubusercontent.com/javabetatester/hydra-ensemble/v0.1.3/resources/icon.png
-	sha256sums = 25403b3bd242d7e243443f395e19a99ac80489343f09090f5a23a4a0991dbff5
+	source = hydra-ensemble.png::https://raw.githubusercontent.com/javabetatester/hydra-ensemble/v0.2.0/resources/icon.png
+	sha256sums = 8d3d7092407c127346056c001a548d07ee25e32fe25a313471e08349fe4d675e
 	sha256sums = SKIP
 	sha256sums = SKIP
 
