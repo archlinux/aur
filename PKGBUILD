@@ -4,7 +4,7 @@
 pkgname=dae
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
+pkgdesc="A high-performance transparent proxy solution based on eBPF"
 arch=('x86_64' 'aarch64')
 url="https://github.com/daeuniverse/${pkgname}"
 license=('AGPL-3.0-or-later')
