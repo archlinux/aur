@@ -9,7 +9,7 @@ license=('MIT')
 depends=('systemd')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3e014830737c861eb4b275a4dced077eaadab715880ee4b54bec62a6d0c367be')
+sha256sums=('4e047aadac1863c90165f04beba993e4b392a96a3da0c6fb77f7e5990be931a2')
 
 prepare() {
     cd "$pkgname-$pkgver"
