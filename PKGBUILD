@@ -1,4 +1,4 @@
-# Maintainer: Nicholas Bester <nick@odinside.tech>
+# Maintainer: Nicholas Bester <1872093+nicholasbester@users.noreply.github.com>
 pkgname=clickup-cli-bin
 _pkgname=clickup-cli
 pkgver=0.8.2
