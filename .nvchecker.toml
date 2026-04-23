@@ -1,0 +1,5 @@
+[httpget-bin]
+source = "github"
+github = "cryptaliagy/httpget"
+use_latest_release = true
+prefix = "v"

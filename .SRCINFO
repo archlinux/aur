@@ -1,0 +1,19 @@
+pkgbase = httpget-bin
+	pkgdesc = A ridiculously simple and small http get client to use for health checks
+	pkgver = 0.1.23
+	pkgrel = 1
+	url = https://github.com/cryptaliagy/httpget
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = httpget
+	conflicts = httpget
+	conflicts = httpget-git
+	source = README-0.1.23.md::https://raw.githubusercontent.com/cryptaliagy/httpget/0.1.23/README.md
+	sha256sums = 27484b69ee5b4ae12e79115afb21982a4a3a864b33b8be1618edfeee931309ce
+	source_x86_64 = httpget-x86_64-0.1.23::https://github.com/cryptaliagy/httpget/releases/download/0.1.23/httpget-tls.x86_64
+	sha256sums_x86_64 = 15b5c467d96564684312f7534d1a97dfb228768122882dfbd578e46641151c23
+	source_aarch64 = httpget-aarch64-0.1.23::https://github.com/cryptaliagy/httpget/releases/download/0.1.23/httpget-tls.aarch64
+	sha256sums_aarch64 = 82a452a75a578018c3f2c834332e63a169b09694334016366fa022d927d93698
+
+pkgname = httpget-bin
