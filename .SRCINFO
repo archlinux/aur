@@ -1,0 +1,14 @@
+pkgbase = qtop
+	pkgdesc = A modern, responsive TUI system monitor written in Go
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/QurieGLord/QTop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = qtop-1.0.0.tar.gz::https://github.com/QurieGLord/QTop/archive/master.tar.gz
+	sha256sums = fdc3384622e1e61278e1a527afd9d571871303581df4386d9049905386e703e7
+
+pkgname = qtop
