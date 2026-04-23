@@ -1,7 +1,7 @@
 # Maintainer: flossbud <flossbud27@gmail.com>
 pkgname=toontown-multitool
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiboxing input control for Toontown Rewritten and Corporate Clash"
 arch=('any')
 url="https://github.com/flossbud/ToonTown-MultiTool"
@@ -41,7 +41,16 @@ EOF
     ln -s "${pkgname}" "${pkgdir}/usr/bin/ttmt"
 
     # Install desktop entry
-    install -Dm644 toontown-multitool.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    cat > "${pkgname}.desktop" << 'DESKTOP'
+[Desktop Entry]
+Name=ToonTown MultiTool
+Comment=Multiboxing input control for Toontown
+Exec=toontown-multitool
+Icon=toontown-multitool
+Type=Application
+Categories=Game;
+DESKTOP
+    install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     # Install icon
     install -Dm644 AppDir/ToonTownMultiTool.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"

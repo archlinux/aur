@@ -1,7 +1,7 @@
 pkgbase = toontown-multitool
 	pkgdesc = Multiboxing input control for Toontown Rewritten and Corporate Clash
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flossbud/ToonTown-MultiTool
 	arch = any
 	license = MIT
