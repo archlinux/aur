@@ -1,14 +1,27 @@
 #!/bin/sh
 
 post_install() {
+  DEFAULT_JSON_FILE="/usr/share/aur-check-rebuild/settings-default.json"
+  JSON_FILE="/usr/share/aur-check-rebuild/settings.json"
+
+  if [ ! -f "$JSON_FILE" ]; then
+    echo "Creating default settings file"
+    cp "$DEFAULT_JSON_FILE" "$JSON_FILE"
+    echo ""
+  fi
+
+  LOG_PATH=$(jq -r '.log.path' "$JSON_FILE")
+
+  pip install --root-user-action ignore --break-system-packages pyalpm
+
   echo ""
   echo "This hook will look for AUR packages that requires rebuild to keep working due to ABI changes in shared libraries."
   echo ""
   echo "You can change the behaviour editing the following file"
-  echo "    /usr/share/aur-check-rebuild/settings.json"
+  echo "    $JSON_FILE"
   echo ""
   echo "Logs can be found here"
-  echo "    /var/log/aur-check-rebuild.log"
+  echo "    $LOG_PATH"
   echo ""
 }
 post_upgrade() {
