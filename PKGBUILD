@@ -8,7 +8,7 @@ declare -Ag _arch=(
 _Name="YoutubeDownloader"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
-pkgver=1.16.3
+pkgver=1.16.4
 pkgrel=1
 pkgdesc="Downloads videos and playlists from YouTube"
 arch=(
@@ -54,12 +54,12 @@ noextract+=(
   \"\${source_${_carch}[@]%%::*}\"
 )"
 done
-sha256sums=('90eeec88473dc5d9609473c82edfde0bf5aedece6669c37a3ad30cc1a2b0597f'
+sha256sums=('25b03493f9ca784164c7548bf0721a0957d8ad9d75d35e04cb90d85af0d3f2e6'
             '06a2eca61c197a7922ba1c3ac8f3e4bef1e1e9012e4a8690a7ef09cdcee70a3e'
             'e837359283bb6d1298fb7794a59ca2cc0e221c8da988905133996f719ccb32fa'
             'be88ad49e24853d8eb4fbc025d5df985b3cb1d8694f903600c16e5ef7c5e267d')
-sha256sums_aarch64=('0b4124d9e3a0c133b4f1e3b1aab824f93ee63c958d2fe729c6ccc51baadf1f98')
-sha256sums_x86_64=('c4cb71d6998464a2d035900dbc17fd05d092f094b314d2d79ebf554764e2b7c0')
+sha256sums_aarch64=('c45ccce5dbf106b60a9d0db93eacb5ec411f1d6aca7890bf81481ef27e1b447b')
+sha256sums_x86_64=('54fef775b723772a0433341fbfe65d14b0e0c3341404a5d9973b94cecf1b9a1a')
 
 build() {
   cd "${srcdir}"
