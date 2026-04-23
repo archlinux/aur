@@ -1,5 +1,5 @@
 pkgbase = libspessasynth-git
-	pkgdesc = A powerful SoundFont and DLS MIDI synthesizer
+	pkgdesc = A powerful SoundFont and DLS MIDI synthesizer (Git version)
 	pkgver = r227.b593cae
 	pkgrel = 1
 	url = https://github.com/kode54/spessasynth_core_c
