@@ -1,8 +1,8 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=archy-slstatus-git
 _pkgname=archy-slstatus
-pkgver=1.0.0.r1.g55b9d57
-pkgrel=3
+pkgver=1.0.1.r4.g27b258b
+pkgrel=1
 pkgdesc="A suckless status monitor for dwm"
 url="https://github.com/archy-linux/$_pkgname"
 arch=('i686' 'x86_64')
