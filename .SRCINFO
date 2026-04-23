@@ -6,7 +6,10 @@ pkgbase = openssl-aegis
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = perl
+	depends = brotli
 	depends = glibc
+	depends = zlib
+	depends = zstd
 	optdepends = ca-certificates
 	optdepends = perl
 	provides = openssl=3.6.2
