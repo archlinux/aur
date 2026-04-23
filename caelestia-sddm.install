@@ -1,0 +1,113 @@
+_detect_user() {
+  if [ -n "${SUDO_USER:-}" ]; then
+    echo "$SUDO_USER"
+    return
+  fi
+
+  local session
+  session=$(loginctl list-sessions --no-legend 2>/dev/null | grep "active" | head -1 | awk '{print $1}')
+  if [ -n "$session" ]; then
+    local user
+    user=$(loginctl show-session "$session" -p User 2>/dev/null | cut -d= -f2)
+    if [ -n "$user" ]; then
+      echo "$user"
+      return
+    fi
+  fi
+
+  awk -F: '$3 >= 1000 && $3 < 65534 && $1 != "nobody" {print $1; exit}' /etc/passwd
+}
+
+_cleanup_all() {
+  local real_user real_home
+
+  real_user=$(_detect_user)
+  if [ -n "$real_user" ]; then
+    real_home=$(getent passwd "$real_user" | cut -d: -f6)
+
+    rm -f "$real_home/.config/caelestia/templates/sddm-theme.conf"
+    if [ -d "$real_home/.config/caelestia/templates" ] && [ -z "$(ls -A "$real_home/.config/caelestia/templates")" ]; then
+      rmdir "$real_home/.config/caelestia/templates"
+    fi
+
+    rm -rf "$real_home/.cache/sddm-greeter-qt6"
+  fi
+
+  rm -f /etc/sddm.conf.d/caelestia.conf
+  if [ -d /etc/sddm.conf.d ] && [ -z "$(ls -A /etc/sddm.conf.d)" ]; then
+    rmdir /etc/sddm.conf.d
+  fi
+
+  if systemctl is-active --quiet caelestia-sync.service 2>/dev/null; then
+    systemctl stop caelestia-sync.service
+  fi
+  if systemctl is-enabled --quiet caelestia-sync.service 2>/dev/null; then
+    systemctl disable caelestia-sync.service
+  fi
+  if [ -f /etc/systemd/system/caelestia-sync.service ]; then
+    rm -f /etc/systemd/system/caelestia-sync.service
+    systemctl daemon-reload
+  fi
+
+  rm -rf /usr/share/sddm/themes/caelestia
+}
+
+pre_remove() {
+  _cleanup_all
+}
+
+pre_install() {
+  _cleanup_all
+}
+
+post_install() {
+  local theme_dir="/usr/share/sddm/themes/caelestia"
+
+  local real_user
+  real_user=$(_detect_user)
+
+  if [ -z "$real_user" ]; then
+    echo "==> WARNING: Could not detect user. Set up manually:"
+    echo "==>   sudo /usr/share/sddm/themes/caelestia/scripts/sync.sh"
+    return
+  fi
+
+  local real_home
+  real_home=$(getent passwd "$real_user" | cut -d: -f6)
+
+  mkdir -p "$real_home/.config/caelestia/templates"
+  if [ -f "$theme_dir/theme.conf.template" ]; then
+    cp "$theme_dir/theme.conf.template" \
+       "$real_home/.config/caelestia/templates/sddm-theme.conf"
+    chown -R "$real_user:$real_user" "$real_home/.config/caelestia"
+    echo "==> Template copied to $real_home/.config/caelestia/templates/sddm-theme.conf"
+  fi
+
+  echo "==> Running initial sync..."
+  SUDO_USER="$real_user" "$theme_dir/scripts/sync.sh"
+  echo "==> Initial sync complete"
+
+  echo "==> For automatic sync on wallpaper change, see:"
+  echo "==> https://github.com/ItsABigIgloo/caelestia-sddm/blob/main/POSTHOOK.md"
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+post_remove() {
+  local real_user
+  real_user=$(_detect_user)
+  if [ -n "$real_user" ]; then
+    local real_home
+    real_home=$(getent passwd "$real_user" | cut -d: -f6)
+    rm -f "$real_home/.config/caelestia/templates/sddm-theme.conf"
+    if [ -d "$real_home/.config/caelestia/templates" ] && [ -z "$(ls -A "$real_home/.config/caelestia/templates")" ]; then
+      rmdir "$real_home/.config/caelestia/templates"
+    fi
+    rm -rf "$real_home/.cache/sddm-greeter-qt6"
+  fi
+
+  echo "==> Caelestia SDDM Theme fully removed."
+  echo "==> Update SDDM theme in /etc/sddm.conf or /etc/sddm.conf.d/"
+}
