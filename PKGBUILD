@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ueli
 _pkgname=Ueli
-pkgver=9.27.1
-_electronversion=38
+pkgver=9.28.0
+_electronversion=41
 _nodeversion=22
 pkgrel=1
 pkgdesc="Cross-Platform Keystroke Launcher.(Use system-wide electron)"
@@ -21,12 +21,8 @@ makedepends=(
     'git'
     'jq'
 )
-source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
-    "${pkgname}.sh"
-)
-sha256sums=('6b5a89031f3c87961fac4cee9a7250b52fd56b3f51f75e87c31d7e916e998bfb'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+source=("${pkgname}.sh")
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -39,6 +35,14 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
+    cd "${srcdir}"
+    if [[ ! -d "${srcdir}/${pkgname}-${pkgver}" ]]; then
+        git clone \
+            --depth 1 \
+            --branch "v${pkgver}" \
+            "${_ghurl}" \
+            "${pkgname}-${pkgver}"
+    fi
     cd "${srcdir}/${pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
@@ -84,14 +88,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-	find "${srcdir}/${pkgname}-${pkgver}/release/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" {} +
-    if find "${srcdir}/${pkgname}-${pkgver}/release/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/${pkgname}-${pkgver}/release/linux-"*"/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname}"
-            fi
-        done
-    fi
+    cp -a "${srcdir}/${pkgname}-${pkgver}/release/linux-"*"/resources/". "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/Build/app-icon-dark.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
