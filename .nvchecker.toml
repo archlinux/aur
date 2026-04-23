@@ -1,0 +1,5 @@
+[jiraf-bin]
+source = "github"
+github = "felipeospina21/jiraf"
+use_latest_release = true
+prefix = "v"
