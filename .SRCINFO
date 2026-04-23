@@ -8,12 +8,13 @@ pkgbase = l2pe-git
 	makedepends = git
 	makedepends = java-environment=8
 	depends = java-runtime=8
-	depends = java8-openjfx-bin
 	provides = l2pe
 	conflicts = l2pe
 	source = git+https://github.com/acmi/L2pe.git
+	source = java8-openjfx.pkg.tar.zst::https://github.com/guglovich/java8-openjfx-bin/releases/download/v8.u202-11/java8-openjfx-8.u202-11-x86_64.pkg.tar.zst
 	source = l2pe.sh
 	source = l2pe.desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
