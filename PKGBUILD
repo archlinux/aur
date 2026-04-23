@@ -7,24 +7,26 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=swi-prolog-devel
-pkgver=10.1.5
+pkgver=10.1.6
 pkgrel=1
 pkgdesc='Prolog environment (development version)'
 arch=('x86_64' 'i686')
 url='https://www.swi-prolog.org/'
 license=(GPL LGPL)
-depends=('gmp' 'readline' 'openssl' 'libarchive' 'libyaml')
-makedepends=(cmake jdk-openjdk junit libjpeg libxft libxinerama libxpm ninja unixodbc)
+depends=('gmp' 'readline' 'openssl' 'libarchive' 'libyaml' 'libutf8proc')
+makedepends=(cmake jdk-openjdk junit libjpeg libxft libxinerama libxpm ninja unixodbc sdl3 sdl3_image)
 optdepends=('unixodbc:     for using the odbc4pl library'
             'uuid: for using the uuid library'
             'libjpeg:      for using the pl2xpce library'
             'libxpm:       for using the pl2xpce library'
             'libxinerama:  for using the pl2xpce library'
             'libxft:       for using the pl2xpce library'
+            'sdl3:         for using the pl2xpce library'
+            'sdl3_image:   for using the pl2xpce library'
             'jdk-openjdk:  for using Prolog from Java'
             'java-runtime: for using Prolog from Java')
 source=("https://www.swi-prolog.org/download/devel/src/swipl-$pkgver.tar.gz")
-sha256sums=('67b3616cf0fe979f84816331ca8aeca8a17e5220f6ebab0accc7109213debb52')
+sha256sums=('b669e6b6b83bffde209932d5e8f151be7a8cf7ec0963898c7a2a18b7fa598be2')
 
 provides=('swi-prolog')
 conflicts=('swi-prolog')
