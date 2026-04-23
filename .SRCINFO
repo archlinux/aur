@@ -1,6 +1,6 @@
 pkgbase = sxcs-git
 	pkgdesc = minimal X11 color picker and magnifier
-	pkgver = 1.1.0.r6.g004cf31
+	pkgver = 1.1.0.r13.g772d2d0
 	pkgrel = 1
 	url = https://codeberg.org/NRK/sxcs
 	arch = i686

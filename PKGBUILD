@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=sxcs-git
 _pkgname=sxcs
-pkgver=1.1.0.r6.g004cf31
+pkgver=1.1.0.r13.g772d2d0
 pkgrel=1
 pkgdesc='minimal X11 color picker and magnifier'
 url='https://codeberg.org/NRK/sxcs'
