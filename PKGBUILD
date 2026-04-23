@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=archy-dwm-git
 _pkgname=archy-dwm
-pkgver=1.0.0.r1.gfeb819c
+pkgver=1.0.0.r37.g85c22fd
 pkgrel=1
 pkgdesc="A dynamic window manager for X with some patches applied"
 url="https://github.com/archy-linux/$_pkgname"

@@ -1,6 +1,6 @@
 pkgbase = archy-dwm-git
 	pkgdesc = A dynamic window manager for X with some patches applied
-	pkgver = 1.0.0.r1.gfeb819c
+	pkgver = 1.0.0.r37.g85c22fd
 	pkgrel = 1
 	url = https://github.com/archy-linux/archy-dwm
 	arch = i686
