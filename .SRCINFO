@@ -1,7 +1,7 @@
 pkgbase = hys-git
 	pkgdesc = Terminal RSS Reader for Digital Minimalists in Zig. — Build from the main branch
-	pkgver = 0.1.2.r6.gbe76aec
-	pkgrel = 3
+	pkgver = 0.2.0.r0.gded969a
+	pkgrel = 1
 	url = https://github.com/superstarryeyes/hys
 	arch = i686
 	arch = x86_64
