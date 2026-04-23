@@ -1,6 +1,6 @@
 pkgbase = llmfit-git
 	pkgdesc = Hundreds of models & providers. One command to find what runs on your hardware.
-	pkgver = 0.7.5.r2.g9e7ac95
+	pkgver = 0.8.4.r24.g4e8a596
 	pkgrel = 1
 	url = https://github.com/AlexsJones/llmfit
 	arch = x86_64
