@@ -3,7 +3,7 @@
 name=happ-desktop
 pkgname=happ-desktop
 url="https://github.com/Happ-proxy/happ-desktop"
-pkgver=2.7.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Happ is a mobile application designed for convenient proxy server management, powered by the robust Xray core."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 source=("$pkgname-$pkgver.Happ.linux.x64.pkg.tar.zst::https://github.com/Happ-proxy/happ-desktop/releases/download/${pkgver}/Happ.linux.x64.pkg.tar.zst")
 noextract=("$pkgname-$pkgver.Happ.linux.x64.pkg.tar.zst")
 
-sha256sums=('5aba19db2b9935d7294aff3bf0632c6d14b2def56f69c2df563ea405f37c98a9')
+sha256sums=('4be5c0d467e027bff073bd6fc5e4c4db822a6d71a3548fc6ba49e8d0906db1a4')
 
 
 makedepends=(
@@ -33,14 +33,22 @@ build() {
 
 package() {
   #cd "$srcdir"
-  tar -xvf "${srcdir}/$pkgname-$pkgver.Happ.linux.x64.pkg.tar.zst"
+  tar -xvf  "${srcdir}/$pkgname-$pkgver.Happ.linux.x64.pkg.tar.zst" -C "$pkgdir"
   cd "$pkgdir"
   
-  rm .INSTALL
-  rm .MTREE
-  rm .PKGINFO
- # pacman -U --noconfirm ./Happ.linux.x64.pkg.tar.zst
-  # Копируем необходимые файлы в каталог пакета
+  if [ -f ".INSTALL" ]; then
+    rm .INSTALL
+  fi
+  
+  if [ -f ".MTREE" ]; then
+    rm .MTREE
+  fi
+  
+  if [ -f ".PKGINFO" ]; then
+    rm .PKGINFO
+  fi
+  
+
  # echo "Extracting the data.tar.zst..."
 #bsdtar -xf data.tar.zst -C "$pkgdir/
 }

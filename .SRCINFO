@@ -1,12 +1,12 @@
 pkgbase = happ-desktop
 	pkgdesc = Happ is a mobile application designed for convenient proxy server management, powered by the robust Xray core.
-	pkgver = 2.7.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/Happ-proxy/happ-desktop
 	arch = x86_64
 	license = custom
-	noextract = happ-desktop-2.7.0.Happ.linux.x64.pkg.tar.zst
-	source = happ-desktop-2.7.0.Happ.linux.x64.pkg.tar.zst::https://github.com/Happ-proxy/happ-desktop/releases/download/2.7.0/Happ.linux.x64.pkg.tar.zst
-	sha256sums = 5aba19db2b9935d7294aff3bf0632c6d14b2def56f69c2df563ea405f37c98a9
+	noextract = happ-desktop-2.9.0.Happ.linux.x64.pkg.tar.zst
+	source = happ-desktop-2.9.0.Happ.linux.x64.pkg.tar.zst::https://github.com/Happ-proxy/happ-desktop/releases/download/2.9.0/Happ.linux.x64.pkg.tar.zst
+	sha256sums = 4be5c0d467e027bff073bd6fc5e4c4db822a6d71a3548fc6ba49e8d0906db1a4
 
 pkgname = happ-desktop
