@@ -1,20 +1,20 @@
 pkgbase = clawd-on-desk-bin
 	pkgdesc = A desktop pet that reacts to your Claude Code sessions in real-time — thinking, typing, juggling, sleeping, and more.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/rullerzhou-afk/clawd-on-desk
 	arch = x86_64
 	license = MIT
 	depends = electron41
 	depends = python
-	provides = clawd-on-desk=0.6.0
+	provides = clawd-on-desk=0.6.1
 	conflicts = clawd-on-desk
 	options = !emptydirs
 	options = !strip
-	source = clawd-on-desk-0.6.0.deb::https://github.com/rullerzhou-afk/clawd-on-desk/releases/download/v0.6.0/clawd-on-desk_0.6.0_amd64.deb
-	source = LICENSE-0.6.0::https://raw.githubusercontent.com/rullerzhou-afk/clawd-on-desk/v0.6.0/LICENSE
+	source = clawd-on-desk-0.6.1.deb::https://github.com/rullerzhou-afk/clawd-on-desk/releases/download/v0.6.1/clawd-on-desk_0.6.1_amd64.deb
+	source = LICENSE-0.6.1::https://raw.githubusercontent.com/rullerzhou-afk/clawd-on-desk/v0.6.1/LICENSE
 	source = clawd-on-desk.sh
-	sha256sums = b748025a54e4fb9f58c94505899b85174bc81d955c05d50a59ce5d087ce289a0
+	sha256sums = 188b8955ef3bebbe0f1b338f4885a6288ef2f20639621a7a3285bd2d343b4e51
 	sha256sums = f9b5868027f67bd737f0b0ad0db2998b123a3e687de903181598996ba6f346a3
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
