@@ -1,0 +1,5 @@
+[ocaml-digestif]
+source = 'github'
+github = 'mirage/digestif'
+use_max_tag = true
+prefix = 'v'
