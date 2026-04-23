@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='A python tool to program SIMs / USIMs / ISIMs'
 arch=('any')
 url='https://osmocom.org/projects/pysim/wiki'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('python'
          'python-bidict'
          'python-cmd2>=1.3.0'
