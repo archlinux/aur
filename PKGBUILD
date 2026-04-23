@@ -18,7 +18,7 @@ _versionn=1
 _versionm=0
 # Historically, not all tags begin with "idea/" such as "2025.3-rc-2".
 _tagprefix=idea/
-_tagsuffix=rc
+_tagsuffix=
 # Get build number from the following, in order of preference (as it's not always available
 # on GitHub):
 #
@@ -31,7 +31,7 @@ _tagsuffix=rc
 #   EAP version ("snap install intellij-idea --classic --edge"). This will match that in
 #   "build.txt" in the source at GitHub, although that file only contains the first two
 #   parts, followed by ".SNAPSHOT".
-_build=261.23567.71
+_build=261.23567.138
 
 pkgver="$_versionyyyy.$_versionr.$_versionn.$_versionm.$_build$([ -n "$_tagsuffix" ] && echo -n ".$_tagsuffix" | tr - _)"
 pkgrel=1
@@ -57,8 +57,8 @@ optdepends=(
 source=("git+https://github.com/JetBrains/intellij-community.git#tag=$_tag"
   idea-android::"git+https://github.com/JetBrains/android.git#tag=$_tag"
   idea.desktop)
-sha256sums=('d6584b7a640a5fbbc340d5c215263d3978517f39fbaec74043456ca930f204f2'
-  '6aca6525b6ac9cd10ab0c9c50cf7c350e42b6f1dd18ec06d928736f1afdf8a40'
+sha256sums=('6a884d86e98f1b323054afbb29fbf45f5bc42be1cd0d8dc09a4ce808ec1832a1'
+  'b101f9a1befd34ecf08954f0592a4bef9756fd73b967ad120eb0c605f4ead03f'
   '7e653ec3049058e2dcd7ca262081164ba417ea664885af7b5e4f94bcc987038f')
 
 prepare() {
@@ -76,9 +76,13 @@ build() {
   # the build process using its own Java environment.
   unset JAVA_HOME
 
-  export MAVEN_REPOSITORY=${srcdir}/.m2/repository
+  # Store Bazel-related caches locally to avoid occasional NoSuchFileException
+  # involving "bazel-targets.json" when the user-wide Bazel caches are
+  # corrupted.
+  export HOME=${srcdir}
+  export BAZELISK_HOME=${srcdir}/.bazelisk
 
-  ./installers.cmd -Dintellij.build.use.compiled.classes=false -Dintellij.build.target.os=linux -Dbuild.number="${_build}"
+  ./installers.cmd -Duser.home="${srcdir}" -Dintellij.build.use.compiled.classes=false -Dintellij.build.target.os=linux -Dbuild.number="${_build}"
   tar -xf out/idea-ce/artifacts/ideaIC-${_build}.tar.gz -C "${srcdir}"
 }
 

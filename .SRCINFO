@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-open-eap
 	pkgdesc = IDE for Java, Groovy and other programming languages with advanced refactoring features. Open-source, latest-tag (usually EAP) version
-	pkgver = 2026.1.1.0.261.23567.71.rc
+	pkgver = 2026.1.1.0.261.23567.138
 	pkgrel = 1
 	url = https://www.jetbrains.com/idea/
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = intellij-idea-open-eap
 	provides = intellij-idea-community-edition
 	conflicts = intellij-idea-community-edition
 	backup = usr/share/idea/bin/idea64.vmoptions
-	source = git+https://github.com/JetBrains/intellij-community.git#tag=idea/2026.1.1-rc
-	source = idea-android::git+https://github.com/JetBrains/android.git#tag=idea/2026.1.1-rc
+	source = git+https://github.com/JetBrains/intellij-community.git#tag=idea/2026.1.1
+	source = idea-android::git+https://github.com/JetBrains/android.git#tag=idea/2026.1.1
 	source = idea.desktop
-	sha256sums = d6584b7a640a5fbbc340d5c215263d3978517f39fbaec74043456ca930f204f2
-	sha256sums = 6aca6525b6ac9cd10ab0c9c50cf7c350e42b6f1dd18ec06d928736f1afdf8a40
+	sha256sums = 6a884d86e98f1b323054afbb29fbf45f5bc42be1cd0d8dc09a4ce808ec1832a1
+	sha256sums = b101f9a1befd34ecf08954f0592a4bef9756fd73b967ad120eb0c605f4ead03f
 	sha256sums = 7e653ec3049058e2dcd7ca262081164ba417ea664885af7b5e4f94bcc987038f
 
 pkgname = intellij-idea-open-eap
