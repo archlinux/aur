@@ -91,7 +91,6 @@ prepare() {
 
 	# Apply patch to source
 	patch -p1 -i "../translucent.patch"
-	#patch -p1 -i "../extension-signature.patch"
 
 	# Replace product json
 	cp --update=all "../product.json" "."
