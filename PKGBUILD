@@ -30,3 +30,5 @@ package() {
   cd "${_name}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
+# vim:set ts=2 sw=2 et:
