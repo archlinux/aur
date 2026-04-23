@@ -1,6 +1,6 @@
 # Maintainer: Raphael Bitton <raphael@rbitton.com>
 pkgname=worldforge
-pkgver=0.2.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A world simulation engine. Simple rules, emergent civilizations, and a narrative that writes itself."
 arch=('x86_64')
