@@ -1,18 +1,18 @@
 pkgbase = pi-coding-agent
 	pkgdesc = A terminal-based coding agent with multi-model support, mid-session model switching, and a simple CLI for headless coding tasks
-	pkgver = 0.68.1
+	pkgver = 0.69.0
 	pkgrel = 1
 	url = https://shittycodingagent.ai/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = tar
-	noextract = pi-linux-0.68.1.tar.gz
+	noextract = pi-linux-0.69.0.tar.gz
 	options = !debug
 	options = !strip
-	source_x86_64 = pi-linux-0.68.1.tar.gz::https://github.com/badlogic/pi-mono/releases/download/v0.68.1/pi-linux-x64.tar.gz
-	sha256sums_x86_64 = 82cd035a83407127ca8421639e10e3c54b9d79113a17a699bcd1edc287894519
-	source_aarch64 = pi-linux-0.68.1.tar.gz::https://github.com/badlogic/pi-mono/releases/download/v0.68.1/pi-linux-arm64.tar.gz
-	sha256sums_aarch64 = 7345682138e4e8fc2b1944ec178e99a2cfc83c8e5dee256666e7e391172c82f2
+	source_x86_64 = pi-linux-0.69.0.tar.gz::https://github.com/badlogic/pi-mono/releases/download/v0.69.0/pi-linux-x64.tar.gz
+	sha256sums_x86_64 = f60b3ebec799d856c23b756b50d5e049bca37ff8910958d51223f57e47d09b97
+	source_aarch64 = pi-linux-0.69.0.tar.gz::https://github.com/badlogic/pi-mono/releases/download/v0.69.0/pi-linux-arm64.tar.gz
+	sha256sums_aarch64 = fd61bead89e57e7c212a1e1b7ed43e54b4da8d0ca11bfb579a2c4606c54addfc
 
 pkgname = pi-coding-agent
