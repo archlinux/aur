@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>FiTui=fitui
 pkgname=image-auditor-git
 _pkgname=image-auditor
-pkgver=0.2.0.r2.g67cf536
+pkgver=0.2.3.r0.g8334768
 pkgrel=1
 pkgdesc='TUI that finds & AI-fixes Lighthouse image issues (CLS, lazy loading, WebP, srcset) across your entire codebase in seconds.'
 arch=('x86_64' 'aarch64')
