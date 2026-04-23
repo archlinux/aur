@@ -1,6 +1,6 @@
 pkgbase = linux-tpm453-stable
 	pkgdesc = Hardware-specific CachyOS stable kernel for Acer TMP453-M class hardware
-	pkgver = 7.0.0.r20260422.g2a5a214aa4d
+	pkgver = 7.0.1.r20260421.g2a5a214aa4d
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
@@ -52,7 +52,7 @@ pkgname = linux-tpm453-stable
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
-	provides = linux-cachyos-lto=7.0.0.r20260422.g2a5a214aa4d-1
+	provides = linux-cachyos-lto=7.0.1.r20260421.g2a5a214aa4d-1
 	replaces = linux-cachyos-lto
 
 pkgname = linux-tpm453-stable-headers
@@ -71,5 +71,5 @@ pkgname = linux-tpm453-stable-headers
 	depends = llvm
 	depends = lld
 	provides = LINUX-HEADERS
-	provides = linux-cachyos-lto-headers=7.0.0.r20260422.g2a5a214aa4d-1
+	provides = linux-cachyos-lto-headers=7.0.1.r20260421.g2a5a214aa4d-1
 	replaces = linux-cachyos-lto-headers
