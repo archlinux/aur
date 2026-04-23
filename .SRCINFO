@@ -1,0 +1,17 @@
+pkgbase = ocaml-cmarkit
+	pkgdesc = OCaml libary for parsing the CommonMark specification
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://erratique.ch/software/cmarkit
+	arch = x86_64
+	license = ISC
+	makedepends = ocaml-cmdliner
+	makedepends = ocaml-findlib
+	makedepends = ocaml-topkg
+	makedepends = ocamlbuild
+	makedepends = opam
+	depends = ocaml
+	source = ocaml-cmarkit-0.4.0.tar.bz2::https://erratique.ch/software/cmarkit/releases/cmarkit-0.4.0.tbz
+	sha256sums = d790b56985e9e4905751e6f529ab4f5e986cfe20475d2899dad80ef0555ffe37
+
+pkgname = ocaml-cmarkit

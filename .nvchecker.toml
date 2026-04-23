@@ -1,0 +1,5 @@
+[ocaml-cmarkit]
+source = 'github'
+github = 'dbuenzli/cmarkit'
+use_max_tag = true
+prefix = 'v'
