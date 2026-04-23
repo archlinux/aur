@@ -1,6 +1,6 @@
 pkgbase = mmdr-bin
 	pkgdesc = Fast Mermaid diagram renderer in pure Rust - 23 diagram types, 100-1400x faster than mermaid-cli
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/1jehuang/mermaid-rs-renderer
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = mmdr-bin
 	depends = glibc
 	provides = mmdr
 	conflicts = mmdr
-	source = mmdr-0.2.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/1jehuang/mermaid-rs-renderer/releases/download/v0.2.1/mmdr-x86_64-unknown-linux-gnu.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/1jehuang/mermaid-rs-renderer/v0.2.1/LICENSE
-	sha256sums = 84ce1c77f0969a9665b355656048216fe1b2d712f44ae168a83f6d9acb260292
+	source = mmdr-0.2.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/1jehuang/mermaid-rs-renderer/releases/download/v0.2.2/mmdr-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/1jehuang/mermaid-rs-renderer/v0.2.2/LICENSE
+	sha256sums = aa5e2c5f39464e252efa6c654937348bf857003414e4fbf8229b5ac41dce23f7
 	sha256sums = 57ed7943c34463678a150769d4a4f6c95d2a190fe2c1977f74bc883492c94b86
 
 pkgname = mmdr-bin
