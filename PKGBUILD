@@ -1,201 +1,178 @@
-# Maintainer: Alex S. <shantanna_at_hotmail_dot_com>
-# Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
+# Maintainer: Marco Scardovi <mscardovi95 at gmail dot com>
 
 # Hardware support is limited. Nvidia cards should work fine.
 # If you're running a hybrid setup, try with primusrun/optirun.
 
-# This was originally written by Daniel Bermond in blackmagic-decklink-sdk pkgbuild
-# It is sufficient to just replace _downloadid to correspond new release version
-# It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
-_downloadid='3a9f8036dc3844e7a7863b39cb87d2b8'
-_referid='30ddcccc0fa445679644dcd905cfaff4'
-_siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
-
-_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
-                        AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/77.0.3865.75 \
-                        Safari/537.36"
-
-_reqjson="{ \
-    \"firstname\": \"Arch\", \
-    \"lastname\": \"Linux\", \
-    \"email\": \"someone@archlinux.org\", \
-    \"phone\": \"202-555-0194\", \
-    \"country\": \"us\", \
-    \"state\": \"New York\", \
-    \"city\": \"AUR\", \
-    \"product\": \"DaVinci Resolve\" \
-}"
-
-_reqjson="$(  printf '%s' "$_reqjson"   | sed 's/[[:space:]]\+/ /g')"
-_useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/ /g')"
-_useragent_escaped="${_useragent// /\\ }"
-
-_srcurl="$(curl \
-            -s \
-            -H 'Host: www.blackmagicdesign.com' \
-            -H 'Accept: application/json, text/plain, */*' \
-            -H 'Origin: https://www.blackmagicdesign.com' \
-            -H "$_useragent" \
-            -H 'Content-Type: application/json;charset=UTF-8' \
-            -H "Referer: https://www.blackmagicdesign.com/support/download/${_referid}/Linux" \
-            -H 'Accept-Encoding: gzip, deflate, br' \
-            -H 'Accept-Language: en-US,en;q=0.9' \
-            -H 'Authority: www.blackmagicdesign.com' \
-            -H 'Cookie: _ga=GA1.2.1849503966.1518103294; _gid=GA1.2.953840595.1518103294' \
-            --data-ascii "$_reqjson" \
-            --compressed \
-            "$_siteurl")"
-
-DLAGENTS=("https::/usr/bin/curl \
-            -gqb '' -C - --retry 3 --retry-delay 3 \
-            -H Host:\ sw.blackmagicdesign.com \
-            -H Upgrade-Insecure-Requests:\ 1 \
-            -H ${_useragent_escaped} \
-            -H Accept:\ text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8 \
-            -H Accept-Language:\ en-US,en;q=0.9 \
-            -o %o \
-            --compressed \
-            %u")
-
+# Get the source file DaVinci_Resolve_${pkgver}_Linux.zip from:
+# https://www.blackmagicdesign.com/it/products/davinciresolve
+# and save it in the same directory of this PKGBUILD
 pkgname=davinci-resolve-beta
-_pkgname=resolve
-resolve_app_name=com.blackmagicdesign.resolve
-pkgver=19.0b4
+pkgver=21.0b1
 pkgrel=1
 arch=('x86_64')
-url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
-license=('Commercial')
-depends=('glu' 'gtk2' 'libpng12' 'fuse2' 'opencl-driver' 'qt5-x11extras' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets'
-'qt5-quickcontrols2' 'qt5-multimedia' 'libxcrypt-compat' 'xmlsec' 'java-runtime' 'ffmpeg4.4' 'gst-plugins-bad-libs' 'python-numpy' 
-'tbb' 'apr-util' 'luajit')
+url="https://www.blackmagicdesign.com/it/products/davinciresolve"
+license=('LicenseRef-Commercial')
+depends=(
+    'glu' 'gtk2' 'libpng12' 'fuse2' 'opencl-driver' 'qt5-x11extras' 'qt5-svg' 'qt5-webengine'
+    'qt5-websockets' 'qt5-quickcontrols2' 'qt5-multimedia' 'libxcrypt-compat' 'xmlsec' 'libc++'
+    'java-runtime' 'ffmpeg4.4' 'gst-plugins-bad-libs' 'python-numpy' 'tbb' 'apr-util' 'luajit'
+    'libc++abi'
+)
 makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
+conflicts=('davinci-resolve-studio' 'davinci-resolve' 'davinci-resolve-studio-beta')
+source=(
+    "file://DaVinci_Resolve_${pkgver}_Linux.zip"
+    "davinci-control-panels-setup.sh"
+)
+sha256sums=(
+    '8d49c7e95a589923d0bac5bd2c72f86742a613b47e1654a9fefcca83e4bf6920'
+    'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8'
+)
+install="${pkgname}.install"
 options=('!strip')
 
-if [ ${pkgname} == "davinci-resolve-studio-beta" ]; then
-# Variables for STUDIO edition
-	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
-	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-	sha256sums=('2ea1ae6c2eb210ef179c6de7b127b067110cc6acbb16df982f72c640df816fb4')
-	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio')
-else
-# Variables for FREE edition
-	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
-	_archive_name=DaVinci_Resolve_${pkgver}_Linux
-	sha256sums=('85346ccdbdb65676469570e845a442ebd18024b8d125add4647451d47e8c9a15')
-	conflicts=('davinci-resolve' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
-fi
+prepare() {
+  chmod u+x "./DaVinci_Resolve_${pkgver}_Linux.run"
+  "./DaVinci_Resolve_${pkgver}_Linux.run" --appimage-extract
 
-_archive=${_archive_name}.zip
-_installer_binary=${_archive_name}.run
-source=("${_archive}"::"$_srcurl")
+  # Fix permission to all files and dirs
+  chmod -R u+rwX,go+rX,go-w "squashfs-root"
 
-prepare()
-{
-	pushd "${srcdir}"
-	chmod u+x "${srcdir}/${_installer_binary}"
-	"${srcdir}/${_installer_binary}" --appimage-extract
-	popd
+  pushd "squashfs-root/share/panels"
+  tar -zxf dvpanel-framework-linux-x86_64.tgz
+  chmod -R u+rwX,go+rX,go-w "lib"
+  mv *.so "${srcdir}/squashfs-root/libs"
+  mv lib/* "${srcdir}/squashfs-root/libs"
+  popd
 
-	# Fix permission to all files and dirs
-	chmod -R u+rwX,go+rX,go-w "${srcdir}/squashfs-root"
+  rm -rf squashfs-root/installer squashfs-root/installer* squashfs-root/AppRun squashfs-root/AppRun*
 
-	pushd "${srcdir}/squashfs-root/share/panels"
-	tar -zxvf dvpanel-framework-linux-x86_64.tgz
-	chmod -R u+rwX,go+rX,go-w "${srcdir}/squashfs-root/share/panels/lib"
-	mv *.so "${srcdir}/squashfs-root/libs"
-	mv lib/* "${srcdir}/squashfs-root/libs"
-	popd
+  while IFS= read -r -d '' _file; do
+    chmod 0755 "${_file}"
+  done < <(find "squashfs-root" -type d -print0)
 
-	rm -rf "${srcdir}"/squashfs-root/installer "${srcdir}"/squashfs-root/installer* "${srcdir}"/squashfs-root/AppRun "${srcdir}"/squashfs-root/AppRun*
+  while IFS= read -r -d '' _file; do
+    [[ -f "${_file}" && $(od -t x1 -N 4 "${_file}") == *"7f 45 4c 46"* ]] || continue
+    chmod 0755 "${_file}"
+  done < <(find "squashfs-root" -type f -print0)
 
-	while IFS= read -r -d '' i; do
-		chmod 0755 "${i}"
-	done < <(find "${srcdir}/squashfs-root" -type d -print0)
+  # Prepare list of paths for patchelf
+  _patchelf_paths=(
+      "libs"
+      "libs/plugins/sqldrivers"
+      "libs/plugins/xcbglintegrations"
+      "libs/plugins/imageformats"
+      "libs/plugins/platforms"
+      "libs/Fusion"
+      "plugins"
+      "bin"
+      "BlackmagicRAWSpeedTest/BlackmagicRawAPI"
+      "BlackmagicRAWSpeedTest/plugins/platforms"
+      "BlackmagicRAWSpeedTest/plugins/imageformats"
+      "BlackmagicRAWSpeedTest/plugins/mediaservice"
+      "BlackmagicRAWSpeedTest/plugins/audio"
+      "BlackmagicRAWSpeedTest/plugins/xcbglintegrations"
+      "BlackmagicRAWSpeedTest/plugins/bearer"
+      "BlackmagicRAWPlayer/BlackmagicRawAPI"
+      "BlackmagicRAWPlayer/plugins/mediaservice"
+      "BlackmagicRAWPlayer/plugins/imageformats"
+      "BlackmagicRAWPlayer/plugins/audio"
+      "BlackmagicRAWPlayer/plugins/platforms"
+      "BlackmagicRAWPlayer/plugins/xcbglintegrations"
+      "BlackmagicRAWPlayer/plugins/bearer"
+      "Onboarding/plugins/xcbglintegrations"
+      "Onboarding/plugins/qtwebengine"
+      "Onboarding/plugins/platforms"
+      "Onboarding/plugins/imageformats"
+      "DaVinci Control Panels Setup/plugins/platforms"
+      "DaVinci Control Panels Setup/plugins/imageformats"
+      "DaVinci Control Panels Setup/plugins/bearer"
+      "DaVinci Control Panels Setup/AdminUtility/PlugIns/DaVinciKeyboards"
+      "DaVinci Control Panels Setup/AdminUtility/PlugIns/DaVinciPanels"
+  )
+  for _index in "${!_patchelf_paths[@]}"
+  do
+    _patchelf_paths[${_index}]="/opt/${_pkgname}/${_patchelf_paths[${_index}]}"
+  done
+  while IFS= read -r -d '' _file; do
+    [[ -f "${_file}" && $(od -t x1 -N 4 "${_file}") == *"7f 45 4c 46"* ]] || continue
+    patchelf --set-rpath "$(IFS=":"; echo "${_patchelf_paths[*]}:\$ORIGIN")" "${_file}"
+  done < <(find "squashfs-root" -type f -size -32M -print0)
 
-	while IFS= read -r -d '' i; do
-		[[ -f "${i}" && $(od -t x1 -N 4 "${i}") == *"7f 45 4c 46"* ]] || continue
-		chmod 0755 "${i}"
-	done < <(find "${srcdir}/squashfs-root" -type f -print0)
+  while IFS= read -r -d '' _file; do
+    sed -i "s|RESOLVE_INSTALL_LOCATION|/opt/${_pkgname}|g" "${_file}"
+  done < <(find . -type f '(' -name "*.desktop" -o -name "*.directory" -o -name "*.directory" -o -name "*.menu" ')' -print0)
 
-	while IFS= read -r -d '' i; do
-		[[ -f "${i}" && $(od -t x1 -N 4 "${i}") == *"7f 45 4c 46"* ]] || continue
-		patchelf --set-rpath \
-'/opt/'"${_pkgname}"'/libs:'\
-'/opt/'"${_pkgname}"'/libs/plugins/sqldrivers:'\
-'/opt/'"${_pkgname}"'/libs/plugins/xcbglintegrations:'\
-'/opt/'"${_pkgname}"'/libs/plugins/imageformats:'\
-'/opt/'"${_pkgname}"'/libs/plugins/platforms:'\
-'/opt/'"${_pkgname}"'/libs/Fusion:'\
-'/opt/'"${_pkgname}"'/plugins:'\
-'/opt/'"${_pkgname}"'/bin:'\
-'/opt/'"${_pkgname}"'/BlackmagicRAWSpeedTest/BlackmagicRawAPI:'\
-'/opt/'"${_pkgname}"'/BlackmagicRAWSpeedTest/plugins/platforms:'\
-'/opt/'"${_pkgname}"'/BlackmagicRAWSpeedTest/plugins/imageformats:'\
-'/opt/'"${_pkgname}"'/BlackmagicRAWSpeedTest/plugins/mediaservice:'\
-'/opt/'"${_pkgname}"'/BlackmagicRAWSpeedTest/plugins/audio:'\
-'/opt/'"${_pkgname}"'/BlackmagicRAWSpeedTest/plugins/xcbglintegrations:'\
-'/opt/'"${_pkgname}"'/BlackmagicRAWSpeedTest/plugins/bearer:'\
-'/opt/'"${_pkgname}"'/BlackmagicRAWPlayer/BlackmagicRawAPI:'\
-'/opt/'"${_pkgname}"'/BlackmagicRAWPlayer/plugins/mediaservice:'\
-'/opt/'"${_pkgname}"'/BlackmagicRAWPlayer/plugins/imageformats:'\
-'/opt/'"${_pkgname}"'/BlackmagicRAWPlayer/plugins/audio:'\
-'/opt/'"${_pkgname}"'/BlackmagicRAWPlayer/plugins/platforms:'\
-'/opt/'"${_pkgname}"'/BlackmagicRAWPlayer/plugins/xcbglintegrations:'\
-'/opt/'"${_pkgname}"'/BlackmagicRAWPlayer/plugins/bearer:'\
-'/opt/'"${_pkgname}"'/Onboarding/plugins/xcbglintegrations:'\
-'/opt/'"${_pkgname}"'/Onboarding/plugins/qtwebengine:'\
-'/opt/'"${_pkgname}"'/Onboarding/plugins/platforms:'\
-'/opt/'"${_pkgname}"'/Onboarding/plugins/imageformats:'\
-'/opt/'"${_pkgname}"'/DaVinci Control Panels Setup/plugins/platforms:'\
-'/opt/'"${_pkgname}"'/DaVinci Control Panels Setup/plugins/imageformats:'\
-'/opt/'"${_pkgname}"'/DaVinci Control Panels Setup/plugins/bearer:'\
-'/opt/'"${_pkgname}"'/DaVinci Control Panels Setup/AdminUtility/PlugIns/DaVinciKeyboards:'\
-'/opt/'"${_pkgname}"'/DaVinci Control Panels Setup/AdminUtility/PlugIns/DaVinciPanels:'\
-'$ORIGIN' "${i}"
-	done < <(find "${srcdir}/squashfs-root" -type f -size -32M -print0)
+  rm "squashfs-root/libs/libglib-2.0.so.0" \
+     "squashfs-root/libs/libgio-2.0.so.0" \
+     "squashfs-root/libs/libgmodule-2.0.so.0"
+  ln -s "../BlackmagicRAWPlayer/BlackmagicRawAPI" "squashfs-root/bin/"
+  ln -s /usr/lib/libglib-2.0.so.0 "squashfs-root/libs/libglib-2.0.so.0"
+  ln -s /usr/lib/libgio-2.0.so.0 "squashfs-root/libs/libgio-2.0.so.0"
+  ln -s /usr/lib/libgmodule-2.0.so.0 "squashfs-root/libs/libgmodule-2.0.so.0"
+  ln -s /usr/lib/libgdk_pixbuf-2.0.so.0 "squashfs-root/libs/libgdk_pixbuf-2.0.so.0"
 
-	while IFS= read -r -d '' i; do
-		sed -i "s|RESOLVE_INSTALL_LOCATION|/opt/${_pkgname}|g" "${i}"
-	done < <(find . -type f '(' -name "*.desktop" -o -name "*.directory" -o -name "*.directory" -o -name "*.menu" ')' -print0)
+  echo "StartupWMClass=resolve" >> "squashfs-root/share/DaVinciResolve.desktop"
 
-	ln -s "${srcdir}/squashfs-root/BlackmagicRAWPlayer/BlackmagicRawAPI" "${srcdir}/squashfs-root/bin/"
+  echo 'SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="096e", MODE="0666"' > "squashfs-root/share/etc/udev/rules.d/99-DavinciPanel.rules"
 
-	echo "StartupWMClass=resolve" >> "${srcdir}/squashfs-root/share/DaVinciResolve.desktop"
-
-	echo 'SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="096e", MODE="0666"' > "${srcdir}/squashfs-root/share/etc/udev/rules.d/99-DavinciPanel.rules"
+  # Fix desktop files
+  sed -i 's#Exec=.*#Exec=davinci-control-panels-setup#' \
+    "squashfs-root/share/DaVinciControlPanelsSetup.desktop"
+  sed -i 's#Icon=.*#Icon=davinci-resolve#' \
+    "squashfs-root/share/DaVinciResolve.desktop"
+  sed -i 's#Icon=.*#Icon=davinci-resolve-panels-setup#' \
+    "squashfs-root/share/DaVinciControlPanelsSetup.desktop"
+  sed -i 's#Icon=.*#Icon=blackmagicraw-player#' \
+    "squashfs-root/share/blackmagicraw-player.desktop"
+  sed -i 's#Icon=.*#Icon=blackmagicraw-speedtest#' \
+    "squashfs-root/share/blackmagicraw-speedtest.desktop"
 }
 
-package()
-{
-	mkdir -p -m 0755 "${pkgdir}/opt/${_pkgname}/"{configs,DolbyVision,easyDCP,Fairlight,GPUCache,logs,Media,"Resolve Disk Database",.crashreport,.license,.LUT}
+package() {
+  # Install binary launchers
+  install -D -m 0755 "${srcdir}/davinci-control-panels-setup.sh" \
+    "${pkgdir}/usr/bin/davinci-control-panels-setup"
+  ln -s "/opt/resolve/bin/resolve" "${pkgdir}/usr/bin/${pkgname}"
+  # Install other files
+  install -d -m 0755 "${pkgdir}/opt/${_pkgname}"
+  cp -rf squashfs-root/* "${pkgdir}/opt/${_pkgname}"
 
-	# Install the squashfs-root
-	cp -rf "${srcdir}"/squashfs-root/* "${pkgdir}/opt/${_pkgname}"
-
-	# Distribute files into other directories
-	pushd "${pkgdir}/opt/${_pkgname}/"
-	install -Dm0644 share/default-config.dat -t "${pkgdir}/opt/${_pkgname}/configs"
-	install -Dm0644 share/log-conf.xml -t "${pkgdir}/opt/${_pkgname}/configs"
-	install -Dm0644 share/default_cm_config.bin -t "${pkgdir}/opt/${_pkgname}/DolbyVision"
-
-	install -Dm0644 share/DaVinciResolve.desktop -t "${pkgdir}/usr/share/applications"
-	install -Dm0644 share/DaVinciControlPanelsSetup.desktop -t "${pkgdir}/usr/share/applications"
-	install -Dm0644 share/DaVinciResolveInstaller.desktop -t "${pkgdir}/usr/share/applications"
-	install -Dm0644 share/DaVinciResolveCaptureLogs.desktop -t "${pkgdir}/usr/share/applications"
-	install -Dm0644 share/blackmagicraw-player.desktop -t "${pkgdir}/usr/share/applications"
-	install -Dm0644 share/blackmagicraw-speedtest.desktop -t "${pkgdir}/usr/share/applications"
-
-	install -Dm0644 share/DaVinciResolve.directory -t "${pkgdir}/usr/share/desktop-directories"
-	install -Dm0644 share/DaVinciResolve.menu -t "${pkgdir}/etc/xdg/menus"
-	install -Dm0644 graphics/DV_Resolve.png -t "${pkgdir}/usr/share/icons/hicolor/64x64/apps"
-	install -Dm0644 graphics/DV_ResolveProj.png -t "${pkgdir}/usr/share/icons/hicolor/64x64/apps"
-	install -Dm0644 share/resolve.xml -t "${pkgdir}/usr/share/mime/packages"
-
-	install -Dm0644 share/etc/udev/rules.d/99-BlackmagicDevices.rules -t "${pkgdir}/usr/lib/udev/rules.d"
-	install -Dm0644 share/etc/udev/rules.d/99-ResolveKeyboardHID.rules -t "${pkgdir}/usr/lib/udev/rules.d"
-	install -Dm0644 share/etc/udev/rules.d/99-DavinciPanel.rules -t "${pkgdir}/usr/lib/udev/rules.d"
-	popd
+  # Distribute files into other directories
+  pushd "${pkgdir}/opt/${_pkgname}"
+  install -D -m 0644 -t "${pkgdir}/opt/${_pkgname}/configs" \
+    "share/default-config.dat" \
+    "share/log-conf.xml"
+  install -D -m 0644 -t "${pkgdir}/opt/${_pkgname}/DolbyVision" \
+    "share/default_cm_config.bin"
+  install -d -m 0755 "${pkgdir}/opt/${_pkgname}/.license"
+  install -d -m 0755 "${pkgdir}/opt/${_pkgname}/Apple Immersive/Calibration"
+  # Install Desktop files and menu
+  install -D -m 0644 -t "${pkgdir}/usr/share/applications" \
+    "share/DaVinciResolve.desktop" \
+    "share/DaVinciControlPanelsSetup.desktop" \
+    "share/blackmagicraw-player.desktop" \
+    "share/blackmagicraw-speedtest.desktop"
+  install -D -m 0644 -t "${pkgdir}/usr/share/desktop-directories" \
+    "share/DaVinciResolve.directory"
+  install -D -m 0644 -t "${pkgdir}/etc/xdg/menus" \
+    "share/DaVinciResolve.menu"
+  # Install icons
+  install -D -m 0644 -t "${pkgdir}/usr/share/icons/hicolor/64x64/apps" \
+    "graphics/DV_Resolve.png" \
+    "graphics/DV_ResolveProj.png"
+  install -D -m 0644 "graphics/DV_Resolve.png" \
+    "${pkgdir}/usr/share/icons/hicolor/128x128/apps/davinci-resolve.png"
+  install -D -m 0644 "graphics/DV_Panels.png" \
+    "${pkgdir}/usr/share/icons/hicolor/128x128/apps/davinci-resolve-panels-setup.png"
+  install -D -m 0644 "graphics/blackmagicraw-player_256x256_apps.png" \
+    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/blackmagicraw-player.png"
+  install -D -m 0644 "graphics/blackmagicraw-speedtest_256x256_apps.png" \
+    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/blackmagicraw-speedtest.png"
+  # Install other files
+  install -D -m 0644 -t "${pkgdir}/usr/share/mime/packages" \
+    "share/resolve.xml"
+  install -D -m 0644 -t "${pkgdir}/usr/lib/udev/rules.d" \
+    "share/etc/udev/rules.d"/{99-BlackmagicDevices.rules,99-ResolveKeyboardHID.rules,99-DavinciPanel.rules}
+  popd
 }
-
-# vim: fileencoding=utf-8 sts=4 sw=4 noet
