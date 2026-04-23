@@ -1,14 +1,14 @@
 pkgbase = unbill-tui-bin
 	pkgdesc = Terminal UI for unbill
-	pkgver = 0
+	pkgver = 0.0.1
 	pkgrel = 1
-	url = https://github.com/patrickli/unbill
+	url = https://github.com/unbill-project/unbill
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
 	provides = unbill-tui
 	conflicts = unbill-tui
-	source_x86_64 = unbill-tui::https://github.com/patrickli/unbill/releases/download/0/unbill-tui-linux-x86_64
+	source_x86_64 = unbill-tui::https://github.com/unbill-project/unbill/releases/download/0-0-1/unbill-tui-linux-x86_64
 	sha256sums_x86_64 = SKIP
 
 pkgname = unbill-tui-bin
