@@ -6,7 +6,7 @@
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=12.12.1
+pkgver=12.12.2
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -41,8 +41,8 @@ sha256sums=(
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
   '71f1bee3ae03473884d7c202b4dfb260f8d68470d6c79695d1208fb944b6f5c8'
 )
-sha256sums_x86_64=('7f50d5d805e3acd401b933aa039d01712237d975c5d8306d46006ae2363d3080')
-sha256sums_aarch64=('07679b57ccb91b00c5de863e7170f89c9f929190b1b10f6a9c449c3d634fed22')
+sha256sums_x86_64=('c2157e29b3b9e41fb125ed0c607fb79da3f07b9dfcb37671b7bdf0bf6d818058')
+sha256sums_aarch64=('c9dfdb6abaafb700d3ea8291ecb4b03913db7ee1753c4ae77f595c8653416dc4')
 
 package() {
   depends=(
@@ -73,13 +73,12 @@ package() {
   for i in 256 512; do
     local _icon_dest="$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
     mkdir -pm755 "$_icon_dest"
-    magick "$_pkgname.png" -resize "${i}x${i}" "${_magick_opts[@]}" png8:"$_icon_dest/$_pkgname.png"
+    magick "$_pkgname.png" -resize "${i}x${i}" "${_magick_opts[@]}" "$_icon_dest/$_pkgname.png"
   done
 
   for i in '512x512@2'; do
     local _icon_dest="$pkgdir/usr/share/icons/hicolor/${i}/apps"
-    mkdir -pm755 "$_icon_dest"
-    magick "$_pkgname.png" "${_magick_opts[@]}" png8:"$_icon_dest/$_pkgname.png"
+    install -Dm644 "$_pkgname.png" "$_icon_dest/$_pkgname.png"
   done
 
   # launcher
