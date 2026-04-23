@@ -8,6 +8,12 @@ pkgbase = sysdx
 	license = MIT
 	makedepends = cargo
 	depends = systemd
+	keywords = systemd
+	keywords = tui
+	keywords = terminal
+	keywords = vim
+	keywords = rust
+	keywords = service-manager
 	source = sysdx-0.1.0.tar.gz::https://github.com/moxer-mmh/sysdx/archive/v0.1.0.tar.gz
 	sha256sums = 4e047aadac1863c90165f04beba993e4b392a96a3da0c6fb77f7e5990be931a2
 
