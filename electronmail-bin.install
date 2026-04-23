@@ -1,12 +1,14 @@
-#!/bin/bash
-
 post_install() {
     update-mime-database /usr/share/mime || true
     update-desktop-database /usr/share/applications || true
+}
 
-    echo "==> Note: A legacy symlink may remain at /usr/local/bin/electron-mail"
-    echo "==> It points to /opt/ElectronMail/electron-mail and remains functional."
-    echo "==> You may remove it manually if you no longer need it."
+post_upgrade() {
+    printf "%b" "\e[1;33m"
+    printf "%b" "==> NOTE: A legacy symlink may remain at /usr/local/bin/electron-mail.\n"
+    printf "%b" "    It points to /opt/ElectronMail/electron-mail and remains functional.\n"
+    printf "%b" "    You may remove it manually if you no longer need it.\n"
+    printf "%b" "\e[0m"
 }
 
 post_remove() {

@@ -7,7 +7,7 @@ _electronversion=40
 
 pkgname=electronmail-bin
 pkgver=5.3.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Unofficial ProtonMail Desktop App"
 arch=('x86_64')
 url="https://github.com/vladimiry/ElectronMail"
@@ -24,7 +24,7 @@ source=("https://github.com/vladimiry/ElectronMail/releases/download/v${pkgver}/
         "${pkgname}.sh"
         "LICENSE")
 sha256sums=('7577977173316d9afcd38e0262d65a572e6fa2c85fffd9b8f096bcc8479fd588'
-            '6c5090b4f3a53d2137592481c310ab889c10bc4a5790dae604c26a654f01c433'
+            'a008441fe5eb1095cd657f5eca4ae517c48493a7389e3183131d5f299458843b'
             'aa18e228207e5c6a474fe46de191fceff349283d557174e57ccb451d1318851f'
             '1b3782ccad7b8614100cda30d3faf42fc39f2e97932908c543005053b654ca68')
 options=(!debug)
