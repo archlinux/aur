@@ -4,9 +4,11 @@
 
 : ${_commit_alpm=789ba9acc52b7b0624fb08de9f4756b5d51c10f1}
 
+: ${_cksum_octopi=bf2f6e2ab6208a020fd34fa6d88eaad5268132c4e38369818fd74267c0c54525}
+
 _pkgname="octopi"
 pkgname="$_pkgname"
-pkgver=0.18.1
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="A powerful Pacman frontend using Qt libs"
 url="https://github.com/aarnt/octopi"
@@ -14,7 +16,9 @@ license=('GPL-2.0-or-later')
 arch=('x86_64')
 
 depends=(
+  'qt6-base'
   'qt6-multimedia'
+  'qt6-svg'
   'qtermwidget'
 )
 makedepends=(
@@ -41,8 +45,8 @@ optdepends=(
 _source_octopi() {
   _pkgsrc_octopi="$_pkgname-$pkgver"
   local _pkgext="tar.gz"
-  source+=("$_pkgsrc_octopi.$_pkgext"::"https://github.com/aarnt/octopi/archive/refs/tags/v$pkgver.$_pkgext")
-  sha256sums+=('95cce0a2ebd4cd41ccd3a9520c80060e7aae7de426fabf60356eb97444c0a048')
+  source+=("$_pkgsrc_octopi.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+  sha256sums+=("${_cksum_octopi:-SKIP}")
 
   _prepare_octopi() (
     # fix qt-sudo path
@@ -72,6 +76,10 @@ _source_alpm_utils() {
   source+=("$_pkgsrc_alpm_utils"::"git+https://github.com/aarnt/alpm_octopi_utils.git${_commit_alpm:+#commit=$_commit_alpm}")
   sha256sums+=('SKIP')
 
+  _prepare_alpm_utils() {
+    :
+  }
+
   _build_alpm_utils() (
     local _cmake_options=(
       -B build_alpm
@@ -93,13 +101,13 @@ _source_octopi
 _source_alpm_utils
 
 prepare() {
-  _run_if_exists _prepare_octopi
-  _run_if_exists _prepare_alpm_utils
+  _prepare_octopi
+  _prepare_alpm_utils
 }
 
 build() {
-  _run_if_exists _build_alpm_utils
-  _run_if_exists _build_octopi
+  _build_alpm_utils
+  _build_octopi
 }
 
 package() {
@@ -116,10 +124,4 @@ package() {
 
   # not needed for standard licenses
   rm -rf "$pkgdir/usr/share/licenses/"
-}
-
-_run_if_exists() {
-  if declare -F "$1" > /dev/null; then
-    eval "$1"
-  fi
 }
