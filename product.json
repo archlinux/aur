@@ -33,6 +33,7 @@
 	"nodejsRepository": "https://nodejs.org",
 	"urlProtocol": "vscode",
 	"webviewContentExternalBaseUrlTemplate": "https://{{uuid}}.vscode-cdn.net/{{quality}}/{{commit}}/out/vs/workbench/contrib/webview/browser/pre/",
+	"builtInExtensionsEnabledWithAutoUpdates": [],
 	"builtInExtensions": [
 		{
 			"name": "ms-vscode.js-debug-companion",

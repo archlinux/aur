@@ -3,7 +3,7 @@
 
 pkgname="code-translucent"
 pkgver=1.117.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
 arch=(
