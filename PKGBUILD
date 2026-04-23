@@ -1,6 +1,6 @@
 pkgname=ember-notify
 pkgver=0.1.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Notification daemon for i3/X11 with Eww integration'
 arch=('x86_64')
 url='https://github.com/Savanta/Ember'
@@ -18,11 +18,12 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('cdacc88a198c636da067a11e54f7609976ce30fb05355a03aa2e275f17e71bb0')
 
 _srcdir="Ember-$pkgver"
+_cargo_target_dir="$startdir/cargo-target"
 
 prepare() {
   cd "$_srcdir"
   export CARGO_HOME="$srcdir/cargo-home"
-  export CARGO_TARGET_DIR="$srcdir/$_srcdir/target"
+  export CARGO_TARGET_DIR="$_cargo_target_dir"
   mkdir -p "$CARGO_TARGET_DIR"
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
@@ -30,7 +31,7 @@ prepare() {
 build() {
   cd "$_srcdir"
   export CARGO_HOME="$srcdir/cargo-home"
-  export CARGO_TARGET_DIR="$srcdir/$_srcdir/target"
+  export CARGO_TARGET_DIR="$_cargo_target_dir"
   mkdir -p "$CARGO_TARGET_DIR"
   # Avoid OOM on smaller machines by forcing single-job rustc builds.
   export CARGO_BUILD_JOBS=1
@@ -43,7 +44,7 @@ build() {
 package() {
   cd "$_srcdir"
 
-  install -Dm755 "$srcdir/$_srcdir/target/release/ember"   "$pkgdir/usr/bin/ember"
+  install -Dm755 "$_cargo_target_dir/release/ember"   "$pkgdir/usr/bin/ember"
   install -Dm644 config/default.toml              "$pkgdir/usr/share/ember/default.toml"
   install -Dm644 man/ember.1                      "$pkgdir/usr/share/man/man1/ember.1"
   install -Dm644 pkg/ember.service                "$pkgdir/usr/lib/systemd/user/ember.service"

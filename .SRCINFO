@@ -1,7 +1,7 @@
 pkgbase = ember-notify
 	pkgdesc = Notification daemon for i3/X11 with Eww integration
 	pkgver = 0.1.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Savanta/Ember
 	install = ember-notify.install
 	arch = x86_64
