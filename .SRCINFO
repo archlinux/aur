@@ -1,7 +1,7 @@
 pkgbase = alephone-phoenix
 	pkgdesc = A 35-level single player major conversion
-	pkgver = 1.4
-	pkgrel = 2
+	pkgver = 1.4.2.3
+	pkgrel = 1
 	url = http://simplici7y.com/items/marathon-phoenix-2
 	arch = any
 	license = unknown
