@@ -1,7 +1,7 @@
 # Maintainer: PulseSync <contact@pulsesync.dev>
 
 pkgname=pulsesync-bin
-pkgver=2.14.1
+pkgver=2.15.0
 pkgrel=1
 _prefix=builds/app
 _branch=beta
@@ -26,8 +26,8 @@ provides=('pulsesync')
 conflicts=('pulsesync')
 options=('!strip')
 
-_asset_version="2.14.1-beta"
-_asset="pulsesync-app-2.14.1-beta-linux-x64.tar.gz"
+_asset_version="2.15.0-beta"
+_asset="pulsesync-app-2.15.0-beta-linux-x64.tar.gz"
 
 source=(
   'pulsesync.desktop'
@@ -35,7 +35,7 @@ source=(
 )
 source_x86_64=("${_asset}::https://s3.pulsesync.dev/${_prefix}/${_branch}/${_asset}")
 sha256sums=('40712fd6e126ebe51de9f7aaa055c044390ab18ab3984048419b7f20c7df9410' 'fb0b48d037e98bdd70c3a5cf0f9587df0a72450245c786f6da80525523c982e1')
-sha256sums_x86_64=('3af13123373ef8c1a1c5d506730fea0c0d740460250a03a3a091229716c80652')
+sha256sums_x86_64=('d1dcff4607a837e65583ccca2f1a1f56ad3f80058aa053ee03bf8439c206e0a9')
 
 package() {
   install -dm755 "${pkgdir}"
