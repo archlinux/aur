@@ -1,0 +1,27 @@
+pkgbase = bcon
+	pkgdesc = GPU-accelerated terminal emulator for Linux console (DRM/KMS)
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = https://github.com/sanohiro/bcon
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cmake
+	makedepends = clang
+	makedepends = pkgconf
+	depends = libdrm
+	depends = mesa
+	depends = libxkbcommon
+	depends = libinput
+	depends = freetype2
+	depends = fontconfig
+	depends = seatd
+	optdepends = fcitx5: Japanese input method support via D-Bus
+	optdepends = noto-fonts-cjk: CJK text rendering
+	optdepends = noto-fonts-emoji: color emoji rendering
+	options = !lto
+	options = !debug
+	source = bcon-1.3.4.tar.gz::https://github.com/sanohiro/bcon/archive/refs/tags/v1.3.4.tar.gz
+	sha256sums = ab5f484f9102867905347cfe0b21e4073cabf10907d0cb4bb37df8eb67698730
+
+pkgname = bcon
