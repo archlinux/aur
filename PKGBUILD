@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=3.6.6
+pkgver=3.6.16
 _electronversion=41
 _nodeversion=24
 pkgrel=1
