@@ -1,14 +1,14 @@
 # Maintainer: Christopher Snowhill <kode54@gmail.com>
 pkgname=fooyin-kode54-plugins-git
 _pkgname=${pkgname%-git}
-pkgver=r80.c76cc73
+pkgver=r87.3a3ba22
 pkgrel=1
 pkgdesc="A set of plugins for Fooyin (Git version)"
 url="https://github.com/kode54/fooyin-kode54-plugins"
 arch=('x86_64')
 license=('GPL-3.0-only')
 makedepends=('cmake' 'git')
-depends=('fooyin' 'libmgba' 'vgmstream')
+depends=('fooyin' 'libmgba' 'vgmstream' 'libspessasynth')
 source=('git+https://github.com/kode54/fooyin-kode54-plugins.git'
         'git+https://github.com/kode54/midi_processing.git'
         'git+https://bitbucket.org/losnoco/psflib.git'
@@ -18,10 +18,8 @@ source=('git+https://github.com/kode54/fooyin-kode54-plugins.git'
         'git+https://bitbucket.org/losnoco/vio2sf.git'
         'git+https://bitbucket.org/losnoco/lazyusf2.git'
         'git+https://bitbucket.org/losnoco/sseqplayer.git'
-        'git+https://bitbucket.org/losnoco/libsnes9x.git'
-        'git+https://github.com/kode54/spessasynth_core_c.git')
+        'git+https://bitbucket.org/losnoco/libsnes9x.git')
 md5sums=('SKIP'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -49,7 +47,6 @@ prepare() {
   git config submodule.subprojects/lazyusf2.url "$srcdir/lazyusf2"
   git config submodule.subprojects/sseqplayer.url "$srcdir/sseqplayer"
   git config submodule.subprojects/libsnes9x.url "$srcdir/libsnes9x"
-  git config submodule.subprojects/spessasynth_core_c.url "$srcdir/spessasynth_core_c"
   git -c protocol.file.allow=always submodule update
 }
 
