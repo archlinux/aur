@@ -3,7 +3,7 @@
 _sdk=8.0
 _Name="PixiEditor"
 pkgname="${_Name,,}"
-pkgver=2.1.0.21
+pkgver=2.1.0.22
 pkgrel=1
 pkgdesc="All-in-one solution for 2D image editing"
 arch=(
@@ -37,7 +37,7 @@ source=(
   "${_pkgsrc}-Drawie::git+https://github.com/PixiEditor/Drawie.git"
   "${_pkgsrc}-ColorPicker::git+https://github.com/PixiEditor/ColorPicker.git"
 )
-b2sums=('40ebb0896ca9b0656c3fdba4c330ae9006d72ef4628682dc2ec97f453d761f2a1b905e3a2fd1ec9b5bdbda48f38290906a356b6663589ffb58705b448f894bf4'
+b2sums=('48fe14a4a2e5905e51c670d69fa37e8ddc651acdd6ddc225fbffd73f7dfebd291082e255558f48f604b99aaa1962b15a4d7212e9a38e7c6d0f6d311ef4164791'
         'SKIP'
         'SKIP'
         'SKIP'
