@@ -3,7 +3,7 @@
 
 _gitname=pysim
 pkgname=python-pysim-git
-pkgver=1.0.r520.g219a5f36
+pkgver=1.0.r1404.gc50f4b4a
 pkgrel=1
 pkgdesc='A python tool to program SIMs / USIMs / ISIMs'
 arch=('any')
@@ -29,8 +29,8 @@ depends=('python'
 optdepends=('python-smpplib: for pySim-smpp2sim.py'
             'python-pyshark: for pySim-trace.py')
 makedepends=('python-setuptools' 'git')
-provides=('python-pysim')
-source=('git+https://git.osmocom.org/pysim')
+provides=("${pkgname%-git}=${pkgver}")
+source=('git+https://gitea.osmocom.org/sim-card/pysim')
 sha256sums=('SKIP')
 
 pkgver() {
