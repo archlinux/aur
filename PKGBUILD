@@ -1,7 +1,7 @@
 # Maintainer: kobe-koto <k [at] koto [dot] cc>
 pkgname=archavenger-git
 _repo=Archavenger
-pkgver=0.0.2.r3.g34ab49c
+pkgver=0.0.3.r0.g869fc9a
 pkgrel=1
 pkgdesc="Archavenger is a simple tool for cleaning up Arch Linux package repositories."
 arch=('any')
@@ -25,6 +25,11 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_repo"
+
+    TargetVersionCodeLine=$(awk "/version/{print NR}" ./package.json)
+    OrigVersionCode=$(cat ./package.json | grep -o '"version": "[^"]*' | cut -d '"' -f4)
+    sed -i "${TargetLine}s/${OrigVersionCode}/${pkgver}/g" ./package.json
+
     bun install
     bun run build
 }
