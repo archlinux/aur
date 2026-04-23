@@ -8,8 +8,12 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-	note "Default _DEF_PR_LIB set to /usr/lib/pay-respects"
-	note "Default _DEF_PACKAGE_MANAGER set to pacman"
+	note "Default values set by this package:
+	_DEF_PR_LIB: /usr/lib/pay-respects
+	_DEF_PACKAGE_MANAGER: pacman"
+	note "This package installs all modules including the AI module used as fallback.
+	Upstream's API key is included, so it works out of the box. No data collection.
+	If you rather to not use the AI module, add \`_PR_AI_DISABLE=1\` to your environment variables."
 }
 
 post_upgrade() {
