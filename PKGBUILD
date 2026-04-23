@@ -1,7 +1,7 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=openchamber
 _npmname=@openchamber/web
-pkgver=1.9.7
+pkgver=1.9.8
 pkgrel=1
 pkgdesc="Desktop and web interface for OpenCode AI agent"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/@openchamber/web/-/web-${pkgver}.tgz")
 noextract=("web-${pkgver}.tgz")
-sha256sums=('2aa5923340e6f1ee1742252d43adf154c60cc5106adf5ab5f615cb552b9dd18e')
+sha256sums=('cc07315e68f6da561942f65aa17a485b3ff591a94cf2e2a77d11d5bfb64c32ee')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
