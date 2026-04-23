@@ -5,7 +5,7 @@ _pkgname=neomd
 pkgname=${_pkgname}-bin
 pkgdesc="A minimal email TUI where you read with Markdown and write in Neovim"
 
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -21,8 +21,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('3ddffa914d8948d005d92dddc1f0a0bef41bef36f7aa88d9de933118d503dd8e')
-sha256sums_aarch64=('927816052a1a94992d59b001d6326e1790f1d2b3026237521df5aabefa6393aa')
+sha256sums_x86_64=('723afd241035cdf38fa23103822ed1aa9cfa4b27eaa4b6ab9cca77b14b4655a3')
+sha256sums_aarch64=('5c56e06f579d150df5d39c1b884da7c92a68b032b92cd642a1d811d3c416387a')
 
 package() {
     cd "${srcdir}/" || exit
