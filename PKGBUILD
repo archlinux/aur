@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=llmfit-git
 _pkgname=llmfit
-pkgver=0.8.4.r24.g4e8a596
+pkgver=0.9.14.r1.gb8f37fd
 pkgrel=1
 pkgdesc='Hundreds of models & providers. One command to find what runs on your hardware.'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
