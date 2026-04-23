@@ -1,0 +1,4 @@
+[ocaml-odate]
+source = 'github'
+github = 'hhugo/odate'
+use_max_tag = true

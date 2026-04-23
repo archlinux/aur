@@ -1,0 +1,15 @@
+pkgbase = ocaml-odate
+	pkgdesc = Date and duration library for OCaml
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/hhugo/odate
+	arch = x86_64
+	license = MIT
+	makedepends = dune
+	makedepends = ocaml-findlib
+	makedepends = ocaml-menhir
+	depends = ocaml
+	source = https://github.com/hhugo/odate/releases/download/0.7/odate-0.7.tbz
+	sha256sums = 74192cc81d97f3c2689b6f5b55ef5006f71412cc947441832260ea85518f55af
+
+pkgname = ocaml-odate
