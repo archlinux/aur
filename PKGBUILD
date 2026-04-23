@@ -10,7 +10,7 @@ pkgname='mlmmj'
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 pkgver=2.0.0
 _pkgver=2_0_0
-pkgrel=2
+pkgrel=3
 _url='http://mlmmj.org/'
 url='https://codeberg.org/mlmmj/mlmmj'
 install="$pkgname.install"
@@ -27,7 +27,8 @@ source=(
 )
 sha256sums=(
   '1ec9c84bfabeddf3c1b31da410abd670d073a97a2ede7049a2b26bb80433994c'
-  'SKIP' 'SKIP'  # Skip to my Lou
+  '4bbc24fc73ecb2d8f509c47eacff290921bb70a24b2a87b19704336cb4c466f1'
+  '1836f8ddb013f3762e79b2bbd9e81f850d976c984fa2e24bcc8f39072eeb0d37'
 )
 
 build() {
