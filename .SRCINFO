@@ -1,6 +1,6 @@
 pkgbase = podliner-bin
 	pkgdesc = Podliner: TUI podcast player (prebuilt binary)
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/timkicker/podliner
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = podliner-bin
 	provides = podliner
 	conflicts = podliner
 	options = !strip
-	source_x86_64 = podliner-1.2.2-linux-x64.tar.gz::https://github.com/timkicker/podliner/releases/download/v1.2.2/podliner-linux-x64.tar.gz
-	sha256sums_x86_64 = f7dfd52fb9bdbece89aa3b7f2dcb0b96a9dbb5868ea2f0d2470ff765d8d714c0
-	source_aarch64 = podliner-1.2.2-linux-arm64.tar.gz::https://github.com/timkicker/podliner/releases/download/v1.2.2/podliner-linux-arm64.tar.gz
-	sha256sums_aarch64 = a76ee5eb794d941eab0b5c1baae94206668ebda7f574a29209350e1e51ed9710
+	source_x86_64 = podliner-1.3.0-linux-x64.tar.gz::https://github.com/timkicker/podliner/releases/download/v1.3.0/podliner-linux-x64.tar.gz
+	sha256sums_x86_64 = e2293777d64f306a0f925536acb1fb76192620bb3bc9f4132bb10641e5d136f9
+	source_aarch64 = podliner-1.3.0-linux-arm64.tar.gz::https://github.com/timkicker/podliner/releases/download/v1.3.0/podliner-linux-arm64.tar.gz
+	sha256sums_aarch64 = f9206d8e18a56e127dd0fbf5d87dc3cfbdbce63176a1d2ecf9c7e35121fb6113
 
 pkgname = podliner-bin
