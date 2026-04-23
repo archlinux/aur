@@ -3,10 +3,10 @@ pkgname=witsy-bin
 _pkgname=Witsy
 pkgver=3.5.2
 _electronversion=38
-pkgrel=1
+pkgrel=2
 pkgdesc="Generative AI desktop application.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
-url="https://github.com/nbonamy/witsy"
+url="https://github.com/Kochava-Studios/witsy"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
