@@ -1,5 +1,5 @@
 pkgname=aiprobe
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="CLI for probing AI API providers, models, and diagnostics"
 arch=('x86_64' 'aarch64')
