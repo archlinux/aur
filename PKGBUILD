@@ -2,7 +2,7 @@
 pkgname=connected-desktop-bin
 _pkgname=connected-desktop
 pkgver=2.9.7
-pkgrel=6
+pkgrel=7
 pkgdesc="High-speed, offline, cross-platform ecosystem bridging devices (Binary)"
 arch=('x86_64')
 url="https://github.com/paterkleomenis/connected"
