@@ -2,7 +2,7 @@
 : ${aur_llamacpp_build_universal:=false}
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b8851.r0.e365e658f0
+pkgver=b8895.r7.550d684bd1
 pkgrel=1
 _build_number=0
 _commit_id=
@@ -75,13 +75,12 @@ prepare() {
 }
 
 build() {
-  # This may not be set if the user's session
-  # has not restarted on a new 'cuda' install
+  # Ensure CUDA environment is set up
   if [[ -z "${NVCC_CCBIN}" ]]; then
-    # cuda package installs /etc/profile.d/cuda.sh
-    if [[ -f /etc/profile.d/cuda.sh ]]; then
-      source /etc/profile.d/cuda.sh
-    fi
+    export NVCC_CCBIN=/usr/bin/g++
+  fi
+  if ! type -P nvcc &>/dev/null && [[ -d /opt/cuda/bin ]]; then
+    export PATH="/opt/cuda/bin:$PATH"
   fi
 
   local _cmake_options=(
