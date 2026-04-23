@@ -13,13 +13,19 @@ makedepends=('git' 'jdk8-openjdk')
 provides=('l2pe')
 conflicts=('l2pe')
 source=("git+https://github.com/acmi/L2pe.git"
-        "java8-openjfx.pkg.tar.zst::https://github.com/guglovich/java8-openjfx-bin/releases/download/v8.u202-11/java8-openjfx-8.u202-11-x86_64.pkg.tar.zst"
         "l2pe.sh"
         "l2pe.desktop")
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
+
+if ! pacman -Qq java8-openjfx-bin >/dev/null 2>&1; then
+    source+=("java8-openjfx.pkg.tar.zst::https://github.com/guglovich/java8-openjfx-bin/releases/download/v8.u202-11/java8-openjfx-8.u202-11-x86_64.pkg.tar.zst")
+    sha256sums+=('SKIP')
+    _bundled_jfx=1
+else
+    depends+=('java8-openjfx-bin')
+fi
 
 pkgver() {
     cd "L2pe"
@@ -49,8 +55,11 @@ package() {
     install -Dm755 "l2pe.sh" "$pkgdir/usr/bin/l2pe"
     install -Dm644 "l2pe.desktop" "$pkgdir/usr/share/applications/l2pe.desktop"
     
-    # Bundle JavaFX
-    mkdir -p "$pkgdir/usr/share/java/l2pe/jfx"
-    cp -r "usr/lib/jvm/java-8-openjdk/jre/lib/ext" "$pkgdir/usr/share/java/l2pe/jfx/"
-    cp -r "usr/lib/jvm/java-8-openjdk/jre/lib/amd64" "$pkgdir/usr/share/java/l2pe/jfx/"
+    # Bundle JavaFX if not present in the system
+    if [ -n "$_bundled_jfx" ]; then
+        msg2 "Bundling JavaFX..."
+        mkdir -p "$pkgdir/usr/share/java/l2pe/jfx"
+        cp -r "usr/lib/jvm/java-8-openjdk/jre/lib/ext" "$pkgdir/usr/share/java/l2pe/jfx/"
+        cp -r "usr/lib/jvm/java-8-openjdk/jre/lib/amd64" "$pkgdir/usr/share/java/l2pe/jfx/"
+    fi
 }
