@@ -9,6 +9,7 @@ pkgbase = libspessasynth-git
 	makedepends = git
 	depends = libvorbis
 	depends = flac
+	provides = libspessasynth
 	source = libspessasynth::git+https://github.com/kode54/spessasynth_core_c.git
 	md5sums = SKIP
 

@@ -9,6 +9,7 @@ arch=('x86_64')
 license=('Apache-2.0')
 makedepends=('cmake' 'git')
 depends=('libvorbis' 'flac')
+provides=("$_pkgname")
 source=("$_pkgname::git+https://github.com/kode54/spessasynth_core_c.git")
 md5sums=('SKIP')
 
