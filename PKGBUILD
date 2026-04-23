@@ -1,6 +1,6 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=mmm
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Markdown Mixed Media - A powerful terminal markdown viewer with image support, Mermaid diagrams, and PDF/ODT export"
 arch=('any')
@@ -15,10 +15,16 @@ optdepends=(
 makedepends=('npm' 'git')
 options=('!strip')  # Don't strip binaries to avoid fakeroot issues
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aaronsb/markdown-mixed-media/archive/v$pkgver.tar.gz")
-sha256sums=('7c9835145a7f5d4f64e2e6257bd57bd1e0ea6cfa6663d6d47531dda2e25fade8')
+sha256sums=('4a9327642be3b15349b37cdea69699e3c8230cb273eecc7aed0ea7c60a424db5')
 
 build() {
     cd "$srcdir/markdown-mixed-media-$pkgver"
+
+    # puppeteer is an optionalDependency (runtime-detected). Skip its bundled
+    # Chromium download — users install system chromium (see optdepends).
+    # This also makes the build work on architectures where puppeteer has no
+    # prebuilt Chrome binary (e.g. aarch64).
+    export PUPPETEER_SKIP_DOWNLOAD=true
 
     # Install dependencies (.npmrc sets legacy-peer-deps for marked-emoji compat)
     npm install --production=false
@@ -48,10 +54,6 @@ package() {
     find "$pkgdir/usr/lib/$pkgname/node_modules" -type f -name "*.node" -delete 2>/dev/null || true
     find "$pkgdir/usr/lib/$pkgname/node_modules" -type f -name "*.so" -delete 2>/dev/null || true
     find "$pkgdir/usr/lib/$pkgname/node_modules" -type f -name "*.dylib" -delete 2>/dev/null || true
-
-    # Remove puppeteer's chromium download to save space (PDF generation will need system chromium)
-    rm -rf "$pkgdir/usr/lib/$pkgname/node_modules/puppeteer/.local-chromium" 2>/dev/null || true
-    rm -rf "$pkgdir/usr/lib/$pkgname/node_modules/puppeteer-core/.local-chromium" 2>/dev/null || true
 
     # Create wrapper script
     cat > "$pkgdir/usr/bin/$pkgname" << EOF
