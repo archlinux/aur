@@ -2,22 +2,22 @@
 # Maintainer: cubercsl <2014cais01 at gmail dot com>
 
 pkgname=dae
-pkgver=1.1.0rc1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
 arch=('x86_64' 'aarch64')
 url="https://github.com/daeuniverse/${pkgname}"
 license=('AGPL-3.0-or-later')
-depends=(
-	'glibc'
-	'v2ray-geoip'
-	'v2ray-domain-list-community'
-)
+depends=('glibc' 'v2ray-domain-list-community' 'v2ray-geoip')
 makedepends=('clang' 'go')
 backup=("etc/${pkgname}/config.${pkgname}")
 source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${pkgname}-full-src.tar.xz")
 install="${pkgname}.install"
-sha256sums=('62ceafadd4b3634e01456e0badc6fda2a4c920495a6a7805d66a1f19d88b86fe')
+sha256sums=('2a8236f24fc1e60ca350d5e23e94b91fba1746bfc6b6856bb4d8690eff6f9530')
+
+prepare() {
+	sed -i '/^BUILD_ARGS :=/d' Makefile
+}
 
 build() {
 	export CFLAGS="-fno-stack-protector"
@@ -26,8 +26,16 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export BUILD_ARGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-	make VERSION="${pkgver}"
+	export GOPATH="${srcdir}"
+
+	local _ldflags=(
+		"-compressdwarf=false"
+		"-linkmode=external"
+		"-X github.com/daeuniverse/dae/cmd.Version=${pkgver}"
+		"-X github.com/daeuniverse/dae/common/consts.MaxMatchSetLen_=1024"
+	)
+	export BUILD_ARGS="-buildmode=pie -mod=readonly -modcacherw -ldflags=\"${_ldflags[@]}\""
+	make
 }
 
 package() {
