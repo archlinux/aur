@@ -1,6 +1,6 @@
 pkgbase = ctags-lsp-git
 	pkgdesc = LSP implementation using universal-ctags as backend - Build from the main branch
-	pkgver = 0.11.0.r0.g1ff8bc8
+	pkgver = 0.11.0.r8.gfe3d1f8
 	pkgrel = 1
 	url = https://github.com/netmute/ctags-lsp
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=ctags-lsp-git
 _pkgname="${pkgname%-git}"
-pkgver=0.11.0.r0.g1ff8bc8
+pkgver=0.11.0.r8.gfe3d1f8
 pkgrel=1
 pkgdesc='LSP implementation using universal-ctags as backend - Build from the main branch'
 url='https://github.com/netmute/ctags-lsp'
