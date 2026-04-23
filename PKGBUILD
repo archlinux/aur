@@ -1,12 +1,12 @@
 # Maintainer: AMVZEN 
 pkgname=synclyrics
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A premium desktop lyrics player for Linux with karaoke mode and audio visualizer"
 arch=('any')
 url="https://github.com/AMVZEN/synclyrics"
 license=('MIT')
-depends=('python-pyqt6' 'python-numpy' 'python-requests' 'python-unidecode' 'python-pyaudio' 'playerctl' 'libpulse')
+depends=('python-pyqt6' 'python-pyqt6-webengine' 'python-numpy' 'python-requests' 'python-unidecode' 'python-pyaudio' 'playerctl' 'libpulse')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('python-pykakasi: Romanization support for Japanese'
             'python-pypinyin: Romanization support for Chinese')
