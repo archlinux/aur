@@ -1,0 +1,19 @@
+pkgbase = dmenu-aegix-git
+	pkgdesc = Aegix Linux's custom build of dmenu (dynamic menu) with aegix-flavored config; ships dmenu, dmenu_path, dmenu_run, and stest
+	pkgver = r4.1d3b110
+	pkgrel = 1
+	url = https://github.com/aegixlinux/dmenu
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxft
+	depends = libxinerama
+	depends = freetype2
+	depends = fontconfig
+	provides = dmenu
+	conflicts = dmenu
+	source = dmenu::git+https://github.com/aegixlinux/dmenu.git
+	sha256sums = SKIP
+
+pkgname = dmenu-aegix-git
