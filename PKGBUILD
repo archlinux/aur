@@ -2,7 +2,7 @@
 
 _Name="Sideband"
 pkgname="${_Name,,}"
-pkgver=1.9.0
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Communicate with people or LXMF-compatible systems over Reticulum networks"
 arch=(
@@ -15,8 +15,8 @@ license=(
 )
 depends=(
   'python>=3.13'
-  'python-rns>=1.1.5'
-  'python-lxmf>=0.9.4'
+  'python-rns>=1.1.9'
+  'python-lxmf>=0.9.6'
   'python-lxst>=0.4.6'
   'python-kivy>=2.3.0'
   'python-numpy>=2.0.0'
@@ -60,7 +60,7 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('f373e02904d2a072ba1904a91197d118c56c8a45b6c4305bec16acaf43d570e1')
+sha256sums=('3ae37607a545373340ccde6465a2cd012b5fb9e6c62a100cb36aa756e9fa21d4')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
