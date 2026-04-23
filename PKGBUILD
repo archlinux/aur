@@ -1,6 +1,6 @@
 # Maintainer: Opal Aayan <YougurtMyFace@proton.me>
 pkgname=snappy-switcher
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A fast, animated Alt+Tab window switcher for Hyprland with MRU sorting and context grouping"
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
 provides=("$pkgname")
 conflicts=("$pkgname-git")
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('aa513a3066be6ec72516307e72578a2276ce8dc7b8b0246753e061bac1b27752')
+sha256sums=('ec181fd3a6026914b08b577e560419c80f096abf2705d305da9ab8f0d23d2499')
 
 build() {
   cd "$pkgname-$pkgver"
