@@ -1,13 +1,13 @@
 pkgbase = kernel-mitigations-off
-	pkgdesc = Pacman hook to check and launch rebuild of AUR packages affected by updates
+	pkgdesc = Pacman hook to disable CPU mitigations
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Emiliopg91/kernel-mitigations-off
 	arch = x86_64
 	license = GPL-2
 	depends = pacman
 	depends = python
-	source = git+https://github.com/Emiliopg91/kernel-mitigations-off.git#tag=1.0.0-3
+	source = git+https://github.com/Emiliopg91/kernel-mitigations-off.git#tag=1.0.0-4
 	sha256sums = SKIP
 
 pkgname = kernel-mitigations-off
