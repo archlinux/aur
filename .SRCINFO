@@ -1,6 +1,6 @@
 pkgbase = revdiff
 	pkgdesc = TUI for reviewing diffs, files, and documents with inline annotations
-	pkgver = 0.23.0
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://github.com/umputun/revdiff
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = revdiff
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = revdiff-0.23.0.tar.gz::https://github.com/umputun/revdiff/archive/v0.23.0.tar.gz
-	sha256sums = 6abc1ef1750da61a2d7102cfc3482777fc9223ce39261e34e48228623901365e
+	source = revdiff-0.24.0.tar.gz::https://github.com/umputun/revdiff/archive/v0.24.0.tar.gz
+	sha256sums = 9884142954ca6ff5aa35438c3b45d5f9e4f5dfc4f695ce31052ae078e86c8c50
 
 pkgname = revdiff
