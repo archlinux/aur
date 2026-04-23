@@ -1,6 +1,6 @@
 pkgbase = recon-git
 	pkgdesc = A Resonite contacts app built with Flutter
-	pkgver = r1.0f10293
+	pkgver = r308.0f10293
 	pkgrel = 1
 	url = https://github.com/RetrowaveHyena/ReCon
 	arch = x86_64

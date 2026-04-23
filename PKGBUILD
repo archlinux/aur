@@ -1,6 +1,6 @@
 # Maintainer: Retrowave Hyena <retrowavehyena@gmail.com>
 pkgname=recon-git
-pkgver=r1.0f10293
+pkgver=r308.0f10293
 pkgrel=1
 pkgdesc="A Resonite contacts app built with Flutter"
 arch=('x86_64')
