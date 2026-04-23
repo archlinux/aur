@@ -2,7 +2,7 @@
 
 pkgname=cdparanoia-overread
 pkgver=10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Compact Disc Digital Audio extraction tool patched for lead-out overread support"
 arch=('i686' 'x86_64')
 url="http://www.xiph.org/paranoia/"
@@ -13,15 +13,22 @@ conflicts=('cdparanoia')
 provides=('cdparanoia')
 source=("http://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-$pkgver.src.tgz"
         'gcc.patch'
-	'overread.patch')
-md5sums=('b304bbe8ab63373924a744eac9ebc652'
-         '12da14958d2b84c6719fe69890436445'
-         '6016c653227b895939c3757fea002972')
+	'overread.patch'
+        'unsafeprintf.patch')
+sha512sums=('4ab0a0f5ef44d56c1af72d1fc1035566a1a89c4eeddb9e8baea675fe51c06138d913342afc8bed167d9fa55672fa25a2763ce21f7e24c1232e4739aff20733a7'
+         '4d86fccc0967dd8d568b97a5b5b92dbe830a7227bee3167371ffc8e7d7f0b99aa0ad4116539c3414f2cc4a600c9bc3fcf06b5d8e4d2fe531dd9d6781736bd1a8'
+         'eae9f767b3b1ed84441daf21f740615898600e9c2c35cc629fdbb751164846c917e24f9ef94de9c7ad1a202eff8e398e1046a1a77e4b488bdfd20e81e8b7cd57'
+         '1e7bacdc72d16fcb1dfe3b978bd6ee43034f5461645681fe96afc7fe16352855526bfded23c51f245f237f237b0f80ec693bea7b14dede79d6cb72693919ab1e')
+
+prepare() {
+  cd "${srcdir}/cdparanoia-III-${pkgver}"
+  patch -p0 -i ${srcdir}/unsafeprintf.patch
+  patch -p0 -i ${srcdir}/gcc.patch
+  patch -p1 -i ${srcdir}/overread.patch
+}
 
 build() {
   cd "${srcdir}/cdparanoia-III-${pkgver}"
-  patch -p0 -i ${srcdir}/gcc.patch
-  patch -p1 -i ${srcdir}/overread.patch
   ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
