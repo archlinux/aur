@@ -84,18 +84,21 @@ elif [[ "$OS" == "debian" || "$OS" == "ubuntu" || "$OS_LIKE" == *"debian"* || "$
     BIN_DIR="/usr/local/bin"
     APP_SHARE="/usr/local/share/applications"
     ICON_SHARE="/usr/local/share/icons/hicolor/scalable/apps"
+    METAINFO_SHARE="/usr/local/share/metainfo"
 
     sudo install -d "$APP_DIR/icons"
     sudo install -d "$BIN_DIR"
     sudo install -d "$APP_SHARE"
     sudo install -d "$ICON_SHARE"
+    sudo install -d "$METAINFO_SHARE"
 
     sudo install -m644 *.py *.json *.css "$APP_DIR/"
     sudo install -m644 xsi-*.svg "$APP_DIR/icons/" 2>/dev/null || true
     sudo install -m755 flameget.sh "$BIN_DIR/flameget"
     sudo install -m644 flameget.desktop "$APP_SHARE/"
     sudo install -m644 flameget.svg "$ICON_SHARE/"
-    
+    sudo install -m644 io.github.C_Yassin.FlameGet.metainfo.xml "$METAINFO_SHARE/"
+
     if command -v update-desktop-database &> /dev/null; then
         sudo update-desktop-database "$APP_SHARE"
     fi

@@ -76,6 +76,7 @@ source=(
     "xsi-folder-pictures-symbolic.svg"
     "xsi-window-close-symbolic.svg"
     "flameget_about_dialog.png"
+    "io.github.C_Yassin.FlameGet.metainfo.xml"
 )
 
 sha256sums=('f48b0615e1fdd8e3f28fc56c71fa930bb24f59d754d64fec8be3d5252668d7d6'
@@ -138,7 +139,7 @@ package() {
     install -d "$pkgdir/usr/bin"
     install -d "$pkgdir/usr/share/applications"
     install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-
+    install -d "$pkgdir/usr/share/metainfo"
     cd "$srcdir"
 
     for file in *; do
@@ -163,6 +164,10 @@ package() {
 
             flameget.svg)
                 install -m644 "$file" "$pkgdir/usr/share/icons/hicolor/scalable/apps/flameget.svg"
+                ;;
+
+            *.metainfo.xml)
+                install -m644 "$file" "$pkgdir/usr/share/metainfo/"
                 ;;
         esac
     done
