@@ -1,6 +1,6 @@
 # Maintainer: Louis Nelson Jr. <https://lousclues.com>
 pkgname=vigil-baseline
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Lightweight file integrity monitor for Linux desktops"
 arch=('x86_64')
