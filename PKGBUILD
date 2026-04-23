@@ -1,7 +1,7 @@
-# Maintainer: MrToadie <toadie@toadie.de>
+# Maintainer: MrToadie <toadie.linux@proton.me>
 
 pkgname=cert-checker
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="simple validity checker for website certificates"
 arch=('x86_64')

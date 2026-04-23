@@ -1,6 +1,6 @@
 pkgbase = cert-checker
 	pkgdesc = simple validity checker for website certificates
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/mrtoadie/go-check-cert
 	arch = x86_64
