@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=strace-tui-git
 _pkgname=strace-tui
-pkgver=1.0.1.r0.g60ebce5
+pkgver=1.0.1.r1.gd70b4bf
 pkgrel=1
 pkgdesc=' A terminal user interface (TUI) for visualizing and exploring strace output'
 arch=('x86_64' 'aarch64')
