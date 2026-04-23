@@ -20,11 +20,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=f0862f0764aa89c45b612f9c4e9801b8a63ca142} # daily-852
+: ${_runtime_commit:=8f925d7bbeaf358298869a6bf24e78d42d802391} # daily-863
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.12.1
+pkgver=12.12.2
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -113,16 +113,26 @@ source=(
   "$_pkgname-runtime-${_runtime_commit::7}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-Runtime/archive/$_runtime_commit.$_pkgext"
   "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
   "$_pkgname.desktop"
-  '0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch'
-  '0004-Fix-sandbox-to-build-with-glibc-2.43.patch'
+
+  # Fix for glibc 2.43
+  0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  0002-Fix-sandbox-to-build-with-glibc-2.43.patch
+
+  # Fix for clang 22
+  0003-Use-wasm32-wasip1-target.patch
+
+  # Fix for rust 1.95
+  0004-encoding_rs-rust-1.95.patch
 )
 sha256sums=(
-  'f7619966827a62e7026a3f6ad9144e9c9c7c6e3a9ea2b0eb3241094a84a52325'
+  '55385ba99e63a1080745f95088146f13060e5caabf5e8863337db0560a211ff7'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
   'c2aaff2a743c738edbf02d7be816c30fe3a5acb2d3dcb7a3906357a9f2ed438f'
   '8d2182ae8660474ac567482fe6658af77f3b402314e361c846528ae171586245'
+  '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
+  '763ced1fb083c3a621bf53c9f65b990308c8dcf944e3d61702ecbc882d318bd7'
 )
 
 _deno() {
@@ -177,7 +187,6 @@ ac_add_options --with-google-safebrowsing-api-keyfile="$srcdir/api-google-safe-b
 
 # Features
 ac_add_options --enable-alsa
-ac_add_options --enable-av1
 ac_add_options --enable-eme=widevine
 ac_add_options --enable-jack
 ac_add_options --enable-jxl
@@ -270,9 +279,6 @@ END
       patch -d "$_pkgsrc_runtime" -Np1 -F100 -f -i "${srcdir:?}/$src"
     fi
   done
-
-  # fix wasm triplet
-  sed -E -e '/split_triplet/s&"wasm32-wasi"&"wasm32-wasip1"&' -i "$_pkgsrc_runtime/build/moz.configure/toolchain.configure"
 )
 
 build() (
