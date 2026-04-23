@@ -13,7 +13,7 @@ mkdir -p "$PKGDEST" "$SRCDEST" "$SRCPKGDEST"
 
 if [[ "${1:-}" == "--syncdeps" ]]; then
   shift
-  exec makepkg -s --cleanbuild "$@"
+  exec makepkg -s --noconfirm --cleanbuild "$@"
 fi
 
 exec makepkg --cleanbuild "$@"
