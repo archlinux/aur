@@ -8,9 +8,13 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-	note "If you use different nested shell, set SHELL to the working shell before initialization"
-	note "Default _PR_LIB set to /usr/lib/pay-respects"
-	note "Default _PR_PACKAGE_MANAGER set to pacman"
+	note "If you use different nested shells, set SHELL to the working shell before initialization"
+	note "Default values set by this package:
+	_PR_LIB: /usr/lib/pay-respects
+	_PACKAGE_MANAGER: pacman"
+	note "This package installs all modules including the AI module used as fallback.
+	Upstream's API key is included, so it works out of the box. No data collection.
+	If you rather to not use the AI module, add \`_PR_AI_DISABLE=1\` to your environment variables."
 }
 
 post_upgrade() {
