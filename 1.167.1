@@ -1,0 +1,12 @@
+diff '--exclude=.git' -ura --new-file ./actionswf-actionswf-1.167-0/csrc/Makefile actionswfnew/csrc/Makefile
+--- ./actionswf-actionswf-1.167-0/csrc/Makefile	2026-04-23 16:58:58.000000000 +0300
++++ actionswfnew/csrc/Makefile	2026-04-23 18:02:26.212137577 +0300
+@@ -53,7 +53,7 @@
+ #can't put headers at proj, will phony libactionswf.so
+ ${proj}: ${exte} ${eobs}
+ 	${OLINK} ${logs}
+-	$(CC) ${model} ${linkerflags} -shared ${eobs} -o $@ -L. -l:${exte} -Wl,--exclude-libs=${exte}
++	$(CC) ${model} ${linkerflags} -shared ${eobs} -o $@ `pkg-config --libs zlib` -L. -l:${exte} -Wl,--exclude-libs=${exte}
+ ${exte}: ${obs}
+ 	$(AR) cr ${exte} $^
+ # -e DllMain
