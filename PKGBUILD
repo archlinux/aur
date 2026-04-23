@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/spacefreak18/simapi"
 license=('GPL3')
 depends=(
+  props-ng
 )
 makedepends=(
   git
