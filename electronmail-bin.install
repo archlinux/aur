@@ -1,30 +1,13 @@
+#!/bin/bash
+
 post_install() {
-    :
-#!/bin/bash
-
-# Link to the binary
-ln -sf '/opt/ElectronMail/electron-mail' '/usr/local/bin/electron-mail'
-
-# SUID chrome-sandbox for Electron 5+
-chmod 4755 '/opt/ElectronMail/chrome-sandbox' || true
-
-update-mime-database /usr/share/mime || true
-update-desktop-database /usr/share/applications || true
-
+    update-mime-database /usr/share/mime || true
+    update-desktop-database /usr/share/applications || true
 }
-post_upgrade() {
-    :
-#!/bin/bash
 
-# SUID chrome-sandbox for Electron 5+
-chmod 4755 '/opt/ElectronMail/chrome-sandbox' || true
-
-}
 post_remove() {
-    :
-#!/bin/bash
-
-# Delete the link to the binary
-rm -f '/usr/local/bin/electron-mail'
-
+    update-mime-database /usr/share/mime || true
+    update-desktop-database /usr/share/applications || true
+    # remove legacy symlink from older package versions
+    rm -f /usr/local/bin/electron-mail    
 }
