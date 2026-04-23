@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>FiTui=fitui
 pkgname=fitui-git
 _pkgname=fitui
-pkgver=0.1.5.r0.g58d7d35
+pkgver=0.3.0.r0.g5d5abf5
 pkgrel=1
 pkgdesc='Terminal-based personal finance tracker'
 arch=('x86_64' 'aarch64')
