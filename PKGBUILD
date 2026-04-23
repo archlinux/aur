@@ -1,8 +1,8 @@
 # Maintainer: Youcef <youcef.nafa@gmail.com>
 pkgname=hermes-agent
-pkgver=0.10.0
-_tagver=2026.4.16
-pkgrel=4
+pkgver=0.11.0
+_tagver=2026.4.23
+pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
@@ -58,7 +58,7 @@ optdepends=(
   'python-sounddevice'
 )
 source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('ef999b93b487532c50f8ed42c3ac0141a52d128052ba0a0d0e90c6edc02e97fe')
+sha256sums=('1ee1be80a2112b7edc581770cee8858e725ba110cc423979cd7102492504bc6b')
 validpgpkeys=()
 install=hermes-agent.install
 
