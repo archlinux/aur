@@ -4,7 +4,7 @@ pkgbase=ddnsto-bin
 pkgname=ddnsto-bin
 _name=${pkgname%-bin}
 pkgver=4.0.7
-pkgrel=3
+pkgrel=5
 pkgdesc="DDNSTO is a stable, fast and easy-to-use intranet penetration tool"
 arch=(
     x86_64
@@ -30,7 +30,7 @@ source=(
 )
 sha256sums=('d6a33d0878dcc41dc65fb65b62fbe655365f9839418ec71e0cf520dfcdab8a4d'
             '99d7c3c20776645a08de44062cea1b32fd37288e35d61821e90c45e132dd5f14'
-            '8269ed5fd739199ca3daba3aed8d775a26e883d33f561d396cf23fb7255caff7'
+            '57f54bcf6013b0a2fe03923d4119a36cb8c6584f70b07dbd6d0c1d31f4fe8d72'
             'b068dcd630d7ce9a3b0bf904340f9438572d84cd4c75ad49102a274a4be37dd6'
             'a20a25596e5f868c77024245b036661e466689e8afed6c858c14e6d9699206ba')
 options=(!debug !strip emptydirs)
@@ -58,8 +58,9 @@ package() {
     install -vDm640 config.yaml -t ${pkgdir}/etc/ddnsto/
     install -vDm644 ${srcdir}/ddnsto.service -t ${pkgdir}/usr/lib/systemd/system/
     install -vdm755 ${pkgdir}/var/log/ddnsto \
-            ${pkgdir}/var/lib/ddnsto \
-            ${pkgdir}/srv/ddnsto
+            ${pkgdir}/var/lib/ddnsto
+
+    install -vdm775 ${pkgdir}/srv/ddnsto
 
     install -Dvm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/ddnsto.conf"
     install -Dvm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/ddnsto.conf"
