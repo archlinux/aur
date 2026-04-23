@@ -1,6 +1,6 @@
 pkgbase = kdenlive-appimage-pure
 	pkgdesc = A non-linear video editor for Linux using the MLT video framework (AppImage build)
-	pkgver = 25.12.3
+	pkgver = 26.04.0
 	pkgrel = 1
 	url = https://www.kdenlive.org
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kdenlive-appimage-pure
 	provides = kdenlive
 	conflicts = kdenlive
 	options = !strip
-	source_x86_64 = kdenlive-25.12.3-x86_64.AppImage::https://download.kde.org/stable/kdenlive/25.12/linux/kdenlive-25.12.3-x86_64.AppImage
-	sha256sums_x86_64 = 7c49e892ae7c156fcbdd4e481c66dea07ac9fb535bee87ebcc2b1178492170eb
+	source_x86_64 = kdenlive-26.04.0-x86_64.AppImage::https://download.kde.org/stable/kdenlive/26.04/linux/kdenlive-26.04.0-x86_64.AppImage
+	sha256sums_x86_64 = c16a15b2e0d5405d3f07100104699d9a0bd1c2217cc811cb1f5764cc99256e94
 
 pkgname = kdenlive-appimage-pure
