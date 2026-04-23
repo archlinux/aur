@@ -2,7 +2,7 @@
 _appname=tabby
 pkgname="${_appname}-electron-bin"
 _pkgname=Tabby
-pkgver=1.0.230
+pkgver=1.0.231
 _electronversion=38
 pkgrel=1
 pkgdesc="A terminal for a more modern age.(Prebuilt version.Use system-wide electron)"
@@ -36,9 +36,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-x64.rpm")
 sha256sums=('ac295694b9f56e90dce3cf58313ed891d0bd9178adec02d8503a0c07d9d34c68'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('3effb773529779da0296c0b7b551651d979944dd3aab8909444463545dd90b8d')
-sha256sums_armv7h=('ed4735c3139f0c7597de3e26e93f2a2e8ff01142d816cfd257aeeebc18793c5c')
-sha256sums_x86_64=('49ee5a8de3730db048a9e1e030d1b4f37d71c1c9cca8ec2d1f2fbeac5d5269cd')
+sha256sums_aarch64=('ac053c1dd350ff452a13e495653669dc49b582aec343af598fc7d23619190518')
+sha256sums_armv7h=('0b1f092c6b160dc0514f3cc66d154ac7c87a881a4c78636ce58729efc20ece98')
+sha256sums_x86_64=('183b823950d4e49dca1e9b127a0c5d25b35af2a2314647b1b773d790ca261a1d')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -57,28 +57,35 @@ prepare() {
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_appname}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/opt/${_pkgname}/resources/app.asar"
+    find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules" \
+        -type d \( -name "android-*" -o -name "darwin-*" -o -name "win32-*" \) \
+        -exec rm -rf {} +
     case "${CARCH}" in
         aarch64)
-            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{android-*,darwin-*,win32-*,linux-arm,linux-x64}
-            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/russh/"{russh.darwin*,russh.win32*,russh.linux-arm-g*,russh.linux-x64*}
+            find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules" \
+                -type d \( -name "linux-arm" -o -name "linux-x64" \) \
+                -exec rm -rf {} +
             ;;
         armv7h)
-            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{android-*,darwin-*,win32-*,linux-arm64,linux-x64}
-            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/russh/"{russh.darwin*,russh.win32*,russh.linux-arm64*,russh.linux-x64*}
+            find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules" \
+                -type d \( -name "linux-arm64" -o -name "linux-x64" \) \
+                -exec rm -rf {} +
             ;;
         x86_64)
-            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{android-*,darwin-*,linux-arm*,win32-*}
-            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/russh/"{russh.darwin*,russh.win32*,russh.linux-arm*}
+            find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules" \
+                -type d \( -name "linux-arm" -o -name "linux-arm64" \) \
+                -exec rm -rf {} +
             ;;
     esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/"{app.asar.unpacked,builtin-plugins,extras} "${pkgdir}/usr/lib/${pkgname%-bin}"
-    _icon_sizes=(32x32 128x128 256x256 512x512)
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/opt/${_pkgname}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    _icon_sizes=(16x16 32x32 64x64 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
