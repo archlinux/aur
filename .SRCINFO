@@ -1,0 +1,25 @@
+pkgbase = honeymux-bin
+	pkgdesc = A new UX layer for the terminal, built on tmux
+	pkgver = 0.102.2
+	pkgrel = 1
+	url = https://github.com/honeymux/honeymux
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = tmux
+	provides = hmx
+	conflicts = hmx
+	conflicts = honeymux
+	options = !strip
+	source = README-0.102.2.md::https://raw.githubusercontent.com/honeymux/honeymux/v0.102.2/README.md
+	source = LICENSE-0.102.2::https://raw.githubusercontent.com/honeymux/honeymux/v0.102.2/LICENSE
+	sha256sums = 83d95437b5dcc77a6ab79b970da1adf97bd697f080bfbacb1596791521d010f8
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = hmx-x86_64-0.102.2::https://github.com/honeymux/honeymux/releases/download/v0.102.2/hmx-linux-x64
+	sha256sums_x86_64 = eac625d5c251bfa8983b63ce4443f0f2a3bf716721718c4862faca9d95b516de
+	source_aarch64 = hmx-aarch64-0.102.2::https://github.com/honeymux/honeymux/releases/download/v0.102.2/hmx-linux-arm64
+	sha256sums_aarch64 = c9cea0fa68edecb222b36a51352d00026b33434dd48d46bb030217878b78c10e
+
+pkgname = honeymux-bin

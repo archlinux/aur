@@ -1,0 +1,5 @@
+[honeymux-bin]
+source = "github"
+github = "honeymux/honeymux"
+use_latest_release = true
+prefix = "v"
