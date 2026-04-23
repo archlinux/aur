@@ -1,8 +1,8 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=smolvm-bin
 _pkgname=smolvm
-pkgver=0.5.19
-pkgrel=2
+pkgver=0.5.20
+pkgrel=1
 pkgdesc='Tool to build & run portable, lightweight, self-contained virtual machines.'
 arch=('x86_64')
 url='https://github.com/smol-machines/smolvm'
@@ -15,7 +15,7 @@ conflicts=('smolvm-git' 'smolvm')
 source=("$_pkgname-$pkgver-bin.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz"
     "LICENSE::https://raw.githubusercontent.com/smol-machines/$_pkgname/refs/tags/v$pkgver/LICENSE"
     'use-system-libs.patch')
-sha256sums=('7acee4ad8e2ade57b74420b0aa173e126b65053f89b2461a00dfa5831f1757b2'
+sha256sums=('68431f36711c27dbb989e9ca55f42188a5788faab95a965a3f126481248efc1a'
             'ac6a4050f2f415a02f3c223ddee932a07de627bc143059e9a1ea9df088e46909'
             'a64059e9dacb770103a0edec5e8bb11dcd954d688f688d03bb2ade53a17d5f0b')
 
