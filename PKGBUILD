@@ -1,6 +1,6 @@
 pkgname=mux
-pkgver=0.16.0
-pkgrel=4
+pkgver=0.23.1
+pkgrel=1
 pkgdesc="Desktop app for isolated, parallel agentic development"
 arch=('x86_64')
 url='https://github.com/coder/mux'
@@ -8,7 +8,7 @@ license=('AGPL-3.0-only')
 depends=('electron' 'bash' 'git')
 makedepends=('bun' 'nodejs' 'npm' 'python' 'make')
 source=("mux-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1414891fbe5432da98300e0ea782d106b6ca9b5e84777e208641ed34641a1476')
+sha256sums=('fe0aa3aff6506500d2ad0b56793195af20353b732f635ada146f5b0784f6241f')
 options=('!strip' '!debug')
 
 build() {

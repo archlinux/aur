@@ -1,7 +1,7 @@
 pkgbase = mux
 	pkgdesc = Desktop app for isolated, parallel agentic development
-	pkgver = 0.16.0
-	pkgrel = 4
+	pkgver = 0.23.1
+	pkgrel = 1
 	url = https://github.com/coder/mux
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -15,7 +15,7 @@ pkgbase = mux
 	depends = git
 	options = !strip
 	options = !debug
-	source = mux-0.16.0.tar.gz::https://github.com/coder/mux/archive/refs/tags/v0.16.0.tar.gz
-	sha256sums = 1414891fbe5432da98300e0ea782d106b6ca9b5e84777e208641ed34641a1476
+	source = mux-0.23.1.tar.gz::https://github.com/coder/mux/archive/refs/tags/v0.23.1.tar.gz
+	sha256sums = fe0aa3aff6506500d2ad0b56793195af20353b732f635ada146f5b0784f6241f
 
 pkgname = mux
