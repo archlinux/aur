@@ -14,13 +14,21 @@ backup=("etc/${pkgname}/config.${pkgname}")
 source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${pkgname}-full-src.tar.xz")
 install="${pkgname}.install"
 sha256sums=('2a8236f24fc1e60ca350d5e23e94b91fba1746bfc6b6856bb4d8690eff6f9530')
+options=('!lto')
 
 prepare() {
 	sed -i '/^BUILD_ARGS :=/d' Makefile
 }
 
 build() {
-	export CFLAGS="-fno-stack-protector"
+	# Remove unsupported flags for the eBPF target
+	shopt -s extglob
+	CFLAGS=${CFLAGS/-march=+([^[:space:]])/}
+	CFLAGS=${CFLAGS/-mtune=+([^[:space:]])/}
+	CFLAGS=${CFLAGS/-fno-plt/}
+	CFLAGS=${CFLAGS/-fstack-clash-protection/}
+	CFLAGS=${CFLAGS/-fcf-protection/}
+
 	export CGO_ENABLED=1
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"

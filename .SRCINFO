@@ -12,6 +12,7 @@ pkgbase = dae
 	depends = glibc
 	depends = v2ray-domain-list-community
 	depends = v2ray-geoip
+	options = !lto
 	backup = etc/dae/config.dae
 	source = dae-1.1.0.tar.xz::https://github.com/daeuniverse/dae/releases/download/v1.1.0/dae-full-src.tar.xz
 	sha256sums = 2a8236f24fc1e60ca350d5e23e94b91fba1746bfc6b6856bb4d8690eff6f9530
