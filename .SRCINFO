@@ -1,7 +1,7 @@
 pkgbase = hls-livecam-server
 	pkgdesc = Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camstack monitor, and family presence features
-	pkgver = 2.7.3
-	pkgrel = 2
+	pkgver = 2.7.4
+	pkgrel = 1
 	url = https://github.com/thefangeddeity/hls-livecam-server
 	arch = any
 	license = GPL-3.0-or-later
@@ -11,9 +11,9 @@ pkgbase = hls-livecam-server
 	depends = python-psutil
 	depends = python-flask
 	depends = smartmontools
-	depends = v4l-utils
+	depends = v4l2-utils
 	depends = wget
-	source = hls-livecam-server-2.7.3.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v2.7.3.tar.gz
-	sha256sums = 67284dd05fbff5e20abb64f0da198d1b6be22396a35e541bb9191b915531f889
+	source = hls-livecam-server-2.7.4.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v2.7.4.tar.gz
+	sha256sums = 42081ac03f9fe135e62c8915236de19728de5aeef5c560c5af5a580d12fd66de
 
 pkgname = hls-livecam-server
