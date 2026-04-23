@@ -1,6 +1,6 @@
 # Maintainer: David Meents <dmeents@pm.me>
 pkgname=poe2-overlord-bin
-pkgver=0.0.3
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='A powerful companion app for Path of Exile 2'
 arch=('x86_64')
@@ -11,9 +11,8 @@ provides=('poe2-overlord')
 conflicts=('poe2-overlord')
 options=('!strip' '!debug')
 
-# Tauri names the deb after productName — spaces are URL-encoded in the download URL.
-# The local filename is normalized to avoid makepkg issues with spaces.
-source=("${pkgname}-${pkgver}.deb::https://github.com/dmeents/poe2-overlord/releases/download/v${pkgver}/POE2%20Overlord_${pkgver}_amd64.deb")
+# Tauri v2 normalizes spaces to dots in bundle filenames (productName "POE2 Overlord" → "POE2.Overlord").
+source=("${pkgname}-${pkgver}.deb::https://github.com/dmeents/poe2-overlord/releases/download/v${pkgver}/POE2.Overlord_${pkgver}_amd64.deb")
 sha256sums=('SKIP')
 
 package() {
