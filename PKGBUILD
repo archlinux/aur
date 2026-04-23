@@ -4,7 +4,7 @@ pkgbase=ddnsto-bin
 pkgname=ddnsto-bin
 _name=${pkgname%-bin}
 pkgver=4.0.7
-pkgrel=7
+pkgrel=9
 pkgdesc="DDNSTO is a stable, fast and easy-to-use intranet penetration tool"
 arch=(
     x86_64
@@ -32,7 +32,7 @@ sha256sums=('d6a33d0878dcc41dc65fb65b62fbe655365f9839418ec71e0cf520dfcdab8a4d'
             '99d7c3c20776645a08de44062cea1b32fd37288e35d61821e90c45e132dd5f14'
             '57f54bcf6013b0a2fe03923d4119a36cb8c6584f70b07dbd6d0c1d31f4fe8d72'
             'b068dcd630d7ce9a3b0bf904340f9438572d84cd4c75ad49102a274a4be37dd6'
-            'f4cb7ed1e2335a8f01f365d9e82764b936524fddda3bce1aa604a3b6aab702f5')
+            '687c5df253534475cfc2db4cc7f0cdc3ae11d95aa307fa74d84bc54da11c04c9')
 options=(!debug !strip emptydirs)
 
 package() {

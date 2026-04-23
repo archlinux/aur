@@ -25,7 +25,7 @@ sudo journalctl -u ddnsto -f
 xdg-open http://localhost:18088
 
 5. SSH 访问权限 / SSH Access Permission
-sudo gpasswd -a ddnsto $USER
+sudo gpasswd -a $USER ddnsto
 newgrp ddnsto
 
 🎁 推荐有奖活动
