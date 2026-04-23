@@ -1,18 +1,31 @@
 [Unit]
 Description=Prometheus Keepalived exporter
-After=network.target network-online.target basic.target keepalived.service
-Wants=network-online.target keepalived.service
-StartLimitIntervalSec=30
-StartLimitBurst=3
+Documentation=https://github.com/mehdy/keepalived-exporter
+Requires=network-online.target
+After=network-online.target nss-lookup.target basic.target keepalived.service
+Wants=network-online.target nss-lookup.target keepalived.service
 
 [Service]
-EnvironmentFile=-/etc/conf.d/prometheus-keepalived-exporter
-ExecStart=/usr/bin/prometheus-keepalived-exporter $OPTIONS
-Type=simple
-Restart=on-failure
-RestartSec=30
 User=prometheus-keepalived-exporter
 Group=prometheus-keepalived-exporter
+EnvironmentFile=-/etc/conf.d/prometheus-keepalived-exporter
+ExecStart=/usr/bin/prometheus-keepalived-exporter $KEEPALIVED_EXPORTER_ARGS
+ExecStop=/bin/kill -s SIGTERM $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+ProtectHostname=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictNamespaces=true
+MemoryDenyWriteExecute=true
+PrivateDevices=true
+CapabilityBoundingSet=
 
 [Install]
 WantedBy=multi-user.target

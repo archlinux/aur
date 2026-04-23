@@ -3,7 +3,7 @@
 
 pkgbase='keepalived-exporter'
 pkgname="prometheus-${pkgbase}"
-pkgver='1.7.0'
+pkgver='1.7.1'
 pkgrel='1'
 pkgdesc='Prometheus exporter for Keepalived'
 arch=('x86_64' 'aarch64')
@@ -12,13 +12,13 @@ url="https://${_uri}/${pkgbase}"
 license=('GPL')
 depends=('keepalived')
 makedepends=('go')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgbase}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgbase}/tar.gz/refs/tags/v${pkgver}"
 	"${pkgname}"
 	"${pkgname}.service"
 	"${pkgname}.sysusers")
-sha256sums=('9d07728737b0b28855c070e123a329fd6d59eaa74e45e9c8cd466bf7c35411e7'
-            '8dc0a0bc730eadc6b8fe352923d11bf3499744f187ca8854bb81b8a4578fd558'
-            'de3f9cdc0f25c576ca7346ea909a7099dce529483601ea2872ad242fff4db769'
+sha256sums=('e17022c7e1e63d145e473a17702ee1023c574db06bb460f9d6e39017c3c74bb4'
+            '3a1d17478bc66f0fc76ddd83ffd4d7ff116631fec915ea444b508789e2c5e89f'
+            '93e24524da013e81562b6c79fd323a41c2796409e47ca6dd04f8e16bfc92f8c7'
             'd52f807f4d965b4f8a22238013a3476a1accf941e962b9a0866e58e0ec4676f4')
 backup=("etc/conf.d/${pkgname}")
 
@@ -54,13 +54,13 @@ build() {
 
 check() {
   cd "${GOPATH}/src/${_uri}/${pkgbase}"
-  go test -x ./...
+  go test -modcacherw -x ./...
 }
 
 package() {
   install -Dm0755 "${GOPATH}/src/${_uri}/${pkgbase}/${pkgbase}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm0644 "${GOPATH}/src/${_uri}/${pkgbase}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm0644 "${pkgname}" -t "${pkgdir}/etc/conf.d"
-  install -Dm0644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
+  install -Dm0644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
   install -Dm0644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }

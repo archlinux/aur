@@ -1,1 +1,1 @@
-OPTIONS="--ka.json"
+KEEPALIVED_EXPORTER_ARGS="--ka.json"
