@@ -1,12 +1,13 @@
 pkgbase = cxxitimer
 	pkgdesc = A C++ Library to handle linux interval timer
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/nikolask-cpp-libs/cxxitimer
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cmake
+	makedepends = clang
 	source = git+https://gitlab.com/nikolask-cpp-libs/cxxitimer.git#tag=v2.0.5
 	sha256sums = SKIP
 
