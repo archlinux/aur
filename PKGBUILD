@@ -3,7 +3,7 @@
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
 pkgver=24.04.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -25,7 +25,7 @@ depends=(
   'python-pynacl'
   'python-systemd'
   'python-xlib'
-  'system76-firmware-git'
+  'system76-firmware'
   'usbutils'
   'wireless_tools'
 )
