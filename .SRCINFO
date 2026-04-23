@@ -1,6 +1,6 @@
 pkgbase = selx-git
 	pkgdesc = Minimal X11 selection tool
-	pkgver = 1.2.0.r12.g436a948
+	pkgver = 2.0.0.r0.gcff1781
 	pkgrel = 1
 	url = https://codeberg.org/NRK/selx
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=selx-git
 _pkgname=selx
-pkgver=1.2.0.r12.g436a948
+pkgver=2.0.0.r0.gcff1781
 pkgrel=1
 pkgdesc='Minimal X11 selection tool'
 url='https://codeberg.org/NRK/selx'
