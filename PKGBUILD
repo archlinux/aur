@@ -3,7 +3,7 @@ _pkgname=@appium/relaxed-caps-plugin
 _scope="${_pkgname%%/*}"
 _name="${_pkgname##*/}"
 pkgname="nodejs-${_scope//@/}-$_name"
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="An Appium 2.0 plugin that loosens requirements for vendor prefixes on caps"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_name-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('bd39c27f4b5186b9704522504491f9c231cdd03aeeff183238d68dc493179851')
+sha256sums=('b09b731c6bc6ed4d44070b509dc9ffd3d91132c217e3edcff8926869222515d9')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
