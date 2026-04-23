@@ -8,7 +8,7 @@ url="https://github.com/flossbud/ToonTown-MultiTool"
 license=('MIT')
 depends=(
     'python'
-    'python-pyside6'
+    'pyside6'
     'python-pynput'
     'python-requests'
     'python-keyring'
