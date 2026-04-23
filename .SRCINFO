@@ -1,7 +1,7 @@
 pkgbase = mlmmj
 	pkgdesc = Simple and slim mailing list manager (MLM) inspired by ezmlm
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/mlmmj/mlmmj
 	install = mlmmj.install
 	arch = aarch64

@@ -10,7 +10,7 @@ pkgname='mlmmj'
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 pkgver=2.0.0
 _pkgver=2_0_0
-pkgrel=1
+pkgrel=2
 _url='http://mlmmj.org/'
 url='https://codeberg.org/mlmmj/mlmmj'
 install="$pkgname.install"
@@ -39,6 +39,7 @@ build() {
     --mandir=/usr/share/man \
     --disable-tests
 
+  sed -i 's/CC=/CC\?=/g' mk/defs.mk
   make
 }
 
