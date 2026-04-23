@@ -2,7 +2,7 @@
 # Contributor: David Čuček <observ33r@gmail.com>
 
 pkgname="code-translucent"
-pkgver=1.108.2
+pkgver=1.117.0
 pkgrel=1
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
@@ -19,6 +19,7 @@ license=("MIT")
 
 conflicts=("code-oss")
 provides=("code-oss")
+options=('!strip' '!debug')
 
 depends=(
 	"libxkbfile"
@@ -58,7 +59,7 @@ sha512sums=(
 	"SKIP"
 	"9de3f195e711814e1e457e8ccb6383c6000bc83ee707f2bc138fe66c3cf6c35a6e9c755594afb5fbf8c4f05c3c87f7f3b8714e7947b62094ead6f5f1b81f5b24"
 	"9deb0da4eb9fb989e892a5743b99c50acc64dddcd33d2a8517d0a48eb12476dac3a8c5238fa40b64c6c3e89fa3cc399135ebf1f795f9029871cf61d25418e2c6"
-	"fbb45add197dd780c97bdc41beaae1f27883d996e51b3f5ed03fc2e9c80dac5747397fe206a2891a4e9c07334e223bb55c01e6d57f7abab099ff6ccbe6ff0d5a"
+	"b59983bdcb5a5cdc1884458c6c0e7b0cf8aff801e68dfd3866ded637ff9363f7bd99d9ecc3898552ac8bc1c96ab8325791fba76bb695cc2fcea21138abff51fd"
 	"6234842d41d9cb6cdd27766e35804644c59a39b43a92f2243b18525dc69d954d1e9dcd4297538de3dfd26051c7035d1ebb04f849a69208afa8214e42160c18dd"
 )
 
@@ -89,7 +90,8 @@ prepare() {
 	cd "${srcdir}/${pkgname}"
 
 	# Apply patch to source
-	patch -p1 < "../translucent.patch"
+	patch -p1 -i "../translucent.patch"
+	#patch -p1 -i "../extension-signature.patch"
 
 	# Replace product json
 	cp --update=all "../product.json" "."
@@ -122,6 +124,9 @@ prepare() {
 	# Patch completitions with correct names
 	sed -i 's|@@APPNAME@@|code-oss|g' "resources/completions/"{bash/code-oss,zsh/_code-oss}
 
+	# upstream has a compatibility issue with npm but it doesn't affect packaging
+	# so remove the check
+	sed -i '/Please use npm version < 11.2.0./{n;d}' build/npm/preinstall.ts
 }
 
 build() {
