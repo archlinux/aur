@@ -1,0 +1,16 @@
+pkgbase = evplayer2-bin
+	pkgdesc = 一唯EV加密播放器，Wine封装版
+	pkgver = 4.8.2
+	pkgrel = 1
+	url = https://www.ieway.cn/evplayer2.html
+	arch = x86_64
+	license = custom
+	makedepends = innoextract
+	makedepends = icoutils
+	depends = wine-staging
+	depends = winetricks
+	depends = xdg-utils
+	source = https://ctpublic.ieway.cn/public/download/EVPlayer2_v4.8.2.exe
+	sha256sums = SKIP
+
+pkgname = evplayer2-bin
