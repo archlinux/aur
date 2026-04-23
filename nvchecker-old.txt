@@ -6,7 +6,7 @@
       "url": "https://archlinux.org/packages/core/x86_64/bzip2/"
     },
     "ssl": {
-      "version": "3.6.2-1",
+      "version": "3.6.2-2",
       "url": "https://archlinux.org/packages/core/x86_64/openssl/"
     },
     "xz": {
