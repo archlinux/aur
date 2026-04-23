@@ -1,4 +1,4 @@
-# Maintainer: Kyle Chang <kylechang96@gmail.com>
+# Maintainer: ksc98 <ksc98@users.noreply.github.com>
 pkgname=nba-tv-bin
 pkgver=0.1.3
 pkgrel=1
