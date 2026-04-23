@@ -28,6 +28,13 @@ xdg-open http://localhost:18088
 sudo gpasswd -a ddnsto $USER
 newgrp ddnsto
 
+🎁 推荐有奖活动
+您将获得 一条免费的 4Mbps 高速隧道，有效期 3个月！
+🎁 Referral Rewards Program
+you'll receive a free 4Mbps high-speed tunnel​ valid for 3 months!
+
+xdg-open https://web.ddnsto.com/app/#/login?aff=9XNFUYO6
+
 ================================
 EOF
 }
