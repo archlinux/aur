@@ -1,0 +1,5 @@
+[tmpreaper]
+source = "regex"
+url = "https://sources.debian.org/src/tmpreaper/"
+regex = '/src/tmpreaper/(\d\.\d\.\d{1,})'
+
