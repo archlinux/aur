@@ -1,0 +1,243 @@
+diff --git a/src/proto/gui_athena.pro b/src/proto/gui_athena.pro
+index e7cf0f196..a834dac4a 100644
+--- a/src/proto/gui_athena.pro
++++ b/src/proto/gui_athena.pro
+@@ -1,2 +1,31 @@
+ /* gui_athena.c */
++void gui_x11_create_widgets(void);
++void gui_x11_destroy_widgets(void);
++void gui_mch_set_toolbar_pos(int x, int y, int w, int h);
++void gui_mch_set_text_area_pos(int x, int y, int w, int h);
++void gui_x11_set_back_color(void);
++void gui_mch_enable_menu(int flag);
++void gui_mch_set_menu_pos(int x, int y, int w, int h);
++void gui_mch_add_menu(vimmenu_T *menu, int idx);
++void gui_mch_new_menu_font(void);
++void gui_mch_new_tooltip_font(void);
++void gui_mch_new_tooltip_colors(void);
++void gui_mch_add_menu_item(vimmenu_T *menu, int idx);
++void gui_mch_show_toolbar(int showit);
++int gui_mch_compute_toolbar_height(void);
++void gui_mch_get_toolbar_colors(Pixel *bgp, Pixel *fgp, Pixel *bsp, Pixel *tsp, Pixel *hsp);
++void gui_mch_toggle_tearoffs(int enable);
++void gui_mch_new_menu_colors(void);
++void gui_mch_destroy_menu(vimmenu_T *menu);
++void gui_mch_show_popupmenu(vimmenu_T *menu);
++void gui_mch_def_colors(void);
++void gui_mch_set_scrollbar_thumb(scrollbar_T *sb, long val, long size, long max);
++void gui_mch_set_scrollbar_pos(scrollbar_T *sb, int x, int y, int w, int h);
++void gui_mch_enable_scrollbar(scrollbar_T *sb, int flag);
++void gui_mch_create_scrollbar(scrollbar_T *sb, int orient);
++void gui_mch_destroy_scrollbar(scrollbar_T *sb);
++void gui_mch_set_scrollbar_colors(scrollbar_T *sb);
++Window gui_x11_get_wid(void);
++char_u *gui_mch_browse(int saving, char_u *title, char_u *dflt, char_u *ext, char_u *initdir, char_u *filter);
++int gui_mch_dialog(int type, char_u *title, char_u *message, char_u *buttons, int dfltbutton, char_u *textfield, int ex_cmd);
+ /* vim: set ft=c : */
+diff --git a/src/proto/gui_beval.pro b/src/proto/gui_beval.pro
+index 97aaf13bf..4edb45c16 100644
+--- a/src/proto/gui_beval.pro
++++ b/src/proto/gui_beval.pro
+@@ -1,2 +1,9 @@
+ /* gui_beval.c */
++BalloonEval *gui_mch_create_beval_area(void *target, char_u *mesg, void (*mesgCB)(BalloonEval *, int), void *clientData);
++void gui_mch_destroy_beval_area(BalloonEval *beval);
++void gui_mch_enable_beval_area(BalloonEval *beval);
++void gui_mch_disable_beval_area(BalloonEval *beval);
++BalloonEval *gui_mch_currently_showing_beval(void);
++void gui_mch_post_balloon(BalloonEval *beval, char_u *mesg);
++void gui_mch_unpost_balloon(BalloonEval *beval);
+ /* vim: set ft=c : */
+diff --git a/src/proto/gui_gtk_x11.pro b/src/proto/gui_gtk_x11.pro
+index e4578e625..3f2604480 100644
+--- a/src/proto/gui_gtk_x11.pro
++++ b/src/proto/gui_gtk_x11.pro
+@@ -26,7 +26,7 @@ int gui_mch_maximized(void);
+ void gui_mch_unmaximize(void);
+ void gui_mch_newfont(void);
+ void gui_mch_set_shellsize(int width, int height, int min_width, int min_height, int base_width, int base_height, int direction);
+-void gui_gtk_get_screen_geom_of_win(int *wid, int *screen_x, int *screen_y, int *width, int *height);
++void gui_gtk_get_screen_geom_of_win(GtkWidget *wid, int *screen_x, int *screen_y, int *width, int *height);
+ void gui_mch_get_screen_dimensions(int *screen_w, int *screen_h);
+ void gui_mch_settitle(char_u *title, char_u *icon);
+ void gui_mch_enable_menu(int showit);
+diff --git a/src/proto/gui_motif.pro b/src/proto/gui_motif.pro
+index 2098be406..493f5e78c 100644
+--- a/src/proto/gui_motif.pro
++++ b/src/proto/gui_motif.pro
+@@ -1,2 +1,46 @@
+ /* gui_motif.c */
++void gui_x11_create_widgets(void);
++void gui_x11_destroy_widgets(void);
++void gui_mch_set_text_area_pos(int x, int y, int w, int h);
++void gui_x11_set_back_color(void);
++void manage_centered(Widget dialog_child);
++XmFontList gui_motif_create_fontlist(XFontStruct *font);
++XmFontList gui_motif_fontset2fontlist(XFontSet *fontset);
++void gui_mch_enable_menu(int flag);
++void gui_motif_set_mnemonics(int enable);
++void gui_mch_add_menu(vimmenu_T *menu, int idx);
++void gui_mch_toggle_tearoffs(int enable);
++int gui_mch_text_area_extra_height(void);
++void gui_mch_compute_menu_height(Widget id);
++void gui_mch_add_menu_item(vimmenu_T *menu, int idx);
++void gui_motif_update_mousemodel(vimmenu_T *menu);
++void gui_mch_new_menu_colors(void);
++void gui_mch_new_menu_font(void);
++void gui_mch_new_tooltip_font(void);
++void gui_mch_new_tooltip_colors(void);
++void gui_mch_destroy_menu(vimmenu_T *menu);
++void gui_mch_show_popupmenu(vimmenu_T *menu);
++void gui_mch_def_colors(void);
++void gui_mch_set_scrollbar_thumb(scrollbar_T *sb, long val, long size, long max);
++void gui_mch_set_scrollbar_pos(scrollbar_T *sb, int x, int y, int w, int h);
++void gui_mch_enable_scrollbar(scrollbar_T *sb, int flag);
++void gui_mch_create_scrollbar(scrollbar_T *sb, int orient);
++void gui_mch_destroy_scrollbar(scrollbar_T *sb);
++void gui_mch_set_scrollbar_colors(scrollbar_T *sb);
++Window gui_x11_get_wid(void);
++char_u *gui_mch_browse(int saving, char_u *title, char_u *dflt, char_u *ext, char_u *initdir, char_u *filter);
++int gui_mch_dialog(int type, char_u *title, char_u *message, char_u *button_names, int dfltbutton, char_u *textfield, int ex_cmd);
++void gui_mch_enable_footer(int showit);
++void gui_mch_set_footer(char_u *s);
++void gui_mch_show_toolbar(int showit);
++int gui_mch_compute_toolbar_height(void);
++void motif_get_toolbar_colors(Pixel *bgp, Pixel *fgp, Pixel *bsp, Pixel *tsp, Pixel *hsp);
++void gui_mch_show_tabline(int showit);
++int gui_mch_showing_tabline(void);
++void gui_mch_update_tabline(void);
++void gui_mch_set_curtab(int nr);
++void gui_motif_menu_fontlist(Widget id);
++void gui_mch_find_dialog(exarg_T *eap);
++void gui_mch_replace_dialog(exarg_T *eap);
++void gui_motif_synch_fonts(void);
+ /* vim: set ft=c : */
+diff --git a/src/proto/gui_xmdlg.pro b/src/proto/gui_xmdlg.pro
+index 794c5cee7..256fad78c 100644
+--- a/src/proto/gui_xmdlg.pro
++++ b/src/proto/gui_xmdlg.pro
+@@ -1,2 +1,3 @@
+ /* gui_xmdlg.c */
++char_u *gui_xm_select_font(char_u *current);
+ /* vim: set ft=c : */
+diff --git a/src/proto/if_lua.pro b/src/proto/if_lua.pro
+index 8612fea4f..c33678e13 100644
+--- a/src/proto/if_lua.pro
++++ b/src/proto/if_lua.pro
+@@ -1,2 +1,11 @@
+ /* if_lua.c */
++int lua_enabled(int verbose);
++void lua_end(void);
++void ex_lua(exarg_T *eap);
++void ex_luado(exarg_T *eap);
++void ex_luafile(exarg_T *eap);
++void lua_buffer_free(buf_T *o);
++void lua_window_free(win_T *o);
++void do_luaeval(char_u *str, typval_T *arg, typval_T *rettv);
++int set_ref_in_lua(int copyID);
+ /* vim: set ft=c : */
+diff --git a/src/proto/if_python.pro b/src/proto/if_python.pro
+index 022a776b1..51054caf2 100644
+--- a/src/proto/if_python.pro
++++ b/src/proto/if_python.pro
+@@ -1,2 +1,13 @@
+ /* if_python.c */
++int python_enabled(int verbose);
++void python_end(void);
++int python_loaded(void);
++void ex_python(exarg_T *eap);
++void ex_pyfile(exarg_T *eap);
++void ex_pydo(exarg_T *eap);
++void python_buffer_free(buf_T *buf);
++void python_window_free(win_T *win);
++void python_tabpage_free(tabpage_T *tab);
++void do_pyeval(char_u *str, typval_T *rettv);
++int set_ref_in_python(int copyID);
+ /* vim: set ft=c : */
+diff --git a/src/proto/if_python3.pro b/src/proto/if_python3.pro
+index e8c7a8914..4e71ad2a0 100644
+--- a/src/proto/if_python3.pro
++++ b/src/proto/if_python3.pro
+@@ -1,2 +1,13 @@
+ /* if_python3.c */
++int python3_enabled(int verbose);
++void python3_end(void);
++int python3_loaded(void);
++void ex_py3(exarg_T *eap);
++void ex_py3file(exarg_T *eap);
++void ex_py3do(exarg_T *eap);
++void python3_buffer_free(buf_T *buf);
++void python3_window_free(win_T *win);
++void python3_tabpage_free(tabpage_T *tab);
++void do_py3eval(char_u *str, typval_T *rettv);
++int set_ref_in_python3(int copyID);
+ /* vim: set ft=c : */
+diff --git a/src/proto/if_ruby.pro b/src/proto/if_ruby.pro
+index 30e1df610..cc7c7e6c1 100644
+--- a/src/proto/if_ruby.pro
++++ b/src/proto/if_ruby.pro
+@@ -1,2 +1,11 @@
+ /* if_ruby.c */
++int ruby_enabled(int verbose);
++void ruby_end(void);
++void ex_ruby(exarg_T *eap);
++void ex_rubydo(exarg_T *eap);
++void ex_rubyfile(exarg_T *eap);
++void ruby_buffer_free(buf_T *buf);
++void ruby_window_free(win_T *win);
++void vim_ruby_init(void *stack_start);
++void do_rubyeval(char_u *str, typval_T *rettv);
+ /* vim: set ft=c : */
+diff --git a/src/proto/mbyte.pro b/src/proto/mbyte.pro
+index 011389258..cbfa90961 100644
+--- a/src/proto/mbyte.pro
++++ b/src/proto/mbyte.pro
+@@ -83,6 +83,7 @@ void xim_init(void);
+ void im_shutdown(void);
+ int im_xim_isvalid_imactivate(void);
+ void xim_reset(void);
++int xim_queue_key_press_event(GdkEventKey *event, int down);
+ int im_get_status(void);
+ int preedit_get_status(void);
+ int im_is_preediting(void);
+diff --git a/src/proto/os_win32.pro b/src/proto/os_win32.pro
+index 41c8d3283..e60ce92ca 100644
+--- a/src/proto/os_win32.pro
++++ b/src/proto/os_win32.pro
+@@ -71,7 +71,7 @@ void used_file_arg(char *name, int literal, int full_path, int diff_mode);
+ void set_alist_count(void);
+ void fix_arg_enc(void);
+ int mch_setenv(char *var, char *value, int x);
+-void get_default_console_color(int *cterm_fg, int *cterm_bg, long *gui_fg, long *gui_bg);
++void get_default_console_color(int *cterm_fg, int *cterm_bg, guicolor_T *gui_fg, guicolor_T *gui_bg);
+ void control_console_color_rgb(void);
+ int use_vtp(void);
+ int is_term_win32(void);
+diff --git a/src/proto/sound.pro b/src/proto/sound.pro
+index 8c170137c..ad1c2b530 100644
+--- a/src/proto/sound.pro
++++ b/src/proto/sound.pro
+@@ -1,3 +1,10 @@
+ /* sound.c */
+ int has_any_sound_callback(void);
++int has_sound_callback_in_queue(void);
++void invoke_sound_callback(void);
++void f_sound_playevent(typval_T *argvars, typval_T *rettv);
++void f_sound_playfile(typval_T *argvars, typval_T *rettv);
++void f_sound_stop(typval_T *argvars, typval_T *rettv);
++void f_sound_clear(typval_T *argvars, typval_T *rettv);
++void sound_free(void);
+ /* vim: set ft=c : */
+diff --git a/src/proto/termlib.pro b/src/proto/termlib.pro
+index f7b1c6a0f..3dd120f18 100644
+--- a/src/proto/termlib.pro
++++ b/src/proto/termlib.pro
+@@ -1,2 +1,8 @@
+ /* termlib.c */
++int tgetent(char *tbuf, char *term);
++int tgetflag(char *id);
++int tgetnum(char *id);
++char *tgetstr(char *id, char **buf);
++char *tgoto(char *cm, int col, int line);
++int tputs(char *cp, int affcnt, void (*outc)(unsigned int));
+ /* vim: set ft=c : */

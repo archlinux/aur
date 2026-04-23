@@ -20,6 +20,7 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "2026-04-23-regen-protos.patch"
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
