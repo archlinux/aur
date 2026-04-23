@@ -49,8 +49,7 @@ _source_octopi() {
   sha256sums+=("${_cksum_octopi:-SKIP}")
 
   _prepare_octopi() (
-    # fix qt-sudo path
-    sed 's&usr/local&usr&g' -i "$_pkgsrc_octopi/src/constants.h"
+    :
   )
 
   _build_octopi() (
