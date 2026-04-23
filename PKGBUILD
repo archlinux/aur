@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=ekphos-git
 _pkgname="${pkgname%-git}"
-pkgver=0.5.0.r147.g1ac1ab6
+pkgver=0.5.0.r148.g4250850
 pkgrel=1
 pkgdesc='A lightweight, fast, terminal-based markdown research tool inspired by Obsidian'
 arch=(x86_64 aarch64)
