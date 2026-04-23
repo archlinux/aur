@@ -1,0 +1,14 @@
+pkgbase = ocaml-eqaf
+	pkgdesc = Constant time equal function to avoid timing attacks in OCaml
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/mirage/eqaf
+	arch = x86_64
+	license = MIT
+	makedepends = dune
+	makedepends = ocaml-findlib
+	depends = ocaml-cstruct
+	source = https://github.com/mirage/eqaf/releases/download/v0.10/eqaf-0.10.tbz
+	sha256sums = 67d1369c57c4d2d14a10d02632d45e355224abeb98aec08979c0bae5843092ee
+
+pkgname = ocaml-eqaf

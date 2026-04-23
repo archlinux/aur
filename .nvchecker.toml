@@ -1,0 +1,5 @@
+[ocaml-eqaf]
+source = 'github'
+github = 'mirage/eqaf'
+use_max_tag = true
+prefix = 'v'
