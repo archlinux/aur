@@ -11,7 +11,7 @@ pkgver=150.0.0_1
 _fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
 _librewolfver="${pkgver#*_}"
 _firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 url="https://librewolf.net/"
 arch=(x86_64 aarch64)
@@ -107,7 +107,8 @@ options=(
 install='librewolf.install'
 source=(
   https://codeberg.org/api/packages/librewolf/generic/librewolf-source/$_firefoxver-$_librewolfver/librewolf-$_firefoxver-$_librewolfver.source.tar.gz{,.sig}
-  0002-Bug-2033279-Make-enable-rust-simd-work-with-Rust-1.9.patch
+  https://codeberg.org/librewolf/source/raw/commit/dacb8a18763458eb247b72bb2f19829eff7a68f6/patches/rust-build.patch
+  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/46fcb2e50f2bd92c640ec57978178b609bba15c2/0002-Bug-2033279-Make-enable-rust-simd-work-with-Rust-1.9.patch
   https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/46fcb2e50f2bd92c640ec57978178b609bba15c2/0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
   https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/46fcb2e50f2bd92c640ec57978178b609bba15c2/0004-Bug-2023597-Use-wasm32-wasip1-target-for-clang-22.1-.patch
   $pkgname.desktop
@@ -116,7 +117,8 @@ source=(
 
 sha256sums=('e93d39180d74ea9e07d9a7cae7a441cc6e790f64e053f2b7e168cc490b043034'
             'SKIP'
-            '4b77f910db4994384f3f76c9fa3cd2214a9f8b0b2d525328d82ee4bdc1bf3941'
+            '547306e19cda7bbadeba9e1989882ff71f30e2bb2dad4441e8ef79d64fb4dc8a'
+            '9f10d9bfcaa3a8dd86a8654431f820716a45a72a885c29fd6359bccc7bcdaefa'
             'f579e02644ef9c29da5cd61d2c9213ba1c3f7a1aa8abf601bdf07cbbbadb1ce3'
             'd6e1dbafe56bc52c8ab6cbf9542cf80e89c1857a71ce08bbbd82804909bcb76f'
             '3d6ac59ae9d5ba4c9fe15f95c1338fa68214dec6119f8432336403e3be50f8ae'
@@ -194,6 +196,10 @@ fi
 
   # reduce chance of builds failung during linking due to running out of memory
   export LDFLAGS+=" -Wl,--no-keep-memory"
+
+  # revert LW upstream way to address rust build issues, so Arch upstream's patches can apply cleanly
+  sed -i 's/b9432f9ed39742015f4bb4c3e75c89a2b9a9eef943dd0fd7cd889fddd1e6d39c/9456ca46168ef86c98399a2536f577ef7be3cdde90c0c51392d8ac48519d3fae/g' third_party/rust/encoding_rs/.cargo-checksum.json
+  patch -Rp1 -i ../rust-build.patch
 
   # upstream Arch fixes
 
