@@ -1,36 +1,33 @@
 post_install() {
   cat <<'EOF'
-:: omarchy-prayer installed.
+:: omarchy-prayer installed. Run this once as your user:
 
-First run:
-    omarchy-prayer adhans list       # pick an adhan audio
-    omarchy-prayer adhans download makkah
-    omarchy-prayer adhans set makkah
-    omarchy-prayer                   # open the TUI (auto-detects location via IP)
+    omarchy-prayer
 
-Enable the daily scheduler + resume hook:
-    systemctl --user enable --now omarchy-prayer-schedule.timer
-    systemctl --user enable omarchy-prayer-resume.service
+It will:
+  - geolocate via IP and seed ~/.config/omarchy-prayer/config.toml
+  - download the default Makkah (+ Madinah for Fajr) adhan audio
+  - inject the custom/prayer widget into ~/.config/waybar/config.jsonc
+    (your original is backed up to config.jsonc.bak.omarchy-prayer-<ts>)
+  - enable the --user schedule timer + resume hook
 
-Waybar module snippet:
-    "custom/prayer": {
-      "exec": "omarchy-prayer-waybar",
-      "interval": 30,
-      "return-type": "json",
-      "on-click": "alacritty -e omarchy-prayer",
-      "on-click-right": "omarchy-prayer-stop",
-      "tooltip": true
-    }
+Re-run setup at any time:
+    omarchy-prayer setup
 
 Optional Hyprland keybind (append to ~/.config/hypr/bindings.conf):
     bind = SUPER CTRL, M, exec, omarchy-prayer-stop
-
-Config lives at ~/.config/omarchy-prayer/config.toml (seeded on first run).
 EOF
 }
 
 post_upgrade() {
-  echo ":: omarchy-prayer upgraded. Restart waybar if the module's JSON shape changed."
+  cat <<'EOF'
+:: omarchy-prayer upgraded.
+
+  - Run `omarchy-prayer setup` once to apply any new defaults (waybar widget,
+    default adhans, systemd units) if you haven't already.
+  - If the waybar module's JSON shape changed, reload waybar:
+      pkill -SIGUSR2 waybar
+EOF
 }
 
 post_remove() {
