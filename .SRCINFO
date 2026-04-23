@@ -1,7 +1,7 @@
 pkgbase = code-translucent
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!
 	pkgver = 1.117.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/microsoft/vscode
 	arch = x86_64
 	arch = i686
@@ -38,7 +38,7 @@ pkgbase = code-translucent
 	sha512sums = SKIP
 	sha512sums = 9de3f195e711814e1e457e8ccb6383c6000bc83ee707f2bc138fe66c3cf6c35a6e9c755594afb5fbf8c4f05c3c87f7f3b8714e7947b62094ead6f5f1b81f5b24
 	sha512sums = 9deb0da4eb9fb989e892a5743b99c50acc64dddcd33d2a8517d0a48eb12476dac3a8c5238fa40b64c6c3e89fa3cc399135ebf1f795f9029871cf61d25418e2c6
-	sha512sums = b59983bdcb5a5cdc1884458c6c0e7b0cf8aff801e68dfd3866ded637ff9363f7bd99d9ecc3898552ac8bc1c96ab8325791fba76bb695cc2fcea21138abff51fd
+	sha512sums = 6843d249ce2410ca613a5a9a7f6a44b772d7c487651d2befb67a51df76bbdcf1a2b6de643b032d3ddeb1a5920f9b1872f0f2f95dc9a16acf3771ec1fc8ce05a0
 	sha512sums = 6234842d41d9cb6cdd27766e35804644c59a39b43a92f2243b18525dc69d954d1e9dcd4297538de3dfd26051c7035d1ebb04f849a69208afa8214e42160c18dd
 
 pkgname = code-translucent
