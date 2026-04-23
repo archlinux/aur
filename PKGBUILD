@@ -15,7 +15,7 @@ source=(
   'codex-app-linux-26.422.20832-beta.2024.launcher.15-x64.png::https://github.com/better-slop/codex-app-linux/releases/download/v26.422.20832-beta.2024.launcher.15/codex-app-linux-26.422.20832-beta.2024.launcher.15-x64.png'
 )
 sha256sums=(
-  '8df6a22c0327dd8bf198ae73f860ec4f97063902fc031aa7fb6c5607ee073786'
+  'c849828a218c7fb38492656315237e192e55fa308fee388ff22cf9d85f2b30ba'
   '1c926e380bfe6a50f40648dd9bc5de88da7271546491adf99ec72172e17df6a0'
 )
 
