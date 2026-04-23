@@ -1,6 +1,6 @@
 pkgbase = classfi-git
 	pkgdesc = A simple classical music player
-	pkgver = 0.1.0.r0.g4af3333
+	pkgver = 0.1.1.r0.g2efaa3f
 	pkgrel = 1
 	url = https://github.com/carmiac/classfi
 	arch = x86_64

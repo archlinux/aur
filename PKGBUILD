@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=classfi-git
 _pkgname=classfi
-pkgver=0.1.0.r0.g4af3333
+pkgver=0.1.1.r0.g2efaa3f
 pkgrel=1
 pkgdesc='A simple classical music player'
 arch=('x86_64' 'aarch64' 'riscv64')
