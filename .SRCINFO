@@ -1,6 +1,6 @@
 pkgbase = linux-tpm453-mainline
 	pkgdesc = Hardware-specific CachyOS mainline kernel for Acer TMP453-M class hardware
-	pkgver = 7.0.0.r20260422.g31d2c7db1c9
+	pkgver = 7.0.1.r20260423.ga3418d70e28
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
@@ -27,14 +27,12 @@ pkgbase = linux-tpm453-mainline
 	options = !strip
 	options = !debug
 	options = !lto
-	source = linux-31d2c7db1c919a5b0b60eb9d88c80415c04238b5.tar.gz::https://codeload.github.com/CachyOS/linux/tar.gz/31d2c7db1c919a5b0b60eb9d88c80415c04238b5
+	source = linux-a3418d70e282c6275d5eeccf0f019051666fa856.tar.gz::https://codeload.github.com/CachyOS/linux/tar.gz/a3418d70e282c6275d5eeccf0f019051666fa856
 	source = config
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/misc/dkms-clang.patch
-	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/sched/0001-bore-cachy.patch
-	sha256sums = 1359fd4bb5f35c19a53c6eb2feb9d7f198e291f9f53f38494e56162a1f6ec2df
+	sha256sums = ffbe464da5925767dbf985e9d406507aca513ff269ee50348591ed6be7e65daa
 	sha256sums = fa32a9d7b1961b366a59d107006a9728da9d89f06e32d1ef51e44fa6b9a55801
 	sha256sums = 6f45ef083841792e88fbadbfefb0630abd738a131f9782333fbc61f8b6712b4b
-	sha256sums = 71b77f8610d4e7b75663b18a417c7451a38c3bf9f5c9281d4946c9df346bdab2
 
 pkgname = linux-tpm453-mainline
 	pkgdesc = The Hardware-specific CachyOS mainline kernel for Acer TMP453-M class hardware kernel and modules
@@ -52,7 +50,7 @@ pkgname = linux-tpm453-mainline
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
-	provides = linux-cachyos-lto=7.0.0.r20260422.g31d2c7db1c9-1
+	provides = linux-cachyos-lto=7.0.1.r20260423.ga3418d70e28-1
 	replaces = linux-cachyos-lto
 
 pkgname = linux-tpm453-mainline-headers
@@ -71,5 +69,5 @@ pkgname = linux-tpm453-mainline-headers
 	depends = llvm
 	depends = lld
 	provides = LINUX-HEADERS
-	provides = linux-cachyos-lto-headers=7.0.0.r20260422.g31d2c7db1c9-1
+	provides = linux-cachyos-lto-headers=7.0.1.r20260423.ga3418d70e28-1
 	replaces = linux-cachyos-lto-headers

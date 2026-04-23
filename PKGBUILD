@@ -20,7 +20,7 @@
 # 'eevdf' - select 'EEVDF Scheduler'
 # 'rt' - select EEVDF, but includes a series of realtime patches
 # 'rt-bore' - select Burst-Oriented Response Enhancer, but includes a series of realtime patches
-: "${_cpusched:=bore}"
+: "${_cpusched:=eevdf}"
 
 ### Tweak kernel options prior to a build via nconfig
 : "${_makenconfig:=no}"
@@ -179,16 +179,16 @@ _custom_kernsuffix="${_custom_pkgbase#linux-}"
 
 pkgbase="$_custom_pkgbase"
 _major=7.0
-_minor=0
+_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
-pkgver=7.0.0.r20260422.g31d2c7db1c9
-_tagrel=2
+pkgver=7.0.1.r20260423.ga3418d70e28
+_tagrel=3
 pkgrel=1
-_srcname=linux-31d2c7db1c919a5b0b60eb9d88c80415c04238b5
+_srcname=linux-a3418d70e282c6275d5eeccf0f019051666fa856
 pkgdesc='Hardware-specific CachyOS mainline kernel for Acer TMP453-M class hardware'
 _kernver="$pkgver-$pkgrel"
-_source_kernelver="7.0.0"
+_source_kernelver="7.0.1"
 _kernuname="${_source_kernelver}-${_custom_kernsuffix}"
 arch=('x86_64')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -218,7 +218,7 @@ _nv_ver=595.58.03
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
-    "${_srcname}.tar.gz::https://codeload.github.com/CachyOS/linux/tar.gz/31d2c7db1c919a5b0b60eb9d88c80415c04238b5"
+    "${_srcname}.tar.gz::https://codeload.github.com/CachyOS/linux/tar.gz/a3418d70e282c6275d5eeccf0f019051666fa856"
     "config")
 
 # LLVM makedepends
@@ -297,7 +297,7 @@ _apply_tpm453_profile() {
         -d MZEN4 \
         -e X86_NATIVE_CPU \
         -e CACHY \
-        -e SCHED_BORE \
+        -d SCHED_BORE \
         -e LTO_CLANG_THIN \
         -d LTO_NONE \
         -d LTO_CLANG_FULL \
@@ -927,7 +927,6 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('1359fd4bb5f35c19a53c6eb2feb9d7f198e291f9f53f38494e56162a1f6ec2df'
+sha256sums=('ffbe464da5925767dbf985e9d406507aca513ff269ee50348591ed6be7e65daa'
             'fa32a9d7b1961b366a59d107006a9728da9d89f06e32d1ef51e44fa6b9a55801'
-            '6f45ef083841792e88fbadbfefb0630abd738a131f9782333fbc61f8b6712b4b'
-            '71b77f8610d4e7b75663b18a417c7451a38c3bf9f5c9281d4946c9df346bdab2')
+            '6f45ef083841792e88fbadbfefb0630abd738a131f9782333fbc61f8b6712b4b')
