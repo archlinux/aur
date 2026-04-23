@@ -1,95 +1,67 @@
 #!/bin/bash
 
-pre_install() {
-    echo -e "==================== 准备安装 1Panel ===================="
-
-    # 删除旧版的1pctl
-    if [ -f "/usr/bin/1pctl" ]; then
-        echo -e "\033[32m警告: \033[0m发现/usr/bin/1pctl，正在删除"
-        rm /usr/bin/1pctl
-    fi
-    # 判断 /var/lib/1p 是否存在
-    if [ -d "/var/lib/1p/1panel-agent" ]; then
-        echo -e "\033[32m警告: \033[0m/var/lib/1p/1panel-agent 目录已存在，可能会影响 1Panel 的初始化。"
-    fi
-    if [ -d "/var/lib/1p/1panel-core" ]; then
-        echo -e "\033[32m警告: \033[0m/var/lib/1p/1panel-core 目录已存在，可能会影响 1Panel 的初始化。"
-    fi
-}
-
 post_install() {
-    # Detecting if docker and docker-compose are successfully installed.
-    if pacman -Qs docker >/dev/null 2>&1; then
-        echo -e "\033[32mDocker 已成功安装.\033[0m"
-    else
-        echo -e "\033[33m警告: Docker 未安装，请安装它，否则 1Panel 的大部分服务将无法使用。\033[0m"
-    fi
-    if pacman -Qs docker-compose >/dev/null 2>&1; then
-        echo -e "\033[32mDocker-compose 已成功安装。\033[0m"
-    else
-        echo -e "\033[33m警告: docker-compose 未安装，请安装它，否则 1Panel 应用商店将无法使用。\033[0m"
-    fi
-    echo -e "\033[31m使用默认的用户名和密码将是一个十分危险的行为！！！\033[0m."
-    echo -e "请务必在启动 \033[34m1panel.service\033[0m 之后修改 033[34m/etc/1panel.conf\033[0m 来设置您的用户名和密码！"
-    echo -e ""
-    echo -e "==================== 1Panel 安装完成 ===================="
+    pacman -Qs docker >/dev/null 2>&1 || \
+        echo -e "\033[33mWarning:\033[0m Docker is not installed. Most 1Panel services will not work without it."
+
+    pacman -Qs docker-compose >/dev/null 2>&1 || \
+        echo -e "\033[33mWarning:\033[0m docker-compose is not installed. The 1Panel app store will not work without it."
+
+    echo -e "\033[31mDo not use the default username and password.\033[0m"
+    echo -e "After installation, update the credentials in \033[34m/etc/1panel.conf\033[0m before using 1Panel."
+    echo -e "The configuration file has moved from \033[34m1pctl\033[0m to \033[34m/etc/1panel.conf\033[0m."
 }
 
 pre_remove() {
-    echo -e "==================== 准备卸载 1Panel ===================="
-    echo -e "\033[34m正在停止 systemd 服务...\033[0m"
+    echo "Stopping systemd services..."
     systemctl disable --now 1panel-agent
     systemctl disable --now 1panel-core
 }
 
 post_remove() {
-    echo -e "请手动备份 \033[34m/var/lib/1p/1panel\033[0m 目录后删除它。"
-    echo -e "==================== 1Panel 卸载完成 ===================="
+    echo -e "Please back up and remove \033[34m/var/lib/1p/1panel\033[0m manually."
 }
 
 pre_upgrade() {
     export no_need_start="false"
-    echo -e "==================== 准备更新 1Panel ===================="
-    if systemctl is-active --quiet 1panel-core; then
-        echo -e "检测到1panel-core服务正在运行，正在临时停止 1panel-core 服务..."
+
+    systemctl is-active --quiet 1panel-core && {
+        echo "1panel-core is running, stopping it temporarily..."
         systemctl stop 1panel-core
         export _restart_1panel_core_service=true
-    fi
-    if systemctl is-active --quiet 1panel-agent; then
-        echo -e "检测到1panel-agent服务正在运行，正在临时停止 1panel-agent 服务..."
+    }
+
+    systemctl is-active --quiet 1panel-agent && {
+        echo "1panel-agent is running, stopping it temporarily..."
         systemctl stop 1panel-agent
         export _restart_1panel_agent_service=true
-    fi
+    }
 }
 
-
 post_upgrade() {
-
-    # To upgrade version in config,
-    # if no version in conf nor config exists, program will crash.
+    # Update the recorded original version in the configuration file.
+    # If the version field is missing from the configuration, 1Panel may fail to start.
     conf_file="/etc/1panel.conf"
 
-    if [[ -f "$conf_file" ]]; then
-        # uses pkgver replace the ORIGINAL_VERSION
+    [ ! -f "$conf_file" ] || \
         sed -i "s/^ORIGINAL_VERSION=.*/ORIGINAL_VERSION=v${clean_ver//_/-}/" "$conf_file"
-    fi
-    
-    # There is no offical support for this command,
-    # but i founded it in sourcecode, to update versions in databases.
-    # Please modify it only when upstream changse how version is checks.
-    1panel update version v${pkgver}
 
-    if [ -n "${_restart_1panel_agent_service+x}" ]; then
-        echo -e "正在重启服务..."
+    # Update the version stored in the internal database.
+    # This command is not officially documented upstream, but it is used internally by 1Panel.
+    # Adjust this only if upstream changes the way version checks are handled.
+    1panel update version "v${pkgver}"
+
+    [ -z "${_restart_1panel_agent_service+x}" ] || {
+        echo "Restarting 1panel-agent..."
         systemctl daemon-reload
         systemctl start 1panel-agent
         unset _restart_1panel_agent_service
-        
-    fi
-    if [ -n "${_restart_1panel_core_service+x}" ]; then
-        echo -e "正在重启服务..."
+    }
+
+    [ -z "${_restart_1panel_core_service+x}" ] || {
+        echo "Restarting 1panel-core..."
         systemctl daemon-reload
         systemctl start 1panel-core
         unset _restart_1panel_core_service
-    fi
+    }
 }
