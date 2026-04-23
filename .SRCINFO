@@ -14,7 +14,8 @@ pkgbase = wayshot
 	depends = libjxl
 	depends = mesa
 	depends = wayland
-	optdepends = slurp: alternative for region selection
+	optdepends = slurp: region selection
+	optdepends = waysip: region selection
 	source = git+https://github.com/waycrate/wayshot#tag=v1.4.6
 	b2sums = 8dadc05753a46bd43b37e50b2f8c7bdb85e7cb254054e779cb04497656ae685a12ce1d03d9efa6072675a42e969f33dab7814a75dfed69f5dbff0b7af86c9dda
 
