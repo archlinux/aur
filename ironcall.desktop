@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=
+Exec=ironcall
+StartupWMClass=ironcall
+Icon=ironcall
+Name=Ironcall
+Terminal=false
+Type=Application
