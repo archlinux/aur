@@ -1,7 +1,7 @@
 # Maintainer: javabetatester <birisesports@gmail.com>
 pkgname=hydra-ensemble-bin
 _pkgname=hydra-ensemble
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Cross-platform multi-session terminal for Claude Code"
 arch=('x86_64')
@@ -12,10 +12,10 @@ optdepends=('github-cli: PR Inspector feature')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
-source=("hydra-ensemble-0.2.7.AppImage::https://github.com/javabetatester/hydra-ensemble/releases/download/v0.2.7/Hydra.Ensemble-0.2.7.AppImage"
+source=("hydra-ensemble-0.2.8.AppImage::https://github.com/javabetatester/hydra-ensemble/releases/download/v0.2.8/Hydra.Ensemble-0.2.8.AppImage"
         "hydra-ensemble.desktop"
-        "hydra-ensemble.png::https://raw.githubusercontent.com/javabetatester/hydra-ensemble/v0.2.7/resources/icon.png")
-sha256sums=('79cf6224876ac5925729864b524cdbfa1dd99291d3c3e20ed180467099e70556'
+        "hydra-ensemble.png::https://raw.githubusercontent.com/javabetatester/hydra-ensemble/v0.2.8/resources/icon.png")
+sha256sums=('25e82e3d695311fc774e830743aa67c76f1b08a4e851775452223596c837636a'
             'SKIP'
             'SKIP')
 noextract=("${_pkgname}-${pkgver}.AppImage")
