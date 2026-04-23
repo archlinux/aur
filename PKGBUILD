@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=zlob-git
 _pkgname=zlob
-pkgver=1.2.9.r1.g5882d53
+pkgver=1.3.3.r0.g73cf013
 pkgrel=1
 pkgdesc='A fast SIMD-accelerated glob pattern matcher'
 url='https://github.com/dmtrKovalenko/zlob'
