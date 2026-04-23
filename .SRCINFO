@@ -1,7 +1,7 @@
 pkgbase = the-honkers-railway-launcher-bin
 	pkgdesc = A launcher for a specific anime game with auto-patching, discord rpc and time tracking
-	pkgver = 1.14.4
-	pkgrel = 2
+	pkgver = 1.14.5
+	pkgrel = 1
 	url = https://github.com/an-anime-team/the-honkers-railway-launcher
 	arch = x86_64
 	license = GPL3
@@ -22,10 +22,10 @@ pkgbase = the-honkers-railway-launcher-bin
 	optdepends = gamemode: Game Optimizations
 	optdepends = gamescope: a tool from Valve that allows for games to run in an isolated Xwayland instance
 	provides = the-honkers-railway-launcher
-	source = the-honkers-railway-launcher_1.14.4::https://github.com/an-anime-team/the-honkers-railway-launcher/releases/download/1.14.4/honkers-railway-launcher
+	source = the-honkers-railway-launcher_1.14.5::https://github.com/an-anime-team/the-honkers-railway-launcher/releases/download/1.14.5/honkers-railway-launcher
 	source = icon.png
 	source = the-honkers-railway-launcher.desktop
-	md5sums = 0c98d14b1e5957df08745bb1b62ad9b2
+	md5sums = 6c378bd711105737adf365a3edc3670a
 	md5sums = 3a9757edaaa59d9696ffc1ffacdafb30
 	md5sums = 3817083b3f90f0ec4e5290a914dcaa9b
 
