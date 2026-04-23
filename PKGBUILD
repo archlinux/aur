@@ -1,6 +1,6 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=sherpa
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="A particle physics package for Monte Carlo simulation of collider events."
 arch=('x86_64' 'i686')
@@ -8,7 +8,7 @@ url="https://sherpa-team.gitlab.io/"
 license=('GPL3')
 depends=('lhapdf' 'fastjet' 'hepmc' 'openmpi' 'openloops' 'rivet' 'root' 'pythia8')
 source=(https://gitlab.com/sherpa-team/sherpa/-/archive/v$pkgver/sherpa-v$pkgver.tar.gz)
-md5sums=('8e8ec1a8f9c1c5b9044553255651f4d2')
+md5sums=('d27fd1c773878556bd5d61e01ab2e10f')
 
 build() {
     cd "$srcdir/sherpa-v$pkgver"

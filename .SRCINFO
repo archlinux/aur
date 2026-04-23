@@ -1,6 +1,6 @@
 pkgbase = sherpa
 	pkgdesc = A particle physics package for Monte Carlo simulation of collider events.
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://sherpa-team.gitlab.io/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = sherpa
 	depends = rivet
 	depends = root
 	depends = pythia8
-	source = https://gitlab.com/sherpa-team/sherpa/-/archive/v3.0.3/sherpa-v3.0.3.tar.gz
-	md5sums = 8e8ec1a8f9c1c5b9044553255651f4d2
+	source = https://gitlab.com/sherpa-team/sherpa/-/archive/v3.0.4/sherpa-v3.0.4.tar.gz
+	md5sums = d27fd1c773878556bd5d61e01ab2e10f
 
 pkgname = sherpa
