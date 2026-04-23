@@ -1,6 +1,6 @@
 pkgbase = repolyze
 	pkgdesc = Analyze a git source code repository for health signals and project vitals
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/coderaiser/cloudcmd
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = repolyze
 	makedepends = jq
 	depends = nodejs
 	provides = repolyze
-	noextract = repolyze-1.4.0.tgz
+	noextract = repolyze-1.5.0.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = repolyze-1.4.0.tgz::https://registry.npmjs.org/repolyze/-/repolyze-1.4.0.tgz
-	b2sums = 73b686985eb5707db45100a306df95d6fc2bf20a845deeeb7d8c181d808c4358b449b69f5f4bb4a1d981481f6ddd6e85b3634ede862e6e433eef2d3358e7a486
+	source = repolyze-1.5.0.tgz::https://registry.npmjs.org/repolyze/-/repolyze-1.5.0.tgz
+	b2sums = be7db079de405163c407ed583a254dd4cccb5c35d6d1653b7c0a6c6f32e56841e7d225121176a067645172e51ab51673eef3e3c25f8c98939a53ae0fcb303c83
 
 pkgname = repolyze
