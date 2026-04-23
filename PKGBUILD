@@ -142,6 +142,9 @@ source=(
   0003-Use-wasm32-wasip1-target.patch
   0004-update-rust-bindgen-to-fix-clang22-build.patch.xz
   0005-skia-m142-update.patch.xz
+
+  # Fix for rust 1.95
+  0006-encoding_rs-rust-1.95.patch
 )
 sha256sums=(
   'SKIP'
@@ -156,6 +159,7 @@ sha256sums=(
   '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
   '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
   'e11aba9839824096f07ca5dc17c9fd5bfa09209f8261ab09f7e473f350a82760'
+  'b55a77a837a808dce0f0e0f5f2c0e787fb56658550991ca39f40365837f145d7'
 )
 
 _make_icecat() (
