@@ -1,7 +1,7 @@
 # Maintainer: adityaphra <aditya.phra@gmail.com>
 
 pkgname="sing-box-glibc-bin"
-pkgver="1.13.9"
+pkgver="1.13.11"
 pkgrel="1"
 pkgdesc="The universal proxy platform (CGO binary version)"
 provides=("sing-box")
@@ -27,9 +27,9 @@ sha256sums=('a828ee277711a6b376c8cf4c9a1f73458ca39ef262dd9d2a726f63111ff19e09'
             '927315d96d5681a1c019de450b2bb4de3d0e56e6db4fd619dc13c925b37e5405'
             '77d1b5fbcfe27e3effbe382c574f3bde140ca4eb18fab76faa31e147f74b7f71'
             '44f3e5d85740b26c9f4d5cbbddfced42fce98bdf6fd8d28e1480b93c9edf18d6')
-sha256sums_x86_64=('4bb88d113806c2b2fb21318eff37451c309bf98d35203f71e51ed48f70cb7ca1')
-sha256sums_armv7h=('9939bda0fc9f0ab16ecd7ac5918ee3cd997e3f9c49aeca3b74a2e988cccb1182')
-sha256sums_aarch64=('b47262fea1098224799f46836b29fbbe15ad88414d44e63070de675c24664fd6')
+sha256sums_x86_64=('6744b0c59275235df7d21fa0c6c6e8eca477d7ad1fe1e549f71693bc1195723c')
+sha256sums_armv7h=('51f776a6e8918129f2e0ed5791defe35565d62d4b447d2a03fbbbaf5eb0a6f7b')
+sha256sums_aarch64=('e45bf7f90da39abeb8a80ba6e68d7e6aaf39c0f8babd678af4c85c73f420137f')
 
 package() {
     install -Dm644 sing-box.service -t "$pkgdir/usr/lib/systemd/system"
