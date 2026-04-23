@@ -1,7 +1,7 @@
 pkgbase = librepods
 	pkgdesc = AirPods liberated from Apple's ecosystem
-	pkgver = 0.2.0alpha2
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/kavishdevar/librepods
 	arch = x86_64
 	license = GPL-3.0-only
@@ -17,8 +17,8 @@ pkgbase = librepods
 	depends = qt6-base
 	depends = qt6-connectivity
 	depends = qt6-declarative
-	source = librepods::git+https://github.com/kavishdevar/librepods.git#tag=v0.2.0-alpha.2
+	source = librepods::git+https://github.com/kavishdevar/librepods.git#tag=v0.2.0
 	validpgpkeys = 2D58709F32193AA828ED43D72DBD7F9150AB7E67
-	b2sums = a4b8270797e9db96531a479edab382e1402c7faaa319a34d4f55814202b181282abdb2d9b8a51359a958424753e9669d83fb46596fcd519bbfdb81f2ea796399
+	b2sums = df958ceaae874c95ecdad0ad119aea483aa68d81011cc3f4270b3052d0261bc36843b660287e774bfe02ea497366e9a25bd668efa317f24c4ecd826b7087ec72
 
 pkgname = librepods
