@@ -1,6 +1,6 @@
 pkgbase = drawio-live-bin
 	pkgdesc = Diagram drawing application desktop built on web technology (Live version)
-	pkgver = 29.7.8
+	pkgver = 29.6.6
 	pkgrel = 1
 	url = https://www.drawio.com
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = drawio-live-bin
 	conflicts = drawio
 	conflicts = drawio-desktop
 	conflicts = drawio-desktop-bin
-	source = LICENSE-29.7.8::https://raw.githubusercontent.com/jgraph/drawio-desktop/refs/heads/dev/LICENSE
-	source = drawio-amd64-29.7.8.deb::https://github.com/jgraph/drawio-desktop/releases/download/v29.7.8/drawio-amd64-29.7.8.deb
+	source = LICENSE-29.6.6::https://raw.githubusercontent.com/jgraph/drawio-desktop/refs/heads/dev/LICENSE
+	source = drawio-amd64-29.6.6.deb::https://github.com/jgraph/drawio-desktop/releases/download/v29.6.6/drawio-amd64-29.6.6.deb
 	sha256sums = SKIP
 	sha256sums = SKIP
 
