@@ -1,7 +1,7 @@
 pkgbase = lpx-git
 	pkgdesc = Terminal Animated GIF Viewer
-	pkgver = 0.1.0.r2.g0bf2888
-	pkgrel = 2
+	pkgver = 0.1.0.r7.g3d60af2
+	pkgrel = 1
 	url = https://github.com/lusingander/lpx
 	arch = x86_64
 	arch = aarch64

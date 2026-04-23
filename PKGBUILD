@@ -1,8 +1,8 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>FiTui=fitui
 pkgname=lpx-git
 _pkgname=lpx
-pkgver=0.1.0.r2.g0bf2888
-pkgrel=2
+pkgver=0.1.0.r7.g3d60af2
+pkgrel=1
 pkgdesc='Terminal Animated GIF Viewer'
 arch=('x86_64' 'aarch64')
 url='https://github.com/lusingander/lpx'
