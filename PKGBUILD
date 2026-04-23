@@ -7,7 +7,7 @@
 # Contributor: iboyperson <tjquillan at gmail dot com>
 # Contributor: Alessandro Pazzaglia <jackdroido at gmail dot com>
 pkgname=pyinstaller
-pkgver=6.19.0
+pkgver=6.20.0
 pkgrel=1
 pkgdesc="Bundles a Python application and all its dependencies into a single package"
 arch=('x86_64')
@@ -23,11 +23,14 @@ depends=(
   'python'
   'python-altgraph'
   'python-gobject'
+  'python-importlib-metadata'
   'python-matplotlib'
   'python-packaging'
+  'python-pefile'
   'python-pillow'
   'python-pkg_resources'
   'python-psutil'
+  'python-pytest'
   'python-setuptools'
   'python-six'
   'python-urllib3'
@@ -49,7 +52,7 @@ makedepends=(
 optdepends=('python-argcomplete: tab completion for CLI tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v$pkgver.tar.gz"
         'fortify-source-fix.diff')
-sha256sums=('caf7e26b0043d221df5c8c968b58be5046765c84c6ad16e7e35d9d26a63aa1bb'
+sha256sums=('6b3e452fafd70d88e07a0d8a318ffc38b6b88397abcbd4f22e8fdd305cfa30c1'
             '46f7cfd082570a3f4c138a868e55dc39deacccbff602ce7e70d033236566fa1b')
 
 prepare() {
