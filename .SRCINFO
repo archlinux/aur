@@ -14,7 +14,7 @@ pkgbase = witsy-git
 	depends = electron38
 	provides = witsy=3.5.1
 	conflicts = witsy
-	source = witsy.git::git+https://github.com/nbonamy/witsy.git
+	source = witsy.git::git+https://github.com/Kochava-Studios/witsy.git
 	source = witsy.sh
 	sha256sums = SKIP
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
