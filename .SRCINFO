@@ -1,15 +1,15 @@
 pkgbase = langfuse-cli
 	pkgdesc = Interact with Langfuse API from the command line
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/langfuse/langfuse-cli
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = langfuse-cli-0.0.8.tgz
+	noextract = langfuse-cli-0.0.9.tgz
 	options = !strip
-	source = https://registry.npmjs.org/langfuse-cli/-/langfuse-cli-0.0.8.tgz
-	sha256sums = 9f2d189c0aac75f90c44eb5bd82f8abda52dc580a436c945fed7fb2dbbcb015d
+	source = https://registry.npmjs.org/langfuse-cli/-/langfuse-cli-0.0.9.tgz
+	sha256sums = 8eeee2a80ddcdc1b7006d97296fe6cd686effb62ee065f73b1547cda62a65f7a
 
 pkgname = langfuse-cli
