@@ -20,7 +20,8 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  git config --add safe.directory "$HOME/.cache/flutter_sdk"
+  export GIT_CONFIG_GLOBAL="$srcdir/.gitconfig"
+  git config --global --add safe.directory '*'
   flutter config --no-analytics
   flutter pub get
 }
