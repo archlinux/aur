@@ -2,7 +2,7 @@
 
 pkgname=opentubex-git
 _pkgname=OpenTubeX
-pkgver=r10273.08b241344
+pkgver=r10363.30ed336c4
 pkgrel=1
 pkgdesc='A fork of the open source desktop YouTube player FreeTube with additional features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ license=('AGPL-3.0-or-later')
 depends=('electron41')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-makedepends=('git' 'npm' 'yarn')
+makedepends=('git' 'npm' 'pnpm')
 source=("git+$url"
         opentubex.desktop
         opentubex.sh)
@@ -31,8 +31,8 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  yarn install --frozen-lockfile
-  yarn build
+  pnpm install --frozen-lockfile
+  pnpm build
 }
 
 package() {
