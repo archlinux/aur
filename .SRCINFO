@@ -1,7 +1,7 @@
 pkgbase = ksud
 	pkgdesc = KernelSU userspace cli
 	pkgver = 3.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kernelsu.org/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = ksud
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = magiskboot-bin
+	depends = zstd
 	source = KernelSU-3.2.4.tar.gz::https://github.com/tiann/KernelSU/archive/v3.2.4.tar.gz
 	source = android12-5.10_kernelsu_3.2.4.ko::https://github.com/tiann/KernelSU/releases/download/v3.2.4/android12-5.10_kernelsu.ko
 	source = android13-5.10_kernelsu_3.2.4.ko::https://github.com/tiann/KernelSU/releases/download/v3.2.4/android13-5.10_kernelsu.ko

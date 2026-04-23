@@ -2,12 +2,12 @@
 
 pkgname=ksud
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='KernelSU userspace cli'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://kernelsu.org/'
 license=('GPL-3.0-or-later')
-depends=('magiskboot-bin')
+depends=('magiskboot-bin' 'zstd')
 makedepends=('cargo')
 _srcname='KernelSU'
 source=("$_srcname-$pkgver.tar.gz::https://github.com/tiann/$_srcname/archive/v$pkgver.tar.gz"
@@ -48,6 +48,12 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+
+    # workaround: static linking to Rust crate `zstd-sys`'
+    # vendored `libzstd.a` library will cause some issue when
+    # `options=(lto)` is turned on, so we link dynamically
+    # to system zstd library to prevent this from happening
+    export ZSTD_SYS_USE_PKG_CONFIG=1
 
     cargo build --frozen --release --all-features
 }
