@@ -1,0 +1,4 @@
+[ocaml-stdlib-random]
+source = 'github'
+github = 'ocaml/stdlib-random'
+use_max_tag = true
