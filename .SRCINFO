@@ -1,6 +1,6 @@
 pkgbase = simple-sc
 	pkgdesc = A simple PipeWire screen recording utility for Linux
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/directmusic/simple-sc
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = simple-sc
 	depends = dbus
 	depends = ffmpeg
 	provides = simple-sc
-	source = git+https://github.com/directmusic/simple-sc.git
+	source = git+https://github.com/directmusic/simple-sc.git#tag=v0.1.1
 	sha256sums = SKIP
 
 pkgname = simple-sc

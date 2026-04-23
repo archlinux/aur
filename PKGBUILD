@@ -1,6 +1,6 @@
 # Maintainer: Joseph Lyncheski <directmusic94@gmail.com>
 pkgname=simple-sc
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A simple PipeWire screen recording utility for Linux"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libpipewire' 'dbus' 'ffmpeg')
 makedepends=('base-devel' 'cmake' 'libpipewire' 'dbus' 'libportal' 'ffmpeg')
 provides=("$pkgname")
-source=("git+$url.git")
+source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
