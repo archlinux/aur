@@ -1,11 +1,12 @@
 pkgname=kernel-mitigations-off
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Pacman hook to check and launch rebuild of AUR packages affected by updates'
 arch=('x86_64')
 url='https://github.com/Emiliopg91/kernel-mitigations-off'
 license=('GPL-2')
 depends=(
+  'pacman'
   'python'
 )
 source=(
