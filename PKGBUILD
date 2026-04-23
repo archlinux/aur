@@ -6,7 +6,7 @@
 pkgname=mawkawk
 pkgdesc='Re-point /usr/bin/awk symlink to mawk'
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 install="$pkgname.install"
 arch=('any')
 license=('0BSD')  # SPDX-License-Identifier: 0BSD
