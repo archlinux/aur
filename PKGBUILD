@@ -4,7 +4,8 @@
 
 _variant=gaokun3
 pkgbase=linux-$_variant
-pkgver=$((curl -sf https://raw.githubusercontent.com/gregkh/linux/refs/heads/master/Makefile || exit 1) | sed -Ez 's/.*VERSION = ([1-9]+)\nPATCHLEVEL = ([0-9]+)\nSUBLEVEL = ([0-9]+\n).*/\1.\2.\3/')
+# kernel.org may be protected, https://raw.githubusercontent.com/gregkh/linux/refs/heads/master/Makefile
+pkgver=$((curl -sf 'https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/Makefile?h=linux-rolling-stable' || exit 1) | sed -Ez 's/.*VERSION = ([1-9]+)\nPATCHLEVEL = ([0-9]+)\nSUBLEVEL = ([0-9]+\n).*/\1.\2.\3/')
 _branch="${pkgver%.*}.y"
 pkgrel=1
 pkgdesc='Linux for HUAWEI MateBook E Go (sc8280xp)'
