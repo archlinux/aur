@@ -1,7 +1,7 @@
 pkgbase = openssl-aegis
 	pkgdesc = OpenSSL with AEGIS cipher support added
 	pkgver = 3.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aegis-aead/openssl
 	arch = x86_64
 	license = Apache-2.0

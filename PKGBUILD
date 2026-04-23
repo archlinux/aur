@@ -4,7 +4,7 @@
 _pkgname=openssl
 pkgname="$_pkgname-aegis"
 pkgver=3.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenSSL with AEGIS cipher support added'
 arch=('x86_64')
 url="https://github.com/aegis-aead/$_pkgname"
@@ -34,7 +34,8 @@ build() {
 	cd "$srcdir/$_pkgname-$_pkgname-$pkgver-aegis"
 
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared enable-ktls enable-ec_nistp_64_gcc_128 linux-${CARCH}
+		shared enable-ktls enable-brotli enable-zlib enable-zstd \
+                enable-ec_nistp_64_gcc_128 linux-${CARCH}
 
 	make depend
 	make
