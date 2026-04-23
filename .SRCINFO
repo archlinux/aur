@@ -1,14 +1,23 @@
 pkgbase = zsh-patina-bin
 	pkgdesc = A blazingly fast Zsh syntax highlighter
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/michel-kraemer/zsh-patina
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
 	license = MIT
-	depends = gcc-libs
+	depends = libgcc
 	conflicts = zsh-patina-git
 	conflicts = zsh-patina
-	source = https://github.com/michel-kraemer/zsh-patina/releases/download/1.5.0/zsh-patina-v1.5.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 5b1b8863d69d7fd20b793f8299fa78c66b594a0cb9c70f8701c05b467460b879
+	source_x86_64 = https://github.com/michel-kraemer/zsh-patina/releases/download/1.5.0/zsh-patina-v1.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 5b1b8863d69d7fd20b793f8299fa78c66b594a0cb9c70f8701c05b467460b879
+	source_aarch64 = https://github.com/michel-kraemer/zsh-patina/releases/download/1.5.0/zsh-patina-v1.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = c13d61f19750d872cb1dc000680820d5c6ee98adc593dd490d794194735eac79
+	source_armv7h = https://github.com/michel-kraemer/zsh-patina/releases/download/1.5.0/zsh-patina-v1.5.0-arm-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = 89a21b116fa4e08d1e67ae2b3084ff9a55536b97ebf7a4cb0301d53f6568accf
+	source_i686 = https://github.com/michel-kraemer/zsh-patina/releases/download/1.5.0/zsh-patina-v1.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = cdf27d70928f9857226c8709ae51f5257e66e2bba14e1084b0dc078b431a1c5a
 
 pkgname = zsh-patina-bin
