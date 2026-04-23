@@ -1,16 +1,25 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=photogimp
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GIMP config overlay that mimics Adobe Photoshop layout and shortcuts"
 arch=('any')
 url="https://github.com/Diolinux/PhotoGIMP"
 license=('GPL-3.0-only')
 depends=('gimp')
 source=("${pkgname}-${pkgver}.zip::https://github.com/Diolinux/PhotoGIMP/releases/download/${pkgver}/PhotoGIMP-linux.zip"
-        "LICENSE-${pkgver}::https://raw.githubusercontent.com/Diolinux/PhotoGIMP/${pkgver}/LICENSE")
+        "LICENSE-${pkgver}::https://raw.githubusercontent.com/Diolinux/PhotoGIMP/${pkgver}/LICENSE"
+        "photogimp-shortcuts-fix.patch::https://github.com/Diolinux/PhotoGIMP/commit/df8d6d30216bd3940f59ed898ede020df93781ce.patch")
 sha256sums=('1af6e2a6308bbc0fb716a7dbbd68036adbcc091da16432869c7c6c6aef18e54e'
-            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+            '18747c44702f637dcbd26040b1ee9b8d0d864f07e6722038f24f8d88b1239674')
+
+prepare() {
+    cd "${srcdir}/PhotoGIMP-linux"
+
+    # Carry the upstream shortcuts fix until it lands in a tagged release.
+    patch -Np1 -i "${srcdir}/photogimp-shortcuts-fix.patch"
+}
 
 package() {
     cd "${srcdir}/PhotoGIMP-linux"
