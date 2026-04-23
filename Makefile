@@ -52,9 +52,9 @@ update_tag: ## get and update newest version in PKGBUILD
 
 test: ## test (needs make packaging)
 	docker build -t arch:arch-package-test -f $(MAKEFILE_DIR)/Dockerfile $(MAKEFILE_DIR)
-	rm -f ./tencentcloud-sdk-python-*.pkg.tar.xz
-	source ../tencentcloud-sdk-python/PKGBUILD && cp ../tencentcloud-sdk-python/tencentcloud-sdk-python-$${pkgver}-$${pkgrel}-any.pkg.tar.xz .
-	docker run -it --rm -v $(MAKEFILE_DIR):/work -w /work arch:arch-package-test ./test.sh
+	source ../tencentcloud-sdk-python/PKGBUILD && \
+	cp -a ../tencentcloud-sdk-python/tencentcloud-sdk-python-$${pkgver}-$${pkgrel}-any.pkg.tar.xz . && \
+	docker run -it -e sdk_pkgver=$${pkgver} -e sdk_pkgrel=$${pkgrel} --rm -v $(MAKEFILE_DIR):/work -w /work arch:arch-package-test ./test.sh
 	namcap PKGBUILD
 	source ./PKGBUILD && namcap "$${pkgname}-$${pkgver}-$${pkgrel}-any.pkg.tar.xz"
 
