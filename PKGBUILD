@@ -1,7 +1,7 @@
 # Maintainer: <agustinballesteros04@gmail.com>
 pkgname=pinchtab-bin
 _pkgname=pinchtab
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="High-performance browser automation bridge and multi-instance orchestrator with advanced stealth injection and real-time dashboard."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/pinchtab/pinchtab/${_license_commit}/LICENSE"
 )
 
-sha256sums=('3540bf35684996a97fda46da1ddcc2179402351b4e37907dd7745ec070cf2835'
+sha256sums=('239fd441cd90c9dcddb360bbc63ba89351113ebfb8399183099cd2b84e29a5ad'
             '8e526b04f1f02203eebfd55aead0657a7ae87e0591cf8a44fbee19441aa0f116')
 
 
