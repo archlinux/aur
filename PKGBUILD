@@ -21,6 +21,8 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}")
 source=("git+https://gitea.osmocom.org/osmocom/${_name}.git")
 sha256sums=('SKIP')
 

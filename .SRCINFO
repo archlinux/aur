@@ -13,6 +13,8 @@ pkgbase = python-pyosmocom-git
 	depends = python
 	depends = python-construct
 	depends = python-gsm0338
+	provides = python-pyosmocom=0.0.12.r4.g75785e4
+	conflicts = python-pyosmocom
 	source = git+https://gitea.osmocom.org/osmocom/pyosmocom.git
 	sha256sums = SKIP
 
