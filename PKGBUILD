@@ -3,37 +3,37 @@
 pkgbase=ddnsto-bin
 pkgname=ddnsto-bin
 _name=${pkgname%-bin}
-pkgver=4.0.6
+pkgver=4.0.7
 pkgrel=1
 pkgdesc="DDNSTO is a stable, fast and easy-to-use intranet penetration tool"
-arch=($CARCH)
+arch=(
+    x86_64
+    aarch64
+    armv7h
+    mipsel
+)
 url="https://web.ddnsto.com"
 license=('LicenseRef-ddnsto')
 provides=(${pkgbase%-bin})
 conflicts=(${pkgbase%-bin})
-depends=(
-    sh
-)
+depends=()
 makedepends=()
 optdepends=()
 backup=('etc/ddnsto/config.yaml')
+install=${pkgname}.install
 source=(
     "https://fw0.koolcenter.com/binary/ddnsto/${_name}-binary-${pkgver}.tar.gz"
     "ddnsto.service"
-    "ddnsto@.service"
-    "ddnstoctl"
     "${pkgname}.tmpfiles"
     "${pkgname}.sysusers"
     "${pkgname}.install"
 )
-sha256sums=('e6244ac8fd8930a023c77246a2baf0e7aa1adf0d4af9193b115ec60fbe8c41ce'
+sha256sums=('d6a33d0878dcc41dc65fb65b62fbe655365f9839418ec71e0cf520dfcdab8a4d'
             '99d7c3c20776645a08de44062cea1b32fd37288e35d61821e90c45e132dd5f14'
-            '3c1a8239e991a920dff7d6476ee4db0735103b3c0104f1d4f8ced3ccac59abe1'
-            '4f172970d4acab26b73af58c5fd162b30b5f1af3b72cd9d812bff143118e99f4'
-            '39e941e8901fd18083896a47176b0d8566da0b133607df506d261093f4660889'
+            '8269ed5fd739199ca3daba3aed8d775a26e883d33f561d396cf23fb7255caff7'
             'b068dcd630d7ce9a3b0bf904340f9438572d84cd4c75ad49102a274a4be37dd6'
-            'b8c91cac4ea55ac9753fa9a6786b223eebfba62f5d232ee8bfee3799f9f6f70a')
-options=(!debug !strip)
+            '19168def5a513afadbd5ba15e231a3a756cf84b322947a29cef2dc71e14f3b65')
+options=(!debug !strip emptydirs)
 
 package() {
     cd "${srcdir}/${_name}-binary-${pkgver}/"
@@ -52,11 +52,14 @@ package() {
     fi
   
     sed -i -e 's|/tmp/logs|/var/log/ddnsto|g' \
-        -e 's|/data|/var/lib/ddnsto|g' config.yaml
+        -e 's|/data|/srv/ddnsto|g' config.yaml
+    
     install -vDm640 config.yaml -t ${pkgdir}/etc/ddnsto/
     install -vDm644 ${srcdir}/ddnsto.service -t ${pkgdir}/usr/lib/systemd/system/
     install -vdm755 ${pkgdir}/var/log/ddnsto \
-             ${pkgdir}/var/lib/ddnsto
+            ${pkgdir}/var/lib/ddnsto \
+            ${pkgdir}/srv/ddnsto
+
     install -Dvm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/ddnsto.conf"
     install -Dvm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/ddnsto.conf"
 }
