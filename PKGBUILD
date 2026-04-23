@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>FiTui=fitui
 pkgname=termcraft-git
 _pkgname=termcraft
-pkgver=0.1.0.r4.g2d6531e
+pkgver=0.1.0.r5.gafb8802
 pkgrel=1
 pkgdesc='Terminal-only 2D sandbox survival in Rust.'
 arch=('x86_64' 'aarch64')

@@ -1,6 +1,6 @@
 pkgbase = termcraft-git
 	pkgdesc = Terminal-only 2D sandbox survival in Rust.
-	pkgver = 0.1.0.r4.g2d6531e
+	pkgver = 0.1.0.r5.gafb8802
 	pkgrel = 1
 	url = https://github.com/pagel-s/termcraft
 	arch = x86_64
