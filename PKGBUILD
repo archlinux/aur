@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=zen-c-git
 _pkgname=zen-c
-pkgver=0.4.4.r5.ge210bc0
+pkgver=0.4.4.r133.g60993ab
 pkgrel=1
 pkgdesc='Write like a high-level language, run like C.'
 url='https://github.com/zenc-lang/zenc'
