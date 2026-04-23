@@ -1,6 +1,6 @@
 pkgbase = deadbranch-git
 	pkgdesc = Clean up stale git branches safely.
-	pkgver = 0.1.0.r55.g7749df2
+	pkgver = 0.1.0.r58.g755c838
 	pkgrel = 1
 	url = https://github.com/armgabrielyan/deadbranch
 	arch = x86_64

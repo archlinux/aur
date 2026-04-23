@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>FiTui=fitui
 pkgname=deadbranch-git
 _pkgname=deadbranch
-pkgver=0.1.0.r55.g7749df2
+pkgver=0.1.0.r58.g755c838
 pkgrel=1
 pkgdesc='Clean up stale git branches safely.'
 arch=('x86_64' 'aarch64')
