@@ -1,6 +1,6 @@
 # Maintainer: huochenghai <huochenghai@gmail.com>
 pkgname="paseo-desktop-bin"
-pkgver="0.1.61"
+pkgver="0.1.62"
 pkgrel=1
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents."
 arch=("x86_64")
@@ -12,7 +12,7 @@ provides=("paseo=${pkgver}")
 conflicts=(paseo paseo-bin paseo-appimage)
 license=("AGPL-3.0-only")
 source=("${_github_url}/releases/download/v${pkgver}/Paseo-${pkgver}-amd64.deb")
-sha256sums=('180fe10ec49e48f2d5ff770334da4264cc1ca4b1d7bbe44197e8f12bbc4fae9a')
+sha256sums=('596631b9ec8beaa7b01f48b0c70cd2678815d65499eb7b363bb10ce22f792809')
 
 prepare() {
         ar p Paseo-${pkgver}-amd64.deb data.tar.xz | tar --zstd -x
