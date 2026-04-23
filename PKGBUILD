@@ -2,7 +2,7 @@
 
 _pkgname="sui"
 pkgname="${_pkgname}-bin"
-pkgver=1.69.2
+pkgver=1.70.2
 pkgrel=2
 pkgdesc="A next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.tgz::${_url}/releases/download/mainnet-v${pkgver}/${_pkgname}-mainnet-v${pkgver}-ubuntu-x86_64.tgz")
 source_aarch64=("${_pkgsrc}-aarch64.tgz::${_url}/releases/download/mainnet-v${pkgver}/${_pkgname}-mainnet-v${pkgver}-ubuntu-aarch64.tgz")
 
-sha256sums_x86_64=('7361397aa93f212baff5f82ba2e39844747a9019a17873c928cf3599e39b6c7d')
-sha256sums_aarch64=('9a29b1e35ca31e2a1682b13590305ec6fd7c739175d7399d806f691fba2f6ab5')
+sha256sums_x86_64=('e06e92cb56f5d025adc227d0ebc13f399f60333ad57c31427d65f786ca07a7d6')
+sha256sums_aarch64=('d16d07780a351d3067f4b21a7f886f95d453a9408195837eef47678513cb378f')
 
 prepare() {
   cd "${srcdir}"
