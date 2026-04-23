@@ -1,4 +1,4 @@
 [leafpad]
 source = 'regex'
-url = "http://tarot.freeshell.org/leafpad/"
+url = "https://download.savannah.gnu.org/releases/leafpad/"
 regex = 'leafpad-([\d.]+)\.[a-z]'

@@ -4,7 +4,7 @@
 
 pkgname=leafpad
 pkgver=0.8.19
-pkgrel=5
+pkgrel=6
 pkgdesc='A notepad clone for GTK+ 2.0'
 arch=('x86_64')
 url='http://tarot.freeshell.org/leafpad/'
@@ -18,7 +18,7 @@ source=("https://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgv
         "0004-Update-pt.po.patch"
         "0005-Update-pt.po.patch")
 
-sha256sums=('SKIP'
+sha256sums=('07d3f712f4dbd0a33251fd1dee14e21afdc9f92090fc768c11ab0ac556adbe97'
             'a96dda3d94642b139f59403bf734ca6fbac0e6039aaa5c9958a34b06dd85b068'
             '7abe586731272d00e0295b4afd0a0cc6f104e169791f13ade2e102910e57ee2c'
             'f847d58bb8281a4527ae1ec3e65a21199734835b136cd769531df755a50cb279'
