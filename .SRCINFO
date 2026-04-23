@@ -1,6 +1,6 @@
 pkgbase = tsm
 	pkgdesc = Terminal Session Manager
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/adibhanna/tsm
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = tsm
 	provides = tsm
 	conflicts = tsm
 	options = !strip
-	source = tsm-0.6.5.tgz::https://github.com/adibhanna/tsm/archive/v0.6.5.tar.gz
-	sha256sums = 4e3179d2b4a0c6f21996fbe530b03683be340fca9824d81631b86eb9545dca51
+	source = tsm-0.6.6.tgz::https://github.com/adibhanna/tsm/archive/v0.6.6.tar.gz
+	sha256sums = f95f27c7cdfb1af1c8be5799d1e86cc4e918f3851bf624327aa5514d21fd5fed
 
 pkgname = tsm
