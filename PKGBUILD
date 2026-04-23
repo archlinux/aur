@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=proxelar-git
 _pkgname=proxelar
-pkgver=0.4.1.r0.g15c7371
+pkgver=0.4.3.r7.gfd65e51
 pkgrel=1
 pkgdesc='Programmable MITM proxy that intercepts HTTP/HTTPS traffic. With a TUI, terminal, and web GUI interface'
 arch=('x86_64' 'aarch64' 'riscv64')
