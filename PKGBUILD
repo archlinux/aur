@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=tuicr-git
 _pkgname=tuicr
-pkgver=0.10.0.r3.gfec146c
+pkgver=0.10.0.r5.g206eb96
 pkgrel=1
 pkgdesc='a terminal UI for local code review'
 arch=('x86_64' 'aarch64' 'riscv64')
