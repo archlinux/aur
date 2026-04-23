@@ -23,6 +23,7 @@ depends=(
   cmark
   libstdc++
   libgcc
+  tomlplusplus
 )
 makedepends=(
   cmake

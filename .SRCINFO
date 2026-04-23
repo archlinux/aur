@@ -26,6 +26,7 @@ pkgbase = meshmc
 	depends = cmark
 	depends = libstdc++
 	depends = libgcc
+	depends = tomlplusplus
 	optdepends = glfw: to use system GLFW libraries
 	optdepends = openal: to use system OpenAL libraries
 	optdepends = visualvm: Profiling support
