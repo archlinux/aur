@@ -1,7 +1,7 @@
 # Maintainer: ZorudaRinku <aidan@rain.tech>
 
 pkgname=openchatbox
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Desktop GUI for sending customized OSC chat messages to VRChat"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
     'imagemagick'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('aee216a96bbbfed5779117f6e7a45ecd29d0eac7411844a3e260a6dc94baf9ea')
 
 build() {
     cd "OpenChatbox-$pkgver"

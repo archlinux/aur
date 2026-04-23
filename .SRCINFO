@@ -1,6 +1,6 @@
 pkgbase = openchatbox
 	pkgdesc = Desktop GUI for sending customized OSC chat messages to VRChat
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/ZorudaRinku/OpenChatbox
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = openchatbox
 	depends = python-psutil
 	depends = python-websockets
 	depends = hicolor-icon-theme
-	source = openchatbox-0.0.1.tar.gz::https://github.com/ZorudaRinku/OpenChatbox/archive/v0.0.1.tar.gz
-	sha256sums = SKIP
+	source = openchatbox-0.0.2.tar.gz::https://github.com/ZorudaRinku/OpenChatbox/archive/v0.0.2.tar.gz
+	sha256sums = aee216a96bbbfed5779117f6e7a45ecd29d0eac7411844a3e260a6dc94baf9ea
 
 pkgname = openchatbox
