@@ -1,0 +1,5 @@
+[ocaml-camlp-streams]
+source = 'github'
+github = 'ocaml/camlp-streams'
+use_max_tag = true
+prefix = 'v'
