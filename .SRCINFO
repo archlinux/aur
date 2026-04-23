@@ -1,0 +1,14 @@
+pkgbase = cymbal
+	pkgdesc = Language-agnostic code navigation CLI powered by tree-sitter
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/1broseidon/cymbal
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = gcc-libs
+	source = cymbal-0.12.0.tar.gz::https://github.com/1broseidon/cymbal/archive/v0.12.0.tar.gz
+	sha256sums = a1dbe190c63186bf7fd7c36cf0553b9322a4ef25cc96fca4b5886ab4d68fe8eb
+
+pkgname = cymbal
