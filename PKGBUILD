@@ -1,6 +1,6 @@
 pkgname=ember-notify
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Notification daemon for i3/X11 with Eww integration'
 arch=('x86_64')
 url='https://github.com/Savanta/Ember'
@@ -11,6 +11,7 @@ optdepends=('noto-fonts: default toast font'
             'eww: bar widget integration')
 provides=('notification-daemon')
 conflicts=('dunst' 'mako' 'deadd-notification-center')
+options=('!debug' '!lto')
 install='ember-notify.install'
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -27,6 +28,8 @@ prepare() {
 build() {
   cd "$_srcdir"
   export CARGO_HOME="$srcdir/cargo-home"
+  # Avoid OOM on smaller machines by forcing single-job rustc builds.
+  export CARGO_BUILD_JOBS=1
   # Force libsqlite3-sys to use system sqlite via pkg-config instead of
   # compiling the bundled sqlite3.c (which sqlx's `sqlite` feature enables).
   export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
