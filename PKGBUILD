@@ -2,14 +2,15 @@
 
 _pkgname="gpu-screen-recorder-ui"
 pkgname="$_pkgname-git"
-pkgver=1.9.1.r3.g2bb6754
+pkgver=1.11.5.r0.geb6aed9
 pkgrel=1
-pkgdesc="A fullscreen overlay for gpu-screen-recorder, a shadowplay-like screen recorder"
+pkgdesc="A fullscreen overlay UI for GPU Screen Recorder in the style of ShadowPlay"
 url="https://git.dec05eba.com/gpu-screen-recorder-ui"
 license=('GPL-3.0-only')
 arch=('x86_64')
 
 depends=(
+  'dbus'
   'libdrm'
   'libglvnd'
   'libpulse'
@@ -21,6 +22,7 @@ depends=(
   'libxi'
   'libxrandr'
   'libxrender'
+  'pango'
   'wayland'
 )
 makedepends=(
@@ -49,8 +51,8 @@ build() {
 
 package() {
   depends+=(
-    'gpu-screen-recorder'              # AUR
-    'gpu-screen-recorder-notification' # AUR
+    'gpu-screen-recorder'
+    'gpu-screen-recorder-notification'
   )
   meson install -C build --destdir "$pkgdir"
 }
