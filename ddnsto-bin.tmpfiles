@@ -2,4 +2,4 @@
 d       /var/lib/ddnsto           0755    ddnsto   ddnsto   -       -
 d       /var/log/ddnsto           0755    ddnsto   ddnsto   -       -
 d       /etc/ddnsto               0755    ddnsto   ddnsto   -       -
-
+f       /etc/ddnsto/config.yaml   0640    ddnsto   ddnsto   -       -

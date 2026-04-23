@@ -1,0 +1,27 @@
+[Unit]
+Description=DDNSTO Service
+Documentation=https://doc.linkease.com/zh/guide/ddnsto
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=ddnsto
+Group=ddnsto
+
+PrivateTmp=yes
+ProtectSystem=no
+ProtectHome=yes
+
+ExecStart=/usr/bin/ddnsto --config /etc/ddnsto/config.yaml
+Restart=always
+RestartSec=10
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ddnsto
+
+[Install]
+WantedBy=multi-user.target
