@@ -2,7 +2,7 @@
 # 🔋 slskdn - The batteries-included Soulseek web client
 pkgname=slskdn-bin
 _pkgname=slskd
-pkgver=0.24.5.slskdn.175
+pkgver=0.24.5.slskdn.176
 pkgrel=1
 pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
 arch=('x86_64')
@@ -28,28 +28,29 @@ source=(
     "slskd.yml"
     "slskd.sysusers"
 )
+noextract=("slskdn-${pkgver}-main-linux-glibc-x64.zip")
 # Note: First hash is SKIP (zip changes each release), others are static file hashes
 sha256sums=('SKIP' '9724a9ad5790fa011868c3777cbdb9e41224c3b612e7c47990c524f8659ab278' '6d60a8a8ec79b1df0f5839e9a5ba8a77a021cc457fa138a62b58f4321b3a16df' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056')
 
 package() {
     local app_root="${pkgdir}/usr/lib/${_pkgname}"
     local release_root="${app_root}/releases/${pkgver}"
+    local archive="${srcdir}/slskdn-${pkgver}-main-linux-glibc-x64.zip"
+    local stage_root
+    stage_root="$(mktemp -d)"
+    trap 'rm -rf "${stage_root}"' RETURN
 
     install -dm755 "${release_root}"
+    unzip -q "${archive}" -d "${stage_root}"
 
-    # Keep the public /usr/lib/slskd surface stable, but isolate the release payload
-    # beneath a managed versioned subdirectory so stale root files do not block upgrades.
-    for f in "${srcdir}"/*; do
-        fname=$(basename "$f")
-        case "$fname" in
-            slskd.service|slskd.yml|slskd.sysusers|*.zip)
-                continue
-                ;;
-            *)
-                cp -r "$f" "${release_root}/"
-                ;;
-        esac
-    done
+    [[ -x "${stage_root}/slskd" ]] || { echo "Missing apphost in ${archive}" >&2; return 1; }
+    [[ -f "${stage_root}/slskd.deps.json" ]] || { echo "Missing deps file in ${archive}" >&2; return 1; }
+    [[ -f "${stage_root}/Microsoft.AspNetCore.Diagnostics.Abstractions.dll" ]] || {
+        echo "Missing Microsoft.AspNetCore.Diagnostics.Abstractions.dll in ${archive}" >&2
+        return 1
+    }
+
+    cp -a "${stage_root}"/. "${release_root}/"
 
     chmod +x "${release_root}/slskd"
     ln -sfn "releases/${pkgver}" "${app_root}/current"
