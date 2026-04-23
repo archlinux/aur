@@ -8,8 +8,8 @@ pkgdesc="Lineage 2 unreal object properties editor"
 arch=('any')
 url="https://github.com/acmi/L2pe"
 license=('MIT')
-depends=('java-runtime=8')
-makedepends=('git' 'java-environment=8')
+depends=('jre8-openjdk')
+makedepends=('git' 'jdk8-openjdk')
 provides=('l2pe')
 conflicts=('l2pe')
 source=("git+https://github.com/acmi/L2pe.git"
