@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=aarty-git
 _pkgname=aarty
-pkgver=0.8.1.r0.g29a34de
+pkgver=0.8.2.r5.ge9b7c62
 pkgrel=1
 pkgdesc='Simple CLI tool to convert the images to ASCII art - Build from the aurora branch'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')

@@ -1,6 +1,6 @@
 pkgbase = aarty-git
 	pkgdesc = Simple CLI tool to convert the images to ASCII art - Build from the aurora branch
-	pkgver = 0.8.1.r0.g29a34de
+	pkgver = 0.8.2.r5.ge9b7c62
 	pkgrel = 1
 	url = https://github.com/0x61nas/aarty
 	arch = x86_64
