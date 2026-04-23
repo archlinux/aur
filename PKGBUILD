@@ -1,6 +1,6 @@
 # Maintainer: David Meents <dmeents@pm.me>
 pkgname=poe2-overlord-bin
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='A powerful companion app for Path of Exile 2'
 arch=('x86_64')
