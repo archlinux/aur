@@ -1,4 +1,5 @@
-# Maintainer: Robert Falkenberg <falkenber9@gmail.com>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Robert Falkenberg <falkenber9@gmail.com>
 
 pkgname=python-pysim-git
 _pyname=${pkgname#python-}
