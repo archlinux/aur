@@ -1,18 +1,6 @@
 version = 1
 
 [[annotations]]
-path = [
-    "PKGBUILD",
-    ".BUILDINFO",
-    ".CHANGELOG",
-    ".INSTALL",
-    ".MTREE",
-    ".PKGINFO",
-    ".SRCINFO",
-    ".gitignore",
-    "*.install",
-    "*sysuser.conf",
-    "*tmpfile.conf",
-]
-SPDX-FileCopyrightText = "Arch Linux contributors"
-SPDX-License-Identifier = "0BSD"
+SPDX-FileCopyrightText = 'Arch Linux contributors'
+SPDX-License-Identifier = '0BSD'
+path = ['PKGBUILD', '.SRCINFO', '.gitignore', '*.install', 'sysuser.conf', 'tmpfile.conf']

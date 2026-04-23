@@ -10,7 +10,7 @@ pkgname='mlmmj'
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 pkgver=2.0.0
 _pkgver=2_0_0
-pkgrel=3
+pkgrel=4
 _url='http://mlmmj.org/'
 url='https://codeberg.org/mlmmj/mlmmj'
 install="$pkgname.install"
@@ -47,7 +47,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" PREFIX=/usr MANDIR=/usr/share/man install
 
   # ./configure doesn't seem to honor --mandir
   install -dm0755    "$pkgdir/usr/share/man/man1"
