@@ -1,0 +1,17 @@
+pkgbase = simu
+	pkgdesc = A CLI tool for managing iOS simulators
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cesarferreira/simu
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = simu
+	conflicts = simu
+	source = simu-0.1.0.crate::https://crates.io/api/v1/crates/simu/0.1.0/download
+	sha256sums = 1e484d43c742daf0586dcf1cc72da750e5cd19526a26a35e8a52cafa835e83ba
+
+pkgname = simu
