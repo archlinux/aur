@@ -1,0 +1,12 @@
+# Build artifacts produced by makepkg - not tracked in the AUR repo.
+pkg/
+src/
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.pkg.tar.*
+
+# Upstream source downloads cached by makepkg (we re-fetch on every build
+# via `source=` in PKGBUILD; the checksums are in .SRCINFO).
+bash-*.tar.gz
+bash32-[0-9][0-9][0-9]
