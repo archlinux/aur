@@ -1,6 +1,6 @@
 pkgbase = zenc-git
 	pkgdesc = Write like a high-level language, run like C.
-	pkgver = r35.6b0a0e7
+	pkgver = r883.60993ab
 	pkgrel = 1
 	url = https://github.com/z-libs/Zen-C
 	arch = x86_64
