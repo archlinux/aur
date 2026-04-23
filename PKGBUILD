@@ -3,7 +3,7 @@
 _sdk=10.0
 _Name="YoutubeDownloader"
 pkgname="${_Name,,}"
-pkgver=1.16.3
+pkgver=1.16.4
 pkgrel=1
 pkgdesc="Downloads videos and playlists from YouTube"
 arch=(
@@ -33,7 +33,7 @@ source=(
   "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
   "${pkgname}.sh"
 )
-b2sums=('8e6bdd3c4bcff96cc35b71b848dd562499bdd4f25844bb8f6da77e1bddb69bdad7b42705c97b1d6ea7fa6f5af59337e4faf5f23e12f273b8c01afca568535f13'
+b2sums=('4b6f0261614d6a85b8e24d032965b37bdea59b9ae38f54e950bd600b8a65748031ab7ab72721bcf880d7043bc5fc702c5a1788d27aa250e597fa1085f959ebd3'
         '1790bd5de94e0c11027d516385f2a824a43aa6285f04a8256b320dc0d33437efd6f87ec3217e921f4c02257924978c7097e525a5fa936c2a2040f3a6eff5784a')
 
 if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
@@ -100,9 +100,8 @@ package() {
   install -vDm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   cd "${_pkgsrc}"
-  install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${pkgname}"
+  install -vd "${pkgdir}/usr/lib/${pkgname}"
   cp -vaT --no-preserve=ownership "build" "${pkgdir}/usr/lib/${pkgname}"
-  # ln -vsf "/usr/lib/${pkgname}/${_Name}" "${pkgdir}/usr/bin/${_Name}"
 
   install -vDm644 "Readme.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
