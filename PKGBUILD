@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=cc-switch-cli
-pkgver=5.3.3
+pkgver=5.3.4
 pkgrel=1
 pkgdesc="Cross-platform CLI All-in-One assistant tool for Claude Code, Codex & Gemini CLI"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('cc-switch')
 conflicts=('cc-switch' 'cc-switch-cli-bin')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/SaladDay/cc-switch-cli/releases/download/v${pkgver}/cc-switch-cli-linux-x64-musl.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/SaladDay/cc-switch-cli/releases/download/v${pkgver}/cc-switch-cli-linux-arm64-musl.tar.gz")
-sha256sums_x86_64=('1644cbc6e22d1b6e69dd843a672e95bc85fe5990a0977ebc6c63142255d8c5a0')
-sha256sums_aarch64=('73ad3f7244756b84a5886c972c8ff8fe31feabf167b4e04b9349d08e70609d2a')
+sha256sums_x86_64=('bff03673c51f39c6947c14e8b8722ab07874ce91897c8c7df960b1f033751ca0')
+sha256sums_aarch64=('b8c11af8bff1b2cc1d90e6a01113ae96e3ae35a100ec938640325269fefba246')
 
 package() {
   install -Dm755 "${srcdir}/cc-switch" "${pkgdir}/usr/bin/cc-switch"
