@@ -30,16 +30,17 @@ _get_nextcloud_versions() {
 
 prepare() {
   cd "${srcdir}"/maps
-return
+#return
 
   sed -i 's|composer bin all install --ansi|composer bin all install --ansi --ignore-platform-reqs -n|g' composer.json
 }
 
 build() {
   cd "${srcdir}"/maps
-return
+#return
 
   composer install --ignore-platform-reqs -n
+  npm install
   npm ci
   npm run build
 
