@@ -1,0 +1,3 @@
+[sync-worktrees]
+source = "npm"
+npm = "sync-worktrees"
