@@ -52,7 +52,7 @@ Subject: [PATCH] Patch glsl-optimizer to build with glibc 2.43
  delete mode 100644 third_party/rust/glslopt/glsl-optimizer/.gitignore
 
 diff --git a/.cargo/config.toml.in b/.cargo/config.toml.in
-index acdcfdd18b51..9dd5ffd94c2a 100644
+index cabdee463415..08b5a8207160 100644
 --- a/.cargo/config.toml.in
 +++ b/.cargo/config.toml.in
 @@ -5,6 +5,11 @@
@@ -68,7 +68,7 @@ index acdcfdd18b51..9dd5ffd94c2a 100644
  git = "https://github.com/FirefoxGraphics/aa-stroke"
  rev = "5776bdfc8ad664a1503db668fab397d818a5f98a"
 diff --git a/Cargo.lock b/Cargo.lock
-index 72f423edcde6..b2e45d71275f 100644
+index 04abe3bcd377..9cf686d0f039 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -2898,8 +2898,7 @@ dependencies = [
