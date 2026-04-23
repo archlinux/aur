@@ -1,0 +1,17 @@
+pkgbase = zenithwm-git
+	pkgdesc = Minimal and Unbloat Tiling WM written in C
+	pkgver = 0.1.r1.20f7e5b
+	pkgrel = 1
+	url = https://github.com/bogdanbtw/zenithwm
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = libx11
+	provides = zenithwm
+	conflicts = zenithwm
+	source = git+https://github.com/bogdanbtw/zenithwm.git
+	sha256sums = SKIP
+
+pkgname = zenithwm-git
