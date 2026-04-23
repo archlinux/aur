@@ -2,7 +2,7 @@
 pkgname=moonfin-bin
 _pkgname=moonfin
 pkgver=1.4.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Jellyfin & Emby media client for Linux (binary release)"
 arch=('x86_64')
 url="https://github.com/Moonfin-Client/Mobile-Desktop"
