@@ -1,0 +1,25 @@
+pkgbase = unbill-nightly-bin
+	pkgdesc = Desktop app for unbill (nightly)
+	pkgver = nightly.20260423.021956
+	pkgrel = 1
+	url = https://github.com/unbill-project/unbill
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	provides = unbill
+	conflicts = unbill-bin
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/unbill-project/unbill/releases/download/nightly-20260423-021956/unbill-linux-x86_64.deb
+	sha256sums_x86_64 = SKIP
+
+pkgname = unbill-nightly-bin
