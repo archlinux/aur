@@ -1,8 +1,8 @@
 # Maintainer: Akuma-real
 
 pkgname=stelliberty-bin
-pkgver=1.2.278
-pkgrel=10
+pkgver=1.2.279
+pkgrel=1
 pkgdesc="Modern Clash/Mihomo 客户端的二进制发行版"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Kindness-Kismet/Stelliberty"
@@ -33,8 +33,8 @@ noextract=("Stelliberty-v${pkgver}-linux-x64.zip" "Stelliberty-v${pkgver}-linux-
 sha256sums=('fa89e84a3090b5a566b0ddf4d8e11adec3785b66d660746774fb6197173bf9d8'
             'ca2f07aef3208f38d47eee1bdc163b2699362432e050e0127b744163d6dc9eca'
             '6f6fc60debd655040216a90ce3a87071ede50c392f6eba3642f169891c638e10')
-sha256sums_x86_64=('2cb0c5711f89cd84429f479962b9ed6347f829358536f2a9aac546a69d595b6d')
-sha256sums_aarch64=('b043bb496f00ca994a172f3a9ee841b11a765a0f4cfe288ee0802f2ba2538f42')
+sha256sums_x86_64=('268a88b94f6be9e4a879a3aa98ab2c244d97fcc8306f279df711e66fa300247f')
+sha256sums_aarch64=('6370539752c643329924897d55983d14d3d448be25c4ab0b4bbed1e0c9d2a3b4')
 
 package() {
   local _upstream_arch
@@ -49,6 +49,8 @@ package() {
 
   install -d "${_install_dir}"
   bsdtar -xf "${srcdir}/${_archive}" -C "${_install_dir}"
+  rm -f "${_install_dir}/data/.portable"
+  printf '%s\n' "${pkgver}-${pkgrel}" > "${_install_dir}/data/.package-sync-revision"
   rm -f "${_install_dir}/data/.portable"
   printf '%s\n' "${pkgver}-${pkgrel}" > "${_install_dir}/data/.package-sync-revision"
   rm -f "${_install_dir}/data/.portable"
