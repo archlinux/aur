@@ -6,7 +6,7 @@
 # Based on owncloud-git PKGBUILD by Alexander Ovsyannikov
 
 pkgname=owncloud
-pkgver=10.16.1
+pkgver=10.16.2
 pkgrel=1
 pkgdesc="Securely access and share data from everywhere and any device"
 arch=('any')
