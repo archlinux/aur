@@ -1,0 +1,21 @@
+pkgbase = l2pe-git
+	pkgdesc = Lineage 2 unreal object properties editor
+	pkgver = 2.4.0.r23.gbca6fbb
+	pkgrel = 1
+	url = https://github.com/acmi/L2pe
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = java-environment=8
+	depends = java-runtime=8
+	depends = java8-openjfx-bin
+	provides = l2pe
+	conflicts = l2pe
+	source = git+https://github.com/acmi/L2pe.git
+	source = l2pe.sh
+	source = l2pe.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = l2pe-git

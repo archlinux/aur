@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=L2pe
+Comment=Lineage 2 unreal object properties editor
+Exec=l2pe
+Icon=application-x-executable
+Terminal=false
+Type=Application
+Categories=Utility;
