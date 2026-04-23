@@ -1,0 +1,13 @@
+pkgbase = playwright-webkit-flite-deps
+	pkgdesc = Missing flite dependencies needed for Playwright WebKit on Arch Linux
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://playwright.dev
+	arch = x86_64
+	license = BSD
+	depends = flite
+	depends = dpkg
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/f/flite/libflite1_2.2-7build1_amd64.deb
+	sha256sums = SKIP
+
+pkgname = playwright-webkit-flite-deps
