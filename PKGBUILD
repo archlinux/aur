@@ -7,6 +7,7 @@ pkgdesc='Hyprland-native software KVM switch for seamless keyboard/mouse sharing
 arch=('x86_64')
 url='https://github.com/tenseleyFlow/hyprKVM'
 license=('MIT')
+options=(!lto)
 depends=('wayland' 'libxkbcommon' 'openssl')
 makedepends=('rust' 'cargo' 'pkg-config' 'wayland-protocols' 'clang' 'cmake' 'perl')
 optdepends=('wl-clipboard: for clipboard synchronization')

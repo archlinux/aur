@@ -17,6 +17,7 @@ pkgbase = hyprkvm
 	depends = libxkbcommon
 	depends = openssl
 	optdepends = wl-clipboard: for clipboard synchronization
+	options = !lto
 	source = git+https://github.com/tenseleyFlow/hyprKVM.git#tag=v0.6.6
 	sha256sums = SKIP
 
