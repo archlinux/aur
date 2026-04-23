@@ -1,0 +1,6 @@
+[tarlz]
+source = 'htmlparser'
+url = 'https://download.savannah.nongnu.org/releases/lzip/tarlz/'
+xpath = "/html/body//a[starts-with(@href, 'tarlz-') and contains(@href, '.tar.lz') and not(contains(@href, '.sig'))]"
+from_pattern = 'tarlz-([0-9\.]+)\.tar\.lz'
+to_pattern = '\1'

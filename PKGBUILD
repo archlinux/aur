@@ -2,7 +2,7 @@
 # Contributor: Katie Wolfe <katie@dnaf.moe>
 
 pkgname=tarlz
-pkgver=0.28.1
+pkgver=0.29
 pkgrel=1
 pkgdesc='Archiver with multimember lzip compression'
 arch=('x86_64_v3' 'x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ url='https://www.nongnu.org/lzip/tarlz.html'
 license=('GPL-2.0-or-later')
 depends=(lzlib gcc-libs)
 source=("https://download.savannah.gnu.org/releases/lzip/$pkgname/$pkgname-$pkgver.tar.lz")
-sha512sums=('344ca4629b3868f525d08c67af1a0e394151b9263473a39fbc380ed4baef15a2feb6e8661ef88bf16e59623fbe70eadb1e36e7cd522ceee9956016c4edc5f30a')
+sha512sums=('18e575abc2cc02201a0da3ea404ca4db62a3d8a3109e1de3e4ece43dfb9f08b8b7b0dc1083d1effac1b64408d6b93498cc75d04f14cf721d3eb16864af7f2504')
 
 build() {
 	cd "$pkgname-$pkgver"
