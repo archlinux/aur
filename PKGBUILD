@@ -7,7 +7,7 @@ _appname=bd
 pkgname=${_cratename}
 pkgdesc="Terminal UI for Android development"
 
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -25,7 +25,7 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('272e93253eda3ff7e0641dcf0fb04c698f339fc590a17620420e86fc37398e1f')
+sha256sums=('1815716fda4aa15fe91b2014cb582ef9f2c349e2489c9ad44e23a3975fcf472a')
 
 
 build() {
