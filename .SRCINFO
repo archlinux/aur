@@ -1,46 +1,48 @@
 pkgbase = matlab-mpm-input
 	pkgdesc = MATLAB Package Manager (input files)
-	pkgver = R2025b+R2017b
+	pkgver = R2026a+R2017b
 	pkgrel = 1
 	url = https://www.mathworks.com/products/mpm.html
 	arch = any
 	license = custom:MATHWORKS CLOUD REFERENCE ARCHITECTURE LICENSE
 	depends = matlab-mpm
-	provides = matlab-r2017b-mpm-input=R2025b+R2017b
+	provides = matlab-r2017b-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2017b
-	provides = matlab-r2018a-mpm-input=R2025b+R2017b
+	provides = matlab-r2018a-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2018a
-	provides = matlab-r2018b-mpm-input=R2025b+R2017b
+	provides = matlab-r2018b-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2018b
-	provides = matlab-r2019a-mpm-input=R2025b+R2017b
+	provides = matlab-r2019a-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2019a
-	provides = matlab-r2019b-mpm-input=R2025b+R2017b
+	provides = matlab-r2019b-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2019b
-	provides = matlab-r2020a-mpm-input=R2025b+R2017b
+	provides = matlab-r2020a-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2020a
-	provides = matlab-r2020b-mpm-input=R2025b+R2017b
+	provides = matlab-r2020b-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2020b
-	provides = matlab-r2021a-mpm-input=R2025b+R2017b
+	provides = matlab-r2021a-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2021a
-	provides = matlab-r2021b-mpm-input=R2025b+R2017b
+	provides = matlab-r2021b-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2021b
-	provides = matlab-r2022a-mpm-input=R2025b+R2017b
+	provides = matlab-r2022a-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2022a
-	provides = matlab-r2022b-mpm-input=R2025b+R2017b
+	provides = matlab-r2022b-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2022b
-	provides = matlab-r2023a-mpm-input=R2025b+R2017b
+	provides = matlab-r2023a-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2023a
-	provides = matlab-r2023b-mpm-input=R2025b+R2017b
+	provides = matlab-r2023b-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2023b
-	provides = matlab-r2024a-mpm-input=R2025b+R2017b
+	provides = matlab-r2024a-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2024a
-	provides = matlab-r2024b-mpm-input=R2025b+R2017b
+	provides = matlab-r2024b-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2024b
-	provides = matlab-r2025a-mpm-input=R2025b+R2017b
+	provides = matlab-r2025a-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2025a
-	provides = matlab-r2025b-mpm-input=R2025b+R2017b
+	provides = matlab-r2025b-mpm-input=R2026a+R2017b
 	provides = matlab-mpm-input-release=R2025b
-	source = https://www.mathworks.com/content/dam/mathworks/mathworks-dot-com/products/mpm/mpm-input-r2017b-r2025b.zip
-	sha256sums = cd40b0d08ff80efe2d465b6d833387d715a84d25488ac507021a4db0cf20143b
+	provides = matlab-r2026a-mpm-input=R2026a+R2017b
+	provides = matlab-mpm-input-release=R2026a
+	source = https://www.mathworks.com/content/dam/mathworks/mathworks-dot-com/products/mpm/mpm-input-files.zip
+	sha256sums = SKIP
 
 pkgname = matlab-mpm-input

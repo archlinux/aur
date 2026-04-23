@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="matlab-mpm-input"
-pkgver=R2025b+R2017b
+pkgver=R2026a+R2017b
 _latest="${pkgver%%+*}"
 _oldest="${pkgver#*+}"
 pkgrel=1
@@ -17,9 +17,9 @@ depends=(
   'matlab-mpm'
 )
 source=(
-  "https://www.mathworks.com/content/dam/mathworks/mathworks-dot-com/products/mpm/mpm-input-${_oldest,,}-${_latest,,}.zip"
+  "https://www.mathworks.com/content/dam/mathworks/mathworks-dot-com/products/mpm/mpm-input-files.zip"
 )
-sha256sums=('cd40b0d08ff80efe2d465b6d833387d715a84d25488ac507021a4db0cf20143b')
+sha256sums=('SKIP')
 
 _releases=()
 for ((_year="${_oldest:1:4}"; _year<="${_latest:1:4}"; _year++)); do
@@ -40,6 +40,14 @@ for ((_year="${_oldest:1:4}"; _year<="${_latest:1:4}"; _year++)); do
     )
   done
 done
+
+pkgver() {
+  cd "${srcdir}"
+  local releases
+  releases=($(bsdtar -tf "${source[0]##*/}" | grep -oP 'r[0-9]{4}[ab]' | sort -u))
+
+  printf '%s+%s' "${releases[-1]/r/R}" "${releases[0]/r/R}"
+}
 
 package() {
   cd "${srcdir}"
