@@ -2,10 +2,10 @@
 
 pkgname=textlint-rule-preset-ja-technical-writing
 pkgver=12.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Textlint rule preset for JTF style guide"
 arch=(any)
-url="https://github.com/textlint-ja/textlint-rule-preset-JTF-style"
+url="https://github.com/textlint-ja/textlint-rule-preset-ja-technical-writing"
 license=("MIT")
 depends=("nodejs" "textlint")
 makedepends=("npm")
