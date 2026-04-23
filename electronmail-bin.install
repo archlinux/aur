@@ -3,11 +3,13 @@
 post_install() {
     update-mime-database /usr/share/mime || true
     update-desktop-database /usr/share/applications || true
+
+    echo "==> Note: A legacy symlink may remain at /usr/local/bin/electron-mail"
+    echo "==> It points to /opt/ElectronMail/electron-mail and remains functional."
+    echo "==> You may remove it manually if you no longer need it."
 }
 
 post_remove() {
     update-mime-database /usr/share/mime || true
     update-desktop-database /usr/share/applications || true
-    # remove legacy symlink from older package versions
-    rm -f /usr/local/bin/electron-mail    
 }
