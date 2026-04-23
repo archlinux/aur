@@ -1,6 +1,6 @@
 pkgbase = dolphin-memory-engine
 	pkgdesc = Dolphin emulator memory searcher
-	pkgver = 2026.04.16
+	pkgver = 2026.04.20
 	pkgrel = 1
 	url = https://github.com/aldelaro5/dolphin-memory-engine
 	install = dolphin-memory-engine.install
@@ -15,9 +15,9 @@ pkgbase = dolphin-memory-engine
 	depends = libstdc++.so
 	depends = qt6-base
 	depends = qt6-svg
-	source = git+https://github.com/aldelaro5/dolphin-memory-engine.git#tag=2026.04.16
+	source = git+https://github.com/aldelaro5/dolphin-memory-engine.git#tag=2026.04.20
 	source = 0001-desktop-exec.patch
-	sha256sums = 33285868771980a392fd30782e208f1d2fbe69d8468c486862397f69a1604cfc
+	sha256sums = 401ec8f5b7b9c5354e0a8f08615b681e21281d80f0a00858106920fc8dc389e1
 	sha256sums = f90dbab8b97ed03249be5ab31cdf871424550ee73e5972ebe9afa0a5ca41f9b4
 
 pkgname = dolphin-memory-engine
