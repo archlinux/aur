@@ -1,9 +1,9 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=clux
 _pkgname=lq
 pkgname=${_pkgname}-bin
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="jq compatible yq/tq implementation in rust"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -18,9 +18,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${arch[0]}-unknown-linux-gnu.tar.xz")
 source_aarch64=("${url}/releases/download/${pkgver}/${_pkgname}-${arch[1]}-unknown-linux-gnu.tar.xz")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
-            '4b5b302a49045cf1bcc56d61ae41feb2ca3587db823ce7eaa6cec729e0be4727')
-sha256sums_x86_64=('ee382eb1940844a7e2a3c2b725abe78de98db01a651781eb71270a35d16688fe')
-sha256sums_aarch64=('c92e5739e868d9a60cba848144377286594bf601d0fc59ef6f29e88642940538')
+            'ef5f3243dda2aedf8aa0afc2bd8c907dc48cb1cb3969a09e3997679e4cbe1a72')
+sha256sums_x86_64=('9534680deab111fc0d5ee109501c729b0cbe13af709845911769ace50eb26de0')
+sha256sums_aarch64=('dac001865ae5a83864320eb1831b9bdad7f669bf0ee51b0091f72b426f051678')
 
 prepare() {
   cd "${srcdir}/" || exit
@@ -33,6 +33,7 @@ package() {
 
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

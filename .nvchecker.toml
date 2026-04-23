@@ -1,0 +1,5 @@
+[lq-bin]
+source = "github"
+github = "clux/lq"
+use_latest_release = true
+prefix = "v"
