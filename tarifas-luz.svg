@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Fondo circular con gradiente -->
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" style="stop-color:#1e3a5f"/>
+      <stop offset="100%" style="stop-color:#0a1a2e"/>
+    </radialGradient>
+    <radialGradient id="glowGrad" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" style="stop-color:#ffe566;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#ffe566;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="512" height="512" rx="96" fill="url(#bgGrad)"/>
+
+  <!-- Brillo de fondo -->
+  <ellipse cx="256" cy="200" rx="160" ry="140" fill="url(#glowGrad)"/>
+
+  <!-- Bombilla - cuerpo superior redondeado -->
+  <path d="M256 100
+    C196 100 152 144 152 204
+    C152 244 174 278 208 298
+    L208 330
+    L304 330
+    L304 298
+    C338 278 360 244 360 204
+    C360 144 316 100 256 100 Z"
+    fill="#ffe566" opacity="0.95"/>
+
+  <!-- Brillo interno de la bombilla -->
+  <ellipse cx="228" cy="175" rx="22" ry="34" fill="white" opacity="0.25" transform="rotate(-15, 228, 175)"/>
+
+  <!-- Base de la bombilla - segmentos -->
+  <rect x="208" y="336" width="96" height="18" rx="4" fill="#c8a800"/>
+  <rect x="214" y="360" width="84" height="18" rx="4" fill="#c8a800"/>
+  <rect x="220" y="384" width="72" height="18" rx="4" fill="#c8a800"/>
+
+  <!-- Punta/tornillo -->
+  <rect x="234" y="406" width="44" height="16" rx="8" fill="#a08800"/>
+
+  <!-- Filamento -->
+  <path d="M232 280 L232 240 Q256 220 280 240 L280 280"
+    fill="none" stroke="#b87800" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
