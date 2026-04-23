@@ -34,7 +34,7 @@ pkgbase = linux-tpm453-edge
 	sha256sums = a943aad5800a8e1e01f915432b3ff90e3916c83b3ae18fed84afafba5ba80bf9
 	sha256sums = fa32a9d7b1961b366a59d107006a9728da9d89f06e32d1ef51e44fa6b9a55801
 	sha256sums = 6f45ef083841792e88fbadbfefb0630abd738a131f9782333fbc61f8b6712b4b
-	sha256sums = f594e3a0cf55649377e09bc22e6dd5152ecafe6a96460a68036a35bba5ba932e
+	sha256sums = 71b77f8610d4e7b75663b18a417c7451a38c3bf9f5c9281d4946c9df346bdab2
 
 pkgname = linux-tpm453-edge
 	pkgdesc = The Hardware-specific CachyOS edge-preview kernel for Acer TMP453-M class hardware kernel and modules
