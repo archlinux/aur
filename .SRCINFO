@@ -1,7 +1,7 @@
 pkgbase = connected-desktop-bin
 	pkgdesc = High-speed, offline, cross-platform ecosystem bridging devices (Binary)
 	pkgver = 2.9.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/paterkleomenis/connected
 	arch = x86_64
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = connected-desktop-bin
 	source = https://raw.githubusercontent.com/paterkleomenis/connected/main/android/app/src/main/ic_launcher-playstore.png
 	source = https://raw.githubusercontent.com/paterkleomenis/connected/main/LICENSE-MIT
 	source = https://raw.githubusercontent.com/paterkleomenis/connected/main/LICENSE-APACHE
-	sha256sums = 12a71f1fadedf735b6843c4d544be7928f0d2c723f8937783d01982772e68f63
+	sha256sums = e182292e4ac045ed3d520997b950d26203ed03668f439466b18f1804e699e2d1
 	sha256sums = baf3b2e0d55d9fcb23630a7a6c0eff68eb9b708f8f0ce8e698dcf8ea611666ad
 	sha256sums = da75fde0fd4161c3c8cd83c4e1ca4482732c36adc8cec6480105f93b1f04b4fe
 	sha256sums = fdc5b45803bf8f5d4435509da25399414072b3d95badd6b09b2e84c2f1f198d5
