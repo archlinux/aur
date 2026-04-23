@@ -1,7 +1,7 @@
 # Maintainer: JAuxance <auxance.jourdan@proton.me>
 pkgname=manager-bin
 _pkgname=manager
-pkgver=1.7.6
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Productivity companion — day counter, focus timer, schedule, journal"
 arch=('x86_64')
