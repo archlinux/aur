@@ -1,6 +1,6 @@
 pkgname=aur-check-rebuild
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pacman hook to check and launch rebuild of AUR packages affected by updates'
 arch=('x86_64')
 url='https://github.com/Emiliopg91/aur-check-rebuild'
@@ -9,6 +9,7 @@ depends=(
   'alacritty'
   'pacman'
   'python'
+  'python-pip'
   'python-dataclasses-json'
   'python-psutil'
 )
@@ -19,6 +20,10 @@ sha256sums=(
   'SKIP'
 )
 install=${pkgname}.install
+
+prepare() {
+    pip install --break-system-packages pyalpm
+}
 
 package() {
   cd "$srcdir/aur-check-rebuild"
