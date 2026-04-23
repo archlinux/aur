@@ -13,7 +13,7 @@ conflicts=("${_pkgname}")
 options=('!strip')
 _appimage="OpenAnime-${pkgver}.AppImage"
 source=("${_appimage}::https://github.com/tuanapi/OpenAnime-Linux/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('75b8f4880962db5e04b5766e823b223f6634b605e9905034790f72179af5454b')
+sha256sums=('4d886357ed40440a511f43607e68c0c4c02a92550ae85dc7f2aea18a6f71d7c4')
 noextract=("${_appimage}")
 
 package() {
