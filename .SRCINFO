@@ -1,13 +1,13 @@
 pkgbase = aiprobe
 	pkgdesc = CLI for probing AI API providers, models, and diagnostics
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/gqcdm/aiprobe
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = aiprobe-0.1.4.tar.gz::https://github.com/gqcdm/aiprobe/archive/refs/tags/v0.1.4.tar.gz
+	source = aiprobe-0.1.5.tar.gz::https://github.com/gqcdm/aiprobe/archive/refs/tags/v0.1.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = aiprobe
