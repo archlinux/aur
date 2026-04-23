@@ -1,6 +1,6 @@
 pkgbase = xbelite2-dkms
 	pkgdesc = Xbox Elite Series 2 controller driver and configurator for Linux
-	pkgver = 0.8.9
+	pkgver = 0.8.10
 	pkgrel = 1
 	url = https://github.com/lemonxah/xbelite2
 	install = xbelite2.install
@@ -11,10 +11,12 @@ pkgbase = xbelite2-dkms
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = dkms
+	options = !lto
+	options = !debug
 	backup = etc/udev/rules.d/99-xbelite2.rules
 	backup = etc/modprobe.d/xbelite2.conf
 	backup = etc/modprobe.d/xbelite2-blacklist.conf
-	source = xbelite2-dkms-0.8.9.tar.gz::https://github.com/lemonxah/xbelite2/archive/refs/tags/v0.8.9.tar.gz
+	source = xbelite2-dkms-0.8.10.tar.gz::https://github.com/lemonxah/xbelite2/archive/refs/tags/v0.8.10.tar.gz
 	sha256sums = SKIP
 
 pkgname = xbelite2-dkms
