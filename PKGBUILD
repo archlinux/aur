@@ -3,7 +3,7 @@
 
 _gitname=pysim
 pkgname=python-pysim-git
-pkgver=1.0.r1404.gc50f4b4a
+pkgver=1.0.r1407.g03b58985
 pkgrel=1
 pkgdesc='A python tool to program SIMs / USIMs / ISIMs'
 arch=('any')
@@ -28,7 +28,10 @@ depends=('python'
 # XXX pySim-smpp2sim.py needs 'smpp.pdu', and 'smpp.twisted'
 optdepends=('python-smpplib: for pySim-smpp2sim.py'
             'python-pyshark: for pySim-trace.py')
-makedepends=('python-setuptools' 'git')
+makedepends=('git'
+             'python-build'
+             'python-installer'
+             'python-wheel')
 provides=("${pkgname%-git}=${pkgver}")
 source=('git+https://gitea.osmocom.org/sim-card/pysim')
 sha256sums=('SKIP')
@@ -38,10 +41,15 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^\(v\)\1*//'
 }
 
+build() {
+  cd "${srcdir}/${_gitname}"
+  python -m build --wheel --no-isolation
+}
+
 package() {
   install=$pkgname.install
   cd "${srcdir}/${_gitname}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim:set ts=2 sw=2 et:
