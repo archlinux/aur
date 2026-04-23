@@ -1,0 +1,14 @@
+pkgbase = cflash
+	pkgdesc = Small and lightweight image and iso flasher build on dd.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/cametendo/cflash-git
+	arch = any
+	license = MIT
+	makedepends = java-environment>=21
+	makedepends = maven
+	depends = java-runtime>=21
+	source = cflash::git+https://github.com/cametendo/cflash-git.git
+	sha256sums = SKIP
+
+pkgname = cflash
