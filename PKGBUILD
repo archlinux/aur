@@ -1,4 +1,4 @@
-# Maintainer: Gastipatis <gastipatis@gmail.com>
+# Maintainer: plasmaofthedawn <plasmaofthedawn@gmail.com>
 
 pkgname=ttf-sitelen-seli-kiwen-juniko
 pkgver=2.1

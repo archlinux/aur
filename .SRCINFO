@@ -5,7 +5,7 @@ pkgbase = ttf-sitelen-seli-kiwen-juniko
 	url = https://www.kreativekorp.com/software/fonts/sitelenselikiwen
 	arch = any
 	license = OFL
-	source = https://github.com/kreativekorp/sitelen-seli-kiwen/releases/download/2.0/sitelenselikiwen.zip
-	sha256sums = c05be11d642cd33d3e9e1867556c2ecda3656a669f697e56515cf1127bbfeb20
+	source = https://github.com/kreativekorp/sitelen-seli-kiwen/releases/download/2.1/sitelenselikiwen.zip
+	sha256sums = 219837b9e049da003896e0e17aca3bdd60fd1d23e31d6ba0bb9845f377f06830
 
 pkgname = ttf-sitelen-seli-kiwen-juniko
