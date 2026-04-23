@@ -19,7 +19,7 @@ source=("$_pkgname-$pkgver-linux-amd64::https://github.com/OlexiyOdarchuk/Studen
 sha256sums=('e38d0a1ca54980d82e16c77dce8cff61d621d422bd8f39d9f292c27310bb182f'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '1e617e90981872e29d8dff6581a63c456cb4d30178d666406be7af91bbed98bd'
-            'e587396876cab3666978caddd2e80ad1a4584e37cc6508d2fd0f0e3c84629d85')
+            '11db748c11261e0b56346fe5bfa029d96ea50e397b7bfbcc4f18a4b73fb04f06')
 
 package() {
   install -Dm755 "$srcdir/$_pkgname-$pkgver-linux-amd64" "$pkgdir/usr/bin/$_pkgname"
