@@ -5,7 +5,7 @@ _pkgname=noxdir
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal utility for visualizing file system usage."
 
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,9 +25,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[2]}.tar.gz")
-sha256sums_x86_64=('c21badb542a1b79a640d0b77080b5b125606c5b30ec25c179ee2920967af099f')
-sha256sums_i686=('21fc2abed546f674ca347712e26abe05ae7f426d52302e45a894edb88c4ea844')
-sha256sums_aarch64=('c1cfdc777ddaf429f9b7e477ed4758c9407a1999ff61a922ddb262fa9d6b9ccb')
+sha256sums_x86_64=('1dab35d6f0d02ab46498859cb0a310ca15e0cffd2944ad53a68a61c45f68f845')
+sha256sums_i686=('6d873bd479a2b8e268ea2e138e6ad12e853d7200b501bf855052c364ef50076a')
+sha256sums_aarch64=('c8571a3c0ec52a1673fc8b148ea28f2618319c2f3bdad4a64d46ac6dd7b267e5')
 
 
 package() {
