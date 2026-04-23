@@ -1,6 +1,6 @@
 # Maintainer: François Pansera <contact@ironcall.dev>
 pkgname=ironcall-cli-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Ironcall CLI - Local-first API client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source_x86_64=(
     "ironcall-cli-${pkgver}-linux-x86_64::https://ironcall.dev/releases/cli/${pkgver}/ironcall-cli-${pkgver}-linux-x86_64"
 )
 sha256sums_x86_64=(
-    'fdcc33a111a64880e289b6bf7e941a1a079cf284395f693a119154f1c38aae34'
+    'dc3fd2b8bed1caa6ae8edc0271e579cb3458700f2340d7b8cd317a03975a93e1'
 )
 
 package() {
