@@ -3,7 +3,7 @@
 _pkgauthor=greymd
 _pkgname=teip
 pkgname=${_pkgname}-bin
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Masking tape to help commands 'do one thing well'"
 arch=('x86_64' 'aarch64')
@@ -17,9 +17,9 @@ conflicts=("${_pkgname}")
 source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.${arch[0]}-unknown-linux-musl.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.${arch[1]}-unknown-linux-musl.tar.gz")
-sha256sums=('f3c9a2a54c7abcc00035fb6f275332bf92f2be6403f06d954abd742595cf0a49')
-sha256sums_x86_64=('0ea0caab0ae0ae8550e7cddc16ea9be4e751aa887267f8a7bb855f7eec237a8d')
-sha256sums_aarch64=('a31f2162b003f0841fb69673e1ff17342ad245d8c8b20dc305b0b728898d2d0d')
+sha256sums=('4d71f4b037a63f89697c713fd034a5c7be59a9e30005ea3178e215679e868a8f')
+sha256sums_x86_64=('61374d943b38187c2329d08224d6c3990282c6eb4543658dd619a55d7f1c696a')
+sha256sums_aarch64=('d0fe19b32d261e6a057ccf2e3949143317199b144b8c38a23191ed8c86c64100')
 
 
 package() {

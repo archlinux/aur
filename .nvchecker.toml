@@ -1,0 +1,5 @@
+[teip-bin]
+source = "github"
+github = "greymd/teip"
+use_latest_release = true
+prefix = "v"
