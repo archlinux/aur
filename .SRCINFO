@@ -1,6 +1,6 @@
 pkgbase = seetui-git
 	pkgdesc = see (Service Event Extraction) is a TUI based tool to lookup logs from services (systemd)
-	pkgver = 0.1.0.r9.gede95ea
+	pkgver = 0.1.5.r2.g45feef6
 	pkgrel = 1
 	url = https://github.com/NustyFrozen/SEE
 	arch = x86_64

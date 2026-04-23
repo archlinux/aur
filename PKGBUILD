@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=seetui-git
 _pkgname=seetui
-pkgver=0.1.0.r9.gede95ea
+pkgver=0.1.5.r2.g45feef6
 pkgrel=1
 pkgdesc='see (Service Event Extraction) is a TUI based tool to lookup logs from services (systemd)'
 arch=('x86_64' 'aarch64' 'riscv64')
