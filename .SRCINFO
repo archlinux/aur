@@ -1,6 +1,6 @@
 pkgbase = rusk
 	pkgdesc = A minimal cross-platform terminal task manager written in Rust
-	pkgver = 0.6.12
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/tagirov/rusk
 	install = rusk.install
@@ -9,7 +9,7 @@ pkgbase = rusk
 	makedepends = rust
 	depends = gcc-libs
 	options = !debug
-	source = rusk-0.6.12.tar.gz::https://github.com/tagirov/rusk/archive/refs/tags/0.6.12.tar.gz
-	sha256sums = 805622f1842376b0deba2d99101af11ddd20734d99d151dea2a17b8a6c445d3b
+	source = rusk-0.7.0.tar.gz::https://github.com/tagirov/rusk/archive/refs/tags/0.7.0.tar.gz
+	sha256sums = 74016cc954e82551ac090b725a9eefd4198bb619e40317ffbb05518ff22b3052
 
 pkgname = rusk
