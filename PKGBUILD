@@ -2,13 +2,13 @@
 
 pkgname=cxxsemaphore
 pkgrel=1
-pkgver=2.0.4
+pkgver=2.1.0
 pkgdesc="A C++ library to handle POSIX named semaphores "
-url="https://github.com/NikolasK-source/cxxsemaphore"
+url="https://gitlab.com/nikolask-cpp-libs/cxxsemaphore"
 license=('MIT')
 arch=('x86_64' 'aarch64')
 makedepends=('cmake')
-source=("git+https://github.com/NikolasK-source/cxxsemaphore.git#tag=v${pkgver}")
+source=("git+https://gitlab.com/nikolask-cpp-libs/cxxsemaphore.git#tag=v${pkgver}")
 
 sha256sums=('SKIP')
 
