@@ -20,7 +20,7 @@
 # 'eevdf' - select 'EEVDF Scheduler'
 # 'rt' - select EEVDF, but includes a series of realtime patches
 # 'rt-bore' - select Burst-Oriented Response Enhancer, but includes a series of realtime patches
-: "${_cpusched:=bore}"
+: "${_cpusched:=eevdf}"
 
 ### Tweak kernel options prior to a build via nconfig
 : "${_makenconfig:=no}"
@@ -179,20 +179,15 @@ _custom_kernsuffix="${_custom_pkgbase#linux-}"
 
 pkgbase="$_custom_pkgbase"
 _major=7.0
-_minor=0
+_minor=1
 #_minorc=$((_minor+1))
-_rcver=rc7
-pkgver=7.0.0rc5.r20260422.g09d54799a73e
+pkgver=7.0.1.r20260423.g7e6c35d1ea6
 _tagrel=3
-pkgrel=2
-#_stable=${_major}.${_minor}
-#_stable=${_major}
-_stable=${_major}-${_rcver}
-_srctag=cachyos-${_major}-${_rcver}-${_tagrel}
-_srcname=linux-09d54799a73eb003725e7b8a6b9d80cb7145347c
+pkgrel=1
+_srcname=linux-7e6c35d1ea6da4fa14a9db2e71d5835ca9636f19
 pkgdesc='Hardware-specific CachyOS edge-preview kernel for Acer TMP453-M class hardware'
 _kernver="$pkgver-$pkgrel"
-_source_kernelver="7.0.0-rc5"
+_source_kernelver="7.0.1"
 _kernuname="${_source_kernelver}-${_custom_kernsuffix}"
 arch=('x86_64')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -222,7 +217,7 @@ _nv_ver=595.58.03
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
-    "${_srcname}.tar.gz::https://codeload.github.com/CachyOS/linux/tar.gz/09d54799a73eb003725e7b8a6b9d80cb7145347c"
+    "${_srcname}.tar.gz::https://codeload.github.com/CachyOS/linux/tar.gz/7e6c35d1ea6da4fa14a9db2e71d5835ca9636f19"
     "config")
 
 # LLVM makedepends
@@ -301,7 +296,7 @@ _apply_tpm453_profile() {
         -d MZEN4 \
         -e X86_NATIVE_CPU \
         -e CACHY \
-        -e SCHED_BORE \
+        -d SCHED_BORE \
         -e LTO_CLANG_THIN \
         -d LTO_NONE \
         -d LTO_CLANG_FULL \
@@ -924,7 +919,6 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('a943aad5800a8e1e01f915432b3ff90e3916c83b3ae18fed84afafba5ba80bf9'
+sha256sums=('ef15265a37edbca007a3973b07fbbb55ddbd2deeadbecbb3d3507fe8a343c399'
             'fa32a9d7b1961b366a59d107006a9728da9d89f06e32d1ef51e44fa6b9a55801'
-            '6f45ef083841792e88fbadbfefb0630abd738a131f9782333fbc61f8b6712b4b'
-            '71b77f8610d4e7b75663b18a417c7451a38c3bf9f5c9281d4946c9df346bdab2')
+            '6f45ef083841792e88fbadbfefb0630abd738a131f9782333fbc61f8b6712b4b')

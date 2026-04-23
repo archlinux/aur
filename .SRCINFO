@@ -1,7 +1,7 @@
 pkgbase = linux-tpm453-edge
 	pkgdesc = Hardware-specific CachyOS edge-preview kernel for Acer TMP453-M class hardware
-	pkgver = 7.0.0rc5.r20260422.g09d54799a73e
-	pkgrel = 2
+	pkgver = 7.0.1.r20260423.g7e6c35d1ea6
+	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
 	license = GPL-2.0-only
@@ -27,14 +27,12 @@ pkgbase = linux-tpm453-edge
 	options = !strip
 	options = !debug
 	options = !lto
-	source = linux-09d54799a73eb003725e7b8a6b9d80cb7145347c.tar.gz::https://codeload.github.com/CachyOS/linux/tar.gz/09d54799a73eb003725e7b8a6b9d80cb7145347c
+	source = linux-7e6c35d1ea6da4fa14a9db2e71d5835ca9636f19.tar.gz::https://codeload.github.com/CachyOS/linux/tar.gz/7e6c35d1ea6da4fa14a9db2e71d5835ca9636f19
 	source = config
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/misc/dkms-clang.patch
-	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/sched/0001-bore-cachy.patch
-	sha256sums = a943aad5800a8e1e01f915432b3ff90e3916c83b3ae18fed84afafba5ba80bf9
+	sha256sums = ef15265a37edbca007a3973b07fbbb55ddbd2deeadbecbb3d3507fe8a343c399
 	sha256sums = fa32a9d7b1961b366a59d107006a9728da9d89f06e32d1ef51e44fa6b9a55801
 	sha256sums = 6f45ef083841792e88fbadbfefb0630abd738a131f9782333fbc61f8b6712b4b
-	sha256sums = 71b77f8610d4e7b75663b18a417c7451a38c3bf9f5c9281d4946c9df346bdab2
 
 pkgname = linux-tpm453-edge
 	pkgdesc = The Hardware-specific CachyOS edge-preview kernel for Acer TMP453-M class hardware kernel and modules
