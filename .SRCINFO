@@ -1,6 +1,6 @@
 pkgbase = tinyexr-git
 	pkgdesc = Tiny OpenEXR image library (single-header C++ alternative to OpenEXR)
-	pkgver = r1120.4497e20
+	pkgver = r693.4946b5d
 	pkgrel = 1
 	url = https://github.com/syoyo/tinyexr
 	arch = any
