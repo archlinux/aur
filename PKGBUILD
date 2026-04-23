@@ -3,13 +3,13 @@
 # Contributor: bebehei <bebe@bebehei.de>
 
 pkgname=icinga2
-pkgver=2.15.2
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="An open source host, service and network monitoring program"
-license=('GPL')
+license=('GPL-3.0-or-later')
 arch=('i686' 'x86_64')
 url="https://icinga.com/"
-depends=('boost-libs' 'libedit' 'libsystemd' 'openssl')
+depends=('boost-libs' 'libedit' 'libsystemd' 'openssl' 'protobuf')
 optdepends=('monitoring-plugins: plugins needed for icinga checks'
             'libmariadbclient: for MySQL support'
             'postgresql-libs: for PostgreSQL support')
@@ -35,6 +35,7 @@ backup=(etc/default/icinga2
         etc/icinga2/features-available/mainlog.conf
         etc/icinga2/features-available/notification.conf
         etc/icinga2/features-available/opentsdb.conf
+        etc/icinga2/features-available/otlpmetrics.conf
         etc/icinga2/features-available/perfdata.conf
         etc/icinga2/features-available/syslog.conf
         etc/icinga2/constants.conf
@@ -48,7 +49,7 @@ changelog="icinga2.changelog"
 source=("https://github.com/Icinga/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.tmpfiles"
         "$pkgname.sysusers")
-sha256sums=('9a4e91ef7a9e23988134afd9691d149fdebb7b46106c845e3c36fefa2d80566e'
+sha256sums=('71fcd7e54de6f6c53757ca4c9f1c91111dc14e3043ee1ca74313d1d075904b43'
             '1302b333f49ead14f8808a379535971501d3a0c1ba02a7bf7b4406b7d27c754c'
             '2f946a33ea50a3c4400a81acd778e6411ffe5e2257a98004288b84a64f382810')
 
