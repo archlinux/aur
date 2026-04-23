@@ -12,7 +12,7 @@ provides=('goYoke-dev')
 conflicts=('goYoke-dev')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Bucket-Chemist/goYoke-dev/releases/download/v${pkgver}/goYoke_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('b7bd5adcf4ec861e9dda6a14d6d30d60e1719db32329b144c14c5abdcd9bd236')
+sha256sums_x86_64=('c7fe690c4565139e2f2cedc73868066cd86ea2934d399c949f5f82511c1de2f3')
 
 package() {
   install -Dm755 "./goyoke" "${pkgdir}/usr/bin/goyoke"
