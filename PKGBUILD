@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=matchmaker-git
 _pkgname=matchmaker
-pkgver=0.0.24.r0.g4e62115
+pkgver=0.0.24.r2.gf059f69
 pkgrel=1
 pkgdesc='A fast, configurable and intuitive fuzzy searcher.'
 arch=('x86_64' 'aarch64' 'riscv64')
