@@ -1,4 +1,5 @@
-# Maintainer: Ralph Torres <mail at ralphptorr dot es>
+# Maintainer: NourEddineX
+# Contributor: Ralph Torres <mail at ralphptorr dot es>
 # Contributor: éclairevoyant
 # Contributor: tarball <bootctl at gmail dot com>
 
@@ -7,7 +8,7 @@
 # TODO: enable incremental builds, add addarmor
 
 pkgname=mullvad-browser
-pkgver=15.0.9
+pkgver=15.0.10
 _buildver=build1
 pkgrel=1
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
