@@ -16,6 +16,8 @@ pkgbase = linux-arctis-manager
 	depends = python-pyusb
 	depends = python-ruamel-yaml
 	source = https://github.com/elegos/Linux-Arctis-Manager/archive/refs/tags/v2.3.0.tar.gz
+	source = arctis-manager.service
 	sha256sums = 14b31654020d4904143ad333b13542145cbabc5b83121584f55296339cbb2c32
+	sha256sums = 3ad9e074ffa85ead9089d4b16f2974d0a9710d7e428cdf61744e6d1cd7b19d6c
 
 pkgname = linux-arctis-manager

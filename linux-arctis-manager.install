@@ -7,15 +7,7 @@ post_install() {
     echo ""
     echo -e "${_g}:: ARCTIS MANAGER: INITIAL SETUP${_r}"
     echo -e "${_g}::${_r} -----------------------------------------------------------------------"
-    echo -e "${_g}::${_r} Run the following command to complete your setup:"
-    echo -e "${_g}::${_r}"
-    echo -e "${_g}::${_r}    ${_b}lam-cli setup --start-now${_r}"
-    echo -e "${_g}::${_r}"
-    echo -e "${_g}::${_r} TIP: To also autostart the system tray icon on login:"
-    echo -e "${_g}::${_r}"
-    echo -e "${_g}::${_r}    ${_b}lam-cli setup --systray-autostart --start-now${_r}"
-    echo -e "${_g}::${_r}"
-    echo -e "${_g}::${_r} Troubleshooting: https://github.com/elegos/Linux-Arctis-Manager#troubleshooting"
+    echo -e "${_g}::${_r} This package make all the initial setup, you shouldn't have to run anything by default."
     echo -e "${_g}::${_r} -----------------------------------------------------------------------"
     echo ""
 }
@@ -24,20 +16,14 @@ post_upgrade() {
     echo ""
     echo -e "${_g}:: ARCTIS MANAGER: UPDATE COMPLETED${_r}"
     echo -e "${_g}::${_r} -----------------------------------------------------------------------"
-    echo -e "${_g}::${_r} To ensure new device support and rule fixes are active, run:"
-    echo -e "${_g}::${_r}"
-    echo -e "${_g}::${_r}    ${_b}lam-cli setup${_r}"
-    echo -e "${_g}::${_r}"
-    echo -e "${_g}::${_r} (No action needed if your device is already working correctly)"
+    echo -e "${_g}::${_r} This package make all the initial setup, you shouldn't have to run anything by default."
+    echo -e "${_g}::${_r} "
+    echo -e "${_g}::${_r} Some user files may remain from previous versions of the package."
+	if [ -e ~/.config/systemd/user/arctis-manager.service ]; then
+		echo -e "${_g}::${_r} ${_b}rm ~/.config/systemd/user/arctis-manager.service${_r}"
+	fi
     echo -e "${_g}::${_r} -----------------------------------------------------------------------"
     echo ""
-}
-
-pre_remove() {
-    echo -e "${_g}:: ARCTIS MANAGER: PRE-REMOVAL CLEANUP${_r}"
-    echo -e "${_g}::${_r} Attempting to remove desktop entries..."
-    # Running while the binary still exists in /usr/bin/
-    lam-cli desktop remove 2>/dev/null || true
 }
 
 post_remove() {

@@ -1,0 +1,13 @@
+[Unit]
+Description=Arctis Manager
+StartLimitInterval=1min
+StartLimitBurst=5
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/lam-daemon
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
