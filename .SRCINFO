@@ -6,7 +6,7 @@ pkgbase = cloudctl-bin
 	arch = x86_64
 	license = MIT
 	provides = cloudctl
-	source = cloudctl-linux-0.14.16-1::https://github.com/fi-ts/cloudctl/releases/download/v0.14.16/cloudctl-linux-amd64
+	source_x86_64 = cloudctl-linux-0.14.16-1::https://github.com/fi-ts/cloudctl/releases/download/v0.14.16/cloudctl-linux-amd64
 	sha512sums_x86_64 = f79698c907357fc31d95ea784decd0a06ac6a59233762c0f4faac4f1057b27762eadd559a33e7d21b947f80ca443cf052f8246e4cd137b4abafdc43715e4e72d
 
 pkgname = cloudctl-bin
