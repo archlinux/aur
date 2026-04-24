@@ -23,7 +23,7 @@ pkgbase = cronboard
   depends = python-tomlkit
   depends = cronie
 	source = cronboard-0.5.2.tar.gz::https://github.com/antoniorodr/Cronboard/archive/v0.5.2.tar.gz
-	sha256sums = 2746318425f939ddbdcfce31cb7793a1ade4e57fe14ca9b732e9a301250b3b07
+	sha256sums = 0ce4b902e9f4e4d00518fc76a4f4587d5eaaac8e92ea5b982a380eb2dc496ff5
 
 pkgname = cronboard
 
