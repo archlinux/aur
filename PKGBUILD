@@ -18,7 +18,7 @@
 
 pkgname=hnefatafl-copenhagen
 pkgver=5.8.0
-pkgrel=1
+pkgrel=2
 real_pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client, engine, server and artificial intelligence"
 url="https://hnefatafl.org"
@@ -32,7 +32,7 @@ source=("https://codeberg.org/dcampbell/hnefatafl/archive/v$pkgver-$real_pkgrel.
 sha256sums=("671bcbaa46b24e7644903755d603e68c139d51ce01570ceb1daed7a35ef42832")
 build() {
     tar -xvzf v$pkgver-$real_pkgrel.tar.gz
-    cd "hnefatafl"S
+    cd "hnefatafl"
 
     cargo build --release
 

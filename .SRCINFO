@@ -1,7 +1,7 @@
 pkgbase = hnefatafl-copenhagen
 	pkgdesc = Copenhagen Hnefatafl client, engine, server and artificial intelligence
 	pkgver = 5.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hnefatafl.org
 	arch = x86_64
 	license = AGPL-3.0-or-later
