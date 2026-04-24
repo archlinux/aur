@@ -1,6 +1,6 @@
 pkgbase = python-manim-slides
 	pkgdesc = Tool for live presentations using manim
-	pkgver = 5.5.4
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = https://github.com/jeertmans/manim-slides
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = python-manim-slides
 	depends = python-rich
 	depends = python-rtoml
 	depends = python-tqdm
-	source = manim-slides-5.5.4.tar.gz::https://github.com/jeertmans/manim-slides/archive/v5.5.4.tar.gz
-	sha512sums = d0d159b19d7c005616922ab340c96c9438742e8f3448803e0d5e1f5b52d1c3619a7d3b76a959d36a890f047d0db60729427960d9226c1e1061ce21673c4b7211
+	source = manim-slides-5.6.0.tar.gz::https://github.com/jeertmans/manim-slides/archive/v5.6.0.tar.gz
+	sha512sums = f8a61239e7f4cd834b723e8a931a3f07e60003bb7798bcb9320ea5f9b03372f13148991a1972ae55306bc4d2b9c80cc745cab0a768f4db38ecd62c1676f9a6e6
 
 pkgname = python-manim-slides
