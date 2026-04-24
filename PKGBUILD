@@ -4,11 +4,7 @@ pkgname=(
   caelestia-sddm-minimalist-git
   caelestia-sddm-minimalistv2-git
 )
-<<<<<<< Updated upstream
-pkgver=r135.9e8d36b
-=======
 pkgver=r137.b5ebbc0
->>>>>>> Stashed changes
 pkgrel=1
 arch=('any')
 url='https://github.com/ItsABigIgloo/caelestia-sddm'
