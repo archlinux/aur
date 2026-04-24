@@ -1,0 +1,21 @@
+pkgbase = snry-shell-qs
+	pkgdesc = Snry Shell - Hyprland dotfiles managed by Ansible
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sonroyaalmerol/dots-hyprland
+	install = snry-shell-qs.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ansible-core
+	depends = git
+	depends = rsync
+	depends = python
+	depends = uv
+	depends = sudo
+	depends = findutils
+	depends = which
+	source = git+https://github.com/sonroyaalmerol/dots-hyprland.git
+	sha256sums = SKIP
+
+pkgname = snry-shell-qs

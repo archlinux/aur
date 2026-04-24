@@ -1,0 +1,26 @@
+post_install() {
+  echo ""
+  echo ">>> Snry Shell has been installed!"
+  echo ">>> To set up your dotfiles, run:"
+  echo ">>>   snry-shell"
+  echo ""
+  echo ">>> Run 'snry-shell --tags checkdeps' to check for missing AUR packages first."
+  echo ""
+}
+
+post_upgrade() {
+  echo ""
+  echo ">>> Snry Shell updated!"
+  echo ">>> To apply changes, run:"
+  echo ">>>   snry-shell"
+  echo ""
+}
+
+post_remove() {
+  echo ""
+  echo ">>> Snry Shell has been removed."
+  echo ">>> Config files in ~/.config/ were NOT deleted."
+  echo ">>> To fully clean up, run (before removing this package):"
+  echo ">>>   snry-shell --tags uninstall"
+  echo ""
+}
