@@ -7,7 +7,7 @@
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 
 pkgname=dbschema
-pkgver=10.1.3
+pkgver=10.1.4
 pkgrel=1
 pkgdesc='Relational Data Browse, Query Builder, SQL Editor, schema deployment and synchronization.'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=(
 )
 # verify here: https://dbschema.com/download/md5sums
 md5sums=(
-    'da006f0b009bdb01376902f108c70495'
+    'c28fd53473a672a221893dc51fc3009c'
     'fd70b65c057119c0290bf9f4b51be830'
     'f52f8d76f63ae513fda70b4ef53ebbc5'
 )
