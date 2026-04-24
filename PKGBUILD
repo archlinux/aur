@@ -48,8 +48,6 @@ makedepends=(
     ### Required, according to docs
     python gcc cmake ninja git
     ### Additional components
-    # Python bindings
-    python-cppyy
     # Openflow (devel) [FIXME!]
     boost
     # Eigen3 (vector math lib, header-only)
@@ -99,8 +97,13 @@ for _searchpkg in "${pkgname[@]}"; do
 done;
 
 # Additional dependencies on alternative configurations
-if ! $_has_python; then
-  depends+=(openmpi)
+if $_has_python; then
+    # Bindings requirements
+    makedepends+=(python-cppyy)
+else
+    # Enable MPI feature as it does
+    # conflict with Python bindings
+    depends+=(openmpi)
 fi
 
 _pver() {

@@ -10,7 +10,6 @@ pkgbase = ns3
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
-	makedepends = python-cppyy
 	makedepends = boost
 	makedepends = eigen3
 	depends = sqlite3
