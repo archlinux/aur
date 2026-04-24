@@ -29,16 +29,40 @@ prepare() {
 
 package() {
     cd "$srcdir"
+
     appimage=$(find . -type f -name "*.AppImage" -print -quit)
+
     install -Dm755 "$appimage" "$pkgdir/usr/bin/$pkgname"
-    cp -a "$appimage.config" "$pkgdir/usr/bin/$pkgname.config" || true
-    chmod -R 766 "$pkgdir/usr/bin/$pkgname.config" || true
-    cp -a "$appimage.home" "$pkgdir/usr/bin/$pkgname.home" || true
-    chmod -R 766 "$pkgdir/usr/bin/$pkgname.home" || true
+
+    # Install config directory if it exists
+    if [[ -d "$appimage.config" ]]; then
+        cp -a "$appimage.config" "$pkgdir/usr/bin/$pkgname.config"
+        chmod -R u+rwX,go+rwX "$pkgdir/usr/bin/$pkgname.config"
+    else
+        install -dm777 "$pkgdir/usr/bin/$pkgname.config"
+    fi
+
+    # Install home directory if it exists
+    if [[ -d "$appimage.home" ]]; then
+        cp -a "$appimage.home" "$pkgdir/usr/bin/$pkgname.home"
+        chmod -R u+rwX,go+rwX "$pkgdir/usr/bin/$pkgname.home"
+    else
+        install -dm777 "$pkgdir/usr/bin/$pkgname.home"
+    fi
+
     install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256/apps/project-plus-dolphin.png \
         "$pkgdir/usr/share/pixmaps/$pkgname.png"
-    install -dm755 "$pkgdir/usr/share/applications"
-    printf "[Desktop Entry]\nVersion=${pkgver:1}\nName=Project+ Netplay\nComment=A Mod of Super Smash Bros. Brawl with Netplay.\nPath=/usr/bin\nExec=%s\nIcon=%s\nType=Application\nCategories=Game\nKeywords=project+;brawl;netplay\n" \
-        "$pkgname" "$pkgname" \
-        > "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
+[Desktop Entry]
+Version=${pkgver:1}
+Name=Project+ Netplay
+Comment=A Mod of Super Smash Bros. Brawl with Netplay.
+Path=/usr/bin
+Exec=$pkgname
+Icon=$pkgname
+Type=Application
+Categories=Game
+Keywords=project+;brawl;netplay
+EOF
 }
