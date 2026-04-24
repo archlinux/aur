@@ -1,27 +1,36 @@
 # Maintainer: Aleksandr Mezin <mezin.alexander@gmail.com>
 # Contributor: Amiel Kyamko <junkfactory@gmail.com>
 pkgname=gnome-shell-extension-ddterm
-pkgver=62.0.2
+pkgver=63.0.0
 pkgrel=1
 pkgdesc='Another Drop Down Terminal Extension for GNOME Shell'
 arch=('any')
 url='https://github.com/ddterm/gnome-shell-extension-ddterm'
 license=('GPL-3.0-or-later')
 depends=('gjs' 'gtk3')
-makedepends=('meson' 'git' 'gtk4' 'libxslt' 'xorg-server-xvfb')
+makedepends=('meson' 'git')
 checkdepends=('jq')
-_max_gnome_shell_version=49
+_max_gnome_shell_version=50
 install="${pkgname}.install"
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/ddterm/gnome-shell-extension-ddterm/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('1e27d5f4e9dd6a42ac41ccbd6b4bbc47cb87eb551b42fbda317c9b1a3e3443ef')
+sha256sums=('2419e8599212b85fcec162f9f75199c5f625ac85af957d7e6e3c3baac8d52c11')
+
+prepare() {
+    meson subprojects download --sourcedir "${pkgname}-${pkgver}"
+}
 
 build() {
-    arch-meson "${pkgname}-${pkgver}" build -Dtests=disabled
+    local meson_options=(
+        -Dtests=disabled
+        -Dtests_x11=disabled
+        -Dtests_wl_clipboard=disabled
+    )
 
-    # gtk-builder-tool needs X or Wayland
-    LIBGL_ALWAYS_SOFTWARE=1 xvfb-run --auto-display --server-args=-noreset --wait=0 -- meson compile -C build
+    arch-meson "${pkgname}-${pkgver}" build "${meson_options[@]}"
+
+    meson compile -C build
 }
 
 check() {
