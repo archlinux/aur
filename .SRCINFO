@@ -1,5 +1,5 @@
 pkgbase = caelestia-sddm-git
-	pkgver = r136.93988ed
+	pkgver = r137.b5ebbc0
 	pkgrel = 1
 	url = https://github.com/ItsABigIgloo/caelestia-sddm
 	install = caelestia-sddm.install
@@ -19,6 +19,7 @@ pkgbase = caelestia-sddm-git
 	optdepends = caelestia-cli: color generation for theme sync
 	optdepends = caelestia-cli-git: color generation for theme sync (git)
 	provides = caelestia-sddm
+	replaces = caelestia-sddm
 	source = caelestia-sddm-git::git+https://github.com/ItsABigIgloo/caelestia-sddm
 	sha256sums = SKIP
 
