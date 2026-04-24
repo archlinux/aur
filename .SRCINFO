@@ -1,7 +1,7 @@
 pkgbase = textidote-bin
 	pkgdesc = Spelling, grammar and style checking on LaTeX documents
-	pkgver = 0.8.3
-	pkgrel = 5
+	pkgver = 0.9
+	pkgrel = 1
 	url = https://github.com/sylvainhalle/textidote
 	arch = any
 	license = GPL
@@ -11,10 +11,10 @@ pkgbase = textidote-bin
 	optdepends = bash-completion: for completion when using bash
 	optdepends = zsh-completions: for completion when using zsh
 	provides = textidote
-	source = https://github.com/sylvainhalle/textidote/releases/download/v0.8.3/textidote_0.8.3_all.deb
+	source = https://github.com/sylvainhalle/textidote/releases/download/v0.9/textidote_0.9_all.deb
 	source = textidote-desktop
 	source = textidote.desktop
-	sha512sums = ec3d3a320e95c1eaa9e56592489ca92df1bf9affa103e63f911951751649b598846416dc5318802d4234b3bd68b697a2050e6bbd788b558cdebfe3d7dc9d7928
+	sha512sums = c1412dfc5c0e90853f75206e3a0100ead63c681ace4e2c3a9ae95d878f4937e48f47362d8074fd0ddfa1f38d65d4cdce6287c8cea69ee1a9375decc04570e8c6
 	sha512sums = bb7ddeb219b4d77f9e57b71afe6323ffa2aac39742c8c0162574cbd9360d2c00890444bac5504771cfe806a0a401b76e98bca8178da3f34f2d6b1bde299c6f52
 	sha512sums = 3f8a415e1428009cb701325b27880b6e4828a12634465969e4a8c1e53f2c6bfd26695160f85115cf1522fd6f7799128085384847d988e0fa03a7be8b63304540
 

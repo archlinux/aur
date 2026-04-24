@@ -1,0 +1,5 @@
+[textidote-bin]
+source = "github"
+github = "sylvainhalle/textidote"
+use_latest_release = "true"
+prefix = "v"
