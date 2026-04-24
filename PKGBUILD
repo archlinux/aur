@@ -1,6 +1,6 @@
 # Maintainer: moxer-mmh
 pkgname=sysdx
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A systemd unit manager TUI with vim keybinds and theme support"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('systemd')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4e047aadac1863c90165f04beba993e4b392a96a3da0c6fb77f7e5990be931a2')
+sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
 
 prepare() {
     cd "$pkgname-$pkgver"
