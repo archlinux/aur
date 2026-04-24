@@ -4,8 +4,8 @@
 # Contributor: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=wayland-static
-pkgver=1.24.0
-pkgrel=2
+pkgver=1.25.0
+pkgrel=1
 pkgdesc='A computer display server protocol (static library)'
 arch=('x86_64')
 url='https://wayland.freedesktop.org/'
@@ -17,7 +17,7 @@ validpgpkeys=('C7223EBE4EF66513B892598911A30156E0E67611'  # Bryce Harrington
               'C0066D7DB8E9AC6844D728715E54498E697F11D7'  # Derek Foreman
               '34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48') # emersion <contact@emersion.fr>
 source=("https://gitlab.freedesktop.org/wayland/wayland/-/releases/$pkgver/downloads/wayland-$pkgver.tar.xz"{,.sig})
-sha256sums=('82892487a01ad67b334eca83b54317a7c86a03a89cfadacfef5211f11a5d0536'
+sha256sums=('c065f040afdff3177680600f249727e41a1afc22fccf27222f15f5306faa1f03'
             'SKIP')
 
 build() {
