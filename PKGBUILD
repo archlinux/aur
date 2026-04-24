@@ -5,7 +5,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-typed-ffmpeg-v8
 epoch=
-pkgver=4.0.2
+pkgver=4.1
 pkgrel=1
 pkgdesc='Typed FFmpeg bindings for FFmpeg 8.x'
 arch=(any)
@@ -21,9 +21,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/12/eb/659dd05564a8e264e82bc9e0a1ccabdd2b7e64c26a773612b386747e4768/typed_ffmpeg_v8-4.0.2-py3-none-any.whl)
-md5sums+=(42de49ca1acda003584f37a930aba52c)
-noextract+=(typed_ffmpeg_v8-4.0.2-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/ec/fa/1ef8a3a50a3962495a190ccb3bb56771af21150471be7f50fe8099d0e0f6/typed_ffmpeg_v8-4.1-py3-none-any.whl)
+md5sums+=(67e318f7a5b74563c04fdbcc126d9751)
+noextract+=(typed_ffmpeg_v8-4.1-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(e4761ae89d23a3f9a0ac3c39c13262dd)
 
