@@ -47,7 +47,6 @@ package() {
     cat > "$pkgdir/usr/bin/${_pkgname}" << EOF
 #!/bin/sh
 cd /opt/${pkgname}
-export LD_LIBRARY_PATH="\$PWD/data_MVL_linuxbsd_x86_64:\$LD_LIBRARY_PATH"
 exec ./MVL "\$@"
 EOF
     chmod +x "$pkgdir/usr/bin/${_pkgname}"
