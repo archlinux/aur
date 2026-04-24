@@ -112,6 +112,7 @@ complete -c qodercli -n '__qodercli_using_subcommand rm' -s v -l version -d 'Sho
 complete -c qodercli -n '__qodercli_using_subcommand rm' -s w -l workspace -r -F -d 'Current working directory'
 
 # === feedback ===
+complete -c qodercli -n '__qodercli_using_subcommand feedback' -l caller-version -r -d 'Caller application version'
 complete -c qodercli -n '__qodercli_using_subcommand feedback' -s c -l content -r -d 'Feedback content'
 complete -c qodercli -n '__qodercli_using_subcommand feedback' -l email -r -d 'Contact email address'
 complete -c qodercli -n '__qodercli_using_subcommand feedback' -s h -l help -d 'Show help'

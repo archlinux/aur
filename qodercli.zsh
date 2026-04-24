@@ -79,6 +79,7 @@ _qodercli() {
                 feedback)
                     _arguments \
                         '(- *)'{-h,--help}'[Show help]' \
+                        '--caller-version[Caller application version]:version:' \
                         {-c,--content}'[Feedback content]:content:' \
                         '--email[Contact email address]:email:' \
                         '*'{-i,--images}'[Image file paths]:file:_files' \

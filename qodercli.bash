@@ -133,7 +133,7 @@ _qodercli() {
             COMPREPLY=($(compgen -W "-f --force -h --help --kubeconfig --namespace -v --version -w --workspace" -- "$cur"))
             ;;
         feedback)
-            COMPREPLY=($(compgen -W "-c --content --email -h --help -i --images --json -s --session --workdir -v --version -w --workspace" -- "$cur"))
+            COMPREPLY=($(compgen -W "--caller-version -c --content --email -h --help -i --images --json -s --session --workdir -v --version -w --workspace" -- "$cur"))
             ;;
         commit)
             COMPREPLY=($(compgen -W "-h --help -m --message -v --version -w --workspace" -- "$cur"))
