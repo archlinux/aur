@@ -3,21 +3,21 @@
 
 pkgname=proton-mail-git
 _name=${pkgname%-git}
-pkgver=r53403.5262a2e
+pkgver=1.12.1.r58282.0ff71a5
 pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
-arch=('any')
+arch=(any)
 url='https://proton.me/mail'
-license=('GPL-3.0-or-later')
-_electron=electron37
-depends=('bash' "$_electron" 'hicolor-icon-theme')
-makedepends=('git' 'jq' 'nodejs-lts-jod' 'yarn')
-provides=("$_name")
-conflicts=("$_name")
-source=("ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git"
-        'proton-mail.desktop'
-        'proton-mail.sh'
-        'fix-resources-path.patch')
+license=(GPL-3.0-or-later)
+_electron=electron40
+depends=(bash $_electron hicolor-icon-theme)
+makedepends=(git jq nodejs-lts-jod yarn)
+provides=($_name)
+conflicts=($_name)
+source=(ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git
+        proton-mail.desktop
+        proton-mail.sh
+        fix-resources-path.patch)
 b2sums=('SKIP'
         'f0a2b4eca51362b204f487c6484e07080b2d953f38acb3b7ce81a05394fe2f57e5fd42f8806111c467aa528e539654a6b1adc3965328668c4734b3eecf3407e9'
         '45d089576f2260cc425b6c9bdde79e882b24c7dd4b8173f485fb67a0d0ccaf451dbba6f403f3bd8a0d622d99132d076da79984525ed8f89e97738557e8e23bad'
@@ -25,7 +25,10 @@ b2sums=('SKIP'
 
 pkgver() {
     cd ProtonWebClients
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf "%s.r%s.%s" \
+        "$(jq -r '.version' applications/inbox-desktop/package.json)" \
+        "$(git rev-list --count HEAD)" \
+        "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
