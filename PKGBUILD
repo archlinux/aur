@@ -1,13 +1,13 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux-git
-pkgver=r1432.fca05c9
-pkgrel=4
+pkgver=r1434.e028452
+pkgrel=1
 epoch=1
 pkgdesc="A cross-platform soundboard - unstable development version"
 arch=('any')
 url="https://soundux.rocks"
 license=('GPL3')
-depends=('pulse-native-provider' 'webkit2gtk' 'libappindicator-gtk3' 'lsb-release')
+depends=('pulse-native-provider' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'lsb-release')
 optdepends=('youtube-dl: unmaintained downloader integration' 'yt-dlp-drop-in: recommended downloader integration' 'ffmpeg: downloader integration' 'pipewire: pipewire backend' 'libwnck3: icon support on X11')
 makedepends=('git' 'pkgconf' 'cmake' 'ninja' 'pipewire')
 conflicts=('soundux')
@@ -26,6 +26,8 @@ pkgver() {
 prepare() {
   cd "${srcdir}/Soundux"
   git submodule update --init --recursive
+  sed -i 's/webkit2gtk-4\.0/webkit2gtk-4.1/g' \
+      src/ui/impl/webview/lib/webviewpp/CMakeLists.txt
 }
 
 build() {
