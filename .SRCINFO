@@ -1,16 +1,17 @@
 pkgbase = sysvbanner
 	pkgdesc = System-V banner clone
-	pkgver = 1.0.18
+	pkgver = 1.0.19
 	pkgrel = 1
-	url = http://packages.qa.debian.org/s/sysvbanner.html
+	url = http://https://salsa.debian.org/debian/sysvbanner
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	depends = glibc
-	source = http://deb.debian.org/debian/pool/main/s/sysvbanner/sysvbanner_1.0.orig.tar.gz
-	source = http://deb.debian.org/debian/pool/main/s/sysvbanner/sysvbanner_1.0-18.debian.tar.xz
+	conflicts = bsd-games
+	source = http://ftp.debian.org/debian/pool/main/s/sysvbanner/sysvbanner_1.0.orig.tar.gz
+	source = http://ftp.debian.org/debian/pool/main/s/sysvbanner/sysvbanner_1.0-19.debian.tar.xz
 	source = 01-man.patch
 	sha512sums = 3635b6aeafdf29917b031d97533d4fd951bba639fb3604a99a0101dd5789db3631b9dde33765d76feeee9827dec2d201b09c5915763cf76778dffc8060810138
-	sha512sums = cde22c02bffc1477973af7ec2d61ddd709c7d214a0752a28efc5d2d9a941267ade5551c913f07d773739bdb54f2bc888bcc75c785cd55cf59d8754e93893dd9b
+	sha512sums = b18fa530e343ee28a727c4ac0241d76fd22717b3bbefe011c2c25c45e10292aea78038df9b340f6675efbd75a55e9dcec36087ddb64208a06fd51ca512fa7c01
 	sha512sums = 14255d0a35be028728095921e3153861cd296612ab790e213413cc7f4da7690f60451ea76952f7877c17538c13cb44da71f353278c06f3700845656c9d98d609
 
 pkgname = sysvbanner
