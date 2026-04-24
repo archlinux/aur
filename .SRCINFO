@@ -6,7 +6,6 @@ pkgbase = warp-ai-terminal-bin
 	arch = x86_64
 	arch = aarch64
 	license = Proprietary
-	depends = glibc
 	depends = fuse2
 	noextract = Warp-x86_64.AppImage
 	options = !strip

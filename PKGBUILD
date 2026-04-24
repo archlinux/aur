@@ -6,7 +6,7 @@ arch=(x86_64 aarch64)
 url="https://www.warp.dev"
 license=(Proprietary)
 
-depends=("glibc" "fuse2")
+depends=("fuse2")
 options=(!strip !debug)
 
 _appimage="Warp-x86_64.AppImage"
