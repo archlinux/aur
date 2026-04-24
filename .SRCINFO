@@ -1,6 +1,6 @@
 pkgbase = jentlememes-launcher-bin
-	pkgdesc = JentleMemes Minecraft launcher (prebuilt binary)
-	pkgver = 1.1.1
+	pkgdesc = JentleMemes Minecraft launcher (prebuilt binary from GitHub Release tarball)
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/rongus760-ship-it/JentleMemes-Launcher
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = jentlememes-launcher-bin
 	depends = hicolor-icon-theme
 	provides = jentlememes-launcher
 	conflicts = jentlememes-launcher
-	source = jentlememes-launcher::https://github.com/rongus760-ship-it/JentleMemes-Launcher/releases/download/v1.1.1/jentlememes-launcher
-	source = jentlememes-launcher.desktop
-	sha256sums = SKIP
+	source = jentlememes-launcher-2.0.0-linux-x86_64.tar.gz::https://github.com/rongus760-ship-it/JentleMemes-Launcher/releases/download/v2.0.0/jentlememes-launcher-2.0.0-linux-x86_64.tar.gz
+	sha256sums = 38d428b401bfa903cb4214b3c8a59a0006c032649927e5a38d50c3172f4f45cb
 
 pkgname = jentlememes-launcher-bin
