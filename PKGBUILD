@@ -1,7 +1,7 @@
 # Contributor: perlawk
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=csnobol4
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc='A port of Macro SNOBOL4, supports the full SNOBOL4 language plus BLOCKS and SPITBOL and other extensions.'
 url='https://www.regressive.org/snobol4/csnobol4/curr/'
@@ -9,9 +9,9 @@ arch=('i686' 'x86_64')
 license=('BSD')
 depends=('tcl' 'tk')
 source=("https://ftp.regressive.org/snobol4/${pkgname:1}-${pkgver}.tar.gz")
-md5sums=('c43c7216ac21341991b0ba2f4b34c761')
-sha1sums=('20f972c7ec28b92627014877935dbd58fb8af54e')
-sha256sums=('bfd53071d69283776f5b2764f7865d354b89d372569854a18878e59f57388ed2')
+md5sums=('b2ee9c9ca99438d23a6dbc94f7509d7a')
+sha1sums=('1141f69d20a094fc2ec2799e971507921324a8fd')
+sha256sums=('702f73b4107438bd251ebc253d335994f37bb40379242360d876e2de6dc03f78')
 
 build() {
 	cd "$srcdir/${pkgname:1}-$pkgver"
