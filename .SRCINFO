@@ -9,6 +9,7 @@ pkgbase = yt-dlp-animepahe
 	makedepends = python-installer
 	makedepends = python-hatchling
 	depends = python
+	depends = yt-dlp
 	source = yt-dlp-animepahe-2026.4.23.1.tar.gz::https://codeberg.org/Asep5K/yt-dlp-animepahe/archive/v2026.4.23.1.tar.gz
 	sha256sums = 82936024edb8ffca57b9ebccbef1a04f9775483a3b656136a841f053902cfa7a
 
