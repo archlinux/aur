@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: ISC
+# SPDX-FileCopyrightText: 2025 Thomas Duckworth <tduck@filotimoproject.org>
+#
+# Renamed from cachyos-iw-set-regdomain.service for jetm-kernel-settings.
+
+[Unit]
+Description=Set Wireless Regulatory Domain on Timezone Change
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/iw-set-regdomain

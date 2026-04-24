@@ -1,0 +1,8 @@
+# jetm-kernel-settings: differs from upstream cachyos-settings.
+# Upstream forces SYSCTL{vm.swappiness}="150" on zram0 init, which
+# overrides vm.swappiness=10 set in /usr/lib/sysctl.d/70-jetm-kernel.conf
+# (required for Yocto bitbake workloads). Only the zswap-disable is
+# kept - zswap in front of zram would prevent proper compressed-page
+# accounting via zramctl.
+ACTION=="change", KERNEL=="zram0", ATTR{initstate}=="1", \
+    RUN+="/bin/sh -c 'echo N > /sys/module/zswap/parameters/enabled'"

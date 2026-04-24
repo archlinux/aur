@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: ISC
+# SPDX-FileCopyrightText: 2025 Thomas Duckworth <tduck@filotimoproject.org>
+# SPDX-FileCopyrightText: 2009-2014 Red Hat, Inc.
+# SPDX-FileCopyrightText: 2025 Velocity Limitless, LLC.
+
+# Set wireless regulatory domain at device creation
+# For more information see https://gitlab.com/VelocityLimitless/Projects/iw-setregdomain
+
+SUBSYSTEM=="ieee80211", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="jetm-iw-set-regdomain.service"

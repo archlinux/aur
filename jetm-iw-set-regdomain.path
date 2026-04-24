@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: ISC
+# SPDX-FileCopyrightText: 2025 Thomas Duckworth <tduck@filotimoproject.org>
+#
+# Renamed from cachyos-iw-set-regdomain.path for jetm-kernel-settings.
+
+[Unit]
+Description=Monitor Timezone Changes to Set Wireless Regulatory Domain
+
+[Path]
+PathChanged=/etc/localtime
+Unit=jetm-iw-set-regdomain.service
+
+[Install]
+WantedBy=multi-user.target

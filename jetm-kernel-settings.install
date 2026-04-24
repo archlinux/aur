@@ -1,0 +1,19 @@
+_print_notes() {
+    cat <<'EOF'
+
+==> Enable the wifi regulatory path:
+      systemctl enable --now jetm-iw-set-regdomain.path
+
+==> Apply the new sysctl values:
+      sudo sysctl --system
+
+EOF
+}
+
+post_install() {
+    _print_notes
+}
+
+post_upgrade() {
+    _print_notes
+}
