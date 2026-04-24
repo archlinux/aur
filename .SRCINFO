@@ -1,0 +1,16 @@
+pkgbase = multica-bin
+	pkgdesc = Multi-agent AI coding framework
+	pkgver = 0.2.16
+	pkgrel = 1
+	url = https://github.com/multica-ai/multica
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = multica
+	conflicts = multica
+	options = !strip
+	options = !debug
+	source = https://github.com/multica-ai/multica/releases/download/v0.2.16/multica-cli-0.2.16-linux-amd64.tar.gz
+	sha256sums = ff96d00c3727c7da5160af6bf124aea05584e5d82eaf0541461875efc9c8cde7
+
+pkgname = multica-bin
