@@ -1,6 +1,6 @@
 pkgbase = ter-music-cn
 	pkgdesc = Terminal based music player
-	pkgver = v1.7.0
+	pkgver = v1.7.1
 	pkgrel = 1
 	url = https://github.com/YXZL985/ter-music
 	arch = x86_64
