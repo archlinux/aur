@@ -1,26 +1,26 @@
 pkgbase = iceshrimp.net
 	pkgdesc = Decentralized and federated social networking service, implementing the ActivityPub standard
-	pkgver = 2025.1.beta5.patch3.security4
+	pkgver = 2026.1.beta
 	pkgrel = 1
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp.net
 	install = iceshrimp.net.install
 	arch = x86_64
 	arch = aarch64
 	license = EUPL
-	makedepends = dotnet-sdk-9.0>=9.0
-	makedepends = aspnet-targeting-pack-9.0>=9.0
-	makedepends = aspnet-targeting-pack-9.0<10.0
-	depends = aspnet-runtime-9.0>=9.0
-	depends = aspnet-runtime-9.0<10.0
+	makedepends = dotnet-sdk>=10.0
+	makedepends = aspnet-targeting-pack>=10.0
+	makedepends = aspnet-targeting-pack<11.0
+	depends = aspnet-runtime>=10.0
+	depends = aspnet-runtime<11.0
 	optdepends = ffmpeg: for video transcoding
 	backup = etc/iceshrimp.net/configuration.ini
-	source = iceshrimp.net::git+https://iceshrimp.dev/iceshrimp/iceshrimp.net.git#tag=v2025.1-beta5.patch3.security4
+	source = iceshrimp.net::git+https://iceshrimp.dev/iceshrimp/iceshrimp.net.git#tag=v2026.1-beta
 	source = iceshrimp.net.service
 	source = iceshrimp.net.sysusers
 	source = iceshrimp.net.tmpfiles
 	source = iceshrimp.net.install
 	source = iceshrimp.net.hook
-	sha512sums = b77fb66ec5a9c350f765d846bddc063364da5691e9c760a6037d91b191ec7556b6d694ec079a2dd3d07084b3e98a87e361a18c61e4f7d23f7134e9b2b74e73fe
+	sha512sums = edb6b0624ce275bef797050300d2791dfaca7639d17c0478be752cd90860eb6c95202608d7c26e49d529b0aa197315aae5bcf3c43e9e893b9ee6174aec77ce8d
 	sha512sums = cfb7adf7e9f0d9d05ab89b2237ddf1ef4135ed9dde463e96c7cd94e03e497a85c77a795ac20c09214a2364e675c88e65ac119f6de82a08f5c2d64d657c4b3fc0
 	sha512sums = 9adf1781842ae7ff2779ca561f06ab2b6fb93e206698084283986627aba69b0fd4482ccbed3daebb2517e5966c326604e1cc57618589f331a966fee2db63815d
 	sha512sums = 0665aa7af2b2aa4405289ce9119439ddcc6b9e6c81dc8e3b9ed5d8ecdc4a39d49c950d41d3098ce99fe294ce51a2dee55ec7248c1756783b0e9aad0bde4654fa
@@ -28,8 +28,8 @@ pkgbase = iceshrimp.net
 	sha512sums = 78c4eb031a3e9e6976760c3b3016fc3ff6d764aa123140dbf095d3834c7e8af2f4490a0874394f43e320c421136aa87388b309f3b181336347510fcc82d590c7
 
 pkgname = iceshrimp.net
-	depends = aspnet-runtime-9.0>=9.0
-	depends = aspnet-runtime-9.0<10.0
+	depends = aspnet-runtime>=10.0
+	depends = aspnet-runtime<11.0
 	depends = postgresql
 	depends = libvips
 	depends = openjpeg2
