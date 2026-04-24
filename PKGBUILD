@@ -31,10 +31,13 @@ package() {
     cd "$srcdir"
     appimage=$(find . -type f -name "*.AppImage" -print -quit)
     install -Dm755 "$appimage" "$pkgdir/usr/bin/$pkgname"
-    install -dm766 "$appimage.config" "$pkgdir/usr/bin/$pkgname.config"
-    install -dm766 "$appimage.home" "$pkgdir/usr/bin/$pkgname.home"
+    cp -a "$appimage.config" "$pkgdir/usr/bin/$pkgname.config" || true
+    chmod -R 766 "$pkgdir/usr/bin/$pkgname.config" || true
+    cp -a "$appimage.home" "$pkgdir/usr/bin/$pkgname.home" || true
+    chmod -R 766 "$pkgdir/usr/bin/$pkgname.home" || true
     install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256/apps/project-plus-dolphin.png \
         "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -dm755 "$pkgdir/usr/share/applications"
     printf "[Desktop Entry]\nVersion=${pkgver:1}\nName=Project+ Netplay\nComment=A Mod of Super Smash Bros. Brawl with Netplay.\nPath=/usr/bin\nExec=%s\nIcon=%s\nType=Application\nCategories=Game\nKeywords=project+;brawl;netplay\n" \
         "$pkgname" "$pkgname" \
         > "$pkgdir/usr/share/applications/$pkgname.desktop"
