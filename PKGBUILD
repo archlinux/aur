@@ -22,10 +22,11 @@ depends=('python'
          'python-pyscard'
          'python-pyserial'
          'python-pytlv'
+         'python-smpp-pdu'
          'python-termcolor'
          'python-yaml>=5.4')
 # XXX osmo-smdpp.py (not installed) needs 'https://github.com/osmocom/asn1tools'
-# XXX pySim-smpp2sim.py needs 'smpp.pdu', and 'smpp.twisted'
+# XXX pySim-smpp2sim.py needs 'smpp.twisted'
 optdepends=('python-smpplib: for pySim-smpp2sim.py'
             'python-pyshark: for pySim-trace.py')
 makedepends=('git'

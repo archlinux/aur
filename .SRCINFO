@@ -22,6 +22,7 @@ pkgbase = python-pysim-git
 	depends = python-pyscard
 	depends = python-pyserial
 	depends = python-pytlv
+	depends = python-smpp-pdu
 	depends = python-termcolor
 	depends = python-yaml>=5.4
 	optdepends = python-smpplib: for pySim-smpp2sim.py
