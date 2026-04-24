@@ -1,7 +1,7 @@
 pkgbase = magika
 	pkgdesc = Fast and accurate AI powered file content types detection
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = cli+latest
+	pkgrel = 1
 	url = https://github.com/google/magika
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,9 @@ pkgbase = magika
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = git+https://github.com/google/magika.git#tag=cli/v1.0.1
-	sha256sums = cd9f9b926e94047e4e86095d2a6b43f43c4e0f68cd17c9edbf26f60444cda6b2
+	provides = magika-cli
+	conflicts = magika-cli
+	source = git+https://github.com/google/magika.git#tag=cli/v1.1.0
+	sha256sums = 5daa21e25cbeb8a796a87794a6e5bf9738d3054b6092a04e76cf301dbddc4a3c
 
 pkgname = magika

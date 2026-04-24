@@ -1,9 +1,9 @@
 pkgname=magika
 
-: "${_fragment:=tag=cli/v1.0.1}"
+: "${_fragment:=tag=cli/v1.1.0}"
 
-pkgver=1.0.1
-pkgrel=2
+pkgver=cli+latest
+pkgrel=1
 
 pkgdesc='Fast and accurate AI powered file content types detection'
 url="https://github.com/google/$pkgname"
@@ -14,8 +14,11 @@ license=(Apache-2.0)
 depends=(glibc gcc-libs)
 makedepends=(git cargo)
 
+conflicts=(magika-cli)
+provides=(magika-cli)
+
 source=("git+$url.git#$_fragment")
-sha256sums=('cd9f9b926e94047e4e86095d2a6b43f43c4e0f68cd17c9edbf26f60444cda6b2')
+sha256sums=('5daa21e25cbeb8a796a87794a6e5bf9738d3054b6092a04e76cf301dbddc4a3c')
 
 pkgver() {
 	git -C "$pkgname" describe --first-parent --tags | sed 's#^cli/v##; s/-/+/g'
