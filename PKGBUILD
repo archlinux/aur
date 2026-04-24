@@ -1,7 +1,7 @@
 # Maintainer: holaguz <agustin dot catellani at gmail dot com>
 # Maintainer: Nikita Goncarenko <myftr12394 at gmail dot com>
 pkgname=tlescope-git
-pkgver=v3.7.2.14.gf3d54a4
+pkgver=3.9.2.32478fd
 pkgrel=1
 pkgdesc="TLEscope is a satellite visualization tool designed to transform Two-Line Element (TLE) sets into intuitive, interactive data."
 arch=("x86_64")
@@ -17,8 +17,8 @@ source=("$pkgname::git+https://github.com/aweeri/TLEscope")
 md5sums=("SKIP")
 
 pkgver() {
-        cd "$srcdir/$pkgname"
-        git describe --long --tags --match="v[0-9]*.[0-9]*.[0-9]*" | sed "s/-/./g"
+    cd "$srcdir"
+    git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
