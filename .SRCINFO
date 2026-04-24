@@ -1,0 +1,22 @@
+pkgbase = kwin6-effects-yet-another-magic-lamp-git
+	pkgdesc = Yet Another Magic Lamp effect - ported to Plasma 6.6
+	pkgver = r113.8f4baf9
+	pkgrel = 1
+	url = https://github.com/snpynk/kwin-effects-yet-another-magic-lamp
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	depends = kwin
+	depends = qt6-base
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kwindowsystem
+	provides = kwin6-effects-yet-another-magic-lamp
+	conflicts = kwin6-effects-yet-another-magic-lamp
+	source = git+https://github.com/snpynk/kwin-effects-yet-another-magic-lamp.git
+	sha256sums = SKIP
+
+pkgname = kwin6-effects-yet-another-magic-lamp-git
