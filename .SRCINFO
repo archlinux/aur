@@ -1,0 +1,16 @@
+pkgbase = redis-cli
+	pkgdesc = Redis command-line interface client built from Redis sources
+	pkgver = 8.6.2
+	pkgrel = 1
+	url = https://github.com/redis/redis
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = openssl
+	depends = glibc
+	depends = openssl
+	source = git+https://github.com/redis/redis.git#tag=8.6.2
+	sha256sums = SKIP
+
+pkgname = redis-cli
