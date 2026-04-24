@@ -1,6 +1,6 @@
 pkgbase = texmacs
 	pkgdesc = Free scientific text editor, inspired by TeX and GNU Emacs
-	pkgver = 2.1.4
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://www.texmacs.org
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = texmacs
 	optdepends = imagemagick: convert images
 	optdepends = aspell: spell checking
 	options = !emptydirs
-	source = https://www.texmacs.org/Download/ftp/tmftp/source/TeXmacs-2.1.4-src.tar.gz
-	sha512sums = 8c6e4a47bf09f9bbe260e413e9d38229e2ca600cfb03e34766dd2860ce85b8187fbbee4197bf9b1c8ff3dcc21fe00c205552a04afeb40b0708723e484f57aad2
+	source = https://www.texmacs.org/Download/ftp/tmftp/source/TeXmacs-2.1.5-src.tar.gz
+	sha512sums = baff6fbfec3cc08bd2c0f5d340f584895f29dc58059f7437edf1bb2537a94b7be0035715ff8fa2c1a36ab8a9adc5b6f0673651eba4da6ef8598281ed0a277389
 
 pkgname = texmacs

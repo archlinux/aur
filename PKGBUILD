@@ -4,7 +4,7 @@
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 # Contributor: Christopher Reimer <c.reimer1993@gmail.com>
 pkgname=texmacs
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs"
 arch=(x86_64)
@@ -20,11 +20,11 @@ optdepends=('fig2dev: convert images using fig2ps'
   'aspell: spell checking')
 source=(${url}/Download/ftp/tmftp/source/TeXmacs-${pkgver}-src.tar.gz)
 options=('!emptydirs')
-sha512sums=('8c6e4a47bf09f9bbe260e413e9d38229e2ca600cfb03e34766dd2860ce85b8187fbbee4197bf9b1c8ff3dcc21fe00c205552a04afeb40b0708723e484f57aad2')
+sha512sums=('baff6fbfec3cc08bd2c0f5d340f584895f29dc58059f7437edf1bb2537a94b7be0035715ff8fa2c1a36ab8a9adc5b6f0673651eba4da6ef8598281ed0a277389')
 
 build() {
   cmake \
-    -S TeXmacs \
+    -S TeXmacs-${pkgver}.15315 \
     -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -35,5 +35,5 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --build build --target install
-  install -Dm 644 TeXmacs/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}
+  install -Dm 644 TeXmacs-${pkgver}.15315/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}
 }
