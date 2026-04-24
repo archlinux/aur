@@ -2,7 +2,7 @@
 
 pkgname=stelliberty-bin
 pkgver=1.2.279
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern Clash/Mihomo 客户端的二进制发行版"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Kindness-Kismet/Stelliberty"
@@ -49,6 +49,8 @@ package() {
 
   install -d "${_install_dir}"
   bsdtar -xf "${srcdir}/${_archive}" -C "${_install_dir}"
+  rm -f "${_install_dir}/data/.portable"
+  printf '%s\n' "${pkgver}-${pkgrel}" > "${_install_dir}/data/.package-sync-revision"
   rm -f "${_install_dir}/data/.portable"
   printf '%s\n' "${pkgver}-${pkgrel}" > "${_install_dir}/data/.package-sync-revision"
   rm -f "${_install_dir}/data/.portable"
