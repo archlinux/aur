@@ -4,7 +4,7 @@ pkgname=(
   caelestia-sddm-minimalist-git
   caelestia-sddm-minimalistv2-git
 )
-pkgver=r136.93988ed
+pkgver=r135.9e8d36b
 pkgrel=1
 arch=('any')
 url='https://github.com/ItsABigIgloo/caelestia-sddm'
@@ -27,6 +27,7 @@ optdepends=(
 )
 makedepends=('git')
 provides=('caelestia-sddm')
+replaces=('caelestia-sddm')
 install=caelestia-sddm.install
 source=("${pkgbase}::git+${url}")
 sha256sums=('SKIP')

@@ -54,9 +54,34 @@ _cleanup_all() {
 
 pre_remove() {
   _cleanup_all
+  local real_user real_home
+  real_user=$(_detect_user)
+  if [ -n "$real_user" ]; then
+    real_home=$(getent passwd "$real_user" | cut -d: -f6)
+    rm -f "$real_home/.config/caelestia/templates/sddm-theme.conf.bak"
+  fi
+}
+
+_backup_template() {
+  local real_user real_home user_template
+
+  real_user=$(_detect_user)
+  if [ -z "$real_user" ]; then
+    return
+  fi
+
+  real_home=$(getent passwd "$real_user" | cut -d: -f6)
+  user_template="$real_home/.config/caelestia/templates/sddm-theme.conf"
+
+  if [ -f "$user_template" ]; then
+    sudo -u "$real_user" rm -f "$user_template.bak"
+    sudo -u "$real_user" cp "$user_template" "$user_template.bak"
+    echo "==> Existing template backed up to $user_template.bak"
+  fi
 }
 
 pre_install() {
+  _backup_template
   _cleanup_all
 }
 
@@ -94,32 +119,16 @@ post_install() {
   local real_home
   real_home=$(getent passwd "$real_user" | cut -d: -f6)
 
-  local user_template="$real_home/.config/caelestia/templates/sddm-theme.conf"
-  if [ -f "$user_template" ]; then
-    sudo -u "$real_user" rm -f "$user_template".bak.*
-    sudo -u "$real_user" cp "$user_template" "$user_template.bak"
-    echo "==> Existing template backed up to $user_template.bak"
-  fi
-
   sudo -u "$real_user" mkdir -p "$real_home/.config/caelestia/templates"
   if [ -f "$theme_dir/theme.conf.template" ]; then
     sudo -u "$real_user" cp "$theme_dir/theme.conf.template" \
-       "$user_template"
-    echo "==> Template copied to $user_template"
+       "$real_home/.config/caelestia/templates/sddm-theme.conf"
+    echo "==> Template copied to $real_home/.config/caelestia/templates/sddm-theme.conf"
   fi
 
   echo "==> Running initial sync..."
   HOME="$real_home" SUDO_USER="$real_user" "$theme_dir/scripts/sync.sh"
   echo "==> Initial sync complete"
-
-  for dir in \
-    "$real_home/.config/caelestia" \
-    "$real_home/.local/state/caelestia" \
-    "$real_home/.local/share/caelestia"; do
-    if [ -d "$dir" ]; then
-      chown -R "$real_user:$real_user" "$dir"
-    fi
-  done
 
   _print_posthook_instructions "$theme_dir" "$real_user"
 }
