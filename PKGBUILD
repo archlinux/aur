@@ -1,5 +1,5 @@
 pkgname=quick-dns-switcher
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="System tray application to manage DNS settings via NetworkManager"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
 source=(
     "${pkgname}-v${pkgver}.tar.gz::https://github.com/gmm96/Quick-DNS-Switcher/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('d126a52aface516c280454ed3beb9d36af6532b0214031c79909e04c4398e7e8')
+sha256sums=('c88e460f5bc3d528dab7110df08e7230258991a0cb6a4a72eb4e8866ac205e6a')
 
 package()
 {

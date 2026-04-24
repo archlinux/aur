@@ -1,6 +1,6 @@
 pkgbase = quick-dns-switcher
 	pkgdesc = System tray application to manage DNS settings via NetworkManager
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/gmm96/Quick-DNS-Switcher
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = quick-dns-switcher
 	depends = python-pyqt6
 	depends = networkmanager
 	depends = python-dbus
-	source = quick-dns-switcher-v1.0.3.tar.gz::https://github.com/gmm96/Quick-DNS-Switcher/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = d126a52aface516c280454ed3beb9d36af6532b0214031c79909e04c4398e7e8
+	source = quick-dns-switcher-v1.0.4.tar.gz::https://github.com/gmm96/Quick-DNS-Switcher/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = c88e460f5bc3d528dab7110df08e7230258991a0cb6a4a72eb4e8866ac205e6a
 
 pkgname = quick-dns-switcher
