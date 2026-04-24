@@ -16,10 +16,14 @@ install=snry-shell-qs.install
 package() {
   cd "$srcdir/dots-hyprland"
   install -dm755 "$pkgdir/usr/share/snry-shell"
-  cp -a ansible.cfg inventory.ini requirements.yml setup.yml group_vars roles data files files-extra "$pkgdir/usr/share/snry-shell/"
+  cp -a ansible.cfg inventory.ini requirements.yml setup.yml uninstall.yml group_vars roles data files files-extra "$pkgdir/usr/share/snry-shell/"
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/snry-shell" <<'SCRIPT'
 #!/bin/bash
 ansible-galaxy collection install -r /usr/share/snry-shell/requirements.yml "$@"
-exec ansible-playbook --ask-become-pass /usr/share/snry-shell/setup.yml "$@"
+if [ "${1:-}" = "uninstall" ]; then
+  exec ansible-playbook --ask-become-pass /usr/share/snry-shell/uninstall.yml "${@:2}"
+else
+  exec ansible-playbook --ask-become-pass /usr/share/snry-shell/setup.yml "$@"
+fi
 SCRIPT
 }
