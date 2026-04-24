@@ -1,6 +1,6 @@
 pkgbase = proton-mail
 	pkgdesc = Proton official desktop application for Proton Mail and Proton Calendar
-	pkgver = 1.12.1
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://proton.me/mail
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = proton-mail
 	makedepends = nodejs-lts-jod
 	makedepends = yarn
 	depends = bash
-	depends = electron37
+	depends = electron40
 	depends = hicolor-icon-theme
-	source = ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git#branch=release/inbox-desktop@1.12.1
+	source = ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git#branch=release/inbox-desktop@1.13.0
 	source = proton-mail.desktop
 	source = proton-mail.sh
 	source = fix-resources-path.patch
