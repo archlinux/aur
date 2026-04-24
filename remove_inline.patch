@@ -1,0 +1,19 @@
+diff --git a/Topology.cc b/Topology.cc
+index ad73985..d463692 100644
+--- a/Topology.cc
++++ b/Topology.cc
+@@ -52,12 +52,12 @@ Topology::Topology(Model* model)
+ 
+ }
+ 
+-inline int Topology::GetNumNodes() {
++int Topology::GetNumNodes() {
+   assert(g != NULL);
+   return g->Graph::GetNumNodes();
+ }
+  
+-inline int Topology::GetNumEdges() { 
++int Topology::GetNumEdges() { 
+   assert(g != NULL);
+   return g->Graph::GetNumEdges(); 
+ }

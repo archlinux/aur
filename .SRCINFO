@@ -1,6 +1,6 @@
 pkgbase = brite-git
 	pkgdesc = Boston University Representative Internet Topology Generator.
-	pkgver = r20.aa2e655
+	pkgver = r21.7bcc244
 	pkgrel = 1
 	url = https://gitlab.com/nsnam/BRITE
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = brite-git
 	provides = brite
 	conflicts = brite
 	source = git+https://gitlab.com/nsnam/BRITE.git
+	source = remove_inline.patch
 	sha256sums = SKIP
+	sha256sums = e870dd4a18b06a6732bb8b362343f91fdb486881be31f796b91e5c29a6688199
 
 pkgname = brite-git
