@@ -2,7 +2,7 @@
 # 🔋 slskdn - The batteries-included Soulseek web client (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=0.24.5.slskdn.177
+pkgver=0.24.5.slskdn.178
 pkgrel=1
 pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
 arch=('x86_64' 'aarch64')
@@ -70,7 +70,8 @@ package() {
     install -dm755 "${release_root}/wwwroot"
     cp -r src/web/build/* "${release_root}/wwwroot/"
 
-    chmod +x "${release_root}/slskd"
+    chmod -R u=rwX,go=rX "${release_root}"
+    chmod 755 "${release_root}/slskd"
     ln -sfn "releases/${pkgver}" "${app_root}/current"
 
     cat > "${app_root}/slskd" <<'EOF'
