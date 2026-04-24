@@ -1,6 +1,6 @@
 pkgbase = pypy3-pathspec
 	pkgdesc = Utility library for gitignore style pattern matching of file paths
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/cpburnz/python-pathspec
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = pypy3-pathspec
 	makedepends = pypy3-installer
 	makedepends = pypy3-flit-core
 	depends = pypy3
-	source = python-pathspec-1.0.4.tar.gz::https://github.com/cpburnz/python-pathspec/archive/v1.0.4.tar.gz
-	sha512sums = e37f9dabeaa5e4d254e3b3aea363c4ee96f55f15b8355294707ef3f05caf3d1783f2ff9897ca2eeade39f14e439f7171fddb92a4633845b9a54d641596a6b98a
+	source = python-pathspec-1.1.0.tar.gz::https://github.com/cpburnz/python-pathspec/archive/v1.1.0.tar.gz
+	sha512sums = 07980473df0b9615553a4f904b59a65d558bad9b22be99c88ab4b4bdba6c967310404a3910d480534e2f0c53f7ac534b3f455d552c5ef6ea38fbae0e2dc289f4
 
 pkgname = pypy3-pathspec
