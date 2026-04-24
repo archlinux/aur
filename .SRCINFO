@@ -1,6 +1,6 @@
 pkgbase = supersigil-lsp
 	pkgdesc = Language server for Supersigil spec documents
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/jonisavo/supersigil
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = supersigil-lsp
 	license = Apache-2.0
 	makedepends = cargo
 	options = !debug
-	source = supersigil-0.13.0.tar.gz::https://github.com/jonisavo/supersigil/archive/refs/tags/v0.13.0.tar.gz
+	source = supersigil-0.14.0.tar.gz::https://github.com/jonisavo/supersigil/archive/refs/tags/v0.14.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = supersigil-lsp
