@@ -19,6 +19,7 @@ package() {
   cp -a ansible.cfg inventory.ini requirements.yml setup.yml group_vars roles data files files-extra "$pkgdir/usr/share/snry-shell/"
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/snry-shell" <<'SCRIPT'
 #!/bin/bash
+ansible-galaxy collection install -r /usr/share/snry-shell/requirements.yml "$@"
 exec ansible-playbook /usr/share/snry-shell/setup.yml "$@"
 SCRIPT
 }
