@@ -1,0 +1,13 @@
+pkgbase = nyaa-paper-bin
+	pkgdesc = Linux Wallpaper Engine frontend with a keyboard‑first GUI
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/diode701/nyaa-paper
+	arch = any
+	license = CC-BY-NC-4.0
+	depends = java-runtime>=17
+	depends = linux-wallpaperengine-git
+	source = nyaa-paper-bin-0.1.1.tar.gz::https://github.com/diode701/nyaa-paper/releases/download/v0.1.1/nyaa-paper-0.1.1.tar.gz
+	sha256sums = f6511d17ac58f6d70b5505e918dc110bd209f85f1b84536f02ecb5570a0e491a
+
+pkgname = nyaa-paper-bin
