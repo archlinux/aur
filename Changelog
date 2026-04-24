@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 3.6.3 ➙ 3.7.0
-              : 2026-04-21 ➙ 2026-04-22
+ Tags         : 3.6.4 ➙ 3.8.0
+              : 2026-04-21 ➙ 2026-04-24
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-04-24   : 3.8.0
+              - Tidy up sd-boot-efifs-update a bit
+ 2026-04-22   ⋯
+              - update Changelog
 
  2026-04-22   : 3.7.0
               - Fix typo in print statement
@@ -20,8 +25,4 @@
 
  2026-04-21   : 3.6.4
               - PKGBUILD should be arch "any"
-              - update Changelog
-
- 2026-04-21   : 3.6.3
-              - PKGBUILD - no .install needed
               - update Changelog
