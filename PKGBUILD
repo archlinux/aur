@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git' 'bitwarden-cli')
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver/phoenix-$pkgver.tar.bz2")
-sha256sums=('67aa6b1c73e8d803bd78ae5d520124a42c943339bb512e480d0e5624634b93e1')
+sha256sums=('ede1cb52e3e235c4d03f523b1e46cb889de441d312e1d434e1371bf7a75f913a')
 
 package() {
     install -dm755 "$pkgdir/opt/$_pkgname"

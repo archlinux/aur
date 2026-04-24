@@ -15,6 +15,6 @@ pkgbase = phoenixbrowser
 	depends = git
 	depends = bitwarden-cli
 	source = https://gitlab.com/linuxbombay/phoenix/phoenix/-/archive/0.71/phoenix-0.71.tar.bz2
-	sha256sums = 67aa6b1c73e8d803bd78ae5d520124a42c943339bb512e480d0e5624634b93e1
+	sha256sums = ede1cb52e3e235c4d03f523b1e46cb889de441d312e1d434e1371bf7a75f913a
 
 pkgname = phoenixbrowser
