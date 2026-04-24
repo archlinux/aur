@@ -4,7 +4,7 @@
 # Contributor: myles <myles@rockhead.biz>
 _pkgname=scalapack
 pkgname=${_pkgname}-static
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers, static version."
@@ -13,7 +13,7 @@ license=(BSD-3-Clause)
 depends=("scalapack=${pkgver}")
 makedepends=(cmake gcc-fortran)
 source=(${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('1b91b94a081cd808dc6fa7d23a9f4054f4d23de293cae1686f7708237c28404561a6f4185e7f27a0a56cd0916622f8db444803f8ed19d56368af54a44c455d44')
+sha512sums=('08c6073f8d1295df4f7f2a2449f189a2afb0ce30e94f2bc55613a94fc6404bb60ee5179ecba02641bff8bd4a088a3f621698e03347fddc6b0895bf14a87ca88a')
 options=(staticlibs)
 
 prepare() {
