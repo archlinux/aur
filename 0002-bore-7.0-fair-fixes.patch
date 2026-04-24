@@ -1,0 +1,62 @@
+diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
+--- a/kernel/sched/fair.c
++++ b/kernel/sched/fair.c
+@@ -199,5 +199,13 @@ static inline void update_load_set(struct load_weight *lw, unsigned long w)
+  * This idea comes from the SD scheduler of Con Kolivas:
+  */
+-static unsigned int get_update_sysctl_factor(void)
+-{
+-	unsigned int cpus = min_t(unsigned int, num_online_cpus(), 8);
++#ifdef CONFIG_SCHED_BORE
++static void update_sysctl(void)
++{
++	sysctl_sched_base_slice = nsecs_per_tick *
++		max(1UL, DIV_ROUND_UP(sysctl_sched_min_base_slice, nsecs_per_tick));
++}
++void sched_update_min_base_slice(void) { update_sysctl(); }
++#else /* !CONFIG_SCHED_BORE */
++static unsigned int get_update_sysctl_factor(void)
++{
++	unsigned int cpus = min_t(unsigned int, num_online_cpus(), 8);
+@@ -229,6 +236,7 @@ static void update_sysctl(void)
+ 	SET_SYSCTL(sched_base_slice);
+ #undef SET_SYSCTL
+ }
++#endif /* CONFIG_SCHED_BORE */
+ 
+ void __init sched_init_granularity(void)
+ {
+@@ -975,8 +983,12 @@ struct sched_entity *__pick_first_entity(struct cfs_rq *cfs_rq)
+  */
+ static inline void set_protect_slice(struct cfs_rq *cfs_rq, struct sched_entity *se)
+ {
+-	u64 slice = normalized_sysctl_sched_base_slice;
+-	u64 vprot = se->deadline;
++#ifdef CONFIG_SCHED_BORE
++	u64 slice = sysctl_sched_base_slice;
++#else /* !CONFIG_SCHED_BORE */
++	u64 slice = normalized_sysctl_sched_base_slice;
++#endif /* CONFIG_SCHED_BORE */
++	u64 vprot = se->deadline;
+ 
+ 	if (sched_feat(RUN_TO_PARITY))
+ 		slice = cfs_rq_min_slice(cfs_rq);
+@@ -1120,8 +1132,9 @@ struct sched_entity *__pick_last_entity(struct cfs_rq *cfs_rq)
+ /**************************************************************
+  * Scheduling class statistics methods:
+  */
+-int sched_update_scaling(void)
+-{
++#if !defined(CONFIG_SCHED_BORE)
++int sched_update_scaling(void)
++{
+ 	unsigned int factor = get_update_sysctl_factor();
+ 
+ #define WRT_SYSCTL(name) \
+@@ -1131,6 +1144,7 @@ int sched_update_scaling(void)
+ 
+ 	return 0;
+ }
++#endif /* CONFIG_SCHED_BORE */
+ 
+ static void clear_buddies(struct cfs_rq *cfs_rq, struct sched_entity *se);
