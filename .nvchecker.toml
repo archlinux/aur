@@ -1,0 +1,4 @@
+[depsguard-bin]
+source = "git"
+git = "https://github.com/arnica/depsguard.git"
+prefix = "v"

@@ -1,0 +1,12 @@
+pkgbase = depsguard-bin
+	pkgdesc = Harden your package manager configs against supply chain attacks.
+	pkgver = 0.1.33
+	pkgrel = 1
+	url = https://github.com/arnica/depsguard
+	arch = x86_64
+	license = MIT
+	options = !debug
+	source = https://github.com/arnica/depsguard/releases/download/v0.1.33/depsguard-linux-amd64-musl.tar.gz
+	sha256sums = 4ddb0c847b434d05fcbbecc49765838fa669a45678e0e6b6e6ac9e788d9137c5
+
+pkgname = depsguard-bin
