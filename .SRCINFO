@@ -1,5 +1,5 @@
 pkgbase = caelestia-sddm-git
-	pkgver = r139.316f31b
+	pkgver = r141.c586ddf
 	pkgrel = 1
 	url = https://github.com/ItsABigIgloo/caelestia-sddm
 	install = caelestia-sddm.install
@@ -24,19 +24,19 @@ pkgbase = caelestia-sddm-git
 	sha256sums = SKIP
 
 pkgname = caelestia-sddm-locklike-git
-	pkgdesc = Caelestia SDDM theme - locklike variant mimicking the original lock screen from caelestia
+	pkgdesc = Caelestia SDDM theme - locklike variant mimicking the original lock screen
 	conflicts = caelestia-sddm
 	conflicts = caelestia-sddm-minimalist-git
 	conflicts = caelestia-sddm-minimalistv2-git
 
 pkgname = caelestia-sddm-minimalist-git
-	pkgdesc = Caelestia SDDM theme - minimalist variant with gradient background and simple design
+	pkgdesc = Caelestia SDDM theme - minimalist variant with gradient background
 	conflicts = caelestia-sddm
 	conflicts = caelestia-sddm-locklike-git
 	conflicts = caelestia-sddm-minimalistv2-git
 
 pkgname = caelestia-sddm-minimalistv2-git
-	pkgdesc = Caelestia SDDM theme - minimalistV2 variant with improved fonts and modern design following caelestia's UI style
+	pkgdesc = Caelestia SDDM theme - minimalistV2 variant with improved fonts and UI
 	conflicts = caelestia-sddm
 	conflicts = caelestia-sddm-locklike-git
 	conflicts = caelestia-sddm-minimalist-git

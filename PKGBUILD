@@ -1,10 +1,15 @@
+# Caelestia SDDM Theme — AUR PKGBUILD
+# Maintainer: haikalllp <https://aur.archlinux.org/account/haikalllp>
+# Maintainer: leithXD <https://aur.archlinux.org/account/leithXD>
+# Source: https://github.com/ItsABigIgloo/caelestia-sddm
+
 pkgbase=caelestia-sddm-git
 pkgname=(
-  caelestia-sddm-locklike-git
-  caelestia-sddm-minimalist-git
-  caelestia-sddm-minimalistv2-git
+  caelestia-sddm-locklike-git       # Mimics the original Caelestia lock screen
+  caelestia-sddm-minimalist-git     # Minimalist variant with gradient background
+  caelestia-sddm-minimalistv2-git   # Minimalist variant with improved fonts and UI
 )
-pkgver=r139.316f31b
+pkgver=r141.c586ddf
 pkgrel=1
 arch=('any')
 url='https://github.com/ItsABigIgloo/caelestia-sddm'
@@ -37,16 +42,18 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+# Installs a theme variant into /usr/share/sddm/themes/caelestia
+# and drops an SDDM config that sets caelestia as the active theme with necessary environment variables
 _package_variant() {
   local variant="$1"
+  local theme_dir="$pkgdir/usr/share/sddm/themes/caelestia"
+  local src_dir="$srcdir/${pkgbase}"
 
-  install -dm755 "$pkgdir/usr/share/sddm/themes/caelestia"
+  install -dm755 "$theme_dir"
+  cp -r "$src_dir/themes/$variant"/* "$theme_dir/"
 
-  cp -r "$srcdir/${pkgbase}/themes/$variant"/* \
-    "$pkgdir/usr/share/sddm/themes/caelestia/"
-
-  install -Dm755 "$srcdir/${pkgbase}/scripts/sync.sh" \
-    "$pkgdir/usr/share/sddm/themes/caelestia/scripts/sync.sh"
+  install -Dm755 "$src_dir/scripts/sync.sh" \
+    "$theme_dir/scripts/sync.sh"
 
   install -Dm644 /dev/stdin "$pkgdir/etc/sddm.conf.d/caelestia.conf" <<DROPIN
 [General]
@@ -56,25 +63,26 @@ GreeterEnvironment=QML_XHR_ALLOW_FILE_READ=1,QT_QPA_PLATFORM=xcb
 Current=caelestia
 DROPIN
 
-  find "$pkgdir/usr/share/sddm/themes/caelestia/assets" -type d -exec chmod 755 {} \; 2>/dev/null || true
-  find "$pkgdir/usr/share/sddm/themes/caelestia/assets" -type f -exec chmod 644 {} \; 2>/dev/null || true
-  chmod 644 "$pkgdir/usr/share/sddm/themes/caelestia/theme.conf" 2>/dev/null || true
+  find "$theme_dir/assets" -type d -exec chmod 755 {} + 2>/dev/null || true
+  find "$theme_dir/assets" -type f -exec chmod 644 {} + 2>/dev/null || true
+  chmod 644 "$theme_dir/theme.conf" 2>/dev/null || true
 }
 
+# Variants conflict with each other as they share the same install path
 package_caelestia-sddm-locklike-git() {
-  pkgdesc="Caelestia SDDM theme - locklike variant mimicking the original lock screen from caelestia"
+  pkgdesc='Caelestia SDDM theme - locklike variant mimicking the original lock screen'
   conflicts=('caelestia-sddm' 'caelestia-sddm-minimalist-git' 'caelestia-sddm-minimalistv2-git')
-  _package_variant "locklike"
+  _package_variant 'locklike'
 }
 
 package_caelestia-sddm-minimalist-git() {
-  pkgdesc="Caelestia SDDM theme - minimalist variant with gradient background and simple design"
+  pkgdesc='Caelestia SDDM theme - minimalist variant with gradient background'
   conflicts=('caelestia-sddm' 'caelestia-sddm-locklike-git' 'caelestia-sddm-minimalistv2-git')
-  _package_variant "minimalist"
+  _package_variant 'minimalist'
 }
 
 package_caelestia-sddm-minimalistv2-git() {
-  pkgdesc="Caelestia SDDM theme - minimalistV2 variant with improved fonts and modern design following caelestia's UI style"
+  pkgdesc='Caelestia SDDM theme - minimalistV2 variant with improved fonts and UI'
   conflicts=('caelestia-sddm' 'caelestia-sddm-locklike-git' 'caelestia-sddm-minimalist-git')
-  _package_variant "minimalistV2"
+  _package_variant 'minimalistV2'
 }

@@ -1,3 +1,6 @@
+# Caelestia SDDM — install/remove hooks
+
+# Detect the real (non-root) user, falling back to the first regular user in /etc/passwd
 _detect_user() {
   if [ -n "${SUDO_USER:-}" ]; then
     echo "$SUDO_USER"
@@ -18,6 +21,11 @@ _detect_user() {
   awk -F: '$3 >= 1000 && $3 < 65534 && $1 != "nobody" {print $1; exit}' /etc/passwd
 }
 
+_rmdir_if_empty() {
+  [ -d "$1" ] && [ -z "$(ls -A "$1")" ] && rmdir "$1"
+}
+
+# Removes theme files, config drop-in, caches, and the sync systemd service
 _cleanup_all() {
   local real_user real_home
 
@@ -26,19 +34,13 @@ _cleanup_all() {
     real_home=$(getent passwd "$real_user" | cut -d: -f6)
 
     rm -f "$real_home/.config/caelestia/templates/sddm-theme.conf"
-    if [ -d "$real_home/.config/caelestia/templates" ] && [ -z "$(ls -A "$real_home/.config/caelestia/templates")" ]; then
-      rmdir "$real_home/.config/caelestia/templates"
-    fi
-
+    _rmdir_if_empty "$real_home/.config/caelestia/templates"
     rm -rf "$real_home/.cache/sddm-greeter-qt6"
   fi
 
   rm -rf /var/lib/sddm/.cache/sddm-greeter-qt6
-
   rm -f /etc/sddm.conf.d/caelestia.conf
-  if [ -d /etc/sddm.conf.d ] && [ -z "$(ls -A /etc/sddm.conf.d)" ]; then
-    rmdir /etc/sddm.conf.d
-  fi
+  _rmdir_if_empty /etc/sddm.conf.d
 
   if systemctl is-active --quiet caelestia-sync.service 2>/dev/null; then
     systemctl stop caelestia-sync.service
@@ -56,34 +58,9 @@ _cleanup_all() {
 
 pre_remove() {
   _cleanup_all
-  local real_user real_home
-  real_user=$(_detect_user)
-  if [ -n "$real_user" ]; then
-    real_home=$(getent passwd "$real_user" | cut -d: -f6)
-    rm -f "$real_home/.config/caelestia/templates/sddm-theme.conf.bak"
-  fi
-}
-
-_backup_template() {
-  local real_user real_home user_template
-
-  real_user=$(_detect_user)
-  if [ -z "$real_user" ]; then
-    return
-  fi
-
-  real_home=$(getent passwd "$real_user" | cut -d: -f6)
-  user_template="$real_home/.config/caelestia/templates/sddm-theme.conf"
-
-  if [ -f "$user_template" ]; then
-    sudo -u "$real_user" rm -f "$user_template.bak"
-    sudo -u "$real_user" cp "$user_template" "$user_template.bak"
-    echo "==> Existing template backed up to $user_template.bak"
-  fi
 }
 
 pre_install() {
-  _backup_template
   _cleanup_all
 }
 
@@ -106,9 +83,9 @@ _print_posthook_instructions() {
   echo "==> Full posthook guide: https://github.com/ItsABigIgloo/caelestia-sddm/blob/main/POSTHOOK.md"
 }
 
+# Copy template, run initial sync, fix ownership, print posthook instructions
 post_install() {
   local theme_dir="/usr/share/sddm/themes/caelestia"
-
   local real_user
   real_user=$(_detect_user)
 
@@ -124,7 +101,7 @@ post_install() {
   sudo -u "$real_user" mkdir -p "$real_home/.config/caelestia/templates"
   if [ -f "$theme_dir/theme.conf.template" ]; then
     sudo -u "$real_user" cp "$theme_dir/theme.conf.template" \
-      "$real_home/.config/caelestia/templates/sddm-theme.conf"
+       "$real_home/.config/caelestia/templates/sddm-theme.conf"
     echo "==> Template copied to $real_home/.config/caelestia/templates/sddm-theme.conf"
   fi
 
