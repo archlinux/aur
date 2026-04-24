@@ -2,7 +2,7 @@
 
 pkgname=rooster
 pkgver=2.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple password manager"
 url="https://github.com/conradkleinespel/rooster"
 makedepends=('cargo' 'pkg-config' 'libx11' 'libxmu' 'python3')
