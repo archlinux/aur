@@ -18,7 +18,7 @@ pkgbase = hydra-ensemble-bin
 	source = hydra-ensemble-0.2.8.AppImage::https://github.com/javabetatester/hydra-ensemble/releases/download/v0.2.8/Hydra.Ensemble-0.2.8.AppImage
 	source = hydra-ensemble.desktop
 	source = hydra-ensemble.png::https://raw.githubusercontent.com/javabetatester/hydra-ensemble/v0.2.8/resources/icon.png
-	sha256sums = b816b3294128f48e24d642f65bec6d312f13313265c9a50bd5a00979b8511c24
+	sha256sums = 8e7562d6225945b833d17e550d0ee4e998dc0b08ed49e8b74e37794544677e78
 	sha256sums = SKIP
 	sha256sums = SKIP
 
