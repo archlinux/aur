@@ -2,7 +2,7 @@
 # Contributor: Teteros <teteros at teknik dot io>
 
 pkgname=radium-bin
-pkgver=7.5.71
+pkgver=7.5.78
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker. (Demo Version)'
 arch=(x86_64)
