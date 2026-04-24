@@ -1,6 +1,6 @@
 pkgbase = kosmos
 	pkgdesc = A highly customizable and versatile tab-based code editor.
-	pkgver = 0.2.5
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/etchebarne/kosmos
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = kosmos
 	depends = librsvg
 	provides = kosmos
 	conflicts = kosmos-bin
-	source = kosmos-0.2.5.tar.gz::https://github.com/etchebarne/kosmos/archive/refs/tags/v0.2.5.tar.gz
+	source = kosmos-0.3.0.tar.gz::https://github.com/etchebarne/kosmos/archive/refs/tags/v0.3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = kosmos
