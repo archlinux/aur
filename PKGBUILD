@@ -1,6 +1,6 @@
 # Maintainer: Lucia <bordiyan20035@gmail.com>
 pkgname=opensourcetree-git
-pkgver=1.2.11
+pkgver=1.2.13
 pkgrel=1
 pkgdesc="SourceTree-inspired Git GUI built with PyQt6"
 arch=('any')
