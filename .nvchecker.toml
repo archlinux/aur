@@ -1,0 +1,5 @@
+[python-pygmo]
+source = "github"
+github = "esa/pygmo2"
+use_latest_release = "true"
+prefix = "v"

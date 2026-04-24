@@ -1,6 +1,6 @@
 pkgbase = python-pygmo
 	pkgdesc = Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model (Python version)
-	pkgver = 2.19.7
+	pkgver = 2.19.8
 	pkgrel = 1
 	url = https://esa.github.io/pygmo2/
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = python-pygmo
 	depends = python-cloudpickle
 	optdepends = python-matplotlib
 	optdepends = python-dill
-	source = https://github.com/esa/pygmo2/archive/v2.19.7.tar.gz
-	sha256sums = cfc49bb5b4ec9e96287895db9dcb322122f14c397ec466091aa635dbb31a5c9f
+	source = https://github.com/esa/pygmo2/archive/v2.19.8.tar.gz
+	sha256sums = 0678900ff9b3ec458edf4fb2b2f5eb41d3f18b72b90e7e9aeee73964bdc0d19d
 
 pkgname = python-pygmo
