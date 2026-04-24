@@ -1,5 +1,5 @@
 pkgname=pomoru
-pkgver=0.1.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Minimal TUI Pomodoro timer with task list"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ff0565834bf3e798285edec374fe317185210b3502c2295b319dac481b8e3482')
+sha256sums=('a64e186eb1f6e52d805221dd4a094afed6c5a5148b8cb8c8d582fe9d64420f44')
 
 build() {
   cd "$pkgname-$pkgver"
