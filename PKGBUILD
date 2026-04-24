@@ -1,19 +1,20 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=booster-git
-pkgver=0.12.r11.gb0176b3
+pkgver=0.12.r47.g360e99a
 pkgrel=1
 pkgdesc='Fast and secure initramfs generator'
 arch=(x86_64)
 url='https://github.com/anatol/booster'
 license=(MIT)
 depends=(bash)
-makedepends=(git go ruby-ronn-ng)
+makedepends=(git go ruby-ronn-ng libfido2)
 #checkdepends=(qemu-headless linux tang)
 optdepends=(
   'busybox: to enable emergency shell at the boot time'
   'yubikey-personalization: for clevis Yubikey challenge-response support'
-  'libfido2: for systemd-enroll with FIDO2'
+  'systemd-ukify: for generating UKIs'
+  'binutils: to strip kernel modules'
 )
 backup=(etc/booster.yaml)
 provides=(booster initramfs)
@@ -39,9 +40,13 @@ build() {
       -ldflags "-linkmode external -extldflags \"${LDFLAGS}\""
 
   cd ../init
-  CGO_ENABLED=0 go build -trimpath -mod=readonly -modcacherw
+  CGO_ENABLED=1 go build -trimpath -mod=readonly -modcacherw
 
-  cd ..
+  cd fido2plugin
+  CGO_ENABLED=1 CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}" CGO_LDFLAGS="${LDFLAGS}" \
+    go build -trimpath -mod=readonly -modcacherw -buildmode=plugin -o ../fido2plugin.so .
+  cd ../..
+
   ronn docs/manpage.md
 }
 
@@ -58,7 +63,10 @@ package() {
   install -Dp -m755 generator/generator "$pkgdir/usr/bin/booster"
   install -Dp -m644 docs/manpage.1 "$pkgdir/usr/share/man/man1/booster.1"
   install -Dp -m755 init/init "$pkgdir/usr/lib/booster/init"
+  install -Dp -m755 init/fido2plugin.so "$pkgdir/usr/lib/booster/fido2plugin.so"
   install -Dp -m755 packaging/arch/regenerate_images "$pkgdir/usr/lib/booster/regenerate_images"
+  install -Dp -m755 packaging/arch/regenerate_uki "$pkgdir/usr/lib/booster/regenerate_uki"
+  install -Dp -m755 packaging/common/50-booster.install "$pkgdir/usr/lib/kernel/install.d/50-booster.install"
 
   install -Dp -m644 packaging/arch/90-booster-install.hook "$pkgdir/usr/share/libalpm/hooks/90-booster-install.hook"
   install -Dp -m755 packaging/arch/booster-install "$pkgdir/usr/share/libalpm/scripts/booster-install"
