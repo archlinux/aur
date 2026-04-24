@@ -37,7 +37,7 @@ index 4b1671ea..086de77a 100644
  hex = "0.4.3"
  hickory-resolver = { version = "0.24.1", default-features = false, features = [ "system-config", "tokio-runtime" ] }
  http-body-util = "0.1"
-@@ -172,161 +172,63 @@ xdg = "2.2"
+@@ -172,163 +172,64 @@ xdg = "2.2"
  zstd = "0.13"
  zstd-safe = "7"
  
@@ -105,6 +105,7 @@ index 4b1671ea..086de77a 100644
 -proxmox-notify = { workspace = true, features = [ "pbs-context" ] }
 -proxmox-openid.workspace = true
 -proxmox-product-config.workspace = true
+-proxmox-parallel-handler.workspace = true
 -proxmox-rate-limiter = { workspace = true, features = [ "shared-rate-limiter" ] }
 -proxmox-rest-server = { workspace = true, features = [ "rate-limited-stream" ] }
 -proxmox-router = { workspace = true, features = [ "cli", "server"] }
@@ -185,6 +186,7 @@ index 4b1671ea..086de77a 100644
 -#proxmox-notify = { path = "../proxmox/proxmox-notify" }
 +proxmox-notify = { path = "../proxmox/proxmox-notify" }
  #proxmox-openid = { path = "../proxmox/proxmox-openid" }
+ #proxmox-parallel-handler = { path = "../proxmox/proxmox-parallel-handler" }
  #proxmox-product-config = { path = "../proxmox/proxmox-product-config" }
 -#proxmox-rate-limiter = { path = "../proxmox/proxmox-rate-limiter" }
 +proxmox-rate-limiter = { path = "../proxmox/proxmox-rate-limiter" }
