@@ -2,7 +2,7 @@
 
 pkgname=clawx-appimage
 _pkgname=clawx
-pkgver="0.3.10"
+pkgver="0.3.11"
 pkgrel=1
 pkgdesc="Desktop interface for OpenClaw AI agents AppImage"
 arch=('x86_64' 'aarch64')
@@ -12,10 +12,10 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
-source_x86_64=("ClawX-0.3.10-linux-x86_64.AppImage::https://github.com/ValueCell-ai/ClawX/releases/download/v0.3.10/ClawX-0.3.10-linux-x86_64.AppImage")
-sha512sums_x86_64=('1bcc7b0e7927b36d8302cee4ae89ed76aa5efffa07558deebb50b7bf4640731c8642fa19f32b0408bd27c544cb8e35171552930db9dfe24b39554fc3f16b9a7d')
-source_aarch64=("ClawX-0.3.10-linux-arm64.AppImage::https://github.com/ValueCell-ai/ClawX/releases/download/v0.3.10/ClawX-0.3.10-linux-arm64.AppImage")
-sha512sums_aarch64=('8b888461c98e901cfab4e07b09c12ba47cc41a68fe4f16871389545cd2a58841ea3f2fe1edf10dde0e6faf7e3820d14786ad4b22a39fa4efe0d25878609cf7dc')
+source_x86_64=("ClawX-0.3.11-linux-x86_64.AppImage::https://github.com/ValueCell-ai/ClawX/releases/download/v0.3.11/ClawX-0.3.11-linux-x86_64.AppImage")
+sha512sums_x86_64=('69d9b58e839727d2d66cc3a04f1ca8cf6f4d30b615c7d8270dd4a6221624f4f21cd4248a37c7167f2707da6350c7a927941a43f0727f4054dc1f93c0f6d9da92')
+source_aarch64=("ClawX-0.3.11-linux-arm64.AppImage::https://github.com/ValueCell-ai/ClawX/releases/download/v0.3.11/ClawX-0.3.11-linux-arm64.AppImage")
+sha512sums_aarch64=('02c6d0a0cc509a62082f340a59201c8ef1e59f60fcc413b02789d8c6f397ee709226910b71c17ce998c85cf34cdce1ba38760dc8e329f01623ac380a6c207adf')
 noextract=("ClawX-${pkgver}-linux-x86_64.AppImage" "ClawX-${pkgver}-linux-arm64.AppImage")
 
 prepare() {
