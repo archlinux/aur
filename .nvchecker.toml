@@ -1,0 +1,4 @@
+[fcp]
+source = "git"
+git = "https://github.com/svetlitski/fcp.git"
+prefix = "v"
