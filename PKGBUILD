@@ -7,7 +7,10 @@ arch=('x86_64')
 url="https://github.com/koyuawsmbrtn/rdr"
 license=('GPL3')
 depends=('vala' 'webkit2gtk' 'cmark' 'glib2')
-makedepends=('make')
+makedepends=(
+  'make'
+  'git'
+)
 source=("git+https://github.com/koyuawsmbrtn/rdr.git")
 sha256sums=('SKIP')
 

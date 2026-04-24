@@ -6,6 +6,7 @@ pkgbase = rdr
 	arch = x86_64
 	license = GPL3
 	makedepends = make
+	makedepends = git
 	depends = vala
 	depends = webkit2gtk
 	depends = cmark
