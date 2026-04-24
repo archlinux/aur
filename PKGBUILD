@@ -10,7 +10,7 @@
 
 _pkgname="yosys"
 pkgname="$_pkgname-git"
-pkgver=0.58.r155.g691d6b8
+pkgver=0.64.r157.gec0a102
 pkgrel=1
 pkgdesc="A framework for RTL synthesis"
 url="https://github.com/YosysHQ/yosys"
@@ -130,7 +130,7 @@ build() {
 
 check() {
   cd "$_pkgsrc"
-  _make test
+  _make vanilla-test
 }
 
 package() {
