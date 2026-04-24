@@ -1,5 +1,4 @@
 #!/usr/bin/sh
 
-INSTALL_DIR="/opt/resolve-studio"
-export LD_LIBRARY_PATH="$INSTALL_DIR/libs:$LD_LIBRARY_PATH"
-exec "$INSTALL_DIR/DaVinci Control Panels Setup/DaVinci Control Panels Setup" "$@"
+export LD_PRELOAD="libQt6XcbQpa.so.6"
+exec "/opt/resolve/DaVinci Control Panels Setup/DaVinci Control Panels Setup"
