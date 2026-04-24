@@ -1,0 +1,12 @@
+post_install() {
+  cat <<'EOF'
+pg_task requires PostgreSQL to preload its background worker.
+Add pg_task to shared_preload_libraries and restart PostgreSQL:
+
+  shared_preload_libraries = 'pg_task'
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

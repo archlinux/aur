@@ -1,0 +1,19 @@
+pkgbase = pg_task
+	pkgdesc = PostgreSQL job scheduler for asynchronous background SQL execution
+	pkgver = 2.1.29
+	pkgrel = 1
+	url = https://github.com/RekGRpth/pg_task
+	install = pg_task.install
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	makedepends = clang
+	makedepends = llvm
+	makedepends = curl
+	makedepends = pcre
+	depends = postgresql
+	source = https://api.pgxn.org/dist/pg_task/2.1.29/pg_task-2.1.29.zip
+	sha256sums = 6fa7fe6c5187db5bb8fbe7477c00bd76042bb73c0f2df50c2e904b74567f31ca
+
+pkgname = pg_task
