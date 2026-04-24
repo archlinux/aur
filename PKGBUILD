@@ -2,7 +2,7 @@
 _pkgname=backend.ai-desktop
 pkgname="${_pkgname//./-}-bin"
 _appname='Backend.AI Desktop'
-pkgver=26.4.6
+pkgver=26.4.7
 _electronversion=35
 pkgrel=1
 pkgdesc="Provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics."
@@ -33,8 +33,8 @@ source=(
 )
 sha256sums=('c54209c33c387908bfaae40a9c5f6c96bacaa52684f2546068e2b4441f4a53b3'
             '3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5')
-sha256sums_aarch64=('0f89c37a55a65ac40b078d27d2d56198f227e95bd664594442f23538d0a5684d')
-sha256sums_x86_64=('d19361f0537d8e8ffa5491a3d25e8739d7765966ac9d0c6ea0a11268794f1336')
+sha256sums_aarch64=('498a42376fbf08d83374bd189ee336a978c87414bab974be1dfe4c428c18b3e7')
+sha256sums_x86_64=('0527e3e68ba3af4de6230be0a5be3f6cc290e113c77080c02313f52550ce4c28')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
