@@ -2,7 +2,7 @@
 
 pkgname='adaptivecpp'
 pkgver=25.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern, community-driven platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors.'
 arch=('x86_64')
 url='https://github.com/AdaptiveCpp/AdaptiveCpp'
@@ -11,15 +11,17 @@ provides=('opencl-headers')
 conflicts=('adaptivecpp-git')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 sha512sums=('SKIP')
-_llvm_version_major=19
+_llvm_version_major=20
 
 depends=(
     "clang${_llvm_version_major}"
     'cuda'
-    'gcc-libs'
     'glibc'
     'hip-runtime-amd'
     'level-zero-loader'
+    'libgcc'
+    'libgomp'
+    'libstdc++'
     "llvm${_llvm_version_major}-libs"
     'numactl'
     'nvidia-utils'
