@@ -1,7 +1,7 @@
 # Maintainer:Magillos <kerown at gmail com>
 
 pkgname=cable
-pkgver=0.10.5
+pkgver=0.10.6
 pkgrel=1
 pkgdesc="A PyQt6 application to dynamically modify Pipewire and Wireplumber settings"
 arch=('any')
@@ -15,7 +15,7 @@ if [ -n "${USE_LOCAL}" ]; then
   sha256sums=('SKIP')
 else
   source=("cable-$pkgver.tar.gz::https://github.com/magillos/Cable/archive/refs/tags/$pkgver.tar.gz")
-  sha256sums=('976b9c8f1cc012db1e4874a9cb85bf030401e559669589da91aebaf72243c21d')
+  sha256sums=('54de002a11d704821ecc1659969d9d2b9ced53872e2e8b4615302b4f159fb1d5')
 fi
 
 build() {
@@ -30,8 +30,10 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
 
-  install -Dm644 "jack-plug.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/jack-plug.svg"
-  install -Dm644 "com.github.magillos.cable.desktop" "$pkgdir/usr/share/applications/com.github.magillos.cable.desktop"
-  install -Dm755 "connection-manager.py" "$pkgdir/usr/share/cable/connection-manager.py"
+   install -Dm644 "jack-plug.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/jack-plug.svg"
+   install -Dm644 "jack-plug-light.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/jack-plug-light.svg"
+   install -Dm644 "jack-plug-dark.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/jack-plug-dark.svg"
+   install -Dm644 "com.github.magillos.cable.desktop" "$pkgdir/usr/share/applications/com.github.magillos.cable.desktop"
+   install -Dm755 "connection-manager.py" "$pkgdir/usr/share/cable/connection-manager.py"
 
 }
