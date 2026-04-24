@@ -2,7 +2,7 @@
 # Maintainer: Gaurav Gosain <a77x86@gmail.com>
 
 pkgname='golars-bin'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Pure-Go DataFrames modeled on polars. Eager + lazy + streaming, no cgo.'
 url='https://github.com/Gaurav-Gosain/golars'
@@ -12,12 +12,22 @@ provides=('golars' 'golars-lsp' 'golars-mcp')
 conflicts=('golars')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Gaurav-Gosain/golars/releases/download/v${pkgver}/golars_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('d078711385734071c85b86acdb28e87252e468c866f577f44c3f05d2e60464e5')
+sha256sums_aarch64=('84456abfc03913255347abe48dca677e1b3cc4b22a22588a7fa299bf596d45f3')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Gaurav-Gosain/golars/releases/download/v${pkgver}/golars_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('820fe70e0e56aef0cca8a65ccaf8e172795cde011baeb470f6a8ef681aec0f2d')
+sha256sums_x86_64=('fcaa944a12bd59403deccf278661fadc26dd0cc250c955e29cbc0936babdc100')
 
 package() {
+  # Archives ship with a top-level wrap directory
+  # (`wrap_in_directory: true` under `archives:`). Homebrew
+  # chdirs into that before running install, but makepkg does
+  # not: we have to cd in ourselves.
+  case "$CARCH" in
+  x86_64)  _d="golars_${pkgver}_Linux_x86_64" ;;
+  aarch64) _d="golars_${pkgver}_Linux_arm64"  ;;
+  *)       _d="." ;;
+  esac
+  cd "$_d"
   install -Dm755 "./golars"     "${pkgdir}/usr/bin/golars"
   install -Dm755 "./golars-lsp" "${pkgdir}/usr/bin/golars-lsp"
   install -Dm755 "./golars-mcp" "${pkgdir}/usr/bin/golars-mcp"
