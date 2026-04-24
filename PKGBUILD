@@ -1,20 +1,20 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=an-anime-game-launcher
-pkgver=3.18.0
+pkgver=3.19.1
 pkgrel=1
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 arch=('x86_64')
 url="https://github.com/an-anime-team/an-anime-game-launcher"
 license=('GPL-3.0-only')
-depends=('gtk4' 'libadwaita' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'glib2'
-	 'pango' 'xz' 'bzip2' 'cairo' '7zip' 'openssl' 'libwebp-utils' 'git')
+depends=('gtk4' 'libadwaita' 'glibc' 'hicolor-icon-theme' 'libgcc' 'gdk-pixbuf2' 'wayland' 'glib2'
+	 'pango' 'xz' 'bzip2' 'cairo' '7zip' 'libwebp-utils' 'git')
 makedepends=('cargo')
 optdepends=(
 	 'mangohud: FPS Overlay'
 	 'gamescope: Micro-Compositor'
 	 'gamemode: CPU Scaling Control')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3ca92a679a5f22c268b24f261b7d1f8d7814ccde09bc4d80884ea611c0f71fc5')
+sha256sums=('d71b1c559c076350f4ef099468a0151eea6e8c33eb0a3720a12e930d71e8cb6e')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
