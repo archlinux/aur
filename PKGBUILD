@@ -3,7 +3,7 @@
 
 _base=wheezy.captcha
 pkgname=python-${_base/./-}
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Lightweight CAPTCHA library"
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel cython)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('1041e28f60442157bba3f118f9633851ef0715af81b7d447951816173a1cb4ee933c3b3ff5ab8d93a0900768b0556539d68931b459241274fde25627017b9f32')
+sha512sums=('49b4d3a69baf6c0be06bcfa39d494fbb5f9fe174d59f9db9627ce2ff3021e436ca5e16ad0eedfda1536d9682fb386181b34f343bac908a02b5243ca4c94ae880')
 
 build() {
   cd ${_base}-${pkgver}

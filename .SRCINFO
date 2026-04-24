@@ -1,6 +1,6 @@
 pkgbase = python-wheezy-captcha
 	pkgdesc = Lightweight CAPTCHA library
-	pkgver = 3.2.1
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://github.com/akornatskyy/wheezy.captcha
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-wheezy-captcha
 	makedepends = python-wheel
 	makedepends = cython
 	depends = python
-	source = wheezy.captcha-3.2.1.tar.gz::https://github.com/akornatskyy/wheezy.captcha/archive/3.2.1.tar.gz
-	sha512sums = 1041e28f60442157bba3f118f9633851ef0715af81b7d447951816173a1cb4ee933c3b3ff5ab8d93a0900768b0556539d68931b459241274fde25627017b9f32
+	source = wheezy.captcha-3.2.2.tar.gz::https://github.com/akornatskyy/wheezy.captcha/archive/3.2.2.tar.gz
+	sha512sums = 49b4d3a69baf6c0be06bcfa39d494fbb5f9fe174d59f9db9627ce2ff3021e436ca5e16ad0eedfda1536d9682fb386181b34f343bac908a02b5243ca4c94ae880
 
 pkgname = python-wheezy-captcha
