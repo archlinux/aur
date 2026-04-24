@@ -1,7 +1,7 @@
 pkgbase = openvaf-reloaded-git
 	pkgdesc = Continuation of OpenVAF - A Next-generation VerilogA Compiler - OSDI >= 4 support
 	pkgver = r817.2e06643
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arpadbuermen/OpenVAF
 	arch = x86_64
 	arch = aarch64
