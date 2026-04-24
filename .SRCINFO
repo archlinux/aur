@@ -1,0 +1,17 @@
+pkgbase = pawlette-legacy
+	pkgdesc = Git-based theme manager (legacy version for meowrch < 3.1.0)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/meowrch/pawlette
+	arch = any
+	license = GPL-3.0
+	makedepends = python-uv
+	makedepends = python-virtualenv
+	makedepends = git
+	depends = python
+	conflicts = pawlette
+	options = !debug
+	source = https://github.com/meowrch/pawlette/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = pawlette-legacy
