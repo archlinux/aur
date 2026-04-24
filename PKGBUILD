@@ -4,7 +4,7 @@
 # Contributor: neilotoole <neilotoole@apache.org>
 
 pkgname='sq-bin'
-pkgver=0.50.0
+pkgver=0.50.2
 pkgrel=1
 pkgdesc='sq data wrangler'
 url='https://sq.io'
@@ -14,10 +14,10 @@ provides=('sq')
 conflicts=('sq')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/neilotoole/sq/releases/download/v${pkgver}/sq-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('2aad0950b90779bbfd95bba29716639f1b7fd23a6c0cfd35f765daa0ede833eb')
+sha256sums_aarch64=('eb475a32453494240c7cac9c54a4c8cf07e7c670a6870014a0db701f12c1d8d3')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/neilotoole/sq/releases/download/v${pkgver}/sq-${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('253d82c63effc2bec599066293941b625885ab3f7ceab0f4feea5ea8df083fa9')
+sha256sums_x86_64=('2c7afa781757682e02eb210fb9a2d9526ab168f7393ecf1b8f51850a95817a4b')
 
 package() {
   # bin
@@ -43,4 +43,10 @@ package() {
   install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/sq/README.md"
   mkdir -p "${pkgdir}/usr/share/man/man1"
   install -Dm644 "./manpages/sq.1.gz" "${pkgdir}/usr/share/man/man1/sq.1.gz"
+
+  # skills
+  find ./skills -type f | while read -r f; do
+  rel="${f#./}"
+  install -Dm644 "./${rel}" "${pkgdir}/usr/share/doc/sq/${rel}"
+  done
 }
