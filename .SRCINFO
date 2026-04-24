@@ -1,10 +1,15 @@
 pkgbase = fleshfetch
-	pkgdesc = Enlightenment.
-	pkgver = 1.0
+	pkgdesc = GTK4-based clicker game in Python with global Supabase leaderboard. Written as a joke, don't take it too seriously.
+	pkgver = 1.0.0
 	pkgrel = 1
-	arch = any
+	url = https://github.com/xtexecute/fleshfetch-aur
+	arch = x86_64
 	license = MIT
-	source = fleshfetch.sh
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = python-requests
+	source = git+https://github.com/xtexecute/fleshfetch-aur.git#branch=main
 	sha256sums = SKIP
 
 pkgname = fleshfetch
