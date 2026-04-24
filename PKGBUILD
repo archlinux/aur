@@ -2,7 +2,7 @@
 # Maintainer: elpdev <noreply@github.com>
 
 pkgname='hackernews-bin'
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Terminal UI for browsing Hacker News, reading articles, comments, and saved stories'
 url='https://github.com/elpdev/hackernews'
@@ -12,10 +12,10 @@ provides=('hackernews')
 conflicts=('hackernews')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/elpdev/hackernews/releases/download/v${pkgver}/hackernews_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('4eb9015bd9b77fb7f65bc194b41ba9d9b9d8b8d0c54bc91db9a3df46c30e38d2')
+sha256sums_aarch64=('204ad39a41dfec7ac3b105a7fc811fcc561398a9ef04eb6723668d0831bd5b03')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/elpdev/hackernews/releases/download/v${pkgver}/hackernews_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('7c10e51b9e602c4c84b4832b6174789496e1e0e73416aaf963b82e0fd8cf7216')
+sha256sums_x86_64=('c03ff6b16dda30698dcbde80c43b908fc8575ab99236a8bbc7572eb0811156e2')
 
 package() {
   install -Dm755 hackernews "${pkgdir}/usr/bin/hackernews"
