@@ -1,7 +1,7 @@
 # Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=bato
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A program to send battery level notifications'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('bato')
 conflicts=('bato')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('471b17a2f226ffc49246a98d3866b2ef03cfeab1901e494835eb75c892acc587')
+sha256sums=('d67851706442e7836d45e90d180d0d8a86cdde29f189d7550983cb14dbb571e9')
 _pkgdir="$pkgname-$pkgver"
 
 build() {
