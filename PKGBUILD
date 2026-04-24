@@ -2,7 +2,7 @@
 
 pkgname="radicle-httpd-bin"
 epoch=2
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="open source, peer-to-peer code collaboration stack built on Git - web explorer"
 arch=("x86_64" "aarch64")
@@ -16,8 +16,8 @@ source_x86_64=("https://files.radicle.xyz/releases/radicle-httpd/$pkgver/radicle
 source_aarch64=("https://files.radicle.xyz/releases/radicle-httpd/$pkgver/radicle-httpd-$pkgver-aarch64-unknown-linux-musl.tar.xz")
 sha512sums=('76235a3247342b8531cb259a1a51c9789be81e5332f210949063e4444edc2659eebe0afb0c2aae9e9c6989599d29beca0ca57a7839156c92b195bdb54c7ca448'
             '2596b230b1a2cd097c2596bbc9baea7ba4a18e44364acb098da6e41fee622d4439c7ee397626bb7c377e2f8d7a71aa9c9a22fdea04e217250cccdc3041b76315')
-sha512sums_x86_64=('a27a9ab29e424fd2cdf11dc483fbaa684f202d8edca601e710a3b64b58a9fb343b9f4c607e9fb0eb7ac2f063c5c141e3b4c5012e7dc2888cc1732ba7f18f69d2')
-sha512sums_aarch64=('4461ef4ecaafbcbf45f60a9683c33af56c29c91c3b85a0f747c1196286dbf9519afd5ebc5d07ab6e4b93d9d38cf6c8cca123414e65c1b1e3d4ac9e45cb8c28d6')
+sha512sums_x86_64=('8eca40c86e6e9cee5a352185f17aa20dd9ef2b122cd2f3524fe3c4c6e1a7da7c42c1abcbdc98f2662c53ea7bc0573ed763105146a7560909d9e3acd7599ff69a')
+sha512sums_aarch64=('62545b952bb509fbde01b18ce8bf62986765ddff375f242532b6cb63eb0158583e67a0595c4c3d632409de9f09393e4ca3562ed6c55cb32d2586d573edefee1d')
 provides=("radicle-httpd")
 conflicts=("radicle-httpd")
 
