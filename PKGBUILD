@@ -28,7 +28,7 @@ optdepends=(
 )
 options=(!strip)
 source=("https://users.notam02.no/~kjetism/radium/demos/linux/radium_64bit_linux-$pkgver-demo.tar.xz")
-sha256sums=('a07a3a12cbd9ff6884d70f8228318642657ae8c23d80d43b50e9331b3d6efa52')
+sha256sums=('e336039a5ba049dcbc9e7439d12dda37eda4673a66352fc8fcc826019d8b3219')
 
 package() {
   cd radium_64bit_linux-$pkgver-demo
