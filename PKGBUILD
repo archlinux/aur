@@ -1,9 +1,9 @@
 # Maintainer: zotan <aur@zotan.email>
 
-_pkgver=v2025.1-beta5.patch3.security4
+_pkgver=v2026.1-beta
 
 pkgname=iceshrimp.net-pre-bin
-pkgver=2025.1.beta5.patch3.security4
+pkgver=2026.1.beta
 pkgrel=1
 pkgdesc="Decentralized and federated social networking service, implementing the ActivityPub standard"
 arch=(x86_64 aarch64)
@@ -39,8 +39,8 @@ sha512sums=('cfb7adf7e9f0d9d05ab89b2237ddf1ef4135ed9dde463e96c7cd94e03e497a85c77
             '0665aa7af2b2aa4405289ce9119439ddcc6b9e6c81dc8e3b9ed5d8ecdc4a39d49c950d41d3098ce99fe294ce51a2dee55ec7248c1756783b0e9aad0bde4654fa'
             '0a0467df278f3bd739114725b373f5ec6c7296f609f0a9bcb4f8142b44856fc63e32f76390adf757005035dc691a4c54a662cc8a287572b61e215c29e3d3cbf2'
             '9c58726b6571268ff4886a6fb8cf6b69db1464d10ef028bae75b93c7fc168abcb6aee3ac9c3c24358805d35e9610ce3102b7270c8ca2e66ec5ad0fbda31f8db9')
-sha512sums_x86_64=('42cf66390b8dae702082334fcf9a0627a33776fa7bbd92795aec65a63aaf61641c8512a6468ec792a085f1eda9f0ce734b21ed07df5d46d71341119c2b23dee1')
-sha512sums_aarch64=('289b71cfb48f3e2e4883df1dbace87ee0d1aeea0d4708a0726b237ba870c83b812b76b138954fd4275fa95f340353de23f3ef0a33ba4f80144fdb644aa63019c')
+sha512sums_x86_64=('37a43923689f789b402568b49c2aa24a1968801e7d63d4bdcad076a814af2363a2c34dd19315ab94b499346218d9b43127bc397a74f2199673ba3c0bef0ab8fa')
+sha512sums_aarch64=('5fa9ff39096a18a96e38c11b4714d1e86e4816a8428fc82e05da4d9d7910db25eb19bf817fbee2db0321202537ef7c748b13ea663d1b09a1874c58d7a35ae3fb')
 
 pkgver() {
   local res
@@ -59,7 +59,7 @@ package() {
   depends+=(postgresql libvips openjpeg2)
 
   # Since we're using the release tarballs, we only need the runtime after installation
-  depends+=('aspnet-runtime-9.0>=9.0' 'aspnet-runtime-9.0<10.0')
+  depends+=('aspnet-runtime>=10.0' 'aspnet-runtime<11.0')
 
   install -dm 755 "${pkgdir}/usr/share/iceshrimp.net"
   install -dm 755 "${pkgdir}/etc/iceshrimp.net"
