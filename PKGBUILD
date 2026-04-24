@@ -11,7 +11,7 @@ pkgdesc='Typed FFmpeg bindings for FFmpeg 8.x'
 arch=(any)
 url=https://pypi.org/project/typed-ffmpeg-v8/
 license=(MIT)
-depends=(python python-ffmpeg-core)
+depends=(python 'python-ffmpeg-core>=4.1')
 recommends=('python-graphviz: filter graph visualization')
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip)

@@ -7,7 +7,7 @@ pkgbase = python-typed-ffmpeg-v8
 	license = MIT
 	makedepends = python-pip
 	depends = python
-	depends = python-ffmpeg-core
+	depends = python-ffmpeg-core>=4.1
 	noextract = typed_ffmpeg_v8-4.1-py3-none-any.whl
 	source = PKGBUILD_EXTRAS
 	source = https://files.pythonhosted.org/packages/ec/fa/1ef8a3a50a3962495a190ccb3bb56771af21150471be7f50fe8099d0e0f6/typed_ffmpeg_v8-4.1-py3-none-any.whl
