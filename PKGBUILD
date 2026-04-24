@@ -1,6 +1,6 @@
 # Maintainer: Joni Savolainen <joni@savolainen.io>
 pkgname=supersigil-bin
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="CLI tool and verification framework for spec-driven development (binary release)"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ options=(!debug)
 optdepends=('supersigil-lsp-bin: language server for editor integration')
 source_x86_64=("${url}/releases/download/v${pkgver}/supersigil-${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/supersigil-${pkgver}-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('4982f79339fe0e99532a099b0cbe7f2cf2d9d658e8f4243872d7008ce813ea8e')
-sha256sums_aarch64=('5dd98a86087db9b83944ba8a51d028921bf329851d91379318cabaf7d7ff2a75')
+sha256sums_x86_64=('667ddbfe6d3a469e1ad6b95a58a78d98f335029603c1eb3243d3298d750c0324')
+sha256sums_aarch64=('18918b8543b881074f6990bd8a12166f332fa4c8111f55ad7acb80007d012c4d')
 
 package() {
     install -Dm755 supersigil "${pkgdir}/usr/bin/supersigil"

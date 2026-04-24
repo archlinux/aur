@@ -1,6 +1,6 @@
 pkgbase = supersigil-bin
 	pkgdesc = CLI tool and verification framework for spec-driven development (binary release)
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/jonisavo/supersigil
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = supersigil-bin
 	provides = supersigil
 	conflicts = supersigil
 	options = !debug
-	source_x86_64 = https://github.com/jonisavo/supersigil/releases/download/v0.13.0/supersigil-0.13.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 4982f79339fe0e99532a099b0cbe7f2cf2d9d658e8f4243872d7008ce813ea8e
-	source_aarch64 = https://github.com/jonisavo/supersigil/releases/download/v0.13.0/supersigil-0.13.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 5dd98a86087db9b83944ba8a51d028921bf329851d91379318cabaf7d7ff2a75
+	source_x86_64 = https://github.com/jonisavo/supersigil/releases/download/v0.14.0/supersigil-0.14.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 667ddbfe6d3a469e1ad6b95a58a78d98f335029603c1eb3243d3298d750c0324
+	source_aarch64 = https://github.com/jonisavo/supersigil/releases/download/v0.14.0/supersigil-0.14.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 18918b8543b881074f6990bd8a12166f332fa4c8111f55ad7acb80007d012c4d
 
 pkgname = supersigil-bin
