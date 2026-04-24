@@ -2,8 +2,8 @@
 # Contributor: Julien Desgats <julien at desgats dot fr>
 
 pkgname=osrm-backend
-pkgver=6.0.0
-pkgrel=4
+pkgver=26.4.1
+pkgrel=1
 pkgdesc="High performance routing engine written in C++14 designed to run on OpenStreetMap data."
 arch=('x86_64')
 url="https://github.com/Project-OSRM/${pkgname}"
@@ -31,16 +31,17 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("${pkgname}-${pkgver}-LICENSE::${url/github/raw.githubusercontent}/refs/heads/master/LICENSE.TXT"
-	"${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-	"${pkgname}-${pkgver}.patch")
+"${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+	# "${pkgname}-${pkgver}.patch")
 
 b2sums=('7e714e99eaea01b1ce336c74e2f4a6f5af6aa059ef16d0e353864c7e188df88682ea5a41b94d42e6daeabfd96e7f352790e04a0bb273c1633747c17e5c348f5a'
-        '318ad504099a93585a2ec8d39998e375519f511359fe927718638c5a4dd0221bf15f02babca9ee7f3752f08e7315393370aaf2584f813e34542ccaed08b295fe'
-        'ec09533d0ba993946841912a48fee01161dc09e2cc920e7b80c209163a228bf344a9e716b0ba371774c96ac15ca82a3aba4ad204dd981ab85a10bf31ba668aff')
+        '4b35ebec16f56361c6c5a63564c9c6e96636cf54ec1d52b73c691d94544d0862bafe8f3361b4142cebdbbf97e87c6b6222c88c9383c8780b35c15c24339ed6bb')
+        # 'ec09533d0ba993946841912a48fee01161dc09e2cc920e7b80c209163a228bf344a9e716b0ba371774c96ac15ca82a3aba4ad204dd981ab85a10bf31ba668aff')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
-	patch -Np1 -i ../"${pkgname}-${pkgver}.patch"
+	# patch -Np1 -i ../"${pkgname}-${pkgver}.patch"
+	
 	# for p in ../*.patch; do
 	# 	patch -Np1 -i "$p"
 	# done
