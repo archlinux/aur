@@ -3,11 +3,11 @@
 pkgname=python-cmake
 _name=${pkgname#python-}
 pkgver=4.3.2
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="CMake is an open-source, cross-platform family of tools designed to build, test and package software"
 arch=($CARCH)
-url="https://pypi.org/project/${_name}"
+url="https://github.com/scikit-build/cmake-python-distributions"
 license=('Apache-2.0 AND BSD-3-Clause')
 groups=()
 provides=(${pkgname})
@@ -15,14 +15,16 @@ conflicts=(${pkgname})
 depends=(
     sh
     cmake
-    gcc-libs
     glibc
+    libgcc
+    libstdc++
     libidn2
     openssl
     ncurses
     python
 )
 makedepends=(
+    git
     python-scikit-build-core
     python-build
     python-installer
@@ -31,19 +33,24 @@ makedepends=(
 )
 optdepends=()
 options=('!strip' '!debug')
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("${_name}::git+${url}.git#tag=$pkgver")
 noextract=()
-sha256sums=('5f47f5f00910c474662d09a0516413c6e9750bde73cdc52dea3988102a274e06')
+sha256sums=('cbaa796123ed9220fd3f63108c4121ee720cf85107fc30ad1a2a2c0f08b83d6e')
+
+prepare() {
+    git -C "${srcdir}/${_name}" clean -dfx
+}
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}"
     python -m build --wheel --no-isolation
+        # -Ccmake.define.BUILD_CMAKE_FROM_SOURCE=ON \
+        # -Ccmake.define.CMakePythonDistributions_ARCHIVE_DOWNLOAD_DIR=${srcidr}/cmake
 }
 
 package() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm0644 LICENSE_Apache_20 -t"${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -Dm0644 LICENSE_BSD_3 -t"${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm0644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     rm -rf ${pkgdir}/usr/bin
 }
