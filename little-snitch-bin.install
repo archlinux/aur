@@ -1,0 +1,15 @@
+post_install() {
+    systemctl enable littlesnitch.service
+    echo "Little Snitch service has been enabled."
+    echo "Start it with: systemctl start littlesnitch.service"
+    echo "Or open http://localhost:3031/ in a browser after starting."
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl restart littlesnitch.service
+}
+
+pre_remove() {
+    systemctl disable --now littlesnitch.service || true
+}
