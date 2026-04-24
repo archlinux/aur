@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=lrcget
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility for mass-downloading LRC synced lyrics for your offline music library.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/tranxuanthang/lrcget'
@@ -14,7 +14,7 @@ conflicts=('lrcget-git' 'lrcget-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
     'lrcget')
 sha256sums=('f91ad89a7c89f61fd14c4f76985782fa04662398639cef9415d30d28ef233acd'
-            'b051010628a791599d33437a23e352dac46db9aa09bf466fee106ef70d952f7f')
+            '2ddd32e5a5576a4c6b0963e2b2bf36c249f6364da48c1e93610d3099da13e633')
 
 prepare() {
     cd "$pkgname-$pkgver"
