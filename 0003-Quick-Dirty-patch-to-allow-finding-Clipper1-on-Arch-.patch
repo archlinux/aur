@@ -1,7 +1,7 @@
-From 6c67c442a0032a4e5f2247ef5550c9b2c8ff9621 Mon Sep 17 00:00:00 2001
+From 93fba53267bf8163dcf9c450983249cc5d279bad Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
 Date: Wed, 17 Jan 2024 21:05:57 +0100
-Subject: [PATCH 3/5] Quick & Dirty patch to allow finding Clipper1 on Arch
+Subject: [PATCH 3/4] Quick & Dirty patch to allow finding Clipper1 on Arch
  Linux
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 3/5] Quick & Dirty patch to allow finding Clipper1 on Arch
  1 file changed, 5 insertions(+), 22 deletions(-)
 
 diff --git a/pri/clipper1detect.pri b/pri/clipper1detect.pri
-index 5c6505d2..d9450bbf 100644
+index 782ac0a0..d9450bbf 100644
 --- a/pri/clipper1detect.pri
 +++ b/pri/clipper1detect.pri
 @@ -1,27 +1,10 @@
@@ -22,8 +22,8 @@ index 5c6505d2..d9450bbf 100644
 -    message("including Clipper1 library on linux or mac")
 +CLIPPER1 = /usr/include/polyclipping
  
--    exists($$absolute_path($$PWD/../../Clipper1)) {
--	            CLIPPER1 = $$absolute_path($$PWD/../../Clipper1/6.4.2)
+-    exists($$absolute_path($$PWD/../../Clipper1-6.4.2)) {
+-	            CLIPPER1 = $$absolute_path($$PWD/../../Clipper1-6.4.2)
 -				message("found Clipper1 in $${CLIPPER1}")
 -			}
 -}
@@ -46,5 +46,5 @@ index 5c6505d2..d9450bbf 100644
 +INCLUDEPATH += $$absolute_path($${CLIPPER1})
 +LIBS += -lpolyclipping
 -- 
-2.52.0
+2.54.0
 

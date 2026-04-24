@@ -10,8 +10,8 @@ pkgname=fritzing
 # We drop the "b" at the end of the version number. It probably means beta
 # while there is also "d" for development versions. This would not be correctly
 # parsed by `pkgver` anyway (d > b), so let's leave out the b suffix entirely.
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 
 # Tag version can be obtained from github release page. Sometimes this is the
 # version number itself, sometimes some CD-magicnumber thing. There can be
@@ -20,7 +20,7 @@ pkgrel=2
 #_tagver=0.9.8
 
 # This is probably close to what has been released
-_gitrev=04e5bb0241e8f1de24d0fce9be070041c6d5b68e
+_gitrev=394a8bb4791424ffd99f99ebc330264d4becea63
 
 # Parts come from a different respository and are not versioned anymore since
 # 2016. Sometimes we can get the revision by downloading the release build,
@@ -28,7 +28,7 @@ _gitrev=04e5bb0241e8f1de24d0fce9be070041c6d5b68e
 # release build seems to be hidden behind a paywall. Then we need to guess
 # based on the master branch of the fritzing-parts repository and the date when
 # the release archive was created.
-_partsrev=73bc0559bb8399b2f895d68f032e41d7efc720c0
+_partsrev=70a1773402e8c76a77795637de482a83db3ca6d7
 
 pkgdesc='PCB layout prototyping application'
 arch=('aarch64' 'i686' 'x86_64')
@@ -43,23 +43,17 @@ source=("git+https://github.com/fritzing/fritzing-app.git#commit=${_gitrev}"
         0001-Quick-Dirty-patch-to-allow-finding-quazip-qt6-on-Arc.patch
         0002-Quick-Dirty-patch-to-allow-finding-ngspice-on-Arch-L.patch
         0003-Quick-Dirty-patch-to-allow-finding-Clipper1-on-Arch-.patch
-        0004-Work-around-build-issues-with-Qt-6.9.patch
-        0005-Fix-build-with-Qt-6.10.patch)
+        0004-Remove-Qt-version-requirements.patch)
 sha256sums=('SKIP'
             'SKIP'
             'be8a89df72d01cf062cc9815dd64c9576b4d20910d6d7aee7f0ea26484dc5e76'
-            '33c03dbd45a0eee8788d9a71bfa7a849e638f5410e885f82e9adcefd53ab63ac'
-            'd7f1bcf32b7f105382e311a2d4e8a94c1ca61ffff6f0d32180b654f8bf978d73'
-            '9769e21b2333c08dea4923a964c25e1febb4175a89c15b9abef34f1de54b69c7'
-            '67930df5c1e2296d2b0b26676b6e4fda62c1e5fcf7fac2151b35b039c884d2b4'
-            '205bbcd1a70a2264b31a0e3d41f9f1068a11c57eb23cf43d2b32f744f8b3e550')
+            '8e95f863f72a4d31a2e541cf550d0d81582a64f04d7b07519114496fa054e3e6'
+            '960209b2ad321d33efb856c82a650be67a0952681291befa83d8d6424014659d'
+            '1ddf6b7166e60df8b2c63daf74aadf406e0b2add391c8b8b2c5be11403c99caa'
+            '5eb7da57529d7136bf831e0d21489d232b9c82fdd7bc510bf292b6821533098b')
 
 prepare() {
   cd "${srcdir}"/fritzing-app
-
-  # Allow use of newer Qt versions
-  git revert -n 1bf5a03f27b7401631baaedb1ceb9c313a5ffe3d
-  git revert -n 20eeb4c2f95f3de669e90a1f3fa2ac49cdcc33ac
 
   # Allow finding quazip-qt6 on Arch Linux
   patch -p1 < "${srcdir}/0001-Quick-Dirty-patch-to-allow-finding-quazip-qt6-on-Arc.patch"
@@ -70,11 +64,8 @@ prepare() {
   # Allow finding Clipper1 on Arch Linux
   patch -p1 < "${srcdir}/0003-Quick-Dirty-patch-to-allow-finding-Clipper1-on-Arch-.patch"
 
-  # Fix build issues with Qt 6.9
-  patch -p1 < "${srcdir}/0004-Work-around-build-issues-with-Qt-6.9.patch"
-
-  # Fix build issues with Qt 6.10
-  patch -p1 < "${srcdir}/0005-Fix-build-with-Qt-6.10.patch"
+  # Allow use of newer Qt versions
+  patch -p1 < "${srcdir}/0004-Remove-Qt-version-requirements.patch"
 
   # Disable broken font scaling (#3221)
   sed -i 's/Exec=Fritzing/Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=0 Fritzing/' org.fritzing.Fritzing.desktop

@@ -1,7 +1,7 @@
 pkgbase = fritzing
 	pkgdesc = PCB layout prototyping application
-	pkgver = 1.0.6
-	pkgrel = 2
+	pkgver = 1.0.7
+	pkgrel = 1
 	url = http://fritzing.org
 	install = fritzing.install
 	arch = aarch64
@@ -22,21 +22,19 @@ pkgbase = fritzing
 	depends = quazip-qt6
 	depends = ngspice
 	depends = zlib
-	source = git+https://github.com/fritzing/fritzing-app.git#commit=04e5bb0241e8f1de24d0fce9be070041c6d5b68e
-	source = git+https://github.com/fritzing/fritzing-parts.git#commit=73bc0559bb8399b2f895d68f032e41d7efc720c0
+	source = git+https://github.com/fritzing/fritzing-app.git#commit=394a8bb4791424ffd99f99ebc330264d4becea63
+	source = git+https://github.com/fritzing/fritzing-parts.git#commit=70a1773402e8c76a77795637de482a83db3ca6d7
 	source = svgpp-1.3.1.tar.gz::https://github.com/svgpp/svgpp/archive/refs/tags/v1.3.1.tar.gz
 	source = 0001-Quick-Dirty-patch-to-allow-finding-quazip-qt6-on-Arc.patch
 	source = 0002-Quick-Dirty-patch-to-allow-finding-ngspice-on-Arch-L.patch
 	source = 0003-Quick-Dirty-patch-to-allow-finding-Clipper1-on-Arch-.patch
-	source = 0004-Work-around-build-issues-with-Qt-6.9.patch
-	source = 0005-Fix-build-with-Qt-6.10.patch
+	source = 0004-Remove-Qt-version-requirements.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = be8a89df72d01cf062cc9815dd64c9576b4d20910d6d7aee7f0ea26484dc5e76
-	sha256sums = 33c03dbd45a0eee8788d9a71bfa7a849e638f5410e885f82e9adcefd53ab63ac
-	sha256sums = d7f1bcf32b7f105382e311a2d4e8a94c1ca61ffff6f0d32180b654f8bf978d73
-	sha256sums = 9769e21b2333c08dea4923a964c25e1febb4175a89c15b9abef34f1de54b69c7
-	sha256sums = 67930df5c1e2296d2b0b26676b6e4fda62c1e5fcf7fac2151b35b039c884d2b4
-	sha256sums = 205bbcd1a70a2264b31a0e3d41f9f1068a11c57eb23cf43d2b32f744f8b3e550
+	sha256sums = 8e95f863f72a4d31a2e541cf550d0d81582a64f04d7b07519114496fa054e3e6
+	sha256sums = 960209b2ad321d33efb856c82a650be67a0952681291befa83d8d6424014659d
+	sha256sums = 1ddf6b7166e60df8b2c63daf74aadf406e0b2add391c8b8b2c5be11403c99caa
+	sha256sums = 5eb7da57529d7136bf831e0d21489d232b9c82fdd7bc510bf292b6821533098b
 
 pkgname = fritzing

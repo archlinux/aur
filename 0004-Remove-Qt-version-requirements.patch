@@ -1,0 +1,28 @@
+From 1051627aa9a13d53d14af4e77c1a521cf1210208 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
+Date: Sun, 26 Apr 2026 18:38:19 +0200
+Subject: [PATCH 4/4] Remove Qt version requirements
+
+---
+ phoenix.pro | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/phoenix.pro b/phoenix.pro
+index 62690d58..42cdc456 100644
+--- a/phoenix.pro
++++ b/phoenix.pro
+@@ -18,11 +18,6 @@
+ #
+ # ********************************************************************
+ 
+-QT_LEAST=6.5.3
+-QT_MOST=6.10.10
+-!versionAtLeast(QT_VERSION, $${QT_LEAST}):error("Use at least Qt version $${QT_LEAST}")
+-!versionAtMost(QT_VERSION, $${QT_MOST}):error("Use at most Qt version $${QT_MOST}")
+-
+ CONFIG += debug_and_release
+ CONFIG += c++20
+ 
+-- 
+2.54.0
+
