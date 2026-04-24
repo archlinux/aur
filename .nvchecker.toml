@@ -1,0 +1,5 @@
+[lookas]
+source = "github"
+github = "rccyx/lookas"
+use_latest_release = true
+prefix = "v"
