@@ -3,7 +3,7 @@
 _pkgname=carton
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.1.8 # renovate: datasource=github-tags depName=821869798/carton
+pkgver=0.1.9 # renovate: datasource=github-tags depName=821869798/carton
 pkgrel=3
 pkgdesc="A Windows and Linux GUI client for sing-box.(主打高性能和易用性，非electron tauri等web套皮)"
 arch=('x86_64' 'aarch64')
@@ -14,17 +14,13 @@ provides=("${_pkgname}")
 options=('!strip')
 _appimage_x86_64="${_pkgname}-${pkgver}-linux-x64.AppImage"
 _appimage_aarch64="${_pkgname}-${pkgver}-linux-arm64.AppImage"
-source_x86_64=("${_appimage_x86_64}::https://github.com/821869798/carton/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage "
-               "https://raw.githubusercontent.com/821869798/carton/refs/tags/v${pkgver}/LICENSE"
-              )
-source_aarch64=("${_appimage_aarch64}::https://github.com/821869798/carton/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage "
-               "https://raw.githubusercontent.com/821869798/carton/refs/tags/v${pkgver}/LICENSE"
-              )
+source=("LICENSE::https://raw.githubusercontent.com/821869798/carton/refs/tags/v${pkgver}/LICENSE")
+source_x86_64=("${_appimage_x86_64}::https://github.com/821869798/carton/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage")
+source_aarch64=("${_appimage_aarch64}::https://github.com/821869798/carton/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
 noextract=("${_appimage_x86_64}" "${_appimage_aarch64}")
-sha256sums_x86_64=('de43b80d6af4a145e8eb942883b5e659dfdd6896ec45e9bd9fed82a32f866160'
-                   'd0f7cd798fd03274d6742245e320bbd2133dfdb7161c4470df4ea862b4fa57dd')
-sha256sums_aarch64=('27822e5b445322ba2c91b6b541ec0b92877e95995aa3bd375d2c24f3e3de2994'
-                   'd0f7cd798fd03274d6742245e320bbd2133dfdb7161c4470df4ea862b4fa57dd')
+sha256sums=('d0f7cd798fd03274d6742245e320bbd2133dfdb7161c4470df4ea862b4fa57dd')
+sha256sums_x86_64=('7e81e1320b5295ea9cf859cef3ce06b279908156b9c721c9138a4b21aec95c72')
+sha256sums_aarch64=('25f51253741a319805027275bc72565b5b0fabfb30cd3e1cc8792f9dae69219b')
 
 prepare() {
     case "${CARCH}" in
