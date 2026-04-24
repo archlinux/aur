@@ -20,8 +20,12 @@ source=(
 sha256sums=('345a9236cd1397e65d3d119dd11acb7423f8a335f21f47503d991a8cb3050f00')
 
 prepare() {
-	chmod +x "$srcdir/Project+.$_tag.Netplay.Linux.AppImage/$_appimage"
-	$srcdir/Project+.$_tag.Netplay.Linux.AppImage/$_appimage --appimage-extract
+    cd "$srcdir"
+
+    appimage=$(find . -type f -name "*.AppImage" -print -quit)
+
+    chmod +x "$appimage"
+    "$appimage" --appimage-extract
 }
 
 package() {
