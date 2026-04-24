@@ -1,0 +1,17 @@
+pkgbase = csnobol4-git
+	pkgdesc = Original Bell Telephone Labs Macro SNOBOL4 ported to C
+	pkgver = r4485.a560be66
+	pkgrel = 1
+	url = https://github.com/philbudne/csnobol4
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	depends = tcl
+	depends = tk
+	provides = csnobol4
+	conflicts = csnobol4
+	source = csnobol4-git::git+https://github.com/philbudne/csnobol4
+	sha256sums = SKIP
+
+pkgname = csnobol4-git
