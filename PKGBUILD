@@ -1,5 +1,5 @@
 pkgname=xbelite2-dkms
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc='Xbox Elite Series 2 controller driver and configurator for Linux'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo')
 backup=('etc/udev/rules.d/99-xbelite2.rules' 'etc/modprobe.d/xbelite2-blacklist.conf')
 install=xbelite2.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('397cf9dd4397fe679de773a65d71484f854c0b063e117f6e1d9c7fe8a40d7a1a')
+sha256sums=('34281c5cd3e879998210dce1d24b4ce62c9daea17f1a0b1df1ae34b265cd326b')
 
 build() {
   cd "$srcdir/xbelite2-$pkgver"
