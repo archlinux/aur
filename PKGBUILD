@@ -279,7 +279,8 @@ fi
 ## List of CachyOS schedulers
 case "$_cpusched" in
     bore|rt-bore|hardened) # CachyOS Scheduler (BORE)
-        source+=("${_patchsource}/sched/0001-bore-cachy.patch");;&
+        source+=("${_patchsource}/sched/0001-bore-cachy.patch"
+                 "0002-bore-7.0-fair-fixes.patch");;&
     bmq) ## Project C Scheduler
         source+=("${_patchsource}/sched/0001-prjc-cachy.patch");;
     hardened) ## Hardened Patches
@@ -926,4 +927,5 @@ done
 sha256sums=('40302fe5cd98904f7db6955a824dcaf34a04fe1af3b5e668537f7bd84ed9a2a8'
             'fa32a9d7b1961b366a59d107006a9728da9d89f06e32d1ef51e44fa6b9a55801'
             '6f45ef083841792e88fbadbfefb0630abd738a131f9782333fbc61f8b6712b4b'
-            '71b77f8610d4e7b75663b18a417c7451a38c3bf9f5c9281d4946c9df346bdab2')
+            '71b77f8610d4e7b75663b18a417c7451a38c3bf9f5c9281d4946c9df346bdab2'
+            '9706980318abf1ae1b47f71b8c076bb2e54481e82c95330099b94eef01021f29')
