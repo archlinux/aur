@@ -6,7 +6,7 @@ pkgdesc="Linux Wallpaper Engine frontend with a keyboard‑first GUI"
 arch=('any')
 url="https://github.com/diode701/nyaa-paper"
 license=('CC-BY-NC-4.0')
-depends=('java-runtime>=17' 'linux-wallpaperengine-git')
+depends=('java-runtime>=17' 'linux-wallpaperengine')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/diode701/nyaa-paper/releases/download/v$pkgver/nyaa-paper-$pkgver.tar.gz")
 sha256sums=('f6511d17ac58f6d70b5505e918dc110bd209f85f1b84536f02ecb5570a0e491a')
 
