@@ -1,7 +1,7 @@
 pkgname=multica-bin
 pkgver=0.2.16
 pkgrel=1
-pkgdesc="Multi-agent AI coding framework"
+pkgdesc="The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills"
 arch=(x86_64 aarch64)
 url="https://github.com/multica-ai/multica"
 license=(MIT)
@@ -20,4 +20,6 @@ prepare() {
 
 package() {
     install -Dm755 "multica" "${pkgdir}/usr/bin/multica"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}"
 }

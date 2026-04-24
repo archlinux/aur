@@ -1,5 +1,5 @@
 pkgbase = multica-bin
-	pkgdesc = Multi-agent AI coding framework
+	pkgdesc = The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills
 	pkgver = 0.2.16
 	pkgrel = 1
 	url = https://github.com/multica-ai/multica
