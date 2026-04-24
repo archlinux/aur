@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=xad
-pkgver=1.8.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Comprehensive C++ library for automatic differentiation"
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=()
 makedepends=(cmake)
 # checkdepends=(gtest)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('0609bce53e5eb1c1205efb9a57d613fb2312f6dd04c5e22c1c4b1c62c22be2111d00eb8039c57c0724d94af13a0c6a80f8a13cd927a340c2d9c593af26d98b32')
+sha512sums=('e2e3a847d975dc9fcbd7be8277e93fb417d263aec566f2e46a809135460860caba966980823afb66d764bb0b2eb4d8d24765a8aadadb730aeb743a36b399fbde')
 
 build() {
   cmake \
