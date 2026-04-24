@@ -1,14 +1,14 @@
 pkgbase = maya-bifrost
 	pkgdesc = Autodesk Maya Bifrost Plugin
-	pkgver = 3.0.0.1
-	pkgrel = 2
+	pkgver = 3.1.0.8
+	pkgrel = 1
 	url = https://area.autodesk.com/bifrost/
 	arch = x86_64
 	license = custom
 	depends = maya>=2027
 	depends = maya<2028.0
 	options = !strip
-	source = manual://Bifrost_3.0.0.1_Maya2027_Linux.run
-	b2sums = 6b13e1ee4cc166df562c0d7d6f0ea593926758318785a093f009a133433d33d3006794100a0c48d771aca667c75c5056e945e5ab8cda9755eed665b4890605fa
+	source = manual://Bifrost_3.1.0.8_Maya2027_Linux.run
+	b2sums = bdce7236f58db1db9e96f27190224b58dca4933ddc33b0704bd95db11ef86daaa5147dc189680d7eb82fdd132ee856f4fd0b922a2908d019b4c7e2670a847998
 
 pkgname = maya-bifrost
