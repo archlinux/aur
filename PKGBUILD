@@ -11,7 +11,7 @@ pkgdesc='Modern Python & TypeScript FFmpeg wrappers with comprehensive typing (l
 arch=(any)
 url=https://pypi.org/project/typed-ffmpeg/
 license=(MIT)
-depends=(python python-typed-ffmpeg-v8=4.1)
+depends=(python 'python-typed-ffmpeg-v8=4.1')
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip)
 checkdepends=()
