@@ -1,7 +1,7 @@
 # Maintainer: Schorsch <wsixcde+aur at gmail dot com>
 # Thanks to <mti at tillenius dot com> whose packages the ps7 packages were based on
 pkgname=ps7_libps2000
-pkgver=3.0.150_3r6187
+pkgver=3.0.152_3r6217
 pkgrel=1
 pkgdesc="Library for PicoScope 2000 series in PicoScope 7"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=(!strip)
 install=$pkgname.install
 changelog=
 source=("https://labs.picotech.com/picoscope7/debian/pool/main/libp/libps2000/libps2000_${pkgver//_/-}_amd64.deb")
-md5sums=('b351efb1c3c5932d04834d5a3dfd0a30')
+md5sums=('c44e15eb8ae627f9c5f2d6f2a8455e2e')
 
 package() {
   tar -xf data.tar.* -C "${pkgdir}"
