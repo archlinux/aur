@@ -20,6 +20,7 @@ pkgver() {
 
 prepare() {
   export GOPATH="$srcdir/go"
+  export GOFLAGS="-modcacherw"
   # Install the fyne bundling tool into the local GOPATH.
   go install fyne.io/fyne/v2/cmd/fyne@v2.7.3
 }
