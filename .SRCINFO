@@ -1,6 +1,6 @@
 pkgbase = ollama-git
 	pkgdesc = Create, run and share large language models (LLMs) with ROCm
-	pkgver = 0.15.1.rc0.r0.gf3b476c59280
+	pkgver = 0.21.3rc0.r0.gea01af6f76fc
 	pkgrel = 1
 	url = https://github.com/ollama/ollama
 	arch = aarch64
@@ -32,7 +32,7 @@ pkgbase = ollama-git
 	b2sums = e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed
 
 pkgname = ollama-git
-	provides = ollama=0.15.1.rc0.r0.gf3b476c59280
+	provides = ollama=0.21.3rc0.r0.gea01af6f76fc
 	conflicts = ollama
 
 pkgname = ollama-rocm-git
@@ -41,7 +41,7 @@ pkgname = ollama-rocm-git
 	depends = glibc
 	depends = ollama
 	depends = hipblas
-	provides = ollama-rocm=0.15.1.rc0.r0.gf3b476c59280
+	provides = ollama-rocm=0.21.3rc0.r0.gea01af6f76fc
 	conflicts = ollama-rocm
 
 pkgname = ollama-cuda-git
@@ -50,17 +50,17 @@ pkgname = ollama-cuda-git
 	depends = glibc
 	depends = ollama
 	depends = cuda
-	provides = ollama-cuda=0.15.1.rc0.r0.gf3b476c59280
+	provides = ollama-cuda=0.21.3rc0.r0.gea01af6f76fc
 	conflicts = ollama-cuda
 
 pkgname = ollama-vulkan-git
 	pkgdesc = Create, run and share large language models (LLMs) with Vulkan
 	depends = ollama
 	depends = vulkan-icd-loader
-	provides = ollama-vulkan=0.15.1.rc0.r0.gf3b476c59280
+	provides = ollama-vulkan=0.21.3rc0.r0.gea01af6f76fc
 	conflicts = ollama-vulkan
 
 pkgname = ollama-docs-git
 	pkgdesc = Documentation for Ollama
-	provides = ollama-docs=0.15.1.rc0.r0.gf3b476c59280
+	provides = ollama-docs=0.21.3rc0.r0.gea01af6f76fc
 	conflicts = ollama-docs

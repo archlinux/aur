@@ -3,7 +3,7 @@
 
 pkgbase=ollama-git
 pkgname=(ollama-git ollama-rocm-git ollama-cuda-git ollama-vulkan-git ollama-docs-git)
-pkgver=0.15.1.rc0.r0.gf3b476c59280
+pkgver=0.21.3rc0.r0.gea01af6f76fc
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(aarch64 x86_64)
@@ -35,7 +35,7 @@ b2sums=('SKIP'
 
 pkgver() {
   cd ollama
-  git describe --long --tags --abbrev=12 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=12 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/\.rc/rc/'
 }
 
 build() {
