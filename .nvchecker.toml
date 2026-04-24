@@ -1,0 +1,5 @@
+[jack_transport_link]
+source = "github"
+github = "x37v/jack_transport_link"
+use_max_tag = true
+prefix = "v"

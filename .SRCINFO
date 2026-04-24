@@ -1,0 +1,25 @@
+pkgbase = jack_transport_link
+	pkgdesc = A bridge between Ableton Link to and from JACK transport
+	pkgver = 0.0.13
+	pkgrel = 1
+	url = https://github.com/x37v/jack_transport_link
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	license = GPL-2.0-only
+	makedepends = cmake
+	depends = glibc
+	depends = jack
+	depends = libgcc
+	depends = libstdc++
+	source = https://github.com/x37v/jack_transport_link/releases/download/v0.0.13/jack_transport_link-v0.0.13-src.tar.gz
+	sha256sums = 359da6dda7cc6df0edce63c5af6c1f767fede6114d8cf258c17f976064d7ec76
+
+pkgname = jack_transport_link
+	depends = glibc
+	depends = jack
+	depends = libgcc
+	depends = libstdc++
+	depends = libgcc_s.so
+	depends = libjack.so
+	depends = libstdc++.so
