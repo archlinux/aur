@@ -1,0 +1,13 @@
+pkgbase = tetrix
+	pkgdesc = ASCII Tetris for the terminal with lock delay, mirror pieces, polyomino mode, and animated bomb physics
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/nickknight/tetrix
+	arch = any
+	license = MIT
+	makedepends = make
+	depends = python
+	source = tetrix-0.1.0.tar.gz::https://codeberg.org/nickknight/tetrix/archive/v0.1.0.tar.gz
+	sha256sums = 2c2e4f940810a49666c71023707179263ce233c568f7eba7b5fda7b553c17df5
+
+pkgname = tetrix
