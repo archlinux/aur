@@ -10,6 +10,8 @@ license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
+provides=('pixiv-viewer-git')
+conflicts=('pixiv-viewer-bin' 'pixiv-viewer-git')
 source_x86_64=("https://github.com/asadahimeka/pixiv-viewer-app/releases/download/v${pkgver}/Pixiv-Viewer_${pkgver}_amd64.deb")
 sha256sums_x86_64=('SKIP')
 
