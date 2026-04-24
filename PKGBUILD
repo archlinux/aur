@@ -1,6 +1,6 @@
 # Maintainer: dougefresh <dchimento@gmail.com>
 pkgname='pi-coding-agent-git'
-pkgver=0.68.1.r14.g239e84279
+pkgver=0.70.2.r2.g3e0ee69b5
 pkgrel=1
 pkgdesc="Coding agent CLI with read, bash, edit, write tools and session management"
 url="https://github.com/badlogic/pi-mono"
