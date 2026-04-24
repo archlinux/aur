@@ -1,6 +1,6 @@
 pkgbase = iceshrimp.net-bin
 	pkgdesc = Decentralized and federated social networking service, implementing the ActivityPub standard
-	pkgver = 2025.1.beta5.patch3.security4
+	pkgver = 2026.1.beta
 	pkgrel = 1
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp.net
 	install = iceshrimp.net.install
@@ -21,14 +21,14 @@ pkgbase = iceshrimp.net-bin
 	sha512sums = 0665aa7af2b2aa4405289ce9119439ddcc6b9e6c81dc8e3b9ed5d8ecdc4a39d49c950d41d3098ce99fe294ce51a2dee55ec7248c1756783b0e9aad0bde4654fa
 	sha512sums = 0a0467df278f3bd739114725b373f5ec6c7296f609f0a9bcb4f8142b44856fc63e32f76390adf757005035dc691a4c54a662cc8a287572b61e215c29e3d3cbf2
 	sha512sums = 6e17d76acea901a753d2be261e17fc4113351b17f060c9eaf5cb878d6b6ab38c26efb3982411454626be4a0d21845e74ebef5efe18b11ac19b52e9c55442466a
-	source_x86_64 = iceshrimp.net-bin-2025.1.beta5.patch3.security4-linux_amd64.tar.zst::https://iceshrimp.dev/iceshrimp/Iceshrimp.NET/releases/download/v2025.1-beta5.patch3.security4/Iceshrimp.NET-v2025.1-beta5.patch3.security4-linux-amd64-glibc.tar.zst
-	sha512sums_x86_64 = 42cf66390b8dae702082334fcf9a0627a33776fa7bbd92795aec65a63aaf61641c8512a6468ec792a085f1eda9f0ce734b21ed07df5d46d71341119c2b23dee1
-	source_aarch64 = iceshrimp.net-bin-2025.1.beta5.patch3.security4-linux_arm64.tar.zst::https://iceshrimp.dev/iceshrimp/Iceshrimp.NET/releases/download/v2025.1-beta5.patch3.security4/Iceshrimp.NET-v2025.1-beta5.patch3.security4-linux-arm64-glibc.tar.zst
-	sha512sums_aarch64 = 289b71cfb48f3e2e4883df1dbace87ee0d1aeea0d4708a0726b237ba870c83b812b76b138954fd4275fa95f340353de23f3ef0a33ba4f80144fdb644aa63019c
+	source_x86_64 = iceshrimp.net-bin-2026.1.beta-linux_amd64.tar.zst::https://iceshrimp.dev/iceshrimp/Iceshrimp.NET/releases/download/v2026.1-beta/Iceshrimp.NET-v2026.1-beta-linux-amd64-glibc.tar.zst
+	sha512sums_x86_64 = 37a43923689f789b402568b49c2aa24a1968801e7d63d4bdcad076a814af2363a2c34dd19315ab94b499346218d9b43127bc397a74f2199673ba3c0bef0ab8fa
+	source_aarch64 = iceshrimp.net-bin-2026.1.beta-linux_arm64.tar.zst::https://iceshrimp.dev/iceshrimp/Iceshrimp.NET/releases/download/v2026.1-beta/Iceshrimp.NET-v2026.1-beta-linux-arm64-glibc.tar.zst
+	sha512sums_aarch64 = 5fa9ff39096a18a96e38c11b4714d1e86e4816a8428fc82e05da4d9d7910db25eb19bf817fbee2db0321202537ef7c748b13ea663d1b09a1874c58d7a35ae3fb
 
 pkgname = iceshrimp.net-bin
 	depends = postgresql
 	depends = libvips
 	depends = openjpeg2
-	depends = aspnet-runtime-9.0>=9.0
-	depends = aspnet-runtime-9.0<10.0
+	depends = aspnet-runtime>=10.0
+	depends = aspnet-runtime<11.0
