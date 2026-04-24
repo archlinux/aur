@@ -1,6 +1,6 @@
 # Maintainer: xmlzitos154 <matheuz.ricardo@protonmail.com>
 pkgname=jay-bin
-pkgver=3.5
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="A lightweight, semantic AUR helper wrapper for Arch Linux"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
     'checkupdates: check available updates'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4b7413c911fb028ac15c027a4ec03fe1d8c3d7e4021ed358b843019ea5501872')
+sha256sums=('fafb5b9d8ab3325bfbe7d990b32dd8ba6fb08c9f783714e555225f901ea7f0a6')
 
 package() {
     cd "jay-$pkgver"
