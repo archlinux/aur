@@ -1,6 +1,6 @@
 pkgbase = docker-model-plugin
 	pkgdesc = Docker CLI plugin for Model Runner - manage and run AI models in containers
-	pkgver = 1.1.28
+	pkgver = 1.1.37
 	pkgrel = 1
 	url = https://github.com/docker/model-runner
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = docker-model-plugin
 	makedepends = go>=2:1.25
 	depends = glibc
 	optdepends = docker: for Docker Engine container operations
-	source = docker-model-plugin-1.1.28.tar.gz::https://github.com/docker/model-runner/archive/v1.1.28.tar.gz
-	sha256sums = f41860eaf24bd1f174f0a363f5e8b9ba00c45c35b84f7f1d70201fd38d58b0ce
+	source = docker-model-plugin-1.1.37.tar.gz::https://github.com/docker/model-runner/archive/v1.1.37.tar.gz
+	sha256sums = df1cccb20a6cf6e710c43f92ebd0c783a39057a8888d7348a27f650cdaf73e38
 
 pkgname = docker-model-plugin
