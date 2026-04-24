@@ -2,8 +2,6 @@
 
 Arch Linux package for Rooster. You can install from source or via the AUR: https://aur.archlinux.org/packages/rooster.
 
-Rooster's Arch Linux package is made available free of charge. You can support its development through [Liberapay](https://liberapay.com/conradkleinespel/) 💪
-
 ## Instructions
 
 First, update the information in `PKGBUILD`.
