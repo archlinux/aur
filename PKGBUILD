@@ -4,7 +4,7 @@ pkgname=(
   caelestia-sddm-minimalist-git
   caelestia-sddm-minimalistv2-git
 )
-pkgver=r136.2914130
+pkgver=r139.316f31b
 pkgrel=1
 arch=('any')
 url='https://github.com/ItsABigIgloo/caelestia-sddm'
@@ -50,7 +50,7 @@ _package_variant() {
 
   install -Dm644 /dev/stdin "$pkgdir/etc/sddm.conf.d/caelestia.conf" <<DROPIN
 [General]
-GreeterEnvironment=QML_XHR_ALLOW_FILE_READ=1
+GreeterEnvironment=QML_XHR_ALLOW_FILE_READ=1,QT_QPA_PLATFORM=xcb
 
 [Theme]
 Current=caelestia
