@@ -15,7 +15,7 @@ pkgbase = rooster
 	depends = libxmu
 	depends = xsel
 	depends = wl-clipboard
-	source = rooster-2.14.1.tar.gz::https://github.com/conradkleinespel/rooster/archive/v2.14.1.tar.gz
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	source = rooster-2.14.1.tar.gz::https://github.com/conradkleinespel/rooster/archive/refs/tags/v2.14.1.tar.gz
+	sha256sums = d25b2b25aa655f7b029afba2377e480aaf8702f6668fea494023a70f61c9f5dd
 
 pkgname = rooster
