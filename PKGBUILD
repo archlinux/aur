@@ -58,8 +58,13 @@ prepare() {
   git config submodule.lib/guardpp.url "$srcdir/guardpp"
   git -c protocol.file.allow=always submodule update
 
+  cd src/ui/impl/webview/lib/webviewpp
+  git submodule init
+  git config submodule.lib/json.url "$srcdir/json"
+  git -c protocol.file.allow=always submodule update
+
   sed -i 's/webkit2gtk-4\.0/webkit2gtk-4.1/g' \
-      src/ui/impl/webview/lib/webviewpp/CMakeLists.txt
+      CMakeLists.txt
 }
 
 build() {
