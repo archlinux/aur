@@ -1,0 +1,4 @@
+*.pkg.tar.zst
+libkexiv2-git
+pkg
+src

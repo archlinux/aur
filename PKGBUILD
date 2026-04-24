@@ -1,13 +1,14 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Lito Parra <lito.15@proton.me>
+# Cont
 
 pkgname=libkexiv2-git
-pkgver=22.03.80.r0.gd8dbd19
+pkgver=26.04.0.r0.gff90e70
 pkgrel=1
 pkgdesc='A library to manipulate pictures metadata'
 arch=('x86_64')
 url='https://invent.kde.org/graphics/libkexiv2'
 license=('GPL' 'LGPL' 'FDL')
-depends=('qt5-base' 'exiv2')
+depends=('qt6-base' 'exiv2')
 makedepends=('git' 'extra-cmake-modules' 'kdoctools')
 provides=("libkexiv2=${pkgver%.r*}")
 conflicts=('libkexiv2')
