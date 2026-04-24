@@ -1,6 +1,6 @@
 pkgbase = phpstorm
 	pkgdesc = Lightweight and Smart PHP IDE
-	pkgver = 2026.1
+	pkgver = 2026.1.1
 	pkgrel = 1
 	url = https://www.jetbrains.com/phpstorm/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = phpstorm
 	depends = glib2
 	depends = python
 	options = !strip
-	source = https://download.jetbrains.com/webide/PhpStorm-2026.1.tar.gz
+	source = https://download.jetbrains.com/webide/PhpStorm-2026.1.1.tar.gz
 	source = jetbrains-phpstorm.desktop
 	source = LICENSE
-	b2sums = b01470d308a867e67be421c538be6aed506a80ed6a758d32b3b99b4bd63253aa42728549568b76aa9930538984b8c90607b7c23bd132a6a6e680b02f8f4e61cf
+	b2sums = 7cb3b82a259741049baadec3f1a662958f1caa77759d46eb501eb849a0b6642aabe17812e49f04338ebd327574af123e0237c8e3fbefa6b9f57157025e4973fe
 	b2sums = ae7f5b69c057c78dac26ca571fc29c5deff0ae7c2955dd39561168a1ab0e25dfd3b0c6570a42af135588e9791c96958ffaaeea6db983f4fd8e8ec68efad413a5
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
