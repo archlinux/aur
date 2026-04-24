@@ -16,14 +16,17 @@ install=snry-shell-qs.install
 package() {
   cd "$srcdir/dots-hyprland"
   install -dm755 "$pkgdir/usr/share/snry-shell"
-  cp -a ansible.cfg inventory.ini requirements.yml setup.yml uninstall.yml group_vars roles data files files-extra "$pkgdir/usr/share/snry-shell/"
+  cp -a ansible.cfg inventory.ini requirements.yml setup.yml uninstall.yml diagnose.yml checkdeps.yml group_vars roles data files files-extra "$pkgdir/usr/share/snry-shell/"
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/snry-shell" <<'SCRIPT'
 #!/bin/bash
-ansible-galaxy collection install -r /usr/share/snry-shell/requirements.yml "$@"
-if [ "${1:-}" = "uninstall" ]; then
-  exec ansible-playbook --ask-become-pass /usr/share/snry-shell/uninstall.yml "${@:2}"
-else
-  exec ansible-playbook --ask-become-pass /usr/share/snry-shell/setup.yml "$@"
-fi
+BASE=/usr/share/snry-shell
+ansible-galaxy collection install -r $BASE/requirements.yml "$@"
+
+case "${1:-}" in
+  uninstall)  exec ansible-playbook --ask-become-pass $BASE/uninstall.yml "${@:2}" ;;
+  diagnose)   exec ansible-playbook --ask-become-pass $BASE/diagnose.yml "${@:2}" ;;
+  checkdeps)  exec ansible-playbook --ask-become-pass $BASE/checkdeps.yml "${@:2}" ;;
+  *)          exec ansible-playbook --ask-become-pass $BASE/setup.yml "$@" ;;
+esac
 SCRIPT
 }
