@@ -1,0 +1,69 @@
+diff -paru a/test.py b/test.py
+--- a/test.py	2026-04-24 17:11:50.597006201 +0200
++++ b/test.py	2026-04-24 17:13:15.903513770 +0200
+@@ -232,65 +232,6 @@ def parse_examples_to_run_file(
+             example_tests.append((example_name, example_path, do_run, do_valgrind_run, fullness))
+             example_names_original.append(example_name_original)
+ 
+-    # Each tuple in the Python list of examples to run contains
+-    #
+-    #     (example_name, do_run, fullness)
+-    #
+-    # where example_name is the Python script to be run and
+-    # do_run is a condition under which to run the example.
+-    #
+-    # Note that the condition is a Python statement that can
+-    # depend on ns3 configuration variables.  For example,
+-    #
+-    #     ("brite-generic-example.py", "ENABLE_BRITE == True", "QUICK"),
+-    #
+-    python_examples = get_list_from_file(examples_to_run_path, "python_examples")
+-    # Old example specification did not include
+-    # 'fullness', so for compatibility,
+-    # allow 2 components, & set the 'fullness' to QUICK
+-    for python_example in python_examples:
+-        if len(python_example) == 2:
+-            example_name, do_run = python_example
+-            fullness = "QUICK"
+-        elif len(python_example) == 3:
+-            example_name, do_run, fullness = python_example
+-        else:
+-            # If we have the name of the example we're error-ing for, provide it
+-            # Otherwise, just give a generic message
+-            if len(python_example) >= 1:
+-                raise RuntimeError(
+-                    f"Incorrect number of fields declaration of example '{python_example[0]}', "
+-                    + f"expected 2, or 3 got: {len(python_example)}"
+-                )
+-            else:
+-                raise RuntimeError(
+-                    f"Incorrect number of fields declaration of example, "
+-                    + f"expected 2, or 3 got: {len(python_example)}"
+-                )
+-
+-        # Separate the example name from its arguments.
+-        example_name_parts = example_name.split(" ", 1)
+-        if len(example_name_parts) == 1:
+-            example_name = example_name_parts[0]
+-            example_arguments = ""
+-        else:
+-            example_name = example_name_parts[0]
+-            example_arguments = example_name_parts[1]
+-
+-        # Set the full path for the example.
+-        example_path = os.path.join(python_script_dir, example_name)
+-
+-        # Add all of the Python examples that were found to the
+-        # list of Python examples to run.
+-        if os.path.exists(example_path):
+-            # Add any arguments to the path.
+-            if len(example_name_parts) != 1:
+-                example_path = "%s %s" % (example_path, example_arguments)
+-
+-            # Add this example.
+-            python_tests.append((example_path, do_run, fullness))
+-
+-
+ #
+ # The test suites are going to want to output status.  They are running
+ # concurrently.  This means that unless we are careful, the output of

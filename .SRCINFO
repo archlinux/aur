@@ -1,7 +1,7 @@
 pkgbase = ns3
 	pkgdesc = Discrete-event network simulator for Internet systems
 	pkgver = 3.47
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.nsnam.org/
 	arch = x86_64
 	license = GPL-2.0-only
@@ -12,18 +12,7 @@ pkgbase = ns3
 	makedepends = git
 	makedepends = python-cppyy
 	makedepends = boost
-	makedepends = boost-libs
 	makedepends = eigen3
-	source = https://www.nsnam.org/releases/ns-3.47.tar.bz2
-	source = 0001-fix-newer-dpdk-versions.patch
-	sha256sums = 8b3adca956c834ea436b915986ab8fd053e90041acae7426895d595aaa3ccc39
-	sha256sums = 9f519502828ffb403948d2601eb36e807e92d21793e985f63c90150de62626e5
-	sha512sums = 41a060b93e88bc389ef1f316b8e4568be2ca559f6a2e4b54bca29b6620e9fbb78e2ed0eec4c8b3b119f071aad43dfa09edbd2bf78ea125744a44f2366724d50c
-	sha512sums = 91d0f73f65053384c23f3c59d38bd8a988ba5ada97b62919b50e74daccb89cbc32bb32b7b1f84bb5426158325353fac306a5edcdce0690359fdaa82b0421679a
-	b2sums = c03622d72afc5043aced4aa8ee39b477a15feb28e45142c6d4117a4ffd94c146d522200ac829831b1e9e89bb8bcd17f2f9e66306ba1a6bae9300b68025648f85
-	b2sums = 83fbc3bb43094ee08bee4741c8d343de8a3b84a1b3f151d311586b3d3adf3b35142ca6295c7d15901514cafc891a51432e1a5188bef6491465984f587d531edc
-
-pkgname = ns3
 	depends = sqlite3
 	depends = gsl
 	depends = libxml2
@@ -33,6 +22,21 @@ pkgname = ns3
 	depends = brite
 	depends = click-ns3
 	depends = dpdk
+	depends = openmpi
+	source = https://www.nsnam.org/releases/ns-3.47.tar.bz2
+	source = 0001-fix-newer-dpdk-versions.patch
+	source = 0002-disable-python-tests.patch
+	sha256sums = 8b3adca956c834ea436b915986ab8fd053e90041acae7426895d595aaa3ccc39
+	sha256sums = 9f519502828ffb403948d2601eb36e807e92d21793e985f63c90150de62626e5
+	sha256sums = 24d9c5dad607c2334669374ab5242e11bef85bc0f90bd17868601c7f23c9f2be
+	sha512sums = 41a060b93e88bc389ef1f316b8e4568be2ca559f6a2e4b54bca29b6620e9fbb78e2ed0eec4c8b3b119f071aad43dfa09edbd2bf78ea125744a44f2366724d50c
+	sha512sums = 91d0f73f65053384c23f3c59d38bd8a988ba5ada97b62919b50e74daccb89cbc32bb32b7b1f84bb5426158325353fac306a5edcdce0690359fdaa82b0421679a
+	sha512sums = 74158c80b159d1587d51dddffcc6f24689985d4afe5574e3edb7691e5bb892bb160a3b717ce2352293c92c0359c799a4e4da4e0bba6c227ffa9bc534a2199a2c
+	b2sums = c03622d72afc5043aced4aa8ee39b477a15feb28e45142c6d4117a4ffd94c146d522200ac829831b1e9e89bb8bcd17f2f9e66306ba1a6bae9300b68025648f85
+	b2sums = 83fbc3bb43094ee08bee4741c8d343de8a3b84a1b3f151d311586b3d3adf3b35142ca6295c7d15901514cafc891a51432e1a5188bef6491465984f587d531edc
+	b2sums = d8a7efeff13bbf1884502ae5e469f47be3c72a7f22a13e70c381aa02ccc94d4f41961ede107bba87a68b9144ba5f20818a40d6a20908344fad818c296a034fd3
+
+pkgname = ns3
 	optdepends = tcpdump: PCAP file reader
 	optdepends = wireshark-cli: PCAP file reader
 	optdepends = wireshark-qt: PCAP file reader
@@ -42,19 +46,12 @@ pkgname = ns3
 	optdepends = python-ns3: Python bindings (broken)
 	optdepends = netanim: Animator for XML simulation data
 
-pkgname = python-ns3
-	pkgdesc = Discrete-event network simulator for Internet systems (Python bindings)
-	depends = ns3
-	depends = python-cppyy
-	depends = python-cairo
-	depends = python-pygraphviz
-	depends = ipython
-	conflicts = root
-
 pkgname = ns3-examples
 	pkgdesc = Discrete-event network simulator for Internet systems (prebuilt example applications)
+	depends = ns3=3.47
 	optdepends = ns3-examples-src: See source code for examples
 
 pkgname = ns3-examples-src
 	pkgdesc = Discrete-event network simulator for Internet systems (prebuilt example sources)
+	depends = 
 	optdepends = ns3-examples: Run prebuilt examples
