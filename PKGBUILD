@@ -25,6 +25,8 @@ pkgver() {
 package() {
   cd "$_pkgname"
   install -Dm644 tinyexr.h "${pkgdir}/usr/include/tinyexr.h"
+  install -Dm644 exr_reader.hh "${pkgdir}/usr/include/exr_reader.hh"
+  install -Dm644 streamreader.hh "${pkgdir}/usr/include/streamreader.hh"
   install -Dm644 deps/miniz/miniz.h "${pkgdir}/usr/include/miniz.h"
   install -Dm644 deps/miniz/miniz.c "${pkgdir}/usr/include/miniz.c"
 
