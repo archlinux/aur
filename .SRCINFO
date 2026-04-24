@@ -8,7 +8,6 @@ pkgbase = pq-bin
 	license = MIT
 	provides = pq
 	conflicts = pq
-	options = !strip
 	source = README-2026.04.12.md::https://raw.githubusercontent.com/joewalnes/pq/latest/README.md
 	source = LICENSE-2026.04.12::https://raw.githubusercontent.com/joewalnes/pq/latest/LICENSE
 	sha256sums = a4de52779f23fe9ccb7ce85efa50853399b0b3bbd9d980791fd5fceac5fa1eab
