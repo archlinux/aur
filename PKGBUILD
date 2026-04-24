@@ -5,7 +5,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-speechrecognition
-pkgver=3.16.0
+pkgver=3.16.1
 pkgrel=1
 pkgdesc='Speech recognition module for Python, supporting several engines and APIs'
 arch=('any')
@@ -56,7 +56,7 @@ checkdepends=(
   'python-cryptography' # test_google_cloud.py
 )
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('6d69f353e8d5426c0599f80e31281f0bf04bae14bb62fbaaa452b24363c7950795faf3fc5fbd51180ac1a53f99b6fb8e339f887cfb67cba27608ebf240db7aff')
+b2sums=('23bbf04ba7263273e958005469305db1ec4183dc60a7f3bde872e63fb6b02b677ca51cd54da769464cf55dabf49511f06456bfed3e64caf145d62c80dac30a08')
 
 build() {
   cd "${srcdir}/speech_recognition-${pkgver}"
@@ -73,7 +73,6 @@ check() {
   python -m pytest \
     --doctest-modules speech_recognition/recognizers/ \
     --ignore tests/recognizers/test_vosk.py \
-    --ignore tests/recognizers/test_cohere_api.py \
     tests/
 }
 
