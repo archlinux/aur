@@ -1,5 +1,5 @@
 pkgname=osu-lazer-appimage
-pkgver=2027.425.0
+pkgver=2028.425.0
 pkgrel=1
 pkgdesc='A free-to-win rhythm game. Rhythm is just a *click* away!'
 arch=('x86_64')
