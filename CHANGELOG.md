@@ -1,3 +1,8 @@
+## v0.4.1 (24 April 2026)
+
+* `[4fb20c2](https://github.com/opentofu/tofu-ls/commit/4fb20c280494b3d17bf1dd516308318d48c6001f)` Bump to 0.4.1 ([#162](https://github.com/opentofu/tofu-ls/pull/162))
+* `[97b5d58](https://github.com/opentofu/tofu-ls/commit/97b5d58998a7962a329da760cf0e140c496291e4)` Semantic token should not break neovim when heredoc used ([#161](https://github.com/opentofu/tofu-ls/pull/161))
+
 ## 0.4.0 (10 March 2026)
 
 * `[18e8cd3](https://github.com/opentofu/tofu-ls/commit/18e8cd33b02efa991e88f83cbca64e3b7c19d889)` Add underscore as a completion trigger character
