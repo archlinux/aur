@@ -4,7 +4,7 @@
 _pkgname=greg
 pkgname=greg-git
 pkgver=v0.4.7.r75.g2e4cbf0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line podcast aggregator."
 arch=('x86_64')
 url="https://github.com/manolomartinez/greg"
@@ -17,12 +17,19 @@ optdepends=('python-stagger-git: writing metadata'
 )
 makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 conflicts=('greg')
-source=('git+https://github.com/manolomartinez/greg.git')
-md5sums=('SKIP')
+source=('git+https://github.com/manolomartinez/greg.git'
+        '00-replace-pkg_resources.patch')
+md5sums=('SKIP'
+         '1c2d6b7a7b0512a8720fb447ad1e2c93')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+  patch -Np1 < "$srcdir/00-replace-pkg_resources.patch"
 }
 
 build() {

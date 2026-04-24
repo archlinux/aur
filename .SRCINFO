@@ -1,7 +1,7 @@
 pkgbase = greg-git
 	pkgdesc = A command-line podcast aggregator.
 	pkgver = v0.4.7.r75.g2e4cbf0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/manolomartinez/greg
 	arch = x86_64
 	license = GPL-3.0-only
@@ -17,6 +17,8 @@ pkgbase = greg-git
 	optdepends = python-beautifulsoup4: convert html to text for tagging
 	conflicts = greg
 	source = git+https://github.com/manolomartinez/greg.git
+	source = 00-replace-pkg_resources.patch
 	md5sums = SKIP
+	md5sums = 1c2d6b7a7b0512a8720fb447ad1e2c93
 
 pkgname = greg-git
