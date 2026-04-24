@@ -1,0 +1,23 @@
+pkgbase = pixiv-viewer
+	pkgdesc = Yet Another Pixiv Illust&Novel Viewer / 又一个 Pixiv 阅览工具
+	pkgver = 1.32.2
+	pkgrel = 1
+	url = https://github.com/asadahimeka/pixiv-viewer-app
+	install = pixiv-viewer.install
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/asadahimeka/pixiv-viewer-app/releases/download/v1.32.2/Pixiv-Viewer_1.32.2_amd64.deb
+	sha256sums_x86_64 = SKIP
+
+pkgname = pixiv-viewer
