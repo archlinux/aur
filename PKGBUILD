@@ -12,10 +12,12 @@ depends=(
 	libconfig
 	libxdg-basedir
 	libuv
-  yder
-  simapi-git
+    yder
+    simapi-git
 )
+
 makedepends=(
+  simapi-git
   git
   cmake
 )
