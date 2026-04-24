@@ -1,6 +1,6 @@
 pkgname=legion-gui
 pkgver=0.5.2.r0.4a3231e
-pkgrel=4
+pkgrel=5
 pkgdesc="Legion GUI (Sparta successor), ported from Kali Linux for Arch Linux"
 arch=("any")
 url="https://gitlab.com/kalilinux/packages/legion"
