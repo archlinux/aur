@@ -1,0 +1,20 @@
+pkgbase = myosd-git
+	pkgdesc = OSD customizado para hyprland escrito em C++ e GTKmm
+	pkgver = r16.40bef1b
+	pkgrel = 1
+	url = https://github.com/moretto08/my-osd
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	makedepends = cmake
+	depends = gtkmm3
+	depends = glibc
+	depends = pamixer
+	depends = brightnessctl
+	depends = gtk-layer-shell
+	provides = myosd
+	conflicts = myosd
+	source = myosd-git::git+https://github.com/moretto08/my-osd.git
+	sha256sums = SKIP
+
+pkgname = myosd-git
