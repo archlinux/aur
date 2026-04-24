@@ -1,0 +1,24 @@
+pkgbase = flux-filemanager-git
+	pkgdesc = Modern and simple file manager written in Rust with Libadwaita
+	pkgver = 0.1.0.r196.g44fbf0b
+	pkgrel = 1
+	url = https://github.com/killown/flux
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = clang
+	makedepends = make
+	depends = libadwaita
+	depends = gtk4
+	depends = dconf
+	depends = sqlite
+	provides = flux-fm
+	provides = flux
+	conflicts = flux-fm
+	conflicts = flux
+	source = flux::git+https://github.com/killown/flux.git
+	sha256sums = SKIP
+
+pkgname = flux-filemanager-git
