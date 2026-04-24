@@ -1,0 +1,21 @@
+pkgbase = cuprate
+	pkgdesc = Cuprate, a modular Monero node written in Rust.
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/Cuprate/cuprate
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = cmake
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	depends = sqlite
+	depends = xz
+	options = !lto
+	source = git+https://github.com/Cuprate/cuprate.git#tag=cuprated-0.0.9
+	sha256sums = SKIP
+
+pkgname = cuprate
