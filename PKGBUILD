@@ -29,12 +29,17 @@ prepare() {
 }
 
 package() {
-	install -Dm755 "$_appimage" "$pkgdir/usr/bin/$pkgname"
-	cp -a "$_appimage.config" "$pkgdir/usr/bin/$pkgname.config"
-	chmod -R 777 "$pkgdir/usr/bin/$pkgname.config"
-	cp -a "$_appimage.home" "$pkgdir/usr/bin/$pkgname.home"
-	chmod -R 777 "$pkgdir/usr/bin/$pkgname.home"
-	install -Dm644 "squashfs-root/usr/share/icons/hicolor/256x256/apps/project-plus-dolphin.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-	install -dm644 "$pkgdir/usr/share/applications"
-	printf "[Desktop Entry]\nVersion=${pkgver:1}\nName=Project+ Netplay\nComment=A Mod of Super Smash Bros. Brawl with Netplay.\nPath=/usr/bin\nExec=project-plus-netplay\nIcon=project-plus-netplay\nType=Application\nCategories=Game\nKeywords=project+;brawl;netplay\n" > "$pkgdir/usr/share/applications/$pkgname.desktop"
+    cd "$srcdir"
+    appimage=$(find . -type f -name "*.AppImage" -print -quit)
+    install -Dm755 "$appimage" "$pkgdir/usr/bin/$pkgname"
+    cp -a "$appimage.config" "$pkgdir/usr/bin/$pkgname.config" || true
+    chmod -R 755 "$pkgdir/usr/bin/$pkgname.config" || true
+    cp -a "$appimage.home" "$pkgdir/usr/bin/$pkgname.home" || true
+    chmod -R 755 "$pkgdir/usr/bin/$pkgname.home" || true
+    install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256/apps/project-plus-dolphin.png \
+        "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -dm755 "$pkgdir/usr/share/applications"
+    printf "[Desktop Entry]\nVersion=${pkgver:1}\nName=Project+ Netplay\nComment=A Mod of Super Smash Bros. Brawl with Netplay.\nPath=/usr/bin\nExec=%s\nIcon=%s\nType=Application\nCategories=Game\nKeywords=project+;brawl;netplay\n" \
+        "$pkgname" "$pkgname" \
+        > "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
