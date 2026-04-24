@@ -6,7 +6,7 @@
 ## GPG key: https://github.com/web-flow.gpg
 
 pkgname=sourcegraph-cli
-pkgver=7.1.0
+pkgver=7.2.0
 pkgrel=1
 pkgdesc='Command line interface to Sourcegraph'
 url='https://github.com/sourcegraph/src-cli'
@@ -18,7 +18,7 @@ provides=('src-cli')
 conflicts=('src-cli')
 changelog=CHANGELOG.md
 source=("$pkgname::git+$url#tag=$pkgver?signed")
-sha256sums=('fbca231de58a9e2ce82be89d918c272e0527ca8fc86adba69410cf13e5ede9ff')
+sha256sums=('0dd045a830723f1e378363264c7e598b013944801682c247ebfa2b9aa1111133')
 validpgpkeys=('4C824CB6E018D60F90418A3CCDDA7B793B3E9A18' # Adam Harvey
               '2E9B74BAD62664E6088C2935EDE8072F89D58CD9' # William Bezuidenhout
               '5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') # GitHub
