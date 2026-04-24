@@ -2,7 +2,7 @@
 
 pkgbase=sherpa-onnx
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=1.12.39
+pkgver=1.12.40
 pkgrel=1
 pkgdesc="Speech-to-text, text-to-speech, speaker diarization, speech enhancement, source separation, and VAD using next-gen Kaldi with onnxruntime without Internet connection."
 arch=("x86_64" "aarch64" "arm" "riscv64")
@@ -23,7 +23,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "pa_stable_v190700_20210406.tgz::http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz"
         "simple-sentencepiece-0.7.tar.gz::https://github.com/pkufool/simple-sentencepiece/archive/refs/tags/v0.7.tar.gz"
         "websocketpp-b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip::https://github.com/zaphoyd/websocketpp/archive/b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip")
-sha256sums=('1e285953204fb2fc882cf2db03580bad45418a7ed586ebec701a2ed285ff4856'
+sha256sums=('a7975f0239142a73e71d9069551f09b6509fde9278ee91fd6287ee8814e694cd'
             'cbcaaba0f66722787b1a7c33afe1befb3a012b5af3ad7da7ff0f6b8c9b7a8a5b'
             'e9c326dc8c05cd1e044c71f30f1b2e34a6161a3b6ecf445d56b53ff1669e3dec'
             '70cbf4050e7a014aae19140b05e57249da4720f56128459fbe3a93beaf971ae6'
