@@ -1,6 +1,6 @@
 # Maintainer: Dawid Majewski <mdawid581 at gmail dot com>
 pkgname=mcc
-pkgver=20260415-429
+pkgver=20260415429
 pkgrel=1
 pkgdesc="Minecraft Console Client"
 install=$pkgname.install

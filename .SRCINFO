@@ -1,6 +1,6 @@
 pkgbase = mcc
 	pkgdesc = Minecraft Console Client
-	pkgver = 20260415-429
+	pkgver = 20260415429
 	pkgrel = 1
 	url = https://github.com/MCCTeam/Minecraft-Console-Client
 	install = mcc.install
