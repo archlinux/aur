@@ -1,0 +1,5 @@
+[sysdx-bin]
+source = "github"
+github = "moxer-mmh/sysdx"
+use_latest_release = true
+prefix = "v"

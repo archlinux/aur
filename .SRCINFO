@@ -1,0 +1,26 @@
+pkgbase = sysdx-bin
+	pkgdesc = A systemd unit manager TUI with vim keybinds and theme support
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/moxer-mmh/sysdx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = systemd
+	provides = sysdx
+	conflicts = sysdx
+	options = !strip
+	source = CONFIG-0.1.0.toml::https://raw.githubusercontent.com/moxer-mmh/sysdx/v0.1.0/config.example.toml
+	source = README-0.1.0.md::https://raw.githubusercontent.com/moxer-mmh/sysdx/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/moxer-mmh/sysdx/v0.1.0/LICENSE
+	sha256sums = b0fc85891f5bb345851d9bafff116acfe10088679da1b9dbc9802a6fbaffb141
+	sha256sums = ea989ca4d0ef86dd26d9a6da7de6290ae62c7929b32fee825414a0f8014f6013
+	sha256sums = 52b780642f0cd407040b1b1b13c72492385e265f10a0e8726a9db6dec8454f48
+	source_x86_64 = sysdx-x86_64-0.1.0.tgz::https://github.com/moxer-mmh/sysdx/releases/download/v0.1.0/sysdx-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 75677fdd70d93ce1a4cfbe9f8d1f2aed694f226ada8ef406fdf3e7b1790e4bff
+	source_aarch64 = sysdx-aarch64-0.1.0.tgz::https://github.com/moxer-mmh/sysdx/releases/download/v0.1.0/sysdx-v0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 371f2318497d7fd46434d462e5832b6f6fae26e003011600f6052292c582984e
+
+pkgname = sysdx-bin
