@@ -1,0 +1,17 @@
+pkgbase = declpac-git
+	pkgdesc = Declarative package utility for pacman written in go.
+	pkgver = r52.b1a376d
+	pkgrel = 1
+	url = https://github.com/Riyyi/declpac
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go>=1.21
+	depends = pacman>6.1
+	depends = git
+	provides = declpac
+	options = !lto
+	source = declpac::git+https://github.com/Riyyi/declpac.git
+	sha256sums = SKIP
+
+pkgname = declpac-git
