@@ -2,7 +2,7 @@
 # Maintainer: Gaurav Gosain <a77x86@gmail.com>
 
 pkgname='golars-bin'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Pure-Go DataFrames modeled on polars. Eager + lazy + streaming, no cgo.'
 url='https://github.com/Gaurav-Gosain/golars'
@@ -12,10 +12,10 @@ provides=('golars' 'golars-lsp' 'golars-mcp')
 conflicts=('golars')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Gaurav-Gosain/golars/releases/download/v${pkgver}/golars_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('84456abfc03913255347abe48dca677e1b3cc4b22a22588a7fa299bf596d45f3')
+sha256sums_aarch64=('235cd525aaf8ab4de1ebd25e216661b317adc845341149c4c606caa1662db9e0')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Gaurav-Gosain/golars/releases/download/v${pkgver}/golars_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('fcaa944a12bd59403deccf278661fadc26dd0cc250c955e29cbc0936babdc100')
+sha256sums_x86_64=('47f1222fbe04e93f19f172d2dbd5379e9b9746cfbc0d6480a002baf00af6cfb7')
 
 package() {
   # Archives ship with a top-level wrap directory
