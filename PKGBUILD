@@ -1,6 +1,6 @@
 # Maintainer: jo <matchless7198 at gmail dot com>
 pkgname=speech-dispatcher-mimo
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="speech-dispatcher output module that uses Xiaomi MiMo API for high-quality Chinese/English neural TTS"
 arch=('any')

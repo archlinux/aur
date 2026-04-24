@@ -30,6 +30,8 @@ else:
 MODULE_NAME = "mimo"
 
 API_KEY = ""
+VOICE = "mimo_default"
+STYLE = ""
 
 _cache = None
 _player_proc = None
@@ -109,10 +111,14 @@ def strip_ssml(text: str) -> str:
 def call_tts(text: str) -> bytes:
     logging.debug(f"[call_tts] ENTER with text={text[:50]!r}...")
     url = "https://api.xiaomimimo.com/v1/chat/completions"
+    messages = []
+    if STYLE:
+        messages.append({"role": "user", "content": STYLE})
+    messages.append({"role": "assistant", "content": text})
     payload = {
-        "model": "mimo-v2-tts",
-        "messages": [{"role": "assistant", "content": text}],
-        "audio": {"format": "wav", "voice": "mimo_default"},
+        "model": "mimo-v2.5-tts",
+        "messages": messages,
+        "audio": {"format": "wav", "voice": VOICE},
     }
 
     data = json.dumps(payload).encode("utf-8")
@@ -126,7 +132,7 @@ def call_tts(text: str) -> bytes:
     logging.debug(f"[call_tts] Request to {url}")
 
     try:
-        response = urllib.request.urlopen(req, timeout=3)
+        response = urllib.request.urlopen(req, timeout=30)
         result = json.loads(response.read().decode("utf-8"))
         logging.debug(
             f"[call_tts] Got status {response.status}, keys={list(result.keys())}"
@@ -257,12 +263,15 @@ def handle_command(line: str):
 
 
 def load_env():
-    global API_KEY
+    global API_KEY, VOICE, STYLE
     # Check environment variable first
     API_KEY = os.environ.get("MIMO_API_KEY", "")
+    VOICE = os.environ.get("MIMO_VOICE", "mimo_default")
+    STYLE = os.environ.get("MIMO_STYLE", "")
 
     # If not in env, try config files
-    if not API_KEY:
+    env_loaded = False
+    if not API_KEY or not VOICE:
         for env_path in [
             os.path.expanduser("~/.config/speech-dispatcher/mimo-tts.env"),
             "/etc/speech-dispatcher/mimo-tts.env",
@@ -274,8 +283,28 @@ def load_env():
                 capture_output=True,
                 text=True,
             )
-            API_KEY = result.stdout.strip()
+            if not API_KEY:
+                API_KEY = result.stdout.strip()
+            result = subprocess.run(
+                ["awk", "-F=", "/^MIMO_VOICE=/ {print $2}", env_path],
+                capture_output=True,
+                text=True,
+            )
+            if not VOICE or VOICE == "mimo_default":
+                voice_val = result.stdout.strip()
+                if voice_val:
+                    VOICE = voice_val
+            result = subprocess.run(
+                ["awk", "-F=", "/^MIMO_STYLE=/ {print $2}", env_path],
+                capture_output=True,
+                text=True,
+            )
+            if not STYLE:
+                style_val = result.stdout.strip()
+                if style_val:
+                    STYLE = style_val
             if API_KEY:
+                env_loaded = True
                 break
 
     if not API_KEY:

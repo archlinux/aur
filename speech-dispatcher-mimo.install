@@ -23,18 +23,14 @@ MSG
     # Register module + set as default
     conf="/etc/speech-dispatcher/speechd.conf"
     if [ -f "$conf" ]; then
-        # Fix existing AddModule line if it points to old sd_generic
-        if grep -q 'AddModule.*mimo.*sd_generic' "$conf"; then
-            sed -i 's|"sd_generic"   "mimo.conf"|"sd_mimo"      "mimo.conf"|' "$conf"
-            echo "  -> Updated AddModule from sd_generic to sd_mimo"
-        fi
+        # Remove all existing mimo AddModule lines (ensure correct module name)
+        sed -i '/^AddModule.*"mimo"/d' "$conf"
 
-        if ! grep -q 'AddModule.*mimo' "$conf"; then
-            sed -i '/^#AddModule "mimic3-generic"/a AddModule "mimo"              "sd_mimo"      "mimo.conf"' "$conf"
-            grep -q 'AddModule.*mimo' "$conf" || \
-                echo 'AddModule "mimo"              "sd_mimo"      "mimo.conf"' >> "$conf"
-            echo "  -> Added AddModule \"mimo\" to $conf"
-        fi
+        # Add correct AddModule line
+        sed -i '/^#AddModule "mimic3-generic"/a AddModule "mimo"              "sd_mimo"      "mimo.conf"' "$conf"
+        grep -q 'AddModule.*mimo' "$conf" || \
+            echo 'AddModule "mimo"              "sd_mimo"      "mimo.conf"' >> "$conf"
+        echo "  -> Configured mimo module in $conf"
 
         if ! grep -q '^DefaultModule' "$conf"; then
             echo 'DefaultModule "mimo"' >> "$conf"

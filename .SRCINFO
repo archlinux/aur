@@ -1,6 +1,6 @@
 pkgbase = speech-dispatcher-mimo
 	pkgdesc = speech-dispatcher output module that uses Xiaomi MiMo API for high-quality Chinese/English neural TTS
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://platform.xiaomimimo.com
 	install = speech-dispatcher-mimo.install

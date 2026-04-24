@@ -198,7 +198,7 @@ def test_cache(protocol: SpeechDispatcherProtocol) -> bool:
 
 def main():
     """Run all protocol tests."""
-    script_path = "/home/josephx/.openclaw/workspace/mimo-tts/sd_mimo.py"
+    script_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sd_mimo.py")
 
     print("=" * 60)
     print("Speech Dispatcher Protocol Test")
