@@ -2,7 +2,7 @@
 _base=idna
 pkgname=pypy3-${_base}
 pkgdesc="Internationalized Domain Names in Applications"
-pkgver=3.11
+pkgver=3.13
 pkgrel=1
 arch=(any)
 url="https://github.com/kjd/${_base}"
@@ -10,7 +10,7 @@ license=(BSD-3-Clause)
 depends=(pypy3)
 makedepends=(pypy3-build pypy3-installer pypy3-flit-core)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('d74305f2cda17516e225361804721f45028c05bee9f9510f4c2f9980aaed42fecad0781f22da55416e8e6dcd9fbc8981dae829d0dae532c15153fcd0a9975570')
+sha512sums=('4f3150da05c7968ab0e83412cf473f3256c2be79700a3be72cc2241086809fc467db849bda4d703e7ae2d757c1f4fcd7d322aa2629f8c407fd73f5ad02bff887')
 
 build() {
   cd ${_base}-${pkgver}
