@@ -2,7 +2,7 @@
 
 pkgname=openai-codex-reasoning
 pkgver=0.124.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenAI Codex CLI fork with inline reasoning traces"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OneNoted/codex"
@@ -38,7 +38,36 @@ prepare() {
   cd "${srcdir}/${_source_dir}/codex-rs"
 
   export RUSTUP_TOOLCHAIN=stable
+
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  python3 - "${srcdir}/${_source_dir}/codex-rs/Cargo.toml" "${pkgver}" <<'PY'
+from pathlib import Path
+import sys
+
+manifest_path = Path(sys.argv[1])
+build_version = sys.argv[2]
+lines = manifest_path.read_text().splitlines()
+
+in_workspace_package = False
+updated = False
+for index, line in enumerate(lines):
+    stripped = line.strip()
+    if stripped == "[workspace.package]":
+        in_workspace_package = True
+        continue
+    if in_workspace_package and stripped.startswith("[") and stripped.endswith("]"):
+        break
+    if in_workspace_package and stripped.startswith("version = "):
+        lines[index] = f'version = "{build_version}"'
+        updated = True
+        break
+
+if not updated:
+    raise SystemExit("failed to update [workspace.package].version in Cargo.toml")
+
+manifest_path.write_text("\n".join(lines) + "\n")
+PY
 }
 
 build() {
@@ -47,7 +76,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  cargo build --release --locked \
+  cargo build --release \
     -p codex-cli \
     -p codex-exec \
     -p codex-linux-sandbox

@@ -1,7 +1,7 @@
 pkgbase = openai-codex-reasoning
 	pkgdesc = OpenAI Codex CLI fork with inline reasoning traces
 	pkgver = 0.124.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OneNoted/codex
 	arch = x86_64
 	arch = aarch64
