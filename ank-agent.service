@@ -1,0 +1,9 @@
+[Unit]
+Description=Ankaios agent
+
+[Service]
+Environment="RUST_LOG=info"
+ExecStart=/usr/bin/ank-agent
+
+[Install]
+WantedBy=default.target
