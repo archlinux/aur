@@ -8,7 +8,7 @@ pkgname=(
   webkit2gtk-docs
 )
 pkgver=2.50.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org"
 arch=(x86_64)
@@ -122,7 +122,6 @@ validpgpkeys=(
   5AA3BC334FD7E3369E7C77B291C559DBE4C9123B # Adrián Pérez de Castro <aperez@igalia.com>
   013A0127AC9C65B34FFA62526C1009B693975393 # Carlos Garcia Campos <cgarcia@igalia.com>
 )
-options=(!lto)
 
 prepare() {
   cd webkitgtk-$pkgver
@@ -159,7 +158,7 @@ build() {
   CXXFLAGS+=' -fcf-protection=none'
 
   cmake -S webkitgtk-$pkgver -B build -G Ninja "${cmake_options[@]}"
-  cmake --build build $MAKEFLAGS
+  cmake --build build
 }
 
 package_webkit2gtk() {
