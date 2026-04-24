@@ -1,6 +1,6 @@
 # Maintainer: Joni Savolainen <joni@savolainen.io>
 pkgname=supersigil
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="CLI tool and verification framework for spec-driven development"
 arch=('x86_64' 'aarch64')
