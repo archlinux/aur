@@ -1,6 +1,6 @@
 pkgbase = openafs-modules-dkms
 	pkgdesc = Kernel module for OpenAFS (dkms)
-	pkgver = 1.8.15
+	pkgver = 1.8.16pre1
 	pkgrel = 1
 	url = http://www.openafs.org
 	arch = i686
@@ -10,24 +10,14 @@ pkgbase = openafs-modules-dkms
 	depends = dkms
 	depends = libelf
 	depends = openafs>=1.8.12.1-2
-	provides = openafs-modules=1.8.15
+	provides = openafs-modules=1.8.16pre1
 	conflicts = openafs-features-libafs
 	conflicts = openafs-modules
 	conflicts = openafs<1.6.6-2
 	options = !emptydirs
-	source = http://openafs.org/dl/openafs/1.8.15/openafs-1.8.15-src.tar.bz2
-	source = 0001-Linux-Use-get_tree_nodev.patch
-	source = 0002-Linux-Introduce-LINUX_WRITE_CACHE_PAGES_USES_FOLIOS.patch
-	source = 0003-Linux-Avoid-write_cache_pages-for-writepages.patch
-	source = 0004-Linux-Use-sockaddr_unsized-for-socket-ops-bind.patch
-	source = 0005-Linux-Pass-3rd-parameter-to-filemap_alloc_folio.patch
+	source = http://openafs.org/dl/openafs/candidate/1.8.16pre1/openafs-1.8.16pre1-src.tar.bz2
 	source = dkms.conf
-	sha256sums = 32f10dd241b5d8b846e425ab9cbf275b556ba1880bf7df7c459cd9eb49058355
-	sha256sums = 612d27f378830a1a6fd2eb929772dad619806d7900a7aadc9289c0be7f7c7350
-	sha256sums = d8e09311e75a65f60e72de5346db07d275bfb53ebb7fadac74af010b9ce99f6a
-	sha256sums = 67baede8e998fce3fce28c45033c49aa8e688be7cf0dfd3147d438cd1bd89e68
-	sha256sums = 2f3c48d1a3f4520b54901badbc2787230086339f56ad183a5dc7d0eba5542e87
-	sha256sums = 4c297d57016e5a23ccf902dfe9298df0fd223abacc01c77dcc094a2462894586
+	sha256sums = f3a30f51d802533a0758099fe1499a94886afd03fd17c40588db0e555f6d3817
 	sha256sums = 306408d644e8781f13e09021449cb1ccbba60f69d1d24eca5f8138e9b3e47d8e
 
 pkgname = openafs-modules-dkms
