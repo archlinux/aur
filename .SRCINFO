@@ -1,0 +1,17 @@
+pkgbase = kaobook-git
+	pkgdesc = A LaTeX class for books, reports or theses
+	pkgver = 0.9.7.r99.g22225a1
+	pkgrel = 1
+	url = https://github.com/fmarotta/kaobook
+	arch = any
+	license = LPPL-1.3c
+	makedepends = git
+	depends = otf-libertinus
+	depends = texlive-bin
+	depends = ttf-liberation
+	provides = kaobook
+	conflicts = kaobook
+	source = git+https://github.com/fmarotta/kaobook.git
+	sha256sums = SKIP
+
+pkgname = kaobook-git
