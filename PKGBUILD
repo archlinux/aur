@@ -4,10 +4,10 @@
 # Contributor: Jaime Martínez Rincón <jaime@jamezrin.name>
 
 pkgname=notion-app-electron
-pkgver=7.6.1
-_bettersqlite3ver=12.6.2
+pkgver=7.12.0
+_bettersqlite3ver=12.9.0
 _bufferutilver=4.0.9
-_elecronver=140 # whenever update the bettersqlite, update this one by one to try the proper version.
+_elecronver=143 # whenever update the bettersqlite, update this one by one to try the proper version.
 pkgrel=1
 pkgdesc="Your connected workspace for wiki, docs & projects"
 arch=(x86_64)
@@ -18,7 +18,7 @@ depends=(
 	gcc-libs
 	glibc
 	hicolor-icon-theme
-	electron39
+	electron40-bin
 )
 makedepends=(
 	p7zip
@@ -34,10 +34,10 @@ source=(
 	notion.desktop
 	notion.png
 )
-sha256sums=('56aa093a8b8a0815a525ad974d85b9120e1b586302aaa8c7183d7c761f124d14'
-            '5be42e5403bbba23ef38315b1c4e3ff08c154ed3c64a9952a0ad344f30fc6dc8'
+sha256sums=('1624a4d131142efe902e182fedb03908e427bc3a2bc3073b3188ed1a187c98b3'
+            'ebc8c2a8b71ec46c67ace20b0a291058d603a93aaf17c8fd25b63ee05a129e04'
             '2139aae79c5a4fd4d07467bd9b7872ea109483aa43b3dfd6c8d3725ccba009be'
-            '49e06007f51da9ae847954212504ff9746e35c13cc32ebbf072f5d03a0253303'
+            '3e4defd9e3823c25fc0b01308b6fde271c430ea749400474dbe2ee9ccb736ecf'
             '19a5f973f1e9291081aa05512e07c61447e8c30e1a43dd22d0cc1090837d1e19'
             'da801d659d8916320e0d76c8c62154e97a1d44f71762f2a18d1c8c185624d5be')
 
