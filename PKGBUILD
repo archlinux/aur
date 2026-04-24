@@ -2,6 +2,8 @@
 # Contributor: Kuan-Yen Chou <kychou2 at illinois dot edu>
 # Contributor: Yunhui Fu <yhfudev@gmail.com>
 
+# === PACKAGE METADATA ===
+
 pkgbase=ns3
 pkgname=(
     # Fully functional components
@@ -44,11 +46,6 @@ depends=(
     dpdk
     # 9. Netmap emulation FdNetDevice
     # netmap # NEEDS AUR PACKAGE FIX FOR CUSTOM KERNELS!
-    # 10. MPI (distributed computing) support
-    ### disabled due to conflicts with python bindings
-    ### (possible future FIXME? compile twice and
-    ### package-level conflicts?)
-    #openmpi
 )
 makedepends=(
     ### Required, according to docs
@@ -87,7 +84,9 @@ b2sums=('c03622d72afc5043aced4aa8ee39b477a15feb28e45142c6d4117a4ffd94c146d522200
 # with Arch packages / software.
 _pkgprefix="/usr"
 
-# [GENERATED] package enablements
+# === DYNAMIC METADATA ===
+
+# Package enablements
 # This is so it is possible to control components
 # to be built via pkgname() array.
 _has_docs=false
@@ -109,8 +108,11 @@ if $_has_python; then
 else
     # Enable MPI feature as it does
     # conflict with Python bindings
-    depends+=(openmpi)
+    depends+=(libmpi.so)
 fi
+
+
+# === PACKAGE HELPERS ===
 
 _pver() {
     python --version | awk '{print $2}' | sed 's/.[^.]*$//'
@@ -118,13 +120,6 @@ _pver() {
 
 _pver_next() {
     _pver | sed "s/\.[^.]*$/\.$(($(python --version | awk '{print $2}' | sed 's/^[^.]*\.\([^.]*\)\.[^.]*$/\1/')+1))/"
-}
-
-prepare() {
-    cd "${srcdir}/ns-${pkgver}"
-    for patch in "${source[@]}"; do if [ "${patch##*.}" == "patch" ]; then
-        patch -Np1 -i "$srcdir/$patch"
-    fi; done
 }
 
 # This is taken from mesa package
@@ -136,6 +131,15 @@ _pick() {
         mv -v "$f" "$d"
         rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
     done
+}
+
+# === PACKAGING FLOW DEFINITION ===
+
+prepare() {
+    cd "${srcdir}/ns-${pkgver}"
+    for patch in "${source[@]}"; do if [ "${patch##*.}" == "patch" ]; then
+        patch -Np1 -i "$srcdir/$patch"
+    fi; done
 }
 
 build() {
@@ -221,6 +225,8 @@ package_ns3() {
         _pick python usr/lib/python$(_pver)
     fi
 }
+
+# === ADDITIONAL COMPONENTS ===
 
 package_ns3-examples() {
     pkgdesc+=" (prebuilt example applications)"
