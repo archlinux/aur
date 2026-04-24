@@ -1,7 +1,7 @@
 # Maintainer: Zesko
 pkgname="limine-entry-tool-git"
 _pkgname="limine-entry-tool"
-pkgver=r602.d9b54ee
+pkgver=r618.d4ee4fc
 pkgrel=1
 pkgdesc="Entry management for the Limine bootloader."
 arch=('x86_64' 'aarch64')
@@ -63,9 +63,9 @@ package() {
 	# docs
 	install -Dm 644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/limine-entry-tool/"
 
-	# package files
+	# files
 	cp -a "$src/limine-entry-tool/etc" "$src/limine-entry-tool/usr" "$pkgdir/"
-	install -Dm 755 "build/native/nativeCompile/limine-entry-tool" "$pkgdir/usr/lib/limine/limine-entry-tool"
+	install -Dm 755 "build/native/nativeCompile/limine-entry-tool" "$pkgdir/usr/lib/limine/"
 
 	# limine hook symlinks
 	ln -sf /usr/bin/limine-reset-enroll "$pkgdir/etc/boot/hooks/pre.d/10-limine-reset-enroll"
