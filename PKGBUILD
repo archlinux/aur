@@ -1,4 +1,5 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
+# Maintainer: yobson <aur at yobson dot xyz>
 pkgname=soundux-git
 pkgver=0.2.7.r141.ge028452
 pkgrel=1
