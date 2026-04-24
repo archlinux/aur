@@ -16,15 +16,14 @@ depends=(
   'qt6-svg'
   'qt6-virtualkeyboard'
   'ffmpeg'
+  'ttf-rubik-vf'
+  'ttf-material-symbols-variable'
 )
 optdepends=(
   'caelestia-shell: dynamic colors and wallpaper sync'
   'caelestia-shell-git: dynamic colors and wallpaper sync (git)'
   'caelestia-cli: color generation for theme sync'
   'caelestia-cli-git: color generation for theme sync (git)'
-  'ttf-rubik: default UI font'
-  'ttf-material-symbols-outlined: icons for minimalist themes'
-  'ttf-material-symbols-rounded: icons for locklike theme'
 )
 makedepends=('git')
 provides=('caelestia-sddm')

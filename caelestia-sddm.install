@@ -119,4 +119,4 @@ post_remove() {
   echo "==>   Remove the postHook entry from ~/.config/caelestia/cli.json"
   echo "==>   Remove /etc/sudoers.d/caelestia-sddm-sync if created"
   echo "==> Update SDDM theme in /etc/sddm.conf or /etc/sddm.conf.d/"
-} 
+}
