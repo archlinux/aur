@@ -12,7 +12,7 @@ _deb="d2-mf-tracker_0.1.0_amd64.deb"
 source=("d2-mf-tracker.install")
 source_x86_64=("https://github.com/wilkinson4/d2_mf_run_tracker/releases/download/app-v0.1.0/${_deb}")
 sha256sums=('SKIP')
-sha256sums_x86_64=('73725ecaa0329e7da280c77da25ec6fdc300f1eab6491b3bc93ae73eed0c732e')
+sha256sums_x86_64=('7adcafe212c81d0e156fa6d910ed4d83b9b003d545608f511785615fed9ef2b0')
 
 package() {
   bsdtar -xf "${srcdir}/${_deb}" -C "${srcdir}"
