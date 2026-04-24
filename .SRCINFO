@@ -1,0 +1,15 @@
+pkgbase = accounting
+	pkgdesc = plaintext double-entry accounting command line tool
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/rudolfschmidt/acc
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	conflicts = acc
+	source = acc-0.3.2.tar.gz::https://crates.io/api/v1/crates/acc/0.3.2/download
+	sha256sums = 5ab3f26987f6f97122dbca2bf9771cfa9c5a3ccb2e11344691fd6df51d58b8a4
+
+pkgname = accounting
