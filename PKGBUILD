@@ -1,6 +1,6 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux-git
-pkgver=r1434.e028452
+pkgver=0.2.7.r141.ge028452
 pkgrel=1
 epoch=1
 pkgdesc="A cross-platform soundboard - unstable development version"
@@ -20,7 +20,7 @@ pkgver() {
   cd "${srcdir}/Soundux"
 
   # Get the version number.
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
