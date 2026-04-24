@@ -94,17 +94,32 @@ post_install() {
   local real_home
   real_home=$(getent passwd "$real_user" | cut -d: -f6)
 
-  mkdir -p "$real_home/.config/caelestia/templates"
+  local user_template="$real_home/.config/caelestia/templates/sddm-theme.conf"
+  if [ -f "$user_template" ]; then
+    sudo -u "$real_user" rm -f "$user_template".bak.*
+    sudo -u "$real_user" cp "$user_template" "$user_template.bak"
+    echo "==> Existing template backed up to $user_template.bak"
+  fi
+
+  sudo -u "$real_user" mkdir -p "$real_home/.config/caelestia/templates"
   if [ -f "$theme_dir/theme.conf.template" ]; then
-    cp "$theme_dir/theme.conf.template" \
-       "$real_home/.config/caelestia/templates/sddm-theme.conf"
-    chown -R "$real_user:$real_user" "$real_home/.config/caelestia"
-    echo "==> Template copied to $real_home/.config/caelestia/templates/sddm-theme.conf"
+    sudo -u "$real_user" cp "$theme_dir/theme.conf.template" \
+       "$user_template"
+    echo "==> Template copied to $user_template"
   fi
 
   echo "==> Running initial sync..."
-  SUDO_USER="$real_user" "$theme_dir/scripts/sync.sh"
+  HOME="$real_home" SUDO_USER="$real_user" "$theme_dir/scripts/sync.sh"
   echo "==> Initial sync complete"
+
+  for dir in \
+    "$real_home/.config/caelestia" \
+    "$real_home/.local/state/caelestia" \
+    "$real_home/.local/share/caelestia"; do
+    if [ -d "$dir" ]; then
+      chown -R "$real_user:$real_user" "$dir"
+    fi
+  done
 
   _print_posthook_instructions "$theme_dir" "$real_user"
 }
