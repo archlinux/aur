@@ -1,6 +1,6 @@
 pkgbase = jetbrains-gateway
 	pkgdesc = An entry point to Remote Development
-	pkgver = 2026.1
+	pkgver = 2026.1.1
 	pkgrel = 1
 	url = https://www.jetbrains.com/remote-development/gateway/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = jetbrains-gateway
 	license = custom:jetbrains
 	depends = glib2
 	options = !strip
-	source = https://download.jetbrains.com/idea/gateway/JetBrainsGateway-2026.1.tar.gz
+	source = https://download.jetbrains.com/idea/gateway/JetBrainsGateway-2026.1.1.tar.gz
 	source = jetbrains-gateway.desktop
 	source = LICENSE
-	b2sums = 3ac6e03490fb1ac1897b6d06f79dd930f516e7a24a9616394eb6884c84fc2f98ef3d59cc1a62eda5e6280054e177500f3e4c790b4f99b2e948b6f1645a7e1833
+	b2sums = 981de3a88db76349963697b85c55f5db76ddda65d68a30b729c5881d95a4c9c4f997fa4dee180078dc080f53316d028fb36f9570270e911eac46320f9ec6d0a1
 	b2sums = a3b84f0bfc783abc4174bb903e2b0d48e820f698a724593626c5ba142ae0acede39d3d3dba43638c5bd13bbc3ff68f98f34240eebec88798565a86a0d804de17
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
