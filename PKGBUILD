@@ -17,9 +17,9 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=hnefatafl-copenhagen
-pkgver=5.7.0
+pkgver=5.8.0
 pkgrel=1
-real_pkgrel=3
+real_pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client, engine, server and artificial intelligence"
 url="https://hnefatafl.org"
 license=("AGPL-3.0-or-later")
@@ -29,10 +29,10 @@ conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib" "openssl")
 makedepends=("base-devel" "clang" "llvm" "mold" "rustup")
 source=("https://codeberg.org/dcampbell/hnefatafl/archive/v$pkgver-$real_pkgrel.tar.gz")
-sha256sums=("77c5b9a3c7aec06395ca8a1574c117387c99978c10d046352ee34d564cb91381")
+sha256sums=("671bcbaa46b24e7644903755d603e68c139d51ce01570ceb1daed7a35ef42832")
 build() {
     tar -xvzf v$pkgver-$real_pkgrel.tar.gz
-    cd "hnefatafl"
+    cd "hnefatafl"S
 
     cargo build --release
 
