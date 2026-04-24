@@ -1,15 +1,15 @@
 # Maintainer: viewerofal <joemomanugget@gmail.com>
 pkgname=woven-shell-git
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Complete Wayland shell for Sway — bar, launcher, lock screen, wallpaper, power menu, control center, config manager, OSD, screenshots, and more"
+pkgdesc="Complete Wayland shell for Sway — bar, launcher, lock, wallpaper, power menu, control center, config manager, OSD, screenshot, workspace switcher, and session daemon"
 arch=('x86_64')
 url="https://github.com/viewerofall/woven-shell"
 license=('MIT')
 depends=('sway' 'wireplumber' 'brightnessctl' 'playerctl' 'swaync' 'pam' 'slurp' 'grim')
 makedepends=('rust' 'cargo')
 source=("woven-shell-$pkgver.tar.gz::https://github.com/viewerofall/woven-shell/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f175e41e677d84edc311d4e4e0d91bbf05a8203110d79cc70a87a45726a9ea5a')
+sha256sums=('70ea2183b494356eebe9b8255f63da08fadc174e3379d9cdfbded2fb553492ef')
 
 build() {
     cd "woven-shell-$pkgver"
@@ -26,6 +26,11 @@ package() {
 
     install -d "$pkgdir/usr/share/woven-shell/config"
     cp config/*.toml "$pkgdir/usr/share/woven-shell/config/"
+
+    if [ -d "config/themes" ]; then
+        install -d "$pkgdir/usr/share/woven-shell/config/themes"
+        cp config/themes/*.toml "$pkgdir/usr/share/woven-shell/config/themes/" 2>/dev/null || true
+    fi
 
     install -Dm644 get.sh "$pkgdir/usr/share/woven-shell/get.sh"
     install -Dm644 woven-session.service "$pkgdir/usr/lib/systemd/user/woven-session.service"

@@ -1,6 +1,6 @@
 pkgbase = woven-shell-git
-	pkgdesc = Complete Wayland shell for Sway — bar, launcher, lock screen, wallpaper, power menu, control center, config manager, OSD, screenshots, and more
-	pkgver = 1.1.0
+	pkgdesc = Complete Wayland shell for Sway — bar, launcher, lock, wallpaper, power menu, control center, config manager, OSD, screenshot, workspace switcher, and session daemon
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/viewerofall/woven-shell
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = woven-shell-git
 	depends = pam
 	depends = slurp
 	depends = grim
-	source = woven-shell-1.1.0.tar.gz::https://github.com/viewerofall/woven-shell/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = f175e41e677d84edc311d4e4e0d91bbf05a8203110d79cc70a87a45726a9ea5a
+	source = woven-shell-1.2.0.tar.gz::https://github.com/viewerofall/woven-shell/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 70ea2183b494356eebe9b8255f63da08fadc174e3379d9cdfbded2fb553492ef
 
 pkgname = woven-shell-git
