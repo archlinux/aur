@@ -1,0 +1,10 @@
+post_install()
+{
+  if [[ -f /usr/bin/xdg-desktop-menu ]]; then
+    xdg-desktop-menu install --novendor /usr/share/desktop-directories/DaVinciResolve.directory /usr/share/applications/DaVinciResolve.desktop
+    xdg-desktop-menu install --novendor /usr/share/desktop-directories/DaVinciResolve.directory /usr/share/applications/blackmagicraw-player.desktop
+    xdg-desktop-menu install --novendor /usr/share/desktop-directories/DaVinciResolve.directory /usr/share/applications/blackmagicraw-speedtest.desktop
+    xdg-desktop-menu install --novendor /usr/share/desktop-directories/DaVinciResolve.directory /usr/share/applications/DaVinciControlPanelsSetup.desktop
+    xdg-desktop-menu forceupdate
+  fi
+}
