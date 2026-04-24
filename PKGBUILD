@@ -3,7 +3,7 @@
 # Maintainer: caarlos0 <carlos@charm.sh>
 
 pkgname='crush-bin'
-pkgver=0.62.0
+pkgver=0.62.1
 pkgrel=1
 pkgdesc='A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.'
 url='https://charm.sh/crush'
@@ -13,16 +13,16 @@ provides=('crush')
 conflicts=('crush')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/crush/releases/download/v${pkgver}/crush_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('e40bc26e3cee32466a65839beba776caf047d5cd3759b87f85c9804396e452ac')
+sha256sums_aarch64=('4d396e0c32f842ed23f2eb9c979f7e2c7ff8c4f522d153915f082f048a0e210d')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/crush/releases/download/v${pkgver}/crush_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('50525ecede91cda60d6de56039a2441d7c7b5bfdfe840a72f176df9852d51d7e')
+sha256sums_armv7h=('294b1f714459892061a5ce2ec841e35c675a9ead7a52365b9f1cd91ea2ac8d2c')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/crush/releases/download/v${pkgver}/crush_${pkgver}_Linux_i386.tar.gz")
-sha256sums_i686=('0a99a8415af4cf02650598a9d42fe07e349a7abd5fb8f4e5dcf5dc70046f2efc')
+sha256sums_i686=('aa3d5f4d288a0dd20b0fbecdf655a08180a6842d13ebf973940f480f27fc3cbb')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/crush/releases/download/v${pkgver}/crush_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('2ab7ab38a057d13dc7438118cc4897af3b971a4c5ea0a6140743c2e2d43cb4fc')
+sha256sums_x86_64=('3cf898836bbc650c5504b465bbc4482d0d795d07acc736c7129936381514c1e2')
 
 package() {
   case "$CARCH" in
