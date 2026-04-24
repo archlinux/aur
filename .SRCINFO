@@ -1,0 +1,19 @@
+pkgbase = shovel-bin
+	pkgdesc = Fast native desktop database client built with Rust and Dioxus
+	pkgver = 0.2.2.5
+	pkgrel = 1
+	url = https://github.com/Fynth/Shovel
+	arch = x86_64
+	license = unknown
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = xdotool
+	provides = shovel
+	conflicts = shovel
+	conflicts = shovel-git
+	options = !debug
+	options = !lto
+	source = shovel-bin-0.2.2.5.tar.gz::https://github.com/Fynth/Shovel/releases/download/v0.2.2.5/shovel-linux-x86_64.tar.gz
+	sha256sums = e3017f7d7917ab1553d8bb069df494d8cb63c119481190571a9ed07ebf01bbf1
+
+pkgname = shovel-bin
