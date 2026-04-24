@@ -1,6 +1,6 @@
 pkgbase = lianli-linux-git
 	pkgdesc = Open-source Linux replacement for L-Connect 3 - fan control, RGB, LCD streaming for Lian Li devices
-	pkgver = r227.1ee4b97
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/sgtaziz/lian-li-linux
 	install = lianli-linux.install
