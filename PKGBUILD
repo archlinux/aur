@@ -11,10 +11,11 @@ makedepends=('cmake' 'git' 'qt5-base')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!strip')
 _url="https://github.com/Project-Plus-Development-Team/Project-Plus-Dolphin/releases"
+_tag='v3.1.5'
 _package="Project+.$pkgver.Netplay.Linux.AppImage.zip"
 _appimage="Project-Plus-Dolphin.AppImage"
 source=(
-	"$_package::$_url/download/$pkgver/Project+.$pkgver.Netplay.Linux.AppImage.zip"
+	"$_package::$_url/download/$_tag/Project+.$_tag.Netplay.Linux.AppImage.zip"
 )
 sha256sums=('05b0e6cc80b84b5693f038272238ae3a2be89d4f728ed548c950043c24aab702')
 
