@@ -1,7 +1,7 @@
 # Maintainer: Joris Vink <joris@sanctorum.se>
 
 pkgname=libkyrka
-pkgver=0.4.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A library implementation of the sanctum protocol"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://conclave.se"
 license=('ISC')
 depends=('libsodium')
 source=("${url}/releases/libkyrka/${pkgname}-${pkgver}.tgz")
-sha256sums=('5ef41d52c4f7a90f9e2ab0f334229be8c8401058c165b03f46f12a0247309741')
+sha256sums=('c1051a6a016a4a74af95682e10f3d8e95a53028fda8579235f448b29e1894240')
 
 build() {
 	unset CFLAGS
