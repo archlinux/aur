@@ -1,7 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=lucky
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A Crystal command-line tool for generating new Lucky Web Applications'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('crystal'
          'shards')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('fc56e29ae1d4438646629754a40392a135d87ddc94eb80a9d47e6ed8ab678286')
+sha256sums=('26f916c9aa1f6e241b5a81ab339fc983dfda90f342b884ef8d53d57f41e47953')
 provides=('lucky')
 conflicts=('lucky-git')
 
