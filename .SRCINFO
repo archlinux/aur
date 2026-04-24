@@ -1,6 +1,6 @@
 pkgbase = python-croniter-git
 	pkgdesc = Parses cron schedules to iterate over datetime objects (development version)
-	pkgver = 6.2.2.r14.g831cdb3
+	pkgver = 6.2.2.r16.g6540ea5
 	pkgrel = 1
 	url = https://github.com/pallets-eco/croniter
 	arch = any
