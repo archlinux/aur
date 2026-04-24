@@ -3,7 +3,7 @@
 pkgbase='vim-classic-git'
 pkgname=('vim-classic-git' 'vim-classic-runtime-git' 'gvim-classic-git')
 _pkgname='vim-classic'
-pkgver=r11248.e77db10
+pkgver=r11253.e11e447
 pkgrel=1
 pkgdesc='Vim Classic is a fork of Vim 8.x for long-term maintenance.'
 arch=('x86_64' 'i686' 'aarch64')
@@ -29,11 +29,9 @@ makedepends=(
 )
 source=(
 "git+${url}"
-"2026-04-23-regen-protos.patch"
 )
 sha256sums=(
 'SKIP'
-'93147377ab9e75cb35a8c78a4a77432693a86cdedbecbb8da4e43c4e5a26ffc5'
 )
 
 pkgver() {
@@ -42,10 +40,6 @@ pkgver() {
 }
 
 prepare() {
-  (
-    cd "$_pkgname"
-    patch -Np1 -i ../2026-04-23-regen-protos.patch
-  )
   cp -a "$_pkgname" "g${_pkgname}"
 }
 
