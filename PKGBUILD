@@ -4,7 +4,7 @@
 pkgname=zed-preview
 _pkgname=${pkgname%-preview}
 pkgver=0.234.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
@@ -16,6 +16,7 @@ depends=(alsa-lib libasound.so
          glib2 libgio-2.0.so libglib-2.0.so libgobject-2.0.so
          glibc # libc.so libm.so ld-linux-x86_64.so
          libgcc libgcc_s.so
+         libgit2 libgit2.so
          libstdc++ libstdc++.so
          libxcb # libxcb.so libxcb-xkb.so
          libx11 # libX11-xcb.so
@@ -73,6 +74,7 @@ _srcenv() {
 	CFLAGS+=' -ffat-lto-objects'
 	CXXFLAGS+=' -ffat-lto-objects'
 	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
+	export LIBGIT2_NO_VENDOR=1
 	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export ZSTD_SYS_USE_PKG_CONFIG=1
 }
