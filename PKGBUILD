@@ -1,6 +1,6 @@
 # Maintainer: Pascal Pollet <paspol@gmx.de>
 pkgname=babeleo
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="KDE Plasma 6 applet for quick lookups in translation services or other web services"
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=(
 )
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tryptophane/babeleo-plasma/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0d873b9b4cad6f6dc174244886246ea6049f190d724e8c8a206676a07bd33880')
+sha256sums=('b8a13b3602941207a6ba5e97f824e17be1034e777c709462095864183f3400a1')
 
 build() {
     cmake -B build -S "babeleo-plasma-${pkgver}" \
