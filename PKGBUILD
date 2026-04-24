@@ -1,8 +1,8 @@
 # Maintainer: ictye <northgreen2006 at qq dot com>
 pkgname=ez2lazer-git
 url='https://github.com/SK-la/Ez2Lazer'
-pkgrel=2
-pkgver=2026.4.7.r0.gf8cab01737
+pkgrel=1
+pkgver=2026.4.23.r25.g31975a043e
 pkgdesc='Ez to Lazer(Pursue the Ez2Ac style in the lazer)做一个炫酷的客户端'
 arch=("x86_64")
 license=("MIT")
@@ -14,9 +14,9 @@ makedepends=(
     'git'
     'python')
 source=(
-    'osu::git+https://github.com/SK-la/Ez2Lazer.git#branch=locmain'
-    'osu-framework::git+https://github.com/SK-la/osu-framework.git#branch=locmain'
-    'osu-resources::git+https://github.com/SK-la/osu-resources.git#branch=locmain'
+    'osu::git+https://github.com/SK-la/Ez2Lazer.git#branch=master'
+    'osu-framework::git+https://github.com/SK-la/osu-framework.git#branch=master'
+    'osu-resources::git+https://github.com/SK-la/osu-resources.git#branch=master'
     'osu-ez2lazer'
     'osu-ez2lazer.desktop'
     'lazer.png')
@@ -34,6 +34,7 @@ pkgver() {
 }
 
 build() {
+    chmod +x $srcdir/osu/publish-linux.py
     $srcdir/osu/publish-linux.py --no-zip --outroot $srcdir
 }
 

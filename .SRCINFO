@@ -1,7 +1,7 @@
 pkgbase = ez2lazer-git
 	pkgdesc = Ez to Lazer(Pursue the Ez2Ac style in the lazer)做一个炫酷的客户端
-	pkgver = 2026.4.7.r0.gf8cab01737
-	pkgrel = 2
+	pkgver = 2026.4.23.r25.g31975a043e
+	pkgrel = 1
 	url = https://github.com/SK-la/Ez2Lazer
 	arch = x86_64
 	license = MIT
@@ -10,9 +10,9 @@ pkgbase = ez2lazer-git
 	makedepends = python
 	depends = ffmpeg4.4
 	depends = lttng-ust2.12
-	source = osu::git+https://github.com/SK-la/Ez2Lazer.git#branch=locmain
-	source = osu-framework::git+https://github.com/SK-la/osu-framework.git#branch=locmain
-	source = osu-resources::git+https://github.com/SK-la/osu-resources.git#branch=locmain
+	source = osu::git+https://github.com/SK-la/Ez2Lazer.git#branch=master
+	source = osu-framework::git+https://github.com/SK-la/osu-framework.git#branch=master
+	source = osu-resources::git+https://github.com/SK-la/osu-resources.git#branch=master
 	source = osu-ez2lazer
 	source = osu-ez2lazer.desktop
 	source = lazer.png
