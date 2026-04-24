@@ -2,7 +2,7 @@
 
 pkgname=toxcore-c
 pkgver=0.2.22
-pkgrel=3
+pkgrel=4
 pkgdesc='C backend implementation of the Tox communication protocol'
 arch=('x86_64')
 url='https://tox.chat'

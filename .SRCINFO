@@ -1,7 +1,7 @@
 pkgbase = toxcore-c
 	pkgdesc = C backend implementation of the Tox communication protocol
 	pkgver = 0.2.22
-	pkgrel = 3
+	pkgrel = 4
 	url = https://tox.chat
 	arch = x86_64
 	license = GPL3
