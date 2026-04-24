@@ -30,9 +30,11 @@ provides=("openvaf-r")
 conflicts=("${_pkgname}")
 source=(
 	"${_pkgname}::git+${url}"
+	"0001-feat-LLVM-support-v22.1.patch"
 	"vacask::git+https://codeberg.org/arpadbuermen/VACASK#tag=_0.3.2"
 )
 b2sums=('SKIP'
+        'c76c99ddd3df14f8deb6df93c097c5bbbfd2c455fce068df742b1f7e00c2db6b789b549647584e2e763dc00426e97bf896a03d986a425fd28ec9665551d51434'
         'a35e391017923a0c0b9c406df723674154bd3a4d433d8b8d40a143589efa7d6a8eb1a56b82758a16747e79380151fbbe156743b57d6195ed25fc90f038e5edf2')
 # lld fails to link mimalloc when LTO is enabled...
 options=(!lto)
@@ -55,8 +57,12 @@ prepare() {
 	# Update submodule
 	git -c protocol.file.allow=always submodule update --remote
 
+	# Patch for LLVM 22.1
+	patch -Np1 < ../"0001-feat-LLVM-support-v22.1.patch"
+
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	# TODO: Removed --locked due to local patching atm
+	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
