@@ -1,6 +1,6 @@
 pkgbase = handbook-git
 	pkgdesc = Create small, movable, and easily concealable windows for quick use.(Use system-wide electron)
-	pkgver = 0.32.2.r0.gedbac7a
+	pkgver = 1.4.0.r0.g3366fc2
 	pkgrel = 1
 	url = https://github.com/ECRomaneli/Handbook
 	arch = any
@@ -12,11 +12,11 @@ pkgbase = handbook-git
 	makedepends = gendesk
 	makedepends = jq
 	depends = electron41
-	provides = handbook=0.32.2
+	provides = handbook=1.4.0
 	conflicts = handbook
 	source = handbook.git::git+https://github.com/ECRomaneli/Handbook.git
 	source = handbook.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = 3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5
 
 pkgname = handbook-git
