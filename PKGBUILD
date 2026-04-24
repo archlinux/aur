@@ -1,7 +1,7 @@
 # Maintainer: Marco Julian Solanki <aur@solanki.mozmail.com>
 
 pkgname='adaptivecpp-git'
-pkgver=25.02.0.r109.g8810d85
+pkgver=25.10.0.r69.g43c29f9
 pkgrel=1
 pkgdesc='A modern, community-driven platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors.'
 arch=('x86_64')
@@ -11,15 +11,17 @@ provides=('opencl-headers')
 conflicts=('adaptivecpp')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
-_llvm_version_major=19
+_llvm_version_major=20
 
 depends=(
     "clang${_llvm_version_major}"
     'cuda'
-    'gcc-libs'
     'glibc'
     'hip-runtime-amd'
     'level-zero-loader'
+    'libgcc'
+    'libgomp'
+    'libstdc++'
     "llvm${_llvm_version_major}-libs"
     'numactl'
     'nvidia-utils'
