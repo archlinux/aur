@@ -1,7 +1,7 @@
 pkgbase = vykar-gui-bin
 	pkgdesc = Desktop GUI for Vykar backup — Slint-based, with system tray and scheduled backups
-	pkgver = 0.12.15
-	pkgrel = 2
+	pkgver = 0.13.0
+	pkgrel = 1
 	url = https://github.com/borgbase/vykar
 	install = vykar-gui-bin.install
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = vykar-gui-bin
 	provides = vykar-gui
 	conflicts = vykar-gui
 	options = !debug
-	source_x86_64 = vykar-v0.12.15-x86_64-unknown-linux-gnu.tar.gz::https://github.com/borgbase/vykar/releases/download/v0.12.15/vykar-v0.12.15-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 179fbc43898ea8a4611f58b0dfbb5b4cec821194c076909f8a0a8402d96539b4
-	source_aarch64 = vykar-v0.12.15-aarch64-unknown-linux-gnu.tar.gz::https://github.com/borgbase/vykar/releases/download/v0.12.15/vykar-v0.12.15-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 3f54655050f106609b96d1878d58bd93c0dbc3b6f97e90de1c17a6ddee96fba8
+	source_x86_64 = vykar-v0.13.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/borgbase/vykar/releases/download/v0.13.0/vykar-v0.13.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ed59a5f21196d48ee12a2d9c7ec1872b2f5c15525b7687486cb19d531da60e5c
+	source_aarch64 = vykar-v0.13.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/borgbase/vykar/releases/download/v0.13.0/vykar-v0.13.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4ea3acd55e5d8cbf252b7037e2cfb08633f429c957a8ee79e274c454ac7226fd
 
 pkgname = vykar-gui-bin
