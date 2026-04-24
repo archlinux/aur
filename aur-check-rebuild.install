@@ -9,7 +9,7 @@ post_install() {
     "$EXEC_FILE" --settings
   fi
 
-  pip list | grep pyalspm > /dev/null 2>&1
+  pip list | grep pyalpm > /dev/null 2>&1
   if [ $? -eq 1 ]; then
     echo "Installing pyalpm lib..."
     pip install --root-user-action ignore --break-system-packages pyalpm
