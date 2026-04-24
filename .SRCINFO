@@ -1,6 +1,6 @@
 pkgbase = sac-core
 	pkgdesc = Thales/Gemalto SafeNet Authentication Client for eToken 5110/5300 & IDPrime
-	pkgver = 10.9.4723
+	pkgver = 10.9.6885
 	pkgrel = 1
 	url = https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = sac-core
 	depends = ccid
 	depends = pcsclite
 	optdepends = sac-core-legacy: Support for eToken 32K/64K (CardOS 4.2)
-	source = https://www.digicert.com/StaticFiles/Linux_SAC_10.9_GA.zip
+	source = https://www.globalsign.com/en/safenet-drivers/USB/10.9/GlobalSign-SAC-Linux-Ubuntu-24.04.4-v10.9.zip
 	source = eToken.conf
 	source = safenetauthenticationclient.service
 	validpgpkeys = B37EBA84D2EB0C786F91EEF77F8AA801285DEE57
-	sha256sums = 46759cfe91d736af18a49d10e4749f264022db44e04ed4caf94e1ca77d6a013e
+	sha256sums = c076c2ecb3842478e431ba81e1688f8c6386d7a374780c055047d2c9930cf428
 	sha256sums = 85b850b820610e029428e577ca0e48f6fb7b4148ae8d702ca20b191963046c6c
 	sha256sums = eb8b4e105d8b75f11e4b83ca6c4a605f781f50cc0f0405a5d1deccb5580fd055
 

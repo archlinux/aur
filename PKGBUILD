@@ -1,6 +1,6 @@
 pkgbase=sac-core
 pkgname=(sac-core sac-gui)
-pkgver=10.9.4723
+pkgver=10.9.6885
 pkgrel=1
 pkgdesc='Thales/Gemalto SafeNet Authentication Client for eToken 5110/5300 & IDPrime'
 url='https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management'
@@ -8,33 +8,32 @@ arch=(x86_64)
 depends=(ccid pcsclite)
 optdepends=('sac-core-legacy: Support for eToken 32K/64K (CardOS 4.2)')
 license=(custom)
-source=('https://www.digicert.com/StaticFiles/Linux_SAC_10.9_GA.zip'
+source=('https://www.globalsign.com/en/safenet-drivers/USB/10.9/GlobalSign-SAC-Linux-Ubuntu-24.04.4-v10.9.zip'
         eToken.conf
         safenetauthenticationclient.service)
-sha256sums=('46759cfe91d736af18a49d10e4749f264022db44e04ed4caf94e1ca77d6a013e'
+sha256sums=('c076c2ecb3842478e431ba81e1688f8c6386d7a374780c055047d2c9930cf428'
             '85b850b820610e029428e577ca0e48f6fb7b4148ae8d702ca20b191963046c6c'
             'eb8b4e105d8b75f11e4b83ca6c4a605f781f50cc0f0405a5d1deccb5580fd055')
 validpgpkeys=('B37EBA84D2EB0C786F91EEF77F8AA801285DEE57')
 
-_dir="SAC_10.9 GA"
-_rn_pdf="007-013841-005-SafeNet Authentication Client_10.9_Linux_GA_Release Notes_Rev A.pdf"
-_ag_pdf="007-013842-003-SafeNet Authentication Client_10.9_Linux_GA_Administrator Guide_Rev A.pdf"
-_ug_pdf="007-013843-003-SafeNet Authentication Client_10.9_Linux_GA_User Guide_Rev A.pdf"
+_dir="GlobalSign SAC Linux Ubuntu 24.04.4 v10.9/GlobalSign SAC Linux Ubuntu 24.04.4 v10.9 Standard/GlobalSign SAC Linux Ubuntu 24.04.4 v10.9"
+_ug_pdf="$_dir/007-013843-003-SafeNet Authentication Client_10.9_R1_Linux_GA_User Guide_Rev B.pdf"
 
 _err() {
     printf '\e[1;31mError:\e[m %s\n' "$*" >&2
 }
 
 prepare() {
-  _key="$_dir/Installation/Standard/Ubuntu-2204/GPG-KEY-SafenetAuthenticationClient.txt"
-  _deb="$_dir/Installation/Standard/Ubuntu-2204/safenetauthenticationclient_${pkgver}_amd64.deb"
+  _key="$_dir/GPG-KEY-SafenetAuthenticationClient.txt"
+  _deb="$_dir/610-013349-004_RevB_safenetauthenticationclient_${pkgver}_amd64.deb"
+  _deb_asc="$_dir/safenetauthenticationclient_10.9.6885_amd64.deb.asc"
   #_deb="$_dir/Installation/withoutUI/Ubuntu-2004/safenetauthenticationclient-core_${pkgver}_amd64.deb"
 
   if (( ! SKIPPGPCHECK )); then
     echo "Verifying PGP signature of '${_deb}'..."
-    # sqv --keyring="$_key" --signature-file="$_deb.asc" "$_deb"
+    # sqv --keyring="$_key" --signature-file="$_deb_asc" "$_deb"
     if ! _out=$(gpg --batch --status-fd 1 --trust-model always \
-                    --auto-key-retrieve --verify "$_deb.asc" "$_deb" 2>&1); then
+                    --auto-key-retrieve --verify "$_deb_asc" "$_deb" 2>&1); then
         _err "PGP signature verification failed"
         echo "$_out" | grep -v "^\\[GNUPG:\\]"
         return 1
@@ -85,11 +84,7 @@ package_sac-core() {
   rm "$pkgdir"/usr/lib/pkcs11/libeTPkcs11.so
 
   # Documentation
-  install -Dm644 "$_dir/Documentation/$_rn_pdf" \
-                  "$pkgdir"/usr/share/doc/$pkgname/SAC_${pkgver%.*}_Linux_Release_Notes.pdf
-  install -Dm644 "$_dir/Documentation/$_ag_pdf" \
-                  "$pkgdir"/usr/share/doc/$pkgname/SAC_${pkgver%.*}_Linux_Administrator_Guide.pdf
-  install -Dm644 "$_dir/Documentation/$_ug_pdf" \
+  install -Dm644 "$_ug_pdf" \
                   "$pkgdir"/usr/share/doc/$pkgname/SAC_${pkgver%.*}_Linux_User_Guide.pdf
 
   # Disable the predefined 'software' slots that clutter the token list
