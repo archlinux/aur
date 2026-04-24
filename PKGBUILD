@@ -1,6 +1,6 @@
 pkgbase=lyrica
 pkgname=(lyrica plasma-applet-lyrica obs-plugin-lyrica)
-pkgver=0.22
+pkgver=0.23
 pkgrel=1
 pkgdesc="Linux desktop lyrics widget focused on simplicity and integration."
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("MIT")
 makedepends=("cargo" "jq")
 options=("!lto") # Undefined references to ...
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chiyuki0325/lyrica/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7c78190eca5b0faa39699234eabdd38035bfdb495b72415238e596e28aea75d8')
+sha256sums=('a51d789ec90f5aa1f517a8b74ab14bdf00a342e7d0897df026a6ff50f2d7193b')
 
 prepare() {
     cd "$srcdir/$pkgbase-$pkgver"
@@ -18,8 +18,8 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$pkgbase-$pkgver"
-	export RUSTUP_TOOLCHAIN=stable
+    cd "$srcdir/$pkgbase-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export ZSTD_SYS_USE_PKG_CONFIG=true
     cargo build --frozen --release
@@ -55,8 +55,7 @@ package_plasma-applet-lyrica() {
     ln -srfv "$pkgdir/usr/lib/lyrica/lyrica" "$plasmoids/$id/contents/bin/lyrica"
     sed -i "s|\$HOME/.local|/usr|" "$plasmoids/$id/contents/ui/main.qml"
     sed -i "s|LYRICA_VERSION|$pkgver|g" "$plasmoids/$id/metadata.json"
-    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-    ln -srfv "$pkgdir/usr/share/licenses/$pkgbase/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_obs-plugin-lyrica() {
@@ -66,6 +65,5 @@ package_obs-plugin-lyrica() {
     cd "$srcdir/$pkgbase-$pkgver"
     local scripts="$pkgdir/usr/share/obs/obs-plugins/frontend-tools/scripts"
     install -Dm644 frontend/obs_studio/lyrica_obs_plugin.py "$scripts/lyrica_obs_plugin.py"
-    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-    ln -srfv "$pkgdir/usr/share/licenses/$pkgbase/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
