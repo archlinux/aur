@@ -1,12 +1,13 @@
 pkgbase = sharun-bin
 	pkgdesc = Run dynamically linked ELF binaries everywhere
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VHSgunzo/sharun
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = glibc
+	depends = patchelf
+	depends = strace
 	provides = sharun
 	conflicts = sharun
 	options = !strip

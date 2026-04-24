@@ -4,16 +4,18 @@ _pkgauthor=VHSgunzo
 _pkgname=sharun
 pkgname=${_pkgname}-bin
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Run dynamically linked ELF binaries everywhere'
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
+
 arch=('x86_64' 'aarch64')
 license=('MIT')
 
-depends=('glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+depends=('patchelf' 'strace')
 
 options=('!strip')
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
@@ -32,5 +34,6 @@ package() {
   install -Dm755 "${_pkgname}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
   install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
