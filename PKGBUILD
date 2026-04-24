@@ -12,7 +12,7 @@ optdepends=('pulseaudio: PulseAudio backend')
 options=('!strip')
 _url="https://github.com/Project-Plus-Development-Team/Project-Plus-Dolphin/releases"
 _tag='v3.1.5-2601'
-_package="Project+.$pkgver.Netplay.Linux.AppImage.zip"
+_package="Project+.$_tag.Netplay.Linux.AppImage.zip"
 _appimage="Project-Plus-Dolphin.AppImage"
 source=(
 	"$_package::$_url/download/$_tag/Project+.$_tag.Netplay.Linux.AppImage.zip"
