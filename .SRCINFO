@@ -1,16 +1,16 @@
 pkgbase = toofan-bin
 	pkgdesc = A minimal, lightning-fast typing test for your terminal
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/vyrx-dev/toofan
 	license = MIT
 	conflicts = toofan
 	provides = toofan
 	arch = aarch64
-	source_aarch64 = https://github.com/vyrx-dev/toofan/releases/download/v2.0.0/toofan_2.0.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = c32a0fb33b88a5cd7838c1826f6c7771b01912e85dcc847eff18cdf8197c6e92
+	source_aarch64 = https://github.com/vyrx-dev/toofan/releases/download/v2.1.0/toofan_2.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b3c87a1b65aef5e3060aa9b0de1ace98fdc1d59424e4a11ffeee02f57b25bbb4
 	arch = x86_64
-	source_x86_64 = https://github.com/vyrx-dev/toofan/releases/download/v2.0.0/toofan_2.0.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 759ab57253cbb59904ce326d858fcd5c6c4e9b3e94620d3ebf926b64fed1959c
+	source_x86_64 = https://github.com/vyrx-dev/toofan/releases/download/v2.1.0/toofan_2.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9494e4258bdffaa70baaa14bb569a8231102d057deddaa8a8fcf9b06ddd11211
 	
 pkgname = toofan-bin
