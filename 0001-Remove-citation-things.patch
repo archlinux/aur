@@ -1,8 +1,8 @@
 diff --git a/src/parallel b/src/parallel
-index fd2f8bcb..aa9e2725 100755
+index 7959566f..140c8397 100755
 --- a/src/parallel
 +++ b/src/parallel
-@@ -2142,11 +2142,6 @@ sub options_completion_hash() {
+@@ -2638,11 +2638,6 @@ sub options_completion_hash() {
  	 "gnu[Behave like GNU parallel]" => \$opt::gnu,
  	 "link|xapply[Link input sources]" => \$opt::link,
  	 "linkinputsource|xapplyinputsource=i" => \@opt::linkinputsource,
@@ -14,7 +14,7 @@ index fd2f8bcb..aa9e2725 100755
  	 ("bibtex|citation".
  	  "[Print the citation notice and BibTeX entry for GNU parallel, ".
  	  "silence citation notice for all future runs, and exit. ".
-@@ -2390,14 +2385,6 @@ sub parse_options(@) {
+@@ -2927,14 +2922,6 @@ sub parse_options(@) {
      init_globals();
      my @argv_before = @ARGV;
      @ARGV = read_options();
@@ -29,7 +29,7 @@ index fd2f8bcb..aa9e2725 100755
      # no-* overrides *
      if($opt::nokeeporder) { $opt::keeporder = undef; }
  
-@@ -2727,87 +2714,6 @@ sub parse_options(@) {
+@@ -3264,87 +3251,6 @@ sub parse_options(@) {
  	}
      }
  
@@ -117,7 +117,7 @@ index fd2f8bcb..aa9e2725 100755
      parse_halt();
  
      if($ENV{'PARALLEL_ENV'}) {
-@@ -6076,85 +5982,9 @@ sub usage() {
+@@ -6815,85 +6721,9 @@ sub usage() {
  	 "--recstart str  Record start separator for --pipe.",
  	 "",
  	 "GNU Parallel can do much more. See 'man $Global::progname' for details",
@@ -126,8 +126,8 @@ index fd2f8bcb..aa9e2725 100755
 -	 "If you use programs that use GNU Parallel to process data for an article in a",
 -	 "scientific publication, please cite:",
 -	 "",
--	 "  Tange, O. (2026, February 22). GNU Parallel 20260222 ('Epstein files').",
--	 "  Zenodo. https://doi.org/10.5281/zenodo.18735643",
+-	 "  Tange, O. (2026, April 22). GNU Parallel 20260422 ('Artemis II').",
+-	 "  Zenodo. https://doi.org/10.5281/zenodo.19701238",
 -	 "",
 -	 # Before changing these lines,  please read
 -	 # https://www.gnu.org/software/parallel/parallel_design.html#citation-notice
@@ -159,8 +159,8 @@ index fd2f8bcb..aa9e2725 100755
 -	     "If you use programs that use GNU Parallel to process data for an article in a",
 -	     "scientific publication, please cite:",
 -	     "",
--	     "  Tange, O. (2026, February 22). GNU Parallel 20260222 ('Epstein files').",
--	     "  Zenodo. https://doi.org/10.5281/zenodo.18735643",
+-	     "  Tange, O. (2026, April 22). GNU Parallel 20260422 ('Artemis II').",
+-	     "  Zenodo. https://doi.org/10.5281/zenodo.19701238",
 -	     "",
 -	     # Before changing these line,   please read
 -	     # https://www.gnu.org/software/parallel/parallel_design.html#citation-notice and
@@ -203,7 +203,7 @@ index fd2f8bcb..aa9e2725 100755
  sub status(@) {
      my @w = @_;
      my $fh = $Global::status_fd || *STDERR;
-@@ -6219,9 +6049,6 @@ sub version() {
+@@ -6958,9 +6788,6 @@ sub version() {
  	 "This is free software: you are free to change and redistribute it.",
  	 "GNU $Global::progname comes with no warranty.",
  	 "",
