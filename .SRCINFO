@@ -19,12 +19,12 @@ pkgbase = little-snitch-bin
 	conflicts = littlesnitch
 	options = !strip
 	source_x86_64 = littlesnitch-1.0.4-1-x86_64.pkg.tar.zst::https://obdev.at/downloads/littlesnitch-linux/littlesnitch-1.0.4-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 3104e73859c2e72b88206ebf2e7e239a157ed154eb12f3972fb570285d52aec9
 	source_aarch64 = littlesnitch-1.0.4-1-aarch64.pkg.tar.zst::https://obdev.at/downloads/littlesnitch-linux/littlesnitch-1.0.4-1-aarch64.pkg.tar.zst
-	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = cd724f59c9b0dd3f7822e2013897e07ff94be04cc5ca10a9c854300d7755eb96
 	source_ppc64le = littlesnitch-1.0.4-1-ppc64le.pkg.tar.zst::https://obdev.at/downloads/littlesnitch-linux/littlesnitch-1.0.4-1-ppc64le.pkg.tar.zst
-	sha256sums_ppc64le = SKIP
+	sha256sums_ppc64le = 2c6534330fd8009971663931a57bcd39215a5a95c995c22042aaa0e0d6546217
 	source_riscv64 = littlesnitch-1.0.4-1-riscv64.pkg.tar.zst::https://obdev.at/downloads/littlesnitch-linux/littlesnitch-1.0.4-1-riscv64.pkg.tar.zst
-	sha256sums_riscv64 = SKIP
+	sha256sums_riscv64 = c943541b236bee7c5af939acc73a3cd0b3a341ac7238dc249d37ea18dd183e24
 
 pkgname = little-snitch-bin
