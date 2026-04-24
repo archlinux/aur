@@ -4,10 +4,16 @@
 
 pkgbase=ns3
 pkgname=(
+    # Fully functional components
     ns3
+    ns3-examples{,-src} # FIXME: distribute this??? Any cons?
     # python-ns3 #FIXME: There's a lot of effort to be done to have Python bindings working.
-    ns3-examples{,-src}
     # ns3-docs #FIXME: Doxygen output is damn large!
+    # ---
+    # You may optionally enable the WIP components at build time,
+    # PKGBUILD will handle the rest:
+    $_NS3_ENABLE_WIP
+    #^e.g. _NS3_ENABLE_WIP="ns3-docs" makepkg ...
 )
 pkgver=3.47
 pkgrel=5
