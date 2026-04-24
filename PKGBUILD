@@ -5,7 +5,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-ffmpeg-core
 epoch=
-pkgver=4.0.2
+pkgver=4.1
 pkgrel=1
 pkgdesc='Core runtime for typed-ffmpeg (DAG, compilation, IR layer)'
 arch=(any)
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/ea/19/be277b9be36aff56c3c9017cf161bf7016dc7b60be7edad3546d19acbd06/ffmpeg_core-4.0.2-py3-none-any.whl)
-md5sums+=(731f125a0029a5d23bc16dea10927b77)
-noextract+=(ffmpeg_core-4.0.2-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/a8/c3/127d79ddeb402fe17216555f04125132781d19949c97e455676665dabe8e/ffmpeg_core-4.1-py3-none-any.whl)
+md5sums+=(468cdf5dd19e8c3e52e66fc0962489de)
+noextract+=(ffmpeg_core-4.1-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(e4761ae89d23a3f9a0ac3c39c13262dd)
 
