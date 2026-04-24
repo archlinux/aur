@@ -1,34 +1,42 @@
 # Maintainer: RimuruTemp1421 <daser1421official@gmail.com>
 
 pkgname=anihot-app
-pkgver=6.0.9
+pkgver=6.0.10
 pkgrel=1
-pkgdesc="Flutter-based Linux client for AniHot anime streaming app"
+pkgdesc="Linux client for AniHot anime streaming app"
 arch=('x86_64')
 url="https://github.com/MrGlany/AniHotAppPC"
 license=('custom')
 depends=('glibc' 'gtk3' 'bash' 'sqlite3')
 options=('!debug')
 source=("anihot-${pkgver}.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/${pkgver}r/${pkgver}-linux.zip")
-sha256sums=('42c2a4acd597b1b649c21b7992ed2ced9692c052961915395bf0c7340a5afae8')
-install="${pkgname}.install"
+sha256sums=('7ee7f9c70e7d60f4b663500d0fe2cf34651b17e3a363bc0d6d2a8c9ba546bae8')
+
+# Функция, выполняемая перед удалением пакета (очищает остатки)
+pre_remove() {
+    rm -rf /usr/lib/anihot-app
+}
 
 package() {
     cd "$srcdir"
 
+    # Удаляем ненужный апдейтер
     rm -f anihot_updater
 
+    # Создаём структуру каталогов
     install -d "$pkgdir/usr/lib/$pkgname"
+    install -d "$pkgdir/usr/bin"
+    install -d "$pkgdir/usr/share/applications"
+    install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 
+    # Копируем файлы приложения
     cp -r lib share data "$pkgdir/usr/lib/$pkgname/"
     cp "AniHot App" "$pkgdir/usr/lib/$pkgname/"
 
+    # Переименовываем бинарник для удобства
     mv "$pkgdir/usr/lib/$pkgname/AniHot App" "$pkgdir/usr/lib/$pkgname/anihot-app"
 
-    # Удаляем встроенную SQLite, используем системную
-    rm -f "$pkgdir/usr/lib/$pkgname/lib/libsqlite3.so"
-
-    install -d "$pkgdir/usr/bin"
+    # Создаём скрипт для запуска из терминала (обёртка)
     cat > "$pkgdir/usr/bin/anihot" << 'EOF'
 #!/bin/bash
 cd /usr/lib/anihot-app
@@ -37,9 +45,28 @@ exec ./anihot-app "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/anihot"
 
-    install -Dm644 "$srcdir/share/applications/com.anihot.anihot.desktop" \
-        "$pkgdir/usr/share/applications/anihot.desktop"
+    # Создаём правильный .desktop файл (работает из меню)
+    cat > "$pkgdir/usr/share/applications/anihot.desktop" << 'EOF'
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=AniHot App
+Comment=AniHot App
+Exec=bash -c "cd /usr/lib/anihot-app && LD_LIBRARY_PATH=lib ./anihot-app"
+Icon=com.anihot.anihot
+Terminal=false
+Categories=Video;AudioVideo;Player;
+StartupNotify=true
+StartupWMClass=com.anihot.anihot
+EOF
 
-    install -Dm644 "$srcdir/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" \
-        "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.anihot.anihot.png"
+    # Копируем иконку из архива (проверь путь, может отличаться)
+    # Если иконка лежит в share/icons/hicolor/256x256/apps/com.anihot.anihot.png
+    if [ -f "$srcdir/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" ]; then
+        cp "$srcdir/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" \
+           "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.anihot.anihot.png"
+    else
+        # Если иконка в другом месте, ищем
+        find "$srcdir" -name "*.png" -path "*/256x256/apps/*" -exec cp {} "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" \;
+    fi
 }

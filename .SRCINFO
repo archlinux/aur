@@ -1,9 +1,8 @@
 pkgbase = anihot-app
-	pkgdesc = Flutter-based Linux client for AniHot anime streaming app
-	pkgver = 6.0.9
+	pkgdesc = Linux client for AniHot anime streaming app
+	pkgver = 6.0.10
 	pkgrel = 1
 	url = https://github.com/MrGlany/AniHotAppPC
-	install = anihot-app.install
 	arch = x86_64
 	license = custom
 	depends = glibc
@@ -11,7 +10,7 @@ pkgbase = anihot-app
 	depends = bash
 	depends = sqlite3
 	options = !debug
-	source = anihot-6.0.9.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/6.0.9r/6.0.9-linux.zip
-	sha256sums = 42c2a4acd597b1b649c21b7992ed2ced9692c052961915395bf0c7340a5afae8
+	source = anihot-6.0.10.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/6.0.10r/6.0.10-linux.zip
+	sha256sums = 7ee7f9c70e7d60f4b663500d0fe2cf34651b17e3a363bc0d6d2a8c9ba546bae8
 
 pkgname = anihot-app
