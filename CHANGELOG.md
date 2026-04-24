@@ -7,11 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.19.0] - 2026-04-24
+## [2.19.1] - 2026-04-24
 
 ### Added
 - Esc key to clear Text Search and Unit Search Entries [Issue 46](https://github.com/plrigaux/sysd-manager/issues/46) and [Issue 49](https://github.com/plrigaux/sysd-manager/issues/49)
 - Unit browser add or remove units when loaded in systemd
+- Translation strings
 
 ### Changed
 - Hide Start, Stop and Restart buttons according to unit active state [Issue 50](https://github.com/plrigaux/sysd-manager/issues/50)
