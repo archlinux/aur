@@ -14,7 +14,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/pencelheimer/lget/v${pkgver}/LICENSE"
 )
 
-sha256sums=('ba6e99529c0788e86eae88a27f320056a572add6fbc07f529c3ba56530d2b88f'
+sha256sums=('1b1594e3f82cbcdb34f0f357772d6535e764bb4ef35a1b181a8d395d29be5dac'
             'b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5')
 
 package() {

@@ -1,15 +1,15 @@
 pkgbase = lget-bin
 	pkgdesc = A fast, interactive command-line tool to fetch open-source licenses directly from the SPDX repository.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/pencelheimer/lget
 	arch = x86_64
 	license = MIT
 	provides = lget
 	conflicts = lget
-	source = lget-0.1.0::https://github.com/pencelheimer/lget/releases/download/v0.1.0/lget-linux-x86_64
-	source = LICENSE-0.1.0::https://raw.githubusercontent.com/pencelheimer/lget/v0.1.0/LICENSE
-	sha256sums = ba6e99529c0788e86eae88a27f320056a572add6fbc07f529c3ba56530d2b88f
+	source = lget-0.1.1::https://github.com/pencelheimer/lget/releases/download/v0.1.1/lget-linux-x86_64
+	source = LICENSE-0.1.1::https://raw.githubusercontent.com/pencelheimer/lget/v0.1.1/LICENSE
+	sha256sums = 1b1594e3f82cbcdb34f0f357772d6535e764bb4ef35a1b181a8d395d29be5dac
 	sha256sums = b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5
 
 pkgname = lget-bin
