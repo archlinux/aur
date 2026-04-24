@@ -1,6 +1,6 @@
 pkgbase = flyenv-git
 	pkgdesc = All-In-One Full-Stack Environment Management Tool.Help developers quickly set up a local development environment.(Use system-wide electron)
-	pkgver = 4.10.6.r3.g6d0d554
+	pkgver = 4.14.2.r2.g2c99db6
 	pkgrel = 1
 	url = https://www.flyenv.com/
 	arch = aarch64
@@ -12,7 +12,8 @@ pkgbase = flyenv-git
 	makedepends = gendesk
 	makedepends = nvm
 	makedepends = go
-	depends = electron35
+	makedepends = jq
+	depends = electron39
 	depends = 7zip
 	optdepends = ollala
 	optdepends = apache
