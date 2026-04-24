@@ -1,19 +1,19 @@
 # Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=bato
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A program to send battery level notifications'
 arch=('x86_64')
 url='https://github.com/doums/bato'
 license=('MPL-2.0')
-depends=('glibc' 'gcc-libs')
+depends=('glibc')
 makedepends=('rust' 'cargo')
 provides=('bato')
 conflicts=('bato')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8e987fdb812f28149c939a470adcbf683212f461d066dd6774424dc746285d46')
+sha256sums=('471b17a2f226ffc49246a98d3866b2ef03cfeab1901e494835eb75c892acc587')
 _pkgdir="$pkgname-$pkgver"
 
 build() {
