@@ -1,6 +1,6 @@
 pkgbase = python-fastexcel
 	pkgdesc = A fast excel reader for Rust and Python
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/ToucanToco/fastexcel
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = python-fastexcel
 	optdepends = python-pandas: Traditional usage (requires python-pyarrow, too)
 	optdepends = python-polars: Polars support
 	optdepends = python-pyarrow: Arrow support
-	source = fastexcel::git+https://github.com/ToucanToco/fastexcel#tag=v0.19.0
-	b2sums = 4c23cb16cba532f3cbaa048f39ee46d5121be1ea4f51343aae9acb0c737285bd7e903badf605de9fbadf7a7f55a84120cc1119b30704f93f3181663fa7855d7a
+	source = fastexcel::git+https://github.com/ToucanToco/fastexcel#tag=v0.20.0
+	b2sums = 3f4bb4f25a1eac14d91b86e131b83c4b1cda04518dda071e464e41f57a913bbc2269b24da9a41d34c93f941cac9330bf56e8192c99230e273f49082aa5cda95a
 
 pkgname = python-fastexcel
