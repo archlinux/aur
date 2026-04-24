@@ -1,6 +1,6 @@
 pkgbase = opentubex-bin
 	pkgdesc = A fork of the open source desktop YouTube player FreeTube with additional features
-	pkgver = 0.24.5
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/OpenTubeX/OpenTubeX
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = opentubex-bin
 	conflicts = opentubex
 	options = !strip
 	options = staticlibs
-	source_x86_64 = opentubex-bin-0.24.5-amd64.deb::https://github.com/OpenTubeX/OpenTubeX/releases/download/v0.24.5-beta/opentubex_0.24.5_beta_amd64.deb
-	sha256sums_x86_64 = e471ea08f09a92f8b33349caf81bbfc41c268f19682f7d914e6e3e9cb432b405
-	source_aarch64 = opentubex-bin-0.24.5-arm64.deb::https://github.com/OpenTubeX/OpenTubeX/releases/download/v0.24.5-beta/opentubex_0.24.5_beta_arm64.deb
-	sha256sums_aarch64 = 7451e49223566a89fe4ed7237c134b1fdf72dacf5063589228c57d8bd87cac96
+	source_x86_64 = opentubex-bin-0.25.0-amd64.deb::https://github.com/OpenTubeX/OpenTubeX/releases/download/v0.25.0-beta/opentubex_0.25.0_beta_amd64.deb
+	sha256sums_x86_64 = b13fc43052a4b9fc75dd5db40acd00a323deee5c2e827a53c19749a10fbb1c49
+	source_aarch64 = opentubex-bin-0.25.0-arm64.deb::https://github.com/OpenTubeX/OpenTubeX/releases/download/v0.25.0-beta/opentubex_0.25.0_beta_arm64.deb
+	sha256sums_aarch64 = 893e0e6c10e0ad71a66c3a1122ca4ef869201c9e6c0d7d2deef4ce9be42b597c
 
 pkgname = opentubex-bin
