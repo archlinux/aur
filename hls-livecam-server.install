@@ -1,12 +1,35 @@
 post_install() {
     echo ""
-    echo "hls-livecam-server installed."
+    echo "  hls-livecam-server installed."
     echo ""
-    echo "Run the setup wizard to configure your webcam:"
-    echo "  sudo hls-livecam-setup"
+    echo "  Run the setup wizard to configure your webcam and start streaming:"
+    echo ""
+    echo "    sudo hls-livecam-setup"
+    echo ""
+    echo "  This will detect your webcam, download MediaMTX, configure nginx,"
+    echo "  and start all services."
     echo ""
 }
 
 post_upgrade() {
-    post_install
+    echo ""
+    echo "  hls-livecam-server upgraded."
+    echo "  If stream behavior changes, run: sudo hls-livecam-setup"
+    echo ""
+}
+
+pre_remove() {
+    systemctl stop ffmpeg-cam    2>/dev/null || true
+    systemctl disable ffmpeg-cam 2>/dev/null || true
+    systemctl stop mediamtx      2>/dev/null || true
+    systemctl disable mediamtx   2>/dev/null || true
+    systemctl stop broadcast-api 2>/dev/null || true
+    systemctl disable broadcast-api 2>/dev/null || true
+    systemctl stop nginx         2>/dev/null || true
+    systemctl disable nginx      2>/dev/null || true
+    systemctl daemon-reload      2>/dev/null || true
+    rm -f /etc/sudoers.d/hls-livecam-dark
+    rm -f /etc/sudoers.d/hls-livecam-services
+    rm -f /etc/sudoers.d/camstack-smart
+    rm -f /etc/nginx/conf.d/hls-livecam.conf
 }
