@@ -1,6 +1,6 @@
 pkgbase = c64_tap_tool-git
 	pkgdesc = command tool, for handling with c64 tap files
-	pkgver = r32.2d8c8a5
+	pkgver = r34.cef6c70
 	pkgrel = 1
 	url = https://github.com/ThKattanek/c64_tap_tool
 	arch = x86_64

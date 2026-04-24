@@ -6,7 +6,7 @@
 
 pkgname=c64_tap_tool-git
 _pkgname=c64_tap_tool
-pkgver=r32.2d8c8a5
+pkgver=r34.cef6c70
 pkgrel=1
 pkgdesc="command tool, for handling with c64 tap files"
 arch=('x86_64')
