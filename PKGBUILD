@@ -2,7 +2,7 @@
 
 pkgname=kazumi-bin
 _pkgname=${pkgname%-bin}
-pkgver="2.0.7"
+pkgver="2.0.8"
 pkgrel=1
 pkgdesc="基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('GPL-3.0-or-later')
 depends=('libayatana-appindicator' 'xdg-user-dirs' 'webkit2gtk-4.1')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("kazumi-2.0.7.deb::https://github.com/Predidit/Kazumi/releases/download/2.0.7/Kazumi_linux_2.0.7_amd64.deb")
-sha512sums=('ac8eed90d80e23bfebd3ba6f9025f58e83d60a4e84f47fe28588f5731ce240ad71487ad5c17fdd511f49e6d06a5bd4bc66d58aa677f2eb3bd30daa6ee6cb25a3')
+source=("kazumi-2.0.8.deb::https://github.com/Predidit/Kazumi/releases/download/2.0.8/Kazumi_linux_2.0.8_amd64.deb")
+sha512sums=('985681ea4421fd295c1fc67f1ae3f5cae26b7700a22ad6784fa016f41c5d1c1f8b8abe0b404654223d5bb02f9777468ce2de96b952b67cb2c84924ec37a411f7')
 
 package() {
     local _debdir="${srcdir}/deb-extract"
@@ -29,4 +29,17 @@ package() {
     bsdtar -xf "${_data_archive}" -C "${_datadir}"
 
     cp -a "${_datadir}/." "${pkgdir}/"
+
+    mkdir -p "${pkgdir}/usr/share/applications"
+    cat > "${pkgdir}/usr/share/applications/io.github.Predidit.Kazumi.desktop" <<EOF
+[Desktop Entry]
+Name=Kazumi
+Comment=番剧采集APP，支持流媒体在线观看
+Exec=/opt/Kazumi/kazumi
+Icon=io.github.Predidit.Kazumi
+Terminal=false
+Type=Application
+Categories=Network;Video;
+Keywords=anime;bilibili;
+EOF
 }
