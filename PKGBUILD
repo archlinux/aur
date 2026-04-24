@@ -1,9 +1,10 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=libofa
 pkgver=0.9.3
-pkgrel=10
+pkgrel=11
 pkgdesc="An open-source audio fingerprint by MusicIP"
 arch=('x86_64')
 url="https://github.com/tanob/libofa"

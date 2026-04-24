@@ -1,7 +1,7 @@
 pkgbase = libofa
 	pkgdesc = An open-source audio fingerprint by MusicIP
 	pkgver = 0.9.3
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/tanob/libofa
 	arch = x86_64
 	license = GPL2
