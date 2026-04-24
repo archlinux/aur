@@ -1,6 +1,6 @@
 pkgbase = davinci-resolve-beta
 	pkgver = 21.0b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.blackmagicdesign.com/it/products/davinciresolve
 	install = davinci-resolve-beta.install
 	arch = x86_64
@@ -30,6 +30,9 @@ pkgbase = davinci-resolve-beta
 	depends = apr-util
 	depends = luajit
 	depends = libc++abi
+	depends = libvpx
+	depends = libpulse
+	provides = davinci-resolve
 	conflicts = davinci-resolve-studio
 	conflicts = davinci-resolve
 	conflicts = davinci-resolve-studio-beta
