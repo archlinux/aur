@@ -2,13 +2,13 @@
 
 pkgname=clad
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Enables automatic differentiation for C++'
 arch=(x86_64)
 license=(LGPL)
 url='https://github.com/vgvassilev/clad'
 depends=(llvm21 clang21)
-makedepends=(cmake python git)
+makedepends=(cmake python git llvm)
 optdepends=()
 source=("git+https://github.com/vgvassilev/clad#tag=v${pkgver}")
 sha256sums=('f165083a84200ffed3365b015546b95aabffc63e0d2221255a25bdd47c903d4c')
