@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netpad-bin
 _pkgname=NetPad
-pkgver=0.11.0
+pkgver=0.12.0
 _electronversion=36
 pkgrel=1
 pkgdesc="A cross-platform C# editor and playground.(Prebuilt version.Use system-wide electron)"
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tareqimbasher/NetPad/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('20cb773d64a695344cf23e01e4359ec8119ed6e62c47bc0890d02fe346dc3b02'
+sha256sums=('d2a5b6cf577f78a43217fa68ad4b07320b24f04121def0e89870604f5e67f2d5'
             '43485534798b716310ae2a0edeebb00e97ff0e42e5fde13ff2994e2bc82348f6'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -46,8 +46,8 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/bin" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/opt/${_pkgname}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     _icon_sizes=(32x32 64x64 128x128 256x256)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
