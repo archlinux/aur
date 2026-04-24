@@ -4,7 +4,7 @@ pkgname=(
   caelestia-sddm-minimalist-git
   caelestia-sddm-minimalistv2-git
 )
-pkgver=r138.50be972
+pkgver=r136.2914130
 pkgrel=1
 arch=('any')
 url='https://github.com/ItsABigIgloo/caelestia-sddm'

@@ -132,6 +132,15 @@ post_install() {
   HOME="$real_home" SUDO_USER="$real_user" "$theme_dir/scripts/sync.sh"
   echo "==> Initial sync complete"
 
+  for dir in \
+    "$real_home/.config/caelestia" \
+    "$real_home/.local/state/caelestia" \
+    "$real_home/.local/share/caelestia"; do
+    if [ -d "$dir" ]; then
+      chown -R "$real_user:$real_user" "$dir"
+    fi
+  done
+
   _print_posthook_instructions "$theme_dir" "$real_user"
 }
 
