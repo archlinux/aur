@@ -1,0 +1,16 @@
+pkgbase = rain-ascii
+	pkgdesc = Comfy ASCII rain for your terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cursssed/rain
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	depends = ncurses
+	conflicts = rain
+	source = rain-ascii-0.1.0.tar.gz::https://github.com/cursssed/rain/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 5b1e77b12fedc54c1d5d5720dda677c2228ceff184deb51aa7ef0718fb01ce27
+
+pkgname = rain-ascii
