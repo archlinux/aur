@@ -1,7 +1,7 @@
 pkgbase = soundux
 	pkgdesc = A cross-platform soundboard - stable version
 	pkgver = 0.2.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://soundux.rocks
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = soundux
 	makedepends = ninja
 	makedepends = pipewire
 	depends = pulse-native-provider
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = libappindicator-gtk3
 	depends = lsb-release
 	optdepends = youtube-dl: unmaintained downloader integration

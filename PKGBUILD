@@ -1,12 +1,12 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux
 pkgver=0.2.7
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform soundboard - stable version"
 arch=('any')
 url="https://soundux.rocks"
 license=('GPL3')
-depends=('pulse-native-provider' 'webkit2gtk' 'libappindicator-gtk3' 'lsb-release')
+depends=('pulse-native-provider' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'lsb-release')
 optdepends=('youtube-dl: unmaintained downloader integration' 'yt-dlp-drop-in: recommended downloader integration' 'ffmpeg: downloader integration' 'pipewire: pipewire backend' 'libwnck3: icon support on X11')
 makedepends=('pkgconf' 'cmake' 'ninja' 'pipewire')
 source=("https://github.com/Soundux/Soundux/releases/download/$pkgver/soundux-$pkgver.tar.gz")
@@ -17,6 +17,7 @@ prepare() {
   sed -i "/pthread.h/c\#include <pthread.h>\n#include <cstdint>" "$srcdir/Soundux/lib/guardpp/guard/include/core/linux/guard.hpp"
   sed -i "/fancy.hpp/c\#include <fancy.hpp>\n#include <algorithm>" "$srcdir/Soundux/src/helper/audio/linux/pipewire/pipewire.cpp"
   sed -i "/target_compile_options/c\add_definitions(-w)" "$srcdir/Soundux/src/ui/impl/webview/lib/webviewpp/CMakeLists.txt"
+  sed -i 's/webkit2gtk-4\.0/webkit2gtk-4.1/g' "$srcdir/Soundux/src/ui/impl/webview/lib/webviewpp/CMakeLists.txt"
 }
 
 build() {
