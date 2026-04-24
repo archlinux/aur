@@ -20,6 +20,6 @@ package() {
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/snry-shell" <<'SCRIPT'
 #!/bin/bash
 ansible-galaxy collection install -r /usr/share/snry-shell/requirements.yml "$@"
-exec ansible-playbook /usr/share/snry-shell/setup.yml "$@"
+exec ansible-playbook --ask-become-pass /usr/share/snry-shell/setup.yml "$@"
 SCRIPT
 }
