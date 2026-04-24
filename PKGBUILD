@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=14.2.0
+pkgver=14.2.1
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc' 'icu' 'zlib')
 makedepends=('bun' 'rustup' 'zig')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/can1357/oh-my-pi/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d3c153f28343d3244f392f5574203a44e20a774108f237778492433a4f681601')
+sha256sums=('ed0fc2e6da7902a746ca36102a09b78a31b3a4f6a0c2f05f5e3199f188df3d95')
 
 build() {
     cd "${srcdir}/oh-my-pi-${pkgver}"
