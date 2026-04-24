@@ -125,6 +125,11 @@ prepare() {
 }
 
 package() {
+  # Fix requested directories for license activation
+  install -d -m 0777 "${pkgdir}/opt/${_pkgname}/.license"
+  install -d -m 0777 "${pkgdir}/opt/${_pkgname}/logs"
+  install -d -m 0777 "${pkgdir}/opt/${_pkgname}/configs"
+
   # Install binary launchers
   install -D -m 0755 "${srcdir}/davinci-control-panels-setup.sh" \
     "${pkgdir}/usr/bin/davinci-control-panels-setup"
