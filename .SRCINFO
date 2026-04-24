@@ -1,6 +1,6 @@
 pkgbase = llama.cpp
 	pkgdesc = Port of Facebook's LLaMA model in C/C++
-	pkgver = b8905
+	pkgver = b8913
 	pkgrel = 4
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
@@ -27,10 +27,10 @@ pkgbase = llama.cpp
 	options = lto
 	options = !debug
 	backup = etc/conf.d/llama.cpp
-	source = llama.cpp-b8905.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b8905.tar.gz
+	source = llama.cpp-b8913.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b8913.tar.gz
 	source = llama.cpp.conf
 	source = llama.cpp.service
-	sha256sums = 1cea9c377954a22968d2d10a7b115281f80dc3078195563cc02ece32fe9a6905
+	sha256sums = 1b0af2622c78a900e762f3b856edb9263d6a001a4b36351c936aa9e2170cbb0d
 	sha256sums = 53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87
 	sha256sums = 0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d
 
