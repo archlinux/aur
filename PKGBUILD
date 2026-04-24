@@ -2,8 +2,8 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname='Cherry Studio'
-pkgver=1.9.1
-_electronversion=40
+pkgver=1.9.3
+_electronversion=41
 pkgrel=1
 pkgdesc="🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -21,6 +21,8 @@ conflicts=("${_appname}")
 depends=(
     "electron${_electronversion}"
     'libevdev'
+    'python'
+    'python-yaml'
 )
 optdepends=(
     'ollama: Use your local LLM'
@@ -32,12 +34,30 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-x86_64.rpm")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('e67c69a80bbef3abd3aa624b46733974d53d615d1004239561e9937b9f07977f')
-sha256sums_x86_64=('e83396d4c0ae7435b3bf782bacf1829fa8386c3700625e5aa3dc7e0dd20e008b')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname// /}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+            '3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5')
+sha256sums_aarch64=('d6be1dfdb877aae1b3a7a9913d8e58798dfdb67750d82a6adae5d18998fe7145')
+sha256sums_x86_64=('527403f793c8917e90e8040b5b4b3b6fa17804a756c8b26ede0f841fb8c30cc5')
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _main_exe=""
+    
+    if [[ -n "${_app_dir}" ]]; then
+        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
+    fi
+
+    if [[ -n "${_main_exe}" ]]; then
+        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
+        if [[ -n "${_elec_ver}" ]]; then
+            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
+                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
+            else
+                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+            fi
+        fi
+    else
+        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
+    fi
 }
 prepare() {
     sed -i -e "
@@ -47,30 +67,30 @@ prepare() {
         s/@cfgdirname@/${_pkgname//-/}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    _get_electron_version
+    _check_electron_version
     sed -i -e "
         s/\"\/opt\/${_pkgname}\/${_pkgname// /}\"/${pkgname%-bin}/g
         s/Icon=${_pkgname// /}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname// /}.desktop"
-    find "${srcdir}/opt/${_pkgname}/resources" -type d \( -name "darwin" -o -name "win32" \) -exec rm -rf {} +
+    local _arch_rem
     case "${CARCH}" in
-        aarch64)
-            find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules" -type d \
-                \( -name "x64-*" -o -name "*-darwin" -o -name "*-win32" \) \
-                -exec rm -rf {} +
-            ;;
-        x86_64)
-            find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules" -type d \
-                \( -name "arm64-*" -o -name "*-darwin" -o -name "*-win32" \) \
-                -exec rm -rf {} +
-            ;;
+        aarch64) _arch_rem="x64-*" ;;
+        x86_64)  _arch_rem="arm64-*" ;;
     esac
+    find "${srcdir}/opt/${_pkgname}/resources" -type d \( \
+        -name "darwin" -o \
+        -name "win32" -o \
+        -name "${_arch_rem}" -o \
+        -name "*-darwin" -o \
+        -name "*-win32" \
+    \) -exec rm -rf {} +
     find "${srcdir}/opt/${_pkgname}/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	cp -a "${srcdir}/opt/${_pkgname}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname// /}.png" \

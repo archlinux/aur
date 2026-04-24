@@ -1,24 +1,26 @@
 pkgbase = cherry-studio-electron-bin
 	pkgdesc = 🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.9.1
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://cherry-ai.com/
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
 	license = LicenseRef-custom
-	depends = electron40
+	depends = electron41
 	depends = libevdev
+	depends = python
+	depends = python-yaml
 	optdepends = ollama: Use your local LLM
-	provides = cherry-studio=1.9.1
+	provides = cherry-studio=1.9.3
 	conflicts = cherry-studio
-	source = LICENSE-1.9.1::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.9.1/LICENSE
+	source = LICENSE-1.9.3::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.9.3/LICENSE
 	source = cherry-studio-electron.sh
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = cherry-studio-electron-1.9.1-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.9.1/Cherry-Studio-1.9.1-aarch64.rpm
-	sha256sums_aarch64 = e67c69a80bbef3abd3aa624b46733974d53d615d1004239561e9937b9f07977f
-	source_x86_64 = cherry-studio-electron-1.9.1-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.9.1/Cherry-Studio-1.9.1-x86_64.rpm
-	sha256sums_x86_64 = e83396d4c0ae7435b3bf782bacf1829fa8386c3700625e5aa3dc7e0dd20e008b
+	sha256sums = 3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5
+	source_aarch64 = cherry-studio-electron-1.9.3-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.9.3/Cherry-Studio-1.9.3-aarch64.rpm
+	sha256sums_aarch64 = d6be1dfdb877aae1b3a7a9913d8e58798dfdb67750d82a6adae5d18998fe7145
+	source_x86_64 = cherry-studio-electron-1.9.3-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.9.3/Cherry-Studio-1.9.3-x86_64.rpm
+	sha256sums_x86_64 = 527403f793c8917e90e8040b5b4b3b6fa17804a756c8b26ede0f841fb8c30cc5
 
 pkgname = cherry-studio-electron-bin
