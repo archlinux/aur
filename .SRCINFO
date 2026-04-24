@@ -1,8 +1,7 @@
 pkgbase = davinci-resolve-beta
 	pkgver = 21.0b1
 	pkgrel = 2
-	url = https://www.blackmagicdesign.com/it/products/davinciresolve
-	install = davinci-resolve-beta.install
+	url = https://blackmagicdesign.com
 	arch = x86_64
 	license = LicenseRef-Commercial
 	makedepends = libarchive
@@ -39,7 +38,7 @@ pkgbase = davinci-resolve-beta
 	options = !strip
 	source = file://DaVinci_Resolve_21.0b1_Linux.zip
 	source = davinci-control-panels-setup.sh
-	sha256sums = 8d49c7e95a589923d0bac5bd2c72f86742a613b47e1654a9fefcca83e4bf6920
+	sha256sums = 30da326f147d53a71bbe7e69fe76089f7cf3f2e8e7370e0bd13036a84a97fce7
 	sha256sums = f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8
 
 pkgname = davinci-resolve-beta
