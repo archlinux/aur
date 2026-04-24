@@ -1,7 +1,7 @@
 # Maintainer: faetalize
 
 pkgname=waytator
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Screenshot annotator and lightweight image editor'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('tesseract: OCR support')
 makedepends=('meson' 'ninja' 'pkgconf')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/faetalize/waytator/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e3c4b708f71d51e34b7712ea0dcc48b36b2d972fb54a3e952bf50dba5910e072')
+sha256sums=('4ea0afb968d5d86e5b832ae7eb0ba0b6a7d428c24cb9b9855eaa0f7298fc6c04')
 
 build() {
   local meson_options=(
