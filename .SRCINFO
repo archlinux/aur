@@ -1,0 +1,23 @@
+pkgbase = openai-codex-reasoning
+	pkgdesc = OpenAI Codex CLI fork with inline reasoning traces
+	pkgver = 0.124.0
+	pkgrel = 1
+	url = https://github.com/OneNoted/codex
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = openssl
+	depends = gcc-libs
+	depends = glibc
+	optdepends = git: built-in PR helpers
+	optdepends = ripgrep: accelerated large-repo search
+	provides = openai-codex
+	conflicts = openai-codex
+	conflicts = openai-codex-bin
+	options = !lto
+	source = codex::git+https://github.com/OneNoted/codex.git#tag=aur-v0.124.0-reasoning.1
+	sha256sums = SKIP
+
+pkgname = openai-codex-reasoning
