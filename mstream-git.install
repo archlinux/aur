@@ -1,0 +1,7 @@
+post_install() {
+  chown -R mstream:mstream /var/lib/mstream
+}
+
+post_upgrade() {
+  post_install
+}

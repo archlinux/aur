@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=mstream-git
-pkgver=6.0.0.r0.gb33ad95
+pkgver=6.5.1.r7.g772a237
 pkgrel=1
 pkgdesc='Music streaming server'
 arch=(any)
@@ -14,6 +14,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/mstream.json")
 options=('!strip')
+install=$pkgname.install
 source=(
   "$pkgname::git+https://github.com/IrosTheBeggar/mStream.git"
   mstream.json
@@ -22,7 +23,7 @@ source=(
   mstream.tmpfiles)
 sha256sums=(
   'SKIP'
-  '730c09a4a866b0dd53617073ebfb54b3022b7e7d84370232e255602c5a4d0b16'
+  'd914176fd50bd7f565700006a31aa97b79d3ad17cee20c8e5ff2061d5cb74817'
   '9f8baaad75e3152685043da8f74a09d19c2290820f12f5c3ca5022afd2e97b14'
   '5f2e6aced1707f64ca4ae3ae647fb6a8420f5c2a747ba06fa9174920fd821437'
   '97b4f92b8abba82224b3fc0e8cd179aaa9ba282e7466ab96acb75a9d627f6b23')
@@ -71,21 +72,23 @@ package() {
 
   install -D mstream.json -t "$pkgdir/etc"
 
-  #
-
-  install -d "$pkgdir/usr/lib/node_modules/mstream/"{bin,save}
-
-  # Avoid message "warning: directory permissions differ on /var/lib/mstream/"
-  # by matching the permissions to the ones set in mstream.tmpfiles
   install -dm750 "$pkgdir/var/lib/mstream"
+  install -d "$pkgdir/var/lib/mstream/"{album-art,media}
 
-  install -d "$pkgdir/var/lib/mstream/"{album-art,bin/ffmpeg,conf,db,media,sync}
+  install -d "$pkgdir/usr/lib/node_modules/mstream/bin/ffmpeg" # Patch
+  rm -r "$pkgdir/usr/lib/node_modules/mstream/bin/ffmpeg"
+  install -dm750 "$pkgdir/var/lib/mstream/bin"{,/ffmpeg}
+  ln -s /var/lib/mstream/bin/ffmpeg "$pkgdir/usr/lib/node_modules/mstream/bin/"
 
-  ln -s /var/lib/mstream/bin/ffmpeg "$pkgdir/usr/lib/node_modules/mstream/bin/ffmpeg"
-  ln -s /var/lib/mstream/conf "$pkgdir/usr/lib/node_modules/mstream/save/conf"
-  ln -s /var/lib/mstream/db "$pkgdir/usr/lib/node_modules/mstream/save/db"
-  ln -s /var/lib/mstream/sync "$pkgdir/usr/lib/node_modules/mstream/save/sync"
-
+  install -d "$pkgdir/usr/lib/node_modules/mstream/image-cache" # Patch
+  rm -r "$pkgdir/usr/lib/node_modules/mstream/image-cache"
   ln -s /var/cache/mstream "$pkgdir/usr/lib/node_modules/mstream/image-cache"
+
+  install -d "$pkgdir/usr/lib/node_modules/mstream/save/"{conf,db,logs,sync} # Patch
+  rm -r "$pkgdir/usr/lib/node_modules/mstream/save/"{conf,db,logs,sync}
+  install -d "$pkgdir/usr/lib/node_modules/mstream/save"
+  ln -s /var/lib/mstream/conf "$pkgdir/usr/lib/node_modules/mstream/save/"
+  ln -s /var/lib/mstream/db "$pkgdir/usr/lib/node_modules/mstream/save/"
+  ln -s /var/lib/mstream/sync "$pkgdir/usr/lib/node_modules/mstream/save/"
   ln -s /var/log/mstream "$pkgdir/usr/lib/node_modules/mstream/save/logs"
 }
