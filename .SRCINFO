@@ -1,0 +1,23 @@
+pkgbase = d2-mf-tracker
+	pkgdesc = A lightweight cross-platflorm D2/D2R run tracker
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/wilkinson4/d2_mf_run_tracker
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/wilkinson4/d2_mf_run_tracker/releases/download/v0.1.0/appname_0.1.0_amd64.deb
+	source_aarch64 = https://github.com/wilkinson4/d2_mf_run_tracker/releases/download/v0.1.0/appname_0.1.0_arm64.deb
+
+pkgname = d2-mf-tracker
