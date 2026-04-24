@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.19.2] - 2026-04-24
+
+### Added
+- Add Open Find in Text shortcut
+
+### Fixed
+- Fix Unit File List
+- UX Review space ratio between the unit browser and the content to persist in all time
+  [Issue 52](https://github.com/plrigaux/sysd-manager/issues/52) and [Issue 53](https://github.com/plrigaux/sysd-manager/issues/53) 
+
 ## [2.19.1] - 2026-04-24
 
 ### Added
