@@ -1,5 +1,5 @@
 pkgname=legion-gui
-pkgver=0.5.2.r0.4a662fb
+pkgver=0.5.2.r0.4a3231e
 pkgrel=4
 pkgdesc="Legion GUI (Sparta successor), ported from Kali Linux for Arch Linux"
 arch=("any")
@@ -28,10 +28,58 @@ prepare() {
 
   python - <<'PY'
 from pathlib import Path
+
 p = Path("scripts/python/pyShodan.py")
 s = p.read_text()
-s = s.replace("from pyShodan import PyShodan\n", "try:\n    from pyShodan import PyShodan\nexcept ImportError:\n    PyShodan = None\n", 1)
-s = s.replace("        try:\n            pyShodanObj = PyShodan()\n", "        try:\n            if PyShodan is None:\n                print(\"pyShodan module not installed.\")\n                return {}\n            pyShodanObj = PyShodan()\n", 1)
+s = s.replace(
+    """from pyShodan import PyShodan
+""",
+    """try:
+    from pyShodan import PyShodan
+except ImportError:
+    PyShodan = None
+""",
+    1,
+)
+s = s.replace(
+    """        try:
+            pyShodanObj = PyShodan()
+""",
+    """        try:
+            if PyShodan is None:
+                print("pyShodan module not installed.")
+                return {}
+            pyShodanObj = PyShodan()
+""",
+    1,
+)
+p.write_text(s)
+PY
+
+  python - <<'PY'
+from pathlib import Path
+
+p = Path("app/Screenshooter.py")
+s = p.read_text()
+
+old = """        if isKali():
+            eyewitness_path = "/usr/bin/eyewitness"
+        else:
+            eyewitness_path = "/usr/local/bin/eyewitness"
+"""
+new = """        if os.path.isfile("/usr/bin/eyewitness"):
+            eyewitness_path = "/usr/bin/eyewitness"
+        else:
+            eyewitness_path = "/usr/local/bin/eyewitness"
+"""
+if old in s:
+    s = s.replace(old, new, 1)
+
+legacy_err = '                raise FileNotFoundError("EyeWitness not found at /usr/bin/eyewitness. Please install it.")'
+new_err = '                raise FileNotFoundError(f"EyeWitness not found at {eyewitness_path}. Please install it.")'
+if legacy_err in s:
+    s = s.replace(legacy_err, new_err, 1)
+
 p.write_text(s)
 PY
 }

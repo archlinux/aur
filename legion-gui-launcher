@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-USER_HOME="${HOME:-/home/maik}"
+USER_HOME="${{HOME:-/home/maik}}"
 UID_NUM="$(id -u 2>/dev/null || echo 1000)"
 
-DISPLAY_VAL="${DISPLAY:-:0}"
-XAUTH_VAL="${XAUTHORITY:-$USER_HOME/.Xauthority}"
-XDG_VAL="${XDG_RUNTIME_DIR:-/run/user/$UID_NUM}"
-DBUS_VAL="${DBUS_SESSION_BUS_ADDRESS:-}"
+DISPLAY_VAL="${{DISPLAY:-:0}}"
+XAUTH_VAL="${{XAUTHORITY:-$USER_HOME/.Xauthority}}"
+XDG_VAL="${{XDG_RUNTIME_DIR:-/run/user/$UID_NUM}}"
+DBUS_VAL="${{DBUS_SESSION_BUS_ADDRESS:-}}"
 
-exec pkexec env   HOME="$USER_HOME" USER="$(id -un)" LOGNAME="$(id -un)"   DISPLAY="$DISPLAY_VAL" XAUTHORITY="$XAUTH_VAL"   XDG_RUNTIME_DIR="$XDG_VAL" DBUS_SESSION_BUS_ADDRESS="$DBUS_VAL"   XDG_CONFIG_HOME="$USER_HOME/.config" XDG_DATA_HOME="$USER_HOME/.local/share"   QT_QPA_PLATFORMTHEME="" QT_STYLE_OVERRIDE=Fusion   bash -lc "cd /usr/share/legion && exec python3 ./legion.py"
+exec pkexec env \
+  HOME="$USER_HOME" USER="$(id -un)" LOGNAME="$(id -un)" \
+  DISPLAY="$DISPLAY_VAL" XAUTHORITY="$XAUTH_VAL" \
+  XDG_RUNTIME_DIR="$XDG_VAL" DBUS_SESSION_BUS_ADDRESS="$DBUS_VAL" \
+  XDG_CONFIG_HOME="$USER_HOME/.config" XDG_DATA_HOME="$USER_HOME/.local/share" \
+  QT_QPA_PLATFORMTHEME="" QT_STYLE_OVERRIDE=Fusion \
+  bash -lc "cd /usr/share/legion && exec python3 ./legion.py"
