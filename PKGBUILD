@@ -1,8 +1,6 @@
 pkgname=magika
 
-: "${_fragment:=tag=cli/v1.1.0}"
-
-pkgver=cli+latest
+pkgver=1.1.0
 pkgrel=1
 
 pkgdesc='Fast and accurate AI powered file content types detection'
@@ -17,12 +15,8 @@ makedepends=(git cargo)
 conflicts=(magika-cli)
 provides=(magika-cli)
 
-source=("git+$url.git#$_fragment")
+source=("git+$url.git#tag=cli/v$pkgver")
 sha256sums=('5daa21e25cbeb8a796a87794a6e5bf9738d3054b6092a04e76cf301dbddc4a3c')
-
-pkgver() {
-	git -C "$pkgname" describe --first-parent --tags | sed 's#^cli/v##; s/-/+/g'
-}
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
