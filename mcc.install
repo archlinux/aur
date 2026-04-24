@@ -1,0 +1,8 @@
+post_install() {
+echo
+echo "-------------------------------------------------------"
+echo "	Run using mcc"
+echo "	Configs are in /etc/mcc"
+echo "-------------------------------------------------------"
+echo
+}

@@ -1,19 +1,22 @@
 # Maintainer: Dawid Majewski <mdawid581 at gmail dot com>
-pkgname=lcemp-server
-pkgver=1.0.1
+pkgname=mcc
+pkgver=20260415-429
 pkgrel=1
+pkgdesc="Minecraft Console Client"
 install=$pkgname.install
-pkgdesc="Dedicated Minecraft Legacy Edition server"
-arch=('x86_64')
-url="https://github.com/LCEMP/LCEMP-Server"
-license=('Other')
-source=("https://github.com/LCEMP/LCEMP-Server/releases/download/1.0.1/MinecraftDedicatedServer-Linux"
-		"$pkgname.service"
-		)
-sha256sums=('SKIP' 'SKIP')
-depends=('screen')
+arch=('x86_64' 'aarch64')
+url="https://github.com/MCCTeam/Minecraft-Console-Client"
+license=('CDDL')
+source=("https://mccteam.github.io/install.sh")
+sha256sums=('SKIP')
+
+
+build() {
+	./install.sh
+}
 
 package() {
-	install -Dm755 $srcdir/MinecraftDedicatedServer-Linux "$pkgdir/srv/lcemp/MinecraftDedicatedServer-Linux"
-	install -Dm444 "$srcdir/$pkgname.service" "$pkgdir/etc/systemd/system/$pkgname.service"
+	install -Dm755 "$srcdir/MinecraftClient" "$pkgdir/etc/mcc/MinecraftClient"
+	install -d "$pkgdir/etc/mcc"
+	install -Dm755 "$srcdir/mcc" "$pkgdir/usr/bin/mcc"
 }
