@@ -1,6 +1,6 @@
 pkgbase = mdcz
 	pkgdesc = Media metadata scraper built on Electron
-	pkgver = 0.8.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/ShotHeadman/mdcz
 	install = mdcz.install
@@ -12,11 +12,11 @@ pkgbase = mdcz
 	depends = bash
 	depends = electron
 	depends = hicolor-icon-theme
-	source = mdcz-0.8.0.tar.gz::https://github.com/ShotHeadman/mdcz/archive/refs/tags/v0.8.0.tar.gz
+	source = mdcz-0.9.1.tar.gz::https://github.com/ShotHeadman/mdcz/archive/refs/tags/v0.9.1.tar.gz
 	source = mdcz.desktop
 	source = mdcz.sh
-	sha256sums = 79e87a723383cd063953b1ca0d75a3908f5f70b6a3881177cd55e49c43ebb7d3
+	sha256sums = 94f9935d56be114653e2fc566356b41ecb527e044f3a4ddc40c3f015bdd0e89c
 	sha256sums = cd05629c20de4406029004536b25694cf4b2e27997695d6aa2b8942258d43683
-	sha256sums = a1818ad81d8ca68b369e1b392ea35c87822d15da7347b031f91b477af4a557a1
+	sha256sums = bd506812280590fa11c51feeb3e5286ed4dcd6603f1bd796f8cd567a7dfded16
 
 pkgname = mdcz
