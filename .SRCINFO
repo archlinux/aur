@@ -1,6 +1,6 @@
 pkgbase = topgrade
 	pkgdesc = Upgrade all the things
-	pkgver = 17.3.0
+	pkgver = 17.4.0
 	pkgrel = 1
 	url = https://topgrade-rs.github.io
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = topgrade
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = libgcc
-	source = topgrade-17.3.0.tar.gz::https://github.com/topgrade-rs/topgrade/archive/refs/tags/v17.3.0.tar.gz
-	sha256sums = 98f0fcbbaf201ef0442533e5fdc3fd047ae61767f28b197bb4e8bd6047a90c22
+	source = topgrade-17.4.0.tar.gz::https://github.com/topgrade-rs/topgrade/archive/refs/tags/v17.4.0.tar.gz
+	sha256sums = 97b325d4e17b1b5699090382af2240c70629432da4677400151aae05af38cf64
 
 pkgname = topgrade
