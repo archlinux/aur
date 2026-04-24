@@ -2,7 +2,7 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 _base=pybind11
 pkgname=pypy3-${_base}
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="A lightweight header-only library that exposes C++ types in Python and vice versa"
 arch=(any)
@@ -11,7 +11,7 @@ license=(BSD-3-Clause)
 depends=(pypy3)
 makedepends=(boost cmake eigen pypy3-build pypy3-installer pypy3-scikit-build-core)
 source=(https://github.com/${_base::6}/${_base}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('d6846dc88234a355f9ff312cfd0ecb8d3c7bb0e446ea5fcfc931ed7f18d56206e2b02662cdbd8d8d940a9f67b195dabfa13585f4bb1d57cb1af8a9c39a447a79')
+sha512sums=('40b40ec9fdde7b377222fa329162638be5e66bee75918d78369f741dc14b52f058fb50bb33159d099fc40f43aca39234092ce884cccc3258f34274c7dde807f0')
 
 build() {
   cd ${_base}-${pkgver}
