@@ -15,7 +15,7 @@ _tarball="jentlememes-launcher-${pkgver}-linux-x86_64.tar.gz"
 source=("${_tarball}::${url}/releases/download/v${pkgver}/${_tarball}")
 
 # После пересборки бинарника: npm run package:linux:tarball && cd jentlememes-launcher-bin && updpkgsums
-sha256sums=('38d428b401bfa903cb4214b3c8a59a0006c032649927e5a38d50c3172f4f45cb')
+sha256sums=('b17f5978e7adbd2217d5aa1c42c393fef489c83e8dfdc3cc1381a3f73bb3159f')
 
 package() {
   tar -xzf "${srcdir}/${_tarball}" -C "${srcdir}"

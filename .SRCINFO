@@ -15,6 +15,6 @@ pkgbase = jentlememes-launcher-bin
 	provides = jentlememes-launcher
 	conflicts = jentlememes-launcher
 	source = jentlememes-launcher-2.0.0-linux-x86_64.tar.gz::https://github.com/rongus760-ship-it/JentleMemes-Launcher/releases/download/v2.0.0/jentlememes-launcher-2.0.0-linux-x86_64.tar.gz
-	sha256sums = 38d428b401bfa903cb4214b3c8a59a0006c032649927e5a38d50c3172f4f45cb
+	sha256sums = b17f5978e7adbd2217d5aa1c42c393fef489c83e8dfdc3cc1381a3f73bb3159f
 
 pkgname = jentlememes-launcher-bin
