@@ -1,0 +1,67 @@
+diff --git a/greg/aux_functions.py b/greg/aux_functions.py
+index 74462c9..3566e6f 100755
+--- a/greg/aux_functions.py
++++ b/greg/aux_functions.py
+@@ -28,7 +28,6 @@ import unicodedata
+ import string
+ import json
+ 
+-from pkg_resources import resource_filename
+ import feedparser
+ import requests
+ 
+@@ -44,8 +43,6 @@ try:  # beautifulsoup4 is an optional dependency
+ except ImportError:
+     beautifulsoupexists = False
+ 
+-config_filename_global = resource_filename(__name__, 'data/greg.conf')
+-
+ # Registering a custom date handler for feedparser
+ 
+ _feedburner_date_pattern = re.compile(
+diff --git a/greg/classes.py b/greg/classes.py
+index 785595d..49c9934 100644
+--- a/greg/classes.py
++++ b/greg/classes.py
+@@ -30,14 +30,21 @@ import os.path
+ import sys
+ import time
+ import json
+-from pkg_resources import resource_filename
++import importlib.resources
++from contextlib import ExitStack
++import atexit
++
+ from urllib.parse import urlparse
+ from urllib.error import URLError
+ from warnings import warn
+ 
+ import greg.aux_functions as aux
+ 
+-config_filename_global = resource_filename(__name__, 'data/greg.conf')
++file_manager = ExitStack()
++atexit.register(file_manager.close)
++ref = importlib.resources.files(__name__) / 'data/greg.conf'
++path = file_manager.enter_context(
++    importlib.resources.as_file(ref))
+ 
+ 
+ class Session():
+@@ -49,7 +56,7 @@ class Session():
+         self.feeds = configparser.ConfigParser()
+         self.feeds.read(self.data_filename)
+         self.config = configparser.ConfigParser()
+-        self.config.read([config_filename_global, self.config_filename_user])
++        self.config.read([path, self.config_filename_user])
+ 
+     def list_feeds(self):
+         """
+@@ -84,7 +91,7 @@ class Session():
+         except KeyError:
+             pass
+         config = configparser.ConfigParser()
+-        config.read([config_filename_global, self.config_filename_user])
++        config.read([path, self.config_filename_user])
+         section = config.default_section
+         data_path = config.get(section, 'Data directory',
+                                fallback='~/.local/share/greg')
