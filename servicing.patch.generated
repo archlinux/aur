@@ -1,37 +1,3 @@
-@@ -35,17 +35,17 @@
- #
- 
- if [ -e /lib/lsb/init-functions ]; then
--    # Debian, RHEL, Fedora, SLES and openSUSE.
--    SYSTEMD_NO_WRAP="true"
--    _SYSTEMCTL_SKIP_REDIRECT=1
--    . /lib/lsb/init-functions
-+	# Debian, RHEL, Fedora, SLES and openSUSE.
-+	SYSTEMD_NO_WRAP="true"
-+	_SYSTEMCTL_SKIP_REDIRECT=1
-+	. /lib/lsb/init-functions
- else
--    # Slackware (Gentoo has these functions).
-+	# Slackware (Gentoo has these functions).
- log_success_msg() {
--    echo "$@"
-+	echo "$@"
- }
- log_failure_msg() {
--    echo "$@"
-+	echo "$@"
- }
- fi
- 
-@@ -53,7 +53,7 @@
- SCST_DFLT=/etc/default/scst
- 
- if [ -f $SCST_DFLT ]; then
--    . $SCST_DFLT
-+	. $SCST_DFLT
- fi
- 
- SCST_CFG=/etc/scst.conf
 @@ -61,287 +61,289 @@
  show_status() {
    _rc_status_ret=$?
@@ -217,17 +183,12 @@
 -    for d in $SCST_DAEMONS; do
 -        killproc "$d"
 -    done
--
+ 
 -    # isert_scst must be unloaded before iscsi_scst. Note that unloading
 -    # isert_scst may take a while since in certain scenarios (e.g. cable
 -    # problem and then service stop) MADs get timed out only after about 50+
 -    # seconds.
 -    unload_kmod isert_scst 90 || echo "Unloading isert_scst failed"
--
--    for m in isert_scst iscsi_scst fcst ib_srpt qla2xxx_scst qla2x00tgt \
--	     scst_local scst_disk scst_raid scst_tape scst_user scst_changer \
--	     scst_cdrom scst_vdisk scst_modisk scst_processor scst; do
-+
 +	# Attempt to clean config early on to prevent unfreed kernel ressources or SCST has been built into the
 +	# kernel
 +	stop_scst
@@ -235,17 +196,11 @@
 +	for d in $SCST_DAEMONS; do
 +		killproc "$d"
 +	done
-+
-+	# isert_scst must be unloaded before iscsi_scst. Note that unloading
-+	# isert_scst may take a while since in certain scenarios (e.g. cable
-+	# problem and then service stop) MADs get timed out only after about 50+
-+	# seconds.
-+	unload_kmod isert_scst 90 || echo "Unloading isert_scst failed"
-+
-+	for m in isert_scst iscsi_scst fcst ib_srpt qla2xxx_scst qla2x00tgt \
-+		 scst_local scst_disk scst_raid scst_tape scst_user scst_changer \
-+		 scst_cdrom scst_vdisk scst_modisk scst_processor scst; do
- 	unload_kmod "$m" 30
+ 
+-    for m in isert_scst iscsi_scst fcst ib_srpt qla2x00tgt qla2xxx_scst \
+-	     scst_local scst_disk scst_raid scst_tape scst_user scst_changer \
+-	     scst_cdrom scst_vdisk scst_modisk scst_processor scst; do
+-	unload_kmod "$m" 30
 -    done
 -    reverse_list=""
 -    for m in $SCST_MODULES; do
@@ -254,12 +209,21 @@
 -    for m in $reverse_list; do
 -        unload_kmod "$m" 30 || return 1
 -    done
--
++	# isert_scst must be unloaded before iscsi_scst. Note that unloading
++	# isert_scst may take a while since in certain scenarios (e.g. cable
++	# problem and then service stop) MADs get timed out only after about 50+
++	# seconds.
++	unload_kmod isert_scst 90 || echo "Unloading isert_scst failed"
+ 
 -    # Clear the config in case unloading failed or SCST has been built into the
 -    # kernel
 -    if [ -e /sys/module/scst ]; then
 -        scstadmin -noprompt -force -clear_config >/dev/null 2>&1
 -    fi
++	for m in isert_scst iscsi_scst fcst ib_srpt qla2x00tgt qla2xxx_scst \
++		 scst_local scst_disk scst_raid scst_tape scst_user scst_changer \
++		 scst_cdrom scst_vdisk scst_modisk scst_processor scst; do
++	unload_kmod "$m" 30
 +	done
 +	reverse_list=""
 +	for m in $SCST_MODULES; do
@@ -284,7 +248,22 @@
 -        for m in $SCST_OPT_MODULES; do
 -            modprobe "$m" >/dev/null 2>&1
 -        done
--
++	if [ -f $SCST_CFG ]; then
++		tmpout=/run/scst/scstadmin-output-$$
++		if scstadmin -config $SCST_CFG >$tmpout 2>&1; then
++			rm -f $tmpout
++			return 0
++		else
++			cat $tmpout
++			rm -f $tmpout
++			return 1
++		fi
++	else
++		echo "SCST configuration file $SCST_CFG missing"
++	fi
++	return 0
++}
+ 
 -        for m in $SCST_MODULES; do
 -            if [ ! -e "/sys/module/$m" ]; then
 -                if ! modprobe "$m"; then
@@ -294,7 +273,20 @@
 -                fi
 -            fi
 -        done
--
++load_scst() {
++	parse_scst_conf
++	already_loaded=""
++	for m in $SCST_OPT_MODULES; do
++		if [ ! -e "/sys/module/$m" ]; then
++			if ! modprobe "$m"; then
++				echo "modprobe $m failed."
++				return 5
++			fi
++		else
++			already_loaded="$already_loaded $m"
++		fi
++	done
+ 
 -        for d in $SCST_DAEMONS; do
 -            options=""
 -            if [ "$(basename "$d")" = "iscsi-scstd" ]; then
@@ -306,7 +298,17 @@
 -                return 1
 -            fi
 -        done
--
++	for m in $SCST_MODULES; do
++		if [ ! -e "/sys/module/$m" ] && [[ ! " $already_loaded " =~ " $m " ]]; then
++			if ! modprobe "$m"; then
++				echo "modprobe $m failed."
++				return 5
++			fi
++		else
++			already_loaded="$already_loaded $m"
++		fi
++	done
+ 
 -        if [ -f $SCST_CFG ]; then
 -            scstadmin -force -noprompt -clear_config >/dev/null 2>&1
 -            tmpout=/tmp/scstadmin-output-$$
@@ -323,55 +325,15 @@
 -            echo "SCST configuration file $SCST_CFG missing"
 -	    return 0
 -        fi
-+	if [ -f $SCST_CFG ]; then
-+		tmpout=/run/scst/scstadmin-output-$$
-+		if scstadmin -config $SCST_CFG >$tmpout 2>&1; then
-+			rm -f $tmpout
-+			return 0
-+		else
-+			cat $tmpout
-+			rm -f $tmpout
-+			return 1
-+		fi
-+	else
-+		echo "SCST configuration file $SCST_CFG missing"
+-}
++	if [ -n "$already_loaded" ]; then
++		echo "$already_loaded already loaded !"
 +	fi
-+	return 0
- }
  
 -stop_scst() {
 -        if ! parse_scst_conf; then
 -            return 1
 -        fi
-+load_scst() {
-+	parse_scst_conf
-+	already_loaded=""
-+	for m in $SCST_OPT_MODULES; do
-+		if [ ! -e "/sys/module/$m" ]; then
-+			if ! modprobe "$m"; then
-+				echo "modprobe $m failed."
-+				return 5
-+			fi
-+		else
-+			already_loaded="$already_loaded $m"
-+		fi
-+	done
-+
-+	for m in $SCST_MODULES; do
-+		if [ ! -e "/sys/module/$m" ] && [[ ! " $already_loaded " =~ " $m " ]]; then
-+			if ! modprobe "$m"; then
-+				echo "modprobe $m failed."
-+				return 5
-+			fi
-+		else
-+			already_loaded="$already_loaded $m"
-+		fi
-+	done
-+
-+	if [ -n "$already_loaded" ]; then
-+		echo "$already_loaded already loaded !"
-+	fi
-+
 +	for d in $SCST_DAEMONS; do
 +		options=""
 +		if [ "$(basename "$d")" = "iscsi-scstd" ]; then
@@ -392,16 +354,28 @@
 -        # 1 - service dead, but /run/  pid  file exists
 -        # 2 - service dead, but /run/lock/ lock file exists
 -        # 3 - service not running
--
++	# Status has a slightly different meaning for the status command:
++	# 0 - service running
++	# 1 - service dead, but /run/  pid  file exists
++	# 2 - service dead, but /run/lock/ lock file exists
++	# 3 - service not running
+ 
 -        parse_scst_conf
--
++	parse_scst_conf
+ 
 -        for m in $SCST_MODULES; do
 -            if [ ! -e "/sys/module/$m" ]; then
 -                echo "$m: not loaded"
 -                return 3
 -            fi
 -        done
--
++	for m in $SCST_MODULES; do
++		if [ ! -e "/sys/module/$m" ]; then
++			echo "$m: not loaded"
++			return 3
++		fi
++	done
+ 
 -        for d in $SCST_DAEMONS; do
 -            daemon_name=$(basename "${d}")
 -            if ! pgrep "${daemon_name}" > /dev/null 2>&1; then
@@ -409,21 +383,6 @@
 -                return 3
 -            fi
 -        done
-+	# Status has a slightly different meaning for the status command:
-+	# 0 - service running
-+	# 1 - service dead, but /run/  pid  file exists
-+	# 2 - service dead, but /run/lock/ lock file exists
-+	# 3 - service not running
-+
-+	parse_scst_conf
-+
-+	for m in $SCST_MODULES; do
-+		if [ ! -e "/sys/module/$m" ]; then
-+			echo "$m: not loaded"
-+			return 3
-+		fi
-+	done
-+
 +	for d in $SCST_DAEMONS; do
 +		daemon_name=$(basename "${d}")
 +		if ! pgrep "${daemon_name}" > /dev/null 2>&1; then

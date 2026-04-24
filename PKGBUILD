@@ -23,13 +23,13 @@ pkgname=(scst-dkms
 
 _supported_linux=
 # uncomment this line if you use linux or custom build other kernel versions with "provides=(linux)"
-#_supported_linux="linux<6.20"
+#_supported_linux="linux<7.1"
 # multiple packages versionning checks are poorly handled by pacman still as I write this.
 # this package still is not compatible to newer version without upstream newer patches
 #	linux vanilla could be called "pkgname=linux-vanilla  ;provides=(linux)"
 
 # official release . commit pull stepping . patching stepping
-pkgver=3.10.2.7
+pkgver=3.10.4.7
 # do not flag out-of-date unless it is incompatible with latest kernel version, or an important upstream commit as been pushed
 
 # increase pkgrel as you customize this package, 0 worked well so far (should be 1 officially)
@@ -43,7 +43,7 @@ arch=('x86_64')
 license=(GPL-2.0-only)
 
 # no need for iscsi digest and version parsing patches since 1ba89c391e032aba5d4be3842a1682ed897b921a and 314659ed7c7b6ca3bad2f92d2cbddd4e452ddbf1
-source=("git+https://github.com/SCST-project/scst.git#commit=7ba376819cf6b29c272e206f1a2c7637bf6bb543"
+source=("git+https://github.com/SCST-project/scst.git#commit=d18c8fc718ef8d9b017997597713b5feedea046b"
         'pr_dif_vmp_files_location.patch'
 #       'iscsi_kernel_digest.patch'
 #       'version_parsing.patch'
@@ -58,7 +58,10 @@ source=("git+https://github.com/SCST-project/scst.git#commit=7ba376819cf6b29c272
         'dkms-rdma.conf'
         'dkms-qla2x.conf'
         )
-# previously tested:
+# previously tested (I can only test iscsi target, but it does compile and load):
+#commit=0731c421fdbddb2c820d51609bda5b803389017f
+#commit=08eaa7d5ee0a2547ea9b987dd7276619b4194e91
+#commit=7ba376819cf6b29c272e206f1a2c7637bf6bb543
 #commit=6c6e7251b20a696cb896cae417b7bf55556c866e
 #commit=b2a1f6e66a26f1ad7acb215b741bb2ace193fd15
 #commit=d11040a0b19886aabffa6796e2931922a5c71d9b
@@ -74,7 +77,7 @@ sha512sums=(
   'fbf75e1035bc83a12abb4714ac1692b8db1a9e2c335ca33ec54c224c9762c9a8e3b2f5d46eebb0f5d9e334fb71cac4632c60f27f86d4c1a18055401135b1f59f'
 # 'a31723be32b6848030d669048f4434bb21b382f5da98a3240342760619fac383c72606d1578f09add780055b4e26b01da1f3779aa39a5d8e774821f39346b9c1'
 # '7d810622b813270c02f38d904a8fc113dab4fd7a144e276238dbd038331733cb8d83a46fb953c8c5d7ea052aa5516441b8632b2c1ed0e8079dfd6108f023b47b'
-  '1b9c3fb5fe6b81e22b24239fa3913f6ac5f02acee770bc67a0e5ad1e0d961081a20754167bdebdf9f9e156c41f95937de0b2cc306e2aeb252612c3984128f937'
+  '4fa123bb0dc81537178be195e7dbc0da778bc347fe87e7e53a616fd0459863c661c2da5f08c8bcd498fd032e6c3f1530fafb5568be09cbfb99424ceee38167fc'
   '7f8f6c127b68c76c7f7cfca9ef802ca7d434bf13e94ab724d06eb7fc2bcd1aefb8ef6782d64ca305e54c8134d8a117725b4d5bad03ed011dcc68ac1f964165da'
   '2c72ed03ade8e591b0efcfdae8260f053a1483f64eef1b25e342d31c334c41ce232120ad8aef00d99e4637334c2bed048245e73038e9b7f49b38ef49b5f4b717'
   '215d4bc7f652f96789ab047a2953893e501552a0e8285ef1529e29fd2d76d0264a7d1dd6c42440a35a324ad35c50c00b8cba713156ef3d39eef48509b25b5613'
