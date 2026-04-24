@@ -3,7 +3,7 @@
 
 _pkgname=data-importer
 pkgname=firefly-iii-$_pkgname
-pkgver=2.2.2
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='The Firefly III Data Importer can import data into Firefly III'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('nginx: HTTP server'
 options=('!strip' '!debug')
 install=$pkgname.install
 source=("$_pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/DataImporter-v${pkgver}.tar.gz")
-sha256sums=('7d5e61143e8f8e396a57fdd43bb9d8041df7fd8d32f1c81c851052e791be5763')
+sha256sums=('db7fe1558bfdbdd74eab41aaf5d0c67f1eef7391db92e3a7138c7daf1957030a')
 
 backup=("etc/webapps/$pkgname/config.env")
 
