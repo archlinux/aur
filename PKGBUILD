@@ -20,7 +20,7 @@ depends=('glu' 'gtk2' 'libpng12' 'fuse2' 'opencl-driver' 'qt5-x11extras' 'qt5-sv
          'java-runtime' 'ffmpeg4.4' 'gst-plugins-bad-libs' 'python-numpy'
          'tbb' 'apr-util' 'luajit' 'libc++' 'libc++abi')
 makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
-conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
+conflicts=('davinci-resolve-studio' 'davinci-resolve' 'davinci-resolve-studio-beta')
 source=("file://DaVinci_Resolve_${pkgver}_Linux.zip"
         "davinci-control-panels-setup.sh")
 sha256sums=('8d49c7e95a589923d0bac5bd2c72f86742a613b47e1654a9fefcca83e4bf6920'
