@@ -1,6 +1,6 @@
 pkgbase = forge-server-unstable
 	pkgdesc = Forge is a free, open-source modding API all of your favourite mods use!
-	pkgver = 64.0.4
+	pkgver = 64.0.5
 	pkgrel = 1
 	url = https://minecraftforge.net
 	install = forge-server-unstable.install
@@ -8,8 +8,8 @@ pkgbase = forge-server-unstable
 	license = custom
 	depends = jdk-openjdk
 	optdepends = tar: needed in order to create world backups
-	provides = forge-server-unstable=64.0.4
-	noextract = forge-26.1.2-64.0.4-installer.jar
+	provides = forge-server-unstable=64.0.5
+	noextract = forge-26.1.2-64.0.5-installer.jar
 	backup = opt/forge-server-unstable/banned-ips.json
 	backup = opt/forge-server-unstable/banned-players.json
 	backup = opt/forge-server-unstable/config
@@ -23,11 +23,11 @@ pkgbase = forge-server-unstable
 	backup = opt/forge-server-unstable/whitelist.json
 	backup = opt/forge-server-unstable/world
 	source = https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/26.1.2/LICENSE.txt
-	source = https://maven.minecraftforge.net/net/minecraftforge/forge/26.1.2-64.0.4/forge-26.1.2-64.0.4-installer.jar
+	source = https://maven.minecraftforge.net/net/minecraftforge/forge/26.1.2-64.0.5/forge-26.1.2-64.0.5-installer.jar
 	source = forge-server-unstable.service
 	source = eula.txt
 	sha512sums = ecee0462a1cad389def4cd1ce1f24f7b5cf0bb1552f45db0482ac0fa7badc54a251adb735977a1dce3412a09716ce44b0ddf81c37dcfad3a5ac5d8e3516be3c8
-	sha512sums = b376d7d8aa5ba4acfac7bf5a225c11140d285d842117c35d6dbe1d8e299fc1584252db39f697fd8aab8cbefdf9a9884b1cf1eb6e596c425d474196331479bff5
+	sha512sums = c99d793e4c55157b1c4d0e397af72bd413c8591a380df6f5ac58f3205a8dd6b579e85c29732f0230423c6087998189ee08a029aae5d0948cd375ddc68a59632e
 	sha512sums = bfda8a268b2fcb9877fe716d2d3f68b6bc11ba056d8890178c40e51995fa067b2b4f2e1865c0dcc7489dd037f22fe95ae8b5d50b9cb7000ce4854c48072c042d
 	sha512sums = 68205ffc60327c67a5ebe778598c3350d64b48aad9dacf52fcde435a535a074ba2056db30dff1b18e3c8e38510acd6ececa298b13cd4c4203636560fa4cf70cb
 
