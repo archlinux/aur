@@ -1,7 +1,7 @@
 pkgbase = metacubexd
 	pkgdesc = Mihomo Dashboard, The Official One, XD
 	pkgver = 1.245.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MetaCubeX/metacubexd
 	arch = any
 	license = MIT
@@ -12,6 +12,6 @@ pkgbase = metacubexd
 	provides = metacubexd
 	conflicts = metacubexd
 	source = metacubexd-1.245.1.tar.gz::https://github.com/MetaCubeX/metacubexd/archive/refs/tags/v1.245.1.tar.gz
-	sha256sums = 7d9c4844db8937ae7abcd7869975d86ee16f2674d3674731130288299267acf6
+	sha256sums = 71512a944abd412038a50703e8b73fe496421dd168dfed9611d16da20593f4fb
 
 pkgname = metacubexd
