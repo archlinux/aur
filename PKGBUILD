@@ -1,8 +1,8 @@
 # Maintainer: Louis Nelson Jr. <https://lousclues.com>
 pkgname=vigil-baseline
-pkgver=1.1.1
+pkgver=1.3.2
 pkgrel=1
-pkgdesc="Lightweight file integrity monitor for Linux desktops"
+pkgdesc="Linux file integrity monitor with BLAKE3 hashing and HMAC-chained audit trail"
 arch=('x86_64')
 url="https://github.com/lousclues-labs/vigil"
 license=('GPL-3.0-only')
