@@ -1,6 +1,6 @@
 pkgbase = signal-desktop-system-electron
 	pkgdesc = Signal Private Messenger for Linux (uses system Electron)
-	pkgver = 8.2.1
+	pkgver = 8.7.0
 	pkgrel = 1
 	url = https://signal.org
 	arch = x86_64
@@ -34,11 +34,11 @@ pkgbase = signal-desktop-system-electron
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	provides = signal-desktop
 	conflicts = signal-desktop
-	source = signal-desktop-system-electron-8.2.1.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v8.2.1.tar.gz
+	source = signal-desktop-system-electron-8.7.0.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v8.7.0.tar.gz
 	source = signal-desktop.desktop
-	sha256sums = e72d44e93ee579ab99b3f308c07a10ac2eecf14dd86197ac7efca6855f3facc4
+	sha256sums = c17d8efc62ad020b8fd6fc4bc34c041cad3950ec60f148d1c2d03b136388672a
 	sha256sums = bf388df4b5bbcab5559ebbf220ed4748ed21b057f24b5ff46684e3fe6e88ccce
-	b2sums = 5e617baa9c111f356772b56687c3c1bae324fb3e0ba9b03ea680a23222968cd5029190697d88138dcd0c3b503b98f4c80b551adf5f8647b6a05a1a8af3d34ac0
+	b2sums = 31854b8148b96dc7d03d5562306cfc89d604f355acef2a730fbb1b3641b8a63a67f9fc95220738701a6efc381d1b4c21a21bd1e023c2bb5a5bba07fe27ed3a2e
 	b2sums = ffb8f7bab4fd84aacf13e7b6d2835daf449b6650b4b3fa723456792ba7fb6cae352928fea11cb030510d558ce30036ff5a1513444f067b94c7fff0158b4f2265
 
 pkgname = signal-desktop-system-electron
