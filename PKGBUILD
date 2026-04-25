@@ -43,5 +43,5 @@ package() {
 	install -Dm644 "${pkgdir}/opt/QQ/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
 	# Temporary Solution: Remove libssh2 which comes from package "linuxqq" itself
-	rm -fv ${pkgdir}/opt/QQ/resources/app/{{,avsdk/bugly/}libssh2.so.1}
+	rm -fv ${pkgdir}/opt/QQ/resources/app/{,avsdk/bugly/}libssh2.so.1
 }
