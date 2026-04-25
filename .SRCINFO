@@ -1,0 +1,18 @@
+pkgbase = senfoniscan-git
+	pkgdesc = AI-Powered Passive Reconnaissance CLI (DNS, Subdomain, Screenshots, Wayback, Shodan, HIBP, AI Report)
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/mefkuz/SenfoniScan
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pip
+	provides = senfoniscan
+	conflicts = senfoniscan
+	source = git+https://github.com/mefkuz/SenfoniScan.git
+	source = senfoniscan.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = senfoniscan-git
