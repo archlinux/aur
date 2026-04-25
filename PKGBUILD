@@ -2,7 +2,7 @@
 
 pkgname=openscreen-appimage
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
 arch=('x86_64')
 url="https://github.com/siddharthvaddem/openscreen"
@@ -19,7 +19,7 @@ source=(
     "openscreen.desktop"
     "openscreen"
 )
-sha256sums=('54365d16c464240cdd92465c32634b8283022a9cfea2ed9699402c7ca0038855' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('e7ce92a2d86d65baf60c900ea7fa6f025eb849cb9d75e5732007047bc98e9821' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     chmod +x $srcdir/Openscreen-Linux-latest.AppImage
