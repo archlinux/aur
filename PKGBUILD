@@ -1,7 +1,7 @@
 # Maintainer: Matthew Cushing <cushing.matt@gmail.com>
 pkgname=wflow-git
 _pkgname=wflow
-pkgver=0.2.0.r0.g0000000
+pkgver=0.3.0.r0.g0000000
 pkgrel=1
 pkgdesc="A workflow engine for Wayland automation — Shortcuts-style GUI + CLI on top of wdotool (git build)"
 arch=('x86_64')
@@ -17,10 +17,9 @@ depends=(
 )
 makedepends=('rust' 'cargo' 'git')
 optdepends=(
-    'wdotool: input automation (key, type, click, move, scroll, focus)'
     'libnotify: desktop notifications via notify-send'
     'wl-clipboard: clipboard via wl-copy'
-    'xdg-desktop-portal: Record Mode (real input capture)'
+    'xdg-desktop-portal: input via libei portal + Record Mode'
 )
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
