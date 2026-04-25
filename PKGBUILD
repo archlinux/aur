@@ -5,28 +5,30 @@ _pkgname=snapmaker-orca
 _Pkgname=Snapmaker_Orca
 
 pkgname="${_pkgname}"-appimage
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
 url="https://github.com/Snapmaker/OrcaSlicer/"
 license=('AGPL-3.0-only')
 options=(!strip !debug)
-depends=('zlib' 'hicolor-icon-theme' 'fuse2')
+depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'webkit2gtk-4.1')
+makedepends=('unzip')
 provides=('snapmaker-orca')
 
-_appimage="${pkgname}-${pkgver}_Beta.appimage"
-source_x86_64=("${_appimage}::https://github.com/Snapmaker/OrcaSlicer/releases/download/v${pkgver}/${_Pkgname}_Linux_AppImage_Ubuntu2404_V${pkgver}_Beta.AppImage"
+_ziparchive="${pkgname}-${pkgver}_archive.zip"
+source_x86_64=("${_ziparchive}::https://github.com/Snapmaker/OrcaSlicer/releases/download/v${pkgver}/Snapmaker_Orca_Linux_ubuntu_2404_V${pkgver}.zip"
                "LICENSE::https://raw.githubusercontent.com/Snapmaker/OrcaSlicer/refs/heads/main/LICENSE.txt"
               )
-noextract=("${_appimage}")
-sha256sums_x86_64=('d3676edc0e5385deb537a44e87496a4c7b631007884bad5234dcc4f5c8d8b09b'
+noextract=("${_ziparchive}")
+sha256sums_x86_64=('942f566a89b5ee84a83b6f3e01404014c0540cae98bd82593a49c4cb112b5bfb'
                    '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6'
                   )
 
 prepare() {
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+    unzip "${_ziparchive}" -d ./
+    chmod +x "Snapmaker_Orca_Linux_AppImage_Ubuntu2404_V${pkgver}.AppImage"
+    ./"Snapmaker_Orca_Linux_AppImage_Ubuntu2404_V${pkgver}.AppImage" --appimage-extract
 }
 
 build() {
@@ -39,7 +41,7 @@ build() {
 
 package() {
     # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm755 "${srcdir}/Snapmaker_Orca_Linux_AppImage_Ubuntu2404_V${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
