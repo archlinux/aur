@@ -1,6 +1,6 @@
 # Maintainer: Eduardo Parra <eduparra90@gmail.com>
 pkgname=tarifas-luz-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Comparador de tarifas de luz en España"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('tarifas-luz')
 options=(!strip)
 
 source_x86_64=("${pkgname}-${pkgver}::https://github.com/soker90/tarifas-luz/releases/download/v${pkgver}/tarifas-luz_${pkgver}_linux_amd64")
-sha256sums_x86_64=('e45a9d8eb294d01eac0cc8a277e7db2adb79ed8a7827b8a5c42d8d2591988178')
+sha256sums_x86_64=('efe3d427b8921321bb5676dcc3a080d9a5cdf9eba33f9ec485256de6e901b1ea')
 
 source=("tarifas-luz.svg::https://raw.githubusercontent.com/soker90/tarifas-luz/master/app/icon.svg")
 sha256sums=('8e364439c3a6f8f746e225c6bb1bcb4656851c728920f0d213907770c472ab42')
