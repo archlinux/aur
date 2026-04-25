@@ -1,0 +1,18 @@
+pkgbase = wombat
+	pkgdesc = Scientific calculator using Numbat programming language with GTK4+libadwaita
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/archisman-panigrahi/wombat
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = gtk4
+	depends = libadwaita
+	options = !lto
+	source = git+https://github.com/archisman-panigrahi/wombat.git#tag=v0.2.0
+	sha256sums = SKIP
+
+pkgname = wombat
