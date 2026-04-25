@@ -24,6 +24,9 @@ _err() {
 }
 
 prepare() {
+  # work around .zip containing directories set to 0555
+  find -type d -exec chmod u+w {} \;
+
   _key="$_dir/GPG-KEY-SafenetAuthenticationClient.txt"
   _deb="$_dir/610-013349-004_RevB_safenetauthenticationclient_${pkgver}_amd64.deb"
   _deb_asc="$_dir/safenetauthenticationclient_10.9.6885_amd64.deb.asc"
