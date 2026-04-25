@@ -1,0 +1,18 @@
+pkgbase = scopebuddy-gui
+	pkgdesc = Graphical Frontend for Scopebuddy
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/rfrench3/scopebuddy-gui
+	arch = any
+	license = LGPL-3.0-only
+	makedepends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = pyside6
+	depends = python
+	depends = scopebuddy
+	depends = xdg-desktop-portal
+	depends = xdg-utils
+	source = scopebuddy-gui-2.4.1.tar.gz::https://github.com/rfrench3/scopebuddy-gui/archive/refs/tags/v2.4.1.tar.gz
+	sha256sums = f1b484669605c5e1243b4da552911f34e0485827b119c6ed9f540a194a8182f2
+
+pkgname = scopebuddy-gui
