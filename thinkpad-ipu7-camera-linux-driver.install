@@ -1,0 +1,36 @@
+post_install() {
+    local user uid
+    user=$(getent passwd | awk -F: '$3 >= 1000 && $3 < 60000 && $7 !~ /nologin|false/ {print $1; exit}')
+    if [[ -n "$user" ]]; then
+        uid=$(id -u "$user" 2>/dev/null || echo 1000)
+        local svc=/usr/lib/systemd/system/ipu7-camera-dynamic.service
+        if grep -q '__PW_RUNTIME__' "$svc" 2>/dev/null; then
+            sed -i "s|__PW_RUNTIME__|/run/user/$uid|g" "$svc"
+        fi
+    fi
+
+    modprobe -r v4l2loopback 2>/dev/null || true
+    modprobe v4l2loopback 2>/dev/null || true
+
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger --subsystem-match=video4linux 2>/dev/null || true
+
+    systemctl daemon-reload
+    systemctl enable --now ipu7-camera-dynamic
+
+    echo ""
+    echo "==> ipu7-camera installed. Camera at /dev/video32 (\"IPU7 Camera\")."
+    echo "==> LED turns on when an app uses the camera, off when it stops."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    systemctl stop    ipu7-camera-dynamic 2>/dev/null || true
+    systemctl disable ipu7-camera-dynamic 2>/dev/null || true
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger --subsystem-match=video4linux 2>/dev/null || true
+}
