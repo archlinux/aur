@@ -1,6 +1,6 @@
 # Maintainer: Scott Jones <scottajones@gmail.com>
 pkgname=omarchy-emacs
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Emacs integration for Omarchy with automatic theme and font syncing"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/scottjones/omarchy-emacs"
 license=('MIT')
 depends=('emacs-wayland' 'bash')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1b12c90d5eb9156205c8a2d223a18b843420fd64d2081e3f7eed96e250fa71e6')
+sha256sums=('3f37fa5db93522018f47c8363edc1a26de925ef4ecf7cae64c3b874ce462addd')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
