@@ -1,21 +1,21 @@
-# Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
+# Maintainer: Jonathan Grotelüschen <tippfehlr@archlinux.org>
 
-pkgname='aw-watcher-media-player'
-pkgver=1.1.3
+pkgname=aw-watcher-media-player
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Watcher of system's currently playing media for ActivityWatch"
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/2e3s/aw-watcher-media-player"
-license=(Unlicense)
-depends=(activitywatch dbus openssl)
-makedepends=(git cargo)
+license=('Unlicense')
+depends=('activitywatch' 'dbus' 'openssl')
+makedepends=('git' 'cargo')
 source=("git+$url#tag=v$pkgver")
-sha512sums=('931fbb031116bfb32588aa93fd6ff641282896e92e3677d7b09104e7ac199a8448bb28050e01c78f0bb70b05f4ae14c9745732aeaf2881df0de3f14a2a66b14f')
+sha256sums=('1e8a2a6572d7b4c649ec045d21e96a0152b892041b464a855f10fe36755225cb')
 
 prepare() {
 	cd $pkgname
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target $(rustc --print host-tuple)
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
