@@ -11,7 +11,7 @@ depends=(
 )
 optdepends=()
 options=('!emptydirs' '!strip')
-makedepends=('tar')
+makedepends=('libarchive') # For bsdtar
 
 source=("https://github.com/refactoringhq/tolaria/releases/download/stable-v${pkgver}/Tolaria_${pkgver}_amd64.deb")
 sha256sums=('aaca493e48f944999574389f234e84b5f148246c81e2f2edb09a3bb8ae64e09e')
