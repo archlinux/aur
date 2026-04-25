@@ -20,7 +20,7 @@ makedepends=(
   'gettext'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MrHaku81/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d1ab5e4e97c5b7667faa2dd851ab3de42c70d173ce0f24831a1f26e31d609397')
+sha256sums=('b58a6355d4baf4d668a52c178c3efa5cde423ccd8f1d70202c6dbcd4614f2504')
 
 build() {
   cd "${pkgname}-${pkgver}"
