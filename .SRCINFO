@@ -1,6 +1,6 @@
 pkgbase = niri-dinit
 	pkgdesc = A scrollable-tiling Wayland compositor (with dinit dependency instead of systemd)
-	pkgver = 25.11
+	pkgver = 26.04
 	pkgrel = 1
 	url = https://github.com/YaLTeR/niri
 	arch = x86_64
@@ -33,10 +33,10 @@ pkgbase = niri-dinit
 	optdepends = xdg-desktop-portal-gtk: XDG desktop portal that implements most functionality
 	optdepends = xdg-desktop-portal-gnome: XDG desktop portal that supports screencasting
 	optdepends = xwayland-satellite: Rootless Xwayland integration to run X11 apps
-	provides = niri=25.11
+	provides = niri=26.04
 	conflicts = niri
 	options = !lto
-	source = git+https://github.com/YaLTeR/niri.git#tag=15c52bfb4318f3b2452f511d5367b4bfe6335242
-	sha256sums = 8a74321bb5e97ba27df34320653c790a46567c657f2a6a1bff179b0da4be9908
+	source = git+https://github.com/YaLTeR/niri.git#tag=8ed0da44d974c32c6877d2f4630c314da0717ecb
+	sha256sums = 0a1f3e11002f2e57ee83da4a8f5dd86ae820adde111c809cf0fc65021fadf971
 
 pkgname = niri-dinit

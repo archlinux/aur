@@ -1,6 +1,6 @@
 # Maintainer: Mark Karlinsky <mark.devnull@gmail.com>
 pkgname=niri-dinit
-pkgver=25.11
+pkgver=26.04
 pkgrel=1
 pkgdesc="A scrollable-tiling Wayland compositor (with dinit dependency instead of systemd)"
 arch=('x86_64')
@@ -43,9 +43,9 @@ optdepends=(
 provides=("niri=${pkgver}")
 conflicts=("niri")
 options=(!lto)
-_tag=15c52bfb4318f3b2452f511d5367b4bfe6335242 # git rev-parse "v$pkgver"
+_tag=8ed0da44d974c32c6877d2f4630c314da0717ecb # git rev-parse "v$pkgver"
 source=("git+${url}.git#tag=${_tag}")
-sha256sums=('8a74321bb5e97ba27df34320653c790a46567c657f2a6a1bff179b0da4be9908') 
+sha256sums=('0a1f3e11002f2e57ee83da4a8f5dd86ae820adde111c809cf0fc65021fadf971')
 
 prepare() {
     cd "$srcdir/niri"
@@ -70,6 +70,6 @@ package() {
     install -Dm644 "resources/niri.desktop"        -t "$pkgdir/usr/share/wayland-sessions/"
     install -Dm644 "resources/niri-portals.conf"   -t "$pkgdir/usr/share/xdg-desktop-portal/"
     install -Dm644 "resources/dinit/niri"          -t "$pkgdir/usr/lib/dinit.d/user/"
-    install -Dm644 "resources/dinit/niri-shutdown" -t "$pkgdir/usr/lib/dinit.d/user/"
+    install -Dm644 "resources/dinit/niri.target"   -t "$pkgdir/usr/lib/dinit.d/user/"
     install -Dm644 "resources/default-config.kdl"  -t "$pkgdir/usr/share/doc/$pkgname/"
 }
