@@ -1,11 +1,11 @@
 # Maintainer: Archisman Panigrahi <apandada1 AT gmail DOT com>
 pkgname=wombat
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Scientific calculator using Numbat programming language with GTK4+libadwaita"
 arch=('any')
 url="https://github.com/archisman-panigrahi/wombat"
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita')
 makedepends=('rust' 'cargo' 'pkg-config')
 options=('!lto')
