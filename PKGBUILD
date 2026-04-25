@@ -3,8 +3,8 @@
 pkgname="avalonia86"
 pkgdesc="A cross-platform configuration manager for the 86Box emulator"
 
-pkgver=1.3.6
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 
 arch=(aarch64 x86_64)
 
@@ -16,7 +16,7 @@ makedepends=('dotnet-sdk>=9.0' gendesk)
 optdepends=('86box>=2.0: emulator used with this configuration manager')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=(8ee954c0f3aa19fd3403a8a562babc41)
+md5sums=(fd7c52a1451d302fcb0c0b2f4fabc3cb)
 
 prepare() {
 	# move to the source directory
