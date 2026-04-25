@@ -1,6 +1,6 @@
-# Maintainer: Archisman Panigrahi <archisman@proton.me>
+# Maintainer: Archisman Panigrahi <apandada1 AT gmail DOT com>
 pkgname=wombat
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Scientific calculator using Numbat programming language with GTK4+libadwaita"
 arch=('x86_64' 'aarch64')
