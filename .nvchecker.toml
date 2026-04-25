@@ -1,0 +1,5 @@
+[nerva-bin]
+source = "github"
+github = "praetorian-inc/nerva"
+use_latest_release = true
+prefix = "v"
