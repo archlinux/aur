@@ -1,5 +1,5 @@
 # Maintainer: viewerofall <joemomanugget@gmail.com>
-pkgname=yourmom
+pkgname=yourmom-git
 pkgver=1.1.0
 pkgrel=1
 pkgdesc="The most cursed programming language in existence — quantum esoteric lang that transpiles to C"

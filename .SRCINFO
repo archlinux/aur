@@ -1,4 +1,4 @@
-pkgbase = yourmom
+pkgbase = yourmom-git
 	pkgdesc = The most cursed programming language in existence — quantum esoteric lang that transpiles to C
 	pkgver = 1.1.0
 	pkgrel = 1
