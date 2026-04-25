@@ -1,6 +1,6 @@
 pkgbase = lnk-bin
 	pkgdesc = 🔗 Git-native dotfiles management that doesn't suck.
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/yarlson/lnk
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = lnk-bin
 	license = MIT
 	provides = lnk
 	conflicts = lnk
-	source_x86_64 = lnk-x86_64-0.9.0.tar.gz::https://github.com/yarlson/lnk/releases/download/v0.9.0/lnk_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = f83e2895abf48211b9dffe85fede359d3c8968ee087c3673ef70399979ad3f3a
-	source_aarch64 = lnk-aarch64-0.9.0.tar.gz::https://github.com/yarlson/lnk/releases/download/v0.9.0/lnk_Linux_arm64.tar.gz
-	sha256sums_aarch64 = ef407bde578be75f1ff57c8accd3cb7419ef4429a3dfcaf26e0f998522d9d079
+	source_x86_64 = lnk-x86_64-0.9.1.tar.gz::https://github.com/yarlson/lnk/releases/download/v0.9.1/lnk_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = e8e658ad04089b3e36ef56630f1cbf1b1f980ca68161823763d429fb4caa7acf
+	source_aarch64 = lnk-aarch64-0.9.1.tar.gz::https://github.com/yarlson/lnk/releases/download/v0.9.1/lnk_Linux_arm64.tar.gz
+	sha256sums_aarch64 = c81b062f78c16798f4338c6b9145c39347dec1e96fc6d77f00b2921da6b0fdeb
 
 pkgname = lnk-bin

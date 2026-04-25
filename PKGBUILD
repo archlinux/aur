@@ -3,7 +3,7 @@
 _pkgauthor=yarlson
 _pkgname=lnk
 pkgname=${_pkgname}-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="🔗 Git-native dotfiles management that doesn't suck."
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_${_barch[1]}.tar.gz")
 
-sha256sums_x86_64=('f83e2895abf48211b9dffe85fede359d3c8968ee087c3673ef70399979ad3f3a')
-sha256sums_aarch64=('ef407bde578be75f1ff57c8accd3cb7419ef4429a3dfcaf26e0f998522d9d079')
+sha256sums_x86_64=('e8e658ad04089b3e36ef56630f1cbf1b1f980ca68161823763d429fb4caa7acf')
+sha256sums_aarch64=('c81b062f78c16798f4338c6b9145c39347dec1e96fc6d77f00b2921da6b0fdeb')
 
 package() {
 	cd "${srcdir}/" || exit
