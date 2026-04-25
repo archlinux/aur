@@ -1,0 +1,12 @@
+pkgbase = git.gay
+	pkgdesc = Unofficial desktop app for git.gay
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.gay
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	source = git.gay-1.0.0.AppImage::https://git.gay/Ri/unofficial-desktop-app/releases/download/1.0.0/git.gay-1.0.0.AppImage
+	sha256sums = 07741ac00535acfb8f595e9bd72b963e9dfaf3f6a91ac8c2d9a947b2f07ff640
+
+pkgname = git.gay
