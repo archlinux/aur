@@ -1,10 +1,9 @@
 pkgbase = wombat
 	pkgdesc = Scientific calculator using Numbat programming language with GTK4+libadwaita
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/archisman-panigrahi/wombat
-	arch = x86_64
-	arch = aarch64
+	arch = any
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
