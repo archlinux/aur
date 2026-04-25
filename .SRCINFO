@@ -1,0 +1,15 @@
+pkgbase = tolaria-bin
+	pkgdesc = Personal knowledge and life management app
+	pkgver = 2026.4.25
+	pkgrel = 1
+	url = https://github.com/refactoringhq/tolaria
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = tar
+	depends = webkit2gtk-4.1
+	options = !emptydirs
+	options = !strip
+	source = https://github.com/refactoringhq/tolaria/releases/download/stable-v2026.4.25/Tolaria_2026.4.25_amd64.deb
+	sha256sums = aaca493e48f944999574389f234e84b5f148246c81e2f2edb09a3bb8ae64e09e
+
+pkgname = tolaria-bin
