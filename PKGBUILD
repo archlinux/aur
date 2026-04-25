@@ -6,6 +6,12 @@ pkgdesc="A workflow engine for Wayland automation — Shortcuts-style GUI + CLI"
 arch=('x86_64')
 url="https://github.com/cushycush/wflow"
 license=('MIT' 'Apache-2.0')
+# cxx-qt-lib's generated C++ glue can't be linked against the Rust
+# side when the system enables makepkg's LTO (the bitcode artifacts
+# never resolve into the symbols Rust's link step expects). Cargo's
+# own profile.release lto = "thin" stays on; this only opts out of
+# the makepkg-driven external LTO.
+options=(!lto)
 depends=(
     'qt6-base'
     'qt6-declarative'
