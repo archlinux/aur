@@ -19,7 +19,7 @@ license=(GPL)
 arch=(any)
 depends=('java-runtime>=8' sh libcups)
 source=("http://www.mkgmap.org.uk/download/${pkgname}-r${pkgver}.zip")
-sha256sums=('87b0ca0e827bef556341f66ec8dd7f48eea2a479d1ff3659caa5d6f0e9a9b68c')
+sha256sums=('e82934a18195197340b1d364a2bf6dbf44e35a41f27e08e8192f41854962d977')
 
 package() {
   cd "${srcdir}/${pkgname}-r${pkgver}"
