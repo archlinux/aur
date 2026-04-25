@@ -1,6 +1,6 @@
 # Maintainer: Derrity <derrity0731@proton.me>
 pkgname=tinyserve
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Minimal multi-worker HTTP server built on libuv (static files + reverse proxy)"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('libuv')
 makedepends=('cmake' 'pkgconf')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Derrity/TinyServe/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a7ead0dc497f888311170dcf6a00cd67f6cf3623aeae85e2a5c34c5135e14f58')
+sha256sums=('31c85e4f3d73ace6dac13540a406cb991a7890544f87cf0d01cf864763ad3898')
 
 build() {
     cd "TinyServe-${pkgver}"
