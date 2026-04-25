@@ -93,7 +93,7 @@
 # "thin: uses multiple threads, faster and uses less memory, may have a lower runtime performance than Full."
 # "thin-dist: Similar to thin, but uses a distributed model rather than in-process: https://discourse.llvm.org/t/rfc-distributed-thinlto-build-for-kernel/85934"
 # "none: disable LTO
-: "${_use_llvm_lto:=thin}"
+: "${_use_llvm_lto:=none}"
 
 # Use suffix -lto only when requested by the user
 # yes - enable -lto suffix
@@ -920,5 +920,4 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('ef15265a37edbca007a3973b07fbbb55ddbd2deeadbecbb3d3507fe8a343c399'
-            'fa32a9d7b1961b366a59d107006a9728da9d89f06e32d1ef51e44fa6b9a55801'
-            '6f45ef083841792e88fbadbfefb0630abd738a131f9782333fbc61f8b6712b4b')
+            'fa32a9d7b1961b366a59d107006a9728da9d89f06e32d1ef51e44fa6b9a55801')
