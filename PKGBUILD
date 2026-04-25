@@ -1,9 +1,9 @@
 # Maintainer: xtexecute <none@none>
 
 pkgname=fleshfetch
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="GTK4-based clicker game in Python with global Supabase leaderboard. Written as a joke, don't take it too seriously."
+pkgdesc="Very early development clicker game based on GTK4, written in Python with modding support. This is a complete joke, if you couldn't tell."
 arch=('x86_64')
 url="https://github.com/xtexecute/fleshfetch-aur"
 license=('MIT')
