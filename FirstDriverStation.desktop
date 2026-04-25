@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=FIRST Driver Station
+Comment=Official driver station used for controlling FRC and FTC robots
+Icon=FirstDriverStation
+TryExec=FirstDriverStation
+Exec=FirstDriverStation
+Categories=Game;Education
+Keywords=first;driver;station
+StartupWMClass=FirstDriverStation
