@@ -1,13 +1,13 @@
 pkgbase = hwatch
 	pkgdesc = A modern alternative to the watch command
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/blacknon/hwatch
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = hwatch-0.4.0.tar.gz::https://github.com/blacknon/hwatch/archive/refs/tags/0.4.0.tar.gz
-	sha256sums = 3f4615233a0330a3a10e35f053f35774826ca13bc25a50c09bb60fe8684c9781
+	source = hwatch-0.4.1.tar.gz::https://github.com/blacknon/hwatch/archive/refs/tags/0.4.1.tar.gz
+	sha256sums = d2d7ade81e31ae6584ccf0f65bea7fe1a6dc5c79b9d149c2f3b00cd71650ac2e
 
 pkgname = hwatch
