@@ -4,7 +4,7 @@ _gitauthor=mendrik-private
 _gitname=sqv
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Universal test runner with auto-detection for 11 languages"
+pkgdesc="A keyboard-first terminal viewer for SQLite databases"
 
 pkgver=0.1.0
 pkgrel=1
