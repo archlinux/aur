@@ -3,13 +3,13 @@
 
 pkgname=mingw-w64-crt-msvcrt
 pkgver=13.0.0
-pkgrel=1
-pkgdesc='MinGW-w64 CRT for Windows (with MSVCRT as default C runtime library)'
+pkgrel=2
+pkgdesc='MinGW-w64 CRT for Windows (w/ MSVCRT as C runtime library)'
 arch=('any')
 url='http://mingw-w64.sourceforge.net'
 license=('LicenseRef-custom')
 groups=('mingw-w64-toolchain-msvcrt' 'mingw-w64-msvcrt')
-makedepends=('mingw-w64-gcc' 'mingw-w64-binutils' "mingw-w64-headers=${pkgver}")
+makedepends=('mingw-w64-gcc' 'mingw-w64-binutils' "mingw-w64-headers-msvcrt=${pkgver}")
 provides=("mingw-w64-crt=${pkgver}")
 conflicts=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')

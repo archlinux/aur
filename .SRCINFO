@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-crt-msvcrt
-	pkgdesc = MinGW-w64 CRT for Windows (with MSVCRT as default C runtime library)
+	pkgdesc = MinGW-w64 CRT for Windows (w/ MSVCRT as C runtime library)
 	pkgver = 13.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mingw-w64.sourceforge.net
 	arch = any
 	groups = mingw-w64-toolchain-msvcrt
@@ -9,7 +9,7 @@ pkgbase = mingw-w64-crt-msvcrt
 	license = LicenseRef-custom
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-binutils
-	makedepends = mingw-w64-headers=13.0.0
+	makedepends = mingw-w64-headers-msvcrt=13.0.0
 	provides = mingw-w64-crt=13.0.0
 	conflicts = mingw-w64-crt
 	options = !strip
