@@ -1,8 +1,8 @@
 pkgbase = shelly-git
 	pkgdesc = Shelly: A Modern Arch Package Manager (git version)
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
-	url = https://github.com/ZoeyErinBauer/Shelly-ALPM
+	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = dotnet-sdk-10.0
@@ -25,7 +25,7 @@ pkgbase = shelly-git
 	provides = shelly
 	conflicts = shelly
 	conflicts = shelly-bin
-	source = shelly-git::git+https://github.com/ZoeyErinBauer/Shelly-ALPM.git
+	source = shelly-git::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git
 	sha256sums = SKIP
 
 pkgname = shelly-git
