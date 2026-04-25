@@ -1,6 +1,6 @@
 # Maintainer: Andreas Wendleder <gonsolo@gmail.com>
 pkgname=openmoonray
-pkgver=2.40.0.1
+pkgver=3.6.0.1
 pkgrel=1
 pkgdesc="DreamWorks Animation's open-source Monte Carlo ray tracer"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('Apache')
 source=("git+${url}.git#tag=${pkgname}-${pkgver}"
         "v${pkgver}.Arch.patch") # User-provided patch file
 
-sha256sums=('30abca0fb8420eeed806a01811d611b5ff2e1359d7b16196364d15cce461923c'
-            '31e9a69e2bd6b9724c198b074c17107aed62c1e6fe18a4c8d80b789884167359')
+sha256sums=('86a8ca7fbb7de3b3bd9f2627cab68b63ed20cd1c1cccfcb69ddc969d096f3239'
+            '5eb82356ac2e8e7e382aa2a701185094e6b39514c1448e739af2ad1e2503e3f4')
 
 depends=(
   'gcc'
