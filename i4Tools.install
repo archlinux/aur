@@ -1,0 +1,38 @@
+#!/bin/bash
+
+post_install() {
+    cat > /lib/udev/rules.d/38-i4tools.rules << 'EOF'
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="5ac/128[0-9]/*", TAG+="systemd"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="5ac/122[0-9]/*", TAG+="systemd"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="5ac/f014/*", TAG+="systemd"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="5ac/1881/*", TAG+="systemd"
+
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="5ac/128[0-9]/*", MODE="0666"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="5ac/122[0-9]/*", MODE="0666"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="5ac/f014/*", MODE="0666"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="5ac/1881/*", MODE="0666"
+
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="5ac/129[0-9a-f]/*", TAG+="systemd"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="5ac/12a[0-9a-f]/*", TAG+="systemd"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="5ac/8600/*", TAG+="systemd"
+
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="5ac/1881/*", ACTION=="add", GROUP="plugdev"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="5ac/1881/*", ACTION=="bind", GROUP="plugdev"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}=="5ac/1881/*", ACTION=="remove", GROUP="plugdev"
+EOF
+
+    # 重载 udev 规则
+    udevadm control --reload-rules
+    udevadm trigger
+
+    echo "== i4Tools udev 规则已安装并生效 =="
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    rm -f /lib/udev/rules.d/38-i4tools.rules
+    udevadm control --reload-rules
+}
