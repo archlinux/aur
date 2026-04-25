@@ -1,0 +1,19 @@
+pkgbase = copilot-language-server-bin
+	pkgdesc = Language server that enables an IDE to integrate with GitHub Copilot.
+	pkgver = 1.476.0
+	pkgrel = 1
+	url = https://www.npmjs.com/package/@github/copilot-language-server
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	source = https://raw.githubusercontent.com/github/copilot-language-server-release/refs/tags/1.476.0/LICENSE
+	sha256sums = 9e48ecfa18e2b15169746a3c97beda4d1d6c6796097038498ca434ca7e0ccd44
+	b2sums = ddb0252f3de49c63f92963fdad8a31a0ff582380a66a2b76f136b09021e878c6c4bb7c6f2eb4fbb3135a38b7f4a47d2ded25a05069bd3d055d7c718775b7bf54
+	source_aarch64 = https://github.com/github/copilot-language-server-release/releases/download/1.476.0/copilot-language-server-linux-arm64-1.476.0.zip
+	sha256sums_aarch64 = 6c2f6af0067ffb048a6f38ebf39a4b5a1ad6c4e6cf6580137b3ffa0c531aaa59
+	b2sums_aarch64 = b630943f6d3c48b523c6843a1872079fd7c2bd7f0cad78d92929321b13be517bed26b9b6e05627b8d7cb9c07399a4e5171a10487c912ddc4dae8373184c7af44
+	source_x86_64 = https://github.com/github/copilot-language-server-release/releases/download/1.476.0/copilot-language-server-linux-x64-1.476.0.zip
+	sha256sums_x86_64 = c2de73c15ed5d0a03883db1f138795f00dac824ad4de52c7bc53ae113f9c3c79
+	b2sums_x86_64 = 15bd54b206ce85e57ea59b072a14cc4bdd847921e39e6e7ff69422b0d72e7eee382e6145394bb390cd2808df7ca3c88a3658b9df49a7d5a67d74f9b63186d458
+
+pkgname = copilot-language-server-bin

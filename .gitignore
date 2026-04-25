@@ -1,0 +1,13 @@
+# Emacs backup file
+*~
+
+# Build dirs
+pkg/
+src/
+
+# Downloaded files
+*.zip
+LICENSE
+
+# Built files
+*.tar.zst
