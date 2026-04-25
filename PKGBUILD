@@ -3,7 +3,7 @@
 # Maintainer: shenmo <shenmo@spark-app.store>
 
 pkgname=amber-package-manager
-pkgver=1.2.5
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="bwrap wrapper for install and running debs inside a Amber-PM container"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ conflicts=('ace-host-integration' 'amber-pm-store')
 
 source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-ce/amber-pm/repository/archive/${pkgver}.tar.gz")
 source_aarch64=("https://gitee.com/amber-ce/amber-pm/releases/download/1.2.3/ace-env-arm64.tar.xz")
-sha256sums=('2e166950e6ab74e7b84de41c668711f90be60e5b05f8d056967b1107cce610eb')
+sha256sums=('d026d8530e7e0430d76ef9ab490d06beb1f799d72c96403f5fa050bd09dc4c99')
 sha256sums_aarch64=('b99a96854f8fcba405d46b8a749b07edf584e6119f8bf9b131dfcaaa9b4ad552')
 
 install=amber-package-manager.install
