@@ -1,16 +1,29 @@
 #!/bin/bash
-# Launcher for Cursor IDE — uses its bundled Electron, not system electron.
 
-# Support user-defined flags via ~/.config/cursor-flags.conf
-CURSOR_USER_FLAGS=()
-if [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/cursor-flags.conf" ]]; then
+set -euo pipefail
+
+cursor_bin="/usr/share/cursor/bin/cursor"
+flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/cursor-flags.conf"
+
+cursor_flags=()
+if [[ -f "$flags_file" ]]; then
   while IFS= read -r line || [[ -n "$line" ]]; do
-    [[ "$line" =~ ^[[:space:]]*# ]] && continue
-    [[ "$line" =~ ^[[:space:]]*$ ]] && continue
-    CURSOR_USER_FLAGS+=("$line")
-  done < "${XDG_CONFIG_HOME:-$HOME/.config}/cursor-flags.conf"
+    line="${line%$'\r'}"
+    line="${line#"${line%%[![:space:]]*}"}"
+    line="${line%"${line##*[![:space:]]}"}"
+    [[ -z "$line" ]] && continue
+    [[ "$line" == \#* ]] && continue
+    cursor_flags+=("$line")
+  done < "$flags_file"
 fi
 
-exec /usr/share/cursor/cursor \
-  "${CURSOR_USER_FLAGS[@]}" \
-  "$@"
+case "${1:-}" in
+  agent)
+    exec "$cursor_bin" "$@"
+    ;;
+  editor)
+    shift
+    ;;
+esac
+
+exec "$cursor_bin" "${cursor_flags[@]}" "$@"
