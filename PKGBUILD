@@ -5,13 +5,22 @@ pkgrel=1
 pkgdesc='Thales/Gemalto SafeNet Authentication Client for eToken 5110/5300 & IDPrime'
 url='https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management'
 arch=(x86_64)
-depends=(ccid pcsclite)
+depends=(
+  ccid          # runtime dep for pcsclite
+  openssl       # libcrypto.so.3
+  pcsclite      # libpcsclite.so.1
+)
+makedepends=(
+  binutils      # 'ar' for deb extraction in prepare()
+)
 optdepends=('sac-core-legacy: Support for eToken 32K/64K (CardOS 4.2)')
 license=(custom)
 source=('https://www.globalsign.com/en/safenet-drivers/USB/10.9/GlobalSign-SAC-Linux-Ubuntu-24.04.4-v10.9.zip'
+        Thales.pgp
         eToken.conf
         safenetauthenticationclient.service)
 sha256sums=('c076c2ecb3842478e431ba81e1688f8c6386d7a374780c055047d2c9930cf428'
+            '62e2cb48743dec25118986446b0ea3fa5adb04ca88fef33628ede646c2ec5411'
             '85b850b820610e029428e577ca0e48f6fb7b4148ae8d702ca20b191963046c6c'
             'eb8b4e105d8b75f11e4b83ca6c4a605f781f50cc0f0405a5d1deccb5580fd055')
 validpgpkeys=('B37EBA84D2EB0C786F91EEF77F8AA801285DEE57')
@@ -27,16 +36,14 @@ prepare() {
   # work around .zip containing directories set to 0555
   find -type d -exec chmod u+w {} \;
 
-  _key="$_dir/GPG-KEY-SafenetAuthenticationClient.txt"
   _deb="$_dir/610-013349-004_RevB_safenetauthenticationclient_${pkgver}_amd64.deb"
   _deb_asc="$_dir/safenetauthenticationclient_10.9.6885_amd64.deb.asc"
   #_deb="$_dir/Installation/withoutUI/Ubuntu-2004/safenetauthenticationclient-core_${pkgver}_amd64.deb"
 
   if (( ! SKIPPGPCHECK )); then
-    echo "Verifying PGP signature of '${_deb}'..."
-    # sqv --keyring="$_key" --signature-file="$_deb_asc" "$_deb"
-    if ! _out=$(gpg --batch --status-fd 1 --trust-model always \
-                    --auto-key-retrieve --verify "$_deb_asc" "$_deb" 2>&1); then
+    echo "Verifying PGP signature of '$_deb'..."
+    # sqv --keyring="$srcdir/Thales.pgp" --signature-file="$_deb_asc" "$_deb"
+    if ! _out=$(gpgv --status-fd=1 --keyring="$srcdir/Thales.pgp" "$_deb_asc" "$_deb" 2>&1); then
         _err "PGP signature verification failed"
         echo "$_out" | grep -v "^\\[GNUPG:\\]"
         return 1
