@@ -1,6 +1,6 @@
 pkgbase = golars-bin
 	pkgdesc = Pure-Go DataFrames modeled on polars. Eager + lazy + streaming, no cgo.
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/Gaurav-Gosain/golars
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = golars-bin
 	provides = golars-lsp
 	provides = golars-mcp
 	arch = aarch64
-	source_aarch64 = https://github.com/Gaurav-Gosain/golars/releases/download/v0.1.2/golars_0.1.2_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 235cd525aaf8ab4de1ebd25e216661b317adc845341149c4c606caa1662db9e0
+	source_aarch64 = https://github.com/Gaurav-Gosain/golars/releases/download/v0.1.3/golars_0.1.3_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 933516dc500efe84c3d08b3092a9aef9e3288d999019dfc0b4f0d823b9f88611
 	arch = x86_64
-	source_x86_64 = https://github.com/Gaurav-Gosain/golars/releases/download/v0.1.2/golars_0.1.2_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 47f1222fbe04e93f19f172d2dbd5379e9b9746cfbc0d6480a002baf00af6cfb7
+	source_x86_64 = https://github.com/Gaurav-Gosain/golars/releases/download/v0.1.3/golars_0.1.3_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 3a08e6f607512482f3622e76cf9d6d867704d5b32e5225a830000ffbda373abf
 	
 pkgname = golars-bin
