@@ -2,7 +2,7 @@
 
 pkgname=continuwuity-bin
 _name=${pkgname%-bin}
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc='Community driven continuation of conduwuit & Conduit, focusing on user experience and new features'
 arch=(x86_64 aarch64)
@@ -13,18 +13,18 @@ provides=(conduwuit $_name)
 conflicts=(conduwuit $_name)
 backup=(etc/conduwuit/conduwuit.toml)
 options=(!debug)
-source_x86_64=("$_name-$pkgver-x86_64::$url/releases/download/v$pkgver/conduwuit-linux-amd64")
-source_aarch64=("$_name-$pkgver-aarch64::$url/releases/download/v$pkgver/conduwuit-linux-arm64")
-source=("$_name-LICENSE-${license[0]}::$url/raw/tag/v$pkgver/LICENSE"
-        "$_name-$pkgver-CHANGELOG.md::$url/raw/tag/v$pkgver/CHANGELOG.md"
-        "$_name-$pkgver-conduwuit.service::$url/raw/tag/v$pkgver/pkg/conduwuit.service"
-        "$_name-$pkgver-conduwuit-example.toml::$url/raw/tag/v$pkgver/conduwuit-example.toml")
+source_x86_64=($_name-$pkgver-x86_64::$url/releases/download/v$pkgver/conduwuit-linux-amd64)
+source_aarch64=($_name-$pkgver-aarch64::$url/releases/download/v$pkgver/conduwuit-linux-arm64)
+source=($_name-LICENSE-${license[0]}::$url/raw/tag/v$pkgver/LICENSE
+        $_name-$pkgver-CHANGELOG.md::$url/raw/tag/v$pkgver/CHANGELOG.md
+        $_name-$pkgver-conduwuit.service::$url/raw/tag/v$pkgver/pkg/conduwuit.service
+        $_name-$pkgver-conduwuit-example.toml::$url/raw/tag/v$pkgver/conduwuit-example.toml)
 b2sums=('518d931ec3677f070b113790e4aa9ee45ed1e4b9db4b15c08ef72f62eb82f4778347a55fa7cd61cc1654c012cdc0b52f0cf5d05444b20c7e9a002f8d3088c276'
-        '317f65d5dd667b966e2499b65a19864a9832966721b3565377e9a59116730f94075b94859be1bc06f50720c68780f3c93b61890580109c8106f49381a49fb2e4'
+        'bfb4cc18ecce1d80498ebcb3e752c6cc022ebaa77e8869f7e8238725767e17e225c3f8f1057a805b8369fe604ca0b6c151e8fc445edf50b93de40e700c04117f'
         '1a7146581c3cedef312287589c5189e02ef205e08e997af3604a472b2584466c693d52ca8cda254d2202d50bd46af65bda049b3b1f1fc00aaa074cbcb31e0e73'
-        '1b78f489e1ce39911ded71367abb4de9bd5347aa69ecbd22179a15b1647ea5b74793acbff5aafa822617730bed8544f85de27beccc9e04baed7080490e098a06')
-b2sums_x86_64=('6d6a2d6e7d1f7f559b4ac39f4c61be199160585855dd05585607477d0bfd0752d28cda0d8f20a831ea351ca295f44c86816c84dba135cf9e59bedec047d7c2ce')
-b2sums_aarch64=('c5853f6e31a26953fffd05f794b4e3771953a9a942b9ccdc99a6eb84cbce40f495c4b226ab41901f82a0f2c96108b89399aa3268a1a23db1b5418de0c0da4c42')
+        'fbf95745da2a10531ce3722cf5f85e8847f91803a864d47ef26456e803ec8802d069d2fbbc44ed94783d73e7d407ffb4e5be2092dfa100630a8fc91bd2a737b7')
+b2sums_x86_64=('cd4acbba8b7de5692da88c6914f9981cada780947a5fe07d272f3f11ff2e6c306a8b4f638a56ded9be59a1d560be5284d68cf3ccafcd95b6713991fb9086d7ef')
+b2sums_aarch64=('8257301a6aee8af04910312614db579dc4ee1732c223a43e6e21344c71811cef209bb2fb4439dc415cf1c13ce0cda3f38b86f65ec69f84e99a0e4e5c22cb994e')
 
 package() {
     install -Dm755 $_name-$pkgver-$CARCH "$pkgdir/usr/bin/conduwuit"
