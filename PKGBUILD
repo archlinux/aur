@@ -9,7 +9,7 @@ pkgname=(
   caelestia-sddm-minimalist-git   # Minimalist variant with gradient background
   caelestia-sddm-minimalistv2-git # Minimalist variant with improved fonts and UI
 )
-pkgver=r144.c9fe7df
+pkgver=r146.509faba
 pkgrel=1
 arch=('any')
 url='https://github.com/ItsABigIgloo/caelestia-sddm'
@@ -19,10 +19,10 @@ depends=(
   'qt6-declarative'
   'qt6-5compat'
   'qt6-svg'
-  'qt6-virtualkeyboard'
-  'ffmpeg'
   'ttf-rubik-vf'
   'ttf-material-symbols-variable'
+  'ttf-roboto'
+  'ttf-cascadia-code-nerd'
 )
 optdepends=(
   'caelestia-shell: dynamic colors and wallpaper sync'
