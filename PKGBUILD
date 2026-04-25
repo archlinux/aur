@@ -13,8 +13,8 @@ conflicts=('mcat')
 source_x86_64=("https://github.com/Skardyy/mcat/releases/download/v$pkgver/mcat-v$pkgver-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("https://github.com/Skardyy/mcat/releases/download/v$pkgver/mcat-v$pkgver-aarch64-unknown-linux-gnu.tar.xz")
 
-sha256sums_x86_64=('c04707791b81142042cfbaeceda6ad26fe9d52d868584a655a3b57555ff944bd')
-sha256sums_aarch64=('20db061b0113e10b54bb69dcb7579c87e45f982e91e9ded0a9b6b914c257070e')
+sha256sums_x86_64=('4b9a42afb8b9e3960c61dd1c77be9b6a249fe4bea57a8d0c5b364e71186cfb81')
+sha256sums_aarch64=('716843bd756a8eef22b697a1d65b79108267736b50775319596a8951c7f6f760')
 
 package() {
     cd "$srcdir/mcat-v$pkgver-$CARCH-unknown-linux-gnu"
