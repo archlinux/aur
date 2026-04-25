@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Chevalier <nickknight@netc.fr>
 pkgname=tetrix
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="ASCII Tetris for the terminal with lock delay, mirror pieces, polyomino mode, and animated bomb physics"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python')
 makedepends=('make')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2c2e4f940810a49666c71023707179263ce233c568f7eba7b5fda7b553c17df5')  # replaced by `updpkgsums` after each release
+sha256sums=('7a2ac4dfca34653c18e18e0926fc7c04ca98162813d4df6aab200957943c389d')
 
 build() {
     cd "$srcdir/$pkgname"
