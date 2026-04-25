@@ -1,0 +1,5 @@
+[stegoforge-bin]
+source = "github"
+github = "Nour833/StegoForge"
+use_latest_release = true
+prefix = "v"
