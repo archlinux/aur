@@ -1,6 +1,6 @@
 pkgbase = mautrix-teams
 	pkgdesc = A Matrix-Microsoft Teams puppeting bridge
-	pkgver = 26.04.1
+	pkgver = 26.04.2
 	pkgrel = 1
 	url = https://github.com/YourSandwich/mautrix-teams
 	install = mautrix-teams.install
@@ -13,7 +13,7 @@ pkgbase = mautrix-teams
 	optdepends = ffmpeg: voice message and video transcoding
 	backup = etc/mautrix-teams/mautrix-teams.yaml
 	backup = etc/mautrix-teams/registration.yaml
-	source = mautrix-teams-26.04.1.tar.gz::https://github.com/YourSandwich/mautrix-teams/archive/refs/tags/v26.04.1.tar.gz
+	source = mautrix-teams-26.04.2.tar.gz::https://github.com/YourSandwich/mautrix-teams/archive/refs/tags/v26.04.2.tar.gz
 	source = mautrix-teams.service
 	source = mautrix-teams.sysusers
 	source = mautrix-teams.tmpfiles

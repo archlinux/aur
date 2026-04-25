@@ -1,6 +1,6 @@
 # Maintainer: Sandwich <sandwich@archworks.co>
 pkgname=mautrix-teams
-pkgver=26.04.1
+pkgver=26.04.2
 pkgrel=1
 pkgdesc="A Matrix-Microsoft Teams puppeting bridge"
 arch=('x86_64' 'aarch64')
