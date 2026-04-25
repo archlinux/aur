@@ -2,7 +2,7 @@
 
 pkgname=niri-focused-booster
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='dmem cgroup boosting for focused windows on Niri'
 arch=(x86_64)
 url='https://github.com/1Naim/niri-focused-booster'
@@ -11,7 +11,6 @@ depends=(
   'dmemcg-booster'
   'glibc'
   'libgcc'
-  'niri-git'
   'systemd'
 )
 makedepends=(
