@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A TUI for Docker inspired by lazydocker and k9s while leveraging beautiful graphics from BubbleTea"
 
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('0065919109ff3ac78ded77744b231c6157f1648bb8c60d216bdb59175d8ea37d')
-sha256sums_aarch64=('0c94eee9f604e15c350d48bf465a5aca932a1a25ed8a55c06c7d175803cbf02a')
+sha256sums_x86_64=('acd6c2fffe5137edc76ebb500fea2922e413e27e97282d8f896581b7816c4e64')
+sha256sums_aarch64=('0d7c022338d99342573f870fc912320ab191ad24bb1c7a39745205c8b1b5fc7a')
 
 
 case ${CARCH} in
