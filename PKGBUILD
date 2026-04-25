@@ -3,7 +3,7 @@
 
 pkgbase=oidc-agent
 pkgname=('oidc-agent')
-pkgver=5.3.4
+pkgver=5.3.5
 pkgrel=1
 pkgdesc='A set of tools to manage OpenID Connect tokens and make them easily usable from the command line'
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=('bash'
          'webkit2gtk-4.1'
          )
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/indigo-dc/oidc-agent/archive/v${pkgver}.tar.gz")
-sha256sums=('21d670851df8a726a9a8e620ec4557c3fd9cc490a06a57ddddfc5a9bdc8f9df0')
+sha256sums=('aaa212730560caea21d4d3b72218c55e5eeec1f776d711f58044339f168ed60a')
 
 build() {
   cd "$srcdir"/${pkgbase}-${pkgver}
