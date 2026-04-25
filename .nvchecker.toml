@@ -1,0 +1,5 @@
+[sqv-bin]
+source = "github"
+github = "mendrik-private/sqv"
+use_latest_release = true
+prefix = "v"

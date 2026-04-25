@@ -1,0 +1,20 @@
+pkgbase = sqv-bin
+	pkgdesc = Universal test runner with auto-detection for 11 languages
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mendrik-private/sqv
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = sqv
+	conflicts = sqv
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/mendrik-private/sqv/v0.1.0/README.md
+	source = EXAMPLE-0.1.0.db::https://raw.githubusercontent.com/mendrik-private/sqv/v0.1.0/examples/chinook.db
+	sha256sums = 1aaf3480b63082f45f16ddd626eb72f5929ac9da5f3b86dffcb8f70b2699c48b
+	sha256sums = b7b25f878952e5ca6534eb8ba2ffe19855144b6761f37aa50ed8470a666cd834
+	source_x86_64 = sqv-x86_64-0.1.0.tgz::https://github.com/mendrik-private/sqv/releases/download/v0.1.0/sqv-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 6f85d486bab46a561f11f3fe01c53878e914a0683cffd7def8896e912bc324a9
+
+pkgname = sqv-bin
