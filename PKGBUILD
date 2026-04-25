@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-git
-pkgver=2.1.1.r0.ge05c652
+pkgver=2.1.2.r0.gbf3abfb
 pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
 arch=('x86_64')
@@ -21,6 +21,7 @@ depends=(
     'dbus'
     'glibc'
     'libarchive'
+    'dconf'
 )
 optdepends=(
     'flatpak: For supporting flatpak implementation.'
