@@ -17,7 +17,7 @@
 _pkgname='task'
 pkgname='task2'
 pkgver=2.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Taskwarrior 2.X, a command-line todo list manager (prior to its breaking-change rewrite of version 3.0)"
 arch=('x86_64')
 url="https://taskwarrior.org/"
@@ -25,10 +25,15 @@ license=('MIT')
 depends=('util-linux' 'gnutls')
 makedepends=('cmake')
 optdepends=('bash-completion: for bash completion' 'python: for python export addon' 'ruby: for ruby export addon' 'perl: for perl export addon' 'perl-json: for perl export addon')
-source=("https://taskwarrior.org/download/${_pkgname}-$pkgver.tar.gz")
-sha256sums=('b1d3a7f000cd0fd60640670064e0e001613c9e1cb2242b9b3a9066c78862cfec')
+source=("https://taskwarrior.org/download/${_pkgname}-$pkgver.tar.gz" cstdint.patch)
+sha256sums=('b1d3a7f000cd0fd60640670064e0e001613c9e1cb2242b9b3a9066c78862cfec'
+    'e980f38eb82c4b42a088a3bac0814cd3c2b8b48bfdac6c860ae477101d1ca2d5')
 provides=('task')
 conflicts=('task')
+
+prepare() {
+    patch -Np0 -d "$srcdir/${_pkgname}-$pkgver" -i ../cstdint.patch
+}
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"

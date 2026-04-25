@@ -1,0 +1,12 @@
+diff --git src/libshared/src/JSON.h src/libshared/src/JSON.h
+index 3e197c2..b4001a1 100644
+--- src/libshared/src/JSON.h
++++ src/libshared/src/JSON.h
+@@ -31,6 +31,7 @@
+ #include <vector>
+ #include <string>
+ #include <Pig.h>
++#include <cstdint>
+ 
+ namespace json
+ {
