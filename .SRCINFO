@@ -1,6 +1,6 @@
 pkgbase = tmux-leap
 	pkgdesc = tmux leaper, fzf through a list of projects or directories, autosessionizing, history
-	pkgver = 1.9.3
+	pkgver = 1.9.4
 	pkgrel = 1
 	url = https://github.com/fibsussy/tmux-leap
 	install = tmux-leap.install
@@ -10,8 +10,8 @@ pkgbase = tmux-leap
 	depends = fzf
 	depends = tmux
 	options = !debug
-	source = https://github.com/fibsussy/tmux-leap/releases/download/v1.9.3/tmux-leap-linux-x86_64.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/fibsussy/tmux-leap/v1.9.3/LICENSE
+	source = https://github.com/fibsussy/tmux-leap/releases/download/v1.9.4/tmux-leap-linux-x86_64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/fibsussy/tmux-leap/v1.9.4/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 

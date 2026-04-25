@@ -1,6 +1,6 @@
 # Maintainer: fibsussy <noahlykins@gmail.com>
 pkgname=tmux-leap
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="tmux leaper, fzf through a list of projects or directories, autosessionizing, history"
 arch=('x86_64' 'aarch64')
