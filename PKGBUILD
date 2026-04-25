@@ -14,7 +14,7 @@ depends=('libmicrohttpd'
          'libsodium'
          'curl'
          'qrencode'
-         'webkit2gtk')
+         'webkit2gtk-4.1')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/indigo-dc/oidc-agent/archive/v${pkgver}.tar.gz")
 sha256sums=('21d670851df8a726a9a8e620ec4557c3fd9cc490a06a57ddddfc5a9bdc8f9df0')
 
