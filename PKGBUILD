@@ -10,6 +10,7 @@ depends=('mpvpaper' 'dotnet-runtime')
 optdepends=(
     'ffmpeg: thumbnail auto-generation for the Import Wallpaper flow'
     'libpulse: pactl/parec for the Auto-Mute feature (provided by pipewire-pulse on PipeWire systems)'
+    'wl-clipboard: persistent clipboard for the Settings keybind Copy buttons (snippets stay copied after closing livepaper)'
 )
 makedepends=('dotnet-sdk')
 provides=('livepaper')
