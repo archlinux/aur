@@ -1,6 +1,6 @@
 pkgbase = webchanges
 	pkgdesc = Check web content for changes and notify
-	pkgver = 3.34.2
+	pkgver = 3.35.0
 	pkgrel = 1
 	url = https://github.com/mborsetti/webchanges
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = webchanges
 	optdepends = python-aioxmpp: xmpp reporter
 	optdepends = python-redis: redis database
 	optdepends = python-keyring: password keyring storage
-	source = https://github.com/mborsetti/webchanges/archive/refs/tags/v3.34.2.tar.gz
-	sha256sums = 54d6ca6cfe9d6f89c549e4aab8858f27649675157d23a066b1d7a63ad464bfb5
+	source = https://github.com/mborsetti/webchanges/archive/refs/tags/v3.35.0.tar.gz
+	sha256sums = df2cdee700e025ac314112dbe8aaf3d34c279be62ab2706caa03c8a6aa41295f
 
 pkgname = webchanges
