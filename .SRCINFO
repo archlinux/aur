@@ -1,8 +1,8 @@
-pkgbase = eterm-bg
+pkgbase = eterm-backgrounds
 	pkgdesc = Collection of tiled and scaled backgrounds for the Eterm terminal.
 	pkgver = 0.9.6
 	pkgrel = 1
-	url = https://github.com/mikepento/eterm-bg
+	url = https://github.com/mikepento/eterm-backgrounds
 	arch = any
 	license = GPL-1.0-or-later
 	depends = eterm
@@ -10,4 +10,4 @@ pkgbase = eterm-bg
 	source = https://github.com/mikepento/eterm-bg/releases/download/v0.9.6-1/eterm-bg-0.9.6-1.tar.gz
 	sha256sums = 8f7e8f936de9e194f77f8f66725e8d7cb0b4d6b6f00998e6099479c76b36a781
 
-pkgname = eterm-bg
+pkgname = eterm-backgrounds

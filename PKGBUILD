@@ -1,6 +1,6 @@
 # Maintainer: Mike Pento <mjpento@gmail.com>
 
-pkgname=eterm-bg
+pkgname=eterm-backgrounds
 pkgver=0.9.6
 pkgrel=1
 pkgdesc="Collection of tiled and scaled backgrounds for the Eterm terminal."
