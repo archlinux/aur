@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=papersway
-pkgver=2.003
+pkgver=3.000
 pkgrel=1
 pkgdesc='PaperWM-like scrollable tiling window management for Sway/i3wm'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 )
 
 source=("https://cpan.metacpan.org/authors/id/S/SP/SPWHITTON/App-papersway-$pkgver.tar.gz")
-sha256sums=('ff2d25d94f8c0dd41bd21320bc0c2aa9cf69d89a3f51483d7e8cf936aa22d092')
+sha256sums=('eb41fbcc2b556c17d83aa54ac3d5f512338cee6ce34ae3e3e48c1c0d6842f9d1')
 
 build() {
   cd App-papersway-$pkgver
