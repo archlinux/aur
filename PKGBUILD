@@ -7,7 +7,7 @@ pkgname=(
     'openvino-intel-npu-plugin'
     'python-openvino')
 pkgver=2026.1.0
-pkgrel=1
+pkgrel=2
 _commit=63e31528c62d3eee06733efa63915ce04bd86f47
 pkgdesc='A toolkit for optimizing and deploying deep learning models'
 arch=('x86_64')
@@ -148,7 +148,6 @@ build() {
         -DENABLE_AVX2:BOOL='OFF' \
         -DENABLE_AVX512F:BOOL='OFF' \
         -DENABLE_CLANG_FORMAT:BOOL='OFF' \
-        -DENABLE_CPPLINT:BOOL='OFF' \
         -DENABLE_INTEL_NPU:BOOL='ON' \
         -DENABLE_INTEL_NPU_PROTOPIPE:BOOL='ON' \
         -DENABLE_NCC_STYLE:BOOL='OFF' \
@@ -169,7 +168,7 @@ build() {
     
     cd openvino/tools/benchmark_tool
     python -m build --wheel --no-isolation
-    python -m installer --destdir="${srcdir}/benchmark_app" --prefix='' dist/*.whl
+    python -m installer --destdir="${srcdir}/benchmark_app" dist/*.whl
 }
 
 package_openvino() {
@@ -265,7 +264,7 @@ package_python-openvino() {
     _site_pkgs=$(python -c "import site; print(site.getsitepackages()[0])")
     
     install -d -m755 "${pkgdir}/usr/lib"
-    install -D -m755 benchmark_app/bin/benchmark_app "${pkgdir}/usr/bin/ov-py-benchmark_app"
+    install -D -m755 benchmark_app/usr/bin/benchmark_app "${pkgdir}/usr/bin/ov-py-benchmark_app"
     mv "python${_pyver}" "${pkgdir}/usr/lib"
     rm "${pkgdir}${_site_pkgs}/requirements.txt"
     
