@@ -1,0 +1,14 @@
+pkgbase = vim2pygments-git
+	pkgdesc = Convert vim colorschemes to Pygments styles
+	pkgver = r6.193aa6d
+	pkgrel = 1
+	url = https://github.com/honza/vim2pygments
+	arch = any
+	license = BSD
+	depends = python
+	provides = vim2pygments
+	conflicts = vim2pygments
+	source = vim2pygments::git+https://github.com/honza/vim2pygments
+	sha256sums = SKIP
+
+pkgname = vim2pygments-git
