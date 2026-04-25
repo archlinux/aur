@@ -1,0 +1,23 @@
+pkgbase = openusage-cli-git
+	pkgdesc = HTTP daemon for executing OpenUsage plugins and exposing local usage snapshots
+	pkgver = r0.0.0
+	pkgrel = 1
+	url = https://github.com/chpock/openusage-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = cmake
+	makedepends = clang
+	makedepends = nasm
+	depends = glibc
+	depends = gcc-libs
+	optdepends = opencode: AI assistant integration
+	provides = openusage-cli=r0.0.0
+	conflicts = openusage-cli
+	options = !lto
+	source = git+https://github.com/chpock/openusage-cli.git
+	sha256sums = SKIP
+
+pkgname = openusage-cli-git
