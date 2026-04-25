@@ -1,4 +1,4 @@
-pkgbase = portal-bin
+pkgbase = mybox-bin
 	pkgdesc = Metodbox için minimalist masaüstü istemcisi
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -10,7 +10,7 @@ pkgbase = portal-bin
 	depends = gtk3
 	depends = alsa-lib
 	depends = libxss
-	source = portal-bin-0.1.0.zip::https://github.com/Usta-Cagri/mybox/releases/download/v0.1.0/portal-0.1.0.zip
+	source = mybox-bin-0.1.0.zip::https://github.com/Usta-Cagri/mybox/releases/download/v0.1.0/portal-0.1.0.zip
 	sha256sums = 9b7707aac5b8414637970af284eff90a44a57dd9ac19e0629cf8d3d418cf4152
 
-pkgname = portal-bin
+pkgname = mybox-bin
