@@ -4,7 +4,7 @@
 
 _pkgname=raylib
 pkgname=raylib-oldgl-git
-pkgver=5.5
+pkgver=6.0
 pkgrel=1
 pkgdesc='Simple and easy-to-use game programming library (OpenGL 2.1)'
 arch=('armv7a' 'aarch64' 'i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=()
 provides=(raylib)
 conflicts=(raylib)
 source=("$pkgname-$pkgver.tar.gz::http://github.com/raysan5/raylib/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('aea98ecf5bc5c5e0b789a76de0083a21a70457050ea4cc2aec7566935f5e258e')
+sha256sums=('2b3ee1e2120c7a0796b33062c7e9a694dd8a8caa56a96319ac8c8ecf54a90d0b')
 
 build(){
 	cd "$_pkgname-$pkgver/src" || return
@@ -24,13 +24,13 @@ build(){
 	cat <<-EOF
 		===========================================================
 		If you want support for even earlier versions of OpenGL,
-		then change the version in the PKGBUILD file.
+		change the version number in the PKGBUILD file.
 		===========================================================
 	EOF
 
 	# Change 21 to the version you want.
 	for t in SHARED STATIC;do
-		make GRAPHICS=GRAPHICS_API_OPENGL_21 RAYLIB_LIBTYPE="$t"
+		make RAYLIB_LIBTYPE="$t" GRAPHICS=GRAPHICS_API_OPENGL_21
 	done
 }
 
