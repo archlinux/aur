@@ -1,8 +1,8 @@
 # Maintainer: Maik <you@example.invalid>
 
 pkgname=pentest-ghostwriter
-pkgver=6.3.0
-pkgrel=6
+pkgver=6.3.4
+pkgrel=1
 pkgdesc='Local-first Arch Linux port of Ghostwriter for single-user offensive security workflows'
 arch=('x86_64')
 url='https://github.com/GhostManager/Ghostwriter'
@@ -47,9 +47,9 @@ source=(
   '0066_alter_reporttemplate_document.py'
   'README.native-port.md'
 )
-sha256sums=('6b2c1c375ea975de3347a01e409f2493c840356ab41a4a0d980dad51d80331f7'
-            'dced7293c18e6b071f0794c5096e853a92b5382852d71808af06e7c73fa721f4'
-            '5440fc3c991afc5cb69e9c8cfad122d36d8e64e32975f8b68b46d1849c99be6f'
+sha256sums=('47ba1a268c60ab1a2bcb99301fc5697b3f05808d6407c484bcb1f90d2391fde0'
+            '58e19b92c73a6913b48c76581351bc21d55a04e0e126697d0ff120e33f913f4e'
+            '352f5a0cdf1c74a4368d39288a319b49ecb1055284a26fff08725400399a90d8'
             '48cd59c775a3697920a414d7f3f17299e274d6d91e3761b9bc46b47eb0e372b2'
             '46fe6399794ee835ba2766b614641a1459e2562c1653d35f041db355ea1bb75d'
             'dacbde741cb2940fa91643e302ea30806986e9e4ccbe7fdeee14e47997f62a34'
@@ -61,15 +61,15 @@ sha256sums=('6b2c1c375ea975de3347a01e409f2493c840356ab41a4a0d980dad51d80331f7'
             'acaf100910502c5fda6a57d63fafa286e8e77748ec488f5fe1b10a0d93150692'
             '4857da80c329acc3e0920fa2dddf61eab09bd1a2212a184419603c2060a4f967'
             '5f07db92a5fe4f451faff8eff86e05359f71c7e19e05b1fb3d4494a357926c47'
-            '38118a8c09449fbbb04677048df6689cf36e56f502e2911530d4b59d9fd558c8'
+            '41b69ede20e71f1d72f6909e1d1790333bbc5b05f69e4d898d7698f7bd2eb29d'
             'ad1f7d4ac76c67041eca1a4245c3c87c6215aca754e1276acb3d0c0d33210a8b'
             'd759f10658cd32dbbbc1be5f0710e381d8e46ae2c3c33a7a7f0263ea892f9498'
             'a347193b184bc9be44eccc9a635a32114b7be783b4d61f6908e2007428d92640'
             'e60ef994e998c2bbd0f6af32d5da08ef0b6b193fafbb4da8910ea56085a4da6d'
             'c6becd241b2e62443ecfe772e1cb5482425a82012136daa96ce8aa3c33f08864'
             '916d9c97509aad47e0e890c6c956329bd45dbadd324075b26c9b2f11f653aa23'
-            'b4b55b8fc550fadedeacd5b0803be1b4cc8aca76ea7a21c46f78b54482b26de0'
-            'b2873654cbabbd53e32d830a50d7afbb1d1e0a50d363b9a8120c5ecbfe202a02')
+            '8afc13e41cf881eab51bec419ae7f5be97e9f66d421f0832543caebfa7bedadc'
+            '8c7c12e253b5ce6e4d829e2151f8b210c5599632ce2380542edf62b029646eaa')
 
 prepare() {
   cd "${srcdir}/Ghostwriter-${pkgver}"
