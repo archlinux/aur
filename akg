@@ -7,9 +7,30 @@ if [ ! -d ~/.akg ]; then
     mkdir ~/.akg
 fi
 cd ~/.akg
+
+if [[ $1 = "-Q" ]]; then
+	akg -R $2 && akg -S $2
+	exit
+fi
+
+if [[ $1 = "-Ss" ]]; then
+	curl "https://aur.archlinux.org/rpc/v5/search/$2" -s > search
+	count=$(cat ./search | jq -r .resultcount)
+	if [[ $count -eq 0 ]]; then
+		echo Can\'t find $2!
+		exit
+	fi
+	for ((i = 0 ; i < count ; i++)); do
+  		echo $i: $(cat ./search | jq -r .results.[$i].Name) \> $(cat ./search | jq -r .results.[$i].Description)
+		echo
+	done
+	read -p "Pick package index:  " index
+	akg -S $(cat ./search | jq -r .results.[$index].Name)
+	exit
+fi
 if [[ $1 = "--help" ]]; then
     echo "Usage: akg [OPTIONS] [PACKAGE NAME]"
-    echo "AurKeinGit\(no, im not german\), an aur helper that doesn't use git clone."
+    echo "AurKeinGit(no, im not german), an aur helper that doesn't use git clone."
     echo "OPTIONS: -S - install, -R - remove"
     exit
 fi
@@ -18,9 +39,9 @@ if [[ $1 = "-R" ]]; then
     exit
 fi
 if [[ $1 = "-S" ]]; then
-    wget "https://aur.archlinux.org/cgit/aur.git/snapshot/$2.tar.gz"
+	wget "https://aur.archlinux.org/cgit/aur.git/snapshot/$2.tar.gz"
     if [ ! -f ./$2.tar.gz ]; then
-        echo Error, couldn\'t find file $2.tar.gz!
+        echo Error, couldn\'t find file package $2!
         exit
     fi
     tar -xzxf "$2.tar.gz"

@@ -1,7 +1,7 @@
 pkgbase = aur-kein-git
 	pkgdesc = AUR helper that doesnt use git at all
-	pkgver = 1
-	pkgrel = 1
+	pkgver = 1.1
+	pkgrel = 2
 	url = https://tklab.eu1.netbird.services/file/My stuff/
 	arch = any
 	license = GPL-3.0
