@@ -5,7 +5,7 @@ _pkgname=PNANA
 _appname=pnana
 
 pkgname=${_pkgname,,}
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="A modern terminal text editor built with FTXUI, inspired by Nano, Micro, and Sublime Text"
 
@@ -20,7 +20,7 @@ makedepends=('gcc' 'cmake' 'go')
 provides=("${_appname}")
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('aa2c12922c73c6e1702015a7e6b404678951a9a2d4714c6dbe70df0fb486f484')
+sha256sums=('e5b1dddaa65e3948c548bccdd1308cf72d8d5d94f420c721dd2100f0ffd2506a')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}/" || exit 1
