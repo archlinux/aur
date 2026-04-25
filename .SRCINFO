@@ -1,21 +1,20 @@
 pkgbase = tradingview
 	pkgdesc = Charting platform for traders and investors
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://www.tradingview.com/desktop/
 	arch = x86_64
 	license = LicenseRef-TradingView
 	makedepends = html-xml-utils
-	makedepends = sha3sum
 	makedepends = squashfs-tools
 	makedepends = w3m
 	depends = electron38
 	depends = libsecret
 	options = !debug
 	options = !strip
-	source = tradingview-3.0.0.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_69.snap
+	source = tradingview-3.1.0-70.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_70.snap
 	source = tradingview-eula.html::https://www.tradingview.com/policies/
-	sha256sums = 27f706e1ae40e80d7750b77a4893fc20bec2e4e9059e5985a29f78ae75563ce0
+	sha256sums = ab25d11227dcdab3ac5b539ba04381e87656c2f27d22959f9e5cd239ef8925de
 	sha256sums = SKIP
 
 pkgname = tradingview

@@ -4,10 +4,13 @@
 
 : ${_electron_version=38}
 
+: ${_snap_id:=nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV}
+: ${_snap_rev:=70}
+
 _pkgname="tradingview"
 pkgname="$_pkgname"
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc='Charting platform for traders and investors'
 arch=('x86_64')
 url="https://www.tradingview.com/desktop/"
@@ -19,7 +22,6 @@ depends=(
 )
 makedepends=(
   'html-xml-utils'
-  'sha3sum'
   'squashfs-tools'
   'w3m'
 )
@@ -27,13 +29,13 @@ makedepends=(
 options=('!debug' '!strip')
 
 _terms_of_use="$_pkgname-eula"
-_pkgsrc="$_pkgname-$pkgver"
+_pkgsrc="$_pkgname-$pkgver-$_snap_rev"
 source=(
-  "$_pkgsrc.snap"::"https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_69.snap"
+  "$_pkgsrc.snap"::"https://api.snapcraft.io/api/v1/snaps/download/${_snap_id}_${_snap_rev}.snap"
   "$_terms_of_use.html"::"https://www.tradingview.com/policies/"
 )
 sha256sums=(
-  '27f706e1ae40e80d7750b77a4893fc20bec2e4e9059e5985a29f78ae75563ce0'
+  'ab25d11227dcdab3ac5b539ba04381e87656c2f27d22959f9e5cd239ef8925de'
   'SKIP'
 )
 
@@ -53,6 +55,18 @@ package() {
   # asar
   mkdir -pm755 "$pkgdir/usr/lib/$_pkgname"
   cp -r "$_pkgsrc/resources/"* "$pkgdir/usr/lib/$_pkgname/"
+
+  # remove unnecessary files
+  local _unwanted=(
+    app.asar.unpacked/node_modules/
+    #app.asar.unpacked/node_modules/keytar/build/
+    #app.asar.unpacked/node_modules/keytar/node-compile-cache/
+    #app.asar.unpacked/node_modules/macos-notification-state/
+  )
+
+  for i in "${_unwanted[@]}"; do
+    rm -r "$pkgdir/usr/lib/$_pkgname/$i"
+  done
 
   # launcher
   sed -E -e '/^Comment=/d' \
