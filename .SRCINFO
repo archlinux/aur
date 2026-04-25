@@ -1,7 +1,7 @@
 pkgbase = lingma-bin
 	pkgdesc = Lingma IDE 灵码编辑器 - Binary Version
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.10.2
+	pkgrel = 3
 	url = https://lingma.aliyun.com/
 	arch = x86_64
 	license = custom
@@ -17,6 +17,6 @@ pkgbase = lingma-bin
 	conflicts = lingma-ide
 	options = !strip
 	source = lingma_amd64.deb::https://lingma-ide.oss-rg-china-mainland.aliyuncs.com/release/latest/lingma_amd64.deb
-	sha256sums = d6c5214effc2e7fbec34d80034292d21d8fc0ea370915f54da55e933a31acf1c
+	sha256sums = 86e3e472fdea3a5ea7e4f586548b62d6407d4ff68c24357775421f1849f8ac14
 
 pkgname = lingma-bin

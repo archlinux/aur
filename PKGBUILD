@@ -1,7 +1,7 @@
 # Maintainer: wildkid1024 <wildkid1024 at outlook dot com>
 pkgname=lingma-bin
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.10.2
+pkgrel=3
 pkgdesc="Lingma IDE 灵码编辑器 - Binary Version"
 arch=('x86_64')
 url="https://lingma.aliyun.com/"
@@ -15,7 +15,7 @@ options=(!strip)
 source=("lingma_amd64.deb::https://lingma-ide.oss-rg-china-mainland.aliyuncs.com/release/latest/lingma_amd64.deb")
 
 # 清空校验和（使用 latest 链接会自动更新文件，需要重新生成校验和）
-sha256sums=('d6c5214effc2e7fbec34d80034292d21d8fc0ea370915f54da55e933a31acf1c')
+sha256sums=('86e3e472fdea3a5ea7e4f586548b62d6407d4ff68c24357775421f1849f8ac14')
 
 package() {
     bsdtar -xOf "lingma_amd64.deb" data.tar.xz | bsdtar -xJf - -C "${pkgdir}"
