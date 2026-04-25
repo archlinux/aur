@@ -24,6 +24,9 @@ sha256sums=('SKIP')
 
 build() {
 	cd "$srcdir/${pkgname}"
+	# skip appimage generation bundle
+	sed -i 's/"targets": "all"/"targets": ["deb"]/g' src-tauri/tauri.conf.json
+	
 	# Install frontend dependencies
 	npm install --legacy-peer-deps
 
