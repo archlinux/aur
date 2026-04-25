@@ -1,7 +1,7 @@
 # Maintainer: Radu Potop <radu at wooptoo.com>
 
 pkgname=pgmq
-pkgver=1.9.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="A lightweight message queue. Like AWS SQS and RSMQ but on Postgres."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('postgresql')
 makedepends=('git')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4f5bd82e85967052b08c623503ce8acae81fcc699b1354f25fb8cf2c149cc09d')
+sha256sums=('8d2d81ec7bf4d1efaeabe1363063f1ec8ab839f1dd2fd94ab901e4507dacb4b8')
 
 package() {
     cd $srcdir/${pkgname}-${pkgver}/${pkgname}-extension
