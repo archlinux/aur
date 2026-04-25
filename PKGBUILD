@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=highcharter
-_pkgver=0.9.4
+_pkgver=0.9.5
 pkgname=r-${_pkgname,,}
-pkgver=0.9.4
-pkgrel=4
+pkgver=0.9.5
+pkgrel=1
 pkgdesc="A Wrapper for the 'Highcharts' Library"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -49,7 +49,7 @@ optdepends=(
   r-viridislite
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3fa1432c26762b6a53f31424362ce609febe73c6fe89db1e4437cff7a1fbde0b')
+sha256sums=('c52d3146522aac45afa9ca89622516bf5eacbc6ef684301c049aa110b7dac452')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
