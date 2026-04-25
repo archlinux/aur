@@ -1,0 +1,27 @@
+pkgbase = virtual-surround-manager
+	pkgdesc = Enable virtual 7.1 surround sound for your headphones with just one click.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Berny23/virtual-surround-manager
+	arch = any
+	license = MIT
+    depends = pipewire
+	makedepends = git
+    makedepends = ninja
+    makedepends = libpipewire
+    makedepends = base-devel
+    makedepends = extra-cmake-modules
+    makedepends = cmake
+    makedepends = kirigami
+    makedepends = ki18n
+    makedepends = kcoreaddons
+    makedepends = breeze
+    makedepends = kiconthemes
+    makedepends = qt6-base
+    makedepends = qt6-declarative
+    makedepends = qqc2-desktop-style
+    provides = virtual-surround-manager
+	source = virtual-surround-manager-1.0.0.tar.gz::https://github.com/Berny23/virtual-surround-manager/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = e96194a736ab2ebb1a923813dbf764a8fa4ed8d4e1b48bfdc63736117f7d46fa
+
+pkgname = virtual-surround-manager
