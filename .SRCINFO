@@ -1,0 +1,25 @@
+pkgbase = flameget
+	pkgdesc = A GTK4 Download Manager wrapping Aria2, Curl, and YT-DLP
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/C-Yassin/FlameGet
+	arch = any
+	license = MIT
+	license = LGPL3
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = python-flask
+	depends = gtk4
+	depends = libappindicator-gtk3
+	depends = aria2
+	depends = python-pycurl
+	depends = yt-dlp
+	depends = python-requests
+	depends = python-waitress
+	depends = aria2p
+	depends = ffmpeg
+	source = flameget-1.0.tar.gz::https://github.com/C-Yassin/FlameGet/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 92ea587e37b7286c65b9d8a1f9bebfc4b848010af998d45cfd9a27243972617e
+
+pkgname = flameget
