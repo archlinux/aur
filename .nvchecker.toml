@@ -1,0 +1,3 @@
+[scopebuddy]
+source = "git"
+git = "https://github.com/OpenGamingCollective/ScopeBuddy.git"
