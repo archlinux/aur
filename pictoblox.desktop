@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PictoBlox
+Comment=STEM coding platform
+Exec=/opt/PictoBlox/pictoblox
+Icon=pictoblox
+Terminal=false
+Type=Application
+Categories=Education;Development;
+StartupNotify=true
