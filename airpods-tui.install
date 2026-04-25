@@ -15,10 +15,23 @@ _set_device_id() {
   echo "  -> Then forget and re-pair your AirPods"
 }
 
+_unset_device_id() {
+  if ! grep -qE "^\s*DeviceID\s*=\s*bluetooth:004C:" "$CONF" 2>/dev/null; then
+    return
+  fi
+  sed -i '/^\s*DeviceID\s*=\s*bluetooth:004C:/d' "$CONF"
+  echo "  -> Removed Apple DeviceID from $CONF"
+  echo "  -> Run: sudo systemctl restart bluetooth"
+}
+
 post_install() {
   _set_device_id
 }
 
 post_upgrade() {
   _set_device_id
+}
+
+post_remove() {
+  _unset_device_id
 }

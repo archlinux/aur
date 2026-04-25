@@ -30,6 +30,11 @@ build() {
     cargo build --release --locked
 }
 
+check() {
+    cd airpods-tui
+    cargo test --release --frozen
+}
+
 package() {
     cd airpods-tui
     install -Dm755 target/release/airpods-tui "$pkgdir/usr/bin/airpods-tui"
