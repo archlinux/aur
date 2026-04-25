@@ -6,10 +6,6 @@ pkgbase = next-music
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	depends = gtk3
-	depends = alsa-lib
-	depends = desktop-file-utils
-	source = next-music_8.8.8_x64.pkg.tar.zst::https://github.com/Web-Next-Music/Next-Music-Client/releases/download/8.8.8/next-music_8.8.8_x64.pkg.tar.zst
-	sha256sums = 5b8a2070b3c42a8060f0b690efe3a9530814841ef5cf2135820ef710eb987e9f
+	sha256sums = SKIP
 
 pkgname = next-music
