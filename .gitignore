@@ -1,0 +1,10 @@
+*
+!.SRCINFO
+!PKGBUILD
+!LICENSE
+!LICENSES
+!REUSE.toml
+!.nvchecker.toml
+
+!cmake-target-none.patch
+!cmake-disable-gxx-warning.patch
