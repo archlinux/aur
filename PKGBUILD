@@ -3,7 +3,7 @@
 pkgname=opentabletdriver
 _pkgname=OpenTabletDriver
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://opentabletdriver.net"
@@ -42,7 +42,7 @@ build() {
     fi
 
     export OTD_CONFIGURATIONS="${PWD}/OpenTabletDriver.Configurations/Configurations"
-    ./eng/linux/package.sh --package Generic -c Release -- $EXTRA_OPTIONS
+    ./eng/bash/package.sh --package Generic -c Release -- $EXTRA_OPTIONS
 }
 
 package() {
