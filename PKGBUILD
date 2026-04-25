@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=147.0.7727.101
+pkgver=147.0.7727.116
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -71,6 +71,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-145-fix-SYS_SECCOMP.patch
         chromium-146-drop-unknown-clang-flag.patch
         chromium-147-revert-clang-no-lifetime-dse-flag.patch
+        chromium-147-rust-1.95-bytemuck.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         enable-widevine-arm64.patch
@@ -78,13 +79,14 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         glibc-2.42-baud-rate-fix.patch
         # ungoogled-chromium-xdg patches
         no-omnibox-suggestion-autocomplete.patch)
-sha256sums=('87b499c215e895c518bc25b8a0648a2e23a6a3e865cd43a1243c21ae974140f6'
-            'a2f7388030a9ad6cd69d33a453d347ceebea122eb85d0924f7ffc8b1cc861790'
+sha256sums=('44be73f82b1b670255b3c58676be08844ddf1bf5727d5fcdf430d214aa8d15bb'
+            '8f3f7340d457d58348bc90b5cda222fd3e9b7021c4156b76f3071fb8b15c0436'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
             '24535c314c7e70c52bcf409aaf604728bfc5b5c97e60087e630e1f7233b9e12d'
             'c382830318c5b37826ecf44f3ba9def6be8affdad1bce819ecb83f3222ff4b3a'
+            'b9e6339221efe03540ffb360c161d93604a1fc93a5a1c53e5e9849066f987d05'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '9c766b82d1143cb3413fe2057361bd2655e46287eacc2c6d6f8504b4c255647a'
@@ -181,6 +183,8 @@ prepare() {
 
   # https://crbug.com/456218403
   patch -Np1 -i ../chromium-145-fix-SYS_SECCOMP.patch
+
+  patch -Np1 -i ../chromium-147-rust-1.95-bytemuck.patch
 
   # enable widevine for arm64
   patch -Np1 -i ../enable-widevine-arm64.patch
