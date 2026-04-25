@@ -1,0 +1,4 @@
+[vmaware]
+source = "git"
+git = "https://github.com/kernelwernel/VMAware.git"
+prefix = "v"
