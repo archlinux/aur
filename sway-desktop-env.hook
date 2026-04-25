@@ -2,10 +2,10 @@
 Type = Package
 Operation = Install
 Operation = Upgrade
-Target = sway sway-git
+Target = sway sway-git swayfx swayfx-git
 
 [Action]
 Description = Updating sway.desktop to set required systemd variables...
 Depends = sed
 When = PostTransaction
-Exec = /usr/bin/sed -i 's|Exec=sway|Exec=env XDG_CURRENT_DESKTOP=sway;wlroots XDG_SESSION_DESKTOP="${XDG_SESSION_DESKTOP:-sway}" XDG_SESSION_TYPE=wayland sway|' /usr/share/wayland-sessions/sway.desktop
+Exec = /usr/bin/sed -i 's|Exec=sway|Exec=env XDG_CURRENT_DESKTOP="sway;wlroots;swayfx" XDG_SESSION_DESKTOP="${XDG_SESSION_DESKTOP:-sway}" XDG_SESSION_TYPE=wayland sway|' /usr/share/wayland-sessions/sway.desktop
