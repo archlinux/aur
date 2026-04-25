@@ -3,7 +3,7 @@
 # Contributor: Nicolas Quiénot < niQo at aur >
 
 pkgname="libkqueue"
-pkgver=2.6.3
+pkgver=2.6.4
 pkgrel=1
 pkgdesc="Userspace implementation of the kqueue kernel(2) event notification mechanism found in BSD-based systems"
 url="https://github.com/mheily/${pkgname}"
@@ -16,6 +16,7 @@ license=(
 )
 depends=(
   'glibc'
+  'libgcc'
 )
 makedepends=(
   'cmake>=3.8.0'
@@ -26,18 +27,18 @@ provides=(
 )
 _pkgsrc="${url##*/}"
 source=(
-  "${_pkgsrc}::git+${url}.git#tag=v${pkgver}?signed"
+  "${_pkgsrc}::git+${url}.git#tag=v${pkgver}" # ?signed"
 )
-sha256sums=('e8859fad412f6cbc244a16636c4e9e6a49c137748bd533e56c3a05333f194e45')
+sha256sums=('6faf1b3bf4f15d8b93ece72e49114e3db047ac5a6c6301ec2ed23376f3cda46d')
 validpgpkeys=(
   'FD31307742EC7FCD32FE5EE256CF27F930A8CAA2' # Arran Cudbard-Bell <a.cudbardb@freeradius.org>
 )
 
 build() {
   local cmake_options=(
-    -G 'Unix Makefiles'
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
+    -G 'Unix Makefiles'
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
@@ -45,7 +46,7 @@ build() {
  
   cd "${srcdir}"
   cmake "${cmake_options[@]}"
-  cmake --build "${_pkgsrc}/build"
+  cmake --build "${cmake_options[1]}"
 }
 
 package() {

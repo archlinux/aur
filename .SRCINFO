@@ -1,6 +1,6 @@
 pkgbase = libkqueue
 	pkgdesc = Userspace implementation of the kqueue kernel(2) event notification mechanism found in BSD-based systems
-	pkgver = 2.6.3
+	pkgver = 2.6.4
 	pkgrel = 1
 	url = https://github.com/mheily/libkqueue
 	arch = i686
@@ -9,9 +9,10 @@ pkgbase = libkqueue
 	makedepends = cmake>=3.8.0
 	makedepends = git
 	depends = glibc
+	depends = libgcc
 	provides = libkqueue.so
-	source = libkqueue::git+https://github.com/mheily/libkqueue.git#tag=v2.6.3?signed
+	source = libkqueue::git+https://github.com/mheily/libkqueue.git#tag=v2.6.4
 	validpgpkeys = FD31307742EC7FCD32FE5EE256CF27F930A8CAA2
-	sha256sums = e8859fad412f6cbc244a16636c4e9e6a49c137748bd533e56c3a05333f194e45
+	sha256sums = 6faf1b3bf4f15d8b93ece72e49114e3db047ac5a6c6301ec2ed23376f3cda46d
 
 pkgname = libkqueue
