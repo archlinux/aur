@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-raylib
 	pkgdesc = Simple and easy to use game programming library (mingw-w64)
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.raylib.com
 	arch = any
 	license = ZLIB
@@ -13,7 +13,10 @@ pkgbase = mingw-w64-raylib
 	options = !buildflags
 	options = staticlibs
 	source = raylib_6.0.tar.gz::https://github.com/raysan5/raylib/archive/refs/tags/6.0.tar.gz
+	source = raylib-enable-jpg.patch
 	md5sums = 348c40f55a39cf0503da701d2dd5d20b
+	md5sums = 083b8259551e0ca83687707c3fc9d118
 	sha256sums = 2b3ee1e2120c7a0796b33062c7e9a694dd8a8caa56a96319ac8c8ecf54a90d0b
+	sha256sums = 416c8dce4d2f9df6c730559cdc620481a9c2e2e0be01b2b9276f8973dbb7f556
 
 pkgname = mingw-w64-raylib
