@@ -1,0 +1,22 @@
+pkgbase = marker-enhanced-bin
+	pkgdesc = Markdown editor with Mermaid 10.9, batch PDF export, dark mode, and security fixes (prebuilt binary)
+	pkgver = 2024.04.25
+	pkgrel = 1
+	url = https://github.com/alfonsodg/Marker
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = gtksourceview3
+	depends = gtkspell3
+	depends = webkit2gtk-4.1
+	optdepends = mathjax2: alternative backend for rendering formulas
+	optdepends = pandoc: export to HTML, PDF, RTF, OTF, DOCX, LaTeX
+	optdepends = yelp: in-app help
+	provides = marker
+	conflicts = marker
+	conflicts = marker-git
+	conflicts = marker-enhanced-git
+	source = https://github.com/alfonsodg/Marker/releases/download/v2024.04.25/marker-enhanced-2020.04.04.r43-x86_64.tar.gz
+	sha256sums = 873148311306cac2cbae58fb9818b0710680ac225a1b9d29b920346c57db84ea
+
+pkgname = marker-enhanced-bin
