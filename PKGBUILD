@@ -1,7 +1,7 @@
 # Maintainer: FreehuntX freehuntx at web dot de
 pkgbase=godot-next-bin
 pkgname=('godot-next-bin' 'godot-next-mono-bin')
-pkgver=4.7dev5
+pkgver=4.7beta1
 pkgrel=1
 pkgdesc="Godot Engine Next - Prebuilt binary from GitHub"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://godotengine.org"
 license=('MIT')
 depends=('glibc')
 
-_pkgver_url="4.7-dev5"
+_pkgver_url="4.7-beta1"
 _filename_std="Godot_v${_pkgver_url}_linux.x86_64.zip"
 _filename_mono="Godot_v${_pkgver_url}_mono_linux_x86_64.zip"
 

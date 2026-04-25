@@ -1,15 +1,15 @@
 pkgbase = godot-next-bin
 	pkgdesc = Godot Engine Next - Prebuilt binary from GitHub
-	pkgver = 4.7dev5
+	pkgver = 4.7beta1
 	pkgrel = 1
 	url = https://godotengine.org
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	noextract = Godot_v4.7-dev5_linux.x86_64.zip
-	noextract = Godot_v4.7-dev5_mono_linux_x86_64.zip
-	source = https://github.com/godotengine/godot-builds/releases/download/4.7-dev5/Godot_v4.7-dev5_linux.x86_64.zip
-	source = https://github.com/godotengine/godot-builds/releases/download/4.7-dev5/Godot_v4.7-dev5_mono_linux_x86_64.zip
+	noextract = Godot_v4.7-beta1_linux.x86_64.zip
+	noextract = Godot_v4.7-beta1_mono_linux_x86_64.zip
+	source = https://github.com/godotengine/godot-builds/releases/download/4.7-beta1/Godot_v4.7-beta1_linux.x86_64.zip
+	source = https://github.com/godotengine/godot-builds/releases/download/4.7-beta1/Godot_v4.7-beta1_mono_linux_x86_64.zip
 	source = godot-next.desktop
 	source = godot-next-mono.desktop
 	sha256sums = SKIP
@@ -19,10 +19,10 @@ pkgbase = godot-next-bin
 
 pkgname = godot-next-bin
 	pkgdesc = Godot Engine Next - Prebuilt binary from GitHub
-	provides = godot-next=4.7dev5
+	provides = godot-next=4.7beta1
 	conflicts = godot-next
 
 pkgname = godot-next-mono-bin
 	pkgdesc = Godot Engine Next (Mono) - Prebuilt binary from GitHub
-	provides = godot-next-mono=4.7dev5
+	provides = godot-next-mono=4.7beta1
 	conflicts = godot-next-mono
