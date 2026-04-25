@@ -4,7 +4,6 @@ pkgbase = i4tools-bin
 	pkgrel = 1
 	epoch = 1
 	url = https://www.i4.cn/pro_pc.html
-	install = i4Tools.install
 	arch = x86_64
 	license = custom
 	depends = bash

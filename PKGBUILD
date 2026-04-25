@@ -34,7 +34,6 @@ source=(
 sha256sums=('b20978c9c5e652a67b87dbb36a8c17731f1937f6cba5f793dc69adac981d90be'
             '79bf7500e724fda34fb534fe2b1e84e16cf39bb1e661e5368534f004dab729a5')
 
-install=i4Tools.install
 
 prepare() {
     tar -Jxf data.tar.xz -C "${srcdir}"
