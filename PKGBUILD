@@ -5,7 +5,7 @@ pkgname=(aicube-isp-wine)
 _name=AiCube-ISP
 _tagname=6.96U
 pkgver=${_tagname//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Wine AiCube 辅助开发，图形配置界面自动生成配置代码与程序框架；远程现场升级 APP 发布；单片机在线升级仿真调试平台软件；ISP 下载"
 arch=('x86_64')
 url="https://www.stcai.com/gjrj"
@@ -53,7 +53,7 @@ package() {
     install -vdm0755 "${pkgdir}/${_stc}/${pkgname%-wine}"
     install -vDm6644 "${srcdir}/icon.svg" "${pkgdir}/usr/share/pixmaps/${pkgname%-wine}.svg"
 
-    cp -ra "${srcdir}/${_name}-v${pkgver}.exe" "${pkgdir}/${_stc}/${pkgname%-wine}"
+    install -vDm0755 "${srcdir}/${_name}-v${_tagname}.exe" -t "${pkgdir}/${_stc}/${pkgname%-wine}"
 
     find "${pkgdir}/${_stc}" -type f -exec chmod 644 "{}" \;
     find "${pkgdir}/${_stc}" -type d -exec chmod 755 "{}" \;
@@ -135,7 +135,7 @@ if [ ! -d "\$HOME"/.${pkgname%-wine} ] ; then
 
     cp -r /${_stc}/${pkgname%-wine}/regpatch.reg "\$HOME"/.${pkgname%-wine}/wine || exit 1
 
-    ln -s /${_stc}/${pkgname%-wine}/${pkgname%-wine}-v${pkgver}.exe "\$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
+    ln -s /${_stc}/${pkgname%-wine}/${_name}-v${_tagname}.exe "\$HOME"/.${pkgname%-wine}/${_name}.exe || exit 1
 fi
 
 if [ ! -f "\$HOME"/.${pkgname%-wine}/regpatchok ] ; then
@@ -144,7 +144,7 @@ if [ ! -f "\$HOME"/.${pkgname%-wine}/regpatchok ] ; then
     winetricks -q mfc42
 fi
 
-wine "\$HOME"/.${pkgname%-wine}/${pkgname%-wine} "\$@"
+wine "\$HOME"/.${pkgname%-wine}/${_name}.exe "\$@"
 EOF
 
     install -vDm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-wine}.desktop" << EOF
