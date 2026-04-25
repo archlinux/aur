@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=canboatjs
-_tagname=3.16.3
+_tagname=3.16.4-beta.1
 pkgver=${_tagname//-/+}
-pkgrel=7
+pkgrel=8
 pkgdesc="Native javascript NMEA 2000 decoder and encoder"
 arch=(any)
 url="https://github.com/canboat/canboatjs"
@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 source=("${pkgname}-${_tagname}.tar.gz::${url}/archive/refs/tags/v${_tagname}.tar.gz")
-sha256sums=('7dd4aaa4fefc6023ad13d9d72886dd09064e9b14554af5543596e128b9de4382')
+sha256sums=('b998ff61c22f1ac8fe6b79cf8a5e36dcff03c492ef5f09ae2219026d383054b1')
 noextract=("${pkgname}-${_tagname}.tar.gz")
 
 package() {
