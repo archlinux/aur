@@ -2,7 +2,7 @@
 Type = Package
 Operation = Install
 Operation = Upgrade
-Target = sway sway-git
+Target = sway sway-git swayfx swayfx-git
 
 [Action]
 Description = Updating sway.desktop to set required systemd variables...
