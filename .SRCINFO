@@ -1,6 +1,6 @@
 pkgbase = quantframe-git
 	pkgdesc = algorithmic trading program for Warframe
-	pkgver = 1.6.17.r0.g5786a65
+	pkgver = 1.6.19.r0.ge1b708a
 	pkgrel = 1
 	url = https://github.com/Kenya-DK/quantframe-react
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = quantframe-git
 	provides = quantframe
 	conflicts = quantframe
 	options = !lto
-	source = quantframe-git::git+https://github.com/Kenya-DK/quantframe-react#branch=better-backend
+	source = quantframe-git::git+https://github.com/Kenya-DK/quantframe-react
 	sha512sums = SKIP
 
 pkgname = quantframe-git

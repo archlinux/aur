@@ -1,7 +1,7 @@
 # Maintainer: Elia Nitsche <nitscheelia at gmail dot com>
 pkgname="quantframe-git"
 _pkgname=${pkgname%-git}
-pkgver=1.6.17.r0.g5786a65
+pkgver=1.6.19.r0.ge1b708a
 pkgrel=1
 pkgdesc="algorithmic trading program for Warframe"
 arch=("x86_64")
@@ -21,7 +21,7 @@ optdepends=()
 options=(!lto)	# fix linking error (coming from ring)
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("${pkgname}::git+${url}#branch=better-backend")
+source=("${pkgname}::git+${url}")
 sha512sums=("SKIP")
 
 pkgver() {
@@ -68,3 +68,6 @@ package() {
 
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
+# On wayland you might need the following flags to run the app:
+# WEBKIT_DISABLE_DMABUF_RENDERER=1 quantframe
+# WEBKIT_DISABLE_DMABUF_RENDERER=1 GDK_BACKEND=x11 quantframe
