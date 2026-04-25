@@ -2,7 +2,7 @@
 
 pkgname=gemini-cli-live-bin
 _pkgname=gemini-cli
-pkgver=0.39.0
+pkgver=0.39.1
 pkgrel=1
 epoch=1
 pkgdesc="Open-source AI agent that brings the power of Gemini directly into your terminal (Live version)"
