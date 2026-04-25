@@ -1,18 +1,18 @@
-# Maintainer: everyx <lunt.luo#gmail.com>
+# Maintainer: parhelia
 
 pkgname=cronet-go
-pkgver=0.0.1_143.0.7499.109_1
+pkgver=147.0.7727.49_1
 _ver=${pkgver//_/-}
-pkgrel=2
+pkgrel=1
 pkgdesc='Go bindings for naiveproxy.'
-arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'loongarch64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'loongarch64' 'riscv64')
 url='https://github.com/SagerNet/cronet-go'
 license=("LicenseRef-${pkgname}")
 depends=('libgcc' 'glibc')
 provides=("libcronet.so")
 source=("${pkgname}::git+https://github.com/SagerNet/cronet-go.git#tag=v$_ver")
-sha256sums=('6b17788e13f4a8444881a13754fdff4dc100f098491d3537d096c876c92d808c')
-makedepends=('go>=1.25' 'git' 'python' 'python-requests' 'dpkg' 'unzip' 'ninja')
+sha256sums=('853eee0cb8429f1dce187861e0d7d73dab614f76be02ec53d61306eb31fedd78')
+makedepends=('go>=1.25' 'git' 'ninja')
 options=(!debug)
 
 prepare() {
@@ -45,6 +45,7 @@ package() {
         [armv7h]="arm"
         [aarch64]="arm64"
         [loongarch64]="loong64"
+        [riscv64]="riscv64"
     )
 
     local cpu=${cpu_map[$CARCH]:-$CARCH}
