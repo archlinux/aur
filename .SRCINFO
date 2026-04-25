@@ -1,6 +1,6 @@
 pkgbase = adguard-tray-git
 	pkgdesc = System tray monitor and controller for adguard-cli (KDE Plasma & Hyprland)
-	pkgver = 1.6.1.r1.g529e35a
+	pkgver = 1.6.2.r0.gb5cea1c
 	pkgrel = 1
 	url = https://github.com/RiDDiX/adguard-tray
 	arch = any

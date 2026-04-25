@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=adguard-tray-git
-pkgver=1.6.1.r1.g529e35a
+pkgver=1.6.2.r0.gb5cea1c
 pkgrel=1
 pkgdesc="System tray monitor and controller for adguard-cli (KDE Plasma & Hyprland)"
 arch=('any')
@@ -38,9 +38,6 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
-    cd "${srcdir}/${pkgname}"
-    sed -i "s|usr/local/bin|/usr/bin|g" adguard-tray.desktop
-    rm -rf contrib
 }
 
 build() {
@@ -52,6 +49,5 @@ package() {
     cd "${srcdir}/${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -vDm644 adguard-tray.desktop -t "$pkgdir/usr/share/applications/"
-    install -vDm755 adguard-tray.py "$pkgdir/usr/bin/${pkgname%-git}"
     install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
