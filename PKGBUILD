@@ -28,7 +28,7 @@ conflicts=(
   "${_pkgname}-${pkgver%.*}"
 )
 source=(
-  "http://ftp.de.debian.org/debian/pool/main/u/${_pkgname%-gtk}/${_pkgname}_${_pkgver}${_debianver}_amd64.deb"
+  "https://archive.debian.org/debian/pool/main/${_pkgname:0:1}/${_pkgname%-gtk}/${_pkgname}_${_pkgver}${_debianver}_amd64.deb"
 )
 sha256sums=(
   '54ab2d5a7595ef82950f2c3228adc98e022690fb0ba25102d479da46124f32ce'
