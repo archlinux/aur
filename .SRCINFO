@@ -5,6 +5,7 @@ pkgbase = scopebuddy-gui
 	url = https://github.com/rfrench3/scopebuddy-gui
 	arch = any
 	license = LGPL-3.0-only
+	checkdepends = appstream
 	makedepends = desktop-file-utils
 	depends = hicolor-icon-theme
 	depends = pyside6

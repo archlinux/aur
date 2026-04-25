@@ -16,6 +16,7 @@ depends=(
   'xdg-utils'
 )
 makedepends=('desktop-file-utils')
+checkdepends=('appstream')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('f1b484669605c5e1243b4da552911f34e0485827b119c6ed9f540a194a8182f2')
 
@@ -28,6 +29,12 @@ prepare() {
   # Set Desktop file StartupWMClass
   desktop-file-edit --set-key=StartupWMClass --set-value=python3 \
     "${_app_id}.desktop"
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  appstreamcli validate --no-net "${_app_id}.metainfo.xml"
+  desktop-file-validate "${_app_id}.desktop"
 }
 
 package() {
