@@ -1,7 +1,7 @@
 # Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
 
 pkgname=resyctl
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Automation-friendly Resy command-line client"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/evanpurkhiser/resyctl/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('81442a1416d02a9cf082e2d67d364b9c640a8137e44796b419e1a2481169783f')
+sha256sums=('a63d202d4912fb019f6d11ecdddf41537abbbcb936332931a851ccc20b341ec8')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
