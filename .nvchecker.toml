@@ -1,0 +1,5 @@
+[parfit-bin]
+source = "github"
+github = "caldempsey/parfit"
+use_latest_release = true
+prefix = "v"

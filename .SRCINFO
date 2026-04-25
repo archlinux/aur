@@ -1,0 +1,19 @@
+pkgbase = parfit-bin
+	pkgdesc = Paragraph fit
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/caldempsey/parfit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = parfit
+	conflicts = parfit
+	options = !strip
+	source_x86_64 = parfit-x86_64-0.4.4.txz::https://github.com/caldempsey/parfit/releases/download/v0.4.4/parfit-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 7613f981c721563544826968054e23911b38bb291aa69673d32c7e0c58228db6
+	source_aarch64 = parfit-aarch64-0.4.4.txz::https://github.com/caldempsey/parfit/releases/download/v0.4.4/parfit-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = c7cc1da47358e455505c5937f6363263ae560126ca728d1c96d2114eb71d3d48
+
+pkgname = parfit-bin
