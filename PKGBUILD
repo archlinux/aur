@@ -1,25 +1,28 @@
-# Maintainer: Monjaris <your@email.com>
-pkgname=edex
+# Maintainer: Monjaris <ziyanovruzlu750@gmail.com>
+pkgname=edex-editor
 pkgver=0.1.0
-pkgrel=2
-pkgdesc="GUI text editor written in C++ with raylib"
+pkgrel=3
+pkgdesc="A minimal GUI text editor written in C++ with raylib"
 arch=('x86_64')
 url="https://github.com/Monjaris/Edex"
 license=('custom:unlicensed')
 depends=('raylib')
+makedepends=('gcc')
 source=("$pkgname-$pkgver.zip::$url/archive/refs/heads/main.zip")
 sha256sums=('SKIP')
 
+build() {
+    cd "Edex-main"
+    mkdir -p bin
+    g++ $(find src -name "*.cpp") -std=c++20 -O2 \
+        -lraylib -lGL -lm -lpthread -ldl -lrt \
+        -o bin/main
+}
+
 package() {
     cd "Edex-main"
-
-    # install prebuilt binary
-    install -Dm755 "edex-linux/main" "$pkgdir/usr/bin/edex"
-
-    # install fonts
+    install -Dm755 "bin/main" "$pkgdir/usr/bin/edex-editor"
     install -dm755 "$pkgdir/usr/share/edex/fonts"
-    cp -r edex-linux/assets/fonts/. "$pkgdir/usr/share/edex/fonts/"
-
-    # install readme
+    cp -r assets/fonts/. "$pkgdir/usr/share/edex/fonts/"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
