@@ -1,6 +1,6 @@
 pkgbase = krosshair
 	pkgdesc = Crosshair overlay for games on linux using Vulkan
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/fibsussy/krosshair
 	install = krosshair.install
@@ -11,8 +11,8 @@ pkgbase = krosshair
 	depends = libgl
 	depends = libx11
 	options = !debug
-	source = krosshair-0.2.2-linux-x86_64.tar.gz::https://github.com/fibsussy/krosshair/releases/download/v0.2.2/krosshair-linux-x86_64.tar.gz
-	source = LICENSE-0.2.2::https://raw.githubusercontent.com/fibsussy/krosshair/v0.2.2/LICENSE
+	source = krosshair-0.2.3-linux-x86_64.tar.gz::https://github.com/fibsussy/krosshair/releases/download/v0.2.3/krosshair-linux-x86_64.tar.gz
+	source = LICENSE-0.2.3::https://raw.githubusercontent.com/fibsussy/krosshair/v0.2.3/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
