@@ -1,15 +1,15 @@
 pkgbase = editorconfiger-bin
 	pkgdesc = Plain tool to validate and compare .editorconfig files (binary release)
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/aegoroff/editorconfiger
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = https://github.com/aegoroff/editorconfiger/releases/download/0.5.2/editorconfiger-0.5.2-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 16f657da18eb7c51efbefeea91f3b5433ab6bd8f5f66cfb39b12ff72cadb80cd
-	source_aarch64 = https://github.com/aegoroff/editorconfiger/releases/download/0.5.2/editorconfiger-0.5.2-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 3d4c25ab03179bd6bfc989634b5ec98d261bc8a3bf11c50abe9b05e205c8f800
+	source_x86_64 = https://github.com/aegoroff/editorconfiger/releases/download/0.6.0/editorconfiger-0.6.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 999d58987c71f9c3c9418f06f48802c231ac8008b57343384cc61920793487bc
+	source_aarch64 = https://github.com/aegoroff/editorconfiger/releases/download/0.6.0/editorconfiger-0.6.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 1ce94b3be7d2f06ab5d9d6fc11a217904143a86b57f21911143290a36497f787
 
 pkgname = editorconfiger-bin
 	conflicts = editorconfiger
