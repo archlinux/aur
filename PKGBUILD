@@ -3,8 +3,8 @@
 
 pkgname=mingw-w64-headers-msvcrt
 pkgver=13.0.0
-pkgrel=1
-pkgdesc="MinGW-w64 headers for Windows (with MSVCRT as default C runtime library)"
+pkgrel=2
+pkgdesc="MinGW-w64 headers for Windows (w/ MSVCRT as C runtime library)"
 arch=('any')
 url="http://mingw-w64.sourceforge.net"
 license=('LicenseRef-custom')

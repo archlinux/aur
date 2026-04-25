@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-headers-msvcrt
-	pkgdesc = MinGW-w64 headers for Windows (with MSVCRT as default C runtime library)
+	pkgdesc = MinGW-w64 headers for Windows (w/ MSVCRT as C runtime library)
 	pkgver = 13.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mingw-w64.sourceforge.net
 	arch = any
 	groups = mingw-w64-toolchain-msvcrt
