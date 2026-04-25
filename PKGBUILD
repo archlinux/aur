@@ -6,9 +6,9 @@ pkgdesc='The Fastest ISO Manager on the Planet, written in C++'
 arch=('x86_64')
 url="https://github.com/siyia2/iso-commander"
 license=('GPL3')
-depends=('coreutils' 'glibc' 'readline' 'util-linux')
+depends=('coreutils' 'glibc' 'readline' 'util-linux' 'xz' 'zstd')
 makedepends=('gcc' 'make')
-md5sums=('6f607fb673e7f0392feb746c1beb034d')
+md5sums=('28d56118c91abf755a78ca6e444ee9a2')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
