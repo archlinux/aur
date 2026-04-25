@@ -1,7 +1,7 @@
 # Maintainer: Eric Naim <dnaim@cachyos.org>
 
 pkgname=niri-focused-booster
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='dmem cgroup boosting for focused windows on Niri'
 arch=(x86_64)
@@ -19,7 +19,7 @@ makedepends=(
   'git'
 )
 source=("${pkgname}::git+$url.git#tag=${pkgver}")
-sha256sums=('bac60506c997ecdf0dd9139886b75c3fd5672810ce8f115c0b38cef30d6dfc88')
+sha256sums=('f68a510891091624f1f45d48526166abfb3819faeebf786782fcbcfc3d68b8d1')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
