@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Fluxer (Canary)
+Comment=Fluxer Canary Desktop App
+Exec=/usr/bin/fluxer-canary
+Icon=fluxer-canary
+Terminal=false
+Type=Application
+Categories=Network;
