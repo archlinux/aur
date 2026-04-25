@@ -2,8 +2,8 @@
 # Maintainer: Matthias Schiffer <mschiffer@universe-factory.net>
 
 pkgname=mopidy-mpris
-pkgver=3.0.3
-pkgrel=3
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Mopidy extension for controlling Mopidy through the MPRIS D-Bus interface"
 arch=('any')
 url="https://mopidy.com/ext/mpris/"
@@ -20,8 +20,8 @@ depends=(
   'python-pykka>=2.0.1'
   'python-setuptools'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3c544233c2f55ac1995f18f1b916e67edc1628728e97b5b0a8fad0f8db473581')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/m/mopidy_mpris/mopidy_mpris-${pkgver}.tar.gz")
+sha256sums=('e9c4255f1aa7a3de92310aa585e018dd292db55a44a152663e31a775c278a900')
 
 latestver() {
   gh api --paginate repos/mopidy/mopidy-mpris/tags --jq '.[].name' |
@@ -29,12 +29,12 @@ latestver() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/mopidy_mpris-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/mopidy_mpris-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
