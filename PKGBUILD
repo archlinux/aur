@@ -10,7 +10,7 @@ conflicts=(librewolf)
 __pkgname=librewolf
 _pkgname=LibreWolf
 epoch=1
-pkgver=149.0.2_2
+pkgver=150.0.0_1
 _fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
 _librewolfver="${pkgver#*_}"
 _firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
@@ -110,22 +110,24 @@ options=(
 install='librewolf.install'
 source=(
   https://codeberg.org/api/packages/librewolf/generic/librewolf-source/$_firefoxver-$_librewolfver/librewolf-$_firefoxver-$_librewolfver.source.tar.gz{,.sig}
-  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/b210375c92e767950ec8ec8bdceda555e969ee21/0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
-  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/b210375c92e767950ec8ec8bdceda555e969ee21/0003-Bug-2016618-Fix-Linux-sandbox-build-breakage-on-glib.patch
-  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/b210375c92e767950ec8ec8bdceda555e969ee21/0004-Use-wasm32-wasip1-target.patch
+  https://codeberg.org/librewolf/source/raw/commit/dacb8a18763458eb247b72bb2f19829eff7a68f6/patches/rust-build.patch
+  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/46fcb2e50f2bd92c640ec57978178b609bba15c2/0002-Bug-2033279-Make-enable-rust-simd-work-with-Rust-1.9.patch
+  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/46fcb2e50f2bd92c640ec57978178b609bba15c2/0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/46fcb2e50f2bd92c640ec57978178b609bba15c2/0004-Bug-2023597-Use-wasm32-wasip1-target-for-clang-22.1-.patch
   $__pkgname.desktop
   "default192x192.png"
   allow_dark.patch
 )
 
-sha256sums=('4f182ca27f11fd35aa2fb62ca099ff0533bfce2190a719d3b601eab86f7d3317'
+sha256sums=('e93d39180d74ea9e07d9a7cae7a441cc6e790f64e053f2b7e168cc490b043034'
 			'SKIP'
-			'7e8ee1997aa0c6db7de6fe5da0bca88b5c1c3aa2db0b18950e24e5cbe4df8d84'
-			'bf4a7667fb7d7a64795a6ea3d34515c55f46e42872fd3c5a8e8e99964bb3c4e8'
-			'28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
+			'547306e19cda7bbadeba9e1989882ff71f30e2bb2dad4441e8ef79d64fb4dc8a'
+			'9f10d9bfcaa3a8dd86a8654431f820716a45a72a885c29fd6359bccc7bcdaefa'
+			'f579e02644ef9c29da5cd61d2c9213ba1c3f7a1aa8abf601bdf07cbbbadb1ce3'
+			'd6e1dbafe56bc52c8ab6cbf9542cf80e89c1857a71ce08bbbd82804909bcb76f'
             '3d6ac59ae9d5ba4c9fe15f95c1338fa68214dec6119f8432336403e3be50f8ae'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
-            '41ac0e7f0bec434f92db83e385dfdd4f11c055c387317aaedc8664d68e4b8de4')
+            '7f3d97fd555e7b9d6fb40743d82ba8c7d9da78f089942c0e7acbbb4d157e8f69')
 validpgpkeys=('662E3CDD6FE329002D0CA5BB40339DD82B12EF16') # https://rpm.librewolf.net/pubkey.gpg
 
 prepare() {
@@ -200,15 +202,23 @@ fi
   # reduce chance of builds failung during linking due to running out of memory
   export LDFLAGS+=" -Wl,--no-keep-memory"
 
-  # upstream Arch fixes
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
-  patch -Np1 -i ../0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  # revert LW upstream way to address rust build issues, so Arch upstream's patches can apply cleanly
+  sed -i 's/b9432f9ed39742015f4bb4c3e75c89a2b9a9eef943dd0fd7cd889fddd1e6d39c/9456ca46168ef86c98399a2536f577ef7be3cdde90c0c51392d8ac48519d3fae/g' third_party/rust/encoding_rs/.cargo-checksum.json
+  patch -Rp1 -i ../rust-build.patch
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=2016618
-  patch -Np1 -i ../0003-Bug-2016618-Fix-Linux-sandbox-build-breakage-on-glib.patch
+  # upstream Arch fixes
+
+  # Fix build with Rust 1.95.0
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=2033279
+  patch -Np1 -i ../0002-Bug-2033279-Make-enable-rust-simd-work-with-Rust-1.9.patch
+
+  # Fix build with glibc 2.43
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
+  patch -Np1 -i ../0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
 
   # Fix build with Clang 22
-  patch -Np1 -i ../0004-Use-wasm32-wasip1-target.patch
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=2023597
+  patch -Np1 -i ../0004-Bug-2023597-Use-wasm32-wasip1-target-for-clang-22.1-.patch
 }
 
 
