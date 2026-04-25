@@ -6,7 +6,7 @@ _pkgname=goose
 pkgname=${_pkgname}-bin
 pkgdesc="A database migration tool. Supports SQL migrations and Go functions."
 
-pkgver=3.27.0
+pkgver=3.27.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}")
-sha256sums=('c176aa89390dac99947682abdd6d3772ecb996910c2099dde986c0d5a98bc800'
+sha256sums=('a4f628ddbd4de87b86bcfe6efb93fc14472929130b452b2e18709ce29d6d28af'
             'f23985556a879c0e68bb4e136ee4b88a550d26fa33db77a65d76b721c93093ef')
-sha256sums_x86_64=('ad487c23744ae5de5dbdf5a81d4e6fac05fdfbe74f02379f9e498cf2070a9ef8')
-sha256sums_aarch64=('55f65caa1ee94d4b66f1bdf7091df3bdf72578cf8d44a817b2d6cd6f96af8b02')
+sha256sums_x86_64=('c5f1e5cd3b8e5da05592c2714b079d78ec846ddc7ec1f70d474c0449e79f6ab4')
+sha256sums_aarch64=('638af56b2ed33ff33cc3f30447f447b1c8e5894c6252fbda1e459adec94ba0fe')
 
 
 package() {
