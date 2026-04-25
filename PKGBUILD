@@ -1,9 +1,9 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Gemini 3.1 Pro.
+# Created with assistance from Gemini 3 Flash.
 
 pkgname=tun2proxy
-pkgver=0.7.20
-pkgrel=2
+pkgver=0.7.21
+pkgrel=1
 pkgdesc="Tunnel (TUN) interface for SOCKS and HTTP proxies"
 url='https://github.com/tun2proxy/tun2proxy'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -12,7 +12,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=(cargo)
 options=('!debug')
 source=("https://github.com/tun2proxy/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f53cac0aebc779bd379d5e4518163d08e6a14f4f3a4a39a0254b49746911062b')
+sha256sums=('5f694f31fe1bdeee8261ed61b79377f4f5fac70038d4c27c16c49da20f04b667')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
