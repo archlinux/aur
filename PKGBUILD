@@ -1,6 +1,7 @@
 # Maintainer: RiDDiX <github@egu-rel.de>
+
 pkgname=adguard-tray
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="System tray monitor and controller for adguard-cli (KDE Plasma & Hyprland)"
 arch=('any')
@@ -12,34 +13,28 @@ depends=(
     'python-yaml'
     'libnotify'
 )
+makedepends=(
+    'git'
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
+)
 optdepends=(
     'adguard-cli-bin: AdGuard CLI via AUR (alternatively install upstream: curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardCLI/release/install.sh | sh -s -- -v)'
     'qt6-svg: SVG icon theme support'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3b6639f9f2353c90d1acdc6d1fe5d16d0eb59a13cd18dbc186ae636f9edff5f3')
+source=("$pkgname::git+$url.git#tag=v$pkgver")
+sha256sums=('SKIP')
+
+build() {
+    cd "${srcdir}/${pkgname}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    # Application files
-    install -dm755 "$pkgdir/usr/lib/$pkgname"
-    cp -r adguard_tray "$pkgdir/usr/lib/$pkgname/"
-    install -Dm755 adguard-tray.py "$pkgdir/usr/lib/$pkgname/adguard-tray.py"
-
-    # Launcher script
-    install -dm755 "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/$pkgname" << EOF
-#!/usr/bin/env bash
-exec python3 /usr/lib/$pkgname/adguard-tray.py "\$@"
-EOF
-    chmod 755 "$pkgdir/usr/bin/$pkgname"
-
-    # Desktop entry
-    install -Dm644 adguard-tray.desktop \
-        "$pkgdir/usr/share/applications/adguard-tray.desktop"
-
-    # License
-    install -Dm644 LICENSE \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir/$pkgname"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -vDm644 adguard-tray.desktop -t "$pkgdir/usr/share/applications/"
+    install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
