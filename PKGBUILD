@@ -11,7 +11,7 @@ source=("git+${url}.git#tag=${pkgname}-${pkgver}"
         "v${pkgver}.Arch.patch") # User-provided patch file
 
 sha256sums=('86a8ca7fbb7de3b3bd9f2627cab68b63ed20cd1c1cccfcb69ddc969d096f3239'
-            '5eb82356ac2e8e7e382aa2a701185094e6b39514c1448e739af2ad1e2503e3f4')
+            '0550b2c8e9592ea4db0b5f71793482ac6f81bf0aa66a629c0c648694ef3e61ad')
 
 depends=(
   'gcc'
