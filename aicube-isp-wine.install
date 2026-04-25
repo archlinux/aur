@@ -1,0 +1,19 @@
+info() {
+    echo -e "AiCube-ISP 下载编程烧录软件"
+    echo -e "非 root 用户需要将用户添加到 uucp 用户组:"
+    echo -e "sudo gpasswd -a \$USER uucp"
+    echo -e "COM1-9 -> /dev/ttyUSB0-8"
+    echo -e "COM10-19 -> /dev/ttyACM0-9"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    echo "deleting the aicube-isp bottle..."
+    find /home -maxdepth 2 -name ".aicube-isp" -exec rm -rf {} \;
+    info
+}
+pre_remove() {
+    echo "deleting the aicube-isp bottle..."
+    find /home -maxdepth 2 -name ".aicube-isp" -exec rm -rf {} \;
+}
