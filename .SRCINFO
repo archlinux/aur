@@ -1,6 +1,6 @@
 pkgbase = pumba-bin
 	pkgdesc = Chaos testing, network emulation and stress testing tool for containers
-	pkgver = 1.0.6
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/alexei-led/pumba
 	arch = aarch64
@@ -8,9 +8,9 @@ pkgbase = pumba-bin
 	license = Apache-2.0
 	provides = pumba
 	conflicts = pumba
-	source_aarch64 = pumba-1.0.6linux-aarch64::https://github.com/alexei-led/pumba/releases/download/1.0.6/pumba_linux_arm64
-	sha256sums_aarch64 = 7052b0c3dcb96c7bd352a9152b799b05d9d877c011bb9610b7c6b83a528a44a3
-	source_x86_64 = pumba-1.0.6-linux-x86_64::https://github.com/alexei-led/pumba/releases/download/1.0.6/pumba_linux_amd64
-	sha256sums_x86_64 = 260926c0ba2cd6f2badc461dcf1326da24a26ba773caa0d49c2ebf852bed002b
+	source_aarch64 = pumba-1.1.0linux-aarch64::https://github.com/alexei-led/pumba/releases/download/1.1.0/pumba_linux_arm64
+	sha256sums_aarch64 = 6cf039a7a5e56136e71b0ffbe2cb9e3c3bdc170b15d2e17d0a61e7a0113758ca
+	source_x86_64 = pumba-1.1.0-linux-x86_64::https://github.com/alexei-led/pumba/releases/download/1.1.0/pumba_linux_amd64
+	sha256sums_x86_64 = b50463e6f641c5515748abafa3cbd15781e07ac6dba4730e6c68468d60ac25f4
 
 pkgname = pumba-bin
