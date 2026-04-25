@@ -1,11 +1,11 @@
 # Maintainer: uwuclxdy <https://github.com/uwuclxdy>
 pkgname=larpshell-git
-pkgver=r72.b614217
+pkgver=r126.4d23e6f
 pkgrel=1
 pkgdesc='Convert natural language to shell commands using an LLM'
 arch=('x86_64')
 url='https://github.com/uwuclxdy/larpshell'
-license=('MIT')
+license=('GPL-3.0-or-later')
 makedepends=('cargo' 'git')
 depends=('gcc-libs' 'glibc')
 options=('!lto' '!debug')
