@@ -15,7 +15,7 @@ options=('!strip')
 source=("hydra-ensemble-0.3.0.AppImage::https://github.com/javabetatester/hydra-ensemble/releases/download/v0.3.0/Hydra.Ensemble-0.3.0.AppImage"
         "hydra-ensemble.desktop"
         "hydra-ensemble.png::https://raw.githubusercontent.com/javabetatester/hydra-ensemble/v0.3.0/resources/icon.png")
-sha256sums=('3db570f60460c20cd9f16d0ea51ca84c6e698c0eb5f04a7c9e5cd30eae55a903'
+sha256sums=('71da69e42833a8bc80069e1dcf331c8a2388c62b087a4a2d135a68e8c4b2f866'
             'SKIP'
             'SKIP')
 noextract=("${_pkgname}-${pkgver}.AppImage")
