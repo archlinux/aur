@@ -1,0 +1,18 @@
+pkgbase = opencode-vim-bin
+	pkgdesc = AI coding agent for terminal (vim fork with enhanced vim features)
+	pkgver = 1.14.25
+	pkgrel = 1
+	url = https://github.com/leohenon/opencode-vim
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	options = !debug
+	options = !strip
+	source_x86_64 = ocv-linux-x64.tar.gz::https://github.com/leohenon/opencode-vim/releases/download/v1.14.25-ocv.3.28/ocv-linux-x64.tar.gz
+	sha256sums_x86_64 = 37ef7a6ca37521f98d1a5b15f7c15bcb7b3c22095b57e7bfd08ec3555e77f88f
+	source_aarch64 = ocv-linux-arm64.tar.gz::https://github.com/leohenon/opencode-vim/releases/download/v1.14.25-ocv.3.28/ocv-linux-arm64.tar.gz
+	sha256sums_aarch64 = caeccd131cb52504c01e20035af965eb5625cd08750b1f77c9282fc8c20b41d5
+
+pkgname = opencode-vim-bin
