@@ -1,4 +1,4 @@
-# Maintainer: Jonathan Grotelüschen <tippfehlr@tippfehlr.eu>
+# Maintainer: Jonathan Grotelüschen <tippfehlr@archlinux.org>
 # Contributor: bkacjios < blackops7799 at gmail dot com >
 
 pkgname=inav-configurator
@@ -15,7 +15,6 @@ depends=(
 	'glibc' 'expat' 'libgcc' 'pango' 'libstdc++' 'nodejs'
 
 )
-options=('!strip')
 makedepends=('yarn' 'git')
 install=inav-configurator.install
 #source=("git+$url#tag=$pkgver")
@@ -44,7 +43,6 @@ case "$CARCH" in
     _electron_arch=DUMMY
     ;;
 esac
-
 
 prepare() {
 	cd $pkgname

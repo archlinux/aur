@@ -1,0 +1,5 @@
+[inav-configurator]
+source = "git"
+git = "https://github.com/iNavFlight/inav-configurator.git"
+prefix = "v"
+exclude_regex = ".*RC.*"

@@ -3,7 +3,6 @@ pkgbase = inav-configurator
 	pkgver = 9.0.2
 	pkgrel = 1
 	url = https://github.com/iNavFlight/inav-configurator
-	install = inav-configurator.install
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
@@ -37,7 +36,6 @@ pkgbase = inav-configurator
 	depends = pango
 	depends = libstdc++
 	depends = nodejs
-	options = !strip
 	source = git+https://github.com/iNavFlight/inav-configurator#tag=untagged-58a74ccc453672f866b7
 	sha512sums = d2ab7b85a5e2958dd8544d80723ecbc84f8f8ccb3942bafe44fd37c749b4e8708bbf6e043d9b0fafc917fa3c0737ba472deb124dc59e73a9eca5fbf9cfb44eab
 
