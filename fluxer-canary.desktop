@@ -1,8 +1,12 @@
 [Desktop Entry]
-Name=Fluxer (Canary)
-Comment=Fluxer Canary Desktop App
+Name=Fluxer Canary
+GenericName=Instant Messenger
+Comment=Instant messaging and VoIP
 Exec=/usr/bin/fluxer-canary
 Icon=fluxer-canary
 Terminal=false
 Type=Application
-Categories=Network;
+Categories=Network;InstantMessaging;
+MimeType=x-scheme-handler/fluxer-canary;
+StartupWMClass=fluxer-canary
+StartupNotify=true
