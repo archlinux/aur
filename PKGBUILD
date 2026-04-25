@@ -2,7 +2,7 @@
 
 pkgname=proton-authenticator-git
 _name=${pkgname%-git}
-pkgver=1.1.4.r56647.gd607eb0
+pkgver=1.1.4.r58282.g0ff71a5
 pkgrel=1
 pkgdesc='2FA app from Proton to securely sync and backup 2FA codes'
 arch=(x86_64)
@@ -49,10 +49,6 @@ prepare() {
 
     cd applications/authenticator/src-tauri
     export RUSTUP_TOOLCHAIN=stable
-    # Upstream Cargo.toml inconsistencies (remove each when fixed upstream):
-    # - specta/specta-typescript: tauri-specta 2.0.0-rc.21 requires specta =2.0.0-rc.22
-    # - rand: bumped to 0.10.0 but code not updated for breaking changes
-    cargo add specta@=2.0.0-rc.22 specta-typescript@=0.0.9 rand@=0.9.2
     cargo fetch --locked --target host-tuple
 }
 
