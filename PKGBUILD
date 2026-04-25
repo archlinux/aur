@@ -6,7 +6,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/owen-debiasio/cmdcreate"
 license=('GPL3')
 
-depends=('gcc-libs')
+depends=('gcc-libs' 'less')
 makedepends=('cargo' 'git' 'cmake' 'clang')
 
 conflicts=('cmdcreate')
