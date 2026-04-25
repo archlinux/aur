@@ -2,7 +2,7 @@
 # Old Maintainer: JinguTech <xiuluo dot android at gmail dot com>
 # Contributor: Alkindi42
 
-_electron=electron39
+_electron=electron40
 _node=24
 pkgname=joplin-beta
 pkgver=3.6.9
