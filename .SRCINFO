@@ -1,6 +1,6 @@
 pkgbase = oniri
 	pkgdesc = A tool that automatically maximizes the only window of a niri workspace
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/Antiz96/oniri
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = oniri
 	makedepends = scdoc
 	depends = glibc
 	depends = libgcc
-	source = oniri-1.1.0.tar.gz::https://github.com/Antiz96/oniri/archive/v1.1.0.tar.gz
-	sha256sums = d9431b1a9814665bddf6596522475c7b8cfb349a139854f12afd500f3d5b4e6e
+	source = oniri-1.1.1.tar.gz::https://github.com/Antiz96/oniri/archive/v1.1.1.tar.gz
+	sha256sums = 57891edae6a38d976b731231c3e8b2021e6a899bac454f15efbfb159016ada42
 
 pkgname = oniri
