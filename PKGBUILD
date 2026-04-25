@@ -25,12 +25,12 @@ depends=('glibc' 'glib2' 'gtk3' 'gdk-pixbuf2' 'libsoup3' 'webkit2gtk-4.1' 'hicol
 
 options=(!strip)
 
-source=("ICON-${pkgver}.svg::${_ghurlraw}/desktop/frontend/public/logo.svg"
+source=("ICON-${pkgver}.png::${_ghurlraw}/desktop/build/appicon.png"
 		"README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 		"${_appname}.desktop")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.zip")
-sha256sums=('d3cbf5cb48ef5e4f4ddaf1408ed9efdf76b3953c53be56d8f2b82763da66fc20'
+sha256sums=('297398ef03d7922f7a75fc6d89b6673c11c10668405e8ec30a84cc1f5066bef2'
             '654dc7d474298cc1977ad405ce6581b932e0b18cdcabffb1aa7126913f0176d6'
             'd779677117f60d6f3e82a944388c787b30bfa69d6f63ad739b096c71aaf876fc'
             '70d87c7734483b2d98638b5ddb1aef701dcdab217033fb7bff86dc53a5427a85')
@@ -44,7 +44,7 @@ package() {
 
 	install -Dm644 "${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
 
-	install -Dm644 "ICON-${pkgver}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_appname}.svg"
+	install -Dm644 "ICON-${pkgver}.png" "${pkgdir}/usr/share/icons/${_appname}.png"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
