@@ -1,5 +1,5 @@
 # Maintainer: Monjaris <ziyanovruzlu750@gmail.com>
-pkgname=edex-editor
+pkgname=edex
 pkgver=0.1.0
 pkgrel=3
 pkgdesc="A minimal GUI text editor written in C++ with raylib"

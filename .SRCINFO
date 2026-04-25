@@ -1,4 +1,4 @@
-pkgbase = edex-editor
+pkgbase = edex
 	pkgdesc = A minimal GUI text editor written in C++ with raylib
 	pkgver = 0.1.0
 	pkgrel = 3
@@ -7,7 +7,7 @@ pkgbase = edex-editor
 	license = custom:unlicensed
 	makedepends = gcc
 	depends = raylib
-	source = edex-editor-0.1.0.zip::https://github.com/Monjaris/Edex/archive/refs/heads/main.zip
+	source = edex-0.1.0.zip::https://github.com/Monjaris/Edex/archive/refs/heads/main.zip
 	sha256sums = SKIP
 
-pkgname = edex-editor
+pkgname = edex
