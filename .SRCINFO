@@ -1,6 +1,6 @@
 pkgbase = selene-player-git
 	pkgdesc = A feature complete music player and metadata editor
-	pkgver = v0.7.0.r0.gc7dfbef
+	pkgver = v0.8.0.r0.g2ece508
 	pkgrel = 0
 	url = https://codeberg.org/CrypticCreator/Selene
 	arch = x86_64
