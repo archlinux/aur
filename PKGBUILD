@@ -19,15 +19,18 @@ makedepends=('mesa-libgl' 'gendesk')
 provides=('dosbox')
 conflicts=('dosbox')
 source=("http://downloads.sourceforge.net/$srcname/$srcname-$usver.tar.gz"
-        'dosbox.png')
+        'dosbox.png'
+        'ncurses6.patch')
 sha256sums=('c0d13dd7ed2ed363b68de615475781e891cd582e8162b5c3669137502222260a'
-            '491c42d16fc5ef7ee2eca1b736f7801249d4ca8c0b236a001aec0d3e24504f3b')
+            '491c42d16fc5ef7ee2eca1b736f7801249d4ca8c0b236a001aec0d3e24504f3b'
+            '17de71d8e333aee01d6c75a15ef5545244af30e9bf67828a853d82f7d72ad00a')
 
 # Can't use -Werror=format-security or the debug version fails to compile
 options=(!buildflags)
 
 prepare() {
   cd "$srcdir"
+  patch -d "$srcname-$usver" -p0 -i "$srcdir/ncurses6.patch"
 
   gendesk -f --pkgname "$srcname" --pkgdesc "$pkgdesc" --exec "$srcname" --name "DOSBox"
   gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --terminal=true --name "DOSBox (debug)"
