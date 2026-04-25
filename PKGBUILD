@@ -27,10 +27,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e96194a736ab2ebb1a923813dbf764a8fa4ed8d4e1b48bfdc63736117f7d46fa')
 
 build() {
-    cd "$srcdir/$pkgname"
     cmake -B build -G Ninja
     cmake --build build --config Release
-    
 }
 
 package() {
