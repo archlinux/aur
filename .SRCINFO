@@ -1,0 +1,13 @@
+pkgbase = timein-git
+	pkgdesc = A minimal tool for quickly getting the time and date in another city or timezone
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/exerinity/timein
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	source = timein-git-2.tar.gz::https://github.com/exerinity/timein-git/archive/refs/tags/v2.tar.gz
+	sha256sums = 7e56547cddd486b2f0eeac311ad2fc7692f503ba07150d40eb9f37852d388bbc
+
+pkgname = timein-git
