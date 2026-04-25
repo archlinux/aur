@@ -1,6 +1,6 @@
 # Maintainer: objz <me@objz.dev>
 pkgname=mcl-launcher
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Minecraft launcher TUI"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo')
 provides=('mcl-launcher')
 conflicts=('mcl-launcher-bin' 'mcl-launcher-git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a9e2c57766fce4e40e6f04da35f863ec7386815d03c03442592af847b4bf8936')
+sha256sums=('d5b8999a2ca4bedbff3de39ce6a7b9b61dd214fe1208013737b85515629e8461')
 
 build() {
   cd "$srcdir/mcl-${pkgver}"
