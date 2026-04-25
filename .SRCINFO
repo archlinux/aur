@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-xdg
 	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory
-	pkgver = 147.0.7727.101
+	pkgver = 147.0.7727.116
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -52,31 +52,33 @@ pkgbase = ungoogled-chromium-xdg
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME, KDE and Xfce
 	optdepends = upower: Battery Status API support
 	optdepends = chromium-extension-web-store: Web Store Functionality
-	provides = chromium=147.0.7727.101
-	provides = chromedriver=147.0.7727.101
+	provides = chromium=147.0.7727.116
+	provides = chromedriver=147.0.7727.116
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-147.0.7727.101-lite.tar.xz
-	source = ungoogled-chromium-147.0.7727.101-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/147.0.7727.101-1.tar.gz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-147.0.7727.116-lite.tar.xz
+	source = ungoogled-chromium-147.0.7727.116-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/147.0.7727.116-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = chromium-138-nodejs-version-check.patch
 	source = chromium-145-fix-SYS_SECCOMP.patch
 	source = chromium-146-drop-unknown-clang-flag.patch
 	source = chromium-147-revert-clang-no-lifetime-dse-flag.patch
+	source = chromium-147-rust-1.95-bytemuck.patch
 	source = compiler-rt-adjust-paths.patch
 	source = increase-fortify-level.patch
 	source = enable-widevine-arm64.patch
 	source = use-oauth2-client-switches-as-default.patch
 	source = glibc-2.42-baud-rate-fix.patch
 	source = no-omnibox-suggestion-autocomplete.patch
-	sha256sums = 87b499c215e895c518bc25b8a0648a2e23a6a3e865cd43a1243c21ae974140f6
-	sha256sums = a2f7388030a9ad6cd69d33a453d347ceebea122eb85d0924f7ffc8b1cc861790
+	sha256sums = 44be73f82b1b670255b3c58676be08844ddf1bf5727d5fcdf430d214aa8d15bb
+	sha256sums = 8f3f7340d457d58348bc90b5cda222fd3e9b7021c4156b76f3071fb8b15c0436
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
 	sha256sums = 4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e
 	sha256sums = 24535c314c7e70c52bcf409aaf604728bfc5b5c97e60087e630e1f7233b9e12d
 	sha256sums = c382830318c5b37826ecf44f3ba9def6be8affdad1bce819ecb83f3222ff4b3a
+	sha256sums = b9e6339221efe03540ffb360c161d93604a1fc93a5a1c53e5e9849066f987d05
 	sha256sums = ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863
 	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
 	sha256sums = 9c766b82d1143cb3413fe2057361bd2655e46287eacc2c6d6f8504b4c255647a
