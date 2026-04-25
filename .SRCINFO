@@ -1,6 +1,6 @@
 pkgbase = mcat-bin
 	pkgdesc = Terminal image, video, and Markdown viewer
-	pkgver = 0.5.6
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/Skardyy/mcat
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = mcat-bin
 	depends = gcc-libs
 	provides = mcat
 	conflicts = mcat
-	source_x86_64 = https://github.com/Skardyy/mcat/releases/download/v0.5.6/mcat-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = b40905541aa01548dba50339d1ecf7cfae13f0b14995d859a75715bb52a9f33a
-	source_aarch64 = https://github.com/Skardyy/mcat/releases/download/v0.5.6/mcat-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = f369e83d9ef5853a462edef4b95b6fd19505e9da71fd5b5ad4faa14cd587d5c8
+	source_x86_64 = https://github.com/Skardyy/mcat/releases/download/v0.6.0/mcat-v0.6.0-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = c04707791b81142042cfbaeceda6ad26fe9d52d868584a655a3b57555ff944bd
+	source_aarch64 = https://github.com/Skardyy/mcat/releases/download/v0.6.0/mcat-v0.6.0-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 20db061b0113e10b54bb69dcb7579c87e45f982e91e9ded0a9b6b914c257070e
 
 pkgname = mcat-bin
