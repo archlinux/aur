@@ -3,8 +3,7 @@
 
 pkgname=varia
 pkgver=2026.3.27
-_pkgver=2026.1.5-3
-pkgrel=1
+pkgrel=2
 pkgdesc="Download manager based on aria2"
 arch=('any')
 url="https://giantpinkrobots.github.io/varia/"
@@ -31,11 +30,11 @@ depends=('7zip'
          'python-requests'
          'yt-dlp')
 makedepends=('meson')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/giantpinkrobots/varia/archive/v${_pkgver}.tar.gz")
-sha256sums=('01dc36ee71f40666219ee70699dd8350116a18b94b4c3931c16a1fc18e2d0afc')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/giantpinkrobots/varia/archive/v${pkgver}.tar.gz")
+sha256sums=('e58be0b8be6bc7de3fe005e7b3b06d1b2b0080072774a88d04a5fdc6370d262e')
 
 build() {
-    arch-meson "${pkgname}-${_pkgver}" build
+    arch-meson "${pkgname}-${pkgver}" build
     meson compile -C build
 }
 
