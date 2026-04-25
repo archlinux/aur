@@ -2,7 +2,7 @@
 
 _pkgname="daed"
 pkgname="${_pkgname}-edge-git"
-pkgver=v0.4.0rc1.r488.187.684
+pkgver=v1.27.0.r817.215.838
 pkgrel=1
 pkgdesc="A modern dashboard for dae, bundled with latest dae-wing (backend API server) and dae (core)."
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ pkgver() {
 	cd "$srcdir/$_pkgname"
 	(
 		set -o pipefail
-		daed_version=$(git describe --tags --abbrev=0 2>/dev/null)
+		daed_version=$(git describe --tags --abbrev=0 --match 'v[0-9]*' 2>/dev/null)
         	daed_count=$(git rev-list --count HEAD)
         	cd wing
         	wing_count=$(git rev-list --count HEAD)
@@ -37,13 +37,19 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$_pkgname"
         git remote update
+	git reset --hard origin/main
 	git submodule update --init --recursive
         cd wing
+	git remote update
 	git reset --hard origin/main
         cd dae-core 
+        git remote update
         git reset --hard origin/main
         git submodule update --init --recursive
-        cd .. && go mod tidy
+        cd ..
+	outbound_replace=$(cd dae-core && go list -m -f '{{ with .Replace }}{{ .Path }}@{{ .Version }}{{ end }}' github.com/daeuniverse/outbound)
+	go mod edit -replace="github.com/daeuniverse/outbound=${outbound_replace}"
+	go mod tidy
 }
 
 build() {
@@ -55,7 +61,7 @@ build() {
         dae_core_commit=$(git rev-parse --short HEAD)
         package_version="$daed_commit.$wing_commit.$dae_core_commit"
 	cd "$srcdir/$_pkgname"
-	make VERSION="unstable-$package_version"
+	make SKIP_SUBMODULES=1 VERSION="unstable-$package_version"
 }
 
 package() {
