@@ -1,6 +1,6 @@
 pkgbase = craft-agents-bin
 	pkgdesc = Claude Code-like agent for Craft documents
-	pkgver = 0.8.11
+	pkgver = 0.8.12
 	pkgrel = 1
 	url = https://github.com/lukilabs/craft-agents-oss
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = craft-agents-bin
 	depends = xdg-utils
 	provides = craft-agents
 	conflicts = craft-agents
-	noextract = craft-agents-bin-0.8.11-x86_64.AppImage
+	noextract = craft-agents-bin-0.8.12-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source = craft-agents-bin-0.8.11-x86_64.AppImage::https://github.com/lukilabs/craft-agents-oss/releases/download/v0.8.11/Craft-Agents-0.8.11-linux-x64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/lukilabs/craft-agents-oss/v0.8.11/LICENSE
-	source = NOTICE::https://raw.githubusercontent.com/lukilabs/craft-agents-oss/v0.8.11/NOTICE
-	sha256sums = 12ec946eac39567e60797e128f11caca8192633535f8a6389867f90e787f055a
+	source = craft-agents-bin-0.8.12-x86_64.AppImage::https://github.com/lukilabs/craft-agents-oss/releases/download/v0.8.12/Craft-Agents-0.8.12-linux-x64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/lukilabs/craft-agents-oss/v0.8.12/LICENSE
+	source = NOTICE::https://raw.githubusercontent.com/lukilabs/craft-agents-oss/v0.8.12/NOTICE
+	sha256sums = f3cd5c767fd75cde24d78ab63ef9eb7e3dfc0da81e46d025bd6664fed5380a0f
 	sha256sums = 9a75ace1224f0f880ddfdd8442d14d5a0d865152c61a2fd363d8e2c351f94d2c
 	sha256sums = caa334b760b4c7835957c91ac24c3d52e7abc7ac770050445027766b4ce4ce7f
 
