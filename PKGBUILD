@@ -1,8 +1,8 @@
 # Maintainer: sfn
 
 pkgname=python-pyseq
-pkgver=0.9.0
-pkgrel=3
+pkgver=0.9.2
+pkgrel=1
 pkgdesc="Python sequence string module"
 arch=(any)
 url="https://pyseq.rsgalloway.com/#"
