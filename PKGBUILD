@@ -1,8 +1,8 @@
 # Maintainer: Matthew Cushing <cushing.matt@gmail.com>
 pkgname=wflow
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
-pkgdesc="A workflow engine for Wayland automation — Shortcuts-style GUI + CLI on top of wdotool"
+pkgdesc="A workflow engine for Wayland automation — Shortcuts-style GUI + CLI"
 arch=('x86_64')
 url="https://github.com/cushycush/wflow"
 license=('MIT' 'Apache-2.0')
@@ -14,13 +14,12 @@ depends=(
 )
 makedepends=('rust' 'cargo')
 optdepends=(
-    'wdotool: input automation (key, type, click, move, scroll, focus)'
     'libnotify: desktop notifications via notify-send'
     'wl-clipboard: clipboard via wl-copy'
-    'xdg-desktop-portal: Record Mode (real input capture)'
+    'xdg-desktop-portal: input via libei portal + Record Mode'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b7577b08cd18259b27ca4c4dfff6d87967a0baab81578c44733a13c55b05ad6d')
+sha256sums=('b3544409ba0089e354b2f86a4f4017cae3779ce2d9fd75e1c1eebc059fc5efe6')
 
 prepare() {
     cd "$pkgname-$pkgver"

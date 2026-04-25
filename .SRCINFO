@@ -1,6 +1,6 @@
 pkgbase = wflow
-	pkgdesc = A workflow engine for Wayland automation — Shortcuts-style GUI + CLI on top of wdotool
-	pkgver = 0.2.0
+	pkgdesc = A workflow engine for Wayland automation — Shortcuts-style GUI + CLI
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/cushycush/wflow
 	arch = x86_64
@@ -12,11 +12,10 @@ pkgbase = wflow
 	depends = qt6-declarative
 	depends = gcc-libs
 	depends = glibc
-	optdepends = wdotool: input automation (key, type, click, move, scroll, focus)
 	optdepends = libnotify: desktop notifications via notify-send
 	optdepends = wl-clipboard: clipboard via wl-copy
-	optdepends = xdg-desktop-portal: Record Mode (real input capture)
-	source = wflow-0.2.0.tar.gz::https://github.com/cushycush/wflow/archive/v0.2.0.tar.gz
-	sha256sums = b7577b08cd18259b27ca4c4dfff6d87967a0baab81578c44733a13c55b05ad6d
+	optdepends = xdg-desktop-portal: input via libei portal + Record Mode
+	source = wflow-0.3.1.tar.gz::https://github.com/cushycush/wflow/archive/v0.3.1.tar.gz
+	sha256sums = b3544409ba0089e354b2f86a4f4017cae3779ce2d9fd75e1c1eebc059fc5efe6
 
 pkgname = wflow
