@@ -2,7 +2,7 @@
 # Contributor: Guoyi ("malcology") <guoyizhang@malacology.net>
 
 pkgname=raxml-ng
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A phylogenetic tree inference tool which uses maximum-likelihood (ML) optimality criterion. https://doi.org/10.1093/bioinformatics/btz305"
 url='https://github.com/amkozlov/raxml-ng'
@@ -11,7 +11,7 @@ license=('AGPL3')
 depends=('gcc-libs')
 makedepends=('bison' 'make' 'cmake' 'flex' 'gmp' 'gtest' 'git')
 source=("git+https://github.com/amkozlov/raxml-ng.git#tag=${pkgver}")
-sha256sums=('6c671bc08ccd5fb458a266e77ba6ffd139c3a1225132698fc2f1d67eb91b97ed')
+sha256sums=('6c2a911fb04336b42685a2b75391d4d5fc4961490777bb3a26c1cffb3f755517')
 provides=('raxml-ng')
 conflicts=('raxml-ng-mpi')
 prepare(){
